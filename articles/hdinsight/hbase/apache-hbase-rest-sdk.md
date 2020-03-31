@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
 ms.openlocfilehash: eba7d7ad009b2ef0442a916983489489eb5cceb8
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74806659"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>Verwenden des .NET SDK für Apache HBase
 
-[Apache HBase](apache-hbase-overview.md) bietet zwei primäre Optionen zum Arbeiten mit Ihren Daten: [Apache Hive-Abfragen und Aufrufe der RESTful-API von HBase](apache-hbase-tutorial-get-started-linux.md). Sie können direkt mit der REST-API arbeiten, indem Sie den Befehl `curl` oder ein ähnliches Hilfsprogramm verwenden.
+[Apache HBase](apache-hbase-overview.md) bietet zwei primäre Optionen für die Arbeit mit Ihren Daten: [Apache Hive-Abfragen und Aufrufe der RESTful-API von HBase](apache-hbase-tutorial-get-started-linux.md). Sie können direkt mit der REST-API arbeiten, indem Sie den Befehl `curl` oder ein ähnliches Hilfsprogramm verwenden.
 
 Für C#- und .NET-Anwendungen bietet die [Microsoft HBase REST-Clientbibliothek für .NET](https://www.nuget.org/packages/Microsoft.HBase.Client/) eine Clientbibliothek zusätzlich zu der HBase REST-API.
 
@@ -132,7 +132,7 @@ Console.WriteLine(Encoding.UTF8.GetString(cells.rows[0].values
 // With the previous insert, it should yield: "The Fifth Element"
 ```
 
-In diesem Fall gibt der Code nur die erste übereinstimmende Zeile zurück, da bei einem eindeutigen Schlüssel nur eine Zeile vorhanden sein sollte. Der zurückgegebene Wert wird aus dem `byte[]`-Array-Format in das `string`-Format umgewandelt. Sie können den Wert auch in andere Typen konvertieren, z. B. eine ganze Zahl (Integer) für das Veröffentlichungsdatum des Films:
+In diesem Fall gibt der Code nur die erste übereinstimmende Zeile zurück, da bei einem eindeutigen Schlüssel nur eine Zeile vorhanden sein sollte. Der zurückgegebene Wert wird aus dem `string`-Array-Format in das `byte[]`-Format umgewandelt. Sie können den Wert auch in andere Typen konvertieren, z. B. eine ganze Zahl (Integer) für das Veröffentlichungsdatum des Films:
 
 ```csharp
 var releaseDateField = cells.rows[0].values

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.author: zarhoads
 ms.openlocfilehash: 466ad7c88547b6676ba0ae263b74d14059322f1c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77622043"
 ---
 # <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Vorschau: Hinzufügen eines Spot-Knotenpools zu einem Azure Kubernetes Service-Cluster (AKS)
@@ -28,7 +28,7 @@ Für diesen Artikel werden Grundkenntnisse im Zusammenhang mit Kubernetes und Az
 
 Diese Funktion steht derzeit als Vorschau zur Verfügung.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -59,7 +59,7 @@ Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wi
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/spotpoolpreview')].{Name:name,State:properties.state}"
 ```
 
-Wenn Sie so weit sind, aktualisieren Sie mithilfe des Befehls [az provider register][az-provider-register] die Registrierung des Ressourcenanbieters *Microsoft.ContainerService*:
+Wenn Sie so weit sind, aktualisieren Sie mithilfe des Befehls *az provider register* die Registrierung des Ressourcenanbieters [Microsoft.ContainerService][az-provider-register]:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -111,7 +111,7 @@ az aks nodepool add \
 
 Standardmäßig erstellen Sie in Ihrem AKS-Cluster einen Knotenpool mit einer *Priorität* vom Typ *Regulär*, wenn Sie einen Cluster mit mehreren Knotenpools erstellen. Der obige Befehl fügt einem vorhandenen AKS-Cluster einen Hilfsknotenpool mit einer *Priorität* vom Typ *Spot* hinzu. Die *Priorität* vom Typ *Spot* macht den Knotenpool zu einem Spot-Knotenpool. Der Parameter *eviction-policy* ist im obigen Beispiel auf *Löschen* festgelegt, was dem Standardwert entspricht. Wenn Sie die [Entfernungsrichtlinie][eviction-policy] auf *Löschen* festlegen, werden Knoten in der zugrunde liegenden Skalierungsgruppe des Knotenpools bei der Entfernung gelöscht. Sie können die Entfernungsrichtlinie auch auf *Zuordnung aufheben* festlegen. Wenn Sie die Entfernungsrichtlinie auf *Zuordnung aufheben* festlegen, werden die Knoten in der zugrunde liegenden Skalierungsgruppe bei der Entfernung auf den Zustand „Beendet/Zuordnung aufgehoben“ festgelegt. Knoten im Zustand „Beendet/Zuordnung aufgehoben“ werden auf Ihr Computekontingent angerechnet und können Probleme bei der Skalierung oder dem Upgrade von Clustern verursachen. Die Werte für *Priorität* und *eviction-policy* (Entfernungsrichtlinie) können nur während der Erstellung des Knotenpools festgelegt werden. Diese Werte können später nicht mehr aktualisiert werden.
 
-Der Befehl aktiviert auch die [Automatische Clusterskalierung][cluster-autoscaler], die für die Verwendung mit Spot-Knotenpools empfohlen wird. Auf der Grundlage der in Ihrem Cluster ausgeführten Workloads skaliert die automatische Clusterskalierung die Anzahl der Knoten im Knotenpool zentral hoch und herunter. Bei Spot-Knotenpools skaliert die automatische Clusterskalierung die Anzahl der Knoten nach einer Entfernung zentral hoch, falls noch weitere Knoten erforderlich sind. Wenn Sie die maximale Anzahl von Knoten ändern, die ein Knotenpool aufweisen kann, müssen Sie auch den mit der automatischen Clusterskalierung verbundenen `maxCount`-Wert anpassen. Wenn Sie keine automatische Clusterskalierung verwenden, wird der Spot-Pool nach der Entfernung schließlich auf Null sinken und eine manuelle Bedienung erfordern, um weitere Spot-Knoten zu erhalten.
+Der Befehl aktiviert auch die [Automatische Clusterskalierung][cluster-autoscaler], die für die Verwendung mit Spot-Knotenpools empfohlen wird. Auf der Grundlage der in Ihrem Cluster ausgeführten Workloads skaliert die automatische Clusterskalierung die Anzahl der Knoten im Knotenpool zentral hoch und herunter. Bei Spot-Knotenpools skaliert die automatische Clusterskalierung die Anzahl der Knoten nach einer Entfernung hoch, falls noch weitere Knoten erforderlich sind. Wenn Sie die maximale Anzahl von Knoten ändern, die ein Knotenpool aufweisen kann, müssen Sie auch den mit der automatischen Clusterskalierung verbundenen `maxCount`-Wert anpassen. Wenn Sie keine automatische Clusterskalierung verwenden, wird der Spot-Pool nach der Entfernung schließlich auf Null sinken und eine manuelle Bedienung erfordern, um weitere Spot-Knoten zu erhalten.
 
 > [!Important]
 > Planen Sie Workloads nur für Spot-Knotenpools, die Unterbrechungen verarbeiten können, z. B. Batchverarbeitungsaufträge und Testumgebungen. Es wird empfohlen, dass Sie in Ihrem Spot-Knotenpool [Taints und Toleranzen][taints-tolerations] einrichten, um sicherzustellen, dass in einem Spot-Knotenpool nur Workloads geplant werden, die mit Knotenentfernungen umgehen können. Beispielsweise fügt der obige Befehl „ny“ standardmäßig einen Taint von *kubernetes.azure.com/scalesetpriority=spot:NoSchedule* hinzu, sodass nur Pods mit einer entsprechenden Toleranz auf diesem Knoten geplant werden.

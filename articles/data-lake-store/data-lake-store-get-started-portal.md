@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 1bfb9362aa0e893a8bf1a758e5a0069e85ab227b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438757"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231502"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Erste Schritte mit Data Lake Storage Gen1 unter Verwendung des Azure-Portals
 
@@ -58,7 +58,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 4. Klicken Sie auf **Erstellen**. Wenn Sie die Option zum Anheften des Kontos an das Dashboard ausgewählt haben, wird wieder das Dashboard angezeigt, und Sie können den Fortschritt der Bereitstellung Ihres Data Lake Storage Gen1-Kontos überprüfen. Nachdem die Bereitstellung des Data Lake Storage Gen1-Kontos erfolgt ist, wird das Kontoblatt angezeigt.
 
-## <a name="assign-permissions-to-azure-key-vault"></a>Zuweisen von Berechtigungen zu Azure Key Vault
+## <a name="assign-permissions-to-azure-key-vault"></a><a name="assign-permissions-to-azure-key-vault"></a>Zuweisen von Berechtigungen zu Azure Key Vault
 
 Wenn Sie Schlüssel aus einem Azure Key Vault zum Konfigurieren der Verschlüsselung für das Data Lake Storage Gen1-Konto verwendet haben, müssen Sie den Zugriff zwischen dem Data Lake Storage Gen1-Konto und dem Azure Key Vault-Konto konfigurieren. Führen Sie hierzu die folgenden Schritte aus:
 
@@ -80,7 +80,7 @@ Wenn Sie Schlüssel aus einem Azure Key Vault zum Konfigurieren der Verschlüsse
 >
 >
 
-## <a name="createfolder"></a>Erstellen von Ordnern
+## <a name="create-folders"></a><a name="createfolder"></a>Erstellen von Ordnern
 
 Sie können in Ihrem Data Lake Storage Gen1-Konto Ordner zum Verwalten und Speichern von Daten erstellen.
 
@@ -96,7 +96,7 @@ Sie können in Ihrem Data Lake Storage Gen1-Konto Ordner zum Verwalten und Speic
 
     ![Erstellen von Ordnern in einem Data Lake-Konto](./media/data-lake-store-get-started-portal/ADL.New.Directory.png "Erstellen von Ordnern in einem Data Lake-Konto")
 
-## <a name="uploaddata"></a>Hochladen von Daten
+## <a name="upload-data"></a><a name="uploaddata"></a>Hochladen von Daten
 
 Sie können Ihre Daten direkt auf die Stammebene eines Data Lake Storage Gen1-Kontos oder in einen im Konto erstellten Ordner hochladen.
 
@@ -107,7 +107,7 @@ Sie können Ihre Daten direkt auf die Stammebene eines Data Lake Storage Gen1-Ko
 
 Wenn Sie Beispieldaten zum Hochladen verwenden möchten, können Sie den Ordner **Ambulance Data** aus dem [Azure Data Lake-Git-Repository](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)herunterladen.
 
-## <a name="properties"></a>Verfügbare Aktionen für die gespeicherten Daten
+## <a name="actions-available-on-the-stored-data"></a><a name="properties"></a>Verfügbare Aktionen für die gespeicherten Daten
 
 Klicken Sie für eine Datei auf das Symbol mit den Auslassungszeichen und dann im Popupmenü auf die Aktion, die Sie für die Daten durchführen möchten.
 

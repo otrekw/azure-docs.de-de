@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: c4b2dea05b459d6e9ae4eb086fa127d88a84a768
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: e17112cbe2a494a585cd5a09c36cfe449d3d433c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78249207"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79365814"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Häufige Fehler und Schritte zur Problembehandlung für Azure Active Directory Domain Services
 
@@ -30,7 +30,7 @@ Wenn Probleme beim Aktivieren von Azure AD DS auftreten, sehen Sie sich die folg
 
 | **Beispielfehlermeldung** | **Lösung** |
 | --- |:--- |
-| *Der Name „addscontoso.com“ wird in diesem Netzwerk bereits verwendet. Geben Sie einen Namen an, der nicht verwendet wird.* |[Domänennamenskonflikt im virtuellen Netzwerk](troubleshoot.md#domain-name-conflict) |
+| *Der Name „aaddscontoso.com“ wird in diesem Netzwerk bereits verwendet. Geben Sie einen Namen an, der nicht verwendet wird.* |[Domänennamenskonflikt im virtuellen Netzwerk](troubleshoot.md#domain-name-conflict) |
 | *Die Domänendienste konnten in diesem Azure AD-Mandanten nicht aktiviert werden. Der Dienst verfügt nicht über die erforderlichen Berechtigungen für die Anwendung „Azure AD Domain Services Sync“. Löschen Sie die Anwendung „Azure AD Domain Services Sync“, und versuchen Sie dann, die Domänendienste für Ihren Azure AD-Mandanten zu aktivieren.* |[Domänendienste verfügen nicht über die erforderlichen Berechtigungen für die Anwendung „Azure AD Domain Services Sync“](troubleshoot.md#inadequate-permissions) |
 | *Die Domänendienste konnten in diesem Azure AD-Mandanten nicht aktiviert werden. Die Domänendiensteanwendung in Ihrem Azure AD-Mandanten verfügt nicht über die erforderlichen Berechtigungen zum Aktivieren der Domänendienste. Löschen Sie die Anwendung mit dem Anwendungsbezeichner d87dcbc6-a371-462e-88e3-28ad15ec4e64, und versuchen Sie dann, die Domänendienste für Ihren Azure AD-Mandanten zu aktivieren.* |[Die Domänendiensteanwendung ist in Ihrem Azure AD-Mandanten nicht ordnungsgemäß konfiguriert](troubleshoot.md#invalid-configuration) |
 | *Die Domänendienste konnten in diesem Azure AD-Mandanten nicht aktiviert werden. Die Microsoft Azure AD-Anwendung in Ihrem Azure AD-Mandanten ist deaktiviert. Aktivieren Sie die Anwendung mit dem Anwendungsbezeichner 00000002-0000-0000-c000-000000000000, und versuchen Sie dann, die Domänendienste für Ihren Azure AD-Mandanten zu aktivieren.* |[Die Microsoft Graph-Anwendung in Ihrem Azure AD-Mandanten ist deaktiviert.](troubleshoot.md#microsoft-graph-disabled) |

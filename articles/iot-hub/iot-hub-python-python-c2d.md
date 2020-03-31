@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
 ms.openlocfilehash: 3613062cf8765a4aec3327b660bb5818898f2dd1
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110417"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Senden von C2D-Nachrichten mit IoT Hub (Python)
@@ -45,7 +45,7 @@ Am Ende dieses Tutorials führen Sie zwei Python-Konsolen-Apps aus:
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
-* Stellen Sie sicher, dass Port 8883 in Ihrer Firewall geöffnet ist. Für das Beispielgerät in diesem Artikel wird das MQTT-Protokoll verwendet, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>Empfangen von Nachrichten in der simulierten Geräte-App
 
@@ -53,7 +53,7 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App zum Simulieren des Ge
 
 1. Erstellen Sie in einem Text-Editor eine Datei namens **SimulatedDevice.py**.
 
-2. Fügen Sie am Anfang der Datei **SimulatedDevice.py** die folgenden `import`-Anweisungen und -Variablen hinzu:
+2. Fügen Sie am Anfang der Datei `import`SimulatedDevice.py**die folgenden**-Anweisungen und -Variablen hinzu:
 
    ```python
     import threading
@@ -124,7 +124,7 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die C2D-Nachrichten 
 
 1. Erstellen Sie in einem Text-Editor eine Datei namens **SendCloudToDeviceMessage.py**.
 
-2. Fügen Sie am Anfang der Datei **SendCloudToDeviceMessage.py** die folgenden `import`-Anweisungen und -Variablen hinzu:
+2. Fügen Sie am Anfang der Datei `import`SendCloudToDeviceMessage.py**die folgenden**-Anweisungen und -Variablen hinzu:
 
     ```python
     import random

@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 9409f14b20684afa1a39d45e663ff316f405cc97
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76717913"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Skalierbare Data Science mit Azure Data Lake: lückenlose exemplarische Vorgehensweise
@@ -53,7 +53,7 @@ In dieser exemplarischen Vorgehensweise werden nur die wichtigsten Schritte besc
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesen Themen beginnen können, benötigen Sie Folgendes:
 
-* Ein Azure-Abonnement. Wenn Sie noch keins besitzen, lesen Sie den Artikel [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)(Gewusst wie: Erhalten einer Azure-Testversion zum Testen von Hadoop in HDInsight).
+* ein Azure-Abonnement Wenn Sie noch keins besitzen, lesen Sie den Artikel [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)(Gewusst wie: Erhalten einer Azure-Testversion zum Testen von Hadoop in HDInsight).
 * [Empfohlen] Visual Studio 2013 oder höher. Falls nicht bereits eine dieser Versionen installiert ist, können Sie von der [Visual Studio Community](https://www.visualstudio.com/vs/community/) eine kostenlose Community-Version herunterladen.
 
 > [!NOTE]
@@ -156,7 +156,7 @@ Zum Ausführen von U-SQL öffnen Sie Visual Studio, klicken auf **Datei--> Neu--
 
 ![9](./media/data-lake-walkthrough/9-portal-submit-job.PNG)
 
-### <a name="ingest"></a>Datenerfassung: Einlesen von Daten aus einem öffentlichen Blob
+### <a name="data-ingestion-read-in-data-from-public-blob"></a><a name="ingest"></a>Datenerfassung: Einlesen von Daten aus öffentlichem Blob
 
 Der Speicherort der Daten im Azure-Blob wird als **wasb://container\_name\@blob\_storage\_account\_name.blob.core.windows.net/blob_name** referenziert und kann mithilfe von **Extractors.Csv()** extrahiert werden. Geben Sie in den folgenden Skripts für „container\_name\@blob\_storage\_account\_name“ in der „wasb“-Adresse Ihren eigenen Container- und Speicherkontonamen ein. Da die Dateinamen das gleiche Format haben, kann **trip\_data\_\{\*\}.csv** verwendet werden, um alle 12 Fahrtendateien einzulesen.
 
@@ -219,7 +219,7 @@ Auf ähnliche Weise können Sie die Datasets mit den Fahrpreisen einlesen. Klick
 
  ![11](./media/data-lake-walkthrough/11-data-in-ADL.PNG)
 
-### <a name="quality"></a>Prüfungen der Datenqualität
+### <a name="data-quality-checks"></a><a name="quality"></a>Prüfungen der Datenqualität
 Nachdem die Tabellen mit Fahrten und Trinkgeldern eingelesen wurden, können Prüfungen der Datenqualität auf folgende Weise erfolgen. Die resultierenden CSV-Dateien können in Azure Blob Storage oder Azure Data Lake Storage ausgegeben werden.
 
 Suchen Sie die Anzahl der Taxinummern („Medallions“) und eindeutige Anzahl von Taxinummern:
@@ -291,7 +291,7 @@ Suchen Sie fehlende Werte für einige Variablen:
 
 
 
-### <a name="explore"></a>Datenuntersuchung
+### <a name="data-exploration"></a><a name="explore"></a>Datenuntersuchung
 Untersuchen Sie mithilfe der folgenden Skripts die Daten, um sie besser zu verstehen.
 
 Suchen Sie die Verteilung von Fahrten mit und ohne Trinkgeld:
@@ -311,7 +311,7 @@ Suchen Sie die Verteilung von Fahrten mit und ohne Trinkgeld:
     TO "wasb://container_name@blob_storage_account_name.blob.core.windows.net/demo_ex_4.csv"
     USING Outputters.Csv();
 
-Suchen Sie die Verteilung des Trinkgeldbetrags mithilfe der Bezugswerte: 0, 5, 10 und 20 USD.
+Suchen Sie die Verteilung des Trinkgeldbetrags mithilfe der Bezugswerte 0, 5, 10 und 20 Dollar.
 
     //tip class/range distribution
     @tip_class =
@@ -358,7 +358,7 @@ Suchen Sie die Quantile für die Fahrtstrecke:
     USING Outputters.Csv();
 
 
-### <a name="join"></a>Verknüpfen der Tabellen mit Fahrten und Trinkgeldern
+### <a name="join-trip-and-fare-tables"></a><a name="join"></a>Verknüpfen der Tabellen mit Fahrten und Trinkgeldern
 Die Tabellen „trip“ und „fare“ können anhand von „medallion“, „hack_license“ und „pickup_time“ verbunden werden.
 
     //join trip and fare table
@@ -400,7 +400,7 @@ Berechnen Sie für jede Ebene der Anzahl der Fahrgäste die Anzahl der Datensät
     USING Outputters.Csv();
 
 
-### <a name="sample"></a>Ziehen von Datenstichproben
+### <a name="data-sampling"></a><a name="sample"></a>Ziehen von Datenstichproben
 Wählen Sie zunächst nach dem Zufallsprinzip 0,1 % der Daten aus der verknüpften Tabelle aus:
 
     //random select 1/1000 data for modeling purpose
@@ -440,7 +440,7 @@ Erstellen Sie dann anhand der binären Variablen „tip_class“ geschichtete St
     USING Outputters.Csv();
 
 
-### <a name="run"></a>Ausführen von U-SQL-Aufträgen
+### <a name="run-u-sql-jobs"></a><a name="run"></a>Ausführen von U-SQL-Aufträgen
 Wenn Sie mit der Bearbeitung von U-SQL-Skripts fertig sind, können Sie sie mithilfe Ihres Azure Data Lake Analytics-Kontos an den Server übermitteln. Klicken Sie auf **Data Lake**, **Auftrag übermitteln**, wählen Sie Ihr **Analytics-Konto** und dann **Parallelität** aus, und klicken Sie auf die Schaltfläche **Übermitteln**.
 
  ![12](./media/data-lake-walkthrough/12-submit-USQL.PNG)
@@ -607,7 +607,7 @@ Nachdem das Machine Learning-Modell erstellt wurde, sollten Sie es in Betrieb ne
 Azure Machine Learning Studio (Classic) kann Daten direkt aus Azure Data Lake Storage einlesen und dann zum Erstellen und Bereitstellen von Modellen verwendet werden. Bei diesem Ansatz verweist eine Hive-Tabelle auf Azure Data Lake Storage. Für die Hive-Tabelle muss ein separater Azure HDInsight-Cluster bereitgestellt werden. 
 
 ### <a name="create-an-hdinsight-linux-cluster"></a>Erstellen eines HDInsight Linux-Clusters
-Erstellen Sie im [Azure-Portal](https://portal.azure.com) einen HDInsight-Cluster (Linux). Ausführliche Informationen finden Sie unter [Erstellen von HDInsight-Clustern mit Azure Data Lake Storage Gen1 mithilfe des Azure-Portals](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md) im Abschnitt **Erstellen eines HDInsight-Clusters mit Zugriff auf Azure Data Lake Storage**.
+Erstellen Sie im [Azure-Portal](https://portal.azure.com) einen HDInsight-Cluster (Linux). Ausführliche Informationen finden Sie unter **Erstellen von HDInsight-Clustern mit Azure Data Lake Storage Gen1 mithilfe des Azure-Portals** im Abschnitt [Erstellen eines HDInsight-Clusters mit Zugriff auf Azure Data Lake Storage](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
 
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 

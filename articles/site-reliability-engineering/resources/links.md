@@ -7,12 +7,12 @@ ms.service: site-reliability-engineering
 ms.topic: article
 ms.date: 02/18/2020
 ms.author: dnb
-ms.openlocfilehash: be6e00ba0d20d11f75954d3b9c6b056160a5016b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: a891b580b5cb62d111e5d8a6980f4f547345deb6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599543"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471250"
 ---
 # <a name="sources-for-site-reliability-engineering-information"></a>Quellen für Informationen zum Websitezuverlässigkeits-Engineering
 
@@ -23,7 +23,7 @@ Es gibt sehr viele Quellen für Informationen zum Websitezuverlässigkeits-Engin
 Hier finden Sie einige sorgfältig zusammengestellte Linklisten zu SRE und SRE-bezogenen Themen:
 
 * [Großartiges Websitezuverlässigkeits-Engineering](https://github.com/dastergon/awesome-sre)
-* [Großartige Tools für Websitezuverlässigkeits-Engineering](https://github.com/squadcastHQ/awesome-sre-tools)
+* [Großartige Tools für Websitezuverlässigkeits-Engineering](https://github.com/SquadcastHub/awesome-sre-tools)
 * [Muster der skalierbaren, zuverlässigen und leistungsstarken umfangreichen Systeme](http://awesome-scalability.com)
 * [Großartig verteilte Systeme](https://github.com/theanalyst/awesome-distributed-systems)
 * [Großartiger Geschäftswert](https://github.com/dgryski/awesome-consensus)

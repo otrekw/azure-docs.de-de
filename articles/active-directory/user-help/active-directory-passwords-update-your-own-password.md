@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: curtand
 ms.openlocfilehash: 3ed79be318319009aabb1b1ef0c42c4021bbbabe
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062658"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Zurücksetzen des Kennworts für Ihr Geschäfts-, Schul- oder Unikonto mithilfe von Sicherheitsinformationen
@@ -155,7 +155,7 @@ Wenn Ihr Administrator diese Funktion aktiviert hat, sehen Sie auf dem Anmeldebi
 
 Hier finden Sie einige häufige Fehler und die passenden Lösungen:
 
-|Problem|Beschreibung|Lösung|
+|Problem|BESCHREIBUNG|Lösung|
 | --- | --- | --- |
 |Beim Versuch, mein Kennwort zu ändern, tritt ein Fehler auf. |Ihr Kennwort ist aufgrund eines enthaltenen Worts, Ausdrucks oder Musters leider leicht zu erraten.| Verwenden Sie ein sichereres Kennwort, und versuchen Sie es noch mal.|
 |Nachdem ich meine Benutzer-ID eingegeben habe, gelange ich auf eine Seite, die mich auffordert, mich an den Administrator zu wenden.|Microsoft hat festgestellt, dass das Kennwort Ihres Benutzerkontos von Ihrem Administrator in einer lokalen Umgebung verwaltet wird. Sie können Ihr Kennwort daher nicht über den Link „Zugriff auf Ihr Konto nicht möglich“ zurücksetzen. |Wenden Sie sich an den Administrator, um Hilfe zu erhalten.|

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: f9dfcb930e3fe4f862f9f51ff00270d0eb0c66ca
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77539109"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>Szenario: Veraltete Apache Ambari-Warnungen in Azure HDInsight
@@ -82,7 +82,7 @@ Falls Ihr Problem hier nicht erwähnt wurde oder Sie es nicht lösen konnten, be
 
 * Nutzen Sie den [Azure-Communitysupport](https://azure.microsoft.com/support/community/), um Antworten von Azure-Experten zu erhalten.
 
-* Nutzen Sie [@AzureSupport](https://twitter.com/azuresupport) auf Twitter. Dies ist das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit. Hierüber hat die Azure-Community Zugriff auf die richtigen Ressourcen: Antworten, Support und Experten.
+* Nutzen Sie [@AzureSupport](https://twitter.com/azuresupport) auf Twitter. das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit. Hierüber hat die Azure-Community Zugriff auf die richtigen Ressourcen: Antworten, Support und Experten.
 
 * Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie hierzu im Menü des Portals die Hilfeoption ( **?** ) aus, oder öffnen Sie den Bereich **Hilfe und Support**. Weitere Informationen finden Sie unter [Gewusst wie: Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). 
 

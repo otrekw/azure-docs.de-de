@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
 ms.openlocfilehash: 199b4fc762919c2e3988f477c14d09fc23b0136b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840688"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Einführung in die Problembehandlung bei Ressourcen in Azure Network Watcher
@@ -73,7 +73,7 @@ Die folgenden Tabellen enthalten die verschiedenen verfügbaren Fehlertypen (ID 
 | ConnectionIsMarkedDisconnected | Die Verbindung ist als „getrennt“ gekennzeichnet. |Nein|
 | ConnectionNotConfiguredOnGateway | Für den zugrunde liegenden Dienst wurde die Verbindung nicht konfiguriert. | Ja |
 | ConnectionMarkedStandby | Der zugrunde liegende Dienst ist als im Ruhezustand gekennzeichnet.| Ja|
-| Authentifizierung | Der vorinstallierte Schlüssel stimmt nicht überein. | Ja|
+| Authentication | Der vorinstallierte Schlüssel stimmt nicht überein. | Ja|
 | PeerReachability | Das Peergateway ist nicht erreichbar. | Ja|
 | IkePolicyMismatch | Das Peergateway verfügt über IKE-Richtlinien, die von Azure nicht unterstützt werden. | Ja|
 | WfpParse Error | Beim Analysieren des WFP-Protokolls ist ein Fehler aufgetreten. |Ja|
@@ -105,7 +105,7 @@ Nach Abschluss der Problembehandlung werden die Protokolldateien zur Ressourcenp
 > [!NOTE]
 > In einigen Fällen wird nur eine Teilmenge der Protokolldateien in den Speicher geschrieben.
 
-Anweisungen zum Herunterladen von Dateien von Azure-Speicherkonten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Ein weiteres Tool, das verwendet werden kann, ist der Storage-Explorer. Weitere Informationen zum Storage-Explorer finden Sie unter dem folgenden Link: [Storage-Explorer](https://storageexplorer.com/)
+Anweisungen zum Herunterladen von Dateien von Azure-Speicherkonten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Ein weiteres Tool, das verwendet werden kann, ist der Storage-Explorer. Weitere Informationen zum Storage-Explorer finden Sie unter [Storage-Explorer](https://storageexplorer.com/).
 
 ### <a name="connectionstatstxt"></a>ConnectionStats.txt
 

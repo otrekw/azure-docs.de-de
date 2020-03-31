@@ -8,10 +8,10 @@ ms.date: 09/04/2019
 ms.author: bharathb
 ms.reviewer: sngun
 ms.openlocfilehash: d225a14edddcad58c08094dbc758d67df8f834e6
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70376483"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Erstellen eines Echtzeitdashboards mit Azure Cosmos DB und Power BI
@@ -23,7 +23,7 @@ In diesem Artikel werden die Schritte beschrieben, die zum Erstellen eines Lived
 Es gibt mehrere Möglichkeiten, Berichtdashboards für in Azure Cosmos DB gespeicherte Daten einzurichten. Je nach Veraltungsanforderungen und Datenmenge wird in der folgenden Tabelle das Berichterstellungssetup für die einzelnen Szenarien beschrieben:
 
 
-|Szenario |Einrichtung |
+|Szenario |Einrichten |
 |---------|---------|
 |1. Generieren von Ad-hoc-Berichten (keine Aktualisierung)    |  [Power BI-Connector für Azure Cosmos DB mit Importmodus](powerbi-visualize.md)       |
 |2. Generieren von Ad-hoc-Berichten mit regelmäßiger Aktualisierung   |  [Power BI-Connector für Azure Cosmos DB mit Importmodus (regelmäßige Aktualisierung gemäß Zeitplan)](powerbi-visualize.md)       |
@@ -68,11 +68,11 @@ Richten Sie eine Erfassungspipeline zum Laden von [Wetterdaten](https://catalog.
    Abhängig davon, welcher Spalten- und welcher Datentyp im Quelldataset vorhanden sind, können Sie die Felder „RangeStart“ und „RangeEnd“ entsprechend ändern.
 
    
-   |Eigenschaft  |Datentyp  |Filter  |
+   |Eigenschaft  |Datentyp  |Filtern  |
    |---------|---------|---------|
    |_ts     |   Numeric      |  [_ts] > Duration.TotalSeconds(RangeStart - #datetime(1970, 1, 1, 0, 0, 0)) and [_ts] < Duration.TotalSeconds(RangeEnd - #datetime(1970, 1, 1, 0, 0, 0)))       |
-   |Datum (Beispiel: 2019-08-19)     |   Zeichenfolge      | [Document.date]> DateTime.ToText(RangeStart,"yyyy-MM-dd") and [Document.date] < DateTime.ToText(RangeEnd,"yyyy-MM-dd")        |
-   |Datum (Beispiel: 2019-08-11 12:00:00)   |  Zeichenfolge       |  [Document.date]> DateTime.ToText(RangeStart," yyyy-mm-dd HH:mm:ss") and [Document.date] < DateTime.ToText(RangeEnd,"yyyy-mm-dd HH:mm:ss")       |
+   |Datum (Beispiel: 2019-08-19)     |   String      | [Document.date]> DateTime.ToText(RangeStart,"yyyy-MM-dd") and [Document.date] < DateTime.ToText(RangeEnd,"yyyy-MM-dd")        |
+   |Datum (Beispiel: 2019-08-11 12:00:00)   |  String       |  [Document.date]> DateTime.ToText(RangeStart," yyyy-mm-dd HH:mm:ss") and [Document.date] < DateTime.ToText(RangeEnd,"yyyy-mm-dd HH:mm:ss")       |
 
 
 1. **Definieren der Aktualisierungsrichtlinie**: Definieren Sie die Aktualisierungsrichtlinie, indem Sie im **Kontextmenü** für die Tabelle zur Registerkarte **Inkrementelle Aktualisierung** navigieren. Legen Sie die Aktualisierungsrichtlinie auf die **tägliche Aktualisierung** fest, und speichern Sie die Daten des letzten Monats.

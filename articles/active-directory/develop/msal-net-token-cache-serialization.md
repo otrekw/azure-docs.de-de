@@ -14,11 +14,11 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 1bd348ad27d892d0421b13c16ce81bc4f5dfb021
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695125"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230646"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Serialisierung des Tokencaches in MSAL.NET
 Nachdem ein [Token abgerufen wurde](msal-acquire-cache-tokens.md), wird es von der Microsoft-Authentifizierungsbibliothek (MSAL) zwischengespeichert.  Der Anwendungscode sollte zunächst versuchen, ein Token aus dem Cache abzurufen, bevor andere Methoden angewendet werden.  Dieser Artikel beschreibt die standardmäßige und benutzerdefinierte Serialisierung des Tokencaches in MSAL.NET.
@@ -278,7 +278,7 @@ Beispiele zur Verwendung von Tokencaches für Web-Apps und Web-APIs finden Sie i
 ## <a name="next-steps"></a>Nächste Schritte
 Die folgenden Beispiele veranschaulichen die Serialisierung des Tokencaches.
 
-| Beispiel | Plattform | Beschreibung|
+| Beispiel | Plattform | BESCHREIBUNG|
 | ------ | -------- | ----------- |
 |[active-directory-dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | Desktop (WPF) | Windows Desktop .NET (WPF)-Anwendung, die die Microsoft Graph-API aufruft ![Topologie](media/msal-net-token-cache-serialization/topology.png)|
 |[active-directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | Desktop (Konsole) | Mehrere Visual Studio-Projektmappen, die die Migration von Azure AD v1.0-Anwendungen (mit ADAL.NET) zu Azure AD v2.0-Anwendungen bzw. konvergenten Anwendungen (mit MSAL.NET) veranschaulichen, in einer besonderen [Migration des Tokencaches](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|

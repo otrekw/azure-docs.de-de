@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: 106b1f0b765700803d2cd55b5e049fae5be3dfad
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76850541"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Lokales Debuggen von Azure Stream Analytics-Abfragen mithilfe eines Auftragsdiagramms in Visual Studio
@@ -52,7 +52,7 @@ In diesem Abschnitt untersuchen Sie die für die einzelnen Teile des Diagramms v
 
 ![Liveeingabequellen für das Auftragsdiagramm](./media/debug-locally-using-job-diagram/live-input.png)
 
-|Metrik|Beschreibung|
+|Metrik|BESCHREIBUNG|
 |-|-|
 |**TaxiRide**| Der Name der Eingabe.|
 |**Event Hub** | Eingabequellentyp.|
@@ -68,7 +68,7 @@ In diesem Abschnitt untersuchen Sie die für die einzelnen Teile des Diagramms v
 
 ![Lokale Eingabequellen des Auftragsdiagramms](./media/debug-locally-using-job-diagram/local-input.png)
 
-|Metrik|Beschreibung|
+|Metrik|BESCHREIBUNG|
 |-|-|
 |**TaxiRide**| Der Name der Eingabe.|
 |**Zeilenanzahl**| Die Anzahl der aus diesem Schritt generierten Zeilen.|
@@ -79,7 +79,7 @@ In diesem Abschnitt untersuchen Sie die für die einzelnen Teile des Diagramms v
 
 ![Abfrageschritt im Auftragsdiagramm](./media/debug-locally-using-job-diagram/query-step.png)
 
-|Metrik|Beschreibung|
+|Metrik|BESCHREIBUNG|
 |-|-|
 |**TripData**|Der Name des temporären Resultsets.|
 |**Zeilenanzahl**| Die Anzahl der aus diesem Schritt generierten Zeilen.|
@@ -89,7 +89,7 @@ In diesem Abschnitt untersuchen Sie die für die einzelnen Teile des Diagramms v
 
 ![Lokale Ausgabesenken des Auftragsdiagramms](./media/debug-locally-using-job-diagram/live-output.png)
 
-|Metrik|Beschreibung|
+|Metrik|BESCHREIBUNG|
 |-|-|
 |**regionaggEH**|Der Name der Ausgabe.|
 |**Ereignisse**|Die Anzahl der an Senken ausgegebenen Ereignisse.|
@@ -98,7 +98,7 @@ In diesem Abschnitt untersuchen Sie die für die einzelnen Teile des Diagramms v
 
 ![Lokale Ausgabesenken des Auftragsdiagramms](./media/debug-locally-using-job-diagram/local-output.png)
 
-|Metrik|Beschreibung|
+|Metrik|BESCHREIBUNG|
 |-|-|
 |**regionaggEH**|Der Name der Ausgabe.|
 |**Lokale Ausgabe**| Ergebnisausgabe in eine lokale Datei.|

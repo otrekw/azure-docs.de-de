@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
 ms.openlocfilehash: ad1fcb67704e79f5aef62a59604e47f477804405
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68385717"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT-Remoteüberwachung und -Benachrichtigungen mit Azure Logic Apps zum Herstellen einer Verbindung zwischen Ihrem IoT Hub und Postfach

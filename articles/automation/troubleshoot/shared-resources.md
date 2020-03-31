@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.openlocfilehash: 4cea558b11d7ee7bbe838cecbd061cd487b536d2
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769862"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235422"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>Beheben von Fehlern bei freigegebenen Ressourcen
 
@@ -21,7 +21,7 @@ In diesem Artikel werden Lösungen zum Beheben von Problemen beschrieben, die be
 
 ## <a name="modules"></a>Module
 
-### <a name="module-stuck-importing"></a>Szenario: Ein Modul bleibt beim Import hängen
+### <a name="scenario-a-module-is-stuck-importing"></a><a name="module-stuck-importing"></a>Szenario: Ein Modul bleibt beim Import hängen
 
 #### <a name="issue"></a>Problem
 
@@ -39,7 +39,7 @@ Um dieses Problem zu beheben, müssen Sie das Modul, das im Zustand **Importiere
 Remove-AzureRmAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
 ```
 
-### <a name="update-azure-modules-importing"></a>Szenario: AzureRM-Module sind beim Versuch der Aktualisierung während des Importierens hängen geblieben.
+### <a name="scenario-azurerm-modules-are-stuck-importing-after-trying-to-update-them"></a><a name="update-azure-modules-importing"></a>Szenario: AzureRM-Module sind beim Versuch der Aktualisierung während des Importierens hängen geblieben.
 
 #### <a name="issue"></a>Problem
 
@@ -57,7 +57,7 @@ Beim Aktualisieren der AzureRM-Module in einem Automation-Konto tritt in Ressour
 
 Um die Azure-Module in Ihrem Automation-Konto zu aktualisieren, müssen sich die Module in einer Ressourcengruppe mit einem alphanumerischen Namen befinden. Ressourcengruppen, deren numerischer Name mit 0 beginnt, können zurzeit keine AzureRM-Module aktualisieren.
 
-### <a name="module-fails-to-import"></a>Szenario: Fehler beim Modulimport oder Ausführung von Cmdlets nach Import nicht möglich
+### <a name="scenario-module-fails-to-import-or-cmdlets-cant-be-executed-after-importing"></a><a name="module-fails-to-import"></a>Szenario: Fehler beim Modulimport oder Ausführung von Cmdlets nach Import nicht möglich
 
 #### <a name="issue"></a>Problem
 
@@ -80,7 +80,7 @@ Sie können dieses Problem mit jeder der folgenden Lösungen beheben:
 * Öffnen Sie die PSD1-Datei, und prüfen Sie, ob für das Modul Abhängigkeiten bestehen. Wenn ja, laden Sie diese Module in das Automation-Konto hoch.
 * Stellen Sie sicher, dass alle referenzierten DLLs im Modulordner vorhanden sind.
 
-### <a name="all-modules-suspended"></a>Szenario: Update-AzureModule.ps1 wird beim Aktualisieren der Module angehalten.
+### <a name="scenario-update-azuremoduleps1-suspends-when-updating-modules"></a><a name="all-modules-suspended"></a>Szenario: Update-AzureModule.ps1 wird beim Aktualisieren der Module angehalten.
 
 #### <a name="issue"></a>Problem
 
@@ -118,7 +118,7 @@ Wenn der Updatevorgang angehalten wird, müssen Sie den `SimultaneousModuleImpor
 
 ## <a name="run-as-accounts"></a>Ausführende Konten
 
-### <a name="unable-create-update"></a>Szenario: Ausführendes Konto kann nicht erstellt oder aktualisiert werden
+### <a name="scenario-youre-unable-to-create-or-update-a-run-as-account"></a><a name="unable-create-update"></a>Szenario: Ausführendes Konto kann nicht erstellt oder aktualisiert werden
 
 #### <a name="issue"></a>Problem
 
@@ -138,7 +138,7 @@ Um ein ausführendes Konto zu erstellen oder zu aktualisieren, müssen Sie über
 
 Wenn das Problem durch eine Sperre verursacht wird, überprüfen Sie, ob die Sperre entfernt werden kann. Navigieren Sie zur gesperrten Ressource, klicken Sie mit der rechten Maustaste auf das Schlosssymbol, und klicken Sie auf **Löschen**, um die Sperre zu entfernen.
 
-### <a name="iphelper"></a>Szenario: Sie erhalten beim Ausführen eines Runbooks den Fehler „Der Einstiegspunkt 'GetPerAdapterInfo' wurde nicht in der DLL 'iplpapi.dll' gefunden“.
+### <a name="scenario-you-receive-the-error-unable-to-find-an-entry-point-named-getperadapterinfo-in-dll-iplpapidll-when-executing-a-runbook"></a><a name="iphelper"></a>Szenario: Sie erhalten beim Ausführen eines Runbooks den Fehler „Der Einstiegspunkt 'GetPerAdapterInfo' wurde nicht in der DLL 'iplpapi.dll' gefunden“.
 
 #### <a name="issue"></a>Problem
 

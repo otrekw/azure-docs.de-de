@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.openlocfilehash: 15a2c75a7619a815655be0fd9fd3044d86acd057
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150115"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233650"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Verwenden von Apache Ambari zum Optimieren von HDInsight-Clusterkonfigurationen
 
@@ -123,9 +123,9 @@ Mit dem Parameter `hive.exec.reducers.bytes.per.reducer` wird die Anzahl von Byt
 
 Eine Hive-Abfrage wird in einer oder mehreren Stufen ausgeführt. Wenn die unabhängigen Stufen parallel ausgeführt werden können, wird die Abfrageleistung verbessert.
 
-1. Navigieren Sie zum Aktivieren der parallelen Abfragenausführung zur Hive-Registerkarte **Configs** (Konfigurationen), und suchen Sie nach der Eigenschaft `hive.exec.parallel`. Der Standardwert ist „false“. Ändern Sie den Wert in „true“, und drücken Sie anschließend die **EINGABETASTE**, um den Wert zu speichern.
+1. Navigieren Sie zum Aktivieren der parallelen Abfragenausführung zur Hive-Registerkarte **Configs** (Konfigurationen), und suchen Sie nach der Eigenschaft `hive.exec.parallel`. Der Standardwert ist „FALSE“. Ändern Sie den Wert in „true“, und drücken Sie anschließend die **EINGABETASTE**, um den Wert zu speichern.
 
-1. Ändern Sie die Eigenschaft `hive.exec.parallel.thread.number`, um die Anzahl von Aufträgen zu begrenzen, die parallel ausgeführt werden. Der Standardwert lautet 8.
+1. Ändern Sie die Eigenschaft `hive.exec.parallel.thread.number`, um die Anzahl von Aufträgen zu begrenzen, die parallel ausgeführt werden. Der Standardwert ist 8.
 
     ![Apache Hive-Anzeige für parallele Ausführung](./media/hdinsight-changing-configs-via-ambari/apache-hive-exec-parallel.png)
 
@@ -135,7 +135,7 @@ Hive verarbeitet Daten zeilenweise. Bei der Vektorisierung wird Hive angewiesen,
 
 1. Navigieren Sie zum Aktivieren einer vektorisierten Abfrageausführung zur Hive-Registerkarte **Configs** (Konfigurationen), und suchen Sie nach dem Parameter `hive.vectorized.execution.enabled`. Der Standardwert lautet für Hive 0.13.0 oder höher „true“.
 
-1. Legen Sie den Parameter `hive.vectorized.execution.reduce.enabled` auf „true“ fest, um die vektorisierte Ausführung für die Reducerseite der Abfrage zu aktivieren. Der Standardwert ist „false“.
+1. Legen Sie den Parameter `hive.vectorized.execution.reduce.enabled` auf „true“ fest, um die vektorisierte Ausführung für die Reducerseite der Abfrage zu aktivieren. Der Standardwert ist „FALSE“.
 
     ![Apache Hive – Vektorisierte Ausführung](./media/hdinsight-changing-configs-via-ambari/hive-vectorized-execution.png)
 
@@ -184,7 +184,7 @@ Die verfügbaren Komprimierungstypen sind:
 
 Hier gilt die folgende allgemeine Regel: Es ist wichtig, dass die Komprimierungsmethode teilbar ist, da andernfalls nur sehr wenige Mapper erstellt werden. Wenn es sich bei den Eingabedaten um Text handelt, ist `bzip2` die beste Option. Für das ORC-Format ist Snappy die schnellste Komprimierungsoption.
 
-1. Navigieren Sie zum Aktivieren der Zwischenkomprimierung zur Hive-Registerkarte **Configs** (Konfigurationen), und legen Sie den Parameter `hive.exec.compress.intermediate` auf „true“ fest. Der Standardwert ist „false“.
+1. Navigieren Sie zum Aktivieren der Zwischenkomprimierung zur Hive-Registerkarte **Configs** (Konfigurationen), und legen Sie den Parameter `hive.exec.compress.intermediate` auf „true“ fest. Der Standardwert ist „FALSE“.
 
     ![Hive-Ausführung – Zwischenkomprimierung](./media/hdinsight-changing-configs-via-ambari/hive-exec-compress-intermediate.png)
 
@@ -214,7 +214,7 @@ Hier gilt die folgende allgemeine Regel: Es ist wichtig, dass die Komprimierungs
 
 Die endgültige Hive-Ausgabe kann auch komprimiert werden.
 
-1. Navigieren Sie zum Komprimieren der endgültigen Hive-Ausgabe zur Hive-Registerkarte **Configs** (Konfigurationen), und legen Sie den Parameter `hive.exec.compress.output` auf „true“ fest. Der Standardwert ist „false“.
+1. Navigieren Sie zum Komprimieren der endgültigen Hive-Ausgabe zur Hive-Registerkarte **Configs** (Konfigurationen), und legen Sie den Parameter `hive.exec.compress.output` auf „true“ fest. Der Standardwert ist „FALSE“.
 
 1. Fügen Sie zum Auswählen des Codecs für die Ausgabekomprimierung die benutzerdefinierte Eigenschaft `mapred.output.compression.codec` dem Bereich „Custom hive-site“ (Benutzerdefinierte Hive-Site) hinzu, wie in Schritt 3 des vorherigen Abschnitts beschrieben.
 
@@ -226,7 +226,7 @@ Bei der spekulativen Ausführung wird eine bestimmte Anzahl von doppelten Tasks 
 
 Die spekulative Ausführung sollte für MapReduce-Aufträge mit großen Eingabemengen und langer Ausführungsdauer nicht aktiviert werden.
 
-* Navigieren Sie zum Aktivieren der spekulativen Ausführung zur Hive-Registerkarte **Configs** (Konfigurationen), und legen Sie den Parameter `hive.mapred.reduce.tasks.speculative.execution` auf „true“ fest. Der Standardwert ist „false“.
+* Navigieren Sie zum Aktivieren der spekulativen Ausführung zur Hive-Registerkarte **Configs** (Konfigurationen), und legen Sie den Parameter `hive.mapred.reduce.tasks.speculative.execution` auf „true“ fest. Der Standardwert ist „FALSE“.
 
     ![Hive-mapred-Reduce-Tasks – Spekulative Ausführung](./media/hdinsight-changing-configs-via-ambari/hive-mapred-reduce-tasks-speculative-execution.png)
 
@@ -311,7 +311,7 @@ Zwei Ausführungsmodule sind für die Ausführung von Pig-Skripts verfügbar: Ma
 
 Ähnlich wie in Hive wird der lokale Modus verwendet, um Aufträge mit relativ kleiner Datenmenge zu beschleunigen.
 
-1. Legen Sie zum Aktivieren des lokalen Modus `pig.auto.local.enabled` auf **true** fest. Der Standardwert ist „false“.
+1. Legen Sie zum Aktivieren des lokalen Modus `pig.auto.local.enabled` auf **true** fest. Der Standardwert ist „FALSE“.
 
 1. Aufträge mit einer Eingabedatengröße unter dem Wert der Eigenschaft `pig.auto.local.input.maxbytes` werden als kleine Aufträge angesehen. Der Standardwert ist 1 GB.
 
@@ -335,13 +335,13 @@ Die folgenden Einstellungen für den Arbeitsspeicher können zur Optimierung der
 
 Pig generiert während der Auftragsausführung temporäre Dateien. Das Komprimieren der temporären Dateien führt zu einer Leistungsverbesserung beim Lesen oder Schreiben von Dateien auf Datenträger. Die folgenden Einstellungen können verwendet werden, um temporäre Dateien zu komprimieren.
 
-* `pig.tmpfilecompression`: Bei der Einstellung „true“ wird die Komprimierung von temporären Dateien aktiviert. Der Standardwert ist „false“.
+* `pig.tmpfilecompression`: Bei der Einstellung „true“ wird die Komprimierung von temporären Dateien aktiviert. Der Standardwert ist „FALSE“.
 
 * `pig.tmpfilecompression.codec`: Der Komprimierungscodec zum Komprimieren der temporären Dateien. Die empfohlenen Komprimierungscodecs für eine geringe CPU-Auslastung sind [LZO](https://www.oberhumer.com/opensource/lzo/) und Snappy.
 
 ### <a name="enable-split-combining"></a>Aktivieren von kombinierten Teilungen
 
-Wenn diese Einstellung aktiviert ist, werden kleinere Dateien kombiniert, um weniger Zuordnungsaufgaben zu erhalten. Dies verbessert die Effizienz von Aufträgen mit vielen kleinen Dateien. Legen Sie `pig.noSplitCombination` auf „true“ fest, um dies zu aktivieren. Der Standardwert ist „false“.
+Wenn diese Einstellung aktiviert ist, werden kleinere Dateien kombiniert, um weniger Zuordnungsaufgaben zu erhalten. Dies verbessert die Effizienz von Aufträgen mit vielen kleinen Dateien. Legen Sie `pig.noSplitCombination` auf „true“ fest, um dies zu aktivieren. Der Standardwert ist „FALSE“.
 
 ### <a name="tune-mappers"></a>Optimieren von Zuordnungen
 

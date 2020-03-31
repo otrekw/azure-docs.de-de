@@ -9,10 +9,10 @@ ms.date: 08/16/2018
 ms.author: clemensv
 ms.custom: include file
 ms.openlocfilehash: 2684f89088854ecf05c547c77852155168baa38d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67178326"
 ---
 ### <a name="create-a-console-application"></a>Erstellen einer Konsolenanwendung
@@ -47,7 +47,7 @@ Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Fr
     private const string KeyName = "{SASKeyName}";
     private const string Key = "{SASKey}";
     ```
-3. Fügen Sie der Klasse `Program` die Methode `ProcessMessagesOnConnection` hinzu:
+3. Fügen Sie der Klasse `ProcessMessagesOnConnection` die Methode `Program` hinzu:
    
     ```csharp
     // The method initiates the connection.
@@ -98,7 +98,7 @@ Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Fr
         await relayConnection.CloseAsync(cts.Token);
     }
     ```
-4. Fügen Sie der Klasse `Program` die Methode `RunAsync` hinzu:
+4. Fügen Sie der Klasse `RunAsync` die Methode `Program` hinzu:
    
     ```csharp
     private static async Task RunAsync()

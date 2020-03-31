@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 0530e665fb4efa94aacdd21e81c6cc88da6da03d
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 1a391a7a061d1382b5e07b45625c44fc0f5dec54
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168797"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79204459"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>Erstellen und Freigeben eines (klassischen) Azure Machine Learning Studio-Arbeitsbereichs
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Um Azure Machine Learning Studio (klassisch) verwenden zu können, benötigen Sie einen (klassischen) Machine Learning Studio-Arbeitsbereich. Dieser Arbeitsbereich enthält die Tools, die zum Erstellen, Verwalten und Veröffentlichen von Experimenten erforderlich sind.
 

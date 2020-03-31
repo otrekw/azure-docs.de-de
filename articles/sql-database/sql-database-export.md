@@ -4,19 +4,17 @@ description: Exportieren einer Azure SQL-Datenbank in eine BACPAC-Datei mithilfe
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
-ms.custom: ''
-ms.devlang: ''
-ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: b96d2e69b757774afe177341caffe2f3cbf00e2b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.topic: conceptual
+ms.openlocfilehash: 0bc72f0ad58829a3ff6545b5c4741ddc20916c31
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823453"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061626"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Exportieren einer Azure SQL-Datenbank in eine BACPAC-Datei
 

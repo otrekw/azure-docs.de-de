@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
 ms.openlocfilehash: 3d5ecaf67dcff182c7dace474b7bda45cdfd5c58
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969320"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>DNS-Namensauflösungsoptionen für virtuelle Linux-Computer in Azure
@@ -79,7 +79,7 @@ Verschiedene DNS-Cachingpakete, z.B. dnsmasq, stehen zur Verfügung. Es folgen d
 5. Starten Sie den Netzwerkdienst neu („service network restart“), um den Cache als lokale DNS-Auflösung festzulegen.
 
 > [!NOTE]
-> decodiert werden: Das dnsmasq-Paket ist nur einer der vielen DNS-Caches, die für Linux verfügbar sind. Bevor Sie es nutzen, überprüfen Sie die Eignung für Ihre Anforderungen und außerdem, ob kein anderer Cache installiert ist.
+> Das dnsmasq-Paket ist nur einer der vielen DNS-Caches, die für Linux verfügbar sind. Bevor Sie es nutzen, überprüfen Sie die Eignung für Ihre Anforderungen und außerdem, ob kein anderer Cache installiert ist.
 >
 >
 

@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: bfbae282f9c383c19aae84a70dfc53f754bd9367
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77592610"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Erste Schnitte mit dem Azure WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
@@ -271,7 +271,7 @@ In diesem Abschnitt wird das Projekt lokal erstellt und ausgeführt, und die Fun
 
 1. Führen Sie das Projekt erneut aus.
 
-   Weil Sie in der `ProcessQueueMessage`-Funktion das `QueueTrigger`-Attribut verwendet haben, überwacht die Runtime des WeJobs SDK Warteschlangennachrichten beim Starten. Sie findet in der Warteschlange mit dem Namen *queue* eine neue Warteschlangennachricht und ruft die Funktion auf.
+   Weil Sie in der `QueueTrigger`-Funktion das `ProcessQueueMessage`-Attribut verwendet haben, überwacht die Runtime des WeJobs SDK Warteschlangennachrichten beim Starten. Sie findet in der Warteschlange mit dem Namen *queue* eine neue Warteschlangennachricht und ruft die Funktion auf.
 
    Aufgrund des [exponentiellen Backoffs des Warteschlangenabrufs](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm) kann es bis zu zwei Minuten dauern, bis die Runtime die Nachricht findet und die Funktion aufruft. Diese Wartezeit kann durch die Ausführung im [Entwicklungsmodus](webjobs-sdk-how-to.md#host-development-settings) verkürzt werden.
 
@@ -421,7 +421,7 @@ In diesem Abschnitt führen Sie das Projekt erneut lokal aus, um zu überprüfen
 
 1. Schließen Sie das Konsolenfenster.
 
-## <a name="deploy-as-a-webjob"></a>Bereitstellen in Azure
+## <a name="deploy-to-azure"></a><a name="deploy-as-a-webjob"></a>Bereitstellen in Azure
 
 Während der Bereitstellung erstellen Sie eine App Service-Instanz, in der Ihre Funktionen ausgeführt werden. Wenn Sie eine .NET Core-Konsolenanwendung in App Service in Azure veröffentlichen, wird diese automatisch als WebJob ausgeführt. Weitere Informationen zum Veröffentlichen finden Sie unter [Entwickeln und Bereitstellen von WebJobs mit Visual Studio – Azure App Service](webjobs-dotnet-deploy-vs.md).
 

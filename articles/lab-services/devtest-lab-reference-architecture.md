@@ -14,10 +14,10 @@ ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 77e6ab588f74c8b810f211e069c1c24043155111
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77132852"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Azure DevTest Labs: Referenzarchitektur für Unternehmen
@@ -72,4 +72,4 @@ Es ist wichtig zu beachten, dass DevTest Labs die zugrunde liegenden Azure-Resso
 Azure DevTest Labs verwendet vorhandene Ressourcen in Azure (Compute, Netzwerke usw.). So profitiert es automatisch von den in die Plattform integrierten Sicherheitsfeatures. Wenn Sie also z. B. für alle eingehenden Remotedesktopverbindungen nur Verbindungen aus dem Unternehmensnetzwerk zulassen möchten, müssen Sie dazu lediglich dem virtuellen Netzwerk auf dem Remotedesktopgateway eine Netzwerksicherheitsgruppe hinzufügen. Die einzige zusätzliche Sicherheitsüberlegung ist die Berechtigungsebene, die Sie Teammitgliedern gewähren, die die Labs täglich nutzen. Die häufigsten Berechtigungen sind [*Besitzer* und *Benutzer*](devtest-lab-add-devtest-user.md). Weitere Informationen zu diesen Rollen finden Sie unter [Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs](devtest-lab-add-devtest-user.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Lesen Sie den nächsten Artikel in dieser Reihe: [Zentrales Hochskalieren Ihrer Azure DevTest Labs-Infrastruktur](devtest-lab-guidance-scale.md)
+Lesen Sie den nächsten Artikel in dieser Reihe: [Hochskalieren Ihrer Azure DevTest Labs-Infrastruktur](devtest-lab-guidance-scale.md)

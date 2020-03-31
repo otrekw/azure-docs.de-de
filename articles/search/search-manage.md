@@ -10,11 +10,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 3abbf2c8e0734d17aabadd2ae5f61cc03889964b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754332"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236838"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Dienstverwaltung für Azure Cognitive Search im Azure-Portal
 > [!div class="op_single_selector"]
@@ -83,7 +83,7 @@ Andernfalls ist Ihr Anwendungscode, der zum Erstellen und Auffüllung eines Inde
 
 <a id="scale"></a>
 
-## <a name="scale-up-or-down"></a>Herauf- oder Herunterskalieren
+## <a name="scale-up-or-down"></a>Hoch- oder Herunterskalieren
 Jeder Suchdienst enthält zunächst ein Minimum von einem Replikat und einer Partition. Wenn Sie sich für eine [Preisstufe angemeldet haben, die dedizierte Ressourcen bietet](search-limits-quotas-capacity.md), klicken Sie im Servicedashboard auf die Kachel **Skalierung**, um die Ressourcenverwendung anzupassen.
 
 Wenn Sie zusätzliche Kapazität über eine dieser Ressourcen hinzufügen, wird diese vom Dienst automatisch verwendet. Sie müssen nichts weiter tun. Allerdings tritt eine kleine Verzögerung auf, bevor die Auswirkungen der neuen Ressource spürbar sind. Die Bereitstellung zusätzlicher Ressourcen kann 15 Minuten oder mehr in Anspruch nehmen.

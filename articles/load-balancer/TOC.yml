@@ -16,7 +16,7 @@
       displayName: Resource Manager
       href: quickstart-load-balancer-standard-public-template.md
   expanded: true
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Vornehmen eines Lastausgleichs für Internetdatenverkehr virtueller Computer
       href: tutorial-load-balancer-standard-manage-portal.md
@@ -64,6 +64,14 @@
       href: load-balancer-security-controls.md
 - name: Anleitung
   items:
+    - name: VM-Skalierungsgruppen
+      items:
+        - name: 'Verwendung mit einer vorhandenen Azure Load Balancer-Instanz: Portal'
+          href: configure-vm-scale-set-portal.md
+        - name: 'Verwendung mit einer vorhandenen Azure Load Balancer-Instanz: PowerShell'
+          href: configure-vm-scale-set-powershell.md
+        - name: 'Verwendung mit einer vorhandenen Azure Load Balancer-Instanz: CLI'
+          href: configure-vm-scale-set-cli.md
     - name: Aktualisieren einer Load Balancer-Instanz im Tarif „Basic“ auf Load Balancer Standard
       items:
         - name: Aktualisieren einer öffentlichen Load Balancer-Instanz im Tarif „Basic“

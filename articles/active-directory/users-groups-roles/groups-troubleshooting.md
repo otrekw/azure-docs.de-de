@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f685ac63e3b4a8cf466be4eb4561472fb084d49
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74026543"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>Beheben von Problemen bei Gruppen
@@ -66,9 +66,9 @@ Derzeit besteht keine Möglichkeit, die bedarfsgesteuerte Verarbeitung der Grupp
 
 | Regelparserfehler | Fehlerverwendung | Korrigierte Verwendung |
 | --- | --- | --- |
-| Fehler Das Attribut wird nicht unterstützt. |(user.invalidProperty -eq "Value") |(user.department -eq "value")<br/><br/>Stellen Sie sicher, dass das Attribut in der [Liste der unterstützten Eigenschaften](groups-dynamic-membership.md#supported-properties) aufgeführt wird. |
-| Fehler Der Operator wird für das Attribut nicht unterstützt. |(user.accountEnabled -contains true) |(user.accountEnabled -eq true)<br/><br/>Der Operator wird für den Eigenschaftentyp nicht unterstützt (in diesem Beispiel kann „-contains“ nicht für den Booleschen Typ verwendet werden). Verwenden Sie die richtige Operatoren für den Eigenschaftentyp. |
-| Fehler Abfragekompilierungsfehler. | 1. (user.department -eq "Sales") (user.department -eq "Marketing")<br>2. (user.userPrincipalName -match "*@domain.ext") | 1. Fehlender Operator. Verwenden Sie „-and“ oder „-or“, um zwei Prädikate zu verknüpfen.<br>(user.department -eq "Sales") -or (user.department -eq "Marketing")<br>2. Fehler im regulären Ausdruck, der mit „-match“ verwendet wird<br>(user.userPrincipalName -match ".*@domain.ext")<br>oder alternativ: (user.userPrincipalName -match "@domain.ext$") |
+| Error: Das Attribut wird nicht unterstützt. |(user.invalidProperty -eq "Value") |(user.department -eq "value")<br/><br/>Stellen Sie sicher, dass das Attribut in der [Liste der unterstützten Eigenschaften](groups-dynamic-membership.md#supported-properties) aufgeführt wird. |
+| Error: Der Operator wird für das Attribut nicht unterstützt. |(user.accountEnabled -contains true) |(user.accountEnabled -eq true)<br/><br/>Der Operator wird für den Eigenschaftentyp nicht unterstützt (in diesem Beispiel kann „-contains“ nicht für den Booleschen Typ verwendet werden). Verwenden Sie die richtige Operatoren für den Eigenschaftentyp. |
+| Error: Abfragekompilierungsfehler. | 1. (user.department -eq "Sales") (user.department -eq "Marketing")<br>2. (user.userPrincipalName -match "*@domain.ext") | 1. Fehlender Operator. Verwenden Sie „-and“ oder „-or“, um zwei Prädikate zu verknüpfen.<br>(user.department -eq "Sales") -or (user.department -eq "Marketing")<br>2. Fehler im regulären Ausdruck, der mit „-match“ verwendet wird<br>(user.userPrincipalName -match ".*@domain.ext")<br>oder alternativ: (user.userPrincipalName -match "@domain.ext$") |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

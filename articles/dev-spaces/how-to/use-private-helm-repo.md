@@ -8,16 +8,16 @@ ms.topic: conceptual
 description: Verwenden eines privaten Helm-Repositorys in einem Azure Dev Space.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, Container, Helm
 manager: gwallace
-ms.openlocfilehash: 6036184c43242f2ec2279438950b26dfb53e9bb4
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: c8f0e463bc78d278d8162f8389664dbb46a83301
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77538668"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240471"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Verwenden eines privaten Helm-Repositorys in Azure Dev Spaces
 
-[Helm][helm] ist ein Paket-Manager für Kuberentes. Helm verwendet ein [Diagramm][helm-chart]format, um Abhängigkeiten zu packen. Helm-Diagramme werden in einem Repository gespeichert, das öffentlich oder privat sein kann. Azure Dev Spaces ruft Helm-Diagramme nur bei der Ausführung Ihrer Anwendung aus öffentlichen Repositorys ab. In Fällen, in denen das Helm-Repository privat ist oder Azure Dev Spaces nicht darauf zugreifen kann, können Sie ein Diagramm aus diesem Repository direkt zu Ihrer Anwendung hinzufügen. Wenn Sie das Diagramm direkt hinzufügen, kann Azure Dev Spaces Ihre Anwendung ausführen, ohne auf das private Helm-Repository zugreifen zu müssen.
+[Helm][helm] ist ein Paket-Manager für Kubernetes. Helm verwendet ein [Diagramm][helm-chart]format, um Abhängigkeiten zu packen. Helm-Diagramme werden in einem Repository gespeichert, das öffentlich oder privat sein kann. Azure Dev Spaces ruft Helm-Diagramme nur bei der Ausführung Ihrer Anwendung aus öffentlichen Repositorys ab. In Fällen, in denen das Helm-Repository privat ist oder Azure Dev Spaces nicht darauf zugreifen kann, können Sie ein Diagramm aus diesem Repository direkt zu Ihrer Anwendung hinzufügen. Wenn Sie das Diagramm direkt hinzufügen, kann Azure Dev Spaces Ihre Anwendung ausführen, ohne auf das private Helm-Repository zugreifen zu müssen.
 
 ## <a name="add-the-private-helm-repository-to-your-local-machine"></a>Hinzufügen des privaten Helm-Repositorys zu Ihrem lokalen Computer
 
@@ -37,7 +37,7 @@ azds prep --enable-ingress
 ```
 
 > [!TIP]
-> Der Befehl `prep` versucht, [ein Dockerfile und Helm-Chart](../how-dev-spaces-works.md#prepare-your-code) für Ihr Projekt zu generieren. Azure Dev Spaces nutzt diese Dateien zum Erstellen und Ausführen Ihres Codes. Sie können sie jedoch ändern, wenn Sie anpassen möchten, wie das Projekt erstellt und ausgeführt wird.
+> Der Befehl `prep` versucht, [ein Dockerfile und Helm-Chart](../how-dev-spaces-works-prep.md#prepare-your-code) für Ihr Projekt zu generieren. Azure Dev Spaces nutzt diese Dateien zum Erstellen und Ausführen Ihres Codes. Sie können sie jedoch ändern, wenn Sie anpassen möchten, wie das Projekt erstellt und ausgeführt wird.
 
 Erstellen Sie eine Datei [requirements.yaml][helm-requirements] mit Ihrem Diagramm im Diagrammverzeichnis Ihrer Anwendung. Wenn Ihre Anwendung beispielsweise *app1* heißt, würden Sie *charts/app1/requirements.yaml* erstellen.
 

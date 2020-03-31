@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 3360b92a1b71adcbf0364a16c197aecdab5700db
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77086606"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Tutorial: Reagieren auf Blob Storage-Ereignisse in IoT Edge (Preview)
@@ -326,29 +326,29 @@ Glückwunsch! Sie haben das Tutorial abgeschlossen. Die folgenden Abschnitte bie
 
 Im Folgenden finden Sie die Liste der unterstützten Ereigniseigenschaften mit ihren zugehörigen Typen und Beschreibungen. 
 
-| Eigenschaft | type | Beschreibung |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| topic | string | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
-| subject | string | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | string | Eindeutiger Bezeichner für das Ereignis. |
+| topic | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
 | data | Objekt (object) | Ereignisdaten für Blob Storage. |
-| dataVersion | string | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | string | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
 | Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| api | string | Der Vorgang, durch den das Ereignis ausgelöst wurde. Es kann sich um einen der folgenden Werte handeln: <ul><li>BlobCreated: zulässige Werte sind: `PutBlob` und `PutBlockList`.</li><li>BlobDeleted: zulässige Werte sind: `DeleteBlob`, `DeleteAfterUpload` und `AutoDelete`. <p>Das `DeleteAfterUpload`-Ereignis wird generiert, wenn ein Blob automatisch gelöscht wird, weil die gewünschte Eigenschaft „deleteAfterUpload“ auf „true“ festgelegt ist. </p><p>Das `AutoDelete`-Ereignis wird generiert, wenn ein Blob automatisch gelöscht wird, weil der Wert der gewünschten Eigenschaft „deleteAfterMinutes“ abgelaufen ist.</p></li></ul>|
-| clientRequestId | string | Vom Client bereitgestellte Anforderungs-ID für den Speicher-API-Vorgang. Diese ID kann zur Korrelation mit Azure Storage-Diagnoseprotokollen anhand des Felds „client-request-id“ in den Protokollen verwendet und in Clientanforderungen mit dem Header „x-ms-client-request-id“ bereitgestellt werden. Ausführliche Informationen finden Sie unter [Protokollformat](/rest/api/storageservices/storage-analytics-log-format). |
-| requestId | string | Vom Dienst generierte Anforderungs-ID für den Speicher-API-Vorgang. Kann zum Korrelieren mit Azure Storage-Diagnoseprotokolle mithilfe des Felds „request-id-header“ in den Protokollen verwendet werden, und wird vom einleitenden API-Aufruf im „x-ms-request-id“-Header zurückgegeben. Informationen finden Sie unter [Storage Analytics Log Format](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format) (Storage Analytics-Protokollformat). |
-| eTag | string | Der Wert, den Sie verwenden können, um Vorgänge bedingt auszuführen. |
-| contentType | string | Der für das Blob angegebene Inhaltstyp. |
+| api | Zeichenfolge | Der Vorgang, durch den das Ereignis ausgelöst wurde. Es kann sich um einen der folgenden Werte handeln: <ul><li>BlobCreated: zulässige Werte sind: `PutBlob` und `PutBlockList`.</li><li>BlobDeleted: zulässige Werte sind: `DeleteBlob`, `DeleteAfterUpload` und `AutoDelete`. <p>Das `DeleteAfterUpload`-Ereignis wird generiert, wenn ein Blob automatisch gelöscht wird, weil die gewünschte Eigenschaft „deleteAfterUpload“ auf „true“ festgelegt ist. </p><p>Das `AutoDelete`-Ereignis wird generiert, wenn ein Blob automatisch gelöscht wird, weil der Wert der gewünschten Eigenschaft „deleteAfterMinutes“ abgelaufen ist.</p></li></ul>|
+| clientRequestId | Zeichenfolge | Vom Client bereitgestellte Anforderungs-ID für den Speicher-API-Vorgang. Diese ID kann zur Korrelation mit Azure Storage-Diagnoseprotokollen anhand des Felds „client-request-id“ in den Protokollen verwendet und in Clientanforderungen mit dem Header „x-ms-client-request-id“ bereitgestellt werden. Ausführliche Informationen finden Sie unter [Protokollformat](/rest/api/storageservices/storage-analytics-log-format). |
+| requestId | Zeichenfolge | Vom Dienst generierte Anforderungs-ID für den Speicher-API-Vorgang. Kann zum Korrelieren mit Azure Storage-Diagnoseprotokolle mithilfe des Felds „request-id-header“ in den Protokollen verwendet werden, und wird vom einleitenden API-Aufruf im „x-ms-request-id“-Header zurückgegeben. Informationen finden Sie unter [Storage Analytics Log Format](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format) (Storage Analytics-Protokollformat). |
+| eTag | Zeichenfolge | Der Wert, den Sie verwenden können, um Vorgänge bedingt auszuführen. |
+| contentType | Zeichenfolge | Der für das Blob angegebene Inhaltstyp. |
 | contentLength | integer | Die Größe des Blobs in Byte. |
-| blobType | string | Der Blobtyp. Gültige Werte sind „BlockBlob“ oder „PageBlob“. |
-| url | string | Der Pfad des Blobs. <br>Wenn der Client eine Blob-REST-API verwendet, hat die URL die folgende Struktur: *\<Speicherkontoname\>.blob.core.windows.net/\<Containername\>/\<Dateiname\>* . <br>Wenn der Client eine Data Lake Storage-REST-API verwendet, hat die URL die folgende Struktur: *\<Speicherkontoname\>.dfs.core.windows.net/\<Dateisystemname\>/\<Dateiname\>* . |
+| blobType | Zeichenfolge | Der Blobtyp. Gültige Werte sind „BlockBlob“ oder „PageBlob“. |
+| url | Zeichenfolge | Der Pfad des Blobs. <br>Wenn der Client eine Blob-REST-API verwendet, hat die URL die folgende Struktur: *\<Speicherkontoname\>.blob.core.windows.net/\<Containername\>/\<Dateiname\>* . <br>Wenn der Client eine Data Lake Storage-REST-API verwendet, hat die URL die folgende Struktur: *\<Speicherkontoname\>.dfs.core.windows.net/\<Dateisystemname\>/\<Dateiname\>* . |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

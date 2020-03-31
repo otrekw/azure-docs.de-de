@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
 ms.openlocfilehash: bb32350597059209e5baf01d53b0c59fdc2344f3
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255234"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Sicherungsanleitung für SAP HANA in Azure Virtual Machines
@@ -106,7 +106,7 @@ Im SAP-System besteht keine Präferenz in Bezug auf die HANA-Sicherung bzw. die 
 
 Beachten Sie in Azure, dass bei der Azure-Blob-Momentaufnahmenfunktion keine Dateisystemkonsistenz auf mehreren Datenträgern garantiert ist (siehe [Using blob snapshots with PowerShell](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/) [Verwenden von Blob-Momentaufnahmen mit PowerShell]). 
 
-Darüber hinaus muss ein Verständnis der Abrechnungsaspekte vorhanden sein, wenn häufig mit Blob-Momentaufnahmen gearbeitet wird, wie in diesem Artikel beschrieben: [Understanding How Snapshots Accrue Charges](/rest/api/storageservices/understanding-how-snapshots-accrue-charges) (Grundlegendes zu anfallenden Kosten für Momentaufnahmen) – das ist nicht so selbsterklärend wie bei virtuellen Azure-Datenträgern.
+Außerdem sollten Sie über die Abrechnungsaspekte informiert sein, wenn Sie Blob-Momentaufnahmen häufiger nutzen. Dies ist in diesem Artikel beschrieben: [Understanding How Snapshots Accrue Charges](/rest/api/storageservices/understanding-how-snapshots-accrue-charges) (Informationen zu den Gebühren, die für Momentaufnahmen entstehen). Dies ist nicht so einfach wie die Verwendung von virtuellen Azure-Datenträgern.
 
 ### <a name="sap-hana-data-consistency-when-taking-storage-snapshots"></a>Konsistenz von SAP HANA-Daten beim Erstellen von Speichermomentaufnahmen
 
@@ -116,7 +116,7 @@ Wie zuvor dokumentiert, ist die Beschreibung der Azure Backup-Sicherungsfunktion
 > Auf Momentaufnahmen von Datenträgern basierende Sicherungen für SAP HANA in Bereitstellungen, in denen mehrere Datenbankcontainer genutzt werden, erfordern mindestens die Version HANA 2.0 SP04.
 > 
 
-Azure Storage bietet keine Dateisystemkonsistenz auf mehreren Datenträgern oder Volumes, die während der Erstellung der Momentaufnahme an eine VM angefügt sind. Das bedeutet, dass die Anwendungskonsistenz während der Momentaufnahme von der Anwendung, in diesem Fall SAP HANA selbst, gewährleistet werden muss. Der [SAP-Hinweis 2039883](https://launchpad.support.sap.com/#/notes/2039883) enthält wichtige Informationen zu SAP HANA-Sicherungen mithilfe von Speichermomentaufnahmen. Beispielsweise ist es beim XFS-Dateisystem erforderlich, **xfs\_freeze** auszuführen, bevor eine Speichermomentaufnahme gestartet wird, um Anwendungskonsistenz zu ermöglichen (Details zu **xfs\_freeze** finden Sie unter [xfs\_freeze(8) – Linux man page](https://linux.die.net/man/8/xfs_freeze)).
+Azure Storage bietet keine Dateisystemkonsistenz auf mehreren Datenträgern oder Volumes, die während der Erstellung der Momentaufnahme an eine VM angefügt sind. Das bedeutet, dass die Anwendungskonsistenz während der Momentaufnahme von der Anwendung, in diesem Fall SAP HANA selbst, gewährleistet werden muss. Der [SAP-Hinweis 2039883](https://launchpad.support.sap.com/#/notes/2039883) enthält wichtige Informationen zu SAP HANA-Sicherungen mithilfe von Speichermomentaufnahmen. Beispielsweise ist es beim XFS-Dateisystem erforderlich, **xfs\_freeze** auszuführen, bevor eine Speichermomentaufnahme gestartet wird, um Anwendungskonsistenz zu ermöglichen (Details zu [xfs\_freeze](https://linux.die.net/man/8/xfs_freeze) finden Sie unter **xfs\_freeze(8) – Linux man page**).
 
 Angenommen, ein XFS-Dateisystem umfasst vier virtuelle Azure-Datenträger. Mit den folgenden Schritten wird eine konsistente Momentaufnahme bereitgestellt, die den HANA-Datenbereich darstellt:
 

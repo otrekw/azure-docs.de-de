@@ -8,10 +8,10 @@ ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
 ms.openlocfilehash: a4f61d147ba1abf73ada6360b8d0d965d8e063a5
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77523797"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Reagieren auf Azure App Configuration-Ereignisse
@@ -39,17 +39,17 @@ Azure App Configuration-Ereignisse enthalten alle Informationen, die Sie zur R
 
 > |Eigenschaft|type|BESCHREIBUNG|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
-> |topic|Zeichenfolge|Vollständige Azure Resource Manager-ID der App-Konfiguration, die das Ereignis ausgibt.|
-> |subject|Zeichenfolge|Die URL des Schlüssel-Wert-Paars, das Gegenstand des Ereignisses ist.|
-> |eventTime|Zeichenfolge|Datum und Uhrzeit der Ereignisgenerierung im ISO 8601-Format.|
-> |eventType|Zeichenfolge|„Microsoft.AppConfiguration.KeyValueModified“ oder „Microsoft.AppConfiguration.KeyValueDeleted“.|
-> |Id|Zeichenfolge|Ein eindeutiger Bezeichner für dieses Ereignis.|
-> |dataVersion|Zeichenfolge|Die Schemaversion des Datenobjekts.|
-> |metadataVersion|Zeichenfolge|Die Schemaversion der Eigenschaften oberster Ebene.|
+> |topic|string|Vollständige Azure Resource Manager-ID der App-Konfiguration, die das Ereignis ausgibt.|
+> |subject|string|Die URL des Schlüssel-Wert-Paars, das Gegenstand des Ereignisses ist.|
+> |eventTime|string|Datum und Uhrzeit der Ereignisgenerierung im ISO 8601-Format.|
+> |eventType|string|„Microsoft.AppConfiguration.KeyValueModified“ oder „Microsoft.AppConfiguration.KeyValueDeleted“.|
+> |Id|string|Ein eindeutiger Bezeichner für dieses Ereignis.|
+> |dataVersion|string|Die Schemaversion des Datenobjekts.|
+> |metadataVersion|string|Die Schemaversion der Eigenschaften oberster Ebene.|
 > |data|Objekt (object)|Eine Sammlung Azure App Configuration-spezifischer Ereignisdaten.|
-> |data.key|Zeichenfolge|Der Schlüssel des Schlüssel-Wert-Paars, das geändert oder gelöscht wurde.|
-> |data.label|Zeichenfolge|Die Bezeichnung (sofern vorhanden) des Schlüssel-Wert-Paars, das geändert oder gelöscht wurde.|
-> |data.etag|Zeichenfolge|Für `KeyValueModified`: Das ETag des neuen Schlüssel-Wert-Paars. Für `KeyValueDeleted`: Das ETag des gelöschten Schlüssel-Wert-Paars.|
+> |data.key|string|Der Schlüssel des Schlüssel-Wert-Paars, das geändert oder gelöscht wurde.|
+> |data.label|string|Die Bezeichnung (sofern vorhanden) des Schlüssel-Wert-Paars, das geändert oder gelöscht wurde.|
+> |data.etag|string|Für `KeyValueModified`: Das ETag des neuen Schlüssel-Wert-Paars. Für `KeyValueDeleted`: Das ETag des gelöschten Schlüssel-Wert-Paars.|
 
 Hier sehen Sie ein Beispiel für ein KeyValueModified-Ereignis:
 ```json

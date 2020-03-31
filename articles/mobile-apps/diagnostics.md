@@ -1,18 +1,18 @@
 ---
 title: Überwachen Ihrer Anwendung auf Echtzeitausfälle und -fehler mit Visual Studio App Center
 description: Erfahren Sie mehr über App Center als Dienst zum Überwachen Ihrer mobilen Anwendung auf Ausfälle und Fehler.
-author: elamalani
+author: codemillmatt
 ms.assetid: 12a8a079-9b3c-4faf-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 38822ee6630f1dfd77ea2c62f9e4c489d159a1a2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 6e7e29f28390278b21fb164365cc02d834e05b62
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454433"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240874"
 ---
 # <a name="monitor-failures-and-errors-in-real-time-for-your-mobile-application"></a>Überwachen von Ausfällen und Fehlern in Echtzeit für Ihre mobile Anwendung
 Nachdem Ihre Anwendung von Tausenden von Benutzern verwendet wurde, ist es wahrscheinlich, dass Fehler vorkommen. Möglicherweise treten bei Ihren Benutzern unerwartete Anwendungsfehler auf. Alles, was Benutzer aus ihrer Sicht möchten, ist eine funktionierende und zuverlässige Anwendung. Anwendungen, die fehlerhaft sind und häufig ausfallen, bieten kein gutes Benutzererlebnis. Enttäuschte Benutzer deinstallieren die App, hinterlassen eine schlechte Beurteilung oder kritisieren öffentlich und beschweren sich wegen dieser Erfahrung.

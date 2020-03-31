@@ -12,15 +12,15 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 12/05/2019
 ms.openlocfilehash: 827fab0661a58bfa7d28452960ea6df64d18bf84
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873742"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Übersicht über elastische Abfragen in Azure SQL-Datenbank (Vorschau)
 
-Mithilfe des Features für elastische Abfragen (in der Vorschauphase) können Sie eine Transact-SQL-Abfrage ausführen, die mehrere Datenbanken in Azure SQL-Datenbank umfasst. Es ermöglicht das Ausführen datenbankübergreifender Abfragen für den Zugriff auf Remotetabellen und das Verbinden von Microsoft- und Drittanbietertools (Excel, Power BI, Tableau usw.), um Datenebenen mit mehreren Datenbanken abzufragen. Mit dieser Funktion können Sie Abfragen horizontal auf große Datenebenen in SQL-Datenbanken skalieren und die Abfrageergebnisse in Berichten für Business Intelligence (BI) darstellen.
+Mithilfe des Features für elastische Abfragen (in der Vorschauphase) können Sie eine Transact-SQL-Abfrage ausführen, die mehrere Datenbanken in Azure SQL-Datenbank umfasst. Es ermöglicht das Ausführen datenbankübergreifender Abfragen für den Zugriff auf Remotetabellen und das Verbinden von Microsoft- und Drittanbietertools (Excel, Power BI, Tableau usw.), um Datenebenen mit mehreren Datenbanken abzufragen. Mit dieser Funktion können Sie Abfragen auf große Datenebenen in SQL-Datenbanken aufskalieren und die Abfrageergebnisse in Berichten für Business Intelligence (BI) darstellen.
 
 ## <a name="why-use-elastic-queries"></a>Gründe für die Verwendung elastischer Abfragen
 
@@ -55,8 +55,8 @@ Außerdem ermöglicht eine elastische Abfrage den einfachen Zugriff auf eine gan
 
 Kundenszenarien für elastische Abfragen zeichnen sich durch die folgenden Topologien aus:
 
-* **Vertikale Partitionierung – datenbankübergreifende Abfragen** (Topologie 1): Die Daten werden zwischen mehreren Datenbanken auf einer Datenschicht vertikal partitioniert. In der Regel befinden sich verschiedene Sätze von Tabellen in verschiedenen Datenbanken. Das bedeutet, dass das Schema bei verschiedenen Datenbanken unterschiedlich ist. Beispielsweise befinden sich alle bestandsbezogenen Tabellen in einer Datenbank, während alle Buchhaltungstabellen in einer zweiten Datenbank enthalten sind. Gängige Anwendungsfälle mit dieser Topologie erfordern zum Erstellen von Berichten das Abfragen von Tabellen in mehreren Datenbanken.
-* **Horizontale Partitionierung – Sharding** (Topologie 2): Die Daten werden horizontal partitioniert, um Zeilen auf einer horizontal hochskalierten Datenschicht zu verteilen. Bei diesem Ansatz ist das Schema für alle teilnehmenden Datenbanken identisch. Dieser Ansatz wird auch „Sharding“ genannt. Sharding kann (1.) mithilfe der Bibliothek für elastische Datenbanktools oder (2.) eines eigenständigen Shardings ausgeführt und verwaltet werden. Eine elastische Abfrage dient zum viele Shards übergreifenden Abfragen oder Erstellen von Berichten. Shards sind normalerweise Datenbanken in einem Pool für elastische Datenbanken. Sie können sich elastische Abfragen als effiziente Methode für die gleichzeitige Abfrage aller Datenbanken des Pools für elastische Datenbanken vorstellen, sofern die Datenbanken ein gemeinsames Schema teilen.
+* **Vertikale Partitionierung – Datenbankübergreifende Abfragen** (Topologie 1): Die Daten sind zwischen mehreren Datenbanken auf einer Datenebene vertikal partitioniert. In der Regel befinden sich verschiedene Sätze von Tabellen in verschiedenen Datenbanken. Das bedeutet, dass das Schema bei verschiedenen Datenbanken unterschiedlich ist. Beispielsweise befinden sich alle bestandsbezogenen Tabellen in einer Datenbank, während alle Buchhaltungstabellen in einer zweiten Datenbank enthalten sind. Gängige Anwendungsfälle mit dieser Topologie erfordern zum Erstellen von Berichten das Abfragen von Tabellen in mehreren Datenbanken.
+* **Horizontale Partitionierung – Sharding** (Topologie 2): Die Daten werden horizontal partitioniert, um Zeilen auf einer horizontal hochskalierten Datenebene zu verteilen. Bei diesem Ansatz ist das Schema für alle teilnehmenden Datenbanken identisch. Dieser Ansatz wird auch „Sharding“ genannt. Sharding kann (1.) mithilfe der Bibliothek für elastische Datenbanktools oder (2.) eines eigenständigen Shardings ausgeführt und verwaltet werden. Eine elastische Abfrage dient zum viele Shards übergreifenden Abfragen oder Erstellen von Berichten. Shards sind normalerweise Datenbanken in einem Pool für elastische Datenbanken. Sie können sich elastische Abfragen als effiziente Methode für die gleichzeitige Abfrage aller Datenbanken des Pools für elastische Datenbanken vorstellen, sofern die Datenbanken ein gemeinsames Schema teilen.
 
 > [!NOTE]
 > Die elastische Abfrage eignet sich am besten für Berichtsszenarios, bei denen der Großteil der Verarbeitung (Filterung, Aggregation) auf der Seite der externen Quelle ausgeführt werden kann. Sie eignet sich nicht für ETL-Vorgänge, bei denen große Datenmengen von Remotedatenbanken übertragen werden. Bei umfangreichen Berichtsworkloads oder Data Warehousing-Szenarien mit komplexeren Abfragen, sollten Sie auch die Verwendung von [Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) in Betracht ziehen.
@@ -78,7 +78,7 @@ Eine elastische Abfrage kann verwendet werden, um Daten in einer SQL-Datenbank a
 
 ![Vertikale Partitionierung – Verwenden einer elastischen Abfrage zum Abfragen von Verweisdaten][3]
 
-**Datenbankübergreifende Abfragen:** Elastische Abfragen ermöglichen Anwendungsfälle, die das Abfragen mehrerer SQL-Datenbank-Instanzen erfordern. Abbildung 3 zeigt vier unterschiedliche Datenbanken: CRM, Bestand, Personal und Produkte. Abfragen, die auf eine der Datenbanken angewendet werden, benötigen außerdem Zugriff auf eine oder alle anderen Datenbanken. Bei Verwenden einer elastischen Abfrage können Sie Ihre Datenbank für diesen Fall konfigurieren, indem Sie einige einfache DDL-Anweisungen auf jede der vier Datenbanken anwenden. Nach dieser einmaligen Konfiguration ist der Zugriff auf eine Remotetabelle so einfach wie das Verweisen auf eine lokale Tabelle in Ihren T-SQL-Abfragen oder in Ihren BI-Tools. Dieser Ansatz wird empfohlen, wenn von den Remoteabfragen keine umfangreichen Ergebnisse zurückgegeben werden.
+**Datenbankübergreifende Abfragen:** Elastische Abfragen ermöglichen Anwendungsfälle, die das Abfragen mehrerer SQL-Datenbank-Instanzen erfordern. Abbildung 3 zeigt vier unterschiedliche Datenbanken: CRM, Inventory, HR und Products. Abfragen, die auf eine der Datenbanken angewendet werden, benötigen außerdem Zugriff auf eine oder alle anderen Datenbanken. Bei Verwenden einer elastischen Abfrage können Sie Ihre Datenbank für diesen Fall konfigurieren, indem Sie einige einfache DDL-Anweisungen auf jede der vier Datenbanken anwenden. Nach dieser einmaligen Konfiguration ist der Zugriff auf eine Remotetabelle so einfach wie das Verweisen auf eine lokale Tabelle in Ihren T-SQL-Abfragen oder in Ihren BI-Tools. Dieser Ansatz wird empfohlen, wenn von den Remoteabfragen keine umfangreichen Ergebnisse zurückgegeben werden.
 
 **Abbildung 3** Vertikale Partitionierung – Verwenden einer elastischen Abfrage zum Abfragen verschiedener Datenbanken
 

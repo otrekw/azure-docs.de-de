@@ -1,19 +1,18 @@
 ---
 title: Erstellen eines serverlosen Back-Ends für eine mobile Anwendung mit Azure Functions und anderen Diensten
 description: Erfahren Sie mehr über die Compute-Dienste, die zum Erstellen eine robusten serverlosen Back-Ends für mobile Anwendungen verwendet werden.
-author: elamalani
-manager: elamalani
+author: codemillmatt
 ms.service: vs-appcenter
 ms.assetid: 444f0959-aa7f-472c-a6c7-9eecea3a34b9
 ms.topic: conceptual
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: ec7091a32a1be8d875e16d8e0a9b20b5e80de387
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: d6a2bbc984a8808d2cd8a9b292e55d80f43f2e9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291956"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240146"
 ---
 # <a name="build-mobile-back-end-components-with-compute-services"></a>Erstellen von mobilen Back-End-Komponenten mit Compute-Diensten
 Jede mobile Anwendung benötigt ein Back-End, das für die Datenspeicherung, Geschäftslogik und Sicherheit zuständig ist. Die Verwaltung der Infrastruktur zum Hosten und Ausführen von Back-End-Code erfordert, dass Sie die mehrere Server bereitstellen, skalieren und ihre Größe bestimmen. Außerdem müssen Sie Betriebssystemupdates und die beteiligten Hardwarekomponenten verwalten sowie Sicherheitspatches anwenden. Anschließend müssen Sie alle diese Infrastrukturkomponenten auf Leistung, Verfügbarkeit und Fehlertoleranz überwachen. 
@@ -56,7 +55,7 @@ Mit [Azure App Service](https://azure.microsoft.com/services/app-service/) könn
 **Wichtige Features**
 - Unterstützung mehrerer Sprachen und Frameworks für ASP.NET, ASP.NET Core, Java, Ruby, Node.js, PHP oder Python. Sie können PowerShell- und weitere Skripts oder ausführbare Dateien auch als Hintergrunddienst ausführen.
 - DevOps-Optimierung durch Continuous Integration und Continuous Deployment mit Azure DevOps, GitHub, BitBucket, Docker Hub oder Azure Container Registry. Verwalten Sie Ihre Apps in App Service mithilfe von Azure PowerShell oder der plattformübergreifenden Befehlszeilenschnittstelle (Command-Line Interface, CLI).
-- Globale Skalierung mit Hochverfügbarkeit, um manuell oder automatisch zentral hochzuskalieren oder zu erweitern.
+- Globale Skalierung mit Hochverfügbarkeit, um manuell oder automatisch hochzuskalieren oder zu erweitern.
 - Verbindungen mit SaaS-Plattformen und lokalen Daten, um aus über 50 Connectors für Unternehmenssysteme wie SAP, SaaS-Dienste wie Salesforce sowie Internetdienste wie Facebook auszuwählen. Zugriff auf lokale Daten über Hybridverbindungen und Azure Virtual Networks.
 - Azure App Service ist ISO-, SOC- und PCI-konform. Authentifizieren von Benutzern mit Azure Active Directory oder mit Anmeldungen für soziale Medien wie Google, Facebook, Twitter und Microsoft. Erstellen Sie IP-Adresseinschränkungen, und verwalten Sie Dienstidentitäten.
 - Anwendungsvorlagen, um im Azure Marketplace aus zahlreichen Anwendungsvorlagen wie WordPress, Joomla und Drupal zu wählen.

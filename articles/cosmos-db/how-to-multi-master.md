@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 654baed649093add2aa62f4ba81bf6ce7c3e0df5
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873640"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Konfigurieren von Multimaster in Ihren Anwendungen, die Azure Cosmos DB verwenden
@@ -20,7 +20,7 @@ Sobald ein Konto mit mehreren aktivierten Schreibbereichen erstellt wurde, müss
 > [!Note]
 > Cosmos-Konten, die ursprünglich mit einer einzelnen Schreibregion konfiguriert wurden, können für die Verwendung mehrerer Schreibregionen (also als Multimaster) ohne Ausfallzeiten konfiguriert werden. Weitere Informationen finden unter [Konfigurieren mehrerer Schreibregionen](how-to-manage-database-account.md#configure-multiple-write-regions).
 
-## <a id="netv2"></a>.NET SDK v2
+## <a name="net-sdk-v2"></a><a id="netv2"></a>.NET SDK v2
 
 Um Multimaster in Ihrer Anwendung zu aktivieren, legen Sie `UseMultipleWriteLocations` auf `true` fest. Legen Sie außerdem `SetCurrentLocation` auf die Region fest, in der die Anwendung bereitgestellt wird und wo Azure Cosmos DB repliziert wird:
 
@@ -34,7 +34,7 @@ ConnectionPolicy policy = new ConnectionPolicy
 policy.SetCurrentLocation("West US 2");
 ```
 
-## <a id="netv3"></a>.NET SDK v3
+## <a name="net-sdk-v3"></a><a id="netv3"></a>.NET SDK v3
 
 Um Multimaster in Ihrer Anwendung zu aktivieren, legen Sie `ApplicationRegion` auf die Region fest, in der die Anwendung bereitgestellt und wo Cosmos DB repliziert wird:
 
@@ -55,7 +55,7 @@ CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder("<connection-s
 CosmosClient client = cosmosClientBuilder.Build();
 ```
 
-## <a id="java"></a>Java Async SDK
+## <a name="java-async-sdk"></a><a id="java"></a>Java Async SDK
 
 Um Multimaster in Ihrer Anwendung zu aktivieren, legen Sie `policy.setUsingMultipleWriteLocations(true)` fest, und legen Sie `policy.setPreferredLocations` auf die Region fest, in der die Anwendung bereitgestellt und wo Cosmos DB repliziert wird:
 
@@ -72,7 +72,7 @@ AsyncDocumentClient client =
         .withConnectionPolicy(policy).build();
 ```
 
-## <a id="javascript"></a>Node.js, JavaScript und TypeScript SDK
+## <a name="nodejs-javascript-and-typescript-sdks"></a><a id="javascript"></a>Node.js, JavaScript und TypeScript SDK
 
 Um Multimaster in Ihrer Anwendung zu aktivieren, legen Sie `connectionPolicy.UseMultipleWriteLocations` auf `true` fest. Legen Sie außerdem `connectionPolicy.PreferredLocations` auf die Region fest, in der die Anwendung bereitgestellt wird und wo Cosmos DB repliziert wird:
 
@@ -89,7 +89,7 @@ const client = new CosmosClient({
 });
 ```
 
-## <a id="python"></a>Python SDK
+## <a name="python-sdk"></a><a id="python"></a>Python SDK
 
 Um Multimaster in Ihrer Anwendung zu aktivieren, legen Sie `connection_policy.UseMultipleWriteLocations` auf `true` fest. Legen Sie außerdem `connection_policy.PreferredLocations` auf die Region fest, in der die Anwendung bereitgestellt wird und wo Cosmos DB repliziert wird.
 

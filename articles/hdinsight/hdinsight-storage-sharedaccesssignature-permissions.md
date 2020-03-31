@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 725bdfd4efe3be600c993e568f1a5c7edccc6952
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 1a4ae0701174278203023c156a86aad8feb1ca4c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74148222"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240618"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Verwenden von Azure Storage Shared Access Signatures zum Einschränken des Zugriffs auf Daten mit HDInsight
 
@@ -88,11 +88,11 @@ Speichern Sie das SAS-Token, das am Ende jeder Methode erstellt wird. Das Token 
 ?sv=2018-03-28&sr=c&si=myPolicyPS&sig=NAxefF%2BrR2ubjZtyUtuAvLQgt%2FJIN5aHJMj6OsDwyy4%3D
 ```
 
-### <a name="using-powershell"></a>Verwenden von PowerShell
+### <a name="using-powershell"></a>PowerShell
 
 Ersetzen Sie `RESOURCEGROUP`, `STORAGEACCOUNT` und `STORAGECONTAINER` durch die entsprechenden Werte für Ihren vorhandenen Speichercontainer. Ändern Sie das Verzeichnis in `hdinsight-dotnet-python-azure-storage-shared-access-signature-master`, oder überarbeiten Sie den `-File`-Parameter so, dass er den absoluten Pfad für `Set-AzStorageblobcontent` enthält. Geben Sie den folgenden PowerShell-Befehl ein:
 
-```PowerShell
+```powershell
 $resourceGroupName = "RESOURCEGROUP"
 $storageAccountName = "STORAGEACCOUNT"
 $containerName = "STORAGECONTAINER"
@@ -175,7 +175,7 @@ Die Verwendung von Variablen in diesem Abschnitt basiert auf einer Windows-Umgeb
 
 2. Legen Sie den abgerufenen Primärschlüssel auf eine Variable zur späteren Verwendung fest. Ersetzen Sie `PRIMARYKEY` durch den im vorherigen Schritt abgerufenen Wert, und geben Sie dann den folgenden Befehl ein:
 
-    ```azurecli
+    ```console
     #set variable for primary key
     set AZURE_STORAGE_KEY=PRIMARYKEY
     ```

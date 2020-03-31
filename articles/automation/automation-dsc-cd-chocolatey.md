@@ -6,10 +6,10 @@ ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
 ms.openlocfilehash: 4445f6e9b72380b66f3282d50871b4283f7fc7fa
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75966738"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Anwendungsbeispiel: Continuous Deployment auf virtuellen Computern mit Automation State Configuration und Chocolatey

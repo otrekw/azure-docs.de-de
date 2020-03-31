@@ -6,10 +6,10 @@ ms.author: dekapur
 ms.date: 11/08/2018
 ms.topic: conceptual
 ms.openlocfilehash: d67ea5bb7df5910ec87e69adf3c414c303bf0182
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75462048"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Packen einer vorhandenen .NET-App in einen Container für Service Fabric Mesh
@@ -67,4 +67,4 @@ Nun können Sie die App in Azure Service Fabric Mesh veröffentlichen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Veröffentlichen einer App in Service Fabric Mesh: [Tutorial: Bereitstellen einer Service Fabric Mesh-Anwendung](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+Wie Sie eine App in Service Fabric Mesh veröffentlichen, erfahren Sie unter [Tutorial: Bereitstellen einer Service Fabric Mesh-Anwendung](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md).

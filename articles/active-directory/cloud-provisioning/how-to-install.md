@@ -12,11 +12,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4581ab89f74425682f569425f62714ead2c27c5
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620933"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230814"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Installieren des Agents für die Azure AD Connect-Cloudbereitstellung
 In diesem Dokument erhalten Sie Informationen zum Installationsvorgang für den Azure AD Connect-Bereitstellungs-Agent (Azure Active Directory) und dessen Erstkonfiguration im Azure-Portal.
@@ -84,7 +84,7 @@ https://aadap-portcheck.connectorporttest.msappproxy.net/
 
 Mithilfe dieses Tests wird überprüft, ob Ihre Agents über Port 443 mit Azure kommunizieren können. Öffnen Sie einen Browser, und navigieren Sie von dem Server, auf dem der Agent installiert ist, zur obigen URL.
 
-![Überprüfung der Porterreichbarkeit](media/how-to-install/verify2.png)
+![Überprüfen der Porterreichbarkeit](media/how-to-install/verify2.png)
 
 ### <a name="on-the-local-server"></a>Auf dem lokalen Server
 Führen Sie die folgenden Schritte aus, um zu überprüfen, ob der Agent ausgeführt wird.

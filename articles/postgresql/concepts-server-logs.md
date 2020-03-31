@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: 2636e9a225002148e4cd79bb2176e0883aed623a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844937"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236090"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Protokolle in Azure Database for PostgreSQL – Einzelserver
 Azure Database for PostgreSQL ermöglicht es Ihnen, die Standardprotokolle von Postgres zu konfigurieren und darauf zuzugreifen. Die Protokolle dienen zur Identifizierung, Behebung und Reparatur von Konfigurationsfehlern und suboptimaler Leistung. Beispiele für Protokollierungsinformationen, für die die Konfiguration und der Zugriff möglich sind, sind Fehler, Abfrageinformationen, Autovacuum-Datensätze, Verbindungen und Prüfpunkte. (Der Zugriff auf Transaktionsprotokolle ist nicht verfügbar.)
@@ -108,7 +108,7 @@ In der folgenden Tabelle sind die Felder für den Typ **PostgreSQLLogs** beschri
 | Resource | Name des Servers |
 | Category | `PostgreSQLLogs` |
 | Vorgangsname | `LogEvent` |
-| errorLevel | Beispiel für die Protokollierungsstufe: LOG, ERROR, NOTICE |
+| errorLevel | Protokollierungsstufe, z.B.: LOG, ERROR, NOTICE |
 | `Message` | Primäre Protokollmeldung | 
 | Domain | Serverversion, Beispiel: postgres-10 |
 | Detail | Sekundäre Protokollmeldung (falls zutreffend) |

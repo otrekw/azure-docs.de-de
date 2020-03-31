@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
 ms.openlocfilehash: e547ae59f7b3260f46756825bca2bef1c10bcc97
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75665886"
 ---
 # <a name="find-results-in-bing-search-by-using-azure-logic-apps"></a>Suchen von Ergebnissen in der Bing-Suche mithilfe von Azure Logic Apps
@@ -20,7 +20,7 @@ In diesem Artikel wird gezeigt, wie Sie mit dem Bing-Suche-Connector innerhalb e
 
 Sie können z.B. Nachrichtenelemente basierend auf Suchkriterien finden und diese Elemente in Twitter in Ihrem Twitter-Feed als Tweets bereitstellen.
 
-Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). Wenn Sie noch nicht mit Logik-Apps vertraut sind, lesen Sie [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten Logik-App-Workflows](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 Connectorspezifische technische Informationen finden Sie in der [Referenz zum Bing-Suche-Connector](https://docs.microsoft.com/connectors/bingsearch/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -41,7 +41,7 @@ In Azure Logic Apps muss jede Logik-App mit einem [Trigger](../logic-apps/logic-
 
 2. Geben Sie im Suchfeld den Begriff „Bing-Suche“ als Filter ein. Wählen Sie in der Triggerliste den gewünschten Trigger aus.
 
-   In diesem Beispiel wird folgender Trigger verwendet: **Bing-Suche – Bei neuem Nachrichtenartikel**
+   Dieses Beispiel verwendet diesen Trigger: **Bing-Suche – für neuen Nachrichtenartikel**
 
    ![Finden des Bing-Suche-Triggers](./media/connectors-create-api-bing-search/add-trigger.png)
 

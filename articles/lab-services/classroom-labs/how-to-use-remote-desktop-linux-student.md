@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/20/2019
 ms.author: spelluru
 ms.openlocfilehash: 0f45af2730b05998fc82212c63778c89bb16b6ef
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73585072"
 ---
 # <a name="use-remote-desktop-for-linux-virtual-machines-in-a-classroom-lab-of-azure-lab-services"></a>Verwenden von Remotedesktop für virtuelle Linux-Computer in einem Classroom-Lab in Azure Lab Services
@@ -29,11 +29,11 @@ Ein Kursleiter muss die Funktion für eine Remotedesktopverbindung aktivieren, b
 > Beim Aktivieren der **Remotedesktopverbindung** wird auf Linux-Computern nur der **RDP**-Port geöffnet. Ein Kursleiter kann eine Verbindung mit dem Linux-Computer beim ersten Mal per SSH herstellen und dann RDP- und GUI-Pakete installieren, damit später eine Verbindung mit dem Linux-Computer per RDP hergestellt werden kann. 
 
 ## <a name="connect-to-the-student-vm"></a>Herstellen einer Verbindung mit dem virtuellen Computer eines Kursteilnehmers
-Kursteilnehmer können per RDP eine Verbindung mit ihren virtuellen Linux-Computern herstellen, nachdem der Lab-Besitzer (Lehrkraft/Hochschullehrkraft) die Vorlage für virtuelle Computer mit darauf installierten RDP- und GUI-Paketen **veröffentlicht** hat. Gehen Sie wie folgt vor: 
+Kursteilnehmer können per RDP eine Verbindung mit ihren virtuellen Linux-Computern herstellen, nachdem der Lab-Besitzer (Lehrkraft/Hochschullehrkraft) die Vorlage für virtuelle Computer mit darauf installierten RDP- und GUI-Paketen **veröffentlicht** hat. Im Folgenden werden die Schritte aufgeführt: 
 
 1. Wenn sich ein Kursteilnehmer direkt am Labs-Portal (`https://labs.azure.com`) anmeldet oder einen Registrierungslink (`https://labs.azure.com/register/<registrationCode>`) verwendet, wird eine Kachel für jedes Lab angezeigt, auf das der Kursteilnehmer Zugriff hat. 
 2. Schalten Sie auf der Kachel die Schaltfläche zum Starten des virtuellen Computers um, um den virtuellen Computer zu starten, wenn er sich im Status „Beendet“ befindet. 
-3. Wählen Sie **Verbinden**aus. Es werden zwei Optionen für die Verbindungsherstellung mit dem virtuellen Computer angezeigt: **SSH** und **Remotedesktop**.
+3. Wählen Sie **Verbinden**. Es werden zwei Optionen für die Verbindungsherstellung mit dem virtuellen Computer angezeigt: **SSH** und **Remotedesktop**.
 
     ![Virtueller Computer eines Kursteilnehmers: Verbindungsoptionen](../media/how-to-enable-remote-desktop-linux/student-vm-connect-options.png)
 

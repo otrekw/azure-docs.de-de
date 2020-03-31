@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 68afc782e13f967bc1b455434c3ae952baff81b9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 079d29c241cfbbdcc991f024c07b07b378670c10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980919"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80130886"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Laden von 1 TB in Azure SQL Data Warehouse in weniger als 15 Minuten mit Data Factory
 > [!NOTE]
 > Dieser Artikel gilt für Version 1 von Data Factory. Informationen für die aktuelle Version des Data Factory-Diensts finden Sie unter [Copy data to or from Azure SQL Data Warehouse by using Data Factory](../connector-azure-sql-data-warehouse.md) (Kopieren von Daten in oder aus Azure SQL Data Warehouse mithilfe von Data Factory).
 
 
-[Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) ist eine cloudbasierte Datenbank für das horizontale Hochskalieren, mit der sehr große Datenvolumen verarbeitet werden können, und zwar sowohl relational als auch nicht relational.  SQL Data Warehouse basiert auf MPP-Architektur (Massively Parallel Processing), und ist für Data Warehouse-Workloads für Unternehmen optimiert.  Es bietet Cloudelastizität mit der Flexibilität, Speicher zu skalieren und unabhängig zu berechnen.
+[Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) ist eine cloudbasierte Datenbank für das horizontale Hochskalieren, mit der sehr große Datenvolumen verarbeitet werden können, und zwar sowohl relational als auch nicht relational.  SQL Data Warehouse basiert auf MPP-Architektur (Massively Parallel Processing), und ist für Data Warehouse-Workloads für Unternehmen optimiert.  Es bietet Cloudelastizität mit der Flexibilität, Speicher zu skalieren und unabhängig zu berechnen.
 
 Die ersten Schritte mit Azure SQL Data Warehouse sind jetzt mithilfe von **Azure Data Factory** einfacher als je zuvor.  Azure Data Factory ist ein vollständig verwalteter cloudbasierter Daten-Integrationsdienst, der verwendet werden kann, um SQL Data Warehouse mit den Daten Ihres bestehenden Systems aufzufüllen. Dieser Dienst spart Ihnen wertvolle Zeit beim Bewerten von SQL Data Warehouse und Erstellen von Analyselösungen. Die wichtigsten Vorteile beim Laden von Daten in Azure SQL Data Warehouse mithilfe von Azure Data Factory sind:
 
@@ -210,7 +210,7 @@ Hier sind einige bewährte Methoden für die Ausführung Ihrer Azure SQL Data Wa
 * Ziehen Sie für ein schnelleres Seitenladetempo die Verwendung von Heap für vorübergehende Daten in Betracht.
 * Erstellen Sie Statistiken, wenn das Laden von Azure SQL Data Warehouse abgeschlossen ist.
 
-Details finden Sie unter [Bewährte Methoden für Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-best-practices.md).
+Details finden Sie unter [Bewährte Methoden für Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Data Factory Kopier-Assistent](data-factory-copy-wizard.md) – Dieser Artikel enthält Details zum Kopier-Assistenten.

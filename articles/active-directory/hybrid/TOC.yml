@@ -5,7 +5,7 @@
     - name: Was ist eine Hybrididentität?
       href: whatis-hybrid-identity.md
       maintainContext: true
-- name: Lernprogramme
+- name: Tutorials
   expanded: true
   items:
     - name: Integrieren einer AD-Umgebung mit einer AD-Gesamtstruktur in die Cloud mit PHS
@@ -24,6 +24,8 @@
           href: cloud-governed-management-for-on-premises.md
         - name: In vier Schritten zu einem starken Identitätsfundament
           href: four-steps.md
+        - name: Auswählen einer Authentifizierungsmethode für die Hybrididentität
+          href: choose-ad-authn.md
     - name: Azure AD Connect und Connect Health
       items:
         - name: Worum handelt es sich bei Azure AD Connect und Connect Health?
@@ -90,7 +92,7 @@
           href: concept-azure-ad-connect-sync-user-and-contacts.md
         - name: Grundlegendes zu Schattenattributen
           href: how-to-connect-syncservice-shadow-attributes.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Installation und Upgrade
       items:

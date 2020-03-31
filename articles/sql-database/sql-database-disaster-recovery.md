@@ -12,11 +12,11 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/21/2019
 ms.openlocfilehash: d28edd28dcbe31bfe63c2d0a9c3e975967efef04
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826589"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228670"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Wiederherstellen einer Azure SQL-Datenbank oder Failover auf eine sekundäre Datenbank
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/11/2019
 ms.author: Zhchia
 ms.openlocfilehash: 1a4a27846196e7eb134b834647b2a2d65672f385
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77061005"
 ---
 # <a name="tutorial-configure-promapp-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Promapp für die automatische Benutzerbereitstellung

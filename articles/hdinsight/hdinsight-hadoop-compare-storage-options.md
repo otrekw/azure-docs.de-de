@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 98d71434ac9e3f712be0cbd8c505b7d5a537e7cc
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79095549"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Vergleich der Speicheroptionen für die Verwendung mit Azure HDInsight-Clustern
@@ -159,7 +159,7 @@ Verschiedene WebHCat-Aufträge, darunter Apache Hive, MapReduce, Apache Hadoop S
 
 Blobs können für strukturierte und unstrukturierte Daten verwendet werden. In Blobcontainern werden Daten als Schlüssel-Wert-Paare gespeichert, und es gibt keine Verzeichnishierarchie. Der Schlüsselname kann jedoch einen Schrägstrich (/) enthalten, damit es so aussieht, als wäre eine Datei in einer Verzeichnisstruktur gespeichert. Der Schlüssel eines Blobs kann z.B. `input/log1.txt` lauten. Es gibt kein Verzeichnis `input`, aber aufgrund des Schrägstrichs im Namen sieht der Schlüssel wie ein Dateipfad aus.
 
-### <a id="benefits"></a>Vorteile von Azure Storage
+### <a name="benefits-of-azure-storage"></a><a id="benefits"></a>Vorteile von Azure Storage
 Für Computecluster und Speicherressourcen, die sich nicht am selben Ort befinden, fallen implizite Leistungskosten an. Diese Kosten können dadurch verringert werden, dass Computecluster nahe bei den Speicherkontoressourcen innerhalb der Azure-Region erstellt werden. In dieser Region können die Serverknoten effizient über das Hochgeschwindigkeitsnetzwerk in Azure Storage auf die Daten zugreifen.
 
 Wenn Sie die Daten in Azure Storage anstelle von HDFS speichern, erhalten Sie mehrere Vorteile:
@@ -215,7 +215,7 @@ Data Lake Storage Gen1 kann beliebige Daten ohne vorherige Umwandlung im nativen
 
 Data Lake Storage Gen1-Container für Daten sind im Wesentlichen Ordner und Dateien. Sie arbeiten mit den gespeicherten Daten über SDKs, das Azure-Portal und Azure PowerShell. Solange Sie Ihre Daten unter Verwendung dieser Schnittstellen im Speicher ablegen und die entsprechenden Container verwenden, können Sie alle Datentypen speichern. Data Lake Storage Gen1 führt keine spezielle Verarbeitung von Daten basierend auf dem Typ der gespeicherten Daten durch.
 
-## <a name="DataLakeStoreSecurity"></a>Datensicherheit in Data Lake Storage Gen1
+## <a name="data-security-in-data-lake-storage-gen1"></a><a name="DataLakeStoreSecurity"></a>Datensicherheit in Data Lake Storage Gen1
 Data Lake Storage Gen1 verwendet Azure Active Directory zur Authentifizierung und Zugriffssteuerungslisten (ACLs) zum Verwalten des Zugriffs auf Ihre Daten.
 
 | **Feature** | **Beschreibung** |

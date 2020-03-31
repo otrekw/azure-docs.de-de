@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.openlocfilehash: a05bcdef2b7456fbab852e9728c156e57f847f57
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71123567"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Operationalisieren eines ML Services-Clusters in Azure HDInsight
@@ -138,7 +138,7 @@ Um die Serverknoten zu skalieren, nehmen Sie die Workerknoten zuerst außer Betr
 
 ### <a name="step-1-decommission-the-worker-nodes"></a>Schritt 1: Außerbetriebsetzen der Workerknoten
 
-Der ML Services-Cluster wird nicht über [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) verwaltet. Wenn die Workerknoten nicht außer Betrieb gesetzt werden, funktioniert der YARN-Ressourcen-Manager nicht wie erwartet, da er die vom Server belegten Ressourcen nicht ermitteln kann. Um diese Situation zu vermeiden, empfehlen wir die Außerbetriebnahme der Workerknoten, bevor Sie die Serverknoten horizontal hochskalieren.
+Der ML Services-Cluster wird nicht über [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) verwaltet. Wenn die Workerknoten nicht außer Betrieb gesetzt werden, funktioniert der YARN-Ressourcen-Manager nicht wie erwartet, da er die vom Server belegten Ressourcen nicht ermitteln kann. Um diese Situation zu vermeiden, empfehlen wir die Außerbetriebnahme der Workerknoten, bevor Sie die Serverknoten aufskalieren.
 
 Führen Sie folgende Schritte zur Außerbetriebnahme der Workerknoten aus:
 
@@ -178,7 +178,7 @@ Nachdem alle außer Betrieb gesetzten Workerknoten für die Ausführung als Serv
 
 1. Stellen Sie per SSH eine Verbindung mit dem Edgeknoten her.
 
-1. Führen Sie `vi /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Server.WebAPI/appsettings.json`aus.
+1. Führen Sie `vi /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Server.WebAPI/appsettings.json` aus.
 
 1. Fügen Sie im Abschnitt „URIs“ die IP-Adress- und Portdetails des Workerknotens hinzu.
 

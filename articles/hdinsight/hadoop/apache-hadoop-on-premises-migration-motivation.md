@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.openlocfilehash: 2440b93629416ea73fcf211cbe7bf5a3b72ab2e7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74267328"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – Motivation und Vorteile
@@ -143,14 +143,14 @@ Dieser Abschnitt enthält Musterfragebögen zum Sammeln wichtiger Informationen 
 |Anzahl der Oozie-Workflows|100||
 |**Thema**: **Skalieren**|||
 |Datenvolumen einschließlich Replikation|100 TB||
-|Tägliches Datenerfassungsvolumen|50 GB||
+|Tägliches Datenerfassungsvolumen|50 GB||
 |Wachstumsrate – Daten|10 % pro Jahr||
 |Wachstumsrate – Clusterknoten|5 % pro Jahr
 |**Thema**: **Clusterauslastung**|||
-|Durchschnittliche CPU-Nutzung in %|60 %||
+|Durchschnittliche CPU-Nutzung in %|60%||
 |Durchschnittliche Arbeitsspeichernutzung in %|75 %||
 |Speicherplatznutzung|75 %||
-|Durchschnittliche Netzwerknutzung in %|25%
+|Durchschnittliche Netzwerknutzung in %|25 %
 |**Thema**: **Personal**|||
 |Anzahl der Administratoren|2||
 |Anzahl der Entwickler|10||

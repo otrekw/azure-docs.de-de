@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: rohink
 ms.openlocfilehash: 42acbc0d32b3ce5de4befcf112b68f611ad70542
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76937454"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS-Metriken und -Warnungen
@@ -51,7 +51,7 @@ Die Metrik *Anzahl der Recordsets* zeigt die Anzahl der Recordsets in Azure DNS 
 
 ![Anzahl von Datensatzgruppen](./media/dns-alerts-metrics/dns-metrics-record-set-count.png)
 
-*Abbildung: Metriken zur Anzahl von Azure DNS-Ressourceneintragssätzen*
+*Abbildung: Metriken zur Azure DNS-Recordsetanzahl*
 
 
 ### <a name="record-set-capacity-utilization"></a>Kapazitätsauslastung von Datensatzgruppen
@@ -59,7 +59,7 @@ Die Metrik *Kapazitätsauslastung der Recordsets* in Azure DNS zeigt den Prozent
 
 ![Anzahl von Datensatzgruppen](./media/dns-alerts-metrics/dns-metrics-record-set-capacity-uitlization.png)
 
-*Abbildung: Metriken zur Kapazitätsauslastung der Azure DNS-Ressourceneintragssätze*
+*Abbildung: Metriken zur Azure DNS-Kapazitätsauslastung der Recordsets*
 
 ## <a name="alerts-in-azure-dns"></a>Warnungen in Azure DNS
 Azure Monitor bietet die Möglichkeit, Warnungen für verfügbare Metrikwerte auszugeben. Die DNS-Metriken sind in der neuen Benutzeroberfläche für die Warnungskonfiguration verfügbar. Wie in der [Dokumentation zu Warnungen in Azure Monitor](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) detailliert beschrieben wird, können Sie die DNS-Zone als Ressource auswählen, den Signaltyp „Metrik“ auswählen und dann die Warnungslogik und andere Parameter wie **Zeitraum** und **Häufigkeit** konfigurieren. Sie können außerdem eine [Aktionsgruppe](../azure-monitor/platform/action-groups.md) für den Fall definieren, dass die Warnungsbedingung erfüllt ist. Die Warnung wird dann über die ausgewählten Aktionen übermittelt. Weitere Informationen zum Konfigurieren von Warnungen für Azure Monitor-Metriken finden Sie unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). 

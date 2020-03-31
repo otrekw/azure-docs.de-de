@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
 ms.openlocfilehash: e6ca8007a96cc63b51b4f79b69029cbf0799e71c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75979183"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Transformieren von Daten mithilfe von Mapping Data Flow

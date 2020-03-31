@@ -9,11 +9,11 @@ author: sakash279
 ms.author: akshanka
 ms.custom: seodec18
 ms.openlocfilehash: 166076d366cbbf7bef24648772beaba9b3a88253
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76771514"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225622"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure-Tabellenspeicher – Entwurfshandbuch: Skalierbare und leistungsfähige Tabellen
 

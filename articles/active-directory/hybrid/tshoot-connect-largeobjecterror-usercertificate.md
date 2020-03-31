@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c851b5ef024e6584e6f8c93995208b08a91fbb60
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62095488"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect-Synchronisierung: Beheben von LargeObject-Fehlern, die auf das userCertificate-Attribut zurückzuführen sind
@@ -48,7 +48,7 @@ Bis zur Behebung des LargeObject-Fehlers können weitere Attributänderungen am 
 
  * Verringern Sie die Anzahl von Zertifikatwerten für das lokale AD-Objekt (maximal 15 Werte), indem Sie Werte entfernen, die von Ihrer Organisation nicht mehr verwendet werden. Dies ist nützlich, wenn die Überfrachtung mit Attributen durch abgelaufene oder nicht verwendete Zertifikate verursacht wird. Sie können mit dem [hier verfügbaren PowerShell-Skript](https://gallery.technet.microsoft.com/Remove-Expired-Certificates-0517e34f) abgelaufene Zertifikate im lokalen AD-Verzeichnis ermitteln, sichern und löschen. Vor dem Löschen der Zertifikate sollten Sie jedoch mit den Administratoren der Public Key-Infrastruktur Rücksprache halten.
 
- * Konfigurieren Sie Azure AD Connect so, dass das userCertificate-Attribut vom Export nach Azure AD ausgeschlossen wird. Im Allgemeinen wird diese Option nicht empfohlen, da Microsoft Online Services mit diesem Attribut möglicherweise bestimmte Szenarien ermöglicht. Dies gilt insbesondere für Folgendes:
+ * Konfigurieren Sie Azure AD Connect so, dass das userCertificate-Attribut vom Export nach Azure AD ausgeschlossen wird. Im Allgemeinen wird diese Option nicht empfohlen, da Microsoft Online Services mit diesem Attribut möglicherweise bestimmte Szenarien ermöglicht. Dies gilt insbesondere für:
     * Das userCertificate-Attribut für das User-Objekt wird von Exchange Online- und Outlook-Clients für Nachrichtensignatur und -verschlüsselung verwendet. Weitere Informationen zu dieser Funktion finden Sie im Artikel [S/MIME für die Nachrichtensignierung und -verschlüsselung](https://technet.microsoft.com/library/dn626158(v=exchg.150).aspx).
 
     * Das userCertificate-Attribut für das Computer-Objekt wird von Azure AD dazu verwendet, lokalen in die Domäne eingebundenen Windows 10-Geräten das Herstellen einer Verbindung mit Azure AD zu ermöglichen. Weitere Informationen zu dieser Funktion finden Sie im Artikel [Verbinden von in die Domäne eingebundenen Geräten mit Azure AD für Windows 10-Funktionen](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-devices-group-policy).
@@ -90,7 +90,7 @@ Eine Synchronisierungsregel sollte vorhanden sein, die aktiviert und so konfigur
 
 2. Konfigurieren Sie die Suchfilter mit den folgenden Werten:
 
-    | Attribut | Wert |
+    | attribute | Wert |
     | --- | --- |
     | Direction |**Ausgehend** |
     | MV-Objekttyp |**Person** |
@@ -105,7 +105,7 @@ Eine Synchronisierungsregel sollte vorhanden sein, die aktiviert und so konfigur
 7. Wählen Sie auf dem Bearbeitungsbildschirm die Registerkarte **Bereichsfilter**.
 8. Notieren Sie sich die Konfiguration des Bereichsfilters. Wenn Sie die Standardsynchronisierungsregel verwenden, sollte genau **eine Bereichsfiltergruppe mit zwei Klauseln** und folgenden Werten angezeigt werden:
 
-    | Attribut | Operator | Wert |
+    | attribute | Operator | Wert |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | Benutzer |
     | cloudMastered | NOTEQUAL | True |
@@ -115,9 +115,9 @@ Die neue Synchronisierungsregel muss über denselben **Bereichsfilter** und eine
 1. Klicken Sie im Synchronisierungsregel-Editor auf die Schaltfläche **Neue Regel hinzufügen**.
 2. Geben Sie auf der Registerkarte **Beschreibung** die folgende Konfiguration an:
 
-    | Attribut | Wert | Details |
+    | attribute | Wert | Details |
     | --- | --- | --- |
-    | NAME | *Geben Sie einen Namen ein.* | Beispiel: *Ausgehend an AAD – Benutzerdefinierte Überschreibung für „userCertificate“* |
+    | Name | *Geben Sie einen Namen ein.* | Beispiel: *Ausgehend an AAD – Benutzerdefinierte Überschreibung für „userCertificate“* |
     | BESCHREIBUNG | *Geben Sie eine Beschreibung ein.* | Beispiel: *Wenn das userCertificate-Attribut mehr als 15 Werte enthält, soll NULL exportiert werden.* |
     | Verbundenes System | *Wählen Sie den Azure AD-Connector aus.* |
     | Objekttyp des verbundenen Systems | **user** | |
@@ -129,7 +129,7 @@ Die neue Synchronisierungsregel muss über denselben **Bereichsfilter** und eine
 4. Überspringen Sie die Registerkarte **Verknüpfungsregeln**.
 5. Wechseln Sie zur Registerkarte **Transformationen**, um eine neue Transformation mit der folgenden Konfiguration hinzuzufügen:
 
-    | Attribut | Wert |
+    | attribute | Wert |
     | --- | --- |
     | Flowtyp |**Ausdruck** |
     | Zielattribut |**userCertificate** |
@@ -137,7 +137,7 @@ Die neue Synchronisierungsregel muss über denselben **Bereichsfilter** und eine
     
 6. Klicken Sie auf die Schaltfläche **Hinzufügen**, um die Synchronisierungsregel zu erstellen.
 
-### <a name="step-4-verify-the-new-sync-rule-on-an-existing-object-with-largeobject-error"></a>Schritt 4: Überprüfen der neuen Synchronisierungsregel anhand eines vorhandenen Objekts mit einem LargeObject-Fehler
+### <a name="step-4-verify-the-new-sync-rule-on-an-existing-object-with-largeobject-error"></a>Schritt 4. Überprüfen der neuen Synchronisierungsregel anhand eines vorhandenen Objekts mit einem LargeObject-Fehler
 Mit den folgenden Schritten können Sie sicherstellen, dass die Synchronisierungsregel für ein vorhandenes AD-Objekt mit LargeObject-Fehler ordnungsgemäß funktioniert, bevor Sie sie auf andere Objekte anwenden:
 1. Wechseln Sie in Synchronization Service Manager zur Registerkarte **Vorgänge**.
 2. Wählen Sie den neuesten Vorgang für den Export nach Azure AD, und klicken Sie auf eines der Objekte mit LargeObject-Fehlern.

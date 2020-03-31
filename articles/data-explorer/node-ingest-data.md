@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 19da42437cfe1d7b63dfed4bd2b30716d691a0e3
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66494495"
 ---
 # <a name="ingest-data-using-the-azure-data-explorer-node-library"></a>Erfassen von Daten mit der Azure Data Explorer-Bibliothek für Node
@@ -88,7 +88,7 @@ const blobPath = `https://${account}.blob.core.windows.net/${container}/${filePa
 
 ## <a name="create-a-table-on-your-test-cluster"></a>Erstellen einer Tabelle im Testcluster
 
-Erstellen Sie eine Tabelle, die dem Schema der Daten in der Datei `StormEvents.csv` entspricht. Wenn dieser Code ausgeführt wird, wird eine Meldung wie die folgende zurückgegeben: *Verwenden Sie zur Anmeldung einen Webbrowser, um die Seite https://microsoft.com/devicelogin zu öffnen. Geben Sie dann zur Authentifizierung den Code XXXXXXXXX ein*. Befolgen Sie die Schritte für die Anmeldung, und kehren Sie dann zurück, um den Codeblock auszuführen. Für nachfolgende Codeblöcke, die eine Verbindung herstellen, müssen Sie sich wieder anmelden.
+Erstellen Sie eine Tabelle, die dem Schema der Daten in der Datei `StormEvents.csv` entspricht. Wenn dieser Code ausgeführt wird, gibt er eine Meldung wie die folgende zurück: *Verwenden Sie zum Anmelden einen Webbrowser, um die Seite https://microsoft.com/devicelogin zu öffnen, und geben Sie den Code XXXXXXXXX ein, um sich zu authentifizieren*. Befolgen Sie die Schritte für die Anmeldung, und kehren Sie dann zurück, um den Codeblock auszuführen. Für nachfolgende Codeblöcke, die eine Verbindung herstellen, müssen Sie sich wieder anmelden.
 
 ```javascript
 const kustoClient = new KustoClient(kcsbData);

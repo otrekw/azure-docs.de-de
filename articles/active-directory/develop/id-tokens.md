@@ -14,10 +14,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.openlocfilehash: 1efd027edb85cabcfdc2a170771ef19182b5c9f8
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77160949"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity Platform – ID-Token
@@ -61,7 +61,7 @@ Zeigen Sie dieses v2. 0-Beispieltoken in [jwt.ms](https://jwt.ms/#id_token=eyJ0e
 
 Diese Liste zeigt die Ansprüche, die (sofern nichts anderes angegeben ist) in den meisten ID-Token standardmäßig enthalten sind.  Allerdings kann Ihre App mithilfe von [optionalen Ansprüchen](active-directory-optional-claims.md) zusätzliche Ansprüche im ID-Token anfordern.  Diese können vom `groups`-Anspruch bis zu Informationen zum Namen des Benutzers reichen.
 
-|Anspruch | Format | Beschreibung |
+|Anspruch | Format | BESCHREIBUNG |
 |-----|--------|-------------|
 |`aud` |  Zeichenfolge, ein App-ID-URI | Identifiziert den vorgesehenen Empfänger des Tokens. In `id_tokens` ist die Zielgruppe die Anwendungs-ID Ihrer App, die Ihrer App im Azure-Portal zugewiesen ist. Ihre App sollte diesen Wert überprüfen und das Token ablehnen, wenn der Wert nicht übereinstimmt. |
 |`iss` |  Zeichenfolge, ein STS-URI | Identifiziert den Sicherheitstokendienst (STS), der das Token und den Azure AD-Mandanten, in dem der Benutzer authentifiziert wurde, erstellt und zurückgibt. Wenn das Token vom v2.0-Endpunkt ausgegeben wurde, endet der URI mit `/v2.0`.  Die GUID, die angibt, dass der Benutzer ein Consumer-Benutzer eines Microsoft-Kontos ist, lautet `9188040d-6c67-4c5b-b112-36a304b66dad`. Ihre App sollte ggf. den GUID-Teil des Anspruchs verwenden, um die Mandanten einzuschränken, die sich bei der App anmelden können. |

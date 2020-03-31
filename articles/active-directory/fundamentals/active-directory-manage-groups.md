@@ -14,10 +14,10 @@ ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 961444e15ae1c45db1fc7423a6ac3cc96cc7b3fb
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75768009"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Verwalten des Zugriffs auf Apps und Ressourcen mithilfe von Azure Active Directory-Gruppen
@@ -43,7 +43,7 @@ Es gibt vier Möglichkeiten zum Zuweisen von Ressourcenzugriffsrechten zu Ihren 
 
 - **Direkte Zuweisung:** Der Ressourcenbesitzer weist den Benutzer direkt der Ressource zu.
 
-- **Gruppenzuweisung:** Der Ressourcenbesitzer weist der Ressource eine Azure AD-Gruppe zu. Dadurch erhalten automatisch alle Gruppenmitglieder Zugriff auf die Ressource. Die Gruppenmitgliedschaft wird vom Gruppenbesitzer und vom Ressourcenbesitzer verwaltet, sodass beide Besitzer Mitglieder zur Gruppe hinzufügen bzw. daraus entfernen können. Weitere Informationen zum Hinzufügen oder Entfernen der Gruppenmitgliedschaft finden Sie unter [Gewusst wie: Hinzufügen oder Entfernen einer Gruppe zu bzw. aus einer anderen Gruppe in Azure Active Directory](active-directory-groups-membership-azure-portal.md). 
+- **Gruppenzuweisung:** Der Ressourcenbesitzer weist der Ressource eine Azure AD-Gruppe zu. Dadurch erhalten automatisch alle Gruppenmitglieder Zugriff auf die Ressource. Die Gruppenmitgliedschaft wird vom Gruppenbesitzer und vom Ressourcenbesitzer verwaltet, sodass beide Besitzer Mitglieder zur Gruppe hinzufügen bzw. daraus entfernen können. Weitere Informationen zum Hinzufügen oder Entfernen der Gruppenmitgliedschaft finden Sie unter [Verwalten, welchen Gruppen eine Gruppe in Ihrem Azure Active Directory-Mandanten angehört](active-directory-groups-membership-azure-portal.md). 
 
 - **Regelbasierte Zuweisung:** Der Ressourcenbesitzer erstellt eine Gruppe und verwendet eine Regel, um festzulegen, welche Benutzer einer bestimmten Ressource zugewiesen werden. Die Regel basiert auf Attributen, die einzelnen Benutzern zugewiesen sind. Der Ressourcenbesitzer verwaltet die Regel und bestimmt, welche Attribute und Werte zum Zulassen des Zugriffs auf die Ressource erforderlich sind. Weitere Informationen finden Sie unter [Erstellen einer dynamischen Gruppe und Überprüfen des Status](../users-groups-roles/groups-create-rule.md).
 

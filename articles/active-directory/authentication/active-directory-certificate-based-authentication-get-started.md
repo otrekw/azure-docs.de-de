@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4b57c4f474b0b9def08005f32f48225d36ea8cf1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848832"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Erste Schritte mit zertifikatbasierter Authentifizierung in Azure Active Directory
@@ -47,7 +47,7 @@ Damit Sie eine zertifikatbasierte Authentifizierung konfigurieren können, muss 
 >[!IMPORTANT]
 >Eine Zertifikatsperrliste darf maximal 20 MB groß sein, damit sie erfolgreich von Azure Active Directory heruntergeladen und zwischengespeichert werden kann, und der Download der Zertifikatsperrliste darf maximal zehn Sekunden dauern.  Wenn Azure Active Directory eine Zertifikatsperrliste nicht herunterladen kann, sind zertifikatbasierte Authentifizierungen mit Zertifikaten, die von der entsprechenden Zertifizierungsstelle ausgestellt wurden, nicht erfolgreich. Zur Einhaltung der Größenbeschränkungen für CRL-Dateien empfiehlt es sich, eine angemessene Zertifikatlebensdauer zu verwenden und abgelaufene Zertifikate zu bereinigen. 
 
-## <a name="step-1-select-your-device-platform"></a>Schritt 1: Auswählen Ihrer Geräteplattform
+## <a name="step-1-select-your-device-platform"></a>Schritt 1: Wählen Sie Ihre Geräteplattform
 
 Als ersten Schritt müssen Sie für Ihre Geräteplattform Folgendes überprüfen:
 
@@ -59,7 +59,7 @@ Die entsprechenden Informationen sind für die folgenden Geräteplattformen vorh
 - [Android](active-directory-certificate-based-authentication-android.md)
 - [iOS](active-directory-certificate-based-authentication-ios.md)
 
-## <a name="step-2-configure-the-certificate-authorities"></a>Schritt 2: Konfigurieren der Zertifizierungsstellen
+## <a name="step-2-configure-the-certificate-authorities"></a>Schritt 2: Konfigurieren Sie die Zertifizierungsstellen
 
 Laden Sie zum Konfigurieren Ihrer Zertifizierungsstellen in Azure Active Directory für jede Zertifizierungsstelle Folgendes hoch:
 

@@ -9,10 +9,10 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: 02247adb9852a72b386feb2ef0924b0f1b3d6277
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75895239"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Behandeln von Problemen mit Apache Hive unter Verwendung von Azure HDInsight
@@ -99,7 +99,7 @@ Für den Code in den Schritten zur Behebung wird davon ausgegangen, dass die Dat
 
 - [Hive configuration properties](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties) (Eigenschaften der Hive-Konfiguration)
 
-## <a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Wie analysiere ich Apache Tez DAG-Daten (Directed Acyclic Graph, gerichteter azyklischer Graph) in einem clusterkritischen Pfad?
+## <a name="how-do-i-analyze-apache-tez-dag-data-on-a-cluster-critical-path"></a><a name="how-do-i-analyze-tez-dag-data-on-a-cluster-critical-path"></a>Wie analysiere ich Apache Tez DAG-Daten (Directed Acyclic Graph, gerichteter azyklischer Graph) in einem clusterkritischen Pfad?
 
 ### <a name="resolution-steps"></a>Lösungsschritte
 
@@ -157,7 +157,7 @@ Es gibt zwei Möglichkeiten zum Erfassen der Tez DAG-Daten:
   3. Wählen Sie den gerichteten azyklischen Graph, der angezeigt werden soll.
   4. Wählen Sie **Download data** (Daten herunterladen) aus.
 
-### <a name="additional-reading-end"></a>Zusätzliche Lektüre
+### <a name="additional-reading"></a><a name="additional-reading-end"></a>Zusätzliche Lektüre
 
 [Herstellen einer Verbindung mit einem HDInsight-Cluster mit SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 

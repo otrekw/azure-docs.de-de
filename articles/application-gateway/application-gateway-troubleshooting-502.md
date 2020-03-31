@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/16/2019
 ms.author: amsriva
 ms.openlocfilehash: 17bed17b536f6e88fc821fd83e09a1d6ea218bc3
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74130470"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Behandeln von Fehlern aufgrund eines ungültigen Gateways in Application Gateway
@@ -108,7 +108,7 @@ Folgende Zusatzeigenschaften werden hinzugefügt:
 
 | Überprüfungseigenschaft | BESCHREIBUNG |
 | --- | --- |
-| NAME |Name der Überprüfung. Dieser Name wird verwendet, um in den Back-End-HTTP-Einstellungen auf die Überprüfung zu verweisen. |
+| Name |Name der Überprüfung. Dieser Name wird verwendet, um in den Back-End-HTTP-Einstellungen auf die Überprüfung zu verweisen. |
 | Protocol |Das zum Senden der Überprüfung verwendete Protokoll. Für die Überprüfung wird das in den HTTP-Einstellungen des Back-Ends festgelegte Protokoll verwendet. |
 | Host |Hostname zum Senden der Überprüfung Nur relevant, wenn in Application Gateway mehrere Standorte konfiguriert sind. Entspricht nicht dem VM-Hostnamen. |
 | `Path` |Relativer Pfad der Überprüfung. Der gültige Pfad beginnt mit „/“. Der Test wird an \<Protokoll\>://\<Host\>:\<Port\>\<Pfad\> gesendet |

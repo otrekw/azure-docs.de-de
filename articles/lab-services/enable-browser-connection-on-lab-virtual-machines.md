@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: takamath
 ms.openlocfilehash: 2ddc56c60c547bd4ce48d620a83fb79246762bfb
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69641982"
 ---
 # <a name="enable-browser-connection-on-lab-virtual-machines"></a>Aktivieren der Browserverbindung auf Lab-VMs 

@@ -4,10 +4,10 @@ description: Der Artikel enthält eine Übersicht über Service Fabric und die N
 ms.topic: conceptual
 ms.date: 8/8/2018
 ms.openlocfilehash: 884cefa3d6a60f55269afac73c40b9f6b21518f6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458224"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric und Container
@@ -37,10 +37,10 @@ Container werden direkt oberhalb des Kernels ausgeführt und verfügen über ein
 
 Im Vergleich zu virtuellen Computern haben Container die folgenden Vorteile:
 
-* **Klein:** Für Container werden ein einzelner Speicherbereich und Ebenenversionen und -Updates verwendet, um die Effizienz zu steigern.
-* **Schnell**: Container müssen nicht ein gesamtes Betriebssystem starten. Daher ist ihr Start deutlich schneller und erfolgt üblicherweise innerhalb weniger Sekunden.
-* **Portabilität**: Ein in einem Container enthaltenes Anwendungsimage kann so portiert werden, dass es in der Cloud, lokal, auf virtuellen Computern oder direkt auf physischen Computern ausgeführt werden kann.
-* **Ressourcenkontrolle**: Ein Container kann die physischen Ressourcen beschränken, die er auf seinem Host nutzen kann.
+* **Geringe Größe**: Für Container werden nur ein Speicherbereich und Ebenen und Updates verwendet, um die Effizienz zu steigern.
+* **Schnell:** Container müssen nicht ein gesamtes Betriebssystem starten. Daher ist ihr Start deutlich schneller und erfolgt üblicherweise innerhalb weniger Sekunden.
+* **Portabilität:** Ein in einem Container enthaltenes Anwendungsimage kann für die Ausführung in der Cloud oder lokal, auf virtuellen Computern oder direkt auf physischen Computern portiert werden.
+* **Ressourcenkontrolle:** Ein Container kann die physischen Ressourcen beschränken, die er auf seinem Host verbrauchen kann.
 
 ### <a name="container-types-and-supported-environments"></a>Containertypen und unterstützte Umgebungen
 
@@ -65,11 +65,11 @@ In der folgenden Abbildung sind die unterschiedlichen Arten der Virtualisierung 
 
 In den folgenden typischen Beispielen ist ein Container eine gute Wahl:
 
-* **IIS-Lift und -Shift**: Sie können eine vorhandene [ASP.NET MVC](https://www.asp.net/mvc)-App in einem Container platzieren, statt sie zu ASP.NET Core zu migrieren. Diese ASP.NET MVC-Apps sind von Internetinformationsdiensten (Internet Information Services, IIS) abhängig. Sie können diese Anwendungen in Containerimages aus dem vorab erstellten IIS-Image verpacken und mit Service Fabric bereitstellen. Informationen zu Windows-Containern finden Sie unter [Container Images on Windows Server (Containerimages unter Windows Server)](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server).
+* **IIS-Lift und -Shift:** Sie können eine vorhandene [ASP.NET MVC](https://www.asp.net/mvc)-App in einem Container platzieren statt sie zu ASP.NET Core zu migrieren. Diese ASP.NET MVC-Apps sind von Internetinformationsdiensten (Internet Information Services, IIS) abhängig. Sie können diese Anwendungen in Containerimages aus dem vorab erstellten IIS-Image verpacken und mit Service Fabric bereitstellen. Informationen zu Windows-Containern finden Sie unter [Container Images on Windows Server (Containerimages unter Windows Server)](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server).
 
-* **Mischen Sie Container und Service Fabric-Microservices**: Verwenden Sie ein vorhandenes Containerimage für einen Teil Ihrer Anwendung. Beispielsweise können Sie den [NGINX-Container](https://hub.docker.com/_/nginx/) für das Web-Front-End Ihrer Anwendung und zustandsbehaftete Dienste für die rechenintensiveren Back-End-Vorgänge verwenden.
+* **Mischen von Containern und Service Fabric-Microservices:** Verwenden Sie ein vorhandenes Containerimage für einen Teil Ihrer Anwendung. Beispielsweise können Sie den [NGINX-Container](https://hub.docker.com/_/nginx/) für das Web-Front-End Ihrer Anwendung und zustandsbehaftete Dienste für die rechenintensiveren Back-End-Vorgänge verwenden.
 
-* **Reduzieren Sie die Auswirkungen der Beeinträchtigung durch andere Dienste („Noisy Neighbors“)** : Sie können die Möglichkeit zur Ressourcenkontrolle von Containern verwenden, um die Ressourcen einzuschränken, die ein Dienst auf einem Host verwendet. Wenn Dienste eine große Menge von Ressourcen nutzen und die Leistung anderer Dienste beeinträchtigen (z.B. ein Abfragevorgang mit langer Ausführungsdauer), können Sie diese Dienste in Containern mit Ressourcenkontrolle anordnen.
+* **Reduzieren der Auswirkungen der Beeinträchtigung durch andere Dienste („Noisy Neighbors):** Sie können die Funktion zur Ressourcenkontrolle für Container verwenden, um die Ressourcen einzuschränken, die ein Dienst auf einem Host verwendet. Wenn Dienste eine große Menge von Ressourcen nutzen und die Leistung anderer Dienste beeinträchtigen (z.B. ein Abfragevorgang mit langer Ausführungsdauer), können Sie diese Dienste in Containern mit Ressourcenkontrolle anordnen.
 
 ## <a name="service-fabric-support-for-containers"></a>Service Fabric-Unterstützung für Container
 

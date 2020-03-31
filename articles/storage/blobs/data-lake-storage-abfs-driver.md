@@ -9,13 +9,13 @@ ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: 3db039d39ef532ea51143dc9cbdb6bd5f29d6225
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75970276"
 ---
-# <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Der Azure-Blobdateisystemtreiber (ABFS): Ein dedizierter Azure Storage-Treiber für Hadoop
+# <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Der ABFS-Treiber (Azure Blob Filesystem, Azure-Blobdateisystem): Ein dedizierter Azure Storage-Treiber für Hadoop
 
 Eine der Hauptmethoden für den Zugriff auf Daten in Azure Data Lake Storage Gen2 ist das [Hadoop-Dateisystem](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html). Mit Data Lake Storage Gen2 erhalten Benutzer von Azure Blob Storage Zugriff auf einen neuen Treiber, den Azure-Blobdateisystem- oder `ABFS`-Treiber. ABFS ist Teil von Apache Hadoop und in vielen kommerziellen Hadoop-Distributionen enthalten. Dank dieses Treibers können zahlreiche Anwendungen und Frameworks ganz ohne Code, der explizit auf den Azure Blob Storage-Dienst verweist, auf Daten in Data Lake Storage Gen2 zugreifen.
 
@@ -42,13 +42,13 @@ hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows
 
 Intern übersetzt der ABFS-Treiber die im URI angegebenen Ressourcen in Dateien und Verzeichnisse und führt Aufrufe für die Azure Data Lake Storage-REST-API mit diesen Verweisen aus.
 
-### <a name="authentication"></a>Authentifizierung
+### <a name="authentication"></a>Authentication
 
 Der ABFS-Treiber unterstützt zwei Formen der Authentifizierung, sodass die Hadoop-Anwendung sicher auf Ressourcen in einem Data Lake Storage Gen2-fähigen Konto zugreifen kann. Einzelheiten zu den verfügbaren Authentifizierungsschemas finden Sie im [Azure Storage-Sicherheitsleitfaden](security-recommendations.md). Sie lauten wie folgt:
 
-- **Gemeinsam verwendeter Schlüssel:** Ermöglicht Benutzern den Zugriff auf ALLE Ressourcen im Konto. Der Schlüssel ist verschlüsselt und wird in der Hadoop-Konfiguration gespeichert.
+- **Gemeinsam verwendeter Schlüssel**: Ermöglicht Benutzern den Zugriff auf ALLE Ressourcen im Konto. Der Schlüssel ist verschlüsselt und wird in der Hadoop-Konfiguration gespeichert.
 
-- **Azure Active Directory OAuth-Bearertoken:** Azure AD-Bearertoken werden durch den Treiber abgerufen und aktualisiert, indem die Identität des Endbenutzers oder ein konfigurierter Dienstprinzipal verwendet wird. Mit diesem Authentifizierungsmodell wird jeder Zugriff auf der Basis der Identität des angegebenen Tokens pro Aufruf autorisiert und anhand der zugewiesenen POSIX-ACL (Zugriffssteuerungsliste) ausgewertet.
+- **Azure Active Directory OAuth-Bearertoken**: Azure AD-Bearertoken werden durch den Treiber abgerufen und aktualisiert, indem die Identität des Endbenutzers oder ein konfigurierter Dienstprinzipal verwendet wird. Mit diesem Authentifizierungsmodell wird jeder Zugriff auf der Basis der Identität des angegebenen Tokens pro Aufruf autorisiert und anhand der zugewiesenen POSIX-ACL (Zugriffssteuerungsliste) ausgewertet.
 
    > [!NOTE]
    > Azure Data Lake Storage Gen2 unterstützt nur Azure AD v1.0-Endpunkte.

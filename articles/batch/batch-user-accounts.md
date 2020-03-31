@@ -15,11 +15,11 @@ ms.date: 11/18/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: fee3dc764d2052185160a4ba6b3d70854c54eeac
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022782"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227406"
 ---
 > [!NOTE] 
 > Die in diesem Artikel beschriebenen Benutzerkonten unterscheiden sich aus Sicherheitsgründen von den Benutzerkonten für RDP (Remote Desktop Protocol) oder SSH (Secure Shell). 
@@ -59,8 +59,8 @@ Weitere Informationen zum Zugriff auf Dateien und Verzeichnisse aus einer Aufgab
 
 Die Rechteerweiterungsebene des Benutzerkontos lässt erkennen, ob eine Aufgabe mit erhöhten Zugriffsrechten ausgeführt wird. Sowohl ein automatisches Benutzerkonto als auch ein benanntes Benutzerkonto kann mit erhöhten Zugriffsrechten ausgeführt werden. Die zwei Optionen für die Rechteerweiterungsebene sind:
 
-- **NonAdmin:** Die Aufgabe wird unter dem Standardbenutzer ohne erhöhte Zugriffsrechte ausgeführt. Die standardmäßige Rechteerweiterungsebene für ein Batch-Benutzerkonto ist immer **NonAdmin**.
-- **Admin:** Die Aufgabe wird unter einem Benutzer mit erhöhten Zugriffsrechten und vollständigen Administratorberechtigungen ausgeführt. 
+- **NonAdmin:** Die Aufgabe wird als Standardbenutzer ohne erhöhte Zugriffsrechte ausgeführt. Die standardmäßige Rechteerweiterungsebene für ein Batch-Benutzerkonto ist immer **NonAdmin**.
+- **Admin:** Die Aufgabe wird als Benutzer mit erhöhten Zugriffsrechten und vollständigen Administratorberechtigungen ausgeführt. 
 
 ## <a name="auto-user-accounts"></a>Automatische Benutzerkonten
 

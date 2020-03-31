@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/05/2020
 ms.openlocfilehash: 68bc30d08d95fe8e3d20a8ecb7af6c9710951921
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399715"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatisches Skalieren von Azure HDInsight-Clustern
@@ -69,7 +69,7 @@ Wenn die folgenden Bedingungen erkannt werden, gibt die Autoskalierung eine Skal
 
 Für das zentrale Hochskalieren berechnet der HDInsight-Dienst, wie viele neue Workerknoten benötigt werden, um die aktuellen CPU- und Speicheranforderungen zu erfüllen, und gibt dann eine Anforderung für zentrales Hochskalieren aus, um die erforderliche Anzahl an Knoten hinzuzufügen.
 
-Für das zentrale Herunterskalieren gibt die Autoskalierung basierend auf der Anzahl der AM-Container pro Knoten und den aktuellen CPU- und Arbeitsspeicheranforderungen eine Anforderung zum Entfernen einer bestimmten Anzahl von Knoten aus. Der Dienst erkennt auch, welche Knoten aufgrund der aktuellen Auftragsausführung für die Entfernung in Frage kommen. Der Vorgang des zentralen Herunterskalierens deaktiviert zunächst die Knoten und entfernt sie dann aus dem Cluster.
+Für das zentrale Herunterskalieren gibt die Autoskalierung basierend auf der Anzahl der AM-Container pro Knoten und den aktuellen CPU- und Arbeitsspeicheranforderungen eine Anforderung zum Entfernen einer bestimmten Anzahl von Knoten aus. Der Dienst erkennt auch, welche Knoten aufgrund der aktuellen Auftragsausführung für die Entfernung in Frage kommen. Der Vorgang des Herunterskalierens deaktiviert zunächst die Knoten und entfernt sie dann aus dem Cluster.
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -218,7 +218,7 @@ Berücksichtigen Sie die folgenden Faktoren, bevor Sie sich für einen Modus ent
 * Lastvarianz: Folgt die Last des Clusters zu bestimmten Zeiten bzw. an bestimmten Tagen einem einheitlichen Muster? Wenn nicht, ist die lastbasierte Skalierung die besser geeignete Option.
 * SLA-Anforderungen: Die Autoskalierung ist nicht vorausschauend (prädiktiv), sondern reaktiv. Besteht eine ausreichende Verzögerung zwischen dem Zeitpunkt, zu dem die Zunahme der Last beginnt, und dem Zeitpunkt, zu dem der Cluster die Zielgröße erreicht haben muss? Falls strenge SLA-Anforderungen gelten und die Last einem festen bekannten Muster folgt, ist „zeitplanbasiert“ die bessere Option.
 
-### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>Berücksichtigen der Latenz von Vorgängen zum zentralen Hoch- bzw. Herunterskalieren
+### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>Berücksichtigen der Latenz von Vorgängen zum Hoch- bzw. Herunterskalieren
 
 Es kann 10 bis 20 Minuten dauern, bis ein Skalierungsvorgang abgeschlossen ist. Sie sollten diese Verzögerung einplanen, wenn Sie einen benutzerdefinierten Zeitplan einrichten. Wenn Sie beispielsweise um 9:00 Uhr eine Clustergröße von 20 benötigen, sollten Sie den Zeitplantrigger auf einen früheren Zeitpunkt festlegen, z. B. 8:30 Uhr, damit der Skalierungsvorgang um 9:00 Uhr abgeschlossen ist.
 
@@ -246,7 +246,7 @@ Alle Statusmeldungen des Clusters, die möglicherweise angezeigt werden, werden 
 |---|---|
 | Wird ausgeführt | Der Cluster wird normal ausgeführt. Alle vorherigen Autoskalierungsaktivitäten wurde erfolgreich abgeschlossen. |
 | Wird aktualisiert  | Die Autoskalierungskonfiguration für den Cluster wird aktualisiert.  |
-| HDInsight-Konfiguration  | Es wird ein Vorgang für das zentral Hoch- oder Herunterskalieren des Clusters ausgeführt.  |
+| HDInsight-Konfiguration  | Es wird ein Vorgang für das Hoch- oder Herunterskalieren des Clusters ausgeführt.  |
 | Fehler beim Aktualisieren  | HDInsight hat beim Aktualisieren der Autoskalierungskonfiguration Fehler festgestellt. Kunden können wählen, ob sie den Aktualisierungsvorgang wiederholen oder die Autoskalierung deaktivieren möchten.  |
 | Fehler  | Es gibt ein Problem mit dem Cluster, sodass er kann nicht verwendet werden kann. Löschen Sie diesen Cluster, und erstellen Sie einen neuen.  |
 

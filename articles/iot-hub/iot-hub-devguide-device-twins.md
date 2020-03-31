@@ -7,13 +7,13 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.openlocfilehash: 4b80004a3d818e66cc2fb61f3d611bbe3e3ded92
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.date: 02/01/2020
+ms.openlocfilehash: 51e58de92f111c8854add613a299f2b8ccec0503
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807033"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237550"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Verstehen und Verwenden von Gerätezwillingen in IoT Hub
 
@@ -52,9 +52,9 @@ Der Lebenszyklus eines Gerätezwillings ist mit der entsprechenden [Geräteident
 
 Ein Gerätezwilling ist ein JSON-Dokument, das Folgendes enthält:
 
-* **Tags:** Ein Abschnitt des JSON-Dokuments, in dem das Lösungs-Back-End Lese- und Schreibvorgänge ausführen kann. Tags sind für Geräte-Apps nicht sichtbar.
+* **Tags**. Ein Abschnitt des JSON-Dokuments, in dem das Lösungs-Back-End Lese- und Schreibvorgänge ausführen kann. Tags sind für Geräte-Apps nicht sichtbar.
 
-* **Gewünschte Eigenschaften:** Werden in Verbindung mit gemeldeten Eigenschaften zum Synchronisieren von Gerätekonfigurationen oder -zuständen verwendet. Das Lösungs-Back-End kann gewünschte Eigenschaften festlegen, die von der Geräte-App gelesen werden können. Die Geräte-App kann auch Benachrichtigungen über Änderungen an den gewünschten Eigenschaften erhalten.
+* **Gewünschte Eigenschaften** Werden in Verbindung mit gemeldeten Eigenschaften zum Synchronisieren von Gerätekonfigurationen oder -zuständen verwendet. Das Lösungs-Back-End kann gewünschte Eigenschaften festlegen, die von der Geräte-App gelesen werden können. Die Geräte-App kann auch Benachrichtigungen über Änderungen an den gewünschten Eigenschaften erhalten.
 
 * **Gemeldete Eigenschaften** Werden in Verbindung mit gewünschten Eigenschaften zum Synchronisieren von Gerätekonfigurationen oder -zuständen verwendet. Die Geräte-App kann gemeldete Eigenschaften festlegen, die vom Lösungs-Back-End gelesen und abgefragt werden können.
 
@@ -182,7 +182,7 @@ Das Lösungs-Back-End greift mithilfe folgender atomischer Vorgänge, die über 
 
   - Eigenschaften
 
-    | NAME | Wert |
+    | Name | Wert |
     | --- | --- |
     $content-type | Anwendung/json |
     $iothub-enqueuedtime |  Uhrzeit, zu der die Benachrichtigung gesendet wurde |
@@ -245,11 +245,15 @@ Die [Azure IoT-Geräte-SDKs](iot-hub-devguide-sdks.md) vereinfachen die Verwendu
 
 Tags, gewünschte Eigenschaften und gemeldete Eigenschaften sind JSON-Objekte mit den folgenden Einschränkungen:
 
-* Alle Schlüssel in JSON-Objekten sind UTF-8-codiert, die Groß-/Kleinschreibung muss beachtet werden, und ihre Länge beträgt bis zu 1 KB. UNICODE-Steuerzeichen (Segmente C0 und C1) sowie `.`, `$` und „SP“ gehören nicht zu den zulässigen Zeichen.
+* **Schlüssel**: Alle Schlüssel in JSON-Objekten sind UTF-8-codiert, die Groß-/Kleinschreibung muss beachtet werden, und ihre Länge beträgt bis zu 1 KB. UNICODE-Steuerzeichen (Segmente C0 und C1) sowie `.`, `$` und „SP“ gehören nicht zu den zulässigen Zeichen.
 
-* Alle Werte in JSON-Objekten können die folgenden JSON-Typen aufweisen: boolescher Wert, Zahl, Zeichenfolge, Objekt. Arrays sind nicht zulässig. Der maximale Wert für ganze Zahlen ist 4503599627370495 und der minimale Wert für ganze Zahlen ist -4503599627370496.
+* **Werte**: Alle Werte in JSON-Objekten können die folgenden JSON-Typen aufweisen: boolescher Wert, Zahl, Zeichenfolge, Objekt. Arrays sind nicht zulässig.
 
-* Alle JSON-Objekte in Tags, gewünschten und gemeldeten Eigenschaften können eine maximale Tiefe von 10 haben. Das folgende Objekt ist z.B. gültig:
+    * Ganze Zahlen können den Minimalwert „-4503599627370496“ und den Maximalwert „4503599627370495“ haben.
+
+    * Zeichenfolgenwerte sind UTF-8-codiert und können eine maximale Länge von 4 Bytes haben.
+
+* **Tiefe**: Die maximale Tiefe von JSON-Objekten in Tags, gewünschten Eigenschaften und gemeldeten Eigenschaften ist „10“. Das folgende Objekt beispielsweise ist gültig:
 
    ```json
    {
@@ -281,15 +285,23 @@ Tags, gewünschte Eigenschaften und gemeldete Eigenschaften sind JSON-Objekte mi
    }
    ```
 
-* Alle Zeichenfolgenwerte können höchstens 4 KB lang sein.
-
 ## <a name="device-twin-size"></a>Größe des Gerätezwillings
 
-IoT Hub erzwingt eine Größenbeschränkung von 8 KB für den Wert `tags` und eine Größenbeschränkung von jeweils 32 KB für die Werte `properties/desired` und `properties/reported`. Diese Summen schließen keine schreibgeschützten Elemente ein.
+IoT Hub erzwingt eine Größenbeschränkung von 8 KB auf den Wert `tags` und eine Größenbeschränkung von jeweils 32 KB auf die Werte `properties/desired` und `properties/reported`. In diesen Summen sind keine schreibgeschützten Elemente wie `$etag`, `$version` und `$metadata/$lastUpdated` enthalten.
 
-Die Größe wird durch Zusammenzählen aller Zeichen mit Ausnahme von UNICODE-Steuerzeichen (Segmente C0 und C1) und Leerzeichen außerhalb von Zeichenfolgenkonstanten berechnet.
+Die Größe von Zwillingen wird folgendermaßen berechnet:
 
-IoT Hub gibt für alle Vorgänge, die die Größe dieser Dokumente über den Grenzwert hinaus erhöhen würden, einen Fehler zurück.
+* Für jede Eigenschaft im JSON-Dokument berechnet IoT Hub kumulativ und addiert die Länge des Eigenschaftenschlüssels und Eigenschaftswerts.
+
+* Eigenschaftenschlüssel werden als UTF8-codierte Zeichenfolgen betrachtet.
+
+* Einfache Eigenschaftswerte werden als UTF8-codierte Zeichenfolgen, numerische Werte (8 Bytes) oder boolesche Werte (4 Bytes) betrachtet.
+
+* Die Größe der UTF8-codierten Zeichenfolgen wird berechnet, indem alle Zeichen gezählt werden – ausgenommen UNICODE-Steuerzeichen (Segmente C0 und C1).
+
+* Komplexe Eigenschaftswerte (geschachtelte Objekte) werden basierend auf der Aggregatgröße der darin enthaltenen Eigenschaftenschlüssel und Eigenschaftswerte berechnet.
+
+IoT Hub gibt für alle Vorgänge, die die Größe der Dokumente `tags`, `properties/desired` und `properties/reported` über den Grenzwert hinaus erhöhen würden, einen Fehler zurück.
 
 ## <a name="device-twin-metadata"></a>Metadaten des Gerätezwillings
 

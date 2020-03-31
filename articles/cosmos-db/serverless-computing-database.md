@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: sngun
 ms.openlocfilehash: 70545020899b69508a4cedb0fd7cf5495c847104
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77462444"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Serverloses Datenbankcomputing mit Azure Cosmos DB und Azure Functions
@@ -126,7 +126,7 @@ Azure Cosmos DB empfiehlt sich als folgenden Gründen als Datenbank für Ihre Ar
 
 * **Ohne Schema**. Azure Cosmos DB verfügt über kein Schema, daher kann jede Datenausgabe von einer Azure-Funktion verarbeitet werden. Durch diesen Ansatz der „uneingeschränkten Verarbeitung“ kann eine Vielzahl von Funktionen erstellt werden, die Daten in Azure Cosmos DB ausgeben.
 
-* **Skalierbarer Durchsatz**. Durchsatz kann in Azure Cosmos DB sofort zentral hoch- und herunterskaliert werden. Wenn Sie über Hunderte oder sogar Tausende von Funktionen verfügen, die alle denselben Container abfragen und in diesen Container schreiben, können Sie Ihre [RU/s](request-units.md) zentral hochskalieren, sodass die Last bewältigt werden kann. Alle Funktionen arbeiten parallel mit den zugeordneten RU/s, und Ihre Daten sind garantiert [konsistent](consistency-levels.md).
+* **Skalierbarer Durchsatz**. Durchsatz kann in Azure Cosmos DB sofort zentral hoch- und herunterskaliert werden. Wenn Sie über Hunderte oder sogar Tausende von Funktionen verfügen, die alle denselben Container abfragen und in diesen Container schreiben, können Sie Ihre [RU/s](request-units.md) hochskalieren, sodass die Last bewältigt werden kann. Alle Funktionen arbeiten parallel mit den zugeordneten RU/s, und Ihre Daten sind garantiert [konsistent](consistency-levels.md).
 
 * **Globale Replikation**. Sie können Azure Cosmos DB-Daten [weltweit](distribute-data-globally.md) replizieren, um die Latenz zu verringern, wobei eine Geolokalisierung Ihrer Daten in größtmöglicher Nähe zu Ihren Benutzern erfolgt. Wie bei allen Azure Cosmos DB-Abfragen sind Daten aus ereignisgesteuerten Triggern Daten, die aus der Azure Cosmos DB in größter Nähe zum Benutzer gelesen werden.
 

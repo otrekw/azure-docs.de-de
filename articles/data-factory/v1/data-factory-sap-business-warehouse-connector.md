@@ -13,14 +13,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 108bdf057cd375e28b10a6838ec5c8c6f57749a8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929226"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236262"
 ---
 # <a name="move-data-from-sap-business-warehouse-using-azure-data-factory"></a>Verschieben von Daten aus SAP Business Warehouse mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-sap-business-warehouse-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-sap-business-warehouse.md)
 
@@ -45,7 +45,7 @@ Um Konnektivität zur SAP BW-Instanz zu aktivieren, installieren Sie die folgend
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einem lokalen Teradata-Datenspeicher verschiebt. 
 
-- Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten. 
+- Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Siehe [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten. 
 - Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlage**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. 
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
@@ -86,7 +86,7 @@ Wenn die Quelle bei der Kopieraktivität den Typ **RelationalSource** hat (zu de
 
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| query | Gibt die MDX-Abfrage an, mit der Daten aus der SAP BW-Instanz gelesen werden. | MDX-Abfrage | Ja |
+| Abfrage | Gibt die MDX-Abfrage an, mit der Daten aus der SAP BW-Instanz gelesen werden. | MDX-Abfrage | Ja |
 
 
 ## <a name="json-example-copy-data-from-sap-business-warehouse-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten aus SAP Business Warehouse in ein Azure-Blob
@@ -311,7 +311,7 @@ STRING | String
 UNIT | String
 DATS | String
 NUMC | String
-TIMS | Zeichenfolge
+TIMS | String
 
 > [!NOTE]
 > Weitere Informationen zum Zuordnen von Spalten im Quelldataset zu Spalten im Senkendataset finden Sie unter [Zuordnen von Datasetspalten in Azure Data Factory](data-factory-map-columns.md).

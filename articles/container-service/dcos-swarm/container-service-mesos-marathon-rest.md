@@ -8,10 +8,10 @@ ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 3492f35d54dd3ee61ab8d29a3af06e4998bbd477
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277782"
 ---
 # <a name="deprecated-dcos-container-management-through-the-marathon-rest-api"></a>(VERALTET) DC/OS-Containerverwaltung über die Marathon-REST-API
@@ -112,13 +112,13 @@ Die Ausgabe des Nginx-Servers sieht in etwa wie folgt aus:
 
 
 ## <a name="scale-your-containers"></a>Skalieren der Container
-Sie können die Marathon-API verwenden, um Anwendungsbereitstellungen horizontal hoch- oder herunterzuskalieren. Im vorherigen Beispiel haben Sie eine Instanz einer Anwendung bereitgestellt. Wir führen hierfür jetzt das horizontale Hochskalieren auf drei Instanzen einer Anwendung durch. Hierzu erstellen Sie eine JSON-Datei, indem Sie den folgenden JSON-Text verwenden und an einem zugänglichen Speicherort speichern.
+Sie können die Marathon-API verwenden, um Anwendungsbereitstellungen auf- und abzuskalieren. Im vorherigen Beispiel haben Sie eine Instanz einer Anwendung bereitgestellt. Wir führen hierfür jetzt das horizontale Hochskalieren auf drei Instanzen einer Anwendung durch. Hierzu erstellen Sie eine JSON-Datei, indem Sie den folgenden JSON-Text verwenden und an einem zugänglichen Speicherort speichern.
 
 ```json
 { "instances": 3 }
 ```
 
-Führen Sie über die getunnelte Verbindung folgenden Befehl aus, um die Anwendung horizontal hochzuskalieren.
+Führen Sie über die getunnelte Verbindung folgenden Befehl aus, um die Anwendung aufzuskalieren.
 
 > [!NOTE]
 > Der URI lautet „http:\//localhost/marathon/v2/apps/“, gefolgt von der ID der zu skalierenden Anwendung. Wenn Sie das hier bereitgestellte Nginx-Beispiel verwenden, lautet der URI „http:\//localhost/marathon/v2/apps/nginx“.
@@ -169,13 +169,13 @@ Speichern Sie zum Bereitstellen eines Containers im Docker-Format die JSON-Datei
 Invoke-WebRequest -Method Post -Uri http://localhost/marathon/v2/apps -ContentType application/json -InFile 'c:\marathon.json'
 ```
 
-Sie können auch die Marathon-API verwenden, um Anwendungsbereitstellungen horizontal hoch- oder herunterzuskalieren. Im vorherigen Beispiel haben Sie eine Instanz einer Anwendung bereitgestellt. Wir führen hierfür jetzt das horizontale Hochskalieren auf drei Instanzen einer Anwendung durch. Hierzu erstellen Sie eine JSON-Datei, indem Sie den folgenden JSON-Text verwenden und an einem zugänglichen Speicherort speichern.
+Sie können auch die Marathon-API verwenden, um Anwendungsbereitstellungen auf- und abzuskalieren. Im vorherigen Beispiel haben Sie eine Instanz einer Anwendung bereitgestellt. Wir führen hierfür jetzt das horizontale Hochskalieren auf drei Instanzen einer Anwendung durch. Hierzu erstellen Sie eine JSON-Datei, indem Sie den folgenden JSON-Text verwenden und an einem zugänglichen Speicherort speichern.
 
 ```json
 { "instances": 3 }
 ```
 
-Führen Sie den folgenden Befehl aus, um die Anwendung horizontal hochzuskalieren:
+Führen Sie den folgenden Befehl aus, um die Anwendung aufzuskalieren:
 
 > [!NOTE]
 > Der URI lautet „http:\//localhost/marathon/v2/apps/“, gefolgt von der ID der zu skalierenden Anwendung. Wenn Sie das hier bereitgestellte Nginx-Beispiel verwenden, lautet der URI „http:\//localhost/marathon/v2/apps/nginx“.

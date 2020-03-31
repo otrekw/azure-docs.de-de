@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2522b31788df294c37db4326985edd6c85774561
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: d5525c02edb30eff0ee8971a382f2acb8f2e57ee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191842"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455722"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bekannte Probleme und Problembehandlung für Azure Machine Learning
 
@@ -91,7 +91,7 @@ In seltenen Fällen kann es vorkommen, dass Benutzer, die vor dem allgemein verf
 
 Azure Compute wird die NCv3-SKUs ab Anfang November 2019 aktualisieren, um alle MPI-Implementierungen und -Versionen sowie RDMA-Verben für mit InfiniBand ausgestattete virtuelle Computer zu unterstützen. Dies erfordert eine kurze Ausfallzeit – [erfahren Sie mehr über das SR-IOV-Upgrade](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku).
 
-Als Kunde des zu Azure Machine Learning gehörenden verwalteten Compute-Angebots (AmlCompute) müssen Sie derzeit keine Änderungen vornehmen. Entsprechend dem [Aktualisierungszeitplan](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku) sollten Sie eine kurze Unterbrechung in Ihrem Training einplanen. Der Dienst übernimmt sämtliche Schritte zum Aktualisieren der VM-Images auf Ihren Clusterknoten und automatischen zentralen Hochskalieren Ihres Clusters. Sobald das Upgrade abgeschlossen ist, sollten Sie in der Lage sein, alle anderen MPI-Distributionen (etwa OpenMPI mit Pytorch) zu verwenden, und Sie sollten außerdem eine höhere InfiniBand-Bandbreite, kürzere Wartezeiten und eine besserer Leistung der verteilten Anwendung erhalten.
+Als Kunde des zu Azure Machine Learning gehörenden verwalteten Compute-Angebots (AmlCompute) müssen Sie derzeit keine Änderungen vornehmen. Entsprechend dem [Aktualisierungszeitplan](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku) sollten Sie eine kurze Unterbrechung in Ihrem Training einplanen. Der Dienst übernimmt sämtliche Schritte zum Aktualisieren der VM-Images auf Ihren Clusterknoten und automatischen Hochskalieren Ihres Clusters. Sobald das Upgrade abgeschlossen ist, sollten Sie in der Lage sein, alle anderen MPI-Distributionen (etwa OpenMPI mit Pytorch) zu verwenden, und Sie sollten außerdem eine höhere InfiniBand-Bandbreite, kürzere Wartezeiten und eine besserer Leistung der verteilten Anwendung erhalten.
 
 ## <a name="azure-machine-learning-designer-issues"></a>Azure Machine Learning-Designer-Probleme
 
@@ -124,7 +124,7 @@ Um Modelle auf FPGAs bereitzustellen, müssen Sie zuerst ein FPGA-Kontingent anf
 
 ## <a name="automated-machine-learning"></a>Automatisiertes maschinelles Lernen
 
-Das automatisierte maschinelle Lernen von Tensor Flow unterstützt derzeit nicht die Tensor Flow Version 1.13. Die Installation dieser Version führt dazu, dass Paketabhängigkeiten nicht mehr funktionieren. Wir arbeiten daran, dieses Problem in einer zukünftigen Version zu beheben. 
+Das automatisierte maschinelle Lernen von Tensor Flow unterstützt derzeit nicht die Tensor Flow Version 1.13. Die Installation dieser Version führt dazu, dass Paketabhängigkeiten nicht mehr funktionieren. Wir arbeiten daran, dieses Problem in einer zukünftigen Version zu beheben.
 
 ### <a name="experiment-charts"></a>Diagramm mit Experimenten
 
@@ -145,7 +145,7 @@ script_params = {
 } 
 ```
 
-Wenn Sie den vorangestellten Schrägstrich („/“) nicht einschließen, müssen Sie das Arbeitsverzeichnis auf dem Computeziel als Präfix hinzufügen, z. B. `/mnt/batch/.../tmp/dataset`, um anzugeben, wo das Dataset eingebunden werden soll. 
+Wenn Sie den vorangestellten Schrägstrich („/“) nicht einschließen, müssen Sie das Arbeitsverzeichnis auf dem Computeziel als Präfix hinzufügen, z. B. `/mnt/batch/.../tmp/dataset`, um anzugeben, wo das Dataset eingebunden werden soll.
 
 ### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>Fehler beim Lesen einer Parquet-Datei über HTTP oder ADLS Gen 2
 
@@ -205,14 +205,14 @@ Wenn dieser Fehler angezeigt wird, wenn Sie automatisiertes Machine Learning ver
 
 Wenn diese Fehlermeldung bei Verwendung von automatisiertem maschinellem Lernen angezeigt wird, gehen Sie folgendermaßen vor:
 
-1. Führen Sie diesen Befehl aus, um zwei Pakete in Ihrem Azure Databricks-Cluster zu installieren: 
+1. Führen Sie diesen Befehl aus, um zwei Pakete in Ihrem Azure Databricks-Cluster zu installieren:
 
-   ```
+   ```bash
    scikit-learn==0.19.1
    pandas==0.22.0
    ```
 
-1. Trennen Sie den Cluster auf, und fügen Sie ihn dann wieder an Ihr Notebook an. 
+1. Trennen Sie den Cluster auf, und fügen Sie ihn dann wieder an Ihr Notebook an.
 
 Wenn diese Schritte das Problem nicht beheben, versuchen Sie, den Cluster neu zu starten.
 
@@ -265,11 +265,11 @@ Wenn Sie eine Fehlermeldung `Unable to upload project files to working directory
 
 Falls Sie eine Dateifreigabe für andere Workloads (beispielsweise die Datenübertragung) verwenden, empfiehlt es sich, Blobs zu verwenden, damit die Dateifreigabe für die Übermittlung von Ausführungen frei ist. Alternativ kann die Workload auch auf zwei verschiedene Arbeitsbereiche aufgeteilt werden.
 
-## <a name="webservices-in-azure-kubernetes-service-failures"></a>Webdienstefehler in Azure Kubernetes Service 
+## <a name="webservices-in-azure-kubernetes-service-failures"></a>Webdienstefehler in Azure Kubernetes Service
 
 Viele Webdienstefehler in Azure Kubernetes Service können debuggt werden, indem mit `kubectl` eine Verbindung mit dem Cluster hergestellt wird. Sie können die `kubeconfig.json`-Datei für einen Azure Kubernetes Service-Cluster abrufen, indem Sie folgenden Befehl ausführen:
 
-```bash
+```azurecli-interactive
 az aks get-credentials -g <rg> -n <aks cluster name>
 ```
 
@@ -313,7 +313,7 @@ Bekannte Probleme beim Bezeichnen von Projekten.
 
 ### <a name="only-datasets-created-on-blob-datastores-can-be-used"></a>Es können nur Datasets verwendet werden, die für Blobdatenspeicher erstellt wurden.
 
-Dies ist eine bekannte Einschränkung der aktuellen Version. 
+Dies ist eine bekannte Einschränkung der aktuellen Version.
 
 ### <a name="after-creation-the-project-shows-initializing-for-a-long-time"></a>Nach der Erstellung wird für das Projekt lange der Status „Wird initialisiert“ angezeigt.
 

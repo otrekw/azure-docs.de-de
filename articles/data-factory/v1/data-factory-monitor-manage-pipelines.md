@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.openlocfilehash: 44aadecfa80524345932c03abb51e8ebd040a902
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73666982"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Überwachen und Verwalten von Azure Data Factory-Pipelines mit dem Azure-Portal und PowerShell
@@ -115,7 +115,7 @@ Die Datasetslices in der Data Factory können einen der folgenden Status haben:
 </tr>
 <tr>
 <tr>
-<td rowspan="2">In Bearbeitung</td><td>Die Überprüfen erfolgt.</td><td>Die Überprüfung wird ausgeführt.</td>
+<td rowspan="2">InProgress</td><td>Die Überprüfen erfolgt.</td><td>Die Überprüfung wird ausgeführt.</td>
 </tr>
 <td>-</td>
 <td>Der Slice wird verarbeitet.</td>
@@ -135,7 +135,7 @@ Die Datasetslices in der Data Factory können einen der folgenden Status haben:
 <td>Bereit</td><td>-</td><td>Der Slice ist für die Verwendung bereit.</td>
 </tr>
 <tr>
-<td>Übersprungen</td><td>Keine</td><td>Der Slice wird nicht verarbeitet.</td>
+<td>Ausgelassen</td><td>Keine</td><td>Der Slice wird nicht verarbeitet.</td>
 </tr>
 <tr>
 <td>Keine</td><td>-</td><td>Ein Slice, der zuvor einen anderen Status hatte, aber zurückgesetzt wurde.</td>

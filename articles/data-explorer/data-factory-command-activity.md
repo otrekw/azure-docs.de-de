@@ -9,10 +9,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.openlocfilehash: 20da2d54ea54674656b2c1006d094c63133baf79
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72264491"
 ---
 # <a name="use-azure-data-factory-command-activity-to-run-azure-data-explorer-control-commands"></a>Verwenden der Azure Data Factory-Befehlsaktivität zum Ausführen von Azure Data Explorer-Steuerungsbefehlen

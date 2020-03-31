@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 2f92c2b800c6d30cc5f365e6d24925a70d3db55a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980314"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229146"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Einrichten der Notfallwiederherstellung in Azure für physische lokale Server
 

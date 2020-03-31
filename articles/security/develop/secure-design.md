@@ -14,10 +14,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 889897cfd4dc8714ae3aea556f0924c9dbcd7825
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78299413"
 ---
 # <a name="design-secure-applications-on-azure"></a>Entwerfen von sicheren Anwendungen in Azure
@@ -153,7 +153,7 @@ Das Modellieren des Anwendungsentwurfs und das Aufzählen von [STRIDE](https://d
 
 | Bedrohung | Sicherheitseigenschaft | Mindern potenzieller Risiken für die Azure-Plattform |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Spoofing               | Authentifizierung        | [Legen Sie fest, dass HTTPS-Verbindungen erforderlich sind](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
+| Spoofing               | Authentication        | [Legen Sie fest, dass HTTPS-Verbindungen erforderlich sind](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio). |
 | Manipulation              | Integrität             | Überprüfen Sie SSL/TLS-Zertifikate. Anwendungen, die SSL/TLS verwenden, müssen die X.509-Zertifikate der Entitäten, mit denen sie eine Verbindung herstellen, umfassend überprüfen. Verwenden Sie Azure Key Vault-Zertifikate, um [Ihre X509-Zertifikate zu verwalten](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates). |
 | Nichtanerkennung            | Unleugbarkeit       | Aktivieren Sie die [Überwachung und Diagnose](https://docs.microsoft.com/azure/architecture/best-practices/monitoring) von Azure.|
 | Veröffentlichung von Informationen | Vertraulichkeit       | Verschlüsseln Sie sensible [ruhende](../fundamentals/encryption-atrest.md) Daten und Daten [während einer Übertragung](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit). |

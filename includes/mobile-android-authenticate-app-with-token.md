@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: deb94cab97bd9a402676cdc5c0239da8d07ed8b2
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67178779"
 ---
 Im vorhergehenden Beispiel wurde eine Standardanmeldung gezeigt, bei der der Client bei jedem Start der App sowohl den Identitätsanbieter als auch den Azure-Back-End-Dienst kontaktieren muss. Diese Methode ist allerdings ineffizient und kann zu Problemen bei der Nutzung führen, wenn viele Kunden die App gleichzeitig starten möchten. Daher empfiehlt es sich, das vom Azure-Dienst zurückgegebene Authentifizierungstoken zwischenzuspeichern und vor einer anbieterbasierten Anmeldung zu verwenden.

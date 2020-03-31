@@ -8,11 +8,11 @@ ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4bd9c64e1b9219f6752172d9dc518af71ad67e70
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598584"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232290"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Verwenden einer Azure-Dateifreigabe mit Windows
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Windows und Windows Server nahtlos verwendet werden. In diesem Artikel werden die Überlegungen zur Verwendung einer Azure-Dateifreigabe mit Windows und Windows Server behandelt.
@@ -41,11 +41,11 @@ Sie können Azure-Dateifreigaben in einer Windows-Installation verwenden, die en
 > Es empfiehlt sich, immer die neueste KB für Ihre Windows-Version zu verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen 
-* **Speicherkontoname**: Zum Einbinden einer Azure-Dateifreigabe benötigen Sie den Namen des Speicherkontos.
+* **Name des Speicherkontos:** Zum Einbinden einer Azure-Dateifreigabe benötigen Sie den Namen des Speicherkontos.
 
-* **Speicherkontoschlüssel**: Zum Einbinden einer Azure-Dateifreigabe benötigen Sie den primären (oder sekundären) Speicherschlüssel. SAS-Schlüssel können derzeit nicht zum Einbinden verwendet werden.
+* **Speicherkontoschlüssel:** Zum Einbinden einer Azure-Dateifreigabe benötigen Sie den primären (oder sekundären) Speicherschlüssel. SAS-Schlüssel können derzeit nicht zum Einbinden verwendet werden.
 
-* **Stellen Sie sicher, Port 445 geöffnet ist**: Das SMB-Protokoll erfordert dass TCP-Port 445 geöffnet ist. Wenn Port 445 gesperrt ist, sind keine Verbindungen möglich. Mithilfe des Cmdlets `Test-NetConnection` können Sie überprüfen, ob Ihre Firewall Port 445 blockiert. Informationen zu verschiedenen Möglichkeiten, den blockierten Port 445 zu umgehen, finden Sie [hier](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked).
+* **Stellen Sie sicher, dass Port 445 geöffnet ist**: Das SMB-Protokoll erfordert dass TCP-Port 445 geöffnet ist. Wenn Port 445 gesperrt ist, sind keine Verbindungen möglich. Mithilfe des Cmdlets `Test-NetConnection` können Sie überprüfen, ob Ihre Firewall Port 445 blockiert. Informationen zu verschiedenen Möglichkeiten, den blockierten Port 445 zu umgehen, finden Sie [hier](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked).
 
     Für den folgenden PowerShell-Code wird vorausgesetzt, dass Sie das Azure PowerShell-Modul installiert haben. Weitere Informationen finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps). Denken Sie daran, `<your-storage-account-name>` und `<your-resource-group-name>` durch die entsprechenden Namen für Ihr Speicherkonto zu ersetzen.
 
@@ -234,13 +234,13 @@ Die folgende Tabelle enthält ausführliche Informationen zum Status von SMB 1 f
 | Windows Server 2019                       | Disabled             | Entfernen mit Windows-Funktion |
 | Windows Server, Versionen ab 1709            | Disabled             | Entfernen mit Windows-Funktion |
 | Windows 10, Versionen ab 1709                | Disabled             | Entfernen mit Windows-Funktion |
-| Windows Server 2016                       | Aktiviert              | Entfernen mit Windows-Funktion |
-| Windows 10,Versionen 1507, 1607 und 1703 | Aktiviert              | Entfernen mit Windows-Funktion |
-| Windows Server 2012 R2                    | Aktiviert              | Entfernen mit Windows-Funktion | 
-| Windows 8.1                               | Aktiviert              | Entfernen mit Windows-Funktion | 
-| Windows Server 2012                       | Aktiviert              | Deaktivieren mit Registrierung       | 
-| Windows Server 2008 R2                    | Aktiviert              | Deaktivieren mit Registrierung       |
-| Windows 7                                 | Aktiviert              | Deaktivieren mit Registrierung       | 
+| Windows Server 2016                       | Enabled              | Entfernen mit Windows-Funktion |
+| Windows 10,Versionen 1507, 1607 und 1703 | Enabled              | Entfernen mit Windows-Funktion |
+| Windows Server 2012 R2                    | Enabled              | Entfernen mit Windows-Funktion | 
+| Windows 8.1                               | Enabled              | Entfernen mit Windows-Funktion | 
+| Windows Server 2012                       | Enabled              | Deaktivieren mit Registrierung       | 
+| Windows Server 2008 R2                    | Enabled              | Deaktivieren mit Registrierung       |
+| Windows 7                                 | Enabled              | Deaktivieren mit Registrierung       | 
 
 ### <a name="auditing-smb-1-usage"></a>Überwachung der Verwendung von SMB 1
 > Gilt für Windows Server 2019, den halbjährlichen Windows Server-Kanal (Versionen 1709 und 1803), Windows Server 2016, Windows 10 (Versionen 1507, 1607, 1703, 1709 und 1803), Windows Server 2012 R2 und Windows 8.1
@@ -284,7 +284,7 @@ Starten Sie Ihren PC neu, um den Entfernungsvorgang abzuschließen.
 ### <a name="disabling-smb-1-on-legacy-versions-of-windowswindows-server"></a>Deaktivieren von SMB 1 unter älteren Versionen von Windows/Windows Server
 > Gilt für Windows Server 2012, Windows Server 2008 R2 und Windows 7
 
-SMB 1 kann unter älteren Versionen von Windows/Windows Server nicht vollständig entfernt werden, lässt sich jedoch über die Registrierung deaktivieren. Zum Deaktivieren von SMB 1 erstellen Sie unter `HKEY_LOCAL_MACHINE > SYSTEM > CurrentControlSet > Services > LanmanServer > Parameters` den neuen Registrierungsschlüssel `SMB1` vom Typ `DWORD` mit dem Wert `0`.
+SMB 1 kann unter älteren Versionen von Windows/Windows Server nicht vollständig entfernt werden, lässt sich jedoch über die Registrierung deaktivieren. Zum Deaktivieren von SMB 1 erstellen Sie unter `SMB1` den neuen Registrierungsschlüssel `DWORD` vom Typ `0` mit dem Wert `HKEY_LOCAL_MACHINE > SYSTEM > CurrentControlSet > Services > LanmanServer > Parameters`.
 
 Dazu kann auch problemlos das folgende PowerShell-Cmdlet verwendet werden:
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 3a7fc8028348ae20403df62cd03c76a266edf07c
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: cc349e5851627ee830196982509f91a83198dfe0
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77191316"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349583"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
@@ -620,9 +620,9 @@ HTTP- und HTTP-Endpunkte unterstützen verschiedene Arten der Authentifizierung.
 
 ### <a name="basic-authentication"></a>Standardauthentifizierung
 
-Wenn die Option [Standard](../active-directory-b2c/secure-rest-api-dotnet-basic-auth.md) verfügbar ist, geben Sie die folgenden Eigenschaftswerte an:
+Wenn die Option [Standard](../active-directory-b2c/secure-rest-api.md) verfügbar ist, geben Sie die folgenden Eigenschaftswerte an:
 
-| Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | value | BESCHREIBUNG |
+| Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | Wert | BESCHREIBUNG |
 |---------------------|-----------------|----------|-------|-------------|
 | **Authentifizierung** | `type` | Ja | Basic | Der zu verwendende Authentifizierungstyp |
 | **Benutzername** | `username` | Ja | <*user-name*>| Der Benutzername, der verwendet wird, um den Zugriff auf den Ziel-Dienstendpunkt zu authentifizieren |
@@ -653,7 +653,7 @@ Wenn Sie [abgesicherte Parameter](#secure-action-parameters) verwenden, um vertr
 
 Wenn die Option [Clientzertifikat](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) verfügbar ist, geben Sie die folgenden Eigenschaftswerte an:
 
-| Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | value | BESCHREIBUNG |
+| Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | Wert | BESCHREIBUNG |
 |---------------------|-----------------|----------|-------|-------------|
 | **Authentifizierung** | `type` | Ja | **Clientzertifikat** <br>oder <br>`ClientCertificate` | Der für Secure Sockets Layer (SSL)-Clientzertifikate zu verwendende Authentifizierungstyp. Obwohl selbstsignierte Zertifikate unterstützt werden, gilt dies nicht für selbstsignierte Zertifikate für SSL. |
 | **Pfx** | `pfx` | Ja | <*encoded-pfx-file-content*> | Der base64-codierte Inhalt aus einer Personal Information Exchange-Datei (PFX) <p><p>Zum Konvertieren der PFX-Datei in ein base64-codiertes Format können Sie PowerShell verwenden, indem Sie die folgenden Schritte ausführen: <p>1. Speichern Sie den Zertifikatsinhalt in einer Variablen: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. Konvertieren Sie den Zertifikatsinhalt mithilfe der `ToBase64String()`-Funktion, und speichern Sie den Inhalt in einer Textdatei: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
@@ -682,7 +682,7 @@ Weitere Informationen zum Absichern von Diensten mithilfe der Clientzertifikatau
 
 * [Erhöhen der Sicherheit von APIs mithilfe von Clientzertifikatauthentifizierung in API Management](../api-management/api-management-howto-mutual-certificates-for-clients.md)
 * [Erhöhen der Sicherheit von Back-End-Diensten mithilfe von Clientzertifikatauthentifizierung in API Management](../api-management/api-management-howto-mutual-certificates.md)
-* [Erhöhen der Sicherheit Ihres RESTful-Diensts mit Clientzertifikaten](../active-directory-b2c/secure-rest-api-dotnet-certificate-auth.md)
+* [Erhöhen der Sicherheit Ihres RESTful-Diensts mit Clientzertifikaten](../active-directory-b2c/secure-rest-api.md)
 * [Zertifikatanmeldeinformationen für die Anwendungsauthentifizierung](../active-directory/develop/active-directory-certificate-credentials.md)
 * [Verwenden eines SSL-Zertifikats in Ihrem Anwendungscode in Azure App Service](../app-service/configure-ssl-certificate-in-code.md)
 
@@ -692,7 +692,7 @@ Weitere Informationen zum Absichern von Diensten mithilfe der Clientzertifikatau
 
 Wenn die Option [Active Directory OAuth](../active-directory/develop/about-microsoft-identity-platform.md) verfügbar ist, geben Sie die folgenden Eigenschaftswerte an:
 
-| Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | value | BESCHREIBUNG |
+| Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | Wert | BESCHREIBUNG |
 |---------------------|-----------------|----------|-------|-------------|
 | **Authentifizierung** | `type` | Ja | **Active Directory OAuth** <br>oder <br>`ActiveDirectoryOAuth` | Der zu verwendende Authentifizierungstyp. Azure Logic Apps befolgt derzeit das [Protokoll OAuth 2.0](../active-directory/develop/v2-overview.md). |
 | **Autoritative Stelle** | `authority` | Nein | <*URL-for-authority-token-issuer*> | Die URL für die autoritative Stelle, die das Authentifizierungstoken bereitstellt. Standardmäßig ist dieser Wert auf `https://login.windows.net` festgelegt. |
@@ -746,7 +746,7 @@ Authorization: OAuth realm="Photos",
 
 Geben Sie in dem Trigger oder der Aktion, die die Raw-Authentifizierung unterstützt, diese Eigenschaftswerte an:
 
-| Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | value | BESCHREIBUNG |
+| Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | Wert | BESCHREIBUNG |
 |---------------------|-----------------|----------|-------|-------------|
 | **Authentifizierung** | `type` | Ja | Raw | Der zu verwendende Authentifizierungstyp |
 | **Wert** | `value` | Ja | <*authorization-header-value*> | Der für die Authentifizierung zu verwendende Wert des Autorisierungsheaders |
@@ -781,7 +781,7 @@ Wenn die Option [Verwaltete Identität](../active-directory/managed-identities-a
 
 1. Geben Sie in dem Trigger oder der Aktion, in dem/der Sie die verwaltete Identität verwenden möchten, diese Eigenschaftswerte an:
 
-   | Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | value | Beschreibung |
+   | Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | Wert | BESCHREIBUNG |
    |---------------------|-----------------|----------|-------|-------------|
    | **Authentifizierung** | `type` | Ja | **Verwaltete Identität** <br>oder <br>`ManagedServiceIdentity` | Der zu verwendende Authentifizierungstyp |
    | **Verwaltete Identität** | `identity` | Ja | * **Systemseitig zugewiesene verwaltete Identität** <br>oder <br>`SystemAssigned` <p><p>* <*Name-der-benutzerseitig-zugewiesenen-Identität*> | Die zu verwendende verwaltete Identität |

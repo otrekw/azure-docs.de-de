@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ff608cac9786ebc0d3908ce4d88fb501e621be6c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176600"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224866"
 ---
 # <a name="azure-api-management-page-controls"></a>Seitensteuerelemente in Azure API Management
 Azure API Management enthält die folgenden Seitensteuerelemente zur Verwendung in Entwicklerportalvorlagen.  
@@ -47,7 +47,7 @@ Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie 
 -   [subscribe-button](#subscribe-button)  
 -   [subscription-cancel](#subscription-cancel)  
   
-##  <a name="app-actions"></a> app-actions  
+##  <a name="app-actions"></a><a name="app-actions"></a> app-actions  
  Das Steuerelement `app-actions` bietet eine Benutzeroberfläche für die Interaktion mit Anwendungen auf der Benutzerprofilseite im Entwicklerportal.  
   
  ![Steuerelement „app&#45;actions“](./media/api-management-page-controls/APIM-app-actions-control.png "APIM: Steuerelement „app-actions“")  
@@ -69,7 +69,7 @@ Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie 
   
 -   [Anwendungen](api-management-user-profile-templates.md#Applications)  
   
-##  <a name="basic-signin"></a> basic-signin  
+##  <a name="basic-signin"></a><a name="basic-signin"></a> basic-signin  
  Das Steuerelement `basic-signin` stellt ein Steuerelement zum Sammeln von Informationen zur Benutzeranmeldung auf der Anmeldeseite im Entwicklerportal bereit.  
   
  ![Steuerelement „basic&#45;signin“](./media/api-management-page-controls/APIM-basic-signin-control.png "APIM: Steuerelement „basic-signin“")  
@@ -81,14 +81,14 @@ Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie 
 ```  
   
 ### <a name="parameters"></a>Parameter  
- None (Keine):  
+ Keine.  
   
 ### <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen  
  Das Steuerelement `basic-signin` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden:  
   
 -   [Anmelden](api-management-page-templates.md#SignIn)  
   
-##  <a name="paging-control"></a> paging-control  
+##  <a name="paging-control"></a><a name="paging-control"></a> paging-control  
  `paging-control` stellt eine Seitennavigation für Entwicklerportalseiten bereit, auf denen eine Liste von Elementen angezeigt wird.  
   
  ![Steuerelement „paging-control“](./media/api-management-page-controls/APIM-paging-control.png "APIM: Steuerelement „paging-control“")  
@@ -100,7 +100,7 @@ Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie 
 ```  
   
 ### <a name="parameters"></a>Parameter  
- None (Keine):  
+ Keine.  
   
 ### <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen  
  Das Steuerelement `paging-control` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden:  
@@ -111,7 +111,7 @@ Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie 
   
 -   [Produktliste](api-management-product-templates.md#ProductList)  
   
-##  <a name="providers"></a> providers  
+##  <a name="providers"></a><a name="providers"></a> providers  
  Das Steuerelement `providers` stellt ein Steuerelement zur Auswahl von Authentifizierungsanbietern auf der Anmeldeseite im Entwicklerportal bereit.  
   
  ![Steuerelement „providers“](./media/api-management-page-controls/APIM-providers-control.png "APIM: Steuerelement „providers“")  
@@ -123,14 +123,14 @@ Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie 
 ```  
   
 ### <a name="parameters"></a>Parameter  
- None (Keine):  
+ Keine.  
   
 ### <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen  
  Das Steuerelement `providers` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden:  
   
 -   [Anmelden](api-management-page-templates.md#SignIn)  
   
-##  <a name="search-control"></a> search-control  
+##  <a name="search-control"></a><a name="search-control"></a> search-control  
  `search-control` stellt eine Suchfunktion für Entwicklerportalseiten bereit, auf denen eine Liste von Elementen angezeigt wird.  
   
  ![Steuerelement „search-control“](./media/api-management-page-controls/APIM-search-control.png "APIM: Steuerelement „search-control“")  
@@ -142,7 +142,7 @@ Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie 
 ```  
   
 ### <a name="parameters"></a>Parameter  
- None (Keine):  
+ Keine.  
   
 ### <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen  
  Das Steuerelement `search-control` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden:  
@@ -151,7 +151,7 @@ Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie 
   
 -   [Produktliste](api-management-product-templates.md#ProductList)  
   
-##  <a name="sign-up"></a> sign-up  
+##  <a name="sign-up"></a><a name="sign-up"></a> sign-up  
  Das Steuerelement `sign-up` stellt ein Steuerelement zum Sammeln von Benutzerprofilinformationen auf der Registrierungsseite im Entwicklerportal bereit.  
   
  ![Steuerelement „sign&#45;up“](./media/api-management-page-controls/APIM-sign-up-control.png "APIM: Steuerelement „sign-up“")  
@@ -163,14 +163,14 @@ Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie 
 ```  
   
 ### <a name="parameters"></a>Parameter  
- None (Keine):  
+ Keine.  
   
 ### <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen  
  Das Steuerelement `sign-up` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden:  
   
 -   [Registrieren](api-management-page-templates.md#SignUp)  
   
-##  <a name="subscribe-button"></a> subscribe-button  
+##  <a name="subscribe-button"></a><a name="subscribe-button"></a> subscribe-button  
  `subscribe-button` bietet ein Steuerelement, mit dem ein Benutzer ein Produkt abonnieren kann.  
   
  ![Steuerelement „subscribe&#45;button“](./media/api-management-page-controls/APIM-subscribe-button-control.png "APIM: Steuerelement „subscribe-button“")  
@@ -182,14 +182,14 @@ Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie 
 ```  
   
 ### <a name="parameters"></a>Parameter  
- None (Keine):  
+ Keine.  
   
 ### <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen  
  Das Steuerelement `subscribe-button` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden:  
   
 -   [Produkt](api-management-product-templates.md#Product)  
   
-##  <a name="subscription-cancel"></a> subscription-cancel  
+##  <a name="subscription-cancel"></a><a name="subscription-cancel"></a> subscription-cancel  
  Das Steuerelement `subscription-cancel` stellt auf der Benutzerprofilseite im Entwicklerportal ein Steuerelement für das Kündigen des Abonnements für ein Produkt bereit.  
   
  ![Steuerelement „subscription&#45;cancel“](./media/api-management-page-controls/APIM-subscription-cancel-control.png "APIM: Steuerelement „subscription-cancel“")  

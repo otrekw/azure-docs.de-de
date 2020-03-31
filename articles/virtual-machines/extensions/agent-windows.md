@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
 ms.openlocfilehash: 3d9c178201ab0c22ed4eab9cf65f7d48e59e1359
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78246124"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Übersicht über den Agent für virtuelle Azure-Computer

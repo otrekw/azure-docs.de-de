@@ -11,11 +11,11 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: fcaa7a0c44851d6b48b40b01af4c8ec992c330b8
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602587"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237026"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Einrichten der Authentifizierung für Azure Machine Learning-Ressourcen und -Workflows
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

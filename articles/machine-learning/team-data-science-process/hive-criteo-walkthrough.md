@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 218fb96f6960e194f0fc4a4a3a3e603388b961c8
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76760809"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern für ein Dataset mit 1 TB
@@ -24,7 +24,7 @@ In dieser exemplarischen Vorgehensweise wird das Verwenden des Team Data Science
 
 Die in dieser exemplarischen Vorgehensweise vorgestellten Aufgaben können auch mit einem IPython-Notizbuch umgesetzt werden. Benutzer, die diesem Ansatz folgen möchten, sollten das Thema [Criteo walkthrough using a Hive ODBC connection](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb) (in englischer Sprache) beachten.
 
-## <a name="dataset"></a>Beschreibung des Criteo-DataSets
+## <a name="criteo-dataset-description"></a><a name="dataset"></a>Beschreibung des Criteo-DataSets
 Bei den Criteo-Daten handelt es sich um ein Klickvorhersage-Dataset mit 370 GB an Gzip-komprimierten TSV-Dateien (unkomprimiert ca. 1,3 TB), das aus über 4,3 Milliarden Datensätzen besteht. Es beruht auf den Klickdaten für 24 Tage, die von [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) bereitgestellt werden. Für Datenanalysten stehen zudem unkomprimierte Daten für Experimente zur Verfügung.
 
 Alle Datensätze im DataSet enthalten je 40 Spalten:
@@ -46,7 +46,7 @@ Sowohl in den numerischen als auch den Kategoriespalten dieses DataSets fehlen W
 
 **Definition:** *Durchklickrate (Clickthrough rate, CTR):* Diese Metrik ist der Prozentsatz der Klicks in den Daten. In diesem Criteo-DataSet beträgt die CTR etwa 3,3 % oder 0,033.
 
-## <a name="mltasks"></a>Beispiele für Vorhersageaufgaben
+## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>Beispiele für Vorhersageaufgaben
 In dieser exemplarischen Vorgehensweise werden zwei beispielhafte Vorhersageprobleme behandelt:
 
 1. **Binäre Klassifizierung**: Sagt vorher, ob ein Benutzer auf eine Anzeige geklickt hat:
@@ -55,7 +55,7 @@ In dieser exemplarischen Vorgehensweise werden zwei beispielhafte Vorhersageprob
    * Klasse 1: Klicken Sie auf
 2. **Regression:** Sagt anhand der Benutzerfunktionen die Wahrscheinlichkeit eines Anzeigenklicks vorher.
 
-## <a name="setup"></a>Einrichten eines HDInsight Hadoop-Clusters für Data Science
+## <a name="set-up-an-hdinsight-hadoop-cluster-for-data-science"></a><a name="setup"></a>Einrichten eines HDInsight Hadoop-Clusters für Data Science
 > [!NOTE]
 > Dieser Schritt ist typischerweise die Aufgabe eines **Administrators**.
 
@@ -68,7 +68,7 @@ Richten Sie Ihre Azure Data Science-Umgebung ein, um in drei Schritten Lösungen
    * Aktivieren Sie nach dem Erstellen den Remotezugriff auf den Hauptknoten des Clusters. Merken Sie sich die hier angegebenen RAS-Anmeldeinformationen (die sich von den beim Erstellen des Clusters angegebenen unterscheiden): Führen Sie die folgenden Schritte aus.
 3. [Erstellen eines (klassischen) Azure Machine Learning Studio-Arbeitsbereichs:](../studio/create-workspace.md) Mit diesem Azure Machine Learning-Arbeitsbereich werden nach dem erstmaligen Untersuchen der Daten und der Komprimierung im HDInsight-Cluster Machine Learning-Modelle erstellt.
 
-## <a name="getdata"></a>Abrufen und Verwenden von Daten aus einer öffentlichen Quelle
+## <a name="get-and-consume-data-from-a-public-source"></a><a name="getdata"></a>Abrufen und Verwenden von Daten aus einer öffentlichen Quelle
 Um auf das [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) -DataSet zuzugreifen, klicken Sie auf den Link, akzeptieren Sie die Nutzungsbedingungen, und geben Sie einen Namen an. Hier finden Sie eine Momentaufnahme:
 
 ![Criteo-Bestimmungen akzeptieren](./media/hive-criteo-walkthrough/hLxfI2E.png)
@@ -86,7 +86,7 @@ Die Daten befinden sich an einem [Azure Blob Storage](../../storage/blobs/storag
 
 Ein alternativer Ansatz für das Zugreifen, Untersuchen und Modellieren, der keine lokalen Downloads erfordert, wird später in dieser exemplarischen Vorgehensweise erläutert, wenn wir die Hive-Tabellen erstellen.
 
-## <a name="login"></a>Anmelden beim Cluster-Hauptknoten
+## <a name="log-in-to-the-cluster-headnode"></a><a name="login"></a>Anmelden beim Cluster-Hauptknoten
 Um sich beim Hauptknoten des Clusters anzumelden, suchen Sie im [Azure-Portal](https://ms.portal.azure.com) den Cluster. Klicken Sie links auf das HDInsight-Elefantensymbol, und doppelklicken Sie anschließend auf den Namen des Clusters. Navigieren Sie zur Registerkarte **Konfiguration**, doppelklicken Sie unten auf der Seite auf das Verbindungssymbol, und geben Sie Ihre RAS-Anmeldeinformationen ein, wenn Sie dazu aufgefordert werden. Sie gelangen daraufhin zum Hauptknoten des Clusters.
 
 Im Folgenden wird eine typische Erstanmeldung auf dem Clusterhauptknoten dargestellt:
@@ -97,7 +97,7 @@ Auf der linken Seite sehen Sie die „Hadoop-Befehlszeile“, mit der wir die Da
 
 Nun sind Sie bereit für den ersten Teil der exemplarischen Vorgehensweise: Das Untersuchen der Daten mithilfe von Hive und das Vorbereiten der Daten für Azure Machine Learning.
 
-## <a name="hive-db-tables"></a> Erstellen von Hive-Datenbanken und -Tabellen
+## <a name="create-hive-database-and-tables"></a><a name="hive-db-tables"></a> Erstellen von Hive-Datenbanken und -Tabellen
 Öffnen Sie zum Erstellen von Hive-Tabellen für das Criteo-DataSet auf dem Desktopcomputer des Hauptknotens die ***Hadoop-Befehlszeile***, und wechseln Sie mithilfe des folgenden Befehls zum Hive-Verzeichnis.
 
     cd %hive_home%\bin
@@ -191,7 +191,7 @@ Dann wird die folgende Ausgabe angezeigt:
         criteo_train
         Time taken: 1.437 seconds, Fetched: 4 row(s)
 
-## <a name="exploration"></a> Untersuchen von Daten in Hive
+## <a name="data-exploration-in-hive"></a><a name="exploration"></a> Untersuchen von Daten in Hive
 Nun können Sie einige grundlegende Datenuntersuchungen in Hive vornehmen. Zunächst zählen Sie die Anzahl der Beispiele in den Trainings- und Testdatentabellen.
 
 ### <a name="number-of-train-examples"></a>Anzahl der Trainingsbeispiele
@@ -345,7 +345,7 @@ Kehren Sie die Anzahlwerte anhand des Auftretens um, und prüfen Sie in diesem F
         265366bf        6f5c7c41        782142
         Time taken: 560.22 seconds, Fetched: 15 row(s)
 
-## <a name="downsample"></a> Komprimieren von DataSets für Azure Machine Learning
+## <a name="down-sample-the-datasets-for-azure-machine-learning"></a><a name="downsample"></a> Komprimieren von DataSets für Azure Machine Learning
 Nachdem Sie die DataSets untersucht und aufgezeigt haben, wie Sie diese Art der Untersuchung für beliebige Variablen (einschließlich Kombinationen) durchführen können, komprimieren Sie die Datasets, damit Sie in Azure Machine Learning Modelle erstellen können. Denken Sie an unser Hauptthema: Sie sagen anhand von Beispielattributen (Funktionswerte von „Col2“ bis „Col40“) vorher, ob „Col1“ den Wert „0“ (kein Klick) oder „1“ (Klick) ergibt.
 
 Um Ihre Trainings- und Testdatasets auf 1% der ursprünglichen Größe zu komprimieren, verwenden Sie die systemeigene Hive-Funktion „RAND()“. Dies wird vom folgenden Skript für das Trainingsdataset übernommen: [sample&#95;hive&#95;criteo&#95;downsample&#95;train&#95;dataset.hql](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_downsample_train_dataset.hql):
@@ -403,7 +403,7 @@ Hiermit können Sie die komprimierten Trainings- und Testdatasets nun zum Erstel
 
 Bevor Sie in Azure Machine Learning fortfahren, müssen Sie eine letzte wichtige Komponente in Bezug auf die Zahlentabelle beachten. Im nächsten Unterabschnitt wird die Zahlentabelle ausführlich erläutert.
 
-## <a name="count"></a> Eine kurze Erläuterung der Zahlentabelle
+## <a name="a-brief-discussion-on-the-count-table"></a><a name="count"></a> Eine kurze Erläuterung der Zahlentabelle
 Wie Sie gesehen haben, sind mehrere Kategorievariablen sehr umfangreich. In dieser exemplarischen Vorgehensweise wird die leistungsfähige Technik [Lernen durch Anzahl](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) vorgestellt, mit der diese Variablen effizient und stabil codiert werden. Weitere Informationen zu dieser Technik finden Sie über den angegebenen Link.
 
 >[!NOTE]
@@ -412,7 +412,7 @@ Wie Sie gesehen haben, sind mehrere Kategorievariablen sehr umfangreich. In dies
 
 Verwenden Sie zum Erstellen von Zahlentabellen aus den Zahlendaten die Daten im Ordner „raw/count“. Im Abschnitt „Modellierung“ erfahren Sie, wie diese Zahlentabellen für Kategoriefunktionen neu erstellt oder vorgefertigte Zahlentabellen für Untersuchungen eingesetzt werden. Im folgenden bedeutet „vordefinierte Zahlentabellen“, dass die bereitgestellten Zahlentabellen verwendet werden. Im nächsten Abschnitt finden Sie ausführliche Anweisungen für den Zugriff auf diese Tabellen.
 
-## <a name="aml"></a> Erstellen eines Modells mit Azure Machine Learning
+## <a name="build-a-model-with-azure-machine-learning"></a><a name="aml"></a> Erstellen eines Modells mit Azure Machine Learning
 Beim Erstellen von Modellen in Azure Machine Learning führen wir diese Schritte aus:
 
 1. [Abrufen der Daten aus Hive-Tabellen in Azure Machine Learning](#step1)
@@ -423,7 +423,7 @@ Beim Erstellen von Modellen in Azure Machine Learning führen wir diese Schritte
 
 Nun können Sie Modelle in Azure Machine Learning Studio erstellen. Unsere komprimierten Daten wurden als Hive-Tabellen im Cluster gespeichert. Verwenden Sie zum Lesen dieser Daten das **Import Data**-Modul von Azure Machine Learning. Im Folgenden finden Sie die Anmeldeinformationen für den Zugriff auf das Speicherkonto für diesen Cluster.
 
-### <a name="step1"></a>Schritt 1: Abrufen von Daten aus den Hive-Tabellen in Azure Machine Learning mit dem „Import Data“-Modul und Auswählen für ein Computerexperiment
+### <a name="step-1-get-data-from-hive-tables-into-azure-machine-learning-using-the-import-data-module-and-select-it-for-a-machine-learning-experiment"></a><a name="step1"></a>Schritt 1: Abrufen von Daten aus den Hive-Tabellen in Azure Machine Learning mit dem „Import Data“-Modul und Auswählen für ein Computerexperiment
 Starten Sie durch Auswählen von **+NEW** -> **EXPERIMENT** -> **Blank Experiment**. Suchen Sie dann über das Feld **Suche** oben links nach „Daten importieren“. Legen Sie das Modul **Daten importieren** durch Drag &amp; Drop auf der Experimentcanvas ab (der mittlere Teil des Bildschirms), um das Modul für den Datenzugriff zu verwenden.
 
 So sieht **Import Data** beim Abrufen von Daten aus der Hive-Tabelle aus:
@@ -457,7 +457,7 @@ Um das gespeicherte DataSet für die Verwendung in einem Machine Learning-Experi
 >
 >
 
-### <a name="step2"></a>Schritt 2: Erstellen eines Experiments in Azure Machine Learning zum Vorhersagen von Klicks/keinen Klicks
+### <a name="step-2-create-an-experiment-in-azure-machine-learning-to-predict-clicks--no-clicks"></a><a name="step2"></a>Schritt 2: Erstellen eines Experiments in Azure Machine Learning zum Vorhersagen von Klicks/keinen Klicks
 Unser (klassisches) Azure Machine Learning Studio-Experiment sieht folgendermaßen aus:
 
 ![Machine Learning-Experiment](./media/hive-criteo-walkthrough/xRpVfrY.png)
@@ -534,7 +534,7 @@ In diesem Ausschnitt wird gezeigt, dass Sie die Spalten, für die Sie Zählungen
 
 Mit diesen transformierten Datasets können Sie nun ein Azure Machine Learning-Modell erstellen. Die Vorgehensweise wird im nächsten Abschnitt gezeigt.
 
-### <a name="step3"></a>Schritt 3: Erstellen, Trainieren und Bewerten des Modells
+### <a name="step-3-build-train-and-score-the-model"></a><a name="step3"></a>Schritt 3: Erstellen, Trainieren und Bewerten des Modells
 
 #### <a name="choice-of-learner"></a>Auswahl des Lerners
 Zunächst müssen Sie einen Lerner auswählen. Verwenden Sie eine verstärkte Entscheidungsstruktur mit zwei Klassen als Lerner. Dies sind die Standardoptionen für diesen Lerner:
@@ -553,7 +553,7 @@ Sobald Sie über ein Trainingsmodell verfügen, können Sie das Testdataset und 
 
 ![Modul Modell bewerten](./media/hive-criteo-walkthrough/fydcv6u.png)
 
-### <a name="step4"></a> Schritt 4: Auswerten des Modells
+### <a name="step-4-evaluate-the-model"></a><a name="step4"></a> Schritt 4: Auswerten des Modells
 Nun müssen Sie die Modelleistung analysieren. Wenn bei zwei Klassen (binäre) Klassifizierungsprobleme auftreten, eignet sich AUC gewöhnlich als Maßstab. Verbinden Sie zum Visualisieren dieser Kurve das Modul **Score Model** mit einem Modul **Evaluate Model**. Wenn Sie im Modul **Evaluate Model** auf **Visualize** klicken, ergibt dies ungefähr folgende Grafik:
 
 !["Evaluate"-Modul für BDT-Modell](./media/hive-criteo-walkthrough/0Tl0cdg.png)
@@ -562,7 +562,7 @@ Bei binären (oder zweiklassigen) Klassifizierungsproblemen, eignet sich AUC (Ar
 
 !["Visualize Evaluate Model"-Modul](./media/hive-criteo-walkthrough/IRfc7fH.png)
 
-### <a name="step5"></a> Schritt 5: Veröffentlichen des Modells als Webdienst
+### <a name="step-5-publish-the-model-as-a-web-service"></a><a name="step5"></a> Schritt 5: Veröffentlichen des Modells als Webdienst
 Die Möglichkeit zum Veröffentlichen eines Azure Machine Learning-Modells als Webdienst ohne hohen Aufwand ist eine nützliche Funktion, um es allgemein verfügbar zu machen. Sobald dies erfolgt ist, kann jeder mit den Daten, für die Vorhersagen benötigt werden, Aufrufe an den Webdienst durchführen. Der Webdienst nutzt dann das Modell für das Zurückgeben dieser Vorhersagen.
 
 Speichern Sie zuerst das trainierte Modell als Objekt, indem Sie mit der rechten Maustaste auf das Modul **Train Model** klicken und die Option **Save as Trained Model** (Als trainiertes Modell speichern) verwenden.

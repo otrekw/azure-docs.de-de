@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/03/2020
 ms.author: twooley
 ms.openlocfilehash: 7e33ecbbb49fc2b0683d0757da36deec72796806
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75638900"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>Dateisystemvorgänge in Data Lake Storage Gen1 mit dem .NET SDK
@@ -83,7 +83,7 @@ Das auf [GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-g
 
 In den restlichen Abschnitten dieses Artikels erfahren Sie, wie Sie die verfügbaren .NET-Methoden verwenden, um Vorgänge wie Authentifizierung, Dateiupload usw. durchzuführen.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 
 * Informationen zur Authentifizierung von Endbenutzern für Ihre Anwendung finden Sie unter [Authentifizierung von Endbenutzern mit Data Lake Storage Gen1 über das .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md).
 * Informationen zur Dienst-zu-Dienst-Authentifizierung für Ihre Anwendung finden Sie unter [Dienst-zu-Dienst-Authentifizierung mit Data Lake Storage Gen1 über das .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md).

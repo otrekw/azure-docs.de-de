@@ -12,10 +12,10 @@ ms.date: 02/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: a26f6c5e69ca083335580a0368459e062de3941e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78187660"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>JavaScript-Beispiele für die Verwendung in Azure Active Directory B2C
@@ -27,8 +27,8 @@ Sie können Ihren Azure Active Directory B2C-Anwendungen (Azure AD B2C) Ihren ei
 So aktivieren Sie JavaScript für Ihre Anwendungen
 
 * Hinzufügen eines Elements zu Ihrer [benutzerdefinierten Richtlinie](custom-policy-overview.md)
-* Auswählen eines [Seitenlayouts](page-layout.md)
-* Verwenden von [b2clogin.com-](b2clogin.md) in Ihren Anforderungen
+* Wählen Sie ein [Seitenlayout](page-layout.md) aus.
+* Verwenden Sie [b2clogin.com](b2clogin.md) in Ihren Anforderungen.
 
 In diesem Artikel wird beschrieben, wie Sie Ihre benutzerdefinierte Richtlinie ändern können, um die Skriptausführung zu aktivieren.
 
@@ -45,7 +45,7 @@ In diesem Artikel wird beschrieben, wie Sie Ihre benutzerdefinierte Richtlinie �
 
 ## <a name="add-the-scriptexecution-element"></a>Hinzufügen des ScriptExecution-Elements
 
-Sie aktivieren die Skriptausführung, indem Sie dem [RelyingParty](relyingparty.md)-Element das **ScriptExecution**-Element hinzufügen.
+Sie aktivieren die Skriptausführung, indem Sie dem **RelyingParty**-Element das [ScriptExecution](relyingparty.md)-Element hinzufügen.
 
 1. Öffnen Sie Ihre benutzerdefinierte Richtliniendatei. Beispiel: *SignUpOrSignin.xml*.
 2. Fügen Sie das **ScriptExecution**-Element zum **UserJourneyBehaviors**-Element von **RelyingParty** hinzu:

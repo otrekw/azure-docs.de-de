@@ -10,10 +10,10 @@ ms.date: 03/09/2020
 ms.author: tamram
 ms.subservice: tables
 ms.openlocfilehash: b6455733e4955bd1fb5b27e3551e41e5f711df21
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943544"
 ---
 # <a name="scalability-and-performance-targets-for-table-storage"></a>Skalierbarkeits- und Leistungsziele für Table Storage
@@ -27,6 +27,6 @@ ms.locfileid: "78943544"
 ## <a name="see-also"></a>Weitere Informationen
 
 - [Checkliste zu Leistung und Skalierbarkeit für Table Storage](storage-performance-checklist.md)
-- [Skalierbarkeitsziele für Storage Standard-Konten](../common/scalability-targets-standard-account.md)
+- [Skalierbarkeitsziele für Storage Standard-Konten](../common/scalability-targets-standard-account.md)
 - [Skalierbarkeitsziele für den Azure Storage-Ressourcenanbieter](../common/scalability-targets-resource-provider.md)
 - [Grenzwerte und Kontingente von Azure-Abonnements](../../azure-resource-manager/management/azure-subscription-service-limits.md)

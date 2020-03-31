@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
 ms.openlocfilehash: ddf69a75a39911293277a4a4189cf4e79256e09d
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77186858"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>SCP-Programmierleitfaden für Apache Storm in Azure HDInsight
@@ -434,7 +434,7 @@ Sie können Topologiespezifikationen direkt an einen Storm-Cluster zur Ausführu
 
 In SCP.NET wurden die folgenden Funktionen zum Definieren transaktionaler Topologien hinzugefügt:
 
-| Neue Funktion | Parameter | Beschreibung |
+| Neue Funktion | Parameter | BESCHREIBUNG |
 | --- | --- | --- |
 | **tx-topolopy** |*topology-name*<br />*spout-map*<br />*bolt-map* |Definiert eine transaktionale Topologie mit dem Topologienamen, der Spouts-Definitionszuordnung und der Bolts-Definitionszuordnung. |
 | **scp-tx-spout** |*exec-name*<br />*args*<br />*fields* |Definiert einen transaktionalen Spout. Die Funktion führt die durch *exec-name* angegebene Anwendung aus und verwendet *args*.<br /><br />Der Parameter *fields* gibt die Ausgabefelder für den Spout an. |
@@ -446,7 +446,7 @@ In SCP.NET wurden die folgenden Funktionen zum Definieren transaktionaler Topolo
 
 SCP.NET definiert die folgenden Schlüsselwörter:
 
-| Schlüsselwort | Beschreibung |
+| Schlüsselwort | BESCHREIBUNG |
 | --- | --- |
 | **:name** |Der Topologiename. |
 | **:topology** |Die Topologie unter Verwendung der Funktionen in der vorherigen Tabelle und der integrierten Funktionen. |
@@ -456,7 +456,7 @@ SCP.NET definiert die folgenden Schlüsselwörter:
 
 SCP.NET definiert auch diese häufig verwendeten Parameter:
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | „plugin.name“ |Der .exe-Dateiname des C#-Plug-Ins. |
 | „plugin.args“ |Die Plug-In-Argumente. |

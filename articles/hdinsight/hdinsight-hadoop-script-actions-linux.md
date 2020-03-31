@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/28/2019
 ms.openlocfilehash: ad9b4b69b0be34c89d03b677c1889e486aae0379
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75931698"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Entwickeln von Skriptaktionen mit HDInsight
@@ -34,7 +34,7 @@ Skriptaktionen können mithilfe der folgenden Methoden angewendet werden:
 
 Weitere Informationen zur Verwendung dieser Methoden zum Anwenden von Skriptaktionen finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
 
-## <a name="bestPracticeScripting"></a>Bewährte Methoden für die Entwicklung von Skripts
+## <a name="best-practices-for-script-development"></a><a name="bestPracticeScripting"></a>Bewährte Methoden für die Entwicklung von Skripts
 
 Wenn Sie ein benutzerdefiniertes Skript für einen HDInsight-Cluster entwickeln, sollten Sie mehrere bewährte Methoden beachten:
 
@@ -52,7 +52,7 @@ Wenn Sie ein benutzerdefiniertes Skript für einen HDInsight-Cluster entwickeln,
 > [!IMPORTANT]  
 > Skriptaktionen müssen innerhalb von 60 Minuten abgeschlossen sein, andernfalls schlägt der Prozess fehl. Während der Knotenbereitstellung wird das Skript gleichzeitig mit anderen Einrichtungs- und Konfigurationsprozessen ausgeführt. Der Wettbewerb um Ressourcen wie CPU-Zeit oder Netzwerkbandbreite kann dazu führen, dass es länger als in Ihrer Entwicklungsumgebung dauert, bis das Skript abgeschlossen ist.
 
-### <a name="bPS1"></a>Auswählen der Apache Hadoop-Version
+### <a name="target-the-apache-hadoop-version"></a><a name="bPS1"></a>Auswählen der Apache Hadoop-Version
 
 In den verschiedenen HDInsight-Versionen sind unterschiedliche Versionen von Hadoop-Diensten und Hadoop-Komponenten installiert. Wenn bei Ihrem Skript eine bestimmte Version eines Diensts oder einer Komponente vorausgesetzt wird, sollten Sie das Skript nur mit der HDInsight-Version verwenden, die die erforderlichen Komponenten enthält. Informationen zu den in HDInsight enthaltenen Komponentenversionen finden Sie im Dokument [Neuheiten in den von HDInsight bereitgestellten Hadoop-Clusterversionen](hdinsight-component-versioning.md) .
 
@@ -73,7 +73,7 @@ elif [[ $OS_VERSION == 16* ]]; then
 fi
 ```
 
-### <a name="bps10"></a> Ausrichten auf die Betriebssystemversion
+### <a name="target-the-operating-system-version"></a><a name="bps10"></a> Ausrichten auf die Betriebssystemversion
 
 HDInsight basiert auf der Distribution Ubuntu Linux. Da unterschiedliche Versionen von HDInsight auf verschiedenen Versionen von Ubuntu basieren, können sich Auswirkungen auf das Skriptverhalten ergeben. Beispielsweise basiert HDInsight 3.4 und früher auf Ubuntu-Versionen, für die Upstart genutzt wird. Version 3.5 und höher basieren auf Ubuntu 16.04 mit Verwendung von Systemd. Für Systemd und Upstart sind unterschiedliche Befehle erforderlich, und Ihr Skript sollte so geschrieben sein, dass es für beide Fälle funktioniert.
 
@@ -114,7 +114,7 @@ Informationen zur Version von Ubuntu, die von HDInsight verwendet wird, finden S
 
 Informationen zu den Unterschieden zwischen Systemd und Upstart finden Sie unter [Systemd for Upstart users](https://wiki.ubuntu.com/SystemdForUpstartUsers) (Systemd für Upstart-Benutzer).
 
-### <a name="bPS2"></a>Einrichten stabiler Verknüpfungen mit Skriptressourcen
+### <a name="provide-stable-links-to-script-resources"></a><a name="bPS2"></a>Einrichten stabiler Verknüpfungen mit Skriptressourcen
 
 Das Skript und die damit verknüpften Ressourcen müssen während des gesamten Lebenszyklus des Clusters verfügbar sein. Diese Ressourcen werden benötigt, wenn während der Skalierungsvorgänge neue Knoten zum Cluster hinzugefügt werden.
 
@@ -125,24 +125,24 @@ Die bewährte Methode ist das Herunterladen und Archivieren aller Daten in einem
 
 Die von Microsoft bereitgestellten Beispiele sind beispielsweise im Speicherkonto [https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) gespeichert. Bei diesem Speicherort handelt es sich um einen öffentlichen, schreibgeschützten Container, der vom HDInsight-Team verwaltet wird.
 
-### <a name="bPS4"></a>Verwenden vorkompilierter Ressourcen
+### <a name="use-pre-compiled-resources"></a><a name="bPS4"></a>Verwenden vorkompilierter Ressourcen
 
 Zur Verringerung des Zeitraums, der für die Ausführung des Skripts benötigt wird, sollten Sie Vorgänge vermeiden, mit denen Ressourcen aus dem Quellcode kompiliert werden. Sie können Ressourcen beispielsweise vorkompilieren und sie in einem Azure-Speicherkonto-Blob speicher, das sich im selben Rechenzentrum wie HDInsight befindet.
 
-### <a name="bPS3"></a>Sicherstellen, dass das Clusteranpassungsskript idempotent ist
+### <a name="ensure-that-the-cluster-customization-script-is-idempotent"></a><a name="bPS3"></a>Sicherstellen, dass das Clusteranpassungsskript idempotent ist
 
 Skripts müssen idempotent sein. Wenn das Skript mehrfach ausgeführt wird, sollte es den Cluster jedes Mal in den gleichen Zustand zurückversetzen.
 
 Ein Skript, das Konfigurationsdateien modifiziert, sollte z. B. keine doppelten Einträge hinzufügen, wenn es mehrfach ausgeführt wird.
 
-### <a name="bPS5"></a>Sicherstellen einer hohen Verfügbarkeit der Clusterarchitektur
+### <a name="ensure-high-availability-of-the-cluster-architecture"></a><a name="bPS5"></a>Sicherstellen einer hohen Verfügbarkeit der Clusterarchitektur
 
 Linux-basierte HDInsight-Cluster stellen zwei Hauptknoten bereit, die im Cluster aktiv sind. Skriptaktionen werden auf beiden Knoten ausgeführt. Wenn die von Ihnen installierten Komponenten nur einen Hauptknoten erwarten, installieren Sie die Komponenten nicht auf beiden Hauptknoten.
 
 > [!IMPORTANT]  
 > Dienste, die im Rahmen von HDInsight bereitgestellt werden, wurden entwickelt, um bei Bedarf ein Failover zwischen den beiden Hauptknoten auszuführen. Diese Funktion gilt nicht für benutzerdefinierte Komponenten, die mit Skriptaktionen installiert wurden. Wenn Sie Hochverfügbarkeit für benutzerdefinierte Komponenten benötigen, müssen Sie Ihren eigenen Failovermechanismus implementieren.
 
-### <a name="bPS6"></a>Konfigurieren benutzerdefinierter Komponenten zur Verwendung von Azure-Blobspeicher
+### <a name="configure-the-custom-components-to-use-azure-blob-storage"></a><a name="bPS6"></a>Konfigurieren benutzerdefinierter Komponenten zur Verwendung von Azure-Blobspeicher
 
 Die Komponenten, die Sie auf dem Cluster installieren, sind möglicherweise standardmäßig so konfiguriert, dass sie den HDFS-Speicher (Apache Hadoop Distributed File System) verwenden. HDInsight verwendet als Standardspeicher entweder Azure Storage oder Azure Data Lake Storage. Diese bieten ein mit HDFS kompatibles Dateisystem, das Daten auch dann beibehält, wenn der Cluster gelöscht wird. Möglicherweise müssen Sie die Komponenten, die Sie installieren, so konfigurieren, dass sie WASB oder ADL anstelle von HDFS verwenden.
 
@@ -154,7 +154,7 @@ hdfs dfs -put /usr/hdp/current/hadoop-client/hadoop-common.jar /example/jars/
 
 In diesem Beispiel verwendet der Befehl `hdfs` auf transparente Weise den Standardclusterspeicher. Für manche Vorgänge müssen Sie möglicherweise den URI angeben. Geben Sie beispielsweise `adl:///example/jars` für Azure Data Lake Storage Gen1, `abfs:///example/jars` für Data Lake Storage Gen2 oder `wasb:///example/jars` für Azure Storage an.
 
-### <a name="bPS7"></a>Schreiben von Informationen in STDOUT und STDERR
+### <a name="write-information-to-stdout-and-stderr"></a><a name="bPS7"></a>Schreiben von Informationen in STDOUT und STDERR
 
 HDInsight protokolliert Skriptausgaben, die in STDOUT oder STDERR geschrieben werden. Diese Informationen können Sie mit der Ambari-Webbenutzeroberfläche anzeigen.
 
@@ -177,7 +177,7 @@ So werden in STDOUT geschriebene Informationen stattdessen an STDERR (2) weiterg
 
 Weitere Informationen zum Anzeigen der durch Skriptaktionen protokollierten Daten finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
 
-### <a name="bps8"></a> Speichern von Dateien im ASCII-Format mit LF-Zeilenenden
+### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a> Speichern von Dateien im ASCII-Format mit LF-Zeilenenden
 
 Bash-Skripts sollten im ASCII-Format und mit LF als Zeilenende gespeichert werden. Dateien, die als UTF-8 gespeichert wurden, oder die CRLF als Zeilenende verwenden, schlagen möglicherweise mit folgendem Fehler fehl:
 
@@ -186,7 +186,7 @@ $'\r': command not found
 line 1: #!/usr/bin/env: No such file or directory
 ```
 
-### <a name="bps9"></a> Verwenden von Wiederholungsversuchlogik zum Wiederherstellen bei vorübergehenden Fehlern
+### <a name="use-retry-logic-to-recover-from-transient-errors"></a><a name="bps9"></a> Verwenden von Wiederholungsversuchlogik zum Wiederherstellen bei vorübergehenden Fehlern
 
 Beim Herunterladen von Dateien, die Pakete mit apt-get installieren, oder anderen Aktionen, die Daten über das Internet übertragen, können vorübergehende Netzwerkfehler die erfolgreiche Ausführung verhindern. Für die Remoteressource, mit der Sie kommunizieren, könnte beispielsweise gerade ein Failover zu einem Sicherungsknoten durchgeführt werden.
 
@@ -224,7 +224,7 @@ retry ls -ltr foo
 retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
 ```
 
-## <a name="helpermethods"></a>Hilfsmethoden für benutzerdefinierte Skripts
+## <a name="helper-methods-for-custom-scripts"></a><a name="helpermethods"></a>Hilfsmethoden für benutzerdefinierte Skripts
 
 Hilfsmethoden für Skriptaktionen sind Hilfsprogramme, die Sie zum Schreiben von benutzerdefinierten Skripts verwenden können. Diese Methoden sind in im Skript [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) enthalten. Verwenden Sie Folgendes, um sie herunterzuladen und als Teil Ihres Skripts zu verwenden:
 
@@ -235,7 +235,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 Folgende Hilfsprogramme stehen für das Verwenden in Ihrem Skript zur Verfügung:
 
-| Hilfsprogramm | Beschreibung |
+| Hilfsprogramm | BESCHREIBUNG |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |Lädt eine Datei aus dem Quell-URI in den angegebenen Dateipfad herunter. Standardmäßig wird eine vorhandene Datei nicht überschrieben. |
 | `untar_file TARFILE DESTDIR` |Extrahiert eine TAR-Datei (mit `-xf`) in das Zielverzeichnis |
@@ -248,7 +248,7 @@ Folgende Hilfsprogramme stehen für das Verwenden in Ihrem Skript zur Verfügung
 | `get_primary_headnode_number` |Ruft das numerische Suffix des primären Hauptknotens ab. Bei einem Fehler wird eine leere Zeichenfolge zurückgegeben. |
 | `get_secondary_headnode_number` |Ruft das numerische Suffix des sekundären Hauptknotens ab. Bei einem Fehler wird eine leere Zeichenfolge zurückgegeben. |
 
-## <a name="commonusage"></a>Gängige Verwendungsmuster
+## <a name="common-usage-patterns"></a><a name="commonusage"></a>Gängige Verwendungsmuster
 
 Dieser Abschnitt enthält Anweisungen für das Implementieren einiger gängiger Verwendungsmuster, die Ihnen beim Schreiben Ihrer eigenen benutzerdefinierten Skripts begegnen können.
 
@@ -300,7 +300,7 @@ Durch das Speichern von Dateien in einem Azure Storage-Konto oder in Azure Data 
 > [!NOTE]  
 > Das URI-Format zum Verweisen auf das Skript unterscheidet sich je nach dem verwendeten Dienst. Verwenden Sie für Speicherkonten, die dem HDInsight-Cluster zugeordnet sind, `wasb://` oder `wasbs://`. Verwenden Sie für öffentlich lesbare URIs `http://` oder `https://`. Verwenden Sie für Data Lake Storage `adl://`.
 
-## <a name="deployScript"></a>Prüfliste für die Bereitstellung einer Skriptaktion
+## <a name="checklist-for-deploying-a-script-action"></a><a name="deployScript"></a>Prüfliste für die Bereitstellung einer Skriptaktion
 
 Es folgen die Schritte zur Vorbereitung der Bereitstellung eines Skripts:
 
@@ -309,7 +309,7 @@ Es folgen die Schritte zur Vorbereitung der Bereitstellung eines Skripts:
 * Legen Sie die heruntergeladenen von den Skripts verwendeten Dateien in einem temporären Dateiverzeichnis ab (z. B. "/tmp"), und löschen Sie sie nach der Ausführung der Skripts.
 * Wenn die Einstellungen auf Betriebssystemebene oder Dienstkonfigurationsdateien geändert werden, sollten Sie HDInsight-Dienste neu starten.
 
-## <a name="runScriptAction"></a>Ausführen einer Skriptaktion
+## <a name="how-to-run-a-script-action"></a><a name="runScriptAction"></a>Ausführen einer Skriptaktion
 
 Sie können Skriptaktionen verwenden, um HDInsight-Cluster mit der folgenden Methode anzupassen:
 
@@ -320,7 +320,7 @@ Sie können Skriptaktionen verwenden, um HDInsight-Cluster mit der folgenden Met
 
 Weitere Informationen zur Verwendung jeder Methode finden Sie unter [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md).
 
-## <a name="sampleScripts"></a>Beispiele benutzerdefinierter Skripts
+## <a name="custom-script-samples"></a><a name="sampleScripts"></a>Beispiele benutzerdefinierter Skripts
 
 Microsoft bietet Beispielskripts für die Installation von Komponenten in einem HDInsight-Cluster. Unter [Installieren und Verwenden von Hue in HDInsight-Clustern](hdinsight-hadoop-hue-linux.md) finden Sie eine Beispielskriptaktion.
 
@@ -356,7 +356,7 @@ Dieses Problem tritt am häufigsten auf, wenn das Skript in einer Windows-Umgebu
 
 Ersetzen Sie `INFILE` durch die Datei ohne BOM. Für `OUTFILE` sollte ein neuer Dateiname eingegeben werden. Die Datei enthält dann das Skript ohne BOM.
 
-## <a name="seeAlso"></a>Nächste Schritte
+## <a name="next-steps"></a><a name="seeAlso"></a>Nächste Schritte
 
 * Lernen Sie das [Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md)
 * Verwenden Sie die [HDInsight .NET SDK-Referenz](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight) , um mehr über das Erstellen von .NET-Anwendungen zu erfahren, die HDInsight verwalten.

@@ -8,10 +8,10 @@ ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 97af40bd1f57acb5b26d3b6216984dfb8e3a5181
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68699802"
 ---
 # <a name="develop-for-azure-files-with-c"></a>Entwickeln für Azure Files mit C++
@@ -40,7 +40,7 @@ Zum Erstellen der Beispiele müssen Sie die Azure Storage-Clientbibliothek 2.4.0
 
 Zum Installieren der Azure Storage-Clientbibliothek 2.4.0 für C++ können Sie eine der folgenden Methoden verwenden:
 
-* **Linux:** Befolgen Sie die Anweisungen auf der Seite [Azure Storage Client Library for C++ README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) (Infodatei zur Azure Storage-Clientbibliothek für C++).
+* **Linux:** Befolgen Sie die Anweisungen auf der Seite [Azure Storage Client Library for C++ README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) (in englischer Sprache).
 * **Windows:** Klicken Sie in Visual Studio auf **Extras &gt; NuGet-Paket-Manager &gt; Paket-Manager-Konsole**. Geben Sie im Fenster der [NuGet-Paket-Manager-Konsole](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) den folgenden Befehl ein, und drücken Sie die **EINGABETASTE**:
   
 

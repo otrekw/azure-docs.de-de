@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: aded023c9f4c045f612e33d32c1e3ac71afddf02
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77530207"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>Vorauszahlung für Azure Cache for Redis-Computeressourcen mit reservierter Kapazität
@@ -48,7 +48,7 @@ Nehmen wir beispielsweise an, Sie führen einen universellen Gen5-Cache mit 32 
 
 In der folgenden Tabelle werden die erforderlichen Felder beschrieben.
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | :------------ | :------- |
 | Subscription   | Das Abonnement, das für die Zahlung der Reservierung von Azure Cache for Redis-Kapazitäten verwendet wird. Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die Reservierung von Azure Cache for Redis-Kapazitäten belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) oder eine einzelne Vereinbarung mit Preisen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein. Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet. Bei einem individuellen Abonnement mit Preisen für nutzungsbasierte Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung für das Abonnement in Rechnung gestellt.
 | `Scope` | Der Bereich der Reservierung kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen: </br></br> **Gemeinsam** – Der Reservierungsrabatt wird auf Azure Cache for Redis-Instanzen angewendet, die in einem beliebigen Abonnement innerhalb des Abrechnungskontexts ausgeführt werden. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Zahlung stellt der freigegebene Bereich alle Abonnements mit nutzungsbasierter Zahlung dar, die vom Kontoadministrator erstellt wurden.</br></br> **Einzelabonnement** – Der Reservierungsrabatt wird auf Azure Cache for Redis-Instanzen in diesem Abonnement angewendet. </br></br> **Einzelne Ressourcengruppe**: Der Reservierungsrabatt wird auf Azure Cache for Redis-Instanzen im ausgewählten Abonnement und die ausgewählte Ressourcengruppe in diesem Abonnement angewendet.
@@ -63,7 +63,7 @@ Reservierungen können unter bestimmten Einschränkungen storniert, umgetauscht 
 
 ## <a name="cache-size-flexibility"></a>Flexibilität der Cachegröße
 
-Die Flexibilität der Cachegröße ermöglicht ein zentrales Hoch- oder Herunterskalieren innerhalb einer Dienstebene und Region, ohne den Vorteil reservierter Kapazität einzubüßen.
+Die Flexibilität der Cachegröße ermöglicht ein Hoch- oder Herunterskalieren innerhalb einer Dienstebene und Region, ohne den Vorteil reservierter Kapazität einzubüßen.
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
 

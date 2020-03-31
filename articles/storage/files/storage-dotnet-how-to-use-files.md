@@ -9,10 +9,10 @@ ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4d8be13a75e276d5be6ec71141a13f95601869f0
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78301436"
 ---
 # <a name="develop-for-azure-files-with-net"></a>Entwickeln für Azure Files mit .NET
@@ -34,7 +34,7 @@ Weitere Informationen zu Azure Files finden Sie unter [Was ist Azure Files?](sto
 
 ## <a name="understanding-the-net-apis"></a>Grundlegendes zu den .NET-APIs
 
-Azure Files bietet zwei allgemeine Ansätze für Clientanwendungen: Server Message Block (SMB) und REST. Innerhalb von .NET werden diese Ansätze durch die APIs `System.IO` und `WindowsAzure.Storage` abstrahiert.
+Azure Files bietet zwei allgemeine Ansätze für Clientansätze: Server Message Block (SMB) und REST. Innerhalb von .NET werden diese Ansätze durch die APIs `System.IO` und `WindowsAzure.Storage` abstrahiert.
 
 API | Verwendung | Notizen
 ----|-------------|------
@@ -420,7 +420,7 @@ Im folgenden Beispiel wird eine Freigabemomentaufnahme gelöscht.
 CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTime); mySnapshot.Delete(null, null, null);
 ```
 
-## Behandeln von Azure Files-Problemen mithilfe von Metriken<a name="troubleshooting-azure-files-using-metrics"></a>
+## <a name="troubleshoot-azure-files-by-using-metrics"></a>Behandeln von Azure Files-Problemen mithilfe von Metriken<a name="troubleshooting-azure-files-using-metrics"></a>
 
 Azure Storage Analytics unterstützt nun Metriken für Azure Files. Mit Metrikdaten können Sie Anforderungen verfolgen und Probleme diagnostizieren.
 
@@ -428,7 +428,7 @@ Die Metriken für Azure Files können über das [Azure-Portal](https://portal.az
 
 Im folgenden Codebeispiel wird veranschaulicht, wie Sie die Storage-Clientbibliothek für .NET zum Aktivieren von Metriken für Azure Files verwenden.
 
-Fügen Sie Ihrer Datei `Program.cs` zunächst die folgenden `using`-Direktiven zusammen mit den oben hinzugefügten Direktiven hinzu:
+Fügen Sie Ihrer Datei `using` zunächst die folgenden `Program.cs`-Direktiven zusammen mit den oben hinzugefügten Direktiven hinzu:
 
 ```csharp
 using Microsoft.Azure.Storage.File.Protocol;

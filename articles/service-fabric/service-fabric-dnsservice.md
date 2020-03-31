@@ -4,10 +4,10 @@ description: Verwenden Sie den DNS-Dienst von Azure Service Fabric zum Ermitteln
 ms.topic: conceptual
 ms.date: 7/20/2018
 ms.openlocfilehash: 317aa81238ec7a0dc24b69b1d00568901b9bc34f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458029"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>DNS-Dienst in Azure Service Fabric
@@ -46,7 +46,7 @@ Wenn Sie nicht das Portal verwenden, um Ihren Cluster zu erstellen, oder wenn Si
 
 Nachdem Sie die Vorlage erstellt haben, aktivieren Sie den DNS-Dienst mit den folgenden Schritten:
 
-1. Überprüfen Sie, ob die `apiversion` für die Ressource `Microsoft.ServiceFabric/clusters` auf `2017-07-01-preview` oder höher festgelegt ist. Wenn nicht, aktualisieren Sie die Ressource, wie im folgenden Beispiel gezeigt:
+1. Überprüfen Sie, ob die `apiversion` für die Ressource `2017-07-01-preview` auf `Microsoft.ServiceFabric/clusters` oder höher festgelegt ist. Wenn nicht, aktualisieren Sie die Ressource, wie im folgenden Beispiel gezeigt:
 
     ```json
     {
@@ -72,7 +72,7 @@ Nachdem Sie die Vorlage erstellt haben, aktivieren Sie den DNS-Dienst mit den fo
           }
         ```
 
-   - Um den Dienst mit nicht standardmäßigen Einstellungen zu aktivieren, fügen Sie dem `fabricSettings`-Abschnitt innerhalb des `properties`-Abschnitts einen `DnsService`-Abschnitt hinzu. In diesem Fall müssen Sie den DNS-Dienst nicht zu `addonFeatures` hinzufügen. Weitere Informationen zu den Eigenschaften, die für den DNS-Dienst festgelegt werden können, finden Sie bei den [DnsService](./service-fabric-cluster-fabric-settings.md#dnsservice)-Einstellungen.
+   - Um den Dienst mit nicht standardmäßigen Einstellungen zu aktivieren, fügen Sie dem `DnsService`-Abschnitt innerhalb des `fabricSettings`-Abschnitts einen `properties`-Abschnitt hinzu. In diesem Fall müssen Sie den DNS-Dienst nicht zu `addonFeatures` hinzufügen. Weitere Informationen zu den Eigenschaften, die für den DNS-Dienst festgelegt werden können, finden Sie bei den [DnsService](./service-fabric-cluster-fabric-settings.md#dnsservice)-Einstellungen.
 
        ```json
            "properties": {

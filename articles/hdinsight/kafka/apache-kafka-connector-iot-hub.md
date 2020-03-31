@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/26/2019
-ms.openlocfilehash: 884d10ce1bc5e6b710c849d0be1cb9165caac4c5
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 48a72b5ba3819712b9e1d2536ae2dd3a06eaf3f2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706092"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80238815"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Verwendung von Apache Kafka in HDInsight mit Azure IoT Hub
 
@@ -164,7 +164,7 @@ Führen Sie zum Abrufen von IoT Hub-Informationen, die vom Connector verwendet w
 
    * __Geben Sie über die [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)__ den folgenden Befehl ein:
 
-       ```azure-cli
+       ```azurecli
        az iot hub show --name myhubname --query "{EventHubCompatibleName:properties.eventHubEndpoints.events.path,EventHubCompatibleEndpoint:properties.eventHubEndpoints.events.endpoint,Partitions:properties.eventHubEndpoints.events.partitionCount}"
        ```
 
@@ -188,7 +188,7 @@ Führen Sie zum Abrufen von IoT Hub-Informationen, die vom Connector verwendet w
 
         1. Um den Wert des Primärschlüssels zu ermitteln, verwenden Sie den folgenden Befehl:
 
-            ```azure-cli
+            ```azurecli
             az iot hub policy show --hub-name myhubname --name service --query "primaryKey"
             ```
 
@@ -196,7 +196,7 @@ Führen Sie zum Abrufen von IoT Hub-Informationen, die vom Connector verwendet w
 
         2. Verwenden Sie zum Abrufen der Verbindungszeichenfolge für die Richtlinie `service` den folgenden Befehl:
 
-            ```azure-cli
+            ```azurecli
             az iot hub show-connection-string --name myhubname --policy-name service --query "connectionString"
             ```
 
@@ -276,7 +276,7 @@ Weitere Informationen zum Konfigurieren der Connectorsenke finden Sie unter [htt
 
     Sobald der Connector gestartet wurde, senden Sie Nachrichten an IoT Hub von Ihren Geräten. Während der Connector Nachrichten von IoT Hub liest und im Kafka-Thema speichert, protokolliert er Informationen in der Konsole:
 
-    ```text
+    ```output
     [2017-08-29 20:15:46,112] INFO Polling for data - Obtained 5 SourceRecords from IotHub (com.microsoft.azure.iot.kafka.connect.IotHubSourceTask:39)
     [2017-08-29 20:15:54,106] INFO Finished WorkerSourceTask{id=AzureIotHubConnector-0} commitOffsets successfully in 4 ms (org.apache.kafka.connect.runtime.WorkerSourceTask:356)
     ```
@@ -296,7 +296,7 @@ Geben Sie über eine SSH-Verbindung mit dem Edgeknoten den folgenden Befehl ein,
 
 Bei der Ausführung des Connectors werden Informationen ähnlich dem folgenden Text angezeigt:
 
-```text
+```output
 [2017-08-30 17:49:16,150] INFO Started tasks to send 1 messages to devices. (com.microsoft.azure.iot.kafka.connect.sink.
 IotHubSinkTask:47)
 [2017-08-30 17:49:16,150] INFO WorkerSinkTask{id=AzureIotHubSinkConnector-0} Committing offsets (org.apache.kafka.connect.runtime.WorkerSinkTask:262)
@@ -346,7 +346,7 @@ Führen Sie zum Senden von Nachrichten über den Connector folgende Schritte dur
 
     Wenn Sie das simulierte Raspberry Pi-Gerät verwenden und dieses ausgeführt wird, protokolliert das Gerät die folgende Nachricht:
 
-    ```text
+    ```output
     Receive message: Turn On
     ```
 

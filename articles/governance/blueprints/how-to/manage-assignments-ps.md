@@ -3,12 +3,12 @@ title: 'Gewusst wie: Verwalten von Zuweisungen mit PowerShell'
 description: Es wird beschrieben, wie Sie Blaupausenzuweisungen mit dem offiziellen PowerShell-Modul „Az.Blueprint“ von Azure Blueprints verwalten.
 ms.date: 09/30/2019
 ms.topic: how-to
-ms.openlocfilehash: 765ed5e1849443d6ac73fe4507327e97e4fdc4c2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b16cf887ba8bfc51616839db5f4af87944ec686d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973644"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80247400"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Gewusst wie: Verwalten von Zuweisungen mit PowerShell
 
@@ -166,7 +166,7 @@ Falls die Blaupausenzuweisung noch nicht vorhanden ist, können Sie sie mit dem 
   - Der Pfad zu einer JSON-Dateidarstellung einer Blaupausenzuweisung.
   - Dieser Parameter ist Teil eines PowerShell-Parametersatzes, der nur **Name**, **Blueprint** und **SubscriptionId** sowie die allgemeinen Parameter enthält.
 
-### <a name="example-1-provide-parameters"></a>Beispiel 1: Angeben von Parametern
+### <a name="example-1-provide-parameters"></a>Beispiel 1: Angeben von Parametern
 
 Im folgenden Beispiel wird eine neue Zuweisung von Version „1.1“ der Blaupausendefinition „my-blueprint“ erstellt, die mit `Get-AzBlueprint` abgerufen wird. Hierbei wird der Standort der verwalteten Identität und des Zuweisungsobjekts auf „westus2“ festgelegt, die Ressourcen werden mit _AllResourcesReadOnly_ gesperrt, und die Hashtabellen für **Parameter** und **ResourceGroupParameter** im Abonnement `{subId}` werden festgelegt:
 
@@ -203,7 +203,7 @@ Parameters        : {storageAccount_storageAccountType}
 ResourceGroups    : ResourceGroup
 ```
 
-### <a name="example-2-use-a-json-assignment-definition-file"></a>Beispiel 2: Verwenden einer JSON-Zuweisungsdefinitionsdatei
+### <a name="example-2-use-a-json-assignment-definition-file"></a>Beispiel 2: Verwenden einer JSON-Zuweisungsdefinitionsdatei
 
 Im folgenden Beispiel wird fast dieselbe Zuweisung wie in [Beispiel 1](#example-1-provide-parameters) erstellt.
 Anstatt der Übergabe von Parametern an das Cmdlet zeigt das Beispiel die Verwendung einer JSON-Zuweisungsdefinitionsdatei und des Parameters **AssignmentFile**. Außerdem wird die Eigenschaft **excludedPrincipals** als Teil von **locks** konfiguriert. Es gibt keinen PowerShell-Parameter für **excludedPrincipals**, und die Eigenschaft kann nur konfiguriert werden, indem sie durch die JSON-Zuweisungsdefinitionsdatei festgelegt wird.
@@ -247,7 +247,7 @@ $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Subsc
     -AssignmentFile '.\assignment.json'
 ```
 
-Ein Beispiel für die JSON-Zuweisungsdefinitionsdatei für eine benutzerseitig zugewiesene verwaltete Identität finden Sie im Anforderungstext unter [Beispiel: Zuweisung mit benutzerseitig zugewiesener verwaltete Identität](/rest/api/blueprints/assignments/createorupdate#assignment-with-user-assigned-managed-identity) für die Rest-API.
+Ein Beispiel für die JSON-Zuweisungsdefinitionsdatei für eine benutzerseitig zugewiesene verwaltete Identität finden Sie im Anforderungstext unter [Beispiel: Zuweisung mit benutzerseitig zugewiesener verwaltete Identität](/rest/api/blueprints/assignments/createorupdate#examples) für die Rest-API.
 
 ## <a name="update-blueprint-assignments"></a>Aktualisieren von Blaupausenzuweisungen
 

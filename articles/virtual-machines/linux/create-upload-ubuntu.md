@@ -1,17 +1,17 @@
 ---
 title: Erstellen und Hochladen einer Ubuntu-Linux-VHD in Azure
 description: Erfahren Sie, wie Sie eine virtuelle Azure-Festplatte (Virtual Hard Disk, VHD) erstellen und hochladen, die ein Ubuntu-Linux-Betriebssystem enthält.
-author: mimckitt
+author: gbowerman
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 06/24/2019
-ms.author: mimckitt
-ms.openlocfilehash: cbb10d544cb299e15022ae47f00d3887d03619c0
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.author: guybo
+ms.openlocfilehash: 5fa3415d8663f358bf0ae48be46ac52b8f8b4b06
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970282"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066726"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Vorbereiten eines virtuellen Ubuntu-Computers für Azure
 

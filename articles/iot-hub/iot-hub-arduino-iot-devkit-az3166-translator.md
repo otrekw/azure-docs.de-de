@@ -9,10 +9,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: liydu
 ms.openlocfilehash: 8e840a1ae7161ea3e7b370889a1f0fb648ca120e
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73953357"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>Verwenden von IoT DevKit AZ3166 mit Azure Functions und Cognitive Services zum Erstellen eines Sprachübersetzers
@@ -46,7 +46,7 @@ Um die Schritte in diesem Tutorial auszuführen, erledigen Sie zuerst die folgen
 
 ## <a name="use-speech-service-with-azure-functions"></a>Verwenden von Speech mit Azure Functions
 
-1. Drücken Sie in VS Code die Taste `F1`, geben Sie **Azure IoT Device Workbench: Provision Azure Services...** (Azure IoT Device Workbench: Azure-Dienste bereitstellen) ein, und wählen Sie den angezeigten Befehl aus. ![Bereitstellen von Azure-Diensten](media/iot-hub-arduino-iot-devkit-az3166-translator/provision.png)
+1. Drücken Sie in VS Code die Taste `F1`, geben Sie **Azure IoT Device Workbench: Provision Azure Services...** (Azure IoT Workbench: Azure-Dienste bereitstellen) ein, und wählen Sie den Eintrag aus. ![Bereitstellen von Azure-Diensten](media/iot-hub-arduino-iot-devkit-az3166-translator/provision.png)
 
 1. Führen Sie die angezeigten Schritte aus, um Azure IoT Hub und Azure Functions bereitzustellen.
    ![Bereitstellungsschritte](media/iot-hub-arduino-iot-devkit-az3166-translator/provision-steps.png)
@@ -90,13 +90,13 @@ Um die Schritte in diesem Tutorial auszuführen, erledigen Sie zuerst die folgen
 
    ![DevKit-Konfigurationsmodus](media/iot-hub-arduino-iot-devkit-az3166-translator/devkit-configuration-mode.png)
 
-1. Drücken Sie die Taste `F1`, geben Sie **Azure IoT Device Workbench: Configure Device Settings... > Config Device Connection String** ein, und wählen Sie den angezeigten Befehl aus. Wählen Sie **Select IoT Hub Device Connection String** (IoT Hub-Geräteverbindungszeichenfolge auswählen) aus, um diese für das DevKit zu konfigurieren.
+1. Klicken Sie auf `F1`, geben Sie **Azure IoT Device Workbench: Configure Device Settings... > Config Device Connection String** ein, und wählen Sie den angezeigten Befehl aus. Wählen Sie **Select IoT Hub Device Connection String** (IoT Hub-Geräteverbindungszeichenfolge auswählen) aus, um diese für das DevKit zu konfigurieren.
    ![Konfigurieren der Verbindungszeichenfolge](media/iot-hub-arduino-iot-devkit-az3166-translator/configure-connection-string.png)
 
 1. Sobald dieser Vorgang abgeschlossen ist, wird eine Benachrichtigung angezeigt.
    ![Erfolgreiche Konfiguration der Verbindungszeichenfolge](media/iot-hub-arduino-iot-devkit-az3166-translator/configure-connection-string-success.png)
 
-1. Drücken Sie erneut die Taste `F1`, geben Sie **Azure IoT Device Workbench: Upload Device Code** (Azure IoT Device Workbench: Gerätecode hochladen) ein, und wählen Sie den angezeigten Befehl aus. Daraufhin wird der Code kompiliert und auf das DevKit hochgeladen.
+1. Klicken Sie erneut auf `F1`, geben Sie **Azure IoT Device Workbench: Upload Device Code** (Azure IoT Device Workbench: Gerätecode hochladen) ein, und wählen Sie den angezeigten Befehl aus. Daraufhin wird der Code kompiliert und auf das DevKit hochgeladen.
    ![Hochladen des Codes](media/iot-hub-arduino-iot-devkit-az3166-translator/device-upload.png)
 
 ## <a name="test-the-project"></a>Testen des Projekts
@@ -125,7 +125,7 @@ Auf dem Bildschirm mit dem Übersetzungsergebnis haben Sie folgende Möglichkeit
 
 - Drücken Sie die Taste „B“, um zu sprechen. Lassen Sie sie los, um die Sprachnachricht zu senden und den Übersetzungstext abzurufen.
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 ![mini-solution-voice-to-tweet-diagram](media/iot-hub-arduino-iot-devkit-az3166-translator/diagram.png)
 

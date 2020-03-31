@@ -9,10 +9,10 @@ ms.date: 11/13/2019
 ms.author: cherylmc
 ms.reviewer: ganesr
 ms.openlocfilehash: 78da84a462566cca1a2800174849159ace8dd6dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75981135"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Erstellen einer ExpressRoute-Verbindung mithilfe einer Azure Resource Manager-Vorlage
@@ -34,7 +34,7 @@ Erfahren Sie, wie Sie eine ExpressRoute-Verbindung erstellen, indem Sie eine Azu
 * Stellen Sie sicher, dass Sie über die notwendigen Berechtigungen verfügen, um neue Netzwerkressourcen zu erstellen. Wenden Sie sich an Ihren Kontoadministrator, wenn Sie nicht über die richtigen Berechtigungen verfügen.
 * Sie können sich das [Video ansehen](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit), bevor Sie beginnen, um die Schritte besser zu verstehen.
 
-## <a name="create"></a>Erstellen und Bereitstellen einer ExpressRoute-Verbindung
+## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>Erstellen und Bereitstellen einer ExpressRoute-Verbindung
 
 [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) bieten eine gute Sammlung von Resource Manager-Vorlagen. Verwenden Sie eine der [vorhandenen Vorlagen](https://azure.microsoft.com/resources/templates/101-expressroute-circuit-create/) zum Erstellen einer ExpressRoute-Verbindung.
 
@@ -84,7 +84,7 @@ In diesem Tutorial wird Azure PowerShell verwendet, um die Vorlage bereitzustell
 * [Mit der Azure CLI](../azure-resource-manager/templates/deploy-cli.md).
 * [Mit der REST-API](../azure-resource-manager/templates/deploy-rest.md).
 
-## <a name="delete"></a>Aufheben der Bereitstellung und Löschen einer ExpressRoute-Verbindung
+## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>Aufheben der Bereitstellung und Löschen einer ExpressRoute-Verbindung
 
 Sie können Ihre ExpressRoute-Verbindung löschen. Wählen Sie dazu das Symbol **Löschen** aus. Beachten Sie die folgenden Informationen:
 

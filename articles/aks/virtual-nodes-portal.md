@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie das Azure-Portal verwenden, um einen Azure Ku
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 664bbdc94963b84e4fed6845dfd23d2407ca3898
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: ea93ea4a68fad213fe5bd1dc61abcb2deaef2c9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592559"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473590"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Erstellen und Konfigurieren eines AKS-Clusters zur Verwendung von virtuellen Knoten im Azure-Portal
 
@@ -29,7 +29,7 @@ az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" 
 
 Der Anbieter *Microsoft.ContainerInstance* sollte als *Registriert* gemeldet werden, wie in der folgenden Beispielausgabe gezeigt:
 
-```
+```output
 Namespace                    RegistrationState
 ---------------------------  -------------------
 Microsoft.ContainerInstance  Registered
@@ -111,15 +111,13 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 Überprüfen Sie die Verbindung mit Ihrem Cluster mithilfe des Befehls [kubectl get][kubectl-get], um eine Liste der Clusterknoten zurückzugeben.
 
-```azurecli-interactive
+```console
 kubectl get nodes
 ```
 
 Die folgende Beispielausgabe zeigt den erstellten einzelnen VM-Knoten und dann den virtuellen Knoten für Linux, *virtual-node-aci-linux*:
 
-```
-$ kubectl get nodes
-
+```output
 NAME                           STATUS    ROLES     AGE       VERSION
 virtual-node-aci-linux         Ready     agent     28m       v1.11.2
 aks-agentpool-14693408-0       Ready     agent     32m       v1.11.2
@@ -168,9 +166,11 @@ kubectl apply -f virtual-node.yaml
 
 Verwenden Sie den Befehl [kubectl get pods][kubectl-get] mit dem `-o wide`-Argument, um eine Liste von Pods und den geplanten Knoten auszugeben. Beachten Sie, dass der `virtual-node-helloworld`-Pod auf dem `virtual-node-linux`-Knoten geplant wurde.
 
+```console
+kubectl get pods -o wide
 ```
-$ kubectl get pods -o wide
 
+```output
 NAME                                     READY     STATUS    RESTARTS   AGE       IP           NODE
 virtual-node-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.0.4   virtual-node-aci-linux
 ```
@@ -184,27 +184,25 @@ Dem Pod wird von dem Subnetz des virtuellen Azure-Netzwerks, das für die Verwen
 
 Um den Pod zu testen, der auf dem virtuellen Knoten ausgeführt werden soll, wechseln Sie in einem Webclient zur Demoanwendung. Da dem Pod eine interne IP-Adresse zugewiesen wurde, können Sie diese Konnektivität schnell von einem anderen Pod im AKS-Cluster aus testen. Erstellen Sie einen Testpod, und fügen Sie an diesen eine Terminalsitzung an:
 
-```azurecli-interactive
+```console
 kubectl run -it --rm virtual-node-test --image=debian
 ```
 
 Installieren Sie `curl` mit `apt-get` im Pod:
 
-```azurecli-interactive
+```console
 apt-get update && apt-get install -y curl
 ```
 
 Greifen Sie mithilfe von `curl` auf die Adresse Ihres Pods zu, z.B. *http://10.241.0.4* . Geben Sie Ihre eigene interne IP-Adresse an, die im vorherigen `kubectl get pods`-Befehl gezeigt wurde:
 
-```azurecli-interactive
+```console
 curl -L http://10.241.0.4
 ```
 
 Die Demoanwendung wird angezeigt, wie in der folgenden verkürzten Beispielausgabe veranschaulicht:
 
-```
-$ curl -L 10.241.0.4
-
+```output
 <html>
 <head>
   <title>Welcome to Azure Container Instances!</title>

@@ -13,17 +13,17 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: c8ef481fe277d6451923da828f0e7473354c24cf
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903020"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231682"
 ---
 # <a name="api-management-advanced-policies"></a>API Management – Erweiterte Richtlinien
 
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
 
-## <a name="AdvancedPolicies"></a> Erweiterte Richtlinien
+## <a name="advanced-policies"></a><a name="AdvancedPolicies"></a> Erweiterte Richtlinien
 
 -   [Ablaufsteuerung](api-management-advanced-policies.md#choose) – Bedingte Anwendung von Richtlinienanweisungen basierend auf den Ergebnissen der Auswertung von booleschen [Ausdrücken](api-management-policy-expressions.md)
 -   [Anforderung weiterleiten](#ForwardRequest) – leitet die Anforderung an den Back-End-Dienst.
@@ -41,11 +41,11 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 -   [Ablaufverfolgung](#Trace) – Hinzufügen von benutzerdefinierten Ablaufverfolgungen zur [API-Inspektor](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)-Ausgabe, zu Application Insights-Telemetrien und Diagnoseprotokollen.
 -   [Warten](#Wait) – wartet darauf, dass eingeschlossene Richtlinien für [Send request](api-management-advanced-policies.md#SendRequest) (Sendeanforderung), [Get value from cache](api-management-caching-policies.md#GetFromCacheByKey) (Wert aus dem Cache abrufen) oder [Control flow](api-management-advanced-policies.md#choose) (Ablaufsteuerung) abgeschlossen werden, bevor der Vorgang fortgesetzt wird.
 
-## <a name="choose"></a> Ablaufsteuerung
+## <a name="control-flow"></a><a name="choose"></a> Ablaufsteuerung
 
 Mit der Richtlinie `choose` werden eingeschlossene Richtlinienanweisungen basierend auf dem Ergebnis der Auswertung von booleschen Ausdrücken angewendet. Dies ähnelt „if-then-else“ oder einem Switchkonstrukt in einer Programmiersprache.
 
-### <a name="ChoosePolicyStatement"></a> Richtlinienanweisung
+### <a name="policy-statement"></a><a name="ChoosePolicyStatement"></a> Richtlinienanweisung
 
 ```xml
 <choose>
@@ -65,7 +65,7 @@ Die Ablaufsteuerungsrichtlinie muss mindestens ein `<when/>`-Element enthalten. 
 
 ### <a name="examples"></a>Beispiele
 
-#### <a name="ChooseExample"></a> Beispiel
+#### <a name="example"></a><a name="ChooseExample"></a> Beispiel
 
 Das folgende Beispiel enthält eine [set-variable](api-management-advanced-policies.md#set-variable)-Richtlinie und zwei Ablaufsteuerungsrichtlinien.
 
@@ -106,7 +106,7 @@ Die zweite Ablaufsteuerungsrichtlinie befindet sich im Abschnitt für den ausgeh
 
 #### <a name="example"></a>Beispiel
 
-In diesem Beispiel wird gezeigt, wie Inhalte gefiltert werden, indem Datenelemente aus der über den Back-End-Dienst empfangenen Antwort entfernt werden, wenn das Produkt `Starter` verwendet wird. Eine Demonstration der Konfiguration und Verwendung dieser Richtlinie finden Sie in [Cloud Cover-Episode 177: Weitere API Management-Funktionen mit Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (führen Sie einen schnellen Vorlauf bis 34:30 durch). Beginnen Sie bei 31:50, um eine Übersicht über die [API „The Dark Sky Forecast“](https://developer.forecast.io/) zu erhalten, die für diese Demo verwendet wird.
+In diesem Beispiel wird gezeigt, wie Inhalte gefiltert werden, indem Datenelemente aus der über den Back-End-Dienst empfangenen Antwort entfernt werden, wenn das Produkt `Starter` verwendet wird. Eine Demonstration der Konfiguration und Verwendung dieser Richtlinie finden Sie unter [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (Cloud Cover-Episode 177 zu weiteren API Management-Funktionen mit Vlad Vinogradsky). Führen Sie einen schnellen Vorlauf bis 34:30 durch. Beginnen Sie bei 31:50, um eine Übersicht über die [API „The Dark Sky Forecast“](https://developer.forecast.io/) zu erhalten, die für diese Demo verwendet wird.
 
 ```xml
 <!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->
@@ -126,7 +126,7 @@ In diesem Beispiel wird gezeigt, wie Inhalte gefiltert werden, indem Datenelemen
 
 ### <a name="elements"></a>Elemente
 
-| Element   | Beschreibung                                                                                                                                                                                                                                                               | Erforderlich |
+| Element   | BESCHREIBUNG                                                                                                                                                                                                                                                               | Erforderlich |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | choose    | Stammelement                                                                                                                                                                                                                                                             | Ja      |
 | when      | Die Bedingung, die für die Teile `if` oder `ifelse` der `choose`-Richtlinie verwendet werden soll. Wenn die `choose`-Richtlinie über mehrere `when`-Abschnitte verfügt, werden diese nacheinander ausgewertet. Wenn die Bedingung (`condition`) eines when-Elements bei der Auswertung `true` ergibt, werden keine weiteren `when`-Bedingungen ausgewertet. | Ja      |
@@ -134,11 +134,11 @@ In diesem Beispiel wird gezeigt, wie Inhalte gefiltert werden, indem Datenelemen
 
 ### <a name="attributes"></a>Attributes
 
-| attribute                                              | Beschreibung                                                                                               | Erforderlich |
+| attribute                                              | BESCHREIBUNG                                                                                               | Erforderlich |
 | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- | -------- |
 | condition="boolescher Ausdruck &#124; boolesche Konstante" | Der boolesche Ausdruck bzw. die Konstante, der bzw. die ausgewertet werden soll, wenn die enthaltende `when`-Richtlinienanweisung ausgewertet wird. | Ja      |
 
-### <a name="ChooseUsage"></a> Verwendung
+### <a name="usage"></a><a name="ChooseUsage"></a> Verwendung
 
 Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
@@ -146,7 +146,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-## <a name="ForwardRequest"></a> Anforderung weiterleiten
+## <a name="forward-request"></a><a name="ForwardRequest"></a> Anforderung weiterleiten
 
 Mit der `forward-request`-Richtlinie wird die eingehende Anforderung an den Back-End-Dienst weitergeleitet, der im Anforderungs[kontext](api-management-policy-expressions.md#ContextVariables) angegeben ist. Die Back-End-Dienst-URL ist in den API-[Einstellungen](https://azure.microsoft.com/documentation/articles/api-management-howto-create-apis/#configure-api-settings) angegeben und kann mit der Richtlinie [Back-End-Dienst festlegen](api-management-transformation-policies.md) geändert werden.
 
@@ -244,13 +244,13 @@ Bei dieser Richtlinie auf Vorgangsebene werden Anforderungen nicht an den Back-E
 
 ### <a name="elements"></a>Elemente
 
-| Element         | Beschreibung   | Erforderlich |
+| Element         | BESCHREIBUNG   | Erforderlich |
 | --------------- | ------------- | -------- |
 | forward-request | Stammelement | Ja      |
 
 ### <a name="attributes"></a>Attributes
 
-| attribute                                     | Beschreibung                                                                                                                                                                                                                                                                                                    | Erforderlich | Standard |
+| attribute                                     | BESCHREIBUNG                                                                                                                                                                                                                                                                                                    | Erforderlich | Standard |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | timeout="integer"                             | Die Zeitspanne in Sekunden, die darauf gewartet wird, dass der Back-End-Dienst die HTTP-Antwortheader zurückgibt. Danach wird ein Timeoutfehler ausgelöst. Der Mindestwert beträgt 0 Sekunden. Werte, die größer als 240 Sekunden sind, werden möglicherweise nicht berücksichtigt, weil die zugrunde liegende Netzwerkinfrastruktur Verbindungen im Leerlauf nach dieser Zeitspanne trennen kann. | Nein       | Keine    |
 | follow-redirects="false &#124; true"          | Gibt an, ob Umleitungen vom Back-End-Dienst vom Gateway verfolgt oder an den Aufrufer zurückgegeben werden.                                                                                                                                                                                                    | Nein       | false   |
@@ -264,11 +264,11 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 -   **Richtlinienabschnitte:** backend
 -   **Richtlinienbereiche:** alle Bereiche
 
-## Einschränken der Parallelität durch <a name="LimitConcurrency"></a>
+## <a name="limit-concurrency"></a>Einschränken der Parallelität durch <a name="LimitConcurrency"></a>
 
 Die Richtlinie `limit-concurrency` verhindert die Ausführung der eingeschlossenen Richtlinien durch mehr als die angegebene Anzahl von Anforderungen gleichzeitig. Wenn diese Anzahl überschritten wird, tritt bei neuen Anforderungen sofort ein Fehler mit dem Statuscode „429 – Zu viele Anforderungen“ auf.
 
-### <a name="LimitConcurrencyStatement"></a> Richtlinienanweisung
+### <a name="policy-statement"></a><a name="LimitConcurrencyStatement"></a> Richtlinienanweisung
 
 ```xml
 <limit-concurrency key="expression" max-count="number">
@@ -296,13 +296,13 @@ Das folgende Beispiel veranschaulicht das Beschränken der Anzahl der Anforderun
 
 ### <a name="elements"></a>Elemente
 
-| Element           | Beschreibung   | Erforderlich |
+| Element           | BESCHREIBUNG   | Erforderlich |
 | ----------------- | ------------- | -------- |
 | limit-concurrency | Stammelement | Ja      |
 
 ### <a name="attributes"></a>Attributes
 
-| attribute | Beschreibung                                                                                        | Erforderlich | Standard |
+| attribute | BESCHREIBUNG                                                                                        | Erforderlich | Standard |
 | --------- | -------------------------------------------------------------------------------------------------- | -------- | ------- |
 | Schlüssel       | Eine Zeichenfolge. Ausdruck zulässig. Gibt den Bereich der Parallelität an. Kann von mehreren Richtlinien verwendet werden. | Ja      | –     |
 | max-count | Eine ganze Zahl Gibt eine maximale Anzahl von Anforderungen an, die an die Richtlinie weitergeleitet werden können           | Ja      | –     |
@@ -315,7 +315,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-## <a name="log-to-eventhub"></a> Protokoll an Event Hub
+## <a name="log-to-event-hub"></a><a name="log-to-eventhub"></a> Protokoll an Event Hub
 
 Mit der `log-to-eventhub`-Richtlinie werden Nachrichten im angegebenen Format an ein von einem Protokollierungstool definiertes Nachrichtenziel gesendet. Wie anhand des Namens bereits erkennbar ist, wird diese Richtlinie zum Speichern von ausgewählten Anforderungs- oder Antwortkontextinformationen für die Online- oder Offlineanalyse verwendet.
 
@@ -349,13 +349,13 @@ Eine beliebige Zeichenfolge kann als Wert für die Protokollierung in Event Hubs
 
 ### <a name="elements"></a>Elemente
 
-| Element         | Beschreibung                                                                     | Erforderlich |
+| Element         | BESCHREIBUNG                                                                     | Erforderlich |
 | --------------- | ------------------------------------------------------------------------------- | -------- |
 | log-to-eventhub | Stammelement Der Wert dieses Elements ist die Zeichenfolge für die Protokollierung in Ihrem Event Hub. | Ja      |
 
 ### <a name="attributes"></a>Attributes
 
-| attribute     | Beschreibung                                                               | Erforderlich                                                             |
+| attribute     | BESCHREIBUNG                                                               | Erforderlich                                                             |
 | ------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | logger-id     | Die ID des Protokollierungstools, das bei Ihrem API Management-Dienst registriert ist         | Ja                                                                  |
 | partition-id  | Gibt den Index der Partition an, an die Nachrichten gesendet werden.             | Optional. Dieses Attribut darf nicht genutzt werden, wenn `partition-key` verwendet wird. |
@@ -369,7 +369,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-## <a name="mock-response"></a> Modellantwort
+## <a name="mock-response"></a><a name="mock-response"></a> Modellantwort
 
 Die `mock-response` wird, wie der Name impliziert, dazu verwendet, APIs und Vorgänge zu modellieren. Sie bricht die normale Pipelineausführung ab und gibt die Modellantwort an den Aufrufer zurück. Die Richtlinie versucht immer, möglichst realitätsnahe Antworten zurückgeben. Sie bevorzugt dabei Beispiele für Antwortinhalte, soweit verfügbar. Sie generiert Beispielantworten aus Schemas, sofern Schemas bereitgestellt werden, Beispiele hingegen nicht. Wenn weder Beispiele noch Schemas gefunden wurden, werden Antworten ohne Inhalt zurückgegeben.
 
@@ -394,13 +394,13 @@ status code and media type. If no example or schema found, the content is empty.
 
 ### <a name="elements"></a>Elemente
 
-| Element       | Beschreibung   | Erforderlich |
+| Element       | BESCHREIBUNG   | Erforderlich |
 | ------------- | ------------- | -------- |
 | mock-response | Stammelement | Ja      |
 
 ### <a name="attributes"></a>Attributes
 
-| attribute    | Beschreibung                                                                                           | Erforderlich | Standard |
+| attribute    | BESCHREIBUNG                                                                                           | Erforderlich | Standard |
 | ------------ | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | status-code  | Gibt den Statuscode der Antwort an und wird verwendet, um ein passendes Beispiel oder Schema auszuwählen                 | Nein       | 200     |
 | content-type | Gibt den Headerwert `Content-Type` für die Antwort an und wird verwendet, um ein passendes Beispiel oder Schema auszuwählen | Nein       | Keine    |
@@ -413,7 +413,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-## <a name="Retry"></a> Wiederholen
+## <a name="retry"></a><a name="Retry"></a> Wiederholen
 
 Die `retry`-Richtlinie führt ihre untergeordneten Richtlinien einmal aus und versucht dann, die Ausführung zu wiederholen, bis `condition` für die Wiederholung `false` wird oder der Wert `count` für die Wiederholung ausgeschöpft ist.
 
@@ -453,13 +453,13 @@ Im folgenden Beispiel wird mit einem exponentiellen Wiederholungsalgorithmus bis
 
 ### <a name="elements"></a>Elemente
 
-| Element | Beschreibung                                                         | Erforderlich |
+| Element | BESCHREIBUNG                                                         | Erforderlich |
 | ------- | ------------------------------------------------------------------- | -------- |
 | retry   | Stammelement Kann beliebige andere Richtlinien als untergeordnete Elemente enthalten. | Ja      |
 
 ### <a name="attributes"></a>Attributes
 
-| attribute        | Beschreibung                                                                                                                                           | Erforderlich | Standard |
+| attribute        | BESCHREIBUNG                                                                                                                                           | Erforderlich | Standard |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | condition        | Ein boolesches Literal oder ein [Ausdruck](api-management-policy-expressions.md), mit dem angegeben wird, ob Wiederholungsversuche beendet (`false`) oder fortgesetzt (`true`) werden sollen.      | Ja      | –     |
 | count            | Eine positive Zahl, mit der die maximale Anzahl von Wiederholungsversuchen angegeben wird.                                                                                | Ja      | –     |
@@ -481,7 +481,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-## <a name="ReturnResponse"></a> Rückantwort
+## <a name="return-response"></a><a name="ReturnResponse"></a> Rückantwort
 
 Mit der `return-response`-Richtlinie wird die Pipelineausführung abgebrochen und entweder eine Standardantwort oder eine benutzerdefinierte Antwort an den Aufrufer zurückgegeben. Die Standardantwort ist `200 OK` ohne Text. Die benutzerdefinierte Antwort kann über eine Kontextvariable oder Richtlinienanweisungen angegeben werden. Bei Angabe von beidem wird die in der Kontextvariablen enthaltene Antwort von den Richtlinienanweisungen geändert, bevor sie an den Aufrufer zurückgegeben wird.
 
@@ -510,7 +510,7 @@ Mit der `return-response`-Richtlinie wird die Pipelineausführung abgebrochen un
 
 ### <a name="elements"></a>Elemente
 
-| Element         | Beschreibung                                                                               | Erforderlich |
+| Element         | BESCHREIBUNG                                                                               | Erforderlich |
 | --------------- | ----------------------------------------------------------------------------------------- | -------- |
 | return-response | Stammelement                                                                             | Ja      |
 | set-header      | Eine [set-header](api-management-transformation-policies.md#SetHTTPheader)-Richtlinienanweisung. | Nein       |
@@ -519,7 +519,7 @@ Mit der `return-response`-Richtlinie wird die Pipelineausführung abgebrochen un
 
 ### <a name="attributes"></a>Attributes
 
-| attribute              | Beschreibung                                                                                                                                                                          | Erforderlich  |
+| attribute              | BESCHREIBUNG                                                                                                                                                                          | Erforderlich  |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------- |
 | response-variable-name | Der Name der Kontextvariablen, auf die beispielsweise von einer vorgelagerten [send-request](api-management-advanced-policies.md#SendRequest)-Richtlinie verwiesen wird und die ein `Response`-Objekt enthält. | Optional. |
 
@@ -531,7 +531,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-## <a name="SendOneWayRequest"></a> Unidirektionale Anforderung senden
+## <a name="send-one-way-request"></a><a name="SendOneWayRequest"></a> Unidirektionale Anforderung senden
 
 Die `send-one-way-request`-Richtlinie sendet die bereitgestellte Anforderung an die angegebene URL, ohne auf eine Antwort zu warten.
 
@@ -580,7 +580,7 @@ Diese Beispielrichtlinie zeigt ein Beispiel für die Verwendung der `send-one-wa
 
 ### <a name="elements"></a>Elemente
 
-| Element                    | Beschreibung                                                                                                 | Erforderlich                        |
+| Element                    | BESCHREIBUNG                                                                                                 | Erforderlich                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | send-one-way-request       | Stammelement                                                                                               | Ja                             |
 | url                        | Die URL der Anforderung.                                                                                     | „Nein“, wenn „mode=copy“, andernfalls „Ja“. |
@@ -591,7 +591,7 @@ Diese Beispielrichtlinie zeigt ein Beispiel für die Verwendung der `send-one-wa
 
 ### <a name="attributes"></a>Attributes
 
-| attribute     | Beschreibung                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard  |
+| attribute     | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard  |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | mode="string" | Bestimmt, ob dies eine neue Anforderung oder eine Kopie der aktuellen Anforderung ist. Im Ausgangsmodus wird der Anforderungstext durch „mode=copy“ nicht initialisiert.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Nein       | Neu      |
 | name          | Gibt den Namen des festzulegenden Headers an.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Ja      | –      |
@@ -605,7 +605,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-## <a name="SendRequest"></a> Anforderung senden
+## <a name="send-request"></a><a name="SendRequest"></a> Anforderung senden
 
 Die `send-request`-Richtlinie sendet die bereitgestellte Anforderung an die angegebene URL und wartet nicht länger, als durch den Zeitüberschreitungswert festgelegt ist.
 
@@ -664,7 +664,7 @@ In diesem Beispiel ist eine Möglichkeit dargestellt, wie Sie ein Verweistoken m
 
 ### <a name="elements"></a>Elemente
 
-| Element                    | Beschreibung                                                                                                 | Erforderlich                        |
+| Element                    | BESCHREIBUNG                                                                                                 | Erforderlich                        |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | send-request               | Stammelement                                                                                               | Ja                             |
 | url                        | Die URL der Anforderung.                                                                                     | „Nein“, wenn „mode=copy“, andernfalls „Ja“. |
@@ -675,7 +675,7 @@ In diesem Beispiel ist eine Möglichkeit dargestellt, wie Sie ein Verweistoken m
 
 ### <a name="attributes"></a>Attributes
 
-| attribute                       | Beschreibung                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard  |
+| attribute                       | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard  |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | mode="string"                   | Bestimmt, ob dies eine neue Anforderung oder eine Kopie der aktuellen Anforderung ist. Im Ausgangsmodus wird der Anforderungstext durch „mode=copy“ nicht initialisiert.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Nein       | Neu      |
 | response-variable-name="string" | Der Name der Kontextvariable, die ein Antwortobjekt empfängt. Wenn die Variable nicht vorhanden ist, wird sie bei erfolgreicher Ausführung der Richtlinie erstellt und ist dann über die Sammlung [`context.Variable`](api-management-policy-expressions.md#ContextVariables) zugänglich.                                                                                                                                                                                                                                                                                                                          | Ja      | –      |
@@ -692,7 +692,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-## <a name="SetHttpProxy"></a> HTTP-Proxy festlegen
+## <a name="set-http-proxy"></a><a name="SetHttpProxy"></a> HTTP-Proxy festlegen
 
 Die `proxy`-Richtlinie können Sie zum Routen von Anforderungen, die an das Back-End weitergeleitet wurden, über einen HTTP-Proxy verwenden. Nur HTTP (nicht HTTPS) wird zwischen dem Gateway und dem Proxy unterstützt. Nur Standard- und NTLM-Authentifizierung.
 
@@ -714,13 +714,13 @@ Beachten Sie die Verwendung von [Eigenschaften](api-management-howto-properties.
 
 ### <a name="elements"></a>Elemente
 
-| Element | Beschreibung  | Erforderlich |
+| Element | BESCHREIBUNG  | Erforderlich |
 | ------- | ------------ | -------- |
 | proxy   | Stammelement | Ja      |
 
 ### <a name="attributes"></a>Attributes
 
-| attribute         | Beschreibung                                            | Erforderlich | Standard |
+| attribute         | BESCHREIBUNG                                            | Erforderlich | Standard |
 | ----------------- | ------------------------------------------------------ | -------- | ------- |
 | url="string"      | Proxy-URL im Format http://host:port.             | Ja      | –     |
 | username="string" | Der Benutzername, der für die Authentifizierung mit dem Proxy verwendet wird. | Nein       | –     |
@@ -734,7 +734,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-## <a name="SetRequestMethod"></a> Anforderungsmethode festlegen
+## <a name="set-request-method"></a><a name="SetRequestMethod"></a> Anforderungsmethode festlegen
 
 Mit der `set-method`-Richtlinie können Sie die HTTP-Anforderungsmethode für eine Anforderung ändern.
 
@@ -777,7 +777,7 @@ Diese Beispielrichtlinie, in der die `set-method`-Richtlinie verwendet wird, ver
 
 ### <a name="elements"></a>Elemente
 
-| Element    | Beschreibung                                                       | Erforderlich |
+| Element    | BESCHREIBUNG                                                       | Erforderlich |
 | ---------- | ----------------------------------------------------------------- | -------- |
 | set-method | Stammelement Mit dem Wert des Elements wird die HTTP-Methode angegeben. | Ja      |
 
@@ -789,7 +789,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-## <a name="SetStatus"></a> Statuscode festlegen
+## <a name="set-status-code"></a><a name="SetStatus"></a> Statuscode festlegen
 
 Mit der `set-status`-Richtlinie wird der HTTP-Statuscode auf den angegebenen Wert festgelegt.
 
@@ -820,13 +820,13 @@ Dieses Beispiel zeigt, wie Sie eine 401-Antwort zurückgeben, wenn das Autorisie
 
 ### <a name="elements"></a>Elemente
 
-| Element    | Beschreibung   | Erforderlich |
+| Element    | BESCHREIBUNG   | Erforderlich |
 | ---------- | ------------- | -------- |
 | set-status | Stammelement | Ja      |
 
 ### <a name="attributes"></a>Attributes
 
-| attribute       | Beschreibung                                                | Erforderlich | Standard |
+| attribute       | BESCHREIBUNG                                                | Erforderlich | Standard |
 | --------------- | ---------------------------------------------------------- | -------- | ------- |
 | code="integer"  | Der zurückzugebende HTTP-Statuscode.                            | Ja      | –     |
 | reason="string" | Eine Beschreibung des Grunds zum Zurückgeben des Statuscodes. | Ja      | –     |
@@ -838,17 +838,17 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 -   **Richtlinienabschnitte:** outbound, backend, on-error
 -   **Richtlinienbereiche:** alle Bereiche
 
-## <a name="set-variable"></a> Variable festlegen
+## <a name="set-variable"></a><a name="set-variable"></a> Variable festlegen
 
 Mit der `set-variable`-Richtlinie wird eine [Kontext](api-management-policy-expressions.md#ContextVariables)variable deklariert und einem Wert zugewiesen, der über einen [Ausdruck](api-management-policy-expressions.md) oder ein Zeichenfolgenliteral angegeben wird. Wenn der Ausdruck ein Literal enthält, wird die Konvertierung in eine Zeichenfolge durchgeführt, und der Typ des Werts lautet `System.String`.
 
-### <a name="set-variablePolicyStatement"></a> Richtlinienanweisung
+### <a name="policy-statement"></a><a name="set-variablePolicyStatement"></a> Richtlinienanweisung
 
 ```xml
 <set-variable name="variable name" value="Expression | String literal" />
 ```
 
-### <a name="set-variableExample"></a> Beispiel
+### <a name="example"></a><a name="set-variableExample"></a> Beispiel
 
 Im folgenden Beispiel wird eine set-variable-Richtlinie im Abschnitt für den eingehenden Datenverkehr veranschaulicht. Diese „set-variable“-Richtlinie erstellt eine boolesche `isMobile`-[Kontext](api-management-policy-expressions.md#ContextVariables)variable, die auf „true“ festgelegt ist, wenn der `User-Agent`-Anforderungsheader den Text `iPad` oder `iPhone` enthält.
 
@@ -858,13 +858,13 @@ Im folgenden Beispiel wird eine set-variable-Richtlinie im Abschnitt für den ei
 
 ### <a name="elements"></a>Elemente
 
-| Element      | Beschreibung   | Erforderlich |
+| Element      | BESCHREIBUNG   | Erforderlich |
 | ------------ | ------------- | -------- |
 | set-variable | Stammelement | Ja      |
 
 ### <a name="attributes"></a>Attributes
 
-| attribute | Beschreibung                                                              | Erforderlich |
+| attribute | BESCHREIBUNG                                                              | Erforderlich |
 | --------- | ------------------------------------------------------------------------ | -------- |
 | name      | Der Name der Variablen.                                                | Ja      |
 | value     | Der Wert der Variablen. Dies kann ein Ausdruck oder ein Literalwert sein. | Ja      |
@@ -876,7 +876,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 -   **Richtlinienbereiche:** alle Bereiche
 
-### <a name="set-variableAllowedTypes"></a> Zulässige Typen
+### <a name="allowed-types"></a><a name="set-variableAllowedTypes"></a> Zulässige Typen
 
 Ausdrücke, die in der `set-variable`-Richtlinie verwendet werden, müssen einen der folgenden einfachen Typen zurückgeben.
 
@@ -912,7 +912,7 @@ Ausdrücke, die in der `set-variable`-Richtlinie verwendet werden, müssen einen
 -   System.Char?
 -   System.DateTime?
 
-## <a name="Trace"></a> Ablaufverfolgung
+## <a name="trace"></a><a name="Trace"></a> Ablaufverfolgung
 
 Die `trace`-Richtlinie fügt der API-Inspektor-Ausgabe, Application Insights-Telemetrien und/oder Diagnoseprotokollen eine benutzerdefinierte Ablaufverfolgung hinzu.
 
@@ -931,7 +931,7 @@ Die `trace`-Richtlinie fügt der API-Inspektor-Ausgabe, Application Insights-Tel
 
 ```
 
-### <a name="traceExample"></a> Beispiel
+### <a name="example"></a><a name="traceExample"></a> Beispiel
 
 ```xml
 <trace source="PetStore API" severity="verbose">
@@ -942,7 +942,7 @@ Die `trace`-Richtlinie fügt der API-Inspektor-Ausgabe, Application Insights-Tel
 
 ### <a name="elements"></a>Elemente
 
-| Element  | Beschreibung                                                                                                                                          | Erforderlich |
+| Element  | BESCHREIBUNG                                                                                                                                          | Erforderlich |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | Ablaufverfolgung    | Stammelement                                                                                                                                        | Ja      |
 | message  | Eine Zeichenfolge oder ein Ausdruck, die bzw. der protokolliert werden soll.                                                                                                                 | Ja      |
@@ -950,7 +950,7 @@ Die `trace`-Richtlinie fügt der API-Inspektor-Ausgabe, Application Insights-Tel
 
 ### <a name="attributes"></a>Attributes
 
-| attribute | Beschreibung                                                                                                               | Erforderlich | Standard |
+| attribute | BESCHREIBUNG                                                                                                               | Erforderlich | Standard |
 | --------- | ------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | source    | Das Zeichenfolgenliteral ist für die Ablaufverfolgungsanzeige aussagekräftig und gibt die Quelle der Nachricht an.                                   | Ja      | –     |
 | severity  | Legt den Schweregrad der Ablaufverfolgung fest. Zulässige Werte sind `verbose`, `information` und `error` (vom niedrigsten zum höchsten Schweregrad). | Nein       | Ausführlich |
@@ -965,7 +965,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-## <a name="Wait"></a> Warten
+## <a name="wait"></a><a name="Wait"></a> Warten
 
 Bei der `wait`-Richtlinie werden die unmittelbar untergeordneten Richtlinien parallel ausgeführt, und es wird gewartet, bis entweder alle oder keine unmittelbar untergeordneten Richtlinien abgeschlossen sind, bevor sie selbst abgeschlossen wird. Die wait-Richtlinie kann [Send request](api-management-advanced-policies.md#SendRequest) (Anforderung senden), [Get value from cache](api-management-caching-policies.md#GetFromCacheByKey) (Wert aus dem Cache abrufen) und [Control flow](api-management-advanced-policies.md#choose) (Ablaufsteuerung) als unmittelbar untergeordnete Richtlinien enthalten.
 
@@ -1017,13 +1017,13 @@ Im folgenden Beispiel sind zwei `choose`-Richtlinien als unmittelbar untergeordn
 
 ### <a name="elements"></a>Elemente
 
-| Element | Beschreibung                                                                                                   | Erforderlich |
+| Element | BESCHREIBUNG                                                                                                   | Erforderlich |
 | ------- | ------------------------------------------------------------------------------------------------------------- | -------- |
 | wait    | Stammelement Darf nur die Richtlinien `send-request`, `cache-lookup-value` und `choose` als untergeordnete Elemente enthalten. | Ja      |
 
 ### <a name="attributes"></a>Attributes
 
-| attribute | Beschreibung                                                                                                                                                                                                                                                                                                                                                                                                            | Erforderlich | Standard |
+| attribute | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                                            | Erforderlich | Standard |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | for       | Bestimmt, ob die `wait`-Richtlinie wartet, bis alle unmittelbar untergeordneten Richtlinien abgeschlossen sind, oder nur eine. Zulässige Werte sind:<br /><br /> - `all`: Es wird gewartet, bis alle unmittelbar untergeordneten Richtlinien abgeschlossen sind.<br />– any: Es wird gewartet, bis eine beliebige unmittelbar untergeordnete Richtlinie abgeschlossen ist. Nachdem die erste unmittelbar untergeordnete Richtlinie abgeschlossen wurde, wird die `wait`-Richtlinie abgeschlossen, und die Ausführung aller anderen unmittelbar untergeordneten Richtlinien wird beendet. | Nein       | all     |
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: fb4e56a3f40573a65b679ee026c22dfc5d6e5fa2
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: ed95304807a1a03880cc824c1a58f010203d418d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769420"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534710"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-azure-portal"></a>Neustarten eines Azure Database for MariaDB-Servers mithilfe des Azure-Portals
 In diesem Thema wird erläutert, wie Sie einen Azure Database for MariaDB-Server neu starten. Es kann vorkommen, dass Sie Ihren Server zu Wartungszwecken neu starten müssen. In diesem Fall kommt es zu einem kurzen Ausfall, weil der Vorgang vom Server ausgeführt wird.

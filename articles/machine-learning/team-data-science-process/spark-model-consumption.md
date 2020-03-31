@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 3f02690d7c54581ed80b521e8222d1bd5964c878
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76718547"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Operationalisieren von Machine Learning-Modellen, die mit Spark erstellt wurden
@@ -120,7 +120,7 @@ Weitere Informationen zu den Kernels für Jupyter-Notebooks und den zugehörigen
 ## <a name="ingest-data-and-create-a-cleaned-data-frame"></a>Erfassen von Daten und Erstellen eines bereinigten Datenrahmens
 Dieser Abschnitt enthält den Code für eine Reihe erforderlicher Aufgaben zum Erfassen der Daten, die bewertet werden sollen. Lesen Sie eine verknüpfte 0,1 %-Stichprobe der Datei für Taxifahrten und Fahrpreise (gespeichert als TSV-Datei) ein, formatieren und bereinigen Sie die Daten, und erstellen Sie einen bereinigten Datenrahmen.
 
-Die Taxifahrten und Fahrpreise wurden basierend auf dem Verfahren verknüpft, das in folgendem Thema beschrieben wird: [Der Team Data Science-Prozess in Aktion: Verwenden von HDInsight Hadoop-Clustern](hive-walkthrough.md).
+Die Dateien für Taxifahrten und Fahrpreise wurden basierend auf dem Verfahren verknüpft, das im Thema [Der Team Data Science-Prozess in Aktion: Verwenden von HDInsight Hadoop-Clustern](hive-walkthrough.md) behandelt wird.
 
     # INGEST DATA AND CREATE A CLEANED DATA FRAME
 
@@ -445,7 +445,7 @@ Der Code in diesem Abschnitt zeigt, wie die in Azure Blob Storage gespeicherten 
 
 **spark.mllib** unterstützt GBTS für binäre Klassifizierung sowie Regression mit kontinuierlichen und kategorischen Features. 
 
-[Gradient-Boosted-Strukturen](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) sind Gruppen von Entscheidungsstrukturen. GBTS trainieren Entscheidungsstrukturen iterativ, um einen Funktionsverlust zu minimieren. GBTS können kategorische Features behandeln, erfordern keine Featureskalierung und können Nichtlinearitäten und Funktionsinteraktionen erfassen. Dieser Algorithmus kann auch in einer Mehrklassenklassifizierung verwendet werden.
+[Gradient-Boosted-Strukturen](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) sind Gruppen von Entscheidungsstrukturen. GBTS trainieren Entscheidungsstrukturen iterativ, um eine Verlustfunktion zu minimieren. GBTS können kategorische Features behandeln, erfordern keine Featureskalierung und können Nichtlinearitäten und Funktionsinteraktionen erfassen. Dieser Algorithmus kann auch in einer Mehrklassenklassifizierung verwendet werden.
 
     # SCORE GRADIENT BOOSTING TREE MODELS FOR CLASSIFICATION AND REGRESSION
 
@@ -524,7 +524,7 @@ BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification_2016-05-031
 BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt
 
 ## <a name="consume-spark-models-through-a-web-interface"></a>Verwenden von Spark-Modellen über eine Weboberfläche
-Spark stellt einen Mechanismus zur Remoteübermittlung von Batchaufträgen oder interaktiven Abfragen über eine REST-Schnittstelle mit einer Komponente namens Livy bereit. Livy ist standardmäßig auf dem HDInsight Spark-Cluster aktiviert. Weitere Informationen zu Livy finden Sie hier: [Remoteübermittlung von Spark-Aufträgen mithilfe von Livy](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
+Spark stellt einen Mechanismus zur Remoteübermittlung von Batchaufträgen oder interaktiven Abfragen über eine REST-Schnittstelle mit einer Komponente namens Livy bereit. Livy ist standardmäßig auf dem HDInsight Spark-Cluster aktiviert. Weitere Informationen zu Livy finden Sie unter [Remoteübermittlung von Spark-Aufträgen unter Verwendung von Livy](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
 
 Livy können Sie zur Remoteübermittlung eines Auftrags verwenden, der eine Datei im Batch bewertet, die in einem Azure-Blob gespeichert ist, und dann die Ergebnisse in einen anderen Blob schreibt. Laden Sie zu diesem Zweck das Python-Skript von  
 [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) in das Blob des Spark-Clusters hoch. Sie können zum Kopieren des Skripts in das Clusterblob ein Tool wie **Microsoft Azure Storage-Explorer** oder **AzCopy** verwenden. In unserem Fall haben wir das Skript in ***wasb:///example/python/ConsumeGBNYCReg.py*** hochgeladen.   
@@ -587,5 +587,5 @@ Wenn Sie eine codefreie Kundenerfahrung bevorzugen, verwenden Sie [Azure Logic A
 ![Designer für Logik-Apps](./media/spark-model-consumption/spark-logica-app-client.png)
 
 ## <a name="whats-next"></a>Wie geht es weiter?
-**Kreuzvalidierung und Hyperparameter-Sweeping**: Unter [Erweiterte Datendurchsuchung und Modellierung mit Spark](spark-advanced-data-exploration-modeling.md) erfahren Sie, wie Modelle mit Kreuzvalidierung und Hyperparameter-Sweeping trainiert werden können.
+**Kreuzvalidierung und Hyperparameter-Sweeping:** Unter [Erweiterte Datendurchsuchung und Modellierung mit Spark](spark-advanced-data-exploration-modeling.md) erfahren Sie, wie Modelle mit Kreuzvalidierung und Hyperparameter-Sweeping trainiert werden können.
 

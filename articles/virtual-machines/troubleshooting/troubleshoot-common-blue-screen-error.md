@@ -13,11 +13,11 @@ ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
 ms.openlocfilehash: beb1562738699bbcede58d8214e69342abbb7c93
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921469"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231918"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows zeigt Bluescreenfehler beim Starten einer Azure-VM an
 Dieser Artikel beschreibt Bluescreenfehler, die möglicherweise beim Starten eines virtuellen Windows-Computers (VM) in Microsoft Azure angezeigt werden. Er bietet Schritte, mit denen Sie Daten für ein Supportticket sammeln können. 

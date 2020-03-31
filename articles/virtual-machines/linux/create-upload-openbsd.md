@@ -1,17 +1,17 @@
 ---
 title: Erstellen und Hochladen eines OpenBSD-Images
 description: Erfahren Sie, wie Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD), die das OpenBSD-Betriebssystem enthält, erstellen und hochladen, um einen virtuellen Azure-Computer über Azure CLI zu erstellen.
-author: thomas1206
+author: gbowerman
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 05/24/2017
-ms.author: huishao
-ms.openlocfilehash: d4ecc539d71933c4aecc9124b903c57cb72838de
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.author: guybo
+ms.openlocfilehash: 1ad1a66d67be7aefe4d9a7acae993e8788cbb193
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78969494"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066741"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Erstellen und Hochladen eines OpenBSD-Datenträgerimages in Azure
 In diesem Artikel erfahren Sie, wie Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mit dem OpenBSD-Betriebssystem erstellen und hochladen. Nach dem Hochladen können Sie sie als eigenes Image verwenden, um über Azure CLI einen virtuellen Computer (Virtual Machine, VM) in Azure zu erstellen.

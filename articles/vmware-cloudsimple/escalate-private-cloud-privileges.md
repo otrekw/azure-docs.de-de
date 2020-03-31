@@ -1,7 +1,7 @@
 ---
-title: 'Ausweiten von Berechtigungen für die private AVS-Cloud: Azure VMware Solution by AVS'
-description: Es wird beschrieben, wie Sie Berechtigungen in Ihrer privaten AVS-Cloud für administrative Funktionen in vCenter ausweiten.
-titleSuffix: Azure VMware Solutions (AVS)
+title: Ausweiten von Berechtigungen für die private Cloud
+titleSuffix: Azure VMware Solution by CloudSimple
+description: Beschreibt, wie Sie Berechtigungen in Ihrer privaten Cloud für administrative Funktionen in vCenter ausweiten
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/05/2019
@@ -9,18 +9,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 211960af359e19f93afef58162c5b09ae1d9b23f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 3d06f3e8be449e7050c65c75339a0cff6efe19e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025315"
 ---
-# <a name="escalate-avs-private-cloud-vcenter-privileges-from-the-avs-portal"></a>Ausweiten von Berechtigungen für das vCenter Ihrer privaten AVS-Cloud über das AVS-Portal
+# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Ausweiten von Berechtigungen für das vCenter Ihrer privaten Cloud über das CloudSimple-Portal
 
-Sie können Ihre AVS-Berechtigungen für den administrativen Zugriff auf das vCenter Ihrer privaten AVS-Cloud vorübergehend ausweiten. Mithilfe von erhöhten Rechten können Sie VMware-Lösungen installieren, Identitätsquellen hinzufügen und Benutzer verwalten.
+Sie können Ihre CloudSimple-Berechtigungen temporär für den administrativen Zugriff auf das vCenter Ihrer privaten Cloud ausweiten.  Mithilfe von erhöhten Rechten können Sie VMware-Lösungen installieren, Identitätsquellen hinzufügen und Benutzer verwalten.
 
-Neue Benutzer können Sie in der vCenter-SSO-Domäne erstellen und diesen Zugriff auf vCenter gewähren. Wenn Sie neue Benutzer erstellen, fügen Sie diese für den Zugriff auf vCenter den in AVS integrierten Gruppen hinzu. Weitere Informationen finden Sie unter [Berechtigungsmodell für das VMware-vCenter der privaten Cloud von AVS](https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/).
+Neue Benutzer können Sie in der vCenter-SSO-Domäne erstellen und diesen Zugriff auf vCenter gewähren.  Wenn Sie neue Benutzer erstellen, fügen Sie diese für den Zugriff auf vCenter zu den in CloudSimple integrierten Gruppen hinzu.  Weitere Informationen finden Sie unter [CloudSimple Private Cloud permission model of VMware vCenter (Berechtigungsmodell für das VMware-vCenter der privaten Cloud von CloudSimple)](https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/).
 
 > [!CAUTION]
 > Ändern Sie die Konfigurationen für Verwaltungskomponenten nicht. Aktionen, die während des ausgeweiteten Berechtigungszustands durchgeführt werden, können sich negativ auf Ihr System auswirken oder dazu führen, dass Ihr System nicht mehr verfügbar ist.
@@ -31,15 +31,15 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 ## <a name="escalate-privileges"></a>Eskalieren von Berechtigungen
 
-1. Greifen Sie auf das [AVS-Portal](access-cloudsimple-portal.md) zu.
+1. Rufen Sie das [CloudSimple-Portal](access-cloudsimple-portal.md) auf.
 
-2. Öffnen Sie die Seite **Resources** (Ressourcen), und wählen Sie die private AVS-Cloud aus, für die Sie die Berechtigungen ausweiten möchten.
+2. Öffnen Sie die Seite **Resources** (Ressourcen), und wählen Sie die private Cloud aus, für die Sie die Berechtigungen ausweiten möchten.
 
 3. Klicken Sie am unteren Rand der Seite „Summary“ (Zusammenfassung) unter **Change vSphere privileges** (vSphere-Berechtigungen ändern) auf **Escalate** (Ausweiten).
 
     ![Ändern der vSphere-Berechtigung](media/escalate-private-cloud-privilege.png)
 
-4. Wählen Sie den vSphere-Benutzertyp aus. Nur die Berechtigungen des lokalen Benutzers `CloudOwner@cloudsimple.local` können ausgeweitet (eskaliert) werden.
+4. Wählen Sie den vSphere-Benutzertyp aus.  Nur die Berechtigungen des lokalen Benutzers `CloudOwner@cloudsimple.local` können ausgeweitet (eskaliert) werden.
 
 5. Wählen Sie das Zeitintervall zum Ausweiten aus der Dropdownliste aus. Wählen Sie den kürzesten Zeitraum aus, in dem Sie die Aufgabe erledigen können.
 
@@ -51,19 +51,19 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 8. Der Ausweitungsvorgang kann einige Minuten dauern. Klicken Sie zum Abschluss auf **OK**.
 
-Die Rechteausweitung beginnt und dauert bis zum Ende des ausgewählten Intervalls. Sie können sich beim vCenter Ihrer privaten AVS-Cloud anmelden, um administrative Aufgaben durchzuführen.
+Die Rechteausweitung beginnt und dauert bis zum Ende des ausgewählten Intervalls.  Sie können sich beim vCenter Ihrer privaten Cloud anmelden, um administrative Aufgaben zu erledigen.
 
 > [!IMPORTANT]
-> Nur ein Benutzer kann über ausgeweitete Berechtigungen verfügen. Sie müssen die Berechtigungen des Benutzers wieder einschränken, bevor Sie die Berechtigungen eines anderen Benutzers ausweiten können.
+> Nur ein Benutzer kann über ausgeweitete Berechtigungen verfügen.  Sie müssen die Berechtigungen des Benutzers wieder einschränken, bevor Sie die Berechtigungen eines anderen Benutzers ausweiten können.
 
 > [!CAUTION]
 > Neue Benutzer müssen lediglich *Cloud-Owner-Group*, *Cloud-Global-Cluster-Admin-Group*, *Cloud-Global-Storage-Admin-Group*, *Cloud-Global-Network-Admin-Group* oder *Cloud-Global-VM-Admin-Group* hinzugefügt werden.  Benutzer, die der Gruppe *Administratoren* hinzugefügt wurden, werden automatisch entfernt.  Nur Dienstkonten dürfen der Gruppe *Administratoren* hinzugefügt werden, und Dienstkonten dürfen nicht für die Anmeldung bei der vSphere-Webbenutzeroberfläche verwendet werden.
 
 ## <a name="extend-privilege-escalation"></a>Erweitern der Rechteausweitung
 
-Wenn Sie zusätzliche Zeit zum Erledigen Ihrer Aufgaben benötigen, können Sie den Zeitraum der Rechteausweitung erweitern. Wählen Sie das zusätzliche Zeitintervall für die Ausweitung aus, das Sie für die Erledigung der administrativen Aufgaben benötigen.
+Wenn Sie zusätzliche Zeit zum Erledigen Ihrer Aufgaben benötigen, können Sie den Zeitraum der Rechteausweitung erweitern.  Wählen Sie das zusätzliche Zeitintervall für die Ausweitung aus, das Sie für die Erledigung der administrativen Aufgaben benötigen.
 
-1. Wählen Sie im AVS-Portal unter **Ressourcen** > **Private AVS-Clouds** die private AVS-Cloud aus, für die Sie die Rechteausweitung durchführen möchten.
+1. Wählen Sie im CloudSimple-Portal unter **Resources** > **Private Clouds** (Ressourcen > Private Cloud) die private Cloud aus, für die Sie die Rechteausweitung erweitern möchten.
 
 2. Klicken Sie am unteren Rand der Registerkarte „Summary“ (Zusammenfassung) auf **Extend privilege escalation** (Rechteausweitung erweitern).
 
@@ -75,9 +75,9 @@ Wenn Sie zusätzliche Zeit zum Erledigen Ihrer Aufgaben benötigen, können Sie 
 
 ## <a name="de-escalate-privileges"></a>Einschränken von Berechtigungen
 
-Nachdem Sie Ihre administrativen Aufgaben abgeschlossen haben, sollten Sie Ihre Berechtigungen wieder einschränken. 
+Nachdem Sie Ihre administrativen Aufgaben abgeschlossen haben, sollten Sie Ihre Berechtigungen wieder einschränken.  
 
-1. Wählen Sie im AVS-Portal unter **Ressourcen** > **Private AVS-Clouds** die private AVS-Cloud aus, für die Sie die Berechtigungen einschränken möchten.
+1. Wählen Sie im CloudSimple-Portal unter **Resources** > **Private Clouds** (Ressourcen > Private Cloud) die private Cloud aus, für die Sie die Berechtigungen wieder einschränken möchten.
 
 2. Klicken Sie auf **De-escalate** (Einschränken).
 

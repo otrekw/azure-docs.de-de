@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: aschhab
 ms.openlocfilehash: c381d9413c4003bc2ab9a9357ff2769e84d14c3e
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121742"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229622"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus-Zugriffssteuerung mit Shared Access Signatures
 
@@ -110,7 +110,7 @@ Wenn Sie wissen oder vermuten, dass ein Schlüssel gefährdet ist, und Sie die S
 
 Die im Folgenden beschriebenen Szenarien umfassen die Konfiguration von Autorisierungsregeln, das Generieren von SAS-Token und die Clientautorisierung.
 
-Ein vollständiges praktisches Beispiel für eine Service Bus-Anwendung, die die Konfiguration veranschaulicht und die SAS-Autorisierung verwendet, finden Sie unter [SAS-Authentifizierung bei Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8). Ein Beispiel, das die Verwendung von in Namespaces oder Themen konfigurierten SAS-Autorisierungsregeln zum Absichern von Service Bus-Abonnements veranschaulicht, finden Sie hier: [Verwenden der SAS-Authentifizierung (Shared Access Signature) mit Service Bus-Abonnements](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c).
+Ein vollständiges praktisches Beispiel für eine Service Bus-Anwendung, die die Konfiguration veranschaulicht und die SAS-Autorisierung verwendet, finden Sie unter [SAS-Authentifizierung bei Service Bus](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8). Ein Beispiel, das die Verwendung von in Namespaces oder Themen konfigurierten SAS-Autorisierungsregeln zum Absichern von Service Bus-Abonnements veranschaulicht, finden Sie hier: [Using Shared Access Signature (SAS) authentication with Service Bus Subscriptions](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)(in englischer Sprache).
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>Zugreifen auf SAS-Autorisierungsregeln für eine Entität
 

@@ -4,10 +4,10 @@ description: Dieser Artikel enthält Anweisungen zum schnellen Einrichten der ko
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.openlocfilehash: e565101218b975ef2bd29b8a32a4aa1bf4300b6d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77655394"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Hinzufügen der kontinuierlichen Überwachung zur Releasepipeline
@@ -34,7 +34,7 @@ Bei der kontinuierlichen Überwachung können Releasepipelines Überwachungsdate
 
 1. Füllen Sie im Konfigurationsbereich **Stufe 1** die folgenden Felder aus: 
 
-    | Parameter        | value |
+    | Parameter        | Wert |
    | ------------- |:-----|
    | **Name der Stufe**      | Geben Sie einen Stufennamen an, oder übernehmen Sie **Stufe 1**. |
    | **Azure-Abonnement** | Öffnen Sie die Dropdownliste, und wählen Sie den Link zum gewünschten Azure-Abonnement aus.|

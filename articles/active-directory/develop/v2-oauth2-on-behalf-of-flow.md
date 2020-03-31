@@ -18,10 +18,10 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 37ce80c94478d2250eae321f7a42bda64d441dea
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77159641"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity Platform und der On-Behalf-Of-Fluss von OAuth2.0
@@ -67,7 +67,7 @@ Es sind zwei Fälle denkbar – je nachdem, ob die Clientanwendung durch ein gem
 
 Bei Verwendung eines gemeinsamen Geheimnisses enthält eine Dienst-zu-Dienst-Zugriffstokenanforderung die folgenden Parameter:
 
-| Parameter |  | Beschreibung |
+| Parameter |  | BESCHREIBUNG |
 | --- | --- | --- |
 | `grant_type` | Erforderlich | Typ der Tokenanforderung. Bei einer Anforderung mit JWT muss der Wert `urn:ietf:params:oauth:grant-type:jwt-bearer` sein. |
 | `client_id` | Erforderlich | Die Anwendungs-ID (Client-ID), die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
@@ -135,7 +135,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 Eine erfolgreiche Antwort enthält eine JSON OAuth 2.0-Antwort mit den folgenden Parametern.
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | `token_type` | Gibt den Wert des Tokentyps an. Die Microsoft Identity Platform unterstützt nur den Typ `Bearer`. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | `scope` | Der durch das Token gewährte Zugriffsbereich. |

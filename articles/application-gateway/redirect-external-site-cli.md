@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: fc955b4959bb20628463f7699a0b66ec2b89a393
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74011593"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit externer Umleitung durch die Azure CLI
@@ -25,7 +25,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Erstellen eines Listeners und einer Umleitungsregel
 > * Erstellen eines Anwendungsgateways
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -43,7 +43,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen 
 
-Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet) ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens *myAGSubnet*. Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip) eine öffentliche IP-Adresse namens *myAGPublicIPAddress*. Diese Ressourcen werden verwendet, um Netzwerkkonnektivität für das Anwendungsgateway und die zugehörigen Ressourcen bereitzustellen.
+Erstellen Sie mit *az network vnet create* ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens [myAGSubnet](/cli/azure/network/vnet). Erstellen Sie mit *az network public-ip create* eine öffentliche IP-Adresse namens [myAGPublicIPAddress](/cli/azure/network/public-ip). Diese Ressourcen werden verwendet, um Netzwerkkonnektivität für das Anwendungsgateway und die zugehörigen Ressourcen bereitzustellen.
 
 ```azurecli-interactive
 az network vnet create \
@@ -88,7 +88,7 @@ Es kann einige Minuten dauern, bis das Anwendungsgateway erstellt wird. Nachdem 
 
 ### <a name="add-the-redirection-configuration"></a>Hinzufügen der Umleitungskonfiguration
 
-Fügen Sie mit [az network application-gateway redirect-config create](/cli/azure/network/application-gateway/redirect-config) die Umleitungskonfiguration hinzu, die Datenverkehr von *www\.contoso.org* an den Listener für *www\.contoso.com* an das Anwendungsgateway sendet.
+Fügen Sie mit *az network application-gateway redirect-config create\. die Umleitungskonfiguration hinzu, die Datenverkehr von* www*contoso.org\. an den Listener für* www[contoso.com](/cli/azure/network/application-gateway/redirect-config) an das Anwendungsgateway sendet.
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -101,7 +101,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-a-listener-and-routing-rule"></a>Hinzufügen eines Listeners und einer Routingregel
 
-Ein Listener ist erforderlich, damit das Anwendungsgateway Datenverkehr in geeigneter Weise weiterleiten kann. Erstellen Sie mit [az network application-gateway http-listener create](/cli/azure/network/application-gateway) den Listener, bei dem der Front-End-Port mit [az network application-gateway frontend-port create](/cli/azure/network/application-gateway) erstellt wurde. Für den Listener ist eine Regel erforderlich, damit bekannt ist, an welches Ziel eingehender Datenverkehr gesendet werden soll. Erstellen Sie mit [az network application-gateway rule create](/cli/azure/network/application-gateway) eine grundlegende Regel namens *redirectRule*.
+Ein Listener ist erforderlich, damit das Anwendungsgateway Datenverkehr in geeigneter Weise weiterleiten kann. Erstellen Sie mit [az network application-gateway http-listener create](/cli/azure/network/application-gateway) den Listener, bei dem der Front-End-Port mit [az network application-gateway frontend-port create](/cli/azure/network/application-gateway) erstellt wurde. Für den Listener ist eine Regel erforderlich, damit bekannt ist, an welches Ziel eingehender Datenverkehr gesendet werden soll. Erstellen Sie mit *az network application-gateway rule create* eine grundlegende Regel namens [redirectRule](/cli/azure/network/application-gateway).
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \

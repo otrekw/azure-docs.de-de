@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 06/12/2019
-ms.openlocfilehash: 32e73835732538813f90de5cb737429373c3762a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: f33a02ff0e287c135a7d63277cf3d8d3c0cd13d4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767380"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527655"
 ---
 # <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Konfigurieren der und Zugreifen auf die Protokolle für langsame Abfragen mithilfe der Azure CLI
 Sie können die Protokolle für langsame Abfragen von Azure Database for MariaDB mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) herunterladen.

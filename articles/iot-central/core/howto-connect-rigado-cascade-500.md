@@ -3,19 +3,19 @@ title: Verbinden eines Rigado Cascade 500-Geräts in Azure IoT Central | Microso
 description: Hier erfahren Sie, wie Sie ein Rigado Cascade 500-Gatewaygerät mit ihrer IoT Central-Anwendung verbinden.
 services: iot-central
 ms.service: iot-central
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom:
 - iot-storeAnalytics-conditionMonitor
 - iot-p0-scenario
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: bd96d2b9f2220c4eecb653e0764c381235c62157
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d52366684d772f91b53a1ab385b51ae4f11f0a5b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026462"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158350"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Verbinden eines Rigado Cascade 500-Gatewaygeräts mit Ihrer Azure IoT Central-Anwendung
 

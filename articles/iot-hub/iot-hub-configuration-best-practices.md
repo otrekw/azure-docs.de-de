@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
 ms.openlocfilehash: a3b70af71c2ce19835ac2ef8fc8ceed79ca5fe1a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73889530"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>Bewährte Methoden für die Gerätekonfiguration innerhalb einer IoT-Lösung

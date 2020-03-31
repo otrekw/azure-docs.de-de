@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: robinsh
 ms.openlocfilehash: 7f7e957502419b766f7da63048e8168192ea20da
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286655"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237410"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>Kommunikation mit Ihrem IoT-Hub mithilfe des Protokolls AMQP
 

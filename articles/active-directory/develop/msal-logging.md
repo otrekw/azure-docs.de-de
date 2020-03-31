@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 58697cc535357710c6889f05060b5e04e129ae7d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77084896"
 ---
 # <a name="logging-in-msal-applications"></a>Protokollierung in MSAL-Anwendungen
@@ -39,7 +39,7 @@ Die MSAL-Protokollierung erfasst standardmäßig keine streng vertraulichen pers
 
 Ausführliche Informationen zur MSAL-Protokollierung in einer bestimmten Sprache finden Sie auf der entsprechenden Registerkarte:
 
-## <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+## <a name="net"></a>[.NET](#tab/dotnet)
 
 ## <a name="logging-in-msalnet"></a>Protokollierung in MSAL.NET
 
@@ -80,7 +80,7 @@ class Program
  }
  ```
 
-## <a name="androidtabandroid"></a>[Android](#tab/android)
+## <a name="android"></a>[Android](#tab/android)
 
 ## <a name="logging-in-msal-for-android-using-java"></a>Protokollierung in MSAL für Android mithilfe von Java
 
@@ -124,7 +124,7 @@ Standardmäßig ist die Protokollierung für logcat deaktiviert. So aktivieren S
 Logger.getInstance().setEnableLogcatLog(true);
 ```
 
-## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
  Aktivieren Sie die Protokollierung in MSAL.js (JavaScript), indem Sie beim Konfigurieren ein Protokollierungsobjekt zum Erstellen einer Instanz vom Typ `UserAgentApplication` übergeben. Dieses Protokollierungsobjekt weist die folgenden Eigenschaften auf:
 
@@ -156,7 +156,7 @@ var msalConfig = {
 var UserAgentApplication = new Msal.UserAgentApplication(msalConfig);
 ```
 
-## <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
+## <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 ## <a name="msal-for-ios-and-macos-logging-objc"></a>MSAL für iOS- und macOS-Protokollierung – ObjC
 
@@ -210,7 +210,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = NO;
 
 Verwenden Sie einen der folgenden Werte, um den Protokolliergrad festzulegen, wenn Sie die Protokollierung mit MSAL für iOS und macOS ausführen:
 
-|Ebene  |Beschreibung |
+|Ebene  |BESCHREIBUNG |
 |---------|---------|
 | `MSALLogLevelNothing`| Deaktivieren der gesamten Protokollierung |
 | `MSALLogLevelError` | Standardgrad, gibt Informationen nur aus, wenn Fehler auftreten. |
@@ -234,7 +234,7 @@ Beispiel:
 
 Das Bereitstellen von Korrelations-IDs und Zeitstempeln ist hilfreich zum Nachverfolgen von Problemen. Informationen zum Zeitstempel und zur Korrelations-ID sind in der Protokollmeldung verfügbar. Der einzige zuverlässige Ort zum Abrufen dieser Informationen sind die MSAL-Protokollierungsmeldungen.
 
-## <a name="swifttabswift"></a>[Swift](#tab/swift)
+## <a name="swift"></a>[Swift](#tab/swift)
 
 ## <a name="msal-for-ios-and-macos-logging-swift"></a>MSAL für iOS- und macOS-Protokollierung – Swift
 
@@ -287,7 +287,7 @@ MSALGlobalConfig.loggerConfig.piiEnabled = false
 
 Verwenden Sie einen der folgenden Werte, um den Protokolliergrad festzulegen, wenn Sie die Protokollierung mit MSAL für iOS und macOS ausführen:
 
-|Ebene  |Beschreibung |
+|Ebene  |BESCHREIBUNG |
 |---------|---------|
 | `MSALLogLevelNothing`| Deaktivieren der gesamten Protokollierung |
 | `MSALLogLevelError` | Standardgrad, gibt Informationen nur aus, wenn Fehler auftreten. |
@@ -311,7 +311,7 @@ Beispiel:
 
 Das Bereitstellen von Korrelations-IDs und Zeitstempeln ist hilfreich zum Nachverfolgen von Problemen. Informationen zum Zeitstempel und zur Korrelations-ID sind in der Protokollmeldung verfügbar. Der einzige zuverlässige Ort zum Abrufen dieser Informationen sind die MSAL-Protokollierungsmeldungen.
 
-## <a name="javatabjava"></a>[Java](#tab/java)
+## <a name="java"></a>[Java](#tab/java)
 
 ## <a name="msal-for-java-logging"></a>MSAL für Java-Protokollierung
 
@@ -361,7 +361,7 @@ PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
         .build();
 ```
 
-## <a name="pythontabpython"></a>[Python](#tab/python)
+## <a name="python"></a>[Python](#tab/python)
 
 ## <a name="msal-for-python-logging"></a>MSAL für Python-Protokollierung
 

@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.openlocfilehash: c6bf26d8f3a73db6ee69b2aa0de73872911893bf
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75552711"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Analysieren von Websiteprotokollen mithilfe einer benutzerdefinierten Python-Bibliothek mit Apache Spark-Cluster unter HDInsight
@@ -202,6 +202,6 @@ Nachdem Ihre Daten als Apache Hive-Tabelle gespeichert wurden, können wir im n�
 
 Machen Sie sich mit den folgenden Artikeln vertraut:
 
-* [Übersicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
+* [Übersicht: Apache Spark für Azure HDInsight](apache-spark-overview.md)
 * [Verwenden von externen Paketen mit Jupyter Notebooks](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung zum Apache Spark-Cluster in Azure HDInsight (Vorschau)](apache-spark-jupyter-notebook-install-locally.md)

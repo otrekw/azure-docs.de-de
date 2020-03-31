@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/17/2020
 ms.openlocfilehash: 3f8ff3cbc24f6e3a7e0eccf1b18e01941c9584b9
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471179"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analysieren von Protokollen für Apache Kafka in HDInsight
@@ -25,7 +25,7 @@ Erfahren Sie, wie Sie mithilfe von Azure Monitor-Protokollen in Apache Kafka gen
 
 Apache Kafka-Protokolle im Cluster befinden sich unter `/var/log/kafka`. Kafka-Protokolle werden unabhängig davon, ob verwaltete Datenträger verwendet werden, nicht über Clusterlebenszyklen hinweg gespeichert oder beibehalten. Die verfügbaren Protokolle sind in der nachfolgenden Tabelle aufgeführt.
 
-|Protokoll |BESCHREIBUNG |
+|Log |BESCHREIBUNG |
 |---|---|
 |kafka.out|„stdout“ und „stderr“ des Kafka-Prozesses. In dieser Datei finden Sie die Protokolle zum Starten und Herunterfahren von Kafka.|
 |server.log|Das Hauptprotokoll des Kafka-Servers. Alle Kafka-Brokerprotokolle werden hierin aufgenommen.|

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
 ms.openlocfilehash: 6614e70d130abe46067c657bda3ccdd7000caddc
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845275"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224862"
 ---
 # <a name="api-management-policy-expressions"></a>Richtlinienausdrücke in API Management
 In diesem Artikel wird die Syntax für Richtlinienausdrücke in C# 7 erläutert. Jeder Ausdruck besitzt Zugriff auf die implizit bereitgestellte [Kontextvariable](api-management-policy-expressions.md#ContextVariables) und eine zulässige [Teilmenge](api-management-policy-expressions.md#CLRTypes) von .NET Framework-Typen.
@@ -33,12 +33,12 @@ Weitere Informationen finden Sie unter:
 - Informationen zum Herunterladen der Richtlinienanweisungen finden Sie im GitHub-Repository unter [api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies).
 
 
-## <a name="Syntax"></a> Syntax
+## <a name="syntax"></a><a name="Syntax"></a> Syntax
 Ausdrücke mit einer einzelnen Anweisung werden in `@(expression)` eingeschlossen, wobei `expression` eine wohlgeformte C#-Ausdrucksanweisung ist.
 
 Ausdrücke mit mehreren Anweisungen werden in `@{expression}` eingeschlossen. Alle Codepfade in Ausdrücken mit mehreren Anweisungen müssen mit einer `return`-Anweisung enden.
 
-## <a name="PolicyExpressionsExamples"></a> Beispiele
+## <a name="examples"></a><a name="PolicyExpressionsExamples"></a> Beispiele
 
 ```
 @(true)
@@ -65,13 +65,13 @@ Ausdrücke mit mehreren Anweisungen werden in `@{expression}` eingeschlossen. Al
 }
 ```
 
-## <a name="PolicyExpressionsUsage"></a>Verwendung
+## <a name="usage"></a><a name="PolicyExpressionsUsage"></a>Verwendung
 Ausdrücke können als Attributwerte oder Textwerte in beliebigen API Management-[Richtlinien](api-management-policies.md) verwendet werden (sofern in der Richtlinienreferenz nicht anders angegeben).
 
 > [!IMPORTANT]
 > Bei Verwendung von Richtlinienausdrücken erfolgt nur eine begrenzte Überprüfung der Richtlinienausdrücke beim Definieren der Richtlinie. Ausdrücke werden vom Gateway zur Laufzeit ausgeführt, und durch Richtlinienausdrücke generierte Ausnahmen führen zu einem Laufzeitfehler.
 
-## <a name="CLRTypes"></a> In Richtlinienausdrücken zulässige .NET Framework-Typen
+## <a name="net-framework-types-allowed-in-policy-expressions"></a><a name="CLRTypes"></a> In Richtlinienausdrücken zulässige .NET Framework-Typen
 Die folgende Tabelle enthält die .NET Framework-Typen und die zugehörigen Mitglieder, die in Richtlinienausdrücken zulässig sind.
 
 |type|Unterstützte Member|
@@ -205,7 +205,7 @@ Die folgende Tabelle enthält die .NET Framework-Typen und die zugehörigen Mitg
 |System.Xml.Linq.XText|All|
 |System.Xml.XmlNodeType|All|
 
-## <a name="ContextVariables"></a> Kontextvariable
+## <a name="context-variable"></a><a name="ContextVariables"></a> Kontextvariable
 Eine Variable namens `context` steht implizit in jedem [Richtlinienausdruck](api-management-policy-expressions.md#Syntax) zur Verfügung. Ihre Mitglieder bieten Informationen zu `\request`. Alle `context`-Mitglieder sind schreibgeschützt.
 
 |Kontextvariable|Zulässige Methoden, Eigenschaften und Parameterwerte|

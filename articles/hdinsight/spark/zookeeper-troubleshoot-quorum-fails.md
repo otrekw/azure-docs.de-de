@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/20/2019
 ms.openlocfilehash: 4e46efaf17ae9bad5df6f1f61f401d3e6de58a85
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78250233"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Fehler beim Bilden eines Quorums durch den Apache ZooKeeper-Server in Azure HDInsight
@@ -40,7 +40,7 @@ Wenn das Volume mit den Momentaufnahmedateien groß oder beschädigt ist, kann d
 
 ## <a name="resolution"></a>Lösung
 
-Überprüfen Sie das ZooKeeper `/hadoop/hdinsight-zookeeper/version-2`-Datenverzeichnis `/hadoop/zookeeper/version-2`, und stellen Sie fest, ob die Momentaufnahmendatei groß ist. Wenn große Momentaufnahmen vorhanden sind, führen Sie folgende Schritte aus:
+Überprüfen Sie das ZooKeeper `/hadoop/zookeeper/version-2`-Datenverzeichnis `/hadoop/hdinsight-zookeeper/version-2`, und stellen Sie fest, ob die Momentaufnahmendatei groß ist. Wenn große Momentaufnahmen vorhanden sind, führen Sie folgende Schritte aus:
 
 1. Sichern Sie Momentaufnahmen in `/hadoop/zookeeper/version-2` und `/hadoop/hdinsight-zookeeper/version-2`.
 

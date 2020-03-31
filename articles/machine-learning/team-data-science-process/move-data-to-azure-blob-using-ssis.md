@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 77bfd9d5bcae7bedd673354e32464d5f59bdc9b4
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720870"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Verschieben Sie Daten in und aus Azure Blob Storage mithilfe von SSIS-Connectors.
@@ -64,7 +64,7 @@ Um Daten mithilfe des SSIS Feature Packs aus lokalem Speicher in Azure Blob Stor
 
 Die Parameter dieser Aufgabe werden nachfolgend beschrieben:
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | --- | --- |
 | **AzureStorageConnection** |Gibt einen vorhandenen Azure Storage-Verbindungs-Manager an oder erstellt einen neuen, der auf ein Azure Storage-Konto verweist, das dorthin zeigt, wo die Blobdateien gehostet werden. |
 | **BlobContainer** |Gibt den Namen des Blobcontainers an, der die hochgeladenen Dateien als Blobs enthält. |

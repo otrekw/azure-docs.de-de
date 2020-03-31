@@ -10,11 +10,11 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.openlocfilehash: fcc2013f67c6e91182979a9bcab683894088a1d5
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110374"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237330"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-java"></a>Hochladen von Dateien von Ihrem Gerät in die Cloud mit IoT Hub (Java)
 
@@ -52,7 +52,7 @@ Am Ende dieses Tutorials führen Sie zwei Java-Konsolen-Apps aus:
 
 * Ein aktives Azure-Konto. (Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.)
 
-* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port möglicherweise blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit einem IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 

@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
 ms.openlocfilehash: db1d530c9cab77ae612c83a0d4f52478fb9ee270
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74024033"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227242"
 ---
 # <a name="best-practices-for-using-power-bi-to-query-and-visualize-azure-data-explorer-data"></a>Bewährte Methoden für die Verwendung von Power BI zum Abfragen und Visualisieren von Azure Data Explorer-Daten
 

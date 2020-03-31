@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2020
 ms.openlocfilehash: 4c265cb0cdc665ef52f4dc6e69440e83c22db449
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77460976"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Kopieren von Daten in oder aus Azure Data Explorer mithilfe von Azure Data Factory
@@ -190,7 +190,7 @@ Legen Sie zum Kopieren von Daten aus Azure Data Explorer die **type**-Eigenschaf
 
 Legen Sie zum Kopieren von Daten in Azure Data Explorer die type-Eigenschaft in der Senke der Kopieraktivität auf **AzureDataExplorerSink** fest. Folgende Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft der Senke der Kopieraktivität muss auf Folgendes festgelegt werden: **AzureDataExplorerSink**. | Ja |
 | ingestionMappingName | Der Name einer vorab erstellten [Zuordnung](/azure/kusto/management/mappings#csv-mapping) für eine Kusto-Tabelle. Zum Zuordnen der Spalten aus der Quelle zu Azure Data Explorer (gilt für [alle unterstützten Quellspeicher und -formate](copy-activity-overview.md#supported-data-stores-and-formats), einschließlich der Formate CSV, JSON und Avro) können Sie die Kopieraktivität [Spaltenzuordnung](copy-activity-schema-and-type-mapping.md) (implizit anhand des Namens oder explizit wie konfiguriert) und/oder Azure Data Explorer-Zuordnungen verwenden. | Nein |

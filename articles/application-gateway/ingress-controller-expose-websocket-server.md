@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 01fde82e69917f59f6519524c4c8828feb84a4f9
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 1f068c9d98a827afd16da01bdc40cbb6ca5dc465
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795967"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79297831"
 ---
 # <a name="expose-a-websocket-server-to-application-gateway"></a>Verfügbarmachen eines WebSocket-Servers für Application Gateway
 
-Wie in der Dokumentation zu Application Gateway v2 beschrieben, ist [native Unterstützung für die WebSocket- und HTTP/2-Protokolle](https://docs.microsoft.com/azure/application-gateway/overview#websocket-and-http2-traffic) verfügbar. Beachten Sie, dass sowohl für Application Gateway als auch für die Kubernetes-Eingangsressource keine vom Benutzer konfigurierbare Einstellung vorhanden ist, um die WebSocket-Unterstützung selektiv zu aktivieren oder zu deaktivieren.
+Wie in der Dokumentation zu Application Gateway v2 beschrieben, ist [native Unterstützung für die WebSocket- und HTTP/2-Protokolle](features.md#websocket-and-http2-traffic) verfügbar. Beachten Sie, dass sowohl für Application Gateway als auch für die Kubernetes-Eingangsressource keine vom Benutzer konfigurierbare Einstellung vorhanden ist, um die WebSocket-Unterstützung selektiv zu aktivieren oder zu deaktivieren.
 
 Die unten abgebildete YAML-Bereitstellungsdatei von Kubernetes zeigt die minimale Konfiguration, die zum Bereitstellen eines WebSocket-Servers verwendet wird. Dies entspricht der Bereitstellung eines regulären Webservers:
 ```yaml

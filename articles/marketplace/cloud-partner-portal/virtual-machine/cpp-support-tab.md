@@ -1,23 +1,22 @@
 ---
 title: Registerkarte „Support“ für virtuelle Computer im Cloud-Partnerportal für Azure Marketplace
 description: Beschreibt die Registerkarte „Support“, die beim Erstellen eines VM-Angebots für den Azure Marketplace verwendet wird.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: pabutler
-ms.openlocfilehash: fcf7a51e69e901ae04b29c4fb621d401d170d2f1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: e8143f33aacbc68653d19ffb72e88af447f8cc40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808798"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288851"
 ---
 # <a name="virtual-machine-support-tab"></a>Registerkarte „Support“ für virtuelle Computer
 
-Verwenden Sie die Registerkarte **Support** auf der Seite **Neues Angebot**, um für Ihr Angebot Ressourcen für den technischen Support und den Benutzersupport anzugeben.  Sie ist in drei Bereiche unterteilt: **Engineering**, **Kundensupport** und **Support-URLs**.
+Verwenden Sie die Registerkarte **Support** auf der Seite **Neues Angebot**, um für Ihr Angebot Ressourcen für den technischen Support und den Benutzersupport anzugeben.  Die Registerkarte ist in drei Bereiche unterteilt: **Engineering**, **Kundensupport** und **Support-URLs**.
 
 ![Registerkarte „Support“ des Formulars „Neues Angebot“ für virtuelle Computer](./media/publishvm_012.png)
 

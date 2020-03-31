@@ -35,12 +35,16 @@
           href: visual-search-sdk-python.md
         - name: Verwenden von Java
           href: visual-search-sdk-java.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Hochladen eines Bilds
       href: tutorial-visual-search-image-upload.md
     - name: Zuschneiden und Durchsuchen eines Bildbereichs
       href: tutorial-visual-search-crop-area-results.md
+    - name: Suchen ähnlicher Bilder in vorherigen Suchvorgängen
+      href: tutorial-visual-search-insights-token.md
+    - name: Erstellen einer Einzelseiten-Web-App
+      href: tutorial-bing-visual-search-single-page-app.md
 - name: Beispiele
   items:
     - name: Codebeispiele
@@ -56,17 +60,13 @@
     - name: Analysen für die API für die visuelle Suche
       maintainContext: true
       href: ../bing-web-search/bing-web-stats.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Gewinnen von Erkenntnissen per Token
       href: use-insights-token.md
     - name: Ändern der Größe und Zuschneiden von Miniaturansichten
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md
-    - name: Suchen nach einem Bild mithilfe von Bildauswertungstoken
-      href: tutorial-visual-search-insights-token.md
-    - name: Erstellen einer Einzelseiten-Web-App
-      href: tutorial-bing-visual-search-single-page-app.md
 - name: Verweis
   items:
     - name: REST-API v7

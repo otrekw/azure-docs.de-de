@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.openlocfilehash: 89df941eb6ebaad6e078c278f1ed883db5528c7e
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77152555"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Leistungstipps für Azure Cosmos DB und Async Java
@@ -139,7 +139,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
 
     Es empfiehlt sich, die Last während Leistungstests so lange erhöhen, bis eine geringe Menge von Anforderungen gedrosselt wird. Wenn es sich um eine gedrosselte Anwendung handelt, sollte die Clientanwendung für das vom Server angegebene Wiederholungsintervall aussetzen. Durch das Aussetzen wird die geringstmögliche Wartezeit zwischen den Wiederholungsversuchen gewährleistet.
 
-* **Horizontales Hochskalieren Ihrer Clientworkload**
+* **Aufskalieren Ihrer Clientworkload**
 
     Wenn Sie auf einem hohen Durchsatzniveau testen (> 50.000 RU/s), kann sich die Clientanwendung als Engpass erweisen, da der Computer die CPU- oder Netzwerkauslastung deckelt. Wenn dieser Punkt erreicht wird, können Sie das Azure Cosmos DB-Konto weiter auslasten, indem Sie Ihre Clientanwendungen auf mehrere Server horizontal hochskalieren.
 

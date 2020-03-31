@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: 6040bf8862131f5a8a5564cd2f5d845fa0490a95
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944900"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Exemplarische Vorgehensweise für eine Azure-Beispielinfrastruktur für Linux-VMs
@@ -64,7 +64,7 @@ Da das virtuelle Netzwerk keine permanente Verbindung mit dem lokalen Netzwerk v
 Sie haben ein virtuelles Netzwerk auf ausschließlicher Cloudbasis mit den folgenden Einstellungen über das Azure-Portal erstellt:
 
 * Name: AZOS-USE-VN01
-* Standort: USA (Ost) 2
+* Standort: East US 2
 * Adressraum des virtuellen Netzwerks: 10.0.0.0/8
 * Erstes Subnetz:
   * Name: FrontEnd

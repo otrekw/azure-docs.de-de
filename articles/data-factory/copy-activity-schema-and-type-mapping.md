@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: jingwang
 ms.openlocfilehash: 9ae07e2a471cc417b467092a2616a5a0cdafb1fe
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77423626"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230034"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Schemazuordnung in Kopieraktivität
 
@@ -200,7 +200,7 @@ Wenn Sie zum Angeben der Spaltenzuordnung die Syntax `"columnMappings": "UserId:
 
 Sie können die Kopieraktivität -> `translator` -> `schemaMapping` angeben, um zwischen hierarchisch und tabellarisch strukturierten Daten zuzuordnen, z. B. Kopieren aus MongoDB/REST in eine Textdatei oder aus Oracle in die Azure Cosmos DB-API für MongoDB. Folgende Eigenschaften werden im Abschnitt `translator` der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Kopieraktivität „translator“ muss auf Folgendes festgelegt werden: **TabularTranslator** | Ja |
 | schemaMapping | Eine Sammlung von Schlüssel-Wert-Paaren, die die Zuordnungsbeziehung **von der Quelle zur Senke** darstellt.<br/>- **Schlüssel:** stellt die Quelle dar. Für eine **tabellarische Quelle** legen Sie den Spaltennamen wie in der Datasetstruktur definiert fest. Für eine **hierarchische Quelle** legen Sie den Ausdruck des JSON-Pfads für jedes zu extrahierende und zuzuordnende Feld fest.<br>- **Wert:** stellt die Senke dar. Für eine **tabellarische Senke** legen Sie den Spaltennamen wie in der Datasetstruktur definiert fest. Für eine **hierarchische Senke** legen Sie den Ausdruck des JSON-Pfads für jedes zu extrahierende und zuzuordnende Feld fest. <br>Bei hierarchischen Daten beginnt der JSON-Pfad für Felder unter der Stammobjekt mit dem Stamm „$“. Für Felder innerhalb des von der `collectionReference`-Eigenschaften ausgewählten Arrays beginnt der JSON-Pfad mit dem Array-Element.  | Ja |

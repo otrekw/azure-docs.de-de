@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
 ms.openlocfilehash: b646b1a14d6cedcafa662192229daa570a0d2441
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616430"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>So markieren Sie einen virtuellen Windows-Computer in Azure
@@ -46,7 +46,7 @@ Wenn der virtuelle Computer bereits Tags enthält, werden auf der Ressource ansc
 
 Wenn Sie Tags über PowerShell hinzufügen möchten, können Sie den Befehl `Set-AzResource` verwenden. Beachten Sie, dass beim Aktualisieren von Tags über PowerShell die Tags als Ganzes aktualisiert werden. Wenn Sie ein Tag auf eine Ressource hinzufügen, die bereits über Tags verfügt, müssen Sie alle Tags einschließen, die auf der Ressource platziert werden sollen. Es folgt ein Beispiel für das Hinzufügen zusätzlicher Tags zu einer Ressource über PowerShell-Cmdlets.
 
-Das erste Cmdlet legt alle Tags, die auf *MyTestVM* platziert sind, mithilfe der Eigenschaften `Get-AzResource` und `Tags` auf die *$tags*-Variable fest.
+Das erste Cmdlet legt alle Tags, die auf *MyTestVM* platziert sind, mithilfe der Eigenschaften *und* auf die `Get-AzResource`$tags`Tags`-Variable fest.
 
         PS C:\> $tags = (Get-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
 

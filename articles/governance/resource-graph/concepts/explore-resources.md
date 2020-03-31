@@ -4,10 +4,10 @@ description: Hier erfahren Sie, wie Sie mit der Abfragesprache Resource Graph Ih
 ms.date: 10/18/2019
 ms.topic: conceptual
 ms.openlocfilehash: 0c191915b8c558d80ffef554ef758a35157e035c
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76156980"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Untersuchen Ihrer Azure-Ressourcen mit Resource Graph
@@ -305,7 +305,7 @@ az graph query -q="Resources | where type =~ 'Microsoft.Network/publicIPAddresse
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$($ips.publicIp -join "','")') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip"
 ```
 
-Im Beispiel [Auflisten virtueller Computer mit deren Netzwerkschnittstelle und der öffentlichen IP-Adresse](../samples/advanced.md#join-vmpip) wird gezeigt, wie Sie diese Schritte in einer einzelnen Abfrage mit dem Operator `join` ausführen.
+Im Beispiel `join`Auflisten virtueller Computer mit deren Netzwerkschnittstelle und der öffentlichen IP-Adresse[ wird gezeigt, wie Sie diese Schritte in einer einzelnen Abfrage mit dem Operator ](../samples/advanced.md#join-vmpip) ausführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

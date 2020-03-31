@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c6e0c697f9ab9796feade9b4d5c2a64794f3980b
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73612797"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Bereitstellungsberichte im Azure Active Directory-Portal (Vorschau)
@@ -58,7 +58,7 @@ Die Bereitstellungsprotokolle bieten Antworten auf die folgenden Fragen:
 * Wie wurden Rollen aus Amazon Web Services importiert?
 * Welche Benutzer konnten in Dropbox nicht erstellt werden?
 
-Sie können auf die Bereitstellungsprotokolle zugreifen, indem Sie im [Azure-Portal](https://portal.azure.com) auf dem Blatt **Azure Active Directory** im Abschnitt **Überwachung** die Option **Bereitstellungsprotokolle** auswählen. Bei einigen Bereitstellungsdatensätzen kann es bis zu zwei Stunden dauern, bis sie im Portal angezeigt werden.
+Sie können auf die Bereitstellungsprotokolle zugreifen, indem Sie im **Azure-Portal** auf dem Blatt **Azure Active Directory** im Abschnitt **Überwachung** die Option [Bereitstellungsprotokolle](https://portal.azure.com) auswählen. Bei einigen Bereitstellungsdatensätzen kann es bis zu zwei Stunden dauern, bis sie im Portal angezeigt werden.
 
 ![Bereitstellungsprotokolle](./media/concept-provisioning-logs/access-provisioning-logs.png "Bereitstellungsprotokolle")
 
@@ -85,7 +85,7 @@ Sie können dann weitere Felder anzeigen oder Felder entfernen, die bereits ange
 
 Wählen Sie in der Listenansicht ein Element aus, um ausführlichere Informationen zu erhalten.
 
-![Ausführliche Informationen](./media/concept-provisioning-logs/steps.png "Filter")
+![Ausführliche Informationen](./media/concept-provisioning-logs/steps.png "Filtern")
 
 
 ## <a name="filter-provisioning-activities"></a>Filtern von Bereitstellungsaktivitäten
@@ -93,14 +93,14 @@ Wählen Sie in der Listenansicht ein Element aus, um ausführlichere Information
 Um die gemeldeten Daten auf die von Ihnen gewünschte Stufe einzugrenzen, können Sie die Bereitstellungsdaten anhand der folgenden Standardfelder filtern. Beachten Sie, dass die Werte in den Filtern basierend auf Ihrem Mandanten dynamisch gefüllt werden. Wenn im Mandanten beispielsweise keine Erstellungsereignisse vorhanden sind, gibt es keine Filteroptionen für „Erstellen“.
 
 - Identity
-- Aktion
+- Action
 - Quellsystem
 - Zielsystem
 - Status
 - Date
 
 
-![Filter](./media/concept-provisioning-logs/filter.png "Filter")
+![Filter](./media/concept-provisioning-logs/filter.png "Filtern")
 
 Mit dem Filter **Identität** können Sie den Namen oder die Identität angeben, der bzw. die für Sie relevant ist. Diese Identität kann ein Benutzer, eine Gruppe, eine Rolle oder ein anderes Objekt sein. Sie können nach dem Namen oder der ID des Objekts suchen. Die ID variiert je nach Szenario. Bei der Bereitstellung eines Objekts aus Azure AD in Salesforce ist die Quell-ID beispielsweise die Objekt-ID des Benutzers in Azure AD und die Ziel-ID die ID des Benutzers in Salesforce. Wenn die Bereitstellung aus Workday in Active Directory erfolgt, ist die Quell-ID die Mitarbeiter-ID des Workday-Mitarbeiters. Beachten Sie, dass der Name des Benutzers möglicherweise nicht immer in der Spalte „Identität“ enthalten ist. Es gibt jedoch immer eine ID. 
 
@@ -110,10 +110,10 @@ Mit dem Filter **Zielsystem** können Sie angeben, wo die Identität bereitgeste
 
 Für den Filter **Zustand** können Sie eine der folgenden Optionen auswählen:
 
-- Alle
-- Erfolgreich
+- All
+- Erfolg
 - Fehler
-- Übersprungen
+- Ausgelassen
 
 Mit dem Filter **Aktion** können Sie Folgendes filtern:
 
@@ -176,7 +176,7 @@ Auf der Registerkarte **Schritte** sind die Schritte zum Bereitstellen eines Obj
 
 
 
-![Filter](./media/concept-provisioning-logs/steps.png "Filter")
+![Filter](./media/concept-provisioning-logs/steps.png "Filtern")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>Problembehandlung und Empfehlungen

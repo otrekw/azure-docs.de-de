@@ -15,10 +15,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: abf7d800eda376c21dfdd672032ddb65e27355be
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759073"
 ---
 # <a name="a-web-app-that-calls-web-apis-acquire-a-token-for-the-app"></a>Web-App, die Web-APIs aufruft: Abrufen eines Tokens für die App
@@ -28,7 +28,7 @@ Sie haben das Clientanwendungsobjekt erstellt. Jetzt rufen Sie damit ein Token a
 - Mit dem Tokencache wird ein Token für die Web-API abgerufen. Zum Abrufen dieses Tokens rufen Sie die `AcquireTokenSilent`-Methode auf.
 - Rufen Sie die geschützte API auf, indem Sie das Zugriffstoken als Parameter übergeben.
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 Die Controllermethoden sind durch ein `[Authorize]`-Attribut geschützt, mit dem erzwungen wird, dass Benutzer für die Verwendung der Web-App authentifiziert werden müssen. Mit dem folgenden Code wird Microsoft Graph aufgerufen:
 
@@ -75,7 +75,7 @@ Es gibt andere komplexe Varianten, wie beispielsweise:
 
 Diese erweiterten Schritte werden in Kapitel 3 des Tutorials [3-WebApp-multi-APIs](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/3-WebApp-multi-APIs) erörtert.
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 Der Code für ASP.NET ähnelt dem für ASP.NET Core dargestellten Code:
 
@@ -83,7 +83,7 @@ Der Code für ASP.NET ähnelt dem für ASP.NET Core dargestellten Code:
 - Anschließend wird ein MSAL.NET-`IConfidentialClientApplication`-Objekt erstellt.
 - Zuletzt wird die `AcquireTokenSilent`-Methode der vertraulichen Clientanwendung aufgerufen.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Im Java-Beispiel befindet sich der Code, der eine API aufruft, in der „getUsersFromGraph“-Methode in [AuthPageController.java#L62](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L62).
 
@@ -145,7 +145,7 @@ public ModelAndView getUserFromGraph(HttpServletRequest httpRequest, HttpServlet
 // Code omitted here
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Im Python-Beispiel befindet sich der Code, der Microsoft Graph aufruft, in [app.py#L53-L62](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L53-L62).
 

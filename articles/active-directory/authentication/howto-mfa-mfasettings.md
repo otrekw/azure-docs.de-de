@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 077032e4fe3886d5bf9a678dffdffca1a5802091
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848407"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230954"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 
@@ -30,7 +30,7 @@ Sie können vom Azure-Portal aus auf Einstellungen für die Azure Multi-Factor A
 
 Einige dieser Einstellungen gelten für MFA-Server, Azure-MFA oder beide Optionen.
 
-| Feature | Beschreibung |
+| Funktion | Beschreibung |
 | ------- | ----------- |
 | Kontosperrung | Hiermit werden Konten im MFA-Dienst temporär gesperrt, wenn zu viele aufeinanderfolgende Authentifizierungsversuche abgelehnt werden. Dieses Feature wird nur auf Benutzer angewendet, die zur Authentifizierung eine PIN eingeben. (MFA-Server) |
 | [Benutzer sperren/zulassen](#block-and-unblock-users) | Wird verwendet, um zu verhindern, dass bestimmte Benutzer Multi-Factor Authentication-Anforderungen empfangen. Authentifizierungsversuche für gesperrte Benutzer werden automatisch abgelehnt. Benutzer bleiben ab dem Zeitpunkt der Sperrung 90 Tage lang gesperrt. |
@@ -44,7 +44,7 @@ Einige dieser Einstellungen gelten für MFA-Server, Azure-MFA oder beide Optione
 
 Die Einstellungen in diesem Abschnitt gelten nur für MFA-Server.
 
-| Feature | Beschreibung |
+| Funktion | Beschreibung |
 | ------- | ----------- |
 | Servereinstellungen | Laden Sie MFA-Server herunter und generieren Sie Aktivierungsdaten, um Ihre Umgebung zu initialisieren. |
 | [Einmalumgehung](#one-time-bypass) | Ermöglichen Sie einem Benutzer für eine begrenzte Zeit, die Authentifizierung ohne eine zweistufige Überprüfung durchzuführen. |

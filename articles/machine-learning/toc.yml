@@ -95,6 +95,9 @@
     - name: Modelltraining
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
+    - name: Verteiltes Training
+      displayName: 'parallellization, deep learning, deep neural network, dnn'
+      href: concept-distributed-training.md
     - name: Modellverwaltung (MLOps)
       displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
@@ -111,6 +114,9 @@
     - name: Automatisiertes maschinelles Lernen
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
+    - name: Verwalten von ML-Fehlerquellen
+      displayName: 'automl, auto ml, risks'
+      href: concept-manage-ml-pitfalls.md
     - name: Compute-Instanz
       displayName: 'resource, dsvm, Data Science Virtual Machine'
       href: concept-compute-instance.md
@@ -184,39 +190,47 @@
           href: concept-train-model-git-integration.md
     - name: Arbeiten mit Daten
       items:
-        - name: Verbinden mit Daten in Azure Storage
-          displayName: 'blob, get, fileshare, access storage, mount, download'
-          href: how-to-access-data.md
-        - name: Abrufen von Daten aus einem Datenspeicher
-          displayName: 'data, data set, register, access data'
-          href: how-to-create-register-datasets.md
-        - name: Trainieren mit Datasets
-          displayName: 'data, dataset, mount'
-          href: how-to-train-with-datasets.md
-        - name: Importieren von Daten im Designer
-          displayName: 'designer, data, import, dataset, datastore'
-          href: how-to-designer-import-data.md
-        - name: Erkennen von Datendrift bei Datasets
-          displayName: 'data, dataset'
-          href: how-to-monitor-datasets.md
-        - name: Durchführen der Versionsverwaltung und Nachverfolgen von Datasets
-          displayName: 'data, data set'
-          href: how-to-version-track-datasets.md
         - name: Bezeichnen von Daten
-          displayName: 'data, dataset, labeling'
-          href: how-to-create-labeling-projects.md
-        - name: Bezeichnen von Bildern
-          displayName: 'data, dataset, labeling'
-          href: how-to-label-images.md
-        - name: Erstellen von Datasets mit Bezeichnungen
-          displayName: 'data, labels, torchvision'
-          href: how-to-use-labeled-dataset.md
-        - name: Datenerfassung mit Azure Data Factory
-          displayName: 'data, ingestion, adf'
-          href: how-to-data-ingest-adf.md
-        - name: DevOps für Datenerfassung
-          displayName: 'data, ingestion, devops'
-          href: how-to-cicd-data-ingestion.md
+          items:
+            - name: Bezeichnen von Daten
+              displayName: 'data, dataset, labeling'
+              href: how-to-create-labeling-projects.md
+            - name: Bezeichnen von Bildern
+              displayName: 'data, dataset, labeling'
+              href: how-to-label-images.md
+            - name: Erstellen von Datasets mit Bezeichnungen
+              displayName: 'data, labels, torchvision'
+              href: how-to-use-labeled-dataset.md
+        - name: Datensammlung
+          items:
+            - name: Datenerfassung mit Azure Data Factory
+              displayName: 'data, ingestion, adf'
+              href: how-to-data-ingest-adf.md
+            - name: DevOps für Datenerfassung
+              displayName: 'data, ingestion, devops'
+              href: how-to-cicd-data-ingestion.md
+            - name: Importieren von Daten im Designer
+              displayName: 'designer, data, import, dataset, datastore'
+              href: how-to-designer-import-data.md
+        - name: Zugreifen auf Daten
+          items:
+            - name: Verbinden mit Azure Storage
+              displayName: 'blob, get, fileshare, access, mount, download, data lake'
+              href: how-to-access-data.md
+            - name: Abrufen von Daten aus einem Datenspeicher
+              displayName: 'data, data set, register, access data'
+              href: how-to-create-register-datasets.md
+        - name: Verwalten und Nutzen von Daten
+          items:
+            - name: Trainieren mit Datasets
+              displayName: 'data, dataset, mount'
+              href: how-to-train-with-datasets.md
+            - name: Erkennen von Datendrift bei Datasets
+              displayName: 'data, dataset'
+              href: how-to-monitor-datasets.md
+            - name: Durchführen der Versionsverwaltung und Nachverfolgen von Datasets
+              displayName: 'data, data set'
+              href: how-to-version-track-datasets.md
     - name: Trainieren von Modellen
       items:
         - name: Verwenden von Kalkulatoren für Machine Learning
@@ -337,6 +351,7 @@
         - name: Auslösen einer Pipeline
           href: how-to-trigger-published-pipeline.md
         - name: Debugging und Problembehandlung für Pipelines
+          displayName: designer
           href: how-to-debug-pipelines.md
         - name: Debuggen von Pipelines in Application Insights
           displayname: 'pipelines, log, monitor'

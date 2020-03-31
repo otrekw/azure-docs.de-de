@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9ca44b1917cfaed5d01c31f8f06d98e5e4b611a8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: c4ca328aa0ddc61d86a435b93fe775f294287b98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356303"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527383"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Handbuch zur Leistung und Optimierung der Kopieraktivität
 
@@ -274,7 +274,7 @@ Wir empfehlen, die folgenden Schritte auszuführen, um die Leistung des Data Fac
 ## <a name="considerations-for-data-management-gateway"></a>Hinweise zum Datenverwaltungsgateway
 **Gatewaysetup**: Es wird empfohlen, das Datenverwaltungsgateway auf einem dedizierten Computer zu hosten. Siehe [Hinweise zum Datenverwaltungsgateway](data-factory-data-management-gateway.md#considerations-for-using-gateway).
 
-**Überwachung und zentrales Hochskalieren/horizontales Skalieren des Gateways**: In einem einzelnen logischen Gateway mit einem oder mehreren Gatewayknoten können mehrere Kopieraktivitäten gleichzeitig parallel ausgeführt werden. Sie können auf einem Gatewaycomputer nahezu in Echtzeit Momentaufnahmen der Ressourcenverwendung (CPU, Arbeitsspeicher, Netzwerk [Eingang/Ausgang] usw.) sowie die Anzahl gleichzeitig ausführbarer Aufträge im Vergleich zur Begrenzung im Azure-Portal anzeigen. Entsprechende Informationen finden Sie unter [Überwachen des Gateways im Portal](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal). Wenn Sie einen hohen Bedarf an Hybriddatenverschiebungen mit einer großen Anzahl an gleichzeitigen Ausführungen der Kopieraktivität oder einem umfangreichen Volumen an zu kopierenden Daten haben, sollten Sie [das zentrale Hochskalieren oder horizontale Skalieren des Gateways](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations) erwägen, um zur Optimierung der Kopieraktivität die Ressourcen optimaler zu nutzen oder weitere Ressourcen bereitzustellen.
+**Überwachung und zentrales Hochskalieren/horizontales Skalieren des Gateways**: In einem einzelnen logischen Gateway mit einem oder mehreren Gatewayknoten können mehrere Kopieraktivitäten gleichzeitig parallel ausgeführt werden. Sie können auf einem Gatewaycomputer nahezu in Echtzeit Momentaufnahmen der Ressourcenverwendung (CPU, Arbeitsspeicher, Netzwerk [Eingang/Ausgang] usw.) sowie die Anzahl gleichzeitig ausführbarer Aufträge im Vergleich zur Begrenzung im Azure-Portal anzeigen. Entsprechende Informationen finden Sie unter [Überwachen des Gateways im Portal](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal). Wenn Sie einen hohen Bedarf an Hybriddatenverschiebungen mit einer großen Anzahl an gleichzeitigen Ausführungen der Kopieraktivität oder einem umfangreichen Volumen an zu kopierenden Daten haben, sollten Sie [das Hochskalieren oder Aufskalieren des Gateways](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations) erwägen, um zur Optimierung der Kopieraktivität die Ressourcen optimaler zu nutzen oder weitere Ressourcen bereitzustellen.
 
 ## <a name="considerations-for-the-source"></a>Hinweise zur Quelle
 ### <a name="general"></a>Allgemein
@@ -419,7 +419,7 @@ Hier finden Sie Referenzen zur Leistungsüberwachung und -optimierung für einig
 * Azure Blob Storage: [Skalierbarkeits- und Leistungsziele für Blob Storage](../../storage/blobs/scalability-targets.md) und [Checkliste zu Leistung und Skalierbarkeit für Blob Storage](../../storage/blobs/storage-performance-checklist.md).
 * Azure Table Storage: [Skalierbarkeits- und Leistungsziele für Table Storage](../../storage/tables/scalability-targets.md) und [Checkliste zu Leistung und Skalierbarkeit für Table Storage](../../storage/tables/storage-performance-checklist.md).
 * Azure SQL-Datenbank: Sie können [die Leistung überwachen](../../sql-database/sql-database-single-database-monitor.md) und den prozentualen Anteil der Datenbanktransaktionseinheit (Database Transaction Unit, DTU) überprüfen.
-* Azure SQL Data Warehouse: Die Leistung wird in Data Warehouse-Einheiten (Data Warehouse Units, DWUs) gemessen. Weitere Informationen finden Sie unter [Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
+* Azure SQL Data Warehouse: Die Leistung wird in Data Warehouse-Einheiten (Data Warehouse Units, DWUs) gemessen. Weitere Informationen finden Sie unter [Verwalten von Computeleistung in Azure SQL Data Warehouse (Übersicht)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 * Azure Cosmos DB: [Leistungsebenen in Azure Cosmos DB](../../cosmos-db/performance-levels.md)
 * Lokaler SQL Server: [Überwachen und Optimieren der Leistung](https://msdn.microsoft.com/library/ms189081.aspx)
 * Lokaler Dateiserver: [Leistungsoptimierung für Dateiserver](https://msdn.microsoft.com/library/dn567661.aspx)

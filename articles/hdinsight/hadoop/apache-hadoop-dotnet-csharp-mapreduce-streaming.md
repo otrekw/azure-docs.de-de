@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
 ms.openlocfilehash: 025b5c5c1e3b8543111e112202906ef6f1fdb482
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74561802"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Verwenden von C# mit MapReduce-Streaming auf Apache Hadoop in HDInsight
@@ -178,7 +178,7 @@ Als nächstes müssen Sie die Anwendungen *mapper* und *reducer* in den HDInsigh
 
 Im folgenden Verfahren wird beschrieben, wie Sie einen MapReduce-Auftrag über eine SSH-Sitzung ausführen:
 
-1. Verwenden Sie einen [SSH-Befehl](../hdinsight-hadoop-linux-use-ssh-unix.md) zum Herstellen der Verbindung mit dem Cluster. Bearbeiten Sie den unten angegebenen Befehl, indem Sie CLUSTERNAME durch den Namen Ihres Clusters ersetzen, und geben Sie den Befehl dann ein:
+1. Verwenden Sie einen [ssh-Befehl](../hdinsight-hadoop-linux-use-ssh-unix.md) zum Herstellen der Verbindung mit dem Cluster. Bearbeiten Sie den folgenden Befehl, indem Sie CLUSTERNAME durch den Namen Ihres Clusters ersetzen, und geben Sie den Befehl dann ein:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -248,7 +248,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie einen MapReduce-Auftrag über e
    youth   17
    ```
 
-## <a name="run-a-job-using-powershell"></a>Ausführen eines Auftrags: Verwenden von PowerShell
+## <a name="run-a-job-using-powershell"></a>Ausführen eines Auftrags: PowerShell
 
 Verwenden Sie das folgende PowerShell-Skript zum Ausführen eines MapReduce-Auftrags und zum Herunterladen der Ergebnisse.
 

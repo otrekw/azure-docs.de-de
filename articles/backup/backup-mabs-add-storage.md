@@ -4,10 +4,10 @@ description: In diesem Artikel erfahren Sie mehr über die neuen Features in Azu
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: c6346d7b0275a00271c1787b378a63b8365edf2d
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74172381"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Hinzufügen von Speicher zu Azure Backup Server

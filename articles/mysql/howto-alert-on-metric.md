@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 487ca76115b93020a762cfa2afb5fd5a3be40a66
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: c917804b42bc987228bbb2542682fe9fb308a467
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770661"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067892"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for MySQL 
 
@@ -25,7 +25,7 @@ Sie können konfigurieren, dass bei einer Warnung die folgenden Aktionen ausgef�
 * Aufrufen eines Webhooks
 
 Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abrufen zugehöriger Informationen:
-* [Azure-Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure-Befehlszeilenschnittstelle](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure Monitor-REST-API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 

@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e9fd17d9e066be6a1abff5165436a09b8921184e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68381308"
 ---
 # <a name="sign-in-problems-with-an-azure-ad-gallery-app-configured-for-sso"></a>Probleme beim Anmelden bei einer Azure AD-Katalog-App, die für SSO konfiguriert ist
@@ -111,7 +111,7 @@ Folgen Sie diesen Schritten:
 
 7. Wählen Sie die App aus, die Sie für SSO konfigurieren möchten.
 
-8. *Optional*: Bevor Sie die App hinzufügen, können Sie ihren Namen im Feld **Name** ändern.
+8. *Optional:* Bevor Sie die App hinzufügen, können Sie ihren Namen im Feld **Name** ändern.
 
 9. Klicken Sie auf **Hinzufügen**, um die App hinzuzufügen.
 
@@ -173,11 +173,11 @@ Um einer App Benutzer direkt zuzuweisen, gehen Sie folgendermaßen vor:
 
 11. Bewegen Sie den Cursor über die Benutzer in der Liste. Aktivieren Sie das Kontrollkästchen neben dem Bild oder Logo des Benutzerprofils, um diesen Benutzer der Liste **Ausgewählt** hinzuzufügen.
 
-12. *Optional*: Zum Hinzuzufügen eines weiteren Benutzers geben Sie dessen Namen oder E-Mail-Adresse in das Feld **Nach Name oder E-Mail-Adresse suchen** ein, und aktivieren Sie dann das Kontrollkästchen, um diesen Benutzer zur Liste **Ausgewählt** hinzuzufügen.
+12. *Optional:* Zum Hinzuzufügen eines weiteren Benutzers geben Sie dessen Namen oder E-Mail-Adresse in das Feld **Nach Name oder E-Mail-Adresse suchen** ein, und aktivieren Sie dann das Kontrollkästchen, um diesen Benutzer zur Liste **Ausgewählt** hinzuzufügen.
 
 13. Wenn Sie alle gewünschten Benutzer ausgewählt haben, klicken Sie auf **Auswählen**, um sie der Liste der Benutzer und Gruppen hinzuzufügen, die der App zugewiesen sind.
 
-14. *Optional*: Klicken Sie im Bereich **Zuweisung hinzufügen** auf das Feld auf **Rolle auswählen**, um eine Rolle auszuwählen, die den ausgewählten Benutzern zugewiesen werden soll.
+14. *Optional:* Klicken Sie im Bereich **Zuweisung hinzufügen** auf das Feld auf **Rolle auswählen**, um eine Rolle auszuwählen, die den ausgewählten Benutzern zugewiesen werden soll.
 
 15. Wählen Sie **Zuweisen** aus, um die App den ausgewählten Benutzern zuzuweisen.
 

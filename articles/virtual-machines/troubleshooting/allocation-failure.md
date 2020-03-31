@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
 ms.openlocfilehash: b4750ad9fdfa214aa4d7b6a0355c319e7eb1d9c3
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77484399"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Problembehandlung für Zuordnungsfehler beim Erstellen, Neustarten oder Ändern der Größen von virtuellen Computern in Azure
@@ -47,7 +47,7 @@ Der Anforderungsversuch, die Größe eines virtuellen Computers zu ändern oder 
 Falls der virtuelle Computer Teil einer anderen Verfügbarkeitsgruppe sein kann, erstellen Sie einen virtuellen Computer in einer anderen Verfügbarkeitsgruppe (in derselben Region). Dieser neue virtuelle Computer kann dann demselben virtuellen Netzwerk hinzugefügt werden.
 
 Beenden Sie alle virtuellen Computer einer Verfügbarkeitsgruppe (heben Sie die Zuordnung auf), und starten Sie die einzelnen virtuellen Computer dann neu.
-Zum Beenden: Klicken Sie auf „Ressourcengruppen“ > [Ihre Ressourcengruppe] > „Ressourcen“ > [Ihre Verfügbarkeitsgruppe] > „Virtual Machines“ > [Ihr virtueller Computer] > „Beenden“.
+Gehen Sie zum Beenden wie folgt vor: Klicken Sie auf „Ressourcengruppen“ > [Ihre Ressourcengruppe] > „Ressourcen“ > [Ihre Verfügbarkeitsgruppe] > „Virtual Machines“ > [Ihr virtueller Computer] > „Beenden“.
 Wählen Sie nach dem Beenden aller virtuellen Computer den ersten virtuellen Computer aus, und klicken Sie dann auf „Starten“.
 Durch diesen Schritt wird sichergestellt, dass ein neuer Zuordnungsversuch ausgeführt wird und ein neuer Cluster ausgewählt werden kann, der über genügend Kapazität verfügt.
 
@@ -60,7 +60,7 @@ Die Teilaufhebung der Zuordnung bedeutet, dass Sie mindestens einen, aber nicht 
 ### <a name="workaround"></a>Problemumgehung
 
 Beenden Sie alle virtuellen Computer einer Verfügbarkeitsgruppe (heben Sie die Zuordnung auf), und starten Sie die einzelnen virtuellen Computer dann neu.
-Zum Beenden: Klicken Sie auf „Ressourcengruppen“ > [Ihre Ressourcengruppe] > „Ressourcen“ > [Ihre Verfügbarkeitsgruppe] > „Virtual Machines“ > [Ihr virtueller Computer] > „Beenden“.
+Gehen Sie zum Beenden wie folgt vor: Klicken Sie auf „Ressourcengruppen“ > [Ihre Ressourcengruppe] > „Ressourcen“ > [Ihre Verfügbarkeitsgruppe] > „Virtual Machines“ > [Ihr virtueller Computer] > „Beenden“.
 Wählen Sie nach dem Beenden aller virtuellen Computer den ersten virtuellen Computer aus, und klicken Sie dann auf „Starten“.
 Dadurch wird sichergestellt, dass ein neuer Zuordnungsversuch ausgeführt wird und ein neuer Cluster ausgewählt werden kann, der über genügend Kapazität verfügt.
 
@@ -83,7 +83,7 @@ Versuchen Sie, [den virtuellen Computer erneut bereitzustellen](https://docs.mic
 
 ## <a name="allocation-failures-for-older-vm-sizes-av1-dv1-dsv1-d15v2-ds15v2-etc"></a>Zuordnungsfehler bei älteren VM-Größen (Av1, Dv1, DSv1, D15v2, DS15v2 usw.)
 
-Im Zuge der Erweiterung der Azure-Infrastruktur stellen wir Hardware einer neueren Generation bereit, die zur Unterstützung der neuesten VM-Typen entwickelt wurde. Einige VMs der älteren Serien können nicht in unserer Infrastruktur der neuesten Generation ausgeführt werden. Aus diesem Grund können bei Kunden gelegentlich Zuordnungsfehler bei diesen älteren SKUs auftreten. Um dieses Problem zu vermeiden, empfehlen wir Kunden, die VMs älterer Serien verwenden, zu den entsprechenden neueren VMs zu wechseln: Diese VMs sind für die aktuelle Hardware optimiert und bieten Ihnen bessere Preise und höhere Leistung. 
+Im Zuge der Erweiterung der Azure-Infrastruktur stellen wir Hardware einer neueren Generation bereit, die zur Unterstützung der neuesten VM-Typen entwickelt wurde. Einige VMs der älteren Serien können nicht in unserer Infrastruktur der neuesten Generation ausgeführt werden. Aus diesem Grund können bei Kunden gelegentlich Zuordnungsfehler bei diesen älteren SKUs auftreten. Um dieses Problem zu vermeiden, empfehlen wir Kunden, die VMs älterer Serien verwenden, den Umstieg auf die entsprechenden neueren VMs gemäß den folgenden Empfehlungen. Diese VMs sind für die neueste Hardware optimiert, und dadurch können Sie von einer besseren Preisgestaltung und Leistung profitieren. 
 
 |Ältere VM-Serie/-Größe|Empfohlene neuere VM-Serie/-Größe|Weitere Informationen|
 |----------------------|----------------------------|--------------------|

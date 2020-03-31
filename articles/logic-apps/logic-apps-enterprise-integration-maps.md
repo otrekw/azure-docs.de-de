@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
 ms.openlocfilehash: e186b9713c8464f8f37e1e0bf112c4118621925c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75979404"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>Transformieren von XML mit Zuordnungen in Azure Logic Apps mithilfe von Enterprise Integration Pack
@@ -25,7 +25,7 @@ Grenzwerte für Integrationskonten und Artefakte wie Zuordnungen finden Sie unte
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Ein [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), in dem Sie Ihre Zuordnungen und andere Artefakte für Enterprise Integration- und B2B (Business-to-Business)-Lösungen speichern.
 
@@ -36,7 +36,7 @@ Grenzwerte für Integrationskonten und Artefakte wie Zuordnungen finden Sie unte
   * Für Assemblys benötigen Sie einen Azure-Blobcontainer, in den Sie Ihre Assembly hochladen können, und den Containerspeicherort. Auf diese Weise können Sie diesen Speicherort später bereitstellen, wenn Sie die Assembly Ihrem Integrationskonto hinzufügen. 
   Für diese Aufgabe benötigen Sie folgende Elemente:
 
-    | Element | Beschreibung |
+    | Element | BESCHREIBUNG |
     |------|-------------|
     | [Azure-Speicherkonto](../storage/common/storage-account-overview.md) | Unter diesem Konto erstellen Sie einen Azure-Blobcontainer für Ihre Assembly. Hier erfahren Sie, wie Sie ein [Speicherkonto erstellen](../storage/common/storage-account-create.md). |
     | BLOB-Container | In diesen Container können Sie Ihre Assembly hochladen. Außerdem benötigen Sie den Containerspeicherort, wenn Sie die Assembly Ihrem Integrationskonto hinzufügen. Hier erfahren Sie, wie Sie einen [Blobcontainer erstellen](../storage/blobs/storage-quickstart-blobs-portal.md). |

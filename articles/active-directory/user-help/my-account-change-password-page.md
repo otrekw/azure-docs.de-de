@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
 ms.openlocfilehash: 06e5abe04ed1ec75dcbf1b216bfaab1a7458ce72
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77064052"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Ändern des Kennworts für Ihr Geschäfts-, Schul- oder Unikonto auf der Seite „Kennwort ändern“

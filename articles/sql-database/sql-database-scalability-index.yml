@@ -3,7 +3,7 @@ documentType: LandingData
 title: Skalierbarkeit
 metadata:
   title: Azure SQL-Datenbank – Skalierbarkeit
-  meta.description: Learn how to scale your Azure SQL Database.
+  description: 'Erfahren Sie, wie Sie mit Azure SQL-Datenbank Ihre Datenbank problemlos skalieren können, indem Sie Computeleistung (zentral hochskalieren) oder Datenbankeinheiten (horizontal hochskalieren) hinzufügen.'
   services: sql-database
   ms.subservice: scale-out
   author: jovanpop-msft
@@ -14,7 +14,7 @@ metadata:
   ms.devlang: null
   ms.topic: overview
   ms.date: 01/25/2019
-  ms.author: jovanpop-msft
+  ms.author: jovanpop
 sections:
   - items:
       - type: paragraph

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 77cc4732e017d95cbae19578cf26b1111b08fdde
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75908985"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>Zuordnen der Peer-ASN zum Azure-Abonnement mithilfe von PowerShell
@@ -64,7 +64,7 @@ Ein Abonnement kann über mehrere ASNs verfügen. Aktualisieren Sie die Peeringi
 
 Von Peers wird erwartet, dass sie über ein umfassendes und aktuelles Profil auf [PeeringDB](https://www.peeringdb.com) verfügen. Wir verwenden diese Informationen während der Registrierung, um die Detailangaben des Peers zu überprüfen, wie etwa die NOC-Informationen, Informationen zum technischen Kontakt, die Anwesenheit in den Peeringeinrichtungen usw.
 
-Beachten Sie, dass anstelle von **{subscriptionId}** in der Ausgabe oben die tatsächliche Abonnement-ID angezeigt wird.
+Beachten Sie, dass anstelle von **{subscriptionId}** in der obigen Ausgabe die tatsächliche Abonnement-ID angezeigt wird.
 
 ## <a name="view-status-of-a-peerasn"></a>Anzeigestatus einer PeerASN
 
@@ -109,4 +109,4 @@ Das Löschen einer PeerASN wird zurzeit nicht unterstützt. Wenn Sie die PeerASN
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-Weitere Informationen finden Sie unter [Häufig gestellte Fragen zum Internetpeering](faqs.md).
+Weitere Informationen finden Sie unter [Internetpeering: häufig gestellte Fragen](faqs.md).

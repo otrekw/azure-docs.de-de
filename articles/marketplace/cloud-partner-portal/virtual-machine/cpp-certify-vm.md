@@ -1,19 +1,18 @@
 ---
 title: Zertifizieren Ihres VM-Images für den Azure Marketplace
 description: Dieser Artikel erläutert, wie Sie ein VM-Image für die Azure Marketplace-Zertifizierung testen und übermitteln.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/26/2018
-ms.author: pabutler
-ms.openlocfilehash: 4088864db4bf861d07821f5a0287336d8431f889
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 0225069179e0d7d94a983c5161976a5c1933fac5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826520"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278194"
 ---
 # <a name="certify-your-vm-image"></a>Zertifizieren Ihres VM-Images
 

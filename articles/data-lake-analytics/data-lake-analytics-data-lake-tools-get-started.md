@@ -10,11 +10,11 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.openlocfilehash: dacce0d4f40f077b5da6221000192a4398da99e0
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315772"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229890"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio
 
@@ -37,7 +37,7 @@ Dieser Artikel beschreibt, wie Sie Azure Data Lake Analytics-Konten mithilfe von
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Visual Studio:** Alle Editionen außer Express werden unterstützt.
+* **Visual Studio:** alle Editionen außer Express werden unterstützt.
 
   * Visual Studio 2019
   * Visual Studio 2017

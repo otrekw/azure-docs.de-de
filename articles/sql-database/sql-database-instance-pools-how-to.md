@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 5a45b9e3ba59a91f580ce0f2dc180adf5d20c87d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 4a27165d929cc9bc5f18e372f7f108887e466e43
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754055"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79299361"
 ---
 # <a name="azure-sql-database-instance-pools-preview-how-to-guide"></a>Schrittanleitung zu Azure SQL-Datenbank-Instanzenpools (Vorschau)
 
@@ -41,7 +41,7 @@ In der folgenden Tabelle sind die verfügbaren Vorgänge im Zusammenhang mit Ins
 
 Verfügbare [PowerShell-Befehle](https://docs.microsoft.com/powershell/module/az.sql/)
 
-|Cmdlet |Beschreibung |
+|Cmdlet |BESCHREIBUNG |
 |:---|:---|
 |[New-AzSqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | Erstellt einen Azure SQL-Datenbank-Instanzenpool |
 |[Get-AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | Gibt Informationen zum Azure SQL-Instanzenpool zurück |
@@ -50,7 +50,7 @@ Verfügbare [PowerShell-Befehle](https://docs.microsoft.com/powershell/module/az
 |[Get-AzSqlInstancePoolUsage](/powershell/module/az.sql/get-azsqlinstancepoolusage/) | Gibt Informationen zur Verwendung von Azure SQL-Instanzenpools zurück |
 
 
-Zur Verwendung von PowerShell [installieren Sie die neueste Version von PowerShell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell-core), und befolgen Sie die Anweisungen zum [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps).
+Zur Verwendung von PowerShell [installieren Sie die neueste Version von PowerShell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell), und befolgen Sie die Anweisungen zum [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 Verwenden Sie für Vorgänge für Instanzen innerhalb von Pools sowie für Einzelinstanzen die [Standardbefehle für verwaltete Instanzen](sql-database-managed-instance-create-manage.md#powershell-create-and-manage-managed-instances). Wenn diese Befehle für eine Instanz in einem Pool verwendet werden, muss allerdings der *Name des Instanzenpools* angegeben werden.
 

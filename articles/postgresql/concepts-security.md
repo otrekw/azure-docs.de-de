@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.openlocfilehash: 02dc9e1ad9ee46b1a400e44b6ef737e70571a17a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75972586"
 ---
 # <a name="security-in-azure-database-for-postgresql---single-server"></a>Sicherheit in Azure Database for PostgreSQL – Einzelserver
@@ -38,7 +38,7 @@ IP-Firewallregeln gewähren Serverzugriff auf der Grundlage der Ursprungs-IP-Adr
 Mit VNET-Dienstendpunkten wird die Konnektivität virtueller Netzwerke über den Azure-Backbone erweitert. Mithilfe von VNET-Regeln können Sie Ihren Azure Database for PostgreSQL-Server so konfigurieren, dass Verbindungen von ausgewählten Subnetzen in einem virtuellen Netzwerk zugelassen werden. Weitere Informationen finden Sie in der [Übersicht über VNET-Dienstendpunkte](concepts-data-access-and-security-vnet.md).
 
 ### <a name="private-ip"></a>Private IP-Adresse
-Private Link ermöglicht das Herstellen von Verbindungen mit Ihrem Azure Database for PostgreSQL-Einzelserver in Azure über einen privaten Endpunkt. Im Prinzip macht Azure Private Link Azure-Dienste in Ihrem privaten virtuellen Netzwerk (VNET) verfügbar. Der Zugriff auf die PaaS-Ressourcen erfolgt wie bei anderen Ressourcen im VNET über die private IP-Adresse. Weitere Informationen finden Sie in der [Übersicht über Private Link](concepts-data-access-and-security-private-link.md).
+Private Link ermöglicht das Herstellen von Verbindungen mit Ihrem Azure Database for PostgreSQL-Einzelserver in Azure über einen privaten Endpunkt. im Prinzip macht Azure Private Link Azure-Dienste in Ihrem privaten virtuellen Netzwerk (VNET) verfügbar. Der Zugriff auf die PaaS-Ressourcen erfolgt wie bei anderen Ressourcen im VNET auch über die private IP-Adresse. Weitere Informationen finden Sie in der [Übersicht über Private Link](concepts-data-access-and-security-private-link.md).
 
 
 ## <a name="access-management"></a>Zugriffsverwaltung

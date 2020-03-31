@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie Probleme beim Erstellen, Zuweisen und Entfern
 ms.date: 01/15/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: 7306e344a479008a87164a954c4444d375950b0b
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76157082"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Problembehandlung mit Azure Blueprints
@@ -30,7 +30,7 @@ Es ist üblich, dass der Fehler durch ein Artefakt und nicht durch die Blaupause
 
 ## <a name="general-errors"></a>Allgemeine Fehler
 
-### <a name="policy-violation"></a>Szenario: Richtlinienverletzung
+### <a name="scenario-policy-violation"></a><a name="policy-violation"></a>Szenario: Richtlinienverletzung
 
 #### <a name="issue"></a>Problem
 
@@ -47,7 +47,7 @@ Eine Richtlinie kann aus verschiedenen Gründen einer Bereitstellung widersprech
 
 Ändern Sie die Blaupause so, dass sie nicht in Konflikt mit den Richtlinien in den Fehlerdetails steht. Wenn diese Änderung nicht möglich ist, besteht eine alternative Option darin, den Umfang der Richtlinienzuordnung so zu ändern, dass die Blaupause der Richtlinie nicht mehr widerspricht.
 
-### <a name="escape-function-parameter"></a>Szenario: Blaupausenparameter ist eine Funktion
+### <a name="scenario-blueprint-parameter-is-a-function"></a><a name="escape-function-parameter"></a>Szenario: Blaupausenparameter ist eine Funktion
 
 #### <a name="issue"></a>Problem
 
@@ -63,7 +63,7 @@ Um eine Funktion als Parameter zu übergeben, versehen Sie die gesamte Zeichenfo
 
 ## <a name="delete-errors"></a>Löschen von Fehlern
 
-### <a name="assign-delete-timeout"></a>Szenario: Timeout beim Löschen einer Zuweisung
+### <a name="scenario-assignment-deletion-timeout"></a><a name="assign-delete-timeout"></a>Szenario: Timeout beim Löschen einer Zuweisung
 
 #### <a name="issue"></a>Problem
 

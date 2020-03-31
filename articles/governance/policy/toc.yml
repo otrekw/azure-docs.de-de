@@ -11,14 +11,14 @@
     - name: Zuweisen einer Richtlinie – Portal
       displayName: 'assign, compliance'
       href: assign-policy-portal.md
-    - name: Zuweisen einer Richtlinie – PowerShell
+    - name: 'Zuweisen einer Richtlinie: Azure PowerShell'
       displayName: 'assign, compliance'
       href: assign-policy-powershell.md
     - name: Zuweisen einer Richtlinie – Azure CLI
       displayName: 'assign, compliance'
       href: assign-policy-azurecli.md
-    - name: Zuweisen einer Richtlinie – Vorlage
-      displayName: 'assign, compliance, resource manager, ARM'
+    - name: 'Zuweisen einer Richtlinie: ARM-Vorlage'
+      displayName: 'assign, compliance, resource manager'
       href: assign-policy-template.md
 - name: Tutorials
   items:
@@ -81,7 +81,7 @@
     - name: Azure Policy für Kubernetes
       items:
         - name: Richtlinie für AKS
-          displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper, v2'
+          displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper, v3, crd, constraints'
           href: ./concepts/rego-for-aks.md
         - name: Richtlinie für die AKS-Engine
           displayName: 'aks, k8s, opa, open policy agent, gatekeeper, v3, crd, constraints'
@@ -100,9 +100,12 @@
     - name: Erstellen von Richtlinien für Arrayeigenschaften
       displayName: 'array property, alias, aliases, in, notIn, type, defaultValue'
       href: ./how-to/author-policies-for-arrays.md
-    - name: Erstellen einer Gastkonfigurationsrichtlinie
-      displayName: 'powershell, dsc, chef, linux, windows'
+    - name: Erstellen einer Gastkonfigurationsrichtlinie unter Windows
+      displayName: 'powershell, dsc, chef, windows'
       href: ./how-to/guest-configuration-create.md
+    - name: Erstellen einer Gastkonfigurationsrichtlinie unter Linux
+      displayName: 'powershell, dsc, chef, linux'
+      href: ./how-to/guest-configuration-create-linux.md
     - name: Abrufen von Konformitätsdaten
       displayName: 'evaluation, scan, summarize, query, events, log analytics'
       href: ./how-to/get-compliance-data.md
@@ -148,6 +151,12 @@
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
         - name: Richtliniendefinitionen
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+    - name: Azure SDK für Node
+      items:
+        - name: Richtlinie
+          href: /javascript/api/@azure/arm-policy
+        - name: Policy Insights
+          href: /javascript/api/@azure/arm-policyinsights
     - name: Azure SDK für Python
       items:
         - name: Richtlinie
@@ -186,6 +195,8 @@
   items:
     - name: GitHub – Azure Policy-Beispiele
       href: 'https://github.com/Azure/azure-policy'
+    - name: GitHub – Repository zu Community-Richtlinien
+      href: 'https://github.com/Azure/Community-Policy'
     - name: Video – Build 2018
       href: 'https://channel9.msdn.com/events/Build/2018/THR2030'
     - name: YouTube-Kanal zu Governance

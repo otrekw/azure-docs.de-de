@@ -12,10 +12,10 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shg
 ms.openlocfilehash: c112fb0b2d0eb3b8a66731948f48c8038a2296f8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77023649"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Erste Schritte mit dem Batch SDK für Node.js
@@ -52,7 +52,7 @@ Der Node.js-Client stellt einen Batchauftrag mit einer Vorbereitungsaufgabe (wir
 
 Sehen wir uns nun Schritt für Schritt den Prozess zur Erstellung des Node.js-Clients an:
 
-### <a name="step-1-install-azure-batch-sdk"></a>Schritt 1: Installieren des Azure Batch SDK
+### <a name="step-1-install-azure-batch-sdk"></a>Schritt 1: Installieren des Azure Batch SDKs
 
 Das Azure Batch SDK für Node.js kann mithilfe des Befehls „npm install“ installiert werden.
 
@@ -279,12 +279,12 @@ Sie können das Skript in ein Azure Storage-Konto hochladen und einen SAS-URI f�
 
 Eine Vorbereitungsaufgabe wird im Rahmen der Azure Batch-Auftragsübermittlung angegeben. Für die Vorbereitungsaufgabe stehen folgende Konfigurationsparameter zur Verfügung:
 
-* **ID:** Ein eindeutiger Bezeichner für die Vorbereitungsaufgabe.
+* **ID**: Ein eindeutiger Bezeichner für die Vorbereitungsaufgabe.
 * **commandLine**: Befehlszeile zum Ausführen der ausführbaren Aufgabendatei.
 * **resourceFiles**: Array mit Objekten, die Details zu Dateien angeben, welche zum Ausführen dieser Aufgabe heruntergeladen werden müssen.  Verfügbare Optionen:
-    - blobSource: Der SAS-URI der Datei.
-    - filePath: Lokaler Pfad zum Herunterladen und Speichern der Datei.
-    - fileMode: Nur relevant für Linux-Knoten. „fileMode“ wird im Oktalformat mit dem Standardwert „0770“ angegeben.
+    - „blobSource“: Der SAS-URI der Datei.
+    - „filePath“: Lokaler Pfad zum Herunterladen und Speichern der Datei.
+    - „fileMode“: Nur relevant für Linux-Knoten. „fileMode“ wird im Oktalformat mit dem Standardwert „0770“ angegeben.
 * **waitForSuccess**: Wird dieser Parameter auf „true“ festgelegt, wird die Aufgabe nicht ausgeführt, wenn bei der Vorbereitungsaufgabe ein Fehler auftritt.
 * **runElevated**: Legen Sie diesen Parameter auf „true“ fest, falls für die Aufgabenausführung erhöhte Rechte erforderlich sind.
 
@@ -317,8 +317,8 @@ Nach der Erstellung des CSV-Verarbeitungsauftrags können wir nun Aufgaben für 
 
 Das [Python-Skript](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/processcsv.py) akzeptiert zwei Parameter:
 
-* container_name: Der Storage-Container zum Herunterladen von Dateien.
-* pattern: Ein optionaler Parameter für das Dateinamensmuster.
+* Containername: Der Storage-Container zum Herunterladen von Dateien.
+* Muster: Ein optionaler Parameter für das Dateinamensmuster.
 
 Der folgende Code zeigt die Übermittlung von Aufgaben an den zuvor erstellten Azure Batch-Auftrag „process csv“ für vier Container („con1“, „con2“, „con3“ und „con4“):
 

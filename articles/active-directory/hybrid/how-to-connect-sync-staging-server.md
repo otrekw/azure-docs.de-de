@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900057"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230098"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect: Stagingserver und Notfallwiederherstellung
 Mit einem Server im Stagingmodus können Sie Änderungen an der Konfiguration vornehmen und eine Vorschau der Änderungen anzeigen, bevor Sie den Server aktiv schalten. Ein Server im Stagingmodus ermöglicht es Ihnen außerdem, einen vollständigen Import und eine vollständige Synchronisierung durchzuführen und so sicherzustellen, dass alle Änderungen wie erwartet durchgeführt werden, bevor Sie die Änderungen in Ihrer Produktionsumgebung implementieren.
@@ -50,7 +50,7 @@ Wenn Sie sich bisher nur mit älteren Synchronisierungstechnologien auskennen, m
 Führen Sie zum Anwenden dieser Methode die folgenden Schritte aus:
 
 1. [Vorbereiten](#prepare)
-2. [Konfiguration](#configuration)
+2. [Configuration](#configuration)
 3. [Importieren und Synchronisieren](#import-and-synchronize)
 4. [Überprüfen](#verify)
 5. [Wechseln des aktiven Servers](#switch-active-server)

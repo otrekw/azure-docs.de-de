@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
 ms.openlocfilehash: 5cf1986711479f7330b0cd477744d9f4e2ac6459
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76548933"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Verwenden der erweiterten Features des Apache Spark-Verlaufsservers zum Debuggen und Diagnostizieren von Spark-Anwendungen
@@ -97,7 +97,7 @@ Wählen Sie die Auftrags-ID aus, und klicken Sie dann im Toolmenü auf **Daten**
    ![Wärmebild auf der Seite „Spark Application & Job Graph“ (Spark-Anwendung und Auftragsgraph)](./media/apache-azure-spark-history-server/sparkui-graph-heatmap.png)
 
 
-    |Color |Beschreibung |
+    |Color |BESCHREIBUNG |
     |---|---|
     |Grün|die abgeschlossen wurden.|
     |Orange|Die Aufgabe ist fehlgeschlagen. Dies wirkt sich jedoch nicht auf das Endergebnis des Auftrags aus. Für diese Aufgaben gibt es doppelte oder Wiederholungsinstanzen, die später erfolgreich durchgeführt werden können.|
@@ -307,7 +307,7 @@ Wenn Sie ein Upgrade mit einem Hotfix durchführen möchten, verwenden Sie das f
 1. Starten Sie das [Azure-Portal](https://ms.portal.azure.com), und wählen Sie dann Ihren Cluster aus.
 2. Führen Sie eine [Skriptaktion](../hdinsight-hadoop-customize-cluster-linux.md) mit den folgenden Parametern aus:
 
-    |Eigenschaft |value |
+    |Eigenschaft |Wert |
     |---|---|
     |Skripttyp|--Benutzerdefiniert|
     |Name|UpgradeJar|

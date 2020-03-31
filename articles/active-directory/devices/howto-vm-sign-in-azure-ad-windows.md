@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffb0f7cdb320d009eb1549efabac60d7710b9b0e
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 88ae3c45126403161e35ec46e5ccc2666c3edb55
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79080083"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050077"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Anmelden bei einem virtuellen Windows-Computer in Azure mit der Azure Active Directory-Authentifizierung (Vorschau)
 
@@ -177,7 +177,7 @@ Nach einigen Augenblicken wird dem Sicherheitsprinzipal die Rolle für den Berei
 
 Im folgenden Beispiel wird [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) verwendet, um dem aktuellen Azure-Benutzer die Rolle „VM-Administratoranmeldung“ für den virtuellen Computer zuzuweisen. Der Benutzername des aktiven Azure-Kontos wird mit [az account show](/cli/azure/account#az-account-show) abgerufen. Der Bereich wird mit [az vm show](/cli/azure/vm#az-vm-show) auf den in einem vorherigen Schritt erstellten virtuellen Computer festgelegt. Der Bereich kann auch auf Ebene einer Ressourcengruppe oder eines Abonnements zugewiesen werden. Dann gelten normale RBAC-Vererbungsberechtigungen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung](../../virtual-machines/linux/login-using-aad.md).
 
-```   zureCLI
+```   AzureCLI
 username=$(az account show --query user.name --output tsv)
 vm=$(az vm show --resource-group myResourceGroup --name myVM --query id -o tsv)
 
@@ -278,7 +278,7 @@ Dieser Exitcode ergibt DSREG_E_MSI_TENANTID_UNAVAILABLE, da die Erweiterung die 
 
 #### <a name="issue-2-aadloginforwindows-extension-fails-to-install-with-exit-code--2145648607"></a>Problem 2: Erweiterung AADLoginForWindows kann mit dem Exitcode „-2145648607“ nicht installiert werden
 
-Dieser Exitcode ergibt DSREG_AUTOJOIN_DISC_FAILED, da die Erweiterung den Endpunkt https://enterpriseregistration.windows.net nicht erreichen kann.
+Dieser Exitcode ergibt DSREG_AUTOJOIN_DISC_FAILED, da die Erweiterung den Endpunkt `https://enterpriseregistration.windows.net` nicht erreichen kann.
 
 1. Überprüfen Sie über die Befehlszeile, ob über den virtuellen Computer auf die erforderlichen Endpunkte zugegriffen werden kann:
 

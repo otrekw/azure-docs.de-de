@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: b05d1f36d1e74b3d915e216676859654fbcbacf3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60578662"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228210"
 ---
 # <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>Austauschen des EBOD-Controllers eines StorSimple-Geräts
 

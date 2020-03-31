@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ef63a159c132f5b565123eeb4824fb1ae5812ce1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bfa308e2cc67bd14a248f3edc7b182f9a772ed98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444146"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80238697"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Aktivität „If Condition“ in Azure Data Factory
 Die Aktivität „If Condition“ bietet die gleiche Funktionalität wie eine If-Anweisung in Programmiersprachen. Sie wertet eine Aktivitätengruppe aus, wenn die Bedingung als `true` ausgewertet wird, und eine weitere Aktivitätengruppe, wenn die Bedingung als `false` ausgewertet wird. 
@@ -182,7 +182,7 @@ Ein weiteres Beispiel für den Ausdruck lautet:
 
 ```json
 "expression":  {
-    "value":  "@pipeline().parameters.routeSelection == 1", 
+    "value":  "@equals(pipeline().parameters.routeSelection,1)", 
     "type": "Expression"
 }
 ```
@@ -244,7 +244,7 @@ Die Pipeline legt für **folderPath** entweder den Wert des Parameters **outputP
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bei diesen Befehlen wird davon ausgegangen, dass Sie die JSON-Dateien im folgenden Ordner gespeichert haben: C:\ADF. 
+Bei diesen Befehlen wird davon ausgegangen, dass Sie die JSON-Dateien im Ordner „C:\ADF“ gespeichert haben. 
 
 ```powershell
 Connect-AzAccount

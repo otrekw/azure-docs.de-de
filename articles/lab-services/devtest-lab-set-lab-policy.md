@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: aa0ffbd69e73ddbef72e0eabf79f2736079c3d23
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60636430"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233082"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Verwalten aller Richtlinien für ein Lab in Azure DevTest Labs
 
@@ -91,7 +91,7 @@ Als Labbesitzer können Sie einen Zeitplan für das Herunterfahren für alle vir
 
 1. Wählen Sie auf der Startseite Ihres Labs **Konfiguration und Richtlinien** aus.
 2. Wählen Sie im linken Menü im Abschnitt **Zeitpläne** die Option **Richtlinien zum automatischen Herunterfahren** aus.
-3. Wählen Sie eine der Optionen aus. Die folgenden Abschnitte enthalten weitere Informationen zu diesen Optionen: Die festgelegte Richtlinie gilt nur für neu im Lab erstellte virtuelle Computer und nicht für bereits vorhandene virtuelle Computer. 
+3. Wählen Sie eine der Optionen aus. In den folgenden Abschnitten erhalten Sie weitere Informationen zu diesen Optionen: Die festgelegte Richtlinie gilt nur für neue virtuelle Computer, die im Lab erstellt werden, nicht aber für die bereits vorhandenen virtuellen Computer. 
 
     ![Optionen zum automatischen Herunterfahren](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
 

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: 423706c391e8d8c2c609798d9f50e5a22f5c39bb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475980"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229994"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Unterstützte Dateiformate und Komprimierungscodecs in Azure Data Factory (Legacy)
 
@@ -23,7 +23,7 @@ ms.locfileid: "75475980"
 >[!IMPORTANT]
 >In Data Factory wurde das neue formatbasierte Datasetmodell eingeführt. Weitere Informationen dazu finden Sie im Artikel zum entsprechenden Format: <br>- [Avro-Format](format-avro.md)<br>- [Binärformat](format-binary.md)<br>- [Textformat mit Trennzeichen](format-delimited-text.md)<br>- [JSON-Format](format-json.md)<br>- [ORC-Format](format-orc.md)<br>- [Parquet-Format](format-parquet.md)<br>Die in diesem Artikel erwähnten restlichen Konfigurationen werden nach wie vor aus Gründen der Abwärtskompatibilität unterstützt. Es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden. 
 
-## <a name="text-format"></a> Textformat (Legacy)
+## <a name="text-format-legacy"></a><a name="text-format"></a> Textformat (Legacy)
 
 >[!NOTE]
 >Informationen zum neuen Modell finden Sie im Artikel zum [Textformat mit Trennzeichen](format-delimited-text.md). Die folgenden Konfigurationen für dateibasierte Datenspeicherdatasets werden aus Gründen der Abwärtskompatibilität unverändert unterstützt. Es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden.
@@ -77,7 +77,7 @@ Zur Verwendung von `escapeChar` anstelle von `quoteChar` ersetzen Sie die Zeile 
 * Sie kopieren aus einer Textdatei mit einer Kopfzeile in eine Senke, bei der es sich nicht um eine Datei handelt, und möchten diese Zeile löschen. Legen Sie `firstRowAsHeader` im Eingabedataset als „true“ fest.
 * Sie kopieren aus einer Textdatei und möchten einige Zeilen am Anfang überspringen, die keine Daten oder Kopfzeileninformationen enthalten. Geben Sie mit `skipLineCount` die Anzahl von Zeilen an, die übersprungen werden sollen. Wenn der Rest der Datei eine Kopfzeile enthält, können Sie auch `firstRowAsHeader` angeben. Wenn sowohl `skipLineCount` als auch `firstRowAsHeader` angegeben sind, werden erst die Zeilen übersprungen und dann die Kopfzeileninformationen aus der Eingabedatei gelesen.
 
-## <a name="json-format"></a> JSON-Format (Legacy)
+## <a name="json-format-legacy"></a><a name="json-format"></a> JSON-Format (Legacy)
 
 >[!NOTE]
 >Informationen zum neuen Modell finden Sie im Artikel zum [JSON-Format](format-json.md). Die folgenden Konfigurationen für dateibasierte Datenspeicherdatasets werden aus Gründen der Abwärtskompatibilität unverändert unterstützt. Es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden.
@@ -404,7 +404,7 @@ Das Ausgabedataset vom Typ **JsonFormat** ist wie folgt definiert: (Teildefiniti
 }
 ```
 
-## <a name="parquet-format"></a> Parquet-Format (Legacy)
+## <a name="parquet-format-legacy"></a><a name="parquet-format"></a> Parquet-Format (Legacy)
 
 >[!NOTE]
 >Informationen zum neuen Modell finden Sie im Artikel zum [Parquet-Format](format-parquet.md). Die folgenden Konfigurationen für dateibasierte Datenspeicherdatasets werden aus Gründen der Abwärtskompatibilität unverändert unterstützt. Es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden.
@@ -464,7 +464,7 @@ Beispiel: Legen Sie für die Variable `_JAVA_OPTIONS` den Wert `-Xms256m -Xmx16g
 | Char | Binary | Utf8 | Utf8 |
 | CharArray | Nicht unterstützt | – | – |
 
-## <a name="orc-format"></a> ORC-Format (Legacy)
+## <a name="orc-format-legacy"></a><a name="orc-format"></a> ORC-Format (Legacy)
 
 >[!NOTE]
 >Informationen zum neuen Modell finden Sie im Artikel zum [ORC-Format](format-orc.md). Die folgenden Konfigurationen für dateibasierte Datenspeicherdatasets werden aus Gründen der Abwärtskompatibilität unverändert unterstützt. Es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden.
@@ -516,7 +516,7 @@ Für Kopiervorgänge in der selbstgehosteten Integration Runtime mit Serialisier
 | Guid | String |
 | Char | Char(1) |
 
-## <a name="avro-format"></a> Avro-Format (Legacy)
+## <a name="avro-format-legacy"></a><a name="avro-format"></a> Avro-Format (Legacy)
 
 >[!NOTE]
 >Informationen zum neuen Modell finden Sie im Artikel zum [AVRO-Format](format-avro.md). Die folgenden Konfigurationen für dateibasierte Datenspeicherdatasets werden aus Gründen der Abwärtskompatibilität unverändert unterstützt. Es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden.
@@ -536,7 +536,7 @@ Beachten Sie folgende Punkte:
 
 * [Komplexe Datentypen](https://avro.apache.org/docs/current/spec.html#schema_complex) werden nicht unterstützt (Datensätze, Enumerationen, Arrays, Zuordnungen, Unions und Konstanten).
 
-## <a name="compression-support"></a> Unterstützung der Komprimierung (Legacy)
+## <a name="compression-support-legacy"></a><a name="compression-support"></a> Unterstützung der Komprimierung (Legacy)
 
 Azure Data Factory unterstützt das Komprimieren und Dekomprimieren während des Kopiervorgangs. Wenn Sie die `compression`-Eigenschaft in einem Eingabedataset angeben, kann die Kopieraktivität die komprimierten Daten aus der Quelle lesen und dekomprimieren. Bei Angabe der Eigenschaft in einem Ausgabedataset kann die Kopieraktivität Daten erst komprimieren und dann in die Senke schreiben. Es folgen einige Beispielszenarios:
 

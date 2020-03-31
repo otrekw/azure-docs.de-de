@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: a5625341e3dd279d93a59c57cd3325245351723e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646726"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233438"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>Verschieben von Daten in Azure-Blobspeicher
 
@@ -58,7 +58,7 @@ Das Avere CLFSLoad-Hilfsprogramm benötigt die folgenden Informationen:
 
 Wenn Sie das Avere CLFSLoad-Hilfsprogramm nicht verwenden oder einem vorhandenen Blobspeicherziel eine große Datenmenge hinzufügen möchten, können Sie die Daten über den Cache kopieren. Azure HPC Cache wurde dafür ausgelegt, mehrere Clients gleichzeitig zu bedienen, daher sollten Sie zum Kopieren von Daten über den Cache parallele Schreibvorgänge von mehreren Clients verwenden.
 
-![Diagramm der Datenverschiebung mit mehreren Clients und mehreren Threads: Oben links befindet sich ein Symbol für den lokalen Hardwarespeicher, von dem mehrere Pfeile ausgehen. Die Pfeile zeigen auf vier Clientcomputer. Von jedem Clientcomputer zeigen drei Pfeile auf den Azure HPC Cache. Vom Azure HPC Cache zeigen mehrere Pfeile zum Blobspeicher.](media/hpc-cache-parallel-ingest.png)
+![Diagramm mit Darstellung der Datenverschiebung mit mehreren Clients und mehreren Threads: Oben links befindet sich ein Symbol für den lokalen Hardwarespeicher, von dem mehrere Pfeile ausgehen. Die Pfeile zeigen auf vier Clientcomputer. Von jedem Clientcomputer zeigen drei Pfeile auf den Azure HPC Cache. Vom Azure HPC Cache zeigen mehrere Pfeile zum Blobspeicher.](media/hpc-cache-parallel-ingest.png)
 
 Die Befehle ``cp`` oder ``copy``, die normalerweise verwendet werden, um Daten von einem Speichersystem zu einem anderen zu übertragen, sind Singlethread-Prozesse, die jeweils nur eine Datei zugleich kopieren. Das bedeutet, dass der Dateiserver immer nur eine Datei auf einmal erfasst, was eine Verschwendung der Ressourcen des Cache darstellt.
 

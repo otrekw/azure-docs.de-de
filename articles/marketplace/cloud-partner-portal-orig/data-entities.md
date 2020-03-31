@@ -1,20 +1,18 @@
 ---
 title: Datenentitäten
 description: 'Veralteter CPP-Artikel, mit dem PC-Artikel verknüpft. Zuvor: „Übersicht über Datenentitäten“'
-services: Azure, Marketplace, Cloud Partner Portal,
-author: ChJenk
-manager: Ricardo.Villalobos
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: v-chjen
-ms.openlocfilehash: 729693b4f887f41140b2df852e70a744edbc060d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 5fcddcf978fe3776d02e035b72cfea332726330b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819948"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80276001"
 ---
 # <a name="data-entities"></a>Datenentitäten
 

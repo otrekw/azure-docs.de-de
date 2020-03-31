@@ -1,19 +1,18 @@
 ---
 title: Herstellen einer Verbindung mit Ihrem Microsoft Azure-basierten virtuellen Computer | Azure Marketplace
 description: Es wird beschrieben, wie Sie eine Verbindung mit dem neuen virtuellen Computer herstellen, der in Azure erstellt wurde.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/19/2018
-ms.author: pabutler
-ms.openlocfilehash: 3256115821abf5e81d04268ffd2eb310d213ab06
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: dsindona
+ms.openlocfilehash: 2b7eb6d321a64835254b684c8faeedc53645dffe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432010"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278057"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>Herstellen einer Verbindung mit Ihrem Azure-basierten virtuellen Computer
 
@@ -49,7 +48,7 @@ Zum Herstellen der Verbindung mit dem Linux-basierten virtuellen Computer benöt
 8. Klicken Sie auf **Öffnen**, um ein PuTTY-Terminal zu öffnen.  
 9. Geben Sie bei entsprechender Aufforderung den Kontonamen und das Kennwort Ihres Linux-VM-Kontos ein. 
 
-Falls Probleme mit der Verbindungsherstellung auftreten, hilft Ihnen die Dokumentation für Ihren SSH-Client weiter, z. B. [Kapitel 10 mit den häufigen Fehlermeldungen](https://www.ssh.com/ssh/putty/putty-manuals).
+Falls Probleme mit der Verbindungsherstellung auftreten, hilft Ihnen die Dokumentation für Ihren SSH-Client weiter, z.B. [Kapitel 10 mit den häufigen Fehlermeldungen](https://www.ssh.com/ssh/putty/putty-manuals).
 
 Weitere Informationen, z.B. zum Hinzufügen eines Desktops zu einer bereitgestellten Linux-VM, finden Sie unter [Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure](../../../virtual-machines/linux/use-remote-desktop.md).
 

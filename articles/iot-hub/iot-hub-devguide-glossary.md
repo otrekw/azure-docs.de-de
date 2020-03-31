@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.openlocfilehash: d73dcb89739395e4dd52b1ef4d39c41ad6125666
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3471bd7297118dc75fb97390c4601179f61e6416
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457157"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79497548"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glossar mit IoT Hub-Begriffen
 In diesem Artikel sind einige Begriffe aufgeführt, die in den Artikeln zu IoT Hub verwendet werden.
@@ -165,7 +165,7 @@ IoT Hub ist ein vollständig verwalteter Azure-Dienst, der eine zuverlässige un
 Mit [IoT Hub-Metriken](iot-hub-metrics.md) erhalten Sie Daten zum Zustand von IoT Hubs in Ihrem [Azure-Abonnement](#subscription). Auf der Grundlage von IoT Hub-Metriken können Sie die allgemeine Integrität des Diensts und der mit ihm verbundenen Geräte beurteilen. Anhand von IoT Hub-Metriken können Sie sich über den Status Ihrer IoT Hub-Instanz informieren und den Ursachen von Fehlern nachgehen, ohne sich dafür an den Azure-Support wenden zu müssen.
 
 ## <a name="iot-hub-query-language"></a>IoT Hub-Abfragesprache
-Die [IoT Hub-Abfragesprache](iot-hub-devguide-query-language.md) ist eine SQL-ähnliche Sprache, mit der Sie Ihre [](#job) und Gerätezwillinge abfragen können.
+Die [IoT Hub-Abfragesprache](iot-hub-devguide-query-language.md) ist eine SQL-ähnliche Sprache, mit der Sie Ihre [Aufträge](#job) und Gerätezwillinge abfragen können.
 
 ## <a name="iot-hub-resource-rest-api"></a>IoT Hub-Ressourcen-REST-API
 Sie können die [IoT Hub-Ressourcen-REST-API](https://docs.microsoft.com/rest/api/iothub/iothubresource) verwenden, um die IoT Hub-Instanzen in Ihrem [Azure-Abonnement](#subscription) zu verwalten, in dem Vorgänge wie das Erstellen, Aktualisieren und Löschen von Hubs durchgeführt werden.
@@ -227,7 +227,7 @@ Sie konfigurieren [Routingregeln](iot-hub-devguide-messages-read-custom.md) in I
 SASL PLAIN ist ein Protokoll, das vom AMQP-Protokoll zum Übertragen von Sicherheitstoken verwendet wird.
 
 ## <a name="service-rest-api"></a>Dienst-REST-API
-Sie können die [Dienst-REST-API](https://docs.microsoft.com/rest/api/iothub/service) des Lösungs-Back-Ends zur Verwaltung Ihrer Geräte verwenden. Mithilfe der API können Sie Eigenschaften von [Gerätezwillingen](#device-twin) abrufen und aktualisieren, [direkte Methoden](#direct-method) aufrufen und [Aufträge](#job) planen. Es ist in der Regel ratsam, ein allgemeines [Dienst-SDK](#azure-iot-service-sdks) zu nutzen, wie in den IoT Hub-Tutorials veranschaulicht.
+Sie können die [Dienst-REST-API](https://docs.microsoft.com/rest/api/iothub/service/configuration) des Lösungs-Back-Ends zur Verwaltung Ihrer Geräte verwenden. Mithilfe der API können Sie Eigenschaften von [Gerätezwillingen](#device-twin) abrufen und aktualisieren, [direkte Methoden](#direct-method) aufrufen und [Aufträge](#job) planen. Es ist in der Regel ratsam, ein allgemeines [Dienst-SDK](#azure-iot-service-sdks) zu nutzen, wie in den IoT Hub-Tutorials veranschaulicht.
 
 ## <a name="shared-access-signature"></a>Shared Access Signature (SAS)
 Bei Shared Access Signatures handelt es sich um einen Authentifizierungsmechanismus, der auf sicheren Hashes (SHA-256) oder URIs basiert. Die SAS-Authentifizierung besteht aus zwei Komponenten: einer _Richtlinie für den gemeinsamen Zugriff_ und einer _Shared Access Signature_ (häufig auch als „Token“ bezeichnet). Ein Gerät verwendet eine SAS für die Authentifizierung mit IoT Hub. [Back-End-Apps](#back-end-app) nutzen ebenfalls eine SAS für die Authentifizierung mit den dienstseitigen Endpunkten von IoT Hub. Normalerweise binden Sie das SAS-Token in die [Verbindungszeichenfolge](#connection-string) ein, die von einer App verwendet wird, um eine Verbindung mit IoT Hub herzustellen.
@@ -257,7 +257,7 @@ Mit Geräten werden Telemetriedaten erfasst, z.B. Windgeschwindigkeit oder Tempe
 Sie können einen Tokendienst verwenden, um einen Authentifizierungsmechanismus für Ihre Geräte zu implementieren. Er verwendet eine [SAS-Richtlinie](#shared-access-policy) von IoT Hub mit **DeviceConnect**-Berechtigungen, um Token mit *Gerätebereich* zu erstellen. Mit diesen Token kann ein Gerät eine Verbindung mit Ihrem IoT Hub herstellen. Ein Gerät verwendet einen benutzerdefinierten Authentifizierungsmechanismus für die Authentifizierung mit dem Tokendienst. Sofern die Authentifizierung des Geräts erfolgreich ist, stellt der Tokendienst ein SAS-Token für das Gerät bereit, mit dem auf IoT Hub zugegriffen werden kann.
 
 ## <a name="twin-queries"></a>Zwillingsabfragen
-Für [Geräte- und Modulzwillingsabfragen](iot-hub-devguide-query-language.md) wird die SQL-ähnliche IoT Hub-Abfragesprache verwendet, um Informationen von ihren Geräte- oder Modulzwillingen abzufragen. Sie können die gleiche IoT Hub-Abfragesprache verwenden, um Informationen zu [](#job) abzurufen, die in IoT Hub ausgeführt werden.
+Für [Geräte- und Modulzwillingsabfragen](iot-hub-devguide-query-language.md) wird die SQL-ähnliche IoT Hub-Abfragesprache verwendet, um Informationen von ihren Geräte- oder Modulzwillingen abzufragen. Sie können die gleiche IoT Hub-Abfragesprache verwenden, um Informationen zu [Aufträgen](#job) abzurufen, die in IoT Hub ausgeführt werden.
 
 ## <a name="twin-synchronization"></a>Zwillingssynchronisierung
 Bei der Zwillingssynchronisierung werden die [gewünschten Eigenschaften](#desired-properties) in Ihren Geräte- oder Modulzwillingen verwendet, um die Geräte oder Module zu konfigurieren und [gemeldete Eigenschaften](#reported-properties) von Ihren Geräten oder Modulen abzurufen und im entsprechenden Zwilling zu speichern.

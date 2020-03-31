@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 6b8c2924e50da095c3bc5c7db2d2bf48ef5a27c2
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77561934"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Erstellen eines Azure Data Explorer-Clusters und einer Datenbank über die Azure-Befehlszeilenschnittstelle

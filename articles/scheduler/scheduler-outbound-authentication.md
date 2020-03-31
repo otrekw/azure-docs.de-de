@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
 ms.openlocfilehash: bcd14e618323aec1c7ce47fcebb25099fa96be81
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898514"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Ausgehende Authentifizierung für Azure Scheduler
@@ -32,7 +32,7 @@ Der Scheduler unterstützt folgende Authentifizierungsmodelle:
 
 ## <a name="add-or-remove-authentication"></a>Hinzufügen oder Entfernen der Authentifizierung
 
-* Um einem Scheduler-Auftrag eine Authentifizierung hinzuzufügen, fügen Sie dem `request`-Element beim Erstellen oder Aktualisieren des Auftrags das untergeordnete JSON-Element (JavaScript Object Notation) `authentication` hinzu. 
+* Um einem Scheduler-Auftrag eine Authentifizierung hinzuzufügen, fügen Sie dem `authentication`-Element beim Erstellen oder Aktualisieren des Auftrags das untergeordnete JSON-Element (JavaScript Object Notation) `request` hinzu. 
 
   In den Antworten werden niemals Geheimnisse zurückgegeben, die dem Scheduler-Dienst über eine PUT-, PATCH- oder POST-Anforderung im Objekt `authentication` übergeben werden. 
   In Antworten werden geheime Informationen auf NULL festgelegt, oder sie verwenden unter Umständen ein öffentliches Token, das die authentifizierte Entität darstellt. 

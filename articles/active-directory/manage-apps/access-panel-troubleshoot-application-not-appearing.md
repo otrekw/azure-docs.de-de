@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviwer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 10dfcf337dc75a202e781e931f38783291a72fe7
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67272743"
 ---
 # <a name="an-assigned-application-is-not-appearing-on-the-access-panel"></a>Eine zugewiesene Anwendung wird im Zugriffsbereich nicht angezeigt.
@@ -240,7 +240,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden für eine nich
 
     1. Geben Sie zum Konfigurieren der Anwendung als IdP-initiierte SSO die Antwort-URL und die ID ein.
 
-    2.  **Optional**: Zum Konfigurieren der Anwendung als SP-initiierte SSO ist die Anmelde-URL ein erforderlicher Wert.
+    2.  **Optional:** Zum Konfigurieren der Anwendung als SP-initiierte SSO ist die Anmelde-URL ein erforderlicher Wert.
 
 12. Wählen Sie unter **Benutzerattribute** in der Dropdownliste **Benutzer-ID** den eindeutigen Bezeichner für die Benutzer aus.
 
@@ -399,7 +399,7 @@ Um eine Anwendung aus dem Azure AD-Katalog hinzuzufügen, führen Sie folgende S
 
 Nach kurzer Zeit wird der Konfigurationsbereich der Anwendung angezeigt.
 
-#### <a name="configure-the-application-for-password-single-sign-on-1"></a> Konfigurieren der Anwendung für einmaliges Anmelden per Kennwort
+#### <a name="configure-the-application-for-password-single-sign-on"></a><a name="configure-the-application-for-password-single-sign-on-1"></a> Konfigurieren der Anwendung für einmaliges Anmelden per Kennwort
 
 Um das einmalige Anmelden für eine Anwendung zu konfigurieren, führen Sie folgende Schritte aus:
 
@@ -607,7 +607,7 @@ Führen Sie die folgenden Schritte aus, um einer Anwendung eine oder mehrere Gru
 
 11. Zeigen Sie auf die **Gruppe** in der Liste, um ein **Kontrollkästchen** anzuzeigen. Klicken Sie auf das Kontrollkästchen neben dem Profilbild oder Logo der Gruppe, um den Benutzer zur Liste **Ausgewählt** hinzuzufügen.
 
-12. **Optional**: Wenn Sie **mehrere Gruppen hinzufügen** möchten, geben Sie im Suchfeld **Nach Name oder E-Mail-Adresse suchen** einen weiteren **vollständigen Gruppennamen** ein, und klicken Sie auf das Kontrollkästchen, um diese Gruppe der Liste **Ausgewählt** hinzuzufügen.
+12. **Optional**: Wenn Sie **mehrere Gruppen hinzufügen** möchten, geben Sie im Suchfeld **Nach Name oder E-Mail-Adresse suchen** einen weiteren **vollständigen Gruppennamen** ein, und klicken Sie auf das Kontrollkästchen, um diese Gruppe zur Liste **Ausgewählt** hinzuzufügen.
 
 13. Wenn Sie alle gewünschten Gruppen ausgewählt haben, klicken Sie auf die Schaltfläche **Auswählen**, um sie zur Liste der Benutzer und Gruppen hinzuzufügen, die der Anwendung zugewiesen werden sollen.
 

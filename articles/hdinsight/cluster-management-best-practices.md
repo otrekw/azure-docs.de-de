@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: 3010c1d597907e7d5c7f82c8b42721dc1f934f6f
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74781858"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>Verwaltung von HDInsight-Clustern – Bewährte Methoden
@@ -47,7 +47,7 @@ Informieren Sie sich über bewährte Methoden für die Verwaltung von HDInsight-
 
 ## <a name="what-are-some-errors-i-might-face-when-creating-clusters"></a>Welche Fehler können beim Erstellen von Clustern auftreten?
 
-| Error | Weitere Informationen |
+| Fehler | Weitere Informationen |
 |---|---|
 | Kein Kontingent | Es gibt Kontingente für die Anzahl von Clustern, die Sie in Ihrem Abonnement in jeder Region erstellen können. Weitere Informationen finden Sie unter [Kapazitätsplanung: Kontingente](./hdinsight-capacity-planning.md). |
 | Keine weiteren IP-Adressen verfügbar | Jedes VNet verfügt über eine begrenzte Anzahl von IP-Adressen. Wenn Sie einen HDInsight-Cluster erstellen, verwendet jeder Knoten (einschließlich ZooKeeper- und Gatewayknoten) einige dieser zugewiesenen IP-Adressen. Wenn alle IP-Adressen verwendet werden, tritt dieser Fehler auf.  |

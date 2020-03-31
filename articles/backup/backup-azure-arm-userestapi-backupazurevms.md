@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
 ms.openlocfilehash: 4789ef1e0e09df521f8cab539d972e9e669e0a58
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450161"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226142"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Sichern eines virtuellen Azure-Computers mithilfe von Azure Backup über die REST-API
 
@@ -102,13 +102,13 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 Der *GET*-URI enthält alle erforderlichen Parameter. Es ist kein zusätzlicher Anforderungstext erforderlich.
 
-#### <a name="responses-1"></a>Antworten
+#### <a name="responses"></a><a name="responses-1"></a>Antworten
 
 |Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |200 – OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
-#### <a name="example-responses-1"></a>Beispielantworten
+#### <a name="example-responses"></a><a name="example-responses-1"></a>Beispielantworten
 
 Nachdem die *GET*-Anforderung gesendet wurde, wird die Antwort „200 (OK)“ zurückgegeben.
 
@@ -323,7 +323,7 @@ Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang
 |---------|---------|---------|
 |202 – Akzeptiert     |         |     Zulässig    |
 
-#### <a name="example-responses-3"></a>Beispielantworten
+#### <a name="example-responses"></a><a name="example-responses-3"></a>Beispielantworten
 
 Nachdem Sie die *POST*-Anforderung für eine bedarfsgesteuerte Sicherung gesendet haben, wird als erste Antwort „202 (Akzeptiert)“ mit einem location- oder Azure-async-Header zurückgegeben.
 
@@ -387,7 +387,7 @@ Da es sich bei dem Sicherungsauftrag um einen Vorgang mit langer Ausführungsdau
 
 ### <a name="changing-the-policy-of-protection"></a>Ändern der Richtlinie für den Schutz
 
-Zum Ändern der Richtlinie, mit der der virtuelle Computer geschützt wird, können Sie das gleiche Format wie beim [Aktivieren des Schutzes](#enabling-protection-for-the-azure-vm) verwenden. Geben Sie einfach die neue Richtlinien-ID im [Anforderungstext](#example-request-body) an, und senden Sie die Anforderung. Beispiel:  Geben Sie zum Ändern der Richtlinie für „testVM“ von „DefaultPolicy“ in „ProdPolicy“ die ID von „ProdPolicy“ im Anforderungstext an.
+Zum Ändern der Richtlinie, mit der der virtuelle Computer geschützt wird, können Sie das gleiche Format wie beim [Aktivieren des Schutzes](#enabling-protection-for-the-azure-vm) verwenden. Geben Sie einfach die neue Richtlinien-ID im [Anforderungstext](#example-request-body) an, und senden Sie die Anforderung. Beispiel: Geben Sie zum Ändern der Richtlinie für „testVM“ von „DefaultPolicy“ in „ProdPolicy“ die ID von „ProdPolicy“ im Anforderungstext an.
 
 ```http
 {
@@ -433,7 +433,7 @@ DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroup
 DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2019-05-13
 ```
 
-#### <a name="responses-2"></a>Antworten
+#### <a name="responses"></a><a name="responses-2"></a>Antworten
 
 Der *DELETE*-Vorgang für den Schutz ist ein [asynchroner Vorgang](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
@@ -451,7 +451,7 @@ Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang
 
 Das Rückgängigmachen eines versehentlichen Löschens ähnelt dem Erstellen des Sicherungselements. Nachdem der Löschvorgang rückgängig gemacht wurde, wird das Element aufbewahrt, aber es werden keine zukünftigen Sicherungen ausgelöst.
 
-Das Rückgängigmachen einer Löschung ist ein *PUT*-Vorgang, der dem [Ändern der Richtlinie](#changing-the-policy-of-protection) und/oder dem [Aktivieren des Schutzes](#enabling-protection-for-the-azure-vm) sehr ähnlich ist. Geben Sie einfach die Absicht, den Löschvorgang rückgängig zu machen, mit der Variablen *isRehydrate* im [Anforderungstext](#example-request-body) an, und übermitteln Sie die Anforderung. Beispiel:  Zum Rückgängigmachen der Löschung von „testVM“ verwenden Sie den folgenden Anforderungstext.
+Das Rückgängigmachen einer Löschung ist ein *PUT*-Vorgang, der dem [Ändern der Richtlinie](#changing-the-policy-of-protection) und/oder dem [Aktivieren des Schutzes](#enabling-protection-for-the-azure-vm) sehr ähnlich ist. Geben Sie einfach die Absicht, den Löschvorgang rückgängig zu machen, mit der Variablen *isRehydrate* im [Anforderungstext](#example-request-body) an, und übermitteln Sie die Anforderung. Beispiel: Zum Rückgängigmachen der Löschung von „testVM“ verwenden Sie den folgenden Anforderungstext.
 
 ```http
 {

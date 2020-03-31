@@ -1,20 +1,20 @@
 ---
 title: Rendern von benutzerdefinierten Daten auf einer Rasterkarte | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie, wie Sie benutzerdefinierte Daten mithilfe des statischen Bilddiensts von Microsoft Azure Maps auf einer Rasterkarte rendern.
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 78068a8deda68434daaeb18cc994099d74d9ccdf
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: b8d47b69b4aba14c86fb09176b662aee7d5482d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209952"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335515"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Rendern von benutzerdefinierten Daten auf einer Rasterkarte
 

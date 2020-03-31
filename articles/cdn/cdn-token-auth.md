@@ -15,10 +15,10 @@ ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
 ms.openlocfilehash: fa71f472294b91baebc2a6075ddb2b50123e545d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593388"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Schützen von Azure CDN-Assets mit Tokenauthentifizierung
@@ -29,7 +29,7 @@ ms.locfileid: "67593388"
 
 Die Tokenauthentifizierung ist ein Mechanismus, mit dem Sie verhindern können, dass Assets im Azure Content Delivery Network (CDN) für nicht autorisierte Clients bereitgestellt werden. Die Tokenauthentifizierung wird normalerweise genutzt, um das *Hotlinking* von Inhalten zu verhindern. Dabei verwendet eine andere Website (z.B. ein Diskussionsforum) Ihre Assets ohne Erlaubnis. Hotlinking kann sich auf Ihre Kosten für die Inhaltsbereitstellung auswirken. Durch Aktivieren der Tokenauthentifizierung im CDN werden Anforderungen von CDN-Edgeserver authentifiziert, bevor das CDN den Inhalt übermittelt. 
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 Bei der Tokenauthentifizierung wird überprüft, ob Anforderungen von einer vertrauenswürdigen Website generiert werden. Dazu müssen die Anforderungen einen Tokenwert mit codierten Informationen zur anfordernden Person enthalten. Inhalte werden der anfordernden Person nur bereitgestellt, wenn die codierten Informationen die erforderlichen Voraussetzungen erfüllen. Andernfalls werden die Anforderungen abgelehnt. Sie können die Anforderungen einrichten, indem Sie einen oder mehrere der folgenden Parameter verwenden:
 

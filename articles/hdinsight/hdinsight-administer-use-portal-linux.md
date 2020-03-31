@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/12/2020
 ms.openlocfilehash: b9d923b3272f9d8b3da39d7cdb771a766eee4eab
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561781"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233702"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Verwalten von Apache Hadoop-Clustern in HDInsight mit dem Azure-Portal
 
@@ -29,13 +29,13 @@ Ein vorhandener Apache Hadoop-Cluster in HDInsight.  Weitere Informationen finde
 
 Melden Sie sich bei [https://portal.azure.com](https://portal.azure.com) an.
 
-## <a name="showClusters"></a>Auflisten und Anzeigen von Clustern
+## <a name="list-and-show-clusters"></a><a name="showClusters"></a>Auflisten und Anzeigen von Clustern
 
 Auf der Seite **HDInsight-Cluster** werden Ihre vorhandenen Cluster aufgeführt.  Im Portal:
 1. Wählen Sie im Menü links **Alle Dienste** aus.
 2. Wählen Sie unter **ANALYSEN** die Option **HDInsight-Cluster** aus.
 
-## <a name="homePage"></a>Cluster-Homepage
+## <a name="cluster-home-page"></a><a name="homePage"></a>Cluster-Homepage
 
 Wählen Sie auf der Seite [**HDInsight-Cluster**](#showClusters) den Namen Ihres Clusters aus.  Dadurch wird die Ansicht **Übersicht** geöffnet, die dem folgenden Screenshot ähnelt:
 
@@ -96,7 +96,7 @@ Wählen Sie auf der Seite [**HDInsight-Cluster**](#showClusters) den Namen Ihres
     |Ressourcenintegrität|Weitere Informationen finden Sie unter [Übersicht über Azure Resource Health](../service-health/resource-health-overview.md).|
     |Neue Supportanfrage|Ermöglicht die Erstellung eines Supporttickets für den Microsoft-Support.|
 
-## <a name="properties"></a>Clustereigenschaften
+## <a name="cluster-properties"></a><a name="properties"></a>Clustereigenschaften
 
 Wählen Sie auf der [Cluster-Homepage](#homePage) unter **Einstellungen** die Option **Eigenschaften** aus.
 
@@ -219,7 +219,7 @@ Das Kennwort wird auf allen Knoten im Cluster geändert.
 4. Wählen Sie auf der Seite **Skriptaktionen** die Option **+ Neue übermitteln** aus.
 5. Geben Sie auf der Seite **Skriptaktion übermitteln** die folgenden Informationen ein:
 
-   | Feld | value |
+   | Feld | Wert |
    | --- | --- |
    | Skripttyp | Wählen Sie in der Dropdownliste **– Benutzerdefiniert** aus.|
    | Name |„Change ssh password“ (SSH-Kennwort ändern) |

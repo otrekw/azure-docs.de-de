@@ -12,18 +12,18 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4832762a88073f4d819925659bf9078e18f60c2d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720280"
 ---
-# <a name="heading"></a>Datenstichproben im Azure-Blob-Speicher
+# <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>Datenstichproben im Azure-Blob-Speicher
 
 Dieser Artikel behandelt das Erstellen von Stichproben aus Daten in Azure Blob Storage durch programmgesteuertes Herunterladen, um dann mit Prozeduren in Python-Code Stichproben zu erstellen.
 
 **Warum eine Datenstichprobe entnehmen?**
-Wenn das zu analysierende Dataset groß ist, sollten Sie in der Regel eine Komprimierung der Daten durchführen, um eine geringere aber immer noch repräsentative Größe zu erhalten. Sampling erleichtert das Verständnis der Daten, das Durchsuchen und die Funktionsverarbeitung. Die Funktion besteht innerhalb des Cortana-Analyseprozesses darin, schnell Prototypen der Funktionen zur Datenverarbeitung und Modelle für das maschinelle Lernen zu erstellen.
+Wenn das zu analysierende Dataset groß ist, sollten Sie in der Regel eine Komprimierung der Daten durchführen, um eine geringere aber immer noch repräsentative Größe zu erhalten. Die Stichprobenentnahme erleichtert das Verständnis der Daten, das Durchsuchen und die Funktionsverarbeitung. Die Funktion besteht innerhalb des Cortana-Analyseprozesses darin, schnell Prototypen der Funktionen zur Datenverarbeitung und Modelle für das maschinelle Lernen zu erstellen.
 
 Dieser Stichprobentask ist ein Schritt im [Team Data Science-Prozess (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
@@ -53,7 +53,7 @@ Dieser Stichprobentask ist ein Schritt im [Team Data Science-Prozess (TDSP)](htt
         #directly ready from file on disk
         dataframe_blobdata = pd.read_csv(LOCALFILE)
 
-3. Erstellen Sie mit der `random.choice`-Funktion von `numpy` wie folgt Stichproben:
+3. Erstellen Sie mit der `numpy`-Funktion von `random.choice` wie folgt Stichproben:
    
         # A 1 percent sample
         sample_ratio = 0.01 
@@ -63,7 +63,7 @@ Dieser Stichprobentask ist ein Schritt im [Team Data Science-Prozess (TDSP)](htt
 
 Sie können nun mit dem oben angegebenen Datenrahmen mit der 1-%-Stichprobe weitere Datensuchvorgänge durchführen und Features bereitstellen.
 
-## <a name="heading"></a>Hochladen von Daten und Einlesen in Azure Machine Learning
+## <a name="upload-data-and-read-it-into-azure-machine-learning"></a><a name="heading"></a>Hochladen von Daten und Einlesen in Azure Machine Learning
 Mit dem folgenden Beispielcode können Sie ein Downsampling der Daten durchführen und diese direkt in Azure Machine Learning verwenden:
 
 1. Schreiben Sie den DataFrame in eine lokale Datei:

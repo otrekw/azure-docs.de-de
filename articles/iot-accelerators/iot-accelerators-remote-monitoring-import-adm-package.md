@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61443333"
 ---
 # <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>Importieren eines Pakets für die automatische Geräteverwaltung in den Solution Accelerator für die Remoteüberwachung
@@ -47,7 +47,7 @@ Sie haben jetzt eine Datei, die die Konfiguration für die automatische Gerätev
 
 Gehen Sie folgendermaßen vor, um eine Konfiguration für die automatische Geräteverwaltung als Paket in Ihre Lösung zu importieren:
 
-1. Navigieren Sie auf der Webbenutzeroberfläche für die Remoteüberwachung zur Seite **Pakete**:  ![Seite „Pakete“](media/iot-accelerators-remote-monitoring-import-adm-package/packagepage.png)
+1. Navigieren Sie auf der Webbenutzeroberfläche für die Remoteüberwachung zur Seite **Pakete**: Seite ![Pakete](media/iot-accelerators-remote-monitoring-import-adm-package/packagepage.png)
 
 1. Klicken Sie auf **+ Neues Paket**, wählen Sie **Konfiguration** als Pakettyp aus, und klicken Sie auf **Durchsuchen**, um die im vorherigen Abschnitt gespeicherte Datei **configuration.json** auszuwählen:
 

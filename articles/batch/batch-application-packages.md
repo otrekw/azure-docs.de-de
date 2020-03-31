@@ -15,10 +15,10 @@ ms.date: 04/26/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 30301832381bdc7b5f001eec2c449c571f9fd671
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79086226"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Bereitstellen von Anwendungen auf Computeknoten mit Batch-Anwendungspaketen
@@ -109,7 +109,7 @@ In diesem Fenster werden die IDs aller Anwendungen in Ihrem Konto und die folgen
 
 * **Pakete**: Die Anzahl von Versionen, die dieser Anwendung zugeordnet sind.
 * **Standardversion**: Die Anwendungsversion, die installiert wird, wenn Sie beim Festlegen der Anwendung für einen Pool keine Version angeben. Diese Einstellung ist optional.
-* **Updates zulassen**: Gibt an, ob Pakete aktualisiert, gelöscht und hinzugefügt werden dürfen. Ist diese Option auf **Nein**festgelegt, sind Paketaktualisierungen und -löschungen für die Anwendung deaktiviert. In diesem Fall können nur neue Anwendungspaketversionen hinzugefügt werden. Die Option ist standardmäßig auf **Ja**festgelegt.
+* **Updates zulassen**: Der Wert, der angibt, ob Pakete aktualisiert, gelöscht und hinzugefügt werden dürfen. Ist diese Option auf **Nein**festgelegt, sind Paketaktualisierungen und -löschungen für die Anwendung deaktiviert. In diesem Fall können nur neue Anwendungspaketversionen hinzugefügt werden. Die Option ist standardmäßig auf **Ja**festgelegt.
 
 Wenn Sie die Dateistruktur des Anwendungspakets auf Ihrem Serverknoten anzeigen möchten, navigieren Sie im Portal zu Ihrem Batch-Konto. Navigieren Sie von Ihrem Batch-Konto aus zu **Pools**. Wählen Sie den Pool aus, der die für Sie interessanten Serverknoten enthält.
 
@@ -126,8 +126,8 @@ Wenn Sie die Details einer Anwendung anzeigen möchten, wählen Sie im Fenster**
 
 In den Anwendungsdetails können Sie die folgenden Einstellungen für Ihre Anwendung konfigurieren.
 
-* **Updates zulassen**: Gibt an, ob die Anwendungspakete aktualisiert oder gelöscht werden können. Weitere Informationen finden Sie weiter unten in diesem Artikel unter „Aktualisieren oder Löschen eines Anwendungspakets“.
-* **Standardversion**: Gibt ein Standardanwendungspaket für die Bereitstellung auf Computeknoten an.
+* **Updates zulassen**: Geben Sie an, ob die Anwendungspakete aktualisiert oder gelöscht werden können. Weitere Informationen finden Sie weiter unten in diesem Artikel unter „Aktualisieren oder Löschen eines Anwendungspakets“.
+* **Standardversion**: Geben Sie ein Standardanwendungspaket für die Bereitstellung auf Computeknoten an.
 * **Anzeigename**: Geben Sie einen Anzeigenamen an, den Ihre Batch-Lösung zur Anzeige von anwendungsbezogenen Informationen verwenden kann (beispielsweise auf der Benutzeroberfläche eines Diensts, den Sie für Ihre Kunden über Batch bereitstellen).
 
 ### <a name="add-a-new-application"></a>Hinzufügen einer neuen Anwendung
@@ -139,7 +139,7 @@ Klicken Sie auf **Anwendungen** > **Hinzufügen**.
 
 Das Fenster **Neue Anwendung** enthält die folgenden Felder zur Angabe der Einstellungen Ihrer neuen Anwendung und des neuen Anwendungspakets.
 
-**Anwendungs-ID**
+**Anwendungs-ID**:
 
 Dieses Feld gibt die ID Ihrer neuen Anwendung an und unterliegt den standardmäßigen Gültigkeitsprüfungsregeln für Azure Batch-IDs. Die Regeln für die Bereitstellung einer Anwendungs-ID lauten wie folgt:
 
@@ -295,7 +295,7 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 ```
 
 > [!TIP]
-> Im Artikel [Übersicht über Azure Batch-Features](batch-api-basics.md) finden Sie unter [Umgebungseinstellungen für Tasks](batch-api-basics.md#environment-settings-for-tasks) weitere Informationen zu Umgebungseinstellungen für Computeknoten.
+> Im Artikel [Übersicht über Azure Batch-Features](batch-api-basics.md#environment-settings-for-tasks) finden Sie unter [Umgebungseinstellungen für Tasks](batch-api-basics.md) weitere Informationen zu Umgebungseinstellungen für Computeknoten.
 > 
 > 
 
@@ -306,7 +306,7 @@ Wenn ein vorhandener Pool bereits mit einem Anwendungspaket konfiguriert wurde, 
 * Serverknoten, die sich bereits im Pool befinden, wenn Sie die Paketverweise aktualisieren, werden nicht automatisch im neuen Anwendungspaket installiert. Für diese Computeknoten muss ein Neustart oder ein Reimaging durchgeführt werden, um das neue Paket zu erhalten.
 * Wenn ein neues Paket bereitgestellt wird, spiegeln die neu erstellten Umgebungsvariablen die neuen Anwendungspaketverweise wider.
 
-In diesem Beispiel ist als einer der [CloudPool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref]-Verweise des vorhandenen Pools die Version 2.7 der Anwendung *Blender* konfiguriert. Wenn Sie die Knoten des Pools mit der Version 2.76b aktualisieren möchten, geben Sie einen neuen [ApplicationPackageReference][net_pkgref]-Verweis mit der neuen Version an, und committen Sie die Änderung.
+In diesem Beispiel ist als einer der *CloudPool*.[ApplicationPackageReferences][net_cloudpool]-Verweise des vorhandenen Pools die Version 2.7 der Anwendung [Blender][net_cloudpool_pkgref] konfiguriert. Wenn Sie die Knoten des Pools mit der Version 2.76b aktualisieren möchten, geben Sie einen neuen [ApplicationPackageReference][net_pkgref]-Verweis mit der neuen Version an, und committen Sie die Änderung.
 
 ```csharp
 string newVersion = "2.76b";
@@ -343,7 +343,7 @@ foreach (ApplicationSummary app in applications)
 Mit Anwendungspaketen können Sie Ihre Kunden dabei unterstützen, die passende Anwendungen für ihre Aufträge auszuwählen und genau anzugeben, welche Version beim Verarbeiten von Aufträgen mit Ihrem Batch-fähigen Dienst verwendet werden soll. Sie könnten Ihren Kunden auch die Möglichkeit bieten, ihre eigenen Anwendungen in Ihren Dienst hochzuladen und dort zu verfolgen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Die [Batch-REST-API][api_rest] unterstützt auch die Verwendung von Anwendungspaketen. Unter [Hinzufügen eines Pools zu einem Konto][rest_add_pool] finden Sie unter dem Element [applicationPackageReferences][rest_add_pool_with_packages] beispielsweise Informationen zum Angeben von zu installierenden Paketen mithilfe der REST-API. Unter [Anwendungen][rest_applications] finden Sie ausführliche Informationen zum Abrufen von Anwendungsinformationen mithilfe der Batch-REST-API.
+* Die [Batch-REST-API][api_rest] unterstützt auch die Verwendung von Anwendungspaketen. Unter [Hinzufügen eines Pools zu einem Konto][rest_add_pool_with_packages] finden Sie unter dem Element [applicationPackageReferences][rest_add_pool] beispielsweise Informationen zum Angeben von zu installierenden Paketen mithilfe der REST-API. Unter [Anwendungen][rest_applications] finden Sie ausführliche Informationen zum Abrufen von Anwendungsinformationen mithilfe der Batch-REST-API.
 * Informieren Sie sich über das programmgesteuerte [Verwalten von Azure Batch-Konten und -Kontingenten mit Batch Management .NET](batch-management-dotnet.md). Die [Batch Management .NET][api_net_mgmt]-Bibliothek ermöglicht die Verwendung von Features zum Erstellen und Löschen von Konten für Ihre Batch-Anwendung oder Ihren Dienst.
 
 [api_net]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/client?view=azure-dotnet

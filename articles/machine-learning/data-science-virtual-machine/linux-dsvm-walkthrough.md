@@ -9,16 +9,16 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 9883256fc801d37acd4ea10226bd9e541f9135f7
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 9857de0470baa35dcc8005e1622e5e593da95751
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268653"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128347"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Data Science mit Linux Data Science Virtual Machine in Azure
 
-In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie mit Linux Data Science Virtual Machine (DSVM) typische Data Science-Aufgaben erledigen können. Bei der Linux DSVM handelt es sich um das Image eines virtuelles Computers, das unter Azure verfügbar ist und mit einer Sammlung von Tools vorinstalliert wird, die häufig für die Datenanalyse und Machine Learning verwendet werden. Die wichtigsten Softwarekomponenten werden unter [Bereitstellen von Linux Data Science Virtual Machine](linux-dsvm-intro.md) einzeln aufgeführt. Das DSVM-Image erleichtert Ihnen den Start, und für den Data Science-Vorgang sind nur wenige Minuten erforderlich, ohne dass die Tools einzeln installiert und konfiguriert werden müssen. Die DSVM kann bei Bedarf problemlos zentral hochskaliert werden, und Sie können sie beenden, wenn Sie nicht verwendet wird. Die DSVM-Ressource ist also sowohl flexibel als auch kosteneffizient.
+In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie mit Linux Data Science Virtual Machine (DSVM) typische Data Science-Aufgaben erledigen können. Bei der Linux DSVM handelt es sich um das Image eines virtuelles Computers, das unter Azure verfügbar ist und mit einer Sammlung von Tools vorinstalliert wird, die häufig für die Datenanalyse und Machine Learning verwendet werden. Die wichtigsten Softwarekomponenten werden unter [Bereitstellen von Linux Data Science Virtual Machine](linux-dsvm-intro.md) einzeln aufgeführt. Das DSVM-Image erleichtert Ihnen den Start, und für den Data Science-Vorgang sind nur wenige Minuten erforderlich, ohne dass die Tools einzeln installiert und konfiguriert werden müssen. Die DSVM kann bei Bedarf problemlos hochskaliert werden, und Sie können sie beenden, wenn Sie nicht verwendet wird. Die DSVM-Ressource ist also sowohl flexibel als auch kosteneffizient.
 
 Die Data Science-Aufgaben, die in dieser exemplarischen Vorgehensweise veranschaulicht werden, basieren auf den Schritten unter [Was ist der Team Data Science-Prozess?](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) Der Team Data Science-Prozess ermöglicht einen systematischen Data Science-Ansatz, mit dem aus Data Scientists bestehende Teams bei der Erstellung von intelligenten Anwendungen effektiv zusammenarbeiten können. Der Data Science-Prozess bietet zudem ein iteratives Framework für Data Science, das vom Benutzer verfolgt werden kann.
 
@@ -537,7 +537,7 @@ Wenn Sie einen Machine Learning-Vorgang mit Daten durchführen möchten, die in 
 
 ### <a name="sql-data-warehouse"></a>SQL Data Warehouse
 
-Azure SQL Data Warehouse ist eine cloudbasierte Datenbank für das horizontale Hochskalieren, mit der sehr große Datenvolumen verarbeitet werden können, und zwar sowohl relational als auch nicht relational. Weitere Informationen finden Sie unter [Was ist Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+Azure SQL Data Warehouse ist eine cloudbasierte Datenbank für das horizontale Hochskalieren, mit der sehr große Datenvolumen verarbeitet werden können, und zwar sowohl relational als auch nicht relational. Weitere Informationen finden Sie unter [Was ist Azure SQL Data Warehouse?](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
 Führen Sie an einer Eingabeaufforderung den folgenden Befehl aus, um eine Verbindung mit dem Data Warehouse herzustellen und die Tabelle zu erstellen:
 

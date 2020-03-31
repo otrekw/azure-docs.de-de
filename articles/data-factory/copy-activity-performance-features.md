@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/09/2020
-ms.openlocfilehash: a31c6229220142acea9ded571128ab54c50d34b7
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: d37b4648c0a37f16fe5c9d8794bd78417c5780ea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79125685"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80257885"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Features für die Leistungsoptimierung bei Kopieraktivitäten
 
@@ -92,7 +92,7 @@ In der folgenden Tabelle wird das parallele Kopierverhalten aufgeführt:
 | Zwischen Dateispeichern | `parallelCopies` bestimmt die Parallelität **auf Dateiebene**. Die Blockerstellung („Chunking“) innerhalb jeder Datei erfolgt darunter automatisch und transparent. Sie wurde so konzipiert, dass die am besten geeignete Blockgröße für einen bestimmten Datenspeichertyp zum parallelen Laden von Daten verwendet wird. <br/><br/>Die tatsächliche Anzahl paralleler Kopien, die von der Kopieraktivität zur Laufzeit verwendet werden, ist nicht mehr als die Anzahl Ihrer verfügbaren Dateien. Bei Verwendung des Kopierverhaltens **mergeFile** in die Dateisenke kann die Kopieraktivität die Parallelität auf Dateiebene nicht nutzen. |
 | Aus Dateispeicher in Nicht-Dateispeicher | – Beim Kopieren von Daten in Azure SQL-Datenbank oder Azure Cosmos DB ist die standardmäßige parallele Kopie auch abhängig von der Senkenebene (Anzahl von DTUs/RUs).<br>– Beim Kopieren von Daten in Azure Table ist die standardmäßige parallele Kopie 4. |
 | Aus Nicht-Dateispeicher in Dateispeicher | – Beim Kopieren von Daten aus einem Datenspeicher mit aktivierter Partitionsoption (darunter [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP HANA](connector-sap-hana.md#sap-hana-as-source), [SAP-Tabelle](connector-sap-table.md#sap-table-as-source) und [SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)) ist die standardmäßige parallele Kopie 4. Die tatsächliche Anzahl paralleler Kopien, die von der Kopieraktivität zur Laufzeit verwendet werden, ist nicht mehr als die Anzahl Ihrer verfügbaren Datenpartitionen. Wenn Sie eine selbstgehostete Integration Runtime verwenden und in Azure-Blob/ADLS Gen2 kopieren, beachten Sie, dass die maximale effektive parallele Kopie 4 oder 5 pro IR-Knoten ist.<br>– Bei anderen Szenarien wird die parallele Kopie nicht wirksam. Selbst wenn Parallelität angegeben wurde, wird sie nicht angewendet. |
-| Zwischen Nicht-Dateispeichern | – Beim Kopieren von Daten in Azure SQL-Datenbank oder Azure Cosmos DB ist die standardmäßige parallele Kopie auch abhängig von der Senkenebene (Anzahl von DTUs/RUs).<br/>– Beim Kopieren von Daten in Azure Table ist die standardmäßige parallele Kopie 4. |
+| Zwischen Nicht-Dateispeichern | – Beim Kopieren von Daten in Azure SQL-Datenbank oder Azure Cosmos DB ist die standardmäßige parallele Kopie auch abhängig von der Senkenebene (Anzahl von DTUs/RUs).<br/>– Beim Kopieren von Daten aus einem Datenspeicher mit aktivierter Partitionsoption (darunter [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP HANA](connector-sap-hana.md#sap-hana-as-source), [SAP-Tabelle](connector-sap-table.md#sap-table-as-source) und [SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)) ist die standardmäßige parallele Kopie 4.<br>– Beim Kopieren von Daten in Azure Table ist die standardmäßige parallele Kopie 4. |
 
 Sie können den Standardwert jedoch überschreiben und einen Wert für die Eigenschaft `parallelCopies` angeben, um die Last für die Computer zu steuern, auf denen Ihre Datenspeicher gehostet werden, oder um die Kopierleistung zu optimieren. Der Wert muss eine ganze Zahl größer als oder gleich 1 sein. Zur Laufzeit verwendet die Kopieraktivität maximal den von Ihnen festgelegten Wert, um eine optimale Leistung zu erzielen.
 

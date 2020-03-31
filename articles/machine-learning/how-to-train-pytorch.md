@@ -12,10 +12,10 @@ ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
 ms.openlocfilehash: 136ee197271fc659497c169e27a6399c3940c19e
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75834858"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>Trainieren von PyTorch-Deep Learning-Modellen in großem Umfang mit Azure Machine Learning
@@ -25,7 +25,7 @@ In diesem Artikel erfahren Sie, wie Sie Ihre [PyTorch](https://pytorch.org/)-Tra
 
 Die Beispielskripts in diesem Artikel werden dazu verwendet, Hühner- und Truthahnbilder zu klassifizieren, um ein neuronales Deep Learning-Netz aufzubauen, basierend auf dem [Tutorial](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html) zum Transferlernen von PyTorch. 
 
-Unabhängig davon, ob Sie ein PyTorch-Deep Learning-Modell von Grund auf trainieren, oder ob Sie ein vorhandenes Modell in die Cloud bringen, können Sie Azure Machine Learning zum horizontalen Hochskalieren von Open Source-Trainingsaufträgen mithilfe elastischer Cloud-Computeressourcen verwenden. Sie können produktionsgeeignete Modelle mit Azure Machine Learning erstellen, bereitstellen, überwachen sowie die Versionen verwalten. 
+Unabhängig davon, ob Sie ein PyTorch-Deep Learning-Modell von Grund auf trainieren, oder ob Sie ein vorhandenes Modell in die Cloud bringen, können Sie Azure Machine Learning zum Aufskalieren von Open-Source-Trainingsaufträgen mithilfe elastischer Cloud-Computeressourcen verwenden. Sie können produktionsgeeignete Modelle mit Azure Machine Learning erstellen, bereitstellen, überwachen sowie die Versionen verwalten. 
 
 Weitere Informationen zu [Deep Learning im Vergleich zum maschinellen Lernen](concept-deep-learning-vs-machine-learning.md).
 
@@ -163,7 +163,7 @@ Die Ausführung durchläuft die folgenden Phasen:
 
 - **Vorbereitung**: Gemäß dem PyTorch-Estimator wird ein Docker-Image erstellt. Das Image wird in die Containerregistrierung des Arbeitsbereichs hochgeladen und für spätere Ausführungen zwischengespeichert. Darüber hinaus werden Protokolle in den Ausführungsverlauf gestreamt, mit deren Hilfe der Status überwacht werden kann.
 
-- **Skalierung**: Der Cluster versucht ein zentrales Hochskalieren, wenn der Batch KI-Cluster mehr Knoten zur Ausführung benötigt, als derzeit verfügbar sind.
+- **Skalierung**: Der Cluster versucht ein Hochskalieren, wenn der Batch KI-Cluster mehr Knoten zur Ausführung benötigt, als derzeit verfügbar sind.
 
 - **Wird ausgeführt:** Alle Skripts im Skriptordner werden auf das Computeziel hochgeladen, Datenspeicher werden bereitgestellt oder kopiert, und das „entry_script“ wird ausgeführt. Ausgaben aus „stdout“ und dem Ordner „./logs“ werden in den Ausführungsverlauf gestreamt und können zur Überwachung der Ausführung verwendet werden.
 

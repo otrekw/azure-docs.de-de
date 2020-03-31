@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: b26e54c7130469eee87a9237f4847f46cb3b7698
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: ac111b06d578a0e9af8581ef2e8caeccfc4a291e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75691047"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536886"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Unterstützung für Änderungsfeeds in Azure Blob Storage (Vorschau)
 
 Zweck des Änderungsfeeds ist es, Transaktionsprotokolle für alle Änderungen bereitzustellen, die in den Blobs und Blobmetadaten in Ihrem Speicherkonto auftreten. Der Änderungsfeed bietet **sortierte**, **garantierte**, **permanente**, **unveränderliche** und **schreibgeschützte** Protokolle dieser Änderungen. Clientanwendungen können diese Protokolle jederzeit lesen, entweder im Streaming- oder im Batchmodus. Der Änderungsfeed ermöglicht es Ihnen, effiziente und skalierbare Lösungen zu erstellen, mit denen Änderungsereignisse, die in Ihrem Blob Storage-Konto auftreten, kostengünstig verarbeitet werden.
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 Der Änderungsfeed wird in Form von [Blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) in einem speziellen Container Ihres Speicherkontos zu standardmäßigen [Blobpreisen](https://azure.microsoft.com/pricing/details/storage/blobs/) gespeichert. Sie können den Aufbewahrungszeitraum dieser Dateien Ihren Anforderungen entsprechend steuern (Informationen hierzu finden Sie in den [Bedingungen](#conditions) für das aktuelle Release). Änderungsereignisse werden in der [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html)-Formatspezifikation als Datensätze an den Änderungsfeed angehängt. Dies ist ein kompaktes, schnelles Binärformat, das umfangreiche Datenstrukturen mit Inlineschemas bereitstellt. Dieses Format wird häufig im Hadoop-Ökosystem, von Stream Analytics und von Azure Data Factory verwendet.
 
@@ -55,7 +57,7 @@ Folgende Aspekte müssen Sie berücksichtigen, wenn Sie den Änderungsfeed aktiv
 > [!IMPORTANT]
 > Der Änderungsfeed befindet sich in der öffentlichen Vorschauphase und ist in den Regionen **USA, Westen-Mitte** und **USA, Westen 2** verfügbar. Informationen hierzu finden Sie im Abschnitt [Bedingungen](#conditions) dieses Artikels. Informationen zum Registrieren für die Vorschau finden Sie im Abschnitt [Registrieren Ihres Abonnements](#register) dieses Artikels. Sie müssen Ihr Abonnement registrieren, bevor Sie den Änderungsfeed für Ihre Speicherkonten aktivieren können.
 
-### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 So aktivieren Sie den Änderungsfeed für Ihr Speicherkonto über das Azure-Portal:
 
@@ -69,7 +71,7 @@ So aktivieren Sie den Änderungsfeed für Ihr Speicherkonto über das Azure-Port
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
 
-### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 So aktivieren Sie den Änderungsfeed mithilfe von PowerShell:
 
@@ -99,7 +101,7 @@ So aktivieren Sie den Änderungsfeed mithilfe von PowerShell:
    Update-AzStorageBlobServiceProperty -EnableChangeFeed $true
    ```
 
-### <a name="templatetabtemplate"></a>[Vorlage](#tab/template)
+### <a name="template"></a>[Vorlage](#tab/template)
 So verwenden Sie eine Azure Resource Manager-Vorlage, um den Änderungsfeed für Ihr vorhandenes Speicherkonto über das Azure-Portal zu aktivieren:
 
 1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
@@ -298,7 +300,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 
 Führen Sie die folgenden Befehle in der Azure Cloud Shell aus:
 
-```cli
+```azurecli
 az feature register --namespace Microsoft.Storage --name Changefeed
 az provider register --namespace 'Microsoft.Storage'
 ```

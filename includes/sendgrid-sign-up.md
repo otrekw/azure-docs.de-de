@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
 ms.openlocfilehash: e38cecfe206f21f9189493e7ed6e8f0cadda9cd9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75463565"
 ---
 Kunden von Azure können monatlich 25.000 kostenlose E-Mails freischalten. Mit diesen 25.000 kostenlosen E-Mails pro Monat erhalten Sie Zugriff auf erweiterte Berichterstellung und Analysen sowie auf [sämtliche APIs][all APIs] (Web, SMTP, Ereignis, Analyse usw.). Informationen zu den zusätzlichen Diensten von SendGrid finden Sie auf der [Seite mit den SendGrid-Lösungen][SendGrid Solutions].

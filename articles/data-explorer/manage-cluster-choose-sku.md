@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
 ms.openlocfilehash: 2d078f9715a0cfa171f0c88776a4ab78c15215a8
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77561849"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>Auswählen der passenden VM-SKU für Ihren Azure Data Explorer-Cluster 
@@ -62,7 +62,7 @@ Mit den verschiedenen verfügbaren VM-SKU-Optionen können Sie die Kosten für d
 * Wenn Sie die optimale Leistung bei hohem Abfragevolumen benötigen, sollte die ideale SKU für Compute optimiert werden. 
 * Wenn Sie große Datenmengen mit relativ geringerer Abfragelast benötigen, kann die speicheroptimierte SKU helfen, die Kosten zu senken, und bietet dennoch eine ausgezeichnete Leistung.
 
-Da die Anzahl der Instanzen pro Cluster für die kleinen SKUs begrenzt ist, ist es besser, größere VMs mit mehr RAM zu verwenden. Mehr RAM wird für einige Abfragetypen benötigt, die die RAM-Ressource stärker beanspruchen, z. B. für Abfragen, die `joins` verwenden. Daher wird empfohlen, bei der Betrachtung von Skalierungsoptionen auf eine größere SKU zu skalieren, anstatt mehr Instanzen horizontal hinzuzufügen.
+Da die Anzahl der Instanzen pro Cluster für die kleinen SKUs begrenzt ist, ist es besser, größere VMs mit mehr RAM zu verwenden. Mehr RAM wird für einige Abfragetypen benötigt, die die RAM-Ressource stärker beanspruchen, z. B. für Abfragen, die `joins` verwenden. Daher wird empfohlen, bei der Betrachtung von Skalierungsoptionen auf eine höhere SKU hochzuskalieren, anstatt durch Hinzufügen weiterer Instanzen aufzuskalieren.
 
 ## <a name="vm-options"></a>VM-Optionen
 
@@ -87,7 +87,7 @@ Die technischen Spezifikationen für die Cluster-VMs von Azure Data Explorer wer
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Sie können den Engine-Cluster jederzeit abhängig von unterschiedlichen Anforderungen [zentral hoch- oder zentral herunterskalieren](manage-cluster-vertical-scaling.md), indem Sie die VM-SKU ändern. 
+* Sie können den Engine-Cluster jederzeit abhängig von unterschiedlichen Anforderungen [hoch- oder herunterskalieren](manage-cluster-vertical-scaling.md), indem Sie die VM-SKU ändern. 
 
-* Sie können die Größe des Engine-Clusters abhängig von unterschiedlichen Anforderungen [horizontal herunter- oder horizontal hochskalieren](manage-cluster-horizontal-scaling.md), um die Kapazität zu ändern.
+* Sie können die Größe des Engine-Clusters abhängig von unterschiedlichen Anforderungen [ab- oder aufskalieren](manage-cluster-horizontal-scaling.md), um die Kapazität zu ändern.
 

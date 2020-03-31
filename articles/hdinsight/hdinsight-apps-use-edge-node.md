@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/27/2020
 ms.openlocfilehash: d7723ea63cbb9bab6adf42d7e92f84a6b8b2ab9b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77199006"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233662"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Verwenden leerer Edgeknoten in Apache Hadoop-Clustern in HDInsight
 
@@ -81,7 +81,7 @@ In diesem Abschnitt verwenden Sie eine Resource Manager-Vorlage, um einen Edgekn
     |---|---|
     |Subscription|Wählen Sie ein Azure-Abonnement aus, das zum Erstellen des Clusters verwendet wird.|
     |Resource group|Wählen Sie die Ressourcengruppe aus, die für den vorhandenen HDInsight-Cluster verwendet wird.|
-    |Location|Wählen Sie den Standort des vorhandenen HDInsight-Clusters aus.|
+    |Position|Wählen Sie den Standort des vorhandenen HDInsight-Clusters aus.|
     |Clustername|Geben Sie den Namen eines vorhandenen HDInsight-Clusters ein.|
 
 1. Aktivieren Sie **Ich stimme den oben genannten Geschäftsbedingungen zu**, und wählen Sie anschließend **Kaufen** aus, um den Edgeknoten zu erstellen.
@@ -101,11 +101,11 @@ In diesem Abschnitt verwenden Sie eine Resource Manager-Vorlage, um HDInsight-Cl
 
 1. Konfigurieren Sie die folgenden Eigenschaften:
 
-    |Eigenschaft |Beschreibung |
+    |Eigenschaft |BESCHREIBUNG |
     |---|---|
     |Subscription|Wählen Sie ein Azure-Abonnement aus, das zum Erstellen des Clusters verwendet wird.|
     |Resource group|Erstellen Sie eine neue Ressourcengruppe für den Cluster.|
-    |Location|Wählen Sie einen Speicherort für die Ressourcengruppe aus.|
+    |Position|Wählen Sie einen Speicherort für die Ressourcengruppe aus.|
     |Clustername|Geben Sie einen Namen für den neu zu erstellenden Cluster ein.|
     |Benutzername für Clusteranmeldung|Geben Sie den Namen des Hadoop-HTTP-Benutzers ein.  Der Standardname lautet **admin**.|
     |Kennwort für Clusteranmeldung|Geben Sie das Kennwort des Hadoop-HTTP-Benutzers ein.|

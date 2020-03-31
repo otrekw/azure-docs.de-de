@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
 ms.openlocfilehash: 792b95b120f67afcd360730acbd783a3071388b2
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77431484"
 ---
 # <a name="protect-your-network-resources"></a>Schützen von Netzwerkressourcen
@@ -114,7 +114,7 @@ So zeigen Sie Detailinformationen zu einer Ressource an:
 [![Übersicht über den Netzwerkdatenverkehr](./media/security-center-network-recommendations/network-map-traffic.png)](./media/security-center-network-recommendations/network-map-traffic.png#lightbox)
 
 
-## Legacynetzwerk <a name ="legacy-networking"></a>
+## <a name="legacy-networking"></a>Legacynetzwerk <a name ="legacy-networking"></a>
 
 Wenn Sie nicht über Security Center im Standard-Tarif verfügen, wird in diesem Abschnitt erläutert, wie Sie kostenlose Netzwerkempfehlungen anzeigen können.
 

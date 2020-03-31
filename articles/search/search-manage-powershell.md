@@ -10,10 +10,10 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 711071e08a52a0075512bc8b3ffe14707238cdfe
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77209295"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Verwalten des Azure Cognitive Search-Diensts mit PowerShell
@@ -32,7 +32,7 @@ Sie können PowerShell-Cmdlets und -Skripts unter Windows oder Linux oder in [Az
 > * [Erstellen oder Löschen eines Diensts](#create-or-delete-a-service)
 > * [Erneutes Generieren von Administrator-API-Schlüsseln](#regenerate-admin-keys)
 > * [Erstellen oder Löschen von Abfrage-API-Schlüsseln](#create-or-delete-query-keys)
-> * [Zentrales Hoch- oder Herunterskalieren mit Replikaten und Partitionen](#scale-replicas-and-partitions)
+> * [Hoch- oder Herunterskalieren mit Replikaten und Partitionen](#scale-replicas-and-partitions)
 
 Gelegentlich werden Fragen zu Aufgaben gestellt, die *nicht* in der oben stehenden Liste enthalten sind. Derzeit können Sie weder das **Az.Search**-Modul noch die Verwaltungs-REST-API verwenden, um einen Servernamen, eine Region oder eine Ebene zu ändern. Dedizierte Ressourcen werden beim Erstellen eines Diensts zugeordnet. Daher ist zum Ändern der zugrunde liegenden Hardware (Standort oder Knotentyp) ein neuer Dienst erforderlich. Ebenso gibt es keine Tools oder APIs für die Übertragung von Inhalten, wie z. B. einem Index, aus einem Dienst in einen anderen.
 

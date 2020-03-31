@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.openlocfilehash: 67df46742be52b03bd91af19654fbfac5df29646
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073764"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226866"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Informationen zu Erweiterungen und Features für virtuelle Computer für Linux
 
@@ -405,7 +405,7 @@ Sie können eine Erweiterung auch im Azure-Portal wie folgt entfernen:
 
 | Name der Erweiterung | BESCHREIBUNG | Weitere Informationen |
 | --- | --- | --- |
-| Benutzerdefinierte Skripterweiterung für Linux |Führt Skripts auf einem virtuellen Azure-Computer aus |[Benutzerdefinierte Skripterweiterung für Linux](custom-script-linux.md) |
+| Benutzerdefinierte Skripterweiterung für Linux |Ausführen von Skripts für virtuelle Azure-Computer |[Benutzerdefinierte Skripterweiterung für Linux](custom-script-linux.md) |
 | Erweiterungen für den Zugriff auf virtuelle Computer |Wiedererlangen des Zugriffs auf einen virtuellen Azure-Computer |[Erweiterungen für den Zugriff auf virtuelle Computer](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |
 | Azure-Diagnoseerweiterung |Verwalten der Azure-Diagnose |[Azure-Diagnoseerweiterung](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Erweiterung für den Zugriff auf virtuelle Azure-Computer |Verwalten von Benutzern und Anmeldeinformationen |[Erweiterungen für den Zugriff auf virtuelle Computer für Linux](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |

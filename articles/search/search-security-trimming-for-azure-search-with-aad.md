@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 01280b6ee9dda15af3c0fc707a385501580c624c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72794302"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Sicherheitsfilter zum Einschränken von Ergebnissen der kognitiven Azure-Suche mit Active Directory-Identitäten
@@ -63,7 +63,7 @@ Wenn Sie jedoch über keine vorhandenen Benutzer verfügen, können Sie die Sich
 
 Die Benutzer- und Gruppenmitgliedschaft kann sich – besonders in großen Organisationen – häufig ändern. Code zum Erstellen von Benutzer- und Gruppenidentitäten muss häufig genug ausgeführt werden, um Änderungen in der Organisationsmitgliedschaft zu erfassen. Ebenso erfordert Ihr Index für die kognitive Azure-Suche einen ähnlichen Aktualisierungsplan, um den aktuellen Status der zugelassenen Benutzer und Ressourcen widerzuspiegeln.
 
-### <a name="step-1-create-aad-grouphttpsdocsmicrosoftcomgraphapigroup-post-groupsviewgraph-rest-10"></a>Schritt 1: Erstellen der [AAD-Gruppe](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0) 
+### <a name="step-1-create-aad-group"></a>Schritt 1: Erstellen der [AAD-Gruppe](https://docs.microsoft.com/graph/api/group-post-groups?view=graph-rest-1.0) 
 ```csharp
 // Instantiate graph client 
 GraphServiceClient graph = new GraphServiceClient(new DelegateAuthenticationProvider(...));
@@ -77,7 +77,7 @@ Group group = new Group()
 Group newGroup = await graph.Groups.Request().AddAsync(group);
 ```
    
-### <a name="step-2-create-aad-userhttpsdocsmicrosoftcomgraphapiuser-post-usersviewgraph-rest-10"></a>Schritt 2: Erstellen des [AAD-Benutzers](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
+### <a name="step-2-create-aad-user"></a>Schritt 2: Erstellen des [AAD-Benutzers](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
 ```csharp
 User user = new User()
 {
@@ -189,5 +189,5 @@ In dieser exemplarischen Vorgehensweise haben Sie Techniken zur Verwendung von A
 ## <a name="see-also"></a>Weitere Informationen
 
 + [Identitätsbasierte Zugriffssteuerung mit Filtern der kognitiven Azure-Suche](search-security-trimming-for-azure-search.md)
-+ [Filter in der kognitiven Azure-Suche](search-filters.md)
++ [Filter in Azure Cognitive Search](search-filters.md)
 + [Datensicherheit und Zugriffssteuerung in Vorgängen der kognitiven Azure-Suche](search-security-overview.md)

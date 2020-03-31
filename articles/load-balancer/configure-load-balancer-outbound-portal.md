@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/24/2019
 ms.author: allensu
 ms.openlocfilehash: b75f49155991bfc71f788ad88f166c0bec281841
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77589693"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-by-using-the-azure-portal"></a>Konfigurieren von Lastenausgleichs- und Ausgangsregeln in Load Balancer Standard mithilfe des Azure-Portals
@@ -25,7 +25,7 @@ Jedes Front-End verweist auf eine öffentliche IP-Adresse. In diesem Szenario un
 
 Das Szenario verwendet zwei Back-End-Pools: einen für eingehenden Datenverkehr und einen für ausgehenden Datenverkehr. Diese Pools veranschaulichen die Funktion und stellen dem Szenario Flexibilität zur Verfügung.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen. 
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 

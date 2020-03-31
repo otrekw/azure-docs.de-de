@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.openlocfilehash: 5794a2c754e2082fdf45ad689bdb89ea494541c2
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73679853"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Aktivität „Filter“ in Azure Data Factory
@@ -38,8 +38,8 @@ Sie können eine Filter-Aktivität in einer Pipeline verwenden, um einen Filtera
 
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-name | Der Name der `Filter`-Aktivität. | Zeichenfolge | Ja
-type | Muss auf **filter** festgelegt sein. | Zeichenfolge | Ja
+name | Der Name der `Filter`-Aktivität. | String | Ja
+type | Muss auf **filter** festgelegt sein. | String | Ja
 condition | Die Bedingung zum Filtern der Eingaben. | Ausdruck | Ja
 items | Das Eingabearray, auf das der Filter angewendet werden soll. | Ausdruck | Ja
 

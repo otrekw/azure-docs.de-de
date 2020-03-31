@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d637ac464b689a25ce5d5a79cf47da0c85d38d0f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74846023"
 ---
 # <a name="migrate-a-classic-policy-in-the-azure-portal"></a>Migrieren einer klassischen Richtlinie im Azure-Portal
@@ -72,4 +72,4 @@ Klicken Sie zum Deaktivieren Ihrer klassischen Richtlinie in der Ansicht **Detai
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen über die Migration von klassischen Richtlinien finden Sie unter [Migrieren klassischer Richtlinien in das Azure-Portal](policy-migration.md).
-- [Verwenden des Modus „Nur Bericht“ für bedingten Zugriff zum Ermitteln der Auswirkungen neuer Richtlinienentscheidungen.](concept-conditional-access-report-only.md)
+- [Verwenden des Modus „Nur Bericht“ für bedingten Zugriff zum Ermitteln der Auswirkungen neuer Richtlinienentscheidungen](concept-conditional-access-report-only.md)

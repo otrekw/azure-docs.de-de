@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: 484d4e8df8a8fdceed62a65858126a16d028121e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: efa498ba600a664beab4b9a49eae2b2c3f1c8397
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670082"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298309"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Schnellstart: Erste Schritte mit Application Insights in einem Java-Webprojekt
 
@@ -176,7 +176,7 @@ Wenn sich mehr Daten ansammeln, können Sie Abfragen sowohl zum Aggregieren von 
 
 ![Analytics-Beispiel](./media/java-get-started/0025.png)
 
-## <a name="7-install-your-app-on-the-server"></a>7. Installieren der App auf dem Server
+## <a name="install-your-app-on-the-server"></a>Installieren der App auf dem Server
 Jetzt veröffentlichen Sie Ihre App auf dem Server, erlauben deren Benutzung und sehen sich an, wie die Telemetrie im Portal angezeigt wird.
 
 * Stellen Sie sicher, dass die Firewall der Anwendung das Senden von Telemetrie an die folgenden Ports erlaubt:

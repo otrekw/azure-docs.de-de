@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 139d1a470c67d5dab310c4fa2a9171f433df2061
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 5d6ba2bd52d8f4af4244e8ce1babeb7bc9d37fe4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912374"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235680"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Verbinden von IoT DevKit AZ3166 mit Azure IoT Hub
 
@@ -63,7 +63,7 @@ Führen Sie diese Schritte aus, um das DevKit mit Ihrem Computer zu verbinden:
 
 In diesem Schnellstart wird die vorkompilierte DevKit-Firmware zum Senden der Telemetriedaten an IoT Hub verwendet. Vor dem Ausführen erstellen Sie einen IoT-Hub und registrieren ein Gerät bei diesem Hub.
 
-### <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+### <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -144,7 +144,7 @@ Das DevKit stellt eine Verbindung mit einem gerätespezifischen Endpunkt in Ihre
 
 1. Führen Sie den folgenden Befehl in Azure Cloud Shell aus, um die an Azure gesendeten Telemetriedaten zu bestätigen:
 
-    ```bash
+    ```azurecli
     az iot hub monitor-events --hub-name YourIoTHubName --output table
     ```
 

@@ -9,10 +9,10 @@ ms.date: 07/09/2019
 ms.topic: article
 ms.service: event-hubs
 ms.openlocfilehash: 531426656fe833752c9c4685688c00de3894895b
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69991947"
 ---
 # <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Verarbeiten von Daten aus einem Event Hub mit Azure Stream Analytics 

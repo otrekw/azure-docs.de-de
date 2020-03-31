@@ -1,5 +1,5 @@
 ---
-title: Ändern der zweistufigen Überprüfungsmethode und der Einstellungen – Azure AD
+title: Ändern der zweistufigen Überprüfungsmethode und der Einstellungen – Azure Active Directory
 description: Auf der Seite „Zusätzliche Sicherheitsüberprüfung“ erfahren Sie, wie Sie die Sicherheitsüberprüfungsmethode und die Einstellungen für Ihr Geschäfts-, Schul- oder Unikonto ändern können.
 services: active-directory
 author: curtand
@@ -10,50 +10,50 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 02/20/2020
 ms.author: curtand
-ms.openlocfilehash: 457608af9a5ffc06a778e900363bc8138fcb4e99
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 5949f04ecc28a88e340a9c2de530031793f193a0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062590"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227706"
 ---
 # <a name="change-your-two-factor-verification-method-and-settings"></a>Ändern der zweistufigen Überprüfungsmethode und der Einstellungen
 
 Nachdem Sie Ihre Methoden für die Sicherheitsüberprüfung für Ihre Geschäfts-, Schul- oder Unikonto eingerichtet haben, können Sie alle zugehörigen Details aktualisieren. Folgendes ist möglich:
 
-- Sie können Ihre Standardmethode für die Sicherheitsüberprüfung auswählen.
+- Standardmethode für die Sicherheitsüberprüfung
 
-- Sie können Details zu Ihrer Methode für die Sicherheitsüberprüfung hinzufügen oder aktualisieren, z. B. eine Telefonnummer.
+- Details der Sicherheitsüberprüfungsmethode, z. B. eine Telefonnummer
 
-- Sie können eine neue Authentifikator-App einrichten oder ein Gerät aus der Authentifikator-App löschen.
+- Einrichten einer Authenticator-App oder Löschen eines Geräts aus der Authenticator-App
 
 ## <a name="using-the-additional-security-verification-page"></a>Verwenden der Seite „Zusätzliche Sicherheitsüberprüfung“
 
-Wenn Ihre Organisation Ihnen bestimmte Schritte zum Aktivieren und Verwalten der zweistufigen Überprüfung zur Verfügung gestellt hat, sollten Sie diese Anweisungen befolgen. Andernfalls finden Sie die Einstellungen Ihrer Methode für die Sicherheitsüberprüfung auf der Seite [Zusätzliche Sicherheitsüberprüfung](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1).
+Wenn Ihre Organisation Ihnen bestimmte Schritte zum Aktivieren und Verwalten der zweistufigen Überprüfung zur Verfügung gestellt hat, sollten Sie zuerst diese Anweisungen befolgen. Andernfalls finden Sie die Einstellungen Ihrer Methode für die Sicherheitsüberprüfung auf der Seite [Zusätzliche Sicherheitsüberprüfung](https://docs.microsoft.com/azure/active-directory/user-help/multi-factor-authentication-end-user-first-time).
 
 >[!Note]
->Wenn die auf Ihrem Bildschirm angezeigten Optionen nicht den in diesem Artikel behandelten Inhalten entsprechen, hat Ihr Administrator die Benutzeroberfläche „Sicherheitsinformation“ (Vorschau) aktiviert, oder Ihre Organisation verfügt über ein eigenes benutzerdefiniertes Portal. Weitere Informationen zur Benutzeroberfläche „Sicherheitsinformation“ finden Sie unter [Übersicht über die Sicherheitsinformationen (Vorschau)](user-help-security-info-overview.md). Um weitere Informationen zum benutzerdefinierten Portal Ihrer Organisation zu erhalten, wenden Sie sich an Ihren Helpdesk.
+>Wenn die auf Ihrem Bildschirm angezeigten Optionen nicht den in diesem Artikel behandelten Inhalten entsprechen, hat Ihr Administrator die Benutzeroberfläche **Sicherheitsinformation (Vorschau)** aktiviert, oder Ihre Organisation hat ein eigenes benutzerdefiniertes Portal bereitgestellt. Weitere Informationen zur neuen Benutzeroberfläche „Sicherheitsinformation“ finden Sie unter [Übersicht über die Sicherheitsinformationen (Vorschau)](user-help-security-info-overview.md). Um weitere Informationen zum benutzerdefinierten Portal Ihrer Organisation zu erhalten, wenden Sie sich an den Helpdesk Ihrer Organisation.
 
 ### <a name="to-get-to-the-additional-security-verification-page"></a>So gelangen Sie zur Seite „Zusätzliche Sicherheitsüberprüfung“
 
-- Wechseln Sie zur Seite [Zusätzliche Sicherheitsüberprüfung](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1).
+Sie können diesen Link [Seite „Zusätzliche Sicherheitsüberprüfung“](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) verwenden.
 
-    ![Seite „Zusätzliche Sicherheitsüberprüfung“ mit Details zu den verfügbaren Methoden für die Sicherheitsüberprüfung](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
+![Seite „Zusätzliche Sicherheitsüberprüfung“ mit Details zu den verfügbaren Methoden für die Sicherheitsüberprüfung](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page.png)
 
-    Wenn Sie nicht auf diesen Link klicken können, können Sie auch die Seite **Zusätzliche Sicherheitsüberprüfung** aufrufen, indem Sie die folgenden Schritte ausführen:
+Sie können auch die Seite **Zusätzliche Sicherheitsüberprüfung** aufrufen, indem Sie die folgenden Schritte ausführen:
 
-    1. Melden Sie sich bei [https://myapps.microsoft.com](https://myapps.microsoft.com) an.
+1. Melden Sie sich bei [https://myapps.microsoft.com](https://myapps.microsoft.com) an.
 
-    2. Wählen Sie oben rechts Ihren Kontonamen aus, und wählen Sie dann **Profil**.
+1. Wählen Sie oben rechts Ihren Kontonamen aus, und wählen Sie dann **Profil**.
 
-    3. Klicken Sie auf **Zusätzliche Sicherheitsüberprüfung**.  
+1. Klicken Sie auf **Zusätzliche Sicherheitsüberprüfung**.  
 
-        ![Meine Apps-Link zur Seite „Zusätzliche Sicherheitsüberprüfung“](./media/multi-factor-authentication-end-user-manage-settings/mfa-myapps-link.png)
+    ![Meine Apps-Link zur Seite „Zusätzliche Sicherheitsüberprüfung“](./media/multi-factor-authentication-end-user-manage-settings/mfa-myapps-link.png)
 
 >[!Note]
->Informationen zum Verwenden des Abschnitts **App-Kennwörter** der Seite **Zusätzliche Sicherheitsüberprüfung** finden Sie unter [Verwalten von App-Kennwörtern für die zweistufige Überprüfung](multi-factor-authentication-end-user-app-passwords.md). App-Kennwörter sollten nur für Apps verwendet werden, die noch keine zweistufige Überprüfung unterstützen.
+>Informationen zum Verwenden des Abschnitts **App-Kennwörter** der Seite **Zusätzliche Sicherheitsüberprüfung** finden Sie unter [Verwalten von App-Kennwörtern für die zweistufige Überprüfung](multi-factor-authentication-end-user-app-passwords.md). App-Kennwörter sollten nur für Apps verwendet werden, die keine zweistufige Überprüfung unterstützen.
 
 ## <a name="change-your-default-security-verification-method"></a>Ändern Ihrer Standardmethode für die Sicherheitsüberprüfung
 
@@ -63,17 +63,17 @@ Wenn Sie die von Ihnen verwendete Standardmethode für die Sicherheitsüberprüf
 
 ### <a name="to-change-your-default-security-verification-method"></a>So ändern Sie Ihre Standardmethode für die Sicherheitsüberprüfung
 
-1. Wählen Sie auf der Seite **Zusätzliche Sicherheitsüberprüfung** aus der Liste **Welche ist Ihre bevorzugte Option?** die gewünschte Methode aus. Ihnen werden alle Optionen angezeigt, Sie können aber nur diejenigen auswählen, die Ihnen von Ihrer Organisation zur Verfügung gestellt werden.
+1. Wählen Sie auf der Seite **Zusätzliche Sicherheitsüberprüfung** in der Liste **Welche Option bevorzugen Sie?** die gewünschte Methode aus. Ihnen werden zwar alle Optionen angezeigt, Sie können aber nur diejenigen auswählen, die Ihnen von Ihrer Organisation zur Verfügung gestellt werden.
 
-    - **Mich durch die App benachrichtigen**. Sie erhalten eine Benachrichtigung über Ihre Authentifikator-App, das eine Aufforderung zur Überprüfung auf Sie wartet.
+    - **Mich durch die App benachrichtigen**: Sie erhalten eine Benachrichtigung über Ihre Authentifikator-App, das eine Aufforderung zur Überprüfung auf Sie wartet.
 
-    - **Mein Authentifizierungstelefon anrufen**. Sie erhalten einen Anruf auf Ihrem Mobilgerät, in dem Sie aufgefordert werden, Ihre Informationen zu bestätigen.
+    - **Mein Authentifizierungstelefon anrufen**: Sie erhalten einen Anruf auf Ihrem Mobilgerät, in dem Sie aufgefordert werden, Ihre Informationen zu bestätigen.
 
-    - **Textcode an mein Authentifizierungstelefon**. Sie erhalten auf Ihrem Mobilgerät eine SMS mit einem Überprüfungscode. Diesen Code müssen Sie bei der Überprüfungsaufforderung für Ihr Geschäfts-, Schul- oder Unikonto eingeben.
+    - **Textcode an mein Authentifizierungstelefon**: Sie erhalten auf Ihrem Mobilgerät eine SMS mit einem Überprüfungscode. Diesen Code müssen Sie bei der Überprüfungsaufforderung für Ihr Geschäfts-, Schul- oder Unikonto eingeben.
 
-    - **Meine geschäftliche Rufnummer anrufen**. Sie erhalten einen Anruf auf Ihrem geschäftlichen Telefonanschluss, in dem Sie aufgefordert werden, Ihre Informationen zu bestätigen.
+    - **Meine geschäftliche Rufnummer anrufen**: Sie erhalten einen Anruf auf Ihrem geschäftlichen Telefonanschluss, in dem Sie aufgefordert werden, Ihre Informationen zu bestätigen.
 
-    - **Prüfcode aus der App verwenden**. Sie verwenden Ihre Authentifikator-App, um einen Überprüfungscode abzurufen, den Sie in die Überprüfungsaufforderung für Ihr Geschäfts-, Schul- oder Unikonto eingeben.
+    - **Prüfcode aus der App verwenden**: Sie verwenden Ihre Authentifikator-App, um einen Überprüfungscode abzurufen, den Sie in die Überprüfungsaufforderung für Ihr Geschäfts-, Schul- oder Unikonto eingeben.
 
 2. Wählen Sie **Speichern** aus.
 
@@ -88,9 +88,9 @@ Auf der Seite **Zusätzliche Sicherheitsüberprüfung** können Sie neue Telefon
 
 1. Aktualisieren Sie auf der Seite **Zusätzliche Sicherheitsüberprüfung** im Abschnitt **Wie möchten Sie antworten?** die Telefonnummer für Ihr **Authentifizierungstelefon** (Ihr primäres mobiles Gerät) und Ihr **Bürotelefon**.
 
-2. Wählen Sie das Feld neben der Option **Alternatives Authentifizierungstelefon** aus, und geben Sie eine sekundäre Telefonnummer ein, unter der Sie SMS oder Anrufe empfangen können, falls Sie nicht auf Ihr primäres Telefon zugreifen können.
+1. Wählen Sie das Feld neben der Option **Alternatives Authentifizierungstelefon** aus, und geben Sie eine sekundäre Telefonnummer ein, unter der Sie SMS oder Anrufe empfangen können, falls Sie nicht auf Ihr primäres Telefon zugreifen können.
 
-3. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Speichern** aus.
 
 ## <a name="add-a-new-account-to-the-microsoft-authenticator-app"></a>Hinzufügen eines neuen Kontos zur Microsoft Authenticator-App
 
@@ -98,15 +98,15 @@ Sie können Ihr Geschäfts-, Schul- oder Unikonto in der Microsoft Authenticator
 
 Wenn Sie Ihr Geschäfts-, Schul- oder Unikonto bereits in der Microsoft Authenticator-App eingerichtet haben, müssen Sie dies nicht erneut tun.
 
-1. Wählen Sie auf der Seite **Zusätzliche Sicherheitsüberprüfung** im Abschnitt **Wie möchten Sie antworten?** die Schaltfläche **Authenticator-App einrichten** aus.
+1. Wählen Sie auf der Seite **Zusätzliche Sicherheitsüberprüfung** im Abschnitt **Wie möchten Sie antworten?** die Option **Authenticator-App einrichten** aus.
 
     ![Einrichten Ihres Geschäfts-, Schul- oder Unikontos in der Microsoft Authenticator-App](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page-auth-app.png)
 
-2. Befolgen Sie die Anweisungen auf dem Bildschirm (u.a. müssen Sie den QR-Code mit dem Mobilgerät scannen), und wählen Sie dann **Weiter** aus.
+1. Befolgen Sie die Anweisungen auf dem Bildschirm (u.a. müssen Sie den QR-Code mit dem Mobilgerät scannen), und wählen Sie dann **Weiter** aus.
 
     Sie werden aufgefordert, eine Benachrichtigung über die Microsoft Authenticator-App zu genehmigen, um Ihre Informationen zu bestätigen.
 
-3. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Speichern** aus.
 
 ## <a name="delete-your-account-or-device-from-the-microsoft-authenticator-app"></a>Löschen Ihres Kontos oder Ihres Geräts aus der Microsoft Authenticator-App
 
@@ -116,21 +116,19 @@ Sie können Ihr Konto aus der Microsoft Authenticator-App löschen, und Sie kön
 
 1. Wählen Sie auf der Seite **Zusätzliche Sicherheitsüberprüfung** im Abschnitt **Wie möchten Sie antworten?** die Schaltfläche **Authenticator-App einrichten** aus.
 
-2. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Speichern** aus.
 
 ### <a name="to-delete-your-account-from-the-microsoft-authenticator-app"></a>So löschen Sie Ihr Konto aus der Microsoft Authenticator-App
 
-- Wählen Sie in der Microsoft Authenticator-App die Schaltfläche **Löschen** neben dem Gerät aus, das Sie löschen möchten.
+Wählen Sie in der Microsoft Authenticator-App die Schaltfläche **Löschen** neben dem Gerät aus, das Sie löschen möchten.
 
 ## <a name="turn-on-two-factor-verification-prompts-on-a-trusted-device"></a>Aktivieren von Aufforderungen der zweistufigen Überprüfung auf einem vertrauenswürdigen Gerät
 
-Abhängig von den Einstellungen Ihrer Organisation steht möglicherweise ein Kontrollkästchen **Die nächsten X Tage nicht erneut fragen** zur Verfügung, wenn Sie die zweistufige Überprüfung in Ihrem Browser ausführen. Wenn Sie dieses Kontrollkästchen aktiviert haben, um keine Aufforderungen für die zweistufige Überprüfung mehr zu erhalten und Ihr Gerät dann verloren geht oder möglicherweise kompromittiert wurde, sollten Sie die Aufforderungen wieder aktivieren, um Ihr Konto besser zu schützen. Leider können Sie die Aufforderungen nicht für ein einzelnes Gerät aktivieren. Sie müssen die Aufforderungen für all Ihre Geräte gleichzeitig aktivieren.
+Abhängig von den Einstellungen Ihrer Organisation steht möglicherweise ein Kontrollkästchen **Die nächsten X Tage nicht erneut fragen** zur Verfügung, wenn Sie die zweistufige Überprüfung in Ihrem Browser ausführen. Wenn Sie diese Option ausgewählt haben, um keine Aufforderungen für die zweistufige Überprüfung mehr zu erhalten, und Ihr Gerät dann verloren geht oder möglicherweise kompromittiert wurde, sollten Sie die Aufforderungen wieder aktivieren, um Ihr Konto besser zu schützen. Sie müssen die Aufforderungen für all Ihre Geräte gleichzeitig aktivieren. Leider können Sie die Aufforderungen nicht nur für ein bestimmtes Gerät aktivieren.
 
 ### <a name="to-turn-two-factor-verification-prompts-back-on-for-your-devices"></a>So aktivieren Sie die Aufforderungen für die zweistufige Überprüfung wieder für Ihre Geräte
 
-- Wählen Sie auf der Seite **Zusätzliche Sicherheitsüberprüfung** die Option **Multi-Factor Authentication auf Geräten wiederherstellen, die zuvor als vertrauenswürdig eingestuft worden sind**.
-
-    Bei der nächsten Anmeldung bei einem Gerät werden Sie aufgefordert, die zweistufige Überprüfung durchzuführen.
+Wählen Sie auf der Seite [**Zusätzliche Sicherheitsüberprüfung**](#to-get-to-the-additional-security-verification-page) die Option **Multi-Factor Authentication auf Geräten wiederherstellen, die zuvor als vertrauenswürdig eingestuft worden sind** aus. Bei der nächsten Anmeldung bei einem Gerät werden Sie aufgefordert, die zweistufige Überprüfung durchzuführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -140,4 +138,4 @@ Nachdem Sie die Einstellungen für die zweistufige Überprüfung hinzugefügt od
 
 - [Anmelden per zweistufiger Überprüfung](multi-factor-authentication-end-user-signin.md)
 
-- [Hilfe bei der zweistufigen Überprüfung](multi-factor-authentication-end-user-troubleshoot.md)
+- [Beheben gängiger Probleme bei der zweistufigen Überprüfung](multi-factor-authentication-end-user-troubleshoot.md)

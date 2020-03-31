@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
 ms.openlocfilehash: b24b69716e472082abfdb388e7d79e88a8e23e64
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72754794"
 ---
 # <a name="total-cost-of-ownership-tco-with-azure-cosmos-db"></a>Gesamtkosten mit Azure Cosmos DB
@@ -38,7 +38,7 @@ Durch das serverlose Bereitstellungsmodell von Azure Cosmos DB entfällt die Ber
 
 * **Für die Cloud optimiert:** Azure Cosmos DB wurde von Grund auf mit differenzierter Mehrinstanzenfähigkeit und Leistungsisolation entwickelt. Das bietet die Möglichkeit, zigtausend Mandanten und deren Workloads über Cluster und Rechenzentren hinweg optimal zu platzieren und auszuführen sowie einen Lastenausgleich vorzunehmen. Im Gegensatz dazu wird die aktuelle Generation von OSS-NoSQL-Datenbanken lokal betrieben unter der Annahme, dass der gesamte virtuelle Computer die Workload eines einzelnen Mandanten ausführt. Diese Datenbanken sind auch nicht darauf ausgelegt, Infrastruktur und Hardware eines Cloudanbieters in vollem Umfang zu nutzen. Zum Beispiel kennt eine OSS-NoSQL-Datenbank-Engine die Unterschiede zwischen dem Ausfall eines virtuellen Computers und einem routinemäßigen Image-Upgrade nicht. Sie ist sich auch nicht der Tatsache bewusst, dass der Premium-Datenträger bereits über die Drei-Wege-Replikation repliziert wird. Sie kann diese Vorteile weder nutzen noch Vorteile und Einsparungen an die Kunden weitergeben.
 
-* **Stundenweise Abrechnung:** Umfangreiche Workloads, die jederzeit skaliert werden müssen, werden nur nach Stunden abgerechnet. Die Workloads für eine Anwendung variieren in der Regel übers Jahr und durch die Daten, die abgefragt werden. Mit Azure Cosmos DB können Sie nach Bedarf zentral hoch- oder herunterskalieren und bezahlen nur das, was Sie wirklich benötigen. Bei lokalen oder über IaaS gehostete Systeme können Sie dieses Modell nicht anwenden, da es keine Möglichkeit gibt, Ihre Hardware stundenweise außer Betrieb zu nehmen. In solchen Fällen können Sie mit Azure Cosmos DB im Schnitt eine 10- bis 14-Fache Einsparung erzielen.
+* **Stundenweise Abrechnung:** Umfangreiche Workloads, die jederzeit skaliert werden müssen, werden nur nach Stunden abgerechnet. Die Workloads für eine Anwendung variieren in der Regel übers Jahr und durch die Daten, die abgefragt werden. Mit Azure Cosmos DB können Sie nach Bedarf hoch- oder herunterskalieren und bezahlen nur das, was Sie wirklich benötigen. Bei lokalen oder über IaaS gehostete Systeme können Sie dieses Modell nicht anwenden, da es keine Möglichkeit gibt, Ihre Hardware stundenweise außer Betrieb zu nehmen. In solchen Fällen können Sie mit Azure Cosmos DB im Schnitt eine 10- bis 14-Fache Einsparung erzielen.
 
 * **Zahlreiche Features werden kostenlos bereitgestellt:** In Azure Cosmos DB sind Schreibworkloads im Vergleich zu alternativen Datenbankdiensten erheblich kostengünstiger. Darüber hinaus bietet Azure Cosmos DB unter anderem Funktionen wie [automatische Indizierung](indexing-policies.md), [Gültigkeitsdauer](time-to-live.md) und [Änderungsfeed](change-feed.md), die in der Regel von anderen Datenbankdiensten extra berechnet werden, kostenlos an.
 

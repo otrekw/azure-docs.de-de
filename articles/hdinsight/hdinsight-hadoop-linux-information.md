@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.openlocfilehash: 3d9dec0065bb62821fcedcbc4f6e5b578c061caf
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934553"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233618"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informationen zur Verwendung von HDInsight unter Linux
 
@@ -111,7 +111,7 @@ Wenn Sie entweder Azure Storage oder Data Lake Storage nutzen, müssen Sie in HD
 
 In HDInsight werden die Datenspeicherressourcen (Azure Blob Storage und Azure Data Lake Store) von den Computerressourcen entkoppelt. Aus diesem Grund können Sie nach Bedarf HDInsight-Cluster für Berechnungen erstellen und die Cluster später nach Abschluss der Aufgaben löschen. Ihre Datendateien werden währenddessen so lange wie nötig sicher im Cloudspeicher aufbewahrt.
 
-### <a name="URI-and-scheme"></a>URI und Schema
+### <a name="uri-and-scheme"></a><a name="URI-and-scheme"></a>URI und Schema
 
 Einige Befehle erfordern ggf. die Angabe des Schemas als Teil des URI, wenn auf eine Datei zugegriffen wird. Beispielsweise erfordert die Komponente Storm-HDFS, dass Sie das Schema angeben. Bei Verwendung von nicht standardmäßigem Speicher (der dem Cluster als „zusätzlicher“ Speicher hinzugefügt wird), müssen Sie stets das Schema als Teil des URI angeben.
 
@@ -208,7 +208,7 @@ Wenn Sie __Azure Data Lake Storage__ nutzen, finden Sie unter den folgenden Link
 * [Java](../data-lake-store/data-lake-store-get-started-java-sdk.md)
 * [Python](../data-lake-store/data-lake-store-get-started-python.md)
 
-## <a name="scaling"></a>Skalieren des Clusters
+## <a name="scaling-your-cluster"></a><a name="scaling"></a>Skalieren des Clusters
 
 Mithilfe der Clusterskalierung können Sie die Anzahl der von einem Cluster verwendeten Datenknoten ändern. Sie können Skalierungsvorgänge ausführen, während andere Aufträge oder Prozesse auf einem Cluster ausgeführt werden.  Weitere Informationen finden Sie auch unter [Skalieren von HDInsight-Clustern](./hdinsight-scaling-best-practices.md).
 

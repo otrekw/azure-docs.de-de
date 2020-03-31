@@ -6,11 +6,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: maquaran
-ms.openlocfilehash: 8a5507d11c9545e4053dde832b7305f9bf35e39e
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 600556a06d3f58c4d2ec79a49fdee5e8e04d4036
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77586273"
 ---
 # <a name="how-to-configure-the-change-feed-processor-start-time"></a>Konfigurieren der Startzeit des Änderungsfeedprozessors
@@ -25,7 +25,7 @@ Wenn ein Änderungsfeedprozessor zum ersten Mal gestartet wird, initialisiert er
 
 Es ist möglich, den Änderungsfeedprozessor so zu initialisieren, dass er **an einem bestimmten Datum und zu einer bestimmten Uhrzeit** mit dem Lesen von Daten beginnt. Hierfür muss eine Instanz von `DateTime` an die `WithStartTime`-Generator-Erweiterung übergeben werden:
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="TimeInitialization":::
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=TimeInitialization)]
 
 Der Änderungsfeedprozessor wird an diesem angegeben Datum und zu dieser angegebenen Uhrzeit initialisiert und beginnt mit dem Lesen der Änderungen, die danach auftreten.
 
@@ -33,7 +33,7 @@ Der Änderungsfeedprozessor wird an diesem angegeben Datum und zu dieser angegeb
 
 In anderen Szenarien wie Datenmigrationen oder Analysen des gesamten Verlaufs eines Containers muss der Änderungsfeed vom **Anfang der Lebensdauer dieses Containers** gelesen werden. Zu diesem Zweck verwenden wir `WithStartTime` in der Generator-Erweiterung, übergeben aber `DateTime.MinValue.ToUniversalTime()`, wodurch die UTC-Darstellung des Mindestwerts von `DateTime` generiert wird. Beispiel:
 
-:::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs" id="StartFromBeginningInitialization":::
+[!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed/Program.cs?name=StartFromBeginningInitialization)]
 
 Der Änderungsfeedprozessor wird initialisiert und beginnt mit dem Lesen von Änderungen ab dem Anfang der Lebensdauer des Containers.
 

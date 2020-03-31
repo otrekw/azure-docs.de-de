@@ -4,11 +4,11 @@ description: Vorbereiten des Failbacks von VMware-VMs nach einem Failover mit Az
 ms.topic: conceptual
 ms.date: 12/24/2019
 ms.openlocfilehash: 5a330f8cba31640d0116ca3d5ccab352ce5b3509
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75498370"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228918"
 ---
 # <a name="prepare-for-reprotection-and-failback-of-vmware-vms"></a>Vorbereiten auf erneuten Schutz und Failback von VMware-VMs
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 27fec279582d845972b87ac635c87c16c239924e
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73901324"
 ---
 # <a name="add-an-artifact-to-a-vm"></a>Hinzufügen eines Artefakts zu einer VM

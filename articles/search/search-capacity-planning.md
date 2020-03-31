@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: e2ba5301b81b1a6f5de696ab4587cd8ff43e3c68
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77462563"
 ---
 # <a name="adjust-capacity-in-azure-cognitive-search"></a>Anpassen der Kapazität in Azure Cognitive Search
@@ -21,7 +21,7 @@ Nehmen Sie sich vor dem [Bereitstellen eines Suchdiensts](search-create-service-
 
 Die Kapazität ist vom [ausgewählten Tarif](search-sku-tier.md) (Tarife bestimmen die Hardwareeigenschaften) und der für geplante Workloads erforderlichen Kombination aus Replikat und Partition abhängig. Je nach Tarif und Umfang der Anpassung kann das Hinzufügen oder Reduzieren von Kapazität zwischen 15 Minuten und mehreren Stunden dauern. 
 
-Wir empfehlen, die Replikat- und Partitionszuordnung über das Azure-Portal zu ändern. Das Portal erzwingt Grenzwerte für zulässige Kombinationen, damit die Obergrenzen eines Tarifs nicht überschritten werden. Wenn die Bereitstellung jedoch skript- oder codebasiert erfolgen soll, sind die [Azure PowerShell](https://docs.microsoft.com/rest/api/searchmanagement/services) oder die [Verwaltungs-REST-API](search-manage-powershell.md) alternative Lösungen.
+Wir empfehlen, die Replikat- und Partitionszuordnung über das Azure-Portal zu ändern. Das Portal erzwingt Grenzwerte für zulässige Kombinationen, damit die Obergrenzen eines Tarifs nicht überschritten werden. Wenn die Bereitstellung jedoch skript- oder codebasiert erfolgen soll, sind die [Azure PowerShell](search-manage-powershell.md) oder die [Verwaltungs-REST-API](https://docs.microsoft.com/rest/api/searchmanagement/services) alternative Lösungen.
 
 ## <a name="terminology-replicas-and-partitions"></a>Terminologie: Replikate und Partitionen
 

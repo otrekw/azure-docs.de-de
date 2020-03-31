@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.openlocfilehash: cb34ea44c069f067d13a6480531a94a1a515f380
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70241242"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Herstellen einer Verbindung mit der Azure Cosmos DB-Cassandra-API von Spark
@@ -123,4 +123,4 @@ In den folgenden Artikeln wird die Spark-Integration mit der Azure Cosmos DB-Cas
 * [Upsertvorgänge](cassandra-spark-upsert-ops.md)
 * [Löschvorgänge](cassandra-spark-delete-ops.md)
 * [Aggregationsvorgänge](cassandra-spark-aggregation-ops.md)
-* [Tabellenkopiervorgänge](cassandra-spark-table-copy-ops.md)
+* [Tabellenkopiervorgänge an der Azure Cosmos DB-Cassandra-API von Spark aus](cassandra-spark-table-copy-ops.md)

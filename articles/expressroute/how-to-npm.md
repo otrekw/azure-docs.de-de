@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: cherylmc
 ms.openlocfilehash: 54fa3dcbfbbcb3153f81407a9bc9b52511405390
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74076590"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurieren des Netzwerkleistungsmonitors für ExpressRoute
@@ -34,7 +34,7 @@ Ihre Möglichkeiten:
 
 * Anzeigen des ExpressRoute-Systemstatus von einem früheren Zeitpunkt aus
 
-## <a name="workflow"></a>Workflow
+## <a name="workflow"></a><a name="workflow"></a>Workflow
 
 Überwachungs-Agents werden auf mehreren Servern (lokal und in Azure) installiert. Die Agents kommunizieren miteinander, senden jedoch keine Daten, sondern TCP-Handshakepakete. Die Kommunikation zwischen den Agents ermöglicht es Azure, die Netzwerktopologie und den Pfad zuzuordnen, die der Datenverkehr nutzen kann.
 
@@ -47,7 +47,7 @@ Ihre Möglichkeiten:
 
 Wenn Sie bereits einen Netzwerkleistungsmonitor verwenden, um andere Objekte oder Dienste zu überwachen, und bereits einen Arbeitsbereich in einer der unterstützten Regionen besitzen, können Sie die Schritte 1 und 2 überspringen und Ihre Konfiguration mit Schritt 3 beginnen.
 
-## <a name="configure"></a>Schritt 1: Erstellen eines Arbeitsbereichs
+## <a name="step-1-create-a-workspace"></a><a name="configure"></a>Schritt 1: Erstellen eines Arbeitsbereichs
 
 Erstellen Sie einen Arbeitsbereich im Abonnement mit den VNETs, die mit den ExpressRoute-Leitungen verknüpft sind.
 
@@ -77,9 +77,9 @@ Erstellen Sie einen Arbeitsbereich im Abonnement mit den VNETs, die mit den Expr
 
    ![Zusätzliche Konfiguration](./media/how-to-npm/5.png)
 
-## <a name="agents"></a>Schritt 2: Installieren und Konfigurieren von Agents
+## <a name="step-2-install-and-configure-agents"></a><a name="agents"></a>Schritt 2: Installieren und Konfigurieren von Agents
 
-### <a name="download"></a>2.1: Laden Sie die Setup-Datei für den Agent herunter.
+### <a name="21-download-the-agent-setup-file"></a><a name="download"></a>2.1: Laden Sie die Setup-Datei für den Agent herunter.
 
 1. Wechseln Sie zur Registerkarte **Allgemeine Einstellungen** auf der Seite **Konfiguration des Netzwerkleistungsmonitors** für Ihre Ressource. Klicken Sie auf den Agent, der dem Prozessor des Servers aus dem Abschnitt **Installieren der Log Analytics-Agents** entspricht, und laden Sie die Setupdatei herunter.
 2. Kopieren Sie dann die **Arbeitsbereich-ID** und den **Primärschlüssel**, und fügen Sie diese in Editor ein.
@@ -87,7 +87,7 @@ Erstellen Sie einen Arbeitsbereich im Abonnement mit den VNETs, die mit den Expr
 
    ![PowerShell-Skript](./media/how-to-npm/7.png)
 
-### <a name="installagent"></a>2.2: Installieren eines Überwachungs-Agents auf jedem Überwachungsserver (für jedes zu überwachende VNET)
+### <a name="22-install-a-monitoring-agent-on-each-monitoring-server-on-each-vnet-that-you-want-to-monitor"></a><a name="installagent"></a>2.2: Installieren eines Überwachungs-Agents auf jedem Überwachungsserver (für jedes zu überwachende VNET)
 
 Es wird empfohlen, dass Sie zur Bereitstellung von Redundanz mindestens zwei Agents auf jeder Seite der ExpressRoute-Verbindung (z.B. lokal, Azure-VNETs) installieren. Der Agent muss auf einem Windows Server-Computer (2008 SP1 oder höher) installiert werden. Die Überwachung von ExpressRoute-Leitungen unter Verwendung des Windows Desktop- oder Linux-Betriebssystems wird nicht unterstützt. Führen Sie die folgenden Schritte aus, um die Agents zu installieren:
    
@@ -116,7 +116,7 @@ Es wird empfohlen, dass Sie zur Bereitstellung von Redundanz mindestens zwei Age
 
 9. Wiederholen Sie diese Schritte für jedes VNET, das Sie überwachen müssen.
 
-### <a name="proxy"></a>2.3: Konfigurieren von Proxyeinstellungen (optional)
+### <a name="23-configure-proxy-settings-optional"></a><a name="proxy"></a>2.3: Konfigurieren von Proxyeinstellungen (optional)
 
 Wenn Sie einen Webproxy verwenden, um auf das Internet zuzugreifen, verwenden Sie folgende Schritte, um die Proxyeinstellungen für den Microsoft Monitoring Agent zu konfigurieren. Führen Sie diese Schritte für jeden Server aus. Wenn Sie viele Server konfigurieren müssen, ist es möglicherweise einfacher, diesen Prozess mithilfe eines Skripts zu automatisieren. Wenn dies der Fall ist, finden Sie weitere Informationen unter [So konfigurieren Sie Proxyeinstellungen für den Microsoft Monitoring Agent mithilfe eines Skripts](../log-analytics/log-analytics-windows-agent.md).
 
@@ -129,7 +129,7 @@ So konfigurieren Sie Proxyeinstellungen für den Microsoft Monitoring Agent übe
 
    ![proxy](./media/how-to-npm/11.png)
 
-### <a name="verifyagent"></a>2.4: Überprüfen der Agentkonnektivität
+### <a name="24-verify-agent-connectivity"></a><a name="verifyagent"></a>2.4: Überprüfen der Agentkonnektivität
 
 Sie können problemlos überprüfen, ob die Agents kommunizieren.
 
@@ -140,7 +140,7 @@ Sie können problemlos überprüfen, ob die Agents kommunizieren.
 
    ![status](./media/how-to-npm/12.png)
 
-### <a name="firewall"></a>2.5: Öffnen der Firewallports auf den Servern des Überwachungs-Agents
+### <a name="25-open-the-firewall-ports-on-the-monitoring-agent-servers"></a><a name="firewall"></a>2.5: Öffnen der Firewallports auf den Servern des Überwachungs-Agents
 
 Für die Verwendung des TCP-Protokolls müssen Sie die Firewallports öffnen, um sicherzustellen, dass die Überwachungs-Agents kommunizieren können.
 
@@ -157,7 +157,7 @@ Port 8084 wird standardmäßig geöffnet. Sie können einen benutzerdefinierten 
 
 ![PowerShell_Script](./media/how-to-npm/script.png)
 
-## <a name="opennsg"></a>Schritt 3: Konfigurieren von Regeln für Netzwerksicherheitsgruppen
+## <a name="step-3-configure-network-security-group-rules"></a><a name="opennsg"></a>Schritt 3: Konfigurieren von Regeln für Netzwerksicherheitsgruppen
 
 Zum Überwachen von Agent-Servern in Azure konfigurieren Sie Regeln für Netzwerksicherheitsgruppen, um TCP-Datenverkehr auf einem Port zuzulassen, der vom Netzwerkleistungsmonitor für synthetische Transaktionen verwendet wird. Der Standardport ist 8084. Dadurch kann ein Überwachungs-Agent, der auf einem virtuellen Azure-Computer installiert ist, mit einem lokalen Überwachungs-Agent kommunizieren.
 
@@ -167,7 +167,7 @@ Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Netzwerksi
 >Stellen Sie sicher, dass Sie die Agents (sowohl den lokalen Server-Agent als auch den Azure-Server-Agent) installiert und das PowerShell-Skript ausgeführt haben, bevor Sie mit diesem Schritt fortfahren.
 >
 
-## <a name="setupmonitor"></a>Schritt 4: Ermitteln von Peeringverbindungen
+## <a name="step-4-discover-peering-connections"></a><a name="setupmonitor"></a>Schritt 4: Ermitteln von Peeringverbindungen
 
 1. Navigieren Sie zur Übersichtskachel „Netzwerkleistungsmonitor“, indem Sie zur Seite **Alle Ressourcen** wechseln und dann auf den in eine Whitelist aufgenommenen NPM-Arbeitsbereich klicken.
 
@@ -182,7 +182,7 @@ Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Netzwerksi
    * Alle Microsoft-Peeringverbindungen in der oder den ExpressRoute-Leitung(en), die diesem Abonnement zugeordnet ist/sind.
    * Alle privaten Peeringverbindungen, die mit den mit diesem Abonnement verknüpften VNets verbunden sind.
             
-## <a name="configmonitor"></a>Schritt 5: Konfigurieren von Monitoren
+## <a name="step-5-configure-monitors"></a><a name="configmonitor"></a>Schritt 5: Konfigurieren von Monitoren
 
 In diesem Abschnitt konfigurieren Sie die Monitore. Führen Sie die Schritte für den Typ des Peerings, den Sie überwachen möchten: **privates Peering**, oder **Microsoft-Peering**.
 
@@ -218,43 +218,43 @@ Klicken Sie für das Microsoft-Peering auf die Microsoft-Peeringverbindung(en), 
 6. Speichern Sie die Einstellungen.
 7. Nach dem Aktivieren der Regeln und dem Auswählen der Werte und Agents, die Sie überwachen möchten, gibt es eine Wartezeit von etwa 30 bis 60 Minuten, bis die Werte aufgefüllt und die Kacheln **ExpressRoute-Überwachung** verfügbar sind.
 
-## <a name="explore"></a>Schritt 6: Anzeigen der Überwachungskacheln
+## <a name="step-6-view-monitoring-tiles"></a><a name="explore"></a>Schritt 6: Anzeigen der Überwachungskacheln
 
 Sobald Ihnen die Überwachungskacheln angezeigt werden, werden Ihre ExpressRoute-Verbindungen und -Verbindungsressourcen vom Netzwerkleistungsmonitor überwacht. Klicken Sie auf die Microsoft-Peeringkachel, um einen Drilldown in die Integrität der Microsoft-Peeringverbindungen auszuführen.
 
 ![Überwachungskacheln](./media/how-to-npm/15.png)
 
-### <a name="dashboard"></a>Seite des Netzwerkleistungsmonitors
+### <a name="network-performance-monitor-page"></a><a name="dashboard"></a>Seite des Netzwerkleistungsmonitors
 
 Die Seite des Netzwerkleistungsmonitors enthält eine Seite für ExpressRoute, die eine Übersicht über die Integrität der ExpressRoute-Verbindungen und -Peerings anzeigt.
 
 ![Dashboard](./media/how-to-npm/dashboard.png)
 
-### <a name="circuits"></a>Liste der Leitungen
+### <a name="list-of-circuits"></a><a name="circuits"></a>Liste der Leitungen
 
 Klicken Sie auf die Kachel **ExpressRoute-Verbindungen**, um eine Liste aller überwachten ExpressRoute-Verbindungen anzuzeigen. Sie können eine Verbindung auswählen und deren Integritätsstatus, Trenddiagramme für den Paketverlust, Bandbreitennutzung und Latenz anzuzeigen. Die Diagramme sind interaktiv. Sie können ein benutzerdefiniertes Zeitfenster für das Zeichnen der Diagramme auswählen. Sie können die Maus über einen Bereich des Diagramms ziehen, um dieses zu vergrößern und detaillierte Datenpunkte anzuzeigen.
 
 ![circuit_list](./media/how-to-npm/circuits.png)
 
-#### <a name="trend"></a>Trend des Verlusts, der Latenz und des Durchsatzes
+#### <a name="trend-of-loss-latency-and-throughput"></a><a name="trend"></a>Trend des Verlusts, der Latenz und des Durchsatzes
 
 Die Diagramme für Bandbreite, Latenz und Verlust sind interaktiv. Sie können jeden Bereich dieser Diagramme mithilfe der Maussteuerung vergrößern. Sie können auch die Daten anderer Intervalle für Bandbreite, Latenz und Verlust anzeigen, indem Sie auf **Datum/Uhrzeit** klicken. Diese Angabe finden Sie oben links unter der Schaltfläche „Aktionen“.
 
 ![Trend](./media/how-to-npm/16.png)
 
-### <a name="peerings"></a>Liste der Peerings
+### <a name="peerings-list"></a><a name="peerings"></a>Liste der Peerings
 
 Klicken Sie auf die Kachel **Private Peerings** auf dem Dashboard, um eine Liste aller Verbindungen mit virtuellen Netzwerken über privates Peering anzuzeigen. Hier können Sie eine virtuelle Netzwerkverbindung auswählen und deren Integritätsstatus, Trenddiagramme für Paketverlust, Bandbreitennutzung und Latenz anzeigen lassen.
 
 ![Liste der Verbindungen](./media/how-to-npm/peerings.png)
 
-### <a name="nodes"></a>Knoten anzeigen
+### <a name="nodes-view"></a><a name="nodes"></a>Knoten anzeigen
 
 Um die Liste aller Links zwischen den lokalen Knoten und den Azure-VMs/Microsoft-Dienstendpunkten für die ausgewählten ExpressRoute-Peeringverbindung anzuzeigen, klicken Sie auf **Knotenverbindungen anzeigen**. Sie können den Status jeder Verknüpfung sowie den Trend von Verlusten und Wartezeiten anzeigen, die ihnen zugeordnet sind.
 
 ![Knoten anzeigen](./media/how-to-npm/nodes.png)
 
-### <a name="topology"></a>Topologie der Verbindung
+### <a name="circuit-topology"></a><a name="topology"></a>Topologie der Verbindung
 
 Klicken Sie auf die Kachel **Topologie**, um die Topologie der Verbindung anzuzeigen. Dadurch gelangen Sie zur Ansicht der Topologie für die ausgewählte Verbindung oder das ausgewählte Peering. Das Topologiediagramm enthält die Wartezeit für jedes Segment im Netzwerk. Jeder Layer-3-Hop wird von einem Knoten des Diagramms dargestellt. Durch das Klicken auf einen Hop werden weitere Details zum Hop angezeigt.
 

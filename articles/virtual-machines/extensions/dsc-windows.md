@@ -14,11 +14,11 @@ ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
 ms.openlocfilehash: 592c731d1851ac36cf9b57864750df0603b6c3fd
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073786"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227926"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC-Erweiterung
 
@@ -97,16 +97,16 @@ Der folgende JSON-Code zeigt das Schema für den Bereich mit den Einstellungen d
 
 ### <a name="property-values"></a>Eigenschaftswerte
 
-| NAME | Wert/Beispiel | Datentyp |
+| Name | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
 | apiVersion | 2018-10-01 | date |
 | publisher | Microsoft.Powershell.DSC | string |
 | type | DSC | string |
-| typeHandlerVersion | 2.77 | int |
+| typeHandlerVersion | 2.77 | INT |
 
 ### <a name="settings-property-values"></a>Eigenschaftswerte der Einstellungen
 
-| NAME | Datentyp | BESCHREIBUNG
+| Name | Datentyp | BESCHREIBUNG
 | ---- | ---- | ---- |
 | settings.wmfVersion | string | Gibt die Version von Windows Management Framework an, die auf Ihrem virtuellen Computer installiert sein muss. Wenn diese Eigenschaft auf „latest“ festgelegt ist, wird die aktuelle Version von WMF installiert. Die einzigen derzeit möglichen Werte für diese Eigenschaft sind „4.0“, „5.0“ und „latest“. Diese möglichen Werte werden gelegentlich aktualisiert. Der Standardwert ist „latest“. |
 | settings.configuration.url | string | Gibt den URL-Speicherort an, von dem die ZIP-Datei Ihrer DSC-Konfiguration herunterzuladen ist. Wenn die bereitgestellte URL ein SAS-Token für den Zugriff erfordert, müssen Sie die protectedSettings.configurationUrlSasToken-Eigenschaft auf den Wert Ihres SAS-Tokens festlegen. Diese Eigenschaft ist erforderlich, wenn „settings.configuration.script“ und/oder „settings.configuration.function“ definiert sind.
@@ -120,7 +120,7 @@ Der folgende JSON-Code zeigt das Schema für den Bereich mit den Einstellungen d
 
 ### <a name="protected-settings-property-values"></a>Eigenschaftswerte geschützter Einstellungen
 
-| NAME | Datentyp | BESCHREIBUNG
+| Name | Datentyp | BESCHREIBUNG
 | ---- | ---- | ---- |
 | protectedSettings.configurationArguments | string | Definiert beliebige Parameter, die Sie Ihrer DSC-Konfiguration übergeben möchten. Diese Eigenschaft wird verschlüsselt. |
 | protectedSettings.configurationUrlSasToken | string | Gibt das SAS-Token für den Zugriff auf durch „configuration.url“ definierte URL an. Diese Eigenschaft wird verschlüsselt. |

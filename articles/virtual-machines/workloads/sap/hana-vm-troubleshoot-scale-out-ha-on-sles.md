@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617120"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>Überprüfen und Problembehandlung beim Setup der SAP HANA-Hochverfügbarkeitskonfiguration zur horizontalen Skalierung unter SLES 12 SP3 
@@ -457,7 +457,7 @@ Während der Tests und Überprüfungen war das SBD-Gerät nach dem Neustart eine
 5. Stellen Sie sicher, dass oberhalb des Initiatornamens der Wert **Dienststart** auf **Beim Starten** festgelegt ist.
 6. Falls nicht, legen Sie diesen anstelle von **Manuell** auf **Beim Starten** fest.
 7. Wechseln Sie als Nächstes im oberen Bereich zur Registerkarte **Verbundene Ziele**.
-8. Auf dem Bildschirm **Verbundene Ziele** sollte ein Eintrag für das SBD-Gerät angezeigt werden, der dem folgenden Beispiel ähnelt: **10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso**.
+8. Auf dem Bildschirm **Verbundene Ziele** sollte ein Eintrag für das SBD-Gerät angezeigt werden, der ungefähr wie im folgenden Beispiel aussieht: **10.0.0.19:3260 iqn.2006-04.dbhso.local:dbhso**.
 9. Überprüfen Sie, ob der Wert für **Start** auf **Beim Starten** festgelegt ist.
 10. Falls nicht, wählen Sie **Bearbeiten** aus, und ändern Sie ihn.
 11. Speichern Sie die Änderungen, und beenden Sie YaST2.

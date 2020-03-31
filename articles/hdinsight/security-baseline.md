@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c3452fc68f7add40979513d3e3956f1c93e327f0
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: eddfcacd01a67fffa8e3e992e021ed1771d25944
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943947"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471335"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>Azure-Sicherheitsbaseline für HDInsight
 
@@ -854,10 +854,10 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-li
 **Leitfaden**: Verwenden Sie Azure Resource Graph, um alle Ressourcen (z. B. Computeressourcen, Speicher, Netzwerke, Ports und Protokolle usw.), einschließlich HDInsight-Cluster, in Ihren Abonnements abzufragen bzw. zu ermitteln.  Stellen Sie sicher, dass Sie über entsprechende (Lese-)Berechtigungen in Ihrem Mandanten verfügen und alle Azure-Abonnements und Ressourcen in Ihren Abonnements auflisten können.
 
 
-Obwohl klassische Azure-Ressourcen über das Resource Graph ermittelt werden können, wird dringend empfohlen, Azure Resource Manager-Ressourcen zu erstellen und zu verwenden.
+Obwohl klassische Azure-Ressourcen über Azure Resource Graph ermittelt werden können, wird dringend empfohlen, Azure Resource Manager-Ressourcen zu erstellen und zu verwenden.
 
 
-Erstellen von Abfragen mit Azure Graph:
+Erstellen von Abfragen mit Azure Resource Graph:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -930,7 +930,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in Ihren Abonnements abzufrage
 
 Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Erstellen von Abfragen mit Azure Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Erstellen von Abfragen mit Azure Resource Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
@@ -950,7 +950,7 @@ Erstellen von Abfragen mit Azure Graph: https://docs.microsoft.com/azure/governa
 **Leitfaden**: Verwenden Sie Azure Resource Graph, um alle Ressourcen (z. B. Computeressourcen, Speicher, Netzwerke, Ports und Protokolle usw.), einschließlich HDInsight-Cluster, in Ihren Abonnements abzufragen bzw. zu ermitteln.  Entfernen Sie alle nicht genehmigten Azure-Ressourcen, die Sie finden. Implementieren Sie für Azure HDInsight-Cluster eine Drittanbieterlösung, um nicht genehmigte Software zu entfernen bzw. Warnungen dazu anzuzeigen.
 
 
-Erstellen von Abfragen mit Azure Graph:
+Erstellen von Abfragen mit Azure Resource Graph:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 

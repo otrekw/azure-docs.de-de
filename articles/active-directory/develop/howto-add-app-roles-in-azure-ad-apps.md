@@ -15,13 +15,13 @@ ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 3a911db36fd03ebcb5e0fc53d4d7f36d68648249
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399088"
 ---
-# <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Gewusst wie: Hinzufügen von App-Rollen in Ihrer Anwendung und Empfangen der Rollen im Token
+# <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Hinzufügen von App-Rollen in Ihrer Anwendung und Empfangen der Rollen im Token
 
 Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) ist eine beliebte Methode zum Erzwingen der Autorisierung in Anwendungen. Bei der Verwendung der RBAC gewährt ein Administrator Berechtigungen für Rollen und nicht für einzelne Benutzer oder Gruppen. Der Administrator kann anschließend verschiedenen Benutzern und Gruppen Rollen zuweisen, um zu steuern, wer auf welche Inhalte und Funktionen zugreifen kann.
 

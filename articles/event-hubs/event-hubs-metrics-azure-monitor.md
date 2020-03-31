@@ -16,10 +16,10 @@ ms.custom: seodec18
 ms.date: 09/18/2019
 ms.author: shvija
 ms.openlocfilehash: 96c346f4359740fda5638dfdbe5735c5bdfce8c9
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162649"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Event Hubs-Metriken in Azure Monitor
@@ -64,34 +64,34 @@ Zählt die Anzahl der Anforderungen von Daten und Verwaltungsvorgängen
 
 | Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
-| Eingehende Anforderungen  | Die Anzahl von Anforderungen an den Azure Event Hubs-Dienst in einem bestimmten Zeitraum <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName |
-| Erfolgreiche Anforderungen    | Die Anzahl erfolgreicher Anforderungen an den Azure Event Hubs-Dienst in einem bestimmten Zeitraum <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName |
-| Serverfehler  | Die Anzahl der aufgrund eines Fehlers nicht verarbeiteten Anforderungen an den Azure Event Hubs-Dienst in einem bestimmten Zeitraum <br/><br/>Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName |
-|Benutzerfehler |Die Anzahl der aufgrund von Benutzerfehlern nicht verarbeiteten Anforderungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|Fehler aufgrund von Kontingentüberschreitung |Die Anzahl von Anforderungen hat das verfügbare Kontingent überschritten. Weitere Informationen zu Event Hubs-Kontingenten finden Sie in [diesem Artikel](event-hubs-quotas.md).<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+| Eingehende Anforderungen  | Die Anzahl von Anforderungen an den Azure Event Hubs-Dienst in einem bestimmten Zeitraum <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName |
+| Erfolgreiche Anforderungen    | Die Anzahl erfolgreicher Anforderungen an den Azure Event Hubs-Dienst in einem bestimmten Zeitraum <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName |
+| Serverfehler  | Die Anzahl der aufgrund eines Fehlers nicht verarbeiteten Anforderungen an den Azure Event Hubs-Dienst in einem bestimmten Zeitraum <br/><br/>Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName |
+|Benutzerfehler |Die Anzahl der aufgrund von Benutzerfehlern nicht verarbeiteten Anforderungen in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
+|Fehler aufgrund von Kontingentüberschreitung |Die Anzahl von Anforderungen hat das verfügbare Kontingent überschritten. Weitere Informationen zu Event Hubs-Kontingenten finden Sie in [diesem Artikel](event-hubs-quotas.md).<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
 
 ## <a name="throughput-metrics"></a>Durchsatzmetriken
 
 | Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
-|Gedrosselte Anforderungen |Die Anzahl von Anforderungen, die gedrosselt wurden, da der Grenzwert für die Nutzung der Durchsatzeinheit überschritten wurde.<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|Gedrosselte Anforderungen |Die Anzahl von Anforderungen, die gedrosselt wurden, da der Grenzwert für die Nutzung der Durchsatzeinheit überschritten wurde.<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
 
 ## <a name="message-metrics"></a>Nachrichtenmetriken
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
-|Eingehende Nachrichten |Die Anzahl von Ereignissen oder Nachrichten, die in einem bestimmten Zeitraum an Event Hubs gesendet wurden<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|Ausgehende Nachrichten |Die Anzahl von Ereignissen oder Nachrichten, die in einem bestimmten Zeitraum aus Event Hubs abgerufen wurden<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|Eingehende Bytes |Die Anzahl von Bytes, die in einem bestimmten Zeitraum an den Azure Event Hubs-Dienst gesendet wurden<br/><br/> Einheit: Byte <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|Ausgehende Bytes |Die Anzahl von Bytes, die in einem bestimmten Zeitraum vom Azure Event Hubs-Dienst empfangen wurden<br/><br/> Einheit: Byte <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|Eingehende Nachrichten |Die Anzahl von Ereignissen oder Nachrichten, die in einem bestimmten Zeitraum an Event Hubs gesendet wurden<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
+|Ausgehende Nachrichten |Die Anzahl von Ereignissen oder Nachrichten, die in einem bestimmten Zeitraum aus Event Hubs abgerufen wurden<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
+|Eingehende Bytes |Die Anzahl von Bytes, die in einem bestimmten Zeitraum an den Azure Event Hubs-Dienst gesendet wurden<br/><br/> Einheit: Bytes <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
+|Ausgehende Bytes |Die Anzahl von Bytes, die in einem bestimmten Zeitraum vom Azure Event Hubs-Dienst empfangen wurden<br/><br/> Einheit: Bytes <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
 
 ## <a name="connection-metrics"></a>Verbindungsmetriken
 
 | Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
-|ActiveConnections |Die Anzahl der aktiven Verbindungen in einem Namespace und bei einer Entität<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|Geöffnete Verbindungen |Die Anzahl der geöffneten Verbindungen<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|Geschlossene Verbindungen |Die Anzahl der geschlossenen Verbindungen<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|ActiveConnections |Die Anzahl der aktiven Verbindungen in einem Namespace und bei einer Entität<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
+|Geöffnete Verbindungen |Die Anzahl der geöffneten Verbindungen<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
+|Geschlossene Verbindungen |Die Anzahl der geschlossenen Verbindungen<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
 
 ## <a name="event-hubs-capture-metrics"></a>Event Hubs-Erfassungsmetriken
 
@@ -99,9 +99,9 @@ Sie können Event Hubs-Erfassungsmetriken überwachen, wenn Sie das Erfassungsfe
 
 | Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
-|Backlog erfassen |Die Anzahl von Bytes, die noch für das gewählte Ziel erfasst werden müssen<br/><br/> Einheit: Byte <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|Erfasste Nachrichten |Die Anzahl von Nachrichten oder Ereignissen, die in einem bestimmten Zeitraum für das gewählte Ziel erfasst werden<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
-|Erfasste Bytes |Die Anzahl von Bytes, die in einem bestimmten Zeitraum für das gewählte Ziel erfasst werden<br/><br/> Einheit: Byte <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
+|Backlog erfassen |Die Anzahl von Bytes, die noch für das gewählte Ziel erfasst werden müssen<br/><br/> Einheit: Bytes <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
+|Erfasste Nachrichten |Die Anzahl von Nachrichten oder Ereignissen, die in einem bestimmten Zeitraum für das gewählte Ziel erfasst werden<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
+|Erfasste Bytes |Die Anzahl von Bytes, die in einem bestimmten Zeitraum für das gewählte Ziel erfasst werden<br/><br/> Einheit: Bytes <br/> Aggregationstyp: Summe <br/> Dimension: EntityName|
 
 ## <a name="metrics-dimensions"></a>Metrikdimensionen
 

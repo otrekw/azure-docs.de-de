@@ -10,10 +10,10 @@ ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
 ms.openlocfilehash: 78a6e7fa8d030185f537136a3a2124d8bc59d808
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79037625"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Was ist der Azure Machine Learning-Designer (Vorschau)? 
@@ -84,7 +84,7 @@ Ein Modul kann eine Reihe von Parametern haben, die Sie zum Konfigurieren der in
 
 Unterstützung bei der Navigation durch die Bibliothek der verfügbaren Machine Learning-Algorithmen finden Sie unter [Algorithmen und Module: Referenzübersicht](algorithm-module-reference/module-reference.md).
 
-## <a name="compute"></a> Computeressourcen
+## <a name="compute-resources"></a><a name="compute"></a> Computeressourcen
 
 Verwenden Sie Computeressourcen aus Ihrem Arbeitsbereich, um Ihre Pipeline auszuführen und Ihre bereitgestellten Modelle als Echtzeitendpunkte oder Pipelineendpunkte (für Batchrückschlüsse) zu hosten. Die unterstützten Computeziele lauten:
 

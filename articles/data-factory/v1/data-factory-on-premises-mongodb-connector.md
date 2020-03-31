@@ -10,15 +10,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928125"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236350"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Verschieben von Daten aus MongoDB mithilfe von Azure Data Factory
 
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-on-premises-mongodb-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-mongodb.md)
 
@@ -44,7 +44,7 @@ Damit der Azure Data Factory-Dienst eine Verbindung mit Ihrer lokalen MongoDB-Da
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einem lokalen MongoDB-Datenspeicher verschiebt.
 
-Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Siehe [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
 Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlage**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
@@ -92,7 +92,7 @@ Bei einer Quelle des Typs **MongoDbSource** sind im Abschnitt „typeProperties�
 
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-92-Abfragezeichenfolge. Beispiel: select * from MyTable. |Nein (wenn **collectionName** von **dataset** angegeben ist) |
+| Abfrage |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-92-Abfragezeichenfolge. Beispiel: select * from MyTable. |Nein (wenn **collectionName** von **dataset** angegeben ist) |
 
 
 
@@ -290,11 +290,11 @@ Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activ
 
 Beim Verschieben von Daten in MongoDB werden die folgenden Zuordnungen zwischen dem MongoDB-Typ und .NET-Typ verwendet.
 
-| MongoDB-Typ | Typ ".NET Framework" |
+| MongoDB-Typ | .NET Framework-Typ |
 | --- | --- |
 | Binary |Byte[] |
 | Boolean |Boolean |
-| Date |DateTime |
+| Date |Datetime |
 | NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
@@ -321,14 +321,14 @@ Sie können den [Assistenten zum Kopieren](data-factory-data-movement-activities
 ### <a name="example"></a>Beispiel
 Beispielsweise ist „ExampleTable“ unten eine MongoDB-Tabelle, die eine Spalte (Invoices) mit einem Array von Objekten in jeder Zelle enthält sowie eine Spalte (Ratings) mit einem Array von skalaren Typen.
 
-| _id | Customer Name | Invoices | Service Level | Ratings |
+| _id | Customer Name | Invoices | Dienstebene | Ratings |
 | --- | --- | --- | --- | --- |
 | 1111 |ABC |[{invoice_id:”123”, item:”toaster”, price:”456”, discount:”0.2”}, {invoice_id:”124”, item:”oven”, price: ”1235”, discount: ”0.2”}] |Silber |[5,6] |
 | 2222 |XYZ |[{invoice_id:”135”, item:”fridge”,price: ”12543”,discount: ”0.0”}] |Gold |[1,2] |
 
 Der Treiber erzeugt mehrere virtuelle Tabellen, um diese einzelne Tabelle zu repräsentieren. Die erste virtuelle Tabelle ist die unten dargestellte Basistabelle mit dem Namen „ExampleTable“. Die Basistabelle enthält alle Daten der ursprünglichen Tabelle, aber die Daten aus den Arrays wurden ausgelassen und werden in den virtuellen Tabellen erweitert.
 
-| _id | Customer Name | Service Level |
+| _id | Customer Name | Dienstebene |
 | --- | --- | --- |
 | 1111 |ABC |Silber |
 | 2222 |XYZ |Gold |
@@ -341,11 +341,11 @@ Die folgenden Tabellen enthalten die virtuellen Tabellen, die die ursprüngliche
 
 Tabelle „ExampleTable_Invoices“:
 
-| _id | ExampleTable_Invoices_dim1_idx | invoice_id | item | price | Discount |
+| _id | ExampleTable_Invoices_dim1_idx | invoice_id | item | Preis | Discount |
 | --- | --- | --- | --- | --- | --- |
 | 1111 |0 |123 |toaster |456 |0.2 |
 | 1111 |1 |124 |oven |1235 |0.2 |
-| 2222 |0 |135 |fridge |12543 |0.0 |
+| 2222 |0 |135 |fridge |12543 |0,0 |
 
 Tabelle „ExampleTable_Ratings“:
 

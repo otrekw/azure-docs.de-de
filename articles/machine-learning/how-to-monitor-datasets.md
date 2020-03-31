@@ -11,10 +11,10 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
 ms.openlocfilehash: 401019c537cb0eb51fa6002637e170a79210f7d2
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617630"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Erkennen von Datendrift (Vorschau) in Datasets
@@ -61,7 +61,7 @@ Sie können einen Datasetmonitor erstellen, um Datendrift in neuen Daten in eine
 
 Aus konzeptioneller Sicht gibt es drei primäre Szenarien für die Einrichtung von Datasetmonitoren in Azure Machine Learning.
 
-Szenario | Beschreibung
+Szenario | BESCHREIBUNG
 ---|---
 Überwachen der Nutzungsdaten eines Modells auf Drift von den Trainingsdaten des Modells | Angesichts der Tatsache, dass die Modellgenauigkeit abnimmt, wenn die Nutzungsdaten von den Trainingsdaten abweichen, können die Ergebnisse dieses Szenarios als Überwachung eines Indikators für die Modellgenauigkeit interpretiert werden.
 Überwachen eines Zeitreihendatasets auf Drift von einem vorherigen Zeitraum | Dieses Szenario ist allgemeiner und kann zum Überwachen von Datasets verwendet werden, die an Prozessen vor oder nach der Modellerstellung beteiligt sind.  Das Zieldataset muss eine Zeitstempelspalte aufweisen, das Baselinedataset dagegen kann jedes tabellarische Dataset sein, das gemeinsame Features mit dem Zieldataset besitzt.
@@ -142,7 +142,7 @@ Diese Tabelle enthält grundlegende Einstellungen, die für den Datasetmonitor v
 
 Diese Einstellungen gelten für die geplante Datasetmonitor-Pipeline, die erstellt wird. 
 
-| Einstellung | Beschreibung | Tipps | Veränderlich | 
+| Einstellung | BESCHREIBUNG | Tipps | Veränderlich | 
 | ------- | ----------- | ---- | ------- |
 | Aktivieren | Aktivieren oder Deaktivieren des Zeitplans in der Pipeline des Datasetmonitors. | Deaktivieren Sie den Zeitplan, um Daten der Vergangenheit mithilfe der Abgleicheinstellung zu analysieren. Die Einstellung kann nach dem Erstellen des Datasetmonitors aktiviert werden. | Ja | 
 | Latency | Der Zeitraum in Stunden, der verstreicht, bis Daten im Dataset eintreffen. Wenn es z. B. drei Tage dauert, bis Daten in der SQL-Datenbank eintreffen, die vom Dataset gekapselt wird, legen Sie die Latenz auf den Wert 72 fest. | Die Einstellung kann nach dem Erstellen des Datasetmonitors nicht geändert werden. | Nein | 
@@ -275,7 +275,7 @@ Für numerische Features wird in jeder Ausführung des Datasetmonitors ein Profi
 
 Für numerische Features wird in jeder Ausführung des Datasetmonitors ein Profil erstellt. Folgendes wird im Azure Machine Learning-Studio verfügbar gemacht. Für die Verteilung wird ein Histogramm angezeigt.
 
-| Metrik | Beschreibung |  
+| Metrik | BESCHREIBUNG |  
 | ------ | ----------- |  
 | Euklidischer Abstand | Geometrischer Abstand zwischen den Baseline- und Zielverteilungen. |
 | Eindeutige Werte | Anzahl eindeutiger Werte (Kardinalität) des Features. |

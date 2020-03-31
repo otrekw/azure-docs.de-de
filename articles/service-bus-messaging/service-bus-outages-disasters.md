@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: 2a7f5d5eacb2d03e64ae95d34e1cf0bd37bbc7f2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774601"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229554"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Bewährte Methoden zum Schützen von Anwendungen vor Service Bus-Ausfällen und Notfällen
 

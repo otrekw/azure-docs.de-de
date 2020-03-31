@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: b8a65d4ae6aaac78e642c851a66b745a940fa0ad
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593896"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>Analysieren der Leistung von Edgeknoten in Microsoft Azure CDN
@@ -121,7 +121,7 @@ Diese Metriken dient zum Nachverfolgen der CDN-Gesamtleistung für den Datenverk
 | Compressed Request Rate |Gibt den Prozentsatz der Treffer an, die vom CDN (von Edgeservern) an den Anfordernden (z. B. Webbrowser) in einem komprimierten Format übermittelt wurde. |
 | 4xx Error Rate |Gibt den Prozentsatz der Treffer an, die einen Statuscode vom Typ „4xx“ generiert haben. |
 | 5xx Error Rate |Gibt den Prozentsatz der Treffer an, die einen Statuscode vom Typ „5xx“ generiert haben. |
-| Hits |Gibt die Anzahl der Anforderungen von CDN-Inhalten an. |
+| Treffer |Gibt die Anzahl der Anforderungen von CDN-Inhalten an. |
 
 #### <a name="secure-traffic-metrics"></a>Metriken zu geschütztem Datenverkehr
 Diese Metriken dient zum Nachverfolgen der CDN-Leistung für HTTPS-Datenverkehr.

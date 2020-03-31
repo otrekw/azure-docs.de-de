@@ -15,13 +15,13 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec5fe7f62e8537a7f687202d365eb37d43b48b78
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74008055"
 ---
-# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Gewusst wie: Beheben von Anmeldefehlern mit Azure Active Directory-Berichten
+# <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>Gewusst wie: Durchführen der Problembehandlung für Anmeldefehler mit Azure Active Directory-Berichten
 
 Mit dem [Bericht zu Anmeldeaktivitäten](concept-sign-ins.md) in Azure Active Directory (Azure AD) können Sie Antworten auf Fragen zur Verwaltung des Zugriffs auf die Anwendungen in Ihrer Organisation finden, z.B.:
 
@@ -57,7 +57,7 @@ Erforderlich:
 
 6. Die Fehlerursache beschreibt den Fehler. Im obigen Szenario lautet die Fehlerursache beispielsweise **Ungültiger Benutzername bzw. ungültiges Kennwort oder ungültiger lokaler Benutzername bzw. Kennwort**. Die Lösung besteht darin, die Anmeldung einfach mit dem richtigen Benutzernamen und Kennwort erneut durchzuführen.
 
-7. Sie können weitere Informationen abrufen, z.B. Ideen für Lösungen, indem Sie in diesem Beispiel unter [Fehlercodes des Berichts mit den Anmeldeaktivitäten](reference-sign-ins-error-codes.md) nach dem Fehlercode **50126** suchen. 
+7. Sie können weitere Informationen abrufen, z.B. Ideen für Lösungen, indem Sie in diesem Beispiel unter **Fehlercodes des Berichts mit den Anmeldeaktivitäten** nach dem Fehlercode [50126](reference-sign-ins-error-codes.md) suchen. 
 
 8. Wenn Sie keinen Erfolg haben oder das Problem trotz der empfohlenen Vorgehensweise weiterhin besteht, können Sie [ein Supportticket erstellen](../fundamentals/active-directory-troubleshooting-support-howto.md), indem Sie die Schritte auf der Registerkarte **Problembehandlung und Support** ausführen. 
 

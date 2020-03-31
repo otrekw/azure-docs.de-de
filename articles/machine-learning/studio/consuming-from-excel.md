@@ -10,16 +10,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 3314852de2a5fc76ff152d05649fabb5eac2757e
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 333ed411ab818cff77a7cba6c7de4f42c36f5b6b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168890"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218216"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>Nutzen eines (klassischen) Azure Machine Learning Studio-Webdiensts aus Excel
 
- Mit Azure Machine Learning Studio (klassisch) können Webdienste auf einfache Weise direkt von Excel aus aufgerufen werden, ohne einen Code schreiben zu müssen.
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
+Mit Azure Machine Learning Studio (klassisch) können Webdienste auf einfache Weise direkt von Excel aus aufgerufen werden, ohne einen Code schreiben zu müssen.
 
 Wenn Sie Excel 2013 (oder höher) oder Excel Online verwenden, empfehlen wir die Verwendung des [Excel-Add-Ins](excel-add-in-for-web-services.md).
 

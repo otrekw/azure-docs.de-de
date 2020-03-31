@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.openlocfilehash: e7b8f8a33b741a8dcf2d1a68ae3cf86d6e3687eb
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950408"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237354"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Lesen von Nachrichten, die von Geräten an die Cloud gesendet werden, vom integrierten Endpunkt
 
@@ -50,7 +50,7 @@ Wenn Sie Event Hubs SDKs oder Produktintegrationen verwenden, die nicht IoT Hub-
 
 Im Portal enthält das Feld E“vent Hub-kompatibler Endpunkt“ eine komplette Event Hubs-Verbindungszeichenfolge, die wie folgt aussieht: **Endpoint=sb://abcd1234namespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=keykeykeykeykeykey=;EntityPath=iothub-ehub-abcd-1234-123456**. Wenn das von Ihnen verwendete SDK andere Werte erfordert, dann wären dies:
 
-| NAME | Wert |
+| Name | Wert |
 | ---- | ----- |
 | Endpunkt | sb://abcd1234namespace.servicebus.windows.net/ |
 | Hostname | abcd1234namespace.servicebus.windows.net |

@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: cherylmc
 ms.openlocfilehash: 53c200b01dfa6bce09cfc058dc24ab8e38d253a6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930032"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung mithilfe von PowerShell (klassisch)
 > [!div class="op_single_selector"]
-> * [Azure-Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure-Befehlszeilenschnittstelle](howto-linkvnet-cli.md)
 > * [Video – Azure-Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)

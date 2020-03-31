@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 63148b99e65a5ccc49d54d4ae6c58adebc72c6d3
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76718513"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Übersicht über Data Science mit Spark in Azure HDInsight
@@ -41,7 +41,7 @@ Diese Notebooks werden im PySpark-Kernel des Jupyter-Notebookservers ausgeführt
 ### <a name="spark-20-notebooks"></a>Spark 2.0-Notebooks
 Diese Notebooks werden im PySpark3-Kernel des Jupyter-Notebookservers ausgeführt.
 
-- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) Diese Datei enthält Informationen zum Durchsuchen, Modellieren und Bewerten von Daten in Spark 2.0-Clustern anhand des [hier](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data) beschriebenen „NYC Taxi Trips“ und des Fahrpreisdatasets. Dieses Notebook ist möglicherweise ein guter Ausgangspunkt zum schnellen Untersuchen des Codes, den wir für Spark 2.0 bereitgestellt haben. Ein ausführlicheres Notebook zur Analyse der NYC-Taxidaten finden Sie im nächsten Notebook in dieser Liste. Informationen finden Sie in den Hinweisen im Anschluss an diese Liste, in denen diese Notebooks verglichen werden.
+- [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb:](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb) Diese Datei enthält Informationen zum Durchsuchen, Modellieren und Bewerten von Daten in Spark 2.0-Clustern anhand des [hier](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data) beschriebenen „NYC Taxi Trips“ und des Fahrpreisdatasets. Dieses Notebook ist möglicherweise ein guter Ausgangspunkt zum schnellen Untersuchen des Codes, den wir für Spark 2.0 bereitgestellt haben. Ein ausführlicheres Notebook zur Analyse der NYC-Taxidaten finden Sie im nächsten Notebook in dieser Liste. Informationen finden Sie in den Hinweisen im Anschluss an diese Liste, in der diese Notebooks verglichen werden.
 - [Spark2.0-pySpark3_NYC_Taxi_Tip_Regression.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_NYC_Taxi_Tip_Regression.ipynb): Diese Datei zeigt, wie Datenanalysen (Spark SQL und Dataframevorgänge), Suchvorgänge, Modellierungen und Bewertungen mithilfe des [hier](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-spark-overview#the-nyc-2013-taxi-data) beschriebenen Datasets zu Taxifahrten und Fahrpreisen in New York durchgeführt werden.
 - [Spark2.0-pySpark3_Airline_Departure_Delay_Classification.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0_pySpark3_Airline_Departure_Delay_Classification.ipynb): Diese Datei zeigt, wie Datenanalysen (Spark SQL und Dataframevorgänge), Suchvorgänge, Modellierungen und Bewertungen mithilfe des bekannten Fluglinien-Datasets zu pünktlichen Abflügen aus dem Jahr 2011 und 2012 durchgeführt werden. Wir kombinieren das Fluglinien-Dataset vor der Modellierung mit den Flughafen-Wetterdaten (z. B. Windgeschwindigkeit, Temperatur, Höhe usw.), damit diese Wetterdaten in das Modell aufgenommen werden können.
 

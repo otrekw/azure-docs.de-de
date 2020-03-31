@@ -17,10 +17,10 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8156f8706828afae30889b3250cf0b26252bf394
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77598475"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -209,7 +209,7 @@ Der Azure Load Balancer-Dienst stellt einen *internen Lastenausgleich* für Azur
 
 Stellen Sie den internen Lastenausgleich in der Ressourcengruppe mit den Clusterknoten bereit. Konfigurieren Sie dann alle erforderlichen Portweiterleitungsregeln mithilfe der Testports des internen Lastenausgleichs. Clients können über den virtuellen Hostnamen eine Verbindung herstellen. Der DNS-Server löst die IP-Adresse des Clusters auf. Der interne Load Balancer übernimmt die Weiterleitung an den aktiven Knoten des Clusters.
 
-![Abbildung 1: Konfiguration des Windows-Failoverclusterings in Azure ohne freigegebenen Datenträger][sap-ha-guide-figure-1001]
+![Abbildung 1: Windows-Failoverclusteringkonfiguration in Azure ohne freigegebenen Datenträger][sap-ha-guide-figure-1001]
 
 _**Abbildung 1:** Konfiguration des Windows Server-Failoverclusterings in Azure ohne freigegebenen Datenträger_
 
@@ -220,7 +220,7 @@ Eine SAP ASCS/SCS-Instanz verfügt über die folgenden Komponenten:
 
 * SAP Central Services:
     * Zwei Prozesse, Nachrichtenserver und Server zum Einreihen in die Warteschlange sowie ein \<virtueller ASCS/SCS-Hostname> für den Zugriff auf diese beiden Prozesse.
-    * Dateistruktur: S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<Instanzanzahl\>
+    * Dateistruktur: S:\usr\sap\\&lt;SID&gt;\ASCS/SCS\<Instanznummer\>
 
 
 * Globaler SAP-Hostname:
@@ -236,9 +236,9 @@ _**Abbildung 2:** Prozesse, Dateistruktur und sapmnt-Dateifreigabe des globalen 
 
 Bei der Einstellung für die Hochverfügbarkeit erfolgt ein Clustering von SAP ASCS/SCS-Instanzen. Wir verwenden *freigegebene Clusterdatenträger* (in unserem Beispiel ist dies Laufwerk S:\), um Dateien von SAP ASCS/SCS und Dateien des globalen SAP-Hosts zu positionieren.
 
-![Abbildung 3: SAP ASCS/SCS-HA-Architektur mit freigegebenem Datenträger][sap-ha-guide-figure-8002]
+![Abbildung 3: SAP ASCS/SCS HA-Architektur mit freigegebenem Datenträger][sap-ha-guide-figure-8002]
 
-_**Abbildung 3:** SAP ASCS/SCS-HA-Architektur mit freigegebenem Datenträger_
+_**Abbildung 3:** SAP ASCS/SCS HA-Architektur mit freigegebenem Datenträger_
 
 > [!IMPORTANT]
 > Diese beiden Komponenten werden unter der gleichen SAP ASCS/SCS-Instanz ausgeführt:
@@ -247,9 +247,9 @@ _**Abbildung 3:** SAP ASCS/SCS-HA-Architektur mit freigegebenem Datenträger_
 >
 
 
-![Abbildung 4: SAP ASCS/SCS-HA-Architektur mit freigegebenem Datenträger][sap-ha-guide-figure-8003]
+![Abbildung 4: SAP ASCS/SCS HA-Architektur mit freigegebenem Datenträger][sap-ha-guide-figure-8003]
 
-_**Abbildung 4:** SAP ASCS/SCS-HA-Architektur mit freigegebenem Datenträger_
+_**Abbildung 4:** SAP ASCS/SCS HA-Architektur mit freigegebenem Datenträger_
 
 ### <a name="shared-disks-in-azure-with-sios-datakeeper"></a>Freigegebener Datenträger in Azure mit SIOS DataKeeper
 
@@ -265,9 +265,9 @@ So erstellen Sie eine freigegebene Datenträgerressource für einen Cluster
 
 Weitere Informationen zu [SIOS DataKeeper](https://us.sios.com/products/datakeeper-cluster/).
 
-![Abbildung 5: Konfiguration des Windows Server-Failoverclusterings in Azure mit SIOS DataKeeper][sap-ha-guide-figure-1002]
+![Abbildung 5: Windows Server-Failoverclusteringkonfiguration in Azure mit SIOS DataKeeper][sap-ha-guide-figure-1002]
 
-_**Abbildung 5:** Konfiguration des Windows-Failoverclusterings in Azure mit SIOS DataKeeper_
+_**Abbildung 5:** Windows-Failoverclusteringkonfiguration in Azure mit SIOS DataKeeper_
 
 > [!NOTE]
 > Sie benötigen bei einigen DBMS-Produkten wie SQL Server für Hochverfügbarkeit keine freigegebenen Datenträger. SQL Server AlwaysOn führt die Replikation von DBMS-Daten- und -Protokolldateien vom lokalen Datenträger eines Clusterknotens auf den lokalen Datenträger eines anderen Clusterknotens durch. In diesem Fall ist bei der Windows-Clusterkonfiguration kein freigegebener Datenträger erforderlich.

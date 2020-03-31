@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 12/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 84734aefb72a3330d99c5707b461de2cd5e30484
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60637859"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228246"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Verwenden des StorSimple-Geräte-Manager-Diensts im Azure-Portal zum Klonen eines Volumes
 

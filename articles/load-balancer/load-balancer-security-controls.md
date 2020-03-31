@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: allensu
 ms.openlocfilehash: 6043e574697489b6566641c352bc21a2b6d87f51
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74214903"
 ---
 # <a name="security-controls-for-azure-load-balancer"></a>Sicherheitskontrollen für Azure Load Balancer
@@ -42,10 +42,10 @@ In diesem Artikel werden die in Azure Load Balancer integrierten Sicherheitskont
 
 | Sicherheitskontrolle | Ja/Nein | Notizen|
 |---|---|--|
-| Authentication| – |  |
+| Authentifizierung| – |  |
 | Authorization| – |  |
 
-## <a name="data-protection"></a>Datenschutz
+## <a name="data-protection"></a>Schutz von Daten
 
 | Sicherheitskontrolle | Ja/Nein | Notizen |
 |---|---|--|

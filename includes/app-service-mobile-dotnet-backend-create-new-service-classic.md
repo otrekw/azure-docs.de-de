@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: e087a1db008422aeec8fd4e073a7476eebe4d54b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67178773"
 ---
-1. Melden Sie sich beim [Azure-Portal] an.
+1. Melden Sie sich beim [Azure portal] an.
 2. Wählen Sie **+ NEU** > **Web + Mobil** > **Mobile App** aus, und geben Sie einen Namen für Ihr Mobile Apps-Back-End an.
 3. Wählen Sie unter **Ressourcengruppe** eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue. (Verwenden Sie dabei den gleichen Namen wie für die App.) 
 4. Für den **App Service-Plan** ist der Standardplan (im Tarif [Standard](https://azure.microsoft.com/pricing/details/app-service/)) ausgewählt. Sie können auch einen anderen Plan auswählen oder [einen neuen Plan erstellen](../articles/app-service/app-service-plan-manage.md#create-an-app-service-plan). 
@@ -31,4 +31,4 @@ ms.locfileid: "67178773"
    Warten Sie einige Minuten, bis die Datenbank bereitgestellt wurde, bevor Sie fortfahren.
 
 <!-- URLs. -->
-[Azure-Portal]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/

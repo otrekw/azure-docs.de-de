@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: f9043fbbb77059eb4e4ed42dbef8a42e5790d565
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77564005"
 ---
 # <a name="view-the-list-of-cloudsimple-portal-users"></a>Anzeigen der Liste der CloudSimple-Portalbenutzer

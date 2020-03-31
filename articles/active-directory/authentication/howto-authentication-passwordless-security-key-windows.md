@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 327f53fb39e58f7b70040eb41b6cd80aca18e510
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: ca6ef244a887e75a0d8b9bb663d5325a33cd1e89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522032"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230986"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei Windows 10-Geräten mit Azure Active Directory (Vorschauversion)
 
@@ -35,7 +35,7 @@ In diesem Dokument liegt der Schwerpunkt auf der Aktivierung der auf FIDO2-Siche
 | [Kombinierte Registrierung von Sicherheitsinformationen (Vorschauversion)](concept-registration-mfa-sspr-combined.md) | X | X |
 | Kompatible [FIDO2-Sicherheitsschlüssel](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | WebAuthN erfordert Windows 10, Version 1809 oder höher. | X | X |
-| [In Azure AD eingebundene Geräte](../devices/concept-azure-ad-join.md) erfordern Windows 10, Version 1809 oder höher. | X |   |
+| [In Azure AD eingebundene Geräte](../devices/concept-azure-ad-join.md) erfordern Windows 10, Version 1903 oder höher | X |   |
 | Auf [in Azure AD Hybrid eingebundenen Geräten](../devices/concept-azure-ad-join-hybrid.md) muss mindestens der Build 18945 von Windows 10 Insider ausgeführt werden. |   | X |
 | Vollständig gepatchte Windows Server 2016/2019-Domänencontroller. |   | X |
 | [Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md#install-azure-ad-connect) Version 1.4.32.0 oder höher |   | X |
@@ -54,6 +54,7 @@ Folgende Szenarien werden nicht unterstützt:
 - Die Anmeldung bei einem Server mithilfe eines Sicherheitsschlüssels.
 - Wenn Sie Ihren Sicherheitsschlüssel nicht verwendet haben, um sich online bei Ihrem Gerät anzumelden, können Sie ihn nicht verwenden, um sich offline anzumelden oder die Sperrung aufzuheben.
 - Anmelden oder Entsperren eines Windows 10-Geräts mit einem Sicherheitsschlüssel, der mehrere Azure AD-Konten enthält In diesem Szenario wird das letzte Konto verwendet, das dem Sicherheitsschlüssel hinzugefügt wurde. WebAuthN ermöglicht Benutzern die Auswahl des gewünschten Kontos.
+- Entsperren eines Geräts unter Windows 10, Version 1809. Hierfür eignet sich besonders Windows 10 (Version 1903 oder höher).
 
 ## <a name="prepare-devices-for-preview"></a>Vorbereiten von Geräten für die Vorschauversion
 

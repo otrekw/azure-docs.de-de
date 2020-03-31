@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
 ms.openlocfilehash: 6e9f9c89cf2e5e40d37a1532e688490aae294181
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73888865"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>Verbinden eines IoT DevKit-Geräts mit dem Solution Accelerator für die Remoteüberwachung

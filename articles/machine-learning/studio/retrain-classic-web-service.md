@@ -10,14 +10,16 @@ author: peterclu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: caf2437b4a4853bc29f094d082a4ea15d2f7a3c9
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 8094d64eab1a4b25a76554bf9eb6848c2e4d3493
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388481"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79204238"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Erneutes Trainieren und Bereitstellen eines (klassischen) Studio-Webdiensts
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Das erneute Training von Machine Learning-Modellen ist eine Möglichkeit sicherzustellen, dass sie fehlerfrei bleiben und auf den relevantesten verfügbaren Daten basieren. In diesem Artikel werden das erneute Trainieren eines (klassischen) Studio-Webdiensts erläutert. Eine Anleitung zum erneuten Trainieren eines neues (klassischen) Studio-Webdiensts [finden Sie in dieser Anleitung](retrain-machine-learning-model.md).
 

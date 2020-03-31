@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
 ms.openlocfilehash: 2c28df35eec862afb5b0078ca7693898e9b58533
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436944"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231274"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>Erstellen und Ändern des Peerings für eine ExpressRoute-Verbindung mithilfe von PowerShell
 
@@ -49,7 +49,7 @@ Sie können privates Peering und Microsoft-Peering für eine ExpressRoute-Leitun
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-## <a name="msft"></a>Microsoft-Peering
+## <a name="microsoft-peering"></a><a name="msft"></a>Microsoft-Peering
 
 Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Löschen der Microsoft-Peeringkonfiguration für eine ExpressRoute-Verbindung.
 
@@ -137,7 +137,7 @@ Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Lö
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-### <a name="getmsft"></a>So rufen Sie Details zum Microsoft-Peering ab
+### <a name="to-get-microsoft-peering-details"></a><a name="getmsft"></a>So rufen Sie Details zum Microsoft-Peering ab
 
 Sie können Konfigurationsdetails anhand des folgenden Beispiels abrufen:
 
@@ -147,7 +147,7 @@ $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupNa
 Get-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
 ```
 
-### <a name="updatemsft"></a>So aktualisieren Sie die Konfiguration des Microsoft-Peerings:
+### <a name="to-update-microsoft-peering-configuration"></a><a name="updatemsft"></a>So aktualisieren Sie die Konfiguration des Microsoft-Peerings:
 
 Sie können einen beliebigen Teil der Konfiguration anhand des folgenden Beispiels aktualisieren:
 
@@ -159,7 +159,7 @@ Set-AzExpressRouteCircuitPeeringConfig  -Name "MicrosoftPeering" -ExpressRouteCi
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="deletemsft"></a>So löschen Sie das Microsoft-Peering:
+### <a name="to-delete-microsoft-peering"></a><a name="deletemsft"></a>So löschen Sie das Microsoft-Peering:
 
 Sie können Ihre Peeringkonfiguration entfernen, indem Sie das folgende Cmdlet ausführen:
 
@@ -169,7 +169,7 @@ Remove-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRoute
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-## <a name="private"></a>Privates Azure-Peering:
+## <a name="azure-private-peering"></a><a name="private"></a>Privates Azure-Peering:
 
 Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Löschen der privaten Azure-Peeringkonfiguration für eine ExpressRoute-Verbindung.
 
@@ -269,7 +269,7 @@ Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Lö
    > 
    >
 
-### <a name="getprivate"></a>So rufen Sie Details zum privaten Azure-Peering ab
+### <a name="to-get-azure-private-peering-details"></a><a name="getprivate"></a>So rufen Sie Details zum privaten Azure-Peering ab
 
 Sie können Konfigurationsdetails anhand des folgenden Beispiels abrufen:
 
@@ -279,7 +279,7 @@ $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupNa
 Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
 ```
 
-### <a name="updateprivate"></a>So aktualisieren Sie die Konfiguration für privates Azure-Peering:
+### <a name="to-update-azure-private-peering-configuration"></a><a name="updateprivate"></a>So aktualisieren Sie die Konfiguration für privates Azure-Peering:
 
 Sie können einen beliebigen Teil der Konfiguration anhand des folgenden Beispiels aktualisieren. In diesem Beispiel wird die VLAN-ID der Verbindung von 100 in 500 geändert.
 
@@ -289,7 +289,7 @@ Set-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRoute
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="deleteprivate"></a>So löschen Sie ein privates Azure-Peering:
+### <a name="to-delete-azure-private-peering"></a><a name="deleteprivate"></a>So löschen Sie ein privates Azure-Peering:
 
 Sie können Ihre Peeringkonfiguration entfernen, indem Sie das folgende Beispiel ausführen:
 

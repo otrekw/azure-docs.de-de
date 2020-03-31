@@ -15,22 +15,22 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: ba6f1300353247ef2de99b2bd903bc82665d9a52
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978144"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf einer Azure-VM mit PowerShell
 > [!div class="op_single_selector"]
-> * [Klassisch: UI](../classic/portal-sql-alwayson-availability-groups.md)
+> * [Klassisch: Benutzeroberfläche](../classic/portal-sql-alwayson-availability-groups.md)
 > * [Klassisch: PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
 <br/>
 
 Bevor Sie beginnen, sollten Sie berücksichtigen, dass Sie diese Aufgabe nun im Azure Resource Manager-Modell durchführen können. Wir empfehlen das Azure Resource Manager-Modell für neue Bereitstellungen. Weitere Informationen finden Sie unter [SQL Server AlwaysOn-Verfügbarkeitsgruppen auf virtuellen Azure-Computern](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md).
 
 > [!IMPORTANT]
-> Wir empfehlen für die meisten Neubereitstellungen das Resource Manager-Modell. Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [das Resource Manager-Modell und das klassische Bereitstellungsmodell](../../../azure-resource-manager/management/deployment-models.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells.
+> Wir empfehlen für die meisten Neubereitstellungen das Resource Manager-Modell. Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Ressourcen-Manager und klassische Bereitstellungen](../../../azure-resource-manager/management/deployment-models.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells.
 
 Mithilfe von Azure Virtual Machines (VMs) können Datenbankadministratoren die Kosten für hochverfügbare SQL Server-Systeme senken. In diesem Tutorial erfahren Sie, wie Sie eine Verfügbarkeitsgruppe mithilfe von SQL Server AlwaysOn End-to-End in einer Azure-Umgebung implementieren können. Am Ende des Tutorials besteht Ihre SQL Server AlwaysOn-Lösung in Azure aus folgenden Elementen:
 
@@ -58,7 +58,7 @@ Dieses Tutorial soll Ihnen die erforderlichen Schritte für das Einrichten der o
     Der Befehl **Get-AzurePublishSettingsFile** generiert automatisch ein Verwaltungszertifikat für Azure und lädt dieses auf Ihren Computer herunter. Es wird automatisch ein Browser geöffnet und Sie werden aufgefordert, die Anmeldeinformationen Ihres Microsoft-Kontos für Ihr Azure-Abonnement einzugeben. Die heruntergeladene **.publishsettings**-Datei enthält alle Informationen, die Sie zum Verwalten Ihres Azure-Abonnements benötigen. Nachdem Sie diese Datei in einem lokalen Verzeichnis gespeichert haben, importieren Sie sie mithilfe des Befehls **Import-AzurePublishSettingsFile**.
 
    > [!NOTE]
-   > Die .publishsettings-Datei enthält Ihre (unverschlüsselten) Anmeldeinformationen für die Verwaltung Ihrer Azure-Abonnements und -Dienste. Die bewährte Sicherheitsmethode für diese Datei besteht im vorübergehenden Speichern außerhalb Ihrer Quellverzeichnisse (beispielsweise im Ordner „Libraries\Documents“). Löschen Sie sie nach Abschluss des Importvorgangs. Böswillige Benutzer, die Zugriff auf die Datei .publishsettings erlangen, können Ihre Azure-Dienste bearbeiten, erstellen und löschen.
+   > Die .publishsettings-Datei enthält Ihre (unverschlüsselten) Anmeldeinformationen für die Verwaltung Ihrer Azure-Abonnements und -Dienste. Die bewährte Sicherheitsmethode für diese Datei besteht im vorübergehenden Speichern außerhalb Ihrer Quellverzeichnisse (beispielsweise im Ordner „Libraries\Documents“). Löschen Sie sie nach Abschluss des Importvorgangs. Böswillige Benutzer, die Zugriff auf die Datei {1}.publishsettings{2} erlangen, können Ihre Azure-Dienste bearbeiten, erstellen und löschen.
 
 2. Definieren Sie eine Reihe von Variablen, die Sie zum Erstellen Ihrer Cloud-IT-Infrastruktur verwenden.
 
@@ -381,13 +381,13 @@ In diesem Abschnitt müssen Sie die drei Server ändern, die Sie für die Failov
 
 * Alle Server: Sie müssen das Feature **Failoverclustering** installieren.
 * Alle Server: Sie müssen **CORP\Install** als **Computeradministrator** hinzufügen.
-* Nur ContosoSQL1 und ContosoSQL2: Sie müssen **CORP\Install** als **sysadmin**-Rolle in der Standarddatenbank hinzufügen.
-* Nur ContosoSQL1 und ContosoSQL2: Sie müssen**NT AUTHORITY\System** als Anmeldekonto mit den folgenden Berechtigungen hinzufügen:
+* Nur „ContosoSQL1“ und „ContosoSQL2“: Sie müssen **CORP\Install** als **sysadmin**-Rolle in der Standarddatenbank hinzufügen.
+* Nur „ContosoSQL1“ und „ContosoSQL2“: Sie müssen**NT AUTHORITY\System** als Anmeldekonto mit den folgenden Berechtigungen hinzufügen:
 
   * Beliebige Verfügbarkeitsgruppe ändern
   * SQL verbinden
   * Serverstatus anzeigen
-* Nur ContosoSQL1 und ContosoSQL2: Das **TCP** -Protokoll ist bereits auf der SQL Server-VM aktiviert. Jedoch müssen Sie die Firewall für den Remotezugriff auf SQL Server öffnen.
+* Nur „ContosoSQL1“ und „ContosoSQL2“: Das **TCP** -Protokoll ist bereits auf der SQL Server-VM aktiviert. Jedoch müssen Sie die Firewall für den Remotezugriff auf SQL Server öffnen.
 
 Nun können Sie loslegen. Führen Sie die nachfolgenden Schritte aus, beginnend mit **ContosoQuorum**:
 

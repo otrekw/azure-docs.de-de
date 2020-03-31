@@ -13,12 +13,12 @@ ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: bb44e078a3958a788d23356c970b62fd97cbf420
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 9e35ba5a3f3705a52e80262da9bbfbfda489bf83
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696315"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050380"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android-Konfigurationsdatei für die Microsoft-Authentifizierungsbibliothek
 
@@ -88,11 +88,11 @@ Die Liste von Autoritäten, die Ihnen bekannt sind und von Ihnen als vertrauensw
 
 | type | Zielgruppe | Mandanten-ID | Authority_Url | Resultierender Endpunkt | Notizen |
 |------|------------|------------|----------------|----------------------|---------|
-| AAD | AzureADandPersonalMicrosoftAccount | | | https://login.microsoftonline.com/common | `common` ist ein Mandantenalias für den Speicherort des Kontos. Dies kann beispielsweise ein bestimmter Azure Active Directory-Mandant oder das Microsoft-Kontosystem sein. |
-| AAD | AzureADMyOrg | contoso.com | | https://login.microsoftonline.com/contoso.com | Nur Konten, die in „contoso.com“ vorhanden sind, können ein Token abrufen. Jede beliebige überprüfte Domäne oder die Mandanten-GUID kann als Mandanten-ID verwendet werden. |
-| AAD | AzureADMultipleOrgs | | | https://login.microsoftonline.com/organizations | Nur Azure Active Directory-Konten können bei diesem Endpunkt verwendet werden. Microsoft-Konten können Mitglieder von Organisationen sein. Wenn Sie ein Token über ein Microsoft-Konto für eine Ressource in einer Organisation abrufen möchten, geben Sie den Organisationsmandanten an, dessen Token Sie verwenden möchten. |
-| AAD | PersonalMicrosoftAccount | | | https://login.microsoftonline.com/consumers | Dieser Endpunkt kann nur von Microsoft-Konten verwendet werden. |
-| B2C | | | Anzeigen des resultierenden Endpunkts | https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SISOPolicy/ | Nur Konten, die im Mandanten „contoso.onmicrosoft.com“ vorhanden sind, können ein Token abrufen. In diesem Beispiel ist die B2C-Richtlinie Teil des Autoritäts-URL-Pfads. |
+| AAD | AzureADandPersonalMicrosoftAccount | | | `https://login.microsoftonline.com/common` | `common` ist ein Mandantenalias für den Speicherort des Kontos. Dies kann beispielsweise ein bestimmter Azure Active Directory-Mandant oder das Microsoft-Kontosystem sein. |
+| AAD | AzureADMyOrg | contoso.com | | `https://login.microsoftonline.com/contoso.com` | Nur Konten, die in „contoso.com“ vorhanden sind, können ein Token abrufen. Jede beliebige überprüfte Domäne oder die Mandanten-GUID kann als Mandanten-ID verwendet werden. |
+| AAD | AzureADMultipleOrgs | | | `https://login.microsoftonline.com/organizations` | Nur Azure Active Directory-Konten können bei diesem Endpunkt verwendet werden. Microsoft-Konten können Mitglieder von Organisationen sein. Wenn Sie ein Token über ein Microsoft-Konto für eine Ressource in einer Organisation abrufen möchten, geben Sie den Organisationsmandanten an, dessen Token Sie verwenden möchten. |
+| AAD | PersonalMicrosoftAccount | | | `https://login.microsoftonline.com/consumers` | Dieser Endpunkt kann nur von Microsoft-Konten verwendet werden. |
+| B2C | | | Anzeigen des resultierenden Endpunkts | `https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SISOPolicy/` | Nur Konten, die im Mandanten „contoso.onmicrosoft.com“ vorhanden sind, können ein Token abrufen. In diesem Beispiel ist die B2C-Richtlinie Teil des Autoritäts-URL-Pfads. |
 
 > [!NOTE]
 > Die Autoritätsüberprüfung kann in der MSAL nicht aktiviert und deaktiviert werden.

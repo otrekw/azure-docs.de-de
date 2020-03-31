@@ -9,10 +9,10 @@ ms.date: 11/28/2018
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 4b1a42e25a6d8c7b4a3c24dffcb858ffe63dd10b
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71671046"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Entscheidung zwischen Azure-Blobs, Azure Files und Azure-Datenträger
@@ -23,7 +23,7 @@ Microsoft Azure bietet verschiedenen Funktionen in Azure Storage zum Speichern u
 
 In der folgenden Tabelle werden Files, Blobs und Datenträger miteinander verglichen. Darüber hinaus werden jeweils passende Beispielszenarios gegeben.
 
-| Feature | BESCHREIBUNG | Einsatzgebiete |
+| Funktion | BESCHREIBUNG | Verwendung |
 |--------------|-------------|-------------|
 | **Azure Files** | Bietet eine SMB-Schnittstelle, Clientbibliotheken und eine [REST-Schnittstelle](/rest/api/storageservices/file-service-rest-api), mit denen Sie von überall auf gespeicherte Dateien zugreifen können. | Wenn Sie eine Anwendung mit der „Lift and Shift“-Methode in die Cloud verschieben möchten, die bereits die nativen Dateisystem-APIs verwendet, um Daten für andere in Azure ausgeführte Anwendungen freizugeben.<br/><br/>Wenn Sie Tools zum Entwickeln und Debuggen speichern möchten, auf die von vielen virtuellen Computern zugegriffen werden muss. |
 | **Azure-Blobs** | Bietet Clientbibliotheken und eine [REST-Schnittstelle](/rest/api/storageservices/blob-service-rest-api), der große Mengen an unstrukturierten Daten in Blockblobs gespeichert und abgerufen werden können.<br/><br/>Blob Storage unterstützt darüber hinaus [Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md) für Big Data-Analyselösungen auf Unternehmensniveau. | Wenn Sie möchten, dass Ihre Anwendung Szenarios für das Streaming und den zufälligen Zugriff unterstützt.<br/><br/>Wenn Sie die Möglichkeit haben möchten, von überall auf Anwendungsdaten zugreifen zu können.<br/><br/>Sie möchten einen Unternehmens-Data Lake in Azure aufbauen und Big Data-Analysen durchführen. |

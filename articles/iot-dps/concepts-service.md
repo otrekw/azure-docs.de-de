@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: f42502ac4db12a060af5906243d3f8e7584c5df3
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975600"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237542"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>Konzepte beim IoT Hub Device Provisioning-Dienst
 
@@ -73,6 +73,6 @@ Eine individuelle Registrierung ist ein Eintrag für ein einzelnes Gerät, das r
 
 Eine Registrierung ist der Datensatz eines Geräts, das über den Device Provisioning-Dienst erfolgreich in einem IoT Hub registriert/bereitgestellt wurde. Registrierungsdatensätze werden automatisch erstellt. Sie können gelöscht, jedoch nicht aktualisiert werden.
 
-## <a name="operations"></a>Vorgänge
+## <a name="operations"></a>Operationen (Operations)
 
 Vorgänge stellen die Abrechnungseinheit des Device Provisioning-Diensts dar. Ein Vorgang entspricht der erfolgreichen Ausführung einer Anweisung für den Dienst. Vorgänge umfassen Registrierungen und erneute Registrierungen von Geräten sowie dienstseitige Änderungen wie das Hinzufügen und Aktualisieren von Registrierungslisteneinträgen.

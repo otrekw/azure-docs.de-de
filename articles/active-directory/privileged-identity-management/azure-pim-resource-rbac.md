@@ -15,10 +15,10 @@ ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4bf65ad595fb1ab70eb6613b6d54ac2a4f69141e
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78329597"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>Anzeigen von Aktivitäten und des Überwachungsverlaufs für Azure-Ressourcenrollen in Privileged Identity Management
@@ -26,7 +26,7 @@ ms.locfileid: "78329597"
 Mit Azure Active Directory (Azure AD) Privileged Identity Management (PIM) können Sie Aktivitäten, Aktivierungen und den Überwachungsverlauf für Azure-Ressourcenrollen innerhalb Ihrer Organisation anzeigen. Dies schließt Abonnements, Ressourcengruppen und sogar virtuelle Computer ein. Alle Ressourcen im Azure-Portal, die die Azure-Funktion für die rollenbasierte Zugriffssteuerung nutzen, können von den Sicherheits- und Lebenszyklusverwaltungsfunktionen von Privileged Identity Management profitieren.
 
 > [!NOTE]
-> Wenn Ihre Organisation Verwaltungsfunktionen an einen Dienstanbieter ausgelagert hat, der die [delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md) verwendet, werden die von diesem Dienstanbieter autorisierten Rollenzuweisungen hier nicht angezeigt.
+> Wenn Ihre Organisation Verwaltungsfunktionen an einen Dienstanbieter ausgelagert hat, der die [Delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/azure-delegated-resource-management.md) verwendet, werden die von diesem Dienstanbieter autorisierten Rollenzuweisungen hier nicht angezeigt.
 
 ## <a name="view-activity-and-activations"></a>Anzeigen von Aktivitäten und Aktivierungen
 

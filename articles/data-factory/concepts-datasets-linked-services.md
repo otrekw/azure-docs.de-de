@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/25/2019
 ms.openlocfilehash: 878ad98b118fa02a6659584ac60e3343a948cd20
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928476"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225558"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datasets in Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-create-datasets.md)
 > * [Aktuelle Version](concepts-datasets-linked-services.md)
 
@@ -33,7 +33,7 @@ Eine Data Factory kann eine oder mehrere Pipelines haben. Bei einer **Pipeline**
 
 Bevor Sie ein Dataset erstellen, müssen Sie einen [**verknüpften Dienst**](concepts-linked-services.md) erstellen, um Ihren Datenspeicher mit der Data Factory zu verknüpfen. Verknüpfte Dienste ähneln Verbindungszeichenfolgen, mit denen die Verbindungsinformationen definiert werden, die für Data Factory zum Herstellen einer Verbindung mit externen Ressourcen erforderlich sind. Sie können sich dies wie folgt vorstellen: Das Dataset stellt die Struktur der Daten innerhalb des verknüpften Datenspeichers dar, und der verknüpfte Dienst definiert die Verbindung mit der Datenquelle. Ein mit Azure Storage verknüpfter Dienst verbindet z.B. ein Speicherkonto mit der Data Factory. Ein Azure-Blob-Dataset stellt den Blobcontainer und den Ordner innerhalb des Azure-Speicherkontos dar, das die zu verarbeitenden Eingabeblobs enthält.
 
-Hier ist ein Beispielszenario. Um Daten aus Blob Storage in eine SQL-Datenbank zu kopieren, erstellen Sie zwei verknüpfte Dienste: Azure Storage und Azure SQL-Datenbank. Erstellen Sie anschließend zwei Datasets: Azure-Blobdataset (das sich auf den mit Azure Storage verknüpften Dienst bezieht) und Azure SQL-Tabellendataset (das sich auf den mit Azure SQL-Datenbank verknüpften Dienst bezieht). Die mit Azure Storage und Azure SQL-Datenbank verknüpften Dienste enthalten Verbindungszeichenfolgen, die Data Factory zur Laufzeit verwendet, um die Verbindung mit Ihrem Azure Storage bzw. mit Ihrer Instanz von Azure SQL-Datenbank herzustellen. Das Azure-Blobdataset gibt den Blobcontainer und Blobordner an, der die Eingabeblobs in Ihrer Blob Storage-Instanz enthält. Das Azure SQL-Tabellendataset gibt die SQL-Tabelle in Ihrer SQL-Datenbank an, in die die Daten kopiert werden sollen.
+Hier ist ein Beispielszenario. Um Daten aus Blob Storage in eine SQL-Datenbank zu kopieren, erstellen Sie zwei verknüpfte Dienste: Azure Storage und Azure SQL-Datenbank. Erstellen Sie dann zwei Datasets: Azure-Blobdataset (das sich auf den mit Azure Storage verknüpften Dienst bezieht) und Azure SQL-Tabellendataset (das sich auf den mit Azure SQL-Datenbank verknüpften Dienst bezieht). Die mit Azure Storage und Azure SQL-Datenbank verknüpften Dienste enthalten Verbindungszeichenfolgen, die Data Factory zur Laufzeit verwendet, um die Verbindung mit Ihrem Azure Storage bzw. mit Ihrer Instanz von Azure SQL-Datenbank herzustellen. Das Azure-Blobdataset gibt den Blobcontainer und Blobordner an, der die Eingabeblobs in Ihrer Blob Storage-Instanz enthält. Das Azure SQL-Tabellendataset gibt die SQL-Tabelle in Ihrer SQL-Datenbank an, in die die Daten kopiert werden sollen.
 
 Das folgende Diagramm zeigt die Beziehung zwischen Pipeline, Aktivität, Dataset und verknüpftem Dienst in der Data Factory an:
 
@@ -70,15 +70,15 @@ In der folgenden Tabelle werden die Eigenschaften im obigen JSON-Code beschriebe
 Eigenschaft | BESCHREIBUNG | Erforderlich |
 -------- | ----------- | -------- |
 name | Name des Datasets. Siehe [Azure Data Factory – Benennungsregeln](naming-rules.md). |  Ja |
-type | Typ des Datasets. Geben Sie einen der von Data Factory unterstützten Typen an (z.B. AzureBlob, AzureSqlTable). <br/><br/>Weitere Informationen finden Sie unter [Datasettyp](#dataset-type). | Ja |
+type | Typ des Datasets. Geben Sie einen der von Data Factory unterstützten Typen an (z. B.: „AzureBlob“, „AzureSqlTable“). <br/><br/>Weitere Informationen finden Sie unter [Datasettyp](#dataset-type). | Ja |
 structure | Schema des Datasets. Weitere Informationen finden Sie unter [Datasetschema](#dataset-structure-or-schema). | Nein |
-typeProperties | Die Typeigenschaften unterscheiden sich je nach Typ (z.B. Azure-Blob, Azure SQL-Tabelle). Ausführliche Informationen über die unterstützten Typen und deren Eigenschaften finden Sie unter [Dataset: type](#dataset-type). | Ja |
+typeProperties | Die Typeigenschaften der einzelnen Typen (z.B. Azure-Blob, Azure SQL-Tabelle) sind unterschiedlich. Ausführliche Informationen über die unterstützten Typen und deren Eigenschaften finden Sie unter [Dataset: type](#dataset-type). | Ja |
 
 ### <a name="data-flow-compatible-dataset"></a>Data Flow-kompatibles Dataset
 
 
 
-Eine Liste der mit dem [Datenfluss](concepts-data-flow-overview.md) kompatiblen Datasettypen, finden Sie unter [Unterstützte Datasettypen](#dataset-type). Mit dem Datenfluss kompatible Datasets erfordern detaillierte Datasetdefinitionen für Transformationen. Daher variiert die JSON-Definition leicht. Anstelle einer _structure_-Eigenschaft verfügen Datasets, die mit dem Datenfluss kompatibel sind, über eine _schema_-Eigenschaft.
+Eine Liste der mit dem [Datenfluss](#dataset-type) kompatiblen Datasettypen, finden Sie unter [Unterstützte Datasettypen](concepts-data-flow-overview.md). Mit dem Datenfluss kompatible Datasets erfordern detaillierte Datasetdefinitionen für Transformationen. Daher variiert die JSON-Definition leicht. Anstelle einer _structure_-Eigenschaft verfügen Datasets, die mit dem Datenfluss kompatibel sind, über eine _schema_-Eigenschaft.
 
 Datasets im Datenfluss werden in Transformationen von Quellen und Senken verwendet. Die Datasets definieren die grundlegenden Datenschemas. Wenn Ihre Daten kein Schema aufweisen, können Sie die Schemaabweichung für Ihre Quelle und Senke verwenden. Das Schema im Dataset stellt den physischen Datentyp und die Form dar.
 
@@ -115,9 +115,9 @@ In der folgenden Tabelle werden die Eigenschaften im obigen JSON-Code beschriebe
 Eigenschaft | BESCHREIBUNG | Erforderlich |
 -------- | ----------- | -------- |
 name | Name des Datasets. Siehe [Azure Data Factory – Benennungsregeln](naming-rules.md). |  Ja |
-type | Typ des Datasets. Geben Sie einen der von Data Factory unterstützten Typen an (z.B. AzureBlob, AzureSqlTable). <br/><br/>Weitere Informationen finden Sie unter [Datasettyp](#dataset-type). | Ja |
+type | Typ des Datasets. Geben Sie einen der von Data Factory unterstützten Typen an (z. B.: „AzureBlob“, „AzureSqlTable“). <br/><br/>Weitere Informationen finden Sie unter [Datasettyp](#dataset-type). | Ja |
 schema | Schema des Datasets. Weitere Informationen finden Sie unter [Datenfluss-kompatible Datasets](#dataset-type). | Nein |
-typeProperties | Die Typeigenschaften unterscheiden sich je nach Typ (z.B. Azure-Blob, Azure SQL-Tabelle). Ausführliche Informationen über die unterstützten Typen und deren Eigenschaften finden Sie unter [Dataset: type](#dataset-type). | Ja |
+typeProperties | Die Typeigenschaften der einzelnen Typen (z.B. Azure-Blob, Azure SQL-Tabelle) sind unterschiedlich. Ausführliche Informationen über die unterstützten Typen und deren Eigenschaften finden Sie unter [Dataset: type](#dataset-type). | Ja |
 
 
 ## <a name="dataset-example"></a>Datasetbeispiel
@@ -181,7 +181,7 @@ Jede Spalte im Abschnitt „structure“ enthält die folgenden Eigenschaften:
 Eigenschaft | BESCHREIBUNG | Erforderlich
 -------- | ----------- | --------
 name | Name der Spalte. | Ja
-type | Datentyp der Spalte. Data Factory unterstützt die folgenden Zwischendatentypen als zulässige Werte: **„Int16“, „Int32“, „Int64“, „Single“, „Double“, „Decimal“, „Byte[]“, „Boolean“, „String“, „Guid“, „Datetime“, „Datetimeoffset“ und „Timespan“** . | Nein
+type | Datentyp der Spalte. Data Factory unterstützt die folgenden Zwischendatentypen als zulässige Werte: **Int16, Int32, Int64, Single, Double, Decimal, Byte[], Boolean, String, Guid, Datetime, Datetimeoffset und Timespan**. | Nein
 culture | Zu verwendendes .NET-basiertes Gebietsschema, wenn der Typ ein .NET-Typ ist: `Datetime` oder `Datetimeoffset`. Der Standardwert lautet `en-us`. | Nein
 format | Zu verwendende Formatzeichenfolge, wenn der Typ ein .NET-Typ ist: `Datetime` oder `Datetimeoffset`. Informationen zum Formatieren von Datum und Uhrzeit finden Sie unter [Benutzerdefinierte Formatzeichenfolgen für Datum und Uhrzeit](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). | Nein
 

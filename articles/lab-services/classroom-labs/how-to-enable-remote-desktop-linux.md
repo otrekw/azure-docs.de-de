@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: spelluru
 ms.openlocfilehash: cb9a3e2b9ddcd0f74bfa4978f0bc3f4eb0688257
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583749"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233126"
 ---
 # <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Aktivieren von Remotedesktop für virtuelle Linux-Computer in einem Lab in Azure Lab Services
 In diesem Artikel wird gezeigt, wie Sie Folgendes durchführen:

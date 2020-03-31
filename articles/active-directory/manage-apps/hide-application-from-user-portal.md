@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 03/25/2020
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be29f51771e24c67a8cd99a81e6a69be830dacb8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5718adf4fd76e2fbd0ff793dd2fa33ee08f7c0fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970634"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295049"
 ---
 # <a name="hide-applications-from-end-users-in-azure-active-directory"></a>Ausblenden von Anwendungen für Endbenutzer in Azure Active Directory
 
@@ -52,7 +52,7 @@ Connect-AzureAD
 $objectId = "<objectId>"
 $servicePrincipal = Get-AzureADServicePrincipal -ObjectId $objectId
 $tags = $servicePrincipal.tags
-$tags.Add("HideApp")
+$tags += "HideApp"
 Set-AzureADServicePrincipal -ObjectId $objectId -Tags $tags
 ```
 

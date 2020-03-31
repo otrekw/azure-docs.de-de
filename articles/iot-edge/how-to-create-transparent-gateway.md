@@ -8,12 +8,12 @@ ms.date: 11/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bf60bfb41e48220845e9aa26dc26f20e6ed60d16
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 6069e0782f69d0dfb73d9be2998cbb11d59d7d22
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76510684"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529168"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurieren eines IoT Edge-Geräts als transparentes Gateway
 
@@ -48,7 +48,7 @@ In den folgenden Schritten werden Sie durch den Prozess zum Erstellen der Zertif
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Ein Azure IoT Edge-Gerät, das mit [Produktionszertifikaten](how-to-install-production-certificates.md) konfiguriert wurde.
+Ein Azure IoT Edge-Gerät, das mit [Produktionszertifikaten](how-to-manage-device-certificates.md) konfiguriert wurde.
 
 ## <a name="deploy-edgehub-to-the-gateway"></a>Bereitstellen von Edge Hub für das Gateway
 

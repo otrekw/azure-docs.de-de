@@ -9,17 +9,17 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 0b9c5b17b993afdd64cd2cbd8a15cbd6dd53f5ca
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: ff829e9ffbd6d6ae0766998e62634ac873afc748
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944666"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066656"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planen der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 
 > [!IMPORTANT]
-> Derzeit nutzen etwa 90 % der IaaS-VMs [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). Seit dem 28. Februar 2020 gelten klassische VMs als veraltet. Sie werden am 1. März 2023 vollständig eingestellt. [Erfahren Sie mehr]( https://aka.ms/classicvmretirement) zu dieser Veraltung und den [Auswirkungen auf Sie](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me).
+> Derzeit nutzen etwa 90 % der IaaS-VMs [Azure Resource Manager](https://azure.microsoft.com/features/resource-manager/). Seit dem 28. Februar 2020 gelten klassische VMs als veraltet. Sie werden am 1. März 2023 vollständig eingestellt. [Erfahren Sie mehr]( https://aka.ms/classicvmretirement) zu dieser Einstellung und den [Auswirkungen auf Sie](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation#how-does-this-affect-me).
 
 Azure Resource Manager bietet zwar zahlreiche praktische Features, die Migration muss jedoch sorgfältig geplant werden, damit alles reibungslos funktioniert. Eine gründliche Planung gewährleistet, dass beim Ausführen der Migrationsaktivitäten keine Probleme auftreten.
 
@@ -124,19 +124,19 @@ Die folgenden Probleme wurden in vielen größeren Migrationen festgestellt. Hie
 
     **Compute** *(Kerne, Verfügbarkeitsgruppen)*
 
-    ```bash
+    ```azurecli
     az vm list-usage -l <azure-region> -o jsonc
     ```
 
     **Netzwerk** *(virtuelle Netzwerke, statische öffentliche IP-Adressen, öffentliche IP-Adressen, Netzwerksicherheitsgruppen, Netzwerkschnittstellen, Lastenausgleichsmodule, Routingtabellen)*
 
-    ```bash
+    ```azurecli
     az network list-usages -l <azure-region> -o jsonc
     ```
 
     **Speicher** *(Speicherkonto)*
 
-    ```bash
+    ```azurecli
     az storage account show-usage
     ```
 

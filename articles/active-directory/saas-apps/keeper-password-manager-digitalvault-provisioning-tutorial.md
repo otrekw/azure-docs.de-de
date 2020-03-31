@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 236527a9889879f872ef8c3867a7ec3c1b1ba0a3
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77057519"
 ---
 # <a name="tutorial-configure-keeper-password-manager--digital-vault-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Keeper Password Manager & Digital Vault für die automatische Benutzerbereitstellung

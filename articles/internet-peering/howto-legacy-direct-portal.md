@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 9900414d38bd597d08a80d15e908228c06ce06ea
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75773897"
 ---
 # <a name="convert-a-legacy-direct-peering-to-azure-resource-using-the-portal"></a>Konvertieren einer älteren Instanz für direktes Peering in eine Azure-Ressource über das Portal
@@ -30,7 +30,7 @@ Falls Sie es vorziehen, können Sie diese Anleitung auch mithilfe von [PowerShel
 ### <a name="sign-in-to-portal-and-select-your-subscription"></a>Melden Sie sich beim Portal an, und wählen Sie Ihr Abonnement aus.
 [!INCLUDE [Account](./includes/account-portal.md)]
 
-### <a name=create></a>Konvertieren eines älteren direkten Peerings
+### <a name="convert-legacy-direct-peering"></a><a name=create></a>Konvertieren eines älteren direkten Peerings
 
 Sie können ältere Peeringverbindungen mithilfe einer **Peeringressource** konvertieren.
 
@@ -40,7 +40,7 @@ Sie können ältere Peeringverbindungen mithilfe einer **Peeringressource** konv
 #### <a name="configure-connections-and-submit"></a>Konfigurieren von Verbindungen und Übermitteln
 [!INCLUDE [direct-peering-configuration](./includes/direct-portal-configuration-legacy.md)]
 
-### <a name=get></a>Überprüfen des direkten Peerings
+### <a name="verify-direct-peering"></a><a name=get></a>Überprüfen des direkten Peerings
 [!INCLUDE [peering-direct-get-portal](./includes/direct-portal-get.md)]
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen

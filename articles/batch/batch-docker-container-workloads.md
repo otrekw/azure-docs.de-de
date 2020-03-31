@@ -11,10 +11,10 @@ ms.date: 03/02/2020
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: 81f4e753ffbaaefd5761c9396a6533bac9f212c1
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78254837"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Ausführen von Containeranwendungen in Azure Batch
@@ -29,7 +29,7 @@ Die Verwendung von Containern bietet eine einfache Möglichkeit zum Ausführen v
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **SDK-Versionen**: Die Batch-SDKs unterstützen Containerimages der folgenden Versionen:
+* **SDK-Versionen**: Die Batch SDKs unterstützen Containerimages ab den folgenden Versionen:
     * Batch REST API, Version 2017-09-01.6.0
     * Batch .NET SDK, Version 8.0.0
     * Batch Python SDK, Version 4.0
@@ -38,7 +38,7 @@ Die Verwendung von Containern bietet eine einfache Möglichkeit zum Ausführen v
 
 * **Konten**: Sie müssen in Ihrem Azure-Abonnement ein Batch-Konto und optional ein Azure Storage-Konto erstellen.
 
-* **Ein unterstütztes VM-Image**: Container werden nur in Pools unterstützt, die mit der Konfiguration des virtuellen Computers aus Images erstellt wurden, die im folgenden Abschnitt „Unterstützte Images virtueller Computer“ beschrieben werden. Wenn Sie ein benutzerdefiniertes Image bereitstellen, finden Sie hierzu Überlegungen im folgenden Abschnitt und Anforderungen unter [Verwenden eines verwalteten benutzerdefinierten Images zum Erstellen eines VM-Pools](batch-custom-images.md).
+* **Ein unterstütztes VM-Image**: Container werden nur in Pools unterstützt, die mit der Konfiguration des virtuellen Computers aus Images erstellt wurden, die im folgenden Abschnitt „Unterstützte Images virtueller Computer“ angegeben sind. Wenn Sie ein benutzerdefiniertes Image bereitstellen, finden Sie hierzu Überlegungen im folgenden Abschnitt und Anforderungen unter [Verwenden eines verwalteten benutzerdefinierten Images zum Erstellen eines VM-Pools](batch-custom-images.md).
 
 ### <a name="limitations"></a>Einschränkungen
 

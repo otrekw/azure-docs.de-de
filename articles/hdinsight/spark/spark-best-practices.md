@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.openlocfilehash: 20033e52e862f086d1491c06d38cdf4f2c57ba8d
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71106882"
 ---
 # <a name="apache-spark-best-practices"></a>Bewährte Methoden für Apache Spark
@@ -23,7 +23,7 @@ Dieser Artikel enthält verschiedene bewährte Methoden für die Verwendung von 
 | Option | Dokumente |
 |---|---|
 | VSCode | [Verwenden von Spark- und Hive-Tools für Visual Studio Code](../hdinsight-for-vscode.md) |
-| Jupyter-Notebooks | [Tutorial: Laden von Daten und Ausführen von Abfragen auf einem Apache Spark-Cluster in Azure HDInsight](./apache-spark-load-data-run-query.md) |
+| Jupyter Notebook | [Tutorial: Laden von Daten und Ausführen von Abfragen auf einem Apache Spark-Cluster in Azure HDInsight](./apache-spark-load-data-run-query.md) |
 | IntelliJ | [Tutorial: Erstellen von Apache Spark-Anwendungen für einen HDInsight-Cluster mit dem Azure-Toolkit für IntelliJ](./apache-spark-intellij-tool-plugin.md) |
 | IntelliJ | [Tutorial: Erstellen einer Scala Maven-Anwendung für Apache Spark in HDInsight mithilfe von IntelliJ](./apache-spark-create-standalone-application.md) |
 | Zeppelin-Notebooks | [Verwenden von Apache Zeppelin-Notebooks mit Apache Spark-Cluster in Azure HDInsight](./apache-spark-zeppelin-notebook.md) |

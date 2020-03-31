@@ -18,13 +18,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5440c54b01f62b3ad61b355f4c622a31910a65c1
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290934"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230194"
 ---
-# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect-Synchronisierung: Erneutes Ausführen des Installations-Assistenten
+# <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Azure AD Connect Sync: Erneutes Ausführen des Installations-Assistenten
 Beim erstmaligen Ausführen des Azure AD Connect-Installations-Assistenten werden Sie durch die Konfiguration Ihrer Installation geführt. Beim erneuten Ausführen des Installations-Assistenten werden Ihnen Wartungsoptionen angeboten.
 
 >[!IMPORTANT]

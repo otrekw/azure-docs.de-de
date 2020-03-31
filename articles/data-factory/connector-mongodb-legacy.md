@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
 ms.openlocfilehash: 0bdd8d454b979250b57cf657d347309b99a86ede
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75892567"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopieren von Daten aus MongoDB mithilfe von Azure Data Factory
@@ -55,13 +55,13 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für den mit MongoDB verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **MongoDb** |Ja |
+| type |Die type-Eigenschaft muss auf **MongoDb** festgelegt werden. |Ja |
 | server |IP-Adresse oder Hostname des MongoDB-Servers |Ja |
 | port |Der TCP-Port, den der MongoDB-Server verwendet, um auf Clientverbindungen zu lauschen |Nein (Standard = 27017) |
 | databaseName |Der Name der MongoDB-Datenbank, auf die Sie zugreifen möchten |Ja |
-| authenticationType | Typ der Authentifizierung für die Verbindung mit der MongoDB-Datenbank.<br/>Zulässige Werte sind: **Standard** und **Anonym**. |Ja |
+| authenticationType | Typ der Authentifizierung für die Verbindung mit der MongoDB-Datenbank.<br/>Zulässige Werte sind **Basic** oder **Anonymous**. |Ja |
 | username |Benutzerkonto für den Zugriff auf MongoDB |Ja (wenn die Standardauthentifizierung verwendet wird) |
 | password |Kennwort für den Benutzer Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja (wenn die Standardauthentifizierung verwendet wird) |
 | authSource |Der Name der MongoDB-Datenbank, die Sie zum Überprüfen Ihrer Anmeldeinformationen zur Authentifizierung verwenden möchten |Nein. Bei der Standardauthentifizierung werden standardmäßig das Administratorkonto und die Datenbank verwendet, die mit der databaseName-Eigenschaft angegeben wird |
@@ -98,9 +98,9 @@ Folgende Eigenschaften werden für den mit MongoDB verknüpften Dienst unterstü
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie unter [Datasets und verknüpfte Dienste](concepts-datasets-linked-services.md). Folgende Eigenschaften werden für das MongoDB-Dataset unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **MongoDbCollection** | Ja |
+| type | Die type-Eigenschaft des Datasets muss auf **MongoDbCollection** festgelegt werden. | Ja |
 | collectionName |Der Name der Sammlung in der MongoDB-Datenbank |Ja |
 
 **Beispiel:**
@@ -129,9 +129,9 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **MongoDbSource** | Ja |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **MongoDbSource** festgelegt werden. | Ja |
 | Abfrage |Verwendet die benutzerdefinierte SQL-92-Abfrage zum Lesen von Daten. Beispiel: select * from MyTable. |Nein (wenn „collectionName“ im Dataset angegeben ist) |
 
 **Beispiel:**

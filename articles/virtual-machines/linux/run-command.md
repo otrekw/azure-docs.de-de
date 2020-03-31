@@ -9,10 +9,10 @@ ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
 ms.openlocfilehash: 21787854590d3ca0be2cbd6e9d167de33482c787
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72597878"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>Ausführen von Shellskripts auf einem virtuellen Linux-Computer mithilfe der Skriptausführung
@@ -25,7 +25,7 @@ Sie können auf verschiedene Weise auf Ihre virtuellen Computer zugreifen. Die S
 
 Diese Funktion ist in allen Szenarien sinnvoll, in denen Sie ein Skript innerhalb eines virtuellen Computers ausführen möchten. Es ist eine der wenigen Möglichkeiten, Fehler auf einem virtuellen Computer zu beheben, bei dem der RDP- oder SSH-Port aufgrund einer falschen Netzwerk- oder Administratorkonfiguration nicht geöffnet ist.
 
-## <a name="restrictions"></a>Einschränkungen
+## <a name="restrictions"></a>Beschränkungen
 
 Die Verwendung der Skriptausführung unterliegt den folgenden Einschränkungen:
 

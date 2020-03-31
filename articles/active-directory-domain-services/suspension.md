@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
 ms.openlocfilehash: 8a82d2ad3e79633bb930348c6162996e961c4306
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77612964"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Grundlegendes zu den Integritätszuständen und dem Auflösen von angehaltenen Domänen in Azure Active Directory Domain Services
@@ -72,7 +72,7 @@ Wenn sich eine von Azure AD DS verwaltete Domäne im Zustand *Eingreifen erforde
 Eine von Azure AD DS verwaltete Domäne wechselt aus einem der folgenden Gründe in den Zustand **Angehalten**:
 
 * Mindestens eine kritische Warnung wurde nicht innerhalb von 15 Tagen aufgelöst.
-    * Kritische Warnungen können durch eine Fehlkonfiguration verursacht werden, die den Zugriff auf von Azure AD DS benötigte Ressourcen blockiert. Beispiel: Die Warnung [AADDS104: Netzwerkfehler][alert-nsg] wurde in der verwalteten Domäne mehr als 15 Tage lang nicht aufgelöst.
+    * Kritische Warnungen können durch eine Fehlkonfiguration verursacht werden, die den Zugriff auf von Azure AD DS benötigte Ressourcen blockiert. Ein Beispiel: Die Warnung [AADDS104: Netzwerkfehler][alert-nsg] wurde in der verwalteten Domäne mehr als 15 Tage lang nicht aufgelöst.
 * Es liegt ein Abrechnungsproblem beim Azure-Abonnement vor, oder das Azure-Abonnement ist abgelaufen.
 
 Verwaltete Domänen werden angehalten, wenn die Azure-Plattform die Domäne nicht verwalten, überwachen, patchen oder sichern kann. Eine verwaltete Domäne bleibt 15 Tage lang im Zustand *Angehalten*. Wenn Sie weiterhin auf die verwaltete Domäne zugreifen möchten, lösen Sie kritische Warnungen sofort auf.

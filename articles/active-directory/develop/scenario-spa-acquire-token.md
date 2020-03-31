@@ -15,10 +15,10 @@ ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
 ms.openlocfilehash: d5d48a2fc7aca184cf8b6e7761584a8800ca5151
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77160065"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Single-Page-Webanwendung: Abrufen eines Tokens zum Aufrufen einer API
@@ -42,7 +42,7 @@ Sie können beim Erstellen der Zugriffstokenanforderung die API-Bereiche festleg
 
 ## <a name="acquire-a-token-with-a-pop-up-window"></a>Abrufen eines Tokens mit einem Popupfenster
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Im folgenden Code wird das zuvor beschriebene Muster mit den Methoden für ein Popupelement kombiniert:
 
@@ -69,7 +69,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 });
 ```
 
-# <a name="angulartabangular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
 Der MSAL Angular-Wrapper nutzt den HTTP-Interceptor, der Zugriffstoken automatisch im Hintergrund abruft und an die HTTP-Anforderungen für APIs anfügt.
 
@@ -115,7 +115,7 @@ Alternativ können Sie Token auch explizit mithilfe der in der MSAL.js-Kernbibli
 
 ## <a name="acquire-a-token-with-a-redirect"></a>Abrufen eines Tokens mit einer Umleitung
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Das folgende Muster entspricht dem zuvor beschriebenen Muster, wird jedoch mit einer Umleitungsmethode zum interaktiven Abrufen von Token dargestellt. Wie bereits erwähnt, müssen Sie den Umleitungsrückruf registrieren.
 
@@ -173,7 +173,7 @@ myMSALObj.acquireTokenPopup(request);
 
 Weitere Informationen finden Sie unter [Optionale Ansprüche](active-directory-optional-claims.md).
 
-# <a name="angulartabangular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
 Dieser Code entspricht dem zuvor beschriebenen Code.
 

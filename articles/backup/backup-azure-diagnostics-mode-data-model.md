@@ -4,10 +4,10 @@ description: In diesem Artikel werden die Details des Azure Monitor Log Analytic
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.openlocfilehash: d14634c5e317682462e77e0549f064c75059f15c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77586375"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics-Datenmodell für Azure Backup-Daten
@@ -117,7 +117,7 @@ Diese Tabelle enthält Details zur Zuordnung von Sicherungselementen zu verschie
 
 Diese Tabelle enthält Details zur Zuordnung von Sicherungselementen zu verschiedenen Entitäten.
 
-| Feld | Datentyp | Beschreibung |
+| Feld | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 |BackupManagementServerName_s     |Text         |Name des Servers für die Sicherungsverwaltung        |
 |AzureBackupAgentVersion_s     |Text         |Version des Azure Backup-Agenten auf dem Sicherungsverwaltungsserver          |
@@ -172,7 +172,7 @@ Diese Tabelle enthält Details zu auftragsbezogenen Feldern.
 
 Diese Tabelle enthält Details zu richtlinienbezogenen Feldern.
 
-| Feld | Datentyp | Anwendbare Versionen | Beschreibung |
+| Feld | Datentyp | Anwendbare Versionen | BESCHREIBUNG |
 | --- | --- | --- | --- |
 | EventName_s |Text ||Dieses Feld stellt den Namen des Ereignisses dar, es lautet immer „AzureBackupCentralReport“ |
 | SchemaVersion_s |Text ||Dieses Feld gibt die aktuelle Version des Schemas an: **V2** |
@@ -220,7 +220,7 @@ Diese Tabelle enthält Details zu richtlinienbezogenen Feldern.
 
 Diese Tabelle enthält Details zur Zuordnung von Richtlinien zu verschiedenen Entitäten.
 
-| Feld | Datentyp | Anwendbare Versionen | Beschreibung |
+| Feld | Datentyp | Anwendbare Versionen | BESCHREIBUNG |
 | --- | --- | --- | --- |
 | EventName_s |Text ||Dieses Feld stellt den Namen des Ereignisses dar, es lautet immer „AzureBackupCentralReport“ |
 | SchemaVersion_s |Text ||Dieses Feld gibt die aktuelle Version des Schemas an: **V2** |
@@ -262,7 +262,7 @@ Diese Tabelle enthält grundlegende Felder zu geschützten Containern (ehemals �
 
 Diese Tabelle enthält Details zu speicherbezogenen Feldern.
 
-| Feld | Datentyp | Beschreibung |
+| Feld | Datentyp | BESCHREIBUNG |
 | --- | --- | --- |
 | CloudStorageInBytes_s |Decimal Number |Von Sicherungen belegter Sicherungsspeicher in der Cloud, wobei die Berechnung basierend auf dem letzten Wert erfolgt (dieses Feld gilt nur für das V1-Schema).|
 | ProtectedInstances_s |Decimal Number |Anzahl der geschützten Instanzen, die zum Berechnen von Front-End-Speicher in der Abrechnung verwendet werden, berechnet anhand des letzten Werts |
@@ -349,7 +349,7 @@ In dieser Tabelle sind die Workload(s) angegeben, mit denen ein Volumen verbunde
 
 Diese Tabelle enthält grundlegende Felder zu geschützten Instanzen.
 
-| Feld | Datentyp |Anwendbare Versionen | Beschreibung |
+| Feld | Datentyp |Anwendbare Versionen | BESCHREIBUNG |
 | --- | --- | --- | --- |
 | BackupItemUniqueId_s |Text |V2|Eindeutige ID, mithilfe derer das Sicherungselement für VMs bestimmt wird, die mithilfe von DPM, MABS gesichert wurden|
 | ProtectedContainerUniqueId_s |Text |V2|Eindeutige ID, mithilfe derer der geschützte Container für alles außer VMs bestimmt wird, die mithilfe von DPM, MABS geschützt wurden|

@@ -16,10 +16,10 @@ ms.date: 05/31/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: ca13d5e8369d007188a17352913519172ed8744e
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978184"
 ---
 # <a name="configure-an-external-listener-for-availability-groups-on-azure-sql-server-vms"></a>Konfigurieren eines externen Listeners für Verfügbarkeitsgruppen auf Azure SQL Server-VMs
@@ -32,7 +32,7 @@ ms.locfileid: "75978184"
 In diesem Thema erfahren Sie, wie Sie einen Listener für eine AlwaysOn-Verfügbarkeitsgruppe konfigurieren, die extern über das Internet zugänglich ist. Dies wird durch das Zuordnen der **öffentlichen virtuellen IP-Adresse (VIP)** des Clouddiensts zum Listener ermöglicht.
 
 > [!IMPORTANT] 
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../../../azure-resource-manager/management/deployment-models.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../../../azure-resource-manager/management/deployment-models.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
 
 Ihre Verfügbarkeitsgruppe kann Replikate enthalten, die ausschließlich lokal, ausschließlich in Azure oder sowohl lokal als auch in Azure verfügbar sind (Hybridkonfigurationen). Azure-Replikate können sich innerhalb derselben Region oder in mehreren Regionen befinden, wobei mehrere virtuelle Netzwerke (VNets) verwendet werden. Bei den nachfolgenden Schritten wird davon ausgegangen, dass bereits eine [Verfügbarkeitsgruppe konfiguriert wurde](../classic/portal-sql-alwayson-availability-groups.md), Sie jedoch noch keinen Listener konfiguriert haben.
 
@@ -127,7 +127,7 @@ Um von außerhalb des virtuellen Netzwerks auf den Listener zuzugreifen, müssen
 
     sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
 
-Im Gegensatz zum vorherigen Beispiel muss die SQL-Authentifizierung verwendet werden, da der Aufrufer die Windows-Authentifizierung nicht über das Internet verwenden kann. Weitere Informationen finden Sie unter [AlwaysOn-Verfügbarkeitsgruppen in Azure VM: Client-Konnektivitätsszenarien](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx). Stellen Sie bei Verwendung der SQL-Authentifizierung sicher, dass Sie für beide Replikate dieselbe Anmeldung erstellen. Weitere Informationen zur Problembehandlung von Anmeldungen bei Verfügbarkeitsgruppen finden Sie unter [How to map logins or use contained SQL database user to connect to other replicas and map to availability databases](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx)(in englischer Sprache).
+Im Gegensatz zum vorherigen Beispiel muss die SQL-Authentifizierung verwendet werden, da der Aufrufer die Windows-Authentifizierung nicht über das Internet verwenden kann. Weitere Informationen finden Sie unter [AlwaysOn Availability Group in Azure VM: Client Connectivity Scenarios](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx)(AlwaysOn-Verfügbarkeitsgruppe auf einem virtuellen Azure-Computer: Clientkonnektivitätsszenarios). Stellen Sie bei Verwendung der SQL-Authentifizierung sicher, dass Sie für beide Replikate dieselbe Anmeldung erstellen. Weitere Informationen zur Problembehandlung von Anmeldungen bei Verfügbarkeitsgruppen finden Sie unter [How to map logins or use contained SQL database user to connect to other replicas and map to availability databases](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx)(in englischer Sprache).
 
 Wenn sich die AlwaysOn-Replikate in unterschiedlichen Subnetzen befinden, müssen Clients **MultisubnetFailover=True** in der Verbindungszeichenfolge angeben. Dies führt zu parallelen Verbindungsversuchen mit Replikaten in unterschiedlichen Subnetzen. Beachten Sie, dass zu diesem Szenario eine regionsübergreifende AlwaysOn-Verfügbarkeitsgruppenbereitstellung gehört.
 

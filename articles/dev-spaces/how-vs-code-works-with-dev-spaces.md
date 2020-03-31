@@ -5,12 +5,12 @@ ms.date: 07/08/2019
 ms.topic: conceptual
 description: Hier erfahren Sie, wie Sie mit Visual Studio Code und Azure Dev Spaces Ihre Kubernetes-Anwendungen debuggen und schnell durchlaufen.
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: b6ab1330399ab2eb7afc9be61a7767a22ca82320
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 91440e59fdb8c21579ef1f04e78e66f933221ba0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78942480"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240447"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Funktion von Visual Studio Code mit Azure Dev Spaces
 
@@ -53,7 +53,7 @@ Sie können sich über den Einsatz von Visual Studio Code mit der Erweiterung Az
 * [Debuggen und Iterieren mit Visual Studio Code und Node.js in Kubernetes mithilfe von Azure Dev Spaces][quickstart-node]
 
 [azds-extension]: https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds
-[azds-yaml]: how-dev-spaces-works.md#prepare-your-code
+[azds-yaml]: how-dev-spaces-works-prep.md#prepare-your-code
 [csharp-extension]: https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp
 [java-extension]: https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds
 [maven]: https://maven.apache.org

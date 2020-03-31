@@ -7,18 +7,18 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: cherylmc
-ms.openlocfilehash: 47ee05113d46f66efd02978fed09cf72edc5ac1c
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: dcca1417aec52fb4bf99d5c480d81995154a68b0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049941"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481975"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Konfigurieren von ExpressRoute Direct mit der Azure-Befehlszeilenschnittstelle
 
 Sie können Azure ExpressRoute Direct nutzen, um sich direkt mit dem globalen Netzwerk von Microsoft zu verbinden, und zwar an strategisch über die ganze Welt verteilten Peeringstandorten. Weitere Informationen über ExpressRoute finden Sie unter [Informationen zu ExpressRoute Direct](expressroute-erdirect-about.md).
 
-## <a name="resources"></a>Erstellen der Ressource
+## <a name="create-the-resource"></a><a name="resources"></a>Erstellen der Ressource
 
 1. Melden Sie sich an Azure an, und wählen Sie das Abonnement aus, in dem ExpressRoute enthalten ist. Die ExpressRoute Direct-Ressource und Ihre ExpressRoute-Leitungen müssen sich in demselben Abonnement befinden. Führen Sie in der Azure CLI die folgenden Befehle aus:
 
@@ -51,7 +51,7 @@ Sie können Azure ExpressRoute Direct nutzen, um sich direkt mit dem globalen Ne
 
    **Beispielausgabe**
   
-   ```azurecli
+   ```output
    [
    {
     "address": "21715 Filigree Court, DC2, Building F, Ashburn, VA 20147",
@@ -118,7 +118,7 @@ Sie können Azure ExpressRoute Direct nutzen, um sich direkt mit dem globalen Ne
 
    **Beispielausgabe**
 
-   ```azurecli
+   ```output
    {
    "address": "21715 Filigree Court, DC2, Building F, Ashburn, VA 20147",
    "availableBandwidths": [
@@ -156,7 +156,7 @@ Sie können Azure ExpressRoute Direct nutzen, um sich direkt mit dem globalen Ne
 
    **Beispielausgabe**
 
-   ```azurecli
+   ```output
    {
    "allocationDate": "Wednesday, October 17, 2018",
    "bandwidthInGbps": 100,
@@ -208,7 +208,7 @@ Sie können Azure ExpressRoute Direct nutzen, um sich direkt mit dem globalen Ne
    }  
    ```
 
-## <a name="state"></a>Ändern von AdminState für Links
+## <a name="change-adminstate-for-links"></a><a name="state"></a>Ändern von AdminState für Links
 
 Verwenden Sie diesen Prozess, um einen Layer-1-Test durchzuführen. Stellen Sie sicher, dass jede Kreuzverbindung für die primären und sekundären Ports korrekt in jeden Router gepatcht ist.
 
@@ -224,7 +224,7 @@ Verwenden Sie diesen Prozess, um einen Layer-1-Test durchzuführen. Stellen Sie 
    ```
    **Beispielausgabe**
 
-   ```azurecli
+   ```output
    {
    "allocationDate": "Wednesday, October 17, 2018",
    "bandwidthInGbps": 100,
@@ -278,7 +278,7 @@ Verwenden Sie diesen Prozess, um einen Layer-1-Test durchzuführen. Stellen Sie 
 
    Nutzen Sie die gleiche Vorgehensweise, um die Ports zu deaktivieren, indem Sie `AdminState = "Disabled"` verwenden.
 
-## <a name="circuit"></a>Erstellen einer Leitung
+## <a name="create-a-circuit"></a><a name="circuit"></a>Erstellen einer Leitung
 
 Sie können standardmäßig zehn Leitungen im Abonnement erstellen, in dem die ExpressRoute Direct-Ressource enthalten ist. Der Microsoft-Support kann den Standardgrenzwert heraufsetzen. Sie sind für die Nachverfolgung der Werte für die bereitgestellte und belegte Bandbreite zuständig. Die bereitgestellte Bandbreite ist die Summe der Bandbreiten aller Leitungen der ExpressRoute Direct-Ressource. Die genutzte Bandbreite steht für die physische Nutzung der zugrunde liegenden physischen Schnittstellen.
 
@@ -297,7 +297,7 @@ Erstellen Sie in der ExpressRoute Direct-Ressource eine Leitung:
 
   **Beispielausgabe**
 
-  ```azurecli
+  ```output
   {
   "allowClassicOperations": false,
   "allowGlobalReach": false,

@@ -17,10 +17,10 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 68aa62ad34f8db531d439a581ef024862da0f90c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162309"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Einrichten von Diagnoseprotokollen für Azure Event Hubs

@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/09/2019
 ms.openlocfilehash: ec5a0d6e8c0a5236ae3929560e81033d983d4dfb
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75895111"
 ---
 # <a name="scenario-apache-tez-application-hangs-in-azure-hdinsight"></a>Szenario: Apache Tez-Anwendung reagiert in Azure HDInsight nicht mehr
@@ -28,7 +28,7 @@ Es wurden zu viele Aufträge übermittelt, die Yarn-Warteschlange ist lang.
 
 ## <a name="resolution"></a>Lösung
 
-Skalieren Sie den Cluster zentral hoch, oder warten Sie, bis die Yarn-Warteschlange abgenommen hat.
+Skalieren Sie den Cluster hoch, oder warten Sie, bis die Yarn-Warteschlange abgenommen hat.
 
 Standardmäßig steuert `yarn.scheduler.capacity.maximum-applications` die maximale Anzahl der ausgeführten und ausstehenden Anwendungen. Der Standardwert ist `10000`.
 

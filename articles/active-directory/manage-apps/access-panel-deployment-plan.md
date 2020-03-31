@@ -16,10 +16,10 @@ ms.author: baselden
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 04d8b6c6d40aa81bf56baed59f90417f2147fa56
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897076"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Planen einer Azure Active Directory-Bereitstellung eines Zugriffsbereichs
@@ -81,7 +81,7 @@ Bevor Sie mit diesem Projekt beginnen, müssen folgende erforderliche Schritte a
 
 In der folgenden Tabelle sind die wichtigsten Anwendungsfälle für eine Bereitstellung des Zugriffsbereichs aufgeführt:
 
-| Bereich| Beschreibung |
+| Bereich| BESCHREIBUNG |
 | - | - |
 | Zugriff| Das Portal des Zugriffsbereichs ist von firmeneigenen und privaten Geräten im Unternehmensnetzwerk aus zugänglich. |
 |Zugriff | Das Portal des Zugriffsbereichs ist von firmeneigenen Geräten von außerhalb des Unternehmensnetzwerks aus zugänglich. |
@@ -229,7 +229,7 @@ Alle Azure AD SSO-fähigen Anwendungen können dem „Meine Apps“-Startprogram
 
 #### <a name="use-my-apps-collections"></a>Verwenden von „Meine Apps“-Sammlungen
 
-Standardmäßig werden alle Anwendungen auf einer einzelnen Seite aufgelistet. Sie können jedoch mithilfe von Sammlungen verwandte Anwendungen gruppieren und sie auf einer separaten Registerkarte präsentieren, damit sie leichter zu finden sind. So können Sie mit Sammlungen beispielsweise logische Gruppierungen von Anwendungen für bestimmte Positionen, Aufgaben, Projekte usw. erstellen. Weitere Informationen finden Sie unter [Verwenden von „Meine Apps“-Sammlungen zum Anpassen von Zugriffsbereichen für Benutzer](access-panel-collections.md). 
+Standardmäßig werden alle Anwendungen auf einer einzelnen Seite aufgelistet. Sie können jedoch mithilfe von Auflistungen verwandte Anwendungen gruppieren und sie auf einer separaten Registerkarte präsentieren, damit sie leichter zu finden sind. So können Sie mit Auflistungen beispielsweise logische Gruppierungen von Anwendungen für bestimmte Positionen, Aufgaben, Projekte usw. erstellen. Weitere Informationen finden Sie unter [Verwenden von „Meine Apps“-Sammlungen zum Anpassen von Zugriffsbereichen für Benutzer](access-panel-collections.md). 
 
 #### <a name="plan-whether-to-use-my-apps-or-an-existing-portal"></a>Planen der Verwendung von „Meine Apps“ oder eines bestehenden Portals
 

@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
 ms.openlocfilehash: 6bc636b751d12bdb576e54f26536ac0045839229
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70137337"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK für die SQL-API: Versionshinweise und Ressourcen
@@ -41,22 +41,22 @@ ms.locfileid: "70137337"
 
 ## <a name="release-notes"></a>Versionshinweise
 
-### <a name="a-name302302"></a><a name="3.0.2"/>3.0.2
+### <a name="302"></a><a name="3.0.2"/>3.0.2
 * Unterstützung für den MultiPolygon-Datentyp wurde hinzugefügt
 * Fehlerbehebung für die Wiederholungsrichtlinie für den Lesevorgang in der Sitzung
 * Fehlerbehebung für die falsche Auffüllung beim Decodieren von Base 64-Zeichenfolgen
 
-### <a name="a-name301301"></a><a name="3.0.1"/>3.0.1
+### <a name="301"></a><a name="3.0.1"/>3.0.1
 * Fehlerbehebung in LocationCache
 * Fehlerbehebung für die Endpunktwiederholungslogik
 * Fehlerbehebung für die Dokumentation
 
-### <a name="a-name300300"></a><a name="3.0.0"/>3.0.0
+### <a name="300"></a><a name="3.0.0"/>3.0.0
 * Unterstützung für Schreibvorgänge in mehreren Regionen.
 * Der Namespace wurde in „azure.cosmos“ geändert.
 * Sammlungs- und Dokumentkonzepte wurden in „Container“ und „Element“ umbenannt, „document_client“ wurde in „cosmos_client“ umbenannt. 
 
-### <a name="a-name233233"></a><a name="2.3.3"/>2.3.3
+### <a name="233"></a><a name="2.3.3"/>2.3.3
 * Unterstützung für einen Proxy wurde hinzugefügt
 * Unterstützung für das Lesen von Änderungsfeeds wurde hinzugefügt
 * Unterstützung für Header des Sammlungskontingents wurde hinzugefügt
@@ -64,25 +64,25 @@ ms.locfileid: "70137337"
 * Fehlerbehebung für die ReadMedia-API
 * Fehlerbehebung im Partitionsschlüssel-Bereichscache
 
-### <a name="a-name232232"></a><a name="2.3.2"/>2.3.2
+### <a name="232"></a><a name="2.3.2"/>2.3.2
 * Unterstützung für Standardwiederholungen bei Verbindungsproblemen hinzugefügt.
 
-### <a name="a-name231231"></a><a name="2.3.1"/>2.3.1
+### <a name="231"></a><a name="2.3.1"/>2.3.1
 * Die Dokumentation wurde aktualisiert, damit anstelle von Azure DocumentDB auf Azure Cosmos DB verwiesen wird.
 
-### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
+### <a name="230"></a><a name="2.3.0"/>2.3.0
 * Für dieses SDK muss die neueste Version des Azure Cosmos DB-Emulators vorhanden sein. Diese können Sie unter https://aka.ms/cosmosdb-emulator herunterladen.
 
-### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
+### <a name="221"></a><a name="2.2.1"/>2.2.1
 * Fehlerbehebung für aggregiertes Wörterbuch.
 * Fehlerbehebung für das Abschneiden von Schrägstrichen im Ressourcenlink.
 * Tests für Unicode-Codierung wurden hinzugefügt.
 
-### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+### <a name="220"></a><a name="2.2.0"/>2.2.0
 * Es wurde Unterstützung für eine neue Konsistenzebene mit dem Namen „ConsistentPrefix“ hinzugefügt.
 
 
-### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+### <a name="210"></a><a name="2.1.0"/>2.1.0
 * Unterstützung für Aggregationsabfragen (COUNT, MIN, MAX, SUM und AVG) wurde hinzugefügt.
 * Eine Option zum Deaktivieren der SSL-Überprüfung bei der Ausführung für den Cosmos DB-Emulator wurde hinzugefügt.
 * Die Einschränkung wurde entfernt, dass das Modul für abhängige Anforderungen genau 2.10.0 sein muss.
@@ -90,51 +90,51 @@ ms.locfileid: "70137337"
 * Unterstützung für das Aktivieren der Skriptprotokollierung während der Ausführung einer gespeicherten Prozedur wurde hinzugefügt.
 * REST-API-Version wurde mit dieser Version auf „2017-01-19“ (19.01.2017) festgelegt.
 
-### <a name="a-name201201"></a><a name="2.0.1"/>2.0.1
+### <a name="201"></a><a name="2.0.1"/>2.0.1
 * An Dokumentationskommentaren wurden redaktionelle Änderungen vorgenommen.
 
-### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+### <a name="200"></a><a name="2.0.0"/>2.0.0
 * Unterstützung für Python 3.5 wurde hinzugefügt.
 * Unterstützung für Verbindungspooling mithilfe eines Anforderungenmoduls wurde hinzugefügt.
 * Unterstützung für Sitzungskonsistenz wurde hinzugefügt.
 * Unterstützung für TOP-/ORDER BY-Abfragen für partitionierte Sammlungen wurde hinzugefügt.
 
-### <a name="a-name190190"></a><a name="1.9.0"/>1.9.0
+### <a name="190"></a><a name="1.9.0"/>1.9.0
 * Unterstützung für Wiederholungsrichtlinie für gedrosselte Anforderungen hinzugefügt. (Bei gedrosselten Anforderungen wird die Ausnahme „Anforderungsrate zu groß“, Fehlercode 429, angezeigt.) Standardmäßig führt Azure Cosmos DB für jede Anforderung neun Wiederholungen durch, wenn der Fehlercode 429 auftritt, und berücksichtigt dabei die „retryAfter“-Zeit im Antwortheader. Eine feste Wiederholungsintervalldauer kann jetzt als Teil der „RetryOptions“-Eigenschaft für das „ConnectionPolicy“-Objekt festgelegt werden, wenn Sie die „retryAfter“-Zeit ignorieren möchten, die vom Server zwischen den Wiederholungen zurückgegeben wird. Azure Cosmos DB wartet jetzt bei jeder gedrosselten Anforderung (unabhängig von der Anzahl der Wiederholungen) maximal 30 Sekunden und gibt die Antwort mit dem Fehlercode 429 zurück. Diese Dauer kann auch in der RetryOptions-Eigenschaft im ConnectionPolicy-Objekt überschrieben werden.
 * Cosmos DB gibt nun „x-ms-throttle-retry-count“ und „x-ms-throttle-retry-wait-time-ms“ als Antwortheader in jeder Anforderung zurück, um die Anzahl der Wiederholungen bei einer Drosselung und die kumulative Zeit, die die Anforderung zwischen den Wiederholungen gewartet hat, anzugeben.
 * Die „RetryPolicy“-Klasse und die dazugehörige Eigenschaft (retry_policy), die für die „document_client“-Klasse verfügbar gemacht wurden, wurden entfernt. Stattdessen wurde die „RetryOptions“-Klasse hinzugefügt, die die „RetryOptions“-Eigenschaft in der „ConnectionPolicy“-Klasse verfügbar macht, welche zum Überschreiben einiger der Standardwiederholungsoptionen verwendet werden kann.
 
-### <a name="a-name180180"></a><a name="1.8.0"/>1.8.0
+### <a name="180"></a><a name="1.8.0"/>1.8.0
 * Unterstützung für Datenbankkonten in mehreren Regionen hinzugefügt.
 
-### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
+### <a name="170"></a><a name="1.7.0"/>1.7.0
 * Unterstützung des TTL-Features (Time To Live) für Dokumente hinzugefügt.
 
-### <a name="a-name161161"></a><a name="1.6.1"/>1.6.1
+### <a name="161"></a><a name="1.6.1"/>1.6.1
 * Fehlerbehebungen im Zusammenhang mit serverseitiger Partitionierung, um Sonderzeichen im Pfad zum Partitionsschlüssel zuzulassen.
 
-### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
+### <a name="160"></a><a name="1.6.0"/>1.6.0
 * [Partitionierte Sammlungen](partition-data.md) und [benutzerdefinierte Leistungsstufen](performance-levels.md) implementiert. 
 
-### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0
+### <a name="150"></a><a name="1.5.0"/>1.5.0
 * Hinzufügen von Hash- und Bereichspartitionen-Konfliktlösern, um die Freigabe von Anwendungen über mehrere Partitionen zu unterstützen.
 
-### <a name="a-name142142"></a><a name="1.4.2"/>1.4.2
+### <a name="142"></a><a name="1.4.2"/>1.4.2
 * Upsert implementiert. Neue UpsertXXX-Methoden hinzugefügt, um das „Upsert“-Feature zu unterstützen.
 * ID-basiertes Routing implementiert. Keine öffentliche API-Änderungen, alle Änderungen sind intern.
 
-### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
+### <a name="120"></a><a name="1.2.0"/>1.2.0
 * GeoSpatial-Index unterstützt.
 * „Id“-Eigenschaft wird für alle Ressourcen überprüft. IDs für Ressourcen dürfen nicht mit einem Leerzeichen enden und keins der folgenden Zeichen enthalten: ?, /, #, \,
 * Neue Überschrift „Fortschritt der Indextransformation“ zu „ResourceResponse“ hinzugefügt.
 
-### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
+### <a name="110"></a><a name="1.1.0"/>1.1.0
 * V2-Indizierungsrichtlinie implementiert.
 
-### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
+### <a name="101"></a><a name="1.0.1"/>1.0.1
 * Proxyverbindung unterstützt.
 
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"/>1.0.0
 * Allgemeine Verfügbarkeit (GA) des SDK
 
 ## <a name="release--retirement-dates"></a>Veröffentlichungs- und Deaktivierungstermine
@@ -156,31 +156,31 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 
 <br/>
 
-| Version | Herausgabedatum | Deaktivierungstermine |
+| Version | Veröffentlichungsdatum | Deaktivierungstermine |
 | --- | --- | --- |
 | [3.0.2](#3.0.2) |15. November 2018 |--- |
 | [3.0.1](#3.0.1) |4\. Oktober 2018 |--- |
-| [2.3.3](#2.3.3) |8\. September 2018 |30. August 2020 |
-| [2.3.2](#2.3.2) |8\. Mai 2018 |30. August 2020 |
-| [2.3.1](#2.3.1) |21. Dezember 2017 |30. August 2020 |
-| [2.3.0](#2.3.0) |10. November 2017 |30. August 2020 |
-| [2.2.1](#2.2.1) |29. September 2017 |30. August 2020 |
-| [2.2.0](#2.2.0) |10. Mai 2017 |30. August 2020 |
-| [2.1.0](#2.1.0) |01. Mai 2017 |30. August 2020 |
-| [2.0.1](#2.0.1) |30. Oktober 2016 |30. August 2020 |
-| [2.0.0](#2.0.0) |29. September 2016 |30. August 2020 |
-| [1.9.0](#1.9.0) |7\. Juli 2016 |30. August 2020 |
-| [1.8.0](#1.8.0) |14. Juni 2016 |30. August 2020 |
-| [1.7.0](#1.7.0) |26. April 2016 |30. August 2020 |
-| [1.6.1](#1.6.1) |8\. April 2016 |30. August 2020 |
-| [1.6.0](#1.6.0) |29. März 2016 |30. August 2020 |
-| [1.5.0](#1.5.0) |03. Januar 2016 |30. August 2020 |
-| [1.4.2](#1.4.2) |06. Oktober 2015 |30. August 2020 |
-| 1.4.1 |06. Oktober 2015 |30. August 2020 |
-| [1.2.0](#1.2.0) |06. August 2015 |30. August 2020 |
-| [1.1.0](#1.1.0) |9\. Juli 2015 |30. August 2020 |
-| [1.0.1](#1.0.1) |25. Mai 2015 |30. August 2020 |
-| [1.0.0](#1.0.0) |7\. April 2015 |30. August 2020 |
+| [2.3.3](#2.3.3) |8\. September 2018 |30. August 2020 |
+| [2.3.2](#2.3.2) |8\. Mai 2018 |30. August 2020 |
+| [2.3.1](#2.3.1) |21. Dezember 2017 |30. August 2020 |
+| [2.3.0](#2.3.0) |10. November 2017 |30. August 2020 |
+| [2.2.1](#2.2.1) |29. September 2017 |30. August 2020 |
+| [2.2.0](#2.2.0) |10. Mai 2017 |30. August 2020 |
+| [2.1.0](#2.1.0) |01. Mai 2017 |30. August 2020 |
+| [2.0.1](#2.0.1) |30. Oktober 2016 |30. August 2020 |
+| [2.0.0](#2.0.0) |29. September 2016 |30. August 2020 |
+| [1.9.0](#1.9.0) |7\. Juli 2016 |30. August 2020 |
+| [1.8.0](#1.8.0) |14. Juni 2016 |30. August 2020 |
+| [1.7.0](#1.7.0) |26. April 2016 |30. August 2020 |
+| [1.6.1](#1.6.1) |8\. April 2016 |30. August 2020 |
+| [1.6.0](#1.6.0) |29. März 2016 |30. August 2020 |
+| [1.5.0](#1.5.0) |03. Januar 2016 |30. August 2020 |
+| [1.4.2](#1.4.2) |06. Oktober 2015 |30. August 2020 |
+| 1.4.1 |06. Oktober 2015 |30. August 2020 |
+| [1.2.0](#1.2.0) |06. August 2015 |30. August 2020 |
+| [1.1.0](#1.1.0) |9\. Juli 2015 |30. August 2020 |
+| [1.0.1](#1.0.1) |25. Mai 2015 |30. August 2020 |
+| [1.0.0](#1.0.0) |7\. April 2015 |30. August 2020 |
 | 0.9.4-prelease |14. Januar 2015 |29. Februar 2016 |
 | 0.9.3-prelease |09. Dezember 2014 |29. Februar 2016 |
 | 0.9.2-prelease |25. November 2014 |29. Februar 2016 |

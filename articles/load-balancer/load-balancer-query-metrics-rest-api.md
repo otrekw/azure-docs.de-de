@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: allensu
 ms.openlocfilehash: 760ec8a945ab88b63dde2de75f5354818facf4f2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74225258"
 ---
 # <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>Abrufen von Metriken zur Load Balancer-Nutzung über die REST-API
@@ -38,11 +38,11 @@ Die folgenden Header sind erforderlich:
 |Anforderungsheader|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |*Content-Type:*|Erforderlich. Legen Sie diese Option auf `application/json` fest.|  
-|*Authorization:*|Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer` [Zugriffstoken](/rest/api/azure/#authorization-code-grant-interactive-clients) fest. |  
+|*Authorization:*|Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-[Zugriffstoken](/rest/api/azure/#authorization-code-grant-interactive-clients) fest. |  
 
 ### <a name="uri-parameters"></a>URI-Parameter
 
-| NAME | BESCHREIBUNG |
+| Name | BESCHREIBUNG |
 | :--- | :---------- |
 | subscriptionId | Abonnement-ID für ein Azure-Abonnement. Wenn Sie über mehrere Abonnements verfügen, lesen Sie [Verwenden mehrerer Abonnements](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest): |
 | resourceGroupName | Der Name der Ressourcengruppe, die die Ressource enthält. Dieser Wert kann über die Azure Resource Manager-API, Befehlszeilenschnittstelle oder das Portal abgerufen werden. |

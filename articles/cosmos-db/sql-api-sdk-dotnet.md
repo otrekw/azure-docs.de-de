@@ -9,13 +9,13 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
 ms.openlocfilehash: a368f5c66d5a44faa23a726343d74489024185e6
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72177734"
 ---
-# <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK für SQL-API: Download und Anmerkungen zum Release
+# <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK für SQL-API: Download und Versionshinweise
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET Standard](sql-api-sdk-dotnet-standard.md)

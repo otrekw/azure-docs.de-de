@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.openlocfilehash: c08271286373ab8c3e621ee6fa59782ba2d16fb4
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77444178"
 ---
 # <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-python"></a>Erstellen einer Event Hub-Datenverbindung für Azure Data Explorer mit Python
@@ -34,7 +34,7 @@ In diesem Artikel erstellen Sie eine Event Hub-Datenverbindung für Azure Data E
 
 * [Tabellen- und Spaltenzuordnung](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
 
-* [Datenbank- und Tabellenrichtlinien](database-table-policies-python.md) (optional)
+* [Datenbank- und Tabellenrichtlinien](database-table-policies-python.md) (optional).
 
 * [Event Hub mit Daten für die Erfassung](ingest-data-event-hub.md#create-an-event-hub)
 

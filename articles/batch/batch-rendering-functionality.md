@@ -8,10 +8,10 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: 697e2640b7215e0bbb9202c672f936535831eb99
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75449726"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch-Renderingfunktionen
@@ -48,7 +48,7 @@ Andere Optionen sind verfügbar, wenn weitere Anwendungen für die virtuellen Co
 
 Die Anwendungen, die verwendet werden und für die eine Lizenzgebühr anfällt, müssen in der Poolkonfiguration angegeben werden.
 
-* Geben Sie beim [Erstellen eines Pools](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body) die `applicationLicenses`-Eigenschaft an.  Die folgenden Werte können im Array von Zeichenfolgen angegeben werden: „vray“, „arnold“, „3dsmax“ und „maya“.
+* Geben Sie beim `applicationLicenses`Erstellen eines Pools[ die ](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body)-Eigenschaft an.  Die folgenden Werte können im Array von Zeichenfolgen angegeben werden: „vray“, „arnold“, „3dsmax“ und „maya“.
 * Wenn Sie eine oder mehrere Anwendungen angeben, werden die Kosten für diese Anwendungen mit den Kosten der virtuellen Computer addiert.  Anwendungspreise sind auf der [Seite mit den Preisen für Azure Batch](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering) aufgeführt.
 
 > [!NOTE]

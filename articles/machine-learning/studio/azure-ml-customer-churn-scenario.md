@@ -10,14 +10,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 79a7b157d5daf8940aba454808c65ed433cfe29c
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 4cf918abae51ca330054ef86e57095d29a21a37a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169008"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79204527"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio-classic"></a>Analysieren der Kundenabwanderung mithilfe von Azure Machine Learning Studio (klassisch)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 ## <a name="overview"></a>Übersicht
 Dieser Artikel beschreibt eine Referenzimplementierung für ein Projekt zur Analyse der Kundenabwanderung, das in Azure Machine Learning Studio (klassisch) erstellt wird. In diesem Artikel wird das Zuordnen generischer Modelle für eine ganzheitliche Lösung des Kundenabwanderungsproblems in der Industrie erläutert. Wir messen auch die Genauigkeit von Modellen, die mit Machine Learning erstellt werden, und wir bewerten mögliche Richtungen der weiteren Entwicklung.  
 

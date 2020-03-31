@@ -7,10 +7,10 @@ ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 11/06/2019
 ms.openlocfilehash: 29c1aaf18ea45d869d32a8817aeb03faa3b67c32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75456576"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Herstellen einer Verbindung mit lokalen Datenquellen in Azure Logic Apps

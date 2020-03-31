@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
 ms.openlocfilehash: 1e5253d617c87d5869cebc817da6d265ebfdfa7e
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77539466"
 ---
-# <a name="troubleshoot-azure-private-link-connectivity-problems"></a>Problembehandlung bei Konnektivitätsproblemen mit Azure Private Link
+# <a name="troubleshoot-azure-private-link-connectivity-problems"></a>Problembehandlung bei Konnektivitätsproblemen bei Azure Private Link
 
 In diesem Artikel finden Sie ausführliche Anweisungen zum Überprüfen und Diagnostizieren der Konnektivität für die Einrichtung von Azure Private Link.
 
@@ -30,7 +30,7 @@ Sie können Ihren Dienst, der hinter dem Standard-Tarif von Azure Load Balancer 
 
 Die folgenden Konnektivitätsszenarios sind mit Private Link verfügbar:
 
-- Virtuelle Netzwerke in derselben Region
+- Virtuelles Netzwerk aus der gleichen Region
 - Virtuelle Netzwerke mit regionalem Peering
 - Virtuelle Netzwerke mit globalem Peering
 - Lokale Kunden über VPN oder ExpressRoute-Verbindungen

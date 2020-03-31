@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 4eaa2974817bfcd8bef83e5139d75a2d4c2ec107
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873708"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Erstellen eines Azure Cosmos-Containers
@@ -19,7 +19,7 @@ In diesem Artikel werden die verschiedenen Möglichkeiten zur Erstellung eines A
 
 ## <a name="create-a-container-using-azure-portal"></a>Erstellen eines Containers über das Azure-Portal
 
-### <a id="portal-sql"></a>SQL-API
+### <a name="sql-api"></a><a id="portal-sql"></a>SQL-API
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -35,7 +35,7 @@ In diesem Artikel werden die verschiedenen Möglichkeiten zur Erstellung eines A
 
     ![Screenshot des Bereichs „Daten-Explorer“ mit hervorgehobener Option „Neuer Container“](./media/how-to-create-container/partitioned-collection-create-sql.png)
 
-### <a id="portal-mongodb"></a>Azure Cosmos DB-API für MongoDB
+### <a name="azure-cosmos-db-api-for-mongodb"></a><a id="portal-mongodb"></a>Azure Cosmos DB-API für MongoDB
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -51,7 +51,7 @@ In diesem Artikel werden die verschiedenen Möglichkeiten zur Erstellung eines A
 
     ![Screenshot der Azure Cosmos DB-API für MongoDB, Dialogfeld „Container hinzufügen“](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
 
-### <a id="portal-cassandra"></a>Cassandra-API
+### <a name="cassandra-api"></a><a id="portal-cassandra"></a>Cassandra-API
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -70,7 +70,7 @@ In diesem Artikel werden die verschiedenen Möglichkeiten zur Erstellung eines A
 > [!NOTE]
 > Bei der Cassandra-API wird der Primärschlüssel als Partitionsschlüssel verwendet.
 
-### <a id="portal-gremlin"></a>Gremlin-API
+### <a name="gremlin-api"></a><a id="portal-gremlin"></a>Gremlin-API
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -87,7 +87,7 @@ In diesem Artikel werden die verschiedenen Möglichkeiten zur Erstellung eines A
 
     ![Screenshot der Gremlin-API, Dialogfeld „Diagramm hinzufügen“](./media/how-to-create-container/partitioned-collection-create-gremlin.png)
 
-### <a id="portal-table"></a>Tabellen-API
+### <a name="table-api"></a><a id="portal-table"></a>Tabellen-API
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -104,7 +104,7 @@ In diesem Artikel werden die verschiedenen Möglichkeiten zur Erstellung eines A
 > [!Note]
 > Bei der Tabellen-API wird der Partitionsschlüssel jedes Mal angegeben, wenn Sie eine neue Zeile hinzufügen.
 
-## Erstellen eines Containers mithilfe der Azure CLI<a id="cli-sql"></a><a id="cli-mongodb"></a><a id="cli-cassandra"></a><a id="cli-gremlin"></a><a id="cli-table"></a>
+## <a name="create-a-container-using-azure-cli"></a>Erstellen eines Containers mithilfe der Azure CLI<a id="cli-sql"></a><a id="cli-mongodb"></a><a id="cli-cassandra"></a><a id="cli-gremlin"></a><a id="cli-table"></a>
 
 Über die folgenden Links erfahren Sie, wie Sie Containerressourcen für Azure Cosmos DB mithilfe der Azure CLI erstellen.
 
@@ -116,7 +116,7 @@ Eine Liste aller Azure CLI-Beispiele für alle Azure Cosmos DB-APIs finden Sie
 * [Erstellen eines Gremlin-Graph mit der Azure CLI](./scripts/cli/gremlin/create.md)
 * [Erstellen einer Tabellen-API mit der Azure CLI](./scripts/cli/table/create.md)
 
-## Erstellen eines Containers mithilfe von PowerShell<a id="ps-sql"></a><a id="ps-mongodb"><a id="ps-cassandra"></a><a id="ps-gremlin"><a id="ps-table"></a>
+## <a name="create-a-container-using-powershella-idps-mongodba-idps-gremlin"></a>Erstellen eines Containers mithilfe von PowerShell<a id="ps-sql"></a><a id="ps-mongodb"><a id="ps-cassandra"></a><a id="ps-gremlin"><a id="ps-table"></a>
 
 Über die folgenden Links erfahren Sie, wie Sie Containerressourcen für Azure Cosmos DB mithilfe von PowerShell erstellen.
 
@@ -130,7 +130,7 @@ Eine Liste aller Azure CLI-Beispiele für alle Azure Cosmos DB-APIs finden Sie
 
 ## <a name="create-a-container-using-net-sdk"></a>Erstellen eines Containers mithilfe des .NET SDK
 
-### <a id="dotnet-sql-graph"></a>SQL-API und Gremlin-API
+### <a name="sql-api-and-gremlin-api"></a><a id="dotnet-sql-graph"></a>SQL-API und Gremlin-API
 
 ```csharp
 // Create a container with a partition key and provision 1000 RU/s throughput.
@@ -144,7 +144,7 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 1000 });
 ```
 
-### <a id="dotnet-mongodb"></a>Azure Cosmos DB-API für MongoDB
+### <a name="azure-cosmos-db-api-for-mongodb"></a><a id="dotnet-mongodb"></a>Azure Cosmos DB-API für MongoDB
 
 ```csharp
 // Create a collection with a partition key by using Mongo Shell:
@@ -154,7 +154,7 @@ db.runCommand( { shardCollection: "myDatabase.myCollection", key: { myShardKey: 
 > [!Note]
 > MongoDB Wire Protocol versteht das Konzept für [Anforderungseinheiten](request-units.md) nicht. Verwenden Sie zum Erstellen einer neuen Sammlung mit bereitgestelltem Durchsatz das Azure-Portal oder Cosmos DB SDKs für die SQL-API.
 
-### <a id="dotnet-cassandra"></a>Cassandra-API
+### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Cassandra-API
 
 ```csharp
 // Create a Cassandra table with a partition/primary key and provision 1000 RU/s throughput.

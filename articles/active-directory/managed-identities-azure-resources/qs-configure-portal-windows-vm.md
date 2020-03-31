@@ -16,11 +16,11 @@ ms.date: 11/10/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 75971dbd35a6b29306bc87988423ab662a343705
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74183864"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231834"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer über das Azure-Portal
 

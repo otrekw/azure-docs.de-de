@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.reviewer: lagayhar
 ms.subservice: alerts
-ms.openlocfilehash: 80759c94d7cc5b60b6e38a34b85fb64c3c18fd2e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 28fd59556a586b85a6d3caf188d9e02c11d31e3b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666716"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295079"
 ---
 # <a name="set-alerts-in-application-insights"></a>Einrichten von Warnungen in Application Insights
 
@@ -24,65 +24,6 @@ Es gibt mehrere Warnungstypen:
 * [**Protokollwarnungen**](../../azure-monitor/platform/alerts-unified-log.md) werden dazu verwendet, Warnungen zu beschreiben, bei denen das Warnsignal auf einer benutzerdefinierten Kusto-Abfrage basiert.
 * Bei [**Webtests**][availability] werden Sie informiert, wenn Ihre Website im Internet nicht verfügbar ist oder langsam reagiert. [Weitere Informationen][availability]
 * Die [**Proaktive Diagnose**](../../azure-monitor/app/proactive-diagnostics.md) wird automatisch konfiguriert, damit Benachrichtigungen über ungewöhnliche Leistungsmuster gesendet werden.
-
-## <a name="set-a-metric-alert"></a>Festlegen einer Metrikwarnung
-
-Öffnen Sie die Registerkarte „Warnungsregeln“, und verwenden Sie dann die Schaltfläche „Hinzufügen“.
-
-![Klicken Sie auf der Registerkarte „Warnungsregeln“ auf „Warnung hinzufügen“. Legen Sie Ihre App als zu messende Ressource fest, geben Sie einen Namen für die Warnung ein, und wählen Sie eine Metrik.](./media/alerts/01-set-metric.png)
-
-* Legen Sie die Ressource vor den anderen Eigenschaften fest. **Wählen Sie die Ressource "(Komponenten)" aus** , wenn Sie Benachrichtigungen für Leistungs- oder Nutzungsmetriken festlegen möchten.
-* Der Name, den Sie der Warnung zuweisen, muss innerhalb der Ressourcengruppe (nicht nur in Ihrer Anwendung) eindeutig sein.
-* Achten Sie auf die Einheiten, die beim Eingeben des Schwellenwerts gefordert sind.
-* Wenn Sie das Feld „E-Mail an Besitzer...“ aktivieren, werden Warnungen per E-Mail an alle Benutzer gesendet, die Zugriff auf diese Ressourcengruppe haben. Wenn Sie diese Personengruppe erweitern möchten, fügen Sie die entsprechenden Benutzer der [Ressourcengruppe oder dem Abonnement](../../azure-monitor/app/resources-roles-access-control.md) (nicht der Ressource) hinzu.
-* Wenn Sie „Weitere E-Mail-Adressen“ angeben, werden Warnungen an diese Einzelpersonen oder Gruppen gesendet (unabhängig davon, ob Sie das Kontrollkästchen „E-Mail an Besitzer...“ aktiviert haben). 
-* Legen Sie eine [Webhookadresse](../../azure-monitor/platform/alerts-webhooks.md) fest, wenn Sie eine Web-App eingerichtet haben, die auf Warnungen reagiert. Der Aufruf erfolgt bei Aktivierung der Warnung und bei Auflösung der Warnung. (Beachten Sie aber, dass Abfrageparameter derzeit nicht als Webhook-Eigenschaften übergeben werden.)
-* Sie können die Warnung deaktivieren oder aktivieren: Die zugehörigen Schaltflächen sehen Sie oben.
-
-*Ich sehe keine Schaltfläche zum Hinzufügen von Benachrichtigungen.*
-
-* Verwenden Sie ein Organisationskonto? Sie können Warnungen festlegen, wenn Sie für diese Anwendungsressource über Zugriffsberechtigungen für Besitzer oder Mitwirkende verfügen. Sehen Sie sich die Registerkarte „Access Control“ an. [Erfahren Sie mehr über Access Control][roles].
-
-> [!NOTE]
-> Auf dem Blatt „Warnungen“ sehen Sie, dass bereits eine Warnung eingerichtet ist: [Proaktive Diagnose](../../azure-monitor/app/proactive-failure-diagnostics.md). Dies ist eine automatische Warnung zur Überwachung einer bestimmten Metrik: der Anforderungsfehlerrate. Sofern Sie nicht entscheiden, diese proaktive Warnung zu deaktivieren, müssen Sie also keine eigene Warnung für die Anforderungsfehlerrate festlegen.
-> 
-> 
-
-## <a name="see-your-alerts"></a>Anzeigen Ihrer Warnungen
-Sie erhalten eine E-Mail, wenn sich ein Warnungsstatus von "Inaktiv" in "Aktiv" ändert und umgekehrt. 
-
-Der aktuelle Status jeder Warnung wird auf der Registerkarte „Warnungsregeln“ angezeigt.
-
-Die Dropdownliste "Warnungen" enthält einen Überblick über die letzten Aktivitäten:
-
-![Dropdownliste „Warnungen“](./media/alerts/010-alert-drop.png)
-
-Der Verlauf von Statusänderungen befindet sich im Aktivitätsprotokoll:
-
-![Klicken Sie auf der Registerkarte „Übersicht“ auf „Einstellungen“ > „Überwachungsprotokolle“.](./media/alerts/09-alerts.png)
-
-## <a name="how-alerts-work"></a>Funktionsweise von Warnungen
-* Eine Warnung kann drei Zustände annehmen: „Nie aktiviert“, „Aktiviert“ und „Aufgelöst“. „Aktiviert“ bedeutet, dass die angegebene Bedingung bei der letzten Auswertung erfüllt wurde.
-* Wenn sich der Status einer Warnung ändert, wird eine Benachrichtigung generiert. (Wenn die Bedingung für die Warnung bereits erfüllt war, als Sie die Warnung erstellt haben, erhalten Sie möglicherweise erst dann eine Benachrichtigung, wenn die Bedingung nicht mehr erfüllt wird.)
-* Jede Benachrichtigung generiert eine E-Mail-Nachricht, wenn Sie das E-Mail-Feld aktiviert oder E-Mail-Adressen angegeben haben. Sie können auch die Dropdownliste „Benachrichtigungen“ überprüfen.
-* Eine Warnung wird jedes Mal ausgewertet, wenn eine Metrik empfangen wird, sonst aber aus keinem anderen Grund.
-* Durch die Auswertung wird die Metrik über den vorangegangenen Zeitraum aggregiert und mit dem Schwellenwert verglichen, um den neuen Zustand zu ermitteln.
-* Der von Ihnen ausgewählte Zeitraum gibt das Intervall an, über das Metriken aggregiert werden. Der Zeitraum hat keinen Einfluss darauf, wie häufig die Warnung ausgewertet wird: Dies hängt davon ab, wie häufig Metriken empfangen werden.
-* Wenn eine Zeit lang kein Daten für eine bestimmte Metrik empfangen wurden, wirkt sich diese Lücke unterschiedlich auf die Auswertung von Warnungen und die Diagramme im Metrik-Explorer aus. Wenn länger als durch das Samplingintervall des Diagramms vorgegeben keine Daten empfangen werden, hat das Diagramm im Metrik-Explorer den Wert 0. Eine auf der gleichen Metrik basierende Warnung wird aber nicht erneut ausgewertet, und der Zustand der Warnung bleibt unverändert. 
-  
-    Sobald dann Daten empfangen werden, springt das Diagramm auf einen Wert ungleich 0 (null) zurück. Die Warnung wird auf Grundlage der Daten ausgewertet, die für den angegebenen Zeitraum zur Verfügung stehen. Wenn der neue Datenpunkt der einzige in diesem Zeitraum verfügbare Datenpunkt ist, basiert das Aggregat auf diesem Datenpunkt.
-* Eine Warnung kann häufig zwischen den Zuständen "Warnung" und "Fehlerfrei" hin und her wechseln, auch wenn Sie einen langen Zeitraum festlegen. Dies kann vorkommen, wenn sich der metrische Wert um den Schwellenwert herum bewegt. Der Schwellenwert weist keine Hysterese auf: Der Übergang zur Warnung erfolgt beim selben Wert wie der Übergang zum fehlerfreien Zustand.
-
-## <a name="what-are-good-alerts-to-set"></a>Welche Warnungen sollten festgelegt werden?
-Das hängt von Ihrer Anwendung ab. Zunächst einmal sollten Sie nicht zu viele Metriken festlegen. Beobachten Sie Ihre Metrikdiagramme eine Zeitlang, während die App ausgeführt wird, um ein Gefühl für das Normalverhalten zu erhalten. Diese Übung unterstützt Sie bei der Verbesserung der Leistung. Richten Sie dann Warnungen ein, die Ihnen mitteilen, wenn die Metriken den Normalbereich verlassen. 
-
-Zu den gängigen Warnungen zählen Folgende:
-
-* [Browsermetriken][client], insbesondere Browser-**Seitenladezeiten**, eignen sich für Webanwendungen. Wenn Ihre Seite über viele Skripts verfügt, suchen Sie nach **Browserausnahmen**. Um diese Metriken und Warnungen zu erhalten, müssen Sie die [Webseitenüberwachung][client] einrichten.
-* **Serverantwortzeit** für die Serverseite von Webanwendungen. Achten Sie neben der Einrichtung von Warnungen auf diese Metrik, um festzustellen, ob sie bei hohen Anforderungsraten unverhältnismäßig stark variiert: Dies kann darauf hindeuten, dass für Ihre App nicht genügend Systemressourcen vorhanden sind. 
-* **Serverausnahmen** erfordern ein [zusätzliches Setup](../../azure-monitor/app/asp-net-exceptions.md), damit sie angezeigt werden.
-
-Vergessen Sie nicht, dass bei der [proaktiven Fehlerquotendiagnose](../../azure-monitor/app/proactive-failure-diagnostics.md) automatisch die Rate überwacht wird, mit der Ihre App auf Anforderungen mit Fehlercodes reagiert.
 
 ## <a name="how-to-set-an-exception-alert-using-custom-log-search"></a>Festlegen einer Ausnahmewarnung mithilfe von benutzerdefinierter Protokollsuche
 
@@ -159,7 +100,7 @@ Wenn Ihre E-Mail-Adresse nicht explizit aufgeführt ist, wird empfohlen, dass Si
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>Wer erhält die (klassischen) Warnungsbenachrichtigungen?
 
-Dieser Abschnitt gilt nur für klassische Benachrichtigungen und hilft Ihnen, Ihre Warnungsbenachrichtigungen zu optimieren, um sicherzustellen, dass nur die gewünschten Empfänger Benachrichtigungen erhalten. Lesen Sie den [Übersichtsartikel zu Warnungen](../platform/alerts-overview.md), um mehr über den Unterschied zwischen [klassischen Warnungen](../platform/alerts-classic.overview.md) und den neuen Warnungen zu erfahren. Verwenden Sie [Aktionsgruppen](../platform/action-groups.md), um die Warnungsbenachrichtigung in der neuen Benutzeroberfläche für Warnungen zu steuern.
+Dieser Abschnitt gilt nur für klassische Benachrichtigungen und hilft Ihnen, Ihre Warnungsbenachrichtigungen zu optimieren, um sicherzustellen, dass nur die gewünschten Empfänger Benachrichtigungen erhalten. Lesen Sie den [Übersichtsartikel zu Warnungen](../platform/alerts-classic.overview.md), um mehr über den Unterschied zwischen [klassischen Warnungen](../platform/alerts-overview.md) und den neuen Warnungen zu erfahren. Verwenden Sie [Aktionsgruppen](../platform/action-groups.md), um die Warnungsbenachrichtigung in der neuen Benutzeroberfläche für Warnungen zu steuern.
 
 * Wir empfehlen die Verwendung bestimmter Empfänger für klassische Warnungsbenachrichtigungen.
 

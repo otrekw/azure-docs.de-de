@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6187fa9f274c6d00c1c9872a1b27268ac91295e
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 2b99a80a90df8fcfc5efe6dfa0c2cd7e8e5e04e0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78161485"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050882"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Direkter Verbund mit AD FS und Drittanbietern für Gastbenutzer (Preview)
 |     |
@@ -47,6 +47,7 @@ Bei direktem Verbund melden sich Gastbenutzer mit ihren eigenen Organisationskon
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>DNS-verifizierte Domänen in Azure AD
 Die Domäne, mit der Sie einen Verbund einrichten möchten, darf in Azure AD ***nicht*** DNS-verifiziert werden. Es ist zulässig, einen direkten Verbund mit nicht verwalteten (E-Mail-verifizierten oder „viralen“) Azure AD-Mandanten einzurichten, da sie nicht DNS-verifiziert sind.
+
 ### <a name="authentication-url"></a>Authentifizierungs-URL
 Der direkte Verbund ist nur für Richtlinien zulässig, bei denen die Domäne der Authentifizierungs-URL mit der Zieldomäne übereinstimmt, oder wenn es sich bei der Authentifizierungs-URL um einen dieser zulässigen Identitätsanbieter handelt (diese Liste kann geändert werden):
 -   accounts.google.com
@@ -94,7 +95,7 @@ In den folgenden Tabellen sind die Anforderungen für bestimmte Attribute und An
 
 Erforderliche Attribute für die SAML 2.0-Antwort des Identitätsanbieters:
 
-|attribute  |value  |
+|attribute  |Wert  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |Zielgruppe     |`urn:federation:MicrosoftOnline`         |
@@ -103,7 +104,7 @@ Erforderliche Attribute für die SAML 2.0-Antwort des Identitätsanbieters:
 
 Erforderliche Ansprüche für das vom Identitätsanbieter ausgegebene SAML 2.0-Token:
 
-|attribute  |value  |
+|attribute  |Wert  |
 |---------|---------|
 |NameID-Format     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -120,7 +121,7 @@ In den folgenden Tabellen sind die Anforderungen für bestimmte Attribute und An
 
 Erforderliche Attribute in der WS-Verbund-Nachricht vom Identitätsanbieter:
  
-|attribute  |value  |
+|attribute  |Wert  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
 |Zielgruppe     |`urn:federation:MicrosoftOnline`         |
@@ -128,7 +129,7 @@ Erforderliche Attribute in der WS-Verbund-Nachricht vom Identitätsanbieter:
 
 Erforderliche Ansprüche für das vom Identitätsanbieter ausgegebene WS-Verbund-Token:
 
-|attribute  |value  |
+|attribute  |Wert  |
 |---------|---------|
 |ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |

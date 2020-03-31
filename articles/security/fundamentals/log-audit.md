@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
 ms.openlocfilehash: bd0f42507e22559690e2682a391c53b9c090aa6c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75750789"
 ---
 # <a name="azure-security-logging-and-auditing"></a>Azure-Sicherheitsprotokollierung und -Überwachung
@@ -62,10 +62,10 @@ In dem Artikel [Integrieren von Sicherheitslösungen in Azure Security Center](.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Überwachung und Protokollierung:](management-monitoring-overview.md) Schützen Sie Daten durch Sichtbarkeit und eine schnelle Reaktion auf frühzeitige Sicherheitswarnhinweise.
+- [Überwachung und Protokollierung](management-monitoring-overview.md): Schützen von Daten durch Beibehalten der Sichtbarkeit und schnelles Reagieren auf zeitnahe Sicherheitswarnungen.
 
-- [Sicherheitsprotokollierung und Überwachungprotokollsammlung in Azure:](https://azure.microsoft.com/resources/videos/security-logging-and-audit-log-collection/) Erzwingen Sie diese Einstellungen, um sicherzustellen, dass Ihre Azure-Instanzen die richtigen Sicherheits- und Überwachungsprotokolle sammeln.
+- [Sicherheitsprotokollierung und Sammeln von Überwachungsprotokollen in Azure](https://azure.microsoft.com/resources/videos/security-logging-and-audit-log-collection/): Erzwingen Sie diese Einstellungen, um sicherzustellen, dass Ihre Azure-Instanzen die richtigen Sicherheits- und Überwachungsprotokolle sammeln.
 
-- [Konfigurieren von Überwachungseinstellungen für eine Websitesammlung:](https://support.office.com/article/Configure-audit-settings-for-a-site-collection-A9920C97-38C0-44F2-8BCB-4CF1E2AE22D2?ui=&rs=&ad=US) Wenn Sie Administrator einer Websitesammlung sind, können Sie den Verlauf der Aktionen für einzelne Benutzer und den Verlauf von Aktionen, die während eines bestimmten Zeitraums ausgeführt wurden, abrufen.
+- [Konfigurieren von Überwachungseinstellungen für eine Websitesammlung](https://support.office.com/article/Configure-audit-settings-for-a-site-collection-A9920C97-38C0-44F2-8BCB-4CF1E2AE22D2?ui=&rs=&ad=US): Wenn Sie Administrator einer Websitesammlung sind, können Sie den Verlauf der Aktionen für einzelne Benutzer und den Verlauf von Aktionen, die während eines bestimmten Zeitraums ausgeführt wurden, abrufen.
 
-- [Durchsuchen des Überwachungsprotokolls im Office 365 Security & Compliance Center:](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=&rs=&ad=US) Durchsuchen Sie mit dem Office 365 Security & Compliance Center das vereinheitlichte Überwachungsprotokoll, um Benutzer- und Administratoraktivitäten in Ihrer Office 365-Organisation anzuzeigen.
+- [Durchsuchen des Überwachungsprotokolls im Office 365 Security & Compliance Center](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=&rs=&ad=US): Mit dem Office 365 Security & Compliance Center können Sie das vereinheitlichte Überwachungsprotokoll suchen, um Benutzer- und Administratoraktivitäten in Ihrer Office 365-Organisation anzuzeigen.

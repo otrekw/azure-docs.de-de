@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: f577059e1ebf70e3a9dfe9e538a9d3d49d7c8e96
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71199997"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>Erstellen und Bereitstellen des OPC Vault-Zertifikatverwaltungsdiensts
@@ -88,7 +88,7 @@ Nach erfolgreicher Bereitstellung können Sie mit der Nutzung der Dienste beginn
 
 ## <a name="delete-the-services-from-the-subscription"></a>Löschen der Dienste aus dem Abonnement
 
-Das geht so:
+Gehen Sie dabei folgendermaßen vor:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wechseln Sie zu der Ressourcengruppe, in der der Dienst bereitgestellt wurde.

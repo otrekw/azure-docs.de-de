@@ -9,10 +9,10 @@ ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: 6ce94590a1d0de6941c27d972bdd1c4194080e95
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77153076"
 ---
 # <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Hierarchischer Namespace für Azure Data Lake Storage Gen2
@@ -23,7 +23,7 @@ Ein Schlüsselmechanismus, der es Azure Data Lake Storage Gen2 ermöglicht, Date
 
 Dateisysteme, die einen hierarchischen Namespace über Blob-Daten implementieren, bieten folgende Vorteile:
 
-- **Atomarische Verzeichnisbearbeitung:** Objektspeicher verarbeiten eine Verzeichnishierarchie, indem sie eine Konvention zur Einbettung von Schrägstrichen (/) in den Objektnamen anwenden, um Pfadsegmente zu bezeichnen. Diese Konvention funktioniert zwar beim Organisieren von Objekten, stellt aber keine Hilfe bei Aktionen wie dem Verschieben, Umbenennen oder Löschen von Verzeichnissen dar. Ohne wirkliche Verzeichnisse müssen Anwendungen möglicherweise Millionen einzelner Blobs zur Ausführung von Aufgaben auf Verzeichnisebene verarbeiten. Ein hierarchischer Namespace hingegen verarbeitet diese Aufgaben durch Aktualisieren eines einzelnen Eintrags (des übergeordneten Verzeichnisses).
+- **Atomarische Verzeichnisbearbeitung:** Objektspeicher nähern sich einer Verzeichnishierarchie, indem eine Konvention mit Einbettung von Schrägstrichen (/) in den Objektnamen zur Angabe von Pfadsegmenten übernommen wird. Diese Konvention funktioniert zwar beim Organisieren von Objekten, stellt aber keine Hilfe bei Aktionen wie dem Verschieben, Umbenennen oder Löschen von Verzeichnissen dar. Ohne wirkliche Verzeichnisse müssen Anwendungen möglicherweise Millionen einzelner Blobs zur Ausführung von Aufgaben auf Verzeichnisebene verarbeiten. Ein hierarchischer Namespace hingegen verarbeitet diese Aufgaben durch Aktualisieren eines einzelnen Eintrags (des übergeordneten Verzeichnisses).
 
     Diese wesentliche Verbesserung ist für viele Big Data-Analyseframeworks von besonderer Bedeutung. Tools wie Hive, Spark usw. schreiben häufig die Ausgabe an temporäre Speicherorte und benennen dann bei Abschluss des Auftrags den Speicherort um. Ohne hierarchischen Namespace kann dieses Umbenennen häufig länger dauern als der eigentliche Analyseprozess. Eine niedrigere Auftragslatenz bedeutet auch niedrigere Gesamtkosten für Analyseworkloads.
 

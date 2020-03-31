@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: dc8a870d692108f3a33b89a1c3826d421dfd1f63
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 147f43148c0f804adf70f1a792ba1b8a772fdae4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824399"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294494"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Zehn Dinge, die Sie mit der Windows Data Science Virtual Machine machen können
 
@@ -134,7 +134,7 @@ IrisPredictor(3,2,3,4)
 > 
 
 ### <a name="build-and-operationalize-r-models"></a>Erstellen und Operationalisieren von R-Modellen
-Sie können R-Modelle, die auf der Data Science Virtual Machine oder anderswo erstellt wurden, auf Azure Machine Learning in einer Weise bereitstellen, die derjenigen für Python ähnelt. Gehen Sie wie folgt vor:
+Sie können R-Modelle, die auf der Data Science Virtual Machine oder anderswo erstellt wurden, auf Azure Machine Learning in einer Weise bereitstellen, die derjenigen für Python ähnelt. Im Folgenden werden die Schritte aufgeführt:
 
 1. Erstellen Sie eine „settings.json“-Datei, um Ihre Arbeitsbereichs-ID und Ihr Authentifizierungstoken bereitzustellen. 
 2. Schreiben Sie einen Wrapper für die Vorhersagefunktion des Modells.
@@ -142,7 +142,7 @@ Sie können R-Modelle, die auf der Data Science Virtual Machine oder anderswo er
 
 Verwenden Sie die folgende Vorgehensweise und die folgenden Codeausschnitte, um ein Modell als Webdienst in Azure Machine Learning einzurichten, zu erstellen, zu veröffentlichen und zu nutzen.
 
-#### <a name="set-up"></a>Einrichtung
+#### <a name="set-up"></a>Einrichten
 
 Erstellen Sie eine „settings.json“-Datei in einem Verzeichnis namens ```.azureml```, das sich in Ihrem Basisverzeichnis befindet. Geben Sie die Parameter aus Ihrem Azure Machine Learning-Arbeitsbereich ein.
 
@@ -836,7 +836,7 @@ Nachdem Sie die Daten importiert haben, können Sie zu Jupyter wechseln und das 
 ## <a name="use-power-bi-reports-and-dashboards"></a>Verwenden von Power BI-Berichten und -Dashboards 
 Sie können die „Volcano JSON“-Datei aus dem vorherigen Azure Cosmos DB-Beispiel in Power BI Desktop visualisieren, um visuelle Einblicke in die Daten zu erhalten. Eine ausführliche Anleitung finden Sie im [Power BI-Artikel](../../cosmos-db/powerbi-visualize.md). Die allgemeinen Schritte sind folgende:
 
-1. Öffnen Sie Power BI Desktop, und wählen Sie **Daten abrufen** aus. Geben Sie die URL wie folgt an: https://cahandson.blob.core.windows.net/samples/volcano.json.
+1. Öffnen Sie Power BI Desktop, und wählen Sie **Daten abrufen** aus. Geben Sie die URL wie folgt an: `https://cahandson.blob.core.windows.net/samples/volcano.json`.
 2. Sie sollten die JSON-Datensätze in einer importierten Liste sehen. Konvertieren Sie die Liste in eine Tabelle, damit Power BI damit arbeiten kann.
 4. Erweitern Sie die Spalten, indem Sie das Symbol für Erweitern (Pfeil) auswählen.
 5. Beachten Sie, dass der Standort (location) ein **Record**-Feld (Datensatz-Feld) ist. Erweitern Sie den Datensatz und wählen Sie nur „coordinates“. **coordinates** ist eine Listenspalte.
@@ -864,7 +864,7 @@ Jetzt befinden sich die Daten in Ihrem Power BI-Datenmodell. Ihre Power BI Deskt
 Sie können beginnen, Berichte und Visualisierungen mit dem Datenmodell zu erstellen. Sie können die in diesem [Power BI-Artikel](../../cosmos-db/powerbi-visualize.md#build-the-reports) beschriebenen Schritte verwenden, um einen Bericht zu erstellen.
 
 ## <a name="scale-the-dsvm-dynamically"></a>Dynamisches Skalieren der DSVM 
-Sie können die DSVM gemäß Ihren Projektanforderungen zentral hoch- oder herunterskalieren. Wenn Sie die VM weder abends noch an Wochenenden verwenden, können Sie die VM über das [Azure-Portal](https://portal.azure.com) herunterfahren.
+Sie können die DSVM gemäß Ihren Projektanforderungen hoch- oder herunterskalieren. Wenn Sie die VM weder abends noch an Wochenenden verwenden, können Sie die VM über das [Azure-Portal](https://portal.azure.com) herunterfahren.
 
 > [!NOTE]
 > Es fallen Computegebühren an, wenn Sie nur die Schaltfläche zum Herunterfahren für das Betriebssystem auf der VM verwenden.  

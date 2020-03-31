@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/02/2020
 ms.openlocfilehash: f386530ffb3a074a5c1db1d9f28535d28c8b1284
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252403"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integrieren von Apache Spark und Apache Hive per Hive Warehouse Connector
@@ -74,7 +74,7 @@ Navigieren Sie auf der Spark Ambari-Webbenutzeroberfläche zu **Spark2** > **CON
 
 Klicken Sie bei Bedarf auf **Eigenschaft hinzufügen**, um die folgenden Eigenschaften hinzuzufügen bzw. zu aktualisieren:
 
-| Key | value |
+| Schlüssel | Wert |
 |----|----|
 |`spark.hadoop.hive.llap.daemon.service.hosts`|Der Wert, den Sie zuvor aus **hive.llap.daemon.service.hosts** abgerufen haben.|
 |`spark.sql.hive.hiveserver2.jdbc.url`|`jdbc:hive2://LLAPCLUSTERNAME.azurehdinsight.net:443/;user=admin;password=PWD;ssl=true;transportMode=http;httpPath=/hive2`. Legen Sie diese Einstellung auf die JDBC-Verbindungszeichenfolge fest, mit der eine Verbindung mit Hiveserver2 im Interactive Query-Cluster hergestellt wird. Ersetzen Sie `LLAPCLUSTERNAME` durch den Namen Ihres Interactive Query-Clusters. Ersetzen Sie `PWD` durch das tatsächliche Kennwort.|

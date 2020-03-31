@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 9df7593a9fd191d3a734fba5e81fb1aecba08345
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2423d04ead9040cce53d847d24efe75be680d94
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234414"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397303"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen
 
@@ -168,35 +168,6 @@ Abrufen von Aktivitätsprotokollen ohne Filter oder Auswahlfunktion:
 ```HTTP
 GET https://management.azure.com/subscriptions/089bd33f-d4ec-47fe-8ba5-0753aa5c5b33/providers/microsoft.insights/eventtypes/management/values?api-version=2015-04-01
 ```
-
-
-## <a name="activity-logs-analytics-monitoring-solution"></a>Überwachungslösung der Aktivitätsprotokollanalyse
-Die Azure Log Analytics-Überwachungslösung umfasst mehrere Protokollabfragen und Ansichten zum Analysieren der Aktivitätsprotokolldatensätze in Ihrem Log Analytics-Arbeitsbereich.
-
-### <a name="prerequisites"></a>Voraussetzungen
-Sie müssen eine Diagnoseeinstellung erstellen, um das Aktivitätsprotokoll für Ihr Abonnement an einen Log Analytics-Arbeitsbereich zu senden. Informationen dazu finden Sie unter [Erfassen von Protokollen der Azure-Plattform im Log Analytics-Arbeitsbereich in Azure Monitor](resource-logs-collect-workspace.md).
-
-### <a name="install-the-solution"></a>Installieren der Lösung
-Verwenden Sie das unter [Installieren einer Überwachungslösung](../insights/solutions.md#install-a-monitoring-solution) beschriebene Verfahren, um die Überwachungslösung der **Aktivitätsprotokollanalyse** zu installieren. Es ist keine zusätzliche Konfiguration erforderlich.
-
-### <a name="use-the-solution"></a>Verwenden der Lösung
-Klicken Sie am oberen Rand der Seite **Aktivitätsprotokoll** auf **Protokolle**, um die [Überwachungslösung der Aktivitätsprotokollanalyse](activity-log-collect.md) für das Abonnement zu öffnen. Sie können auch über das Menü **Überwachen** im Azure-Portal auf alle Überwachungslösungen Ihres Abonnements zugreifen. Wählen Sie im Abschnitt **Insights** die Option **Mehr** aus, um die Seite **Übersicht** mit den Lösungskacheln zu öffnen. Die Kachel **Azure-Aktivitätsprotokolle** zeigt die Anzahl der **AzureActivity**-Datensätze in Ihrem Arbeitsbereich.
-
-![Kachel „Azure-Aktivitätsprotokolle“](media/collect-activity-logs/azure-activity-logs-tile.png)
-
-
-Klicken Sie auf die Kachel **Azure-Aktivitätsprotokolle**, um die Ansicht **Azure-Aktivitätsprotokolle** zu öffnen. Die Ansicht enthält die Visualisierungskomponenten, die in der folgenden Tabelle aufgeführt sind. Für jede Komponente sind bis zu 10 Einträge aufgeführt, die den Kriterien dieser Komponente für den angegebenen Zeitraum entsprechen. Sie können eine Protokollabfrage ausführen, die alle übereinstimmenden Datensätze zurückgibt. Dazu klicken Sie am unteren Rand der Komponente auf **Alle anzeigen**.
-
-![Dashboard „Azure-Aktivitätsprotokolle“](media/collect-activity-logs/activity-log-dash.png)
-
-| Visualisierungskomponente | BESCHREIBUNG |
-| --- | --- |
-| Azure Activity Log Entries (Azure-Aktivitätsprotokolleinträge) | Zeigt ein Balkendiagramm aller Datensätze des ersten Azure-Aktivitätsprotokolleintrags für den ausgewählten Datumsbereich sowie eine Liste der ersten zehn Aktivitätsaufrufer an. Klicken Sie auf das Balkendiagramm, um eine Protokollsuche für `AzureActivity` durchzuführen. Klicken Sie auf ein Aufruferelement, um eine Protokollsuche durchzuführen, mit der alle Aktivitätsprotokolleinträge für das Element zurückgegeben werden. |
-| Activity Logs by Status (Aktivitätsprotokolle nach Status) | Zeigt ein Ringdiagramm für den Status der Azure-Aktivitätsprotokolle für den ausgewählten Datumsbereich sowie eine Liste der ersten zehn Statuseinträge an. Klicken Sie auf das Diagramm, um eine Protokollabfrage für `AzureActivity | summarize AggregatedValue = count() by ActivityStatus` durchzuführen. Klicken Sie auf ein Statuselement, um eine Protokollsuche durchzuführen, mit der alle Aktivitätsprotokolleinträge für das Statuselement zurückgegeben werden. |
-| Activity Logs by Resource (Aktivitätsprotokolle nach Ressource) | Zeigt die Gesamtanzahl der Ressourcen mit Aktivitätsprotokollen an und listet die ersten zehn Ressourcen mit der Anzahl der Datensätze für jede Ressource auf. Klicken Sie auf den Gesamtbereich, um eine Protokollsuche für `AzureActivity | summarize AggregatedValue = count() by Resource` durchzuführen, in der alle für die Lösung verfügbaren Azure-Ressourcen angezeigt werden. Klicken Sie auf eine Ressource, um eine Protokollabfrage durchzuführen, mit der alle Aktivitätsdatensätze für die Ressource zurückgegeben werden. |
-| Activity Logs by Resource Provider (Aktivitätsprotokolle nach Ressourcenanbieter) | Zeigt die Gesamtanzahl der Ressourcenanbieter an, die Aktivitätsprotokolle generieren, und listet die ersten zehn Anbieter auf. Klicken Sie auf den Gesamtbereich, um eine Protokollabfrage für `AzureActivity | summarize AggregatedValue = count() by ResourceProvider` durchzuführen, in der alle Azure-Ressourcenanbieter angezeigt werden. Klicken Sie auf einen Ressourcenanbieter, um eine Protokollabfrage durchzuführen, mit der alle Aktivitätsdatensätze für den Anbieter zurückgegeben werden. |
-
-
 
 
 ## <a name="next-steps"></a>Nächste Schritte

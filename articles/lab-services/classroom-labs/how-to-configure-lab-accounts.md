@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
 ms.openlocfilehash: fa9dba62b3b58687ec6a2bfc29e8722f7016b679
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443419"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237262"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Konfigurieren von Labkonten in Azure Lab Services 
 In Azure Lab Services ist ein Lab-Konto ein Container für verwaltete Labtypen (beispielsweise Classroom-Labs). Ein Administrator richtet ein Lab-Konto mit Azure Lab Services ein und gewährt Lab-Besitzern Zugriff, sodass sie Labs unter dem Konto erstellen können. 

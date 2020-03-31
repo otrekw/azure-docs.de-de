@@ -16,10 +16,10 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 82b5e1d9753fbb65fd81f24b06016d302457144e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76834092"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Web-API, die Web-APIs aufruft: Codekonfiguration
@@ -28,7 +28,7 @@ Nachdem Sie Ihre Web-API registriert haben, können Sie den Code für die Anwend
 
 Der Code, den Sie zum Konfigurieren der Web-API verwenden, sodass diese Downstream-Web-APIs aufruft, baut auf dem zum Schutz einer Web-API verwendeten Code auf. Weitere Informationen finden Sie unter [Geschützte Web-API: App-Konfiguration](scenario-protected-web-api-app-configuration.md).
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ## <a name="code-subscribed-to-ontokenvalidated"></a>Von OnTokenValidated abonnierter Code
 
@@ -144,7 +144,7 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
      }
 }
 ```
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Der On-Behalf-Of-Fluss (OBO) wird verwendet, um ein Token zum Aufrufen der Downstream-Web-API abzurufen. In diesem Flow empfängt Ihre Web-API ein Bearertoken mit den vom Benutzer delegierten Berechtigungen von der Clientanwendung und tauscht dieses Token dann mit einem anderen Zugriffstoken aus, um die Downstream-Web-API aufzurufen.
 
@@ -213,7 +213,7 @@ class MsalAuthHelper {
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Der On-Behalf-Of-Fluss (OBO) wird verwendet, um ein Token zum Aufrufen der Downstream-Web-API abzurufen. In diesem Flow empfängt Ihre Web-API ein Bearertoken mit den vom Benutzer delegierten Berechtigungen von der Clientanwendung und tauscht dieses Token dann mit einem anderen Zugriffstoken aus, um die Downstream-Web-API aufzurufen.
 

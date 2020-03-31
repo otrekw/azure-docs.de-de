@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
 ms.openlocfilehash: 4ceefcbbbb53e3ae13f8ced930ae8417fb00965f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75974400"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – bewährte Methoden für Sicherheit und DevOps
@@ -42,7 +42,7 @@ Verwenden Sie die folgenden Schritte, um den in die Domäne eingebundenen HDInsi
 
 - Stellen Sie den HDInsight ESP-Cluster bereit, indem Sie die folgenden Parameter festlegen:
 
-    |Parameter |Beschreibung |
+    |Parameter |BESCHREIBUNG |
     |---|---|
     |Domänenname|Der Domänenname, der Azure AD DS zugeordnet ist.|
     |Domänenbenutzername|Das Dienstkonto in der vom Azure AD DS-Domänencontroller verwalteten Domäne, die im vorherigen Abschnitt erstellt wurde, z.B. `hdiadmin@contoso.onmicrosoft.com`. Dieser Domänenbenutzer wird der Administrator dieses HDInsight-Clusters.|

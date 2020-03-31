@@ -9,10 +9,10 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 890a25ed2cf11d657cad930815d78dbf968cc9f9
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71203654"
 ---
 # <a name="manage-the-opc-vault-certificate-service"></a>Verwalten des OPC Vault-Zertifikatdiensts
@@ -35,7 +35,7 @@ Nach der Bereitstellung von OPC Vault müssen Sie das Zertifikat der Stammzertif
 6. Wählen Sie **Speichern** aus.
 7. Wenn an dieser Stelle ein Fehler vom Typ „Verboten“ auftritt, wurde Ihren Benutzeranmeldeinformationen die Administratorberechtigung zum Ändern oder Erstellen eines neuen Stammzertifikats nicht zugewiesen. Standardmäßig verfügt der Benutzer, der den Dienst bereitgestellt hat, über Administrator-und Signaturrollen bei dem Dienst. Andere Benutzer müssen den Rollen „Genehmigende Person“, „Writer“ oder „Administrator“ entsprechend der Azure Active Directory (Azure AD)-Anwendungsregistrierung hinzugefügt werden.
 8. Wählen Sie **Details** aus. Daraufhin sollten die aktualisierten Informationen angezeigt werden.
-9. Wählen Sie **Zertifizierungsstellenzertifikat erneuern** aus, um das erste ZS-Zertifikat des Zertifikatausstellers auszustellen oder das Ausstellerzertifikat zu erneuern. Wählen Sie dann **OK**aus.
+9. Wählen Sie **Zertifizierungsstellenzertifikat erneuern** aus, um das erste ZS-Zertifikat des Zertifikatausstellers auszustellen oder das Ausstellerzertifikat zu erneuern. Klicken Sie anschließend auf **OK**.
 10. Nach einigen Sekunden wird **Zertifikatdetails** angezeigt. Wählen Sie **Antragsteller** oder **Zertifikatssperrliste** aus, um das aktuelle ZS-Zertifikat und die Zertifikatssperrliste zur Verteilung an Ihre OPC UA-Anwendungen herunterzuladen.
 
 Jetzt ist der OPC UA-Zertifikatverwaltungsdienst bereit, Zertifikate für OPC UA-Anwendungen auszustellen.

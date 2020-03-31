@@ -4,10 +4,10 @@ description: Überwachen Sie systemeigene und benutzerdefinierte .NET-Leistungsi
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.openlocfilehash: 94d2520c17867f6d70caffd002a76365a425986f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669878"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Systemleistungsindikatoren in Application Insights
@@ -149,7 +149,7 @@ Für die Unterstützung von Leistungsindikatoren in ASP.NET Core gelten die folg
 ## <a name="alerts"></a>Alerts
 Wie bei anderen Metriken können Sie [eine Warnung festlegen](../../azure-monitor/app/alerts.md), damit Sie gewarnt werden, wenn ein Leistungsindikator einen von Ihnen festgelegten Grenzwert überschreitet. Öffnen Sie den Bereich „Warnungen“, und klicken Sie auf „Warnung hinzufügen“.
 
-## <a name="next"></a>Nächste Schritte
+## <a name="next-steps"></a><a name="next"></a>Nächste Schritte
 
 * [Abhängigkeitsüberwachung](../../azure-monitor/app/asp-net-dependencies.md)
 * [Ausnahmeverfolgung](../../azure-monitor/app/asp-net-exceptions.md)

@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: 96f5eb84f356089124708738f8a9e56b031c76bf
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 980ed1e54de30ec8a2dc0c1fdac6546d31f48a00
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168828"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218197"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-classic-web-services"></a>Erstellen von Endpunkten für bereitgestellte (klassische) Azure Machine Learning Studio-Webdienste
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 > [!NOTE]
 > Die in diesem Thema beschriebenen Verfahren beziehen sich auf einen **klassischen** Machine Learning-Webdienst.
@@ -37,7 +39,7 @@ Mithilfe des Azure Machine Learning-Webdienstportals können Sie einen Endpunkt 
 3. Klicken Sie auf **Neu**.
 4. Geben Sie einen Namen und eine Beschreibung für den neuen Endpunkt ein. Endpunktnamen dürfen maximal 24 Zeichen lang sein und müssen aus Kleinbuchstaben oder Zahlen bestehen. Wählen Sie die Protokollierungsstufe aus, und legen Sie fest, ob Beispieldaten aktiviert sind. Weitere Informationen zur Protokollierung finden Sie unter [Aktivieren der Protokollierung für Machine Learning-Webdienste](web-services-logging.md).
 
-## <a id="scaling"></a> Skalieren eines Webdiensts durch Hinzufügen zusätzlicher Endpunkte
+## <a name="scale-a-web-service-by-adding-additional-endpoints"></a><a id="scaling"></a> Skalieren eines Webdiensts durch Hinzufügen zusätzlicher Endpunkte
 
 Standardmäßig ist jeder veröffentlichte Webdienst so konfiguriert, dass er 20 Anforderungen gleichzeitig unterstützt, wobei maximal 200 Anforderungen gleichzeitig unterstützt werden können. Azure Machine Learning Studio (klassisch) optimiert die Einstellung automatisch, um die beste Leistung für Ihren Webdienst zu bieten. Der Wert aus dem Portal wird ignoriert.
 

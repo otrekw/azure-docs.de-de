@@ -9,10 +9,10 @@ ms.custom: hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.openlocfilehash: 7eb1f7e1ce02a30f84cb520438f60fcbcfa3a965
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73100142"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Hochladen von Daten für Apache Hadoop-Aufträge in HDInsight
@@ -37,7 +37,7 @@ Microsoft bietet die folgenden Hilfsprogramme für die Arbeit mit Azure Storage:
 
 | Tool | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure-Befehlszeilenschnittstelle](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
 | [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
 | [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
@@ -46,7 +46,7 @@ Microsoft bietet die folgenden Hilfsprogramme für die Arbeit mit Azure Storage:
 > [!NOTE]  
 > Der Hadoop-Befehl ist nur für den HDInsight-Cluster verfügbar. Mit dem Befehl können nur Daten aus dem lokalen Dateisystem in Azure Storage geladen werden.  
 
-## <a id="commandline"></a>Hadoop-Befehlszeile
+## <a name="hadoop-command-line"></a><a id="commandline"></a>Hadoop-Befehlszeile
 
 Die Hadoop-Befehlszeile eignet sich nur dann zum Speichern von Daten in Azure Storage Blob, wenn die Daten bereits auf dem Hauptknoten des Clusters vorhanden sind.
 
@@ -102,7 +102,7 @@ Der Azure Data Factory-Dienst ist ein vollständig verwalteter Dienst für das K
 |Azure Data Lake Storage Gen1|[Kopieren von Daten nach und aus Azure Data Lake Storage Gen1 mithilfe von Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)|
 |Azure Data Lake Storage Gen2 |[Laden von Daten in Azure Data Lake Storage Gen2 mit Azure Data Factory](../data-factory/load-azure-data-lake-storage-gen2.md)|
 
-### <a id="sqoop"></a>Apache Sqoop
+### <a name="apache-sqoop"></a><a id="sqoop"></a>Apache Sqoop
 
 Sqoop ist ein Tool zum Übertragen von Daten zwischen Hadoop und relationalen Datenbanken. Sie können damit Daten aus einem Managementsystem für relationale Datenbanken (RDBMS) wie SQL Server, MySQL oder Oracle in das verteilte Dateisystem von Hadoop (HDFS) importieren, die Daten in Hadoop mit MapReduce oder Hive transformieren und sie anschließend wieder in ein RDBMS exportieren.
 
@@ -123,7 +123,7 @@ Weitere Informationen zum Installieren der Azure-SDKs finden Sie unter [Azure-Do
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-### <a id="storageexception"></a>Speicherausnahme beim Schreiben in ein Blob
+### <a name="storage-exception-for-write-on-blob"></a><a id="storageexception"></a>Speicherausnahme beim Schreiben in ein Blob
 
 **Symptome:** Wenn Sie die Befehle `hadoop` oder `hdfs dfs` verwenden, um Dateien mit einer Größe von etwa 12 GB oder mehr in einem HBase-Cluster zu schreiben, wird möglicherweise der folgende Fehler angezeigt:
 

@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 4577f611287a27366b1168e07565861c16fe0e38
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76987021"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Erste Schritte mit Tools für elastische Datenbanken
@@ -100,19 +100,19 @@ Glückwunsch! Sie haben mit den Tools für elastische Datenbanken in SQL-Datenba
 
 ## <a name="key-pieces-of-the-code-sample"></a>Zentrale Elemente des Codebeispiels
 
-* **Verwalten von Shards und Shardzuordnungen**: Der Code in der Datei *ShardManagementUtils.cs* veranschaulicht die Arbeit mit Shards, Bereichen und Zuordnungen. Weitere Informationen finden Sie unter [Horizontales Hochskalieren von Datenbanken mit dem Shardzuordnungs-Manager](https://go.microsoft.com/?linkid=9862595).  
+* **Verwalten von Shards und Shardzuordnungen:** Der Code in der Datei *ShardManagementUtils.cs* veranschaulicht die Arbeit mit Shards, Bereichen und Zuordnungen. Weitere Informationen finden Sie unter [Aufskalieren von Datenbanken mit dem Shardzuordnungs-Manager](https://go.microsoft.com/?linkid=9862595).  
 
-* **Datenabhängiges Routing**: Das Routing von Transaktionen zum richtigen Shard wird in der Datei *DataDependentRoutingSample.cs* dargestellt. Weitere Informationen finden Sie unter [Datenabhängiges Routing](https://go.microsoft.com/?linkid=9862596). 
+* **Datenabhängiges Routing:** Das Routing von Transaktionen zum richtigen Shard wird in der Datei *DataDependentRoutingSample.cs* dargestellt. Weitere Informationen finden Sie unter [Datenabhängiges Routing](https://go.microsoft.com/?linkid=9862596). 
 
-* **Abfragen über mehrere Shards hinweg**: Shardübergreifende Abfragen werden in der Datei *MultiShardQuerySample.cs* veranschaulicht. Weitere Informationen finden Sie unter [Abfragen mehrerer Shards](https://go.microsoft.com/?linkid=9862597).
+* **Abfragen mehrerer Shards:** Shardübergreifende Abfragen werden in der Datei *MultiShardQuerySample.cs* veranschaulicht. Weitere Informationen finden Sie unter [Abfragen mehrerer Shards](https://go.microsoft.com/?linkid=9862597).
 
-* **Hinzufügen leerer Shards**: Das iterative Hinzufügen neuer leerer Shards wird mit dem Code in der Datei *CreateShardSample.cs* durchgeführt. Weitere Informationen finden Sie unter [Horizontales Hochskalieren von Datenbanken mit dem Shardzuordnungs-Manager](https://go.microsoft.com/?linkid=9862595).
+* **Hinzufügen leerer Shards:** Das iterative Hinzufügen neuer leerer Shards wird mit dem Code in der Datei *CreateShardSample.cs* durchgeführt. Weitere Informationen finden Sie unter [Aufskalieren von Datenbanken mit dem Shardzuordnungs-Manager](https://go.microsoft.com/?linkid=9862595).
 
 ## <a name="other-elastic-scale-operations"></a>Weitere Elastic Scale-Operationen
 
-* **Aufteilen eines vorhandenen Shards**: Die Möglichkeit zum Aufteilen von Shards wird durch das Split-Merge-Tool bereitgestellt. Weitere Informationen finden Sie unter [Verschieben von Daten zwischen horizontal hochskalierten Clouddatenbanken](sql-database-elastic-scale-overview-split-and-merge.md).
+* **Aufteilen eines vorhandenen Shards:** Die Möglichkeit zum Aufteilen von Shards wird durch das Split-Merge-Tool bereitgestellt. Weitere Informationen finden Sie unter [Verschieben von Daten zwischen horizontal hochskalierten Clouddatenbanken](sql-database-elastic-scale-overview-split-and-merge.md).
 
-* **Zusammenführen vorhandener Shards**: Shardzusammenführungen werden ebenfalls mit dem Split-Merge-Tool durchgeführt. Weitere Informationen finden Sie unter [Verschieben von Daten zwischen horizontal hochskalierten Clouddatenbanken](sql-database-elastic-scale-overview-split-and-merge.md).   
+* **Zusammenführen vorhandener Shards:** Shardzusammenführungen werden ebenfalls mit dem Split-Merge-Tool durchgeführt. Weitere Informationen finden Sie unter [Verschieben von Daten zwischen horizontal hochskalierten Clouddatenbanken](sql-database-elastic-scale-overview-split-and-merge.md).   
 
 ## <a name="cost"></a>Kosten
 
@@ -130,10 +130,10 @@ Weitere Informationen zu den Tools für elastische Datenbanken finden Sie in den
   * Tools für elastische Datenbanken ([.NET](https://github.com/Azure/elastic-db-tools), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
   * [Tools für elastische Datenbanken für Azure SQL – Entity Framework-Integration](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [Shard-Elastizität im Script Center](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
-* Blog: [Ankündigung der elastischen Skalierung](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/) (in englischer Sprache)
-* Channel 9: [Übersichtsvideo zur elastischen Skalierung](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale) (in englischer Sprache)
-* Diskussionsforum: [Forum zu Azure SQL-Datenbank](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) (in englischer Sprache)
-* Messen der Leistung: [Leistungsindikatoren für den Shardzuordnungs-Manager](sql-database-elastic-database-client-library.md)
+* Blog: [Ankündigung zur elastischen Skalierung](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
+* Channel 9: [Elastische Skalierung – Übersichtsvideo](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
+* Diskussionsforum: [Azure SQL-Datenbank – Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
+* So messen Sie die Leistung: [Leistungsindikatoren für den Shardzuordnungs-Manager](sql-database-elastic-database-client-library.md)
 
 <!--Anchors-->
 [The Elastic Scale Sample Application]: #The-Elastic-Scale-Sample-Application

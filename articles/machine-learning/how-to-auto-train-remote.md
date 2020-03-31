@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: 9e499d609a3f78dc5f422b9ed90df09be30f2e7c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79080410"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trainieren von Modellen mit automatisiertem maschinellem Lernen in der Cloud
@@ -24,7 +24,7 @@ ms.locfileid: "79080410"
 
 In Azure Machine Learning trainieren Sie Ihr Modell mit verschiedenen, von Ihnen verwalteten Arten von Computeressourcen. Beim Computeziel kann es sich um einen lokalen Computer oder eine Ressource in der Cloud handeln.
 
-Sie können Ihr Machine Learning-Experiment bequem durch Hinzufügen zusätzlicher Computeziele wie Azure Machine Learning Compute (AmlCompute) vertikal oder horizontal hochskalieren. AmlCompute ist eine verwaltete Compute-Infrastruktur, mit der Sie ganz einfach ein Computeziel mit einem oder mehreren Knoten erstellen können.
+Sie können Ihr Machine Learning-Experiment bequem durch Hinzufügen zusätzlicher Computeziele wie Azure Machine Learning Compute (AmlCompute) hoch- oder aufskalieren. AmlCompute ist eine verwaltete Compute-Infrastruktur, mit der Sie ganz einfach ein Computeziel mit einem oder mehreren Knoten erstellen können.
 
 In diesem Artikel erfahren Sie, wie Sie ein Modell mit automatisiertem Machine Learning mit AmlCompute erstellen.
 

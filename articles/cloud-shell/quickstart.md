@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 574841b3a89385a3b8bf048d5ed36f40fac99a83
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 58d795a5aee79e4149864a79a923ce34950b31d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757393"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79458068"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Schnellstart für Bash in Azure Cloud Shell
 
@@ -85,7 +85,7 @@ Nach dem Herstellen der SSH-Verbindung sollte der Willkommensbildschirm von Ubun
 
 ## <a name="cleaning-up"></a>Bereinigen 
 1. Beenden Sie Ihre SSH-Sitzung.
-   ```azurecli-interactive
+   ```
    exit
    ```
 

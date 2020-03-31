@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.openlocfilehash: 47eae55493c5db281ee1be0f9d32f8f8190fc286
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546944"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233494"
 ---
 # <a name="control-access-to-iot-hub"></a>Verwalten des Zugriffs auf IoT Hub
 
@@ -134,7 +134,7 @@ Das Sicherheitstoken weist das folgende Format auf:
 
 Hier sind die erwarteten Werte:
 
-| value | Beschreibung |
+| Wert | BESCHREIBUNG |
 | --- | --- |
 | {signature} |Eine HMAC-SHA256-Signaturzeichenfolge in folgendem Format: `{URL-encoded-resourceURI} + "\n" + expiry`. **Wichtig**: Der Schlüssel wird aus Base64 decodiert und als Schlüssel für die HMAC-SHA256-Berechnung verwendet. |
 | {resourceURI} |Das URI-Präfix (nach Segment) der Endpunkte, auf die mit diesem Token zugegriffen werden kann – beginnend mit dem Hostnamen des IoT Hubs (kein Protokoll). Zum Beispiel, `myHub.azure-devices.net/devices/device1` |

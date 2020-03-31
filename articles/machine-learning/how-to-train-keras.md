@@ -12,18 +12,18 @@ ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
 ms.openlocfilehash: ba7976d602412037578d0a324916718b2d515aac
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771784"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232850"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Trainieren und Registrieren eines Keras-Klassifizierungsmodells mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In diesem Artikel erfahren Sie, wie Sie ein TensorFlow-basiertes Keras-Klassifizierungsmodell mit Azure Machine Learning trainieren und registrieren. Es verwendet das beliebte [MNIST-Dataset](http://yann.lecun.com/exdb/mnist/), um handschriftliche Ziffern mithilfe eines DNN (Deep Neural Network) zu klassifizieren, das mit der [Keras Python-Bibliothek](https://keras.io) erstellt wurde, die auf [TensorFlow](https://www.tensorflow.org/overview) ausgeführt wird.
 
-Keras ist eine allgemeine API für neuronale Netzwerke, die zur Vereinfachung der Entwicklung auf anderen beliebten DNN-Frameworks ausgeführt werden kann. Azure Machine Learning bietet die Möglichkeit, Trainingsaufträge mithilfe elastischer Cloudcomputeressourcen schnell horizontal zu skalieren. Sie können auch Ihre Trainingsläufe, Versions- und Bereitstellungsmodelle und vieles mehr nachverfolgen.
+Keras ist eine allgemeine API für neuronale Netzwerke, die zur Vereinfachung der Entwicklung auf anderen beliebten DNN-Frameworks ausgeführt werden kann. Azure Machine Learning bietet die Möglichkeit, Trainingsaufträge mithilfe elastischer Cloudcomputeressourcen schnell aufzuskalieren. Sie können auch Ihre Trainingsläufe, Versions- und Bereitstellungsmodelle und vieles mehr nachverfolgen.
 
 Egal, ob Sie ein Keras-Modell von Grund auf entwickeln oder ein bestehendes Modell in die Cloud bringen, Azure Machine Learning kann Ihnen helfen, produktionsreife Modelle zu erstellen.
 
@@ -176,7 +176,7 @@ Die Ausführung durchläuft die folgenden Phasen:
 
 - **Vorbereitung**: Gemäß dem TensorFlow-Estimator wird ein Docker-Image erstellt. Das Image wird in die Containerregistrierung des Arbeitsbereichs hochgeladen und für spätere Ausführungen zwischengespeichert. Darüber hinaus werden Protokolle in den Ausführungsverlauf gestreamt, mit deren Hilfe der Status überwacht werden kann.
 
-- **Skalierung**: Der Cluster versucht ein zentrales Hochskalieren, wenn der Batch KI-Cluster mehr Knoten zur Ausführung benötigt, als derzeit verfügbar sind.
+- **Skalierung**: Der Cluster versucht ein Hochskalieren, wenn der Batch KI-Cluster mehr Knoten zur Ausführung benötigt, als derzeit verfügbar sind.
 
 - **Wird ausgeführt:** Alle Skripts im Skriptordner werden auf das Computeziel hochgeladen, Datenspeicher werden bereitgestellt oder kopiert, und das „entry_script“ wird ausgeführt. Ausgaben aus „stdout“ und dem Ordner „./logs“ werden in den Ausführungsverlauf gestreamt und können zur Überwachung der Ausführung verwendet werden.
 

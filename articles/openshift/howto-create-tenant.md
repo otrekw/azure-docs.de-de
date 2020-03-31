@@ -7,11 +7,11 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.openlocfilehash: ad03538cafcce9c1d660d0f2ac5eb3c6ae5f4f38
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76270447"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224766"
 ---
 # <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Erstellen eines Azure AD-Mandanten für Azure Red Hat OpenShift
 
@@ -33,13 +33,13 @@ So erstellen Sie einen Mandanten:
 
     ![Screenshot des Portals mit Mandantennamen oben rechts][tenantcallout]  
 
-8. Notieren Sie sich die *Mandanten-ID*, damit Sie später angeben können, wo Ihr Azure Red Hat OpenShift-Cluster erstellt werden soll. Im Portal sollte jetzt das Azure Active Directory-Übersichtsblatt für Ihren neuen Mandanten angezeigt werden. Klicken Sie auf **Eigenschaften**, und kopieren Sie den Wert der **Verzeichnis-ID**. Im Tutorial [Erstellen eines Azure Red Hat OpenShift-Clusters](tutorial-create-cluster.md) bezeichnen wir diesen Wert als `TENANT`.
+8. Notieren Sie sich die *Mandanten-ID*, damit Sie später angeben können, wo Ihr Azure Red Hat OpenShift-Cluster erstellt werden soll. Im Portal sollte jetzt das Azure Active Directory-Übersichtsblatt für Ihren neuen Mandanten angezeigt werden. Klicken Sie auf **Eigenschaften**, und kopieren Sie den Wert der **Verzeichnis-ID**. Im Tutorial `TENANT`Erstellen eines Azure Red Hat OpenShift-Clusters[ bezeichnen wir diesen Wert als ](tutorial-create-cluster.md).
 
 [tenantcallout]: ./media/howto-create-tenant/tenant-callout.png
 
 ## <a name="resources"></a>Ressourcen
 
-Weitere Informationen zu [Azure AD-Mandanten](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) finden Sie in der [Azure Active Directory-Dokumentation](https://docs.microsoft.com/azure/active-directory/).
+Weitere Informationen zu [Azure AD-Mandanten](https://docs.microsoft.com/azure/active-directory/) finden Sie in der [Azure Active Directory-Dokumentation](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

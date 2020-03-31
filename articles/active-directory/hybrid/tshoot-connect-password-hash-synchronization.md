@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6feed11fcfc597658f3ec148b5dd18bb7e3f8f83
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60383092"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227798"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Problembehandlung für die Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 
@@ -173,13 +173,13 @@ Im restlichen Teil dieses Abschnitts werden bestimmte Ergebnisse, die vom Cmdlet
 
 #### <a name="the-active-directory-object-isnt-exported-to-azure-ad"></a>Active Directory-Objekt wird nicht nach Azure AD exportiert
 
-Bei der Kennworthashsynchronisierung für dieses lokale Active Directory-Konto ist ein Fehler aufgetreten, da kein entsprechendes Objekt im Azure AD-Mandanten vorhanden ist. Die folgende Fehlermeldung wird zurückgegeben:
+Bei der Kennworthashsynchronisierung für dieses lokale Active Directory-Konto ist ein Fehler aufgetreten, da kein entsprechendes Objekt im Azure AD-Mandanten vorhanden ist. Der folgende Fehler wird zurückgegeben:
 
 ![Azure AD-Objekt fehlt](./media/tshoot-connect-password-hash-synchronization/phssingleobjectnotexported.png)
 
 #### <a name="user-has-a-temporary-password"></a>Benutzer besitzt ein temporäres Kennwort
 
-Gegenwärtig bietet Azure AD Connect keine Unterstützung für die Synchronisierung temporärer Kennwörter mit Azure AD. Ein Kennwort gilt als temporär, wenn die Option **Kennwort bei der nächsten Anmeldung ändern** für den lokalen Active Directory-Benutzer festgelegt wird. Die folgende Fehlermeldung wird zurückgegeben:
+Gegenwärtig bietet Azure AD Connect keine Unterstützung für die Synchronisierung temporärer Kennwörter mit Azure AD. Ein Kennwort gilt als temporär, wenn die Option **Kennwort bei der nächsten Anmeldung ändern** für den lokalen Active Directory-Benutzer festgelegt wird. Der folgende Fehler wird zurückgegeben:
 
 ![Temporäres Kennwort wurde nicht exportiert](./media/tshoot-connect-password-hash-synchronization/phssingleobjecttemporarypassword.png)
 
@@ -206,9 +206,9 @@ So behandeln Sie Probleme für den Fall, dass keine Kennwörter synchronisiert w
 
 2. Führen Sie `Set-ExecutionPolicy RemoteSigned` oder `Set-ExecutionPolicy Unrestricted` aus.
 
-3. Führen Sie `Import-Module ADSyncDiagnostics`aus.
+3. Führen Sie `Import-Module ADSyncDiagnostics` aus.
 
-4. Führen Sie `Invoke-ADSyncDiagnostics -PasswordSync`aus.
+4. Führen Sie `Invoke-ADSyncDiagnostics -PasswordSync` aus.
 
 
 
@@ -227,7 +227,7 @@ So behandeln Sie Probleme für den Fall, dass keine Kennwörter für einen Benut
 
 2. Führen Sie `Set-ExecutionPolicy RemoteSigned` oder `Set-ExecutionPolicy Unrestricted` aus.
 
-3. Führen Sie `Import-Module ADSyncDiagnostics`aus.
+3. Führen Sie `Import-Module ADSyncDiagnostics` aus.
 
 4. Führen Sie das folgende Cmdlet aus:
 
@@ -353,13 +353,13 @@ Die Statusspalte kann die folgenden Werte enthalten:
 
 | Status | BESCHREIBUNG |
 | --- | --- |
-| Erfolgreich |Das Kennwort wurde erfolgreich synchronisiert. |
+| Erfolg |Das Kennwort wurde erfolgreich synchronisiert. |
 | FilteredByTarget |Das Kennwort wird auf **Benutzer muss Kennwort bei der nächsten Anmeldung ändern**festgelegt. Das Kennwort wurde nicht synchronisiert. |
 | NoTargetConnection |Im Metaverse oder im Azure AD-Connectorbereich befindet sich kein Objekt. |
 | SourceConnectorNotPresent |Im lokalen Active Directory Connector-Bereich wurde kein Objekt gefunden. |
 | TargetNotExportedToDirectory |Das Objekt im Azure AD-Connectorbereich wurde noch nicht exportiert. |
 | MigratedCheckDetailsForMoreInfo |Der Protokolleintrag wurde vor Build 1.0.9125.0 erstellt und wird im Zustand der Vorversion angezeigt. |
-| Error |Dienst hat einen unbekannten Fehler zurückgegeben. |
+| Fehler |Dienst hat einen unbekannten Fehler zurückgegeben. |
 | Unknown |Fehler beim Versuch, einen Batch von Kennworthashes zu verarbeiten.  |
 | MissingAttribute |Bestimmte Attribute (z.B. Kerberos-Hash), die von Azure Active Directory Domain Services angefordert werden, sind nicht verfügbar. |
 | RetryRequestedByTarget |Bestimmte Attribute (z.B. Kerberos-Hash), die von Azure Active Directory Domain Services angefordert werden, waren zuvor nicht verfügbar. Es wird versucht, den Kennworthash des Benutzers neu zu synchronisieren. |

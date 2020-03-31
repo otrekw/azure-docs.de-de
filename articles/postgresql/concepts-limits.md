@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/28/2020
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 047e722a0e0ade60d1eb93a48e37333fffafd674
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76836455"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Beschränkungen in Azure Database for PostgreSQL – Einzelserver
@@ -53,7 +53,7 @@ Eine PostgreSQL-Verbindung, selbst im Leerlauf, kann ungefähr 10 MB Arbeitsspe
 ### <a name="server-version-upgrades"></a>Upgrades von Serverversionen
 - Die automatisierte Migration zwischen Hauptversionen von Datenbank-Engines wird derzeit nicht unterstützt. Wenn Sie auf die nächste Hauptversion upgraden möchten, führen Sie eine [Sicherung und Wiederherstellung](./howto-migrate-using-dump-and-restore.md) auf einem Server aus, der mit der neuen Engine-Version erstellt wurde.
 
-> Beachten Sie, dass vor PostgreSQL-Version 10 ein _Hauptversionsupgrade_ von der [PostgreSQL-Versionsrichtlinie](https://www.postgresql.org/support/versioning/) als eine Erhöhung der ersten _oder_ zweiten Versionsnummer betrachtet wurde (z. B. wurde der Wechsel von 9.5 auf 9.6 als _Hauptversionsupgrade_ angesehen).
+> Beachten Sie, dass vor PostgreSQL-Version 10 ein [Hauptversionsupgrade](https://www.postgresql.org/support/versioning/) von der _PostgreSQL-Versionsrichtlinie_ als eine Erhöhung der ersten _oder_ zweiten Versionsnummer betrachtet wurde (z. B. wurde der Wechsel von 9.5 auf 9.6 als _Hauptversionsupgrade_ angesehen).
 > Ab Version 10 gilt nur noch eine Änderung der ersten Versionsnummer als Hauptversionsupgrade (z. B. ist der Wechsel von 10.0 auf 10.1 ein _Nebenversionsupgrade_ und der von 10 auf 11 ein _Hauptversionsupgrade_).
 
 ### <a name="vnet-service-endpoints"></a>VNET-Dienstendpunkte

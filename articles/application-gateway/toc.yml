@@ -15,6 +15,9 @@
       href: quick-create-powershell.md
     - name: 'Erstellen eines Anwendungsgateways: Azure CLI'
       href: quick-create-cli.md
+    - name: 'Erstellen eines Anwendungsgateways: ARM-Vorlage'
+      displayName: Resource Manager
+      href: quick-create-template.md
 - name: Tutorials
   items:
     - name: Schützen mit SSL
@@ -47,6 +50,8 @@
           href: application-gateway-components.md
         - name: Konfigurationsübersicht
           href: configuration-overview.md
+    - name: Unterstützung von hohem Datenverkehr
+      href: high-traffic-support.md
     - name: SKU für automatische Skalierung v2
       href: application-gateway-autoscaling-zone-redundant.md
     - name: Routing

@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.openlocfilehash: 085933f9a74ee37779ce63ce499d89ea53a9f7d6
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198938"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Verfügbarkeit und Zuverlässigkeit von Apache Hadoop-Clustern in HDInsight
@@ -64,7 +64,7 @@ Zugriff auf den Cluster über das Internet ist über ein öffentliches Gateway m
 
 Der Zugriff über das öffentliche Gateway ist auf die Ports 443 (HTTPS), 22 und 23 beschränkt.
 
-|Port |Beschreibung |
+|Port |BESCHREIBUNG |
 |---|---|
 |443|Wird für den Zugriff auf Ambari und andere Webbenutzeroberflächen oder REST-APIs verwendet, die auf den Hauptknoten gehostet werden.|
 |22|Wird für den Zugriff auf den primären Hauptknoten oder den Edgeknoten mit SSH verwendet.|
@@ -119,7 +119,7 @@ Neben den Diensten werden möglicherweise Statussymbole angezeigt. Alle Warnunge
 
 Die folgenden Warnungen unterstützen die Überwachung der Verfügbarkeit eines Clusters:
 
-| Name der Warnung                               | Beschreibung                                                                                                                                                                                  |
+| Name der Warnung                               | BESCHREIBUNG                                                                                                                                                                                  |
 |------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Metric Monitor Status (Status der Metriküberwachung)                    | Diese Warnung gibt den Status des Metric Monitor-Prozesses an, wie er vom Überwachungsstatusskript bestimmt wird.                                                                                   |
 | Ambari Agent Heartbeat (Ambari-Agent-Heartbeat)                   | Diese Warnung wird ausgelöst, wenn der Server die Verbindung zu einem Agenten verloren hat.                                                                                                                        |

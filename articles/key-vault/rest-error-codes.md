@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: 8c9390ea498647d34e8643ed4be596372ffb8696
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 01fb5393217834bc0196da25c4a56314ca7eae2a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293384"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294533"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault: REST-API-Fehlercodes
  
@@ -99,7 +99,7 @@ Es ist wichtig, dass alle Werte im Token ordnungsgemäß identifiziert werden, d
 
 ### <a name="troubleshooting-401"></a>Problembehandlung von Fehlercode 401
 
-Fehlercodes des Typs 401 sollten ab dem Zeitpunkt der Tokengenerierung untersucht werden, bevor die Anforderung an den Schlüsseltresor vorgenommen wird. Im Allgemeinen wird Code verwendet, um das Token anzufordern. Nachdem das Token empfangen wurde, wird es an die Key-Vault Anforderung übergeben. Wenn der Code lokal ausgeführt wird, können Sie mit Fiddler die Anforderung/Antwort an https://login.microsoftonline.com erfassen. Eine Anforderung sieht wie folgt aus:
+Fehlercodes des Typs 401 sollten ab dem Zeitpunkt der Tokengenerierung untersucht werden, bevor die Anforderung an den Schlüsseltresor vorgenommen wird. Im Allgemeinen wird Code verwendet, um das Token anzufordern. Nachdem das Token empfangen wurde, wird es an die Key-Vault Anforderung übergeben. Wenn der Code lokal ausgeführt wird, können Sie mit Fiddler die Anforderung/Antwort an `https://login.microsoftonline.com` erfassen. Eine Anforderung sieht wie folgt aus:
 
 ``` 
 POST https://login.microsoftonline.com/<key vault tenant ID>/oauth2/token HTTP/1.1

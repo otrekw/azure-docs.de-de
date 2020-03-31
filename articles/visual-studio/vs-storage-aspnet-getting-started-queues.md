@@ -14,10 +14,10 @@ ms.date: 12/23/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: f229661ca78dc75adbc0b49073dc6f0feaf2ba22
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75980753"
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Erste Schritte mit Azure Queue Storage und verbundenen Visual Studio-Diensten (ASP.NET)
@@ -84,7 +84,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Warteschlange erstellen:
     }
     ```
 
-1. Rufen Sie in der **CreateQueue**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Rufen Sie in der **CreateQueue**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -165,7 +165,7 @@ Sobald Sie [eine Warteschlange erstellt](#create-a-queue) haben, können Sie die
     }
     ```
  
-1. Rufen Sie in der **AddMessage**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Rufen Sie in der **AddMessage**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -254,7 +254,7 @@ Dieser Abschnitt zeigt, wie Sie eine Nachricht in der Warteschlange in der Vorsc
     }
     ```
  
-1. Rufen Sie in der **PeekMessage**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Rufen Sie in der **PeekMessage**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -279,7 +279,7 @@ Dieser Abschnitt zeigt, wie Sie eine Nachricht in der Warteschlange in der Vorsc
     CloudQueueMessage message = queue.PeekMessage();
     ```
 
-1. Aktualisieren Sie **ViewBag** mit zwei Werten: dem Namen der Warteschlange und der Nachricht, die gelesen wurde. Das **CloudQueueMessage**-Objekt macht zwei Eigenschaften für den Abruf des Objektwerts verfügbar: **CloudQueueMessage.AsBytes** und **CloudQueueMessage.AsString**. **AsString** (in diesem Beispiel verwendet) gibt eine Zeichenfolge zurück, während **AsBytes** ein Bytearray zurückgibt.
+1. Aktualisieren Sie **ViewBag** mit zwei Werten: dem Namen der Warteschlange und der Nachricht, die gelesen wurde. Im **CloudQueueMessage**-Objekt sind zwei Eigenschaften verfügbar, aus denen der Wert des Objekts abgerufen werden kann: **CloudQueueMessage.AsBytes** und **CloudQueueMessage.AsString**. **AsString** (in diesem Beispiel verwendet) gibt eine Zeichenfolge zurück, während **AsBytes** ein Bytearray zurückgibt.
 
     ```csharp
     ViewBag.QueueName = queue.Name; 
@@ -338,7 +338,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine Nachricht lesen und aus einer War
     }
     ```
  
-1. Rufen Sie in der **ReadMessage**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Rufen Sie in der **ReadMessage**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -429,7 +429,7 @@ Dieser Abschnitt zeigt, wie die Warteschlangenlänge (Anzahl der Nachrichten) ab
     }
     ```
  
-1. Rufen Sie in der **ReadMessage**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Rufen Sie in der **ReadMessage**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -516,7 +516,7 @@ Dieser Abschnitt zeigt das Löschen einer Warteschlange.
     }
     ```
  
-1. Rufen Sie in der **DeleteQueue**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Rufen Sie in der **DeleteQueue**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(

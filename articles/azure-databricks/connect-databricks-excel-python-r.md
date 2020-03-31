@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: mamccrea
 ms.openlocfilehash: f7494d36cf9b16ac6c7a1287a6ff96dd2285c6e2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73601942"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Herstellen einer Verbindung mit Azure Databricks über Excel, Python oder R
@@ -54,7 +54,7 @@ Ein Datenquellenname (Data Source Name, DSN) enthält die Informationen zu einer
 
     Die folgende Tabelle enthält Informationen zu den Werten, die im Dialogfeld angegeben werden:
     
-    |Feld  | Wert  |
+    |Feld  | value  |
     |---------|---------|
     |**Datenquellenname**     | Geben Sie einen Namen für die Datenquelle ein.        |
     |**Host(s)**     | Geben Sie den Wert ein, den Sie aus dem Databricks-Arbeitsbereich für *Server hostname* (Serverhostname) kopiert haben.        |

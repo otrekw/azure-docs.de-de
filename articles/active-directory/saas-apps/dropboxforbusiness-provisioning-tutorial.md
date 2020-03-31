@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 3acc2c271e590bddb13aaa01498f404da4340036
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77058419"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Dropbox für Unternehmen für die automatische Benutzerbereitstellung

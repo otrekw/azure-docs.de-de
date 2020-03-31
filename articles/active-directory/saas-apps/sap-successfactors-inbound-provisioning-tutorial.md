@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 12/05/2019
 ms.author: chmutali
 ms.openlocfilehash: d9317a68c8967fbe0728e8c47e59dd33367c6163
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77060225"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226610"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>Tutorial: Konfigurieren der Benutzerbereitstellung von SAP SuccessFactors zu Active Directory (Vorschauversion)
 In diesem Tutorial werden die Schritte vorgestellt, die Sie zum Bereitstellen von Benutzern aus SuccessFactors Employee Central in sowohl Active Directory (AD) als auch Azure AD ausführen müssen, wobei einige E-Mail-Adressen optional in SuccessFactors zurückgeschrieben werden. Diese Integration befindet sich in der öffentlichen Vorschau und unterstützt das Abrufen von mehr als [70 Benutzerattributen](../app-provisioning/sap-successfactors-attribute-reference.md) von SuccessFactors Employee Central.

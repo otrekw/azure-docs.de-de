@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 41e8b81bc3594c6a378757636f70058510a38cc7
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78226911"
 ---
 # <a name="dynamic-groups-and-azure-active-directory-b2b-collaboration"></a>Dynamische Gruppen und Azure Active Directory B2B-Zusammenarbeit
@@ -29,7 +29,7 @@ Für die Erstellung und Verwendung dynamischer Gruppen wird die passende [Azure 
 Sie können mithilfe einer Mitgliedschaftsregel eine Gruppe mit allen Benutzern innerhalb eines Mandanten erstellen. Wenn Benutzer in Zukunft zum Mandanten hinzugefügt oder daraus entfernt werden, wird die Mitgliedschaft in der Gruppe automatisch angepasst.
 
 1. Melden Sie sich im [Azure-Portal](https://portal.azure.com) mit einem Konto an, dem im Mandanten die Rolle „Globaler Administrator“ oder „Benutzeradministrator“ zugewiesen ist.
-1. Wählen Sie **Azure Active Directory** aus.
+1. Wählen Sie **Azure Active Directory**.
 2. Wählen Sie unter **Verwalten** die Option **Gruppen** und anschließend **Neue Gruppe** aus.
 1. Wählen Sie auf der Seite **Neue Gruppe** unter **Gruppentyp** die Option **Sicherheit** aus. Geben Sie einen **Gruppennamen** und eine **Gruppenbeschreibung** für die neue Gruppe ein. 
 2. Wählen Sie unter **Mitgliedschaftstyp** die Option **Dynamischer Benutzer** und dann **Dynamische Abfrage hinzufügen** aus. 

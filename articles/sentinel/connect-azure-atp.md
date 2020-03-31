@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 387d04cbbb125006efcc4efc53a02015fe3f5919
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588585"
 ---
 # <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Verknüpfen von Daten aus Azure Advanced Threat Protection (ATP)

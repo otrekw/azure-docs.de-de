@@ -9,10 +9,10 @@ ms.date: 01/08/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
 ms.openlocfilehash: 37bb28419f23fee2c179171a2e5c0e4e851ac9a0
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471753"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk mit Azure PowerShell
@@ -49,7 +49,7 @@ Wenn Sie das Azure-Portal verwenden möchten, statt dieses Tutorial durchzuarbei
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für diesen Artikel müssen Sie PowerShell lokal ausführen. Das Azure PowerShell-Modul muss installiert sein. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-Az-ps) Informationen dazu. Führen Sie nach dem Überprüfen der PowerShell-Version `Login-AzAccount` aus, um eine Verbindung mit Azure zu erstellen.
+Für diesen Artikel müssen Sie PowerShell lokal ausführen. Das Azure PowerShell-Modul muss installiert sein. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-Az-ps) Informationen dazu. Führen Sie nach dem Überprüfen der PowerShell-Version `Login-AzAccount` aus, um eine Verbindung mit Azure zu erstellen.
 
 Es gibt drei wichtige Anforderungen, die erfüllt sein müssen, damit dieses Szenario richtig funktioniert:
 

@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: kgremban
 ms.openlocfilehash: cfbd46ad961bd1dc914bae98e761cd83d445ff88
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513030"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>Azure Event Grid-Ereignisschema für IoT Hub
@@ -27,7 +27,7 @@ Eine Liste von Beispielskripts und Tutorials finden Sie unter [Ereignisquellen i
 
 Azure IoT Hub gibt die folgenden Ereignistypen aus:
 
-| Ereignistyp | Beschreibung |
+| Ereignistyp | BESCHREIBUNG |
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | Wird ausgelöst, wenn ein Gerät bei einem IoT Hub registriert wird. |
 | Microsoft.Devices.DeviceDeleted | Wird ausgelöst, wenn ein Gerät aus einem IoT Hub gelöscht wird. | 
@@ -148,7 +148,7 @@ Das Schema für DeviceCreated- und DeviceDeleted-Ereignisse verfügen über die 
 
 Alle Ereignisse enthalten die gleichen Daten der obersten Ebene: 
 
-| Eigenschaft | type | Beschreibung |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | id | string | Eindeutiger Bezeichner für das Ereignis. |
 | topic | string | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
@@ -161,7 +161,7 @@ Alle Ereignisse enthalten die gleichen Daten der obersten Ebene:
 
 Für IoT Hub-Ereignisse enthält das Datenobjekt die folgenden Eigenschaften:
 
-| Eigenschaft | type | Beschreibung |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | hubName | string | Name des IoT Hubs, in dem das Gerät erstellt bzw. aus dem das Gerät gelöscht wurde. |
 | deviceId | string | Der eindeutige Bezeichner des Geräts. Eine Zeichenfolge mit Beachtung von Groß-/Kleinschreibung, die bis zu 128 Zeichen lang sein kann und alphanumerische 7-Bit-ASCII-Zeichen sowie die folgenden Sonderzeichen unterstützt: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
@@ -170,7 +170,7 @@ Die Inhalte des Datenobjekts unterscheiden sich für jeden Ereignisherausgeber.
 
 Für die IoT Hub-Ereignisse **Gerät verbunden** und **Gerät getrennt** enthält das Datenobjekt die folgenden Eigenschaften:
 
-| Eigenschaft | type | Beschreibung |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | moduleId | string | Der eindeutige Bezeichner des Moduls. Dieses Feld dient nur der Ausgabe für Modulgeräte. Eine Zeichenfolge mit Beachtung von Groß-/Kleinschreibung, die bis zu 128 Zeichen lang sein kann und alphanumerische 7-Bit-ASCII-Zeichen sowie die folgenden Sonderzeichen unterstützt: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
 | deviceConnectionStateEventInfo | Objekt (object) | Ereignisinformationen zum Verbindungsstatus des Geräts
@@ -178,7 +178,7 @@ Für die IoT Hub-Ereignisse **Gerät verbunden** und **Gerät getrennt** enthäl
 
 Für ein IoT Hub-Ereignis zur **Gerätetelemetrie** enthält das Datenobjekt die D2C-Nachricht im [IoT Hub-Nachrichtenformat](../iot-hub/iot-hub-devguide-messages-construct.md) und weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | type | Beschreibung |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | body | string | Der Inhalt der Nachricht vom Gerät. |
 | properties | string | Anwendungseigenschaften sind benutzerdefinierte Zeichenfolgen, die der Nachricht hinzugefügt werden können. Diese Felder sind optional. |
@@ -186,7 +186,7 @@ Für ein IoT Hub-Ereignis zur **Gerätetelemetrie** enthält das Datenobjekt die
 
 Für die IoT Hub-Ereignisse **Gerät erstellt** und **Gerät gelöscht** enthält das Datenobjekt die folgenden Eigenschaften:
 
-| Eigenschaft | type | Beschreibung |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | twin | Objekt (object) | Informationen zum Gerätezwilling, der Clouddarstellung der Anwendungsgeräte-Metadaten. | 
 | deviceID | string | Der eindeutige Bezeichner des Gerätezwillings. | 

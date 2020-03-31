@@ -13,11 +13,11 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438824"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231546"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]

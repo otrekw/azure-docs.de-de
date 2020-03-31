@@ -11,10 +11,10 @@ author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
 ms.openlocfilehash: e2840a6295140e0dc22a032fa844c0488403c5a5
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75534118"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Trainieren und Registrieren von Chainer-Modellen in großem Umfang mit Azure Machine Learning
@@ -22,7 +22,7 @@ ms.locfileid: "75534118"
 
 In diesem Artikel erfahren Sie, wie Sie Ihre [Chainer](https://chainer.org/)-Trainingsskripts im Unternehmensumfang mit der [Chainer-Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)-Klasse von Azure Machine Learning ausführen. Das Beispieltrainingsskript in diesem Artikel verwendet das beliebte [MNIST-Dataset](http://yann.lecun.com/exdb/mnist/), um handschriftliche Ziffern mithilfe eines DNN (Deep Neural Network) zu klassifizieren, das mit der Python-Bibliothek von Chainer erstellt wurde, die auf [numpy](https://www.numpy.org/) ausgeführt wird.
 
-Unabhängig davon, ob Sie ein Chainer-Deep Learning-Modell von Grund auf trainieren, oder ob Sie ein vorhandenes Modell in die Cloud bringen, können Sie Azure Machine Learning zum horizontalen Hochskalieren von Open Source-Trainingsaufträgen mithilfe elastischer Cloud-Computeressourcen verwenden. Sie können produktionsgeeignete Modelle mit Azure Machine Learning erstellen, bereitstellen, überwachen sowie die Versionen verwalten. 
+Unabhängig davon, ob Sie ein Chainer-Deep Learning-Modell von Grund auf trainieren, oder ob Sie ein vorhandenes Modell in die Cloud bringen, können Sie Azure Machine Learning zum Aufskalieren von Open-Source-Trainingsaufträgen mithilfe elastischer Cloud-Computeressourcen verwenden. Sie können produktionsgeeignete Modelle mit Azure Machine Learning erstellen, bereitstellen, überwachen sowie die Versionen verwalten. 
 
 Weitere Informationen zu [Deep Learning im Vergleich zum maschinellen Lernen](concept-deep-learning-vs-machine-learning.md).
 
@@ -175,7 +175,7 @@ Die Ausführung durchläuft die folgenden Phasen:
 
 - **Vorbereitung**: Gemäß dem Chainer-Estimator wird ein Docker-Image erstellt. Das Image wird in die Containerregistrierung des Arbeitsbereichs hochgeladen und für spätere Ausführungen zwischengespeichert. Darüber hinaus werden Protokolle in den Ausführungsverlauf gestreamt, mit deren Hilfe der Status überwacht werden kann.
 
-- **Skalierung**: Der Cluster versucht ein zentrales Hochskalieren, wenn der Batch KI-Cluster mehr Knoten zur Ausführung benötigt, als derzeit verfügbar sind.
+- **Skalierung**: Der Cluster versucht ein Hochskalieren, wenn der Batch KI-Cluster mehr Knoten zur Ausführung benötigt, als derzeit verfügbar sind.
 
 - **Wird ausgeführt:** Alle Skripts im Skriptordner werden auf das Computeziel hochgeladen, Datenspeicher werden bereitgestellt oder kopiert, und das „entry_script“ wird ausgeführt. Ausgaben aus „stdout“ und dem Ordner „./logs“ werden in den Ausführungsverlauf gestreamt und können zur Überwachung der Ausführung verwendet werden.
 

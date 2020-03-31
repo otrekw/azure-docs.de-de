@@ -5,23 +5,21 @@ services: active-directory
 documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bc303dc62892f8fac67bb6869e72db0e40f19779
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3ec7cf5a45ce31cde923dce521636589cfcda786
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163363"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154456"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autorisieren des Zugriffs auf Azure Active Directory-Webanwendungen mit dem Flow zum Erteilen des OAuth 2.0-Codes
 
@@ -127,7 +125,7 @@ error=access_denied
 &error_description=the+user+canceled+the+authentication
 ```
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | error |Ein in Abschnitt 5.2 definierter Fehlercodewert des [OAuth 2.0-Autorisierungsframeworks](https://tools.ietf.org/html/rfc6749). In der folgenden Tabelle finden Sie die Fehlercodes, die von Azure AD ausgegeben werden. |
 | error_description |Detailliertere Beschreibung des Fehlers. Diese Meldung ist nicht für den Endbenutzer ausgelegt. |
@@ -136,7 +134,7 @@ error=access_denied
 #### <a name="error-codes-for-authorization-endpoint-errors"></a>Fehlercodes beim Autorisierungsendpunktfehler
 Die folgende Tabelle beschreibt die verschiedenen Fehlercodes, die im `error` -Parameter der Fehlerantwort zurückgegeben werden können:
 
-| Fehlercode | Beschreibung | Clientaktion |
+| Fehlercode | BESCHREIBUNG | Clientaktion |
 | --- | --- | --- |
 | invalid_request |Protokollfehler, z.B. ein fehlender erforderlicher Parameter. |Korrigieren Sie die Anforderung, und senden Sie sie erneut. Dies ist ein Entwicklungsfehler, der in der Regel bei den Eingangstests festgestellt wird. |
 | unauthorized_client |Die Clientanwendung darf keinen Autorisierungscode anfordern. |Dies tritt in der Regel auf, wenn die Clientanwendung nicht in Azure AD registriert ist oder dem Azure AD-Mandanten des Benutzers nicht hinzugefügt wird. Die Anwendung kann den Benutzer zum Installieren der Anwendung und zum Hinzufügen zu Azure AD auffordern. |
@@ -230,7 +228,7 @@ Eine Beispiel für eine Fehlerantwort sieht wie folgt aus:
   "correlation_id": "a8125194-2dc8-4078-90ba-7b6592a7f231"
 }
 ```
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | error |Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
 | error_description |Eine spezifische Fehlermeldung, mit der Entwickler die Hauptursache eines Authentifizierungsfehlers identifizieren können. |
@@ -242,7 +240,7 @@ Eine Beispiel für eine Fehlerantwort sieht wie folgt aus:
 #### <a name="http-status-codes"></a>HTTP-Statuscodes
 Die folgende Tabelle enthält die HTTP-Statuscodes, die vom Tokenausstellungs-Endpunkt zurückgegeben werden. In einigen Fällen ist der Fehlercode ausreichend, um die Antwort zu beschreiben. Wenn jedoch Fehler auftreten, müssen Sie die zugehörigen JSON-Dokumente analysieren und den Fehlercode überprüfen.
 
-| HTTP-Code | Beschreibung |
+| HTTP-Code | BESCHREIBUNG |
 | --- | --- |
 | 400 |Standard-HTTP-Code. Wird in den meisten Fällen verwendet und wird in der Regel aufgrund einer fehlerhaften Anforderung ausgegeben. Korrigieren Sie die Anforderung, und senden Sie sie erneut. |
 | 401 |Die Authentifizierung ist fehlgeschlagen. Tritt beispielsweise auf, wenn die Anforderung den Parameter „client_secret“ nicht enthält. |
@@ -282,12 +280,12 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 ```
 
 #### <a name="error-parameters"></a>Fehlerparameter
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
-| authorization_uri |Der URI (physische Endpunkt) des Autorisierungsservers. Dieser Wert wird auch als Suchschlüssel verwendet, um weitere Informationen über den Server aus einem Discovery-Endpunkt zu erhalten. <p><p> Der Client muss überprüfen, ob der Autorisierungsserver vertrauenswürdig ist. Wenn die Ressource von Azure AD geschützt wird, ist die Prüfung ausreichend, ob die URL mit https://login.microsoftonline.com oder einem anderen Hostnamen beginnt, den Azure AD unterstützt. Eine mandantenspezifische Ressource sollte immer einen mandantenspezifischen Autorisierungs-URI zurückgeben. |
+| authorization_uri |Der URI (physische Endpunkt) des Autorisierungsservers. Dieser Wert wird auch als Suchschlüssel verwendet, um weitere Informationen über den Server aus einem Discovery-Endpunkt zu erhalten. <p><p> Der Client muss überprüfen, ob der Autorisierungsserver vertrauenswürdig ist. Wenn die Ressource von Azure AD geschützt wird, ist die Prüfung ausreichend, ob die URL mit `https://login.microsoftonline.com` oder einem anderen Hostnamen beginnt, den Azure AD unterstützt. Eine mandantenspezifische Ressource sollte immer einen mandantenspezifischen Autorisierungs-URI zurückgeben. |
 | error |Ein in Abschnitt 5.2 definierter Fehlercodewert des [OAuth 2.0-Autorisierungsframeworks](https://tools.ietf.org/html/rfc6749). |
 | error_description |Detailliertere Beschreibung des Fehlers. Diese Meldung ist nicht für den Endbenutzer ausgelegt. |
-| resource_id |Gibt den eindeutigen Bezeichner der Ressource zurück. Die Clientanwendung kann diesen Bezeichner als Wert für den `resource` -Parameter verwenden, wenn sie ein Token für die Ressource anfordert. <p><p> Es ist wichtig, dass die Clientanwendung diesen Wert überprüft, da andernfalls ein schädlicher Dienst möglicherweise einen Angriff mit einer **Erhöhung von Rechten** durchführt. <p><p> Die empfohlene Strategie zur Verhinderung eines Angriffs besteht darin sicherzustellen, dass die `resource_id` mit dem Basiselement der Web-API-URL übereinstimmt, auf die zugegriffen wird. Wenn beispielsweise auf https://service.contoso.com/data zugegriffen wird, kann die `resource_id` „ https://service.contoso.com/ “ lauten. Die Clientanwendung muss eine `resource_id` ablehnen, die nicht mit der Basis-URL beginnt, sofern es kein zuverlässiges alternatives Verfahren zum Überprüfen der ID gibt. |
+| resource_id |Gibt den eindeutigen Bezeichner der Ressource zurück. Die Clientanwendung kann diesen Bezeichner als Wert für den `resource` -Parameter verwenden, wenn sie ein Token für die Ressource anfordert. <p><p> Es ist wichtig, dass die Clientanwendung diesen Wert überprüft, da andernfalls ein schädlicher Dienst möglicherweise einen Angriff mit einer **Erhöhung von Rechten** durchführt. <p><p> Die empfohlene Strategie zur Verhinderung eines Angriffs besteht darin sicherzustellen, dass die `resource_id` mit dem Basiselement der Web-API-URL übereinstimmt, auf die zugegriffen wird. Wenn beispielsweise auf `https://service.contoso.com/data` zugegriffen wird, kann die `resource_id` „ `https://service.contoso.com/` “ lauten. Die Clientanwendung muss eine `resource_id` ablehnen, die nicht mit der Basis-URL beginnt, sofern es kein zuverlässiges alternatives Verfahren zum Überprüfen der ID gibt. |
 
 #### <a name="bearer-scheme-error-codes"></a>Bearerschema-Fehlercodes
 Die Spezifikation RFC 6750 definiert die folgenden Fehler für Ressourcen, die in der Antwort den WWW-Authenticate-Header und das Bearer-Schema verwenden.
@@ -362,7 +360,7 @@ Eine Beispiel für eine Fehlerantwort sieht wie folgt aus:
 }
 ```
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | error |Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
 | error_description |Eine spezifische Fehlermeldung, mit der Entwickler die Hauptursache eines Authentifizierungsfehlers identifizieren können. |

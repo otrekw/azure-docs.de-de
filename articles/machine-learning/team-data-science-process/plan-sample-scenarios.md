@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 48b51c40e5de8f10d9d1d16b02e2c70b045816b3
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76710497"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227206"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Szenarien für die erweiterte Analyse in Azure Machine Learning
 Dieser Artikel beschreibt die verschiedenen Beispieldatenquellen und Zielszenarien, die mit dem [Team Data Science-Prozess (TDSP)](overview.md)verarbeitet werden können. Der TDSP bietet einen systematischen Ansatz für Teams zur Zusammenarbeit bei der Entwicklung intelligenter Anwendungen. Die hier gezeigten Szenarien veranschaulichen einige der Optionen im Datenverarbeitungs-Workflow, die von den Datenmerkmalen, Quellspeicherorten und Zielrepositorys in Azure abhängen.
@@ -35,7 +35,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 > 
 > 
 
-## <a name="smalllocal"></a>Szenario \#1: Kleines bis mittelgroßes tabellarisches Dataset in lokalen Dateien
+## <a name="scenario-1-small-to-medium-tabular-dataset-in-local-files"></a><a name="smalllocal"></a>Szenario \#1: Kleines bis mittelgroßes tabellarisches Dataset in lokalen Dateien
 ![Kleine bis mittelgroße lokale Dateien][1]
 
 #### <a name="additional-azure-resources-none"></a>Zusätzliche Azure-Ressourcen: Keine
@@ -43,7 +43,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 1. Laden Sie ein Dataset hoch.
 1. Erstellen Sie einen Azure Machine Learning-Versuchsablauf, der mit einem oder mehreren hochgeladenen Datasets beginnt.
 
-## <a name="smalllocalprocess"></a>Szenario \#2: Kleines bis mittelgroßes Dataset lokaler Dateien, die verarbeitet werden müssen
+## <a name="scenario-2-small-to-medium-dataset-of-local-files-that-require-processing"></a><a name="smalllocalprocess"></a>Szenario \#2: Kleines bis mittelgroßes Dataset lokaler Dateien, die verarbeitet werden müssen
 ![Kleine bis mittelgroße lokale Dateien mit Verarbeitung][2]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Virtueller Azure-Computer (IPython Notebook-Server)
@@ -56,7 +56,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 1. Lesen Sie die Daten aus den Azure-Blobs mithilfe des Moduls [Import Data][import-data].
 1. Erstellen Sie einen Azure Machine Learning-Versuchsablauf, der mit einem oder mehreren aufgenommenen Datasets beginnt.
 
-## <a name="largelocal"></a>Szenario \#3: Großes Dataset lokaler Dateien, die auf Azure-Blobs ausgerichtet sind
+## <a name="scenario-3-large-dataset-of-local-files-targeting-azure-blobs"></a><a name="largelocal"></a>Szenario \#3: Großes Dataset lokaler Dateien, die auf Azure-Blobs ausgerichtet sind
 ![Große lokale Dateien][3]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Virtueller Azure-Computer (IPython Notebook-Server)
@@ -71,7 +71,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 1. Lesen Sie die Daten aus den Azure-Blobs mithilfe des Moduls [Import Data][import-data].
 1. Erstellen Sie einen Azure Machine Learning-Versuchsablauf, der mit einem oder mehreren erfassten Datasets beginnt.
 
-## <a name="smalllocaltodb"></a>Szenario \#4: Kleines bis mittelgroßes Dataset lokaler Dateien, das auf SQL Server in einer Azure-VM ausgerichtet ist
+## <a name="scenario-4-small-to-medium-dataset-of-local-files-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="smalllocaltodb"></a>Szenario \#4: Kleines bis mittelgroßes Dataset lokaler Dateien, das auf SQL Server in einer Azure-VM ausgerichtet ist
 ![Kleine bis mittelgroße lokale Dateien in SQL DB in Azure][4]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Virtueller Azure-Computer (SQL Server/IPython Notebook-Server)
@@ -101,7 +101,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 1. Lesen Sie die Daten mithilfe des Moduls [Import Data][import-data] direkt aus der SQL Server-Instanz. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die Abfrage [Import Data][import-data] ein.
 1. Erstellen Sie einen Azure Machine Learning-Versuchsablauf, der mit einem oder mehreren erfassten Datasets beginnt.
 
-## <a name="largelocaltodb"></a>Szenario \#5: Großes Dataset in lokalen Dateien, SQL Server-Zielinstanz auf virtuellem Azure-Computer
+## <a name="scenario-5-large-dataset-in-local-files-target-sql-server-in-azure-vm"></a><a name="largelocaltodb"></a>Szenario \#5: Großes Dataset in lokalen Dateien, SQL Server-Zielinstanz auf virtuellem Azure-Computer
 ![Große lokale Dateien in SQL DB in Azure][5]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Virtueller Azure-Computer (SQL Server/IPython Notebook-Server)
@@ -138,7 +138,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 1. Lesen Sie die Daten mithilfe des Moduls [Import Data][import-data] direkt aus der SQL Server-Instanz. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die Abfrage [Import Data][import-data] ein.
 1. Einfacher Azure Machine Learning-Versuchsablauf, der mit hochgeladenem Dataset beginnt
 
-## <a name="largedbtodb"></a>Szenario \#6: Großes Dataset in einer lokalen SQL Server-Datenbank, das auf SQL Server auf einem virtuellen Azure-Computer ausgerichtet ist
+## <a name="scenario-6-large-dataset-in-a-sql-server-database-on-premises-targeting-sql-server-in-an-azure-virtual-machine"></a><a name="largedbtodb"></a>Szenario \#6: Großes Dataset in einer lokalen SQL Server-Datenbank, das auf SQL Server auf einem virtuellen Azure-Computer ausgerichtet ist
 ![Große lokale SQL DB in SQL DB in Azure][6]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Virtueller Azure-Computer (SQL Server/IPython Notebook-Server)
@@ -186,7 +186,7 @@ Um die gesamte SQL Server-Datenbank auf dem virtuellen SQL Server-Computer zu re
 
 [Verschieben einer Datenbank durch Trennen und Anfügen (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
 
-## <a name="largedbtohive"></a>Szenario \#7: Big Data in lokalen Dateien, Zielstrukturdatenbank in Azure HDInsight Hadoop-Clustern
+## <a name="scenario-7-big-data-in-local-files-target-hive-database-in-azure-hdinsight-hadoop-clusters"></a><a name="largedbtohive"></a>Szenario \#7: Big Data in lokalen Dateien, Zielstrukturdatenbank in Azure HDInsight Hadoop-Clustern
 ![Big Data in lokalen Zielstruktur][9]
 
 #### <a name="additional-azure-resources-azure-hdinsight-hadoop-cluster-and-azure-virtual-machine-ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Azure HDInsight Hadoop-Cluster und Azure-VM (IPython Notebook-Server)
@@ -230,7 +230,7 @@ Um die gesamte SQL Server-Datenbank auf dem virtuellen SQL Server-Computer zu re
 1. Lesen Sie die Daten direkt von `Hive Queries` mithilfe des Moduls [Import Data][import-data]. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die Abfrage [Import Data][import-data] ein.
 1. Einfacher Azure Machine Learning-Versuchsablauf, der mit hochgeladenem Dataset beginnt
 
-## <a name="decisiontree"></a>Entscheidungsstruktur zur Auswahl des Szenarios
+## <a name="decision-tree-for-scenario-selection"></a><a name="decisiontree"></a>Entscheidungsstruktur zur Auswahl des Szenarios
 ---
 Das folgende Diagramm fasst die oben beschriebenen Szenarien sowie die Advanced Analytics Process and Technology-Entscheidungen zusammen, die Sie zu jedem einzelnen Szenario führen. Datenverarbeitung, Erkundung, Featureentwicklung und Stichprobenentnahme können in einer oder mehreren Methoden/Umgebungen (in der Quell-, Zwischen- und/oder Zielumgebung) erfolgen und nach Bedarf wiederholt werden. Das Diagramm dient nur zur Veranschaulichung einiger möglicher Abläufe und stellt keine erschöpfende Auflistung dar.
 

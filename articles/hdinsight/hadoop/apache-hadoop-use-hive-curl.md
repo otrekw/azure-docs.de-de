@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
-ms.openlocfilehash: 3bb09f1958685a3474b49d2d194e89fe81a80076
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 10a2f413142124db7547e68280a0d5e9abac9b98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690492"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79298749"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>Ausführen von Apache Hive-Abfragen mit Apache Hadoop in HDInsight mit REST
 
@@ -33,7 +33,7 @@ Erfahren Sie, wie Sie die WebHCat-REST-API verwenden, um Apache Hive-Abfragen mi
 
 Der Basis-URI (Uniform Resource Identifier) für die REST-API unter HDInsight lautet `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`, wobei `CLUSTERNAME` der Name Ihres Clusters ist.  Bei Clusternamen in URIs wird die **Groß-/Kleinschreibung** beachtet.  Beim Clusternamen im vollqualifizierten Domänennamen (FQDN) innerhalb des URI (`CLUSTERNAME.azurehdinsight.net`) wird die Groß-/Kleinschreibung nicht beachtet, bei anderen Vorkommen im URI dagegen schon.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 
 Wenn Sie cURL oder eine andere REST-Kommunikation mit WebHCat verwenden, müssen Sie die Anforderungen authentifizieren, indem Sie den Benutzernamen und das Kennwort des Administrators des HDInsight-Clusters bereitstellen. Die REST-API wird durch [Standardauthentifizierung](https://en.wikipedia.org/wiki/Basic_access_authentication)gesichert. Stellen Sie Anforderungen immer über HTTPS (Secure HTTP), um sicherzustellen, dass Ihre Anmeldeinformationen sicher an den Server gesendet werden.
 
@@ -185,7 +185,7 @@ $clusterName
 
 1. Sobald der Status des Auftrags zu **ERFOLGREICH** wechselt, können Sie die Ergebnisse des Auftrags aus Azure Blob Storage abrufen. Der mit der Abfrage übergebene Parameter `statusdir` enthält den Speicherort der Ausgabedatei. In diesem Fall ist dies `/example/rest`. Diese Adresse speichert die Ausgabe im Verzeichnis `example/curl` im Standardspeicher des Clusters.
 
-    Sie können diese Dateien mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli) auflisten und herunterladen. Weitere Informationen zur Verwendung der Azure-Befehlszeilenschnittstelle mit Azure Storage finden Sie im Dokument [Verwenden der Azure CLI 2.0 mit Azure Storage](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs).
+    Sie können diese Dateien mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli) auflisten und herunterladen. Weitere Informationen zur Verwendung der Azure-Befehlszeilenschnittstelle mit Azure Storage finden Sie im Dokument [Verwenden der Azure CLI 2.0 mit Azure Storage](https://docs.microsoft.com/azure/storage/storage-azure-cli).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

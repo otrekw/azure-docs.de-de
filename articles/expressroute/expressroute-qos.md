@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: cherylmc
 ms.openlocfilehash: debc5d91478d0a5c3cc16c7b09f5713ba09b467e
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74080101"
 ---
 # <a name="expressroute-qos-requirements"></a>QoS-Anforderungen für ExpressRoute
@@ -42,7 +42,7 @@ Die folgende Tabelle enthält eine Liste mit DSCP-Markierungen, die von Microsof
 * Sehen Sie sich die Anforderungen für [Routing](expressroute-routing.md) und [NAT](expressroute-nat.md) an.
 * Informationen zum Konfigurieren der ExpressRoute-Verbindung finden Sie über die folgenden Links.
   
-  * [Erstellen einer ExpressRoute-Verbindung](expressroute-howto-circuit-classic.md)
+  * [Erstellen Sie eine ExpressRoute-Verbindung.](expressroute-howto-circuit-classic.md)
   * [Konfigurieren des Routings](expressroute-howto-routing-classic.md)
   * [Verknüpfen eines VNet mit einer ExpressRoute-Verbindung](expressroute-howto-linkvnet-classic.md)
 

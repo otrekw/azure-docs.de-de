@@ -1,18 +1,18 @@
 ---
 title: Verwenden von künstlicher Intelligenz, um Geschäftsprobleme mit Azure Cognitive Services zu lösen
 description: Erfahren Sie mehr über den Dienst, mit dem Sie von künstlicher Intelligenz profitieren, um intelligente mobile Anwendungen zu erstellen.
-author: elamalani
+author: codemillmatt
 ms.assetid: 34a8a070-0123-4faf-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: ad4babc68f39851beeb3a5c46d295a3342c63026
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: a3955379248c284066ec57d67e61654ac664bfa5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453209"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240945"
 ---
 # <a name="cognitive-services-helps-to-solve-business-problems-by-using-ai"></a>Cognitive Services helfen mit KI beim Lösen von Geschäftsproblemen
 [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) bieten leistungsstarke Dienste, um intelligente Algorithmen zum Sehen, Hören, Sprechen, Verstehen und Interpretieren der Bedürfnisse Ihrer Benutzer in Ihre Apps zu integrieren und so Ihr Unternehmen mit KI zu transformieren. Sie können Ihre mobilen Anwendungen intelligent, ansprechend und kontextbezogen für Ihre Benutzer gestalten. Entwickler können die APIs, SDKs und Dienste nutzen, um ihr Angebot um KI-Funktionen zu ergänzen und intelligente Anwendungen zu erstellen, ohne selbst über KI- oder Data Science-Kenntnisse verfügen zu müssen.

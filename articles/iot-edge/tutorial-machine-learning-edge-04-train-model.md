@@ -4,16 +4,16 @@ description: In diesem Tutorial trainieren Sie ein Machine Learning-Modell mit A
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 2/10/2020
+ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a5c754373ba9437c631e62acbb5d6d246db4c862
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 57630b789233dd23e61398f445b434e4ba08b48e
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650757"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80236012"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Tutorial: Trainieren und Bereitstellen eines Azure Machine Learning-Modells
 
@@ -62,7 +62,9 @@ Sie laden Notebook-Beispieldateien in ein neues Azure Notebooks-Projekt hoch.
 
 1. Wählen Sie auf der Benutzerseite Ihres neuen Kontos auf der oberen Menüleiste **Meine Projekte** aus.
 
-1. Geben Sie im Dialogfeld **Neues Projekt erstellen** unter **Projektname** einen Namen ein, der automatisch als **Projekt-ID** fungiert.
+1. Fügen Sie ein neues Projekt hinzu, indem Sie die Schaltfläche **+** auswählen.
+
+1. Geben Sie im Dialogfeld **Neues Projekt erstellen** unter **Projektname** einen Projektnamen ein. 
 
 1. Lassen Sie **Öffentlich** and **INFODATEI** deaktiviert, da es nicht erforderlich ist, dass das Projekt öffentlich ist oder über eine Infodatei verfügt.
 
@@ -73,6 +75,8 @@ Sie laden Notebook-Beispieldateien in ein neues Azure Notebooks-Projekt hoch.
 1. Wählen Sie **Dateien auswählen**.
 
 1. Navigieren Sie zu **C:\source\IoTEdgeAndMlSample\AzureNotebooks**. Wählen Sie alle Dateien in der Liste aus, und klicken Sie auf **Öffnen**.
+
+1. Aktivieren Sie das Kontrollkästchen **I trust the content of these files** (Ich vertraue dem Inhalt dieser Dateien.).
 
 1. Wählen Sie **Hochladen**, um mit dem Upload zu beginnen, und wählen Sie anschließend **Fertig**, wenn der Prozess abgeschlossen ist.
 
@@ -96,7 +100,7 @@ Sehen wir uns die Dateien an, die Sie in Ihr Azure Notebooks-Projekt hochgelade
 
 * **Test\_FD003.txt:** Diese Datei enthält die Daten, die wir beim Überprüfen unseres trainierten Klassifizierers als unseren Testsatz verwenden. Der Einfachheit halber haben wir die Testdaten so genutzt, wie sie ursprünglich bereitgestellt wurden.
 
-* **RUL\_FD003.txt:** Diese Datei enthält die Restlebensdauer (RUL) für den letzten Zyklus jedes Geräts in der Datei „Test\_FD003.txt“. Die Dateien „readme.txt“ und „Damage Propagation Modeling.pdf“ unter „C:\\source\\IoTEdgeAndMlSample\\data\\Turbofan“ enthalten eine ausführliche Beschreibung der Daten.
+* **RUL\_FD003.txt:** Diese Datei enthält die verbleibende Nutzungsdauer (Remaining Useful Life, RUL) für den letzten Zyklus jedes Geräts in der Datei „Test\_FD003.txt“. Die Dateien „readme.txt“ und „Damage Propagation Modeling.pdf“ unter „C:\\source\\IoTEdgeAndMlSample\\data\\Turbofan“ enthalten eine ausführliche Beschreibung der Daten.
 
 * **Utils.py:** Enthält einen Satz mit Python-Hilfsfunktionen für die Arbeit mit Daten. Das erste Notebook enthält eine ausführliche Beschreibung der Funktionen.
 
@@ -110,24 +114,22 @@ Das Projekt wurde erstellt, und Sie können nun die Notebooks ausführen.
 
     ![Auswählen des ersten auszuführenden Notebooks](media/tutorial-machine-learning-edge-04-train-model/select-turbofan-regression-notebook.png)
 
-1. Wählen Sie bei entsprechender Aufforderung im Dialogfeld den Python 3.6 Kernel und dann die Option **Set Kernel** (Kernel festlegen).
-
 1. Klicken Sie oben rechts im Notebook auf das Widget **Not Trusted** (Nicht vertrauenswürdig), falls das Notebook als **Not Trusted** (Nicht vertrauenswürdig) aufgeführt ist. Wählen Sie **Trust** (Vertrauen), wenn das Dialogfeld angezeigt wird.
 
-1. Scrollen Sie im Notebook nach unten zu der Zelle nach den Anweisungen **Set global properties** (Festlegen globaler Eigenschaften), die mit dem Code `AZURE_SUBSCRIPTION_ID =` beginnt, und geben Sie die Werte für Ihr Azure-Abonnement, die Einstellungen und die Ressourcen ein.
-
-    ![Festlegen globaler Eigenschaften im Notebook](media/tutorial-machine-learning-edge-04-train-model/set-global-properties.png)
-
-1. Führen Sie diese Zelle aus, indem Sie auf der Symbolleiste **Ausführen** auswählen.
+1. Lesen Sie die Dokumentation für jede Zelle, und führen Sie sie einzeln aus, um optimale Ergebnisse zu erzielen. Wählen Sie auf der Symbolleiste **Ausführen** aus. Später empfiehlt es sich, mehrere Zellen auszuführen. Sie können Upgrade- und Ablaufwarnungen ignorieren.
 
     Wenn eine Zelle ausgeführt wird, wird dafür ein Sternchen zwischen eckigen Klammern angezeigt ([\*]). Wenn der Vorgang für die Zelle abgeschlossen ist, wird das Sternchen durch eine Zahl ersetzt und ggf. die relevante Ausgabe angezeigt. Die Zellen in einem Notebook werden nacheinander erstellt, und es kann jeweils nur eine Zelle ausgeführt werden.
 
-    Befolgen Sie die Anleitung im Notebook. Sie können auch Ausführungsoptionen im **Zellenmenü** bzw. `Ctrl` + `Enter` zum Ausführen einer Zelle und `Shift` + `Enter` zum Ausführen einer Zelle und Fortfahren mit der nächsten Zelle verwenden.
+    Sie können auch Ausführungsoptionen im **Zellenmenü** bzw. `Ctrl` + `Enter` zum Ausführen einer Zelle und `Shift` + `Enter` zum Ausführen einer Zelle und Fortfahren mit der nächsten Zelle verwenden.
 
     > [!TIP]
     > Führen Sie das gleiche Notebook nicht auf mehreren Tabs im Browser aus, um konsistente Zellvorgänge zu gewährleisten.
 
-1. Scrollen Sie nach unten zur Zelle, die direkt auf den Übersichtstext **Erstellen eines Arbeitsbereichs** folgt, und führen Sie diese Zelle aus. Suchen Sie in der Ausgabe der Zelle nach dem Link, der Sie anweist, sich für die Authentifizierung anzumelden. 
+1. Schreiben Sie die Werte für Ihr Azure-Abonnement, die Einstellungen und die Ressourcen in die Zelle nach den Anweisungen **Set global properties** (Festlegen globaler Eigenschaften). Führen Sie anschließend die Zelle aus.
+
+    ![Festlegen globaler Eigenschaften im Notebook](media/tutorial-machine-learning-edge-04-train-model/set-global-properties.png)
+
+1. Suchen Sie in der Zelle vor den **Details zum Arbeitsbereich** nach ihrer Ausführung nach dem Link, der Sie anweist, sich für die Authentifizierung anzumelden.
 
     ![Anmeldeaufforderung für die Geräteauthentifizierung](media/tutorial-machine-learning-edge-04-train-model/sign-in-prompt.png)
 
@@ -135,17 +137,17 @@ Das Projekt wurde erstellt, und Sie können nun die Notebooks ausführen.
 
     ![Bestätigung der Anwendungsauthentifizierung auf dem Gerät](media/tutorial-machine-learning-edge-04-train-model/cross-platform-cli.png)
 
-1. Zu diesem Zeitpunk können Sie die übrigen Zellen ausführen. Es ist optimal, alle Zellen auszuführen, sodass der Code in den Zellen nacheinander ausgeführt wird. Wählen Sie im **Zellenmenü** die Option **Alle ausführen** aus. Scrollen Sie nach oben durch das Notebook, und überprüfen Sie, wie die Zellvorgänge abgeschlossen werden.
+1. Kopieren Sie in der Zelle vor **Untersuchen der Ergebnisse** den Wert der Ausführungs-ID, und fügen Sie ihn für die Ausführungs-ID in die Zelle nach **Wiederherstellen einer Ausführung** ein.
 
-    Im Abschnitt **Explore the data** (Untersuchen der Daten) können Sie Zellen im Unterabschnitt **Sensor readings and RUL** (Sensormesswerte und verbleibende Nutzungsdauer) überprüfen, die Streudiagramme der Sensormessungen rendern.
+   ![Kopieren der Ausführungs-ID zwischen Zellen](media/tutorial-machine-learning-edge-04-train-model/automl-id.png)
 
-    ![Streudiagramme mit Sensormesswerten](media/tutorial-machine-learning-edge-04-train-model/sensor-readings.png)
+1. Führen Sie die übrigen Zellen im Notebook aus.
 
-1. Speichern Sie das Notebook, und kehren Sie zur Projektseite zurück, indem Sie in der rechten oberen Ecke des Notebooks auf den Projektnamen klicken oder im Browser zurücknavigieren.
+1. Speichern Sie das Notebook, und kehren Sie zur Projektseite zurück.
 
-1. Öffnen Sie **02-turbofan\_deploy\_model.ipynb**, und wiederholen Sie die in diesem Verfahren angegebenen Schritte, um das zweite Notebook auszuführen.
+1. Öffnen Sie **02-turbofan\_deploy\_model.ipynb**, und führen Sie die einzelnen Zellen aus. Zur Authentifizierung müssen Sie sich in der Zelle nach **Konfigurieren des Arbeitsbereichs** anmelden.
 
-1. Speichern Sie das Notebook, und kehren Sie zur Projektseite zurück, indem Sie in der rechten oberen Ecke des Notebooks auf den Projektnamen klicken oder im Browser zurücknavigieren.
+1. Speichern Sie das Notebook, und kehren Sie zur Projektseite zurück.
 
 ### <a name="verify-success"></a>Überprüfen des erfolgreichen Abschlusses
 
@@ -161,11 +163,21 @@ Das Projekt wurde erstellt, und Sie können nun die Notebooks ausführen.
     | ./aml_config/model_config.json | Die Konfigurationsdatei, die Sie zum Bereitstellen des Modells im Machine Learning-Arbeitsbereich **turbofanDemo** in Azure benötigen |
     | myenv.yml| Diese Datei enthält Informationen zu den Abhängigkeiten für das bereitgestellte Machine Learning-Modell.|
 
-1. Überprüfen Sie im Azure-Portal, ob der Machine Learning-Arbeitsbereich **turboFanDemo** in der Ressourcengruppe vorhanden ist.
+1. Überprüfen Sie, ob die folgenden Azure-Ressourcen erstellt wurden. An einige Ressourcennamen werden zufällig gewählte Zeichen angefügt.
+
+    | Azure-Ressource | Name |
+    | --- | --- |
+    | Machine Learning-Arbeitsbereich | turborfanDemo |
+    | Containerregistrierung | turbofandemoxxxxxxxx |
+    | Application Insights | turbofaninsightxxxxxxxx |
+    | Key Vault | turbofankeyvaultbxxxxxxxx |
+    | Storage | turbofanstoragexxxxxxxxx |
 
 ### <a name="debugging"></a>Debuggen
 
-Sie können Python-Anweisungen zum Debuggen in das Notebook einfügen. Dazu wird hauptsächlich der Befehl `print()` verwendet. Wenn nicht definierte Variablen oder Objekte angezeigt werden, führen Sie die Zellen aus, in denen sie zum ersten Mal deklariert oder instanziiert werden.
+Sie können Python-Anweisungen zum Debuggen in das Notebook einfügen, etwa den Befehl `print()` zum Anzeigen von Werten. Wenn nicht definierte Variablen oder Objekte angezeigt werden, führen Sie die Zellen aus, in denen sie zum ersten Mal deklariert oder instanziiert werden.
+
+Unter Umständen müssen zuvor erstellte Dateien und Azure-Ressourcen gelöscht werden, falls Sie die Notebooks wiederholen möchten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

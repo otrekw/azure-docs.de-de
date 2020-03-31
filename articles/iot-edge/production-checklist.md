@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bb31a10623bd5e8ea9a406b37acf84995774045c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 5320c9d7f1ea5ae882c67ee631f5bbafbf97b039
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772309"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530868"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Vorbereiten der Bereitstellung einer IoT Edge-Lösung für die Produktion
 
@@ -39,7 +39,7 @@ Auf jedem IoT Edge-Gerät in der Produktion muss ein Zertifikat der Zertifizieru
 
 Weitere Informationen zur Rolle des Zertifizierungsstellenzertifikat des Geräts finden Sie unter [Verwenden von Zertifikaten durch Azure IoT Edge](iot-edge-certs.md).
 
-Weitere Informationen zum Installieren von Zertifikaten auf einem IoT Edge-Gerät und zum Verweisen auf diese in der Datei „config.yaml“ erfahren Sie unter [Installieren von Produktionszertifikaten auf einem IoT Edge-Gerät](how-to-install-production-certificates.md).
+Weitere Informationen zum Installieren von Zertifikaten auf einem IoT Edge-Gerät und zum Verweisen auf diese in der Datei „config.yaml“ erfahren Sie unter [Installieren von Produktionszertifikaten auf einem IoT Edge-Gerät](how-to-manage-device-certificates.md).
 
 ### <a name="have-a-device-management-plan"></a>Erstellen eines Geräteverwaltungsplans
 
@@ -224,7 +224,7 @@ Sie können die Größe aller Containerprotokolldateien in den Protokolloptionen
 
 Fügen Sie diese Informationen zu einer Datei namens `daemon.json` hinzu (oder fügen Sie sie an), und platzieren Sie die Datei am richtigen Speicherort für Ihre Geräteplattform.
 
-| Plattform | Location |
+| Plattform | Position |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
 | Windows | `C:\ProgramData\iotedge-moby\config\` |

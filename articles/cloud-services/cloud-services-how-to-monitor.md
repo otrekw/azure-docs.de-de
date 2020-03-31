@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
 ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972938"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233814"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Einführung in die Überwachung von Clouddiensten
 
-Sie können wichtige Leistungsmetriken für beliebige Clouddienste überwachen. Jede Clouddienstrolle erfasst Mindestdaten: CPU-, Netzwerk- und Datenträgerverwendung. Wenn auf eine Rolle des Clouddiensts die Erweiterung `Microsoft.Azure.Diagnostics` angewendet wurde, können für die Rolle zusätzliche Datenpunkte erfasst werden. Dieser Artikel bietet eine Einführung in die Azure-Diagnose für Clouddienste.
+Sie können wichtige Leistungsmetriken für beliebige Clouddienste überwachen. Für jede Clouddienstrolle werden minimale Daten zur CPU-Nutzung, Netzwerkverwendung und Datenträgerverwendung erfasst. Wenn auf eine Rolle des Clouddiensts die Erweiterung `Microsoft.Azure.Diagnostics` angewendet wurde, können für die Rolle zusätzliche Datenpunkte erfasst werden. Dieser Artikel bietet eine Einführung in die Azure-Diagnose für Clouddienste.
 
 Bei der grundlegenden Überwachung werden alle drei Minuten Leistungsindikatordaten aus den Rolleninstanzen abgefragt und erfasst. Daten aus der grundlegenden Überwachung werden nicht unter Ihrem Speicherkonto gespeichert und verursachen keine zusätzlichen Kosten.
 

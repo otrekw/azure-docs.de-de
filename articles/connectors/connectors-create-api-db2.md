@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
 ms.openlocfilehash: 32b482607827ee4420e39b1936586d64f9ea3139
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77651380"
 ---
 # <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Zugreifen auf und Verwalten von IBM DB2-Ressourcen mithilfe von Azure Logic Apps
@@ -49,7 +49,7 @@ Der IBM DB2-Connector unterstützt diese Datenbankvorgänge, die den entsprechen
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Ein IBM DB2-Datenbank, entweder cloudbasiert oder lokal
 
@@ -66,7 +66,7 @@ In den Beispielen dieses Artikels wird der **Wiederholungstrigger** verwendet.
 
 1. Wählen Sie unter dem Trigger die Option **Neuer Schritt** aus.
 
-1. Geben Sie im Suchfeld den Begriff „db2“ als Filter ein. Wählen Sie in diesem Beispiel in der Aktionsliste diese Aktion aus: **Tabellen abrufen (Vorschau)**
+1. Geben Sie im Suchfeld den Begriff „db2“ als Filter ein. Wählen Sie in diesem Beispiel in der Aktionsliste diese Aktion: **Tabellen abrufen (Vorschau)**
 
    ![Aktion select](./media/connectors-create-api-db2/select-db2-action.png)
 
@@ -80,7 +80,7 @@ In den Beispielen dieses Artikels wird der **Wiederholungstrigger** verwendet.
 
 Um die Verbindung einzurichten, geben Sie diese Verbindungsdetails ein, wenn Sie dazu aufgefordert werden, wählen Sie **Erstellen**, und speichern Sie Ihre Logik-App:
 
-| Eigenschaft | Erforderlich | Beschreibung |
+| Eigenschaft | Erforderlich | BESCHREIBUNG |
 |----------|----------|-------------|
 | **Connect via on-premises gateway** (Über lokales Datengateway verbinden) | Nein | Gilt nur für lokale Verbindungen. |
 | **Verbindungsname** | Ja | Der Name Ihrer Verbindung, z.B. „MyLogicApp-DB2-connection“ |

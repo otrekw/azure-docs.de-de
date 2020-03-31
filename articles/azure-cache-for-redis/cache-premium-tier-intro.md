@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
 ms.openlocfilehash: aadcc13d2397f10ea40f06d1259c86b9a179c38b
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74121668"
 ---
 # <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Einführung in den Premium-Tarif von Azure Cache for Redis
@@ -19,7 +19,7 @@ Azure Cache for Redis ist ein verteilter, verwalteter Cache, mit dem Sie hoch sk
 Der neue Tarif „Premium“ ist speziell auf Unternehmen zugeschnitten. Er enthält alle Features des Tarifs „Standard“ und bietet darüber hinaus weitere Features, z.B. eine bessere Leistung, größere Workloads, Notfallwiederherstellung, Import/Export und verbesserte Sicherheit. Nachfolgend finden Sie weitere Informationen zu den zusätzlichen Features des Cachetarifs "Premium".
 
 ## <a name="better-performance-compared-to-standard-or-basic-tier"></a>Bessere Leistung als in den Tarifen "Standard" und "Basic"
-**Bessere Leistung in den Tarifen "Standard" und "Basic".** Caches im Tarif "Premium" werden auf Hardware mit schnelleren Prozessoren bereitgestellt, die im Vergleich zu den Tarifen "Basic" oder "Standard" eine bessere Leistung bieten. Caches im Tarif "Premium" erreichen einen höheren Durchsatz und geringere Wartezeiten. 
+**Bessere Leistung in den Tarifen "Standard" und "Basic".** Caches im Tarif "Premium" werden auf Hardware mit schnelleren Prozessoren bereitgestellt, die im Vergleich zu den Tarifen "Basic" oder "Standard" eine bessere Leistung bieten. Caches im Premium-Tarif erreichen einen höheren Durchsatz und geringere Wartezeiten. 
 
 **Der Durchsatz für Cache derselben Größe ist im Tarif "Premium" im Vergleich zum Tarif "Standard" höher.** Ein P4-Cache (Premium) mit 53 GB erreicht beispielsweise einen Durchsatz von 250.000 Anforderungen pro Sekunde, während ein C6-Cache (Standard) einen Durchsatz von 150.000 erreicht.
 
@@ -42,7 +42,7 @@ Auf im Tarif "Basic" oder "Standard" erstellte Caches kann über das öffentlich
 
 Weitere Informationen finden Sie unter [Konfigurieren der Unterstützung virtueller Netzwerke für Azure Cache for Redis vom Typ „Premium“](cache-how-to-premium-vnet.md).
 
-## <a name="importexport"></a>Import/Export
+## <a name="importexport"></a>Importieren/Exportieren
 Import/Export ist ein Vorgang der Azure Cache for Redis-Datenverwaltung, bei dem Sie Daten in Azure Cache for Redis importieren oder aus Azure Cache for Redis exportieren können. Hierzu importieren bzw. exportieren Sie eine Momentaufnahme der Azure Cache for Redis-Datenbank (RDB) aus einem Premium-Cache in ein Seitenblob in einem Azure Storage-Konto. So können Sie zwischen verschiedenen Azure Cache for Redis-Instanzen migrieren oder den Cache vor der Nutzung mit Daten auffüllen.
 
 Die Importfunktion kann verwendet werden, um Redis-kompatible RDB-Dateien von beliebigen Redis-Servern zu importieren, die in einer Cloud oder Umgebung ausgeführt werden, z.B. Redis unter Linux oder Windows oder bei einem Cloudanbieter wie Amazon Web Services und anderen. Das Importieren von Daten ist eine einfache Möglichkeit zum Erstellen eines Cache mit vorab aufgefüllten Daten. Während des Importvorgangs lädt Azure Cache for Redis die RDB-Dateien aus Azure Storage in den Arbeitsspeicher und fügt die Schlüssel anschließend in den Cache ein.

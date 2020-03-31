@@ -9,17 +9,17 @@ ms.date: 02/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: ec684e5e6fa2ef8e9ed30be49f59e8aa7ef3a28b
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79117094"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Wie viele VPN-Clientendpunkte kann meine Punkt-zu-Standort-Konfiguration umfassen?
 
 Das hängt von der Gateway-SKU ab. Weitere Informationen zur Anzahl von unterstützten Verbindungen finden Sie unter [Gateway-SKUs](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku).
 
-### <a name="supportedclientos"></a>Welche Clientbetriebssysteme kann ich bei Point-to-Site-Verbindungen verwenden?
+### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a><a name="supportedclientos"></a>Welche Clientbetriebssysteme kann ich bei Point-to-Site-Verbindungen verwenden?
 
 Folgende Clientbetriebssysteme werden unterstützt:
 
@@ -103,7 +103,7 @@ Azure unterstützt Windows, Mac und Linux für P2S-VPN.
 
 Ja. Sie können diese neuen Features aus bereits bereitgestellten Gateways per PowerShell oder über das Azure-Portal aktivieren, sofern die verwendete Gateway-SKU RADIUS bzw. IKEv2 unterstützt. Die Basic-SKU des VPN-Gateways weist beispielsweise keine Unterstützung von RADIUS oder IKEv2 auf.
 
-### <a name="removeconfig"></a>Wie entferne ich die Konfiguration einer P2S-Verbindung?
+### <a name="how-do-i-remove-the-configuration-of-a-p2s-connection"></a><a name="removeconfig"></a>Wie entferne ich die Konfiguration einer P2S-Verbindung?
 
 Eine P2S-Konfiguration kann über die Azure CLI und PowerShell mit folgenden Befehlen entfernt werden:
 

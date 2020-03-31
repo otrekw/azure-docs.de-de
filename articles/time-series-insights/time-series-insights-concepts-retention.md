@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.custom: seodec18
 ms.openlocfilehash: 34cf1e91b1fe5aae516c77bf2c280dfe70000611
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894756"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Grundlagen der Datenaufbewahrung in Azure Time Series Insights
@@ -52,7 +52,7 @@ Beide Datenaufbewahrungsrichtlinien werden weiter unten ausführlicher beschrieb
 
 Wir sehen uns nun eine Beispielumgebung an, für die das Aufbewahrungsverhalten **Continue ingress and purge old data** (Eingang fortsetzen und alte Daten bereinigen) festgelegt ist:
 
-Die **Datenaufbewahrungszeit** ist auf 400 Tage festgelegt. Die **Kapazität** ist auf die S1-Einheit festgelegt. Dies entspricht einer Gesamtkapazität von 30 GB. Angenommen, jeden Tag fallen durchschnittlich 500 MB an eingehenden Daten an. In dieser Umgebung können bei dieser Eingangsrate nur Daten für 60 Tage aufbewahrt werden, da nach 60 Tagen die maximale Kapazität erreicht ist. Für die Akkumulation der eingehenden Daten gilt Folgendes: 500 MB pro Tag x 60 Tage = 30 GB.
+Die **Datenaufbewahrungszeit** ist auf 400 Tage festgelegt. Die **Kapazität** ist auf die S1-Einheit festgelegt. Dies entspricht einer Gesamtkapazität von 30 GB. Angenommen, jeden Tag fallen durchschnittlich 500 MB an eingehenden Daten an. In dieser Umgebung können bei dieser Eingangsrate nur Daten für 60 Tage aufbewahrt werden, da nach 60 Tagen die maximale Kapazität erreicht ist. Für die eingehenden Daten gilt Folgendes: 500 MB pro Tag x 60 Tage = 30 GB.
 
 Am 61. Tag werden in der Umgebung die aktuellsten Daten angezeigt; Daten, die älter als 60 Tage sind, werden bereinigt. Durch die Bereinigung wird Platz für die neu eintreffenden Daten geschaffen, damit weiter neue Daten untersucht werden können. Falls Benutzer die Daten länger aufbewahren möchten, können sie die Größe der Umgebung erhöhen, indem sie zusätzliche Einheiten hinzufügen oder weniger Daten per Pushvorgang übertragen.  
 

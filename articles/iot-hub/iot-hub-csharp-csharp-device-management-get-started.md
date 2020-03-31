@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
 ms.openlocfilehash: 3b37d7e049e7daabbbb4fe1a7b49feb654e8accc
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110257"
 ---
 # <a name="get-started-with-device-management-net"></a>Erste Schritte mit der Geräteverwaltung (.NET)
@@ -40,9 +40,9 @@ Am Ende dieses Tutorials verfügen Sie über zwei .NET-Konsolen-Apps:
 
 * Ein aktives Azure-Konto. Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.
 
-* Stellen Sie sicher, dass Port 8883 in Ihrer Firewall geöffnet ist. Für das Beispielgerät in diesem Artikel wird das MQTT-Protokoll verwendet, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -76,7 +76,7 @@ In diesem Abschnitt erstellen Sie (mit C#) eine .NET Konsolen-App, die über ein
 
    In diesem Schritt wird das NuGet-Paket [Azure IoT-Dienst-SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) heruntergeladen und installiert und ein Verweis auf das Paket und seine Abhängigkeiten hinzugefügt.
 
-1. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
+1. Fügen Sie am Anfang der Datei `using`Program.cs**die folgenden**-Anweisungen hinzu:
 
    ```csharp
    using Microsoft.Azure.Devices;
@@ -159,7 +159,7 @@ Führen Sie zum Erstellen der simulierten Geräte-App die folgenden Schritte aus
 
    In diesem Schritt wird das NuGet-Paket [Azure IoT-Geräte-SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) heruntergeladen und installiert sowie ein Verweis auf das Paket und seine Abhängigkeiten hinzugefügt.
 
-1. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
+1. Fügen Sie am Anfang der Datei `using`Program.cs**die folgenden**-Anweisungen hinzu:
 
     ```csharp
     using Microsoft.Azure.Devices.Client;

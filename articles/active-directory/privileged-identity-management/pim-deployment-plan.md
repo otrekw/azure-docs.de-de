@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b8c77b3454026aa309d979bd938674e7c3ae7b6a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025995"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Bereitstellen von Azure AD Privileged Identity Management (PIM)
@@ -58,7 +58,7 @@ Weitere Informationen finden Sie unter [Lizenzanforderungen für die Verwendung 
 
 ### <a name="key-terminology"></a>Wesentliche Terminologie
 
-| Begriff oder Konzept | Beschreibung |
+| Begriff oder Konzept | BESCHREIBUNG |
 | --- | --- |
 | Berechtigt | Eine Rollenzuweisung, bei der ein Benutzer mindestens eine Aktion ausführen muss, um die Rolle nutzen zu können. Wenn ein Benutzer zu einer Rolle berechtigt ist, kann er die Rolle aktivieren, wenn er privilegierte Aufgaben ausführen muss. Es gibt keinen Unterschied hinsichtlich des Zugriffs zwischen einer permanenten und einer berechtigten Rollenzuweisung. Der einzige Unterschied ist, dass einige Benutzer den Zugriff nicht jederzeit benötigen. |
 | aktivieren | Das Ausführen mindestens einer Aktion zum Verwenden einer Rolle, zu der der Benutzer berechtigt ist. Beispiele für Aktionen sind eine erfolgreiche Multi-Factor Authentication-Überprüfung (MFA), die Angabe einer geschäftlichen Begründung oder das Anfordern einer Genehmigung von den angegebenen genehmigenden Personen. |
@@ -256,7 +256,7 @@ Vor dem Implementieren Ihrer Privileged Identity Management-Lösung empfiehlt es
 
 In der folgenden Tabelle sind die einzelnen Einstellungen beschrieben.
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 | --- | --- |
 | Role | Name der Rolle, für die Sie die Einstellungen definieren. |
 | Anfordern von MFA | Gibt an, ob der berechtigte Benutzer vor dem Aktivieren der Rolle eine mehrstufige Authentifizierung durchführen muss.<br/><br/> :heavy_check_mark: **Microsoft-Empfehlung**: Erzwingen Sie die mehrstufige Authentifizierung für alle Administratorrollen, insbesondere wenn die Rollen Gastbenutzer enthalten. |

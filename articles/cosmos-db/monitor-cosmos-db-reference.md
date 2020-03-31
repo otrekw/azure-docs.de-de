@@ -10,10 +10,10 @@ ms.author: bwren
 ms.custom: subject-monitoring
 ms.subservice: logs
 ms.openlocfilehash: d243224192b5761af45d387690f5fb41b84481e6
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588721"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Überwachen von Daten in Azure Cosmos DB – Referenz
@@ -28,11 +28,11 @@ In der nachstehenden Tabelle sind die Eigenschaften für Azure Cosmos DB-Ressour
 | **time** | **TimeGenerated** | Datum und Uhrzeit (UTC), zu denen der Vorgang aufgetreten ist. |
 | **Ressourcen-ID** | **Ressource** | Das Azure Cosmos DB-Konto, für das Protokolle aktiviert sind.|
 | **category** | **Kategorie** | Die verfügbaren Protokolltypen bei Azure Cosmos DB-Protokollen sind: **DataPlaneRequests**, **MongoRequests**, **QueryRuntimeStatistics**, **PartitionKeyStatistics**, **PartitionKeyRUConsumption** und **ControlPlaneRequests**. |
-| **operationName** | **OperationName** | Name des Vorgangs. Bei diesem Wert kann es sich um einen der folgenden Vorgänge handeln: Create, Update, Read, ReadFeed, Delete, Replace, Execute, SqlQuery, Query, JSQuery, Head, HeadFeed, Upsert.   |
+| **operationName** | **OperationName** | Name des Vorgangs. Bei diesem Wert kann es sich um einen der folgenden Vorgänge handeln: Create, Update, Read, ReadFeed, Delete, Replace, Execute, SqlQuery, Query, JSQuery, Head, HeadFeed und Upsert.   |
 | **properties** | – | Die Inhalte dieser Felder werden in den folgenden Zeilen beschrieben. |
 | **activityId** | **activityId_g** | Die eindeutige GUID für den protokollierten Vorgang. |
 | **userAgent** | **userAgent_s** | Eine Zeichenfolge, die den Benutzer-Agent des Clients angibt, der die Anforderung ausführt. Das Format lautet {Name des Benutzer-Agents}/{version}.|
-| **requestResourceType** | **requestResourceType_s** | Der Typ der Ressource, auf die zugegriffen wird. Bei diesem Wert kann es sich um einen der folgenden Ressourcentypen handeln: Database, Container, Document, Attachment, User, Permission, StoredProcedure, Trigger, UserDefinedFunction, Offer. |
+| **requestResourceType** | **requestResourceType_s** | Der Typ der Ressource, auf die zugegriffen wird. Bei diesem Wert kann es sich um einen der folgenden Ressourcentypen handeln: Database, Container, Document, Attachment, User, Permission, StoredProcedure, Trigger, UserDefinedFunction oder Offer. |
 | **statusCode** | **statusCode_s** | Der Antwortstatus des Vorgangs. |
 | **requestResourceId** | **ResourceId** | Die Ressourcen-ID der Anforderung. Der Wert kann je nach ausgeführtem Vorgang auf databaseRid, collectionRid oder documentRid zeigen.|
 | **clientIpAddress** | **clientIpAddress_s** | Die IP-Adresse des Clients. |
@@ -45,7 +45,7 @@ In der nachstehenden Tabelle sind die Eigenschaften für Azure Cosmos DB-Ressour
 
 Eine Liste aller Azure Monitor-Protokollkategorien und Links zu zugeordneten Schemas finden Sie unter [Azure Monitor Logs categories and schemas](../azure-monitor/platform/diagnostic-logs-schema.md) (Kategorien und Schemas in Azure Monitor-Protokolle). 
 
-## <a name="metrics"></a>Metriken
+## <a name="metrics"></a>metrics
 In der nachstehenden Tabelle werden die für Azure Cosmos DB gesammelten Plattformmetriken aufgelistet. Alle Metriken werden im Namespace **Cosmos DB-Standardmetriken** gespeichert.
 
 Eine Liste aller Azure Monitor-Unterstützungsmetriken (einschließlich Cosmos DB) finden Sie unter [Unterstützte Metriken von Azure Monitor](../azure-monitor/platform/metrics-supported.md). 

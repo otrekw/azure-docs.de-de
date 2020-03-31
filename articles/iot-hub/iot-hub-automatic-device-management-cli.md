@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: chrisgre
-ms.openlocfilehash: 381f550f6d64dee3c7649a040c1e24b7c9d42f2c
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 748f3e09fd03a6f37954c8dfaf4b6ae9144384bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78669434"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235597"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-cli"></a>Automatische Verwaltung von IoT-Geräten und -Modulen über die Azure CLI
 
@@ -122,7 +122,7 @@ Sie konfigurieren Zielgeräte, indem Sie eine Konfiguration erstellen, die aus Z
 
 Verwenden Sie den folgenden Befehl, um eine Konfiguration zu erstellen:
 
-```cli
+```azurecli
    az iot hub configuration create --config-id [configuration id] \
      --labels [labels] --content [file path] --hub-name [hub name] \
      --target-condition [target query] --priority [int] \
@@ -147,7 +147,7 @@ Verwenden Sie den folgenden Befehl, um eine Konfiguration zu erstellen:
 
 Sie können den Inhalt einer Konfiguration mit dem folgenden Befehl anzeigen:
 
-```cli
+```azurecli
 az iot hub configuration show --config-id [configuration id] \
   --hub-name [hub name]
 ```
@@ -166,7 +166,7 @@ az iot hub configuration show --config-id [configuration id] \
 
 Sie können mit dem folgenden Befehl eine Liste der Geräte-IDs, Modul-IDs oder Objekte für jede der Metriken anzeigen:
 
-```cli
+```azurecli
 az iot hub configuration show-metric --config-id [configuration id] \
    --metric-id [metric id] --hub-name [hub name] --metric-type [type] 
 ```
@@ -193,7 +193,7 @@ Wenn Sie die Zielbedingung ändern, erfolgen die nachfolgend aufgeführten Anpas
 
 Verwenden Sie den folgenden Befehl, um eine Konfiguration zu aktualisieren:
 
-```cli
+```azurecli
 az iot hub configuration update --config-id [configuration id] \
    --hub-name [hub name] --set [property1.property2='value']
 ```
@@ -216,10 +216,11 @@ Wenn Sie eine Konfiguration löschen, übernehmen alle Geräte- oder Modulzwilli
 
 Mit dem folgenden Befehl können Sie eine Konfiguration löschen:
 
-```cli
+```azurecli
 az iot hub configuration delete --config-id [configuration id] \
    --hub-name [hub name] 
 ```
+
 * --**config-id**: Der Name der Konfiguration, die im IoT Hub vorhanden ist.
 
 * --**hub-name**: Der Name des IoT Hubs, in dem die Konfiguration vorhanden ist. Der Hub muss aus dem aktuellen Abonnement stammen. Wechseln Sie mit dem Befehl `az account set -s [subscription name]` zum gewünschten Abonnement.

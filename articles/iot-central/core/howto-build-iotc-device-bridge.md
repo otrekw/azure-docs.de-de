@@ -6,14 +6,14 @@ ms.service: iot-central
 author: viv-liu
 ms.author: viviali
 ms.date: 07/09/2019
-ms.topic: conceptual
+ms.topic: how-to
 manager: peterpr
-ms.openlocfilehash: b79020b4da08eeade0af885b4a6ca9f01c81c526
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6499c9c29d10a2056b0af5499b68b5edd67d82cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023207"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158417"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>Erstellen der Azure IoT Central-Geräte-Bridge, um weitere IoT-Clouds mit IoT Central zu verbinden
 
@@ -23,10 +23,10 @@ Die IoT Central-Geräte-Bridge ist eine Open-Source-Lösung, die Sigfox, Particl
 
 ## <a name="what-is-it-and-how-does-it-work"></a>Allgemeine Informationen und Funktionsweise
 Die IoT Central-Geräte-Bridge ist eine Open-Source-Lösung in GitHub. Über die Schaltfläche „Deploy to Azure“ (In Azure bereitstellen) wird eine benutzerdefinierte Azure Resource Manager-Vorlage mit mehreren Azure-Ressourcen in Ihrem Azure-Abonnement bereitgestellt. Die Ressource umfasst Folgendes:
--   Azure-Funktions-App
--   Azure Storage-Konto
--   Verbrauchstarif
--   Azure-Schlüsseltresor
+-    Azure-Funktions-App
+-    Azure Storage-Konto
+-    Verbrauchstarif
+-    Azure-Schlüsseltresor
 
 Die entscheidende Komponente der Geräte-Bridge ist die Funktions-App. Sie empfängt HTTP POST-Anforderungen von anderen IoT-Plattformen oder anderen benutzerdefinierten Plattformen über eine einfache Webhookintegration. Wir haben Beispiele bereitgestellt, die zeigen, wie Sie eine Verbindung mit Sigfox-, Particle- und TTN-Clouds herstellen. Diese Lösung lässt sich problemlos erweitern, um eine Verbindung mit Ihrer benutzerdefinierten IoT-Cloud herzustellen – vorausgesetzt, Ihre Plattform kann HTTP POST-Anforderungen an Ihre Funktions-App senden.
 Die Funktions-App transformiert die Daten in ein Format, das von IoT Central akzeptiert wird, und leitet sie über DPS-APIs weiter.
