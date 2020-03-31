@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
 ms.openlocfilehash: 8f2c6bc7fb7ab0939da20932fd531c158549ce7a
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70012850"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template-preview"></a>Bereitstellen einer IPv6-Anwendung mit dualem Stapel in Azure Virtual Network – Vorlage (Vorschau)

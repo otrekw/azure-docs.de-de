@@ -8,11 +8,11 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
 ms.openlocfilehash: 4a71f50a130bd9b22965d39fa942b47c70857a86
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844478"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231334"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Azure Event Grid-Ereignisschema für Blob Storage
 
@@ -27,7 +27,7 @@ Eine Liste von Beispielskripts und Tutorials finden Sie unter [Ereignisquellen i
 
 Die folgenden Ereignisse werden ausgelöst, wenn ein Client durch Aufrufen von Blob-REST-APIs ein Blob erstellt, ersetzt oder löscht:
 
- |Ereignisname |Beschreibung|
+ |Ereignisname |BESCHREIBUNG|
  |----------|-----------|
  |**Microsoft.Storage.BlobCreated** |Wird ausgelöst, wenn ein Blob erstellt oder ersetzt wird. <br>Dieses Ereignis wird insbesondere ausgelöst, wenn Clients den Vorgang `PutBlob`, `PutBlockList` oder `CopyBlob` verwenden, die in der Blob-REST-API zur Verfügung stehen.   |
  |**Microsoft.Storage.BlobDeleted** |Wird ausgelöst, wenn ein Blob gelöscht wird. <br>Dieses Ereignis wird insbesondere ausgelöst, wenn Clients den Vorgang `DeleteBlob` aufrufen, der in der Blob-REST-API zur Verfügung steht. |
@@ -39,7 +39,7 @@ Die folgenden Ereignisse werden ausgelöst, wenn ein Client durch Aufrufen von B
 
 Die folgenden Ereignisse werden ausgelöst, wenn Sie einen hierarchischen Namespace für das Speicherkonto aktivieren und Clients REST-APIs von Azure Data Lake Storage Gen2 aufrufen.
 
-|Ereignisname|Beschreibung|
+|Ereignisname|BESCHREIBUNG|
 |----------|-----------|
 |**Microsoft.Storage.BlobCreated** | Wird ausgelöst, wenn ein Blob erstellt oder ersetzt wird. <br>Dieses Ereignis wird insbesondere ausgelöst, wenn Clients die Vorgänge `CreateFile` und `FlushWithClose` verwenden, die in der REST-API von Azure Data Lake Storage Gen2 zur Verfügung stehen. |
 |**Microsoft.Storage.BlobDeleted** |Wird ausgelöst, wenn ein Blob gelöscht wird. <br>Dieses Ereignis wird insbesondere auch ausgelöst, wenn Clients den Vorgang `DeleteFile` aufrufen, der in der REST-API von Azure Data Lake Storage Gen2 zur Verfügung steht. |
@@ -292,34 +292,34 @@ Wenn das Blob Storage-Konto über einen hierarchischen Namespace verfügt, sehe
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | type | Beschreibung |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| topic | string | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
-| subject | string | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | string | Eindeutiger Bezeichner für das Ereignis. |
+| topic | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
 | data | Objekt (object) | Ereignisdaten für Blob Storage. |
-| dataVersion | string | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | string | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | type | Beschreibung |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| api | string | Der Vorgang, durch den das Ereignis ausgelöst wurde. |
-| clientRequestId | string | Vom Client bereitgestellte Anforderungs-ID für den Speicher-API-Vorgang. Diese ID kann zur Korrelation mit Azure Storage-Diagnoseprotokollen anhand des Felds „client-request-id“ in den Protokollen verwendet und in Clientanforderungen mit dem Header „x-ms-client-request-id“ bereitgestellt werden. Informationen finden Sie unter [Storage Analytics Log Format](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format) (Storage Analytics-Protokollformat). |
-| requestId | string | Dienstgenerierte Anforderungs-ID für den Speicher-API-Vorgang. Kann zum Korrelieren mit Azure Storage-Diagnoseprotokolle mithilfe des Felds „request-id-header“ in den Protokollen verwendet werden, und wird vom einleitenden API-Aufruf im „x-ms-request-id“-Header zurückgegeben. Informationen finden Sie unter [Storage Analytics Log Format](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format) (Storage Analytics-Protokollformat). |
-| eTag | string | Der Wert, den Sie verwenden können, um Vorgänge bedingt auszuführen. |
-| contentType | string | Der für das Blob angegebene Inhaltstyp. |
+| api | Zeichenfolge | Der Vorgang, durch den das Ereignis ausgelöst wurde. |
+| clientRequestId | Zeichenfolge | Vom Client bereitgestellte Anforderungs-ID für den Speicher-API-Vorgang. Diese ID kann zur Korrelation mit Azure Storage-Diagnoseprotokollen anhand des Felds „client-request-id“ in den Protokollen verwendet und in Clientanforderungen mit dem Header „x-ms-client-request-id“ bereitgestellt werden. Informationen finden Sie unter [Storage Analytics Log Format](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format) (Storage Analytics-Protokollformat). |
+| requestId | Zeichenfolge | Dienstgenerierte Anforderungs-ID für den Speicher-API-Vorgang. Kann zum Korrelieren mit Azure Storage-Diagnoseprotokolle mithilfe des Felds „request-id-header“ in den Protokollen verwendet werden, und wird vom einleitenden API-Aufruf im „x-ms-request-id“-Header zurückgegeben. Informationen finden Sie unter [Storage Analytics Log Format](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format) (Storage Analytics-Protokollformat). |
+| eTag | Zeichenfolge | Der Wert, den Sie verwenden können, um Vorgänge bedingt auszuführen. |
+| contentType | Zeichenfolge | Der für das Blob angegebene Inhaltstyp. |
 | contentLength | integer | Die Größe des Blobs in Byte. |
-| blobType | string | Der Blobtyp. Gültige Werte sind „BlockBlob“ oder „PageBlob“. |
+| blobType | Zeichenfolge | Der Blobtyp. Gültige Werte sind „BlockBlob“ oder „PageBlob“. |
 | contentOffset | number | Das Offset (in Bytes) eines Schreibvorgangs zu dem Zeitpunkt, zu dem die ereignisauslösende Anwendung das Schreiben in die Datei abgeschlossen hat. <br>Nur relevant für Ereignisse, die für Blob Storage-Konten mit einem hierarchischen Namespace ausgelöst wurden.|
-| destinationUrl |string | Die URL der Datei, die nach Abschluss des Vorgangs vorhanden ist. Wenn also beispielsweise eine Datei umbenannt wird, enthält die Eigenschaft `destinationUrl` die URL des neuen Dateinamens. <br>Nur relevant für Ereignisse, die für Blob Storage-Konten mit einem hierarchischen Namespace ausgelöst wurden.|
-| sourceUrl |string | Die URL der Datei, die vor dem Vorgang vorhanden ist. Wenn also beispielsweise eine Datei umbenannt wird, enthält `sourceUrl` die URL des ursprünglichen Dateinamens vor dem Umbenennungsvorgang. <br>Nur relevant für Ereignisse, die für Blob Storage-Konten mit einem hierarchischen Namespace ausgelöst wurden. |
-| url | string | Der Pfad des Blobs. <br>Wenn der Client eine Blob-REST-API verwendet, hat die URL die folgende Struktur: *\<Speicherkontoname\>.blob.core.windows.net/\<Containername\>/\<Dateiname\>* . <br>Wenn der Client eine Data Lake Storage-REST-API verwendet, hat die URL die folgende Struktur: *\<Speicherkontoname\>.dfs.core.windows.net/\<Dateisystemname\>/\<Dateiname\>* . |
-| recursive | string | `True`, um den Vorgang für alle untergeordneten Verzeichnisse auszuführen; andernfalls `False`. <br>Nur relevant für Ereignisse, die für Blob Storage-Konten mit einem hierarchischen Namespace ausgelöst wurden. |
-| sequencer | string | Ein nicht transparenter Zeichenfolgenwert, der die logische Reihenfolge von Ereignissen für einen bestimmten Blobnamen darstellt.  Benutzer können anhand des standardmäßigen Zeichenfolgenvergleichs die relative Reihenfolge von zwei Ereignissen unter dem gleichen Blobnamen verstehen. |
+| destinationUrl |Zeichenfolge | Die URL der Datei, die nach Abschluss des Vorgangs vorhanden ist. Wenn also beispielsweise eine Datei umbenannt wird, enthält die Eigenschaft `destinationUrl` die URL des neuen Dateinamens. <br>Nur relevant für Ereignisse, die für Blob Storage-Konten mit einem hierarchischen Namespace ausgelöst wurden.|
+| sourceUrl |Zeichenfolge | Die URL der Datei, die vor dem Vorgang vorhanden ist. Wenn also beispielsweise eine Datei umbenannt wird, enthält `sourceUrl` die URL des ursprünglichen Dateinamens vor dem Umbenennungsvorgang. <br>Nur relevant für Ereignisse, die für Blob Storage-Konten mit einem hierarchischen Namespace ausgelöst wurden. |
+| url | Zeichenfolge | Der Pfad des Blobs. <br>Wenn der Client eine Blob-REST-API verwendet, hat die URL die folgende Struktur: *\<Speicherkontoname\>.blob.core.windows.net/\<Containername\>/\<Dateiname\>* . <br>Wenn der Client eine Data Lake Storage-REST-API verwendet, hat die URL die folgende Struktur: *\<Speicherkontoname\>.dfs.core.windows.net/\<Dateisystemname\>/\<Dateiname\>* . |
+| recursive | Zeichenfolge | `True`, um den Vorgang für alle untergeordneten Verzeichnisse auszuführen; andernfalls `False`. <br>Nur relevant für Ereignisse, die für Blob Storage-Konten mit einem hierarchischen Namespace ausgelöst wurden. |
+| sequencer | Zeichenfolge | Ein nicht transparenter Zeichenfolgenwert, der die logische Reihenfolge von Ereignissen für einen bestimmten Blobnamen darstellt.  Benutzer können anhand des standardmäßigen Zeichenfolgenvergleichs die relative Reihenfolge von zwei Ereignissen unter dem gleichen Blobnamen verstehen. |
 | storageDiagnostics | Objekt (object) | Diagnosedaten, die gelegentlich vom Azure Storage-Dienst einbezogen werden. Falls vorhanden, sollten sie vom Ereignisconsumer ignoriert werden. |
 
 ## <a name="next-steps"></a>Nächste Schritte

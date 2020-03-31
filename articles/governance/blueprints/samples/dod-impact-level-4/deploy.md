@@ -1,14 +1,14 @@
 ---
 title: Blaupausenbeispiel „DoD-Auswirkungsstufe 4“
 description: Bereitstellungsschritte für das Blaupausenbeispiel „DoD-Auswirkungsstufe 4“, einschließlich Details zum Blaupausenartefaktparameter
-ms.date: 02/09/2020
+ms.date: 03/06/2020
 ms.topic: sample
-ms.openlocfilehash: 087b5947f86d33e44cd72754b79acd457674d545
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: c92e24327bc1879b8fea89cf85a50f845e473810
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77154698"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79415307"
 ---
 # <a name="deploy-the-dod-impact-level-4-blueprint-sample"></a>Bereitstellen des Blaupausenbeispiels „DoD-Auswirkungsstufe 4“
 
@@ -91,7 +91,7 @@ Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde,
 
 Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartefakts:
 
-|Artefaktname|Artefakttyp|Parametername|Beschreibung|
+|Artefaktname|Artefakttyp|Parametername|BESCHREIBUNG|
 |-|-|-|-|
 |\[Vorschau\]: DoD-Auswirkungsstufe 4|Richtlinienzuweisung|ID des Log Analytics-Arbeitsbereichs, für den die VMs konfiguriert werden sollen|Dies ist die ID (GUID) des Log Analytics-Arbeitsbereichs, für den die virtuellen Computer konfiguriert werden sollen.|
 |\[Vorschau\]: DoD-Auswirkungsstufe 4|Richtlinienzuweisung|Liste von Ressourcentypen, für die Diagnoseprotokolle aktiviert werden sollen|Liste der Ressourcentypen, die überprüfen sollen, ob die Einstellung für das Diagnoseprotokoll nicht aktiviert ist. Die zulässigen Werte finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
@@ -132,7 +132,8 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 |\[Vorschau\]: DoD-Auswirkungsstufe 4|Richtlinienzuweisung|MFA sollte für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktiviert sein.|Informationen zu Richtlinienauswirkungen finden Sie unter [Grundlegendes zu Azure Policy-Auswirkungen](../../../policy/concepts/effects.md).|
 |\[Vorschau\]: DoD-Auswirkungsstufe 4|Richtlinienzuweisung|MFA sollte für Konten mit Schreibberechtigungen für Ihr Abonnement aktiviert werden.|Informationen zu Richtlinienauswirkungen finden Sie unter [Grundlegendes zu Azure Policy-Auswirkungen](../../../policy/concepts/effects.md).|
 |\[Vorschau\]: DoD-Auswirkungsstufe 4|Richtlinienzuweisung|Langfristige georedundante Sicherung muss für Azure SQL-Datenbank aktiviert sein|Informationen zu Richtlinienauswirkungen finden Sie unter [Grundlegendes zu Azure Policy-Auswirkungen](../../../policy/concepts/effects.md).|
-
+|Allowed locations (Zulässige Speicherorte)|Richtlinienzuweisung|Zulässige Standorte|Mit dieser Richtlinie können Sie die Speicherorte einschränken, die Ihre Organisation beim Bereitstellen von Ressourcen angeben kann. Wird zur Erzwingung Ihrer Geokonformitätsanforderungen verwendet.|
+|Zulässige Speicherorte für Ressourcengruppen|Richtlinienzuweisung |Zulässige Standorte|Mit dieser Richtlinie können Sie die Standorte einschränken, an denen Ihr Unternehmen Ressourcengruppen erstellen kann. Wird zur Erzwingung Ihrer Geokonformitätsanforderungen verwendet.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

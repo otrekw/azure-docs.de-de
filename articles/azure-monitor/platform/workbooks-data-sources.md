@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: d57910ae31d4db9be17b3dc46b5920a925ab4fcf
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77658370"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226270"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Datenquellen für Azure Monitor-Arbeitsmappen
 
@@ -34,7 +34,7 @@ Arbeitsmappenautoren können KQL-Abfragen verwenden, mit denen die zugrunde lieg
 
 Arbeitsmappenautoren können problemlos Abfragen für mehrere Ressourcen durchführen und so eine wirklich einheitliche und umfassende Berichtsoberfläche erstellen.
 
-## <a name="metrics"></a>Metriken
+## <a name="metrics"></a>metrics
 
 Azure-Ressourcen geben [Metriken](data-platform-metrics.md) aus, auf die über Arbeitsmappen zugegriffen werden kann. Der Zugriff auf Metriken kann in Arbeitsmappen über ein spezielles Steuerelement erfolgen, das Ihnen die Angabe der Zielressourcen, der gewünschten Metriken und deren Aggregation ermöglicht. Diese Daten können dann in Diagrammen oder Rastern dargestellt werden.
 

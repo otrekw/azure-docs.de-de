@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.openlocfilehash: 1ead7fcd9d474369e3a62e372a971d88d26f4e9c
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273564"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Service Bus-Trigger für Azure Functions
@@ -256,7 +256,7 @@ Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) die
 
 Das zu verwendende Service Bus-Konto wird in der folgendem Reihenfolge bestimmt:
 
-* Die Eigenschaft `Connection` des Attributs `ServiceBusTrigger`.
+* Die Eigenschaft `ServiceBusTrigger` des Attributs `Connection`.
 * Das Attribut `ServiceBusAccount`, das auf den gleichen Parameter angewendet wird wie das Attribut `ServiceBusTrigger`.
 * Das Attribut `ServiceBusAccount`, das auf die Funktion angewendet wird.
 * Das Attribut `ServiceBusAccount`, das auf die Klasse angewendet wird.
@@ -356,7 +356,7 @@ Die `maxAutoRenewDuration` kann in der Datei *host.json* konfiguriert werden, di
 
 Der Service Bus-Trigger stellt mehrere [Metadateneigenschaften](./functions-bindings-expressions-patterns.md#trigger-metadata) bereit. Diese Eigenschaften können als Teil der Bindungsausdrücke in anderen Bindungen oder als Parameter im Code verwendet werden. Diese Eigenschaften sind Member der [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)-Klasse.
 
-|Eigenschaft|type|Beschreibung|
+|Eigenschaft|type|BESCHREIBUNG|
 |--------|----|-----------|
 |`DeliveryCount`|`Int32`|Die Anzahl der Übermittlungen.|
 |`DeadLetterSource`|`string`|Die Quelle von unzustellbaren Nachrichten.|

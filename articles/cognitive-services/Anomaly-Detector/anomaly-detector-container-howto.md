@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: dapine
 ms.openlocfilehash: 45abd904ea95cf8e68583ba5630a485af59479ec
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327251"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218932"
 ---
 # <a name="install-and-run-anomaly-detector-containers-preview"></a>Installieren und Ausführen von Containern für die Anomalieerkennung (Vorschau)
 

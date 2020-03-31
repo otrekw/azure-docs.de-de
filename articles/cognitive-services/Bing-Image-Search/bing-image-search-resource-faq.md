@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 6841e573446103466e2719797da9e4161b70b5a6
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68881695"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Häufig gestellte Fragen (FAQ) zur Bing-Bildersuche-API
@@ -37,7 +37,7 @@ Wenn Sie jedoch die Bing-Bildersuche-API von JavaScript aus aufrufen, kann es se
 
 Um Zugriff auf die Header zu erhalten, können Sie die Bing-Bildersuche-API über einen CORS-Proxy anfordern. In der Antwort eines solchen Proxys befindet sich ein `Access-Control-Expose-Headers`-Header. Dieser enthält eine Whitelist mit Antwortheadern, die JavaScript zur Verfügung gestellt werden.
 
-Die Installation eines CORS-Proxys, mit dem die [Tutorial-App](tutorial-bing-image-search-single-page-app.md) auf die optionalen Clientheader zugreifen kann, ist schnell und unkompliziert. [Installieren Sie Node.js](https://nodejs.org/en/download/), falls Sie dies noch nicht getan haben. Geben Sie dann in einer Eingabeaufforderung den folgenden Befehl ein.
+Die Installation eines CORS-Proxys, mit dem die [Tutorial-App](tutorial-bing-image-search-single-page-app.md) auf die optionalen Clientheader zugreifen kann, ist schnell und unkompliziert. [Installieren Sie Node.js](https://nodejs.org/en/download/), falls Sie dies noch nicht getan haben. Geben Sie dann an einer Eingabeaufforderung den folgenden Befehl ein.
 
     npm install -g cors-proxy-server
 
@@ -65,4 +65,4 @@ Haben Sie eine Frage zu einem fehlenden Feature bzw. einer fehlenden Funktion? S
 
 ## <a name="see-also"></a>Weitere Informationen
 
- [Stack Overflow: Cognitive Services](https://stackoverflow.com/questions/tagged/bing-api)
+ [Stapelüberlauf: Cognitive Services](https://stackoverflow.com/questions/tagged/bing-api)

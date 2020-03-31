@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 22d98656f42f52f2fba0845fac6f1d210d2cf0bd
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76264677"
 ---
 # <a name="deliver-content-to-customers"></a>Übermitteln von Inhalten an Kunden
@@ -55,7 +55,7 @@ Mit Media Services können Sie Filter für Ihre Medienobjekte definieren. Diese 
 
 Weitere Informationen finden Sie unter [Filter und dynamische Manifeste](media-services-dynamic-manifest-overview.md).
 
-## <a name="a-idlocatorslocators"></a><a id="locators"/>Locators
+## <a name="locators"></a><a id="locators"/>Locators
 Um Ihren Benutzern eine URL für das Streaming bzw. Herunterladen des Inhalts angeben zu können, müssen Sie zunächst das Medienobjekt veröffentlichen, indem Sie einen Locator erstellen. Ein Locator bieten einen Einstiegspunkt für den Zugriff auf die in einem Medienobjekt enthaltenen Dateien. Media Services unterstützt zwei Arten von Locatorobjekten:
 
 * OnDemandOrigin-Locator. Diese werden zum Streamen von Medien (z.B. MPEG-DASH, HLS oder Smooth Streaming) und zum progressiven Download von Dateien verwendet.
@@ -87,7 +87,7 @@ Um Benutzern Streaming-URLs bereitzustellen, müssen Sie zuerst einen OnDemandOr
 
 Sie können nur über SSL streamen, wenn der Streamingendpunkt, von dem aus Sie Ihre Inhalte übermitteln, nach dem 10. September 2014 erstellt wurde. Wenn die Streaming-URLs auf Streamingendpunkten basieren, die nach dem 10. September 2014 erstellt wurden, enthält die URL „streaming.mediaservices.windows.net“. Streaming-URLs, die "origin.mediaservices.windows.net" (das alte Format) enthalten, unterstützen kein SSL. Wenn die URL im alten Format vorliegt und Sie über SSL streamen möchten, erstellen Sie einen neuen Streamingendpunkt. Verwenden Sie die URLs, die auf dem neuen Streamingendpunkt basieren, um Ihre Inhalte über SSL zu streamen.
 
-## <a name="a-idurlsstreaming-url-formats"></a><a id="URLs"/>Streaming-URL-Formate
+## <a name="streaming-url-formats"></a><a id="URLs"/>Streaming-URL-Formate
 
 ### <a name="mpeg-dash-format"></a>MPEG-DASH-Format
 {Streamingendpunktname-Media Services-Kontoname}.streaming.mediaservices.windows.net/{Locator-ID}/{Dateiname}.ism/Manifest(Format=mpd-time-csf)
@@ -118,7 +118,7 @@ Beispiel:
 
 http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
 
-### <a id="fmp4_v20"></a>Smooth Streaming 2.0-Manifest (Legacymanifest)
+### <a name="smooth-streaming-20-manifest-legacy-manifest"></a><a id="fmp4_v20"></a>Smooth Streaming 2.0-Manifest (Legacymanifest)
 Das Smooth Streaming-Manifestformat enthält standardmäßig das Wiederholungstag (r-Tag). Einige Player unterstützen das r-Tag jedoch nicht. Clients mit diesen Playern können ein Format verwenden, das das r-Tag deaktiviert:
 
 {Streamingendpunktname-Media Services-Kontoname}.streaming.mediaservices.windows.net/{Locator-ID}/{Dateiname}.ism/Manifest(Format=fmp4-v20)

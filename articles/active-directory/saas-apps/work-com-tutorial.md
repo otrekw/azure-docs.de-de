@@ -17,10 +17,10 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7a6dc16eef1bb36a5bd6cbf0502a83481230bc0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67087082"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>Tutorial: Azure Active Directory-Integration mit Work.com
@@ -134,7 +134,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Work.co
 
 2. Wechseln Sie zu **Setup**.
    
-    ![Setup](./media/work-com-tutorial/ic794108.png "Setup")
+    ![Einrichtung](./media/work-com-tutorial/ic794108.png "Einrichten")
 
 3. Klicken Sie im linken Navigationsbereich im Abschnitt **Verwalten** auf **Domänenverwaltung**, um den entsprechenden Abschnitt zu erweitern, und klicken Sie anschließend auf **Meine Domäne**, um die Seite **Meine Domäne** zu öffnen. 
    
@@ -148,11 +148,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Work.co
 
 6. Wechseln Sie zu **Setup**.
     
-    ![Setup](./media/work-com-tutorial/ic794108.png "Setup")
+    ![Einrichtung](./media/work-com-tutorial/ic794108.png "Einrichten")
 
 7. Erweitern Sie das Menü **Sicherheitskontrollen**, und klicken Sie anschließend auf **Single Sign-On Settings** (Einstellungen für einmaliges Anmelden).
     
-    ![Einstellungen für einmaliges Anmelden](./media/work-com-tutorial/ic794113.png "Einstellungen für einmaliges Anmelden")
+    ![SSO-Einstellungen](./media/work-com-tutorial/ic794113.png "Einstellungen für einmaliges Anmelden")
 
 8. Führen Sie auf der Dialogfeldseite **Einstellungen für einmaliges Anmelden** die folgenden Schritte aus:
     
@@ -160,11 +160,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Work.co
     
     a. Wählen Sie **SAML aktiviert**aus.
     
-    b. Klicken Sie auf **New**.
+    b. Klicken Sie auf **Neu**.
 
 9. Führen Sie im Abschnitt **Einstellungen für einmalige Anmelden für SAML** die folgenden Schritte aus:
     
-    ![SAML-Einstellungen für einmaliges Anmelden](./media/work-com-tutorial/ic794114.png "SAML-Einstellungen für einmaliges Anmelden")
+    ![SAML-Einstellung für einmaliges Anmelden](./media/work-com-tutorial/ic794114.png "SAML-Einstellung für einmaliges Anmelden")
     
     a. Geben Sie im Textfeld **Name** einen Namen für die Konfiguration ein.  
        
@@ -223,7 +223,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -261,11 +261,11 @@ Damit sich Azure Active Directory-Benutzer anmelden können, müssen sie in Work
 
 2. Wechseln Sie zu **Setup**.
    
-    ![Setup](./media/work-com-tutorial/IC794108.png "Setup")
+    ![Einrichtung](./media/work-com-tutorial/IC794108.png "Einrichten")
 
 3. Navigieren Sie zu **Benutzer verwalten \> Benutzer**.
    
-    ![Benutzer verwalten](./media/work-com-tutorial/IC784369.png "Benutzer verwalten")
+    ![Verwalten von Benutzern](./media/work-com-tutorial/IC784369.png "Benutzer verwalten")
 
 4. Klicken Sie auf **Neuer Benutzer**.
    
@@ -307,5 +307,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Work.com“ klicken, sollten Sie a
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

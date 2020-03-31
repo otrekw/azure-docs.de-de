@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: bc08cd5183bcaac6cb77ccb0938b07893f082862
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78250222"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Serialisieren von Telemetriedaten mithilfe von Protocol Buffers
@@ -70,7 +70,7 @@ Laden Sie den [Microservice "Gerätesimulation"](https://github.com/Azure/device
 
 Um den Microservice für Speicheradapter lokal auszuführen, klicken Sie auf **Debuggen \> Debuggen starten**.
 
-Im Fenster **Terminal** in Visual Studio Code wird die Ausgabe aus dem ausgeführten Microservice angezeigt, einschließlich einer URL für die Webdienst-Integritätsprüfung: <http://127.0.0.1:9022/v1/status>. Wenn Sie zu dieser Adresse navigieren, sollte der Status „OK: aktiv und gut“ lauten.
+Im Fenster **Terminal** in Visual Studio Code wird die Ausgabe aus dem ausgeführten Microservice angezeigt, einschließlich einer URL für die Webdienst-Integritätsprüfung: <http://127.0.0.1:9022/v1/status>. Wenn Sie zu dieser Adresse navigieren, sollte der Status "OK: aktiv und gut" lauten.
 
 Führen Sie den Microservice für Speicheradapter weiterhin in dieser Instanz von Visual Studio Code aus, während Sie die folgenden Schritte ausführen.
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/24/2020
 ms.author: cherylmc
 ms.openlocfilehash: 381f45a51002188c72174cff83c26b829912a0b9
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77596826"
 ---
 # <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>Herstellen einer SSH-Verbindung mit einem virtuellen Linux-Computer über Azure Bastion
@@ -45,7 +45,7 @@ Zum Herstellen einer Verbindung mit dem virtuellen Linux-Computer über SSH müs
 
 * Eingehender Port: SSH (22)
 
-## <a name="username"></a>Verbinden: Verwenden von Benutzernamen und Kennwort
+## <a name="connect-using-username-and-password"></a><a name="username"></a>Verbinden: Verwenden von Benutzernamen und Kennwort
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Navigieren Sie zu dem virtuellen Computer, mit dem Sie eine Verbindung herstellen möchten, klicken Sie dann auf **Verbinden**, und wählen Sie **Bastion** aus der Dropdownliste aus.
 
@@ -56,7 +56,7 @@ Zum Herstellen einer Verbindung mit dem virtuellen Linux-Computer über SSH müs
 1. Geben Sie den Benutzernamen und das Kennwort für die SSH-Verbindung mit dem virtuellen Computer ein.
 1. Klicken Sie auf die Schaltfläche **Verbinden**, nachdem Sie den Schlüssel eingegeben haben.
 
-## <a name="privatekey"></a>Verbinden: Manuelle Eingabe eines privaten Schlüssels
+## <a name="connect-manually-enter-a-private-key"></a><a name="privatekey"></a>Verbinden: Manuelle Eingabe eines privaten Schlüssels
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Navigieren Sie zu dem virtuellen Computer, mit dem Sie eine Verbindung herstellen möchten, klicken Sie dann auf **Verbinden**, und wählen Sie **Bastion** aus der Dropdownliste aus.
 
@@ -68,7 +68,7 @@ Zum Herstellen einer Verbindung mit dem virtuellen Linux-Computer über SSH müs
 1. Geben Sie Ihren privaten Schlüssel in das Textfeld **Privater SSH-Schlüssel** ein (bzw. fügen Sie ihn direkt ein).
 1. Klicken Sie auf die Schaltfläche **Verbinden**, nachdem Sie den Schlüssel eingegeben haben.
 
-## <a name="ssh"></a>Verbinden: Verwenden einer Datei mit einem privaten Schlüssel
+## <a name="connect-using-a-private-key-file"></a><a name="ssh"></a>Verbinden: Verwenden einer Datei mit einem privaten Schlüssel
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). Navigieren Sie zu dem virtuellen Computer, mit dem Sie eine Verbindung herstellen möchten, klicken Sie dann auf **Verbinden**, und wählen Sie **Bastion** aus der Dropdownliste aus.
 

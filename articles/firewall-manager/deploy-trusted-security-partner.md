@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: victorh
 ms.openlocfilehash: bcea9a8674e4b1979698b7d28eb4192172b0dc11
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73931306"
 ---
 # <a name="deploy-a-trusted-security-partner-preview"></a>Bereitstellen eines vertrauenswürdigen Sicherheitspartners (Vorschau)
@@ -22,7 +22,7 @@ Mit dem Feature *Vertrauenswürdiger Sicherheitspartner* in Azure Firewall Manag
 
 Weitere Informationen zu unterstützten Szenarien und Best Practices finden Sie unter [Was sind vertrauenswürdige Sicherheitspartner (Vorschau)?](trusted-security-partners.md).
 
-Die für diese Vorschau unterstützten Sicherheitspartner sind **ZScaler** und **iboss**. Die unterstützten Regionen sind „USA, Westen-Mitte“, „USA, Norden-Mitte“, „USA, Westen“, „USA, Westen 2“ und „USA, Osten“.
+Die für diese Vorschau unterstützten Sicherheitspartner sind **ZScaler** und **iboss**. Die unterstützten Regionen lauten „WestCentralUS“, „NorthCentralUS“, „WestUS“, „WestUS2“ und „EastUS“.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -53,7 +53,7 @@ Es dauert bis zu 30 Minuten, bis die Featureregistrierung abgeschlossen ist. F�
 8. Wenn Sie nur die Sicherheitslösung eines Drittanbieters im Hub bereitstellen möchten, wählen Sie Folgendes aus: **Azure Firewall: aktiviert/deaktiviert**, und legen Sie die Einstellung auf **Deaktiviert** fest. 
 9. Klicken Sie auf **Weiter: Vertrauenswürdige Sicherheitspartner**
 10. Wählen Sie **Vertrauenswürdiger Sicherheitspartner** aus, um die Einstellung auf **Aktiviert** festzulegen. Wählen Sie einen Partner aus. 
-11. Klicken Sie auf **Weiter**. 
+11. Wählen Sie **Weiter** aus. 
 12. Überprüfen Sie den Inhalt, und klicken Sie dann auf **Erstellen**.
 
 Die Bereitstellung des VPN-Gateways kann mehr als 30 Minuten in Anspruch nehmen.
@@ -77,9 +77,9 @@ Um Tunnel zum VPN-Gateway Ihres virtuellen Hubs einzurichten, benötigen Drittan
 
 1. Erstellen Sie einen Azure Active Directory-Dienstprinzipal: Sie können die Umleitungs-URL überspringen. 
 
-   [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)
+   [Vorgehensweise: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)
 2. Fügen Sie Zugriffsrechte und einen Bereich für den Dienstprinzipal hinzu.
-   [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)
+   [Vorgehensweise: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)
 
    > [!NOTE]
    > Zur genaueren Steuerung können Sie den Zugriff auf Ihre Ressourcengruppe beschränken.

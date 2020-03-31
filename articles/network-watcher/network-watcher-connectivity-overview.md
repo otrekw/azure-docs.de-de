@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842868"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236946"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Einführung in die Problembehandlung für Verbindungen in Azure Network Watcher
 
@@ -29,7 +29,7 @@ Das Feature zur Problembehandlung von Verbindungen von Network Watcher bietet di
 
 Die folgende Tabelle zeigt die Eigenschaften, die nach Ausführung der Problembehandlung für Verbindungen zurückgegeben werden:
 
-|Eigenschaft  |Beschreibung  |
+|Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
 |ConnectionStatus     | Status der Konnektivitätsprüfung. Mögliche Ergebnisse sind **Erreichbar** und **Nicht erreichbar**.        |
 |AvgLatencyInMs     | Durchschnittliche Wartezeit während der Konnektivitätsprüfung in Millisekunden. (Wird nur angezeigt, wenn der Status „Erreichbar“ ist)        |
@@ -72,7 +72,7 @@ Im Folgenden finden Sie ein Beispiel für ein Problem, das auf einem Hop gefunde
 
 Die Problembehandlung für Verbindungen gibt Fehlertypen der Verbindung zurück. Die folgende Tabelle listet die aktuellen zurückgegebenen Fehlertypen auf:
 
-|type  |Beschreibung  |
+|type  |BESCHREIBUNG  |
 |---------|---------|
 |CPU     | Hohe CPU-Auslastung.       |
 |Arbeitsspeicher     | Hohe Speicherauslastung.       |

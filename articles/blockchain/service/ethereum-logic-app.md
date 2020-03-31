@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: article
 ms.reviewer: chrisseg
 ms.openlocfilehash: 4a9acfd6098ed45fd92c7e3047b5d1446eeddbd6
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74325219"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Verwenden des Ethereum-Blockchain-Connectors mit Azure Logic Apps
@@ -87,7 +87,7 @@ Connector-Aktionen erfordern einen Trigger. Sie können eine Ethereum-Blockchain
 
     Nachdem Sie einen Smart Contract-Funktionsnamen ausgewählt haben, werden unter Umständen die erforderlichen Felder für Funktionsparameter angezeigt. Geben Sie die Werte oder dynamischen Inhalte ein, die für Ihr Szenario erforderlich sind.
 
-Nun können Sie Ihre Logik-App verwenden. Wenn das Logik-App-Ereignis ausgelöst wird, wird die Ethereum-Blockchain-Aktion ausgeführt. Beispiel: Ein HTTP-Anforderungstrigger führt eine Ethereum-Blockchain-Aktion aus, um einen Smart Contract-Zustandswert abzufragen. Diese Abfrage führt zu einer HTTP-Antwort, mit der der Wert zurückgegeben wird.
+Sie können Ihre Logik-App jetzt verwenden. Wenn das Logik-App-Ereignis ausgelöst wird, wird die Ethereum-Blockchain-Aktion ausgeführt. Beispiel: Ein HTTP-Anforderungstrigger führt eine Ethereum-Blockchain-Aktion aus, um einen Smart Contract-Zustandswert abzufragen. Diese Abfrage führt zu einer HTTP-Antwort, mit der der Wert zurückgegeben wird.
 
 ## <a name="generate-a-workflow"></a>Generieren eines Workflows
 

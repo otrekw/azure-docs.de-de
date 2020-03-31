@@ -4,10 +4,10 @@ description: Beschreibt die Unterschiede zwischen dem Ressourcen-Manager-Bereits
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.openlocfilehash: 85691d562f2b58cdced3264de11f3dd29a7ca168
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77064511"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager und klassische Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen

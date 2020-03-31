@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: diberry
 ms.openlocfilehash: d9ae126753f55349f9bf3eefd20bc4d222866af1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73888200"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Verwenden des Dashboards zum Verbessern Ihrer App
@@ -34,7 +34,7 @@ Mit dem Dashboard können Sie die folgenden drei Probleme behandeln:
 |--|--|--|
 |Unausgeglichene Daten|-|Dieses Problem tritt auf, wenn die Menge der Beispieläußerungen signifikant variiert. Alle Absichten mit Ausnahme von „None“ (Keine) müssen _ungefähr_ die gleiche Anzahl von Beispieläußerungen aufweisen. Nur 10 bis 15 % der Gesamtzahl der Äußerungen sollten in der App verwendet werden.<br><br> Wenn die Daten unausgeglichen sind, die Genauigkeit der Absicht aber über einem bestimmten Schwellenwert liegt, wird eine solche Unausgeglichenheit nicht als Problem gemeldet.<br><br>**Behandeln Sie zuerst dieses Problem, da es möglicherweise die Grundursache für andere Probleme ist.**|
 |Unklare Vorhersagen|Orange|Dieses Problem tritt auf, wenn sich die Absicht mit der höchsten Bewertung und die darauffolgende Absicht in ihrem Wert nur minimal unterscheiden, sodass sich die Rangfolge beim nächsten Training ändert. Dies kann auf eine [negative Stichprobenentnahme](luis-how-to-train.md#train-with-all-data) (Negative Sampling) oder auf weitere Beispieläußerungen zurückzuführen sein, die der Absicht hinzugefügt wurden. |
-|Falsche Vorhersagen|Rot|Dieses Problem tritt auf, wenn eine Beispieläußerung nicht für die Absicht mit der Bezeichnung (also für die Absicht, in der die Äußerung enthalten ist) vorhergesagt wird.|
+|Falsche Vorhersagen|Red|Dieses Problem tritt auf, wenn eine Beispieläußerung nicht für die Absicht mit der Bezeichnung (also für die Absicht, in der die Äußerung enthalten ist) vorhergesagt wird.|
 
 Richtige Vorhersagen werden blau dargestellt.
 
@@ -154,10 +154,10 @@ Sie können die Schwellenwerte in Prozent festlegen, die für Ihr Unternehmen ge
 
 Mit dem Filter können Sie Absichten mit einem bestimmten Problem suchen:
 
-|Filter|Vorgeschlagener Prozentsatz|Zweck|
+|Filtern|Vorgeschlagener Prozentsatz|Zweck|
 |--|--|--|
 |Most problematic intents (Problematischste Absichten)|-|**Verbessern Sie zuerst die Äußerungen in dieser Absicht**. Dieser Vorgang hat auf die Verbesserung der App größere Auswirkungen als andere Fehlerbehebungen.|
-|Correct predictions below (Falsche Vorhersagen unter)|60 %|Dies ist der Prozentsatz der Äußerungen in der ausgewählten Absicht, die zwar richtig sind, aber deren Konfidenzwert unter dem Schwellenwert liegt. |
+|Correct predictions below (Falsche Vorhersagen unter)|60%|Dies ist der Prozentsatz der Äußerungen in der ausgewählten Absicht, die zwar richtig sind, aber deren Konfidenzwert unter dem Schwellenwert liegt. |
 |Unclear predictions above (Unklare Vorhersagen über)|15 %|Dies ist der Prozentsatz der Äußerungen in der ausgewählten Absicht, die fälschlicherweise der ähnlichsten Absicht zugeordnet werden.|
 |Incorrect predictions above (Falsche Vorhersagen über)|15 %|Dies ist der Prozentsatz der Äußerungen in der ausgewählten Absicht, die falsch vorhergesagt werden. |
 

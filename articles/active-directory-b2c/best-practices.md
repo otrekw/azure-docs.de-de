@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: 6c737af85e2a7205dca6a56174dfda565da1410d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: a76852a6e3cc5ffcdfcac62ce29fe47c97af3df1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304321"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79136158"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Empfehlungen und bewährte Methoden für Azure Active Directory B2C
 
@@ -51,7 +51,7 @@ Beachten Sie während der Implementierungsphase die folgenden Empfehlungen.
 
 |  |  |
 |--|--|
-| Bearbeiten benutzerdefinierter Richtlinien mit der Azure AD B2C-Erweiterung für Visual Studio Code | Laden Sie Visual Studio Code und diese von der Community erstellte [Erweiterung aus Visual Studio Code Marketplace]((https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)) herunter. Obwohl es sich nicht um ein offizielles Microsoft-Produkt handelt, enthält die Azure AD B2C-Erweiterung für Visual Studio Code mehrere Features, die das Arbeiten mit benutzerdefinierten Richtlinien vereinfachen. |
+| Bearbeiten benutzerdefinierter Richtlinien mit der Azure AD B2C-Erweiterung für Visual Studio Code | Laden Sie Visual Studio Code und diese von der Community erstellte [Erweiterung aus Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) herunter. Obwohl es sich nicht um ein offizielles Microsoft-Produkt handelt, enthält die Azure AD B2C-Erweiterung für Visual Studio Code mehrere Features, die das Arbeiten mit benutzerdefinierten Richtlinien vereinfachen. |
 | Informationen zur Problembehandlung von Azure AD B2C | Erfahren Sie, wie Sie [Problembehandlung für benutzerdefinierte Richtlinien](https://docs.microsoft.com/azure/active-directory-b2c/troubleshoot-custom-policies?tabs=applications) während der Entwicklung ausführen. Erfahren Sie, wie ein normaler Authentifizierungsflow aussieht, und verwenden Sie Tools zum Ermitteln von Anomalien und Fehlern. Verwenden Sie beispielsweise [Application Insights](troubleshoot-with-application-insights.md), um Ausgabeprotokolle von User Journeys zu überprüfen. |
 | Nutzen der Bibliothek bewährter benutzerdefinierter Richtlinienmuster | Sehen Sie sich [Beispiele](https://github.com/azure-ad-b2c/samples) für mehrere erweiterte Azure AD B2C-User Journeys zu CIAM (Customer Identity and Access Management, Kundenidentitäts- und Zugriffsverwaltung) an. |
 

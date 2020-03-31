@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
 ms.openlocfilehash: 3294a7b2112e9527041ef343f4452aedb7a2a272
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70073460"
 ---
 # <a name="how-to-migrate-azure-api-management-across-regions"></a>Regionsübergreifendes Migrieren von Azure API Management
@@ -44,6 +44,6 @@ Wenn Sie API Management-Instanzen von einer Azure-Region zu einer anderen migrie
 1. Stellen Sie die in Schritt 1 erstellte Sicherung in der neuen API Management-Instanz in der Zielregion wieder her.  
 
 
-## <a name="next-steps"> </a>Nächste Schritte
+## <a name="next-steps"></a><a name="next-steps"> </a>Nächste Schritte
 * Weitere Informationen zur Funktion „Sichern und Wiederherstellen“ finden Sie unter [So implementieren Sie die Notfallwiederherstellung](api-management-howto-disaster-recovery-backup-restore.md).
 * Informationen zur Migration von Azure-Ressourcen finden Sie unter [Anleitung zur regionsübergreifenden Azure-Migration](https://github.com/Azure/Azure-Migration-Guidance).

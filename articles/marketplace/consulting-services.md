@@ -3,18 +3,17 @@ title: Azure Marketplace- und AppSource-Beratungsdienste
 description: Dieser Artikel beschreibt die Eignungskriterien und Veröffentlichungsbedingungen für neue Beratungsdienstangebote im Azure Marketplace.
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
-manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/27/2020
-ms.author: evansma
-ms.openlocfilehash: 1506a4180a5991e6f6e8ed946192bcbf10bbeac0
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.author: dsindona
+ms.openlocfilehash: 987d04a4138c37d9073e5e9925f06c93d7ebb8e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78296150"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281577"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Beratungsdienste für Azure Marketplace und AppSource
 Mit Beratungsdiensten in Azure Marketplace und AppSource können Microsoft-Partner eine Verbindung zwischen Kunden und Diensten herstellen, um die Nutzung von Azure zu unterstützen und auszuweiten und den Kunden beim Erreichen ihrer Unternehmensziele zu helfen. 

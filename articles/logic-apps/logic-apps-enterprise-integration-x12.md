@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/31/2017
 ms.openlocfilehash: cbf0a1f033ddafc68debab8de26dff29d73cc98e
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77651473"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Austauschen von X12-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
@@ -106,7 +106,7 @@ Ihre Vereinbarung kann nun eingehende Nachrichten verarbeiten, die den ausgewäh
 
 ![Festlegen der Bestätigungseigenschaften](./media/logic-apps-enterprise-integration-x12/x12-3.png) 
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | TA1 erwartet |Gibt eine technische Bestätigung an den Absender des Austauschs zurück. |
 | FA erwartet |Gibt eine Funktionsbestätigung an den Absender des Austauschs zurück. Wählen Sie dann basierend auf den Schemaversionen, mit denen Sie arbeiten, ob Sie die Bestätigungen des Typs 997 oder 999 wünschen. |
@@ -118,7 +118,7 @@ Wählen Sie ein Schema für jeden Transaktionstyp (ST1) und jede Absenderanwendu
 
 ![Schema auswählen](./media/logic-apps-enterprise-integration-x12/x12-33.png) 
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | Version |Wählen Sie die X12-Version. |
 | Transaktionstyp (ST01) |Wählen Sie den Transaktionstyp. |
@@ -225,7 +225,7 @@ Ihre Vereinbarung kann nun ausgehende Nachrichten verarbeiten, die den ausgewäh
 
 ![Trennzeichen in einem Transaktionssatz angeben: „Standardbezeichner“ oder „Wiederholungstrennzeichen“](./media/logic-apps-enterprise-integration-x12/x12-6.png) 
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | ISA11-Verwendung |Gibt das Trennzeichen an, das in einem Transaktionssatz verwendet werden soll: <p>Wählen Sie **Standardbezeichner** aus, um anstelle der Dezimalschreibweise des eingehenden Dokuments in der EDI-Empfangspipeline einen Punkt (.) für die Dezimalschreibweise zu verwenden. <p>Wählen Sie **Wiederholungstrennzeichen** aus, um das Trennzeichen für wiederholte Vorkommen eines einfachen Datenelements oder einer wiederholten Datenstruktur anzugeben. Als Wiederholungstrennzeichen wird beispielsweise in der Regel das Caretzeichen (^) verwendet. Für HIPAA-Schemas können Sie ausschließlich das Caretzeichen verwenden. |
 

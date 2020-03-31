@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: efef3faf3cc4ff04235254f0ff6538d92a831196
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619943"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79219192"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Unternehmensstrategien für LUIS-Apps
 Lesen Sie die folgenden Entwurfsstrategien für Unternehmens-Apps.
@@ -73,7 +73,7 @@ Eine Dispatchanwendung hat maximal 500 Dispatchquellen, die 500 Absichten entspr
 
 * [Bot Framework SDK](https://github.com/Microsoft/botframework)
 * [Verwenden von mehreren LUIS- und QnA-Modellen](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&branch=master&tabs=cs)
-* [Dispatch-Befehlszeilenschnittstelle](https://github.com/Microsoft/botbuilder-tools)
+* [Dispatch CLI](https://github.com/Microsoft/botbuilder-tools)
 * Botbeispiel für das Dispatchmodell: [.NET](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch), [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)
 
 ## <a name="next-steps"></a>Nächste Schritte

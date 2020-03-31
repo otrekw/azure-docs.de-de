@@ -7,11 +7,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: f9c70491d06f61931ebabda859ff3a86ed035b44
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461350"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226486"
 ---
 # <a name="add-push-notifications-to-your-xamarinios-app"></a>Hinzufügen von Pushbenachrichtigungen zu Ihrer Xamarin iOS-App
 
@@ -132,7 +132,7 @@ Wenn Sie das heruntergeladene Schnellstart-Serverprojekt nicht verwenden, müsse
 
 Ihre App kann Pushbenachrichtigungen nun unterstützen.
 
-## <a name="test"></a>Testen von Pushbenachrichtigungen in der App
+## <a name="test-push-notifications-in-your-app"></a><a name="test"></a>Testen von Pushbenachrichtigungen in der App
 
 1. Klicken Sie auf die Schaltfläche **Ausführen**, um das Projekt zu erstellen. Starten Sie die App auf einem iOS-fähigen Gerät, und klicken Sie dann auf **OK**, um Pushbenachrichtigungen zu akzeptieren.
 

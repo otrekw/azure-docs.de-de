@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: a664f12843585ac7524cf8d51aef156d15d32504
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77650980"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Häufig gestellte Fragen zur Verwendung von Azure Database Migration Service
@@ -115,7 +115,7 @@ Wenn der Benutzer Azure Database Migration Service (DMS) explizit beendet oder d
 Die Datenmigration mit diesem Dienst lässt sich durch folgende Maßnahmen beschleunigen:
 
 * Verwenden Sie beim Erstellen Ihrer Dienstinstanz den universellen Tarif mit mehreren CPUs, damit dem Dienst mehrere vCPUs für Parallelisierung und schnellere Datenübertragungen zur Verfügung stehen.
-* Skalieren Sie Ihre Azure SQL-Datenbank-Zielinstanz während der Datenmigration vorübergehend zentral auf die Premium-Tarifebene hoch, um die Drosselung durch Azure SQL-Datenbank zu minimieren, die bei SKUs einer niedrigeren Ebene unter Umständen zu einer Beeinträchtigung der Datenübertragungsaktivitäten führt.
+* Skalieren Sie Ihre Azure SQL-Datenbank-Zielinstanz während der Datenmigration vorübergehend auf die Premium-Tarifebene hoch, um die Drosselung durch Azure SQL-Datenbank zu minimieren, die bei SKUs einer niedrigeren Ebene unter Umständen zu einer Beeinträchtigung der Datenübertragungsaktivitäten führt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

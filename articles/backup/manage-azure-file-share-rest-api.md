@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie die REST-API verwenden, um Azure-Dateifreigab
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.openlocfilehash: 9d29b226aff568c91de8e1f19ddc0c64f8169e4d
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77444915"
 ---
 # <a name="manage-azure-file-share-backup-with-rest-api"></a>Verwalten der Sicherungen von Azure-Dateifreigaben mit der REST-API

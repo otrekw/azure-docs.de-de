@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/9/2019
-ms.openlocfilehash: ba091d05aa243fab08138c96827d2f657d9755de
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 3/18/2020
+ms.openlocfilehash: 243530b4badb9b19d288a91f247eefbcf622fb87
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976297"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536410"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Konfigurieren von Serverparametern in Azure Database for MariaDB über das Azure-Portal
 
@@ -40,13 +40,13 @@ Die Liste der unterstützten Serverparameter wächst ständig. Verwenden Sie die
 |**Tarif**| **vCore(s)**|**InnoDB-Pufferpool (MB)**|
 |---|---|---|
 |Basic| 1| 1024|
-|Basic| 2| 2\.560|
-|Allgemeiner Zweck| 2| 3\.584|
-|Allgemeiner Zweck| 4| 7\.680|
-|Allgemeiner Zweck| 8| 15360|
-|Allgemeiner Zweck| 16| 31.232|
-|Allgemeiner Zweck| 32| 62.976|
-|Allgemeiner Zweck| 64| 125952|
+|Basic| 2| 2560|
+|Universell| 2| 3\.584|
+|Universell| 4| 7680|
+|Universell| 8| 15360|
+|Universell| 16| 31.232|
+|Universell| 32| 62.976|
+|Universell| 64| 125952|
 |Arbeitsspeicheroptimiert| 2| 7168|
 |Arbeitsspeicheroptimiert| 4| 15360|
 |Arbeitsspeicheroptimiert| 8| 30720|
@@ -78,7 +78,7 @@ CALL mysql.az_load_timezone();
 ```
 
 > [!IMPORTANT]
-> Sie sollten den Server neu starten, um sicherzustellen, dass die Zeitzonentabellen ordnungsgemäß aufgefüllt werden. Um den Server neu zu starten, verwenden Sie das [Azure-Portal](howto-restart-server-portal.md) oder die [Befehlszeilenschnittstelle (CLI)](howto-restart-server-cli.md).
+> Sie sollten den Server neu starten, um sicherzustellen, dass die Zeitzonentabellen ordnungsgemäß aufgefüllt werden. Um den Server neu zu starten, verwenden Sie das [Azure-Portal](howto-restart-server-portal.md) oder die [Befehlszeilenschnittstelle](howto-restart-server-cli.md).
 Um die verfügbaren Zeitzonenwerte anzuzeigen, führen Sie den folgenden Befehl aus:
 
 ```sql

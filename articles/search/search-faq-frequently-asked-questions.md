@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: fee74cb6ec5acd5fa0f171eab9769a833f04ad66
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72792909"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Kognitive Azure-Suche – Häufig gestellte Fragen (FAQ)
@@ -63,7 +63,7 @@ Um einen Index neu zu erstellen, müssen Sie Daten aus externen Quellen neu indi
 
 Alternativ können Sie den **index-backup-restore**-Beispielcode in diesem [.NET-Beispielrepository für die kognitive Azure-Suche](https://github.com/Azure-Samples/azure-search-dotnet-samples) verwenden, um eine Indexdefinition und die Indexmomentaufnahme in einer Reihe von JSON-Dateien zu sichern. Später können Sie das Tool und die Dateien bei Bedarf verwenden, um den Index wiederherzustellen.  
 
-### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexershttpsdocsmicrosoftcomazuresearchsearch-howto-connecting-azure-sql-database-to-azure-search-using-indexers"></a>Kann ich die Indizierung von SQL-Datenbankreplikaten aus durchführen (gilt für [Azure SQL-Datenbank-Indexer](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers))?
+### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexers"></a>Kann ich die Indizierung von SQL-Datenbankreplikaten aus durchführen (gilt für [Azure SQL-Datenbank-Indexer](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers))?
 
 Es gelten keine Einschränkungen für die Verwendung von primären oder sekundären Replikaten als Datenquelle, wenn Sie einen Index völlig neu erstellen. Wenn Sie einen Index mit inkrementellen Updates (basierend auf geänderten Datensätzen) aktualisieren, wird aber das primäre Replikat benötigt. Diese Anforderung stammt aus SQL-Datenbank und garantiert die ausschließliche Änderungsnachverfolgung für primäre Replikate. Wenn Sie versuchen, sekundäre Replikate für eine Workload zur Indexaktualisierung zu verwenden, ist nicht garantiert, dass Sie alle Daten erhalten.
 
@@ -106,5 +106,5 @@ Haben Sie eine Frage zu einem fehlenden Feature bzw. einer fehlenden Funktion? F
 ## <a name="see-also"></a>Weitere Informationen
 
  [StackOverflow: Kognitive Azure-Suche](https://stackoverflow.com/questions/tagged/azure-search)   
- [Funktionsweise der Volltextsuche in der kognitiven Azure-Suche](search-lucene-query-architecture.md)  
- [Was ist die kognitive Azure-Suche?](search-what-is-azure-search.md)
+ [Funktionsweise der Volltextsuche in Azure Cognitive Search](search-lucene-query-architecture.md)  
+ [Was ist Azure Cognitive Search?](search-what-is-azure-search.md)

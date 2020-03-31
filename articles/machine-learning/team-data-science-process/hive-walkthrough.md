@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 005d4fe1b6ec59e7f05be3dd2ab3e72d0e7aa8e0
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720570"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236990"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern
 In dieser exemplarischen Vorgehensweise wird der [Team Data Science-Prozess (TDSP)](overview.md) in einem durchgängigen Szenario verwendet. Es wird ein [Azure HDInsight Hadoop-Cluster](https://azure.microsoft.com/services/hdinsight/) verwendet, um Daten aus dem öffentlich zugänglichen [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/)-Dataset zu speichern, zu untersuchen und merkmalbezogen zu analysieren sowie ein Downsampling auf die Daten anzuwenden. Um eine binäre Klassifizierung und eine Multiklassenklassifizierung sowie Regressionsvorhersageaufgaben durchzuführen, werden Modelle der Daten mit Azure Machine Learning entwickelt. 
@@ -25,7 +25,7 @@ Eine exemplarische Vorgehensweise zur Handhabung eines größeren Datasets finde
 
 Die in dieser exemplarischen Vorgehensweise mit dem 1-TB-Dataset vorgestellten Aufgaben können Sie auch mit einem IPython-Notebook umsetzen. Weitere Informationen finden Sie unter [Criteo-Vorgehensweise bei Verwendung einer Hive ODBC-Verbindung](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb).
 
-## <a name="dataset"></a>Beschreibung des „NYC Taxi Trips“-Datasets
+## <a name="nyc-taxi-trips-dataset-description"></a><a name="dataset"></a>Beschreibung des „NYC Taxi Trips“-Datasets
 Die „NYC Taxi Trips“-Daten bestehen aus ca. 20 GB an komprimierten CSV-Dateien (~48 GB unkomprimiert). Sie umfassen mehr als 173 Millionen einzelne Fahrten mit den für jede Fahrt gezahlten Fahrtkosten. Jeder Fahrtendatensatz enthält den Start- und Zielort mit der Uhrzeit, die anonymisierte Lizenznummer des Fahrers („Hack“) und die eindeutige ID des Taxis („Medallion“). Die Daten umfassen alle Fahrten im Jahr 2013. Sie werden für jeden Monat in den folgenden beiden Datasets bereitgestellt:
 
 - Die CSV-Dateien des Typs „trip_data“ enthalten Fahrtendetails: die Anzahl der Fahrgäste, Start- und Zielort, Fahrtdauer und Fahrtlänge. Es folgen einige Beispieleinträge:
@@ -47,7 +47,7 @@ Die „NYC Taxi Trips“-Daten bestehen aus ca. 20 GB an komprimierten CSV-Datei
 
 Der eindeutige Schlüssel für die Zusammenführung von „trip\_data“ und „trip\_fare“ besteht aus den Feldern: „medallion“, „hack\_licence“ und „pickup\_datetime“. Um alle relevanten Details zu einer bestimmten Fahrt abzurufen, reicht eine Zusammenführung mit diesen drei Schlüsseln.
 
-## <a name="mltasks"></a>Beispiele für Vorhersageaufgaben
+## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>Beispiele für Vorhersageaufgaben
 Legen Sie die Art der Vorhersagen fest, die Sie anhand von Datenanalysen vornehmen möchten, um die erforderlichen Aufgaben des Verfahrens klarzustellen. Hier sehen Sie drei Beispiele für Vorhersageprobleme, die in dieser exemplarischen Vorgehensweise behandelt werden. Alle basieren auf *tip\_amount*:
 
 - **Binäre Klassifizierung**: Vorhersage, ob ein Trinkgeld für eine Fahrt bezahlt wurde. Das heißt, ein *tip\_amount* größer als 0 $ ist ein positives Beispiel, während ein *tip\_amount* von 0 $ ein negatives Beispiel ist.
@@ -63,7 +63,7 @@ Legen Sie die Art der Vorhersagen fest, die Sie anhand von Datenanalysen vornehm
         Class 4: tip_amount > $20
 - **Regressionsaufgabe**: Vorhersage des Trinkgeldbetrags für die Fahrt.  
 
-## <a name="setup"></a>Einrichten eines HDInsight Hadoop-Clusters für die erweiterte Analyse
+## <a name="set-up-an-hdinsight-hadoop-cluster-for-advanced-analytics"></a><a name="setup"></a>Einrichten eines HDInsight Hadoop-Clusters für die erweiterte Analyse
 > [!NOTE]
 > Diese Aufgabe wird typischerweise von einem Administrator ausgeführt.
 > 
@@ -78,7 +78,7 @@ Sie können in drei Schritten eine Azure-Umgebung für die erweiterte Analyse ei
    * Sie müssen nach dem Erstellen den Remotezugriff auf den Hauptknoten des Clusters aktivieren. Navigieren Sie zur Registerkarte **Konfiguration**, und wählen Sie **Remote aktivieren** aus. Mit diesem Schritt werden die Benutzeranmeldeinformationen für die Remoteanmeldung angegeben.
 3. [Erstellen eines Azure Machine Learning-Arbeitsbereichs](../studio/create-workspace.md): Sie verwenden diesen Arbeitsbereich zum Erstellen von Machine Learning-Modellen. Diese Aufgabe wird ausgeführt, nachdem Sie mit dem HDInsight-Cluster eine anfängliche Datenuntersuchung und ein Downsampling durchgeführt haben.
 
-## <a name="getdata"></a>Abrufen der Daten aus der öffentlichen Quelle
+## <a name="get-the-data-from-a-public-source"></a><a name="getdata"></a>Abrufen der Daten aus der öffentlichen Quelle
 > [!NOTE]
 > Diese Aufgabe wird typischerweise von einem Administrator ausgeführt.
 > 
@@ -94,7 +94,7 @@ Nachfolgend wird erläutert, wie Sie AzCopy zum Übertragen der Dateien verwende
 
 1. Nach Abschluss des Kopiervorgangs sehen Sie insgesamt 24 gezippte Dateien im ausgewählten Datenordner. Entzippen Sie die heruntergeladenen Dateien in dasselbe Verzeichnis auf Ihrem lokalen Computer. Notieren Sie sich den Ordner mit den extrahierten Dateien. Sie verweisen nachfolgend mit *\<path\_to\_unzipped_data\_files\>* auf diesen Ordner.
 
-## <a name="upload"></a>Hochladen der Daten in den Standardcontainer des HDInsight Hadoop-Clusters
+## <a name="upload-the-data-to-the-default-container-of-the-hdinsight-hadoop-cluster"></a><a name="upload"></a>Hochladen der Daten in den Standardcontainer des HDInsight Hadoop-Clusters
 > [!NOTE]
 > Diese Aufgabe wird typischerweise von einem Administrator ausgeführt.
 > 
@@ -119,7 +119,7 @@ Dieser Befehl lädt die Fahrpreisdaten in das Verzeichnis ***nyctaxifareraw*** i
 
 Die Daten sollten jetzt im Blobspeicher vorliegen und zur Verarbeitung im HDInsight-Cluster genutzt werden können.
 
-## <a name="#download-hql-files"></a>Anmelden beim Hauptknoten des Hadoop-Clusters und Vorbereiten einer explorativen Datenanalyse
+## <a name="sign-in-to-the-head-node-of-hadoop-cluster-and-prepare-for-exploratory-data-analysis"></a><a name="#download-hql-files"></a>Anmelden beim Hauptknoten des Hadoop-Clusters und Vorbereiten einer explorativen Datenanalyse
 > [!NOTE]
 > Diese Aufgabe wird typischerweise von einem Administrator ausgeführt.
 > 
@@ -137,7 +137,7 @@ Um den Cluster auf die explorative Datenanalyse vorzubereiten, laden Sie die HQL
 
 Mit diesen beiden Befehlen werden alle für diese exemplarische Vorgehensweise benötigten HQL-Dateien in das lokale Verzeichnis ***C:\temp&#92;*** auf dem Hauptknoten heruntergeladen.
 
-## <a name="#hive-db-tables"></a>Erstellen von Hive-Datenbank und Tabellen partitioniert nach Monat
+## <a name="create-hive-database-and-tables-partitioned-by-month"></a><a name="#hive-db-tables"></a>Erstellen von Hive-Datenbank und Tabellen partitioniert nach Monat
 > [!NOTE]
 > Diese Aufgabe wird normalerweise durch einen Administrator ausgeführt.
 > 
@@ -205,7 +205,7 @@ Dieses Hive-Skript erstellt zwei Tabellen:
 
 Wenn Sie weitere Hilfe bei diesen Verfahren benötigen oder alternative Verfahren untersuchen möchten, lesen Sie den Abschnitt [Übermitteln der Hive-Abfragen direkt an der Hadoop-Befehlszeile](move-hive-tables.md#submit).
 
-## <a name="#load-data"></a>Laden von Daten in Hive-Tabellen nach Partitionen
+## <a name="load-data-to-hive-tables-by-partitions"></a><a name="#load-data"></a>Laden von Daten in Hive-Tabellen nach Partitionen
 > [!NOTE]
 > Diese Aufgabe wird normalerweise durch einen Administrator ausgeführt.
 > 
@@ -222,12 +222,12 @@ Die Datei **sample\_hive\_load\_data\_by\_partitions.hql** enthält die folgende
 
 Für einige der in der Untersuchung verwendeten Hive-Abfragen müssen nur eine oder zwei Partitionen betrachtet werden. Diese Abfragen können jedoch auch über das gesamte Dataset ausgeführt werden.
 
-### <a name="#show-db"></a>Anzeigen von Datenbanken im HDInsight Hadoop-Cluster
+### <a name="show-databases-in-the-hdinsight-hadoop-cluster"></a><a name="#show-db"></a>Anzeigen von Datenbanken im HDInsight Hadoop-Cluster
 Um die in HDInsight Hadoop-Clustern erstellten Datenbanken im Hadoop-Befehlszeilenfenster anzuzeigen, führen Sie den folgenden Befehl über die Hadoop-Befehlszeile aus:
 
     hive -e "show databases;"
 
-### <a name="#show-tables"></a>Anzeigen der Hive-Tabellen in der Datenbank **nyctaxidb**
+### <a name="show-the-hive-tables-in-the-nyctaxidb-database"></a><a name="#show-tables"></a>Anzeigen der Hive-Tabellen in der Datenbank **nyctaxidb**
 Führen Sie zum Anzeigen der Tabellen in der Datenbank **nyctaxidb** folgenden Befehl über die Hadoop-Befehlszeile aus:
 
     hive -e "show tables in nyctaxidb;"
@@ -272,7 +272,7 @@ So sieht die erwartete Ausgabe aus:
     month=9
     Time taken: 1.887 seconds, Fetched: 12 row(s)
 
-## <a name="#explore-hive"></a>Untersuchen von Daten und Entwickeln von Features in Hive
+## <a name="data-exploration-and-feature-engineering-in-hive"></a><a name="#explore-hive"></a>Untersuchen von Daten und Entwickeln von Features in Hive
 > [!NOTE]
 > Diese Aufgabe wird typischerweise von einem Data Scientist ausgeführt.
 > 
@@ -565,7 +565,7 @@ Um die Inhalte einer bestimmten Datei anzuzeigen, beispielsweise **000000\_0**, 
 
 Das Speichern dieser Daten in einem Azure-Blob hat den Vorteil, dass die Daten in Machine Learning mit dem [Import Data][import-data]-Modul untersucht werden können.
 
-## <a name="#downsample"></a>Downsampling von Daten und Entwickeln von Modellen in Machine Learning
+## <a name="down-sample-data-and-build-models-in-machine-learning"></a><a name="#downsample"></a>Downsampling von Daten und Entwickeln von Modellen in Machine Learning
 > [!NOTE]
 > Diese Aufgabe wird typischerweise von einem Data Scientist ausgeführt.
 > 
@@ -754,7 +754,7 @@ Da sich die Daten, für die ein Downsampling durchgeführt wurde, in dem Standar
 
 Das Dataset kann jetzt als Startpunkt für die Entwicklung von Machine Learning-Modellen verwendet werden.
 
-### <a name="mlmodel"></a>Entwickeln von Modellen in Machine Learning
+### <a name="build-models-in-machine-learning"></a><a name="mlmodel"></a>Entwickeln von Modellen in Machine Learning
 Sie können nun mit der Modellentwicklung und -bereitstellung in [Machine Learning](https://studio.azureml.net) fortfahren. Die Daten sind jetzt für die zuvor festgelegten Vorhersageprobleme vorbereitet:
 
 - **Binäre Klassifizierung**: Vorhersage, ob Trinkgeld für eine Fahrt bezahlt wurde.

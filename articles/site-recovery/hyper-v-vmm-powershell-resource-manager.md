@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: deef7bfdbc28d744cb81da59d3ffc13a1abee54d
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77048612"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>Einrichten der Notfallwiederherstellung von Hyper-V-VMs in einen sekundären Standort mithilfe von PowerShell (Resource Manager)
@@ -256,7 +256,7 @@ Nach der korrekten Konfiguration der Server, Clouds und Netzwerke aktivieren Sie
    ```
 
 > [!NOTE]
-> Führen Sie die folgenden Schritte mithilfe von Az PowerShell 3.3.0 oder höher aus, wenn Sie Replikation auf CMK-aktivierte verwaltete Datenträger in Azure durchführen möchten:
+> Führen Sie die folgenden Schritte mithilfe von Az PowerShell 3.3.0 oder höher aus, wenn Sie die Replikation auf einem CMK-aktivierten verwalteten Datenträger in Azure durchführen möchten:
 >
 > 1. Aktivieren des Failovers auf verwaltete Datenträger durch Aktualisieren von VM-Eigenschaften
 > 1. Verwenden des Cmdlets `Get-AzRecoveryServicesAsrReplicationProtectedItem` zum Abrufen der Datenträger-ID für jeden Datenträger des geschützten Elements
