@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
 ms.openlocfilehash: 9780cf88070110c4efc13c477d65307aa3985fe5
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75751332"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Problembehandlung für automatische Skalierung in Azure
@@ -29,7 +29,7 @@ Die automatische Skalierung bietet Ihnen [vier Metriken](metrics-supported.md#mi
 - **Beobachteter Metrikwert**: Der Wert der Metrik, für welche die Skalierungsaktion ausgeführt werden soll, entsprechend der Anzeige oder berechnet durch das Autoskalierungsmodul. Da eine einzelne Autoskalierungseinstellung über mehrere Regeln und damit mehrere Metrikquellen verfügen kann, können Sie nach der Dimension „Metrikquelle“ filtern.
 - **Metrikschwellenwert**: Der Schwellenwert, den Sie für die Ausführung der Skalierungsaktion festlegen. Da eine einzelne Autoskalierungseinstellung über mehrere Regeln und damit mehrere Metrikquellen verfügen kann, können Sie nach der Dimension „Metrikregel“ filtern.
 - **Beobachtete Kapazität**: Die aktive Anzahl von Instanzen der Zielressource, die vom Autoskalierungsmodul festgestellt wurde.
-- **Initiierte Skalierungsaktionen**: Die Anzahl der vom Autoskalierungsmodul initiierten Aktionen zum horizontalen Hoch- und Herunterskalieren. Sie können nach Aktionen zum horizontalen Hochskalieren und Herunterskalieren filtern.
+- **Initiierte Skalierungsaktionen**: Die Anzahl der vom Autoskalierungsmodul initiierten Aktionen zum horizontalen Hoch- und Herunterskalieren. Sie können nach Aktionen zum Aufskalieren und Abskalieren filtern.
 
 Mit dem [Metrik-Explorer](metrics-getting-started.md) können Sie die obigen Metriken an einem Ort grafisch darstellen. Das Diagramm sollte Folgendes angezeigt werden:
 
@@ -60,15 +60,15 @@ Betrachten wir nun die Metriken aus dem Autoskalierungsdienst.
 In Abbildung 1b ist der **Schwellenwert der Metrik** (hellblaue Linie) für die Regel für die horizontale Skalierung gleich 70.  Die **Beobachtete Kapazität** (dunkelblaue Linie) zeigt die Anzahl der aktiven Instanzen; derzeit sind drei Instanzen aktiv. 
 
 > [!NOTE]
-> Sie müssen den **Schwellenwert der Metrik** anhand der Regel für horizontales Hochskalieren (Vergrößern) der Metriktriggerregel-Dimension filtern, um den Schwellenwert für horizontale Skalierung anzuzeigen, sowie anhand der Regel für horizontales Herunterskalieren (Verringern). 
+> Sie müssen den **Schwellenwert der Metrik** anhand der Regel für das Aufskalieren (Vergrößern) der Metriktriggerregel-Dimension filtern, um den Schwellenwert für Aufskalierung anzuzeigen, sowie anhand der Regel für das Abskalieren (Verringern). 
 
 ## <a name="example-2---advanced-autoscaling-for-a-virtual-machine-scale-set"></a>Beispiel 2: Erweiterte automatische Skalierung für eine VM-Skalierungsgruppe
 
-Es gibt eine Einstellung, die das horizontale Hochskalieren der Ressource einer VM-Skalierungsgruppe anhand ihrer eigenen Metrik **Ausgehende Datenflüsse** ermöglicht. Sie stellen fest, dass die Option **divide metric by instance count** (Metrik durch Anzahl der Instanzen dividieren) für den Metrikschwellenwert aktiviert ist. 
+Es gibt eine Einstellung, die das Aufskalieren der Ressource einer VM-Skalierungsgruppe anhand ihrer eigenen Metrik **Ausgehende Datenflüsse** ermöglicht. Sie stellen fest, dass die Option **divide metric by instance count** (Metrik durch Anzahl der Instanzen dividieren) für den Metrikschwellenwert aktiviert ist. 
 
 Regel für die Skalierungsaktion: 
 
-Wenn der Wert von **Outbound Flow per instance** (Ausgehender Datenfluss pro Instanz) größer als 10 ist, führt der Autoskalierungsdienst eine horizontale Hochskalierung um 1 Instanz durch. 
+Wenn der Wert von **Outbound Flow per instance** (Ausgehender Datenfluss pro Instanz) größer als 10 ist, führt der Autoskalierungsdienst eine Aufskalierung um 1 Instanz durch. 
 
 In diesem Fall wird der beobachtete Metrikwert des Autoskalierungsmoduls berechnet, indem der tatsächliche Metrikwert durch die Anzahl der Instanzen dividiert wird. Wenn der beobachtete Metrikwert kleiner als der Schwellenwert ist, wird keine Aktion zum horizontalen Hochskalieren initiiert. 
  

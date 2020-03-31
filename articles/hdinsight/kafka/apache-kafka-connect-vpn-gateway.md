@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
 ms.openlocfilehash: 36ff0d5f1fc96b2013555d37a869ebf629a22be7
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78302133"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233514"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Herstellen einer Verbindung mit Apache Kafka in HDInsight über ein virtuelles Azure-Netzwerk
 
@@ -58,7 +58,7 @@ HDInsight erlaubt keine direkten Verbindungen zu Kafka über das öffentliche In
 
 Weitere Informationen zur Verwendung von HDInsight in einem virtuellen Netzwerk finden Sie im Dokument [Plan a virtual network for Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md) (Planen eines virtuellen Netzwerks für Azure HDInsight).
 
-## <a id="on-premises"></a> Herstellen einer Verbindung mit Apache Kafka aus einem lokalen Netzwerk
+## <a name="connect-to-apache-kafka-from-an-on-premises-network"></a><a id="on-premises"></a> Herstellen einer Verbindung mit Apache Kafka aus einem lokalen Netzwerk
 
 Um ein Kafka-Cluster zu erstellen, das mit Ihrem lokalen Netzwerk kommuniziert, führen Sie die Schritte im Dokument [Connect HDInsight to your on-premises network (Verbinden von HDInsight mit Ihrem lokalen Netzwerk)](./../connect-on-premises-network.md).
 
@@ -74,7 +74,7 @@ Mit diesen Schritten erstellen Sie die folgende Konfiguration:
 
 Um sicherzustellen, dass ein Kafka-Client eine Verbindung von einem lokalen Standort zu einem Cluster herstellen kann, verwenden Sie die Schritte im Abschnitt [Beispiel: Python-Client](#python-client).
 
-## <a id="vpnclient"></a> Herstellen einer Verbindung mit Apache Kafka über einen VPN-Client
+## <a name="connect-to-apache-kafka-with-a-vpn-client"></a><a id="vpnclient"></a> Herstellen einer Verbindung mit Apache Kafka über einen VPN-Client
 
 Führen Sie die Schritte in diesem Abschnitt aus, um die folgende Konfiguration zu erstellen:
 
@@ -254,7 +254,7 @@ Standardmäßig gibt Apache ZooKeeper den Domänennamen der Kafka-Broker an Clie
 
     ![Apache Ambari – Dienstkonfiguration](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
-4. Geben Sie zum Suchen der Konfiguration __kafka-env__ oben rechts in das Feld __Filter__ die Zeichenfolge `kafka-env` ein.
+4. Geben Sie zum Suchen der Konfiguration __kafka-env__ oben rechts in das Feld `kafka-env`Filter__die Zeichenfolge__ ein.
 
     ![Kafka-Konfiguration für kafka-env](./media/apache-kafka-connect-vpn-gateway/search-for-kafka-env.png)
 
@@ -268,7 +268,7 @@ Standardmäßig gibt Apache ZooKeeper den Domänennamen der Kafka-Broker an Clie
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. Geben Sie zum Konfigurieren der Schnittstelle, an der Kafka lauscht, oben rechts in das Feld __Filter__ die Zeichenfolge `listeners` ein.
+6. Geben Sie zum Konfigurieren der Schnittstelle, an der Kafka lauscht, oben rechts in das Feld `listeners`Filter__die Zeichenfolge__ ein.
 
 7. Um Kafka zum Lauschen an allen Netzwerkschnittstellen zu konfigurieren, ändern Sie den Wert im Feld __Listener__ in `PLAINTEXT://0.0.0.0:9092`.
 
@@ -290,7 +290,7 @@ Standardmäßig gibt Apache ZooKeeper den Domänennamen der Kafka-Broker an Clie
 
 Verwenden Sie zum Herstellen einer Verbindung mit dem VPN-Gateway den Abschnitt __Herstellen einer Verbindung mit Azure__ im Dokument [Konfigurieren einer Point-to-Site-Verbindung](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect).
 
-## <a id="python-client"></a> Beispiel: Python-Client
+## <a name="example-python-client"></a><a id="python-client"></a> Beispiel: Python-Client
 
 Um die Konnektivität mit Kafka zu überprüfen, führen Sie die folgenden Schritte aus, um einen Python-Producer und -Consumer zu erstellen und auszuführen:
 

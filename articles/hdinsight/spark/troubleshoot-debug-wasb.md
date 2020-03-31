@@ -1,6 +1,6 @@
 ---
 title: Debuggen von WASB-Dateivorgängen in Azure HDInsight
-description: Dieser Artikel beschreibt Problembehandlungsschritte und mögliche Lösungen für Probleme bei der Interaktion mit Azure HDInsight-Clustern.
+description: Beschreibt die Schritte zur Problembehandlung und mögliche Lösungen für Probleme bei der Interaktion mit Azure HDInsight-Clustern.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/18/2020
 ms.openlocfilehash: f1707c7f8d6324678c8bf5a470bbded1e58c719e
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77470716"
 ---
 # <a name="debug-wasb-file-operations-in-azure-hdinsight"></a>Debuggen von WASB-Dateivorgängen in Azure HDInsight

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
 ms.openlocfilehash: 56c20c995a95058b5039b7268c7b7b1426e900fa
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442977"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224982"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Verwalten von Azure Blob Storage-Ressourcen mit dem Storage-Explorer
 
@@ -83,7 +83,7 @@ Die folgenden Schritte veranschaulichen, wie Sie einen Blobcontainer im Storage-
    Sie können auch die **ENTF-TASTE** drücken, um den derzeit ausgewählten Blobcontainer zu löschen.
 
    ![Kontextmenü „Delete blob Container“ (Blobcontainer löschen)][4]
-5. Wählen Sie im Bestätigungsdialogfeld die Option **Ja**.
+5. Wählen Sie im Bestätigungsdialogfeld die Option **Ja** .
 
    ![Bestätigung „Delete blob Container“ (Blobcontainer löschen)][5]
 
@@ -121,7 +121,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine SAS für einen Blobcontain
    ![SAS abrufen – Optionen][9]
 6. Wählen Sie **Erstellen**, wenn Sie das Angeben der SAS-Optionen abgeschlossen haben.
 7. In einem zweiten Dialogfeld **Shared Access Signature** wird dann der Blobcontainer zusammen mit der URL und den Abfragezeichenfolgen angezeigt, die Sie zum Zugreifen auf die Speicherressource verwenden können.
-   Wählen Sie neben der URL, die Sie in die Zwischenablage kopieren möchten, die Option **Kopieren**.
+   Wählen Sie neben der URL, die Sie in die Zwischenablage kopieren möchten, die Option **Kopieren** .
 
    ![SAS-URLs kopieren][10]
 8. Wählen Sie abschließend die Option **Schließen**.
@@ -205,7 +205,7 @@ Die folgenden Schritte veranschaulichen, wie Sie die Blobs (und Ordner) in einem
      1. Wählen Sie das Blob aus, das Sie herunterladen möchten.
      2. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Herunterladen**.
      3. Geben Sie im Dialogfeld **Specify where to save the downloaded blob** (Downloadspeicherort für Blob angeben) den Speicherort, an den das Blob heruntergeladen werden soll, und den Namen dafür an.  
-     4. Wählen Sie **Speichern**aus.
+     4. Wählen Sie **Speichern** aus.
    * **Öffnen eines Blobs auf dem lokalen Computer**
 
      1. Wählen Sie das Blob aus, das Sie öffnen möchten.
@@ -221,7 +221,7 @@ Die folgenden Schritte veranschaulichen, wie Sie die Blobs (und Ordner) in einem
 
      1. Wählen Sie das Blob aus, das Sie löschen möchten.
      2. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Löschen**.
-     3. Wählen Sie im Bestätigungsdialogfeld die Option **Ja**.
+     3. Wählen Sie im Bestätigungsdialogfeld die Option **Ja** .
 
 ## <a name="next-steps"></a>Nächste Schritte
 

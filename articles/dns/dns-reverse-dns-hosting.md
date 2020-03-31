@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
-ms.openlocfilehash: 97390ab3dbaeff4d6c8cc6648692efd62fc121df
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 78fc3428274be5e1998abe9189bea996f15e278c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932509"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454260"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Hosten von Reverse-DNS-Lookupzonen in Azure DNS
 
@@ -40,7 +40,7 @@ In diesem Artikel werden die Schritte zum Erstellen Ihrer ersten Reverse-Lookup-
 Der Name einer IPv4-Reverse-Lookupzone basiert auf dem IP-Adressbereich, den sie darstellt. Er sollte das folgende Format aufweisen: `<IPv4 network prefix in reverse order>.in-addr.arpa`. Beispiele finden Sie in der [Übersicht über Reverse-DNS und die Unterstützung in Azure](dns-reverse-dns-overview.md#ipv4).
 
 > [!NOTE]
-> Beim Erstellen von klassenlosen Reverse-DNS-Lookupzonen in Azure DNS muss im Zonennamen anstelle eines Schrägstrichs (`/`) ein Bindestrich (`-`) verwendet werden.
+> Beim Erstellen von klassenlosen Reverse-DNS-Lookupzonen in Azure DNS muss im Zonennamen anstelle eines Schrägstrichs (`-`) ein Bindestrich (`/`) verwendet werden.
 >
 > Beispiel: Für den IP-Adressbereich 192.0.2.128/26 müssen Sie `128-26.2.0.192.in-addr.arpa` als Zonennamen verwenden, nicht `128/26.2.0.192.in-addr.arpa`.
 >
@@ -144,7 +144,7 @@ azure network dns record-set add-record MyResourceGroup 2.0.192.in-addr.arpa 15 
 #### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 ```azurecli
-    az network dns record-set ptr add-record -g MyResourceGroup -z 2.0.192.in-addr.arpa -n 15 --ptrdname dc1.contoso.com
+az network dns record-set ptr add-record -g MyResourceGroup -z 2.0.192.in-addr.arpa -n 15 --ptrdname dc1.contoso.com
 ```
 
 ### <a name="ipv6"></a>IPv6
@@ -174,14 +174,14 @@ New-AzDnsRecordSet -Name "e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f" -RecordType PTR -Zone
 
 #### <a name="azure-classic-cli"></a>Klassische Azure-Befehlszeilenschnittstelle
 
-```
+```azurecli
 azure network dns record-set add-record MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f PTR --ptrdname dc2.contoso.com 
 ```
  
 #### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 ```azurecli
-    az network dns record-set ptr add-record -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -n e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f --ptrdname dc2.contoso.com
+az network dns record-set ptr add-record -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -n e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f --ptrdname dc2.contoso.com
 ```
 
 ## <a name="view-records"></a>Anzeigen von Datensätzen
@@ -205,13 +205,13 @@ Get-AzDnsRecordSet -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName MyResourceG
 #### <a name="azure-classic-cli"></a>Klassische Azure-Befehlszeilenschnittstelle
 
 ```azurecli
-    azure network dns record-set list MyResourceGroup 2.0.192.in-addr.arpa
+azure network dns record-set list MyResourceGroup 2.0.192.in-addr.arpa
 ```
 
 #### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 ```azurecli
-    azure network dns record-set list -g MyResourceGroup -z 2.0.192.in-addr.arpa
+az network dns record-set list -g MyResourceGroup -z 2.0.192.in-addr.arpa
 ```
 
 ### <a name="ipv6"></a>IPv6
@@ -231,13 +231,13 @@ Get-AzDnsRecordSet -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceG
 #### <a name="azure-classic-cli"></a>Klassische Azure-Befehlszeilenschnittstelle
 
 ```azurecli
-    azure network dns record-set list MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
+azure network dns record-set list MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
 #### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 ```azurecli
-    azure network dns record-set list -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
+az network dns record-set list -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
 ## <a name="faq"></a>Häufig gestellte Fragen

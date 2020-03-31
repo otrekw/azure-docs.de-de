@@ -9,17 +9,17 @@ ms.topic: troubleshooting
 ms.date: 09/30/2019
 ms.custom: seodec18
 ms.openlocfilehash: 6b0a81a2f3af10a1e5ad60c6c33357a6e906ee47
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75895249"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Problembehandlung für Apache Hadoop HDFS mit Azure HDInsight
 
 Lernen Sie die wichtigsten Probleme und ihre Lösungen bei der Arbeit mit HDFS-Nutzlasten (Hadoop Distributed File System) in Apache Ambari kennen. Eine vollständige Liste der Befehle finden Sie im [HDFS Commands Guide](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html) und im [File System Shell Guide](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html).
 
-## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Wie greife ich aus einem Cluster heraus auf das lokale HDFS zu?
+## <a name="how-do-i-access-the-local-hdfs-from-inside-a-cluster"></a><a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Wie greife ich aus einem Cluster heraus auf das lokale HDFS zu?
 
 ### <a name="issue"></a>Problem
 

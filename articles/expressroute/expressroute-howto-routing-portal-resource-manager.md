@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: mialdrid
 ms.openlocfilehash: 18d2db18e9880028c60b4b545c3628f4a9cb4703
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436971"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231258"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Erstellen und Ändern des Peerings für eine ExpressRoute-Verbindung
 
@@ -43,7 +43,7 @@ Diese Anweisungen gelten nur für Verbindungen, die über Service Provider erste
 > 
 > 
 
-## <a name="msft"></a>Microsoft-Peering
+## <a name="microsoft-peering"></a><a name="msft"></a>Microsoft-Peering
 
 Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Löschen der Microsoft-Peeringkonfiguration für eine ExpressRoute-Verbindung.
 
@@ -96,24 +96,24 @@ Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Lö
 
    ![Peeringstatus: Konfiguriert](./media/expressroute-howto-routing-portal-resource-manager/configured-m.png "Peeringstatus: Konfiguriert")]
 
-### <a name="getmsft"></a>So zeigen Sie die Details zum Microsoft-Peering an:
+### <a name="to-view-microsoft-peering-details"></a><a name="getmsft"></a>So zeigen Sie die Details zum Microsoft-Peering an:
 
 Sie können die Eigenschaften des Microsoft-Peerings anzeigen, indem Sie die Zeile für das Peering auswählen.
 
 [![Anzeigen der Eigenschaften des Microsoft-Peerings](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m.png "Eigenschaften anzeigen")](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m-lightbox.png#lightbox)
-### <a name="updatemsft"></a>So aktualisieren Sie die Konfiguration des Microsoft-Peerings:
+### <a name="to-update-microsoft-peering-configuration"></a><a name="updatemsft"></a>So aktualisieren Sie die Konfiguration des Microsoft-Peerings:
 
 Sie können die Zeile für das Peering auswählen, das Sie ändern möchten, und anschließend die Peeringeigenschaften ändern und die Änderungen speichern.
 
 ![Auswählen der Zeile für das Peering](./media/expressroute-howto-routing-portal-resource-manager/update-peering-m.png)
 
-### <a name="deletemsft"></a>So löschen Sie das Microsoft-Peering:
+### <a name="to-delete-microsoft-peering"></a><a name="deletemsft"></a>So löschen Sie das Microsoft-Peering:
 
 Die Peeringkonfiguration kann durch Klicken auf das Löschsymbol entfernt werden, wie in der folgenden Abbildung gezeigt:
 
 ![Löschen des Peerings](./media/expressroute-howto-routing-portal-resource-manager/delete-peering-m.png)
 
-## <a name="private"></a>Privates Azure-Peering:
+## <a name="azure-private-peering"></a><a name="private"></a>Privates Azure-Peering:
 
 Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Löschen der privaten Azure-Peeringkonfiguration für eine ExpressRoute-Verbindung.
 
@@ -149,19 +149,19 @@ Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Lö
 
    ![Speichern des privaten Peerings](./media/expressroute-howto-routing-portal-resource-manager/save-p.png)
 
-### <a name="getprivate"></a>So zeigen Sie Details zum privaten Azure-Peering an:
+### <a name="to-view-azure-private-peering-details"></a><a name="getprivate"></a>So zeigen Sie Details zum privaten Azure-Peering an:
 
 Sie können die Eigenschaften des privaten Azure-Peerings anzeigen, indem Sie das Peering auswählen.
 
 [![Anzeigen der Eigenschaften für das private Peering](./media/expressroute-howto-routing-portal-resource-manager/view-p.png "Anzeigen der Eigenschaften für das private Peering")](./media/expressroute-howto-routing-portal-resource-manager/view-p-lightbox.png#lightbox)
 
-### <a name="updateprivate"></a>So aktualisieren Sie die Konfiguration für privates Azure-Peering:
+### <a name="to-update-azure-private-peering-configuration"></a><a name="updateprivate"></a>So aktualisieren Sie die Konfiguration für privates Azure-Peering:
 
 Sie können die Zeile für das Peering auswählen und die Peeringeigenschaften ändern. Speichern Sie Ihre Änderungen nach dem Aktualisieren.
 
 ![Aktualisieren des privaten Peerings](./media/expressroute-howto-routing-portal-resource-manager/update-peering-p.png)
 
-### <a name="deleteprivate"></a>So löschen Sie ein privates Azure-Peering:
+### <a name="to-delete-azure-private-peering"></a><a name="deleteprivate"></a>So löschen Sie ein privates Azure-Peering:
 
 Die Peeringkonfiguration kann durch Auswählen des Löschsymbols entfernt werden, wie in der folgenden Abbildung gezeigt:
 

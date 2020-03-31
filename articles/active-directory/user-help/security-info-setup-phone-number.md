@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: e85be9140aabe5b66e63d3ccdd4a3ea907a1d6fc
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062403"
 ---
 # <a name="set-up-a-phone-number-as-your-verification-method"></a>Einrichten einer Telefonnummer als Überprüfungsmethode
@@ -29,9 +29,9 @@ Wenn Sie direkt nach der Anmeldung mit Ihrem Geschäfts-, Schul- oder Unikonto z
 > [!Note]
 > Für die Sicherheitsinformation werden Nebenstellen nicht unterstützt. Selbst bei der Angabe im richtigen Format (+1 4255551234X12345) werden Nebenstellen vor dem Anruf entfernt.
 >
-> Wird keine Telefonoption angezeigt, lässt Ihre Organisation unter Umständen die Nutzung dieser Option für die Überprüfung nicht zu. In diesem Fall müssen Sie eine andere Methode auswählen oder sich an den Helpdesk Ihrer Organisation wenden, um weitere Unterstützung zu erhalten.
+> Wenn keine Telefonoption angezeigt wird, ist es möglich, dass Ihre Organisation die Verwendung dieser Option für die Überprüfung nicht zulässt. In diesem Fall müssen Sie eine andere Methode auswählen oder sich an den Helpdesk Ihrer Organisation wenden, um weitere Unterstützung zu erhalten.
 
-## <a name="security-verification-versus-password-reset-authentication"></a>Authentifizierung mit Sicherheitsüberprüfung und Kennwortzurücksetzung im Vergleich
+## <a name="security-verification-versus-password-reset-authentication"></a>Authentifizierung mittels Sicherheitsüberprüfung und Kennwortzurücksetzung im Vergleich
 
 Sicherheitsinformationsmethoden werden sowohl für die zweistufige Sicherheitsüberprüfung als auch die Kennwortzurücksetzung verwendet. Es können jedoch nicht alle Methoden für beide Verfahren verwendet werden.
 

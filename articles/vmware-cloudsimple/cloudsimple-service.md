@@ -1,6 +1,6 @@
 ---
-title: 'Azure VMware Solutions (AVS): Dienst'
-description: Hier finden Sie eine Übersicht über den AVS-Dienst und die zugehörigen Konzepte.
+title: 'Azure VMware Solution by CloudSimple: Dienst'
+description: Bietet eine Übersicht über den CloudSimple-Dienst und die zugehörigen Konzepte.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,21 +8,21 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d09c8c34093e7d33122f934138ff9fdf4842508e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d128a248c2e6e1e2e35e3b633975ba081e77f028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024951"
 ---
-# <a name="avs-service-overview"></a>Übersicht über den AVS-Dienst
+# <a name="cloudsimple-service-overview"></a>Übersicht über den CloudSimple-Dienst
 
-Der AVS-Dienst ermöglicht es Ihnen, Azure VMware Solution by AVS zu nutzen Nach der Erstellung des Diensts können Sie Knoten erwerben, Knoten reservieren und private AVS-Clouds erstellen. Sie erstellen den AVS-Dienst in jeder Azure-Region hinzu, in der der AVS-Dienst verfügbar ist. Der Dienst definiert das Umkreisnetzwerk von Azure VMware Solution by AVS. Dieses Umkreisnetzwerk unterstützt unter anderem Dienste wie VPN und ExpressRoute sowie Internetkonnektivität mit Ihren privaten AVS-Clouds.
+Der CloudSimple-Dienst ermöglicht es Ihnen, Azure VMware Solution by CloudSimple zu nutzen.  Nach Erstellung des Diensts können Sie Knoten erwerben, Knoten reservieren und private Clouds erstellen.  Sie erstellen den CloudSimple-Dienst in jeder Azure-Region, in der der CloudSimple-Dienst verfügbar ist. Der Dienst definiert das Umkreisnetzwerk von Azure VMware Solution by CloudSimple. Dieses Umkreisnetzwerk unterstützt unter anderem Dienste wie VPN, ExpressRoute und Internetkonnektivität mit Ihren privaten Clouds.
 
 ## <a name="gateway-subnet"></a>Gatewaysubnetz
 
-Ein Gatewaysubnetz ist für jeden einzelnen AVS-Dienst erforderlich und für die Region spezifisch, in der es erstellt wird. Das Gatewaysubnetz wird beim Erstellen des Umkreisnetzwerks verwendet und erfordert einen CIDR-Block vom Typ „/28“. Der Adressraum des Gatewaysubnetzes muss eindeutig sein. Er darf sich nicht mit dem eines Netzwerks überschneiden, das mit der AVS-Umgebung kommuniziert. Zu den Netzwerken, die mit AVS kommunizieren, gehören unter anderem lokale Netzwerke und virtuelle Azure-Netzwerke. Ein Gatewaysubnetz kann nach der Erstellung nicht mehr gelöscht werden. Das Gatewaysubnetz wird entfernt, wenn der Dienst gelöscht wird.
+Ein Gatewaysubnetz ist für jeden CloudSimple-Dienst erforderlich und für die Region spezifisch, in der es erstellt wird. Das Gatewaysubnetz wird beim Erstellen des Umkreisnetzwerks verwendet und erfordert einen CIDR-Block vom Typ „/28“.  Der Adressraum des Gatewaysubnetzes muss eindeutig sein. Er darf sich nicht mit einem Netzwerk überschneiden, das mit der CloudSimple-Umgebung kommuniziert. Zu den Netzwerken, die mit CloudSimple kommunizieren, gehören unter anderem lokale Netzwerke und das virtuelle Azure-Netzwerk.  Ein Gatewaysubnetz kann nach der Erstellung nicht mehr gelöscht werden.  Das Gatewaysubnetz wird entfernt, wenn der Dienst gelöscht wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informieren Sie sich über das [Erstellen eines AVS-Diensts in Azure](quickstart-create-cloudsimple-service.md).
+* Informieren Sie sich über das [Erstellen eines CloudSimple-Diensts in Azure](quickstart-create-cloudsimple-service.md).

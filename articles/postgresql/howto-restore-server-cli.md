@@ -8,10 +8,10 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: f0ea24133d7b6acdc4b099ee21a8711a2d99095d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74775703"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Sichern und Wiederherstellen eines Servers in Azure Database for PostgreSQL (Einzelserver) mithilfe der Azure-Befehlszeilenschnittstelle
@@ -68,7 +68,7 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 Für den Befehl `az postgres server restore` sind folgende Parameter erforderlich:
 
-| Einstellung | Empfohlener Wert | BESCHREIBUNG  |
+| Einstellung | Vorgeschlagener Wert | BESCHREIBUNG  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Die Ressourcengruppe, in der sich der Quellserver befindet.  |
 | name | mydemoserver-restored | Der Name des neuen Servers, der durch den Befehl „restore“ erstellt wird. |
@@ -108,7 +108,7 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 
 Für den Befehl `az postgres server georestore` sind folgende Parameter erforderlich:
 
-| Einstellung | Empfohlener Wert | BESCHREIBUNG  |
+| Einstellung | Vorgeschlagener Wert | BESCHREIBUNG  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | Der Name der Ressourcengruppe, zu der der neue Server gehören soll.|
 |name | mydemoserver-georestored | Der Name des neuen Servers. |

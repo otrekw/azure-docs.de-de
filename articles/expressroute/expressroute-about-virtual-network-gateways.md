@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mialdrid
 ms.openlocfilehash: 58e75e4efecf390c4c1449b7ec59684554fa7516
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894376"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236374"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>Informationen zu ExpressRoute-Gateways für virtuelle Netzwerke
 
@@ -28,12 +28,12 @@ Beim Erstellen eines Gateways für virtuelle Netzwerke müssen mehrere Einstellu
 
 Ein virtuelles Netzwerk kann pro Gatewaytyp immer nur über ein einzelnes virtuelles Netzwerkgateway verfügen. So können Sie beispielsweise ein virtuelles Netzwerkgateway mit „-GatewayType Vpn“ und ein virtuelles Netzwerkgateway mit „-GatewayType ExpressRoute“ verwenden.
 
-## <a name="gwsku"></a>Gateway-SKUs
+## <a name="gateway-skus"></a><a name="gwsku"></a>Gateway-SKUs
 [!INCLUDE [expressroute-gwsku-include](../../includes/expressroute-gwsku-include.md)]
 
 Wenn Sie das Gateway auf eine leistungsfähigere Gateway-SKU aktualisieren möchten, können Sie in den meisten Fällen das PowerShell-Cmdlet „Resize-AzVirtualNetworkGateway“ verwenden. Mit diesem können Sie Upgrades von Standard- auf HighPerformance-SKUs durchführen. Für ein Upgrade auf die UltraPerformance-SKU müssen Sie jedoch das Gateway neu erstellen. Das Neuerstellen eines Gateways führt zu Ausfällen.
 
-### <a name="aggthroughput"></a>Geschätzte Leistungen nach Gateway-SKU
+### <a name="estimated-performances-by-gateway-sku"></a><a name="aggthroughput"></a>Geschätzte Leistungen nach Gateway-SKU
 In der folgenden Tabelle sind die Gatewaytypen und die geschätzten Leistungen angegeben. Diese Tabelle betrifft sowohl das Resource Manager-Bereitstellungsmodell als auch das klassische Bereitstellungsmodell.
 
 [!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
@@ -43,7 +43,7 @@ In der folgenden Tabelle sind die Gatewaytypen und die geschätzten Leistungen a
 >
 >
 
-## <a name="gwsub"></a>Gatewaysubnetz
+## <a name="gateway-subnet"></a><a name="gwsub"></a>Gatewaysubnetz
 
 Bevor Sie ein ExpressRoute-Gateway erstellen, müssen Sie ein Gatewaysubnetz erstellen. Das Gatewaysubnetz enthält die IP-Adressen, die von den VMs und Diensten des virtuellen Netzwerkgateways verwendet werden. Bei der Erstellung des Gateways des virtuellen Netzwerks, werden Gateway-VMs für das Gatewaysubnetz bereitgestellt und mit den erforderlichen Einstellungen für das ExpressRoute-Gateway konfiguriert. Stellen Sie für das Gatewaysubnetz nie etwas anderes bereit (beispielsweise zusätzliche virtuelle Computer). Das Gatewaysubnetz muss den Namen „GatewaySubnet“ aufweisen, damit es einwandfrei funktioniert. Wenn Sie dem Gatewaysubnetz den Namen „GatewaySubnet“ zugewiesen haben, erkennt Azure, dass es sich dabei um das Subnetz handelt, für das die VMs und Dienste des virtuellen Netzwerkgateways bereitgestellt werden sollen.
 
@@ -63,7 +63,7 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/2
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
-### <a name="zrgw"></a>SKUs für zonenredundante Gateways
+### <a name="zone-redundant-gateway-skus"></a><a name="zrgw"></a>SKUs für zonenredundante Gateways
 
 Sie können VPN- und ExpressRoute-Gateways auch in Azure-Verfügbarkeitszonen bereitstellen. Dadurch werden sie physisch und logisch in verschiedene Verfügbarkeitszonen unterteilt, wodurch Ihre lokale Netzwerkverbindung zu Azure vor Ausfällen auf Zonenebene geschützt wird.
 
@@ -77,13 +77,13 @@ Zonenredundante Gateways verwenden bestimmte neue Gateway-SKUs für ExpressRoute
 
 Die neuen Gateway-SKUs unterstützen zudem andere Bereitstellungsoptionen, die Ihre Anforderungen am besten zu erfüllen. Wenn Sie ein virtuelles Netzwerkgateway mit den neuen Gateway-SKUs erstellen, haben Sie auch die Möglichkeit, das Gateway in einer bestimmten Zone bereitzustellen. Dies wird als zonenbasiertes Gateway bezeichnet. Wenn Sie ein zonenbasiertes Gateway bereitstellen, werden alle Instanzen des Gateways in derselben Verfügbarkeitszone bereitgestellt.
 
-## <a name="fastpath"></a>FastPath
+## <a name="fastpath"></a><a name="fastpath"></a>FastPath
 
 Das virtuelle Netzwerkgateway ExpressRoute wurde entwickelt, um Netzwerkrouten auszutauschen und den Netzwerkdatenverkehr zu steuern. FastPath wurde entwickelt, um die Datenpfadleistung zwischen Ihrem lokalen und dem virtuellen Netzwerk zu verbessern. Wenn aktiviert, sendet FastPath den Netzwerkdatenverkehr direkt an virtuelle Computer im virtuellen Netzwerk und umgeht dabei das Gateway.
 
 Weitere Informationen zu FastPath, einschließlich Einschränkungen und Anforderungen, finden Sie unter [Informationen zu FastPath](about-fastpath.md).
 
-## <a name="resources"></a>REST-APIs und PowerShell-Cmdlets
+## <a name="rest-apis-and-powershell-cmdlets"></a><a name="resources"></a>REST-APIs und PowerShell-Cmdlets
 Zusätzliche technische Ressourcen und spezielle Syntaxanforderungen bei der Verwendung von REST-APIs und PowerShell-Cmdlets für Gatewaykonfigurationen für virtuelle Netzwerke finden Sie auf den folgenden Seiten:
 
 | **Klassisch** | **Ressourcen-Manager** |

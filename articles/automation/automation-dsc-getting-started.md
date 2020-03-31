@@ -10,10 +10,10 @@ ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 9fce9a769dd6d88c9926913d22716666284938c1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74850957"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Erste Schritte mit Azure Automation State Configuration
@@ -59,7 +59,7 @@ Sie erstellen eine einfache [DSC-Konfiguration](/powershell/scripting/dsc/config
         }
     }
     ```
-1. Speichern Sie die Datei als `TestConfig.ps1`.
+1. Speichern Sie die Datei unter dem Namen `TestConfig.ps1`.
 
 Diese Konfiguration ruft in jedem Knotenblock die Ressource [WindowsFeature](/powershell/scripting/dsc/reference/resources/windows/windowsfeatureresource)auf, die das Vorhandensein oder Nichtvorhandensein des Features **Web-Server** sicherstellt.
 

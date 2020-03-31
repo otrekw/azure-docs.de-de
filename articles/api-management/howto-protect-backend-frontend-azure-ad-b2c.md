@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
-ms.openlocfilehash: fde48d63bd343fbed1f82e60819131ffb043a795
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 55acea360de11c5fcc699d65daf92cf24dfd691d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967636"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475475"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Schützen des SPA-Back-Ends mit OAuth 2.0, Azure Active Directory B2C und Azure API Management
 
@@ -250,7 +250,7 @@ Sie müssen dem Bereich mit IP-Einschränkungen CIDR-formatierte Adressblöcke h
 
    > [!NOTE]
    > Der folgende Abschnitt ist optional und gilt nicht für den **Verbrauchstarif**, der keine Unterstützung für das Entwicklerportal bietet.
-   > Wenn Sie nicht beabsichtigen, das Entwicklerportal zu verwenden, oder dieses nicht verwenden können, da Sie den Verbrauchstarif verwenden, überspringen Sie diesen Schritt, und fahren Sie direkt mit [Erstellen der JavaScript-SPA für die Verwendung der API](##build-the-javascript-spa-to-consume-the-api) fort.
+   > Wenn Sie nicht beabsichtigen, das Entwicklerportal zu verwenden, oder dieses nicht verwenden können, da Sie den Verbrauchstarif verwenden, überspringen Sie diesen Schritt, und fahren Sie direkt mit [Erstellen der JavaScript-SPA für die Verwendung der API](#build-the-javascript-spa-to-consume-the-api) fort.
 
 ## <a name="optional-configure-the-developer-portal"></a>(Optional:) Konfigurieren des Entwicklerportals
 
@@ -461,8 +461,5 @@ Die obigen Schritte können angepasst und bearbeitet werden, um viele verschiede
 * Weitere Informationen zu [Azure Active Directory und OAuth 2.0](../active-directory/develop/authentication-scenarios.md)
 * Hier finden Sie weitere [Videos](https://azure.microsoft.com/documentation/videos/index/?services=api-management) zu API Management.
 * Weitere Methoden zum Sichern Ihres Back-End-Diensts finden Sie unter [Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management](api-management-howto-mutual-certificates.md).
-* Verwenden Sie ggf. die Azure AD-Graph-API, um benutzerdefinierte Ansprüche zuzuweisen, sowie eine API Management-Richtlinie, um ihr Vorhandensein im Token zu überprüfen.
-
 * [Erstellen einer API Management-Dienstinstanz](get-started-create-service-instance.md)
-
 * [Verwalten Ihrer ersten API](import-and-publish.md)

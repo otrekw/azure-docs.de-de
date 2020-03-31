@@ -11,11 +11,11 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: 4545a75cc2082c21dcb87986eba819ebe39adf7b
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208759"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225582"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
 In diesem Artikel werden verschiedene Compute-Umgebungen beschrieben, mit denen Sie Daten verarbeiten oder transformieren können. Darüber hinaus werden Einzelheiten zu verschiedenen Konfigurationen beschrieben (bedarfsgesteuerte Compute-Umgebung im Vergleich zu einer eigenen Compute-Umgebung). Diese beiden Konfigurationen werden von Data Factory unterstützt, wenn Sie verknüpfte Dienste konfigurieren, um diese Compute-Umgebungen mit Azure Data Factory zu verknüpfen.
@@ -157,7 +157,7 @@ Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eige
 
 Für eine präzisere Konfiguration des bedarfsgesteuerten HDInsight-Clusters können Sie die folgenden Eigenschaften festlegen.
 
-| Eigenschaft               | Beschreibung                              | Erforderlich |
+| Eigenschaft               | BESCHREIBUNG                              | Erforderlich |
 | :--------------------- | :--------------------------------------- | :------- |
 | coreConfiguration      | Gibt die wichtigsten Konfigurationsparameter (wie in "core-site.xml") für den HDInsight-Cluster an, der erstellt werden soll. | Nein       |
 | hBaseConfiguration     | Gibt die HBase-Konfigurationsparameter (hbase-site.xml) für den HDInsight-Cluster an. | Nein       |
@@ -285,7 +285,7 @@ Sie können einen verknüpften Azure HDInsight-Dienst erstellen, um Ihren eigene
 ```
 
 ### <a name="properties"></a>Eigenschaften
-| Eigenschaft          | Beschreibung                                                  | Erforderlich |
+| Eigenschaft          | BESCHREIBUNG                                                  | Erforderlich |
 | ----------------- | ------------------------------------------------------------ | -------- |
 | type              | Legen Sie die Typeigenschaft auf **HDInsight**fest.            | Ja      |
 | clusterUri        | Der URI des HDInsight-Clusters.                            | Ja      |
@@ -468,7 +468,7 @@ Sie erstellen einen mit **Azure Data Lake Analytics** verknüpften Dienst, um ei
 
 ### <a name="properties"></a>Eigenschaften
 
-| Eigenschaft             | Beschreibung                              | Erforderlich                                 |
+| Eigenschaft             | BESCHREIBUNG                              | Erforderlich                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | type                 | Legen Sie die type-Eigenschaft auf **AzureDataLakeAnalytics** fest. | Ja                                      |
 | .<Name der Region          | Name des Azure Data Lake Analytics-Kontos.  | Ja                                      |

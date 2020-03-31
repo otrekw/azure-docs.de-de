@@ -8,11 +8,11 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 684b30a24e049722cb531cbc84e3a2cd90912ec8
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932621"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228278"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Hinzufügen/Entfernen eines Azure-Dateisynchronisierungsserver-Endpunkts
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
@@ -35,8 +35,8 @@ Um einen Serverendpunkt hinzuzufügen, navigieren Sie zu der gewünschten Synchr
 
 Unter **Serverendpunkt hinzufügen** sind die folgenden Informationen erforderlich:
 
-- **Registrierter Server**: Der Name des Servers oder Clusters, auf bzw. in dem der Serverendpunkt erstellt werden soll.
-- **Pfad**: Der Pfad auf dem Windows-Server, der als Teil der Synchronisierungsgruppe synchronisiert werden soll.
+- **Registrierter Server:** Der Name des Servers oder Clusters, auf bzw. in dem der Serverendpunkt erstellt werden soll.
+- **Pfad:** Der Pfad auf dem Windows-Server, der als Teil der Synchronisierungsgruppe synchronisiert werden soll.
 - **Cloudtiering**: Ein Schalter, mit dem Cloudtiering aktiviert oder deaktiviert wird. Wenn das Cloudtiering aktiviert ist, werden Dateien in Ihren Azure-Dateifreigaben *auf mehrere Speicherebenen aufgeteilt (Tiering)* . Hierbei werden lokale Dateifreigaben in einen Cache statt in eine vollständige Kopie des Datasets konvertiert, damit Sie die Speicherplatzeffizienz auf dem Server verwalten können.
 - **Freier Speicherplatz auf Volume:** Die Menge des freien Speicherplatzes auf dem Volume, auf dem sich der Serverendpunkt befindet. Wenn z.B. für ein Volume mit einem einzigen Serverendpunkt „Freier Speicherplatz auf Volume“ auf 50 % festgelegt ist, wird ungefähr die Hälfte der Daten in Azure Files ausgelagert. Die Azure-Dateifreigabe enthält immer eine vollständige Kopie der Daten in der Synchronisierungsgruppe, unabhängig davon, ob Cloudtiering aktiviert ist.
 

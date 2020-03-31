@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: e2adccaf1371cf322b5a50b0e1f6ef64dde14b66
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60628658"
 ---
 # <a name="what-is-storsimple-for-cloud-solutions-providers-program"></a>Was ist das StorSimple für Cloudlösungsanbieter-Programm?
@@ -42,5 +42,5 @@ Weitere Informationen finden Sie unter [Deaktivieren und Verwalten Ihres StorSim
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie weitere Fragen zu StorSimple im CSP-Programm haben, fahren Sie mit [StorSimple im CSP-Programm: Häufig gestellte Fragen (FAQs)](storsimple-partner-csp-faq.md) fort.
+- Wenn Sie weitere Fragen zu StorSimple im CSP-Programm haben, fahren Sie mit [StorSimple im CSP-Programm: Häufig gestellte Fragen](storsimple-partner-csp-faq.md) fort.
 - Wenn Sie bereit sind, Ihre StorSimple-Lösung bereitzustellen, wechseln Sie zu [Bereitstellen Ihrer StorSimple-Lösung im CSP-Programm](storsimple-partner-csp-deploy.md).

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: anzaman
 ms.openlocfilehash: c3c50a005e119890fb17fcf7b3114a747bbe34bf
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74033415"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>Konfigurieren von Routenfiltern für das Microsoft-Peering: Azure-Befehlszeilenschnittstelle
@@ -32,7 +32,7 @@ Wenn Konnektivität mit allen Diensten erforderlich ist, wird eine große Anzahl
 
 * Sie definieren Routenfilter und wenden sie auf Ihre ExpressRoute-Verbindung an. Ein Routenfilter ist eine neue Ressource, mit der Sie die Liste der Dienste, die Sie über das Microsoft-Peering nutzen möchten, auswählen können. ExpressRoute-Router senden lediglich die Liste der Präfixe, die den im Routenfilter identifizierten Diensten zugehörig sind.
 
-### <a name="about"></a>Informationen zu Routenfiltern
+### <a name="about-route-filters"></a><a name="about"></a>Informationen zu Routenfiltern
 
 Wenn das Microsoft-Peering für Ihre ExpressRoute-Verbindung konfiguriert ist, stellen die Microsoft-Edgerouter ein BGP-Sitzungspaar mit den Edgeroutern (Ihrem Edgerouter oder dem Ihres Konnektivitätsanbieters) her. Ihrem Netzwerk werden keine Routen angekündigt. Um Routenankündigungen für Ihr Netzwerk zu aktivieren, müssen Sie einen Routenfilter zuordnen.
 
@@ -45,7 +45,7 @@ Um Routenfilter mit Office 365-Diensten anfügen zu können, müssen Sie die Aut
 > 
 > 
 
-### <a name="workflow"></a>Workflow
+### <a name="workflow"></a><a name="workflow"></a>Workflow
 
 Um mit dem Microsoft-Peering eine Verbindung mit Diensten herstellen zu können, müssen Sie die folgenden Konfigurationsschritte durchführen:
 
@@ -90,7 +90,7 @@ Wählen Sie das Abonnement aus, für das eine ExpressRoute-Verbindung erstellt w
 az account set --subscription "<subscription ID>"
 ```
 
-## <a name="prefixes"></a>Schritt 1: Abrufen einer Liste von Präfixen und BGP-Communitywerten
+## <a name="step-1-get-a-list-of-prefixes-and-bgp-community-values"></a><a name="prefixes"></a>Schritt 1: Abrufen einer Liste von Präfixen und BGP-Communitywerten
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1. Abrufen einer Liste von BGP-Communitywerten
 
@@ -103,7 +103,7 @@ az network route-filter rule list-service-communities
 
 Erstellen Sie eine Liste von BGP-Communitywerten, die Sie im Routenfilter verwenden möchten.
 
-## <a name="filter"></a>Schritt 2: Erstellen eines Routenfilters und einer Filterregel
+## <a name="step-2-create-a-route-filter-and-a-filter-rule"></a><a name="filter"></a>Schritt 2: Erstellen eines Routenfilters und einer Filterregel
 
 Ein Routenfilter kann nur eine Regel aufweisen, die zudem vom Typ „Zulassen“ sein muss. Diese Regel kann eine Liste von BGP-Communitywerten enthalten, die ihr zugeordnet sind.
 
@@ -123,7 +123,7 @@ Führen Sie den folgenden Befehl aus, um eine neue Regel zu erstellen:
 az network route-filter rule create --filter-name MyRouteFilter -n CRM --communities 12076:5040 --access Allow -g MyResourceGroup
 ```
 
-## <a name="attach"></a>Schritt 3: Anfügen des Routenfilters zu einer ExpressRoute-Verbindung
+## <a name="step-3-attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>Schritt 3: Anfügen des Routenfilters zu einer ExpressRoute-Verbindung
 
 Führen Sie den folgenden Befehl aus, um der ExpressRoute-Verbindung den Routenfilter anzufügen:
 
@@ -131,9 +131,9 @@ Führen Sie den folgenden Befehl aus, um der ExpressRoute-Verbindung den Routenf
 az network express-route peering update --circuit-name MyCircuit -g ExpressRouteResourceGroupName --name MicrosoftPeering --route-filter MyRouteFilter
 ```
 
-## <a name="tasks"></a>Häufige Aufgaben
+## <a name="common-tasks"></a><a name="tasks"></a>Häufige Aufgaben
 
-### <a name="getproperties"></a>Abrufen der Eigenschaften eines Routenfilters
+### <a name="to-get-the-properties-of-a-route-filter"></a><a name="getproperties"></a>Abrufen der Eigenschaften eines Routenfilters
 
 Um die Eigenschaften eines Routenfilters abzurufen, verwenden Sie folgenden Befehl:
 
@@ -141,7 +141,7 @@ Um die Eigenschaften eines Routenfilters abzurufen, verwenden Sie folgenden Befe
 az network route-filter show -g ExpressRouteResourceGroupName --name MyRouteFilter 
 ```
 
-### <a name="updateproperties"></a>Aktualisieren der Eigenschaften eines Routenfilters
+### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>Aktualisieren der Eigenschaften eines Routenfilters
 
 Wenn der Routenfilter bereits einer Verbindung angefügt ist, werden durch Updates der BGP-Communityliste automatisch über die eingerichteten BGP-Sitzungen entsprechende Änderungen an Präfixankündigungen vorgenommen. Sie können die BGP-Communityliste Ihres Routenfilters mit dem folgenden Befehl aktualisieren:
 
@@ -149,7 +149,7 @@ Wenn der Routenfilter bereits einer Verbindung angefügt ist, werden durch Updat
 az network route-filter rule update --filter-name MyRouteFilter -n CRM -g ExpressRouteResourceGroupName --add communities '12076:5040' --add communities '12076:5010'
 ```
 
-### <a name="detach"></a>Trennen eines Routenfilters von einer ExpressRoute-Verbindung
+### <a name="to-detach-a-route-filter-from-an-expressroute-circuit"></a><a name="detach"></a>Trennen eines Routenfilters von einer ExpressRoute-Verbindung
 
 Nachdem ein Routenfilter von der ExpressRoute-Verbindung getrennt wurde, werden keine Präfixe über die BGP-Sitzung angekündigt. Sie können einen Routenfilter mit dem folgenden Befehl von einer ExpressRoute-Verbindung trennen:
 
@@ -157,7 +157,7 @@ Nachdem ein Routenfilter von der ExpressRoute-Verbindung getrennt wurde, werden 
 az network express-route peering update --circuit-name MyCircuit -g ExpressRouteResourceGroupName --name MicrosoftPeering --remove routeFilter
 ```
 
-### <a name="delete"></a>Löschen eines Routenfilters
+### <a name="to-delete-a-route-filter"></a><a name="delete"></a>Löschen eines Routenfilters
 
 Sie können einen Routenfilter nur löschen, wenn er keiner Verbindung angefügt wurde. Bevor Sie versuchen, diesen zu löschen, stellen Sie sicher, dass der Routenfilter keiner Verbindung zugeordnet ist. Sie können einen Routenfilter mit dem folgenden Befehl löschen:
 

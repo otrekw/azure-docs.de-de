@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 1/14/2020
 ms.openlocfilehash: b358287664ac6d6a3b641e1ab63073810ceb4c40
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78208593"
 ---
 # <a name="azure-data-explorer-connector-for-apache-spark"></a>Azure Data Explorer-Connector für Apache Spark
@@ -111,7 +111,7 @@ Der Azure Data Explorer-Connector für Spark ermöglicht Ihnen die Authentifizie
 
 Die Azure AD-Anwendungsauthentifizierung ist die einfachste und gängigste Authentifizierungsmethode. Sie wird für den Azure Data Explorer-Connector für Spark empfohlen.
 
-|Eigenschaften  |Beschreibung  |
+|Eigenschaften  |BESCHREIBUNG  |
 |---------|---------|
 |**KUSTO_AAD_CLIENT_ID**     |   (Client-)Bezeichner der Azure AD-Anwendung.      |
 |**KUSTO_AAD_AUTHORITY_ID**     |  Azure AD-Authentifizierungsautorität. Azure AD Directory-(Mandanten-)ID.        |

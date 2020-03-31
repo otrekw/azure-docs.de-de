@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 57a66f73a2c0c37426c23c7274853148fd976ac8
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 49860504da8dd2a1b994a23a24df95f59c959c90
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699069"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230766"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten (Vorschau)
 
@@ -44,7 +44,7 @@ Eine Anspruchszuordnungsrichtlinie ist eine Art von **Richtlinienobjekt**, das d
 
 Es gibt bestimmte Sätze von Ansprüchen, die definieren, wie und wann sie in Token verwendet werden.
 
-| Satz von Ansprüchen | Beschreibung |
+| Satz von Ansprüchen | BESCHREIBUNG |
 |---|---|
 | Hauptsatz von Ansprüchen | Sind in jedem Token unabhängig von der Richtlinie vorhanden. Diese Ansprüche sind zudem als eingeschränkt anzusehen und können nicht geändert werden. |
 | Grundlegender Anspruchssatz | Enthält die Ansprüche, die standardmäßig für Token ausgegeben werden (zusätzlich zum Hauptanspruchssatz). Sie können grundlegende Ansprüche mit den Richtlinien für die Anspruchszuordnung weglassen oder ändern. |
@@ -284,7 +284,7 @@ Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tabelle 3: Gültige ID-Werte pro Quelle
 
-| `Source` | id | Beschreibung |
+| `Source` | id | BESCHREIBUNG |
 |-----|-----|-----|
 | Benutzer | surname | Familienname |
 | Benutzer | givenname | Vorname |
@@ -358,7 +358,7 @@ Auf der Grundlage der ausgewählten Methode wird eine Reihe von Eingaben und Aus
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabelle 4: Transformationsmethoden und erwartete Ein- und Ausgaben
 
-|Transformationsmethode|Erwartete Eingabe|Erwartete Ausgabe|Beschreibung|
+|Transformationsmethode|Erwartete Eingabe|Erwartete Ausgabe|BESCHREIBUNG|
 |-----|-----|-----|-----|
 |Join|string1, string2, separator|outputClaim|Verknüpft Eingabezeichenfolgen mit einer eingefügten Trennzeichen. Zum Beispiel: Zeichenfolge1:"foo@bar.com" , Zeichenfolge2:"sandbox" , Trennzeichen:"." ergibt outputClaim:"foo@bar.com.sandbox"|
 |ExtractMailPrefix|mail|outputClaim|Extrahiert den lokalen Teil einer E-Mail-Adresse. Zum Beispiel: mail:"foo@bar.com" ergibt outputClaim: "foo". Wenn kein \@-Zeichen vorhanden ist, wird die ursprüngliche Eingabezeichenfolge unverändert zurückgegeben.|
@@ -384,7 +384,7 @@ Auf der Grundlage der ausgewählten Methode wird eine Reihe von Eingaben und Aus
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabelle 5: Attribute, die als Datenquelle für SAML-NameID zulässig sind
 
-|`Source`|id|Beschreibung|
+|`Source`|id|BESCHREIBUNG|
 |-----|-----|-----|
 | Benutzer | mail|E-Mail-Adresse|
 | Benutzer | userprincipalname|Benutzerprinzipalname|
@@ -415,7 +415,7 @@ Auf der Grundlage der ausgewählten Methode wird eine Reihe von Eingaben und Aus
 
 ### <a name="custom-signing-key"></a>Benutzerdefinierte Signaturschlüssel
 
-Ein benutzerdefinierter Signaturschlüssel muss dem Dienstprinzipalobjekt zugewiesen werden, damit die Anspruchszuordnungsrichtlinie wirksam werden kann. Dies sorgt für die Bestätigung, dass Token vom Ersteller der Anspruchszuordnungsrichtlinie geändert wurden. Zudem werden Anwendungen vor Anspruchszuordnungsrichtlinien geschützt, die von böswilligen Akteuren erstellt wurden. Um einen benutzerdefinierten Signaturschlüssel hinzuzufügen, können Sie mit dem Azure PowerShell-Cmdlet `new-azureadapplicationkeycredential` Anmeldeinformationen für einen symmetrischen Schlüssel für Ihr Anwendungsobjekt erstellen. Weitere Informationen zu diesem Azure PowerShell-Cmdlet finden Sie [hier](https://docs.microsoft.com/powershell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
+Ein benutzerdefinierter Signaturschlüssel muss dem Dienstprinzipalobjekt zugewiesen werden, damit die Anspruchszuordnungsrichtlinie wirksam werden kann. Dies sorgt für die Bestätigung, dass Token vom Ersteller der Anspruchszuordnungsrichtlinie geändert wurden. Zudem werden Anwendungen vor Anspruchszuordnungsrichtlinien geschützt, die von böswilligen Akteuren erstellt wurden. Zum Hinzufügen eines benutzerdefinierten Signaturschlüssels können Sie mit dem Azure PowerShell-Cmdlet `new-azureadapplicationkeycredential` Anmeldeinformationen für einen symmetrischen Schlüssel für Ihr Anwendungsobjekt erstellen. Weitere Informationen zu diesem Azure PowerShell-Cmdlet finden Sie unter [New-AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0).
 
 Apps mit aktivierter Anspruchszuordnung müssen ihre Tokensignaturschlüssel überprüfen, indem sie `appid={client_id}` an ihre [OpenID Connect-Metadatenanforderungen](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document) anfügen. Im Folgenden finden Sie das Format des OpenID Connect-Metadatendokuments, das Sie verwenden sollten: 
 
@@ -469,7 +469,7 @@ In diesem Beispiel erstellen Sie eine Richtlinie, die den grundlegenden Anspruch
       Get-AzureADPolicy
       ```
 1. Weisen Sie die Richtlinie Ihrem Dienstprinzipal zu. Rufen Sie außerdem die „ObjectId“ Ihres Dienstprinzipals ab.
-   1. Sie können [Microsoft Graph abfragen](/graph/traverse-the-graph), um alle Dienstprinzipale Ihrer Organisation anzuzeigen. Oder melden Sie sich im [Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) bei Ihrem Azure AD-Konto an.
+   1. Wenn Sie alle Dienstprinzipale Ihrer Organisation anzeigen möchten, können Sie [die Microsoft Graph-API abfragen](/graph/traverse-the-graph). Oder melden Sie sich im [Microsoft Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) bei Ihrem Azure AD-Konto an.
    2. Führen Sie den folgenden Befehl aus, wenn Sie über die ObjectId Ihres Dienstprinzipals verfügen:  
      
       ``` powershell
@@ -493,7 +493,7 @@ In diesem Beispiel erstellen Sie eine Richtlinie, die Token, die für verknüpft
       Get-AzureADPolicy
       ```
 1. Weisen Sie die Richtlinie Ihrem Dienstprinzipal zu. Rufen Sie außerdem die „ObjectId“ Ihres Dienstprinzipals ab. 
-   1. Sie können [Microsoft Graph abfragen](/graph/traverse-the-graph), um alle Dienstprinzipale Ihrer Organisation anzuzeigen. Oder melden Sie sich im [Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) bei Ihrem Azure AD-Konto an.
+   1. Wenn Sie alle Dienstprinzipale Ihrer Organisation anzeigen möchten, können Sie [die Microsoft Graph-API abfragen](/graph/traverse-the-graph). Oder melden Sie sich im [Microsoft Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) bei Ihrem Azure AD-Konto an.
    2. Führen Sie den folgenden Befehl aus, wenn Sie über die ObjectId Ihres Dienstprinzipals verfügen:  
      
       ``` powershell
@@ -517,7 +517,7 @@ In diesem Beispiel erstellen Sie eine Richtlinie, die einen benutzerdefinierten 
       Get-AzureADPolicy
       ```
 1. Weisen Sie die Richtlinie Ihrem Dienstprinzipal zu. Rufen Sie außerdem die „ObjectId“ Ihres Dienstprinzipals ab. 
-   1. Sie können [Microsoft Graph abfragen](/graph/traverse-the-graph), um alle Dienstprinzipale Ihrer Organisation anzuzeigen. Oder melden Sie sich im [Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) bei Ihrem Azure AD-Konto an.
+   1. Wenn Sie alle Dienstprinzipale Ihrer Organisation anzeigen möchten, können Sie [die Microsoft Graph-API abfragen](/graph/traverse-the-graph). Oder melden Sie sich im [Microsoft Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) bei Ihrem Azure AD-Konto an.
    2. Führen Sie den folgenden Befehl aus, wenn Sie über die ObjectId Ihres Dienstprinzipals verfügen: 
      
       ``` powershell

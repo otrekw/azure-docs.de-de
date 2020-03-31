@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
 ms.openlocfilehash: bdb1896f8a40c6de21ae76b536bfccec316341cd
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69992446"
 ---
 # <a name="authorizing-access-to-event-hubs-resources-using-shared-access-signatures"></a>Autorisieren des Zugriffs auf Event Hubs-Ressourcen mit Shared Access Signatures
@@ -67,7 +67,7 @@ Mit den folgenden Empfehlungen für die Verwendung von Shared Access Signatures 
 Shared Access Signatures sind nützlich, um für Ihre Clients eingeschränkte Berechtigungen für Event Hubs-Ressourcen bereitzustellen. Es handelt sich hierbei um einen wichtigen Teil des Sicherheitsmodells für alle Anwendungen, die Azure Event Hubs verwenden. Wenn Sie sich an die in diesem Artikel beschriebenen bewährten Methoden halten, können Sie mit SAS eine größere Flexibilität für den Zugriff auf Ihre Ressourcen erzielen, ohne die Sicherheit Ihrer Anwendung zu gefährden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen finden Sie in den folgenden verwandten Artikeln: 
+Weitere Informationen finden Sie in den folgenden verwandten Artikeln: 
 
 - [Authentifizieren von Anforderungen an Event Hubs über eine Anwendung mithilfe von Azure Active Directory](authenticate-application.md)
 - [Authentifizieren einer verwalteten Identität mit Azure Active Directory für den Zugriff auf Event Hubs-Ressourcen](authenticate-managed-identity.md)

@@ -15,10 +15,10 @@ ms.date: 07/24/2018
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 30f71432ca008b87bddfb253f23ae3cef0ac390d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77020181"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Verwalten von Batch-Ressourcen mit der Azure CLI
@@ -151,7 +151,7 @@ Wenn Sie den Batch-Dienst mit einem `list`-Vorgang abfragen, können Sie eine OD
 
 Die folgende Tabelle beschreibt die OData-Klauseln, die vom Batch-Dienst unterstützt werden:
 
-| Klausel | Beschreibung |
+| Klausel | BESCHREIBUNG |
 |---|---|
 | `--select-clause [select-clause]` | Gibt für jede Entität eine Teilmenge der Eigenschaften zurück. |
 | `--filter-clause [filter-clause]` | Gibt nur Entitäten zurück, die dem angegebenen OData-Ausdruck entsprechen. |
@@ -167,7 +167,7 @@ Die folgenden Hinweise können beim Beheben von Problemen mit der Azure CLI helf
 
 * Verwenden Sie `-h` , um **Hilfetext** für Befehle der Befehlszeilenschnittstelle anzuzeigen.
 * Verwenden Sie `-v` und `-vv`, um eine **ausführliche** Befehlsausgabe anzuzeigen. Wenn das `-vv`-Flag enthalten ist, zeigt die Azure CLI die tatsächlichen REST-Anforderungen und -Antworten. Mit diesen praktischen Switches können Sie die vollständige Fehlerausgabe anzeigen.
-* Mit der Option `--json` können Sie die **Befehlsausgabe als JSON** anzeigen. `az batch pool show pool001 --json` zeigt beispielsweise die Eigenschaften von „pool001“ im JSON-Format an. Diese Ausgabe können Sie dann kopieren und ändern, um sie in einer `--json-file` zu verwenden (weitere Informationen finden Sie weiter oben in diesem Artikel unter „JSON-Dateien“).
+* Mit der Option **können Sie die**Befehlsausgabe als JSON`--json` anzeigen. `az batch pool show pool001 --json` zeigt beispielsweise die Eigenschaften von „pool001“ im JSON-Format an. Diese Ausgabe können Sie dann kopieren und ändern, um sie in einer `--json-file` zu verwenden (weitere Informationen finden Sie weiter oben in diesem Artikel unter „JSON-Dateien“).
 <!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
 
 ## <a name="next-steps"></a>Nächste Schritte

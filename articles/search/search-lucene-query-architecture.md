@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: d46d0309b3d2ffb638016e88ba022e49009eedf2
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793554"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236842"
 ---
 # <a name="how-full-text-search-works-in-azure-cognitive-search"></a>Funktionsweise der Volltextsuche in der kognitiven Azure-Suche
 
@@ -94,7 +94,7 @@ Der Abfrageparser strukturiert die Unterabfragen als *Abfragestruktur* (interne 
 
  ![Boolesche Abfrage: Suchmodus „any“][2]
 
-### <a name="supported-parsers-simple-and-full-lucene"></a>Unterstützte Parser: Lucene-Optionen „simple“ und „full“ 
+### <a name="supported-parsers-simple-and-full-lucene"></a>Unterstützte Parser: Lucene, einfach und vollständig („simple“ und „full“) 
 
  Bei der kognitiven Azure-Suche werden zwei unterschiedliche Abfragesprachen verfügbar gemacht: `simple` (Standard) und `full`. Indem Sie den Parameter `queryType` für Ihre Suchanfrage festlegen, weisen Sie den Abfrageparser an, welche Abfragesprache zur Verwendung ausgewählt werden soll. Er verfügt somit über die Funktionen zum Interpretieren der Operatoren und der Syntax. Die [einfache Abfragesprache](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) ist intuitiv und robust und häufig gut geeignet, um die Benutzereingabe unverändert ohne clientseitige Verarbeitung zu interpretieren. Sie unterstützt Abfrageoperatoren, die Sie aus anderen Websuchmodulen kennen. Bei der [vollständigen Lucene-Abfragesprache](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), die Sie durch das Festlegen von `queryType=full` erhalten, wird die einfache Abfragesprache erweitert. Es wird Unterstützung für weitere Operatoren und Abfragetypen hinzugefügt, z.B. Platzhalter, Fuzzy Matching, reguläre Ausdrücke und feldbezogene Abfragen. Ein regulärer Ausdruck, der mit einfacher Abfragesyntax gesendet wird, wird beispielsweise als Abfragezeichenfolge und nicht als Ausdruck interpretiert. Für die Beispielabfrage in diesem Artikel wird die vollständige Lucene-Abfragesprache verwendet.
 
@@ -287,9 +287,9 @@ Für das Feld **description** sieht der Index wie folgt aus:
 | spacious | 1
 | the | 1, 2
 | zu | 1
-| view | 1, 2, 3
+| Ansicht | 1, 2, 3
 | walking | 1
-| with | 3
+| durch | 3
 
 
 **Ermitteln von Übereinstimmungen zwischen Abfrageausdrücken und indizierten Ausdrücken**
@@ -365,7 +365,7 @@ Es gibt zwei Möglichkeiten, wie Sie Relevanzbewertungen in der kognitiven Azure
 
 ### <a name="scoring-in-a-distributed-index"></a>Durchführen von Bewertungen in einem verteilten Index
 
-Alle Indizes in der kognitiven Azure-Suche werden automatisch in mehrere Shards unterteilt, sodass der Index beim zentralen Hoch- oder Herunterskalieren des Diensts schnell auf mehrere Knoten verteilt werden kann. Wenn eine Suchanfrage ausgegeben wird, erfolgt dies für jeden Shard individuell. Die Ergebnisse aller Shards werden dann zusammengeführt und nach der Bewertung sortiert (falls keine andere Sortierung festgelegt ist). Es ist wichtig, dass Sie Folgendes wissen: Die Bewertungsfunktion wägt die Vorkommenshäufigkeit von Abfragebegriffen gegenüber der inversen Dokumenthäufigkeit für alle Dokumente des Shards ab. Nicht übergreifend für alle Shards!
+Alle Indizes in der kognitiven Azure-Suche werden automatisch in mehrere Shards unterteilt, sodass der Index beim Hoch- oder Herunterskalieren des Diensts schnell auf mehrere Knoten verteilt werden kann. Wenn eine Suchanfrage ausgegeben wird, erfolgt dies für jeden Shard individuell. Die Ergebnisse aller Shards werden dann zusammengeführt und nach der Bewertung sortiert (falls keine andere Sortierung festgelegt ist). Es ist wichtig, dass Sie Folgendes wissen: Die Bewertungsfunktion wägt die Vorkommenshäufigkeit von Abfragebegriffen gegenüber der inversen Dokumenthäufigkeit für alle Dokumente des Shards ab. Nicht übergreifend für alle Shards!
 
 Dies bedeutet, dass eine Relevanzbewertung für identische Dokumente unterschiedliche ausfallen *kann*, wenn diese sich auf unterschiedlichen Shards befinden. Glücklicherweise sind diese Unterschiede vernachlässigbar, wenn im Index eine größere Zahl von Dokumenten enthalten ist, weil die Begriffe gleichmäßiger verteilt sind. Es kann nicht vorausgesagt werden, auf welchem Shard ein Dokument angeordnet wird. Wenn wir aber davon ausgehen, dass sich ein Dokumentschlüssel nicht ändert, wird es immer demselben Shard zugewiesen.
 

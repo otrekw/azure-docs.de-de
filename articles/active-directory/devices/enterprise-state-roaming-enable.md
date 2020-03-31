@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8c44d6266f5ea8cdd4f75d0449cb49852e71c905
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78672394"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Aktivieren von Enterprise State Roaming in Azure Active Directory
@@ -74,8 +74,8 @@ Daten, die mithilfe von Enterprise State Roaming mit der Microsoft Cloud synchro
 Bei expliziter Löschung löscht ein Azure-Administrator einen Benutzer oder ein Verzeichnis oder fordert auf andere Weise explizit die Löschung dieser Daten an.
 
 * **Löschung eines Benutzers**: Wenn ein Benutzer in Azure AD gelöscht wird, werden die Roamingdaten des Benutzerkontos nach 90 bis 180 Tagen gelöscht. 
-* **Löschung eines Verzeichnisses**: Das Löschen eines gesamten Verzeichnisses in Azure AD ist ein unmittelbarer Vorgang. Alle diesem Verzeichnis zugeordneten Einstellungsdaten werden nach 90 bis 180 Tagen gelöscht. 
-* **Löschung auf Anforderung**: Wenn der Azure AD-Administrator die Einstellungen oder Daten eines bestimmten Benutzers manuell löschen möchte, kann er beim [Azure-Support](https://azure.microsoft.com/support/) ein Ticket erstellen. 
+* **Löschung eines Verzeichnisses:** Das Löschen eines gesamten Verzeichnisses in Azure AD ist ein unmittelbarer Vorgang. Alle diesem Verzeichnis zugeordneten Einstellungsdaten werden nach 90 bis 180 Tagen gelöscht. 
+* **Löschung auf Anforderung:** Wenn der Azure AD-Administrator die Einstellungen oder Daten eines bestimmten Benutzers manuell löschen möchte, kann er beim [Azure-Support](https://azure.microsoft.com/support/)ein Ticket erstellen. 
 
 ### <a name="stale-data-deletion"></a>Löschung veralteter Daten
 

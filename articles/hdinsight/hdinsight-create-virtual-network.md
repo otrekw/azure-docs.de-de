@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.openlocfilehash: 6fd23e3d41dda15b1ec439c1e8b02073722b8871
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71073631"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233642"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Erstellen von virtuellen Netzwerken für Azure HDInsight-Cluster
 
@@ -33,7 +33,7 @@ Weitere Voraussetzungen für die Beispiele in diesem Artikel sind die folgenden:
 > [!IMPORTANT]  
 > Eine ausführliche Anleitung zum Herstellen einer Verbindung von HDInsight mit Ihrem lokalen Netzwerk mithilfe eines virtuellen Azure-Netzwerks finden Sie im Dokument [Verbinden von HDInsight mit Ihrem lokalen Netzwerk](connect-on-premises-network.md).
 
-## <a id="hdinsight-nsg"></a>Beispiel: Netzwerksicherheitsgruppen mit HDInsight
+## <a name="example-network-security-groups-with-hdinsight"></a><a id="hdinsight-nsg"></a>Beispiel: Netzwerksicherheitsgruppen mit HDInsight
 
 Die Beispiele in diesem Abschnitt veranschaulichen, wie Sie Netzwerksicherheitsgruppen-Regeln erstellen, die HDInsight die Kommunikation mit den Azure-Verwaltungsdiensten ermöglichen. Passen Sie vor dem Verwenden der Beispiele die IP-Adressen an die IP-Adressen der genutzten Azure-Region an. Sie finden diese Informationen unter [HDInsight management IP addresses (IP-Adressen für die HDInsight-Verwaltung)](hdinsight-management-ip-addresses.md).
 
@@ -211,7 +211,7 @@ Mit dem folgenden Code wird veranschaulicht, wie der SSH-Zugriff über das Inter
 az network nsg rule create -g RESOURCEGROUP --nsg-name hdisecure -n ssh --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 306 --direction "Inbound"
 ```
 
-## <a id="example-dns"></a> Beispiel: DNS-Konfiguration
+## <a name="example-dns-configuration"></a><a id="example-dns"></a>Beispiel: DNS-Konfiguration
 
 ### <a name="name-resolution-between-a-virtual-network-and-a-connected-on-premises-network"></a>Namensauflösung zwischen einem virtuellen Netzwerk und einem verbundenen lokalen Netzwerk
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 60acd128495176cd0a90418c61edf53bdcd88e5a
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77647578"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Senden von E-Mails von Ihrem SMTP-Konto mithilfe von Azure Logic Apps
@@ -20,7 +20,7 @@ Mit Azure Logic Apps und dem SMTP-Connector (Simple Mail Transfer Protocol) kön
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
+* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
 
 * Ihr SMTP-Konto und Benutzeranmeldeinformationen.
 
@@ -49,7 +49,7 @@ Mit Azure Logic Apps und dem SMTP-Connector (Simple Mail Transfer Protocol) kön
 
 1. Wenn Sie dazu aufgefordert werden, geben Sie die folgenden Verbindungsinformationen an:
 
-   | Eigenschaft | Erforderlich | Beschreibung |
+   | Eigenschaft | Erforderlich | BESCHREIBUNG |
    |----------|----------|-------------|
    | **Verbindungsname** | Ja | Ein Name für die Verbindung mit Ihrem SMTP-Server | 
    | **SMTP-Serveradresse** | Ja | Die Adresse Ihres SMTP-Servers | 

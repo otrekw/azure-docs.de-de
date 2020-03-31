@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 53c9653b44a6c9d26d49d37b351cf6000676e2d4
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75649662"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Benutzeroberflächenelement „Microsoft.Network.VirtualNetworkCombo“
@@ -112,7 +112,7 @@ Wenn der Benutzer ein vorhandenes virtuelles Netzwerk auswählt, muss er jedes v
 - Bei der Erstellung eines neuen virtuellen Netzwerks wird das Adresspräfix für jedes Subnetz automatisch basierend auf dem Adresspräfix und dem jeweiligen `addressPrefixSize`-Element des virtuellen Netzwerks berechnet.
 - Bei der Verwendung eines vorhandenen virtuellen Netzwerks können keine Subnetze ausgewählt werden, die kleiner als das entsprechende `constraints.minAddressPrefixSize`-Element sind. Darüber hinaus können bei Angabe des Werts Subnetze, die nicht mindestens `minAddressCount` verfügbare Adressen enthalten, nicht ausgewählt werden. Der Standardwert ist **0**. Um sicherzustellen, dass die verfügbaren Adressen zusammenhängend sind, geben Sie **true** für `requireContiguousAddresses` an. Der Standardwert lautet **true**.
 - Die Erstellung von Subnetzen in einem vorhandenen virtuellen Netzwerk wird nicht unterstützt.
-- Wenn **true** für `options.hideExisting` angegeben ist, kann der Benutzer kein vorhandenes virtuelles Netzwerk auswählen. Der Standardwert ist **false**.
+- Wenn `options.hideExisting`true**für** angegeben ist, kann der Benutzer kein vorhandenes virtuelles Netzwerk auswählen. Der Standardwert ist **false**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

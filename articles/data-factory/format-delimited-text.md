@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: jingwang
 ms.openlocfilehash: f2e70a7b900ad918cda05ce34204e2de1e6e67ef
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75830189"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Textformat mit Trennzeichen in Azure Data Factory
@@ -26,7 +26,7 @@ Das Textformat mit Trennzeichen wird für folgende Connectors unterstützt: [Ama
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel zu [Datasets](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste mit Eigenschaften, die vom DelimitedText-Dataset unterstützt werden.
 
-| Eigenschaft         | Beschreibung                                                  | Erforderlich |
+| Eigenschaft         | BESCHREIBUNG                                                  | Erforderlich |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | Die type-Eigenschaft des Datasets muss auf **DelimitedText** festgelegt werden. | Ja      |
 | location         | Speicherorteinstellungen der Datei(en) Jeder dateibasierte Connector verfügt unter `location` über seinen eigenen Speicherorttyp und unterstützte Eigenschaften.  | Ja      |
@@ -75,7 +75,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktivität unterstützt.
 
-| Eigenschaft       | Beschreibung                                                  | Erforderlich |
+| Eigenschaft       | BESCHREIBUNG                                                  | Erforderlich |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **DelimitedTextSource** festgelegt werden. | Ja      |
 | formatSettings | Eine Gruppe von Eigenschaften. Weitere Informationen zu **Leseeinstellungen für durch Trennzeichen getrennten Text** finden Sie in der Tabelle unten. | Nein       |
@@ -83,7 +83,7 @@ Die folgenden Eigenschaften werden im Abschnitt ***\*source\**** der Kopieraktiv
 
 Unterstützte **Leseeinstellungen für durch Trennzeichen getrennten Text** finden Sie unter `formatSettings`:
 
-| Eigenschaft      | Beschreibung                                                  | Erforderlich |
+| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | Der Typ von „formatSettings“ muss auf **DelimitedTextReadSettings** festgelegt werden. | Ja      |
 | skipLineCount | Gibt an, wie viele **nicht leere** Zeilen beim Lesen von Daten aus Eingabedateien übersprungen werden sollen. <br>Wenn „skipLineCount“ und „firstRowAsHeader“ gleichzeitig angegeben sind, werden die Zeilen zuerst übersprungen, und anschließend werden die Kopfzeileninformationen aus der Eingabedatei gelesen. | Nein       |
@@ -92,7 +92,7 @@ Unterstützte **Leseeinstellungen für durch Trennzeichen getrennten Text** find
 
 Die folgenden Eigenschaften werden im Abschnitt ***\*sink\**** der Kopieraktivität unterstützt:
 
-| Eigenschaft       | Beschreibung                                                  | Erforderlich |
+| Eigenschaft       | BESCHREIBUNG                                                  | Erforderlich |
 | -------------- | ------------------------------------------------------------ | -------- |
 | type           | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **DelimitedTextSink** festgelegt werden. | Ja      |
 | formatSettings | Eine Gruppe von Eigenschaften. Weitere Informationen zu **Schreibeinstellungen für durch Trennzeichen getrennten Text** finden Sie in der Tabelle unten. |          |
@@ -100,7 +100,7 @@ Die folgenden Eigenschaften werden im Abschnitt ***\*sink\**** der Kopieraktivit
 
 Unterstützte **Schreibeinstellungen für durch Trennzeichen getrennten Text** finden Sie unter `formatSettings`:
 
-| Eigenschaft      | Beschreibung                                                  | Erforderlich                                              |
+| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | Der Typ von „formatSettings“ muss auf **DelimitedTextWriteSettings** festgelegt werden. | Ja                                                   |
 | fileExtension | Die Dateierweiterung, mit der die Ausgabedateien benannt werden, z.B. `.csv`, `.txt`. Es muss angegeben werden, wenn `fileName` nicht in der Ausgabe des DelimitedText-Datasets angegeben ist. Wenn der Dateiname im Ausgabedataset konfiguriert wurde, wird er als Name für die Senkendatei verwendet, und die Dateierweiterungseinstellung wird ignoriert.  | Ja, wenn kein Dateiname im Ausgabedataset angegeben ist |

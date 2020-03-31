@@ -11,18 +11,18 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 11/14/2019
-ms.openlocfilehash: e45baba74d7bf752718e5e36a148a91987cd3ffb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: c3f7b33e4b42b08334cfb687024985c878dc3713
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082426"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79209420"
 ---
 # <a name="how-to-use-azure-sql-database"></a>Verwenden von Azure SQL-Datenbank
 
 In diesem Abschnitt sind verschiedene Anleitungen, Skripts und Erläuterungen aufgeführt, die beim Verwalten und Konfigurieren von Azure SQL-Datenbank hilfreich sein können. Spezifische Anleitungen für [Einzeldatenbank](sql-database-howto-single-database.md) und [Verwaltete Instanz](sql-database-howto-managed-instance.md) stehen ebenfalls zur Verfügung.
 
-## <a name="load-data"></a>Laden von Daten
+## <a name="load-data"></a>Laden der Daten
 
 - [Kopieren von Einzel- oder Pooldatenbanken innerhalb von Azure](sql-database-copy.md)
 - [Importieren einer Datenbank über eine BACPAC-Datei](sql-database-import.md)
@@ -43,7 +43,7 @@ In diesem Abschnitt sind verschiedene Anleitungen, Skripts und Erläuterungen au
 
 - [Manuelles Optimieren](sql-database-performance-guidance.md)
 - [Überwachen der Leistung mithilfe von DMVs](sql-database-monitoring-with-dmvs.md)
-- [Überwachen der Leistung mit dem Abfragespeicher](sql-database-operate-query-store.md)
+- [Überwachen der Leistung mit dem Abfragespeicher](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - [Behandeln von Leistungsproblemen mithilfe von Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md)
 - [Verwenden des Intelligent Insights-Diagnoseprotokolls](sql-database-intelligent-insights-use-diagnostics-log.md)
 - [Überwachen des In-Memory-OLTP-Speicherplatzes](sql-database-in-memory-oltp-monitoring.md)

@@ -7,11 +7,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.openlocfilehash: 566b6db829c9694a7e5e83cc25695e71ada0bc8d
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356958"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226690"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Verwenden des Node.js SDK für Mobile Apps
 
@@ -19,7 +19,7 @@ ms.locfileid: "78356958"
 
 Dieser Artikel enthält ausführliche Informationen und Beispiele, die veranschaulichen, wie Sie im Mobile Apps-Feature von Azure App Service ein Node.js-Back-End verwenden.
 
-## <a name="Introduction"></a>Einführung
+## <a name="introduction"></a><a name="Introduction"></a>Einführung
 
 Mobile Apps bietet eine Funktion zum Hinzufügen einer für Mobilgeräte optimierten Datenzugriff-Web-API zu einer Webanwendung. Das Mobile Apps SDK steht für ASP.NET- und Node.js-Webanwendungen zur Verfügung. Das SDK ermöglicht die folgenden Vorgänge:
 
@@ -39,7 +39,7 @@ Das Mobile Apps Node.js SDK unterstützt zwei Datenbanktreiber:
 * Der node-mssql-Treiber unterstützt Azure SQL-Datenbank und lokale SQL Server-Instanzen.  
 * Der sqlite3-Treiber unterstützt SQLite-Datenbanken nur auf einer einzigen Instanz.
 
-### <a name="howto-cmdline-basicapp"></a>Erstellen eines einfachen Node.js-Back-Ends über die Befehlszeile
+### <a name="create-a-basic-nodejs-back-end-by-using-the-command-line"></a><a name="howto-cmdline-basicapp"></a>Erstellen eines einfachen Node.js-Back-Ends über die Befehlszeile
 
 Jedes Mobile Apps-Node.js-Back-End verhält sich am Anfang wie eine ExpressJS-Anwendung. ExpressJS ist das beliebteste Webdienst-Framework für Node.js. Sie können eine [Express] -Basisanwendung wie folgt erstellen:
 
@@ -91,7 +91,7 @@ Diese Anwendung erstellt eine für Mobilgeräte optimierte Web-API mit einem ein
 
 Den Code für diese einfache Anwendung finden Sie im [basicapp-Beispiel auf GitHub].
 
-### <a name="howto-vs2015-basicapp"></a>Erstellen eines Node.js-Back-Ends mithilfe von Visual Studio 2015
+### <a name="create-a-nodejs-back-end-by-using-visual-studio-2015"></a><a name="howto-vs2015-basicapp"></a>Erstellen eines Node.js-Back-Ends mithilfe von Visual Studio 2015
 
 Für Visual Studio 2015 ist eine Erweiterung zum Entwickeln der Node.js-Anwendung in der IDE erforderlich. Um zu beginnen, installieren Sie die [Node.js-Tools 1.1 für Visual Studio]. Wenn Sie die Installation abschließen, erstellen Sie eine Express 4.x-Anwendung:
 
@@ -129,7 +129,7 @@ Für Visual Studio 2015 ist eine Erweiterung zum Entwickeln der Node.js-Anwendu
 
 1. Führen Sie die Anwendung entweder lokal aus (die API wird unter `http://localhost:3000` bereitgestellt), oder veröffentlichen Sie sie in Azure.
 
-### <a name="create-node-backend-portal"></a>Erstellen eines Node.js-Back-Ends mithilfe des Azure-Portals
+### <a name="create-a-nodejs-back-end-by-using-the-azure-portal"></a><a name="create-node-backend-portal"></a>Erstellen eines Node.js-Back-Ends mithilfe des Azure-Portals
 
 Sie können ein Mobile Apps-Back-End direkt im [Azure portal] erstellen. Sie können entweder die folgenden Schritte ausführen oder anhand der Anweisungen im Tutorial [Erstellen einer mobilen App](app-service-mobile-ios-get-started.md) einen Client und einen Server erstellen. Das Tutorial enthält eine vereinfachte Version dieser Anweisungen und eignet sich am besten für Proof of Concept-Projekte.
 
@@ -138,7 +138,7 @@ Sie können ein Mobile Apps-Back-End direkt im [Azure portal] erstellen. Sie kö
 Wählen Sie im Bereich **Erste Schritte** unter **Erstellen einer Tabellen-API** die Option **Node.js** als Back-End-Sprache aus.
 Aktivieren Sie das Kontrollkästchen **Ich bestätige, dass durch diese Aktion alle Websiteinhalte überschrieben werden**, und klicken Sie auf **TodoItem-Tabelle erstellen**.
 
-### <a name="download-quickstart"></a>Herunterladen des Schnellstart-Codeprojekts für das Node.js-Back-End mit Git
+### <a name="download-the-nodejs-back-end-quickstart-code-project-by-using-git"></a><a name="download-quickstart"></a>Herunterladen des Schnellstart-Codeprojekts für das Node.js-Back-End mit Git
 
 Wenn Sie im Portalbereich **Schnellstart** ein Node.js-Mobile Apps-Back-End erstellen, wird ein Node.js-Projekt für Sie erstellt und auf Ihrer Website bereitgestellt. Im Portal können Sie Tabellen und APIs hinzufügen und Codedateien für das Node.js-Back-End bearbeiten. Sie können auch verschiedene Bereitstellungstools zum Herunterladen des Back-End-Projekts verwenden, um Tabellen und APIs hinzuzufügen oder zu ändern und das Projekt dann erneut zu veröffentlichen. Weitere Informationen finden Sie im [Azure App Service-Bereitstellungshandbuch].
 
@@ -161,7 +161,7 @@ Beim folgenden Verfahren wird ein Git-Repository verwendet, um den Schnellstart-
 
 Die Website wird jeweils neu veröffentlicht, wenn ein neuer Satz mit Commits per Pushvorgang auf die Website übertragen wird.
 
-### <a name="howto-publish-to-azure"></a>Veröffentlichen des Node.js-Back-Ends in Azure
+### <a name="publish-your-nodejs-back-end-to-azure"></a><a name="howto-publish-to-azure"></a>Veröffentlichen des Node.js-Back-Ends in Azure
 
 Microsoft Azure bietet viele Verfahren zum Veröffentlichen Ihres Mobile Apps-Node.js-Back-Ends im Azure-Dienst. Hierzu gehören die Nutzung von Bereitstellungstools, die in Visual Studio integriert sind, Befehlszeilentools und Optionen für die fortlaufende Bereitstellung, die auf der Quellcodeverwaltung basieren. Weitere Informationen finden Sie im [Azure App Service-Bereitstellungshandbuch].
 
@@ -170,7 +170,7 @@ Azure App Service bietet spezielle Hinweise für Node.js-Anwendungen, die Sie vo
 * [Angeben der Node.js-Version]
 * Vorgehensweise: [Verwenden von Node.js-Modulen]
 
-### <a name="howto-enable-homepage"></a>Aktivieren einer Startseite für Ihre Anwendung
+### <a name="enable-a-home-page-for-your-application"></a><a name="howto-enable-homepage"></a>Aktivieren einer Startseite für Ihre Anwendung
 
 Viele Anwendungen sind eine Kombination aus Web-Apps und mobilen Apps. Sie können das ExpressJS-Framework verwenden, um diese beiden Aspekte zu kombinieren. In manchen Fällen möchten Sie jedoch vielleicht nur eine Mobilschnittstelle implementieren. Es ist hilfreich, eine Startseite einzurichten, um sicherzustellen, dass der App-Dienst betriebsbereit ist und ausgeführt wird. Sie können entweder Ihre eigene Startseite bereitstellen oder eine temporäre Startseite aktivieren. Zum Aktivieren einer temporären Startseite verwenden Sie folgenden Code, um Mobile Apps zu instanziieren:
 
@@ -180,7 +180,7 @@ var mobile = azureMobileApps({ homePage: true });
 
 Wenn diese Option nur bei der lokalen Entwicklung zur Verfügung stehen soll, können Sie diese Einstellung zu Ihrer azureMobile.js-Datei hinzufügen.
 
-## <a name="TableOperations"></a>Tabellenvorgänge
+## <a name="table-operations"></a><a name="TableOperations"></a>Tabellenvorgänge
 
 Das Node.js Server SDK für „azure-mobile-apps“ bietet Mechanismen, mit denen Sie in Azure SQL-Datenbank gespeicherte Datentabellen als Web-API verfügbar machen können. Fünf Vorgänge werden bereitgestellt:
 
@@ -194,7 +194,7 @@ Das Node.js Server SDK für „azure-mobile-apps“ bietet Mechanismen, mit dene
 
 Diese Web-API unterstützt [OData] und erweitert das Tabellenschema, um die [Synchronisierung von Offlinedaten] zu unterstützen.
 
-### <a name="howto-dynamicschema"></a>Definieren von Tabellen mit einem dynamischen Schema
+### <a name="define-tables-by-using-a-dynamic-schema"></a><a name="howto-dynamicschema"></a>Definieren von Tabellen mit einem dynamischen Schema
 
 Bevor Sie eine Tabelle verwenden können, müssen Sie sie definieren. Sie können Tabellen mit einem statischen Schema (Sie definieren die Spalten im Schema) oder dynamisch (das SDK steuert das Schema basierend auf eingehenden Anforderungen) definieren. Außerdem können Sie bestimmte Aspekte der Web-API steuern, indem Sie der Definition JavaScript-Code hinzufügen.
 
@@ -236,7 +236,7 @@ Tabellen verwenden standardmäßig ein dynamisches Schema. Zum globalen Deaktivi
 
 Ein vollständiges Beispiel finden Sie im [todo-Beispiel auf GitHub].
 
-### <a name="howto-staticschema"></a>Definieren von Tabellen mit einem statischen Schema
+### <a name="define-tables-by-using-a-static-schema"></a><a name="howto-staticschema"></a>Definieren von Tabellen mit einem statischen Schema
 
 Sie können die Spalten explizit definieren, die über die Web-API verfügbar gemacht werden sollen. Das Node.js SDK für „azure-mobile-apps“ fügt der von Ihnen bereitgestellten Liste automatisch alle zusätzlichen Spalten hinzu, die für die Synchronisierung von Offlinedaten benötigt werden. Für die Schnellstart-Clientanwendungen ist beispielsweise eine Tabelle mit zwei Spalten erforderlich: `text` (eine Zeichenfolge) und `complete` (ein boolescher Wert).  
 Die Tabelle kann wie folgt in der JavaScript-Datei mit der Tabellendefinition (im Verzeichnis `tables`) festgelegt werden:
@@ -260,7 +260,7 @@ module.exports = table;
 
 Wenn Sie Tabellen statisch definieren, müssen Sie auch die `tables.initialize()`-Methode aufrufen, um das Datenbankschema beim Starten zu erstellen. Die Methode `tables.initialize()` gibt ein [Promise]-Objekt zurück, um sicherzustellen, dass der Webdienst erst dann Anforderungen verarbeitet, nachdem die Datenbank initialisiert wurde.
 
-### <a name="howto-sqlexpress-setup"></a>Verwenden von SQL Server Express als Entwicklungsdatenspeicher auf Ihrem lokalen Computer
+### <a name="use-sql-server-express-as-a-development-data-store-on-your-local-machine"></a><a name="howto-sqlexpress-setup"></a>Verwenden von SQL Server Express als Entwicklungsdatenspeicher auf Ihrem lokalen Computer
 
 Das Mobile Apps Node.js SDK bietet drei Optionen zum Bereitstellen von Daten ohne weitere Konfiguration:
 
@@ -326,7 +326,7 @@ Die Node.js-Anwendung liest die Umgebungsvariable `SQLCONNSTR_MS_TableConnection
 
 Greifen Sie über eine TCP/IP-Verbindung auf die Datenbank zu. Geben Sie einen Benutzernamen und ein Kennwort für die Verbindung an.
 
-### <a name="howto-config-localdev"></a>Konfigurieren des Projekts für die lokale Entwicklung
+### <a name="configure-your-project-for-local-development"></a><a name="howto-config-localdev"></a>Konfigurieren des Projekts für die lokale Entwicklung
 
 Mobile Apps liest eine JavaScript-Datei mit dem Namen *azureMobile.js* aus dem lokalen Dateisystem. Verwenden Sie diese Datei nicht, um das Mobile Apps SDK in einer Produktionsumgebung zu konfigurieren. Verwenden Sie stattdessen **App-Einstellungen** im [Azure portal].
 
@@ -358,13 +358,13 @@ module.exports = {
 
 Es ist ratsam, dass Sie **azureMobile.js** Ihrer **.gitignore**-Datei hinzufügen (oder eine andere Datei zum Ignorieren der Quellcodeverwaltung), um zu verhindern, dass Kennwörter in der Cloud gespeichert werden. Konfigurieren Sie die Produktionseinstellungen immer in den **App-Einstellungen** im [Azure portal].
 
-### <a name="howto-appsettings"></a>Konfigurieren von App-Einstellungen für Ihre mobile App
+### <a name="configure-app-settings-for-your-mobile-app"></a><a name="howto-appsettings"></a>Konfigurieren von App-Einstellungen für Ihre mobile App
 
 Für die meisten Einstellungen in der Datei „azureMobile.js“ gibt es im [Azure portal] eine entsprechende App-Einstellung. Verwenden Sie die folgende Liste, um Ihre App unter **App-Einstellungen** zu konfigurieren:
 
 | App-Einstellung | azureMobile.js-Einstellung | BESCHREIBUNG | Gültige Werte |
 |:--- |:--- |:--- |:--- |
-| **MS_MobileAppName** |name |Name der App |Zeichenfolge |
+| **MS_MobileAppName** |name |Name der App |string |
 | **MS_MobileLoggingLevel** |logging.level |Mindestprotokolliergrad für die zu protokollierenden Meldungen. |error, warning, info, verbose, debug, silly |
 | **MS_DebugMode** |debug |Aktiviert oder deaktiviert den Debugmodus. |true, false |
 | **MS_TableSchema** |data.schema |Name des Standardschemas für SQL-Tabellen |string (default: dbo) |
@@ -385,7 +385,7 @@ So legen Sie eine App-Einstellung fest:
 
 Nach dem Ändern der meisten App-Einstellungen ist ein Neustart des Diensts erforderlich.
 
-### <a name="howto-use-sqlazure"></a>Verwenden von SQL-Datenbank als Datenspeicher für die Produktion
+### <a name="use-sql-database-as-your-production-data-store"></a><a name="howto-use-sqlazure"></a>Verwenden von SQL-Datenbank als Datenspeicher für die Produktion
 
 <!--- ALTERNATE INCLUDE - we can't use ../includes/app-service-mobile-dotnet-backend-create-new-service.md - slightly different semantics -->
 
@@ -427,7 +427,7 @@ Sie können entweder für eine vorhandene SQL-Datenbank eine Verbindung mit Ihre
 
 Das Erstellen der Datenbank kann einige Minuten dauern. Im Bereich **Benachrichtigungen** können Sie den Fortschritt der Bereitstellung überwachen. Fahren Sie erst fort, wenn die Datenbank erfolgreich bereitgestellt wurde. Nach der Bereitstellung der Datenbank wird in den Einstellungen Ihres Mobile Apps-Back-Ends eine Verbindungszeichenfolge für die SQL-Datenbankinstanz erstellt. Sie können diese App-Einstellung unter **Einstellungen** > **Anwendungseinstellungen** > **Verbindungszeichenfolgen** anzeigen.
 
-### <a name="howto-tables-auth"></a>Erzwingen der Authentifizierung für den Zugriff auf Tabellen
+### <a name="require-authentication-for-access-to-tables"></a><a name="howto-tables-auth"></a>Erzwingen der Authentifizierung für den Zugriff auf Tabellen
 
 Wenn Sie die App Service-Authentifizierung mit dem `tables`-Endpunkt verwenden möchten, müssen Sie die App Service-Authentifizierung zuerst im [Azure portal] konfigurieren. Weitere Informationen finden Sie im Konfigurationshandbuch für den Identitätsanbieter, den Sie verwenden möchten:
 
@@ -467,7 +467,7 @@ Die access-Eigenschaft kann einen von drei Werten annehmen:
 
 Wenn die access-Eigenschaft nicht definiert ist, ist der Zugriff ohne Authentifizierung zulässig.
 
-### <a name="howto-tables-getidentity"></a>Verwenden von Authentifizierungsansprüchen für Tabellen
+### <a name="use-authentication-claims-with-your-tables"></a><a name="howto-tables-getidentity"></a>Verwenden von Authentifizierungsansprüchen für Tabellen
 Sie können verschiedene Ansprüche einrichten, die beim Einrichten der Authentifizierung angefordert werden. Diese Ansprüche stehen normalerweise nicht über das `context.user` -Objekt zur Verfügung. Sie können jedoch mithilfe der `context.user.getIdentity()`-Methode abgerufen werden. Die `getIdentity()`-Methode gibt eine Zusage (promise) zurück, die in ein Objekt aufgelöst wird. Das Objekt wird durch die Authentifizierungsmethode mit einem Schlüssel versehen (`facebook`, `google`, `twitter`, `microsoftaccount` oder `aad`).
 
 Wenn Sie beispielsweise die Microsoft-Kontoauthentifizierung einrichten und den Anspruch „E-Mail-Adressen“ anfordern, können Sie die E-Mail-Adresse mit dem folgenden Tabellencontroller zum Datensatz hinzufügen:
@@ -529,7 +529,7 @@ module.exports = table;
 
 Um zu sehen, welche Ansprüche verfügbar sind, verwenden Sie einen Webbrowser zum Anzeigen des `/.auth/me` -Endpunkts der Website.
 
-### <a name="howto-tables-disabled"></a>Deaktivieren des Zugriffs auf bestimmte Tabellenvorgänge
+### <a name="disable-access-to-specific-table-operations"></a><a name="howto-tables-disabled"></a>Deaktivieren des Zugriffs auf bestimmte Tabellenvorgänge
 
 Die access-Eigenschaft kann nicht nur in der Tabelle angezeigt werden, sondern sie kann auch verwendet werden, um einzelne Vorgänge zu steuern. Es gibt vier Vorgänge:
 
@@ -554,7 +554,7 @@ table.delete.access = 'disabled';
 module.exports = table;
 ```
 
-### <a name="howto-tables-query"></a>Anpassen der Abfrage für Tabellenvorgänge
+### <a name="adjust-the-query-that-is-used-with-table-operations"></a><a name="howto-tables-query"></a>Anpassen der Abfrage für Tabellenvorgänge
 
 Eine häufige Anforderung an Tabellenvorgänge ist das Bereitstellen einer eingeschränkten Anzeige von Daten. Beispielsweise können Sie eine Tabelle bereitstellen, die mit der authentifizierten Benutzer-ID gekennzeichnet ist, damit Sie nur Ihre eigenen Datensätze lesen oder aktualisieren können. Mit der folgenden Tabellendefinition werden diese Funktionen bereitgestellt:
 
@@ -595,7 +595,7 @@ Vorgänge, bei denen normalerweise eine Abfrage ausgeführt wird, verfügen übe
 context.query.where('myfield eq ?', 'value');
 ```
 
-### <a name="howto-tables-softdelete"></a>Konfigurieren des vorläufigen Löschens in einer Tabelle
+### <a name="configure-a-soft-delete-on-a-table"></a><a name="howto-tables-softdelete"></a>Konfigurieren des vorläufigen Löschens in einer Tabelle
 
 Beim vorläufigen Löschen werden Datensätze nicht tatsächlich gelöscht. Stattdessen werden sie in der Datenbank als gelöscht markiert, indem die Spalte „deleted“ auf „true“ festgelegt wird. Das Mobile Apps SDK entfernt vorläufig gelöschte Datensätze automatisch aus Ergebnissen, es sei denn, im Mobile Client SDK wird `IncludeDeleted()` verwendet. Legen Sie in der Tabellendefinitionsdatei die `softDelete`-Eigenschaft fest, um eine Tabelle für das vorläufige Löschen zu konfigurieren:
 
@@ -624,7 +624,7 @@ module.exports = table;
 
 Sie sollten ein Verfahren zum Löschen von Datensätzen einrichten: eine Clientanwendung, einen WebJob, eine Azure-Funktion oder eine benutzerdefinierte API.
 
-### <a name="howto-tables-seeding"></a>Durchführen des Seedings für Ihre Datenbank mit Daten
+### <a name="seed-your-database-with-data"></a><a name="howto-tables-seeding"></a>Durchführen des Seedings für Ihre Datenbank mit Daten
 
 Wenn Sie eine neue Anwendung erstellen, kann es sein, dass Sie für eine Tabelle ein Seeding mit Daten durchführen möchten. Dies kann innerhalb der JavaScript-Datei mit der Tabellendefinition erfolgen:
 
@@ -656,7 +656,7 @@ Ein Seeding der Daten findet nur statt, wenn Sie zum Erstellen der Tabelle das M
 
 Wir empfehlen, die `tables.initialize()` -Methode explizit aufzurufen, um die Tabelle zu erstellen, wenn die Ausführung des Diensts beginnt.
 
-### <a name="Swagger"></a>Aktivieren der Swagger-Unterstützung
+### <a name="enable-swagger-support"></a><a name="Swagger"></a>Aktivieren der Swagger-Unterstützung
 [Swagger]-Unterstützung ist in Mobile Apps bereits integriert. Um die Swagger-Unterstützung zu aktivieren, installieren Sie zuerst die Swagger-Benutzeroberfläche als Abhängigkeit:
 
     npm install --save swagger-ui
@@ -677,11 +677,11 @@ Der `swagger`-Endpunkt befindet sich unter http://*Ihre_Website*.azurewebsites.n
 
 Sie können die Swagger-Option auch der Datei „azureMobile.js“ hinzufügen, wenn die Swagger-Unterstützung nur für die lokale Entwicklung verfügbar sein soll.
 
-## <a name="a-namepushpush-notifications"></a><a name="push"/>Pushbenachrichtigungen
+## <a name="push-notifications"></a><a name="push"/>Pushbenachrichtigungen
 
 Mobile Apps ist in Azure Notification Hubs integriert, damit Sie gezielte Pushbenachrichtigungen an Millionen von Geräten auf allen gängigen Plattformen senden können. Mit Notification Hubs können Sie Pushbenachrichtigungen an iOS-, Android- und Windows-Geräte senden. Weitere Informationen zu den verfügbaren Möglichkeiten mit Notification Hubs finden Sie unter [Übersicht über Notification Hubs](../notification-hubs/notification-hubs-push-notification-overview.md).
 
-### <a name="send-push"></a>Senden von Pushbenachrichtigungen
+### <a name="send-push-notifications"></a><a name="send-push"></a>Senden von Pushbenachrichtigungen
 
 Der folgende Code zeigt, wie Sie das `push`-Objekt zum Senden einer Broadcast-Pushbenachrichtigung an registrierte iOS-Geräte verwenden:
 
@@ -717,7 +717,7 @@ if (context.push) {
 }
 ```
 
-### <a name="push-user"></a>Senden von Pushbenachrichtigungen an einen authentifizierten Benutzer mithilfe von Tags
+### <a name="send-push-notifications-to-an-authenticated-user-by-using-tags"></a><a name="push-user"></a>Senden von Pushbenachrichtigungen an einen authentifizierten Benutzer mithilfe von Tags
 Wenn ein authentifizierter Benutzer für Pushbenachrichtigungen registriert wird, wird der Registrierung automatisch ein Tag mit der Benutzer-ID hinzugefügt. Mithilfe dieses Tags können Sie Pushbenachrichtigungen an alle Geräte senden, die von einem bestimmten Benutzer registriert wurden. Der folgende Code ruft die SID des Benutzers ab, der die Anforderung stellt, und sendet eine Pushbenachrichtigungsvorlage an jede Geräteregistrierung für diesen Benutzer:
 
 ```javascript
@@ -734,9 +734,9 @@ if (context.push) {
 
 Bevor Sie sich für Pushbenachrichtigungen von einem authentifizierten Client registrieren, stellen Sie sicher, dass die Authentifizierung abgeschlossen ist.
 
-## <a name="CustomAPI"></a> Benutzerdefinierte APIs
+## <a name="custom-apis"></a><a name="CustomAPI"></a> Benutzerdefinierte APIs
 
-### <a name="howto-customapi-basic"></a>Definieren einer benutzerdefinierten API
+### <a name="define-a-custom-api"></a><a name="howto-customapi-basic"></a>Definieren einer benutzerdefinierten API
 
 Zusätzlich zur Datenzugriff-API über den `/tables`-Endpunkt unterstützt Mobile Apps auch benutzerdefinierte APIs. Benutzerdefinierte APIs werden auf ähnliche Weise wie Tabellendefinitionen definiert und können auf die gleichen Funktionen zugreifen, einschließlich der Authentifizierung.
 
@@ -788,7 +788,7 @@ module.exports = api;
 
 Jeder Parameter entspricht einem der standardmäßigen RESTful-Verben: GET, POST, PATCH oder DELETE. Bei der Methode handelt es sich um eine [ExpressJS-Middleware]-Standardfunktion, mit der die erforderliche Ausgabe gesendet wird.
 
-### <a name="howto-customapi-auth"></a>Erzwingen der Authentifizierung für den Zugriff auf eine benutzerdefinierte API
+### <a name="require-authentication-for-access-to-a-custom-api"></a><a name="howto-customapi-auth"></a>Erzwingen der Authentifizierung für den Zugriff auf eine benutzerdefinierte API
 
 Das Mobile Apps SDK implementiert die Authentifizierung sowohl für den `tables`-Endpunkt als auch für benutzerdefinierte APIs auf die gleiche Weise. Fügen Sie eine `access`-Eigenschaft hinzu, um die Authentifizierung für die im vorherigen Abschnitt entwickelte API hinzuzufügen:
 
@@ -822,7 +822,7 @@ module.exports = api;
 
 Dasselbe Token, das für den `tables`-Endpunkt verwendet wird, muss auch für benutzerdefinierte APIs verwendet werden, die eine Authentifizierung erfordern.
 
-### <a name="howto-customapi-auth"></a>Ausführen großer Dateiuploads
+### <a name="handle-large-file-uploads"></a><a name="howto-customapi-auth"></a>Ausführen großer Dateiuploads
 
 Das Mobile Apps SDK verwendet die [body-parser-Middleware](https://github.com/expressjs/body-parser), um Textinhalt in Ihrer Übermittlung zu akzeptieren und zu decodieren. Sie können „body-parser“ im Voraus so konfigurieren, dass größere Dateiuploads akzeptiert werden:
 
@@ -850,7 +850,7 @@ app.listen(process.env.PORT || 3000);
 
 Diese Datei wird vor der Übertragung Base64-codiert. Durch diese Codierung erhöht sich die Größe des tatsächlichen Uploads (und damit auch die Größe, die Sie einberechnen müssen).
 
-### <a name="howto-customapi-sql"></a>Ausführen von benutzerdefinierten SQL-Anweisungen
+### <a name="execute-custom-sql-statements"></a><a name="howto-customapi-sql"></a>Ausführen von benutzerdefinierten SQL-Anweisungen
 
 Das Mobile Apps SDK ermöglicht über das request-Objekt Zugriff auf den gesamten Kontext. Sie können ganz einfach parameterbasierte SQL-Anweisungen für den definierten Datenanbieter ausführen:
 
@@ -883,9 +883,9 @@ api.get.access = 'authenticated';
 module.exports = api;
 ```
 
-## <a name="Debugging"></a>Debuggen
+## <a name="debugging"></a><a name="Debugging"></a>Debuggen
 
-### <a name="howto-diagnostic-logs"></a>Debuggen, Diagnose und Problembehandlung bei Mobile Apps
+### <a name="debug-diagnose-and-troubleshoot-mobile-apps"></a><a name="howto-diagnostic-logs"></a>Debuggen, Diagnose und Problembehandlung bei Mobile Apps
 
 Azure App Service stellt mehrere Debugging- und Problembehandlungsverfahren für Node.js-Anwendungen bereit.
 Folgende Artikel helfen Ihnen beim Einstieg in die Problembehandlung Ihres Node.js Mobile Apps-Back-Ends:

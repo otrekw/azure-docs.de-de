@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
 ms.openlocfilehash: 07d9e03f1631ebce88a7a7c2e33be62f21dda522
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60319622"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>Verwalten des Sicherungskatalogs mithilfe des StorSimple-Geräte-Manager-Diensts
@@ -31,9 +31,9 @@ In diesem Tutorial wird erläutert, wie ein Sicherungssatz aufgeführt, ausgewä
 
 Das Blatt **Sicherungskatalog** bietet eine Abfrage, mit der Sie die Auswahl der Sicherungssätze einschränken können. Sie können die abgerufenen Sicherungssätze anhand der folgenden Parameter filtern:
 
-* **Gerät**: Das Gerät, auf dem der Sicherungssatz erstellt wurde.
+* **Gerät** : das Gerät, auf dem der Sicherungssatz erstellt wurde.
 * **Sicherungsrichtlinie oder Volume**: Die Sicherungsrichtlinie oder das Volume, der oder dem dieser Sicherungssatz zugeordnet ist.
-* **Von und Bis**: Datums- und Uhrzeitbereich, in dem die Sicherung erstellt wurde.
+* **Von und Bis** : der Datums- und Uhrzeitbereich, in dem die Sicherung erstellt wurde.
 
 Die gefilterten Sicherungssätze werden dann basierend auf den folgenden Attributen in Tabellenform angezeigt:
 

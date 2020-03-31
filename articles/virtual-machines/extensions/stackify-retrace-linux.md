@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: akjosh
 ms.openlocfilehash: 5914947bd994ee405f253e34c3dd919dd6561898
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073641"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227874"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Stackify Retrace-Agent-Erweiterung für Linux
 

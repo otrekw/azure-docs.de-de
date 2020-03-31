@@ -13,14 +13,14 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 462d54a9d89d6f03aed5e221fa02609da786c8c1
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918729"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229922"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Verschieben von Daten in eine und aus einer Azure-Tabelle mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-azure-table-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-azure-table-storage.md)
 
@@ -36,7 +36,7 @@ Sie können Daten aus einem beliebigen unterstützten Quelldatenspeicher in Azur
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs in und aus Azure Table Storage verschiebt.
 
-Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Siehe [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
 Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlage**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. 
 
@@ -476,14 +476,14 @@ Beim Verschieben von Daten in die und aus der Azure-Tabelle werden die folgenden
 
 | OData-Datentyp | .NET-Typ | Details |
 | --- | --- | --- |
-| Edm.Binary |Byte[] |Ein Array von Bytes mit einer Größe bis zu 64KB. |
+| Edm.Binary |byte[] |Ein Array von Bytes mit einer Größe bis zu 64KB. |
 | Edm.Boolean |bool |Ein boolescher Wert. |
 | Edm.DateTime |Datetime |Ein 64-Bit-Wert, ausgedrückt als koordinierte Weltzeit (UTC). Der unterstützte DateTime-Bereich beginnt um 00:00 Uhr, Mitternacht, 1. Januar, 1601 n. Chr. (unsere Zeitrechnung), UTC Der Bereich endet am 31. Dezember 9999. |
 | Edm.Double |double |Ein 64-Bit-Gleitkommawert. |
 | Edm.Guid |Guid |Ein 128-Bit-GUID. |
 | Edm.Int32 |Int32 |Eine 32-Bit-Ganzzahl. |
 | Edm.Int64 |Int64 |Eine 64-Bit-Ganzzahl. |
-| Edm.String |Zeichenfolge |Ein UTF-16-codierter Wert. Zeichenfolgenwerte können bis zu 64KB groß sein. |
+| Edm.String |String |Ein UTF-16-codierter Wert. Zeichenfolgenwerte können bis zu 64KB groß sein. |
 
 ### <a name="type-conversion-sample"></a>Beispiel für Typkonvertierung
 Im folgenden Beispiel wird das Kopieren von Daten aus einem Azure-Blob in eine Azure-Tabelle mit Typumwandlungen gezeigt.

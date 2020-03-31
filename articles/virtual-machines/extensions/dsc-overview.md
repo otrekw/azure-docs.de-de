@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: b6b9d0f146fd98fd90aa8858e522449be571842c
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: dcb63031e6c033ce2372dc05e588b0f54cb1609f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293163"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294814"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Einführung in den Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands
 
@@ -73,7 +73,7 @@ Beim Verwenden der DSC-Erweiterung zum Registrieren eines Knotens beim State Con
 - RegistrationKey – ein gemeinsames Geheimnis, das zum Registrieren von Knoten beim Dienst verwendet wird
 - NodeConfigurationName – der Name der Knotenkonfiguration (MOF), die beim Dienst abgerufen werden soll, um die Serverrolle zu konfigurieren
 
-Sie können diese Informationen im [Azure-Portal](../../automation/automation-dsc-onboarding.md#azure-portal) anzeigen oder PowerShell verwenden.
+Sie können diese Informationen im [Azure-Portal](../../automation/automation-dsc-onboarding.md#onboard-a-vm-using-azure-portal) anzeigen oder PowerShell verwenden.
 
 ```powershell
 (Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).Endpoint
@@ -182,21 +182,21 @@ So richten Sie DSC im Portal ein:
 
 Für dieses Portal werden folgende Eingaben erfasst:
 
-- **Konfigurationsmodule oder -skript:** Dieses Feld ist obligatorisch. (Das Formular wurde nicht für das [Standardkonfigurationsskript](#default-configuration-script) aktualisiert.) Konfigurationsmodule und Skripts benötigen eine PS1-Datei, die ein Konfigurationsskript oder eine ZIP-Datei mit einer ps1-Konfigurationsskript auf der Stammebene aufweist. Wenn Sie eine ZIP-Datei verwenden, müssen alle abhängigen Ressourcen in Modulordnern in der ZIP-Ordner enthalten sein. Sie können die ZIP-Datei mit dem im Azure PowerShell SDK enthaltenen Cmdlet **Publish-AzureVMDscConfiguration -OutputArchivePath** erstellen. Die ZIP-Datei wird in Ihren Benutzer-Blobspeicher hochgeladen und durch ein SAS-Token geschützt.
+- **Konfigurationsmodule oder -skript**: Dieses Feld ist obligatorisch. (Das Formular wurde nicht für das [Standardkonfigurationsskript](#default-configuration-script) aktualisiert.) Konfigurationsmodule und Skripts benötigen eine PS1-Datei, die ein Konfigurationsskript oder eine ZIP-Datei mit einer ps1-Konfigurationsskript auf der Stammebene aufweist. Wenn Sie eine ZIP-Datei verwenden, müssen alle abhängigen Ressourcen in Modulordnern in der ZIP-Ordner enthalten sein. Sie können die ZIP-Datei mit dem im Azure PowerShell SDK enthaltenen Cmdlet **Publish-AzureVMDscConfiguration -OutputArchivePath** erstellen. Die ZIP-Datei wird in Ihren Benutzer-Blobspeicher hochgeladen und durch ein SAS-Token geschützt.
 
-- **Modulspezifischer Konfigurationsname:** Sie können mehrere Konfigurationsfunktionen in einer PS1-Datei einfügen. Geben Sie den Namen des PS1-Konfigurationsskripts ein – gefolgt von \\ und dem Namen der Konfigurationsfunktion. Wenn der Name des PS1-Skripts z.B. „configuration.ps1“ und die Konfiguration **IisInstall** lautet, geben Sie **configuration.ps1\IisInstall** ein.
+- **Modulspezifischer Konfigurationsname**: Sie können mehrere Konfigurationsfunktionen in eine PS1-Datei einfügen. Geben Sie den Namen des PS1-Konfigurationsskripts ein – gefolgt von \\ und dem Namen der Konfigurationsfunktion. Wenn der Name des PS1-Skripts z.B. „configuration.ps1“ und die Konfiguration **IisInstall** lautet, geben Sie **configuration.ps1\IisInstall** ein.
 
-- **Konfigurationsargumente:** Falls die Konfigurationsfunktion Argumente akzeptiert, geben Sie diese hier im Format **argumentName1=value1,argumentName2=value2** ein. Hierbei handelt es sich um ein anderes Format als bei den Konfigurationsargumenten, die von PowerShell-Cmdlets oder Resource Manager-Vorlagen akzeptiert werden.
+- **Konfigurationsargumente**: Falls die Konfigurationsfunktion Argumente akzeptiert, geben Sie diese hier im Format **argumentName1=value1,argumentName2=value2** ein. Hierbei handelt es sich um ein anderes Format als bei den Konfigurationsargumenten, die von PowerShell-Cmdlets oder Resource Manager-Vorlagen akzeptiert werden.
 
-- **PSD1-Konfigurationsdatendatei:** Dieses Feld ist optional. Wenn Ihre Konfiguration eine Konfigurationsdatendatei in PSD1 erfordert, wählen Sie mithilfe dieses Felds eine solche Datei aus, und laden Sie sie in Ihren Benutzer-Blobspeicher hoch. Die Konfigurationsdatei wird durch ein SAS-Token in einem Blobspeicher geschützt.
+- **PSD1-Konfigurationsdatendatei**: Dieses Feld ist optional. Wenn Ihre Konfiguration eine Konfigurationsdatendatei in PSD1 erfordert, wählen Sie mithilfe dieses Felds eine solche Datei aus, und laden Sie sie in Ihren Benutzer-Blobspeicher hoch. Die Konfigurationsdatei wird durch ein SAS-Token in einem Blobspeicher geschützt.
 
-- **WMF-Version:** Gibt die Version von Windows Management Framework (WMF) an, die auf Ihrem virtuellen Computer installiert sein muss. Wenn diese Eigenschaft auf „latest“ festgelegt ist, wird die aktuelle Version von WMF installiert. Die einzigen derzeit möglichen Werte für diese Eigenschaft sind „4.0“, „5.0“, „5.1“ und „latest“. Diese möglichen Werte werden gelegentlich aktualisiert. Der Standardwert ist **neueste**.
+- **WMF-Version**: Gibt die Version von Windows Management Framework (WMF) an, die auf Ihrer VM installiert sein muss. Wenn diese Eigenschaft auf „latest“ festgelegt ist, wird die aktuelle Version von WMF installiert. Die einzigen derzeit möglichen Werte für diese Eigenschaft sind „4.0“, „5.0“, „5.1“ und „latest“. Diese möglichen Werte werden gelegentlich aktualisiert. Der Standardwert ist **neueste**.
 
-- **Datensammlung:** Bestimmt, ob die Erweiterung Telemetriedaten sammelt. Weitere Informationen finden Sie unter [Azure DSC extension data collection](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/) (Datensammlung mit der Azure DSC-Erweiterung).
+- **Datensammlung**: Bestimmt, ob die Erweiterung Telemetriedaten sammelt. Weitere Informationen finden Sie unter [Azure DSC extension data collection](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/) (Datensammlung mit der Azure DSC-Erweiterung).
 
 - **Version**: Gibt die Version der zu installierenden DSC-Erweiterung an. Informationen zu Versionen finden Sie unter [Versionsverlauf der Azure Desired State Configuration-Erweiterung](/powershell/scripting/dsc/getting-started/azuredscexthistory).
 
-- **Nebenversion automatisch aktualisieren:** Dieses Feld entspricht dem **AutoUpdate**-Switch in den Cmdlets und ermöglicht die Erweiterung zum automatischen Aktualisieren auf die neueste Installation während der Installation. **Ja** weist den Erweiterungshandler dazu an, die neueste verfügbare Version zu verwenden, während **Nein** die Installation der angegebenen **Version** erzwingt. Wird weder **Ja** noch **Nein** ausgewählt, so entspricht dies der Auswahl von **Nein**.
+- **Automatisch Upgrade für Nebenversion durchführen**: Dieses Feld entspricht dem **AutoUpdate**-Switch in den Cmdlets und ermöglicht die Erweiterung zum automatischen Aktualisieren auf die neueste Installation während der Installation. **Ja** weist den Erweiterungshandler dazu an, die neueste verfügbare Version zu verwenden, während **Nein** die Installation der angegebenen **Version** erzwingt. Wird weder **Ja** noch **Nein** ausgewählt, so entspricht dies der Auswahl von **Nein**.
 
 ## <a name="logs"></a>Protokolle
 

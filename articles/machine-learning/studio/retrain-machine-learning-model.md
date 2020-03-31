@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 804aeee112d060c411a4e37b5d19e4766307b0a0
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 218c1c98a2ed775ae86c1657156991879708cc7a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169167"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79217938"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Erneutes Trainieren und Bereitstellen eines Machine Learning-Modells
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Das erneute Training von Machine Learning-Modellen ist eine Möglichkeit sicherzustellen, dass sie fehlerfrei bleiben und auf den relevantesten verfügbaren Daten basieren. Dieser Artikel veranschaulicht das erneute Trainieren und Bereitstellen eines Machine Learning-Modells als neuer Webdienst in Studio (klassisch). Wenn Sie einen klassischen Webdienst erneut trainieren möchten, [lesen Sie diese Anleitung](retrain-classic-web-service.md).
 
@@ -59,7 +61,7 @@ In diesem Beispiel dient C# zum Erstellen der Anwendung für erneutes Trainieren
 
 Rufen Sie mit den folgenden Schritten die APIs zum erneuten Trainieren auf:
 
-1. Erstellen Sie in Visual Studio eine C#-Konsolenanwendung: **Neu** > **Projekt** > **Visual C#**  > **Klassischer Windows-Desktop** > **Konsolen-App (.NET Framework)** .
+1. Erstellen Sie eine C#-Konsolenanwendung in Visual Studio: **Neu** > **Projekt** > **Visual C#**  > **Klassischer Windows-Desktop** > **Konsolen-App (.NET Framework)** .
 1. Melden Sie sich beim Machine Learning-Webdienstportal an.
 1. Klicken Sie auf den verwendeten Webdienst.
 1. Klicken Sie auf **Consume**.

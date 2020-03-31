@@ -5,18 +5,18 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 4f94ef66610b56d8843d59e5ca72a48143b742e8
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.date: 3/18/2020
+ms.openlocfilehash: 20a2066dc0228fe9c2fee09387d96bf6aafeb32f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251394"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531973"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Überwachung in Azure Database for MariaDB
 Die Überwachung der Daten zu Ihren Servern unterstützt Sie bei der Problembehandlung und der Optimierung Ihrer Workloads. Azure Database for MariaDB bietet verschiedene Metriken, die Einblicke in das Verhalten Ihres Servers ermöglichen.
 
-## <a name="metrics"></a>Metriken
+## <a name="metrics"></a>metrics
 Alle Azure-Metriken werden im Minutentakt erfasst, und für jede Metrik steht ein Verlauf von 30 Tagen zur Verfügung. Sie können Warnungen für die Metriken konfigurieren. Darüber hinaus können weitere Aufgaben wie das Einrichten automatisierter Aktionen, das Durchführen erweiterter Analysen und das Archivieren des Verlaufs ausgeführt werden. Weitere Informationen finden Sie unter [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
 Eine Schritt-für-Schritt-Anleitung finden Sie unter [Use the Azure portal to set up alerts on metrics for Azure Database for PostgreSQL](howto-alert-metric.md) (Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for PostgreSQL).
@@ -24,7 +24,7 @@ Eine Schritt-für-Schritt-Anleitung finden Sie unter [Use the Azure portal to se
 ### <a name="list-of-metrics"></a>Liste der Metriken
 Für Azure Database for MariaDB sind folgende Metriken verfügbar:
 
-|Metrik|Metrikanzeigename|Einheit|Beschreibung|
+|Metrik|Metrikanzeigename|Einheit|BESCHREIBUNG|
 |---|---|---|---|
 |cpu_percent|CPU in Prozent|Percent|Die CPU-Auslastung in Prozent|
 |memory_percent|Arbeitsspeicher in Prozent|Percent|Die Arbeitsspeicherauslastung in Prozent|

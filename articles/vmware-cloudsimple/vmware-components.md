@@ -1,7 +1,7 @@
 ---
-title: 'Azure VMware Solutions (AVS): VMware-Komponenten in der privaten AVS-Cloud'
-description: Beschreibt, wie VMware-Komponenten in einer privaten AVS-Cloud installiert werden
-titleSuffix: Azure VMware Solutions (AVS)
+title: VMware-Komponenten in der privaten Cloud
+titleSuffix: Azure VMware Solution by CloudSimple
+description: Beschreibt, wie VMware-Komponenten in einer privaten Cloud installiert werden
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/15/2019
@@ -9,25 +9,25 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3ea6c22c3957f72a0a416ce7ae42c62ff5a0791a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 9c9b80cd4d8a7a7ac5597d10bbb87095564bd461
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77016781"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235786"
 ---
-# <a name="avs-private-cloud-vmware-components"></a>VMware-Komponenten in der privaten AVS-Cloud
+# <a name="private-cloud-vmware-components"></a>VMware-Komponenten in der privaten Cloud
 
-Eine private AVS-Cloud ist eine isolierte VMware-Stapelumgebung (ESXi-Hosts, vCenter, vSAN und NSX), die von einem vCenter-Server in einer Verwaltungsdomäne verwaltet wird. Der AVS-Dienst ermöglicht Ihnen, VMware in einer Hardwareinfrastruktur an Azure-Standorten nativ bereitzustellen. Private AVS-Clouds sind in den Rest der Azure-Cloud integriert. Eine private AVS-Cloud wird mit den folgenden VMware-Stapelkomponenten bereitgestellt:
+Eine private Cloud ist eine isolierte VMware-Stapelumgebung (ESXi-Hosts, vCenter, vSAN und NSX), die von einem vCenter-Server in einer Verwaltungsdomäne verwaltet wird.  Der CloudSimple-Dienst ermöglicht Ihnen, VMware in einer Hardwareinfrastruktur an Azure-Standorten nativ bereitzustellen.  Private Clouds sind in den Rest der Azure-Cloud integriert.  Eine private Cloud wird mit den folgenden VMware-Stapelkomponenten bereitgestellt:
 
 * **VMware ESXi:** Hypervisor auf dedizierten Azure-Knoten
-* **VMware vCenter:** Appliance für die zentralisierte Verwaltung der vSphere-Umgebung in der privaten AVS-Cloud
+* **VMware vCenter:** Appliance für die zentrale Verwaltung der vSphere-Umgebung in der privaten Cloud
 * **VMware vSAN:** Lösung für hyperkonvergente Infrastruktur
 * **VMware NSX Data Center:** Netzwerkvirtualisierungs- und Sicherheitssoftware  
 
 ## <a name="vmware-component-versions"></a>Versionen der VMware-Komponenten
 
-Ein VMware-Stapel in einer privaten AVS-Cloud wird mit den folgenden Softwareversionen bereitgestellt.
+Ein VMware-Stapel in einer privaten Cloud wird mit der folgenden Softwareversion bereitgestellt.
 
 | Komponente | Version | Lizenzierte Version |
 |-----------|---------|------------------|
@@ -38,23 +38,23 @@ Ein VMware-Stapel in einer privaten AVS-Cloud wird mit den folgenden Softwarever
 
 ## <a name="esxi"></a>ESXi
 
-VMware ESXi wird auf bereitgestellten AVS-Knoten installiert, wenn Sie eine private AVS-Cloud erstellen. ESXi bietet den Hypervisor für die Bereitstellung von Workload-VMs. Die Knoten bieten eine hyperkonvergente Infrastruktur (Compute und Speicher) in Ihrer privaten AVS-Cloud. Die Knoten sind ein Teil des vSphere-Clusters in der privaten AVS-Cloud. Jeder Knoten verfügt über vier physische Netzwerkschnittstellen, die mit dem zugrunde liegenden Netzwerk verbunden sind. Mit zwei physischen Netzwerkschnittstellen wird ein **vSphere Distributed Switch (VDS)** in vCenter erstellt, und mit zwei Netzwerkschnittstellen wird ein **über NSX verwalteter virtueller verteilter Switch (N-VDS)** erstellt. Die Netzwerkschnittstellen werden im Aktiv/Aktiv-Modus für Hochverfügbarkeit konfiguriert.
+VMware ESXi wird auf bereitgestellten CloudSimple-Knoten installiert, wenn Sie eine private Cloud erstellen.  ESXi bietet den Hypervisor für die Bereitstellung von Workload-VMs.  Die Knoten bieten eine hyperkonvergente Infrastruktur (Compute und Speicher) in Ihrer privaten Cloud.  Die Knoten sind ein Teil des vSphere-Clusters in der privaten Cloud.  Jeder Knoten verfügt über vier physische Netzwerkschnittstellen, die mit dem zugrunde liegenden Netzwerk verbunden sind.  Mit zwei physischen Netzwerkschnittstellen wird ein **vSphere Distributed Switch (VDS)** in vCenter erstellt, und mit zwei Netzwerkschnittstellen wird ein **über NSX verwalteter virtueller verteilter Switch (N-VDS)** erstellt.  Die Netzwerkschnittstellen werden im Aktiv/Aktiv-Modus für Hochverfügbarkeit konfiguriert.
 
 Weitere Informationen zu VMware ESXi
 
 ## <a name="vcenter-server-appliance"></a>vCenter-Serverappliance
 
-Die vCenter-Serverappliance (VCSA) stellt die Funktionen für Authentifizierung, Verwaltung und Orchestrierung für VMware Solutions (AVS) bereit. Eine VCSA mit eingebettetem Platform Services Controller (PSC) wird bereitgestellt, wenn Sie Ihre private AVS-Cloud erstellen. Die VCSA wird in dem vSphere-Cluster bereitgestellt, der beim Bereitstellen der privaten AVS-Cloud erstellt wird. Jede private AVS-Cloud weist eine eigene VCSA auf. Bei einer Erweiterung einer privaten AVS-Cloud fügt die VCSA in der privaten AVS-Cloud die Knoten hinzu.
+Die vCenter-Serverappliance (VCSA) stellt die Funktionen für Authentifizierung, Verwaltung und Orchestrierung für VMware Solution by CloudSimple bereit. Eine VCSA mit eingebettetem Platform Services Controller (PSC) wird bereitgestellt, wenn Sie Ihre private Cloud erstellen.  Die VCSA wird im vSphere-Cluster bereitgestellt, der beim Bereitstellen der privaten Cloud erstellt wird.  Jede private Cloud weist eine eigene VCSA auf.  Die Erweiterung einer privaten Cloud fügt der VCSA in der privaten Cloud die Knoten hinzu.
 
 ### <a name="vcenter-single-sign-on"></a>Einmaliges Anmelden für vCenter
 
-Dem eingebetteten Platform Services Controller auf der VCSA ist eine **vCenter-SSO-Domäne** (Single Sign-On, einmaliges Anmelden) zugeordnet. Der Domänenname lautet **AVS.local**. Ein Standardbenutzer **CloudOwner@AVS.com** wird für den Zugriff auf vCenter erstellt. Sie können Ihre lokalen oder in Azure Active Directory verwalteten [Identitätsquellen für vCenter](set-vcenter-identity.md) hinzufügen.
+Dem eingebetteten Platform Services Controller auf der VCSA ist eine **vCenter-SSO-Domäne** (Single Sign-On, einmaliges Anmelden) zugeordnet.  Der Domänenname lautet **cloudsimple.local**.  Ein Standardbenutzer **CloudOwner@cloudsimple.com** wird für den Zugriff auf vCenter erstellt.  Sie können Ihre lokalen oder in Azure Active Directory verwalteten [Identitätsquellen für vCenter](set-vcenter-identity.md) hinzufügen.
 
 ## <a name="vsan-storage"></a>vSAN-Speicher
 
-Private AVS-Clouds werden mit vollständig konfiguriertem vSAN-Nur-Flash-Speicher lokal im Cluster erstellt. Es sind mindestens drei Knoten der gleichen SKU erforderlich, um einen vSphere-Cluster mit vSAN-Datenspeicher zu erstellen. Für den vSAN-Datenspeicher sind Deduplizierung und Komprimierung standardmäßig aktiviert. Auf jedem Knoten des vSphere-Clusters werden zwei Datenträgergruppen erstellt. Jede Datenträgergruppe enthält einen Cachedatenträger und drei Kapazitätsdatenträger.
+Private Clouds werden mit vollständig konfiguriertem vSAN-Nur-Flash-Speicher lokal im Cluster erstellt.  Es sind mindestens drei Knoten der gleichen SKU erforderlich, um einen vSphere-Cluster mit vSAN-Datenspeicher zu erstellen.  Für den vSAN-Datenspeicher sind Deduplizierung und Komprimierung standardmäßig aktiviert.  Auf jedem Knoten des vSphere-Clusters werden zwei Datenträgergruppen erstellt. Jede Datenträgergruppe enthält einen Cachedatenträger und drei Kapazitätsdatenträger.
 
-Eine Standard-vSAN-Speicherrichtlinie wird im vSphere-Cluster erstellt und auf den vSAN-Datenspeicher angewandt. Diese Richtlinie legt fest, wie die VM-Speicherobjekte im Datenspeicher bereitgestellt und zugeordnet werden, um die erforderliche Dienstebene zu gewährleisten. Die Speicherrichtlinie definiert die **zu tolerierenden Fehler** (Failures To Tolerate, FTT) und die **Fehlertoleranzmethode**. Sie können neue Speicherrichtlinien erstellen und auf die VMs anwenden. Um die SLA zu gewährleisten, muss im vSAN-Datenspeicher eine freie Kapazität von 25 % aufrechterhalten werden. 
+Eine Standard-vSAN-Speicherrichtlinie wird im vSphere-Cluster erstellt und auf den vSAN-Datenspeicher angewandt.  Diese Richtlinie legt fest, wie die VM-Speicherobjekte im Datenspeicher bereitgestellt und zugeordnet werden, um die erforderliche Dienstebene zu gewährleisten.  Die Speicherrichtlinie definiert die **zu tolerierenden Fehler** (Failures To Tolerate, FTT) und die **Fehlertoleranzmethode**.  Sie können neue Speicherrichtlinien erstellen und auf die VMs anwenden. Um die SLA zu gewährleisten, muss im vSAN-Datenspeicher eine freie Kapazität von 25 % aufrechterhalten werden.  
 
 ### <a name="default-vsan-storage-policy"></a>vSAN-Standardspeicherrichtlinie
 
@@ -67,7 +67,7 @@ Die nachstehende Tabelle zeigt die vSAN-Standardspeicherrichtlinien-Parameter.
 
 ## <a name="nsx-data-center"></a>NSX Data Center
 
-NSX Data Center bietet Funktionen für Netzwerkvirtualisierung, Mikrosegmentierung und Netzwerksicherheit in Ihrer privaten AVS-Cloud. Sie können alle von NSX Data Center unterstützten Dienste in Ihrer privaten AVS-Cloud über NSX konfigurieren. Beim Erstellen einer privaten AVS-Cloud werden die folgenden NSX-Komponenten installiert und konfiguriert.
+NSX Data Center bietet Netzwerkvirtualisierung, Mikrosegmentierung und Netzwerksicherheitsfunktionen in Ihrer privaten Cloud.  Sie können alle von NSX Data Center unterstützten Dienste in Ihrer privaten Cloud über NSX konfigurieren.  Wenn Sie eine private Cloud erstellen, werden die folgenden NSX-Komponenten installiert und konfiguriert.
 
 * NSXT Manager
 * Transportzonen
@@ -82,21 +82,21 @@ NSX Data Center bietet Funktionen für Netzwerkvirtualisierung, Mikrosegmentieru
 
 ## <a name="vsphere-cluster"></a>vSphere-Cluster
 
-ESXi-Hosts werden als Cluster konfiguriert, um Hochverfügbarkeit der privaten AVS-Cloud sicherzustellen. Beim Erstellen einer privaten AVS-Cloud werden im ersten Cluster Verwaltungskomponenten von vSphere bereitgestellt. Ein Ressourcenpool für Verwaltungskomponenten wird erstellt, und alle Verwaltungs-VMs werden in diesem Ressourcenpool bereitgestellt. Der erste Cluster kann nicht gelöscht werden, um die private AVS-Cloud zu verkleinern. Ein vSphere-Cluster bietet Hochverfügbarkeit für virtuelle Computer über **vSphere HA**. Zu tolerierende Fehler basieren auf der Anzahl der verfügbaren Knoten im Cluster. Sie können die Formel ```Number of nodes = 2N+1``` verwenden, wobei ```N``` die Anzahl der zu tolerierenden Fehler ist.
+ESXi-Hosts werden als Cluster konfiguriert, um Hochverfügbarkeit der privaten Cloud sicherzustellen.  Wenn Sie eine private Cloud erstellen, werden im ersten Cluster Verwaltungskomponenten von vSphere bereitgestellt.  Ein Ressourcenpool für Verwaltungskomponenten wird erstellt, und alle Verwaltungs-VMs werden in diesem Ressourcenpool bereitgestellt. Der erste Cluster kann nicht gelöscht werden, um die private Cloud zu verkleinern.  Ein vSphere-Cluster bietet Hochverfügbarkeit für virtuelle Computer über **vSphere HA**.  Zu tolerierende Fehler basieren auf der Anzahl der verfügbaren Knoten im Cluster.  Sie können die Formel ```Number of nodes = 2N+1``` verwenden, wobei ```N``` die Anzahl der zu tolerierenden Fehler ist.
 
 ### <a name="vsphere-cluster-limits"></a>vSphere-Clusterlimits
 
 | Resource | Begrenzung |
 |----------|-------|
-| Mindestanzahl von Knoten zum Erstellen einer privaten AVS-Cloud (erster vSphere-Cluster) | 3 |
-| Maximale Anzahl von Knoten in einem vSphere-Cluster in einer privaten AVS-Cloud | 16 |
-| Maximale Anzahl von Knoten in einer privaten AVS-Cloud | 64 |
-| Maximale Anzahl von vSphere-Clustern in einer privaten AVS-Cloud | 21 |
+| Mindestanzahl von Knoten zum Erstellen einer privaten Cloud (erster vSphere-Cluster) | 3 |
+| Maximale Anzahl von Knoten in einem vSphere-Cluster in einer privaten Cloud | 16 |
+| Maximale Anzahl von Knoten in einer privaten Cloud | 64 |
+| Maximale Anzahl von vSphere-Clustern in einer privaten Cloud | 21 |
 | Mindestanzahl von Knoten in einem neuem vSphere-Cluster | 3 |
 
 ## <a name="vmware-infrastructure-maintenance"></a>VMware-Infrastrukturverwaltung
 
-Gelegentlich ist es notwendig, Änderungen an der Konfiguration der VMware-Infrastruktur vorzunehmen. Derzeit können diese Intervalle alle 1-2 Monate auftreten, aber es wird erwartet, dass die Häufigkeit mit der Zeit abnimmt. Diese Art der Wartung kann in der Regel ohne Unterbrechung der normalen Nutzung der AVS-Dienste durchgeführt werden. Während eines VMware-Wartungsintervalls funktionieren die folgenden Dienste weiterhin ohne Beeinträchtigung:
+Gelegentlich ist es notwendig, Änderungen an der Konfiguration der VMware-Infrastruktur vorzunehmen. Derzeit können diese Intervalle alle 1-2 Monate auftreten, aber es wird erwartet, dass die Häufigkeit mit der Zeit abnimmt. Diese Art der Wartung kann in der Regel ohne Unterbrechung der normalen Nutzung der CloudSimple-Dienste durchgeführt werden. Während eines VMware-Wartungsintervalls funktionieren die folgenden Dienste weiterhin ohne Beeinträchtigung:
 
 * VMware-Verwaltungsebene und Anwendungen
 * vCenter-Zugriff
@@ -105,7 +105,7 @@ Gelegentlich ist es notwendig, Änderungen an der Konfiguration der VMware-Infra
 
 ## <a name="updates-and-upgrades"></a>Updates und Upgrades
 
-AVS ist für die Lebenszyklusverwaltung der VMware-Software (ESXi, vCenter, PSC und NSX) in der privaten AVS-Cloud zuständig.
+CloudSimple ist verantwortlich für die Lebenszyklusverwaltung der VMware-Software (ESXi, vCenter, PSC und NSX) in der privaten Cloud.
 
 Softwareupdates umfassen:
 
@@ -113,10 +113,10 @@ Softwareupdates umfassen:
 * **Updates**. Ändern der Nebenversion einer VMware-Stack-Komponente.
 * **Upgrades**. Ändern der Hauptversion einer VMware-Stack-Komponente.
 
-AVS testet ein wichtiges Sicherheitsupdate, sobald er von VMware zur Verfügung gestellt wird. Gemäß SLA führt AVS den Rollout des Sicherheitsupdates an private AVS-Cloudumgebungen innerhalb einer Woche aus.
+CloudSimple testet einen wichtigen Sicherheitspatch, sobald er von VMware verfügbar ist. Per SLA rollt CloudSimple den Sicherheitspatch innerhalb einer Woche in private Cloud-Umgebungen aus.
 
-AVS bietet vierteljährliche Wartungsupdates für VMware-Softwarekomponenten. Wenn eine neue Hauptversion der VMware-Software verfügbar ist, koordiniert AVS in Zusammenarbeit mit den Kunden ein geeignetes Wartungsfenster für das Upgrade. 
+CloudSimple bietet vierteljährliche Wartungsupdates für VMware-Softwarekomponenten. Wenn eine neue Hauptversion der VMware-Software verfügbar ist, arbeitet CloudSimple mit Kunden zusammen, um ein geeignetes Wartungsfenster für das Upgrade zu koordinieren.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [AVS-Wartung und -Updates](cloudsimple-maintenance-updates.md)
+* [CloudSimple-Wartung und -Updates](cloudsimple-maintenance-updates.md)

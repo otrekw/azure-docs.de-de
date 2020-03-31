@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
 ms.openlocfilehash: deaa934b257fab74830d75e308a283e7608dc590
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75552592"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>Ausführen von Apache Hive-Abfragen mit PowerShell
@@ -37,7 +37,7 @@ Azure PowerShell stellt *cmdlets* bereit, mit denen Sie Hive-Abfragen in HDInsig
 Die folgenden Cmdlets werden zum Ausführen der Hive-Abfragen auf einem HDInsight-Remotecluster verwendet:
 
 * `Connect-AzAccount`: Authentifiziert Azure PowerShell für Ihr Azure-Abonnement.
-* `New-AzHDInsightHiveJobDefinition`: Erstellt anhand der angegebenen HiveQL-Anweisungen eine *Auftragsdefinition*.
+* `New-AzHDInsightHiveJobDefinition`: Erstellt mithilfe der angegebenen HiveQL-Anweisungen eine *Auftragsdefinition*.
 * `Start-AzHDInsightJob`: Sendet die Auftragsdefinition an HDInsight und startet den Auftrag. Ein *Auftragsobjekt* wird zurückgegeben.
 * `Wait-AzHDInsightJob`: Verwendet das Auftragsobjekt, um den Status des Auftrags zu prüfen. Es wird gewartet, bis der Auftrag abgeschlossen oder die Wartezeit überschritten ist.
 * `Get-AzHDInsightJobOutput`: Wird verwendet, um die Ausgabe des Auftrags abzurufen.

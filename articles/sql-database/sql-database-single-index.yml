@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: 'Azure SQL-Datenbank: Einzeldatenbank'
+title: "Azure\_SQL-Datenbank"
 metadata:
-  title: 'Dokumentation: Einzeldatenbank'
-  meta.description: Learn how to use Azure SQL databases.
+  title: 'Dokumentation: Singleton, Datenbankserver, Pool für elastische Datenbanken'
+  description: 'Nutzen Sie Schnellstarts, Tutorials und Beispiele für Singletons in Azure SQL-Datenbank, Pools für elastische Datenbanken und Datenbankserver.'
   services: sql-database
   requires-business-manager-approval: false
   ms.service: sql-database
   ms.subservice: single-database
   ms.topic: overview
   author: jovanpop-msft
-  ms.author: jovanpop-msft
+  ms.author: jovanpop
   ms.reviewer: carlrab
   manager: craigg
   ms.date: 04/26/2019

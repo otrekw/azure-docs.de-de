@@ -14,13 +14,13 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 5c433140c3982813e372fd3f63243a96197d220c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77661888"
 ---
-# Häufig gestellte Fragen von Kunden, die bereits Azure Monitor-Protokolle verwenden<a name="existingloganalyticscust"></a>
+# <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Häufig gestellte Fragen von Kunden, die bereits Azure Monitor-Protokolle verwenden<a name="existingloganalyticscust"></a>
 
 ## <a name="does-security-center-override-any-existing-connections-between-vms-and-workspaces"></a>Überschreibt Security Center bereits vorhandene Verbindungen zwischen virtuellen Computern und Arbeitsbereichen?
 

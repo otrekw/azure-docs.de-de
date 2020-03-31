@@ -1,6 +1,6 @@
 ---
-title: 'Azure-VMware-Lösungen (AVS): Einrichten von vCenter in privater AVS-Cloud für vRealize Automation'
-description: In diesem Artikel wird beschrieben, wie Sie einen VMware vCenter-Server in Ihrer privaten AVS-Cloud als Endpunkt für VMware vRealize Automation einrichten.
+title: 'Azure VMware Solution by CloudSimple: Einrichten von vCenter in privater Cloud für vRealize Automation'
+description: Erfahren Sie, wie Sie einen VMware vCenter-Server in Ihrer privaten CloudSimple-Cloud als Endpunkt für VMware vRealize Automation einrichten.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/19/2019
@@ -8,23 +8,23 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 41106498594ac05b944323e5f5e63de739aedf37
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: df73acfc469a8b7b5329b61095aefdbd73baafd4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024839"
 ---
-# <a name="set-up-vcenter-on-your-avs-private-cloud-for-vmware-vrealize-automation"></a>Einrichten von vCenter in Ihrer privaten AVS-Cloud für VMware vRealize Automation
+# <a name="set-up-vcenter-on-your-private-cloud-for-vmware-vrealize-automation"></a>Einrichten von vCenter in Ihrer privaten Cloud für VMware vRealize Automation
 
-Sie können einen VMware vCenter-Server in Ihrer privaten AVS-Cloud als Endpunkt für VMware vRealize Automation einrichten.
+Sie können einen VMware vCenter-Server in Ihrer privaten CloudSimple-Cloud als Endpunkt für VMware vRealize Automation einrichten.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 Führen Sie diese Aufgaben aus, bevor Sie den vCenter-Server konfigurieren:
 
-* Konfigurieren Sie eine [Site-to-Site-VPN-Verbindung](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) zwischen Ihrer lokalen Umgebung und Ihrer privaten AVS-Cloud.
-* [Konfigurieren Sie die DNS-Weiterleitung lokaler DNS-Anforderungen](on-premises-dns-setup.md) an die DNS-Server Ihrer privaten AVS-Cloud.
+* Konfigurieren Sie eine [Site-to-Site-VPN-Verbindung](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) zwischen Ihrer lokalen Umgebung und privaten Cloud.
+* [Konfigurieren Sie die DNS-Weiterleitung lokaler DNS-Anforderungen](on-premises-dns-setup.md) an die DNS-Server Ihrer privaten Cloud.
 * Senden Sie eine [Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest), um einen IaaS-Administratorbenutzer für vRealize Automation mit den in der folgenden Tabelle aufgeführten Berechtigungen zu erstellen.
 
 | Attributwert | Berechtigung |
@@ -44,7 +44,7 @@ Führen Sie diese Aufgaben aus, bevor Sie den vCenter-Server konfigurieren:
 
 ## <a name="install-vrealize-automation-in-your-on-premises-environment"></a>Installieren von vRealize Automation in Ihrer lokalen Umgebung
 
-1. Melden Sie sich bei der IaaS-Serverappliance für vRealize Automation mit dem IaaS-Administratorkonto an, das der AVS-Support für Sie erstellt hat.
+1. Melden Sie sich bei der IaaS-Serverappliance für vRealize Automation mit dem IaaS-Administratorkonto an, das der Support von CloudSimple für Sie erstellt hat.
 2. Stellen Sie einen vSphere-Agent für den vRealize Automation-Endpunkt bereit.
     1. Rufen Sie https://*vra-url*:5480/installer auf, wobei *vra-url* die URL ist, die Sie für den Zugriff auf die vRealize Automation-Verwaltungsoberfläche verwenden.
     2. Klicken Sie auf **IaaS Installer**, um das Installationsprogramm herunterzuladen.<br>
@@ -59,7 +59,7 @@ Führen Sie diese Aufgaben aus, bevor Sie den vCenter-Server konfigurieren:
     ![vRA-Anmeldeinformation](media/configure-vra-endpoint-account.png)
     8. Geben Sie für die Proxyeinstellungen **vSphere** als **Agent type** (Agent-Typ) ein. Geben Sie einen Namen für den Agent ein.
     9. Geben Sie in die Felder **Manager Service Host** (Manager: Diensthost) und **Model Manager Web Service Host** (Modell-Manager: Webdiensthost) den FQDN des IaaS-Servers ein. Klicken Sie auf **Test**, um die Verbindung für jeden der FQDN-Werte zu testen. Wenn der Test fehlschlägt, ändern Sie die DNS-Einstellungen so, dass der Hostname des IaaS-Servers aufgelöst wird.
-    10. Geben Sie einen Namen für den vCenter-Serverendpunkt für die private AVS-Cloud ein. Notieren Sie sich den Namen für die spätere Verwendung im Konfigurationsprozess.
+    10. Geben Sie einen Namen für den vCenter-Serverendpunkt für die private Cloud ein. Notieren Sie sich den Namen für die spätere Verwendung im Konfigurationsprozess.
 
         ![vRA-Installationsproxy](media/configure-vra-endpoint-proxy.png)
 
@@ -72,8 +72,8 @@ Führen Sie diese Aufgaben aus, bevor Sie den vCenter-Server konfigurieren:
 2. Wählen Sie **Infrastructure** > **Endpoints** > **Endpoints** (Infrastruktur->Endpunkt->Endpunkt) aus.
 3. Wählen Sie **New** > **Virtual** > **vSphere** (Neu->Virtuell->vSphere) aus.
 4. Geben Sie den Namen des vSphere-Endpunkts ein, den Sie im vorherigen Schritt angegeben haben.
-5. Geben Sie für **Adresse** die URL des vCenter-Servers der privaten AVS-Cloud im Format https://*vcenter-fqdn*/sdk ein, wobei *vcenter-fqdn* der Name des vCenter-Servers ist.
-6. Geben Sie die Anmeldeinformationen des IaaS-Administratorkontos für vRealize Automation ein, das der AVS-Support für Sie erstellt hat.
+5. Geben Sie für **Address** die URL des vCenter-Servers der privaten Cloud im Format https://*vcenter-fqdn*/sdk ein, wobei *vcenter-fqdn* der Name des vCenter-Servers ist.
+6. Geben Sie die Anmeldeinformationen des IaaS-Administratorkontos für vRealize Automation ein, das der CloudSimple-Support für Sie erstellt hat.
 7. Klicken Sie auf **Test Connection** (Verbindung testen), um die Anmeldeinformationen des Benutzers zu überprüfen. Wenn der Test fehlschlägt, überprüfen Sie die URL, Kontoinformationen und den [Namen des Endpunkts](#verify-the-endpoint-name), und wiederholen Sie den Test.
 8. Klicken Sie nach einem erfolgreichen Test auf **OK**, um den vSphere-Endpunkt zu erstellen.
     ![Zugriff auf die Konfiguration des vRA-Endpunkts](media/configure-vra-endpoint-vra-edit.png)

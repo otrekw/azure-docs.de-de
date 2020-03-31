@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 9c3b86cb278d25b6200753f2f418c5aa82ca86ce
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: f5572611b99245fd62b4e0a9d73e6ed728e42f5b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771052"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530647"
 ---
 # <a name="restart-azure-database-for-mariadb-server-using-the-azure-cli"></a>Neustarten eines Azure Database for MariaDB-Servers mithilfe der Azure CLI
 In diesem Thema wird erläutert, wie Sie einen Azure Database for MariaDB-Server neu starten. Es kann vorkommen, dass Sie Ihren Server zu Wartungszwecken neu starten müssen. In diesem Fall kommt es zu einem kurzen Ausfall, weil der Vorgang vom Server ausgeführt wird.

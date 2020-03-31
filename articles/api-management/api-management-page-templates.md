@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ce56c406c884471c445b25343d5c42f9edcbe4c4
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176561"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226566"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Seitenvorlagen in Azure API Management
 Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des Entwicklerportals mit einem Satz von Vorlagen anzupassen, die den Inhalt konfigurieren. Unter Verwendung dieser Vorlagen können Sie die Seiteninhalte mithilfe von [DotLiquid](http://dotliquidmarkup.org/)-Syntax und dem Editor Ihrer Wahl (beispielsweise [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) sowie verschiedenen lokalisierten [Zeichenfolgenressourcen](api-management-template-resources.md#strings), [Glyph-Ressourcen](api-management-template-resources.md#glyphs) und [Seitensteuerelementen](api-management-page-controls.md) an Ihre Bedürfnisse anpassen.  
@@ -38,7 +38,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="SignIn"></a> Anmelden  
+##  <a name="sign-in"></a><a name="SignIn"></a> Anmelden  
  Mit der Vorlage zum **Anmelden** können Sie die Anmeldeseite im Entwicklerportal anpassen.  
   
  ![Anmeldeseite](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM-Anmeldeseite: Vorlagen im Entwicklerportal")  
@@ -137,7 +137,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 }
 ```  
   
-##  <a name="SignUp"></a> Registrieren  
+##  <a name="sign-up"></a><a name="SignUp"></a> Registrieren  
  Mit der Vorlage zum **Registrieren** können Sie die Registrierungsseite im Entwicklerportal anpassen.  
   
  ![Registrierungsseite](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM-Registrierungsseite: Vorlagen im Entwicklerportal")  
@@ -185,7 +185,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 }  
 ```  
   
-##  <a name="PageNotFound"></a> Seite nicht gefunden  
+##  <a name="page-not-found"></a><a name="PageNotFound"></a> Seite nicht gefunden  
  Mit der Vorlage für **Seite nicht gefunden** können Sie die Seite für eine nicht gefundene Seite im Entwicklerportal anpassen.  
   
  ![Seite nicht gefunden](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM: Seite nicht gefunden: Vorlagen im Entwicklerportal")  
@@ -227,13 +227,13 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
   
 ### <a name="data-model"></a>Datenmodell  
   
-|Eigenschaft|Typ|BESCHREIBUNG|  
+|Eigenschaft|type|BESCHREIBUNG|  
 |--------------|----------|-----------------|  
-|referenceCode|Zeichenfolge|Generierter Code, wenn diese Seite aufgrund eines internen Fehlers angezeigt wurde.|  
-|errorCode|Zeichenfolge|Generierter Code, wenn diese Seite aufgrund eines internen Fehlers angezeigt wurde.|  
-|emailBody|Zeichenfolge|Generierter E-Mail-Text, wenn diese Seite aufgrund eines internen Fehlers angezeigt wurde.|  
-|requestedUrl|Zeichenfolge|Die angeforderte URL, wenn die Seite nicht gefunden wurde.|  
-|referrerUrl|Zeichenfolge|Die Verweis-URL der angeforderten URL.|  
+|referenceCode|string|Generierter Code, wenn diese Seite aufgrund eines internen Fehlers angezeigt wurde.|  
+|errorCode|string|Generierter Code, wenn diese Seite aufgrund eines internen Fehlers angezeigt wurde.|  
+|emailBody|string|Generierter E-Mail-Text, wenn diese Seite aufgrund eines internen Fehlers angezeigt wurde.|  
+|requestedUrl|string|Die angeforderte URL, wenn die Seite nicht gefunden wurde.|  
+|referrerUrl|string|Die Verweis-URL der angeforderten URL.|  
   
 ### <a name="sample-template-data"></a>Vorlagenbeispieldaten  
   

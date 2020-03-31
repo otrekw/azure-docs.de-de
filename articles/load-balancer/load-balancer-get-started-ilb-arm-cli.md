@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: allensu
-ms.openlocfilehash: 8726991682ca8c2eabd628f1539ff940bf94e03d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 51df1936e5d8725b2243e7c0084973370139c540
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215318"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79457010"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Erstellen eines internen Load Balancers für den Lastenausgleich virtueller Computer mit der Azure CLI
 
@@ -39,6 +39,7 @@ Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupI
     --name myResourceGroupILB \
     --location eastus
 ```
+
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
 Erstellen Sie ein virtuelles Netzwerk mit dem Namen *myVnet* und dem Subnetz *mySubnet* in *myResourceGroup*, indem Sie den Befehl [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) verwenden.
@@ -50,9 +51,10 @@ Erstellen Sie ein virtuelles Netzwerk mit dem Namen *myVnet* und dem Subnetz *my
     --location eastus \
     --subnet-name mySubnet
 ```
+
 ## <a name="create-basic-load-balancer"></a>Erstellen eines Load Balancers im Tarif „Basic“
 
-In diesem Abschnitt wird erläutert, wie Sie die folgenden Komponenten des Load Balancers erstellen und konfigurieren können:
+In diesem Abschnitt erfahren Sie, wie Sie die folgenden Komponenten des Lastenausgleichs erstellen und konfigurieren:
   - Front-End-IP-Konfiguration, über die der eingehende Netzwerkdatenverkehr für den Lastenausgleich empfangen wird
   - Back-End-IP-Pool, an den der Front-End-Pool den Netzwerkdatenverkehr sendet, für den ein Lastenausgleich durchgeführt wurde
   - Integritätstest zum Ermitteln der Integrität der Back-End-VM-Instanzen
@@ -71,7 +73,8 @@ Erstellen Sie mit [az network lb create](https://docs.microsoft.com/cli/azure/ne
     --backend-pool-name myBackEndPool \
     --vnet-name myVnet \
     --subnet mySubnet      
-  ```
+```
+
 ### <a name="create-the-health-probe"></a>Erstellen des Integritätstests
 
 Ein Integritätstest überprüft alle VM-Instanzen, um sicherzustellen, dass diese Netzwerkdatenverkehr empfangen können. VM-Instanzen mit Fehlern beim Test werden aus dem Load Balancer entfernt, bis sie wieder online geschaltet werden und beim Test überprüft wurde, dass sie fehlerfrei sind. Erstellen Sie mit [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) einen Integritätstest zur Überwachung der Integrität von virtuellen Computern. 
@@ -87,7 +90,7 @@ Ein Integritätstest überprüft alle VM-Instanzen, um sicherzustellen, dass die
 
 ### <a name="create-the-load-balancer-rule"></a>Erstellen der Lastenausgleichsregel
 
-Mit einer Lastenausgleichsregel wird die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport definiert. Erstellen Sie mit [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) eine Lastenausgleichsregel mit dem Namen *myHTTPRule*, die an Port 80 des Front-End-Pools *myFrontEnd* lauscht und den Netzwerkdatenverkehr nach erfolgtem Lastenausgleich an den Back-End-Adresspool *myBackEndPool* sendet, wobei ebenfalls der Port 80 verwendet wird. 
+Mit einer Lastenausgleichsregel wird die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport definiert. Erstellen Sie mit *az network lb rule create* eine Lastenausgleichsregel mit dem Namen [myHTTPRule](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest), die an Port 80 des Front-End-Pools *myFrontEnd* lauscht und den Netzwerkdatenverkehr nach erfolgtem Lastenausgleich an den Back-End-Adresspool *myBackEndPool* sendet, wobei ebenfalls der Port 80 verwendet wird. 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -130,7 +133,7 @@ In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Serve
 
 Erstellen Sie mit [az vm availabilityset create](/cli/azure/network/nic) eine Verfügbarkeitsgruppe.
 
- ```azurecli-interactive
+```azurecli-interactive
   az vm availability-set create \
     --resource-group myResourceGroupILB \
     --name myAvailabilitySet
@@ -180,11 +183,11 @@ runcmd:
   - npm init
   - npm install express -y
   - nodejs index.js
-``` 
- 
+```
+
 Erstellen Sie die virtuellen Computer mit [az vm create](/cli/azure/vm#az-vm-create).
 
- ```azurecli-interactive
+```azurecli-interactive
 for i in `seq 1 2`; do
   az vm create \
     --resource-group myResourceGroupILB \
@@ -196,6 +199,7 @@ for i in `seq 1 2`; do
     --custom-data cloud-init.txt
     done
 ```
+
 Es kann einige Minuten dauern, bis die virtuellen Computer bereitgestellt wurden.
 
 ### <a name="create-a-vm-for-testing-the-load-balancer"></a>Erstellen einer VM zum Testen des Lastenausgleichs
@@ -221,14 +225,15 @@ Verwenden Sie zum Abrufen der privaten IP-Adresse des Lastenausgleichs den Befeh
   az network lb show \
     --name myLoadBalancer \
     --resource-group myResourceGroupILB
-``` 
+```
+
 ![Testen des Load Balancers](./media/load-balancer-get-started-ilb-arm-cli/load-balancer-test.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Mit dem Befehl [az group delete](/cli/azure/group#az-group-delete) können Sie die Ressourcengruppe, den Lastenausgleich und alle dazugehörigen Ressourcen entfernen, wenn Sie sie nicht mehr benötigen.
 
-```azurecli-interactive 
+```azurecli-interactive
   az group delete --name myResourceGroupILB
 ```
 

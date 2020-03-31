@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: 78f2e06947c2b81ffe5e6cd8a88438db4dabf158
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 328ca7cd2c6f76095c8334ae6fdb4aa75fbb867d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426418"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80291999"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>Implementieren von CI/CD für Stream Analytics in IoT Edge mithilfe von APIs
 
@@ -57,7 +57,7 @@ Um einen Stream Analytics-Auftrag zu erstellen, rufen Sie die PUT-Methode mithil
 
 |Methode|Anfrage-URL|
 |------|-----------|
-|PUT|https://management.azure.com/subscriptions/{**subscription-id**}/resourcegroups/{**resource-group-name**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**job-name**}?api-version=2017-04-01-preview|
+|PUT|`https://management.azure.com/subscriptions/{\**subscription-id**}/resourcegroups/{**resource-group-name**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**job-name**}?api-version=2017-04-01-preview`|
  
 Befehlsbeispiel unter Verwendung von **curl**:
 
@@ -144,7 +144,7 @@ Um einen Stream Analytics-Auftrag auf IoT Edge zu veröffentlichen, rufen Sie di
 
 |Methode|Anfrage-URL|
 |------|-----------|
-|POST|https://management.azure.com/subscriptions/{**subscriptionid**}/resourceGroups/{**resourcegroupname**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**jobname**}/publishedgepackage?api-version=2017-04-01-preview|
+|POST|`https://management.azure.com/subscriptions/{\**subscriptionid**}/resourceGroups/{**resourcegroupname**}/providers/Microsoft.StreamAnalytics/streamingjobs/{**jobname**}/publishedgepackage?api-version=2017-04-01-preview`|
 
 Dieser asynchrone Vorgang gibt so lange den Status 202 zurück, bis der Auftrag erfolgreich veröffentlicht wurde. Der Antwortheader des Speicherorts enthält den URI, der zum Abrufen des Status des Prozesses verwendet wird. Während der Prozess ausgeführt wird, gibt ein Aufruf des URIs im Speicherortheader den Status 202 zurück. Während der Prozess abgeschlossen ist, gibt der URI im Speicherortheader den Status 200 zurück. 
 

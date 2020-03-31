@@ -11,10 +11,10 @@ ms.date: 01/29/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: dfb34085181e0b759d1d77485ff21b5bc59e0de3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78189768"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
@@ -49,7 +49,7 @@ Das **ClaimsProviders**-Element enthält das folgende Element:
 
 Das **ClaimsProvider**-Element enthält die folgenden untergeordneten Elemente:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ---------- | ----------- |
 | Domain | 0:1 | Eine Zeichenfolge, die den Domänennamen für den Anspruchsanbieter enthält. Wenn Ihr Anspruchsanbieter beispielsweise das technische Profil von Facebook enthält, lautet der Domänenname „Facebook.com“. Dieser Domänenname wird für alle technischen Profile verwendet, die im Anspruchsanbieter definiert sind, es sei denn, er wird vom technischen Profil außer Kraft gesetzt. Auf den Domänennamen kann auch in einem **domain_hint** verwiesen werden. Weitere Informationen finden Sie im Abschnitt **Umleiten der Anmeldung zu einem Anbieter sozialer Netzwerke** unter [Einrichten der direkten Anmeldung mit Azure Active Directory B2C](direct-signin.md). |
 | DisplayName | 1:1 | Eine Zeichenfolge, die den Namen des Anspruchsanbieters enthält. |

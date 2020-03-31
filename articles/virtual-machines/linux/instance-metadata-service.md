@@ -12,10 +12,10 @@ ms.date: 02/24/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
 ms.openlocfilehash: 3281b4dafa5436c9df760ac8aa3fc82f535b4286
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944864"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
@@ -315,7 +315,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
 
 Die folgenden APIs stehen über den Metadatenendpunkt zur Verfügung:
 
-Daten | BESCHREIBUNG | Eingeführt in Version
+Data | BESCHREIBUNG | Eingeführt in Version
 -----|-------------|-----------------------
 attested | Siehe [Bestätigte Daten](#attested-data) | 2018-10-01
 identity | Verwaltete Identitäten für Azure-Ressourcen. Siehe [Abrufen eines Zugriffstokens](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
@@ -329,7 +329,7 @@ Die folgenden Computekategorien werden über die Instanz-API zur Verfügung gest
 > [!NOTE]
 > Über den Metadatenendpunkt sind die folgenden Kategorien über „Instanz/Compute“ zugänglich.
 
-Daten | BESCHREIBUNG | Eingeführt in Version
+Data | BESCHREIBUNG | Eingeführt in Version
 -----|-------------|-----------------------
 azEnvironment | Azure-Umgebung, in der die VM ausgeführt wird | 2018-10-01
 customData | Diese Funktion ist zurzeit deaktiviert. Diese Dokumentation wird aktualisiert, wenn die Funktion verfügbar wird. | 2019-02-01
@@ -362,7 +362,7 @@ Die folgenden Netzwerkkategorien werden über die Instanz-API zur Verfügung ges
 > [!NOTE]
 > Über den Metadatenendpunkt sind die folgenden Kategorien über „Instanz/Netzwerk/Schnittstelle“ zugänglich.
 
-Daten | BESCHREIBUNG | Eingeführt in Version
+Data | BESCHREIBUNG | Eingeführt in Version
 -----|-------------|-----------------------
 ipv4/privateIpAddress | Lokale IPv4-Adresse der VM | 2017-04-02
 ipv4/publicIpAddress | Öffentliche IPv4-Adresse der VM | 2017-04-02
@@ -653,7 +653,7 @@ Verification successful
 }
 ```
 
-Daten | BESCHREIBUNG
+Data | BESCHREIBUNG
 -----|------------
 nonce | Vom Benutzer bereitgestellte optionale Zeichenfolge mit der Anforderung. Wenn in der Anforderung keine Nonce angegeben wurde, wird der aktuelle UTC-Zeitstempel zurückgegeben.
 Tarif | Der [Plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) für einen virtuellen Computer im entsprechenden Azure Marketplace-Image, enthält Name, Produkt und Herausgeber
@@ -703,7 +703,7 @@ Das Speicherprofil eines virtuellen Computers ist in drei Kategorien unterteilt:
 
 Das Imagereferenzobjekt enthält die folgenden Informationen zum Betriebssystemimage:
 
-Daten    | BESCHREIBUNG
+Data    | BESCHREIBUNG
 --------|-----------------
 id      | Ressourcen-ID
 offer   | Angebot des Plattform- oder Marketplace-Images
@@ -713,7 +713,7 @@ version | Version des Plattform- oder Marketplace-Images
 
 Das Betriebssystemdatenträgerobjekt enthält die folgenden Informationen zum Betriebssystemdatenträger, der vom virtuellen Computer verwendet wird:
 
-Daten    | BESCHREIBUNG
+Data    | BESCHREIBUNG
 --------|-----------------
 caching | Cachinganforderungen
 createOption | Informationen zur Erstellung des virtuellen Computers
@@ -728,7 +728,7 @@ writeAcceleratorEnabled | Gibt an, ob writeAccelerator für den Datenträger akt
 
 Das Datenträgerarray für Daten enthält eine Liste der Datenträger für Daten, die an den virtuellen Computer angefügt sind. Jedes Datenträgerobjekt enthält die folgenden Informationen:
 
-Daten    | BESCHREIBUNG
+Data    | BESCHREIBUNG
 --------|-----------------
 caching | Cachinganforderungen
 createOption | Informationen zur Erstellung des virtuellen Computers

@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: 7fabc1e3445d3dbd357700ffde3caeb985cc60c4
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: b7385ef27cd17705f2c86b6f57d4780511b6935c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67601956"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246856"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Erstellen einer Front Door-Ressource mit Umleitung von HTTP zu HTTPS über das Azure-Portal
 
@@ -32,7 +32,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 2. Klicken Sie in der linken oberen Ecke des Azure-Portals auf **Ressource erstellen**.
 3. Suchen Sie mithilfe der Suchleiste nach **Front Door.**  Klicken Sie auf **Erstellen**, wenn Sie den Ressourcentyp gefunden haben.
-4. Wählen Sie ein Abonnement aus, und verwenden Sie dann eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. Beachten Sie, dass sich der Speicherort, der in der Benutzeroberfläche abgefragt wird, nur auf die Ressourcengruppe bezieht. Die Front Door-Konfiguration wird an allen [POP-Standorten von Azure Front Door](https://docs.microsoft.com/azure/frontdoor/front-door-faq#what-are-the-pop-locations-for-azure-front-door-service) bereitgestellt.
+4. Wählen Sie ein Abonnement aus, und verwenden Sie dann eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. Beachten Sie, dass sich der Speicherort, der in der Benutzeroberfläche abgefragt wird, nur auf die Ressourcengruppe bezieht. Die Front Door-Konfiguration wird an allen [POP-Standorten von Azure Front Door](front-door-faq.md#what-are-the-pop-locations-for-azure-front-door) bereitgestellt.
 
     ![Konfigurieren der Grundlagen für eine neue Front Door-Ressource](./media/front-door-url-redirect/front-door-create-basics.png)
 
@@ -75,11 +75,11 @@ Nach dem Hinzufügen des CNAME-Eintrags sieht die Seite mit den DNS-Einträgen w
 
 ![CNAME-Eintrag für benutzerdefinierte Domäne für Front Door](./media/front-door-url-redirect/front-door-dns-cname.png)
 
-#### <a name="onboard-the-custom-domain-on-your-front-door"></a>Durchführen des Onboardings der benutzerdefinierten Domäne für Ihre Front Door-Ressource
+#### <a name="onboard-the-custom-domain-on-your-front-door"></a>Integrieren der benutzerdefinierten Domäne in Ihre Front Door-Instanz
 
-1. Klicken Sie auf der Designer-Registerkarte „Front Door“ im Abschnitt „Front-End-Hosts“ auf das Symbol „+“, um eine neue benutzerdefinierte Domäne hinzuzufügen. 
+1. Klicken Sie in Front Door auf der Registerkarte „Designer“ im Abschnitt „Front-End-Hosts“ auf das Symbol „+“, um eine neue benutzerdefinierte Domäne hinzuzufügen. 
 2. Geben Sie den vollqualifizierten benutzerdefinierten DNS-Namen in das Feld für den benutzerdefinierten Hostnamen ein, z.B. `www.contosonews.com`. 
-3. Nachdem die CNAME-Zuordnung von der Domäne zu Ihrer Front Door-Ressource überprüft wurde, klicken Sie auf **Hinzufügen**, um die benutzerdefinierte Domäne hinzuzufügen.
+3. Nachdem die CNAME-Zuordnung von der Domäne zu Ihrer Front Door-Instanz überprüft wurde, klicken Sie auf **Hinzufügen**, um die benutzerdefinierte Domäne hinzuzufügen.
 4. Klicken Sie auf **Speichern**, um die Änderungen zu übermitteln.
 
 ![Menü „Benutzerdefinierte Domänen“](./media/front-door-url-redirect/front-door-add-custom-domain.png)
@@ -91,7 +91,7 @@ Nach dem Hinzufügen des CNAME-Eintrags sieht die Seite mit den DNS-Einträgen w
 ![Aktivieren von HTTPS für die benutzerdefinierte Domäne](./media/front-door-url-redirect/front-door-custom-domain-https.png)
 
 3. Klicken Sie auf **Aktualisieren**, um die Auswahl zu speichern, und klicken Sie dann auf **Speichern**.
-4. Klicken Sie nach einigen Minuten auf **Aktualisieren**, und klicken Sie dann erneut auf die benutzerdefinierte Domäne, um den Status der Zertifikatbereitstellung anzuzeigen. 
+4. Klicken Sie nach einigen Minuten auf **Aktualisieren**, und klicken Sie dann noch mal auf die benutzerdefinierte Domäne, um den Status der Zertifikatbereitstellung anzuzeigen. 
 
 > [!WARNING]
 > Die Aktivierung von HTTPS für eine benutzerdefinierte Domäne kann einige Minuten dauern und hängt auch von der Überprüfung des Besitzes ab, wenn der CNAME-Eintrag nicht direkt Ihrem Front Door-Host `<name>.azurefd.net` zugeordnet ist. Weitere Informationen zum [Aktivieren von HTTPS für eine benutzerdefinierte Domäne](./front-door-custom-domain-https.md).
@@ -106,6 +106,6 @@ Nach dem Hinzufügen des CNAME-Eintrags sieht die Seite mit den DNS-Einträgen w
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Erstellen einer Azure Front Door Service-Konfiguration](quickstart-create-front-door.md).
+- Erfahren Sie mehr über das [Erstellen einer Front Door-Instanz](quickstart-create-front-door.md).
 - Informieren Sie sich über die [Funktionsweise von Azure Front Door Service](front-door-routing-architecture.md).
 - Weitere Informationen zur [URL-Umleitung für Front Door](front-door-url-redirect.md).

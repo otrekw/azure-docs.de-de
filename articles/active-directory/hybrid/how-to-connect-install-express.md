@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Erste Schritte mit Expresseinstellungen | Microsoft-Dokumentation'
+title: 'Azure AD Connect: Erste Schritte mit Expresseinstellungen | Microsoft Docs'
 description: Informationen zum Herunterladen, Installieren und Ausführen des Setup-Assistenten für Azure AD Connect.
 services: active-directory
 author: billmath
@@ -16,16 +16,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 24143f8c94a294da90be84bacfe633db0cd24f85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60244504"
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>Erste Schritte mit Azure AD Connect mit Expresseinstellungen
 Die **Expresseinstellungen** von Azure AD Connect werden verwendet, wenn Sie eine Topologie mit einer einzelnen Gesamtstruktur und die [Kennworthashsynchronisierung](how-to-connect-password-hash-synchronization.md) für die Authentifizierung verwenden. **Expresseinstellungen** sind die Standardoption und werden für die häufigsten Bereitstellungsszenarien verwendet. Mit nur wenigen Klicks können Sie Ihr lokales Verzeichnis auf die Cloud erweitern.
 
-Vor dem Installieren von Azure AD Connect müssen Sie [Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771) herunterladen und die im folgenden Artikel beschriebenen Schritte zur Vorbereitung ausführen: [Azure AD Connect: Hardware und Voraussetzungen](how-to-connect-install-prerequisites.md).
+Vor dem Installieren von Azure AD Connect müssen Sie [Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771) herunterladen und die unter [Azure AD Connect: Hardware und Voraussetzungen](how-to-connect-install-prerequisites.md) beschriebenen Schritte zur Vorbereitung ausführen.
 
 Falls Expresseinstellungen nicht zu Ihrer Topologie passen, finden Sie weitere Szenarien in der [verwandten Dokumentation](#related-documentation) .
 
@@ -63,7 +63,7 @@ Ein Video zur Expressinstallation finden Sie hier:
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie Azure AD Connect installiert haben, können Sie [die Installation überprüfen und Lizenzen zuweisen](how-to-connect-post-installation.md).
 
-Hier finden Sie weitere Informationen zu diesen Features, die bei der Installation aktiviert wurden: [Automatisches Upgrade](how-to-connect-install-automatic-upgrade.md), [Azure AD Connect-Synchronisierung: Verhindern von versehentlichen Löschvorgängen](how-to-connect-sync-feature-prevent-accidental-deletes.md) und [Überwachen der Azure AD Connect-Synchronisierung mit Azure AD Connect Health](how-to-connect-health-sync.md).
+Weitere Informationen zu den Features, die mit der Installation aktiviert wurden: [Automatisches Upgrade](how-to-connect-install-automatic-upgrade.md), [Verhindern von versehentlichen Löschungen](how-to-connect-sync-feature-prevent-accidental-deletes.md) und [Azure AD Connect Health](how-to-connect-health-sync.md).
 
 Weitere Informationen zu folgenden allgemeinen Themen: [Scheduler und Auslösen der Synchronisierung](how-to-connect-sync-feature-scheduler.md).
 

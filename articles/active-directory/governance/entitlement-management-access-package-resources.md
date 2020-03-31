@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 102bbfbd1c02c93830f5c7fce89fe95d7fde54c5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174645"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230366"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Ändern von Ressourcenrollen für ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -183,5 +183,5 @@ Wenn Sie ein Teammitglied entfernen, wird es auch aus der Office 365-Gruppe ent
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern mit Azure Active Directory](../fundamentals/active-directory-groups-create-azure-portal.md)
-- [Gewusst wie: Konfigurieren von im SAML-Token ausgestellten Rollenansprüchen für Unternehmensanwendungen](../develop/active-directory-enterprise-app-role-management.md)
+- [Vorgehensweise: Konfigurieren von im SAML-Token ausgestellten Rollenansprüchen für Unternehmensanwendungen](../develop/active-directory-enterprise-app-role-management.md)
 - [Einführung in SharePoint Online](/sharepoint/introduction)

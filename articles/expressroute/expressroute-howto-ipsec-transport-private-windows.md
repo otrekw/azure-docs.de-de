@@ -9,15 +9,15 @@ ms.date: 10/17/2018
 ms.author: fabferri
 ms.custom: seodec18
 ms.openlocfilehash: 1bc33047d31262af443cddc418853fbacd88aec1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74022005"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>Konfigurieren des IPsec-Transportmodus für privates ExpressRoute-Peering
 
-In diesem Artikel ist beschrieben, wie Sie IPsec-Tunnel im Transportmodus über privates ExpressRoute-Peering zwischen Azure-VMs unter Windows und lokalen Windows-Hosts erstellen. In den Schritten in diesem Artikel wird diese Konfiguration mit Gruppenrichtlinienobjekten erstellt. Grundsätzlich ist es möglich, diese Konfiguration zu erstellen, ohne Organisationseinheiten (OEs) und Gruppenrichtlinienobjekte (GROs) zu verwenden. Die Kombination von Organisationseinheiten und Gruppenrichtlinienobjekten vereinfacht aber die Verwaltung Ihrer Sicherheitsrichtlinien und ermöglicht Ihnen schnelles zentrales Hochskalieren. Für die Schritte in diesem Artikel wird davon ausgegangen, dass Sie bereits eine Active Directory-Konfiguration haben und mit der Verwendung von Organisationseinheiten und Gruppenrichtlinienobjekten vertraut sind.
+In diesem Artikel ist beschrieben, wie Sie IPsec-Tunnel im Transportmodus über privates ExpressRoute-Peering zwischen Azure-VMs unter Windows und lokalen Windows-Hosts erstellen. In den Schritten in diesem Artikel wird diese Konfiguration mit Gruppenrichtlinienobjekten erstellt. Grundsätzlich ist es möglich, diese Konfiguration zu erstellen, ohne Organisationseinheiten (OEs) und Gruppenrichtlinienobjekte (GROs) zu verwenden. Die Kombination von Organisationseinheiten und Gruppenrichtlinienobjekten vereinfacht aber die Verwaltung Ihrer Sicherheitsrichtlinien und ermöglicht Ihnen schnelles Hochskalieren. Für die Schritte in diesem Artikel wird davon ausgegangen, dass Sie bereits eine Active Directory-Konfiguration haben und mit der Verwendung von Organisationseinheiten und Gruppenrichtlinienobjekten vertraut sind.
 
 ## <a name="about-this-configuration"></a>Informationen zu dieser Konfiguration.
 
@@ -99,7 +99,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
 * **Azure Windows-VMs:** vm1, vm2
 
-## <a name="creategpo"></a>1. Erstellen eines Gruppenrichtlinienobjekts
+## <a name="1-create-a-gpo"></a><a name="creategpo"></a>1. Erstellen eines Gruppenrichtlinienobjekts
 
 1. Um ein neues Gruppenrichtlinienobjekt zu erstellen, das mit einer Organisationseinheit verknüpft ist, öffnen Sie das Gruppenrichtlinienverwaltungs-Snap-In, und suchen Sie nach der Organisationseinheit, mit der das Gruppenrichtlinienobjekt verknüpft werden soll. In diesem Beispiel hat die Organisationseinheit den Namen **IPSecOU**. 
 
@@ -111,7 +111,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
    [![11]][11]
 
-## <a name="enablelink"></a>2. Aktivieren Sie die Gruppenrichtlinienobjektverknüpfung
+## <a name="2-enable-the-gpo-link"></a><a name="enablelink"></a>2. Aktivieren Sie die Gruppenrichtlinienobjektverknüpfung
 
 Damit das Gruppenrichtlinienobjekt auf die Organisationseinheit angewendet wird, muss das Gruppenrichtlinienobjekt nicht nur mit der Organisationseinheit verknüpft werden, sondern die Verknüpfung muss auch aktiviert werden.
 
@@ -120,7 +120,7 @@ Damit das Gruppenrichtlinienobjekt auf die Organisationseinheit angewendet wird,
 
    [![12]][12]
 
-## <a name="filteraction"></a>3. Definieren der IP-Filteraktion
+## <a name="3-define-the-ip-filter-action"></a><a name="filteraction"></a>3. Definieren der IP-Filteraktion
 
 1. Klicken Sie in der Dropdownliste mit der rechten Maustaste auf **IP-Sicherheitsrichtlinien in Active Directory**, und klicken Sie dann auf **IP-Filterlisten und Filteraktionen verwalten...** .
 
@@ -151,7 +151,7 @@ Damit das Gruppenrichtlinienobjekt auf die Organisationseinheit angewendet wird,
 
    [![23]][23]
 
-## <a name="filterlist1"></a>4. Definieren einer IP-Filterliste
+## <a name="4-define-an-ip-filter-list"></a><a name="filterlist1"></a>4. Definieren einer IP-Filterliste
 
 Erstellen Sie eine Filterliste, in der verschlüsselter HTTP-Datenverkehr mit dem Zielport 8080 angegeben ist.
 
@@ -161,7 +161,7 @@ Erstellen Sie eine Filterliste, in der verschlüsselter HTTP-Datenverkehr mit de
 2. Geben Sie in das Feld **Name:** einen Namen für die Filterliste ein. Beispiel: **azure-onpremises-HTTP8080**. Klicken Sie anschließend auf **Hinzufügen**.
 
    [![25]][25]
-3. Aktivieren Sie auf der Seite **IP-Filterbeschreibung und Eigenschaft "Gespiegelt"** die Option **Gespiegelt**. Die Einstellung für „Gespiegelt“ bewirkt ein Abgleichen von Paketen in beide Richtungen, wodurch bidirektionale Kommunikation ermöglicht wird. Klicken Sie auf **Weiter**.
+3. Aktivieren Sie auf der Seite **IP-Filterbeschreibung und Eigenschaft "Gespiegelt"** die Option **Gespiegelt**. Die Einstellung für „Gespiegelt“ bewirkt ein Abgleichen von Paketen in beide Richtungen, wodurch bidirektionale Kommunikation ermöglicht wird. Klicken Sie dann auf **Weiter**.
 
    [![26]][26]
 4. Wählen Sie auf der Seite **Quelle des IP-Datenverkehrs** in der Dropdownliste **Quelladresse** die Option **Eine bestimmte IP-Adresse oder ein bestimmtes Subnetz** aus. 
@@ -188,7 +188,7 @@ Erstellen Sie eine Filterliste, in der verschlüsselter HTTP-Datenverkehr mit de
 
    [![32]][32]
 
-## <a name="filterlist2"></a>5. Bearbeiten der IP-Filterliste
+## <a name="5-edit-the-ip-filter-list"></a><a name="filterlist2"></a>5. Bearbeiten der IP-Filterliste
 
 Um dieselbe Art von Datenverkehr in umgekehrter Richtung (vom lokalen Host zur Azure-VM) zu verschlüsseln, benötigen Sie einen zweiten IP-Filter. Die Vorgehensweise zum Einrichten des neuen Filters ist mit der identisch, mit der Sie den ersten IP-Filter eigerichtet haben. Die einzigen Unterschiede sind das Quellsubnetz und das Zielsubnetz.
 
@@ -207,7 +207,7 @@ Um dieselbe Art von Datenverkehr in umgekehrter Richtung (vom lokalen Host zur A
 
 Ist Verschlüsselung zwischen einem lokalen Standort und einem Azure-Subnetz erforderlich, um eine Anwendung zu schützen, können Sie, statt die vorhandene IP-Filterliste zu ändern, eine neue IP-Filterliste hinzufügen. Ein Verknüpfen von zwei IP-Filterlisten mit derselben IPsec-Richtlinie bietet mehr Flexibilität, da eine bestimmte IP-Filterliste jederzeit geändert oder entfernt werden kann, ohne dass sich dies auf die anderen IP-Filterlisten auswirkt.
 
-## <a name="ipsecpolicy"></a>6. Erstellen einer IPsec-Sicherheitsrichtlinie 
+## <a name="6-create-an-ipsec-security-policy"></a><a name="ipsecpolicy"></a>6. Erstellen einer IPsec-Sicherheitsrichtlinie 
 
 Erstellen Sie eine IPsec-Richtlinie mit Sicherheitsregeln.
 
@@ -224,7 +224,7 @@ Erstellen Sie eine IPsec-Richtlinie mit Sicherheitsregeln.
 
    [![40]][40]
 
-## <a name="editipsec"></a>7. Bearbeiten der IPsec-Sicherheitsrichtlinie
+## <a name="7-edit-the-ipsec-security-policy"></a><a name="editipsec"></a>7. Bearbeiten der IPsec-Sicherheitsrichtlinie
 
 Fügen Sie der IPSec-Richtlinie die **IP-Filterliste** und die **Filteraktion** hinzu, die Sie zuvor konfiguriert haben.
 
@@ -261,7 +261,7 @@ Fügen Sie der IPSec-Richtlinie die **IP-Filterliste** und die **Filteraktion** 
 
 Die IPsec-Richtlinie erfordert, dass für alle HTTP-Verbindungen am Zielport 8080 der IPsec-Transportmodus verwendet wird. Da HTTP ein Klartextprotokoll ist, wird durch Aktivieren der Sicherheitsrichtlinie sichergestellt, dass Daten verschlüsselt werden, wenn sie über das private ExpressRoute-Peering übertragen werden. Das Konfigurieren von IP-Sicherheitsrichtlinien für Active Directory ist komplizierter als das Konfigurieren der Windows-Firewall mit erweiterter Sicherheit, aber es ermöglicht eine umfangreichere Anpassung der IPSec-Verbindung.
 
-## <a name="assigngpo"></a>8. Zuweisen des IPsec-Gruppenrichtlinienobjekts zur Organisationseinheit
+## <a name="8-assign-the-ipsec-gpo-to-the-ou"></a><a name="assigngpo"></a>8. Zuweisen des IPsec-Gruppenrichtlinienobjekts zur Organisationseinheit
 
 1. Zeigen Sie die Richtlinie an. Die Sicherheitsgruppenrichtlinie ist definiert, aber noch nicht zugewiesen.
 
@@ -271,7 +271,7 @@ Die IPsec-Richtlinie erfordert, dass für alle HTTP-Verbindungen am Zielport 808
 
    [![50]][50]
 
-## <a name="checktraffic"></a>Überprüfen der Verschlüsselung von Datenverkehr
+## <a name="check-traffic-encryption"></a><a name="checktraffic"></a>Überprüfen der Verschlüsselung von Datenverkehr
 
 Um das Verschlüsselungsgruppenrichtlinienobjekt zu testen, das auf die Organisationseinheit angewendet wird, installieren Sie IIS auf allen Azure-VMs und in „host1“. Jede IIS-Instanz wird so angepasst, dass sie auf HTTP-Anforderungen an Port 8080 reagiert.
 Um die Verschlüsselung zu überprüfen, können Sie einen Netzwerk-Sniffer (z. B. Wireshark) auf allen Computer in der Organisationseinheit installieren.

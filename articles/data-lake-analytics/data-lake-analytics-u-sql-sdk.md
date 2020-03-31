@@ -9,10 +9,10 @@ ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
 ms.openlocfilehash: 51d9060eaf4b30c696ef2a3b5f798a31e2f2a98a
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71309681"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Ausführen und Testen von U-SQL mit dem Azure Data Lake U-SQL SDK
@@ -336,9 +336,9 @@ public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|für ausgehende Nachrichten, für die Verwendung von „Console“ auf NULL festgelegt|
 
-**Properties**
+**Eigenschaften**
 
-|Eigenschaft|Typ|BESCHREIBUNG|
+|Eigenschaft|type|BESCHREIBUNG|
 |--------|----|-----------|
 |AlgebraPath|Zeichenfolge|Der Pfad zur Algebradatei (die Algebradatei ist eines der Kompilierungsergebnisse)|
 |CodeBehindReferences|Zeichenfolge|Wenn sich im Skript zusätzlicher Code hinter Verweisen befindet, geben Sie die Pfade mit „;“ getrennt an|
@@ -351,20 +351,20 @@ public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 |InputDir|Zeichenfolge|Verzeichnis für Eingabedaten|
 |MessagePath|Zeichenfolge|Dateipfad zum Sichern der Nachrichten|
 |OutputDir|Zeichenfolge|Verzeichnis für Ausgabedaten|
-|Parallelität|int|Parallelität zur Ausführung der Algebra|
-|ParentPid|int|PID des übergeordneten Elements auf dem der Dienst das Beenden, Einstellen auf 0 oder Negativ zum Ignorieren überwacht|
+|Parallelität|INT|Parallelität zur Ausführung der Algebra|
+|ParentPid|INT|PID des übergeordneten Elements auf dem der Dienst das Beenden, Einstellen auf 0 oder Negativ zum Ignorieren überwacht|
 |ResultPath|Zeichenfolge|Dateipfad zum Sichern der Ergebnisse|
 |RuntimeDir|Zeichenfolge|Runtime-Verzeichnis|
 |scriptPath|Zeichenfolge|Hier finden Sie das Skript|
 |shallow|bool|Flache Kompilierung oder nicht|
-|TempDir|Zeichenfolge|Temp-Verzeichnis|
+|TempDir|Zeichenfolge|Temporäres Verzeichnis|
 |UseDataBase|Zeichenfolge|Geben Sie die Datenbank an, die für die temporäre Assemblyregistrierung von CodeBehind verwendet wird, standardmäßig „master“|
 |WorkDir|Zeichenfolge|Bevorzugtes Arbeitsverzeichnis|
 
 
 **Methode**
 
-|Methode|BESCHREIBUNG|return|Parameter|
+|Methode|BESCHREIBUNG|Rückgabewert|Parameter|
 |------|-----------|------|---------|
 |public bool DoCompile()|Kompilieren des U-SQL-Skripts|Im Erfolgsfall TRUE| |
 |public bool DoExec()|Ausführen des kompilierten Ergebnisses|Im Erfolgsfall TRUE| |

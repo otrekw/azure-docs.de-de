@@ -9,11 +9,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 986f4b0da7254ebac3725a704f32af785c72fbcc
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565025"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225066"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Einrichten von Firewalltabellen und -regeln für private Clouds
 
@@ -68,7 +68,7 @@ Firewallregeln legen fest, wie die Firewall bestimmte Arten von Datenverkehr beh
 > [!IMPORTANT]
 > Jede Firewalltabelle kann bis zu 10 eingehende und 20 ausgehende Regeln aufweisen. Diese Grenzwerte können durch [Kontaktaufnahme mit dem Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) erhöht werden.
 
-## <a name="attach-vlans-subnet"></a>Anfügen von VLANs/Subnetzen
+## <a name="attach-vlanssubnets"></a><a name="attach-vlans-subnet"></a>Anfügen von VLANs/Subnetzen
 
 Nachdem Sie eine Firewalltabelle definiert haben, können Sie die Subnetze angeben, die den Regeln in der Tabelle unterliegen.
 

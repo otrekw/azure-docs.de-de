@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.openlocfilehash: ae1773ec1d470b9cff2efb00c200427b7b4c2fb4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69614826"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Optimieren der Abfrageleistung mit Azure Cosmos DB
@@ -237,7 +237,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 ```
 
-| Metrik | Unit | BESCHREIBUNG | 
+| Metrik | Einheit | BESCHREIBUNG | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | Millisekunden | Abfrageausführungszeit | 
 | `queryCompileTimeInMs` | Millisekunden | Abfragekompilierzeit  | 
@@ -259,7 +259,7 @@ Die Client-SDKs können intern möglicherweise mehrere Abfrageoperationen ausfü
 
 Im Folgenden werden einige Beispielabfragen vorgestellt und erläutert, wie einige von der Abfrageausführung zurückgegebenen Metriken zu interpretieren sind: 
 
-| Abfragen | Beispielmetrik | BESCHREIBUNG | 
+| Abfrage | Beispielmetrik | BESCHREIBUNG | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | Die Anzahl der abgerufenen Dokumente beträgt 100+1 entsprechend der TOP-Klausel. Die Abfragezeit wird hauptsächlich für `WriteOutputTime` und `DocumentLoadTime` aufgewendet, da es sich um eine Überprüfung handelt. | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | „RetrievedDocumentCount“ ist nun höher (500+1 entsprechend der TOP-Klausel). | 

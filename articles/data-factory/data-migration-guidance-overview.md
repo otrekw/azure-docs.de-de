@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/30/2019
 ms.openlocfilehash: aaf1593cc049e8b23f8ebe36fea022b3029ccd04
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930796"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Verwenden von Azure Data Factory zum Migrieren von Daten aus einem Data Lake oder Data Warehouse zu Azure
@@ -29,7 +29,7 @@ Mit Azure Data Factory können bei der Data Lake-Migration Daten im Petabyte-Be
 
 ## <a name="why-azure-data-factory-can-be-used-for-data-migration"></a>Warum Azure Data Factory für die Datenmigration verwendet werden kann
 
-- Mit Azure Data Factory kann die Verarbeitungsleistung problemlos zentral hochskaliert werden, um Daten serverlos mit hoher Leistung, Resilienz und Skalierbarkeit zu verschieben. Sie bezahlen dabei nur für das, was Sie tatsächlich nutzen. Beachten Sie darüber hinaus Folgendes: 
+- Mit Azure Data Factory kann die Verarbeitungsleistung problemlos hochskaliert werden, um Daten serverlos mit hoher Leistung, Resilienz und Skalierbarkeit zu verschieben. Sie bezahlen dabei nur für das, was Sie tatsächlich nutzen. Beachten Sie dabei außerdem Folgendes: 
   - Datenmenge und Dateianzahl sind bei Azure Data Factory unbegrenzt.
   - Azure Data Factory kann Ihre Netzwerk- und Speicherbandbreite vollständig ausnutzen, um in Ihrer Umgebung den höchstmöglichen Datenverschiebungsdurchsatz zu erzielen.
   - Dank des nutzungsbasierten Zahlungsmodells von Azure Data Factory zahlen Sie nur für die Zeit, die tatsächlich für die Datenmigration zu Azure beansprucht wurde.  

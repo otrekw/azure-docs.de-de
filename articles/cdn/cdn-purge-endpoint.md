@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/17/2019
 ms.author: magattus
 ms.openlocfilehash: 1bfbc1b730811e1111a08a957db3a747f90fb587
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74546215"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Löschen eines Azure CDN-Endpunkts
@@ -52,7 +52,7 @@ Dieses Lernprogramm führt Sie durch das Löschen von Assets aus allen Edgeknote
    > 
    > 
 4. Wählen Sie, welche Assets Sie aus dem Edgeknoten löschen möchten.  Wenn Sie alle Assets löschen möchten, klicken Sie auf das Kontrollkästchen **Alles löschen**.  Geben Sie andernfalls den vollständigen Pfad jedes Assets, das Sie löschen möchten, im Textfeld **Pfad** ein. Folgende Formate werden im Pfad unterstützt.
-    1. **Einzelne URL löschen**: Löschen Sie einzelne Ressourcen, indem Sie die vollständige URL mit oder ohne Dateiendung angeben. Beispiele: `/pictures/strasbourg.png`; `/pictures/strasbourg`.
+    1. **Einzelne URL löschen**: Löschen Sie einzelne Assets, indem Sie die vollständige URL mit oder ohne Dateierweiterung angeben. Beispiel: `/pictures/strasbourg.png`; `/pictures/strasbourg`.
     2. **Mit Platzhalter löschen**: Das Sternchen (\*) kann als Platzhalterzeichen verwendet werden. Löschen Sie alle Ordner, Unterordner und Dateien unter einem Endpunkt, indem Sie `/*` im Pfad angeben, oder löschen Sie alle Unterordner und Dateien unter einem bestimmten Ordner, indem Sie den Ordner gefolgt von `/*` angeben. Beispiel: `/pictures/*`.  Beachten Sie, dass das Löschen mit Platzhalter derzeit nicht vom Azure-CDN von Akamai unterstützt wird. 
     3. **Stammdomäne löschen**: Löschen Sie den Stamm des Endpunkts, indem Sie „/“ im Pfad angeben.
    

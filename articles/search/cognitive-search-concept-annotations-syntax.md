@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: e27f61239c0631fb248217777a311b13ee48a3f9
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113874"
 ---
 # <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Verweisen auf Anmerkungen in einem Skillset der kognitiven Azure-Suche
@@ -31,7 +31,7 @@ Gehen Sie vor dem Überprüfen der Syntax nun noch einmal einige wichtige Konzep
 | Anreicherungskontext | Der Kontext, in dem die Anreicherung stattfindet, d.h. welches Element angereichert wird. Standardmäßig befindet sich der Anreicherungskontext auf der Ebene `"/document"`, die auf einzelne Dokumente bezogen ist. Wenn ein Skill ausgeführt wird, werden die Ergebnisse dieses Skills zu [Eigenschaften des definierten Kontexts](#example-2).|
 
 <a name="example-1"></a>
-## <a name="example-1-simple-annotation-reference"></a>Beispiel 1: Einfacher Anmerkungsverweis
+## <a name="example-1-simple-annotation-reference"></a>Beispiel 1: Einfacher Anmerkungsverweis
 
 Angenommen, Sie haben in Azure Blob Storage eine Vielzahl von Dateien, die Verweise auf die Namen von Personen enthalten, die Sie mithilfe der Entitätserkennung extrahieren möchten. In der folgenden Skilldefinition ist `"/document/content"` die Textdarstellung des gesamten Dokuments, und „people“ ist eine Extrahierung von vollständigen Namen für als Personen identifizierte Entitäten.
 
@@ -59,7 +59,7 @@ Da der Standardkontext `"/document"` ist, kann auf die Liste der Personen nun al
 
 <a name="example-2"></a>
 
-## <a name="example-2-reference-an-array-within-a-document"></a>Beispiel 2: Verweis auf ein Array innerhalb eines Dokuments
+## <a name="example-2-reference-an-array-within-a-document"></a>Beispiel 2: Verweisen auf ein Array innerhalb eines Dokuments
 
 Dieses Beispiel baut auf dem vorherigen auf und zeigt Ihnen, wie Sie einen Anreicherungsschritt mehrfach über dasselbe Dokument aufrufen können. Angenommen, das vorherige Beispiel generiert ein Array von Zeichenfolgen mit zehn Personennamen aus einem einzigen Dokument. Ein sinnvoller nächster Schritt könnte eine zweite Anreicherung sein, die den Nachnamen aus einem vollständigen Namen extrahiert. Da es zehn Namen gibt, soll dieser Schritt in diesem Dokument zehnmal aufgerufen werden, d.h. einmal pro Person. 
 
@@ -91,7 +91,7 @@ Wenn es sich bei Anmerkungen um Arrays oder Sammlungen von Zeichenfolgen handelt
 
 <a name="example-3"></a>
 
-## <a name="example-3-reference-members-within-an-array"></a>Beispiel 3: Verweis auf Elemente innerhalb eines Arrays
+## <a name="example-3-reference-members-within-an-array"></a>Beispiel 3: Verweisen auf Elemente innerhalb eines Arrays
 
 Manchmal müssen Sie alle Anmerkungen eines bestimmten Typs gruppieren, um sie an einen bestimmten Skill zu übergeben. Angenommen, es gibt einen hypothetischen benutzerdefinierten Skill, der den häufigsten Nachnamen aus allen in Beispiel 2 extrahierten Nachnamen identifiziert. Um dem benutzerdefinierten Skill nur die Nachnamen bereitzustellen, legen Sie den Kontext auf `"/document"` und die Eingabe auf `"/document/people/*/lastname"` fest.
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: sngun
 ms.openlocfilehash: 8be17f0b624c5c34709fb420adb434b77dbc0d91
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721080"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Herstellen einer Azure Cosmos DB-Verbindung mithilfe von BI-Analysetools per ODBC-Treiber
@@ -29,7 +29,7 @@ An dieser Stelle kommt der ODBC-Treiber ins Spiel. Mit dem ODBC-Treiber können 
 
 Wenden wir uns nun dem ODBC-Treiber zu.
 
-## <a id="install"></a>Schritt 1: Installieren des ODBC-Treibers für Azure Cosmos DB
+## <a name="step-1-install-the-azure-cosmos-db-odbc-driver"></a><a id="install"></a>Schritt 1: Installieren des ODBC-Treibers für Azure Cosmos DB
 
 1. Laden Sie die Treiber für Ihre Umgebung herunter:
 
@@ -48,7 +48,7 @@ Wenden wir uns nun dem ODBC-Treiber zu.
 
     ![ODBC-Datenquellenadministrator für Azure Cosmos DB](./media/odbc-driver/odbc-driver.png)
 
-## <a id="connect"></a>Schritt 2: Herstellen einer Verbindung mit Ihrer Azure Cosmos-Datenbank
+## <a name="step-2-connect-to-your-azure-cosmos-database"></a><a id="connect"></a>Schritt 2: Herstellen einer Verbindung mit Ihrer Azure Cosmos-Datenbank
 
 1. Klicken Sie nach dem [Installieren des Azure Cosmos DB ODBC-Treibers](#install) im Fenster **ODBC-Datenquellenadministrator** auf **Hinzufügen**. Sie können einen Benutzer- oder System-DSN erstellen. In diesem Beispiel erstellen Sie einen Benutzer-DSN.
 
@@ -88,7 +88,7 @@ Wenden wir uns nun dem ODBC-Treiber zu.
 
     ![Neuer Azure Cosmos DB ODBC-DSN auf der Registerkarte „Benutzer-DSN“](./media/odbc-driver/odbc-driver-user-dsn.png)
 
-## <a id="#container-mapping"></a>Schritt 3: Erstellen einer Schemadefinition mithilfe der Containerzuordnungsmethode
+## <a name="step-3-create-a-schema-definition-using-the-container-mapping-method"></a><a id="#container-mapping"></a>Schritt 3: Erstellen einer Schemadefinition mithilfe der Containerzuordnungsmethode
 
 Es gibt zwei Arten von Samplingmethoden, die Sie verwenden können: **Containerzuordnung** oder **Tabellentrennzeichen**. In einer Samplingsitzung können beide Samplingmethoden verwendet werden, aber für jeden Container ist nur eine bestimmte Samplingmethode zulässig. Mit den folgenden Schritten wird ein Schema für die Daten in einem oder mehreren Containern mithilfe der Methode „Containerzuordnung“ erstellt. Mit dieser Samplingmethode werden die Daten auf der Seite eines Containers abgerufen, um die Struktur der Daten zu ermitteln. Hierbei wird ein Container in eine Tabelle auf der ODBC-Seite transponiert. Diese Samplingmethode ist effizient und schnell, wenn die Daten in einem Container homogen sind. Falls ein Container heterogene Daten enthält, empfehlen wir Ihnen die Verwendung der [Tabellentrennzeichen-Zuordnungsmethode](#table-mapping) (table-delimiters). Dies ist eine robustere Samplingmethode zur Ermittlung der Datenstrukturen im Container. 
 
@@ -109,7 +109,7 @@ Es gibt zwei Arten von Samplingmethoden, die Sie verwenden können: **Containerz
 
 1. Um dieses Schema mit einem DSN zu verwenden, öffnen Sie das Fenster **Azure Cosmos DB ODBC Driver DSN Setup** (Azure Cosmos DB ODBC-Treiber – DSN-Setup) (über den ODBC-Datenquellenadministrator), klicken Sie auf **Erweiterte Optionen**, und navigieren Sie dann im Feld **Schemadatei** zum gespeicherten Schema. Mit dem Speichern einer Schemadatei unter einem vorhandenen DSN wird die DSN-Verbindung an die vom Schema definierten Daten und die dazugehörige Struktur angepasst.
 
-## <a id="table-mapping"></a>Schritt 4: Erstellen einer Schemadefinition mit der Tabellentrennzeichen-Zuordnungsmethode
+## <a name="step-4-create-a-schema-definition-using-the-table-delimiters-mapping-method"></a><a id="table-mapping"></a>Schritt 4: Erstellen einer Schemadefinition mit der Tabellentrennzeichen-Zuordnungsmethode
 
 Es gibt zwei Arten von Samplingmethoden, die Sie verwenden können: **Containerzuordnung** oder **Tabellentrennzeichen**. In einer Samplingsitzung können beide Samplingmethoden verwendet werden, aber für jeden Container ist nur eine bestimmte Samplingmethode zulässig. 
 

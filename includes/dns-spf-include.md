@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
 ms.openlocfilehash: 9cc650cea17acb8d89933c819c4ca60e2c459d1c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67178722"
 ---
 SPF-Einträge (Sender Policy Framework) werden verwendet, um anzugeben, welche E-Mail-Server E-Mails im Namen eines Domänennamens senden können. Es ist wichtig, SPF-Einträge korrekt zu konfigurieren, um zu verhindern, dass Empfänger Ihre E-Mail als „Junk“ markieren.

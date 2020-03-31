@@ -1,7 +1,7 @@
 ---
 title: Hinzufügen eines HTML-Markers zu einer Karte | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie, wie Sie einer Karte einen HTML-Marker mithilfe des Microsoft Azure Maps Web SDK hinzufügen.
-author: jingjing-z
+author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 07/29/2019
 ms.topic: conceptual
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 4cc3b1789ef2f7ef44e5421cbacb5a93c2a0a1ff
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 2700d42c25d58911fb275ad9ce6c5610cd22624d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76933608"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536767"
 ---
 # <a name="add-html-markers-to-the-map"></a>Hinzufügen von HTML-Markern zur Karte
 

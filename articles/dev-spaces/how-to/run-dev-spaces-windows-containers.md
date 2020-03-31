@@ -5,12 +5,12 @@ ms.date: 01/16/2020
 ms.topic: conceptual
 description: Erfahren Sie, wie Sie Azure Dev Spaces für einen vorhandenen Cluster mit Windows-Containern ausführen.
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Windows-Container
-ms.openlocfilehash: d376aca45778060c8913924fd2a44031109390d2
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: 0b3f221c9e62343a02ba8742e4cf988c7cf26c12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77538788"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240487"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Interagieren mit Windows-Containern unter Verwendung von Azure Dev Spaces
 
@@ -20,7 +20,7 @@ Sie können Azure Dev Spaces für neue und vorhandene Kubernetes-Namespaces akti
 
 In diesem Artikel wird davon ausgegangen, dass Sie bereits über einen Cluster mit Linux- und Windows-Knotenpools verfügen. Wenn Sie einen Cluster mit Linux- und Windows-Knotenpools erstellen müssen, finden Sie [hier][windows-container-cli] entsprechende Anweisungen.
 
-Stellen Sie unter Verwendung des Kubernetes-Befehlszeilenclients ([kubectl][kubectl]) eine Verbindung mit Ihrem Cluster her. Mit dem Befehl [az aks get-credentials][az-aks-get-credentials] können Sie `kubectl` für die Verbindungsherstellung mit Ihrem Kubernetes-Cluster konfigurieren. Mit diesem Befehl werden die Anmeldeinformationen heruntergeladen, und die Kubernetes-Befehlszeilenschnittstelle wird für deren Verwendung konfiguriert.
+Stellen Sie unter Verwendung des Kubernetes-Befehlszeilenclients ([kubectl][kubectl]) eine Verbindung mit Ihrem Cluster her. Mit dem Befehl `kubectl`az aks get-credentials[ können Sie ][az-aks-get-credentials] für die Verbindungsherstellung mit Ihrem Kubernetes-Cluster konfigurieren. Mit diesem Befehl werden die Anmeldeinformationen heruntergeladen, und die Kubernetes-Befehlszeilenschnittstelle wird für deren Verwendung konfiguriert.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -141,7 +141,7 @@ azds up
 Der Befehl `azds prep --enable-ingress` generiert das Helm-Diagramm und die Dockerfile-Dateien für Ihre Anwendung.
 
 > [!TIP]
-> Azure Dev Spaces nutzt das [Dockerfile und das Helm-Chart](../how-dev-spaces-works.md#prepare-your-code) zum Erstellen und Ausführen Ihres Codes. Sie können diese Dateien jedoch ändern, wenn Sie anpassen möchten, wie das Projekt erstellt und ausgeführt wird.
+> Azure Dev Spaces nutzt das [Dockerfile und das Helm-Chart](../how-dev-spaces-works-prep.md#prepare-your-code) zum Erstellen und Ausführen Ihres Codes. Sie können diese Dateien jedoch ändern, wenn Sie anpassen möchten, wie das Projekt erstellt und ausgeführt wird.
 
 Der Befehl `azds up` führt den Dienst im-Namespace aus.
 
@@ -170,7 +170,7 @@ Sie können die Ausführung des Diensts verfolgen, indem Sie die öffentliche UR
 Informieren Sie sich darüber, wie Azure Dev Spaces Sie bei der Entwicklung komplexerer containerübergreifender Anwendungen unterstützt und wie Sie die gemeinsame Entwicklung vereinfachen können, indem Sie in verschiedenen Bereichen mit verschiedenen Versionen oder Branches Ihres Codes arbeiten.
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Entwicklung im Team unter Kubernetes: Azure Dev Spaces][team-development-qs]
+> [Schnellstart: Entwicklung im Team mit Java unter Kubernetes mithilfe von Azure Dev Spaces][team-development-qs]
 
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

@@ -13,10 +13,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: d061a132699e733e78a7d717ee32222b158d73b4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927536"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Delete-Aktivität in Azure Data Factory
@@ -116,7 +116,7 @@ Es gibt zwei Stellen, an denen Sie die Ergebnisse der Delete-Aktivität anzeigen
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Beispielprotokolldatei der Delete-Aktivität
 
-| NAME | Category | Status | Error |
+| Name | Category | Status | Fehler |
 |:--- |:--- |:--- |:--- |
 | test1/yyy.json | Datei | Deleted |  |
 | test2/hello789.txt | Datei | Deleted |  |
@@ -221,7 +221,7 @@ Sie können eine Pipeline erstellen, um die zeitpartitionierten Ordner oder Date
 }
 ```
 
-#### <a name="sample-trigger"></a>Beispieltrigger
+#### <a name="sample-trigger"></a>Beispielauslöser
 
 ```json
 {

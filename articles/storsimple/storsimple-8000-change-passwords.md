@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: ab874bbdcd47a4bfa9abfba721afa46d0f23a338
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60638007"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232254"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-change-your-storsimple-passwords"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Ändern von StorSimple-Kennwörtern
 
@@ -93,7 +93,7 @@ Sie können das Kennwort für StorSimple Snapshot Manager im Azure-Portal festle
 Das Kennwort für StorSimple Snapshot Manager sollte jetzt aktualisiert sein.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zur [StorSimple-Sicherheit](storsimple-8000-security.md).
+* Weitere Informationen zur [StorSimple-Sicherheit](storsimple-8000-security.md)
 * Weitere Informationen zum [Ändern Ihrer Gerätekonfiguration](storsimple-8000-modify-device-config.md).
 * Erfahren Sie mehr [Verwalten von StorSimple-Geräten mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-manager-service-administration.md).
 

@@ -10,11 +10,11 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 8a6b7cb3fd45e17b84519efcaa826b569083e156
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839475"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231538"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Verwalten von Azure Data Lake Analytics mithilfe des Azure-Portals
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -37,7 +37,7 @@ In diesem Artikel wird beschrieben, wie Sie Azure Data Lake Analytics-Konten, -D
    3. **Ressourcengruppe**: Der Name der Azure-Ressourcengruppe, in der das Konto erstellt werden soll. 
    4. **Standort**: Das Azure-Rechenzentrum für das Data Lake Analytics-Konto. 
    5. **Data Lake Store**: Der Standardspeicher, der für das Data Lake Analytics-Konto verwendet werden soll. Das Data Lake Store-Konto und das Data Lake Analytics-Konto müssen sich am selben Ort befinden.
-4. Klicken Sie auf **Create**. 
+4. Klicken Sie auf **Erstellen**. 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>Löschen eines Data Lake Analytics-Kontos
 
@@ -51,7 +51,7 @@ Bevor Sie ein Data Lake Analytics-Konto löschen, löschen Sie dessen Data Lake 
 <!-- ################################ -->
 <!-- ################################ -->
 
-## <a name="manage-data-sources"></a>Verwalten von Datenquellen
+## <a name="manage-data-sources"></a>Datenquellen verwalten
 
 Data Lake Analytics unterstützt die folgenden Datenquellen:
 
@@ -98,9 +98,9 @@ Sie können den **Assistent für das Hinzufügen von Benutzern** verwenden, um e
 Wie andere Azure-Dienste können Sie die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) verwenden, um zu steuern, wie Benutzer mit dem Dienst interagieren.
 
 Die standardmäßigen RBAC-Rollen haben die folgenden Funktionen:
-* **Besitzer**: Kann Aufträge übermitteln, Aufträge überwachen, Aufträge von beliebigen Benutzern abbrechen und das Konto konfigurieren.
+* **Besitzer:** Kann Aufträge übermitteln, Aufträge überwachen, Aufträge von beliebigen Benutzern abbrechen und das Konto konfigurieren.
 * **Mitwirkender**: Kann Aufträge übermitteln, Aufträge überwachen, Aufträge von beliebigen Benutzern abbrechen und das Konto konfigurieren.
-* **Leser**: Kann Aufträge überwachen.
+* **Leser:** Kann Aufträge überwachen.
 
 Verwenden Sie die Rolle „Data Lake Analytics-Entwickler“, um U-SQL-Entwicklern das Verwenden des Data Lake Analytics-Diensts zu ermöglichen. Sie können die Rolle „Data Lake Analytics-Entwickler“ für Folgendes verwenden:
 * Übermitteln von Aufträgen.
@@ -123,7 +123,7 @@ Verwenden Sie die Rolle „Data Lake Analytics-Entwickler“, um U-SQL-Entwickle
 <!-- ################################ -->
 <!-- ################################ -->
 
-## <a name="manage-jobs"></a>Verwalten von Aufträgen
+## <a name="manage-jobs"></a>Aufträge verwalten
 
 ### <a name="submit-a-job"></a>Übermitteln eines Auftrags
 
@@ -132,7 +132,7 @@ Verwenden Sie die Rolle „Data Lake Analytics-Entwickler“, um U-SQL-Entwickle
 2. Klicken Sie auf **Neuer Auftrag**. Konfigurieren Sie für jeden Auftrag Folgendes:
 
     1. **Auftragsname**: Der Name des Auftrags.
-    2. **Priorität**: Niedrigere Zahlen stehen für eine höhere Priorität. Wenn sich zwei Aufträge in der Warteschlange befinden, wird zuerst der Auftrag mit dem niedrigeren Prioritätswert ausgeführt.
+    2. **Priorität:** Niedrigere Zahlen stehen für eine höhere Priorität. Wenn sich zwei Aufträge in der Warteschlange befinden, wird zuerst der Auftrag mit dem niedrigeren Prioritätswert ausgeführt.
     3. **Parallelität**: Die maximale Anzahl von Computevorgängen, die für diesen Auftrag reserviert werden sollen.
 
 3. Klicken Sie auf **Auftrag senden**.

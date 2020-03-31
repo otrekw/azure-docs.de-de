@@ -10,10 +10,10 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.openlocfilehash: db3da5ff2d7e8b6fa493f5338fac93df0d1a7fe2
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110895"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>Hochladen von Dateien von Ihrem Gerät in die Cloud mit IoT Hub (Node.js)
@@ -50,7 +50,7 @@ Am Ende dieses Tutorials führen Sie zwei Node.js-Konsolen-Apps aus:
 
 * Ein aktives Azure-Konto. (Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.)
 
-* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port möglicherweise blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit einem IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 [!INCLUDE [iot-hub-associate-storage](../../includes/iot-hub-associate-storage.md)]
 
@@ -70,9 +70,9 @@ In diesem Abschnitt erstellen Sie die Geräte-App zum Hochladen einer Datei in I
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-3. Erstellen Sie mit einem Text-Editor im Ordner ```simulateddevice``` die Datei **SimulatedDevice.js**.
+3. Erstellen Sie mit einem Text-Editor im Ordner **die Datei**SimulatedDevice.js```simulateddevice```.
 
-4. Fügen Sie am Anfang der Datei **SimulatedDevice.js** die folgenden ```require```-Anweisungen hinzu:
+4. Fügen Sie am Anfang der Datei ```require```SimulatedDevice.js**die folgenden**-Anweisungen hinzu:
 
     ```javascript
     'use strict';
@@ -145,7 +145,7 @@ Sie können diesen Abschnitt mit der Verbindungszeichenfolge **iothubowner** aus
 
 3. Erstellen Sie mit einem Text-Editor eine **FileUploadNotification.js**-Datei im Ordner `fileuploadnotification`.
 
-4. Fügen Sie am Anfang der Datei **FileUploadNotification.js** die folgenden `require`-Anweisungen hinzu:
+4. Fügen Sie am Anfang der Datei `require`FileUploadNotification.js**die folgenden**-Anweisungen hinzu:
 
     ```javascript
     'use strict';

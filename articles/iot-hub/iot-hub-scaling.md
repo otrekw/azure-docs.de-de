@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: wesmc
-ms.openlocfilehash: d1de29124825a7f398b9722bb2455d1105e9c9f7
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: ecc1ae5138fe5a1e42fed9be2e31b5afa8b6d5b0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023642"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79497506"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wählen des richtigen IoT Hub-Tarifs für Ihre Lösung
 
@@ -72,37 +72,37 @@ Der Unterschied zwischen den unterstützten Funktionen zwischen dem Basic- und d
 
 | API | Basic-Tarif | Tarif Free und Standard |
 | --- | ---------- | ------------- |
-| [Gerät löschen](https://docs.microsoft.com/rest/api/iothub/service/deletedevice) | Ja | Ja |
-| [Gerät abrufen](https://docs.microsoft.com/rest/api/iothub/service/getdevice) | Ja | Ja |
-| [Modul löschen](https://docs.microsoft.com/rest/api/iothub/service/deletemodule) | Ja | Ja |
-| [Modul abrufen](https://docs.microsoft.com/rest/api/iothub/service/getmodule) | Ja | Ja |
-| [Registrierungsstatistiken abrufen](https://docs.microsoft.com/rest/api/iothub/service/getdeviceregistrystatistics) | Ja | Ja |
-| [Dienststatistiken abrufen](https://docs.microsoft.com/rest/api/iothub/service/getservicestatistics) | Ja | Ja |
-| [Gerät erstellen oder aktualisieren](https://docs.microsoft.com/rest/api/iothub/service/createorupdatedevice) | Ja | Ja |
-| [Modul erstellen oder aktualisieren](https://docs.microsoft.com/rest/api/iothub/service/createorupdatemodule) | Ja | Ja |
-| [IoT Hub abfragen](https://docs.microsoft.com/rest/api/iothub/service/queryiothub) | Ja | Ja |
+| [Gerät löschen](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/deletedevice) | Ja | Ja |
+| [Gerät abrufen](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getdevice) | Ja | Ja |
+| [Modul löschen](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/deletemodule) | Ja | Ja |
+| [Modul abrufen](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getmodule) | Ja | Ja |
+| [Registrierungsstatistiken abrufen](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getdevicestatistics) | Ja | Ja |
+| [Dienststatistiken abrufen](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getservicestatistics) | Ja | Ja |
+| [Gerät erstellen oder aktualisieren](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/createorupdatedevice) | Ja | Ja |
+| [Modul erstellen oder aktualisieren](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/createorupdatemodule) | Ja | Ja |
+| [IoT Hub abfragen](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/queryiothub) | Ja | Ja |
 | [SAS-URI für Dateiupload erstellen](https://docs.microsoft.com/rest/api/iothub/device/createfileuploadsasuri) | Ja | Ja |
 | [Gerätegebundene Benachrichtigung empfangen](https://docs.microsoft.com/rest/api/iothub/device/receivedeviceboundnotification) | Ja | Ja |
 | [Geräteereignis senden](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | Ja | Ja |
 | Modulereignis senden | Nur AMQP und MQTT | Nur AMQP und MQTT |
 | [Dateiuploadstatus aktualisieren](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Ja | Ja |
-| [Massenvorgang für Geräte](https://docs.microsoft.com/rest/api/iothub/service/bulkcreateorupdatedevices) | Ja, mit Ausnahme von IoT Edge-Funktionen | Ja |
-| [Import-/Exportauftrag abbrechen](https://docs.microsoft.com/rest/api/iothub/service/cancelimportexportjob) | Ja | Ja |
-| [Import-/Exportauftrag erstellen](https://docs.microsoft.com/rest/api/iothub/service/createimportexportjob) | Ja | Ja |
-| [Import-/Exportauftrag abrufen](https://docs.microsoft.com/rest/api/iothub/service/getimportexportjob) | Ja | Ja |
-| [Import-/Exportaufträge abrufen](https://docs.microsoft.com/rest/api/iothub/service/getimportexportjobs) | Ja | Ja |
-| [Befehlswarteschlange bereinigen](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | Ja |
-| [Gerätezwilling abrufen](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | Ja |
-| [Modulzwilling abrufen](https://docs.microsoft.com/rest/api/iothub/service/getmoduletwin) |   | Ja |
-| [Gerätemethode aufrufen](https://docs.microsoft.com/rest/api/iothub/service/invokedevicemethod) |   | Ja |
-| [Gerätezwilling aktualisieren](https://docs.microsoft.com/rest/api/iothub/service/updatetwin) |   | Ja |
-| [Modulzwilling aktualisieren](https://docs.microsoft.com/rest/api/iothub/service/updatemoduletwin) |   | Ja |
+| [Massenvorgang für Geräte](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/bulkdevicecrud) | Ja, mit Ausnahme von IoT Edge-Funktionen | Ja |
+| [Import-/Exportauftrag abbrechen](https://docs.microsoft.com/rest/api/iothub/service/jobclient/cancelimportexportjob) | Ja | Ja |
+| [Import-/Exportauftrag erstellen](https://docs.microsoft.com/rest/api/iothub/service/jobclient/createimportexportjob) | Ja | Ja |
+| [Import-/Exportauftrag abrufen](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjob) | Ja | Ja |
+| [Import-/Exportaufträge abrufen](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) | Ja | Ja |
+| [Befehlswarteschlange bereinigen](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/purgecommandqueue) |   | Ja |
+| [Gerätezwilling abrufen](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) |   | Ja |
+| [Modulzwilling abrufen](https://docs.microsoft.com/rest/api/iothub/service/twin/getmoduletwin) |   | Ja |
+| [Gerätemethode aufrufen](https://docs.microsoft.com/rest/api/iothub/service/devicemethod/invokedevicemethod) |   | Ja |
+| [Gerätezwilling aktualisieren](https://docs.microsoft.com/rest/api/iothub/service/twin/updatedevicetwin) |   | Ja |
+| [Modulzwilling aktualisieren](https://docs.microsoft.com/rest/api/iothub/service/twin/updatemoduletwin) |   | Ja |
 | [Gerätegebundene Benachrichtigung verwerfen](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | Ja |
 | [Gerätegebundene Benachrichtigung abschließen](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | Ja |
-| [Auftrag abbrechen](https://docs.microsoft.com/rest/api/iothub/service/canceljob) |   | Ja |
-| [Auftrag erstellen](https://docs.microsoft.com/rest/api/iothub/service/createjob) |   | Ja |
-| [Auftrag abrufen](https://docs.microsoft.com/rest/api/iothub/service/getjob) |   | Ja |
-| [Aufträge abfragen](https://docs.microsoft.com/rest/api/iothub/service/queryjobs) |   | Ja |
+| [Auftrag abbrechen](https://docs.microsoft.com/rest/api/iothub/service/jobclient/canceljob) |   | Ja |
+| [Auftrag erstellen](https://docs.microsoft.com/rest/api/iothub/service/jobclient/createjob) |   | Ja |
+| [Auftrag abrufen](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getjob) |   | Ja |
+| [Aufträge abfragen](https://docs.microsoft.com/rest/api/iothub/service/jobclient/queryjobs) |   | Ja |
 
 ## <a name="message-throughput"></a>Nachrichtendurchsatz
 

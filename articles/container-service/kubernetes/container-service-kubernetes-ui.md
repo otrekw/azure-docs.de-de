@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 6ce78ca19458b497980cf2cfc374f787d3a5d9f5
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 01abcc961d1c2ad9d3e2cf35f82e62929bc2fb89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276980"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371136"
 ---
 # <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>(VERALTET) Verwenden der Webbenutzeroberfläche von Kubernetes mit Azure Container Service
 
@@ -29,8 +29,8 @@ Außerdem wird angenommen, dass die Azure CLI und die Tools `kubectl` installier
 
 Führen Sie Folgendes aus, um zu prüfen, ob das Tool `az` installiert ist:
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 Wenn das Tool `az` nicht installiert ist, finden Sie [hier](https://github.com/azure/azure-cli#installation) Anweisungen.
@@ -38,13 +38,13 @@ Wenn das Tool `az` nicht installiert ist, finden Sie [hier](https://github.com/a
 Führen Sie Folgendes aus, um zu prüfen, ob das Tool `kubectl` installiert ist:
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 Wenn `kubectl` nicht installiert ist, können Sie folgenden Befehl ausführen:
 
-```console
-$ az acs kubernetes install-cli
+```azurecli
+az acs kubernetes install-cli
 ```
 
 ## <a name="overview"></a>Übersicht
@@ -52,8 +52,8 @@ $ az acs kubernetes install-cli
 ### <a name="connect-to-the-web-ui"></a>Herstellen einer Verbindung mit der Webbenutzeroberfläche
 Sie können die Kubernetes-Webbenutzeroberfläche starten, indem Sie Folgendes ausführen:
 
-```console
-$ az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
+```azurecli
+az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
 ```
 
 Ein Webbrowser sollte geöffnet werden, der für die Kommunikation mit einem sicheren Proxy konfiguriert ist, der Ihren lokalen Computer mit der Kubernetes-Webbenutzeroberfläche verbindet.

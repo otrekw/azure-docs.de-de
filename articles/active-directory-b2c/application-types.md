@@ -12,17 +12,17 @@ ms.date: 07/24/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e8328db12bde531c2e27936c09247611ff1a3583
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78190142"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>In Active Directory B2C verwendbare Anwendungstypen
 
 Azure Active Directory B2C (Azure AD B2C) unterstützt die Authentifizierung für eine Vielzahl moderner Anwendungsarchitekturen. Diese basieren alle auf den branchenüblichen Protokollen [OAuth 2.0](protocols-overview.md) oder [OpenID Connect](protocols-overview.md). In diesem Artikel werden die Anwendungstypen beschrieben, die Sie unabhängig von der bevorzugten Sprache oder Plattform erstellen können. Außerdem verdeutlicht es die allgemeinen Szenarios, bevor Sie mit dem Erstellen von Anwendungen beginnen.
 
-Jede Anwendung, die Azure AD B2C verwendet, muss über das [Azure-Portal](https://portal.azure.com/) in Ihrem [Azure AD B2C-Mandanten](tutorial-create-tenant.md) registriert werden. Während des Anwendungsregistrierungsprozesses werden Werte erfasst und zugewiesen, wie z.B.:
+Jede Anwendung, die Azure AD B2C verwendet, muss über das [Azure-Portal](tutorial-create-tenant.md) in Ihrem [Azure AD B2C-Mandanten](https://portal.azure.com/) registriert werden. Während des Anwendungsregistrierungsprozesses werden Werte erfasst und zugewiesen, wie z.B.:
 
 * Eine **Anwendungs-ID**, die Ihre Anwendung eindeutig ausweist.
 * Ein **Antwort-URI**, der zum Umleiten von Antworten zurück an die Anwendung verwendet werden kann.

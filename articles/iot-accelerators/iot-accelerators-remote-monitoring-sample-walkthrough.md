@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: 33005bc286f7dc2c0ebed74bd9df0309e71346f5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73824835"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>Solution Accelerator für die Remoteüberwachung: Übersicht
@@ -41,7 +41,7 @@ Im folgenden Diagramm sind die logischen Komponenten des Solution Accelerators f
 Die Cloudarchitektur wurde ständig weiterentwickelt, seit Microsoft die ersten Solution Accelerators veröffentlicht hat. [Microservices](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/) haben sich als bewährte Methode herausgestellt, um Skalierbarkeit und Flexibilität zu erzielen, ohne die Entwicklungsgeschwindigkeit zu opfern. Mehrere Microsoft-Dienste nutzen dieses Architekturmuster intern mit hervorragenden Ergebnissen bei der Zuverlässigkeit und Skalierbarkeit. Mit den aktualisierten Solution Accelerators werden diese Erkenntnisse in die Praxis umgesetzt, damit auch Sie davon profitieren können.
 
 > [!TIP]
-> Weitere Informationen zu Microservicearchitekturen finden Sie unter [.NET Application Architecture](https://www.microsoft.com/net/learn/architecture) (.NET-Anwendungsarchitektur) und [Microservices: An application revolution powered by the cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/) (Microservices: Eine cloudbasierte Anwendungsrevolution).
+> Weitere Informationen zu Microservice-Architekturen finden Sie unter [.NET Application Architecture](https://www.microsoft.com/net/learn/architecture) (.NET-Anwendungsarchitektur) und [Microservices: An application revolution powered by the cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/) (Microservices: Eine Anwendungsrevolution auf Cloudbasis).
 
 ## <a name="device-connectivity"></a>Gerätekonnektivität
 

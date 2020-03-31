@@ -13,15 +13,15 @@ ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 066e32d5ab21f88b170498173606043c54fec586
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928153"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231586"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopieren von Daten in eine bzw. aus einer lokalen Oracle-Instanz mit Azure Data Factory
 
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-onprem-oracle-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-oracle.md)
 
@@ -31,7 +31,7 @@ ms.locfileid: "74928153"
 
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten in eine und aus einer lokalen Oracle-Datenbank zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
 
-## <a name="supported-scenarios"></a>Unterstützte Szenarien
+## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
 Sie können Daten *aus Oracle-Datenbank* in die folgenden Datenspeicher kopieren:
 
@@ -80,7 +80,7 @@ Wenn Sie zum Kopieren der Pipeline den Kopier-Assistenten verwenden, wird der Tr
 
 Sie können eine Pipeline erstellen, die eine Kopieraktivität aufweist. Die Pipeline verschiebt Daten in eine oder aus einer lokalen Oracle-Datenbank mithilfe verschiedener Tools oder APIs.
 
-Am einfachsten erstellen Sie eine Pipeline mit dem Kopier-Assistenten. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+Am einfachsten erstellen Sie eine Pipeline mit dem Kopier-Assistenten. Siehe [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
 Sie können auch eines der folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, eine **Azure Resource Manager-Vorlage**, die **.NET-API** oder die **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie eine schrittweise Anleitung, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
@@ -594,17 +594,17 @@ Wie unter [Datenverschiebungsaktivitäten](data-factory-data-movement-activities
 
 Wenn Sie Daten aus Oracle verschieben, werden die folgenden Zuordnungen zwischen dem Oracle-Datentyp und dem .NET-Typ verwendet (und umgekehrt):
 
-| Datentyp "Oracle" | Datentyp ".NET Framework" |
+| Oracle-Datentyp | Datentyp ".NET Framework" |
 | --- | --- |
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>(nur unterstützt für Oracle 10g oder höher bei Verwendung eines Microsoft-Treibers) |
 | CHAR |String |
 | CLOB |String |
 | DATE |Datetime |
-| FLOAT |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
+| GLEITKOMMAZAHL |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
 | INTEGER |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
 | INTERVAL YEAR TO MONTH |Int32 |
-| INTERVAL DAY TO SECOND |Zeitraum |
+| INTERVAL DAY TO SECOND |TimeSpan |
 | LONG |String |
 | LONG RAW |Byte[] |
 | NCHAR |String |
@@ -613,12 +613,12 @@ Wenn Sie Daten aus Oracle verschieben, werden die folgenden Zuordnungen zwischen
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |
-| TIMESTAMP |Datetime |
+| timestamp |Datetime |
 | TIMESTAMP WITH LOCAL TIME ZONE |Datetime |
 | TIMESTAMP WITH TIME ZONE |Datetime |
 | UNSIGNED INTEGER |Number |
 | VARCHAR2 |String |
-| XML |Zeichenfolge |
+| XML |String |
 
 > [!NOTE]
 > Die Datentypen **INTERVAL YEAR TO MONTH** und **INTERVAL DAY TO SECOND** werden bei Verwendung eines Microsoft-Treibers nicht unterstützt.

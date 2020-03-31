@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: manayar
-ms.openlocfilehash: aa2b0013818f897f01945d394266a57016ecb0bb
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 99ad4249a4134bcc1b1cf5aba92b8a95a034db33
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275849"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534421"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Grundlegendes zu Instanz-IDs für virtuelle Computer in Azure-VM-Skalierungsgruppen
 In diesem Artikel werden Instanz-IDs für Skalierungsgruppen und die verschiedenen Arten beschrieben, wie sie in Erscheinung treten.
@@ -40,8 +40,11 @@ Sie können auch [resources.azure.com](https://resources.azure.com) oder die [Az
 
 Die genaue Darstellung der Ausgabe hängt von den für den Befehl angegebenen Optionen ab. Nachfolgend sehen Sie eine Beispielausgabe der CLI:
 
+```azurecli
+az vmss show -g {resourceGroupName} -n {vmScaleSetName}
 ```
-$ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
+
+```output
 [
   {
     "instanceId": "85",
@@ -70,7 +73,7 @@ Der Teil {Instanz-ID} des Namens ist dieselbe Dezimalzahl wie die zuvor erläute
 
 Wenn Sie [Instanzmetadaten](../virtual-machines/windows/instance-metadata-service.md) direkt auf einem virtuellen Computer in einer Skalierungsgruppe abfragen, wird in der Ausgabe ein „Name“ angezeigt:
 
-```
+```output
 {
   "compute": {
     "location": "westus",

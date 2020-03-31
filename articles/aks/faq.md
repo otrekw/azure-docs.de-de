@@ -3,12 +3,12 @@ title: Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 description: Finden Sie Antworten auf einige der häufig gestellten Fragen zu Azure Kubernetes Service (AKS).
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 1531308a8d0bd5a09952d8ad8ccd03c92f2f99eb
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: c4bb4328af5df7f729967c7b249847b2ab098770
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77914601"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79497754"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 
@@ -132,7 +132,7 @@ AKS-Agent-Knoten werden als standardmäßige Azure-VMs abgerechnet. Wenn Sie als
 
 ## <a name="can-i-movemigrate-my-cluster-between-azure-tenants"></a>Kann ich meinen Cluster zwischen Azure-Mandanten verschieben/migrieren?
 
-Der Befehl `az aks update-credentials` kann verwendet werden, um einen AKS-Cluster zwischen Azure-Mandanten zu verschieben. Folgen Sie den Anweisungen unter [Aktualisieren oder Erstellen eines Dienstprinzipals](https://docs.microsoft.com/azure/aks/update-credentials), und [aktualisieren Sie den AKS-Cluster mit neuen Anmeldeinformationen](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-credentials).
+Der Befehl `az aks update-credentials` kann verwendet werden, um einen AKS-Cluster zwischen Azure-Mandanten zu verschieben. Folgen Sie den Anweisungen unter [Aktualisieren oder Erstellen eines Dienstprinzipals](https://docs.microsoft.com/azure/aks/update-credentials), und [aktualisieren Sie den AKS-Cluster mit neuen Anmeldeinformationen](https://docs.microsoft.com/azure/aks/update-credentials#update-aks-cluster-with-new-service-principal-credentials).
 
 ## <a name="can-i-movemigrate-my-cluster-between-subscriptions"></a>Kann ich meinen Cluster zwischen Abonnements verschieben/migrieren?
 

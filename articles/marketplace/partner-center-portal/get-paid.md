@@ -1,18 +1,17 @@
 ---
 title: Zahlungserhalt im kommerziellen Marketplace | Azure Marketplace
 description: Erfahren Sie, wie Sie die Zahlungen für Ihre Einnahmen im kommerziellen Marketplace erhalten.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 7f539d4165df04ddca198385f9eef4f90ed15189
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 3c75d5ccdd2d632fbc31d1be3faf6cbc6d3fb223
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933600"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275831"
 ---
 # <a name="getting-paid"></a>Erhalten der Bezahlung
 Nachstehend finden Sie einige wichtige Informationen zum Erhalten von Zahlungen für Ihre Angebote, Add-Ons und Werbeeinnahmen.

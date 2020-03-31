@@ -5,13 +5,13 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: fa9bc4efd9549cbcb1d50439989c5dea79d9d60c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671935"
 ---
-# <a name="exception-telemetry-application-insights-data-model"></a>Telemetriedaten für Ausnahmen: Application Insights-Datenmodell
+# <a name="exception-telemetry-application-insights-data-model"></a>Ausnahmentelemetrie: Application Insights-Datenmodell
 
 In [Application Insights](../../azure-monitor/app/app-insights-overview.md) stellt eine Instanz einer Ausnahme eine behandelte oder nicht behandelte Ausnahme dar, die während der Ausführung der überwachten Anwendung aufgetreten ist.
 
@@ -19,7 +19,7 @@ In [Application Insights](../../azure-monitor/app/app-insights-overview.md) stel
 
 Bezeichner der Stelle, an der die Ausnahme im Code ausgelöst wurde. Dient zum Gruppieren von Ausnahmen. In der Regel eine Kombination von Ausnahmetyp und einer Funktion in der Aufrufliste.
 
-Max. Länge: 1.024 Zeichen
+Maximale Länge: 1.024 Zeichen
 
 ## <a name="severity-level"></a>Schweregrad
 

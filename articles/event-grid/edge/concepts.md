@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 73309e10e88c11e639e6ac6fd3bb061e1b5c685b
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72991851"
 ---
 # <a name="event-grid-concepts"></a>Event Grid-Konzepte
@@ -60,6 +60,6 @@ Event Grid ermöglicht ein sicheres Abonnieren und Veröffentlichen von Themen. 
 
 Wenn Event Grid nicht bestätigen kann, dass ein Ereignis beim Endpunkt des Abonnenten eingegangen ist, wird das Ereignis erneut übermittelt. Weitere Informationen finden Sie unter [Event Grid – Nachrichtenübermittlung und -wiederholung](delivery-retry.md).
 
-## <a name="batching"></a>Batchverarbeitung
+## <a name="batching"></a>Batching
 
 Wenn Sie ein benutzerdefiniertes Thema verwenden, müssen die Ereignisse immer in einem Array veröffentlicht werden. Bei Szenarios mit geringem Durchsatz hat das Array nur einen Wert. Für Anwendungsfälle mit hohem Volumen wird aber empfohlen, pro Veröffentlichung mehrere Ereignisse zu Batches zusammenzufassen, um eine höhere Effizienz zu erzielen. Batches können eine Größe von bis zu 1 MB haben. Für die einzelnen Ereignisse sollte trotzdem eine Größe von 1 MB (Preview) nicht überschritten werden.

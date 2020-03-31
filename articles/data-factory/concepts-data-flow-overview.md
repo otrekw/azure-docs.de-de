@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/19/2019
 ms.openlocfilehash: 210c1814325e689dd70af9caa7fad08deed933e1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444500"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224798"
 ---
 # <a name="what-are-mapping-data-flows"></a>Was sind Zuordnungsdatenflüsse?
 
@@ -121,7 +121,7 @@ Bei dieser Option werden dynamische Spark-Bereiche basierend auf den von Ihnen a
 
 Erstellen Sie einen Ausdruck, der einen festen Bereich für Werte in Ihren partitionierten Datenspalten bereitstellt. Sie sollten über fundiertes Wissen über Ihre Daten verfügen, bevor Sie diese Option verwenden, um Partitionsungleichmäßigkeiten zu vermeiden. Die von Ihnen für den Ausdruck eingegebenen Werte werden als Teil einer Partitionsfunktion verwendet. Sie können die Anzahl der physischen Partitionen festlegen.
 
-##### <a name="key"></a>Key
+##### <a name="key"></a>Schlüssel
 
 Wenn Sie gut mit der Kardinalität Ihrer Daten vertraut sind, kann die Schlüsselpartitionierung eine gute Strategie darstellen. Die Schlüsselpartitionierung erstellt Partitionen für jeden eindeutigen Wert in der Spalte. Sie können die Anzahl der Partitionen nicht festlegen, weil die Anzahl auf den eindeutigen Werten in den Daten basiert.
 

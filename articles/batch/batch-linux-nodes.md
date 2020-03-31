@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 06/01/2018
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3691790b2e47ef43c6742fa912aff8d7777900f8
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 977504f41e93e37ae2c5ce9bdb1182a1cfe0a3fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023700"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227410"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Bereitstellen von Linux-Computeknoten in Batch-Pools
 
@@ -47,7 +47,7 @@ Wenn Sie eine VM-Imagereferenz konfigurieren, müssen Sie die Eigenschaften des 
 | --- | --- |
 | Herausgeber |Canonical |
 | Angebot |UbuntuServer |
-| SKU |14.04.4-LTS |
+| SKU |18.04-LTS |
 | Version |latest |
 
 > [!TIP]
@@ -58,7 +58,7 @@ Wenn Sie eine VM-Imagereferenz konfigurieren, müssen Sie die Eigenschaften des 
 ### <a name="node-agent-sku"></a>Knoten-Agent-SKU
 Der Batch-Knoten-Agent ist ein Programm, das auf jedem Knoten im Pool ausgeführt wird. Er stellt die Befehls- und Steuerungsschnittstelle zwischen dem Knoten und dem Batch-Dienst dar. Es gibt verschiedene Implementierungen des Knoten-Agents (SKUs) für verschiedene Betriebssysteme. Insbesondere beim Erstellen einer Konfiguration für einen virtuellen Computer legen Sie zuerst die VM-Imagereferenz und anschließend den Knoten-Agent fest, der auf dem Image installiert werden soll. In der Regel ist jede Knoten-Agent-SKU mit mehreren VM-Images kompatibel. Hier sind einige Beispiele für Knoten-Agent-SKUs:
 
-* batch.node.ubuntu 14.04
+* batch.node.ubuntu 18.04
 * batch.node.centos 7
 * batch.node.windows amd64
 
@@ -70,7 +70,7 @@ Der Batch-Knoten-Agent ist ein Programm, das auf jedem Knoten im Pool ausgeführ
 ## <a name="create-a-linux-pool-batch-python"></a>Erstellen eines Linux-Pools: Batch Python
 Der folgende Codeausschnitt zeigt ein Beispiel für die Erstellung eines Pools mit Ubuntu Server-Computeknoten mithilfe der [Microsoft Azure Batch-Clientbibliothek für Python][py_batch_package]. Die Referenzdokumentation für das Batch-Python-Modul finden Sie unter [azure.batch-Paket][py_batch_docs] unter „Dokumentation lesen“.
 
-In diesem Ausschnitt erstellen wir explizit einen Imageverweis ([ImageReference][py_imagereference]) und legen die einzelnen Eigenschaften (Herausgeber, Angebot, SKU, Version) fest. Im Produktionscode empfehlen wir Ihnen jedoch die Verwendung der Methode [list_node_agent_skus][py_list_skus], um die verfügbaren Kombinationen aus Image und Knoten-Agent-SKU zur Laufzeit zu bestimmen und eine Auswahl zu treffen.
+In diesem Ausschnitt erstellen wir explizit einen Imageverweis ([ImageReference][py_imagereference]) und legen die einzelnen Eigenschaften (Herausgeber, Angebot, SKU, Version) fest. Im Produktionscode empfehlen wir Ihnen jedoch die Verwendung der Methode [list_supported_images][py_list_supported_images], um die verfügbaren Kombinationen aus Image und Knoten-Agent-SKU zur Laufzeit zu bestimmen und eine Auswahl zu treffen.
 
 ```python
 # Import the required modules from the
@@ -86,7 +86,7 @@ batch_url = "<batch-account-url>"
 
 # Pool settings
 pool_id = "LinuxNodesSamplePoolPython"
-vm_size = "STANDARD_A1"
+vm_size = "STANDARD_D2_V3"
 node_count = 1
 
 # Initialize the Batch client
@@ -109,7 +109,7 @@ new_pool.start_task = start_task
 ir = batchmodels.ImageReference(
     publisher="Canonical",
     offer="UbuntuServer",
-    sku="14.04.2-LTS",
+    sku="18.04-LTS",
     version="latest")
 
 # Create the VirtualMachineConfiguration, specifying
@@ -117,7 +117,7 @@ ir = batchmodels.ImageReference(
 # be installed on the node.
 vmc = batchmodels.VirtualMachineConfiguration(
     image_reference=ir,
-    node_agent_sku_id="batch.node.ubuntu 14.04")
+    node_agent_sku_id="batch.node.ubuntu 18.04")
 
 # Assign the virtual machine configuration to the pool
 new_pool.virtual_machine_configuration = vmc
@@ -126,64 +126,65 @@ new_pool.virtual_machine_configuration = vmc
 client.pool.add(new_pool)
 ```
 
-Wie bereits erwähnt, wird empfohlen, [ImageReference][py_imagereference] nicht explizit zu erstellen, sondern die Methode [list_node_agent_skus][py_list_skus] zu verwenden, um aus den derzeit unterstützten Kombinationen aus Knoten-Agent und Marketplace-Image dynamisch eine Auswahl zu treffen. Der folgende Python-Ausschnitt veranschaulicht die Verwendung dieser Methode.
+Wie bereits erwähnt, wird empfohlen, [ImageReference][py_imagereference] nicht explizit zu erstellen, sondern die Methode [list_supported_images][py_list_supported_images] zu verwenden, um aus den derzeit unterstützten Kombinationen aus Knoten-Agent und Marketplace-Image dynamisch eine Auswahl zu treffen. Der folgende Python-Ausschnitt veranschaulicht die Verwendung dieser Methode.
 
 ```python
-# Get the list of node agents from the Batch service
-nodeagents = client.account.list_node_agent_skus()
+# Get the list of supported images from the Batch service
+images = client.account.list_supported_images()
 
-# Obtain the desired node agent
-ubuntu1404agent = next(
-    agent for agent in nodeagents if "ubuntu 14.04" in agent.id)
+# Obtain the desired image reference
+image = None
+for img in images:
+  if (img.image_reference.publisher.lower() == "canonical" and
+        img.image_reference.offer.lower() == "ubuntuserver" and
+        img.image_reference.sku.lower() == "18.04-lts"):
+    image = img
+    break
 
-# Pick the first image reference from the list of verified references
-ir = ubuntu1404agent.verified_image_references[0]
+if image is None:
+  raise RuntimeError('invalid image reference for desired configuration')
 
 # Create the VirtualMachineConfiguration, specifying the VM image
 # reference and the Batch node agent to be installed on the node.
 vmc = batchmodels.VirtualMachineConfiguration(
-    image_reference=ir,
-    node_agent_sku_id=ubuntu1404agent.id)
+    image_reference=image.image_reference,
+    node_agent_sku_id=image.node_agent_sku_id)
 ```
 
 ## <a name="create-a-linux-pool-batch-net"></a>Erstellen eines Linux-Pools: Batch .NET
 Der folgende Codeausschnitt zeigt ein Beispiel für die Erstellung eines Pools mit Ubuntu Server-Computeknoten mithilfe der [Batch .NET][nuget_batch_net]-Clientbibliothek. Die [Batch .NET-Referenzdokumentation][api_net] finden Sie unter docs.microsoft.com.
 
-Im folgenden Codeausschnitt wird die Methode [PoolOperations][net_pool_ops].[ListNodeAgentSkus][net_list_skus] verwendet, um aus der Liste mit den derzeit unterstützten Kombinationen von Marketplace-Image und Knoten-Agent-SKU eine Auswahl zu treffen. Diese Technik ist von Vorteil, da sich die Liste mit den unterstützten Kombinationen von Zeit zu Zeit ändern kann. In den meisten Fällen werden unterstützte Kombinationen hinzugefügt.
+Im folgenden Codeausschnitt wird die Methode [PoolOperations][net_pool_ops].[ListSupportedImages][net_list_supported_images] verwendet, um aus der Liste mit den derzeit unterstützten Kombinationen von Marketplace-Image und Knoten-Agent-SKU eine Auswahl zu treffen. Diese Technik ist von Vorteil, da sich die Liste mit den unterstützten Kombinationen von Zeit zu Zeit ändern kann. In den meisten Fällen werden unterstützte Kombinationen hinzugefügt.
 
 ```csharp
 // Pool settings
 const string poolId = "LinuxNodesSamplePoolDotNet";
-const string vmSize = "STANDARD_A1";
+const string vmSize = "STANDARD_D2_V3";
 const int nodeCount = 1;
 
 // Obtain a collection of all available node agent SKUs.
 // This allows us to select from a list of supported
 // VM image/node agent combinations.
-List<NodeAgentSku> nodeAgentSkus =
-    batchClient.PoolOperations.ListNodeAgentSkus().ToList();
+List<ImageInformation> images =
+    batchClient.PoolOperations.ListSupportedImages().ToList();
 
-// Define a delegate specifying properties of the VM image
-// that we wish to use.
-Func<ImageReference, bool> isUbuntu1404 = imageRef =>
-    imageRef.Publisher == "Canonical" &&
-    imageRef.Offer == "UbuntuServer" &&
-    imageRef.Sku.Contains("14.04");
-
-// Obtain the first node agent SKU in the collection that matches
-// Ubuntu Server 14.04. Note that there are one or more image
-// references associated with this node agent SKU.
-NodeAgentSku ubuntuAgentSku = nodeAgentSkus.First(sku =>
-    sku.VerifiedImageReferences.Any(isUbuntu1404));
-
-// Select an ImageReference from those available for node agent.
-ImageReference imageReference =
-    ubuntuAgentSku.VerifiedImageReferences.First(isUbuntu1404);
+// Find the appropriate image information
+ImageInformation image = null;
+foreach (var img in images)
+{
+    if (img.ImageReference.Publisher == "Canonical" &&
+        img.ImageReference.Offer == "UbuntuServer" &&
+        img.ImageReference.Sku == "18.04-LTS")
+    {
+        image = img;
+        break;
+    }
+}
 
 // Create the VirtualMachineConfiguration for use when actually
 // creating the pool
 VirtualMachineConfiguration virtualMachineConfiguration =
-    new VirtualMachineConfiguration(imageReference, ubuntuAgentSku.Id);
+    new VirtualMachineConfiguration(image.ImageReference, image.NodeAgentSkuId);
 
 // Create the unbound pool object using the VirtualMachineConfiguration
 // created above
@@ -197,53 +198,18 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 await pool.CommitAsync();
 ```
 
-Im vorherigen Codeausschnitt wird zwar die Methode [PoolOperations][net_pool_ops].[ListNodeAgentSkus][net_list_skus] verwendet, um unterstützte Kombinationen aus Image und Knoten-Agent-SKU dynamisch aufzulisten und eine Auswahl zu treffen (empfohlene Vorgehensweise), Sie können aber auch explizit einen [Imageverweis][net_imagereference] (ImageReference) konfigurieren:
+Im vorherigen Codeausschnitt wird zwar die Methode [PoolOperations][net_pool_ops].[ListSupportedImages][net_list_supported_images] verwendet, um unterstützte Kombinationen aus Image und Knoten-Agent-SKU dynamisch aufzulisten und eine Auswahl zu treffen (empfohlene Vorgehensweise), Sie können aber auch explizit einen [Imageverweis][net_imagereference] (ImageReference) konfigurieren:
 
 ```csharp
 ImageReference imageReference = new ImageReference(
     publisher: "Canonical",
     offer: "UbuntuServer",
-    sku: "14.04.2-LTS",
+    sku: "18.04-LTS",
     version: "latest");
 ```
 
 ## <a name="list-of-virtual-machine-images"></a>Liste mit VM-Images
-In der folgenden Tabelle ist angegeben, welche Marketplace-VM-Images zum Zeitpunkt der Aktualisierung dieses Artikels mit den verfügbaren Batch-Knoten-Agents kompatibel waren. Dabei ist zu beachten, dass diese Liste nicht final ist, da Images und Knoten-Agents jederzeit hinzugefügt oder entfernt werden können. Es wird empfohlen, für die Batch-Anwendungen und -Dienste immer [list_node_agent_skus][py_list_skus] (Python) oder [ListNodeAgentSkus][net_list_skus] (Batch .NET) zu verwenden, um die aktuell verfügbaren SKUs zu bestimmen und eine Auswahl zu treffen.
-
-> [!WARNING]
-> Die folgende Liste kann sich jederzeit ändern. Verwenden Sie immer die in den Batch-APIs verfügbaren Methoden zum **Auflisten von Knoten-Agent-SKUs**, um die kompatiblen virtuellen Computer und Knoten-Agent-SKUs aufzulisten, wenn Sie Batch-Aufträge ausführen.
->
->
-
-| **Herausgeber** | **Angebot** | **Image-SKU** | **Version** | **Knoten-Agent-SKU-ID** |
-| ------------- | --------- | ------------- | ----------- | --------------------- |
-| Batch | rendering-centos73 | Rendering | latest | batch.node.centos 7 |
-| Batch | rendering-windows2016 | Rendering | latest | batch.node.windows amd64 |
-| Canonical | UbuntuServer | 16.04-LTS | latest | batch.node.ubuntu 16.04 |
-| Canonical | UbuntuServer | 14.04.5-LTS | latest | batch.node.ubuntu 14.04 |
-| Credativ | Debian | 9 | latest | batch.node.debian 9 |
-| Credativ | Debian | 8 | latest | batch.node.debian 8 |
-| microsoft-ads | linux-data-science-vm | linuxdsvm | latest | batch.node.centos 7 |
-| microsoft-ads | standard-data-science-vm | standard-data-science-vm | latest | batch.node.windows amd64 |
-| microsoft-azure-batch | centos-container | 7-4 | latest | batch.node.centos 7 |
-| microsoft-azure-batch | centos-container-rdma | 7-4 | latest | batch.node.centos 7 |
-| microsoft-azure-batch | ubuntu-server-container | 16-04-lts | latest | batch.node.ubuntu 16.04 |
-| microsoft-azure-batch | ubuntu-server-container-rdma | 16-04-lts | latest | batch.node.ubuntu 16.04 |
-| MicrosoftWindowsServer | Windows Server | 2016-Datacenter | latest | batch.node.windows amd64 |
-| MicrosoftWindowsServer | Windows Server | 2016-Datacenter-smalldisk | latest | batch.node.windows amd64 |
-| MicrosoftWindowsServer | Windows Server | 2016-Datacenter-with-Containers | latest | batch.node.windows amd64 |
-| MicrosoftWindowsServer | Windows Server | 2012-R2-Datacenter | latest | batch.node.windows amd64 |
-| MicrosoftWindowsServer | Windows Server | 2012-R2-Datacenter-smalldisk | latest | batch.node.windows amd64 |
-| MicrosoftWindowsServer | Windows Server | 2012-Datacenter | latest | batch.node.windows amd64 |
-| MicrosoftWindowsServer | Windows Server | 2012-Datacenter-smalldisk | latest | batch.node.windows amd64 |
-| MicrosoftWindowsServer | Windows Server | 2008-R2-SP1 | latest | batch.node.windows amd64 |
-| MicrosoftWindowsServer | Windows Server | 2008-R2-SP1-smalldisk | latest | batch.node.windows amd64 |
-| OpenLogic | CentOS | 7.4 | latest | batch.node.centos 7 |
-| OpenLogic | CentOS-HPC | 7.4 | latest | batch.node.centos 7 |
-| OpenLogic | CentOS-HPC | 7.3 | latest | batch.node.centos 7 |
-| OpenLogic | CentOS-HPC | 7.1 | latest | batch.node.centos 7 |
-| Oracle | Oracle-Linux | 7.4 | latest | batch.node.centos 7 |
-| SUSE | SLES-HPC | 12-SP2 | latest | batch.node.opensuse 42.1 |
+Um die Liste aller unterstützten Marketplace-VM-Images für den Batch-Dienst und die entsprechenden Knoten-Agents zu erhalten, verwenden Sie [list_supported_images][py_list_supported_images] (Python), [ListSupportedImages][net_list_supported_images] (Batch.NET) oder die entsprechende API im jeweiligen SDK der Sprache Ihrer Wahl.
 
 ## <a name="connect-to-linux-nodes-using-ssh"></a>Herstellen einer Verbindung mit Linux-Knoten über SSH
 Während der Entwicklung oder bei der Fehlerbehebung ist es unter Umständen erforderlich, sich bei den Knoten im Pool anzumelden. Im Gegensatz zu Windows-Computeknoten können Sie das Remotedesktopprotokoll (RDP) für die Herstellung einer Verbindung mit Linux-Knoten nicht verwenden. Stattdessen ermöglicht der Batch-Dienst den SSH-Zugriff auf jeden Knoten zum Herstellen einer Remoteverbindung.
@@ -320,9 +286,9 @@ tvm-1219235766_4-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50001
 Anstelle eines Kennworts können Sie einen öffentlichen SSH-Schlüssel festlegen, wenn Sie einen Benutzer auf einem Knoten erstellen. Verwenden Sie im Python-SDK den Parameter **ssh_public_key** für [ComputeNodeUser][py_computenodeuser]. Verwenden Sie in .NET die Eigenschaft [ComputeNodeUser][net_computenodeuser].[SshPublicKey][net_ssh_key].
 
 ## <a name="pricing"></a>Preise
-Azure Batch basiert auf der Technologie von Azure Cloud Services und von Azure Virtual Machines. Der Batch-Dienst wird kostenfrei angeboten. Es werden also nur die Computeressourcen berechnet, die von Ihren Batch-Lösungen verbraucht werden. Wenn Sie sich für die **Cloud Services-Konfiguration** entscheiden, erfolgt die Abrechnung auf der Grundlage der Preisstruktur, die Sie unter [Cloud Services-Preise][cloud_services_pricing] finden. Wenn Sie sich für die **VM-Konfiguration** entscheiden, erfolgt die Abrechnung auf der Grundlage der Preisstruktur unter [Virtuelle Computer – Preise][vm_pricing]. 
+Azure Batch basiert auf der Technologie von Azure Cloud Services und von Azure Virtual Machines. Der Batch-Dienst selbst wird kostenlos angeboten, d. h. dass Ihnen nur die Computeressourcen (und die damit verbundenen Kosten) in Rechnung gestellt werden, die Ihre Batch-Lösungen beanspruchen. Wenn Sie sich für die **Cloud Services-Konfiguration** entscheiden, erfolgt die Abrechnung auf der Grundlage der Preisstruktur, die Sie unter [Cloud Services-Preise][cloud_services_pricing] finden. Wenn Sie sich für die **VM-Konfiguration** entscheiden, erfolgt die Abrechnung auf der Grundlage der Preisstruktur unter [Virtuelle Computer – Preise][vm_pricing].
 
-Wenn Sie Anwendungen mit [Anwendungspaketen](batch-application-packages.md) auf Ihren Batch-Knoten bereitstellen, werden auch die von Ihren Anwendungspaketen genutzten Azure Storage-Ressourcen in Rechnung gestellt. Grundsätzlich sind die Kosten für Azure Storage minimal. 
+Wenn Sie Anwendungen mit [Anwendungspaketen](batch-application-packages.md) auf Ihren Batch-Knoten bereitstellen, werden auch die von Ihren Anwendungspaketen genutzten Azure Storage-Ressourcen in Rechnung gestellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -340,7 +306,7 @@ Die [Python-Codebeispiele][github_samples_py] im Repository [azure-batch-samples
 [net_cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
 [net_computenodeuser]: /dotnet/api/microsoft.azure.batch.computenodeuser?view=azure-dotnet
 [net_imagereference]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.imagereference.aspx
-[net_list_skus]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.listnodeagentskus.aspx
+[net_list_supported_images]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.pooloperations.listsupportedimages
 [net_pool_ops]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.aspx
 [net_ssh_key]: /dotnet/api/microsoft.azure.batch.computenodeuser.sshpublickey?view=azure-dotnet#Microsoft_Azure_Batch_ComputeNodeUser_SshPublicKey
 [nuget_batch_net]: https://www.nuget.org/packages/Microsoft.Azure.Batch/
@@ -351,6 +317,6 @@ Die [Python-Codebeispiele][github_samples_py] im Repository [azure-batch-samples
 [py_batch_package]: https://pypi.python.org/pypi/azure-batch
 [py_computenodeuser]: /python/api/azure-batch/azure.batch.models.computenodeuser
 [py_imagereference]: /python/api/azure-mgmt-batch/azure.mgmt.batch.models.imagereference
-[py_list_skus]: https://docs.microsoft.com/python/api/azure-batch/azure.batch.operations.AccountOperations?view=azure-python
+[py_list_supported_images]: https://docs.microsoft.com/python/api/azure-batch/azure.batch.operations.AccountOperations?view=azure-python
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 [vm_pricing]: https://azure.microsoft.com/pricing/details/virtual-machines/

@@ -9,10 +9,10 @@ ms.date: 07/01/2019
 ms.author: ganesr
 ms.custom: seodec18
 ms.openlocfilehash: 0b8e06ad5688374e5ab4aaa72d8485e6da797afe
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74037441"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Konfigurieren von Routenfiltern für das Microsoft-Peering: Azure-Portal
@@ -32,7 +32,7 @@ Wenn Konnektivität mit allen Diensten erforderlich ist, wird eine große Anzahl
 
 - Sie definieren Routenfilter und wenden sie auf Ihre ExpressRoute-Verbindung an. Ein Routenfilter ist eine neue Ressource, mit der Sie die Liste der Dienste, die Sie über das Microsoft-Peering nutzen möchten, auswählen können. ExpressRoute-Router senden lediglich die Liste der Präfixe, die den im Routenfilter identifizierten Diensten zugehörig sind.
 
-### <a name="about"></a>Informationen zu Routenfiltern
+### <a name="about-route-filters"></a><a name="about"></a>Informationen zu Routenfiltern
 
 Wenn das Microsoft-Peering für Ihre ExpressRoute-Verbindung konfiguriert ist, stellen die Microsoft-Edgerouter ein BGP-Sitzungspaar mit den Edgeroutern (Ihrem Edgerouter oder dem Ihres Konnektivitätsanbieters) her. Ihrem Netzwerk werden keine Routen angekündigt. Um Routenankündigungen für Ihr Netzwerk zu aktivieren, müssen Sie einen Routenfilter zuordnen.
 
@@ -45,7 +45,7 @@ Um Routenfilter mit Office 365-Diensten anfügen zu können, müssen Sie die Aut
 > 
 > 
 
-### <a name="workflow"></a>Workflow
+### <a name="workflow"></a><a name="workflow"></a>Workflow
 
 Um mit dem Microsoft-Peering eine Verbindung mit Diensten herstellen zu können, müssen Sie die folgenden Konfigurationsschritte durchführen:
 
@@ -71,7 +71,7 @@ Bevor Sie mit der Konfiguration beginnen, vergewissern Sie sich, dass Sie folgen
  - Das Microsoft-Peering muss aktiviert sein. Befolgen Sie die Anweisungen unter [Erstellen und Ändern der Peeringkonfiguration](expressroute-howto-routing-portal-resource-manager.md).
 
 
-## <a name="prefixes"></a>Schritt 1: Abrufen einer Liste von Präfixen und BGP-Communitywerten
+## <a name="step-1-get-a-list-of-prefixes-and-bgp-community-values"></a><a name="prefixes"></a>Schritt 1: Abrufen einer Liste von Präfixen und BGP-Communitywerten
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1. Abrufen einer Liste von BGP-Communitywerten
 
@@ -81,7 +81,7 @@ BGP-Communitywerte, die Diensten zugeordnet sind, die über Microsoft-Peering ve
 
 Erstellen Sie eine Liste mit [BGP-Communitywerten](expressroute-routing.md#bgp), die Sie im Routenfilter verwenden möchten. 
 
-## <a name="filter"></a>Schritt 2: Erstellen eines Routenfilters und einer Filterregel
+## <a name="step-2-create-a-route-filter-and-a-filter-rule"></a><a name="filter"></a>Schritt 2: Erstellen eines Routenfilters und einer Filterregel
 
 Ein Routenfilter kann nur eine Regel aufweisen, die zudem vom Typ „Zulassen“ sein muss. Diese Regel kann eine Liste von BGP-Communitywerten enthalten, die ihr zugeordnet sind.
 
@@ -106,7 +106,7 @@ Sie können die Dienste, mit denen Sie eine Verbindung herstellen möchten, in d
 ![Erstellen eines Routenfilters](./media/how-to-routefilter-portal/AddRouteFilterRule.png)
 
 
-## <a name="attach"></a>Schritt 3: Anfügen des Routenfilters zu einer ExpressRoute-Verbindung
+## <a name="step-3-attach-the-route-filter-to-an-expressroute-circuit"></a><a name="attach"></a>Schritt 3: Anfügen des Routenfilters zu einer ExpressRoute-Verbindung
 
 Sie können den Routenfilter an eine Leitung anfügen, indem Sie die Schaltfläche „Leitung hinzufügen“ und dann die ExpressRoute-Leitung aus der Dropdownliste auswählen.
 
@@ -116,16 +116,16 @@ Wenn der Konnektivitätsanbieter Peering für Ihre ExpressRoute-Leitung konfigur
 
 ![Erstellen eines Routenfilters](./media/how-to-routefilter-portal/RefreshExpressRouteCircuit.png)
 
-## <a name="tasks"></a>Häufige Aufgaben
+## <a name="common-tasks"></a><a name="tasks"></a>Häufige Aufgaben
 
-### <a name="getproperties"></a>Abrufen der Eigenschaften eines Routenfilters
+### <a name="to-get-the-properties-of-a-route-filter"></a><a name="getproperties"></a>Abrufen der Eigenschaften eines Routenfilters
 
 Sie können Eigenschaften eines Routenfilters anzeigen, wenn Sie die Ressource im Portal öffnen.
 
 ![Erstellen eines Routenfilters](./media/how-to-routefilter-portal/ViewRouteFilter.png)
 
 
-### <a name="updateproperties"></a>Aktualisieren der Eigenschaften eines Routenfilters
+### <a name="to-update-the-properties-of-a-route-filter"></a><a name="updateproperties"></a>Aktualisieren der Eigenschaften eines Routenfilters
 
 Sie können die Liste der BGP-Communitywerte, die einer Leitung angefügt sind, durch Auswählen der Schaltfläche „Regel verwalten“ aktualisieren.
 
@@ -135,14 +135,14 @@ Sie können die Liste der BGP-Communitywerte, die einer Leitung angefügt sind, 
 ![Erstellen eines Routenfilters](./media/how-to-routefilter-portal/AddRouteFilterRule.png) 
 
 
-### <a name="detach"></a>Trennen eines Routenfilters von einer ExpressRoute-Verbindung
+### <a name="to-detach-a-route-filter-from-an-expressroute-circuit"></a><a name="detach"></a>Trennen eines Routenfilters von einer ExpressRoute-Verbindung
 
 Um eine Verbindung über den Routenfilter zu trennen, klicken Sie mit der rechten Maustaste auf die Verbindung und dann auf „Zuordnung aufheben“.
 
 ![Erstellen eines Routenfilters](./media/how-to-routefilter-portal/DetachRouteFilter.png) 
 
 
-### <a name="delete"></a>Löschen eines Routenfilters
+### <a name="to-delete-a-route-filter"></a><a name="delete"></a>Löschen eines Routenfilters
 
 Sie können einen Routenfilter durch Auswahl der Schaltfläche „Löschen“ löschen. 
 

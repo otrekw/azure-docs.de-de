@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie die Dienstprinzipal- oder AAD-Anwendungs
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 5dab9a778653d2ec6e32ddb3833ddcf6a95cae13
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: b7d652be3733cb130a3973909de59489047efe0a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096106"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475543"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Aktualisieren oder Rotieren der Anmeldeinformationen für Azure Kubernetes Service (AKS)
 
@@ -68,7 +68,7 @@ Die Ausgabe sieht in etwa wie das folgende Beispiel aus: Notieren Sie sich Ihre 
 
 Definieren Sie nun Variablen für die Dienstprinzipal-ID und das Clientgeheimnis unter Verwendung der Ausgabe Ihres eigenen Befehls [az ad sp create-for-rbac][az-ad-sp-create], wie im folgenden Beispiel gezeigt. Der Wert *SP_ID* steht für Ihre *App-ID*, der Wert *SP_SECRET* gibt Ihr *Kennwort* an:
 
-```azurecli-interactive
+```console
 SP_ID=7d837646-b1f3-443d-874c-fd83c7c739c5
 SP_SECRET=a5ce83c9-9186-426d-9183-614597c7f2f7
 ```

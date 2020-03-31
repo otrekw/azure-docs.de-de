@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: tagore
 ms.openlocfilehash: 764567bffd2a08ebb5beb17e3063998848b3f110
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79127336"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>Migrieren Ihrer IaaS-Ressourcen zu Azure Resource Manager vor dem 1. März 2023 
@@ -41,7 +41,7 @@ Die folgenden Azure-Dienste und -Funktionen sind von dieser Aussonderung **NICHT
 
 - Beginnen Sie noch heute mit der Planung Ihre Migration zu Azure Resource Manager. 
 
-- Weitere Informationen zur Migration Ihrer klassischen virtuellen [Linux](./linux/migration-classic-resource-manager-plan.md)- und [Windows](./windows/migration-classic-resource-manager-plan.md)-Computer zu Azure Resource Manager finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview).
+- Weitere Informationen zur Migration Ihrer klassischen virtuellen [Linux](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview)- und [Windows](./linux/migration-classic-resource-manager-plan.md)-Computer zu Azure Resource Manager finden Sie [hier](./windows/migration-classic-resource-manager-plan.md).
 
 - Zusätzliche Informationen finden Sie unter [Häufig gestellte Fragen zur Migration vom klassischen Bereitstellungsmodell zum Azure Resource Manager-Bereitstellungsmodell](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq).
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Funktionen in der Vorschau | Microsoft-Dokumentation'
+title: 'Azure AD Connect: Funktionen in der Vorschau | Microsoft Docs'
 description: In diesem Thema werden Funktionen detaillierter beschrieben, die sich in Azure AD Connect in der Preview befinden.
 services: active-directory
 documentationcenter: ''
@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b7def733a80aea1be77825bb9069217f5f43e003
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60347803"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230178"
 ---
 # <a name="more-details-about-features-in-preview"></a>Weitere Informationen zu den Funktionen in der Vorschau
 In diesem Thema wird beschrieben, wie Sie Funktionen verwenden, die sich derzeit in der Vorschau befinden.

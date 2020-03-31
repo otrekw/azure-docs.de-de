@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.openlocfilehash: 40cd3467c7a4377427bb8db437e1047382933b1c
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 84a5b4784a36fb22ae50a7a1ec4fcb7e5ef5b7c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76714871"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80245275"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Konfigurieren von Datenpersistenz für Azure Cache for Redis vom Typ „Premium“
 Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten, einschließlich Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. In diesem Artikel wird erläutert, wie die Persistenz in einer Azure Cache for Redis-Instanz vom Typ „Premium“ konfiguriert wird.
@@ -23,14 +23,14 @@ Weitere Informationen zu anderen Cachefeatures des Premium-Tarifs finden Sie unt
 
 Azure Cache for Redis bietet Redis-Persistenz über die folgenden Modelle:
 
-* **RDB-Persistenz:** Wenn RDB-Persistenz (Redis-Datenbank) konfiguriert ist, speichert Azure Cache for Redisbasierend auf einer wählbaren Sicherungshäufigkeit eine Momentaufnahme des Azure Cache for Redis in einem binären Redis-Format dauerhaft auf dem Datenträger. Bei einem schwerwiegenden Fehler, bei dem der primäre sowie der Replikatcache deaktiviert werden, wird der Cache mithilfe der neuesten Momentaufnahme wiederhergestellt. Erfahren Sie mehr über die [Vorteile](https://redis.io/topics/persistence#rdb-advantages) und [Nachteile](https://redis.io/topics/persistence#rdb-disadvantages) der RDB-Persistenz.
+* **RDB-Persistenz:** Wenn RDB-Persistenz (Redis-Datenbank) konfiguriert ist, speichert Azure Cache for Redis{3}{4}basierend auf einer wählbaren Sicherungshäufigkeit eine Momentaufnahme des Azure Cache for Redis in einem binären Redis-Format dauerhaft auf dem Datenträger. Bei einem schwerwiegenden Fehler, bei dem der primäre sowie der Replikatcache deaktiviert werden, wird der Cache mithilfe der neuesten Momentaufnahme wiederhergestellt. Erfahren Sie mehr über die [Vorteile](https://redis.io/topics/persistence#rdb-advantages) und [Nachteile](https://redis.io/topics/persistence#rdb-disadvantages) der RDB-Persistenz.
 * **AOF-Persistenz:** Wenn die AOF-Persistenz (Append only file, nur Datei anhängen) konfiguriert ist, speichert Azure Cache for Redis jeden Schreibvorgang in einem Protokoll, das mindestens einmal pro Sekunde in einem Azure Storage-Konto gespeichert wird. Bei einem schwerwiegenden Fehler, bei dem der primäre und der Replikatcache deaktiviert werden, wird der Cache mithilfe der gespeicherten Schreibvorgänge wiederhergestellt. Erfahren Sie mehr über die [Vorteile](https://redis.io/topics/persistence#aof-advantages) und [Nachteile](https://redis.io/topics/persistence#aof-disadvantages) der AOF-Persistenz.
 
 Durch die Persistenz werden Redis-Daten in ein Azure Storage-Konto geschrieben, das sich in Ihrem Besitz befindet und von Ihnen verwaltet wird. Dies kann bei der Cacheerstellung auf dem Blatt **Neuer Azure Cache for Redis** sowie für vorhandene Premium-Caches im **Ressourcenmenü** konfiguriert werden.
 
 > [!NOTE]
 > 
-> Dauerhaft gespeicherte Daten werden von Azure Storage automatisch verschlüsselt. Für die Verschlüsselung können Sie Ihre eigenen Schlüssel verwenden. Weitere Informationen finden Sie unter [Von Kunden verwaltete Schlüssel mit Azure Key Vault](/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#customer-managed-keys-with-azure-key-vault).
+> Dauerhaft gespeicherte Daten werden von Azure Storage automatisch verschlüsselt. Für die Verschlüsselung können Sie Ihre eigenen Schlüssel verwenden. Weitere Informationen finden Sie unter [Von Kunden verwaltete Schlüssel mit Azure Key Vault](/azure/storage/common/storage-service-encryption).
 > 
 > 
 

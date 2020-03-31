@@ -11,13 +11,13 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6b90ff82601acca1249c7d8c353944e39e89f95
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66473783"
 ---
-# <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect:  PowerShell-Referenz zu ADConnectivityTools
+# <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect: PowerShell-Referenz zu ADConnectivityTools
 
 Die folgende Dokumentation enthält Referenzinformationen für das PowerShell-Modul „ADConnectivityTools.psm1“, das in Azure AD Connect enthalten ist.
 
@@ -33,7 +33,7 @@ Erkennt lokale DNS-Probleme.
 Confirm-DnsConnectivity [-Forest] <String> [-DCs] <Array> [-ReturnResultAsPSObject] [<CommonParameters>]
 ```
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>DESCRIPTION
 
 Führt lokale DNS-Konnektivitätstests aus.
 Um den Active Directory Connector zu konfigurieren, muss der Benutzer über Namensauflösung verfügen und zwar sowohl in der Gesamtstruktur, mit der eine Verbindung hergestellt werden soll, als auch in den Domänencontrollern, die dieser Gesamtstruktur zugeordnet sind.
@@ -52,7 +52,7 @@ Confirm-DnsConnectivity -Forest "TEST.CONTOSO.COM" -DCs "MYDC1.CONTOSO.COM","MYD
 Confirm-DnsConnectivity -Forest "TEST.CONTOSO.COM"
 ```
 
-### <a name="parameters"></a>PARAMETER
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -120,7 +120,7 @@ Bestimmt, ob eine angegebene Gesamtstruktur vorhanden ist.
 Confirm-ForestExists [-Forest] <String> [<CommonParameters>]
 ```
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>DESCRIPTION
 
 Fragt bei einem DNS-Server die IP-Adressen ab, die einer Gesamtstruktur zugeordnet sind.
 
@@ -132,7 +132,7 @@ Fragt bei einem DNS-Server die IP-Adressen ab, die einer Gesamtstruktur zugeordn
 Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
 ```
 
-### <a name="parameters"></a>PARAMETER
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -175,7 +175,7 @@ Confirm-FunctionalLevel -Forest <String> [-RunWithCurrentlyLoggedInUserCredentia
 Confirm-FunctionalLevel -ForestFQDN <Forest> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>DESCRIPTION
 
 Überprüft, ob die Funktionsebene der AD-Gesamtstruktur gleich oder höher als eine angegebene „MinAdForestVersion“ (WindowsServer2003) ist.
 Konto (Domäne\Benutzername) und Kennwort werden möglicherweise angefordert.
@@ -200,7 +200,7 @@ Confirm-FunctionalLevel -Forest "test.contoso.com" -RunWithCurrentlyLoggedInUser
 Confirm-FunctionalLevel -ForestFQDN $ForestFQDN -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-### <a name="parameters"></a>PARAMETER
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -268,7 +268,7 @@ Erkennt lokale Netzwerkkonnektivitätsprobleme.
 Confirm-NetworkConnectivity [-DCs] <Array> [-SkipDnsPort] [-ReturnResultAsPSObject] [<CommonParameters>]
 ```
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>DESCRIPTION
 
 Führt lokale Netzwerkkonnektivitätstests aus.
 
@@ -289,7 +289,7 @@ Confirm-NetworkConnectivity -SkipDnsPort -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO
 Confirm-NetworkConnectivity -DCs "MYDC1.CONTOSO.COM","MYDC2.CONTOSO.COM" -Verbose
 ```
 
-### <a name="parameters"></a>PARAMETER
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-dcs"></a>-DCs
 
@@ -358,7 +358,7 @@ Bestimmt, ob eine angegebene Gesamtstruktur und ihre zugeordneten Domänencontro
 Confirm-TargetsAreReachable [-Forest] <String> [-DCs] <Array> [<CommonParameters>]
 ```
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>DESCRIPTION
 
 Führt Pingtests aus (ob ein Computer einen Zielcomputer über das Netzwerk und/oder das Internet erreichen kann).
 
@@ -376,7 +376,7 @@ Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM" -DCs "MYDC1.CONTOSO.COM",
 Confirm-TargetsAreReachable -Forest "TEST.CONTOSO.COM"
 ```
 
-### <a name="parameters"></a>PARAMETER
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -435,7 +435,7 @@ Confirm-ValidDomains [-Forest <String>] [-RunWithCurrentlyLoggedInUserCredential
 Confirm-ValidDomains -ForestFQDN <Forest> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>DESCRIPTION
 
 Überprüfen Sie, ob alle Domänen im abgerufenen Gesamtstruktur-FQDN erreichbar sind, indem Sie versuchen, „DomainGuid“ und „DomainDN“ abzurufen.
 Konto (Domäne\Benutzername) und Kennwort werden möglicherweise angefordert.
@@ -460,7 +460,7 @@ Confirm-ValidDomains -Forest "test.contoso.com" -RunWithCurrentlyLoggedInUserCre
 Confirm-ValidDomains -ForestFQDN $ForestFQDN -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-### <a name="parameters"></a>PARAMETER
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -527,7 +527,7 @@ Weitere Informationen finden Sie unter "about_CommonParameters" (https://go.micr
 Confirm-ValidEnterpriseAdminCredentials [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>DESCRIPTION
 
 Sucht, ob der angegebene Benutzer Unternehmensadministrator-Anmeldeinformationen besitzt.
 Konto (Domäne\Benutzername) und Kennwort werden möglicherweise angefordert.
@@ -546,7 +546,7 @@ Confirm-ValidEnterpriseAdminCredentials -DomainName test.contoso.com -Verbose
 Confirm-ValidEnterpriseAdminCredentials -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-### <a name="parameters"></a>PARAMETER
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-runwithcurrentlyloggedinusercredentials"></a>-RunWithCurrentlyLoggedInUserCredentials
 
@@ -582,7 +582,7 @@ Get-DomainFQDNData [[-DomainFQDNDataType] <String>] [-RunWithCurrentlyLoggedInUs
  [-ReturnExceptionOnError] [<CommonParameters>]
 ```
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>DESCRIPTION
 
 Versucht, ein domainFQDN-Objekt aus angegebenen Anmeldeinformationen abzurufen.
 Wenn der DomainFQDN gültig ist, wird ein DomainFQDNName oder RootDomainName zurückgegeben, je nach Auswahl des Benutzers.
@@ -602,7 +602,7 @@ Get-DomainFQDNData -DomainFQDNDataType DomainFQDNName -Verbose
 Get-DomainFQDNData -DomainFQDNDataType RootDomainName -RunWithCurrentlyLoggedInUserCredentials
 ```
 
-### <a name="parameters"></a>PARAMETER
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-domainfqdndatatype"></a>-DomainFQDNDataType
 
@@ -670,7 +670,7 @@ Ruft einen ForestFQDN aus einer Konto- und Kennwort-Kombination ab.
 Get-ForestFQDN [-Forest] <String> [-RunWithCurrentlyLoggedInUserCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>DESCRIPTION
 
 Versucht, einen ForestFQDN aus angegebenen Anmeldeinformationen abzurufen.
 Konto (Domäne\Benutzername) und Kennwort werden möglicherweise angefordert.
@@ -689,7 +689,7 @@ Get-ForestFQDN -Forest CONTOSO.MICROSOFT.COM -Verbose
 Get-ForestFQDN -Forest CONTOSO.MICROSOFT.COM -RunWithCurrentlyLoggedInUserCredentials -Verbose
 ```
 
-### <a name="parameters"></a>PARAMETER
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -741,7 +741,7 @@ Start-ConnectivityValidation [-Forest] <String> [-AutoCreateConnectorAccount] <B
  [<CommonParameters>]
 ```
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>DESCRIPTION
 
 Führt alle verfügbaren Mechanismen aus, die überprüfen, ob AD-Anmeldeinformationen gültig sind.
 
@@ -753,7 +753,7 @@ Führt alle verfügbaren Mechanismen aus, die überprüfen, ob AD-Anmeldeinforma
 Start-ConnectivityValidation -Forest "test.contoso.com" -AutoCreateConnectorAccount $True -Verbose
 ```
 
-### <a name="parameters"></a>PARAMETER
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 
@@ -773,9 +773,9 @@ Accept wildcard characters: False
 
 #### <a name="-autocreateconnectoraccount"></a>-AutoCreateConnectorAccount
 
-Für benutzerdefinierte Installationen: Das Flag lautet „$true“, wenn der Benutzer im AD-Gesamtstrukturkonto-Fenster des AAD Connect-Assistenten die Option „Neues AD-Konto erstellen“ gewählt hat.
+Für benutzerdefinierte Installationen: Das Flag, das „$true“ ist, wenn der Benutzer im AD-Gesamtstrukturkonto-Fenster „Neues AD-Konto erstellen“ des AADConnect-Assistenten ausgewählt hat.
 „$False“, wenn der Benutzer „Vorhandenes AD-Konto verwenden“ ausgewählt hat.
-Für Expressinstallationen: Der Wert dieser Variablen muss für Expressinstallationen „$True“ lauten.
+Für Expressinstallationen: Der Wert dieser Variablen muss für Expressinstallationen „$True“ sein.
 
 ```yml
 Type: Boolean
@@ -824,7 +824,7 @@ Start-NetworkConnectivityDiagnosisTools [[-Forest] <String>] [-Credentials] <PSC
  [-ValidCredentials] [<CommonParameters>]
 ```
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>DESCRIPTION
 
 Führt lokale Netzwerkkonnektivitätstests aus.
 
@@ -842,7 +842,7 @@ Start-NetworkConnectivityDiagnosisTools -Forest "TEST.CONTOSO.COM"
 Start-NetworkConnectivityDiagnosisTools -Forest "TEST.CONTOSO.COM" -DCs "DC1.TEST.CONTOSO.COM", "DC2.TEST.CONTOSO.COM"
 ```
 
-### <a name="parameters"></a>PARAMETER
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-forest"></a>-Forest
 

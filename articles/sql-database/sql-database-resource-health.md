@@ -3,7 +3,7 @@ title: Überwachen der Datenbankintegrität mithilfe von Azure Resource Health
 description: Überwachen Sie mithilfe von Resource Health die Integrität von SQL-Datenbank, um Probleme zu diagnostizieren und Unterstützung zu erhalten, wenn sich ein Azure-bezogenes Problem auf Ihre SQL-Ressourcen auswirkt.
 services: sql-database
 ms.service: sql-database
-ms.subservice: monitor
+ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 02/26/2019
-ms.openlocfilehash: 1cf14c9e133b7e6e3e0b5219eb9e16bd3a0178dc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9e19e904b47d69444b491dd88ffe49ff812aafc3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821155"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79208870"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>Behandeln von Konnektivitätsproblemen für Azure SQL-Datenbank mithilfe von Resource Health
 

@@ -13,14 +13,14 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74931785"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Verschieben von Daten aus DB2 mithilfe der Kopieraktivität von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-onprem-db2-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-db2.md)
 
@@ -305,7 +305,7 @@ Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activ
 
 Die folgenden Zuordnungen werden angewendet, wenn die Kopieraktivität Daten aus einem DB2-Typ in einen .NET-Datentyp konvertiert:
 
-| DB2-Datenbanktyp | Typ ".NET Framework" |
+| DB2-Datenbanktyp | .NET Framework-Typ |
 | --- | --- |
 | SmallInt |Int16 |
 | Integer |Int32 |
@@ -320,19 +320,19 @@ Die folgenden Zuordnungen werden angewendet, wenn die Kopieraktivität Daten aus
 | Time |TimeSpan |
 | Timestamp |Datetime |
 | Xml |Byte[] |
-| Char |Zeichenfolge |
-| VarChar |Zeichenfolge |
-| LongVarChar |Zeichenfolge |
-| DB2DynArray |Zeichenfolge |
+| Char |String |
+| VarChar |String |
+| LongVarChar |String |
+| DB2DynArray |String |
 | Binary |Byte[] |
 | VarBinary |Byte[] |
 | LongVarBinary |Byte[] |
-| Graphic |Zeichenfolge |
-| VarGraphic |Zeichenfolge |
-| LongVarGraphic |Zeichenfolge |
-| Clob |Zeichenfolge |
+| Graphic |String |
+| VarGraphic |String |
+| LongVarGraphic |String |
+| Clob |String |
 | Blob |Byte[] |
-| DbClob |Zeichenfolge |
+| DbClob |String |
 | SmallInt |Int16 |
 | Integer |Int32 |
 | BigInt |Int64 |
@@ -346,7 +346,7 @@ Die folgenden Zuordnungen werden angewendet, wenn die Kopieraktivität Daten aus
 | Time |TimeSpan |
 | Timestamp |Datetime |
 | Xml |Byte[] |
-| Char |Zeichenfolge |
+| Char |String |
 
 ## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten
 Weitere Informationen zum Zuordnen von Spalten im Quell-DataSet zu Spalten im Senken-DataSet finden Sie unter [Zuordnen von DataSet-Spalten in Azure Data Factory](data-factory-map-columns.md).

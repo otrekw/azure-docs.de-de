@@ -10,16 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/15/2018
-ms.openlocfilehash: e809c88d8a0a0efeb12e9f2a472a497349fdfa1b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/11/2020
+ms.openlocfilehash: bee627ade4f66206cd5254fc32bc7aa9973c7bee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927512"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131313"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Sicherheitsüberlegungen für Datenverschiebung in Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 >
 > * [Version 1](v1/data-factory-data-movement-security-considerations.md)
 > * [Aktuelle Version](data-movement-security-considerations.md)
@@ -49,7 +49,7 @@ Informationen zur Konformität von Azure und zur eigenständigen Sicherung der A
 
 In diesem Artikel werden Sicherheitsüberlegungen zu den beiden folgenden Datenverschiebungsszenarien erläutert: 
 
-- **Cloudszenario**: In diesem Szenario sind sowohl Ihre Quelle als auch das Ziel über das Internet öffentlich zugänglich. Dazu gehören verwaltete Cloudspeicherdienste wie Azure Storage, Azure SQL Data Warehouse, Azure SQL-Datenbank, Azure Data Lake Store, Amazon S3, Amazon Redshift, SaaS-Dienste wie Salesforce und Webprotokolle wie FTP und OData. Eine vollständige Liste unterstützter Datenquellen finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).
+- **Cloudszenario** In diesem Szenario sind sowohl Ihre Quelle als auch das Ziel über das Internet öffentlich zugänglich. Dazu gehören verwaltete Cloudspeicherdienste wie Azure Storage, Azure SQL Data Warehouse, Azure SQL-Datenbank, Azure Data Lake Store, Amazon S3, Amazon Redshift, SaaS-Dienste wie Salesforce und Webprotokolle wie FTP und OData. Eine vollständige Liste unterstützter Datenquellen finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).
 - **Hybridszenario**: In diesem Szenario befindet sich entweder Ihre Quelle oder Ihr Ziel hinter einer Firewall oder in einem lokalen Unternehmensnetzwerk. Oder der Datenspeicher befindet sich in einem privaten oder virtuellen Netzwerk (meist die Quelle) und ist nicht öffentlich zugänglich. Zu diesem Szenario zählen auch Datenbankserver, die auf virtuellen Computern gehostet werden.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -79,7 +79,7 @@ Wenn der Clouddatenspeicher HTTPS oder TLS unterstützt, erfolgen alle Datenübe
 Einige Datenspeicher unterstützen die Verschlüsselung von ruhenden Daten. Es empfiehlt sich, dass Sie einen Datenverschlüsselungsmechanismus für solche Datenspeicher aktivieren. 
 
 #### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
-Transparent Data Encryption (TDE) in Azure SQL Data Warehouse ist ein zusätzlicher Schutz vor der Bedrohung durch schädliche Aktivitäten. Hierzu werden die Schritte für die Echtzeitverschlüsselung und -entschlüsselung der ruhenden Daten ausgeführt. Dieses Verhalten ist für den Client transparent. Weitere Informationen finden Sie unter [Sichern einer Datenbank in SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
+Transparent Data Encryption (TDE) in Azure SQL Data Warehouse ist ein zusätzlicher Schutz vor der Bedrohung durch schädliche Aktivitäten. Hierzu werden die Schritte für die Echtzeitverschlüsselung und -entschlüsselung der ruhenden Daten ausgeführt. Dieses Verhalten ist für den Client transparent. Weitere Informationen finden Sie unter [Sichern einer Datenbank in SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
 
 #### <a name="azure-sql-database"></a>Azure SQL-Datenbank
 Auch Azure SQL-Datenbank unterstützt Transparent Data Encryption (TDE), die Schutz vor der Bedrohung durch schädliche Aktivitäten bietet. Hierzu werden die Daten in Echtzeit ver- und entschlüsselt, ohne dass Änderungen der Anwendung erforderlich sind. Dieses Verhalten ist für den Client transparent. Weitere Informationen finden Sie unter [Transparente Datenverschlüsselung für SQL-Datenbank und Data Warehouse](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
@@ -151,9 +151,9 @@ Die folgenden Abbildungen veranschaulichen die Verwendung der selbstgehosteten I
 
 ![IPSec-VPN mit Gateway](media/data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a> Einrichten von Firewallkonfigurationen und Zulassungsliste für IP-Adressen
+### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a> Einrichten von Firewallkonfigurationen und Zulassungsliste für IP-Adressen
 
-#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Firewallanforderungen für lokales/privates Netzwerk  
+#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Firewallanforderungen für lokales/privates Netzwerk    
 In einem Unternehmen wird eine Unternehmensfirewall auf dem zentralen Router der Organisation ausgeführt. Die Windows-Firewall wird als Daemon auf dem lokalen Computer ausgeführt, auf dem die selbstgehostete Integration Runtime installiert ist. 
 
 Die folgende Tabelle enthält die Anforderungen für ausgehende Ports und die Domänenanforderungen für die Unternehmensfirewalls:

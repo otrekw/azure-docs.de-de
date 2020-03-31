@@ -11,10 +11,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f3044ebdd716eb85dc63d3a77089912d0d51d8b6
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74915226"
 ---
 # <a name="migrate-to-cloud-authentication-by-using-staged-rollout-preview"></a>Migrieren zur Cloudauthentifizierung mithilfe eines gestaffelten Rollouts (Vorschau)
@@ -51,7 +51,7 @@ Einen Überblick über das Feature finden Sie hier: „Azure Active Directory: W
 
 -   Um *nahtloses einmaliges Anmelden* für eine bestimmte Active Directory-Gesamtstruktur aktivieren zu können, müssen Sie Domänenadministrator sein.
 
-## <a name="supported-scenarios"></a>Unterstützte Szenarien
+## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
 Die folgenden Szenarien werden für gestaffelten Rollout unterstützt. Das Feature funktioniert nur für:
 
@@ -150,7 +150,7 @@ Sie können Rollouts für eine der folgenden Optionen ausführen:
 - **Option B** - *Passthrough-Authentifizierung* + *Nahtloses SSO*
 - **Nicht unterstützt** - *Kennworthashsynchronisierung* + *Passthrough-Authentifizierung* + *Nahtloses SSO*
 
-Gehen Sie wie folgt vor:
+Gehen Sie folgendermaßen vor:
 
 1. Melden Sie sich am [Azure AD Portal](https://aka.ms/stagedrolloutux) an, um auf die Vorschau-UX zuzugreifen.
 

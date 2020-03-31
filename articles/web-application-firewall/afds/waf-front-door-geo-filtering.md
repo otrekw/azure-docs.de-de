@@ -5,15 +5,15 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: eb91dfd5d774e591d3c3c3964668dcc626086181
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e287da94a71fccabddb90f3f5a3699f4c4cf22a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510203"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79472604"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>Was ist Geofilterung in einer Domäne für Azure Front Door?
 
@@ -30,7 +30,7 @@ Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](waf-f
 | AD | Andorra |
 | AE | Vereinigte Arabische Emirate|
 | AF | Afghanistan|
-| AG | Antigua und Barbuda|
+| Verfügbarkeitsgruppe | Antigua und Barbuda|
 | AL | Albanien|
 | AM | Armenien|
 | AO | Angola|
@@ -38,7 +38,7 @@ Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](waf-f
 | AS | Amerikanisch-Samoa|
 | AT | Österreich|
 | AU | Australien|
-| AZ | Aserbaidschan|
+| RP | Aserbaidschan|
 | BA | Bosnien und Herzegowina|
 | BB | Barbados|
 | BD | Bangladesch|
@@ -57,7 +57,7 @@ Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](waf-f
 | BW | Botsuana|
 | BY | Belarus|
 | BZ | Belize|
-| CA | Kanada|
+| CA | Canada|
 | CD | Demokratische Republik Kongo|
 | CF | Zentralafrikanische Republik|
 | CH | Schweiz|
@@ -84,7 +84,7 @@ Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](waf-f
 | FJ | Fidschi|
 | FM | Föderierte Staaten von Mikronesien|
 | BV | Frankreich|
-| GB | Vereinigtes Königreich|
+| GB | United Kingdom|
 | GE | Georgien|
 | GF | Französisch-Guayana|
 | GH | Ghana|
@@ -100,7 +100,7 @@ Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](waf-f
 | HU | Ungarn|
 | id | Indonesien|
 | IE | Irland|
-| IL | Israel|
+| BY | Israel|
 | IN | Indien|
 | IQ | Irak|
 | IR | Islamische Republik Iran|
@@ -117,7 +117,7 @@ Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](waf-f
 | KP | Demokratische Volksrepublik Korea|
 | KR | Republik Korea|
 | KW | Kuwait|
-| KY | Kaimaninseln|
+| HE | Kaimaninseln|
 | KZ | Kasachstan|
 | LA | Demokratische Volksrepublik Laos|
 | LB | Libanon|
@@ -129,13 +129,13 @@ Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](waf-f
 | LU | Luxemburg|
 | LV | Lettland|
 | LY | Libyen |
-| MA | Marokko|
+| NI | Marokko|
 | MD | Republik Moldau|
 | MG | Madagaskar|
 | MK | Nordmazedonien|
 | ML | Mali|
 | MM | Myanmar|
-| MN | Mongolei|
+| BB | Mongolei|
 | MO | Macau (SAR)|
 | MQ | Martinique|
 | MR | Mauretanien|
@@ -150,7 +150,7 @@ Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](waf-f
 | NG | Nigeria|
 | NI | Nicaragua|
 | NL | Niederlande|
-| NO | Norwegen|
+| Nein | Norwegen|
 | NP | Nepal|
 | NR | Nauru|
 | NZ | Neuseeland|

@@ -8,10 +8,10 @@ ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: 36ba9e2d3385184f32876a6d067b58f7c21a90bd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71003280"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Migrieren von Daten zum Azure Cosmos DB-SQL-API-Konto mithilfe von Striim
@@ -24,7 +24,7 @@ In diesem Artikel wird gezeigt, wie Sie Daten mithilfe von Striim aus einer **Or
 
 * Wenn Sie kein [Azure-Abonnement](/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), bevor Sie beginnen.
 
-* Eine lokal ausgeführte Oracle-Datenbank mit einigen Daten.
+* Eine lokal ausgeführte Oracle-Datenbank mit einigen Daten
 
 ## <a name="deploy-the-striim-marketplace-solution"></a>Bereitstellen der Striim-Lösung aus dem Marketplace
 

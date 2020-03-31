@@ -9,11 +9,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.openlocfilehash: cafb0a7e2bf0fbce82448236a2da98079144121e
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461537"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226750"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Arbeiten Sie mit der Back-End-Server-SDK für Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -28,7 +28,7 @@ In diesem Thema wird das Verwenden des .NET-Back-End-Server-SDKs in Azure App Se
 ## <a name="reference-documentation"></a>Referenzdokumentation
 Die Referenzdokumentation für das Server-SDK finden Sie hier: [Azure Mobile Apps – .NET-Referenz][1].
 
-## <a name="create-app"></a>Vorgehensweise: Erstellen eines .NET Mobile App-Back-Ends
+## <a name="how-to-create-a-net-mobile-app-backend"></a><a name="create-app"></a>Vorgehensweise: Erstellen eines .NET Mobile App-Back-Ends
 Wenn Sie ein neues Projekt beginnen, können Sie entweder über das [Azure portal] oder mit Visual Studio eine App Service-Anwendung erstellen. Sie können die App Service-Anwendung lokal ausführen oder das Projekt in der cloudbasierten mobilen App Service-App veröffentlichen.
 
 Wenn Sie einem vorhandenen Projekt mobile Funktionen hinzufügen, helfen Ihnen die Informationen im Abschnitt [Herunterladen und Initialisieren des SDK](#install-sdk) weiter.
@@ -64,13 +64,13 @@ Installieren Sie das [Azure SDK für .NET][4] (ab Version 2.9.0), um in Visual
 5. Wählen Sie unter *ASP.NET 4.5.2-Vorlagen* die Option **Azure Mobile App** aus. Aktivieren Sie **In der Cloud hosten** , um ein mobiles Back-End in der Cloud zu erstellen, in der Sie dieses Projekt veröffentlichen können.
 6. Klicken Sie auf **OK**.
 
-## <a name="install-sdk"></a>Vorgehensweise: Herunterladen und Initialisieren des SDK
+## <a name="how-to-download-and-initialize-the-sdk"></a><a name="install-sdk"></a>Vorgehensweise: Herunterladen und Initialisieren des SDK
 Das SDK steht unter [NuGet.org]zur Verfügung. Dieses Paket enthält die Basisfunktionalität, die für den Einstieg in das SDK erforderlich ist. Um das SDK zu initialisieren, müssen Sie Aktionen auf dem **HttpConfiguration** -Objekt ausführen.
 
 ### <a name="install-the-sdk"></a>Installieren des SDKs
 Um das SDK zu installieren, klicken Sie in Visual Studio mit der rechten Maustaste auf das Serverprojekt, wählen **NuGet-Pakete verwalten**, suchen nach dem [Microsoft.Azure.Mobile.Server]-Paket und klicken dann auf **Installieren**.
 
-### <a name="server-project-setup"></a> Initialisieren des Serverprojekts
+### <a name="initialize-the-server-project"></a><a name="server-project-setup"></a> Initialisieren des Serverprojekts
 Ein .NET-Back-End-Server-Projekt wird wie andere ASP.NET-Projekte durch das Einschließen einer OWIN-Startklasse initialisiert. Stellen Sie sicher, dass Sie auf das NuGet-Paket `Microsoft.Owin.Host.SystemWeb`verwiesen haben. Um diese Klasse in Visual Studio hinzuzufügen, klicken Sie mit der rechten Maustaste auf das Serverprojekt und wählen **Hinzufügen** >
 **Neues Element** und dann **Web** > **Allgemein** > **OWIN-Startklasse** aus.  Eine Klasse mit dem folgenden Attribut wird generiert:
 
@@ -132,7 +132,7 @@ Die folgenden NuGet-basierten Erweiterungspakete bieten verschiedene mobile Funk
 * [Microsoft.Azure.Mobile.Server.CrossDomain](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.CrossDomain/) : Erstellt einen Controller, der Daten aus Ihrer mobilen App auf älteren Webbrowsern bereitstellt. Wird der Konfiguration durch Aufrufen der **MapLegacyCrossDomainController**-Erweiterungsmethode hinzugefügt.
 * Mit [Microsoft.Azure.Mobile.Server.Login] wird die AppServiceLoginHandler.CreateToken()-Methode bereitgestellt. Dies ist eine statische Methode, die für Szenarien mit benutzerdefinierter Authentifizierung verwendet wird.
 
-## <a name="publish-server-project"></a>Vorgehensweise: Veröffentlichen des Serverprojekts
+## <a name="how-to-publish-the-server-project"></a><a name="publish-server-project"></a>Vorgehensweise: Veröffentlichen des Serverprojekts
 In diesem Abschnitt erfahren Sie, wie Sie Ihr .NET-Back-End-Projekt über Visual Studio veröffentlichen. Sie können Ihr Back-End-Projekt auch über [Git](../app-service/deploy-local-git.md) oder eine der anderen dort verfügbaren Methoden bereitstellen.
 
 1. Erstellen Sie das Projekt in Visual Studio neu, um die NuGet-Pakete wiederherzustellen.
@@ -152,7 +152,7 @@ In diesem Abschnitt erfahren Sie, wie Sie Ihr .NET-Back-End-Projekt über Visual
 
     ![](./media/app-service-mobile-dotnet-backend-how-to-use-server-sdk/publish-success.png)
 
-## <a name="define-table-controller"></a>Vorgehensweise: Definieren eines Tabellencontrollers
+## <a name="how-to-define-a-table-controller"></a><a name="define-table-controller"></a>Vorgehensweise: Definieren eines Tabellencontrollers
 Definieren Sie einen Tabellencontroller, um eine SQL-Tabelle für mobile Clients verfügbar zu machen.  Zum Konfigurieren eines Tabellencontrollers sind drei Schritte erforderlich:
 
 1. Erstellen Sie eine DTO-Klasse (Data Transfer Object, Datenübertragungsobjekt).
@@ -200,7 +200,7 @@ Wenn Sie das Azure SDK installiert haben, können Sie jetzt wie folgt einen Tabe
 
 Das Schnellstart-Serverprojekt enthält ein Beispiel für einen einfachen **TodoItemController**.
 
-### <a name="adjust-pagesize"></a>Vorgehensweise: Anpassen der Größe der Tabellenauslagerungsdatei
+### <a name="how-to-adjust-the-table-paging-size"></a><a name="adjust-pagesize"></a>Vorgehensweise: Anpassen der Größe der Tabellenauslagerungsdatei
 Azure Mobile Apps gibt standardmäßig 50 Datensätze pro Anforderung zurück.  Mit der Auslagerung wird sichergestellt, dass der Client seinen UI-Thread und den Server nicht zu lange auslastet, um eine gute Benutzerfunktionalität zu gewährleisten. Erhöhen Sie zum Ändern der Tabellenauslagerungsgröße die „zulässige Abfragegröße“ auf der Serverseite und die Auslagerungsgröße auf der Clientseite. Die „zulässige Abfragegröße“ auf der Serverseite wird mit dem Attribut `EnableQuery` angepasst:
 
     [EnableQuery(PageSize = 500)]
@@ -238,7 +238,7 @@ Azure Mobile Apps verwendet die App Service-Authentifizierung/-Autorisierung, um
 * [Vorgehensweise: Abrufen von Informationen zu authentifizierten Benutzern](#user-info)
 * [Vorgehensweise: Einschränken des Datenzugriffs für autorisierte Benutzer](#authorize)
 
-### <a name="add-auth"></a>Vorgehensweise: Hinzufügen der Authentifizierung zu einem Serverprojekt
+### <a name="how-to-add-authentication-to-a-server-project"></a><a name="add-auth"></a>Vorgehensweise: Hinzufügen der Authentifizierung zu einem Serverprojekt
 Sie können dem Serverprojekt eine Authentifizierung hinzufügen, indem Sie das **MobileAppConfiguration** -Objekt erweitern und OWIN-Middleware konfigurieren. Wenn Sie das [Microsoft.Azure.Mobile.Server.Quickstart] -Paket installieren und die **UseDefaultConfiguration** -Erweiterungsmethode aufrufen, können Sie direkt mit Schritt 3 fortfahren.
 
 1. Installieren Sie in Visual Studio das [Microsoft.Azure.Mobile.Server.Authentication] -Paket.
@@ -251,7 +251,7 @@ Sie können dem Serverprojekt eine Authentifizierung hinzufügen, indem Sie das 
 
 Informationen zum Authentifizieren von Clients bei Ihrem Mobile Apps-Back-End finden Sie unter [Hinzufügen von Authentifizierung zur App](app-service-mobile-ios-get-started-users.md).
 
-### <a name="custom-auth"></a>Vorgehensweise: Verwenden einer benutzerdefinierten Authentifizierung für Ihre Anwendung
+### <a name="how-to-use-custom-authentication-for-your-application"></a><a name="custom-auth"></a>Vorgehensweise: Verwenden einer benutzerdefinierten Authentifizierung für Ihre Anwendung
 > [!IMPORTANT]
 > Um eine benutzerdefinierte Authentifizierung zu ermöglichen, müssen Sie zuerst die App Service-Authentifizierung aktivieren, ohne einen Anbieter für Ihren App Service im Azure-Portal auszuwählen. Dadurch wird die Umgebungsvariable „WEBSITE_AUTH_SIGNING_KEY“ aktiviert, wenn sie gehostet wird.
 > 
@@ -305,7 +305,7 @@ Sie können die `loginAsync()` -Standardclientmethode unterstützen, indem Sie f
 >
 >
 
-### <a name="user-info"></a>Vorgehensweise: Abrufen von Informationen zu authentifizierten Benutzern
+### <a name="how-to-retrieve-authenticated-user-information"></a><a name="user-info"></a>Vorgehensweise: Abrufen von Informationen zu authentifizierten Benutzern
 Wenn ein Benutzer von App Service authentifiziert wird, können Sie in Ihrem .NET-Back-End-Code auf die zugewiesene Benutzer-ID sowie auf andere Informationen zugreifen. Die Benutzerinformationen können zum Treffen von Autorisierungsentscheidungen auf dem Back-End verwendet werden. Mit dem folgenden Code wird die Benutzer-ID abgerufen, die einer Anforderung zugeordnet ist:
 
     // Get the SID of the current user.
@@ -342,7 +342,7 @@ Der folgende Code ruft die Erweiterungsmethode **GetAppServiceIdentityAsync** au
 
 Fügen Sie eine using-Anweisung für `System.Security.Principal` hinzu, um die **GetAppServiceIdentityAsync** -Erweiterungsmethode bereitzustellen.
 
-### <a name="authorize"></a>Vorgehensweise: Einschränken des Datenzugriffs für autorisierte Benutzer
+### <a name="how-to-restrict-data-access-for-authorized-users"></a><a name="authorize"></a>Vorgehensweise: Einschränken des Datenzugriffs für autorisierte Benutzer
 Im vorherigen Abschnitt wurde gezeigt, wie die Benutzer-ID eines authentifizierten Benutzers abgerufen wird. Sie können den Zugriff auf Daten und andere Ressourcen auf der Grundlage dieses Werts einschränken. Beispielsweise ist das Hinzufügen einer userId-Spalte zu Tabellen und das Filtern der Abfrageergebnisse nach der Benutzer-ID eine einfache Möglichkeit, die zurückgegebenen Daten nur auf autorisierte Benutzer zu beschränken. Der folgende Code gibt nur Datenzeilen zurück, wenn die SID mit dem Wert in der Spalte „UserId“ für die Tabelle „TodoItem“ übereinstimmt:
 
     // Get the SID of the current user.
@@ -383,7 +383,7 @@ Sie können dem Serverprojekt Pushbenachrichtigungen hinzufügen, indem Sie das 
 
 Sie können den Notification Hubs-Client nun zum Senden von Pushbenachrichtigungen an registrierte Geräte verwenden. Weitere Informationen finden Sie unter [Hinzufügen von Pushbenachrichtigungen zur App](app-service-mobile-ios-get-started-push.md). Weitere Informationen zu Notification Hubs finden Sie unter [Übersicht über Notification Hubs](../notification-hubs/notification-hubs-push-notification-overview.md).
 
-## <a name="tags"></a>Vorgehensweise: Ermöglichen von zielgerichteten Pushvorgängen mit Tags
+## <a name="how-to-enable-targeted-push-using-tags"></a><a name="tags"></a>Vorgehensweise: Ermöglichen von zielgerichteten Pushvorgängen mit Tags
 Mit Notification Hubs können Sie zielgerichtete Benachrichtigungen an spezielle Registrierungen senden, indem Sie Tags verwenden. Mehrere Tags werden automatisch erstellt:
 
 * Mit der Installations-ID wird ein bestimmtes Gerät identifiziert.
@@ -405,7 +405,7 @@ Alle Tags, die vom Client während der Registrierung von Pushbenachrichtigungen 
 
 Eine Beispiel hierfür finden Sie unter [Client-added push notification tags][5] (Vom Client hinzugefügte Tags für Pushbenachrichtigungen) im abgeschlossenen Schnellstartbeispiel für Mobile App Service-Apps.
 
-## <a name="push-user"></a>Vorgehensweise: Senden von Pushbenachrichtigungen an einen authentifizierten Benutzer
+## <a name="how-to-send-push-notifications-to-an-authenticated-user"></a><a name="push-user"></a>Vorgehensweise: Senden von Pushbenachrichtigungen an einen authentifizierten Benutzer
 Wenn ein authentifizierter Benutzer für Pushbenachrichtigungen registriert wird, wird der Registrierung automatisch ein Tag mit der Benutzer-ID hinzugefügt. Mit diesem Tag können Sie Pushbenachrichtigungen an alle Geräte senden, die von dieser Person registriert wurden. Mit dem folgenden Code wird die SID des Benutzers abgerufen, der die Anforderung stellt, und an jede Geräteregistrierung für diese Person wird eine Pushbenachrichtigungsvorlage gesendet:
 
     // Get the current user SID and create a tag for the current user.
@@ -444,7 +444,7 @@ Gehen Sie wie folgt vor, um die Diagnose zu aktivieren und in die Protokolle zu 
 4. Veröffentlichen Sie Ihr Serverprojekt neu, und greifen Sie auf das Mobile App-Back-End zu, um den Codepfad mit der Protokollierung auszuführen.
 5. Gehen Sie zum Herunterladen und Auswerten der Protokolle wie unter [Zugreifen auf Protokolldateien](../app-service/troubleshoot-diagnostic-logs.md#access-log-files) beschrieben vor.
 
-### <a name="local-debug"></a>Lokales Debuggen mit Authentifizierung
+### <a name="local-debugging-with-authentication"></a><a name="local-debug"></a>Lokales Debuggen mit Authentifizierung
 Sie können zum Testen von Änderungen Ihre Anwendung vor der Veröffentlichung in der Cloud lokal ausführen. Für die meisten Azure Mobile Apps-Back-Ends drücken Sie in Visual Studio die Taste *F5* . Bei der Verwendung der Authentifizierung gibt es jedoch einige zusätzliche Aspekte zu berücksichtigen.
 
 Sie benötigen eine cloudbasierte mobile App, für die App Service-Authentifizierung/-Autorisierung konfiguriert ist. Für den Client muss als alternativer Anmeldehost zudem der Cloudendpunkt angegeben sein. In der Dokumentation für Ihre Clientplattform sind die genauen Schritte angegeben.

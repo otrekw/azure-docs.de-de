@@ -16,10 +16,10 @@ ms.date: 06/05/2017
 ms.author: twooley
 ms.custom: ''
 ms.openlocfilehash: 56771d2e62289485017f34c6a9ab26e1d53610ec
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75933975"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>Verwenden der Benutzeroberfläche des StorSimple Snapshot Managers zum Verwalten von Sicherungsaufträgen und Sicherungskatalog
@@ -67,7 +67,7 @@ Klicken Sie zum Anzeigen des Menüs **Datei** auf der Menüleiste auf **Datei**.
 #### <a name="menu-description"></a>Menübeschreibung
 In der folgenden Tabelle werden die Elemente im Menü **Datei** beschrieben.
 
-| Menüelement | Beschreibung |
+| Menüelement | BESCHREIBUNG |
 |:--- |:--- |
 | Neu |Klicken Sie auf **Neu** , um mithilfe des StorSimple Snapshot Managers eine neue Konsole zu erstellen. |
 | Öffnen |Klicken Sie auf **Öffnen** , um eine vorhandene Konsole zu öffnen. |
@@ -107,7 +107,7 @@ Die folgende Tabelle enthält eine alphabetische Liste aller StorSimple Snapshot
 > 
 > 
 
-| Action | Navigation | Beschreibung |
+| Action | Navigation | BESCHREIBUNG |
 |:--- |:--- |:--- |
 | Authenticate |Klicken Sie auf den Knoten **Geräte**, und klicken Sie dann im **Ergebnisbereich** mit der rechten Maustaste auf ein Gerät. |Klicken Sie auf **Authentifizieren** , um das für das Gerät konfigurierte Kennwort einzugeben. |
 | Klon |Erweitern Sie nacheinander **Sicherungskatalog** und **Cloudmomentaufnahmen**, klicken Sie auf eine datierte Sicherung, und wählen Sie dann ein Volume im **Ergebnisbereich** aus. |Klicken Sie auf **Klonen** , um eine Kopie einer Cloudmomentaufnahme zu erstellen und in einem von Ihnen festgelegten Verzeichnis zu speichern. |
@@ -139,7 +139,7 @@ Sie finden das Menü **Ansicht** auf der Menüleiste oder im Bereich **Aktionen*
 #### <a name="menu-description"></a>Menübeschreibung
 In der folgenden Tabelle werden die Elemente im Menü **Ansicht** beschrieben.
 
-| Menüelement | Beschreibung |
+| Menüelement | BESCHREIBUNG |
 |:--- |:--- |
 | Spalten hinzufügen/entfernen |Klicken Sie auf **Spalten hinzufügen/entfernen**, um Spalten im **Ergebnisbereich** hinzuzufügen oder daraus zu entfernen. |
 | Anpassen |Klicken Sie auf **Anpassen** , um Elemente im StorSimple Snapshot Manager-Konsolenfenster ein-oder auszublenden. |
@@ -155,7 +155,7 @@ Sie finden das Menü **Favoriten** auf der Menüleiste.
 #### <a name="menu-description"></a>Menübeschreibung
 In der folgenden Tabelle werden die Elemente im Menü **Favoriten** beschrieben.
 
-| Menüelement | Beschreibung |
+| Menüelement | BESCHREIBUNG |
 |:--- |:--- |
 | Zu Favoriten hinzufügen |Klicken Sie auf **Zu Favoriten hinzufügen** , um Ihrer Favoritenliste die aktuelle Ansicht hinzuzufügen. |
 | Favoriten verwalten |Klicken Sie auf **Favoriten verwalten** , um den Inhalt des Ordners "Favoriten" zu organisieren. |
@@ -173,7 +173,7 @@ Die nummerierte Liste am unteren Rand des Menüs enthält die zurzeit geöffnete
 #### <a name="menu-description"></a>Menübeschreibung
 In der folgenden Tabelle werden die Elemente im Menü "Fenster" beschrieben.
 
-| Menüelement | Beschreibung |
+| Menüelement | BESCHREIBUNG |
 |:--- |:--- |
 | Neues Fenster |Klicken Sie auf **Neues Fenster** , um ein neues Konsolenfenster (zusätzlich zum vorhandenen Fenster) zu öffnen. |
 | Cascade |Klicken Sie auf **Überlappend** , um die offenen Konsolenfenster überlappend anzuzeigen. |
@@ -190,7 +190,7 @@ Sie finden das Menü **Hilfe** auf der Menüleiste. Sie können auch über den B
 #### <a name="menu-description"></a>Menübeschreibung
 In der folgenden Tabelle werden die Elemente im Menü "Hilfe" beschrieben.
 
-| Menüelement | Beschreibung |
+| Menüelement | BESCHREIBUNG |
 |:--- |:--- |
 | Hilfe zum StorSimple Snapshot Manager |Klicken Sie auf **Hilfe zum StorSimple Snapshot Manager** , um die StorSimple Snapshot Manager-Hilfe in einem separaten Fenster zu öffnen. |
 | Hilfethemen |Klicken Sie auf **Hilfethemen** , um die MMC-Onlinehilfe in einem separaten Fenster zu öffnen. |
@@ -204,7 +204,7 @@ Die Symbolleiste unterhalb der Menüleiste enthält Navigations- und Aufgabensym
 ### <a name="icon-descriptions"></a>Symbolbeschreibungen
 In der folgenden Tabelle werden die Symbole auf der Symbolleiste beschrieben. 
 
-| Symbol | Beschreibung |
+| Symbol | BESCHREIBUNG |
 |:--- |:--- |
 | ![Pfeil nach links](./media/storsimple-use-snapshot-manager/HCS_SSM_LeftArrow.png) |Klicken Sie auf den Pfeil nach links, um zur vorherigen Seite zurückzukehren. |
 | ![Pfeil nach rechts](./media/storsimple-use-snapshot-manager/HCS_SSM_RightArrow.png) |Klicken Sie auf den Pfeil nach rechts, um zur nächsten Seite zu wechseln (wenn der Pfeil grau ist, ist die Aktion nicht verfügbar). |

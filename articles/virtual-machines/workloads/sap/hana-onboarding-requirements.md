@@ -14,10 +14,10 @@ ms.date: 01/31/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 141a75a75a214ff4a6f136df7570d6e81f7f4e82
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616999"
 ---
 # <a name="onboarding-requirements"></a>Onboardinganforderungen
@@ -32,7 +32,7 @@ Diese Liste führt die Anforderungen zum Ausführen von SAP HANA in Azure (groß
 
 **Netzwerkkonnektivität**
 
-- ExpressRoute zwischen lokalen Systemen und Azure: Um Ihr lokales Rechenzentrum mit Azure zu verbinden, benötigen Sie eine Verbindung mit mindestens 1 GBit/s von Ihrem Internetdienstanbieter (ISP). Für die Verbindungen zwischen HANA-Einheiten (große Instanzen) und Azure wird ebenfalls ExpressRoute-Technologie verwendet. Diese ExpressRoute-Verbindung zwischen den HANA-Einheiten (große Instanzen) und Azure ist im Preis für die HANA-Einheiten (große Instanzen) enthalten, einschließlich aller Gebühren für eingehende und ausgehende Daten für diese spezifische ExpressRoute-Verbindung. Aus diesem Grund entstehen für Sie als Kunde über Ihre ExpressRoute-Verbindung zwischen lokalen Systemen und Azure hinaus keine zusätzlichen Kosten.
+- ExpressRoute zwischen lokalen Systemen und Azure: Um Ihr lokales Rechenzentrum mit Azure zu verbinden, benötigen Sie mindestens eine 1-GBit/s-Verbindung von Ihrem Internetdienstanbieter (ISP). Für die Verbindungen zwischen HANA-Einheiten (große Instanzen) und Azure wird ebenfalls ExpressRoute-Technologie verwendet. Diese ExpressRoute-Verbindung zwischen den HANA-Einheiten (große Instanzen) und Azure ist im Preis für die HANA-Einheiten (große Instanzen) enthalten, einschließlich aller Gebühren für eingehende und ausgehende Daten für diese spezifische ExpressRoute-Verbindung. Aus diesem Grund entstehen für Sie als Kunde über Ihre ExpressRoute-Verbindung zwischen lokalen Systemen und Azure hinaus keine zusätzlichen Kosten.
 
 **Betriebssystem**
 
@@ -49,7 +49,7 @@ Diese Liste führt die Anforderungen zum Ausführen von SAP HANA in Azure (groß
 
 - Bereitstellung von Red Hat Subscription Manager in Azure auf einer VM. Der Red Hat Subscription Manager bietet die Möglichkeit, SAP HANA in Azure (große Instanzen) zu registrieren und entsprechend von Red Hat aktualisieren zu lassen. (In dem Mandanten, der im Azure-Umfeld der großen Instanz bereitgestellt wird, besteht kein direkter Internetzugriff.)
 - SAP setzt voraus, dass Sie auch einen Support-Vertrag mit Ihrem Linux-Anbieter haben. Diese Anforderung gilt auch bei der Verwendung von HANA (große Instanz) und trotz der Tatsache, dass Sie Linux in Azure ausführen. Anders als bei einigen der Images im Linux Azure-Katalog ist die Servicegebühr *nicht* im Lösungsangebot von HANA (große Instanz) enthalten. Es liegt in Ihrer Verantwortung, die Anforderungen von SAP bezüglich der Supportverträge mit dem Linux-Vertreiber zu erfüllen. 
-   - Für SUSE Linux finden Sie die Anforderungen für Supportverträge in [SAP-Hinweis 1984787 – SUSE Linux Enterprise Server 12: Installationshinweise](https://launchpad.support.sap.com/#/notes/1984787) und [SAP-Hinweis 1056161 – SUSE-Prioritätssupport für SAP-Anwendungen](https://launchpad.support.sap.com/#/notes/1056161).
+   - Die Anforderungen bezüglich der Supportverträge für SUSE Linux finden Sie in [SAP-Hinweis 1984787 – SUSE Linux Enterprise Server 12: Installationshinweise](https://launchpad.support.sap.com/#/notes/1984787) und [SAP-Hinweis 1056161 – SUSE-Prioritätssupport für SAP-Anwendungen](https://launchpad.support.sap.com/#/notes/1056161).
    - Für Red Hat Linux benötigen Sie die richtigen Abonnementebenen, die Support und Dienstupdates für die Betriebssysteme von HANA (große Instanz) umfassen. Red Hat empfiehlt das Red Hat Enterprise Linux-Abonnement für SAP-Lösungen. Lesen Sie https://access.redhat.com/solutions/3082481. 
 
 Die Supportmatrix der anderen SAP HANA-Versionen mit den verschiedenen Linux-Versionen finden Sie im [SAP-Hinweis 2235581](https://launchpad.support.sap.com/#/notes/2235581).

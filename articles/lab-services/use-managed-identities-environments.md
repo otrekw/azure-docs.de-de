@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: spelluru
 ms.openlocfilehash: a4ba4206c01e492f2ae980c5806de1e72c7051c3
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73931153"
 ---
 # <a name="use-azure-managed-identities-to-deploy-environments-in-a-lab"></a>Verwenden von verwalteten Azure-Identitäten zum Bereitstellen von Umgebungen in einem Lab 
@@ -53,7 +53,7 @@ Wenn Sie die dem Lab zugewiesene vom Benutzer verwaltete Identität ändern möc
 
 1. Notieren Sie sich nach dem Erstellen einer Identität die Ressourcen-ID dieser Identität. Sie sollte in etwa wie das folgende Beispiel aussehen: 
 
-    `/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/<RESOURCE GROUP NAME> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/<NAME of USER IDENTITY>`.
+    [https://login.microsoftonline.com/consumers/](`/subscriptions/0000000000-0000-0000-0000-00000000000000/resourceGroups/<RESOURCE GROUP NAME> /providers/Microsoft.ManagedIdentity/userAssignedIdentities/<NAME of USER IDENTITY>`).
 1. Führen Sie eine PUT HTTPS-Methode aus, um dem Lab eine neue `ServiceRunner`-Ressource hinzuzufügen, ähnlich wie im folgenden Beispiel. Die Service Runner-Ressource ist eine Proxyressource zum Verwalten und Steuern verwalteter Identitäten in DevTest Labs. Der Name des Service Runners kann ein beliebiger gültiger Name sein, aber es wird empfohlen, dass Sie den Namen der verwalteten Identitätsressource verwenden. 
  
     ```json

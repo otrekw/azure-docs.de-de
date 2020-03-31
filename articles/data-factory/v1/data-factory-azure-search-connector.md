@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 5b1170f721cf8521cfe1762df0cc616c938ddf28
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929983"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236418"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Push-Übertragung von Daten in einen Azure Cognitive Search-Index mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -37,7 +37,7 @@ Das Datenverwaltungsgateway verbindet die lokalen Datenquellen mit Cloud-Dienste
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einem Quelldatenspeicher per Push in einen Suchindex überträgt.
 
-Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Siehe [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
 Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlage**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
@@ -59,7 +59,7 @@ Die folgende Tabelle enthält Beschreibungen der JSON-Elemente, die für den mit
 | -------- | ----------- | -------- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureSearch**. | Ja |
 | url | URL für den Suchdienst | Ja |
-| key | Administratorschlüssel für den Suchdienst | Ja |
+| Schlüssel | Administratorschlüssel für den Suchdienst | Ja |
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 
@@ -78,7 +78,7 @@ Wenn bei der Kopieraktivität die Senke den Typ **AzureSearchIndexSink** aufweis
 
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Gibt an, ob ein Dokument zusammengeführt oder ersetzt werden soll, wenn es bereits im Index vorhanden ist. Siehe [Eigenschaft „WriteBehavior“](#writebehavior-property).| Zusammenführen (Standard)<br/>Hochladen| Nein |
+| WriteBehavior | Gibt an, ob ein Dokument zusammengeführt oder ersetzt werden soll, wenn es bereits im Index vorhanden ist. Siehe [Eigenschaft „WriteBehavior“](#writebehavior-property).| Zusammenführen (Standard)<br/>Upload| Nein |
 | WriteBatchSize | Lädt Daten in den Suchindex hoch, wenn die Puffergröße writeBatchSize erreicht. Einzelheiten finden Sie unter [Eigenschaft „WriteBatchSize“](#writebatchsize-property). | 1 bis 1.000. Der Standardwert ist 1000. | Nein |
 
 ### <a name="writebehavior-property"></a>Eigenschaft „WriteBehavior“
@@ -94,12 +94,12 @@ Das Standardverhalten ist **Merge**.
 ### <a name="writebatchsize-property"></a>Eigenschaft „writeBatchSize“
 Der Azure Cognitive Search-Dienst unterstützt das Schreiben von Dokumenten als Batch. Ein Batch kann 1 bis 1.000 Aktionen enthalten. Eine Aktion bearbeitet ein Dokument, um den Vorgang upload/merge auszuführen.
 
-### <a name="data-type-support"></a>Unterstützung von Datentypen
+### <a name="data-type-support"></a>Datentypunterstützung
 In der folgenden Tabelle wird angegeben, ob ein Azure Cognitive Search-Datentyp unterstützt wird oder nicht.
 
 | Azure Cognitive Search-Datentyp | In Azure Cognitive Search-Senke unterstützt |
 | ---------------------- | ------------------------------ |
-| Zeichenfolge | J |
+| String | J |
 | Int32 | J |
 | Int64 | J |
 | Double | J |
@@ -285,12 +285,12 @@ Wenn Sie Daten aus einem Clouddatenspeicher in Azure Cognitive Search kopieren, 
 }
 ```
 
-Sie können auch Spalten aus dem Quelldataset in der Definition der Kopieraktivität Spalten im Senkendataset zuordnen. Weitere Informationen finden Sie unter [Zuordnen von Datasetspalten in Azure Data Factory](data-factory-map-columns.md).
+Sie können in der Definition der Kopieraktivität auch Spalten aus dem Quelldataset Spalten im Senkendataset zuordnen. Weitere Informationen finden Sie unter [Zuordnen von Datasetspalten in Azure Data Factory](data-factory-map-columns.md).
 
 ## <a name="performance-and-tuning"></a>Leistung und Optimierung
 Im [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Entsprechende Informationen finden Sie in den folgenden Artikeln:
+Weitere Informationen finden Sie in folgenden Artikeln:
 
 * [Kopieraktivität-Tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) für schrittweise Anleitungen zum Erstellen einer Pipeline mit einer Kopieraktivität.

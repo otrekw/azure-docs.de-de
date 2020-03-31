@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 1fceda6fcbb6e8db1fa8afbc5181315bd0c98940
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 35cea2e6df311d2f4071686c21c8e4c36477abc1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512979"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225118"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid-Ereignisschema
 
@@ -83,16 +83,16 @@ Das für ein Azure Blob Storage-Ereignis veröffentlichte Schema sieht beispiels
 
 Alle Ereignisse weisen die gleichen Daten auf oberster Ebene auf:
 
-| Eigenschaft | type | Beschreibung |
-| -------- | ---- | ----------- |
-| topic | string | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
-| subject | string | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| eventType | string | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | string | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | string | Eindeutiger Bezeichner für das Ereignis. |
-| data | Objekt (object) | Die für den Ressourcenanbieter spezifischen Ereignisdaten. |
-| dataVersion | string | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | string | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| Eigenschaft | type | Erforderlich | BESCHREIBUNG |
+| -------- | ---- | -------- | ----------- |
+| topic | Zeichenfolge | Nein, aber muss bei einer Angabe genau mit der Azure Resource Manager-ID des Event Grid-Themas übereinstimmen. Bei nicht eingeschlossener Eigenschaft gilt die Angabe von Event Grid für das Ereignis. | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
+| subject | Zeichenfolge | Ja | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
+| eventType | Zeichenfolge | Ja | Einer der registrierten Ereignistypen für die Ereignisquelle. |
+| eventTime | Zeichenfolge | Ja | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
+| id | Zeichenfolge | Ja | Eindeutiger Bezeichner für das Ereignis. |
+| data | Objekt (object) | Nein | Die für den Ressourcenanbieter spezifischen Ereignisdaten. |
+| dataVersion | Zeichenfolge | Nein, wird jedoch mit einem leeren Wert versehen. | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
+| metadataVersion | Zeichenfolge | Nicht erforderlich, aber muss bei einer Angabe genau mit dem Wert `metadataVersion` des Event Grid-Themas übereinstimmen (derzeit nur `1`). Bei nicht eingeschlossener Eigenschaft gilt die Angabe von Event Grid für das Ereignis. | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
 Weitere Informationen zu den Eigenschaften im Datenobjekt finden Sie in der Ereignisquelle:
 

@@ -12,34 +12,34 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: 599b54f8a5d97ee5ed29ce4df16980f456ffb919
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74914580"
 ---
 # <a name="install-paid-or-licensed-custom-components-for-the-azure-ssis-integration-runtime"></a>Installieren kostenpflichtiger oder lizenzierter benutzerdefinierter Komponenten für Azure SSIS Integration Runtime
 
 In diesem Artikel wird erläutert, wie ein ISV kostenpflichtige oder lizenzierte benutzerdefinierte Komponenten für SSIS-Pakete (SQL Server Integration Services) entwickeln und installieren kann, die in Azure in der Azure SSIS Integration Runtime ausgeführt werden.
 
-## <a name="the-problem"></a>Die Problematik
+## <a name="the-problem"></a>Das Problem
 
 Die Eigenart der Azure SSIS Integration Runtime bringt verschiedene Herausforderungen mit sich, aufgrund derer die typischen Lizenzierungsmethoden für die lokale Installation benutzerdefinierter Komponenten unzureichend sind. Daher erfordert die Azure SSIS IR einen anderen Ansatz.
 
--   Die Knoten der Azure SSIS IR sind flüchtig und können jederzeit zugeordnet oder freigegeben werden. Beispielsweise können Sie Knoten starten oder beenden, um die Kosten im Griff zu behalten, oder durch verschiedene Knotengrößen zentral hoch- und herunterskalieren. Dadurch ist es nicht mehr möglich, eine Komponentenlizenz eines Drittanbieters über computerspezifische Informationen wie MAC-Adresse oder CPU-ID an einen bestimmten Knoten zu binden.
+-   Die Knoten der Azure SSIS IR sind flüchtig und können jederzeit zugeordnet oder freigegeben werden. Beispielsweise können Sie Knoten starten oder beenden, um die Kosten im Griff zu behalten, oder durch verschiedene Knotengrößen hoch- und herunterskalieren. Dadurch ist es nicht mehr möglich, eine Komponentenlizenz eines Drittanbieters über computerspezifische Informationen wie MAC-Adresse oder CPU-ID an einen bestimmten Knoten zu binden.
 
 -   Sie können die Azure SSIS IR auch horizontal herunter- oder hochskalieren, sodass die Anzahl der Knoten jederzeit verkleinert oder vergrößert werden kann.
 
 ## <a name="the-solution"></a>Die Lösung
 
-Aufgrund der im vorherigen Abschnitt beschriebenen Einschränkungen herkömmlicher Lizenzierungsmethoden bietet die Azure SSIS IR eine neue Lösung. Bei dieser Lösung werden Windows-Umgebungsvariablen und SSIS-Systemvariablen für die Lizenzbindung und -validierung von Drittanbieterkomponenten verwendet. ISVs können diese Variablen nutzen, um eindeutige und persistente Informationen für eine Azure SSIS IR zu erhalten, wie z.B. Cluster-ID und Anzahl der Clusterknoten. Anhand dieser Informationen können ISVs dann die Lizenz für ihre Komponente an eine Azure SSIS IR *als ein Cluster* binden. Diese Bindung verwendet eine ID, die sich nicht ändert, wenn Kunden die Azure SSIS IR in jeglicher Form starten oder beenden, horizontal oder vertikal hoch- oder herunterskalieren oder neu konfigurieren.
+Aufgrund der im vorherigen Abschnitt beschriebenen Einschränkungen herkömmlicher Lizenzierungsmethoden bietet die Azure SSIS IR eine neue Lösung. Bei dieser Lösung werden Windows-Umgebungsvariablen und SSIS-Systemvariablen für die Lizenzbindung und -validierung von Drittanbieterkomponenten verwendet. ISVs können diese Variablen nutzen, um eindeutige und persistente Informationen für eine Azure SSIS IR zu erhalten, wie z.B. Cluster-ID und Anzahl der Clusterknoten. Anhand dieser Informationen können ISVs dann die Lizenz für ihre Komponente an eine Azure SSIS IR *als ein Cluster* binden. Diese Bindung verwendet eine ID, die sich nicht ändert, wenn Kunden die Azure SSIS IR in jeglicher Form starten oder beenden, hoch- oder herunter- bzw. auf- oder abskalieren oder neu konfigurieren.
 
 Die folgende Abbildung zeigt die typischen Installations-, Aktivierungs- und Lizenzbindungsabläufe für Komponenten von Drittanbietern, die diese neuen Variablen verwenden:
 
 ![Installation lizenzierter Komponenten](media/how-to-configure-azure-ssis-ir-licensed-components/licensed-component-installation.png)
 
-## <a name="instructions"></a>Anleitung
-1. ISVs können ihre lizenzierten Komponenten in verschiedenen SKUs oder Stufen anbieten (z.B. Einzelknoten, bis zu 5 Knoten, bis zu 10 Knoten usw.). Der ISV stellt beim Kauf eines Produkts den entsprechenden Product Key zur Verfügung. Der ISV kann auch einen Azure Storage-Blobcontainer bereitstellen, der ein ISV-Setupskript und zugehörige Dateien enthält. Kunden können diese Dateien in ihren eigenen Speichercontainer kopieren und mit ihrem eigenen Product Key modifizieren (z.B. durch Ausführen von `IsvSetup.exe -pid xxxx-xxxx-xxxx`). Kunden können dann die Azure SSIS IR mit dem SAS-URI ihres Containers als Parameter bereitstellen oder neu konfigurieren. Weitere Informationen finden Sie unter [Custom setup for the Azure-SSIS integration runtime](how-to-configure-azure-ssis-ir-custom-setup.md) (Benutzerdefinierte Einrichtung der Azure SSIS Integration Runtime).
+## <a name="instructions"></a>Instructions
+1. ISVs können ihre lizenzierten Komponenten in verschiedenen SKUs oder Stufen anbieten (z.B. Einzelknoten, bis zu 5 Knoten, bis zu 10 Knoten usw.). Der ISV stellt beim Kauf eines Produkts den entsprechenden Product Key zur Verfügung. Der ISV kann auch einen Azure Storage-Blobcontainer bereitstellen, der ein ISV-Setupskript und zugehörige Dateien enthält. Kunden können diese Dateien in ihren eigenen Speichercontainer kopieren und mit ihrem eigenen Product Key modifizieren (z.B. durch Ausführen von `IsvSetup.exe -pid xxxx-xxxx-xxxx`). Kunden können dann die Azure SSIS IR mit dem SAS-URI ihres Containers als Parameter bereitstellen oder neu konfigurieren. Weitere Informationen finden Sie unter [Benutzerdefiniertes Setup von Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-custom-setup.md).
 
 2. Wenn die Azure SSIS IR bereitgestellt oder neu konfiguriert wurde, wird das ISV-Setup auf jedem Knoten ausgeführt, um die Windows-Umgebungsvariablen `SSIS_CLUSTERID` und `SSIS_CLUSTERNODECOUNT` abzufragen. Anschließend sendet die Azure SSIS IR ihre Cluster-ID und den Product Key für das lizenzierte Produkt an den Aktivierungsserver des ISV, um einen Aktivierungsschlüssel zu generieren.
 

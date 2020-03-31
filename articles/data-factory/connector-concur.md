@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
 ms.openlocfilehash: c3b8792039cbb5907dc9b6952fc7b1e30c0d7c55
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74929579"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Kopieren von Daten aus Concur mithilfe von Azure Data Factory (Vorschau)
@@ -87,7 +87,7 @@ Legen Sie zum Kopieren von Daten aus Concur die „type“-Eigenschaft des Datas
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **ConcurObject**. | Ja |
-| tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
+| tableName | Der Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 
 **Beispiel**
@@ -118,7 +118,7 @@ Legen Sie zum Kopieren von Daten aus Concur den Quellentyp in der Kopieraktivit�
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **ConcurSource**. | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Opportunities where Id = xxx "`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
+| Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Opportunities where Id = xxx "`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

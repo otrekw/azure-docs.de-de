@@ -13,11 +13,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894206"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229946"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Verschieben von Daten mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -59,7 +59,7 @@ Die folgenden Abschnitte beschreiben die JSON-Eigenschaften, die zum Definieren 
 
 Die folgende Tabelle enthält Beschreibungen der JSON-Elemente, die für einen mit Amazon Redshift verknüpften Dienst spezifisch sind.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | **type** |Diese Eigenschaft muss auf **AmazonRedshift** festgelegt sein. |Ja |
 | **server** |Die IP-Adresse oder der Hostname des Amazon Redshift-Servers. |Ja |
@@ -74,7 +74,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jeder Art von Dataset und enthält Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt **typeProperties** für ein Dataset vom Typ **RelationalTable**, zu dem das Amazon Redshift-Dataset gehört, weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | **tableName** |Der Name der Tabelle in der Amazon Redshift-Datenbank, auf die der verknüpfte Dienst verweist. |Nein (wenn die **query**-Eigenschaft einer Kopieraktivität vom Typ **RelationalSource** angegeben wurde) |
 
@@ -84,7 +84,7 @@ Eine Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten
 
 Wenn bei einer Kopieraktivität die Quelle den Typ **AmazonRedshiftSource** aufweist, sind im Abschnitt **typeProperties** die folgenden Eigenschaften verfügbar:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | **query** | Verwendet die benutzerdefinierte Abfrage zum Lesen der Daten. |Nein (wenn die **tableName**-Eigenschaft eines DataSets angegeben wurde) |
 | **redshiftUnloadSettings** | Enthält bei Verwendung des Redshift-Befehls **UNLOAD** die Eigenschaftsgruppe. | Nein |
@@ -93,7 +93,7 @@ Wenn bei einer Kopieraktivität die Quelle den Typ **AmazonRedshiftSource** aufw
 
 Alternativ können Sie auch den Typ **RelationalSource**, der Amazon Redshift enthält, mit der folgenden Eigenschaft im Abschnitt **typeProperties** verwenden. Beachten Sie, dass dieser Quelltyp den Redshift-Befehl **UNLOAD** nicht unterstützt.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | **query** |Verwendet die benutzerdefinierte Abfrage zum Lesen der Daten. | Nein (wenn die **tableName**-Eigenschaft eines DataSets angegeben wurde) |
 

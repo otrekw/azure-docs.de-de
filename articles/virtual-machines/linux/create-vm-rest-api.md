@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: cynthn
 ms.openlocfilehash: 1594c030839cccdd48c4b032c6ad92f746f78e26
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78970271"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Erstellen eines virtuellen Linux-Computers zur Verwendung der SSH-Authentifizierung mit der REST-API
@@ -56,8 +56,8 @@ Die folgenden allgemeinen Definitionen werden verwendet, um einen Anforderungste
 
 | Name                       | Erforderlich | type                                                                                | BESCHREIBUNG  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
-| location                   | True     | Zeichenfolge                                                                              | Ressourcenspeicherort |
-| name                       |          | Zeichenfolge                                                                              | Name des virtuellen Computers |
+| location                   | True     | string                                                                              | Ressourcenspeicherort |
+| name                       |          | string                                                                              | Name des virtuellen Computers |
 | properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Legt die Hardwareeinstellungen für den virtuellen Computer fest. |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Legt die Speichereinstellungen für die Datenträger des virtuellen Computers fest. |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Legt die Einstellungen des Betriebssystems für den virtuellen Computer fest. |

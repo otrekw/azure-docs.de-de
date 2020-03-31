@@ -13,14 +13,14 @@ ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928106"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236334"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Verschieben von Daten aus MySQL mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-onprem-mysql-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-mysql.md)
 
@@ -49,7 +49,7 @@ Damit das Datenverwaltungsgateway eine Verbindung mit der MySQL-Datenbank herste
 ## <a name="getting-started"></a>Erste Schritte
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einem lokalen Teradata-Datenspeicher verschiebt. 
 
-- Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten. 
+- Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Siehe [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten. 
 - Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlage**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. 
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
@@ -94,7 +94,7 @@ Wenn die Quelle der Kopieraktivität den Typ **RelationalSource** hat (zu dem My
 
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-Abfragezeichenfolge. Beispiel: select * from MyTable. |Nein (wenn **tableName** von **Dataset** angegeben ist) |
+| Abfrage |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-Abfragezeichenfolge. Beispiel: select * from MyTable. |Nein (wenn **tableName** von **Dataset** angegeben ist) |
 
 
 ## <a name="json-example-copy-data-from-mysql-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten aus MySQL in ein Azure-Blob
@@ -298,46 +298,46 @@ Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activ
 
 Beim Verschieben von Daten in MySQL werden die folgenden Zuordnungen zwischen MySQL-Typ und .NET-Typ verwendet.
 
-| Typ "MySQL-Datenbank" | Typ ".NET Framework" |
+| Typ "MySQL-Datenbank" | .NET Framework-Typ |
 | --- | --- |
 | bigint (ohne Vorzeichen) |Decimal |
-| bigint |Int64 |
+| BIGINT |Int64 |
 | bit |Decimal |
 | Blob |Byte[] |
 | bool |Boolean |
-| char |Zeichenfolge |
+| char |String |
 | date |Datetime |
 | datetime |Datetime |
-| decimal |Decimal |
+| Decimal |Decimal |
 | double precision |Double |
-| Double |Double |
-| enum |Zeichenfolge |
+| double |Double |
+| enum |String |
 | float |Single |
 | int (ohne Vorzeichen) |Int64 |
-| int |Int32 |
+| INT |Int32 |
 | integer (ohne Vorzeichen) |Int64 |
 | integer |Int32 |
 | long varbinary |Byte[] |
-| long varchar |Zeichenfolge |
+| long varchar |String |
 | longblob |Byte[] |
-| longtext |Zeichenfolge |
+| longtext |String |
 | mediumblob |Byte[] |
 | mediumint (ohne Vorzeichen) |Int64 |
 | mediumint |Int32 |
-| mediumtext |Zeichenfolge |
-| numeric |Decimal |
+| mediumtext |String |
+| NUMERIC |Decimal |
 | real |Double |
-| set |Zeichenfolge |
+| set |String |
 | smallint (ohne Vorzeichen) |Int32 |
-| smallint |Int16 |
-| text |Zeichenfolge |
+| SMALLINT |Int16 |
+| text |String |
 | time |TimeSpan |
 | timestamp |Datetime |
 | tinyblob |Byte[] |
 | tinyint (ohne Vorzeichen) |Int16 |
-| tinyint |Int16 |
-| tinytext |Zeichenfolge |
-| varchar |Zeichenfolge |
+| TINYINT |Int16 |
+| tinytext |String |
+| varchar |String |
 | year |Int |
 
 ## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten

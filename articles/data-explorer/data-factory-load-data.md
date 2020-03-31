@@ -9,10 +9,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: 860b1a579d9c8cee6c6e80ae4c4e7fdd7949d5c7
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71300598"
 ---
 # <a name="copy-data-to-azure-data-explorer-by-using-azure-data-factory"></a>Kopieren von Daten in Azure Data Explorer mithilfe von Azure Data Factory 
@@ -120,7 +120,7 @@ Sie können die Daten mit einer der folgenden Methoden laden:
     
       Im Bereich **Quelldatenspeicher** wird die neue Verbindung „AmazonS31“ angezeigt. 
 
-1. Klicken Sie auf **Weiter**.
+1. Wählen Sie **Weiter** aus.
 
    ![Erstellte Verbindung mit Quelldatenspeicher](media/data-factory-load-data/source-data-store-created-connection.png)
 
@@ -130,7 +130,7 @@ Sie können die Daten mit einer der folgenden Methoden laden:
 
     b. Wählen Sie das gewünschte Kopierverhalten aus. Stellen Sie sicher, dass das Kontrollkästchen **Binary Copy** (Binärkopie) deaktiviert ist.
 
-    c. Klicken Sie auf **Weiter**.
+    c. Wählen Sie **Weiter** aus.
 
     ![Auswählen der Eingabedatei bzw. des Eingabeordners](media/data-factory-load-data/source-choose-input-file.png)
 
@@ -188,7 +188,7 @@ Gehen Sie zum Erstellen des verknüpften Azure Data Explorer-Diensts wie folgt v
 
 Nach dem Erstellen der Verbindung für den verknüpften Dienst wird der Bereich **Zieldatenspeicher** geöffnet, und die erstellte Verbindung ist zur Verwendung verfügbar. Gehen Sie wie folgt vor, um die Verbindung zu konfigurieren:
 
-1. Klicken Sie auf **Weiter**.
+1. Wählen Sie **Weiter** aus.
 
     ![Azure Data Explorer – Bereich „Zieldatenspeicher“](media/data-factory-load-data/destination-data-store.png)
 
@@ -198,19 +198,19 @@ Nach dem Erstellen der Verbindung für den verknüpften Dienst wird der Bereich 
 
 1. Im Bereich **Spaltenzuordnung** werden die folgenden Zuordnungen durchgeführt:
 
-    a. Die erste Zuordnung erfolgt in Azure Data Factory entsprechend der [Azure Data Factory-Schemazuordnung](/azure/data-factory/copy-activity-schema-and-type-mapping). Gehen Sie wie folgt vor:
+    a. Die erste Zuordnung erfolgt in Azure Data Factory entsprechend der [Azure Data Factory-Schemazuordnung](/azure/data-factory/copy-activity-schema-and-type-mapping). Gehen Sie folgendermaßen vor:
 
     * Legen Sie die **Column mappings** (Spaltenzuordnungen) für die Azure Data Factory-Zieltabelle fest. Die Standardzuordnung von der Quelle zur Azure Data Factory-Zieltabelle wird angezeigt.
 
     * Heben Sie die Auswahl der Spalten auf, die Sie zum Definieren der Spaltenzuordnung nicht benötigen.
 
-    b. Die zweite Zuordnung erfolgt, wenn diese tabellarischen Daten in Azure Data Explorer erfasst werden. Die Zuordnung erfolgt gemäß den [CSV-Zuordnungsregeln](/azure/kusto/management/mappings#csv-mapping). Selbst wenn die Quelldaten nicht im CSV-Format vorliegen, werden sie in Azure Data Factory in ein Tabellenformat umgewandelt. Daher ist die CSV-Zuordnung in dieser Phase die einzige relevante Zuordnung. Gehen Sie wie folgt vor:
+    b. Die zweite Zuordnung erfolgt, wenn diese tabellarischen Daten in Azure Data Explorer erfasst werden. Die Zuordnung erfolgt gemäß den [CSV-Zuordnungsregeln](/azure/kusto/management/mappings#csv-mapping). Selbst wenn die Quelldaten nicht im CSV-Format vorliegen, werden sie in Azure Data Factory in ein Tabellenformat umgewandelt. Daher ist die CSV-Zuordnung in dieser Phase die einzige relevante Zuordnung. Gehen Sie folgendermaßen vor:
 
     * (Optional:) Fügen Sie unter **Azure Data Explorer (Kusto) sink properties** (Azure Data Explorer-Senkeneigenschaften (Kusto)) den relevanten **Ingestion mapping name** (Name der Erfassungszuordnung) hinzu, sodass die Spaltenzuordnung verwendet werden kann.
 
     * Wenn kein Wert für **Ingestion mapping name** (Name der Erfassungszuordnung) angegeben wird, wird die Zuordnungsreihenfolge *nach Name* angewandt, die im Abschnitt **Spaltenzuordnungen** definiert wurde. Wenn bei der Zuordnung *nach Name* Fehler auftreten, versucht Azure Data Explorer, die Daten mittels Zuordnung *nach Spaltenposition* zu erfassen (d. h., standardmäßig werden Zuordnungen nach Position vorgenommen).
 
-    * Klicken Sie auf **Weiter**.
+    * Wählen Sie **Weiter** aus.
 
     ![Zieldataset – Bereich „Spaltenzuordnung“](media/data-factory-load-data/destination-dataset-column-mapping.png)
 
@@ -220,7 +220,7 @@ Nach dem Erstellen der Verbindung für den verknüpften Dienst wird der Bereich 
 
     b. Unter **Leistungseinstellungen** ist **Enable staging** (Staging aktivieren) nicht anwendbar, und **Erweiterte Einstellungen** schließt Kostenberücksichtigungen ein. Sofern keine spezifischen Anforderungen vorliegen, lassen Sie die Einstellungen unverändert.
 
-    c. Klicken Sie auf **Weiter**.
+    c. Wählen Sie **Weiter** aus.
 
     ![Daten kopieren – Bereich „Einstellungen“](media/data-factory-load-data/copy-data-settings.png)
 

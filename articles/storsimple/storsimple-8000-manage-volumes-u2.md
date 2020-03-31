@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: alkohli
 ms.openlocfilehash: f32f8925bca33d90afa48071d0c0944ba63861cd
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278842"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228174"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Verwalten von Volumes mithilfe des StorSimple-Geräte-Manager-Diensts (Update 3 und höher)
 
@@ -25,8 +25,8 @@ Der StorSimple-Geräte-Manager-Dienst ist eine Erweiterung im Azure-Portal, mit 
 
 Folgende StorSimple-Volumes sind möglich:
 
-* **Lokal angeheftete Volumes**: Die Daten in diesen Volumes verbleiben jederzeit auf dem lokalen StorSimple-Gerät.
-* **Mehrstufige Volumes**: Die Daten in diesen Volumes können in die Cloud ausweichen.
+* **Lokale Volumes**: Daten in diesen Volumes verbleiben jederzeit auf dem lokalen StorSimple-Gerät.
+* **Mehrstufige Volumes**: Daten in diesen Volumes können in die Cloud überlaufen.
 
 Ein Archivierungsvolume ist ein mehrstufiger Volumetyp. Die für Archivierungsvolumes verwendeten größeren Deduplizierungsblöcke ermöglichen dem Gerät die Übertragung größerer Datensegmente in die Cloud.
 

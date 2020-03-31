@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/10/2019
 ms.openlocfilehash: 9a7521f61dc59bd954629a05638c159ab0e70556
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658488"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Erstellen benutzerdefinierter Ansichten mithilfe des Ansicht-Designers in Azure Monitor
@@ -21,8 +21,8 @@ Mithilfe des Ansicht-Designers in Azure Monitor können Sie verschiedene benutze
 
 Weitere Informationen zum Ansicht-Designer finden Sie in folgenden Artikeln:
 
-* [Kachelreferenz](view-designer-tiles.md): Referenzleitfaden zu den Einstellungen für die einzelnen verfügbaren Kacheln in den benutzerdefinierten Ansichten.
-* [Referenz zur Visualisierungskomponente](view-designer-parts.md): Bietet einen Referenzleitfaden zu den Einstellungen für die in Ihren benutzerdefinierten Ansichten verfügbaren Visualisierungkomponenten.
+* [Kachelreferenz:](view-designer-tiles.md) Referenzleitfaden zu den Einstellungen für die einzelnen verfügbaren Kacheln in den benutzerdefinierten Ansichten.
+* [Referenz der Visualisierungskomponenten:](view-designer-parts.md) Referenzleitfaden zu den Einstellungen für die in den benutzerdefinierten Ansichten verfügbaren Visualisierungskomponenten.
 
 
 ## <a name="concepts"></a>Konzepte
@@ -69,9 +69,9 @@ Sie können eine neue Ansicht im Ansicht-Designer erstellen, indem Sie im Menü 
 Mithilfe des Ansicht-Designers können Sie neue Ansichten erstellen oder vorhandene Ansichten bearbeiten. 
 
 Der Ansicht-Designer verfügt über drei Bereiche: 
-* **Entwurf**: Enthält die benutzerdefinierte Ansicht, die Sie erstellen oder bearbeiten. 
-* **Steuerung**: Enthält die Kacheln und Komponenten, die Sie im Bereich **Entwurf** hinzufügen. 
-* **Properties:** Zeigt die Eigenschaften der Kacheln oder ausgewählten Komponenten an.
+* **Entwurf:** enthält die benutzerdefinierte Ansicht, die Sie erstellen oder bearbeiten. 
+* **Steuerung:** enthält die Kacheln und Komponenten, die Sie im Bereich **Entwurf** hinzufügen. 
+* **Eigenschaften:** zeigt die Eigenschaften der Kacheln oder ausgewählten Komponenten an.
 
 ![Sicht-Designer](media/view-designer/view-designer-screenshot.png)
 
@@ -95,7 +95,7 @@ Die Optionen zur Verwendung von Ansichten im Bearbeitungsmodus sind in der folge
 
 ![Bearbeitungsmenü](media/view-designer/edit-menu.png)
 
-| Option | Beschreibung |
+| Option | BESCHREIBUNG |
 |:--|:--|
 | Speichern        | Speichert die Änderungen und schließt die Ansicht. |
 | Abbrechen      | Verwirft die Änderungen und schließt die Ansicht. |

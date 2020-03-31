@@ -2,14 +2,14 @@
 author: Blackmist
 ms.service: machine-learning
 ms.topic: include
-ms.date: 01/10/2019
+ms.date: 03/16/2020
 ms.author: larryfr
-ms.openlocfilehash: 469d87a828df19ca30260cada9dcea43859be9e0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: d36bf2db05113656a77e76ff900d95910f313c73
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75901733"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477254"
 ---
 Verwenden Sie die `update`-Methode, um einen Webdienst zu aktualisieren. Sie können den Webdienst aktualisieren, um ein neues Modell, ein neues Eingabeskript oder neue Abhängigkeiten zu verwenden, die in einer Rückschlusskonfiguration angegeben werden können. Weitere Informationen finden Sie in der Dokumentation zu [Webservice.update](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-).
 

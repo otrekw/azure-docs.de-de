@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
 ms.openlocfilehash: 1933db624dfef2ffa747ecb043be6730b6b884b5
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78206553"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Verwenden des Microsoft Cognitive Toolkit-Modells für intensives Lernen mit einem Azure HDInsight Spark-Cluster
@@ -84,7 +84,7 @@ Um das Microsoft Cognitive Toolkit mit dem Azure HDInsight Spark-Cluster zu verw
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Übersicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
+* [Übersicht: Apache Spark für Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Szenarien
 

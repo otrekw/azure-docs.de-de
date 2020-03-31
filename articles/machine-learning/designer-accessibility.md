@@ -10,10 +10,10 @@ ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
 ms.openlocfilehash: 59199291589a81d0a0d96b7867078b8196be086f
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77366197"
 ---
 # <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Verwenden einer Tastatur zur Verwendung von Azure Machine Learning-Designer (Vorschau)
@@ -52,7 +52,7 @@ So passen Sie die Moduleigenschaften an
 
 ## <a name="navigation-shortcuts"></a>Tastenkombinationen zur Navigation
 
-| Tastaturanschläge | Beschreibung |
+| Tastaturanschläge | BESCHREIBUNG |
 |-|-|
 | STRG + F6 | Fokus zwischen Canvas und Modulstruktur umschalten |
 | STRG + F1   | Informationskarte beim Fokussieren auf einen Knoten in der Modulstruktur öffnen |
@@ -64,7 +64,7 @@ So passen Sie die Moduleigenschaften an
 
 Verwenden Sie die folgenden Tastenkombinationen mit dem Zugriffsschlüssel. Weitere Informationen zu Zugriffsschlüsseln finden Sie unter https://en.wikipedia.org/wiki/Access_key.
 
-| Tastaturanschläge | Aktion |
+| Tastaturanschläge | Action |
 |-|-|
 | Zugriffsschlüssel + R | Ausführen |
 | Zugriffsschlüssel + P | Veröffentlichen |

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: sngun
 ms.openlocfilehash: 2306dbe234e171ac613c33458df1990b767637df
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79128375"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Bereitstellen von Azure Cosmos DB und Azure App Service-Web-Apps mithilfe einer Vorlage des Azure Resource Managers
@@ -33,7 +33,7 @@ Nach Abschluss dieses Tutorials können Sie die folgenden Fragen beantworten:
 
 Vor dem Ausführen der Anweisungen in diesem Tutorial, müssen Sie sicherstellen, dass Sie über ein Azure-Abonnement verfügen. Azure ist eine abonnementbasierte Plattform.  Weitere Informationen zum Erwerb eines Abonnements finden Sie unter [Kaufoptionen](https://azure.microsoft.com/pricing/purchase-options/), [Spezielle Angebote](https://azure.microsoft.com/pricing/member-offers/) oder [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a id="CreateDB"></a>Schritt 1: Herunterladen der Vorlagendateien
+## <a name="step-1-download-the-template-files"></a><a id="CreateDB"></a>Schritt 1: Herunterladen der Vorlagendateien
 Als Erstes laden wir die Vorlagendateien herunter, die für dieses Tutorial erforderlich sind.
 
 1. Laden Sie die Vorlage für das [Beispiel zum Erstellen eines Azure Cosmos DB-Kontos, zum Erstellen von Web-Apps und zum Bereitstellen einer Demoanwendung](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json) in einen lokalen Ordner (beispielsweise „C:\Azure Cosmos DBTemplates“) herunter. Diese Vorlage stellt ein Azure Cosmos DB-Konto, eine App Service-Web-App und eine Webanwendung bereit.  Außerdem wird die Webanwendung automatisch so konfiguriert, dass sie eine Verbindung mit dem Azure Cosmos DB-Konto herstellt.

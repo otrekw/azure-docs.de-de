@@ -9,11 +9,11 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975294"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233326"
 ---
 # <a name="symmetric-key-attestation"></a>Nachweis des symmetrischen Schlüssels
 
@@ -46,9 +46,9 @@ SAS-Token weisen folgendes Format auf:
 
 Jedes Token enthält die folgenden Komponenten:
 
-| Wert | BESCHREIBUNG |
+| value | BESCHREIBUNG |
 | --- | --- |
-| {signature} |Eine HMAC-SHA256-Signaturzeichenfolge. Für individuelle Registrierungen wird diese Signatur erstellt, indem der symmetrische Schlüssel (primär oder sekundär) zum Ausführen des Hashvorgangs verwendet wird. Für Registrierungsgruppen wird ein aus dem Registrierungsgruppenschlüssel abgeleiteter Schlüssel zum Ausführen des Hashvorgangs verwendet. Der Hashvorgang wird für eine Nachricht im folgenden Format ausgeführt: `URL-encoded-resourceURI + "\n" + expiry`. **Wichtig**: Der Schlüssel muss aus Base64 decodiert werden, bevor er zum Ausführen der HMAC-SHA256-Berechnung verwendet wird. Zudem muss das Signaturergebnis URL-codiert sein. |
+| {signature} |Eine HMAC-SHA256-Signaturzeichenfolge. Für individuelle Registrierungen wird diese Signatur erstellt, indem der symmetrische Schlüssel (primär oder sekundär) zum Ausführen des Hashvorgangs verwendet wird. Für Registrierungsgruppen wird ein aus dem Registrierungsgruppenschlüssel abgeleiteter Schlüssel zum Ausführen des Hashvorgangs verwendet. Der Hashvorgang wird für eine Nachricht im folgenden Format ausgeführt: `URL-encoded-resourceURI + "\n" + expiry`. **Wichtig:** Der Schlüssel muss aus Base64 decodiert werden, bevor er zum Ausführen der HMAC-SHA256-Berechnung verwendet wird. Zudem muss das Signaturergebnis URL-codiert sein. |
 | {resourceURI} |Der URI des Registrierungsendpunkts, auf den mit diesem Token zugegriffen werden kann. Der URI beginnt mit der Bereichs-ID für die Device Provisioning Service-Instanz. Zum Beispiel, `{Scope ID}/registrations/{Registration ID}` |
 | {expiry} |UTF8-Zeichenfolge, dargestellt als die Anzahl von Sekunden seit dem 1. Januar 1970 um 00:00:00 UTC. |
 | {URL-encoded-resourceURI} |URL-Codierung des Ressourcen-URI (beides in Kleinbuchstaben) |

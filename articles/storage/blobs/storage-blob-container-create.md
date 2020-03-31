@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 70f905d15c69876ced56c25ec92f858bb15b7d36
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c95ed6dde3c00c0688ccfd58565fd112427c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372209"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79135937"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>Erstellen oder Löschen eines Containers in Azure Storage mit .NET
 
-Blobs in Azure Storage sind in Containern organisiert. Bevor Sie ein Blob hochladen können, müssen Sie zunächst einen Container erstellen. In diesem Artikel wird beschrieben, wie Container mit der [Azure Storage-Clientbibliothek für .NET](/dotnet/api/overview/azure/storage/client) erstellt und gelöscht werden.
+Blobs in Azure Storage sind in Containern organisiert. Bevor Sie ein Blob hochladen können, müssen Sie zunächst einen Container erstellen. In diesem Artikel wird beschrieben, wie Container mit der [Azure Storage-Clientbibliothek für .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet) erstellt und gelöscht werden.
 
 ## <a name="name-a-container"></a>Benennen eines Containers
 

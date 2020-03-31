@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: d02d8f717801bf51e43c9dafa5eb9379d0737674
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75464135"
 ---
 # <a name="view-service-fabric-health-reports"></a>Anzeigen von Service Fabric-Integritätsberichten
@@ -1021,27 +1021,27 @@ Wenn allgemeine Abfragen einen unbekannten Integritätsstatus für eine Entität
 
 Die Abfragen, die **HealthState** für Entitäten enthalten, lauten:
 
-* Node list: Gibt die (auf Seiten aufgeteilte) Liste mit den Knoten im Cluster zurück.
+* Knotenliste: Gibt die (auf Seiten aufgeteilte) Liste mit den Knoten im Cluster zurück.
   * API: [FabricClient.QueryClient.GetNodeListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getnodelistasync)
-  * Mit PowerShell: Get-ServiceFabricNode
-* Application list: Gibt die (auf Seiten aufgeteilte) Liste mit den Anwendungen im Cluster zurück.
+  * PowerShell: Get-ServiceFabricNode
+* Anwendungsliste: Gibt die (auf Seiten aufgeteilte) Liste mit den Anwendungen im Cluster zurück.
   * API: [FabricClient.QueryClient.GetApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationlistasync)
-  * Mit PowerShell: Get-ServiceFabricApplication
-* Service list: Gibt die (auf Seiten aufgeteilte) Liste mit den Diensten einer Anwendung zurück.
+  * PowerShell: Get-ServiceFabricApplication
+* Dienstliste: Gibt die (auf Seiten aufgeteilte) Liste mit den Diensten einer Anwendung zurück.
   * API: [FabricClient.QueryClient.GetServiceListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getservicelistasync)
-  * Mit PowerShell: Get-ServiceFabricService
-* Partition list: Gibt die (auf Seiten aufgeteilte) Liste mit den Partitionen eines Diensts zurück.
+  * PowerShell: Get-ServiceFabricService
+* Partitionsliste: Gibt die (auf Seiten aufgeteilte) Liste mit den Partitionen eines Diensts zurück.
   * API: [FabricClient.QueryClient.GetPartitionListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getpartitionlistasync)
-  * Mit PowerShell: Get-ServiceFabricPartition
-* Replica list: Gibt die (auf Seiten aufgeteilte) Liste mit den Replikaten in einer Partition zurück.
+  * PowerShell: Get-ServiceFabricPartition
+* Replikatliste: Gibt die (auf Seiten aufgeteilte) Liste mit den Replikaten in einer Partition zurück.
   * API: [FabricClient.QueryClient.GetReplicaListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getreplicalistasync)
-  * Mit PowerShell: Get-ServiceFabricReplica
-* Deployed application list: Gibt die Liste mit den bereitgestellten Anwendungen eines Knotens zurück.
+  * PowerShell: Get-ServiceFabricReplica
+* Liste bereitgestellter Anwendungen: Gibt die Liste mit den bereitgestellten Anwendungen eines Knotens zurück.
   * API: [FabricClient.QueryClient.GetDeployedApplicationListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedapplicationlistasync)
-  * Mit PowerShell: Get-ServiceFabricDeployedApplication
-* Deployed service package list: Gibt die Liste mit den Dienstpaketen einer bereitgestellten Anwendung zurück.
+  * PowerShell: Get-ServiceFabricDeployedApplication
+* Liste bereitgestellter Dienstpakete: Gibt die Liste mit den Dienstpaketen einer bereitgestellten Anwendung zurück.
   * API: [FabricClient.QueryClient.GetDeployedServicePackageListAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.queryclient.getdeployedservicepackagelistasync)
-  * Mit PowerShell: Get-ServiceFabricDeployedApplication
+  * PowerShell: Get-ServiceFabricDeployedApplication
 
 > [!NOTE]
 > Einige Abfragen geben unter Umständen auf Seiten aufgeteilte Ergebnisse zurück. Die Rückgabe dieser Abfragen ist eine von [PagedList\<T>](https://docs.microsoft.com/dotnet/api/system.fabric.query.pagedlist-1) abgeleitete Liste. Falls die Ergebnisse nicht in eine Nachricht passen, wird nur eine Seite zurückgegeben, und mit einem ContinuationToken (Fortsetzungstoken) wird nachverfolgt, wo die Enumeration beendet wurde. Wiederholen Sie die gleiche Abfrage, und übergeben Sie dabei das Fortsetzungstoken aus der vorherigen Abfrage, um weitere Ergebnisse zu erhalten.

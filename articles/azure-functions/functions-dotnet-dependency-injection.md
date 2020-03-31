@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: df2acedd7f472b96d55d9ecc294d47e7173c5f90
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: f8f1eb353087c5121eaafb4c8789e7a2f7638b99
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78329015"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475120"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Verwenden der Abhängigkeitsinjektion in Azure Functions (.NET)
 
@@ -85,6 +85,7 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using System.Net.Http;
 
 namespace MyNamespace
 {
@@ -93,10 +94,10 @@ namespace MyNamespace
         private readonly IMyService _service;
         private readonly HttpClient _client;
 
-        public HttpTrigger(IMyService service, IHttpClientFactory httpClientFactory)
+        public HttpTrigger(IMyService service, HttpClient httpClient)
         {
             _service = service;
-            _client = httpClientFactory.CreateClient();
+            _client = httpClient;
         }
 
         [FunctionName("GetPosts")]
@@ -182,7 +183,7 @@ Und eine Datei vom Typ `host.json` zum Hinzufügen des Protokollfilters:
 
 Der Funktionshost registriert viele Dienste. Es ist sicher, die folgenden Dienste als Abhängigkeit in Ihrer Anwendung zu verwenden:
 
-|Diensttyp|Gültigkeitsdauer|Beschreibung|
+|Diensttyp|Gültigkeitsdauer|BESCHREIBUNG|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Singleton|Laufzeitkonfiguration|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Singleton|Verantwortlich für die Bereitstellung der Hostinstanz-ID|

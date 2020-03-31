@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: e1b513344b6ea16c25d829939e64cd5ca1063c87
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c9bf1cf0564655c932e066e5b74225382375e9c2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838887"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235419"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Virtuelle Computer in einer Azure Resource Manager-Vorlage
 
@@ -155,7 +155,7 @@ Dieses Beispiel zeigt einen typischen Ressourcenabschnitt einer Vorlage zum Erst
 
 Beim Bereitstellen von Ressourcen mit einer Vorlage müssen Sie eine Version der API angeben, die verwendet werden soll. Im Beispiel wird veranschaulicht, wie die Ressource des virtuellen Computers dieses apiVersion-Element verwendet:
 
-```
+```json
 "apiVersion": "2016-04-30-preview",
 ```
 
@@ -172,7 +172,7 @@ Verwenden Sie diese Optionen zum Abrufen der aktuellen API-Versionen:
 
 [Parameter](../../resource-group-authoring-templates.md) erleichtern Ihnen das Angeben von Werten für die Vorlage, wenn Sie sie ausführen. Dieser Parameterabschnitt wird im Beispiel verwendet:
 
-```        
+```json
 "parameters": {
   "adminUsername": { "type": "string" },
   "adminPassword": { "type": "securestring" },
@@ -184,7 +184,7 @@ Beim Bereitstellen der Beispielvorlage geben Sie Werte für den Namen und das Ke
 
 [Variablen](../../resource-group-authoring-templates.md) erleichtern Ihnen das Einrichten von Werten in der Vorlage, die darin wiederholt verwendet werden oder die sich im Laufe der Zeit ändern können. Dieser Variablenabschnitt wird im Beispiel verwendet:
 
-```
+```json
 "variables": { 
   "storageName": "mystore1",
   "accountid": "[concat('/subscriptions/', subscription().subscriptionId, 
@@ -221,7 +221,7 @@ Beim Bereitstellen der Beispielvorlage werden für den Namen und Bezeichner des 
 
 Wenn Sie mehr als einen virtuellen Computer für Ihre Anwendung benötigen, können Sie in einer Vorlage ein copy-Element verwenden. Mit diesem optionalen Element wird die Erstellung der Anzahl von VMs, die Sie als Parameter angegeben haben, als Schleife durchlaufen:
 
-```
+```json
 "copy": {
   "name": "virtualMachineLoop", 
   "count": "[parameters('numberOfInstances')]"
@@ -230,7 +230,7 @@ Wenn Sie mehr als einen virtuellen Computer für Ihre Anwendung benötigen, kön
 
 Achten Sie im Beispiel auch darauf, dass der Schleifenindex verwendet wird, wenn einige Werte für die Ressource angegeben werden. Wenn Sie beispielsweise eine Instanzanzahl von 3 angegeben haben, lauten die Namen der Betriebssystem-Datenträger myOSDisk1, myOSDisk2 und myOSDisk3:
 
-```
+```json
 "osDisk": { 
   "name": "[concat('myOSDisk', copyindex())]",
   "caching": "ReadWrite", 
@@ -245,7 +245,7 @@ Achten Sie im Beispiel auch darauf, dass der Schleifenindex verwendet wird, wenn
 
 Beachten Sie, dass die Erstellung einer Schleife für eine Ressource in der Vorlage bedeuten kann, dass Sie die Schleife auch verwenden müssen, wenn Sie andere Ressourcen erstellen oder darauf zugreifen. Für mehrere VMs kann beispielsweise nicht dieselbe Netzwerkschnittstelle verwendet werden. Wenn Ihre Vorlage also eine Schleife zur Erstellung von drei VMs durchläuft, muss auch eine Schleife zum Erstellen von drei Netzwerkschnittstellen durchlaufen werden. Beim Zuweisen einer Netzwerkschnittstelle zu einer VM wird der Schleifenindex für die Identifizierung genutzt:
 
-```
+```json
 "networkInterfaces": [ { 
   "id": "[resourceId('Microsoft.Network/networkInterfaces',
     concat('myNIC', copyindex()))]" 
@@ -256,7 +256,7 @@ Beachten Sie, dass die Erstellung einer Schleife für eine Ressource in der Vorl
 
 Um richtig funktionieren zu können, sind die meisten Ressourcen von anderen Ressourcen abhängig. Virtuelle Computer müssen einem virtuellen Netzwerk zugeordnet werden, und hierfür wird eine Netzwerkschnittstelle benötigt. Mit dem [dependsOn](../../resource-group-define-dependencies.md)-Element wird sichergestellt, dass die Netzwerkschnittstelle für die Verwendung bereit ist, bevor die VMs erstellt werden:
 
-```
+```json
 "dependsOn": [
   "[concat('Microsoft.Network/networkInterfaces/', 'myNIC', copyindex())]" 
 ],
@@ -266,7 +266,7 @@ Von Resource Manager werden alle Ressourcen, die nicht von der Bereitstellung ei
 
 Woran ist erkennbar, dass eine Abhängigkeit erforderlich ist? Sehen Sie sich die Werte an, die Sie in der Vorlage festlegen. Wenn ein Element in der Definition der VM-Ressource auf eine andere Ressource zeigt, die in derselben Vorlage bereitgestellt wird, benötigen Sie eine Abhängigkeit. Für den virtuellen Computer im Beispiel wird beispielsweise ein Netzwerkprofil definiert:
 
-```
+```json
 "networkProfile": { 
   "networkInterfaces": [ { 
     "id": "[resourceId('Microsoft.Network/networkInterfaces',
@@ -281,7 +281,7 @@ Zum Festlegen dieser Eigenschaft muss die Netzwerkschnittstelle vorhanden sein. 
 
 Beim Definieren einer VM-Ressource werden mehrere Profilelemente verwendet. Einige sind erforderlich, und einige sind optional. Die Elemente „hardwareProfile“, „osProfile“, „storageProfile“ und „networkProfile“ sind erforderlich, aber „diagnosticsProfile“ ist optional. Mit diesen Profilen werden beispielsweise folgende Einstellungen definiert:
    
-- [Größe](sizes.md)
+- [size](sizes.md)
 - [Name](/azure/architecture/best-practices/resource-naming) und Anmeldeinformationen
 - Datenträger- und [Betriebssystemeinstellungen](cli-ps-findimage.md)
 - [Netzwerkschnittstelle](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
@@ -295,7 +295,7 @@ In Azure können VHD-Dateien für [Datenträger oder Images](managed-disks-overv
 
 Beim Erstellen einer VM müssen Sie entscheiden, welches Betriebssystem verwendet werden soll. Das imageReference-Element wird verwendet, um das Betriebssystem einer neuen VM zu definieren. Das Beispiel zeigt eine Definition für ein Windows Server-Betriebssystem:
 
-```
+```json
 "imageReference": { 
   "publisher": "MicrosoftWindowsServer", 
   "offer": "WindowsServer", 
@@ -306,7 +306,7 @@ Beim Erstellen einer VM müssen Sie entscheiden, welches Betriebssystem verwende
 
 Sie können diese Definition verwenden, wenn Sie ein Linux-Betriebssystem erstellen möchten:
 
-```
+```json
 "imageReference": {
   "publisher": "Canonical",
   "offer": "UbuntuServer",
@@ -317,7 +317,7 @@ Sie können diese Definition verwenden, wenn Sie ein Linux-Betriebssystem erstel
 
 Konfigurationseinstellungen für den Betriebssystem-Datenträger werden mit dem osDisk-Element zugewiesen. Das Beispiel definiert einen neuen verwalteten Datenträger mit dem Zwischenspeicherungsmodus **ReadWrite** und der Einstellung, dass der Datenträger aus einem [Plattformimage](cli-ps-findimage.md) erstellt wird:
 
-```
+```json
 "osDisk": { 
   "name": "[concat('myOSDisk', copyindex())]",
   "caching": "ReadWrite", 
@@ -329,7 +329,7 @@ Konfigurationseinstellungen für den Betriebssystem-Datenträger werden mit dem 
 
 Entfernen Sie zum Erstellen von virtuellen Computern von vorhandenen Datenträgern die Elemente „imageReference“ und „osProfile“, und definieren Sie diese Datenträgereinstellungen:
 
-```
+```json
 "osDisk": { 
   "osType": "Windows",
   "managedDisk": { 
@@ -344,7 +344,7 @@ Entfernen Sie zum Erstellen von virtuellen Computern von vorhandenen Datenträge
 
 Ändern Sie zum Erstellen eines virtuellen Computers aus einem verwalteten Image das imageReference-Element, und definieren Sie diese Datenträgereinstellungen:
 
-```
+```json
 "storageProfile": { 
   "imageReference": {
     "id": "[resourceId('Microsoft.Compute/images', 'myImage')]"
@@ -362,7 +362,7 @@ Entfernen Sie zum Erstellen von virtuellen Computern von vorhandenen Datenträge
 
 Optional können Sie den VMs Datenträger für Daten hinzufügen. Die [Anzahl von Datenträgern](sizes.md) richtet sich nach der Größe des von Ihnen genutzten Betriebssystemdatenträgers. Wenn die Größe der VMs auf „Standard_DS1_v2“ festgelegt ist, können ihnen maximal zwei Datenträger für Daten hinzugefügt werden. Im Beispiel wird jeder VM ein verwalteter Datenträger für Daten hinzugefügt:
 
-```
+```json
 "dataDisks": [
   {
     "name": "[concat('myDataDisk', copyindex())]",
@@ -378,7 +378,7 @@ Optional können Sie den VMs Datenträger für Daten hinzufügen. Die [Anzahl vo
 
 [Erweiterungen](extensions-features.md) sind zwar eine separate Ressource, aber sie sind eng an virtuelle Computer gebunden. Erweiterungen können als untergeordnete Ressource der VM oder als separate Ressource hinzugefügt werden. Im Beispiel ist zu sehen, wie die [Diagnoseerweiterung](extensions-diagnostics-template.md) den VMs hinzugefügt wird:
 
-```
+```json
 { 
   "name": "Microsoft.Insights.VMDiagnosticsSettings", 
   "type": "extensions", 
@@ -413,7 +413,7 @@ Für diese Erweiterungsressource werden die storageName-Variable und die Diagnos
 
 Es gibt viele Erweiterungen, die Sie auf einer VM installieren können, aber am nützlichsten ist wahrscheinlich die [Benutzerdefinierte Skripterweiterung](extensions-customscript.md). Im Beispiel wird auf jeder VM nach dem ersten Starten ein PowerShell-Skript mit dem Namen „start.ps1“ ausgeführt:
 
-```
+```json
 {
   "name": "MyCustomScriptExtension",
   "type": "extensions",

@@ -1,23 +1,22 @@
 ---
 title: Ausfüllen des Formulars „Storefrontdetails“
 description: 'Als veraltet markiert und mit entsprechenden PC-Artikeln verknüpft. Bisher: „Erläutert die Werte für das Formular „Storefrontdetails“ für eine neue Dynamics 365 Business Central-App.“'
-services: Azure, Marketplace, Cloud Partner Portal,
-author: ChJenk
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.author: pabutler
-ms.openlocfilehash: 819f952eae42235ea4fcd5508d5aee341e446b11
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 51aea17247ed36c465086b5f5b1132ab1cd56922
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820011"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80276035"
 ---
 # <a name="how-to-fill-out-the-storefront-details-form"></a>Ausfüllen des Formulars „Storefrontdetails“
 
-Das [Cloud-Partnerportal](https://cloudpartner.azure.com/) unterstützt die Erstellung und Verwaltung von Angeboten für Dynamics 365 Business Central nicht mehr. Stattdessen wurde diese Funktionalität zum [Microsoft Partner Center-Portal](https://partner.microsoft.com/) migriert. Weitere Informationen finden Sie unter [Erstellen eines neuen Angebots für Dynamics 365 Business Central](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer).
+Die Erstellung und Verwaltung von Angeboten für Dynamics 365 Business Central wird vom [Cloud-Partnerportal](https://cloudpartner.azure.com/) nicht mehr unterstützt. Stattdessen wurde diese Funktionalität zum [Microsoft Partner Center-Portal](https://partner.microsoft.com/) migriert. Weitere Informationen finden Sie unter [Erstellen eines neuen Angebots für Dynamics 365 Business Central](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

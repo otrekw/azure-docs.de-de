@@ -12,11 +12,11 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 6640ab1660e6499a97a8c990a0001d5fbae4e997
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183991"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231134"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webanmeldungen mit OpenID Connect in Azure Active Directory B2C
 
@@ -237,7 +237,7 @@ Eine erfolgreiche Token-Antwort sieht wie folgt aus:
 }
 ```
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --------- | ----------- |
 | not_before | Der Zeitpunkt in Epochenzeit, ab dem das Token gültig ist. |
 | token_type | Der Wert des Tokentyps. `Bearer` ist der einzige Typ, der unterstützt wird. |
@@ -270,7 +270,7 @@ Um den Benutzer abzumelden, leiten Sie ihn an den `end_session`-Endpunkt um, der
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Fjwt.ms%2F
 ```
 
-| Parameter | Erforderlich | Beschreibung |
+| Parameter | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | {tenant} | Ja | Name des Azure AD B2C-Mandanten. |
 | {policy} | Ja | Der Benutzerflow, den Sie zum Abmelden des Benutzers von der Anwendung verwenden möchten. |

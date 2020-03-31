@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 3ba620d66b84e6724751b2024059e8ecd66888cd
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902500"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231666"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management-Richtlinien für die Zugriffsbeschränkung
 
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
 
-## <a name="AccessRestrictionPolicies"></a> Richtlinien für die Zugriffsbeschränkung
+## <a name="access-restriction-policies"></a><a name="AccessRestrictionPolicies"></a> Richtlinien für die Zugriffsbeschränkung
 
 -   [HTTP-Header überprüfen](api-management-access-restriction-policies.md#CheckHTTPHeader) – Erfordert das Vorhandensein und/oder einen Wert eines HTTP-Headers.
 -   [Limit call rate (Aufrufrate begrenzen)](api-management-access-restriction-policies.md#LimitCallRate) – verhindert API-Lastspitzen, indem die Aufrufrate jeweils pro Abonnement beschränkt wird.
@@ -37,7 +37,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 > [!TIP]
 > Sie können Richtlinien für die Zugriffsbeschränkung in verschiedenen Bereichen zu unterschiedlichen Zwecken verwenden. Beispielsweise können Sie die gesamte API mit AAD-Authentifizierung sichern, indem Sie die `validate-jwt`-Richtlinie auf API-Ebene anwenden, oder Sie können sie auf der Ebene der API-Vorgänge anwenden und `claims` für eine präzisere Steuerung verwenden.
 
-## <a name="CheckHTTPHeader"></a> HTTP-Header überprüfen
+## <a name="check-http-header"></a><a name="CheckHTTPHeader"></a> HTTP-Header überprüfen
 
 Verwenden Sie die `check-header`-Richtlinie, um zu erzwingen, dass eine Anforderung einen angegebenen HTTP-Header enthält. Sie können optional überprüfen, ob der Header einen bestimmten Wert aufweist, oder einen Bereich zulässiger Werte überprüfen. Wenn die Überprüfung nicht erfolgreich abgeschlossen wird, beendet die Richtlinie die Verarbeitung und gibt den von der Richtlinie festgelegten HTTP-Statuscode und die zugehörige Fehlermeldung zurück.
 
@@ -60,14 +60,14 @@ Verwenden Sie die `check-header`-Richtlinie, um zu erzwingen, dass eine Anforder
 
 ### <a name="elements"></a>Elemente
 
-| Name         | Beschreibung                                                                                                                                   | Erforderlich |
+| Name         | BESCHREIBUNG                                                                                                                                   | Erforderlich |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | check-header | Stammelement                                                                                                                                 | Ja      |
 | value        | Zulässiger HTTP-Headerwert. Wenn mehrere Wertelemente angegeben sind, wird die Überprüfung als erfolgreich gewertet, wenn für einen beliebigen dieser Werte eine Übereinstimmung vorhanden ist. | Nein       |
 
 ### <a name="attributes"></a>Attributes
 
-| Name                       | Beschreibung                                                                                                                                                            | Erforderlich | Standard |
+| Name                       | BESCHREIBUNG                                                                                                                                                            | Erforderlich | Standard |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | failed-check-error-message | Die Fehlermeldung, die im HTTP-Antworttext zurückgegeben wird, wenn der Header nicht vorhanden ist oder einen ungültigen Wert aufweist. In dieser Meldung müssen alle Sonderzeichen ordnungsgemäß mit Escapezeichen versehen sein. | Ja      | –     |
 | failed-check-httpcode      | Der HTTP-Statuscode, der zurückgeben werden wird, wenn der Header nicht vorhanden ist oder einen ungültigen Wert aufweist.                                                                                        | Ja      | –     |
@@ -82,7 +82,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-## <a name="LimitCallRate"></a> Aufrufrate nach Abonnement begrenzen
+## <a name="limit-call-rate-by-subscription"></a><a name="LimitCallRate"></a> Aufrufrate nach Abonnement begrenzen
 
 Die `rate-limit`-Richtlinie verhindert API-Nutzungsspitzen auf Abonnementbasis, indem sie die Aufrufrate auf eine angegebene Anzahl pro angegebenem Zeitraum begrenzt. Wenn diese Richtlinie ausgelöst wird, empfängt der Aufrufer einen `429 Too Many Requests`-Antwortstatuscode.
 
@@ -120,7 +120,7 @@ Die `rate-limit`-Richtlinie verhindert API-Nutzungsspitzen auf Abonnementbasis, 
 
 ### <a name="elements"></a>Elemente
 
-| Name       | Beschreibung                                                                                                                                                                                                                                                                                              | Erforderlich |
+| Name       | BESCHREIBUNG                                                                                                                                                                                                                                                                                              | Erforderlich |
 | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | rate-limit | Stammelement                                                                                                                                                                                                                                                                                            | Ja      |
 | api        | Fügen Sie mindestens eins dieser Elemente hinzu, um eine Aufrufratenbegrenzung für APIs innerhalb des Produkts zu erzwingen. Produkt- und API-Aufrufratenbegrenzungen werden unabhängig voneinander angewendet. Auf „api“ kann über `name` oder `id` verwiesen werden. Wenn beide Attribute bereitgestellt werden, wird `id` verwendet und `name` ignoriert.                    | Nein       |
@@ -128,7 +128,7 @@ Die `rate-limit`-Richtlinie verhindert API-Nutzungsspitzen auf Abonnementbasis, 
 
 ### <a name="attributes"></a>Attributes
 
-| Name           | Beschreibung                                                                                           | Erforderlich | Standard |
+| Name           | BESCHREIBUNG                                                                                           | Erforderlich | Standard |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | name           | Der Name der API, auf die die Ratenbegrenzung angewendet werden soll.                                                | Ja      | –     |
 | calls          | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Ja      | –     |
@@ -142,7 +142,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 
 -   **Richtlinienbereiche:** Produkt, API, Vorgang
 
-## <a name="LimitCallRateByKey"></a> Aufrufrate nach Schlüssel begrenzen
+## <a name="limit-call-rate-by-key"></a><a name="LimitCallRateByKey"></a> Aufrufrate nach Schlüssel begrenzen
 
 > [!IMPORTANT]
 > Diese Funktion ist auf der Ebene **Verbrauch** von API Management nicht verfügbar.
@@ -185,13 +185,13 @@ Im folgenden Beispiel wird die Ratenbegrenzung anhand der IP-Adresse des Aufrufe
 
 ### <a name="elements"></a>Elemente
 
-| Name              | Beschreibung   | Erforderlich |
+| Name              | BESCHREIBUNG   | Erforderlich |
 | ----------------- | ------------- | -------- |
 | rate-limit-by-key | Stammelement | Ja      |
 
 ### <a name="attributes"></a>Attributes
 
-| Name                | Beschreibung                                                                                           | Erforderlich | Standard |
+| Name                | BESCHREIBUNG                                                                                           | Erforderlich | Standard |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | calls               | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Ja      | –     |
 | counter-key         | Der Schlüssel, der für die Ratenbegrenzungsrichtlinie verwendet werden soll.                                                             | Ja      | –     |
@@ -206,7 +206,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 
 -   **Richtlinienbereiche:** alle Bereiche
 
-## <a name="RestrictCallerIPs"></a> Aufrufer-IPs beschränken
+## <a name="restrict-caller-ips"></a><a name="RestrictCallerIPs"></a> Aufrufer-IPs beschränken
 
 Die `ip-filter`-Richtlinie filtert (erlaubt/blockiert) Aufrufe von bestimmten IP-Adressen und/oder Adressbereichen.
 
@@ -232,7 +232,7 @@ Im folgenden Beispiel lässt die Richtlinie nur Anfragen zu, die entweder von de
 
 ### <a name="elements"></a>Elemente
 
-| Name                                      | Beschreibung                                         | Erforderlich                                                       |
+| Name                                      | BESCHREIBUNG                                         | Erforderlich                                                       |
 | ----------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------- |
 | ip-filter                                 | Stammelement                                       | Ja                                                            |
 | address                                   | Gibt eine einzelne IP-Adresse an, nach der gefiltert werden soll.   | Mindestens ein `address`- oder `address-range`-Element ist erforderlich. |
@@ -240,7 +240,7 @@ Im folgenden Beispiel lässt die Richtlinie nur Anfragen zu, die entweder von de
 
 ### <a name="attributes"></a>Attributes
 
-| Name                                      | Beschreibung                                                                                 | Erforderlich                                           | Standard |
+| Name                                      | BESCHREIBUNG                                                                                 | Erforderlich                                           | Standard |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
 | address-range from="Adresse" to="Adresse" | Ein IP-Adressbereich, für den diese Richtlinie gelten soll.                                        | Erforderlich, wenn das `address-range`-Element verwendet wird. | –     |
 | ip-filter action="allow &#124; forbid"    | Gibt an, ob Aufrufe für die angegebenen IP-Adressen oder -Adressbereiche erlaubt oder blockiert werden sollen. | Ja                                                | –     |
@@ -252,7 +252,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 -   **Richtlinienabschnitte**: inbound
 -   **Richtlinienbereiche:** alle Bereiche
 
-## <a name="SetUsageQuota"></a> Nutzungskontingent nach Abonnement festlegen
+## <a name="set-usage-quota-by-subscription"></a><a name="SetUsageQuota"></a> Nutzungskontingent nach Abonnement festlegen
 
 Die `quota`-Richtlinie erzwingt ein erneuerbares oder für die Lebensdauer gültiges Aufruf- und/oder Bandbreitenkontingent pro Abonnement.
 
@@ -287,7 +287,7 @@ Die `quota`-Richtlinie erzwingt ein erneuerbares oder für die Lebensdauer gült
 
 ### <a name="elements"></a>Elemente
 
-| Name      | Beschreibung                                                                                                                                                                                                                                                                                  | Erforderlich |
+| Name      | BESCHREIBUNG                                                                                                                                                                                                                                                                                  | Erforderlich |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | quota     | Stammelement                                                                                                                                                                                                                                                                                | Ja      |
 | api       | Fügen Sie mindestens eines dieser Elemente hinzu, um ein Aufrufkontingent für APIs innerhalb des Produkts zu erzwingen. Produkt- und API-Aufrufkontingente werden unabhängig voneinander angewendet. Auf „api“ kann über `name` oder `id` verwiesen werden. Wenn beide Attribute bereitgestellt werden, wird `id` verwendet und `name` ignoriert.                    | Nein       |
@@ -295,7 +295,7 @@ Die `quota`-Richtlinie erzwingt ein erneuerbares oder für die Lebensdauer gült
 
 ### <a name="attributes"></a>Attributes
 
-| Name           | Beschreibung                                                                                               | Erforderlich                                                         | Standard |
+| Name           | BESCHREIBUNG                                                                                               | Erforderlich                                                         | Standard |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | name           | Der Name der API oder des Vorgangs, für die bzw. den das Kontingent gilt.                                             | Ja                                                              | –     |
 | bandwidth      | Die maximale Gesamtanzahl von Kilobytes, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden. | –     |
@@ -309,7 +309,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 -   **Richtlinienabschnitte**: inbound
 -   **Richtlinienbereiche**: Produkt
 
-## <a name="SetUsageQuotaByKey"></a> Nutzungskontingent nach Schlüssel festlegen
+## <a name="set-usage-quota-by-key"></a><a name="SetUsageQuotaByKey"></a> Nutzungskontingent nach Schlüssel festlegen
 
 > [!IMPORTANT]
 > Diese Funktion ist auf der Ebene **Verbrauch** von API Management nicht verfügbar.
@@ -349,13 +349,13 @@ Im folgenden Beispiel wird das Kontingent anhand der IP-Adresse des Aufrufers be
 
 ### <a name="elements"></a>Elemente
 
-| Name  | Beschreibung   | Erforderlich |
+| Name  | BESCHREIBUNG   | Erforderlich |
 | ----- | ------------- | -------- |
 | quota | Stammelement | Ja      |
 
 ### <a name="attributes"></a>Attributes
 
-| Name                | Beschreibung                                                                                               | Erforderlich                                                         | Standard |
+| Name                | BESCHREIBUNG                                                                                               | Erforderlich                                                         | Standard |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | bandwidth           | Die maximale Gesamtanzahl von Kilobytes, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind. | Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden. | –     |
 | calls               | Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind.     | Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden. | –     |
@@ -370,7 +370,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 -   **Richtlinienabschnitte**: inbound
 -   **Richtlinienbereiche:** alle Bereiche
 
-## <a name="ValidateJWT"></a> JWT überprüfen
+## <a name="validate-jwt"></a><a name="ValidateJWT"></a> JWT überprüfen
 
 Die `validate-jwt`-Richtlinie erzwingt das Vorhandensein und die Gültigkeit eines JWT (Java Web Token), das entweder aus einem angegebenen HTTP-Header oder aus einem angegebenen Abfrageparameter extrahiert wurde.
 
@@ -503,7 +503,7 @@ Dieses Beispiel zeigt die Verwendung der Richtlinie [JWT überprüfen](api-manag
 
 ### <a name="elements"></a>Elemente
 
-| Element             | Beschreibung                                                                                                                                                                                                                                                                                                                                           | Erforderlich |
+| Element             | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                           | Erforderlich |
 | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | validate-jwt        | Stammelement                                                                                                                                                                                                                                                                                                                                         | Ja      |
 | audiences           | Enthält eine Liste der zulässigen audience-Ansprüche, die im Token vorhanden sein können. Wenn mehrere audience-Werte vorhanden sind, wird jeder Wert ausprobiert, bis entweder alle verbraucht sind (in diesem Fall gibt es einen Überprüfungsfehler) oder ein Wert erfolgreich ist. Mindestens ein audience-Wert muss angegeben werden.                                                                     | Nein       |
@@ -515,7 +515,7 @@ Dieses Beispiel zeigt die Verwendung der Richtlinie [JWT überprüfen](api-manag
 
 ### <a name="attributes"></a>Attributes
 
-| Name                            | Beschreibung                                                                                                                                                                                                                                                                                                                                                                                                                                            | Erforderlich                                                                         | Standard                                                                           |
+| Name                            | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                                                                            | Erforderlich                                                                         | Standard                                                                           |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | clock-skew                      | Zeitspanne. Verwenden Sie diese Option, um die maximal erwartete Zeitdifferenz zwischen den Systemuhren des Tokenausstellers und der API Management-Instanz anzugeben.                                                                                                                                                                                                                                                                                                               | Nein                                                                               | 0 Sekunden                                                                         |
 | failed-validation-error-message | Die Fehlermeldung, die im HTTP-Antworttext zurückgegeben werden soll, wenn das JWT die Überprüfung nicht besteht. In dieser Meldung müssen alle Sonderzeichen ordnungsgemäß mit Escapezeichen versehen sein.                                                                                                                                                                                                                                                                                                 | Nein                                                                               | Die Standardfehlermeldung hängt vom Überprüfungsproblem ab, z.B. „JWT nicht vorhanden“. |

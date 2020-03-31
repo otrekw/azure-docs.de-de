@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: f443f0362ecad8448895322686a7175b2813141e
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 25be48e9caed446be3a86a11143ce3040808065a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084614"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294296"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von physischen Servern
 
@@ -39,7 +39,7 @@ In der Tabelle werden die erforderlichen Komponenten für die Bereitstellung des
 | IIS | - Keine bereits vorhandene Standardwebsite <br> - Aktivieren der [anonymen Authentifizierung](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> - Aktivieren der Einstellung [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)  <br> - Keine bereits vorhandene Website/Anwendung sollte an Port 443 lauschen<br>|
 | NIC-Typ | VMXNET3 (bei Bereitstellung als VMware-VM) |
 | Art der IP-Adresse | statischen |
-| Zugriff auf das Internet | Der Server benötigt Zugriff auf diese URLs: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> - *.services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (für horizontal skalierte Prozessserver nicht erforderlich) <br> - time.nist.gov <br> - time.windows.com |
+| Zugriff auf das Internet | Der Server benötigt Zugriff auf diese URLs: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - `https://management.azure.com` <br> - *.services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (für horizontal skalierte Prozessserver nicht erforderlich) <br> - time.nist.gov <br> - time.windows.com |
 | Ports | 443 (Steuerkanalorchestrierung)<br>9443 (Datentransport)|
 
 ## <a name="download-the-latest-installation-file"></a>Herunterladen der aktuellen Installationsdatei
@@ -178,7 +178,7 @@ Sie können Proxyeinstellungen für den Konfigurationsservercomputer wie folgt �
       ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
 5. Geben Sie die Details des Proxyservers an, und klicken Sie auf die Schaltfläche **Registrieren**.  
 6. Öffnen Sie ein PowerShell-Befehlsfenster mit Administratorrechten.
-7. Führen Sie den folgenden Befehl aus
+7. Führen Sie den folgenden Befehl aus.
 
     ```powershell
     $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
@@ -207,7 +207,7 @@ Sie können Proxyeinstellungen für den Konfigurationsservercomputer wie folgt �
 5. Laden Sie eine neue Registrierungsdatei aus dem Portal herunter, und geben Sie sie als Eingabe für das Tool an.
 6. Geben Sie die Details des Proxyservers an, und klicken Sie auf die Schaltfläche **Registrieren**.  
 7. Öffnen Sie ein PowerShell-Befehlsfenster mit Administratorrechten.
-8. Führen Sie den folgenden Befehl aus
+8. Führen Sie den folgenden Befehl aus.
     ```powershell
     $pwd = ConvertTo-SecureString -String MyProxyUserPassword
     Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $pwd

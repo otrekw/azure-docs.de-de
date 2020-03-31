@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: ea63b0784c0f8680e544179dfcd927f59336b3ec
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: adcd4d9e81eecad9540a4ef1be5e675f940ffb8d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467140"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79367991"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-hdinsight"></a>Visualisieren von Interactive Query Apache Hive-Daten mit Microsoft Power BI mithilfe direkter Abfragen in HDInsight
 
@@ -26,7 +26,7 @@ Sie können den [Apache Hive-ODBC-Treiber](../hadoop/apache-hadoop-connect-hive-
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie diesen Artikel durchgehen können, benötigen Sie Folgendes:
 
-* **HDInsight-Cluster**. Bei dem Cluster kann es sich entweder um einen HDInsight-Cluster mit Apache Hive oder um einen neu veröffentlichten Interactive Query-Cluster handeln. Informationen zum Erstellen von Clustern finden Sie unter [Cluster erstellen](../hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+* **HDInsight-Cluster**. Bei dem Cluster kann es sich entweder um einen HDInsight-Cluster mit Apache Hive oder um einen neu veröffentlichten Interactive Query-Cluster handeln. Informationen zum Erstellen von Clustern finden Sie unter [Cluster erstellen](../hadoop/apache-hadoop-linux-tutorial-get-started.md).
 * **[Microsoft Power BI Desktop](https://powerbi.microsoft.com/desktop/)** . Sie können eine Kopie aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45331) herunterladen.
 
 ## <a name="load-data-from-hdinsight"></a>Laden von Daten aus HDInsight
@@ -47,7 +47,7 @@ Die Hive-Tabelle `hivesampletable` ist in allen HDInsight-Clustern enthalten.
 
 6. Geben Sie im Fenster **HDInsight Interactive Query** die folgenden Informationen ein, und wählen Sie dann **OK** aus:
 
-    |Eigenschaft | Wert |
+    |Eigenschaft | value |
     |---|---|
     |Server |Geben Sie den Namen des Clusters ein, z.B. *myiqcluster.azurehdinsight.net*.|
     |Datenbank |Geben Sie für diesen Artikel **Standard** ein.|

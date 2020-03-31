@@ -9,10 +9,10 @@ ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.openlocfilehash: 460079248e6cbd939c36b84f94cac41dce4dda2b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73747667"
 ---
 # <a name="tutorial-query-a-sql-server-linux-docker-container-in-a-virtual-network-from-an-azure-databricks-notebook"></a>Tutorial: Abfragen eines Linux-Docker-Containers für SQL Server in einem virtuellen Netzwerk aus einem Azure Databricks-Notebook
@@ -62,7 +62,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 7. Fügen Sie eine Regel zum Öffnen von Port 22 für SSH hinzu. Verwenden Sie folgende Einstellungen:
     
-    |Einstellung|Empfohlener Wert|BESCHREIBUNG|
+    |Einstellung|Vorgeschlagener Wert|BESCHREIBUNG|
     |-------|---------------|-----------|
     |`Source`|IP-Adressen|„IP-Adressen“ legt fest, dass eingehender Datenverkehr von einer bestimmten Quell-IP-Adresse durch diese Regel zugelassen oder verweigert wird.|
     |Quell-IP-Adressen|<ihre öffentliche ip\>|Geben Sie Ihre öffentliche IP-Adresse ein. Sie können Ihre öffentliche IP-Adresse finden, indem Sie [bing.com](https://www.bing.com/) besuchen und nach **Meine IP-Adresse** suchen.|
@@ -71,14 +71,14 @@ In diesem Tutorial lernen Sie Folgendes:
     |Ziel-IP-Adressen|<die öffentliche ip ihrer vm\>|Geben Sie die öffentliche IP-Adresse Ihres virtuellen Computers ein. Sie finden diese auf der Seite **Übersicht** Ihres virtuellen Computers.|
     |Zielportbereiche|22|Öffnen Sie Port 22 für SSH.|
     |Priority|290|Weisen Sie der Regel eine Priorität zu.|
-    |NAME|ssh-databricks-tutorial-vm|Geben Sie der Regel einen Namen.|
+    |Name|ssh-databricks-tutorial-vm|Geben Sie der Regel einen Namen.|
 
 
     ![Eingangssicherheitsregel für Port 22 hinzufügen](./media/vnet-injection-sql-server/open-port.png)
 
 8. Fügen Sie eine Regel zum Öffnen von Port 1433 für SQL mit den folgenden Einstellungen hinzu:
 
-    |Einstellung|Empfohlener Wert|BESCHREIBUNG|
+    |Einstellung|Vorgeschlagener Wert|BESCHREIBUNG|
     |-------|---------------|-----------|
     |`Source`|Any|„Source“ (Quelle) legt fest, dass eingehender Datenverkehr von einer bestimmten Quell-IP-Adresse durch diese Regel zugelassen oder verweigert wird.|
     |Source port ranges|*|Lassen Sie Datenverkehr von einem beliebigen Port zu.|
@@ -86,7 +86,7 @@ In diesem Tutorial lernen Sie Folgendes:
     |Ziel-IP-Adressen|<die öffentliche ip ihrer vm\>|Geben Sie die öffentliche IP-Adresse Ihres virtuellen Computers ein. Sie finden diese auf der Seite **Übersicht** Ihres virtuellen Computers.|
     |Zielportbereiche|1433|Öffnen Sie Port 22 für SQL Server.|
     |Priority|300|Weisen Sie der Regel eine Priorität zu.|
-    |NAME|sql-databricks-tutorial-vm|Geben Sie der Regel einen Namen.|
+    |Name|sql-databricks-tutorial-vm|Geben Sie der Regel einen Namen.|
 
     ![Eingangssicherheitsregel für Port 1433 hinzufügen](./media/vnet-injection-sql-server/open-port2.png)
 

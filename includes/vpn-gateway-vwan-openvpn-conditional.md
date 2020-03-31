@@ -9,10 +9,10 @@ ms.date: 02/14/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 410570302eec418f1e4bcb75d6413936a96b5171
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471521"
 ---
 Der bedingte Zugriff ermöglicht eine differenzierte Zugriffssteuerung auf Anwendungsbasis. Für die Nutzung des bedingten Zugriffs sollten Sie mindestens eine Azure AD Premium 1-Lizenz auf die Benutzer anwenden, die den Regeln des bedingten Zugriffs unterliegen.

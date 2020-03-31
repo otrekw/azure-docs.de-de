@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: raynew
 ms.openlocfilehash: 319d97d96bd054aed90079777e2ff83d0e308e5e
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74185952"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>Erstes Hinzufügen eines Bewertungs-/Migrationstools
@@ -45,12 +45,12 @@ Richten Sie ein neues Azure Migrate-Projekt in einem Azure-Abonnement ein, und f
 
    **Geografie** | **Region des Speicherorts**
     --- | ---
-    Asien   | „Asien, Südosten“ und „Asien, Osten“
+    Asia   | „Asien, Südosten“ und „Asien, Osten“
     Europa | „Europa, Norden“ oder „Europa, Westen“
     Japan  | „Japan, Osten“ oder „Japan, Westen“
-    Vereinigtes Königreich | „Vereinigtes Königreich, Süden“ oder „Vereinigtes Königreich, Westen“
+    United Kingdom | „Vereinigtes Königreich, Süden“ oder „Vereinigtes Königreich, Westen“
     USA | „USA, Mitte“ oder „USA, Westen 2“
-    Kanada | Kanada, Mitte
+    Canada | Kanada, Mitte
     Indien  | Indien, Mitte oder Indien, Süden
     Australien | Australien, Südosten
 

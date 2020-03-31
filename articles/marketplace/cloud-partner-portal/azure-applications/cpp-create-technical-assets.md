@@ -1,19 +1,18 @@
 ---
 title: Erstellen der technischen Ressourcen einer Azure-Anwendung | Azure Marketplace
 description: Erstellen der technischen Ressourcen für ein Azure-Anwendungsangebot.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/13/2018
-ms.author: pabutler
-ms.openlocfilehash: c9abaab4597e9fea43a2f0dcabc0e4a527ed5a6a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 041b2133ed63a906d3fea3ab67890a0057151b9b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827602"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285264"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>Vorbereiten der technischen Ressourcen einer Azure-Anwendung
 
@@ -72,9 +71,9 @@ Es empfiehlt sich, dass Sie Ihrer Entwicklungsumgebung die folgenden Tools hinzu
 - [Azure Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 - [Visual Studio Code](https://code.visualstudio.com/) mit den folgenden Erweiterungen:
 
-  - Erweiterung: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+  - Erweiterung: [Azure Resource Manager-Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   - Erweiterung: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-  - Erweiterung: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+  - Erweiterung: [JSON-Optimierung](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
 Außerdem empfehlen wir Ihnen, sich die verfügbaren Tools auf der Seite [Azure-Entwicklungstools](https://azure.microsoft.com/tools/) und – bei Verwendung von Visual Studio – den [Visual Studio Marketplace](https://marketplace.visualstudio.com/) anzusehen.
 

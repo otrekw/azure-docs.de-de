@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/30/2019
 ms.openlocfilehash: afccbdbbfd5b8ddeefa621448d6170d937b518f0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74931444"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-hadoop-cluster-to-azure-storage"></a>Verwenden von Azure Data Factory zum Migrieren von Daten von einem lokalen Hadoop-Cluster zu Azure Storage 
@@ -43,7 +43,7 @@ DistCp verwendet MapReduce, um die Verteilung, die Fehlerbehandlung und -behebun
 
 Im nativen Integration Runtime-Modus von Data Factory ist außerdem Parallelität auf unterschiedlichen Ebenen möglich. Durch Verwendung von Parallelität lassen sich die Netzwerkbandbreite, die IOPS und die allgemeine Bandbreite in vollem Umfang nutzen, um den Datenverschiebungsdurchsatz zu maximieren:
 
-- Eine einzelne Kopieraktivität kann skalierbare Computeressourcen nutzen. Mit einer selbstgehosteten Integration Runtime können Sie den Computer manuell zentral hochskalieren oder horizontal auf mehrere Computer ([bis zu vier Knoten](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)) hochskalieren. Bei einer einzelnen Kopieraktivität wird die Dateigruppe auf alle Knoten verteilt. 
+- Eine einzelne Kopieraktivität kann skalierbare Computeressourcen nutzen. Mit einer selbstgehosteten Integration Runtime können Sie den Computer manuell hochskalieren oder auf mehrere Computer ([bis zu vier Knoten](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)) aufskalieren. Bei einer einzelnen Kopieraktivität wird die Dateigruppe auf alle Knoten verteilt. 
 - Für eine Kopieraktivität werden mehrere Threads genutzt, um für den Datenspeicher Lese- und Schreibvorgänge durchzuführen. 
 - Mit der Data Factory-Ablaufsteuerung können mehrere Kopieraktivitäten parallel gestartet werden. Beispielsweise können Sie eine [ForEach-Schleife](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity) verwenden. 
 
@@ -80,9 +80,9 @@ In dieser Abbildung ist die Migration von Daten über einen privaten Link darges
 
 - Bei dieser Architektur werden Daten über einen privaten Peeringlink per Azure ExpressRoute migriert. Die Daten werden nie über das öffentliche Internet übertragen.
 - Das DistCp-Tool unterstützt kein privates ExpressRoute-Peering mit einem virtuellen Azure Storage-Netzwerkendpunkt. Es wird empfohlen, die Daten mithilfe der nativen Data Factory-Funktion über die Integration Runtime zu migrieren.
-- Bei dieser Architektur müssen Sie die selbstgehostete Integration Runtime von Data Factory auf einem virtuellen Windows-Computer in Ihrem virtuellen Azure-Netzwerk installieren. Sie können den virtuellen Computer manuell zentral hochskalieren oder das horizontale Hochskalieren auf mehrere virtuelle Computer durchführen, um IOPS und Bandbreite für Netzwerk und Speicher im vollem Umfang zu nutzen.
-- Die empfohlene Konfiguration, mit der für jeden virtuellen Azure-Computer (mit installierter selbstgehosteter Integration Runtime von Data Factory) begonnen werden sollte, ist „Standard_D32s_v3“ mit 32 vCPUs und 128 GB Arbeitsspeicher. Sie können die Auslastung der CPU und des Arbeitsspeichers für den virtuellen Computer während der Datenmigration überwachen. So können Sie ermitteln, ob Sie den virtuellen Computer zentral hochskalieren müssen, um die Leistung zu verbessern, oder ihn stattdessen zentral herunterskalieren müssen, um Kosten zu senken.
-- Sie können auch horizontal hochskalieren, indem Sie bis zu vier VM-Knoten einer selbstgehosteten Integration Runtime zuordnen. Bei einem einzelnen Kopierauftrag, der für eine selbstgehostete Integration Runtime ausgeführt wird, wird die Dateigruppe automatisch partitioniert, und alle VM-Knoten werden genutzt, um die Dateien parallel zu kopieren. Zur Sicherstellung von Hochverfügbarkeit wird empfohlen, mit zwei VM-Knoten zu beginnen, um bei der Datenmigration das Szenario eines Single Point of Failure zu vermeiden.
+- Bei dieser Architektur müssen Sie die selbstgehostete Integration Runtime von Data Factory auf einem virtuellen Windows-Computer in Ihrem virtuellen Azure-Netzwerk installieren. Sie können den virtuellen Computer manuell hochskalieren oder das Aufskalieren auf mehrere virtuelle Computer durchführen, um IOPS und Bandbreite für Netzwerk und Speicher im vollem Umfang zu nutzen.
+- Die empfohlene Konfiguration, mit der für jeden virtuellen Azure-Computer (mit installierter selbstgehosteter Integration Runtime von Data Factory) begonnen werden sollte, ist „Standard_D32s_v3“ mit 32 vCPUs und 128 GB Arbeitsspeicher. Sie können die Auslastung der CPU und des Arbeitsspeichers für den virtuellen Computer während der Datenmigration überwachen. So können Sie ermitteln, ob Sie den virtuellen Computer hochskalieren müssen, um die Leistung zu verbessern, oder ihn stattdessen herunterskalieren müssen, um Kosten zu senken.
+- Sie können auch aufskalieren, indem Sie bis zu vier VM-Knoten einer selbstgehosteten Integration Runtime zuordnen. Bei einem einzelnen Kopierauftrag, der für eine selbstgehostete Integration Runtime ausgeführt wird, wird die Dateigruppe automatisch partitioniert, und alle VM-Knoten werden genutzt, um die Dateien parallel zu kopieren. Zur Sicherstellung von Hochverfügbarkeit wird empfohlen, mit zwei VM-Knoten zu beginnen, um bei der Datenmigration das Szenario eines Single Point of Failure zu vermeiden.
 - Bei Verwendung dieser Architektur ist die Migration sowohl der Daten einer Anfangsmomentaufnahme als auch der Deltadaten möglich.
 
 ## <a name="implementation-best-practices"></a>Bewährte Methoden für die Implementierung

@@ -1,6 +1,6 @@
 ---
 title: Sicherstellen der Hochverfügbarkeit von Anwendungen bei Ausführung in VMware in Azure
-description: In diesem Artikel werden AVS-Hochverfügbarkeitsfunktionen für die Behandlung häufiger Anwendungsfehlerszenarien von Anwendungen beschrieben, die in einer privaten AVS-Cloud ausgeführt werden.
+description: In diesem Artikel werden CloudSimple-Hochverfügbarkeitsfunktionen für die Behandlung häufiger Anwendungsfehlerszenarien von Anwendungen beschrieben, die in einer privaten CloudSimple-Cloud ausgeführt werden.
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,16 +8,16 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b32f7f3f38098f935382cce46d8251340784b940
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: a3eed033ba6a1a6f9237116a53ec7751ae906fe4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025349"
 ---
 # <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Sicherstellen der Hochverfügbarkeit von Anwendungen bei Ausführung in VMware in Azure
 
-Die AVS-Lösung bietet Hochverfügbarkeit für Ihre Anwendungen, die in VMware in der Azure-Umgebung ausgeführt werden. In der folgenden Tabelle werden Fehlerszenarien und die entsprechenden Hochverfügbarkeitsfunktionen aufgeführt.
+Die CloudSimple-Lösung bietet Hochverfügbarkeit für Ihre Anwendungen, die in VMware in der Azure-Umgebung ausgeführt werden. In der folgenden Tabelle werden Fehlerszenarien und die entsprechenden Hochverfügbarkeitsfunktionen aufgeführt.
 
 | Fehlerszenario | Anwendung geschützt? | Hochverfügbarkeitsfunktion für Plattform | Hochverfügbarkeitsfunktion für VMware | Hochverfügbarkeitsfunktion für Azure |
 ------------ | ------------- | ------------ | ------------ | ------------- |
@@ -35,15 +35,15 @@ Die AVS-Lösung bietet Hochverfügbarkeit für Ihre Anwendungen, die in VMware i
 | Datacenter-Fehler | YES |  |  | Verfügbarkeitszonen |
 | Regionaler Fehler | YES  |  |  | Azure-Regionen |
 
-Azure VMware Solutions von AVS verfügt über die unten angegebenen Hochverfügbarkeitsfunktionen.
+Azure VMware Solution by CloudSimple bietet die folgenden Hochverfügbarkeitsfunktionen.
 
 ## <a name="fast-replacement-of-failed-node"></a>Schnelles Ersetzen des fehlerhaften Knotens
 
-Die AVS-Software für die Steuerungsebene überwacht kontinuierlich die Integrität der VMware-Cluster und erkennt Ausfälle von ESXi-Knoten. In diesem Fall fügt sie dem betreffenden VMware-Cluster aus seinem Pool verfügbarer Knoten automatisch einen neuen ESXi-Host hinzu und entfernt den ausgefallenen Knoten aus dem Cluster. Durch diese Funktion wird sichergestellt, dass die Reservekapazität im VMware-Cluster schnell wiederhergestellt wird, sodass die von vSAN und VMware-Hochverfügbarkeit bereitgestellte Resilienz des Clusters wiederhergestellt wird.
+Die CloudSimple-Software für die Steuerungsebene überwacht kontinuierlich die Integrität der VMware-Cluster und erkennt Ausfälle von ESXi-Knoten. In diesem Fall fügt sie dem betreffenden VMware-Cluster aus seinem Pool verfügbarer Knoten automatisch einen neuen ESXi-Host hinzu und entfernt den ausgefallenen Knoten aus dem Cluster. Durch diese Funktion wird sichergestellt, dass die Reservekapazität im VMware-Cluster schnell wiederhergestellt wird, sodass die von vSAN und VMware-Hochverfügbarkeit bereitgestellte Resilienz des Clusters wiederhergestellt wird.
 
 ## <a name="placement-groups"></a>Platzierungsgruppen
 
-Ein Benutzer, der eine private AVS-Cloud erstellt, kann eine Azure-Region und eine Platzierungsgruppe innerhalb der ausgewählten Region auswählen. Eine Platzierungsgruppe ist eine Gruppe von Knoten, die auf verschiedene Racks verteilt sind, jedoch innerhalb desselben Spine-Netzwerksegments liegen. Knoten innerhalb derselben Platzierungsgruppe können einander mit maximal zwei zusätzlichen Switchhops erreichen. Eine Platzierungsgruppe befindet sich immer innerhalb einer einzigen Azure-Verfügbarkeitszone und umfasst mehrere Racks. Die AVS-Steuerungsebene verteilt Knoten einer privaten AVS-Cloud bestmöglich auf mehrere Racks. Knoten in unterschiedlichen Platzierungsgruppen werden garantiert in unterschiedlichen Racks platziert.
+Ein Benutzer, der eine private Cloud erstellt, kann eine Azure-Region und eine Platzierungsgruppe innerhalb der ausgewählten Region auswählen. Eine Platzierungsgruppe ist eine Gruppe von Knoten, die auf verschiedene Racks verteilt sind, jedoch innerhalb desselben Spine-Netzwerksegments liegen. Knoten innerhalb derselben Platzierungsgruppe können einander mit maximal zwei zusätzlichen Switchhops erreichen. Eine Platzierungsgruppe befindet sich immer innerhalb einer einzigen Azure-Verfügbarkeitszone und umfasst mehrere Racks. Die CloudSimple-Steuerungsebene verteilt Knoten einer privaten Cloud bestmöglich auf mehrere Racks. Knoten in unterschiedlichen Platzierungsgruppen werden garantiert in unterschiedlichen Racks platziert.
 
 ## <a name="availability-zones"></a>Verfügbarkeitszonen
 
@@ -55,7 +55,7 @@ Für die Rechenzentren-Konnektivität mit Azure vNet mit ExpressRoute sind redun
 
 ## <a name="redundant-networking-services"></a>Redundante Netzwerkdienste
 
-Alle AVS-Netzwerkdienste für die Private AVS-Cloud (einschließlich VLAN, Firewall, öffentlichen IP-Adressen, Internet und VPN) sind auf Hochverfügbarkeit ausgelegt und unterstützen die Vereinbarung zum Servicelevel für Dienste.
+Alle CloudSimple-Netzwerkdienste für die Private Cloud (einschließlich VLAN, Firewall, öffentlichen IP-Adressen, Internet und VPN) sind auf Hochverfügbarkeit ausgelegt und unterstützen die Vereinbarung zum Servicelevel für Dienste.
 
 ## <a name="azure-layer-7-load-balancer-for-stateless-vmware-vms"></a>Azure Load Balancer (Schicht 7) für zustandslose VMware-VMs
 

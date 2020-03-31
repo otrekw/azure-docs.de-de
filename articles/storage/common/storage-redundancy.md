@@ -10,12 +10,12 @@ ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 6b36694c2fe1bf264c876944b054d39371db616c
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 7ae5f59a1bd96362d5466b2f6363185ba168d942
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77614280"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228326"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-Redundanz
 
@@ -61,7 +61,7 @@ In der folgenden Tabelle wird gezeigt, welche Typen von Speicherkonten ZRS in we
 
 |    Speicherkontotyp    |    Unterstützte Regionen    |    Unterstützte Dienste    |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-|    Universell v2<sup>1</sup>    | Asien, Südosten<br /> Europa, Norden<br />  Europa, Westen<br /> Frankreich, Mitte<br /> Japan, Osten<br /> UK, Süden<br /> USA, Mitte<br /> USA, Osten<br /> USA (Ost 2)<br /> USA, Westen 2    |    Blockblobs<br /> Seitenblobs<sup>2</sup><br /> Dateifreigaben (Standard)<br /> Tabellen<br /> Warteschlangen<br /> |
+|    Universell v2<sup>1</sup>    | Asien, Südosten<br /> Australien (Osten)<br /> Europa, Norden<br />  Europa, Westen<br /> Frankreich, Mitte<br /> Japan, Osten<br /> Südafrika, Norden<br /> UK, Süden<br /> USA, Mitte<br /> USA, Osten<br /> USA (Ost 2)<br /> USA, Westen 2    |    Blockblobs<br /> Seitenblobs<sup>2</sup><br /> Dateifreigaben (Standard)<br /> Tabellen<br /> Warteschlangen<br /> |
 |    BlockBlobStorage<sup>1</sup>    | Europa, Westen<br /> USA, Osten    |    Nur Blockblobs    |
 |    FileStorage    | Europa, Westen<br /> USA, Osten    |    Nur Azure Files    |
 
@@ -109,10 +109,12 @@ GZRS und RA-GZRS sind derzeit in den folgenden Regionen als Vorschau verfügbar:
 - Asien, Südosten
 - Europa, Norden
 - Europa, Westen
+- Japan, Osten
 - UK, Süden
 - USA, Osten
 - USA (Ost 2)
 - USA, Mitte
+- USA, Westen 2
 
 Microsoft arbeitet daran, GZRS und RA-GZRS in weiteren Azure-Regionen zu aktivieren. Sehen Sie regelmäßig auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/) nach, um Informationen zu unterstützten Regionen zu erhalten.
 

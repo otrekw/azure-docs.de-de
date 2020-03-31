@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb094d04a7210d76a98f3e47af750e49b617e493
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 6e9c0c88064c00c97de7dc58a500910e81c04eef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77195061"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230794"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff
 
@@ -37,7 +37,7 @@ Die Anmeldehäufigkeit bezeichnet den Zeitraum, bevor ein Benutzer beim Zugriff 
 
 Die Standardkonfiguration von Azure Active Directory (Azure AD) sieht für die Anmeldehäufigkeit von Benutzern ein Gleitfenster von 90 Tagen vor. Benutzer häufig zur Eingabe von Anmeldeinformationen aufzufordern, kann einerseits sinnvoll sein, andererseits aber auch das Gegenteil bewirken: Benutzer, die es gewohnt sind, ihre Anmeldeinformationen ohne Überlegung einzugeben, können diese auch versehentlich bei einer schädlichen Anmeldeaufforderung eingeben.
 
-Es klingt vielleicht beunruhigend, keine erneute Anmeldung von einem Benutzer zu fordern, tatsächlich wird die Sitzung bei einer Verletzung der IT-Richtlinien jedoch gesperrt. Einige Beispiele beinhalten u. a. eine Kennwortänderung, ein nicht kompatibles Gerät oder eine Kontodeaktivierung. Sie können [Benutzersitzungen auch explizit mit PowerShell sperren](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Die Standardkonfiguration von Azure AD basiert auf dem Grundprinzip „Benutzer nicht zur Angabe ihrer Anmeldeinformationen auffordern, solange der Sicherheitsstatus ihrer Sitzung unverändert ist“.
+Es klingt vielleicht beunruhigend, keine erneute Anmeldung von einem Benutzer zu fordern, tatsächlich wird die Sitzung bei einer Verletzung der IT-Richtlinien jedoch gesperrt. Einige Beispiele beinhalten u. a. eine Kennwortänderung, ein nicht kompatibles Gerät oder eine Kontodeaktivierung. Sie können [Benutzersitzungen auch explizit mit PowerShell sperren](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Die Standardkonfiguration von Azure AD basiert auf dem Grundprinzip „Benutzer nicht zur Angabe ihrer Anmeldeinformationen auffordern, solange der Sicherheitsstatus ihrer Sitzung unverändert ist“.
 
 Die Einstellung für die Anmeldehäufigkeit funktioniert bei Apps mit standardkonformer Implementierung des OAUTH2- oder OIDC-Protokolls. Die meisten nativen Microsoft-Apps für Windows, Mac und mobile Umgebungen, einschließlich der folgenden Webanwendungen, sind mit der Einstellung kompatibel.
 
@@ -72,7 +72,7 @@ Beispiel 2:
 
 Bei einer persistenten Browsersitzung können Benutzer angemeldet bleiben, nachdem sie ihr Browserfenster geschlossen und erneut geöffnet haben.
 
-Durch die Azure AD-Standardeinstellung für die Persistenz von Browsersitzungen können Benutzer auf persönlichen Geräten wählen, ob die Sitzung beibehalten wird, indem nach der erfolgreichen Authentifizierung die Aufforderung „Angemeldet bleiben?“ angezeigt wird. Wenn die Browserpersistenz in AD FS mithilfe der Anleitung im Artikel [AD FS: Einstellungen für einmaliges Anmelden](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
+Durch die Azure AD-Standardeinstellung für die Persistenz von Browsersitzungen können Benutzer auf persönlichen Geräten wählen, ob die Sitzung beibehalten wird, indem nach der erfolgreichen Authentifizierung die Aufforderung „Angemeldet bleiben?“ angezeigt wird. Wenn die Browserpersistenz in AD FS mithilfe der Anleitung im Artikel [AD FS: Einstellungen für einmaliges Anmelden](/windows-server/identity/ad-fs/operations/ad-fs-single-sign-on-settings#enable-psso-for-office-365-users-to-access-sharepoint-online
 ) konfiguriert wird, wird diese Richtlinie berücksichtigt und die Azure AD-Sitzung ebenfalls beibehalten. Sie können auch konfigurieren, ob Benutzer in Ihrem Mandanten die Aufforderung „Angemeldet bleiben?“ erhalten. Dazu ändern Sie im Azure-Portal im Bereich für Unternehmensbranding die entsprechende Einstellung mithilfe der Anleitung im Artikel [Anpassen Ihrer Azure AD-Anmeldeseite](../fundamentals/customize-branding.md).
 
 ## <a name="configuring-authentication-session-controls"></a>Konfigurieren von Steuerungen für Authentifizierungssitzungen

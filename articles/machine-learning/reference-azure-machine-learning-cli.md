@@ -12,10 +12,10 @@ author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
 ms.openlocfilehash: 471b26ebc4bd4aecb814ec43c7eba56e3d764fa0
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78402490"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>Verwenden der CLI-Erweiterung für Azure Machine Learning
@@ -140,7 +140,7 @@ Die folgenden Befehle veranschaulichen, wie Sie mit der CLI Ressourcen verwalten
 
     Weitere Informationen finden Sie unter [az ml computetarget create amlcompute](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute).
 
-## <a id="experiments"></a>Ausführen von Experimenten
+## <a name="run-experiments"></a><a id="experiments"></a>Ausführen von Experimenten
 
 * Starten Sie eine Ausführung Ihres Experiments. Wenn Sie diesen Befehl verwenden, geben Sie den Namen der Runconfig-Datei (den Text vor „\*.runconfig“, wenn Sie auf Ihr Dateisystem schauen) für den -c-Parameter an.
 

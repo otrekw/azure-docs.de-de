@@ -10,15 +10,15 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 97ea98fc38fc8d06dc1bc65ee057241da6f15488
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78851383"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Problembehandlung beim Starten/Beenden von VMs außerhalb der Geschäftszeiten
 
-## <a name="deployment-failure"></a>Szenario: Fehler bei der ordnungsgemäßen Bereitstellung der Lösung zum Starten/Beenden von VMs
+## <a name="scenario-the-startstop-vm-solution-fails-to-properly-deploy"></a><a name="deployment-failure"></a>Szenario: Fehler bei der ordnungsgemäßen Bereitstellung der Lösung zum Starten/Beenden von VMs
 
 ### <a name="issue"></a>Problem
 
@@ -77,7 +77,7 @@ Fehler bei Bereitstellungen können aus einem der folgenden Gründe auftreten:
 4. Wenn eine Sperre für Ihren Log Analytics-Arbeitsbereich vorhanden ist, navigieren Sie im Azure-Portal zu Ihrem Arbeitsbereich, und entfernen Sie alle Sperren für die Ressource.
 5. Wenn die oben genannten Lösungen Ihr Problem nicht beheben, befolgen Sie die Anleitungen unter [Aktualisieren der Lösung](../automation-solution-vm-management.md#update-the-solution), um die Lösung zum Starten/Beenden erneut bereitzustellen.
 
-## <a name="all-vms-fail-to-startstop"></a>Szenario: Alle virtuellen Computer können nicht gestartet/beendet werden
+## <a name="scenario-all-vms-fail-to-startstop"></a><a name="all-vms-fail-to-startstop"></a>Szenario: Alle virtuellen Computer können nicht gestartet/beendet werden
 
 ### <a name="issue"></a>Problem
 
@@ -118,7 +118,7 @@ Dieser Fehler kann einen der folgenden Gründe haben:
   Get-AzureRmAutomationVariable -Name External_ExcludeVMNames -AutomationAccountName <automationAccountName> -ResourceGroupName <resourceGroupName> | Select-Object Value
   ```
 
-## <a name="some-vms-fail-to-startstop"></a>Szenario: Einige meiner virtuellen Computer können nicht gestartet oder beendet werden
+## <a name="scenario-some-of-my-vms-fail-to-start-or-stop"></a><a name="some-vms-fail-to-startstop"></a>Szenario: Einige meiner virtuellen Computer können nicht gestartet oder beendet werden
 
 ### <a name="issue"></a>Problem
 
@@ -155,7 +155,7 @@ Dieser Fehler kann einen der folgenden Gründe haben:
 
 * Überprüfen Sie die [Auftragsdatenströme](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) auf Fehler. Gehen Sie im Portal zu Ihrem Automation-Konto, und wählen Sie unter **Prozessautomatisierung** die Option **Aufträge** aus.
 
-## <a name="custom-runbook"></a>Szenario: Mein benutzerdefiniertes Runbook startet oder beendet meine virtuellen Computer nicht
+## <a name="scenario-my-custom-runbook-fails-to-start-or-stop-my-vms"></a><a name="custom-runbook"></a>Szenario: Mein benutzerdefiniertes Runbook startet oder beendet meine virtuellen Computer nicht
 
 ### <a name="issue"></a>Problem
 
@@ -169,7 +169,7 @@ Es kommen viele Ursachen für diesen Fehler infrage. Gehen Sie zu Ihrem Automati
 
 Sie sollten die [Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation](../automation-solution-vm-management.md) zum Starten und Beenden von virtuellen Computern in Azure Automation verwenden. Diese Lösung stammt von Microsoft. Benutzerdefinierte Runbooks werden von Microsoft nicht unterstützt. Möglicherweise finden Sie eine Lösung für Ihr benutzerdefiniertes Runbook in dem Artikel [Beheben von Fehlern bei Runbooks](runbooks.md). Dieser Artikel enthält allgemeine Richtlinien und Problembehandlung für Runbooks aller Typen. Überprüfen Sie die [Auftragsdatenströme](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) auf Fehler. Gehen Sie im Portal zu Ihrem Automation-Konto, und wählen Sie unter **Prozessautomatisierung** die Option **Aufträge** aus.
 
-## <a name="dont-start-stop-in-sequence"></a>Szenario: Virtuelle Computer werden nicht in der richtigen Reihenfolge gestartet oder beendet
+## <a name="scenario-vms-dont-start-or-stop-in-the-correct-sequence"></a><a name="dont-start-stop-in-sequence"></a>Szenario: Virtuelle Computer werden nicht in der richtigen Reihenfolge gestartet oder beendet
 
 ### <a name="issue"></a>Problem
 
@@ -189,7 +189,7 @@ Stellen Sie mit den folgenden Schritten sicher, dass die Lösung ordnungsgemäß
 
 Ausführliche und zusätzliche Anleitungen zum Verwenden der Lösung zum Starten und Beenden von VMs in einer Sequenz finden Sie unter [Szenario 2: Starten/Beenden von VMs der Reihe nach mithilfe von Tags](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags).
 
-## <a name="403"></a>Szenario: Beim Starten/Beenden des VM-Auftrags tritt ein Fehler mit dem „403 Verboten“-Status auf
+## <a name="scenario-startstop-vm-job-fails-with-403-forbidden-status"></a><a name="403"></a>Szenario: Beim Starten/Beenden des VM-Auftrags tritt ein Fehler mit dem „403 Verboten“-Status auf
 
 ### <a name="issue"></a>Problem
 
@@ -209,7 +209,7 @@ Wenn das Zertifikat für Ihr RunAs-Konto abgelaufen ist, befolgen Sie die Schrit
 
 Das Problem wird möglicherweise durch fehlende Berechtigungen verursacht. Wie Sie die Berechtigungen auf einer Ressource überprüfen, erfahren Sie unter [Schnellstart: Anzeigen der zugewiesenen Rollen von Benutzern mit dem Azure-Portal](../../role-based-access-control/check-access.md). Sie müssen die Anwendungs-ID für den Dienstprinzipal angeben, der vom ausführenden Konto verwendet wird. Sie können diesen Wert abrufen, indem Sie zu Ihrem Automation-Konto im Azure-Portal gehen, **RunAs-Konten** unter **Kontoeinstellungen** auswählen und auf das entsprechende RunAs-Konto klicken.
 
-## <a name="other"></a>Szenario: Mein Problem ist oben nicht aufgeführt
+## <a name="scenario-my-problem-isnt-listed-above"></a><a name="other"></a>Szenario: Mein Problem ist oben nicht aufgeführt
 
 ### <a name="issue"></a>Problem
 

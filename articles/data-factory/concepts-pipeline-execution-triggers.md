@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.openlocfilehash: 20a5a9c5513c165cd5add2e97f019a741dfd0b03
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681470"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225538"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Pipelineausführung und Trigger in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die Version des Data Factory-Diensts aus, den Sie verwenden:"]
@@ -279,10 +279,10 @@ Die folgende Tabelle enthält eine allgemeine Übersicht über die wichtigsten S
 | JSON-Eigenschaft | type | Erforderlich | Standardwert | Gültige Werte | Beispiel |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **startTime** | Zeichenfolge | Ja | Keine | Datum/Uhrzeit (nach ISO 8601) | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | object | Ja | Keine | Wiederholungsobjekt | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **recurrence** | Objekt (object) | Ja | Keine | Wiederholungsobjekt | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | number | Nein | 1 | 1 bis 1.000 | `"interval":10` |
 | **endTime** | Zeichenfolge | Ja | Keine | Ein Datums-/Uhrzeitwert, der eine Zeit in der Zukunft darstellt | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **schedule** | object | Nein | Keine | Zeitplanobjekt | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **schedule** | Objekt (object) | Nein | Keine | Zeitplanobjekt | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime-Eigenschaft
 Die folgende Tabelle zeigt, wie die **startTime**-Eigenschaft eine Triggerausführung steuert:
@@ -360,7 +360,7 @@ In den Beispielen wird angenommen, dass der **interval**-Wert „1“ festgelegt
 | `{"monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}` | Ausführung am ersten und letzten Freitag jedes Monats zur festgelegten Startzeit. |
 | `{"monthlyOccurrences":[{"day":"friday", "occurrence":5}]}` | Ausführung am fünften Freitag jedes Monats zur festgelegten Startzeit.<br /><br />Wenn kein fünfter Freitag im Monat vorhanden ist, wird die Pipeline nicht ausgeführt. Zur Ausführung des Triggers am letzten Freitag des Monats empfiehlt sich u.U. die Verwendung von „-1“ anstelle von „5“ als **occurrence**-Wert. |
 | `{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}` | Ausführung im 15-Minuten-Takt am letzten Freitag des Monats. |
-| `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` | Ausführung um 5:15, 5:45, 17:15 und 17:45 Uhr am dritten Mittwoch jedes Monats. |
+| `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` | Ausführung um 05:15, 05:45, 17:15 und 17:45 Uhr am dritten Mittwoch jedes Monats. |
 
 ## <a name="trigger-type-comparison"></a>Vergleich von Triggertypen
 Der Trigger für ein rollierendes Fenster und der Zeitplantrigger basieren jeweils auf Zeit-Heartbeats. Inwiefern unterscheiden sie sich?
@@ -369,11 +369,11 @@ In der folgenden Tabelle werden der Trigger für ein rollierendes Fenster und de
 
 |  | Trigger für ein rollierendes Fenster | Zeitplantrigger |
 |:--- |:--- |:--- |
-| **Abgleichsszenarien** | Unterstützt. Pipelineausführungen können für Fenster in der Vergangenheit geplant werden. | Nicht unterstützt. Pipelineausführungen können nur in Zeiträumen ab der aktuellen Zeit und der Zukunft ausgeführt werden. |
+| **Abgleichsszenarien** | Unterstützt. Pipelineausführungen können für Fenster in der Vergangenheit geplant werden. | Wird nicht unterstützt. Pipelineausführungen können nur in Zeiträumen ab der aktuellen Zeit und der Zukunft ausgeführt werden. |
 | **Zuverlässigkeit** | 100 % zuverlässig. Pipelineausführungen können für alle Fenster ab einem festgelegten Datum ohne Lücken geplant werden. | Weniger zuverlässig. |
-| **Wiederholungsfunktion** | Unterstützt. Für fehlgeschlagene Pipelineausführungen gilt standardmäßig eine Wiederholungsrichtlinie mit dem Wert 0 oder eine vom Benutzer in der Triggerdefinition angegebene Richtlinie. Eine Wiederholung erfolgt automatisch, wenn Pipelineausführungen aufgrund von Parallelitäts-/Server-/Einschränkungsgrenzwerten (d.h. mit den Statuscodes „400: Benutzerfehler“, „429: Zu viele Anforderungen“ und „500: Interner Serverfehler“) fehlschlagen. | Nicht unterstützt. |
-| **Concurrency** | Unterstützt. Benutzer können Parallelitätsgrenzwerte für den Trigger explizit festlegen. Zwischen 1 und 50 parallele ausgelöste Pipelineausführungen sind zulässig. | Nicht unterstützt. |
-| **Systemvariablen** | Unterstützt die Verwendung der Systemvariablen **WindowStart** und **WindowEnd**. Benutzer haben Zugriff auf `triggerOutputs().windowStartTime` und `triggerOutputs().windowEndTime` als Systemvariablen in der Triggerdefinition. Die Werte werden jeweils als Start- und Endzeit des Fensters verwendet. Beispiel: Die Definition eines stündlich ausgeführten Triggers für ein rollierendes Fenster lautet für das Fenster von 1:00 Uhr bis 2:00 Uhr `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` und `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`. | Nicht unterstützt. |
+| **Wiederholungsfunktion** | Unterstützt. Für fehlgeschlagene Pipelineausführungen gilt standardmäßig eine Wiederholungsrichtlinie mit dem Wert 0 oder eine vom Benutzer in der Triggerdefinition angegebene Richtlinie. Eine Wiederholung erfolgt automatisch, wenn Pipelineausführungen aufgrund von Parallelitäts-/Server-/Einschränkungsgrenzwerten (d.h. mit den Statuscodes „400: Benutzerfehler“, „429: Zu viele Anforderungen“ und „500: Interner Serverfehler“) fehlschlagen. | Wird nicht unterstützt. |
+| **Concurrency** | Unterstützt. Benutzer können Parallelitätsgrenzwerte für den Trigger explizit festlegen. Zwischen 1 und 50 parallele ausgelöste Pipelineausführungen sind zulässig. | Wird nicht unterstützt. |
+| **Systemvariablen** | Unterstützt die Verwendung der Systemvariablen **WindowStart** und **WindowEnd**. Benutzer haben Zugriff auf `triggerOutputs().windowStartTime` und `triggerOutputs().windowEndTime` als Systemvariablen in der Triggerdefinition. Die Werte werden jeweils als Start- und Endzeit des Fensters verwendet. Beispiel: Die Definition eines stündlich ausgeführten Triggers für ein rollierendes Fenster lautet für das Fenster von 1:00 Uhr bis 2:00 Uhr `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` und `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`. | Wird nicht unterstützt. |
 | **Beziehung zwischen Pipeline und Trigger** | Unterstützt eine 1:1-Beziehung. Nur eine Pipeline kann ausgelöst werden. | Unterstützt m:m-Beziehungen. Mehrere Trigger können eine einzelne Pipeline starten. Ein einzelnder Trigger kann mehrere Pipelines starten. |
 
 ## <a name="next-steps"></a>Nächste Schritte

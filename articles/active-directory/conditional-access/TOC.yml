@@ -10,7 +10,7 @@
       href: require-tou.md
     - name: Blockieren des Zugriffs bei erkanntem Sitzungsrisiko
       href: app-sign-in-risk.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Anfordern von Azure Multi-Factor Authentication
       href: ../authentication/tutorial-enable-azure-mfa.md?toc=/azure/active-directory/conditional-access/toc.json&bc=/azure/active-directory/conditional-access/breadcrumb/toc.json
@@ -49,7 +49,7 @@
       href: policy-migration.md
     - name: Baselineschutzrichtlinien
       href: concept-baseline-protection.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   expanded: true
   items:
     - name: Planen der Bereitstellung für bedingten Zugriff
@@ -58,22 +58,24 @@
       href: best-practices.md
     - name: Allgemeine Richtlinien für bedingten Zugriff
       items:
+        - name: Blockieren älterer Authentifizierungsmethoden
+          href: howto-conditional-access-policy-block-legacy.md
         - name: Vorschreiben der MFA für Administratoren
           href: howto-conditional-access-policy-admin-mfa.md
         - name: Vorschreiben der MFA für die Azure-Verwaltung
           href: howto-conditional-access-policy-azure-management.md
         - name: Anfordern der MFA für alle Benutzer
           href: howto-conditional-access-policy-all-users-mfa.md
-        - name: Blockieren älterer Authentifizierungsmethoden
-          href: howto-conditional-access-policy-block-legacy.md
         - name: Risikobasierter bedingter Zugriff
           href: howto-conditional-access-policy-risk.md
-        - name: Vorschreiben eines vertrauenswürdigen Standorts für die MFA-Registrierung
+        - name: Sichere Registrierung von Sicherheitsinformationen
           href: howto-conditional-access-policy-registration.md
         - name: Blockieren des Zugriffs nach Standort
           href: howto-conditional-access-policy-location.md
         - name: Anfordern von kompatiblen Geräten
           href: howto-conditional-access-policy-compliant-device.md
+        - name: Zugriff blockieren
+          href: howto-conditional-access-policy-block-access.md
     - name: Blockieren älterer Authentifizierungsmethoden
       href: block-legacy-authentication.md
     - name: Vorschreiben der Verwendung genehmigter Client-Apps
@@ -94,6 +96,8 @@
       href: policy-migration-mfa.md
     - name: Problembehandlung
       items:
+        - name: Beheben von Problemen bei der Anmeldung
+          href: troubleshoot-conditional-access.md
         - name: Troubleshooting mithilfe des What If-Tools
           href: troubleshoot-conditional-access-what-if.md
 - name: Ressourcen

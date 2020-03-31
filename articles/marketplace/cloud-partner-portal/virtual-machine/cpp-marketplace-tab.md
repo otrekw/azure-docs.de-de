@@ -1,19 +1,18 @@
 ---
 title: Registerkarte „Marketplace“ für VMs im Cloud-Partnerportal für Azure Marketplace
 description: Enthält eine Beschreibung der Registerkarte „Marketplace“, die Sie beim Erstellen eines VM-Angebots für den Azure Marketplace verwenden.
-services: Azure, Marketplace, Cloud Partner Portal, virtual machine
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: pabutler
-ms.openlocfilehash: 283274986c753fc8ad05b9b7b0dd87aea956bcce
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.author: dsindona
+ms.openlocfilehash: 567dc83e36020ef9af328f52dae89ef37b6e4908
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75762891"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277720"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>Registerkarte „Marketplace“ für VMs
 

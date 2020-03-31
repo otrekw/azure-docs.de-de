@@ -1,6 +1,6 @@
 ---
-title: Verwalten des vertikalen Skalierens (zentrales Hochskalieren) eines Clusters zum Anpassen an den Bedarf in Azure Data Explorer
-description: Dieser Artikel beschreibt Schritte zum zentralen Hoch- und Herunterskalieren eines Azure Data Explorer-Clusters basierend auf sich änderndem Bedarf.
+title: Verwalten des Hochskalierens eines Clusters zum Anpassen an den Bedarf in Azure Data Explorer
+description: Dieser Artikel beschreibt Schritte zum Hoch- und Herunterskalieren eines Azure Data Explorer-Clusters basierend auf sich änderndem Bedarf.
 author: radennis
 ms.author: radennis
 ms.reviewer: orspodek
@@ -8,13 +8,13 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
 ms.openlocfilehash: 95275598febae2b6b0355a7bc3e512490dae500d
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77560438"
 ---
-# <a name="manage-cluster-vertical-scaling-scale-up-in-azure-data-explorer-to-accommodate-changing-demand"></a>Verwalten des vertikalen Hoch- oder Herunterskalierens eines Clusters in Azure Data Explorer, um ihn an den sich ändernden Bedarf anzupassen
+# <a name="manage-cluster-vertical-scaling-scale-up-in-azure-data-explorer-to-accommodate-changing-demand"></a>Verwalten des Hochskalierens eines Clusters in Azure Data Explorer, um ihn an den sich ändernden Bedarf anzupassen
 
 Die richtige Größe eines Clusters ist entscheidend für die Leistung von Azure-Daten-Explorer. Eine statische Clustergröße kann zu einer Unter- oder Überauslastung führen, was beides nicht ideal ist.
 
@@ -29,11 +29,11 @@ In diesem Artikel wird der Workflow für das vertikale Hoch- oder Herunterskalie
 
 ## <a name="configure-vertical-scaling"></a>Konfigurieren des vertikalen Hoch- oder Herunterskalierens
 
-1. Navigieren Sie im Azure-Portal zu Ihrer Azure Data Explorer-Clusterressource. Wählen Sie unter **Einstellungen** die Option **Zentral hochskalieren** aus.
+1. Navigieren Sie im Azure-Portal zu Ihrer Azure Data Explorer-Clusterressource. Wählen Sie unter **Einstellungen** die Option **Hochskalieren** aus.
 
-1. Im Fenster **Zentral hochskalieren** wird eine Liste der verfügbaren SKUs für Ihren Cluster angezeigt. In der folgenden Abbildung sind z. B. nur vier SKUs verfügbar.
+1. Im Fenster **Hochskalieren** wird eine Liste der verfügbaren SKUs für Ihren Cluster angezeigt. In der folgenden Abbildung sind z. B. nur vier SKUs verfügbar.
 
-    ![Zentrales Hochskalieren](media/manage-cluster-vertical-scaling/scale-up.png)
+    ![Hochskalieren](media/manage-cluster-vertical-scaling/scale-up.png)
 
     Die SKUs sind deaktiviert, weil sie die aktuelle SKU sind oder in der Region, in der sich der Cluster befindet, nicht zur Verfügung stehen.
 

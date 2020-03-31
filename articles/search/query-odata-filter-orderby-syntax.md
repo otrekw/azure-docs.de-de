@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f3a1be435e297ab4a9ba7f8bfbd5f3ce3451d8a8
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77153875"
 ---
 # <a name="odata-language-overview-for-filter-orderby-and-select-in-azure-cognitive-search"></a>OData-Sprachübersicht für `$filter`, `$orderby` und `$select` in der kognitiven Azure-Suche
@@ -70,7 +70,7 @@ Ein Bezeichner kann entweder auf den Namen eines Felds oder auf eine **Bereichsv
 
 Die folgende Tabelle enthält Beispiele für Feldpfade:
 
-| Feldpfad | Beschreibung |
+| Feldpfad | BESCHREIBUNG |
 | --- | --- |
 | `HotelName` | Verweist auf ein Feld der obersten Ebene des Indexes |
 | `Address/City` | Verweist auf das untergeordnete Feld `City` eines komplexen Felds im Index; `Address` ist in diesem Beispiel vom Typ `Edm.ComplexType` |
@@ -129,7 +129,7 @@ Zeichenfolgenkonstanten in OData werden durch einfache Anführungszeichen getren
 Beispielsweise würde ein Ausdruck mit einem unformatierten Apostroph wie „Alice's car“ in OData als die Zeichenfolgenkonstante `'Alice''s car'` dargestellt werden.
 
 > [!IMPORTANT]
-> Wenn Sie Filter programmgesteuert erstellen, sollten Sie daran denken, Zeichenfolgenkonstanten aus Benutzereingaben mit Escapezeichen zu versehen. Dadurch wird – insbesondere bei Verwendung von Filtern zum Implementieren von [Sicherheitskürzungen](search-security-trimming-for-azure-search.md) – die Möglichkeit von [Injektionsangriffen](https://wikipedia.org/wiki/SQL_injection) umgangen.
+> Wenn Sie Filter programmgesteuert erstellen, sollten Sie daran denken, Zeichenfolgenkonstanten aus Benutzereingaben mit Escapezeichen zu versehen. Dadurch wird – insbesondere bei Verwendung von Filtern zum Implementieren von [Sicherheitskürzungen](https://wikipedia.org/wiki/SQL_injection) – die Möglichkeit von [Injektionsangriffen](search-security-trimming-for-azure-search.md) umgangen.
 
 ### <a name="constants-syntax"></a>Konstantensyntax
 

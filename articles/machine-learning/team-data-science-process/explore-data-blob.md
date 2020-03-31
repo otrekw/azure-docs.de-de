@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 29011760a94a05020150ceddeba4303b87c2f610
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76722185"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Untersuchen von Daten in Azure Blob Storage mit Pandas
@@ -62,7 +62,7 @@ dataframe_blobdata = pd.read_csv(LOCALFILE)
 
 Sie können nun die Daten durchsuchen und Funktionen mit diesem DataSet generieren.
 
-## <a name="blob-dataexploration"></a>Beispiele für das Untersuchen von Daten mithilfe von Pandas
+## <a name="examples-of-data-exploration-using-pandas"></a><a name="blob-dataexploration"></a>Beispiele für das Untersuchen von Daten mithilfe von Pandas
 Hier sind einige Beispiele für Möglichkeiten zum Durchsuchen von Daten mithilfe von Pandas:
 
 1. Untersuchen der **Anzahl von Zeilen und Spalten**

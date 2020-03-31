@@ -12,11 +12,11 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cf2ca3bde0cfee97adee8bb875df1522e95b1f53
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869302"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230862"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal
 
@@ -71,7 +71,7 @@ Gehen Sie wie folgt vor, um einer Gruppe Benutzer für die B2B-Zusammenarbeit ma
 3. Wählen Sie unter **Verwalten** die Option **Gruppen** aus.
 4. Wählen Sie eine Gruppe aus, oder klicken Sie auf **Neue Gruppe**, um eine neue Gruppe zu erstellen. Es empfiehlt sich, in der Gruppenbeschreibung anzugeben, dass die Gruppe B2B-Gastbenutzer enthält.
 5. Wählen Sie **Mitglieder** aus. 
-6. Führen Sie einen der folgenden Schritte aus:
+6. Führen Sie eines der folgenden Verfahren aus:
    - Falls der Gastbenutzer bereits im Verzeichnis vorhanden ist, suchen Sie nach dem B2B-Benutzer. Wählen Sie den Benutzer aus, und klicken Sie auf **Auswählen**, um ihn der Gruppe hinzuzufügen.
    - Wenn der Gastbenutzer im Verzeichnis nicht bereits vorhanden ist, laden Sie ihn in die Gruppe ein. Geben Sie dazu seine E-Mail-Adresse in das Suchfeld ein, verfassen Sie anschließend optional eine persönliche Nachricht, und klicken Sie dann auf **Auswählen**. Die Einladung wird automatisch an den eingeladenen Benutzer gesendet.
      
@@ -93,7 +93,7 @@ Gehen Sie wie folgt vor, um einer Anwendung Benutzer für die B2B-Zusammenarbeit
 
 6. Klicken Sie auf **Benutzer hinzufügen**.
 7. Klicken Sie unter **Zuweisung hinzufügen** auf **Benutzer und Gruppen**.
-8. Führen Sie einen der folgenden Schritte aus:
+8. Führen Sie eines der folgenden Verfahren aus:
    - Falls der Gastbenutzer bereits im Verzeichnis vorhanden ist, suchen Sie nach dem B2B-Benutzer. Wählen Sie den Benutzer aus, und klicken Sie dann auf **Auswählen** > **Zuweisen**, um ihn der App hinzuzufügen.
    - Falls der Gastbenutzer noch nicht im Verzeichnis vorhanden ist, geben Sie unter **Mitglied auswählen oder externen Benutzer einladen** die E-Mail-Adresse des Benutzers ein. Geben Sie im Nachrichtenfeld optional eine persönliche Nachricht ein. Klicken Sie unter dem Nachrichtenfeld auf **Einladen**.
            

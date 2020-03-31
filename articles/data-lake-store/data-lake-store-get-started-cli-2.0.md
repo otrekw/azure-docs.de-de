@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 9431cc7fa12b86371ce6b2325aca8e13d264442e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60885339"
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-cli"></a>Erste Schritte mit Azure Data Lake Store mithilfe der Azure CLI
@@ -40,7 +40,7 @@ Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
 * **Azure CLI**: Entsprechende Anweisungen finden Sie unter [Installieren von Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 
 In diesem Artikel wird ein einfacheres Authentifizierungskonzept mit Data Lake Storage Gen1 verwendet, bei dem Sie sich als Endbenutzer anmelden. Die Zugriffsebene für das Data Lake Storage Gen1-Konto und das Dateisystem hängt dann von der Zugriffsebene des angemeldeten Benutzers ab. Für die Authentifizierung mit Data Lake Storage Gen1 stehen mit **Endbenutzerauthentifizierung** und **Dienst-zu-Dienst-Authentifizierung** aber auch noch andere Konzepte zur Verfügung. Anweisungen und weitere Informationen zur Authentifizierung finden Sie unter [Endbenutzerauthentifizierung](data-lake-store-end-user-authenticate-using-active-directory.md) oder [Dienst-zu-Dienst-Authentifizierung](data-lake-store-authenticate-using-active-directory.md).
 
@@ -63,7 +63,7 @@ In diesem Artikel wird ein einfacheres Authentifizierungskonzept mit Data Lake S
 
 ## <a name="create-an-azure-data-lake-storage-gen1-account"></a>Erstellen eines Azure Data Lake Storage Gen1-Kontos
 
-1. Erstellen Sie eine neue Ressourcengruppe. Geben Sie für den folgenden Befehl die Parameterwerte ein, die Sie verwenden möchten. Wenn der Name des Standorts Leerzeichen enthält, setzen Sie ihn in doppelte Anführungszeichen. Beispiel: „USA (Ost) 2“. 
+1. Erstellen Sie eine neue Ressourcengruppe. Geben Sie für den folgenden Befehl die Parameterwerte ein, die Sie verwenden möchten. Wenn der Name des Standorts Leerzeichen enthält, setzen Sie ihn in doppelte Anführungszeichen. Beispiel: „USA, Osten 2“. 
    
     ```azurecli
     az group create --location "East US 2" --name myresourcegroup
@@ -185,7 +185,7 @@ In diesem Abschnitt erfahren Sie, wie Sie ACLs und Berechtigungen mithilfe der A
     az dls fs access show --account mydatalakestoragegen1 --path /mynewfolder/vehicle1_09142014.csv
     ```
 
-    Die Ausgabe sollte in etwa wie folgt aussehen:
+    Die Ausgabe sollte ähnlich der Folgenden aussehen:
 
         {
             "entries": [
@@ -236,4 +236,4 @@ Geben Sie nach entsprechender Aufforderung **Y** ein, um das Konto zu löschen.
 * [Verwenden von Azure Data Lake Storage Gen1 für Big Data-Anforderungen](data-lake-store-data-scenarios.md) 
 * [Schützen von Daten in Data Lake Storage Gen1](data-lake-store-secure-data.md)
 * [Verwenden von Azure Data Lake Analytics mit Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Verwenden von Azure HDInsight mit Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Erstellen von HDInsight-Clustern mithilfe von Azure Data Lake Storage Gen1 im Azure-Portal](data-lake-store-hdinsight-hadoop-use-portal.md)

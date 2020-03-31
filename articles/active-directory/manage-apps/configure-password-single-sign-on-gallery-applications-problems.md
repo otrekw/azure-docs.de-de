@@ -15,10 +15,10 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e933c82229415a71182096a6aca9a2e535934d89
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77159045"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Probleme beim Konfigurieren des einmaligen Anmeldens per Kennwort für eine Azure AD-Kataloganwendung
@@ -39,13 +39,13 @@ Probieren Sie es zunächst mit den folgenden Schritten, um dieses Problem zu beh
 
 - Der Benutzer soll unter Verwendung der für ihn gespeicherten Anmeldeinformationen zunächst versuchen, **sich direkt bei der Anwendungswebsite anzumelden**.
 
-  * Wenn die Anmeldung funktioniert, soll der Benutzer auf der **Anwendungskachel** im Abschnitt **Apps** des Bereichs [Anwendungszugriff](https://myapps.microsoft.com/) auf die Schaltfläche **Anmeldeinformationen aktualisieren** klicken, um die Anmeldeinformationen auf den Benutzernamen und das Kennwort zu aktualisieren, die zuletzt funktioniert haben.
+  * Wenn die Anmeldung funktioniert, soll der Benutzer auf der **Anwendungskachel** im Abschnitt **Apps** des Bereichs **Anwendungszugriff** auf die Schaltfläche [Anmeldeinformationen aktualisieren](https://myapps.microsoft.com/) klicken, um die Anmeldeinformationen auf den Benutzernamen und das Kennwort zu aktualisieren, die zuletzt funktioniert haben.
 
   * Wenn Sie oder ein anderer Administrator die Anmeldeinformationen für diesen Benutzer zugewiesen werden, suchen Sie die Anwendungszuordnung des Benutzers oder der Gruppe, indem Sie zur Registerkarte **Users & Groups** der Anwendung navigieren, die Zuordnung auswählen und dann auf die Schaltfläche **Anmeldeinformationen aktualisieren** klicken.
 
 - Wenn sich der Benutzer seine eigenen Anmeldeinformationen zugewiesen hat, soll er **sich vergewissern, dass sein Kennwort in der Anwendung nicht abgelaufen ist**. Sollte dies der Fall sein, soll der Benutzer **das abgelaufene Kennwort aktualisieren**, indem er sich direkt bei der Anwendung anmeldet.
 
-  * Nachdem das Kennwort in der Anwendung aktualisiert wurde, bitten Sie den Benutzer, in der **Anwendungskachel** im Abschnitt **Apps** des Bereichs [Anwendungszugriff](https://myapps.microsoft.com/) auf die Schaltfläche **Anmeldeinformationen aktualisieren** zu klicken, um die Anmeldeinformationen auf den Benutzernamen und das Kennwort zu aktualisieren, die zuletzt bekanntermaßen funktioniert haben.
+  * Nachdem das Kennwort in der Anwendung aktualisiert wurde, bitten Sie den Benutzer, in der **Anwendungskachel** im Abschnitt **Apps** des Bereichs **Anwendungszugriff** auf die Schaltfläche [Anmeldeinformationen aktualisieren](https://myapps.microsoft.com/) zu klicken, um die Anmeldeinformationen auf den Benutzernamen und das Kennwort zu aktualisieren, die zuletzt bekanntermaßen funktioniert haben.
 
   * Wenn Sie oder ein anderer Administrator die Anmeldeinformationen für diesen Benutzer zugewiesen werden, suchen Sie die Anwendungszuordnung des Benutzers oder der Gruppe, indem Sie zur Registerkarte **Users & Groups** der Anwendung navigieren, die Zuordnung auswählen und dann auf die Schaltfläche **Anmeldeinformationen aktualisieren** klicken.
 

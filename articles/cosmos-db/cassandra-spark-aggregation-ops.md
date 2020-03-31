@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 4fbb86f4fbda9b8e521f7465bb8bb3d18602ca13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60894185"
 ---
 # <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Aggregierungsvorgänge an Azure Cosmos DB-Cassandra-API-Tabellen von Spark aus 
@@ -91,15 +91,15 @@ Wählen Sie eine [Speicheroption]( https://spark.apache.org/docs/2.2.0/rdd-progr
 
 * MEMORY_AND_DISK: Speichert das RDD als deserialisierte Java-Objekte in der JVM. Wenn das RDD nicht in den Arbeitsspeicher passt, speichern Sie die Partitionen, die nicht auf den Datenträger passen, und lesen Sie sie bei Bedarf an ihrem Speicherort.
 
-* MEMORY_ONLY_SER (Java/Scala): Speichert das RDD als serialisierte Java-Objekte (1-Byte-Array pro Partition). Diese Option ist platzsparend im Vergleich zu deserialisierten Objekten, insbesondere bei Verwendung eines schnellen Serialisierungsprogramms, aber das Lesen erfordert mehr CPU-Leistung.
+* MEMORY_ONLY_SER (Java/Scala): Speichert das RDD als serialisierte Java-Objekte – 1-Byte-Array pro Partition. Diese Option ist platzsparend im Vergleich zu deserialisierten Objekten, insbesondere bei Verwendung eines schnellen Serialisierungsprogramms, aber das Lesen erfordert mehr CPU-Leistung.
 
-* MEMORY_AND_DISK_SER (Java/Scala): Diese Speicheroption entspricht MEMORY_ONLY_SER, der einzige Unterschied besteht darin, dass Partitionen, die nicht in den Datenträgerspeicher passen, nicht bei Bedarf neu berechnet werden, sondern überlaufen.
+* MEMORY_AND_DISK_SER (Java/Scala): Diese Speicheroption entspricht MEMORY_ONLY_SER – der einzige Unterschied besteht darin, dass Partitionen überlaufen, die nicht in den Datenträgerspeicher passen, anstatt dass sie bei Bedarf neu berechnet werden.
 
 * DISK_ONLY: Speichert die RDD-Partitionen nur auf dem Datenträger.
 
-* MEMORY_ONLY_2, MEMORY_AND_DISK_2…: Diese Speicheroption ist identisch mit den oben genannten Ebenen, jede Partition wird jedoch auf zwei Clusterknoten repliziert.
+* MEMORY_ONLY_2, MEMORY_AND_DISK_2...: Identisch mit den oben genannten Ebenen, aber jede Partition wird auf beiden Clusterknoten repliziert.
 
-* OFF_HEAP (experimentell): Ähnelt MEMORY_ONLY_SER, speichert die Daten jedoch im Off-Heap-Arbeitsspeicher und erfordert Off-Heap-Arbeitsspeicher, um vorab aktiviert zu werden. 
+* OFF_HEAP (experimentell): Ähnelt MEMORY_ONLY_SER, speichert aber die Daten im Off-Heap-Arbeitsspeicher und benötigt Off-Heap-Arbeitsspeicher, um im voraus aktiviert zu werden. 
 
 ```scala
 //Workaround

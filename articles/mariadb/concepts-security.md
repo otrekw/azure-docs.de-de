@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: d23eabdacc57a3f5a10d9e3b132a6daac42fbd4d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 8f41fe1005e96b428337bc73b9d468962a079596
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772147"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527825"
 ---
 # <a name="security-in-azure-database-for-mariadb"></a>Sicherheit in Azure Database for MariaDB
 
@@ -29,13 +29,13 @@ Der Azure Database for MariaDB-Dienst nutzt das FIPS 140-2-zertifizierte Krypto
 ## <a name="network-security"></a>Netzwerksicherheit
 Verbindungen mit einem Azure Database for MariaDB-Server werden zunächst über ein regionales Gateway geleitet. Das Gateway verfügt über eine öffentlich zugängliche IP-Adresse, während die IP-Adressen des Servers geschützt sind. Weitere Informationen zum Gateway finden Sie im Artikel [Verbindungsarchitektur](concepts-connectivity-architecture.md).  
 
-Ein neu erstellter Azure Database for MariaDB-Server verfügt über eine Firewall, die alle externen Verbindungen blockiert. Obwohl sie das Gateway erreichen, dürfen sie keine Verbindung mit dem Server herstellen. 
+Ein neu erstellter Azure Database for MariaDB-Server verfügt über eine Firewall, die alle externen Verbindungen blockiert. Sie erreichen zwar das Gateway, dürfen aber keine Verbindung mit dem Server herstellen. 
 
 ### <a name="ip-firewall-rules"></a>IP-Firewallregeln
-IP-Firewallregeln gewähren den Serverzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung. Weitere Informationen finden Sie in der [Übersicht über Firewallregeln](concepts-firewall-rules.md).
+IP-Firewallregeln gewähren Serverzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung. Weitere Informationen finden Sie in der [Übersicht über Firewallregeln](concepts-firewall-rules.md).
 
 ### <a name="virtual-network-firewall-rules"></a>Firewallregeln für virtuelle Netzwerke
-Mit VNET-Dienstendpunkten wird die Konnektivität virtueller Netzwerke über den Azure-Backbone hinaus erweitert. Mithilfe von VNET-Regeln können Sie Ihren Azure Database for MariaDB-Server so konfigurieren, dass Verbindungen von ausgewählten Subnetzen in einem virtuellen Netzwerk zugelassen werden. Weitere Informationen finden Sie in der [Übersicht über VNET-Dienstendpunkte](concepts-data-access-security-vnet.md).
+Mit VNET-Dienstendpunkten wird die Konnektivität virtueller Netzwerke über den Azure-Backbone erweitert. Mithilfe von VNET-Regeln können Sie Ihren Azure Database for MariaDB-Server so konfigurieren, dass Verbindungen von ausgewählten Subnetzen in einem virtuellen Netzwerk zugelassen werden. Weitere Informationen finden Sie in der [Übersicht über VNET-Dienstendpunkte](concepts-data-access-security-vnet.md).
 
 
 ## <a name="access-management"></a>Zugriffsverwaltung

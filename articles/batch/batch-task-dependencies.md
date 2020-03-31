@@ -15,10 +15,10 @@ ms.date: 05/22/2017
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ca771117e889afc8e143c4ca4626ab2d3bb4da2f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022901"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Erstellen von Taskabhängigkeiten zum Ausführen von Tasks, die von anderen Tasks abhängen

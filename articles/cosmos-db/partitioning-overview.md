@@ -7,11 +7,11 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: 551703b5dcca082904197010366ee059998dde4b
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77621881"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227282"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Partitionierung in Azure Cosmos DB
 
@@ -33,7 +33,7 @@ Abfragen, die auf Daten in einer einzelnen logischen Partition zugreifen, sind k
 
 Informationen dazu, wie Azure Cosmos DB Partitionen verwaltet, finden Sie unter [Logische Partitionen](partition-data.md). (Es ist nicht notwendig, die internen Details zu verstehen, um Ihre Anwendungen zu erstellen oder auszuführen, sie werden aber hier für neugierige Leser beschrieben.)
 
-## <a id="choose-partitionkey"></a>Auswählen eines Partitionsschlüssels
+## <a name="choosing-a-partition-key"></a><a id="choose-partitionkey"></a>Auswählen eines Partitionsschlüssels
 
 Im Folgenden finden Sie eine gute Anleitung zum Auswählen eines Partitionsschlüssels:
 

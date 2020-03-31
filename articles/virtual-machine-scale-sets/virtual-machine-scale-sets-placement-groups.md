@@ -8,12 +8,12 @@ ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 11/9/2017
-ms.openlocfilehash: 618b677ee836327e8ed4ab7798ab35d92b364c98
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 6a872e749bae6bd29dbf73d4946e631af1660a39
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76272528"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531038"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Verwenden umfangreicher VM-Skalierungsgruppen
 Sie können nun [Azure-VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets/) mit einer Kapazität von bis zu 1.000 virtuellen Computern erstellen. Eine _umfangreiche VM-Skalierungsgruppe_ ist in diesem Dokument als Skalierungsgruppe mit mehr als 100 virtuellen Computern definiert. Diese Funktion wird über eine Skalierungsgruppeneigenschaft (_singlePlacementGroup=False_) festgelegt. 
@@ -45,16 +45,19 @@ Geben Sie beim Erstellen einer Skalierungsgruppe über das Azure-Portal einfach 
 
 Über die [Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-cli) kann mit dem Befehl _az vmss create_ eine umfangreiche VM-Skalierungsgruppe erstellt werden. Dieser Befehl legt auf der Grundlage des Arguments _instance-count_ intelligente Standardwerte wie etwa die Subnetzgröße fest:
 
-```bash
+```azurecli
 az group create -l southcentralus -n biginfra
 az vmss create -g biginfra -n bigvmss --image ubuntults --instance-count 1000
 ```
+
 Der Befehl _vmss create_ verwendet standardmäßig bestimmte Konfigurationswerte, wenn Sie diese nicht angeben. Mit dem folgenden Befehl können Sie die überschreibbaren Optionen anzeigen:
-```bash
+
+```azurecli
 az vmss create --help
 ```
 
 Wenn Sie eine umfangreiche Skalierungsgruppe mithilfe einer Azure Resource Manager-Vorlage erstellen, achten Sie darauf, dass die Vorlage eine auf Azure Managed Disks basierende Skalierungsgruppe erstellt. Die Eigenschaft _singlePlacementGroup_ kann im Abschnitt _properties_ der Ressource _Microsoft.Compute/virtualMachineScaleSets_ auf _false_ festgelegt werden. Das folgende JSON-Fragment zeigt den Anfang einer Skalierungsgruppenvorlage mit einer Kapazität von 1.000 virtuellen Computern und der Einstellung _"singlePlacementGroup" : false_:
+
 ```json
 {
   "type": "Microsoft.Compute/virtualMachineScaleSets",
@@ -71,6 +74,7 @@ Wenn Sie eine umfangreiche Skalierungsgruppe mithilfe einer Azure Resource Manag
       "mode": "Automatic"
     }
 ```
+
 Ein vollständiges Beispiel für eine Vorlage für umfangreiche Skalierungsgruppen finden Sie unter [https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json](https://github.com/gbowerman/azure-myriad/blob/master/bigtest/bigbottle.json).
 
 ## <a name="converting-an-existing-scale-set-to-span-multiple-placement-groups"></a>Konvertieren einer vorhandenen Skalierungsgruppe in eine Skalierungsgruppe, die mehrere Platzierungsgruppen umfasst

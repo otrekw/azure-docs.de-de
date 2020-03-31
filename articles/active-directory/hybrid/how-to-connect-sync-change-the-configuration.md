@@ -13,11 +13,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d77882817934d5ad98f16965aeb9dc246931c495
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919068"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230142"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect-Synchronisierung: Ändern der Standardkonfiguration
 In diesem Artikel wird Schritt für Schritt erläutert, wie Sie Änderungen an der Standardkonfiguration in der Azure AD Connect-Synchronisierung (Azure Active Directory) vornehmen. Es enthält Schrittanleitungen für einige allgemeinen Szenarien. Mit diesem Wissen sollten Sie in der Lage sein, basierend auf Ihren eigenen Geschäftsregeln einfache Änderungen an Ihrer eigenen Konfiguration vorzunehmen.
@@ -56,8 +56,8 @@ Der [Scheduler](how-to-connect-sync-feature-scheduler.md) wird standardmäßig a
 1. Klicken Sie auf **Neue Regel hinzufügen**.
 2. Geben Sie auf der Seite **Beschreibung** Folgendes ein:  
    ![Filterung für die eingehende Regel](./media/how-to-connect-sync-change-the-configuration/description2.png)  
-   * **Name:** Geben Sie einen beschreibenden Namen für die Regel ein.
-   * **Beschreibung:** Fügen Sie Informationen hinzu, damit andere Benutzer wissen, wozu die Regel dient.
+   * **Name**: Geben Sie einen beschreibenden Namen für die Regel ein.
+   * **Beschreibung**: Fügen Sie Informationen hinzu, damit andere Benutzer wissen, wozu die Regel dient.
    * **Verbundenes System:** Das System, in dem sich das Objekt befindet. Wählen Sie in diesem Fall **Active Directory Connector** aus.
    * **Verbundenes System/Metaverse-Objekttyp:** Wählen Sie **Benutzer** bzw. **Person** aus.
    * **Verknüpfungstyp:** Ändern Sie diesen Wert in **Join**.
@@ -262,9 +262,9 @@ Die Synchronisierungsregel für eingehende Daten ermöglicht die Übertragung de
 3. Klicken Sie auf die Schaltfläche **Neue Regel hinzufügen**, um eine neue Regel für eingehende Daten zu erstellen.
 4. Geben Sie auf der Registerkarte **Beschreibung** die folgende Konfiguration an:
 
-    | Attribut | Wert | Details |
+    | attribute | Wert | Details |
     | --- | --- | --- |
-    | NAME | *Geben Sie einen Namen ein.* | Beispiel: *Eingehend von AD – UserType „Benutzer“* |
+    | Name | *Geben Sie einen Namen ein.* | Beispiel: *Eingehend von AD – UserType „Benutzer“* |
     | BESCHREIBUNG | *Geben Sie eine Beschreibung ein.* |  |
     | Verbundenes System | *Wählen Sie den lokalen AD-Connector aus.* |  |
     | Objekttyp des verbundenen Systems | **Benutzer** |  |
@@ -274,7 +274,7 @@ Die Synchronisierungsregel für eingehende Daten ermöglicht die Übertragung de
 
 5. Navigieren Sie zur Registerkarte **Bereichsfilter**, und fügen Sie eine **einzelne Bereichsfiltergruppe** mit folgender Klausel hinzu:
 
-    | Attribut | Operator | Wert |
+    | attribute | Operator | Wert |
     | --- | --- | --- |
     | adminDescription | NOTSTARTWITH | Benutzer\_ |
 
@@ -304,9 +304,9 @@ Die Synchronisierungsregel für ausgehende Daten ermöglicht die Übertragung de
 3. Klicken Sie auf die Schaltfläche **Neue Regel hinzufügen**.
 4. Geben Sie auf der Registerkarte **Beschreibung** die folgende Konfiguration an:
 
-    | Attribut | Wert | Details |
+    | attribute | Wert | Details |
     | ----- | ------ | --- |
-    | NAME | *Geben Sie einen Namen ein.* | Beispiel: *Ausgehend nach AAD – UserType „Benutzer“* |
+    | Name | *Geben Sie einen Namen ein.* | Beispiel: *Ausgehend nach AAD – UserType „Benutzer“* |
     | BESCHREIBUNG | *Geben Sie eine Beschreibung ein.* ||
     | Verbundenes System | *Wählen Sie den AAD-Connector aus.* ||
     | Objekttyp des verbundenen Systems | **Benutzer** ||
@@ -316,7 +316,7 @@ Die Synchronisierungsregel für ausgehende Daten ermöglicht die Übertragung de
 
 5. Navigieren Sie zur Registerkarte **Bereichsfilter**, und fügen Sie eine **einzelne Bereichsfiltergruppe** mit zwei Klauseln hinzu:
 
-    | Attribut | Operator | Wert |
+    | attribute | Operator | Wert |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | Benutzer |
     | cloudMastered | NOTEQUAL | True |

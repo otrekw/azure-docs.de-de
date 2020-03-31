@@ -14,11 +14,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b8f44e9a1e43da2b9ce6c817898c1722fba715c4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978962"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230454"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten
 
@@ -57,7 +57,7 @@ Bevor Sie Ihr Abonnement zuweisen oder hinzufügen können, müssen Sie die folg
 
 - Achten Sie darauf, dass Sie kein Azure-Clouddienstanbieter-Abonnement (MS-AZR-0145P, MS-AZR-0146P, MS-AZR-0146P, MS-AZR-159P), kein internes Microsoft-Abonnement (MS-AZR-0015P) und kein Microsoft Imagine-Abonnement (MS-AZR-0144P) verwenden.
 
-## Zuordnen eines Abonnements zu einem Verzeichnis<a name="to-associate-an-existing-subscription-to-your-azure-ad-directory"></a>
+## <a name="associate-a-subscription-to-a-directory"></a>Zuordnen eines Abonnements zu einem Verzeichnis<a name="to-associate-an-existing-subscription-to-your-azure-ad-directory"></a>
 
 Führen Sie die folgenden Schritte aus, um Ihrem Azure AD-Verzeichnis ein vorhandenes Abonnement zuzuweisen:
 

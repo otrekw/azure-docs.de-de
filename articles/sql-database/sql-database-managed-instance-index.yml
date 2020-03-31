@@ -3,7 +3,7 @@ documentType: LandingData
 title: Verwaltete SQL-Instanz
 metadata:
   title: 'Dokumentation für die verwaltete Instanz – Tutorials, API-Referenz'
-  meta.description: Learn how to use a managed instance in Azure SQL Database.
+  description: 'Nutzen Sie Schnellstarts, Tutorials und Beispiele für die verwaltete Azure SQL-Datenbank-Instanz, eine vollständig verwaltete Instanz der SQL Server-Datenbank-Engine, die in der Cloud gehostet wird.'
   services: sql-database
   author: jovanpop-msft
   ms.reviewer: carlrab
@@ -45,7 +45,7 @@ sections:
             html: '<p>Sicherer Dienst, der in Ihrem privaten Azure VNET mit privaten IP-Adressen angeordnet ist.</p>'
           - href: /azure/sql-database/sql-database-instance-pools
             html: '<p>Kostengünstige Lösung für die Bereitstellung mehrerer verwalteter Instanzen, die die Ressourcen gemeinsam nutzen.</p>'
-            title: Instanzpools
+            title: Instanzenpools
           - title: Einfache Migration
             href: /azure/sql-database/sql-database-managed-instance-get-started-restore
             html: '<p>Sie können Ihre lokalen Datenbanken leicht zu Azure migrieren, indem Sie die native Wiederherstellung nutzen.</p>'

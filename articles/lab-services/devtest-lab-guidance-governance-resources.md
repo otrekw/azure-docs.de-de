@@ -14,10 +14,10 @@ ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 8bb00c770c61a0a5462a01ae552bd7e40a7cdb36
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77470648"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Governance der Azure DevTest Labs-Infrastruktur – Ressourcen
@@ -76,7 +76,7 @@ Sie können auch ein Lab für ein bestimmtes Projekt in Azure DevOps Projects ve
 Wie lässt sich das Löschen von Ressourcen in einem Lab verhindern?
 
 ### <a name="answer"></a>Antwort
-Es empfiehlt sich, ordnungsgemäße Berechtigungen auf Lab-Ebene festzulegen, so dass nur autorisierte Benutzer Ressourcen löschen oder Lab-Richtlinien ändern können. Entwickler sollten innerhalb der Gruppe **DevTest Labs-Benutzer** platziert werden. Der Entwicklungsleiter oder der Infrastruktur-Lead sollte als **DevTest Labs-Besitzer** festgelegt werden. Wir empfehlen, nur zwei Lab-Besitzer festzulegen. Diese Richtlinie wird auf das Coderepository ausgeweitet, um Beschädigungen zu vermeiden. Lab-Benutzer verfügen über Rechte zur Nutzung von Ressourcen, sie können aber keine Lab-Richtlinien aktualisieren. Der folgende Artikel listet die Rollen und Rechte auf, über die jede integrierte Gruppe innerhalb eines Labs verfügt: [Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs](devtest-lab-add-devtest-user.md).
+Es empfiehlt sich, ordnungsgemäße Berechtigungen auf Lab-Ebene festzulegen, so dass nur autorisierte Benutzer Ressourcen löschen oder Lab-Richtlinien ändern können. Entwickler sollten innerhalb der Gruppe **DevTest Labs-Benutzer** platziert werden. Der Entwicklungsleiter oder der Infrastruktur-Lead sollte als **DevTest Labs-Besitzer** festgelegt werden. Wir empfehlen, nur zwei Lab-Besitzer festzulegen. Diese Richtlinie wird auf das Coderepository ausgeweitet, um Beschädigungen zu vermeiden. Lab-Benutzer verfügen über Rechte zur Nutzung von Ressourcen, sie können aber keine Lab-Richtlinien aktualisieren. Der folgende Artikel listet die Rollen und Rechte auf, über die jede integrierte Gruppe innerhalb eines Labs verfügt: [Add owners and users in Azure DevTest Labs](devtest-lab-add-devtest-user.md) (Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs).
 
 ## <a name="move-lab-to-another-resource-group"></a>Verschieben eines Labs in eine andere Ressourcengruppe 
 

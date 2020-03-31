@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 2a449c55a0998f1a114f6aa9d2c067e48cc0cdce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b95863c1ae53bd0642aec356f55aba1faf8ef09
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443678"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535781"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Lösungsmuster in Azure Stream Analytics
 
@@ -92,7 +92,7 @@ Ein weiteres häufiges Muster ist das Data Warehousing in Echtzeit, auch als Str
 
 ![ASA – Data Warehousing](media/stream-analytics-solution-patterns/datawarehousing.png)
 
-Eine Möglichkeit, den Durchsatz mit einem Latenzkompromiss zu verbessern, ist, die Ereignisse in Azure Blob Storage zu archivieren und sie dann [mit Polybase in SQL Data Warehouse zu importieren](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md). Sie müssen die Ausgabe von Stream Analytics in Blob Storage und die Eingabe aus Blob Storage in SQL Data Warehouse durch [Archivieren der Daten nach Zeitstempel](stream-analytics-custom-path-patterns-blob-storage-output.md) manuell zusammenfügen und in regelmäßigen Abständen importieren.
+Eine Möglichkeit, den Durchsatz mit einem Latenzkompromiss zu verbessern, ist, die Ereignisse in Azure Blob Storage zu archivieren und sie dann [mit Polybase in SQL Data Warehouse zu importieren](../synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md). Sie müssen die Ausgabe von Stream Analytics in Blob Storage und die Eingabe aus Blob Storage in SQL Data Warehouse durch [Archivieren der Daten nach Zeitstempel](stream-analytics-custom-path-patterns-blob-storage-output.md) manuell zusammenfügen und in regelmäßigen Abständen importieren.
 
 Bei diesem Nutzungsmuster wird Azure Stream Analytics als eine nahezu in Echtzeit wirkende ETL-Engine verwendet. Neu ankommende Ereignisse werden kontinuierlich transformiert und für die Nutzung durch den nachgelagerten Analysedienst gespeichert.
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
 ms.openlocfilehash: d3e267eab056589ed38c436620dd0db185291da1
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77425900"
 ---
 # <a name="multitenant-applications-in-azure"></a>Mehrinstanzenfähige Anwendungen in Azure
@@ -30,13 +30,13 @@ Im Folgenden finden Sie eine Liste der wichtigsten Anforderungen aus Sicht des A
 
 * **Bereitstellung**: Sie müssen neue Mandanten für die Anwendung bereitstellen können.  Bei mehrinstanzenfähigen Anwendungen mit einer großen Zahl an Mandanten ist es normalerweise notwendig, diesen Prozess mittels Self-Service-Bereitstellung zu automatisieren.
 * **Wartbarkeit**: Sie müssen in der Lage sein, Upgrades der Anwendung und weitere Wartungsaufgaben durchzuführen, während diese von mehreren Mandanten verwendet wird.
-* **Überwachung:** Sie müssen die Anwendung stets überwachen, um Probleme zu erkennen und zu beheben. Hier muss auch überwacht werden, wie jeder einzelne Mandat die Anwendung nutzt.
+* **Monitoring**: Sie müssen die Anwendung stets überwachen, um Probleme zu erkennen und zu beheben. Hier muss auch überwacht werden, wie jeder einzelne Mandat die Anwendung nutzt.
 
 Eine korrekt implementierte mehrinstanzenfähige Anwendung bietet Benutzern die folgenden Vorteile.
 
-* **Isolation:** : Die Aktivitäten einzelner Mandanten beeinflussen nicht die Nutzung der Anwendung durch andere Mandanten. Mandanten können untereinander nicht auf ihre Daten zugreifen. Dem Mandanten erscheint es so, als ob er die Anwendung exklusiv nutzt.
-* **Verfügbarkeit:** Für einzelne Mandanten muss die Anwendung konstant verfügbar sein, unter Umständen mit Garantien, die in einem SLA festgelegt sind. Erneut, die Aktivitäten anderer Mandanten sollten die Verfügbarkeit der Anwendung nicht beeinträchtigen.
-* **Skalierbarkeit:** Die Anwendung kann über Skalierung die Anforderungen einzelner Mandanten erfüllen. Die Präsenz und Aktivitäten anderer Mandanten sollten die Leistung der Anwendung nicht beeinträchtigen.
+* **Isolation**: Die Aktivitäten einzelner Mandanten beeinflussen nicht die Nutzung der Anwendung durch andere Mandanten. Mandanten können untereinander nicht auf ihre Daten zugreifen. Dem Mandanten erscheint es so, als ob er die Anwendung exklusiv nutzt.
+* **Verfügbarkeit**: Für einzelne Mandanten muss die Anwendung konstant verfügbar sein, unter Umständen mit Garantien, die in einem SLA festgelegt sind. Erneut, die Aktivitäten anderer Mandanten sollten die Verfügbarkeit der Anwendung nicht beeinträchtigen.
+* **Skalierbarkeit**: Die Anwendung kann über Skalierung die Anforderungen einzelner Mandanten erfüllen. Die Präsenz und Aktivitäten anderer Mandanten sollten die Leistung der Anwendung nicht beeinträchtigen.
 * **Kosten**: Die Kosten sind niedriger als bei der Ausführung einer dedizierten Einzelinstanzanwendung, da Mehrinstanzenfähigkeit die gemeinsame Nutzung von Ressourcen ermöglicht.
 * **Individualisierbarkeit**. Die Möglichkeit, die Anwendung für einen einzelnen Mandanten auf verschiedene Weisen zu individualisieren, beispielsweise durch das Hinzufügen oder Entfernen von Funktionen, Ändern von Farben und Logos oder sogar durch das Hinzufügen eigener Codes oder Skripte.
 

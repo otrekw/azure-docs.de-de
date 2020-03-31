@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 6fd7682f56fbe446904a4acdb39e78525f2523a8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435242"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Analysieren von Application Insights-Telemetrieprotokollen mit Apache Spark in HDInsight
@@ -45,7 +45,7 @@ Das folgende Diagramm zeigt die grundlegende Dienstarchitektur für dieses Beisp
 
 Application Insights kann für den fortlaufenden Export von Telemetriedaten in Blobs konfiguriert werden. HDInsight kann dann in den Blobs gespeicherte Daten lesen. Es gelten jedoch einige Anforderungen, die erfüllt werden müssen:
 
-* **Standort**: Wenn das Speicherkonto und HDInsight sich an verschiedenen Standorten befinden, kann dies die Latenz erhöhen. Gleichzeitig steigen die Kosten, da beim Verschieben von Daten zwischen Regionen Ausgangsgebühren anfallen.
+* **Speicherort**: Wenn das Speicherkonto und HDInsight sich an verschiedenen Standorten befinden, kann dies die Latenz erhöhen. Gleichzeitig steigen die Kosten, da beim Verschieben von Daten zwischen Regionen Ausgangsgebühren anfallen.
 
     > [!WARNING]  
     > Die Verwendung eines Speicherkontos an einem anderen Speicherort als HDInsight wird nicht unterstützt.
@@ -109,7 +109,7 @@ Verwenden Sie zum Hinzufügen des Azure-Speicherkontos zu einem vorhandenen Clus
    > [!NOTE]  
    > Für die verbleibenden Schritte in diesem Abschnitt wurde das Verzeichnis `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` verwendet. Ihre Verzeichnisstruktur kann anders sein.
 
-6. Geben Sie in die nächste Zelle folgenden Code ein: Ersetzen Sie `WASB_PATH` durch den Pfad aus dem vorherigen Schritt.
+6. Geben Sie in der nächsten Zelle den folgenden Code ein: Ersetzen Sie `WASB_PATH` durch den Pfad aus dem vorherigen Schritt.
 
    ```python
    jsonFiles = sc.textFile('WASB_PATH')
@@ -252,7 +252,7 @@ Verwenden Sie zum Hinzufügen des Azure-Speicherkontos zu einem vorhandenen Clus
    > [!NOTE]  
    > Für die verbleibenden Schritte in diesem Abschnitt wurde das Verzeichnis `wasbs://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` verwendet. Dieses Verzeichnis ist nur vorhanden, wenn Ihre Telemetriedaten aus einer Web-App stammen.
 
-6. Geben Sie in die nächste Zelle folgenden Code ein: Ersetzen Sie `WASB\_PATH` durch den Pfad aus dem vorherigen Schritt.
+6. Geben Sie in der nächsten Zelle den folgenden Code ein: Ersetzen Sie `WASB\_PATH` durch den Pfad aus dem vorherigen Schritt.
 
    ```scala
    var jsonFiles = sc.textFile('WASB_PATH')
