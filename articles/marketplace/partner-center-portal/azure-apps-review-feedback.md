@@ -1,19 +1,18 @@
 ---
 title: Umgang mit Prüfungsfeedback für Azure-Apps-Angebote im kommerziellen Marketplace
 description: Der Umgang mit Prüfungsfeedback für Azure-Apps-Angebote für das Anbieten oder Verkaufen in Azure Marketplace, AppSource oder über das CSP-Programm (Cloud Solution Provider) mit dem kommerziellen Marketplace-Portal im Microsoft Partner Center
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 5dd74a7be95ecf92289f2a144c9c509c71ce935b
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 3932f3fc71dc6427b6cdf93d3a7bc58534a9981c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933645"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279792"
 ---
 # <a name="handling-review-feedback"></a>Verarbeiten von Prüfungsfeedback
 

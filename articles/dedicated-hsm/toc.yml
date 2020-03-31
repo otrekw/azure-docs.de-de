@@ -4,7 +4,7 @@
   items:
     - name: Übersicht über dediziertes HSM
       href: overview.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Bereitstellen von HSMs in einem vorhandenen virtuellen Netzwerk mithilfe der Befehlszeilenschnittstelle
       href: tutorial-deploy-hsm-cli.md
@@ -22,10 +22,12 @@
       href: physical-security.md
     - name: Unterstützbarkeit
       href: supportability.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Wählen der Bereitstellungsarchitektur
       href: deployment-architecture.md
+    - name: Problembehandlung
+      href: troubleshoot.md
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen

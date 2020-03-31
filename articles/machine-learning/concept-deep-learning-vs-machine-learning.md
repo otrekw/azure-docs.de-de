@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: a930dc3974536047096912505b9a786cf53c41b8
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: bcacf4ff66e114f65ac75f0aadd1564875f15f62
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78328590"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79501372"
 ---
 # <a name="deep-learning-vs-machine-learning"></a>Deep Learning im Vergleich zu maschinellem Lernen
 
@@ -120,4 +120,4 @@ In den folgenden Artikeln erfahren Sie, wie Sie Deep Learning in [Azure Machine 
 
 - [Klassifizieren handschriftlicher Ziffern mit einem Chainer-Modell](https://docs.microsoft.com/azure/machine-learning/how-to-train-chainer?WT.mc_id=docs-article-lazzeri)
 
-Verwenden Sie außerdem das [Machine Learning Algorithm Cheat Sheet](algorithm-cheat-sheet.md), um Algorithmen für Ihr Modell auszuwählen.
+Verwenden Sie außerdem das [Machine Learning Algorithm Cheat Sheet](../synapse-analytics/sql-data-warehouse/cheat-sheet.md), um Algorithmen für Ihr Modell auszuwählen.

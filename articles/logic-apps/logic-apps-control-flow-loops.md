@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: 5f6c04c9a57dc8c250d99f2fa944203d2d73c404
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791749"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233038"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Erstellen von Schleifen in Azure Logic Apps, die Workflowaktionen wiederholen oder Arrays verarbeiten
 
@@ -20,7 +20,7 @@ Um ein Array in Ihrer Logik-App zu verarbeiten, können Sie eine [„ForEach“-
 Um Aktionen zu wiederholen, bis eine Bedingung erfüllt ist oder sich ein Zustand ändert, können Sie eine [„Until“-Schleife](#until-loop) erstellen. Ihre Logik-App führt zuerst alle Aktionen innerhalb der Schleife aus und überprüft anschließend die Bedingung oder den Status. Wenn die Bedingung erfüllt ist, wird die Schleife beendet. Andernfalls wird die Schleife wiederholt. Informationen über die maximale Anzahl der „Until“-Schleifen in einer Logik-App-Ausführung finden Sie unter [Grenzwerte und -Konfiguration](../logic-apps/logic-apps-limits-and-config.md). 
 
 > [!TIP]
-> Wenn Sie einen Auslöser verwenden, der ein Array empfängt, und für jedes Arrayelement einen Workflow ausführen möchten, können Sie dieses Array mit der [**Auslösereigenschaft** SplitOn](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) *aus dem Batch lösen*. 
+> Wenn Sie einen Auslöser verwenden, der ein Array empfängt, und für jedes Arrayelement einen Workflow ausführen möchten, können Sie dieses Array mit der [**Auslösereigenschaft** SplitOn](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)*aus dem Batch lösen*. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -232,7 +232,7 @@ Diese beispielhafte Logik-App inkrementiert täglich um 8:00 Uhr eine Variable, 
 
       | Eigenschaft | Wert | BESCHREIBUNG |
       | -------- | ----- | ----------- | 
-      | **To** | *\<email-address\@domain>* | Die E-Mail-Adresse des Empfängers. Geben Sie zum Testen Ihre eigene E-Mail-Adresse an. | 
+      | **An** | *\<email-address\@domain>* | Die E-Mail-Adresse des Empfängers. Geben Sie zum Testen Ihre eigene E-Mail-Adresse an. | 
       | **Subject** | Aktueller Wert für „Limit“ ist **Limit** | Legen Sie den E-Mail-Betreff fest. Stellen Sie in diesem Beispiel sicher, dass Sie die **Limit**-Variable einbeziehen. | 
       | **Text** | <*E-Mail-Inhalt*> | Geben Sie den Inhalt der E-Mail-Nachricht an, die Sie senden möchten. In diesem Beispiel können Sie beliebigen Text eingeben. | 
       |||| 

@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a61dcca1f78b6ba444a2deefcf6b8bb4fd5c5087
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60581298"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>Sichern von Freigaben oder Volumes in Ihrem StorSimple Virtual Array
@@ -32,7 +32,7 @@ Dieses Tutorial gilt nur für StorSimple Virtual Array. Informationen zur 8000-S
 
 ## <a name="back-up-shares-and-volumes"></a>Sichern von Freigaben und Volumes
 
-Sicherungen stellen Zeitpunktschutz zur Verfügung und verbessern die Wiederherstellbarkeit bei gleichzeitiger Minimierung der Wiederherstellungszeiten für Freigaben und Volumes. Zum Sichern einer Freigabe oder eines Volumes auf dem StorSimple-Gerät sind zwei Vorgehensweisen möglich: **geplant** oder **manuell**. Diese Methoden werden in den folgenden Abschnitten erläutert.
+Sicherungen stellen Zeitpunktschutz zur Verfügung und verbessern die Wiederherstellbarkeit bei gleichzeitiger Minimierung der Wiederherstellungszeiten für Freigaben und Volumes. Für das Sichern einer Freigabe oder eines Volumes auf dem StorSimple-Gerät sind zwei Methoden möglich: **geplant** oder **manuell**. Diese Methoden werden in den folgenden Abschnitten erläutert.
 
 ## <a name="change-the-backup-start-time"></a>Ändern der Startzeit der Sicherung
 

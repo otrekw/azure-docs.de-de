@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: 8b92aa6057c81ec9442372c5b85918cb92196d61
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "74894761"
 ---
 # <a name="simple-entity"></a>Entität vom Typ „Simple“
@@ -35,7 +35,7 @@ In der vorherigen Äußerung wird `Bob Jones` als die einfache Entität `Custome
 
 Die vom Endpunkt zurückgegebenen Daten enthalten den Namen der Entität, den in der Äußerung ermittelten Text, den Speicherort des erkannten Texts und die Bewertung:
 
-#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
+#### <a name="v2-prediction-endpoint-response"></a>[V2 – Antwort für Vorhersageendpunkt](#tab/V2)
 
 ```JSON
 "entities": [
@@ -49,7 +49,7 @@ Die vom Endpunkt zurückgegebenen Daten enthalten den Namen der Entität, den in
 ]
 ```
 
-#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
+#### <a name="v3-prediction-endpoint-response"></a>[V3 – Antwort für Vorhersageendpunkt](#tab/V3)
 
 Dies ist der JSON-Code, wenn `verbose=false` in der Abfragezeichenfolge festgelegt ist:
 
@@ -88,7 +88,7 @@ This is the JSON if `verbose=true` is set in the query string:
 
 * * *
 
-|Datenobjekt|Name der Entität|Wert|
+|Datenobjekt|Name der Entität|value|
 |--|--|--|
 |Entität vom Typ „Simple“|`Customer`|`bob jones`|
 

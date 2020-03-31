@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: pafarley
 ms.openlocfilehash: a9726e41a84926d00d48b51e31f534a3d8c2fe0c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72757138"
 ---
 # <a name="create-human-reviews-rest"></a>Erstellen von Überprüfungen durch Personen (REST)
@@ -129,7 +129,7 @@ Im Standardanforderungstext werden Beispiele für die verschiedenen Überprüfun
 
 ### <a name="submit-your-request"></a>Senden der Anforderung
   
-Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus** `200 OK`, und im Feld **Antwortinhalt** wird eine ID für die Überprüfung angezeigt. Kopieren Sie diese ID für die folgenden Schritte.
+Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus**`200 OK`, und im Feld **Antwortinhalt** wird eine ID für die Überprüfung angezeigt. Kopieren Sie diese ID für die folgenden Schritte.
 
 ![Feld „Antwortinhalt“ mit Überprüfungs-ID in der Konsole „Überprüfen – Erstellen“](images/test-drive-review-2.PNG)
 
@@ -149,7 +149,7 @@ Geben Sie die REST-Aufrufparameter wie im obigen Abschnitt ein. In diesem Schrit
 
 ![Abrufergebnisse in der Konsole „Überprüfen – Erstellen“](images/test-drive-review-3.PNG)
   
-Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus** `200 OK`, und im Feld **Antwortinhalt** werden die Überprüfungsdetails im JSON-Format wie folgt angezeigt:
+Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus**`200 OK`, und im Feld **Antwortinhalt** werden die Überprüfungsdetails im JSON-Format wie folgt angezeigt:
 
 ```json
 {  

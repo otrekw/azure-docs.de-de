@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
 ms.openlocfilehash: 4cb0d464a82d8da0a09f5391eb1d06dfacd84290
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76776047"
 ---
 # <a name="scenario-port-conflict-when-starting-services-in-azure-hdinsight"></a>Szenario: Portkonflikt beim Starten von Diensten in Azure HDInsight

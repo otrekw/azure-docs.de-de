@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
 ms.openlocfilehash: aedc7ea3d778d52f6f348837430987568af188ef
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77649601"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>Bekannte Probleme/Migrationseinschränkungen beim Verwenden des Hybridmodus
@@ -99,4 +99,4 @@ In den Abschnitten unten werden szenariospezifische Probleme im Zusammenhang mit
 
 **Problem:** Bei Onlinemigrationen zu einer verwalteten SQL-Datenbank-Instanz wird auf dem Computer, auf dem der Hybridworker ausgeführt wird, eine hohe CPU-Auslastung angezeigt, wenn zu viele Sicherungen vorhanden sind oder die Sicherungen zu groß sind.
 
-**Lösung**: Um dieses Problem zu beheben, verwenden Sie komprimierte Sicherungen, teilen Sie die Migration so, dass sie mehrere Freigaben verwendet, oder skalieren Sie den Computer, auf dem der Hybridworker ausgeführt wird, zentral hoch.
+**Lösung**: Um dieses Problem zu beheben, verwenden Sie komprimierte Sicherungen, teilen Sie die Migration so, dass sie mehrere Freigaben verwendet, oder skalieren Sie den Computer, auf dem der Hybridworker ausgeführt wird, hoch.

@@ -4,10 +4,10 @@ description: Beschreibt, wie benutzerdefinierte Funktionen in einer Azure Resour
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: 2c09572a460aa028b23987033d2b77e2aad8a0cd
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943219"
 ---
 # <a name="user-defined-functions-in-azure-resource-manager-template"></a>Benutzerdefinierte Funktionen in einer Azure Resource Manager-Vorlage

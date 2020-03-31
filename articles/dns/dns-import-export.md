@@ -8,12 +8,12 @@ ms.service: dns
 ms.date: 4/3/2019
 ms.author: rohink
 ms.topic: conceptual
-ms.openlocfilehash: 9475870185e4aee1b6f2ffbe175435cd4f6d8bed
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: a5c2fdde564eba2d95e7f14f4d47e4d381739d5d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76936977"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79365167"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Importieren und Exportieren einer DNS-Zonendatei mit der Azure-Befehlszeilenschnittstelle
 
@@ -173,7 +173,7 @@ Sie müssen sich – wie beim Zonenimport – zunächst anmelden, Ihr Abonnement
 
 Um die vorhandene Azure-DNS-Zone **contoso.com** in die Ressourcengruppe **myresourcegroup** in der Datei **contoso.com.txt** (im aktuellen Ordner) zu exportieren, führen Sie `azure network dns zone export` aus. Mit diesem Befehl wird der Azure DNS-Dienst aufgefordert, die Ressourceneintragssätze in der Zone aufzuzählen und die Ergebnisse in eine mit BIND kompatible Zonendatei zu exportieren.
 
-```
+```azurecli
 az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
 ```
 

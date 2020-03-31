@@ -8,16 +8,16 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 6c7112b6b5944042036fd3e7af6ec6f6dfbde0c0
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 795acd67a8d4a9f8b8b7d78799a92134f249cf8d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526143"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233002"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Preismodell für Azure Logic Apps
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) unterstützt Sie dabei, automatisierte Integrationsworkflows zu erstellen und auszuführen, die in der Cloud horizontal herunterskaliert werden können. In diesem Artikel ist beschrieben, wie Abrechnung und Preise für Azure Logic Apps funktionieren. Eine Preisübersicht finden Sie unter [Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps).
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) unterstützt Sie dabei, automatisierte Integrationsworkflows zu erstellen und auszuführen, die in der Cloud abskaliert werden können. In diesem Artikel ist beschrieben, wie Abrechnung und Preise für Azure Logic Apps funktionieren. Eine Preisübersicht finden Sie unter [Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps).
 
 <a name="consumption-pricing"></a>
 
@@ -64,7 +64,7 @@ Eine [*Integrationsdienstumgebung* (Integration Service Environment, ISE)](../lo
 
   Weitere Informationen zu den Grenzwerten für Integrationskonten finden Sie unter [Logic Apps-Grenzwerte und -Konfiguration](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Weitere Informationen zu [Tarifen für Integrationskonten und den zugehörigen Preismodellen](#integration-accounts) erhalten Sie weiter unten in diesem Thema.
 
-Wenn Sie sich für die Premium-ISE-SKU entscheiden, verfügt die Basiseinheit über eine feste Kapazität. Falls Sie mehr Durchsatz benötigen, können Sie während der Erstellung oder nachträglich [weitere Skalierungseinheiten hinzufügen](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity). Die Developer-ISE-SKU verfügt nicht über die Funktion zum Hinzufügen weiterer Skalierungseinheiten. Für Logik-Apps, die in einer ISE ausgeführt werden, fallen keine Kosten für die Datenaufbewahrung an.
+Wenn Sie sich für die Premium-ISE-SKU entscheiden, verfügt die Basiseinheit über eine feste Kapazität. Falls Sie mehr Durchsatz benötigen, können Sie während der Erstellung oder nachträglich [weitere Skalierungseinheiten hinzufügen](../logic-apps/ise-manage-integration-service-environment.md#add-capacity). Die Developer-ISE-SKU verfügt nicht über die Funktion zum Hinzufügen weiterer Skalierungseinheiten. Für Logik-Apps, die in einer ISE ausgeführt werden, fallen keine Kosten für die Datenaufbewahrung an.
 
 Eine Preisübersicht finden Sie unter [Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps).
 

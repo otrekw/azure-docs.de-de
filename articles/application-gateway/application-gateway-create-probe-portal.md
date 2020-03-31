@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 15daf47a1cb44635932311e60b3690af9ff58677
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74074606"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Erstellen eines benutzerdefinierten Tests für ein Anwendungsgateway über das Portal
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](application-gateway-create-probe-portal.md)
+> * [Azure portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Klassische Azure PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -32,7 +32,7 @@ Wenn Sie nicht bereits über ein Anwendungsgateway verfügen, besuchen Sie [Erst
 
 Tests werden in einem aus zwei Schritten bestehenden Prozess im Portal konfiguriert. Der erste Schritt besteht in der Eingabe der für die Testkonfiguration erforderlichen Werte. Im zweiten Schritt testen Sie die Back-End-Integrität mithilfe dieser Testkonfiguration und speichern den Test. 
 
-### <a name="createprobe"></a>Eingeben der Testeigenschaften
+### <a name="enter-probe-properties"></a><a name="createprobe"></a>Eingeben der Testeigenschaften
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für eine [kostenlose einmonatige Testversion](https://azure.microsoft.com/free) registrieren.
 
@@ -49,12 +49,12 @@ Tests werden in einem aus zwei Schritten bestehenden Prozess im Portal konfiguri
    |**Name**|customProbe|Dieser Wert ist der Anzeigename für den Test, auf den Sie über das Portal zugreifen können.|
    |**Protokoll**|HTTP oder HTTPS | Das Protokoll, das vom Integritätstest verwendet wird. |
    |**Host**|z.B.: contoso.com|Dieser Wert ist der Name des virtuellen Hosts (nicht der VM-Hostname), der auf dem Anwendungsserver ausgeführt wird. Der Test wird an diese Adresse gesendet: (Protokoll)://(Hostname):(Port aus HTTP-Einstellungen)/urlPath.  Dies ist relevant, wenn in Application Gateway mehrere Standorte konfiguriert sind. Wenn Application Gateway für einen einzelnen Standort konfiguriert ist, geben Sie „127.0.0.1“ ein.|
-   |**Hostnamen aus Back-End-Adresse auswählen**|Ja oder nein|Legt den *host*-Header im Test auf den Hostnamen der Back-End-Ressource im Back-End-Pool fest, der der HTTP-Einstellung für den Test zugeordnet ist. Dies ist insbesondere im Falle mehrinstanzenfähiger Back-Ends, z. B. Azure App Service, erforderlich. [Weitere Informationen](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
-   |**Path**|/ oder ein anderer Pfad|Dies ist der Rest der vollständigen URL für den benutzerdefinierten Test. Ein gültiger Pfad beginnt mit „/“. Verwenden Sie für den Standardpfad von „http:\//contoso.com“ nur „/“. |
+   |**Hostnamen aus Back-End-Adresse auswählen**|Ja oder Nein|Legt den *host*-Header im Test auf den Hostnamen der Back-End-Ressource im Back-End-Pool fest, der der HTTP-Einstellung für den Test zugeordnet ist. Dies ist insbesondere im Falle mehrinstanzenfähiger Back-Ends, z. B. Azure App Service, erforderlich. [Weitere Informationen](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
+   |**Pfad**|/ oder ein anderer Pfad|Dies ist der Rest der vollständigen URL für den benutzerdefinierten Test. Ein gültiger Pfad beginnt mit „/“. Verwenden Sie für den Standardpfad von „http:\//contoso.com“ nur „/“. |
    |**Interval (Sek.)**|30|Legen Sie fest, wie oft der Test ausgeführt werden soll, um die Integrität zu prüfen. Es wird nicht empfohlen, einen Wert unter 30 Sekunden einzustellen.|
    |**Timeout (Sek.)**|30|Legen Sie fest, wie lange der Test warten soll, bis ein Timeout auftritt. Die Überprüfung wird als fehlerhaft markiert, wenn innerhalb des Zeitraums für die Zeitüberschreitung keine gültige Antwort empfangen wird. Das Timeoutintervall muss lang genug sein, damit ein HTTP-Aufruf erfolgen und sichergestellt werden kann, dass die Integritätsseite für das Back-End verfügbar ist. Beachten Sie, dass der Timeoutwert nicht größer als der in dieser Testeinstellung verwendete Wert für „Intervall“ oder der Wert für „Anforderungstimeout“ in der HTTP-Einstellung für diesen Test sein sollte.|
 |**Fehlerhafter Schwellenwert**|3|Dies ist die Anzahl aufeinanderfolgender erfolgloser Versuche, nach denen der Test als „fehlerhaft“ eingestuft wird. Der Schwellenwert kann auf 1 oder mehr festgelegt werden.|
-   |**Übereinstimmungsbedingungen für Test verwenden**|Ja oder nein|Standardmäßig gilt eine HTTP(S)-Antwort mit einem Statuscode zwischen 200 und 399 als fehlerfrei. Sie können den zulässigen Bereich von Back-End-Antwortcode oder Back-End-Antworttext ändern. [Weitere Informationen](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
+   |**Übereinstimmungsbedingungen für Test verwenden**|Ja oder Nein|Standardmäßig gilt eine HTTP(S)-Antwort mit einem Statuscode zwischen 200 und 399 als fehlerfrei. Sie können den zulässigen Bereich von Back-End-Antwortcode oder Back-End-Antworttext ändern. [Weitere Informationen](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
    |**HTTP-Einstellungen**|Auswahl aus Dropdownmenü|Der Test wird den hier ausgewählten HTTP-Einstellungen zugeordnet und überwacht daher die Integrität dieses Back-End-Pools, der der ausgewählten HTTP-Einstellung zugeordnet ist. Er verwendet den gleichen Port für die Testanforderung wie den Port, der in der ausgewählten HTTP-Einstellung verwendet wird. Sie können nur HTTP-Einstellungen auswählen, die keinem anderen benutzerdefinierten Test zugeordnet sind. <br>Beachten Sie, dass nur HTTP-Einstellungen zugeordnet werden können, die über dasselbe Protokoll wie das in dieser Testkonfiguration gewählte Protokoll verfügen und für den Schalter *Hostnamen aus Back-End-Adresse auswählen* denselben Status aufweisen.|
    
    > [!IMPORTANT]
@@ -81,7 +81,7 @@ Nachdem Sie die Testeigenschaften eingegeben haben, können Sie die Integrität 
 
 Tests werden in einem aus zwei Schritten bestehenden Prozess im Portal konfiguriert. Im ersten Schritt wird der Test erstellt. Im zweiten Schritt fügen Sie den Test den Back-End-HTTP-Einstellungen des Anwendungsgateways hinzu.
 
-### <a name="createprobe"></a>Erstellen des Tests
+### <a name="create-the-probe"></a><a name="createprobe"></a>Erstellen des Tests
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für eine [kostenlose einmonatige Testversion](https://azure.microsoft.com/free) registrieren.
 
@@ -98,12 +98,12 @@ Tests werden in einem aus zwei Schritten bestehenden Prozess im Portal konfiguri
    |**Name**|customProbe|Dieser Wert ist der Anzeigename für den Test, auf den Sie über das Portal zugreifen können.|
    |**Protokoll**|HTTP oder HTTPS | Das Protokoll, das vom Integritätstest verwendet wird. |
    |**Host**|z.B.: contoso.com|Dieser Wert ist der Name des virtuellen Hosts (nicht der VM-Hostname), der auf dem Anwendungsserver ausgeführt wird. Der Test wird an diese Adresse gesendet: (Protokoll)://(Hostname):(Port aus HTTP-Einstellungen)/urlPath.  Dies ist relevant, wenn in Application Gateway mehrere Standorte konfiguriert sind. Wenn Application Gateway für einen einzelnen Standort konfiguriert ist, geben Sie „127.0.0.1“ ein.|
-   |**Hostnamen aus Back-End-Adresse auswählen**|Ja oder nein|Legt den *host*-Header im Test auf den Hostnamen der Back-End-Ressource im Back-End-Pool fest, der der HTTP-Einstellung für den Test zugeordnet ist. Dies ist insbesondere im Falle mehrinstanzenfähiger Back-Ends, z. B. Azure App Service, erforderlich. [Weitere Informationen](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
-   |**Path**|/ oder ein anderer Pfad|Dies ist der Rest der vollständigen URL für den benutzerdefinierten Test. Ein gültiger Pfad beginnt mit „/“. Verwenden Sie für den Standardpfad von „http:\//contoso.com“ nur „/“. |
+   |**Hostnamen aus Back-End-Adresse auswählen**|Ja oder Nein|Legt den *host*-Header im Test auf den Hostnamen der Back-End-Ressource im Back-End-Pool fest, der der HTTP-Einstellung für den Test zugeordnet ist. Dies ist insbesondere im Falle mehrinstanzenfähiger Back-Ends, z. B. Azure App Service, erforderlich. [Weitere Informationen](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address)|
+   |**Pfad**|/ oder ein anderer Pfad|Dies ist der Rest der vollständigen URL für den benutzerdefinierten Test. Ein gültiger Pfad beginnt mit „/“. Verwenden Sie für den Standardpfad von „http:\//contoso.com“ nur „/“. |
    |**Interval (Sek.)**|30|Legen Sie fest, wie oft der Test ausgeführt werden soll, um die Integrität zu prüfen. Es wird nicht empfohlen, einen Wert unter 30 Sekunden einzustellen.|
    |**Timeout (Sek.)**|30|Legen Sie fest, wie lange der Test warten soll, bis ein Timeout auftritt. Die Überprüfung wird als fehlerhaft markiert, wenn innerhalb des Zeitraums für die Zeitüberschreitung keine gültige Antwort empfangen wird. Das Timeoutintervall muss lang genug sein, damit ein HTTP-Aufruf erfolgen und sichergestellt werden kann, dass die Integritätsseite für das Back-End verfügbar ist. Beachten Sie, dass der Timeoutwert nicht größer als der in dieser Testeinstellung verwendete Wert für „Intervall“ oder der Wert für „Anforderungstimeout“ in der HTTP-Einstellung für diesen Test sein sollte.|
 |**Fehlerhafter Schwellenwert**|3|Dies ist die Anzahl aufeinanderfolgender erfolgloser Versuche, nach denen der Test als „fehlerhaft“ eingestuft wird. Der Schwellenwert kann auf 1 oder mehr festgelegt werden.|
-   |**Übereinstimmungsbedingungen für Test verwenden**|Ja oder nein|Standardmäßig gilt eine HTTP(S)-Antwort mit einem Statuscode zwischen 200 und 399 als fehlerfrei. Sie können den zulässigen Bereich von Back-End-Antwortcode oder Back-End-Antworttext ändern. [Weitere Informationen](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
+   |**Übereinstimmungsbedingungen für Test verwenden**|Ja oder Nein|Standardmäßig gilt eine HTTP(S)-Antwort mit einem Statuscode zwischen 200 und 399 als fehlerfrei. Sie können den zulässigen Bereich von Back-End-Antwortcode oder Back-End-Antworttext ändern. [Weitere Informationen](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#probe-matching)|
 
    > [!IMPORTANT]
    > Der Hostname ist nicht identisch mit dem Servernamen. Dieser Wert ist der Name des virtuellen Hosts, der auf dem Anwendungsserver ausgeführt wird. Der Test wird an diese Adresse gesendet: http://(Hostname):(Port aus HTTP-Einstellungen)/urlPath.

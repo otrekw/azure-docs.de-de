@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: a686465b0006c2e9aac6e06cb4ab12d30921e8c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61235424"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227058"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Verwalten von Medienobjekten und verwandten Entitäten mit dem Media Services .NET SDK
 > [!div class="op_single_selector"]

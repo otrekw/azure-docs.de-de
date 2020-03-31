@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
 ms.openlocfilehash: a6d394fec6e7cf0a230f61ad05c236a1f84dad9d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68854014"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>Verwenden von Dekorationsmarkierungen zum Markieren von Text
@@ -36,7 +36,7 @@ Bevor das Ergebnis auf Ihrer Benutzeroberfläche angezeigt wird, sollten Sie die
 
 In Bing haben Sie die Möglichkeit, Unicode-Zeichen oder HTML-Tags als Marker bereitzustellen. Fügen Sie den Abfrageparameter [textFormat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat) ein, um anzugeben, welche Marker verwendet werden sollen. 
 
-| Wert             | Marker                       |
+| value             | Marker                       |
 |-------------------|------------------------------|
 | `textFormat=Raw`  | Unicode-Zeichen (Standard) |
 | `textFormat=HTML` | HTML-Zeichen              |

@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.custom: seodec18
 ms.openlocfilehash: f1012f8c00de4b19bbf6206408ec1a806e09e54f
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77482342"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service-Plan – Übersicht
@@ -26,7 +26,7 @@ Wenn Sie einen App Service-Plan in einer bestimmten Region (z.B. „Europa, West
 
 Mit dem _Tarif_ eines App Service-Plans wird ermittelt, welche App Service-Features Sie erhalten und welche Kosten für den Plan anfallen. Es gibt verschiedene Kategorien von Tarifen:
 
-- **Freigegebene Computeressourcen**: Bei **Free** und **Shared** (die beiden Basistarife) wird eine App auf derselben Azure-VM wie andere App Service-Apps ausgeführt, z.B. Apps anderer Kunden. Für diese Tarife werden CPU-Kontingente für jede App zugeteilt, die auf den freigegebenen Ressourcen ausgeführt wird, und für die Ressourcen ist das horizontale Hochskalieren nicht möglich.
+- **Freigegebene Computeressourcen**: Bei **Free** und **Shared** (die beiden Basistarife) wird eine App auf derselben Azure-VM wie andere App Service-Apps ausgeführt, z.B. Apps anderer Kunden. Für diese Tarife werden CPU-Kontingente für jede App zugeteilt, die auf den freigegebenen Ressourcen ausgeführt wird, und für die Ressourcen ist das Aufskalieren nicht möglich.
 - **Dedizierte Computeressourcen**: In den Tarifen **Basic**, **Standard**, **Premium** und **PremiumV2** werden Apps auf dedizierten Azure-VMs ausgeführt. Nur für Apps desselben App Service-Plans werden dieselben Computeressourcen gemeinsam genutzt. Je höher der Tarif, desto mehr VM-Instanzen stehen Ihnen für das horizontale Hochskalieren zur Verfügung.
 - **Isoliert**: In diesem Tarif werden dedizierte Azure-VMs in dedizierten virtuellen Azure-Netzwerken ausgeführt. Er stellt zusätzlich zur Computeisolation Netzwerkisolation für Ihre Apps bereit. Sie verfügen hiermit über die maximalen Funktionen für die horizontale Skalierung.
 
@@ -51,13 +51,13 @@ Für jeden Tarif wird auch eine bestimmte Teilmenge mit App Service-Features ber
 
 ## <a name="how-does-my-app-run-and-scale"></a>Wie wird meine App ausgeführt und skaliert?
 
-Für die Tarife **Free** und **Shared** erhält eine App CPU-Minuten auf einer freigegebenen VM-Instanz und kann nicht horizontal hochskaliert werden. Für andere Tarife wird eine App wie im Folgenden angegeben ausgeführt und skaliert.
+Für die Tarife **Free** und **Shared** erhält eine App CPU-Minuten auf einer freigegebenen VM-Instanz und kann nicht aufskaliert werden. Für andere Tarife wird eine App wie im Folgenden angegeben ausgeführt und skaliert.
 
 Wenn Sie eine App in App Service erstellen, wird sie in einen App Service-Plan eingefügt. Die App wird auf allen VM-Instanzen ausgeführt, die im App Service-Plan konfiguriert sind. Wenn unter einem App Service-Plan mehrere Apps enthalten sind, nutzen diese dieselben VM-Instanzen gemeinsam. Falls Sie für eine App über mehrere Bereitstellungsslots verfügen, werden alle Bereitstellungsslots ebenfalls auf denselben VM-Instanzen ausgeführt. Wenn Sie Diagnoseprotokolle aktivieren, Sicherungen durchführen oder WebJobs ausführen, werden hierfür auch CPU-Zyklen und Arbeitsspeicher auf diesen VM-Instanzen genutzt.
 
 Somit ist der App Service-Plan die Skalierungseinheit der App Service-Apps. Wenn der Plan für das Ausführen von fünf VM-Instanzen konfiguriert ist, werden alle Apps im Plan auf allen fünf Instanzen ausgeführt. Falls der Plan für die automatische Skalierung konfiguriert ist, werden alle Apps des Plans zusammen basierend auf den Einstellungen für die automatische Skalierung horizontal hochskaliert.
 
-Informationen zum horizontalen Hochskalieren einer App finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../monitoring-and-diagnostics/insights-how-to-scale.md).
+Informationen zum Aufskalieren einer App finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../monitoring-and-diagnostics/insights-how-to-scale.md).
 
 <a name="cost"></a>
 
@@ -84,13 +84,13 @@ Für die Nutzung der App Service-Features, die für Sie verfügbar sind (Konfigu
 
 ## <a name="what-if-my-app-needs-more-capabilities-or-features"></a>Was passiert, wenn meine App mehr Funktionen oder Features benötigt?
 
-Ihr App Service-Plan kann jederzeit zentral hoch- und herunterskaliert werden. Hierzu wird einfach der Tarif für den Plan geändert. Sie können zuerst einen niedrigeren Tarif wählen und dann später zentral hochskalieren, wenn Sie mehr App Service-Features benötigen.
+Ihr App Service-Plan kann jederzeit zentral hoch- und herunterskaliert werden. Hierzu wird einfach der Tarif für den Plan geändert. Sie können zuerst einen niedrigeren Tarif wählen und dann später hochskalieren, wenn Sie mehr App Service-Features benötigen.
 
-Beispiel: Sie können Ihre Web-App zu Beginn für einen App Service-Plan mit dem Tarif **Free** testen, ohne dass Kosten anfallen. Wenn Sie der Web-App Ihren [benutzerdefinierten DNS-Namen](app-service-web-tutorial-custom-domain.md) hinzufügen möchten, können Sie Ihren Plan einfach zentral auf den Tarif **Shared** hochskalieren. Wenn Sie später [eine SSL-Bindung erstellen](configure-ssl-bindings.md) möchten, skalieren Sie Ihren Tarif zentral auf den Tarif **Basic** hoch. Die Nutzung von [Stagingumgebungen](deploy-staging-slots.md) wird durch das zentrale Hochskalieren auf den Tarif **Standard** erreicht. Falls Sie mehr Kerne, Arbeitsspeicher oder Speicherplatz benötigen, können Sie für denselben Tarif zentral auf eine höhere VM-Größe hochskalieren.
+Beispiel: Sie können Ihre Web-App zu Beginn für einen App Service-Plan mit dem Tarif **Free** testen, ohne dass Kosten anfallen. Wenn Sie der Web-App Ihren [benutzerdefinierten DNS-Namen](app-service-web-tutorial-custom-domain.md) hinzufügen möchten, können Sie Ihren Plan einfach zentral auf den Tarif **Shared** hochskalieren. Wenn Sie später [eine SSL-Bindung erstellen](configure-ssl-bindings.md) möchten, skalieren Sie Ihren Tarif zentral auf den Tarif **Basic** hoch. Die Nutzung von [Stagingumgebungen](deploy-staging-slots.md) wird durch das Hochskalieren auf den Tarif **Standard** erreicht. Falls Sie mehr Kerne, Arbeitsspeicher oder Speicherplatz benötigen, können Sie für denselben Tarif auf eine höhere VM-Größe hochskalieren.
 
 Dies funktioniert auch umgekehrt. Sobald Sie die Funktionen oder Features eines höheren Tarifs nicht mehr benötigen, können Sie zentral auf einen niedrigeren Tarif herunterskalieren und Kosten sparen.
 
-Informationen zum zentralen Hochskalieren des App Service-Plans finden Sie unter [Zentrales Hochskalieren einer App in Azure](manage-scale-up.md).
+Informationen zum Hochskalieren des App Service-Plans finden Sie unter [Hochskalieren einer App in Azure](manage-scale-up.md).
 
 Wenn Ihre App mit anderen Apps unter demselben App Service-Plan angeordnet ist, können Sie die Leistung der App verbessern, indem Sie die Computeressourcen isolieren. Hierzu verschieben Sie die App in einen separaten App Service-Plan. Weitere Informationen finden Sie unter [Move an app to another App Service plan](app-service-plan-manage.md#move) (Verschieben einer App in einen anderen App Service-Plan).
 

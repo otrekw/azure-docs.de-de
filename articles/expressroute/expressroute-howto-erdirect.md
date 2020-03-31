@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: jaredro
 ms.openlocfilehash: 2722a852b1119ef619bc414bce5cb3a8ff6f8f00
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77031611"
 ---
 # <a name="how-to-configure-expressroute-direct"></a>Konfigurieren von ExpressRoute Direct
 
 ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen Netzwerk von Microsoft zu verbinden, und zwar an strategisch über die ganze Welt verteilten Peeringstandorten. Weitere Informationen über ExpressRoute finden Sie unter [Informationen zu ExpressRoute Direct](expressroute-erdirect-about.md).
 
-## <a name="resources"></a>Erstellen der Ressource
+## <a name="create-the-resource"></a><a name="resources"></a>Erstellen der Ressource
 
 1. Melden Sie sich bei Azure an, und wählen Sie das Abonnement aus. Die ExpressRoute Direct-Ressource und ExpressRoute-Leitungen müssen sich im selben Abonnement befinden.
 
@@ -155,7 +155,7 @@ ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen 
    Circuits                   : []
    ```
 
-## <a name="state"></a>Ändern des Verwaltungsstatus von Verknüpfungen
+## <a name="change-admin-state-of-links"></a><a name="state"></a>Ändern des Verwaltungsstatus von Verknüpfungen
 
   Dieser Prozess sollte verwendet werden, um einen Layer-1-Test durchzuführen, der sicherstellt, dass jede Kreuzverbindung ordnungsgemäß in jeden Router für primäre und sekundäre Verbindungen eingebunden ist.
 1. Rufen Sie ExpressRoute Direct-Details ab.
@@ -225,7 +225,7 @@ ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen 
 
    Verwenden Sie die gleiche Vorgehensweise mit `AdminState = "Disabled"`, um die Ports zu deaktivieren.
 
-## <a name="circuit"></a>Erstellen einer Leitung
+## <a name="create-a-circuit"></a><a name="circuit"></a>Erstellen einer Leitung
 
 Sie können standardmäßig 10 Leitungen im Abonnement erstellen, in dem sich die ExpressRoute Direct-Ressource befindet. Dieser Wert kann vom Support erhöht werden. Sie sind für die Nachverfolgung der Werte für die bereitgestellte und belegte Bandbreite zuständig. Die bereitgestellte Bandbreite ist die Summe der Bandbreite aller Leitungen in der ExpressRoute Direct-Ressource, und die belegte Bandbreite ist die physische Nutzung der zugrunde liegenden physischen Schnittstellen.
 

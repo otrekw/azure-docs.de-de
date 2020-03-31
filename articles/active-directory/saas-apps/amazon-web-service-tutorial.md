@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 986aa000102cfed01666c8a95c00847ecc0cd651
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 40fd8217285643aa7d706d194d7f78ba0634dd32
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047263"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048965"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Amazon Web Services (AWS)
 
@@ -337,7 +337,10 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anme
     ![Screenshot: Abschnitt „Einstellungen“ mit hervorgehobener Option „Ein“](./media/amazon-web-service-tutorial/provisioning2.png)
 
 > [!NOTE]
-> Der Bereitstellungsdienst importiert nur Rollen aus AWS in Azure AD. Von diesem Dienst werden keine Benutzer und Gruppen aus Azure AD in AWS bereitgestellt.
+> Der Bereitstellungsdienst importiert Rollen nur aus AWS in Azure AD. Vom Dienst werden keine Benutzer und Gruppen aus Azure AD in AWS bereitgestellt.
+
+> [!NOTE]
+> Nach dem Speichern der Anmeldeinformationen für die Bereitstellung müssen Sie warten, bis der erstmalige Synchronisierungszyklus ausgeführt wird. Die Synchronisierung dauert normalerweise ca. 40 Minuten. Der Status wird unten auf der Seite für die **Bereitstellung** unter **Aktueller Status** angezeigt.
 
 ### <a name="create-amazon-web-services-aws-test-user"></a>Erstellen eines Testbenutzers für Amazon Web Services (AWS)
 
@@ -367,7 +370,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Amazon Web Services (AWS)“ klick
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

@@ -3,12 +3,12 @@ title: Ausführen von Azure Functions aus einem Paket
 description: Lassen Sie die Azure Functions-Laufzeit Ihre Funktionen ausführen, indem Sie eine Bereitstellungspaketdatei einbinden, die Ihre Projektdateien für die Funktions-App enthält.
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: 3ae287939f22469b03f0e10f184f067274464905
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: d40896d6a4659945dbeda9ca965366f0b2ca4bd2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79087024"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79365270"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Ausführen Ihrer Azure Functions aus einem Paket
 
@@ -58,32 +58,6 @@ Das folgende Beispiel zeigt eine Funktions-App, die so konfiguriert ist, dass Si
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-### <a name="use-key-vault-references"></a>Verwenden von Key Vault-Verweisen
-
-Zur Erhöhung der Sicherheit können Sie Key Vault-Verweise im Zusammenhang mit Ihrer externen URL verwenden. Hierdurch bleibt die ruhende URL verschlüsselt und ermöglicht die Nutzung von Key Vault für die Verwaltung und Rotation von Geheimnissen. Es wird empfohlen, Azure Blob Storage zu verwenden, damit Sie den zugeordneten SAS-Schlüssel problemlos rotieren können. Azure Blob Storage wird ruhend verschlüsselt, wodurch Ihre Anwendungsdaten geschützt bleiben, wenn sie nicht in App Service bereitgestellt werden.
-
-1. Erstellen Sie eine Azure Key Vault-Instanz.
-
-    ```azurecli
-    az keyvault create --name "Contoso-Vault" --resource-group <group-name> --location eastus
-    ```
-
-1. Fügen Sie Ihre externe URL in Key Vault als Geheimnis hinzu.
-
-    ```azurecli
-    az keyvault secret set --vault-name "Contoso-Vault" --name "external-url" --value "<insert-your-URL>"
-    ```
-
-1. Erstellen Sie die App-Einstellung `WEBSITE_RUN_FROM_PACKAGE`, und legen Sie den Wert als Key Vault-Verweis auf die externe URL fest.
-
-    ```azurecli
-    az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="@Microsoft.KeyVault(SecretUri=https://Contoso-Vault.vault.azure.net/secrets/external-url/<secret-version>"
-    ```
-
-Weitere Informationen finden Sie in den folgenden Artikeln.
-
-- [Key Vault-Verweise für App Service](../app-service/app-service-key-vault-references.md)
-- [Azure Storage encryption for data at rest (Azure Storage-Verschlüsselung für ruhende Daten)](../storage/common/storage-service-encryption.md)
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

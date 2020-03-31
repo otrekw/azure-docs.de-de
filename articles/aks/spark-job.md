@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 7465f8eb4357fcb6faa1d0fee0173837b6cb019b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4b3248cb9ab61a158f70b5a2d6ae9dd846501816
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593648"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473624"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Ausführen von Apache Spark-Aufträgen in ACS
 
@@ -186,7 +186,7 @@ export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-strin
 
 Laden Sie mit den folgenden Befehlen die JAR-Datei in das Azure Storage-Konto hoch.
 
-```bash
+```azurecli
 CONTAINER_NAME=jars
 BLOB_NAME=SparkPi-assembly-0.1.0-SNAPSHOT.jar
 FILE_TO_UPLOAD=target/scala-2.11/SparkPi-assembly-0.1.0-SNAPSHOT.jar
@@ -241,8 +241,10 @@ kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount
 Dieser Vorgang startet den Spark-Auftrag, der den Auftragsstatus für Ihre Shellsitzung streamt. Während der Auftragsausführung können Sie den Spark-Treiberpod und die Executorpods mithilfe des Befehls „kubectl get pods“ anzeigen. Öffnen Sie eine zweite Terminalsitzung, um diese Befehle auszuführen.
 
 ```console
-$ kubectl get pods
+kubectl get pods
+```
 
+```output
 NAME                                               READY     STATUS     RESTARTS   AGE
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   1/1       Running    0          16s
 spark-pi-2232778d0f663768ab27edc35cb73040-exec-1   0/1       Init:0/1   0          4s
@@ -270,7 +272,7 @@ kubectl get pods --show-all
 
 Ausgabe:
 
-```bash
+```output
 NAME                                               READY     STATUS      RESTARTS   AGE
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   0/1       Completed   0          1m
 ```
@@ -283,7 +285,7 @@ kubectl logs spark-pi-2232778d0f663768ab27edc35cb73040-driver
 
 In diesen Protokollen können Sie das Ergebnis des Spark-Auftrags sehen, also den Wert von Pi.
 
-```bash
+```output
 Pi is roughly 3.152155760778804
 ```
 

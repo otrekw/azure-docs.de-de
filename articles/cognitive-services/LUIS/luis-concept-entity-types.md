@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: diberry
 ms.openlocfilehash: 6ee156efb5512c92d86ba05513b6a2b91df4eae8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976960"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79219180"
 ---
 # <a name="entities-and-their-purpose-in-luis"></a>Entitäten und ihr Zweck in LUIS
 
@@ -37,7 +37,7 @@ Entitäten müssen für alle Trainingsäußerungen jeder Absicht eines Modells b
 
  Sie können eigene Entitäten definieren oder vorgefertigte Entitäten verwenden, um für gängige Konzepte, z. B. [datetimeV2](luis-reference-prebuilt-datetimev2.md), [ordinal](luis-reference-prebuilt-ordinal.md), [email](luis-reference-prebuilt-email.md) und [phone number](luis-reference-prebuilt-phonenumber.md), Zeit zu sparen.
 
-|Äußerung|Entität|Data|
+|Äußerung|Entität|Daten|
 |--|--|--|
 |Kaufe 3 Tickets nach New York|Vordefinierte Anzahl<br>Location.Destination|3<br>New York|
 |Kaufe ein Ticket von New York nach London am 5. März|Location.Origin<br>Location.Destination<br>Vordefinierte datetimeV2|New York<br>London<br>5\. März 2018|
@@ -109,7 +109,7 @@ Die zwei Beispiele einer `location`-Entität müssen extrahiert werden. Die Clie
 Es gibt zwei Verfahren zum Extrahieren von Daten mit Kontextzusammenhang:
 
  * Die Entität `location` ist eine durch maschinelles Lernen erworbene Entität, für die zwei Unterkomponenten-Entitäten verwendet werden, um `origin` und `destination` (bevorzugt) zu erfassen.
- * Für die Entität `location` werden die beiden **Rollen** `origin` und `destination` genutzt.
+ * Für die Entität `location` werden die beiden **Rollen**`origin` und `destination` genutzt.
 
 Eine Äußerung kann mehrere Entitäten enthalten und ohne Verwendung einer Zerlegung oder von Rollen extrahiert werden, wenn der Nutzungskontext keine besondere Bedeutung hat. Wenn die Äußerung beispielsweise eine Liste mit Orten enthält (`I want to travel to Seattle, Cairo, and London.`), haben die einzelnen Elemente der Liste keine zusätzliche Bedeutung.
 
@@ -140,5 +140,5 @@ Erfahren Sie mehr über die Konzepte für gute [Äußerungen](luis-concept-utter
 
 Weitere Informationen zum Hinzufügen von Entitäten zu LUIS-Apps finden Sie unter [Hinzufügen von Entitäten](luis-how-to-add-entities.md).
 
-Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Extrahieren strukturierter Daten aus Benutzeräußerungen mithilfe der durch maschinelles Lernen erworbenen Entitäten in Language Understanding (LUIS)](tutorial-machine-learned-entity.md). Darin wird beschrieben, wie Sie strukturierte Daten mithilfe der durch maschinelles Lernen erworbenen Entität aus einer Äußerung extrahieren.
+Siehe [Tutorial: Extrahieren strukturierter Daten aus Benutzeräußerungen mithilfe der durch maschinelles Lernen erworbenen Entitäten in Language Understanding (LUIS)](tutorial-machine-learned-entity.md). Darin wird beschrieben, wie Sie strukturierte Daten mithilfe der durch maschinelles Lernen erworbenen Entität aus einer Äußerung extrahieren.
  

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6a1b7a76ef1efda51f09ac733b3d434235ff40ef
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74900296"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Bearbeiten von Gesichtern mit Azure Media Analytics 
@@ -153,13 +153,13 @@ Untenstehend finden Sie Beispiele für Weichzeichnertypen.
 
 ![Medium](./media/media-services-face-redaction/blur2.png)
 
-#### <a name="high"></a>Hoch
+#### <a name="high"></a>High
 
-![Hoch](./media/media-services-face-redaction/blur3.png)
+![High](./media/media-services-face-redaction/blur3.png)
 
-#### <a name="box"></a>Box
+#### <a name="box"></a>Feld
 
-![Box](./media/media-services-face-redaction/blur4.png)
+![Feld](./media/media-services-face-redaction/blur4.png)
 
 #### <a name="black"></a>Schwarz
 

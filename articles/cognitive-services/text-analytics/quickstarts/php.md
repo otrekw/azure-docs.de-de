@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
 ms.openlocfilehash: a74cdb79da668cdba44c051c7b7eada3ace8abe4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75378584"
 ---
 # <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>Schnellstart: Verwenden von PHP zum Aufrufen der Textanalyse von Cognitive Services
 <a name="HOLTop"></a>
 
-Dieser Artikel veranschaulicht, wie Sie mithilfe der  [Textanalyse-APIs](//go.microsoft.com/fwlink/?LinkID=759711) mit PHP eine [Sprache erkennen](#Detect), [Stimmungen analysieren](#SentimentAnalysis), [Schlüsselbegriffe extrahieren](#KeyPhraseExtraction) und [verknüpfte Entitäten erkennen](#Entities).
+Dieser Artikel veranschaulicht, wie Sie mithilfe der [Textanalyse-APIs](#Detect)[mit PHP eine ](#SentimentAnalysis)Sprache erkennen[, ](#KeyPhraseExtraction)Stimmungen analysieren[, ](#Entities)Schlüsselbegriffe extrahieren [ und ](//go.microsoft.com/fwlink/?LinkID=759711)verknüpfte Entitäten erkennen .
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 

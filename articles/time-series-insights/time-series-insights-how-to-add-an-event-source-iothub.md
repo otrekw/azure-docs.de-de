@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 01/30/2020
 ms.custom: seodec18
 ms.openlocfilehash: 3ea73e2ca20faea30294bc5d5e1788415095c39f
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76905367"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>Hinzufügen einer IoT Hub-Ereignisquelle zu einer Time Series Insights-Umgebung
@@ -72,7 +72,7 @@ So fügen Sie Ihrem IoT-Hub eine neue Consumergruppe hinzu
 
        [![Bereich „Neue Ereignisquelle“: In der Option „IoT Hub aus verfügbaren Abonnements verwenden“ festzulegende Eigenschaften](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-create-configure-confirm.png)](media/time-series-insights-how-to-add-an-event-source-iothub/tsi-create-configure-confirm.png#lightbox)
 
-       | Eigenschaft | Beschreibung |
+       | Eigenschaft | BESCHREIBUNG |
        | --- | --- |
        | Subscription | Das Abonnement, zu dem der gewünschte IoT-Hub gehört. |
        | IoT Hub-Name | Der Name des ausgewählten IoT-Hubs. |
@@ -83,7 +83,7 @@ So fügen Sie Ihrem IoT-Hub eine neue Consumergruppe hinzu
 
       In der folgenden Tabelle werden die für die Option **IoT Hub-Einstellungen manuell angeben** erforderlichen Eigenschaften beschrieben:
 
-       | Eigenschaft | Beschreibung |
+       | Eigenschaft | BESCHREIBUNG |
        | --- | --- |
        | Abonnement-ID | Das Abonnement, zu dem der gewünschte IoT-Hub gehört. |
        | Resource group | Der Name der Ressourcengruppe, in der der IoT-Hub erstellt wurde. |
@@ -93,7 +93,7 @@ So fügen Sie Ihrem IoT-Hub eine neue Consumergruppe hinzu
 
     * Beide Optionen teilen die folgenden Konfigurationsoptionen:
 
-       | Eigenschaft | Beschreibung |
+       | Eigenschaft | BESCHREIBUNG |
        | --- | --- |
        | IoT Hub-Consumergruppe | Die Consumergruppe, die Ereignisse aus dem IoT-Hub liest. Wir empfehlen ausdrücklich, dass Sie eine dedizierte Consumergruppe für Ihre Ereignisquelle verwenden. |
        | Ereignisserialisierungsformat | Zurzeit ist JSON das einzige verfügbare Serialisierungsformat. Die Ereignismeldungen müssen in diesem Format vorliegen, damit Daten gelesen werden können. |

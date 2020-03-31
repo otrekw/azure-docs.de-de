@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie einen vordefinierten Node.js-Container f
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 6cf60472307a378d2fd4258a9777152344a11ded
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: fdc5129fc395f99cb4c244414ea952b2776dc4dc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670273"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227546"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Konfigurieren einer Linux-Node.js-App für Azure App Service
 
@@ -43,6 +43,32 @@ Diese Einstellung legt die zu verwendende Version von Node.js fest, sowohl zur L
 
 > [!NOTE]
 > Sie sollten die Node.js-Version in der `package.json` des Projekts festlegen. Die Bereitstellungs-Engine wird in einem separaten Container ausgeführt, der alle unterstützten Node.js-Versionen enthält.
+
+## <a name="customize-build-automation"></a>Anpassen der Buildautomatisierung
+
+Wenn Sie Ihre App mithilfe von Git- oder ZIP-Paketen mit aktivierter Buildautomatisierung bereitstellen, durchläuft die App Service-Buildautomatisierung die Schritte der folgenden Sequenz:
+
+1. Ausführen eines benutzerdefinierten Skripts, falls mittels `PRE_BUILD_SCRIPT_PATH` angegeben.
+1. Ausführen von `npm install` ohne Flags, was npm `preinstall` und `postinstall`-Skripts einschließt und auch `devDependencies` installiert.
+1. Ausführen von `npm run build`, wenn ein Buildskript in Ihrer *package.json* angegeben ist.
+1. Ausführen von `npm run build:azure`, wenn ein build:azure-Skript in Ihrer *package.json* angegeben ist.
+1. Ausführen eines benutzerdefinierten Skripts, falls mittels `POST_BUILD_SCRIPT_PATH` angegeben.
+
+> [!NOTE]
+> Wie in der [npm-Dokumentation](https://docs.npmjs.com/misc/scripts) beschrieben, werden Skripts namens `prebuild` und `postbuild` vor bzw. nach `build` ausgeführt, falls angegeben. `preinstall` und `postinstall` werden vor bzw. nach `install` ausgeführt.
+
+`PRE_BUILD_COMMAND` und `POST_BUILD_COMMAND` sind Umgebungsvariablen, die standardmäßig leer sind. Um Präbuildbefehle auszuführen, definieren Sie `PRE_BUILD_COMMAND`. Um Postbuildbefehle auszuführen, definieren Sie `POST_BUILD_COMMAND`.
+
+Im folgenden Beispiel werden die beiden Variablen für eine Reihe von Befehlen angegeben, die durch Kommas getrennt sind.
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+Weitere Umgebungsvariablen zum Anpassen der Buildautomatisierung finden Sie unter [Oryx-Konfiguration](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
+
+Weitere Informationen, wie App Service Node.js-Apps in Linux ausführt und erstellt, finden Sie unter [Oryx-Dokumentation: Erkennen und Erstellen von Node.js-Apps](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/nodejs.md).
 
 ## <a name="configure-nodejs-server"></a>Konfigurieren des Node.js-Servers
 
@@ -246,10 +272,12 @@ Wenn sich eine funktionierende Node.js-App in App Service anders verhält oder F
     - Bestimmte Webframeworks können benutzerdefinierte Startskripts verwenden, wenn sie im Produktionsmodus ausgeführt werden.
 - Führen Sie Ihre App in App Service im Entwicklungsmodus aus. In [MEAN.js](https://meanjs.org/) können Sie Ihre App z. B. zur Laufzeit in den Entwicklungsmodus versetzen, indem Sie die [App-Einstellung `NODE_ENV` festlegen](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings).
 
+[!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
 > [Tutorial: Node.js-App mit MongoDB](tutorial-nodejs-mongodb-app.md)
 
 > [!div class="nextstepaction"]
-> [App Service unter Linux – Häufig gestellte Fragen](app-service-linux-faq.md)
+> [Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux](app-service-linux-faq.md)

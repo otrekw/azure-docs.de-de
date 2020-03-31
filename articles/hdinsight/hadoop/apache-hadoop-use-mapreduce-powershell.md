@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
 ms.openlocfilehash: b3c1abb7bff54e3e2d294b073b867c6c0e06f482
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75830070"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>Ausführen von MapReduce-Aufträgen mit Apache Hadoop in HDInsight mithilfe von PowerShell
@@ -33,7 +33,7 @@ Azure PowerShell stellt *Cmdlets* bereit, mit denen Sie MapReduce-Aufträge in H
 
 Die folgenden Cmdlets werden zum Ausführen der MapReduce-Aufträge in einem HDInsight-Remotecluster verwendet.
 
-|Cmdlet | Beschreibung |
+|Cmdlet | BESCHREIBUNG |
 |---|---|
 |Connect-AzAccount|Authentifiziert Azure PowerShell für Ihr Azure-Abonnement.|
 |New-AzHDInsightMapReduceJobDefinition|Erstellt aus den angegebenen MapReduce-Informationen eine neue *Auftragsdefinition*.|

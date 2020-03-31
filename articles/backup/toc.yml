@@ -15,12 +15,12 @@
       href: quick-backup-vm-powershell.md
     - name: Sichern einer VM – CLI
       href: quick-backup-vm-cli.md
-    - name: 'Sichern einer VM: Resource Manager-Vorlage'
-      displayName: ARM
+    - name: 'Sichern eines virtuellen Computers: ARM-Vorlage'
+      displayName: Resource Manager
       href: quick-backup-vm-template.md
 - name: Tutorials
   items:
-    - name: Sichern virtueller Azure-Computer nach Skalierung
+    - name: Sichern von mehreren Azure-VMs
       href: tutorial-backup-vm-at-scale.md
     - name: Sichern virtueller Azure-Computer mit PowerShell
       href: tutorial-backup-azure-vm.md
@@ -58,6 +58,8 @@
           href: backup-support-matrix-mabs-dpm.md
         - name: Supportmatrix für den MARS-Agent
           href: backup-support-matrix-mars-agent.md
+        - name: "Supportmatrix für die SQL\_Server-Sicherung"
+          href: sql-support-matrix.md
         - name: "Unterstützungsmatrix für SAP\_HANA-Sicherungen"
           href: sap-hana-backup-support-matrix.md
         - name: Unterstützte VM-SKUs für Azure Policy

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
 ms.openlocfilehash: 5439ec0c0aab5b8c127b651147e4b25d27c58390
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75379622"
 ---
 # <a name="configure-form-recognizer-containers"></a>Konfigurieren des Containers für die Formularerkennung
@@ -91,7 +91,7 @@ Die folgenden Beispiele verwenden die Konfigurationseinstellungen, um zu veransc
 
 Ersetzen Sie in der folgenden Tabelle {_argument_name_} durch Ihre eigenen Werte:
 
-| Platzhalter | value |
+| Platzhalter | Wert |
 |-------------|-------|
 | **{FORM_RECOGNIZER_API_KEY}** | Der Schlüssel, der zum Starten des Containers verwendet wird. Er steht im Azure-Portal auf der Seite „Form Recognizer Keys“ (Schlüssel für Formularerkennung) zur Verfügung. |
 | **{FORM_RECOGNIZER_ENDPOINT_URI}** | Den Wert für den URI des Abrechnungsendpunkts finden Sie im Azure-Portal auf der Seite „Form Recognizer Overview“ (Formularerkennung – Übersicht).|

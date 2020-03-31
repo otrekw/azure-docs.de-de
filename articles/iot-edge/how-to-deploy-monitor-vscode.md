@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 08299a589dc6e8f768cba7ef976e109ef1fb69d7
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75773613"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>Bedarfsabhängiges Bereitstellen von IoT Edge-Modulen mithilfe Visual Studio Code
@@ -220,7 +220,7 @@ Nachdem Sie das Bereitstellungsmanifest und Tags im Gerätezwilling konfiguriert
 
    Geben Sie Werte für die folgenden Parameter an:
 
-  | Parameter | Beschreibung |
+  | Parameter | BESCHREIBUNG |
   | --- | --- |
   | Bereitstellungs-ID | Der Name der Bereitstellung, die im IoT Hub erstellt werden soll. Geben Sie Ihrer Bereitstellung einen eindeutigen Namen, der bis zu 128 Kleinbuchstaben umfasst. Verwenden Sie dabei weder Leerzeichen noch die folgenden ungültigen Zeichen: `& ^ [ ] { } \ | " < > /`. |
   | Zielbedingung | Geben Sie eine Zielbedingung ein, um festzulegen, auf welche Geräte diese Bereitstellung angewendet werden soll. Die Bedingung basiert auf den Gerätezwillingstags oder auf den gemeldeten Gerätezwillingseigenschaften und muss dem Ausdrucksformat entsprechen. Beispiel: `tags.environment='test' and properties.reported.devicemodel='4000x'`. |

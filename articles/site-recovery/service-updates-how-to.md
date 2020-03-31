@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.openlocfilehash: 3489f7f812798504d0c57a265a04e57344105419
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910472"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229114"
 ---
 # <a name="service-updates-in-site-recovery"></a>Dienstupdates in Azure Site Recovery
 
@@ -118,7 +118,7 @@ Das Beispiel in der Tabelle verdeutlicht dies.
 |9.16 |  9.18 | Nicht obligatorisch|
 |9.16 | 9.19 | Nicht obligatorisch|
 | 9.16 | 9.20 | Nicht obligatorisch
- | 9.16 | 9.21 | Obligatorisch.<br/><br/> Aktualisieren Sie auf 9.20, und führen Sie dann vor dem Upgrade auf 9.21 einen Neustart aus.
+ | 9.16 | 9.21 | Mandatory.<br/><br/> Aktualisieren Sie auf 9.20, und führen Sie dann vor dem Upgrade auf 9.21 einen Neustart aus.
 
 ## <a name="hyper-v-vm-disaster-recovery-to-azure"></a>Notfallwiederherstellung von virtuellen Hyper-V-Computern in Azure
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 03/10/2020
 ms.author: dapine
-ms.openlocfilehash: 5d30693eb13104504d1cf27ffdbfb8d098d4ef9e
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 2beee81bc365d00e59a62cacabacc5f5d6b62a42
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367751"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79474780"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Installieren und Ausführen von Containern für den Speech-Dienst (Vorschau)
 
@@ -28,8 +28,8 @@ Mit Speech-Containern können Kunden eine Speech-basierte Anwendungsarchitektur 
 
 | Funktion | Features | Neueste Version |
 |--|--|--|
-| Spracherkennung | Transkribiert kontinuierliche Echtzeitsprache oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen. | 2.0.0 |
-| Benutzerdefinierte Spracherkennung | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Speech-Portal](https://speech.microsoft.com/customspeech) und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen. | 2.0.0 |
+| Spracherkennung | Transkribiert kontinuierliche Echtzeitsprache oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen. | 2.1.1 |
+| Benutzerdefinierte Spracherkennung | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Speech-Portal](https://speech.microsoft.com/customspeech) und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen. | 2.1.1 |
 | Text-zu-Sprache | Konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.3.0 |
 | Benutzerdefinierte Sprachsynthese | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Voice-Portal](https://aka.ms/custom-voice-portal) und konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.3.0 |
 
@@ -164,7 +164,7 @@ Alle Tags, mit Ausnahme von `latest`, haben das folgende Format und beachten die
 Das folgende Tag ist ein Beispiel für das Format:
 
 ```
-2.0.0-amd64-en-us-preview
+2.1.1-amd64-en-us-preview
 ```
 
 Informationen zu allen unterstützten Gebietsschemas des Containers **Spracherkennung** finden Sie unter [Imagetags für Spracherkennung](../containers/container-image-tags.md#speech-to-text).
@@ -344,7 +344,7 @@ Rufen Sie die **Modell-ID** ab, um diese als Argument für den `ModelId`-Paramet
 
 Die folgende Tabelle zeigt die verschiedenen `docker run`-Parameter und die entsprechenden Beschreibungen:
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 |---------|---------|
 | `{VOLUME_MOUNT}` | Die [Volumebereitstellung](https://docs.docker.com/storage/volumes/) des Hostcomputers, die Docker zum dauerhaften Speichern des benutzerdefinierten Modells verwendet. Beispiel: *C:\CustomSpeech*, wobei sich *Laufwerk „C“* auf dem Hostcomputer befindet. |
 | `{MODEL_ID}` | Die **Modell-ID** für Custom Speech von der Seite **Training** des Custom Voice-Portals. |

@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 01/07/2020
 ms.author: diberry
 ms.openlocfilehash: 30132983f37323e798efd330f5cc8f15c0a9d2b6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78270738"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>Vordefinierte DatetimeV2-Entität für eine LUIS-App
@@ -274,7 +274,7 @@ Die folgende Äußerung und ihre unvollständige JSON-Antwort sind unten dargest
 
 ## <a name="date-range-resolution-examples-for-numeric-date"></a>Beispiel zur Auflösung des Datumsbereichs für ein numerisches Datum
 
-Die `datetimeV2`-Entität extrahiert Datumsbereiche und Zeiträume. Die Felder `start` und `end` geben den Anfang und das Ende des Bereichs an. Für die Äußerung `May 2nd to May 5th` stellt LUIS **daterange**-Werte für das aktuelle und das nächste Jahr bereit. Der `XXXX`-Wert im `timex`-Feld gibt die Mehrdeutigkeit des Jahrs an. `P3D` gibt an, dass der Zeitraum drei Tage beträgt.
+Die `datetimeV2`-Entität extrahiert Datumsbereiche und Zeiträume. Die Felder `start` und `end` geben den Anfang und das Ende des Bereichs an. Für die Äußerung `May 2nd to May 5th` stellt LUIS **daterange**-Werte für das aktuelle und das nächste Jahr bereit. Der `timex`-Wert im `XXXX`-Feld gibt die Mehrdeutigkeit des Jahrs an. `P3D` gibt an, dass der Zeitraum drei Tage beträgt.
 
 Die folgende Äußerung und ihre unvollständige JSON-Antwort sind unten dargestellt.
 

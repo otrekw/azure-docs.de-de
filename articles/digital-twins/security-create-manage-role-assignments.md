@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1c83ca0abfd17db873bec62f0a0d052703862a45
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110405"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Erstellen und Verwalten von Rollenzuweisungen in Azure Digital Twins
@@ -36,7 +36,7 @@ Jede Rollenzuweisung entspricht der folgenden Definition:
 
 In der folgenden Tabelle werden die einzelnen Attribute beschrieben:
 
-| attribute | Name | Erforderlich | type | Beschreibung |
+| attribute | Name | Erforderlich | type | BESCHREIBUNG |
 | --- | --- | --- | --- | --- |
 | roleId | Bezeichner der Rollendefinition | Ja | String | Die eindeutige ID der gewünschten Rollenzuweisung. Sie können Rollendefinitionen und deren Bezeichner (IDs) durch das Abfragen der System-API ermitteln, oder die unten stehende Tabelle überprüfen. |
 | objectId | Objektbezeichner | Ja | String | Eine Azure Active Directory-ID, eine Dienstprinzipalobjekt-ID oder ein Domänenname. Wem die Rollenzuweisung zugewiesen ist (Objekt oder Person). Die Rollenzuweisung muss gemäß ihrem zugeordneten Typ formatiert sein. Für den `DomainName`-objectIdType muss objectId mit dem `“@”`-Zeichen beginnen. |
@@ -178,7 +178,7 @@ Um alle Rollenzuweisungen für einen Pfad abzurufen, stellen Sie eine authentifi
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
-| value | Ersetzen durch |
+| Wert | Ersetzen durch |
 | --- | --- |
 | YOUR_PATH | Der vollständige Pfad zum Raum |
 

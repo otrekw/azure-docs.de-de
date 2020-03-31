@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: danlep
 ms.openlocfilehash: f3294698f6973437a23fab798e8daf5642cc9b49
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77111767"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>Verwenden einer verwalteten Azure-Identität in ACR Tasks 
 
 Aktivieren Sie eine [verwaltete Identität für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) in einem [ACR-Task](container-registry-tasks-overview.md), damit der Task auf andere Azure-Ressourcen zugreifen kann, ohne Anmeldeinformationen bereitstellen oder verwalten zu müssen. Verwenden Sie beispielsweise eine verwaltete Identität, damit es möglich wird, Containerimages mit einem Taskschritt in eine andere Registrierung zu pullen oder zu pushen.
 
-In diesem Artikel erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle (Azure CLI) eine benutzerseitig oder vom System zugewiesene verwaltete Identität für einen ACR-Task aktivieren. Dazu können Sie die Azure Cloud Shell oder eine lokale Installation der Azure CLI verwenden. Wenn Sie es lokal verwenden möchten, ist die Version 2.0.68 oder höher erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
+In diesem Artikel erfahren Sie, wie Sie über die Azure-Befehlszeilenschnittstelle (Azure CLI) eine benutzerseitig oder vom System zugewiesene verwaltete Identität für einen ACR-Task aktivieren. Dazu können Sie die Azure Cloud Shell oder eine lokale Installation der Azure CLI verwenden. Wenn Sie es lokal verwenden möchten, ist die Version 2.0.68 oder höher erforderlich. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
 Zur Veranschaulichung verwenden die in diesem Artikel verwendeten Beispielbefehle [az acr task create][az-acr-task-create], um einen grundlegenden Imageerstellungstask zu erstellen, der eine verwaltete Identität aktiviert. Beispielszenarien für den Zugriff auf gesicherte Ressourcen aus einem ACR-Task mithilfe einer verwalteten Identität finden Sie unter:
 

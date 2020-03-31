@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 840049265d3b6e4d2fddd794646bfd5691aab9a1
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74083992"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>Übersicht über die Unterstützung mehrerer Mandanten für die VMware-Notfallwiederherstellung in Azure mit CSP
@@ -76,10 +76,10 @@ Konfigurieren Sie den Konfigurationsserver mit einem Konto, dem eine besondere R
 2. Weisen Sie dieser Rolle die folgenden Berechtigungen zu:
 
    * **Datenspeicher**: Speicherplatz zuordnen, Datenspeicher durchsuchen, Low-Level-Dateivorgänge, Datei entfernen, Dateien virtueller Computer aktualisieren
-   * **Netzwerk**: Netzwerk zuweisen
-   * **Ressource**: VM zu Ressourcenpool zuweisen, ausgeschaltete VM migrieren, eingeschaltete VM migrieren
-   * **Aufgaben**: Aufgabe erstellen, Aufgabe aktualisieren
-   * **VM – Konfiguration**: Alle
+   * **Netzwerk:** Netzwerk zuweisen
+   * **Ressource:** VM zu Ressourcenpool zuweisen, ausgeschaltete VM migrieren, eingeschaltete VM migrieren
+   * **Tasks**: Aufgabe erstellen, Aufgabe aktualisieren
+   * **VM – Konfiguration**: All
    * **VM – Interaktion** > Frage beantworten, Geräteverbindung, CD-Medien konfigurieren, Diskettenmedien konfigurieren, Ausschalten, Einschalten, VMware-Tools installieren
    * **VM – Bestand** > Aus vorhandenen erstellen, Neu erstellen, Registrieren, Registrierung aufheben
    * **VM – Bereitstellung** > Download virtueller Computer zulassen, Upload von Dateien virtueller Computer zulassen
@@ -89,7 +89,7 @@ Konfigurieren Sie den Konfigurationsserver mit einem Konto, dem eine besondere R
 
 3. Weisen Sie dem vCenter-Konto (das im Konfigurationsserver des Mandanten verwendet wird) für verschiedene Objekte Zugriffsebenen wie folgt zu:
 
->| Object | Role | Anmerkungen |
+>| Object | Role | Bemerkungen |
 >| --- | --- | --- |
 >| vCenter | Schreibgeschützt | Nur erforderlich, um vCenter den Zugriff zum Verwalten verschiedener Objekten zu gewähren. Sie können diese Berechtigung aufheben, wenn das Konto keinem Mandanten zur Verfügung gestellt wird oder nicht für Verwaltungsvorgänge in vCenter verwendet wird. |
 >| Datacenter | Azure_Site_Recovery |  |
