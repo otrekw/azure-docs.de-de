@@ -5,10 +5,10 @@ ms.reviewer: anuragm
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.openlocfilehash: 36eeb9f63c67a01bf37412101e23be035596de94
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74173001"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Anwendungskonsistente Sicherung von virtuellen Linux-Computern in Azure
@@ -71,7 +71,7 @@ Pre-Skripts rufen APIs nativer Anwendungen auf, mit denen die E/A-Vorgänge stil
 
 Fügen Sie beim Schreiben Ihres Pre-Skripts und Post-Skripts unbedingt eine entsprechende Protokollierung hinzu, und überprüfen Sie die Skriptprotokolle, um etwaige Skriptprobleme zu beheben. Wenn Sie bei der Ausführung von Skripts weiter Probleme haben sollten, konsultieren Sie die folgende Tabelle.
 
-| Error | Fehlermeldung | Empfohlene Maßnahme |
+| Fehler | Fehlermeldung | Empfohlene Maßnahme |
 | ------------------------ | -------------- | ------------------ |
 | Pre-ScriptExecutionFailed |Das Pre-Skript hat einen Fehler zurückgegeben, sodass die Sicherung gegebenenfalls nicht anwendungskonsistent ist.| Untersuchen Sie die Fehlerprotokolle des Skripts, um das Problem zu beheben.|  
 |Post-ScriptExecutionFailed |Das Post-Skript hat einen Fehler zurückgegeben, der sich auf den Anwendungszustand auswirken kann. |Untersuchen Sie die Fehlerprotokolle des Skripts, um das Problem zu beheben, und überprüfen Sie den Anwendungszustand. |

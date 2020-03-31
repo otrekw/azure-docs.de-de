@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.openlocfilehash: d8f40708cf5a9989146a72e2093de7bad47ffde9
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76275751"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Verwalten einer VM-Skalierungsgruppe mit der Azure CLI
@@ -38,7 +38,7 @@ az vmss list-instances \
     --output table
 ```
 
-Wenn Sie zusätzliche Informationen zu einer bestimmten VM-Instanz anzeigen möchten, fügen Sie [az vmss get-instance-view](/cli/azure/vmss) den Parameter `--instance-id` hinzu, und geben Sie die gewünschte Instanz an. Im folgenden Beispiel werden Informationen zur VM-Instanz *0* in der Skalierungsgruppe namens *myScaleSet* und der Ressourcengruppe *myResourceGroup* angezeigt. Geben Sie Ihre eigenen Namen wie folgt ein:
+Wenn Sie zusätzliche Informationen zu einer bestimmten VM-Instanz anzeigen möchten, fügen Sie `--instance-id`az vmss get-instance-view[ den Parameter ](/cli/azure/vmss) hinzu, und geben Sie die gewünschte Instanz an. Im folgenden Beispiel werden Informationen zur VM-Instanz *0* in der Skalierungsgruppe namens *myScaleSet* und der Ressourcengruppe *myResourceGroup* angezeigt. Geben Sie Ihre eigenen Namen wie folgt ein:
 
 ```azurecli
 az vmss get-instance-view \

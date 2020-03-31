@@ -12,12 +12,12 @@ ms.date: 09/11/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: c5005f6438a53215054c6152722d1449aa593b4f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 56975cebbfe4f6dd6452c850c338d431faea27bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160915"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050495"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Bewährte Methoden und Empfehlungen für Microsoft Identity Platform
 
@@ -56,7 +56,7 @@ Stellen Sie anhand der folgenden Checkliste sicher, dass Ihre Anwendung effektiv
 
 |   |   |
 |---|---|
-| ![Kontrollkästchen](./media/active-directory-integration-checklist/checkbox-two.svg) | Verwalten Sie Ihre Umleitungs-URIs: <ul><li>Verwalten Sie den Besitz all Ihrer Umleitungs-URIs, und halten Sie die zugehörigen DNS-Einträge auf dem neuesten Stand.</li><li>Verwenden Sie keine Platzhalter (*) in Ihren URIs.</li><li>Stellen Sie für Web-Apps sicher, dass alle URIs sicher und verschlüsselt sind (z.B. mithilfe von HTTPS-Schemas).</li><li>Verwenden Sie für öffentliche Clients ggf. plattformspezifische Umleitungs-URIs (vor allem für iOS und Android). Verwenden Sie andernfalls Umleitungs-URIs mit hohem Zufallsfaktor, um Konflikte beim Rückruf an Ihre App zu vermeiden.</li><li>Wenn Ihre App von einem isolierten Web-Agent aus verwendet wird, können Sie https://login.microsoftonline.com/common/oauth2/nativeclient verwenden.</li><li>Überprüfen und kürzen Sie in regelmäßigen Abständen alle nicht verwendeten oder nicht benötigten Umleitungs-URIs.</li></ul> |
+| ![Kontrollkästchen](./media/active-directory-integration-checklist/checkbox-two.svg) | Verwalten Sie Ihre Umleitungs-URIs: <ul><li>Verwalten Sie den Besitz all Ihrer Umleitungs-URIs, und halten Sie die zugehörigen DNS-Einträge auf dem neuesten Stand.</li><li>Verwenden Sie keine Platzhalter (*) in Ihren URIs.</li><li>Stellen Sie für Web-Apps sicher, dass alle URIs sicher und verschlüsselt sind (z.B. mithilfe von HTTPS-Schemas).</li><li>Verwenden Sie für öffentliche Clients ggf. plattformspezifische Umleitungs-URIs (vor allem für iOS und Android). Verwenden Sie andernfalls Umleitungs-URIs mit hohem Zufallsfaktor, um Konflikte beim Rückruf an Ihre App zu vermeiden.</li><li>Wenn Ihre App von einem isolierten Web-Agent aus verwendet wird, können Sie `https://login.microsoftonline.com/common/oauth2/nativeclient` verwenden.</li><li>Überprüfen und kürzen Sie in regelmäßigen Abständen alle nicht verwendeten oder nicht benötigten Umleitungs-URIs.</li></ul> |
 | ![Kontrollkästchen](./media/active-directory-integration-checklist/checkbox-two.svg) | Wenn Ihre App in einem Verzeichnis registriert ist, minimieren Sie die Liste der Besitzer von App-Registrierungen, und überwachen Sie sie manuell. |
 | ![Kontrollkästchen](./media/active-directory-integration-checklist/checkbox-two.svg) | Aktivieren Sie die Unterstützung für den [Flow zur impliziten OAuth2-Genehmigung](v2-oauth2-implicit-grant-flow.md) nur dann, wenn dies explizit erforderlich ist. Informationen zu einem gültigen Szenario finden Sie [hier](v2-oauth2-implicit-grant-flow.md#suitable-scenarios-for-the-oauth2-implicit-grant). |
 | ![Kontrollkästchen](./media/active-directory-integration-checklist/checkbox-two.svg) | Gehen Sie über Benutzername/Kennwort hinaus. Verwenden Sie keinen [Flow für Ressourcenbesitzer-Kennwortanmeldeinformationen (ROPC)](v2-oauth-ropc.md), in dem die Kennwörter von Benutzern direkt verarbeitet werden. Dieser Flow erfordert ein hohes Maß an Vertrauen und die Freigabe von Benutzeranmeldeinformationen. Er darf nur dann verwendet werden, wenn keine anderen, sichereren Flows genutzt werden können. Bei einigen Szenarien (z.B. DevOps) ist zu beachten, dass dieser Flow zwar weiterhin erforderlich ist, seine Verwendung jedoch Einschränkungen für Ihre Anwendung bedeutet.  Weitere moderne Ansätze finden Sie unter [Authentifizierungsflows und Anwendungsszenarien](authentication-flows-app-scenarios.md).|

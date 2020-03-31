@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 7557ed43d9ecb8fc7a584e7e8239bc7ccb972e99
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75647168"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Azure SQL-Datenbank-Server und ihre Verwaltung
@@ -165,7 +165,7 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 |[sp_delete_database_firewall_rule (Azure SQL-Datenbank)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Entfernt die Firewalleinstellung auf Datenbankebene von Ihrer Azure SQL-Datenbank oder SQL Data Warehouse. |
 
 > [!TIP]
-> Einen Schnellstart mit SQL Server Management Studio unter Microsoft Windows finden Sie unter [Azure SQL-Datenbank: Verwenden von SQL Server Management Studio zum Herstellen der Verbindung und Abfragen von Daten](sql-database-connect-query-ssms.md). Einen Schnellstart mit Visual Studio Code unter macOS, Linux oder Windows finden Sie unter [Azure SQL-Datenbank: Verwenden von Visual Studio Code zum Herstellen einer Verbindung mit und Abfragen von Daten](sql-database-connect-query-vscode.md).
+> Eine Schnellstartanleitung mit SQL Server Management Studio unter Microsoft Windows finden Sie unter [Azure SQL-Datenbank: Verwenden von SQL Server Management Studio zum Herstellen der Verbindung und Abfragen von Daten](sql-database-connect-query-ssms.md). Eine Schnellstartanleitung mit Visual Studio Code unter macOS, Linux oder Windows finden Sie unter [Azure SQL-Datenbank: Verwenden von Visual Studio Code zum Herstellen einer Verbindung mit und Abfragen von Daten](sql-database-connect-query-vscode.md).
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-rest-api"></a>Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe der REST-API
 

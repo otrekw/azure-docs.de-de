@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
 ms.openlocfilehash: 6f2db91a35573bc2cbdd0df2cb1ac09914cc956b
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76122643"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Verwenden von Azure Data Factory zum Migrieren von Daten von Amazon S3 zu Azure Storage 
@@ -39,7 +39,7 @@ Kunden haben erfolgreiche Migrationen von Daten im Petabyte-Bereich durchgeführ
 
 In der obigen Abbildung ist dargestellt, wie Sie für unterschiedliche Parallelitätsebenen hohe Geschwindigkeiten bei der Datenverschiebung erzielen:
  
-- Für eine Kopieraktivität können skalierbare Computeressourcen genutzt werden: Bei Verwendung der Azure Integration Runtime können Sie [bis zu 256 Datenintegrationseinheiten (DIUs)](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) serverlos für jede Kopieraktivität angeben. Wenn Sie die selbstgehostete Integration Runtime nutzen, können Sie den Computer manuell zentral hochskalieren oder das horizontale Hochskalieren auf mehrere Computer durchführen ([bis zu vier Knoten](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)). Bei einer einzelnen Kopieraktivität wird die Dateigruppe dann auf alle Knoten verteilt. 
+- Für eine Kopieraktivität können skalierbare Computeressourcen genutzt werden: Bei Verwendung der Azure Integration Runtime können Sie [bis zu 256 Datenintegrationseinheiten (DIUs)](https://docs.microsoft.com/azure/data-factory/copy-activity-performance#data-integration-units) serverlos für jede Kopieraktivität angeben. Wenn Sie die selbstgehostete Integration Runtime nutzen, können Sie den Computer manuell hochskalieren oder das Aufskalieren auf mehrere Computer durchführen ([bis zu vier Knoten](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime#high-availability-and-scalability)). Bei einer einzelnen Kopieraktivität wird die Dateigruppe dann auf alle Knoten verteilt. 
 - Für eine Kopieraktivität werden mehrere Threads genutzt, um für den Datenspeicher Lese- und Schreibvorgänge durchzuführen. 
 - Mit der ADF-Ablaufsteuerung können mehrere Kopieraktivitäten parallel gestartet werden, z. B. per [foreach-Schleife](https://docs.microsoft.com/azure/data-factory/control-flow-for-each-activity). 
 
@@ -63,7 +63,7 @@ Migrieren von Daten über das öffentliche Internet:
 
 - Bei dieser Architektur werden Daten auf sichere Weise per HTTPS über das öffentliche Internet übertragen. 
 - Sowohl die Amazon S3-Quelle als auch das Azure Blob Storage- bzw. Azure Data Lake Storage Gen2-Ziel sind so konfiguriert, dass Datenverkehr von allen IP-Netzwerkadressen zulässig ist.  Unten unter der zweiten Architektur ist beschrieben, wie Sie den Netzwerkzugriff auf einen bestimmten IP-Bereich beschränken können. 
-- Sie können die Leistung leicht serverlos zentral hochskalieren, um Ihre Netzwerk- und Speicherbandbreite vollständig zu nutzen, damit Sie den besten Durchsatz für Ihre Umgebung erzielen. 
+- Sie können die Leistung leicht serverlos hochskalieren, um Ihre Netzwerk- und Speicherbandbreite vollständig zu nutzen, damit Sie den besten Durchsatz für Ihre Umgebung erzielen. 
 - Mit dieser Architektur ist sowohl die Migration der Anfangsmomentaufnahme als auch der Deltadaten möglich. 
 
 Migrieren von Daten über einen privaten Link: 
@@ -71,7 +71,7 @@ Migrieren von Daten über einen privaten Link:
 ![solution-architecture-private-network](media/data-migration-guidance-s3-to-azure-storage/solution-architecture-private-network.png)
 
 - Bei dieser Architektur wird die Datenmigration über einen privaten Peeringlink zwischen AWS Direct Connect und Azure ExpressRoute durchgeführt, damit Daten niemals über das öffentliche Internet übertragen werden.  Hierfür ist die Verwendung von AWS VPC und eines virtuellen Azure-Netzwerks erforderlich. 
-- Sie müssen die selbstgehostete Integration Runtime von ADF auf einer Windows-VM in Ihrem virtuellen Azure-Netzwerk installieren, um diese Architektur zu erhalten.  Sie können Ihre VMs mit selbstgehosteter IR manuell zentral hochskalieren oder horizontal auf mehrere VMs hochskalieren (bis zu vier Knoten), um IOPS und Bandbreite für Netzwerk und Speicher vollständig zu nutzen. 
+- Sie müssen die selbstgehostete Integration Runtime von ADF auf einer Windows-VM in Ihrem virtuellen Azure-Netzwerk installieren, um diese Architektur zu erhalten.  Sie können Ihre VMs mit selbstgehosteter IR manuell hochskalieren oder auf mehrere VMs aufskalieren (bis zu vier Knoten), um IOPS und Bandbreite für Netzwerk und Speicher vollständig zu nutzen. 
 - Wenn die Übertragung von Daten per HTTPS akzeptabel ist, Sie den Netzwerkzugriff auf die S3-Quelle aber auf einen bestimmten IP-Bereich begrenzen möchten, können Sie eine Variante dieser Architektur einrichten, indem Sie AWS VPC entfernen und den privaten Link durch HTTPS ersetzen.  Es ist ratsam, das virtuelle Azure-Netzwerk und die selbstgehostete IR auf der Azure-VM beizubehalten, damit Sie eine IP-Adresse für Whitelistzwecke verwenden können, die öffentlich geroutet werden kann. 
 - Mit dieser Architektur ist sowohl die Migration der Daten einer Anfangsmomentaufnahme als auch der Deltadaten möglich. 
 
@@ -100,8 +100,8 @@ Wenn Ihre Daten in AWS S3 nicht über eine Zeitpartitionierung verfügen, kann 
 
 Unabhängig davon, ob Sie Daten über einen privaten Link migrieren oder in der Amazon S3-Firewall einen bestimmten IP-Adressbereich angeben möchten, müssen Sie die selbstgehostete Integration Runtime auf einer Azure Windows-VM installieren. 
 
-- Die empfohlene Konfiguration, mit der für jeden virtuellen Azure-Computer begonnen werden sollte, ist „Standard_D32s_v3“ mit 32 vCPUs und 128 GB Arbeitsspeicher.  Sie können die Auslastung der CPU und des Arbeitsspeichers für die IR-VM während der Datenmigration weiter überwachen. So können Sie ermitteln, ob Sie die VM weiter zentral hochskalieren müssen, um die Leistung zu verbessern, oder herunter, um Kosten zu sparen. 
-- Sie können auch horizontal hochskalieren, indem Sie bis zu vier VM-Knoten einer selbstgehosteten Integration Runtime zuordnen.  Bei einem einzelnen Kopierauftrag, der für eine selbstgehostete IR ausgeführt wird, wird die Dateigruppe automatisch partitioniert, und alle VM-Knoten werden genutzt, um die Dateien parallel zu kopieren.  Zur Sicherstellung von Hochverfügbarkeit ist es ratsam, mit zwei VM-Knoten zu beginnen, um bei der Datenmigration einen Single Point of Failure zu vermeiden. 
+- Die empfohlene Konfiguration, mit der für jeden virtuellen Azure-Computer begonnen werden sollte, ist „Standard_D32s_v3“ mit 32 vCPUs und 128 GB Arbeitsspeicher.  Sie können die Auslastung der CPU und des Arbeitsspeichers für die IR-VM während der Datenmigration weiter überwachen. So können Sie ermitteln, ob Sie die VM weiter hochskalieren müssen, um die Leistung zu verbessern, oder herunter, um Kosten zu sparen. 
+- Sie können auch aufskalieren, indem Sie bis zu vier VM-Knoten einer selbstgehosteten Integration Runtime zuordnen.  Bei einem einzelnen Kopierauftrag, der für eine selbstgehostete IR ausgeführt wird, wird die Dateigruppe automatisch partitioniert, und alle VM-Knoten werden genutzt, um die Dateien parallel zu kopieren.  Zur Sicherstellung von Hochverfügbarkeit ist es ratsam, mit zwei VM-Knoten zu beginnen, um bei der Datenmigration einen Single Point of Failure zu vermeiden. 
 
 ### <a name="rate-limiting"></a>Ratenbegrenzung 
 

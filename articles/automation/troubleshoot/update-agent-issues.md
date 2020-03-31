@@ -10,10 +10,10 @@ ms.service: automation
 ms.subservice: update-management
 manager: carmonm
 ms.openlocfilehash: ec35d11eba59ea21947e2c3cd5286bababa4eabb
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76153853"
 ---
 # <a name="understand-and-resolve-windows-hybrid-runbook-worker-health-in-update-management"></a>Grundlegendes zur Integrität des Hybrid Runbook Workers unter Windows in der Updateverwaltung und zur Problembehebung
@@ -104,7 +104,7 @@ Weitere Informationen zu diesem Ereignis finden Sie im [Leitfaden zur Problembeh
 
 Bei der Überprüfung des Zugriffs auf den Crypto-Ordner wird untersucht, ob das lokale Systemkonto auf „C:\ProgramData\Microsoft\Crypto\RSA“ zugreifen kann.
 
-## <a name="troubleshoot-offline"></a>Offlineproblembehandlung
+## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Offlineproblembehandlung
 
 Sie können die Problembehandlung offline auf einem Hybrid Runbook Worker ausführen, indem Sie das Skript lokal ausführen. Sie finden das Skript [Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration) im PowerShell-Katalog. Zum Ausführen des Skripts muss WMF 4.0 oder höher installiert sein. Informationen zum Herunterladen der neueste Version von PowerShell finden Sie unter [Installieren verschiedener Versionen von PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
 

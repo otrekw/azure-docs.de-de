@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
 ms.openlocfilehash: 1e597a81967a8fb6be2959d53e65ad01135e5e25
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76842902"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Verwalten und Analysieren von Datenflussprotokollen für Netzwerksicherheitsgruppen in Azure mithilfe von Network Watcher und Graylog

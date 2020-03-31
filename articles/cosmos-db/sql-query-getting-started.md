@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: tisande
 ms.openlocfilehash: 1d24261edea843fa928ad00e3ce7babcb84acd3b
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873334"
 ---
 # <a name="getting-started-with-sql-queries"></a>Erste Schritte mit SQL-Abfragen
@@ -147,7 +147,7 @@ Die folgende Abfrage gibt alle Vornamen von Kindern der Familie zurück, deren `
     ORDER BY f.address.city ASC
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [
@@ -156,7 +156,7 @@ Die Ergebnisse sind wie folgt:
     ]
 ```
 
-## <a name="remarks"></a>Anmerkungen
+## <a name="remarks"></a>Bemerkungen
 
 Die Beispiele oben zeigen verschiedene Aspekte der Cosmos DB-Abfragesprache:  
 

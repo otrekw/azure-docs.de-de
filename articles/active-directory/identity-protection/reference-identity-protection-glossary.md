@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9a3e2df956aaa4f9fd0af83dd2a18e04d731c714
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74232343"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection – Glossar
@@ -59,7 +59,7 @@ Der Prozess der Überprüfung von Aktivitäten, Protokollen und anderen relevant
 ### <a name="leaked-credentials"></a>Kompromittierte Anmeldeinformationen
 Diese Risikoerkennung wird ausgelöst, wenn unsere Ermittler herausfinden, dass die aktuellen Benutzeranmeldeinformationen (Benutzername und Kennwort) öffentlich im Dark Web gepostet werden.
 
-### <a name="mitigation"></a>Lösung
+### <a name="mitigation"></a>Minderung
 Eine Aktion, mit der für einen Angreifer die Möglichkeit eingeschränkt oder beseitigt wird, eine kompromittierte Identität oder ein Gerät auszunutzen, ohne für die Identität oder das Gerät wieder einen sicheren Zustand herzustellen. Bei einer Lösung werden keine vorherigen Risikoerkennungen behoben, die der Identität oder dem Gerät zugeordnet sind.
 
 ### <a name="multi-factor-authentication"></a>Multi-Factor Authentication

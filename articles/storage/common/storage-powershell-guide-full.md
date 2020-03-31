@@ -9,10 +9,10 @@ ms.date: 08/16/2018
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: d2404ee58f5f44fbe5625f267e6d1c504d0bd237
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75465091"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Verwenden von Azure PowerShell mit Azure Storage
@@ -32,7 +32,7 @@ Diese Anleitung behandelt allgemeine Vorgänge, über die Speicherkonten mithilf
 
 Dieser Artikel enthält Links zu weiteren PowerShell-Artikeln für Storage. In diesen wird beispielsweise das Aktivieren und Zugreifen auf Storage Analytics, das Verwenden von Cmdlets der Datenebene und das Zugreifen auf unabhängige Azure-Clouds in China und Deutschland sowie auf die Government Cloud beschrieben.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 48dec3a87ab540af224ae4ac59dd37cee7c9d0ee
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76271339"
 ---
 # <a name="storsimple-virtual-array-update-10-release-notes"></a>Versionsanmerkungen zu Update 1.0 für StorSimple Virtual Array
@@ -76,7 +76,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme für S
 | **14.** |Dateiserver |Wenn einer Datei in einem Ordner ein alternativer Datenstrom (Alternate Data Stream, ADS) zugeordnet ist, wird dieser nicht gesichert oder mittels Notfallwiederherstellung, Klonen oder Wiederherstellung auf Elementebene wiederhergestellt. | |
 | **15.** |Dateiserver |Symbolische Verknüpfungen werden nicht unterstützt. | |
 | **16.** |Dateiserver |Mit dem verschlüsselnden Dateisystem von Windows (Encrypting File System, EFS) verschlüsselte Dateien bewirken beim Kopieren auf den oder Speichern auf dem StorSimple Virtual Array-Dateiserver eine nicht unterstützte Konfiguration.  | |
-| **17.** |Aktualisierungen |Der Fehlercode 2359302 (hex. 0x240006) beim Installieren eines Hotfixes über die lokale Benutzeroberfläche gibt an, dass der Hotfix bereits auf dem Gerät installiert ist.   | |
+| **17.** |Aktualisierungen |Wenn beim Installieren eines Hotfixes über die lokale Benutzeroberfläche der Fehlercode 2359302 (hex. 0x240006) angezeigt wird, zeigt dies an, dass der Hotfix bereits auf dem Gerät installiert ist.   | |
 | **18.** |Aktualisierungen |Wenn Sie Update 1 über die lokale Weboberfläche auf Ihrem virtuellen Array installieren möchten, vergewissern Sie sich, dass Update 0.6 ausgeführt wird. Andernfalls müssen Sie zuerst Update 0.6 installieren, um Update 1 anwenden zu können. Wenn Sie eine Version vor Update 0.6 verwenden und direkt Update 1.0 installieren, stehen einige Updates nicht zur Verfügung, und die Überwachungsdiagramme funktionieren nicht.   | |
 
 

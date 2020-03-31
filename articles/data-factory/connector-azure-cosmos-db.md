@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
 ms.openlocfilehash: 7096b429145a54b5a09fe38eb8099c4ff24ac452
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460959"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224742"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Cosmos DB (SQL-API) mithilfe von Azure Data Factory
 
@@ -202,7 +202,7 @@ Legen Sie zum Kopieren von Daten in Azure Cosmos DB (SQL-API) den **Senkentyp** 
 
 Die folgenden Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die Eigenschaft **type**der Senke für die Kopieraktivität muss auf **CosmosDbSqlApiSink** festgelegt werden. |Ja |
 | writeBehavior |Beschreibt, wie Daten in Azure Cosmos DB geschrieben werden. Zulässige Werte: **insert** und **upsert**.<br/><br/>Das Verhalten von **upsert** besteht darin, das Dokument zu ersetzen, wenn ein Dokument mit der gleichen ID bereits vorhanden ist. Andernfalls wird das Dokument eingefügt.<br /><br />**Hinweis**: Data Factory generiert automatisch eine ID für ein Dokument, wenn eine ID weder im Originaldokument noch durch Spaltenzuordnung angegeben wird. Dies bedeutet, dass Sie sicherstellen müssen, dass Ihr Dokument eine ID besitzt, damit **upsert** wie erwartet funktioniert. |Nein<br />(der Standardwert ist **insert**) |

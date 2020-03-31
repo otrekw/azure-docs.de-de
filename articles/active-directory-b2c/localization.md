@@ -11,10 +11,10 @@ ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e73eae4d66f4ff94a48dfa27e258f8ba8ef87633
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79126762"
 ---
 # <a name="localization"></a>Lokalisierung
@@ -41,7 +41,7 @@ Das **Localization**-Element enthält die folgenden Attribute:
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| Aktiviert | Nein | Mögliche Werte: `true` oder `false`. |
+| Enabled | Nein | Mögliche Werte: `true` oder `false`. |
 
 Das **Localization**-Element enthält die folgenden XML-Elemente:
 
@@ -111,8 +111,8 @@ Das **Item**-Element enthält die folgenden Attribute:
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Text | Ja | Die benutzerfreundliche Anzeigezeichenfolge, die dem Benutzer auf der Benutzeroberfläche für diese Option angezeigt werden soll. |
-| Wert | Ja | Der Wert des Zeichenfolgenanspruchs, der der Auswahl dieser Option zugeordnet ist. |
-| SelectByDefault | Nein | Gibt an, ob diese Option auf der Benutzeroberfläche standardmäßig ausgewählt werden soll. Mögliche Werte: „True“ oder „False“. |
+| value | Ja | Der Wert des Zeichenfolgenanspruchs, der der Auswahl dieser Option zugeordnet ist. |
+| SelectByDefault | Nein | Gibt an, ob diese Option auf der Benutzeroberfläche standardmäßig ausgewählt werden soll. Mögliche Werte: TRUE oder FALSE. |
 
 Das folgende Beispiel zeigt die Verwendung des **LocalizedCollections**-Elements. Es enthält zwei **LocalizedCollection**-Elemente, eines für Englisch und ein anderes für Spanisch. Beide legen die **Restriction**-Sammlung des Anspruchs `Gender` auf eine Liste von Elementen für Englisch und Spanisch fest.
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/13/2019
 ms.openlocfilehash: 418026d5569cd7e4a7c5239f99650833b1b9514d
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75892939"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Kopieren von Daten in einen Azure Cognitive Search-Index mithilfe von Azure Data Factory
@@ -40,9 +40,9 @@ Die nachfolgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definie
 
 Die folgenden Eigenschaften werden für den mit Azure Cognitive Search verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureSearch** | Ja |
+| type | Die type-Eigenschaft muss auf **AzureSearch** festgelegt werden. | Ja |
 | url | URL für den Suchdienst | Ja |
 | Schlüssel | Administratorschlüssel für den Suchdienst Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
@@ -78,9 +78,9 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Beim Kopieren von Daten in Azure Cognitive Search werden die folgenden Eigenschaften unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **AzureSearchIndex** | Ja |
+| type | Die type-Eigenschaft des Datasets muss auf **AzureSearchIndex** festgelegt werden. | Ja |
 | indexName | Name des Suchindex. Data Factory erstellt den Index nicht. Der Index muss in Azure Cognitive Search vorhanden sein. | Ja |
 
 **Beispiel:**
@@ -110,10 +110,10 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Legen Sie zum Kopieren von Daten in Azure Cognitive Search den Quelltyp in der Copy-Aktivität auf **AzureSearchIndexSink** fest. Folgende Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **AzureSearchIndexSink** | Ja |
-| writeBehavior | Gibt an, ob ein Dokument zusammengeführt oder ersetzt werden soll, wenn es bereits im Index vorhanden ist. Siehe [Eigenschaft „WriteBehavior“](#writebehavior-property).<br/><br/>Zulässige Werte sind: **Merge** (Standard) und **Upload**. | Nein |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **AzureSearchIndexSink** festgelegt werden. | Ja |
+| writeBehavior | Gibt an, ob ein Dokument zusammengeführt oder ersetzt werden soll, wenn es bereits im Index vorhanden ist. Siehe [Eigenschaft „WriteBehavior“](#writebehavior-property).<br/><br/>Zulässige Werte sind **Merge** (Standard) und **Upload**. | Nein |
 | writeBatchSize | Lädt Daten in den Suchindex hoch, wenn die Puffergröße writeBatchSize erreicht. Einzelheiten finden Sie unter [Eigenschaft „WriteBatchSize“](#writebatchsize-property).<br/><br/>Zulässige Werte sind ganze Zahlen von 1 bis 1.000 (Standardwert „1.000“). | Nein |
 
 ### <a name="writebehavior-property"></a>Eigenschaft „WriteBehavior“
@@ -123,7 +123,7 @@ AzureSearchSink fügt Daten ein/aktualisiert beim Schreiben von Daten. Dies bede
 AzureSearchSink bietet die folgenden zwei Verhalten zum Einfügen/Aktualisieren (mithilfe des Azure Search SDK):
 
 - **Merge** (Zusammenführen): kombiniert alle Spalten im neuen Dokument mit dem bestehenden. Bei Spalten mit Null-Wert im neuen Dokument wird der Wert im bestehenden Dokument beibehalten.
-- **Upload** (Hochladen): Das neue Dokument ersetzt das bestehende. Bei Spalten, die nicht im neuen Dokument angegeben werden, wird der Wert auf Null gesetzt, unabhängig davon, ob ein Null-Wert im bestehenden Dokument vorhanden ist oder nicht.
+- **Hochladen**: das neue Dokument ersetzt das bestehende. Bei Spalten, die nicht im neuen Dokument angegeben werden, wird der Wert auf Null gesetzt, unabhängig davon, ob ein Null-Wert im bestehenden Dokument vorhanden ist oder nicht.
 
 Das Standardverhalten ist **Merge**.
 

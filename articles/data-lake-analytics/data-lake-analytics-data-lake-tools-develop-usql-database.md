@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: a9b271b5f7d4e53dbf871d03dd43b62b9299aa53
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71309923"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>Entwickeln einer U-SQL-Datenbank für Azure Data Lake mithilfe eines U-SQL-Datenbankprojekts
@@ -99,8 +99,8 @@ Sie können eine U-SQL-Datenbank über ein U-SQL-Datenbankprojekt oder ein .usql
 
 Ein U-SQL-Projekt kann auf ein U-SQL-Datenbankprojekt verweisen. Der Verweis wirkt sich auf zwei Workloads aus:
 
-- *Projekterstellung*: Richten Sie die referenzierten Datenbankumgebungen ein, bevor Sie die U-SQL-Skripts erstellen. 
-- *Lokale Ausführungen mit einem Konto (local-project)* : Die referenzierten Datenbankumgebungen werden vor dem Ausführen der U-SQL-Skripts in einem Konto (local-project) bereitgestellt. [Hier](data-lake-analytics-data-lake-tools-local-run.md) erfahren Sie mehr über die lokale Ausführung und den Unterschied zwischen dem Konto „(Local-machine)“ und dem Konto „(Local-project)“.
+- *Projekterstellung:* Richten Sie die Umgebungen für die referenzierten Datenbanken vor dem Erstellen der U-SQL-Skripts ein. 
+- *Lokale Ausführung im Konto „(Local-project)“:* Die referenzierten Datenbankumgebungen werden vor dem Erstellen der U-SQL-Skripts im Konto „(Local-project)“ bereitgestellt. [Hier](data-lake-analytics-data-lake-tools-local-run.md) erfahren Sie mehr über die lokale Ausführung und den Unterschied zwischen dem Konto „(Local-machine)“ und dem Konto „(Local-project)“.
 
 ### <a name="how-to-add-a-u-sql-database-reference"></a>So fügen Sie einen U-SQL-Datenbankverweis hinzu
 

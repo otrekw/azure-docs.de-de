@@ -14,10 +14,10 @@ ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95f1877ae630919ba7da5a851b5f8291ade2d165
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897584"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Hinzufügen der Datenschutzinformationen Ihrer Organisation mit Azure Active Directory

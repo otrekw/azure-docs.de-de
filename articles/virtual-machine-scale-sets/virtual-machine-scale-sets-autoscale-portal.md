@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.openlocfilehash: ecd80f49f0161c8bbc6ab7309f2af89e2ded1fe9
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278200"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Automatisches Skalieren einer VM-Skalierungsgruppe im Azure-Portal
@@ -22,10 +22,10 @@ In diesem Artikel wird veranschaulicht, wie Sie im Azure-Portal Regeln für die 
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Zum Erstellen von Regeln für die automatische Skalierung benötigen Sie eine vorhandene VM-Skalierungsgruppe. Sie können eine Skalierungsgruppe im [Azure-Portal](quick-create-portal.md), mit [Azure PowerShell](quick-create-cli.md) oder der [Azure CLI](quick-create-powershell.md) erstellen.
+Zum Erstellen von Regeln für die automatische Skalierung benötigen Sie eine vorhandene VM-Skalierungsgruppe. Sie können eine Skalierungsgruppe im [Azure-Portal](quick-create-portal.md), mit [Azure PowerShell](quick-create-powershell.md) oder der [Azure CLI](quick-create-cli.md) erstellen.
 
 
-## <a name="create-a-rule-to-automatically-scale-out"></a>Erstellen einer Regel für das automatische horizontale Hochskalieren
+## <a name="create-a-rule-to-automatically-scale-out"></a>Erstellen einer Regel für das automatische Aufskalieren
 Wenn sich die Nachfrage für Ihre Anwendung erhöht, erhöht sich auch die Last für die VM-Instanzen in Ihrer Skalierungsgruppe. Falls es sich um eine dauerhafte Last und nicht nur um eine kurzzeitige höhere Nachfrage handelt, können Sie die Regeln für die automatische Skalierung konfigurieren, um die Anzahl von VM-Instanzen in der Skalierungsgruppe zu erhöhen. Nachdem diese VM-Instanzen erstellt und Ihre Anwendungen bereitgestellt wurden, beginnt die Skalierungsgruppe damit, über das Lastenausgleichsmodul Datenverkehr darauf zu verteilen. Sie steuern, welche Metriken überwacht werden, z.B. CPU oder Datenträger, wie lange die Anwendungslast einen bestimmten Schwellenwert einhalten muss und wie viele VM-Instanzen der Skalierungsgruppe hinzugefügt werden sollen.
 
 1. Öffnen Sie das Azure-Portal, und wählen Sie im Menü links im Dashboard **Ressourcengruppen** aus.
@@ -48,7 +48,7 @@ Wenn sich die Nachfrage für Ihre Anwendung erhöht, erhöht sich auch die Last 
     | *Operator*             | Operator zum Vergleichen der Metrikdaten mit dem Schwellenwert.                                                     | Größer als   |
     | *Schwellenwert*            | Der Prozentsatz, der für die Regel für die automatische Skalierung das Auslösen einer Aktion bewirkt.                                                 | 70             |
     | *Duration*             | Der überwachte Zeitraum, bevor die Metrik und Schwellenwerte verglichen werden.                                   | 10 Minuten     |
-    | *Vorgang*            | Definiert, ob und in welchen Schritten die Skalierungsgruppe zentral hoch- oder herunterskaliert werden soll, wenn die Regel zutrifft.                        | Prozentsatz erhöhen um |
+    | *Vorgang*            | Definiert, ob und in welchen Schritten die Skalierungsgruppe hoch- oder herunterskaliert werden soll, wenn die Regel zutrifft.                        | Prozentsatz erhöhen um |
     | *Anzahl der Instanzen*       | Der Prozentsatz der VM-Instanzen sollte geändert werden, wenn diese Regel ausgelöst wird.                                            | 20             |
     | *Abkühlen (Minuten)*  | Gibt an, wie lange gewartet wird, bevor die Regel erneut angewendet wird, damit die Aktionen für die automatische Skalierung wirksam werden können. | 5 Minuten      |
 
@@ -59,7 +59,7 @@ Wenn sich die Nachfrage für Ihre Anwendung erhöht, erhöht sich auch die Last 
 6. Klicken Sie zum Erstellen der Regel auf **Hinzufügen**.
 
 
-## <a name="create-a-rule-to-automatically-scale-in"></a>Erstellen einer Regel für automatisches horizontales Herunterskalieren
+## <a name="create-a-rule-to-automatically-scale-in"></a>Erstellen einer Regel für automatisches Abskalieren
 Es kann sein, dass die Nachfrage nach Ihrer Anwendung abends oder am Wochenende abnimmt. Wenn diese Verringerung der Last für einen bestimmten Zeitraum anhält, können Sie Regeln zur automatischen Skalierung konfigurieren, um die Anzahl von VM-Instanzen in der Skalierungsgruppe zu reduzieren. Mit dieser Aktion zum horizontalen Herunterskalieren werden die Kosten für die Ausführung Ihrer Skalierungsgruppe gesenkt, da Sie nur so viele Instanzen ausführen, wie für die Erfüllung der derzeitigen Nachfrage erforderlich sind.
 
 1. Klicken Sie erneut auf **Regel hinzufügen**.
@@ -71,14 +71,14 @@ Es kann sein, dass die Nachfrage nach Ihrer Anwendung abends oder am Wochenende 
     |------------------------|----------------------------------------------------------------------------------------------------------------------|----------------|
     | *Operator*             | Operator zum Vergleichen der Metrikdaten mit dem Schwellenwert.                                                      | Kleiner als   |
     | *Schwellenwert*            | Der Prozentsatz, der für die Regel für die automatische Skalierung das Auslösen einer Aktion bewirkt.                                                 | 30             |
-    | *Vorgang*            | Definiert, ob und in welchen Schritten die Skalierungsgruppe zentral hoch- oder herunterskaliert werden soll, wenn die Regel zutrifft.                         | Prozentsatz verringern um |
+    | *Vorgang*            | Definiert, ob und in welchen Schritten die Skalierungsgruppe hoch- oder herunterskaliert werden soll, wenn die Regel zutrifft.                         | Prozentsatz verringern um |
     | *Anzahl der Instanzen*       | Der Prozentsatz der VM-Instanzen sollte geändert werden, wenn diese Regel ausgelöst wird.                                             | 20             |
 
 3. Klicken Sie zum Erstellen der Regel auf **Hinzufügen**.
 
 
 ## <a name="define-autoscale-instance-limits"></a>Definieren von Grenzwerten für die automatische Skalierung von Instanzen
-Ihr Profil für die automatische Skalierung muss eine Mindest-, Höchst- und Standardanzahl von VM-Instanzen definieren. Bei Anwendung Ihrer Regeln für die automatische Skalierung stellen diese Grenzwerte für Instanzen sicher, dass keine horizontale Hochskalierung über die Höchstanzahl von Instanzen hinaus bzw. horizontale Herunterskalierung über die Mindestanzahl von Instanzen hinaus erfolgt.
+Ihr Profil für die automatische Skalierung muss eine Mindest-, Höchst- und Standardanzahl von VM-Instanzen definieren. Bei Anwendung Ihrer Regeln für die automatische Skalierung stellen diese Grenzwerte für Instanzen sicher, dass keine Aufskalierung über die Höchstanzahl von Instanzen hinaus bzw. Abskalierung über die Mindestanzahl von Instanzen hinaus erfolgt.
 
 1. Legen Sie die folgenden Grenzwerte für Instanzen fest:
 
@@ -96,22 +96,22 @@ Um Anzahl und Status der VM-Instanzen anzuzeigen, wählen Sie im Menü auf der l
 
 
 ## <a name="autoscale-based-on-a-schedule"></a>Automatisches Skalieren nach Zeitplan
-In den vorherigen Beispielen wurde eine Skalierungsgruppe anhand von einfachen Hostmetriken, z.B. der CPU-Auslastung, automatisch herunter- oder hochskaliert. Sie können Regeln für die automatische Skalierung auch anhand von Zeitplänen erstellen. Mit diesen zeitplanbasierten Regeln können Sie die Anzahl von VM-Instanzen vor einem erwarteten Anstieg der Anwendungsnachfrage, z.B. der Kernarbeitszeit, automatisch horizontal hochskalieren und dann für Zeiträume mit geringerer Nachfrage, z.B. am Wochenende, wieder automatisch zentral herunterskalieren.
+In den vorherigen Beispielen wurde eine Skalierungsgruppe anhand von einfachen Hostmetriken, z.B. der CPU-Auslastung, automatisch herunter- oder hochskaliert. Sie können Regeln für die automatische Skalierung auch anhand von Zeitplänen erstellen. Mit diesen zeitplanbasierten Regeln können Sie die Anzahl von VM-Instanzen vor einem erwarteten Anstieg der Anwendungsnachfrage, z.B. der Kernarbeitszeit, automatisch aufskalieren und dann für Zeiträume mit geringerer Nachfrage, z.B. am Wochenende, wieder automatisch abskalieren.
 
 1. Wählen Sie auf der linken Seite des Fensters „Skalierungsgruppe“ im Menü **Skalierung** aus. Um die in den vorherigen Beispielen erstellten Regeln für die automatische Skalierung zu löschen, klicken Sie auf das Papierkorbsymbol.
 
     ![Löschen vorhandener Regeln für die automatische Skalierung](media/virtual-machine-scale-sets-autoscale-portal/delete-rules.png)
 
-2. Klicken Sie auf **Skalierungsbedingung hinzufügen**. Klicken Sie auf das Bleistiftsymbol neben dem Regelnamen, und geben Sie einen Namen wie z.B. *An jedem Geschäftstag horizontal hochskalieren* ein.
+2. Klicken Sie auf **Skalierungsbedingung hinzufügen**. Klicken Sie auf das Bleistiftsymbol neben dem Regelnamen, und geben Sie einen Namen wie z.B. *An jedem Geschäftstag aufskalieren* ein.
 
     ![Umbenennen der Standardregel für automatische Skalierung](media/virtual-machine-scale-sets-autoscale-portal/rename-rule.png)
 
 3. Wählen Sie das Optionsfeld **Auf eine bestimmte Anzahl von Instanzen skalieren** aus.
-4. Wenn die Anzahl der Instanzen zentral hochskaliert werden sollen, geben Sie *10* als Anzahl der Instanzen ein.
+4. Wenn die Anzahl der Instanzen hochskaliert werden sollen, geben Sie *10* als Anzahl der Instanzen ein.
 5. Wählen Sie **An bestimmten Tagen wiederholen** als Typ für **Zeitplan** aus.
 6. Wählen Sie alle Geschäftstage, Montag bis Freitag, aus.
-7. Wählen Sie die entsprechende Zeitzone aus, und geben Sie dann *09:00 Uhr* als **Startzeit** ein.
-8. Klicken Sie nochmals auf **Skalierungsbedingung hinzufügen**. Wiederholen Sie den Vorgang zum Erstellen eines Zeitplans mit dem Namen *Abends horizontal herunterskalieren*, der eine Skalierung auf *3* Instanzen vorsieht, sich jeden Wochentag wiederholt und um *18:00* beginnt.
+7. Wählen Sie die entsprechende Zeitzone aus, und geben Sie dann **09:00 Uhr** als *Startzeit* ein.
+8. Klicken Sie nochmals auf **Skalierungsbedingung hinzufügen**. Wiederholen Sie den Vorgang zum Erstellen eines Zeitplans mit dem Namen *Abends abskalieren*, der eine Skalierung auf *3* Instanzen vorsieht, sich jeden Wochentag wiederholt und um *18:00* beginnt.
 9. Klicken Sie auf **Speichern**, um Ihre zeitplanbasierten Regeln für die automatische Skalierung anzuwenden.
 
     ![Erstellen von Regeln für die automatische Skalierung nach Zeitplan](media/virtual-machine-scale-sets-autoscale-portal/schedule-autoscale.PNG)

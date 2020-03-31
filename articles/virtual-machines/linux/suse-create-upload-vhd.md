@@ -3,7 +3,7 @@ title: Erstellen und Hochladen einer SUSE-Linux-VHD in Azure
 description: Erfahren Sie, wie Sie eine virtuelle Azure-Festplatte (Virtual Hard Disk, VHD) erstellen und hochladen, die ein SUSE-Linux-Betriebssystem enthält.
 services: virtual-machines-linux
 documentationcenter: ''
-author: mimckitt
+author: gbowerman
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
-ms.author: mimckitt
-ms.openlocfilehash: d64fc55159ddc3ce88397879958a63bf30808ad9
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.author: guybo
+ms.openlocfilehash: 7bfe0aabbf2318643b59d57519be1475648a12ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251571"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066553"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Vorbereiten eines virtuellen SLES- oder openSUSE-Computers für Azure
 
@@ -141,7 +141,7 @@ Als Alternative zum Erstellen einer eigenen VHD veröffentlicht SUSE auf [VMDepo
 7. Es wird empfohlen, die Datei "/etc/sysconfig/network/dhcp" zu bearbeiten und den Parameter `DHCLIENT_SET_HOSTNAME` wie folgt zu ändern:
    
      DHCLIENT_SET_HOSTNAME="no"
-8. **Wichtig:** Kommentieren Sie in „/etc/sudoers“ die folgenden Zeilen aus, sofern sie vorhanden sind, oder entfernen Sie sie:
+8. **Wichtig:** Kommentieren Sie in "/etc/sudoers" die folgenden Zeilen aus, oder entfernen Sie sie, sofern vorhanden:
      
      ```
      Defaults targetpw   # ask for the password of the target user i.e. root

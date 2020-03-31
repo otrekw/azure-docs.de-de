@@ -9,15 +9,15 @@ ms.topic: reference
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 507e503b881df123ffc6694c53b0e9cc9b6a8872
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774025"
 ---
 # <a name="peering-service---faqs"></a>Häufig gestellte Fragen zu Peering Service
 
-In den nachfolgenden Informationen finden Sie möglicherweise Antworten auf allgemeine Fragen.
+Hier finden Sie Antworten auf allgemeine Fragen.
 
 **Kann ein Netzbetreiber das vorhandene Direct Peering mit Microsoft zur Unterstützung von Peering Service verwenden?**
 

@@ -11,10 +11,10 @@ ms.date: 05/29/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: eb96be187502afcccfd3fb2c88f709facfbc3b59
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278143"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Übersicht über die automatische Skalierung mit Azure-VM-Skalierungsgruppen
@@ -30,7 +30,7 @@ Es kann sein, dass die Nachfrage nach Ihrer Anwendung abends oder am Wochenende 
 
 
 ## <a name="use-host-based-metrics"></a>Verwenden von hostbasierten Metriken
-Sie können Regeln für die automatische Skalierung erstellen, in die Hostmetriken Ihrer VM-Instanzen integriert sind. Anhand von Hostmetriken können Sie die Leistung der VM-Instanzen einer Skalierungsgruppe verfolgen, ohne dass Sie zusätzliche Agents und Datensammlungen installieren oder konfigurieren müssen. Regeln für die automatische Skalierung, für die diese Metriken verwendet werden, können als Reaktion auf Änderungen der CPU-Auslastung, des Arbeitsspeicherbedarfs oder der Datenträgerzugriffe das horizontale Hochskalieren durchführen oder die Anzahl von VM-Instanzen erhöhen.
+Sie können Regeln für die automatische Skalierung erstellen, in die Hostmetriken Ihrer VM-Instanzen integriert sind. Anhand von Hostmetriken können Sie die Leistung der VM-Instanzen einer Skalierungsgruppe verfolgen, ohne dass Sie zusätzliche Agents und Datensammlungen installieren oder konfigurieren müssen. Regeln für die automatische Skalierung, für die diese Metriken verwendet werden, können als Reaktion auf Änderungen der CPU-Auslastung, des Arbeitsspeicherbedarfs oder der Datenträgerzugriffe das Aufskalieren durchführen oder die Anzahl von VM-Instanzen erhöhen.
 
 Regeln zur automatischen Skalierung mit hostbasierten Metriken können mit einem der folgenden Tools erstellt werden:
 
@@ -124,7 +124,7 @@ Sie können Regeln für die automatische Skalierung auch anhand von Zeitplänen 
 
 Die folgenden Beispiele enthalten Szenarien, für die die Nutzung von Regeln für die automatische Skalierung nach Zeitplan Vorteile haben kann:
 
-- Automatisches horizontales Hochskalieren der Anzahl von VM-Instanzen zu Beginn des Arbeitstags, wenn die Nachfrage der Kunden ansteigt. Am Ende des Arbeitstags wird die Anzahl von VM-Instanzen automatisch horizontal herunterskaliert, um die Ressourcenkosten für die Nacht zu reduzieren, wenn die Nachfrage nach der Anwendung nur gering ist.
+- Automatisches Aufskalieren der Anzahl von VM-Instanzen zu Beginn des Arbeitstags, wenn die Nachfrage der Kunden ansteigt. Am Ende des Arbeitstags wird die Anzahl von VM-Instanzen automatisch abskaliert, um die Ressourcenkosten für die Nacht zu reduzieren, wenn die Nachfrage nach der Anwendung nur gering ist.
 - Wenn eine Abteilung eine Anwendung an bestimmten Tagen des Monats oder des Geschäftszyklus stark nachfragt, wird die Anzahl von VM-Instanzen automatisch skaliert, um den zusätzlichen Bedarf zu decken.
 - Wenn ein Marketingereignis, eine Werbeaktion oder ein Sale ansteht, können Sie die Anzahl von VM-Instanzen vor der voraussichtlich starken Kundennachfrage automatisch skalieren. 
 

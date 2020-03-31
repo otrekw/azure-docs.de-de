@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
 ms.openlocfilehash: e6109a87750e588b12bfc9836c5db3db55420ec2
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77133801"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Verfügbare RHEL-Images (Red Hat Enterprise Linux) in Azure

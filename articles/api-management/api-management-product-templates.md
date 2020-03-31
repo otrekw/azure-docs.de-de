@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176570"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224838"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Produktvorlagen in Azure API Management
 
@@ -37,7 +37,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="ProductList"></a> Produktliste  
+##  <a name="product-list"></a><a name="ProductList"></a> Produktliste  
  Mit der Vorlage für die **Produktliste** können Sie den Text der Produktlistenseite im Entwicklerportal anpassen.  
   
  ![Produktliste](./media/api-management-product-templates/APIM_ProductsListTemplatePage.png "APIM_ProductsListTemplatePage")  
@@ -79,7 +79,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
   
 ### <a name="data-model"></a>Datenmodell  
   
-|Eigenschaft|Typ|BESCHREIBUNG|  
+|Eigenschaft|type|BESCHREIBUNG|  
 |--------------|----------|-----------------|  
 |Paging|Entität [Paging](api-management-template-data-model-reference.md#Paging).|Die Seiteninformationen für die Produktsammlung.|  
 |Filterung|Entität [Filtering](api-management-template-data-model-reference.md#Filtering).|Die Filterinformationen für die Produktlistenseite.|  
@@ -123,7 +123,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 }  
 ```  
   
-##  <a name="Product"></a> Produkt  
+##  <a name="product"></a><a name="Product"></a> Produkt  
  Mit der Vorlage **Produkt** können Sie den Text der Produktseite im Entwicklerportal anpassen.  
   
  ![Produktseite im Entwicklerportal](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
@@ -204,14 +204,14 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
   
 ### <a name="data-model"></a>Datenmodell  
   
-|Eigenschaft|Typ|BESCHREIBUNG|  
+|Eigenschaft|type|BESCHREIBUNG|  
 |--------------|----------|-----------------|  
 |Produkt|[Produkt](api-management-template-data-model-reference.md#Product)|Das angegebene Produkt.|  
 |IsDeveloperSubscribed|boolean|Gibt an, ob der aktuelle Benutzer dieses Produkt abonniert hat.|  
 |SubscriptionState|number|Der Status des Abonnements. Mögliche Statusangaben:<br /><br /> -   `0 - suspended`: Das Abonnement ist blockiert, und der Abonnent kann keine APIs des Produkts aufrufen.<br />-   `1 - active`: Das Abonnement ist aktiv.<br />-   `2 - expired`: Das Abonnement hat das Ablaufdatum erreicht und wurde deaktiviert.<br />-   `3 - submitted`: Die Abonnementanforderung wurde vom Entwickler gesendet, aber noch nicht genehmigt oder abgelehnt.<br />-   `4 - rejected`: Die Abonnementanforderung wurde von einem Administrator abgelehnt.<br />-   `5 - cancelled`: Das Abonnement wurde vom Entwickler oder Administrator abgebrochen.|  
 |Einschränkungen|array|Diese Eigenschaft ist veraltet und sollte nicht verwendet werden.|  
 |DelegatedSubscriptionEnabled|boolean|Gibt an, ob für dieses Abonnement die [Delegierung](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) aktiviert ist.|  
-|DelegatedSubscriptionUrl|Zeichenfolge|Gibt bei aktivierter Delegierung die URL des delegierten Abonnements an.|  
+|DelegatedSubscriptionUrl|string|Gibt bei aktivierter Delegierung die URL des delegierten Abonnements an.|  
 |IsAgreed|boolean|Wenn für das Produkt Bedingungen gelten, gibt dieser Wert an, ob der aktuelle Benutzer den Nutzungsbedingungen zugestimmt hat.|  
 |Abonnements|Sammlung von [Subscription summary](api-management-template-data-model-reference.md#SubscriptionSummary)-Entitäten.|Die Abonnements für das Produkt.|  
 |Apis|Sammlung von [API](api-management-template-data-model-reference.md#API)-Entitäten.|Die APIs in dieses Produkt.|  

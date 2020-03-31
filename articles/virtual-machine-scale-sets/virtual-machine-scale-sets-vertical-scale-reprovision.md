@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: manayar
 ms.openlocfilehash: fa1dda2907e8400491c8d18897bb41fb9cff49fd
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76274433"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikale automatische Skalierung mit VM-Skalierungsgruppen
 
 In diesem Artikel wird beschrieben, wie Sie Azure [VM-Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/) mit oder ohne erneute Bereitstellung vertikal skalieren können. 
 
-Beim vertikalen Skalieren, auch *zentrales Hochskalieren* und *zentrales Herunterskalieren* genannt, wird die Größe eines virtuellen Computers (VM) als Reaktion auf eine Workload vergrößert oder verringert. Vergleichen Sie dies mit dem [horizontalen Skalieren](virtual-machine-scale-sets-autoscale-overview.md), das auch als *horizontales Hochskalieren* und *horizontales Herunterskalieren* bezeichnet wird, bei dem die Anzahl der VMs je nach Workload geändert wird.
+Beim vertikalen Skalieren, auch  *Hochskalieren* und *Herunterskalieren* genannt, wird die Größe eines virtuellen Computers (VM) als Reaktion auf eine Workload vergrößert oder verringert. Vergleichen Sie dies mit dem [horizontalen Skalieren](virtual-machine-scale-sets-autoscale-overview.md), das auch als *Aufskalieren* und *Abskalieren* bezeichnet wird, bei dem die Anzahl der VMs je nach Workload geändert wird.
 
 Bei der erneuten Bereitstellung wird ein vorhandener virtueller Computer entfernt und durch einen neuen ersetzt. Wenn Sie die Größe der VMs in einer VM-Skalierungsgruppe erhöhen oder verringern, ist es in einigen Fällen angebracht, die Größe von vorhandenen VMs zu ändern und Ihre Daten beizubehalten. In anderen Fällen müssen Sie neue VMs der neuen Größe bereitstellen. In diesem Dokument werden beide Fälle behandelt.
 

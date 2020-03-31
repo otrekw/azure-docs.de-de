@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c73a14c2a8cd063672bd0998368ca660f52cd5a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74272949"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>Konfigurieren von SaaS-Apps für die B2B-Zusammenarbeit
@@ -72,7 +72,7 @@ Damit sich die Benutzer mit ihrem Organisationskonto anmelden können, müssen S
 
 Wenn Gastbenutzer oder Mitglieder in der Dropbox-App eingerichtet wurden, erhalten diese eine separate Einladung von Dropbox. Sie müssen auf einen Link klicken und die Einladung annehmen, damit sie das einmalige Anmelden für Dropbox verwenden können.
 
-## <a name="box"></a>Box
+## <a name="box"></a>Feld
 Sie können Benutzern die Authentifizierung von Box-Gastbenutzern mit ihrem Azure AD-Konto ermöglichen, indem Sie einen Verbund nutzen, der auf dem SAML-Protokoll basiert. Bei diesem Verfahren werden Metadaten auf Box.com hochgeladen.
 
 1. Fügen Sie die Box-App aus den Unternehmens-Apps hinzu.

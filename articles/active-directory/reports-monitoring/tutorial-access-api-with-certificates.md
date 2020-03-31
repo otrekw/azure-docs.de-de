@@ -17,10 +17,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d723af5d994006c4ae4f90905ede73fa87326bf
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74014263"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Tutorial: Abrufen von Daten per Berichtserstellungs-API von Azure Active Directory mit Zertifikaten
@@ -92,10 +92,10 @@ In diesem Tutorial erfahren Sie, wie Sie ein Testzertifikat verwenden, um zu Ber
 8. Verwenden Sie das Zugriffstoken in Ihrem PowerShell-Skript zum Abfragen der Graph-API. Verwenden Sie das Cmdlet **Invoke-MSCloudIdMSGraphQuery** aus „MSCloudIDUtils“, um die Endpunkte „signins“ und „directoryAudits“ aufzuzählen. Mit diesem Cmdlet werden mehrseitige Ergebnisse verarbeitet, die an die PowerShell-Pipeline gesendet werden.
 
 9. Abfragen des Endpunkts „directoryAudits“, um die Überwachungsprotokolle abzurufen. 
-   ![Azure-Portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
+   ![Azure portal](./media/tutorial-access-api-with-certificates/query-directoryAudits.png)
 
 10. Abfragen des Endpunkts „signins“, um die Anmeldeprotokolle abzurufen.
-    ![Azure-Portal](./media/tutorial-access-api-with-certificates/query-signins.png)
+    ![Azure portal](./media/tutorial-access-api-with-certificates/query-signins.png)
 
 11. Sie können nun diese Daten in eine CSV-Datei exportieren und Datei in einem SIEM-System speichern. Außerdem können Sie Ihr Skript mit einer geplanten Aufgabe umschließen, mit der Azure AD-Daten regelmäßig aus Ihrem Mandanten abgerufen werden, ohne dass Anwendungsschlüssel im Quellcode gespeichert werden müssen. 
 

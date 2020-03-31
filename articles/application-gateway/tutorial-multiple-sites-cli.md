@@ -10,10 +10,10 @@ ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 0a92d0f7d17f6bb83efbe94434c25072975dbe57
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74047354"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways als Host für mehrere Websites mit der Azure-Befehlszeilenschnittstelle
@@ -34,7 +34,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 Sie können für dieses Verfahren auch [Azure PowerShell](tutorial-multiple-sites-powershell.md) verwenden.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -52,7 +52,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen
 
-Erstellen Sie mit *az network vnet create* ein virtuelles Netzwerk und ein Subnetz namens [myAGSubnet](/cli/azure/network/vnet). Dann können Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet) das Subnetz hinzufügen, das von den Back-End-Servern benötigt wird. Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip) eine öffentliche IP-Adresse namens *myAGPublicIPAddress*.
+Erstellen Sie mit *az network vnet create* ein virtuelles Netzwerk und ein Subnetz namens [myAGSubnet](/cli/azure/network/vnet). Dann können Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet) das Subnetz hinzufügen, das von den Back-End-Servern benötigt wird. Erstellen Sie mit *az network public-ip create* eine öffentliche IP-Adresse namens [myAGPublicIPAddress](/cli/azure/network/public-ip).
 
 ```azurecli-interactive
 az network vnet create \
@@ -96,7 +96,7 @@ az network application-gateway create \
   --public-ip-address myAGPublicIPAddress
 ```
 
-Es kann einige Minuten dauern, bis das Anwendungsgateway erstellt ist. Nachdem das Anwendungsgateway erstellt wurde, sehen Sie diese neuen Features:
+Es kann einige Minuten dauern, bis das Anwendungsgateway erstellt wird. Nachdem das Anwendungsgateway erstellt wurde, sehen Sie diese neuen Features:
 
 - *appGatewayBackendPool*: Ein Anwendungsgateway muss über mindestens einen Back-End-Adresspool verfügen.
 - *appGatewayBackendHttpSettings*: Gibt an, dass zur Kommunikation Port 80 und ein HTTP-Protokoll verwendet werden.

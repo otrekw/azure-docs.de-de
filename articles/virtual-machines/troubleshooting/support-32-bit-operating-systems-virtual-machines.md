@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
 ms.openlocfilehash: e5c8bc2fe64d489c9e8490a63f4d7c4680f21ce0
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71846394"
 ---
 # <a name="support-for-32-bit-operating-systems-in-azure-virtual-machines"></a>Unterstützung für 32-Bit-Betriebssysteme auf virtuellen Azure-Computern
@@ -31,7 +31,7 @@ Weitere Informationen zu den auf virtuellen Azure-Computern unterstützten Betri
 * [Microsoft-Server-Software-Support für virtuelle Maschinen von Microsoft Azure](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)
 * [Support für Linux und Open-Source-Technologie in Azure](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 
 * [Weitere Informationen zu kostenlosen verlängerten Sicherheitsupdates für Windows Server 2008/R2 in Azure](https://www.microsoft.com/cloud-platform/windows-server-2008)
 * [Weitere Informationen zur Unterstützung für spezialisierte Windows Server 2008 SP2 32-Bit-Images in Azure](https://docs.microsoft.com/windows-server/get-started/uploading-specialized-ws08-image-to-azure)

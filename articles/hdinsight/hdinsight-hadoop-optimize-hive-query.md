@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.openlocfilehash: 144d51d08a61526ec0f183a63e1fdf5658136293
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77030959"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233578"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optimieren von Apache Hive-Abfragen in Azure HDInsight
 
@@ -23,15 +23,15 @@ Wählen Sie z. B. den Clustertyp **Interactive Query** zur Optimierung für int
 
 HDInsight-Cluster des Clustertyps Hadoop sind standardmäßig nicht für Leistung optimiert. In diesem Artikel werden einige der gängigsten Methoden für die Optimierung der Leistung von Hive beschrieben, die Sie auf Ihre Abfragen anwenden können.
 
-## <a name="scale-out-worker-nodes"></a>Horizontales Skalieren der Worker-Knoten
+## <a name="scale-out-worker-nodes"></a>Aufskalieren der Workerknoten
 
-In einem HDInsight-Cluster, dem mehr Worker-Knoten zur Verfügung stehen, können für die Arbeit mehr Mapper und Reducer parallel ausgeführt werden. In HDInsight können Sie die horizontale Skalierung auf zwei Weisen erhöhen:
+In einem HDInsight-Cluster, dem mehr Worker-Knoten zur Verfügung stehen, können für die Arbeit mehr Mapper und Reducer parallel ausgeführt werden. In HDInsight können Sie die Aufskalierung auf zwei Weisen erhöhen:
 
 * Bei der Bereitstellung eines Clusters können Sie die Anzahl der Workerknoten im Azure-Portal, in Azure PowerShell oder über die Befehlszeilenschnittstelle angeben.  Weitere Informationen finden Sie unter [Erstellen von HDInsight-Clustern](hdinsight-hadoop-provision-linux-clusters.md). Der folgende Screenshot zeigt die Konfiguration der Workerknoten im Azure-Portal:
   
     ![Clustergrößenknoten im Azure-Portal](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
 
-* Nach dem Erstellen können Sie auch die Anzahl der Workerknoten zum weiteren horizontalen Hochskalieren eines Clusters bearbeiten, ohne die Erstellung zu wiederholen:
+* Nach dem Erstellen können Sie auch die Anzahl der Workerknoten zum weiteren Aufskalieren eines Clusters bearbeiten, ohne die Erstellung zu wiederholen:
 
     ![Skalieren von Clustergrößen in Azure-Portal](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-settings-nodes.png "scaleout_2")
 

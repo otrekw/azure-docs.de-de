@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.openlocfilehash: 544de1b4ac46a58d533f71a46266807a3b93820a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920041"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analysieren von Protokollen und Metriken mit Diagnoseeinstellungen
@@ -30,7 +30,7 @@ Wählen Sie die Protokollkategorie und die Metrikkategorie aus, die Sie überwac
 | **ApplicationConsole** | Konsolenprotokoll aller Kundenanwendungen. | 
 | **SystemLogs** | Zurzeit befinden sich nur [Spring Cloud-Konfigurationsserver](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) in dieser Kategorie. |
 
-## <a name="metrics"></a>Metriken
+## <a name="metrics"></a>metrics
 
 Eine vollständige Liste der Metriken finden Sie unter [Spring Cloud-Metriken](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-metrics-options).
 

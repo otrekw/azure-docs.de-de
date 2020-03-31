@@ -7,12 +7,12 @@ ms.author: jzim
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
-ms.openlocfilehash: 559c932c4826e82f36c09b85ee8da4186d90d34d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: e7396ce9fbed46688d59b582f246e5454d063fb3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276089"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477033"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Einrichten Ihrer Azure Red Hat OpenShift-Entwicklungsumgebung
 
@@ -30,7 +30,7 @@ Die folgenden Anweisungen führen Sie durch all diese Voraussetzungen.
 
 Azure Red Hat OpenShift erfordert Version 2.0.65 oder höher der Azure CLI. Wenn Sie die Azure CLI bereits installiert haben, können Sie überprüfen, um welche Version es sich handelt, indem Sie folgenden Befehl ausführen:
 
-```bash
+```azurecli
 az --version
 ```
 
@@ -48,49 +48,49 @@ Um diese Anbieter und Features manuell zu registrieren, führen Sie die folgende
 
 1. Wenn Sie über mehrere Azure-Abonnements verfügen, geben Sie die gewünschte Abonnement-ID an:
 
-    ```bash
+    ```azurecli
     az account set --subscription <SUBSCRIPTION ID>
     ```
 
 1. Registrieren des Microsoft.ContainerService-AROGA-Features:
 
-    ```bash
+    ```azurecli
     az feature register --namespace Microsoft.ContainerService -n AROGA
     ```
 
 1. Registrieren Sie den Microsoft.Storage-Anbieter:
 
-    ```bash
+    ```azurecli
     az provider register -n Microsoft.Storage --wait
     ```
     
 1. Registrieren Sie den Microsoft.Compute-Anbieter:
 
-    ```bash
+    ```azurecli
     az provider register -n Microsoft.Compute --wait
     ```
 
 1. Registrieren Sie den Microsoft.Solutions-Anbieter:
 
-    ```bash
+    ```azurecli
     az provider register -n Microsoft.Solutions --wait
     ```
 
 1. Registrieren Sie den Microsoft.Network-Anbieter:
 
-    ```bash
+    ```azurecli
     az provider register -n Microsoft.Network --wait
     ```
 
 1. Registrieren Sie den Microsoft.KeyVault-Anbieter:
 
-    ```bash
+    ```azurecli
     az provider register -n Microsoft.KeyVault --wait
     ```
 
 1. Aktualisieren Sie die Registrierung des Microsoft.ContainerService-Ressourcenanbieters:
 
-    ```bash
+    ```azurecli
     az provider register -n Microsoft.ContainerService --wait
     ```
 

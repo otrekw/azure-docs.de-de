@@ -16,10 +16,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 338b638d6b33bcbbb5cf377643a96c71b0d314bd
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76775196"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Daemon-App, die Web-APIs aufruft – Aufrufen einer Web-API aus der App
@@ -30,11 +30,11 @@ ms.locfileid: "76775196"
 
 Gehen Sie wie folgt vor, um eine API unter Verwendung des Tokens aufzurufen:
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 [!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 endpoint = "url to the API"
@@ -44,7 +44,7 @@ http_headers = {'Authorization': 'Bearer ' + result['access_token'],
 data = requests.get(endpoint, headers=http_headers, stream=False).json()
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -71,17 +71,17 @@ Für Daemon-Apps müssen die von Ihnen aufgerufenen Web-APIs vorab genehmigt wer
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
 > [Daemon app - move to production (Daemon-App – Übergang in die Produktion)](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=dotnet)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
 > [Daemon app - move to production (Daemon-App – Übergang in die Produktion)](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=python)
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
 > [Daemon app - move to production (Daemon-App – Übergang in die Produktion)](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=java)

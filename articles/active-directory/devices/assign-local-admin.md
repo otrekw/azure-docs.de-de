@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 613c5e9f153f2e3f02ab35d3be16ef3b29d15634
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: dc1812d955590ec0c7372e1311c9d69f93b9957c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672729"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128876"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Verwalten der lokalen Administratorgruppe auf in Azure AD eingebundenen Geräten
 
@@ -47,7 +47,7 @@ Informationen zum Anzeigen und Aktualisieren der Mitgliedschaft in der globalen 
 
 Die Geräteadministratorrolle kann im Azure-Portal auf der Seite **Geräte** verwaltet werden. So öffnen Sie die Seite **Geräte**:
 
-1. Melden Sie sich als globaler Administrator oder Geräteadministrator beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich als globaler Administrator beim [Azure-Portal](https://portal.azure.com) an.
 1. Suchen Sie nach *Azure Active Directory*, und wählen Sie diese Option aus.
 1. Klicken Sie im Bereich **Verwalten** auf **Geräte**.
 1. Klicken Sie auf der Seite **Geräte** auf **Geräteeinstellungen**.

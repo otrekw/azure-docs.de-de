@@ -10,10 +10,10 @@ ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
 ms.openlocfilehash: c3ed780bc50b690b2f5c3285024695ec6426b9b3
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77167326"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions-Trigger für die Aufwärmphase
@@ -227,7 +227,7 @@ Der Trigger für die Aufwärmphase wird in Java nicht als Attribut unterstützt.
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `WarmupTrigger` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
+|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
 |---------|---------|----------------------|
 | **type** | –| Erforderlich – muss auf `warmupTrigger` festgelegt sein. |
 | **direction** | –| Erforderlich – muss auf `in` festgelegt sein. |
@@ -240,7 +240,7 @@ Wenn eine Aufwärmfunktion aufgerufen wird, werden keine weiteren Informationen 
 ## <a name="trigger---limits"></a>Trigger – Grenzwerte
 
 * Der Trigger für die Aufwärmphase ist nur für Apps verfügbar, die im [Premium-Plan](./functions-premium-plan.md) ausgeführt werden.
-* Der Trigger für die Aufwärmphase wird nur während dem zentralen Hochskalieren aufgerufen und nicht bei Neustarts oder anderen nicht skalierbaren Startups. Sie müssen sicherstellen, dass Ihre Logik alle notwendigen Abhängigkeiten laden kann, ohne den Trigger für die Aufwärmphase zu verwenden. Lazy Loading ist ein gutes Muster, um dies zu erreichen.
+* Der Trigger für die Aufwärmphase wird nur während des Hochskalierens aufgerufen und nicht bei Neustarts oder anderen nicht skalierbaren Startups. Sie müssen sicherstellen, dass Ihre Logik alle notwendigen Abhängigkeiten laden kann, ohne den Trigger für die Aufwärmphase zu verwenden. Lazy Loading ist ein gutes Muster, um dies zu erreichen.
 * Der Trigger für die Aufwärmphase kann nicht aufgerufen werden, sobald eine Instanz bereits ausgeführt wird.
 * Pro Funktions-App kann nur eine Triggerfunktion für die Aufwärmphase vorhanden sein.
 

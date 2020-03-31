@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 1/23/2020
 ms.author: enewman
 ms.openlocfilehash: 0c257589a2e93ac4c15a639e7156d0c0944b033c
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76851337"
 ---
 # <a name="set-up-a-lab-to-teach-data-mobile-application-development-with-android-studio"></a>Einrichten eines Labs zum Vermitteln der Entwicklung mobiler Datenanwendungen mit Android Studio
@@ -21,7 +21,7 @@ In diesem Artikel wird gezeigt, wie Sie eine Einführungsklasse für die Entwick
 
 ## <a name="lab-configuration"></a>Labkonfiguration
 
-Zum Einrichten dieses Labs benötigen Sie zunächst ein Azure-Abonnement und ein Lab-Konto. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen. Sobald Sie ein Azure-Abonnement erhalten, können Sie ein neues Lab-Konto in Azure Lab Services erstellen. Weitere Informationen zum Erstellen eines neuen Labkontos finden Sie im [Tutorial zum Einrichten eines Labkontos](tutorial-setup-lab-account.md).  Sie können auch ein vorhandenes Lab-Konto verwenden.
+Zum Einrichten dieses Labs benötigen Sie zunächst ein Azure-Abonnement und ein Lab-Konto. Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/), bevor Sie beginnen. Sobald Sie ein Azure-Abonnement erhalten, können Sie ein neues Lab-Konto in Azure Lab Services erstellen. Weitere Informationen zum Erstellen eines neuen Labkontos finden Sie im [Tutorial zum Einrichten eines Labkontos](tutorial-setup-lab-account.md).  Sie können auch ein vorhandenes Lab-Konto verwenden.
 
 Absolvieren Sie das [Tutorial zum Einrichten eines Classroom-Labs](tutorial-setup-classroom-lab.md), um ein neues Lab zu erstellen, und wenden Sie dann die folgenden Einstellungen an:
 

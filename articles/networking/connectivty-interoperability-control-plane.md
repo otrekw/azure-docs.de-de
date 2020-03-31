@@ -1,5 +1,5 @@
 ---
-title: 'Interoperabilität in Azure-Back-End-Konnektivitätsfeatures: Analyse der Steuerungsebene | Microsoft-Dokumentation'
+title: 'Interoperabilität in Azure-Back-End-Konnektivitätsfeatures: Analyse auf Steuerungsebene | Microsoft-Dokumentation'
 description: Dieser Artikel bietet eine Analyse auf Steuerungsebene der Testeinrichtung, mit der Sie die Interoperabilität zwischen ExpressRoute, einem Site-to-Site-VPN und Peering zwischen virtuellen Netzwerken in Azure analysieren können.
 documentationcenter: na
 services: networking
@@ -11,13 +11,13 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 4921e4c4fc0da95250a0171c66d6a69093b10687
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873844"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-control-plane-analysis"></a>Interoperabilität in Azure-Back-End-Konnektivitätsfeatures: Analyse der Steuerungsebene
+# <a name="interoperability-in-azure-back-end-connectivity-features-control-plane-analysis"></a>Interoperabilität in Azure-Back-End-Konnektivitätsfeatures: Analyse auf Steuerungsebene
 
 In diesem Artikel wird die Analyse auf Steuerungsebene der [Testeinrichtung][Setup] beschrieben. Sie können auch die [Testeinrichtungskonfiguration][Configuration] und die [Analyse auf Datenebene][Data-Analysis] der Testeinrichtung überprüfen.
 

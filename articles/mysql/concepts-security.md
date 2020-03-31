@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: fb0a71a650a8c36d4da962adaf3f1f314c30d4c2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 3/18/2020
+ms.openlocfilehash: aac2641913331095550c0e19cc587257a996fcce
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980009"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537022"
 ---
 # <a name="security-in-azure-database-for-mysql"></a>Sicherheit in Azure Database for MySQL
 
@@ -38,7 +38,7 @@ IP-Firewallregeln gewähren Serverzugriff auf der Grundlage der Ursprungs-IP-Adr
 Mit VNET-Dienstendpunkten wird die Konnektivität virtueller Netzwerke über den Azure-Backbone erweitert. Mithilfe von VNET-Regeln können Sie Ihren Azure Database for MySQL-Server so konfigurieren, dass Verbindungen von ausgewählten Subnetzen in einem virtuellen Netzwerk zugelassen werden. Weitere Informationen finden Sie in der [Übersicht über VNET-Dienstendpunkte](concepts-data-access-and-security-vnet.md).
 
 ### <a name="private-ip"></a>Private IP-Adresse
-Private Link ermöglicht das Herstellen von Verbindungen mit Ihrer Azure Database for MySQL-Instanz in Azure über einen privaten Endpunkt. Im Prinzip macht Azure Private Link Azure-Dienste in Ihrem privaten virtuellen Netzwerk (VNET) verfügbar. Der Zugriff auf die PaaS-Ressourcen erfolgt wie bei anderen Ressourcen im VNET über die private IP-Adresse. Weitere Informationen finden Sie in der [Übersicht über Private Link](concepts-data-access-security-private-link.md).
+Private Link ermöglicht das Herstellen von Verbindungen mit Ihrer Azure Database for MySQL-Instanz in Azure über einen privaten Endpunkt. im Prinzip macht Azure Private Link Azure-Dienste in Ihrem privaten virtuellen Netzwerk (VNET) verfügbar. Der Zugriff auf die PaaS-Ressourcen erfolgt wie bei anderen Ressourcen im VNET auch über die private IP-Adresse. Weitere Informationen finden Sie in der [Übersicht über Private Link](concepts-data-access-security-private-link.md).
 
 ## <a name="access-management"></a>Zugriffsverwaltung
 

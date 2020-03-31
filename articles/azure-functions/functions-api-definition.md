@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
 ms.openlocfilehash: a80079574dc29c54de89f5275c65637b205742d7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74227419"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>OpenAPI 2.0-Metadatenunterstützung in Azure Functions (Vorschauversion)
@@ -25,7 +25,7 @@ Metadatenunterstützung für OpenAPI 2.0 (ehemals Swagger) in Azure Functions is
 >[!TIP]
 >Es empfiehlt sich, mit dem [Erste-Schritte-Tutorial](./functions-api-definition-getting-started.md) zu beginnen und dann zu diesem Dokument zurückzukehren, um das Wissen über bestimmte Features zu vertiefen.
 
-## <a name="enable"></a>Aktivieren der Unterstützung für eine OpenAPI-Definition
+## <a name="enable-openapi-definition-support"></a><a name="enable"></a>Aktivieren der Unterstützung für eine OpenAPI-Definition
 Sie können alle OpenAPI-Einstellungen auf der Seite **API-Definition** in den **Plattformfunktionen** der Funktions-App konfigurieren.
 
 > [!NOTE]
@@ -33,25 +33,25 @@ Sie können alle OpenAPI-Einstellungen auf der Seite **API-Definition** in den *
 
 Um das Generieren einer gehosteten OpenAPI-Definition und einer Schnellstartdefinition zu ermöglichen, legen Sie **API-Definitionsquelle** auf **Funktion (Vorschau)** fest. **Externe URL** ermöglicht, dass Sie in Ihrer Funktion eine OpenAPI-Definition verwenden, die andernorts gehostet wird.
 
-## <a name="generate-definition"></a>Generieren eines Swagger-Gerüsts aus den Metadaten Ihrer Funktion
+## <a name="generate-a-swagger-skeleton-from-your-functions-metadata"></a><a name="generate-definition"></a>Generieren eines Swagger-Gerüsts aus den Metadaten Ihrer Funktion
 Eine Vorlage kann beim Schreiben Ihrer ersten OpenAPI-Definition hilfreich sein. Das Feature für Definitionsvorlagen erstellt eine spärlich konfigurierte OpenAPI-Definition anhand aller Metadaten in der Datei „function.json“ für jede Ihrer HTTP-Triggerfunktionen. Sie müssen weitere Informationen zu Ihrer API aus der [OpenAPI-Spezifikation](https://swagger.io/specification/), eintragen, z.B. Vorlagen für Anforderungen (request) und Antworten (response).
 
 Schrittweise Anweisungen finden Sie im [Erste-Schritte-Tutorial](./functions-api-definition-getting-started.md).
 
-### <a name="templates"></a>Verfügbare Vorlagen
+### <a name="available-templates"></a><a name="templates"></a>Verfügbare Vorlagen
 
-|NAME| BESCHREIBUNG |
+|Name| BESCHREIBUNG |
 |:-----|:-----|
 |Generated Definition|Eine OpenAPI-Definition mit sämtlichen Informationen, die aus den vorhandenen Metadaten den Funktion abgeleitet werden können.|
 
-### <a name="quickstart-details"></a>Enthaltene Metadaten in der generierten Definition
+### <a name="included-metadata-in-the-generated-definition"></a><a name="quickstart-details"></a>Enthaltene Metadaten in der generierten Definition
 
 In der folgenden Tabelle sind die Azure-Portaleinstellungen und die entsprechenden Daten aus „function.json“ aufgeführt, wie sie dem generierten Swagger-Gerüst zugeordnet sind.
 
 |Swagger.json|Portal-Benutzeroberfläche|Function.json|
 |:----|:-----|:-----|
 |[Host](https://swagger.io/specification/#fixed-fields-15)|**Funktionen-App-Einstellungen** > **App Service-Einstellungen** > **Übersicht** > **URL**|*Nicht vorhanden*
-|[Paths](https://swagger.io/specification/#paths-object-29)|**Integrieren** > **Ausgewählte HTTP-Methoden**|Bindungen: Weiterleiten
+|[Paths](https://swagger.io/specification/#paths-object-29)|**Integrieren** > **Ausgewählte HTTP-Methoden**|Bindungen: Route
 |[Path Item](https://swagger.io/specification/#path-item-object-32)|**Integrieren** > **Routenvorlage**|Bindungen: Methoden
 |[Sicherheit](https://swagger.io/specification/#security-scheme-object-112)|**Schlüssel**|*Nicht vorhanden*|
 |operationID*|**„Route“ und „Zulässige Verben“**|„Route“ und „Allowed Verbs“|
@@ -62,7 +62,7 @@ In der folgenden Tabelle sind die Azure-Portaleinstellungen und die entsprechend
 >
 > Weitere Informationen finden Sie unter [Anpassen der Swagger-Definition für PowerApps](https://powerapps.microsoft.com/tutorials/customapi-how-to-swagger/).
 
-## <a name="CICD"></a>Verwenden von CI/CD, um eine API-Definition festzulegen
+## <a name="use-cicd-to-set-an-api-definition"></a><a name="CICD"></a>Verwenden von CI/CD, um eine API-Definition festzulegen
 
  Sie müssen das Hosten von API-Definitionen im Portal aktivieren, bevor Sie es ermöglichen, Ihre API-Definition aus der Quellcodeverwaltung ändern zu können. Befolgen Sie diese Anweisungen:
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: e333dfb109840538fd5dec8110e1c32adedce989
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759260"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>Verwenden von PowerShell zum Verwalten von Service Bus-Ressourcen
@@ -33,7 +33,7 @@ Sie können Service Bus-Entitäten zudem mithilfe von Azure Resource Manager-Vor
 
 Bevor Sie beginnen, müssen folgende Voraussetzungen erfüllt sein:
 
-* Ein Azure-Abonnement. Weitere Informationen zum Erwerb eines Abonnements finden Sie unter [Azure erwerben][purchase options], [Spezielle Angebote][member offers] oder [Erstellen Sie noch heute Ihr kostenloses Azure-Konto][free account].
+* ein Azure-Abonnement Weitere Informationen zum Erwerb eines Abonnements finden Sie unter [Azure erwerben][purchase options], [Spezielle Angebote][member offers] oder [Erstellen Sie noch heute Ihr kostenloses Azure-Konto][free account].
 * Einen Computer mit Azure PowerShell. Anweisungen finden Sie unter [Erste Schritte mit Azure PowerShell-Cmdlets](/powershell/azure/get-started-azureps).
 * Allgemeine Kenntnisse über PowerShell-Skripts, NuGet-Pakete und .NET Framework.
 

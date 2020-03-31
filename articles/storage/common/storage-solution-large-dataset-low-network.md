@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 4c4ac9489b9613b2eeaf26a3df9f4cbc664a1026
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60730689"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Datenübertragung für große Datasets mit geringer oder keiner Netzwerkbandbreite
@@ -45,7 +45,7 @@ Die in diesem Szenario verfügbaren Optionen sind Geräte für Azure Data Box-Of
 
 In der folgenden Tabelle werden die Unterschiede der Schlüsselfunktionen zusammengefasst.
 
-|                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy              |    Import/Export                       |
+|                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy              |    Importieren/Exportieren                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
 |    Datengröße                        |    Bis zu 35 TB                 |    Bis zu 80 TB pro Gerät                       |    Bis zu 800 TB pro Gerät               |    Variable                            |
 |    Datentyp                        |    Azure-Blobs                  |    Azure-Blobs<br>Azure Files                    |    Azure-Blobs<br>Azure Files            |    Azure-Blobs<br>Azure Files          |

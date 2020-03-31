@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9e45249245aaab97070b7e774d4b6bab6827bdc9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74021995"
 ---
 # <a name="complete-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Abschließen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in Privileged Identity Management

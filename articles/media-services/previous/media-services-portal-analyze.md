@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 0e49e90209c7337081458b7c214d27b37d3b4da1
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74462614"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Medienanalyse mithilfe des Azure-Portals 
@@ -60,7 +60,7 @@ Sie können ein Untertitelformat auswählen, das für Ihre Inhalte generiert wir
 
 Untertiteldateien in diesen Formaten können verwendet werden, um Hörgeschädigten Audio- und Videodateien zugänglich zu machen.
 
-### <a name="keywords"></a>Schlüsselwörter
+### <a name="keywords"></a>Keywords
 Wählen Sie diese Option, wenn Sie eine XML-Schlagwortdatei generieren möchten. Die XML-Schlagwortdatei enthält Stichwörter, die gemeinsam mit Frequenz- und Offsetinformationen aus dem Sprachinhalt extrahiert werden.
 
 ### <a name="job-name"></a>Auftragsname

@@ -8,10 +8,10 @@ ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: fb510c5628913fb3fa37b572c4409aee5d1028ab
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76313748"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Leistungs- und Skalierungstests mit Azure Cosmos DB
@@ -39,7 +39,7 @@ Den schnellsten Einstieg ermöglicht das Kompilieren und Ausführen des .NET-Bei
 
 **Schritt 1:** Laden Sie das Projekt aus dem [Azure Cosmos DB-Beispiel zur Leistungsüberprüfung](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark) herunter, oder erstellen Sie einen Fork des GitHub-Repositorys.
 
-**Schritt 2:** Ändern Sie in der Datei „App.config“ die Einstellungen für „EndpointUrl“, „AuthorizationKey“, „CollectionThroughput“ und „DocumentTemplate“ (optional).
+**Schritt 2:** Ändern Sie in der Datei „App.config“ die Einstellungen für EndpointUrl, AuthorizationKey, CollectionThroughput und DocumentTemplate (optional).
 
 > [!NOTE]
 > Besuchen Sie vor dem Bereitstellen von Sammlungen mit hohem Durchsatz die [Seite mit den Preisinformationen](https://azure.microsoft.com/pricing/details/cosmos-db/), um die Kosten pro Sammlung abschätzen zu können. Bei Azure Cosmos DB werden Speicher und Durchsatz unabhängig voneinander auf Stundenbasis abgerechnet. Sie können Kosten sparen, indem Sie den Durchsatz Ihrer Azure Cosmos-Container nach dem Testen abbrechen oder verringern.
@@ -89,7 +89,7 @@ Den schnellsten Einstieg ermöglicht das Kompilieren und Ausführen des .NET-Bei
     Press any key to exit...
 
 
-**Schritt 4 (bei Bedarf):** Der vom Tool gemeldete Durchsatz (RUs/Sek.) muss mindestens dem bereitgestellten Durchsatz der Sammlung oder einer Gruppe von Sammlungen entsprechen. Wenn dies nicht der Fall ist, kann die Erhöhung von DegreeOfParallelism in kleinen Schritten dabei helfen, den Grenzwert zu erreichen. Wenn der Durchsatz Ihrer Client-App stagniert, starten Sie mehrere Instanzen der App auf zusätzlichen Clientcomputern. Wenn Sie bei diesem Schritt Hilfe benötigen, legen Sie im [Azure-Portal](https://portal.azure.com) ein Supportticket an.
+**Schritt 4 (bei Bedarf):** Der vom Tool gemeldete Durchsatz (RU/s) muss mindestens dem bereitgestellten Durchsatz der Sammlung oder einer Gruppe von Sammlungen entsprechen. Wenn dies nicht der Fall ist, kann die Erhöhung von DegreeOfParallelism in kleinen Schritten dabei helfen, den Grenzwert zu erreichen. Wenn der Durchsatz Ihrer Client-App stagniert, starten Sie mehrere Instanzen der App auf zusätzlichen Clientcomputern. Wenn Sie bei diesem Schritt Hilfe benötigen, legen Sie im [Azure-Portal](https://portal.azure.com) ein Supportticket an.
 
 Sobald die App ausgeführt wird, können Sie verschiedene [Indizierungsrichtlinien](index-policy.md) und [Konsistenzebenen](consistency-levels.md) ausprobieren, um die Auswirkungen auf Durchsatz und Latenz zu ermitteln. Sie können auch den Quellcode prüfen und Konfigurationen implementieren, die Ihren eigenen Testsammlungen oder Produktionsanwendungen ähneln.
 

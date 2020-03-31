@@ -9,10 +9,10 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
 ms.openlocfilehash: ac4e126c7ecbd1fc781db74e5b19635b273bbb34
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72299675"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Bewährte Methoden zur Verwendung von Azure Data Lake Storage Gen2
@@ -57,7 +57,7 @@ Für Datenresilienz mit Data Lake Storage Gen2 wird empfohlen, für Ihre Daten e
 
 ### <a name="use-distcp-for-data-movement-between-two-locations"></a>Verwenden von Distcp für Datenverschiebungen zwischen zwei Standorten
 
-DistCp ist die Abkürzung von „distributed copy“. Es handelt sich um ein Linux-Befehlszeilentool, das zum Funktionsumfang von Hadoop gehört und verteilte Datenverschiebungen zwischen zwei Speicherorten ermöglicht. Die beiden Speicherorte können Data Lake Storage Gen2, HDFS, WASB oder S3 sein. Bei diesem Tool werden MapReduce-Aufträge in einem Hadoop-Cluster (z.B. HDInsight) verwendet, um das horizontale Hochskalieren auf allen Knoten durchzuführen. Distcp ist die schnellste Möglichkeit zum Verschieben von Big Data-Datenmengen ohne spezielle Einrichtungen für die Netzwerkkomprimierung. Distcp verfügt auch über eine Option zum alleinigen Aktualisieren von Deltadaten zwischen zwei Standorten und ermöglicht die Durchführung von automatischen Wiederholungsversuchen und die dynamische Computeskalierung. Dieser Ansatz ist äußerst effizient, was das Replizieren von Elementen wie Hive/Spark-Tabellen betrifft, die über viele große Dateien in einem einzelnen Verzeichnis verfügen, wenn Sie lediglich die geänderten Daten kopieren möchten. Aus diesen Gründen ist Distcp das empfohlene Tool zum Kopieren von Daten zwischen Big Data-Speichern.
+DistCp ist die Abkürzung von „distributed copy“. Es handelt sich um ein Linux-Befehlszeilentool, das zum Funktionsumfang von Hadoop gehört und verteilte Datenverschiebungen zwischen zwei Speicherorten ermöglicht. Die beiden Speicherorte können Data Lake Storage Gen2, HDFS, WASB oder S3 sein. Bei diesem Tool werden MapReduce-Aufträge in einem Hadoop-Cluster (z.B. HDInsight) verwendet, um das Aufskalieren auf allen Knoten durchzuführen. Distcp ist die schnellste Möglichkeit zum Verschieben von Big Data-Datenmengen ohne spezielle Einrichtungen für die Netzwerkkomprimierung. Distcp verfügt auch über eine Option zum alleinigen Aktualisieren von Deltadaten zwischen zwei Standorten und ermöglicht die Durchführung von automatischen Wiederholungsversuchen und die dynamische Computeskalierung. Dieser Ansatz ist äußerst effizient, was das Replizieren von Elementen wie Hive/Spark-Tabellen betrifft, die über viele große Dateien in einem einzelnen Verzeichnis verfügen, wenn Sie lediglich die geänderten Daten kopieren möchten. Aus diesen Gründen ist Distcp das empfohlene Tool zum Kopieren von Daten zwischen Big Data-Speichern.
 
 Kopieraufträge können von Apache Oozie-Workflows ausgelöst werden, indem Häufigkeits- oder Datentrigger verwendet werden, und über Linux-Cron-Aufträge. Für intensive Replikationsaufträge wird empfohlen, einen separaten HDInsight Hadoop-Cluster zu erstellen, der speziell für die Kopieraufträge optimiert und skaliert werden kann. So wird sichergestellt, dass es für Kopieraufträge nicht zu Konflikten mit kritischen Aufträgen kommt. Falls die Replikation mit einer ausreichend geringen Häufigkeit erfolgt, kann der Cluster zwischen den einzelnen Aufträgen ggf. sogar heruntergefahren werden. Stellen Sie beim Ausführen eines Failovers in eine sekundäre Region sicher, dass in der sekundären Region ein weiterer Cluster erstellt wird, damit neue Daten wieder unter dem primären Data Lake Storage Gen2-Konto repliziert werden können, sobald es wieder verfügbar ist. Beispiele für die Verwendung von DistCp finden Sie unter [Kopieren von Daten zwischen Azure Storage-Blobs und Data Lake Storage Gen2 mithilfe von DistCp](../blobs/data-lake-storage-use-distcp.md).
 

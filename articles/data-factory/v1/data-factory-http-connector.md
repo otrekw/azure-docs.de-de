@@ -12,15 +12,15 @@ ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e668f44bbc3d2e381edeb80c568a41355584a4ee
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924176"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229914"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Verschieben von Daten aus einer HTTP-Quelle mithilfe von Azure Data Factory
 
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-http-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-http.md)
 
@@ -42,7 +42,7 @@ Beim Kopieren von Daten von einem lokalen HTTP-Endpunkt müssen Sie in der lokal
 
 Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools oder APIs aus einer HTTP-Quelle verschiebt:
 
-- Am einfachsten erstellen Sie eine Pipeline mit dem Assistenten zum Kopieren von Daten. Eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md).
+- Am einfachsten erstellen Sie eine Pipeline mit dem Assistenten zum Kopieren von Daten. Unter [Tutorial: Erstellen einer Pipeline mithilfe des Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 
 - Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen** sowie die **.NET-API** und die **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie eine schrittweise Anleitung, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. JSON-Beispiele zum Kopieren von Daten aus einer HTTP-Quelle in Azure Blob Storage finden Sie unter [JSON-Beispiele](#json-examples).
 
@@ -165,7 +165,7 @@ Der Abschnitt **typeProperties** ist bei jeder Art von Dataset unterschiedlich. 
 | additionalHeaders | Zusätzliche HTTP-Anforderungsheader | Nein |
 | requestBody | Der Text der HTTP-Anforderung. | Nein |
 | format | Wenn Sie *die Daten ohne Änderung von einem HTTP-Endpunkt abrufen* möchten, ohne sie zu analysieren, überspringen Sie die Einstellung **format**. <br><br> Wenn der HTTP-Antwortinhalt während des Kopierens analysiert werden soll, werden die folgenden Formattypen unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** und **ParquetFormat**. Weitere Informationen finden Sie in den Abschnitten [Textformat](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-Format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-Format](data-factory-supported-file-and-compression-formats.md#orc-format) und [Parquet-Format](data-factory-supported-file-and-compression-formats.md#parquet-format). |Nein |
-| compression | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Unterstützte Typen: **GZip**, **Deflate**, **BZip2** und **ZipDeflate**. Folgende Ebenen werden unterstützt: **Optimal** und **Fastest**. Weitere Informationen finden Sie unter [Datei- und Komprimierungsformate in Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nein |
+| compression | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Unterstützte Typen: **Gzip**, **Deflate**, **bzip2** und **ZipDeflate**. Unterstützte Grade: **Optimal** und **Fastest**. Weitere Informationen finden Sie unter [Datei- und Komprimierungsformate in Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nein |
 
 **Beispiel: Verwenden der GET-Methode (Standard)**
 

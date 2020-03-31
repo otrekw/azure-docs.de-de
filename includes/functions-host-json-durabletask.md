@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 284aad7dd5b51268b1c8ff8a02f4489d6f1cd3d9
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 6bb59db4c1b31033b1e116742dedc94621b1c60d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76279436"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80116979"
 ---
 Konfigurationseinstellungen für [Durable Functions](../articles/azure-functions/durable-functions-overview.md).
 
@@ -43,10 +43,11 @@ Konfigurationseinstellungen für [Durable Functions](../articles/azure-functions
 }
 ```
 
-### <a name="durable-functions-2-0-host-json"></a>Durable Functions 2.x
+### <a name="durable-functions-2x"></a><a name="durable-functions-2-0-host-json"></a>Durable Functions 2.x
 
 ```json
 {
+ "extensions": {
   "durableTask": {
     "hubName": "MyTaskHub",
     "storageProvider": {
@@ -84,12 +85,14 @@ Konfigurationseinstellungen für [Durable Functions](../articles/azure-functions
     "extendedSessionIdleTimeoutInSeconds": 30,
     "useGracefulShutdown": false
   }
+  }
 }
+
 ```
 
 Aufgabenhubnamen müssen mit einem Buchstaben beginnen und bestehen nur aus Buchstaben und Ziffern. Wenn nicht angegeben, lautet der standardmäßige Aufgabenhubname für eine Funktionen-App **DurableFunctionsHub**. Weitere Informationen finden Sie unter [Aufgabenhubs in Durable Functions (Azure Functions)](../articles/azure-functions/durable-functions-task-hubs.md).
 
-|Eigenschaft  |Standard | Beschreibung |
+|Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------|
 |hubName|DurableFunctionsHub|Alternative Namen für [Aufgabenhubs](../articles/azure-functions/durable-functions-task-hubs.md) können zum Isolieren von mehreren Durable Functions-Anwendungen verwendet werden, auch wenn sie dasselbe Speicher-Back-End verwenden.|
 |controlQueueBatchSize|32|Die Anzahl der aus der Steuerelement-Warteschlange jeweils abzurufenden Nachrichten.|

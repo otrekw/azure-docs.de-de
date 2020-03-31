@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
 ms.openlocfilehash: d6110065e28b8f179cd1d113107fb3508e1c3e44
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75892546"
 ---
 # <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Kopieren von Daten aus Microsoft Access-Datenspeichern bzw. in Microsoft Access-Datenspeicher mithilfe von Azure Data Factory
@@ -51,7 +51,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Die folgenden Eigenschaften werden für den mit Microsoft Access verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **MicrosoftAccess** | Ja |
 | connectionString | Die ODBC-Verbindungszeichenfolge, ausgenommen des Teils mit den Anmeldeinformationen. Sie können die Verbindungszeichenfolge angeben oder den System-DSN (Data Source Name) verwenden, den Sie auf dem Computer mit der Integration Runtime eingerichtet haben. (Sie müssen nach wie vor den Teil mit den Anmeldeinformationen im verknüpften Dienst entsprechend angeben.)<br> Sie können auch ein Kennwort in Azure Key Vault speichern und die  `password` -Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie unter  [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md) .| Ja |
@@ -91,7 +91,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Beim Kopieren von Daten aus Microsoft Access werden die folgenden Eigenschaften unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **MicrosoftAccessTable** | Ja |
 | tableName | Der Name der Tabelle in Microsoft Access. | Nein bei Quellen (wenn „query“ in der Aktivitätsquelle angegeben ist);<br/>ja bei Senken |
@@ -122,7 +122,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Zum Kopieren von Daten aus einem mit Microsoft Access kompatiblen Datenspeicher werden die folgenden Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **MicrosoftAccessSource** | Ja |
 | Abfrage | Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |

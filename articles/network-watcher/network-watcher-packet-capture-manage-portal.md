@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: damendo
 ms.openlocfilehash: 6fc4a25e39fb8f27151b2e3bec1959d74a619233
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840826"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Verwalten von Paketerfassungen mit Azure Network Watcher über das Portal
@@ -39,26 +39,26 @@ Wenn eine Netzwerksicherheitsgruppe der Netzwerkschnittstelle oder einem Subnetz
 1. Browsen Sie zum [Azure-Portal](https://portal.azure.com), und wählen Sie **Alle Dienste** und dann **Network Watcher** im Abschnitt **Netzwerk** aus.
 2. Wählen Sie unter **Netzwerkdiagnosetools** die Option **Paketerfassung** aus. Alle vorhandenen Paketerfassungen werden unabhängig von ihrem Status aufgelistet.
 3. Wählen Sie **Hinzufügen** aus, um eine Paketerfassung zu erstellen. Sie können Werte für die folgenden Eigenschaften auswählen:
-   - **Abonnement**: Das Abonnement, dem der virtuelle Computer zugeordnet ist, für den Sie die Paketerfassung erstellen möchten.
-   - **Ressourcengruppe**: Die Ressourcengruppe des virtuellen Computers.
-   - **Virtueller Zielcomputer**: Der virtuelle Computer, für den die Paketerfassung erstellt werden soll.
-   - **Paketerfassungsname**: Ein Name für die Paketerfassung.
-   - **Speicherkonto oder Datei**: Wählen Sie **Speicherkonto**, **Datei** oder beides aus. Wenn Sie **Datei** auswählen, wird die Erfassung in einen Pfad innerhalb des virtuellen Computers geschrieben.
-   - **Lokaler Dateipfad**: Der lokale Pfad auf dem virtuellen Computer zum Speicherort für die Paketerfassung (nur gültig, wenn *Datei* ausgewählt ist). Der Pfad muss ein gültiger Pfad sein. Bei einem virtuellen Linux-Computer muss der Pfad mit */var/captures* beginnen.
-   - **Speicherkonten**: Wählen Sie ein vorhandenes Speicherkonto aus, wenn Sie zuvor *Speicherkonto* ausgewählt haben. Diese Option ist nur verfügbar, wenn Sie **Speicher** ausgewählt haben.
+   - **Abonnement:** das Abonnement, dem der virtuelle Computer zugeordnet ist, für den Sie die Paketerfassung erstellen möchten.
+   - **Ressourcengruppe:** die Ressourcengruppe des virtuellen Computers.
+   - **Virtueller Zielcomputer:** der virtuelle Computer, für den die Paketerfassung erstellt werden soll.
+   - **Paketerfassungsname:** ein Name für die Paketerfassung.
+   - **Speicherkonto oder Datei:** Wählen Sie **Speicherkonto**, **Datei** oder beide Werte aus. Wenn Sie **Datei** auswählen, wird die Erfassung in einen Pfad innerhalb des virtuellen Computers geschrieben.
+   - **Lokaler Dateipfad:** der lokale Pfad auf dem virtuellen Computer zum Speicherort für die Paketerfassung (nur gültig, wenn *Datei* ausgewählt ist). Der Pfad muss ein gültiger Pfad sein. Bei einem virtuellen Linux-Computer muss der Pfad mit */var/captures* beginnen.
+   - **Speicherkonten:** Wählen Sie ein vorhandenes Speicherkonto aus, wenn Sie zuvor *Speicherkonto* ausgewählt haben. Diese Option ist nur verfügbar, wenn Sie **Speicher** ausgewählt haben.
    
      > [!NOTE]
      > Für Storage Premium-Konten wird das Speichern von Paketerfassungen derzeit nicht unterstützt.
 
-   - **Maximale Anzahl von Bytes pro Paket**: Die Anzahl der Bytes aus jedem Paket, die erfasst werden. Wenn keine Angabe erfolgt, werden alle Bytes erfasst.
-   - **Maximale Anzahl von Bytes pro Sitzung**: Die Gesamtzahl der erfassten Bytes. Wenn dieser Wert erreicht wird, wird die Paketerfassung beendet.
-   - **Zeitlimit (Sekunden)** : Das Zeitlimit, nach dem die Paketerfassung beendet wird. Der Standardwert ist 18.000 Sekunden.
+   - **Maximale Anzahl von Bytes pro Paket:** die Anzahl der Bytes aus jedem Paket, die erfasst werden. Wenn keine Angabe erfolgt, werden alle Bytes erfasst.
+   - **Maximale Anzahl von Bytes pro Sitzung:** die Gesamtzahl der erfassten Bytes. Wenn dieser Wert erreicht wird, wird die Paketerfassung beendet.
+   - **Zeitlimit (Sekunden):** das Zeitlimit, nach dem die Paketerfassung beendet wird. Der Standardwert ist 18.000 Sekunden.
    - Filterung (optional). Wählen Sie **+ Filter hinzufügen** aus.
-     - **Protokoll:** Das zu filternde Protokoll für die Paketerfassung. Die verfügbaren Werte sind „TCP“, „UDP“ und „Alle“.
-     - **Lokale IP-Adresse**: Filtert die Paketerfassung für Pakete, deren lokale IP-Adresse mit diesem Wert übereinstimmt.
-     - **Lokaler Port**: Filtert die Paketerfassung nach Paketen, deren lokaler Port mit diesem Wert übereinstimmt.
-     - **Remote-IP-Adresse**: Filtert die Paketerfassung nach Paketen, deren Remote-IP-Adresse mit diesem Wert übereinstimmt.
-     - **Remoteport**: Filtert die Paketerfassung nach Paketen, deren Remoteport mit diesem Wert übereinstimmt.
+     - **Protokoll:** das zu filternde Protokoll für die Paketerfassung. Die verfügbaren Werte sind „TCP“, „UDP“ und „Alle“.
+     - **Lokale IP-Adresse:** filtert die Paketerfassung für Pakete, deren lokale IP-Adresse mit diesem Wert übereinstimmt.
+     - **Lokaler Port:** filtert die Paketerfassung für Pakete, deren lokaler Port mit diesem Wert übereinstimmt.
+     - **Remote-IP-Adresse:** filtert die Paketerfassung für Pakete, deren Remote-IP-Adresse mit diesem Wert übereinstimmt.
+     - **Remoteport:** filtert die Paketerfassung für Pakete, deren Remoteport mit diesem Wert übereinstimmt.
     
      > [!NOTE]
      > Bei den Werten für Port und IP-Adresse kann es sich um einen Einzelwert, einen Bereich von Werten oder einen Bereich handeln, z.B. 80–1024 für den Port. Sie können beliebig viele Filter definieren.

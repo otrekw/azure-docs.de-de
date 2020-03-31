@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
 ms.openlocfilehash: 544b1108a3c79da50969f7fdd33cfb9af373d854
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110866"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>Senden von Cloud-zu-Gerät-Nachrichten mit IoT Hub (iOS)
@@ -51,7 +51,7 @@ Am Ende dieses Artikels führen Sie zwei Swift-iOS-Projekte aus:
 
 * Die neueste Version von [CocoaPods](https://guides.cocoapods.org/using/getting-started.html).
 
-* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port möglicherweise blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit einem IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="simulate-an-iot-device"></a>Simulieren eines IoT-Geräts
 

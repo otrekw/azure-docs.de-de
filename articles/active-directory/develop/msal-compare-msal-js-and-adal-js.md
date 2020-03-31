@@ -14,10 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 7238a78279528b4522d09178d00bf916f14bad88
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76696417"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>Unterschiede zwischen MSAL.js und ADAL.js
@@ -48,7 +48,7 @@ Wenn Benutzer mit früheren Versionen der [Active Directory-Verbunddienste (AD F
 
 Wenn in v1.0 die Autorität `https://login.microsoftonline.com/common` verwendet wird, können sich Benutzer mit jedem Azure AD-Konto (für jede Organisation) anmelden.
 
-Wenn in v2.0 die Autorität `https://login.microsoftonline.com/common` verwendet wird, können sich Benutzer mit jedem Azure AD-Organisationskonto oder einem persönlichen Microsoft-Konto (MSA) anmelden. Wenn Sie die Anmeldung nur auf Azure AD-Konten (gleiches Verhalten wie bei ADAL.js) beschränken möchten, müssen Sie `https://login.microsoftonline.com/organizations` verwenden. Weitere Informationen finden Sie im Artikel [Initialisieren von Clientanwendungen mithilfe von MSAL.js](msal-js-initializing-client-applications.md) unter der Konfigurationsoption `authority`.
+Wenn in v2.0 die Autorität `https://login.microsoftonline.com/common` verwendet wird, können sich Benutzer mit jedem Azure AD-Organisationskonto oder einem persönlichen Microsoft-Konto (MSA) anmelden. Wenn Sie die Anmeldung nur auf Azure AD-Konten (gleiches Verhalten wie bei ADAL.js) beschränken möchten, müssen Sie `https://login.microsoftonline.com/organizations` verwenden. Weitere Informationen finden Sie im Artikel `authority`Initialisieren von Clientanwendungen mithilfe von MSAL.js[ unter der Konfigurationsoption ](msal-js-initializing-client-applications.md).
 
 ### <a name="scopes-for-acquiring-tokens"></a>Geltungsbereiche für das Abrufen von Token
 * Verwendung von Geltungsbereichen anstelle von Ressourcenparametern in Authentifizierungsanforderungen zum Abrufen von Token

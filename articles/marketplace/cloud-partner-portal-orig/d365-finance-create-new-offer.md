@@ -1,23 +1,22 @@
 ---
 title: Erstellen von Microsoft Dynamics 365 Business Central-Angeboten | Azure Marketplace
 description: 'Als veraltet markiert und mit entsprechenden PC-Artikeln verknüpft. Bisher: „Erfahren Sie, wie Sie ein neues Microsoft Dynamics 365 Business Central-Angebot über das Cloud-Partnerportal erstellen.“'
-services: Azure, Marketplace, Cloud Partner Portal,
-author: ChJenk
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.author: pabutler
-ms.openlocfilehash: 3af4479bf12b68dffa711637b3513bb69e855e09
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 54b026de61287820f259d44d062ad6d8ca3bd437
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820075"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80276086"
 ---
 # <a name="how-to-create-your-new-microsoft-dynamics-365-business-central-offer"></a>Erstellen von Microsoft Dynamics 365 Business Central-Angeboten
 
-Das [Cloud-Partnerportal](https://cloudpartner.azure.com/) unterstützt die Erstellung und Verwaltung von Angeboten für Dynamics 365 Business Central nicht mehr. Stattdessen wurde diese Funktionalität zum [Microsoft Partner Center-Portal](https://partner.microsoft.com/) migriert. Weitere Informationen finden Sie unter [Erstellen eines neuen Angebots für Dynamics 365 Business Central](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer).
+Die Erstellung und Verwaltung von Angeboten für Dynamics 365 Business Central wird vom [Cloud-Partnerportal](https://cloudpartner.azure.com/) nicht mehr unterstützt. Stattdessen wurde diese Funktionalität zum [Microsoft Partner Center-Portal](https://partner.microsoft.com/) migriert. Weitere Informationen finden Sie unter [Erstellen eines neuen Angebots für Dynamics 365 Business Central](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

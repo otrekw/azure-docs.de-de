@@ -8,10 +8,10 @@ ms.date: 05/27/2017
 ms.author: dimart
 ms.custom: mvc
 ms.openlocfilehash: 1ec7ece6f5afd1bbd2613ae08af04b82e8a156b2
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277916"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>(VERALTET) Vollständige CI/CD-Pipeline zum Bereitstellen einer Anwendung mit mehreren Containern in Azure Container Service mit ACS-Engine und Docker Swarm-Modus mithilfe von Azure DevOps

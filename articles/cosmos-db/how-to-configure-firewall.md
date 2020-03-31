@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
 ms.openlocfilehash: 1c24782285ac9b06d5499351eebe1693ade07297
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78162943"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Konfigurieren der IP-Firewall in Azure Cosmos DB
@@ -21,7 +21,7 @@ Sie können die in Ihrem Azure Cosmos DB-Konto gespeicherten Daten mithilfe von 
 * Deklarativ durch Verwenden einer Azure Resource Manager-Vorlage
 * Programmgesteuert über die Azure CLI oder mit Azure PowerShell durch Aktualisieren der Eigenschaft **ipRangeFilter**
 
-## <a id="configure-ip-policy"></a> Konfigurieren einer IP-Firewall über das Azure-Portal
+## <a name="configure-an-ip-firewall-by-using-the-azure-portal"></a><a id="configure-ip-policy"></a> Konfigurieren einer IP-Firewall über das Azure-Portal
 
 Um die IP-Zugriffssteuerungsrichtlinie im Azure-Portal festzulegen, wechseln Sie zur Seite für das Azure Cosmos DB-Konto, und wählen Sie im Navigationsmenü **Firewall und virtuelle Netzwerke** aus. Ändern Sie den Wert **Zugriff zulassen über** in **Ausgewählte Netzwerke**, und klicken Sie dann auf **Speichern**.
 
@@ -76,7 +76,7 @@ Sie können die IP-Adressen für Ihre Clouddienste im Azure-Portal abrufen (sieh
 
 ![Screenshot mit der öffentlichen IP-Adresse für einen Clouddienst im Azure-Portal](./media/how-to-configure-firewall/public-ip-addresses.png)
 
-Wenn Sie Ihren Clouddienst horizontal hochskalieren, indem Sie Rolleninstanzen hinzufügen, haben diese neuen Instanzen automatisch Zugriff auf das Azure Cosmos DB-Konto, da sie zum gleichen Clouddienst gehören.
+Wenn Sie Ihren Clouddienst aufskalieren, indem Sie Rolleninstanzen hinzufügen, haben diese neuen Instanzen automatisch Zugriff auf das Azure Cosmos DB-Konto, da sie zum gleichen Clouddienst gehören.
 
 ### <a name="requests-from-virtual-machines"></a>Anforderungen über virtuelle Computer
 
@@ -92,7 +92,7 @@ Wenn Sie der Gruppe VM-Instanzen hinzufügen, erhalten diese automatisch Zugriff
 
 Wenn Sie über einen Computer im Internet auf das Azure Cosmos DB-Konto zugreifen, muss die Client-IP-Adresse oder der Client-IP-Adressbereich des Computers der Liste der zugelassenen IP-Adressen für das Konto hinzugefügt werden.
 
-## <a id="configure-ip-firewall-arm"></a>Konfigurieren einer IP-Firewall mithilfe einer Resource Manager-Vorlage
+## <a name="configure-an-ip-firewall-by-using-a-resource-manager-template"></a><a id="configure-ip-firewall-arm"></a>Konfigurieren einer IP-Firewall mithilfe einer Resource Manager-Vorlage
 
 Zum Konfigurieren der Zugriffssteuerung für Ihr Azure Cosmos DB-Konto muss in der Resource Manager-Vorlage das Attribut **ipRangeFilter** mit einer Liste der zugelassenen IP-Adressbereiche angegeben werden. Wenn Sie die IP-Firewall für ein bereits bereitgestelltes Cosmos-Konto konfigurieren, stellen Sie sicher, dass das `locations`-Array mit dem aktuell bereitgestellten übereinstimmt. Sie können nicht gleichzeitig das `locations`-Array und andere Eigenschaften ändern. Weitere Informationen und Beispiele zu Azure Resource Manager-Vorlagen für Azure Cosmos DB finden Sie unter [Azure Resource Manager-Vorlagen für Azure Cosmos DB](resource-manager-samples.md).
 
@@ -113,7 +113,7 @@ Zum Konfigurieren der Zugriffssteuerung für Ihr Azure Cosmos DB-Konto muss in d
 }
 ```
 
-## <a id="configure-ip-firewall-cli"></a>Konfigurieren einer IP-Zugriffssteuerungsrichtlinie über die Azure CLI
+## <a name="configure-an-ip-access-control-policy-by-using-the-azure-cli"></a><a id="configure-ip-firewall-cli"></a>Konfigurieren einer IP-Zugriffssteuerungsrichtlinie über die Azure CLI
 
 Der folgende Befehl zeigt, wie ein Azure Cosmos DB-Konto mit IP-Zugriffssteuerung erstellt wird:
 
@@ -132,7 +132,7 @@ az cosmosdb create \
     --ip-range-filter $ipRangeFilter
 ```
 
-## <a id="configure-ip-firewall-ps"></a>Konfigurieren einer IP-Zugriffssteuerungsrichtlinie mithilfe von PowerShell
+## <a name="configure-an-ip-access-control-policy-by-using-powershell"></a><a id="configure-ip-firewall-ps"></a>Konfigurieren einer IP-Zugriffssteuerungsrichtlinie mithilfe von PowerShell
 
 Das folgende Skript zeigt, wie Sie ein Azure Cosmos DB-Konto mit IP-Zugriffssteuerung erstellen:
 
@@ -159,7 +159,7 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
     -Name $accountName -PropertyObject $CosmosDBProperties
 ```
 
-## <a id="troubleshoot-ip-firewall"></a>Behandeln von Problemen mit einer IP-Zugriffssteuerungsrichtlinie
+## <a name="troubleshoot-issues-with-an-ip-access-control-policy"></a><a id="troubleshoot-ip-firewall"></a>Behandeln von Problemen mit einer IP-Zugriffssteuerungsrichtlinie
 
 Sie haben folgende Optionen, um Probleme mit einer IP-Zugriffssteuerungsrichtlinie zu behandeln:
 

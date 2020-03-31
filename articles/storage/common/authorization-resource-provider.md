@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: f5d42a6a0567d3949bc4b0fb1947450a9c957f18
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75972349"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Verwenden des Azure Storage-Ressourcenanbieters für den Zugriff auf Verwaltungsressourcen
@@ -44,7 +44,7 @@ Azure bietet integrierte Rollen, mit denen Berechtigungen zum Aufrufen von Verwa
 
 Integrierte Rollen, mit denen Berechtigungen zum Aufrufen von Speicherverwaltungsvorgängen erteilt werden, umfassen die in der folgenden Tabelle beschriebenen Rollen:
 
-|    RBAC-Rolle    |    Beschreibung    |    Beinhaltet den Zugriff auf Kontoschlüssel?    |
+|    RBAC-Rolle    |    BESCHREIBUNG    |    Beinhaltet den Zugriff auf Kontoschlüssel?    |
 |---------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | **Besitzer** | Kann alle Speicherressourcen und den Zugriff auf Ressourcen verwalten.  | Ja. Bietet Berechtigungen zum Anzeigen und erneuten Generieren der Speicherkontoschlüssel. |
 | **Mitwirkender**  | Kann alle Speicherressourcen, aber nicht die Zuweisung zu Ressourcen verwalten. | Ja. Bietet Berechtigungen zum Anzeigen und erneuten Generieren der Speicherkontoschlüssel. |

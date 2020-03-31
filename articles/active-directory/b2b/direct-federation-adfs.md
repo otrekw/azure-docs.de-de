@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e350d6338b6ca589ab18d068ef6a314363fe205c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74272826"
 ---
 # <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>Beispiel: Direkter Verbund mit Active Directory-Verbunddienste (AD FS) (Vorschauversion)
@@ -35,16 +35,16 @@ Azure AD B2B kann so konfiguriert werden, dass es einen Verbund mit Identitätsa
 
 Die folgenden Attribute müssen in der SAML 2.0-Antwort vom Identitätsanbieter empfangen werden, um einen direkten Verbund einzurichten. Diese Attribute können durch Verlinkung mit der XML-Datei des Online-Sicherheitstokendiensts oder durch manuelle Eingabe konfiguriert werden. Schritt 12 unter [Erstellen einer AD FS-Testinstanz](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) beschreibt, wie Sie die AD FS-Endpunkte finden oder wie Sie Ihre Metadaten-URL generieren, z. B. `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`. 
 
-|Attribut  |Wert  |
+|attribute  |Wert  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |Zielgruppe     |`urn:federation:MicrosoftOnline`         |
-|Issuer (Aussteller)     |Die Emittenten-URI des Partneridentitätsanbieters, z. B. `http://www.example.com/exk10l6w90DHM0yi...`         |
+|Issuer (Aussteller)     |Der Aussteller-URI des Partneridentitätsanbieters, z. B. `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 Die folgenden Ansprüche müssen in dem vom Identitätsanbieter ausgegebenen SAML 2.0-Token konfiguriert werden:
 
 
-|Attribut  |Wert  |
+|attribute  |Wert  |
 |---------|---------|
 |NameID-Format     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -77,7 +77,7 @@ Ein AD FS-Server muss bereits eingerichtet und funktionsfähig sein, bevor Sie m
 3. Wählen Sie unter **Aktionen** die Option **Vertrauensstellung der vertrauenden Seite hinzufügen** aus. 
 4. Verwenden Sie im Assistenten zum Hinzufügen von Vertrauensstellungen der vertrauenden Seite unter **Datenquelle auswählen** die Option **Online oder in einem lokalen Netzwerk veröffentlichte Daten über die vertrauende Seite importieren**. Geben Sie diese Verbundmetadaten-URL an: https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml. Belassen Sie ansonsten die Standardeinstellungen. Klicken Sie auf **Schließen**.
 5. Der Assistent zum **Bearbeiten von Anspruchsregeln** wird geöffnet.
-6. Wählen Sie im Assistenten zum **Bearbeiten von Anspruchsregeln** die Option **Regel hinzufügen** aus. Wählen Sie unter **Regeltyp auswählen** die Option **LDAP-Attribute als Ansprüche senden** aus. Klicken Sie auf **Weiter**.
+6. Wählen Sie im Assistenten zum **Bearbeiten von Anspruchsregeln** die Option **Regel hinzufügen** aus. Wählen Sie unter **Regeltyp auswählen** die Option **LDAP-Attribute als Ansprüche senden** aus. Wählen Sie **Weiter** aus.
 7. Geben Sie unter **Anspruchsregel konfigurieren** die folgenden Werte an: 
 
    - **Name der Anspruchsregel**: E-Mail-Anspruchsregel 
@@ -104,19 +104,19 @@ Ein AD FS-Server muss bereits eingerichtet und funktionsfähig sein, bevor Sie m
 5. Klicken Sie auf **OK**. Der AD FS-Server ist jetzt für den direkten Verbund mit dem SAML 2.0-Protokoll konfiguriert.
 
 ## <a name="configure-ad-fs-for-ws-fed-direct-federation"></a>Konfigurieren von AD FS für den direkten WS-Verbund 
-Azure AD B2B kann so konfiguriert werden, dass es einen Verbund mit Identitätsanbietern bildet, die das WS-Verbund-Protokoll mit den unten aufgeführten spezifischen Anforderungen verwenden. Derzeit wurden die beiden WS-Verbund-Anbieter auf Kompatibilität mit Azure AD getestet, darunter AD FS und Shibboleth. Hier werden wir Active Directory-Verbunddienste (AD FS) als Beispiel für den WS-Verbund-Identitätsanbieter verwenden. Weitere Informationen zum Aufbau einer Vertrauensstellung der vertrauenden Seite zwischen einem mit WS-Verbund kompatiblen Anbieter mit Azure AD finden Sie in den Dokumenten zur Kompatibilität des Azure AD-Identitätsanbieters.
+Azure AD B2B kann so konfiguriert werden, dass es einen Verbund mit Identitätsanbietern bildet, die das WS-Verbund-Protokoll mit den unten aufgeführten spezifischen Anforderungen verwenden. Derzeit sind die beiden WS-Verbund-Anbieter auf Kompatibilität mit Azure AD getestet, einschließlich AD FS und Shibboleth. Hier werden wir Active Directory-Verbunddienste (AD FS) als Beispiel für den WS-Verbund-Identitätsanbieter verwenden. Weitere Informationen zum Aufbau einer Vertrauensstellung der vertrauenden Seite zwischen einem mit WS-Verbund kompatiblen Anbieter mit Azure AD finden Sie in den Dokumenten zur Kompatibilität des Azure AD-Identitätsanbieters.
 
 Zum Einrichten eines direkten Verbunds müssen die folgenden Attribute in der WS-Verbund-Nachricht vom Identitätsanbieter empfangen werden. Diese Attribute können durch Verlinkung mit der XML-Datei des Online-Sicherheitstokendiensts oder durch manuelle Eingabe konfiguriert werden. Schritt 12 unter [Erstellen einer AD FS-Testinstanz](https://medium.com/in-the-weeds/create-a-test-active-directory-federation-services-3-0-instance-on-an-azure-virtual-machine-9071d978e8ed) beschreibt, wie Sie die AD FS-Endpunkte finden oder wie Sie Ihre Metadaten-URL generieren, z. B. `https://fs.iga.azure-test.net/federationmetadata/2007-06/federationmetadata.xml`.
  
-|Attribut  |Wert  |
+|attribute  |Wert  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
 |Zielgruppe     |`urn:federation:MicrosoftOnline`         |
-|Issuer (Aussteller)     |Die Emittenten-URI des Partneridentitätsanbieters, z. B. `http://www.example.com/exk10l6w90DHM0yi...`         |
+|Issuer (Aussteller)     |Der Aussteller-URI des Partneridentitätsanbieters, z. B. `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 Erforderliche Ansprüche für das vom Identitätsanbieter ausgegebene WS-Verbund-Token:
 
-|Attribut  |Wert  |
+|attribute  |Wert  |
 |---------|---------|
 |ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -133,7 +133,7 @@ Ein AD FS-Server muss bereits eingerichtet und funktionsfähig sein, bevor Sie m
 1. Wählen Sie unter **Aktionen** die Option **Vertrauensstellung der vertrauenden Seite hinzufügen** aus.  
 1. Verwenden Sie im Assistenten zum Hinzufügen von Vertrauensstellungen der vertrauenden Seite unter **Datenquelle auswählen** die Option **Online oder in einem lokalen Netzwerk veröffentlichte Daten über die vertrauende Seite importieren**. Geben Sie diese Verbundmetadaten-URL an: `https://nexus.microsoftonline-p.com/federationmetadata/2007-06/federationmetadata.xml`.  Belassen Sie ansonsten die Standardeinstellungen. Klicken Sie auf **Schließen**.
 1. Der Assistent zum **Bearbeiten von Anspruchsregeln** wird geöffnet. 
-1. Wählen Sie im Assistenten zum **Bearbeiten von Anspruchsregeln** die Option **Regel hinzufügen** aus. Wählen Sie unter **Regeltyp auswählen** die Option **Ansprüche mithilfe einer benutzerdefinierten Regel senden** aus. Klicken Sie auf *Weiter*. 
+1. Wählen Sie im Assistenten zum **Bearbeiten von Anspruchsregeln** die Option **Regel hinzufügen** aus. Wählen Sie unter **Regeltyp auswählen** die Option **Ansprüche mithilfe einer benutzerdefinierten Regel senden** aus. Wählen Sie *Weiter* aus. 
 1. Geben Sie unter **Anspruchsregel konfigurieren** die folgenden Werte an:
 
    - **Name der Anspruchsregel**: Unveränderliche ID herausgeben  
@@ -141,7 +141,7 @@ Ein AD FS-Server muss bereits eingerichtet und funktionsfähig sein, bevor Sie m
 
 1. Wählen Sie **Fertig stellen** aus. 
 1. Im Fenster **Anspruchsregeln bearbeiten** wird die neue Regel angezeigt. Klicken Sie auf **Anwenden**.  
-1. Wählen Sie im gleichen Assistenten zum **Bearbeiten von Anspruchsregeln** die Option **Regel hinzufügen** aus. Wählen Sie unter **Regeltyp auswählen** die Option **LDAP-Attribute als Ansprüche senden** aus. Klicken Sie auf **Weiter**.
+1. Wählen Sie im gleichen Assistenten zum **Bearbeiten von Anspruchsregeln** die Option **Regel hinzufügen** aus. Wählen Sie unter **Regeltyp auswählen** die Option **LDAP-Attribute als Ansprüche senden** aus. Wählen Sie **Weiter** aus.
 1. Geben Sie unter **Anspruchsregel konfigurieren** die folgenden Werte an: 
 
    - **Name der Anspruchsregel**: E-Mail-Anspruchsregel  

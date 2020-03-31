@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 9/5/2019
 ms.author: eamono
 ms.openlocfilehash: 36fc4c873dccfe9fa814bddccd829ed04207f095
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74226935"
 ---
 # <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Verwalten von Hybridumgebungen mit PowerShell in Azure Functions und App Service Hybrid Connections
@@ -62,14 +62,14 @@ Die Funktion App Service Hybrid Connections ist nur in den Tarifen Basic, Standa
 
     ![PowerShell Core-Funktions-App](./media/functions-hybrid-powershell/create-function-powershell-app.png)  
 
-    | Einstellung      | Empfohlener Wert  | BESCHREIBUNG                                        |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **App-Name** | Global eindeutiger Name | Der Name, der Ihre neue Funktionen-App bezeichnet Gültige Zeichen sind `a-z`, `0-9` und `-`.  | 
     | **Abonnement** | Ihr Abonnement | Das Abonnement, unter dem diese neue Funktions-App erstellt wird. |
     | **Ressourcengruppe** |  myResourceGroup | Der Name der neuen Ressourcengruppe, in der die Funktionen-App erstellt wird Sie können auch den vorgeschlagenen Wert verwenden. |
     | **Betriebssystem** | Bevorzugtes Betriebssystem | Wählen Sie „Windows“ aus. |
     | **Laufzeitstapel** | Bevorzugte Sprache | Wählen Sie die PowerShell Core aus. |
-    | **Speicher** |  Global eindeutiger Name |  Erstellen Sie ein Speicherkonto, das von Ihrer Funktions-App verwendet wird. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. Sie können außerdem ein vorhandenes Konto verwenden.
+    | **Storage** |  Global eindeutiger Name |  Erstellen Sie ein Speicherkonto, das von Ihrer Funktions-App verwendet wird. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. Sie können außerdem ein vorhandenes Konto verwenden.
     | **Application Insights** | Standard | Erstellt eine Application Insights-Ressource mit dem gleichen *App-Namen* in der nächstgelegenen unterstützten Region. Durch Erweitern dieser Einstellung können Sie den **neuen Ressourcennamen** ändern oder einen anderen **Standort** in einer [Azure-Region](https://azure.microsoft.com/global-infrastructure/geographies/) auswählen, in der Sie die Daten speichern möchten. |
 
 1. Wählen Sie nach der Überprüfung Ihrer Einstellungen **Erstellen** aus.

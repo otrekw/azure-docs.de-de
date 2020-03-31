@@ -12,10 +12,10 @@ ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: ddbf1eb960a24cfaa8d09ab45b6febca07e6d504
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75979911"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Häufig gestellte Fragen zur Verwendung von ClearDB MySql-Datenbanken mit Azure App Service
@@ -40,7 +40,7 @@ Dies hängt vom Typ Ihres Abonnements ab. Hier einige gängige Abonnementtypen:
 
 * [Nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/): Erfordert eine Kreditkarte. Wenn Sie eine kostenpflichtige MySQL-Datenbank erwerben, wird die Kreditkarte belastet.
 * [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/): Bietet Guthaben für die Nutzung mit Microsoft Azure-Diensten, lässt aber nicht den Erwerb von Ressourcen von Drittanbietern zu. Zum Erwerben von Diensten von Drittanbietern oder einer kostenpflichtigen MySQL-Datenbank benötigen Sie ein kreditkartengestütztes Abonnement. Für Web-Apps können Sie eine ClearDB MySQL-Datenbank im Tarif FREE erstellen.
-* [MSDN-Abonnement](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) und **MSDN Dev/Test Pay-As-You-Go**: Wie die kostenlose Testversion; ein MSDN-Abonnement erfordert, dass Sie über eine Kreditkarte verfügen, um eine kostenpflichtige MySQL-Lösung von ClearDB zu erwerben.
+* [MSDN-Abonnement](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) und **MSDN Dev/Test Pay-As-You-Go**: Wie die kostenlose Testversion erfordert ein MSDN-Abonnement, dass Sie über eine Kreditkarte verfügen, um eine kostenpflichtige MySQL-Lösung von ClearDB zu erwerben.
 * [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): EA-Kunden erhalten im Rahmen ihres Vertrags vierteljährlich eine Sammelrechnung für alle Käufe (bei Drittanbietern) über den Azure Marketplace. Die Rechnungsstellung für alle Marketplace-Einkäufe erfolgt außerhalb der Zahlungsverpflichtung. Beachten Sie, dass der Azure Store nicht für Kunden verfügbar ist, die in Aserbaidschan, Kroatien, Norwegen und Puerto Rico registriert sind. 
 
 ## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>Warum wurden mir 3,50 $ für eine Web-App und MySQL-Vorlage aus Azure Marketplace in Rechnung gestellt?
@@ -65,7 +65,7 @@ Azure Marketplace ist nicht für Kunden verfügbar, die in Aserbaidschan, Kroati
 Wählen Sie für Web-Apps mindestens den Tarif Basic. Für ClearDB empfehlen wir den Tarif Saturn oder Jupiter. Machen Sie sich mit den Features und Grenzen der einzelnen Tarife sowohl für [Web-Apps](https://azure.microsoft.com/pricing/details/app-service/) als auch für [ClearDB MySQL-Datenbanken](https://w2.cleardb.net/important-change-of-billing-notice-for-all-azure-cleardb-service-plans/) vertraut, um den für Sie am besten geeigneten Tarif zu ermitteln.
 
 ## <a name="how-do-i-upgrade-my-cleardb-database-from-one-plan-to-another"></a>Wie kann ich meinen ClearDB-Datenbanktarif ändern?
-Im [Azure-Portal](https://portal.azure.com) können Sie eine ClearDB-Datenbank mit freigegebenem Hosting zentral hochskalieren. Weitere Informationen finden Sie in [diesem Artikel](https://blogs.msdn.microsoft.com/appserviceteam/2016/10/06/upgrade-your-cleardb-mysql-database-in-azure-portal/). Derzeit wird für ClearDB Premium-Cluster im Azure-Portal kein Upgrade unterstützt.
+Im [Azure-Portal](https://portal.azure.com) können Sie eine ClearDB-Datenbank mit freigegebenem Hosting hochskalieren. Weitere Informationen finden Sie in [diesem Artikel](https://blogs.msdn.microsoft.com/appserviceteam/2016/10/06/upgrade-your-cleardb-mysql-database-in-azure-portal/). Derzeit wird für ClearDB Premium-Cluster im Azure-Portal kein Upgrade unterstützt.
 
 ## <a name="i-cant-see-my-cleardb-database-in-azure-portal"></a>Warum ist meine ClearDB-Datenbank im Azure-Portal nicht sichtbar?
 Wenn Sie die ClearDB-Datenbank auf klassische Weise erstellt haben, können Sie die Datenbank nicht im [Azure-Portal](https://portal.azure.com) sehen. Für dieses Szenario gibt es keine Problemumgehung.

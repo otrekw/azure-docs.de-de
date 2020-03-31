@@ -1,19 +1,19 @@
 ---
 title: Renderabdeckung | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie mehr über Regionen mit Renderabdeckung in Microsoft Azure Maps und über den Grad der gerenderten Details.
-author: jingjing-z
+author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 03/22/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 7821b0b76fb9be1b62aaf334b3c07aaff1d0021a
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: ddc53111cd69072322f37fdfb25c37665c852c23
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209544"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536750"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps-Renderabdeckung
 

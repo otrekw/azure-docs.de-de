@@ -9,10 +9,10 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.openlocfilehash: 65b760eaf28d907fab3654ed92f960be7556b0d6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75862355"
 ---
 # <a name="routing-iot-events-and-messages"></a>Weiterleiten von IoT-Ereignissen und -Nachrichten

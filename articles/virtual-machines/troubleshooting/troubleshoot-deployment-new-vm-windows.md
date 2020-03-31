@@ -16,10 +16,10 @@ ms.date: 06/15/2018
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0bc363b87a9f5b2f013c0bae75a07d79a3a7a830
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75981403"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Behandeln von Bereitstellungsproblemen beim Erstellen eines neuen virtuellen Windows-Computers in Azure
@@ -49,7 +49,7 @@ Sammeln Sie zur Problembehandlung zunächst die Aktivitätsprotokolle, um den Fe
 
 **N<sup>1</sup>:** Wenn ein generalisiertes Windows-Betriebssystem als spezialisiertes Betriebssystem hochgeladen wird, tritt bei der Bereitstellung ein Timeoutfehler auf, und der virtuelle Computer kommt nicht über den OOBE-Bildschirm hinaus.
 
-**N<sup>2</sup>:** Wenn ein spezialisiertes Windows-Betriebssystem als generalisiertes Betriebssystem hochgeladen wird, tritt ein Bereitstellungsfehler auf, und der virtuelle Computer kommt nicht über den OOBE-Bildschirm hinaus, da der neue virtuelle Computer mit dem ursprünglichen Computernamen, Benutzernamen und Kennwort ausgeführt wird.
+**N<sup>2</sup>:** Wenn ein spezialisiertes Windows-Betriebssystem als generalisiertes Betriebssystem hochgeladen wird, tritt ein Bereitstellungsfehler auf, und der virtuelle Computer komm nicht über den OOBE-Bildschirm hinaus, da der neue virtuelle Computer mit dem ursprünglichen Computernamen, Benutzernamen und Kennwort ausgeführt wird.
 
 **Lösung**
 
@@ -65,7 +65,7 @@ Laden Sie zur Behebung dieser Fehler mithilfe von [Add-AzVhd](https://docs.micro
 
 Löschen Sie zur Behebung dieser Fehler das aktuelle Image über das Portal, und [erfassen Sie es auf der Grundlage der aktuellen VHDs erneut](../windows/create-vm-specialized.md). Verwenden Sie dabei die gleiche Einstellung (generalisiert/spezialisiert), die auch für das Betriebssystem verwendet wird.
 
-## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>Problem: Benutzerdefiniertes Image/Katalogimage/Marketplace-Image; Zuordnungsfehler
+## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>Problem: benutzerdefiniertes Image/Katalogimage/Marketplace-Image; Zuordnungsfehler
 Dieser Fehler tritt auf, wenn die Anforderung für einen neuen virtuellen Computer an einen Cluster gesendet wird, der entweder nicht über genügend Speicherplatz verfügt oder die angeforderte VM-Größe nicht unterstützt.
 
 **Ursache 1:** Der Cluster unterstützt nicht die angeforderte Größe des virtuellen Computers.
@@ -79,7 +79,7 @@ Dieser Fehler tritt auf, wenn die Anforderung für einen neuen virtuellen Comput
   * Nachdem alle virtuellen Computer beendet wurden, erstellen Sie den neuen virtuellen Computer in der gewünschten Größe.
   * Starten Sie zunächst den neuen virtuellen Computer, wählen Sie dann alle angehaltenen virtuellen Computer aus, und klicken Sie auf **Starten**.
 
-**Ursache 2:** Der Cluster verfügt über keine freien Ressourcen.
+**Ursache 2:** Der Cluster besitzt keine freien Ressourcen.
 
 **Lösung 2:**
 

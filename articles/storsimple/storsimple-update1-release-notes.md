@@ -16,10 +16,10 @@ ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 11138857e33eec0f854ddb61956ea24c858c49a5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60531032"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>Versionshinweise zu Update 1.2 für Geräte der StorSimple 8000-Serie
@@ -64,17 +64,17 @@ Diese Features wurden zuerst mit Update 1 veröffentlicht, das für eine begren
 ## <a name="issues-fixed-in-update-12"></a>Behobene Probleme in Update 1.2
 Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in den Updates 1.2, 1.1 und 1 behoben wurden.    
 
-| Nein. | Feature | Problem | Im Update behoben | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
+| Nein. | Funktion | Problem | Im Update behoben | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
 | --- | --- | --- | --- | --- | --- |
-| 1 |Windows PowerShell für StorSimple |Beim Remotezugriff eines Benutzers auf das StorSimple-Gerät mit Windows PowerShell für StorSimple und anschließendem Starten des Setup-Assistenten kam es zu einem Absturz, wenn die IP-Adresse von Data 0 eingegeben wurde. Dieses Problem wurde in Update 1 behoben. |Update 1 |Ja |Ja |
-| 2 |Zurücksetzen auf Werkseinstellungen |Unter bestimmten Umständen kann sich das StorSimple-Gerät beim Zurücksetzen auf die Werkseinstellungen aufhängen und zeigt dann die folgende Nachricht an: **Zurücksetzung auf Werkseinstellungen wird ausgeführt (Phase 8)** . Dies kann vorkommen, wenn Sie STRG+C drücken, während das Cmdlet ausgeführt wird. Dieses Problem wurde jetzt behoben. |Update 1 |Ja |Nein |
-| 3 |Zurücksetzen auf Werkseinstellungen |Nach der fehlgeschlagenen Zurücksetzung einer Dual-Controller-Factory auf die Werkseinstellungen konnte die Geräteregistrierung fortgesetzt werden. Dies führte zu einer nicht unterstützten Systemkonfiguration. In Update 1 wird eine Fehlermeldung angezeigt, und auf einem Gerät, das eine fehlgeschlagene Factory-Zurücksetzung aufweist, wird die Registrierung blockiert. |Update 1 |Ja |Nein |
-| 4 |Zurücksetzen auf Werkseinstellungen |In einigen Fällen wurden falsch positive Warnungen aufgrund fehlender Übereinstimmung ausgelöst. Falsche Warnungen aufgrund fehlender Übereinstimmung werden auf Geräten mit Update 1 nicht mehr generiert. |Update 1 |Ja |Nein |
-| 5 |Zurücksetzen auf Werkseinstellungen |Wenn die Zurücksetzung auf Werkseinstellungen vor der vollständigen Ausführung unterbrochen wurde, wechselte das Gerät in den Wiederherstellungsmodus und der Zugriff auf Windows PowerShell für StorSimple war nicht mehr möglich. Dieses Problem wurde jetzt behoben. |Update 1 |Ja |Nein |
-| 6 |Notfallwiederherstellung |Ein Fehler der Notfallwiederherstellung wurde behoben, der ein Fehlschlagen der Notfallwiederherstellung beim Wiederherstellen von Sicherungen auf dem Zielgerät verursacht hat. |Update 1 |Ja |Ja |
-| 7 |Überwachungs-LEDs |In einigen Fällen zeigten Überwachungs-LEDs auf der Geräterückseite nicht den korrekten Status an. Die blaue LED wurde ausgeschaltet. DATA 0- und DATA 1-LEDs blinkten, selbst wenn diese Schnittstellen nicht konfiguriert waren. Das Problem wurde behoben, und die Überwachungs-LEDs zeigen jetzt den korrekten Status an. |Update 1 |Ja |Nein |
+| 1 |Windows PowerShell für StorSimple |Beim Remotezugriff eines Benutzers auf das StorSimple-Gerät mit Windows PowerShell für StorSimple und anschließendem Starten des Setup-Assistenten kam es zu einem Absturz, wenn die IP-Adresse von Data 0 eingegeben wurde. Dieses Problem wurde in Update 1 behoben. |Update 1 |Ja |Ja |
+| 2 |Zurücksetzen auf Werkseinstellungen |Unter bestimmten Umständen kann sich das StorSimple-Gerät beim Zurücksetzen auf die Werkseinstellungen aufhängen und zeigt dann die folgende Nachricht an: **Zurücksetzung auf Werkseinstellungen wird ausgeführt (Phase 8)** . Dies kann vorkommen, wenn Sie STRG+C drücken, während das Cmdlet ausgeführt wird. Dieses Problem wurde jetzt behoben. |Update 1 |Ja |Nein |
+| 3 |Zurücksetzen auf Werkseinstellungen |Nach der fehlgeschlagenen Zurücksetzung einer Dual-Controller-Factory auf die Werkseinstellungen konnte die Geräteregistrierung fortgesetzt werden. Dies führte zu einer nicht unterstützten Systemkonfiguration. In Update 1 wird eine Fehlermeldung angezeigt, und auf einem Gerät, das eine fehlgeschlagene Factory-Zurücksetzung aufweist, wird die Registrierung blockiert. |Update 1 |Ja |Nein |
+| 4 |Zurücksetzen auf Werkseinstellungen |In einigen Fällen wurden falsch positive Warnungen aufgrund fehlender Übereinstimmung ausgelöst. Falsche Warnungen aufgrund fehlender Übereinstimmung werden auf Geräten mit Update 1 nicht mehr generiert. |Update 1 |Ja |Nein |
+| 5 |Zurücksetzen auf Werkseinstellungen |Wenn die Zurücksetzung auf Werkseinstellungen vor der vollständigen Ausführung unterbrochen wurde, wechselte das Gerät in den Wiederherstellungsmodus und der Zugriff auf Windows PowerShell für StorSimple war nicht mehr möglich. Dieses Problem wurde jetzt behoben. |Update 1 |Ja |Nein |
+| 6 |Notfallwiederherstellung |Ein Fehler der Notfallwiederherstellung wurde behoben, der ein Fehlschlagen der Notfallwiederherstellung beim Wiederherstellen von Sicherungen auf dem Zielgerät verursacht hat. |Update 1 |Ja |Ja |
+| 7 |Überwachungs-LEDs |In einigen Fällen zeigten Überwachungs-LEDs auf der Geräterückseite nicht den korrekten Status an. Die blaue LED wurde ausgeschaltet. DATA 0- und DATA 1-LEDs blinkten, selbst wenn diese Schnittstellen nicht konfiguriert waren. Das Problem wurde behoben, und die Überwachungs-LEDs zeigen jetzt den korrekten Status an. |Update 1 |Ja |Nein |
 | 8 |Überwachungs-LEDs |In bestimmten Fällen wurde das blaue Licht am aktiven Controller nach dem Anwenden von Update 1 ausgeschaltet, wodurch die Identifizierung des aktiven Controllers erschwert wurde. Dieses Problem wurde in dieser Patchversion behoben. |Update 1.2 |Ja |Nein |
-| 9 |Netzwerkschnittstellen |In früheren Versionen konnte ein StorSimple-Gerät, das mit einem nicht routbaren Gateway konfiguriert war, offline geschaltet werden. In dieser Version wurde für DATA 0 die niedrigste Routingmetrik festgelegt. Daher wird selbst bei Cloud-Aktivierung anderer Schnittstellen der gesamte Cloud-Datenverkehr vom Gerät über DATA 0 geleitet. |Update 1 |Ja |Ja |
+| 9 |Netzwerkschnittstellen |In früheren Versionen konnte ein StorSimple-Gerät, das mit einem nicht routbaren Gateway konfiguriert war, offline geschaltet werden. In dieser Version wurde für DATA 0 die niedrigste Routingmetrik festgelegt. Daher wird selbst bei Cloud-Aktivierung anderer Schnittstellen der gesamte Cloud-Datenverkehr vom Gerät über DATA 0 geleitet. |Update 1 |Ja |Ja |
 | 10 |Backups |Ein Fehler in Update 1, der zum Fehlschlagen von Sicherungen nach 24 Tagen führte, wurde in der Patchversion Update 1.1 behoben. |Update 1.1 |Ja |Ja |
 | 11 |Backups |Ein Fehler in vorherigen Versionen führte zu einer schlechten Leistung für Cloudmomentaufnahmen mit niedrigen Änderungsraten. Dieser Fehler wurde in dieser Patchversion behoben. |Update 1.2 |Ja |Ja |
 | 12 |Aktualisierungen |Ein Fehler in Update 1, bei dem ein Upgradefehler gemeldet wurde und dazu führte, dass die Controller in den Wiederherstellungsmodus wechselten, wurde in dieser Patchversion behoben. |Update 1.2 |Ja |Ja |
@@ -82,7 +82,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in den Upda
 ## <a name="known-issues-in-update-12"></a>Bekannte Probleme in Update 1.2
 Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme in dieser Version.
 
-| Nein. | Feature | Problem | Kommentare/Problemumgehung | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
+| Nein. | Funktion | Problem | Kommentare/Problemumgehung | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Datenträgerquorum |In seltenen Fällen kann der Speicherpool offline geschaltet werden, wenn der Großteil der Datenträger im EBOD-Gehäuse eines 8600-Geräts getrennt wird, sodass kein Datenträgerquorum verfügbar ist. Der Speicherpool bleibt offline, auch wenn die Verbindung zu den Datenträgern wiederhergestellt wird. |Sie müssen das Gerät neu starten. Wenn das Problem weiterhin auftritt, wenden Sie sich an den Microsoft-Support, um Informationen zu den nächsten Schritten zu erhalten. |Ja |Nein |
 | 2 |Falsche Controller-ID |Beim Austausch eines Controllers kann es vorkommen, dass Controller 0 als Controller 1 angezeigt wird. Während des Controlleraustauschs kann die Controller-ID anfänglich als ID des Peercontrollers angezeigt werden, wenn das Image vom Peerknoten geladen wurde. In seltenen Fällen kann dieses Verhalten auch nach einem Neustart des Systems auftreten. |Es ist keine Benutzeraktion erforderlich. Dieses Problem löst sich von selbst, nachdem der Controlleraustausch abgeschlossen ist. |Ja |Nein |

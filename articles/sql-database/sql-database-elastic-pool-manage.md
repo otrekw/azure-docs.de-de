@@ -4,19 +4,18 @@ description: Erstellen und Verwalten von Pools für elastische Datenbanken in Az
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
-ms.custom: seoapril2019
-ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 4ae2e84ab5f6108de4e8236c39371cf9658809d8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.custom: seoapril2019
+ms.openlocfilehash: d8dde76753e58c713763c16230e5461fef43be88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823849"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067350"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Verwalten von Pools für elastische Datenbanken in Azure SQL-Datenbank
 
@@ -40,7 +39,7 @@ Hier können Sie eine beliebige Kombination aus den folgenden Änderungen vorneh
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
+> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch.
 
 Verwenden Sie zum Erstellen und Verwalten von Pools für elastische Datenbanken und Pooldatenbanken in SQL-Datenbank mithilfe von Azure PowerShell die folgenden PowerShell-Cmdlets. Wenn Sie PowerShell installieren oder aktualisieren müssen, helfen Ihnen die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) weiter. Weitere Informationen zum Erstellen und Verwalten von SQL-Datenbank-Servern für einen Pool für elastische Datenbanken finden Sie unter [Erstellen und Verwalten von SQL-Datenbank-Servern](sql-database-servers.md). Weitere Informationen zum Erstellen und Verwalten von Firewallregeln finden Sie unter [Erstellen und Verwalten von Firewallregeln mit PowerShell](sql-database-firewall-configure.md#use-powershell-to-manage-server-level-ip-firewall-rules).
 
@@ -63,7 +62,7 @@ Verwenden Sie zum Erstellen und Verwalten von Pools für elastische Datenbanken 
 > [!TIP]
 > Das Erstellen zahlreicher Datenbanken in einem Pool für elastische Datenbanken kann eine Weile dauern, wenn dies über das Portal oder über PowerShell-Cmdlets erfolgt, die jeweils nur eine Einzeldatenbank erstellen. Informationen zum Automatisieren der Erstellung in einem Pool für elastische Datenbanken finden Sie unter [CreateOrUpdateElasticPoolAndPopulate](https://gist.github.com/billgib/d80c7687b17355d3c2ec8042323819ae).
 
-## <a name="azure-cli-manage-elastic-pools-and-pooled-databases"></a>Azure-Befehlszeilenschnittstelle: Verwalten von Pools für elastische Datenbanken und von Pooldatenbanken
+## <a name="azure-cli-manage-elastic-pools-and-pooled-databases"></a>Azure CLI: Verwalten von Pools für elastische Datenbanken und Pooldatenbanken
 
 Verwenden Sie zum Erstellen und Verwalten von Pools für elastische SQL-Datenbank-Instanzen mithilfe der [Azure CLI](/cli/azure) die folgenden [Azure CLI-SQL-Datenbank](/cli/azure/sql/db)-Befehle. Führen Sie die CLI mithilfe von [Cloud Shell](/azure/cloud-shell/overview) in Ihrem Browser aus, oder [installieren](/cli/azure/install-azure-cli) Sie sie unter macOS, Linux oder Windows.
 
@@ -90,13 +89,13 @@ Verwenden Sie die folgenden T-SQL-Befehle zum Erstellen und Verschieben von Date
 
 | Get-Help | BESCHREIBUNG |
 | --- | --- |
-|[CREATE DATABASE (Azure SQL-Datenbank)](/sql/t-sql/statements/create-database-azure-sql-database)|Erstellt eine neue Datenbank in einem vorhandenen Pool oder als einzelne Datenbank. Sie müssen über eine Verbindung mit der Masterdatenbank verfügen, um eine neue Datenbank erstellen zu können.|
+|[CREATE DATABASE (Azure SQL-Datenbank)](/sql/t-sql/statements/create-database-azure-sql-database)|Erstellt eine neue Datenbank in einem vorhandenen Pool oder als einzelne Datenbank. Es muss eine Verbindung mit der master-Datenbank bestehen, um eine neue Datenbank zu erstellen.|
 | [ALTER DATABASE (Azure SQL-Datenbank)](/sql/t-sql/statements/alter-database-azure-sql-database) |Dient zum Verschieben einer Datenbank in, aus oder zwischen Pools für elastische Datenbanken.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Löscht eine Datenbank.|
 |[sys.elastic_pool_resource_stats (Azure SQL-Datenbank)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|Gibt Ressourcenverwendungsstatistiken für alle Pools für elastische Datenbanken in einem SQL-Datenbank-Server zurück. Für jeden Pool für elastische Datenbanken ist eine Zeile pro 15-Sekunden-Berichtzeitfenster vorhanden (vier Zeilen pro Minute). Dies umfasst CPU-, E/A-, Protokoll-, Speicher- und gleichzeitige Anforderungs-/Sitzungsauslastung durch alle Datenbanken im Pool.|
 |[sys.database_service_objectives (Azure SQL-Datenbank)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Gibt die Edition (Dienstebene), das Dienstziel (Tarif) und den Namen des Pools für elastische Datenbanken, falls vorhanden, für eine Azure SQL-Datenbank oder ein Azure SQL Data Warehouse zurück. Wenn eine Anmeldung an der Masterdatenbank in einem Azure SQL-Datenbank-Server besteht, werden Informationen zu allen Datenbanken zurückgegeben. Für Azure SQL Data Warehouse müssen Sie über eine Verbindung mit der Masterdatenbank verfügen.|
 
-## <a name="rest-api-manage-elastic-pools-and-pooled-databases"></a>REST-API: Verwalten von Pools für elastische Datenbanken und von Pooldatenbanken
+## <a name="rest-api-manage-elastic-pools-and-pooled-databases"></a>REST-API: Verwalten von Pools für elastische Datenbanken und Pooldatenbanken
 
 Verwenden Sie zum Erstellen und Verwalten von Pools für elastische Datenbanken und Pooldatenbanken in SQL-Datenbank diese REST-API-Anforderungen.
 
@@ -109,7 +108,7 @@ Verwenden Sie zum Erstellen und Verwalten von Pools für elastische Datenbanken 
 |[Pools für elastische Datenbanken – Aktualisieren](https://docs.microsoft.com/rest/api/sql/elasticpools/listbyserver)|Aktualisiert einen vorhandenen Pool für elastische Datenbanken|
 |[Pool für elastische Datenbanken – Aktivitäten](https://docs.microsoft.com/rest/api/sql/elasticpoolactivities)|Gibt Aktivitäten des Pools für elastische Datenbanken zurück|
 |[Pool für elastische Datenbanken – Datenbankaktivitäten](https://docs.microsoft.com/rest/api/sql/elasticpooldatabaseactivities)|Gibt Aktivitäten in Datenbanken in einem Pool für elastische Datenbanken zurück|
-|[Datenbanken – Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Erstellt eine neue Datenbank oder aktualisiert eine bereits vorhandene Datenbank|
+|[Databases - Create oder update](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Erstellt eine neue Datenbank oder aktualisiert eine bereits vorhandene Datenbank|
 |[Datenbanken – Abrufen](https://docs.microsoft.com/rest/api/sql/databases/get)|Ruft eine Datenbank ab|
 |[Databases - List by elastic pool](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|Gibt eine Liste der Datenbanken in einem Pool für elastische Datenbanken zurück.|
 |[Databases - List by server](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|Gibt eine Liste der Datenbanken auf einem Server zurück|

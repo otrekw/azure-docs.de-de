@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
 ms.openlocfilehash: 53280bc90f629d93ff8a045c80f34a73970b43f6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74171633"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Aktionen in der Standardregel-Engine für Azure CDN
@@ -28,7 +28,7 @@ Die folgenden Aktionen können auch in der Standardregel-Engine für Azure CDN v
 
 Verwenden Sie diese Aktion, um die Gültigkeitsdauer (TTL) des Endpunkts für Anforderungen zu überschreiben, die die Bedingungen für die Regelübereinstimmung angeben.
 
-#### <a name="required-fields"></a>Erforderliche Felder
+#### <a name="required-fields"></a>Pflichtfelder
 
 Cacheverhalten |  BESCHREIBUNG              
 ---------------|----------------
@@ -46,7 +46,7 @@ Int | Int | Int | Int
 
 Verwenden Sie diese Aktion, um den Cacheschlüssel basierend auf Abfragezeichenfolgen zu ändern.
 
-#### <a name="required-fields"></a>Erforderliche Felder
+#### <a name="required-fields"></a>Pflichtfelder
 
 Verhalten | BESCHREIBUNG
 ---------|------------
@@ -59,31 +59,31 @@ Ignorieren von Abfragezeichenfolgen | Wenn diese Option ausgewählt ist und die 
 
 Verwenden Sie diese Aktion, um Header zu ändern, die in den an ihren Ursprung gesendeten Anforderungen vorhanden sind.
 
-#### <a name="required-fields"></a>Erforderliche Felder
+#### <a name="required-fields"></a>Pflichtfelder
 
 Aktion | HTTP-Headername | Wert
 -------|------------------|------
-Anfügen | Wenn diese Option ausgewählt ist und die Regel übereinstimmt, wird der im **Headernamen** angegebene Header mit dem angegebenen Wert der Anforderung hinzugefügt. Wenn der Header bereits vorhanden ist, wird der Wert an den vorhandenen Wert angefügt. | Zeichenfolge
-Überschreiben | Wenn diese Option ausgewählt ist und die Regel übereinstimmt, wird der im **Headernamen** angegebene Header mit dem angegebenen Wert der Anforderung hinzugefügt. Wenn der Header bereits vorhanden ist, wird der vorhandene Wert von dem angegebenen Wert überschrieben. | Zeichenfolge
-Löschen | Wenn diese Option ausgewählt ist, die Regel übereinstimmt und der in der Regel angegebene Header vorhanden ist, wird der Header aus der Anforderung gelöscht. | Zeichenfolge
+Anfügen | Wenn diese Option ausgewählt ist und die Regel übereinstimmt, wird der im **Headernamen** angegebene Header mit dem angegebenen Wert der Anforderung hinzugefügt. Wenn der Header bereits vorhanden ist, wird der Wert an den vorhandenen Wert angefügt. | String
+Overwrite | Wenn diese Option ausgewählt ist und die Regel übereinstimmt, wird der im **Headernamen** angegebene Header mit dem angegebenen Wert der Anforderung hinzugefügt. Wenn der Header bereits vorhanden ist, wird der vorhandene Wert von dem angegebenen Wert überschrieben. | String
+Löschen | Wenn diese Option ausgewählt ist, die Regel übereinstimmt und der in der Regel angegebene Header vorhanden ist, wird der Header aus der Anforderung gelöscht. | String
 
 ### <a name="modify-response-header"></a>Antwortheader ändern
 
 Verwenden Sie diese Aktion, um Header zu ändern, die in den an Ihre Clients zurückgegebenen Antworten vorhanden sind.
 
-#### <a name="required-fields"></a>Erforderliche Felder
+#### <a name="required-fields"></a>Pflichtfelder
 
 Aktion | HTTP-Headername | Wert
 -------|------------------|------
-Anfügen | Wenn diese Option ausgewählt ist und die Regel übereinstimmt, wird der im **Headernamen** angegebene Header mit dem angegebenen **Wert** der Antwort hinzugefügt. Wenn der Header bereits vorhanden ist, wird der **Wert** an den vorhandenen Wert angefügt. | Zeichenfolge
-Überschreiben | Wenn diese Option ausgewählt ist und die Regel übereinstimmt, wird der im **Headernamen** angegebene Header mit dem angegebenen **Wert** der Antwort hinzugefügt. Wenn der Header bereits vorhanden ist, überschreibt der **Wert** den vorhandenen Wert. | Zeichenfolge
-Löschen | Wenn diese Option ausgewählt ist, die Regel übereinstimmt und der in der Regel angegebene Header vorhanden ist, wird der Header aus der Antwort gelöscht. | Zeichenfolge
+Anfügen | Wenn diese Option ausgewählt ist und die Regel übereinstimmt, wird der im **Headernamen** angegebene Header mit dem angegebenen **Wert** der Antwort hinzugefügt. Wenn der Header bereits vorhanden ist, wird der **Wert** an den vorhandenen Wert angefügt. | String
+Overwrite | Wenn diese Option ausgewählt ist und die Regel übereinstimmt, wird der im **Headernamen** angegebene Header mit dem angegebenen **Wert** der Antwort hinzugefügt. Wenn der Header bereits vorhanden ist, überschreibt der **Wert** den vorhandenen Wert. | String
+Löschen | Wenn diese Option ausgewählt ist, die Regel übereinstimmt und der in der Regel angegebene Header vorhanden ist, wird der Header aus der Antwort gelöscht. | String
 
 ### <a name="url-redirect"></a>URL Redirect
 
 Leiten Sie mit dieser Aktion Clients an eine neue URL um. 
 
-#### <a name="required-fields"></a>Erforderliche Felder
+#### <a name="required-fields"></a>Pflichtfelder
 
 Feld | BESCHREIBUNG 
 ------|------------
@@ -100,7 +100,7 @@ Es wird dringend empfohlen, eine absolute URL zu verwenden. Bei Verwendung einer
 
 Verwenden Sie diese Aktion, um den Pfad einer Anforderung auf dem Weg zu Ihrem Ursprung erneut zu generieren.
 
-#### <a name="required-fields"></a>Erforderliche Felder
+#### <a name="required-fields"></a>Pflichtfelder
 
 Feld | BESCHREIBUNG 
 ------|------------
@@ -112,5 +112,5 @@ Nicht übereinstimmenden Pfad beibehalten | Wenn **Ja** ausgewählt ist, wird de
 
 - [Übersicht über das Azure Content Delivery Network](cdn-overview.md)
 - [Referenz zur Standardregel-Engine](cdn-standard-rules-engine-reference.md)
-- [Übereinstimmungsbedingungen der Standardregel-Engine](cdn-standard-rules-engine-match-conditions.md)
+- [Übereinstimmungsbedingungen in der Standardregel-Engine](cdn-standard-rules-engine-match-conditions.md)
 - [Erzwingen von HTTPS mithilfe der Standardregel-Engine](cdn-standard-rules-engine.md)

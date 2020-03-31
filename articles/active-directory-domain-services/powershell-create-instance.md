@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: iainfou
 ms.openlocfilehash: ee85002aea962dfa675ac6c09a6bfbaeba8e9e79
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77613234"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Aktivieren von Azure Active Directory Domain Services mithilfe von PowerShell
@@ -62,7 +62,7 @@ New-AzureADGroup -DisplayName "AAD DC Administrators" `
   -MailNickName "AADDCAdministrators"
 ```
 
-Fügen Sie, nachdem Sie die Gruppe *AAD DC Administrators* erstellt haben, mit dem Cmdlet [Add-AzureADGroupMember][Add-AzureADGroupMember] einen Benutzer zur Gruppe hinzu. Zuerst rufen Sie mit dem Cmdlet [Get-AzureADGroup][Get-AzureADGroup] die Objekt-ID der Gruppe *AAD DC Administrators* und dann mit dem Cmdlet [Get-AzureADUser][Get-AzureADUser] die Objekt-ID des gewünschten Benutzers ab.
+Fügen Sie, nachdem Sie die Gruppe *AAD DC Administrators* erstellt haben, mit dem Cmdlet [Add-AzureADGroupMember][Add-AzureADGroupMember] einen Benutzer zur Gruppe hinzu. Zuerst rufen Sie mit dem Cmdlet *Get-AzureADGroup* die Objekt-ID der Gruppe [AAD DC Administrators][Get-AzureADGroup] und dann mit dem Cmdlet [Get-AzureADUser][Get-AzureADUser] die Objekt-ID des gewünschten Benutzers ab.
 
 Das folgende Beispiel zeigt die Objekt-ID des Benutzers für das Konto mit dem Benutzerprinzipalnamen `admin@aaddscontoso.onmicrosoft.com`. Ersetzen Sie dieses Benutzerkonto durch den Benutzerprinzipalnamen des Benutzers, den Sie der Gruppe *AAD DC Administrators* hinzufügen möchten:
 

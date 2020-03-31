@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74703151"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Aufrufen von MapReduce-Programmen über Data Factory
@@ -39,7 +39,7 @@ ms.locfileid: "74703151"
 Die HDInsight MapReduce-Aktivität in einer Data Factory-[Pipeline](data-factory-create-pipelines.md) wendet MapReduce-Programme auf [Ihren eigenen](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) oder einen [bedarfsgesteuerten](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows-/Linux-basierten HDInsight-Cluster an. Dieser Artikel baut auf dem Artikel zu [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md) auf, der eine allgemeine Übersicht über die Datentransformation und die unterstützten Transformationsaktivitäten bietet.
 
 > [!NOTE] 
-> Wenn Sie noch nicht mit Azure Data Factory vertraut sind, sollten Sie zunächst den Artikel [Einführung in Azure Data Factory](data-factory-introduction.md) lesen und anschließend das Tutorial zum Thema [Erstellen Ihrer ersten Datenpipeline](data-factory-build-your-first-pipeline.md) durcharbeiten, bevor Sie diesen Artikel lesen.  
+> Wenn Sie noch nicht mit Azure Data Factory vertraut sind, lesen Sie zunächst den Artikel [Einführung in Azure Data Factory](data-factory-introduction.md), und durchlaufen Sie anschließen das Tutorial [Erstellen Ihrer ersten Pipeline](data-factory-build-your-first-pipeline.md), bevor Sie diesen Artikel lesen.  
 
 ## <a name="introduction"></a>Einführung
 Eine Pipeline in einer Azure Data Factory verarbeitet Daten in verknüpften Speicherdiensten mithilfe verknüpfter Compute Services. Sie enthält eine Abfolge von Aktivitäten, wobei jede Aktivität einen bestimmten Verarbeitungsvorgang ausführt. In diesem Artikel wird die Verwendung der HDInsight-Aktivität „MapReduce“ beschrieben.
@@ -112,7 +112,7 @@ Gehen Sie für die JSON-Definition der HDInsight-Aktivität so vor:
    Mit der HDInsight-Aktivität „MapReduce“ können Sie beliebige MapReduce-JAR-Dateien auf einem HDInsight-Cluster ausführen. In der folgenden JSON-Beispieldefinition einer Pipeline wird die HDInsight-Aktivität für die Ausführung einer Mahout-JAR-Datei konfiguriert.
 
 ## <a name="sample-on-github"></a>Beispiel auf GitHub
-Ein Beispiel für die Verwendung der HDInsight-Aktivität „MapReduce“ können Sie unter [Data Factory-Beispiele auf GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON/MapReduce_Activity_Sample) herunterladen.  
+Unter [Data Factory-Beispiele auf GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON/MapReduce_Activity_Sample)können Sie ein Beispiel für die Verwendung der HDInsight-Aktivität „MapReduce“ herunterladen.  
 
 ## <a name="running-the-word-count-program"></a>Ausführen des Wortzählungsprogramms
 Die Pipeline in diesem Beispiel führt das Zuordnungs-/Reduzierungsprogramm für die Wortzählung auf Ihrem Azure HDInsight-Cluster aus.   
@@ -179,7 +179,7 @@ Die Pipeline in diesem Beispiel akzeptiert keine Eingaben. Geben Sie für die HD
 ```
 
 ### <a name="pipeline"></a>Pipeline
-Die Pipeline in diesem Beispiel besitzt nur eine einzelne Aktivität vom Typ HDInsightMapReduce. Einige wichtige Eigenschaften in JSON: 
+Die Pipeline in diesem Beispiel besitzt nur eine einzelne Aktivität vom Typ „HDInsightMapReduce“. Einige wichtige Eigenschaften in JSON: 
 
 | Eigenschaft | Notizen |
 |:--- |:--- |
@@ -187,7 +187,7 @@ Die Pipeline in diesem Beispiel besitzt nur eine einzelne Aktivität vom Typ HDI
 | className |Der Name der Klasse lautet **wordcount** |
 | jarFilePath |Der Pfad zu der JAR-Datei mit der angegebenen Klasse. Denken Sie beim Kopieren und Einfügen des folgenden Codes daran, den Namen des Clusters zu ändern. |
 | jarLinkedService |Der mit Azure Storage verknüpfte Dienst mit der JAR-Datei. Dieser verknüpfte Dienst verweist auf den Speicher, der dem HDInsight-Cluster zugeordnet ist. |
-| arguments |Das Wortzählungsprogramm akzeptiert zwei Argumente: eine Eingabe und eine Ausgabe. Die Eingabedatei ist die Datei „davinci.txt“. |
+| Argumente |Das Wortzählungsprogramm akzeptiert zwei Argumente: eine Eingabe und eine Ausgabe. Die Eingabedatei ist die Datei „davinci.txt“. |
 | frequency/interval |Die Werte für diese Eigenschaften entsprechen dem Ausgabedataset. |
 | linkedServiceName |Bezieht sich auf den mit HDInsight verknüpften Dienst, den Sie vorhin erstellt haben. |
 
@@ -245,7 +245,7 @@ Sie können die MapReduce-Aktivität verwenden, um Spark-Programme in Ihrem HDIn
 [Developer Reference]: https://go.microsoft.com/fwlink/?LinkId=516908
 [Azure Portal]: https://portal.azure.com
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 * [Hive-Aktivität](data-factory-hive-activity.md)
 * [Pig-Aktivität](data-factory-pig-activity.md)
 * [Hadoop-Streamingaktivität](data-factory-hadoop-streaming-activity.md)

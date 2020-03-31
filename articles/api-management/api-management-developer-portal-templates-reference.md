@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 9bbb7ef46fbde881c8968128870d24a03b046c23
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73176793"
 ---
 # <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen
@@ -30,7 +30,7 @@ Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie 
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-##  <a name="DeveloperPortalTemplates"></a> Entwicklerportal: Vorlagen  
+##  <a name="developer-portal-templates"></a><a name="DeveloperPortalTemplates"></a> Entwicklerportal: Vorlagen  
   
 -   [APIs](api-management-api-templates.md)  
     -   [API-Liste](api-management-api-templates.md#APIList)  

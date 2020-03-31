@@ -4,10 +4,10 @@ description: Verwenden Sie Azure Backup, um Azure Stack-Dateien und -Anwendungen
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.openlocfilehash: 2bcdf7f720708db1487d7d5cdaee41dc93c05728
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74172333"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Sichern von Dateien und Anwendungen in Azure Stack
@@ -30,15 +30,15 @@ Um Azure Backup Server zum Schutz von Dateien auf virtuellen Azure Stack-Compute
 
     Das Öffnen des Assistenten kann einige Sekunden dauern. Klicken Sie im geöffneten Assistenten auf **Weiter**, um mit dem Bildschirm **Schutzgruppentyp auswählen** fortzufahren.
 
-   ![Der Assistent zum Erstellen einer neuen Schutzgruppe wird geöffnet](./media/backup-mabs-files-applications-azure-stack/2-create-new-protection-group-wiz.png)
+   ![Der Assistent zum Erstellen einer neuen Schutzgruppe wird geöffnet.](./media/backup-mabs-files-applications-azure-stack/2-create-new-protection-group-wiz.png)
 
 2. Wählen Sie auf dem Bildschirm **Schutzgruppentyp auswählen** die Option **Server** aus, und klicken Sie auf **Weiter**.
 
-    ![Der Assistent zum Erstellen einer neuen Schutzgruppe wird geöffnet](./media/backup-mabs-files-applications-azure-stack/3-select-protection-group-type.png)
+    ![Der Assistent zum Erstellen einer neuen Schutzgruppe wird geöffnet.](./media/backup-mabs-files-applications-azure-stack/3-select-protection-group-type.png)
 
     Der Bildschirm **Gruppenmitglieder auswählen** wird geöffnet.
 
-    ![Der Assistent zum Erstellen einer neuen Schutzgruppe wird geöffnet](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
+    ![Der Assistent zum Erstellen einer neuen Schutzgruppe wird geöffnet.](./media/backup-mabs-files-applications-azure-stack/4-opening-screen-choose-servers.png)
 
 3. Klicken Sie auf dem Bildschirm **Gruppenmitglieder auswählen** auf **+** , um die Liste mit Unterelementen zu erweitern. Aktivieren Sie das Kontrollkästchen für alle Elemente, die Sie schützen möchten. Nachdem alle Elemente ausgewählt wurden, klicken Sie auf **Weiter**.
 

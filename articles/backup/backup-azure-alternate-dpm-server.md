@@ -4,10 +4,10 @@ description: Stellen Sie die Daten wieder her, die Sie in einem Recovery Service
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.openlocfilehash: 2a89697899fc244848854978de4b25e79ef6f184
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74173503"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Wiederherstellen von Daten von Azure Backup Server
@@ -45,10 +45,10 @@ So stellen Sie Daten von einer Azure Backup Server-Instanz wieder her:
 5. Klicken Sie mit der rechten Maustaste auf das entsprechende Element, und klicken Sie dann auf **Wiederherstellen**.
 
     ![Externe DPM-Wiederherstellung](./media/backup-azure-alternate-dpm-server/recover.png)
-6. Überprüfen Sie die **Wiederherstellungsauswahl**. Überprüfen Sie Datum und Uhrzeit der wiederhergestellten Sicherungskopie sowie die Quelle, aus der die Sicherungskopie erstellt wurde. Wenn die Auswahl fehlerhaft ist, klicken Sie auf **Abbrechen** , und navigieren Sie zur Registerkarte "Wiederherstellung", um dort den richtigen Wiederherstellungspunkt auszuwählen. Wenn die Auswahl richtig ist, klicken Sie auf **Weiter**.
+6. Überprüfen Sie die **Wiederherstellungsauswahl**. Überprüfen Sie Datum und Uhrzeit der wiederhergestellten Sicherungskopie sowie die Quelle, aus der die Sicherungskopie erstellt wurde. Wenn die Auswahl fehlerhaft ist, klicken Sie auf **Abbrechen**, und navigieren Sie zur Registerkarte "Wiederherstellung", um dort den richtigen Wiederherstellungspunkt auszuwählen. Wenn die Auswahl richtig ist, klicken Sie auf **Weiter**.
 
     ![Zusammenfassung zur externen DPM-Wiederherstellung](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-summary.png)
-7. Wählen Sie **An anderem Speicherort wiederherstellen**aus. **Durchsuchen** den richtigen Speicherort für die Wiederherstellung aus.
+7. Wählen Sie **An anderem Speicherort wiederherstellen** aus. Klicken Sie auf **Durchsuchen**, um den richtigen Speicherort für die Wiederherstellung auszuwählen.
 
     ![Alternativer Speicherort für externe DPM-Wiederherstellung](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-alternate-location.png)
 8. Wählen Sie die gewünschte Option aus: **Kopie erstellen**, **Überspringen** oder **Überschreiben**.

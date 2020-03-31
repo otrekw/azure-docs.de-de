@@ -12,15 +12,15 @@ ms.author: craigg
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 0668ccf5ceb972dd120e4e3f37be6d879a12d0a7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73811702"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Notfallwiederherstellung für eine mehrinstanzenfähige SaaS-Anwendung über Datenbankgeoreplikation
 
-In diesem Tutorial erkunden Sie ein vollständiges Szenario zur Notfallwiederherstellung für eine mehrinstanzenfähige SaaS-Anwendung, die mit dem Modell implementiert wurde, bei dem eine Datenbank pro Mandant verwendet wird. Um die App vor einem Ausfall zu schützen, verwenden Sie [ _Georeplikation_](sql-database-geo-replication-overview.md), um Replikate für die Katalog- und Mandantendatenbanken in einer anderen Wiederherstellungsregion zu erstellen. Wenn es einen Ausfall gibt, können Sie schnell ein Failover zu diesen Replikaten ausführen, um den normalen Geschäftsbetrieb fortzusetzen. Bei einem Failover werden die Datenbanken in der ursprünglichen Region zu sekundären Replikaten der Datenbanken in der Wiederherstellungsregion. Sobald diese Replikate wieder online geschaltet wurden, werden sie automatisch in den Zustand versetzt, den die Datenbanken in der Wiederherstellungsregion haben. Nach Behebung des Ausfalls führen Sie ein Failback zu den Datenbanken in der ursprünglichen Produktionsregion aus.
+In diesem Tutorial erkunden Sie ein vollständiges Szenario zur Notfallwiederherstellung für eine mehrinstanzenfähige SaaS-Anwendung, die mit dem Modell implementiert wurde, bei dem eine Datenbank pro Mandant verwendet wird. Um die App vor einem Ausfall zu schützen, verwenden Sie [_Georeplikation_](sql-database-geo-replication-overview.md), um Replikate für die Katalog- und Mandantendatenbanken in einer anderen Wiederherstellungsregion zu erstellen. Wenn es einen Ausfall gibt, können Sie schnell ein Failover zu diesen Replikaten ausführen, um den normalen Geschäftsbetrieb fortzusetzen. Bei einem Failover werden die Datenbanken in der ursprünglichen Region zu sekundären Replikaten der Datenbanken in der Wiederherstellungsregion. Sobald diese Replikate wieder online geschaltet wurden, werden sie automatisch in den Zustand versetzt, den die Datenbanken in der Wiederherstellungsregion haben. Nach Behebung des Ausfalls führen Sie ein Failback zu den Datenbanken in der ursprünglichen Produktionsregion aus.
 
 In diesem Tutorial werden sowohl der Failover- als auch der Failbackworkflow erläutert. Sie lernen Folgendes:
 > [!div class="checklist"]
@@ -51,9 +51,9 @@ Ein NW-Plan, der auf Georeplikation basiert, besteht aus drei eigenständigen Te
 
 Alle Teile müssen sorgfältig überlegt werden, insbesondere bei bedarfsorientiertem Betrieb. Insgesamt muss der Plan mehreren Zielen genügen:
 
-* Einrichtung
+* Einrichten
     * Einrichten und Verwalten einer Spiegelimageumgebung in der Wiederherstellungsregion. Das Erstellen der Pools für elastische Datenbanken und Replizieren aller Datenbanken in dieser Wiederherstellungsumgebung reserviert Kapazität in der Wiederherstellungsregion. Das Verwalten dieser Umgebung umfasst das Replizieren von neuen Mandantendatenbanken, während sie bereitgestellt werden.  
-* Wiederherstellen
+* Wiederherstellung
     * Sofern eine herunterskalierte Wiederherstellungsumgebung verwendet wird, um die täglichen Kosten zu minimieren, müssen Pools und Datenbanken hochskaliert werden, um vollständige Betriebskapazität in der Wiederherstellungsregion zu erreichen.
     * Ermöglichen der Bereitstellung von neuen Mandanten in der Wiederherstellungsregion so bald wie möglich.  
     * Der Plan muss für ein Wiederherstellen der Mandanten in der Reihenfolge ihrer Priorität optimiert sein.
@@ -91,7 +91,7 @@ Später, in einem separaten Rückführungsschritt, führen Sie ein Failover des 
 Bevor Sie den Wiederherstellungsprozess starten, sollten Sie den normalen ordnungsgemäßen Zustand der Anwendung überprüfen.
 1. Öffnen Sie in Ihrem Webbrowser den Wingtip Tickets-Event Hub (http://events.wingtip-dpt.&lt ;Benutzer&gt;.trafficmanager.net). Ersetzen Sie dabei &lt; Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung.
     * Scrollen Sie zum unteren Rand der Seite, und beachten Sie den Katalogservernamen und den Standort in der Fußzeile. Der Standort entspricht die Region, in der Sie die App bereitgestellt haben.
-    *TIPP: Zeigen Sie mit der Maus auf den Standort, um die Anzeige zu vergrößern.* 
+    *Tipp: Zeigen Sie mit der Maus auf den Standort, um die Anzeige zu vergrößern.* 
     ![Ordnungsgemäßer Zustand des Veranstaltungshubs in der ursprünglichen Region](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
 
 2. Klicken Sie auf den Mandanten „Contoso Concert Hall“, um dessen Veranstaltungsseite zu öffnen.

@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 4a054c3c042e18f1679acd75e5ba5ad74f66edff
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73572762"
 ---
 # <a name="authentication-and-user-permissions"></a>Authentifizierung und Benutzerberechtigungen
@@ -72,9 +72,9 @@ Rollen auf dieser Ebene gelten für Benutzer oder Konten, die sie zum Ausführen
 
 ## <a name="database-roles"></a>Datenbankrollen
 
- Rollen, die für ein tabellarisches Modell definiert wurden, sind Datenbankrollen. Das bedeutet, dass die Rollen Mitglieder mit Azure AD-Benutzern und -Sicherheitsgruppen enthalten, die über die spezifischen Berechtigungen verfügen, mit denen die Aktionen definiert werden, die diese Mitglieder in einer Modelldatenbank ausführen können. Eine Datenbankrolle wird als separates Objekt in der Datenbank erstellt und gilt nur für die Datenbank, in der diese Rolle erstellt wird.   
+ Für ein tabellarisches Modell definierte Rollen sind Datenbankrollen. Das bedeutet, dass die Rollen Mitglieder mit Azure AD-Benutzern und -Sicherheitsgruppen enthalten, die über die spezifischen Berechtigungen verfügen, mit denen die Aktionen definiert werden, die diese Mitglieder in einer Modelldatenbank ausführen können. Eine Datenbankrolle wird als separates Objekt in der Datenbank erstellt und gilt nur für die Datenbank, in der diese Rolle erstellt wird.   
   
- Wenn Sie ein neues Projekt für ein tabellarisches Modell erstellen, enthält das Modellprojekt standardmäßig keine Rollen. Rollen können im Dialogfeld „Rollen-Manager“ in Visual Studio definiert werden. Werden Rollen während des Modellprojektentwurfs definiert, werden sie nur auf die Arbeitsbereichsdatenbank des Modells angewendet. Bei der Bereitstellung des Modells werden die gleichen Rollen auf das bereitgestellte Modell angewendet. Nach der Bereitstellung eines Modells können Server- und Datenbankadministratoren Rollen und Mitglieder über SSMS verwalten. Weitere Informationen finden Sie unter [Verwalten von Datenbankrollen und Benutzern](analysis-services-database-users.md).
+ Wenn Sie ein neues Projekt für tabellarische Modelle erstellen, weist das Modellprojekt standardmäßig keine Rollen auf. Rollen können im Dialogfeld „Rollen-Manager“ in Visual Studio definiert werden. Werden Rollen während des Modellprojektentwurfs definiert, werden sie nur auf die Arbeitsbereichsdatenbank des Modells angewendet. Bei der Bereitstellung des Modells werden die gleichen Rollen auf das bereitgestellte Modell angewendet. Nach der Bereitstellung eines Modells können Server- und Datenbankadministratoren Rollen und Mitglieder über SSMS verwalten. Weitere Informationen finden Sie unter [Verwalten von Datenbankrollen und Benutzern](analysis-services-database-users.md).
   
 ## <a name="next-steps"></a>Nächste Schritte
 

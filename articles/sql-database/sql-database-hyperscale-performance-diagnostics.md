@@ -11,10 +11,10 @@ ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
 ms.openlocfilehash: 26bd6ddb9d8255b8e2510133fc4b6aa645f89f68
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75615060"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>Diagnose zur Problembehandlung bei SQL-Hyperscale
@@ -97,7 +97,7 @@ Das Verhältnis von Lesevorgängen im RBPEX-Cache zu aggregierten Lesevorgängen
 
 In einer Nicht-Hyperscale-Datenbank werden kombinierte Lese- und Schreib-IOPS für Datendateien relativ zum Daten-IOPS-Limit der [Ressourcenkontrolle](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance) in den Sichten [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) und [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) in der Spalte `avg_data_io_percent` ausgegeben. Der gleiche Wert wird im Portal als _Prozentsatz der Daten-E/A_ angezeigt. 
 
-In einer Hyperscale-Datenbank zeigt diese Spalte die Daten-IOPS-Auslastung in Bezug auf den Grenzwert für den lokalen Speicher nur für das Computereplikat an, insbesondere E/A für RBPEX und `tempdb`. Ein Wert von 100 % in dieser Spalte gibt an, dass die Ressourcenkontrolle lokale Speicher-IOPS einschränkt. Wenn dies mit einem Leistungsproblem korreliert, sollten Sie die Workload so optimieren, dass weniger E/A generiert wird, oder Sie erhöhen das Ziel des Datenbankdiensts, um das [Limit](sql-database-vcore-resource-limits-single-databases.md) _Max. Data-IOPS_ der Ressourcenkontrolle zu erhöhen. Für die Ressourcenkontrolle von RBPEX-Lese-und Schreibvorgängen zählt das System einzelne 8-KB-E/A-Werte und keine größeren E/A-Werte, die von der SQL Server-Engine ausgegeben werden können. 
+In einer Hyperscale-Datenbank zeigt diese Spalte die Daten-IOPS-Auslastung in Bezug auf den Grenzwert für den lokalen Speicher nur für das Computereplikat an, insbesondere E/A für RBPEX und `tempdb`. Ein Wert von 100 % in dieser Spalte gibt an, dass die Ressourcenkontrolle lokale Speicher-IOPS einschränkt. Wenn dies mit einem Leistungsproblem korreliert, sollten Sie die Workload so optimieren, dass weniger E/A generiert wird, oder Sie erhöhen das Ziel des Datenbankdiensts, um das _Limit_ [Max. Data-IOPS](sql-database-vcore-resource-limits-single-databases.md) der Ressourcenkontrolle zu erhöhen. Für die Ressourcenkontrolle von RBPEX-Lese-und Schreibvorgängen zählt das System einzelne 8-KB-E/A-Werte und keine größeren E/A-Werte, die von der SQL Server-Engine ausgegeben werden können. 
 
 Daten-E/A für Remoteseitenserver wird nicht in Ressourcenverwendungssichten oder im Portal gemeldet, sondern in der [sys.dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/)-DMF, wie bereits erwähnt.
 

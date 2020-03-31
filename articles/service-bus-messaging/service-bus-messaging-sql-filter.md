@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/05/2018
 ms.author: spelluru
 ms.openlocfilehash: d5a8e165fcee23c5feecd5935983dd77d3ec6c30
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759662"
 ---
 # <a name="sqlfilter-syntax"></a>SqlFilter-Syntax
@@ -119,9 +119,9 @@ Ein `<regular_identifier>` kann kein reserviertes Schlüsselwort sein.
   
 `<pattern>` muss ein Ausdruck sein, der als Zeichenfolge ausgewertet wird. Es wird als ein Muster für den LIKE-Operator verwendet.      Es kann die folgenden Platzhalterzeichen enthalten:  
   
--   `%`:  Eine Zeichenfolge aus null oder mehr Zeichen  
+-   `%`: Eine beliebige Zeichenfolge von null oder mehr Zeichen  
   
--   `_`: Ein einzelnes Zeichen.  
+-   `_`: Ein einzelnes Zeichen  
   
 ## <a name="escape_char"></a>escape_char  
   

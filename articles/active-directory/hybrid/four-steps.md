@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d3eb98f543e17981be0d5b9ab08fa4e146659b47
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74206776"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>In vier Schritten zu einem sicheren Identitätsfundament mit Azure Active Directory
@@ -229,7 +229,7 @@ Wir empfehlen Ihnen, die folgende Checkliste zur Referenz auszudrucken, damit Si
 
 ### <a name="today"></a>Heute
 
-|Fertig?|Item|
+|Fertig?|Element|
 |:-|:-|
 ||Pilotversuch für Self-Service-Kennwortzurücksetzung (SSPR, Self-Service Password Reset) für eine Gruppe|
 ||Überwachen von Hybridkomponenten mithilfe von Azure AD Connect Health|
@@ -239,7 +239,7 @@ Wir empfehlen Ihnen, die folgende Checkliste zur Referenz auszudrucken, damit Si
 
 ### <a name="next-two-weeks"></a>Nächste zwei Wochen
 
-|Fertig?|Item|
+|Fertig?|Element|
 |:-|:-|
 ||Verfügbarmachen einer App für Ihre Benutzer|
 ||Pilotversuch für die Azure AD-Bereitstellung für eine beliebige SaaS-App|
@@ -249,7 +249,7 @@ Wir empfehlen Ihnen, die folgende Checkliste zur Referenz auszudrucken, damit Si
 
 ### <a name="next-month"></a>Nächster Monat
 
-|Fertig?|Item|
+|Fertig?|Element|
 |:-|:-|
 ||Überwachen der Nutzung von Apps für Erkenntnisse|
 ||Pilotversuch für sicheren Remotezugriff auf Apps|
@@ -258,7 +258,7 @@ Wir empfehlen Ihnen, die folgende Checkliste zur Referenz auszudrucken, damit Si
 
 ### <a name="next-three-months"></a>Nächste drei Monate
 
-|Fertig?|Item|
+|Fertig?|Element|
 |:-|:-|
 ||Aktivieren der Self-Service-App-Verwaltung|
 ||Aktivieren der Self-Service-Gruppenverwaltung|

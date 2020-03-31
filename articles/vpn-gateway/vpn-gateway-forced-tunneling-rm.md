@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 02/01/2018
 ms.author: cherylmc
 ms.openlocfilehash: fc35654403bbe1375d4188476b11fd0453f74345
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153144"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225054"
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Konfigurieren der Tunnelerzwingung mit dem Azure Resource Manager-Bereitstellungsmodell
 
@@ -47,20 +47,20 @@ Die Tunnelerzwingung in Azure wird über benutzerdefinierte Routen im virtuellen
 
 * Jedes Subnetz des virtuellen Netzwerks verfügt über eine integrierte Systemroutingtabelle. Die Systemroutingtabelle verfügt über die folgenden drei Gruppen von Routen:
   
-  * **Lokale VNET-Routen:** Direkt zu den virtuellen Zielcomputern im selben virtuellen Netzwerk
-  * **Lokale Routen:** Zum Azure-VPN-Gateway
-  * **Standardroute:** Direkt zum Internet Pakete an private IP-Adressen, die nicht durch die vorherigen beiden Routen abgedeckt sind, werden verworfen.
+  * **Lokale VNET-Routen:** direkt zu den virtuellen Zielcomputern im gleichen virtuellen Netzwerk.
+  * **Lokale Routen:** zum Azure VPN Gateway.
+  * **Standardroute:** direkt zum Internet. Pakete an private IP-Adressen, die nicht durch die vorherigen beiden Routen abgedeckt sind, werden verworfen.
 * In diesem Verfahren werden benutzerdefinierte Routen (User Defined Routes, UDR) verwendet, um eine Routingtabelle zu erstellen, damit eine Standardroute hinzugefügt wird. Anschließend verknüpfen Sie die Routingtabelle mit den VNet-Subnetzen, um die Tunnelerzwingung in diesen Subnetzen zu aktivieren.
 * Die Tunnelerzwingung muss einem VNet zugeordnet werden, das über ein routenbasiertes VPN-Gateway verfügt. Sie müssen einen "Standardstandort" unter den standortübergreifenden lokalen Standorten auswählen, der mit dem virtuellen Netzwerk verbunden ist. Darüber hinaus muss das lokale VPN-Gerät für die Verwendung von „0.0.0.0/0“ als Datenverkehrsauswahl konfiguriert werden. 
 * Die ExpressRoute-Tunnelerzwingung kann über diesen Mechanismus nicht konfiguriert werden. Sie wird stattdessen durch Anfordern einer Standardroute über die ExpressRoute-BGP-Peeringsitzungen aktiviert. Weitere Informationen finden Sie in der [Dokumentation zu ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/).
 
 ## <a name="configuration-overview"></a>Konfigurationsübersicht
 
-Das folgende Verfahren unterstützt Sie beim Erstellen einer Ressourcengruppe und eines VNets. Anschließend erstellen Sie ein VPN-Gateway und konfigurieren die Tunnelerzwingung. In diesem Verfahren weist das virtuelle Netzwerk „MultiTier-VNet“ drei Subnetze auf: „Frontend“, „Midtier“ und „Backend“ mit vier standortübergreifenden Verbindungen: „DefaultSiteHQ“ und drei Branches.
+Das folgende Verfahren unterstützt Sie beim Erstellen einer Ressourcengruppe und eines VNets. Anschließend erstellen Sie ein VPN-Gateway und konfigurieren die Tunnelerzwingung. In dieser Vorgehensweise verfügt das virtuelle Netzwerk „MultiTier-VNet“ über die drei Subnetze „Frontend“, „Midtier“ und „Backend“ mit vier standortübergreifenden Verbindungen: „DefaultSiteHQ“ und drei Verzweigungen.
 
 Mithilfe der Schritte wird festgelegt, dass „DefaultSiteHQ“ die Standard-Standortverbindung für die Tunnelerzwingung ist und die Subnetze „Midtier“ und „Backend“ die Tunnelerzwingung verwenden müssen.
 
-## <a name="before"></a>Voraussetzungen
+## <a name="before-you-begin"></a><a name="before"></a>Voraussetzungen
 
 Installieren Sie die aktuelle Version der PowerShell-Cmdlets für Azure Resource Manager. Weitere Informationen zur Installation der PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview) .
 

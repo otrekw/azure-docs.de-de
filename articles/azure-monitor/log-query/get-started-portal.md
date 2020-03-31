@@ -1,140 +1,140 @@
 ---
-title: Erste Schritte mit Azure Monitor Log Analytics | Microsoft-Dokumentation
-description: Dieser Artikel ist ein Tutorial zum Schreiben von Abfragen mithilfe von Log Analytics im Azure-Portal.
+title: 'Tutorial: Erste Schritte mit Log Analytics-Abfragen'
+description: In diesem Tutorial erfahren Sie, wie Sie mit Log Analytics Azure Monitor-Protokollabfragen im Azure-Portal schreiben und verwalten.
 ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
-ms.date: 07/19/2019
-ms.openlocfilehash: 1cf1695db50e6aee2a5dae24ed5231fdda7c12de
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/17/2020
+ms.openlocfilehash: 29e24166218a6757cded9d1b002321800ab0c073
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670235"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80055468"
 ---
-# <a name="get-started-with-log-analytics-in-azure-monitor"></a>Erste Schritte mit Log Analytics in Azure Monitor
+# <a name="tutorial-get-started-with-log-analytics-queries"></a>Tutorial: Erste Schritte mit Log Analytics-Abfragen
 
-> [!NOTE]
-> Sie können diese Übung in Ihrer eigenen Umgebung durcharbeiten, wenn Sie Daten von mindestens einem virtuellen Computer sammeln. Andernfalls verwenden Sie die [Demoumgebung](https://portal.loganalytics.io/demo), die eine Vielzahl von Beispieldaten enthält.
+In diesem Tutorial erfahren Sie, wie Sie mit Log Analytics Azure Monitor-Protokollabfragen im Azure-Portal schreiben, ausführen und verwalten. Mithilfe von Log Analytics-Abfragen können Sie nach Begriffen suchen, Trends identifizieren, Muster analysieren und viele andere Erkenntnisse aus Ihren Daten gewinnen. 
 
-In diesem Tutorial erfahren Sie, wie Sie mithilfe von Log Analytics im Azure-Portal Azure Monitor-Protokollabfragen schreiben können. Es wird Folgendes vermittelt:
+In diesem Tutorial erfahren Sie, wie Sie mit Log Analytics:
 
-- Verwenden von Log Analytics zum Schreiben einer einfachen Abfrage
-- Grundlegendes zum Schema Ihrer Daten
-- Filtern, Sortieren und Gruppieren von Ergebnissen
-- Anwenden eines Zeitbereichs
-- Erstellen von Diagrammen
-- Speichern und Laden von Abfragen
-- Exportieren und Freigeben von Abfragen
+> [!div class="checklist"]
+> * Das Schema von Protokolldaten nachvollziehen
+> * Einfache Abfragen schreiben und ausführen sowie den Zeitbereich für Abfragen ändern
+> * Abfrageergebnisse filtern, sortieren und gruppieren
+> * Visuelle Elemente der Abfrageergebnisse anzeigen, ändern und teilen
+> * Abfragen und Ergebnisse speichern, laden, exportieren und kopieren
 
-Ein Tutorial zum Schreiben von Protokollabfragen finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](get-started-queries.md).<br>
-Weitere Informationen zu Protokollabfragen finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](log-query-overview.md).
+Weitere Informationen zu Protokollabfragen finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](log-query-overview.md).<br/>
+Ein ausführliches Tutorial zum Schreiben von Protokollabfragen finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](get-started-queries.md).
 
-## <a name="meet-log-analytics"></a>Einführung in Log Analytics
-Log Analytics ist ein Webtool, das zum Schreiben und Ausführen von Azure Monitor-Protokollabfragen verwendet wird. Sie können es durch Auswählen von **Protokolle** im Menü „Azure Monitor“ öffnen. Zu Beginn wird eine neue leere Abfrage angezeigt.
+## <a name="open-log-analytics"></a>Öffnen von Log Analytics
+Um Log Analytics verwenden zu können, müssen Sie bei einem Azure-Konto angemeldet sein. Falls Sie kein Azure-Konto haben, können Sie [kostenlos eines erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-![Startseite](media/get-started-portal/homepage.png)
+Die meisten Schritte in diesem Tutorial können Sie [in dieser Demoumgebung](https://portal.loganalytics.io/demo) ausführen, die zahlreiche Beispieldaten enthält. In der Demoumgebung können Sie weder Abfragen speichern noch Ergebnisse an ein Dashboard anheften.
 
-## <a name="firewall-requirements"></a>Firewallanforderungen
-Um Log Analytics verwenden zu können, benötigt Ihr Browser Zugriff auf die folgenden Adressen. Wenn der Browser über eine Firewall auf das Azure-Portal zugreift, müssen Sie den Zugriff auf diese Adressen aktivieren.
-
-| Uri | IP | Ports |
-|:---|:---|:---|
-| portal.loganalytics.io | Dynamisch | 80, 443 |
-| api.loganalytics.io | Dynamisch | 80, 443 |
-| docs.loganalytics.io | Dynamisch | 80, 443 |
-
-## <a name="basic-queries"></a>Grundlegende Abfragen
-Mithilfe von Abfragen können Suchbegriffe verwendet, Trends identifiziert, Muster analysiert und viele andere Informationen basierend auf Ihren Daten ermittelt werden. Beginnen Sie mit einer einfachen Abfrage:
-
-```Kusto
-Event | search "error"
-```
-
-Diese Abfrage durchsucht die Tabelle _Event_ nach Datensätzen, die in einer Eigenschaft den Begriff _error_ enthalten.
-
-Abfragen können entweder mit einem Tabellennamen oder einem [search](/azure/kusto/query/searchoperator)-Befehl beginnen. Das obige Beispiel beginnt mit dem Tabellennamen _Event_, wodurch alle Datensätze aus der Tabelle „Event“ abgerufen werden. Der senkrechte Strich (|) trennt Befehle, d.h. die Ausgabe des ersten Befehls dient als Eingabe für den folgenden Befehl. Sie können eine beliebige Anzahl von Befehlen zu einer einzelnen Abfrage hinzufügen.
-
-Eine andere Möglichkeit, die gleiche Abfrage zu schreiben, wäre Folgende:
-
-```Kusto
-search in (Event) "error"
-```
-
-In diesem Beispiel bezieht sich **search** auf die Tabelle _Event_, und alle Datensätze in dieser Tabelle werden nach dem Begriff _error_ durchsucht.
-
-## <a name="running-a-query"></a>Ausführen einer Abfrage
-Führen Sie eine Abfrage aus, indem Sie auf die Schaltfläche **Ausführen** klicken oder die **UMSCHALT+EINGABETASTE** drücken. Beachten Sie die folgenden Details, die den Code, der ausgeführt wird, und die zurückgegebenen Daten bestimmen:
-
-- Zeilenumbrüche: Ein einzelner Umbruch sorgt für eine bessere Lesbarkeit Ihrer Abfrage. Mehrere Zeilenumbrüche teilen diese in separate Abfragen auf.
-- Cursor: Platzieren Sie den Cursor an einer beliebigen Stelle in der Abfrage, um sie auszuführen. Der Code ist die aktuelle Abfrage bis zum einer leeren Zeile.
-- Zeitbereich: Standardmäßig ist der Zeitbereich _Letzte 24 Stunden_ festgelegt. Wenn Sie einen anderen Bereich verwenden möchten, verwenden Sie die Zeitauswahl, oder fügen Sie Ihrer Abfrage einen expliziten Zeitbereichsfilter hinzu.
-
+Sie können auch Ihre eigene Umgebung verwenden, wenn Sie mit Azure Monitor Protokolldaten für mindestens eine Azure-Ressource sammeln. Wählen Sie im linken Navigationsbereich von Azure Monitor **Protokolle** aus, um einen Log Analytics-Arbeitsbereich zu öffnen. 
 
 ## <a name="understand-the-schema"></a>Grundlegendes zum Schema
-Das Schema ist eine Auflistung von Tabellen, die visuell unter einer logischen Kategorie gruppiert sind. Mehrere Kategorien stammen aus Überwachungslösungen. Die Kategorie _LogManagement_ enthält allgemeine Daten wie Windows- und Syslog-Ereignisse, Leistungsdaten und Agent-Takte.
+Das *Schema* ist eine Sammlung von Tabellen, die unter einer logischen Kategorie gruppiert sind. Das Demoschema umfasst mehrere Kategorien, die aus Überwachungslösungen stammen. Die Kategorie **LogManagement** enthält beispielsweise Windows- und Syslog-Ereignisse, Leistungsdaten und Agent-Takte.
+
+Die Schematabellen werden auf der Registerkarte **Tabellen** des Log Analytics-Arbeitsbereichs angezeigt. Die Tabellen enthalten Spalten, deren Datentyp durch das Symbol neben dem Spaltennamen angezeigt wird. Beispielsweise enthält die Tabelle **Event** Textspalten wie **Computer** und numerische Spalten wie **EventCategory**.
 
 ![Schema](media/get-started-portal/schema.png)
 
-In jeder Tabelle sind Daten in Spalten mit unterschiedlichen Datentypen angeordnet, was durch Symbole neben dem Spaltennamen angegeben wird. Die im Screenshot gezeigte _Event_-Tabelle enthält Spalten wie _Computer_, bei der es sich um Text handelt, _EventCategory_, bei der es sich um eine Zahl handelt, und _TimeGenerated_, bei der es sich um Datum/Uhrzeit handelt.
+## <a name="write-and-run-basic-queries"></a>Schreiben und Ausführen einfacher Abfragen
 
-## <a name="filter-the-results"></a>Filtern der Ergebnisse
-Fügen Sie zunächst alle Elemente in die _Event_-Tabelle ein.
+Log Analytics wird mit einer neuen leeren Abfrage im **Abfrage-Editor** geöffnet.
+
+![Log Analytics](media/get-started-portal/homepage.png)
+
+### <a name="write-a-query"></a>Schreiben Sie eine Abfrage.
+Für Azure Monitor-Protokollabfragen wird eine Version der Kusto-Abfragesprache verwendet. Abfragen können mit einem Tabellennamen oder einem [search](/azure/kusto/query/searchoperator)-Befehl beginnen. 
+
+Die folgende Abfrage ruft alle Datensätze aus der Tabelle **Event** ab:
 
 ```Kusto
 Event
 ```
 
-Log Analytics beschränkt die Ergebnisse automatisch auf Folgendes:
+Der senkrechte Strich (|) trennt Befehle, d. h. die Ausgabe des ersten Befehls ist die Eingabe für den nächsten Befehl. Sie können eine beliebige Anzahl von Befehlen zu einer einzelnen Abfrage hinzufügen. Die folgende Abfrage ruft die Datensätze aus der Tabelle **Event** ab und sucht dann nach Datensätzen, die den Begriff **error** in einer Eigenschaft enthalten:
 
-- Zeitbereich:  Abfragen werden standardmäßig auf die letzten 24 Stunden beschränkt.
-- Anzahl von Ergebnissen: Ergebnisse sind auf maximal 10.000 Datensätze beschränkt.
+```Kusto
+Event 
+| search "error"
+```
 
-Diese Abfrage ist sehr allgemein gehalten und gibt zu viele Ergebnisse zurück. Sie können die Ergebnisse entweder über die Tabellenelemente oder explizit durch Hinzufügen eines Filters zur Abfrage filtern. Das Filtern von Ergebnissen durch die Tabellenelemente gilt für das vorhandene Resultset, während ein Filter für die Abfrage selbst ein neues gefiltertes Resultset zurückgibt und daher genauere Ergebnisse liefern kann.
+Mit einem einzelnen Zeilenumbruch kann die Lesbarkeit von Abfragen verbessert werden. Durch mehrere Zeilenumbrüche wird die Abfrage in separate Abfragen aufgeteilt.
 
-### <a name="add-a-filter-to-the-query"></a>Hinzufügen eines Filters zur Abfrage
-Links neben den einzelnen Datensätzen wird ein Pfeil angezeigt. Klicken Sie auf diesen Pfeil, um die Details für einen bestimmten Datensatz zu öffnen.
+Die gleiche Abfrage kann auch wie folgt geschrieben werden:
 
-Zeigen Sie auf einen Spaltennamen für die Symbole „+“ und „-“, um diese anzuzeigen. Um einen Filter hinzuzufügen, der nur Datensätze mit dem gleichen Wert zurückgibt, klicken Sie auf das „+“-Zeichen. Klicken Sie auf „-“, um Datensätze mit diesem Wert auszuschließen, und klicken Sie dann auf **Ausführen**, um die Abfrage erneut auszuführen.
+```Kusto
+search in (Event) "error"
+```
 
-![Hinzufügen eines Filters zur Abfrage](media/get-started-portal/add-filter.png)
+Im zweiten Beispiel sucht der **search**-Befehl nur nach Datensätzen in der Tabelle **Events**, die den Begriff **error** enthalten.
 
-### <a name="filter-through-the-table-elements"></a>Filtern über die Tabellenelemente
-Konzentrieren wir uns nun auf Ereignisse mit dem Schweregrad _Error_. Dieser wird in einer Spalte namens _EventLevelName_ angegeben. Sie müssen nach rechts scrollen, um diese Spalte anzuzeigen.
+Standardmäßig beschränkt Log Analytics Abfragen auf die letzten 24 Stunden. Wenn Sie einen anderen Zeitbereich festlegen möchten, können Sie der Abfrage einen expliziten **TimeGenerated**-Filter hinzufügen oder die **Zeitbereichssteuerung** verwenden.
 
-Klicken Sie auf das Filtersymbol neben dem Spaltentitel, und wählen Sie im Popupfenster Werte aus, die bei _Beginnt mit_ den Text _error_ aufweisen:
-
-![Filtern](media/get-started-portal/filter.png)
-
-
-## <a name="sort-and-group-results"></a>Sortieren und Gruppieren von Ergebnissen
-Die Ergebnisse werden nun nur auf Fehlerereignisse von SQL Server eingegrenzt, die in den letzten 24 Stunden erstellt wurden. Die Ergebnisse werden jedoch in keinerlei Weise sortiert. Um die Ergebnisse nach einer bestimmten Spalte wie _timestamp_ zu sortieren, klicken Sie beispielsweise auf den Spaltentitel. Mit einem Klick erfolgt die Sortierung in aufsteigender Reihenfolge, während diese mit einem zweiten Klick in die absteigende Sortierung geändert wird.
-
-![Sortieren einer Spalte](media/get-started-portal/sort-column.png)
-
-Eine weitere Möglichkeit zum Organisieren von Ergebnissen sind Gruppen. Zum Gruppieren von Ergebnissen nach einer bestimmten Spalte ziehen Sie einfach die Spaltenüberschrift über die anderen Spalten. Um Untergruppen zu erstellen, ziehen Sie andere Spalten ebenfalls zur oberen Leiste.
-
-![Gruppen](media/get-started-portal/groups.png)
-
-## <a name="select-columns-to-display"></a>Auswählen der anzuzeigenden Spalten
-Die Ergebnistabelle enthält oft viele Spalten. Einige der zurückgegebenen Spalten werden möglicherweise standardmäßig nicht angezeigt, oder eventuell möchten Sie einige der Spalten entfernen, die angezeigt werden. Um die anzuzeigenden Spalten auszuwählen, klicken Sie auf die Schaltfläche „Spalten“:
-
-![Spalten auswählen](media/get-started-portal/select-columns.png)
-
-
-## <a name="select-a-time-range"></a>Auswählen eines Zeitbereichs
-Standardmäßig wendet Log Analytics den Zeitbereich _Letzte 24 Stunden_ an. Um einen anderen Bereich zu verwenden, wählen Sie einen anderen Wert über die Zeitauswahl aus, und klicken Sie auf **Ausführen**. Neben den vordefinierten Werten können Sie die Option _Benutzerdefinierter Zeitbereich_ verwenden, um einen absoluten Bereich für Ihre Abfrage auszuwählen.
+### <a name="use-the-time-range-control"></a>Verwenden der Zeitbereichssteuerung
+Um die **Zeitbereichssteuerung** zu verwenden, wählen Sie sie zunächst in der oberen Leiste aus. Wählen Sie dann in der Dropdownliste einen Wert aus, oder klicken Sie auf **Benutzerdefiniert**, um einen benutzerdefinierten Zeitbereich zu erstellen.
 
 ![Zeitauswahl](media/get-started-portal/time-picker.png)
 
-Wenn Sie einen benutzerdefinierten Zeitbereich auswählen, werden die Werte im UTC-Format angezeigt, das von Ihrer lokalen Zeitzone abweichen könnte.
+- Zeitbereichswerte werden in der koordinierten Weltzeit (UTC) angezeigt, die möglicherweise von Ihrer lokalen Zeitzone abweicht.
+- Wenn die Abfrage einen expliziten **TimeGenerated**-Filter enthält, wird in der Zeitbereichssteuerung **In Abfrage festlegen** angezeigt. Zudem ist sie deaktiviert, um einen Konflikt zu verhindern.
 
-Wenn die Abfrage explizit einen Filter für _TimeGenerated_ enthält, zeigt der Titel der Zeitauswahl _In Abfrage festlegen_ an. Die manuelle Auswahl wird deaktiviert, um einen Konflikt zu verhindern.
+### <a name="run-a-query"></a>Ausführen einer Abfrage
+Platzieren Sie den Cursor zum Ausführen einer Abfrage an einer beliebigen Stelle in der Abfrage, und wählen Sie in der oberen Leiste **Ausführen** aus, oder drücken Sie **UMSCHALT**+**EINGABETASTE**. Die Abfrage wird ausgeführt, bis eine leere Zeile gefunden wird.
 
+## <a name="filter-results"></a>Ergebnisse filtern
+Log Analytics beschränkt Ergebnisse auf maximal 10.000 Datensätze. Eine allgemeine Abfrage wie `Event` gibt zu viele Ergebnisse zurück. Sie können Abfrageergebnisse filtern, indem Sie die Tabellenelemente in der Abfrage einschränken oder den Ergebnissen explizit einen Filter hinzufügen. Beim Filtern mithilfe der Tabellenelemente wird ein neues Resultset zurückgegeben, während ein expliziter Filter auf das vorhandene Resultset angewendet wird.
 
-## <a name="charts"></a>Diagramme
-Ergebnisse können nicht nur in einer Tabelle zurückgegeben werden, sondern auch in visuellen Formaten dargestellt werden. Verwenden Sie als Beispiel folgende Abfrage:
+### <a name="filter-by-restricting-table-elements"></a>Filtern durch Einschränken der Tabellenelemente
+So filtern Sie die Ergebnisse der `Event`-Abfrage durch Einschränken der Tabellenelemente nach Ereignissen vom Typ **Error**:
+
+1. Klicken Sie in den Abfrageergebnissen auf den Dropdownpfeil neben einem Datensatz mit dem Wert **Error** in der Spalte **EventLevelName**. 
+   
+1. Zeigen Sie in den erweiterten Details neben **EventLevelName** auf **...** , klicken Sie darauf, und wählen Sie dann **„Error“ einschließen** aus. 
+   
+   ![Hinzufügen eines Filters zur Abfrage](media/get-started-portal/add-filter.png)
+   
+1. Beachten Sie, dass die Abfrage im **Abfrage-Editor** jetzt wie folgt lautet:
+   
+   ```Kusto
+   Event
+   | where EventLevelName == "Error"
+   ```
+   
+1. Wählen Sie **Ausführen** aus, um die neue Abfrage auszuführen.
+
+### <a name="filter-by-explicitly-filtering-results"></a>Explizites Filtern der Ergebnisse
+So filtern Sie die Ergebnisse der `Event`-Abfrage durch explizites Filtern nach Ereignissen vom Typ **Error**:
+
+1. Klicken Sie in den Abfrageergebnissen auf das Symbol **Filter** neben der Spaltenüberschrift **EventLevelName**. 
+   
+1. Wählen Sie im ersten Feld des Popupfensters **Ist gleich** aus, und geben Sie im nächsten Feld *error* ein. 
+   
+1. Wählen Sie **Filtern** aus.
+   
+   ![Filtern](media/get-started-portal/filter.png)
+
+## <a name="sort-group-and-select-columns"></a>Sortieren, Gruppieren und Auswählen von Spalten
+Um Abfrageergebnisse nach einer bestimmten Spalte (z. B. **TimeGenerated [UTC]** ) zu sortieren, klicken Sie auf die Spaltenüberschrift. Klicken Sie erneut auf die Überschrift, um zwischen auf- und absteigender Reihenfolge zu wechseln.
+
+![Sortieren einer Spalte](media/get-started-portal/sort-column.png)
+
+Eine weitere Möglichkeit zum Organisieren von Ergebnissen sind Gruppen. Um Ergebnisse nach einer bestimmten Spalte zu gruppieren, ziehen Sie die Spaltenüberschrift in die Leiste **Ziehen Sie eine Spaltenüberschrift hierher, um die Einträge nach dieser Spalte zu gruppieren** über der Ergebnistabelle. Wenn Sie Untergruppen erstellen möchten, ziehen Sie weitere Spalten in die obere Leiste. Sie können die Hierarchie und Sortierung der Gruppen und Untergruppen in der Leiste ändern.
+
+![Gruppen](media/get-started-portal/groups.png)
+
+Um Spalten in den Ergebnissen aus- oder einzublenden, klicken Sie über der Tabelle auf **Spalten**, und wählen Sie dann in der Dropdownliste die gewünschten Spalten aus, bzw. heben Sie ihre Auswahl auf.
+
+![Spalten auswählen](media/get-started-portal/select-columns.png)
+
+## <a name="view-and-modify-charts"></a>Anzeigen und Bearbeiten von Diagrammen
+Sie können Abfrageergebnisse auch in visuellen Formaten anzeigen. Geben Sie als Beispiel die folgende Abfrage ein:
 
 ```Kusto
 Event 
@@ -143,58 +143,65 @@ Event
 | summarize count() by Source 
 ```
 
-Standardmäßig werden Ergebnisse in einer Tabelle angezeigt. Klicken Sie auf _Diagramm_, um die Ergebnisse in einer grafischen Ansicht anzuzeigen:
+Standardmäßig werden Ergebnisse in einer Tabelle angezeigt. Wählen Sie über der Tabelle **Diagramm** aus, um die Ergebnisse in einer grafischen Ansicht anzuzeigen.
 
 ![Balkendiagramm](media/get-started-portal/bar-chart.png)
 
-Die Ergebnisse werden in einem gestapelten Balkendiagramm angezeigt. Klicken Sie auf _Gestapelte Säule_, und wählen Sie _Kreis_ aus, um eine andere Ansicht der Ergebnisse anzuzeigen:
+Die Ergebnisse werden in einem gestapelten Balkendiagramm angezeigt. Wählen Sie andere Optionen aus (z. B. **Gestapelte Säule** oder **Kreis**), um die Ergebnisse in weiteren Ansichten anzuzeigen.
 
 ![Kreisdiagramm](media/get-started-portal/pie-chart.png)
 
-Die verschiedenen Eigenschaften der Ansicht, z.B. x- und y-Achsen, oder die Gruppierung und Aufteilung von Einstellungen kann manuell über die Steuerleiste geändert werden.
+Sie können die Eigenschaften der Ansicht manuell über die Steuerleiste ändern, z. B. x- und y-Achsen oder Gruppierungs- und Aufteilungseinstellungen.
 
-Mit dem render-Operator können Sie auch die bevorzugte Ansicht in der Abfrage selbst festlegen.
+Mit dem [render](/azure/kusto/query/renderoperator)-Operator können Sie die bevorzugte Ansicht auch in der Abfrage selbst festlegen.
 
-### <a name="smart-diagnostics"></a>Intelligente Diagnose
-Wenn in einem Zeitdiagramm eine abrupte Spitze oder ein Sprung in Ihren Daten dargestellt ist, wird unter Umständen ein hervorgehobener Punkt auf der Linie angezeigt. Dieser gibt an, dass die _intelligente Diagnose_ eine Kombination von Eigenschaften ermittelt hat, die die abrupte Änderung herausfiltert. Klicken Sie auf den Punkt, um weitere Details zum Filter zu erhalten und die gefilterte Version anzuzeigen. Dadurch können Sie vielleicht ermitteln, was die Änderung verursacht hat:
-
-![Intelligente Diagnose](media/get-started-portal/smart-diagnostics.png)
-
-## <a name="pin-to-dashboard"></a>An Dashboard anheften
-Um ein Diagramm oder eine Tabelle an eines Ihrer freigegebenen Azure-Dashboards anzuheften, klicken Sie auf das Stecknadelsymbol. Beachten Sie, dass dieses Symbol anders als im nachfolgenden Screenshot an den oberen Rand des Log Analytics-Fensters verschoben wurde.
+## <a name="pin-results-to-a-dashboard"></a>Anheften von Ergebnissen an ein Dashboard
+Um eine Ergebnistabelle oder ein Ergebnisdiagramm aus Log Analytics an ein freigegebenes Azure-Dashboard anzuheften, wählen Sie in der oberen Leiste **An Dashboard anheften** aus. 
 
 ![An Dashboard anheften](media/get-started-portal/pin-dashboard.png)
 
-Auf ein Diagramm werden bestimmte Vereinfachungen angewendet, wenn Sie es an ein Dashboard anheften:
+Wählen Sie im Bereich **An anderes Dashboard anheften** ein freigegebenes Dashboard aus, und klicken Sie auf **Übernehmen**. Die Tabelle bzw. das Diagramm wird im ausgewählten Azure-Dashboard angezeigt.
 
-- Tabellenspalten und -zeilen: Damit eine Tabelle an das Dashboard angeheftet werden kann, darf sie maximal vier Spalten enthalten. Nur die ersten sieben Zeilen werden angezeigt.
-- Zeitbeschränkung: Abfragen sind automatisch auf die letzten 14 Tage begrenzt.
-- Maximale Anzahl von Containern: Wenn Sie ein Diagramm mit zahlreichen separaten Containern anzeigen, werden die Container mit wenig Daten automatisch in einem einzelnen _anderen_ Container zusammengefasst.
+![An Dashboard angeheftetes Diagramm](media/get-started-portal/pin-dashboard2.png)
 
-## <a name="save-queries"></a>Speichern von Abfragen
-Nachdem Sie eine nützliche Abfrage erstellt haben, sollten Sie diese speichern oder für andere Benutzer freigeben. Das Symbol zum **Speichern** befindet sich in der oberen Leiste.
+Tabellen oder Diagramme, die Sie an ein freigegebenes Dashboard anheften, werden wie folgt vereinfacht: 
 
-Sie können entweder die gesamte Abfrageseite oder eine einzelne Abfrage als Funktion speichern. Funktionen sind Abfragen, auf die auch durch andere Abfragen verwiesen werden kann. Um eine Abfrage als Funktion zu speichern, müssen Sie einen Funktionsalias angeben. Dies ist der Name zum Aufrufen dieser Abfrage, wenn durch andere Abfragen auf diese verwiesen wird.
+- Die Daten sind auf die letzten 14 Tage beschränkt.
+- In einer Tabelle werden nur bis zu vier Spalten und die ersten sieben Zeilen angezeigt.
+- Bei Diagrammen mit vielen separaten Kategorien werden Kategorien mit weniger Daten automatisch in einem Container **Andere** zusammengefasst.
 
-![Funktion speichern](media/get-started-portal/save-function.png)
+## <a name="save-load-or-export-queries"></a>Speichern, Laden oder Exportieren von Abfragen
+Nachdem Sie eine Abfrage erstellt haben, können Sie die Abfrage oder die Ergebnisse speichern und mit anderen teilen. 
 
->[!NOTE]
->Folgende Zeichen werden unterstützt: `a–z, A–Z, 0-9, -, _, ., <space>, (, ), |` (im Feld **Name** beim Speichern oder Bearbeiten der gespeicherten Abfrage).
+### <a name="save-queries"></a>Speichern von Abfragen
+So speichern Sie eine Abfrage:
 
-Log Analytics-Abfragen werden immer in einem ausgewählten Arbeitsbereich gespeichert und für andere Benutzer des Arbeitsbereichs freigegeben.
+1. Wählen Sie in der oberen Leiste **Speichern** aus.
+   
+1. Geben Sie im Dialogfeld **Speichern** einen **Namen** für die Abfrage ein. Folgende Zeichen sind zulässig: a–z, A–Z, 0–9, Leerzeichen, Bindestrich, Unterstrich, Punkt, Klammer oder senkrechter Strich. 
+   
+1. Wählen Sie aus, ob die Abfrage als **Abfrage** oder als **Funktion** gespeichert werden soll. Funktionen sind Abfragen, auf die andere Abfragen verweisen können. 
+   
+   Um eine Abfrage als Funktion zu speichern, geben Sie einen **Funktionsalias** an. Dies ist ein Kurzname, den andere Abfragen zum Aufrufen der Abfrage verwenden.
+   
+1. Geben Sie die **Kategorie** an, die im **Abfrage-Explorer** für die Abfrage verwendet werden soll.
+   
+1. Wählen Sie **Speichern** aus.
+   
+   ![Funktion speichern](media/get-started-portal/save-function.png)
 
-## <a name="load-queries"></a>Laden von Abfragen
-Das Abfrage-Explorer-Symbol wird im oberen rechten Bereich angezeigt. Hiermit werden alle gespeicherten Abfragen nach Kategorie aufgeführt. Darüber hinaus können Sie bestimmte Abfragen als Favoriten markieren, um diese später schnell finden zu können. Doppelklicken Sie auf eine gespeicherte Abfrage, um sie zum aktuellen Fenster hinzuzufügen.
+### <a name="load-queries"></a>Laden von Abfragen
+Um eine gespeicherte Abfrage zu laden, wählen Sie oben rechts **Abfrage-Explorer** aus. Der Bereich **Abfrage-Explorer** wird mit einer nach Kategorie sortierten Liste aller Abfragen geöffnet. Erweitern Sie die Kategorien, oder geben Sie einen Abfragenamen in die Suchleiste ein, und wählen Sie dann eine Abfrage aus, um sie in den **Abfrage-Editor** zu laden. Sie können eine Abfrage als **Favorit** markieren, indem Sie auf den Stern neben dem Abfragenamen klicken.
 
 ![Abfrage-Explorer](media/get-started-portal/query-explorer.png)
 
-## <a name="export-and-share-as-link"></a>Exportieren und Freigeben als Link
-Log Analytics unterstützt mehrere Exportmethoden:
+### <a name="export-and-share-queries"></a>Exportieren und Freigeben von Abfragen
+Um eine Abfrage zu exportieren, klicken Sie in der oberen Leiste auf **Export**, und wählen Sie dann in der Dropdownliste **In CSV-Datei exportieren – Alle Spalten**, **In CSV-Datei exportieren – Angezeigte Spalten** oder **In Power BI exportieren (M-Abfrage)** aus.
 
-- Excel: Speichern Sie die Ergebnisse als CSV-Datei.
-- Power BI: Exportieren Sie die Ergebnisse in Power BI. Einzelheiten finden Sie unter [Importieren von Azure Monitor-Protokolldaten in Power BI](../../azure-monitor/platform/powerbi.md).
-- Freigabe eines Links: Die Abfrage selbst kann als Link freigegeben werden, der dann von anderen Benutzern, die Zugriff auf den gleichen Arbeitsbereich haben, gesendet und ausgeführt werden kann.
+Um einen Link zu einer Abfrage zu teilen, wählen Sie in der oberen Leiste **Link kopieren** und dann **Link in Abfrage kopieren**, **Abfragetext kopieren** oder **Ergebnisse kopieren** aus, um den Link in die Zwischenablage zu kopieren. Sie können den Abfragelink an andere Personen senden, die Zugriff auf denselben Arbeitsbereich haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Schreiben von Azure Monitor-Protokollabfragen](get-started-queries.md).
+Im nächsten Tutorial erfahren Sie mehr über das Schreiben von Azure Monitor-Protokollabfragen.
+> [!div class="nextstepaction"]
+> [Schreiben von Azure Monitor-Protokollabfragen](get-started-queries.md)

@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c335a4d30846f7c1b4dbd6b6aedc4d100a9b43a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74014291"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Problembehandlung: Fehlende Daten in Azure Active Directory-Aktivitätsprotokollen 

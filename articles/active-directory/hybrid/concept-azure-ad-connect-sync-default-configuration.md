@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2886b842aab81732beec0fdd7957aab8e2b4f5e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76548865"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect-Synchronisierung: Grundlegendes zur Standardkonfiguration
@@ -148,7 +148,7 @@ Da es sich hierbei um eine vordefinierte Regel handelt, erhalten Sie eine Warnun
 
 Eine Synchronisierungsregel verfügt über vier Konfigurationsabschnitte: Beschreibung, Bereichsfilter, Verknüpfungsregeln und Transformationen.
 
-#### <a name="description"></a>Beschreibung
+#### <a name="description"></a>BESCHREIBUNG
 Der erste Bereich bietet grundlegende Informationen wie Name und Beschreibung.
 
 ![Registerkarte „Beschreibung“ im Synchronisierungsregel-Editor](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)

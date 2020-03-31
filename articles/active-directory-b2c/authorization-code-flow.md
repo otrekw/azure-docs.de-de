@@ -12,11 +12,11 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 8248ca0abb1d633786b09b894bcd6b1089ab2d8c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190074"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230058"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>OAuth 2.0-Autorisierungscodefluss in Azure Active Directory B2C
 
@@ -133,7 +133,7 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | not_before |Der Zeitpunkt in Epochenzeit, ab dem das Token gültig ist. |
 | token_type |Der Wert des Tokentyps. Bearertoken ist der einzige Typ, den Azure AD unterstützt. |
@@ -151,7 +151,7 @@ Fehlerantworten sehen wie folgt aus:
 }
 ```
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | error |Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren. Sie können mit der Zeichenfolge auch auf Fehler reagieren. |
 | error_description |Eine spezifische Fehlermeldung, mit der Sie die Hauptursache eines Authentifizierungsfehlers identifizieren können. |
@@ -176,7 +176,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| Parameter | Erforderlich? | Beschreibung |
+| Parameter | Erforderlich? | BESCHREIBUNG |
 | --- | --- | --- |
 |{tenant}| Erforderlich | Name des Azure AD B2C-Mandanten.|
 |{policy} |Erforderlich |Der Benutzerflow, der zum Abrufen des ursprünglichen Aktualisierungstokens verwendet wurde. Sie können in dieser Anforderung keinen anderen Benutzerflow verwenden. |

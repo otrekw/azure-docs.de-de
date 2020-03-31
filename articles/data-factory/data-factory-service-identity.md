@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jingwang
 ms.openlocfilehash: 45699680ad2003c034bce588857f8b102a0b6d26
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121776"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230130"
 ---
 # <a name="managed-identity-for-data-factory"></a>Verwaltete Identität für Data Factory
 
@@ -77,7 +77,7 @@ Rufen Sie die unten angegebene API mit dem Abschnitt „identity“ im Anforderu
 PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2018-06-01
 ```
 
-**Anforderungstext**: Fügen Sie Folgendes hinzu: „identity": { "type": "SystemAssigned" }.
+**Anforderungstext:** Fügen Sie „identity": { "type": "SystemAssigned" }‘“ hinzu.
 
 ```json
 {

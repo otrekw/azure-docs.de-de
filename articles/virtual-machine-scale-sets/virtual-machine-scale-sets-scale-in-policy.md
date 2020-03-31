@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: avverma
 ms.openlocfilehash: ffcdaf76bdd08ee5505ddbeff6a6698e231b6171
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77919837"
 ---
 # <a name="use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Verwenden benutzerdefinierter Richtlinien für horizontales Herunterskalieren mit Azure-VM-Skalierungsgruppen
@@ -122,7 +122,7 @@ Fügen Sie in Ihrer Vorlage unter „Eigenschaften“ Folgendes hinzu:
 
 Die oben genannten Blöcke geben an, dass die VM-Skalierungsgruppe den ältesten virtuellen Computer in einer Skalierungsgruppe mit Zonenausgleich löscht, wenn (durch Autoskalierung oder manuelles Löschen) ein horizontales Herunterskalieren ausgelöst wird.
 
-Bei einer VM-Skalierungsgruppe ohne Zonenausgleich löscht die Skalierungsgruppe zuerst virtuelle Computer in der/den unausgeglichenen Zone(n). Innerhalb der unausgeglichenen Zonen verwendet die Skalierungsgruppe die oben angegebene Richtlinie für horizontales Herunterskalieren, um zu bestimmen, welche VM horizontal herunterskaliert werden soll. In diesem Fall wählt die Skalierungsgruppe in einer unausgeglichenen Zone die älteste VM in dieser Zone zum Löschen aus.
+Bei einer VM-Skalierungsgruppe ohne Zonenausgleich löscht die Skalierungsgruppe zuerst virtuelle Computer in der/den unausgeglichenen Zone(n). Innerhalb der unausgeglichenen Zonen verwendet die Skalierungsgruppe die oben angegebene Richtlinie für das Abskalieren, um zu bestimmen, welche VM abskaliert werden soll. In diesem Fall wählt die Skalierungsgruppe in einer unausgeglichenen Zone die älteste VM in dieser Zone zum Löschen aus.
 
 Bei einer nicht zonalen VM-Skalierungsgruppe wählt die Richtlinie den ältesten virtuellen Computer in der Skalierungsgruppe zum Löschen aus.
 

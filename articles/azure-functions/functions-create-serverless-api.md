@@ -7,10 +7,10 @@ ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
 ms.openlocfilehash: 61b930eec1385b8c4054f9c202547a82e61e55e7
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75769267"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Anpassen eines HTTP-Endpunkts in Azure Functions
@@ -37,7 +37,7 @@ Standardmäßig ist Ihre über HTTP ausgelöste Funktion so konfiguriert, dass s
 
 1. Verwenden Sie die HTTP-Triggereinstellungen, wie in der Tabelle angegeben.
 
-    | Feld | Beispielwert | Beschreibung |
+    | Feld | Beispielwert | BESCHREIBUNG |
     |---|---|---|
     | Zulässige HTTP-Methoden | Ausgewählte Methoden | Bestimmt, welche HTTP-Methoden verwendet werden können, um diese Funktion aufzurufen |
     | Ausgewählte HTTP-Methoden | GET | Bestimmt, dass nur ausgewählte HTTP-Methoden zum Aufrufen dieser Funktion verwendet werden können |
@@ -97,7 +97,7 @@ Wiederholen Sie die Schritte zum [Erstellen einer Funktionen-App](https://docs.m
     ![Erstellen eines Proxys](./media/functions-create-serverless-api/creating-proxy.png)
 1. Verwenden Sie die Proxyeinstellungen, wie in der Tabelle angegeben. 
 
-    | Feld | Beispielwert | Beschreibung |
+    | Feld | Beispielwert | BESCHREIBUNG |
     |---|---|---|
     | Name | HelloProxy | Ein Anzeigename für die Verwaltung |
     | Routenvorlage | /api/remotehello | Bestimmt, welche Route verwendet wird, um diesen Proxy aufzurufen |

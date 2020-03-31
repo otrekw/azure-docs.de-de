@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
 ms.openlocfilehash: 4603240a76ec72223b88853c63ed11152707201c
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76281290"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Roadmap für Azure Security Center-Bereitschaft
@@ -105,7 +105,7 @@ Artikel
 
 * [Praktische Übungen zu Security Center](https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyGuid=78871abf-6f35-4aa0-840f-d801f5cdbd72)
 * [Web Application Firewall (WAF) recommendation playbook in Security Center](https://gallery.technet.microsoft.com/ASC-Playbook-Protect-38bd47ff) (Playbook zu Web Application Firewall (WAF) mit Empfehlungen zu Security Center)
-* [Azure Security Center-Playbook: Sicherheitswarnungen](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046)
+* [Azure Security Center Playbook: Security Alerts](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046) (Azure Security Center-Playbook: Sicherheitswarnungen)
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 * [Seite mit der Security Center-Dokumentation](https://docs.microsoft.com/azure/security-center/)

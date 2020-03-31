@@ -8,10 +8,10 @@ services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1552c54afe2195d58a032e9cc7bfa5aa70c844b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61447623"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Anpassen und erneutes Bereitstellen eines Microservice
@@ -144,11 +144,11 @@ Stellen Sie abschließend erneut eine lokale Instanz der Remoteüberwachungslös
     ```
 
 3. Navigieren Sie zu dem Speicherort, an den Sie Postman heruntergeladen haben, und öffnen Sie die Anwendung.
-4. Geben Sie in Postman die folgende GET-Anforderung ein: `http://localhost:8080/iothubmanager/v1/status`. Nun sollte Folgendes angezeigt werden: "Status": "OK: New Edits Made Here!".
+4. Geben Sie in Postman die folgende GET-Anforderung ein: `http://localhost:8080/iothubmanager/v1/status`. Daraufhin sollte Folgendes angezeigt werden: "Status": "OK: New Edits Made Here!".
 
 ![Postman-Meldung: „New Edits Made Here!“](./media/iot-accelerators-microservices-example/new-postman-message.png)
 
-## <a name="Troubleshoot"></a>Problembehandlung
+## <a name="troubleshoot"></a><a name="Troubleshoot"></a>Problembehandlung
 
 Probleme lassen sich unter Umständen durch Entfernen der Docker-Images und -Container auf dem lokalen Computer beheben.
 
@@ -171,7 +171,7 @@ Probleme lassen sich unter Umständen durch Entfernen der Docker-Images und -Con
     docker ps -aq 
     ```
 
-    Wenn Sie alle Container erfolgreich entfernt haben, wird nichts angezeigt.
+    Wenn Sie alle Images erfolgreich entfernt haben, wird nichts angezeigt.
 
 4. Geben Sie Folgendes ein, um zu prüfen, ob auf dem Computer noch Images vorhanden sind:
 

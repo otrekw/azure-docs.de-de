@@ -15,10 +15,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 2b3d9fdc163d0661670f3d0cf6e6a276c8b691bd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76702163"
 ---
 # <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Desktop-App, die Web-APIs aufruft: Aufrufen einer Web-API
@@ -27,14 +27,14 @@ Da Sie nun über ein Token verfügen, können Sie eine geschützte Web-API aufru
 
 ## <a name="call-a-web-api"></a>Aufrufen einer Web-API
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 [!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
 
 <!--
 More includes will come later for Python and Java
 -->
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 endpoint = "url to the API"
@@ -44,7 +44,7 @@ http_headers = {'Authorization': 'Bearer ' + result['access_token'],
 data = requests.get(endpoint, headers=http_headers, stream=False).json()
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -63,7 +63,7 @@ if(responseCode != HttpURLConnection.HTTP_OK) {
 JSONObject responseObject = HttpClientHelper.processResponse(responseCode, response);
 ```
 
-# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
+# <a name="macos"></a>[MacOS](#tab/macOS)
 
 ## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>Aufrufen einer Web-API in MSAL für iOS und macOS
 

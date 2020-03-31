@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
 ms.openlocfilehash: a583e32cbc3d58d5dfc5616335b2f38ad20fac14
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74234395"
 ---
 # <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Ressourcengesamtstrukturkonzepte und -features für Azure Active Directory Domain Services

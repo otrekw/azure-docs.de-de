@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 51c191a7815bb64243e2324e150c00c2dcb7ec4c
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76705325"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS über das Azure-Portal
@@ -27,7 +27,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Hinzufügen eines Listeners und einer Umleitungsregel
 > * Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -139,7 +139,7 @@ In diesem Beispiel erstellen Sie eine VM-Skalierungsgruppe, um Server für den B
 5. Geben Sie für **Name der VM-Skalierungsgruppe** den Wert *myvmss* ein.
 6. Stellen Sie bei „Betriebssystem-Datenträgerimage“ sicher, dass **Windows Server 2016 Datacenter** ausgewählt ist.
 7. Wählen Sie für **Ressourcengruppe** den Wert **myResourceGroupAG** aus.
-8. Geben Sie für *Benutzername* den Wert **azureuser** ein.
+8. Geben Sie für **Benutzername** den Wert *azureuser* ein.
 9. Geben Sie für **Kennwort** den Wert *Azure123456!* ein, und bestätigen Sie das Kennwort.
 10. Stellen Sie sicher, dass der Wert für **Instanzenanzahl** **2** lautet.
 11. Wählen Sie für **Instanzgröße** den Wert **D2s_v3** aus.

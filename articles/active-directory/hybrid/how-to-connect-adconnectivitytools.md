@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd5340cd8c802df4ffbe0207b5401d2fee4e207e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64571114"
 ---
 # <a name="troubleshoot-azure-ad-connectivity-with-the-adconnectivitytool-powershell-module"></a>Behandeln von Azure AD-Verbindungsproblemen mit dem PowerShell-Modul ADConnectivity-Tool
@@ -25,7 +25,7 @@ Das ADConnectivity-Tool ist ein PowerShell-Modul, das auf eine der folgenden Art
 - Während der Installation, wenn ein Problem mit der Netzwerkverbindung die erfolgreiche Überprüfung der Active Directory-Anmeldeinformationen verhindert, die der Benutzer im Assistenten angegeben hat.
 - Nach der Installation durch einen Benutzer, der die Funktionen aus einer PowerShell-Sitzung aufruft.
 
-Das Tool befindet sich hier: **C:\Programme\Microsoft Azure Active Directory Connect\Tools\ ADConnectivityTool.psm1** 
+Das Tool befindet sich unter: **C:\Programme\Microsoft Azure Active Directory Connect\Tools\ ADConnectivityTool.psm1**. 
 
 ## <a name="adconnectivitytool-during-installation"></a>ADConnectivityTool während der Installation
 
@@ -41,7 +41,7 @@ Auf der Seite **Verzeichnisse verbinden**  im Azure AD Connect-Assistenten verwe
 Bei Auffinden eines dieser Probleme wird eine diesbezügliche Fehlermeldung im AADConnect-Assistenten angezeigt:
 
 
-![Error](media/how-to-connect-adconnectivitytools/error1.png)
+![Fehler](media/how-to-connect-adconnectivitytools/error1.png)
 
 Z. B. wenn wir versuchen, im Bildschirm **Verzeichnisse verbinden** ein Verzeichnis hinzuzufügen, muss Azure AD Connect dies überprüfen und erwartet, in der Lage zu sein, mit einem Domänencontroller über Port 389 kommunizieren zu können.  Ist dies nicht möglich, sehen wir den Fehler, der im obigen Screenshot angezeigt wird.  
 

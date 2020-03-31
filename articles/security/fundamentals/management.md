@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
 ms.openlocfilehash: 45efaadf7d15fff290165fe831c45c0bc063db53
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73643794"
 ---
 # <a name="security-management-in-azure"></a>Sicherheitsverwaltung in Azure
@@ -106,7 +106,7 @@ Sie können den Zugriff auf die Verwaltung von Infrastruktur- und Plattformdiens
 ### <a name="management-gateway"></a>Verwaltungsgateway
 Um den gesamten Verwaltungszugriff zu zentralisieren und die Überwachung und Protokollierung zu vereinfachen, können Sie einen dedizierten [Remotedesktopgateway](https://technet.microsoft.com/library/dd560672)-Server (RD-Gateway) in Ihrem lokalen Netzwerk bereitstellen, der mit Ihrer Azure-Umgebung verbunden ist.
 
-Ein Remotedesktopgateway ist ein richtlinienbasierter RDP-Proxydienst, mit dem Sicherheitsanforderungen durchgesetzt werden. Durch die Implementierung von RD Gateway zusammen mit Windows Server-Netzwerkzugriffsschutz kann sichergestellt werden, dass nur für die Clients eine Verbindung hergestellt werden kann, die spezielle Sicherheitsintegritätskriterien gemäß den Gruppenrichtlinienobjekten (GPOs) von Active Directory-Domänendiensten erfüllen. Außerdem haben Sie folgende Möglichkeiten:
+Ein Remotedesktopgateway ist ein richtlinienbasierter RDP-Proxydienst, mit dem Sicherheitsanforderungen durchgesetzt werden. Durch die Implementierung von RD Gateway zusammen mit Windows Server-Netzwerkzugriffsschutz kann sichergestellt werden, dass nur für die Clients eine Verbindung hergestellt werden kann, die spezielle Sicherheitsintegritätskriterien gemäß den Gruppenrichtlinienobjekten (GPOs) von Active Directory-Domänendiensten erfüllen. Berücksichtigen Sie zudem Folgendes:
 
 * Stellen Sie ein [Azure-Verwaltungszertifikat](https://msdn.microsoft.com/library/azure/gg551722.aspx) auf dem RD-Gateway bereit, sodass dies der einzige Host ist, der auf das Azure-Portal zugreifen darf.
 * Verknüpfen Sie das RD-Gateway mit derselben [Verwaltungsdomäne](https://technet.microsoft.com/library/bb727085.aspx) wie die Administratorarbeitsstationen. Dies ist erforderlich, wenn Sie eine Site-to-Site-IPsec-VPN- oder ExpressRoute-Verbindung in einer Domäne verwenden, die über eine unidirektionale Vertrauensstellung mit Azure AD verfügt, oder wenn Sie für Anmeldeinformationen zwischen Ihrer lokalen AD DS-Instanz und Azure AD einen Verbund erstellen.
@@ -186,7 +186,7 @@ Berücksichtigen Sie die folgenden weiteren Richtlinien, wenn Sie Anwendungen un
 ### <a name="dos-and-donts"></a>Empfehlungen für die Vorgehensweise
 Gehen Sie nicht davon aus, dass andere gängige Sicherheitsanforderungen nicht erfüllt werden müssen, weil eine Arbeitsstation gesperrt wurde. Das potenzielle Risiko ist höher, da Administratorkonten meist über Zugriffsebenen mit erhöhten Rechten verfügen. Die Tabelle unten enthält Beispiele für Risiken und die dazugehörigen sicheren Vorgehensweisen.
 
-| Nicht empfohlene Vorgehensweise | Empfohlene Vorgehensweise |
+| Sie sollten auf keinen Fall | Sie sollten |
 | --- | --- |
 | Senden Sie Anmeldeinformationen für den Administratorzugriff oder andere geheime Daten (wie etwa SSL- oder Verwaltungszertifikate) nicht per E-Mail. |Sorgen Sie für Vertraulichkeit, indem Sie Kontonamen und Kennwörter mündlich mitteilen (aber nicht per Voicemail), eine Remoteinstallation von Client-/Serverzertifikaten durchführen (per verschlüsselter Sitzung), Downloads von einer geschützten Freigabe durchführen oder diese Daten per Hand mit Wechselmedien verteilen. |
 | - | Verwalten Sie die Lebenszyklen Ihrer Verwaltungszertifikate proaktiv. |

@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 08/18/2016
 tags: connectors
 ms.openlocfilehash: 8d3b180b6f1e9dc4ec4b09dd81786cc81e8588da
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75707185"
 ---
 # <a name="manage-email-calendars-and-contacts-in-outlookcom-by-using-azure-logic-apps"></a>Verwalten von E-Mails, Kalendern und Kontakten in Outlook.com mithilfe von Azure Logic Apps
 
 Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem [Outlook.com-Connector](/connectors/outlook/) können Sie durch die Erstellung von Logik-Apps automatisierte Aufgaben und Workflows zur Verwaltung Ihres @outlook.com- oder @hotmail.com-Kontos erstellen. So können Sie beispielsweise folgende Aufgaben automatisieren:
 
-* Abrufen, Senden, und Beantworten von E-Mails
-* Planen von Besprechungen in Ihrem Kalender
+* Abrufen, Senden, und Beantworten von E-Mails.
+* Planen von Besprechungen in Ihrem Kalender.
 * Hinzufügen und Bearbeiten von Kontakten
 
 Sie können einen beliebigen Trigger verwenden, um Ihren Workflow zu starten – etwa den Eingang einer neuen E-Mail, die Aktualisierung eines Kalenderelements oder ein Ereignis in einem anderen Dienst. Auf das Triggerereignis kann dann mit Aktionen wie dem Senden einer E-Mail oder dem Erstellen eines neuen Kalenderereignisses reagiert werden.

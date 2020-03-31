@@ -15,17 +15,17 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 28b4be46dc686c6e1b55f1ab36e0607057ebdbbd
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76758970"
 ---
 # <a name="a-web-app-that-calls-web-apis-call-a-web-api"></a>Web-App, die Web-APIs aufruft: Aufrufen einer Web-API
 
 Da Sie nun über ein Token verfügen, können Sie eine geschützte Web-API aufrufen.
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 Im Anschluss finden Sie einen vereinfachten Code für die Aktion von `HomeController`. Mit diesem wird ein Token für den Aufruf von Microsoft Graph abgerufen. Es wurde Code hinzugefügt, um das Aufrufen von Microsoft Graph als REST-API zu zeigen. Die URL für die Microsoft Graph-API wird in der Datei „appsettings.json“ bereitgestellt und in einer Variablen namens `webOptions` gelesen:
 
@@ -86,7 +86,7 @@ public async Task<IActionResult> Profile()
 >
 > Die meisten Azure-Web-APIs bieten ein SDK zur Vereinfachung des API-Aufrufs. Das ist auch bei Microsoft Graph der Fall. Im nächsten Artikel erfahren Sie, wo Sie ein Tutorial zur Veranschaulichung der API-Verwendung finden.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
 private String getUserInfoFromGraph(String accessToken) throws Exception {
@@ -112,7 +112,7 @@ private String getUserInfoFromGraph(String accessToken) throws Exception {
 
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
 @app.route("/graphcall")

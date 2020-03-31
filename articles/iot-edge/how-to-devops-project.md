@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 66401678f03ee0043345208eb32560f589829226
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76510310"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-projects"></a>Erstellen einer CI/CD-Pipeline für IoT Edge mit Azure DevOps Projects
@@ -80,7 +80,7 @@ Von DevOps Projects wurde ein Git-Repository für Ihr Projekt in Azure Repos ers
 
    ![Öffnen der module.json-Datei in Azure Repos](./media/how-to-devops-project/open-module-json.png)
 
-4. Beachten Sie, dass diese Datei im Parameter **version**[Azure DevOps-Buildvariablen](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables) verwendet. Diese Konfiguration stellt sicher, dass bei jeder Ausführung eines neuen Builds eine neue Version des Moduls erstellt wird.
+4. Beachten Sie, dass diese Datei im Parameter [version](https://docs.microsoft.com/azure/devops/pipelines/build/variables?view=vsts#build-variables)**Azure DevOps-Buildvariablen** verwendet. Diese Konfiguration stellt sicher, dass bei jeder Ausführung eines neuen Builds eine neue Version des Moduls erstellt wird.
 
 ## <a name="examine-the-cicd-pipeline"></a>Überprüfen der CI/CD-Pipeline
 

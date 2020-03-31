@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/31/2017
 ms.author: akjosh
 ms.openlocfilehash: 63f9441d4df9551405c2ab2bf8c0c67d7de5753c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77919905"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Installieren und Konfigurieren von Symantec Endpoint Protection auf einem virtuellen Windows-Computer
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
-Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../../azure-resource-manager/management/deployment-models.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
+Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../../azure-resource-manager/management/deployment-models.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells.
 
 In diesem Artikel wird beschrieben, wie der Symantec Endpoint Protection-Client auf einem vorhandenen virtuellen Windows Server-Computer installiert und konfiguriert wird. Dieser vollständige Client enthält Dienste wie Viren- und Spywareschutz, Firewall und Eindringschutz. Der Client wird als Sicherheitserweiterung durch die Verwendung des VM Agent installiert.
 

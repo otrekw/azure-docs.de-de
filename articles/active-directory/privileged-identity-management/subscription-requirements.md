@@ -18,10 +18,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 70696cdb95fffc1e5faa46ca1b5f2180633ed63a
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75932321"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>Lizenzanforderungen für die Verwendung von Privileged Identity Management
@@ -34,7 +34,7 @@ Damit Sie Azure Active Directory (Azure AD) Privileged Identity Management (PIM)
 
 ## <a name="how-many-licenses-must-you-have"></a>Wie viele Lizenzen benötigen Sie?
 
-Stellen Sie sicher, dass Ihr Verzeichnis über mindestens so viele Azure AD Premium P2-Lizenzen verfügt, wie Sie Mitarbeiter haben, die folgende Aufgaben ausführen:
+Stellen Sie sicher, dass Ihr Verzeichnis über mindestens so viele Azure AD Premium P2-Lizenzen verfügt, wie Sie Mitarbeiter haben, die die folgenden Aufgaben ausführen:
 
 - Als für Azure AD-Rollen berechtigt zugewiesene Benutzer, die mit PIM verwaltet werden
 - Benutzer mit der Berechtigung zum Genehmigen oder Ablehnen von Aktivierungsanforderungen in PIM

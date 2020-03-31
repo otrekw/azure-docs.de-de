@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: 7ad748aa9a5b45af10121648a668344548484cf7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74226737"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Installieren der Vorschauversion 2 der Azure Functions-Laufzeit
@@ -75,7 +75,7 @@ Zum Abschließen der Installation der Azure Functions-Laufzeit müssen Sie die K
 
     ![Datenbankkonfiguration für die Vorschauversion der Azure Functions-Laufzeit][8]
 
-1. Klicken Sie auf die Registerkarte **Anmeldeinformationen**.  Hier müssen Sie zwei neue Anmeldeinformationen für die Verwendung mit einer Dateifreigabe erstellen, die alle Ihre Functions-Apps hostet.  Geben Sie Kombinationen aus **Benutzername** und **Kennwort** für den **Besitzer der Dateifreigabe** und für den **Benutzer der Dateifreigabe** an, und klicken Sie auf **Übernehmen**.
+1. Klicken Sie auf die Registerkarte **Anmeldeinformationen** .  Hier müssen Sie zwei neue Anmeldeinformationen für die Verwendung mit einer Dateifreigabe erstellen, die alle Ihre Functions-Apps hostet.  Geben Sie Kombinationen aus **Benutzername** und **Kennwort** für den **Besitzer der Dateifreigabe** und für den **Benutzer der Dateifreigabe** an, und klicken Sie auf **Übernehmen**.
 
     ![Anmeldeinformationen für die Vorschauversion der Azure Functions-Laufzeit][9]
 

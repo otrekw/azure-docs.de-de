@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
 ms.openlocfilehash: 92fc5bb88ff5efd8fe1a8cd61be833b3984b673a
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73605617"
 ---
 # <a name="query-avro-data-by-using-azure-data-lake-analytics"></a>Abfragen von Avro-Daten mit Azure Data Lake Analytics
@@ -22,7 +22,7 @@ Die Herausforderung: Wenn Azure IoT Hub Nachrichten an Azure Blob Storage weiter
 
 Weitere Informationen finden Sie unter [Verwenden von Azure Storage als Routingendpunkt](iot-hub-devguide-messages-d2c.md#azure-storage).
 
-Um nicht relationale Big Data-Anforderungen und Formate zu unterstützen und dies in den Griff zu bekommen, können Sie viele der Big Data-Muster sowohl für die Transformation als auch für die Skalierung von Daten verwenden. Eines der Muster, „Zahlung pro Abfrage“, ist Azure Data Lake Analytics, der Themenschwerpunkt dieses Artikels. Obwohl Sie die Abfrage einfach in Hadoop oder anderen Lösungen ausführen können, ist Data Lake Analytics meist besser für diesen „Zahlung pro Abfrage“-Ansatz geeignet.
+Um nicht relationale Big Data-Anforderungen und Formate zu unterstützen{1}{2}und dies in den Griff zu bekommen, können Sie viele der Big Data-Muster sowohl für die Transformation als auch für die Skalierung von Daten verwenden. Eines der Muster, „Zahlung pro Abfrage“, ist Azure Data Lake Analytics, der Themenschwerpunkt dieses Artikels. Obwohl Sie die Abfrage einfach in Hadoop oder anderen Lösungen ausführen können, ist Data Lake Analytics meist besser für diesen „Zahlung pro Abfrage“-Ansatz geeignet.
 
 In U-SQL gibt es einen „Extraktor“ für Avro. Weitere Informationen finden Sie im [Beispiel zu U-SQL Avro](https://github.com/Azure/usql/tree/master/Examples/AvroExamples).
 

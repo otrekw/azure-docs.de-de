@@ -18,10 +18,10 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: b9d6ab0fc2f2bf500f17161de7e090a6f60c0feb
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76700735"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Administratoreinwilligung auf Microsoft Identity Platform
@@ -50,7 +50,7 @@ Wenn Sie dazu bereit sind, vom Administrator der Organisation Berechtigungen anz
 ```
 
 
-| Parameter     | Bedingung     | Beschreibung                                                                               |
+| Parameter     | Bedingung     | BESCHREIBUNG                                                                               |
 |--------------:|--------------:|:-----------------------------------------------------------------------------------------:|
 | `tenant` | Erforderlich | Der Verzeichnismandant, von dem Sie die Berechtigung anfordern möchten. Kann als eindeutiger Bezeichner oder Anzeigename bereitgestellt oder mit `organizations` generisch referenziert werden, wie im Beispiel gezeigt. Verwenden Sie nicht „Allgemein“, weil persönliche Konten die Administratoreinwilligung nur im Kontext eines Mandanten bereitstellen können. Um die bestmögliche Kompatibilität mit persönlichen Konten sicherzustellen, die Mandanten verwalten, sollten Sie nach Möglichkeit die Mandanten-ID verwenden. |
 | `client_id` | Erforderlich | Die **Anwendungs-ID (Client-ID)** , die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
@@ -69,7 +69,7 @@ Wenn der Administrator die Berechtigungen für Ihre Anwendung genehmigt, lautet 
 http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-a743-29f2956fd429&state=12345&scope=https%3a%2f%2fgraph.microsoft.com%2fCalendars.Read+https%3a%2f%2fgraph.microsoft.com%2fMail.Send
 ```
 
-| Parameter         | Beschreibung                                                                                       |
+| Parameter         | BESCHREIBUNG                                                                                       |
 |------------------:|:-------------------------------------------------------------------------------------------------:|
 | `tenant`| Der Verzeichnismandant, der Ihrer Anwendung die angeforderten Berechtigungen erteilt hat, im GUID-Format.|
 | `state`           | Ein in der Anforderung enthaltener Wert, der auch in der Tokenantwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Der Status wird verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z.B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat.|
@@ -82,7 +82,7 @@ http://localhost/myapp/permissions?admin_consent=True&tenant=fa00d692-e9c7-4460-
 
 Wenn Sie zu den Parametern hinzugefügt werden, die in einer erfolgreichen Antwort angezeigt werden, werden Fehlerparameter wie unten dargestellt.
 
-| Parameter          | Beschreibung                                                                                      |
+| Parameter          | BESCHREIBUNG                                                                                      |
 |-------------------:|:-------------------------------------------------------------------------------------------------:|
 | `error`            | Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren.|
 | `error_description`| Eine spezifische Fehlermeldung, mit der ein Entwickler die Grundursache eines Fehlers identifizieren kann.|

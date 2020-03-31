@@ -1,19 +1,18 @@
 ---
 title: Veröffentlichen Ihrer Microsoft Dynamics 365 Business Central-App in Microsoft AppSource
 description: 'Veralteter Artikel mit Links zu PC-Artikeln. Bisher: „Übersicht über die Veröffentlichung einer Dynamics 365 Business Central-App in Microsoft AppSource“.'
-services: Azure, Marketplace, Cloud Partner Portal
-author: ChJenk
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.author: pabutler
-ms.openlocfilehash: 1c4ed269fe4efe55e4218beee8f41cb9cee904e4
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 5e9e62989f10e047afb8ac8d2c599bdff1af2c62
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819987"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80276018"
 ---
 # <a name="bring-your-microsoft-dynamics-365-business-central-app-into-microsoft-appsource"></a>Veröffentlichen Ihrer Microsoft Dynamics 365 Business Central-App in Microsoft AppSource
 

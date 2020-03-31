@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
 ms.openlocfilehash: 19cfd5d8ed4100048c270fb41e5e54a920c61516
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75548835"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Übersicht zu strukturiertes Apache Spark-Streaming
@@ -106,7 +106,7 @@ Starten Sie die Streamingabfrage, und führen Sie sie aus, bis ein Beendigungssi
 
 ### <a name="view-the-results"></a>Zeigen Sie die Ergebnisse an
 
-Während die Abfrage ausgeführt wird, könnenSie in derselben SparkSession eine SparkSQL-Abfrage der `temps`-Tabelle ausführen, in der die Ergebnisse der Abfrage gespeichert werden.
+Während die Abfrage ausgeführt wird, können`temps`{2}Sie in derselben SparkSession eine SparkSQL-Abfrage der {3}-Tabelle ausführen, in der die Ergebnisse der Abfrage gespeichert werden.
 
     select * from temps
 

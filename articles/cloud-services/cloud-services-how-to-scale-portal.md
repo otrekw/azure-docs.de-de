@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
 ms.openlocfilehash: 5880544137855a2ea5bcd6d6e4bada46563564ad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75360836"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Konfigurieren der automatischen Skalierung für einen Clouddienst im Portal
 
-Bedingungen können für eine Clouddienst-Workerrolle festgelegt werden, die ein horizontales Herunter- oder Hochskalieren auslösen. Die Bedingungen für die Rolle können auf der CPU, dem Datenträger oder der Netzwerklast der Rolle basieren. Sie können auch eine Bedingung basierend auf einer Nachrichtenwarteschlange oder der Metrik einer anderen mit Ihrem Abonnement verknüpften Azure-Ressource festlegen.
+Bedingungen können für eine Clouddienst-Workerrolle festgelegt werden, die ein Ab-/Aufskalieren auslösen. Die Bedingungen für die Rolle können auf der CPU, dem Datenträger oder der Netzwerklast der Rolle basieren. Sie können auch eine Bedingung basierend auf einer Nachrichtenwarteschlange oder der Metrik einer anderen mit Ihrem Abonnement verknüpften Azure-Ressource festlegen.
 
 > [!NOTE]
 > Dieser Artikel konzentriert sich auf Clouddienst-Webrollen und -Workerrollen. Wenn Sie einen virtuellen Computer (klassisch) direkt erstellen, wird er in einem Clouddienst gehostet. Sie können einen standardmäßigen virtuellen Computer skalieren, indem Sie ihn einer [Verfügbarkeitsgruppe](../virtual-machines/windows/classic/configure-availability-classic.md) zuordnen und manuell aktivieren oder deaktivieren.
@@ -26,7 +26,7 @@ Folgendes ist allerdings zu beachten, bevor die Skalierung einer Anwendung konfi
 
 * Die Skalierung ist abhängig von der Kernspeichernutzung.
 
-    Größere Rolleninstanzen verwenden mehr Kerne. Sie können eine Anwendung nur innerhalb der für Ihr Abonnement geltenden Kerngrenzwerte skalieren. Nehmen Sie z.B. an, Ihr Abonnement sei auf 20 Kerne begrenzt. Wenn Sie eine Anwendung mit zwei mittelgroßen Clouddiensten ausführen (insgesamt vier Kerne), stehen für das zentrale Hochskalieren anderer Clouddienstbereitstellungen in Ihrem Abonnement nur noch sechzehn Kerne zur Verfügung. Weitere Informationen zu Größen finden Sie unter [Größen für Clouddienste](cloud-services-sizes-specs.md).
+    Größere Rolleninstanzen verwenden mehr Kerne. Sie können eine Anwendung nur innerhalb der für Ihr Abonnement geltenden Kerngrenzwerte skalieren. Nehmen Sie z.B. an, Ihr Abonnement sei auf 20 Kerne begrenzt. Wenn Sie eine Anwendung mit zwei mittelgroßen Clouddiensten ausführen (insgesamt vier Kerne), stehen für das Hochskalieren anderer Clouddienstbereitstellungen in Ihrem Abonnement nur noch sechzehn Kerne zur Verfügung. Weitere Informationen zu Größen finden Sie unter [Größen für Clouddienste](cloud-services-sizes-specs.md).
 
 * Sie können basierend auf einem Schwellenwert für die Nachrichtenwarteschlange skalieren. Weitere Informationen über die Verwendung von Warteschlangen finden Sie unter [Erste Schritte mit Azure Queue Storage mit .NET](../storage/queues/storage-dotnet-how-to-use-queues.md).
 
@@ -41,7 +41,7 @@ Folgendes ist allerdings zu beachten, bevor die Skalierung einer Anwendung konfi
 Nachdem Sie Ihren Clouddienst ausgewählt haben, sollte das Blatt für den Clouddienst angezeigt werden.
 
 1. Wählen Sie auf dem Blatt für den Clouddienst auf der Kachel **Rollen und Instanzen** den Namen des Clouddiensts aus.   
-   **WICHTIG:** Sie müssen auf die Clouddienstrolle klicken, nicht auf die Rolleninstanz unterhalb der Rolle.
+   **WICHTIG**: Sie müssen auf die Clouddienstrolle klicken, nicht auf die Rolleninstanz unterhalb der Rolle.
 
     ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. Wählen Sie die Kachel **Skalieren** aus.

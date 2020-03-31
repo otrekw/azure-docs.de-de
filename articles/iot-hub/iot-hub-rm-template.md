@@ -10,10 +10,10 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.openlocfilehash: 02e814a9da320d688fe57edf3a3fe0640b8f5a47
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75976736"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Erstellen einer IoT Hub-Instanz mithilfe einer Azure Resource Manager-Vorlage (.NET)
@@ -23,7 +23,7 @@ ms.locfileid: "75976736"
 Sie können den Azure-Ressourcen-Manager verwenden, um Azure IoT Hubs programmgesteuert zu erstellen und zu verwalten. In diesem Tutorial erfahren Sie, wie Sie unter Verwendung einer Azure Resource Manager-Vorlage mit einem C#-Programm einen IoT Hub erstellen.
 
 > [!NOTE]
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen:  [Azure Resource Manager und klassische Bereitstellung](../azure-resource-manager/management/deployment-models.md).  Dieser Artikel behandelt die Verwendung des Azure Resource Manager-Bereitstellungsmodells.
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Azure Resource Manager-Bereitstellung und klassische Bereitstellung](../azure-resource-manager/management/deployment-models.md).  Dieser Artikel behandelt die Verwendung des Azure Resource Manager-Bereitstellungsmodells.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

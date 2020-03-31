@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c926aac3ea4360793ff52b616a55dc6198357c8a
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721777"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Erstellen von Features für Daten in einem Hadoop-Cluster mit Hive-Abfragen
@@ -35,7 +35,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie Folgendes abgeschlossen haben
 * Sie haben die Daten in Hive-Tabellen auf Azure HDInsight Hadoop-Clustern hochgeladen. Wenn dies nicht der Fall ist, führen Sie die unter [Erstellen und Laden von Daten in Hive-Tabellen](move-hive-tables.md) beschriebenen Schritte zum Hochladen von Daten in Hive-Tabellen aus.
 * Sie haben den Remotezugriff auf den Cluster aktiviert. Anweisungen finden Sie unter [Zugreifen auf den Hauptknoten von Hadoop-Clustern](customize-hadoop-cluster.md).
 
-## <a name="hive-featureengineering"></a>Generieren von Funktionen
+## <a name="feature-generation"></a><a name="hive-featureengineering"></a>Generieren von Funktionen
 In diesem Abschnitt sind verschiedene Beispiele dafür enthalten, wie Funktionen mithilfe von Hive-Abfragen generiert werden können. Wenn Sie zusätzliche Funktionen generiert haben, können Sie diese als Spalten in der vorhandenen Tabelle hinzufügen oder eine neue Tabelle mit den zusätzlichen Funktionen und einem Primärschlüssel erstellen, die dann mit der ursprünglichen Tabelle zusammengeführt werden kann. Beispiele:
 
 1. [Häufigkeitsbasierte Funktionsgenerierung](#hive-frequencyfeature)
@@ -44,7 +44,7 @@ In diesem Abschnitt sind verschiedene Beispiele dafür enthalten, wie Funktionen
 4. [Extrahieren von Funktionen aus "Text"-Feldern](#hive-textfeatures)
 5. [Berechnen der Entfernung zwischen GPS-Koordinaten](#hive-gpsdistance)
 
-### <a name="hive-frequencyfeature"></a>Häufigkeitsbasierte Funktionsgenerierung
+### <a name="frequency-based-feature-generation"></a><a name="hive-frequencyfeature"></a>Häufigkeitsbasierte Funktionsgenerierung
 Oft ist es sinnvoll, die Häufigkeit der Ebenen einer kategorischen Variable oder die Häufigkeiten von bestimmten Ebenenkombinationen aus mehreren kategorischen Variablen zu berechnen. Mit dem folgenden Skript können Sie die Häufigkeiten berechnen:
 
         select
@@ -58,7 +58,7 @@ Oft ist es sinnvoll, die Häufigkeit der Ebenen einer kategorischen Variable ode
         order by frequency desc;
 
 
-### <a name="hive-riskfeature"></a>Risiken kategorischer Variablen in binären Klassifizierungen
+### <a name="risks-of-categorical-variables-in-binary-classification"></a><a name="hive-riskfeature"></a>Risiken kategorischer Variablen in binären Klassifizierungen
 Bei binären Klassifizierungen müssen nicht numerische kategorische Variablen in numerische Funktionen umgewandelt werden, wenn die verwendeten Modelle nur numerische Funktionen akzeptieren. Bei dieser Umwandlung werden die nicht numerischen Ebenen durch numerische Risiken ersetzt. In diesem Abschnitt werden einige generische Hive-Abfragen zur Berechnung der Risikowerte (logarithmische Wahrscheinlichkeiten) einer kategorischen Variable gezeigt.
 
         set smooth_param1=1;
@@ -83,7 +83,7 @@ In diesem Beispiel werden die Variablen `smooth_param1` und `smooth_param2` zum 
 
 Nach dem Berechnen der Risikotabelle können Sie einer Tabelle Risikowerte zuweisen, indem Sie sie mit der Risikotabelle zusammenführen. Die Hive-Abfrage für das Zusammenführen wurde im vorherigen Abschnitt beschrieben.
 
-### <a name="hive-datefeatures"></a>Extrahieren von Funktionen aus datetime-Feldern
+### <a name="extract-features-from-datetime-fields"></a><a name="hive-datefeatures"></a>Extrahieren von Funktionen aus datetime-Feldern
 Hive bietet eine Reihe von UDFs für die Verarbeitung von "datetime"-Feldern. In Hive lautet das Standardformat für "datetime" "JJJJ-MM-TT 00:00:00" (wie z. B. in "1970-01-01 12:21:32"). In diesem Abschnitt werden Beispiele für das Extrahieren des Tags eines Monats und des Monats aus einem datetime-Feld gezeigt. Außerdem gibt es Beispiele zum Konvertieren einer datetime-Zeichenfolge in einem anderen Format als dem Standardformat in eine datetime-Zeichenfolge im Standardformat.
 
         select day(<datetime field>), month(<datetime field>)
@@ -103,13 +103,13 @@ Wenn *\<datetime field>* in dieser Abfrage das Muster *03/26/2015 12:04:39* hat,
 
 Die Tabelle *hivesampletable* in dieser Abfrage enthält in der Voreinstellung alle Azure HDInsight Hadoop-Cluster, wenn die Cluster bereitgestellt wurden.
 
-### <a name="hive-textfeatures"></a>Extrahieren von Funktionen aus Textfeldern
+### <a name="extract-features-from-text-fields"></a><a name="hive-textfeatures"></a>Extrahieren von Funktionen aus Textfeldern
 Wenn die Hive-Tabelle ein Textfeld enthält, das eine Zeichenfolge von durch Leerzeichen voneinander getrennten Wörtern ist, können Sie mit der folgenden Abfrage die Länge der Zeichenfolge und die Anzahl der Wörter in der Zeichenfolge extrahieren.
 
         select length(<text field>) as str_len, size(split(<text field>,' ')) as word_num
         from <databasename>.<tablename>;
 
-### <a name="hive-gpsdistance"></a>Berechnen der Entfernung zwischen GPS-Koordinaten
+### <a name="calculate-distances-between-sets-of-gps-coordinates"></a><a name="hive-gpsdistance"></a>Berechnen der Entfernung zwischen GPS-Koordinaten
 Die in diesem Abschnitt angegebene Abfrage kann direkt auf die "NYC Taxi Trip"-Daten angewendet werden. Diese Abfrage soll veranschaulichen, wie Sie eine eingebettete mathematische Funktion in Hive zum Generieren von Funktionen verwenden.
 
 Die in dieser Abfrage verwendeten Felder sind GPS-Koordinaten von Start- und Zielorten mit den Bezeichnungen *pickup\_longitude*, *pickup\_latitude*, *dropoff\_longitude* und *dropoff\_latitude*. Die Abfragen zur Berechnung der direkten Entfernung zwischen den Start- und Zielkoordinaten sind:
@@ -130,16 +130,16 @@ Die in dieser Abfrage verwendeten Felder sind GPS-Koordinaten von Start- und Zie
         and dropoff_latitude between 30 and 90
         limit 10;
 
-Die mathematischen Gleichungen zur Berechnung der Entfernung zwischen zwei GPS-Koordinaten finden Sie auf der Website <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a> von Peter Lapisu. In seinem JavaScript-Code ist die `toRad()`-Funktion nur *lat_or_lon*pi/180 und rechnet Grad in Radianten um. Hierbei ist *lat_or_lon* der Längen- oder Breitengrad. Da Hive keine `atan2`-Funktion bereitstellt, jedoch die `atan`-Funktion, wird die `atan2`-Funktion in der oben angegebenen Hive-Abfrage anhand der in <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> angegebenen Definition durch die `atan`-Funktion implementiert.
+Die mathematischen Gleichungen zur Berechnung der Entfernung zwischen zwei GPS-Koordinaten finden Sie auf der Website <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a> von Peter Lapisu. In seinem JavaScript-Code ist die `toRad()`-Funktion nur *lat_or_lon*pi/180 und rechnet Grad in Radianten um. Hierbei ist *lat_or_lon* der Längen- oder Breitengrad. Da Hive keine `atan2`-Funktion bereitstellt, jedoch die `atan`-Funktion, wird die `atan2`-Funktion in der oben angegebenen Hive-Abfrage anhand der in `atan`Wikipedia<a href="https://en.wikipedia.org/wiki/Atan2" target="_blank"> angegebenen Definition durch die </a>-Funktion implementiert.
 
 ![Arbeitsbereich erstellen](./media/create-features-hive/atan2new.png)
 
 Eine vollständige Liste der eingebetteten Hive-UDFs finden Sie im Abschnitt **Built-in Functions** im <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive-Wiki</a>.  
 
-## <a name="tuning"></a> Weiterführende Themen: Optimieren von Hive-Parametern zur Verbesserung der Abfragegeschwindigkeit
+## <a name="advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a> Weiterführende Themen: Optimieren von Hive-Parametern zur Verbesserung der Abfragegeschwindigkeit
 Die Standardeinstellungen für die Parameter von Hive-Clustern eignen sich möglicherweise nicht für die Hive-Abfragen und die von den Abfragen verarbeiteten Daten. In diesem Abschnitt werden einige Parameter beschrieben, mit denen Sie die Leistung der Hive-Abfragen optimieren können. Sie müssen die Abfragen zur Parameteroptimierung vor den Abfragen der Verarbeitungsdaten einfügen.
 
-1. **Java-Heapspeicher**: Für Abfragen, bei denen große Datasets zusammengeführt oder lange Datensätze verarbeitet werden, besteht ein typischer Fehler darin, dass **nicht genügend Heapspeicher verfügbar ist**. Dieser Fehler kann durch Festlegen der Parameter *mapreduce.map.java.opts* und *mapreduce.task.io.sort.mb* auf die gewünschten Werte vermieden werden. Beispiel:
+1. **Java-Heapspeicher:** Für Abfragen, bei denen große Datasets zusammengeführt oder lange Datensätze verarbeitet werden, besteht ein typischer Fehler darin, dass **nicht genügend Heapspeicher verfügbar ist**. Dieser Fehler kann durch Festlegen der Parameter *mapreduce.map.java.opts* und *mapreduce.task.io.sort.mb* auf die gewünschten Werte vermieden werden. Beispiel:
    
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
@@ -151,7 +151,7 @@ Die Standardeinstellungen für die Parameter von Hive-Clustern eignen sich mögl
 
         set dfs.block.size=128m;
 
-2. **Optimieren von Join-Vorgängen in Hive**: Join-Vorgänge im Map/Reduce-Framework erfolgen in der Regel in der Reduce-Phase. In einigen Fällen können jedoch enorme Vorteile erzielt werden, indem die Join-Vorgänge in die Map-Phase verlegt werden (so genannte „mapjoins“). Legen Sie die folgende Option fest:
+2. **Optimieren von Join-Vorgängen in Hive**: Join-Vorgänge im Map/Reduce-Framework erfolgen meist in der Reduce-Phase. In einigen Fällen können jedoch enorme Vorteile erzielt werden, indem die Join-Vorgänge in die Map-Phase verlegt werden (so genannte „mapjoins“). Legen Sie die folgende Option fest:
    
        set hive.auto.convert.join=true;
 

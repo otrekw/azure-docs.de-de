@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 03/03/2020
 ms.openlocfilehash: 2170612f9365ec9645b70c24236b865f106b646e
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78254829"
 ---
 # <a name="services-and-tools-available-for-data-migration-scenarios"></a>Dienste und Tools für Datenmigrationsszenarien
@@ -79,7 +79,7 @@ In den folgenden Tabellen sind jeweils die Dienste und Tools aufgeführt, die Si
 
 ## <a name="migration-phase"></a>Phase: Migration
 
-| `Source` | Ziel | Schema | Daten<br/>(Offline) | Daten<br/>(Online) |
+| `Source` | Ziel | Schema | Data<br/>(Offline) | Data<br/>(Online) |
 | --- | --- | --- | --- | --- |
 | SQL Server | Azure SQL-Datenbank | [DMA](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize*](https://www.cloudamize.com/)<br/>[Attunity*](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | SQL Server | Azure SQL-Datenbank MI | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize*](https://www.cloudamize.com/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Cloudamize*](https://www.cloudamize.com/)<br/>[Attunity*](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |

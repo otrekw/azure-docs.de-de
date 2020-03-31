@@ -6,10 +6,10 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
 ms.openlocfilehash: d0c60f5738bf634f9d43d6d4f0d78c1239b7ff3c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75649270"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>Ansichtsdefinitionsartefakt in Azure Managed Applications
@@ -133,7 +133,7 @@ Wenn Sie diese Ansicht in **viewDefinition.json** bereitstellen, überschreibt s
 
 ![Übersicht](./media/view-definition/overview.png)
 
-## <a name="metrics"></a>metrics
+## <a name="metrics"></a>Metriken
 
 `"kind": "Metrics"`
 
@@ -188,7 +188,7 @@ Die Metrikenansicht ermöglicht Ihnen, Daten von Ihren verwalteten Anwendungsres
 |resourceTagFilter|Nein|Das Ressourcentagsarray (wird mit dem `or`-Wort getrennt), für das Metriken angezeigt würden. Wird zusätzlich zum Ressourcentypfilter angewandt.|
 |resourceType|Ja|Der Ressourcentyp, für den Metriken angezeigt würden.|
 
-![metrics](./media/view-definition/metrics.png)
+![Metriken](./media/view-definition/metrics.png)
 
 ## <a name="custom-resources"></a>Benutzerdefinierte Ressourcen
 

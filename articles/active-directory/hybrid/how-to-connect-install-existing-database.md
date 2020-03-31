@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4dc6993586063c9c99a287c51d799b44f921768d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60245170"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Installieren von Azure AD Connect mithilfe einer vorhandenen ADSync-Datenbank
@@ -96,7 +96,7 @@ Bei der Wiederherstellung einer Datenbanksicherung, die mit einer Version von Az
 
 Anhand der folgenden Tabelle können Sie überprüfen, ob zusätzliche Schritte erforderlich sind.
 
-|Feature|Schritte|
+|Funktion|Schritte|
 |-----|-----|
 |Kennworthashsynchronisierung| Die Kennworthashsynchronisierung und die Kennwortrückschreibung werden für Versionen von Azure AD Connect ab 1.2.65.0 vollständig wiederhergestellt.  Wenn Sie die Wiederherstellung mit einer älteren Version von Azure AD Connect durchführen, überprüfen Sie die Einstellungen der Synchronisierungsoptionen für diese Funktionen, um sicherzustellen, dass sie mit Ihrem aktiven Synchronisierungsserver übereinstimmen.  Es sollten keine anderen Konfigurationsschritte erforderlich sein.|
 |Verbund mit AD FS|Azure-Authentifizierungen verwenden weiterhin die für Ihren aktiven Synchronisationsserver konfigurierte AD FS-Richtlinie.  Wenn Sie Azure AD Connect verwenden, um Ihre AD FS-Farm zu verwalten, können Sie optional die Anmeldemethode für den AD FS-Verbund ändern, damit Ihr Standbyserver zur aktiven Synchronisationsinstanz wird.   Wenn auf dem aktiven Synchronisationsserver Geräteoptionen aktiviert sind, konfigurieren Sie diese Optionen auf diesem Server, indem Sie die Aufgabe „Geräteoptionen konfigurieren“ ausführen.|
@@ -106,6 +106,6 @@ Anhand der folgenden Tabelle können Sie überprüfen, ob zusätzliche Schritte 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Nachdem Sie Azure AD Connect installiert haben, können Sie [die Installation überprüfen und Lizenzen zuweisen](how-to-connect-post-installation.md).
-- Hier finden Sie weitere Informationen zu diesen Features, die bei der Installation aktiviert wurden: [Azure AD Connect-Synchronisierung: Verhindern von versehentlichen Löschvorgängen](how-to-connect-sync-feature-prevent-accidental-deletes.md) und [Überwachen der Azure AD Connect-Synchronisierung mit Azure AD Connect Health](how-to-connect-health-sync.md).
+- Weitere Informationen zu diesen Features, die mit der Installation aktiviert wurden: [Verhindern von versehentlichen Löschungen](how-to-connect-sync-feature-prevent-accidental-deletes.md) und [Azure AD Connect Health](how-to-connect-health-sync.md).
 - Weitere Informationen zu folgenden allgemeinen Themen: [Scheduler und Auslösen der Synchronisierung](how-to-connect-sync-feature-scheduler.md).
 - Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](whatis-hybrid-identity.md).

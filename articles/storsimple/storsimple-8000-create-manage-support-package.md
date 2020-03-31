@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 9ca033f6f786c0142261dafa31b93b71a8b3336a
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277068"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Erstellen und Verwalten eines Unterstützungspakets für ein Gerät der StorSimple 8000-Serie
@@ -64,7 +64,7 @@ Sie können das manuell generierte Unterstützungspaket per E-Mail für den Micr
 
 Sie können die folgenden Parameter mit dem Export-HcsSupportPackage-Cmdlet verwenden.
 
-| Parameter | Erforderlich/Optional | Beschreibung |
+| Parameter | Erforderlich/Optional | BESCHREIBUNG |
 | --- | --- | --- |
 | `-Path` |Erforderlich |Dient zum Angeben des Orts des freigegebenen Netzwerkordners für das Unterstützungspaket. |
 | `-EncryptionPassphrase` |Erforderlich |Dient zum Angeben einer Passphrase für die Verschlüsselung des Unterstützungspakets. |

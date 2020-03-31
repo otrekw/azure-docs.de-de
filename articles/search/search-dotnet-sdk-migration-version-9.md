@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: fcc70267754f7e66f29dd1b855d3efb8b814e78b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72793019"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Upgrade auf Version 9 des Azure Search .NET SDK
@@ -45,7 +45,7 @@ Version 9 des Azure Search .NET SDK ist für die neueste allgemein verfügbare 
 ### <a name="new-preview-features-in-version-80-preview"></a>Neue Previewfunktionen in Version 8.0-preview
 Version 8.0-preview des Azure Search .NET SDK zielt auf die API-Version 2017-11-11-Preview ab. Diese Version umfasst dieselben Funktionen wie Version 9 und darüber hinaus:
 
-* [Kundenverwaltete Verschlüsselungsschlüssel](search-security-manage-encryption-keys.md) für die dienstseitige Verschlüsselung ruhender Daten ist eine neue Previewfunktion. Zusätzlich zur integrierten Verschlüsselung ruhender Daten von Microsoft können Sie eine zusätzliche Ebene der Verschlüsselung anwenden, bei der nur Sie der alleinige Besitzer der Schlüssel sind.
+* [Kundenverwaltete Verschlüsselungsschlüssel](search-security-manage-encryption-keys.md) für die dienstseitige Verschlüsselung ruhender Daten ist eine neue Previewfunktion. Neben der integrierten von Microsoft verwalteten Verschlüsselung ruhender Daten können Sie eine zusätzliche Verschlüsselungsebene anwenden, bei der Sie alleiniger Besitzer der Schlüssel sind.
 
 <a name="UpgradeSteps"></a>
 

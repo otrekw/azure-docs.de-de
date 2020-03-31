@@ -5,14 +5,14 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
 ms.openlocfilehash: c9a0d4387511bbfa033bcb90d9f83e1a7bb39719
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67177796"
 ---
 1. Starten von „UnifiedSetup.exe“ für Azure Site Recovery
-2. Wählen Sie unter **Before you begin** die Option **Add additional process servers to scale out deployment** (Weitere Prozessserver zum horizontalen Hochskalieren der Bereitstellung hinzufügen) aus.
+2. Wählen Sie unter **Vorbereitung** die Option **Weitere Prozessserver zum Aufskalieren der Bereitstellung hinzufügen** aus.
 
    ![Prozessserver hinzufügen](./media/site-recovery-add-process-server/ps-page-1.png)
 

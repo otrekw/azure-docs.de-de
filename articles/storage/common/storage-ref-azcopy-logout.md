@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 538c54c338540059baa17b9818d444cc863b7309
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034057"
 ---
 # <a name="azcopy-logout"></a>azcopy logout
@@ -34,7 +34,7 @@ azcopy logout [flags]
 - [Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)
 - [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)
 
-## <a name="options"></a>Optionen
+## <a name="options"></a>Tastatur
 
 |Option|BESCHREIBUNG|
 |--|--|

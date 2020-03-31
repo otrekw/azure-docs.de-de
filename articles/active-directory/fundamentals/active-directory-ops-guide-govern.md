@@ -12,10 +12,10 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 4826bcdc85e0c6189c51aa262014fe154bb479b1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74534814"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Referenzleitfaden zu Azure Active Directory-Governancevorgängen
@@ -31,10 +31,10 @@ In diesem Abschnitt des [Referenzleitfadens zu Azure AD-Vorgängen](active-direc
 
 Für die Verwaltung von Azure Active Directory ist die kontinuierliche Ausführung wichtiger betrieblicher Aufgaben und Prozesse erforderlich, die möglicherweise nicht Teil eines Rolloutprojekts sind. Es ist außerdem wichtig, dass Sie diese Aufgaben einrichten, um Ihre Umgebung zu optimieren. Im Folgenden werden die wichtigen Aufgaben und empfohlene Besitzer für diese aufgeführt:
 
-| Aufgabe | Owner (Besitzer) |
+| Aufgabe | Besitzer |
 | :- | :- |
-| Archivieren von Azure AD-Überwachungsprotokollen im SIEM-System | Team für Informationssicherheitsvorgänge |
-| Ermitteln von Anwendungen, deren Verwaltung nicht konform ist | Team für IAM-Vorgänge (Identity & Access Management) |
+| Archivieren von Azure AD-Überwachungsprotokollen im SIEM-System | Team für Informationssicherheitvorgänge |
+| Ermitteln von Anwendungen, deren Verwaltung nicht konform ist | Team für IAM-Vorgänge (Identity & Access Management, Identitäts- und Zugriffsverwaltung) |
 | Regelmäßiges Überprüfen des Zugriffs auf Anwendungen | Team für die Informationssicherheitsarchitektur |
 | Regelmäßiges Überprüfen des Zugriffs auf externe Identitäten | Team für die Informationssicherheitsarchitektur |
 | Regelmäßige Überprüfung, wer privilegierte Rollen innehat | Team für die Informationssicherheitsarchitektur |
@@ -43,9 +43,9 @@ Für die Verwaltung von Azure Active Directory ist die kontinuierliche Ausführu
 | Entwerfen von Katalogen und Zugreifen auf Pakete für Anwendungen und Ressourcen, die für Mitarbeiter in der Organisation vorgesehen sind | App-Besitzer |
 | Definieren von Sicherheitsrichtlinien zum Zuweisen von Benutzern zu Zugriffspaketen | Informationssicherheitsteam und App-Besitzer |
 | Wenn Richtlinien Genehmigungsworkflows enthalten, müssen Sie die Einwilligungen für diese Workflows regelmäßig überprüfen. | App-Besitzer |
-| Überprüfen von Ausnahmen in Sicherheitsrichtlinien, z. B. Richtlinien für den bedingten Zugriff mit Zugriffsüberprüfungen | Team für Informationssicherheitsvorgänge |
+| Überprüfen von Ausnahmen in Sicherheitsrichtlinien, z. B. Richtlinien für den bedingten Zugriff mit Zugriffsüberprüfungen | Team für Informationssicherheitvorgänge |
 
-Beim Überprüfen Ihrer Liste werden Sie möglicherweise feststellen, dass Sie entweder einen Besitzer für Aufgaben zuweisen müssen, denen kein Besitzer zugeteilt ist, oder Aufgaben anpassen müssen, deren Besitzer nicht den oben genannten Empfehlungen entspricht.
+Beim Überprüfen Ihrer Liste stellen Sie ggf. fest, dass Sie entweder einen Besitzer für Aufgaben zuweisen müssen, denen kein Besitzer zugeteilt ist, oder Aufgaben anpassen müssen, deren Besitzer nicht den obigen Empfehlungen entspricht.
 
 #### <a name="owner-recommended-reading"></a>Empfohlene Artikel für Besitzer
 
@@ -132,7 +132,7 @@ Mit der [Berechtigungsverwaltung](https://docs.microsoft.com/azure/active-direct
 
 Eine sichere Identitätsgovernance zeichnet sich durch acht Merkmale aus. In dieser Liste werden die Aktionen beschrieben, die zum Bewerten und Bestätigen des Zugriffs für privilegierte und nicht privilegierte Identitäten sowie zum Überwachen und Prüfen von Änderungen an der Umgebung erforderlich sind.
 
-- Weisen Sie wichtigen Aufgaben Besitzer zu.
+- Zuweisen von Besitzern zu wichtigen Aufgaben
 - Implementieren Sie eine Teststrategie.
 - Verwenden Sie Azure AD-Zugriffsüberprüfungen, um Gruppenmitgliedschaften den Zugriff auf Unternehmensanwendungen und Rollenzuweisungen effizient zu verwalten.
 - Richten Sie einen regulären automatisierten Prozess für die Zugriffsüberprüfung für alle externen Identitäten und den Anwendungszugriff ein.

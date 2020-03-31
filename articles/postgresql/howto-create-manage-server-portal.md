@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.openlocfilehash: bcddd64afca29ac9fdd5d284fc8f809ff9e2477d
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74534886"
 ---
 # <a name="manage-an-azure-database-for-postgresql-server-using-the-azure-portal"></a>Verwalten eines Azure Database for PostgreSQL-Servers über das Azure-Portal

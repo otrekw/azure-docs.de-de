@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: kenchen
 ms.openlocfilehash: cf0f345b0fbf9fea2512f72c1996c9a1597cc0cd
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73747652"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Resilienz und Notfallwiederherstellung
@@ -65,7 +65,7 @@ Der Name ist optional. Er ist jedoch hilfreich, wenn Sie das Routingverhalten zw
 
 Wenn Sie die Verbindungszeichenfolgen an anderer Stelle speichern möchten, können Sie sie auch in Ihrem Code einlesen und als Parameter beim Aufrufen von `AddAzureSignalR()` (ASP.NET Core) oder `MapAzureSignalR()` (ASP.NET) verwenden.
 
-Hier sehen Sie den Beispielcode:
+Der Beispielcode sieht wie folgt aus:
 
 ASP.NET Core:
 

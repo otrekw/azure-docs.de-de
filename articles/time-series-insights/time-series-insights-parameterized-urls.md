@@ -11,10 +11,10 @@ ms.workload: big-data
 ms.date: 02/04/2020
 ms.custom: seodec18
 ms.openlocfilehash: 9dfe499a7d6084a23fd71ab98db472befe71fc04
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024363"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Teilen einer benutzerdefinierten Ansicht mit einer parametrisierten URL
@@ -68,7 +68,7 @@ Die akzeptierten Werte entsprechen dem Menü **quick time** (Zeitauswahl) im Tim
 
 Der `timeSeriesDefinitions=<collection of term objects>`-Parameter gibt Prädikatbegriffe an, die in einer Time Series Insights-Ansicht angezeigt werden:
 
-| Parameter | URL-Element | Beschreibung |
+| Parameter | URL-Element | BESCHREIBUNG |
 | --- | --- | --- |
 | **name** | `\<string>` | Der Name der *Bedingung*. |
 | **splitBy** | `\<string>` | Der Spaltenname für *Teilen nach*. |
@@ -85,7 +85,7 @@ Der `timeSeriesDefinitions=<collection of term objects>`-Parameter gibt Prädika
 * Mit `timeBucketUnit=<Unit>&timeBucketSize=<integer>` können Sie den Intervallschieberegler anpassen, um eine präzisere oder eine glattere, stärker aggregierte Darstellung des Diagramms zu erhalten.  
 * Mit dem Parameter `timezoneOffset=<integer>` können Sie die gewünschte Zeitzone für das Diagrammdarstellung als UTC-Versatz festlegen.
 
-| Paar(e) | Beschreibung |
+| Paar(e) | BESCHREIBUNG |
 | --- | --- |
 | `multiChartStack=false` | Weil `true` standardmäßig aktiviert ist,übergeben Sie `false` an den Stapel. |
 | `multiChartStack=false&multiChartSameScale=true` | Das Stapeln muss aktiviert sein, um ausdrucksübergreifend die gleiche Y-Achsenskala verwenden zu können.  Diese Funktion ist standardmäßig auf `false` festgelegt. Durch Übergeben von `true` wird sie aktiviert. |

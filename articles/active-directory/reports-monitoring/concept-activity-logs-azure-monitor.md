@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 46e29fff3308f35b16dbff2f9cead82abc222a5c
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014500"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231798"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-Aktivitätsprotokolle in Azure Monitor
 
@@ -133,19 +133,19 @@ Dieser Abschnitt beantwortet häufig gestellte Fragen und bespricht bekannte Pro
 
 **F: Welche Protokolle sind enthalten?**
 
-**A**: Sowohl Anmeldeaktivitäts- als auch Überwachungsprotokolle können über dieses Feature weitergeleitet werden, B2C-bezogene Überwachungsereignisse sind derzeit noch nicht enthalten. Lesen Sie die Informationen zum [Überwachungsprotokollschema](reference-azure-monitor-audit-log-schema.md) und [Anmeldeprotokollschema](reference-azure-monitor-sign-ins-log-schema.md), um zu ermitteln, welche Arten von Protokollen und featurebasierten Protokolle derzeit unterstützt werden. 
+**A:** Sowohl Anmeldeaktivitäts- als auch Überwachungsprotokolle können über dieses Feature weitergeleitet werden, B2C-bezogene Überwachungsereignisse sind derzeit noch nicht enthalten. Lesen Sie die Informationen zum [Überwachungsprotokollschema](reference-azure-monitor-audit-log-schema.md) und [Anmeldeprotokollschema](reference-azure-monitor-sign-ins-log-schema.md), um zu ermitteln, welche Arten von Protokollen und featurebasierten Protokolle derzeit unterstützt werden. 
 
 ---
 
 **F: Wie schnell werden die entsprechenden Protokolle nach einer Aktion in meinem Event Hub angezeigt?**
 
-**A**: Die Protokolle werden innerhalb von zwei bis fünf Minuten nach dem Ausführen der Aktion in Ihrem Event Hub angezeigt. Weitere Informationen zu Event Hubs finden Sie unter [Was ist Azure Event Hubs?](../../event-hubs/event-hubs-about.md).
+**A:** Die Protokolle werden innerhalb von zwei bis fünf Minuten nach dem Ausführen der Aktion in Ihrem Event Hub angezeigt. Weitere Informationen zu Event Hubs finden Sie unter [Was ist Azure Event Hubs?](../../event-hubs/event-hubs-about.md).
 
 ---
 
 **F: Wie schnell werden die entsprechenden Protokolle nach einer Aktion in meinem Speicherkonto angezeigt?**
 
-**A**: Bei Azure-Speicherkonten beträgt die Wartezeit zwischen 5 und 15 Minuten nach Durchführung der Aktion.
+**A:** Bei Azure-Speicherkonten beträgt die Wartezeit zwischen 5 und 15 Minuten nach Durchführung der Aktion.
 
 ---
 
@@ -157,19 +157,19 @@ Dieser Abschnitt beantwortet häufig gestellte Fragen und bespricht bekannte Pro
 
 **F: Was kostet das Speichern meiner Daten?**
 
-**A**: Die Speicherkosten richten sich nach der Größe Ihrer Protokolle und der gewählten Aufbewahrungsdauer. Eine Liste mit geschätzten Kosten pro Mandant, die von der Menge der erstellten Protokolle abhängen, finden Sie im Abschnitt [Speichergröße für Aktivitätsprotokolle](#storage-size-for-activity-logs).
+**A:** Die Speicherkosten richten sich nach der Größe Ihrer Protokolle und der gewählten Aufbewahrungsdauer. Eine Liste mit geschätzten Kosten pro Mandant, die von der Menge der erstellten Protokolle abhängen, finden Sie im Abschnitt [Speichergröße für Aktivitätsprotokolle](#storage-size-for-activity-logs).
 
 ---
 
 **F: Wie viel kostet das Streamen meiner Daten an einen Event Hub?**
 
-**A**: Die Streamingkosten richten sich nach der Anzahl von Nachrichten, die Sie pro Minute empfangen. In diesem Artikel wird erläutert, wie die Kosten berechnet werden. Außerdem umfasst er Kostenschätzungen ausgehend von der Anzahl von Nachrichten. 
+**A:** Die Streamingkosten richten sich nach der Anzahl von Nachrichten, die Sie pro Minute empfangen. In diesem Artikel wird erläutert, wie die Kosten berechnet werden. Außerdem umfasst er Kostenschätzungen ausgehend von der Anzahl von Nachrichten. 
 
 ---
 
 **F: Wie integriere ich Azure AD-Aktivitätsprotokolle in mein SIEM-System?**
 
-**A**: Hierzu stehen zwei Möglichkeiten zur Verfügung:
+**A:** Hierzu stehen zwei Möglichkeiten zur Verfügung:
 
 - Verwenden Sie Azure Monitor mit Event Hubs zum Streamen von Protokollen an Ihr SIEM-System. [Streamen Sie die Protokolle zunächst an einen Event Hub](tutorial-azure-monitor-stream-logs-to-event-hub.md), und [richten Sie anschließend Ihr SIEM-Tool mit dem konfigurierten Event Hub ein](tutorial-azure-monitor-stream-logs-to-event-hub.md#access-data-from-your-event-hub). 
 
@@ -179,25 +179,25 @@ Dieser Abschnitt beantwortet häufig gestellte Fragen und bespricht bekannte Pro
 
 **F: Welche SIEM-Tools werden derzeit unterstützt?** 
 
-**A**: Derzeit wird Azure Monitor von [Splunk](tutorial-integrate-activity-logs-with-splunk.md), QRadar und [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory) unterstützt. Weitere Informationen zur Funktionsweise von Connectors finden Sie unter [Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+**A:** Derzeit wird Azure Monitor von [Splunk](tutorial-integrate-activity-logs-with-splunk.md), QRadar und [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory) unterstützt. Weitere Informationen zur Funktionsweise von Connectors finden Sie unter [Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 
 ---
 
 **F: Wie integriere ich Azure AD-Aktivitätsprotokolle in meine Splunk-Instanz?**
 
-**A**: [Leiten Sie die Azure AD-Aktivitätsprotokolle zunächst an einen Event Hub weiter](quickstart-azure-monitor-stream-logs-to-event-hub.md), und führen Sie dann die Schritte zum [Integrieren von Aktivitätsprotokollen in Splunk](tutorial-integrate-activity-logs-with-splunk.md) aus.
+**A:** [Leiten Sie die Azure AD-Aktivitätsprotokolle zunächst an einen Event Hub weiter](quickstart-azure-monitor-stream-logs-to-event-hub.md), und führen Sie dann die Schritte zum [Integrieren von Aktivitätsprotokollen in Splunk](tutorial-integrate-activity-logs-with-splunk.md) aus.
 
 ---
 
 **F: Wie integriere ich Azure AD-Aktivitätsprotokolle in Sumo Logic?** 
 
-**A**: [Leiten Sie die Azure AD-Aktivitätsprotokolle zunächst an einen Event Hub weiter](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory), und führen Sie dann die Schritte zum [Installieren der Azure AD-Anwendung und Anzeigen der Dashboards in SumoLogic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards) aus.
+**A:** [Leiten Sie die Azure AD-Aktivitätsprotokolle zunächst an einen Event Hub weiter](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Collect_Logs_for_Azure_Active_Directory), und führen Sie dann die Schritte zum [Installieren der Azure AD-Anwendung und Anzeigen der Dashboards in SumoLogic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards) aus.
 
 ---
 
 **F: Kann ich über einen Event Hub auf die Daten zugreifen, ohne ein externes SIEM-Tool zu verwenden?** 
 
-**A**: Ja. Sie können die [Event Hubs-API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) nutzen, um über Ihre benutzerdefinierte Anwendung auf die Protokolle zuzugreifen. 
+**A:** Ja. Sie können die [Event Hubs-API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md) nutzen, um über Ihre benutzerdefinierte Anwendung auf die Protokolle zuzugreifen. 
 
 ---
 

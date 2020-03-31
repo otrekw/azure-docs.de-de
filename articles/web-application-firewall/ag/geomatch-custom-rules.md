@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 01/31/2020
 ms.author: victorh
 ms.openlocfilehash: 6725e1de21dbd103850071f7511e2800c6bd7b69
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76960383"
 ---
 # <a name="geomatch-custom-rules-preview"></a>Benutzerdefinierte Geomatch-Regeln (Vorschau)
@@ -21,7 +21,7 @@ Benutzerdefinierte Regeln ermöglichen Ihnen, maßgeschneiderte Regeln zu erstel
 Wählen Sie zum Erstellen einer benutzerdefinierten Regel für die Geofilterung einfach *Geografischer Standort* als Übereinstimmungstyp und dann die Länder aus, die Sie in Ihrer Anwendung zulassen/blockieren möchten. Weitere Informationen finden Sie unter [Erstellen von benutzerdefinierten Regeln in PowerShell](configure-waf-custom-rules.md) und in weiteren Beispielen für benutzerdefinierte Regeln (create-custom-waf-rules.md).
 
 > [!IMPORTANT]
-> Diese öffentliche Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Diese öffentliche Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="country-codes"></a>Landeskennzahlen
 

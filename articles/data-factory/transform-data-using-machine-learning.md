@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/20/2019
 ms.openlocfilehash: 44371c78a4d02588eef21aae5a4bba3d033763d7
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76029991"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory
@@ -123,7 +123,7 @@ Der folgende JSON-Codeausschnitt definiert eine Azure Machine Learning-Batchausf
 }
 ```
 
-| Eigenschaft          | Beschreibung                              | Erforderlich |
+| Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
 | :---------------- | :--------------------------------------- | :------- |
 | name              | Name der Aktivität in der Pipeline     | Ja      |
 | description       | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein       |
@@ -187,10 +187,10 @@ In diesem Szenario werden mit dem Azure Machine Learning-Webdienst anhand der Da
     }
 }
 ```
-### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Szenario 2: Experimente mit Reader- und Writer-Modulen zum Verweisen auf Daten in verschiedenen Speichern
+### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Szenario 2: Experimente mit den Modulen „Import Data“ und „Output Data“ zum Verweisen auf Daten in verschiedenen Speichern
 Ein weiteres gängiges Szenario beim Erstellen von Experimenten für Azure Machine Learning Studio (klassisch) ist die Verwendung der Module „Import Data“ und „Output Data“. Das Modul „Import Data“ wird verwendet, um Daten in ein Experiment zu laden, während mit dem Modul „Output Data“ Daten aus Ihren Experimenten gespeichert werden. Einzelheiten zu den Modulen „Import Data“ und „Output Data“ finden Sie in der MSDN Library in den Themen [Import Data](https://msdn.microsoft.com/library/azure/dn905997.aspx) und [Output Data](https://msdn.microsoft.com/library/azure/dn905984.aspx).
 
-Bei Verwendung der Module „Import Data“ und „Output Data“ empfiehlt es sich, einen Webdienstparameter für jede Eigenschaft dieser Module zu verwenden. Durch diese Webparameter können Sie die Werte zur Laufzeit konfigurieren. Sie können beispielsweise ein Experiment mit einem Import Data-Modul erstellen, das eine Azure SQL-Datenbank mit dem Namen „XXX.database.windows.net“ verwendet. Nach Bereitstellung des Webdiensts sollen die Nutzer des Webdiensts eine weitere Azure SQL Server-Instanz mit dem Namen `YYY.database.windows.net` angeben können. Durch Verwendung eines Webdienstparameters wird ermöglicht, dass dieser Wert konfiguriert werden kann.
+Bei Verwendung der Module „Import Data“ und „Output Data“ empfiehlt es sich, einen Webdienstparameter für jede Eigenschaft dieser Module zu verwenden. Durch diese Webparameter können Sie die Werte zur Laufzeit konfigurieren. Sie können z.B. ein Experiment mit dem Modul „Import Data“erstellen, das eine Azure SQL-Datenbank-Instanz mit dem Namen „XXX.database.windows.net“ verwendet. Nach Bereitstellung des Webdiensts sollen die Nutzer des Webdiensts eine weitere Azure SQL Server-Instanz mit dem Namen `YYY.database.windows.net` angeben können. Durch Verwendung eines Webdienstparameters wird ermöglicht, dass dieser Wert konfiguriert werden kann.
 
 > [!NOTE]
 > Eingaben und Ausgaben für den Webdienst unterscheiden sich von Webdienstparametern. Im ersten Szenario haben Sie gesehen, wie Eingaben und Ausgaben für einen Webdienst von Azure Machine Learning Studio (klassisch) angegeben werden können. In diesem Szenario übergeben Sie Parameter für einen Webdienst, die Eigenschaften der Module „Import Data“ und „Output Data“ entsprechen.

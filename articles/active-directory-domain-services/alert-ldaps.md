@@ -12,15 +12,15 @@ ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: iainfou
 ms.openlocfilehash: 06b0fa1979f18981ec5cf78dc9a9dbad8b196394
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71258048"
 ---
 # <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>Bekannte Probleme: Warnungen bei Secure LDAP in Azure Active Directory Domain Services
 
-Anwendungen und Dienste, die LDAP (Lightweight Directory Access Protocol) für die Kommunikation mit Azure Active Directory Domain Services (Azure AD DS) verwenden, können für die Verwendung von [Secure LDAP](tutorial-configure-ldaps.md) konfiguriert werden. Ein geeignetes Zertifikat muss vorhanden sein, und die erforderlichen Netzwerkports müssen geöffnet sein, damit Secure LDAP ordnungsgemäß funktioniert.
+Anwendungen und Dienste, die LDAP (Lightweight Directory Access Protocol) für die Kommunikation mit Azure Active Directory Domain Services (Azure AD DS) verwenden, [können für die Verwendung von Secure LDAP konfiguriert werden](tutorial-configure-ldaps.md). Ein geeignetes Zertifikat muss vorhanden sein, und die erforderlichen Netzwerkports müssen geöffnet sein, damit Secure LDAP ordnungsgemäß funktioniert.
 
 Dieser Artikel hilft Ihnen dabei, häufige Warnungen bei einem Zugriff über Secure LDAP in Azure AD DS zu verstehen und aufzulösen.
 

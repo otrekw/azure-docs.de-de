@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e168deea1ba442d48f483264c1e97ce618040f18
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74379121"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Beheben von Problemen mit Geräten mit Hybrideinbindung in Azure Active Directory 
@@ -58,7 +58,7 @@ Dieser Befehl zeigt ein Dialogfeld an, das Ihnen ausführliche Informationen zum
 
 ![Workplace Join für Windows](./media/troubleshoot-hybrid-join-windows-legacy/01.png)
 
-## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>Schritt 2: Bewerten des Status der Azure AD-Hybrideinbindung 
+## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>Schritt 2: Bewerten des Status des Azure AD-Hybridbeitritts 
 
 Wenn das Gerät nicht in Azure AD Hybrid eingebunden war, können Sie versuchen, es in den Dienst einzubinden, indem Sie auf die Schaltfläche „Verknüpfen“ klicken. Falls der Versuch fehlschlägt, werden die Fehlerdetails angezeigt.
 
@@ -91,7 +91,7 @@ Wenn das Gerät nicht in Azure AD Hybrid eingebunden war, können Sie versuchen,
 
     ![Workplace Join für Windows](./media/troubleshoot-hybrid-join-windows-legacy/05.png)
 
-Die Statusinformationen finden Sie auch im Ereignisprotokoll unter **Anwendungs- und Dienstprotokolle\Microsoft-Workplace Join**.
+Die Statusinformationen finden Sie auch im Ereignisprotokoll unter **Anwendungs- und Dienstprotokoll\Microsoft-Workplace Join**.
   
 **Die häufigsten Ursachen für Fehler bei der Azure AD-Hybrideinbindung sind:** 
 

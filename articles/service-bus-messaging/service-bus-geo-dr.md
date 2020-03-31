@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 24d6658733ea38c15f0673d10db3c0ff5ef51c23
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355975"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229654"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Georedundante Notfallwiederherstellung in Azure Service Bus
 
@@ -43,11 +43,11 @@ In diesem Artikel werden die folgenden Begriffe verwendet:
 
 -  *Alias*: Der Name für die Konfiguration einer von Ihnen eingerichteten Notfallwiederherstellung. Der Alias stellt einen einzelnen, stabilen, vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) als Verbindungszeichenfolge bereit. Anwendungen verwenden diese Alias-Verbindungszeichenfolge, um eine Verbindung mit einem Namespace herzustellen. Mit einem Alias wird sichergestellt, dass die Verbindungszeichenfolge unverändert bleibt, wenn das Failover ausgelöst wird.
 
--  *Primärer/sekundärer Namespace*: Die Namespaces, die dem Alias entsprechen. Der primäre Namespace ist aktiv und empfängt Nachrichten. (Dies kann ein bereits vorhandener oder ein neuer Namespace sein.) Der sekundäre Namespace ist passiv und empfängt keine Nachrichten. Die Metadaten zwischen beiden Namespaces werden synchronisiert, sodass beide nahtlos und ohne Änderung des Anwendungscodes oder der Verbindungszeichenfolge Nachrichten entgegennehmen können. Um sicherzustellen, dass nur der aktive Namespace Nachrichten empfängt, müssen Sie den Alias verwenden. 
+-  *Primärer/sekundärer Namespace:* Die Namespaces, die dem Alias entsprechen. Der primäre Namespace ist aktiv und empfängt Nachrichten. (Dies kann ein bereits vorhandener oder ein neuer Namespace sein.) Der sekundäre Namespace ist passiv und empfängt keine Nachrichten. Die Metadaten zwischen beiden Namespaces werden synchronisiert, sodass beide nahtlos und ohne Änderung des Anwendungscodes oder der Verbindungszeichenfolge Nachrichten entgegennehmen können. Um sicherzustellen, dass nur der aktive Namespace Nachrichten empfängt, müssen Sie den Alias verwenden. 
 
--  *Metadaten*: Entitäten, z.B. Warteschlangen, Themen und Abonnements und die dazugehörigen Eigenschaften des Diensts, die dem Namespace zugeordnet sind. Beachten Sie, dass nur Entitäten und ihre Einstellungen automatisch repliziert werden. Nachrichten werden nicht repliziert.
+-  *Metadaten:* Entitäten, z.B. Warteschlangen, Themen und Abonnements und die dazugehörigen Eigenschaften des Diensts, die dem Namespace zugeordnet sind. Beachten Sie, dass nur Entitäten und ihre Einstellungen automatisch repliziert werden. Nachrichten werden nicht repliziert.
 
--  *Failover*: Der Vorgang zum Aktivieren des sekundären Namespace.
+-  *Failover:* Der Vorgang zum Aktivieren des sekundären Namespace.
 
 ## <a name="setup"></a>Einrichten
 

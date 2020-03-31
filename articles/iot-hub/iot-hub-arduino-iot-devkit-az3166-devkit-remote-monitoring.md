@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
 ms.openlocfilehash: 9eab035d494892671a2451866311ca06599ec030
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73953737"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>Herstellen der Verbindung des MXChip IoT DevKit mit dem Solution Accelerator für die Azure IoT-Remoteüberwachung
@@ -82,7 +82,7 @@ Ein aktives Azure-Abonnement. Wenn Sie kein Abonnement haben, können Sie sich m
 4. Erweitern Sie auf der linken Seite **ARDUINO-BEISPIELE**, wechseln Sie zu **Beispiele für MXCHIP AZ3166 > AzureIoT**, und wählen Sie **RemoteMonitoring** aus. Daraufhin wird ein neues Visual Studio Code-Fenster mit einem Projektordner geöffnet.
 
    > [!NOTE]
-   > Falls Sie den Bereich schließen sollten, können Sie ihn erneut öffnen. Öffnen Sie mit der Tastenkombination `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) die Befehlspalette, geben Sie **Arduino** ein, suchen Sie dann nach **Arduino: Beispiele**, und wählen Sie den Eintrag aus.
+   > Falls Sie den Bereich schließen sollten, können Sie ihn erneut öffnen. Öffnen Sie mit der Tastenkombination `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) die Befehlspalette, geben Sie **Arduino** ein, suchen Sie dann nach **Arduino: Beispiele**, und wählen Sie sie aus.
 
 ## <a name="provision-required-azure-services"></a>Bereitstellen erforderlicher Azure-Dienste
 

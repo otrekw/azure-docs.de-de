@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 11/18/2019
-author: sivethe
-ms.author: sivethe
+ms.date: 03/20/2020
+author: timsander1
+ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: be3fd42f33fd66fe2bf5a773eafafba5d6982706
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 7f4d955583b82b224e3c963431c234ef4690198a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184778"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063731"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Verbinden einer Node.js Mongoose-Anwendung mit Azure Cosmos DB
 
@@ -60,6 +60,7 @@ Erstellen Sie ein Cosmos-Konto. Wenn Sie bereits über ein Konto verfügen, das 
      > Das ```--save```-Flag bewirkt, dass die Abhängigkeit zur Datei „package.json“ hinzugefügt wird.
 
 1. Importieren Sie die Abhängigkeiten in Ihre „index.js“-Datei.
+
     ```JavaScript
    var mongoose = require('mongoose');
    var env = require('dotenv').config();   //Use the .env file to load the variables

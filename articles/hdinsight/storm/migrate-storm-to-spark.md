@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/16/2019
 ms.openlocfilehash: 916c54c3739d1164e4e9c1db67aa1f4e0dbd0c6c
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76157659"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>Migrieren von Azure HDInsight 3.6 Apache Storm zu HDInsight 4.0 Apache Spark
@@ -57,7 +57,7 @@ Storm stellt ein Modell bereit, bei dem jedes einzelne Ereignis verarbeitet wird
 
 Storm-Topologien setzen sich aus mehreren Komponenten zusammen, die in einem gerichteten azyklischen Graph (DAG) angeordnet sind. Daten werden zwischen den Komponenten im Diagramm übertragen. Jede Komponente nutzt einen oder mehrere Datenströme und kann optional einen oder mehrere Datenströme ausgeben kann.
 
-|Komponente |Beschreibung |
+|Komponente |BESCHREIBUNG |
 |---|---|
 |Spout|Überführt Daten in eine Topologie. Sie geben mindestens einen Datenstrom in die Topologie aus.|
 |Bolt|Nutzt Streams, die von Spouts oder anderen Bolts ausgegeben werden. Bolts können optional auch Datenströme in die Topologie ausgeben. Außerdem sind Bolts für das Schreiben von Daten in externe Dienste oder externen Speicher (wie etwa HDFS, Kafka oder HBase) zuständig.|
@@ -67,7 +67,7 @@ Storm-Topologien setzen sich aus mehreren Komponenten zusammen, die in einem ger
 
 Storm umfasst die folgenden drei Daemons, die für die Funktionsfähigkeit des Storm-Clusters sorgen.
 
-|Daemon |Beschreibung |
+|Daemon |BESCHREIBUNG |
 |---|---|
 |Nimbus|Ist mit dem Hadoop JobTracker vergleichbar und für die Verteilung des Codes im Cluster und die Zuweisung von Tasks zu Computern und die Fehlerüberwachung zuständig.|
 |Zookeeper|Wird für die Clusterkoordination verwendet.|

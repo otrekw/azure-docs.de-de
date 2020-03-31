@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
 ms.openlocfilehash: 33dcebf14f4d534962783a30ec94f7ff6529ae0d
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74195925"
 ---
 # <a name="deploy-an-azure-firewall-with-availability-zones-using-azure-powershell"></a>Bereitstellen einer Azure Firewall mit Verfügbarkeitszonen mithilfe von Azure PowerShell

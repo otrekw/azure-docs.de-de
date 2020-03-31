@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: 50dbca0b3a761b72134eaa6cfed57e231be4ef13
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74421031"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Bereitstellen eines Split-Merge-Diensts, um Daten zwischen Sharddatenbanken zu verschieben
@@ -57,7 +57,7 @@ Die Dateien werden in einem Verzeichnis mit dem Namen **Microsoft.Azure.SqlDatab
 1. Erstellen Sie eine neue Datenbank, oder wählen Sie eine vorhandene Datenbank als Statusdatenbank für Teilungs-/Zusammenführungsvorgänge (Split/Merge) aus, und rufen Sie die Verbindungszeichenfolge dieser Datenbank ab.
 
    > [!IMPORTANT]
-   > Zu diesem Zeitpunkt muss die Statusdatenbank die Sortierung „Latin“ verwenden (SQL\_Latin1\_General\_CP1\_CI\_AS). Weitere Informationen finden Sie unter [Name der Windows-Sortierreihenfolge (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx).
+   > Zu diesem Zeitpunkt muss die Statusdatenbank die Sortierung „Latin“ verwenden (SQL\_Latin1\_General\_CP1\_CI\_AS). Weitere Informationen finden Sie unter [Name der Windows-Sortierung (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx).
 
    Bei Azure SQL-Datenbanken hat die Verbindungszeichenfolge in der Regel folgendes Format:
 

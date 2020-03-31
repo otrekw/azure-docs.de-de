@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e71d521dce40f6a8ec81286fcc95dc97bf10078c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78189735"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
@@ -69,7 +69,7 @@ Das **ClaimsTransformation**-Element enthält die folgenden Elemente:
 
 Das **InputClaims**-Element enthält das folgende Element:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | InputClaim | 1:n | Ein erwarteter Eingabeanspruchstyp. |
 
@@ -86,7 +86,7 @@ Das **InputClaim**-Element enthält die folgenden Attribute:
 
 Das **InputParameters**-Element enthält das folgende Element:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | InputParameter | 1:n | Ein erwarteter Eingabeparameter. |
 
@@ -110,7 +110,7 @@ Das **OutputClaims**-Element enthält das folgende Element:
 
 Das **OutputClaim**-Element enthält die folgenden Attribute:
 
-| attribute |Erforderlich | Beschreibung |
+| attribute |Erforderlich | BESCHREIBUNG |
 | --------- | ----------- |----------- |
 | ClaimTypeReferenceId | Ja | Ein Verweis auf ein ClaimType-Element, das bereits im ClaimsSchema-Abschnitt der Richtlinie definiert wurde.
 | TransformationClaimType | Ja | Ein Bezeichner zum Verweisen auf den Anspruchstransformationstyp. Jede Anspruchstransformation verfügt über eigene Werte. Eine vollständige Liste der verfügbaren Werte finden Sie in der [Referenz zu Anspruchstransformationen](#claims-transformations-reference). |

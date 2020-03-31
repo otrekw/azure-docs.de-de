@@ -3,11 +3,11 @@ title: Azure Resource Health – FAQ
 description: Übersicht über Azure Resource Health
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 9f626dc4366cbdd9215704de97bb03fad19422eb
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: 5a15ded1c279e700fb71e5ea7aa866e5afc29f8a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75912787"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health – FAQ
@@ -27,7 +27,7 @@ Resource Health führt auf der Grundlage des [Ressourcentyps](resource-health-ch
 
 ## <a name="what-does-each-of-the-health-status-mean"></a>Was bedeuten die einzelnen Integritätsstatus?
 Es gibt drei verschiedene Integritätsstatus:
-- Verfügbar: Auf der Azure-Plattform liegen keine bekannten Probleme vor, die diese Ressource beeinträchtigen könnten.
+- Verfügbar: In der Azure-Plattform liegen keine bekannten Probleme vor, die diese Ressource beeinträchtigen könnten.
 - Nicht verfügbar: Resource Health hat Probleme festgestellt, die die Ressource beeinträchtigen.
 - Unbekannt: Resource Health kann die Integrität einer Ressource nicht bestimmen, da der Dienst keine Informationen mehr zur Ressource erhält. 
 
@@ -46,7 +46,7 @@ Ja, wenn eine Ressource nicht verfügbar ist, identifiziert Resource Health die 
 Im Portal werden benutzerinitiierte Aktionen mit einem blauen Benachrichtigungssymbol angezeigt, geplante und ungeplante Ereignisse mit einem roten Warnsymbol. Weitere Informationen finden Sie in der [Übersicht über Azure Resource Health](Resource-health-overview.md).  
 
 ## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>Kann ich Resource Health in meine Überwachungstools integrieren?
-Resource Health bietet [Unterstützung](resource-health-alert-arm-template-guide.md) für auf dem Aktivitätsprotokoll basierende Warnungen. Aktivitätsprotokollwarnungen verwenden [Aktionsgruppen](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups), um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Aktionsgruppen unterstützen eine Vielzahl von Benachrichtigungskanälen wie E-Mail, SMS, Webhook und ITSM-Aktionen.
+Resource Health bietet [Vorschauunterstützung der](resource-health-alert-arm-template-guide.md) für auf dem Aktivitätsprotokoll basierende Warnungen. Aktivitätsprotokollwarnungen verwenden [Aktionsgruppen](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups), um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Aktionsgruppen unterstützen eine Vielzahl von Benachrichtigungskanälen wie E-Mail, SMS, Webhook und ITSM-Aktionen.
 
 ## <a name="where-do-i-find-resource-health"></a>Wo finde ich Resource Health?
 Nachdem Sie sich beim Azure-Portal angemeldet haben, stehen Ihnen mehrere Möglichkeiten zur Verfügung, auf Resource Health zuzugreifen:

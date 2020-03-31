@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
 ms.openlocfilehash: fb940857a0f88590cb9bbbf56b9e6a791299309f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75980959"
 ---
 # <a name="azure-operational-security-checklist"></a>Checkliste für Azure Operational Security
@@ -37,7 +37,7 @@ Azure bietet eine Sammlung an Infrastrukturdiensten, die Sie zum Bereitstellen I
 
 Diese Checkliste unterstützt Unternehmen bei verschiedenen operativen Sicherheitsüberlegungen bei der Bereitstellung anspruchsvoller Unternehmensanwendungen in Azure. Sie kann auch für den Aufbau einer sicheren Cloudmigration und Betriebsstrategie für Ihr Unternehmen verwendet werden.
 
-|Checklistenkategorie| Beschreibung|
+|Checklistenkategorie| BESCHREIBUNG|
 | ------------ | -------- |
 | [<br>Sicherheitsrollen und Zugriffsteuerungen](../../security-center/security-center-planning-and-operations-guide.md)|<ul><li>Die [rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC)](../../role-based-access-control/role-assignments-portal.md) kann verwendet werden, um Benutzern, Gruppen und Anwendungen benutzerspezifische Berechtigungen für einen bestimmten Bereich zu erteilen.</li></ul> |
 | [<br>Datensammlung und -speicherung](../../storage/blobs/security-recommendations.md)|<ul><li>Verwenden Sie die Sicherheit auf Verwaltungsebene zur Sicherung Ihres Speicherkontos mit [rollenbasierter Zugriffssteuerung (RBAC)](../../role-based-access-control/role-assignments-portal.md).</li><li>Sicherheit auf Datenebene zum Sichern des Zugriffs auf Ihre Daten mit [Shared Access Signatures (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) und gespeicherten Zugriffsrichtlinien.</li><li>Verwenden Sie Verschlüsselung auf Transportebene mithilfe von HTTPS und der Verschlüsselung von [SMB (Server Message Block-Protokolle) 3.0](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) für [Azure-Dateifreigaben](../../storage/files/storage-dotnet-how-to-use-files.md).</li><li>Verwenden Sie die [Clientseitige Verschlüsselung](../../storage/common/storage-client-side-encryption.md) zum Schutz von Daten, die Sie an Speicherkonten senden, wenn alleinige Kontrolle der Verschlüsselungsschlüssel erforderlich ist. </li><li>Verwenden Sie [Storage Service Encryption (SSE)](../../storage/common/storage-service-encryption.md), um Daten im Azure-Speicher automatisch zu verschlüsseln und [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) zum Verschlüsseln von VM-Datenträgerdateien für das Betriebssystem und die Datenträger.</li><li>Verwenden Sie Azure-[Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/storage-analytics), um Autorisierungstypen zu überwachen. Wie mit Blob-Speicher können Sie sehen, ob Benutzer eine Shared Access Signature (SAS) oder die Speicherkontoschlüssel verwendet haben.</li><li>Verwenden Sie [Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) für den Zugriff auf Speicherressourcen aus unterschiedlichen Domänen.</li></ul> |

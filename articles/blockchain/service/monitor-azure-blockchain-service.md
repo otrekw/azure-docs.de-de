@@ -5,10 +5,10 @@ ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: v-umha
 ms.openlocfilehash: 6f2a91a8ffce67d3c4008a7587f2787f6446c341
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76293248"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>Überwachen von Azure Blockchain Service über Azure Monitor  
@@ -79,7 +79,7 @@ Für alle Ressourcenprotokolle wird ein gemeinsames grundsätzliches Schema verw
 In der folgenden Tabelle sind die Eigenschaften für Azure Blockchain-Proxyprotokolle aufgelistet, wenn sie in Azure Monitor-Protokollen oder Azure Storage gesammelt werden.  
 
 
-| Eigenschaftenname  | Beschreibung |
+| Eigenschaftenname  | BESCHREIBUNG |
 |:---|:---|
 | time | Datum und Uhrzeit (UTC), zu denen der Vorgang aufgetreten ist. |
 | resourceID  | Die Azure Blockchain Service-Ressource, für die Protokolle aktiviert sind.  |
@@ -105,7 +105,7 @@ In der folgenden Tabelle sind die Eigenschaften für Azure Blockchain-Proxyproto
 In der folgenden Tabelle sind die Eigenschaften für Azure Blockchain-Anwendungsprotokolle aufgeführt.
 
 
-| Eigenschaftenname  | Beschreibung |
+| Eigenschaftenname  | BESCHREIBUNG |
 |:---|:---|
 | time | Datum und Uhrzeit (UTC), zu denen der Vorgang aufgetreten ist. |
 | resourceID  | Die Azure Blockchain Service-Ressource, für die Protokolle aktiviert sind.|
@@ -131,7 +131,7 @@ Eine Liste aller von Azure Monitor unterstützten Metriken (einschließlich Azur
 In der folgenden Tabelle sind die Blockchainmetriken angegeben, die für die Azure Blockchain Service-Mitgliedsressource erfasst werden.
 
 
-| Metrikname | Einheit  |  Aggregationstyp| Beschreibung   |
+| Metrikname | Einheit  |  Aggregationstyp| BESCHREIBUNG   |
 |---|---|---|---|
 | Ausstehende Transaktionen   | Anzahl  |  Average | Die Anzahl der Transaktionen, die auf Verarbeitung warten.   |
 | Verarbeitete Blöcke   | Anzahl  | SUM  |  Die Anzahl der Blöcke, die in jedem Zeitintervall verarbeitet wurden. Derzeit beträgt die Blockgröße 5 Sekunden. Daher verarbeitet jeder Knoten in einer Minute 12 Blöcke und in 5 Minuten 60 Blöcke.   |
@@ -143,7 +143,7 @@ In der folgenden Tabelle sind die Blockchainmetriken angegeben, die für die Azu
 In der folgenden Tabelle sind die unterschiedlichen Verbindungsmetriken aufgeführt, die für die Azure Blockchain Service-Mitgliedsressource erfasst werden. Diese Metriken sind NGINX-Proxymetriken.
 
 
-| Metrikname | Einheit  |  Aggregationstyp| Beschreibung |
+| Metrikname | Einheit  |  Aggregationstyp| BESCHREIBUNG |
 |---|---|---|---|
 | Akzeptierte Verbindungen   | Anzahl  |  SUM | Die Gesamtzahl der akzeptierten Clientverbindungen.   |
 | Die aktiven Verbindungen.  | Anzahl  | Average  |  Die aktuelle Anzahl der aktiven Clientverbindungen, einschließlich der wartenden Verbindungen.    |
@@ -156,7 +156,7 @@ In der folgenden Tabelle sind die unterschiedlichen Verbindungsmetriken aufgefü
 In der folgenden Tabelle sind die Leistungsmetriken aufgeführt, die für jeden Knoten der Azure Blockchain-Mitgliedsressource erfasst werden.  
 
 
-| Metrikname | Einheit  |  Aggregationstyp| Beschreibung   |
+| Metrikname | Einheit  |  Aggregationstyp| BESCHREIBUNG   |
 |---|---|---|---|
 | Prozentuale CPU-Auslastung   | Prozentwert  |  Max | Der Prozentsatz der CPU-Auslastung.     |
 | Gelesene E/A-Bytes   | Kilobytes   | SUM  |  Die Summe der gelesenen E/A-Bytes über alle Knoten der Blockchain-Mitgliedsressource.      |

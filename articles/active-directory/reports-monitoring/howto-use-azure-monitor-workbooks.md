@@ -15,10 +15,10 @@ ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: 2e94d9f56a865999f9169650f621a6af892c27ae
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74014365"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Verwenden von Azure Monitor-Arbeitsmappen für Azure Active Directory-Berichte
@@ -97,7 +97,7 @@ Mit dieser Arbeitsmappe werden die folgenden Trends für Anmeldungen angezeigt:
 
 - Alle Anmeldungen
 
-- Erfolgreich
+- Erfolg
 
 - Benutzeraktion ausstehend
 
@@ -105,7 +105,7 @@ Mit dieser Arbeitsmappe werden die folgenden Trends für Anmeldungen angezeigt:
 
 Sie können jeden Trend nach den folgenden Kategorien filtern:
 
-- Zeitbereich
+- Uhrzeitbereich
 
 - Apps
 
@@ -116,11 +116,11 @@ Sie können jeden Trend nach den folgenden Kategorien filtern:
 
 Für jeden Trend erhalten Sie eine Aufschlüsselung nach folgenden Kategorien:
 
-- Location
+- Position
 
     ![Anmeldungen nach Ort](./media/howto-use-azure-monitor-workbooks/45.png)
 
-- Gerät
+- Sicherungsmedium
 
     ![Anmeldungen nach Gerät](./media/howto-use-azure-monitor-workbooks/46.png)
 
@@ -134,12 +134,12 @@ Mit dieser Arbeitsmappe werden die folgenden Trends für Anmeldungen angezeigt:
 
 - Alle Anmeldungen
 
-- Erfolgreich
+- Erfolg
 
 
 Sie können jeden Trend nach den folgenden Kategorien filtern:
 
-- Zeitbereich
+- Uhrzeitbereich
 
 - Apps
 
@@ -163,7 +163,7 @@ Wählen Sie für den Zugriff auf die Arbeitsmappe für Anmeldungen nach [Richtli
 
 Mit dieser Arbeitsmappe werden die Trends für deaktivierte Anmeldungen angezeigt. Sie können jeden Trend nach den folgenden Kategorien filtern:
 
-- Zeitbereich
+- Uhrzeitbereich
 
 - Apps
 
@@ -183,7 +183,7 @@ Für deaktivierte Anmeldungen erhalten Sie eine Aufschlüsselung nach dem Status
 
 Arbeitsmappen enthalten Anmeldeprotokollabfragen, mit denen IT-Administratoren die Auswirkung von Richtlinien für bedingten Zugriff im Mandanten überwachen können. Sie können berichten, wie vielen Benutzern der Zugriff gewährt oder verweigert wurde. Die Arbeitsmappe enthält Informationen darüber, wie viele Benutzer die Richtlinien für bedingten Zugriff umgangen haben, auf Grundlage der Attribute der Benutzer zum Zeitpunkt der Anmeldung. Sie enthält Informationen pro Bedingung, sodass die Auswirkung einer Richtlinie pro Bedingung, einschließlich Geräteplattform, Gerätestatus, Client-App, Anmelderisiko, Standort und Anwendung, kontextualisiert werden kann.
 
-### <a name="instructions"></a>Anleitung 
+### <a name="instructions"></a>Instructions 
 Um auf die Arbeitsmappe für Erkenntnisse zum bedingten Zugriff zuzugreifen, wählen Sie im Abschnitt „Bedingter Zugriff“ die Arbeitsmappe **Erkenntnisse zum bedingten Zugriff** aus. In dieser Arbeitsmappe werden die erwarteten Auswirkungen der einzelnen Richtlinien für bedingten Zugriff im Mandanten angezeigt. Wählen Sie in der Dropdownliste eine oder mehrere Richtlinien für bedingten Zugriff aus, und schränken Sie den Bereich der Arbeitsmappe ein, indem Sie die folgenden Filter anwenden: 
 
 - **Zeitbereich**
@@ -236,7 +236,7 @@ Mit dieser Arbeitsmappe werden die folgenden Trends für deaktivierte Anmeldunge
 
 Sie können jeden Trend nach den folgenden Kategorien filtern:
 
-- Zeitbereich
+- Uhrzeitbereich
 
 - Apps
 
@@ -267,7 +267,7 @@ Mit dieser Arbeitsmappe werden die folgenden Trends für Anmeldungen angezeigt:
 
 - Alle Anmeldungen
 
-- Erfolgreich
+- Erfolg
 
 - Ausstehende Aktion
 
@@ -276,7 +276,7 @@ Mit dieser Arbeitsmappe werden die folgenden Trends für Anmeldungen angezeigt:
 
 Sie können jeden Trend nach den folgenden Kategorien filtern:
 
-- Zeitbereich
+- Uhrzeitbereich
 
 - Apps
 

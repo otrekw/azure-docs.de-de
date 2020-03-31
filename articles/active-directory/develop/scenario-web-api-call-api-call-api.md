@@ -15,10 +15,10 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: d66a08d4e84a3771d6c3fa46b96c975869435452
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76833378"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Eine Web-API, die Web-APIs aufruft: Aufrufen einer API
@@ -27,7 +27,7 @@ Sobald Sie über ein Token verfügen, können Sie eine geschützte Web-API aufru
 
 ## <a name="controller-code"></a>Controllercode
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 Der folgende Code setzt den Beispielcode fort, den Sie hier finden: [Eine Web-API, die Web-APIs aufruft: Abrufen eines Tokens für die App](scenario-web-api-call-api-acquire-token.md). Der Code wird in den Aktionen der API-Controller aufgerufen. Er ruft eine nachgelagerte API namens *todolist* auf.
 
@@ -59,7 +59,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Der folgende Code setzt den Beispielcode fort, den Sie hier finden: [Eine Web-API, die Web-APIs aufruft: Abrufen eines Tokens für die App](scenario-web-api-call-api-acquire-token.md). Der Code wird in den Aktionen der API-Controller aufgerufen. Er ruft die Downstream-API von Microsoft Graph auf.
 
@@ -83,7 +83,7 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 Ein Beispiel zur Veranschaulichung dieses Flows mit MSAL Python ist noch nicht verfügbar.
 
 ---

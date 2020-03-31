@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: 968241eff1bcab449f9a4def7a394a508461ec95
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457025"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233222"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Einrichten der X.509-Sicherheit in Ihrem Azure IoT Hub
 
@@ -97,7 +97,7 @@ Als Nächstes erfahren Sie, wie Sie eine C#-Anwendung zum Simulieren des für Ih
 
     In diesem Schritt wird das NuGet-Paket „Azure IoT-Geräte-SDK“ heruntergeladen und installiert sowie ein Verweis auf das Paket und seine Abhängigkeiten hinzugefügt.
 
-1. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
+1. Fügen Sie am Anfang der Datei `using`Program.cs**die folgenden**-Anweisungen hinzu:
 
     ```csharp
         using Microsoft.Azure.Devices.Client;

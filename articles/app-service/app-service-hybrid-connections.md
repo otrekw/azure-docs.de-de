@@ -6,22 +6,22 @@ ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
-ms.custom: fasttrack-edit
-ms.openlocfilehash: ffc5ee32541cfbbda2ae54fd229c1436f133d730
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.custom: seodec18, fasttrack-edit
+ms.openlocfilehash: ec842530f3cae26b869a649617f279d204b98fcc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671510"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80047778"
 ---
-# <a name="azure-app-service-hybrid-connections"></a>Azure App Service-Hybridverbindungen #
+# <a name="azure-app-service-hybrid-connections"></a>Azure App Service-Hybridverbindungen
 
 Hybrid Connections ist sowohl ein Dienst in Azure als auch ein Feature in Azure App Service. Als Dienst gehen seine Einsatzmöglichkeiten und Funktionen über die von Azure App Service hinaus. Weitere Informationen zu Hybrid Connections und der Verwendung außerhalb von App Service finden Sie unter [Azure Relay Hybrid Connections][HCService].
 
 In App Service kann mithilfe von Hybridverbindungen auf Anwendungsressourcen in anderen Netzwerken zugegriffen werden. Es ermöglicht den Zugriff von Ihrer App auf einen Anwendungsendpunkt. Die Funktion bietet keine alternative Möglichkeit für den Zugriff auf Ihre Anwendung. Bei der Verwendung in App Service entspricht jede Hybridverbindung einer Kombination aus einem einzelnen TCP-Host und einem Port. Dies bedeutet, dass sich der Hybridverbindungsendpunkt in einem beliebigen Betriebssystem und einer beliebigen Anwendung befinden kann, vorausgesetzt, der Zugriff erfolgt über einen TCP-Lauschport. Das Feature Hybrid Connections besitzt keine Informationen über das Anwendungsprotokoll oder den abzurufenden Inhalt und benötigt diese Informationen auch nicht. Sie ermöglichen lediglich den Netzwerkzugriff.  
 
 
-## <a name="how-it-works"></a>So funktioniert's ##
+## <a name="how-it-works"></a>Funktionsweise ##
 Das Feature Hybrid Connections besteht aus zwei ausgehenden Aufrufen von Azure Service Bus Relay. Es gibt eine Verbindung von einer Bibliothek auf dem Host, auf dem die App in App Service ausgeführt wird. Außerdem besteht eine Verbindung vom Hybridverbindungs-Manager (HCM) zu Service Bus Relay. Der HCM ist ein Relaydienst, den Sie in dem Netzwerk bereitstellen, das die Ressource hostet, auf die Sie zugreifen möchten. 
 
 Über die beiden verknüpften Verbindungen verfügt Ihre App über einen TCP-Tunnel zu einer festen Host:Port-Kombination auf der anderen Seite des HCM. Die Verbindung verwendet zum Schutz TLS 1.2 und zur Authentifizierung/Autorisierung SAS-Schlüssel.    
@@ -165,7 +165,7 @@ Damit ein Benutzer außerhalb Ihres Abonnements eine HCM-Instanz für eine besti
 
 ![Manuelles Hinzufügen einer Hybridverbindung][11]
 
-### <a name="upgrade"></a>Upgrade ###
+### <a name="upgrade"></a>Aktualisieren ###
 
 Es sind regelmäßige Updates für den Hybridverbindungs-Manager zum Beheben von Problemen oder Bereitstellen von Verbesserungen verfügbar. Wenn Upgrades veröffentlicht werden, wird ein Popupfenster in der HCM-Benutzeroberfläche angezeigt. Durch Ausführen des Upgrades werden die Änderungen angewendet, und der HCM wird neu gestartet. 
 

@@ -17,10 +17,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: defdf8118f1b07f8d6ddc4d232cda0fc423ef9f6
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897257"
 ---
 # <a name="risky-ip-report-public-preview"></a>Bericht über riskante IP-Adressen (öffentliche Vorschauversion)
@@ -39,9 +39,9 @@ Außerdem ist es möglich, dass von einer einzelnen IP-Adresse versucht wird, me
 > 
 
 ## <a name="what-is-in-the-report"></a>Inhalt des Berichts
-Die IP-Adressen der Clients mit fehlgeschlagenen Anmeldeaktivitäten werden über Webanwendungsproxy-Server aggregiert. Jeder Eintrag im Bericht über riskante IP-Adressen enthält aggregierte Informationen zu fehlgeschlagenen AD FS-Anmeldeaktivitäten, für die der angegebene Schwellenwert überschritten wurde. Er enthält die folgenden Informationen: ![Azure AD Connect Health-Portal](./media/how-to-connect-health-adfs/report4a.png)
+Die IP-Adressen der Clients mit fehlgeschlagenen Anmeldeaktivitäten werden über Webanwendungsproxy-Server aggregiert. Jeder Eintrag im Bericht über riskante IP-Adressen enthält aggregierte Informationen zu fehlgeschlagenen AD FS-Anmeldeaktivitäten, für die der angegebene Schwellenwert überschritten wurde. Folgende Informationen werden angegeben: ![Azure AD Connect Health-Portal](./media/how-to-connect-health-adfs/report4a.png)
 
-| Berichtselement | Beschreibung |
+| Berichtselement | BESCHREIBUNG |
 | ------- | ----------- |
 | Zeitstempel | Zeigt den Zeitstempel basierend auf der lokalen Zeit im Azure-Portal an, wenn das Erkennungszeitfenster beginnt.<br /> Alle täglichen Ereignisse werden um Mitternacht (UTC) generiert. <br />Für stündliche Ereignisse wird der Zeitstempel auf den Anfang der Stunde gerundet. Sie finden die Startzeit der ersten Aktivität unter „firstAuditTimestamp“ in der exportierten Datei. |
 | Triggertyp | Zeigt den Typ des Erkennungszeitfensters an. Die Triggertypen der Aggregation sind „Pro Stunde“ und „Pro Tag“. Dies ist hilfreich beim Erkennen eines Brute-Force-Angriffs mit hoher Häufigkeit gegenüber einem langsamen Angriff, bei dem sich die Versuche auf den gesamten Tag verteilen. |
@@ -68,7 +68,7 @@ Bei Anmeldeaktivitäten der Load Balancer-Aggregation ist ein Fehler aufgetreten
 ## <a name="download-risky-ip-report"></a>Herunterladen des Berichts über riskante IP-Adressen 
 Mit der Funktion zum **Herunterladen** kann der gesamte Bericht über riskante IP-Adressen der letzten 30 Tage aus dem Connect Health-Portal kopiert werden. Das Exportergebnis enthält alle fehlgeschlagenen AD FS-Anmeldeaktivitäten jedes Erkennungszeitfensters, damit Sie den Filtervorgang nach dem Export anpassen können. Zusätzlich zu den hervorgehobenen Aggregationen im Portal werden im Exportergebnis auch weitere Details zu fehlgeschlagenen Anmeldeaktivitäten pro IP-Adresse angezeigt:
 
-|  Berichtselement  |  Beschreibung  | 
+|  Berichtselement  |  BESCHREIBUNG  | 
 | ------- | ----------- | 
 | firstAuditTimestamp | Zeigt den ersten Zeitstempel für den Zeitpunkt an, zu dem die fehlgeschlagenen Aktivitäten während des Erkennungszeitfensters begonnen haben.  | 
 | lastAuditTimestamp | Zeigt den letzten Zeitstempel für den Zeitpunkt an, zu dem die fehlgeschlagenen Aktivitäten während des Erkennungszeitfensters geendet haben.  | 
@@ -83,7 +83,7 @@ Der Schwellenwert für Warnungen kann über die „Schwellenwerteinstellungen“
 
 ![Azure AD Connect Health-Portal](./media/how-to-connect-health-adfs/report4d.png)
 
-| Schwellenwertelement | Beschreibung |
+| Schwellenwertelement | BESCHREIBUNG |
 | --- | --- |
 | (Benutzername/Kennwort ungültig + Extranetsperre)/Tag  | Schwellenwerteinstellung zum Melden der Aktivität und Auslösen der Warnungsbenachrichtigung, wenn die Anzahl von „Falsches Kennwort“ zusammen mit der Anzahl von Extranetsperren den Schwellenwert pro **Tag** überschreitet. |
 | (Benutzername/Kennwort ungültig + Extranetsperre)/Stunde | Schwellenwerteinstellung zum Melden der Aktivität und Auslösen der Warnungsbenachrichtigung, wenn die Anzahl von „Falsches Kennwort“ zusammen mit der Anzahl von Extranetsperren den Schwellenwert pro **Stunde** überschreitet. |

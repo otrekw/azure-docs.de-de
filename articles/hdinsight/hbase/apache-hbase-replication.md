@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.openlocfilehash: 1e6465584dd4e67f736b94d2939678c1a69163bf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75435663"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Einrichten der Apache HBase-Clusterreplikation in virtuellen Azure-Netzwerken
@@ -260,11 +260,11 @@ sudo service bind9 status
 Erstellen Sie in jedem der beiden virtuellen Netzwerke einen [Apache HBase](https://hbase.apache.org/)-Cluster mit folgender Konfiguration:
 
 - **Name der Ressourcengruppe**: Verwenden Sie den gleichen Ressourcengruppennamen, wie beim Erstellen der virtuellen Netzwerke.
-- **Clustertyp**: hbase
+- **Clustertyp**: HBase
 - **Version**: HBase 1.1.2 (HDI 3.6)
-- **Standort**: Verwenden Sie denselben Standort wie das virtuelle Netzwerk.  Standardmäßig ist vnet1 *USA, Westen* und vnet2 ist *USA, Osten*.
-- **Storage**: Erstellen Sie ein neues Speicherkonto für den Cluster.
-- **Virtuelles Netzwerk** (über die erweiterten Einstellungen im Portal): Wählen Sie „vnet1“ aus, das Sie im letzten Vorgang erstellt haben.
+- **Standort**: Verwenden Sie denselben Standort wie für das virtuelle Netzwerk.  Standardmäßig ist vnet1 *USA, Westen* und vnet2 ist *USA, Osten*.
+- **Speicher**: Erstellen Sie ein neues Speicherkonto für den Cluster.
+- **Virtuelles Netzwerk** (aus den erweiterten Einstellungen im Portal): Wählen Sie vnet1, das Sie in der vorherigen Prozedur erstellt haben.
 - **Subnetz**: Der in der Vorlage verwendete Standardname lautet **subnet1**.
 
 Um sicherzustellen, dass die Umgebung korrekt konfiguriert ist, müssen Sie den FQDN des Hauptknotens zwischen den beiden Clustern pingen können.
@@ -292,7 +292,7 @@ Die folgenden Schritte zeigen, wie Sie das Skript mit Skriptaktionen aus dem Azu
 5. Wählen Sie folgende Informationen aus, oder geben Sie sie ein:
 
    1. **Name**: Geben Sie **Replikation aktivieren** ein.
-   2. **Bash-Skript-URL**: Geben Sie **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** ein.
+   2. **Bashskript-URL**: Geben Sie **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** ein.
    3. **Hauptknoten**: Stellen Sie sicher, dass diese Option aktiviert ist. Deaktivieren Sie die anderen Knotentypen.
    4. **Parameter**: Die folgenden Beispielparameter aktivieren die Replikation für alle vorhandenen Tabellen und kopieren dann alle Daten aus dem Quellcluster in den Zielcluster:
 

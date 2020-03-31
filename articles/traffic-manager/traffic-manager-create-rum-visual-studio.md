@@ -14,10 +14,10 @@ ms.date: 03/16/2018
 ms.author: rohink
 ms.custom: ''
 ms.openlocfilehash: 3106334e1fb3e3000cbd09e00e413b34a1b55e54
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76939181"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Senden von Benutzer-Realmessungen an Azure Traffic Manager mit Visual Studio Mobile Center

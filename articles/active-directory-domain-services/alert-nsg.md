@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 09/19/2019
 ms.author: iainfou
 ms.openlocfilehash: 959f1e3f25602938d769c574ea975c4bba9300e1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71258001"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Bekannte Probleme: Netzwerkkonfigurationswarnungen in Azure Active Directory Domain Services
@@ -38,21 +38,21 @@ Auf die Netzwerksicherheitsgruppe für eine verwaltete Azure AD DS-Domäne werde
 
 ### <a name="inbound-security-rules"></a>Eingangssicherheitsregeln
 
-| Priority | NAME | Port | Protocol | `Source` | Destination | Aktion |
+| Priority | Name | Port | Protocol | `Source` | Destination | Aktion |
 |----------|------|------|----------|--------|-------------|--------|
-| 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Any | ZULASSEN |
-| 201      | AllowRD | 3389 | TCP | CorpNetSaw | Any | ZULASSEN |
-| 301      | AllowPSRemoting | 5986| TCP | AzureActiveDirectoryDomainServices | Any | ZULASSEN |
-| 65000    | AllVnetInBound | Any | Any | VirtualNetwork | VirtualNetwork | ZULASSEN |
-| 65001    | AllowAzureLoadBalancerInBound | Any | Any | AzureLoadBalancer | Any | ZULASSEN |
+| 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Any | Allow |
+| 201      | AllowRD | 3389 | TCP | CorpNetSaw | Any | Allow |
+| 301      | AllowPSRemoting | 5986| TCP | AzureActiveDirectoryDomainServices | Any | Allow |
+| 65000    | AllVnetInBound | Any | Any | VirtualNetwork | VirtualNetwork | Allow |
+| 65001    | AllowAzureLoadBalancerInBound | Any | Any | AzureLoadBalancer | Any | Allow |
 | 65500    | DenyAllInBound | Any | Any | Any | Any | Verweigern |
 
 ### <a name="outbound-security-rules"></a>Ausgangssicherheitsregeln
 
-| Priority | NAME | Port | Protocol | `Source` | Destination | Aktion |
+| Priority | Name | Port | Protocol | `Source` | Destination | Aktion |
 |----------|------|------|----------|--------|-------------|--------|
-| 65000    | AllVnetOutBound | Any | Any | VirtualNetwork | VirtualNetwork | ZULASSEN |
-| 65001    | AllowAzureLoadBalancerOutBound | Any | Any |  Any | Internet | ZULASSEN |
+| 65000    | AllVnetOutBound | Any | Any | VirtualNetwork | VirtualNetwork | Allow |
+| 65001    | AllowAzureLoadBalancerOutBound | Any | Any |  Any | Internet | Allow |
 | 65500    | DenyAllOutBound | Any | Any | Any | Any | Verweigern |
 
 >[!NOTE]

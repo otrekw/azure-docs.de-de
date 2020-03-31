@@ -8,10 +8,10 @@ ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: c70cfb6c1626908a2ba4e707a890f6dc7481c51a
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75732381"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Verwenden der Neupartitionierung zur Optimierung der Verarbeitung mit Azure Stream Analytics
@@ -23,7 +23,7 @@ Die Verwendung der [Parallelisierung](stream-analytics-parallelization.md) ist i
 * Sie verfügen nicht über den Partitionsschlüssel für den Eingabestream.
 * Ihre Quelle verteilt die Eingaben auf mehrere Partitionen, die später zusammengeführt werden müssen.
 
-Eine Neupartitionierung oder „Umsortierung“ ist erforderlich, wenn Sie Daten in einem Stream verarbeiten, der nicht nach einem natürlichen Eingabeschema (z. B. nach der **Partitions-ID** für Event Hubs) horizontal partitioniert wird. Nach einer Neupartitionierung kann jeder Shard unabhängig verarbeitet werden, sodass Sie die Streamingpipeline linear skalieren können.
+Eine Neupartitionierung oder „Umsortierung“ ist erforderlich, wenn Sie Daten in einem Stream verarbeiten, der nicht nach einem natürlichen Eingabeschema (z. B. nach der **Partitions-ID** für Event Hubs) horizontal partitioniert wird. Nach einer Neupartitionierung kann jeder Shard unabhängig verarbeitet werden, sodass Sie die Streamingpipeline linear aufskalieren können.
 
 ## <a name="how-to-repartition"></a>Neupartitionierung
 

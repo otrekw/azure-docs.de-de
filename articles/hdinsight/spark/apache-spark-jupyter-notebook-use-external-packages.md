@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
 ms.openlocfilehash: cec94b2ecb18bc9e8cceb24a21967a3c829d78a5
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74561727"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Verwenden externer Pakete mit Jupyter Notebooks in Apache Spark-Clustern unter HDInsight
@@ -89,9 +89,9 @@ In diesem Artikel erfahren Sie, wie Sie das Paket [spark-csv](https://search.mav
    
         df.select("Time").count()
 
-## <a name="seealso"></a>Weitere Informationen
+## <a name="see-also"></a><a name="seealso"></a>Weitere Informationen
 
-* [Übersicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
+* [Übersicht: Apache Spark für Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Szenarien
 
@@ -114,7 +114,7 @@ In diesem Artikel erfahren Sie, wie Sie das Paket [spark-csv](https://search.mav
 * [Kernel für Jupyter Notebook in Apache Spark-Clustern für HDInsight](apache-spark-jupyter-notebook-kernels.md)
 * [Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung zum Apache Spark-Cluster in Azure HDInsight (Vorschau)](apache-spark-jupyter-notebook-install-locally.md)
 
-### <a name="manage-resources"></a>Verwalten von Ressourcen
+### <a name="manage-resources"></a>Ressourcen verwalten
 
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](apache-spark-resource-manager.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](apache-spark-job-debugging.md)

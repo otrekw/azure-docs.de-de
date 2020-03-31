@@ -16,10 +16,10 @@ ms.date: 07/05/2018
 ms.author: kirpas
 ms.subservice: disks
 ms.openlocfilehash: c76f57d15cd4cbdad5ded3b7545aab4d57272a50
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74033500"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Erweitern des Betriebssystemlaufwerks eines virtuellen Computers
@@ -207,11 +207,11 @@ Nachdem Sie den Datenträger für die VM erweitert haben, müssen Sie in das Bet
 
 2.  Öffnen Sie eine Eingabeaufforderung, und geben Sie **diskpart** ein.
 
-2.  Geben Sie `list volume` an der Eingabeaufforderung von **DISKPART** ein. Notieren Sie sich das Volume, das Sie erweitern möchten.
+2.  Geben Sie **an der Eingabeaufforderung von**DISKPART`list volume` ein. Notieren Sie sich das Volume, das Sie erweitern möchten.
 
-3.  Geben Sie `select volume <volumenumber>` an der Eingabeaufforderung von **DISKPART** ein. Hiermit wählen Sie das Volume *Volumenummer* aus, das Sie in zusammenhängenden, leeren Speicherplatz auf dem gleichen Datenträger erweitern möchten.
+3.  Geben Sie **an der Eingabeaufforderung von**DISKPART`select volume <volumenumber>` ein. Hiermit wählen Sie das Volume *Volumenummer* aus, das Sie in zusammenhängenden, leeren Speicherplatz auf dem gleichen Datenträger erweitern möchten.
 
-4.  Geben Sie `extend [size=<size>]` an der Eingabeaufforderung von **DISKPART** ein. Hierdurch wird das ausgewählte Volume um *Größe* in Megabyte (MB) erweitert.
+4.  Geben Sie **an der Eingabeaufforderung von**DISKPART`extend [size=<size>]` ein. Hierdurch wird das ausgewählte Volume um *Größe* in Megabyte (MB) erweitert.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

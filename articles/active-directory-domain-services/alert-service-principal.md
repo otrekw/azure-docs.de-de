@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 09/20/2019
 ms.author: iainfou
 ms.openlocfilehash: 175bfe63176b78c5aeafc7147c46dd5ab1110325
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71257960"
 ---
 # <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>Bekannte Probleme: Warnungen für Dienstprinzipale in Azure Active Directory Domain Services

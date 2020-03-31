@@ -16,13 +16,13 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 64d8481200359b4a4421e3f3c99e4fc5a32ef23f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.custom: aaddev, fasttrack-edit
+ms.openlocfilehash: f4b51641ed6bd7317060b567cf839775be426ac8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159540"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050051"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt
 
@@ -37,11 +37,10 @@ Die Microsoft Identity Platform implementiert das [OAuth 2.0](active-directory-v
 
 * Microsoft Graph: `https://graph.microsoft.com`
 * API für Office 365-E-Mail: `https://outlook.office.com`
-* Microsoft Azure AD Graph: `https://graph.windows.net`
 * Azure Key Vault: `https://vault.azure.net`
 
 > [!NOTE]
-> Es wird dringend empfohlen, Microsoft Graph anstelle von Microsoft Azure AD Graph, der API für Office 365-E-Mail usw. zu verwenden.
+> Es wird dringend empfohlen, Microsoft Graph statt der API für Office 365-E-Mail usw. zu verwenden.
 
 Dasselbe gilt für alle Ressourcen von Drittanbietern, die in die Microsoft Identity Platform integriert wurden. Diese Ressourcen können auch einen Satz von Berechtigungen definieren, die zum Unterteilen der Funktionalität der Ressource in kleinere Einheiten verwendet werden können. Beispielsweise verfügt [Microsoft Graph](https://graph.microsoft.com) über definierte Berechtigungen, um unter anderem folgende Aufgaben auszuführen:
 
@@ -123,7 +122,7 @@ Der `scope`-Parameter ist eine durch Leerzeichen getrennte Liste von delegierten
 Nachdem der Benutzer seine Anmeldeinformationen eingegeben hat, überprüft der Microsoft Identity Platform-Endpunkt, ob es einen übereinstimmenden Datensatz der *Benutzerzustimmung* gibt. Wenn der Benutzer in der Vergangenheit für keine der angeforderten Berechtigungen seine Einwilligung erteilt hat und auch kein Administrator für die gesamte Organisation in die Erteilung dieser Berechtigungen eingewilligt hat, fordert der Microsoft Identity Platform-Endpunkt den Benutzer auf, die angeforderten Berechtigungen zu gewähren.
 
 > [!NOTE]
-> Zu diesem Zeitpunkt werden die Berechtigungen `offline_access` („Zugriff auf Daten erhalten, auf die Sie Zugriff gewährt haben“) und `user.read` („Anmelden und Ihr Profil lesen“) automatisch in die erste Einwilligung für eine Anwendung aufgenommen.  Diese Berechtigungen sind im Allgemeinen für die ordnungsgemäße Funktionalität der App erforderlich – `offline_access` gibt der App Zugriff auf Aktualisierungstoken, die für native und Web-Apps entscheidend sind, während `user.read` Zugriff auf den `sub`-Anspruch gewährt, sodass der Client oder die App den Benutzer im Laufe der Zeit korrekt identifizieren und auf rudimentäre Benutzerinformationen zugreifen kann.  
+>Zu diesem Zeitpunkt werden die Berechtigungen `offline_access` („Zugriff auf Daten erhalten, auf die Sie Zugriff gewährt haben“) und `user.read` („Anmelden und Ihr Profil lesen“) automatisch in die erste Einwilligung für eine Anwendung aufgenommen.  Diese Berechtigungen sind im Allgemeinen für die ordnungsgemäße Funktionalität der App erforderlich – `offline_access` gibt der App Zugriff auf Aktualisierungstoken, die für native und Web-Apps entscheidend sind, während `user.read` Zugriff auf den `sub`-Anspruch gewährt, sodass der Client oder die App den Benutzer im Laufe der Zeit korrekt identifizieren und auf rudimentäre Benutzerinformationen zugreifen kann.  
 
 ![Screenshot eines Beispiels für die Zustimmung im Arbeitskonto](./media/v2-permissions-and-consent/work_account_consent.png)
 
@@ -169,13 +168,13 @@ Ein Codebeispiel, in dem die beschriebenen Schritte implementiert sind, finden S
 Anwendungen können im App-Registrierungsportal angeben, welche Berechtigungen sie benötigen (sowohl delegierte als auch Anwendungsberechtigungen).  Dies ermöglicht die Verwendung des Bereichs `/.default` und der Option „Administratoreinwilligung erteilen“ im Azure-Portal.  Stellen Sie nach Möglichkeit sicher, dass die statisch definierten Berechtigungen für eine bestimmte Anwendung eine Obermenge der Berechtigungen sind, die die Anwendung dynamisch/inkrementell anfordert.
 
 > [!NOTE]
-Anwendungsberechtigungen können nur über [`/.default`](#the-default-scope) angefordert werden. Wenn Ihre App Anwendungsberechtigungen benötigt, müssen Sie daher sicherstellen, dass diese im App-Registrierungsportal aufgeführt sind.  
+>Anwendungsberechtigungen können nur über [`/.default`](#the-default-scope) angefordert werden. Wenn Ihre App Anwendungsberechtigungen benötigt, müssen Sie daher sicherstellen, dass diese im App-Registrierungsportal aufgeführt sind.
 
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>So konfigurieren Sie die Liste statisch angeforderter Berechtigungen für eine Anwendung
 
 1. Wechseln Sie im [Azure-Portal – App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) zu Ihrer Anwendung oder [erstellen Sie eine App](quickstart-register-app.md), sofern noch nicht geschehen.
 2. Suchen Sie den Abschnitt **API-Berechtigungen**, und klicken Sie in den API-Berechtigungen auf „Berechtigung hinzufügen“.
-3. Wählen Sie in der Liste der verfügbaren APIs Ihre bevorzugte Ressource aus (z. B. **Microsoft Graph**), und fügen Sie dann die Berechtigungen hinzu, die für die App erforderlich sind.
+3. Wählen Sie in der Liste der verfügbaren APIs **Microsoft Graph** aus, und fügen Sie dann die Berechtigungen hinzu, die für die App erforderlich sind.
 3. **Speichern** Sie die App-Registrierung.
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>Empfohlen: Anmelden des Benutzers bei Ihrer App
@@ -200,13 +199,13 @@ Wenn Sie dazu bereit sind, vom Administrator der Organisation Berechtigungen anz
 ```
 
 
-| Parameter     | Bedingung     | BESCHREIBUNG                                                                               |
+| Parameter        | Bedingung        | BESCHREIBUNG                                                                                |
 |:--------------|:--------------|:-----------------------------------------------------------------------------------------|
 | `tenant` | Erforderlich | Der Verzeichnismandant, von dem Sie die Berechtigung anfordern möchten. Kann als eindeutiger Bezeichner oder Anzeigename bereitgestellt ODER mit Organisationen generisch referenziert werden, wie im Beispiel gezeigt. Verwenden Sie nicht „Allgemein“, weil persönliche Konten die Administratoreinwilligung nur im Kontext eines Mandanten bereitstellen können. Um die bestmögliche Kompatibilität mit persönlichen Konten sicherzustellen, die Mandanten verwalten, sollten Sie nach Möglichkeit die Mandanten-ID verwenden. |
 | `client_id` | Erforderlich | Die **Anwendungs-ID (Client-ID)** , die Ihrer App im [Azure-Portal auf der Seite „App-Registrierungen“](https://go.microsoft.com/fwlink/?linkid=2083908) zugewiesen wurde. |
 | `redirect_uri` | Erforderlich |Der Umleitungs-URI, an den die Antwort zur Verarbeitung durch die App gesendet werden soll. Er muss genau mit einem der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben. |
 | `state` | Empfohlen | Ein in der Anforderung enthaltener Wert, der auch in der Antwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Der Status wird verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z.B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
-|`scope`        | Erforderlich      | Definiert den von der Anwendung angeforderten Satz an Berechtigungen. Dies können statische (mit [`/.default`](#the-default-scope)) oder dynamische Bereiche sein.  Dies kann auch die OIDC-Bereiche (`openid`, `profile`, `email`) einschließen. Wenn Sie Anwendungsberechtigungen benötigen, müssen Sie `/.default` verwenden, um die statisch konfigurierte Liste der Berechtigungen anzufordern.  | 
+|`scope`        | Erforderlich        | Definiert den von der Anwendung angeforderten Satz an Berechtigungen. Dies können statische (mit [`/.default`](#the-default-scope)) oder dynamische Bereiche sein.  Dies kann auch die OIDC-Bereiche (`openid`, `profile`, `email`) einschließen. Wenn Sie Anwendungsberechtigungen benötigen, müssen Sie `/.default` verwenden, um die statisch konfigurierte Liste der Berechtigungen anzufordern.  | 
 
 
 An diesem Punkt erzwingt Azure AD, dass sich nur ein Mandantenadministrator anmelden kann, um die Anforderung abzuschließen. Der Administrator wird aufgefordert, alle Berechtigungen zu genehmigen, die Sie für den Parameter `scope` angefordert haben.  Wenn Sie einen statischen Wert (`/.default`) verwendet haben, funktioniert er wie der v1.0-Endpunkt für die Administratoreinwilligung und fordert die Zustimmung für alle Bereiche an, die in den erforderlichen Berechtigungen für die APP gefunden werden.
@@ -233,7 +232,7 @@ Wenn der Administrator die Berechtigungen für Ihre App nicht genehmigt, lautet 
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
 ```
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | `error` | Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
 | `error_description` | Eine spezifische Fehlermeldung, mit der ein Entwickler die Grundursache eines Fehlers identifizieren kann. |
@@ -265,7 +264,7 @@ Weitere Informationen zum OAuth 2.0-Protokoll und zum Abrufen von Zugriffstoken 
 
 ## <a name="the-default-scope"></a>Der Bereich „/.default“
 
-Sie können den `/.default`-Bereich verwenden, um die Migration Ihrer Anwendungen vom v1.0-Endpunkt zum Microsoft Identity Platform-Endpunkt zu unterstützen. Dies ist ein integrierter Bereich für jede Anwendung, der sich auf die statische Liste der Berechtigungen bezieht, die bei der Anwendungsregistrierung konfiguriert wurde. Ein `scope`-Wert von `https://graph.microsoft.com/.default` ist funktionell identisch mit den v1.0-Endpunkten `resource=https://graph.microsoft.com` – d.h. es wird ein Token mit den Bereichen auf Microsoft Graph angefordert, für den die Anwendung im Azure-Portal registriert wurde.  Sie wird mit dem Ressourcen-URI und `/.default` erstellt (wenn der Ressourcen-URI z. B. `https://contosoApp.com` lautet, wird der Bereich `https://contosoApp.com/.default` angefordert).  Im [Abschnitt zu nachgestellten Schrägstrichen](#trailing-slash-and-default) finden Sie Fälle, in denen Sie einen zweiten Schrägstrich einfügen müssen, damit das Token ordnungsgemäß angefordert wird.  
+Sie können den `/.default`-Bereich verwenden, um die Migration Ihrer Anwendungen vom v1.0-Endpunkt zum Microsoft Identity Platform-Endpunkt zu unterstützen. Dies ist ein integrierter Bereich für jede Anwendung, der sich auf die statische Liste der Berechtigungen bezieht, die bei der Anwendungsregistrierung konfiguriert wurde. Ein `scope`-Wert von `https://graph.microsoft.com/.default` ist funktionell identisch mit den v1.0-Endpunkten `resource=https://graph.microsoft.com` – d.h. es wird ein Token mit den Bereichen auf Microsoft Graph angefordert, für den die Anwendung im Azure-Portal registriert wurde.  Sie wird mit dem Ressourcen-URI und `/.default` erstellt (wenn der Ressourcen-URI z. B. `https://contosoApp.com` lautet, wird der Bereich `https://contosoApp.com/.default` angefordert).  Im [Abschnitt zu nachgestellten Schrägstrichen](#trailing-slash-and-default) finden Sie Fälle, in denen Sie einen zweiten Schrägstrich einfügen müssen, damit das Token ordnungsgemäß angefordert wird.
 
 Der Bereich „/.default“ kann in jedem OAuth 2.0-Flow verwendet werden. Im [On-Behalf-Of-Fluss](v2-oauth2-on-behalf-of-flow.md) und im [Clientanmeldeinformations-Flow](v2-oauth2-client-creds-grant-flow.md) sowie bei Verwendung des v2-Endpunkts für die Administratoreinwilligung ist er jedoch erforderlich, um Anwendungsberechtigungen anzufordern.  
 
@@ -286,7 +285,7 @@ In diesem Beispiel hat der Benutzer (oder ein Mandantenadministrator) dem Client
 
 #### <a name="example-2-the-user-hasnt-granted-permissions-between-the-client-and-the-resource"></a>Beispiel 2: Der Benutzer hat keine Berechtigungen zwischen dem Client und der Ressource erteilt.
 
-Es gibt in diesem Beispiel keine Einwilligung für den Benutzer zwischen dem Client und Microsoft Graph. Der Client ist für die Berechtigungen `user.read` und `contacts.read` sowie den Bereich „Azure Key Vault“ `https://vault.azure.net/user_impersonation` registriert. Wenn der Client ein Token für `scope=https://graph.microsoft.com/.default` anfordert, sieht der Benutzer einen Einwilligungsbildschirm für die Bereiche `user.read`, `contacts.read` und Key Vault `user_impersonation`. Das zurückgegebene Token enthält nur die Bereiche `user.read` und `contacts.read` und kann nur für Microsoft Graph verwendet werden. 
+Es gibt in diesem Beispiel keine Einwilligung für den Benutzer zwischen dem Client und Microsoft Graph. Der Client ist für die Berechtigungen `user.read` und `contacts.read` sowie den Bereich „Azure Key Vault“ `https://vault.azure.net/user_impersonation` registriert. Wenn der Client ein Token für `scope=https://graph.microsoft.com/.default` anfordert, sieht der Benutzer einen Einwilligungsbildschirm für die Bereiche `user.read`, `contacts.read` und Key Vault `user_impersonation`. Das zurückgegebene Token enthält nur die Bereiche `user.read` und `contacts.read` und kann nur für Microsoft Graph verwendet werden.
 
 #### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>Beispiel 3: Der Benutzer hat eingewilligt und der Client fordert zusätzliche Bereiche an.
 
@@ -313,7 +312,7 @@ Dies erzeugt einen Einwilligungsbildschirm für alle registrierten Berechtigunge
 
 Einige Ressourcen-URIs enthalten einen nachgestellten Schrägstrich (`https://contoso.com/` anstelle von `https://contoso.com`), der Probleme bei der Tokenüberprüfung verursachen kann.  Dies kann vor allem dann auftreten, wenn ein Token für die Azure-Ressourcenverwaltung (`https://management.azure.com/`) angefordert wird, das im Ressourcen-URI einen nachgestellten Schrägstrich aufweist und bei der Anforderung des Tokens vorhanden sein muss.  Wenn Sie ein Token für `https://management.azure.com/` anfordern und dabei `/.default` verwenden, müssen Sie daher `https://management.azure.com//.default` anfordern – beachten Sie den doppelten Schrägstrich! 
 
-Im Allgemeinen gilt: Wenn Sie bestätigt haben, dass das Token ausgestellt wird, und das Token von der API abgelehnt wird, obwohl sie es eigentlich akzeptieren sollte, können Sie versuchen, einen zweiten Schrägstrich hinzufügen und den Vorgang zu wiederholen. Dies liegt daran, dass der Anmeldeserver ein Token mit einem Ziel ausgibt, das mit den URIs im `scope`-Parameter übereinstimmt, wobei `/.default` am Ende entfernt wurde.  Wenn dadurch der nachstehende Schrägstrich entfernt wird, verarbeitet der Anmeldeserver die Anforderung trotzdem und überprüft sie anhand des Ressourcen-URI, auch wenn beide nicht mehr übereinstimmen. Dies ist kein Standardverhalten, und Ihre Anwendung sollte nicht darauf angewiesen sein. 
+Im Allgemeinen gilt: Wenn Sie bestätigt haben, dass das Token ausgestellt wird, und das Token von der API abgelehnt wird, obwohl sie es eigentlich akzeptieren sollte, können Sie versuchen, einen zweiten Schrägstrich hinzufügen und den Vorgang zu wiederholen. Dies liegt daran, dass der Anmeldeserver ein Token mit einem Ziel ausgibt, das mit den URIs im `scope`-Parameter übereinstimmt, wobei `/.default` am Ende entfernt wurde.  Wenn dadurch der nachstehende Schrägstrich entfernt wird, verarbeitet der Anmeldeserver die Anforderung trotzdem und überprüft sie anhand des Ressourcen-URI, auch wenn beide nicht mehr übereinstimmen. Dies ist kein Standardverhalten, und Ihre Anwendung sollte nicht darauf angewiesen sein.  
 
 ## <a name="troubleshooting-permissions-and-consent"></a>Problembehandlung für Berechtigungen und Einwilligungen
 

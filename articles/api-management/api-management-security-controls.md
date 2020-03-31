@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: vlvinogr
 ms.openlocfilehash: 670050efe01fb658fab52a43914f193e9798b828
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75751128"
 ---
 # <a name="security-controls-for-api-management"></a>Sicherheitskontrollen für API Management
@@ -66,7 +66,7 @@ In diesem Artikel werden die in API Management integrierten Sicherheitskontrolle
 
 In diesem Abschnitt sind häufige Sicherheitsrisiken dokumentiert, die sich nicht auf Azure API Management auswirken.
 
-| Sicherheitsrisiko               | Beschreibung                                                                                                                                                                                                                                                                                                               |
+| Sicherheitsrisiko               | BESCHREIBUNG                                                                                                                                                                                                                                                                                                               |
 |-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Ticketbleed (CVE-2016-9244) | Ticketbleed ist ein Sicherheitsrisiko bei der Implementierung der TLS SessionTicket-Erweiterung in einigen F5-Produkten. Hierbei wird das Abschöpfen („Bleeding“) von bis zu 31 Byte an Daten aus nicht initialisiertem Arbeitsspeicher ermöglicht. Die Ursache ist, dass der TLS-Stapel eine vom Client übergebene Sitzungs-ID mit Daten auffüllt, um eine Länge von 32 Bit zu erzielen. |
 

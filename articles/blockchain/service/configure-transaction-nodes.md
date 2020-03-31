@@ -5,11 +5,11 @@ ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: janders
 ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326307"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227402"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Konfigurieren von Azure Blockchain-Transaktionsknoten
 
@@ -37,7 +37,7 @@ So fügen Sie einen Transaktionsknoten hinzu:
 
     | Einstellung | BESCHREIBUNG |
     |---------|-------------|
-    | NAME | Der Name des Transaktionsknotens. Der Name wird zum Erstellen der DNS-Adresse für den Transaktionsknotenendpunkt verwendet. Beispiel: `newnode-myblockchainmember.blockchain.azure.com`. Der Knotenname kann nicht mehr geändert werden, nachdem der Knoten erstellt wurde. |
+    | Name | Der Name des Transaktionsknotens. Der Name wird zum Erstellen der DNS-Adresse für den Transaktionsknotenendpunkt verwendet. Beispiel: `newnode-myblockchainmember.blockchain.azure.com`. Der Knotenname kann nicht mehr geändert werden, nachdem der Knoten erstellt wurde. |
     | Kennwort | Legen Sie ein sicheres Kennwort fest. Das Kennwort verwenden Sie, um auf den Transaktionsknotenendpunkt mit Standardauthentifizierung zuzugreifen.
 
 1. Klicken Sie auf **Erstellen**.

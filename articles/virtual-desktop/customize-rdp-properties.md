@@ -9,10 +9,10 @@ ms.date: 12/18/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 4a0f193437353bac1f5998b50b9d7b4d43bedefa
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79128064"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Anpassen der Remotedesktopprotokoll-Eigenschaften für einen Hostpool
@@ -33,7 +33,7 @@ Veröffentlichte RDP-Dateien enthalten standardmäßig die folgenden Eigenschaft
 
 |RDP-Eigenschaften | Desktops | RemoteApps |
 |---|---| --- |
-| Mehrfachmonitor-Modus | Aktiviert | – |
+| Mehrfachmonitor-Modus | Enabled | – |
 | Aktivierte Laufwerksumleitungen | Laufwerke, Zwischenablage, Drucker, COM-Anschlüsse, USB-Geräte und Smartcards| Laufwerke, Zwischenablage und Drucker |
 | Remoteaudio-Modus | Lokale Wiedergabe | Lokale Wiedergabe |
 

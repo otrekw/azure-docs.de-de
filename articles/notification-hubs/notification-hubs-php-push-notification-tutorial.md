@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 9a77a9d9c8b2d71197089f66d81e07d56c780e11
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76263845"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>Verwenden von Notification Hubs von PHP aus
@@ -106,7 +106,7 @@ Hier ist die Hauptklasse, die den Client implementiert, dessen Konstruktor die V
 
 Informationen zum [Erstellen eines SAS-Sicherheitstokens](https://docs.microsoft.com/previous-versions/azure/reference/dn495627(v=azure.100)#create-sas-security-token) finden Sie in der Azure-Dokumentation.
 
-Fügen Sie der `NotificationHub`-Klasse die `generateSasToken`-Methode hinzu, um das Token basierend auf dem URI der aktuellen Anforderung und den aus der Verbindungszeichenfolge extrahierten Anmeldeinformationen zu erstellen.
+Fügen Sie der `generateSasToken`-Klasse die `NotificationHub`-Methode hinzu, um das Token basierend auf dem URI der aktuellen Anforderung und den aus der Verbindungszeichenfolge extrahierten Anmeldeinformationen zu erstellen.
 
     ```php
     private function generateSasToken($uri) {
@@ -218,7 +218,7 @@ Mit dieser Klasse können wir jetzt die Methoden zum Senden von Benachrichtigung
 
 Die obigen Methoden senden eine HTTP-POST-Anforderung mit dem korrekten Text und Headern an den `/messages`-Endpunkt des Notification Hub, um die Benachrichtigung zu senden.
 
-## <a name="complete-tutorial"></a>Abschließen des Lernprogramms
+## <a name="complete-the-tutorial"></a><a name="complete-tutorial"></a>Abschließen des Lernprogramms
 
 Sie können jetzt das Tutorial zu den ersten Schritten abschließen, indem Sie die Benachrichtigung von einem PHP-Back-End senden.
 

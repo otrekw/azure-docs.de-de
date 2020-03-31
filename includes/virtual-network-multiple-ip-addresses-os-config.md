@@ -9,13 +9,13 @@ ms.date: 05/10/2019
 ms.author: anavin
 ms.custom: include file
 ms.openlocfilehash: a9473f69d600a86ff71da69c7efe0dea3f2b0a08
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76159378"
 ---
-## <a name="os-config"></a>Hinzufügen von IP-Adressen zu einem VM-Betriebssystem
+## <a name="add-ip-addresses-to-a-vm-operating-system"></a><a name="os-config"></a>Hinzufügen von IP-Adressen zu einem VM-Betriebssystem
 
 Stellen Sie eine Verbindung mit einem virtuellen Computer her, den Sie mit mehreren privaten IP-Adresse erstellt haben, und melden Sie sich an. Alle dem virtuellen Computer hinzugefügten privaten IP-Adressen müssen manuell hinzugefügt werden. (Das gilt auch für die primäre Adresse.) Führen Sie für das Betriebssystem Ihres virtuellen Computers die folgenden Schritte aus.
 
@@ -27,11 +27,11 @@ Stellen Sie eine Verbindung mit einem virtuellen Computer her, den Sie mit mehre
 4. Doppelklicken Sie auf „Internetprotokoll, Version 4“ (IPv4).
 5. Wählen Sie **Folgende IP-Adresse verwenden** aus, und geben Sie die folgenden Werte ein:
 
-    * **IP-Adresse**: Geben Sie die *primäre* private IP-Adresse ein.
-    * **Subnetzmaske**: Wird basierend auf Ihrem Subnetz festgelegt. Wenn das Subnetz beispielsweise ein /24-Subnetz ist, lautet die Subnetzmaske „255.255.255.0“.
-    * **Standardgateway**: Die erste IP-Adresse im Subnetz. Wenn das Subnetz „10.0.0.1/24“ ist, lautet die Gateway-IP-Adresse „10.0.0.0/24“.
+    * **IP-Adresse:** Geben Sie die *primäre* private IP-Adresse ein.
+    * **Subnetzmaske:** wird basierend auf dem Subnetz festgelegt. Wenn das Subnetz beispielsweise ein /24-Subnetz ist, lautet die Subnetzmaske „255.255.255.0“.
+    * **Standardgateway:** die erste IP-Adresse im Subnetz. Wenn das Subnetz „10.0.0.1/24“ ist, lautet die Gateway-IP-Adresse „10.0.0.0/24“.
     * Wählen Sie **Folgende DNS-Serveradressen verwenden** aus, und geben Sie die folgenden Werte ein:
-        * **Bevorzugter DNS-Server**: Geben Sie „168.63.129.16“ ein, falls Sie nicht Ihren eigenen DNS-Server verwenden.  Wenn Sie Ihren eigenen DNS-Server verwenden, geben Sie die IP-Adresse für Ihren Server ein.
+        * **Bevorzugter DNS-Server:** Geben Sie „168.63.129.16“ ein, falls Sie nicht Ihren eigenen DNS-Server verwenden.  Wenn Sie Ihren eigenen DNS-Server verwenden, geben Sie die IP-Adresse für Ihren Server ein.
     * Wählen Sie die Schaltfläche **Erweitert** aus, und fügen Sie zusätzliche IP-Adressen hinzu. Fügen Sie jede der sekundären privaten IP-Adressen, die Sie in einem vorherigen Schritt der Azure-Netzwerkschnittstelle hinzugefügt haben, der Windows-Netzwerkschnittstelle hinzu, die der primären IP-Adresse der Azure-Netzwerkschnittstelle zugewiesen ist.
 
         Die öffentliche IP-Adresse sollte niemals manuell einem virtuellen Azure-Computer innerhalb des Betriebssystems des virtuellen Computers zugewiesen werden. Wenn Sie die IP-Adresse im Betriebssystem manuell festlegen, stellen Sie sicher, dass es sich um dieselbe Adresse wie die private IP-Adresse handelt, die der Azure-[Netzwerkschnittstelle](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings) zugewiesen ist. Andernfalls kann die Verbindung mit dem virtuellen Computer verloren gehen. Erfahren Sie mehr über Einstellungen für [private IP-Adressen](../articles/virtual-network/virtual-network-network-interface-addresses.md#private). Eine öffentliche Azure-IP-Adresse sollte niemals im Betriebssystem zugewiesen werden.

@@ -11,13 +11,13 @@ ms.date: 09/28/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c31f3c4c6688af7d2142180e8d9b7100965bad96
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78186402"
 ---
-# <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Tutorial: Erstellen eines Azure Active Directory B2C-Mandanten
+# <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Tutorial zum Erstellen eines Azure Active Directory B2C-Mandanten
 
 Bevor Ihre Anwendungen mit Azure Active Directory B2C (Azure AD B2C) interagieren können, müssen sie in einem von Ihnen verwalteten Mandanten registriert werden.
 
@@ -31,7 +31,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 Im nächsten Tutorial erfahren Sie, wie Sie eine Anwendung registrieren.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Erstellen eines Azure AD B2C-Mandanten
 
@@ -85,7 +85,7 @@ Wenn Ihr neuer Azure B2C-Mandant zunächst nicht in der Liste angezeigt wird, ak
 
 Dieser optionale Schritt erleichtert Ihnen die Auswahl Ihres Azure AD B2C-Mandanten in den folgenden Abschnitten und allen nachfolgenden Tutorials.
 
-Statt jedes Mal, wenn Sie mit Ihrem Mandanten arbeiten möchten, in **Alle Dienste** nach *Azure AD B2C* suchen zu müssen, können Sie die Ressource als Favorit markieren. Anschließend können Sie sie im Abschnitt **Favoriten** des Portalmenüs auswählen, um schnell zu Ihrem Azure AD B2C-Mandanten zu navigieren.
+Statt jedes Mal, wenn Sie mit Ihrem Mandanten arbeiten möchten, in *Alle Dienste* nach **Azure AD B2C** suchen zu müssen, können Sie die Ressource als Favorit markieren. Anschließend können Sie sie im Abschnitt **Favoriten** des Portalmenüs auswählen, um schnell zu Ihrem Azure AD B2C-Mandanten zu navigieren.
 
 Sie müssen diesen Vorgang nur einmal ausführen. Bevor Sie diese Schritte ausführen, müssen Sie in das Verzeichnis mit Ihrem Azure AD B2C-Mandanten gewechselt haben, wie im vorherigen Abschnitt, [Auswählen Ihres B2C-Mandantenverzeichnisses](#select-your-b2c-tenant-directory), beschrieben wurde.
 

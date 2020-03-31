@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
 ms.openlocfilehash: e2b1ed693ea57e3414d465a57a5ba2b1203f67c5
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121880"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235318"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Erstellen und Verwalten von Azure Cache for Redis mit der klassischen Azure CLI
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Zum Erstellen und Verwalten von Azure Cache for Redis-Instanzen mithilfe der kla
 ## <a name="azure-cache-for-redis-properties"></a>Azure Cache for Redis-Eigenschaften
 Die folgenden Eigenschaften werden beim Erstellen und Aktualisieren von Azure Cache for Redis-Instanzen verwendet.
 
-| Eigenschaft | Switch | BESCHREIBUNG |
+| Eigenschaft | Schalter | BESCHREIBUNG |
 | --- | --- | --- |
 | name |-n, --name |Der Name des Azure Cache for Redis. |
 | Ressourcengruppe |-g, --resource-group |Der Name der Ressourcengruppe. |
@@ -86,7 +86,7 @@ Wenn Sie alle Azure Cache for Redis-Befehle und deren Parameter anzeigen möchte
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="create-an-azure-cache-for-redis"></a>Erstellen eines Azure Cache for Redis
+## <a name="create-an-azure-cache-for-redis"></a>Erstellen einer Azure Cache for Redis-Instanz
 Verwenden Sie zum Erstellen eines Azure Cache for Redis den folgenden Befehl:
 
     azure rediscache create [--name <name> --resource-group <resource-group> --location <location> [options]]

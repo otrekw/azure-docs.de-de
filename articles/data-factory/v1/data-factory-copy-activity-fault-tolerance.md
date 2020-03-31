@@ -12,15 +12,15 @@ ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8ffaee75154fd5fe025bdb683c89f16799d6e86b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74926150"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Hinzufügen von Fehlertoleranz der Kopieraktivität durch Überspringen inkompatibler Zeilen
 
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-copy-activity-fault-tolerance.md)
 > * [Version 2 (aktuelle Version)](../copy-activity-fault-tolerance.md)
 
@@ -32,20 +32,20 @@ Die [Kopieraktivität](data-factory-data-movement-activities.md) von Azure Data 
 - Die Kopieraktivität kann mit einem Fehler abgebrochen werden, wenn sie auf inkompatible Daten stößt (Standardverhalten).
 - Der Kopiervorgang kann für alle Daten fortgesetzt werden, indem Fehlertoleranz hinzugefügt wird und die inkompatiblen Datenzeilen übersprungen werden. Darüber hinaus können die inkompatiblen Zeilen in Azure Blob Storage protokolliert werden. Sie können dann das Protokoll überprüfen, um die Ursache des Fehlers zu ermitteln, die Daten in der Datenquelle korrigieren und die Kopieraktivität wiederholen.
 
-## <a name="supported-scenarios"></a>Unterstützte Szenarien
+## <a name="supported-scenarios"></a>Unterstützte Szenarios
 Die Kopieraktivität unterstützt drei Szenarien zum Erkennen, Überspringen und Protokollieren inkompatibler Daten:
 
 - **Inkompatibilität zwischen dem Quelldatentyp und dem nativen Senkentyp**
 
-    Beispiel:  Kopieren von Daten aus einer CSV-Datei in Blob Storage in eine SQL-Datenbank mit einer Schemadefinition, die drei Spalten vom Typ **INT** enthält. Die Zeilen der CSV-Datei, die numerische Daten wie z.B. `123,456,789` enthalten, werden erfolgreich in den Senkenspeicher kopiert. Die Zeilen mit nicht numerischen Werten, z.B. `123,456,abc`, werden dagegen als inkompatibel erkannt und übersprungen.
+    Beispiel: Kopieren von Daten aus einer CSV-Datei in Blob Storage in eine SQL-Datenbank mit einer Schemadefinition, die drei Spalten vom Typ **INT** enthält. Die Zeilen der CSV-Datei, die numerische Daten wie z.B. `123,456,789` enthalten, werden erfolgreich in den Senkenspeicher kopiert. Die Zeilen mit nicht numerischen Werten, z.B. `123,456,abc`, werden dagegen als inkompatibel erkannt und übersprungen.
 
 - **Fehlende Übereinstimmung bei der Anzahl der Spalten zwischen der Quelle und der Senke**
 
-    Beispiel:  Kopieren von Daten aus einer CSV-Datei in Blob Storage in eine SQL-Datenbank mit einer Schemadefinition, die sechs Spalten enthält. Die Zeilen der CSV-Datei, die sechs Spalten enthalten, werden erfolgreich in den Senkenspeicher kopiert. Die Zeilen der CSV-Datei mit weniger oder mehr als sechs Spalten werden als inkompatibel erkannt und übersprungen.
+    Beispiel: Kopieren von Daten aus einer CSV-Datei in Blob Storage in eine SQL-Datenbank mit einer Schemadefinition, die sechs Spalten enthält. Die Zeilen der CSV-Datei, die sechs Spalten enthalten, werden erfolgreich in den Senkenspeicher kopiert. Die Zeilen der CSV-Datei mit weniger oder mehr als sechs Spalten werden als inkompatibel erkannt und übersprungen.
 
 - **Primärschlüsselverletzung beim Schreiben in SQL Server/Azure SQL-Datenbank/Azure Cosmos DB**
 
-    Beispiel:  Kopieren von Daten von einer SQL Server-Instanz in eine SQL-Datenbank. In der SQL-Datenbank der Senke ist ein Primärschlüssel definiert, in der SQL Server-Instanz der Quelle ist dagegen kein Primärschlüssel definiert. Die doppelten Zeilen, die in der Quelle vorhanden sind, können nicht in die Senke kopiert werden. Die Kopieraktivität kopiert nur die erste Zeile der Quelldaten in die Senke. Die nachfolgenden Quellzeilen, die den doppelten Primärschlüsselwert enthalten, werden als inkompatibel erkannt und übersprungen.
+    Beispiel: Kopieren von Daten von einer SQL Server-Instanz in eine SQL-Datenbank. In der SQL-Datenbank der Senke ist ein Primärschlüssel definiert, in der SQL Server-Instanz der Quelle ist dagegen kein Primärschlüssel definiert. Die doppelten Zeilen, die in der Quelle vorhanden sind, können nicht in die Senke kopiert werden. Die Kopieraktivität kopiert nur die erste Zeile der Quelldaten in die Senke. Die nachfolgenden Quellzeilen, die den doppelten Primärschlüsselwert enthalten, werden als inkompatibel erkannt und übersprungen.
 
 >[!NOTE]
 >Diese Funktion gilt nicht, wenn die Kopieraktivität so konfiguriert ist, dass sie externe Datenlademechanismen wie [Azure SQL Data Warehouse PolyBase](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) oder [Amazon Redshift Unload](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift) aufruft. Um Daten mit PolyBase in SQL Data Warehouse zu laden, verwenden Sie die native Fehlertoleranzunterstützung von PolyBase, indem Sie in der Kopieraktivität [polyBaseSettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink) angeben.
@@ -81,7 +81,7 @@ Nach Abschluss der Kopieraktivität wird die Anzahl übersprungener Zeilen im Ü
 
 ![Überwachen übersprungener inkompatibler Zeilen](./media/data-factory-copy-activity-fault-tolerance/skip-incompatible-rows-monitoring.png)
 
-Wenn Sie das Protokollieren der nicht kompatiblen Zeilen konfigurieren, finden Sie die Protokolldatei unter diesem Pfad: `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv`. In der Protokolldatei sind die Zeilen, die übersprungen wurden, und die Ursache für die Inkompatibilität angegeben.
+Wenn Sie das Protokollieren inkompatibler Zeilen konfiguriert haben, finden Sie die Protokolldatei unter folgendem Pfad: `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv` In der Protokolldatei können Sie die übersprungenen Zeilen und die Ursache der Inkompatibilität einsehen.
 
 In der Datei werden sowohl die ursprünglichen Daten als auch der entsprechende Fehler protokolliert. Der Inhalt der Protokolldatei kann beispielsweise wie folgt aussehen:
 ```

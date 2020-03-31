@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 11/20/2019
 ms.author: vilibert
 ms.openlocfilehash: 37cb201751f72918838efe5837aa0e357d483f24
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74408560"
 ---
 # <a name="troubleshoot-azure-linux-virtual-machines-boot-errors"></a>Problembehandlung bei Startfehlern von virtuellen Linux-Computern in Azure
@@ -40,7 +40,7 @@ Beheben von Problemen einer Linux-VM durch Anfügen des Betriebssystemdatenträg
 - [Bash-Wiederherstellungsskripts](https://github.com/sribs/azure-support-scripts)
 
 - [BEFEHLSZEILENSCHNITTSTELLE (CLI)](troubleshoot-recovery-disks-linux.md)
-- [Azure-Portal](troubleshoot-recovery-disks-portal-linux.md)
+- [Azure portal](troubleshoot-recovery-disks-portal-linux.md)
 
 
 ## <a name="disk-swap-video"></a>Video zum Austausch eines Datenträgers:

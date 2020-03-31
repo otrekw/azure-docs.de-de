@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 7770e7fbe846defc865b3fcc702fcb00bae1b73c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60893411"
 ---
 # <a name="upsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Upsert-Vorgang mit Daten in die Azure Cosmos-DB-Cassandra-API von Spark
@@ -93,4 +93,4 @@ Lesen Sie die folgenden Artikel, um zu erfahren, wie Sie andere Vorgänge an den
  
 * [Löschvorgänge](cassandra-spark-delete-ops.md)
 * [Aggregationsvorgänge](cassandra-spark-aggregation-ops.md)
-* [Tabellenkopiervorgänge](cassandra-spark-table-copy-ops.md)
+* [Tabellenkopiervorgänge an der Azure Cosmos DB-Cassandra-API von Spark aus](cassandra-spark-table-copy-ops.md)

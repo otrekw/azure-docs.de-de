@@ -12,10 +12,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ece25e95bbbe9f1a1fa591c29ea9ffda0fefd369
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78187677"
 ---
 # <a name="integer-claims-transformations"></a>Transformationen von Integer-Ansprüchen
@@ -31,7 +31,7 @@ Konvertiert einen long-Datentyp in einen string-Datentyp.
 | Element | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | long | Der Anspruchstyp, der in eine Zeichenfolge konvertiert werden soll. |
-| OutputClaim | outputClaim | Zeichenfolge | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
+| OutputClaim | outputClaim | string | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. |
 
 In diesem Beispiel wird der Anspruch `numericUserId` mit dem Werttyp long in einen `UserId`-Anspruch mit dem Werttyp string konvertiert.
 
@@ -51,5 +51,5 @@ In diesem Beispiel wird der Anspruch `numericUserId` mit dem Werttyp long in ein
 - Eingabeansprüche:
     - **inputClaim:** 12334 (long)
 - Ausgabeansprüche:
-    - **outputClaim:** 12334 (string)
+    - **outputClaim:** „12334“ (string)
 

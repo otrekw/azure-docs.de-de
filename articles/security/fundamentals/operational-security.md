@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: 34c0c52945abc6e0ab74b1cb180581c76464bee8
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75749960"
 ---
 # <a name="azure-operational-security"></a>Azure Operational Security
@@ -66,7 +66,7 @@ Mit Azure Monitor-Protokolle können Sie beliebige Instanzen in beliebigen Cloud
 
 Die Kernfunktionen von Azure Monitor-Protokolle werden durch eine Reihe von Diensten bereitgestellt, die in Azure ausgeführt werden. Jeder Dienst bietet eine bestimmte Verwaltungsfunktion, und Sie können Dienste miteinander kombinieren, um verschiedene Verwaltungsszenarien zu bewältigen.
 
-| Dienst  | Beschreibung|
+| Dienst  | BESCHREIBUNG|
 | :------------- | :-------------|
 | Azure Monitor-Protokolle | Dient zur Überwachung und Analyse der Verfügbarkeit und Leistung verschiedener Ressourcen (einschließlich physischer und virtueller Computer). |
 |Automation | Dient zur Automatisierung manueller Prozesse sowie zur Erzwingung von Konfigurationen für physische und virtuelle Computer. |
@@ -136,23 +136,23 @@ Security Center sammelt Daten von Ihren virtuellen Computern (VMs), um den Siche
 
 - Azure Security Center analysiert Daten aus den folgenden Quellen, um über den Sicherheitsstatus zu informieren, Sicherheitslücken zu identifizieren, Gegenmaßnahmen zu empfehlen und aktive Bedrohungen zu erkennen:
 
--   Azure-Dienste: Verwendet Informationen zur Konfiguration von Azure-Diensten, die Sie bereitgestellt haben. Hierzu wird mit dem Ressourcenanbieter des Diensts kommuniziert.
+-   Azure Services: Verwendet Informationen zur Konfiguration von Azure-Diensten, die Sie bereitgestellt haben. Hierzu wird mit dem Ressourcenanbieter des Diensts kommuniziert.
 
 - Netzwerkdatenverkehr: Verwendet Metadatenstichproben des Netzwerkdatenverkehrs aus der Infrastruktur von Microsoft wie etwa Quelle/Ziel, IP/Port, Paketgröße und Netzwerkprotokoll.
 
 -   Partnerlösungen: Verwendet Sicherheitswarnungen von integrierten Partnerlösungen (beispielsweise Firewalls und Antischadsoftwarelösungen).
 
--   Ihre virtuellen Computer: Verwendet Konfigurationsinformationen und Informationen zu Sicherheitsereignissen – beispielsweise Windows-Ereignis- und -Überwachungsprotokolle, IIS-Protokolle, Syslog-Nachrichten und Absturzabbilddateien von Ihren virtuellen Computern.
+-   Ihre virtuellen Computer: Verwendet Konfigurationsinformationen und Informationen zu Sicherheitsereignissen – beispielsweise Windows-Ereignis- und Überwachungsprotokolle, IIS-Protokolle, Syslog-Nachrichten und Absturzabbilddateien von Ihren virtuellen Computern.
 
 ### <a name="data-protection"></a>Schutz von Daten
 
 Azure Security Center erfasst und verarbeitet sicherheitsbezogene Daten (einschließlich Konfigurationsinformationen, Metadaten, Ereignisprotokolle, Absturzabbilddateien und Ähnliches), um Kunden bei der Vermeidung, Erkennung und Behandlung von Bedrohungen zu unterstützen. Microsoft hält strenge Compliance- und Sicherheitsrichtlinien ein – angefangen bei der Codierung bis hin zum Betreiben von Diensten.
 
--   **Trennung von Daten**: Daten werden für jede Komponente des Diensts logisch getrennt verwaltet. Sämtliche Daten werden nach Organisation gekennzeichnet. Dieser Kennzeichnung wird während des gesamten Datenlebenszyklus beibehalten und auf jeder Ebene des Diensts erzwungen.
+-   **Trennung von Daten:** Daten werden für jede Komponente des Diensts logisch getrennt verwaltet. Sämtliche Daten werden nach Organisation gekennzeichnet. Dieser Kennzeichnung wird während des gesamten Datenlebenszyklus beibehalten und auf jeder Ebene des Diensts erzwungen.
 
 -   **Datenzugriff**: Bei der Bereitstellung von Sicherheitsempfehlungen sowie bei der Untersuchung potenzieller Sicherheitsrisiken greifen Mitarbeiter von Microsoft unter Umständen auf Informationen zu, die von Azure-Diensten erfasst oder analysiert wurden. Hierzu zählen etwa Absturzabbilddateien, Prozesserstellungsereignisse, Momentaufnahmen von VM-Datenträgern und Artefakte. Diese können ggf. Kundendaten oder persönliche Informationen von Ihren virtuellen Computern enthalten. Wir halten uns an die [Microsoft Online Services-Bedingungen und Datenschutzerklärung](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31). Darin ist festgelegt, dass Microsoft keine Kundendaten oder daraus abgeleiteten Informationen zu Werbezwecken oder anderen kommerziellen Zwecken verwendet.
 
--   **Datennutzung**: Microsoft nutzt mandantenübergreifende Muster und Informationen zu Bedrohungen (Threat Intelligence), um die Funktionen für Prävention und Erkennung zu verbessern. Dies erfolgt in Übereinstimmung mit den in unserer [Datenschutzerklärung](https://www.microsoft.com/en-us/privacystatement/OnlineServices/) beschriebenen Datenschutzzusagen.
+-   **Datennutzung:** Microsoft nutzt mandantenübergreifende Muster und Informationen zu Bedrohungen (Threat Intelligence), um die Funktionen für Prävention und Erkennung zu verbessern. Dies erfolgt in Übereinstimmung mit den in unserer [Datenschutzerklärung](https://www.microsoft.com/en-us/privacystatement/OnlineServices/) beschriebenen Datenschutzzusagen.
 
 ### <a name="data-location"></a>Speicherort der Daten
 
@@ -160,7 +160,7 @@ Azure Security Center erfasst kurzlebige Kopien Ihrer Absturzabbilddateien und a
 
 -   **Ihre Speicherkonten**: Ein Speicherkonto wird für jede Region angegeben, in der virtuelle Computer ausgeführt werden. So können Sie Daten in derselben Region speichern, in der auch der virtuelle Computer angeordnet ist, von dem die Daten erfasst werden.
 
--   **Azure Security Center-Speicher**: Informationen zu Sicherheitswarnungen (einschließlich Partnerwarnungen, Empfehlungen und Informationen zum Sicherheitsintegritätsstatus) werden zentral gespeichert (aktuell in den USA). Diese Informationen können auch verwandte Konfigurationsinformationen und Sicherheitsereignisse umfassen, die je nach Bedarf von Ihren virtuellen Computern erfasst werden, um für Sie die Sicherheitswarnung, die Empfehlung oder den Sicherheitsintegritätsstatus bereitzustellen.
+-   **Azure Security Center-Speicher:** Informationen zu Sicherheitswarnungen (einschließlich Partnerwarnungen, Empfehlungen und Informationen zum Sicherheitsintegritätsstatus) werden zentral gespeichert (aktuell in den USA). Diese Informationen können auch verwandte Konfigurationsinformationen und Sicherheitsereignisse umfassen, die je nach Bedarf von Ihren virtuellen Computern erfasst werden, um für Sie die Sicherheitswarnung, die Empfehlung oder den Sicherheitsintegritätsstatus bereitzustellen.
 
 
 ## <a name="azure-monitor"></a>Azure Monitor
@@ -197,7 +197,7 @@ Windows-Ereignissystemprotokolle sind z. B. eine Kategorie des Diagnoseprotokol
 
 Diagnoseprotokolle unterscheiden sich vom [Aktivitätsprotokoll (früher als Überwachungsprotokoll oder Betriebsprotokoll bezeichnet)](../../azure-monitor/platform/platform-logs-overview.md). Das Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen Ihres Abonnements durchgeführt wurden. Diagnoseprotokolle bieten Einblick in Vorgänge, die Ihre Ressource selbst ausgeführt hat.
 
-### <a name="metrics"></a>Metriken
+### <a name="metrics"></a>metrics
 
 Mit Azure Monitor können Sie Telemetriedaten verwenden, um sich einen Überblick über Leistung und Integrität Ihrer Workloads in Azure zu verschaffen. Die wichtigsten Typen von Telemetriedaten sind Metriken (auch Leistungsindikatoren genannt), die von den meisten Azure-Ressourcen ausgegeben werden. Azure Monitor bietet Ihnen verschiedene Möglichkeiten, diese [Metriken](../../monitoring/monitoring-data-collection.md) für die Überwachung und Problembehandlung zu konfigurieren und zu nutzen. Metriken sind eine wertvolle Quelle für Telemetriedaten, mit denen Sie folgende Aufgaben ausführen können:
 

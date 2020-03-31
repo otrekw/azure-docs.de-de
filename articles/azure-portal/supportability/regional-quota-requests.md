@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
 ms.openlocfilehash: 9236989f7bbb4695db24f86a2a049f5bb58f302a
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76843683"
 ---
 # <a name="standard-quota-increase-limits-by-region"></a>Standardkontingent: Erhöhen der Grenzwerte nach Region
@@ -21,7 +21,7 @@ Azure Resource Manager unterstützt zwei Arten von vCPU-Kontingenten für virtue
 * *VMs mit nutzungsbasierter Bezahlung* und *reservierte VM-Instanzen* verwenden *vCPU-Standardkontingente*.
 * *Spot-VMs* unterliegen einem *Spot-vCPU-Kontingent*.
 
-Das standardmäßige vCPU-Kontingent für nutzungsbasierte Bezahlung und reservierte VM-Instanzen wird für jedes Abonnement in jeder Region auf zwei Ebenen erzwungen:
+Das vCPU-Standardkontingent für nutzungsbasierte Bezahlung und reservierte VM-Instanzen wird für jedes Abonnement in jeder Region auf zwei Ebenen erzwungen:
 
 * Die erste Ebene ist der *Grenzwert regionaler vCPUs gesamt* (für alle VM-Serien).
 * Die zweite Ebene ist der *vCPU-Grenzwert pro VM-Serie* (z. B. vCPUs der D-Serie).
@@ -52,7 +52,7 @@ So fordern Sie eine vCPU-Kontingenterhöhung nach Region über **Hilfe und Suppo
 
 1. Wählen Sie unter **Problemtyp** den Eintrag **Grenzwerte für Dienste und Abonnements (Kontingente)** aus.
 
-   ![Problemtyp auswählen](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
+   ![Auswählen eines Problemtyps](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
 
 1. Wählen Sie für **Abonnement** das Abonnement aus, dessen Kontingent Sie erhöhen möchten.
 

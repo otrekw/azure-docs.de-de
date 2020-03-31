@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85af3457f83f06c107f8b4aa9bd88a9f915c776f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 5804ded875ef03d7ade4414eb8f08885634748dd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78187932"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80051593"
 ---
 # <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung mit einem Twitter-Konto mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
@@ -36,8 +36,8 @@ Um Twitter als Identitätsanbieter in Azure AD B2C zu nutzen, müssen Sie eine T
 1. Melden Sie sich auf der Website für [Twitter-Entwickler](https://developer.twitter.com/en/apps) mit den Anmeldeinformationen für Ihr Twitter-Konto an.
 2. Wählen Sie **Create an app** (App erstellen) aus.
 3. Geben Sie in **App name** einen App-Namen und in **Application description** eine Anwendungsbeschreibung ein.
-4. Gegen Sie unter der **Website-URL**`https://your-tenant.b2clogin.com` ein. Ersetzen Sie `your-tenant` durch den Namen Ihres Mandanten. Beispiel: https://contosob2c.b2clogin.com.
-5. Geben Sie `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-policy-Id/oauth1/authresp` in **Callback URL** ein. Ersetzen Sie `your-tenant` durch den Namen Ihres Mandanten und `your-policy-Id` durch den Bezeichner Ihrer Richtlinie. Beispiel: `b2c_1A_signup_signin_twitter`. Bei der Eingabe Ihres Mandantennamens dürfen Sie nur Kleinbuchstaben verwenden, auch wenn der Mandant in Azure AD B2C Großbuchstaben enthält.
+4. Gegen Sie unter der **Website-URL**`https://your-tenant.b2clogin.com` ein. Ersetzen Sie `your-tenant` durch den Namen Ihres Mandanten. Beispiel: `https://contosob2c.b2clogin.com`.
+5. Geben Sie **in**Callback URL`https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-policy-Id/oauth1/authresp` ein. Ersetzen Sie `your-tenant` durch den Namen Ihres Mandanten und `your-policy-Id` durch den Bezeichner Ihrer Richtlinie. Beispiel: `b2c_1A_signup_signin_twitter`. Bei der Eingabe Ihres Mandantennamens dürfen Sie nur Kleinbuchstaben verwenden, auch wenn der Mandant in Azure AD B2C Großbuchstaben enthält.
 6. Lesen und akzeptieren Sie die Nutzungsbedingungen am Ende der Seite, und wählen Sie dann **Create** (Erstellen) aus.
 7. Wählen Sie auf der Seite **App details** (Anwendungsdetails) **Edit > Edit details** (Bearbeiten > Details bearbeiten), aktivieren Sie das Kontrollkästchen für **Enable Sign in with Twitter** (Anmeldung bei Twitter aktivieren), und wählen Sie dann **Save** (Speichern).
 8. Wählen Sie **Keys and tokens** (Schlüssel und Token) aus, und notieren Sie die Werte für **Consumer API Key** (Consumer-API-Schlüssel) und **Consumer API secret key** (Geheimer Consumer-API-Schlüssel) für die spätere Verwendung.

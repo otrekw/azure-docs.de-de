@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/03/2020
+ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e470ea65085bf71f0052567d5bf367661852d1cb
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: ea3b273070702144d5296d07cb8712da044819a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268019"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471964"
 ---
 # <a name="boolean-claims-transformations"></a>Transformationen von booleschen Ansprüchen
 
@@ -34,7 +34,7 @@ Führt einen And-Vorgang für zwei boolesche Eingabeansprüche aus und legt den 
 | InputClaim | inputClaim2  | boolean | Der zweite auszuwertende Anspruchstyp |
 |OutputClaim | outputClaim | boolean | Die Anspruchstypen, die erstellt werden, nachdem diese Anspruchstransformation aufgerufen wurde (TRUE oder FALSE). |
 
-Die folgende Anspruchstransformation veranschaulicht, wie Sie einen And-Vorgang für zwei boolesche Anspruchstypen (`isEmailNotExist` und `isSocialAccount`) durchführen. `true` wird für den Ausgabeanspruch `presentEmailSelfAsserted` festgelegt, wenn beide Eingabeansprüche den Wert `true` aufweisen. In einem Orchestrierungsschritt können Sie eine Vorbedingung nur verwenden, um eine Seite mit Selbstbestätigung im Voraus einzustellen, wenn eine E-Mail-Adresse eines Social Media-Kontos leer ist.
+Die folgende Anspruchstransformation veranschaulicht, wie Sie einen And-Vorgang für zwei boolesche Anspruchstypen (`isEmailNotExist` und `isSocialAccount`) durchführen. `presentEmailSelfAsserted` wird für den Ausgabeanspruch `true` festgelegt, wenn beide Eingabeansprüche den Wert `true` aufweisen. In einem Orchestrierungsschritt können Sie eine Vorbedingung nur verwenden, um eine Seite mit Selbstbestätigung im Voraus einzustellen, wenn eine E-Mail-Adresse eines Social Media-Kontos leer ist.
 
 ```XML
 <ClaimsTransformation Id="CheckWhetherEmailBePresented" TransformationMethod="AndClaims">
@@ -66,7 +66,7 @@ Die folgende Anspruchstransformation veranschaulicht, wie Sie einen And-Vorgang 
 | inputClaim | inputClaim | boolean | Der Anspruchstyp, der bestätigt werden soll. |
 | InputParameter |valueToCompareTo | boolean | Der Wert, der verglichen werden soll (TRUE oder FALSE). |
 
-Die Anspruchstransformation **AssertBooleanClaimIsEqualToValue** wird immer über ein [technisches Validierungsprofil](validation-technical-profile.md) ausgeführt, das von einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) aufgerufen wird. Die Metadaten des selbstbestätigten technischen Profils **UserMessageIfClaimsTransformationBooleanValueIsNotEqual** steuern die Fehlermeldung, die das technische Profil dem Benutzer anzeigt.
+Die Anspruchstransformation **AssertBooleanClaimIsEqualToValue** wird immer über ein [technisches Validierungsprofil](validation-technical-profile.md) ausgeführt, das von einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) aufgerufen wird. Die Metadaten des selbstbestätigten technischen Profils **UserMessageIfClaimsTransformationBooleanValueIsNotEqual** steuern die Fehlermeldung, die das technische Profil dem Benutzer anzeigt. Die Fehlermeldungen können [lokalisiert](localization-string-ids.md#claims-transformations-error-messages) werden.
 
 ![Ausführung von AssertStringClaimsAreEqual](./media/boolean-transformations/assert-execution.png)
 
@@ -112,7 +112,7 @@ Das selbstbestätigte technische Profil ruft das technische Validierungsprofil *
 - Eingabeansprüche:
     - **inputClaim**: FALSE
     - **valueToCompareTo**: TRUE
-- Ergebnis: Fehler wird ausgelöst.
+- Ergebnis: Fehler wird ausgelöst
 
 ## <a name="comparebooleanclaimtovalue"></a>CompareBooleanClaimToValue
 

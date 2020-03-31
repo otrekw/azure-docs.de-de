@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 06/05/2019
 ms.author: lbosq
 ms.openlocfilehash: d9a4e336f582e866fd057f6c281f892ce07b34fc
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75941842"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Behandeln häufiger Probleme in der Azure Cosmos DB-API für MongoDB
@@ -22,7 +22,7 @@ Die Azure Cosmos DB-API für MongoDB ist zwar mit Version 3.2 des Wire Proto
 
 ## <a name="common-errors-and-solutions"></a>Häufige Fehler und Lösungen
 
-| Fehler               | Code  | Beschreibung  | Lösung  |
+| Fehler               | Code  | BESCHREIBUNG  | Lösung  |
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | Die Gesamtanzahl der verbrauchten Anforderungseinheiten hat die bereitgestellte Anforderungseinheitenrate für die Sammlung überschritten und wurde gedrosselt. | Skalieren Sie über das Azure-Portal ggf. den Durchsatz, der einem Container oder einer Gruppe von Containern zugewiesen ist, oder wiederholen Sie den Vorgang. |
 | ExceededMemoryLimit | 16501 | Der Vorgang ist ein mehrinstanzenfähiger Dienst und hat die Speicherzuweisung des Clients überschritten. | Verringern Sie den Umfang des Vorgangs mithilfe restriktiverer Abfragekriterien, oder wenden Sie sich im [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) an den Support. Beispiel: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |

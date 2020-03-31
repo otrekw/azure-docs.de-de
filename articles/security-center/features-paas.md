@@ -14,13 +14,13 @@ ms.workload: na
 ms.date: 03/01/2020
 ms.author: memildin
 ms.openlocfilehash: 85460724071347a768a924f34290a75d2383b4c0
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78209261"
 ---
-# Funktionsabdeckung für Azure PaaS-Ressourcen<a name="paas-services"></a>
+# <a name="feature-coverage-for-azure-paas-services"></a>Funktionsabdeckung für Azure PaaS-Ressourcen<a name="paas-services"></a>
 
 Die nachfolgende Tabelle zeigt die Verfügbarkeit von Azure Security Center-Funktionen für die unterstützten Azure PaaS-Ressourcen.
 
@@ -36,7 +36,7 @@ Die nachfolgende Tabelle zeigt die Verfügbarkeit von Azure Security Center-Funk
 |Azure Container Registry|-|-|✔|
 |Azure Cosmos DB*|-|✔|-|
 |Azure Data Lake Analytics|✔|-|-|
-|Azure Data Lake Storage|✔|-|-|
+|Azure Data Lake Store|✔|-|-|
 |Azure Database for MySQL*|✔|✔|-|
 |Azure Database for PostgreSQL*|✔|✔|-|
 |Azure Event Hubs-Namespace|✔|-|-|

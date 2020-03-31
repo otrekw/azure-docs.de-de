@@ -12,10 +12,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: a916645f153f73a98e7fc5d4046bdf557e8acf2b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823527"
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge-Sicherheitskonfiguration
@@ -47,7 +47,7 @@ Wenn diese Optionen nicht verfügbar sind, können Sie **selbstsignierte Zertifi
     Falls installiert, gehen Sie zu:
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* Abrufen des WDK unter [Windows 8.1: Herunterladen der Kits für die Windows-Hardwareentwicklung](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* Abrufen des WDK von [Windows 8.1: Herunterladen von Kits und Tools](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>So konfigurieren Sie das SSL-Zertifikat
 

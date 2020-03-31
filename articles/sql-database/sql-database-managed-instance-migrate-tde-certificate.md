@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 ms.date: 04/25/2019
 ms.openlocfilehash: 0f6e379287323d9353acd887cf30d5c9c0065959
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74555382"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>Migrieren des Zertifikats einer durch TDE geschützten Datenbank zu einer verwalteten Azure SQL-Datenbank-Instanz
@@ -39,7 +39,7 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 - Das [Pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx)-Befehlszeilentool, das auf dem lokalen Server oder einem anderen Computer mit Zugriff auf das Zertifikat installiert ist, das als Datei exportiert wurde. Das Pvk2pfx-Tool ist Bestandteil des [Enterprise Windows Driver Kit](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk), einer eigenständigen Befehlszeilenumgebung.
 - [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell), Version 5.0 oder höher.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Stellen Sie sicher, dass Sie über Folgendes verfügen:
 
@@ -58,7 +58,7 @@ Install-Module -Name Az.Sql
 Update-Module -Name Az.Sql
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
@@ -129,7 +129,7 @@ Wenn das Zertifikat im Zertifikatspeicher des lokalen Computers mit SQL Server g
 
 ## <a name="upload-certificate-to-azure-sql-database-managed-instance-using-azure-powershell-cmdlet"></a>Hochladen des Zertifikats in eine verwaltete Azure SQL-Datenbank-Instanz mit dem Azure PowerShell-Cmdlet
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. Beginnen Sie mit den Vorbereitungsschritten in PowerShell:
 
@@ -156,7 +156,7 @@ Wenn das Zertifikat im Zertifikatspeicher des lokalen Computers mit SQL Server g
        -ManagedInstanceName "<managedInstanceName>" -PrivateBlob $securePrivateBlob -Password $securePassword
    ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Sie müssen zunächst [eine Azure Key Vault](/azure/key-vault/key-vault-manage-with-cli2) mit ihrer *PFX*-Datei einrichten.
 

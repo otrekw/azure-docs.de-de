@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: victorh
 ms.openlocfilehash: 7107f45253c4f13b3378489726bf5034e104fa30
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62095981"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mithilfe der Azure-CLI
 
-Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht). Das Application Gateway ermöglicht ein Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung. Application Gateway umfasst derzeit die folgenden Anwendungsbereitstellungsfunktionen: HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität, SSL-Auslagerung (Secure Sockets Layer), benutzerdefinierte Integritätstests und Unterstützung für mehrere Websites.
+Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht). Das Application Gateway ermöglicht ein Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung. Application Gateway bietet folgende Funktionen für die Anwendungsbereitstellung: HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität, SSL-Auslagerung (Secure Sockets Layer), benutzerdefinierte Integritätstests und Unterstützung für mehrere Websites.
 
-## <a name="prerequisite-install-the-azure-cli"></a>Voraussetzung: Installieren der Azure CLI
+## <a name="prerequisite-install-the-azure-cli"></a>Voraussetzung: Installieren der Azure-Befehlszeilenschnittstelle
 
 Um die Schritte in diesem Artikel ausführen zu können, müssen Sie [die Azure CLI installieren](../xplat-cli-install.md) und sich bei [Azure anmelden](/cli/azure/authenticate-azure-cli). 
 
@@ -104,7 +104,7 @@ azure network vnet subnet create \
 
 ## <a name="create-the-application-gateway"></a>Erstellen des Anwendungsgateways
 
-Sobald das virtuelle Netzwerk und das Subnetz erstellt wurden, sind die Voraussetzungen für das Anwendungsgateway erfüllt. Für den folgenden Schritt sind darüber hinaus ein zuvor exportiertes PFX-Zertifikat und das Kennwort für das Zertifikat erforderlich: Die für den Back-End verwendeten IP-Adressen sind die IP-Adressen für den Back-End-Server. Diese Werte können entweder private IPs im virtuellen Netzwerk, öffentliche IPs oder vollqualifizierte Domänennamen für Ihre Back-End-Server sein.
+Sobald das virtuelle Netzwerk und das Subnetz erstellt wurden, sind die Voraussetzungen für das Anwendungsgateway erfüllt. Für den folgenden Schritt sind darüber hinaus ein zuvor exportiertes PFX-Zertifikat und das Kennwort für das Zertifikat erforderlich: Bei den für das Back-End verwendeten IP-Adressen handelt es sich um die IP-Adressen für Ihren Back-End-Server. Diese Werte können entweder private IPs im virtuellen Netzwerk, öffentliche IPs oder vollqualifizierte Domänennamen für Ihre Back-End-Server sein.
 
 ```azurecli-interactive
 azure network application-gateway create \

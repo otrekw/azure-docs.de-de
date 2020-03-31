@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 55de5a5c604273225a85e49ca682980f83a951d2
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75767567"
 ---
 # <a name="what-are-baseline-policies"></a>Was sind Basisrichtlinien?
@@ -33,7 +33,7 @@ Für die Verwaltung von Richtlinien für den bedingten Zugriff ist eine Azure AD
 
 Es gibt vier Basisrichtlinien:
 
-* MFA für Administratoren erforderlich (Vorschau)
+* Benötigt MFA für Admins (Vorschau)
 * Endbenutzerschutz (Vorschau)
 * Blockieren der Legacyauthentifizierung (Vorschau)
 * Anfordern von MFA für die Dienstverwaltung (Vorschau)
@@ -44,7 +44,7 @@ Alle vier genannten Basisrichtlinien betreffen bekannte Authentifizierungsabläu
 
 Als die Basisrichtlinien erstmalig in der öffentlichen Vorschauversion verfügbar wurden, gab es eine Option, um Benutzer von den Richtlinien auszuschließen. Diese Funktion wurde im Laufe der Vorschau entwickelt und im Juli 2019 entfernt. Organisationen, die bereits Ausschlüsse erstellt hatten, konnten diese weiterhin verwenden. Neue Benutzer konnten den Richtlinien keine Ausschlüsse hinzufügen.
 
-### <a name="require-mfa-for-admins-preview"></a>MFA für Administratoren erforderlich (Vorschau)
+### <a name="require-mfa-for-admins-preview"></a>Benötigt MFA für Admins (Vorschau)
 
 Aufgrund der Befugnisse und des Zugriffs, über die Administratorkonten verfügen, sollten sie mit Bedacht verwaltet werden. Eine gängige Methode zur Verbesserung des Schutzes von privilegierten Konten ist eine stärkere Form der Kontoüberprüfung bei der Anmeldung. In Azure Active Directory können Sie eine striktere Kontoüberprüfung erreichen, indem Sie fordern, dass Administratoren sich für Azure Multi-Factor Authentication registrieren und die mehrstufige Authentifizierung verwenden.
 

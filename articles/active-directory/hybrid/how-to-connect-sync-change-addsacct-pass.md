@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect-Synchronisierung:  Ändern des AD DS-Kontokennworts | Microsoft-Dokumentation'
+title: 'Azure AD Connect-Synchronisierung: Ändern des Azure AD DS-Kontokennworts | Microsoft-Dokumentation'
 description: In diesem Dokument wird die Aktualisierung von Azure AD Connect nach dem Ändern des Kennworts für das AD DS-Konto beschrieben.
 services: active-directory
 keywords: AD DS-Konto, Active Directory-Konto, Kennwort
@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 35e04be046e20883f60c576745a29342add68a81
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60241586"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>Ändern des AD DS-Kontokennworts
@@ -44,11 +44,11 @@ So aktualisieren Sie den Synchronisierungsdienst mit dem neuen Kennwort
 
 4. Klicken Sie unter **Aktionen** auf **Eigenschaften**.
 
-5. Wählen Sie im Popup-Dialogfeld **Mit Active Directory-Gesamtstruktur verbinden** aus:
+5. Wählen Sie im Popupdialogfeld **Mit Active Directory-Gesamtstruktur verbinden** aus:
 
 6. Geben Sie das neue Kennwort des AD DS-Kontos im Textfeld **Kennwort** ein.
 
-7. Klicken Sie auf **OK**, um das neue Kennwort zu speichern und das Popup-Dialogfeld zu schließen.
+7. Klicken Sie auf **OK**, um das neue Kennwort zu speichern und das Popupdialogfeld zu schließen.
 
 8. Starten Sie den Azure AD Connect-Synchronisierungsdienst im Dienststeuerungs-Manager von Windows neu. Dadurch wird sichergestellt, dass alle Verweise auf das alte Kennwort aus dem Arbeitsspeichercache entfernt werden.
 

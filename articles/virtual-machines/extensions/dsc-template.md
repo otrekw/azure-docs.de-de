@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
 ms.openlocfilehash: ef781653332984a7fb6d71ef91d53cbf77e6c91c
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72437953"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Erweiterung zum Konfigurieren des gewünschten Zustands mit Azure Resource Manager-Vorlagen
@@ -202,8 +202,8 @@ Sie können das Konfigurationsskript für die DSC-Erweiterung standardmäßig so
 | settings.configurationArguments.RegistrationUrl |string |Erforderliche Eigenschaft. Gibt die URL des Automation-Endpunkts an, an dem der Knoten die Registrierung durchführt. Dieser Wert kann durch Verwendung der **reference**-Methode für das Automation-Konto automatisch ermittelt werden. |
 | settings.configurationArguments.NodeConfigurationName |string |Erforderliche Eigenschaft. Gibt die Knotenkonfiguration im Automation-Konto an, die dem Knoten zugewiesen werden soll. |
 | settings.configurationArguments.ConfigurationMode |string |Gibt den Modus für LCM an. Gültige Optionen: **ApplyOnly**, **ApplyandMonitor** und **ApplyandAutoCorrect**.  Standardwert: **ApplyAndMonitor**. |
-| settings.configurationArguments.RefreshFrequencyMins | UInt32 | Gibt an, wie oft der lokale Konfigurations-Manager das Automation-Konto auf Updates überprüft.  Standardwert: **30**.  Mindestwert: **15**. |
-| settings.configurationArguments.ConfigurationModeFrequencyMins | UInt32 | Gibt an, wie oft der LCM die aktuelle Konfiguration überprüft. Standardwert: **15**. Mindestwert: **15**. |
+| settings.configurationArguments.RefreshFrequencyMins | uint32 | Gibt an, wie oft der lokale Konfigurations-Manager das Automation-Konto auf Updates überprüft.  Standardwert: **30**.  Mindestwert: **15**. |
+| settings.configurationArguments.ConfigurationModeFrequencyMins | uint32 | Gibt an, wie oft der LCM die aktuelle Konfiguration überprüft. Standardwert: **15**. Mindestwert: **15**. |
 | settings.configurationArguments.RebootNodeIfNeeded | boolean | Gibt an, ob ein Knoten automatisch neu gestartet werden kann, wenn dies durch einen DSC-Vorgang angefordert wird. Der Standardwert ist **false**. |
 | settings.configurationArguments.ActionAfterReboot | string | Gibt an, was nach einem Neustart geschieht, wenn eine Konfiguration angewendet wird. Gültige Optionen: **ContinueConfiguration** und **StopConfiguration**. Standardwert: **ContinueConfiguration**. |
 | settings.configurationArguments.AllowModuleOverwrite | boolean | Gibt an, ob der LCM vorhandene Module auf dem Knoten überschreibt. Der Standardwert ist **false**. |

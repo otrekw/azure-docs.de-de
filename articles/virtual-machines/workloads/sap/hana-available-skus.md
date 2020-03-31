@@ -14,10 +14,10 @@ ms.date: 02/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: aad4e3ff3df8b4aeecbbbee7883ba383b9fd0d9c
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617258"
 ---
 # <a name="available-skus-for-hli"></a>Verfügbare SKUs für HLI
@@ -98,8 +98,8 @@ Die Hardwarebasis für die Angebote (mit Ausnahme von Einheiten für Projekte mi
 
 Ein vollständiges Umfeld von HANA (große Instanz) ist nicht ausschließlich zur Verwendung durch einen einzelnen Kunden zugeordnet. Dies gilt für Racks mit Compute- und Speicherressourcen, die über ein in Azure bereitgestelltes Netzwerkfabric verbunden sind. Die Infrastruktur von HANA (große Instanz) stellt wie Azure verschiedene &quot;Kundenmandanten&quot; bereit, die in den drei folgenden Ebenen voneinander isoliert sind:
 
-- **Netzwerk:** Isolation durch virtuelle Netzwerke innerhalb des Umfelds von HANA (große Instanz).
-- **Storage**: Isolation durch Speicher-VMs, denen Speichervolumes zugewiesen sind und die Speichervolumes zwischen Mandanten isolieren.
+- **Netzwerk**: Isolation durch virtuelle Netzwerke innerhalb des Umfelds von HANA (große Instanz).
+- **Speicher**: Isolation durch Speicher-VMs, denen Speichervolumes zugewiesen sind und die Speichervolumes zwischen Mandanten isolieren.
 - **Compute**: Dedizierte Zuweisung von Servereinheiten zu einem einzelnen Mandanten. Keine Hard- oder Softpartitionierung von Servereinheiten. Keine Freigabe einer einzelnen Server- oder Hosteinheit zwischen Mandanten. 
 
 Die Bereitstellungen von Einheiten von HANA (große Instanz) zwischen verschieden Mandanten sind füreinander nicht sichtbar. In verschiedenen Mandanten bereitgestellte Einheiten von HANA (große Instanz) können nicht direkt auf der Ebene des Umfelds von HANA (große Instanz) miteinander kommunizieren. Nur Einheiten von HANA (große Instanz) innerhalb eines Mandanten können auf der Ebene des Umfelds von HANA (große Instanz) miteinander kommunizieren.

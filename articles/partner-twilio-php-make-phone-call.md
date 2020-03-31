@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.openlocfilehash: fb1623c4a409f1c6cba94bad56d773e166d2b182
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69637324"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>Tätigen eines Telefonanrufs mithilfe von Twilio in einer PHP-Anwendung auf Azure
@@ -67,7 +67,7 @@ Der folgende HTML-Code erstellt eine Webseite (**callform.html**) zur Eingabe de
 ```
 
 ## <a name="create-the-code-to-make-the-call"></a>Erstellen des Codes für den Anruf
-Der folgende Code erstellt **makecall.php**, die aufgerufen wird, wenn der Benutzer das Formular aus **callform.html** übermittelt. Der folgende Code erstellt die Anrufnachricht und führt den Anruf aus. Ersetzen Sie die Platzhalterwerte **$sid** und **$token** im folgenden Code durch Ihr [Twilio-Konto][twilio_console] und Ihr Authentifizierungstoken in der Twilio-Konsole.
+Der folgende Code erstellt **makecall.php**, die aufgerufen wird, wenn der Benutzer das Formular aus **callform.html** übermittelt. Der folgende Code erstellt die Anrufnachricht und führt den Anruf aus. Ersetzen Sie die Platzhalterwerte [$sid][twilio_console] und **$token** im folgenden Code durch Ihr **Twilio-Konto** und Ihr Authentifizierungstoken in der Twilio-Konsole.
 
 ```html
 <html>
@@ -116,7 +116,7 @@ Dieser Code demonstriert die allgemeinen Funktionen für die Verwendung von Twil
 
 Zusätzliche Informationen zu Twilio finden Sie unter [https://www.twilio.com/docs][twilio_docs].
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 * [Verwenden von Twilio für Telefonie- und SMS-Funktionen in PHP](partner-twilio-php-how-to-use-voice-sms.md)
 
 [twilio_console]: https://www.twilio.com/console

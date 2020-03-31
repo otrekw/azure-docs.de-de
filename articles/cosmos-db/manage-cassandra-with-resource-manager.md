@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
 ms.openlocfilehash: c4dc97453fe50865db74f8918ef3dffdb4013b4f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588806"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227290"
 ---
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Verwalten von Ressourcen für die Cassandra-API von Azure Cosmos DB mithilfe von Azure Resource Manager-Vorlagen
 
 In diesem Artikel wird beschrieben, wie Sie verschiedene Vorgänge durchführen können, um die Verwaltung Ihrer Azure Cosmos DB-Konten, -Datenbanken und -Container mithilfe von Azure Resource Manager-Vorlagen zu automatisieren. Dieser Artikel enthält nur Beispiele für SQL-API-Konten. Weitere Beispiele für andere API-Typen finden Sie in den Artikeln zur Verwendung von Azure Resource Manager-Vorlagen mit der Azure Cosmos DB-API für [SQL](manage-sql-with-resource-manager.md), [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDB](manage-mongodb-with-resource-manager.md) und [Tabellen](manage-table-with-resource-manager.md).
 
-## Erstellen von Azure Cosmos-Konto, -Keyspace und -Tabelle <a id="create-resource"></a>
+## <a name="create-azure-cosmos-account-keyspace-and-table"></a>Erstellen von Azure Cosmos-Konto, -Keyspace und -Tabelle <a id="create-resource"></a>
 
 Erstellen Sie Azure Cosmos DB-Ressourcen mithilfe einer Azure Resource Manager-Vorlage. Mit dieser Vorlage wird ein Azure Cosmos-Konto für die Cassandra-API mit zwei Tabellen erstellt, die sich auf Keyspace-Ebene einen Durchsatz von 400 RU/s teilen. Kopieren Sie die Vorlage, und stellen Sie sie wie unten gezeigt bereit, oder besuchen Sie den [Azure-Schnellstartkatalog](https://azure.microsoft.com/resources/templates/101-cosmosdb-cassandra/), und führen Sie die Bereitstellung über das Azure-Portal durch. Sie können die Vorlage auch auf Ihren lokalen Computer herunterladen oder eine neue Vorlage erstellen und den lokalen Pfad mit dem Parameter `--template-file` angeben.
 

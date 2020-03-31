@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
 ms.openlocfilehash: c194dbeb0183e64535342f8aaf9a770a93b3e332
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75896180"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>vCPU-Kontingente für virtuelle Computer
 
-Die vCPU-Kontingente für virtuelle Computer und die VM-Skalierungsgruppen werden bei jedem Abonnement und in jeder Region in zwei Ebenen angeordnet. „Regionale vCPUs gesamt“ bilden die erste Ebene, die zweite Ebene besteht aus den Kernen der verschiedenen VM-Größenfamilien, z.B. vCPUs der D-Serie. Bei jeder Bereitstellung eines neuen virtuellen Computers dürfen die vCPUs für den virtuellen Computer das vCPU-Kontingent für die VM-Größenfamilie bzw. das regionale vCPU-Gesamtkontingent nicht überschreiten. Wird eines dieser Kontingente überschritten, wird die VM-Bereitstellung nicht zugelassen. Es gibt auch ein Kontingent für die Gesamtanzahl der virtuellen Computer in der Region. Die Details zu den einzelnen Kontingenten können Sie entweder im [Azure-Portal](https://portal.azure.com) auf der Seite **Abonnement** im Bereich **Nutzung + Kontingente** anzeigen oder die Werte mithilfe der Azure-Befehlszeilenschnittstelle abfragen.
+Die vCPU-Kontingente für virtuelle Computer und die VM-Skalierungsgruppen werden bei jedem Abonnement und in jeder Region in zwei Ebenen angeordnet. „Regionale vCPUs gesamt“ bilden die erste Ebene, die zweite Ebene besteht aus den Kernen der verschiedenen VM-Größenfamilien, z.B. vCPUs der D-Serie. Bei jeder Bereitstellung eines neuen virtuellen Computers dürfen die vCPUs für den virtuellen Computer das vCPU-Kontingent für die VM-Größenfamilie bzw. das regionale vCPU-Gesamtkontingent nicht überschreiten. Wird eines dieser Kontingente überschritten, wird die VM-Bereitstellung nicht zugelassen. Es gibt auch ein Kontingent für die Gesamtanzahl der virtuellen Computer in der Region. Die Details zu den einzelnen Kontingenten können Sie entweder im **Azure-Portal** auf der Seite **Abonnement** im Bereich [Nutzung + Kontingente](https://portal.azure.com) anzeigen oder die Werte mithilfe der Azure-Befehlszeilenschnittstelle abfragen.
 
 
 ## <a name="check-usage"></a>Überprüfen der Nutzung

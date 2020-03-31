@@ -4,10 +4,10 @@ description: Hier erfahren Sie, wie Sie eine Remoteverbindung mit einer Skalieru
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.openlocfilehash: c7ca4f0d5dce1b19837a44d5c9749f3e1293c6b8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458313"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Herstellen einer Remoteverbindung mit einer VM-Skalierungsgruppeninstanz oder einem Clusterknoten
@@ -17,7 +17,7 @@ Um eine IP-Adresse und einen Port für eine Remoteverbindung mit einer bestimmte
 
 1. Rufen Sie die NAT-Eingangsregeln für das Remotedesktopprotokoll (RDP) ab.
 
-    Normalerweise hat jeder Knotentyp, der in Ihrem Cluster definiert ist, eine eigene virtuelle IP-Adresse und einen dedizierten Lastenausgleich. Standardmäßig wird der Lastenausgleich für einen Knotentyp im folgenden Format benannt: *LB-{Clustername}-{Knotentyp}* , z.B. *LB-mycluster-FrontEnd*. 
+    Normalerweise hat jeder Knotentyp, der in Ihrem Cluster definiert ist, eine eigene virtuelle IP-Adresse und einen dedizierten Lastenausgleich. Standardmäßig wird der Lastenausgleich für einen Knotentyp anhand des folgenden Formats benannt: *LB-{Clustername}-{Knotentyp}* , also z.B. *LB-meinCluster-FrontEnd*. 
     
     Wählen Sie im Azure-Portal auf der Seite für den Lastenausgleich **Einstellungen** > **NAT-Eingangsregeln** aus: 
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: c2367fc58530675783277c2edc4d62efd55a1da8
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 683b89b29265159b0316d427a7ae616bf3766f7c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771879"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529016"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for MariaDB
 
@@ -25,7 +25,7 @@ Sie können konfigurieren, dass bei einer Warnung die folgenden Aktionen ausgef�
 * Aufrufen eines Webhooks
 
 Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abrufen zugehöriger Informationen:
-* [Azure-Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure-Befehlszeilenschnittstelle](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure Monitor-REST-API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 

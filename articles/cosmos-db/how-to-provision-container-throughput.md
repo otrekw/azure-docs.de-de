@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: mjbrown
 ms.openlocfilehash: e416501cb3c532b3ba0a262442b35b236875a463
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78273290"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>Bereitstellen von Durchsatz für einen Azure Cosmos-Container
@@ -48,7 +48,7 @@ Informationen zum Erstellen eines Containers mit dediziertem Durchsatz finden Si
 > [!Note]
 > Verwenden Sie die Cosmos SDKs für die SQL-API, um Durchsatz für alle Cosmos DB-APIs (mit Ausnahme der Cassandra-API) bereitzustellen.
 
-### <a id="dotnet-most"></a>SQL-, MongoDB-, Gremlin- und Tabellen-API
+### <a name="sql-mongodb-gremlin-and-table-apis"></a><a id="dotnet-most"></a>SQL-, MongoDB-, Gremlin- und Tabellen-API
 ### <a name="net-v2-sdk"></a>.NET V2 SDK
 
 ```csharp
@@ -96,7 +96,7 @@ offer.content.offerThroughput = 2000;
 await client.offer(offer.id).replace(offer);
 ```
 
-### <a id="dotnet-cassandra"></a>Cassandra-API
+### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Cassandra-API
 
 Ähnliche Befehle können über einen beliebigen CQL-konformen Treiber ausgegeben werden.
 

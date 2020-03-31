@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: cb906f6b3cf333e3fb3a24a934e5d9f11fc10cda
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 9660e87f3ee4e1c1c6a270f14928fdd111664e66
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654476"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480877"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netzwerkleistungsmonitor-Lösung in Azure
 
@@ -30,7 +30,7 @@ Der Netzwerkleistungsmonitor bietet drei allgemeine Funktionen:
 
     Mit dieser Funktion können Sie Tests auf Basis von HTTP, HTTPS, TCP und ICMP ausführen, um die Verfügbarkeit und Antwortzeit Ihres Diensts in nahezu Echtzeit oder historisch zu überwachen. Sie können auch den Beitrag des Netzwerks bei Paketverlusten und Latenz überwachen. Mit einer Netzwerktopologiekarte können Sie Geschwindigkeitsverluste des Netzwerks eingrenzen. Sie können Problemstellen, die entlang des Netzwerkpfads vom Knoten zum Dienst auftreten, mit Latenzdaten für jeden Hop identifizieren. Mithilfe integrierter Tests können Sie ganz ohne Vorkonfiguration die Konnektivität mit Office 365 und Dynamics CRM überwachen. Mit dieser Funktion können Sie die Netzwerkkonnektivität mit einem beliebigen TCP-fähigen Endpunkt überwachen (z.B. Websites, SaaS-Anwendungen, PaaS-Anwendungen und SQL-Datenbanken).
 
-* [ExpressRoute-Monitor](network-performance-monitor-expressroute.md): Überwachen Sie die End-to-End-Konnektivität und -Leistung zwischen Ihren Zweigstellen und Azure – über Azure ExpressRoute.  
+* [ExpressRoute-Monitor](network-performance-monitor-expressroute.md): Überwachen Sie die End-to-End-Konnektivität und -Leistung zwischen Ihren Zweigstellen und Azure über Azure ExpressRoute.  
 
 Weitere Informationen zu den verschiedenen vom [Netzwerkleistungsmonitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) unterstützten Funktionen sind online verfügbar.
  
@@ -39,7 +39,8 @@ NPM kann die Konnektivität zwischen Netzwerken und Anwendungen in jedem Teil de
 * Nordeuropa
 * Europa, Westen
 * Frankreich, Mitte
-
+* Kanada, Mitte
+* USA (Westen)
 * USA, Westen-Mitte
 * USA Nord Mitte
 * USA Süd Mitte
@@ -71,7 +72,7 @@ Verwenden Sie zum Installieren von Agents die grundlegenden Prozesse, die unter 
 
 ### <a name="where-to-install-the-agents"></a>Bestimmen des Installationsorts für die Agents 
 
-* **Systemmonitor**: Installieren Sie Log Analytics-Agents auf mindestens einem Knoten, der mit den einzelnen Subnetzwerken verbunden ist, über die Sie die Netzwerkkonnektivität mit anderen Subnetzwerken überwachen möchten.
+* **Systemmonitor:** Installieren Sie Log Analytics-Agents auf mindestens einem Knoten, der mit den einzelnen Subnetzwerken verbunden ist, über die Sie die Netzwerkkonnektivität mit anderen Subnetzwerken überwachen möchten.
 
     Zur Überwachung einer Netzwerkverbindung installieren Sie an beiden Endpunkten der Verbindung Agents. Sollten Sie sich hinsichtlich der Topologie Ihres Netzwerks nicht sicher sein, installieren Sie die Agents auf Servern mit kritischen Workloads, zwischen denen Sie die Netzwerkleistung überwachen möchten. Wenn Sie also beispielsweise die Netzwerkverbindung zwischen einem Webserver und einem Server mit SQL überwachen möchten, installieren Sie auf beiden Servern einen Agent. Agents überwachen nicht die eigentlichen Hosts, sondern die Netzwerkkonnektivität (Verbindungen) zwischen Hosts. 
 
@@ -125,7 +126,7 @@ Der Netzwerkleistungsmonitor verwendet synthetische Transaktionen, um die Netzwe
 
    ![Ansicht „Dienstkonnektivitätsmonitor“](media/network-performance-monitor/npm-service-endpoint-monitor.png)
 
-   **ExpressRoute-Monitor**: Wählen Sie **Jetzt ermitteln** aus, um alle privaten ExpressRoute-Peerings zu ermitteln, die mit den virtuellen Netzwerken in dem mit diesem Log Analytics-Arbeitsbereich verknüpften Azure-Abonnement verbunden sind. 
+   **ExpressRoute-Monitor**: Wählen Sie **Jetzt ermitteln** aus, um alle privaten ExpressRoute-Peerings zu ermitteln, die mit den virtuellen Netzwerken in dem Azure-Abonnement verbunden sind, das mit diesem Log Analytics-Arbeitsbereich verknüpft ist. 
 
    ![Ansicht „ExpressRoute-Monitor“](media/network-performance-monitor/npm-express-route.png)
 
@@ -135,7 +136,7 @@ Der Netzwerkleistungsmonitor verwendet synthetische Transaktionen, um die Netzwe
     
 Die Überwachung für diese Verbindungen und Peerings ist zunächst deaktiviert. Wählen Sie jede Ressource aus, die Sie überwachen möchten, und konfigurieren Sie die Überwachung in der Detailansicht auf der rechten Seite. Wählen Sie zum Speichern der Konfiguration **Speichern** aus. Weitere Informationen finden Sie im Artikel „Konfigurieren der ExpressRoute-Überwachung“. 
 
-Nach Abschluss der Einrichtung dauert es zwischen 30 Minuten und einer Stunde, bis die Daten aufgefüllt wurden. Während die Lösung Daten aus Ihrem Netzwerk aggregiert, wird auf der Kachel **Übersicht** des Netzwerkleistungsmonitors die Meldung *Für die Lösung ist eine weitere Konfiguration erforderlich.* angezeigt. Nachdem die Daten gesammelt und indiziert wurden, ändert sich die Kachel **Übersicht** und informiert Sie in einer Zusammenfassung über die Integrität Ihres Netzwerks. Daraufhin können Sie die Überwachung der Knoten, auf denen Log Analytics-Agents installiert sind, sowie die Subnetze, die in Ihrer Umgebung ermittelt wurden, bearbeiten.
+Nach Abschluss der Einrichtung dauert es zwischen 30 Minuten und einer Stunde, bis die Daten aufgefüllt wurden. Während die Lösung Daten aus Ihrem Netzwerk aggregiert, wird auf der Kachel *Übersicht* des Netzwerkleistungsmonitors die Meldung **Für die Lösung ist eine weitere Konfiguration erforderlich.** angezeigt. Nachdem die Daten gesammelt und indiziert wurden, ändert sich die Kachel **Übersicht** und informiert Sie in einer Zusammenfassung über die Integrität Ihres Netzwerks. Daraufhin können Sie die Überwachung der Knoten, auf denen Log Analytics-Agents installiert sind, sowie die Subnetze, die in Ihrer Umgebung ermittelt wurden, bearbeiten.
 
 #### <a name="edit-monitoring-settings-for-subnets-and-nodes"></a>Bearbeiten von Überwachungseinstellungen für Subnetze und Knoten 
 
@@ -281,9 +282,9 @@ Informationen zu Preisen sind [online](network-performance-monitor-pricing-faq.m
 
 ## <a name="provide-feedback"></a>Feedback geben 
 
-* **UserVoice:** Sie können Ihre Ideen zu Features des Netzwerkleistungsmonitors veröffentlichen, an denen wir arbeiten sollen. Besuchen Sie die [UserVoice-Seite](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring). 
+* **UserVoice**: Sie können Ihre Ideen zu Features des Netzwerkleistungsmonitors veröffentlichen, an denen wir arbeiten sollen. Besuchen Sie die [UserVoice-Seite](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring). 
 
-* **Treten Sie unserer Gruppe bei:** Wir freuen uns über neue Kunden, die unserer Gruppe beitreten möchten. Als Teil der Gruppe erhalten Sie vorab Zugriff auf neue Funktionen und können uns dabei helfen, den Netzwerkleistungsmonitor zu verbessern. Wenn Sie beitreten möchten, füllen Sie diesen [kurzen Fragebogen](https://aka.ms/npmcohort) aus. 
+* **Treten Sie unserer Gruppe bei**: Wir freuen uns über neue Kunden, die unserer Gruppe beitreten möchten. Als Teil der Gruppe erhalten Sie vorab Zugriff auf neue Funktionen und können uns dabei helfen, den Netzwerkleistungsmonitor zu verbessern. Wenn Sie beitreten möchten, füllen Sie diesen [kurzen Fragebogen](https://aka.ms/npmcohort) aus. 
 
 ## <a name="next-steps"></a>Nächste Schritte 
 Informieren Sie sich ausführlicher über [Systemmonitor](network-performance-monitor-performance-monitor.md), [Dienstkonnektivitätsmonitor](network-performance-monitor-performance-monitor.md) und [ExpressRoute-Monitor](network-performance-monitor-expressroute.md). 

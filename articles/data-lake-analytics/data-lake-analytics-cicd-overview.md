@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
 ms.openlocfilehash: b035be727df2dfecb613da79681affd740c69bec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60333859"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Gewusst wie: Einrichten einer CI/CD-Pipeline für Azure Data Lake Analytics  
@@ -43,8 +43,8 @@ Vergewissern Sie sich vor dem Einrichten eines Buildtasks für ein U-SQL-Projekt
 
 Wenn dies nicht der Fall ist, stehen zwei Optionen zur Verfügung, um das Projekt zu migrieren:
 
-- Option 1: Ändern Sie das alte Importelement in das vorherige Importelement.
-- Option 2: Öffnen Sie das alte Projekt in Azure Data Lake Tools für Visual Studio. Verwenden Sie eine neuere Version als 2.3.3000.0. Die alte Projektvorlage wird automatisch auf die neueste Version aktualisiert. Neue Projekte, die mit höheren Versionen als 2.3.3000.0 erstellt wurden, verwenden die neue Vorlage.
+- Option 1: Ändern des alten in das vorherige Importelement.
+- Option 2: Öffnen des alten Projekts in Azure Data Lake Tools für Visual Studio. Verwenden Sie eine neuere Version als 2.3.3000.0. Die alte Projektvorlage wird automatisch auf die neueste Version aktualisiert. Neue Projekte, die mit höheren Versionen als 2.3.3000.0 erstellt wurden, verwenden die neue Vorlage.
 
 ### <a name="get-nuget"></a>Abrufen von NuGet
 
@@ -313,7 +313,7 @@ Um den NuGet-Paketverweis hinzuzufügen, klicken Sie im Visual Studio-Projektmap
 
 ### <a name="build-u-sql-a-database-project-with-the-msbuild-command-line"></a>Erstellen eines U-SQL-Datenbankprojekts über die MSBuild-Befehlszeile
 
-Um Ihr U-SQL-Datenbankprojekt zu erstellen, rufen Sie die MSBuild-Standardbefehlszeile auf, und übergeben Sie den Verweis auf das U-SQL SDK-NuGet-Paket als zusätzliches Argument. Siehe folgendes Beispiel: 
+Um Ihr U-SQL-Datenbankprojekt zu erstellen, rufen Sie die MSBuild-Standardbefehlszeile auf, und übergeben Sie den Verweis auf das U-SQL SDK-NuGet-Paket als zusätzliches Argument. Sehen Sie sich folgendes Beispiel an: 
 
 ```
 msbuild DatabaseProject.usqldbproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL.SDK.1.3.180615\build\runtime
@@ -363,7 +363,7 @@ Das direkte Hinzufügen von Testfällen für Tabellenwertfunktionen und gespeich
 
 Führen Sie die folgenden Schritte aus, um einen Task für die Datenbankbereitstellung in Azure Pipelines einzurichten:
 
-1. Fügen Sie einen PowerShell-Skripttask im Build oder der Releasepipeline hinzu, und führen Sie das folgende PowerShell-Skript aus. Mit dieser Aufgabe können Azure SDK-Abhängigkeiten für `PackageDeploymentTool.exe` und `PackageDeploymentTool.exe` abgerufen werden. Sie können die Parameter **-AzureSDK** und **-DBDeploymentTool** festlegen, um die Abhängigkeiten und Bereitstellungstools in bestimmte Ordner zu laden. Übergeben Sie den **-AzureSDK**-Pfad in Schritt 2 als **-AzureSDKPath**-Parameter an `PackageDeploymentTool.exe`. 
+1. Fügen Sie einen PowerShell-Skripttask im Build oder der Releasepipeline hinzu, und führen Sie das folgende PowerShell-Skript aus. Mit dieser Aufgabe können Azure SDK-Abhängigkeiten für `PackageDeploymentTool.exe` und `PackageDeploymentTool.exe` abgerufen werden. Sie können die Parameter **-AzureSDK** und **-DBDeploymentTool** festlegen, um die Abhängigkeiten und Bereitstellungstools in bestimmte Ordner zu laden. Übergeben Sie den **-AzureSDK**-Pfad in Schritt 2 als `PackageDeploymentTool.exe`-AzureSDKPath **-Parameter an** . 
 
     ```powershell
     <#
@@ -456,31 +456,31 @@ Führen Sie die folgenden Schritte aus, um einen Task für die Datenbankbereitst
 
 | Parameter | BESCHREIBUNG | Standardwert | Erforderlich |
 |---------|-----------|-------------|--------|
-|Paket|Der Pfad des bereitzustellenden U-SQL-Datenbankbereitstellungspakets.|null|true|
+|Paket|Der Pfad des bereitzustellenden U-SQL-Datenbankbereitstellungspakets.|NULL|true|
 |Datenbank|Der Name der Datenbank, in der die Bereitstellung erfolgt oder die erstellt wird.|master|false|
-|LogFile|Der Pfad der Datei für die Protokollierung, standardmäßig zur Standardausgabe (Konsole).|null|false|
-|LogLevel|Protokollierungsgrad: „Ausführlich“, „Normal“, „Warnung“ oder „Fehler“.|LogLevel.Normal|false|
+|LogFile|Der Pfad der Datei für die Protokollierung, standardmäßig zur Standardausgabe (Konsole).|NULL|false|
+|LogLevel|Protokollebene: Ausführlich, Normal, Warnung oder Fehler.|LogLevel.Normal|false|
 
 #### <a name="parameter-for-local-deployment"></a>Parameter für die lokale Bereitstellung
 
 |Parameter|BESCHREIBUNG|Standardwert|Erforderlich|
 |---------|-----------|-------------|--------|
-|DataRoot|Der Pfad des lokalen Datenstammordners.|null|true|
+|DataRoot|Der Pfad des lokalen Datenstammordners.|NULL|true|
 
 #### <a name="parameters-for-azure-data-lake-analytics-deployment"></a>Parameter für die Bereitstellung von Azure Data Lake Analytics
 
 |Parameter|BESCHREIBUNG|Standardwert|Erforderlich|
 |---------|-----------|-------------|--------|
-|Konto|Gibt per Kontonamen an, in welchem Azure Data Lake Analytics-Konto die Einrichtung erfolgen soll.|null|true|
-|ResourceGroup|Der Name der Azure-Ressourcengruppe für das Azure Data Lake Analytics-Konto.|null|true|
-|SubscriptionId|Die Azure-Abonnement-ID für das Azure Data Lake Analytics-Konto.|null|true|
-|Tenant|Der Mandantenname ist der Azure Active Directory-Domänenname (Azure AD). Diesen finden Sie auf der Abonnementverwaltungsseite im Azure-Portal.|null|true|
-|AzureSDKPath|Der Pfad zum Suchen von abhängigen Assemblys im Azure SDK.|null|true|
+|Konto|Gibt per Kontonamen an, in welchem Azure Data Lake Analytics-Konto die Einrichtung erfolgen soll.|NULL|true|
+|ResourceGroup|Der Name der Azure-Ressourcengruppe für das Azure Data Lake Analytics-Konto.|NULL|true|
+|SubscriptionId|Die Azure-Abonnement-ID für das Azure Data Lake Analytics-Konto.|NULL|true|
+|Tenant|Der Mandantenname ist der Azure Active Directory-Domänenname (Azure AD). Diesen finden Sie auf der Abonnementverwaltungsseite im Azure-Portal.|NULL|true|
+|AzureSDKPath|Der Pfad zum Suchen von abhängigen Assemblys im Azure SDK.|NULL|true|
 |Interactive|Legt fest, ob der interaktive Modus für die Authentifizierung verwendet oder nicht verwendet werden soll.|false|false|
-|ClientId|Die Azure AD-Anwendungs-ID ist für die nicht interaktive Authentifizierung erforderlich.|null|Für die nicht interaktive Authentifizierung erforderlich.|
-|Geheimnis|Das Geheimnis oder Kennwort für die nicht interaktive Authentifizierung. Es sollte nur in einer vertrauenswürdigen und sicheren Umgebung verwendet werden.|null|Für die nicht interaktive Authentifizierung erforderlich. Verwenden Sie andernfalls „SecreteFile“.|
-|SecreteFile|Die Datei speichert das Geheimnis oder Kennwort für die nicht interaktive Authentifizierung. Stellen Sie sicher, dass sie nur vom aktuellen Benutzer gelesen werden kann.|null|Für die nicht interaktive Authentifizierung erforderlich. Verwenden Sie andernfalls „Secrete“.|
-|CertFile|Die Datei speichert die X.509-Zertifizierung für die nicht interaktive Authentifizierung. Standardmäßig wird die Authentifizierung mit geheimem Clientschlüssel verwendet.|null|false|
+|ClientId|Die Azure AD-Anwendungs-ID ist für die nicht interaktive Authentifizierung erforderlich.|NULL|Für die nicht interaktive Authentifizierung erforderlich.|
+|Geheimnis|Das Geheimnis oder Kennwort für die nicht interaktive Authentifizierung. Es sollte nur in einer vertrauenswürdigen und sicheren Umgebung verwendet werden.|NULL|Für die nicht interaktive Authentifizierung erforderlich. Verwenden Sie andernfalls „SecreteFile“.|
+|SecreteFile|Die Datei speichert das Geheimnis oder Kennwort für die nicht interaktive Authentifizierung. Stellen Sie sicher, dass sie nur vom aktuellen Benutzer gelesen werden kann.|NULL|Für die nicht interaktive Authentifizierung erforderlich. Verwenden Sie andernfalls „Secrete“.|
+|CertFile|Die Datei speichert die X.509-Zertifizierung für die nicht interaktive Authentifizierung. Standardmäßig wird die Authentifizierung mit geheimem Clientschlüssel verwendet.|NULL|false|
 | JobPrefix | Das Präfix für die Datenbankbereitstellung eines U-SQL-DDL-Auftrags. | Deploy_ und DateTime.Now | false |
 
 ## <a name="next-steps"></a>Nächste Schritte

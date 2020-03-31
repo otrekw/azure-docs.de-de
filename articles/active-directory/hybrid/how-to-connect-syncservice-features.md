@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5486a8d8bd4c295f49e0ab847daf45d0fcab47ad
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78300535"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Features des Azure AD Connect-Synchronisierungsdiensts
@@ -57,8 +57,8 @@ Die folgenden Einstellungen werden von Azure AD Connect konfiguriert und können
 
 | DirSyncFeature | Comment |
 | --- | --- |
-| DeviceWriteback |[Azure AD Connect: Geräterückschreiben aktivieren](how-to-connect-device-writeback.md) |
-| DirectoryExtensions |[Azure AD Connect-Synchronisierung: Verzeichniserweiterungen](how-to-connect-sync-feature-directory-extensions.md) |
+| DeviceWriteback |[Azure AD Connect: Aktivieren des Geräterückschreibens](how-to-connect-device-writeback.md) |
+| DirectoryExtensions |[Azure AD Connect Sync: Verzeichniserweiterungen](how-to-connect-sync-feature-directory-extensions.md) |
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Ermöglicht es, ein Attribut unter Quarantäne zu stellen, falls es sich um ein Duplikat eines anderen Objekts handelt, damit nicht der Export des gesamten Objekts mit einem Fehler abgebrochen wird. |
 | Kennworthashsynchronisierung |[Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](how-to-connect-password-hash-synchronization.md) |
 |Passthrough-Authentifizierung|[Benutzeranmeldung mit der Azure Active Directory-Passthrough-Authentifizierung](how-to-connect-pta.md)|

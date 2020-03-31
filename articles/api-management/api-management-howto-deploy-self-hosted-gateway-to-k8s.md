@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
 ms.openlocfilehash: 109316acb73d3c5f00186298c1f8840c516e5790
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73510591"
 ---
 # <a name="deploy-a-self-hosted-azure-api-management-gateway-to-kubernetes"></a>Bereitstellen eines selbstgehosteten Azure API Management-Gateways für Kubernetes
@@ -29,7 +29,7 @@ Dieser Artikel beschreibt die Schritte für die Bereitstellung eines selbstgehos
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
+- Absolvieren Sie den folgende Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md)
 - Erstellen Sie einen Kubernetes-Cluster. [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) ist eine gute Option für Entwicklungs- und Evaluierungszwecke. Für Produktionsworkloads können Sie [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) oder einen Kubernetes-Cluster in einer fremden Cloud verwenden.
 - [Stellen Sie eine Gatewayressource in Ihrer API Management-Instanz bereit](api-management-howto-provision-self-hosted-gateway.md).
 

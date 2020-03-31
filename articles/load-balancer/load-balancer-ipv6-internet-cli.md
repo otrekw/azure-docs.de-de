@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
 ms.openlocfilehash: bff6a7ca6eb1a6859ec25d488f564c66946a780b
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76045410"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Erstellen eines öffentlichen Lastenausgleichs mit IPv6 mithilfe der Azure-Befehlszeilenschnittstelle
 
 >[!NOTE] 
->In diesem Artikel wird eine Einführungsfunktion von IPv6 beschrieben, mit der Lastenausgleichsmodule im Basic-Tarif sowohl IPv4- als auch IPv6-Konnektivität bereitstellen können. Umfassende IPv6-Konnektivität ist jetzt mit [IPv6 für Azure VNETs](../virtual-network/ipv6-overview.md) verfügbar, das IPv6-Konnektivität in Ihre virtuellen Netzwerke integriert und wichtige Funktionen wie IPv6-Netzwerk-Sicherheitsgruppenregeln, benutzerdefiniertes IPv6-Routing, IPv6-Lastenausgleich in den Tarifen Standard und Basic und mehr umfasst.  IPv6 für Azure VNETs ist der empfohlene Standard für IPv6-Anwendungen in Azure. Weitere Informationen finden Sie unter [IPv6 für Azure VNET-PowerShell-Bereitstellung](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md). 
+>In diesem Artikel wird eine Einführungsfunktion von IPv6 beschrieben, mit der Lastenausgleichsmodule im Basic-Tarif sowohl IPv4- als auch IPv6-Konnektivität bereitstellen können. Umfassende IPv6-Konnektivität ist jetzt mit [IPv6 für Azure VNETs](../virtual-network/ipv6-overview.md) verfügbar, das IPv6-Konnektivität in Ihre virtuellen Netzwerke integriert und wichtige Funktionen wie Regeln für IPv6-Netzwerksicherheitsgruppen, benutzerdefiniertes IPv6-Routing, IPv6-Lastenausgleich in den Tarifen Standard und Basic und mehr umfasst.  IPv6 für Azure VNETs ist der empfohlene Standard für IPv6-Anwendungen in Azure. Weitere Informationen finden Sie unter [IPv6 für Azure VNET-PowerShell-Bereitstellung](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md). 
 
 Ein Azure Load Balancer ist ein Layer-4-Load Balancer (TCP, UDP). Lastenausgleichsmodule sorgen für Hochverfügbarkeit, indem sie eingehenden Datenverkehr zwischen funktionierenden Dienstinstanzen in Clouddiensten oder auf virtuelle Computer in einer Lastenausgleichsgruppe verteilen. Lastenausgleichsmodule können diese Dienste auch auf mehreren Ports, mehreren IP-Adressen oder beidem leisten.
 
@@ -48,11 +48,11 @@ Die folgenden Schritte zeigen, wie Sie einen öffentlichen Lastenausgleich mithi
 
 Erstellen und konfigurieren Sie die folgenden Objekte, um einen Lastenausgleich bereitzustellen:
 
-* **Front-End-IP-Konfiguration:** Enthält öffentliche IP-Adressen für eingehenden Netzwerkdatenverkehr.
-* **Back-End-Adresspool:** Enthält Netzwerkschnittstellen (NICs), die virtuellen Computern den Empfang von Netzwerkdatenverkehr des Lastenausgleichs ermöglichen.
-* **Lastenausgleichsregeln:** Enthält Regeln, mit denen ein öffentlicher Port auf dem Load Balancer einem Port im Back-End-Adresspool zugeordnet wird.
-* **NAT-Eingangsregeln:** Enthält Netzwerkadressenübersetzungs-Regeln (Network Address Translation, NAT), die einen öffentlichen Port des Lastenausgleichs einem Port für einen bestimmten virtuellen Computer im Back-End-Adresspool zuordnen.
-* **Tests:** Enthält Integritätstests zum Prüfen der Verfügbarkeit von VM-Instanzen im Back-End-Adresspool.
+* **Front-End-IP-Konfiguration**: Enthält öffentliche IP-Adressen für eingehenden Netzwerkdatenverkehr.
+* **Back-End-Adresspool**: Enthält Netzwerkschnittstellen (NICs), die virtuellen Computern den Empfang von Netzwerkdatenverkehr des Lastenausgleichs ermöglichen.
+* **Lastenausgleichsregeln**: Enthält Regeln, die einen öffentlichen Port des Lastenausgleichs einem Port im Back-End-Adresspool zuordnen.
+* **NAT-Eingangsregeln**: Enthält Netzwerkadressübersetzungs-Regeln (Network Address Translation, NAT), die einen öffentlichen Port des Lastenausgleichs einem Port für einen bestimmten virtuellen Computer im Back-End-Adresspool zuordnen.
+* **Tests**: Enthält Integritätstests zum Prüfen der Verfügbarkeit von VM-Instanzen im Back-End-Adresspool.
 
 ## <a name="set-up-azure-cli"></a>Einrichten der Azure-Befehlszeilenschnittstelle
 

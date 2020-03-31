@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 06a3469507631d032535bce62b01d964e99dc603
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60334793"
 ---
 # <a name="storsimple-virtual-array-update-04-release-notes"></a>Versionshinweise zu Update 0.4 für StorSimple Virtual Array
@@ -53,7 +53,7 @@ Update 0.4 ist in erster Linie ein Fehlerbehebungs-Build in Verbindung mit ein p
 
 Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in dieser Version behoben wurden:
 
-| Nein. | Feature | Problem |
+| Nein. | Funktion | Problem |
 | --- | --- | --- |
 | 1 |Backupleistung|Bei früheren Versionen dauerten Backups mit einer großen Anzahl von Dateien sehr lange (einige Tage). In dieser Version wurde die Dauer für vollständige und inkrementelle Backups erheblich reduziert. |
 | 2 |Supportpaket|Statistiken für Datenträger, CPU, Arbeitsspeicher, Netzwerk und Cloud werden jetzt im Supportprotokoll erfasst. Dadurch wird die Effizienz der Supportpakete bei der Behandlung von Geräteproblemen gesteigert.|
@@ -65,7 +65,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in dieser V
 
 Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme für StorSimple Virtual Array sowie die Probleme aus früheren Versionsinformationen. 
 
-| Nein. | Feature | Problem | Problemumgehung/Kommentare |
+| Nein. | Funktion | Problem | Problemumgehung/Kommentare |
 | --- | --- | --- | --- |
 | **1.** |Aktualisierungen |In der Vorabversion erstellte virtuellen Geräte können nicht auf eine unterstützte Version für allgemeine Verfügbarkeit aktualisiert werden. |Für diese virtuellen Geräte muss mithilfe eines Notfallwiederherstellungs-Workflows ein Failover für die allgemein verfügbare Version ausgeführt werden. |
 | **2.** |Bereitgestellter Datenträger |Nachdem Sie einen Datenträger mit einer bestimmten angegebenen Größe bereitgestellt und das entsprechende virtuelle StorSimple-Gerät erstellt haben, darf der Datenträger nicht erweitert oder verkleinert werden. Ein entsprechender Versuch führt zum Verlust aller Daten auf den lokalen Ebenen des Geräts. | |
@@ -87,7 +87,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme für S
 ## <a name="next-step"></a>Nächster Schritt
 [Installieren Sie Update 0.4](storsimple-virtual-array-install-update-04.md) für Ihr StorSimple Virtual Array.
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 Suchen Sie nach älteren Versionsanmerkungen? Wechseln Sie zu: 
 
 * [Versionsanmerkungen zu Update 0.3 für StorSimple Virtual Array](storsimple-ova-update-03-release-notes.md)

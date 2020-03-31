@@ -11,73 +11,61 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/25/2019
+ms.date: 03/19/2020
 ms.author: jeedes
-ms.openlocfilehash: bd9e916d1e50d9d5bc0717a1d283b3dcf5d383c9
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 22b673ef481593247b6ee1007c13390a498c66be
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037011"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048629"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Tutorial: Azure Active Directory-Integration in lokales SharePoint
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sharepoint-on-premises"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit SharePoint (lokal)
 
-In diesem Tutorial erfahren Sie, wie Sie die lokale SharePoint-Instanz in Azure Active Directory (Azure AD) integrieren.
-Die Integration einer lokalen SharePoint-Instanz in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie SharePoint (lokal) in Azure Active Directory (Azure AD) integrieren. Die Integration von SharePoint (lokal) in Azure AD ermöglicht Folgendes:
 
-* Sie können in Azure AD steuern, wer Zugriff auf die lokale SharePoint-Instanz hat.
-* Sie können Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei SharePoint (lokal) anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
-* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
+* Steuern Sie in Azure AD, wer Zugriff auf SharePoint (lokal) hat.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihrem Azure AD-Konto automatisch bei SharePoint (lokal) anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration in die lokale SharePoint-Instanz konfigurieren zu können, benötigen Sie Folgendes:
+Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Sollten Sie über keine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
-* Ein Abonnement für SharePoint (lokal), für das einmaliges Anmelden aktiviert ist
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
+* Ein Abonnement für SharePoint (lokal), für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * SharePoint (lokal) unterstützt das **SP-initiierte** einmalige Anmelden.
+* Nach dem Konfigurieren von SharePoint (lokal) können Sie die Sitzungssteuerungen erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützen. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+* Unter [diesem Link](https://docs.microsoft.com/archive/blogs/kaevans/sharepoint-2013-user-profile-sync-for-claims-users) finden Sie weitere Informationen zum Synchronisieren von Benutzerprofilen in SharePoint (lokal) mit Azure AD.
 
 ## <a name="adding-sharepoint-on-premises-from-the-gallery"></a>Hinzufügen der lokalen SharePoint-Instanz aus dem Katalog
 
 Zum Konfigurieren der Integration der lokalen SharePoint-Instanz in Azure AD müssen Sie die lokale Instanz aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**So fügen Sie die lokale SharePoint-Instanz aus dem Katalog hinzu**
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
-
-    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
-
-    > [!NOTE]   
+    > [!NOTE]
     > Wenn das Element nicht verfügbar sein sollte, kann es auch über den festen Link **Alle Dienste** oben im linken Navigationsbereich geöffnet werden. In der folgenden Übersicht befindet sich der Link **Azure Active Directory** im Abschnitt **Identität**. Er kann auch über das Filtertextfeld gesucht werden.
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
+1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **SharePoint (lokal)** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **SharePoint (lokal)** aus, und fügen Sie die App dann hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-sharepoint-on-premises"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für SharePoint (lokal)
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit SharePoint (lokal) mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in SharePoint (lokal) eingerichtet werden.
 
-    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
-
-4. Geben Sie im Suchfeld **lokales SharePoint** ein, wählen Sie im Ergebnisbereich **lokales SharePoint** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
-
-    ![Lokales SharePoint in der Ergebnisliste](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
-
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei einer lokalen SharePoint-Instanz anhand einer Testbenutzerin namens **Britta Simon**.
-Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in SharePoint (lokal) eingerichtet werden.
-
-Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit einer lokalen SharePoint-Instanz zu konfigurieren und zu testen:
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit SharePoint (lokal) die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 2. **[Konfigurieren des einmaligen Anmeldens für SharePoint (lokal)](#configure-sharepoint-on-premises-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
@@ -107,7 +95,6 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit SharePoi
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für die lokale SharePoint-Instanz](common/sp-identifier-reply.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<YourSharePointServerURL>/_trust/default.aspx`
 
@@ -318,6 +305,7 @@ Die Konfiguration funktioniert für eine einzelne Webanwendung, benötigt jedoch
     $t.UseWReplyParameter=$true
     $t.Update()
     ```
+
 6. Navigieren Sie in der Zentraladministration zu der Web-Anwendung, und aktivieren Sie den vorhandenen vertrauenswürdigen Identitätsanbieter. Denken Sie daran, auch die URL der Anmeldeseite als eine benutzerdefinierte Anmeldeseite `/_trust/` zu konfigurieren.
 
 7. Klicken Sie in der Zentraladministration auf die Webanwendung, und wählen Sie **User Policy** (Benutzerrichtlinie) aus. Fügen Sie einen Benutzer, wie zuvor in diesem Artikel gezeigt, mit den entsprechenden Berechtigungen hinzu.
@@ -359,7 +347,7 @@ Dieses Problem lässt sich mit der Open-Source-Lösung [AzureCP](https://yvand.g
 
 ### <a name="create-sharepoint-on-premises-test-user"></a>Erstellen eines Testbenutzers für SharePoint (lokal)
 
-In diesem Abschnitt erstellen Sie in SharePoint (lokal) einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der Plattform für SharePoint (lokal) ggf. vom  [Supportteam für SharePoint (lokal)](https://support.office.com/) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in SharePoint (lokal) einen Benutzer namens Britta Simon. Wenden Sie sich an das [Supportteam für SharePoint (lokal)](https://support.office.com/), um die Benutzer auf der Plattform für SharePoint (lokal) hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
@@ -371,6 +359,8 @@ Wenn Sie im Zugriffsbereich auf die Kachel „SharePoint (lokal)“ klicken, sol
 
 - [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

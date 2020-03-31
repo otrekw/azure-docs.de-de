@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 01/21/2020
 ms.custom: seodec18
 ms.openlocfilehash: 245a0b18187ff1c1b226e94b03374f2c071e51c0
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76314826"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Überwachen und Mindern der Drosselung zur Verhinderung von Latenz in Azure Time Series Insights
@@ -56,7 +56,7 @@ Mithilfe von Warnungen können Sie in Ihrer Umgebung auftretende Latenzprobleme 
 
    Hier können Sie Warnungen mit einigen der folgenden Bedingungen konfigurieren:
 
-   |Metrik  |Beschreibung  |
+   |Metrik  |BESCHREIBUNG  |
    |---------|---------|
    |**Ingress Received Bytes** (Eingang empfangene Bytes)     | Anzahl der aus Ereignisquellen gelesenen Rohbytes. Die Anzahl der Rohbytes umfasst normalerweise den Eigenschaftennamen und den Eigenschaftswert.  |  
    |**Ingress Received Invalid Messages** (Eingang empfangene ungültige Nachrichten)     | Anzahl der aus allen Azure Event Hubs- oder Azure IoT Hub-Ereignisquellen gelesenen ungültigen Nachrichten.      |

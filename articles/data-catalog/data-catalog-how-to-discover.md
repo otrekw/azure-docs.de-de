@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: b12cb94832a1ea977fb13f5f2271984dc8780cee
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68736378"
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>Ermitteln von Datenquellen in Azure Data Catalog
@@ -33,7 +33,7 @@ Durch eine Kombination von Suchen und Filtern können Sie schnell durch die in D
 
 Obwohl die standardmäßige Freitextsuche einfach und intuitiv ist, können Sie auch die Suchsyntax von Data Catalog verwenden, um die Suchergebnisse noch präziser zu steuern. Die Data Catalog-Suche unterstützt die folgenden Techniken:
 
-| Technik | Zweck | Beispiel |
+| Verfahren | Zweck | Beispiel |
 | --- | --- | --- |
 | Standardsuche |Standardsuche mit mindestens einem Suchbegriff. Als Ergebnisse werden alle Datenobjekte zurückgegeben, bei denen eine beliebige Eigenschaft mit den angegebenen Begriffen übereinstimmt. |`sales data` |
 | Eigenschaftsbasierte Suche |Es werden nur Datenquellen zurückgegeben, bei denen der Suchbegriff mit der angegebenen Eigenschaft übereinstimmt. |`name:finance` |

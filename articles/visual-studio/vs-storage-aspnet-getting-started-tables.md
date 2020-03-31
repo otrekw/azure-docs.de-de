@@ -14,10 +14,10 @@ ms.date: 12/21/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: c49df689ae859c93046c19af043aa2001dbb5481
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75979630"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Erste Schritte mit Azure Table Storage und verbundenen Visual Studio-Diensten (ASP.NET)
@@ -115,7 +115,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Tabelle erstellen:
     }
     ```
 
-1. Rufen Sie in der **CreateTable**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Rufen Sie in der **CreateTable**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -204,7 +204,7 @@ Die Entitätsklasse *muss* einen öffentlichen parameterlosen Konstruktor deklar
     }
     ```
 
-1. Rufen Sie in der **AddEntity**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Rufen Sie in der **AddEntity**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -299,7 +299,7 @@ Sie können nicht nur Entitäten [einzeln nacheinander einer Tabelle hinzufügen
     }
     ```
 
-1. Rufen Sie in der **AddEntities**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Rufen Sie in der **AddEntities**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -419,7 +419,7 @@ Dieser Abschnitt veranschaulicht, wie eine einzelne Entität aus einer Tabelle m
     }
     ```
 
-1. Rufen Sie in der **GetSingle**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Rufen Sie in der **GetSingle**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -519,7 +519,7 @@ Wie im Abschnitt [Hinzufügen einer Entität zu einer Tabelle](#add-an-entity-to
     }
     ```
 
-1. Rufen Sie in der **GetPartition**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Rufen Sie in der **GetPartition**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -629,7 +629,7 @@ Dieser Abschnitt zeigt das Löschen einer Entität aus einer Tabelle.
     }
     ```
 
-1. Rufen Sie in der **DeleteEntity**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code, um die Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration abzurufen: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
+1. Rufen Sie in der **DeleteEntity**-Methode ein **CloudStorageAccount**-Objekt ab, das die Informationen zu Ihrem Speicherkonto enthält. Verwenden Sie den folgenden Code zum Abrufen der Speicherverbindungszeichenfolge und Speicherkontoinformationen aus der Azure-Dienstkonfiguration: (Ändern Sie *&lt;storage-account-name>* in den Namen des Azure-Speicherkontos, auf das Sie zugreifen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(

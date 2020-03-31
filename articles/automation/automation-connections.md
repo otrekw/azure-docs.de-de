@@ -6,10 +6,10 @@ ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
 ms.openlocfilehash: b6276153921feb0e6f27194d36d1c32c1d0ffb3d
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75940827"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Verbindungsobjekte in Azure Automation
@@ -35,7 +35,7 @@ In den meisten Fällen müssen Sie keine Verbindungsressource erstellen, weil si
 
 Die Cmdlets in der folgenden Tabelle werden zum Erstellen und Verwalten von Automation-Verbindungen mit Windows PowerShell verwendet. Sie gehören zum Lieferumfang des [Azure PowerShell-Moduls](/powershell/azure/overview), das zur Verwendung in Automation-Runbooks und DSC-Konfigurationen verfügbar ist.
 
-|Cmdlet|Beschreibung|
+|Cmdlet|BESCHREIBUNG|
 |:---|:---|
 |[Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection)|Ruft eine Verbindung ab. Enthält eine Hashtabelle mit den Werten der Felder für die Verbindung.|
 |[New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection)|Erstellt eine neue Verbindung.|
@@ -46,7 +46,7 @@ Die Cmdlets in der folgenden Tabelle werden zum Erstellen und Verwalten von Auto
 
 Die Aktivitäten in der folgenden Tabelle werden für den Zugriff auf Verbindungen in einem Runbook oder einer DSC-Konfiguration verwendet.
 
-|activities|Beschreibung|
+|activities|BESCHREIBUNG|
 |---|---|
 |Get-AutomationConnection | Ruft eine zu verwendende Verbindung ab. Gibt eine Hashtabelle mit den Eigenschaften der Verbindung zurück.|
 
@@ -58,7 +58,7 @@ Die Aktivitäten in der folgenden Tabelle werden für den Zugriff auf Verbindung
 
 Mit der Funktion in der folgenden Tabelle wird auf Verbindungen in einem Python2-Runbook zugegriffen:
 
-| Funktion | Beschreibung |
+| Funktion | BESCHREIBUNG |
 |:---|:---|
 | automationassets.get_automation_connection | Ruft eine Verbindung ab. Gibt ein Wörterbuch mit den Eigenschaften der Verbindung zurück. |
 

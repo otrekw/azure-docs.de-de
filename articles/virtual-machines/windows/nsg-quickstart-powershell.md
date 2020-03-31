@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.openlocfilehash: 547ca9c98d77b2aaa6d3630bff4b2ec10dcc5be0
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75754173"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>Öffnen von Ports und Endpunkten für einen virtuellen Computer in Azure mit PowerShell
@@ -60,7 +60,7 @@ $nsg = New-AzNetworkSecurityGroup `
     -SecurityRules $httprule
 ```
 
-Nun weisen Sie Ihre Netzwerksicherheitsgruppe einem Subnetz zu. Im folgenden Beispiel wird mit [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) der Variable *$vnet* das vorhandene virtuelle Netzwerk *myVnet* zugewiesen:
+Nun weisen Sie Ihre Netzwerksicherheitsgruppe einem Subnetz zu. Im folgenden Beispiel wird mit *Get-AzVirtualNetwork* der Variable *$vnet* das vorhandene virtuelle Netzwerk [myVnet](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) zugewiesen:
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `

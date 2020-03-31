@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4b8aef68e0f61e6ca995fc2bb362d59aba73ead2
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78329505"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-privileged-identity-management"></a>Anzeigen des Überwachungsverlaufs für Azure AD-Rollen in Privileged Identity Management
@@ -92,7 +92,7 @@ Führen Sie die folgenden Schritte aus, um den Überwachungsverlauf für Azure A
     | --- | --- |
     | Time | Der Zeitpunkt, zu dem die Aktion erfolgt ist. |
     | Anforderer | Der Benutzer, der die Rollenaktivierung oder -änderung angefordert hat. Wenn der Wert **Azure System**lautet, suchen Sie im Azure-Überwachungsverlauf nach weiteren Informationen. |
-    | Aktion | Die vom Anforderer ausgeführten Aktionen. Aktionen können „Assign“, „Unassign“, „Activate“, „Deactivate“ oder „AddedOutsidePIM“ umfassen. |
+    | Action | Die vom Anforderer ausgeführten Aktionen. Aktionen können „Assign“, „Unassign“, „Activate“, „Deactivate“ oder „AddedOutsidePIM“ umfassen. |
     | Member | Der Benutzer, der eine Rolle aktiviert oder einer Rolle zugewiesen ist. |
     | Role | Die Rolle, die dem Benutzer zugewiesen ist oder die durch den Benutzer aktiviert wurde. |
     | Erläuterung | Text, der während der Aktivierung in das Feld „Grund“ eingegeben wurde. |

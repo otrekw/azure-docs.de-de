@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 2/27/2020
 ms.openlocfilehash: 72735e83af97fde8377e27daa45501704ef5a3c8
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78164541"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>Migrieren der MariaDB-Datenbank auf Azure Database for MariaDB durch Sicherungen und Wiederherstellungen
@@ -22,7 +22,7 @@ In diesem Artikel werden zwei allgemeine Verfahren zum Sichern und Wiederherstel
 Um diese Anleitung schrittweise auszuführen, müssen Sie Folgendes durchgeführt haben:
 - [Erstellung eines Azure Database for MariaDB-Servers – Azure-Portal](quickstart-create-mariadb-server-database-using-azure-portal.md)
 - Installation des Befehlszeilenprogramms [mysqldump](https://mariadb.com/kb/en/library/mysqldump/) auf einem Computer
-- [Download von MySQL Workbench](https://dev.mysql.com/downloads/workbench/) oder einem anderen MySQL-Drittanbietertool zur Ausführung von Sicherungs- und Wiederherstellungsbefehlen
+- MySQL Workbench [Download von MySQL Workbench](https://dev.mysql.com/downloads/workbench/) oder einem anderen MySQL-Drittanbietertool zur Ausführung von Sicherungs- und Wiederherstellungsbefehlen.
 
 ## <a name="use-common-tools"></a>Verwenden von gängigen Tools
 Mithilfe von gängigen Hilfsprogrammen und Tools wie MySQL Workbench oder mysqldump können Sie eine Remoteverbindung zu Azure Database for MariaDB herstellen und Daten darin wiederherstellen. Verwenden Sie diese Tools auf Ihrem Clientcomputer mit Internetverbindung, um eine Verbindung zu Azure Database for MariaDB herzustellen. Um eine SSL-verschlüsselte Verbindung gemäß bewährter Sicherheitsmethoden zu verwenden, lesen Sie [Konfigurieren von SSL-Konnektivität in Azure Database for MariaDB](concepts-ssl-connection-security.md). Bei der Migration zu Azure Database for MariaDB müssen Sie Ihre Sicherungsdateien nicht in einen bestimmten Cloudspeicherort verschieben. 

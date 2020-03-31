@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 11/04/2019
 ms.openlocfilehash: a58959904559cd3b2cec27762f2df93cfea72abd
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75535322"
 ---
 # <a name="how-to-define-a-machine-learning-task"></a>Definieren einer Aufgabe für maschinelles Lernen 
@@ -23,7 +23,7 @@ ms.locfileid: "75535322"
 In diesem Artikel sind die unterstützten Aufgaben für maschinelles Lernen aufgeführt und erfahren Sie, wie Sie diese für eine Ausführung eines Experiments für automatisiertes maschinelles Lernen (automatisiertes ML) definieren.
 
 
-## <a name="What is a machine learning task?"></a> Was ist eine Aufgabe für maschinelles Lernen?
+## <a name="what-is-a-machine-learning-task"></a><a name="What is a machine learning task?"></a> Was ist eine Aufgabe für maschinelles Lernen?
 
 Eine Aufgabe für maschinelles Lernen entspricht dem Typ des Problems, das durch Erstellen eines Vorhersagemodells gelöst werden soll. Automatisiertes ML unterstützt die drei Aufgabentypen Klassifizierung, Regression und Zeitreihenvorhersage.
 

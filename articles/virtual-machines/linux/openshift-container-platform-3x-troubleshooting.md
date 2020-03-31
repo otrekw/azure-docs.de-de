@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 1915cce1878b9b7ec058c13167e03c3c318f3668
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bd83a1ca731d81edb76a3c1bc07113ce96adb9ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035493"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066592"
 ---
 # <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>Behandeln von Problemen beim Bereitstellen von OpenShift Container Platform 3.11 in Azure
 
@@ -102,7 +102,7 @@ Der private Schlüssel wird in den Ansible-Playbook-Host (~/.ssh/Id_rsa) kopiert
 
 In der Eingabe für die Vorlage oder das Marketplace-Angebot wurden falsche Informationen bereitgestellt. Vergewissern Sie sich, dass „appID“ („clientId“) und „password“ („clientSecret“) für den Dienstprinzipal korrekt sind. Führen Sie zur Überprüfung den folgenden Befehl für die Azure-Befehlszeilenschnittstelle aus:
 
-```bash
+```azurecli
 az login --service-principal -u <client id> -p <client secret> -t <tenant id>
 ```
 
@@ -110,7 +110,7 @@ az login --service-principal -u <client id> -p <client secret> -t <tenant id>
 
 Wenn der Azure-Cloudanbieter aktiviert ist, muss der verwendete Dienstprinzipal über den Zugriffstyp „Mitwirkender“ für die Ressourcengruppe verfügen. Führen Sie zur Überprüfung den folgenden Befehl für die Azure-Befehlszeilenschnittstelle aus:
 
-```bash
+```azurecli
 az group update -g <openshift resource group> --set tags.sptest=test
 ```
 

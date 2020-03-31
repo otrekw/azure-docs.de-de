@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6d031546bb4f1f05e9ea2abb5b74fe911b0b507f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74007700"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Latenzen bei Azure Active Directory-Berichten
@@ -59,7 +59,7 @@ Es gibt zwei Arten von Sicherheitsberichten:
 
 Die folgende Tabelle enthält Latenzzeitinformationen für Sicherheitsberichte.
 
-| Bericht | Minimum | Durchschnitt | Maximum |
+| Bericht | Minimum | Average | Maximum |
 | :-- | --- | --- | --- |
 | Gefährdete Benutzer          | 5 Minuten   | 15 Minuten  | 2 Stunden  |
 | Riskante Anmeldungen         | 5 Minuten   | 15 Minuten  | 2 Stunden  |
@@ -70,7 +70,7 @@ Azure AD verwendet adaptive Machine Learning-Algorithmen und -Heuristiken, um ve
 
 Die folgende Tabelle enthält Latenzzeitinformationen für Risikoerkennungen.
 
-| Bericht | Minimum | Durchschnitt | Maximum |
+| Bericht | Minimum | Average | Maximum |
 | :-- | --- | --- | --- |
 | Anmeldungen von anonymen IP-Adressen |5 Minuten |15 Minuten |2 Stunden |
 | Anmeldungen von unbekannten Standorten |5 Minuten |15 Minuten |2 Stunden |

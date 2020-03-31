@@ -13,10 +13,10 @@ ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: d376672336845958fb6434a78177f42aca938229
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70081968"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Übersicht über SQL Server auf virtuellen Azure-Computern (Linux)
@@ -29,7 +29,7 @@ Mit SQL Server auf virtuellen Azure-Computern können Sie Vollversionen von SQL 
 
 Virtuelle Azure-Computer werden in verschiedensten [geografischen Regionen](https://azure.microsoft.com/regions/) auf der ganzen Welt ausgeführt. Sie bieten auch eine Vielzahl von [Computergrößen](../sizes.md). Über den Katalog mit VM-Images können Sie virtuelle SQL Server-Computer mit passender Version, passender Edition und passendem Betriebssystem erstellen. Dadurch stellen virtuelle Computer eine gute Wahl für viele verschiedene SQL Server-Workloads dar.
 
-## <a id="create"></a>Erste Schritte mit virtuellen SQL-Computern
+## <a name="get-started-with-sql-vms"></a><a id="create"></a>Erste Schritte mit virtuellen SQL-Computern
 
 Wählen Sie als Erstes ein SQL Server-VM-Image mit der benötigten Version, der benötigten Edition und dem benötigten Betriebssystem aus. Die folgenden Abschnitte enthalten direkte Links zum Azure-Portal für die Katalogimages für virtuelle SQL Server-Computer.
 
@@ -45,15 +45,15 @@ Wählen Sie als Erstes ein SQL Server-VM-Image mit der benötigten Version, der 
 > [!NOTE]
 > Informationen zu den verfügbaren Images für virtuelle Windows-Computer mit SQL Server finden Sie in der [Übersicht über SQL Server auf virtuellen Azure-Computern](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md).
 
-## <a id="packages"></a> Installierte Pakete
+## <a name="installed-packages"></a><a id="packages"></a> Installierte Pakete
 
 Wenn Sie SQL Server unter Linux konfigurieren, installieren Sie das Datenbank-Engine-Paket und je nach Bedarf mehrere optionale Pakete. Die meisten Pakete werden von den Linux-VM-Images für SQL Server automatisch installiert. Die folgende Tabelle zeigt, welche Pakete für die einzelnen Distributionen installiert werden:
 
 | Distribution | [Datenbank-Engine](https://docs.microsoft.com/sql/linux/sql-server-linux-setup) | [Tools](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) | [SQL Server-Agent](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-sql-agent) | [Volltextsuche](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-ssis) | [HA-Add-On](https://docs.microsoft.com/sql/linux/sql-server-linux-business-continuity-dr) |
 |---|---|---|---|---|---|---|
-| RHEL | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![no](./media/sql-server-linux-virtual-machines-overview/no.png) |
-| SLES | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![no](./media/sql-server-linux-virtual-machines-overview/no.png) | ![no](./media/sql-server-linux-virtual-machines-overview/no.png) |
-| Ubuntu | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![Ja](./media/sql-server-linux-virtual-machines-overview/yes.png) |
+| RHEL | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![nein](./media/sql-server-linux-virtual-machines-overview/no.png) |
+| SLES | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![nein](./media/sql-server-linux-virtual-machines-overview/no.png) | ![nein](./media/sql-server-linux-virtual-machines-overview/no.png) |
+| Ubuntu | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![ja](./media/sql-server-linux-virtual-machines-overview/yes.png) |
 
 ## <a name="related-products-and-services"></a>Verwandte Produkte und Dienste
 

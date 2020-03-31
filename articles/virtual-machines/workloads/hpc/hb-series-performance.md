@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 820aa1d04437a80f72e95fab71f5c8503c59822c
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: e064db5f67e6f8a7e82093bdae9fac7eaa4b6a55
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707742"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534200"
 ---
 # <a name="hb-series-virtual-machine-sizes"></a>VM-Größen der HB-Serie
 
@@ -37,7 +37,7 @@ Für die Größen der HB-Serie wurden zahlreiche Leistungstests durchgeführt. I
 ## <a name="infiniband-send-latency"></a>InfiniBand-Wartezeit (Senden)
 Mellanox Perftest
 
-```azure-cli
+```console
 numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 ```
 

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 07/11/2018
 ms.author: cynthn
 ms.openlocfilehash: 0d3f0a61da3654c31c99cfac43c86b081876f700
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944571"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Installieren von MySQL auf einem virtuellen Computer mit OpenSUSE Linux in Azure
@@ -22,7 +22,7 @@ ms.locfileid: "78944571"
 [MySQL](https://www.mysql.com) ist eine beliebte Open Source-SQL-Datenbank. In diesem Tutorial erfahren Sie, wie Sie einen virtuellen Computer mit OpenSUSE Linux erstellen und anschließend MySQL installieren.
 
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, benötigen Sie die Azure CLI-Version 2.0 oder höher. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+Wenn Sie die CLI lokal installieren und verwenden möchten, benötigen Sie die Azure CLI-Version 2.0 oder höher. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-virtual-machine-running-opensuse-linux"></a>Erstellen eines virtuellen Computers mit OpenSUSE Linux
 
@@ -32,7 +32,7 @@ Erstellen Sie zunächst eine Ressourcengruppe. In diesem Beispiel heißt die Res
 az group create --name mySQLSUSEResourceGroup --location eastus
 ```
 
-Erstellen Sie den virtuellen Computer. In diesem Beispiel heißt die VM [myVM](sizes.md) und weist die VM-Größe *Standard_D2s_v3* auf, Sie sollten jedoch die *VM-Größe* auswählen, von der Sie glauben, dass sie sich für Ihre Workload am besten eignet.
+Erstellen Sie den virtuellen Computer. In diesem Beispiel heißt die VM *myVM* und weist die VM-Größe *Standard_D2s_v3* auf, Sie sollten jedoch die [VM-Größe](sizes.md) auswählen, von der Sie glauben, dass sie sich für Ihre Workload am besten eignet.
 
 ```azurecli-interactive
 az vm create --resource-group mySQLSUSEResourceGroup \

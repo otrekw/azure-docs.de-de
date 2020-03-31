@@ -14,10 +14,10 @@ ms.date: 01/14/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 333e440fdd5f5062dda45fb12a83543c63e66c04
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75978033"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Verwenden Sie den AD FS-Anwendungsaktivitätsbericht (Vorschau), um Anwendungen zu Azure AD zu migrieren.
@@ -73,7 +73,7 @@ Der AD FS-Anwendungsaktivitätsbericht ist im Azure-Portal unter Azure AD-Berich
 
 In der folgenden Tabelle sind alle Konfigurationstests aufgeführt, die für AD FS-Anwendungen ausgeführt werden.
 
-|Ergebnis  |Bestanden/Warnung/Fehler  |Beschreibung  |
+|Ergebnis  |Bestanden/Warnung/Fehler  |BESCHREIBUNG  |
 |---------|---------|---------|
 |Test-ADFSRPAdditionalAuthenticationRules <br> Für „AdditionalAuthentication“ wurde mindestens eine nicht migrierbare Regel erkannt.       | Bestanden/Warnung          | Die vertrauende Seite verfügt über Regeln zum Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA). Um zu Azure AD zu wechseln, übersetzen Sie diese Regeln in Richtlinien für bedingten Zugriff. Wenn Sie eine lokale MFA verwenden, empfehlen wir, dass Sie zu Azure MFA wechseln. [Weitere Informationen über bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> Für die vertrauende Seite ist „AdditionalWSFedEndpoint“ auf „true“ festgelegt.       | Erfolgreich/Fehler          | Die vertrauende Seite in AD FS unterstützt mehrere WS-Fed-Assertionsendpunkte. Zurzeit unterstützt Azure AD nur einen. Wenn Sie ein Szenario haben, in dem dieses Ergebnis die Migration blockiert, [geben Sie uns Feedback](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints).     |
@@ -109,7 +109,7 @@ Wenn Sie in AD FS eine Anspruchsregel für die Anwendung konfiguriert haben, bie
 
 In der folgenden Tabelle sind alle Anspruchsregeltests aufgeführt, die für AD FS-Anwendungen ausgeführt werden.
 
-|Eigenschaft  |Beschreibung  |
+|Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
 |UNSUPPORTED_CONDITION_PARAMETER      | Die Bedingungsanweisung verwendet reguläre Ausdrücke, um auszuwerten, ob der Anspruch einem bestimmten Muster entspricht.  Um eine ähnliche Funktionalität in Azure AD zu erzielen, können Sie vordefinierte Transformationen wie z.B. IfEmpty(), StartWith() und Contains() verwenden. Weitere Informationen finden Sie unter [Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization).          |
 |UNSUPPORTED_CONDITION_CLASS      | Die Bedingungsanweisung verfügt über mehrere Bedingungen, die vor dem Ausführen der Ausstellungsanweisung ausgewertet werden müssen. Azure AD unterstützt diese Funktionalität möglicherweise mit den Transformationsfunktionen des Anspruchs, in denen Sie mehrere Anspruchswerte auswerten können.  Weitere Informationen finden Sie unter [Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization).          |

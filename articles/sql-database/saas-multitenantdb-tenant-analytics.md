@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 ms.date: 09/19/2018
 ms.openlocfilehash: 067afd09f942b8062825553a3cf90f715e8d3938
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73822143"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Mandantenübergreifende Analysen mit extrahierten Daten – Mehrinstanzenfähige App
@@ -63,7 +63,7 @@ Schließlich werden die Tabellen im Sternschema abgefragt. Die Abfrageergebnisse
 
 Informationen darüber, wie regelmäßig einzelne Mandanten den Dienst verwenden, ermöglichen das Erstellen von Serviceplänen, um die Bedürfnisse noch besser erfüllen zu können. Dieses Tutorial enthält grundlegende Beispiele für Erkenntnisse, die aus Mandantendaten abgeleitet werden können.
 
-## <a name="setup"></a>Einrichtung
+## <a name="setup"></a>Einrichten
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
@@ -79,7 +79,7 @@ Stellen Sie vor dem Durchführen dieses Tutorials sicher, dass die folgenden Vor
 
 In diesem Tutorial werden die Ticketverkaufsdaten analysiert. Im aktuellen Schritt generieren Sie Ticketdaten für alle Mandanten.  Diese Daten werden später für die Analyse extrahiert. *Sie müssen zuvor unbedingt den Batch von Mandanten wie oben beschrieben bereitgestellt haben, damit Sie über eine sinnvolle Datenmenge verfügen*. Eine ausreichend große Datenmenge kann unterschiedliche Ticketkaufmuster verfügbar machen.
 
-1. Öffnen Sie *…\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* in der **PowerShell ISE**, und legen Sie den folgenden Wert fest:
+1. Öffnen Sie **…\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1** in der *PowerShell ISE*, und legen Sie den folgenden Wert fest:
     - **$DemoScenario** = **1** Kaufen von Tickets für Veranstaltungen an allen Veranstaltungsorten
 2. Drücken Sie **F5**, um das Skript auszuführen und einen Ticketkaufverlauf für jede Veranstaltung an sämtlichen Veranstaltungsorten zu erstellen.  Die Skriptausführung dauert mehrere Minuten, da Zehntausende von Tickets generiert werden.
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: c27cde85952ca6d982accddad59eceae76e3f1e8
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78194456"
 ---
 # <a name="certificate-creation-methods"></a>Methoden für die Zertifikaterstellung
@@ -35,7 +35,7 @@ Die folgenden Beschreibungen entsprechen den in Grün nummerierten Schritten im 
 4. Ihre ausgewählte Zertifizierungsstelle antwortet mit einem X.509-Zertifikat.
 5. Ihre Anwendung schließt die Erstellung des neuen Zertifikats durch das Zusammenführen mit dem X509-Zertifikat Ihrer Zertifizierungsstelle ab.
 
--   **Erstellen eines Zertifikats mit einem bekannten Zertifikataussteller:** Bei dieser Methode müssen Sie einmalig ein Ausstellerobjekt erstellen. Sobald ein Ausstellerobjekt in Ihrem Schlüsselspeicher erstellt wurde, kann in der Richtlinie des KV-Zertifikats auf seinen Namen verwiesen werden. Durch die Anforderung für die Erstellung eines solchen KV-Zertifikats wird ein Schlüsselpaar in Key Vault erstellt. Außerdem wird mit dem Zertifikatausstellerdienst unter Verwendung der Informationen im referenzierten Ausstellerobjekt kommuniziert, um ein x509-Zertifikat zu erhalten. Das x509-Zertifikat wird vom Zertifikatausstellerdienst abgerufen und mit dem Schlüsselpaar zusammengeführt, um die Erstellung des KV-Zertifikats abzuschließen.  
+-   **Erstellen eines Zertifikats mit einem bekannten Zertifikataussteller**: Bei dieser Methode müssen Sie einmalig ein Ausstellerobjekt erstellen. Sobald ein Ausstellerobjekt in Ihrem Schlüsselspeicher erstellt wurde, kann in der Richtlinie des KV-Zertifikats auf seinen Namen verwiesen werden. Durch die Anforderung für die Erstellung eines solchen KV-Zertifikats wird ein Schlüsselpaar in Key Vault erstellt. Außerdem wird mit dem Zertifikatausstellerdienst unter Verwendung der Informationen im referenzierten Ausstellerobjekt kommuniziert, um ein x509-Zertifikat zu erhalten. Das x509-Zertifikat wird vom Zertifikatausstellerdienst abgerufen und mit dem Schlüsselpaar zusammengeführt, um die Erstellung des KV-Zertifikats abzuschließen.  
 
 ![Erstellen eines Zertifikats mit einer Key Vault-Partnerzertifizierungsstelle](media/certificate-authority-2.png)  
 

@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie einen Service Fabric-Cluster erstellen, für 
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 4a4448c88fa9493979f075f6b9c669927dd1d39e
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75614552"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Bereitstellen eines Service Fabric-Clusters mit allgemeinem Zertifikatnamen anstelle eines Fingerabdrucks

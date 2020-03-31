@@ -4,10 +4,10 @@ description: Erfahren Sie mehr über die grundlegenden Konzepte und die wesentli
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.openlocfilehash: 4e6e21f5f9ebfeddb5292e00dc8a929341e77372
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458150"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Sie möchten sich über Service Fabric informieren?
@@ -105,7 +105,7 @@ Zum Erstellen echter Dienste für die Cloud müssen Sie unbedingt sicherstellen,
 * Das [Failovertestszenario](service-fabric-testability-scenarios.md#failover-test) ist eine Version des Chaostestszenarios für eine bestimmte Dienstpartition, während andere Dienste nicht betroffen sind.
 
 ## <a name="clusters"></a>Cluster
-Ein [Service Fabric-Cluster](service-fabric-deploy-anywhere.md) enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Cluster können auf Tausende von Computern skaliert werden. Ein Computer oder ein virtueller Computer, der Teil eines Clusters ist, wird als Clusterknoten bezeichnet. Jeder Knoten erhält einen Knotennamen (Zeichenfolge). Knoten weisen Merkmale wie etwa Platzierungseigenschaften auf. Jeder physische oder virtuelle Computer verfügt über einen Dienst für den automatischen Start (`FabricHost.exe`), der beim Start ausgeführt wird und dann zwei ausführbare Dateien startet: „Fabric.exe“ und „FabricGateway.exe“. Diese zwei ausführbaren Dateien bilden zusammen den Knoten. In Testszenarien können Sie mehrere Knoten auf einem einzelnen Computer oder virtuellen Computer hosten, indem Sie mehrere Instanzen von `Fabric.exe` und `FabricGateway.exe` ausführen.
+Ein [Service Fabric-Cluster](service-fabric-deploy-anywhere.md) enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Cluster können auf Tausende von Computern skaliert werden. Ein Computer oder ein virtueller Computer, der Teil eines Clusters ist, wird als Clusterknoten bezeichnet. Jeder Knoten erhält einen Knotennamen (Zeichenfolge). Knoten weisen Merkmale wie etwa Platzierungseigenschaften auf. Jeder Computer bzw. virtuelle Computer verfügt über einen automatisch gestarteten Dienst, `FabricHost.exe`, für den die Ausführung beim Hochfahren gestartet wird und mit dem dann zwei ausführbare Dateien gestartet werden: „Fabric.exe“ und „FabricGateway.exe“. Diese zwei ausführbaren Dateien bilden zusammen den Knoten. In Testszenarien können Sie mehrere Knoten auf einem einzelnen Computer oder virtuellen Computer hosten, indem Sie mehrere Instanzen von `Fabric.exe` und `FabricGateway.exe` ausführen.
 
 Service Fabric-Cluster können auf virtuellen oder physischen Computern erstellt werden, auf denen Windows Server oder Linux ausgeführt wird. Es lassen sich Service Fabric-Anwendungen in jeder lokalen oder cloudbasierten Umgebung oder in einer Microsoft Azure-Umgebung bereitstellen und ausführen, in der sich miteinander verbundene Computer mit Windows Server oder Linux befinden.
 

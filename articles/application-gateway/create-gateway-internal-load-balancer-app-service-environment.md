@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 11/06/2018
 ms.author: genli
 ms.openlocfilehash: 9c3216af283ebd9d84a5469d4d50d18c19f67534
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71121948"
 ---
 # <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>Back-End-Serverzertifikat nicht in der Whitelist für ein Anwendungsgateway enthalten (bei Verwendung eines internen Lastenausgleichs mit einer App Service-Umgebung)

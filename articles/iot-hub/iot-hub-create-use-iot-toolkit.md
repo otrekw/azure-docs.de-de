@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
 ms.openlocfilehash: 668087ae596688e86b7b84a16bc5c0fd0f9fcef6
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75912243"
 ---
 # <a name="create-an-iot-hub-using-the-azure-iot-tools-for-visual-studio-code"></a>Erstellen einer IoT Hub-Instanz mithilfe der Azure IoT-Tools für Visual Studio Code
@@ -24,7 +24,7 @@ In diesem Artikel erfahren Sie, wie Sie die [Azure IoT-Tools für Visual Studio 
 
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
-- ein Azure-Abonnement Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- ein Azure-Abonnement Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 

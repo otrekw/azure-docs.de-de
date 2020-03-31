@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
 ms.openlocfilehash: 7925ca5c69d01b098764ff744fb832eaa43118d6
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77108956"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>Planen und Übertragen von Aufträgen (.NET)
@@ -31,9 +31,9 @@ Ein Auftrag umschließt eine dieser Aktionen und verfolgt die Ausführung für e
 
 Weitere Informationen zu diesen Funktionen finden Sie unter:
 
-* Gerätezwillinge und Eigenschaften: [Erste Schritte mit Gerätezwillingen](iot-hub-csharp-csharp-twin-getstarted.md) und [Tutorial: Verwenden der Eigenschaften von Gerätezwillingen](tutorial-device-twins.md)
+* Gerätezwilling und -eigenschaften: [Tutorial: Erste Schritte mit Gerätezwillingen (Vorschau)](iot-hub-csharp-csharp-twin-getstarted.md) und [Tutorial: Verwenden der Eigenschaften von Gerätezwillingen](tutorial-device-twins.md)
 
-* Direkte Methoden: [Verstehen und Aufrufen direkter Methoden von IoT Hub](iot-hub-devguide-direct-methods.md) und [Tutorial: Verwenden von direkten Methoden](quickstart-control-device-dotnet.md)
+* Direkte Methoden: [IoT Hub-Entwicklerhandbuch – direkte Methoden](iot-hub-devguide-direct-methods.md) und [Tutorial: Verwenden von direkten Methoden](quickstart-control-device-dotnet.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -55,9 +55,9 @@ Am Ende dieses Tutorials verfügen Sie über zwei .NET-Konsolen-Apps (C#):
 
 * Ein aktives Azure-Konto. Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.
 
-* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port möglicherweise blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit einem IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -83,7 +83,7 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, die auf eine vom Lösu
 
     In diesem Schritt wird das NuGet-Paket [Azure IoT-Geräte-SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) heruntergeladen und installiert sowie ein Verweis auf das Paket und seine Abhängigkeiten hinzugefügt.
 
-1. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
+1. Fügen Sie am Anfang der Datei `using`Program.cs**die folgenden**-Anweisungen hinzu:
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
@@ -178,7 +178,7 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App (mithilfe von C#), die 
 
    In diesem Schritt wird das NuGet-Paket [Azure IoT-Dienst-SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) heruntergeladen und installiert und ein Verweis auf das Paket und seine Abhängigkeiten hinzugefügt.
 
-1. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
+1. Fügen Sie am Anfang der Datei `using`Program.cs**die folgenden**-Anweisungen hinzu:
 
     ```csharp
     using Microsoft.Azure.Devices;
@@ -308,6 +308,6 @@ Sie können die Apps nun ausführen.
 
 In diesem Tutorial haben Sie einen Auftrag zum Planen einer direkten Methode für ein Gerät und eines Updates der Eigenschaften eines Gerätezwillings verwendet.
 
-* Informationen zu den weiteren ersten Schritten mit IoT Hub und Geräteverwaltungsmustern, z.B. drahtloses Firmware-Remoteupdate, finden Sie im [Tutorial: Durchführen eines Firmwareupdates](tutorial-firmware-update.md).
+* Informationen zu den weiteren Schritten mit IoT Hub und Geräteverwaltungsmustern, z.B. drahtloses Firmware-Remoteupdate, finden Sie unter [Tutorial: Implementieren eines Updateprozesses für die Gerätefirmware](tutorial-firmware-update.md).
 
 * Informationen zum Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge finden Sie unter [Schnellstart: Bereitstellen des ersten IoT Edge-Moduls auf einem Linux-basierten x64-Gerät](../iot-edge/tutorial-simulate-device-linux.md).

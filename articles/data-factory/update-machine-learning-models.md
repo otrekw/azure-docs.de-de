@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.openlocfilehash: 3313c9c362a9b82cf7ed8db63479aaa5cf0c777e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73683242"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Aktualisieren von Azure Machine Learning-Modellen mithilfe der Ressourcenaktualisierungsaktivität
-Dieser Artikel ergänzt den Hauptartikel zu Azure Data Factory: Azure Machine Learning-Integration [Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory](transform-data-using-machine-learning.md) Wenn Sie dies noch nicht getan haben, lesen Sie zunächst den Hauptartikel, bevor Sie diesen Artikel lesen.
+Dieser Artikel stellt eine Ergänzung zum Hauptartikel zur Integration von Azure Data Factory und Azure Machine Learning dar: [Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory](transform-data-using-machine-learning.md). Wenn Sie dies noch nicht getan haben, lesen Sie zunächst den Hauptartikel, bevor Sie diesen Artikel lesen.
 
 ## <a name="overview"></a>Übersicht
 Im Rahmen der Operationalisierung von Azure Machine Learning-Modellen wird Ihr Modell trainiert und gespeichert. Anschließend kann es dann zum Erstellen eines Vorhersagewebdiensts verwendet werden. Dieser Webdienst kann von Websites, Dashboards und mobilen Apps genutzt werden.
@@ -196,7 +196,7 @@ Der folgende JSON-Codeausschnitt definiert einen mit Azure Machine Learning verk
 ```
 
 ### <a name="pipeline"></a>Pipeline
-Die Pipeline enthält zwei Aktivitäten: **AzureMLBatchExecution** und **AzureMLUpdateResource**. Die Batchausführungsaktivität verwendet die Trainingsdaten als Eingabe und erzeugt eine „iLearner“-Datei als Ausgabe. Die Ressourcenaktualisierungsaktivität verwendet anschließend diese „iLearner“-Datei zum Aktualisieren des Vorhersagewebdiensts.
+Die Pipeline weist zwei Aktivitäten auf: **AzureMLBatchExecution** und **AzureMLUpdateResource**. Die Batchausführungsaktivität verwendet die Trainingsdaten als Eingabe und erzeugt eine „iLearner“-Datei als Ausgabe. Die Ressourcenaktualisierungsaktivität verwendet anschließend diese „iLearner“-Datei zum Aktualisieren des Vorhersagewebdiensts.
 
 ```JSON
 {

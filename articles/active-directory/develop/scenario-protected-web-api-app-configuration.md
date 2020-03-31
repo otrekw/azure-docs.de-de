@@ -17,11 +17,11 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 3f07105c14d4dafeb689eaaf7d679f93e5f235fe
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605335"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230558"
 ---
 # <a name="protected-web-api-code-configuration"></a>Geschützte Web-API: Codekonfiguration
 
@@ -154,7 +154,7 @@ Die Schritte zur Überprüfung werden in Validierungssteuerelementen erfasst, di
 
 Die folgende Tabelle enthält eine Beschreibung der Validierungssteuerelemente:
 
-| Validierungssteuerelement | Beschreibung |
+| Validierungssteuerelement | BESCHREIBUNG |
 |---------|---------|
 | **ValidateAudience** | Stellt sicher, dass das Token für die Anwendung bestimmt ist, die das Token für Sie überprüft. |
 | **ValidateIssuer** | Stellt sicher, dass das Token von einem vertrauenswürdigen Sicherheitstokendienst ausgestellt wurde und somit von jemandem stammt, dem Sie vertrauen. |

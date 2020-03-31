@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: a09f9695c18f368a585dbcd0d1e654dee4adfa03
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75649790"
 ---
 # <a name="microsoftcommondropdown-ui-element"></a>Benutzeroberflächenelement „Microsoft.Common.DropDown“
@@ -55,9 +55,9 @@ Ein Auswahlsteuerelement mit einer Dropdownliste.
 ## <a name="remarks"></a>Bemerkungen
 
 - Die Bezeichnung für `constraints.allowedValues` ist der Anzeigetext für ein Element, und sein Wert ist der Ausgabewert des Elements bei der Auswahl.
-- Falls angegeben, muss der Standardwert einer in `constraints.allowedValues` vorhandenen Bezeichnung entsprechen. Ohne Angabe wird das erste Element in `constraints.allowedValues` ausgewählt. Der Standardwert lautet **null**.
+- Falls angegeben, muss der Standardwert einer in `constraints.allowedValues` vorhandenen Bezeichnung entsprechen. Ohne Angabe wird das erste Element in `constraints.allowedValues` ausgewählt. Der Standardwert ist **NULL**.
 - `constraints.allowedValues` muss mindestens ein Element aufweisen.
-- Fügen Sie zum Emulieren eines nicht benötigten Werts `constraints.allowedValues` ein Element mit einer Bezeichnung und dem Wert `""` (leere Zeichenfolge) hinzu.
+- Fügen Sie zum Emulieren eines nicht benötigten Werts `""` ein Element mit einer Bezeichnung und dem Wert `constraints.allowedValues` (leere Zeichenfolge) hinzu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

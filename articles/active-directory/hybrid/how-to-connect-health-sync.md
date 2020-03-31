@@ -17,10 +17,10 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 61490f75d12967f7f396d5f767f2d2e696474572
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76897204"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Überwachen der Azure AD Connect-Synchronisierung mit Azure AD Connect Health
@@ -81,7 +81,7 @@ Mit diesem Feature kann ein Bericht zu Synchronisierungsfehlern erstellt werden,
 ### <a name="categorization-of-errors"></a>Kategorisierung von Fehlern
 Im Bericht werden die vorhandenen Synchronisierungsfehler nach den folgenden Kategorien unterteilt:
 
-| Category | Beschreibung |
+| Category | BESCHREIBUNG |
 | --- | --- |
 | Doppeltes Attribut |Fehler beim Versuch von Azure AD Connect, Objekte mit doppelten Werten von einem oder mehreren Attributen in Azure AD zu erstellen oder zu aktualisieren, die in einem Mandanten eindeutig sein müssen, z.B. proxyAddresses, UserPrincipalName. |
 | Datenkonflikt |Fehler, wenn beim Soft Match-Vorgang für Objekte keine Übereinstimmung erzielt werden kann und dies zu Synchronisierungsfehlern führt. |

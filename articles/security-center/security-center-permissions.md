@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: memildin
 ms.openlocfilehash: 0e60e782fa65cd5868bebe081673f9a158e07799
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77921316"
 ---
 # <a name="permissions-in-azure-security-center"></a>Berechtigungen in Azure Security Center
@@ -29,8 +29,8 @@ Security Center bewertet die Konfiguration Ihrer Ressourcen, um die Sicherheitsp
 
 Neben diesen Rollen gibt es zwei spezifische Security Center-Rollen:
 
-* **Sicherheitsleseberechtigter**: Ein Benutzer, der dieser Rolle angehört, verfügt über Anzeigerechte für Security Center. Der Benutzer kann Empfehlungen, Warnungen, Sicherheitsrichtlinien und Sicherheitszustände anzeigen, jedoch keine Änderungen vornehmen.
-* **Sicherheitsadministrator**: Ein Benutzer, der dieser Rolle angehört, hat die gleichen Rechte wie der Sicherheitsleseberechtigte und kann darüber hinaus die Sicherheitsrichtlinie aktualisieren sowie Warnungen und Empfehlungen verwerfen.
+* **Sicherheitsleseberechtigter:** Ein Benutzer, der dieser Rolle angehört, verfügt über Anzeigerechte für Security Center. Der Benutzer kann Empfehlungen, Warnungen, Sicherheitsrichtlinien und Sicherheitszustände anzeigen, jedoch keine Änderungen vornehmen.
+* **Sicherheitsadministrator:** Ein Benutzer, der dieser Rolle angehört, hat dieselben Rechte wie der Sicherheitsleseberechtigte und kann darüber hinaus die Sicherheitsrichtlinie aktualisieren und Warnungen und Empfehlungen verwerfen.
 
 > [!NOTE]
 > Die beiden Sicherheitsrollen (Sicherheitsleseberechtigter und Sicherheitsadministrator) haben nur Zugriff in Security Center. Die Sicherheitsrollen haben keinen Zugriff auf andere Dienstbereiche von Azure wie Storage, Web & Mobile oder Internet der Dinge (IoT).

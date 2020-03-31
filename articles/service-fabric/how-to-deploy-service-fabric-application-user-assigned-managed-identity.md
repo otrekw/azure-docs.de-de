@@ -4,10 +4,10 @@ description: In diesem Artikel wird das Bereitstellen einer Service Fabric-Anwen
 ms.topic: article
 ms.date: 12/09/2019
 ms.openlocfilehash: a5eeaf0d6420fa36c0a78f7553ddfd82197d8ec4
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610334"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Bereitstellen einer Service Fabric-Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität (Vorschau)
@@ -62,7 +62,7 @@ Im Beispiel oben wird der Ressourcenname der vom Benutzer zugewiesenen Identitä
 
 ### <a name="application-package"></a>Anwendungspaket
 
-1. Fügen Sie für jede Identität, die im Abschnitt `managedIdentities` der Azure Resource Manager-Vorlage definiert ist, im Anwendungsmanifest im Abschnitt **Principals** ein `<ManagedIdentity>`-Tag hinzu. Das `Name`-Attribut muss der im Abschnitt `managedIdentities` definierten `name`-Eigenschaft entsprechen.
+1. Fügen Sie für jede Identität, die im Abschnitt `managedIdentities` der Azure Resource Manager-Vorlage definiert ist, im Anwendungsmanifest im Abschnitt `<ManagedIdentity>`Principals**ein**-Tag hinzu. Das `Name`-Attribut muss der im Abschnitt `name` definierten `managedIdentities`-Eigenschaft entsprechen.
 
     **ApplicationManifest.xml**
 

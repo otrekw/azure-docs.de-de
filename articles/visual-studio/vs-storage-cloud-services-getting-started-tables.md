@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 5c42d65b5e2c46fcdbe1b0725f2ebce881722db3
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72299991"
 ---
 # <a name="getting-started-with-azure-table-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Erste Schritte mit Azure-Tabellenspeicher und verbundenen Visual Studio-Diensten (Clouddienstprojekte)
@@ -30,7 +30,7 @@ Der Azure-Tabellenspeicherdienst ermöglicht das Speichern großer Mengen von st
 
 Damit Sie beginnen können, müssen Sie zuerst eine Tabelle in Ihrem Speicherkonto erstellen. Es wird gezeigt, wie Sie eine Azure-Tabelle in Code erstellen, und außerdem, wie Sie grundlegende Tabellen- und Entitätsvorgänge, etwa Hinzufügen, Ändern und Lesen von Tabellenentitäten, ausführen. Die Beispiele sind in C\# geschrieben und greifen auf die [Microsoft Azure Storage-Clientbibliothek für .NET](https://msdn.microsoft.com/library/azure/dn261237.aspx) zurück.
 
-**HINWEIS:** Einige der APIs, die Aufrufe an Azure Storage ausführen, arbeiten asynchron. Unter [Asynchrone Programmierung mit Async und Await](https://msdn.microsoft.com/library/hh191443.aspx) finden Sie weitere Informationen. Im folgenden Code wird die Programmierung mit Async-Methoden angenommen.
+**HINWEIS** : Einige der APIs, die Aufrufe an den Azure-Speicher ausführen, arbeiten asynchron. Unter [Asynchrone Programmierung mit Async und Await](https://msdn.microsoft.com/library/hh191443.aspx) finden Sie weitere Informationen. Im folgenden Code wird die Programmierung mit Async-Methoden angenommen.
 
 * Weitere Informationen zum programmgesteuerten Bearbeiten von Tabellen finden Sie unter [Erste Schritte mit Azure Table Storage mit .NET](../storage/storage-dotnet-how-to-use-tables.md) .
 * Allgemeine Informationen zum Azure-Speicher finden Sie unter [Speicherdokumentation](https://azure.microsoft.com/documentation/services/storage/) .

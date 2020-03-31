@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 3fed615a767fee2fff1700f996b2103f411db825
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 3/18/2020
+ms.openlocfilehash: c0bee0b628a49746a19545d14b8b8761d0e880d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973474"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062417"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Erstellen eines Servers für Azure Database for MySQL über das Azure-Portal
 In diesem Artikel erfahren Sie, wie Sie Ihre Azure Database for MySQL-Server verwalten. Zu den Verwaltungsaufgaben gehören die Compute- und Speicherskalierung, das Zurücksetzen des Administratorkennworts und das Anzeigen von Serverdetails.
@@ -103,5 +103,5 @@ Sie können Ihren Server löschen, wenn Sie ihn nicht mehr benötigen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Erfahren Sie mehr über [das Sichern und Wiederherstellen eines Servers](howto-restore-server-portal.md).
+- Informieren Sie sich über das [Sichern und Wiederherstellen eines Servers](howto-restore-server-portal.md).
 - Erfahren Sie mehr über die [Überwachungs- und Optimierungsoptionen in Azure Database for MySQL](concepts-monitoring.md).

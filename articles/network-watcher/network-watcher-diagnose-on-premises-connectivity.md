@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 835b3a69e779b536961110b674ae67f4e8c13ce0
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76845051"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnostizieren der lokalen Konnektivität über VPN-Gateways
@@ -38,7 +38,7 @@ Sie möchten eine Site-to-Site-Verbindung zwischen Azure und dem lokalen Netzwer
 1. Site-to-Site-Verbindung (routenbasiert): [Verbindung zwischen VPN Gateway und dem lokalen Router](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#CreateConnection)
 1. [Konfigurieren von FortiGate](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
-Eine ausführliche Hilfestellung zum Konfigurieren einer Standort-zu-Standort-Konfiguration finden Sie unter: [Erstellen eines VNET mit einer Standort-zu-Standort-Verbindung über das Azure-Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Eine Schritt-für-Schritt-Anleitung zum Konfigurieren einer Standort-zu-Standort-Konfiguration finden Sie unter [Erstellen eines VNET mit einer Standort-zu-Standort-Verbindung über das Azure-Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
 Ein wichtiger Konfigurationsschritt ist die Konfiguration der IPsec-Kommunikationsparameter. Eine fehlerhafte Konfiguration führt zum Verlust der Verbindung zwischen dem lokalen Netzwerk und Azure. Derzeit sind Azure VPN Gateway-Instanzen für die Unterstützung der folgenden IPsec-Parameter für Phase 1 konfiguriert. Wie Sie in der Tabelle unten sehen können, unterstützt Azure VPN Gateway die Verschlüsselungsalgorithmen AES256, AES128 und 3DES.
 
@@ -106,7 +106,7 @@ Das Azure Network Watcher-Feature zur Problembehandlung ermöglicht es Ihnen, Pr
 | ConnectionIsMarkedDisconnected | Die Verbindung ist als „getrennt“ gekennzeichnet. |Nein|
 | ConnectionNotConfiguredOnGateway | Für den zugrunde liegenden Dienst wurde die Verbindung nicht konfiguriert. | Ja |
 | ConnectionMarkedStandby | Der zugrunde liegende Dienst ist als im Ruhezustand gekennzeichnet.| Ja|
-| Authentifizierung | Der vorinstallierte Schlüssel stimmt nicht überein. | Ja|
+| Authentication | Der vorinstallierte Schlüssel stimmt nicht überein. | Ja|
 | PeerReachability | Das Peergateway ist nicht erreichbar. | Ja|
 | IkePolicyMismatch | Das Peergateway verfügt über IKE-Richtlinien, die von Azure nicht unterstützt werden. | Ja|
 | WfpParse Error | Beim Analysieren des WFP-Protokolls ist ein Fehler aufgetreten. |Ja|

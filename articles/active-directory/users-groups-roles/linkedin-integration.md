@@ -14,10 +14,10 @@ ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0bf65f69d9dcaf6de2236c98b56b58ec7e021099
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74025414"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Integrieren von LinkedIn-Kontoverbindungen in Azure Active Directory
@@ -67,14 +67,14 @@ Die Option „Ausgewählt“, die eine Liste von Benutzern enthält, wurde durch
 ### <a name="get-the-current-list-of-selected-users"></a>Abrufen der aktuellen Liste mit den ausgewählten Benutzern
 
 1. Melden Sie sich bei Microsoft 365 mit Ihrem Administratorkonto an.
-1. Wechseln Sie zur Adresse https://linkedinselectedusermigration.azurewebsites.net/. Die Liste der Benutzer, die für LinkedIn-Kontoverbindungen ausgewählt wurden, wird angezeigt.
+1. Gehe zu https://linkedinselectedusermigration.azurewebsites.net/. Die Liste der Benutzer, die für LinkedIn-Kontoverbindungen ausgewählt wurden, wird angezeigt.
 1. Exportieren Sie die Liste in eine CSV-Datei.
 
 ### <a name="move-the-currently-selected-individual-users-to-a-group"></a>Verschieben der aktuell ausgewählten einzelnen Benutzer in eine Gruppe
 
 1. Starten von PowerShell
 1. Installieren Sie das Azure AD Modul, indem Sie `Install-Module AzureAD` ausführen.
-1. Führen Sie das folgende Skript aus:
+1. Führen Sie folgendes Skript aus:
 
   ``` PowerShell
   $groupId = "GUID of the target group"

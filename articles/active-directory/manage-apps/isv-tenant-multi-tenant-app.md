@@ -13,10 +13,10 @@ ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 637adba89445e6974e83486f0641576225ccd268
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70812613"
 ---
 # <a name="create-an-azure-tenant-for-a-multi-tenant-application"></a>Erstellen eines Azure-Mandanten für eine mehrinstanzenfähige Anwendung  
@@ -35,7 +35,7 @@ Sie können Ihr Azure-Abonnement und Ihre Azure Active Directory-Instanz kostenl
 
 2. Aktivieren und testen Sie den Zugriff per einmaligem Anmelden auf Ihre Anwendung.
 
-   a. Im Fall von **OIDC- oder OATH-Anwendungen** [registrieren Sie Ihre Anwendung](../develop/quickstart-register-app.md) als mehrinstanzenfähige Anwendung. ‎Wählen Sie unter „Unterstützte Kontotypen“ die Option „Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten“ aus.
+   a. Im Fall von **OIDC- oder OATH-Anwendungen**[registrieren Sie Ihre Anwendung](../develop/quickstart-register-app.md) als mehrinstanzenfähige Anwendung. ‎Wählen Sie unter „Unterstützte Kontotypen“ die Option „Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten“ aus.
 
    b. Im Fall von **SAML- und WS-Fed-basierten Anwendungen** verwenden Sie eine generische SAML-Vorlage in Azure AD, um Anwendungen für das [SAML-basierte einmalige Anmelden zu konfigurieren](configure-single-sign-on-non-gallery-applications.md).
 

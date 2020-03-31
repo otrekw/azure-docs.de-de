@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: spelluru
 ms.openlocfilehash: cc82355ee43f9fee4f9c2e1bb1bcc0481e4dcea3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73608542"
 ---
 # <a name="azlabservices-powershell-module-preview"></a>PowerShell-Modul „Az.LabServices“ (Vorschauversion)

@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
 ms.openlocfilehash: bad52b364dc83994e7985fc80b1b9f9e7f50481e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823774"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Erstellen von Berichten für horizontal hochskalierte Clouddatenbanken
@@ -114,7 +114,7 @@ Sie werden feststellen, dass die Abfrage Ergebnisse aus allen Shards aggregiert 
 3. Klicken Sie auf **Aus anderen Quellen** und dann auf **Von SQL Server**.
 
    ![Excel-Import aus anderen Quellen][5]
-4. Geben Sie im **Datenverbindungs-Assistenten** den Servernamen und die Anmeldeinformationen ein. Klicken Sie auf **Weiter**.
+4. Geben Sie im **Datenverbindungs-Assistenten** den Servernamen und die Anmeldeinformationen ein. Klicken Sie dann auf **Weiter**.
 5. Wählen Sie im Dialogfeld **Wählen Sie die Datenbank, die die benötigten Daten enthält** die Datenbank **ElasticDBQuery** aus.
 6. Wählen Sie in der Listenansicht die Tabelle **Customers** aus, und klicken Sie auf **Weiter**. Klicken Sie auf **Fertig stellen**.
 7. Wählen Sie im Formular **Daten importieren** unter **Wählen Sie das Format aus, in dem Sie diese Daten in der Arbeitsmappe anzeigen möchten** die Option **Tabelle** aus, und klicken Sie auf **OK**.

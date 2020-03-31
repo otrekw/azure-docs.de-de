@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.openlocfilehash: a79123d57f80474e1871ef68f9a92ea9417089ac
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73572349"
 ---
 # <a name="refresh-with-azure-automation"></a>Aktualisieren mit Azure Automation
@@ -21,7 +21,7 @@ Im Beispiel in diesem Artikel werden die [PowerShell-SqlServer-Module](https://d
 
 Ein PowerShell-Beispielrunbook, das die Aktualisierung eines Modells veranschaulicht, wird weiter unten in diesem Artikel bereitgestellt.  
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 
 Alle Aufrufe müssen mit einem gültigen Azure Active Directory-Token (OAuth 2) authentifiziert werden.  Im Beispiel in diesem Artikel wird ein Dienstprinzipalname (Service Principal Name, SPN) für die Authentifizierung bei Azure Analysis Services verwendet.
 
@@ -105,7 +105,7 @@ Dies kann wie folgt konfiguriert werden:
 
     ![Konfigurieren des Zeitplans](./media/analysis-services-refresh-azure-automation/15.png)
 
-3. Klicken Sie auf **Create**.
+3. Klicken Sie auf **Erstellen**.
 
 4. Füllen Sie die Parameter für den Zeitplan aus. Diese werden jedes Mal verwendet, wenn das Runbook ausgelöst wird. Der Parameter **WEBHOOKDATA** muss leer bleiben, wenn die Ausführung nach einem Zeitplan erfolgt.
 

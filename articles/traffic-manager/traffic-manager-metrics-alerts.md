@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: rohink
 ms.openlocfilehash: 521e6ac605d187c0f95545611a17a86cfda6e1dd
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76938588"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager-Metriken und -Warnungen
@@ -39,7 +39,7 @@ Abbildung 2 zeigt die gleichen Informationen, sie sind allerdings nach Endpunkte
 
 ![Traffic Manager-Metriken – unterteilte Ansicht des Abfragevolumens pro Endpunkt](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-query-volume-per-endpoint.png)
 
-*Abbildung 2: Geteilte Ansicht mit Abfragevolumen pro zurückgegebenem Endpunkt*
+*Abbildung 2: Unterteilte Ansicht mit Abfragevolumen, dargestellt pro zurückgegebenem Endpunkt*
 
 ## <a name="endpoint-status-by-endpoint"></a>Endpunktstatus nach Endpunkt
 Verwenden Sie [diese Metrik](../azure-monitor/platform/metrics-supported.md#microsoftnetworktrafficmanagerprofiles), um den Integritätsstatus der Endpunkte im Profil zu verstehen. Zwei Werte sind möglich:
@@ -56,7 +56,7 @@ Diese Metrik kann als ein aggregierter Wert angezeigt werden, der den Status all
 
 ![Traffic Manager-Metriken – unterteilte Ansicht des Endpunktstatus](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-split-view.png)
 
-*Abbildung 4: Geteilte Ansicht der Metrik zum Endpunktstatus*
+*Abbildung 4: Unterteilte Ansicht der Metrik zum Endpunktstatus*
 
 Sie können diese Metriken über das Portal des [Azure Monitor-Diensts](../azure-monitor/platform/metrics-supported.md), [REST-API](https://docs.microsoft.com/rest/api/monitor/), [Azure CLI](https://docs.microsoft.com/cli/azure/monitor) und [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights) oder über den Abschnitt „Metriken“ in der Traffic Manager-Portalumgebung nutzen.
 

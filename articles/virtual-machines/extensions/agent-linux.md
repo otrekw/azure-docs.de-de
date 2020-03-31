@@ -16,10 +16,10 @@ ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5f22fbd77069488e7aaf490f93f42cde747444a8
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74073850"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Grundlegendes zum Azure Linux-Agent und seiner Verwendung
@@ -106,12 +106,12 @@ Für die Installation und Upgrades des Azure Linux-Agents sollte nach Möglichke
 Informationen zu erweiterten Installationsoptionen (beispielsweise zu einer quellbasierten Installation, zum Installieren an benutzerdefinierten Orten oder zur Verwendung von Präfixen) finden Sie in der Dokumentation im [Azure Linux-Agent-Repository auf GitHub](https://github.com/Azure/WALinuxAgent).
 
 ## <a name="command-line-options"></a>Befehlszeilenoptionen
-### <a name="flags"></a>Kennzeichen
-* verbose: Erhöht die Ausführlichkeit des angegebenen Befehls.
-* force: Überspringt die interaktive Bestätigung für einige Befehle.
+### <a name="flags"></a>Flags
+* verbose: Ausführlichkeit des angegebenen Befehls erhöhen
+* force: Interaktive Bestätigung für einige Befehle überspringen
 
 ### <a name="commands"></a>Befehle
-* help: Listet die unterstützten Befehle und Flags auf.
+* help: Listet die unterstützten Befehle und Kennzeichen auf
 * deprovision: Versucht, das System zu bereinigen und für eine erneute Bereitstellung vorzubereiten. Bei diesem Vorgang wird Folgendes gelöscht:
   
   * Alle SSH-Hostschlüssel (sofern Provisioning.RegenerateSshHostKeyPair in der Konfigurationsdatei auf "y" festgelegt ist)
@@ -125,8 +125,8 @@ Informationen zu erweiterten Installationsoptionen (beispielsweise zu einer quel
 > 
 > 
 
-* deprovision+user: Führt alle oben für „-deprovision“ aufgeführten Aktionen aus und löscht darüber hinaus das zuletzt bereitgestellte Benutzerkonto (aus „/var/lib/waagent“ abgerufen) sowie die zugehörigen Daten. Dieser Parameter sollte verwendet werden, um die Bereitstellung eines Image aufzuheben, das zuvor für Bereitstellungen auf Azure verwendet wurde, sodass es erfasst und erneut verwendet werden kann.
-* version: Zeigt die Version von waagent an.
+* deprovision+user: Führt alle vorstehend für „-deprovision“ aufgeführten Aktionen aus und löscht darüber hinaus das zuletzt bereitgestellte Benutzerkonto (aus „/var/lib/waagent“ abgerufen) und zugehörige Daten. Dieser Parameter sollte verwendet werden, um die Bereitstellung eines Image aufzuheben, das zuvor für Bereitstellungen auf Azure verwendet wurde, sodass es erfasst und erneut verwendet werden kann.
+* version: Zeigt die Version von waagent an
 * serialconsole: Konfiguriert GRUB so, dass ttyS0 (der erste serielle Port) als Startkonsole markiert wird. Hierdurch wird sichergestellt, dass Kernelstartprotokolle an den seriellen Port gesendet und für das Debuggen verfügbar gemacht werden.
 * daemon: Führt waagent als Daemon aus, um die Interaktion mit der Plattform zu verwalten. Dieses Argument wird waagent im waagent-Initialisierungsskript mitgeteilt.
 * start: Führt waagent als Hintergrundprozess aus.
@@ -343,6 +343,6 @@ Ubuntu Cloud Images verwenden [cloud-init](https://launchpad.net/ubuntu/+source/
 
 * Berücksichtigen Sie zum Konfigurieren des Bereitstellungspunkts und des Auslagerungsbereichs für den Ressourcendatenträger von Ubuntu Cloud Images die folgenden Ressourcen:
   
-  * [Ubuntu Wiki: Configure Swap Partitions](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409) (Konfigurieren von Swappartitionen)
+  * [Ubuntu-Wiki: Konfigurieren von Swap-Partitionen](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
   * [Einfügen benutzerdefinierter Daten in einen virtuellen Azure-Computer](../windows/classic/inject-custom-data.md)
 

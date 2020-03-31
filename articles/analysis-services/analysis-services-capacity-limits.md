@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: f309c9863eb2f3065251537380a2977839f990d8
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73573214"
 ---
 # <a name="analysis-services-resource-and-object-limits"></a>Grenzwerte von Azure Analysis Services-Ressourcen und -Objekten
@@ -28,7 +28,7 @@ Hierbei handelt um theoretische Grenzwerte. Die Leistung wird bei geringeren Wer
 
 |Object|Maximale Größe/Anzahl|  
 |------------|----------------------------|  
-|Datenbanken in einer Instanz|16.000|  
+|Datenbank in einer Instanz|16.000|  
 |Kombinierte Anzahl an Tabellen und Spalten in einer Datenbank|16.000|  
 |Zeilen in einer Tabelle|Unbegrenzt<br /><br /> **Warnung:** Mit der Einschränkung, dass keine einzelne Spalte in der Tabelle mehr als 1.999.999.999.999.997 verschiedene Werte haben kann.|  
 |Hierarchien in einer Tabelle|15.999|  
@@ -37,7 +37,7 @@ Hierbei handelt um theoretische Grenzwerte. Die Leistung wird bei geringeren Wer
 |Schlüsselspalten in allen Tabellen|15.999|  
 |Messungen in Tabellen|2^31-1 = 2.147483.647|  
 |Von einer Abfrage zurückgegebene Zellen|2^31-1 = 2.147483.647|  
-|Datensatzgröße der Quellabfrage|64 K|  
+|Datensatzgröße in der Quellabfrage|64 K|  
 |Länge des Objektnamens|512 Zeichen|  
 
 

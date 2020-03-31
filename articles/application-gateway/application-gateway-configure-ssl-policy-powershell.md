@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 105b0b3e40e6e9433ee456914cd5babc1d17d036
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74075229"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Konfigurieren von SSL-Richtlinienversionen und Verschlüsselungssammlungen für Application Gateway
@@ -191,7 +191,7 @@ $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName $rg.Resourc
 
 ## <a name="update-an-existing-application-gateway-with-a-pre-defined-ssl-policy"></a>Aktualisieren eines vorhandenen Anwendungsgateways mit einer vordefinierten SSL-Richtlinie
 
-Um eine benutzerdefinierte SSL-Richtlinie festzulegen, übergeben Sie folgende Parameter: **PolicyType**, **MinProtocolVersion**, **CipherSuite** und **ApplicationGateway**. Um eine vordefinierte SSL-Richtlinie festzulegen, übergeben Sie folgende Parameter: **PolicyType**, **PolicyName** und **ApplicationGateway**. Wenn Sie versuchen, andere Parameter zu übergeben, tritt beim Erstellen oder Aktualisieren des Anwendungsgateways ein Fehler auf.
+Übergeben Sie folgende Parameter, um eine benutzerdefinierte SSL-Richtlinie festzulegen: **PolicyType**, **MinProtocolVersion**, **CipherSuite** und **ApplicationGateway**. Übergeben Sie folgende Parameter, um eine vordefinierte SSL-Richtlinie festzulegen: **PolicyType**, **PolicyName** und **ApplicationGateway**. Wenn Sie versuchen, andere Parameter zu übergeben, tritt beim Erstellen oder Aktualisieren des Anwendungsgateways ein Fehler auf.
 
 Das folgende Beispiel enthält Codebeispiele für die benutzerdefinierte Richtlinie und für die vordefinierte Richtlinie. Kommentieren Sie die Richtlinie aus, die Sie verwenden möchten.
 

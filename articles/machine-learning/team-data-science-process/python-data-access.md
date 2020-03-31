@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 93ec5e740ac6acf9420a9d980092ed772ac1618e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720978"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Zugriff auf Datasets mit Python mithilfe der Azure Machine Learning Python-Clientbibliothek
@@ -28,7 +28,7 @@ Dieses Thema enthält Anweisungen zu:
 * Zugriff auf Zwischen-Datasets von Experimenten
 * Verwendung der Python-Clientbibliothek zum Auflisten von Datasets, Zugriff auf Metadaten, Lesen des Inhalts eines Datasets, Erstellen neuer Datasets und Aktualisieren vorhandener Datasets
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="prerequisites"></a><a name="prerequisites"></a>Voraussetzungen
 Die Python-Clientbibliothek wurde in den folgenden Umgebungen getestet:
 
 * Windows, Mac und Linux
@@ -42,7 +42,7 @@ Es besteht eine Abhängigkeit von folgenden Paketen:
 
 Es empfiehlt sich, eine Python-Distribution wie z.B. [Anaconda](http://continuum.io/downloads#all) oder [Canopy](https://store.enthought.com/downloads/) zu verwenden, die aus Python, IPython stammt und mit den drei oben aufgeführten Paketen geliefert und installiert wird. Obwohl IPython nicht unbedingt erforderlich ist, ist es eine optimale Umgebung für die interaktive Bearbeitung und Visualisierung von Daten.
 
-### <a name="installation"></a>Installation der Azure Machine Learning Python-Clientbibliothek
+### <a name="how-to-install-the-azure-machine-learning-python-client-library"></a><a name="installation"></a>Installation der Azure Machine Learning Python-Clientbibliothek
 Installieren Sie die Azure Machine Learning Python-Clientbibliothek zum Ausführen der Aufgaben in diesem Thema. Diese Bibliothek ist über [Python Package Index](https://pypi.python.org/pypi/azureml) verfügbar. Um es in Ihrer Python-Umgebung zu installieren, führen Sie den folgenden Befehl Ihrer lokalen Python-Umgebung aus:
 
     pip install azureml
@@ -56,12 +56,12 @@ Wenn Sie Git auf Ihrem Computer installiert haben, können Sie mit Pip direkt vo
     pip install git+https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python.git
 
 
-## <a name="datasetAccess"></a>Verwenden von Codeausschnitten, um auf Datasets zuzugreifen
+## <a name="use-code-snippets-to-access-datasets"></a><a name="datasetAccess"></a>Verwenden von Codeausschnitten, um auf Datasets zuzugreifen
 Mit der Python-Clientbibliothek erhalten Sie programmgesteuerten Zugriff auf Ihre vorhandenen Datasets aus durchgeführten Experimenten.
 
 Über die Studio Weboberfläche von Azure Machine Learning Studio (klassisch) können Sie Codeausschnitte generieren, die alle notwendigen Informationen zum Herunterladen und Deserialisieren von Datasets als Pandas DataFrame-Objekte auf Ihrem lokalen Computer enthalten.
 
-### <a name="security"></a>Sicherheit für den Datenzugriff
+### <a name="security-for-data-access"></a><a name="security"></a>Sicherheit für den Datenzugriff
 Die von Azure Machine Learning Studio (klassisch) bereitgestellten Codeausschnitte zur Verwendung mit Python-Clientbibliotheken enthalten Ihre Arbeitsbereichs-ID und Ihr Authentifizierungstoken. Diese bieten vollständigen Zugriff auf den Arbeitsbereich und müssen wie ein Kennwort geschützt werden.
 
 Aus Sicherheitsgründen ist die Codeausschnitt-Funktionalität nur für Benutzer verfügbar, deren Rolle als **Besitzer** für den Arbeitsbereich eingestellt ist. Die Rolle wird in Azure Machine Learning Studio (klassisch) auf der Seite **BENUTZER** unter **Einstellungen** angezeigt.
@@ -82,7 +82,7 @@ Wenn Entwickler die Arbeitsplatz-ID und das Autorisierungstoken abgerufen haben,
 
 Autorisierungstoken werden auf der Seite **AUTORISIERUNGSTOKEN** unter **EINSTELLUNGEN** verwaltet. Sie können sie erneut generieren, aber dieses Verfahren hebt den Zugriff auf das vorherige Token auf.
 
-### <a name="accessingDatasets"></a>Zugriff auf Datasets aus einer lokalen Python-Anwendung
+### <a name="access-datasets-from-a-local-python-application"></a><a name="accessingDatasets"></a>Zugriff auf Datasets aus einer lokalen Python-Anwendung
 1. Klicken Sie in Machine Learning Studio (klassisch) auf der Navigationsleiste auf der linken Seite auf **DATASETS**.
 2. Wählen Sie das Dataset, auf das Sie zugreifen möchten. Wählen Sie eines der Datasets aus der Liste **MEINE DATASETS** oder aus der Liste **BEISPIELE** aus.
 3. Klicken Sie auf der unteren Symbolleiste auf **Datenzugriffscode generieren**. Diese Schaltfläche ist deaktiviert, wenn die Daten ein mit der Python-Clientbibliothek nicht kompatibles Format haben.
@@ -95,7 +95,7 @@ Autorisierungstoken werden auf der Seite **AUTORISIERUNGSTOKEN** unter **EINSTEL
    
     ![Einfügen von Code in das Notebook][ipython-dataset]
 
-## <a name="accessingIntermediateDatasets"></a>Zugriff auf Zwischen-Datasets von Machine Learning-Experimenten
+## <a name="access-intermediate-datasets-from-machine-learning-experiments"></a><a name="accessingIntermediateDatasets"></a>Zugriff auf Zwischen-Datasets von Machine Learning-Experimenten
 Nachdem ein Experiment in Machine Learning Studio (klassisch) ausgeführt wurde, ist es möglich, von den Ausgabeknoten der Module auf die Zwischen-Datasets zuzugreifen. Zwischen-Datasets sind Daten, die für Zwischenschritte erstellt und verwendet wurden, wenn ein Modell-Werkzeug ausgeführt wurde.
 
 Auf Zwischen-Datasets kann zugegriffen werden, solange das Datenformat mit der Python-Clientbibliothek kompatibel ist.
@@ -139,7 +139,7 @@ Die folgenden Schritte zeigen ein Beispiel, das ein Experiment erstellt, dieses 
     
     ![Histogramm][ipython-histogram]
 
-## <a name="clientApis"></a>Verwenden Sie die Machine Learning Python-Clientbibliothek, um auf Datasets zuzugreifen, diese zu lesen, zu erstellen und zu verwalten.
+## <a name="use-the-machine-learning-python-client-library-to-access-read-create-and-manage-datasets"></a><a name="clientApis"></a>Verwenden Sie die Machine Learning Python-Clientbibliothek, um auf Datasets zuzugreifen, diese zu lesen, zu erstellen und zu verwalten.
 ### <a name="workspace"></a>Arbeitsbereich
 Der Arbeitsbereich ist der Einstiegspunkt für die Python-Clientbibliothek. Geben Sie zum Erstellen einer Instanz die Klasse `Workspace` mit Ihrer Arbeitsbereich-ID und Ihrem Autorisierungstoken an:
 

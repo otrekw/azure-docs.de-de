@@ -16,10 +16,10 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.openlocfilehash: f25968fb74f0f10b1d498866c036dd04d4d5d134
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74073375"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Erstellen nicht verwalteter VM-Images aus virtuellen Azure-Computern
@@ -31,7 +31,7 @@ In diesem Artikel wird gezeigt, wie Sie Azure PowerShell zum Erstellen eines Ima
  
 
 ## <a name="generalize-the-vm"></a>Generalisieren des virtuellen Computers 
-In diesem Abschnitt wird erläutert, wie Sie den virtuellen Windows-Computer für die Verwendung als Image verallgemeinern. Beim Generalisieren einer VM werden u.a. alle persönlichen Kontoinformationen entfernt, und der Computer wird für die Verwendung als Image vorbereitet. Weitere Informationen zu Sysprep finden Sie unter [How to Use Sysprep: An Introduction](https://technet.microsoft.com/library/bb457073.aspx) (Verwenden von Sysprep: Eine Einführung).
+In diesem Abschnitt wird erläutert, wie Sie den virtuellen Windows-Computer für die Verwendung als Image verallgemeinern. Beim Generalisieren einer VM werden u.a. alle persönlichen Kontoinformationen entfernt, und der Computer wird für die Verwendung als Image vorbereitet. Weitere Informationen zu Sysprep finden Sie unter [How to Use Sysprep: An Introduction](https://technet.microsoft.com/library/bb457073.aspx)(in englischer Sprache).
 
 Stellen Sie sicher, dass die auf dem Computer ausgeführten Serverrollen von Sysprep unterstützt werden. Weitere Informationen finden Sie unter [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 

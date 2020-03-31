@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/19/2020
+ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: b3338edf644aee8409cfca05d4ac801594cbf66b
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: e15fb60ec339eae45f9f14a3333e8afe51fc05c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77467758"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480860"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Gewusst wie: Anmelden von Azure Active Directory-Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster
 
@@ -115,7 +115,7 @@ Einigen Berechtigungen kann ein regulärer Benutzer zustimmen, während andere d
 
 Nur für die App geltende Berechtigungen erfordern immer die Zustimmung eines Mandantenadministrators. Wenn die Anwendung eine nur für die App geltende Berechtigung anfordert und ein Benutzer versucht, sich bei der Anwendung anzumelden, wird eine Fehlermeldung angezeigt, die besagt, dass der Benutzer nicht zustimmen kann.
 
-Bestimmte delegierte Berechtigungen erfordern ebenfalls die Zustimmung eines Mandantenadministrators. Beispielsweise erfordert die Funktion zum Zurückschreiben in Azure AD als der angemeldete Benutzer die Zustimmung eines Mandantenadministrators. Wenn ein normaler Benutzer versucht, sich bei einer Anwendung anzumelden, die eine delegierte Berechtigung anfordert, für die die Zustimmung des Administrators erforderlich ist, wird in Ihrer Anwendung ein Fehler angezeigt, wie es auch bei nur für die App geltenden Berechtigungen der Fall ist. Ob für eine Berechtigung die Zustimmung des Administrators erforderlich ist, wird durch den Entwickler bestimmt, der die Ressource veröffentlicht hat. Sie können dies in der Dokumentation für die Ressource nachlesen. In der Berechtigungsdokumentation für die [Azure AD-Graph-API][AAD-Graph-Perm-Scopes] und die [Microsoft Graph-API][MSFT-Graph-permission-scopes] erfahren Sie, für welche Berechtigungen die Zustimmung des Administrators benötigt wird.
+Bestimmte delegierte Berechtigungen erfordern ebenfalls die Zustimmung eines Mandantenadministrators. Beispielsweise erfordert die Funktion zum Zurückschreiben in Azure AD als der angemeldete Benutzer die Zustimmung eines Mandantenadministrators. Wenn ein normaler Benutzer versucht, sich bei einer Anwendung anzumelden, die eine delegierte Berechtigung anfordert, für die die Zustimmung des Administrators erforderlich ist, wird in Ihrer Anwendung ein Fehler angezeigt, wie es auch bei nur für die App geltenden Berechtigungen der Fall ist. Ob für eine Berechtigung die Zustimmung des Administrators erforderlich ist, wird durch den Entwickler bestimmt, der die Ressource veröffentlicht hat. Sie können dies in der Dokumentation für die Ressource nachlesen. In der Berechtigungsdokumentation für die [Microsoft Graph-API][MSFT-Graph-permission-scopes] ist angegeben, für welche Berechtigungen die Zustimmung des Administrators erforderlich ist.
 
 Wenn Ihre Anwendung Berechtigungen nutzt, die die Zustimmung des Administrators erfordern, müssen Sie z.B. eine Schaltfläche oder einen Link implementieren, damit der Administrator die Aktion initiieren kann. Die Anforderung, die die Anwendung für diese Aktion sendet, ist die reguläre OAuth2/OpenID Connect-Autorisierungsanforderung, die zusätzlich den Abfragezeichenfolgen-Parameter `prompt=admin_consent` enthält. Nachdem der Administrator zugestimmt hat und der Dienstprinzipal im Mandanten des Kunden erstellt wurde, ist für nachfolgende Anmeldeanforderungen der Parameter `prompt=admin_consent` nicht mehr erforderlich. Da der Administrator entschieden hat, dass die angeforderten Berechtigungen zulässig sind, werden von diesem Zeitpunkt an keine anderen Benutzer im Mandanten zur Zustimmung aufgefordert.
 
@@ -176,13 +176,12 @@ In diesem Artikel haben Sie gelernt, wie Sie eine Anwendung erstellen, die einen
 
 ## <a name="related-content"></a>Verwandte Inhalte
 
-* [Beispiel für eine mehrinstanzenfähige Anwendung](https://github.com/mspnp/multitenant-saas-guidance)
+* [Beispiel für eine mehrinstanzenfähige Anwendung](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/2-WebApp-graph-user/2-3-Multi-Tenant/README.md)
 * [Brandingrichtlinien für Anwendungen][AAD-App-Branding]
 * [Anwendungsobjekte und Dienstprinzipalobjekte][AAD-App-SP-Objects]
 * [Integrieren von Anwendungen in Azure Active Directory][AAD-Integrating-Apps]
 * [Azure Active Directory-Zustimmungsframework][AAD-Consent-Overview]
 * [Microsoft Graph-API-Berechtigungsbereiche][MSFT-Graph-permission-scopes]
-* [Azure AD Graph-API-Berechtigungsbereiche][AAD-Graph-Perm-Scopes]
 
 <!--Reference style links IN USE -->
 [AAD-Access-Panel]:  https://myapps.microsoft.com
@@ -192,8 +191,6 @@ In diesem Artikel haben Sie gelernt, wie Sie eine Anwendung erstellen, die einen
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Consent-Overview]:consent-framework.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
-[AAD-Graph-Overview]: https://azure.microsoft.com/documentation/articles/active-directory-graph-api/
-[AAD-Graph-Perm-Scopes]: https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
 [AAD-Samples-MT]: https://docs.microsoft.com/samples/browse/?products=azure-active-directory
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
@@ -213,10 +210,6 @@ In diesem Artikel haben Sie gelernt, wie Sie eine Anwendung erstellen, die einen
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
-[AAD-Graph-Perm-Scopes]: https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes
-[AAD-Graph-App-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
-[AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
-[AAD-Graph-User-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md
 [AAD-Security-Token-Claims]: ./active-directory-authentication-scenarios/#claims-in-azure-ad-security-tokens
 [AAD-Tokens-Claims]:access-tokens.md

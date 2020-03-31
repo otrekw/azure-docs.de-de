@@ -19,11 +19,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bbd1ad6178e0120bf8414fc424b79254e306d2c2
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76897278"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230266"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Überwachen von AD FS mithilfe von Azure AD Connect Health
 Die folgende Dokumentation bezieht sich auf die Überwachung Ihrer AD FS-Infrastruktur mit Azure AD Connect Health. Informationen zum Überwachen von Azure AD Connect (Sync) mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health für die Synchronisierung](how-to-connect-health-sync.md). Informationen zur Überwachung der Active Directory-Domänendienste mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](how-to-connect-health-adds.md).
@@ -108,7 +108,7 @@ Der Graph zeigt die folgenden Informationen:
 
 Der Bericht enthält die folgenden Informationen:
 
-| Berichtselement | Beschreibung |
+| Berichtselement | BESCHREIBUNG |
 | --- | --- |
 | Benutzer-ID |Die verwendete Benutzer-ID. Dies ist der Wert mit der Eingabe des Benutzers, also in einigen Fällen die Verwendung der falschen Benutzer-ID. |
 | Fehlgeschlagene Anmeldeversuche |Die Gesamtanzahl fehlgeschlagener Anmeldeversuche für die jeweilige Benutzer-ID. Die Tabelle ist nach der höchsten Anzahl fehlgeschlagener Versuche in absteigender Reihenfolge sortiert. |

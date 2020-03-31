@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a367e4d98135b5d29c4a0e38363739ca2689dcab
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 158dd9d6a38cc1aaf7667c0b16518e23b3f7cecf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127994"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79366682"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Bereitstellen eines virtuellen Windows 7-Computers in Windows Virtual Desktop
 
@@ -35,7 +35,7 @@ So richten Sie einen virtuellen Windows 7-Computer in Windows Virtual Desktop ei
 4. Fügen Sie das Konto, das Sie beim Herstellen einer Verbindung mit dem Host über RDP verwendet haben, der Gruppe „Remotedesktopbenutzer“ hinzu. Wenn Sie nicht so vorgehen, können Sie möglicherweise keine Verbindung mit dem virtuellen Computer herstellen, nachdem Sie ihn Ihrer Active Directory-Domäne hinzugefügt haben.
 5. Navigieren Sie auf Ihrem virtuellen Computer zu Windows Update.
 6. Installieren Sie alle Windows-Updates in der Kategorie „Wichtig“.
-7. Installieren Sie alle Windows-Updates in der Kategorie „Optional“ (mit Ausnahme von Language Packs). Dadurch wird das Update für das Remotedesktopprotokoll 8.0 ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35393)) installiert, das Sie benötigen, um diese Anweisungen abzuschließen.
+7. Installieren Sie alle Windows-Updates in der Kategorie „Optional“ (mit Ausnahme von Language Packs). Dadurch wird das Update für das Remotedesktopprotokoll 8.0 ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35387)) installiert, das Sie benötigen, um diese Anweisungen abzuschließen.
 8. Öffnen Sie den lokalen Gruppenrichtlinien-Editor, und navigieren Sie zu **Computer Configuration** > **Administrative Templates** > **Windows Components** > **Remote Desktop Services** > **Remote Desktop Session Host** > **Remote Session Environment** (Computerkonfiguration > Administrative Vorlagen > Windows-Komponenten > Remotedesktopdienste > Remotedesktop-Sitzungshost > Remotesitzungsumgebung).
 9. Aktivieren Sie die Richtlinie für das Remotedesktopprotokoll 8.0.
 10. Fügen Sie diesen virtuellen Computer Ihrer Active Directory-Domäne hinzu.

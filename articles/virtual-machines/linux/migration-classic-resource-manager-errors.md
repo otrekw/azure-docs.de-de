@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: tagore
 ms.openlocfilehash: ffeef74179874a0f477ba857ca519ebc67fded64
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78944719"
 ---
 # <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>Häufige Fehler bei der Migration von einer klassischen Bereitstellung zu einer Azure Resource Manager-Bereitstellung

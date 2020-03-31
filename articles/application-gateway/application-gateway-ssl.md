@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: c456a0856adb0d36349b5f96ba0ab8bab3eec5c9
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74047922"
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>Konfigurieren eines Application Gateways für SSL-Auslagerung mit klassischem Bereitstellungsmodell
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](application-gateway-ssl-portal.md)
+> * [Azure portal](application-gateway-ssl-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
 > * [Klassische Azure PowerShell](application-gateway-ssl.md)
 > * [Azure-Befehlszeilenschnittstelle](application-gateway-ssl-cli.md)
@@ -92,17 +92,17 @@ Eine Anwendungsgatewaykonfiguration besteht aus mehreren Werten. Die Werte könn
 
 Die Werte sind:
 
-* **Back-End-Serverpool**: Die Liste der IP-Adressen der Back-End-Server. Die aufgelisteten IP-Adressen sollten dem Subnetz des virtuellen Netzwerks angehören oder eine öffentliche IP-Adresse oder eine VIP-Adresse sein.
-* **Einstellungen für den Back-End-Serverpool**: Jeder Pool besitzt Einstellungen wie Port, Protokoll und cookiebasierte Affinität. Diese Einstellungen sind an einen Pool gebunden und gelten für alle Server innerhalb des Pools.
-* **Front-End-Port**: Der öffentliche Port, der im Anwendungsgateway geöffnet ist. Datenverkehr erreicht diesen Port und wird dann an einen der Back-End-Server umgeleitet.
-* **Listener**: Der Listener verfügt über einen Front-End-Port, ein Protokoll („Http“ oder „Https“; jeweils unter Beachtung der Groß-/Kleinschreibung) und den Namen des SSL-Zertifikats (falls die SSL-Auslagerung konfiguriert wird).
-* **Regel**: Mit der Regel werden der Listener und der Back-End-Serverpool gebunden, und es wird definiert, an welchen Back-End-Serverpool der Datenverkehr gesendet werden soll, wenn er einen bestimmten Listener erreicht. Derzeit wird nur die Regel *basic* unterstützt. Die Regel *basic* ist eine Round-Robin-Lastverteilung.
+* **Back-End-Serverpool:** Die Liste der IP-Adressen der Back-End-Server. Die aufgelisteten IP-Adressen sollten dem Subnetz des virtuellen Netzwerks angehören oder eine öffentliche IP-Adresse oder eine VIP-Adresse sein.
+* **Einstellungen für den Back-End-Serverpool:** Jeder Pool weist Einstellungen wie Port, Protokoll und cookiebasierte Affinität auf. Diese Einstellungen sind an einen Pool gebunden und gelten für alle Server innerhalb des Pools.
+* **Front-End-Port:** Dieser Port ist der öffentliche Port, der im Anwendungsgateway geöffnet ist. Datenverkehr erreicht diesen Port und wird dann an einen der Back-End-Server umgeleitet.
+* **Listener:** Der Listener verfügt über einen Front-End-Port, ein Protokoll („Http“ oder „Https“; jeweils unter Beachtung der Groß-/Kleinschreibung) und den Namen des SSL-Zertifikats (falls eine SSL-Auslagerung konfiguriert wird).
+* **Regel:** Mit der Regel werden der Listener und der Back-End-Serverpool gebunden, und es wird definiert, an welchen Back-End-Serverpool der Datenverkehr gesendet werden soll, wenn er einen bestimmten Listener erreicht. Derzeit wird nur die Regel *basic* unterstützt. Die Regel *basic* ist eine Round-Robin-Lastverteilung.
 
 **Zusätzliche Konfigurationshinweise**
 
 Für die Konfiguration von SSL-Zertifikaten sollte das Protokoll in **HttpListener** in **Https** (Groß-/Kleinschreibung beachten) geändert werden. Fügen Sie das **SslCert**-Element zu **HttpListener** hinzu. Dabei muss der Wert auf den Namen festgelegt werden, der im Abschnitt [Hochladen von SSL-Zertifikaten](#upload-ssl-certificates) verwendet wurde. Der Front-End-Port sollte auf **443** aktualisiert werden.
 
-**So aktivieren Sie die cookiebasierte Affinität**: Sie können ein Anwendungsgateway so konfigurieren, dass sicherstellt ist, dass eine Anforderung von einer Clientsitzung immer an denselben virtuellen Computer in der Webfarm weitergeleitet wird. Fügen Sie dazu ein Sitzungscookie ein, damit das Gateway den Datenverkehr entsprechend weiterleiten kann. Legen Sie zum Aktivieren der cookiebasierten Affinität **CookieBasedAffinity** im **BackendHttpSettings**-Element auf **Enabled** fest.
+**So aktivieren Sie cookiebasierte Affinität**: Sie können ein Anwendungsgateway so konfigurieren, dass sicherstellt ist, dass eine Anforderung von einer Clientsitzung immer an denselben virtuellen Computer in der Webfarm weitergeleitet wird. Fügen Sie dazu ein Sitzungscookie ein, damit das Gateway den Datenverkehr entsprechend weiterleiten kann. Legen Sie zum Aktivieren der cookiebasierten Affinität **CookieBasedAffinity** im **BackendHttpSettings**-Element auf **Enabled** fest.
 
 Sie können die Konfiguration erzeugen, indem Sie ein Konfigurationsobjekt erstellen oder eine XML-Konfigurationsdatei verwenden.
 Um die Konfiguration mithilfe einer XML-Konfigurationsdatei zu erstellen, geben Sie das folgende Beispiel ein:

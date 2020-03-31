@@ -5,10 +5,10 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.date: 07/29/2018
 ms.openlocfilehash: a85dad2ba638505233e5df769e55fa5bd7b8dafd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77664999"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Erstellen und Verwalten von Warnungsregeln in Log Analytics mithilfe der REST-API 
@@ -135,7 +135,7 @@ Eine Warnungsaktion sollte nur über genau einen Schwellenwert verfügen.  Wenn 
 
 Die Eigenschaften von Schwellenwerten sind in der folgenden Tabelle aufgeführt.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | `Operator` |Operator für den Schwellenwertvergleich. <br> gt = Greater Than (Größer als) <br> lt = Less Than (Kleiner als) |
 | `Value` |Der Wert für den Schwellenwert. |

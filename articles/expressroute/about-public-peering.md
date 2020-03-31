@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: bae44f67a485546ba29148a114d88df198f7c3e6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8c1afac834fb9abb2cbf82f16f046a1624b251f1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475940"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481132"
 ---
 # <a name="create-and-manage-expressroute-public-peering"></a>Erstellen und Verwalten von öffentlichem ExpressRoute-Peering
 
@@ -38,7 +38,7 @@ Sobald öffentliches Peering aktiviert ist, können Sie eine Verbindung mit den 
 * Über die öffentliche Peeringroutingdomäne können Sie eine private Verbindung mit über öffentliche IP-Adressen gehosteten Diensten herstellen, einschließlich VIPs Ihrer Clouddienste.
 * Sie können die öffentliche Peeringdomäne mit der DMZ verbinden und aus Ihrem WAN heraus eine Verbindung mit allen Azure-Diensten unter ihren öffentlichen IP-Adressen herstellen, ohne eine Verbindung über das Internet herstellen zu müssen.
 
-## <a name="services"></a>Dienste
+## <a name="services"></a><a name="services"></a>Dienste
 
 In diesem Abschnitt werden die Dienste angezeigt, die über öffentliches Peering verfügbar sind. Da öffentliches Peering veraltet ist, ist nicht geplant, dem öffentlichen Peering neue oder zusätzliche Dienste hinzuzufügen. Wenn Sie öffentliches Peering verwenden und der Dienst, den Sie verwenden möchten, nur über Microsoft-Peering unterstützt wird, müssen Sie auf das Microsoft-Peering umstellen. Eine Liste der unterstützten Dienste finden Sie unter [Microsoft-Peering](expressroute-faqs.md#microsoft-peering).
 
@@ -55,7 +55,7 @@ In diesem Abschnitt werden die Dienste angezeigt, die über öffentliches Peerin
 
 Um die Verfügbarkeit für einen bestimmten Dienst zu überprüfen, können Sie die Dokumentation für diesen Dienst lesen, um festzustellen, ob ein reservierter Bereich für ihn veröffentlicht wurde. Anschließend können Sie die IP-Adressbereiche des Zieldiensts überprüfen und mit den Bereichen vergleichen, die in der XML-Datei [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) (Azure-IP-Bereiche und -Diensttags – öffentliche Cloud) aufgeführt sind. Alternativ können Sie ein Supportticket für den betreffenden Dienst erstellen.
 
-## <a name="compare"></a>Peeringvergleich
+## <a name="peering-comparison"></a><a name="compare"></a>Peeringvergleich
 
 [!INCLUDE [peering comparison](../../includes/expressroute-peering-comparison.md)]
 
@@ -67,7 +67,7 @@ Um die Verfügbarkeit für einen bestimmten Dienst zu überprüfen, können Sie 
 
 Innerhalb des Netzwerks können Sie benutzerdefinierte Routingfilter definieren, um nur die benötigten Routen zu nutzen. Ausführliche Informationen zur Routingkonfiguration finden Sie unter [Routing](expressroute-routing.md) .
 
-## <a name="powershell"></a>Schritte mit Azure PowerShell
+## <a name="azure-powershell-steps"></a><a name="powershell"></a>Schritte mit Azure PowerShell
 
 
 [!INCLUDE [CloudShell](../../includes/expressroute-cloudshell-powershell-about.md)]
@@ -135,7 +135,7 @@ Da öffentliches Peering veraltet ist, können Sie öffentliches Peering nicht f
    > 
    >
 
-### <a name="getpublic"></a>So rufen Sie Details zum öffentlichen Azure-Peering ab
+### <a name="to-get-azure-public-peering-details"></a><a name="getpublic"></a>So rufen Sie Details zum öffentlichen Azure-Peering ab
 
 Sie können die Konfigurationsdetails mit dem folgenden Cmdlet abrufen:
 
@@ -145,7 +145,7 @@ Sie können die Konfigurationsdetails mit dem folgenden Cmdlet abrufen:
   Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -Circuit $ckt
   ```
 
-### <a name="updatepublic"></a>Aktualisieren der Konfiguration für öffentliches Azure-Peering:
+### <a name="to-update-azure-public-peering-configuration"></a><a name="updatepublic"></a>Aktualisieren der Konfiguration für öffentliches Azure-Peering:
 
 Sie können einen beliebigen Teil der Konfiguration anhand des folgenden Beispiels aktualisieren. In diesem Beispiel wird die VLAN-ID der Verbindung von 200 in 600 geändert.
 
@@ -155,7 +155,7 @@ Set-AzExpressRouteCircuitPeeringConfig  -Name "AzurePublicPeering" -ExpressRoute
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="deletepublic"></a>So löschen Sie ein öffentliches Azure-Peering:
+### <a name="to-delete-azure-public-peering"></a><a name="deletepublic"></a>So löschen Sie ein öffentliches Azure-Peering:
 
 Sie können Ihre Peeringkonfiguration entfernen, indem Sie das folgende Beispiel ausführen:
 
@@ -164,7 +164,7 @@ Remove-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRou
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-## <a name="cli"></a>Schritte mit der Azure-Befehlszeilenschnittstelle
+## <a name="azure-cli-steps"></a><a name="cli"></a>Schritte mit der Azure-Befehlszeilenschnittstelle
 
 
 [!INCLUDE [CloudShell](../../includes/expressroute-cloudshell-powershell-about.md)]
@@ -177,7 +177,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
    Die Antwort ähnelt dem folgenden Beispiel:
 
-   ```azurecli
+   ```output
    "allowClassicOperations": false,
    "authorizations": [],
    "circuitProvisioningState": "Enabled",
@@ -229,7 +229,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    > [!IMPORTANT]
    > Stellen Sie sicher, dass Sie Ihre AS-Nummer als Peering-ASN angeben, nicht als Kunden-ASN.
 
-### <a name="getpublic"></a>So zeigen Sie Details zum öffentlichen Azure-Peering an:
+### <a name="to-view-azure-public-peering-details"></a><a name="getpublic"></a>So zeigen Sie Details zum öffentlichen Azure-Peering an:
 
 Sie können Konfigurationsdetails anhand des folgenden Beispiels abrufen:
 
@@ -239,7 +239,7 @@ az network express-route peering show -g ExpressRouteResourceGroup --circuit-nam
 
 Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
-```azurecli
+```output
 {
   "azureAsn": 12076,
   "etag": "W/\"2e97be83-a684-4f29-bf3c-96191e270666\"",
@@ -264,7 +264,7 @@ Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 }
 ```
 
-### <a name="updatepublic"></a>Aktualisieren der Konfiguration für öffentliches Azure-Peering:
+### <a name="to-update-azure-public-peering-configuration"></a><a name="updatepublic"></a>Aktualisieren der Konfiguration für öffentliches Azure-Peering:
 
 Sie können einen beliebigen Teil der Konfiguration anhand des folgenden Beispiels aktualisieren. In diesem Beispiel wird die VLAN-ID der Verbindung von 200 in 600 geändert.
 
@@ -272,7 +272,7 @@ Sie können einen beliebigen Teil der Konfiguration anhand des folgenden Beispie
 az network express-route peering update --vlan-id 600 -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
 ```
 
-### <a name="deletepublic"></a>So löschen Sie ein öffentliches Azure-Peering:
+### <a name="to-delete-azure-public-peering"></a><a name="deletepublic"></a>So löschen Sie ein öffentliches Azure-Peering:
 
 Sie können Ihre Peeringkonfiguration entfernen, indem Sie das folgende Beispiel ausführen:
 
@@ -280,19 +280,19 @@ Sie können Ihre Peeringkonfiguration entfernen, indem Sie das folgende Beispiel
 az network express-route peering delete -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
 ```
 
-## <a name="portal"></a>Schritte im Azure-Portal
+## <a name="azure-portal-steps"></a><a name="portal"></a>Schritte im Azure-Portal
 
 Verwenden Sie die in diesem Artikel enthaltenen PowerShell- oder CLI-Schritte, um das Peering zu konfigurieren. Zum Verwalten eines Peerings können Sie die folgenden Abschnitte verwenden. Diese Schritte ähneln der Verwaltung des [Microsoft-Peerings im Portal](expressroute-howto-routing-portal-resource-manager.md#msft).
 
-### <a name="get"></a>So zeigen Sie Details zum öffentlichen Azure-Peering an:
+### <a name="to-view-azure-public-peering-details"></a><a name="get"></a>So zeigen Sie Details zum öffentlichen Azure-Peering an:
 
 Zeigen Sie die Eigenschaften des öffentlichen Azure-Peerings an, indem Sie das Peering auswählen.
 
-### <a name="update"></a>Aktualisieren der Konfiguration für öffentliches Azure-Peering:
+### <a name="to-update-azure-public-peering-configuration"></a><a name="update"></a>Aktualisieren der Konfiguration für öffentliches Azure-Peering:
 
 Wählen Sie die Zeile für das Peering aus, und ändern Sie dann die Peeringeigenschaften.
 
-### <a name="delete"></a>So löschen Sie ein öffentliches Azure-Peering:
+### <a name="to-delete-azure-public-peering"></a><a name="delete"></a>So löschen Sie ein öffentliches Azure-Peering:
 
 Entfernen Sie Ihre Peeringkonfiguration, indem Sie das Löschsymbol auswählen.
 

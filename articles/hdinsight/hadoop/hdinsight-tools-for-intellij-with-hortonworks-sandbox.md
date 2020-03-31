@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/16/2018
 ms.openlocfilehash: 65a15a8506b88e95e14af8c87bcbe33087301519
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75647831"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Verwenden von HDInsight-Tools für IntelliJ mit Hortonworks Sandbox
@@ -52,8 +52,8 @@ In diesem Abschnitt erstellen Sie mit IntelliJ IDEA ein Scala-Beispielprojekt. I
    1. Wählen Sie **HDInsight** > **Spark auf HDInsight (Scala)** aus.
    2. Wählen Sie in der Liste **Build-Tool** basierend auf Ihrem Szenario einen der folgenden Einträge aus:
 
-      * **Maven**: für die Unterstützung des Scala-Projekterstellungs-Assistenten.
-      * **SBT**: zum Verwalten von Abhängigkeiten und Erstellen für das Scala-Projekt.
+      * **Maven** für die Unterstützung des Scala-Projekterstellungs-Assistenten.
+      * **SBT** zum Verwalten von Abhängigkeiten und Erstellen für das Scala-Projekt.
 
    ![Intellij – Neues Scala-Projekt erstellen](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 

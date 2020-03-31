@@ -16,10 +16,10 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: f67be1d31125b21048deca4d9cafcc76f4ffc3b1
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72516745"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Übersicht über Event Hubs Dedicated
@@ -50,7 +50,7 @@ Bei hohen Eingangsvolumen (> 100 TUs) kostet ein Cluster bedeutend weniger pro S
 
 Das Event Hubs Dedicated-Angebot wird zu einem festen Monatspreis mit einem Minimum von vier Stunden Nutzung in Rechnung gestellt. Der Dedicated-Tarif umfasst die Funktionen des Standard-Tarifs, jedoch mit Kapazitäten und Limits auf Unternehmensniveau für Kunden mit anspruchsvollen Workloads. 
 
-| Feature | Standard | Dediziert |
+| Funktion | Standard | Dediziert |
 | --- |:---:|:---:|
 | Bandbreite | 20 TUs (bis zu 40 TUs) | 20 CUs |
 | Namespaces |  1 | 50 pro CU |
@@ -61,7 +61,7 @@ Das Event Hubs Dedicated-Angebot wird zu einem festen Monatspreis mit einem Mini
 | Verbrauchergruppen | 20 pro Event Hub | Kein Limit pro CU, 1000 pro Event Hub |
 | Brokerverbindungen | 1\.000 enthalten, max. 5.000 | 100.000 enthalten, gleichzeitig Max. |
 | Nachrichtenaufbewahrung | 7 Tage, 84 GB enthalten pro TU | 90 Tage, 10 TB enthalten pro CU |
-| Erfassen | Bezahlung pro Stunde | Enthalten |
+| Erfassung | Bezahlung pro Stunde | Enthalten |
 
 ## <a name="how-to-onboard"></a>Onboardingmethoden
 
@@ -87,9 +87,9 @@ Bei den Tests wurden folgende Kriterien verwendet:
 - Der für die Erfassung verwendete Event Hub umfasste 200 Partitionen. 
 - Die erfassten und von allen Partitionen eingehenden Daten wurden von zwei Empfängeranwendungen empfangen.
 
-#### <a name="can-i-scale-updown-my-cluster"></a>Kann ich meinen Cluster zentral hoch-/herunterskalieren?
+#### <a name="can-i-scale-updown-my-cluster"></a>Kann ich meinen Cluster hoch-/herunterskalieren?
 
-Nach ihrer Erstellung werden bei Clustern mindestens vier Stunden Nutzung in Rechnung gestellt. In der Vorschauversion der Self-Service-Erfahrung können Sie eine [Supportanfrage](https://ms.portal.azure.com/#create/Microsoft.Support) an das Event Hubs-Team übermitteln unter *Technical (Technisch) > Quota (Kontingent) > Request to Scale Up or Scale Down Dedicated Cluster (Anforderung zum zentralen Hoch- oder Herunterskalieren eines Dedicated-Clusters)* , um Ihren Cluster zentral hoch- oder herunterzuskalieren. Es kann bis zu 7 Tage dauern, bis die Anfrage zum zentralen Herunterskalieren abgeschlossen wird. 
+Nach ihrer Erstellung werden bei Clustern mindestens vier Stunden Nutzung in Rechnung gestellt. In der Vorschauversion der Self-Service-Erfahrung können Sie eine [Supportanfrage](https://ms.portal.azure.com/#create/Microsoft.Support) an das Event Hubs-Team übermitteln unter *Technisch &gt; Kontingent &gt; Anforderung zum Hoch- oder Herunterskalieren eines dedizierten Clusters*, um Ihren Cluster hoch- oder herunterzuskalieren. Es kann bis zu 7 Tage dauern, bis die Anfrage zum zentralen Herunterskalieren abgeschlossen wird. 
 
 #### <a name="how-will-geo-dr-work-with-my-cluster"></a>Wie wird die Geo-Notfallwiederherstellung mit meinem Cluster funktionieren?
 

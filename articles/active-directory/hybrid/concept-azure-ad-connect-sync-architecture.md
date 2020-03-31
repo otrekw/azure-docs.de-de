@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fac0f9143918d3f273812e53abfb88d6a56f7a71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65138598"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230282"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect-Synchronisierung: Grundlagen der Architektur
 In diesem Thema wird die grundlegende Architektur für Azure AD Connect Sync beschrieben. In vielen Punkten ähnelt sie den Vorgängern MIIS 2003, ILM 2007 und FIM 2010. Azure AD Connect Sync ist die Weiterentwicklung dieser Technologien. Wenn Sie sich mit einer dieser früheren Technologien auskennen, wird Ihnen auch der Inhalt dieses Themas vertraut sein. Dieses Thema ist für Sie auch geeignet, falls Sie sich mit der Synchronisierung noch nicht auskennen. Es ist jedoch nicht erforderlich, alle Details dieses Themas zu kennen, um erfolgreich Anpassungen an Azure AD Connect Sync (in diesem Thema als „Synchronisierungsmodul“ bezeichnet) vornehmen zu können.
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>Aufbau
 Das Synchronisierungsmodul erstellt eine integrierte Ansicht der Objekte, die in mehreren verbundenen Datenquellen gespeichert sind, und verwaltet die Identitätsinformationen in diesen Datenquellen. Diese integrierte Ansicht wird anhand der Identitätsinformationen ermittelt, die aus verbundenen Datenquellen abgerufen werden, sowie mit einer Gruppe von Regeln, mit denen die Verarbeitung dieser Informationen bestimmt wird.
 
 ### <a name="connected-data-sources-and-connectors"></a>Verbundene Datenquellen und Connectors
@@ -146,8 +146,8 @@ Ein Importobjekt wird als getrenntes Objekt erstellt. Ein Exportobjekt muss ein 
 Der Identitätsverwaltungsprozess steuert, wie Identitätsinformationen zwischen unterschiedlichen verbundenen Datenquellen aktualisiert werden. Die Identitätsverwaltung umfasst drei Vorgänge:
 
 * Importieren
-* Synchronisierung
-* Export
+* Synchronization
+* Exportieren
 
 Während des Importvorgangs wertet das Synchronisierungsmodul die eingehenden Identitätsinformationen aus einer verbundenen Datenquelle aus. Wenn Änderungen erkannt werden, werden entweder neue Stagingobjekte erstellt oder vorhandene Stagingobjekte im Connectorbereich für die Synchronisierung aktualisiert.
 
@@ -179,7 +179,7 @@ Wenn das Synchronisierungsmodul ein Stagingobjekt ermittelt, das dem im Connecto
 
 Stagingobjekte mit aktualisierten Daten werden mit der Kennzeichnung „Import steht aus“ versehen. Es sind verschiedene Arten von ausstehenden Importen verfügbar. Je nach Ergebnis des Importvorgangs verfügt ein Stagingobjekt im Connectorbereich über einen der folgenden ausstehenden Importtypen:
 
-* **Keine**ausgewählt wurde. Es sind keine Änderungen von Attributen des Stagingobjekts verfügbar. Vom Synchronisierungsmodul wird dieser Typ nicht als „Import steht aus“ gekennzeichnet.
+* **Keine**. Es sind keine Änderungen von Attributen des Stagingobjekts verfügbar. Vom Synchronisierungsmodul wird dieser Typ nicht als „Import steht aus“ gekennzeichnet.
 * **Hinzufügen**: Das Stagingobjekt ist ein neues Importobjekt im Connectorbereich. Vom Synchronisierungsmodul wird dieser Typ als ausstehender Import zur weiteren Verarbeitung im Metaverse gekennzeichnet.
 * **Aktualisieren**: Das Synchronisierungsmodul findet ein entsprechendes Stagingobjekt im Connectorbereich und kennzeichnet es als ausstehenden Import, sodass die Aktualisierungen der Attribute im Metaverse verarbeitet werden können. Die Aktualisierungen umfassen auch die Umbenennung von Objekten.
 * **Löschen**: Das Synchronisierungsmodul findet ein entsprechendes Stagingobjekt im Connectorbereich und kennzeichnet es als ausstehenden Import, damit das verknüpfte Objekt gelöscht werden kann.

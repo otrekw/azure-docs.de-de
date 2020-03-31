@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Automatisches Upgrade | Microsoft-Dokumentation'
+title: 'Azure AD Connect: Automatisches Upgrade | Microsoft Docs'
 description: Dieses Thema beschreibt das integrierte automatische Upgradefeature in der Azure AD Connect-Synchronisierung.
 services: active-directory
 documentationcenter: ''
@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bfd61b78ca3027ade1f2f48dec33e0a8ed508d3d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60349823"
 ---
-# <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatische Upgrade
+# <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatisches Upgrade
 Dieses Feature wurde mit [Build 1.1.105.0 (veröffentlicht im Februar 2016)](reference-connect-version-history.md#111050) eingeführt.  Dieses Feature wurde in [Build 1.1.561](reference-connect-version-history.md#115610) aktualisiert und unterstützt nun zusätzliche Szenarios, die zuvor nicht unterstützt wurden.
 
 ## <a name="overview"></a>Übersicht
@@ -37,13 +37,13 @@ Das automatische Upgrade ist in folgenden Fällen standardmäßig aktiviert:
 
 Der aktuelle Zustand des automatischen Upgrades kann über das PowerShell-Cmdlet `Get-ADSyncAutoUpgrade`angezeigt werden. Folgende Zustände sind möglich:
 
-| Zustand | Kommentar |
+| State | Comment |
 | --- | --- |
-| Aktiviert |Das automatische Upgrade ist aktiviert. |
+| Enabled |Das automatische Upgrade ist aktiviert. |
 | Ausgesetzt |Nur vom System festgelegt. Das System ist **derzeit nicht** zum Erhalten automatischer Upgrades berechtigt. |
-| Deaktiviert |Das automatische Upgrade ist deaktiviert. |
+| Disabled |Das automatische Upgrade ist deaktiviert. |
 
-Mit `Set-ADSyncAutoUpgrade` können Sie zwischen **aktiviert** und **deaktiviert** wechseln. Nur das System sollte den Zustand **Ausgesetzt**festlegen.  Vor 1.1.750.0 hat das Cmdlet „Set-ADSyncAutoUpgrade“ das automatische Upgrade blockiert, wenn der auto-upgrade-Status auf „Angehalten“ festgelegt wurde. Diese Funktion wurde geändert, sodass das automatische Upgrade nicht blockiert wird.
+Mit **können Sie zwischen**aktiviert**und**deaktiviert`Set-ADSyncAutoUpgrade` wechseln. Nur das System sollte den Zustand **Ausgesetzt**festlegen.  Vor 1.1.750.0 hat das Cmdlet „Set-ADSyncAutoUpgrade“ das automatische Upgrade blockiert, wenn der auto-upgrade-Status auf „Angehalten“ festgelegt wurde. Diese Funktion wurde geändert, sodass das automatische Upgrade nicht blockiert wird.
 
 Das automatische Upgrade verwendet Azure AD Connect Health als Upgrade-Infrastruktur. Damit das automatische Upgrade funktioniert, müssen die URLs im Proxy für **Azure AD Connect Health** wie unter [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)beschrieben geöffnet sein.
 
@@ -69,7 +69,7 @@ Der Ergebniscode hat ein Präfix mit einer Übersicht über den Status.
 
 | Ergebniscodepräfix | BESCHREIBUNG |
 | --- | --- |
-| Erfolgreich |Das Upgrade der Installation wurde erfolgreich durchgeführt. |
+| Erfolg |Das Upgrade der Installation wurde erfolgreich durchgeführt. |
 | UpgradeAborted |Das Upgrade wurde durch ein temporäres Problem angehalten. Das Upgrade wird erneut ausgeführt, und es wird davon ausgegangen, dass es später erfolgreich durchgeführt werden kann. |
 | UpgradeNotSupported |Die Konfiguration des Systems blockiert das automatische Upgrade. Das Upgrade wird erneut versucht, um zu ermitteln, ob sich der Status ändert. Es ist jedoch damit zu rechnen, dass das Upgrade für das System manuell durchgeführt werden muss. |
 

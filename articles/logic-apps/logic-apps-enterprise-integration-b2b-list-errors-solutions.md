@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/02/2017
 ms.openlocfilehash: 38e281ce3d8117bff719b1bb572f09acbbb89669
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75666685"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>B2B-Fehler und -Lösungen für Azure Logic Apps
@@ -144,7 +144,7 @@ Beispiel:
 
 |   |   | 
 |---|---|
-| Fehlerbeschreibung | InvalidTemplate. Vorlagensprachausdrücke in den Eingaben der Aktion "Flat_File_Decoding" in Zeile "1" und Spalte "1902" können nicht verarbeitet werden: Erforderliche Eigenschaft "Content" erwartet einen Wert, erhält jedoch NULL. Pfad ‚.‘“. |
+| Fehlerbeschreibung | InvalidTemplate. Verarbeitung der Vorlagensprachausdrücke in Aktion „Flat_File_Decoding“, Eingaben in Zeile „1“ und Spalte „1902“ nicht möglich: „Erforderliche Eigenschaft 'Content' erwartet einen Wert, erhält jedoch NULL. Pfad ‚.‘“. |
 | Benutzeraktion | Dieser Fehler gibt an, dass die Eingabenachricht keinen Text enthält. |
 |   |   | 
 

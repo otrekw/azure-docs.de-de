@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 27d219f46f82f4a74cb5dee0a6b11b673a4a3509
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76155006"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD

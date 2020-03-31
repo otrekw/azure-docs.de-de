@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/19/2019
 ms.author: memildin
 ms.openlocfilehash: be26a9d4c66412518079de303ac0764d979c3e7c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77912051"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Integrieren von Azure Security Center Standard für erhöhte Sicherheit
@@ -26,7 +26,7 @@ Führen Sie ein Upgrade auf Security Center Standard durch, um von erhöhter Sic
 Security Center im Standard-Tarif umfasst Folgendes:
 
 - **Hybridsicherheit:** Verschaffen Sie sich einen einheitlichen Überblick über die Sicherheit sämtlicher lokaler und cloudbasierter Workloads. Wenden Sie Sicherheitsrichtlinien an, und bewerten Sie kontinuierlich die Sicherheit Ihrer Hybridcloud-Workloads, um die Einhaltung von Sicherheitsstandards zu gewährleisten. Sammeln, durchsuchen und analysieren Sie Sicherheitsdaten aus verschiedensten Quellen (einschließlich Firewalls und Partnerlösungen).
-- **Sicherheitswarnungen** – Verwenden Sie erweiterte Analysefunktionen und Microsoft Intelligent Security Graph, um neuen Arten von Cyberangriffen immer einen Schritt voraus zu sein. Nutzen Sie integrierte Verhaltensanalysen und Machine Learning, um Angriffe und Zero-Day-Exploits zu erkennen. Überwachen Sie Netzwerke, Computer und Clouddienste auf neue Angriffe und auf Aktivitäten nach einer Sicherheitsverletzung. Optimieren Sie die Untersuchung mit interaktiven Tools und kontextbezogenen Informationen zu Bedrohungen.
+- **Sicherheitswarnungen**: Verwenden Sie erweiterte Analysefunktionen und Microsoft Intelligent Security Graph, um neuen Arten von Cyberangriffen immer einen Schritt voraus zu sein. Nutzen Sie integrierte Verhaltensanalysen und Machine Learning, um Angriffe und Zero-Day-Exploits zu erkennen. Überwachen Sie Netzwerke, Computer und Clouddienste auf neue Angriffe und auf Aktivitäten nach einer Sicherheitsverletzung. Optimieren Sie die Untersuchung mit interaktiven Tools und kontextbezogenen Informationen zu Bedrohungen.
 - **Zugriffs- und Anwendungskontrollen:** Blockieren Sie Schadsoftware und andere unerwünschte Anwendungen mithilfe von Whitelist-Empfehlungen, die auf Ihre spezifischen Workloads abgestimmt sind und durch Machine Learning unterstützt werden. Verkleinern Sie die Angriffsfläche des Netzwerks mit kontrolliertem Just-in-Time-Zugriff auf die Verwaltungsports virtueller Azure-Computer, um die Gefahr von Brute-Force- und anderen Netzwerkangriffen erheblich zu senken.
 
 ## <a name="detecting-unprotected-resources"></a>Erkennen ungeschützter Ressourcen

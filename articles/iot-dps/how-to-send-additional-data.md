@@ -7,12 +7,12 @@ ms.date: 02/11/2020
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 3eec39e975b1e782eafe16205623c625f462a865
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: de6bb3fe0879a69467283e93a04a355876a02cba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209408"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246686"
 ---
 # <a name="how-to-transfer-a-payload-between-device-and-dps"></a>Übertragen einer Nutzlast zwischen Gerät und DPS
 Mitunter benötigt DPS weitere Daten von Geräten, um sie ordnungsgemäß im richtigen IoT Hub bereitzustellen, und diese Daten müssen vom Gerät bereitgestellt werden. Ebenso kann DPS Daten an das Gerät zurückgeben, um clientseitige Logik zu ermöglichen. 
@@ -30,7 +30,6 @@ Wenn Ihr Gerät einen [Registrierungsgeräteaufruf](https://docs.microsoft.com/r
            “endorsementKey”: “stuff”, 
            “storageRootKey”: “things” 
        }, 
-       “interfaces”: “TODO: get how interfaces are reported by devices from PnP folks.”, 
        “payload”: “your additional data goes here. It can be nested JSON.” 
     } 
    ```

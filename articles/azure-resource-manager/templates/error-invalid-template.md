@@ -4,10 +4,10 @@ description: Hier wird beschrieben, wie Fehler aufgrund ungültiger Vorlagen bei
 ms.topic: troubleshooting
 ms.date: 03/08/2018
 ms.openlocfilehash: 65cd69d67933d117b51f37b587b276aec2bd635a
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76154056"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Beheben von Fehlern aufgrund ungültiger Vorlagen

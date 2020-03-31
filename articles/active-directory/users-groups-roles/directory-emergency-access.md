@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 80ab7e0603f63fb395832b0da887916dc032c3bf
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74028126"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Verwalten von Konten für den Notfallzugriff in Azure AD

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
 ms.openlocfilehash: aa401150ee7a0f02e809ad702b8247e18081c8a3
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74171557"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Referenz zur Standardregel-Engine für Azure CDN
@@ -64,7 +64,7 @@ Einfache Anführungszeichen | Ein einfaches Anführungszeichen hat keine besonde
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Übereinstimmungsbedingungen der Standardregel-Engine](cdn-standard-rules-engine-match-conditions.md)
-- [Aktionen der Standardregel-Engine](cdn-standard-rules-engine-actions.md)
+- [Übereinstimmungsbedingungen in der Standardregel-Engine](cdn-standard-rules-engine-match-conditions.md)
+- [Aktionen in der Standardregel-Engine](cdn-standard-rules-engine-actions.md)
 - [Erzwingen von HTTPS mithilfe der Standardregel-Engine](cdn-standard-rules-engine.md)
 - [Übersicht über das Azure Content Delivery Network](cdn-overview.md)

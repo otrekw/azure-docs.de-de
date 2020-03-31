@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 7/13/2019
 ms.author: rohink
 ms.openlocfilehash: d84a7a908bd3bb5cfb2958a617be437f3b6b154e
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934902"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231702"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Bereitstellen von benutzerdefinierten Domäneneinstellungen für einen Azure-Dienst mit Azure DNS
 
@@ -38,7 +38,7 @@ Beachten Sie die aktuelle URL auf dem Blatt **Benutzerdefinierte Domänen**. Die
 
 Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Füllen Sie auf dem Blatt **Datensatzgruppe hinzufügen** die folgenden Informationen aus, und klicken Sie zum Erstellen auf **OK**.
 
-|Eigenschaft  |value  |Beschreibung  |
+|Eigenschaft  |value  |BESCHREIBUNG  |
 |---------|---------|---------|
 |Name     | myfunctionapp        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
 |type     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias.        |
@@ -63,7 +63,7 @@ Navigieren Sie zu **Netzwerk** > **Öffentliche IP-Adresse**, wählen Sie als Re
 Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Füllen Sie auf dem Blatt **Datensatzgruppe hinzufügen** die folgenden Informationen aus, und klicken Sie zum Erstellen auf **OK**.
 
 
-|Eigenschaft  |value  |Beschreibung  |
+|Eigenschaft  |value  |BESCHREIBUNG  |
 |---------|---------|---------|
 |Name     | mywebserver        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
 |type     | Ein        | Verwenden Sie einen A-Datensatz, da die Ressource eine IP-Adresse ist.        |
@@ -90,7 +90,7 @@ Beachten Sie die aktuelle URL auf dem Blatt **Benutzerdefinierte Domänen**. Die
 Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Füllen Sie auf dem Blatt **Datensatzgruppe hinzufügen** die folgenden Informationen aus, und klicken Sie zum Erstellen auf **OK**.
 
 
-|Eigenschaft  |value  |Beschreibung  |
+|Eigenschaft  |value  |BESCHREIBUNG  |
 |---------|---------|---------|
 |Name     | mywebserver        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
 |type     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias. Wenn für die Ressource eine IP-Adresse verwendet wurde, würde ein A-Eintrag verwendet werden.        |
@@ -126,7 +126,7 @@ Navigieren Sie zu **Speicher** > **Speicherkonten**, wählen Sie Ihr Speicherkon
 Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Füllen Sie auf dem Blatt **Datensatzgruppe hinzufügen** die folgenden Informationen aus, und klicken Sie zum Erstellen auf **OK**.
 
 
-|Eigenschaft  |value  |Beschreibung  |
+|Eigenschaft  |value  |BESCHREIBUNG  |
 |---------|---------|---------|
 |Name     | asverify.mystorageaccount        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
 |type     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias.        |
@@ -154,7 +154,7 @@ Wählen Sie den Endpunkt aus, mit dem Sie arbeiten, und klicken Sie auf **+ Benu
 
 Navigieren Sie zu Ihrer DNS-Zone, und klicken Sie auf **+ Datensatzgruppe**. Füllen Sie auf dem Blatt **Datensatzgruppe hinzufügen** die folgenden Informationen aus, und klicken Sie zum Erstellen auf **OK**.
 
-|Eigenschaft  |value  |Beschreibung  |
+|Eigenschaft  |value  |BESCHREIBUNG  |
 |---------|---------|---------|
 |Name     | cdnverify.mycdnendpoint        | Dieser Wert bildet zusammen mit der Domänennamenbezeichnung den FQDN für den Namen der benutzerdefinierten Domäne.        |
 |type     | CNAME        | Verwenden Sie einen CNAME-Datensatz als Alias.        |

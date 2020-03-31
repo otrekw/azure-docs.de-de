@@ -13,10 +13,10 @@ ms.date: 02/22/2019
 tags: ''
 keywords: ''
 ms.openlocfilehash: 66f80c79219090c27da37dfc1d9149df5604961f
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68841391"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Festlegen einer Application Developers Controlled Distribution (ADCD) in IBM zD&T v1
@@ -29,17 +29,17 @@ Wie zD&T sind ADCDs nur für IBM-Kunden und -Partner verfügbar und ausschließl
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- ein Azure-Abonnement Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 - Die zuvor in Azure eingerichtete [zD&T-Umgebung][ibm-install-z]. Dieser Artikel setzt voraus, dass Sie das gleiche Ubuntu 16.04 VM-Image verwenden, dass Sie früher erstellt haben.
 
 - Zugriff auf die ADCD-Medien über IBM PartnerWorld oder Passport Advantage.
 
-- Einen [Lizenzierungsserver](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.tools.user.guide.doc/topics/zdt_ee.html). Dies ist zum Ausführen von IBM zD&T erforderlich. Wie Sie die Umgebung erstellen, hängt davon ab, wie Sie die Software von IBM lizenzieren:
+- Ein [ Lizenzierungsserver](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.tools.user.guide.doc/topics/zdt_ee.html). Dies ist zum Ausführen von IBM zD&T erforderlich. Die Erstellungsart ist davon abhängig, wie Sie die Software von IBM lizenzieren:
 
   - Für einen **hardwarebasierten Lizenzierungsserver** ist ein USB-Hardwaregerät erforderlich, das die zum Zugriff auf alle Teile der Software erforderlichen Rational Tokens enthält. Dieses müssen Sie bei IBM anfordern.
 
-  - Für einen **softwarebasierten Lizenzierungsserver** müssen Sie einen zentralen Server für die Verwaltung der Lizenzschlüssel einrichten. Diese Methode wird bevorzugt und erfordert, dass Sie die Schlüssel einrichten, die Sie von IBM im Verwaltungsserver erhalten.
+  - Für einen **softwarebasierten Lizenzierungsserver** müssen Sie einen zentralen Server für die Verwaltung der Lizenzschlüssel einrichten. Diese Methode wird bevorzugt und erfordert, dass Sie die Schlüssel einrichten, die Sie von IBM auf dem Verwaltungsserver erhalten.
 
 ## <a name="download-the-installation-packages-from-passport-advantage"></a>Herunterladen der Installationspakete von Passport Advantage
 
@@ -188,7 +188,7 @@ Glückwunsch! Sie führen jetzt eine IBM-Mainframeumgebung in Azure aus.
 
 ## <a name="learn-more"></a>Weitere Informationen
 
-- [Mainframe: Mythen und Fakten](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
+- [Mainframemigration: Mythen und Fakten](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [IBM DB2 pureScale in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)
 - [Problembehandlung](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
 - [Demystifying mainframe to Azure migration](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/) (Beseitigen von Irrtümern in Bezug auf die Migration von Mainframesystemen zu Azure)

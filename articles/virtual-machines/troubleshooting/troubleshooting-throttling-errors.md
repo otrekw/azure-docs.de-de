@@ -14,10 +14,10 @@ ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
 ms.openlocfilehash: f5fbd80fc9a8e519cf8f49ab16d7e747c6a8171b
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76045363"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>Behandeln von API-Drosselungsfehlern 
@@ -32,7 +32,7 @@ Wenn ein Azure-API-Client einen Drosselungsfehler erhält, ist der HTTP-Status �
 
 ## <a name="call-rate-informational-response-headers"></a>Aufrufrate für Informationsantwortkopfzeilen 
 
-| Header                            | Wertformat                           | Beispiel                               | Beschreibung                                                                                                                                                                                               |
+| Header                            | Wertformat                           | Beispiel                               | BESCHREIBUNG                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | x-ms-ratelimit-remaining-resource |```<source RP>/<policy or bucket>;<count>```| Microsoft.Compute/HighCostGet3Min;159 | Verbleibende Anzahl der API-Aufrufe für die Drosselungsrichtlinie, die den Ressourcenbucket oder die Vorgangsgruppe, einschließlich des Ziels dieser Anforderung, abdeckt                                                                   |
 | x-ms-request-charge               | ```<count>```                             | 1                                     | Die Anzahl der Aufrufe, die für diese HTTP-Anforderung auf den Grenzwert der anwendbaren Richtlinie „angerechnet“ wird. Dies ist meistens 1. Batchanforderungen wie zum Skalieren einer VM-Skalierungsgruppe können mehrfach angerechnet werden. |

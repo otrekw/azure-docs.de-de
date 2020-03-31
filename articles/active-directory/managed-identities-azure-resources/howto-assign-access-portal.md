@@ -16,10 +16,10 @@ ms.date: 09/14/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e24c97909870c4d76b07ec837e5f624a509bd1f2
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74547283"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Zuweisen des Zugriffs einer verwalteten Identität auf eine Ressource über das Azure-Portal

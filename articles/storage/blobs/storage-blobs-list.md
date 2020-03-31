@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b51016b1b73b51cd1f1ec827f05fc9a93dd4cb38
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: eb62883859a3efeb1c05deb38d8a40fba76e9cdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650706"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79137919"
 ---
 # <a name="list-blobs-with-net"></a>Auflisten von Blobs mit .NET
 
 Wenn Sie Blobs über Ihren Code auflisten, können Sie eine Reihe von Optionen angeben, um zu steuern, wie Ergebnisse von Azure Storage zurückgegeben werden. Sie können die Anzahl der Ergebnisse festlegen, die in den einzelnen Ergebnissätzen zurückgegeben werden sollen, und dann die nachfolgenden Sätze abrufen. Sie können ein Präfix angeben, um Blobs zurückzugeben, deren Namen mit dem jeweiligen Zeichen oder der Zeichenfolge beginnen. Sie können Blobs auch in einer flachen Auflistungsstruktur anzeigen oder hierarchisch auflisten. Bei einer hierarchischen Auflistung werden Blobs so zurückgegeben, als wären sie in Ordnern organisiert. 
 
-In diesem Artikel wird beschrieben, wie Blobs mithilfe der [Azure Storage-Clientbibliothek für .NET](/dotnet/api/overview/azure/storage/client) aufgelistet werden.  
+In diesem Artikel wird beschrieben, wie Blobs mithilfe der [Azure Storage-Clientbibliothek für .NET](/dotnet/api/overview/azure/storage?view=azure-dotnet) aufgelistet werden.  
 
 ## <a name="understand-blob-listing-options"></a>Grundlegendes zu den Optionen für das Auflisten von Blobs
 
@@ -39,7 +39,7 @@ Die Überladungen dieser Methoden bieten zusätzliche Optionen zum Steuern, wie 
 
 ### <a name="manage-how-many-results-are-returned"></a>Festlegen der Anzahl der zurückgegebenen Ergebnisse
 
-Standardmäßig werden durch einen einzelnen Auflistungsvorgang bis zu 5.000 Ergebnisse zurückgegeben. Wenn ein kleinerer Ergebnissatz zurückgegeben werden soll, geben Sie beim Aufrufen einer der **ListBlobs**-Methoden einen Wert ungleich NULL für den Parameter `maxresults` an.
+Standardmäßig werden durch einen einzelnen Auflistungsvorgang bis zu 5.000 Ergebnisse zurückgegeben. Wenn ein kleinerer Ergebnissatz zurückgegeben werden soll, geben Sie beim Aufrufen einer der `maxresults`ListBlobs **-Methoden einen Wert ungleich NULL für den Parameter**  an.
 
 Wenn ein Auflistungsvorgang mehr als 5.000 Blobs zurückgibt oder wenn Sie einen Wert für `maxresults` angegeben haben, aufgrund dessen dieser Vorgang eine Teilmenge der Container im Speicherkonto zurückgibt, gibt Azure Storage ein *Fortsetzungstoken* mit der Liste der Blobs zurück. Ein Fortsetzungstoken ist ein nicht transparenter Wert, den Sie verwenden können, um den nächsten Satz von Ergebnissen aus Azure Storage abzurufen.
 
@@ -51,7 +51,7 @@ Um die Liste der Container zu filtern, geben Sie für den `prefix`-Parameter ein
 
 ### <a name="return-metadata"></a>Zurückgeben von Metadaten
 
-Wenn mit den Ergebnissen Blobmetadaten zurückgegeben werden sollen, geben Sie für die Enumeration [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) den Wert **Metadata** an. Weil Azure Storage Metadaten für jedes zurückgegebene Blob enthält, müssen Sie in diesem Kontext keine der **FetchAttributes**-Methoden aufrufen, um die Blobmetadaten abzurufen.
+Wenn mit den Ergebnissen Blobmetadaten zurückgegeben werden sollen, geben Sie für die Enumeration **BlobListingDetails** den Wert [Metadata](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) an. Weil Azure Storage Metadaten für jedes zurückgegebene Blob enthält, müssen Sie in diesem Kontext keine der **FetchAttributes**-Methoden aufrufen, um die Blobmetadaten abzurufen.
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>Flache Auflistung und hierarchische Auflistung im Vergleich
 

@@ -14,15 +14,15 @@ ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
 ms.openlocfilehash: e13149ba802f0f8b9a565e0aabd86ae05167f18b
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78208816"
 ---
 # <a name="supported-platforms"></a>Unterstützte Plattformen 
 
-## Virtuelle Computer/Server <a name="vm-server"></a>
+## <a name="virtual-machines--servers"></a>Virtuelle Computer/Server <a name="vm-server"></a>
 
 Security Center unterstützt virtuelle Computer/Server in unterschiedlichen Hybridumgebungen:
 
@@ -38,7 +38,7 @@ Für eine unter einem Azure-Abonnement aktivierte Azure-Umgebung werden von Azur
 
 In den folgenden Abschnitten werden die unterstützten Serverbetriebssysteme aufgelistet, unter denen der von Azure Security Center verwendete [Log Analytics-Agent](../azure-monitor/platform/agents-overview.md#log-analytics-agent) ausgeführt werden kann.
 
-### Windows Server-Betriebssysteme <a name="os-windows"></a>
+### <a name="windows-server-operating-systems"></a>Windows Server-Betriebssysteme <a name="os-windows"></a>
 
 |OS|Unterstützt durch Azure Security Center|Unterstützung für die Integration in Microsoft Defender ATP|
 |:---|:-:|:-:|
@@ -49,11 +49,11 @@ In den folgenden Abschnitten werden die unterstützten Serverbetriebssysteme auf
 
 Weitere Informationen zu den unterstützten Features für die oben aufgeführten Windows-Betriebssysteme finden Sie unter [Virtuelle Computer/Server – unterstützte Features](security-center-services.md#vm-server-features).
 
-### Windows-Betriebssysteme <a name="os-windows (non-server)"></a>
+### <a name="windows-operating-systems"></a>Windows-Betriebssysteme <a name="os-windows (non-server)"></a>
 
 Azure Security Center wird zur Überwachung und zum Schutz Ihrer Windows-basierten virtuellen Computer in Azure-Dienste integriert.
 
-### Linux-Betriebssysteme <a name="os-linux"></a>
+### <a name="linux-operating-systems"></a>Linux-Betriebssysteme <a name="os-linux"></a>
 
 64 Bit
 
@@ -77,11 +77,11 @@ Azure Security Center wird zur Überwachung und zum Schutz Ihrer Windows-basiert
 
 Weitere Informationen zu den unterstützten Features für die oben aufgeführten Linux-Betriebssysteme finden Sie unter [Virtuelle Computer/Server – unterstützte Features](security-center-services.md#vm-server-features).
 
-### Verwaltete Dienste für virtuelle Computer <a name="virtual-machine"></a>
+### <a name="managed-virtual-machine-services"></a>Verwaltete Dienste für virtuelle Computer <a name="virtual-machine"></a>
 
 Unter einem Kundenabonnement werden virtuelle Computer auch im Rahmen einiger verwalteter Azure-Dienste erstellt, z. B. Azure Kubernetes (AKS), Azure Databricks usw. Diese virtuellen Computer werden ebenfalls von Azure Security Center ermittelt. Der Log Analytics-Agent kann unter den oben aufgeführten unterstützten [Windows-/Linux-Betriebssystemen](#os-windows) installiert und konfiguriert werden.
 
-### Cloud Services <a name="cloud-services"></a>
+### <a name="cloud-services"></a>Cloud Services <a name="cloud-services"></a>
 
 Virtuelle Computer, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt. Es werden nur Clouddienst-Webrollen und -Workerrollen überwacht, die in Produktionsslots ausgeführt werden. Weitere Informationen zu Clouddiensten finden Sie unter [Übersicht zu Azure Cloud Services](../cloud-services/cloud-services-choose-me.md).
 

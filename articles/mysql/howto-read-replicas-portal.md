@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 56dc2df243c7ebc8e6aedf655795173c478ef99b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: b7226e5ae8c468339e02dbe87e279266e4609da8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74762605"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063475"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Informationen zum Erstellen und Verwalten von Lesereplikaten in Azure Database for MySQL mithilfe des Azure-Portals
 
@@ -47,7 +47,7 @@ Ein Lesereplikatserver kann mit den folgenden Schritten erstellt werden:
     ![Azure Database for MySQL – Replikatstandort](./media/howto-read-replica-portal/replica-location.png)
 
    > [!NOTE]
-   > Weitere Informationen zu den Regionen, in denen Sie ein Replikat erstellen können, finden Sie im Artikel zu den [Lesereplikatkonzepten](concepts-read-replicas.md). 
+   > Weitere Informationen zu den Regionen, in denen Sie ein Replikat erstellen können, finden Sie im [Konzeptartikel zu Lesereplikaten](concepts-read-replicas.md). 
 
 7. Wählen Sie **OK** aus, um die Erstellung des Replikats zu bestätigen.
 

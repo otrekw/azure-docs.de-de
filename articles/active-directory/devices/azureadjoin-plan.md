@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6bbecf0e365ba7a8424da775245181fa64c21f6
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78672697"
 ---
-# <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung
+# <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung von Azure AD Join
 
 Mit Azure AD Join können Sie Geräte direkt in Azure AD einbinden, ohne dem lokalen Active Directory beitreten zu müssen, während Ihre Benutzer produktiv und sicher bleiben. Azure AD Join eignet sich für skalierbare und bereichsbezogene Bereitstellungen in Unternehmen.   
 
@@ -106,7 +106,7 @@ Azure AD Join:
 - Gilt nicht für vorherige Versionen von Windows oder andere Betriebssysteme. Wenn Sie über Windows 7- oder Windows 8.1-Geräte verfügen, müssen Sie ein Upgrade auf Windows 10 durchführen, um Azure AD Join bereitstellen zu können.
 - Wird auf Geräten mit TPM im FIPS-Modus nicht unterstützt.
  
-**Empfehlung:** Verwenden Sie immer das neueste Release von Windows 10, um die aktualisierten Features nutzen zu können.
+**Empfehlung:** Verwenden Sie immer die neueste Version von Windows 10, um die aktualisierten Features nutzen zu können.
 
 ### <a name="management-platform"></a>Verwaltungsplattform
 
@@ -157,13 +157,13 @@ Wenn Ihre Apps benutzerdefiniert sind und/oder lokal gehostet werden, müssen Si
 
 Wenn Sie AD FS verwenden, lesen Sie [Überprüfen und Verwalten von einmaligem Anmelden mit AD FS](/previous-versions/azure/azure-services/jj151809(v%3dazure.100)). 
 
-**Empfehlung:** Ziehen Sie ein Hosting in der Cloud (z.B. Azure) und die Integration von Azure AD in Betracht, um die Benutzerfreundlichkeit zu verbessern.
+**Empfehlung:** Ziehen Sie ein Hosting in der Cloud (z. B. Azure) und die Integration von Azure AD in Betracht, um die Benutzerfreundlichkeit zu verbessern.
 
 ### <a name="on-premises-applications-relying-on-legacy-protocols"></a>Lokale Anwendungen, die ältere Protokolle verwenden
 
 Benutzer erhalten SSO über in Azure AD eingebundene Geräte, wenn das jeweilige Gerät Zugriff auf einen Domänencontroller hat. 
 
-**Empfehlung:** Stellen Sie den [Azure AD-App-Proxy](/azure/active-directory/manage-apps/application-proxy) bereit, um den sicheren Zugriff für diese Anwendungen zu ermöglichen.
+**Empfehlung:** Stellen Sie den [Azure AD-Anwendungsproxy](/azure/active-directory/manage-apps/application-proxy) bereit, um den sicheren Zugriff für diese Anwendungen zu ermöglichen.
 
 ### <a name="on-premises-network-shares"></a>Lokale Netzwerkfreigaben
 
@@ -259,8 +259,8 @@ Wählen Sie basierend auf dem Benutzerbereich Ihrer Bereitstellung entweder **Ei
 
 Basierend auf Ihrem Benutzerbereich ergibt sich eine der folgenden Situationen: 
 
-- **Der Benutzer befindet sich im MDM-Bereich**: Wenn Sie über ein Azure AD Premium-Abonnement verfügen, ist die MDM-Registrierung mit der Azure AD-Einbindung automatisiert. Alle bereichsbezogenen Benutzer müssen eine entsprechende Lizenz für die MDM verfügen. Wenn die MDM-Registrierung in diesem Szenario fehlschlägt, wird auch für die Azure AD-Einbindung ein Rollback ausgeführt.
-- **Der Benutzer befindet sich nicht im MDM-Bereich**: Wenn Benutzer nicht im MDM-Bereich enthalten sind, wird die Azure AD-Einbindung ohne MDM-Registrierung abgeschlossen. Dies führt zu einem nicht verwalteten Gerät.
+- **Der Benutzer ist im MDM-Bereich**: Wenn Sie über ein Azure AD Premium-Abonnement verfügen, ist die MDM-Registrierung mit der Azure AD-Einbindung automatisiert. Alle bereichsbezogenen Benutzer müssen eine entsprechende Lizenz für die MDM verfügen. Wenn die MDM-Registrierung in diesem Szenario fehlschlägt, wird auch für die Azure AD-Einbindung ein Rollback ausgeführt.
+- **Der Benutzer ist nicht im MDM-Bereich**: Wenn Benutzer nicht im MDM-Bereich enthalten sind, wird die Azure AD-Einbindung ohne MDM-Registrierung abgeschlossen. Dies führt zu einem nicht verwalteten Gerät.
 
 ### <a name="mdm-urls"></a>MDM-URLs
 

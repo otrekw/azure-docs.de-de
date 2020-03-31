@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/13/2019
 ms.author: magattus
 ms.openlocfilehash: e2827a11f4ec2a5c0467c3699cd9990aaf7ae97a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73495478"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Grundlegendes zur Abrechnung für Azure CDN
@@ -28,15 +28,15 @@ In diesen häufig gestellten Fragen wird die Abrechnungsstruktur für von Azure 
 ## <a name="what-is-a-billing-region"></a>Was ist eine Abrechnungsregion?
 Eine Abrechnungsregion ist ein geografisches Gebiet, mit dem bestimmt wird, welcher Tarif für die Übermittlung von Objekten aus Azure CDN in Rechnung gestellt wird. Die aktuellen Abrechnungszonen und ihre jeweiligen Regionen lauten wie folgt:
 
-- Zone 1: Nordamerika, Europa, Naher Osten und Afrika
+- Zone 1: Nordamerika, Europa, Naher Osten und Afrika
 
-- Zone 2: Asien-Pazifik (einschließlich Japan)
+- Zone 2: Asien-Pazifik (einschließlich Japan)
 
-- Zone 3: Südamerika
+- Zone 3: Südamerika
 
-- Zone 4: Australien und Neuseeland
+- Zone 4: Australien und Neuseeland
 
-- Zone 5: Indien
+- Zone 5: Indien
 
 Informationen zu POP-Regionen (Point of Presence) finden Sie unter [Azure CDN-POP-Standorte nach Region](https://docs.microsoft.com/azure/cdn/cdn-pop-locations). Ein in Mexiko befindlicher POP gehört beispielsweise zur Region Nordamerika und daher zur Zone 1. 
 
@@ -70,7 +70,7 @@ Bei Verwendung der *Übermittlung über einen gehosteten Dienst* fallen die folg
 
 - Azure-Computezeit: die Serverinstanzen, die als Ursprung fungieren.
 
-- Azure-Computeübertragung: die Datenübertragungen von den Compute-Instanzen zum Füllen der Azure CDN-Caches.
+- Azure-Serverübertragung: die Datenübertragungen von den Serverinstanzen zum Füllen der Azure CDN-Caches.
 
 Wenn Ihr Client Bytebereichsanforderungen (unabhängig vom ursprünglichen Dienst) verwendet, ergeben sich folgende Aspekte:
 
@@ -81,11 +81,11 @@ Wenn Ihr Client Bytebereichsanforderungen (unabhängig vom ursprünglichen Diens
 ## <a name="how-much-transfer-activity-occurs-to-support-the-cache"></a>Wie viele Übertragungsaktivitäten finden zur Unterstützung des Cache statt?
 Jedes Mal, wenn ein CDN POP seinen Cache füllen muss, führt er für das im Cache befindliche Objekt eine Anforderung an den Ursprung aus. Dadurch tritt am Ursprung bei jedem fehlgeschlagenen Zugriff auf den Cache eine abrechenbare Transaktion auf. Die Anzahl der fehlgeschlagenen Zugriffe auf den Cache hängt von mehreren Faktoren ab:
 
-- Cachefähigkeit des Inhalts: Wenn der Inhalt eine lange Gültigkeitsdauer (time-to-live, TTL)/lange Laufzeit hat und häufig auf ihn zugegriffen wird, sodass er oft im Cache verbleibt, wird der Großteil der Last vom CDN übernommen. Eine typische gute Cachetrefferquote beträgt mehr als 90 %, was bedeutet, dass weniger als 10 % der Clientanforderungen entweder aufgrund von fehlgeschlagenen Zugriffen auf den Cache oder Objektaktualisierungen an den Ursprung zurückgegeben werden müssen.
+- Cachefähigkeit des Inhalts: Wenn der Inhalt eine lange Gültigkeitsdauer (time-to-live, TTL)/lange Laufzeit hat und häufig darauf zugegriffen wird, sodass er im Cache beliebt ist, wird der Großteil der Last vom CDN übernommen. Eine typische gute Cachetrefferquote beträgt mehr als 90 %, was bedeutet, dass weniger als 10 % der Clientanforderungen entweder aufgrund von fehlgeschlagenen Zugriffen auf den Cache oder Objektaktualisierungen an den Ursprung zurückgegeben werden müssen.
 
-- Anzahl der Knoten, die das Objekt laden müssen: Jedes Mal, wenn ein Knoten ein Objekt aus dem Ursprung lädt, fällt eine abrechenbare Transaktion an. Daher führen mehr globale Inhalte (Zugriff über mehr Knoten) zu mehr abrechenbaren Transaktionen.
+- Anzahl der Knoten, die das Objekt laden müssen: Jedes Mal, wenn ein Knoten ein Objekt vom Ursprung lädt, fällt eine abrechenbare Transaktion an. Daher führen mehr globale Inhalte (Zugriff über mehr Knoten) zu mehr abrechenbaren Transaktionen.
 
-- Einfluss der Gültigkeitsdauer (TTL): Eine längere Gültigkeitsdauer für ein Objekt bedeutet, dass es weniger häufig aus dem Ursprung abgerufen werden muss. Dies bedeutet auch, dass Clients (z. B. Browser) das Objekt länger zwischenspeichern können, wodurch sich die Anzahl der Transaktionen zum CDN reduzieren kann.
+- Einfluss der Gültigkeitsdauer (TTL): Eine längere Gültigkeitsdauer für ein Objekt bedeutet, dass es weniger häufig vom Ursprung abgerufen werden muss. Dies bedeutet auch, dass Clients (z. B. Browser) das Objekt länger zwischenspeichern können, wodurch sich die Anzahl der Transaktionen zum CDN reduzieren kann.
 
 ## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>Welche Ursprungsdienste sind für die kostenlose Datenübertragung mit Azure CDN von Microsoft qualifiziert? 
 Wenn Sie einen der folgenden Azure-Dienste als CDN-Ursprung verwenden, wird Ihnen die Datenübertragung vom Ursprung an die CDN-POPs nicht in Rechnung gestellt. 

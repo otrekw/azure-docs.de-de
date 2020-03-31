@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
 ms.openlocfilehash: 4990d815721ddbdde8e6eb6ebf8d6d3b49adc700
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74173383"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Wiederherstellen virtueller Azure-Computer mit der REST-API
@@ -31,7 +31,7 @@ Der *GET*-URI enthält alle erforderlichen Parameter. Ein zusätzlicher Anforder
 
 ### <a name="responses"></a>Antworten
 
-|NAME  |type  |BESCHREIBUNG  |
+|Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |200 – OK     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
@@ -131,7 +131,7 @@ Informationen zur Erstellung von `{containerName}` und `{protectedItemName}` fin
 
 Zum Auslösen einer Datenträgerwiederherstellung auf der Grundlage einer Azure-VM-Sicherung werden im Folgenden die Komponenten des Anforderungstexts angegeben.
 
-|NAME  |type  |BESCHREIBUNG  |
+|Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
@@ -159,13 +159,13 @@ Der folgende Anforderungstext definiert Eigenschaften, die zum Auslösen einer D
 }
 ```
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 Das Auslösen einer Datenträgerwiederherstellung ist ein [asynchroner Vorgang](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
-Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
+Zwei Antworten werden zurückgegeben: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
-|NAME  |type  |BESCHREIBUNG  |
+|Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |202 – Akzeptiert     |         |     Zulässig    |
 

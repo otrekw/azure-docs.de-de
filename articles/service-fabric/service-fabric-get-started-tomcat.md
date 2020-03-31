@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 6/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 1a699f3b35970270a9800162a6d8717682a168ae
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75614416"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Erstellen eines auf einem Apache Tomcat-Server ausgeführten Service Fabric-Containers unter Linux
@@ -131,10 +131,10 @@ Nachdem Sie das Tomcat-Image nun mithilfe von Push an eine Containerregistrierun
    ```
    Geben Sie bei Aufforderung die folgenden Werte ein:
 
-   * Benennen Sie Ihre Anwendung: ServiceFabricTomcat
+   * Name Ihrer Anwendung: ServiceFabricTomcat
    * Name des Anwendungsdiensts: TomcatService
-   * Geben Sie den Imagenamen ein: Geben Sie die URL für das Containerimage in Ihrer Containerregistrierung an (z. B. „myregistry.azurecr.io/samples/tomcattest“).
-   * Befehle: Lassen Sie diese Einstellung leer. Da für dieses Image ein Workloadeinstiegspunkt definiert ist, müssen Sie nicht explizit Eingabebefehle angeben. (Befehle werden im Container ausgeführt, wodurch der Container nach dem Start weiter ausgeführt wird.)
+   * Name des Image: Geben Sie die URL für das Containerimage in Ihrer Containerregistrierung (z.B. „myregistry.azurecr.io/samples/tomcattest“) an.
+   * Befehle: Lassen Sie dieses Feld leer. Da für dieses Image ein Workloadeinstiegspunkt definiert ist, müssen Sie nicht explizit Eingabebefehle angeben. (Befehle werden im Container ausgeführt, wodurch der Container nach dem Start weiter ausgeführt wird.)
    * Anzahl der Instanzen des Gastcontaineranwendung: 1
 
    ![Service Fabric-Yeoman-Generator für Container](./media/service-fabric-get-started-tomcat/yo-generator.png)

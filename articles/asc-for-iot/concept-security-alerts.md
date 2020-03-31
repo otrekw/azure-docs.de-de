@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 03/04/2020
 ms.author: mlottner
 ms.openlocfilehash: 7a319baeba3d34f3d3056ce9b42f2e733b5a874f
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78296132"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center für IoT – Sicherheitswarnungen
@@ -83,7 +83,7 @@ Weitere Informationen finden Sie unter [anpassbare Warnungen](concept-customizab
 
 ## <a name="built-in-alerts-for-iot-hub"></a>Integrierte Warnungen für IoT Hub
 
-| severity | Name                                                                         | Beschreibung | Vorschlag zur Problemlösung|
+| severity | Name                                                                         | BESCHREIBUNG | Vorschlag zur Problemlösung|
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
 |**Mittlerer** Schweregrad|  |  |  |
 |  Neues Zertifikat zu einem IoT Hub hinzugefügt  | Medium                                     |Ein Zertifikat mit dem Namen \'%{DescCertificateName}\' wurde dem IoT-Hub \'%{DescIoTHubName}\' hinzugefügt. Wenn diese Aktion nicht durch eine autorisierte Person erfolgt ist, kann dies auf schädliche Aktivitäten hinweisen.| 1. Stellen Sie sicher, dass das Zertifikat von einer autorisierten Partei hinzugefügt wurde. <br> 2. Wenn es nicht von einer autorisierten Partei hinzugefügt wurde, entfernen Sie das Zertifikat, und eskalieren Sie die Warnung an das Sicherheitsteam Ihrer Organisation.  |

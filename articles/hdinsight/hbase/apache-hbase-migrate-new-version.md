@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: 30cda7a83feddaeb41385252a61d1dc68a881a47
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75646505"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Migrieren eines Apache HBase-Clusters zu einer neuen Version
@@ -176,7 +176,7 @@ Führen Sie die folgenden Schritte aus, um für den Apache HBase-Cluster in Azur
 
 1. Führen Sie das vorherige Skript erneut aus, um sicherzustellen, dass alle aktuellen Daten im Memstore geleert wurden.
 
-1. Melden Sie sich im alten Cluster (`https://OLDCLUSTERNAME.azurehdidnsight.net`) bei [Apache Ambari](https://ambari.apache.org/) an, und beenden Sie die HBase-Dienste. Wenn Sie zur Bestätigung aufgefordert werden, dass Sie die Dienste beenden möchten, aktivieren Sie das Kontrollkästchen, um den Wartungsmodus für HBase zu aktivieren. Weitere Informationen zur Verbindungsherstellung mit Ambari sowie zur Verwendung finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](../hdinsight-hadoop-manage-ambari.md).
+1. Melden Sie sich im alten Cluster ([) bei ](https://ambari.apache.org/)Apache Ambari`https://OLDCLUSTERNAME.azurehdidnsight.net` an, und beenden Sie die HBase-Dienste. Wenn Sie zur Bestätigung aufgefordert werden, dass Sie die Dienste beenden möchten, aktivieren Sie das Kontrollkästchen, um den Wartungsmodus für HBase zu aktivieren. Weitere Informationen zur Verbindungsherstellung mit Ambari sowie zur Verwendung finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Ambari-Webbenutzeroberfläche](../hdinsight-hadoop-manage-ambari.md).
 
     ![Klicken Sie in Ambari unter „Dienstaktionen“ auf „Dienste > HBase > Beenden“.](./media/apache-hbase-migrate-new-version/stop-hbase-services1.png)
 

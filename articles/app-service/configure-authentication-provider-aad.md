@@ -4,13 +4,13 @@ description: Erfahren Sie, wie Sie die Azure Active Directory-Authentifizierung 
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 717336e0ddfe99c96afda4861f4de1239ee949bf
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.custom: seodec18, fasttrack-edit
+ms.openlocfilehash: fdad1f820d006c39fa135a29a5ec7377c47591f4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913207"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80046441"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>Konfigurieren Ihrer App Service-App zur Verwendung der Azure AD-Anmeldung
 
@@ -24,7 +24,7 @@ Befolgen Sie diese bewährten Methoden, wenn Sie Ihre App und die Authentifizier
 - Konfigurieren Sie jede App Service-App mit eigener Registrierung.
 - Vermeiden Sie das Teilen von Berechtigungen zwischen Umgebungen, indem Sie separate App-Registrierungen für gesonderte Bereitstellungsslots verwenden. Wenn Sie neuen Code testen, kann diese Vorgehensweise dabei helfen, Probleme zu verhindern, die sich auf die Produktions-App auswirken können.
 
-## <a name="express"> </a>Konfigurieren mit Expresseinstellungen
+## <a name="configure-with-express-settings"></a><a name="express"> </a>Konfigurieren mit Expresseinstellungen
 
 > [!NOTE]
 > Die Option **Express** steht für Government Clouds nicht zur Verfügung. 
@@ -48,14 +48,14 @@ Befolgen Sie diese bewährten Methoden, wenn Sie Ihre App und die Authentifizier
     > Das Einschränken des Zugriffs auf diese Weise gilt für alle Aufrufe Ihrer App, was für Apps, die eine öffentlich verfügbare Startseite haben, eventuell nicht wünschenswert ist, wie bei vielen Single-Page-Anwendungen. Bei solchen Anwendungen ist möglicherweise die Einstellung **Anonyme Anforderungen zulassen (keine Aktion)** vorzuziehen, wobei die App selbst die Anmeldung manuell startet. Weitere Informationen finden Sie unter [Authentifizierungsflow](overview-authentication-authorization.md#authentication-flow).
 5. Wählen Sie **Speichern** aus.
 
-## <a name="advanced"> </a>Konfigurieren mit erweiterten Einstellungen
+## <a name="configure-with-advanced-settings"></a><a name="advanced"> </a>Konfigurieren mit erweiterten Einstellungen
 
 Sie können App-Einstellungen manuell konfigurieren, wenn Sie eine App-Registrierung von einem anderen Azure AD-Mandanten verwenden möchten. Gehen Sie zum Abschließen dieser benutzerdefinierten Konfiguration wie folgt vor:
 
 1. Erstellen einer Registrierung in Azure AD.
 2. Bereitstellen einige Registrierungsdetails für den App Service.
 
-### <a name="register"> </a>Erstellen einer App-Registrierung in Azure AD für Ihre App Service-App
+### <a name="create-an-app-registration-in-azure-ad-for-your-app-service-app"></a><a name="register"> </a>Erstellen einer App-Registrierung in Azure AD für Ihre App Service-App
 
 Sie benötigen die folgenden Informationen, wenn Sie Ihre App Service-App konfigurieren:
 
@@ -85,7 +85,7 @@ Führen Sie die folgenden Schritte aus:
 1. (Optional) Um einen geheimen Clientschlüssel zu erstellen, wählen Sie **Zertifikate und Geheimnisse** > **Neuer geheimer Clientschlüssel** > **Hinzufügen** aus. Kopieren Sie den Wert des geheimen Clientschlüssels, der auf der Seite angezeigt wird. Er wird nicht noch einmal angezeigt.
 1. (Optional) Wenn Sie mehrere **Antwort-URLs** hinzufügen möchten, wählen Sie **Authentifizierung** aus.
 
-### <a name="secrets"> </a>Aktivieren von Azure Active Directory in Ihrer App Service-App
+### <a name="enable-azure-active-directory-in-your-app-service-app"></a><a name="secrets"> </a>Aktivieren von Azure Active Directory in Ihrer App Service-App
 
 1. Suchen Sie im [Azure portal] die Option **App Services**, wählen Sie sie aus, und wählen Sie anschließend Ihre App aus. 
 1. Wählen Sie im linken Bereich unter **Einstellungen** die Optionen **Authentifizierung/Autorisierung** > **Ein** aus.
@@ -122,7 +122,7 @@ Sie können native Clients registrieren, um die Authentifizierung mittel Clientb
 
 Sie haben nun eine native Clientanwendung konfiguriert, die auf Ihre App Service-App zugreifen kann.
 
-## <a name="related-content"> </a>Nächste Schritte
+## <a name="next-steps"></a><a name="related-content"> </a>Nächste Schritte
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 

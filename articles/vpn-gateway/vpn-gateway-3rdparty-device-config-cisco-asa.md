@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: yushwang
 ms.openlocfilehash: 96e5c26ea7b5f1baa33fd8830491ee3aa1e60221
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75778081"
 ---
-# <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Konfigurationsbeispiel: Cisco ASA-Gerät (IKEv2/kein BGP)
+# <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Beispielkonfiguration: Cisco ASA-Gerät (IKEv2/no BGP)
 Dieser Artikel enthält Beispielkonfigurationen für das Verbinden von Cisco ASA-Geräten (Adaptive Security Appliance) mit Azure-VPN-Gateways. Das Beispiel gilt für Cisco ASA-Geräte, auf denen IKEv2 ohne Border Gateway Protocol (BGP) ausgeführt wird. 
 
 ## <a name="device-at-a-glance"></a>Gerät auf einen Blick
@@ -115,7 +115,7 @@ Das Skript enthält ein Beispiel, das auf der Konfiguration und den Parametern b
   - **Azure_Gateway_Public_IP**
   - **OnPrem_Device_Public_IP**
   - IKE: **Pre_Shared_Key**
-  - Namen der VNET- und lokalen Netzwerkgateways: **VNetName** und **LNGName**
+  - VNET- und lokale Netzwerkgatewaynamen: **VNetName** und **LNGName**
   - VNET- und lokale Netzwerkadresspräfixe: **prefixes**
   - Ordnungsgemäße Netzmasken: **netmasks**
 

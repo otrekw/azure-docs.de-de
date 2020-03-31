@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 999dbb8c36c4e0413f287b2a73cf39ab4acd15f5
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75610045"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Entwickeln von Java Service Fabric-Anwendungen mit Visual Studio Code
@@ -53,7 +53,7 @@ Nachdem Sie die Anwendung erstellt haben, können Sie sie im lokalen Cluster ber
 > [!IMPORTANT]
 > Die Bereitstellung von Java-Anwendungen im lokalen Cluster wird auf Windows-Computern nicht unterstützt.
 
-1. Wählen Sie in der **Befehlspalette** den Befehl **Service Fabric: Anwendung bereitstellen (Localhost)** aus. Die Ausgabe des Installationsvorgangs wird an das integrierte Terminal gesendet.
+1. Klicken Sie in der **Befehlspalette** auf den Befehl **Service Fabric: Anwendung bereitstellen (Localhost)** . Die Ausgabe des Installationsvorgangs wird an das integrierte Terminal gesendet.
 
    ![Befehl „Anwendung bereitstellen“ in VS Code](./media/service-fabric-develop-java-applications-with-vs-code/sf-deploy-application.png)
 
@@ -65,7 +65,7 @@ Nachdem Sie die Anwendung erstellt haben, können Sie sie im lokalen Cluster ber
 
    ![Anwendung Voting im Browser](./media/service-fabric-develop-java-applications-with-vs-code/voting-sample-in-browser.png)
 
-5. Um eine Anwendung aus einem Cluster zu entfernen, wählen Sie den Befehl **Service Fabric: Anwendung entfernen** aus der **Befehlspalette** aus. Die Ausgabe des Deinstallationsvorgangs wird an das integrierte Terminal gesendet. Mithilfe von Service Fabric Explorer können Sie überprüfen, ob die Anwendung aus dem lokalen Cluster entfernt wurde.
+5. Wählen Sie in der **Befehlspalette** den Befehl **Service Fabric: Anwendung entfernen** aus, um die Anwendung aus dem Cluster zu entfernen. Die Ausgabe des Deinstallationsvorgangs wird an das integrierte Terminal gesendet. Mithilfe von Service Fabric Explorer können Sie überprüfen, ob die Anwendung aus dem lokalen Cluster entfernt wurde.
 
 ## <a name="debug-the-application"></a>Debuggen der Anwendung
 Beim Debuggen von Anwendungen in VS Code muss die Anwendung in einem lokalen Cluster ausgeführt werden. Dem Code können Haltepunkte hinzugefügt werden.
@@ -118,7 +118,7 @@ Gehen Sie wie folgt vor, um einen Haltepunkt festzulegen:
    
    ![Trennen vom Debugger](./media/service-fabric-develop-java-applications-with-vs-code/debug-bar-disconnect.png)
        
-5. Wenn Sie das Debuggen abgeschlossen haben, können Sie die CounterService-Anwendung mit dem Befehl **Service Fabric: Anwendung entfernen** verwenden, um die Voting-Anwendung aus Ihrem lokalen Cluster zu entfernen. 
+5. Wenn Sie mit dem Debuggen fertig sind, können Sie die Anwendung Voting mit dem Befehl **Service Fabric: Anwendung entfernen** aus Ihrem lokalen Cluster entfernen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

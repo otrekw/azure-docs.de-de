@@ -7,10 +7,10 @@ ms.author: rohogue
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: 66df6a2018960d83c4aaa9129dad067732a8b3cf
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76152968"
 ---
 # <a name="azure-vfxt-for-azure-whitepapers-and-other-resources"></a>Azure vFXT für Azure-Whitepaper und andere Ressourcen

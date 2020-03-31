@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 8ea85b560f35c79b3d5066d794f587345810b5d0
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77920857"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Installieren des Azure-VM-Agents im Offlinemodus 
@@ -35,13 +35,13 @@ In den folgenden Szenarien können Sie den VM-Agent im Offlinemodus installieren
 
 Mit den folgenden Schritten installieren Sie den VM-Agent im Offlinemodus:
 
-### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>Schritt 1: Anfügen des Betriebssystem-Datenträgers des virtuellen Computers als Datenträger an einen anderen virtuellen Computer
+### <a name="step-1-attach-the-os-disk-of-the-vm-to-another-vm-as-a-data-disk"></a>Schritt 1: Anfügen des Betriebssystemdatenträgers des virtuellen Computers als Datenträger an einen anderen virtuellen Computer
 
 1. Erstellen Sie eine Momentaufnahme für den Betriebssystemdatenträger der betroffenen VM, erstellen Sie aus der Momentaufnahme einen Datenträger, und fügen Sie diesen an eine VM zur Problembehebung an. Weitere Informationen finden Sie unter [Beheben von Problemen mit einer Windows-VM durch Hinzufügen des Betriebssystemdatenträgers zu einer Wiederherstellungs-VM im Azure-Portal](troubleshoot-recovery-disks-portal-windows.md). Bei einer klassischen VM löschen Sie die VM, behalten den Betriebssystemdatenträger bei und fügen diesen an eine VM zur Problembehebung an.
 
 2.  Stellen Sie eine Verbindung mit der Problembehebungs-VM her. Öffnen Sie **Computerverwaltung** > **Datenträgerverwaltung**. Stellen Sie sicher, dass der Betriebssystemdatenträger online ist und dass den Datenträgerpartitionen Laufwerkbuchstaben zugewiesen sind.
 
-### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>Schritt 2: Ändern des Betriebssystem-Datenträgers zum Installieren des Azure-VM-Agents
+### <a name="step-2-modify-the-os-disk-to-install-the-azure-vm-agent"></a>Schritt 2: Ändern des Betriebssystemdatenträger zum Installieren des Azure-VM-Agents
 
 1.  Stellen Sie eine Remotedesktopverbindung mit der Problembehebungs-VM her.
 

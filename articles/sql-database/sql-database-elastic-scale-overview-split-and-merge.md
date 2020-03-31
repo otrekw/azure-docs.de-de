@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 8b0db4a1e55b53165e40e176834d66b62926e24b
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74421557"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Verschieben von Daten zwischen horizontal hochskalierten Clouddatenbanken
@@ -212,7 +212,7 @@ Der Split-Merge-Dienst stellt die **RequestStatus** -Tabelle in der Metadatenspe
 
 ### <a name="azure-diagnostics"></a>Azure-Diagnose
 
-Der Split-Merge-Dienst verwendet die Azure-Diagnose basierend auf Azure SDK 2.5 zur Überwachung und Diagnose. Sie können die Diagnosekonfiguration wie im folgenden Artikel beschrieben steuern: [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). Das Downloadpaket umfasst zwei Diagnosekonfigurationen – eine für die Webrolle und eine für die Workerrolle. Sie enthalten die Definitionen zum Protokollieren von Leistungsindikatoren und die Definitionen für IIS-Protokolle, Windows-Ereignisprotokolle und Split-Merge-Anwendungsereignisprotokolle.
+Der Split-Merge-Dienst verwendet die Azure-Diagnose basierend auf Azure SDK 2.5 zur Überwachung und Diagnose. Sie steuern die Diagnosekonfiguration, wie es unter [Aktivieren der Diagnose in Azure Cloud Services und auf virtuellen Computern](../cloud-services/cloud-services-dotnet-diagnostics.md)beschrieben ist. Das Downloadpaket umfasst zwei Diagnosekonfigurationen – eine für die Webrolle und eine für die Workerrolle. Sie enthalten die Definitionen zum Protokollieren von Leistungsindikatoren und die Definitionen für IIS-Protokolle, Windows-Ereignisprotokolle und Split-Merge-Anwendungsereignisprotokolle.
 
 ## <a name="deploy-diagnostics"></a>Bereitstellen der Diagnose
 
@@ -239,7 +239,7 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext `
     -Slot Production -Role "SplitMergeWorker"
 ```
 
-Weitere Informationen zum Konfigurieren und Bereitstellen von Diagnoseeinstellungen finden Sie hier: [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
+Weitere Informationen zum Konfigurieren und Bereitstellen von Diagnoseeinstellungen finden Sie unter [Aktivieren der Diagnose in Azure Cloud Services und auf virtuellen Computern](../cloud-services/cloud-services-dotnet-diagnostics.md).
 
 ## <a name="retrieve-diagnostics"></a>Abrufen der Diagnose
 

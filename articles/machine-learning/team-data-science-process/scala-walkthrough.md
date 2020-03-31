@@ -12,17 +12,17 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: b36a3faab49ee8d51c25aa18879e6f5d1db8c2fb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76716764"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Data Science unter Verwendung von Scala und Spark in Azure
 Dieser Artikel zeigt Ihnen die Verwendung von Scala für überwachte Machine Learning-Aufgaben mit der skalierbaren Machine Learning-Bibliothek (MLlib) von Spark und Spark ML-Paketen auf einem Azure HDInsight Spark-Cluster. Sie werden durch die Aufgaben geführt, aus denen der [Data Science-Prozess](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)besteht: Erfassen und Durchsuchen von Daten, Visualisierung, Featureentwicklung, Modellierung und Modellnutzung. Die im Artikel behandelten Modelle beinhalten logistische und lineare Regression, zufällige Gesamtstrukturen und Gradient-Boosted-Strukturen (Gradient-boosted Trees, GBTs) neben zwei häufig überwachten Machine Learning-Aufgaben:
 
 * Regressionsproblem: Vorhersage des Trinkgeldbetrags ($) für eine Taxifahrt
-* Binäre Klassifizierung: Vorhersage, ob für eine Taxifahrt ein Trinkgeld gegeben wird oder nicht (1/0)
+* Binäre Klassifizierung: Vorhersage für eine Taxifahrt, ob Trinkgeld gegeben wird oder nicht (1/0)
 
 Die Modellierung erfordert Training und Auswertung von Testdatasets und relevanten Genauigkeitsmetriken. In diesem Artikel erfahren Sie, wie diese Modelle in Azure Blob Storage gespeichert werden, und wie ihre Vorhersageleistung bewertet und ausgewertet wird. Dieser Artikel behandelt auch die fortgeschritteneren Themen, in denen es darum geht, Modelle mittels Kreuzvalidierung und Hyperparameter-Sweeping zu optimieren. Die verwendeten Daten sind eine Stichprobe des bei GitHub verfügbaren Datasets für Taxifahrten und Fahrpreise in New York aus dem Jahr 2013.
 
@@ -41,7 +41,7 @@ Installationsschritte und Code in diesem Artikel sind für Azure HDInsight 3.4 S
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Sie benötigen ein Azure-Abonnement. Wenn Sie noch keins besitzen, [beschaffen Sie sich eine kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* Sie benötigen einen Azure HDInsight 3.4 Spark 1.6-Cluster, um die folgenden Schritte auszuführen. Anweisungen zum Erstellen eines Clusters finden Sie in [Erste Schritte: Erstellen von Apache Spark in Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Geben Sie Clustertyp und Version im Menü **Clustertyp auswählen** an.
+* Sie benötigen einen Azure HDInsight 3.4 Spark 1.6-Cluster, um die folgenden Schritte auszuführen. Anweisungen zum Erstellen eines Clusters finden Sie unter [Erste Schritte: Erstellen von Apache Spark in Azure HDInsight](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). Geben Sie Clustertyp und Version im Menü **Clustertyp auswählen** an.
 
 ![Konfiguration des HDInsight-Clustertyps](./media/scala-walkthrough/spark-cluster-on-portal.png)
 
@@ -66,7 +66,7 @@ Sie können das Notebook direkt von GitHub auf den Jupyter-Notebook-Server in Ih
 
 [Exploration-Modeling-and-Scoring-using-Scala.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Scala/Exploration-Modeling-and-Scoring-using-Scala.ipynb)
 
-## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>Einrichtung: Voreingestellte Spark- und Hive-Kontexte, Spark-Magic-Befehle und Spark-Bibliotheken
+## <a name="setup-preset-spark-and-hive-contexts-spark-magics-and-spark-libraries"></a>Setup: Voreinstellung von Spark- und Hive-Kontext, Spark-Magic-Befehle und Spark-Bibliotheken
 ### <a name="preset-spark-and-hive-contexts"></a>Voreinstellung von Spark- und Hive-Kontext
     # SET THE START TIME
     import java.util.Calendar
@@ -259,7 +259,7 @@ Nachdem Sie die Daten in Spark eingebracht haben, besteht der nächste Schritt i
 ### <a name="use-local-and-sql-magic-to-plot-data"></a>Verwenden von lokalen und SQL-Magic-Befehlen, um Daten zu zeichnen
 Standardmäßig ist die Ausgabe von allen Codeausschnitten, die Sie über ein Jupyter-Notebook ausführen, innerhalb des Kontexts der Sitzung verfügbar, die auf Workerknoten beibehalten wird. Wenn Sie eine Fahrt für jede Berechnung auf den Workerknoten speichern möchten, und wenn alle Daten, die Sie zur Berechnung benötigen, lokal auf dem Jupyter-Serverknoten (dem Hauptknoten) verfügbar sind, können Sie den Codeausschnitt mit dem Magic-Befehl `%%local` auf dem Jupyter-Server ausführen.
 
-* **SQL Magic** (`%%sql`): Der HDInsight Spark-Kernel unterstützt einfache HiveQL-Inlineabfragen für den SQLContext. Mit dem Argument (`-o VARIABLE_NAME`) wird die Ausgabe der SQL-Abfrage als Pandas-Dataframe auf dem Jupyter-Server beibehalten. Mit dieser Einstellung wird die Ausgabe im lokalen Modus verfügbar gemacht.
+* **SQL Magic** (`%%sql`). Der HDInsight Spark-Kernel unterstützt einfache HiveQL-Inlineabfragen für den SQLContext. Mit dem Argument (`-o VARIABLE_NAME`) wird die Ausgabe der SQL-Abfrage als Pandas-Dataframe auf dem Jupyter-Server beibehalten. Mit dieser Einstellung wird die Ausgabe im lokalen Modus verfügbar gemacht.
 * `%%local` **magic**: Der Magic-Befehl `%%local` führt den Code lokal auf dem Jupyter-Server aus – dem Hauptknoten des HDInsight-Clusters. Normalerweise verwenden Sie den Magic-Befehl `%%local` zusammen mit dem Magic-Befehl `%%sql` mit dem Parameter `-o`. Mit dem Parameter `-o` wird die Ausgabe der SQL-Abfrage lokal beibehalten. Anschließend löst der Magic-Befehl `%%local` die nächste Gruppe von Codeausschnitten aus, damit diese lokal für die Ausgabe der lokal gespeicherten SQL-Abfragen ausgeführt werden können.
 
 ### <a name="query-the-data-by-using-sql"></a>Abfragen der Daten mit SQL
@@ -532,7 +532,7 @@ Hier ist der Code für diese beiden Aufgaben.
 
 
 
-## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>Modell für die binäre Klassifizierung: Vorhersage, ob ein Trinkgeld gegeben wird
+## <a name="binary-classification-model-predict-whether-a-tip-should-be-paid"></a>Binäres Klassifizierungsmodell: Vorhersage, ob ein Trinkgeld gezahlt wird
 In diesem Abschnitt erstellen Sie drei Arten von Modellen der binären Klassifizierung, um vorherzusagen, ob ein Trinkgeld gezahlt wird oder nicht:
 
 * Ein **logistisches Regressionsmodell** mithilfe der `LogisticRegression()`-Funktion von Spark ML
@@ -723,7 +723,7 @@ Erstellen Sie als Nächstes ein GBT-Klassifizierungsmodell mit der `GradientBoos
 
 **Ausgabe:**
 
-Bereich unter ROC-Kurve: 0.9846895479241554
+Bereich unter ROC-Kurve = 0,9846895479241554
 
 ## <a name="regression-model-predict-tip-amount"></a>Regressionsmodell: Vorhersage des Trinkgeldbetrags
 In diesem Abschnitt erstellen Sie zwei Arten von Regressionsmodellen, um den Trinkgeldbetrag vorherzusagen:
@@ -848,7 +848,7 @@ Erstellen Sie Plots mit Matplotlib von Python.
 
 **Ausgabe:**
 
-![Trinkgeldbetrag: Tatsächlicher und vorhergesagter Betrag im Vergleich](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
+![Trinkgeldbetrag: „Tatsächlich“ verglichen mit „Vorhergesagt“](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
 
 ### <a name="create-a-gbt-regression-model"></a>Erstellen eines GBT-Regressionsmodells
 Erstellen Sie als Nächstes ein GBT-Regressionsmodell mit der `GBTRegressor()` -Funktion von Spark ML, und werten Sie das Modell anhand von Testdaten aus.
@@ -881,7 +881,7 @@ Erstellen Sie als Nächstes ein GBT-Regressionsmodell mit der `GBTRegressor()` -
 
 **Ausgabe:**
 
-Test-R-sqr: 0.7655383534596654
+Test-R-sqr. ist: 0,7655383534596654
 
 ## <a name="advanced-modeling-utilities-for-optimization"></a>Erweiterte Modellierungshilfsprogramme zur Optimierung
 In diesem Abschnitt verwenden Sie Machine Learning-Hilfsprogramme, die Entwickler häufig zur Modelloptimierung einsetzen. Insbesondere können Sie Machine Learning-Modelle auf drei verschiedene Arten mit Parameter-Sweeping und Kreuzvalidierung optimieren:
@@ -938,7 +938,7 @@ Teilen Sie die Daten als Nächstes in Trainings- und Validierungssets ein, wende
 
 **Ausgabe:**
 
-Test-R-sqr: 0.6226484708501209
+Test-R-sqr. ist: 0,6226484708501209
 
 ### <a name="optimize-the-binary-classification-model-by-using-cross-validation-and-hyper-parameter-sweeping"></a>Optimieren des binären Klassifizierungsmodells mit Kreuzvalidierung und Hyperparameter-Sweeping
 Dieser Abschnitt zeigt Ihnen das Optimieren des binären Klassifizierungsmodells mit Kreuzvalidierung und Hyperparameter-Sweeping. Hierzu wird die `CrossValidator` -Funktion von Spark ML verwendet.

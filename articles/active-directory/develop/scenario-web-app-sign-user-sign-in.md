@@ -15,10 +15,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: cbec6c5644690f6d7e522294a37c8ea5e2d49e30
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76701517"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Web-App für Benutzeranmeldungen: An- und Abmeldung
@@ -34,7 +34,7 @@ Die Anmeldung besteht aus zwei Teilen:
 
 ### <a name="sign-in-button"></a>Schaltfläche für die Anmeldung
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 In ASP.NET Core wird die Anmeldeschaltfläche in `Views\Shared\_LoginPartial.cshtml` verfügbar gemacht. Sie wird nur angezeigt, wenn kein authentifiziertes Konto vorhanden ist. Das heißt, sie wird angezeigt, wenn sich der Benutzer noch nicht angemeldet oder sich zuvor abgemeldet hat.
 
@@ -52,7 +52,7 @@ else
 }
 ```
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 In ASP.NET MVC wird die Abmeldeschaltfläche in `Views\Shared\_LoginPartial.cshtml` verfügbar gemacht. Sie wird nur angezeigt, wenn ein authentifiziertes Konto vorhanden ist. Das heißt, sie wird angezeigt, wenn sich der Benutzer zuvor angemeldet hat.
 
@@ -69,7 +69,7 @@ else
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 In unserem Java-Schnellstart befindet sich die Anmeldeschaltfläche in der Datei [main/resources/templates/index.html](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/src/main/resources/templates/index.html).
 
@@ -91,7 +91,7 @@ In unserem Java-Schnellstart befindet sich die Anmeldeschaltfläche in der Datei
 </html>
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Im Python-Schnellstart gibt es keine Schaltfläche für die Anmeldung. Beim Erreichen des Stamms der Web-App wird der Benutzer vom CodeBehind automatisch aufgefordert, sich anzumelden. Siehe [app.py#L14-L18](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/0.1.0/app.py#L14-L18).
 
@@ -107,13 +107,13 @@ def index():
 
 ### <a name="signin-action-of-the-controller"></a>`SignIn`-Aktion des Controllers
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 +In ASP.NET wird durch Auswahl der Schaltfläche **Anmelden** in der Web-App die Aktion `SignIn` auf dem `AccountController`-Controller ausgelöst. In früheren Versionen der ASP.NET Core-Vorlagen war der `Account`-Controller in die Web-App eingebettet. Das ist nicht mehr der Fall, da der Controller jetzt Teil des ASP.NET Core-Frameworks ist.
 
 Der Code für den `AccountController` steht im ASP.NET Core-Repository in [AccountController.cs](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs) zur Verfügung. Die Kontensteuerung fordert den Benutzer auf, indem er an den Microsoft Identity Platform-Endpunkt umgeleitet wird. Weitere Informationen finden Sie unter der [SignIn](https://github.com/aspnet/AspNetCore/blob/f3e6b74623d42d5164fd5f97a288792c8ad877b6/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Controllers/AccountController.cs#L23-L31)-Methode, die als Teil von ASP.NET Core bereitgestellt wird.
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 In ASP.NET wird die Abmeldung von der `SignOut()`-Methode auf einem Controller ausgelöst (z. B. [AccountController.cs#L16-L23](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L16-L23)). Diese Methode gehört nicht zum ASP.NET-Framework (im Gegensatz zu den Vorgängen in ASP.NET Core). Sie sendet eine OpenID-Anmeldeaufforderung, nachdem ein Umleitungs-URI vorgeschlagen wurde.
 
@@ -128,7 +128,7 @@ public void SignIn()
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 In Java wird die Abmeldung behandelt, indem der `logout`-Endpunkt der Microsoft Identity Platform direkt aufgerufen und der Wert `post_logout_redirect_uri` bereitgestellt wird. Weitere Informationen finden Sie unter [AuthPageController.java#L30-L48](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L30-L48).
 
@@ -156,7 +156,7 @@ public class AuthPageController {
     // More code omitted for simplicity
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Im Gegensatz zu anderen Plattformen sorgt MSAL für Python dafür, dass sich der Benutzer über die Anmeldeseite anmelden kann. Siehe [app.py#L20-L28](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L20-L28).
 
@@ -216,19 +216,19 @@ Weitere Informationen finden Sie im Abschnitt [Senden einer Abmeldeanforderung](
 
 ### <a name="application-registration"></a>Anwendungsregistrierung
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 Bei der Anwendungsregistrierung registrieren Sie einen URI nach der Abmeldung. In diesem Tutorial haben Sie die URL `https://localhost:44321/signout-oidc` auf der Seite **Authentifizierung** im Abschnitt **Erweiterte Einstellungen** im Feld **Abmelde-URL** registriert. Weitere Informationen finden Sie unter [Registrieren der webApp-App](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-1-MyOrg#register-the-webapp-app-webapp).
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 Bei der Anwendungsregistrierung registrieren Sie einen URI nach der Abmeldung. In diesem Tutorial haben Sie die URL `https://localhost:44308/Account/EndSession` auf der Seite **Authentifizierung** im Abschnitt **Erweiterte Einstellungen** im Feld **Abmelde-URL** registriert. Weitere Informationen finden Sie unter [Registrieren der webApp-App](https://github.com/Azure-Samples/active-directory-dotnet-web-single-sign-out#register-the-service-app-webapp-distributedsignout-dotnet).
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Bei der Anwendungsregistrierung registrieren Sie einen URI nach der Abmeldung. In diesem Tutorial haben Sie die URL `http://localhost:8080/msal4jsample/sign_out` auf der Seite **Authentifizierung** im Abschnitt **Erweiterte Einstellungen** im Feld **Abmelde-URL** registriert.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Bei der Anwendungsregistrierung müssen Sie keine zusätzliche Abmelde-URL registrieren. Die App wird über die Haupt-URL zurückgerufen.
 
@@ -236,7 +236,7 @@ Bei der Anwendungsregistrierung müssen Sie keine zusätzliche Abmelde-URL regis
 
 ### <a name="sign-out-button"></a>Abmeldeschaltfläche
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 In ASP.NET Core wird die Abmeldeschaltfläche in `Views\Shared\_LoginPartial.cshtml` verfügbar gemacht. Sie wird nur angezeigt, wenn ein authentifiziertes Konto vorhanden ist. Das heißt, sie wird angezeigt, wenn sich der Benutzer zuvor angemeldet hat.
 
@@ -257,7 +257,7 @@ else
 }
 ```
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 In ASP.NET MVC wird die Abmeldeschaltfläche in `Views\Shared\_LoginPartial.cshtml` verfügbar gemacht. Sie wird nur angezeigt, wenn ein authentifiziertes Konto vorhanden ist. Das heißt, sie wird angezeigt, wenn sich der Benutzer zuvor angemeldet hat.
 
@@ -283,7 +283,7 @@ else
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 In unserem Java-Schnellstart befindet sich die Abmeldeschaltfläche in der Datei „main/resources/templates/auth_page.html“.
 
@@ -298,7 +298,7 @@ In unserem Java-Schnellstart befindet sich die Abmeldeschaltfläche in der Datei
 ...
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Im Python-Schnellstart befindet sich die Abmeldeschaltfläche in der Datei [templates/index.html#L10](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/templates/index.html#L10).
 
@@ -321,7 +321,7 @@ Im Python-Schnellstart befindet sich die Abmeldeschaltfläche in der Datei [temp
 
 ### <a name="signout-action-of-the-controller"></a>`SignOut`-Aktion des Controllers
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 In ASP.NET wird durch Auswahl der Schaltfläche **Abmelden** in der Web-App die Aktion `SignOut` auf dem `AccountController`-Controller ausgelöst. In früheren Versionen der ASP.NET Core-Vorlagen war der `Account`-Controller in die Web-App eingebettet. Das ist nicht mehr der Fall, da der Controller jetzt Teil des ASP.NET Core-Frameworks ist.
 
@@ -333,7 +333,7 @@ Der Code für den `AccountController` steht im ASP.NET Core-Repository in [Accou
   - Er löscht den Sitzungscookie im Browser.
   - Er ruft die Abmelde-URL zurück. Standardmäßig zeigt die Abmelde-URL die Abmeldeseite [SignedOut.html](https://github.com/aspnet/AspNetCore/blob/master/src/Azure/AzureAD/Authentication.AzureAD.UI/src/Areas/AzureAD/Pages/Account/SignedOut.cshtml) an. Diese Seite wird auch als Teil von ASP.NET Core bereitgestellt.
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 In ASP.NET wird die Abmeldung von der `SignOut()`-Methode auf einem Controller ausgelöst (z. B. [AccountController.cs#L25-L31](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/Controllers/AccountController.cs#L25-L31)). Diese Methode gehört im Gegensatz zu den Vorgängen in ASP.NET Core nicht zum ASP.NET-Framework. Sie hat folgende Aufgaben:
 
@@ -354,7 +354,7 @@ public void SignOut()
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 In Java wird die Abmeldung behandelt, indem der `logout`-Endpunkt der Microsoft Identity Platform direkt aufgerufen und der Wert `post_logout_redirect_uri` bereitgestellt wird. Weitere Informationen finden Sie unter [AuthPageController.java#L50-L60](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthPageController.java#L50-L60).
 
@@ -372,7 +372,7 @@ In Java wird die Abmeldung behandelt, indem der `logout`-Endpunkt der Microsoft 
     }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Der Code, mit dem der Benutzer abgemeldet wird, befindet sich in [app.py#L46-L52](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L47-L48).
 
@@ -391,7 +391,7 @@ def logout():
 
 Der URI nach der Abmeldung ermöglicht Anwendungen, an der globalen Abmeldung teilzunehmen.
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 Mit der OpenID Connect-Middleware von ASP.NET Core kann Ihre App den Aufruf an den `logout`-Endpunkt der Microsoft Identity Platform durch die Bereitstellung des OpenID Connect-Ereignisses `OnRedirectToIdentityProviderForSignOut` abfangen. Ein Beispiel für das Abonnieren dieses Ereignisses (um den Tokencache zu löschen) finden Sie unter [Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L156](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L156).
 
@@ -403,7 +403,7 @@ Mit der OpenID Connect-Middleware von ASP.NET Core kann Ihre App den Aufruf an d
     };
 ```
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 In ASP.NET delegieren Sie die Ausführung der Abmeldung an die Middleware, indem Sie das Sitzungscookie löschen:
 
@@ -420,11 +420,11 @@ public class AccountController : Controller
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Im Java-Schnellstart zeigt der Umleitungs-URI nach der Abmeldung nur die Seite „index.html“ an.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Im Python-Schnellstart zeigt der Umleitungs-URI nach der Abmeldung nur die Seite „index.html“ an.
 

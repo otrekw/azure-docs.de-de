@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 05/30/2019
 ms.author: terrylan
 ms.openlocfilehash: d41fe409b4a44a4c2af3670d76dd3a83a300feae
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68727114"
 ---
 # <a name="management-and-operation-of-the-azure-production-network"></a>Verwaltung und Betrieb des Azure-Produktionsnetzwerks    

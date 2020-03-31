@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: 952a94797e01a3931fdd151461250af0c2590c11
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76120540"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps-Bindungen für Azure Functions 
@@ -134,7 +134,7 @@ Weitere Informationen zu Attributeigenschaften, die Sie konfigurieren können, f
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `MobileTable` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
+|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
 |---------|---------|----------------------|
 | **type**| – | Muss auf „mobileTable“ festgelegt werden|
 | **direction**| – |Muss auf „in“ festgelegt werden|
@@ -292,7 +292,7 @@ Ein vollständiges Beispiel finden Sie unter [Ausgabe: C#-Beispiel](#output---c-
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `MobileTable` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
+|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
 |---------|---------|----------------------|
 | **type**| – | Muss auf „mobileTable“ festgelegt werden|
 | **direction**| – |Muss auf „out“ festgelegt werden|

@@ -11,11 +11,11 @@ ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 09/03/2019
 ms.openlocfilehash: 0dbed3db8e106b9bfe1b48ff2b9bc52840fc4c3a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818866"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228582"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Zeitzonen in einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -81,7 +81,7 @@ Mit der Funktion [CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functio
 
 Sie können für eine verwaltete Instanz eine Sicherungsdatei wiederherstellen oder Daten importieren, wenn die entsprechende Instanz oder der Server über andere Zeitzoneneinstellungen verfügt. Gehen Sie hierbei mit Bedacht vor. Analysieren Sie das Anwendungsverhalten und die Ergebnisse der Abfragen und Berichte, wie Sie dies auch beim Übertragen von Daten zwischen zwei SQL Server-Instanzen mit verschiedenen Zeitzoneneinstellungen tun.
 
-### <a name="point-in-time-restore"></a>Point-in-Time-Wiederherstellung
+### <a name="point-in-time-restore"></a>Wiederherstellung bis zu einem bestimmten Zeitpunkt
 
 Wenn Sie eine Point-in-Time-Wiederherstellung durchführen, wird der Wiederherstellungszeitpunkt als UTC-Zeit interpretiert. Auf diese Weise werden Mehrdeutigkeiten aufgrund von Sommerzeit und den damit verbundenen Umstellungen vermieden.
 
@@ -149,7 +149,7 @@ Die Verwendung der gleichen Zeitzone für eine primäre und sekundäre Instanz e
 | UTC | (UTC) Koordinierte Weltzeit |
 | Westeuropäische Zeit | (UTC+00:00) Dublin, Edinburgh, Lissabon, London |
 | Westafrikanische Normalzeit | (UTC+00:00) Monrovia, Reykjavik |
-| W. Mitteleuropäische Zeit | (UTC+01:00) Amsterdam, Berlin, Bern, Rom, Stockholm, Wien |
+| W. Osteuropäische Zeit | (UTC+01:00) Amsterdam, Berlin, Bern, Rom, Stockholm, Wien |
 | Mitteleuropäische Zeit | (UTC+01:00) Belgrad, Bratislava, Budapest, Ljubljana, Prag |
 | Mitteleuropäische Zeit | (UTC+01:00) Brüssel, Kopenhagen, Madrid, Paris |
 | Marokko Normalzeit | (UTC+01:00) Casablanca |
@@ -193,7 +193,7 @@ Die Verwendung der gleichen Zeitzone für eine primäre und sekundäre Instanz e
 | Indien Normalzeit | (UTC+05:30) Chennai, Kolkata, Mumbai, Neu-Delhi |
 | Sri Lanka Normalzeit | (UTC+05:30) Sri Jayawardenepura |
 | Nepal Normalzeit | (UTC+05:45) Katmandu |
-| Zentralasien Normalzeit | (UTC+06:00) Astana |
+| Nord-Zentralasien Normalzeit | (UTC+06:00) Astana |
 | Bangladesch Normalzeit | (UTC+06:00) Dhaka |
 | Omsk Normalzeit | (UTC+06:00) Omsk |
 | Myanmar Normalzeit | (UTC+06:30) Yangon (Rangun) |
@@ -206,7 +206,7 @@ Die Verwendung der gleichen Zeitzone für eine primäre und sekundäre Instanz e
 | China Normalzeit | (UTC+08:00) Beijing, Chongqing, Hongkong, Ürümqi |
 | Ost-Nordasiatische Normalzeit | (UTC+08:00) Irkutsk |
 | Singapur Normalzeit | (UTC+08:00) Kuala Lumpur, Singapur |
-| W. Westaustralische Normalzeit | (UTC+08:00) Perth |
+| W. Ostaustralische Normalzeit | (UTC+08:00) Perth |
 | Taipeh Normalzeit | (UTC+08:00) Taipeh |
 | Ulan-Bator Normalzeit | (UTC+08:00) Ulan-Bator |
 | Zentralaustralische Normalzeit | (UTC+08:45) Eucla |
@@ -215,7 +215,7 @@ Die Verwendung der gleichen Zeitzone für eine primäre und sekundäre Instanz e
 | Nordkorea Normalzeit | (UTC+09:00) Pjöngjang |
 | Koreanische Normalzeit | (UTC+09:00) Seoul |
 | Jakutsk Normalzeit | (UTC+09:00) Jakutsk |
-| Cen. Zentralaustralische Normalzeit | (UTC+09:30) Adelaide |
+| Cen. Ostaustralische Normalzeit | (UTC+09:30) Adelaide |
 | Zentralaustralische Normalzeit | (UTC+09:30) Darwin |
 | E. Ostaustralische Normalzeit | (UTC+10:00) Brisbane |
 | Ostaustralische Normalzeit | (UTC+10:00) Canberra, Melbourne, Sydney |

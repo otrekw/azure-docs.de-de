@@ -15,10 +15,10 @@ ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 47a60ed44ddf057ef983f8f76f23fd784bc3efd5
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73961815"
 ---
 # <a name="delete-a-directory-in-azure-active-directory"></a>Löschen eines Verzeichnisses in Azure Active Directory
@@ -38,7 +38,7 @@ Sie können ein Verzeichnis in Azure AD erst löschen, nachdem es mehrere Prüfu
 
 1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit einem Konto an, das über globale Administratorberechtigungen für Ihre Organisation verfügt.
 
-2. Wählen Sie **Azure Active Directory**.
+2. Wählen Sie **Azure Active Directory** aus.
 
 3. Wechseln Sie zu dem Verzeichnis, das Sie löschen möchten.
   
@@ -56,7 +56,7 @@ Bei der Konfiguration Ihres Azure AD-Verzeichnisses haben Sie möglicherweise au
 
 Informationen dazu, was zu erwarten ist, wenn ein Testabonnement für Office 365 ausläuft (ohne bezahlte Partner/CSP-, Enterprise Agreement- oder Volumenlizenzen), finden Sie in der folgenden Tabelle. Weitere Informationen zum Datenaufbewahrungs- und Abonnementlebenszyklus von Office 365 finden Sie unter [Was geschieht mit meinen Daten und dem Zugriff darauf, wenn mein Office 365 Business-Abonnement endet?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3). 
 
-Abonnementzustand | Data | Zugriff auf Daten
+Abonnementzustand | Daten | Zugriff auf Daten
 ----- | ----- | -----
 Aktiv (30 Tage für die Testversion) | Daten für alle zugänglich | Benutzer haben normalen Zugriff auf Office 365-Dateien oder -Apps<br>Administratoren besitzen normalen Zugriff auf das Microsoft 365 Admin Center und -Ressourcen 
 Abgelaufen (30 Tage) | Daten für alle zugänglich| Benutzer haben normalen Zugriff auf Office 365-Dateien oder -Apps<br>Administratoren besitzen normalen Zugriff auf das Microsoft 365 Admin Center und -Ressourcen
@@ -110,7 +110,7 @@ Weitere Informationen zu den derzeit verfügbaren Produkten und Diensten zur Sel
 
 Informationen dazu, was zu erwarten ist, wenn ein Testabonnement für Office 365 ausläuft (ohne bezahlte Partner/CSP-, Enterprise Agreement- oder Volumenlizenzen), finden Sie in der folgenden Tabelle. Weitere Informationen zum Datenaufbewahrungs- und Abonnementlebenszyklus von Office 365 finden Sie unter [Was geschieht mit meinen Daten und dem Zugriff darauf, wenn mein Office 365 Business-Abonnement endet?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
 
-Produktstatus | Data | Zugriff auf Daten
+Produktstatus | Daten | Zugriff auf Daten
 ------------- | ---- | --------------
 Aktiv (30 Tage für die Testversion) | Daten für alle zugänglich | Benutzer haben normalen Zugriff auf Produkte, Dateien oder Apps zur Self-Service-Registrierung<br>Administratoren besitzen normalen Zugriff auf das Microsoft 365 Admin Center und -Ressourcen
 Deleted | Daten gelöscht | Benutzer können auf Produkte, Dateien oder Apps zur Self-Service-Registrierung nicht zugreifen<br>Administratoren können auf das Microsoft 365 Admin Center zugreifen, um andere Abonnements zu erwerben und zu verwalten

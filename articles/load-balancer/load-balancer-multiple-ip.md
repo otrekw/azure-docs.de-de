@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: 4bf74986462ecb2659505f8a1261b9b24aba3fee
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74077006"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen mithilfe des Azure-Portals
@@ -82,7 +82,7 @@ Fügen Sie für jeden virtuellen Computer in Ihrem virtuellen Netzwerk die IP-Ko
 
 Nachdem die zweite IP-Konfiguration für die sekundäre NIC abgeschlossen ist, wird sie in den Einstellungen unter **IP-Konfigurationen** für die betreffende NIC angezeigt.
 
-### <a name="step-2-create-the-load-balancer"></a>Schritt 2: Erstellen des Lastenausgleichs
+### <a name="step-2-create-the-load-balancer"></a>Schritt 2: Erstellen des Lastenausgleichs
 
 Erstellen Sie Ihren Lastenausgleich für die Konfiguration:
 
@@ -98,7 +98,7 @@ Erstellen Sie Ihren Lastenausgleich für die Konfiguration:
 
 Die Bereitstellung des Lastenausgleichs beginnt. Es kann einige Minuten dauern, bis die Bereitstellung abgeschlossen ist. Nach Abschluss der Bereitstellung wird der Lastenausgleich als Ressource in Ihrer Ressourcengruppe angezeigt.
 
-### <a name="step-3-configure-the-front-end-ip-pool"></a>Schritt 3: Konfigurieren des Front-End-IP-Pools
+### <a name="step-3-configure-the-front-end-ip-pool"></a>Schritt 3: Konfigurieren des Front-End-IP-Pools
 
 Konfigurieren Sie für jede Website (contoso.com und fabrikam.com) den Front-End-IP-Pool für Ihren Lastenausgleich:
 

@@ -15,10 +15,10 @@ ms.date: 02/27/2017
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: a71dbd1b38ff58ccf1eb7a4d50daad5b24922e2f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022748"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Verwenden von Visual Studio-Vorlagen für den schnellen Einstieg in Batch-Lösungen
@@ -190,7 +190,7 @@ Exitcodes und Ausnahmen bilden einen Mechanismus, mit dem das Ergebnis der Ausf�
 
 Eine Auftrags-Manager-Aufgabe, die mit der Auftrags-Manager-Vorlage implementiert wird, kann drei mögliche Exitcodes zurückgeben:
 
-| Code | Beschreibung |
+| Code | BESCHREIBUNG |
 | --- | --- |
 | 0 |Der Auftrags-Manager wurde erfolgreich abgeschlossen. Der Code der Auftragsteilung wurde bis zum Ende ausgeführt, und alle Aufgaben wurden dem Auftrag hinzugefügt. |
 | 1 |Die Auftrags-Manager-Aufgabe ist mit einer Ausnahme in einem „erwarteten“ Teil des Programms fehlgeschlagen. Die Ausnahme wurde in eine JobManagerException mit Diagnoseinformationen übersetzt und enthält nach Möglichkeit Vorschläge zur Behebung des Fehlers. |
@@ -368,7 +368,7 @@ Exitcodes und Ausnahmen bilden einen Mechanismus, mit dem das Ergebnis der Ausf�
 
 Eine Aufgabenprozessoraufgabe, die mit der Aufgabenprozessorvorlage implementiert wird, kann drei mögliche Exitcodes zurückgeben:
 
-| Code | Beschreibung |
+| Code | BESCHREIBUNG |
 | --- | --- |
 | [Process.ExitCode][process_exitcode] |Der Aufgabenprozessor wurde bis zum Ende ausgeführt. Beachten Sie, dass dies nicht heißt, dass das aufgerufene Programm erfolgreich war. Es bedeutet lediglich, dass es vom Aufgabenprozessor erfolgreich aufgerufen wurde und alle Schritte der Nachverarbeitung ohne Ausnahmen durchgeführt wurden. Die Bedeutung des Exitcodes richtet sich nach dem aufgerufenen Programm. Normalerweise bedeutet der Exitcode 0, dass das Programm erfolgreich war, und alle anderen Exitcodes bedeuten, dass die Ausführung nicht erfolgreich war. |
 | 1 |Der Aufgabenprozessor ist mit einer Ausnahme in einem „erwarteten“ Teil des Programms fehlgeschlagen. Die Ausnahme wurde in eine `TaskProcessorException` mit Diagnoseinformationen übersetzt und enthält nach Möglichkeit Vorschläge für die Behebung des Fehlers. |

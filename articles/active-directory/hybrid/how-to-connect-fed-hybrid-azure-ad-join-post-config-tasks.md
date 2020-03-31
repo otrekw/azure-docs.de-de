@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70e3267792f27a170efa26cc4267d1b25045a099
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: ffb8243041bb93ba8be6a65bb83df6f84affaee3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231237"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049665"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Aufgaben nach der Konfiguration für die Hybrid-Azure AD-Einbindung
 
@@ -43,9 +43,9 @@ Alle in die Domäne eingebundenen Geräte, auf denen Windows 10 und Windows Serv
 ## <a name="2-configure-network-with-device-registration-endpoints"></a>2. Konfigurieren des Netzwerks mit Endpunkten für die Geräteregistrierung
 Achten Sie darauf, dass von Computern innerhalb Ihres Unternehmensnetzwerks zur Registrierung bei Azure AD auf die folgenden URLs zugegriffen werden kann:
 
-* https://enterpriseregistration.windows.net
-* https://login.microsoftonline.com
-* https://device.login.microsoftonline.com 
+* `https://enterpriseregistration.windows.net`
+* `https://login.microsoftonline.com`
+* `https://device.login.microsoftonline.com` 
 
 ## <a name="3-implement-wpad-for-windows-10-devices"></a>3. Implementieren von WPAD für Windows 10-Geräte
 Wenn in Ihrer Organisation in ausgehender Richtung über einen Proxy auf das Internet zugegriffen wird, sollten Sie WPAD (Web Proxy Auto-Discovery) installieren, damit Windows 10-Computer bei Azure AD registriert werden können.
@@ -76,9 +76,9 @@ Zum Registrieren von kompatiblen Windows-Geräten müssen Sie sicherstellen, das
 
 ## <a name="8-add-azure-ad-endpoint-to-windows-down-level-devices"></a>8. Hinzufügen eines Azure AD-Endpunkts für Windows-kompatible Geräte
 
-Fügen Sie den Endpunkt für die Azure AD-Geräteauthentifizierung den lokalen Intranetzonen auf Ihren kompatiblen Windows-Geräten hinzu, um beim Authentifizieren des Geräts Zertifikataufforderungen zu vermeiden: https://device.login.microsoftonline.com 
+Fügen Sie den Endpunkt für die Azure AD-Geräteauthentifizierung den lokalen Intranetzonen auf Ihren kompatiblen Windows-Geräten hinzu, um beim Authentifizieren des Geräts Zertifikataufforderungen zu vermeiden: `https://device.login.microsoftonline.com` 
 
-Aktivieren Sie bei Verwendung des [nahtlosen einmaligen Anmeldens](how-to-connect-sso.md) auch die Option „Statusleistenupdates über Skript zulassen“ für diese Zone, und fügen Sie den folgenden Endpunkt hinzu: https://autologon.microsoftazuread-sso.com. 
+Aktivieren Sie bei Verwendung des [nahtlosen einmaligen Anmeldens](how-to-connect-sso.md) auch die Option „Statusleistenupdates über Skript zulassen“ für diese Zone, und fügen Sie den folgenden Endpunkt hinzu: `https://autologon.microsoftazuread-sso.com`. 
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. Installieren von Microsoft Workplace Join auf kompatiblen Windows-Geräten
 

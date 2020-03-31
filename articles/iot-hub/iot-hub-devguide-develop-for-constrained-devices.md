@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: robinsh
 ms.openlocfilehash: a1918a99efcdcc5764140093ad422f7887ca3c88
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73954694"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Entwickeln für eingeschränkte Geräte mit dem Azure IoT-SDK für C

@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/13/2020
 ms.author: lahugh
 ms.openlocfilehash: 0134e7d92ddca9bd3b45abaf642f33de9d209b33
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78192301"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>Sicherer Zugriff auf Key Vault mit Batch
@@ -43,7 +43,7 @@ Als nächstes verwenden Sie das Tool `makecert`, um selbstsignierte Zertifikatsd
 makecert -sv batchcertificate.pvk -n "cn=batch.cert.mydomain.org" batchcertificate.cer -b 09/23/2019 -e 09/23/2019 -r -pe -a sha256 -len 2048
 ```
 
-Batch erfordert eine `.pfx`-Datei. Verwenden Sie das Tool [pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx), um die von `makecert` erstellten `.cer`- und `.pvk`-Dateien in eine einzelne `.pfx`-Datei zu konvertieren.
+Batch erfordert eine `.pfx`-Datei. Verwenden Sie das Tool [pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx), um die von `.cer` erstellten `.pvk`- und `makecert`-Dateien in eine einzelne `.pfx`-Datei zu konvertieren.
 
 ```console
 pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificate.pfx -po

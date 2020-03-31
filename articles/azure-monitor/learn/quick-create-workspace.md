@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2019
 ms.openlocfilehash: 3c2e9d5634916c3713b7e3380c0496611d8f60a6
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77656278"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal
@@ -27,7 +27,7 @@ Informationen zu anderen Quellen in Ihrer Umgebung (etwa virtuelle Azure-Compute
 *  [Sammeln von Daten von Linux-Hybridcomputern](../learn/quick-collect-linux-computer.md)
 *  [Sammeln von Daten von Windows-Hybridcomputern](quick-collect-windows-computer.md)
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ## <a name="sign-in-to-azure-portal"></a>Anmelden beim Azure-Portal
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an. 

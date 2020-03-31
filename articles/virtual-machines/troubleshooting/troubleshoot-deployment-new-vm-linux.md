@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: cjiang
 ms.openlocfilehash: 98c3a6b14230e30ccbb103be741595696a20c236
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75981419"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Behandeln von Ressourcen-Manager-Bereitstellungsproblemen beim Erstellen eines neuen virtuellen Linux-Computers in Azure
@@ -42,7 +42,7 @@ Sammeln Sie zur Problembehandlung zunächst die Aktivitätsprotokolle, um den Fe
 
 [!INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
 
-**J:** Bei einem generalisierten Linux-Betriebssystem, das mit der Generalisierungseinstellung hochgeladen und/oder erfasst wird, treten keine Fehler auf. Analog dazu gilt: Bei einem spezialisierten Linux-Betriebssystem, das mit der Spezialisierungseinstellung hochgeladen und/oder erfasst wird, treten keine Fehler auf.
+**Y** : Bei einem generalisierten Linux-Betriebssystem, das mit der Generalisierungseinstellung hochgeladen und/oder erfasst wird, treten keine Fehler auf. Analog dazu gilt: Bei einem spezialisierten Linux-Betriebssystem, das mit der Spezialisierungseinstellung hochgeladen und/oder erfasst wird, treten keine Fehler auf.
 
 **Uploadfehler:**
 
@@ -78,7 +78,7 @@ Dieser Fehler tritt auf, wenn die Anforderung für einen neuen virtuellen Comput
   * Nachdem alle virtuellen Computer beendet wurden, erstellen Sie den neuen virtuellen Computer in der gewünschten Größe.
   * Starten Sie zunächst den neuen virtuellen Computer, wählen Sie dann alle angehaltenen virtuellen Computer aus, und klicken Sie auf **Starten**.
 
-**Ursache 2:** Der Cluster verfügt über keine freien Ressourcen.
+**Ursache 2:** Der Cluster besitzt keine freien Ressourcen.
 
 **Lösung 2:**
 

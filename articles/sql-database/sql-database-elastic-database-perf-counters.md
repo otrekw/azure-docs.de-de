@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/07/2019
 ms.openlocfilehash: de481dad9dd39b301a21142c67b1baf2209f76e2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823904"
 ---
 # <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>Erstellen von Leistungsindikatoren zum Nachverfolgen der Leistung des Shardzuordnungs-Managers
@@ -25,7 +25,7 @@ Mit Leistungsindikatoren wird die Leistung der Vorgänge bei [datenabhängigem R
 Sie können die Leistung eines [Shardzuordnungs-Managers](sql-database-elastic-scale-shard-map-management.md) insbesondere bei der Verwendung des [datenabhängigen Routings](sql-database-elastic-scale-data-dependent-routing.md) erfassen. Leistungsindikatoren werden mit Methoden der Klasse „Microsoft.Azure.SqlDatabase.ElasticScale.Client“ erstellt.  
 
 
-**Aktuelle Version:** Besuchen Sie [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). Siehe auch [Upgrade einer App auf die neueste Clientbibliothek für elastische Datenbanken](sql-database-elastic-scale-upgrade-client-library.md).
+**Die neueste Version** erhalten Sie unter [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). Siehe auch [Upgrade einer App auf die neueste Clientbibliothek für elastische Datenbanken](sql-database-elastic-scale-upgrade-client-library.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -41,12 +41,12 @@ Rufen Sie zum Erstellen der Leistungsindikatoren die CreatePerformanceCategoryAn
 Sie können auch [dieses](https://gallery.technet.microsoft.com/scriptcenter/Elastic-DB-Tools-for-Azure-17e3d283) PowerShell-Skript zum Ausführen der Methode verwenden.
 Die Methode erstellt die folgenden Leistungsindikatoren:  
 
-* **Cached mappings** (Zwischengespeicherte Zuordnungen): Anzahl der Zuordnungen, die für die Shardzuordnung zwischengespeichert werden.
-* **DDR operations/sec** (DDR-Vorgänge/s): Rate der Vorgänge für datenabhängiges Routing für die Shardzuordnung. Dieser Leistungsindikator wird aktualisiert, wenn ein Aufruf von [OpenConnectionForKey()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) zu einer erfolgreichen Verbindung mit dem Zielshard führt.
-* **Mapping lookup cache hits/sec** (Cachetreffer bei der Zuordnungssuche/s): Rate der erfolgreichen Cachesuchvorgänge für Zuordnungen in der Shardzuordnung.
-* **Mapping lookup cache misses/sec** (Cachefehler bei der Zuordnungssuche/s): Rate der fehlerhaften Cachsuchvorgänge für Zuordnungen in der Shardzuordnung.
-* **Mappings added or updated in cache/sec** (Im Cache hinzugefügte oder aktualisierte Zuordnungen/s): Rate, mit der Zuordnungen im Cache für die Shardzuordnung hinzugefügt oder aktualisiert werden.
-* **Mappings removed from cache/sec** (Aus dem Cache entfernte Zuordnungen/s): Rate, mit der Zuordnungen aus dem Cache für die Shardzuordnung entfernt werden.
+* **Cached mappings**(Zwischengespeicherte Zuordnungen): Anzahl der Zuordnungen, die für die Shardzuordnung zwischengespeichert werden.
+* **DDR operations/sec**(DDR-Vorgänge/s): Rate der Vorgänge für datenabhängiges Routing für die Shardzuordnung. Dieser Leistungsindikator wird aktualisiert, wenn ein Aufruf von [OpenConnectionForKey()](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey) zu einer erfolgreichen Verbindung mit dem Zielshard führt.
+* **Mapping lookup cache hits/sec**(Cachetreffer bei der Zuordnungssuche/s): Rate der erfolgreichen Cachesuchvorgänge für Zuordnungen in der Shardzuordnung.
+* **Mapping lookup cache misses/sec**(Cachefehler bei der Zuordnungssuche/s): Rate der fehlerhaften Cachsuchvorgänge für Zuordnungen in der Shardzuordnung.
+* **Mappings added or updated in cache/sec**(Im Cache hinzugefügte oder aktualisierte Zuordnungen/s): Rate, mit der Zuordnungen im Cache für die Shardzuordnung hinzugefügt oder aktualisiert werden.
+* **Mappings removed from cache/sec**(Aus dem Cache entfernte Zuordnungen/s): Rate, mit der Zuordnungen aus dem Cache für die Shardzuordnung entfernt werden.
 
 Leistungsindikatoren werden für jede zwischengespeicherte Shardzuordnung pro Prozess erstellt.  
 
@@ -65,7 +65,7 @@ Die Leistungsindikatoren werden von allen Cachevorgängen aktualisiert, die für
 * Die Erstellung der Leistungskategorie und -indikatoren sollte nur einmal vor der Erstellung des ShardMapManager-Objekts erfolgen. Jede Ausführung des Befehls „CreatePerformanceCategoryAndCounters()“ löscht die vorherigen Leistungsindikatoren (von allen Instanzen werden Datenverluste gemeldet) und erstellt neue.  
 * Leistungsindikatorinstanzen werden pro Prozess erstellt. Jeder Anwendungsabsturz oder jede Entfernung einer Shardzuordnung aus dem Cache führt dazu, dass die Leistungsindikatorinstanzen gelöscht werden.  
 
-### <a name="see-also"></a>Siehe auch
+### <a name="see-also"></a>Weitere Informationen
 
 [Übersicht über Features für elastische Datenbanken](sql-database-elastic-scale-introduction.md)  
 

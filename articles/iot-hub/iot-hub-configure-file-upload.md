@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: robinsh
 ms.openlocfilehash: bd7cc37b8fc81fc9d4109826743f2243913d0604
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60735020"
 ---
 # <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>Konfigurieren des Dateiuploads in IoT Hub im Azure-Portal
@@ -25,17 +25,17 @@ Damit Sie die [Dateiuploadfunktion in IoT Hub](iot-hub-devguide-file-upload.md) 
 
 ![Anzeigen der Dateiuploadeinstellungen für den IoT Hub im Portal](./media/iot-hub-configure-file-upload/file-upload-settings.png)
 
-* **Speichercontainer:** Verwenden Sie das Azure-Portal, um einen Blobcontainer in einem Azure Storage-Konto Ihres aktuellen Azure-Abonnements auszuwählen, der Ihrer IoT Hub-Instanz zugeordnet werden soll. Erstellen Sie bei Bedarf auf dem Blatt **Speicherkonten** ein Azure Storage-Konto und auf dem Blatt **Container** einen Blobcontainer. IoT Hub generiert automatisch SAS-URIs mit Schreibberechtigungen für diesen Blobcontainer, die Geräte beim Hochladen von Dateien verwenden können.
+* **Speichercontainer**: Verwenden Sie das Azure-Portal, um einen Blobcontainer in einem Azure Storage-Konto Ihres aktuellen Azure-Abonnements auszuwählen, der Ihrer IoT Hub-Instanz zugeordnet werden soll. Erstellen Sie bei Bedarf auf dem Blatt **Speicherkonten** ein Azure Storage-Konto und auf dem Blatt **Container** einen Blobcontainer. IoT Hub generiert automatisch SAS-URIs mit Schreibberechtigungen für diesen Blobcontainer, die Geräte beim Hochladen von Dateien verwenden können.
 
    ![Anzeigen von Speichercontainern für den Dateiupload im Portal](./media/iot-hub-configure-file-upload/file-upload-container-selection.png)
 
-* **Empfangen von Benachrichtigungen zu hochgeladenen Dateien:** Aktivieren oder Deaktivieren Sie die Benachrichtigungen zu Dateiuploads mithilfe des Umschalters.
+* **Benachrichtigungen für hochgeladene Dateien empfangen**: Aktivieren oder deaktivieren Sie Dateiuploadbenachrichtigungen über den Umschalter.
 
-* **SAS TTL:** Diese Einstellung dient zum Festlegen der Gültigkeitsdauer der SAS-URIs, die von IoT Hub an das Gerät zurückgegeben werden. Standardmäßig auf 1 Stunde festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
+* **SAS-TTL**: Diese Einstellung dient zum Festlegen der Gültigkeitsdauer der SAS-URIs, die von IoT Hub an das Gerät zurückgegeben werden. Standardmäßig auf 1 Stunde festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
 
-* **Standard-TTL für Dateibenachrichtigungseinstellungen:** Die Gültigkeitsdauer einer Dateiuploadbenachrichtigung (Zeit bis zum Ablauf). Standardmäßig auf 1 Tag festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
+* **Standard-TTL für Dateibenachrichtigungseinstellungen**: Die Gültigkeitsdauer einer Dateiuploadbenachrichtigung (Zeit bis zum Ablauf). Standardmäßig auf 1 Tag festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
 
-* **Anzahl maximaler Zustellungen für Dateibenachrichtigungen:** Gibt an, wie oft IoT Hub versucht, eine Benachrichtigung zu einem Dateiupload zu senden. Standardmäßig auf 10 festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
+* **Anzahl maximaler Zustellungen für Dateibenachrichtigungen**: Gibt an, wie oft IoT Hub versucht, eine Dateiuploadbenachrichtigung zu senden. Standardmäßig auf 10 festgelegt, kann aber mithilfe des Schiebereglers in andere Werte geändert werden.
 
    ![Konfigurieren des Dateiuploads für IoT Hub im Portal](./media/iot-hub-configure-file-upload/file-upload-selected-container.png)
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.openlocfilehash: 340472f84d2dd2c4f46d180992745a57e8ad1884
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73587067"
 ---
 # <a name="configure-global-vnet-peering-cross-region-vnet-for-virtual-wan"></a>Konfigurieren des globalen VNet-Peerings (regionsübergreifendes VNet) für Virtual WAN
@@ -25,7 +25,7 @@ Vergewissern Sie sich, dass die folgenden Kriterien erfüllt sind:
 * Das regionsübergreifende VNet (Spoke) ist nicht mit einem anderen Virtual WAN-Hub verbunden. Ein Spoke kann nur mit einem virtuellen Hub verbunden werden.
 * Das VNet (Spoke) enthält kein VNet-Gateway (z. B. ein Azure VPN Gateway oder ein ExpressRoute-Gateway für virtuelle Netzwerke). Wenn das VNet ein Gateway für virtuelle Netzwerke enthält, müssen Sie das Gateway entfernen, bevor Sie eine Verbindung vom Spoke-VNet zum Hub erstellen.
 
-## <a name="register"></a>Registrieren dieses Features
+## <a name="register-this-feature"></a><a name="register"></a>Registrieren dieses Features
 
 Sie können sich mit PowerShell für dieses Feature registrieren. Wenn Sie im folgenden Beispiel „Ausprobieren“ auswählen, wird Azure Cloud Shell geöffnet, sodass Sie die PowerShell-Cmdlets nicht lokal auf Ihrem Computer installieren müssen. Falls erforderlich, können Sie Abonnements mithilfe des Cmdlets „Select-AzSubscription -SubscriptionId <subid>“ ändern.
 
@@ -34,13 +34,13 @@ Register-AzProviderFeature -FeatureName AllowCortexGlobalVnetPeering -ProviderNa
 Register-AzResourceProvider -ProviderNamespace 'Microsoft.Network'
 ```
 
-## <a name="verify"></a>Überprüfen der Registrierung
+## <a name="verify-registration"></a><a name="verify"></a>Überprüfen der Registrierung
 
 ```azurepowershell-interactive
 Get-AzProviderFeature -FeatureName AllowCortexGlobalVnetPeering -ProviderNamespace Microsoft.Network
 ```
 
-## <a name="hub"></a>Verbinden eines VNet mit dem Hub
+## <a name="connect-a-vnet-to-the-hub"></a><a name="hub"></a>Verbinden eines VNet mit dem Hub
 
 In diesem Schritt erstellen Sie die Peeringverbindung zwischen Ihrem Hub und dem regionsübergreifenden VNet. Wiederholen Sie diese Schritte für jedes VNET, mit dem Sie eine Verbindung herstellen möchten.
 

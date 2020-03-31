@@ -16,10 +16,10 @@ ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: bccaf45cf617bd31a584b6c73f3dd08877bc8587
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71266070"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Hochverfügbarkeit von SAP HANA für virtuelle Azure-Computer
@@ -44,9 +44,9 @@ Die folgenden Artikel bieten einen guten Überblick über die Verwendung von SAP
 Auch die folgenden Artikel zu SAP HANA sind zu empfehlen:
 
 - [High Availability for SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/6d252db7cdd044d19ad85b46e6c294a4.html) (Hochverfügbarkeit für SAP HANA)
-- [Häufig gestellte Fragen: High Availability for SAP HANA](https://archive.sap.com/documents/docs/DOC-66702) (Hochverfügbarkeit für SAP HANA)
+- [FAQ: High Availability for SAP HANA](https://archive.sap.com/documents/docs/DOC-66702) (FAQs: Hochverfügbarkeit für SAP HANA)
 - [How to Perform System Replication for SAP HANA](https://archive.sap.com/documents/docs/DOC-47702) (Gewusst wie: Durchführen der Replikation für SAP HANA)
-- [SAP HANA 2.0 SPS 01 What’s new: High availability](https://blogs.sap.com/2017/05/15/sap-hana-2.0-sps-01-whats-new-high-availability-by-the-sap-hana-academy/) (SAP HANA 2.0 SPS 01 – Neuerungen: Hochverfügbarkeit)
+- [SAP HANA 2.0 SPS 01 What’s New: High Availability](https://blogs.sap.com/2017/05/15/sap-hana-2.0-sps-01-whats-new-high-availability-by-the-sap-hana-academy/) (SAP HANA 2.0 SPS 01 – Neuerungen: Hochverfügbarkeit)
 - [Network Recommendations for SAP HANA System Replication](https://www.sap.com/documents/2016/06/18079a1c-767c-0010-82c7-eda71af511fa.html) (Empfehlungen zum Netzwerk für die SAP HANA-Systemreplikation)
 - [SAP HANA System Replication](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html) (SAP HANA-Systemreplikation)
 - [SAP HANA Service Auto-Restart](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html) (Automatischer Neustart des SAP HANA-Diensts)

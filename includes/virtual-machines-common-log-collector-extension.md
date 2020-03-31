@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 09c4420647043fccc408631fec75854667923721
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74085244"
 ---
 Für die Diagnose von Problemen mit einem Microsoft Azure-Clouddienst müssen die Protokolldateien des Diensts auf virtuellen Computern gesammelt werden, wenn die Probleme auftreten. Sie können die AzureLogCollector-Erweiterung bedarfsgesteuert verwenden, um eine einmalige Sammlung von Protokollen von einer oder mehreren Clouddienst-VMs (von Web- und Workerrollen aus) durchzuführen und die gesammelten Dateien an ein Azure-Speicherkonto zu übertragen – alles ohne Remoteanmeldung bei den virtuellen Computern.
@@ -32,8 +32,8 @@ Es gibt zwei Modi für die Sammlung, die von den Typen der zu sammelnden Dateien
 In beiden Sammlungsmodi können zusätzliche Ordner für die Datensammlung angegeben werden, indem eine Sammlung mit der folgenden Struktur verwendet wird:
 
 * **Name**: Der Name der Sammlung, der als Name des Unterordners in der ZIP-Datei mit den gesammelten Dateien verwendet wird.
-* **Standort**: Der Pfad des Ordners auf dem virtuellen Computer, in dem sich die zu sammelnden Datei befinden.
-* **SearchPattern**: Das Muster der Namen der zu sammelnden Dateien. Standardwert: \*.
+* **Speicherort**: Der Pfad des Ordners auf dem virtuellen Computer, in dem sich die zu sammelnden Datei befinden.
+* **Suchmuster**: Das Muster der Namen der zu sammelnden Dateien. Standardwert: \*.
 * **Rekursiv**: Falls sich die zu sammelnden Dateien rekursiv unter dem angegebenen Speicherort befinden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -177,13 +177,13 @@ param (
 )
 ```
 
-* **ServiceName**: Der Name Ihres Clouddiensts.
+* **ServiceName**: Der Name des Clouddiensts.
 * **Roles**: Eine Liste der Rollen, z.B. „WebRole1“ oder „WorkerRole1“.
 * **Instances**: Eine Liste der Namen von Rolleninstanzen, durch Komma getrennt. Verwenden Sie das Platzhalterzeichen („*“) für alle Rolleninstanzen.
 * **Slot**: Slotname. „Production“ oder „Staging“.
-* **Modus**: Sammlungsmodus. „Full“ oder „GA“.
+* **Mode**: Sammlungsmodus. „Full“ oder „GA“.
 * **StorageAccountName**: Name des Azure-Speicherkontos zum Speichern der gesammelten Daten.
-* **StorageAccountKey**: Name des Azure-Speicherkontoschlüssels.
+* **StorageAccountKey**: Name des Azure-Speicherkontenschlüssels.
 * **AdditionalDataLocationList**: Eine Liste mit der folgenden Struktur:
 
   ```powershell
@@ -259,11 +259,11 @@ param (
 )
 ```
 
-* **ServiceName**: Der Name Ihres Clouddiensts.
-* **VMName**: Der Name der VM.
-* **Modus**: Sammlungsmodus. „Full“ oder „GA“.
+* **ServiceName**: Der Name des Clouddiensts.
+* **VMName**: Der Name des virtuellen Computers.
+* **Mode**: Sammlungsmodus. „Full“ oder „GA“.
 * **StorageAccountName**: Name des Azure-Speicherkontos zum Speichern der gesammelten Daten.
-* **StorageAccountKey**: Name des Azure-Speicherkontoschlüssels.
+* **StorageAccountKey**: Name des Azure-Speicherkontenschlüssels.
 * **AdditionalDataLocationList**: Eine Liste mit der folgenden Struktur:
 
   ```

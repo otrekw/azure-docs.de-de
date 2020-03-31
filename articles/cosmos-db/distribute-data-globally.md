@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.openlocfilehash: 84cd201cd758293082a61a87528332c7d8c58811
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76264304"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Globale Datenverteilung mit Azure Cosmos DB: Übersicht
@@ -45,7 +45,7 @@ Mithilfe der Multihosting-APIs von Azure Cosmos DB kennt Ihre Anwendung die nä
 
 **Mehrere klar definierte Konsistenzmodelle zur Auswahl.** Das Replikationsprotokoll von Azure Cosmos DB bietet fünf klar definierte, praktische und intuitive Konsistenzmodelle. Jedes Modell stellt einen klar beschriebenen Kompromiss zwischen Konsistenz und Leistung dar. Mit diesen Konsistenzmodellen können Sie problemlos global verteilte Anwendungen erstellen.
 
-## <a id="Next Steps"></a>Nächste Schritte
+## <a name="next-steps"></a><a id="Next Steps"></a>Nächste Schritte
 
 In den folgenden Artikeln erfahren Sie mehr über die globale Verteilung:
 

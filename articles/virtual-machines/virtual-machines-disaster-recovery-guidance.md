@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: cynthn
 ms.openlocfilehash: f2dc43e1f07d449bf2f8ed39ce4523c99b551dae
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77115612"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Was passiert, wenn sich die Störung eines Azure-Diensts auf Azure-VMs auswirkt?

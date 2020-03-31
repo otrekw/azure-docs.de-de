@@ -4,10 +4,10 @@ description: In diesem Artikel wird beschrieben, wie Containerprotokolle für ei
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.openlocfilehash: c47a408b272f95dbfcf3d791c644bfeb52254a72
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75458183"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Anzeigen von Protokollen für einen Service Fabric-Containerdienst
@@ -33,7 +33,7 @@ Zur Diagnose von Startfehlern unterstützt Service Fabric (ab Version 6.1) die A
 
 Mit der Einstellung **ContainersRetentionCount** wird die Anzahl von Containern angegeben, die bei Fehlern beibehalten werden sollen. Wenn ein negativer Wert angegeben wird, werden alle fehlerhaften Container beibehalten. Wenn das Attribut **ContainersRetentionCount** nicht angegeben wird, werden keine Container beibehalten. Das Attribut **ContainersRetentionCount** unterstützt auch Anwendungsparameter, sodass Benutzer unterschiedliche Werte für Test- und Produktionscluster angeben können. Nutzen Sie bei Verwendung dieses Features Platzierungseinschränkungen, um den Containerdienst einem bestimmten Knoten zuzuordnen und zu verhindern, dass er auf andere Knoten verschoben wird. Alle Container, die mit diesem Feature beibehalten werden, müssen manuell entfernt werden.
 
-Die Einstellung **RunInteractive** entspricht den [Flags](https://docs.docker.com/engine/reference/commandline/run/#options) `--interactive` und `tty` von Docker. Wenn diese Einstellung in der Manifestdatei auf TRUE festgelegt wurde, werden diese Flags verwendet, um den Container zu starten.  
+Die Einstellung **RunInteractive** entspricht den `--interactive`Flags`tty` [ und ](https://docs.docker.com/engine/reference/commandline/run/#options) von Docker. Wenn diese Einstellung in der Manifestdatei auf TRUE festgelegt wurde, werden diese Flags verwendet, um den Container zu starten.  
 
 ### <a name="rest"></a>REST
 Verwenden Sie den Vorgang [Abrufen von auf Containerknoten bereitgestellten Containerprotokollen](/rest/api/servicefabric/sfclient-api-getcontainerlogsdeployedonnode), um die Protokolle für einen abgestürzten Container abzurufen. Geben Sie den Namen des Knotens, auf dem der Container ausgeführt wurde, den Anwendungsnamen, den Dienstmanifestnamen und den Codepaketnamen an.  Geben Sie `&Previous=true` an. Die Antwort enthält die Containerprotokolle für den inaktiven Container der Codepaketinstanz.

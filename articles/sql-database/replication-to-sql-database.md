@@ -12,11 +12,11 @@ ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 01/25/2019
 ms.openlocfilehash: f718bc17b987926f4324635f096d5983acdb63fc
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997274"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228698"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikation zu SQL-Datenbank-Einzeldatenbanken und -Pooldatenbanken
 
@@ -28,7 +28,7 @@ Die SQL Server-Replikation kann für Einzel- und Pooldatenbanken auf einem [SQL 
 - Azure SQL-Datenbank muss ein Pushabonnent eines SQL Server-Verlegers sein.  
 - Die Verteilungsdatenbank und die Replikations-Agents können nicht in Azure SQL-Datenbank platziert werden.  
 - Momentaufnahmen und die unidirektionale Transaktionsreplikationen werden unterstützt. Nicht unterstützt werden Peer-zu-Peer-Transaktions- und Mergereplikationen.
-- Die Replikation ist für die Public Preview auf der verwalteten Azure SQL-Datenbank-Instanz verfügbar. Eine verwaltete Instanz kann Verleger-, Verteiler- und Abonnentendatenbanken hosten. Weitere Informationen finden Sie unter [Replikation mit einer verwalteten SQL-Datenbank-Instanz](replication-with-sql-database-managed-instance.md).
+- Die Replikation ist für die Public Preview der verwalteten Azure SQL-Datenbank-Instanz verfügbar. Eine verwaltete Instanz kann Verleger-, Verteiler- und Abonnentendatenbanken hosten. Weitere Informationen finden Sie unter [Replikation mit einer verwalteten SQL-Datenbank-Instanz](replication-with-sql-database-managed-instance.md).
 
 ## <a name="versions"></a>Versionen  
 
@@ -44,7 +44,7 @@ Lokale SQL Server-Herausgeber und -Distributoren müssen mindestens eine der fo
 Um alle Features von Azure SQL-Datenbank verwenden zu können, müssen Sie die neuesten Versionen von [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) und [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) verwenden.  
 
   
-## <a name="remarks"></a>Anmerkungen
+## <a name="remarks"></a>Bemerkungen
 
 - Replikationen können mithilfe von [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) oder durch Ausführen von Transact-SQL-Anweisungen im Verleger konfiguriert werden. Replikation können nicht mit dem Azure-Portal konfiguriert werden.  
 - Bei Replikationen kann eine Verbindung mit Azure SQL-Datenbank nur über SQL Server-Authentifizierungsanmeldungen hergestellt werden.
@@ -111,7 +111,7 @@ Erstellen Sie eine Veröffentlichung und ein Pushabonnement. Weitere Information
 - [Erstellen einer Veröffentlichung](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [Erstellen eines Pushabonnements](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) mit dem Namen des Azure SQL-Datenbank-Servers als Abonnent (z. B. **N'azuresqldbdns.database.windows.net'** ) und dem Namen von Azure SQL-Datenbank als Zieldatenbank (z. B. **AdventureWorks**).  
 
-## <a name="see-also"></a>Siehe auch  
+## <a name="see-also"></a>Weitere Informationen  
 
 - [Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md)
 - [Erstellen einer Veröffentlichung](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)

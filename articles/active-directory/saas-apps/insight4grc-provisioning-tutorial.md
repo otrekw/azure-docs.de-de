@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/04/2020
 ms.author: Zhchia
 ms.openlocfilehash: 1404854e054c8fc4967ba863486969b8a87db526
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77621515"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Insight4GRC für die automatische Benutzerbereitstellung

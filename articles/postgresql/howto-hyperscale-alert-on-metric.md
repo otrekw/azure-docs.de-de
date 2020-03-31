@@ -5,13 +5,13 @@ author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 2/18/2020
-ms.openlocfilehash: 0e2eb4ab13319779ae209e58253c6a5f2ccb75da
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.date: 3/16/2020
+ms.openlocfilehash: 80c061f72ce827df8f8354a5881c032c6f874fe1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462427"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063143"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -101,7 +101,7 @@ Wenn auf dem Datenträger nur noch wenig Speicherplatz zur Verfügung steht, ver
 
 * Überprüfen Sie die Datenaufbewahrungsrichtlinie. Verschieben Sie ältere Daten nach Möglichkeit in Cold Storage.
 * Erwägen Sie das [Hinzufügen von Knoten](howto-hyperscale-scaling.md#add-worker-nodes) zur Servergruppe sowie eine Neuverteilung von Shards. Durch die Neuverteilung werden die Daten auf mehr Computer verteilt.
-* Erwägen Sie das [Erhöhen der Kapazität](howto-hyperscale-scaling.md#increase-vcores) von Workerknoten. Jeder Worker kann über bis zu 2 TiB Speicher verfügen. Vor dem Anpassen der Knotengröße sollten Sie jedoch zunächst versuchen, Knoten hinzuzufügen, da das Hinzufügen von Knoten weniger Zeit beansprucht.
+* Erwägen Sie das [Erhöhen der Kapazität](howto-hyperscale-scaling.md#increase-or-decrease-vcores-on-nodes) von Workerknoten. Jeder Worker kann über bis zu 2 TiB Speicher verfügen. Vor dem Anpassen der Knotengröße sollten Sie jedoch zunächst versuchen, Knoten hinzuzufügen, da das Hinzufügen von Knoten weniger Zeit beansprucht.
 
 ### <a name="cpu-usage"></a>CPU-Auslastung
 

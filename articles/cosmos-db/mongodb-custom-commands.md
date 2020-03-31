@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
 ms.openlocfilehash: f57b274715eb1c8a4d517f5655c09c366574d412
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75445218"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Verwenden von MongoDB-Erweiterungsbefehlen zum Verwalten von Daten in der API für MongoDB von Azure Cosmos DB 
@@ -30,7 +30,7 @@ Standardmäßig ist die API für MongoDB von Azure Cosmos DB mit der MongoDB-Ser
 * [Aktualisieren der Sammlung](#update-collection)
 * [Abrufen der Sammlung](#get-collection)
 
-## <a id="create-database"></a> Erstellen der Datenbank
+## <a name="create-database"></a><a id="create-database"></a> Erstellen der Datenbank
 
 Mit dem Erweiterungsbefehl „CreateDatabase“ wird eine neue MongoDB-Datenbank erstellt. Der Name der Datenbank wird aus dem Datenbankkontext verwendet, unter dem der Befehl ausgeführt wird. Das Format des Befehls „CreateDatabase“ lautet:
 
@@ -72,7 +72,7 @@ use test
 db.runCommand({customAction: "CreateDatabase", offerThroughput: 1000 });
 ```
 
-## <a id="update-database"></a> Aktualisieren der Datenbank
+## <a name="update-database"></a><a id="update-database"></a> Aktualisieren der Datenbank
 
 Mit dem Erweiterungsbefehl „UpdateDatabase“ werden die Eigenschaften aktualisiert, die der angegebenen Datenbank zugeordnet sind. Derzeit können Sie nur die „offerThroughput“-Eigenschaft aktualisieren.
 
@@ -105,7 +105,7 @@ use test
 db.runCommand({customAction: "UpdateDatabase", offerThroughput: 1200 });
 ```
 
-## <a id="get-database"></a> Abrufen der Datenbank
+## <a name="get-database"></a><a id="get-database"></a> Abrufen der Datenbank
 
 Mit dem Erweiterungsbefehl „GetDatabase“ wird das Datenbankobjekt zurückgegeben. Der Name der Datenbank wird aus dem Datenbankkontext verwendet, unter dem der Befehl ausgeführt wird.
 
@@ -145,7 +145,7 @@ use test
 db.runCommand({customAction: "GetDatabase"});
 ```
 
-## <a id="create-collection"></a> Erstellen der Sammlung
+## <a name="create-collection"></a><a id="create-collection"></a> Erstellen der Sammlung
 
 Mit dem Erweiterungsbefehl „CreateCollection“ wird eine neue MongoDB-Sammlung erstellt. Der Name der Datenbank wird aus dem Datenbankkontext verwendet, unter dem der Befehl ausgeführt wird. Das Format des Befehls „CreateCollection“ lautet:
 
@@ -191,7 +191,7 @@ use test
 db.runCommand({customAction: "CreateCollection", collection: "testCollection", offerThroughput: 1000, shardKey: "a.b" });
 ```
 
-## <a id="update-collection"></a> Aktualisieren der Sammlung
+## <a name="update-collection"></a><a id="update-collection"></a> Aktualisieren der Sammlung
 
 Mit dem Erweiterungsbefehl „UpdateCollection“ werden die Eigenschaften aktualisiert, die der angegebenen Sammlung zugeordnet sind.
 
@@ -226,7 +226,7 @@ use test
 db.runCommand({customAction: "UpdateCollection", collection: "testCollection", offerThroughput: 1200 });
 ```
 
-## <a id="get-collection"></a> Abrufen der Sammlung
+## <a name="get-collection"></a><a id="get-collection"></a> Abrufen der Sammlung
 
 Mit dem benutzerdefinierten Befehl „GetCollection“ wird das Sammlungsobjekt zurückgegeben.
 
@@ -271,7 +271,7 @@ use test
 db.runCommand({customAction: "GetCollection", collection: "testCollection"});
 ```
 
-## <a id="default-output"></a> Standardausgabe eines benutzerdefinierten Befehls
+## <a name="default-output-of-a-custom-command"></a><a id="default-output"></a> Standardausgabe eines benutzerdefinierten Befehls
 
 Wenn nichts anderes angegeben ist, enthält eine benutzerdefinierte Antwort ein Dokument mit den folgenden Feldern:
 

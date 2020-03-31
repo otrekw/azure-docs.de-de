@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 9fbde84c499ba5b086ce812de63602c626b416b0
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74179335"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)
@@ -31,8 +31,8 @@ Dieser Artikel führt Sie durch die Schritte zum Konfigurieren eines Application
 ## <a name="what-is-required-to-create-an-application-gateway"></a>Was ist zum Erstellen eines Anwendungsgateways erforderlich?
 
 * **Back-End-Serverpool:** Die Liste der IP-Adressen der Back-End-Server. Die aufgelisteten IP-Adressen sollten entweder zum virtuellen Netzwerk gehören, dann aber in einem anderen Subnetz für das Application Gateway, oder es sollte sich um eine öffentliche IP/VIP handeln.
-* **Einstellungen für den Back-End-Serverpool:** Jeder Pool besitzt Einstellungen wie Port, Protokoll und cookiebasierte Affinität. Diese Einstellungen sind an einen Pool gebunden und gelten für alle Server innerhalb des Pools.
-* **Front-End-Port:** Der öffentliche Port, der im Anwendungsgateway geöffnet ist. Datenverkehr erreicht diesen Port und wird dann an einen der Back-End-Server umgeleitet.
+* **Einstellungen für den Back-End-Serverpool:** Jeder Pool weist Einstellungen wie Port, Protokoll und cookiebasierte Affinität auf. Diese Einstellungen sind an einen Pool gebunden und gelten für alle Server innerhalb des Pools.
+* **Front-End-Port:** Dieser Port ist der öffentliche Port, der im Application Gateway geöffnet ist. Datenverkehr erreicht diesen Port und wird dann an einen der Back-End-Server umgeleitet.
 * **Listener:** Der Listener verfügt über einen Front-End-Port, ein Protokoll (Http oder Https, jeweils mit Beachtung der Groß-/Kleinschreibung) und den Namen des SSL-Zertifikats (falls die SSL-Auslagerung konfiguriert wird).
 * **Regel:** Mit der Regel werden der Listener und der Back-End-Serverpool gebunden, und es wird definiert, an welchen Back-End-Serverpool der Datenverkehr gesendet werden soll, wenn er einen bestimmten Listener erreicht. Derzeit wird nur die Regel *basic* unterstützt. Die Regel *basic* ist eine Round-Robin-Lastverteilung.
 
@@ -41,7 +41,7 @@ Dieser Artikel führt Sie durch die Schritte zum Konfigurieren eines Application
 Der Unterschied zwischen dem klassischen Azure-Modell und Azure Resource Manager besteht in der Reihenfolge, in der Sie ein Anwendungsgateway und die Elemente erstellen, die konfiguriert werden müssen.
 Beim Resource Manager werden alle Elemente, die ein Application Gateway bilden, einzeln konfiguriert und anschließend zusammengesetzt, um die Application Gateway-Ressource zu erstellen.
 
-Hier sind die erforderlichen Schritte zum Erstellen eines Application Gateways angegeben:
+Hier sind die erforderlichen Schritte zum Erstellen eines Anwendungsgateways angegeben:
 
 1. Erstellen einer Ressourcengruppe für den Resource Manager
 2. Erstellen eines virtuelles Netzwerkes und eines Subnetzes für das Application Gateway.

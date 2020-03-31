@@ -16,10 +16,10 @@ ms.date: 12/07/2017
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: ff221a32ff6c995d019b13f20ca2c3f9e2027f63
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75980734"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Erste Schritte mit Azure Blob Storage und verbundenen Visual Studio-Diensten (ASP.NET Core)
@@ -90,7 +90,7 @@ Dieser Abschnitt führt Sie durch das Einrichten der Entwicklungsumgebung. Dies 
 
     ![Screenshot des Dialogfelds „Leeren MVC-Controller hinzufügen“](./media/vs-storage-aspnet-core-getting-started-blobs/add-controller-name.png)
 
-1. Fügen Sie der Datei `BlobsController.cs` die folgenden `using`-Anweisungen hinzu:
+1. Fügen Sie der Datei `using` die folgenden `BlobsController.cs`-Anweisungen hinzu:
 
     ```csharp
     using System.IO;

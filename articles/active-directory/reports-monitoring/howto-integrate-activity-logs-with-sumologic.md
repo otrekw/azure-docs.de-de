@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6cdfc4e393ca7bf4bcbd523b4fad72690d5f2744
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74014389"
 ---
 # <a name="integrate-azure-active-directory-logs-with-sumologic-using-azure-monitor"></a>Integrieren von Azure Active Directory-Protokollen in SumoLogic mit Azure Monitor

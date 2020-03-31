@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 0172ada68ffa652fb0c301c89238beca4f4ce2f9
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74664191"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>Grundlegendes zur lokalen Konfigurationsdatei (C#-Agent)
@@ -82,15 +82,15 @@ Windows:
 
 | Konfigurationsname | Mögliche Werte | Details | 
 |:-----------|:---------------|:--------|
-| moduleName | Zeichenfolge | Name der Sicherheitsmodulidentität. Dieser Name muss dem Namen der Modulidentität im Gerät entsprechen. |
-| deviceId | Zeichenfolge | ID des Geräts (wie in Azure IoT Hub registriert). || schedulerInterval | „TimeSpan“-Zeichenfolge | Internes Scheduler-Intervall. |
-| gatewayHostname | Zeichenfolge | Hostname des Azure IoT Hubs. Normalerweise <mein-hub>.azure-devices.net |
+| moduleName | string | Name der Sicherheitsmodulidentität. Dieser Name muss dem Namen der Modulidentität im Gerät entsprechen. |
+| deviceId | string | ID des Geräts (wie in Azure IoT Hub registriert). || schedulerInterval | „TimeSpan“-Zeichenfolge | Internes Scheduler-Intervall. |
+| gatewayHostname | string | Hostname des Azure IoT Hubs. Normalerweise <mein-hub>.azure-devices.net |
 | filePath | Zeichenfolge – Pfad zur Datei | Der Pfad zu der Datei, die das Authentifizierungsgeheimnis enthält.|
 | type | „SymmetricKey“, „SelfSignedCertificate“ | Das Benutzergeheimnis für die Authentifizierung. Wählen Sie *SymmetricKey* aus, wenn das Benutzergeheimnis ein symmetrischer Schlüssel ist; wählen Sie *SelfSignedCertificate* aus, wenn das Geheimnis ein selbstsigniertes Zertifikat ist. |
 | identity | „DPS“, „Module“, „Device“ | Authentifizierungsidentität – „DPS“, wenn die Authentifizierung über DPS erfolgt, „Module“, wenn sie mit Anmeldeinformationen für das Modul erfolgt, oder „Device“, wenn sie mit Geräteanmeldeinformationen erfolgt.
 | certificateLocationKind |  „LocalFile“, „Store“ | „LocalFile“, wenn das Zertifikat in einer Datei gespeichert ist; „Store“, wenn sich das Zertifikat in einem Zertifikatspeicher befindet. |
-| idScope | Zeichenfolge | ID-Bereich von DPS |
-| registrationId | Zeichenfolge  | Registrierungs-ID für DPS-Geräte. |
+| idScope | string | ID-Bereich von DPS |
+| registrationId | string  | Registrierungs-ID für DPS-Geräte. |
 |
 
 ### <a name="authenticationconfig-example"></a>Beispiel für „Authentication.config“

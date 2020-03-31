@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 8631b05bc42df86ef6865bf2a07c0e3deaaad2fe
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2b1b708618c60153b8dbce69b26d832fa18b25aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034282"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476602"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure
 Virtuelle Linux-Computer (Linux-VMs) in Azure werden normalerweise von der Befehlszeile aus mithilfe einer SSH-Verbindung (Secure Shell) verwaltet. Wenn Sie erst in Linux einsteigen oder schnell eine Fehlerbehandlung durchführen müssen, ist die Verwendung von Remotedesktop unter Umständen einfacher. Dieser Artikel erläutert im Detail die Installation und Konfiguration von Desktopumgebung ([XFCE](https://www.xfce.org)) und Remotedesktop ([XRDP](https://www.xrdp.org)) für Ihren virtuellen Linux-Computer mithilfe des Resource Manager-Bereitstellungsmodells.
@@ -48,7 +48,7 @@ Installieren Sie anschließend XFCE mithilfe von `apt`, wie hier dargestellt:
 
 ```bash
 sudo apt-get update
-sudo apt-get install xfce4
+sudo apt-get -y install xfce4
 ```
 
 ## <a name="install-and-configure-a-remote-desktop-server"></a>Installieren und Konfigurieren eines Remotedesktopservers

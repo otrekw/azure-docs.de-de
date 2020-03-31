@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: da29785547d1b6eb4b38d07f020ba885dc5137ea
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75767585"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>Ausführen von Apache Sqoop-Aufträgen in HDInsight mit Curl
@@ -24,7 +24,7 @@ Curl wird verwendet, um zu veranschaulichen, wie Sie über unformatierte HTTP-An
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Die unter [Verwenden von Apache Sqoop mit Hadoop in HDInsight](./hdinsight-use-sqoop.md) beschriebene [Einrichtung der Testumgebung](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) muss abgeschlossen sein.
+* Die unter [Verwenden von Apache Sqoop mit Hadoop in HDInsight](./hdinsight-use-sqoop.md#create-cluster-and-sql-database) beschriebene [Einrichtung der Testumgebung](./hdinsight-use-sqoop.md) muss abgeschlossen sein.
 
 * Ein Client zum Abfragen der Azure SQL-Datenbank. Erwägen Sie die Verwendung von [SQL Server Management Studio](../../sql-database/sql-database-connect-query-ssms.md) oder [Visual Studio Code](../../sql-database/sql-database-connect-query-vscode.md).
 

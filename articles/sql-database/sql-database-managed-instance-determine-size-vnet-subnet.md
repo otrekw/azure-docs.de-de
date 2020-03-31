@@ -12,10 +12,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 02/22/2019
 ms.openlocfilehash: 7f0ef26343284b7b668e71676114586f4bec8b9e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73825755"
 ---
 # <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>Bestimmen der VNET-/Subnetzgröße für eine verwaltete Azure SQL-Datenbank-Instanz
@@ -39,7 +39,7 @@ Wenn Sie mehrere verwaltete Instanzen innerhalb des Subnetzes bereitstellen möc
 - Jede allgemeine Instanz benötigt zwei Adressen.
 - Jede unternehmenskritisch Instanz benötigt vier Adressen.
 
-**Beispiel**: Sie planen, mit drei universellen und zwei unternehmenskritischen verwalteten Instanzen zu arbeiten. Dies bedeutet, dass Sie 5 + 3 * 2 + 2 * 4 = 19 IP-Adressen benötigen. Da IP-Adressbereiche in Zweierpotenzen definiert sind, benötigen Sie den IP-Adressbereich von 32 (2^5) IP-Adressen. Aus diesem Grund müssen Sie das Subnetz mit der Subnetzmaske /27 reservieren.
+**Beispiel**: Sie planen, mit drei universelle und zwei unternehmenskritischen verwalteten Instanzen zu arbeiten. Dies bedeutet, dass Sie 5 + 3 * 2 + 2 * 4 = 19 IP-Adressen benötigen. Da IP-Adressbereiche in Zweierpotenzen definiert sind, benötigen Sie den IP-Adressbereich von 32 (2^5) IP-Adressen. Aus diesem Grund müssen Sie das Subnetz mit der Subnetzmaske /27 reservieren.
 
 > [!IMPORTANT]
 > Die oben gezeigte Berechnung wird mit weiteren Verbesserungen demnächst veralten.

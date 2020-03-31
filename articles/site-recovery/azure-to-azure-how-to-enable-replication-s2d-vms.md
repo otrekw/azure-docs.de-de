@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
 ms.openlocfilehash: 9f394fa8d618c97d74a47ff6e42a002f177cf7d9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75973666"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Replizieren von virtuellen Azure-Computern mit direkten Speicherplätzen in eine andere Region
@@ -24,7 +24,7 @@ In diesem Artikel wird beschrieben, wie Sie die Notfallwiederherstellung von vir
 
 ## <a name="disaster-recovery-with-storage-spaces-direct"></a>Notfallwiederherstellung mit direkten Speicherplätzen
 
-In einem typischen Szenario verfügen Sie über einen VM-Gastcluster in Azure für eine höhere Resilienz einer Anwendung, z.b. Scale Out File Server. Obwohl dies eine höhere Verfügbarkeit der Anwendung ermöglicht, möchten Sie diese Anwendung dennoch mithilfe von Site Recovery gegen alle Ausfälle auf Regionsebene schützen. Mit Site Recovery werden die Daten von einer Region in einer anderen Azure-Region repliziert, und der Cluster wird bei einem Ausfall in der Notfallwiederherstellungsregion verwendet.
+In einem typischen Szenario verfügen Sie über einen VM-Gastcluster in Azure für eine höhere Resilienz einer Anwendung, z. B. Dateiserver mit horizontaler Skalierung. Obwohl dies eine höhere Verfügbarkeit der Anwendung ermöglicht, möchten Sie diese Anwendung dennoch mithilfe von Site Recovery gegen alle Ausfälle auf Regionsebene schützen. Mit Site Recovery werden die Daten von einer Region in einer anderen Azure-Region repliziert, und der Cluster wird bei einem Ausfall in der Notfallwiederherstellungsregion verwendet.
 
 Die folgende Abbildung zeigt einen Azure-VM-Failovercluster mit zwei Knoten, der direkte Speicherplätze verwendet.
 

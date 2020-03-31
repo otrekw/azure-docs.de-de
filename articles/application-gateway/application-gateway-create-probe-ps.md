@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 1fef24f4065ca6fc749f35a07143487e049ee6ea
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74075275"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Erstellen eines benutzerdefinierten Tests für Azure Application Gateway mithilfe von PowerShell für Azure-Ressourcen-Manager
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](application-gateway-create-probe-portal.md)
+> * [Azure portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Klassische Azure PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -197,5 +197,5 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich über das Konfigurieren der SSL-Auslagerung unter: [Konfigurieren der SSL-Auslagerung](application-gateway-ssl-arm.md)
+Informieren Sie sich unter [Konfigurieren der SSL-Auslagerung](application-gateway-ssl-arm.md) über das Konfigurieren der SSL-Auslagerung.
 

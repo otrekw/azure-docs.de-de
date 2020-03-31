@@ -9,10 +9,10 @@ ms.topic: article
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
 ms.openlocfilehash: e41be4b76245f2567015eb0ede317830120ee61a
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75549484"
 ---
 # <a name="cloud-provisioning-troubleshooting"></a>Problembehandlung bei der Cloudbereitstellung
@@ -44,7 +44,7 @@ Diese Punkte können Sie im Azure-Portal und auf dem lokalen Server überprüfen
 Führen Sie die folgenden Schritte aus, um zu überprüfen, ob der Agent von Azure erkannt wird und fehlerfrei funktioniert:
 
 1. Melden Sie sich beim Azure-Portal an.
-1. Wählen Sie auf der linken Seite **Azure Active Directory** > **Azure AD Connect** aus. Wählen Sie in der Mitte **Bereitstellung verwalten (Vorschau)** aus.
+1. Wählen Sie auf der linken Seite **Azure Active Directory** > **Azure AD Connect** aus. Wählen Sie in der Mitte **Bereitstellung verwalten (Vorschau)** aus.
 1. Wählen Sie auf dem Bildschirm **Azure AD-Bereitstellung (Vorschau)** die Option **Alle Agents überprüfen** aus.
 
    ![Option „Alle Agents überprüfen“](media/how-to-install/install7.png)</br>

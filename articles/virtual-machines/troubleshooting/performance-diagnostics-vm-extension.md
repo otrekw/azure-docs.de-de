@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 6f104fc6513874bfef5f4bf9fe7f536c3e3d69cf
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71057548"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Azure-VM-Erweiterung für die Leistungsdiagnose unter Windows

@@ -16,10 +16,10 @@ ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: b76ade40db1e85abc0fb42af2e6f4ab88cb092c4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75982280"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>Automatisieren von Verwaltungsaufgaben auf Azure Virtual Machines mit der SQL Server-Agent-Erweiterung (klassisch)
@@ -32,12 +32,12 @@ ms.locfileid: "75982280"
 Die Erweiterung für SQL Server-IaaS-Agent (SQLIaaSAgent) wird auf virtuellen Azure-Computern zum Automatisieren von Verwaltungsaufgaben ausgeführt. Dieses Thema bietet eine Übersicht über die Dienste, die von der Erweiterung unterstützt werden, sowie Anweisungen zu Installation, Status und Deinstallation.
 
 > [!IMPORTANT] 
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../../../azure-resource-manager/management/deployment-models.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Die Resource Manager-Version dieses Artikels finden Sie unter [SQL Server-Agent-Erweiterung für virtuelle SQL Server-Computer (Resource Manager)](../sql/virtual-machines-windows-sql-server-agent-extension.md).
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../../../azure-resource-manager/management/deployment-models.md). Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Die Resource Manager-Version dieses Artikels finden Sie unter [SQL Server-Agent-Erweiterung für virtuelle SQL Server-Computer (Resource Manager)](../sql/virtual-machines-windows-sql-server-agent-extension.md).
 
 ## <a name="supported-services"></a>Unterstützte Dienste
 Die Erweiterung für SQL Server-IaaS-Agent unterstützt die folgenden Verwaltungsaufgaben:
 
-| Verwaltungsfeature | Beschreibung |
+| Verwaltungsfeature | BESCHREIBUNG |
 | --- | --- |
 | **SQL – Automatisierte Sicherung** |Dieser Dienst automatisiert die Planung von Sicherungen für alle Datenbanken für die Standardinstanz von SQL Server auf dem virtuellen Computer. Weitere Informationen finden Sie unter [Automatisierte Sicherung für SQL Server auf virtuellen Azure-Computern (klassisch)](../classic/sql-automated-backup.md). |
 | **SQL – Automatisiertes Patchen** |Mit diesem Dienst können Sie ein Wartungsfenster konfigurieren, in dem wichtige Windows-Updates für den virtuellen Computer ausgeführt werden. Auf diese Weise werden Updates für Ihre Workload während der Spitzenzeiten vermieden. Weitere Informationen finden Sie unter [Automatisiertes Patchen für SQL Server auf virtuellen Azure-Computern (klassisch)](../classic/sql-automated-patching.md). |

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 68535f70507e7a81d217f4148314a3d76ec832ea
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68727211"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Komponenten und Grenzen des Azure-Informationssystems
@@ -55,7 +55,7 @@ Das Betriebssystemteam stellt Images in Form von virtuellen Festplatten zur Verf
 
 Es gibt drei Arten von durch Fabrics verwaltete Betriebssystemimages:
 
-- Host: Ein angepasstes Betriebssystem, das auf Host-VMs ausgeführt wird.
+- Host: Ein angepasstes Betriebssystem, das auf Host-VMs ausgeführt wird
 - Nativ: Ein natives Betriebssystem, das auf Mandanten (z.B. Azure Storage) ausgeführt wird. Dieses Betriebssystem benötigt keinen Hypervisor.
 - Gast: Ein Gastbetriebssystem, das auf Gast-VMs ausgeführt wird.
 

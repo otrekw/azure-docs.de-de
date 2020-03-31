@@ -3,12 +3,12 @@ title: Neustartrichtlinie für Aufgaben mit einmaliger Ausführung
 description: Hier erfahren Sie, wie Sie mit Azure Container Instances Aufgaben ausführen, die bis zum Abschluss ausgeführt werden, z.B. bei Build-, Test- oder Image-Rendering-Aufträgen.
 ms.topic: article
 ms.date: 04/15/2019
-ms.openlocfilehash: f814b1c99827c07f8dadfb0cfd80c87a93377cdc
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 8ef4ef228038242f53abc8041470f7f596ab1157
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533454"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131496"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Ausführen von Aufgaben in Containern mit Neustartrichtlinien
 
@@ -57,7 +57,10 @@ az container create \
 Azure Container Instances startet den Container und beendet ihn dann, wenn die Anwendung (oder wie in diesem Fall das Skript) beendet wird. Wenn Azure Container Instances einen Container beendet, dessen Neustartrichtlinie `Never` oder `OnFailure` lautet, wird der Status des Containers auf **Beendet** festgelegt. Der Status eines Containers kann mithilfe des Befehls [az container show][az-container-show] überprüft werden:
 
 ```azurecli-interactive
-az container show --resource-group myResourceGroup --name mycontainer --query containers[0].instanceView.currentState.state
+az container show \
+    --resource-group myResourceGroup \
+    --name mycontainer \
+    --query containers[0].instanceView.currentState.state
 ```
 
 Beispielausgabe:

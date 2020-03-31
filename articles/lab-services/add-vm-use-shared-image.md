@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/02/2019
 ms.author: spelluru
 ms.openlocfilehash: c13b2c3d00a0ab0af0f7785feae645d907ffdaa3
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68775786"
 ---
 # <a name="add-a-vm-using-an-image-from-the-attached-shared-image-gallery"></a>Hinzufügen einer VM mit einem Image aus dem angefügten Katalog mit freigegebenen Images
@@ -38,7 +38,7 @@ Anschließend können Sie auf der Registerkarte **Erweiterte Einstellungen** der
 Nach dem Erstellen der VM können Sie zu einer anderen Version des Images wechseln. 
 
 ## <a name="resource-manager-template"></a>Resource Manager-Vorlage
-Wenn Sie mithilfe einer Azure Resource Manager-Vorlage einen virtuellen Computer mit einem Image aus dem Katalog mit freigegebenen Images erstellen, geben Sie im Abschnitt **Eigenschaften** einen Wert für **sharedImageId** an. Siehe folgendes Beispiel: 
+Wenn Sie mithilfe einer Azure Resource Manager-Vorlage einen virtuellen Computer mit einem Image aus dem Katalog mit freigegebenen Images erstellen, geben Sie im Abschnitt **Eigenschaften** einen Wert für **sharedImageId** an. Sehen Sie sich folgendes Beispiel an: 
 
 ```json
 "resources": [

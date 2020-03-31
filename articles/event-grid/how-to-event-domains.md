@@ -8,10 +8,10 @@ ms.author: babanisa
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.openlocfilehash: 1d07227249806b7d54523af66817a170c19354ee
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72786555"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Verwalten von Themen und Veröffentlichen von Ereignissen mithilfe von Ereignisdomänen
@@ -35,7 +35,7 @@ Weitere Informationen zu Ereignisdomänen finden Sie unter [Grundlegendes zu Ere
 
 Erstellen Sie zum Verwalten großer Themenmengen eine Ereignisdomäne.
 
-# <a name="azure-clitabazurecli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azurecli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azurecli)
 
 ```azurecli-interactive
 # If you haven't already installed the extension, do it now.
@@ -48,7 +48,7 @@ az eventgrid domain create \
   -l <location>
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```azurepowershell-interactive
 # If you have not already installed the module, do it now.
 # This module is required for preview features.
@@ -86,7 +86,7 @@ Das Verwalten des Zugriffs auf Themen erfolgt über eine [Rollenzuweisung](https
 
 Event Grid verfügt über zwei integrierte Rollen, mit denen Sie bestimmten Benutzern Zugriff auf verschiedene Themen innerhalb einer Domäne zuweisen können. Diese Rollen sind `EventGrid EventSubscription Contributor (Preview)` (ermöglicht das Erstellen und Löschen von Abonnements) und `EventGrid EventSubscription Reader (Preview)` (ermöglicht nur das Auflisten von Ereignisabonnements).
 
-# <a name="azure-clitabazurecli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azurecli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azurecli)
 Mit dem folgenden Azure CLI-Befehl wird `alice@contoso.com` auf das Erstellen und Löschen von Ereignisabonnements ausschließlich für das Thema `demotopic1` beschränkt:
 
 ```azurecli-interactive
@@ -96,7 +96,7 @@ az role assignment create \
   --scope /subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>/topics/demotopic1
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 Mit dem folgenden PowerShell-Befehl wird `alice@contoso.com` auf das Erstellen und Löschen von Ereignisabonnements ausschließlich für das Thema `demotopic1` beschränkt:
 
 ```azurepowershell-interactive
@@ -117,7 +117,7 @@ Das Abonnieren eines Themas in einer Domäne ist identisch mit dem Abonnieren be
 
 Normalerweise erstellt der Benutzer, dem Sie im vorherigen Abschnitt Zugriff gewährt haben, das Abonnement. Der Einfachheit halber erstellen Sie das Abonnement für diesen Artikel hier selbst. 
 
-# <a name="azure-clitabazurecli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azurecli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azurecli)
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
@@ -126,7 +126,7 @@ az eventgrid event-subscription create \
   --endpoint https://contoso.azurewebsites.net/api/updates
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```azurepowershell-interactive
 New-AzureRmEventGridSubscription `
@@ -175,7 +175,7 @@ Das Veröffentlichen von Ereignissen für eine Domäne ist identisch mit dem [Ve
 }]
 ```
 
-# <a name="azure-clitabazurecli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azurecli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azurecli)
 Um den Domänenendpunkt mit der Azure CLI abzurufen, verwenden Sie Folgendes:
 
 ```azurecli-interactive
@@ -192,7 +192,7 @@ az eventgrid domain key list \
   -n <my-domain>
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 Um den Domänenendpunkt mit der PowerShell abzurufen, verwenden Sie Folgendes:
 
 ```azurepowershell-interactive

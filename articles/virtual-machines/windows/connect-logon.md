@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 152df830f11cd5a73235559c5c5d65ced44f22fa
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842117"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231866"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer
 Verwenden Sie die Schaltfläche **Verbinden** im Azure-Portal, um eine Remotedesktopsitzung (RDP) von einem Windows-Desktop zu starten. Zunächst stellen Sie eine Verbindung mit dem virtuellen Computer her, dann melden Sie sich an.
 
 Um von einem Mac aus eine Verbindung mit einem virtuellen Windows-Computer herzustellen, müssen Sie einen RDP-Client für Mac installieren, z.B. [Microsoft-Remotedesktop](https://aka.ms/rdmac).
 
-## <a name="connect-to-the-virtual-machine"></a>Herstellen einer Verbindung mit dem virtuellen Computer
+## <a name="connect-to-the-virtual-machine"></a>Verbinden mit dem virtuellen Computer
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/), um eine Verbindung mit einem virtuellen Computer herzustellen. Suchen Sie nach **Virtuelle Computer**, und wählen Sie diese Option aus.
 2. Wählen Sie den gewünschten virtuellen Computer aus der Liste aus.
 3. Wählen Sie oben auf der Seite für den virtuellen Computer die Option **Verbinden** aus.
@@ -36,11 +36,11 @@ Um von einem Mac aus eine Verbindung mit einem virtuellen Windows-Computer herzu
     ![Screenshot einer Warnung zu einem unbekannten Herausgeber](./media/connect-logon/rdp-warn.png)
 3. Wählen Sie im Fenster **Windows-Sicherheit** die Option **Weitere Optionen** und dann **Anderes Konto verwenden** aus. Geben Sie die Anmeldeinformationen eines Kontos auf dem virtuellen Computer ein, und klicken Sie anschließend auf **OK**.
    
-     **Lokales Konto:** Hierbei handelt es sich in der Regel um den Benutzernamen und das Kennwort des lokalen Kontos, den bzw. das Sie beim Erstellen des virtuellen Computers angegeben haben. In diesem Fall ist die Domäne der Name des virtuellen Computers. Das Eingabeformat lautet *VM-Name*&#92;*Benutzername*.  
+     **Lokales Konto**: Hierbei handelt es sich in der Regel um den Benutzernamen und das Kennwort des lokalen Kontos, den bzw. das Sie beim Erstellen des virtuellen Computers angegeben haben. In diesem Fall ist die Domäne der Name des virtuellen Computers. Das Eingabeformat lautet *VM-Name*&#92;*Benutzername*.  
    
-    **Domain joined VM (In die Domäne eingebundene VM):** Wenn der virtuelle Computer einer Domäne angehört, geben Sie den Benutzernamen im Format „*Domäne*&#92;*Benutzername*“ ein. Das Konto muss außerdem entweder zur Gruppe „Administratoren“ gehören oder über Remotezugriffsrechte für den virtuellen Computer verfügen.
+    **In die Domäne eingebundener virtueller Computer**: Wenn der virtuelle Computer zu einer Domäne gehört, geben Sie den Benutzernamen im Format *Domäne*&#92;*Benutzername* ein. Das Konto muss außerdem entweder zur Gruppe „Administratoren“ gehören oder über Remotezugriffsrechte für den virtuellen Computer verfügen.
    
-    **Domänencontroller:** Wenn der virtuelle Computer ein Domänencontroller ist, geben Sie den Benutzernamen und das Kennwort eines Domänenadministratorkontos für diese Domäne an.
+    **Domänencontroller**: Wenn der virtuelle Computer ein Domänencontroller ist, geben Sie den Benutzernamen und das Kennwort eines Domänenadministratorkontos für diese Domäne an.
 4. Klicken Sie auf **Ja**, um die Identität des virtuellen Computers zu bestätigen und den Anmeldevorgang abzuschließen.
    
    ![Screenshot mit einer Meldung zur Überprüfung der Identität des virtuellen Computers](./media/connect-logon/cert-warning.png)

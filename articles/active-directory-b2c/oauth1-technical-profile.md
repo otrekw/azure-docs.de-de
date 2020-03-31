@@ -12,10 +12,10 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 7f734844859d44e66bddbc2ddd999659e52f9668
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78184076"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OAuth1-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
@@ -82,7 +82,7 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 
 Das **CryptographicKeys**-Element enthält das folgende Attribut:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | client_secret | Ja | Der geheime Clientschlüssel der Anwendung des Identitätsanbieters.   |
 

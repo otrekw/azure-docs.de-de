@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 2c3b329aa767fbe9795c90ca236008210576fe12
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 77ad8579f31ce900a67e2ba3ddc53a5b034b6d42
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514730"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454668"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
@@ -197,7 +197,7 @@ VNET-Regeln für Speicherkonten können über das Azure-Portal, über PowerShell
     ```
 
 > [!IMPORTANT]
-> Die Standardregel muss auf **Verweigern** festgelegt sein (siehe [Festlegen der Standardregel](#change-the-default-network-access-rule)). Andernfalls haben die Netzwerkregeln keine Wirkung.
+> Die Standardregel muss auf [Verweigern](#change-the-default-network-access-rule) festgelegt sein (siehe **Festlegen der Standardregel**). Andernfalls haben die Netzwerkregeln keine Wirkung.
 
 #### <a name="cliv2"></a>CLI v2
 
@@ -235,7 +235,7 @@ VNET-Regeln für Speicherkonten können über das Azure-Portal, über PowerShell
     ```
 
 > [!IMPORTANT]
-> Die Standardregel muss auf **Verweigern** festgelegt sein (siehe [Festlegen der Standardregel](#change-the-default-network-access-rule)). Andernfalls haben die Netzwerkregeln keine Wirkung.
+> Die Standardregel muss auf [Verweigern](#change-the-default-network-access-rule) festgelegt sein (siehe **Festlegen der Standardregel**). Andernfalls haben die Netzwerkregeln keine Wirkung.
 
 ## <a name="grant-access-from-an-internet-ip-range"></a>Gewähren von Zugriff aus einem Internet-IP-Adressbereich
 
@@ -317,7 +317,7 @@ IP-Netzwerkregeln für Speicherkonten können über das Azure-Portal, über Powe
     ```
 
 > [!IMPORTANT]
-> Die Standardregel muss auf **Verweigern** festgelegt sein (siehe [Festlegen der Standardregel](#change-the-default-network-access-rule)). Andernfalls haben die Netzwerkregeln keine Wirkung.
+> Die Standardregel muss auf [Verweigern](#change-the-default-network-access-rule) festgelegt sein (siehe **Festlegen der Standardregel**). Andernfalls haben die Netzwerkregeln keine Wirkung.
 
 #### <a name="cliv2"></a>CLI v2
 
@@ -354,7 +354,7 @@ IP-Netzwerkregeln für Speicherkonten können über das Azure-Portal, über Powe
     ```
 
 > [!IMPORTANT]
-> Die Standardregel muss auf **Verweigern** festgelegt sein (siehe [Festlegen der Standardregel](#change-the-default-network-access-rule)). Andernfalls haben die Netzwerkregeln keine Wirkung.
+> Die Standardregel muss auf [Verweigern](#change-the-default-network-access-rule) festgelegt sein (siehe **Festlegen der Standardregel**). Andernfalls haben die Netzwerkregeln keine Wirkung.
 
 ## <a name="exceptions"></a>Ausnahmen
 
@@ -384,14 +384,16 @@ Wenn Sie die Einstellung **Vertrauenswürdige Microsoft-Dienste zulassen** festl
 | Azure-Netzwerke         | Microsoft.Network          | Speichern und Analysieren von Protokollen des Netzwerkdatenverkehrs. [Weitere Informationen](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | Aktivieren Sie die Replikation für die Notfallwiederherstellung von virtuellen Azure-IaaS-Computern bei Verwendung von firewallfähigen Cache-, Quell- oder Zielspeicherkonten.  [Weitere Informationen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) |
 
-Die Einstellung **Hiermit erlauben Sie vertrauenswürdigen Microsoft-Diensten...** ermöglicht auch einer bestimmten Instanz der folgenden Dienste den Zugriff auf das Speicherkonto, wenn Sie der [vom System zugewiesenen verwalteten Identität](../../active-directory/managed-identities-azure-resources/overview.md) für diese Ressourceninstanz explizit [eine RBAC-Rolle zuweisen](storage-auth-aad.md#assign-rbac-roles-for-access-rights). In diesem Fall entspricht der Zugriffsbereich für die Instanz der RBAC-Rolle, die der verwalteten Identität zugewiesen ist.
+Die Einstellung **Hiermit erlauben Sie vertrauenswürdigen Microsoft-Diensten...** ermöglicht auch einer bestimmten Instanz der folgenden Dienste den Zugriff auf das Speicherkonto, wenn Sie der [vom System zugewiesenen verwalteten Identität](storage-auth-aad.md#assign-rbac-roles-for-access-rights) für diese Ressourceninstanz explizit [eine RBAC-Rolle zuweisen](../../active-directory/managed-identities-azure-resources/overview.md). In diesem Fall entspricht der Zugriffsbereich für die Instanz der RBAC-Rolle, die der verwalteten Identität zugewiesen ist.
 
-| Dienst                        | Name des Ressourcenanbieters          | Zweck            |
-| :----------------------------- | :------------------------------------- | :---------- |
+| Dienst                        | Name des Ressourcenanbieters                 | Zweck            |
+| :----------------------------- | :------------------------------------- | :----------------- |
+| Azure Cognitive Search         | Microsoft.Search/searchServices        | Ermöglicht Cognitive Search-Diensten den Zugriff auf Speicherkonten zur Indizierung, Verarbeitung und Abfrage. |
 | Azure Container Registry Tasks | Microsoft.ContainerRegistry/registries | ACR Tasks können beim Erstellen von Containerimages auf Speicherkonten zugreifen. |
 | Azure Data Factory             | Microsoft.DataFactory/factories        | Ermöglicht den Zugriff auf Speicherkonten über die ADF Runtime. |
-| Azure Logic Apps               | Microsoft.Logic/workflows              | Ermöglicht Logik-Apps den Zugriff auf Speicherkonten. [Weitere Informationen](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) |
-| Azure Machine Learning | Microsoft.MachineLearningServices      | Autorisierte Azure Machine Learning-Arbeitsbereiche schreiben Experimentausgaben, Modelle und Protokolle in Blob Storage. [Weitere Informationen](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace) |
+| Azure Data Share               | Microsoft.DataShare/accounts           | Ermöglicht den Zugriff auf Speicherkonten über Data Share. |
+| Azure Logic Apps               | Microsoft.Logic/workflows              | Ermöglicht Logik-Apps den Zugriff auf Speicherkonten. [Weitere Informationen](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity) |
+| Azure Machine Learning-Dienst | Microsoft.MachineLearningServices      | Autorisierte Azure Machine Learning-Arbeitsbereiche schreiben Experimentausgaben, Modelle und Protokolle in Blob Storage und lesen die Daten. [Weitere Informationen](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace) | 
 | Azure SQL Data Warehouse       | Microsoft.Sql                          | Ermöglicht das Importieren und Exportieren von Daten aus bestimmten SQL-Datenbankinstanzen mithilfe von PolyBase. [Weitere Informationen](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) |
 | Azure Stream Analytics         | Microsoft.StreamAnalytics             | Ermöglicht das Schreiben von Daten aus einem Streamingauftrag in den BLOB-Speicher. Diese Funktion steht derzeit als Vorschau zur Verfügung. [Weitere Informationen](/azure/stream-analytics/blob-output-managed-identity) |
 | Azure Synapse Analytics        | Microsoft.Synapse/workspaces          | Dies ermöglicht in Azure Storage den Zugriff auf Daten von Synapse Analytics. |
@@ -440,7 +442,7 @@ Netzwerkregelausnahmen können über das Azure-Portal, über PowerShell oder per
     ```
 
 > [!IMPORTANT]
-> Die Standardregel muss auf **Verweigern** festgelegt sein (siehe [Festlegen der Standardregel](#change-the-default-network-access-rule)). Andernfalls hat das Entfernen von Ausnahmen keine Wirkung.
+> Die Standardregel muss auf [Verweigern](#change-the-default-network-access-rule) festgelegt sein (siehe **Festlegen der Standardregel**). Andernfalls hat das Entfernen von Ausnahmen keine Wirkung.
 
 #### <a name="cliv2"></a>CLI v2
 
@@ -465,7 +467,7 @@ Netzwerkregelausnahmen können über das Azure-Portal, über PowerShell oder per
     ```
 
 > [!IMPORTANT]
-> Die Standardregel muss auf **Verweigern** festgelegt sein (siehe [Festlegen der Standardregel](#change-the-default-network-access-rule)). Andernfalls hat das Entfernen von Ausnahmen keine Wirkung.
+> Die Standardregel muss auf [Verweigern](#change-the-default-network-access-rule) festgelegt sein (siehe **Festlegen der Standardregel**). Andernfalls hat das Entfernen von Ausnahmen keine Wirkung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

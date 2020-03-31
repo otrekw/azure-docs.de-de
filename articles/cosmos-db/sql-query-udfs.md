@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: mjbrown
 ms.openlocfilehash: b67202da7293ef55cfe3390ca676f7944da80fba
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69614338"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Benutzerdefinierte Funktionen (UDFs) in Azure Cosmos DB
@@ -44,7 +44,7 @@ Verwenden Sie nun diese UDF in einer Abfrageprojektion. Sie müssen UDFs mit dem
     FROM Families
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [
@@ -65,7 +65,7 @@ Sie können die UDF, die mit dem Präfix `udf.` qualifiziert ist, innerhalb eine
     WHERE udf.REGEX_MATCH(Families.address.city, ".*eattle")
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [{
@@ -107,7 +107,7 @@ Hier sehen Sie ein Verwendungsbeispiel für die UDF:
     FROM Families f
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
      [
@@ -129,5 +129,5 @@ Wie im vorherigen Beispiel gezeigt, vereinen UDFs den Funktionsumfang der JavaSc
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Einführung in Azure Cosmos DB](introduction.md)
-- [Systemfunktionen](sql-query-system-functions.md)
+- [System functions (Systemfunktionen)](sql-query-system-functions.md)
 - [Aggregate](sql-query-aggregates.md)

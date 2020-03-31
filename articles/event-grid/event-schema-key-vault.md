@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 10/25/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 17404388b2b6c3fee1c6ab666f7233a66817f642
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74082873"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-key-vault-preview"></a>Azure Event Grid-Ereignisschema für Azure Key Vault (Vorschau)
@@ -30,7 +30,7 @@ Ein Azure Key Vault Konto generiert die folgenden Ereignistypen:
 | Microsoft.KeyVault.KeyNewVersionCreated | Key New Version Created (Neue Schlüsselversion erstellt) | Wird ausgelöst, wenn ein neuer Schlüssel oder eine neue Schlüsselversion erstellt wird. |
 | Microsoft.KeyVault.KeyNearExpiry | Key Near Expiry (Schlüssel läuft bald ab) | Wird ausgelöst, wenn die aktuelle Version eines Schlüssels demnächst abläuft. (Der Standardwert ist 30 Tage vor dem Ablaufdatum.) |
 | Microsoft.KeyVault.KeyExpired | Schlüssel abgelaufen | Wird ausgelöst, wenn ein Schlüssel abgelaufen ist. |
-| Microsoft.KeyVault.SecretNewVersionCreated | Secret New Version Created (Neue Version des Geheimnisses erstellt)Wird ausgelöst, wenn ein neues Geheimnis oder eine neue Geheimnisversion erstellt wird. | Triggered when a new secret or new secret version is created. |
+| Microsoft.KeyVault.SecretNewVersionCreated | Secret New Version Created (Neue Version des Geheimnisses erstellt) | Wird ausgelöst, wenn ein neues Geheimnis oder eine neue Geheimnisversion erstellt wird. |
 | Microsoft.KeyVault.SecretNearExpiry | Secret Near Expiry (Geheimnis läuft demnächst ab) | Wird ausgelöst, wenn die aktuelle Version eines Geheimnisses demnächst abläuft. (Der Standardwert ist 30 Tage vor dem Ablaufdatum.) |
 | Microsoft.KeyVault.SecretExpired | Secret Expired (Geheimnis abgelaufen) | Wird ausgelöst, wenn ein Geheimnis abgelaufen ist. |
 
@@ -65,13 +65,13 @@ Das folgende Beispiel zeigt das Schema für **Microsoft.KeyVault.SecretNewVersio
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | ---------- | ----------- |---|
-| id | Zeichenfolge | Die ID des Objekts, das dieses Ereignis ausgelöst hat. |
-| vaultName | Zeichenfolge | Der Schlüsseltresorname des Objekts, das dieses Ereignis ausgelöst hat. |
-| objectType | Zeichenfolge | Der Typ des Objekts, das dieses Ereignis ausgelöst hat. |
-| objectName | Zeichenfolge | Der Name des Objekts, das dieses Ereignis ausgelöst hat. |
-| version | Zeichenfolge | Die Version des Objekts, das dieses Ereignis ausgelöst hat. |
+| id | string | Die ID des Objekts, das dieses Ereignis ausgelöst hat. |
+| vaultName | string | Der Schlüsseltresorname des Objekts, das dieses Ereignis ausgelöst hat. |
+| objectType | string | Der Typ des Objekts, das dieses Ereignis ausgelöst hat. |
+| objectName | string | Der Name des Objekts, das dieses Ereignis ausgelöst hat. |
+| version | string | Die Version des Objekts, das dieses Ereignis ausgelöst hat. |
 | nbf | number | Das Anfangsdatum in Sekunden seit 1970-01-01t00:00:00Z für das Objekt, das dieses Ereignis ausgelöst hat. |
 | exp | number | Das Ablaufdatum in Sekunden seit 1970-01-01t00:00:00Z des Objekts, das dieses Ereignis ausgelöst hat. |
 

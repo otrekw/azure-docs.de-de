@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.openlocfilehash: a1c52007ea86ca0812c4a73a92ce81db6ddadc7b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74038022"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Visualisieren von Daten über Azure Data Explorer in Grafana
@@ -32,7 +32,7 @@ Sie benötigen Folgendes, um diesen Artikel durchzuarbeiten:
 
 * [Azure Data Explorer-Plug-In](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation) für Grafana
 
-* Ein Cluster, der die StormEvents-Beispieldaten enthält Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank](create-cluster-database-portal.md) und [Erfassen von Beispieldaten in Azure Data Explorer](ingest-sample-data.md).
+* Ein Cluster, der die StormEvents-Beispieldaten enthält Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Azure-Daten-Explorer-Clusters und einer Datenbank](create-cluster-database-portal.md) und [Erfassen von Beispieldaten in Azure-Daten-Explorer](ingest-sample-data.md).
 
     [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
@@ -109,7 +109,7 @@ Nachdem Sie den Azure Data Explorer als Datenquelle für Grafana konfiguriert ha
 
     ![Fertiges Diagramm](media/grafana/finished-graph.png)
 
-1. Wählen Sie im oberen Menü das Speichersymbol aus: ![Symbol „Speichern“](media/grafana/save-icon.png).
+1. Wählen Sie im oberen Menü das Speichersymbol aus: ![Symbol „Speichern“](media/grafana/save-icon.png)erforderlich.
 
 ## <a name="create-alerts"></a>Erstellen von Warnungen
 

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: a037ddc5a43b288349b17dc7d954991a2c634aa3
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931730"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228150"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>Verwenden des StorSimple Snapshot Managers zum Verbinden und Verwalten von StorSimple-Geräten
 ## <a name="overview"></a>Übersicht
@@ -27,11 +27,11 @@ Mithilfe der Knoten im **Bereichsfenster** des StorSimple Snapshot Managers kön
 
 ![Verbundene Geräte](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_connect_devices.png)
 
-**Abbildung 1: Verbundenes Gerät im StorSimple Snapshot Manager** 
+**Abbildung 1: Verbundenes Gerät im StorSimple Snapshot Manager** 
 
 Je nach Ihrer Auswahl für die **Ansicht** werden im Bereich **Ergebnisse** die folgenden Informationen über jedes Gerät angezeigt. (Weitere Informationen zum Konfigurieren einer Ansicht finden Sie unter [Menü "Ansicht"](storsimple-use-snapshot-manager.md#view-menu).
 
-| Ergebnisspalte | Beschreibung |
+| Ergebnisspalte | BESCHREIBUNG |
 |:--- |:--- |
 | Name |Der Name des Geräts wie im klassischen Azure-Portal konfiguriert |
 | Modell |Die Modellnummer des Geräts |
@@ -182,7 +182,7 @@ Sie müssen ein Kennwort eingeben, um ein StorSimple-Gerät im StorSimple Snapsh
 Wenn ein StorSimple-Gerät ausfällt und durch ein Austauschgerät ersetzt wird (Failover), gehen Sie folgendermaßen vor, um eine Verbindung mit dem neuen Gerät herzustellen und die zugehörigen Sicherungen anzuzeigen.
 
 #### <a name="to-connect-to-a-new-device-after-failover"></a>So stellen Sie nach einem Failover eine Verbindung mit einem neuen Gerät her
-1. Konfigurieren Sie die iSCSI-Verbindung mit dem neuen Gerät neu. Anweisungen hierzu finden Sie unter „Schritt 7: Bereitstellen, Initialisieren und Formatieren eines Volumes“ in [Bereitstellen lokaler StorSimple-Geräte](storsimple-8000-deployment-walkthrough-u2.md).
+1. Konfigurieren Sie die iSCSI-Verbindung mit dem neuen Gerät neu. Anweisungen hierzu finden Sie unter "Schritt 7: Bereitstellen, Initialisieren und Formatieren eines Volumes" in [Bereitstellen lokaler StorSimple-Geräte](storsimple-8000-deployment-walkthrough-u2.md).
 
 > [!NOTE]
 > Verfügt das neue StorSimple-Gerät über dieselbe IP-Adresse wie das alte, können Sie eventuell die alte Konfiguration verwenden.
@@ -204,7 +204,7 @@ Wenn ein StorSimple-Gerät ausfällt und durch ein Austauschgerät ersetzt wird 
    2. Wählen Sie im Fenster **Dienste** den **Microsoft StorSimple-Verwaltungsdienst**.
    3. Klicken Sie im rechten Bereich unter **Microsoft StorSimple-Verwaltungsdienst** auf **Dienst neu starten**.
 4. Starten Sie StorSimple Snapshot Manager.
-5. Um das neue StorSimple-Gerät zu konfigurieren, führen Sie die Schritte unter „Schritt 2: Herstellen einer Verbindung mit einem StorSimple-Gerät“ unter [Bereitstellen von StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md) aus.
+5. Um das neue StorSimple-Gerät zu konfigurieren, führen Sie die Schritte unter „Schritt 2: Herstellen einer Verbindung mit einem StorSimple-Gerät“ in [Bereitstellen des StorSimple Snapshot Managers](storsimple-snapshot-manager-deployment.md)aus.
 6. Klicken Sie im Fensterbereich **Bereich** mit der rechten Maustaste auf den Knoten der obersten Ebene (im Beispiel „StorSimple Snapshot Manager“), und klicken Sie dann auf **Importanzeige umschalten**. 
 7. Es wird eine Meldung angezeigt, wenn die importierten Volumegruppen und Sicherungen im StorSimple Snapshot Manager angezeigt werden. Klicken Sie auf **OK**.
 
