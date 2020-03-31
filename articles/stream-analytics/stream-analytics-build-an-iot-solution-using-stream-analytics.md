@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: f506cc526a824d45ae2d6b7a75e1c1a99dae4d64
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75426444"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Erstellen einer IoT-Lösung mithilfe von Stream Analytics
@@ -282,10 +282,10 @@ Beispielausgabe:
     }
 ```
 
-## <a name="scale-out-the-job"></a>Horizontales Hochskalieren des Auftrags
+## <a name="scale-out-the-job"></a>Aufskalieren des Auftrags
 Azure Stream Analytics ist für die elastische Skalierung ausgelegt, damit große Datenmengen verarbeitet werden können. Die Azure Stream Analytics-Abfrage kann eine **PARTITION BY**-Klausel verwenden, um das System darauf hinzuweisen, dass für diesen Schritt horizontal hochskaliert wird. **PartitionId** ist eine spezielle Spalte, die vom System hinzugefügt wurde und mit der Partitions-ID der Eingabe (Event Hub) übereinstimmt.
 
-Ändern Sie die Abfragesyntax in den folgenden Code, um die Abfrage für Partitionen horizontal hochzuskalieren:
+Ändern Sie die Abfragesyntax in den folgenden Code, um die Abfrage für Partitionen aufzuskalieren:
 ```sql
 SELECT TollId, System.Timestamp AS WindowEnd, COUNT(*)AS Count
 INTO CosmosDB
@@ -295,7 +295,7 @@ PARTITION BY PartitionId
 GROUP BY TUMBLINGWINDOW(minute,3), TollId, PartitionId
 ```
 
-Skalieren Sie den Streamingauftrag wie folgt auf mehr Streamingeinheiten zentral hoch:
+Skalieren Sie den Streamingauftrag wie folgt auf mehr Streamingeinheiten hoch:
 
 1. **Beenden** Sie den aktuellen Auftrag.
 
@@ -322,6 +322,6 @@ Sie können auf die **Aktivitätsprotokolle** auch über das Dashboard für Auft
 3. Wählen Sie die Option **Ressourcengruppe löschen**. Geben Sie den Namen der Ressourcengruppe ein, um den Löschvorgang zu bestätigen.
 
 ## <a name="conclusion"></a>Zusammenfassung
-In dieser Lösung haben Sie eine Einführung in den Azure Stream Analytics-Dienst erhalten. Es wurde gezeigt, wie Sie Eingaben und Ausgaben für den Stream Analytics-Auftrag konfigurieren. Anhand des Mautdatenszenarios wurden die häufigsten Probleme erläutert, die im Bereich der Daten in Bewegung vorkommen, und es wurde aufgezeigt, wie diese mithilfe von einfachen SQL-ähnlichen Abfragen in Azure Stream Analytics behoben werden können. In der Lösung wurden SQL-Erweiterungskonstrukte für die Arbeit mit temporären Datenströmen beschrieben. Es wurde veranschaulicht, wie Sie Datenströme verknüpfen, den Datenstrom um statische Referenzdaten erweitern und eine Abfrage horizontal hochskalieren, um einen höheren Durchsatz zu erzielen.
+In dieser Lösung haben Sie eine Einführung in den Azure Stream Analytics-Dienst erhalten. Es wurde gezeigt, wie Sie Eingaben und Ausgaben für den Stream Analytics-Auftrag konfigurieren. Anhand des Mautdatenszenarios wurden die häufigsten Probleme erläutert, die im Bereich der Daten in Bewegung vorkommen, und es wurde aufgezeigt, wie diese mithilfe von einfachen SQL-ähnlichen Abfragen in Azure Stream Analytics behoben werden können. In der Lösung wurden SQL-Erweiterungskonstrukte für die Arbeit mit temporären Datenströmen beschrieben. Es wurde veranschaulicht, wie Sie Datenströme verknüpfen, den Datenstrom um statische Referenzdaten erweitern und eine Abfrage aufskalieren, um einen höheren Durchsatz zu erzielen.
 
 Die Lösung ist zwar eine gute Einführung, aber bei Weitem nicht erschöpfend. Weitere Abfragemuster mit der SAQL-Sprache finden Sie unter [Abfragebeispiele für gängige Stream Analytics-Verwendungsmuster](stream-analytics-stream-analytics-query-patterns.md).

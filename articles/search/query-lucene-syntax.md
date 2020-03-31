@@ -20,11 +20,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: d35c96657f48905f37c9ebe246d81ebb9545cf27
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149880"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236902"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Lucene-Abfragesyntax in Azure Cognitive Search
 
@@ -65,7 +65,7 @@ Weitere Beispiele finden Sie unter [Beispiele für die Lucene-Abfragesyntax zum 
 > [!NOTE]  
 >  Azure Cognitive Search unterstützt darüber hinaus die [einfache Abfragesyntax](query-simple-syntax.md), eine unkomplizierte und stabile Abfragesprache, die für die einfache Schlüsselwortsuche verwendet werden kann.  
 
-##  <a name="bkmk_syntax"></a> Grundlagen der Syntax  
+##  <a name="syntax-fundamentals"></a><a name="bkmk_syntax"></a> Grundlagen der Syntax  
  Die folgenden Syntaxgrundlagen gelten für alle Abfragen mit der Lucene-Syntax.  
 
 ### <a name="operator-evaluation-in-context"></a>Operatorauswertung im Kontext
@@ -99,7 +99,7 @@ Die Feldgruppierung funktioniert ähnlich, beschränkt die Gruppierung jedoch au
 ### <a name="searchmode-parameter-considerations"></a>Überlegungen zu SearchMode-Parametern  
  Die in [Einfache Abfragesyntax in Azure Cognitive Search](query-simple-syntax.md) beschriebene Auswirkung von `searchMode` auf Abfragen gilt auch für die Lucene-Abfragesyntax. Insbesondere kann die Verwendung von `searchMode` in Verbindung mit NOT-Operatoren zu Abfrageergebnissen führen, die ungewöhnlich erscheinen, wenn Sie die Auswirkungen des Parameters nicht verstanden haben. Wenn Sie den Standardwert `searchMode=any` beibehalten und einen NOT-Operator verwenden, wird der Vorgang als OR-Aktion berechnet, sodass „"New York" NOT "Seattle"“ alle Städte zurückgibt, die nicht Seattle sind.  
 
-##  <a name="bkmk_boolean"></a> Boolesche Operatoren (AND, OR, NOT) 
+##  <a name="boolean-operators-and-or-not"></a><a name="bkmk_boolean"></a> Boolesche Operatoren (AND, OR, NOT) 
  Geben Sie boolesche Operatoren in Textform (AND, OR, NOT) immer in Großbuchstaben an.  
 
 ### <a name="or-operator-or-or-"></a>OR-Operator `OR` oder `||`
@@ -119,13 +119,13 @@ Der NOT-Operator ist ein Ausrufezeichen oder ein Minuszeichen. Beispiel: `wifi !
 
 `searchMode=all` erhöht die Genauigkeit der Abfragen, da weniger Ergebnisse einbezogen werden, und wird standardmäßig als „AND NOT“ interpretiert. Beispielsweise findet `wifi -luxury` Dokumente, die den Begriff `wifi` enthalten und den Begriff `luxury` nicht enthalten. Dies ist wohl ein intuitiveres Verhalten für den „-“-Operator. Wenn Sie nicht die Trefferquote, sondern die Genauigkeit der Suche optimieren möchten *und* Ihre Benutzer häufig den `-`-Operator bei der Suche verwenden, sollten Sie daher die Verwendung von `searchMode=all` anstelle von `searchMode=any` in Betracht ziehen.
 
-##  <a name="bkmk_querysizelimits"></a> Einschränkungen der Abfragegröße  
+##  <a name="query-size-limitations"></a><a name="bkmk_querysizelimits"></a> Einschränkungen der Abfragegröße  
  Die Größe der Abfragen, die Sie an Azure Cognitive Search senden können, ist begrenzt. Insbesondere können Sie maximal 1.024 Klauseln (durch AND, OR usw. getrennte Ausdrücke) verwenden. Für die Größe der einzelnen Begriffe in einer Abfrage gilt zudem ein Grenzwert von ungefähr 32 KB. Wenn Ihre Anwendung programmgesteuert Suchabfragen generiert, sollten Sie durch den Anwendungsentwurf sicherstellen, dass sie keine Abfragen unbegrenzter Größe erzeugt.  
 
-##  <a name="bkmk_searchscoreforwildcardandregexqueries"></a> Bewerten von Platzhalterabfragen und Abfragen mit regulären Ausdrücken
+##  <a name="scoring-wildcard-and-regex-queries"></a><a name="bkmk_searchscoreforwildcardandregexqueries"></a> Bewerten von Platzhalterabfragen und Abfragen mit regulären Ausdrücken
  Azure Cognitive Search verwendet für Textabfragen die häufigkeitsbasierte Bewertung ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)). Für Platzhalterabfragen und Abfragen mit regulären Ausdrücken, bei denen die Anzahl von Begriffen groß sein kann, wird der Häufigkeitsfaktor jedoch ignoriert. Dadurch wird verhindert, dass Übereinstimmungen für seltenere Begriffe bei der Rangzuweisung bevorzugt behandelt werden. Alle Übereinstimmungen werden bei Platzhalterabfragen und Abfragen mit regulären Ausdrücken gleich behandelt.
 
-##  <a name="bkmk_fields"></a>Feldbezogene Suche  
+##  <a name="fielded-search"></a><a name="bkmk_fields"></a>Feldbezogene Suche  
 Sie können einen feldbezogenen Suchvorgang mit der `fieldName:searchExpression`-Syntax definieren, wobei es sich bei dem Suchausdruck um ein einzelnes Wort, einen einfachen Ausdruck oder einen komplexeren Ausdruck in Klammern handeln kann, optional mit booleschen Operatoren. Einige Beispiele für Änderungen sind in der folgenden Liste aufgeführt:  
 
 - genre:jazz NOT history  
@@ -139,7 +139,7 @@ Das in `fieldName:searchExpression` angegebene Feld muss ein Feld vom Typ `searc
 > [!NOTE]
 > Bei der Verwendung von feldbezogenen Suchausdrücken brauchen Sie den Parameter `searchFields` nicht zu verwenden, da in jedem feldbezogenen Suchausdruck explizit ein Feldname angegeben ist. Allerdings können Sie den Parameter `searchFields` trotzdem verwenden, wenn Sie eine Abfrage ausführen möchten, bei der einige Teile auf ein bestimmtes Feld beschränkt sind, der Rest sich jedoch auf mehrere Felder beziehen kann. Zum Beispiel würde `jazz` in der Abfrage `search=genre:jazz NOT history&searchFields=description` nur mit dem Feld `genre`, und `NOT history` mit dem Feld `description` abgeglichen werden. Der in `fieldName:searchExpression` angegebene Feldname hat immer Vorrang vor dem Parameter `searchFields`, weshalb `genre` in diesem Beispiel nicht in den Parameter `searchFields` aufgenommen werden muss.
 
-##  <a name="bkmk_fuzzy"></a> Fuzzysuche  
+##  <a name="fuzzy-search"></a><a name="bkmk_fuzzy"></a> Fuzzysuche  
  Bei einer Fuzzysuche werden Übereinstimmungen in Ausdrücken gefunden, die ähnlich aufgebaut sind. Laut [Lucene-Dokumentation](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) basiert die Fuzzysuche auf der [Damerau-Levenshtein-Distanz](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance). Durch eine Fuzzysuche kann ein Begriff auf bis zu 50 Begriffe erweitert werden, die den Distanzkriterien entsprechen. 
 
  Verwenden Sie für eine Fuzzysuche das Tildezeichen „~“ am Ende eines einzelnen Worts mit einem optionalen Parameter, einer Zahl zwischen 0 und 2 (Standardwert), der die Edit-Distanz angibt. Beispielsweise würden bei „blue~“ oder „blue~1“ die Werte „blue“, „blues“ und „glue“ zurückgegeben.
@@ -147,23 +147,23 @@ Das in `fieldName:searchExpression` angegebene Feld muss ein Feld vom Typ `searc
  Die Fuzzysuche kann nur auf Begriffe, nicht auf Ausdrücke, angewendet werden. Sie können aber die Tilde an jeden Begriff in einem mehrteiligen Namen oder Ausdruck einzeln anfügen. So würde beispielsweise „Unviersty~ of~ „Wshington~“ mit „University of Washington“ übereinstimmen.
  
 
-##  <a name="bkmk_proximity"></a> NEAR-Suche  
+##  <a name="proximity-search"></a><a name="bkmk_proximity"></a> NEAR-Suche  
  NEAR-Suchen werden verwendet, um Begriffe zu suchen, die in einem Dokument nahe beieinander liegen. Fügen Sie ein Tildesymbol „~“ Symbol am Ende eines Ausdrucks ein, gefolgt von der Anzahl der Wörter, die den NEAR-Bereich bilden. Beispielsweise finden Sie mit der Abfrage `"hotel airport"~5` die Begriffe „hotel“ und „airport“, wenn sie in einem Abstand von fünf Wörtern voneinander in einem Dokument vorkommen.  
 
 
-##  <a name="bkmk_termboost"></a> Begriffsverstärkung  
+##  <a name="term-boosting"></a><a name="bkmk_termboost"></a> Begriffsverstärkung  
  Die Begriffsverstärkung (Term Boosting) bezieht sich auf das Höherbewerten eines Dokuments, wenn es den verstärkten Begriff enthält, im Verhältnis zu Dokumenten, die den Begriff nicht enthalten. Dies unterscheidet sich insofern von Bewertungsprofilen, als dass bei Bewertungsprofilen bestimmte Felder statt bestimmter Begriffe verstärkt werden.  
 
 Im folgenden Beispiel werden die Unterschiede veranschaulicht. Angenommen, Sie haben ein Bewertungsprofil, das Übereinstimmungen in einem bestimmten Feld verstärkt, beispielsweise *genre* im [musicstoreindex-Beispiel](index-add-scoring-profiles.md#bkmk_ex). Mit der Begriffsverstärkung könnten Sie bestimmte Suchbegriffe noch höher bewerten als andere. Mit `rock^2 electronic` werden beispielsweise Dokumente, die die Suchbegriffe im Feld „genre“ enthalten, höher eingestuft als andere durchsuchbare Felder im Index. Darüber hinaus wird Dokumenten, die den Suchbegriff *rock* enthalten, aufgrund des Werts für die Begriffsverstärkung (2) ein höherer Rang zugewiesen als Dokumenten mit dem anderen Suchbegriff *electronic*.  
 
  Verwenden Sie zum Verstärken eines Begriffs das Caretzeichen „^“ mit einem Verstärkungsfaktor (einer Zahl) am Ende des Begriffs, nach dem Sie suchen. Sie können auch Ausdrücke verstärken. Je höher der Verstärkungsfaktor, desto relevanter wird der Begriff im Verhältnis zu anderen Suchbegriffen. Der Standardverstärkungsfaktor ist 1. Der Verstärkungsfaktor muss positiv sein, kann aber kleiner als 1 sein (z. B. 0.20).  
 
-##  <a name="bkmk_regex"></a> Suche mit regulären Ausdrücken  
+##  <a name="regular-expression-search"></a><a name="bkmk_regex"></a> Suche mit regulären Ausdrücken  
  Bei einer Suche mit regulärem Ausdruck werden Übereinstimmungen basierend auf dem Inhalt zwischen Schrägstrichen „/“ gefunden, wie in der [RegExp-Klasse](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)dokumentiert.  
 
  Geben Sie beispielsweise `/[mh]otel/` an, um nach Dokumenten zu suchen, die das Wort „motel“ oder „hotel“ enthalten.  Suchen mit regulären Ausdrücken werden mit einzelnen Wörtern abgeglichen.   
 
-##  <a name="bkmk_wildcard"></a> Platzhaltersuche  
+##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a> Platzhaltersuche  
  Sie können die allgemein bekannte Syntax für die Platzhaltersuche nach mehreren (*) oder einzelnen (?) Zeichen verwenden. Beachten Sie, dass der Lucene-Abfrageparser die Verwendung dieser Symbole bei einem einzelnen Begriff, nicht bei einem Ausdruck, unterstützt.  
 
  Geben Sie beispielsweise „note*“ an, um nach Dokumenten zu suchen, die Wörter mit der Vorsilbe „note“ (z. B. „Notebook“ oder „Notepad“) enthalten.  

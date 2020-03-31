@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: 86e869bc08552ea11728c508486a4784eccf4042
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77462355"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Sammeln und Analysieren von Protokolldaten für Azure Cognitive Search
@@ -102,11 +102,11 @@ Die folgende Tabelle ist eine partielle Liste häufiger Felder für die Diagnose
 | Name | type | Beispiel | Notizen |
 | --- | --- | --- | --- |
 | timeGenerated |datetime |"2018-12-07T00:00:43.6872559Z" |Zeitstempel des Vorgangs |
-| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
-| operationName |string |„Query.Search“ |Name des Vorgangs |
-| operationVersion |string |"2019-05-06" |Die verwendete API-Version |
-| category |string |„OperationLogs“ |Konstante |
-| resultType |string |„Success“ |Mögliche Werte: Erfolgreich oder Fehler |
+| resourceId |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
+| operationName |Zeichenfolge |„Query.Search“ |Name des Vorgangs |
+| operationVersion |Zeichenfolge |"2019-05-06" |Die verwendete API-Version |
+| category |Zeichenfolge |„OperationLogs“ |Konstante |
+| resultType |Zeichenfolge |„Success“ |Mögliche Werte: Erfolgreich oder Fehler |
 | resultSignature |INT |200 |HTTP-Ergebniscode |
 | durationMS |INT |50 |Dauer des Vorgangs in Millisekunden. |
 | properties |Objekt (object) |Siehe hierzu die folgende Tabelle. |Objekt, das vorgangsspezifische Daten enthält |
@@ -117,10 +117,10 @@ Die folgenden Eigenschaften gelten speziell für Azure Cognitive Search.
 
 | Name | type | Beispiel | Notizen |
 | --- | --- | --- | --- |
-| Description_s |string |„GET-/indexes('content')/docs“ |Endpunkt des Vorgangs |
+| Description_s |Zeichenfolge |„GET-/indexes('content')/docs“ |Endpunkt des Vorgangs |
 | Documents_d |INT |42 |Anzahl von verarbeiteten Dokumenten |
-| IndexName_s |string |„test-index“ |Name des Indexes, der dem Vorgang zugeordnet ist |
-| Query_s |string |"?search=AzureSearch&$count=true&api-version=2019-05-06" |Die Abfrageparameter |
+| IndexName_s |Zeichenfolge |„test-index“ |Name des Indexes, der dem Vorgang zugeordnet ist |
+| Query_s |Zeichenfolge |"?search=AzureSearch&$count=true&api-version=2019-05-06" |Die Abfrageparameter |
 
 ## <a name="metrics-schema"></a>Metrikenschema
 
@@ -128,15 +128,15 @@ Metriken werden für Abfrageanforderungen erfasst und in Intervallen von einer M
 
 | Name | type | Beispiel | Notizen |
 | --- | --- | --- | --- |
-| resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
-| metricName |string |„Latency“ |Der Name der Metrik |
+| resourceId |Zeichenfolge |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |Ihre Ressourcen-ID |
+| metricName |Zeichenfolge |„Latency“ |Der Name der Metrik |
 | time |datetime |"2018-12-07T00:00:43.6872559Z" |Der Zeitstempel des Vorgangs |
 | average |INT |64 |Der Durchschnittswert der unformatierten Stichproben im Metrikzeitintervall, Einheiten in Sekunden oder Prozentsatz, abhängig von der Metrik. |
 | minimum |INT |37 |Der Mindestwert der unformatierten Beispiele im Metrikzeitintervall, Einheiten in Sekunden. |
 | maximum |INT |78 |Der Höchstwert der unformatierten Beispiele im Metrikzeitintervall, Einheiten in Sekunden.  |
 | total |INT |258 |Der Gesamtwert der unformatierten Beispiele im Metrikzeitintervall, Einheiten in Sekunden.  |
 | count |INT |4 |Anzahl der Metriken, die innerhalb des Ein-Minuten-Intervalls von einem Knoten an das Protokoll ausgegeben werden.  |
-| timegrain |string |„PT1M“ |Das Aggregationsintervall der Metrik in ISO 8601. |
+| timegrain |Zeichenfolge |„PT1M“ |Das Aggregationsintervall der Metrik in ISO 8601. |
 
 Es ist üblich, dass Abfragen in Millisekunden ausgeführt werden, sodass nur Abfragen, die als Sekunden gemessen werden, in Metriken wie QPS angezeigt werden.
 

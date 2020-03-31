@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 783b479dd3e5f429516799d7d3ea82f363cac2ec
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058176"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226746"
 ---
 # <a name="how-to-use-perfinsights"></a>Verwenden von PerfInsights
 
@@ -115,8 +115,8 @@ Informationen zu virtuellen Windows-Computern, Datenträger- oder Speicherpoolko
 | Filtertreiberinformationen                | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
 | Netstat-Ausgabe                    | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
 | Netzwerkkonfiguration             | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
-| Firewall-Konfiguration            | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
-| SQL Server-Konfiguration          | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| Firewallkonfiguration            | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
+| SQL Server-Konfiguration          | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
 | Leistungsdiagnose-Ablaufverfolgungen *  | Ja                        | Ja                                | Ja                      | Ja                  | Ja                  |
 | Leistungsindikator-Ablaufverfolgung **      |                            |                                    | Ja                      |                      | Ja                  |
 | SMB-Indikatorablaufverfolgung **              |                            |                                    |                          | Ja                  |                      |

@@ -6,16 +6,15 @@ services: sql-database-edge
 ms.service: sql-database-edge
 ms.subservice: machine-learning
 ms.topic: conceptual
-author: ronychatterjee
-ms.author: achatter
-ms.reviewer: davidph
-ms.date: 11/07/2019
-ms.openlocfilehash: bdb602598f3d8b4aaed5d6061542d540a82ebc75
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+author: dphansen
+ms.author: davidph
+ms.date: 03/26/2020
+ms.openlocfilehash: 7813a08b6b18e517b81e8c4bfac660d198eba7f7
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114597"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366274"
 ---
 # <a name="machine-learning-and-ai-with-onnx-in-sql-database-edge-preview"></a>Maschinelles Lernen und KI mit ONNX in SQL Database Edge (Vorschauversion)
 

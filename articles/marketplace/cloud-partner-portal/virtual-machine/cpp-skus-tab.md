@@ -1,23 +1,22 @@
 ---
 title: Registerkarte für VM-SKUs im Cloud-Partnerportal für Azure Marketplace
 description: Enthält eine Beschreibung der Registerkarte „SKUs“, die zum Erstellen eines VM-Angebots im Azure Marketplace verwendet wird.
-services: Azure, Marketplace, Cloud Partner Portal, virtual machine
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: pabutler
-ms.openlocfilehash: 101f928e296d0b48b4e077676393772829aa76ab
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 49f1de5128325b2884ea76b010727be45f1b195d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808964"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288885"
 ---
 # <a name="virtual-machine-skus-tab"></a>Registerkarte für VM-SKUs
 
-Mit der Registerkarte **SKUs** auf der Seite **Neues Angebot** können Sie eine oder mehrere SKUs erstellen und Ihrem neuen Angebot zuordnen.  Mit unterschiedlichen SKUs kann eine Lösung nach Featuregruppen, VM-Imagetypen, Durchsatz oder Skalierbarkeit, Abrechnungsmodellen oder einem anderen Merkmal unterschieden werden.
+Auf der Registerkarte **SKUs** auf der Seite **Neues Angebot** können Sie eine oder mehrere SKUs erstellen und Ihrem neuen Angebot zuordnen.  Mit unterschiedlichen SKUs kann eine Lösung nach Featuregruppen, VM-Imagetypen, Durchsatz oder Skalierbarkeit, Abrechnungsmodellen oder einem anderen Merkmal unterschieden werden.
 
 
 ## <a name="create-a-sku"></a>SKU erstellen
@@ -70,9 +69,9 @@ In der folgenden Tabelle werden der Zweck, der Inhalt und die Formatierung diese
 
 Beim oben beschriebenen Preismodell handelt es sich um eine grundlegende Beschreibung.  Es werden laufend Änderungen vorgenommen, und es können sich Auswirkungen aufgrund von lokalen oder regionalen Steuerbestimmungen und Microsoft-Preisrichtlinien ergeben. 
 
-### <a name="new-core-sizes-added-on-722019"></a>Neue Kerngrößen wurden am 2. Juli 2019 hinzugefügt
+### <a name="new-core-sizes-added-on-722019"></a>Neue Kerngrößen wurden am 2.7.2019 hinzugefügt.
 
-VM-Herausgeber wurden am 2. Juli 2019 über neue Preise für neue Größen virtueller Azure-Computer (basierend auf der Anzahl der Kerne) benachrichtigt.  Die neuen Preise gelten für die Kerngrößen 10, 44, 48, 60, 120, 208 und 416.  Für vorhandene VM-Angebote wurden die neue Preise für diese Kerngrößen basierend auf den aktuellen Preisen automatisch berechnet.  Herausgeber haben bis zum 1. August 2019 Zeit, die zusätzlichen Preise zu überprüfen und alle gewünschten Änderungen vorzunehmen.  Nach diesem Datum gelten die automatisch berechneten Preise für diese neuen Kerngrößen, wenn Sie nicht bereits vom Herausgeber erneut veröffentlicht wurden.
+VM-Herausgeber wurden am 2. Juli 2019 über neue Preise für neue Größen virtueller Azure-Computer (basierend auf der Anzahl der Kerne) benachrichtigt.  Die neuen Preise gelten für die Kerngrößen 10, 44, 48, 60, 120, 208 und 416.  Für vorhandene VM-Angebote wurden die neue Preise für diese Kerngrößen basierend auf den aktuellen Preisen automatisch berechnet.  Herausgeber haben bis zum 1. August 2019 Zeit, die zusätzlichen Preise zu überprüfen und alle gewünschten Änderungen vorzunehmen.  Nach diesem Datum gelten die automatisch berechneten Preise für diese neuen Kerngrößen, wenn sie nicht bereits vom Herausgeber erneut veröffentlicht wurden.
 
 
 ### <a name="simplified-currency-pricing"></a>Vereinfachte Währungspreise

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: cb17fe24339ad618229b3456ece15c206f79bdb7
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76899952"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Verschlüsselung ruhender Inhalte in Azure Cognitive Search mit von Kunden verwalteten Schlüsseln in Azure Key Vault
@@ -211,7 +211,7 @@ Dann können Sie die Anforderung zum Erstellen der Synonymzuordnung senden und a
 > Obwohl die **encryptionKey**-Eigenschaft nicht vorhandenen Indizes oder Synonymzuordnungen in der kognitiven Azure-Suche hinzugefügt werden kann, kann sie aktualisiert werden, indem unterschiedliche Werte für eines der drei Key Vault-Details angegeben werden (z.B. Aktualisierung der Schlüsselversion). Wenn Sie einen neuen Key Vault-Schlüssel oder eine neue Schlüsselversion angeben, müssen alle Indizes oder Synonymzuordnungen in der kognitiven Azure-Suche, die den Schlüssel verwenden, zunächst für die Verwendung des neuen Schlüssels oder der neuen Version geändert werden, **bevor** der vorherige Schlüssel bzw. die vorherige Version gelöscht wird. Andernfalls kann der Index oder die Synonymzuordnung nicht mehr verwendet werden, da Sie die Inhalte nicht mehr entschlüsseln können, wenn der Schlüsselzugriff verloren geht.   
 > Durch Wiederherstellen der Key Vault-Zugriffsberechtigungen zu einem späteren Zeitpunkt wird der Zugriff auf die Inhalte wiederhergestellt.
 
-## <a name="aad-app"></a> Erweitert: Verwenden einer extern verwalteten Azure Active Directory-Anwendung
+## <a name="advanced-use-an-externally-managed-azure-active-directory-application"></a><a name="aad-app"></a> Erweitert: Verwenden einer extern verwalteten Azure Active Directory-Anwendung
 
 Wenn die Verwendung einer verwalteten Identität nicht möglich ist, können Sie eine Azure Active Directory-Anwendung mit einem Sicherheitsprinzipal für Ihren Dienst für die kognitive Azure-Suche erstellen. Insbesondere unter den folgenden Bedingungen eignet sich eine verwaltete Identität nicht:
 

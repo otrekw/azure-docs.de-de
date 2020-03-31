@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: b7dbabf5be8b1f223f6e39f294b9d7022b83c4f8
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a3eae08510e57227b91deeeb7a7a608a6652cb4a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073184"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535407"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Verwenden von Version 1 der Azure-Erweiterung für benutzerdefinierte Skripts mit virtuellen Linux-Computern
 
@@ -118,17 +118,17 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 
 ### <a name="property-values"></a>Eigenschaftswerte
 
-| NAME | Wert/Beispiel | Datentyp |
+| Name | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.OSTCExtensions | string |
-| type | CustomScriptForLinux | string |
-| typeHandlerVersion | 1.5 | int |
+| publisher | Microsoft.OSTCExtensions | Zeichenfolge |
+| type | CustomScriptForLinux | Zeichenfolge |
+| typeHandlerVersion | 1.5 | INT |
 | fileUris (Beispiel) | https://github.com/MyProject/Archive/MyPythonScript.py | array |
-| commandToExecute (Beispiel) | python MyPythonScript.py \<my-param1\> | string |
+| commandToExecute (Beispiel) | python MyPythonScript.py \<my-param1\> | Zeichenfolge |
 | enableInternalDNSCheck | true | boolean |
-| storageAccountName (Beispiel) | examplestorageacct | string |
-| storageAccountKey (Beispiel) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| storageAccountName (Beispiel) | examplestorageacct | Zeichenfolge |
+| storageAccountKey (Beispiel) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | Zeichenfolge |
 
 ### <a name="property-value-details"></a>Details zu Eigenschaftswerten
 
@@ -136,7 +136,7 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 * `enableInternalDNSCheck` (optional, boolescher Wert): Der Standardwert lautet „true“. Durch Festlegen auf „false“ wird die DNS-Prüfung deaktiviert.
 * `commandToExecute` (optional; Zeichenfolge): Das auszuführende Einstiegspunktskript.
 * `storageAccountName` (optional; Zeichenfolge): Der Name des Speicherkontos.
-* `storageAccountKey` (optional; Zeichenfolge): Der Zugriffsschlüssel des Speicherkontos.
+* `storageAccountKey` (optional, Zeichenfolge): der Zugriffsschlüssel des Speicherkontos.
 
 Die folgenden Werte können in öffentlichen oder geschützten Einstellungen festgelegt werden, aber nicht in beidem.
 
@@ -274,7 +274,7 @@ Beim Ausführen der Erweiterung für benutzerdefinierte Skripts wird das Skript 
 
 Suchen Sie nach der Erweiterungsausführung. Diese sieht in etwa wie folgt aus:
 
-```text
+```output
 2018/04/26 15:29:44.835067 INFO [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Target handler state: enabled
 2018/04/26 15:29:44.867625 INFO [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] [Enable] current handler state is: notinstalled
 2018/04/26 15:29:44.959605 INFO Event: name=Microsoft.OSTCExtensions.CustomScriptForLinux, op=Download, message=Download succeeded, duration=59
@@ -305,7 +305,7 @@ Hinweise:
 
 Suchen Sie nach der jeweiligen Ausführung. Diese ähnelt der folgenden:
 
-```text
+```output
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Enable,transitioning,0,Launching the script...
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] sequence number is 0
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] setting file path is/var/lib/waagent/Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2/config/0.settings
@@ -347,7 +347,7 @@ az vm extension list -g myResourceGroup --vm-name myVM
 
 Die Ausgabe sieht in etwa wie folgt aus:
 
-```azurecli
+```output
 Name                  ProvisioningState    Publisher                   Version  AutoUpgradeMinorVersion
 --------------------  -------------------  ------------------------  ---------  -------------------------
 CustomScriptForLinux  Succeeded            Microsoft.OSTCExtensions        1.5  True

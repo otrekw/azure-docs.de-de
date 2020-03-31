@@ -7,14 +7,14 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 02/06/2019
+ms.date: 02/06/2020
 ms.author: aschhab
-ms.openlocfilehash: 699581c7ccd3f36da0cd0c1def623607b7c0a13b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 671368993acb43c0d55eca73119effa934e3cff8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589679"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230074"
 ---
 # <a name="partitioned-queues-and-topics"></a>Partitionierte Warteschlangen und Themen
 
@@ -25,7 +25,7 @@ Für Azure Service Bus werden mehrere Nachrichtenbroker verwendet, um Nachrichte
  
 Es ist nicht möglich, die Partitionierungsoption für eine vorhandene Warteschlange oder ein Thema zu ändern. Sie können die Option nur bei der Erstellung der Entität festlegen.
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 Jede partitionierte Warteschlange bzw. jedes Thema besteht aus mehreren Partitionen. Jede Partition wird in einem anderen Nachrichtenspeicher gespeichert und von einem anderen Nachrichtenbroker verarbeitet. Wenn eine Nachricht an eine partitionierte Warteschlange bzw. ein partitioniertes Thema gesendet wird, weist Service Bus die Nachricht einem der Partitionen zu. Service Bus nimmt die Auswahl willkürlich oder mithilfe eines Partitionsschlüssels vor, den der Absender angeben kann.
 
@@ -47,7 +47,7 @@ In einem Namespace des Premium-Tarifs werden Partitionierungsentitäten nicht un
 
 ### <a name="create-a-partitioned-entity"></a>Erstellen einer partitionierten Entität
 
-Es gibt mehrere Möglichkeiten, eine partitionierte Warteschlange oder ein partitioniertes Thema zu erstellen. Wenn Sie die Warteschlange oder das Thema über Ihre Anwendung erstellen, können Sie die Partitionierung für die Warteschlange oder das Thema aktivieren, indem Sie die [QueueDescription.EnablePartitioning][QueueDescription.EnablePartitioning]- bzw. [TopicDescription.EnablePartitioning-Eigenschaft][TopicDescription.EnablePartitioning] auf **TRUE** festlegen. Diese Eigenschaften müssen zum Zeitpunkt der Erstellung der Warteschlange oder des Themas festgelegt werden und sind nur in der älteren [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/)-Bibliothek verfügbar. Wie bereits erwähnt, ist es nicht möglich, diese Eigenschaften für eine vorhandene Warteschlange oder ein Thema zu ändern. Beispiel:
+Es gibt mehrere Möglichkeiten, eine partitionierte Warteschlange oder ein partitioniertes Thema zu erstellen. Wenn Sie die Warteschlange oder das Thema über Ihre Anwendung erstellen, können Sie die Partitionierung für die Warteschlange oder das Thema aktivieren, indem Sie die [QueueDescription.EnablePartitioning][QueueDescription.EnablePartitioning]- bzw. [TopicDescription.EnablePartitioning][TopicDescription.EnablePartitioning]-Eigenschaft auf **TRUE** festlegen. Diese Eigenschaften müssen zum Zeitpunkt der Erstellung der Warteschlange oder des Themas festgelegt werden und sind nur in der älteren [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/)-Bibliothek verfügbar. Wie bereits erwähnt, ist es nicht möglich, diese Eigenschaften für eine vorhandene Warteschlange oder ein Thema zu ändern. Beispiel:
 
 ```csharp
 // Create partitioned topic
@@ -128,7 +128,7 @@ Service Bus unterstützt die automatische Nachrichtenweiterleitung von und zwisc
 ## <a name="considerations-and-guidelines"></a>Aspekte und Richtlinien
 * **Features für hohe Konsistenz**: Wenn eine Entität Features wie Sitzungen, Duplikaterkennung oder die explizite Steuerung eines Partitionierungsschlüssels verwendet, werden die Messagingvorgänge immer an bestimmte Partitionen geleitet. Wenn für eine Partition hoher Datenverkehr auftritt oder der zugrunde liegende Speicher fehlerhaft ist, schlagen diese Vorgänge fehl, und die Verfügbarkeit wird reduziert. Insgesamt ist die Konsistenz trotzdem deutlich höher als bei nicht partitionierten Entitäten: Nur für eine Teilmenge des Datenverkehrs treten Probleme auf, und nicht für den gesamten Datenverkehr. Weitere Informationen hierzu finden Sie in dieser [Erläuterung von Verfügbarkeit und Konsistenz](../event-hubs/event-hubs-availability-and-consistency.md).
 * **Verwaltung**: Vorgänge wie das Erstellen, Aktualisieren und Löschen müssen für alle Partitionen der Entität durchgeführt werden. Wenn eine Partition fehlerhaft ist, kann dies zu Fehlern bei diesen Vorgängen führen. Für den Get-Vorgang müssen Informationen aus allen Partitionen aggregiert werden, z. B. die Nachrichtenanzahl. Wenn eine Partition einen Fehler aufweist, wird der Verfügbarkeitsstatus der Entität als „Eingeschränkt“ gemeldet.
-* **Nachrichtenszenarios mit geringem Volumen**: Für diese Szenarios, vor allem bei Verwendung des HTTP-Protokolls, müssen Sie ggf. mehrere Empfangsvorgänge durchführen, um alle Nachrichten zu erhalten. Für Empfangsanforderungen führt das Front-End den Empfangsvorgang für alle Partitionen durch und speichert alle empfangenen Antworten zwischen. Eine nachfolgende Empfangsanforderung derselben Verbindung profitiert von dieser Zwischenspeicherung, und die Latenzen für den Empfang sind niedriger. Wenn Sie über mehrere Verbindungen verfügen oder HTTP verwenden, wird für jede Anforderung eine neue Verbindung hergestellt. Es besteht also keine Garantie, dass sie auf demselben Knoten eintrifft. Wenn alle vorhandenen Nachrichten gesperrt sind und auf einem anderen Front-End zwischengespeichert werden, gibt der Empfangsvorgang **NULL** zurück. Nachrichten laufen nach einer gewissen Zeit ab und können von Ihnen dann erneut empfangen werden. Hierfür wird HTTP-Keep-Alive empfohlen.
+* **Nachrichtenszenarios mit geringem Volumen**: Für diese Szenarios, vor allem bei Verwendung des HTTP-Protokolls, müssen Sie ggf. mehrere Empfangsvorgänge durchführen, um alle Nachrichten zu erhalten. Für Empfangsanforderungen führt das Front-End den Empfangsvorgang für alle Partitionen durch und speichert alle empfangenen Antworten zwischen. Eine nachfolgende Empfangsanforderung derselben Verbindung profitiert von dieser Zwischenspeicherung, und die Latenzen für den Empfang sind niedriger. Wenn Sie über mehrere Verbindungen verfügen oder HTTP verwenden, wird für jede Anforderung eine neue Verbindung hergestellt. Es besteht also keine Garantie, dass sie auf demselben Knoten eintrifft. Wenn alle vorhandenen Nachrichten gesperrt sind und auf einem anderen Front-End zwischengespeichert werden, gibt der Empfangsvorgang **NULL** zurück. Nachrichten laufen nach einer gewissen Zeit ab und können von Ihnen dann erneut empfangen werden. Hierfür wird HTTP-Keep-Alive empfohlen. Wenn Partitionierung in Szenarien mit geringem Volumen verwendet wird, können Empfangsvorgänge länger als erwartet dauern. Daher wird empfohlen, in diesen Szenarien keine Partitionierung zu verwenden. Löschen Sie alle vorhandenen partitionierten Entitäten, und erstellen Sie sie mit deaktivierter Partitionierung neu.
 * **Durchsuchen/Einsehen von Nachrichten**: Nur in der älteren [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/)-Bibliothek verfügbar. [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) gibt nicht immer die Anzahl von Nachrichten zurück, die in der [MessageCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.messagecount)-Eigenschaft angegeben sind. Für dieses Verhalten gibt es zwei häufige Ursachen. Ein Grund ist, dass die aggregierte Größe der Sammlung mit Nachrichten die maximale Größe von 256 KB übersteigt. Ein weiterer Grund ist: Wenn für die Warteschlange oder das Thema die [EnablePartitioning-Eigenschaft](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning) auf **TRUE** festgelegt ist, verfügt eine Partition ggf. nicht über genügend Nachrichten, um die angeforderte Anzahl von Nachrichten abzuarbeiten. Wenn eine Anwendung eine bestimmte Anzahl von Nachrichten empfangen möchte, sollte sie im Allgemeinen mehrfach [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) aufrufen, bis die benötigte Anzahl von Nachrichten erreicht ist oder keine einzusehenden Nachrichten mehr vorhanden sind. Weitere Informationen und Codebeispiele finden Sie in der API-Dokumentation unter [QueueClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) oder [SubscriptionClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.peekbatch).
 
 ## <a name="latest-added-features"></a>Neueste Funktionen

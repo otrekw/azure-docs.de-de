@@ -1,19 +1,18 @@
 ---
 title: Azure-Tabellenspeicher | Azure Marketplace
 description: Hier erfahren Sie, wie Sie die Leadverwaltung in Azure-Tabellenspeicher konfigurieren.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.author: pabutler
-ms.openlocfilehash: 21105d72ccd288faf0fed58019e67afe2e1c9d01
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: cee28c65b97d4ac163f78b746dc7be9ee210843c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825269"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280353"
 ---
 # <a name="lead-management-instructions-for-table-storage"></a>Leadverwaltungsanleitung für Tabellenspeicher
 
@@ -133,7 +132,7 @@ In den nächsten Schritten wird eine Verbindung mit Ihrer Speichertabelle herges
    1. Geben Sie im Fenster **E-Mail senden** Informationen in die folgenden Felder ein:
 
       - **An**: Geben Sie eine E-Mail-Adresse für jede Person ein, die die Benachrichtigung erhalten soll.
-      - **Betreff**: Geben Sie einen Betreff für die E-Mail ein. Beispiel:  *Neue Leads!*
+      - **Betreff**: Geben Sie einen Betreff für die E-Mail ein. Beispiel: *Neue Leads!*
       - **Text**: Geben Sie den Text ein, der in jeder E-Mail enthalten sein soll (optional). Fügen Sie außerdem `body('Get_entities')?['value']` als Funktion zum Einfügen von Leadinformationen ein.
 
         >[!NOTE] 

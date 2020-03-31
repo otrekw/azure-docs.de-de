@@ -7,10 +7,10 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: f468cb294d79c44f92ef95437c0d88639a78b9a1
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77619501"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Häufig gestellte Fragen zu Azure Red Hat OpenShift
@@ -27,7 +27,7 @@ Nein. Aber Sie können einen Azure Red Hat OpenShift-Cluster über Peering mit e
 
 ## <a name="what-cluster-operations-are-available"></a>Welche Clustervorgänge sind verfügbar?
 
-Sie können nur die Anzahl von Computeknoten zentral hoch- oder herunterskalieren. Keine weiteren Änderungen sind an der `Microsoft.ContainerService/openShiftManagedClusters`-Ressource nach der Erstellung zulässig. Die maximale Anzahl von Computeknoten ist auf 20 beschränkt.
+Sie können nur die Anzahl von Computeknoten hoch- oder herunterskalieren. Keine weiteren Änderungen sind an der `Microsoft.ContainerService/openShiftManagedClusters`-Ressource nach der Erstellung zulässig. Die maximale Anzahl von Computeknoten ist auf 20 beschränkt.
 
 ## <a name="what-virtual-machine-sizes-can-i-use"></a>Welche Größen von virtuellen Computern kann ich verwenden?
 
@@ -139,7 +139,7 @@ ARO verwendet den Standardplaner, der mit OpenShift bereitgestellt wird. Es gibt
 
 Erweiterte/benutzerdefinierte Zeitplanung wird derzeit nicht unterstützt. Weitere Informationen hierzu finden Sie in der [Scheduling-Dokumentation](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/index.html).
 
-## <a name="if-we-scale-up-the-deployment-how-do-azure-fault-domains-map-into-pod-placement-to-ensure-all-pods-for-a-service-do-not-get-knocked-out-by-a-failure-in-a-single-fault-domain"></a>Wie werden, wenn die Bereitstellung zentral hochskaliert wird, Azure-Fehlerdomänen in der Pod-Platzierung zugeordnet, damit sichergestellt ist, dass nicht alle Pods für einen Dienst durch einen Fehler in einer einzelnen Fehlerdomäne lahmgelegt werden?
+## <a name="if-we-scale-up-the-deployment-how-do-azure-fault-domains-map-into-pod-placement-to-ensure-all-pods-for-a-service-do-not-get-knocked-out-by-a-failure-in-a-single-fault-domain"></a>Wie werden, wenn die Bereitstellung hochskaliert wird, Azure-Fehlerdomänen in der Pod-Platzierung zugeordnet, damit sichergestellt ist, dass nicht alle Pods für einen Dienst durch einen Fehler in einer einzelnen Fehlerdomäne lahmgelegt werden?
 
 Es gibt standardmäßig fünf Fehlerdomänen, wenn VM-Skalierungsgruppen in Azure verwendet werden. Jede Instanz eines virtuellen Computers in einer Skalierungsgruppe wird in einer dieser Fehlerdomänen platziert. Dadurch ist sichergestellt, dass Anwendungen, die auf den Computeknoten in einem Cluster bereitgestellt werden, in separaten Fehlerdomänen platziert werden.
 

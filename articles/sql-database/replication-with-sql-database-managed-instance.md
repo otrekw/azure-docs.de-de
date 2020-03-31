@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: 7356f627c8a85cb89f3900e1af84d5e0a7d4be17
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: 9af7b471210ca3cc69428e68aef4aafaee159344
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096204"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79299072"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurieren der Replikation in einer verwalteten Azure SQL-Datenbank-Instanzdatenbank
 
@@ -42,7 +42,6 @@ Die Transaktionsreplikation steht als Public Preview in der [verwalteten Azure S
 
 Zum Konfigurieren einer verwalteten Instanz, die als Verleger und/oder Verteiler fungieren soll, ist Folgendes erforderlich:
 
-- Die verwaltete Instanz ist derzeit nicht an einer Georeplikationsbeziehung beteiligt.
 - Die verwaltete Verlegerinstanz befindet sich in demselben virtuellen Netzwerk wie der Verteiler und der Abonnent, oder [VNET-Peering](../virtual-network/tutorial-connect-virtual-networks-powershell.md) wurde zwischen den virtuellen Netzwerken aller drei Entitäten eingerichtet. 
 - Für die Verbindung zwischen den Teilnehmern der Replikation wird SQL-Authentifizierung verwendet.
 - Ein Azure-Speicherkonto für das Arbeitsverzeichnis für die Replikation.

@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: f6e8ed5baef9b8594bb1fe03942e831fd8264a56
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113068"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Grundlegendes zu OData-Sammlungsfiltern in der kognitiven Azure-Suche
@@ -101,7 +101,7 @@ So wird `Rooms/Description` für die Volltextsuche gespeichert:
 | room | 1, 2 |
 | Standard | 1 |
 | suite | 1 |
-| view | 1 |
+| Ansicht | 1 |
 
 Im Gegensatz zum obigen Filter, der im Wesentlichen besagt, dass „Dokumente ermittelt werden sollen, in denen `Type` für ein Zimmer gleich „Deluxe Room“ (Luxuszimmer) und `BaseRate` für **dieses gleiche Zimmer** kleiner als 100 ist“, besagt die Suchabfrage, dass „Dokumente ermittelt werden sollen, in denen `Rooms/Type` den Begriff „deluxe“ und `Rooms/Description` den Begriff „city view“ (Aussicht auf die Stadt) enthält. Es gibt kein Konzept für einzelne Zimmer, deren Felder im letzteren Fall korreliert werden können.
 
@@ -189,7 +189,7 @@ Spezifische Beispiele dafür, welche Arten von Filtern zulässig sind und welche
 ## <a name="next-steps"></a>Nächste Schritte  
 
 - [Problembehandlung von OData-Sammlungsfiltern in der kognitiven Azure-Suche](search-query-troubleshoot-collection-filters.md)
-- [Filter in der kognitiven Azure-Suche](search-filters.md)
+- [Filter in Azure Cognitive Search](search-filters.md)
 - [Übersicht über die OData-Ausdruckssprache für Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
 - [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md)
 - [Suchen von Dokumenten &#40;Azure Cognitive Search-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

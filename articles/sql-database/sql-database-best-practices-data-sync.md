@@ -12,10 +12,10 @@ ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
 ms.openlocfilehash: ee929fa227cb105b73bc929c13a768aabef37ce3
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75771682"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Bewährte Methoden für die SQL-Datensynchronisierung 
@@ -27,7 +27,7 @@ Eine Übersicht über die SQL-Datensynchronisierung finden Sie unter [Synchronis
 > [!IMPORTANT]
 > Die Azure SQL-Datensynchronisierung unterstützt derzeit **keine** verwalteten Azure SQL-Datenbank-Instanzen.
 
-## <a name="security-and-reliability"></a> Sicherheit und Zuverlässigkeit
+## <a name="security-and-reliability"></a><a name="security-and-reliability"></a> Sicherheit und Zuverlässigkeit
 
 ### <a name="client-agent"></a>Client-Agent
 
@@ -52,7 +52,7 @@ Azure SQL-Datenbank unterstützt nur einen Satz von Anmeldeinformationen. Sie k�
 
 ## <a name="setup"></a>Einrichten
 
-### <a name="database-considerations-and-constraints"></a> Überlegungen und Einschränkungen für Datenbanken
+### <a name="database-considerations-and-constraints"></a><a name="database-considerations-and-constraints"></a> Überlegungen und Einschränkungen für Datenbanken
 
 #### <a name="sql-database-instance-size"></a>Größe der SQL-Datenbankinstanz
 
@@ -61,7 +61,7 @@ Legen Sie beim Erstellen einer neuen SQL-Datenbankinstanz die maximale Größe i
 > [!IMPORTANT]
 > Die SQL-Datensynchronisierung speichert mit jeder Datenbank zusätzliche Metadaten. Stellen Sie sicher, dass Sie diese Metadaten bei der Berechnung des Speicherbedarfs berücksichtigen. Der zusätzlich benötigte Platz ist abhängig von der Breite der Tabellen (schmale Tabellen benötigen beispielsweise weniger zusätzlichen Platz) sowie vom Umfang des Datenverkehrs.
 
-### <a name="table-considerations-and-constraints"></a> Überlegungen und Einschränkungen für Tabellen
+### <a name="table-considerations-and-constraints"></a><a name="table-considerations-and-constraints"></a> Überlegungen und Einschränkungen für Tabellen
 
 #### <a name="selecting-tables"></a>Auswählen von Tabellen
 
@@ -77,7 +77,7 @@ Testen Sie die anfängliche und fortlaufende Synchronisierungsleistung, bevor Si
 
 Leere Tabellen bieten zum Zeitpunkt der Initialisierung die beste Leistung. Wenn die Zieltabelle leer ist, verwendet die Datensynchronisierung Masseneinfügevorgänge zum Laden der Daten. Andernfalls vergleicht die Datensynchronisierung die einzelnen Zeilen und fügt Zeilen einzeln ein, um Konflikte zu vermeiden. Wenn die Leistung keine primäre Rolle spielt, können Sie die Synchronisierung zwischen Tabellen einrichten, die bereits Daten enthalten.
 
-### <a name="provisioning-destination-databases"></a> Bereitstellen von Zieldatenbanken
+### <a name="provisioning-destination-databases"></a><a name="provisioning-destination-databases"></a> Bereitstellen von Zieldatenbanken
 
 Die SQL-Datensynchronisierung bietet eine grundlegende automatische Datenbankbereitstellung.
 
@@ -101,7 +101,7 @@ Für die SQL-Datensynchronisierung gelten in Bezug auf die automatische Bereitst
 -   Verwenden Sie die automatische Bereitstellungsfunktion der SQL-Datensynchronisierung nur während der Testphase des Diensts.  
 -   Stellen Sie für eine Produktionsumgebung das Datenbankschema bereit.
 
-### <a name="locate-hub"></a> Standort für die Hub-Datenbank
+### <a name="where-to-locate-the-hub-database"></a><a name="locate-hub"></a> Standort für die Hub-Datenbank
 
 #### <a name="enterprise-to-cloud-scenario"></a>Unternehmen-zu-Cloud-Szenario
 
@@ -118,7 +118,7 @@ Wenden Sie die vorherigen Richtlinien auf komplexe Konfigurationen von Synchroni
 
 ## <a name="sync"></a>Synchronisierung
 
-### <a name="avoid-a-slow-and-costly-initial-synchronization"></a> Vermeiden von langsamen und teuren ersten Synchronisierungsläufen
+### <a name="avoid-slow-and-costly-initial-sync"></a><a name="avoid-a-slow-and-costly-initial-synchronization"></a> Vermeiden von langsamen und teuren ersten Synchronisierungsläufen
 
 In diesem Abschnitt wird die erste Synchronisierung einer Synchronisierungsgruppe beschrieben. Sie erfahren, wie Sie verhindern können, dass eine erste Synchronisierung zeitaufwändiger und teurer als nötig wird.
 
@@ -132,13 +132,13 @@ Falls sich die Datenbanken in unterschiedlichen Datencentern befinden, muss jede
 
 Beginnen Sie möglichst mit Daten in nur einer Datenbank der Synchronisierungsgruppe.
 
-### <a name="design-to-avoid-synchronization-loops"></a> Vermeiden von Synchronisierungsschleifen
+### <a name="design-to-avoid-sync-loops"></a><a name="design-to-avoid-synchronization-loops"></a> Vermeiden von Synchronisierungsschleifen
 
 Zu einer Synchronisierungsschleife kommt es, wenn in einer Synchronisierungsgruppe Zirkelbezüge enthalten sind. Bei diesem Szenario wird jede Änderung in einer Datenbank für die Datenbanken der Synchronisierungsgruppe endlos und in Zirkelform repliziert.   
 
 Achten Sie darauf, Synchronisierungsschleifen zu vermeiden, da sie zu einer Leistungsbeeinträchtigung und ggf. erheblichen Kostensteigerungen führen.
 
-### <a name="handling-changes-that-fail-to-propagate"></a> Änderungen, die nicht verteilt werden
+### <a name="changes-that-fail-to-propagate"></a><a name="handling-changes-that-fail-to-propagate"></a> Änderungen, die nicht verteilt werden
 
 #### <a name="reasons-that-changes-fail-to-propagate"></a>Gründe für Fehler bei der Verteilung von Änderungen
 
@@ -164,7 +164,7 @@ Prüfen Sie über das Portal und die Protokollschnittstelle regelmäßig die Int
 
 ## <a name="maintenance"></a>Wartung
 
-### <a name="avoid-out-of-date-databases-and-sync-groups"></a> Vermeiden veralteter Datenbanken und Synchronisierungsgruppen
+### <a name="avoid-out-of-date-databases-and-sync-groups"></a><a name="avoid-out-of-date-databases-and-sync-groups"></a> Vermeiden veralteter Datenbanken und Synchronisierungsgruppen
 
 Es kann vorkommen, dass eine Synchronisierungsgruppe oder eine Datenbank in einer Synchronisierungsgruppe nicht mehr aktuell ist. Synchronisierungsgruppen mit dem Status **Veraltet** funktionieren nicht mehr. Bei einer Datenbank mit dem Status **Veraltet** besteht die Gefahr von Datenverlusten. Es wird empfohlen, dieses Szenario zu vermeiden, anstatt die Wiederherstellung durchführen zu müssen.
 
@@ -189,7 +189,7 @@ Gehen Sie wie folgt vor, um veraltete Synchronisierungsgruppen zu vermeiden:
 -   Aktualisieren Sie die Fremdschlüsselwerte, um die Werte aus den nicht erfolgreichen Zeilen einzuschließen.
 -   Aktualisieren Sie die Datenwerte in der nicht erfolgreichen Zeile, sodass sie mit dem Schema oder mit den Fremdschlüsseln in der Zieldatenbank kompatibel sind.
 
-### <a name="avoid-deprovisioning-issues"></a> Vermeiden von Problemen durch die Bereitstellungsaufhebung
+### <a name="avoid-deprovisioning-issues"></a><a name="avoid-deprovisioning-issues"></a> Vermeiden von Problemen durch die Bereitstellungsaufhebung
 
 In einigen Fällen kann das Aufheben der Registrierung bei einer Datenbank mit einem Client-Agent dazu führen, dass die Synchronisierung nicht erfolgreich ist.
 
@@ -210,7 +210,7 @@ Gehen Sie wie folgt vor, wenn dieser Fall bereits eingetreten ist:
 2. Fügen Sie die Datenbank wieder den Synchronisierungsgruppen hinzu, aus denen Sie sie entfernt haben.  
 3. Stellen Sie alle betroffenen Synchronisierungsgruppen bereit. (Mit dieser Aktion wird die Datenbank bereitgestellt.)  
 
-### <a name="modifying-your-sync-group"></a> Ändern einer Synchronisierungsgruppe
+### <a name="modifying-a-sync-group"></a><a name="modifying-your-sync-group"></a> Ändern einer Synchronisierungsgruppe
 
 Versuchen Sie nicht, eine Datenbank aus einer Synchronisierungsgruppe zu entfernen und dann die Synchronisierungsgruppe zu bearbeiten, ohne zunächst eine der Änderungen bereitzustellen.
 
@@ -224,7 +224,7 @@ Bei der Synchronisierung eines komplexen Schemas kann es während der Schemaaktu
 
 #### <a name="solution"></a>Lösung
 
-Skalieren Sie Ihre Datenbank für Synchronisierungsmetadaten zentral auf eine höhere SKU (beispielsweise S3) hoch. 
+Skalieren Sie Ihre Datenbank für Synchronisierungsmetadaten auf eine höhere SKU (beispielsweise S3) hoch. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter:

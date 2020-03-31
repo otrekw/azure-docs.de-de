@@ -1,19 +1,18 @@
 ---
 title: Überprüfen des Veröffentlichungsstatus Ihres Commercial Marketplace-Angebots
 description: Überprüfen Sie den Status der Validierungs-, Zertifizierungs- und Vorschauschritte, die erforderlich sind, um ein Angebot im Microsoft Partner Center über Commercial Marketplace zu veröffentlichen.
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 14290e000d5c6251216a6b0a0fc68c8a0897210a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 012a574887d9980e0c71c3af84ff70ca8d31312c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824034"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275678"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Überprüfen des Veröffentlichungsstatus Ihres Commercial Marketplace-Angebots
 

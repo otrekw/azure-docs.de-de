@@ -16,10 +16,10 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.openlocfilehash: d887ef2ef74bb433d6e8ae7f53cd0b77f5948303
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74073345"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Erstellen eines virtuellen Computers auf der Grundlage einer spezialisierten VHD in einem Speicherkonto
@@ -240,7 +240,7 @@ Sie benötigen eine [öffentliche IP-Adresse](../../virtual-network/virtual-netw
     $pip = New-AzPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $location `
         -AllocationMethod Dynamic
     ```       
-2. Erstellen Sie die NIC. In diesem Beispiel ist der Name der NIC auf **myNicName** festgelegt. In diesem Schritt wird auch die früher erstellte Netzwerksicherheitsgruppe mit dieser NIC verknüpft.
+2. Erstellen der NIC In diesem Beispiel ist der Name der NIC auf **myNicName** festgelegt. In diesem Schritt wird auch die früher erstellte Netzwerksicherheitsgruppe mit dieser NIC verknüpft.
    
     ```powershell
     $nicName = "myNicName"
@@ -287,7 +287,7 @@ $vm = Add-AzVMDataDisk -VM $vm -Name $dataDiskName -VhdUri $dataDiskUri -Lun 1 -
 Bei Verwendung eines Speicherkontos sehen die URLs der Daten- und Betriebssystem-Datenträger wie folgt aus: `https://StorageAccountName.blob.core.windows.net/BlobContainerName/DiskName.vhd`. Sie finden dies im Portal, indem Sie zum Zielspeichercontainer wechseln, auf die kopierte Betriebssystem- oder Daten-VHD klicken und dann den Inhalt der URL kopieren.
 
 
-### <a name="complete-the-vm"></a>Fertigstellen des virtuellen Computers 
+### <a name="complete-the-vm"></a>Fertigstellen der VM 
 
 Erstellen Sie den virtuellen Computer mithilfe der soeben erstellten Konfigurationen.
 

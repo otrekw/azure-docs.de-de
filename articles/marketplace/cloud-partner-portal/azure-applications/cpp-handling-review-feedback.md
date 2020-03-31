@@ -1,19 +1,18 @@
 ---
 title: Verarbeiten von Prüfungsfeedback zu Azure-Anwendungen – Azure Marketplace
 description: In diesem Artikel wird erklärt, wie Sie Azure DevOps verwenden können, um Prüfungsfeedback zu Azure-Anwendungsangeboten für Azure Marketplace zu verarbeiten.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/05/2019
-ms.author: pabutler
-ms.openlocfilehash: ef4aff57948034fb369bd74564306b7b8674b377
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b5f290bae908ac753801eef2c9b8394ca1bb7a40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827580"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285298"
 ---
 # <a name="handling-review-feedback"></a>Verarbeiten von Prüfungsfeedback
 

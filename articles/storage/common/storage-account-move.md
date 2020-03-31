@@ -10,10 +10,10 @@ ms.date: 09/27/2019
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: 8ce949ac997ba7ee38cb057752d89f4b4d22388f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73838703"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Verschieben eines Azure Storage-Kontos in eine andere Region
@@ -47,7 +47,7 @@ Exportieren Sie zunächst eine Resource Manager-Vorlage und ändern Sie sie ansc
 
 Diese Vorlage enthält Einstellungen, die Ihr Speicherkonto beschreiben. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 So exportieren Sie eine Vorlage mithilfe des Azure-Portals
 
@@ -63,7 +63,7 @@ So exportieren Sie eine Vorlage mithilfe des Azure-Portals
 
    Diese ZIP-Datei enthält die JSON-Dateien, in denen die Vorlage und die Skripts zum Bereitstellen der Vorlage enthalten sind.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 So exportieren Sie eine Vorlage mithilfe von PowerShell
 
@@ -97,7 +97,7 @@ So exportieren Sie eine Vorlage mithilfe von PowerShell
 
 Ändern Sie die Vorlage, indem Sie den Namen und die Region des Speicherkontos ändern.
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 So stellen Sie die Vorlage mithilfe des Azure-Portals bereit
 
@@ -139,7 +139,7 @@ So stellen Sie die Vorlage mithilfe des Azure-Portals bereit
     ```
     Informationen zum Abrufen von Regionsstandortcodes finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).  Der Code für eine Region ist der Regionsname ohne Leerzeichen, **USA, Mitte** = **centralus**.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 So stellen Sie die Vorlage mithilfe von PowerShell bereit
 
@@ -180,7 +180,7 @@ So stellen Sie die Vorlage mithilfe von PowerShell bereit
 
 Stellen Sie die Vorlage bereit, um ein neues Speicherkonto in der Zielregion zu erstellen. 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Speichern Sie die Datei **template.json**.
 
@@ -194,7 +194,7 @@ Stellen Sie die Vorlage bereit, um ein neues Speicherkonto in der Zielregion zu 
 
 3. Klicken Sie auf das Kontrollkästchen **Ich stimme den oben genannten Geschäftsbedingungen zu** und dann auf die Schaltfläche **Kauf auswählen**.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. Rufen Sie die Abonnement-ID ab, für die Sie die öffentliche Ziel-IP-Adresse mit [Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0) bereitstellen möchten:
 
@@ -219,7 +219,7 @@ Einige Features werden nicht in eine Vorlage exportiert, daher müssen Sie sie d
 
 In der folgenden Tabelle sind diese Features zusammen mit einer Anleitung zum Hinzufügen zu Ihrem neuen Speicherkonto aufgeführt.
 
-| Feature    | Anleitungen    |
+| Funktion    | Anleitungen    |
 |--------|-----------|
 | **Richtlinien für die Lebenszyklusverwaltung** | [Verwalten des Azure Blob Storage-Lebenszyklus](../blobs/storage-lifecycle-management-concepts.md) |
 | **Statische Websites** | [Host a static website in Azure Storage](../blobs/storage-blob-static-website-how-to.md) (Hosten einer statischen Website in Azure Storage) |
@@ -264,7 +264,7 @@ Wenn Sie nach der Bereitstellung von vorne beginnen möchten, können Sie das Zi
 
 Um die Änderungen zu übernehmen und das Verschieben eines Speicherkonto abzuschließen, löschen Sie das Quellspeicherkonto.
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 So entfernen Sie ein Speicherkonto über das Azure-Portal
 
@@ -274,7 +274,7 @@ So entfernen Sie ein Speicherkonto über das Azure-Portal
 
 3. Wählen Sie **Löschen** aus, und bestätigen Sie den Vorgang.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Verwenden Sie den Befehl [Remove-AzStorageAccount](/powershell/module/az.resources/remove-azstorageaccount), um die Ressourcengruppe und die zugeordneten Ressourcen (einschließlich des neuen Speicherkontos) zu entfernen:
 

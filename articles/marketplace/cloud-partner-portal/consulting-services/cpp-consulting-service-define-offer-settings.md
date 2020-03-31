@@ -1,19 +1,18 @@
 ---
 title: Definieren der Angebotseinstellungen für ein Beratungsdienstangebot | Azure Marketplace
 description: Definieren Sie Angebotseinstellungen eines Azure- oder Dynamics 365-Beratungsdienstangebots im Cloud-Partnerportal für den Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: pabutler
-ms.openlocfilehash: e505f9aa1ec08708b85176d5b05fc5b40ceb295e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: ac7ac2cc049c87b3f619f68a9a93a2268d961114
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818139"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278568"
 ---
 # <a name="offer-settings-tab"></a>Registerkarte „Angebotseinstellungen“
 
@@ -57,14 +56,14 @@ Ein Angebotsname besteht aus vier Teilen:
 
 In der folgenden Liste sind einige ordnungsgemäß benannte Angebote aufgeführt:
 
--   Das Wichtigste für professionelle Dienstleistungen: 1-Std. Einweisung
--   Plattform für Cloudmigration: 1-Std. Einweisung
+-   Das Wichtigste für professionelle Dienstleistungen: Einstündige Einweisung
+-   Plattform für Cloudmigration: Einstündige Einweisung
 -   PowerApps und Microsoft Flow: 1-Tag Workshop
 -   Azure Machine Learning: 3-Wo PoC
 -   Einzelhandelslösung für Ladengeschäft und Onlineshop: Einstündige Einweisung
 -   Aufbereitung Ihrer Daten: 1-Wo Workshop
--   Cloud-Analysen: 3-Tag Workshop
--   Power BI-Schulung: 3-Tag Workshop
+-   Cloud-Analysen: Dreitägiger Workshop
+-   Power BI-Schulung: Dreitägiger Workshop
 -   Vertriebsmanagementlösung: 1-Wo Implementierung
 -   CRM-Schnellstart: 1-Tag Workshop
 -   Dynamics 365 for Sales: 2-Tag Bewertung

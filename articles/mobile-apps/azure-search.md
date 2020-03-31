@@ -1,18 +1,18 @@
 ---
 title: KI-gestützter Cloudsuchdienst für die Entwicklung mobiler Anwendungen mit Azure Cognitive Search
 description: Erfahren Sie mehr darüber, wie Sie einen KI-gestützten Cloudsuchdienst für die Entwicklung mobiler Anwendungen verwenden können.
-author: elamalani
+author: codemillmatt
 ms.assetid: 34a8a070-0123-8982-8345-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: d7f7c232723493af6b39fe51502e8751641ce735
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 48703001317533981f360baacb330b6878a3857e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454504"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80241000"
 ---
 # <a name="ai-powered-cloud-service-with-azure-cognitive-search"></a>KI-gestützter Clouddienst mit Azure Cognitive Search
 [Azure Cognitive Search](https://azure.microsoft.com/services/search/) ist eine Search-as-a-Service-Cloudlösung, die Entwicklern APIs und Tools zum Hinzufügen von umfangreichen Suchfunktionen für private, heterogene Inhalte in Web- und Unternehmensanwendungen sowie in mobilen Anwendungen bietet. Ihr benutzerdefinierter Code ruft die Datenerfassung (Indizierung) auf, um einen Index zu erstellen und zu laden. Auf der anderen Seite gibt Ihr Anwendungscode Abfrageanforderungen aus und verarbeitet Antworten. Das Suchverhalten ist mit Funktionen aus Azure Cognitive Search in Ihrem Client definiert, und Abfragen werden in einem permanenten Index ausgeführt, den Sie erstellen, besitzen und in Ihrem Dienst speichern.

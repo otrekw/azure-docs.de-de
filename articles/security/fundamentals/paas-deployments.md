@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 8fd5a063683d09cb94b45205426871d880119cc2
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77138015"
 ---
 # <a name="securing-paas-deployments"></a>Schützen von PaaS-Bereitstellungen
@@ -51,7 +51,7 @@ In der Mitte des Stapels gibt es keinen Unterschied zwischen einer PaaS-Bereitst
 
 An der Spitze des Stapels (Datengovernance und Rechteverwaltung) können Sie sich mit einem einzelnen Risiko auseinandersetzen, das mittels Schlüsselverwaltung behandelt werden kann. (Die Schlüsselverwaltung wird in den bewährten Methoden behandelt.) Bei der Schlüsselverwaltung handelt es sich zwar um eine zusätzliche Aufgabe, dafür gibt es in einer PaaS-Bereitstellung jedoch Bereiche, um die Sie sich nicht mehr kümmern müssen, sodass Sie frei gewordene Ressourcen für die Schlüsselverwaltung nutzen können.
 
-Dank verschiedener netzwerkbasierter Technologien bietet die Azure-Plattform außerdem starken DDoS-Schutz. Bei allen Arten von netzwerkbasierten DDoS-Schutzmethoden gelten allerdings gewisse Einschränkungen für Links und Datencenter. Zur Vermeidung der Auswirkungen groß angelegter DDoS-Angriffe können Sie dank der Kernfunktion der Azure-Cloud schnell und automatisch horizontal hochskalieren, um DDoS-Angriffe abzuwehren. Ausführlichere Informationen zur entsprechenden Vorgehensweise finden Sie in den Artikeln zu empfohlenen Vorgehensweisen.
+Dank verschiedener netzwerkbasierter Technologien bietet die Azure-Plattform außerdem starken DDoS-Schutz. Bei allen Arten von netzwerkbasierten DDoS-Schutzmethoden gelten allerdings gewisse Einschränkungen für Links und Datencenter. Zur Vermeidung der Auswirkungen groß angelegter DDoS-Angriffe können Sie dank der Kernfunktion der Azure-Cloud schnell und automatisch aufskalieren, um DDoS-Angriffe abzuwehren. Ausführlichere Informationen zur entsprechenden Vorgehensweise finden Sie in den Artikeln zu empfohlenen Vorgehensweisen.
 
 ## <a name="modernizing-the-defenders-mindset"></a>Eine neue Mentalität für Verteidiger
 Mit PaaS-Bereitstellungen verändert sich der gesamte Sicherheitsansatz. Sie müssen sich nun nicht mehr um alles selbst kümmern, sondern können einen Teil der Verantwortung an Microsoft abgeben.

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 061194422a8c1bc449dbef0c4f04bb8e1db10dea
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68965289"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Technische Spezifikationen und Kompatibilität des StorSimple-Geräts
@@ -38,7 +38,7 @@ Das EBOD-Gehäuse enthält ein PCM mit 580 W, und das primäre Gehäuse wird mi
 | Spezifikation | 580 W PCM (EBOD) | 764 W PCM (primär) |
 | --- | --- | --- |
 | Maximale Ausgangsleistung |580 W |764 |
-| Frequency |50/60 Hz |50/60 Hz |
+| Häufigkeit |50/60 Hz |50/60 Hz |
 | Spannungsbereichsauswahl |Automatischer Spannungsbereich: 90–264 V Wechselstrom, 47/63 Hz |Automatischer Spannungsbereich: 90–264 V Wechselstrom, 47/63 Hz |
 | Maximaler Eingangsstrom |20 A |20 A |
 | Leistungsfaktorkorrektur |> 95 % Nenneingangsspannung |> 95 % Nenneingangsspannung |
@@ -106,7 +106,7 @@ Die folgenden Tabellen enthalten die Abmessungen des Gehäuses in Millimetern un
 
 Je nach Konfiguration kann ein vollständig beladenes primäres Gehäuse von 21 kg bis zu 33 kg wiegen und muss von zwei Personen getragen werden.
 
-| Gehäuse | Gewicht |
+| Gehäuse | Weight |
 | --- | --- |
 | Max. Gewicht (abhängig von der Konfiguration) |30–33 kg |
 | Leer (ohne Laufwerke) |21–23 kg |

@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/23/2019
 ms.openlocfilehash: b871775bc7a6d795e86147ae9cffa27bdd2f3348
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76263760"
 ---
 # <a name="notification-hubs-security"></a>Sicherheit von Notification Hubs
@@ -48,7 +48,7 @@ Der Schlüssel mit **Lauschzugriff** ermöglicht einer Client-App, sich für jed
 
 Ähnlich wie bei anderen Entitäten sind Notification Hub-Vorgänge für drei Sicherheitsansprüche zulässig: **Lauschen**, **Senden** und **Verwalten**.
 
-| Anspruch   | Beschreibung                                          | Zulässige Vorgänge |
+| Anspruch   | BESCHREIBUNG                                          | Zulässige Vorgänge |
 | ------- | ---------------------------------------------------- | ------------------ |
 | Lauschen  | Erstellen/Aktualisieren, Lesen und Löschen einzelner Registrierungen | Erstellen/Aktualisieren einer Registrierung<br><br>Lesen der Registrierung<br><br>Lesen aller Registrierungen für ein Handle<br><br>Registrierung löschen |
 | Send    | Senden von Nachrichten an den Notification Hub                | Nachricht senden |

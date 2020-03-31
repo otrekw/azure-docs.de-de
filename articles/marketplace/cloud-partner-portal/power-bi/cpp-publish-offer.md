@@ -1,19 +1,18 @@
 ---
 title: Veröffentlichen eines Power BI-App-Angebots | Azure Marketplace
 description: Veröffentlichen eines Power BI-App-Angebots im Microsoft AppSource-Marketplace.
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: pabutler
-ms.openlocfilehash: 324be960bd2d22623763ca3e24b99be92ff04174
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 89d437fe74d209e0dc04ffc590a1e32426b28732
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826038"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275865"
 ---
 # <a name="publish-a-power-bi-app-offer"></a>Veröffentlichen eines Power BI-App-Angebots
 

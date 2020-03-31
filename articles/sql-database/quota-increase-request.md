@@ -9,17 +9,17 @@ ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 02/04/2020
 ms.openlocfilehash: ff2be6972bb4e8af266d0aa8a56d1879bc1b8b78
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77586154"
 ---
 # <a name="request-quota-increases-for-azure-sql-database"></a>Anfordern von Kontingenterhöhungen für Azure SQL-Datenbank
 
 In diesem Artikel wird erläutert, wie Sie eine Erhöhung des Kontingents für Azure SQL-Datenbank für Singletons, Server und verwaltete Instanzen anfordern. Außerdem wird erläutert, wie Sie den Abonnementzugriff auf eine Region aktivieren.
 
-## <a id="newquota"></a> Erstellen einer neuen Supportanfrage
+## <a name="create-a-new-support-request"></a><a id="newquota"></a> Erstellen einer neuen Supportanfrage
 
 Führen Sie die folgenden Schritte aus, um im Azure-Portal eine neue Supportanfrage für SQL-Datenbank zu erstellen.
 
@@ -54,7 +54,7 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal eine neue Supportanfr
 
 Wenn Sie auf **Details angeben** klicken, wird das Fenster **Kontingentdetails** angezeigt, in dem Sie zusätzliche Informationen hinzufügen können. In den folgenden Abschnitten werden die verschiedenen Optionen für die Kontingenttypen von **SQL-Datenbank** und **Verwaltete SQL-Datenbank-Instanz** beschrieben.
 
-## <a id="sqldbquota"></a> Kontingenttypen von SQL-Datenbank
+## <a name="sql-database-quota-types"></a><a id="sqldbquota"></a> Kontingenttypen von SQL-Datenbank
 
 In den folgenden Abschnitten werden drei Optionen für das Erhöhen der Kontingente für die Kontingenttypen von **SQL-Datenbank** beschrieben:
 
@@ -90,7 +90,7 @@ Führen Sie die folgenden Schritte aus, um eine Erhöhung der Anzahl der Server 
 
 Weitere Informationen finden Sie unter [SQL-Datenbank-Ressourcenlimits und -Ressourcenkontrolle](sql-database-resource-limits-database-server.md).
 
-### <a id="other"></a> Aktivieren des Abonnementzugriffs auf eine Region
+### <a name="enable-subscription-access-to-a-region"></a><a id="other"></a> Aktivieren des Abonnementzugriffs auf eine Region
 
 Einige Angebotstypen sind nicht in allen Regionen verfügbar. Unter Umständen wird beispielsweise folgender Fehler angezeigt:
 
@@ -100,7 +100,7 @@ Wenn Ihr Abonnement Zugriff auf eine bestimmte Region benötigt, verwenden Sie d
 
 ![Weitere Kontingentdetails](./media/quota-increase-request/quota-details-whitelisting.png)
 
-## <a id="sqlmiquota"></a> Kontingenttyp für verwaltete Instanzen
+## <a name="managed-instance-quota-type"></a><a id="sqlmiquota"></a> Kontingenttyp für verwaltete Instanzen
 
 Führen Sie für den Kontingenttyp **Verwaltete SQL-Datenbank-Instanz** die folgenden Schritte aus:
 

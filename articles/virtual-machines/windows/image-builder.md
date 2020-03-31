@@ -7,12 +7,12 @@ ms.date: 07/31/2019
 ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
-ms.openlocfilehash: 9dc4909db5560be6eb082dbad85d4b2d42113bdd
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: e82d82dac833f7455e3d83d7e11c0c57c4eea816
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828701"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80238808"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>Vorschau: Erstellen eines virtuellen Windows-Computers mit Azure Image Builder
 
@@ -28,7 +28,7 @@ Wir verwenden zum Konfigurieren des Images eine JSON-Beispielvorlage. Wir verwen
 
 
 > [!IMPORTANT]
-> Azure Image Builder ist derzeit als öffentliche Vorschauversion (Public Preview) verfügbar.
+> Azure Image Builder ist derzeit als öffentliche Vorschauversion verfügbar.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
@@ -205,11 +205,12 @@ Bei der Anpassung des Images sollten diese beiden Verzeichnisse erstellt werden:
 - buildActions
 - buildArtifacts
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Löschen Sie nach Abschluss des Vorgangs die Ressourcen.
 
 ### <a name="delete-the-image-builder-template"></a>Löschen der Image Builder-Vorlage
+
 ```azurecli-interactive
 az resource delete \
     --resource-group $imageResourceGroup \
@@ -218,6 +219,7 @@ az resource delete \
 ```
 
 ### <a name="delete-the-image-resource-group"></a>Löschen der Imageressourcengruppe
+
 ```azurecli-interactive
 az group delete -n $imageResourceGroup
 ```

@@ -1,19 +1,18 @@
 ---
 title: Erstellen eines neuen Angebots für Azure-Apps im kommerziellen Marketplace
 description: Erstellen eines neuen Angebots für Azure-Apps zum Auflisten oder Verkaufen in Azure Marketplace, AppSource oder über das CSP-Programm (Cloud Solution Provider) mit dem kommerziellen Marketplace-Portal im Microsoft Partner Center.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 69d7bc81f5adc4797be86f946fdb656b4b6cc682
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 0ff1bbd976273a7d0cbfb22effebdf45c84d2f41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760891"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277238"
 ---
 # <a name="create-an-azure-application-offer"></a>Erstellen eines Azure-Anwendungsangebots
 
@@ -181,7 +180,7 @@ Geben Sie eine kurze Beschreibung Ihres Angebots ein (bis zu 100 Zeichen), die 
 
 Geben Sie eine längere Beschreibung Ihres Angebots an (bis zu 256 Zeichen). Diese Beschreibung kann in Marketplace-Suchergebnissen verwendet werden.
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>BESCHREIBUNG
 
 Geben Sie eine längere Beschreibung Ihres Angebots an (bis zu 3.000 Zeichen). Diese Beschreibung wird Kunden in der Übersicht der Marketplace-Auflistung angezeigt. Geben Sie z.B ein Wertversprechen für Ihr Angebot, wichtige Vorteile, Kategorie- oder Branchenzuordnungen, Möglichkeiten für In-App-Käufe sowie alle erforderlichen Veröffentlichungen ein. 
 
@@ -317,7 +316,7 @@ Wird basierend auf dem Namen, den Sie Ihrem Plan bei der Erstellung zugewiesen h
 
 Geben Sie eine kurze Zusammenfassung Ihres Softwareplans an.  Darf bis zu 100 Zeichen enthalten.
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>BESCHREIBUNG
 
 Diese Beschreibung bietet die Möglichkeit zu erklären, was diesen Softwareplan einzigartig macht und von anderen Softwareplänen in Ihrem Angebot unterscheidet. Darf bis zu 2.000 Zeichen enthalten.
 

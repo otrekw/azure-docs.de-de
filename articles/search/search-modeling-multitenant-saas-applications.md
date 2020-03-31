@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: d37abd1b5d212c3d920cb68b6236029b2112ae24
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113279"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und die kognitive Azure-Suche
@@ -42,14 +42,14 @@ Die kognitive Azure-Suche bietet verschiedene [Tarife](https://azure.microsoft.c
 | Maximale Anzahl von Replikaten pro Dienst |3 |12 |12 |12 |12 |
 | Maximale Anzahl von Partitionen pro Dienst |1 |12 |12 |12 |3 |
 | Maximale Anzahl von Sucheinheiten (Replikate x Partitionen) pro Dienst |3 |36 |36 |36 |36 (max. 3 Partitionen) |
-| Maximale Speicherkapazität pro Dienst |2 GB |300 GB |1,2 TB |2,4 TB |600 GB |
-| Maximale Speicherkapazität pro Partition |2 GB |25 GB |100 GB |200 GB |200 GB |
+| Maximale Speicherkapazität pro Dienst |2 GB |300 GB |1,2 TB |2,4 TB |600 GB |
+| Maximale Speicherkapazität pro Partition |2 GB |25 GB |100 GB |200 GB |200 GB |
 | Maximale Anzahl von Indizes pro Dienst |5 |50 |200 |200 |3\.000 (max. 1.000 Indizes/Partition) |
 
 #### <a name="s3-high-density"></a>S3 High Density
 Der Tarif „S3“ der kognitiven Azure-Suche bietet als Option einen HD-Modus (High Density), der speziell auf Szenarien mit mehreren Mandanten ausgelegt ist. In vielen Fällen ist es notwendig, eine große Zahl von kleineren Mandanten unter einem einzelnen Dienst zu unterstützen, um die Vorteile der Einfachheit und Kosteneffizienz nutzen zu können.
 
-Mit S3 HD können die vielen kleinen Indizes unter der Verwaltung eines einzelnen Suchdiensts gepackt werden, indem die Möglichkeit zum horizontalen Hochskalieren von Indizes mithilfe von Partitionen gegen die Möglichkeit eingetauscht wird, eine größere Anzahl von Indizes in einem einzelnen Dienst zu hosten.
+Mit S3 HD können die vielen kleinen Indizes unter der Verwaltung eines einzelnen Suchdiensts gepackt werden, indem die Möglichkeit zum Aufskalieren von Indizes mithilfe von Partitionen gegen die Möglichkeit eingetauscht wird, eine größere Anzahl von Indizes in einem einzelnen Dienst zu hosten.
 
 Konkret kann ein S3-Dienst zwischen 1 und 200 Indizes aufweisen, die zusammen bis zu 1,4 Milliarden Dokumente hosten können. Ein S3 HD-Dienst ermöglicht dagegen einzelne Indizes mit bis zu 1 Million Dokumente, kann jedoch bis zu 1.000 Indizes pro Partition (bis zu 3.000 pro Dienst) mit einer Gesamtzahl von 200 Millionen Dokumenten pro Partition (bis zu 600 Millionen pro Dienst) verarbeiten.
 

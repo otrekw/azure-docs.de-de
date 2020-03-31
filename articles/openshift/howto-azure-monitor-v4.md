@@ -7,10 +7,10 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.openlocfilehash: a784fc070400995c56d16a3bc264d589bcb1f64e
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79082845"
 ---
 # <a name="azure-monitor-integration-for-azure-red-hat-openshift-43"></a>Azure Monitor-Integration für Azure Red Hat OpenShift 4.3
@@ -25,7 +25,7 @@ In diesem Artikel wird beschrieben, wie Sie die private Vorschau von Azure Monit
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+- [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Helm 3](https://helm.sh/docs/intro/install/)
 - Zugriff auf „kubeconfig“ des Kubernetes-Clusters
 - Zugriff auf ein Azure-Abonnement

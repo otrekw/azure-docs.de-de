@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 72bf08dce36d857c1fe91bbe9806336dfa185f7e
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78671972"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Beheben von häufigen Fehler und Warnungen bei Suchindexern in Azure Cognitive Search
@@ -145,7 +145,7 @@ Das Dokument wurde gelesen und verarbeitet, aber der Indexer konnte es nicht zum
 | Ein Feld enthält einen Begriff, der zu groß ist. | Ein Begriff in Ihrem Dokument ist größer als der [Grenzwert von 32 KB](search-limits-quotas-capacity.md#api-request-limits). | Sie können diese Einschränkung vermeiden, indem Sie sicherstellen, dass das Feld nicht als filterbar, facettierbar oder sortierbar konfiguriert ist.
 | Das Dokument ist zu groß für die Indizierung. | Ein Dokument ist größer als die [maximale API-Anforderungsgröße](search-limits-quotas-capacity.md#api-request-limits). | [Indizieren großer Datasets](search-howto-large-index.md)
 | Das Dokument enthält zu viele Objekte in der Sammlung. | Bei einer Sammlung in Ihrem Dokument wurde die [maximale Anzahl der Elemente in allen komplexen Sammlungen pro Dokument](search-limits-quotas-capacity.md#index-limits) überschritten. Das Dokument mit dem Schlüssel `'1000052'` enthält `'4303'` Objekte in Sammlungen (JSON-Arrays). Höchstens `'3000'` Objekte sind in Sammlungen im gesamten Dokument zulässig. Entfernen Sie Objekte aus Sammlungen, und indizieren Sie das Dokument erneut. | Wir empfehlen, die komplexe Sammlung im Dokument auf einen Wert unter dem Grenzwert zu verkleinern und eine hohe Speicherauslastung zu vermeiden.
-| Probleme beim Herstellen einer Verbindung mit dem Zielindex (die nach Wiederholungsversuchen weiterhin bestehen), da der Dienst durch eine andere Aufgabe ausgelastet ist, z.B. eine Abfrage oder Indizierung. | Die Verbindung zum Hochladen des Indexes konnte nicht hergestellt werden. Der Suchdienst ist stark ausgelastet. | [Zentrales Hochskalieren des Suchdiensts](search-capacity-planning.md)
+| Probleme beim Herstellen einer Verbindung mit dem Zielindex (die nach Wiederholungsversuchen weiterhin bestehen), da der Dienst durch eine andere Aufgabe ausgelastet ist, z.B. eine Abfrage oder Indizierung. | Die Verbindung zum Hochladen des Indexes konnte nicht hergestellt werden. Der Suchdienst ist stark ausgelastet. | [Hochskalieren des Suchdiensts](search-capacity-planning.md)
 | Der Suchdienst wird für das Dienstupdate gepatcht oder befindet sich mitten in einer Neukonfiguration der Topologie. | Die Verbindung zum Hochladen des Indexes konnte nicht hergestellt werden. Der Suchdienst ist derzeit nicht verfügbar / Der Suchdienst befindet sich im Übergang. | Konfigurieren Sie den Dienst mit mindestens 3 Replikaten für eine Verfügbarkeit von 99,9 % gemäß [SLA-Dokumentation](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 | Fehler in der zugrunde liegenden Compute-/Netzwerkressource (selten) | Die Verbindung zum Hochladen des Indexes konnte nicht hergestellt werden. Ein unbekannter Fehler ist aufgetreten. | Konfigurieren Sie Indexer für die [Ausführung nach Zeitplan](search-howto-schedule-indexers.md), um den Betrieb nach einem Fehler wieder aufzunehmen.
 | Eine Indizierungsanforderung an den Zielindex wurde aufgrund von Netzwerkproblemen nicht innerhalb eines Zeitlimits bestätigt. | Die Verbindung mit dem Suchindex konnte nicht rechtzeitig hergestellt werden. | Konfigurieren Sie Indexer für die [Ausführung nach Zeitplan](search-howto-schedule-indexers.md), um den Betrieb nach einem Fehler wieder aufzunehmen. Versuchen Sie außerdem, die [Batchgröße](https://docs.microsoft.com/rest/api/searchservice/create-indexer#parameters) des Indexers zu verringern, wenn dieser Fehler weiterhin auftritt.

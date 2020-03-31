@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: sfrev
 ms.openlocfilehash: 0aeb8ab2923915befdd11f96025687be3b3c4ff9
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76024745"
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric-Anwendungsszenarien
@@ -43,7 +43,7 @@ Ein Verwenden der Service Fabric-Plattform bietet sich für die folgenden Typen 
 
 * **Hoch verfügbare Dienste:** Durch das Erstellen mehrerer sekundärer Dienstreplikate bietet Service Fabric ein schnelles Failover. Wenn ein Knoten, Prozess oder individueller Dienst aufgrund eines hardwarebedingten oder anderen Fehlers ausfällt, wird eines der sekundären Replikate zu einem primären Replikat weitergeleitet – mit minimaler Dienstunterbrechung.
 
-* **Skalierbare Dienste:** Einzelne Dienste können partitioniert werden, sodass der Zustand im Cluster horizontal hochskaliert werden kann. Darüber hinaus können einzelne Dienste spontan erstellt und entfernt werden. Sie können Dienste von wenigen Instanzen auf wenigen Knoten auf Tausende Instanzen auf vielen Knoten erweitern (hochskalieren) und diese Dienste dann nach Bedarf wieder herunterskalieren. Mithilfe von Service Fabric können Sie diese Dienste erstellen und ihren gesamten Lebenszyklus verwalten.
+* **Skalierbare Dienste:** Einzelne Dienste können partitioniert werden, sodass der Zustand im Cluster horizontal hochskaliert werden kann. Darüber hinaus können einzelne Dienste spontan erstellt und entfernt werden. Sie können Dienste von wenigen Instanzen auf wenigen Knoten auf Tausende Instanzen auf vielen Knoten aufskalieren und diese Dienste dann nach Bedarf wieder abskalieren. Mithilfe von Service Fabric können Sie diese Dienste erstellen und ihren gesamten Lebenszyklus verwalten.
 
 ## <a name="application-design-case-studies"></a>Fallstudien zum Anwendungsentwurf
 

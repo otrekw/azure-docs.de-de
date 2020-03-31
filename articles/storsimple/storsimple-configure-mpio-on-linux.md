@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alkohli
 ms.openlocfilehash: 5dadd231335e93839e947077168f32dbfe96eb45
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76278359"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurieren von MPIO auf einem StorSimple-Host mit CentOS
@@ -413,7 +413,7 @@ A. Um zu überprüfen, ob sich Ihr Gerät auf der Zulassungsliste befindet, verw
 Weitere Informationen finden Sie unter [DM-Multipath Verwaltung und Fehlersuche](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot).
 
 ## <a name="list-of-useful-commands"></a>Liste nützlicher Befehle
-| type | Get-Help | Beschreibung |
+| type | Get-Help | BESCHREIBUNG |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |Starten des iSCSI-Diensts |
 | &nbsp; |`service iscsid stop` |Beenden des iSCSI-Diensts |

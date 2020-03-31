@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: a3a313ef9cd74ba901f5a6a2d82a18e3c21145dc
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77462519"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Überwachen von Abfrageanforderungen in Azure Cognitive Search
@@ -39,7 +39,7 @@ Es ist üblich, dass Abfragen in Millisekunden ausgeführt werden, sodass nur Ab
 | Aggregationstyp | BESCHREIBUNG |
 |------------------|-------------|
 | Average | Die durchschnittliche Anzahl von Sekunden innerhalb einer Minute, in der die Abfrageausführung erfolgt ist.|
-| Anzahl | Die Anzahl der Metriken, die innerhalb des Ein-Minuten-Intervalls an das Protokoll ausgegeben werden. |
+| Anzahl | Anzahl der Metriken, die innerhalb des Ein-Minuten-Intervalls an das Protokoll ausgegeben werden. |
 | Maximum | Die höchste Anzahl von Suchabfragen pro Sekunde, die während einer Minute erfasst wurden. |
 | Minimum | Die niedrigste Anzahl von Suchabfragen pro Sekunde, die während einer Minute erfasst wurden.  |
 | SUM | Die Summe aller Abfragen, die innerhalb der Minute ausgeführt wurden.  |
@@ -57,7 +57,7 @@ Die dienstweite Abfrageleistung wird als Suchlatenz (wie lange eine Abfrage daue
 | Aggregationstyp | Latency | 
 |------------------|---------|
 | Average | Durchschnittliche Abfragedauer in Millisekunden. | 
-| Anzahl | Die Anzahl der Metriken, die innerhalb des Ein-Minuten-Intervalls an das Protokoll ausgegeben werden. |
+| Anzahl | Anzahl der Metriken, die innerhalb des Ein-Minuten-Intervalls an das Protokoll ausgegeben werden. |
 | Maximum | Die Abfrage mit der längsten Ausführungszeit in der Stichprobe. | 
 | Minimum | Die Abfrage mit der kürzesten Ausführungszeit in der Stichprobe.  | 
 | Gesamt | Gesamtausführungszeit aller Abfragen in der Stichprobe, die innerhalb des Intervalls (eine Minute) ausgeführt werden.  |

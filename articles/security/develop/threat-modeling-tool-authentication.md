@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 1bef73e6be4bdbe8828e1d20ea6e684759984627
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72244633"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Sicherheitsrahmen: Authentifizierung | Gegenmaßnahmen 
@@ -40,84 +40,84 @@ ms.locfileid: "72244633"
 | **IoT-Cloudgateway** | <ul><li>[Stellen Sie sicher, dass Geräte, die eine Verbindung mit dem Cloudgateway herstellen, authentifiziert werden.](#authn-devices-cloud)</li><li>[Verwenden Sie gerätespezifische Anmeldeinformationen für die Authentifizierung.](#authn-cred)</li></ul> |
 | **Azure Storage (in englischer Sprache)** | <ul><li>[Stellen Sie sicher, dass nur die erforderlichen Container und Blobs anonymen Lesezugriff erhalten.](#req-containers-anon)</li><li>[Gewähren Sie mithilfe von SAS oder SAP eingeschränkten Zugriff auf Objekte im Azure-Speicher.](#limited-access-sas)</li></ul> |
 
-## <a id="standard-authn-web-app"></a>Verwenden Sie ggf. einen Standardauthentifizierungsmechanismus zur Authentifizierung bei Webanwendungen.
+## <a name="consider-using-a-standard-authentication-mechanism-to-authenticate-to-web-application"></a><a id="standard-authn-web-app"></a>Verwenden Sie ggf. einen Standardauthentifizierungsmechanismus zur Authentifizierung bei Webanwendungen.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Webanwendung. | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | –  |
 | Details | <p>Bei der Authentifizierung wird die Identität einer Entität überprüft – in der Regel anhand von Anmeldeinformationen wie Benutzername und Kennwort. Hierzu stehen mehrere Authentifizierungsprotokolle zur Verfügung. Einige davon sind im Anschluss aufgeführt:</p><ul><li>Clientzertifikate</li><li>Windows-basiert</li><li>Formularbasiert</li><li>Verbund – ADFS</li><li>Verbund – Azure AD</li><li>Verbund – Identity Server</li></ul><p>Verwenden Sie ggf. einen Standardauthentifizierungsmechanismus, um den Quellprozess zu identifizieren.</p>|
 
-## <a id="handle-failed-authn"></a>Anwendungen müssen Szenarien mit nicht erfolgreicher Authentifizierung sicher behandeln.
+## <a name="applications-must-handle-failed-authentication-scenarios-securely"></a><a id="handle-failed-authn"></a>Anwendungen müssen Szenarien mit nicht erfolgreicher Authentifizierung sicher behandeln.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Webanwendung. | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | –  |
 | Details | <p>Anwendungen mit expliziter Benutzerauthentifizierung müssen Szenarien mit nicht erfolgreicher Authentifizierung sicher behandeln. Der Authentifizierungsmechanismus muss Folgendes bewirken:</p><ul><li>Er muss den Zugriff auf privilegierte Ressourcen verweigern, wenn die Authentifizierung nicht erfolgreich war.</li><li>Er muss eine generische Fehlermeldung anzeigen, wenn die Authentifizierung nicht erfolgreich war und der Zugriff verweigert wird.</li></ul><p>Überprüfen Sie, ob Folgendes erfüllt ist:</p><ul><li>Privilegierte Ressourcen sind nach nicht erfolgreicher Anmeldung geschützt.</li><li>Bei nicht erfolgreicher Authentifizierung wird eine generische Fehlermeldung angezeigt, und es werden Zugriffsverweigerungsereignisse generiert.</li><li>Konten werden nach einer übermäßigen Anzahl nicht erfolgreicher Versuche deaktiviert.</li><ul>|
 
-## <a id="step-up-adaptive-authn"></a>Aktivieren Sie Step-up-Authentifizierung oder adaptive Authentifizierung.
+## <a name="enable-step-up-or-adaptive-authentication"></a><a id="step-up-adaptive-authn"></a>Aktivieren Sie Step-up-Authentifizierung oder adaptive Authentifizierung.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Webanwendung. | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | –  |
 | Details | <p>Vergewissern Sie sich, dass die Anwendung über eine zusätzliche Autorisierung verfügt (etwa Step-up-Authentifizierung oder adaptive Authentifizierung – über die mehrstufige Authentifizierung, beispielsweise mittels OTP-Versand per SMS oder E-Mail, oder durch eine Aufforderung zur erneuten Authentifizierung), damit dem Benutzer eine Aufforderung angezeigt wird, bevor er Zugriff auf sensible Daten erhält. Diese Regel gilt auch für wichtige Änderungen an einem Konto oder an einer Aktion.</p><p>Das bedeutet auch, dass die Anpassung der Authentifizierung so implementiert werden muss, dass die Anwendung eine ordnungsgemäße kontextabhängige Autorisierung erzwingt, um nicht autorisierte Manipulationen (beispielsweise der Parameter) zu verhindern.</p>|
 
-## <a id="admin-interface-lockdown"></a>Stellen Sie sicher, dass Administratoroberflächen angemessen gesperrt sind.
+## <a name="ensure-that-administrative-interfaces-are-appropriately-locked-down"></a><a id="admin-interface-lockdown"></a>Stellen Sie sicher, dass Administratoroberflächen angemessen gesperrt sind.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Webanwendung. | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | –  |
 | Details | Die erste Möglichkeit besteht darin, den Zugriff auf die Administratoroberfläche nur über einen bestimmten Quell-IP-Adressbereich zu gewähren. Sollte das nicht möglich sein, empfiehlt es sich, für die Anmeldung bei der Administratoroberfläche eine Step-up-Authentifizierung oder eine adaptive Authentifizierung zu erzwingen. |
 
-## <a id="forgot-pword-fxn"></a>Implementieren Sie sichere Funktionen für vergessene Kennwörter.
+## <a name="implement-forgot-password-functionalities-securely"></a><a id="forgot-pword-fxn"></a>Implementieren Sie sichere Funktionen für vergessene Kennwörter.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Webanwendung. | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | –  |
 | Details | <p>Vergewissern Sie sich zunächst, dass bei vergessenen Kennwörtern und bei anderen Wiederherstellungspfaden nicht das Kennwort, sondern ein Link mit einem Aktivierungstoken gesendet wird, das nur für einen bestimmten Zeitraum gültig ist. Bei Bedarf kann auch noch eine Softtoken-basierte Authentifizierung (beispielsweise per SMS-Token oder nativer mobiler Anwendung) erforderlich gemacht werden, bevor der Link übermittelt wird. Zweitens: Achten Sie darauf, dass das Benutzerkonto nicht während des Bezugs eines neuen Kennworts gesperrt wird.</p><p>Dies kann zu einem Denial-of-Service-Angriff führen, wenn ein Angreifer beschließt, die Benutzer mit einem automatisierten Angriff absichtlich auszusperren. Drittens: Bei der Initiierung der Anforderung eines neuen Kennworts muss eine generische Meldung angezeigt werden, um die Enumeration von Benutzernamen zu verhindern. Viertens: Unterbinden Sie immer die Verwendung alter Kennwörter, und implementieren Sie eine Richtlinie für sichere Kennwörter.</p> |
 
-## <a id="pword-account-policy"></a>Stellen Sie sicher, dass die Kennwort- und die Kontorichtlinie implementiert werden.
+## <a name="ensure-that-password-and-account-policy-are-implemented"></a><a id="pword-account-policy"></a>Stellen Sie sicher, dass die Kennwort- und die Kontorichtlinie implementiert werden.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Webanwendung. | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | –  |
 | Details | <p>Implementieren Sie eine Kennwort- und eine Kontorichtlinie, die die Regeln und bewährten Methoden der Organisation erfüllen.</p><p>Schützen vor Brute-Force- und wörterbuchbasiertem Raten: Es muss eine Richtlinie für sichere Kennwörter implementiert werden, um sicherzustellen, dass Benutzer komplexe Kennwörter erstellen (beispielsweise eine Mindestlänge von 12 Zeichen sowie eine Kombination aus alphanumerischen und Sonderzeichen).</p><p>Kontosperrungsrichtlinien können wie folgt implementiert werden:</p><ul><li>**Gemäßigte Sperrung:** Eine gute Option, um Ihre Benutzer vor Brute-Force-Angriffen zu schützen. Falls der Benutzer beispielsweise dreimal ein falsches Kennwort eingibt, kann die Anwendung das Konto eine Minute lang sperren, um die Brute-Force-Ermittlung des Kennworts zu verlangsamen und somit für den Angreifer unattraktiver zu machen. Wenn Sie in diesem Beispiel eine harte Sperrung implementieren, bewirkt dies einen Denial-of-Service-Angriff, da Konten dauerhaft gesperrt werden. Alternativ kann die Anwendung ein Einmalkennwort (One Time Password, OTP) generieren und out-of-band (etwa per E-Mail oder SMS) an den Benutzer senden. Eine weitere Möglichkeit ist die Implementierung eines CAPTCHAs nach Erreichen einer bestimmten Anzahl nicht erfolgreicher Versuche.</li><li>**Rigorose Sperrung:** Diese Art von Sperrung empfiehlt sich, wenn ein Benutzerangriff auf Ihre Anwendung festgestellt wird und das Konto des Angreifers dauerhaft gesperrt werden soll, bis ein Sicherheitsteam Gelegenheit hatte, den Vorfall zu untersuchen. Danach können Sie dem Benutzer wieder Zugriff auf sein Konto gewähren oder rechtliche Schritte gegen ihn einleiten. Bei diesem Ansatz kann der Angreifer nicht weiter in Ihre Anwendung und Infrastruktur vordringen.</li></ul><p>Vergewissern Sie sich zur Abwehr von Angriffen auf Standardkonten und vorhersehbare Konten, dass alle Schlüssel und Kennwörter ersetzbar sind und nach der Installation generiert oder ersetzt werden.</p><p>Falls die Anwendung Kennwörter automatisch generieren muss, stellen Sie sicher, dass es sich um Zufallskennwörter mit hoher Entropie handelt.</p>|
 
-## <a id="controls-username-enum"></a>Implementieren Sie Kontrollen, um die Enumeration von Benutzernamen zu verhindern.
+## <a name="implement-controls-to-prevent-username-enumeration"></a><a id="controls-username-enum"></a>Implementieren Sie Kontrollen, um die Enumeration von Benutzernamen zu verhindern.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Webanwendung. | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
-| **Referenzen**              | N/V  |
+| **Attribute**              | –  |
+| **Referenzen**              | –  |
 | **Schritte** | Alle Fehlermeldungen müssen generalisiert werden, um die Enumeration von Benutzernamen zu verhindern. Manchmal lassen sich Informationslecks in Funktionen nicht vermeiden (beispielsweise bei einer Registrierungsseite). Hier müssen ratenbegrenzende Methoden wie CAPTCHA verwendet werden, um automatisierte Angriffe zu verhindern. |
 
-## <a id="win-authn-sql"></a>Verwenden Sie beim Herstellen einer SQL Server-Verbindung nach Möglichkeit die Windows-Authentifizierung.
+## <a name="when-possible-use-windows-authentication-for-connecting-to-sql-server"></a><a id="win-authn-sql"></a>Verwenden Sie beim Herstellen einer SQL Server-Verbindung nach Möglichkeit die Windows-Authentifizierung.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -126,9 +126,9 @@ ms.locfileid: "72244633"
 | **Zutreffende Technologien** | Lokal |
 | **Attribute**              | SQL-Version: Alle |
 | **Referenzen**              | [Auswählen eines Authentifizierungsmodus](https://msdn.microsoft.com/library/ms144284.aspx) |
-| **Schritte** | Die Windows-Authentifizierung verwendet das Kerberos-Sicherheitsprotokoll, bietet Kennwortrichtlinienerzwingung mit Komplexitätsprüfung für sichere Kennwörter, bietet Unterstützung für Kontosperrungen und unterstützt ablaufende Kennwörter.|
+| **Schritte** | Die Windows-Authentifizierung verwendet das Kerberos-Sicherheitsprotokoll, stellt Maßnahmen zur Durchsetzung von Kennwortrichtlinien, z. B. zur Überprüfung der Komplexität sicherer Kennwörter, bereit und bietet Unterstützung für Kontosperrungen und Ablauf von Kennwörtern.|
 
-## <a id="aad-authn-sql"></a>Verwenden Sie beim Herstellen einer SQL-Datenbank-Verbindung nach Möglichkeit die Azure Active Directory-Authentifizierung.
+## <a name="when-possible-use-azure-active-directory-authentication-for-connecting-to-sql-database"></a><a id="aad-authn-sql"></a>Verwenden Sie beim Herstellen einer SQL-Datenbank-Verbindung nach Möglichkeit die Azure Active Directory-Authentifizierung.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -139,18 +139,18 @@ ms.locfileid: "72244633"
 | **Referenzen**              | [Herstellen einer Verbindung mit SQL-Datenbank unter Verwendung der Azure Active Directory-Authentifizierung](https://azure.microsoft.com/documentation/articles/sql-database-aad-authentication/) |
 | **Schritte** | **Mindestversion:** Azure SQL-Datenbank V12 ist erforderlich, um Azure SQL-Datenbank die Verwendung der AAD-Authentifizierung für das Microsoft-Verzeichnis zu ermöglichen. |
 
-## <a id="authn-account-pword"></a>Stellen Sie bei Verwendung des SQL-Authentifizierungsmodus sicher, dass die Konto- und die Kennwortrichtlinie für SQL Server erzwungen werden.
+## <a name="when-sql-authentication-mode-is-used-ensure-that-account-and-password-policy-are-enforced-on-sql-server"></a><a id="authn-account-pword"></a>Stellen Sie bei Verwendung des SQL-Authentifizierungsmodus sicher, dass die Konto- und die Kennwortrichtlinie für SQL Server erzwungen werden.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Datenbank | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [Kennwortrichtlinie](https://technet.microsoft.com/library/ms161959(v=sql.110).aspx) |
 | **Schritte** | Bei Verwendung der SQL Server-Authentifizierung werden in SQL Server Anmeldungen erstellt, die nicht auf Windows-Benutzerkonten basieren. Der Benutzername und das Kennwort werden mithilfe von SQL Server erstellt und in SQL Server gespeichert. SQL Server kann die Kennwortrichtlinienmechanismen von Windows verwenden. Es kann die in Windows verwendeten Komplexitäts- und Ablaufrichtlinien auf in SQL Server verwendete Kennwörter anwenden. |
 
-## <a id="autn-contained-db"></a>Verwenden Sie für eigenständige Datenbanken keine SQL-Authentifizierung.
+## <a name="do-not-use-sql-authentication-in-contained-databases"></a><a id="autn-contained-db"></a>Verwenden Sie für eigenständige Datenbanken keine SQL-Authentifizierung.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -161,29 +161,29 @@ ms.locfileid: "72244633"
 | **Referenzen**              | [Bewährte Methoden für die Sicherheit eigenständiger Datenbanken](https://msdn.microsoft.com/library/ff929055.aspx) |
 | **Schritte** | Ohne erzwungene Kennwortrichtlinie erhöht sich das Risiko, dass in einer eigenständigen Datenbank unsichere Anmeldeinformationen eingerichtet werden. Nutzen Sie die Windows-Authentifizierung. |
 
-## <a id="authn-sas-tokens"></a>Verwenden Sie gerätespezifische Authentifizierungsanmeldeinformationen mit SAS-Token.
+## <a name="use-per-device-authentication-credentials-using-sas-tokens"></a><a id="authn-sas-tokens"></a>Verwenden Sie gerätespezifische Authentifizierungsanmeldeinformationen mit SAS-Token.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Azure Event Hub | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [Event Hubs-Authentifizierung und -Sicherheitsmodell (Übersicht)](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
 | **Schritte** | <p>Das Event Hubs-Sicherheitsmodell basiert auf einer Kombination aus SAS-Token (Shared Access Signature) und Ereignisherausgebern. Der Herausgebername stellt die Geräte-ID dar, die das Token erhält. Dadurch lassen sich die generierten Token leichter den entsprechenden Geräten zuordnen.</p><p>Alle Nachrichten werden dienstseitig mit dem Ursprung markiert, was die Erkennung nutzlastbasierter Spoofingversuche ermöglicht. Generieren Sie beim Authentifizieren von Geräten ein gerätespezifisches SAS-Token, das einem eindeutigen Herausgeber zugeordnet ist.</p>|
 
-## <a id="multi-factor-azure-admin"></a>Aktivieren Sie Azure Multi-Factor Authentication für Azure-Administratoren.
+## <a name="enable-azure-multi-factor-authentication-for-azure-administrators"></a><a id="multi-factor-azure-admin"></a>Aktivieren Sie Azure Multi-Factor Authentication für Azure-Administratoren.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Azure-Vertrauensstellungsgrenze | 
 | **SDL-Phase**               | Bereitstellung |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [Was ist Azure Multi-Factor Authentication?](https://azure.microsoft.com/documentation/articles/multi-factor-authentication/) |
 | **Schritte** | <p>Die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) ist eine Authentifizierungsmethode, die die Verwendung mehrerer Überprüfungsmethoden erfordert und eine wichtige zweite Sicherheitsebene für Benutzeranmeldungen und Transaktionen bietet. Dies funktioniert durch das Anfordern von zwei oder mehr der folgenden Verifizierungsmethoden:</p><ul><li>Etwas, das Sie wissen (normalerweise ein Kennwort)</li><li>Etwas, das Sie haben (ein vertrautes Gerät, das nicht leicht dupliziert werden kann, wie ein Telefon)</li><li>Etwas, das Sie sind (biometrisch)</li><ul>|
 
-## <a id="anon-access-cluster"></a>Beschränken Sie den anonymen Zugriff auf den Service Fabric-Cluster.
+## <a name="restrict-anonymous-access-to-service-fabric-cluster"></a><a id="anon-access-cluster"></a>Beschränken Sie den anonymen Zugriff auf den Service Fabric-Cluster.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -194,7 +194,7 @@ ms.locfileid: "72244633"
 | **Referenzen**              | [Szenarien für die Clustersicherheit in Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security) |
 | **Schritte** | <p>Cluster sollten immer gesichert werden, um zu verhindern, dass nicht autorisierte Benutzer eine Verbindung mit dem Cluster herstellen können, insbesondere dann, wenn im Cluster Produktionsworkloads ausgeführt werden.</p><p>Achten Sie beim Erstellen eines Service Fabric-Clusters darauf, dass der Sicherheitsmodus auf „Sicher“ festgelegt ist, und konfigurieren Sie das erforderliche X.509-Serverzertifikat. Bei Erstellung eines unsicheren Clusters kann jeder anonyme Benutzer eine Verbindung herstellen, wenn der Cluster Verwaltungsendpunkte im öffentlichen Internet verfügbar macht.</p>|
 
-## <a id="fabric-cn-nn"></a>Stellen Sie sicher, dass sich das Client-zu-Knoten-Zertifikat von Service Fabric vom Knoten-zu-Knoten-Zertifikat unterscheidet.
+## <a name="ensure-that-service-fabric-client-to-node-certificate-is-different-from-node-to-node-certificate"></a><a id="fabric-cn-nn"></a>Stellen Sie sicher, dass sich das Client-zu-Knoten-Zertifikat von Service Fabric vom Knoten-zu-Knoten-Zertifikat unterscheidet.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -205,7 +205,7 @@ ms.locfileid: "72244633"
 | **Referenzen**              | [Szenarien für die Clustersicherheit in Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#_client-to-node-certificate-security), [Herstellen einer Verbindung mit einem sicheren Cluster](https://azure.microsoft.com/documentation/articles/service-fabric-connect-to-secure-cluster/) |
 | **Schritte** | <p>Client-zu-Knoten-Zertifikatsicherheit wird beim Erstellen des Clusters über das Azure-Portal, über Azure Resource Manager-Vorlagen oder über eine eigenständige JSON-Vorlage durch Angeben eines Administratorclientzertifikats und/oder eines Benutzerclientzertifikats konfiguriert.</p><p>Die angegebenen Administrator- und Benutzerclientzertifikate müssen sich von den primären und sekundären Zertifikaten unterscheiden, die Sie für Knoten-zu-Knoten-Sicherheit angeben.</p>|
 
-## <a id="aad-client-fabric"></a>Verwenden Sie AAD, um Clients bei Service Fabric-Clustern zu authentifizieren.
+## <a name="use-aad-to-authenticate-clients-to-service-fabric-clusters"></a><a id="aad-client-fabric"></a>Verwenden Sie AAD, um Clients bei Service Fabric-Clustern zu authentifizieren.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -216,7 +216,7 @@ ms.locfileid: "72244633"
 | **Referenzen**              | [Sicherheitsempfehlungen](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#security-recommendations) |
 | **Schritte** | Unter Azure ausgeführte Cluster können den Zugriff auf die Verwaltungsendpunkte nicht nur mit Clientzertifikaten, sondern auch mit Azure Active Directory (AAD) schützen. Für Azure-Cluster wird die Verwendung der AAD-Sicherheit empfohlen, um Clients und Zertifikate für die Knoten-zu-Knoten-Sicherheit zu authentifizieren.|
 
-## <a id="fabric-cert-ca"></a>Stellen Sie sicher, dass Service Fabric-Zertifikate von einer genehmigten Zertifizierungsstelle (Certificate Authority, CA) bezogen werden.
+## <a name="ensure-that-service-fabric-certificates-are-obtained-from-an-approved-certificate-authority-ca"></a><a id="fabric-cert-ca"></a>Stellen Sie sicher, dass Service Fabric-Zertifikate von einer genehmigten Zertifizierungsstelle (Certificate Authority, CA) bezogen werden.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -227,47 +227,47 @@ ms.locfileid: "72244633"
 | **Referenzen**              | [X.509-Zertifikate und Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#x509-certificates-and-service-fabric) |
 | **Schritte** | <p>Service Fabric verwendet X.509-Serverzertifikate für die Authentifizierung von Knoten und Clients.</p><p>Wichtige Punkte bei der Verwendung von Zertifikaten in Service Fabric:</p><ul><li>Zertifikate, die in Clustern mit Produktionsworkloads verwendet werden, müssen entweder mit einem korrekt konfigurierten Windows Server-Zertifikatsdienst erstellt oder über eine genehmigte Zertifizierungsstelle (Certificate Authority, CA) bezogen werden. Die Zertifizierungsstelle kann eine genehmigte externe Zertifizierungsstelle oder eine ordnungsgemäß verwaltete interne Public Key-Infrastruktur (PKI) sein.</li><li>Verwenden Sie in der Produktion niemals temporäre Zertifikate oder Testzertifikate, die mit Tools wie „MakeCert.exe“ erstellt wurden.</li><li>Verwenden Sie selbstsignierte Zertifikate nur für Testcluster, aber nicht in der Produktion.</li></ul>|
 
-## <a id="standard-authn-id"></a>Verwenden Sie von Identity Server unterstützte Standardauthentifizierungsszenarien.
+## <a name="use-standard-authentication-scenarios-supported-by-identity-server"></a><a id="standard-authn-id"></a>Verwenden Sie von Identity Server unterstützte Standardauthentifizierungsszenarien.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Identity Server | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [IdentityServer3 - The Big Picture](https://identityserver.github.io/Documentation/docsv2/overview/bigPicture.html) (Übersicht über IdentityServer3) |
 | **Schritte** | <p>Typische, von Identity Server unterstützte Interaktionen:</p><ul><li>Browser kommunizieren mit Webanwendungen.</li><li>Webanwendungen kommunizieren mit Web-APIs (manchmal selbstständig, manchmal im Auftrag eines Benutzers).</li><li>Browserbasierte Anwendungen kommunizieren mit Web-APIs.</li><li>Native Anwendungen kommunizieren mit Web-APIs.</li><li>Serverbasierte Anwendungen kommunizieren mit Web-APIs.</li><li>Web-APIs kommunizieren mit Web-APIs (manchmal selbstständig, manchmal im Auftrag eines Benutzers).</li></ul>|
 
-## <a id="override-token"></a>Überschreiben Sie den standardmäßigen Identity Server-Tokencache mit einer skalierbaren Alternative.
+## <a name="override-the-default-identity-server-token-cache-with-a-scalable-alternative"></a><a id="override-token"></a>Überschreiben Sie den standardmäßigen Identity Server-Tokencache mit einer skalierbaren Alternative.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Identity Server | 
 | **SDL-Phase**               | Bereitstellung |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [Identity Server Deployment - Caching](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) (Identity Server-Bereitstellung – Caching) |
 | **Schritte** | <p>Identity Server verfügt über einen einfachen integrierten In-Memory-Cache. Dieser eignet sich zwar gut für kleinere native Apps, lässt sich aber aus folgenden Gründen nicht für Mid-Tier- und Back-End-Anwendungen skalieren:</p><ul><li>Auf diese Anwendungen greifen viele Benutzer gleichzeitig zu. Die Speicherung aller Zugriffstoken im gleichen Speicher führt zu Isolationsproblemen sowie zu Herausforderungen bei umfangreichen Systemen: Bei einer großen Anzahl von Benutzern (jeder davon mit so vielen Token wie Ressourcen, auf die die App in seinem Auftrag zugreift) ergeben sich unter Umständen riesige Mengen und äußerst aufwendige Suchvorgänge.</li><li>Diese Anwendungen werden in der Regel in verteilten Topologien bereitgestellt, in denen mehrere Knoten Zugriff auf den gleichen Cache benötigen.</li><li>Zwischengespeicherte Token müssen bei Prozesswiederverwendungen und Deaktivierungen erhalten bleiben.</li><li>Aus den oben genannten Gründen empfiehlt es sich bei der Implementierung von Web-Apps, den standardmäßigen Identity Server-Tokencache mit einer skalierbaren Alternative (beispielsweise Azure Cache for Redis) zu überschreiben.</li></ul>|
 
-## <a id="binaries-signed"></a>Stellen Sie sicher, dass die Binärdateien der bereitgestellten Anwendung digital signiert sind.
+## <a name="ensure-that-deployed-applications-binaries-are-digitally-signed"></a><a id="binaries-signed"></a>Stellen Sie sicher, dass die Binärdateien der bereitgestellten Anwendung digital signiert sind.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Computer-Vertrauensstellungsgrenze | 
 | **SDL-Phase**               | Bereitstellung |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
-| **Referenzen**              | N/V  |
+| **Attribute**              | –  |
+| **Referenzen**              | –  |
 | **Schritte** | Stellen Sie sicher, dass die Binärdateien der bereitgestellten Anwendung digital signiert sind, damit die Integrität der Binärdateien überprüft werden kann.|
 
-## <a id="msmq-queues"></a>Aktivieren Sie die Authentifizierung beim Herstellen einer Verbindung mit MSMQ-Warteschlangen in WCF.
+## <a name="enable-authentication-when-connecting-to-msmq-queues-in-wcf"></a><a id="msmq-queues"></a>Aktivieren Sie die Authentifizierung beim Herstellen einer Verbindung mit MSMQ-Warteschlangen in WCF.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | WCF | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein, .NET Framework 3 |
-| **Attribute**              | N/V |
+| **Attribute**              | – |
 | **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx) |
 | **Schritte** | Falls das Programm beim Herstellen einer Verbindung mit MSMQ-Warteschlangen keine Authentifizierung aktiviert, kann ein Angreifer anonym Nachrichten an die Warteschlange senden, die dann verarbeitet werden. Wenn bei der Verbindungsherstellung mit einer Warteschlange, die eine Nachricht an ein anderes Programm übermittelt, keine Authentifizierung verwendet wird, kann ein Angreifer eine anonyme (schädliche) Nachricht senden.|
 
@@ -300,7 +300,7 @@ Das Element `<netMsmqBinding/>` der folgenden WCF-Konfigurationsdatei weist WCF 
 </bindings>
 ```
 
-## <a id="message-none"></a>Legen Sie „message clientCredentialType“ nicht auf „None“ fest.
+## <a name="wcf-do-not-set-message-clientcredentialtype-to-none"></a><a id="message-none"></a>Legen Sie „message clientCredentialType“ nicht auf „None“ fest.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -316,7 +316,7 @@ Das Element `<netMsmqBinding/>` der folgenden WCF-Konfigurationsdatei weist WCF 
 <message clientCredentialType=""Certificate""/>
 ```
 
-## <a id="transport-none"></a>Legen Sie „transport clientCredentialType“ nicht auf „None“ fest.
+## <a name="wcf-do-not-set-transport-clientcredentialtype-to-none"></a><a id="transport-none"></a>Legen Sie „transport clientCredentialType“ nicht auf „None“ fest.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -332,47 +332,47 @@ Das Element `<netMsmqBinding/>` der folgenden WCF-Konfigurationsdatei weist WCF 
 <transport clientCredentialType=""Certificate""/>
 ```
 
-## <a id="authn-secure-api"></a>Stellen Sie sicher, dass Web-APIs durch Standardauthentifizierungsverfahren geschützt sind.
+## <a name="ensure-that-standard-authentication-techniques-are-used-to-secure-web-apis"></a><a id="authn-secure-api"></a>Stellen Sie sicher, dass Web-APIs durch Standardauthentifizierungsverfahren geschützt sind.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Web-API | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [Authentication and Authorization in ASP.NET Web API](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api) (Authentifizierung und Autorisierung in der ASP.NET-Web-API), [External Authentication Services with ASP.NET Web API (C#)](https://www.asp.net/web-api/overview/security/external-authentication-services) (Externe Authentifizierungsdienste mit ASP.NET-Web-API (C#) |
 | **Schritte** | <p>Bei der Authentifizierung wird die Identität einer Entität überprüft – in der Regel anhand von Anmeldeinformationen wie Benutzername und Kennwort. Hierzu stehen mehrere Authentifizierungsprotokolle zur Verfügung. Einige davon sind im Anschluss aufgeführt:</p><ul><li>Clientzertifikate</li><li>Windows-basiert</li><li>Formularbasiert</li><li>Verbund – ADFS</li><li>Verbund – Azure AD</li><li>Verbund – Identity Server</li></ul><p>Unter den Links im Abschnitt „Referenzen“ finden Sie detaillierte Informationen zur Implementierung der einzelnen Authentifizierungsschemas zum Schutz einer Web-API.</p>|
 
-## <a id="authn-aad"></a>Verwenden Sie von Azure Active Directory unterstützte Standardauthentifizierungsszenarien.
+## <a name="use-standard-authentication-scenarios-supported-by-azure-active-directory"></a><a id="authn-aad"></a>Verwenden Sie von Azure Active Directory unterstützte Standardauthentifizierungsszenarien.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Azure AD | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [Authentifizierungsszenarien für Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/), [Azure Active Directory-Codebeispiele](https://azure.microsoft.com/documentation/articles/active-directory-code-samples/), [Entwicklerhandbuch zu Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-developers-guide/) |
 | **Schritte** | <p>Azure Active Directory (Azure AD) vereinfacht die Authentifizierung für Entwickler durch Bereitstellung von IaaS (Identity as a Service) sowie durch Unterstützung branchenüblicher Protokolle wie OAuth 2.0 und OpenID Connect. Azure AD unterstützt fünf primäre Anwendungsszenarien:</p><ul><li>Webbrowser zu Webanwendung: Ein Benutzer muss sich bei einer durch Azure AD geschützten Webanwendung anmelden.</li><li>Single-Page-Anwendung (SPA): Ein Benutzer muss sich bei einer durch Azure AD geschützten Single-Page-Webanwendung anmelden.</li><li>Native Anwendung zu Web-API: Eine native Anwendung auf einem Smartphone, Tablet oder PC muss einen Benutzer authentifizieren, um Ressourcen von einer durch Azure AD geschützten Web-API abzurufen.</li><li>Webanwendung zu Web-API: Eine Webanwendung muss Ressourcen von einer durch Azure AD geschützten Web-API abrufen.</li><li>Daemon- oder Serveranwendung zu Web-API: Eine Daemon- oder Serveranwendung ohne Webbenutzeroberfläche muss Ressourcen von einer durch Azure AD geschützten Web-API abrufen.</li></ul><p>Detaillierte Informationen zur Implementierung finden Sie unter den Links im Abschnitt „Referenzen“.</p>|
 
-## <a id="adal-scalable"></a>Überschreiben Sie den standardmäßigen ADAL-Tokencache mit einer skalierbaren Alternative.
+## <a name="override-the-default-adal-token-cache-with-a-scalable-alternative"></a><a id="adal-scalable"></a>Überschreiben Sie den standardmäßigen ADAL-Tokencache mit einer skalierbaren Alternative.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Azure AD | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [Modern Authentication with Azure Active Directory for Web Applications](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/) (Moderne Authentifizierung mit Azure Active Directory für Webanwendungen), [Using Redis as ADAL token cache](https://blogs.msdn.microsoft.com/mrochon/2016/09/19/using-redis-as-adal-token-cache/) (Verwenden von Redis als ADAL-Tokencache)  |
 | **Schritte** | <p>Von Active Directory Authentication Library (ADAL) wird als Standardcache ein In-Memory-Cache verwendet, der auf einem statischen, prozessweit verfügbaren Speicher basiert. Dieser eignet sich zwar für kleinere native Apps, lässt sich aber aus folgenden Gründen nicht für Mid-Tier- und Back-End-Anwendungen skalieren:</p><ul><li>Auf diese Anwendungen greifen viele Benutzer gleichzeitig zu. Die Speicherung aller Zugriffstoken im gleichen Speicher führt zu Isolationsproblemen sowie zu Herausforderungen bei umfangreichen Systemen: Bei einer großen Anzahl von Benutzern (jeder davon mit so vielen Token wie Ressourcen, auf die die App in seinem Auftrag zugreift) ergeben sich unter Umständen riesige Mengen und äußerst aufwendige Suchvorgänge.</li><li>Diese Anwendungen werden in der Regel in verteilten Topologien bereitgestellt, in denen mehrere Knoten Zugriff auf den gleichen Cache benötigen.</li><li>Zwischengespeicherte Token müssen bei Prozesswiederverwendungen und Deaktivierungen erhalten bleiben.</li></ul><p>Aus den oben genannten Gründen empfiehlt es sich bei der Implementierung von Web-Apps, den standardmäßigen ADAL-Tokencache mit einer skalierbaren Alternative (beispielsweise Azure Cache for Redis) zu überschreiben.</p>|
 
-## <a id="tokenreplaycache-adal"></a>Verwenden Sie TokenReplayCache, um die Wiedergabe von ADAL-Authentifizierungstoken zu verhindern.
+## <a name="ensure-that-tokenreplaycache-is-used-to-prevent-the-replay-of-adal-authentication-tokens"></a><a id="tokenreplaycache-adal"></a>Verwenden Sie TokenReplayCache, um die Wiedergabe von ADAL-Authentifizierungstoken zu verhindern.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Azure AD | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [Modern Authentication with Azure Active Directory for Web Applications](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/) (Moderne Authentifizierung mit Azure Active Directory für Webanwendungen) |
 | **Schritte** | <p>Mithilfe der TokenReplayCache-Eigenschaft können Entwickler einen Tokenwiedergabecache definieren. In diesem Speicher können Token gespeichert werden, um die mehrmalige Verwendung eines Tokens zu verhindern.</p><p>Hierbei handelt es sich um eine Maßnahme gegen so genannte Tokenwiedergabeangriffe: Ein Angreifer, der ein bei der Anmeldung gesendetes Token abfängt, kann versuchen, das Token erneut an die App zu senden (es also gewissermaßen wiederzugeben), um eine neue Sitzung zu initiieren. Ein Beispiel: Nach erfolgreicher Benutzerauthentifizierung erfolgt im OIDC-Codegewährungsflow eine Anforderung an den Endpunkt „/signin-oidc“ der vertrauenden Seite mit den Parametern „id_token“, „code“ und „state“.</p><p>Die vertrauende Seite überprüft diese Anforderung und initiiert eine neue Sitzung. Wenn nun ein Angreifer diese Anforderung abfängt und wiedergibt, kann er erfolgreich eine Sitzung initiieren und den Benutzer spoofen. Die Nonce in OpenID Connect kann die Umstände, unter denen der Angriff gelingt, nur einschränken, aber nicht vollständig beseitigen. Zum Schutz ihrer Anwendungen können Entwickler eine ITokenReplayCache-Implementierung bereitstellen und TokenReplayCache eine Instanz zuweisen.</p>|
 
@@ -426,29 +426,29 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 
 Melden Sie sich bei Ihrer lokalen, durch OIDC geschützten Anwendung an, und erfassen Sie die an den Endpunkt `"/signin-oidc"` gerichtete Anforderung in Fiddler, um die Wirksamkeit dieser Konfiguration zu testen. Wenn kein Schutz vorhanden ist und diese Anforderung in Fiddler wiedergegeben wird, wird ein neues Sitzungscookie festgelegt. Wird die Anforderung wiedergegeben, nachdem der TokenReplayCache-Schutz hinzugefügt wurde, löst die Anwendung eine Ausnahme aus: `SecurityTokenReplayDetectedException: IDX10228: The securityToken has previously been validated, securityToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ1......`
 
-## <a id="adal-oauth2"></a>Verwenden Sie ADAL-Bibliotheken, um Tokenanforderungen von OAuth2-Clients an AAD (oder lokales AD) zu verwalten.
+## <a name="use-adal-libraries-to-manage-token-requests-from-oauth2-clients-to-aad-or-on-premises-ad"></a><a id="adal-oauth2"></a>Verwenden Sie ADAL-Bibliotheken, um Tokenanforderungen von OAuth2-Clients an AAD (oder lokales AD) zu verwalten.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Azure AD | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [ADAL](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
 | **Schritte** | <p>Die Azure AD-Authentifizierungsbibliothek (ADAL) ermöglicht es Entwicklern von Clientanwendungen, auf einfache Weise eine Benutzerauthentifizierung mit Active Directory (Cloud oder lokal) bereitzustellen und anschließend Zugriffstoken zur Absicherung von API-Aufrufen abzurufen.</p><p>ADAL verfügt über zahlreiche Features zur Vereinfachung der Authentifizierung für Entwickler. Dazu gehören beispielsweise die Unterstützung von asynchronen Methoden, ein konfigurierbarer Tokencache zum Speichern von Zugriffstoken und Aktualisierungstoken, eine automatische Tokenaktualisierung bei Ablauf eines Zugriffstokens, sofern ein Aktualisierungstoken verfügbar ist, und vieles mehr.</p><p>Da durch ADAL die meisten komplexen Aspekte abgedeckt werden, können sich Entwickler auf die Geschäftslogik in ihren Anwendungen konzentrieren und auf einfache Weise Ressourcen sichern, ohne Sicherheitsexperten sein zu müssen. Für .NET, JavaScript (Client und Node.js), Python, iOS, Android und Java stehen jeweils separate Bibliotheken zur Verfügung.</p>|
 
-## <a id="authn-devices-field"></a>Authentifizieren Sie Geräte, die eine Verbindung mit dem zwischengeschalteten Gateway herstellen.
+## <a name="authenticate-devices-connecting-to-the-field-gateway"></a><a id="authn-devices-field"></a>Authentifizieren Sie Geräte, die eine Verbindung mit dem zwischengeschalteten Gateway herstellen.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Zwischengeschaltetes IoT-Gateway | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
-| **Referenzen**              | N/V  |
+| **Attribute**              | –  |
+| **Referenzen**              | –  |
 | **Schritte** | Stellen Sie sicher, dass jedes Gerät durch das zwischengeschaltete Gateway authentifiziert wird, bevor Daten des Geräts akzeptiert werden und die Upstreamkommunikation mit dem Cloudgateway zugelassen wird. Stellen Sie außerdem sicher, dass bei der Verbindungsherstellung gerätespezifische Anmeldeinformationen verwendet werden, damit einzelne Geräte eindeutig identifiziert werden können.|
 
-## <a id="authn-devices-cloud"></a>Stellen Sie sicher, dass Geräte, die eine Verbindung mit dem Cloudgateway herstellen, authentifiziert werden.
+## <a name="ensure-that-devices-connecting-to-cloud-gateway-are-authenticated"></a><a id="authn-devices-cloud"></a>Stellen Sie sicher, dass Geräte, die eine Verbindung mit dem Cloudgateway herstellen, authentifiziert werden.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -548,7 +548,7 @@ await deviceClient.SendEventAsync(message);
     client.open(fn);
     ```
 
-## <a id="authn-cred"></a>Verwenden Sie gerätespezifische Anmeldeinformationen für die Authentifizierung.
+## <a name="use-per-device-authentication-credentials"></a><a id="authn-cred"></a>Verwenden Sie gerätespezifische Anmeldeinformationen für die Authentifizierung.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -559,7 +559,7 @@ await deviceClient.SendEventAsync(message);
 | **Referenzen**              | [Azure IoT Hub Security Tokens](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/) (Azure IoT Hub – Sicherheitstoken) |
 | **Schritte** | Verwenden Sie anstelle von SAS-Richtlinien auf IoT Hub-Ebene gerätespezifische Authentifizierungsanmeldeinformationen mit SAS-Token, die auf dem Geräteschlüssel oder Clientzertifikat basieren. Dies verhindert die Wiederverwendung der Authentifizierungstoken eines Geräts oder zwischengeschalteten Gateways durch ein anderes Gerät oder zwischengeschaltetes Gateway. |
 
-## <a id="req-containers-anon"></a>Stellen Sie sicher, dass nur die erforderlichen Container und Blobs anonymen Lesezugriff erhalten.
+## <a name="ensure-that-only-the-required-containers-and-blobs-are-given-anonymous-read-access"></a><a id="req-containers-anon"></a>Stellen Sie sicher, dass nur die erforderlichen Container und Blobs anonymen Lesezugriff erhalten.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -570,13 +570,13 @@ await deviceClient.SendEventAsync(message);
 | **Referenzen**              | [Verwalten des anonymen Lesezugriffs auf Container und Blobs](https://azure.microsoft.com/documentation/articles/storage-manage-access-to-resources/), [ Verwenden von Shared Access Signatures (SAS)](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/) |
 | **Schritte** | <p>Standardmäßig kann nur der Besitzer eines Speicherkontos auf einen Container und alle darin enthaltenen Blobs zugreifen. Wenn anonyme Benutzer Leseberechtigungen für einen Container und die enthaltenen Blobs erhalten sollen, kann der öffentliche Zugriff durch Festlegen der Containerberechtigungen gestattet werden. Anonyme Benutzer können Blobs innerhalb eines öffentlich zugänglichen Containers lesen, ohne dass die Anforderung authentifiziert werden muss.</p><p>Container stellen die folgenden Optionen zum Verwalten des Containerzugriffs bereit:</p><ul><li>Vollständiger öffentlicher Lesezugriff: Container- und Blobdaten können über anonyme Anforderungen gelesen werden. Clients können Blobs innerhalb des Containers über eine anonyme Anforderung aufzählen, können aber keine Container innerhalb des Speicherkontos aufzählen.</li><li>Öffentlicher Lesezugriff nur für Blobs: Blob-Daten innerhalb dieses Containers können über anonyme Anforderungen gelesen werden, Containerdaten sind aber nicht verfügbar. Clients können keine Blobs innerhalb des Containers über anonyme Anforderungen aufzählen.</li><li>Kein öffentlicher Lesezugriff: Container- und Blobdaten können nur vom Kontobesitzer gelesen werden.</li></ul><p>Anonymer Zugriff ist am besten für Szenarien, in denen bestimmte Blobs immer für den anonymen Lesezugriff zur Verfügung stehen sollen. Für eine präzisere Steuerung kann eine SAS (Shared Access Signature) erstellt werden, die es ermöglicht, eingeschränkten Zugriff mithilfe verschiedener Berechtigungen und über einen bestimmten Zeitraum zu delegieren. Achten Sie darauf, dass Container und Blobs, die möglicherweise sensible Daten enthalten, nicht versehentlich anonymen Zugriff erhalten.</p>|
 
-## <a id="limited-access-sas"></a>Gewähren Sie mithilfe von SAS oder SAP eingeschränkten Zugriff auf Objekte im Azure-Speicher.
+## <a name="grant-limited-access-to-objects-in-azure-storage-using-sas-or-sap"></a><a id="limited-access-sas"></a>Gewähren Sie mithilfe von SAS oder SAP eingeschränkten Zugriff auf Objekte im Azure-Speicher.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Azure Storage | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V |
+| **Attribute**              | – |
 | **Referenzen**              | [Verwenden von Shared Access Signatures (SAS)](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/), [Shared Access Signatures, Teil 2: Grundlagen zum SAS-Modell](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-2/), [Delegieren des Zugriffs auf Objekte in Ihrem Konto mithilfe von SAS und gespeicherter Zugriffsrichtlinien](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies) |
 | **Schritte** | <p>Shared Access Signatures (SAS) eignen sich sehr gut, um anderen Clients eingeschränkten Zugriff auf Objekte in Ihrem Speicherkonto zu gewähren, ohne den Kontozugriffsschlüssel weiterzugeben. Die SAS ist ein URI, dessen Abfrageparameter alle erforderlichen Informationen für den authentifizierten Zugriff auf eine Speicherressource enthalten. Für den Zugriff auf Speicherressourcen mit der SAS braucht der Client diese nur an den entsprechenden Konstruktor bzw. die entsprechende Methode zu übergeben.</p><p>Sie können eine SAS verwenden, um einem Client Zugriff auf Ressourcen in Ihrem Speicherkonto zu bieten, dem Sie Ihren Kontoschlüssel nicht anvertrauen möchten. Ihre Speicherkontoschlüssel bestehen aus Primär- und Sekundärschlüssel. Beide bieten Administratorzugriff auf Ihr Konto und alle enthaltenen Ressourcen. Wenn Sie Ihre Kontoschlüssel weitergeben, besteht die Gefahr von böswilliger oder fahrlässiger Nutzung. Shared Access Signatures bieten eine sichere alternative, um anderen Clients Lese-, Schreib- und Löschzugriff auf Daten in Ihrem Speicherkonto gemäß der von Ihnen definierten Berechtigungen zu bieten, ohne den Kontoschlüssel weitergeben zu müssen.</p><p>Wenn Sie über einen logischen Satz von Parametern verfügen, die jedes Mal ähnlich sind, empfiehlt sich die Verwendung einer gespeicherten Zugriffsrichtlinie (Stored Access Policy, SAP). Da Sie bei Verwendung einer SAS, die von einer gespeicherten Zugriffsrichtlinie abgeleitet ist, die SAS sofort widerrufen können, sollten Sie nach Möglichkeit immer die gespeicherte Zugriffsrichtlinie verwenden.</p>|

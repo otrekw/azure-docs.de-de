@@ -9,11 +9,11 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.openlocfilehash: 25c047dc9b2ce08ca39e69c6f106e41c5d9bd0dc
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484892"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232374"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-Protokollierung
 
@@ -88,7 +88,7 @@ Informationen zum programmgesteuerten Auflisten von Blobs finden Sie unter [Aufl
 
  In der folgenden Tabelle werden alle Attribute im Protokollnamen beschrieben:
 
-|attribute|Beschreibung|
+|attribute|BESCHREIBUNG|
 |---------------|-----------------|
 |`<service-name>`|Der Name des Speicherdiensts. Beispiel: `blob`, `table` oder `queue`|
 |`YYYY`|Die vierstellige Jahresangabe für das Protokoll. Beispiel: `2011`|

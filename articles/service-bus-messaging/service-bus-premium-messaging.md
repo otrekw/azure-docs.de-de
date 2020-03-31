@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: ef3cc8d4c7354b43389244e72c2dbc5899b8db25
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76774566"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus Premium- und Standard-Preisstufe für Messaging
@@ -68,7 +68,7 @@ Die CPU- und die Arbeitsspeichernutzung werden aus folgenden Gründen nachverfol
 
 - Bereitstellen von transparenter Einsicht in interne Systemabläufe
 - Verstehen der Kapazität der erworbenen Ressourcen
-- Kapazitätsplanung, damit Sie über zentrales Hoch-/Herunterskalieren entscheiden können
+- Kapazitätsplanung, damit Sie über Hoch-/Herunterskalieren entscheiden können
 
 ## <a name="messaging-unit---how-many-are-needed"></a>Messagingeinheit: Wie viele werden benötigt?
 

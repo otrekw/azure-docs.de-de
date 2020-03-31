@@ -1,18 +1,17 @@
 ---
 title: Abrechnung des kommerziellen Marketplace | Azure Marketplace
 description: In diesem Artikel werden Themen zum Handel auf dem kommerziellen Marketplace behandelt.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/12/2019
-ms.openlocfilehash: a483f143b70a4969114c078b3b0a6f960c4b6b41
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a0912e1dca63fabfe6bc546305824a1c582b9a2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75976080"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279741"
 ---
 # <a name="commercial-marketplace-billing"></a>Abrechnung des kommerziellen Marketplace
 

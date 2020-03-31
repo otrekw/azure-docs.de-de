@@ -11,11 +11,11 @@ ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
 ms.openlocfilehash: 1acd7d6a3b203997e3acd8d7959b1572e09845f3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227981"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228602"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Konfigurieren des öffentlichen Endpunkts in der verwalteten Azure SQL-Datenbank-Instanz
 
@@ -92,7 +92,7 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 1. Wählen Sie die Registerkarte **Eingangssicherheitsregeln** zum **Hinzufügen** einer Regel mit den folgenden Einstellungen aus, die höhere Priorität aufweist als die Regel **deny_all_inbound**: </br> </br>
 
-    |Einstellung  |Empfohlener Wert  |BESCHREIBUNG  |
+    |Einstellung  |Vorgeschlagener Wert  |BESCHREIBUNG  |
     |---------|---------|---------|
     |**Quelle**     |Beliebige IP-Adresse oder beliebiges Diensttag         |<ul><li>Wählen Sie für Azure-Dienste wie Power BI das Azure Cloud-Diensttag aus</li> <li>Verwenden Sie für Ihren Computer oder Ihre Azure-VM die NAT IP-Adresse</li></ul> |
     |**Quellportbereiche**     |*         |Behalten Sie für diese Option „*“ (beliebig) bei, da Quellports in der Regel dynamisch zugeordnet werden und als solche unvorhersehbar sind |

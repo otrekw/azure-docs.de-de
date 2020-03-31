@@ -1,18 +1,18 @@
 ---
 title: Automatisieren des Lebenszyklus Ihrer Apps mit Visual Studio App Center und Azure-Diensten
 description: Erfahren Sie mehr über die Dienste wie App Center, mit denen Sie kontinuierliche Erstellung und Continuous Integration für Ihre mobilen Anwendungen einrichten können.
-author: elamalani
+author: codemillmatt
 ms.assetid: 34a8a070-9b3c-4faf-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 9b0a9e10a88836ce83e636db20180c3692ab4429
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 0560f47b832ec2965d9b567e1aeff78baa9c247c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453193"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240919"
 ---
 # <a name="automate-the-lifecycle-of-your-apps-with-continuous-build-and-integration"></a>Automatisieren des Lebenszyklus Ihrer Apps mit kontinuierlicher Erstellung und Continuous Integration
 

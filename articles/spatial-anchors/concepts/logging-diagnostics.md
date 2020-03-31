@@ -9,10 +9,10 @@ ms.date: 02/22/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: f4359db1deda2295a66bcb97cf374d0fe9bc3ef7
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74270126"
 ---
 # <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>Protokollierung und Diagnose in Azure Spatial Anchors
@@ -44,7 +44,7 @@ Diese Ereignisrückrufe stehen zur Verfügung, um Protokolle und Fehler aus der 
 
 - [LogLevel:](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel) Gibt die Detailebene für die Ereignisse an, die von der Laufzeit empfangen werden.
 - [OnLogDebug:](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug) Stellt Standardprotokollereignisse zum Debuggen bereit.
-- [Fehler](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error): Stellt Protokollereignisse bereit, die von der Laufzeit als Fehler betrachtet werden.
+- [Fehler:](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error) Stellt Protokollereignisse bereit, die von der Laufzeit als Fehler betrachtet werden.
 
 ## <a name="diagnostics-logging"></a>Diagnoseprotokollierung
 

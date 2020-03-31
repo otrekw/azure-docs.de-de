@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 01/25/2019
 ms.openlocfilehash: 4eeaa187142a6d0d97b12f685ebc455f3844606f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73825878"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Strategien für die Notfallwiederherstellung für Anwendungen mit Pools für elastische SQL-Datenbank-Instanzen
@@ -61,7 +61,7 @@ Wenn der Ausfall temporärer Art war, ist es möglich, dass die primäre Region 
 
 An diesem Punkt ist die Anwendung in der primären Region online, und alle Mandantendatenbanken sind im primären Pool verfügbar.
 
-![Abbildung 3](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-3.png)
+![Abbildung 3](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-3.png)
 
 Der **Hauptvorteil** dieser Strategie sind die geringen laufenden Kosten für die Datenebenenredundanz. Sicherungen werden automatisch über den SQL-Datenbankdienst ohne Umschreiben der Anwendung und zusätzliche Kosten durchgeführt.  Kosten fallen nur an, wenn die elastischen Datenbanken wiederhergestellt werden. Der **Nachteil** besteht darin, dass die vollständige Wiederherstellung aller Mandantendatenbanken sehr lange dauert. Die Dauer hängt von der Gesamtanzahl von Wiederherstellungen ab, die Sie in der Region für die Notfallwiederherstellung initiieren, sowie von der Gesamtgröße der Mandantendatenbanken. Auch wenn Sie den Wiederherstellungen einiger Mandanten Vorrang einräumen, entsteht ein Wettbewerb mit allen anderen Wiederherstellungen, die in derselben Region initiiert werden. Der Dienst führt Vermittlungen und Drosselungen durch, um die allgemeinen Auswirkungen auf die Datenbanken der vorhandenen Kunden gering zu halten. Außerdem kann die Wiederherstellung der Mandantendatenbanken erst beginnen, nachdem der neue Pool für elastische Datenbanken in der Region für die Notfallwiederherstellung erstellt wurde.
 
@@ -71,7 +71,7 @@ Wir verwenden eine ausgereifte SaaS-Anwendung mit Dienstangeboten auf mehreren E
 
 Trennen Sie zur Unterstützung dieses Szenarios die Testmandanten von den zahlenden Mandanten, indem Sie sie in separaten Pools für elastische Datenbanken anordnen. Für die Testkunden gilt dann eine niedrigere Anzahl von eDTUs oder virtuellen Kernen pro Mandant und ein SLA mit einer längeren Wiederherstellungszeit. Die zahlenden Kunden sind in einem Pool mit einer höheren Anzahl von eDTUs oder virtuellen Kernen pro Mandant und einem höheren SLA angeordnet. Um die kürzeste Wiederherstellungsdauer zu gewährleisten, werden die Mandantendatenbanken der zahlenden Kunden georepliziert. Diese Konfiguration ist im nächsten Diagramm dargestellt.
 
-![Abbildung 4](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
+![Abbildung 4](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-4.png)
 
 Wie beim ersten Szenario auch sind die Verwaltungsdatenbanken ziemlich aktiv, sodass Sie dafür eine einzelne georeplizierte Datenbank verwenden (1). So wird die vorhersagbare Leistung für neue Kundenabonnements, Profilupdates und andere Verwaltungsvorgänge sichergestellt. Die Region, in der sich die primären Replikate der Verwaltungsdatenbanken befinden, ist die primäre Region, und die Region, in der sich die sekundären Replikate der Verwaltungsdatenbanken befinden, ist die Region für die Notfallwiederherstellung.
 
@@ -115,7 +115,7 @@ Verwenden Sie für dieses Szenario drei separate Pools für elastische Datenbank
 
 Um bei Ausfällen die kürzeste Wiederherstellungsdauer garantieren zu können, werden die Mandantendatenbanken der zahlenden Kunden mit 50 Prozent der primären Datenbanken in beiden Regionen georepliziert. Außerdem verfügt jede Region über 50 Prozent der sekundären Datenbanken. Wenn eine Region offline ist, sind hierbei also nur 50 Prozent der Datenbanken zahlender Kunden betroffen und müssen einem Failover unterzogen werden. Die restlichen Datenbanken bleiben intakt. Diese Konfiguration ist im folgenden Diagramm dargestellt:
 
-![Abbildung 4](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
+![Abbildung 4](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-7.png)
 
 Wie in den vorherigen Szenarien auch sind die Verwaltungsdatenbanken sehr aktiv, sodass Sie sie als einzelne georeplizierte Datenbanken konfigurieren sollten (1). So wird die vorhersagbare Leistung der neuen Kundenabonnements, Profilupdates und anderen Verwaltungsvorgänge sichergestellt. Region A ist die primäre Region für die Verwaltungsdatenbanken, und Region B wird für die Wiederherstellung der Verwaltungsdatenbanken verwendet.
 

@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
 ms.openlocfilehash: 7273c7b1dbf5eb6c855b95a8661f38bd4bd14af7
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73839046"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Schnellstart: Konfigurieren einer Azure-VM für das Herstellen einer Verbindung mit einer verwalteten Azure SQL-Datenbank-Instanz
@@ -44,7 +44,7 @@ In den folgenden Schritten wird im VNET der verwalteten Instanz ein neues Subnet
 
 3. Füllen Sie das Formular mit den Angaben aus der folgenden Tabelle aus:
 
-   | Einstellung| Empfohlener Wert | Beschreibung |
+   | Einstellung| Vorgeschlagener Wert | Beschreibung |
    | ---------------- | ----------------- | ----------- |
    | **Name** | Ein gültiger Name|Gültige Namen finden Sie unter [Benennungskonventionen](/azure/architecture/best-practices/resource-naming).|
    | **Adressbereich (CIDR-Block)** | Ein gültiger Bereich | Der Standardwert reicht für diesen Schnellstart aus.|
@@ -73,7 +73,7 @@ Die einfachste Möglichkeit zum Erstellen eines virtuellen Clientcomputers mit a
 
 2. Füllen Sie das Formular mit den Angaben aus der folgenden Tabelle aus:
 
-   | Einstellung| Empfohlener Wert | BESCHREIBUNG |
+   | Einstellung| Vorgeschlagener Wert | BESCHREIBUNG |
    | ---------------- | ----------------- | ----------- |
    | **Abonnement** | Ein gültiges Abonnement | Hierbei muss es sich um ein Abonnement mit der Berechtigung zum Erstellen neuer Ressourcen handeln. |
    | **Ressourcengruppe** |Die Ressourcengruppe, die Sie im Schnellstart [Erstellen einer verwalteten Instanz](sql-database-managed-instance-get-started.md) angegeben haben.|In dieser Ressourcengruppe muss das VNET enthalten sein.|
@@ -107,7 +107,7 @@ In den folgenden Schritten wird veranschaulicht, wie Sie für Ihren neu erstellt
 
     ![VM](./media/sql-database-managed-instance-configure-vm/vm.png)  
 
-2. Wählen Sie **Verbinden**aus.
+2. Wählen Sie **Verbinden**.
 
    Eine Formular für eine RDP-Datei (Remotedesktopprotokoll) wird mit der öffentlichen IP-Adresse und der Portnummer für den virtuellen Computer angezeigt.
 
@@ -120,7 +120,7 @@ In den folgenden Schritten wird veranschaulicht, wie Sie für Ihren neu erstellt
 
 4. Schließen Sie das Formular **Mit virtuellem Computer verbinden**.
 5. Öffnen Sie die heruntergeladene RDP-Datei, um eine Verbindung mit Ihrem virtuellen Computer herzustellen.
-6. Wenn Sie dazu aufgefordert werden, wählen Sie **Connect** aus. Auf einem Macintosh benötigen Sie einen RDP-Client, z.B. diesen [Remotedesktopclient](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12) aus dem Mac App Store.
+6. Wenn Sie dazu aufgefordert werden, wählen Sie **Connect** aus. Auf einem Macintosh benötigen Sie einen RDP-Client, z. B. diesen [Remotedesktopclien](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)t aus dem Mac App Store.
 
 7. Geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie beim Erstellen des virtuellen Computers festgelegt haben, und wählen Sie anschließend **OK** aus.
 

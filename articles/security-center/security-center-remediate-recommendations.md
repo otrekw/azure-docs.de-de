@@ -14,17 +14,17 @@ ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: 6863f4bbfc6aabc4e7bf4314ad26dd4590d31362
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77603500"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Umsetzen von Empfehlungen in Azure Security Center
 
 Empfehlungen enthalten Vorschläge dazu, wie Sie Ihre Ressourcen besser schützen können. Sie implementieren eine Empfehlung, indem Sie die in der Empfehlung beschriebenen Schritte zur Bereinigung ausführen.
 
-## Schritte zur Bereinigung<a name="remediation-steps"></a>
+## <a name="remediation-steps"></a>Schritte zur Bereinigung<a name="remediation-steps"></a>
 
 Nach der Überprüfung aller Empfehlungen müssen Sie entscheiden, welche zuerst umgesetzt werden soll. Zur Priorisierung Ihrer Aktionen empfiehlt sich die Verwendung der [Auswirkung auf die Sicherheitsbewertung](security-center-recommendations.md#monitor-recommendations).
 
@@ -36,7 +36,7 @@ Nach der Überprüfung aller Empfehlungen müssen Sie entscheiden, welche zuerst
 
 1. Nach Abschluss des Vorgangs wird eine Benachrichtigung angezeigt, in der Sie darüber informiert werden, ob die Umstellung erfolgreich durchgeführt wurde.
 
-## Schnelle Problembehebung<a name="one-click"></a>
+## <a name="quick-fix-remediation"></a>Schnelle Problembehebung<a name="one-click"></a>
 
 Mithilfe der schnellen Problembehebung können Sie eine Empfehlung schnell für mehrere Ressourcen umsetzen. Diese Option ist nur für bestimmte Empfehlungen verfügbar. Die schnelle Problembehebung vereinfacht das Umsetzen von Empfehlungen und ermöglicht Ihnen eine schnelle Verbesserung Ihrer Sicherheitsbewertung und erhöht die Sicherheit in Ihrer Umgebung.
 
@@ -65,7 +65,7 @@ So implementieren Sie eine schnelle Problembehebung:
 
 1. Nach Abschluss des Vorgangs wird eine Benachrichtigung angezeigt, in der Sie darüber informiert werden, ob die Umstellung erfolgreich durchgeführt wurde.
 
-## Protokollierung der schnellen Problembehebung im Aktivitätsprotokoll <a name="activity-log"></a>
+## <a name="quick-fix-remediation-logging-in-the-activity-log"></a>Protokollierung der schnellen Problembehebung im Aktivitätsprotokoll <a name="activity-log"></a>
 
 Beim Korrekturvorgang wird ein Vorlagenbereitstellungs- oder REST PATCH-API-Aufruf verwendet, um die Konfiguration auf die Ressource anzuwenden. Diese Vorgänge werden im [Azure-Aktivitätsprotokoll](../azure-resource-manager/management/view-activity-logs.md) protokolliert.
 

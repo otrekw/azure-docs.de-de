@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
 ms.openlocfilehash: 2f316e57e407a0588e77f56d6e1fbe8c19ba5fee
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75562118"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Diensttarife beim DTU-basierten Kaufmodell
@@ -161,7 +161,7 @@ Beim Skalierungsfaktor 500 (SF=500) hat die Datenbank 100 Benutzer und kann ei
 
 Ein gültiger Vergleichstestlauf erfordert eine stabile Messdauer von mindestens einer Stunde.
 
-### <a name="metrics"></a>metrics
+### <a name="metrics"></a>Metriken
 
 Die Hauptmetriken im Vergleichstest sind Durchsatz und Antwortzeit.
 

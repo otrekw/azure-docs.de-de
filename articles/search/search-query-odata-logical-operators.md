@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 2d3952f7d2adc26892cbebcd962f2ea25b86de7d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113188"
 ---
 # <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Logische OData-Operatoren in der kognitiven Azure-Suche: `and`, `or`, `not`
@@ -54,7 +54,7 @@ Ein interaktives Syntaxdiagramm ist ebenfalls verfügbar:
 > [OData-Syntaxdiagramm für Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/#logical_expression)
 
 > [!NOTE]
-> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md).
+> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md).
 
 Es gibt zwei Formen von logischen Ausdrücken: binär (`and`/`or`) mit zwei Unterausdrücken und unär (`not`) mit nur einem Unterausdruck. Die Unterausdrücke können beliebige boolesche Ausdrücke sein:
 
@@ -72,7 +72,7 @@ Es gibt zwei Formen von logischen Ausdrücken: binär (`and`/`or`) mit zwei Unte
 
 Die meisten booleschen Ausdrücke wie Funktionen und Vergleiche können keine `null`-Werte erzeugen, und die logischen Operatoren können nicht direkt auf das `null`-Literal angewendet werden (z.B. ist `x and null` unzulässig). Boolesche Felder können jedoch `null` sein, sodass Sie beachten müssen, wie sich die Operatoren `and`, `or` und `not` bei Vorhandensein von null verhalten. Dies wird in der folgenden Tabelle zusammengefasst, wobei `b` ein Feld vom Typ `Edm.Boolean` ist:
 
-| Ausdruck | Ergebnis, wenn `b` `null` ist |
+| Ausdruck | Ergebnis, wenn `b``null` ist |
 | --- | --- |
 | `b` | `false` |
 | `not b` | `true` |
@@ -87,7 +87,7 @@ Die meisten booleschen Ausdrücke wie Funktionen und Vergleiche können keine `n
 | `b or true` | `true` |
 | `b or false` | `false` |
 
-Wenn ein boolesches Feld `b` von selbst in einem Filterausdruck vorkommt, verhält es sich, als wäre es `b eq true`. Wenn also `b` `null` ist, wird der Ausdruck in `false` ausgewertet. Auf ähnliche Weise verhält sich `not b` wie `not (b eq true)` und wird daher in `true` ausgewertet. Auf diese Weise verhalten sich `null`-Felder wie `false`. Dies entspricht dem Verhalten bei der Kombination mit anderen Ausdrücken unter Verwendung von `and` und `or`, wie in der Tabelle oben gezeigt. Dennoch wird ein direkter Vergleich mit `false` (`b eq false`) immer noch in `false` ausgewertet. Mit anderen Worten: `null` ist nicht gleich `false`, auch wenn es sich in booleschen Ausdrücken so verhält.
+Wenn ein boolesches Feld `b` von selbst in einem Filterausdruck vorkommt, verhält es sich, als wäre es `b eq true`. Wenn also `b``null` ist, wird der Ausdruck in `false` ausgewertet. Auf ähnliche Weise verhält sich `not b` wie `not (b eq true)` und wird daher in `true` ausgewertet. Auf diese Weise verhalten sich `null`-Felder wie `false`. Dies entspricht dem Verhalten bei der Kombination mit anderen Ausdrücken unter Verwendung von `and` und `or`, wie in der Tabelle oben gezeigt. Dennoch wird ein direkter Vergleich mit `false` (`b eq false`) immer noch in `false` ausgewertet. Mit anderen Worten: `null` ist nicht gleich `false`, auch wenn es sich in booleschen Ausdrücken so verhält.
 
 ## <a name="examples"></a>Beispiele
 

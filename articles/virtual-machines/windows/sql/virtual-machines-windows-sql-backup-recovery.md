@@ -15,11 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
 ms.openlocfilehash: e4c126bbac73accb984f1040a7fea1740d919233
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392835"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226638"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Sicherung und Wiederherstellung für SQL Server auf virtuellen Azure-Computern
 
@@ -39,7 +39,7 @@ Die folgende Tabelle enthält Informationen zu verschiedenen Sicherungs- und Wie
 
 In den folgenden Abschnitten wird jede Option ausführlicher beschrieben. Der letzte Abschnitt dieses Artikels enthält eine Zusammenfassung in Form einer Funktionsmatrix.
 
-## <a id="automated"></a> Automatisierte Sicherung
+## <a name="automated-backup"></a><a id="automated"></a> Automatisierte Sicherung
 
 Die automatisierte Sicherung ist ein automatischer Sicherungsdienst für die SQL Server-Editionen Standard und Enterprise, die auf einem virtuellen Windows-Computer in Azure ausgeführt werden. Dieser Dienst wird von der [SQL Server-IaaS-Agent-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md) bereitgestellt, die auf SQL Server Windows-VM-Images im Azure-Portal automatisch installiert wird.
 
@@ -58,7 +58,7 @@ Informationen zum Konfigurieren der automatisierten Sicherung für SQL-VMs finde
 - **SQL Server 2016/2017**: [Automatisierte Sicherung v2 für virtuelle Azure-Computer](virtual-machines-windows-sql-automated-backup-v2.md)
 - **SQL Server 2014**: [Automatisierte Sicherung für SQL Server 2014-VMs](virtual-machines-windows-sql-automated-backup.md)
 
-## <a id="azbackup"></a> Azure Backup für SQL-VMs
+## <a name="azure-backup-for-sql-vms"></a><a id="azbackup"></a> Azure Backup für SQL-VMs
 
 [Azure Backup](/azure/backup/) bietet Sicherungsfunktionen auf Unternehmensniveau für SQL Server-Instanzen auf Azure-VMs. Alle Sicherungen werden in einem Recovery Services-Tresor gespeichert und verwaltet. Diese Lösung bietet insbesondere für Unternehmen viele Vorteile:
 
@@ -79,7 +79,7 @@ Eine kurze Übersicht und Demo der Funktionsweise finden Sie im folgenden Video:
 
 Diese Azure Backup-Lösung für SQL-VMs ist allgemein verfügbar. Weitere Informationen finden Sie unter [Sichern einer SQL Server-Datenbank in Azure](../../../backup/backup-azure-sql-database.md).
 
-## <a id="manual"></a> Manuelle Sicherung
+## <a name="manual-backup"></a><a id="manual"></a> Manuelle Sicherung
 
 Wenn Sie Sicherungs- und Wiederherstellungsvorgänge auf Ihren SQL-VMs manuell verwalten möchten, stehen Ihnen je nach SQL Server-Version verschiedene Optionen zur Verfügung. Eine Übersicht über die Sicherung und Wiederherstellung finden Sie in einem der folgenden Artikel, je nachdem, welche Version von SQL Server Sie verwenden:
 

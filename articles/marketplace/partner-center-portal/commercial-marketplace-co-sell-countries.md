@@ -1,19 +1,18 @@
 ---
 title: Co-Selling – Länder- und Regionscodes | Azure Marketplace
 description: Verwenden Sie diese zweistelligen Länder-/Regionscodes, wenn Sie Kontaktinformationen auf der Co-Selling-Seite Ihres Angebots angeben.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 925218879ce0dc1c69054f861e37e86c122d47f9
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 097fe2c394cb48a13fbc9cb253ef4df9c9959713
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934353"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277055"
 ---
 # <a name="co-sell-country-and-region-codes"></a>Co-Selling – Länder- und Regionscodes
 

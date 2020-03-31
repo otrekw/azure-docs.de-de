@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 9acf92649d5b44e277d3ae3d277c9b1112fdcdd0
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 163dc0d6ecd4f91273a82b04ce186f7a8df868af
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273891"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79465055"
 ---
 # <a name="nd-series"></a>ND-Serie
 
@@ -38,7 +38,9 @@ Updates mit Speicherbeibehaltung: Nicht unterstützt
 
 Eine GPU entspricht einer P40-Karte.
 
-\* RDMA-fähig [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
+*RDMA-fähig
+
+[!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## <a name="supported-operating-systems-and-drivers"></a>Unterstützte Betriebssysteme und Treiber
 

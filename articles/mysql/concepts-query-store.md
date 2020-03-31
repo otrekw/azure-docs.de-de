@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 4ac6e4c71b028b66ef50ac949c169a1e02a2c0e3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: d138c2fb8ed667d5b3c961c9f567264fa40edaee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770838"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537039"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Überwachen der Azure Database for MySQL-Leistung mit dem Abfragespeicher
 
@@ -19,7 +19,7 @@ ms.locfileid: "74770838"
 
 Das Feature „Abfragespeicher“ in Azure Database for MySQL verfügt über eine Möglichkeit zum Nachverfolgen der Abfrageleistung im Zeitverlauf. Der Abfragespeicher vereinfacht das Beheben von Leistungsproblemen, da er es Ihnen ermöglicht, die am längsten ausgeführten und ressourcenintensivsten Abfragen schnell zu ermitteln. Der Abfragespeicher erfasst automatisch einen Verlauf der Abfragen und Laufzeitstatistiken und bewahrt diese auf, damit Sie sie überprüfen können. Er unterteilt die Daten nach Zeitfenstern, damit Sie Verwendungsmuster für Datenbanken erkennen können. Die Daten für alle Benutzer, Datenbanken und Abfragen werden in der Schemadatenbank **mysql** der Azure Database for MySQL-Instanz gespeichert.
 
-## <a name="common-scenarios-for-using-query-store"></a>Häufige Szenarien für die Verwendung des Abfragespeichers
+## <a name="common-scenarios-for-using-query-store"></a>Gängige Szenarien für die Verwendung des Abfragespeichers
 
 Der Abfragespeicher kann in unterschiedlichen Szenarien genutzt werden, z. B.:
 
@@ -91,18 +91,18 @@ Die folgenden Optionen stehen für die Konfiguration der Abfragespeicherparamete
 |---|---|---|---|
 | query_store_capture_mode | Schaltet die Abfragespeicherfunktion basierend auf dem Wert ein oder aus. Hinweis: Bei ausgeschaltetem Leistungsschema (performance_schema) werden durch Aktivieren von „query_store_capture_mode“ das Leistungsschema und ein Teil der Leistungsschemainstrumente aktiviert, die für dieses Feature benötigt werden. | ALL | NONE, ALL |
 | query_store_capture_interval | Das Erfassungsintervall des Abfragespeichers in Minuten. Ermöglicht das Angeben des Intervalls, nach dem die Abfragemetriken aggregiert werden. | 15 | 5–60 |
-| query_store_capture_utility_queries | Kann ein- oder ausgeschaltet werden, um die Erfassung aller Hilfsabfragen, die im System ausgeführt werden, zu aktivieren oder zu deaktivieren. | NO | YES, NO |
+| query_store_capture_utility_queries | Kann ein- oder ausgeschaltet werden, um die Erfassung aller Hilfsabfragen, die im System ausgeführt werden, zu aktivieren oder zu deaktivieren. | Nein | YES, NO |
 | query_store_retention_period_in_days | Zeitfenster in Tagen für die Aufbewahrung der Daten im Abfragespeicher. | 7 | 1 – 30 |
 
 Die folgenden Optionen gelten speziell für Wartestatistiken.
 
 | **Parameter** | **Beschreibung** | **Standard** | **Bereich** |
 |---|---|---|---|
-| query_store_wait_sampling_capture_mode | Ermöglicht das Ein-/Ausschalten der Wartestatistik. | KEINE | NONE, ALL |
+| query_store_wait_sampling_capture_mode | Ermöglicht das Ein-/Ausschalten der Wartestatistik. | Keine | NONE, ALL |
 | query_store_wait_sampling_frequency | Ändert die Frequenz der Stichprobenentnahme für Wartezeiten in Sekunden. Möglicher Bereich: zwischen fünf und 300 Sekunden. | 30 | 5–300 |
 
 > [!NOTE]
-> Derzeit wird diese Konfiguration durch **query_store_capture_mode** ersetzt. Dies bedeutet, dass sowohl **query_store_capture_mode** als auch **query_store_wait_sampling_capture_mode** für „ALL“ aktiviert sein muss, damit Wartestatistiken funktionieren. Wenn **query_store_capture_mode** deaktiviert ist, sind auch die Wartestatistiken deaktiviert. Der Grund ist, dass für Wartestatistiken die Aktivierung von „performance_schema“ und der vom Abfragespeicher erfasste „query_text“ verwendet werden.
+> Derzeit wird diese Konfiguration durch **query_store_capture_mode** ersetzt. Dies bedeutet, dass sowohl **query_store_capture_mode** als auch **query_store_wait_sampling_capture_mode** für „ALL“ aktiviert sein muss, damit Wartestatistiken funktionieren. Wenn **query_store_capture_mode** deaktiviert ist, ist auch die Wartestatistik deaktiviert, da für die Wartestatistik das aktivierte Leistungsschema (performance_schema) und der vom Abfragespeicher erfasste Abfragetext (query_text) verwendet werden.
 
 Verwenden Sie das [Azure-Portal](howto-server-parameters.md) oder die [Azure-Befehlszeilenschnittstelle](howto-configure-server-parameters-using-cli.md) zum Abrufen oder Festlegen eines anderen Werts für einen Parameter.
 
@@ -118,32 +118,32 @@ In dieser Ansicht werden alle Daten im Abfragespeicher zurückgegeben. Es gibt e
 
 | **Name** | **Datentyp** | **IS_NULLABLE** | **Beschreibung** |
 |---|---|---|---|
-| `schema_name`| varchar(64) | NO | Name des Schemas |
-| `query_id`| bigint(20) | NO| Eindeutige ID, die für die spezifische Abfrage generiert wird. Wenn die gleiche Abfrage in einem anderen Schema ausgeführt wird, wird eine neue ID generiert. |
-| `timestamp_id` | timestamp| NO| Zeitstempel für die Ausführung der Abfrage. Dieser Wert basiert auf der Konfiguration von „query_store_interval“.|
-| `query_digest_text`| longtext| NO| Der normalisierte Abfragetext nach dem Entfernen aller Literale.|
-| `query_sample_text` | longtext| NO| Erste Darstellung der eigentlichen Abfrage mit Literalen.|
-| `query_digest_truncated` | bit| JA| Gibt an, ob der Abfragetext gekürzt wurde. Der Wert lautet „YES“, wenn die Abfrage länger als 1 KB ist.|
-| `execution_count` | bigint(20)| NO| Gibt an, wie oft die Abfrage für diese Zeitstempel-ID bzw. während des konfigurierten Intervallzeitraums ausgeführt wurde.|
-| `warning_count` | bigint(20)| NO| Anzahl von Warnungen, die von dieser Abfrage während des Intervalls generiert wurden.|
-| `error_count` | bigint(20)| NO| Anzahl von Fehlern, die von dieser Abfrage während des Intervalls generiert wurden.|
-| `sum_timer_wait` | double| JA| Gesamte Ausführungsdauer dieser Abfrage während des Intervalls.|
-| `avg_timer_wait` | double| JA| Durchschnittliche Ausführungsdauer dieser Abfrage während des Intervalls.|
-| `min_timer_wait` | double| JA| Minimale Ausführungszeit für diese Abfrage.|
-| `max_timer_wait` | double| JA| Maximale Ausführungszeit.|
-| `sum_lock_time` | bigint(20)| NO| Gesamte Zeit, die für alle Sperren dieser Abfrageausführung während dieses Zeitfensters aufgewendet wurde.|
-| `sum_rows_affected` | bigint(20)| NO| Anzahl von betroffenen Zeilen.|
-| `sum_rows_sent` | bigint(20)| NO| Anzahl von Zeilen, die an den Client gesendet wurden.|
-| `sum_rows_examined` | bigint(20)| NO| Anzahl untersuchter Zeilen|
-| `sum_select_full_join` | bigint(20)| NO| Anzahl von vollständigen Verknüpfungen.|
-| `sum_select_scan` | bigint(20)| NO| Anzahl für Scanauswahl. |
-| `sum_sort_rows` | bigint(20)| NO| Anzahl sortierter Zeilen.|
-| `sum_no_index_used` | bigint(20)| NO| Anzahl der Fälle, in denen von der Abfrage keine Indizes verwendet wurden.|
-| `sum_no_good_index_used` | bigint(20)| NO| Anzahl der Fälle, in denen die Abfrageausführungs-Engine keine guten Indizes verwendet hat.|
-| `sum_created_tmp_tables` | bigint(20)| NO| Gesamtzahl erstellter temporärer Tabellen.|
-| `sum_created_tmp_disk_tables` | bigint(20)| NO| Gesamtzahl temporärer Tabellen, die auf dem Datenträger erstellt wurden (E/A-Generierung).|
-| `first_seen` | timestamp| NO| Erstes Auftreten der Abfrage (UTC) während des Aggregationsfensters.|
-| `last_seen` | timestamp| NO| Letztes Auftreten der Abfrage (UTC) während dieses Aggregationsfensters.|
+| `schema_name`| varchar(64) | Nein | Name des Schemas |
+| `query_id`| bigint(20) | Nein| Eindeutige ID, die für die spezifische Abfrage generiert wird. Wenn die gleiche Abfrage in einem anderen Schema ausgeführt wird, wird eine neue ID generiert. |
+| `timestamp_id` | timestamp| Nein| Zeitstempel für die Ausführung der Abfrage. Dieser Wert basiert auf der Konfiguration von „query_store_interval“.|
+| `query_digest_text`| longtext| Nein| Der normalisierte Abfragetext nach dem Entfernen aller Literale.|
+| `query_sample_text` | longtext| Nein| Erste Darstellung der eigentlichen Abfrage mit Literalen.|
+| `query_digest_truncated` | bit| YES| Gibt an, ob der Abfragetext gekürzt wurde. Der Wert lautet „YES“, wenn die Abfrage länger als 1 KB ist.|
+| `execution_count` | bigint(20)| Nein| Gibt an, wie oft die Abfrage für diese Zeitstempel-ID bzw. während des konfigurierten Intervallzeitraums ausgeführt wurde.|
+| `warning_count` | bigint(20)| Nein| Anzahl von Warnungen, die von dieser Abfrage während des Intervalls generiert wurden.|
+| `error_count` | bigint(20)| Nein| Anzahl von Fehlern, die von dieser Abfrage während des Intervalls generiert wurden.|
+| `sum_timer_wait` | double| YES| Gesamte Ausführungsdauer dieser Abfrage während des Intervalls.|
+| `avg_timer_wait` | double| YES| Durchschnittliche Ausführungsdauer dieser Abfrage während des Intervalls.|
+| `min_timer_wait` | double| YES| Minimale Ausführungszeit für diese Abfrage.|
+| `max_timer_wait` | double| YES| Maximale Ausführungszeit.|
+| `sum_lock_time` | bigint(20)| Nein| Gesamte Zeit, die für alle Sperren dieser Abfrageausführung während dieses Zeitfensters aufgewendet wurde.|
+| `sum_rows_affected` | bigint(20)| Nein| Anzahl betroffener Zeilen.|
+| `sum_rows_sent` | bigint(20)| Nein| Anzahl von Zeilen, die an den Client gesendet wurden.|
+| `sum_rows_examined` | bigint(20)| Nein| Anzahl untersuchter Zeilen|
+| `sum_select_full_join` | bigint(20)| Nein| Anzahl von vollständigen Verknüpfungen.|
+| `sum_select_scan` | bigint(20)| Nein| Anzahl für Scanauswahl. |
+| `sum_sort_rows` | bigint(20)| Nein| Anzahl sortierter Zeilen.|
+| `sum_no_index_used` | bigint(20)| Nein| Anzahl der Fälle, in denen von der Abfrage keine Indizes verwendet wurden.|
+| `sum_no_good_index_used` | bigint(20)| Nein| Anzahl der Fälle, in denen die Abfrageausführungs-Engine keine guten Indizes verwendet hat.|
+| `sum_created_tmp_tables` | bigint(20)| Nein| Gesamtzahl erstellter temporärer Tabellen.|
+| `sum_created_tmp_disk_tables` | bigint(20)| Nein| Gesamtzahl temporärer Tabellen, die auf dem Datenträger erstellt wurden (E/A-Generierung).|
+| `first_seen` | timestamp| Nein| Erstes Auftreten der Abfrage (UTC) während des Aggregationsfensters.|
+| `last_seen` | timestamp| Nein| Letztes Auftreten der Abfrage (UTC) während dieses Aggregationsfensters.|
 
 ### <a name="mysqlquery_store_wait_stats"></a>mysql.query_store_wait_stats
 
@@ -151,15 +151,15 @@ Diese Ansicht gibt Warteereignisdaten im Abfragespeicher zurück. Es gibt eine Z
 
 | **Name**| **Datentyp** | **IS_NULLABLE** | **Beschreibung** |
 |---|---|---|---|
-| `interval_start` | timestamp | NO| Start des Intervalls (15-Minuten-Inkrement).|
-| `interval_end` | timestamp | NO| Ende des Intervalls (15-Minuten-Inkrement).|
-| `query_id` | bigint(20) | NO| Generierte eindeutige ID in der normalisierten Abfrage (aus Abfragespeicher).|
-| `query_digest_id` | varchar(32) | NO| Der normalisierte Abfragetext nach dem Entfernen aller Literale (aus dem Abfragespeicher). |
-| `query_digest_text` | longtext | NO| Erste Darstellung der eigentlichen Abfrage mit Literalen (aus dem Abfragespeicher). |
-| `event_type` | varchar(32) | NO| Kategorie des Warteereignisses. |
-| `event_name` | varchar(128) | NO| Name des Warteereignisses. |
-| `count_star` | bigint(20) | NO| Anzahl von Warteereignissen, für die während des Intervalls für die Abfrage Stichproben entnommen wurden. |
-| `sum_timer_wait_ms` | double | NO| Gesamte Wartezeit (in Millisekunden) dieser Abfrage während des Intervalls. |
+| `interval_start` | timestamp | Nein| Start des Intervalls (15-Minuten-Inkrement).|
+| `interval_end` | timestamp | Nein| Ende des Intervalls (15-Minuten-Inkrement).|
+| `query_id` | bigint(20) | Nein| Generierte eindeutige ID in der normalisierten Abfrage (aus Abfragespeicher).|
+| `query_digest_id` | varchar(32) | Nein| Der normalisierte Abfragetext nach dem Entfernen aller Literale (aus dem Abfragespeicher). |
+| `query_digest_text` | longtext | Nein| Erste Darstellung der eigentlichen Abfrage mit Literalen (aus dem Abfragespeicher). |
+| `event_type` | varchar(32) | Nein| Kategorie des Warteereignisses. |
+| `event_name` | varchar(128) | Nein| Name des Warteereignisses. |
+| `count_star` | bigint(20) | Nein| Anzahl von Warteereignissen, für die während des Intervalls für die Abfrage Stichproben entnommen wurden. |
+| `sum_timer_wait_ms` | double | Nein| Gesamte Wartezeit (in Millisekunden) dieser Abfrage während des Intervalls. |
 
 ### <a name="functions"></a>Functions
 
@@ -172,7 +172,7 @@ Diese Ansicht gibt Warteereignisdaten im Abfragespeicher zurück. Es gibt eine Z
 ## <a name="limitations-and-known-issues"></a>Einschränkungen und bekannte Probleme
 
 - Wenn für einen MySQL-Server der Parameter `default_transaction_read_only` aktiviert ist, kann der Abfragespeicher keine Daten erfassen.
-- Die Abfragespeicherfunktionalität kann unterbrochen werden, wenn lange Unicodeabfragen (\>= 6.000 Byte) festgestellt werden.
+- Die Funktion des Abfragespeichers kann durch lange Unicodeabfragen (\>= 6.000 Bytes) unterbrochen werden.
 - Der Aufbewahrungszeitraum für Wartestatistiken beträgt 24 Stunden.
 - Für Wartestatistiken werden Stichproben verwendet, um einen Teil der Ereignisse zu erfassen. Die Häufigkeit kann mit dem Parameter `query_store_wait_sampling_frequency` geändert werden.
 

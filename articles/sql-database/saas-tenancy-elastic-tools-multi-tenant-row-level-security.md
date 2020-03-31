@@ -11,18 +11,18 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: a5fe5d6d4076c5d82d33737d05bb95ede0a89c00
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4cf260620d4e907fdb9190a052155fa22f1c7985
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822029"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398340"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit
 
 [Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md) und die [zeilenbasierte Sicherheit (RLS)][rls] ermöglichen die Skalierung der Datenschicht einer mehrinstanzenfähigen Anwendung mit Azure SQL-Datenbank. Durch die Kombination dieser Technologien können Sie eine Anwendung erstellen, die über eine hochgradig skalierbare Datenschicht verfügt. Die Datenschicht unterstützt mehrinstanzenfähige Shards und verwendet **ADO.NET SqlClient** oder **Entity Framework**. Weitere Informationen finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](saas-tenancy-app-design-patterns.md).
 
-- **Elastische Datenbanktools** ermöglichen Entwicklern eine Skalierung der Datenschicht über Sharding-Standardmethoden, indem .NET-Bibliotheken und Azure-Dienstvorlagen verwendet werden. Die Verwaltung von Shards mit der [Clientbibliothek für elastische Datenbanken][s-d-elastic-database-client-library] hilft bei der Automatisierung und Optimierung zahlreicher infrastruktureller Aufgaben, die i. d. R. Sharding zugeordnet werden.
+- **Elastische Datenbanktools** ermöglichen Entwicklern eine Aufskalierung der Datenschicht über Sharding-Standardmethoden, indem .NET-Bibliotheken und Azure-Dienstvorlagen verwendet werden. Die Verwaltung von Shards mit der [Clientbibliothek für elastische Datenbanken][s-d-elastic-database-client-library] hilft bei der Automatisierung und Optimierung zahlreicher infrastruktureller Aufgaben, die i. d. R. Sharding zugeordnet werden.
 - Mithilfe der **Sicherheit auf Zeilenebene** können Entwickler Daten für mehrere Mandanten in derselben Datenbank sicher speichern. Sicherheitsrichtlinien für die Sicherheit auf Zeilenebene filtern Zeilen heraus, die nicht dem Mandanten gehören, der eine Abfrage ausführt. Die Zentralisierung der Filterlogik in der Datenbank vereinfacht die Wartung und reduziert das Risiko eines Sicherheitsfehlers. Die Alternative, sich auf den gesamten Clientcode zu verlassen, um Sicherheit zu erzwingen, ist riskant.
 
 Durch die gemeinsame Nutzung dieser Features kann eine Anwendung Daten für mehrere Mandanten in derselben Sharddatenbank speichern. Es ist kostengünstiger pro Mandant, wenn sich die Mandanten eine Datenbank teilen. Die gleiche Anwendung kann aber auch seinen Premium-Mandanten die Möglichkeit bieten, für ihren eigenen, dedizierten Shard für einen einzelnen Mandanten zu bezahlen. Ein Vorteil der Einzelmandantenisolierung ist, dass die Leistungsgarantien strenger sind. In einer Datenbank mit nur einem Mandanten gibt es keinen anderen Mandanten, der um Ressourcen wetteifert.
@@ -51,7 +51,7 @@ Erstellen Sie die Anwendung, und führen Sie sie aus. Durch diese Ausführung we
 2. Zeigen Sie mithilfe von ADO.NET SqlClient alle Blogs für einen Mandanten an.
 3. Versuchen Sie, einen Blog für den falschen Mandanten einzufügen, um zu überprüfen, ob ein Fehler ausgelöst wird.
 
-Beachten Sie, dass diese gesamten Tests ein Problem aufzeigen, da RLS noch nicht in den Shard-Datenbanken aktiviert wurde: Mandanten können Blogs anzeigen, die Ihnen nicht gehören, und die Anwendung, wird nicht daran gehindert, einen Blog für den falschen Mandanten einzufügen. Im restlichen Artikel wird beschrieben, wie Sie diese Probleme beheben, indem Sie die Mandantenisolierung mit RLS erzwingen. Dies umfasst zwei Schritte:
+Beachten Sie, dass diese gesamten Tests ein Problem aufzeigen, da RLS noch nicht in den Shard-Datenbanken aktiviert wurde: Mandanten können Blogs anzeigen, die Ihnen nicht gehören, und die Anwendung, wird nicht daran gehindert, einen Blog für den falschen Mandanten einzufügen. Im restlichen Artikel wird beschrieben, wie Sie diese Probleme beheben, indem Sie die Mandantenisolierung mit RLS erzwingen. Dafür sind zwei Schritte nötig:
 
 1. **Anwendungsschicht**: Ändern Sie den Anwendungscode so, dass die aktuelle Mandanten-ID im SESSION\_CONTEXT immer nach dem Öffnen einer Verbindung festgelegt wird. Das Beispielprojekt legt die „TenantId“ bereits auf diese Weise fest.
 2. **Datenschicht**: Erstellen Sie auf der Grundlage der in SESSION\_CONTEXT gespeicherten Mandanten-ID in jeder Sharddatenbank eine RLS-Sicherheitsrichtlinie zum Filtern von Zeilen. Erstellen Sie für jede Sharddatenbank eine Richtlinie. Andernfalls werden die Zeilen in Shards mit mehreren Mandanten nicht gefiltert.
@@ -253,7 +253,7 @@ GO
 ```
 
 > [!TIP]
-> In einem komplexen Projekt kann es erforderlich sein, das Prädikat zu Hunderten von Tabellen hinzuzufügen, was mühsam sein kann. Es gibt eine gespeicherte Prozedur als Hilfsprogramm, die automatisch eine Sicherheitsrichtlinie generiert und ein Prädikat zu allen Tabellen in einem Schema hinzufügt. Weitere Informationen finden Sie im Blogbeitrag unter [Apply Row-Level Security to all tables – helper script](https://blogs.msdn.com/b/sqlsecurity/archive/20../../apply-row-level-security-to-all-tables-helper-script) (Anwenden von zeilenbasierter Sicherheit auf alle Tabellen – Hilfsprogrammskript).
+> In einem komplexen Projekt kann es erforderlich sein, das Prädikat zu Hunderten von Tabellen hinzuzufügen, was mühsam sein kann. Es gibt eine gespeicherte Prozedur als Hilfsprogramm, die automatisch eine Sicherheitsrichtlinie generiert und ein Prädikat zu allen Tabellen in einem Schema hinzufügt. Weitere Informationen finden Sie im Blogbeitrag unter [Apply Row-Level Security to all tables – helper script](https://techcommunity.microsoft.com/t5/sql-server/apply-row-level-security-to-all-tables-helper-script/ba-p/384360) (Anwenden von zeilenbasierter Sicherheit auf alle Tabellen – Hilfsprogrammskript).
 
 Wenn Sie die Beispielanwendung jetzt erneut ausführen, können Mandanten nur Zeilen anzeigen, die zu ihnen gehören. Darüber hinaus kann die Anwendung keine Zeilen einfügen, die Mandanten gehören, die nicht derzeit mit der Sharddatenbank verbunden sind. Außerdem kann die Anwendung die „TenantId“ nicht in allen Zeilen aktualisieren, die sie sehen kann. Wenn die Anwendung versucht, eine dieser Aktionen auszuführen, wird eine „DbUpdateException“ ausgelöst.
 
@@ -345,14 +345,14 @@ GO
 
 ## <a name="summary"></a>Zusammenfassung
 
-Elastische Datenbanktools und zeilenbasierte Sicherheit können zusammen zum horizontalen Skalieren der Datenebene einer Anwendung mit Unterstützung für Shards mit sowohl mehreren als einzelnen Mandanten verwendet werden. Mehrinstanzenfähige Shards können genutzt werden, um Daten effizienter zu speichern. Diese Effizienz ist besonders ausgeprägt, wenn eine große Anzahl von Mandanten nur über wenige Datenzeilen verfügt. Shards mit einem einzelnen Mandanten können Premium-Mandanten unterstützen, die strengere Leistungs- und Isolationsanforderungen aufweisen. Weitere Informationen finden Sie unter [Sicherheit auf Zeilenebene][rls].
+Elastische Datenbanktools und zeilenbasierte Sicherheit können zusammen zum Aufskalieren der Datenebene einer Anwendung mit Unterstützung für Shards mit sowohl mehreren als einzelnen Mandanten verwendet werden. Mehrinstanzenfähige Shards können genutzt werden, um Daten effizienter zu speichern. Diese Effizienz ist besonders ausgeprägt, wenn eine große Anzahl von Mandanten nur über wenige Datenzeilen verfügt. Shards mit einem einzelnen Mandanten können Premium-Mandanten unterstützen, die strengere Leistungs- und Isolationsanforderungen aufweisen. Weitere Informationen finden Sie unter [Sicherheit auf Zeilenebene][rls].
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 - [Was ist ein Pool für elastische Azure-Datenbanken?](sql-database-elastic-pool.md)
 - [Erweitern mit Azure SQL-Datenbank](sql-database-elastic-scale-introduction.md)
 - [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure SQL-Datenbank](saas-tenancy-app-design-patterns.md)
-- [Authentication in multitenant apps, using Azure AD and OpenID Connect](../guidance/guidance-multitenant-identity-authenticate.md)
+- [Authentifizierung in mehrinstanzenfähigen Apps mithilfe von Azure AD und OpenID Connect](../guidance/guidance-multitenant-identity-authenticate.md)
 - [Tailspin-Anwendung „Surveys“](../guidance/guidance-multitenant-identity-tailspin.md)
 
 ## <a name="questions-and-feature-requests"></a>Fragen und Funktionswünsche

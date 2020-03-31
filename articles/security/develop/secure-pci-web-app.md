@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/22/2019
 ms.author: terrylan
 ms.openlocfilehash: 4fe612db65d985be2f1f1c81d03c3ee735c03889
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69992390"
 ---
 # <a name="develop-a-secure-infrastructure-for-a-pci-app"></a>Entwickeln einer sicheren Infrastruktur für eine PCI-App
@@ -148,7 +148,7 @@ Die NSG-Konfiguration für die App Service-Umgebung muss wie in der folgenden A
 
 Jedes Subnetz ist seiner entsprechenden Netzwerksicherheitsgruppe zugeordnet.
 
-### <a name="config"></a>Konfiguration
+### <a name="config"></a>Config
 Subnetze werden wie in der folgenden Abbildung konfiguriert:
  ![Konfiguration](./media/secure-pci-web-app/config.png)
 
@@ -241,7 +241,7 @@ In dieser Architektur sind die folgenden Azure-[Überwachungslösungen](https://
 ### <a name="application-insights"></a>Application Insights
 [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) ist ein erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung auf mehreren Plattformen. Mit Application Insights werden Leistungsanomalien erkannt, und Kunden können die Lösung für die Liveüberwachung der Webanwendung nutzen. Sie verfügt über leistungsstarke Analysetools, mit denen Kunden Probleme diagnostizieren und nachvollziehen können, wie ihre App von den Benutzern verwendet wird. Der Dienst unterstützt Kunden bei der kontinuierlichen Verbesserung der Leistung und Benutzerfreundlichkeit.
 
-### <a name="azure-key-vault"></a>Azure Key Vault
+### <a name="azure-key-vault"></a>Azure-Schlüsseltresor
 Erstellen Sie einen Tresor für die Schlüsselspeicherung der Organisation, und gewährleisten Sie die Verantwortlichkeit für operative Aufgaben:
 
 - Folgende Daten werden in Key Vault gespeichert:

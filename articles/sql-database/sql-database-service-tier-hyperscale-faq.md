@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
-ms.date: 10/12/2019
-ms.openlocfilehash: 6a25d5197746e04ffa25ee397e6d8451e24ae176
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.date: 03/03/2020
+ms.openlocfilehash: 9f518df02b1923513fd014be53646a9a1be8465e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615004"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232438"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL-Datenbank Hyperscale – Häufig gestellte Fragen (FAQs)
 
@@ -64,7 +64,7 @@ Die Dienstebene „Hyperscale“ ist für Kunden konzipiert, die große lokale S
 - Schnelle Datenbankwiederherstellungen unabhängig von der Datenbankgröße (Wiederherstellungen stammen aus Speichermomentaufnahmen)
 - Höheren Protokolldurchsatz unabhängig von der Datenbankgröße und der Anzahl der virtuellen Kerne
 - Horizontale Leseskalierung mit einem oder mehreren schreibgeschützten Replikaten, die für Abladelesevorgänge und als Hot Standbys verwendet werden.
-- Schnelles zentrales Hochskalieren der Computeleistung in konstanter Zeit, um eine höhere Leistung bei der Verarbeitung umfangreicher Workloads bereitzustellen, und anschließend zentrales Herunterskalieren in konstanter Zeit. Dieser Vorgang ist mit dem zentralen Hoch- und Herunterskalieren zwischen beispielsweise P6 und P11 vergleichbar, aber viel schneller, da er nicht von der Datengröße abhängig ist.
+- Schnelles Hochskalieren der Computeleistung in konstanter Zeit, um eine höhere Leistung bei der Verarbeitung umfangreicher Workloads bereitzustellen, und anschließend Herunterskalieren in konstanter Zeit. Dieser Vorgang ist mit dem zentralen Hoch- und Herunterskalieren zwischen beispielsweise P6 und P11 vergleichbar, aber viel schneller, da er nicht von der Datengröße abhängig ist.
 
 ### <a name="what-regions-currently-support-hyperscale"></a>Welche Regionen unterstützen derzeit Hyperscale?
 
@@ -84,7 +84,7 @@ Hyperscale bietet schnelle Skalierbarkeit basierend auf Ihrem Workloadbedarf.
 
 - **Zentrales Hoch-/Herunterskalieren**
 
-  Bei Hyperscale können Sie die primäre Computegröße im Hinblick auf Ressourcen wie CPU und Arbeitsspeicher in konstanter Zeit zentral hochskalieren und anschließend zentral herunterskalieren. Da der Speicher gemeinsam genutzt wird, ist das zentrale Hoch- und Herunterskalieren kein Vorgang, der von der Datengröße abhängig ist.  
+  Bei Hyperscale können Sie die primäre Computegröße im Hinblick auf Ressourcen wie CPU und Arbeitsspeicher in konstanter Zeit hochskalieren und anschließend herunterskalieren. Da der Speicher gemeinsam genutzt wird, ist das zentrale Hoch- und Herunterskalieren kein Vorgang, der von der Datengröße abhängig ist.  
 - **Horizontal herunter-/hochskalieren**
 
   Mit Hyperscale erhalten Sie auch die Möglichkeit, mindestens ein zusätzliches Computereplikat bereitzustellen, mit dem Sie Ihre Leseanforderungen verarbeiten können. Dies bedeutet, dass Sie diese zusätzlichen Computereplikate als schreibgeschützte Replikate verwenden können, um Ihre Leseworkload vom primären Computeknoten auszulagern. Diese Replikate sind nicht nur schreibgeschützt, sondern dienen außerdem als Hot Standbys im Falle eines Failovers vom primären Knoten.
@@ -236,7 +236,7 @@ Einfache Wiederherstellungen oder Massenprotokollierungsmodelle werden in Hypers
 
 ### <a name="does-hyperscale-allow-provisioning-multiple-nodes-for-parallel-ingesting-of-large-amounts-of-data"></a>Ermöglicht Hyperscale die Bereitstellung mehrerer Knoten für die parallele Erfassung von großen Datenmengen?
 
-Nein. Hyperscale ist eine SMP-Architektur (symmetrisches Multiprocessing) und keine MPP-Architektur (Massively Parallel Processing, parallele Massenverarbeitung) oder Multimasterarchitektur. Sie können nur mehrere Replikate erstellen, um schreibgeschützte Workloads horizontal hochzuskalieren.
+Nein. Hyperscale ist eine SMP-Architektur (symmetrisches Multiprocessing) und keine MPP-Architektur (Massively Parallel Processing, parallele Massenverarbeitung) oder Multimasterarchitektur. Sie können nur mehrere Replikate erstellen, um schreibgeschützte Workloads aufzuskalieren.
 
 ### <a name="what-is-the-oldest-sql-server-version-supported-for-migration-to-hyperscale"></a>Was ist die älteste SQL Server-Version, die für die Migration zu Hyperscale unterstützt wird?
 
@@ -274,7 +274,7 @@ Nein. Sicherungen werden vom Speichersubsystem verwaltet und nutzen Speichermome
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>Kann ich bei einer Hyperscale-Datenbank eine Geowiederherstellung durchführen?
 
-Ja.  Die Geowiederherstellung wird vollständig unterstützt. Anders als bei der Point-in-Time-Wiederherstellung erfordert die Geowiederherstellung möglicherweise einen zeitintensiven Vorgang.
+Ja. Die Geowiederherstellung wird vollständig unterstützt. Anders als bei der Point-in-Time-Wiederherstellung erfordert die Geowiederherstellung einen zeitintensiven Vorgang. Weil Datendateien parallel kopiert werden, hängt die Dauer dieses Vorgangs also hauptsächlich von der Größe der größten Datei in der Datenbank und nicht von der Gesamtgröße der Datenbank ab. Die Geowiederherstellungszeit ist deutlich kürzer, wenn die Datenbank in der Azure-Region wiederhergestellt wird, die mit der Region der Quelldatenbank [gekoppelt](https://docs.microsoft.com/azure/best-practices-availability-paired-regions) ist.
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>Kann ich für eine Hyperscale-Datenbank Georeplikation einrichten?
 
@@ -326,7 +326,7 @@ Für die meisten Leistungsprobleme (insbesondere für solche, die nicht durch di
 
 ## <a name="scalability-questions"></a>Fragen zur Skalierbarkeit
 
-### <a name="how-long-would-it-take-to-scale-up-and-down-a-compute-replica"></a>Wie lange würde es dauern, um ein Computereplikat zentral hoch- und herunterzuskalieren?
+### <a name="how-long-would-it-take-to-scale-up-and-down-a-compute-replica"></a>Wie lange würde es dauern, um ein Computereplikat hoch- und herunterzuskalieren?
 
 Das Hoch- bzw. Herunterskalieren der Computeressourcen sollte unabhängig von der Datengröße 5-10 Minuten dauern.
 
@@ -344,7 +344,7 @@ Durch den Endbenutzer. Dies ist kein automatischer Vorgang.
 
 ### <a name="does-the-size-of-my-tempdb-database-also-grow-as-the-compute-is-scaled-up"></a>Wird beim zentralen Hochskalieren des Computevorgangs auch meine `tempdb`-Datenbank vergrößert?
 
-Ja. Die `tempdb`-Datenbank wird automatisch zentral hochskaliert, je größer der Computebedarf wird.  
+Ja. Die `tempdb`-Datenbank wird automatisch hochskaliert, je größer der Computebedarf wird.  
 
 ### <a name="can-i-provision-multiple-primary-compute-replicas-such-as-a-multi-master-system-where-multiple-primary-compute-heads-can-drive-a-higher-level-of-concurrency"></a>Kann ich mehrere primäre Computereplikate, z.B. ein Multimastersystem, bereitstellen, bei dem mehrere primäre Computeheads zu einem höheren Maß an Parallelität führen können?
 
@@ -373,7 +373,7 @@ Nein. Sie können eine Verbindung mit Replikaten mit horizontaler Leseskalierung
 
 Nein. Eine neue Verbindung mit schreibgeschütztem Inhalt wird an ein beliebiges Replikat mit horizontaler Leseskalierung umgeleitet.
 
-### <a name="can-i-scale-updown-the-secondary-compute-replicas-independently-of-the-primary-replica"></a>Kann ich sekundäre Computereplikate unabhängig vom primären Replikat zentral hoch- oder herunterskalieren?
+### <a name="can-i-scale-updown-the-secondary-compute-replicas-independently-of-the-primary-replica"></a>Kann ich sekundäre Computereplikate unabhängig vom primären Replikat hoch- oder herunterskalieren?
 
 Nein. Weil die sekundären Computereplikate auch als Failoverziele mit Hochverfügbarkeit verwendet werden, müssen sie dieselbe Konfiguration wie das primäre Replikat haben, um die erwartete Leistung nach einem Failover bereitzustellen.
 

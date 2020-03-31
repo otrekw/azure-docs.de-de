@@ -4,10 +4,10 @@ description: Zustandsbehaftete Service Fabric-Dienste bieten zuverlässige Aufli
 ms.topic: conceptual
 ms.date: 1/3/2019
 ms.openlocfilehash: 48fa682f4c017f66911729e1f581f3aa91cdc28d
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75609722"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Einführung in Reliable Collections in zustandsbehafteten Azure Service Fabric-Diensten
@@ -52,7 +52,7 @@ Aktuell enthält **Microsoft.ServiceFabric.Data.Collections** drei Sammlungen:
 * [Transaktionen und Sperren](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * Verwalten von Daten
   * [Sichern und Wiederherstellen](service-fabric-reliable-services-backup-restore.md)
-  * [Notifications](service-fabric-reliable-services-notifications.md)
+  * [Benachrichtigungen](service-fabric-reliable-services-notifications.md)
   * [Reliable Collection-Serialisierung](service-fabric-reliable-services-reliable-collections-serialization.md)
   * [Serialisierung und Upgrade](service-fabric-application-upgrade-data-serialization.md)
   * [Konfigurieren des Reliable State Managers](service-fabric-reliable-services-configuration.md)

@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.openlocfilehash: 367b7c2e1ce1c8b3c0dbc02003218b76096b409d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75354644"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Grundlegendes zur Behandlung von Zeitangaben in Azure Stream Analytics
@@ -151,9 +151,9 @@ Es kann mehrere Gründe geben, warum dieser metrische Wert im Normalbetrieb grö
 
 Es gibt eine Reihe von anderen Ressourceneinschränkungen, die die Streamingpipeline abbremsen können. Aus folgenden Gründen kann die Wasserzeichenverzögerung steigen:
 
-1. Nicht genügend Verarbeitungsressourcen in Stream Analytics, um das Volumen der eingegebenen Ereignisse zu bewältigen. Informationen zum zentralen Hochskalieren von Ressourcen finden Sie in [Verstehen und Anpassen von Streamingeinheiten](stream-analytics-streaming-unit-consumption.md).
+1. Nicht genügend Verarbeitungsressourcen in Stream Analytics, um das Volumen der eingegebenen Ereignisse zu bewältigen. Informationen zum Hochskalieren von Ressourcen finden Sie unter [Verstehen und Anpassen von Streamingeinheiten](stream-analytics-streaming-unit-consumption.md).
 
-2. Nicht genügend Durchsatz innerhalb der Eingabeereignis-Broker, sodass diese gedrosselt werden. Mögliche Lösungen finden Sie in [Automatische Erweiterung der Azure Event Hub-Durchsatzeinheiten](../event-hubs/event-hubs-auto-inflate.md).
+2. Nicht genügend Durchsatz innerhalb der Eingabeereignis-Broker, sodass diese gedrosselt werden. Mögliche Lösungen finden Sie in [Automatisches Hochskalieren der Azure Event Hub-Durchsatzeinheiten](../event-hubs/event-hubs-auto-inflate.md).
 
 3. Ausgabesenken werden nicht mit ausreichender Kapazität, bereitgestellt, sodass sie gedrosselt werden. Die möglichen Lösungen variieren stark je nach verwendetem Ausgabedienst.
 

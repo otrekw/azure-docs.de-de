@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 5f3587e4398be28cbaa2372be720258196bb48ff
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72792035"
 ---
 # <a name="deprecated-cognitive-skills-in-azure-cognitive-search"></a>Veraltete kognitive Skills in der kognitiven Azure-Suche
@@ -147,6 +147,6 @@ Um zur [Qualifikation „Entitätserkennung“ (EntityRecognitionSkill)](cogniti
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Integrierte Skills](cognitive-search-predefined-skills.md)
++ [Integrierte Qualifikationen](cognitive-search-predefined-skills.md)
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
 + [Die kognitive Qualifikation „Entitätserkennung“](cognitive-search-skill-entity-recognition.md)

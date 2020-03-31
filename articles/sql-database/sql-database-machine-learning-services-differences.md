@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 11/20/2019
 ms.openlocfilehash: 533e2b9e50a92cce1419da521d8cebc4955e4df6
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74462114"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>Wichtige Unterschiede zwischen Machine Learning Services von Azure SQL-Datenbank (Vorschauversion) und SQL Server
@@ -45,7 +45,7 @@ Die R-Paketverwaltung und -Installation funktionieren für SQL-Datenbank und SQL
 
 Wenn Sie RODBC in Azure SQL-Datenbank verwenden, können Sie nicht in eine temporäre Tabelle schreiben. Dies ist unabhängig davon, ob sie innerhalb oder außerhalb der `sp_execute_external_script`-Sitzung erstellt wurde. Sie lösen dieses Problem, indem Sie [RxOdbcData](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxodbcdata) und [rxDataStep](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/rxdatastep) (mit overwrite=FALSE und append="rows") verwenden, um eine globale temporäre Tabelle zu schreiben, die vor der `sp_execute_external_script`-Abfrage erstellt wurde.
 
-## <a name="resource-governance"></a>Ressourcenkontrolle
+## <a name="resource-governance"></a>Ressourcengovernance
 
 Es ist nicht möglich, R-Ressourcen durch [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) und externe Ressourcenpools zu beschränken.
 

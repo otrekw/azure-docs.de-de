@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.openlocfilehash: deb6c2439cc84f196b7f42fd9f49d3ebfd057cbb
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76962182"
 ---
 # <a name="deploy-an-azure-stream-analytics-job-using-cicd-npm-package"></a>Bereitstellen eines Azure Stream Analytics-Auftrags mit einem CI/CD npm-Paket 
@@ -147,13 +147,13 @@ Wenn Sie mit dem Hinzufügen der npm-, Befehlszeilen-, „Dateien kopieren“- u
 
 2. Wählen Sie das **+** neben **Agent-Auftrag** aus, und suchen Sie nach *Bereitstellung einer Azure-Ressourcengruppe*. Legen Sie die folgenden Parameter fest:
 
-   |Einstellung|value|
+   |Einstellung|Wert|
    |-|-|
    |`Display name`| *myASAJob bereitstellen*|
    |Azure-Abonnement| Wählen Sie Ihr Abonnement aus.|
    |Aktion| *Erstellen oder Aktualisieren einer Ressourcengruppe*|
    |Resource group| Auswählen eines Namens für die Testressourcengruppe, die ihren Stream Analytics-Auftrag enthalten soll.|
-   |Location|Auswählen des Speicherorts Ihrer Testressourcengruppe.|
+   |Position|Auswählen des Speicherorts Ihrer Testressourcengruppe.|
    |Speicherort der Vorlage| *Verknüpftes Artefakt*|
    |Vorlage| $(Build.ArtifactStagingDirectory)\drop\myASAJob.JobTemplate.json |
    |Vorlagenparameter|($(Build.ArtifactStagingDirectory)\drop\myASAJob.JobTemplate.parameters.json|
@@ -164,13 +164,13 @@ Wenn Sie mit dem Hinzufügen der npm-, Befehlszeilen-, „Dateien kopieren“- u
 
 4. Wählen Sie das **+** neben **Agent-Auftrag** aus, und suchen Sie nach *Bereitstellung einer Azure-Ressourcengruppe*. Legen Sie die folgenden Parameter fest:
 
-   |Einstellung|value|
+   |Einstellung|Wert|
    |-|-|
    |`Display name`| *myASAJob bereitstellen*|
    |Azure-Abonnement| Wählen Sie Ihr Abonnement aus.|
    |Aktion| *Erstellen oder Aktualisieren einer Ressourcengruppe*|
    |Resource group| Auswählen eines Namens für die Produktionsressourcengruppe, die ihren Stream Analytics-Auftrag enthalten soll.|
-   |Location|Wählen Sie den Speicherort Ihrer Produktionsressourcengruppe aus.|
+   |Position|Wählen Sie den Speicherort Ihrer Produktionsressourcengruppe aus.|
    |Speicherort der Vorlage| *Verknüpftes Artefakt*|
    |Vorlage| $(Build.ArtifactStagingDirectory)\drop\myASAJob.JobTemplate.json |
    |Vorlagenparameter|($(Build.ArtifactStagingDirectory)\drop\myASAJob.JobTemplate.parameters.json|

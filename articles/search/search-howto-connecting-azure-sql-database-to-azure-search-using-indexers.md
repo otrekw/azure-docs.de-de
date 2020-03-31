@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: c09727e8d92a449b41124eae6ad8381d66cb2619
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113308"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>Verbinden und Indizieren von Azure SQL-Datenbankinhalten unter Verwendung eines Azure Cognitive Search-Indexers
@@ -271,9 +271,9 @@ Wenn Sie die Methode des "vorläufigen Löschens" verwenden, können Sie die Ric
 ## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>Zuordnung zwischen SQL-Datentypen und Datentypen der kognitiven Azure-Suche
 | SQL-Datentyp | Zulässige Ziel-Index-Feldtypen | Notizen |
 | --- | --- | --- |
-| Bit |Edm.Boolean, Edm.String | |
+| bit |Edm.Boolean, Edm.String | |
 | int, smallint, tinyint |Edm.Int32, Edm.Int64, Edm.String | |
-| bigint |Edm.Int64, Edm.String | |
+| BIGINT |Edm.Int64, Edm.String | |
 | real, float |Edm.Double, Edm.String | |
 | Smallmoney, money decimal numeric |Edm.String |Die kognitive Azure-Suche unterstützt nicht die Konvertierung von Dezimaltypen in Edm.Double-Typen, da es hierbei zu Genauigkeitsverlusten kommt. |
 | char, nchar, varchar, nvarchar |Edm.String<br/>Collection(Edm.String) |Eine SQL-Zeichenfolge kann zum Auffüllen eines Collection(Edm.String)-Felds verwendet werden, wenn die Zeichenfolge ein JSON-Array von Zeichenfolgen darstellt: `["red", "white", "blue"]` |

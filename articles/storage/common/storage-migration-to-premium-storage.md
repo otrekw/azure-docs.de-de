@@ -10,10 +10,10 @@ ms.author: rogarana
 ms.reviewer: yuemlu
 ms.subservice: common
 ms.openlocfilehash: 7cb5a335af7093bc217578d57340b03b8b9c08b3
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75748352"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrieren zu Azure Storage Premium (Nicht verwaltete Datenträger)
@@ -38,7 +38,7 @@ Sie können virtuelle Computer von anderen Plattformen zu Azure Storage Premium 
 
 Für den Abschluss des vollständigen Migrationsprozesses sind möglicherweise zusätzliche Aktionen vor und nach den in dieser Anleitung angegebenen Schritten erforderlich. Beispiele sind das Konfigurieren von virtuellen Netzwerken oder Endpunkten oder Ändern von Code innerhalb der Anwendung selbst, wofür ggf. in Ihrer Anwendung Ausfallzeiten anfallen. Diese Aktionen sind für jede Anwendung eindeutig. Sie sollten sie zusammen mit den Schritten in dieser Anleitung ausführen, um den kompletten Wechsel zu Storage Premium so reibungslos wie möglich zu gestalten.
 
-## <a name="plan-the-migration-to-premium-storage"></a>Planen der Migration zu Storage Premium
+## <a name="plan-for-the-migration-to-premium-storage"></a><a name="plan-the-migration-to-premium-storage"></a>Planen der Migration zu Storage Premium
 In diesem Abschnitt finden Sie die Voraussetzungen für das Ausführen der in diesem Artikel beschriebenen Migrationsschritte und Hilfe zum Treffen der besten Entscheidung für VM- und Datenträgertypen.
 
 ### <a name="prerequisites"></a>Voraussetzungen
@@ -76,7 +76,7 @@ Weitere Informationen zu den Spezifikationen für Storage Premium finden Sie unt
 #### <a name="disk-caching-policy"></a>Zwischenspeicherungsrichtlinie für Datenträger
 Standardmäßig ist die Richtlinie für das Zwischenspeichern für alle Premium-Datenträger *Schreibgeschützt* und für die Premium-Betriebssystem-Datenträger, die an den virtuellen Computer angeschlossen sind, *Lesen/Schreiben*. Diese Konfigurationseinstellung wird empfohlen, um die optimale E/A-Leistung für Ihre Anwendung zu erreichen. Für Datenträger mit hohem oder ausschließlichem Schreibzugriff (z. B. SQL Server-Protokolldateien) deaktivieren Sie das Zwischenspeichern, sodass Sie eine bessere Anwendungsleistung erzielen können. Die Einstellungen für das Zwischenspeichern bei vorhandenen Datenträgern können Sie über das [Azure-Portal](https://portal.azure.com) oder den Parameter *-HostCaching* des Cmdlets *Set-AzureDataDisk* aktualisieren.
 
-#### <a name="location"></a>Location
+#### <a name="location"></a>Position
 Wählen Sie einen Speicherort, an dem Azure Premium-Speicher verfügbar ist. Aktuelle Informationen zu verfügbaren Standorten finden Sie unter [Azure-Dienste nach Region](https://azure.microsoft.com/regions/#services). Virtuelle Computer in der gleichen Umgebung wie das Speicherkonto, in dem die Datenträger des virtuellen Computers gespeichert sind, liefern eine wesentlich höhere Leistung als solche in unterschiedlichen Regionen.
 
 #### <a name="other-azure-vm-configuration-settings"></a>Sonstige Azure-VM-Konfigurationseinstellungen
@@ -85,7 +85,7 @@ Beim Erstellen einer Azure-VM müssen Sie bestimmte Einstellungen für den virtu
 ### <a name="optimization"></a>Optimization
 [Azure Storage Premium: Entwurf für hohe Leistung](../../virtual-machines/windows/premium-storage-performance.md): Dieser Artikel bietet Leitfäden zum Erstellen leistungsstarker Anwendungen mit Azure Storage Premium. Sie können die Leitlinien kombiniert mit den bewährten Methoden für hohe Leistung befolgen, die für von Ihrer Anwendung verwendeten Technologien gelten.
 
-## <a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>Vorbereiten und Kopieren virtueller Festplatten (VHDs) in Storage Premium
+## <a name="prepare-and-copy-virtual-hard-disks-vhds-to-premium-storage"></a><a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>Vorbereiten und Kopieren virtueller Festplatten (VHDs) in Storage Premium
 Der folgende Abschnitt enthält Leitlinien für das Vorbereiten der virtuellen Festplatten Ihres virtuellen Computers und Kopieren von VHDs in Azure Storage.
 
 * [Szenario 1: Migrieren vorhandener Azure-VMs zu Azure Storage Premium](#scenario1).
@@ -107,7 +107,7 @@ Um die virtuelle Festplatten (VHDs) für die Migration vorzubereiten, benötigen
 >
 >
 
-### <a name="scenario1"></a>Szenario 1: Migrieren vorhandener Azure-VMs zu Azure Storage Premium.
+### <a name="scenario-1-i-am-migrating-existing-azure-vms-to-azure-premium-storage"></a><a name="scenario1"></a>Szenario 1: Migrieren vorhandener Azure-VMs zu Azure Storage Premium.
 Wenn Sie vorhandene Azure-VMs migrieren, halten Sie die VM an, bereiten VHDs gemäß dem gewünschten VHD-Typ vor und kopieren dann die VHD mit AzCopy oder PowerShell.
 
 Die VM muss vollständig heruntergefahren sein, um einen fehlerfreien Zustand zu migrieren. Die Ausfallzeit hält bis zum Abschluss der Migration an.
@@ -159,7 +159,7 @@ Erstellen Sie ein Speicherkonto für die Verwaltung Ihrer virtuellen Festplatten
 
 Für Datenträger können Sie auswählen, dass einige in einem Standardspeicherkonto verbleiben (z.B. Datenträger, auf die weniger zugegriffen wird). Wir empfehlen jedoch ausdrücklich, alle Daten für Produktionsworkloads in Storage Premium zu verschieben.
 
-#### <a name="copy-vhd-with-azcopy-or-powershell"></a>Schritt 3: Kopieren der VHD mit AzCopy oder mit PowerShell
+#### <a name="step-3-copy-vhd-with-azcopy-or-powershell"></a><a name="copy-vhd-with-azcopy-or-powershell"></a>Schritt 3: Kopieren der VHD mit AzCopy oder mit PowerShell
 Sie müssen Ihren Containerpfad und Speicherkontoschlüssel kennen, um eine dieser beiden Optionen nutzen zu können. Den Containerpfad und Speicherkontoschlüssel finden Sie hier: **Azure-Portal** > **Speicher**. Die Container-URL lautet beispielsweise „https:\//myaccount.blob.core.windows.net/meincontainer/“.
 
 ##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Option 1: Kopieren einer VHD mit AzCopy (asynchrone Kopie)
@@ -218,7 +218,7 @@ C:\PS> $destinationContext = New-AzStorageContext  –StorageAccountName "destac
 C:\PS> Start-AzStorageBlobCopy -srcUri $sourceBlobUri -SrcContext $sourceContext -DestContainer "vhds" -DestBlob "myvhd.vhd" -DestContext $destinationContext
 ```
 
-### <a name="scenario2"></a>Szenario 2: Migrieren von VMs von anderen Plattformen zu Azure Storage Premium.
+### <a name="scenario-2-i-am-migrating-vms-from-other-platforms-to-azure-premium-storage"></a><a name="scenario2"></a>Szenario 2: Migrieren von VMs von anderen Plattformen zu Azure Storage Premium.
 Wenn Sie virtuelle Festplatten aus anderen Cloud-Speichern als Azure zu Azure migrieren möchten, müssen Sie zuerst die VHD-Datei in ein lokales Verzeichnis exportieren. Ermitteln Sie den vollständigen Quellpfad des lokalen Verzeichnisses, in dem die VHD gespeichert ist, und laden Sie sie dann mit AzCopy in Azure Storage hoch.
 
 #### <a name="step-1-export-vhd-to-a-local-directory"></a>Schritt 1: Exportieren der VHD in ein lokales Verzeichnis
@@ -303,7 +303,7 @@ Sie können virtuelle Festplatten zudem mit den folgenden Tools in ein Speicherk
 >
 >
 
-## <a name="create-azure-virtual-machine-using-premium-storage"></a>Erstellen von Azure-VMs mit Storage Premium
+## <a name="create-azure-vms-using-premium-storage"></a><a name="create-azure-virtual-machine-using-premium-storage"></a>Erstellen von Azure-VMs mit Storage Premium
 Nachdem die virtuelle Festplatte in das gewünschte Speicherkonto hochgeladen oder kopiert wurde, führen Sie die Anweisungen in diesem Abschnitt aus, um die virtuelle Festplatte je nach Szenario als Betriebssystemimage oder Betriebssystem-Datenträger zu registrieren und anschließend eine VM-Instanz daraus zu erstellen. Das VHD-Datenlaufwerk kann dem virtuellen Computer hinzugefügt werden, nachdem es erstellt wurde.
 Ein Beispielskript für die Migration wird am Ende dieses Abschnitts bereitgestellt. Dieses einfache Skript eignet sich nicht für alle Szenarien. Sie müssen womöglich das Skript dem speziellen Szenario entsprechend aktualisieren. Um festzustellen, ob das Skript für Ihr Szenario passt, lesen Sie weiter unten [Ein Beispielskript für die Migration](#a-sample-migration-script).
 
@@ -431,7 +431,7 @@ Sobald der neue virtuelle Computer ausgeführt wird, können Sie mit demselben B
 
 Der letzte Schritt besteht darin, den Sicherungs- und Wartungszeitplan für den neuen virtuellen Computer auf Grundlage der Anwendungsanforderungen zu planen.
 
-### <a name="a-sample-migration-script"></a>Ein Beispielskript für die Migration
+### <a name="a-sample-migration-script"></a><a name="a-sample-migration-script"></a>Ein Beispielskript für die Migration
 Wenn Sie mehrere zu migrierende virtuelle Computer haben, kann eine Automatisierung mithilfe von PowerShell-Skripts hilfreich sein. Im Folgenden finden Sie ein Beispielskript, das die Migration eines virtuellen Computers automatisiert. Beachten Sie, dass das unten stehende Skript nur ein Beispiel ist, und dass es nur einige Annahmen über die aktuellen VM-Datenträger gibt. Sie müssen womöglich das Skript dem speziellen Szenario entsprechend aktualisieren.
 
 Die Annahmen sind:
@@ -739,7 +739,7 @@ Das Automatisierungsskript wird unten bereitgestellt. Ersetzen Sie Text durch Ih
     New-AzureVM -ServiceName $DestServiceName -VMs $vm -Location $Location
 ```
 
-#### <a name="optimization"></a>Optimierung
+#### <a name="optimization"></a><a name="optimization"></a>Optimierung
 Die aktuelle Konfiguration des virtuellen Computers kann speziell für die Arbeit mit Standarddatenträgern angepasst werden, zum Beispiel, um die Leistung zu erhöhen. Verwenden Sie dazu viele Datenträger in einem Stripesetvolume. Beispielsweise können Sie, statt 4 Datenträger separat unter Storage Premium zu verwenden, die Kosten optimieren, indem Sie einen einzelnen Datenträger verwenden. Optimierungen wie diese müssen von Fall zu Fall erfolgen und erfordern benutzerdefinierte Schritte nach der Migration. Beachten Sie auch, dass dieser Prozess bei Datenbanken und Anwendungen, die von dem während der Einrichtung definierten Datenträgerlayout abhängig sind, möglicherweise nicht gut funktioniert.
 
 ##### <a name="preparation"></a>Vorbereitung

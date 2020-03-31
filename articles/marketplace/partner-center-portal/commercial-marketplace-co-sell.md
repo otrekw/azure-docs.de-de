@@ -1,19 +1,18 @@
 ---
 title: Co-Selling-Option im Partner Center | Azure Marketplace
 description: Die von Ihnen auf der Registerkarte „Co-Selling“ Ihres Angebots angegebenen Informationen werden von den Microsoft-Vertriebsteams verwendet, um mehr über Ihre Lösung zu erfahren, wenn sie deren Eignung für die Anforderungen Ihrer Kunden auswerten.
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 5f5f98b908ce54624a5d73a2ed74b2e9ea8966ff
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b0b38b767495b1a06405f0d41222b73baee8d53
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75431951"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277072"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Co-Selling-Option im Partner Center
 
@@ -53,7 +52,7 @@ Lösungstypen helfen bei der Definition der Szenarien, für die Ihr Angebot konz
 | Gerät (Hardware) | Ein Angebot, das die Entwicklung oder den Verkauf von Hardware eines Geräteherstellers umfasst. |
 | IP (Anwendung) | Apps oder anderes urheberrechtlich geschütztes Material, das für die Nutzung durch den Kunden lizenziert ist. Beispiel: Ein CRM-Programm, das lokal lizenziert und installiert werden kann. |
 | Dienst | Praktische Fachkenntnisse für ein bestimmtes einmaliges Projekt, das oft über Berater bereitgestellt wird. Beispiel: Einrichten einer Kundendatenbank für einen Kunden (wobei der Kunde nach der Lieferung die Verantwortung für den Betrieb der Datenbank übernimmt). |
-| Verwalteter Dienst | Praktische Fachkenntnisse für ein cloudbasiertes Projekt, in der Regel auf fortlaufender Basis. Beispiel:  Bereitstellen einer Plattform und von Tools für den Betrieb einer Onlinedatenbank mit fortlaufender Verwaltung durch den Anbieter verwalteter Dienste. |
+| Verwalteter Dienst | Praktische Fachkenntnisse für ein cloudbasiertes Projekt, in der Regel auf fortlaufender Basis. Beispiel: Bereitstellen einer Plattform und von Tools für den Betrieb einer Onlinedatenbank mit fortlaufender Verwaltung durch den Anbieter verwalteter Dienste. |
 
 ### <a name="solution-areas"></a>Lösungsbereiche
 

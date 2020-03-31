@@ -1,19 +1,18 @@
 ---
 title: Informationen zu Kontaktpersonen für ein Power BI-App-Angebot | Azure Marketplace
 description: Informationen zum Konfigurieren von Feldern des Typs „Kontakte“ für ein Power BI-App-Angebot für Microsoft AppSource Marketplace.
-services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: ec1ed23b253f705e1830c1c014492fe52b2133f0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 79cdd12359a0d781b51db2632bc9d534e0d88c6d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826540"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285230"
 ---
 # <a name="power-bi-app-contacts-tab"></a>Registerkarte „Kontakte“ für Power BI-Apps
 

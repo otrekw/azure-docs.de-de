@@ -12,10 +12,10 @@ ms.author: aamalvea
 ms.reviewer: carlrab
 ms.date: 01/30/2019
 ms.openlocfilehash: ba882176fbe17f7b74c786f421dde8fadd58d9b7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73821318"
 ---
 # <a name="planning-for-azure-maintenance-events-in-azure-sql-database"></a>Planen von Azure-Wartungsereignissen in Azure SQL-Datenbank
@@ -34,7 +34,7 @@ Neukonfigurationen/Failover werden in der Regel innerhalb von 30 Sekunden abgesc
 
 Jede Clientproduktionsanwendung, die eine Verbindung mit einem Clouddatenbankdienst herstellt, sollte eine stabile [Wiederholungslogik](sql-database-connectivity-issues.md#retry-logic-for-transient-errors) für Verbindungen implementieren. Dies trägt zur Lösung dieser Situationen bei und sollte normalerweise dazu führen, dass die Fehler für den Endbenutzer transparent sind.
 
-## <a name="frequency"></a>Frequency
+## <a name="frequency"></a>Häufigkeit
 
 Durchschnittlich sollten 1,7 geplante Wartungsereignisse pro Monat auftreten.
 

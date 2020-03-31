@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
 ms.openlocfilehash: 9f16ab34dc9b37806f9c58b22a3f02afe839632e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73839161"
 ---
 # <a name="use-the-video-indexer-editor-to-create-projects"></a>Verwenden des Video Indexer-Editors zum Erstellen von Projekten
@@ -55,7 +55,7 @@ In diesem Artikel wird gezeigt, wie Sie ein Projekt von Grund auf neu erstellen 
 
     Sie können Ihre Ergebnisse weiter filtern, indem Sie **Ergebnisse filtern** auswählen. Sie können filtern, um Videos anzuzeigen, in denen sich eine bestimmte Person befindet, oder um festzulegen, dass Sie nur Videoergebnisse anzeigen möchten, die in einer bestimmten Sprache vorliegen oder einen bestimmten Besitzer aufweisen. <br/> Sie können auch den Bereich der Abfrage angeben. Wenn Sie z. B. „GitHub“ in der OCR suchen möchten, wählen Sie **Sichtbarer Text** aus.
 
-    ![Filter](./media/video-indexer-view-edit/visual-text.png)
+    ![Filtern](./media/video-indexer-view-edit/visual-text.png)
 
     Sie können mehrere Filter in Ihrer Abfrage überlagern. Verwenden Sie die Schaltflächen **+** / **-** , um Filter hinzuzufügen/zu entfernen. Verwenden Sie **Filter löschen**, um alle Filter zu entfernen.
 1. Um Videos hinzuzufügen, wählen Sie sie aus, und wählen Sie anschließend **Hinzufügen** aus.

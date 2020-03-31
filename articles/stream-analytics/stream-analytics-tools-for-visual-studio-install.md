@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/22/2018
 ms.openlocfilehash: fa3990d2239da71fb27f4c9a06699f758fcfe7a0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75354362"
 ---
 # <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>Installieren der Azure Stream Analytics-Tools für Visual Studio
@@ -26,7 +26,7 @@ Die Editionen Visual Studio Enterprise (Ultimate/Premium), Professional und Comm
 
 Wir empfehlen Visual Studio 2019.
 
-### Installieren für Visual Studio 2019 und 2017<a name="recommended-visual-studio-2019-and-2017"></a>
+### <a name="install-for-visual-studio-2019-and-2017"></a>Installieren für Visual Studio 2019 und 2017<a name="recommended-visual-studio-2019-and-2017"></a>
 
 Die Tools Azure Data Lake und Stream Analytics sind Teil der Workloads **Azure-Entwicklung** und **Datenspeicherung und -verarbeitung**. Aktivieren Sie eine der beiden Workloads während der Installation. Wenn Visual Studio bereits installiert ist, wählen Sie **Tools** > **Tools und Features abrufen** aus, um Workloads hinzuzufügen.
 
@@ -50,7 +50,7 @@ Nachdem Sie die Workload hinzugefügt haben, aktualisieren Sie die Tools. Dieses
 
 ![Visual Studio-Erweiterungen und -Updates](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-vs2019-extensions-updates.png)
 
-### Installieren für Visual Studio 2015 und 2013<a name="visual-studio-2015-2013"></a>
+### <a name="install-for-visual-studio-2015-and-2013"></a>Installieren für Visual Studio 2015 und 2013<a name="visual-studio-2015-2013"></a>
 
 Die Editionen Visual Studio Enterprise (Ultimate/Premium), Professional und Community unterstützen die Tools. Die Express-Edition unterstützt die Tools nicht.
 
@@ -58,7 +58,7 @@ Die Editionen Visual Studio Enterprise (Ultimate/Premium), Professional und Comm
 * Installieren Sie das Microsoft Azure SDK für .NET Version 2.7.1 oder höher mit dem [Webplattform-Installer](https://www.microsoft.com/web/downloads/platform.aspx).
 * Installieren Sie [Microsoft Azure Data Lake- und Stream Analytics-Tools für Visual Studio](https://www.microsoft.com/en-us/download/details.aspx?id=49504).
 
-## Update<a name="visual-studio-2019-and-2017"></a><a name="visual-studio-2015-and-2013"></a>
+## <a name="update"></a>Update<a name="visual-studio-2019-and-2017"></a><a name="visual-studio-2015-and-2013"></a>
 
 Für Visual Studio 2019 und Visual Studio 2017 wird eine Erinnerung für die neue Version als Visual Studio-Benachrichtigung angezeigt.
 

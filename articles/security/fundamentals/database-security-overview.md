@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
 ms.openlocfilehash: e5ed60ea59dc8cf19b8f9ca7e96777dbc6980171
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69906059"
 ---
 # <a name="azure-database-security-overview"></a>Übersicht über die Sicherheit der Azure-Datenbank
@@ -69,7 +69,7 @@ Sie müssen in der Verbindungszeichenfolge Ihrer Anwendung Parameter angeben, da
 
 Sie können verschiedene Vorsichtsmaßnahmen zum Schützen der Datenbank ergreifen. So können Sie beispielsweise ein sicheres System entwerfen, vertrauliche Ressourcen verschlüsseln und eine Firewall für die Datenbankserver erstellen. In einem Szenario, in dem physische Medien (wie Festplatten oder Sicherungsbänder) gestohlen werden, kann eine böswillige Partei jedoch die Datenbank einfach wiederherstellen oder anfügen und die Daten durchsuchen.
 
-Eine Lösung besteht darin, die vertraulichen Daten in der Datenbank zu verschlüsseln und die Schlüssel zu schützen, die zum Verschlüsseln der Daten mit einem Zertifikat verwendet werden. Bei dieser Lösung wird verhindert, dass Personen ohne Schlüssel die Daten verwenden. Diese Art des Schutzes muss allerdings geplant werden.
+Eine Lösung dieses Problems besteht darin, die sensiblen Daten in der Datenbank zu verschlüsseln, und den für die Verschlüsselung der Daten verwendeten Schlüssel mit einem Zertifikat zu schützen. Bei dieser Lösung wird verhindert, dass Personen ohne Schlüssel die Daten verwenden. Diese Art des Schutzes muss allerdings geplant werden.
 
 Zur Lösung dieses Problems unterstützen SQL Server und SQL-Datenbank die [transparente Datenverschlüsselung (Transparent Data Encryption, TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current&viewFallbackFrom=sql-server-2017). Die transparente Datenverschlüsselung verschlüsselt Datendateien von SQL Server und SQL-Datenbank. Dies wird als Verschlüsselung ruhender Daten bezeichnet.
 
@@ -77,7 +77,7 @@ Die transparente Datenverschlüsselung bietet Schutz vor Bedrohungen durch bösw
 
 Die transparente Datenverschlüsselung verschlüsselt den Speicher einer gesamten Datenbank mithilfe eines symmetrischen Schlüssels, der als Datenbankverschlüsselungsschlüssel bezeichnet wird. In SQL-Datenbank wird der Datenbankverschlüsselungsschlüssel mit einem integrierten Serverzertifikat geschützt. Das integrierte Serverzertifikat ist für jeden SQL-Datenbank-Server eindeutig.
 
-Wenn eine Datenbank Teil einer Geo-DR-Beziehung ist, wird sie auf jedem Server durch einen anderen Schlüssel geschützt. Sind zwei Datenbanken mit dem gleichen Server verbunden, verwenden sie das gleiche integrierte Zertifikat. Microsoft führt für diese Zertifikate nach spätestens 90 Tagen automatisch eine Rotation durch. 
+Wenn eine Datenbank Teil einer Geo-DR-Beziehung ist, wird sie auf jedem Server durch einen anderen Schlüssel geschützt. Wenn zwei Datenbanken mit dem gleichen Server verbunden sind, verwenden sie das gleiche integrierte Zertifikat. Microsoft tauscht diese Zertifikate mindestens alle 90 Tage automatisch untereinander. 
 
 Weitere Informationen finden Sie unter [Transparente Datenverschlüsselung (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-tde).
 
@@ -111,7 +111,7 @@ Datenschutz beginnt mit der Steuerung des Zugriffs auf die Daten. Das Rechenzent
 
 Der Dienst Azure SQL-Datenbank ist nur über TCP-Port 1433 verfügbar. Wenn Sie von Ihrem Computer auf eine SQL-Datenbank zugreifen möchten, stellen Sie sicher, dass die Firewall Ihres Clientcomputers die ausgehende TCP-Kommunikation über TCP-Port 1433 zulässt. Blockieren Sie eingehende Verbindungen über TCP-Port 1433, wenn diese nicht für andere Anwendungen benötigt werden.
 
-#### <a name="authentication"></a>Authentication
+#### <a name="authentication"></a>Authentifizierung
 
 Authentifizierung bezieht sich darauf, auf welche Weise Sie Ihre Identität beim Herstellen der Verbindung mit der Datenbank nachweisen. SQL-Datenbank unterstützt zwei Arten der Authentifizierung:
 
@@ -144,7 +144,7 @@ In einem weiteren Beispiel kann eine entsprechende Datenmaske zum Schutz persone
 
 Die [dynamische Datenmaskierung in SQL-Datenbanken](/azure/sql-database/sql-database-dynamic-data-masking-get-started) schränkt die Offenlegung sensibler Daten ein, indem diese für nicht berechtigte Benutzer maskiert werden. Die dynamische Datenmaskierung wird für die Version V12 von Azure SQL-Datenbank unterstützt.
 
-Mit der [dynamischen Datenmaskierung](/sql/relational-databases/security/dynamic-data-masking) können Sie mit minimalen Auswirkungen auf die Anwendungsschicht festlegen, wie viel von den sensiblen Daten offengelegt werden soll. Dies trägt zur Verhinderung des unbefugten Zugriffs auf sensible Daten bei. Es handelt sich um eine richtlinienbasierte Sicherheitsfunktion, die die sensiblen Daten im Resultset einer Abfrage in festgelegten Datenbankfeldern ausblendet, ohne dass die Daten in der Datenbank geändert werden.
+Mit der [dynamischen Datenmaskierung](/sql/relational-databases/security/dynamic-data-masking) können Sie mit minimalen Auswirkungen auf die Anwendungsschicht festlegen, wie viel von den sensiblen Daten offengelegt werden soll. Dies trägt zur Verhinderung des unbefugten Zugriffs auf sensible Daten bei. Es handelt sich um eine richtlinienbasierte Sicherheitsfunktion, die die sensiblen Daten im Resultset einer Abfrage in festgelegten Datenbankfeldern ausblendet, während die Daten in der Datenbank nicht geändert werden.
 
 > [!Note]
 > Die dynamische Datenmaskierung kann von den Rollen "Azure-Datenbankadministrator", "Serveradministrator" oder "Sicherheitsbeauftragter" konfiguriert werden.
@@ -155,7 +155,7 @@ Eine weitere gängige Sicherheitsanforderung für mehrinstanzenfähige Datenbank
 
 ![Sicherheit auf Zeilenebene, die einem Benutzer den Zugriff auf Zeilen in einer Tabelle über eine Client-App ermöglicht](./media/database-security-overview/azure-database-fig4.png)
 
-Die Zugriffsbeschränkungslogik befindet sich auf der Datenbankebene und nicht auf einer anderen, von den Daten getrennten Anwendungsebene. Das Datenbanksystem wendet die Zugriffsbeschränkungen unabhängig von der Ebene bei jedem Datenzugriffsversuch an. Dadurch bietet Ihr Sicherheitssystem eine geringere Angriffsfläche und ist zuverlässiger und robuster.
+Die Datenbeschränkungszugriffslogik befindet sich auf der Datenbankebene, statt fern der Daten auf einer anderen Anwendungsebene. Das Datenbanksystem wendet die Zugriffsbeschränkungen bei jedem Zugriffsversuch auf Daten aus einer beliebigen Ebene an. Dadurch bietet Ihr Sicherheitssystem eine geringere Angriffsfläche und ist zuverlässiger und robuster.
 
 Die Sicherheit auf Zeilenebene führt die prädikatbasierte Zugriffssteuerung ein. Diese zeichnet sich durch eine flexible, zentrale Auswertung unter Einbeziehung von Metadaten oder anderen Kriterien aus, die der Administrator für geeignet hält. Das Prädikat wird als Kriterium verwendet, um anhand von Benutzerattributen zu bestimmen, ob der Benutzer über die erforderlichen Datenzugriffsberechtigungen verfügt. Sie können mithilfe der prädikatbasierten Zugriffssteuerung eine bezeichnerbasierte Zugriffssteuerung implementieren.
 

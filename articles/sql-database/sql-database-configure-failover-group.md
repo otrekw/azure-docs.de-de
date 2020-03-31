@@ -12,10 +12,10 @@ ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
 ms.openlocfilehash: 3b423a25b6b13ad543ef4a74bc0335ce19f5766d
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461804"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Konfigurieren einer Failovergruppe für Azure SQL-Datenbank
@@ -370,7 +370,7 @@ Erstellen Sie das Gateway für das primäre virtuelle Netzwerk mithilfe des Azur
 
    Die folgende Tabelle enthält die erforderlichen Werte das Gateway für die primäre verwaltete Instanz:
  
-    | **Feld** | value |
+    | **Feld** | Wert |
     | --- | --- |
     | **Abonnement** |  Das Abonnement, in dem sich Ihre primäre verwaltete Instanz befindet. |
     | **Name** | Der Name für das Gateway des virtuellen Netzwerks. | 
@@ -431,7 +431,7 @@ Wiederholen Sie die Schritte im vorherigen Abschnitt, um das Subnetz des virtuel
 
    Die folgende Tabelle enthält die erforderlichen Werte für das Gateway für die sekundäre verwaltete Instanz:
 
-   | **Feld** | value |
+   | **Feld** | Wert |
    | --- | --- |
    | **Abonnement** |  Das Abonnement, in dem sich Ihre sekundäre verwaltete Instanz befindet. |
    | **Name** | Der Name für das Gateway des virtuellen Netzwerks, z.B. `secondary-mi-gateway`. | 

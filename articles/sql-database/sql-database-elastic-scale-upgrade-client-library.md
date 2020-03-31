@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: a1ab684f13c56698d4359f2bf74826f3dd696c6d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73823509"
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Upgrade einer App auf die neueste Clientbibliothek für elastische Datenbanken
@@ -44,7 +44,7 @@ Durch Ausführen dieser Schritte in dieser Reihenfolge wird sichergestellt, dass
 
 **4. Aktualisieren Sie Ihre Shardzuordnungs-Manager-Datenbanken**. Aktualisieren Sie die Metadaten, die Ihre Shard Maps in der Azure SQL-Datenbank unterstützen.  Es gibt hierfür zwei Möglichkeiten: PowerShell oder C#. Beide Optionen werden nachstehend vorgestellt.
 
-***Option 1: Aktualisieren von Metadaten mithilfe von PowerShell***
+***Option 1: Aktualisieren von Metadaten mithilfe von PowerShell***
 
 1. Laden Sie das neueste Befehlszeilendienstprogramm für NuGet [hier](https://nuget.org/nuget.exe) herunter, und speichern Sie es in einem Ordner.
 2. Öffnen Sie eine Eingabeaufforderung, navigieren Sie zum selben Ordner, und geben Sie folgenden Befehl aus: `nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Client`
@@ -52,7 +52,7 @@ Durch Ausführen dieser Schritte in dieser Reihenfolge wird sichergestellt, dass
 4. Laden Sie das Script für das Clientupgrade der elastischen Datenbank aus dem [Script Center](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-Elastic-6442e6a9) herunter, und speichern Sie es in dem Ordner, der bereits die DLL enthält.
 5. Führen Sie in diesem Ordner an der Befehlszeile "PowerShell.\upgrade.ps1" aus, und folgen Sie den Anweisungen.
 
-***Option 2: Aktualisieren von Metadaten mithilfe von C#***
+***Option 2: Aktualisieren von Metadaten mithilfe von C#***
 
 Erstellen Sie alternativ eine Visual Studio-Anwendung, die Ihren ShardMapManager öffnet, alle Shards durchläuft und die Aktualisierung der Metadaten durch Aufrufen der Methoden [UpgradeLocalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradelocalstore) und [UpgradeGlobalStore](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradeglobalstore) durchführt, wie im folgenden Beispiel gezeigt:
 

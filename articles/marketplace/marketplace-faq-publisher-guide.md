@@ -1,19 +1,18 @@
 ---
 title: Häufig gestellte Fragen zum kommerziellen Microsoft-Marketplace
 description: Antworten auf häufig gestellte Fragen zu Azure Marketplace und Microsoft AppSource
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/4/2019
-ms.author: ellacroi
-ms.openlocfilehash: 6a7a0d5bdd07221be823f8b94bd581db6d966fa8
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.author: dsindona
+ms.openlocfilehash: ae5c691375d52bc7da7a877f5b2e0c2ca52cc87e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74306407"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288460"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Häufig gestellte Fragen zum kommerziellen Microsoft-Marketplace
 
@@ -47,7 +46,7 @@ Der Azure Marketplace bietet technische Lösungen und Dienste von Microsoft und 
 
 **Was sind die ersten Schritte im Azure Marketplace?**
 
-Sie finden ein umfassendes Angebot an Unternehmensanwendungen und -lösungen, die alle für die Ausführung in Azure zertifiziert und optimiert sind, wenn Sie den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps) besuchen. Sie können beim [**Erstellen einer Ressource**](https://portal.azure.com/#create/hub) auch über das [Azure-Portal]auf den Azure Marketplace zugreifen.
+Sie finden ein umfassendes Angebot an Unternehmensanwendungen und -lösungen, die alle für die Ausführung in Azure zertifiziert und optimiert sind, wenn Sie den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps) besuchen. Sie können beim [**Erstellen einer Ressource**](https://portal.azure.com/#create/hub) auch über das [Azure portal]auf den Azure Marketplace zugreifen.
 
 **Was sind die wichtigsten Vorteile des Azure Marketplace?**
 
@@ -58,7 +57,7 @@ Im Azure Marketplace können Kunden technische Anwendungen entdecken, die spezie
 Azure Marketplace-Angebote können hier erworben werden:
 
 * [Die webbasierte Storefront](https://azuremarketplace.microsoft.com/marketplace/apps)
-* [Das Azure-Portal][Azure-Portal]
+* [Das Azure-Portal][azure portal]
 * [Die Azure-Befehlszeilenschnittstelle (CLI)](/cli/azure/?view=azure-cli-latest)
 
 >[!Note]
@@ -128,7 +127,7 @@ Das Azure-Abonnement ist im ISV-Lösungspreis (Independent Software Vendors, Una
 
 + *Pro Benutzer:* SaaS-Abonnements können pro Benutzer abgerechnet und monatlich oder jährlich in Rechnung gestellt werden. 
 
-Die für die jeweiligen Angebote geltenden Preisdetails finden Sie auf der Detailseite der Lösung unter [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) oder im [Azure-Portal].
+Die für die jeweiligen Angebote geltenden Preisdetails finden Sie auf der Detailseite der Lösung unter [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) oder im [Azure portal].
 
 > [!Note]
 > Mit Ausnahme der monatlichen Gebühren gelten Azure-Nutzungsgebühren für alle Preismodelle, sofern nicht anders angegeben.
@@ -181,9 +180,9 @@ Nein. Der Herausgeber, der Lösungen im Azure Marketplace besitzt, kann die Prei
 
 **Wo kann ich die Details zu meinem Azure Marketplace-Abonnement und die Rechnungsinformationen einsehen?**
 
-MOSP-Kunden (d. h. direkte Internetkunden, die über das [Microsoft Online Subscription-Programm](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) abonnieren) können Details zum Marketplace-Kauf auf der Registerkarte „Rechnungen“ im Abschnitt „Cost Management + Abrechnung“ des [Azure-Portal] anzeigen.
+MOSP-Kunden (d. h. direkte Internetkunden, die über das [Microsoft Online Subscription-Programm](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) abonnieren) können Details zum Marketplace-Kauf auf der Registerkarte „Rechnungen“ im Abschnitt „Cost Management + Abrechnung“ des [Azure portal] anzeigen.
 
-EA-Kunden mit Konzernvertrag (Enterprise Agreement) können Details zum Marketplace-Kauf auf der Registerkarte „Rechnungen“ im Abschnitt „Cost Management + Abrechnung“ des [Azure-Portal] anzeigen.
+EA-Kunden mit Konzernvertrag (Enterprise Agreement) können Details zum Marketplace-Kauf auf der Registerkarte „Rechnungen“ im Abschnitt „Cost Management + Abrechnung“ des [Azure portal] anzeigen.
 
 CSP-Partner (Cloud Solution Provider) können in Partner Center auf der Registerkarte „Bestellverlauf“ für jeden Kunden Details zum Marketplace-Kauf anzeigen, nachdem Sie in der Ansicht „Kunden“ ein Unternehmen ausgewählt haben.
 
@@ -209,7 +208,7 @@ Um andere Dienste, die Sie im Azure Marketplace erworben haben, zu einem Enterpr
 
 **Wie finde ich heraus, wie groß der bereits verbrauchte Anteil meiner Azure Marketplace-Einkäufe ist?**
 
-Geschätzte Nutzungsinformationen finden Sie im [Azure-Portal]. Solche geschätzten Nutzungsinformationen enthalten möglicherweise nicht die jüngsten Aktivitäten und können auf Projektionen basieren, die auf der Nutzung in der Vergangenheit beruhen. Während der öffentlichen Vorschauphase ist diese Funktion möglicherweise nicht für alle Käufe verfügbar und kann je nach Produkttyp variieren.
+Geschätzte Nutzungsinformationen finden Sie im [Azure portal]. Solche geschätzten Nutzungsinformationen enthalten möglicherweise nicht die jüngsten Aktivitäten und können auf Projektionen basieren, die auf der Nutzung in der Vergangenheit beruhen. Während der öffentlichen Vorschauphase ist diese Funktion möglicherweise nicht für alle Käufe verfügbar und kann je nach Produkttyp variieren.
 
 ### <a name="customer-support"></a>Kundendienst
 
@@ -365,7 +364,7 @@ Weitere Informationen finden Sie unter [Löschen eines Angebots](./cloud-partner
 *Web-Apps (SaaS-Apps, Add-Ons) und Beratungsdienste:*
 
 1. Wählen Sie im Partner Center das Fragezeichensymbol aus, und klicken Sie dann auf **Support**.
-1. Wechseln Sie zur Adresse <https://go.microsoft.com/fwlink/?linkid=844975>.
+1. Gehe zu <https://go.microsoft.com/fwlink/?linkid=844975>.
 1. Wählen Sie auf der Supportseite den Angebotstyp aus.
 1. Wählen Sie ein veröffentlichtes Angebot **Entfernen** aus.
 1. Erstellen Sie ein Vorfallsticket.
@@ -393,7 +392,7 @@ Besuchen Sie die [Microsoft GTM-Dienste](https://partner.microsoft.com/reach-cus
 
 **In welchen Teilen des Webauftritts von Microsoft werden Azure Marketplace-Lösungen beworben?**
 
-Azure Marketplace-Lösungen sind im Microsoft [Azure-Portal] und auf der [Azure Marketplace-Website](https://azuremarketplace.microsoft.com/marketplace/) verfügbar. Cloudentwickler und IT-Experten, die Azure nutzen, sehen Partnerlösungen jedes Mal, wenn sie sich anmelden. Ein Teil der Partnerlösungen wird abwechselnd mit anderen Lösungen auf der [Startseite des Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) und auf der [Seite mit Azure-Lösungen](https://azure.microsoft.com/solutions/) vorgestellt.
+Azure Marketplace-Lösungen sind im Microsoft [Azure portal] und auf der [Azure Marketplace-Website](https://azuremarketplace.microsoft.com/marketplace/) verfügbar. Cloudentwickler und IT-Experten, die Azure nutzen, sehen Partnerlösungen jedes Mal, wenn sie sich anmelden. Ein Teil der Partnerlösungen wird abwechselnd mit anderen Lösungen auf der [Startseite des Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) und auf der [Seite mit Azure-Lösungen](https://azure.microsoft.com/solutions/) vorgestellt.
 
 ### <a name="billing-and-payments"></a>Abrechnung und Zahlungen
 
@@ -477,4 +476,4 @@ Ja, auf Anforderung über ein Supportticket verarbeitet Microsoft Guthaben für 
 Besuchen Sie die Seite [Herausgeberleitfaden für Azure Marketplace und AppSource](/azure/marketplace/marketplace-publishers-guide).
 
 
-[Azure-Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com

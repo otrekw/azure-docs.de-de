@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 8cc085fd27004928babd7df305a4452d1b068f6e
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72794235"
 ---
 # <a name="example-add-synonyms-for-azure-cognitive-search-in-c"></a>Beispiel: Hinzufügen von Synonymen für die kognitive Azure-Suche in C#
@@ -169,7 +169,7 @@ Den vollständigen Quellcode der in diesem Artikel besprochenen Beispielanwendun
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Die schnellste Möglichkeit zum Bereinigen des Systems nach einem Beispiel besteht darin, die Ressourcengruppe zu löschen, die den Dienst für die kognitive Azure-Suche enthält. Sie können dann die Ressourcengruppe löschen, um alle darin enthaltenen Daten endgültig zu löschen. Der Name der Ressourcengruppe befindet sich im Portal auf der Seite „Übersicht“ des Diensts für die kognitive Azure-Suche.
+Die schnellste Möglichkeit zum Bereinigen des Systems nach einem Beispiel besteht darin, die Ressourcengruppe zu löschen, die den Dienst für die kognitive Azure-Suche enthält. Sie können dann die Ressourcengruppe löschen, um alle darin enthaltenen Daten endgültig zu löschen. Der Name der Ressourcengruppe befindet sich im Portal auf der Seite „Übersicht“ des Azure Cognitive Search-Diensts.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 11/04/2019
 ms.author: brendm
 ms.openlocfilehash: 5dcdb03a6d4ec4f448108dbd771a44f362aa7f20
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277585"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Behandlung von allgemeinen Problemen mit Azure Spring Cloud
@@ -74,7 +74,7 @@ Gehen Sie wie folgt vor, um festzustellen, welche Situation zutrifft:
 2. Fügen Sie einen **App=** -Filter hinzu, um anzugeben, welche Anwendung Sie überwachen möchten.
 3. Teilen Sie die Metriken nach **Instanz** auf.
 
-Falls *alle Instanzen* eine hohe CPU- oder Arbeitsspeicherauslastung aufweisen, müssen Sie entweder die Anwendung horizontal hochskalieren oder die CPU- oder Arbeitsspeicherleistung zentral hochskalieren. Weitere Informationen finden Sie im [Tutorial: Skalieren einer Anwendung in Azure Spring Cloud](spring-cloud-tutorial-scale-manual.md).
+Falls *alle Instanzen* eine hohe CPU- oder Arbeitsspeicherauslastung aufweisen, müssen Sie entweder die Anwendung aufskalieren oder die CPU- oder Arbeitsspeicherleistung hochskalieren. Weitere Informationen finden Sie im [Tutorial: Skalieren einer Anwendung in Azure Spring Cloud](spring-cloud-tutorial-scale-manual.md).
 
 Wenn nur *einige Instanzen* eine hohe CPU- oder Arbeitsspeicherauslastung aufweisen, sollten Sie den Instanzstatus und den zugehörigen Ermittlungsstatus überprüfen.
 

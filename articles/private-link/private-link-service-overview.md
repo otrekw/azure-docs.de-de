@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
-ms.openlocfilehash: 97515b308323452e88cf6fd8a517c1f169c9ba6f
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 2cc6c577abdb3698ef6aca1f1f04d239f09d119c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587412"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236070"
 ---
 # <a name="what-is-azure-private-link-service"></a>Was ist der Azure Private Link-Dienst?
 
@@ -71,7 +71,7 @@ Ein Private Link-Dienst legt die folgenden Eigenschaften fest:
  
 - Mehrere Private Link-Dienste können auf demselben Load Balancer Standard mit unterschiedlichen Front-End-IP-Konfigurationen erstellt werden. Die Anzahl der Private Link-Dienste, die Sie pro Load Balancer Standard und pro Abonnement erstellen können, ist begrenzt. Ausführliche Informationen finden Sie im Artikel zu  [Azure-Grenzwerten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
  
-- Der Private Link-Dienst kann mit mehr als einer NAT-IP-Konfiguration verknüpft sein. Die Auswahl von mehreren NAT-IP-Konfigurationen kann Dienstanbietern bei der Skalierung helfen. Heute können Dienstanbieter bis zu acht NAT-IP-Adressen pro Private Link-Dienst zuweisen. Mit jeder NAT-IP-Adresse können Sie mehr Ports für Ihre TCP-Verbindungen zuweisen und auf diese Weise horizontal hochskalieren. Nachdem Sie mehrere NAT-IP-Adressen zu einem Private Link-Dienst hinzugefügt haben, können Sie die NAT-IP-Adressen nicht mehr löschen. Dadurch wird sichergestellt, dass beim Löschen der NAT-IP-Adressen die aktiven Verbindungen nicht beeinträchtigt werden.
+- Der Private Link-Dienst kann mit mehr als einer NAT-IP-Konfiguration verknüpft sein. Die Auswahl von mehreren NAT-IP-Konfigurationen kann Dienstanbietern bei der Skalierung helfen. Heute können Dienstanbieter bis zu acht NAT-IP-Adressen pro Private Link-Dienst zuweisen. Mit jeder NAT-IP-Adresse können Sie mehr Ports für Ihre TCP-Verbindungen zuweisen und auf diese Weise aufskalieren. Nachdem Sie mehrere NAT-IP-Adressen zu einem Private Link-Dienst hinzugefügt haben, können Sie die NAT-IP-Adressen nicht mehr löschen. Dadurch wird sichergestellt, dass beim Löschen der NAT-IP-Adressen die aktiven Verbindungen nicht beeinträchtigt werden.
 
 
 ## <a name="alias"></a>Alias
@@ -108,11 +108,11 @@ Details zum benutzerdefinierten TLV:
 |---------|---------|----------|
 |type  |1        |PP2_TYPE_AZURE (0xEE)|
 |Länge  |2      |Länge des Werts|
-|value  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
+|Wert  |1     |PP2_SUBTYPE_AZURE_PRIVATEENDPOINT_LINKID (0x01)|
 |  |4        |UINT32 (4 Bytes); stellt die LINKID des privaten Endpunkts dar. Codiert im Little-Endian-Format.|
 
  > [!NOTE]
- > Der Dienstanbieter ist für die Sicherstellung zuständig, dass der Dienst hinter dem Lastenausgleich im Tarif „Standard“ so konfiguriert ist, dass er den Proxyprotokollheader gemäß der [Spezifikation](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) analysiert, wenn das Proxyprotokoll für den Private Link-Dienst aktiviert ist. Die Anforderung schlägt fehl, wenn die Proxyprotokolleinstellung für den Private Link-Dienst aktiviert und der Dienst nicht zum Analysieren des Headers konfiguriert ist. Ebenso schlägt die Anforderung fehl, wenn der Dienst einen Proxyprotokollheader erwartet, während die Einstellung für den Private Link-Dienst nicht aktiviert ist. Sobald die Proxyprotokolleinstellung aktiviert ist, wird der Proxyprotokollheader auch in die HTTP/TCP-Integritätstests vom Host zu den virtuellen Back-End-Computern einbezogen, obwohl im Header keine Clientinformationen enthalten sind. 
+ > Der Dienstanbieter ist für die Sicherstellung zuständig, dass der Dienst hinter dem Lastenausgleich im Tarif „Standard“ so konfiguriert ist, dass er den Proxyprotokollheader gemäß der [Spezifikation](https://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) analysiert, wenn das Proxyprotokoll für den Private Link-Dienst aktiviert ist. Die Anforderung schlägt fehl, wenn die Proxyprotokolleinstellung für den Private Link-Dienst aktiviert ist, aber der Dienst des Dienstanbieters nicht zum Analysieren des Headers konfiguriert ist. Ebenso schlägt die Anforderung fehl, wenn der Dienst des Dienstanbieters einen Proxyprotokollheader erwartet, während die Einstellung für den Private Link-Dienst nicht aktiviert ist. Sobald die Proxyprotokolleinstellung aktiviert ist, wird der Proxyprotokollheader auch in die HTTP/TCP-Integritätstests vom Host zu den virtuellen Back-End-Computern einbezogen, obwohl im Header keine Clientinformationen enthalten sind. 
 
 ## <a name="limitations"></a>Einschränkungen
 

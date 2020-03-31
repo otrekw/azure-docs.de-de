@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: d706e9b3351b0693a1f352e15b6b9b0cc5c7a65d
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77086152"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden
@@ -368,11 +368,11 @@ Die Protokollgeste ist ein Anforderung/Antwort-Austausch, der von der Verwaltung
 
 Die Anforderungsnachricht weist die folgenden Anwendungseigenschaften auf:
 
-| Key | Optional | Werttyp | Wertinhalt |
+| Schlüssel | Optional | Werttyp | Wertinhalt |
 | --- | --- | --- | --- |
-| operation |Nein |string |**put-token** |
-| type |Nein |string |Der Typ des abgelegten Tokens. |
-| name |Nein |string |Die Zielgruppe, für die das Token gilt. |
+| operation |Nein |Zeichenfolge |**put-token** |
+| type |Nein |Zeichenfolge |Der Typ des abgelegten Tokens. |
+| name |Nein |Zeichenfolge |Die Zielgruppe, für die das Token gilt. |
 | expiration |Ja |timestamp |Der Ablaufzeitpunkt des Tokens. |
 
 Die *name*-Eigenschaft identifiziert die Entität, der das Token zugeordnet werden soll. In Service Bus ist dies der Pfad zur Warteschlange oder zum Thema/Abonnement. Die *type*-Eigenschaft dient zum Identifizieren des Tokentyps:
@@ -387,10 +387,10 @@ Mit Token werden Rechte gewährt. Service Bus kennt drei grundlegende Rechte: �
 
 Die Antwortnachricht verfügt über die folgenden *application-properties*-Werte:
 
-| Key | Optional | Werttyp | Wertinhalt |
+| Schlüssel | Optional | Werttyp | Wertinhalt |
 | --- | --- | --- | --- |
 | status-code |Nein |INT |HTTP-Antwortcode **[RFC2616]** |
-| status-description |Ja |string |Beschreibung des Status |
+| status-description |Ja |Zeichenfolge |Beschreibung des Status |
 
 Der Client kann *put-token* wiederholt und für jede Entität in der Messaginginfrastruktur aufrufen. Die Token gelten für den aktuellen Client und sind in der aktuellen Verbindung verankert. Das bedeutet, dass der Server alle beibehaltenen Token verwirft, wenn die Verbindung getrennt wird.
 

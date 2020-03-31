@@ -20,11 +20,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 516637b812afece1966006ce6d894dd1e32e6293
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666306"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225310"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Hinzufügen von Bewertungsprofilen zu einem Index für die kognitive Azure-Suche
 
@@ -87,7 +87,7 @@ Eine Suchbewertung wird auf Basis der statistischen Eigenschaften der Daten und 
 
  Die relevanzbasiert Sortierung wird ebenfalls über Bewertungsprofile implementiert. Betrachten Sie Suchergebnisseiten, die Sie in der Vergangenheit verwendet haben, mit denen Sie nach Preis, Datum, Bewertung oder Relevanz sortieren können. In der kognitiven Azure-Suche wird der Faktor „Relevanz“ durch Bewertungsprofile gesteuert. Die Definition von Relevanz wird von Ihnen gesteuert und basiert auf Ihren Geschäftszielen und der Suchfunktionalität, die Sie bereitstellen möchten.  
 
-##  <a name="bkmk_ex"></a> Beispiel  
+##  <a name="example"></a><a name="bkmk_ex"></a> Beispiel  
  Wie bereits erwähnt, wird die benutzerdefinierte Bewertung über mindestens ein Bewertungsprofil implementiert, das in einem Indexschema definiert ist.  
 
  In diesem Beispiel wird das Schema für einen Index mit zwei Bewertungsprofilen (`boostGenre`, `newAndHighlyRated`) gezeigt. Jede Abfrage für diesen Index, die eines der Profile als Abfrageparameter enthält, verwendet das Profil zum Bewerten des Resultsets.  
@@ -173,7 +173,7 @@ Eine Suchbewertung wird auf Basis der statistischen Eigenschaften der Daten und 
 
  Nachdem der Index definiert wurde, erstellen Sie den Index durch Hochladen des Indexschemas, gefolgt von Dokumenten. Anweisungen zu diesen Vorgängen finden Sie unter [Erstellen eines Index &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index) und [Hinzufügen, Aktualisieren oder Löschen von Dokumenten &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). Nachdem der Index erstellt wurde, sollten Sie über ein funktionsfähiges Bewertungsprofil verfügen, das mit Ihren Suchdaten arbeitet.  
 
-##  <a name="bkmk_template"></a> Vorlage  
+##  <a name="template"></a><a name="bkmk_template"></a> Vorlage  
  In diesem Abschnitt wird die Syntax und die Vorlage für die Bewertungsprofile veranschaulicht. Beschreibungen zu den Attributen finden Sie im nächsten Abschnitt unter [Indexattributreferenz](#bkmk_indexref).  
 
 ```  
@@ -227,12 +227,12 @@ Eine Suchbewertung wird auf Basis der statistischen Eigenschaften der Daten und 
 . . .  
 ```  
 
-##  <a name="bkmk_indexref"></a> Indexattributreferenz  
+##  <a name="index-attributes-reference"></a><a name="bkmk_indexref"></a> Indexattributreferenz  
 
 > [!NOTE]  
 >  Eine Bewertungsfunktion kann nur auf filterbare Felder angewendet werden.  
 
-|Attribut|BESCHREIBUNG|  
+|attribute|BESCHREIBUNG|  
 |---------------|-----------------|  
 |`name`|Erforderlich. Dies ist der Name des Bewertungsprofils. Er folgt denselben Benennungskonventionen, die für Felder gelten. Er muss mit einem Buchstaben beginnen, darf keine Punkte, Doppelpunkte oder @-Symbole enthalten und darf nicht mit dem Begriff „azureSearch“ (Groß-/Kleinschreibung wird berücksichtigt) beginnen.|  
 |`text`|Enthält die weights-Eigenschaft.|  
@@ -256,7 +256,7 @@ Eine Suchbewertung wird auf Basis der statistischen Eigenschaften der Daten und 
 |`functionAggregation`|Optional. Gilt nur, wenn Funktionen angegeben sind. Gültige Werte sind: „sum“ (Standard), „average“, „minimum“, „maximum“ und „firstMatching“. Eine Suchbewertung entspricht einem einzelnen Wert, der aus mehreren Variablen berechnet wird, einschließlich mehrerer Funktionen. Dieses Attribut gibt an, wie die Verstärkungen aller Funktionen zu einer einzelnen Gesamtverstärkung zusammengefasst werden, die dann auf die Basisdokumentbewertung angewendet wird. Die Basisbewertung basiert auf dem [tf-idf](http://www.tfidf.com/)-Wert, der aus dem Dokument und der Suchabfrage berechnet wird.|  
 |`defaultScoringProfile`|Beim Ausführen einer Suchanforderung wird die Standardbewertung verwendet (nur [tf-idf](http://www.tfidf.com/)), wenn kein Bewertungsprofil angegeben ist.<br /><br /> Hier kann ein Standardname für das Bewertungsprofil festgelegt werden. Dies führt dazu, dass die kognitive Azure-Suche dieses Profil verwendet, wenn in der Suchanforderung kein bestimmtes Profil angegeben ist.|  
 
-##  <a name="bkmk_interpolation"></a> Festlegen von Interpolationen  
+##  <a name="set-interpolations"></a><a name="bkmk_interpolation"></a> Festlegen von Interpolationen  
  Interpolationen ermöglichen Ihnen das Festlegen der Form der für die Bewertung verwendete Steigung. Da Bewertung von hoch zu niedrig verläuft, nimmt die Steigung immer ab, die Interpolation bestimmt jedoch die Kurve des Gefälles. Die folgenden Interpolationen können verwendet werden:  
 
 |||  
@@ -268,7 +268,7 @@ Eine Suchbewertung wird auf Basis der statistischen Eigenschaften der Daten und 
 
  ![Linien „constant“, „linear“, „quadratic“, „log10“ im Diagramm](media/scoring-profiles/azuresearch_scorefunctioninterpolationgrapht.png "AzureSearch_ScoreFunctionInterpolationGrapht")  
 
-##  <a name="bkmk_boostdur"></a> Festlegen von „boostingDuration“  
+##  <a name="set-boostingduration"></a><a name="bkmk_boostdur"></a> Festlegen von „boostingDuration“  
  `boostingDuration` ist ein Attribut der Funktion `freshness`. Sie können damit eine Ablaufdauer festlegen, nach der die Verstärkung für ein bestimmtes Dokument beendet wird. Um beispielsweise eine Produktlinie oder Marke für einen zehntägigen Werbezeitraum zu verstärken, können Sie den zehntägigen Zeitraum für diese Dokumente z. B. als "P10D" angeben.  
 
  `boostingDuration` muss als XSD-Wert "dayTimeDuration" formatiert sein (eine eingeschränkte Teilmenge eines ISO 8601-Zeitdauerwerts). Das Muster dafür ist: „P[nD][T[nH][nM][nS]]“.  

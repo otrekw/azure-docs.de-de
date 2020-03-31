@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 5d9dc1595e3cc812ba060d958b6e981867500ae2
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73161516"
 ---
 # <a name="security-frame-session-management"></a>Sicherheitsrahmen: Sitzungsverwaltung
@@ -33,15 +33,15 @@ ms.locfileid: "73161516"
 | **Web Application** | <ul><li>[Für Anwendungen, die per HTTPS verfügbar sind, müssen sichere Cookies verwendet werden](#https-secure-cookies)</li><li>[Für alle HTTP-basierten Anwendungen sollte HTTP nur für die Cookiedefinition angegeben werden](#cookie-definition)</li><li>[Einleiten von Gegenmaßnahmen für Angriffe vom Typ „Websiteübergreifende Anforderungsfälschung“ auf ASP.NET-Webseiten](#csrf-asp)</li><li>[Einrichten der Sitzung für die Inaktivitätsgültigkeitsdauer](#inactivity-lifetime)</li><li>[Implementieren der richtigen Abmeldung von der Anwendung](#proper-app-logout)</li></ul> |
 | **Web-API** | <ul><li>[Einleiten von Gegenmaßnahmen für Angriffe vom Typ „Websiteübergreifende Anforderungsfälschung“ auf ASP.NET-Web-APIs](#csrf-api)</li></ul> |
 
-## <a id="logout-adal"></a>Implementieren der richtigen Abmeldung mit ADAL-Methoden bei Verwendung von Azure AD
+## <a name="implement-proper-logout-using-adal-methods-when-using-azure-ad"></a><a id="logout-adal"></a>Implementieren der richtigen Abmeldung mit ADAL-Methoden bei Verwendung von Azure AD
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Azure AD | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
-| **Referenzen**              | N/V  |
+| **Attribute**              | –  |
+| **Referenzen**              | –  |
 | **Schritte** | Wenn für die Anwendung von Azure AD ausgestellte Zugriffstoken benötigt werden, sollte der Abmeldeereignishandler Folgendes aufrufen: |
 
 ### <a name="example"></a>Beispiel
@@ -68,37 +68,37 @@ Außerdem sollte die Sitzung des Benutzers durch den Aufruf der Session.Abandon(
         } 
 ```
 
-## <a id="finite-tokens"></a>Verwenden von begrenzten Gültigkeitsdauern für generierte SAS-Token
+## <a name="use-finite-lifetimes-for-generated-sas-tokens"></a><a id="finite-tokens"></a>Verwenden von begrenzten Gültigkeitsdauern für generierte SAS-Token
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | IoT-Gerät | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
-| **Referenzen**              | N/V  |
+| **Attribute**              | –  |
+| **Referenzen**              | –  |
 | **Schritte** | SAS-Token, die für die Authentifizierung für Azure IoT Hub generiert werden, sollten über einen begrenzten Ablaufzeitraum verfügen. Halten Sie die Gültigkeitsdauern von SAS-Token möglichst kurz, um den verfügbaren Zeitraum für die erneute Verwendung zu begrenzen, falls die Token kompromittiert werden.|
 
-## <a id="resource-tokens"></a>Verwenden von minimalen Tokengültigkeitsdauern für generierte Ressourcentoken
+## <a name="use-minimum-token-lifetimes-for-generated-resource-tokens"></a><a id="resource-tokens"></a>Verwenden von minimalen Tokengültigkeitsdauern für generierte Ressourcentoken
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Azure DocumentDB | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
-| **Referenzen**              | N/V  |
+| **Attribute**              | –  |
+| **Referenzen**              | –  |
 | **Schritte** | Reduzieren Sie die Zeitspanne von Ressourcentoken auf das erforderliche Minimum. Ressourcentoken verfügen über einen gültigen Zeitspannenwert von einer Stunde.|
 
-## <a id="wsfederation-logout"></a>Implementieren der richtigen Abmeldung mit WsFederation-Methoden bei Verwendung von ADFS
+## <a name="implement-proper-logout-using-wsfederation-methods-when-using-adfs"></a><a id="wsfederation-logout"></a>Implementieren der richtigen Abmeldung mit WsFederation-Methoden bei Verwendung von ADFS
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | ADFS | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
-| **Referenzen**              | N/V  |
+| **Attribute**              | –  |
+| **Referenzen**              | –  |
 | **Schritte** | Wenn für die Anwendung von ADFS ausgestellte STS-Token benötigt werden, sollte der Abmeldeereignishandler die WSFederationAuthenticationModule.FederatedSignOut()-Methode aufrufen, um den Benutzer abzumelden. Außerdem sollte die aktuelle Sitzung zerstört werden, und der Sitzungstokenwert sollte zurückgesetzt und aufgehoben werden.|
 
 ### <a name="example"></a>Beispiel
@@ -139,18 +139,18 @@ Außerdem sollte die Sitzung des Benutzers durch den Aufruf der Session.Abandon(
         }
 ```
 
-## <a id="proper-logout"></a>Implementieren der richtigen Abmeldung bei Verwendung von Identity Server
+## <a name="implement-proper-logout-when-using-identity-server"></a><a id="proper-logout"></a>Implementieren der richtigen Abmeldung bei Verwendung von Identity Server
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Identity Server | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [IdentityServer3 – Federated sign out](https://identityserver.github.io/Documentation/docsv2/advanced/federated-signout.html) |
 | **Schritte** | Für IdentityServer wird die Erstellung eines Verbunds mit externen Identitätsanbietern unterstützt. Wenn sich ein Benutzer eines vorgeschalteten Identitätsanbieters abmeldet, ist es je nach verwendetem Protokoll unter Umständen möglich, nach dem Abmelden des Benutzers eine Benachrichtigung zu erhalten. IdentityServer kann dann seine Clients benachrichtigen, damit diese den Benutzer ebenfalls abmelden können. Die Details der Implementierung finden Sie in der Dokumentation, die im Bereich „Referenzen“ angegeben ist.|
 
-## <a id="https-secure-cookies"></a>Für Anwendungen, die per HTTPS verfügbar sind, müssen sichere Cookies verwendet werden
+## <a name="applications-available-over-https-must-use-secure-cookies"></a><a id="https-secure-cookies"></a>Für Anwendungen, die per HTTPS verfügbar sind, müssen sichere Cookies verwendet werden
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -177,7 +177,7 @@ Diese Einstellung wird auch erzwungen, wenn für den Zugriff auf die Anwendung H
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Web Forms, MVC5 |
 | **Attribute**              | EnvironmentType – OnPrem |
-| **Referenzen**              | N/V  |
+| **Referenzen**              | –  |
 | **Schritte** | Wenn die Webanwendung die vertrauende Seite ist und der IdP der ADFS-Server ist, kann das Attribut „secure“ des FedAuth-Tokens konfiguriert werden, indem „requireSSL“ im Abschnitt `system.identityModel.services` der Datei „web.config“ auf „True“ festgelegt wird:|
 
 ### <a name="example"></a>Beispiel
@@ -191,14 +191,14 @@ Diese Einstellung wird auch erzwungen, wenn für den Zugriff auf die Anwendung H
   </system.identityModel.services>
 ```
 
-## <a id="cookie-definition"></a>Für alle HTTP-basierten Anwendungen sollte HTTP nur für die Cookiedefinition angegeben werden
+## <a name="all-http-based-application-should-specify-http-only-for-cookie-definition"></a><a id="cookie-definition"></a>Für alle HTTP-basierten Anwendungen sollte HTTP nur für die Cookiedefinition angegeben werden
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Webanwendung. | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [Secure Cookie Attribute](https://en.wikipedia.org/wiki/HTTP_cookie#Secure_cookie) (Cookieattribut „Secure“) |
 | **Schritte** | Für Cookies wurde das neue Attribut „httpOnly“ eingeführt, um das Risiko einer Offenlegung von Informationen bei einem XSS-Angriff (Cross-Site Scripting) zu verringern. Es wird von allen bekannteren Browsern unterstützt. Mit dem Attribut wird angegeben, dass ein Cookie nicht per Skript zugänglich ist. Durch die Verwendung von HttpOnly-Cookies wird für eine Webanwendung die Gefahr verringert, dass im Cookie enthaltene vertrauliche Informationen per Skript gestohlen und an die Website eines Angreifers gesendet werden. |
 
@@ -219,7 +219,7 @@ Für alle HTTP-basierten Anwendungen, die Cookies verwenden, sollte in der Cooki
 | **Komponente**               | Webanwendung. | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Web Forms |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [FormsAuthentication.RequireSSL-Eigenschaft](https://msdn.microsoft.com/library/system.web.security.formsauthentication.requiressl.aspx) |
 | **Schritte** | Der RequireSSL-Eigenschaftswert wird in der Konfigurationsdatei für eine ASP.NET-Anwendung festgelegt, indem das requireSSL-Attribut des Konfigurationselements verwendet wird. Sie können in der Datei „Web.config“ für Ihre ASP.NET-Anwendung angeben, ob SSL (Secure Sockets Layer) zum Zurückgeben des Forms-Authentifizierungscookies an den Server erforderlich ist, indem Sie das Attribut „requireSSL“ festlegen.|
 
@@ -254,15 +254,15 @@ Hier ist die richtige Konfiguration dargestellt:
 </federatedAuthentication>
 ```
 
-## <a id="csrf-asp"></a>Einleiten von Gegenmaßnahmen für Angriffe vom Typ „Websiteübergreifende Anforderungsfälschung“ auf ASP.NET-Webseiten
+## <a name="mitigate-against-cross-site-request-forgery-csrf-attacks-on-aspnet-web-pages"></a><a id="csrf-asp"></a>Einleiten von Gegenmaßnahmen für Angriffe vom Typ „Websiteübergreifende Anforderungsfälschung“ auf ASP.NET-Webseiten
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Webanwendung. | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
-| **Referenzen**              | N/V  |
+| **Attribute**              | –  |
+| **Referenzen**              | –  |
 | **Schritte** | Websiteübergreifende Anforderungsfälschung (CSRF oder XSRF) ist ein Angriffstyp, bei dem ein Angreifer Aktionen im Sicherheitskontext einer etablierten Sitzung eines anderen Benutzers auf einer Website ausführen kann. Das Ziel ist das Ändern oder Löschen von Inhalten, wenn die Zielwebsite ausschließlich Sitzungscookies zum Authentifizieren der empfangenen Anforderungen verwendet. Ein Angreifer kann dieses Sicherheitsrisiko ausnutzen, indem er den Browser eines anderen Benutzers zum Laden einer URL mit einem Befehl einer anfälligen Website verwendet, auf der der Benutzer bereits angemeldet ist. Für einen Angreifer gibt es hierfür viele Möglichkeiten, z.B. das Hosten einer anderen Website, die eine Ressource vom anfälligen Server lädt, oder das Verleiten des Benutzers zum Klicken auf einen Link. Dieser Angriff kann verhindert werden, wenn der Server ein weiteres Token an den Client sendet, die Verwendung dieses Tokens in allen zukünftigen Anforderungen zur Bedingung macht und sicherstellt, dass alle zukünftigen Anforderungen ein Token enthalten, das zur aktuellen Sitzung gehört. Zu diesem Zweck kann AntiForgeryToken oder ViewState von ASP.NET verwendet werden. |
 
 | Titel                   | Details      |
@@ -270,7 +270,7 @@ Hier ist die richtige Konfiguration dargestellt:
 | **Komponente**               | Webanwendung. | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | MVC5, MVC6 |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [XSRF/CSRF Prevention in ASP.NET MVC and Web Pages](https://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) (XSRF/CSRF-Verhinderung in ASP.NET MVC und -Webseiten) |
 | **Schritte** | Anti-CSRF und ASP.NET-MVC-Formulare: Verwenden Sie die `AntiForgeryToken`-Hilfsmethode für Ansichten. Fügen Sie `Html.AntiForgeryToken()` in das Formular ein, z.B.:|
 
@@ -356,7 +356,7 @@ void ValidateRequestHeader(HttpRequestMessage request)
 | **Komponente**               | Webanwendung. | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Web Forms |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [Abwehr von Webangriffen mit ASP.NET](https://msdn.microsoft.com/library/ms972969.aspx#securitybarriers_topic2) |
 | **Schritte** | CSRF-Angriffen in WebForm-basierten Anwendungen kann begegnet werden, indem Sie „ViewStateUserKey“ auf eine zufällige Zeichenfolge festlegen, die für jeden Benutzer variiert (Benutzer-ID oder, noch besser, Sitzungs-ID). Aus verschiedenen technischen und sozialen Gründen ist die Sitzungs-ID hier deutlich besser geeignet, weil sie unvorhersagbar ist, abläuft und sich von Benutzer zu Benutzer unterscheidet.|
 
@@ -369,14 +369,14 @@ void Page_Init (object sender, EventArgs e) {
 }
 ```
 
-## <a id="inactivity-lifetime"></a>Einrichten der Sitzung für die Inaktivitätsgültigkeitsdauer
+## <a name="set-up-session-for-inactivity-lifetime"></a><a id="inactivity-lifetime"></a>Einrichten der Sitzung für die Inaktivitätsgültigkeitsdauer
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Webanwendung. | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [HttpSessionState.Timeout-Eigenschaft](https://msdn.microsoft.com/library/system.web.sessionstate.httpsessionstate.timeout(v=vs.110).aspx) |
 | **Schritte** | Das Sitzungstimeout entspricht dem Ereignis, das eintritt, wenn Benutzer während eines (vom Webserver vorgegebenen) Intervallzeitraums keine Aktion auf einer Website durchführen. Mit dem Ereignis wird auf Serverseite der Status der Benutzersitzung in „ungültig“ (z.B. nicht mehr verwendet) geändert, und der Webserver wird angewiesen, die Sitzung zu zerstören (Löschen aller enthaltenen Daten). Im folgenden Codebeispiel wird das Attribut für das Sitzungstimeout in der Datei „Web.config“ auf 15 Minuten festgelegt.|
 
@@ -389,14 +389,14 @@ void Page_Init (object sender, EventArgs e) {
 </configuration>
 ```
 
-## <a id="threat-detection"></a>Aktivieren der Bedrohungserkennung in Azure SQL
+## <a name="enable-threat-detection-on-azure-sql"></a><a id="threat-detection"></a>Aktivieren der Bedrohungserkennung in Azure SQL
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Webanwendung. | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Web Forms |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [Forms-Element für Authentifizierung (ASP.NET-Einstellungsschema)](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
 | **Schritte** | Festlegen des Cookietimeouts für das Forms-Authentifizierungsticket auf 15 Minuten|
 
@@ -439,26 +439,26 @@ Die Gültigkeitsdauer für das von ADFS ausgestellte SAML-Anspruchstoken sollte 
 Set-ADFSRelyingPartyTrust -TargetName "<RelyingPartyWebApp>" -ClaimsProviderName @("Active Directory") -TokenLifetime 15 -AlwaysRequireAuthentication $true
 ```
 
-## <a id="proper-app-logout"></a>Implementieren der richtigen Abmeldung von der Anwendung
+## <a name="implement-proper-logout-from-the-application"></a><a id="proper-app-logout"></a>Implementieren der richtigen Abmeldung von der Anwendung
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Webanwendung. | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
-| **Referenzen**              | N/V  |
+| **Attribute**              | –  |
+| **Referenzen**              | –  |
 | **Schritte** | Führen Sie eine korrekte Abmeldung von der Anwendung durch, wenn Benutzer auf die Schaltfläche „Abmelden“ klicken. Beim Abmelden sollte die Anwendung die Sitzung des Benutzers zerstören und außerdem den Sitzungscookiewert zurücksetzen und aufheben. Dies gilt auch für den Authentifizierungscookiewert. Wenn mehrere Sitzungen an eine einzelne Benutzeridentität gebunden sind, müssen sie bei einem Timeout oder bei der Abmeldung alle zusammen beendet werden. Stellen Sie abschließend sicher, dass die Abmeldefunktionalität auf jeder Seite verfügbar ist. |
 
-## <a id="csrf-api"></a>Einleiten von Gegenmaßnahmen für Angriffe vom Typ „Websiteübergreifende Anforderungsfälschung“ auf ASP.NET-Web-APIs
+## <a name="mitigate-against-cross-site-request-forgery-csrf-attacks-on-aspnet-web-apis"></a><a id="csrf-api"></a>Einleiten von Gegenmaßnahmen für Angriffe vom Typ „Websiteübergreifende Anforderungsfälschung“ auf ASP.NET-Web-APIs
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
 | **Komponente**               | Web-API | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
-| **Attribute**              | N/V  |
-| **Referenzen**              | N/V  |
+| **Attribute**              | –  |
+| **Referenzen**              | –  |
 | **Schritte** | Websiteübergreifende Anforderungsfälschung (CSRF oder XSRF) ist ein Angriffstyp, bei dem ein Angreifer Aktionen im Sicherheitskontext einer etablierten Sitzung eines anderen Benutzers auf einer Website ausführen kann. Das Ziel ist das Ändern oder Löschen von Inhalten, wenn die Zielwebsite ausschließlich Sitzungscookies zum Authentifizieren der empfangenen Anforderungen verwendet. Ein Angreifer kann dieses Sicherheitsrisiko ausnutzen, indem er den Browser eines anderen Benutzers zum Laden einer URL mit einem Befehl einer anfälligen Website verwendet, auf der der Benutzer bereits angemeldet ist. Für einen Angreifer gibt es hierfür viele Möglichkeiten, z.B. das Hosten einer anderen Website, die eine Ressource vom anfälligen Server lädt, oder das Verleiten des Benutzers zum Klicken auf einen Link. Dieser Angriff kann verhindert werden, wenn der Server ein weiteres Token an den Client sendet, die Verwendung dieses Tokens in allen zukünftigen Anforderungen zur Bedingung macht und sicherstellt, dass alle zukünftigen Anforderungen ein Token enthalten, das zur aktuellen Sitzung gehört. Zu diesem Zweck kann AntiForgeryToken oder ViewState von ASP.NET verwendet werden. |
 
 | Titel                   | Details      |
@@ -466,7 +466,7 @@ Set-ADFSRelyingPartyTrust -TargetName "<RelyingPartyWebApp>" -ClaimsProviderName
 | **Komponente**               | Web-API | 
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | MVC5, MVC6 |
-| **Attribute**              | N/V  |
+| **Attribute**              | –  |
 | **Referenzen**              | [Preventing Cross-Site Request Forgery (CSRF) Attacks in ASP.NET Web API](https://www.asp.net/web-api/overview/security/preventing-cross-site-request-forgery-csrf-attacks) (Verhindern von Angriffen mit websiteübergreifender Anforderungsfälschung in der ASP.NET-Web-API) |
 | **Schritte** | Anti-CSRF und AJAX: Das Formulartoken kann für AJAX-Anforderungen ein Problem darstellen, da eine AJAX-Anforderung unter Umständen JSON-Daten und keine HTML-Formulardaten sendet. Eine Lösung besteht darin, die Token in einem benutzerdefinierten HTTP-Header zu senden. Im folgenden Code wird Razor-Syntax zum Generieren der Token verwendet, und anschließend werden die Token einer AJAX-Anforderung hinzugefügt. |
 

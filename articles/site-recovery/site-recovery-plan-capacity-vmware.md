@@ -8,11 +8,11 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: 467c70a722b8a243be6ac2826188a4ba3459aa06
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961357"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229050"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Planen der Kapazität und Skalierung der VMware-Notfallwiederherstellung für Azure
 
@@ -38,7 +38,7 @@ Ein Konfigurationsserver, für den integrierte Prozessserver zum Schutz der Arbe
 
 CPU | Arbeitsspeicher | Größe des Cachedatenträgers | Datenänderungsrate | Geschützte Computer
 --- | --- | --- | --- | ---
-8 vCPUs (2 Sockets * 4 Kerne \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB oder weniger | Wird verwendet, um weniger als 100 Computer zu replizieren.
+8 vCPUs (2 Sockets * 4 Kerne \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB oder weniger | Wird verwendet, um weniger als 100 Computer zu replizieren.
 12 vCPUs (2 Sockets * 6 Kerne \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB bis 1 TB | Wird verwendet, um 100 bis 150 Computer zu replizieren.
 16 vCPUs (2 Sockets * 8 Kerne \@ 2,5 GHz) | 32 GB | 1 TB | Mehr als 1 TB bis 2 TB | Wird verwendet, um 151 bis 200 Computer zu replizieren.
 Bereitstellen eines weiteren Konfigurationsservers mit einer [OVF-Vorlage](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template). | | | | Stellen Sie einen neuen Konfigurationsserver bereit, wenn Sie mehr als 200 Computer replizieren.
@@ -51,7 +51,7 @@ In diesen Konfigurationen gilt Folgendes:
 
 ## <a name="size-recommendations-for-the-process-server"></a>Empfohlene Größen für den Prozessserver
 
-Der Prozessserver ist die Komponente, die die Datenreplikation in Azure Site Recovery verarbeitet. Wenn die tägliche Änderungsrate 2 TB überschreitet, müssen Sie einen Prozessserver für die horizontale Skalierung hinzufügen, um die Replikationslast zu verarbeiten. Zum horizontalen Hochskalieren haben Sie folgende Möglichkeiten:
+Der Prozessserver ist die Komponente, die die Datenreplikation in Azure Site Recovery verarbeitet. Wenn die tägliche Änderungsrate 2 TB überschreitet, müssen Sie einen Prozessserver für die horizontale Skalierung hinzufügen, um die Replikationslast zu verarbeiten. Zum Aufskalieren haben Sie folgende Möglichkeiten:
 
 * Erhöhen Sie die Anzahl der Konfigurationsserver, indem Sie die Bereitstellung mit einer [OVF-Vorlage](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template) ausführen. Beispielsweise können Sie mit zwei Konfigurationsservern bis zu 400 Computer schützen.
 * Fügen Sie [horizontal skalierte Prozessserver](vmware-azure-set-up-process-server-scale.md#download-installation-file) hinzu. Verwenden Sie die Prozessserver für horizontale Skalierung anstelle des Konfigurationsservers (oder als Ergänzung zu diesem) für die Verarbeitung des Replikationsdatenverkehrs.
@@ -64,11 +64,11 @@ Die folgende Tabelle beschreibt dieses Szenario:
 
 Zusätzlicher Prozessserver | Größe des Cachedatenträgers | Datenänderungsrate | Geschützte Computer
 --- | --- | --- | ---
-4 vCPUs (2 Sockets mit jeweils 2 Kernen mit\@ 2,5 GHz), 8 GB Arbeitsspeicher | 300 GB | 250 GB oder weniger | Wird verwendet, um maximal 85 Computer zu replizieren.
+4 vCPUs (2 Sockets mit jeweils 2 Kernen mit\@ 2,5 GHz), 8 GB Arbeitsspeicher | 300 GB | 250 GB oder weniger | Wird verwendet, um maximal 85 Computer zu replizieren.
 8 vCPUs (2 Sockets mit jeweils 4 Kernen mit\@ 2,5 GHz), 12 GB Arbeitsspeicher | 600 GB | 251 GB bis 1 TB | Wird verwendet, um 86 bis 150 Computer zu replizieren.
 12 vCPUs (2 Sockets mit jeweils 6 Kernen mit\@ 2,5 GHz), 24 GB Arbeitsspeicher | 1 TB | Mehr als 1 TB bis 2 TB | Wird verwendet, um 151 bis 225 Computer zu replizieren.
 
-Wie Sie Ihre Server skalieren, hängt davon ab, ob Sie das zentrale Hochskalieren oder das horizontale Hochskalieren als Modell bevorzugen. Zum zentralen Hochskalieren stellen Sie einige High-End-Konfigurationsserver und Prozessserver bereit. Zum horizontalen Hochskalieren stellen Sie weitere Server mit weniger Ressourcen bereit. Wenn Sie beispielsweise 200 Computer mit einer täglichen Datenänderungsrate von insgesamt 1,5 TB schützen möchten, können Sie eine der folgenden Maßnahmen ergreifen:
+Wie Sie Ihre Server skalieren, hängt davon ab, ob Sie das zentrale Hochskalieren oder das horizontale Hochskalieren als Modell bevorzugen. Zum Hochskalieren stellen Sie einige High-End-Konfigurationsserver und Prozessserver bereit. Zum Aufskalieren stellen Sie weitere Server mit weniger Ressourcen bereit. Wenn Sie beispielsweise 200 Computer mit einer täglichen Datenänderungsrate von insgesamt 1,5 TB schützen möchten, können Sie eine der folgenden Maßnahmen ergreifen:
 
 * Richten Sie einen einzelnen Prozessserver (16 vCPU, 24 GB RAM) ein.
 * Richten Sie zwei Prozessserver ein (jeweils 8 vCPUs und 12 GB RAM).
@@ -120,7 +120,7 @@ Bevor Sie die Site Recovery-Infrastruktur einrichten, greifen Sie auf die Umgebu
 
 ## <a name="deploy-additional-process-servers"></a>Bereitstellen zusätzlicher Prozessserver
 
-Wenn Sie Ihre Bereitstellung über 200 Quellcomputer oder eine gesamte tägliche Änderungsrate von 2 TB hinaus horizontal hochskalieren, müssen Sie weitere Prozessserver zur Bewältigung des Datenverkehrsaufkommens hinzufügen. Wir haben das Produkt in Version 9.24 erweitert, um beim Einrichten eines Prozessservers für die horizontale Skalierung das [Verarbeiten von Serverwarnungen](vmware-physical-azure-monitor-process-server.md#process-server-alerts) zu ermöglichen. [Richten Sie den Prozessserver so ein](vmware-azure-set-up-process-server-scale.md), dass er neue Quellcomputer schützt oder [für einen Lastenausgleich sorgt](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load).
+Wenn Sie Ihre Bereitstellung über 200 Quellcomputer oder eine gesamte tägliche Änderungsrate von 2 TB hinaus aufskalieren, müssen Sie weitere Prozessserver zur Bewältigung des Datenverkehrsaufkommens hinzufügen. Wir haben das Produkt in Version 9.24 erweitert, um beim Einrichten eines Prozessservers für die horizontale Skalierung das [Verarbeiten von Serverwarnungen](vmware-physical-azure-monitor-process-server.md#process-server-alerts) zu ermöglichen. [Richten Sie den Prozessserver so ein](vmware-azure-set-up-process-server-scale.md), dass er neue Quellcomputer schützt oder [für einen Lastenausgleich sorgt](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load).
 
 ### <a name="migrate-machines-to-use-the-new-process-server"></a>Migrieren der Computer für die Verwendung des neuen Prozessservers
 

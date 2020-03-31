@@ -12,11 +12,11 @@ ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/27/2019
 ms.openlocfilehash: c57f9eed2147504dd7b3313d58468fb76ab40caa
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552541"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232546"
 ---
 # <a name="tutorial-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Tutorial: Hinzufügen eines Pools für elastische Azure SQL-Datenbank-Instanzen zu einer Failovergruppe
 
@@ -32,7 +32,7 @@ Konfigurieren Sie eine ‚Failovergruppe für einen Pool für elastische Azure S
 
 Damit Sie dieses Tutorial ausführen können, benötigen Sie folgende Komponenten: 
 
-- ein Azure-Abonnement [Erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/), wenn Sie noch keines besitzen.
+- Ein Azure-Abonnement. [Erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/), wenn Sie noch keines besitzen.
 
 
 ## <a name="1---create-a-single-database"></a>1 – Erstellen einer Einzeldatenbank 
@@ -43,7 +43,7 @@ Damit Sie dieses Tutorial ausführen können, benötigen Sie folgende Komponente
 In diesem Schritt erstellen Sie einen Pool für elastische Datenbanken und fügen ihm Ihre Einzeldatenbank hinzu. 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Erstellen Sie den Pool für elastische Datenbanken mithilfe des Azure-Portals. 
 
@@ -71,7 +71,7 @@ Erstellen Sie den Pool für elastische Datenbanken mithilfe des Azure-Portals.
 1. Klicken Sie auf **Bewerten + erstellen**, um die Einstellung für den Pool für elastische Datenbanken anzuzeigen, und wählen Sie **Erstellen** aus, um Ihren Pool für elastische Datenbanken zu erstellen. 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Erstellen Sie die Pools für elastische Datenbanken und den sekundären Server mithilfe von PowerShell. 
 
    ```powershell-interactive
@@ -129,7 +129,7 @@ In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
 In diesem Schritt erstellen Sie eine [Failovergruppen](sql-database-auto-failover-group.md) zwischen einem vorhandenen Azure SQL Server und einem neuen Azure SQL Server in einer anderen Region. Anschließend fügen Sie dann der Failovergruppe den Pool für elastische Datenbanken hinzu. 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Erstellen Sie die Failovergruppe mithilfe des Azure-Portals. 
 
@@ -163,7 +163,7 @@ Erstellen Sie die Failovergruppe mithilfe des Azure-Portals.
 1. Wählen Sie **Auswählen** aus, um die Einstellungen für den Pool für elastische Datenbanken auf die Failovergruppe anzuwenden, und klicken Sie dann auf **Erstellen**, um Ihre Failovergruppe zu erstellen. Durch das Hinzufügen des Pool für elastische Datenbanken zur Failovergruppe wird automatisch der Georeplikationsprozess gestartet.
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Erstellen Sie die Failovergruppe mithilfe von PowerShell. 
 
@@ -252,7 +252,7 @@ In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
 In diesem Schritt führen Sie ein Failover für Ihre Failovergruppe auf dem sekundären Server und anschließend ein Failback mit dem Azure-Portal aus. 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Testen Sie das Failover Ihrer Failovergruppe mithilfe des Azure-Portals. 
 
@@ -276,7 +276,7 @@ Testen Sie das Failover Ihrer Failovergruppe mithilfe des Azure-Portals.
 1. Wählen Sie erneut **Failover** aus, um die Failovergruppe wieder auf die ursprünglichen Einstellungen zurückzusetzen. 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Testen Sie das Failover Ihrer Failovergruppe mithilfe von PowerShell. 
 
@@ -357,7 +357,7 @@ In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
 Bereinigen Sie die Ressourcen, indem Sie die Ressourcengruppe löschen. 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Ressourcengruppe.
@@ -365,7 +365,7 @@ Bereinigen Sie die Ressourcen, indem Sie die Ressourcengruppe löschen.
 1. Geben Sie den Namen der Ressourcengruppe `myResourceGroup` in das Textfeld ein, und wählen Sie dann **Löschen**, um die Ressourcengruppe zu löschen. 
 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Bereinigen Sie Ihre Ressourcen mithilfe von PowerShell. 
 
@@ -392,7 +392,7 @@ In diesem Teil des Tutorials wird das folgende PowerShell-Cmdlet verwendet:
 
 ## <a name="full-script"></a>Vollständiges Skript
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-elastic-pool-to-failover-group-az-ps.ps1 "Add elastic pool to a failover group")]
 
@@ -414,7 +414,7 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Entfernt eine Ressourcengruppe. | 
 
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 Es sind keine Skripts für das Azure-Portal verfügbar.
 
 ---

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: 456f379e2b3c2ff411b196d45aef4663fddb0fe6
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604332"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225294"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Auslaufen von Security Center-Funktionen (Juli 2019)
 
@@ -41,7 +41,7 @@ Zu den eingestellten Security Center-Features zählen:
 
 In diesem Artikel erhalten Sie ausführliche Informationen zu jedem eingestellten Feature sowie zu den Schritten, mit denen Sie Ersatzfeatures implementieren können.
 
-## Ereignisdashboard<a name="menu_events"></a>
+## <a name="events-dashboard"></a>Ereignisdashboard<a name="menu_events"></a>
 
 Security Center nutzt Microsoft Monitoring Agent für die Erfassung verschiedener sicherheitsbezogener Konfigurationen und Ereignisse auf Ihren Computern. Diese Ereignisse werden in Ihren Arbeitsbereichen gespeichert. Mit dem [Ereignisdashboard](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard) können Sie diese Daten anzeigen, und es bietet Ihnen einen Einstiegspunkt in Log Analytics.
 
@@ -57,7 +57,7 @@ Wenn Sie benutzerdefinierte relevante Ereignisse in Security Center erstellt hab
 
 ![Gespeicherte Suchvorgänge – Arbeitsbereich][3]
 
-## Menüeintrag „Search“<a name="menu_search"></a>
+## <a name="search-menu-entry"></a>Menüeintrag „Search“<a name="menu_search"></a>
 
 Azure Security Center verwendet derzeit die Azure Monitor-Protokollsuche, um Ihre Sicherheitsdaten abzurufen und zu analysieren. Dieser Bildschirm fungiert als Fenster zur Suchseite von Log Analytics und ermöglicht Benutzern, Suchabfragen zu ihrem ausgewählten Arbeitsbereich auszuführen. Weitere Informationen finden Sie unter [Azure Security Center-Suche](https://docs.microsoft.com/azure/security-center/security-center-search). Wir haben dieses Suchfenster eingestellt:
 
@@ -69,7 +69,7 @@ Wir empfehlen Ihnen, die nativen Funktionen von Azure Log Analytics zum Ausführ
 
 ![Seite „Protokolle“ von Log Analytics][5]
 
-## Identität und Zugriff (klassisch) (Vorschau)<a name="menu_classicidentity"></a>
+## <a name="classic-identity--access-preview"></a>Identität und Zugriff (klassisch) (Vorschau)<a name="menu_classicidentity"></a>
 
 In der klassischen „Identität und Zugriff“-Benutzeroberfläche in Security Center wird derzeit ein Dashboard mit Informationen zu Identität und Zugriff in Log Analytics angezeigt. So zeigen Sie dieses Dashboard an:
 
@@ -95,7 +95,7 @@ Alle Features des Dashboards **Identität und Zugriff** in Log Analytics können
 
 ![Identitätsseite – Einstellung der klassischen Benutzeroberfläche][9]
 
-## Karte von Sicherheitsereignissen<a name="menu_securityeventsmap"></a>
+## <a name="security-events-map"></a>Karte von Sicherheitsereignissen<a name="menu_securityeventsmap"></a>
 
 Security Center bietet Ihnen eine [Karte mit Sicherheitswarnungen und Informationen zu Bedrohungen](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) zur Identifizierung der Sicherheitsrisiken. Wenn Sie auf die Schaltfläche **Klicken Sie auf Sicherheit Ereignisse Karte** klicken, wird ein Dashboard geöffnet, in dem Sie Rohdaten zu Sicherheitsereignissen für den ausgewählten Arbeitsbereich einsehen können.
 
@@ -117,7 +117,7 @@ Ihre vorhandenen Daten sind weiterhin in der Log Analytics-Sicherheitslösung ve
 
 Wir empfehlen Ihnen, die in Security Center integrierte Karte mit Sicherheitswarnungen zu verwenden: **Karte mit Sicherheitswarnungen (Vorschau)** . Diese Funktion bietet eine optimierte Benutzeroberfläche und funktioniert mit allen Abonnements und zugehörigen Arbeitsbereichen. Sie erhalten eine allgemeine Übersicht Ihrer Umgebung, die nicht auf einem einzelnen Arbeitsbereich beschränkt ist.
 
-## Benutzerdefinierte Warnungsregeln (Vorschau)<a name="menu_customalerts"></a>
+## <a name="custom-alert-rules-preview"></a>Benutzerdefinierte Warnungsregeln (Vorschau)<a name="menu_customalerts"></a>
 
 Wir haben [die Funktion für benutzerdefinierte Warnungsregeln](https://docs.microsoft.com/azure/security-center/security-center-custom-alert) am 30. Juni 2019 eingestellt, da die zugrunde liegende Infrastruktur ausgemustert wurde. Nach der Einstellung werden keine benutzerdefinierten Sicherheitswarnungen mehr generiert.
 Es wird empfohlen, [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) zu aktivieren und die benutzerdefinierten Warnungen dort neu zu erstellen. Alternativ können Sie Ihre Warnungen mit Azure Monitor-Protokollwarnungen erstellen.
@@ -134,7 +134,7 @@ Wenn Sie Azure Sentinel nicht verwenden möchten, können Sie Ihre Warnungen mit
 
 Weitere Informationen zum Einstellen benutzerdefinierter Warnungen finden Sie unter [Benutzerdefinierte Warnungsregeln in Azure Security Center (Vorschauversion)](https://docs.microsoft.com/azure/security-center/security-center-custom-alert).
 
-## Sicherheitswarnungen – Untersuchung<a name="menu_investigate"></a>
+## <a name="security-alerts-investigation"></a>Sicherheitswarnungen – Untersuchung<a name="menu_investigate"></a>
 
 [Das Untersuchungsfeature](https://docs.microsoft.com/azure/security-center/security-center-investigation) in Security Center unterstützt Sie beim Selektieren eines potenziellen Sicherheitsvorfalls. Mit diesem Feature können Sie den Umfang eines Vorfalls erkennen und die Hauptursache identifizieren. Wir haben dieses Feature aus Security Center entfernt, da es durch eine verbesserte Funktion in [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) ersetzt wurde.
 
@@ -150,7 +150,7 @@ Ihre vorhandenen Daten sind weiterhin in der Log Analytics-Sicherheitslösung ve
 
 Sie sollten zu [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) wechseln, damit Ihnen umfassende Untersuchungsfunktionen zur Verfügung stehen. Azure Sentinel bietet leistungsstarke Such- und Abfragetools zum Aufspüren von Sicherheitsbedrohungen in den Datenquellen Ihrer Organisation.
 
-## Teile der Sicherheitslösungen<a name="menu_solutions"></a>
+## <a name="subset-of-security-solutions"></a>Teile der Sicherheitslösungen<a name="menu_solutions"></a>
 
 Security Center kann [integrierte Sicherheitslösungen in Azure](https://docs.microsoft.com/azure/security-center/security-center-partner-integration) aktivieren. Wir haben die folgenden Partnerlösungen aus Security Center ausgemustert. Diese Lösungen sind in [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) zusammen mit einer Reihe zusätzlicher Datenquellen aktiviert.
 
@@ -165,7 +165,7 @@ Wenn Sie über vorhandene verbundene Lösungen verfügen, empfehlen wir Ihnen, S
 
 ![Security Center-Lösungen][16]
 
-## Bearbeiten von Sicherheitskonfigurationen für Sicherheitsrichtlinien<a name="menu_securityconfigurations"></a>
+## <a name="edit-security-configurations-for-security-policies"></a>Bearbeiten von Sicherheitskonfigurationen für Sicherheitsrichtlinien<a name="menu_securityconfigurations"></a>
 
 Azure Security Center überwacht Sicherheitskonfigurationen durch Anwenden von [über 150 empfohlenen Regeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) für die Härtung des Betriebssystems. Diese Regeln beziehen sich u.a. auf Firewalls, Überwachung, Kennwortrichtlinien. Wenn auf einem Computer eine angreifbare Konfiguration festgestellt wird, generiert Security Center eine Sicherheitsempfehlung. Im Bildschirm [Sicherheitskonfigurationen bearbeiten](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) können Benutzer die standardmäßige Sicherheitskonfiguration des Betriebssystems in Security Center anpassen.
 
@@ -177,7 +177,7 @@ Wir haben diese Previewfunktion eingestellt. Wenn Sie Ihre Sicherheitskonfigurat
 
 Wir beabsichtigen, dass Security Center den [Guest Configuration-Agent](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration) unterstützt. Aus diesem Update resultiert ein viel umfangreicherer Featuresatz, einschließlich der Unterstützung weiterer Betriebssysteme und Integration von Azure-Gastsystemrichtlinien für Gastkonfigurationen. Nachdem diese Änderungen aktiviert sind, haben Sie auch die Möglichkeit, Konfigurationen nach Maß zu steuern und automatisch auf neue Ressourcen anzuwenden.
 
-## Dashboard „Sicherheit und Überwachung“ für Log Analytics-Arbeitsbereiche<a name="menu_securityomsdashboard"></a>
+## <a name="security-and-audit-dashboard-for-log-analytics-workspaces"></a>Dashboard „Sicherheit und Überwachung“ für Log Analytics-Arbeitsbereiche<a name="menu_securityomsdashboard"></a>
 
 Das Dashboard „Sicherheit und Überwachung“ wurde ursprünglich im OMS-Portal verwendet. In Log Analytics bietet das Dashboard einen arbeitsbereichsspezifischen Überblick über relevante Sicherheitsereignisse und -risiken, eine Bedrohungsanalyse-Karte sowie eine Identitäts- und Zugriffsbewertung von Sicherheitsereignissen, die im Arbeitsbereich gespeichert sind. Wir haben das Dashboard entfernt. Wie bereits in der Benutzeroberfläche des Dashboards empfohlen, sollten Sie zu Azure Security Center wechseln.
 

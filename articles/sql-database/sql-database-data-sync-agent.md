@@ -12,10 +12,10 @@ ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
 ms.openlocfilehash: 6d0a728401ac9f0156cc8fa913ce486bb577c6dd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73825173"
 ---
 # <a name="data-sync-agent-for-azure-sql-data-sync"></a>Datensynchronisierungs-Agent für die Azure SQL-Datensynchronisierung
@@ -47,7 +47,7 @@ msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\
 
 Informationen zum Konfigurieren des Datensynchronisierungs-Agents zum Synchronisieren von Daten mit einer oder mehreren lokalen SQL Server-Datenbanken finden Sie unter [Hinzufügen einer lokalen SQL Server-Datenbank](sql-database-get-started-sql-data-sync.md#add-on-prem).
 
-## <a name="agent-faq"></a> Häufig gestellte Fragen zum Datensynchronisierungs-Agent
+## <a name="data-sync-agent-faq"></a><a name="agent-faq"></a> Häufig gestellte Fragen zum Datensynchronisierungs-Agent
 
 ### <a name="why-do-i-need-a-client-agent"></a>Wozu benötige ich einen Client-Agent?
 
@@ -79,7 +79,7 @@ Wenn Sie den lokalen Agent auf einem anderen Computer als dem ausführen möchte
 4. Warten Sie, während der Client-Agent die Liste der zuvor registrierten lokalen Datenbanken herunterlädt.
 5. Geben Sie Datenbankanmeldeinformationen für alle Datenbanken ein, die als nicht erreichbar angezeigt werden. Diese Datenbanken müssen auf dem neuen Computer erreichbar sein, auf denen der Agent installiert ist.
 
-## <a name="agent-tshoot"></a> Beheben von Problemen mit dem Datensynchronisierungs-Agent
+## <a name="troubleshoot-data-sync-agent-issues"></a><a name="agent-tshoot"></a> Beheben von Problemen mit dem Datensynchronisierungs-Agent
 
 - [Der Client-Agent kann nicht installiert, deinstalliert oder repariert werden.](#agent-install)
 
@@ -95,7 +95,7 @@ Wenn Sie den lokalen Agent auf einem anderen Computer als dem ausführen möchte
 
 - [Die lokale Synchronisierungs-Agent-App kann keine Verbindung mit dem lokalen Synchronisierungsdienst herstellen.](#agent-connect)
 
-### <a name="agent-install"></a> Der Client-Agent kann nicht installiert, deinstalliert oder repariert werden.
+### <a name="the-client-agent-install-uninstall-or-repair-fails"></a><a name="agent-install"></a> Der Client-Agent kann nicht installiert, deinstalliert oder repariert werden.
 
 - **Ursache**. Viele Szenarien können diesen Fehler verursachen. Um die genaue Ursache für diesen Fehler zu ermitteln, sehen Sie sich die Protokolle an.
 
@@ -106,7 +106,7 @@ Wenn Sie den lokalen Agent auf einem anderen Computer als dem ausführen möchte
 
     Sie können die Protokollierung auch für alle mit Windows Installer durchgeführten Installationen aktivieren. Im Microsoft Knowledge Base-Artikel [Aktivieren der Windows Installer-Protokollierung](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging) erfahren Sie, wie Sie die Protokollierung für Windows Installer mit nur einem Klick aktivieren. Dort finden Sie auch Informationen zum Speicherort der Protokolle.
 
-### <a name="agent-uninstall"></a> Der Client-Agent funktioniert nach dem Abbrechen der Deinstallation nicht mehr.
+### <a name="the-client-agent-doesnt-work-after-i-cancel-the-uninstall"></a><a name="agent-uninstall"></a> Der Client-Agent funktioniert nach dem Abbrechen der Deinstallation nicht mehr.
 
 Der Client-Agent funktioniert nicht mehr, auch nachdem Sie die Deinstallation abgebrochen haben.
 
@@ -117,7 +117,7 @@ Der Client-Agent funktioniert nicht mehr, auch nachdem Sie die Deinstallation ab
     -   Verwenden Sie „services.msc“, um die Anmeldeinformationen für den Client-Agent erneut einzugeben.
     -   Deinstallieren Sie den Client-Agent, und installieren Sie einen neuen. Den neuesten Client-Agent können Sie aus dem [Download Center](https://www.microsoft.com/download/details.aspx?id=27693) herunterladen und installieren.
 
-### <a name="agent-list"></a> Meine Datenbank ist in der Agent-Liste nicht enthalten.
+### <a name="my-database-isnt-listed-in-the-agent-list"></a><a name="agent-list"></a> Meine Datenbank ist in der Agent-Liste nicht enthalten.
 
 Wenn Sie versuchen, einer Synchronisierungsgruppe eine bereits vorhandene SQL Server-Datenbank hinzuzufügen, wird die Datenbank nicht in der Agent-Liste angezeigt.
 
@@ -136,7 +136,7 @@ Folgende Szenarien können diesen Fehler verursachen:
 
     Der lokale Agent lädt die Liste mit den zugeordneten Datenbanken nur bei der ersten Übermittlung des Agent-Schlüssels herunter. Bei nachfolgenden Übermittlungen wird die Liste nicht heruntergeladen. Daher werden Datenbanken, die während der Verschiebung eines Agents registriert wurden, in der ursprünglichen Agent-Instanz nicht angezeigt.
 
-### <a name="agent-start"></a> Der Client-Agent startet nicht (Fehler 1069).
+### <a name="client-agent-doesnt-start-error-1069"></a><a name="agent-start"></a> Der Client-Agent startet nicht (Fehler 1069).
 
 Sie stellen fest, dass der Agent auf einem Computer, der SQL Server hostet, nicht ausgeführt wird. Wenn Sie versuchen, den Agent manuell zu starten, wird ein Dialogfeld mit folgender Fehlermeldung angezeigt: „Fehler 1069: Der Dienst wurde aufgrund eines Anmeldefehlers nicht gestartet.“
 
@@ -160,7 +160,7 @@ Sie stellen fest, dass der Agent auf einem Computer, der SQL Server hostet, nich
   1. Klicken Sie im Fenster **Dienste** mit der rechten Maustaste auf den Dienst **SQL-Datensynchronisierungs-Agent**, und klicken Sie anschließend auf **Starten**.
   1. Schließen Sie das Fenster **Dienste**.
 
-### <a name="agent-key"></a> Ich kann den Agent-Schlüssel nicht übermitteln.
+### <a name="i-cant-submit-the-agent-key"></a><a name="agent-key"></a> Ich kann den Agent-Schlüssel nicht übermitteln.
 
 Sie versuchen, einen erstellten oder neu erstellten Schlüssel für einen Agent über die SqlAzureDataSyncAgent-Anwendung zu übermitteln. Die Übermittlung kann jedoch nicht abgeschlossen werden.
 
@@ -196,7 +196,7 @@ Sie versuchen, einen erstellten oder neu erstellten Schlüssel für einen Agent 
   1. Klicken Sie auf **OK**.
   1. Schließen Sie das Programm.
 
-### <a name="agent-delete"></a> Der Client-Agent kann nicht aus dem Portal gelöscht werden, wenn die zugeordnete lokale Datenbank nicht erreichbar ist.
+### <a name="the-client-agent-cant-be-deleted-from-the-portal-if-its-associated-on-premises-database-is-unreachable"></a><a name="agent-delete"></a> Der Client-Agent kann nicht aus dem Portal gelöscht werden, wenn die zugeordnete lokale Datenbank nicht erreichbar ist.
 
 Wenn ein lokaler, bei einem Client-Agent für die SQL-Datensynchronisierung registrierter Endpunkt (also eine Datenbank) nicht erreichbar ist, kann der Client-Agent nicht gelöscht werden.
 
@@ -207,7 +207,7 @@ Wenn ein lokaler, bei einem Client-Agent für die SQL-Datensynchronisierung regi
 > [!NOTE]
 > Wenn nach der Verwendung von „force delete“ Tabellen mit Synchronisierungsmetadaten zurückbleiben, verwenden Sie `deprovisioningutil.exe`, um diese zu bereinigen.
 
-### <a name="agent-connect"></a> Die lokale Synchronisierungs-Agent-App kann keine Verbindung mit dem lokalen Synchronisierungsdienst herstellen.
+### <a name="local-sync-agent-app-cant-connect-to-the-local-sync-service"></a><a name="agent-connect"></a> Die lokale Synchronisierungs-Agent-App kann keine Verbindung mit dem lokalen Synchronisierungsdienst herstellen.
 
 - **Lösung**. Probieren Sie die folgenden Schritte aus:
 

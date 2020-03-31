@@ -1,19 +1,18 @@
 ---
 title: Prüfliste für die Erstellung von SaaS-Angeboten – Kommerzieller Marketplace für Azure
 description: Die Informationen, die Sie bei der Erstellung von SaaS-Angeboten angeben können. – Kommerzieller Marketplace für Azure
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 8b01f15673f68bcc3fb0b205b9dd85a276c9b972
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 60111b6a23c76314383c5f95be3eb4b38f90d3e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930303"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281339"
 ---
 # <a name="saas-offer-creation-checklist"></a>Prüfliste für die Erstellung von SaaS-Angeboten
 
@@ -81,7 +80,7 @@ Auf der Listenseite stellen Sie den Text und Bilder bereit, die Kunden beim Aufr
 | :---------------- | :-----------| 
 | Name  | Erforderlich, maximal 50 Zeichen. |
 | Zusammenfassung  | Erforderlich, maximal 100 Zeichen. | 
-| Beschreibung  | Erforderlich, maximal 3000 Zeichen. |
+| BESCHREIBUNG  | Erforderlich, maximal 3000 Zeichen. |
 | Anweisungen für den Einstieg  | Erforderlich, maximal 3000 Zeichen. |
 | Anweisungen für den Einstieg  | Erforderlich, maximal 3000 Zeichen. |
 | Suchbegriffe  | Optional, empfohlen, maximal 3 Schlüsselwörter. |
@@ -151,7 +150,7 @@ Nur verfügbar, wenn Sie sich zur Bereitstellung einer Testversion für Ihr Ange
 
 | **Feldname**    | **Hinweise**   | 
 | :---------------- | :-----------| 
-| Beschreibung  | Erforderlich. |
+| BESCHREIBUNG  | Erforderlich. |
 | Benutzerhandbuch: Name und Datei  | Erforderlich, maximal 1 Dokument. Muss im PDF-Format vorliegen. |
 | Video: Name, URL und Miniaturansicht  | Optional, empfohlen. Miniaturansicht muss im JPGP- oder PNG-Format 533 x 324 vorliegen. Video muss in YouTube oder Vimeo gehostet werden. |
 

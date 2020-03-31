@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.openlocfilehash: ccc503e6718ee8f516920cfbea3ad86e7ed81d84
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74768264"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Überwachen der Leistung mit dem Abfragespeicher
@@ -121,31 +121,31 @@ In dieser Ansicht werden alle Daten im Abfragespeicher zurückgegeben. Es gibt e
 
 |**Name**   |**Typ** | **Referenzen**  | **Beschreibung**|
 |---|---|---|---|
-|runtime_stats_entry_id |bigint | | Die ID aus der Tabelle runtime_stats_entries|
+|runtime_stats_entry_id |BIGINT | | Die ID aus der Tabelle runtime_stats_entries|
 |user_id    |oid    |pg_authid.oid  |Die OID des Benutzers, der die Anweisung ausgeführt hat|
 |db_id  |oid    |pg_database.oid    |Die OID der Datenbank, in der die Anweisung ausgeführt wurde|
-|query_id   |bigint  || Interner Hash, der von der Analysestruktur der Anweisung berechnet wurde|
+|query_id   |BIGINT  || Interner Hash, der von der Analysestruktur der Anweisung berechnet wurde|
 |query_sql_text |Varchar(10000)  || Der Text einer repräsentativen Anweisung. Unterschiedliche Abfragen mit der gleichen Struktur werden gruppiert; dieser Text ist der Text für die erste Abfrage im Cluster.|
-|plan_id    |bigint |   |ID des Plans, der dieser Abfrage entspricht, noch nicht verfügbar|
+|plan_id    |BIGINT |   |ID des Plans, der dieser Abfrage entspricht, noch nicht verfügbar|
 |start_time |timestamp  ||  Abfragen werden nach Zeitrahmen zusammengefasst. Die Zeitspanne eines Zeitrahmens beträgt standardmäßig 15 Minuten. Dies ist die Startzeit des Zeitrahmens für diesen Eintrag.|
 |end_time   |timestamp  ||  Dies ist die Endzeit des Zeitrahmens für diesen Eintrag.|
-|calls  |bigint  || Häufigkeit der Abfrageausführung|
+|calls  |BIGINT  || Häufigkeit der Abfrageausführung|
 |total_time |double precision   ||  Gesamte Abfrageausführungsdauer in Millisekunden|
 |min_time   |double precision   ||  Mindestwert der Abfrageausführungsdauer in Millisekunden|
 |max_time   |double precision   ||  Höchstwert der Abfrageausführungsdauer in Millisekunden|
 |mean_time  |double precision   ||  Durchschnittliche Abfrageausführungsdauer in Millisekunden|
 |stddev_time|   double precision    ||  Standardabweichung der Abfrageausführungsdauer in Millisekunden |
-|rows   |bigint ||  Gesamtanzahl der Zeilen, die abgerufen wurden oder von der Anweisung betroffen sind|
-|shared_blks_hit|   bigint  ||  Gesamtanzahl der freigegebenen Blockcachetreffer der Anweisung|
-|shared_blks_read|  bigint  ||  Gesamtanzahl der freigegebenen Blöcke, die von der Anweisung gelesen wurden|
-|shared_blks_dirtied|   bigint   || Gesamtanzahl der freigegebenen Blöcke, die von der Anweisung geändert wurden |
-|shared_blks_written|   bigint  ||  Gesamtanzahl der freigegebenen Blöcke, die von der Anweisung geschrieben wurden|
-|local_blks_hit|    bigint ||   Gesamtanzahl der lokalen Blockcachetreffer der Anweisung|
-|local_blks_read|   bigint   || Gesamtanzahl der lokalen Blöcke, die von der Anweisung gelesen wurden|
-|local_blks_dirtied|    bigint  ||  Gesamtanzahl der lokalen Blöcke, die von der Anweisung geändert wurden|
-|local_blks_written|    bigint  ||  Gesamtanzahl der lokalen Blöcke, die von der Anweisung geschrieben wurden|
-|temp_blks_read |bigint  || Gesamtanzahl der temporären Blöcke, die von der Anweisung gelesen wurden|
-|temp_blks_written| bigint   || Gesamtanzahl der temporären Blöcke, die von der Anweisung geschrieben wurden|
+|rows   |BIGINT ||  Gesamtanzahl der Zeilen, die abgerufen wurden oder von der Anweisung betroffen sind|
+|shared_blks_hit|   BIGINT  ||  Gesamtanzahl der freigegebenen Blockcachetreffer der Anweisung|
+|shared_blks_read|  BIGINT  ||  Gesamtanzahl der freigegebenen Blöcke, die von der Anweisung gelesen wurden|
+|shared_blks_dirtied|   BIGINT   || Gesamtanzahl der freigegebenen Blöcke, die von der Anweisung geändert wurden |
+|shared_blks_written|   BIGINT  ||  Gesamtanzahl der freigegebenen Blöcke, die von der Anweisung geschrieben wurden|
+|local_blks_hit|    BIGINT ||   Gesamtanzahl der lokalen Blockcachetreffer der Anweisung|
+|local_blks_read|   BIGINT   || Gesamtanzahl der lokalen Blöcke, die von der Anweisung gelesen wurden|
+|local_blks_dirtied|    BIGINT  ||  Gesamtanzahl der lokalen Blöcke, die von der Anweisung geändert wurden|
+|local_blks_written|    BIGINT  ||  Gesamtanzahl der lokalen Blöcke, die von der Anweisung geschrieben wurden|
+|temp_blks_read |BIGINT  || Gesamtanzahl der temporären Blöcke, die von der Anweisung gelesen wurden|
+|temp_blks_written| BIGINT   || Gesamtanzahl der temporären Blöcke, die von der Anweisung geschrieben wurden|
 |blk_read_time  |double precision    || Gesamtzeit in Millisekunden, die die Anweisung zum Lesen von Blöcken benötigt hat (wenn track_io_timing aktiviert ist, andernfalls Null)|
 |blk_write_time |double precision    || Gesamtzeit in Millisekunden, die die Anweisung zum Schreiben von Blöcken benötigt hat (wenn track_io_timing aktiviert ist, andernfalls Null)|
     
@@ -154,7 +154,7 @@ Diese Ansicht gibt alle Abfragetextdaten im Abfragespeicher zurück. Für jeden 
 
 |**Name**|  **Typ**|   **Beschreibung**|
 |---|---|---|
-|query_text_id  |bigint     |ID der Tabelle query_texts|
+|query_text_id  |BIGINT     |ID der Tabelle query_texts|
 |query_sql_text |Varchar(10000)     |Der Text einer repräsentativen Anweisung. Unterschiedliche Abfragen mit der gleichen Struktur werden gruppiert; dieser Text ist der Text für die erste Abfrage im Cluster.|
 
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
@@ -164,9 +164,9 @@ Diese Ansicht gibt Warteereignisdaten im Abfragespeicher zurück. Es gibt eine Z
 |---|---|---|---|
 |user_id    |oid    |pg_authid.oid  |Die OID des Benutzers, der die Anweisung ausgeführt hat|
 |db_id  |oid    |pg_database.oid    |Die OID der Datenbank, in der die Anweisung ausgeführt wurde|
-|query_id   |bigint     ||Interner Hash, der von der Analysestruktur der Anweisung berechnet wurde|
+|query_id   |BIGINT     ||Interner Hash, der von der Analysestruktur der Anweisung berechnet wurde|
 |event_type |text       ||Der Typ des Ereignisses, auf das das Back-End wartet|
-|event  |text       ||Der Warteereignisname, wenn das Back-End derzeit wartet|
+|Ereignis  |text       ||Der Warteereignisname, wenn das Back-End derzeit wartet|
 |calls  |Integer        ||Nummer des gleichen erfassten Ereignisses|
 
 
