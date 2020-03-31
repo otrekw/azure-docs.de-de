@@ -1,5 +1,5 @@
 ---
-title: 'Azure VMware Solutions (AVS): Optimieren Ihrer privaten AVS-Cloud für Oracle RAC'
+title: Azure VMware Solution by CloudSimple – Optimieren der privaten CloudSimple-Cloud für Oracle RAC
 description: Erfahren Sie, wie Sie einen neuen Cluster bereitstellen und einen virtuellen Computer für die Installation und Konfiguration von Oracle Real Application Clusters (RAC) optimieren.
 author: sharaths-cs
 ms.author: b-shsury
@@ -8,29 +8,29 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fe4f7bf71b4836404a4f878b37c3ea7fab138588
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 733a225c66040cb2ab819f041647120c8b63b6a0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77016016"
 ---
-# <a name="optimize-your-avs-private-cloud-for-installing-oracle-rac"></a>Optimieren Ihrer privaten AVS-Cloud für die Installation von Oracle RAC
+# <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimieren der privaten CloudSimple-Cloud für die Installation von Oracle RAC
 
-Sie können Oracle Real Application Clusters (RAC) in Ihrer privaten AVS-Cloudumgebung bereitstellen. In dieser Anleitung wird beschrieben, wie Sie einen neuen Cluster bereitstellen und einen virtuellen Computer für die Oracle RAC-Lösung optimieren. Nachdem Sie die Schritte in diesem Thema ausgeführt haben, können Sie Oracle RAC installieren und konfigurieren.
+Sie können Oracle Real Application Clusters (RAC) in Ihrer privaten CloudSimple-Cloudumgebung bereitstellen. In dieser Anleitung wird beschrieben, wie Sie einen neuen Cluster bereitstellen und einen virtuellen Computer für die Oracle RAC-Lösung optimieren. Nachdem Sie die Schritte in diesem Thema ausgeführt haben, können Sie Oracle RAC installieren und konfigurieren.
 
 ## <a name="storage-policy"></a>Speicherrichtlinie
 
-Die erfolgreiche Implementierung von Oracle RAC erfordert eine ausreichende Anzahl von Knoten im Cluster. In der vSAN-Speicherrichtlinie wird eine Fehlertoleranz (Failures To Tolerate, FTT) auf Datenträger angewandt, die zum Speichern von Datenbank-, Protokoll- und Wiederholungsdatenträgern verwendet werden. Die erforderliche Anzahl von Knoten zum effektiven Tolerieren von Fehlern ist 2N + 1, wobei N der FTT-Wert ist.
+Die erfolgreiche Implementierung von Oracle RAC erfordert eine ausreichende Anzahl von Knoten im Cluster.  In der vSAN-Speicherrichtlinie wird eine Fehlertoleranz (Failures To Tolerate, FTT) auf Datenträger angewandt, die zum Speichern von Datenbank-, Protokoll- und Wiederholungsdatenträgern verwendet werden.  Die erforderliche Anzahl von Knoten zum effektiven Tolerieren von Fehlern ist 2N + 1, wobei N der FTT-Wert ist.
 
 Beispiel: Wenn der gewünschte FTT-Wert „2“ ist, muss die Gesamtanzahl der Knoten im Cluster 2 × 2 + 1 = 5 betragen.
 
 ## <a name="overview-of-deployment"></a>Übersicht über die Bereitstellung
 
-In den folgenden Abschnitten wird beschrieben, wie Sie Ihre private AVS-Cloudumgebung für Oracle RAC einrichten.
+In den folgenden Abschnitten wird beschrieben, wie Sie Ihre private CloudSimple-Cloudumgebung für Oracle RAC einrichten.
 
 1. Bewährte Methoden für die Datenträgerkonfiguration
-2. Bereitstellen des vSphere-Clusters für die private AVS-Cloud
+2. Bereitstellen des vSphere-Clusters für die private CloudSimple-Cloud
 3. Einrichten von Netzwerken für Oracle RAC
 4. Einrichten von vSAN-Speicherrichtlinien
 5. Erstellen von Oracle-VMs und freigegebenen VM-Datenträgern
@@ -38,7 +38,7 @@ In den folgenden Abschnitten wird beschrieben, wie Sie Ihre private AVS-Cloudumg
 
 ## <a name="best-practices-for-disk-configuration"></a>Bewährte Methoden für die Datenträgerkonfiguration
 
-Virtuelle Oracle RAC-Computer verfügen über mehrere Datenträger, die jeweils für eine bestimmte Funktion verwendet werden. Freigegebene Datenträger werden auf allen virtuellen Computern eingebunden, die vom Oracle RAC-Cluster verwendet werden. Datenträger zur Betriebssystem- und Softwareinstallation werden nur auf den einzelnen virtuellen Computern eingebunden. 
+Virtuelle Oracle RAC-Computer verfügen über mehrere Datenträger, die jeweils für eine bestimmte Funktion verwendet werden.  Freigegebene Datenträger werden auf allen virtuellen Computern eingebunden, die vom Oracle RAC-Cluster verwendet werden.  Datenträger zur Betriebssystem- und Softwareinstallation werden nur auf den einzelnen virtuellen Computern eingebunden.  
 
 ![Übersicht über Datenträger virtueller Oracle RAC-Computer](media/oracle-vm-disks-overview.png)
 
@@ -68,44 +68,44 @@ Im folgenden Beispiel werden die in der folgenden Tabelle definierten Datenträg
 
 ### <a name="operating-system-and-software-disk-configuration"></a>Konfiguration von Betriebssystem- und Softwaredatenträgern
 
-Jeder virtuelle Oracle-Computer wird mit mehreren Datenträgern für Hostbetriebssystem, Auslagerung, Softwareinstallation und andere Betriebssystemfunktionen konfiguriert. Diese Datenträger werden nicht von mehreren virtuellen Computer gemeinsam genutzt. 
+Jeder virtuelle Oracle-Computer wird mit mehreren Datenträgern für Hostbetriebssystem, Auslagerung, Softwareinstallation und andere Betriebssystemfunktionen konfiguriert.  Diese Datenträger werden nicht von mehreren virtuellen Computer gemeinsam genutzt.  
 
 * Drei Datenträger werden für jeden virtuellen Computer als virtuelle Datenträger konfiguriert und auf virtuellen Oracle RAC-Computern eingebunden.
     * Betriebssystemdatenträger
     * Datenträger zum Speichern von Installationsdateien für Oracle Grid
     * Datenträger zum Speichern von Installationsdateien für die Oracle-Datenbank
 * Datenträger können als **Für schlanke Speicherzuweisung geeignet** konfiguriert werden.
-* Jeder Datenträger wird auf dem ersten SCSI-Controller (SCSI0) eingebunden. 
+* Jeder Datenträger wird auf dem ersten SCSI-Controller (SCSI0) eingebunden.  
 * Die Freigabe wird auf **Keine Freigabe** festgelegt.
-* Die Redundanz wird im Speicher mithilfe von vSAN-Richtlinien definiert. 
+* Die Redundanz wird im Speicher mithilfe von vSAN-Richtlinien definiert.  
 
 ![Konfiguration der Oracle RAC-Datenträgergruppe für Daten](media/oracle-vm-os-disks.png)
 
 ### <a name="data-disk-configuration"></a>Konfiguration der Datenträger für Daten
 
-Datenträger für Daten werden hauptsächlich zum Speichern von Datenbankdateien verwendet. 
+Datenträger für Daten werden hauptsächlich zum Speichern von Datenbankdateien verwendet.  
 
 * Vier Datenträger werden für jeden virtuellen Computer als virtuelle Datenträger konfiguriert und auf virtuellen Oracle RAC-Computern eingebunden.
 * Jeder Datenträger wird auf einem anderen SCSI-Controller eingebunden.
-* Jeder virtuelle Datenträger ist als **Thick Provision Eager Zeroed** (Komplette Bereitstellung mit Null-Reservierung) konfiguriert. 
-* Die Freigabe ist auf **Multi-writer** (Mehrfachschreibvorgänge) festgelegt. 
-* Die Datenträger müssen als ASM-Datenträgergruppe (automatische Speicherverwaltung) konfiguriert werden. 
-* Die Redundanz wird im Speicher mithilfe von vSAN-Richtlinien definiert. 
+* Jeder virtuelle Datenträger ist als **Thick Provision Eager Zeroed** (Komplette Bereitstellung mit Null-Reservierung) konfiguriert.  
+* Die Freigabe ist auf **Multi-writer** (Mehrfachschreibvorgänge) festgelegt.  
+* Die Datenträger müssen als ASM-Datenträgergruppe (automatische Speicherverwaltung) konfiguriert werden.  
+* Die Redundanz wird im Speicher mithilfe von vSAN-Richtlinien definiert.  
 * ASM-Redundanz ist auf **externe Redundanz** festgelegt.
 
 ![Konfiguration der Oracle RAC-Datenträgergruppe für Daten](media/oracle-vm-data-disks.png)
 
 ### <a name="redo-log-disk-configuration"></a>Datenträgerkonfiguration für Wiederholungsprotokolle
 
-In Wiederholungspotokolldateien wird eine Kopie der Änderungen an der Datenbank gespeichert. Die Protokolldateien werden verwendet, wenn Daten nach Fehlern wiederhergestellt werden müssen.
+In Wiederholungspotokolldateien wird eine Kopie der Änderungen an der Datenbank gespeichert.  Die Protokolldateien werden verwendet, wenn Daten nach Fehlern wiederhergestellt werden müssen.
 
-* Die Datenträger für die Wiederholungsprotokolle müssen als mehrere Datenträgergruppen konfiguriert werden. 
+* Die Datenträger für die Wiederholungsprotokolle müssen als mehrere Datenträgergruppen konfiguriert werden.  
 * Sechs Datenträger werden auf allen virtuellen Oracle RAC-Computern erstellt und eingebunden.
 * Datenträger werden auf verschiedenen SCSI-Controllern eingebunden.
 * Jeder virtuelle Datenträger ist als **Thick Provision Eager Zeroed** (Komplette Bereitstellung mit Null-Reservierung) konfiguriert.
-* Die Freigabe ist auf **Multi-writer** (Mehrfachschreibvorgänge) festgelegt. 
+* Die Freigabe ist auf **Multi-writer** (Mehrfachschreibvorgänge) festgelegt.  
 * Die Datenträger müssen als zwei ASM-Datenträgergruppen konfiguriert werden.
-* Jede ASM-Datenträgergruppe enthält drei Datenträger auf unterschiedlichen SCSI-Controllern. 
+* Jede ASM-Datenträgergruppe enthält drei Datenträger auf unterschiedlichen SCSI-Controllern.  
 * ASM-Redundanz ist auf **normale Redundanz** festgelegt.
 * Fünf Wiederholungsprotokolldateien werden in beiden ASM-Gruppen für die Wiederholungsprotokolle erstellt.
 
@@ -139,7 +139,7 @@ Abstimmungsdatenträger stellen die Funktion für Quorumdatenträger als zusätz
 
 ### <a name="oracle-fast-recovery-area-disk-configuration-optional"></a>Konfiguration der Oracle-Datenträger für den Bereich für schnelle Wiederherstellung (optional)
 
-Der Bereich für schnelle Wiederherstellung (Fast Recovery Area, FRA) ist ein Dateisystem, das von der Oracle ASM-Datenträgergruppe verwaltet wird. Der Bereich für schnelle Wiederherstellung stellt einen freigegebenen Speicherort für Sicherungs- und Wiederherstellungsdateien bereit. Oracle erstellt archivierte Protokolle und Zurückverfolgungsprotokolle im Bereich für schnelle Wiederherstellung. Oracle Recovery Manager (RMAN) kann seine Sicherungssätze und Imagekopien optional im Bereich für schnelle Wiederherstellung speichern. Außerdem nutzt er diesen beim Wiederherstellen von Dateien während der Medienwiederherstellung.
+Der Bereich für schnelle Wiederherstellung (Fast Recovery Area, FRA) ist ein Dateisystem, das von der Oracle ASM-Datenträgergruppe verwaltet wird.  Der Bereich für schnelle Wiederherstellung stellt einen freigegebenen Speicherort für Sicherungs- und Wiederherstellungsdateien bereit. Oracle erstellt archivierte Protokolle und Zurückverfolgungsprotokolle im Bereich für schnelle Wiederherstellung. Oracle Recovery Manager (RMAN) kann seine Sicherungssätze und Imagekopien optional im Bereich für schnelle Wiederherstellung speichern. Außerdem nutzt er diesen beim Wiederherstellen von Dateien während der Medienwiederherstellung.
 
 * Zwei Datenträger werden auf allen virtuellen Oracle RAC-Computern erstellt und eingebunden.
 * Datenträger werden auf verschiedenen SCSI-Controllern eingebunden.
@@ -150,26 +150,26 @@ Der Bereich für schnelle Wiederherstellung (Fast Recovery Area, FRA) ist ein Da
 
 ![Konfiguration der Oracle RAC-Gruppe mit Abstimmungsdatenträgern](media/oracle-vm-fra-disks.png)
 
-## <a name="deploy-avs-private-cloud-vsphere-cluster"></a>Bereitstellen des vSphere-Clusters für die private AVS-Cloud
+## <a name="deploy-cloudsimple-private-cloud-vsphere-cluster"></a>Bereitstellen des vSphere-Clusters für die private CloudSimple-Cloud
 
-Gehen Sie folgendermaßen vor, um einen vSphere-Cluster in der privaten AVS-Cloud bereitzustellen:
+Gehen Sie folgendermaßen vor, um einen vSphere-Cluster in der privaten Cloud bereitzustellen:
 
-1. Erstellen Sie über das AVS-Portal [eine private AVS-Cloud](create-private-cloud.md). AVS erstellt in der neu erstellten privaten AVS-Cloud den vCenter-Standardbenutzer „cloudowner“. Ausführliche Informationen zum Standardbenutzer und Berechtigungsmodell für die private AVS-Cloud finden Sie unter [Kennenlernen des Berechtigungsmodells für private AVS-Clouds](learn-private-cloud-permissions.md). In diesem Schritt wird der primäre Verwaltungscluster für die private AVS-Cloud erstellt.
+1. Erstellen Sie im CloudSimple-Portal eine [private Cloud](create-private-cloud.md). CloudSimple erstellt in der neu erstellten privaten Cloud einen vCenter-Standardbenutzer mit dem Namen „cloudowner“. Ausführliche Informationen zum Standardbenutzer und Berechtigungsmodell für die private Cloud finden Sie unter [Kennenlernen des Berechtigungsmodells für private Clouds](learn-private-cloud-permissions.md).  In diesem Schritt wird der primäre Verwaltungscluster für die private Cloud erstellt.
 
-2. [Erweitern Sie die private AVS-Cloud](expand-private-cloud.md) im AVS-Portal um einen neuen Cluster. Dieser Cluster wird für die Bereitstellung von Oracle RAC verwendet. Wählen Sie die Anzahl der Knoten basierend auf der gewünschten Fehlertoleranz aus (mindestens drei Knoten).
+2. Erweitern Sie die [private Cloud](expand-private-cloud.md) im CloudSimple-Portal mit einem neuen Cluster.  Dieser Cluster wird für die Bereitstellung von Oracle RAC verwendet.  Wählen Sie die Anzahl der Knoten basierend auf der gewünschten Fehlertoleranz aus (mindestens drei Knoten).
 
 ## <a name="set-up-networking-for-oracle-rac"></a>Einrichten von Netzwerken für Oracle RAC
 
-1. Erstellen Sie in Ihrer privaten AVS-Cloud [zwei VLANs](create-vlan-subnet.md) – eines für das öffentliche Oracle-Netzwerk und eines für das private Oracle-Netzwerk –, und weisen Sie ihnen entsprechende Subnetz-CIDR-Werte zu.
-2. Erstellen Sie nach dem Erstellen der VLANs die [verteilten Portgruppen in der vCenter-Instanz der privaten AVS-Cloud](create-vlan-subnet.md#use-vlan-information-to-set-up-a-distributed-port-group-in-vsphere).
+1. Erstellen Sie in Ihrer privaten Cloud [zwei VLANs](create-vlan-subnet.md) – eines für das öffentliche Oracle-Netzwerk und eines für das private Oracle-Netzwerk –, und weisen Sie ihnen entsprechende Subnetz-CIDR-Werte zu.
+2. Nachdem die VLANs erstellt wurden, erstellen Sie die [verteilten Portgruppen im vCenter der privaten Cloud](create-vlan-subnet.md#use-vlan-information-to-set-up-a-distributed-port-group-in-vsphere).
 3. Richten Sie einen [virtuellen Computer für DHCP- und DNS-Server](dns-dhcp-setup.md) in Ihrem Verwaltungscluster für die Oracle-Umgebung ein.
-4. [Konfigurieren Sie die DNS-Weiterleitung](on-premises-dns-setup.md#create-a-conditional-forwarder) auf dem in der privaten AVS-Cloud installierten DNS-Server.
+4. [Konfigurieren Sie die DNS-Weiterleitung](on-premises-dns-setup.md#create-a-conditional-forwarder) auf dem in der privaten Cloud installierten DNS-Server.
 
 ## <a name="set-up-vsan-storage-policies"></a>Einrichten von vSAN-Speicherrichtlinien
 
-vSAN-Richtlinien definieren Fehlertoleranz und Datenträgerstriping für die auf den VM-Datenträgern gespeicherten Daten. Die erstellte Speicherrichtlinie muss beim Erstellen des virtuellen Computers auf die VM-Datenträger angewandt werden.
+vSAN-Richtlinien definieren Fehlertoleranz und Datenträgerstriping für die auf den VM-Datenträgern gespeicherten Daten.  Die erstellte Speicherrichtlinie muss beim Erstellen des virtuellen Computers auf die VM-Datenträger angewandt werden.
 
-1. [Melden Sie sich beim vSphere-Client](https://docs.azure.cloudsimple.com/vsphere-access) Ihrer privaten AVS-Cloud an.
+1. [Melden Sie sich beim vSphere-Client](https://docs.azure.cloudsimple.com/vsphere-access) Ihrer privaten Cloud an.
 2. Wählen Sie im Menü oben die Option **Policies and Profiles** (Richtlinien und Profile) aus.
 3. Wählen Sie im Menü auf der linken Seite **VM Storage Policies** (VM-Speicherrichtlinien) und dann **Create a VM storage Policy** (VM-Speicherrichtlinie erstellen) aus.
 4. Geben Sie einen aussagekräftigen Namen für die Richtlinie ein, und klicken Sie auf **NEXT** (Weiter).
@@ -181,7 +181,7 @@ vSAN-Richtlinien definieren Fehlertoleranz und Datenträgerstriping für die auf
 
 ## <a name="create-oracle-vms-and-create-shared-vm-disks-for-oracle"></a>Erstellen von Oracle-VMs und freigegebenen VM-Datenträgern für Oracle
 
-Zum Erstellen eines virtuellen Computers für Oracle klonen Sie eine vorhandene VM oder erstellen eine neue VM. In diesem Abschnitt wird beschrieben, wie Sie einen neuen virtuellen Computer erstellen und anschließend klonen, um nach der Installation des Basisbetriebssystems einen zweiten virtuellen Computer zu erstellen. Nachdem die virtuellen Computer erstellt wurden, können Sie ihnen Datenträger hinzufügen. Oracle-Cluster verwenden freigegebene Datenträger zum Speichern von Daten, Protokollen und Wiederholungsprotokollen.
+Zum Erstellen eines virtuellen Computers für Oracle klonen Sie eine vorhandene VM oder erstellen eine neue VM.  In diesem Abschnitt wird beschrieben, wie Sie einen neuen virtuellen Computer erstellen und anschließend klonen, um nach der Installation des Basisbetriebssystems einen zweiten virtuellen Computer zu erstellen.  Nachdem die virtuellen Computer erstellt wurden, können Sie ihnen Datenträger hinzufügen.  Oracle-Cluster verwenden freigegebene Datenträger zum Speichern von Daten, Protokollen und Wiederholungsprotokollen.
 
 ### <a name="create-vms"></a>Virtuelle Computer erstellen
 
@@ -205,7 +205,7 @@ Nachdem das Betriebssystem installiert wurde, können Sie einen zweiten virtuell
 
 ### <a name="create-shared-disks-for-vms"></a>Erstellen freigegebener Datenträger für virtuelle Computer
 
-Oracle verwendet freigegebene Datenträger zum Speichern der Daten-, Protokoll- und Wiederholungsprotokolldateien. Sie können einen freigegebenen Datenträger in vCenter erstellen und auf beiden VMs einbinden. Um die Leistung zu erhöhen, platzieren Sie die Datenträger auf unterschiedlichen SCSI-Controllern. Die folgenden Schritte zeigen, wie Sie einen freigegebenen Datenträger in vCenter erstellen und dann an einen virtuellen Computer anfügen. Der vCenter Flash-Client wird zum Ändern der VM-Eigenschaften verwendet.
+Oracle verwendet freigegebene Datenträger zum Speichern der Daten-, Protokoll- und Wiederholungsprotokolldateien.  Sie können einen freigegebenen Datenträger in vCenter erstellen und auf beiden VMs einbinden.  Um die Leistung zu erhöhen, platzieren Sie die Datenträger auf unterschiedlichen SCSI-Controllern. Die folgenden Schritte zeigen, wie Sie einen freigegebenen Datenträger in vCenter erstellen und dann an einen virtuellen Computer anfügen. Der vCenter Flash-Client wird zum Ändern der VM-Eigenschaften verwendet.
 
 #### <a name="create-disks-on-the-first-vm"></a>Erstellen von Datenträgern auf der ersten VM
 
@@ -241,10 +241,10 @@ Wiederholen Sie die Schritte 2–7 für alle neuen Datenträger, die für die Or
 
 ## <a name="set-up-vm-host-affinity-rules"></a>Einrichten von VM-zu-Host-Affinitätsregeln
 
-Durch VM-zu-Host-Affinitätsregeln wird sichergestellt, dass die VM auf dem gewünschten Host ausgeführt wird. Sie können Regeln in vCenter definieren, um sicherzustellen, dass der virtuelle Oracle-Computer auf dem Host mit ausreichenden Ressourcen ausgeführt wird und alle Lizenzierungsanforderungen erfüllt.
+Durch VM-zu-Host-Affinitätsregeln wird sichergestellt, dass die VM auf dem gewünschten Host ausgeführt wird.  Sie können Regeln in vCenter definieren, um sicherzustellen, dass der virtuelle Oracle-Computer auf dem Host mit ausreichenden Ressourcen ausgeführt wird und alle Lizenzierungsanforderungen erfüllt.
 
-1. Im AVS-Portal können Sie die Berechtigungen des Benutzers „cloudowner“ [ausweiten](escalate-private-cloud-privileges.md).
-2. [Melden Sie sich beim vSphere-Client](https://docs.azure.cloudsimple.com/vsphere-access) Ihrer privaten AVS-Cloud an.
+1. Im CloudSimple-Portal können Sie die Berechtigungen des Benutzers „cloudowner“ [ausweiten](escalate-private-cloud-privileges.md).
+2. [Melden Sie sich beim vSphere-Client](https://docs.azure.cloudsimple.com/vsphere-access) Ihrer privaten Cloud an.
 3. Wählen Sie im vSphere-Client den Cluster aus, auf dem Oracle-VMs bereitgestellt werden, und klicken Sie auf **Configure** (Konfigurieren).
 4. Wählen Sie unter „Configure“ (Konfigurieren) die Option **VM/Host Groups** (VM-/Hostgruppen) aus.
 5. Klicken Sie unten auf der Seite auf **+** .

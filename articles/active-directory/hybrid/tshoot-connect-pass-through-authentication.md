@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60456122"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Behandlung von Problemen bei der Azure Active Directory-Passthrough-Authentifizierung
@@ -44,7 +44,7 @@ Stellen Sie sicher, dass die Passthrough-Authentifizierung in Ihrem Mandanten im
 
 Wenn der Benutzer sich nicht mit der Passthrough-Authentifizierung anmelden kann, wird ihm möglicherweise einer der folgenden benutzerseitigen Fehler auf der Azure AD-Anmeldeseite angezeigt: 
 
-|Error|BESCHREIBUNG|Lösung
+|Fehler|BESCHREIBUNG|Lösung
 | --- | --- | ---
 |AADSTS80001|Verbindung mit Active Directory kann nicht hergestellt werden.|Ensure that agent servers are members of the same AD forest as the users whose passwords need to be validated and they are able to connect to Active Directory. (Stellen Sie sicher, dass die Agent-Server Mitglieder derselben AD-Gesamtstruktur wie die Benutzer sind, deren Kennwörter überprüft werden müssen, und dass sie eine Verbindung zu Active Directory herstellen können.)  
 |AADSTS8002|Bei der Verbindung mit Active Directory ist ein Timeout aufgetreten.|Check to ensure that Active Directory is available and is responding to requests from the agents. (Überprüfen Sie, ob Active Directory verfügbar ist und auf Anforderungen der Agents antwortet.)
@@ -67,7 +67,7 @@ Navigieren Sie im [Azure Active Directory Admin Center](https://aad.portal.azure
 | 80002 | Zeitüberschreitung für die Anforderung zur Kennwortüberprüfung des Authentifizierungs-Agents. | Überprüfen Sie, ob Ihr Active Directory über den Authentifizierungs-Agent erreichbar ist.
 | 80003 | Der Authentifizierungs-Agent hat eine ungültige Antwort erhalten. | If the problem is consistently reproducible across multiple users, check your Active Directory configuration. (Wenn das Problem bei mehreren Benutzer genauso reproduziert werden kann, überprüfen Sie die Active Directory-Konfiguration.)
 | 80004 | In der Anmeldeanforderung wurde ein falscher Benutzerprinzipalname (UPN) verwendet. | Ask the user to sign in with the correct username. (Fordern Sie den Benutzer dazu auf, sich mit dem richtigen Benutzernamen anzumelden.)
-| 80005 | Authentifizierungs-Agent: Fehler. | Transient error. (Vorübergehender Fehler.) Versuchen Sie es später erneut.
+| 80005 | Authentifizierungs-Agent: Fehler. | Transient error. (Vorübergehender Fehler.) Versuchen Sie es später noch einmal.
 | 80007 | Der Authentifizierungs-Agent kann keine Verbindung mit Active Directory herstellen. | Überprüfen Sie, ob Ihr Active Directory über den Authentifizierungs-Agent erreichbar ist.
 | 80010 | Der Authentifizierungs-Agent kann das Kennwort nicht entschlüsseln. | If the problem is consistently reproducible, install and register a new Authentication Agent. (Wenn das Problem konsistent reproduziert werden kann, installieren und registrieren Sie einen neuen Authentifizierungs-Agent.) And uninstall the current one. (Deinstallieren der Sie außerdem den aktuellen.) 
 | 80011 | Der Authentifizierungs-Agent kann den Entschlüsselungsschlüssel nicht abrufen. | If the problem is consistently reproducible, install and register a new Authentication Agent. (Wenn das Problem konsistent reproduziert werden kann, installieren und registrieren Sie einen neuen Authentifizierungs-Agent.) And uninstall the current one. (Deinstallieren der Sie außerdem den aktuellen.)

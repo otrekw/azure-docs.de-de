@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: cherylmc
 ms.openlocfilehash: 17d0e678008c76da32f20562aa795e83e49c80e4
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77064970"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Architektur mit einem globalen Transitnetzwerk und Azure Virtual WAN
@@ -33,7 +33,7 @@ In diesem Modell kann eine Spoke Folgendes sein:
 
 In Abbildung 1 sehen Sie den logischen Aufbau des globalen Transitnetzwerks, bei dem geografisch verteilte Benutzer, physische Standorte und virtuelle Netzwerke über einen in der Cloud gehosteten Netzwerkhub miteinander verbunden sind. Durch diese Architektur sind logische Transitverbindungen mit einem Hop zwischen den Netzwerkendpunkten möglich.
 
-## <a name="globalnetworktransit"></a>Globales Transitnetzwerk mit Virtual WAN
+## <a name="global-transit-network-with-virtual-wan"></a><a name="globalnetworktransit"></a>Globales Transitnetzwerk mit Virtual WAN
 
 Azure Virtual WAN ist ein von Microsoft verwalteter Cloudnetzwerkdienst. Alle Netzwerkkomponenten, aus denen dieser Dienst besteht, werden von Microsoft gehostet und verwaltet. Weitere Informationen zu Virtual WAN finden Sie im Artikel mit der [Übersicht über Virtual WAN](virtual-wan-about.md).
 
@@ -47,7 +47,7 @@ In der Azure Virtual WAN-Architektur werden virtuelle WAN-Hubs in Azure-Regionen
 
 Sie können ein virtuelles WAN erstellen, indem Sie einen einzelnen Virtual WAN-Hub in der Region erstellen, in der sich die meisten Spokes (Zweigstellen, VNets, Benutzer) befinden. Stellen Sie anschließend eine Verbindung der Spokes, die sich in einer anderen Region befinden, zum Hub her. Dies ist eine gute Möglichkeit, wenn der Fußabdruck eines Unternehmens größtenteils in einer Region mit wenigen Remote-Spokes liegt.  
   
-## <a name="hubtohub"></a>Hub-zu-Hub-Verbindungen
+## <a name="hub-to-hub-connectivity"></a><a name="hubtohub"></a>Hub-zu-Hub-Verbindungen
 
 Der Cloudfußabdruck eines Unternehmens kann sich über mehrere Cloudregionen erstrecken. Diese Architektur ist optimal (in Bezug auf die Latenz) für den Cloudzugriff in einer Region geeignet, die möglichst nah am physischen Standort des Unternehmens und an den Benutzern liegt. Einer der wichtigsten Faktoren für eine Architektur mit einem globalen Transitnetzwerk ist die Möglichkeit regionsübergreifender Verbindungen zwischen allen Cloud- und lokalen Netzwerkendpunkten. Das bedeutet, dass der Datenverkehr einer Zweigstelle, die in einer bestimmten Region mit der Cloud verbunden ist, eine Zweigstelle oder ein VNet in einer anderen Region über eine Hub-zu-Hub-Konnektivität, die durch das [Azure Global Network](https://azure.microsoft.com/global-infrastructure/global-network/) ermöglicht wird, erreichen kann.
 
@@ -59,7 +59,7 @@ Wenn mehrere Hubs in einem einzelnen virtuellen WAN aktiviert sind, werden die H
 
 Die Hubs sind darüber hinaus zwar alle Teil desselben virtuellen WAN, können aber unterschiedlichen regionalen Zugriffs- und Sicherheitsrichtlinien unterliegen. Weitere Informationen finden Sie weiter unten in diesem Artikel unter [Sicherheits- und Richtliniensteuerung](#security).
 
-## <a name="anytoany"></a>N:n-Verbindungen
+## <a name="any-to-any-connectivity"></a><a name="anytoany"></a>N:n-Verbindungen
 
 Durch die Architektur mit einem globalen Transitnetzwerk sind N:M-Verbindungen über Virtual WAN-Hubs möglich. Diese Architektur macht vollständig vermaschte oder teilweise vermaschte Verbindungen zwischen Spokes, deren Aufbau und Wartung ist komplexer ist, überflüssig bzw. minimiert deren Notwendigkeit. Zusätzlich kann die Routingsteuerung in Hub-and-Spoke-Modellen im Vergleich zu vermaschten Netzwerken einfacher konfiguriert und gewartet werden.
 
@@ -111,7 +111,7 @@ Mit dem Remotebenutzer-zu-Zweigstelle-Pfad können Remotebenutzer, die über ein
 
 Der VNet-zu-VNet-Transit ermöglicht Verbindungen zwischen VNets, um mehrschichtige Anwendungen zu verbinden, die in mehreren VNets implementiert wurden. Optional können Sie VNets über VNet Peering miteinander verbinden. Dies ist u. U. für einige Szenarien geeignet, in denen kein Transit über den VWAN-Hub erforderlich ist.
 
-## <a name="security"></a>Sicherheits- und Richtliniensteuerung
+## <a name="security-and-policy-control"></a><a name="security"></a>Sicherheits- und Richtliniensteuerung
 
 Die Azure Virtual WAN-Hubs verbinden alle Netzwerkendpunkte über das hybride Netzwerk und können u. U. den gesamten Transitnetzwerkdatenverkehr sehen. Virtual WAN-Hubs können durch Bereitstellen der Azure Firewall in VWAN-Hubs in geschützte virtuelle Hubs umgewandelt werden, um eine cloudbasierte Sicherheits-, Zugriffs- und Richtliniensteuerung zu ermöglichen. Die Orchestrierung von Azure Firewalls in virtuellen WAN-Hubs kann mit Azure Firewall Manager durchgeführt werden.
 

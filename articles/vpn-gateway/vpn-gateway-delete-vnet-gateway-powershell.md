@@ -8,10 +8,10 @@ ms.date: 02/07/2019
 ms.author: cherylmc
 ms.topic: conceptual
 ms.openlocfilehash: f351f14796ec736bd5525f139a518c9a0dd3d19f
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162105"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>Löschen eines Gateways des virtuellen Netzwerks mit PowerShell
@@ -56,7 +56,7 @@ Wenn Sie über mehrere Abonnements verfügen, geben Sie das Abonnement an, das S
 Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
-## <a name="S2S"></a>Löschen eines Site-to-Site-VPN-Gateways
+## <a name="delete-a-site-to-site-vpn-gateway"></a><a name="S2S"></a>Löschen eines Site-to-Site-VPN-Gateways
 
 Um ein Gateway des virtuellen Netzwerks für eine S2S-Konfiguration zu löschen, müssen Sie zunächst jede Ressource löschen, die zu dem Gateway des virtuellen Netzwerks gehört. Ressourcen müssen aufgrund von Abhängigkeiten in einer bestimmten Reihenfolge gelöscht werden. Bei der Arbeit mit den folgenden Beispielen müssen einige der Werte angegeben werden, während andere Werte ein Ergebnis der Ausgabe sind. Wir verwenden die folgenden spezifischen Werte in den Beispielen zu Demonstrationszwecken:
 
@@ -139,7 +139,7 @@ $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-Az
 Set-AzVirtualNetwork -VirtualNetwork $GWSub
 ```
 
-## <a name="v2v"></a>Löschen eines VNet-to-VNet-VPN-Gateways
+## <a name="delete-a-vnet-to-vnet-vpn-gateway"></a><a name="v2v"></a>Löschen eines VNet-to-VNet-VPN-Gateways
 
 Um ein Gateway des virtuellen Netzwerks für eine V2V-Konfiguration zu löschen, müssen Sie zunächst jede Ressource löschen, die zu dem Gateway des virtuellen Netzwerks gehört. Ressourcen müssen aufgrund von Abhängigkeiten in einer bestimmten Reihenfolge gelöscht werden. Bei der Arbeit mit den folgenden Beispielen müssen einige der Werte angegeben werden, während andere Werte ein Ergebnis der Ausgabe sind. Wir verwenden die folgenden spezifischen Werte in den Beispielen zu Demonstrationszwecken:
 
@@ -227,7 +227,7 @@ $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-Az
 Set-AzVirtualNetwork -VirtualNetwork $GWSub
 ```
 
-## <a name="deletep2s"></a>Löschen eines Punkt-zu-Site-VPN-Gateways
+## <a name="delete-a-point-to-site-vpn-gateway"></a><a name="deletep2s"></a>Löschen eines Punkt-zu-Site-VPN-Gateways
 
 Um ein Gateway des virtuellen Netzwerks für eine P2S-Konfiguration zu löschen, müssen Sie zunächst jede Ressource löschen, die zu dem Gateway des virtuellen Netzwerks gehört. Ressourcen müssen aufgrund von Abhängigkeiten in einer bestimmten Reihenfolge gelöscht werden. Bei der Arbeit mit den folgenden Beispielen müssen einige der Werte angegeben werden, während andere Werte ein Ergebnis der Ausgabe sind. Wir verwenden die folgenden spezifischen Werte in den Beispielen zu Demonstrationszwecken:
 
@@ -286,7 +286,7 @@ $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-Az
 Set-AzVirtualNetwork -VirtualNetwork $GWSub
 ```
 
-## <a name="delete"></a>Löschen eines VPN-Gateways durch Löschen der Ressourcengruppe
+## <a name="delete-a-vpn-gateway-by-deleting-the-resource-group"></a><a name="delete"></a>Löschen eines VPN-Gateways durch Löschen der Ressourcengruppe
 
 Wenn Sie Ihre bestehenden Ressourcen in der Ressourcengruppe nicht behalten müssen und neu beginnen möchten, können Sie eine gesamte Ressourcengruppe löschen. Sie lernen hier eine schnelle Möglichkeit kennen, alles zu entfernen. Die folgenden Schritte gelten für das Resource Manager-Bereitstellungsmodell.
 

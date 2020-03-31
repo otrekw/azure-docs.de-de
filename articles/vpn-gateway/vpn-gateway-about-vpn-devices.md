@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: yushwang
 ms.openlocfilehash: f4caa9160280b0f65f84bed36b5209d08d7f7c11
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894695"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235762"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Informationen zu VPN-Geräten und IPsec-/IKE-Parametern für VPN-Gatewayverbindungen zwischen Standorten.
 
@@ -29,7 +29,7 @@ Sie benötigen ein VPN-Gerät, um eine standortübergreifende S2S-VPN-Verbindung
   * Dynamisches Routing = Routenbasiert (RouteBased)
 * Die Spezifikationen für Hochleistungs-VPN-Gateways und routenbasierte VPN-Gateways bleiben unverändert, sofern nicht anders angegeben. Beispielsweise sind die überprüften VPN-Geräte, die mit den routenbasierten VPN-Gateways kompatibel sind, auch mit dem Hochleistungs-VPN-Gateway kompatibel.
 
-## <a name="devicetable"></a>Überprüfte VPN-Geräte und Konfigurationshandbücher für Geräte
+## <a name="validated-vpn-devices-and-device-configuration-guides"></a><a name="devicetable"></a>Überprüfte VPN-Geräte und Konfigurationshandbücher für Geräte
 
 Wir haben in Zusammenarbeit mit Geräteherstellern eine Reihe von VPN-Standardgeräten getestet. Alle Geräte der in der folgenden Liste aufgeführten Gerätefamilien sollten mit VPN-Gateways kompatibel sein. Informationen zur Verwendung des VPN-Typs (richtlinienbasiert oder routenbasiert) für die VPN-Gatewaylösung, die Sie konfigurieren möchten, finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md#vpntype).
 
@@ -75,7 +75,7 @@ Hilfreiche Informationen zur Konfiguration des VPN-Geräts finden Sie unter den 
 >
 > ( ** ) Router der Serie ISR 7200 unterstützen nur richtlinienbasierte VPNs.
 
-## <a name="configscripts"></a>Herunterladen von Konfigurationsskripts für ein VPN-Gerät von Azure
+## <a name="download-vpn-device-configuration-scripts-from-azure"></a><a name="configscripts"></a>Herunterladen von Konfigurationsskripts für ein VPN-Gerät von Azure
 
 Für bestimmte Geräte können direkt von Azure Konfigurationsskripts heruntergeladen werden. Weitere Informationen und Downloadanweisungen finden Sie unter [Herunterladen von VPN-Gerätekonfigurationsskripts für S2S-VPN-Verbindungen](vpn-gateway-download-vpndevicescript.md).
 
@@ -83,11 +83,11 @@ Für bestimmte Geräte können direkt von Azure Konfigurationsskripts herunterge
 
 [!INCLUDE [scripts](../../includes/vpn-gateway-device-configuration-scripts.md)]
 
-## <a name="additionaldevices"></a>Nicht überprüfte VPN-Geräte
+## <a name="non-validated-vpn-devices"></a><a name="additionaldevices"></a>Nicht überprüfte VPN-Geräte
 
 Falls Ihr Gerät nicht in der Tabelle mit den überprüften VPN-Geräten enthalten ist, kann es unter Umständen für eine Site-to-Site-Verbindung verwendet werden. Zusätzliche Unterstützung und Konfigurationsanweisungen erhalten Sie vom Gerätehersteller.
 
-## <a name="editing"></a>Bearbeiten von Gerätekonfigurationsbeispielen
+## <a name="editing-device-configuration-samples"></a><a name="editing"></a>Bearbeiten von Gerätekonfigurationsbeispielen
 
 Nachdem Sie die bereitgestellte Konfigurationsvorlage für das VPN-Gerät heruntergeladen haben, müssen Sie einige der Werte entsprechend den Einstellungen Ihrer Umgebung ersetzen.
 
@@ -110,7 +110,7 @@ Nachdem Sie die bereitgestellte Konfigurationsvorlage für das VPN-Gerät herunt
 | &lt;SP_AzureGatewayIpAddress&gt; |Diese Informationen gelten nur für Ihr virtuelles Netzwerk und befinden sich im Verwaltungsportal unter **Gateway-IP-Adresse**. |
 | &lt;SP_PresharedKey&gt; |Diese Informationen gelten nur für Ihr virtuelles Netzwerk und befinden sich im Verwaltungsportal unter "Schlüssel verwalten". |
 
-## <a name="ipsec"></a>IPsec-/IKE-Parameter
+## <a name="ipsecike-parameters"></a><a name="ipsec"></a>IPsec-/IKE-Parameter
 
 > [!IMPORTANT]
 > 1. Die folgenden Tabellen enthalten die Kombinationen aus Algorithmen und Parametern, die Azure-VPN-Gateways in einer Standardkonfiguration verwenden. Für routenbasierte VPN-Gateways, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden, können Sie für jede einzelne Verbindung eine benutzerdefinierte Richtlinie angeben. Ausführliche Anweisungen finden Sie unter [Konfigurieren der IPsec/IKE-Richtlinie für S2S-VPN- oder VNet-zu-VNet-Verbindungen](vpn-gateway-ipsecikepolicy-rm-powershell.md).
@@ -146,7 +146,7 @@ Für die folgenden Tabellen gilt:
 | Dead Peer Detection (DPD)     |Nicht unterstützt  |Unterstützt                                    |
 
 
-### <a name ="RouteBasedOffers"></a>RouteBased-VPN-Angebote der IPsec Security Association (IKE-Schnellmodus-SA)
+### <a name="routebased-vpn-ipsec-security-association-ike-quick-mode-sa-offers"></a><a name ="RouteBasedOffers"></a>RouteBased-VPN-Angebote der IPsec Security Association (IKE-Schnellmodus-SA)
 
 Die folgende Tabelle enthält IPsec-SA-Angebote (IKE-Schnellmodus). Angebote werden in der Reihenfolge ihrer Priorität aufgeführt, in der das Angebot dargeboten oder akzeptiert wurde.
 
@@ -195,7 +195,7 @@ Die folgende Tabelle enthält IPsec-SA-Angebote (IKE-Schnellmodus). Angebote wer
 * Sie können IPsec-ESP-NULL-Verschlüsselung mit routenbasierten VPN-Gateways und Hochleistungs-VPN-Gateways angeben. Verschlüsselung auf Basis von NULL bietet keinen Schutz der Daten während der Übertragung und sollte nur verwendet werden, wenn maximaler Durchsatz und minimale Latenz erforderlich sind. Clients können diese in Szenarien mit VNet-zu-VNet-Kommunikation oder bei Anwendung der Verschlüsselung an anderer Stelle in der Lösung verwenden.
 * Verwenden Sie für standortübergreifende Konnektivität über das Internet die Standardeinstellungen für Azure-VPN-Gateways mit Verschlüsselung und Hashalgorithmen, die in der Tabelle oben aufgelistet werden, um die Sicherheit Ihrer kritischen Kommunikation zu gewährleisten.
 
-## <a name="known"></a>Bekannte Probleme mit der Gerätekompatibilität
+## <a name="known-device-compatibility-issues"></a><a name="known"></a>Bekannte Probleme mit der Gerätekompatibilität
 
 > [!IMPORTANT]
 > Hier finden Sie bekannte Kompatibilitätsprobleme zwischen Drittanbieter-VPN-Geräten und Azure-VPN-Gateways. Das Azure-Team arbeitet zusammen mit den Anbietern aktiv an der Lösung der hier angegebenen Probleme. Nachdem die Probleme behoben wurden, wird diese Seite mit den neuesten Informationen aktualisiert. Es ist also ratsam, diese Seite regelmäßig aufzurufen.

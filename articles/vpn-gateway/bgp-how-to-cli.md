@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/25/2018
 ms.author: yushwang
 ms.openlocfilehash: 42a07ac00fd8a26918164f6547bf57c2b021d14c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75863613"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>Konfigurieren von BGP auf Azure-VPN-Gateways mithilfe der Befehlszeilenschnittstelle
@@ -39,7 +39,7 @@ Jeder dieser drei Abschnitte ist ein zentraler Baustein zum Aktivieren von BGP i
 
 Zum Erstellen eines komplexeren Multihop-Übertragungsnetzwerks, das Ihren Anforderungen entspricht, können Sie diese Abschnitte auch miteinander kombinieren.
 
-## <a name ="enablebgp"></a>Aktivieren von BGP für Ihr VPN-Gateway
+## <a name="enable-bgp-for-your-vpn-gateway"></a><a name ="enablebgp"></a>Aktivieren von BGP für Ihr VPN-Gateway
 
 Dieser Abschnitt ist erforderlich, bevor Sie Schritte in den anderen beiden Konfigurationsabschnitten ausführen können. Mit den folgenden Konfigurationsschritten werden die BGP-Parameter des Azure VPN Gateways wie in diesem Diagramm dargestellt eingerichtet:
 
@@ -51,7 +51,7 @@ Installieren Sie die aktuelle Version der CLI-Befehle (2.0 oder höher). Informa
 
 ### <a name="step-1-create-and-configure-testvnet1"></a>Schritt 1: Erstellen und Konfigurieren von „TestVNet1“
 
-#### <a name="Login"></a>1. Verbinden mit Ihrem Abonnement
+#### <a name="1-connect-to-your-subscription"></a><a name="Login"></a>1. Verbinden mit Ihrem Abonnement
 
 [!INCLUDE [CLI login](../../includes/vpn-gateway-cli-login-include.md)]
 
@@ -118,7 +118,7 @@ az network vnet-gateway list -g TestBGPRG1 
 
 Nachdem das Gateway erstellt wurde, können Sie es verwenden, um eine standortübergreifende Verbindung oder eine VNET-zu-VNET-Verbindung mit BGP herzustellen.
 
-## <a name ="crossprembgp"></a>Herstellen einer standortübergreifenden Verbindung mit BGP
+## <a name="establish-a-cross-premises-connection-with-bgp"></a><a name ="crossprembgp"></a>Herstellen einer standortübergreifenden Verbindung mit BGP
 
 Um eine standortübergreifende Verbindung herzustellen, müssen Sie ein lokales Netzwerkgateway erstellen, um das lokale VPN-Gerät darzustellen. Anschließend verbinden Sie das Azure-VPN-Gateway mit dem Gateway des lokalen Netzwerks. Diese Schritte ähneln zwar der Erstellung von anderen Verbindungen, aber sie enthalten die zusätzlichen Eigenschaften, die zum Angeben der BGP-Konfigurationsparameter erforderlich sind.
 
@@ -210,7 +210,7 @@ eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your 
 
 Nach einigen Minuten sollte die Verbindung hergestellt werden. Die BGP-Peeringsitzung wird gestartet, nachdem die IPsec-Verbindung hergestellt wurde.
 
-## <a name ="v2vbgp"></a>Herstellen einer VNet-zu-VNet-Verbindung mit BGP
+## <a name="establish-a-vnet-to-vnet-connection-with-bgp"></a><a name ="v2vbgp"></a>Herstellen einer VNet-zu-VNet-Verbindung mit BGP
 
 In diesem Abschnitt wird eine VNet-zu-VNet-Verbindung mit BGP hinzugefügt, wie im folgenden Diagramm dargestellt: 
 

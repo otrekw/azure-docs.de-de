@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: dd2f6fcc9b2f5d716566e91e89487969613d1005
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61482869"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232222"
 ---
 # <a name="replace-a-controller-module-on-your-storsimple-device"></a>Ersetzen des Controllermoduls auf dem StorSimple-Gerät
 ## <a name="overview"></a>Übersicht

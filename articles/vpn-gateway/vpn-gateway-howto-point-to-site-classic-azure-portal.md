@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: 5d80cb2f2ed844126d1e9311151e6c53fcb11840
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894868"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225038"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Konfigurieren einer Point-to-Site-Verbindung unter Verwendung der Zertifikatauthentifizierung (klassisch)
 
@@ -136,7 +136,7 @@ In diesem Schritt erstellen Sie ein Gatewaysubnetz und ein Gateway mit dynamisch
 
 9. Wählen Sie am unteren Rand der Seite **Neue VPN-Verbindung** **OK** aus, um mit der Erstellung Ihres Gateways für virtuelle Netzwerke zu beginnen. Je nach ausgewählter Gateway-SKU kann die Erstellung eines VPN-Gateways bis zu 45 Minuten dauern.
  
-## <a name="generatecerts"></a>Erstellen von Zertifikaten
+## <a name="create-certificates"></a><a name="generatecerts"></a>Erstellen von Zertifikaten
 
 Azure verwendet Zertifikate zur Authentifizierung von VPN-Clients für P2S-VPNs. Sie laden die Informationen des öffentlichen Schlüssels des Stammzertifikats in Azure hoch. Der öffentliche Schlüssel wird dann als *vertrauenswürdig* betrachtet. Clientzertifikate müssen über das vertrauenswürdige Stammzertifikat erstellt und dann auf jedem Clientcomputer installiert werden, der sich im Zertifikatspeicher „Certificates-Current User\Personal\Certificates“ befindet. Mit diesem Zertifikat wird der Client authentifiziert, wenn er eine Verbindung mit dem VNET herstellt. 
 

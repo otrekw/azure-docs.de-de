@@ -9,18 +9,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
 ms.service: virtual-machines-sql
-ms.custom: seo-lt-2019
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: ed5fc923c82fb0d0e4004e18159d943564c6f55e
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 426ba4c0ac84799b4d0e6bf9330508f928437fd8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045824"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060181"
 ---
 # <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>Tutorial: Manuelles Konfigurieren einer Verfügbarkeitsgruppe auf einer Azure SQL Server-VM
 
@@ -38,7 +38,7 @@ Für dieses Tutorial werden Grundkenntnisse über SQL Server AlwaysOn-Verfügbar
 
 Die folgende Tabelle gibt Aufschluss über die Voraussetzungen, die erfüllt sein müssen, bevor Sie mit dem Tutorial beginnen:
 
-|  |Anforderung |Beschreibung |
+|  |Anforderung |BESCHREIBUNG |
 |----- |----- |----- |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | Zwei SQL Server-Instanzen | - In einer Azure-Verfügbarkeitsgruppe <br/> - In einer einzelnen Domäne <br/> - Mit installiertem Failoverclustering-Feature |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | Dateifreigabe für Clusterzeuge |  
@@ -55,7 +55,7 @@ Vor Beginn des Tutorials müssen die [Schritte zum Erfüllen der Voraussetzungen
   > Viele der in diesem Tutorial behandelten Schritte können jetzt mit der [Azure SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md) und [Azure-Schnellstartvorlagen](virtual-machines-windows-sql-availability-group-quickstart-template.md) automatisiert werden.
 
 
-<!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
+<!--**Procedure**: *This is the first "step". Make titles H2's and short and clear – H2's appear in the right pane on the web page and are important for navigation.*-->
 
 <a name="CreateCluster"></a>
 ## <a name="create-the-cluster"></a>Erstellen Sie den Cluster.
@@ -95,7 +95,7 @@ Wenn die Voraussetzungen erfüllt sind, müssen Sie zunächst einen Windows Serv
 
 4. Klicken Sie im Abschnitt **Hauptressourcen des Clusters** mit der rechten Maustaste auf den Clusternamen, und klicken Sie anschließend auf **Online schalten**. Warten Sie dann, bis beide Ressourcen online sind. Wenn die Clusternamensressource online ist, aktualisiert sie den DC-Server mit einem neuen AD-Computerkonto. Verwenden Sie dieses AD-Konto zum späteren Ausführen des Clusterdiensts der Verfügbarkeitsgruppe.
 
-### <a name="addNode"></a>Hinzufügen der anderen SQL Server-Instanz zum Cluster
+### <a name="add-the-other-sql-server-to-cluster"></a><a name="addNode"></a>Hinzufügen der anderen SQL Server-Instanz zum Cluster
 
 Fügen Sie die andere SQL Server-Instanz dem Cluster hinzu.
 
@@ -228,7 +228,7 @@ Repeat these steps on the second SQL Server.
 7. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf **Datenbanken**, und klicken Sie anschließend auf **Neue Datenbank**.
 8. Geben Sie unter **Datenbankname** den Namen **MyDB1** ein, und klicken Sie dann auf **OK**.
 
-### <a name="backupshare"></a> Erstellen einer Sicherungsfreigabe
+### <a name="create-a-backup-share"></a><a name="backupshare"></a> Erstellen einer Sicherungsfreigabe
 
 1. Klicken Sie auf dem ersten SQL Server unter **Server-Manager** auf **Tools**. Öffnen Sie **Computerverwaltung**.
 
@@ -402,7 +402,7 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
 
 1. Legen Sie den Integritätstest für den Listener wie folgt fest:
 
-   | Einstellung | Beschreibung | Beispiel
+   | Einstellung | BESCHREIBUNG | Beispiel
    | --- | --- |---
    | **Name** | Text | SQLAlwaysOnEndPointProbe |
    | **Protokoll** | Wählen Sie „TCP“ aus. | TCP |
@@ -418,7 +418,7 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
 
 1. Konfigurieren Sie die Lastenausgleichsregeln für den Listener wie folgt:
 
-   | Einstellung | Beschreibung | Beispiel
+   | Einstellung | BESCHREIBUNG | Beispiel
    | --- | --- |---
    | **Name** | Text | SQLAlwaysOnEndPointListener |
    | **Frontend IP address** (Front-End-IP-Adresse) | Wählen Sie eine Adresse aus. |Verwenden Sie die Adresse, die Sie beim Erstellen des Lastenausgleichs erstellt haben. |
@@ -445,7 +445,7 @@ Die WSFC IP-Adresse muss auf dem Lastenausgleich ebenfalls vorhanden sein.
 
 1. Legen Sie den Integritätstest für die IP-Adresse der Hauptressourcen des WSFC-Clusters wie folgt fest:
 
-   | Einstellung | Beschreibung | Beispiel
+   | Einstellung | BESCHREIBUNG | Beispiel
    | --- | --- |---
    | **Name** | Text | WSFCEndPointProbe |
    | **Protokoll** | Wählen Sie „TCP“ aus. | TCP |
@@ -459,7 +459,7 @@ Die WSFC IP-Adresse muss auf dem Lastenausgleich ebenfalls vorhanden sein.
 
 1. Konfigurieren Sie die Lastenausgleichsregeln für die IP-Adresse der Hauptressourcen des Clusters wie folgt:
 
-   | Einstellung | Beschreibung | Beispiel
+   | Einstellung | BESCHREIBUNG | Beispiel
    | --- | --- |---
    | **Name** | Text | WSFCEndPoint |
    | **Frontend IP address** (Front-End-IP-Adresse) | Wählen Sie eine Adresse aus. |Verwenden Sie die Adresse, die Sie beim Konfigurieren der WSFC-IP-Adresse erstellt haben. Diese unterscheidet sich von der IP-Adresse des Listeners. |
@@ -476,7 +476,7 @@ Die WSFC IP-Adresse muss auf dem Lastenausgleich ebenfalls vorhanden sein.
 
 1. Klicken Sie auf **OK**, um die Lastenausgleichsregeln festzulegen.
 
-## <a name="configure-listener"></a> Konfigurieren des Listeners
+## <a name="configure-the-listener"></a><a name="configure-listener"></a> Konfigurieren des Listeners
 
 Als Nächstes muss ein Verfügbarkeitsgruppenlistener für den Failovercluster konfiguriert werden.
 

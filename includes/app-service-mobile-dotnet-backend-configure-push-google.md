@@ -5,15 +5,15 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 3c6147cc24f285fc32dce145e594f743c9633c20
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68857394"
 ---
 Verwenden Sie das passende Verfahren für die Art Ihres Back-End-Projekts (.[NET-Back-End](#dotnet) oder [Node.js-Back-End](#nodejs)).
 
-### <a name="dotnet"></a>.NET-Back-End-Projekt
+### <a name="net-back-end-project"></a><a name="dotnet"></a>.NET-Back-End-Projekt
 
 1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Serverprojekt, und klicken Sie anschließend auf **NuGet-Pakete verwalten**. Suchen Sie nach `Microsoft.Azure.NotificationHubs`, und klicken Sie dann auf **Installieren**. Dadurch wird die Notification Hubs-Clientbibliothek installiert.
 2. Öffnen Sie im Ordner „Controller“ die Datei „TodoItemController.cs“, und fügen Sie die folgenden `using`-Anweisungen hinzu:
@@ -67,7 +67,7 @@ Verwenden Sie das passende Verfahren für die Art Ihres Back-End-Projekts (.[NET
 
 4. Veröffentlichen Sie das Serverprojekt erneut.
 
-### <a name="nodejs"></a>Node.js-Back-End-Projekt
+### <a name="nodejs-back-end-project"></a><a name="nodejs"></a>Node.js-Back-End-Projekt
 
 1. Richten Sie das Back-End-Projekt ein.
 2. Ersetzen Sie den bestehenden Code in der Datei „todoitem.js“ durch den folgenden Code:

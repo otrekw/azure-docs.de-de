@@ -9,10 +9,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 30d99c3f4767eb50361f7074c0d508fcf309faca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61488457"
 ---
 # <a name="run-micro-focus-enterprise-server-40-in-a-docker-container-on-azure"></a>Ausführen von Micro Focus Enterprise Server 4.0 in einem Docker-Container auf Azure
@@ -27,7 +27,7 @@ In diesem Tutorial wird der virtuelle **Windows 2016 Datacenter mit Containern**
 
 Überprüfen Sie zunächst diese Voraussetzungen:
 
-- Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- Ein Azure-Abonnement. Sollten Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 - Die Micro Focus-Software und eine gültige Lizenz (oder Testlizenz). Wenn Sie ein Micro Focus-Bestandskunde sind, wenden Sie sich an Ihren Micro Focus-Vertreter. Andernfalls können Sie [eine Testversion anfordern](https://www.microfocus.com/products/enterprise-suite/enterprise-server/trial/).
 

@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: twooley
 ms.openlocfilehash: f09d4dd46a50f1794e51342a939b8919c5c523ef
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931631"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228138"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Verwenden des StorSimple Snapshot Managers zum Anzeigen und Verwalten von Volumes
 ## <a name="overview"></a>Übersicht
@@ -91,7 +91,7 @@ Gehen Sie folgendermaßen vor, um Informationen zu lokalen und Azure StorSimple-
    
     ![Konfigurieren der Spalten](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_View_volumes.png)
    
-   | Ergebnisspalte | Beschreibung |
+   | Ergebnisspalte | BESCHREIBUNG |
    |:--- |:--- |
    |  Name |Die Spalte **Name** enthält den Laufwerkbuchstaben, der den jeweiligen ermittelten Volumes zugeordnet wurde. |
    |  Sicherungsmedium |Die Spalte **Gerät** enthält die IP-Adresse des mit dem Hostcomputer verbundenen Geräts. |

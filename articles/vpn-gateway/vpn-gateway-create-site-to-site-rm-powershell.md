@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: cherylmc
 ms.openlocfilehash: d1693a6165aa31b221b6901e2e1c8b2955a3dfb3
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76045702"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Erstellen eines VNET mit einer Site-to-Site-VPN-Verbindung per PowerShell
@@ -31,7 +31,7 @@ Eine Site-to-Site-VPN-Gateway-Verbindung wird verwendet, um Ihr lokales Netzwerk
 
 ![Diagramm für die standortübergreifende Site-to-Site-VPN Gateway-Verbindung](./media/vpn-gateway-create-site-to-site-rm-powershell/site-to-site-diagram.png)
 
-## <a name="before"></a>Voraussetzungen
+## <a name="before-you-begin"></a><a name="before"></a>Voraussetzungen
 
 Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Voraussetzungen erfüllt sind bzw. Folgendes vorhanden ist:
 
@@ -43,7 +43,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Vorausset
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-### <a name="example"></a>Beispielwerte
+### <a name="example-values"></a><a name="example"></a>Beispielwerte
 
 In den Beispielen dieses Artikels werden die folgenden Werte verwendet. Sie können diese Werte zum Erstellen einer Testumgebung verwenden oder zum besseren Verständnis der Beispiele in diesem Artikel heranziehen.
 
@@ -69,7 +69,7 @@ ConnectionName          = VNet1toSite1
 
 ```
 
-## <a name="VNet"></a>1. Erstellen eines virtuelles Netzwerks und eines Gatewaysubnetzes
+## <a name="1-create-a-virtual-network-and-a-gateway-subnet"></a><a name="VNet"></a>1. Erstellen eines virtuelles Netzwerks und eines Gatewaysubnetzes
 
 Falls Sie noch nicht über ein virtuelles Netzwerk verfügen, erstellen Sie eines. Stellen Sie beim Erstellen eines virtuellen Netzwerks sicher, dass sich die angegebenen Adressräume und die Adressräume im lokalen Netzwerk nicht überschneiden. 
 
@@ -84,7 +84,7 @@ Falls Sie noch nicht über ein virtuelles Netzwerk verfügen, erstellen Sie eine
 
 [!INCLUDE [No NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
-### <a name="vnet"></a>Erstellen eines virtuelles Netzwerks und eines Gatewaysubnetzes
+### <a name="create-a-virtual-network-and-a-gateway-subnet"></a><a name="vnet"></a>Erstellen eines virtuelles Netzwerks und eines Gatewaysubnetzes
 
 In diesem Beispiel werden ein virtuelles Netzwerk und ein Gatewaysubnetz erstellt. Falls Sie bereits über ein virtuelles Netzwerk verfügen, dem Sie ein Gatewaysubnetz hinzufügen möchten, lesen Sie unter [So fügen Sie einem virtuellen Netzwerk, das Sie bereits erstellt haben, ein Gatewaysubnetz hinzu](#gatewaysubnet) weiter.
 
@@ -109,7 +109,7 @@ Erstellen Sie Ihr virtuelles Netzwerk.
    -Location 'East US' -AddressPrefix 10.1.0.0/16 -Subnet $subnet1, $subnet2
    ```
 
-### <a name="gatewaysubnet"></a>So fügen Sie einem virtuellen Netzwerk, das Sie bereits erstellt haben, ein Gatewaysubnetz hinzu
+### <a name="to-add-a-gateway-subnet-to-a-virtual-network-you-have-already-created"></a><a name="gatewaysubnet"></a>So fügen Sie einem virtuellen Netzwerk, das Sie bereits erstellt haben, ein Gatewaysubnetz hinzu
 
 Gehen Sie wie in diesem Abschnitt beschrieben vor, wenn Sie bereits über ein virtuelles Netzwerk verfügen, aber noch ein Gatewaysubnetz hinzufügen müssen.
 
@@ -129,7 +129,7 @@ Gehen Sie wie in diesem Abschnitt beschrieben vor, wenn Sie bereits über ein vi
    Set-AzVirtualNetwork -VirtualNetwork $vnet
    ```
 
-## 2. <a name="localnet"></a>Erstellen des lokalen Netzwerkgateways
+## <a name="2-create-the-local-network-gateway"></a>2. <a name="localnet"></a>Erstellen des lokalen Netzwerkgateways
 
 Mit dem Gateway des lokalen Netzwerks (LNG) ist normalerweise Ihr lokaler Standort gemeint. Dieser ist nicht identisch mit einem Gateway für virtuelle Netzwerke. Sie geben dem Standort einen Namen, über den Azure darauf verweisen kann, und geben dann die IP-Adresse des lokalen VPN-Geräts an, mit dem Sie eine Verbindung herstellen. Außerdem geben Sie die IP-Adresspräfixe an, die über das VPN-Gateway an das VPN-Gerät weitergeleitet werden. Die von Ihnen angegebenen Adresspräfixe befinden sich in Ihrem lokalen Netzwerk. Sie können diese Präfixe leicht aktualisieren, wenn sich Ihr lokales Netzwerk ändert.
 
@@ -156,7 +156,7 @@ So ändern Sie die IP-Adresspräfixe für Ihr lokales Netzwerkgateway:
 
 Es kann vorkommen, dass sich die Präfixe für das Gateway für das lokale Netzwerk ändern. Die Schritte, die Sie zum Ändern der IP-Adresspräfixe ausführen, richten sich danach, ob Sie eine VPN Gateway-Verbindung erstellt haben. Weitere Informationen finden Sie in diesem Artikel im Abschnitt [So ändern Sie die IP-Adresspräfixe für ein lokales Netzwerkgateway](#modify) .
 
-## <a name="PublicIP"></a>3. Anfordern einer öffentlichen IP-Adresse
+## <a name="3-request-a-public-ip-address"></a><a name="PublicIP"></a>3. Anfordern einer öffentlichen IP-Adresse
 
 Ein VPN-Gateway muss über eine öffentliche IP-Adresse verfügen. Sie fordern zuerst die IP-Adressressource an und verweisen dann beim Erstellen des Gateways des virtuellen Netzwerks darauf. Die IP-Adresse wird bei der Erstellung des VPN-Gateways der Ressource dynamisch zugewiesen. 
 
@@ -168,7 +168,7 @@ Fordern Sie eine öffentliche IP-Adresse an, die Ihrem VPN-Gateway für das virt
 $gwpip= New-AzPublicIpAddress -Name VNet1GWPIP -ResourceGroupName TestRG1 -Location 'East US' -AllocationMethod Dynamic
 ```
 
-## <a name="GatewayIPConfig"></a>4. Erstellen der Gateway-IP-Adressierung
+## <a name="4-create-the-gateway-ip-addressing-configuration"></a><a name="GatewayIPConfig"></a>4. Erstellen der Gateway-IP-Adressierung
 
 Die Gatewaykonfiguration definiert das zu verwendende Subnetz („GatewaySubnet“) und die zu verwendende öffentliche IP-Adresse. Verwenden Sie das folgende Beispiel, um Ihre Gatewaykonfiguration zu erstellen:
 
@@ -178,7 +178,7 @@ $subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork
 $gwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id
 ```
 
-## <a name="CreateGateway"></a>5. Erstellen des VPN-Gateways
+## <a name="5-create-the-vpn-gateway"></a><a name="CreateGateway"></a>5. Erstellen des VPN-Gateways
 
 Erstellen Sie das VPN-Gateway für das virtuelle Netzwerk.
 
@@ -196,7 +196,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 
 Nach Ausführung dieses Befehls kann es bis zu 45 Minuten dauern, bis die Gatewaykonfiguration abgeschlossen ist.
 
-## <a name="ConfigureVPNDevice"></a>6. Konfigurieren des VPN-Geräts
+## <a name="6-configure-your-vpn-device"></a><a name="ConfigureVPNDevice"></a>6. Konfigurieren des VPN-Geräts
 
 Für Site-to-Site-Verbindungen mit einem lokalen Netzwerk ist ein VPN-Gerät erforderlich. In diesem Schritt konfigurieren Sie Ihr VPN-Gerät. Beim Konfigurieren des VPN-Geräts benötigen Sie die folgenden Elemente:
 
@@ -210,7 +210,7 @@ Für Site-to-Site-Verbindungen mit einem lokalen Netzwerk ist ein VPN-Gerät erf
 [!INCLUDE [Configure VPN device](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
 
-## <a name="CreateConnection"></a>7. Erstellen der VPN-Verbindung
+## <a name="7-create-the-vpn-connection"></a><a name="CreateConnection"></a>7. Erstellen der VPN-Verbindung
 
 Erstellen Sie als Nächstes die Site-to-Site-VPN-Verbindung zwischen dem Gateway Ihres virtuellen Netzwerks und Ihrem VPN-Gerät. Achten Sie darauf, dass Sie die Werte durch Ihre eigenen Werte ersetzen. Der gemeinsame Schlüssel muss dem Wert entsprechen, den Sie für Ihre VPN-Gerätekonfiguration verwendet haben. Beachten Sie, dass „-ConnectionType“ für „Site-to-Site“ **IPsec** lautet.
 
@@ -229,28 +229,28 @@ Erstellen Sie als Nächstes die Site-to-Site-VPN-Verbindung zwischen dem Gateway
 
 Die Verbindung wird nach kurzer Zeit hergestellt.
 
-## <a name="toverify"></a>8. Überprüfen der VPN-Verbindung
+## <a name="8-verify-the-vpn-connection"></a><a name="toverify"></a>8. Überprüfen der VPN-Verbindung
 
 Es gibt mehrere Möglichkeiten, wie Sie Ihre VPN-Verbindung überprüfen können.
 
 [!INCLUDE [Verify connection](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
-## <a name="connectVM"></a>Herstellen einer Verbindung mit einem virtuellen Computer
+## <a name="to-connect-to-a-virtual-machine"></a><a name="connectVM"></a>Herstellen einer Verbindung mit einem virtuellen Computer
 
 [!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-s2s-include.md)]
 
 
-## <a name="modify"></a>So ändern Sie die IP-Adresspräfixe für ein lokales Netzwerkgateway
+## <a name="to-modify-ip-address-prefixes-for-a-local-network-gateway"></a><a name="modify"></a>So ändern Sie die IP-Adresspräfixe für ein lokales Netzwerkgateway
 
 Wenn sich die IP-Adressen ändern, die an den lokalen Standort weitergeleitet werden sollen, können Sie das Gateway des lokalen Netzwerks anpassen. Es sind zwei Anleitungen vorhanden. Welche Anleitung für Sie geeignet ist, hängt davon ab, ob Sie die Gatewayverbindung bereits erstellt haben. Wenn Sie diese Beispiele verwenden, ändern Sie die Werte Ihrer Umgebung entsprechend.
 
 [!INCLUDE [Modify prefixes](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
 
-## <a name="modifygwipaddress"></a>So ändern Sie die Gateway-IP-Adresse für ein lokales Netzwerkgateway
+## <a name="to-modify-the-gateway-ip-address-for-a-local-network-gateway"></a><a name="modifygwipaddress"></a>So ändern Sie die Gateway-IP-Adresse für ein lokales Netzwerkgateway
 
 [!INCLUDE [Modify gateway IP address](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
 
-## <a name="deleteconnection"></a>So löschen Sie eine Gatewayverbindung
+## <a name="to-delete-a-gateway-connection"></a><a name="deleteconnection"></a>So löschen Sie eine Gatewayverbindung
 
 Wenn Sie den Namen Ihrer Verbindung nicht kennen, können Sie den Namen mithilfe des Cmdlets „Get-AzVirtualNetworkGatewayConnection“ ermitteln.
 

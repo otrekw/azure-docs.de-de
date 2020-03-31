@@ -9,10 +9,10 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: ed6abbac7c5953eaec4fa4584248d0d98b49ba63
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77596890"
 ---
 # <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
@@ -74,7 +74,7 @@ Im Abschnitt „Netzwerk“ können Sie die Netzwerkoptionen konfigurieren. Dies
 Der Abschnitt „Erweitert“ enthält mehrere wichtige Einstellungen für Azure-Dateifreigaben:
 
 - **Sichere Übertragung erforderlich**: Dieses Feld gibt an, ob für die Kommunikation mit dem Speicherkonto in eingehender Richtung eine Verschlüsselung während der Übertragung erforderlich ist. Wir empfehlen Ihnen, diese Option aktiviert zu lassen. Falls Sie SMB 2.1-Unterstützung benötigen, müssen Sie sie aber deaktivieren. Bei einer Deaktivierung der Verschlüsselung empfehlen wir Ihnen, den Speicherkontozugriff auf ein virtuelles Netzwerk mit Dienstendpunkten bzw. privaten Endpunkten einzuschränken.
-- **Große Dateifreigaben**: Mit diesem Feld wird für das Speicherkonto die Nutzung von Dateifreigaben mit einer Größe von bis zu 100 TiB ermöglicht. Wenn Sie dieses Feature aktivieren, wird Ihr Speicherkonto auf die Nutzung von lokal redundantem und zonenredundantem Speicher beschränkt. Nachdem für ein GPv2-Speicherkonto große Dateifreigaben aktiviert wurden, können Sie diese Funktion nicht mehr deaktivieren. Für Speicherkonten vom Typ „FileStorage“ (Speicherkonten für Premium-Dateifreigaben) ist diese Option nicht vorhanden, da alle Premium-Dateifreigaben auf bis zu 100 TiB zentral hochskaliert werden können. 
+- **Große Dateifreigaben**: Mit diesem Feld wird für das Speicherkonto die Nutzung von Dateifreigaben mit einer Größe von bis zu 100 TiB ermöglicht. Wenn Sie dieses Feature aktivieren, wird Ihr Speicherkonto auf die Nutzung von lokal redundantem und zonenredundantem Speicher beschränkt. Nachdem für ein GPv2-Speicherkonto große Dateifreigaben aktiviert wurden, können Sie diese Funktion nicht mehr deaktivieren. Für Speicherkonten vom Typ „FileStorage“ (Speicherkonten für Premium-Dateifreigaben) ist diese Option nicht vorhanden, da alle Premium-Dateifreigaben auf bis zu 100 TiB hochskaliert werden können. 
 
 ![Screenshot: Wichtige erweiterte Einstellungen für Azure Files](media/storage-how-to-create-file-share/create-storage-account-3.png)
 
@@ -97,7 +97,7 @@ $storageAccountName = "mystorageacct$(Get-Random)"
 $region = "westus2"
 ```
 
-Wir verwenden den folgenden Befehl, um ein Speicherkonto zu erstellen, mit dem Azure-Dateifreigaben vom Typ „Standard“ gespeichert werden können. Der Parameter `-SkuName` bezieht sich auf den gewünschten Redundanztyp. Wenn Sie ein georedundantes oder geozonenredundantes Speicherkonto verwenden möchten, müssen Sie außerdem den Parameter `-EnableLargeFileShare` entfernen.
+Wir verwenden den folgenden Befehl, um ein Speicherkonto zu erstellen, mit dem Azure-Dateifreigaben vom Typ „Standard“ gespeichert werden können. Der Parameter `-SkuName` bezieht sich auf den gewünschten Redundanztyp. Wenn Sie ein georedundantes oder geozonenredundantes Speicherkonto verwenden möchten, müssen Sie auch den Parameter `-EnableLargeFileShare` entfernen.
 
 ```azurepowershell-interactive
 $storAcct = New-AzStorageAccount `

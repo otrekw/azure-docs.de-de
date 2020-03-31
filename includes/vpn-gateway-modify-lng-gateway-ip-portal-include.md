@@ -9,13 +9,13 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 52084b065ef65a69a6691b6646d1e199f011910d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67177926"
 ---
-### <a name="gwipnoconnection"></a> So ändern Sie die IP-Adresse des lokalen Netzwerkgateways (ohne Gatewayverbindung)
+### <a name="to-modify-the-local-network-gateway-ip-address---no-gateway-connection"></a><a name="gwipnoconnection"></a> So ändern Sie die IP-Adresse des lokalen Netzwerkgateways (ohne Gatewayverbindung)
 
 Ändern Sie das Gateway eines lokalen Netzwerks, für das keine Gatewayverbindung besteht, anhand des Beispiels. Bei dieser Gelegenheit können Sie auch die Adresspräfixe ändern.
 
@@ -23,7 +23,7 @@ ms.locfileid: "67177926"
 2. Ändern Sie im Feld **IP-Adresse** die IP-Adresse.
 3. Klicken Sie auf **Speichern** , um die Einstellungen zu speichern.
 
-### <a name="gwipwithconnection"></a>So ändern Sie die IP-Adresse des lokalen Netzwerkgateways (vorhandene Gatewayverbindung)
+### <a name="to-modify-the-local-network-gateway-ip-address---existing-gateway-connection"></a><a name="gwipwithconnection"></a>So ändern Sie die IP-Adresse des lokalen Netzwerkgateways (vorhandene Gatewayverbindung)
 
 Um ein lokales Netzwerkgateway mit einer Verbindung zu ändern, müssen Sie zuerst die Verbindung entfernen. Nachdem die Verbindung entfernt wurde, können Sie die Gateway-IP-Adresse ändern und eine neue Verbindung erstellen. Bei dieser Gelegenheit können Sie auch die Adresspräfixe ändern. Dies führt zu Ausfallzeiten bei Ihrer VPN-Verbindung. Beim Ändern der Gateway-IP-Adresse müssen Sie das VPN-Gateway nicht löschen. Sie müssen nur die Verbindung entfernen.
  

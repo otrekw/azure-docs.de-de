@@ -14,10 +14,10 @@ ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a21c986ccfe96bae5d341e0ba2ee6622d998d076
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74025394"
 ---
 # <a name="linkedin-account-connections-data-sharing-and-consent"></a>Datenfreigabe und Benutzereinwilligung bei LinkedIn-Kontoverbindungen
@@ -76,7 +76,7 @@ Wenn Sie Ihre Microsoft- und LinkedIn-Konten verbinden, gestatten Sie Microsoft,
 
 Daten, auf die von Microsoft zugegriffen wird, werden nicht dauerhaft in LinkedIn gespeichert, außer Kontakten. Microsoft-Kontakte werden in LinkedIn gespeichert, bis Benutzer sie entfernen. Weitere Informationen zum [Löschen importierter Kontakte aus LinkedIn](https://www.linkedin.com/help/linkedin/answer/43377).
 
-Weitere Informationen zur Verwendung persönlicher Daten durch LinkedIn finden Sie in den [Datenschutzbestimmungen von LinkedIn](https://www.linkedin.com/legal/privacy-policy). Bei Diensten, Datenübertragungen und Speicherung von LinkedIn können Daten aus der Europäischen Union in die Vereinigten Staaten und zurück fließen, wobei Ihr Datenschutz wie in [Datenübertragungen in der Europäischen Union](https://www.linkedin.com/help/linkedin/answer/62533) beschrieben gewährleistet wird.
+Weitere Informationen zur Verwendung persönlicher Daten durch LinkedIn finden Sie in den [Datenschutzbestimmungen von LinkedIn](https://www.linkedin.com/legal/privacy-policy). Bei Diensten, Datenübertragungen und Speicherung von LinkedInkönnen Daten aus der Europäischen Union in die Vereinigten Staaten und zurück fließen, wobei Ihr Datenschutz wie in [Datenübertragungen in der Europäischen Union](https://www.linkedin.com/help/linkedin/answer/62533) beschrieben gewährleistet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

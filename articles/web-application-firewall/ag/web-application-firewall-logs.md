@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
 ms.openlocfilehash: 1b807908c9fb54ecf15de6d44a04760659196a31
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75980973"
 ---
 # <a name="diagnostic-logs-for-azure-web-application-firewall"></a>Diagnoseprotokolle für Azure Web Application Firewall
@@ -87,7 +87,7 @@ Das Aktivitätsprotokoll wird von Azure standardmäßig generiert. Die Protokoll
 
 Das Zugriffsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gateway-Instanz gemäß den obigen Schritten aktiviert haben. Die Daten werden in dem Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Jeder Application Gateway-Zugriff wird wie im folgenden Beispiel für v1 im JSON-Format protokolliert:
 
-|value  |Beschreibung  |
+|Wert  |BESCHREIBUNG  |
 |---------|---------|
 |instanceId     | Application Gateway-Instanz, von der die Anforderung bereitgestellt wurde        |
 |clientIP     | Ursprungs-IP für die Anforderung        |
@@ -131,7 +131,7 @@ Das Zugriffsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gate
 ```
 Für Application Gateway und WAF v2 zeigen die Protokolle noch einige zusätzliche Informationen an:
 
-|value  |Beschreibung  |
+|Wert  |BESCHREIBUNG  |
 |---------|---------|
 |instanceId     | Application Gateway-Instanz, von der die Anforderung bereitgestellt wurde        |
 |clientIP     | Ursprungs-IP für die Anforderung        |
@@ -185,7 +185,7 @@ Für Application Gateway und WAF v2 zeigen die Protokolle noch einige zusätzli
 Das Leistungsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gateway-Instanz gemäß den obigen Schritten aktiviert haben. Die Daten werden in dem Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Die Daten für das Leistungsprotokoll werden in Intervallen von einer Minute generiert. Diese Funktion ist nur für die v1-SKU verfügbar. Verwenden Sie für die v2-SKU [Metriken](../../application-gateway/application-gateway-metrics.md) für die Leistungsdaten. Die folgenden Daten werden protokolliert:
 
 
-|value  |Beschreibung  |
+|Wert  |BESCHREIBUNG  |
 |---------|---------|
 |instanceId     |  Application Gateway-Instanz, für die Leistungsdaten generiert werden. Für ein Anwendungsgateway mit mehreren Instanzen ist eine Zeile pro Instanz vorhanden.        |
 |healthyHostCount     | Anzahl von fehlerfreien Hosts im Back-End-Pool        |
@@ -222,7 +222,7 @@ Das Leistungsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gat
 Das Firewallprotokoll wird nur generiert, wenn Sie es für jedes Anwendungsgateway gemäß den obigen Schritten aktiviert haben. Für dieses Protokoll muss zudem die Web Application Firewall auf einem Anwendungsgateway konfiguriert sein. Die Daten werden in dem Speicherkonto gespeichert, das Sie beim Aktivieren der Protokollierung angegeben haben. Die folgenden Daten werden protokolliert:
 
 
-|value  |Beschreibung  |
+|Wert  |BESCHREIBUNG  |
 |---------|---------|
 |instanceId     | Application Gateway-Instanz, für die Firewalldaten generiert werden. Für ein Anwendungsgateway mit mehreren Instanzen ist eine Zeile pro Instanz vorhanden.         |
 |clientIp     |   Ursprungs-IP für die Anforderung      |

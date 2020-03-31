@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
 ms.openlocfilehash: 3e8cd2f1e594cd6a60296b2df135f275641df313
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77086985"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Erstellen von Web Application Firewall-Richtlinien für Application Gateway
@@ -34,7 +34,7 @@ Erstellen Sie zuerst im Azure-Portal mithilfe des verwalteten Standardregelsatze
 1. Wählen Sie links oben im Portal die Option **Ressource erstellen** aus. Suchen Sie nach **WAF**, wählen Sie **Web Application Firewall** aus, und wählen Sie dann **Erstellen** aus.
 2. Geben Sie auf der Seite **WAF-Richtlinie erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus. Übernehmen Sie die Standardwerte für die übrigen Einstellungen, und wählen Sie **Überprüfen + erstellen** aus:
 
-   |Einstellung  |value  |
+   |Einstellung  |Wert  |
    |---------|---------|
    |Richtlinie für     |Regionale WAF (Application Gateway)|
    |Subscription     |Wählen Sie Ihren Abonnementnamen aus.|
@@ -42,7 +42,7 @@ Erstellen Sie zuerst im Azure-Portal mithilfe des verwalteten Standardregelsatze
    |Richtlinienname     |Geben Sie einen eindeutigen Namen für Ihre WAF-Richtlinie ein.|
 3. Geben Sie auf der Registerkarte **Zuordnung** eine der folgenden Einstellungen ein, und wählen Sie dann**Hinzufügen** aus:
 
-   |Einstellung  |value  |
+   |Einstellung  |Wert  |
    |---------|---------|
    |Application Gateway zuordnen     |Wählen Sie Ihren Application Gateway-Profilnamen aus.|
    |Listener zuordnen     |Wählen Sie den Namen Ihres Application Gateway-Listeners und dann **Hinzufügen** aus.|
@@ -69,7 +69,7 @@ Sie können eine benutzerdefinierte Regel erstellen, indem Sie auf der Registerk
 
 [ ![Bearbeiten benutzerdefinierter Regeln](../media/create-waf-policy-ag/edit-custom-rule.png) ](../media/create-waf-policy-ag/edit-custom-rule-lrg.png#lightbox)
 
-## <a name="migrate"></a>Migrieren Ihrer WAF-Konfiguration zu einer WAF-Richtlinie
+## <a name="migrate-your-waf-config-to-a-waf-policy"></a><a name="migrate"></a>Migrieren Ihrer WAF-Konfiguration zu einer WAF-Richtlinie
 
 Wenn Sie bereits über eine WAF verfügen, sind Ihnen möglicherweise einige Änderungen im Portal aufgefallen. Zunächst müssen Sie ermitteln, welche Art von Richtlinie Sie in der WAF aktiviert haben. Es gibt drei mögliche Zustände:
 

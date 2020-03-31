@@ -1,5 +1,5 @@
 ---
-title: Horizontales Skalieren einer Datenbank
+title: Aufskalieren einer Datenbank
 description: Erfahren Sie, wie Sie "ShardMapManager" und die Clienbtbibliothek für elastische Datenbanken verwenden.
 services: sql-database
 ms.service: sql-database
@@ -12,13 +12,13 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 8175563d8c1c2ec59b4195b2ede06f6e1dbf8556
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823558"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228634"
 ---
-# <a name="scale-out-databases-with-the-shard-map-manager"></a>Horizontales Skalieren von Datenbanken mit dem Shardzuordnungs-Manager
+# <a name="scale-out-databases-with-the-shard-map-manager"></a>Aufskalieren von Datenbanken mit dem Shardzuordnungs-Manager
 
 Verwenden Sie einen Shardzuordnungs-Manager, um Datenbanken in SQL Azure problemlos horizontal zu skalieren. Der Shardzuordnungs-Manager ist eine spezielle Datenbank, die globale Zuordnungsinformationen zu allen Shards (Datenbanken) in einer Shardgruppe verwaltet. Die Metadaten ermöglichen einer Anwendung die Verbindung mit der richtigen Datenbank basierend auf dem Wert des **Sharding-Schlüssels**. Darüber hinaus enthält jeder Shard in der Gruppe Zuordnungen, die die lokalen Sharddaten (als **Shardlets**bezeichnet) nachverfolgen.
 
@@ -55,8 +55,8 @@ Die elastische Skalierung unterstützt die folgenden Typen als Shardingschlüsse
 | --- | --- |
 | integer |integer |
 | long |long |
-| GUID |uuid |
-| Byte[]  |Byte[] |
+| guid |uuid |
+| byte[]  |byte[] |
 | datetime | timestamp |
 | Zeitraum | duration|
 | datetimeoffset |offsetdatetime |

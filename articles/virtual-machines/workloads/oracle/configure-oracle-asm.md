@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: ace19f17f5d7a5e920808b76258459c0eba62890
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: a27d4c1712e9d65afcfc8792eac88be468829f6f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750529"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536376"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Einrichten von Oracle ASM auf einem virtuellen Azure Linux-Computer  
 
@@ -33,7 +33,7 @@ Virtuelle Azure-Computer bieten eine vollständig konfigurierbare und flexible C
 > * Erstellen einer mit ASM verwalteten Oracle DB
 
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). 
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). 
 
 ## <a name="prepare-the-environment"></a>Vorbereiten der Umgebung
 
@@ -62,7 +62,7 @@ Im folgenden Beispiel wird ein virtueller Computer mit dem Namen „myVM“ erst
 
 Nach der Erstellung des virtuellen Computers zeigt die Azure CLI Informationen an, die den Informationen im folgenden Beispiel ähneln. Beachten Sie den Wert für `publicIpAddress`. Diese Adresse wird verwendet, um auf den virtuellen Computer zuzugreifen.
 
-   ```azurecli
+   ```output
    {
      "fqdns": "",
      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -79,7 +79,7 @@ Nach der Erstellung des virtuellen Computers zeigt die Azure CLI Informationen a
 
 Mit dem folgenden Befehl erstellen Sie eine SSH-Sitzung mit dem virtuellen Computer und konfigurieren weitere Einstellungen. Ersetzen Sie die IP-Adresse durch den Wert für `publicIpAddress` Ihres virtuellen Computers.
 
-```bash 
+```bash
 ssh <publicIpAddress>
 ```
 
@@ -161,7 +161,7 @@ In diesem Tutorial wird als Standardbenutzer *grid* und als Standardgruppe *asma
 
    Die Ausgabe dieses Befehls, die durch zu beantwortende Eingabeaufforderungen unterbrochen wird, sollte ungefähr wie folgt aussehen:
 
-    ```bash
+    ```output
    Configuring the Oracle ASM library driver.
 
    This will configure the on-boot properties of the Oracle ASM library
@@ -178,13 +178,14 @@ In diesem Tutorial wird als Standardbenutzer *grid* und als Standardgruppe *asma
    ```
 
 2. Zeigen Sie die Datenträgerkonfiguration an:
+
    ```bash
    cat /proc/partitions
    ```
 
    Die Ausgabe dieses Befehls sollte ungefähr wie die folgende Liste der verfügbaren Datenträger aussehen:
 
-   ```bash
+   ```output
    8       16   14680064 sdb
    8       17   14678976 sdb1
    8        0   52428800 sda
@@ -211,7 +212,7 @@ In diesem Tutorial wird als Standardbenutzer *grid* und als Standardgruppe *asma
    
    Bei Verwendung der oben genannten Antworten sollte die Ausgabe des `fdisk`-Befehls wie folgt aussehen:
 
-   ```bash
+   ```output
    Device contains not a valid DOS partition table, or Sun, SGI or OSF disklabel
    Building a new DOS disklabel with disk identifier 0xf865c6ca.
    Changes will remain in memory only, until you decide to write them.
@@ -255,7 +256,7 @@ In diesem Tutorial wird als Standardbenutzer *grid* und als Standardgruppe *asma
 
    Die Ausgabe des Befehls sollte ungefähr wie folgt aussehen:
 
-   ```bash
+   ```output
    major minor  #blocks  name
 
      8       16   14680064 sdb
@@ -282,8 +283,8 @@ In diesem Tutorial wird als Standardbenutzer *grid* und als Standardgruppe *asma
    ```
 
    Die Ausgabe des Befehls sollte ungefähr wie folgt aussehen:
-   
-   ```bash
+
+   ```output
    Checking if ASM is loaded: no
    Checking if /dev/oracleasm is mounted: no
    Initializing the Oracle ASMLib driver:                     [  OK  ]
@@ -297,11 +298,11 @@ In diesem Tutorial wird als Standardbenutzer *grid* und als Standardgruppe *asma
    service oracleasm createdisk DATA /dev/sdd1 
    service oracleasm createdisk DATA1 /dev/sde1 
    service oracleasm createdisk FRA /dev/sdf1
-   ```    
+   ```
 
    Die Ausgabe des Befehls sollte ungefähr wie folgt aussehen:
 
-   ```bash
+   ```output
    Marking disk "ASMSP" as an ASM disk:                       [  OK  ]
    Marking disk "DATA" as an ASM disk:                        [  OK  ]
    Marking disk "DATA1" as an ASM disk:                       [  OK  ]
@@ -312,11 +313,11 @@ In diesem Tutorial wird als Standardbenutzer *grid* und als Standardgruppe *asma
 
    ```bash
    service oracleasm listdisks
-   ```   
+   ```
 
    In der Ausgabe dieses Befehls sollten die folgenden Oracle ASM-Datenträger aufgeführt werden:
 
-   ```bash
+   ```output
     ASMSP
     DATA
     DATA1
@@ -371,7 +372,7 @@ Führen Sie zum Herunterladen der Oracle Grid Infrastructure-Software die folgen
    ```
 
 4. Entzippen Sie die Dateien. (Installieren Sie das Linux-Tool zum Entzippen, sofern es noch nicht installiert ist.)
-   
+
    ```bash
    sudo yum install unzip
    sudo unzip linuxamd64_12102_grid_1of2.zip
@@ -379,7 +380,7 @@ Führen Sie zum Herunterladen der Oracle Grid Infrastructure-Software die folgen
    ```
 
 5. Ändern Sie die Berechtigung:
-   
+
    ```bash
    sudo chown -R grid:oinstall /opt/grid
    ```
@@ -390,7 +391,7 @@ Führen Sie zum Herunterladen der Oracle Grid Infrastructure-Software die folgen
    sudo chmod 777 /etc/waagent.conf  
    vi /etc/waagent.conf
    ```
-   
+
    Suchen Sie nach `ResourceDisk.SwapSizeMB`, und ändern Sie den Wert in **8192**. Sie müssen `insert` drücken, um in den Einfügemodus zu wechseln. Geben Sie den Wert **8192** ein, und drücken Sie dann `esc`, um zum Befehlsmodus zurückzukehren. Schreiben Sie die Änderungen in die Datei, und schließen Sie die Datei. Geben Sie `:wq` ein, und drücken Sie `enter`.
    
    > [!NOTE]
@@ -550,6 +551,7 @@ Die Oracle Database-Software ist bereits im Azure Marketplace-Image installiert.
    cd /u01/app/oracle/product/12.1.0/dbhome_1/bin
    ./dbca
    ```
+
    Database Configuration Assistant wird geöffnet.
 
 2. Klicken Sie auf der Seite **Database Operation** (Datenbankvorgang) auf `Create Database` (Datenbank erstellen).

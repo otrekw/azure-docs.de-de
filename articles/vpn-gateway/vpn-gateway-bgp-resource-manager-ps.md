@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: yushwang
 ms.openlocfilehash: 78147a96d6d9e92c2602b6a83cbed743cf2abf37
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77152039"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>Konfigurieren von BGP für Azure VPN Gateways mithilfe von PowerShell
@@ -38,7 +38,7 @@ Jeder Teil der Anweisungen ist ein zentraler Baustein zum Aktivieren von BGP in 
 
 Zum Erstellen eines komplexeren Multihop-Übertragungsnetzwerk, das Ihren Anforderungen entspricht, können Sie auch Teile miteinander kombinieren.
 
-## <a name ="enablebgp"></a>Teil 1: Konfigurieren von BGP auf dem Azure VPN Gateway
+## <a name="part-1---configure-bgp-on-the-azure-vpn-gateway"></a><a name ="enablebgp"></a>Teil 1: Konfigurieren von BGP auf dem Azure VPN Gateway
 Die Konfigurationsschritte richten die BGP-Parameter des Azure-VPN-Gateways wie im folgenden Diagramm dargestellt ein:
 
 ![BGP Gateway](./media/vpn-gateway-bgp-resource-manager-ps/bgp-gateway.png)
@@ -135,7 +135,7 @@ $vnet1gw.BgpSettingsText
 
 Nachdem das Gateway erstellt wurde, können Sie dieses Gateway verwenden, um eine standortübergreifende Verbindung oder eine VNet-to-VNet-Verbindung mit BGP herzustellen. In den folgenden Abschnitten werden die Übungsschritte beschrieben.
 
-## <a name ="crossprembbgp"></a>Teil 2: Herstellen einer standortübergreifenden Verbindung mit BGP
+## <a name="part-2---establish-a-cross-premises-connection-with-bgp"></a><a name ="crossprembbgp"></a>Teil 2: Herstellen einer standortübergreifenden Verbindung mit BGP
 
 Um eine standortübergreifende Verbindung herzustellen, müssen Sie ein lokales Netzwerkgateway erstellen, um das lokale VPN-Gerät darzustellen, sowie eine Verbindung, um das VPN-Gateway mit dem lokalen Netzwerkgateway zu verbinden. Die entsprechenden Schritte werden zwar in Artikeln beschrieben, der vorliegende Artikel enthält jedoch die zusätzlichen Eigenschaften, die zum Angeben der BGP-Konfigurationsparameter erforderlich sind.
 
@@ -209,7 +209,7 @@ Das folgende Beispiel listet die Parameter auf, die Sie in den BGP-Konfiguration
 
 Die Verbindung wird innerhalb weniger Minuten hergestellt, und die BGP-Peeringsitzung wird gestartet, sobald die IPsec-Verbindung besteht.
 
-## <a name ="v2vbgp"></a>Teil 3: Herstellen einer VNet-to-VNet-Verbindung mit BGP
+## <a name="part-3---establish-a-vnet-to-vnet-connection-with-bgp"></a><a name ="v2vbgp"></a>Teil 3: Herstellen einer VNet-to-VNet-Verbindung mit BGP
 
 In diesem Abschnitt wird eine VNet-zu-VNet-Verbindung mit BGP hinzugefügt, wie im folgenden Diagramm dargestellt:
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: shants
-ms.openlocfilehash: 8d8c32c2a2f3e31c1b7f4645fe61abf2d5d0e014
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 53ebb7c4710c5455ef90701dc7e94f1b846a874a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275776"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062699"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Benachrichtigungen zu geplanten Wartungen für VM-Skalierungsgruppen
 
@@ -80,7 +80,7 @@ Nachdem eine geplante Wartungsaktion geplant wurde, können Sie über das Azure-
 
 Die Spalte **Self-Service-Wartung** wird nun in der Liste der VM-Skalierungsgruppen angezeigt. Jede VM-Skalierungsgruppe kann einen der folgenden Werte für die Spalte „Self-Service-Wartung“ aufweisen:
 
-| value | Beschreibung |
+| Wert | BESCHREIBUNG |
 |-------|-------------|
 | Ja | Mindestens ein virtueller Computer in Ihrer VM-Skalierungsgruppe befindet sich in einem Self-Service-Wartungsfenster. Sie können die Wartung jederzeit in diesem Self-Service-Zeitfenster starten. | 
 | Nein | Es gibt keine virtuellen Computer in einem Self-Service-Fenster in der betroffenen VM-Skalierungsgruppe. | 
@@ -121,7 +121,7 @@ Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -In
 
 Unter **MaintenanceRedeployStatus** werden folgende Eigenschaften zurückgegeben: 
 
-| value | Beschreibung   |
+| Wert | BESCHREIBUNG   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Gibt an, ob Sie zum aktuellen Zeitpunkt die Wartung für den virtuellen Computer starten können. |
 | PreMaintenanceWindowStartTime         | Der Anfang des Self-Service-Wartungszeitfensters, in dem Sie die Wartung für Ihren virtuellen Computer initiieren können. |
@@ -146,13 +146,13 @@ Informationen zu geplanten Wartungen können mithilfe von [az vmss list-instance
  
 Wartungsinformationen werden nur zurückgegeben, wenn eine Wartung geplant ist. Ist keine Wartung geplant, die Auswirkungen auf die VM-Instanz besitzt, gibt das Cmdlet keine Wartungsinformationen zurück. 
 
-```azure-cli
+```azurecli
 az vmss list-instances -g rgName -n vmssName --expand instanceView
 ```
 
 Unter **MaintenanceRedeployStatus** für die einzelnen VM-Instanzen werden die folgenden Eigenschaften zurückgegeben: 
 
-| value | Beschreibung   |
+| Wert | BESCHREIBUNG   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Gibt an, ob Sie zum aktuellen Zeitpunkt die Wartung für den virtuellen Computer starten können. |
 | PreMaintenanceWindowStartTime         | Der Anfang des Self-Service-Wartungszeitfensters, in dem Sie die Wartung für Ihren virtuellen Computer initiieren können. |
@@ -166,7 +166,7 @@ Unter **MaintenanceRedeployStatus** für die einzelnen VM-Instanzen werden die f
 
 Der folgende Aufruf initiiert die Wartung für eine VM-Instanz, wenn `IsCustomerInitiatedMaintenanceAllowed` auf **TRUE** festgelegt ist:
 
-```azure-cli
+```azurecli
 az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 ```
 

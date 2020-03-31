@@ -11,10 +11,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: ccdeefabeedfca4959239696361ccce0bc6c1c78
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76289797"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Mainframerehosting auf virtuellen Azure-Computern
@@ -90,7 +90,7 @@ Mit Azure-IaaS wie einer VM bieten bestimmte Systemfunktionen Failoverunterstüt
 
 ### <a name="scalability"></a>Skalierbarkeit
 
-Mainframes werden in der Regel zentral hochskaliert, Cloudumgebungen horizontal. Azure bietet für [Linux](/azure/virtual-machines/linux/sizes) und [Windows](/azure/virtual-machines/windows/sizes) mehrere VM-Größen für unterschiedliche Anforderungen an. Auch die Cloud kann entsprechend der genauen Benutzeransprüche zentral hoch- oder herunterskaliert werden. Computeleistung, Speicher und Dienste werden in einem nutzungsbasierten Abrechnungsmodell nach Bedarf [skaliert](/azure/architecture/best-practices/auto-scaling).
+Mainframes werden in der Regel hochskaliert, Cloudumgebungen aufskaliert. Azure bietet für [Linux](/azure/virtual-machines/linux/sizes) und [Windows](/azure/virtual-machines/windows/sizes) mehrere VM-Größen für unterschiedliche Anforderungen an. Auch die Cloud kann entsprechend der genauen Benutzeransprüche zentral hoch- oder herunterskaliert werden. Computeleistung, Speicher und Dienste werden in einem nutzungsbasierten Abrechnungsmodell nach Bedarf [skaliert](/azure/architecture/best-practices/auto-scaling).
 
 ### <a name="storage"></a>Storage
 

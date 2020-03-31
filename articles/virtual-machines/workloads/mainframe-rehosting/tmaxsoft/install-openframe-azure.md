@@ -1,6 +1,6 @@
 ---
 title: Installieren von TmaxSoft OpenFrame auf Azure-VMs
-description: Hosten Sie Ihre IBM z/OS-Mainframeworkloads mithilfe der TmaxSoft OpenFrame-Umgebung auf virtuellen Azure-Computern (VMs) neu.
+description: Hosten Sie Ihre IBM z/OS-Mainframeworkloads mithilfe der TmaxSoft OpenFrame-Umgebung auf Azure Virtual Machines (VMs) neu.
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -9,13 +9,13 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.openlocfilehash: 1ad6e52c421d9cfec4640d3a330b5507d6ed3e9b
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72436049"
 ---
-# <a name="install-tmaxsoft-openframe-on-azure"></a>Installieren von TmaxSoft OpenFrame in Azure
+# <a name="install-tmaxsoft-openframe-on-azure"></a>Install TmaxSoft OpenFrame on Azure (Installieren von TmaxSoft OpenFrame in Azure)
 
 Erfahren Sie, wie Sie eine OpenFrame-Umgebung in Azure einrichten, die sich für Entwicklungs-, Demo-, Test- und Produktionsworkloads eignet. In diesem Tutorial werden die einzelnen Schritte erläutert.
 
@@ -51,7 +51,7 @@ Andere erforderliche OpenFrame-Komponenten:
 - PROTRIEVE, eine Lösung, die die Mainframesprache CA-Easytrieve ausführt.
 - OFMiner, eine Lösung, die die Mainframeassets analysiert und dann in Azure migriert.
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>Aufbau
 
 Die folgende Abbildung zeigt eine Übersicht über die OpenFrame 7.0-Architekturkomponenten, die in diesem Tutorial installiert werden:
 
@@ -993,7 +993,7 @@ OFCOBOL ist der OpenFrame-Compiler, der die COBOL-Programme des Mainframes über
 
 3. Lesen Sie die Lizenzvereinbarung, und drücken Sie die EINGABETASTE, um den Vorgang fortzusetzen.
 
-4. Akzeptieren Sie die Lizenzvereinbarung. Nachdem die Installation abgeschlossen ist, wird Folgendes angezeigt:
+4. Akzeptieren Sie die Lizenzbedingungen. Nachdem die Installation abgeschlossen ist, wird Folgendes angezeigt:
 
      ```
      Choose Install Folder 
@@ -1080,7 +1080,7 @@ OFASM ist der OpenFrame-Compiler, der die Assembler-Programme des Mainframes üb
      ```
 
 3. Lesen Sie die Lizenzvereinbarung, und drücken Sie die EINGABETASTE, um den Vorgang fortzusetzen.
-4. Akzeptieren Sie die Lizenzvereinbarung.
+4. Akzeptieren Sie die Lizenzbedingungen.
 5. Stellen Sie sicher, dass das Bashprofil mit OFASM-Variablen aktualisiert wird. Beispiel:
 
      ```
@@ -1167,7 +1167,7 @@ OSC ist die IBM CICS ähnliche OpenFrame-Umgebung, die Hochgeschwindigkeits-OLTP
      Nach Abschluss des Vorgangs wird die Meldung angezeigt, dass die Installation abgeschlossen ist.
 
 4. Stellen Sie sicher, dass das Bashprofil mit OSC-Variablen aktualisiert wird.
-5. Überprüfen Sie die OpenFrame\_OSC7\_0\_Fix2\_InstallLog.log-Datei. Das sollte in etwa so aussehen:
+5. Überprüfen Sie die OpenFrame\_OSC7\_0\_Fix2\_InstallLog.log-Datei. Der Bericht könnte beispielsweise wie folgt aussehen:
 
      ```
      Summary 
@@ -1359,7 +1359,7 @@ Installieren Sie vor JEUS das Apache Ant-Paket, das die zum Installieren von JEU
      [oframe7@ofdemo setup]$ . .bash_profile
      ```
 
-11. *Optional*. Erstellen Sie einen Alias für das einfache Herunterfahren und Starten von JEUS-Komponenten:
+11. *Optional:* Erstellen Sie einen Alias für das einfache Herunterfahren und Starten von JEUS-Komponenten:
 
      ```     
      # JEUS alias

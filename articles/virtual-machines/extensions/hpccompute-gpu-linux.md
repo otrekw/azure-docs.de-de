@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
 ms.openlocfilehash: 6ea61acfc2db3c8f1f5c9c0ac8da8f19897d441e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073740"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226882"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>NVIDIA-GPU-Treibererweiterung für Linux
 
@@ -70,23 +70,23 @@ Der folgende JSON-Code zeigt das Schema für die Erweiterung.
 }
 ```
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>Eigenschaften
 
-| NAME | Wert/Beispiel | Datentyp |
+| Name | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | string |
-| type | NvidiaGpuDriverLinux | string |
-| typeHandlerVersion | 1.2 | int |
+| publisher | Microsoft.HpcCompute | Zeichenfolge |
+| type | NvidiaGpuDriverLinux | Zeichenfolge |
+| typeHandlerVersion | 1.2 | INT |
 
 ### <a name="settings"></a>Einstellungen
 
 Alle Einstellungen sind optional. Das Standardverhalten ist, den Kernel nicht zu aktualisieren, wenn dies für die Treiberinstallation nicht erforderlich ist, den neuesten unterstützten Treiber und das CUDA-Toolkit (falls zutreffend) zu installieren.
 
-| NAME | BESCHREIBUNG | Standardwert | Gültige Werte | Datentyp |
+| Name | BESCHREIBUNG | Standardwert | Gültige Werte | Datentyp |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | Aktualisieren des Kernel, auch wenn nicht für die Treiberinstallation erforderlich ist | false | true, false | boolean |
-| driverVersion | NV: GRID-Treiberversion<br> NC/ND: CUDA-Toolkitversion. Die neuesten Treiber für den ausgewählten CUDA werden automatisch installiert. | latest | GRID: „430.30“, „418.70“, „410.92“, „410.71“, „390.75“, „390.57“, „390.42“<br> CUDA: „10.0.130“, „9.2.88“, „9.1.85“ | string |
+| driverVersion | NV: GRID-Treiberversion<br> NC/ND: CUDA-Toolkitversion. Die neuesten Treiber für den ausgewählten CUDA werden automatisch installiert. | latest | GRID: „430.30“, „418.70“, „410.92“, „410.71“, „390.75“, „390.57“, „390.42“<br> CUDA: „10.0.130“, „9.2.88“, „9.1.85“ | Zeichenfolge |
 | installCUDA | UDA-Toolkit installieren. Nur relevant für virtuelle Computer der NC-/ND-Serie. | true | true, false | boolean |
 
 

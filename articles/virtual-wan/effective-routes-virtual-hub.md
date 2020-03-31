@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: cherylmc
 ms.openlocfilehash: 1173da81736661048d1e4e12d9919bc2aadf73ee
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73511211"
 ---
 # <a name="view-effective-routes-of-a-virtual-hub"></a>Anzeigen der effektiven Routen für einen virtuellen Hub
 
 Sie können alle Routen Ihres Virtual WAN-Hubs im Azure-Portal anzeigen. Navigieren Sie zum Anzeigen der Routen zum virtuellen Hub und wählen Sie dann **Routing > Effektive Routen anzeigen** aus.
 
-## <a name="understand"></a>Grundlegendes zu Routen
+## <a name="understanding-routes"></a><a name="understand"></a>Grundlegendes zu Routen
 
 Anhand des folgenden Beispiels können Sie besser verstehen, wie das Virtual WAN-Routing erfolgt.
 
@@ -30,13 +30,13 @@ In diesem Beispiel wird auch davon ausgegangen, dass die Zweigstelle 1 in Westeu
 
 ![Diagramm](./media/effective-routes-virtual-hub/diagram.png)
 
-## <a name="view"></a>Anzeigen effektiver Routen
+## <a name="view-effective-routes"></a><a name="view"></a>Anzeigen effektiver Routen
 
 Wenn Sie im Portal die Option „Effektive Routen anzeigen“ auswählen, wird die in der [Hub-Routingtabelle](#routetable) angezeigte Ausgabe für den Hub „USA, Osten“ erstellt.
 
 Genauer gesagt: die erste Zeile bedeutet, dass der Hub „USA, Osten“ die Route „10.20.1.0/24“ (Zweigstelle 1) durch die *Nächster Hop*-VPN-Verbindung ("Nächster Hop" VPN Gateway Instance0 IP 10.1.0.6, Instance1 IP 10.1.0.7) erlernt hat. *Routenursprung* verweist auf die Ressourcen-ID. *AS-Pfad* gibt den AS-Pfad für Zweigstelle 1 an.
 
-### <a name="routetable"></a>Hub-Routingtabelle
+### <a name="hub-route-table"></a><a name="routetable"></a>Hub-Routingtabelle
 
 Verwenden Sie die Scrollleiste am unteren Rand der Tabelle, um den „AS-Pfad“ anzuzeigen.
 
@@ -55,13 +55,13 @@ Verwenden Sie die Scrollleiste am unteren Rand der Tabelle, um den „AS-Pfad“
 > Wenn die Hubs „USA, Osten“ und „Europa, Westen“ in der Beispieltopologie nicht miteinander kommunizieren, gibt es die gelernte Route (10.9.0.0/16) nicht. Hubs kündigen nur Netzwerke an, die direkt mit Ihnen verbunden sind.
 >
 
-## <a name="additional"></a>Weitere Informationen
+## <a name="additional-information"></a><a name="additional"></a>Weitere Informationen
 
-### <a name="abouthubroute"></a>Informationen zur Hub-Routingtabelle
+### <a name="about-the-hub-route-table"></a><a name="abouthubroute"></a>Informationen zur Hub-Routingtabelle
 
 Sie können eine virtuelle Hubroute erstellen und die Route der Routingtabelle des virtuellen Hubs zuweisen. Sie können der Routingtabelle des virtuellen Hubs mehrere Routen zuweisen. Auf diese Weise können Sie eine Route für das Ziel-VNet über eine IP-Adresse festlegen (normalerweise die Network Virtual Appliance (NVA) in einem Spoke-VNet). Weitere Informationen zu NVAs finden Sie unter [Weiterleiten von Datenverkehr von einem virtuellen Hub an eine NVA](virtual-wan-route-table-portal.md).
 
-### <a name="aboutdefaultroute"></a>Informationen zur Standardroute (0.0.0.0/0)
+### <a name="about-default-route-00000"></a><a name="aboutdefaultroute"></a>Informationen zur Standardroute (0.0.0.0/0)
 
 Ein virtueller Hub kann eine erlernte Standardroute an eine VNet-, Site-to-Site-VPN- und ExpressRoute-Verbindung weitergeben, wenn das Flag für die Verbindung auf „Aktiviert“ festgelegt ist. Dieses Flag ist sichtbar, wenn Sie eine VNet-Verbindung, eine VPN-Verbindung oder eine ExpressRoute-Verbindung bearbeitet. „EnableInternetSecurity“ ist für VNet-, ExpressRoute- und VPN-Hubverbindungen standardmäßig immer „false“.
 

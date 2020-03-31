@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/08/2018
 ms.author: cynthn
 ms.openlocfilehash: 11695eb889a10dc689b00399a37382a3b9772eae
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76274423"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Erstellen einer VM-Skalierungsgruppe, die Verfügbarkeitszonen verwendet
@@ -46,7 +46,7 @@ Für Skalierungsgruppen, die über mehrere Zonen hinweg bereitgestellt werden, k
 
 Es ist möglich, dass VMs in der Skalierungsgruppe erfolgreich erstellt werden, dies ist für die Bereitstellung von Erweiterungen dieser VMs jedoch nicht der Fall. Diese VMs mit Erweiterungsfehlern werden trotzdem mitgezählt, wenn ermittelt wird, ob sich eine Skalierungsgruppe im Gleichgewicht befindet. Eine Skalierungsgruppe mit drei VMs in Zone 1, drei VMs in Zone 2 und drei VMs in Zone 3 wird beispielsweise auch dann als im Gleichgewicht befindlich angesehen, wenn alle Erweiterungen in Zone 1 nicht erfolgreich und alle Erweiterungen in den Zonen 2 und 3 erfolgreich waren.
 
-Beim bestmöglichen Zonengleichgewicht versucht die Skalierungsgruppe, das horizontale Herunter- und Hochskalieren durchzuführen, während das Gleichgewicht beibehalten wird. Falls dies aus bestimmten Gründen nicht möglich ist (wenn beispielsweise eine Zone ausfällt und die Skalierungsgruppe in dieser Zone keine neue VM erstellen kann), lässt die Skalierungsgruppe ein vorübergehendes Ungleichgewicht zu, um das erfolgreiche horizontale Herunter- und Hochskalieren zu ermöglichen. Bei den nachfolgenden Versuchen zur horizontalen Skalierung fügt die Skalierungsgruppe den Zonen VMs hinzu, die mehr VMs benötigen, damit sich die Skalierungsgruppe im Gleichgewicht befindet. Entsprechend entfernt die Skalierungsgruppe bei nachfolgenden Versuchen, das horizontale Herunterskalieren durchzuführen, VMs aus den Zonen, die weniger VMs benötigen, damit sich die Skalierungsgruppe im Gleichgewicht befindet. Beim „strengen Zonengleichgewicht“ enden für die Skalierungsgruppe alle Versuche zum horizontalen Herunter- oder Hochskalieren mit einem Fehler, falls dies zu einem Ungleichgewicht führen würde.
+Beim bestmöglichen Zonengleichgewicht versucht die Skalierungsgruppe, das Ab- und Aufskalieren durchzuführen, während das Gleichgewicht beibehalten wird. Falls dies aus bestimmten Gründen nicht möglich ist (wenn beispielsweise eine Zone ausfällt und die Skalierungsgruppe in dieser Zone keine neue VM erstellen kann), lässt die Skalierungsgruppe ein vorübergehendes Ungleichgewicht zu, um das erfolgreiche Ab- und Aufskalieren zu ermöglichen. Bei den nachfolgenden Versuchen zur horizontalen Skalierung fügt die Skalierungsgruppe den Zonen VMs hinzu, die mehr VMs benötigen, damit sich die Skalierungsgruppe im Gleichgewicht befindet. Entsprechend entfernt die Skalierungsgruppe bei nachfolgenden Versuchen, das Abskalieren durchzuführen, VMs aus den Zonen, die weniger VMs benötigen, damit sich die Skalierungsgruppe im Gleichgewicht befindet. Beim „strengen Zonengleichgewicht“ enden für die Skalierungsgruppe alle Versuche zum Ab- oder Aufskalieren mit einem Fehler, falls dies zu einem Ungleichgewicht führen würde.
 
 Legen Sie *zoneBalance* auf *false* fest, um das bestmögliche Zonengleichgewicht zu verwenden. Dies ist die Standardeinstellung in API-Version *2017-12-01*. Legen Sie *zoneBalance* auf *true* fest, um das strenge Zonengleichgewicht zu verwenden.
 
@@ -54,7 +54,7 @@ Legen Sie *zoneBalance* auf *false* fest, um das bestmögliche Zonengleichgewich
 
 Wenn Sie eine VM-Skalierungsgruppe bereitstellen, können eine einzelne Verfügbarkeitszone in einer Region oder mehrere Zonen verwenden.
 
-Wenn Sie eine Skalierungsgruppe in einer einzelnen Zone erstellen, können Sie steuern, in welcher Zone alle diese VM-Instanzen ausgeführt werden. Die Skalierungsgruppe wird dann nur innerhalb dieser Zone verwaltet und automatisch skaliert. Durch eine zonenredundante Skalierungsgruppe können Sie eine einzelne Skalierungsgruppe erstellen, die sich über mehrere Zonen erstreckt. Während der Erstellung werden VM-Instanzen standardmäßig gleichmäßig auf Zonen verteilt. Wenn in einer der Zonen eine Unterbrechung auftritt, wird eine Skalierungsgruppe nicht automatisch horizontal hochskaliert, um die Kapazität zu erhöhen. Eine bewährte Methode besteht darin, Regeln für die automatische Skalierung anhand der CPU- oder Arbeitsspeicherauslastung zu konfigurieren. Über diese Regeln für automatische Skalierung könnte die Skalierungsgruppe auf den Verlust der VM-Instanzen in dieser einen Zone reagieren, indem neue Instanzen in den verbleibenden betriebsbereiten Zonen horizontal hochskaliert werden.
+Wenn Sie eine Skalierungsgruppe in einer einzelnen Zone erstellen, können Sie steuern, in welcher Zone alle diese VM-Instanzen ausgeführt werden. Die Skalierungsgruppe wird dann nur innerhalb dieser Zone verwaltet und automatisch skaliert. Durch eine zonenredundante Skalierungsgruppe können Sie eine einzelne Skalierungsgruppe erstellen, die sich über mehrere Zonen erstreckt. Während der Erstellung werden VM-Instanzen standardmäßig gleichmäßig auf Zonen verteilt. Wenn in einer der Zonen eine Unterbrechung auftritt, wird eine Skalierungsgruppe nicht automatisch aufskaliert, um die Kapazität zu erhöhen. Eine bewährte Methode besteht darin, Regeln für die automatische Skalierung anhand der CPU- oder Arbeitsspeicherauslastung zu konfigurieren. Über diese Regeln für automatische Skalierung könnte die Skalierungsgruppe auf den Verlust der VM-Instanzen in dieser einen Zone reagieren, indem neue Instanzen in den verbleibenden betriebsbereiten Zonen horizontal hochskaliert werden.
 
 Damit Verfügbarkeitszonen verwendet werden können, muss Ihre Skalierungsgruppe in einer [unterstützten Azure-Region](../availability-zones/az-overview.md#services-support-by-region) erstellt werden. Sie können mit einer der folgenden Methoden eine Skalierungsgruppe erstellen, die Verfügbarkeitszonen verwendet:
 

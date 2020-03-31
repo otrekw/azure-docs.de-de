@@ -4,19 +4,16 @@ description: Führen Sie mithilfe der Clientbibliothek für elastische Datenbank
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 6458b52e707b7e4c11fe8b501f3393e1009a748c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ae14a9fd8fc8479eac596fb694e12e3e0a9027f5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823537"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067312"
 ---
 # <a name="multi-shard-querying-using-elastic-database-tools"></a>Abfragen mehrerer Shards mithilfe der Tools für elastische Datenbanken
 

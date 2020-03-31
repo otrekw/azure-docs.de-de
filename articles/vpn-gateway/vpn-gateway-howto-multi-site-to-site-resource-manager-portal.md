@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 10/09/2019
 ms.author: cherylmc
 ms.openlocfilehash: 7b438f2b966dc43d41b91a138b39193d230d5546
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75779687"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Hinzufügen einer Site-to-Site-Verbindung (S2S) zu einem VNet mit einer vorhandenen VPN-Gatewayverbindung
@@ -35,7 +35,7 @@ Die folgende Tabelle wird aktualisiert, wenn neue Artikel und weitere Tools für
 
 [!INCLUDE [vpn-gateway-table-multi-site](../../includes/vpn-gateway-table-multisite-include.md)]
 
-## <a name="before"></a>Voraussetzungen
+## <a name="before-you-begin"></a><a name="before"></a>Voraussetzungen
 Überprüfen Sie folgende Maßnahmen:
 
 * Sie konfigurieren keine neue Konfiguration für parallel bestehende ExpressRoute- und VPN Gateway-Verbindungen.
@@ -45,7 +45,7 @@ Die folgende Tabelle wird aktualisiert, wenn neue Artikel und weitere Tools für
 * Sie haben ein kompatibles VPN-Gerät (und eine Person, die es konfigurieren kann). Weitere Informationen finden Sie unter [Informationen zu VPN-Geräten](vpn-gateway-about-vpn-devices.md). Wenn Sie sich mit dem Konfigurieren des VPN-Geräts oder mit den IP-Adressbereichen Ihrer lokalen Netzwerkkonfiguration nicht auskennen, müssen Sie sich an eine Person wenden, die Ihnen diese Details liefern kann.
 * Sie haben eine externe öffentliche IP-Adresse für Ihr VPN-Gerät. Diese IP-Adresse darf sich nicht hinter einer NAT befinden.
 
-## <a name="part1"></a>Teil 1 – Konfigurieren einer Verbindung
+## <a name="part-1---configure-a-connection"></a><a name="part1"></a>Teil 1 – Konfigurieren einer Verbindung
 1. Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
 2. Klicken Sie auf **Alle Ressourcen**, suchen Sie Ihr **Gateway für virtuelle Netzwerke** in der Liste der Ressourcen, und klicken Sie darauf.
 3. Klicken Sie auf der Seite **Gateway für virtuelle Netzwerke** auf **Verbindungen**.
@@ -61,7 +61,7 @@ Die folgende Tabelle wird aktualisiert, wenn neue Artikel und weitere Tools für
      
      ![Seite „Verbindung hinzufügen“](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "Seite „Verbindung hinzufügen“")<br>
 
-## <a name="part2"></a>Teil 2 – Lokales Netzwerkgateway hinzufügen
+## <a name="part-2---add-a-local-network-gateway"></a><a name="part2"></a>Teil 2 – Lokales Netzwerkgateway hinzufügen
 1. Klicken Sie auf **Lokales Netzwerkgateway** ***Ein lokales Netzwerkgateway auswählen***. Daraufhin wird die Seite **Lokales Netzwerkgateway auswählen** geöffnet.
    
     ![Auswählen eines lokalen Netzwerkgateways](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "Auswählen eines lokalen Netzwerkgateways")<br>
@@ -75,13 +75,13 @@ Die folgende Tabelle wird aktualisiert, wenn neue Artikel und weitere Tools für
    * **Adressraum:** Der Adressraum, der an den Standort des lokalen Netzwerks weitergeleitet werden soll.
 4. Klicken Sie auf der Seite **Lokales Netzwerkgateway erstellen** auf **OK**, um die Änderungen zu speichern.
 
-## <a name="part3"></a>Teil 3 – Hinzufügen des gemeinsam verwendeten Schlüssels, und erstellen der Verbindung
+## <a name="part-3---add-the-shared-key-and-create-the-connection"></a><a name="part3"></a>Teil 3 – Hinzufügen des gemeinsam verwendeten Schlüssels, und erstellen der Verbindung
 1. Fügen Sie auf der Seite **Verbindung hinzufügen** den gemeinsam verwendeten Schlüssel hinzu, mit dem Sie Ihre Verbindung erstellen möchten. Sie können den gemeinsam verwendeten Schlüssel entweder über Ihr VPN-Gerät erhalten, oder hier einen Schüssel erstellen, und Ihr VPN-Gerät dann so konfigurieren, dass es den gleichen gemeinsam verwendeten Schlüssel verwendet. Wichtig ist, dass die Schlüssel genau übereinstimmen.
    
     ![Gemeinsam verwendeter Schlüssel](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/sharedkey.png "Gemeinsam verwendeter Schlüssel")<br>
 2. Klicken Sie unten auf der Seite auf **OK**, um die Verbindung zu erstellen.
 
-## <a name="part4"></a>Teil 4 – Überprüfen der VPN-Verbindung
+## <a name="part-4---verify-the-vpn-connection"></a><a name="part4"></a>Teil 4 – Überprüfen der VPN-Verbindung
 
 
 [!INCLUDE [vpn-gateway-verify-connection-ps-rm](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]

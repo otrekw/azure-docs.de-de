@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: 5198729cf96fb48c5dcd05096c04ea4d77c26de5
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75931495"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>Verwenden des StorSimple Snapshot Manager zum Erstellen und Verwalten von Volumegruppen
@@ -48,7 +48,7 @@ Alle diese Aktionen stehen auch im Bereich **Aktionen** zur Verfügung.
 ## <a name="view-volume-groups"></a>Anzeigen von Volumegruppen
 Wenn Sie auf den Knoten **Volumegruppen** klicken, werden im Bereich **Ergebnisse** je nach den ausgewählten Spalten die folgenden Informationen über jede Volumegruppe angezeigt. (Die Spalten im Bereich **Ergebnis** sind konfigurierbar. (Klicken Sie mit der rechten Maustaste auf den Knoten **Volumes**, und wählen Sie **Ansicht** und dann **Spalten hinzufügen/entfernen** aus.)
 
-| Ergebnisspalte | Beschreibung |
+| Ergebnisspalte | BESCHREIBUNG |
 |:--- |:--- |
 | Name |Die Spalte **Name** enthält den Namen der Volumegruppe. |
 | Application |Die Spalte **Anwendungen** zeigt die Anzahl der VSS-Writer an, die zurzeit auf dem Windows-Host installiert sind und ausgeführt werden. |

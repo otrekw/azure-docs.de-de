@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 317e47144a716bd1bea5549aed1db0a02250d353
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 23b93f507ef6abe19a0202b28afa31d28490b2b3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77466088"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80151167"
 ---
 ## <a name="what-is-queue-storage"></a>Was ist der Warteschlangenspeicher?
 
@@ -28,7 +28,7 @@ Der Azure-Warteschlangendienst umfasst die folgenden Komponenten:
   
     `http://myaccount.queue.core.windows.net/incoming-orders`
 
-* **Speicherkonto:** Alle Zugriffe auf den Azure-Speicher erfolgen über ein Speicherkonto. Weitere Informationen zu Speicherkonten finden Sie in der [Übersicht zu Speicherkonten][../articles/storage/common/storage-account-overview.md].
+* **Speicherkonto:** Alle Zugriffe auf den Azure-Speicher erfolgen über ein Speicherkonto. Weitere Informationen zu Speicherkonten finden Sie in der [Speicherkontoübersicht](../articles/storage/common/storage-account-overview.md).
 * **Warteschlange:** Eine Warteschlange enthält einen Satz von Nachrichten. Alle Nachrichten müssen sich in Warteschlangen befinden. Beachten Sie, dass der Warteschlangenname nur aus Kleinbuchstaben bestehen darf. Informationen zum Benennen von Warteschlangen finden Sie unter [Benennen von Warteschlangen und Metadaten](https://msdn.microsoft.com/library/azure/dd179349.aspx).
 * **Nachricht:** Eine Nachricht in einem beliebigen Format und mit einer Größe von bis zu 64 KB. Eine Nachricht kann maximal sieben Tage in der Warteschlange verbleiben. Für Version 2017-07-29 oder höhere Versionen kann die maximale Gültigkeitsdauer eine beliebige positive Zahl sein. Mit -1 wird angegeben, dass die Nachricht nicht abläuft. Wird dieser Parameter ausgelassen, beträgt die Standardgültigkeitsdauer sieben Tage.
 

@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: manayar
-ms.openlocfilehash: 222f26febb7b14c627307295a8cdd68a17694d03
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 74195e83e17140b67ac060e1791c580e90e720f6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76275902"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534438"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 
@@ -162,7 +162,7 @@ Weitere Informationen finden Sie unter [Create or update a set](https://msdn.mic
 ### <a name="how-do-i-use-self-signed-certificates-provisioned-for-azure-service-fabric-clusters"></a>Wie verwende ich selbstsignierte Zertifikate, die für Azure Service Fabric-Cluster bereitgestellt werden?
 Verwenden Sie für das neueste Beispiel die folgende Azure-CLI-Anweisung innerhalb von Azure Shell, und lesen Sie die Dokumentation zum Service Fabrics CLI-Modulbeispiel, die über stdout gedruckt wird:
 
-```bash
+```azurecli
 az sf cluster create -h
 ```
 
@@ -221,7 +221,7 @@ Sie können öffentliche SSH-Schlüssel bei der Erstellung eines virtuellen Linu
 }
 ```
 
-linuxConfiguration-Elementname | Erforderlich | type | Beschreibung
+linuxConfiguration-Elementname | Erforderlich | type | BESCHREIBUNG
 --- | --- | --- | ---
 ssh | Nein | Collection | Gibt die SSH-Schlüsselkonfiguration für ein Linux-Betriebssystem an.
 path | Ja | String | Gibt den Linux-Dateipfad für die SSH-Schlüssel oder das Zertifikat an.
@@ -331,7 +331,7 @@ VM-Skalierungsgruppen sind hinsichtlich der Konformität ein grundlegender Besta
 
 Weitere Informationen finden Sie im [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/Compliance/PCI).
 
-### <a name="does-managed-identities-for-azure-resourceshttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>Können [verwaltete Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/msi-overview) zusammen mit einer VM-Skalierungsgruppe verwendet werden?
+### <a name="does-managed-identities-for-azure-resources-work-with-virtual-machine-scale-sets"></a>Können [verwaltete Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/msi-overview) zusammen mit einer VM-Skalierungsgruppe verwendet werden?
 
 Ja. Einige MSI-Beispielvorlagen finden Sie in den Azure-Schnellstartvorlagen für [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) und [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi).
 
@@ -521,6 +521,7 @@ Informationen zum Bereitstellen einer VM-Skalierungsgruppe für ein vorhandenes 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>Kann ich Skalierungsgruppen mit beschleunigten Netzwerken verwenden?
 
 Ja. Um beschleunigte Netzwerke zu verwenden, legen Sie „enableAcceleratedNetworking“ in den Einstellungen „networkInterfaceConfigurations“ Ihrer Skalierungsgruppe auf „TRUE“ fest. Beispiel:
+
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -540,6 +541,7 @@ Ja. Um beschleunigte Netzwerke zu verwenden, legen Sie „enableAcceleratedNetwo
 ### <a name="how-can-i-configure-the-dns-servers-used-by-a-scale-set"></a>Wie kann ich den DNS-Server konfigurieren, der von einer Skalierungsgruppe verwendet wird?
 
 Um eine VM-Skalierungsgruppe mit einer benutzerdefinierten DNS-Konfiguration zu erstellen, fügen Sie ein dnsSettings-JSON-Paket im Abschnitt „networkInterfaceConfigurations“ zur Skalierungsgruppe hinzu. Beispiel:
+
 ```json
     "dnsSettings":{
         "dnsServers":["10.0.0.6", "10.0.0.5"]
@@ -569,7 +571,7 @@ Ja. Sie können die Ressourcen-IDs für mehrere Application Gateway-Back-End-Adr
 
 Ein Grund für die Erstellung einer VM-Skalierungsgruppe mit weniger als zwei virtuellen Computern wäre die Verwendung der elastischen Eigenschaften einer VM-Skalierungsgruppe. So können Sie beispielsweise eine VM-Skalierungsgruppe ohne virtuelle Computer bereitstellen, um Ihre Infrastruktur zu definieren, ohne die laufenden Kosten für virtuelle Computer zu bezahlen. Wenn Sie dann für die Bereitstellung von virtuellen Computern bereit sind, können Sie die Kapazität der VM-Skalierungsgruppe auf die Anzahl von Produktionsinstanzen erhöhen.
 
-Ein weiterer Grund für die Erstellung einer VM-Skalierungsgruppe mit weniger als zwei virtuellen Computern wäre, wenn Sie sich weniger Gedanken um die Verfügbarkeit machen, sondern eher auf die Verwendung einer Verfügbarkeitsgruppe mit diskreten virtuellen Computern Wert legen. VM-Skalierungsgruppen ermöglichen die Verwendung undifferenzierter, austauschbarer Computeeinheiten. Diese Einheitlichkeit ist ein wichtiges Unterscheidungsmerkmal von VM-Skalierungsgruppen im Vergleich zu Verfügbarkeitsgruppen. Bei vielen zustandslosen Workloads werden keine einzelnen Einheiten nachverfolgt. Sie können zentral auf eine einzelne Computeeinheit herunterskaliert werden, wenn die Workload zurückgeht, und werden zentral wieder auf viele Computeeinheiten hochskaliert, wenn sich die Workload erhöht.
+Ein weiterer Grund für die Erstellung einer VM-Skalierungsgruppe mit weniger als zwei virtuellen Computern wäre, wenn Sie sich weniger Gedanken um die Verfügbarkeit machen, sondern eher auf die Verwendung einer Verfügbarkeitsgruppe mit diskreten virtuellen Computern Wert legen. VM-Skalierungsgruppen ermöglichen die Verwendung undifferenzierter, austauschbarer Computeeinheiten. Diese Einheitlichkeit ist ein wichtiges Unterscheidungsmerkmal von VM-Skalierungsgruppen im Vergleich zu Verfügbarkeitsgruppen. Bei vielen zustandslosen Workloads werden keine einzelnen Einheiten nachverfolgt. Sie können auf eine einzelne Computeeinheit herunterskalieren, wenn die Workload zurückgeht, und wieder auf viele Computeeinheiten hochskalieren, wenn sich die Workload erhöht.
 
 ### <a name="how-do-i-change-the-number-of-vms-in-a-virtual-machine-scale-set"></a>Wie ändere ich die Anzahl von virtuellen Computern in einer VM-Skalierungsgruppe?
 
@@ -639,9 +641,11 @@ Ja. Sie können einen virtuellen Computer mittels Reimaging zurücksetzen, ohne 
 ### <a name="is-it-possible-to-integrate-scale-sets-with-azure-monitor-logs"></a>Ist es möglich, Skalierungsgruppen in Azure Monitor-Protokolle zu integrieren?
 
 Ja, Sie können dazu die Azure Monitor-Erweiterung auf den virtuellen Computern der Skalierungsgruppen installieren. Hier folgt ein Beispiel für die Azure-Befehlszeilenschnittstelle:
-```
+
+```azurecli
 az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group Team-03 --vmss-name nt01 --settings "{'workspaceId': '<your workspace ID here>'}" --protected-settings "{'workspaceKey': '<your workspace key here'}"
 ```
+
 Die erforderlichen Werte für „workspaceId“ und „workspaceKey“ finden Sie im Log Analytics-Arbeitsbereich im Azure-Portal. Klicken Sie auf der Übersichtsseite auf die Kachel „Einstellungen“. Klicken Sie oben auf die Registerkarte „Verbundene Datenquellen“.
 
 > [!NOTE]
@@ -696,7 +700,7 @@ Die Eigenschaft kann auf **false** festgelegt werden. Bei kleinen VM-Skalierungs
 Der Hauptunterschied zwischen dem Löschen eines virtuellen Computers in einer VM-Skalierungsgruppe und dem Aufheben der Zuordnung des virtuellen Computers besteht darin, dass bei `deallocate` die virtuellen Festplatten (Virtual Hard Disks, VHDs) nicht gelöscht werden. Das Ausführen von `stop deallocate` ist mit Speicherkosten verbunden. Im Anschluss finden Sie Gründe für die Verwendung der einzelnen Verfahren:
 
 - Sie möchten keine Computekosten mehr bezahlen, aber den Datenträgerzustand der virtuellen Computer beibehalten.
-- Sie möchten eine Gruppe virtueller Computer schneller starten als sich eine VM-Skalierungsgruppe horizontal hochskalieren lässt.
+- Sie möchten eine Gruppe virtueller Computer schneller starten als sich eine VM-Skalierungsgruppe aufskalieren lässt.
   - Im Zusammenhang mit diesem Szenario: Sie haben ggf. eine eigene Engine für die automatische Skalierung erstellt und möchten eine schnellere End-to-End-Skalierung erreichen.
 - Sie verfügen über eine VM-Skalierungsgruppe, die ungleichmäßig auf Fehler- oder Updatedomänen verteilt ist. Dieser Fall kann eintreten, wenn Sie selektiv virtuelle Computer gelöscht haben oder virtuelle Computer nach einer Überbereitstellung gelöscht wurden. Wenn Sie `stop deallocate` und anschließend `start` für die VM-Skalierungsgruppe ausführen, werden die virtuellen Computer gleichmäßig auf Fehler- oder Updatedomänen verteilt.
 

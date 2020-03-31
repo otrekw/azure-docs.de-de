@@ -12,17 +12,17 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 50ab4b0f1e676ffcba0ce69ab6aa957e4c77ab88
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71058151"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Behebung von Problemen mit Speicherressourcen-Löschfehlern
 
 In bestimmten Szenarios könnten Sie auf einen der folgenden Fehler treffen, wenn Sie versuchen, ein Azure-Speicherkonto, einen Container oder ein Blob in einer Azure Resource Manager-Bereitstellung zu löschen:
 
-> **Fehler beim Löschen von Speicherkonto 'StorageAccountName'. Fehler Das Speicherkonto kann nicht gelöscht werden, da zugehörige Artefakte gerade verwendet werden.**
+> **Fehler beim Löschen von Speicherkonto 'StorageAccountName'. Error: Das Speicherkonto kann nicht gelöscht werden, da zugehörige Artefakte gerade verwendet werden.**
 > 
 > **Fehler beim Löschen von # von # Container(n):<br>vhds: Es ist derzeit eine Lease für den Container vorhanden, und in der Anforderung wurde keine Lease-ID angegeben.**
 > 

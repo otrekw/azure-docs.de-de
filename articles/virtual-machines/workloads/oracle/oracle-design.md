@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
 ms.openlocfilehash: c2c2d1a9affe13d485bfeef52c781ed259b53bc8
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70100128"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Entwerfen und Implementieren einer Oracle-Datenbank in Azure
@@ -52,7 +52,7 @@ Die folgende Tabelle enthält einige der Unterschiede zwischen einer lokalen Imp
 > | **Geplante Wartung** |Patchen/Upgrades|[Verfügbarkeitsgruppen](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (Patchen/Upgrades werden von Azure verwaltet) |
 > | **Ressource** |Dediziert  |Für andere Clients freigegeben|
 > | **Regionen** |Rechenzentren |[Regionspaare](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
-> | **Speicher** |SAN-/Physische Datenträger |[Von Azure verwalteter Speicher](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
+> | **Storage** |SAN-/Physische Datenträger |[Von Azure verwalteter Speicher](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
 > | **Skalieren** |Vertikale Skalierung |Horizontale Skalierung|
 
 

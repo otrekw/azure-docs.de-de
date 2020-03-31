@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 53ffc6dd36dbf8588b5e1eb26b461e22c7445092
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 9f4b9d53aaa1cac17fbaae4b638e144654fad4e5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747685"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535628"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Erstellen einer Oracle-Datenbank auf einem virtuellem Azure-Computer
 
@@ -27,7 +27,7 @@ Diese Anleitung enthält Details zur Verwendung der Azure CLI zum Bereitstellen 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -35,9 +35,10 @@ Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group) eine Ress
 
 Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
+
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
 
 Verwenden Sie zum Erstellen eines virtuellen Computers (VM) den Befehl [az vm create](/cli/azure/vm). 
@@ -56,7 +57,7 @@ az vm create \
 
 Nach der Erstellung des virtuellen Computers zeigt die Azure CLI Informationen an, die den Informationen im folgenden Beispiel ähneln. Beachten Sie den Wert für `publicIpAddress`. Diese Adresse wird verwendet, um auf den virtuellen Computer zuzugreifen.
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/{snip}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -73,7 +74,7 @@ Nach der Erstellung des virtuellen Computers zeigt die Azure CLI Informationen a
 
 Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung mit dem virtuellen Computer. Ersetzen Sie die IP-Adresse durch den Wert für `publicIpAddress` Ihres virtuellen Computers.
 
-```bash 
+```bash
 ssh azureuser@<publicIpAddress>
 ```
 
@@ -90,7 +91,7 @@ Die Oracle-Software ist bereits im Marketplace-Image installiert. Erstellen Sie 
 
     Die Ausgabe sieht in etwa wie folgt aus:
 
-    ```bash
+    ```output
     Copyright (c) 1991, 2014, Oracle.  All rights reserved.
 
     Starting /u01/app/oracle/product/12.1.0/dbhome_1/bin/tnslsnr: please wait...
@@ -148,6 +149,7 @@ Bevor Sie eine Verbindung herstellen, müssen Sie zwei Umgebungsvariablen festle
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
+
 Sie können ORACLE_HOME- und ORACLE_SID-Variablen auch der BASHRC-Datei hinzufügen. So werden die Umgebungsvariablen für zukünftige Anmeldungen gespeichert. Bestätigen Sie mithilfe des Editors Ihrer Wahl, dass die folgenden Anweisungen zur `~/.bashrc`-Datei hinzugefügt wurden.
 
 ```bash
@@ -181,7 +183,7 @@ Damit ein GUI-Verwaltungstool verwendet werden kann, um die Datenbank zu untersu
 
     Die Ausgabe sieht in etwa wie folgt aus:
 
-    ```bash
+    ```output
       CON_ID NAME                           OPEN_MODE 
       ----------- ------------------------- ---------- 
       2           PDB$SEED                  READ ONLY 
@@ -202,6 +204,7 @@ Sie müssen `quit` zum Beenden der sqlplus-Sitzung und `exit` zum Abmelden des O
 Die Oracle-Datenbank wird standardmäßig nicht automatisch gestartet, wenn Sie den virtuellen Computer neu starten. Melden Sie sich zuerst als Root-Benutzer an, um für die Oracle-Datenbank das automatische Starten einzurichten. Erstellen und aktualisieren Sie anschließend einige Systemdateien.
 
 1. Anmelden als Root-Benutzer
+
     ```bash
     sudo su -
     ```
@@ -214,7 +217,7 @@ Die Oracle-Datenbank wird standardmäßig nicht automatisch gestartet, wenn Sie 
 
 3.  Erstellen Sie eine Datei namens `/etc/init.d/dbora`, und fügen Sie die folgende Inhalte ein:
 
-    ```
+    ```bash
     #!/bin/sh
     # chkconfig: 345 99 10
     # Description: Oracle auto start-stop script.
@@ -304,7 +307,7 @@ Abschließend müssen einige externe Endpunkte konfiguriert werden. Beenden Sie 
 
 4.  Stellen Sie eine Verbindung mit EM Express aus Ihrem Browser her. Stellen Sie sicher, dass Ihr Browser mit EM Express kompatibel ist (Eine Flash-Installation ist erforderlich). 
 
-    ```
+    ```https
     https://<VM ip address or hostname>:5502/em
     ```
 
@@ -316,7 +319,7 @@ Sie können sich mit dem **SYS**-Konto anmelden und das Kontrollkästchen **as s
 
 Wenn Sie die Untersuchung Ihrer ersten Oracle-Datenbank unter Azure abgeschlossen haben und die VM nicht länger benötigt wird, können Sie den Befehl [az group delete](/cli/azure/group) verwenden, um die Ressourcengruppe, die VM und alle dazugehörigen Ressourcen zu entfernen.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 

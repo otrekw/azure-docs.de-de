@@ -17,11 +17,11 @@ ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e50733c843dfd21e35572f00fc6690e1e84aba97
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617355"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235886"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>SAP NetWeaver-HA-Installation auf einem Windows-Failovercluster und freigegebenen Datenträger für eine SAP ASCS/SCS-Instanz in Azure
 
@@ -165,7 +165,7 @@ Es sind keine Besonderheiten zu berücksichtigen, wenn unterschiedliche DBMS-Die
 >
 >
 
-## <a name="31c6bd4f-51df-4057-9fdf-3fcbc619c170"></a>Installieren von SAP mit einer ASCS/SCS-Hochverfügbarkeitsinstanz
+## <a name="install-sap-with-a-high-availability-ascsscs-instance"></a><a name="31c6bd4f-51df-4057-9fdf-3fcbc619c170"></a>Installieren von SAP mit einer ASCS/SCS-Hochverfügbarkeitsinstanz
 
 > [!IMPORTANT]
 > Achten Sie darauf, nicht die Auslagerungsdatei auf von SIOS DataKeeper gespiegelten Volumes zu platzieren. DataKeeper unterstützt keine gespiegelten Volumes. Belassen Sie die Auslagerungsdatei auf dem temporären Laufwerk D eines virtuellen Azure-Computers (dies ist auch die Standardeinstellung). Wenn sie sich noch nicht dort befindet, verschieben Sie die Windows-Auslagerungsdatei auf Laufwerk D des virtuellen Azure-Computers.
@@ -180,7 +180,7 @@ Das Installieren von SAP mit einer ASCS/SCS-Instanz mit hoher Verfügbarkeit umf
 * Hinzufügen eines Testports
 * Öffnen des Windows-Firewall-Testports
 
-### <a name="a97ad604-9094-44fe-a364-f89cb39bf097"></a>Erstellen eines virtuellen Hostnamens für die SAP ASCS/SCS-Clusterinstanz
+### <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a><a name="a97ad604-9094-44fe-a364-f89cb39bf097"></a>Erstellen eines virtuellen Hostnamens für die SAP ASCS/SCS-Clusterinstanz
 
 1. Erstellen Sie im Windows-DNS-Manager einen DNS-Eintrag für den virtuellen Hostnamen der ASCS/SCS-Instanz.
 
@@ -201,7 +201,7 @@ Das Installieren von SAP mit einer ASCS/SCS-Instanz mit hoher Verfügbarkeit umf
 
    _**Abbildung 2:** Neuer virtueller Name und TCP/IP-Adresse für die SAP ASCS/SCS-Clusterkonfiguration_
 
-### <a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a> Installieren des ersten SAP-Clusterknotens
+### <a name="install-the-sap-first-cluster-node"></a><a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a> Installieren des ersten SAP-Clusterknotens
 
 1. Führen Sie die Option für den ersten Clusterknoten auf Clusterknoten A aus, z.B. auf dem Host „pr1-ascs-0“.
 2. Wählen Sie Folgendes aus, um für den internen Azure Load Balancer die Standardports beizubehalten:
@@ -219,7 +219,7 @@ Die nächsten Aufgaben sind in der SAP-Dokumentation für die Standardinstallati
 >
 >
 
-### <a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a> Ändern des SAP-Profils der ASCS/SCS-Instanz
+### <a name="modify-the-sap-profile-of-the-ascsscs-instance"></a><a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a> Ändern des SAP-Profils der ASCS/SCS-Instanz
 
 Fügen Sie zuerst einen neuen Profilparameter hinzu. Dieser Profilparameter verhindert das Schließen von Verbindungen zwischen SAP-Workprozessen und dem Enqueue-Server, wenn diese sich zu lange im Leerlauf befinden. Dieses Problem wurde bereits unter [Hinzufügen von Registrierungseinträgen auf beiden Clusterknoten für eine SAP ASCS/SCS-Instanz][sap-ha-guide-8.11] erwähnt. In diesem Abschnitt haben wir auch zwei Änderungen an grundlegenden TCP/IP-Verbindungsparametern vorgenommen. In einem zweiten Schritt müssen Sie den Enqueue-Server für das Senden eines `keep_alive`-Signals konfigurieren, damit die Verbindungen nicht den Schwellenwert für den Leerlauf des internen Azure Load Balancers erreichen.
 
@@ -240,7 +240,7 @@ So ändern Sie das SAP-Profil der ASCS/SCS-Instanz
 
 2. Starten Sie die SAP ASCS/SCS-Instanz neu, um die Änderungen zu übernehmen.
 
-### <a name="10822f4f-32e7-4871-b63a-9b86c76ce761"></a> Hinzufügen eines Testports
+### <a name="add-a-probe-port"></a><a name="10822f4f-32e7-4871-b63a-9b86c76ce761"></a> Hinzufügen eines Testports
 
 Nutzen Sie die Testfunktionalität des internen Lastenausgleichs, damit die gesamte Clusterkonfiguration mit Azure Load Balancer funktioniert. Der interne Azure Load Balancer verteilt in der Regel die eingehende Workload gleichmäßig auf die beteiligten virtuellen Computer.
 
@@ -340,7 +340,7 @@ So fügen Sie einen Testport hinzu
 
    _**Abbildung 4:** Testen des Clusterports nach dem Festlegen des neuen Werts_
 
-### <a name="4498c707-86c0-4cde-9c69-058a7ab8c3ac"></a> Öffnen des Windows-Firewall-Testports
+### <a name="open-the-windows-firewall-probe-port"></a><a name="4498c707-86c0-4cde-9c69-058a7ab8c3ac"></a> Öffnen des Windows-Firewall-Testports
 
 Öffnen Sie einen Windows-Firewall-Testport auf beiden Clusterknoten. Verwenden Sie das folgende Skript, um einen Windows-Firewall-Testport zu öffnen. Aktualisieren Sie die PowerShell-Variablen für Ihre Umgebung.
 
@@ -352,15 +352,15 @@ So fügen Sie einen Testport hinzu
 
 **ProbePort** wurde auf **62000** festgelegt. Sie können nun auf die Dateifreigabe „\\\ascsha-clsap\sapmnt“ von anderen Hosts zugreifen, z.B. „ascsha-dbas“.
 
-## <a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a> Installieren der Datenbankinstanz
+## <a name="install-the-database-instance"></a><a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a> Installieren der Datenbankinstanz
 
 Führen Sie für die Installation der Datenbankinstanz die in der SAP-Installationsdokumentation beschriebene Vorgehensweise durch.
 
-## <a name="8a276e16-f507-4071-b829-cdc0a4d36748"></a> Installieren des zweiten Clusterknotens
+## <a name="install-the-second-cluster-node"></a><a name="8a276e16-f507-4071-b829-cdc0a4d36748"></a> Installieren des zweiten Clusterknotens
 
 Führen Sie zum Installieren des zweiten Clusters die im SAP-Installationshandbuch beschriebenen Schritte aus.
 
-## <a name="094bc895-31d4-4471-91cc-1513b64e406a"></a> Ändern des Starttyps der Windows-Dienstinstanz für SAP ERS
+## <a name="change-the-start-type-of-the-sap-ers-windows-service-instance"></a><a name="094bc895-31d4-4471-91cc-1513b64e406a"></a> Ändern des Starttyps der Windows-Dienstinstanz für SAP ERS
 
 Ändern Sie den Starttyp der Windows-Dienste für SAP ERS auf beiden Clusterknoten in **Automatisch (Verzögerter Start)** .
 
@@ -368,11 +368,11 @@ Führen Sie zum Installieren des zweiten Clusters die im SAP-Installationshandbu
 
 _**Abbildung 5:** Ändern des Starttyps der SAP ERS-Instanz in „Automatisch (Verzögerter Start)“_
 
-## <a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a> Installieren des primären SAP-Anwendungsservers
+## <a name="install-the-sap-primary-application-server"></a><a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a> Installieren des primären SAP-Anwendungsservers
 
 Installieren Sie die PAS-Instanz (primärer Anwendungsserver) \<SID\>-di-0 auf dem virtuellen Computer, den Sie als Host für den PAS vorgesehen haben. Es gibt keine Abhängigkeiten in Azure. Es gibt keine DataKeeper-spezifischen Einstellungen.
 
-## <a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a> Installieren des zusätzlichen SAP-Anwendungsservers
+## <a name="install-the-sap-additional-application-server"></a><a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a> Installieren des zusätzlichen SAP-Anwendungsservers
 
 Installieren Sie einen zusätzlichen SAP-Anwendungsserver (Additional Application Server, AAS) auf allen virtuellen Computern, die Sie als Hosts von SAP-Anwendungsserverinstanzen festgelegt haben. Beispielsweise auf \<SID\>-di-1 bis \<SID\>-di-&lt;n&gt;.
 
@@ -381,10 +381,10 @@ Installieren Sie einen zusätzlichen SAP-Anwendungsserver (Additional Applicatio
 >
 
 
-## <a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a> Testen des Failovers der SAP ASCS/SCS-Instanz und der SIOS-Replikation
+## <a name="test-the-sap-ascsscs-instance-failover-and-sios-replication"></a><a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a> Testen des Failovers der SAP ASCS/SCS-Instanz und der SIOS-Replikation
 Mit dem Failovercluster-Manager und dem SIOS DataKeeper-Tool für die Verwaltung und Konfiguration können Sie das Failover für eine SAP ASCS/SCS-Instanz und die SIOS-Datenträgerreplikation ganz einfach testen und überwachen.
 
-### <a name="65fdef0f-9f94-41f9-b314-ea45bbfea445"></a> Die SAP ASCS/SCS-Instanz wird auf Clusterknoten A ausgeführt
+### <a name="sap-ascsscs-instance-is-running-on-cluster-node-a"></a><a name="65fdef0f-9f94-41f9-b314-ea45bbfea445"></a> Die SAP ASCS/SCS-Instanz wird auf Clusterknoten A ausgeführt
 
 Die Clustergruppe „SAP PR1“ wird auf dem Clusterknoten A ausgeführt, z.B. auf „pr1-ascs-0“. Weisen Sie den freigegebenen Datenträger S, der Teil der Clustergruppe SAP PR1 ist und von der ASCS/SCS-Instanz verwendet wird, dem Clusterknoten A zu. 
 
@@ -398,7 +398,7 @@ Im SIOS DataKeeper-Tool für die Verwaltung und Konfiguration können Sie erkenn
 
 _**Abbildung 7:** Replizieren des lokalen Volumes von Clusterknoten A auf Clusterknoten B in SIOS DataKeeper_
 
-### <a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a> Failover von Knoten A auf Knoten B
+### <a name="failover-from-node-a-to-node-b"></a><a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a> Failover von Knoten A auf Knoten B
 
 1. Wählen Sie eine dieser Optionen, um ein Failover der SAP-Clustergruppe \<SID\> von Clusterknoten A auf Clusterknoten B auszulösen:
    - Failovercluster-Manager  

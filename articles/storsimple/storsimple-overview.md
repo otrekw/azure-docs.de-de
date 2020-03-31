@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
 ms.openlocfilehash: 2a6650cac975c575415a329361da00d4fbfcaa9d
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68965112"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000-Serie: eine Hybridcloud-Speicherlösung
@@ -39,7 +39,7 @@ Zusätzlich zur Speicherverwaltung können Sie mithilfe der StorSimple-Funktione
 ## <a name="why-use-storsimple"></a>Gründe für die Verwendung von StorSimple
 In der folgenden Tabelle werden einige der wichtigsten Vorteile von Microsoft Azure StorSimple beschrieben.
 
-| Feature | Vorteil |
+| Funktion | Vorteil |
 | --- | --- |
 | Transparente Integration |Verwendet das iSCSI-Protokoll, um Datenspeicher unsichtbar miteinander zu verknüpfen. Dies sorgt dafür, dass Daten, die in der Cloud, im Datencenter oder auf Remoteservern gespeichert sind, dem Anschein nach an einem zentralen Speicherort gespeichert werden. |
 | Reduzierte Speicherkosten |Reserviert ausreichend lokalen oder Cloudspeicher, um aktuelle Anforderungen zu erfüllen, und erweitert Cloudspeicher nur bei Bedarf. Außerdem werden Speicheranforderungen und -kosten durch die Beseitigung redundanter Versionen der gleichen Daten (Deduplizierung) und eine Komprimierung noch weiter verringert. |
@@ -208,7 +208,7 @@ Durch Deduplizierung wird die Datenmenge verringert, indem Redundanz im gespeich
 ## <a name="storsimple-workload-summary"></a>StorSimple-Workload – Übersicht
 In der folgenden Tabelle finden Sie eine Übersicht über die unterstützten StorSimple-Workloads.
 
-| Szenario | Workload | Unterstützt | Einschränkungen | Version |
+| Szenario | Workload | Unterstützt | Beschränkungen | Version |
 | --- | --- | --- | --- | --- |
 | Zusammenarbeit |Dateifreigabe |Ja | |Alle Versionen |
 | Zusammenarbeit |Verteilte Dateifreigabe |Ja | |Alle Versionen |
@@ -229,13 +229,13 @@ Die folgenden Workloads werden von Geräten der StorSimple 8000-Serie nicht unte
 * VDI
 * Oracle
 * SAP
-* Große Datenmengen
+* Big Data
 * Inhaltsverteilung
 * Starten von SCSI
 
 Nachfolgend finden Sie eine Liste der von StorSimple unterstützten Infrastrukturkomponenten.
 
-| Szenario | Workload | Unterstützt | Einschränkungen | Version |
+| Szenario | Workload | Unterstützt | Beschränkungen | Version |
 | --- | --- | --- | --- | --- |
 | Allgemein |ExpressRoute |Ja | |Alle Versionen |
 | Allgemein |DataCore FC |Ja* |Unterstützt mit DataCore SANsymphony |Alle Versionen |

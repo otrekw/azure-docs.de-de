@@ -5,18 +5,18 @@ services: virtual-machines-linux
 author: MashaMSFT
 manager: craigg
 ms.date: 10/22/2019
-ms.topic: conceptual
 tags: azure-service-management
+ms.topic: conceptual
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 85d2396a05e7496b56bd83bd834150aa6d864c62
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 43ba4eed4dcfd6d8e86c21f1ee5214108c44a8c2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882692"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060229"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Bereitstellen eines virtuellen SQL Server-Computers über das Azure-Portal
 
@@ -37,7 +37,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen, bevor Sie beginnen.
 
-## <a id="create"></a> Erstellen eines virtuellen Linux-Computers mit SQL Server
+## <a name="create-a-linux-vm-with-sql-server-installed"></a><a id="create"></a> Erstellen eines virtuellen Linux-Computers mit SQL Server
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -101,7 +101,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 1. Klicken Sie auf **Überprüfen + erstellen**.
 1. Klicken Sie im Bereich **Bewerten + erstellen** auf **Erstellen**.
 
-## <a id="connect"></a> Herstellen einer Verbindung mit dem virtuellen Linux-Computer
+## <a name="connect-to-the-linux-vm"></a><a id="connect"></a> Herstellen einer Verbindung mit dem virtuellen Linux-Computer
 
 Wenn Sie bereits über eine BASH-Shell verfügen, verwenden Sie den Befehl **ssh**, um eine Verbindung mit dem virtuellen Azure-Computer herzustellen. Ersetzen Sie im folgenden Befehl den VM-Benutzernamen und die IP-Adresse, um eine Verbindung mit Ihrem virtuellen Linux-Computer herzustellen.
 
@@ -128,7 +128,7 @@ Weitere Informationen zum Herstellen einer Verbindung mit virtuellen Linux-Compu
 > [!Note]
 > Falls eine PuTTY-Sicherheitswarnung angezeigt wird, dass der Hostschlüssel des Servers nicht in der Registrierung zwischengespeichert wird, wählen Sie eine der folgenden Optionen aus. Wenn Sie diesem Host vertrauen, wählen Sie **Ja** aus, um den Schlüssel dem Cache von PuTTy hinzuzufügen und die Verbindungsherstellung fortzusetzen. Wenn Sie die Verbindung nur einmal herstellen möchten, ohne den Schlüssel dem Cache hinzuzufügen, wählen Sie **Nein** aus. Wenn Sie diesem Host nicht vertrauen, wählen Sie **Abbrechen** aus, um die Verbindungsherstellung abzubrechen.
 
-## <a id="password"></a> Ändern des Systemadministratorkennworts
+## <a name="change-the-sa-password"></a><a id="password"></a> Ändern des Systemadministratorkennworts
 
 Der neue virtuelle Computer installiert SQL Server mit einem zufälligen Systemadministratorkennwort. Setzen Sie dieses Kennwort zurück, bevor Sie mit der Systemadministratoranmeldung eine Verbindung mit SQL Server herstellen.
 
@@ -153,7 +153,7 @@ Der neue virtuelle Computer installiert SQL Server mit einem zufälligen Systema
 
 Einige [SQL Server-Pakete](sql-server-linux-virtual-machines-overview.md#packages) werden standardmäßig installiert. Hierzu zählt auch das Paket mit den SQL Server-Befehlszeilentools. Das Toolpaket enthält die Tools **sqlcmd** und **bcp**. Der Einfachheit halber können Sie optional den Toolpfad (`/opt/mssql-tools/bin/`) Ihrer **PATH**-Umgebungsvariablen hinzufügen.
 
-1. Führen Sie die folgenden Befehle aus, um **PATH** sowohl für Anmeldesitzungen als auch für interaktive Sitzungen/Sitzungen ohne Anmeldung zu ändern:
+1. Führen Sie die folgenden Befehle aus, um **PATH** sowohl für Anmeldesitzungen als auch für interaktive Sitzungen oder Sitzungen ohne Anmeldung zu ändern:
 
    ```bash
    echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
@@ -161,7 +161,7 @@ Einige [SQL Server-Pakete](sql-server-linux-virtual-machines-overview.md#package
    source ~/.bashrc
    ```
 
-## <a id="remote"></a> Konfigurieren für Remoteverbindungen
+## <a name="configure-for-remote-connections"></a><a id="remote"></a> Konfigurieren für Remoteverbindungen
 
 Wenn Sie mit SQL Server auf dem virtuellen Azure-Computer eine Remoteverbindung herstellen möchten, müssen Sie in der Netzwerksicherheitsgruppe eine Eingangsregel konfigurieren. Die Regel lässt Datenverkehr an dem Port zu, an dem SQL Server lauscht (standardmäßig 1433). In den folgenden Schritten wird die Vorgehensweise mit dem Azure-Portal gezeigt:
 

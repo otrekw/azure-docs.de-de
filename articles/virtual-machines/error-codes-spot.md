@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/20/2019
 ms.author: cynthn
 ms.openlocfilehash: 1863c510967dcf80044d768aee1a37643a068ce4
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77115855"
 ---
 # <a name="preview-error-messages-for-spot-vms-and-scale-sets"></a>Vorschau: Fehlermeldungen für Spot-VMs und Skalierungsgruppen
@@ -26,7 +26,7 @@ ms.locfileid: "77115855"
 Im Folgenden finden Sie einige mögliche Fehlercodes, die Sie bei der Verwendung von Spot-VMs und Skalierungsgruppen erhalten können.
 
 
-| Key | `Message` | BESCHREIBUNG |
+| Schlüssel | `Message` | BESCHREIBUNG |
 |-----|---------|-------------|
 | SkuNotAvailable | Der angeforderte Tarif für die Ressource \<Ressource\> ist im Speicherort \<Speicherort\> für das Abonnement \<Abonnement-ID\> derzeit nicht verfügbar. Versuchen Sie es mit einem anderen Tarif, oder führen Sie die Bereitstellung an einem anderen Standort durch. | An diesem Standort ist nicht genügend Azure Spot-Kapazität vorhanden, um Ihre VM- oder Skalierungsgruppeninstanz zu erstellen. |
 | EvictionPolicyCanBeSetOnlyOnAzureSpotVirtualMachines  |  Die Entfernungsrichtlinie kann nur für Azure Spot-VMs festgelegt werden. | Diese VM ist keine Spot-VM, sodass Sie die Entfernungsrichtlinie nicht festlegen können. |

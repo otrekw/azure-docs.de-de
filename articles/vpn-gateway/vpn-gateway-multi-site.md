@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/11/2020
 ms.author: yushwang
 ms.openlocfilehash: a95cd6ea85a16b0e0bf5f67f5dfc20d57f11463b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198093"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>Hinzufügen einer Standort-zu-Standort-Verbindung mit einem VNet über eine vorhandene VPN-Gatewayverbindung (klassisch)
@@ -74,7 +74,7 @@ Sie verfügen bereits über ein Standort-zu-Standort-VPN mit einem Gateway mit d
 1. Erstellen Sie Ihr virtuelles Site-to-Site-Netzwerk mithilfe der folgenden Anleitung: [Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung](vpn-gateway-site-to-site-create.md).  
 2. Konfigurieren Sie mithilfe der folgenden Anleitung ein Gateway mit dynamischem Routing: [Konfigurieren eines VPN-Gateways](vpn-gateway-configure-vpn-gateway-mp.md). Denken Sie daran, **dynamisches Routing** als Gatewaytyp auszuwählen.
 
-## <a name="export"></a>2. Exportieren der Netzwerkkonfigurationsdatei
+## <a name="2-export-the-network-configuration-file"></a><a name="export"></a>2. Exportieren der Netzwerkkonfigurationsdatei
 
 Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten. Verwenden Sie den folgenden Befehl, um zur Dienstverwaltung zu wechseln:
 

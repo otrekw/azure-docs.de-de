@@ -5,15 +5,15 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/26/2019
+ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 99d52077d84ab8a9495f92d9c75fb742ff988ba8
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: d2990c82efbcdac7d453f920301787b8c83db1e9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128275"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295374"
 ---
 # <a name="connect-with-the-android-client"></a>Herstellen einer Verbindung mit dem Android-Client
 
@@ -26,7 +26,7 @@ Mit unserem herunterladbaren Client können Sie über Ihr Android-Gerät auf Win
 
 ## <a name="install-the-android-client"></a>Installieren des Android-Clients
 
-Beginnen Sie mit dem [Herunterladen](https://play.google.com/store/apps/details?id=com.microsoft.rdc.android) des Clients, und installieren Sie ihn auf Ihrem Android-Gerät.
+Beginnen Sie mit dem [Herunterladen](https://play.google.com/store/apps/details?id=com.microsoft.rdc.androidx) des Clients, und installieren Sie ihn auf Ihrem Android-Gerät.
 
 ## <a name="subscribe-to-a-feed"></a>Abonnieren eines Feeds
 

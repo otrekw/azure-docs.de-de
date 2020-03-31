@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 447e8a67cedbb8f78e4db9602f603fefd382693c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: f6dbdb54c1c5a5d477c3ccb988963758faab83b0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162938"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79140013"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Verwenden der Follower-Datenbank zum Anfügen von Datenbanken in Azure Data Explorer
 
@@ -164,7 +164,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine Datenbank mithilfe einer [Azure R
         },
         "defaultPrincipalsModificationKind": {
             "type": "string",
-            "defaultValue": "",
+            "defaultValue": "Union",
             "metadata": {
                 "description": "The default principal modification kind."
             }
@@ -180,13 +180,10 @@ In diesem Abschnitt erfahren Sie, wie Sie eine Datenbank mithilfe einer [Azure R
     "variables": {},
     "resources": [
         {
-            "name": "[parameters('attachedDatabaseConfigurationsName')]",
+            "name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
             "type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
             "apiVersion": "2019-09-07",
             "location": "[parameters('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Kusto/clusters', parameters('followerClusterName'))]"
-            ],
             "properties": {
                 "databaseName": "[parameters('databaseName')]",
                 "clusterResourceId": "[parameters('leaderClusterResourceId')]",
@@ -211,7 +208,7 @@ Sie können die Azure Resource Manager-Vorlage über das [Azure-Portal](https://
 |Datenbankname     |      Der Name der zu folgenden Datenbank. Wenn Sie allen Datenbanken des Leaders folgen möchten, verwenden Sie „*“.   |
 |Leader-Clusterressourcen-ID    |   Die Ressourcen-ID des Leader-Clusters.      |
 |Standardänderungsart für Prinzipale    |   Die Standardänderungsart für Prinzipale. Dies kann `Union`, `Replace` oder `None` sein. Weitere Informationen zur Standardänderungsart für Prinzipale finden Sie unter [Steuerungsbefehl für Prinzipaländerungsart](/azure/kusto/management/cluster-follower?branch=master#alter-follower-database-principals-modification-kind).      |
-|Location   |   Der Speicherort aller Ressourcen. Der Leader und der Follower müssen sich am gleichen Speicherort befinden.       |
+|Position   |   Der Speicherort aller Ressourcen. Der Leader und der Follower müssen sich am gleichen Speicherort befinden.       |
  
 ### <a name="verify-that-the-database-was-successfully-attached"></a>Überprüfen, ob die Datenbank erfolgreich angehängt wurde
 

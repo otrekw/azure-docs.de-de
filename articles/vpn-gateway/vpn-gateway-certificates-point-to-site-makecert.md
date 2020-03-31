@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: cherylmc
 ms.openlocfilehash: ad2ab31e6771efc54238d5747863fa2a9bb2f356
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75833976"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>Generieren und Exportieren von Zertifikaten für Point-to-Site-Verbindungen mithilfe von MakeCert
@@ -22,7 +22,7 @@ Wir empfehlen, Zertifikate unter Verwendung der [Windows 10-PowerShell-Schritte]
 
 * MakeCert ist veraltet. Das bedeutet, dass dieses Tool jederzeit entfernt werden kann. Auf Zertifikate, die Sie bereits mithilfe von MakeCert generiert haben, hat die Entfernung von MakeCert keine Auswirkungen. MakeCert wird nur zum Generieren der Zertifikate verwendet, nicht als Überprüfungsmechanismus.
 
-## <a name="rootcert"></a>Erstellen eines selbstsignierten Stammzertifikats
+## <a name="create-a-self-signed-root-certificate"></a><a name="rootcert"></a>Erstellen eines selbstsignierten Stammzertifikats
 
 In den folgenden Schritten wird das Erstellen eines selbstsignierten Zertifikats mit MakeCert beschrieben. Diese Schritte gelten nicht spezifisch für ein Bereitstellungsmodell. Sie sind für das Ressourcen-Manager-Modell und das klassische Modell gültig.
 
@@ -38,7 +38,7 @@ In den folgenden Schritten wird das Erstellen eines selbstsignierten Zertifikats
    makecert -sky exchange -r -n "CN=P2SRootCert" -pe -a sha256 -len 2048 -ss My
    ```
 
-## <a name="cer"></a>Exportieren des öffentlichen Schlüssels (CER-Datei)
+## <a name="export-the-public-key-cer"></a><a name="cer"></a>Exportieren des öffentlichen Schlüssels (CER-Datei)
 
 [!INCLUDE [Export public key](../../includes/vpn-gateway-certificates-export-public-key-include.md)]
 
@@ -52,7 +52,7 @@ Möglicherweise möchten Sie das selbstsignierte Stammzertifikat exportieren und
 
 Das selbstsignierte Zertifikat wird nicht direkt auf dem Clientcomputer installiert. Sie müssen aus einem selbstsignierten Zertifikat ein Clientzertifikat generieren. Dieses Clientzertifikat exportieren und installieren Sie auf den Clientcomputern. Die folgenden Schritte gelten nicht für ein spezifisches Bereitstellungsmodell. Sie sind für das Ressourcen-Manager-Modell und das klassische Modell gültig.
 
-### <a name="clientcert"></a>Generieren eines Clientzertifikats
+### <a name="generate-a-client-certificate"></a><a name="clientcert"></a>Generieren eines Clientzertifikats
 
 Auf jedem Clientcomputer, der per Punkt-zu-Standort eine Verbindung mit einem VNet herstellt, muss ein Clientzertifikat installiert sein. Sie generieren ein Clientzertifikat aus dem selbstsignierten Stammzertifikat und exportieren und installieren es anschließend. Wenn das Clientzertifikat nicht installiert ist, tritt bei der Authentifizierung ein Fehler auf. 
 
@@ -69,11 +69,11 @@ Die folgenden Schritte führen Sie durch das Generieren eines Clientzertifikats 
    makecert.exe -n "CN=P2SChildCert" -pe -sky exchange -m 96 -ss My -in "P2SRootCert" -is my -a sha256
    ```
 
-### <a name="clientexport"></a>Exportieren eines Clientzertifikats
+### <a name="export-a-client-certificate"></a><a name="clientexport"></a>Exportieren eines Clientzertifikats
 
 [!INCLUDE [Export client certificate](../../includes/vpn-gateway-certificates-export-client-cert-include.md)]
 
-### <a name="install"></a>Installieren eines exportierten Clientzertifikats
+### <a name="install-an-exported-client-certificate"></a><a name="install"></a>Installieren eines exportierten Clientzertifikats
 
 Informationen zum Installieren eines Clientzertifikats finden Sie unter [Installieren eines Clientzertifikats für Point-to-Site-Verbindungen mit Azure-Zertifikatauthentifizierung](point-to-site-how-to-vpn-client-install-azure-cert.md).
 

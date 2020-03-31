@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/19/2019
-ms.openlocfilehash: f318b373f6a6f46ee3a85703c6099c76568580ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/27/2020
+ms.openlocfilehash: cdb6629441becd0a8356debe3360830ff11a7a9d
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426135"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398423"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Problembehandlung bei Azure Stream Analytics mit Diagnoseprotokollen
 
@@ -117,7 +117,7 @@ Name | BESCHREIBUNG
 `Source` | Name der Auftragseingabe oder -ausgabe, bei der der Fehler aufgetreten ist.
 `Message` | Mit dem Fehler verknüpfte Meldung.
 type | Fehlertyp. Beispiele: **DataConversionError**, **CsvParserError** oder **ServiceBusPropertyColumnMissingError**.
-Data | Enthält Daten, die hilfreich sind, um die Ursache des Fehlers genau zu lokalisieren. Unterliegt je nach Größe Kürzungen.
+Daten | Enthält Daten, die hilfreich sind, um die Ursache des Fehlers genau zu lokalisieren. Unterliegt je nach Größe Kürzungen.
 
 Je nach dem Wert für **operationName** entsprechen Datenfehler folgendem Schema:
 

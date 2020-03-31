@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: cherylmc
 ms.openlocfilehash: 8871e92f0911c4d3cbcc1772bef1daeb5c70b5d7
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74151972"
 ---
 # <a name="troubleshoot-an-azure-ad-authentication-vpn-client"></a>Beheben von Problemen mit einem VPN-Client für die Azure AD-Authentifizierung
 
 Dieser Artikel unterstützt Sie beim Beheben von Problemen mit einem VPN-Client für die Verbindung mit einem virtuellen Netzwerk über ein Point-to-Site-VPN mit Azure Active Directory-Authentifizierung.
 
-## <a name="status"></a>Anzeigen des Statusprotokolls
+## <a name="view-status-log"></a><a name="status"></a>Anzeigen des Statusprotokolls
 
 Überprüfen Sie das Statusprotokoll auf Fehlermeldungen.
 
@@ -28,7 +28,7 @@ Dieser Artikel unterstützt Sie beim Beheben von Problemen mit einem VPN-Client 
 2. Überprüfen Sie die Protokolle auf Fehler, die möglicherweise auf das Problem hinweisen.
 3. Fehlermeldungen werden rot dargestellt.
 
-## <a name="clear"></a>Löschen von Anmeldeinformationen
+## <a name="clear-sign-in-information"></a><a name="clear"></a>Löschen von Anmeldeinformationen
 
 Löschen Sie die Anmeldeinformationen.
 
@@ -39,7 +39,7 @@ Löschen Sie die Anmeldeinformationen.
 3. Versuchen Sie, eine Verbindung herzustellen.
 4. Wenn die Verbindung immer noch fehlerhaft ist, fahren Sie mit dem nächsten Abschnitt fort.
 
-## <a name="diagnostics"></a>Ausführen von Diagnosen
+## <a name="run-diagnostics"></a><a name="diagnostics"></a>Ausführen von Diagnosen
 
 Führen Sie Diagnosen im VPN-Client aus.
 
@@ -55,7 +55,7 @@ Führen Sie Diagnosen im VPN-Client aus.
 3. Wenn einer der Tests zu einem Fehler führt, wenden Sie sich an den Netzwerkadministrator, um das Problem zu beheben.
 4. Im nächsten Abschnitt erfahren Sie, wie Sie bei Bedarf Protokolle sammeln.
 
-## <a name="logfiles"></a>Sammeln von Protokolldateien des Clients
+## <a name="collect-client-log-files"></a><a name="logfiles"></a>Sammeln von Protokolldateien des Clients
 
 Sammeln Sie die Protokolldateien des VPN-Clients. Die Protokolldateien können über eine Methode Ihrer Wahl an den Support oder Ihren Administrator gesendet werden. Dies kann z. B. per E-Mail erfolgen.
 

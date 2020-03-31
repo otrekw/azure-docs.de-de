@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: d8c6b68a38d4b60cf7a3194e6a5ded8804cc416f
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77150169"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Erstellen eines zonenredundanten Gateways für das virtuelle Netzwerk in Azure-Verfügbarkeitszonen
@@ -23,7 +23,7 @@ Sie können VPN- und ExpressRoute-Gateways in Azure-Verfügbarkeitszonen bereits
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-## <a name="variables"></a>1. Deklarieren von Variablen
+## <a name="1-declare-your-variables"></a><a name="variables"></a>1. Deklarieren von Variablen
 
 Deklarieren Sie die gewünschten Variablen. Verwenden Sie das unten gezeigte Beispiel, und ersetzen Sie die Werte nach Bedarf durch Ihre eigenen. Wenn Sie Ihre PowerShell-/Cloud Shell-Sitzung zu einem beliebigen Zeitpunkt während der Übung schließen, kopieren Sie einfach die Werte noch mal, und fügen Sie sie ein, um die Variablen erneut zu deklarieren. Wenn Sie einen Standort angeben, stellen Sie sicher, dass die angegebene Region unterstützt wird. Weitere Informationen finden Sie in den [häufig gestellten Fragen](#faq).
 
@@ -43,7 +43,7 @@ $GwIP1       = "VNet1GWIP"
 $GwIPConf1   = "gwipconf1"
 ```
 
-## <a name="configure"></a>2. Erstellen des virtuellen Netzwerks
+## <a name="2-create-the-virtual-network"></a><a name="configure"></a>2. Erstellen des virtuellen Netzwerks
 
 Erstellen Sie eine Ressourcengruppe.
 
@@ -59,7 +59,7 @@ $besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubnet1 -AddressPrefix $BEPr
 $vnet = New-AzVirtualNetwork -Name $VNet1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNet1Prefix -Subnet $fesub1,$besub1
 ```
 
-## <a name="gwsub"></a>3. Hinzufügen des Gatewaysubnetzes
+## <a name="3-add-the-gateway-subnet"></a><a name="gwsub"></a>3. Hinzufügen des Gatewaysubnetzes
 
 Das Gatewaysubnetz enthält die reservierten IP-Adressen, die von den Diensten des virtuellen Netzwerkgateways verwendet werden. Verwenden Sie die folgenden Beispiele, um ein Gatewaysubnetz hinzufügen und festzulegen:
 
@@ -75,11 +75,11 @@ Legen Sie die Konfiguration des Gatewaysubnetzes für das virtuelle Netzwerk fes
 ```azurepowershell-interactive
 $getvnet | Set-AzVirtualNetwork
 ```
-## <a name="publicip"></a>4. Anfordern einer öffentlichen IP-Adresse
+## <a name="4-request-a-public-ip-address"></a><a name="publicip"></a>4. Anfordern einer öffentlichen IP-Adresse
  
 In diesem Schritt folgen Sie den Anweisungen, die auf das von Ihnen erstellte Gateway zutreffen. Die Auswahl der Zonen, in denen die Gateways bereitgestellt werden, richtet sich nach den Zonen, die für die öffentliche IP-Adresse angegeben wurden.
 
-### <a name="ipzoneredundant"></a>Für zonenredundante Gateways
+### <a name="for-zone-redundant-gateways"></a><a name="ipzoneredundant"></a>Für zonenredundante Gateways
 
 Fordern Sie eine öffentliche IP-Adresse mit einer PublicIpaddress-SKU vom Typ **Standard** an, und geben Sie keine Zone an. In diesem Fall handelt es sich bei der erstellten öffentlichen IP-Adresse vom Typ „Standard“ um eine zonenredundante öffentliche IP-Adresse.   
 
@@ -87,7 +87,7 @@ Fordern Sie eine öffentliche IP-Adresse mit einer PublicIpaddress-SKU vom Typ *
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard
 ```
 
-### <a name="ipzonalgw"></a>Für zonenbasierte Gateways
+### <a name="for-zonal-gateways"></a><a name="ipzonalgw"></a>Für zonenbasierte Gateways
 
 Fordern Sie eine öffentliche IP-Adresse mit einer PublicIpaddress-SKU vom Typ **Standard** an. Geben Sie die Zone an (1, 2 oder 3). Alle Gatewayinstanzen werden in dieser Zone bereitgestellt.
 
@@ -95,14 +95,14 @@ Fordern Sie eine öffentliche IP-Adresse mit einer PublicIpaddress-SKU vom Typ *
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard -Zone 1
 ```
 
-### <a name="ipregionalgw"></a>Für regionsbezogene Gateways
+### <a name="for-regional-gateways"></a><a name="ipregionalgw"></a>Für regionsbezogene Gateways
 
 Fordern Sie eine öffentliche IP-Adresse mit einer PublicIpaddress-SKU vom Typ **Basic** an. In diesem Fall wird das Gateway als regionsbezogenes Gateway bereitgestellt und bietet keine in das Gateway integrierte Zonenredundanz. Die Gatewayinstanzen werden jeweils in beliebigen Zonen erstellt.
 
 ```azurepowershell-interactive
 $pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Dynamic -Sku Basic
 ```
-## <a name="gwipconfig"></a>5. Erstellen der IP-Konfiguration
+## <a name="5-create-the-ip-configuration"></a><a name="gwipconfig"></a>5. Erstellen der IP-Konfiguration
 
 ```azurepowershell-interactive
 $getvnet = Get-AzVirtualNetwork -ResourceGroupName $RG1 -Name $VNet1
@@ -110,7 +110,7 @@ $subnet = Get-AzVirtualNetworkSubnetConfig -Name $GwSubnet1 -VirtualNetwork $get
 $gwipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GwIPConf1 -Subnet $subnet -PublicIpAddress $pip1
 ```
 
-## <a name="gwconfig"></a>6. Erstellen des Gateways
+## <a name="6-create-the-gateway"></a><a name="gwconfig"></a>6. Erstellen des Gateways
 
 Erstellen Sie das virtuelle Netzwerkgateway.
 
@@ -126,7 +126,7 @@ New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 
 New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1AZ
 ```
 
-## <a name="faq"></a>Häufig gestellte Fragen
+## <a name="faq"></a><a name="faq"></a>Häufig gestellte Fragen
 
 ### <a name="what-will-change-when-i-deploy-these-new-skus"></a>Was ändert sich durch die Bereitstellung dieser neuen SKUs?
 

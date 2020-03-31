@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/14/2018
 ms.openlocfilehash: 639901975bbb66b9f410bea297d9e48cd96d6d1b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73822430"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Automatisieren der Replikation von Schemaänderungen in der Azure SQL-Datensynchronisierung
@@ -171,7 +171,7 @@ Durch das Umbenennen von Spalten oder Tabellen wird die Datensynchronisierung an
 
 Für andere Typen von Schemaänderungen – z.B. das Erstellen von gespeicherten Prozeduren oder das Löschen eines Indexes – ist das Aktualisieren des Synchronisierungsschemas nicht erforderlich.
 
-## <a name="troubleshoot"></a> Problembehandlung bei der automatisierten Replikation von Schemaänderungen
+## <a name="troubleshoot-automated-schema-change-replication"></a><a name="troubleshoot"></a> Problembehandlung bei der automatisierten Replikation von Schemaänderungen
 
 Die in diesem Artikel beschriebene Replikationslogik funktioniert in einigen Situationen nicht mehr. Dies ist z.B. der Fall, wenn Sie eine Schemaänderung in einer lokalen Datenbank vorgenommen haben, die in der Azure SQL-Datenbank-Instanz nicht unterstützt wird. Dann schlägt die Synchronisierung der Tabelle der Schemaänderungsnachverfolgung fehl. Dieses Problem muss manuell behoben werden:
 
@@ -199,7 +199,7 @@ Die in diesem Artikel beschriebene Replikationslogik funktioniert in einigen Sit
 
 Wenn Sie die Datensätze in der Tabelle der Schemaänderungsnachverfolgung bereinigen möchten, verwenden Sie DELETE anstelle von TRUNCATE. Führen Sie niemals ein erneutes Seeding für die Identitätsspalte in der Tabelle der Schemaänderungsnachverfolgung mithilfe von DBCC CHECKIDENT aus. Sie können neue Tabellen der Schemaänderungsnachverfolgung erstellen und den Tabellennamen im DDL-Trigger aktualisieren, wenn ein erneutes Seeding erforderlich ist.
 
-## <a name="other"></a> Weitere Überlegungen
+## <a name="other-considerations"></a><a name="other"></a> Weitere Überlegungen
 
 -   Datenbankbenutzer, die die Hub- und Mitgliederdatenbanken konfigurieren, müssen über ausreichende Berechtigungen verfügen, um die Schemaänderungsbefehle auszuführen.
 

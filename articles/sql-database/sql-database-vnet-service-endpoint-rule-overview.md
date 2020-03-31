@@ -11,16 +11,16 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 0562d609231d69d95f1d2b5b838663b704f8f2f3
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 4faead13c10171c31e76fe2dd59be32a93a12f86
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358451"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80124746"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Verwenden von VNET-Dienstendpunkten und -Regeln für Datenbankserver
 
-*VNET-Regeln* sind eine Firewallsicherheitsfunktion, die steuert, ob der Datenbankserver für Ihre Einzeldatenbanken und Ihren Pool für elastische Datenbanken in [Azure SQL-Datenbank](sql-database-technical-overview.md) oder für Ihre Datenbanken in [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) Nachrichten akzeptiert, die von bestimmten Subnetzen in virtuellen Netzwerken gesendet werden. In diesem Artikel wird erklärt, warum VNET-Regeln mitunter die beste Möglichkeit darstellen, Nachrichten an Ihre Azure SQL-Datenbank- und SQL Data Warehouse-Instanz sicher zuzulassen.
+*VNET-Regeln* sind eine Firewallsicherheitsfunktion, die steuert, ob der Datenbankserver für Ihre Einzeldatenbanken und Ihren Pool für elastische Datenbanken in [Azure SQL-Datenbank](sql-database-technical-overview.md) oder für Ihre Datenbanken in [SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) Nachrichten akzeptiert, die von bestimmten Subnetzen in virtuellen Netzwerken gesendet werden. In diesem Artikel wird erklärt, warum VNET-Regeln mitunter die beste Möglichkeit darstellen, Nachrichten an Ihre Azure SQL-Datenbank- und SQL Data Warehouse-Instanz sicher zuzulassen.
 
 > [!IMPORTANT]
 > Dieser Artikel gilt für den Azure SQL-Datenbankserver sowie für Datenbanken von SQL-Datenbank und SQL Data Warehouse, die auf dem Azure SQL-Datenbankserver erstellt werden. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind. Dieser Artikel gilt *nicht* für die Bereitstellungsoption **Verwaltete Instanz** in Azure SQL-Datenbank, da dieser kein Dienstendpunkt zugeordnet ist.

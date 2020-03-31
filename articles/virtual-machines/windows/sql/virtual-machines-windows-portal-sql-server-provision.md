@@ -16,11 +16,11 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 1fdf776570b6f10a363fb98dfe343387d86219d6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350915"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226642"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Bereitstellen eines virtuellen Windows-Computers mit SQL Server im Azure-Portal
 
@@ -33,7 +33,7 @@ Verwenden Sie diesen Leitfaden, um Ihre eigenen virtuellen SQL Server-Computer z
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a id="select"></a> Images im SQL Server-VM-Katalog
+## <a name="sql-server-virtual-machine-gallery-images"></a><a id="select"></a> Images im SQL Server-VM-Katalog
 
 Beim Erstellen eines virtuellen SQL Server-Computers können Sie eines von zahlreichen vorkonfigurierten Images aus dem VM-Katalog auswählen. Die folgenden Schritte veranschaulichen die Auswahl eines SQL Server 2017-Images.
 
@@ -163,7 +163,7 @@ Generell sollten Sie die Sicherheit erhöhen, indem Sie die restriktivste Konnek
 
 
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Authentifizierung
 
 Wenn Sie SQL Server-Authentifizierung benötigen, klicken Sie auf der Registerkarte **SQL Server-Einstellungen** unter **SQL-Authentifizierung** auf **Aktivieren**.
 
@@ -256,7 +256,7 @@ Sie können die Bereitstellung über das Azure-Portal überwachen. Auf der Schal
 > [!NOTE]
 > Damit Sie sich einen Eindruck von Bereitstellungszeiten verschaffen können, habe ich eine SQL-VM für die Region „USA, Osten“ mit Standardeinstellungen bereitgestellt. Die Durchführung dieser Testbereitstellung dauerte ungefähr 12 Minuten. Je nach Region und den gewählten Einstellungen kann es aber sein, dass die Bereitstellung bei Ihnen schneller oder langsamer geht.
 
-## <a id="remotedesktop"></a>Öffnen der VM mit Remotedesktop
+## <a name="open-the-vm-with-remote-desktop"></a><a id="remotedesktop"></a>Öffnen der VM mit Remotedesktop
 
 Führen Sie die folgenden Schritte aus, um mithilfe von Remotedesktop eine Verbindung mit dem virtuellen SQL Server-Computer herzustellen:
 
@@ -266,7 +266,7 @@ Nachdem Sie eine Verbindung mit dem virtuellen SQL Server-Computer hergestellt h
 
 Durch den Zugriff auf den Computer können Sie die Computer- und SQL Server-Einstellungen je nach Ihren Anforderungen direkt ändern. Beispielsweise können Sie die Firewalleinstellungen konfigurieren oder die SQL Server-Konfigurationseinstellungen ändern.
 
-## <a id="connect"></a>Herstellen einer Remoteverbindung mit SQL Server
+## <a name="connect-to-sql-server-remotely"></a><a id="connect"></a>Herstellen einer Remoteverbindung mit SQL Server
 
 In dieser exemplarischen Vorgehensweise haben Sie den Zugriffstyp **Öffentlich** für den virtuellen Computer und die **SQL Server-Authentifizierung** ausgewählt. Mit diesen Einstellungen wurde der virtuelle Computer automatisch so konfiguriert, dass SQL Server-Verbindungen von jedem Client über das Internet zulässig sind (vorausgesetzt, diese verfügen über die richtige SQL-Anmeldung).
 

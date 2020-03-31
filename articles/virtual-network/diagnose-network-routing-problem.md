@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: kumud
 ms.openlocfilehash: 13d74fbb4a7c133ca2365fd2cbfce4b3d2bea72e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75350616"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>Diagnose des Routingproblems einer VM
@@ -85,7 +85,7 @@ In der vorangehenden Ausgabe ist der Netzwerkschnittstellenname *myVMNic1*.
 
 ## <a name="diagnose-using-azure-cli"></a>Diagnose über die Azure CLI
 
-Sie können die nachfolgenden Befehle in [Azure Cloud Shell](https://shell.azure.com/bash) oder über die CLI auf Ihrem Computer ausführen. Für diesen Artikel ist die Azure CLI-Version 2.0.32 oder höher erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli). Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um sich bei Azure mit einem Konto anzumelden, das über die [erforderlichen Berechtigungen](virtual-network-network-interface.md#permissions) verfügt.
+Sie können die nachfolgenden Befehle in [Azure Cloud Shell](https://shell.azure.com/bash) oder über die CLI auf Ihrem Computer ausführen. Für diesen Artikel ist die Azure CLI-Version 2.0.32 oder höher erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli). Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um sich bei Azure mit einem Konto anzumelden, das über die [erforderlichen Berechtigungen](virtual-network-network-interface.md#permissions) verfügt.
 
 Rufen Sie mit [az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table) die effektiven Routen für eine Netzwerkschnittstelle ab. Im folgenden Beispiel werden die effektiven Routen für eine Netzwerkschnittstelle namens *myVMNic1* abgerufen, die sich in einer Ressourcengruppe mit dem Namen *myResourceGroup* befindet:
 

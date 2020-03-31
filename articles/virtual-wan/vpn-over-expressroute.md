@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 03/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: c74f703927999bf35dd2d8292b8fa0a6d3c55065
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: b1e6305d142530ab19849f61f12a122d0c6434aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77459785"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80059299"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute-Verschlüsselung: IPsec über ExpressRoute für Virtual WAN
 
@@ -58,7 +58,7 @@ In diesen beiden Beispielen sendet Azure den Datenverkehr über die VPN-Verbindu
 
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
-## <a name="openvwan"></a>1. Erstellen eines virtuellen WAN und Hubs mit Gateways
+## <a name="1-create-a-virtual-wan-and-hub-with-gateways"></a><a name="openvwan"></a>1. Erstellen eines virtuellen WAN und Hubs mit Gateways
 
 Damit Sie fortfahren können, müssen die folgenden Azure-Ressourcen und die entsprechenden lokalen Konfigurationen vorhanden sein:
 
@@ -67,7 +67,7 @@ Damit Sie fortfahren können, müssen die folgenden Azure-Ressourcen und die ent
 
 Informationen zu den Schritten zum Erstellen eines Azure Virtual WAN und Hubs mit einer ExpressRoute-Zuordnung finden Sie unter [Erstellen einer ExpressRoute-Zuordnung per Azure Virtual WAN](virtual-wan-expressroute-portal.md). Informationen zu den Schritten zum Erstellen eines VPN-Gateways in dem virtuellen WAN finden Sie unter [Erstellen einer Site-to-Site-Verbindung per Azure Virtual WAN](virtual-wan-site-to-site-portal.md).
 
-## <a name="site"></a>2. Erstellen eines Standorts für das lokale Netzwerk
+## <a name="2-create-a-site-for-the-on-premises-network"></a><a name="site"></a>2. Erstellen eines Standorts für das lokale Netzwerk
 
 Die Standortressource stimmt mit den Nicht-ExpressRoute-VPN-Standorten für ein virtuelles WAN überein. Die IP-Adresse des lokalen VPN-Geräts kann nun entweder eine private IP-Adresse oder eine öffentliche IP-Adresse im lokalen Netzwerk sein, das über das private ExpressRoute-Peering erreichbar ist, das in Schritt 1 erstellt wurde.
 
@@ -99,7 +99,7 @@ Die Standortressource stimmt mit den Nicht-ExpressRoute-VPN-Standorten für ein 
 
 1. Klicken Sie auf **Weiter: Überprüfen + Erstellen >** , um die festgelegten Werte zu überprüfen und die VPN-Site zu erstellen. Wenn Sie **Hubs** für die Verbindung ausgewählt haben, wird die Verbindung zwischen dem lokalen Netzwerk und dem VPN-Gateway des Hubs hergestellt.
 
-## <a name="hub"></a>3. Aktualisieren der VPN-Verbindungseinstellung für die Verwendung von ExpressRoute
+## <a name="3-update-the-vpn-connection-setting-to-use-expressroute"></a><a name="hub"></a>3. Aktualisieren der VPN-Verbindungseinstellung für die Verwendung von ExpressRoute
 
 Nachdem Sie den VPN-Standort erstellt und die Verbindung mit dem Hub hergestellt haben, führen Sie die folgenden Schritte aus, um die Verbindung für das private ExpressRoute-Peering zu konfigurieren:
 
@@ -114,7 +114,7 @@ Nachdem Sie den VPN-Standort erstellt und die Verbindung mit dem Hub hergestellt
 
 Nachdem Sie Ihre Änderungen gespeichert haben, verwendet das VPN-Gateway des Hubs die privaten IP-Adressen des VPN-Gateways, um die IPsec/IKE-Verbindungen mit dem lokalen VPN-Gerät über ExpressRoute herzustellen.
 
-## <a name="associate"></a>4. Ermitteln der privaten IP-Adressen für das VPN-Gateway des Hubs
+## <a name="4-get-the-private-ip-addresses-for-the-hub-vpn-gateway"></a><a name="associate"></a>4. Ermitteln der privaten IP-Adressen für das VPN-Gateway des Hubs
 
 Laden Sie die VPN-Gerätekonfiguration herunter, um die privaten IP-Adressen des Hub-VPN-Gateways zu ermitteln. Sie benötigen diese Adressen, um das lokale VPN-Gerät zu konfigurieren.
 
@@ -219,22 +219,17 @@ Falls Sie eine Anleitung für die Konfiguration Ihres Geräts benötigen, könne
 * Eine neue Virtual WAN-Instanz kann sowohl IKEv1 als auch IKEv2 unterstützen.
 * Virtual WAN kann nur routenbasierte VPN-Geräte und die entsprechenden Geräteanweisungen verwenden.
 
-## <a name="viewwan"></a>5. Anzeigen Ihrer Virtual WAN-Instanz
+## <a name="5-view-your-virtual-wan"></a><a name="viewwan"></a>5. Anzeigen Ihrer Virtual WAN-Instanz
 
 1. Wechseln Sie zum virtuellen WAN.
-1. Auf der Seite **Übersicht** steht jeder Punkt auf der Karte für einen Hub. Zeigen Sie mit dem Mauszeiger auf eine beliebige Stelle, um die Integritätszusammenfassung des Hubs anzuzeigen.
+1. Auf der Seite **Übersicht** steht jeder Punkt auf der Karte für einen Hub.
 1. Im Abschnitt mit den **Hubs und Verbindungen** können Sie den Hub, die Site, die Region und den Status der VPN-Verbindung anzeigen. Sie können auch die Anzahl der ein- und ausgehenden Bytes anzeigen.
 
-## <a name="viewhealth"></a>6. Anzeigen der Ressourcenintegrität
-
-1. Wechseln Sie zu Ihrem WAN.
-1. Wählen Sie im Abschnitt **SUPPORT + Problembehandlung** die Option **Integrität** aus, und zeigen Sie Ihre Ressource an.
-
-## <a name="connectmon"></a>7. Überwachen einer Verbindung
+## <a name="7-monitor-a-connection"></a><a name="connectmon"></a>7. Überwachen einer Verbindung
 
 Erstellen Sie eine Verbindung, um die Kommunikation zwischen einem virtuellen Azure-Computer (VM) und einem Remotestandort zu überwachen. Weitere Informationen zum Einrichten einer Verbindungsüberwachung finden Sie unter [Überwachen der Netzwerkkommunikation](~/articles/network-watcher/connection-monitor.md). Das Quellfeld ist die VM-IP in Azure, und die Ziel-IP ist die Standort-IP.
 
-## <a name="cleanup"></a>8. Bereinigen von Ressourcen
+## <a name="8-clean-up-resources"></a><a name="cleanup"></a>8. Bereinigen von Ressourcen
 
 Wenn Sie diese Ressourcen nicht mehr benötigen, können Sie den Befehl [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) verwenden, um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu entfernen. Führen Sie den folgenden PowerShell-Befehl aus, und ersetzen Sie `myResourceGroup` durch den Namen Ihrer Ressourcengruppe:
 

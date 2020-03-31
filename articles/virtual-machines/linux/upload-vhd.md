@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 70fff041cd693a19269b11398947fb0c8ce56bb1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b5063c8037a763c1919d2172a81c8abbbd406ace
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350683"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060143"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Erstellen eines virtuellen Linux-Computers auf der Grundlage eines benutzerdefinierten Datenträgers mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -90,7 +90,7 @@ Erstellen Sie andernfalls eine Momentaufnahme des virtuellen Computers und ansch
 
 Mit diesem Beispiel wird eine Momentaufnahme von einer VM namens *myVM* in der Ressourcengruppe *myResourceGroup* erstellt. Der Name der erstellten Momentaufnahme lautet *osDiskSnapshot*.
 
-```azure-cli
+```azurecli
 osDiskId=$(az vm show -g myResourceGroup -n myVM --query "storageProfile.osDisk.managedDisk.id" -o tsv)
 az snapshot create \
     -g myResourceGroup \
@@ -103,13 +103,13 @@ Erstellen eines neuen verwalteten Datenträgers aus der Momentaufnahme.
 
 Ermitteln Sie die ID der Momentaufnahme. In unserem Beispiel heißt die Momentaufnahme *osDiskSnapshot* und befindet sich in der Ressourcengruppe *myResourceGroup*.
 
-```azure-cli
+```azurecli
 snapshotId=$(az snapshot show --name osDiskSnapshot --resource-group myResourceGroup --query [id] -o tsv)
 ```
 
 Erstellen Sie den verwalteten Datenträger. In diesem Beispiel erstellen wir einen verwalteten Datenträger namens *myManagedDisk* auf der Grundlage unserer Momentaufnahme. Der Datenträger befindet sich im Standardspeicher und hat eine Größe von 128 GB.
 
-```azure-cli
+```azurecli
 az disk create \
     --resource-group myResourceGroup \
     --name myManagedDisk \

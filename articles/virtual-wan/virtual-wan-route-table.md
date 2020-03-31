@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
 ms.openlocfilehash: a55e1453fe7fe4d135286b22dabf58d434762581
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645105"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>Erstellen einer Routingtabelle für einen virtuellen Hub für Virtual WAN zum Steuern des Datenverkehrs zu einem virtuellen Netzwerkgerät
@@ -43,7 +43,7 @@ Vergewissern Sie sich, dass die folgenden Kriterien erfüllt sind:
 5. Bestätigen Sie, dass Sie bereits 2 VNETs erstellt haben. Diese werden als Spoke-VNETs verwendet. In diesem Artikel sind die VNET-Spoke-Adressräume 10.0.2.0/24 und 10.0.3.0/24. Informationen zum Erstellen eine VNET finden Sie unter [Erstellen eines virtuellen Netzwerks mit PowerShell](../virtual-network/quick-create-powershell.md).
 6. Stellen Sie sicher, dass in den VNETs keine Gateways für virtuelle Netzwerke vorhanden sind.
 
-## <a name="signin"></a>1. Anmelden
+## <a name="1-sign-in"></a><a name="signin"></a>1. Anmelden
 
 Installieren Sie die neueste Version der PowerShell-Cmdlets für Resource Manager. Weitere Informationen zum Installieren von PowerShell-Cmdlets finden Sie unter [Overview of Azure PowerShell](/powershell/azure/install-az-ps) (Übersicht über Azure PowerShell). Dies ist wichtig, da frühere Versionen der Cmdlets nicht die aktuellen Werte enthalten, die Sie für diese Übung benötigen.
 
@@ -63,7 +63,7 @@ Installieren Sie die neueste Version der PowerShell-Cmdlets für Resource Manage
    Select-AzSubscription -SubscriptionName "Name of subscription"
    ```
 
-## <a name="rg"></a>2. Erstellen von Ressourcen
+## <a name="2-create-resources"></a><a name="rg"></a>2. Erstellen von Ressourcen
 
 1. Erstellen Sie eine Ressourcengruppe.
 
@@ -81,7 +81,7 @@ Installieren Sie die neueste Version der PowerShell-Cmdlets für Resource Manage
    New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -Location "West US"
    ```
 
-## <a name="connections"></a>3. Erstellen von Verbindungen
+## <a name="3-create-connections"></a><a name="connections"></a>3. Erstellen von Verbindungen
 
 Erstellen von Netzwerkverbindungen mit einem virtuellen Hub aus „Indirektes Spoke-VNET“ und „DMZ VNET“.
 
@@ -95,7 +95,7 @@ Erstellen von Netzwerkverbindungen mit einem virtuellen Hub aus „Indirektes Sp
   New-AzVirtualHubVnetConnection -ResourceGroupName "testRG" -VirtualHubName "westushub" -Name  "testvnetconnection3" -RemoteVirtualNetwork $remoteVirtualNetwork3
   ```
 
-## <a name="route"></a>4. Erstellen einer virtuellen Hubroute
+## <a name="4-create-a-virtual-hub-route"></a><a name="route"></a>4. Erstellen einer virtuellen Hubroute
 
 In diesem Artikel sind die Adressräume für „Indirektes Spoke-VNET“ 10.0.2.0/24 und 10.0.3.0/24. Die private IP-Adresse der Netzwerkschnittstelle von „DMZ VNET“ ist 10.0.4.5.
 
@@ -103,7 +103,7 @@ In diesem Artikel sind die Adressräume für „Indirektes Spoke-VNET“ 10.0.2.
 $route1 = New-AzVirtualHubRoute -AddressPrefix @("10.0.2.0/24", "10.0.3.0/24") -NextHopIpAddress "10.0.4.5"
 ```
 
-## <a name="applyroute"></a>5. Erstellen einer Routingtabelle für den virtuellen Hub
+## <a name="5-create-a-virtual-hub-route-table"></a><a name="applyroute"></a>5. Erstellen einer Routingtabelle für den virtuellen Hub
 
 Erstellen Sie eine Routingtabelle für den virtuellen Hub, und wenden Sie dann die erstellte Route darauf an.
  
@@ -111,7 +111,7 @@ Erstellen Sie eine Routingtabelle für den virtuellen Hub, und wenden Sie dann d
 $routeTable = New-AzVirtualHubRouteTable -Route @($route1)
 ```
 
-## <a name="commit"></a>6. Übergeben der Änderungen
+## <a name="6-commit-the-changes"></a><a name="commit"></a>6. Übergeben der Änderungen
 
 Führen Sie für die Änderungen am virtuellen Hub einen Commit aus.
 

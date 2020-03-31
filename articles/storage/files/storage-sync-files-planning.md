@@ -8,11 +8,11 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 0684f626553946619a0db2cd895df39576bd17b9
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598254"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228282"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 [Azure Files](storage-files-introduction.md) kann auf zwei Arten bereitgestellt werden: durch direktes Einbinden der serverlosen Azure-Dateifreigaben oder durch lokales Zwischenspeichern von Azure-Dateifreigaben mithilfe von Azure-Dateisynchronisierung. Welche Bereitstellungsoption Sie auswählen, ändert die Aspekte, die Sie beim Planen der Bereitstellung berücksichtigen müssen. 
@@ -47,7 +47,7 @@ Beim Bereitstellen von Azure-Dateisynchronisierung wird Folgendes empfohlen:
 
 - Verwenden von so wenig Speichersynchronisierungsdiensten wie möglich. Dadurch wird die Verwaltung vereinfacht, wenn Synchronisierungsgruppen mehrere Serverendpunkte enthalten, da ein Windows-Server nur jeweils bei einem Speichersynchronisierungsdienst registriert sein kann. 
 
-- Beachten Sie beim Bereitstellen von Azure-Dateifreigaben die IOPS-Einschränkungen eines Speicherkontos. Im Idealfall würden Sie Dateifreigaben im Verhältnis 1:1 mit Speicherkonten zuordnen. Dies ist jedoch ggf. aufgrund verschiedener Beschränkungen und Einschränkungen nicht immer möglich, sowohl in Ihrer Organisation als auch in Azure. Wenn es nicht möglich ist, dass nur eine Dateifreigabe in einem Speicherkonto bereitgestellt wird, sollten Sie berücksichtigen, welche Freigaben sehr aktiv sein werden und welche Freigaben weniger aktiv sind, um sicherzustellen, dass die aktivsten Dateifreigaben nicht zusammen im gleichen Speicherkonto gruppiert werden.
+- Beachten Sie beim Bereitstellen von Azure-Dateifreigaben die IOPS-Einschränkungen eines Speicherkontos. Im Idealfall würden Sie Dateifreigaben Speicherkonten im Verhältnis 1:1 zuordnen. Dies ist jedoch ggf. aufgrund verschiedener Beschränkungen und Einschränkungen in Ihrer Organisation oder in Azure nicht immer möglich. Wenn es nicht möglich ist, dass nur eine Dateifreigabe in einem Speicherkonto bereitgestellt wird, sollten Sie berücksichtigen, welche Freigaben sehr aktiv sein werden und welche Freigaben weniger aktiv sind, um sicherzustellen, dass die aktivsten Dateifreigaben nicht zusammen im gleichen Speicherkonto gruppiert werden.
 
 ## <a name="windows-file-server-considerations"></a>Überlegungen zu Windows-Dateiservern
 Um die Synchronisierungsfunktion unter Windows Server zu aktivieren, müssen Sie den herunterladbaren Azure-Dateisynchronisierungs-Agent installieren. Der Azure-Dateisynchronisierungs-Agent stellt zwei Hauptkomponenten bereit: `FileSyncSvc.exe`, den Windows-Hintergrunddienst, der für die Überwachung von Änderungen an den Serverendpunkten und das Initiieren von Synchronisierungssitzungen zuständig ist, und `StorageSync.sys`, einen Dateisystemfilter, der das Cloudtiering und schnelle Notfallwiederherstellung ermöglicht.  

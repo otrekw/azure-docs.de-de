@@ -9,11 +9,11 @@ ms.date: 07/24/2018
 ms.author: yushwang
 ms.reviewer: cherylmc
 ms.openlocfilehash: ec3697208434eb971e47136416f2c2cc541b5cea
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152073"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225058"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Konfigurieren von Aktiv/Aktiv-S2S-VPN-Verbindungen mit Azure VPN Gateways
 
@@ -40,7 +40,7 @@ Sie können dies kombinieren, um eine komplexere Netzwerktopologie mit hoher Ver
 >   * VpnGw1, VpnGw2, VpnGw3
 >   * HighPerformance (für alte SKUs)
 
-## <a name ="aagateway"></a>Teil 1: Erstellen und Konfigurieren von Aktiv/Aktiv-VPN-Gateways
+## <a name="part-1---create-and-configure-active-active-vpn-gateways"></a><a name ="aagateway"></a>Teil 1: Erstellen und Konfigurieren von Aktiv/Aktiv-VPN-Gateways
 Mit den folgenden Schritten wird Ihr Azure VPN Gateway in Aktiv/Aktiv-Modi konfiguriert. Die wichtigsten Unterschiede zwischen Aktiv/Aktiv- und Aktiv/Standby-Gateways sind:
 
 * Sie müssen zwei Gateway-IP-Konfigurationen mit zwei öffentlichen IP-Adressen erstellen.
@@ -157,7 +157,7 @@ Die Reihenfolge der öffentlichen IP-Adressen für die Gatewayinstanzen und die 
 
 Nachdem das Gateway erstellt wurde, können Sie es verwenden, um eine standortübergreifende Aktiv/Aktiv-Verbindung oder eine VNet-zu-VNet-Verbindung herzustellen. In den folgenden Abschnitten werden die Übungsschritte beschrieben.
 
-## <a name ="aacrossprem"></a>Teil 2: Herstellen einer standortübergreifenden Aktiv/Aktiv-Verbindung
+## <a name="part-2---establish-an-active-active-cross-premises-connection"></a><a name ="aacrossprem"></a>Teil 2: Herstellen einer standortübergreifenden Aktiv/Aktiv-Verbindung
 Um eine standortübergreifende Verbindung herzustellen, müssen Sie ein lokales Netzwerkgateway erstellen, um das lokale VPN-Gerät darzustellen, sowie eine Verbindung, um das Azure VPN Gateway mit dem lokalen Netzwerkgateway zu verbinden. In diesem Beispiel befindet sich das Azure VPN Gateway im Aktiv/Aktiv-Modus. Auch wenn nur ein lokales VPN-Gerät (lokales Netzwerkgateway) und eine Verbindungsressource vorhanden sind, richten daher beide Azure VPN Gateway-Instanzen S2S-VPN-Tunnel zum lokalen Gerät ein.
 
 Schließen Sie zunächst [Teil 1](#aagateway) dieser Übung ab, bevor Sie fortfahren.
@@ -272,7 +272,7 @@ Nachdem die Verbindung (Tunnel) hergestellt wurde, verfügen Sie für die Verbin
 
 ![Duale Redundanz, standortübergreifend](./media/vpn-gateway-activeactive-rm-powershell/dual-redundancy.png)
 
-## <a name ="aav2v"></a>Teil 3: Herstellen einer Aktiv/Aktiv-VNet-zu-VNet-Verbindung
+## <a name="part-3---establish-an-active-active-vnet-to-vnet-connection"></a><a name ="aav2v"></a>Teil 3: Herstellen einer Aktiv/Aktiv-VNet-zu-VNet-Verbindung
 In diesem Abschnitt wird eine Aktiv/Aktiv-VNet-zu-VNet-Verbindung mit BGP hergestellt. 
 
 Die Anleitung unten ist eine Fortsetzung der vorherigen obigen Schritte. Sie müssen [Teil 1](#aagateway) ausführen, um TestVNet1 und das VPN-Gateway mit BGP zu erstellen und zu konfigurieren. 
@@ -368,7 +368,7 @@ Danach wird die Verbindung innerhalb weniger Minuten hergestellt, und die BGP-Pe
 
 ![Aktiv/Aktiv, VNet zu VNet](./media/vpn-gateway-activeactive-rm-powershell/vnet-to-vnet.png)
 
-## <a name ="aaupdate"></a>Aktualisieren eines vorhandenen VPN-Gateways
+## <a name="update-an-existing-vpn-gateway"></a><a name ="aaupdate"></a>Aktualisieren eines vorhandenen VPN-Gateways
 
 Dieser Abschnitt zeigt Ihnen, wie Sie den Modus eines vorhandenen Azure-VPN-Gateways von Aktiv/Standby in Aktiv/Aktiv ändern (oder umgekehrt).
 

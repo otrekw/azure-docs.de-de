@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 8570bce87aeea5473b4aadf9bd30bc0a648a6f0f
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72518126"
 ---
 # <a name="azcopy-bench"></a>azcopy bench
@@ -53,7 +53,7 @@ Wie oben, allerdings werden 50.000 Dateien von jeweils 8 MiB verwendet und deren
 
 - azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>" --file-count 50000 --size-per-file 8M --put-md5
 
-## <a name="options"></a>Optionen
+## <a name="options"></a>Tastatur
 
 **--blob-type** string  Definiert den Typ des Blobs am Ziel. Wird verwendet, um Vergleichstests für unterschiedliche Blobtypen zu ermöglichen. Identisch mit dem gleichnamigen Parameter im Befehl „copy“ (Standardwert: „Detect“).
 

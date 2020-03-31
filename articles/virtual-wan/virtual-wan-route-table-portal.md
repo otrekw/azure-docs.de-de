@@ -9,10 +9,10 @@ ms.date: 03/05/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
 ms.openlocfilehash: 0807b535adc45093b439dba5ab8a0ea26b2a0721
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78402942"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Erstellen einer Routingtabelle für den Virtual WAN-Hub für virtuelle Netzwerkgeräte: Azure-Portal
@@ -40,11 +40,11 @@ Vergewissern Sie sich, dass die folgenden Kriterien erfüllt sind:
 
     * Die VNETs erfordern kein Gatewaysubnetz.
 
-## <a name="signin"></a>1. Anmelden
+## <a name="1-sign-in"></a><a name="signin"></a>1. Anmelden
 
 Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , und melden Sie sich mit Ihrem Azure-Konto an.
 
-## <a name="vwan"></a>2. Erstellen eines virtuellen WAN
+## <a name="2-create-a-virtual-wan"></a><a name="vwan"></a>2. Erstellen eines virtuellen WAN
 
 Erstellen Sie ein virtuelles WAN. Verwenden Sie die folgenden Beispielwerte:
 
@@ -54,7 +54,7 @@ Erstellen Sie ein virtuelles WAN. Verwenden Sie die folgenden Beispielwerte:
 
 [!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
 
-## <a name="hub"></a>3. Erstellen eines Hubs
+## <a name="3-create-a-hub"></a><a name="hub"></a>3. Erstellen eines Hubs
 
 Erstellen Sie den Hub. Verwenden Sie die folgenden Beispielwerte:
 
@@ -64,7 +64,7 @@ Erstellen Sie den Hub. Verwenden Sie die folgenden Beispielwerte:
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-hub-include.md)]
 
-## <a name="route"></a>4. Erstellen und Anwenden einer Routingtabelle für einen Hub
+## <a name="4-create-and-apply-a-hub-route-table"></a><a name="route"></a>4. Erstellen und Anwenden einer Routingtabelle für einen Hub
 
 Aktualisieren Sie den Hub mit einer Routingtabelle für den Hub. Verwenden Sie die folgenden Beispielwerte:
 
@@ -78,7 +78,7 @@ Aktualisieren Sie den Hub mit einer Routingtabelle für den Hub. Verwenden Sie d
 5. Fügen Sie der Spalte **Wenn das Zielpräfix folgendermaßen lautet** die Adressräume hinzu. Fügen Sie der Spalte **An Adresse für nächsten Hop senden** die private IP-Adresse der Netzwerkschnittstelle der DMZ des virtuellen Netzwerkgeräts hinzu.
 6. Klicken Sie auf **Bestätigen**, um die Hubressource mit den Einstellungen der Routingtabelle zu aktualisieren.
 
-## <a name="connections"></a>5. Herstellen der VNET-Verbindungen
+## <a name="5-create-the-vnet-connections"></a><a name="connections"></a>5. Herstellen der VNET-Verbindungen
 
 Stellen Sie eine VNET-Verbindung zwischen jedem indirekten Spoke-VNET (VNET1 und VNET2) und dem Hub her. Die VNET-Verbindungen sind in der Abbildung oben durch blaue Pfeile dargestellt. Erstellen Sie anschließend eine VNET-Verbindung vom NVA-VNET zum Hub (schwarzer Pfeil in der Abbildung).
 
