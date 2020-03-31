@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: article
 ms.reviewer: zeyadr
 ms.openlocfilehash: e819dd39481b58d446384a5e2253c548ce0c267c
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77505982"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-using-powershell"></a>Verwalten der Konsortiumsmitglieder in Azure Blockchain mithilfe von PowerShell
@@ -100,7 +100,7 @@ Verwenden Sie dieses Cmdlet, um ein Objekt zu erstellen, das die Informationen f
 
 `Import-Web3Account -ManagedAccountAddress <String> -ManagedAccountPassword <String>`
 
-| Parameter | Beschreibung | Erforderlich |
+| Parameter | BESCHREIBUNG | Erforderlich |
 |-----------|-------------|:--------:|
 | ManagedAccountAddress | Adresse des Blockchainmitgliedskontos | Ja |
 | ManagedAccountPassword | Kennwort der Kontoadresse | Ja |

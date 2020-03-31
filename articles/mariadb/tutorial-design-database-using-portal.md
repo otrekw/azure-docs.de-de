@@ -5,14 +5,14 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: tutorial
-ms.date: 12/02/2019
+ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 28a20325fac92d0b296c336e2e1186487d1e0272
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 974b6a1e980119582d4fedb5f8b4e73685290de3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74776707"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80063783"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Tutorial: Entwerfen einer Azure Database for MariaDB-Datenbank mithilfe des Azure-Portals
 
@@ -25,7 +25,7 @@ In diesem Tutorial verwenden Sie das Azure-Portal, um Folgendes zu lernen:
 > * Konfigurieren der Serverfirewall
 > * Verwenden des MySQL-Befehlszeilentools zum Erstellen einer Datenbank
 > * Laden von Beispieldaten
-> * Abfragen von Daten
+> * Daten abfragen
 > * Aktualisieren von Daten
 > * Wiederherstellen von Daten
 
@@ -42,14 +42,14 @@ Sie erstellen einen Azure Database for MariaDB-Server mit einer definierten Grup
 1. Klicken Sie in der linken oberen Ecke des Portals auf die Schaltfläche **Ressource erstellen** (+).
 
 2. Wählen Sie **Datenbanken** > **Azure Database for MariaDB** aus. Sie können auch **MariaDB** in das Suchfeld eingeben, um nach dem Dienst zu suchen.
-   
+
    ![Wechseln zu MySQL](./media/tutorial-design-database-using-portal/1-Navigate-to-mariadb.png)
 
-3. Klicken Sie auf die Kachel **Azure Database for MariaDB** und dann auf **Erstellen**. Geben Sie die erforderlichen Informationen ein, oder wählen Sie sie aus.
-   
+3. Wählen Sie die Kachel **Azure Database for MariaDB** aus. Geben Sie die erforderlichen Informationen ein, oder wählen Sie sie aus.
+
    ![Erstellen des Formulars](./media/tutorial-design-database-using-portal/2-create-form.png)
 
-    Einstellung | Empfohlener Wert | Feldbeschreibung 
+    Einstellung | Vorgeschlagener Wert | Feldbeschreibung
     ---|---|---
     Servername | *Ein eindeutiger Servername* | Wählen Sie einen eindeutigen Namen aus, der Ihren Azure Database for MariaDB-Server identifiziert. Beispiel: **mydemoserver**. Der Domänenname *.mariadb.database.azure.com* wird an den angegebenen Servernamen angefügt. Der Servername darf nur Kleinbuchstaben, Zahlen und den Bindestrich (-) enthalten. Er muss zwischen 3 und 63 Zeichen lang sein.
     Subscription | *Ihr Abonnement* | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Server verwenden möchten. Falls Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, über das die Ressource abgerechnet wird.
@@ -58,7 +58,7 @@ Sie erstellen einen Azure Database for MariaDB-Server mit einer definierten Grup
     Serveradministratoranmeldung | **myadmin** | Ein Anmeldekonto für die Verbindungsherstellung mit dem Server. Der Administratoranmeldename darf nicht **azure_superuser**, **admin**, **administrator**, **root**, **guest** oder **public** lauten.
     Kennwort | *Beliebig* | Geben Sie ein neues Kennwort für das Serveradministratorkonto ein. Es muss zwischen acht und 128 Zeichen lang sein. Das Kennwort muss Zeichen aus drei der folgenden Kategorien enthalten: Englische Großbuchstaben, englische Kleinbuchstaben, Zahlen (0-9) und nicht alphanumerische Zeichen (!, $, #, % usw.).
     Kennwort bestätigen | *Beliebig*| Bestätigen Sie das Kennwort des Administratorkontos.
-    Location | *Die Region, die Ihren Benutzern am nächsten ist*| Wählen Sie den Standort aus, der Ihren Benutzern oder Ihren anderen Azure-Anwendungen am nächsten ist.
+    Position | *Die Region, die Ihren Benutzern am nächsten ist*| Wählen Sie den Standort aus, der Ihren Benutzern oder Ihren anderen Azure-Anwendungen am nächsten ist.
     Version | *Die aktuelle Version*| Die aktuelle Version (es sei denn, Sie haben besondere Anforderungen, die eine andere Version erfordern).
     Tarif | Siehe Beschreibung. | Die Compute-, Speicher- und Sicherungskonfigurationen für Ihren neuen Server. Klicken Sie auf **Tarif** > **Universell**. Übernehmen Sie die Standardwerte für die folgenden Einstellungen:<br><ul><li>**Computegeneration** (Gen 5)</li><li>**Virtuelle Kerne** (4 virtuelle Kerne)</li><li>**Speicher** (100 GB)</li><li>**Aufbewahrungszeit für Sicherung** (sieben Tage)</li></ul><br>Wählen Sie zum Aktivieren der Serversicherungen in georedundantem Speicher unter **Optionen für Sicherungsredundanz** die Option **Georedundant** aus. <br><br>Klicken Sie auf **OK**, um die Tarifauswahl zu speichern. Der nächste Screenshot zeigt die gewählten Optionen.
     
@@ -67,14 +67,14 @@ Sie erstellen einen Azure Database for MariaDB-Server mit einer definierten Grup
    > [!TIP]
    > Ist **Automatische Vergrößerung** aktiviert, erhöht Ihr Server den Speicher, wenn Sie sich dem zugeordneten Grenzwert nähern. Ihre Workload wird dadurch nicht beeinträchtigt.
 
-4. Klicken Sie auf **Erstellen**. In ein oder zwei Minuten wird ein neuer Azure Database for MariaDB-Server in der Cloud ausgeführt. Klicken Sie auf der Symbolleiste auf **Benachrichtigungen**, um den Bereitstellungsprozess zu überwachen.
+4. Klicken Sie auf **Überprüfen + erstellen**. Sie können in der Symbolleiste auf die Schaltfläche **Benachrichtigungen** klicken, um den Bereitstellungsprozess zu überwachen. Die Bereitstellung kann bis zu 20 Minuten dauern.
 
 ## <a name="configure-the-firewall"></a>Konfigurieren der Firewall
 
 Eine Azure Database for MariaDB-Instanz wird durch eine Firewall geschützt. Standardmäßig werden alle Verbindungen mit dem Server und den Datenbanken auf dem Server abgelehnt. Vor dem erstmaligen Herstellen einer Verbindung mit Azure Database for MariaDB müssen Sie die Firewall konfigurieren, um die öffentliche Netzwerk-IP-Adresse (oder den IP-Adressbereich) des Clientcomputers hinzuzufügen.
 
 1. Wählen Sie den neu erstellten Server aus, und klicken Sie dann auf **Verbindungssicherheit**.
-   
+
    ![Verbindungssicherheit](./media/tutorial-design-database-using-portal/1-Connection-security.png)
 2. Hier können Sie **Meine IP-Adresse hinzufügen** auswählen oder Firewallregeln konfigurieren. Denken Sie daran, nach dem Erstellen der Regeln auf **Speichern** zu klicken.
 
@@ -85,7 +85,7 @@ Sie können jetzt mit dem MySQL-Befehlszeilentool oder MySQL Workbench eine Verb
 
 ## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
 
-Rufen Sie die Werte für **Servername** (vollqualifiziert) und **Anmeldename des Serveradministrators** für Ihren Azure Database for MariaDB-Server aus dem Azure-Portal ab. Sie verwenden den vollqualifizierten Servernamen, um mit dem MySQL-Befehlszeilentool eine Verbindung mit Ihrem Server herzustellen. 
+Rufen Sie die Werte für **Servername** (vollqualifiziert) und **Anmeldename des Serveradministrators** für Ihren Azure Database for MariaDB-Server aus dem Azure-Portal ab. Sie verwenden den vollqualifizierten Servernamen, um mit dem MySQL-Befehlszeilentool eine Verbindung mit Ihrem Server herzustellen.
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) im Menü auf der linken Seite auf **Alle Ressourcen**. Geben Sie den Servernamen ein, und suchen Sie nach Ihrem Azure Database for MariaDB-Server. Wählen Sie den Servernamen aus, um die Details zum Server anzuzeigen.
 
@@ -97,17 +97,17 @@ In unserem Beispiel lautet der Servername **mydemoserver.mariadb.database.azure.
 
 ## <a name="connect-to-the-server-by-using-mysql"></a>Herstellen einer Verbindung mit dem Server mit MySQL
 
-Verwenden Sie das [MySQL-Befehlszeilentool](https://dev.mysql.com/doc/refman/5.7/en/mysql.html), um eine Verbindung mit Ihrem Azure Database for MariaDB-Server herzustellen. Sie können das MySQL-Befehlszeilentool über Azure Cloud Shell im Browser oder auf Ihrem Computer über die lokal installierten MySQL-Tools ausführen. Um Azure Cloud Shell zu öffnen, klicken Sie in einem Codeblock in diesem Artikel auf die Schaltfläche **Ausprobieren**, oder besuchen Sie das Azure-Portal, und klicken Sie auf der Symbolleiste oben rechts auf das Symbol **>_** . 
+Verwenden Sie das [MySQL-Befehlszeilentool](https://dev.mysql.com/doc/refman/5.7/en/mysql.html), um eine Verbindung mit Ihrem Azure Database for MariaDB-Server herzustellen. Sie können das MySQL-Befehlszeilentool über Azure Cloud Shell im Browser oder auf Ihrem Computer über die lokal installierten MySQL-Tools ausführen. Um Azure Cloud Shell zu öffnen, klicken Sie in einem Codeblock in diesem Artikel auf die Schaltfläche **Ausprobieren**, oder besuchen Sie das Azure-Portal, und klicken Sie auf der Symbolleiste oben rechts auf das Symbol **>_** .
 
 Geben Sie den Befehl zum Herstellen einer Verbindung ein:
 
-```azurecli-interactive
+```bash
 mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
 ```
 
 ## <a name="create-a-blank-database"></a>Leere Datenbank erstellen
 
-Nachdem Sie eine Verbindung mit dem Server hergestellt haben, erstellen Sie eine leere Datenbank:
+Nachdem Sie eine Verbindung mit dem Server hergestellt haben, erstellen Sie als Nächstes eine leere Datenbank:
 
 ```sql
 CREATE DATABASE mysampledb;
@@ -171,7 +171,7 @@ Angenommen, Sie haben versehentlich eine wichtige Datenbanktabelle gelöscht und
    ![Wiederherstellen einer Datenbank](./media/tutorial-design-database-using-portal/1-restore-a-db.png)
 
 2. Geben Sie auf der Seite **Wiederherstellen** die folgenden Informationen ein, oder wählen Sie sie aus:
-   
+
    ![Wiederherstellungsformular](./media/tutorial-design-database-using-portal/2-restore-form.png)
    
    - **Wiederherstellungspunkt**: Wählen Sie im angezeigten Zeitraum einen Zeitpunkt aus, den Sie wiederherstellen möchten. Stellen Sie sicher, dass Sie die lokale Zeitzone in UTC konvertieren.
@@ -189,7 +189,7 @@ In diesem Tutorial verwenden Sie das Azure-Portal, um Folgendes zu lernen:
 > * Konfigurieren der Serverfirewall
 > * Verwenden des mysql-Befehlszeilentools zum Erstellen einer Datenbank
 > * Laden von Beispieldaten
-> * Abfragen von Daten
+> * Daten abfragen
 > * Aktualisieren von Daten
 > * Wiederherstellen von Daten
 

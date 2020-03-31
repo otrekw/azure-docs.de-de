@@ -5,16 +5,16 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 91a37178f8dc8ecc3c61ca16f193e2e52c309d46
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 9ed14ce1af6421accccface1b66119057d1c5a30
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209476"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239294"
 ---
-# <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen
+# <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>Tutorial: Erstellen mehrerer Ressourceninstanzen mit ARM-Vorlagen
 
-Erfahren Sie, wie Sie die Azure Resource Manager-Vorlage durchlaufen können, um mehrere Instanzen einer Azure-Ressource zu erstellen. In diesem Tutorial ändern Sie eine Vorlage, um drei Speicherkontoinstanzen zu erstellen.
+Es wird beschrieben, wie Sie die ARM-Vorlage (Azure Resource Manager) durchlaufen können, um mehrere Instanzen einer Azure-Ressource zu erstellen. In diesem Tutorial ändern Sie eine Vorlage, um drei Speicherkontoinstanzen zu erstellen.
 
 ![Diagramm: Erstellen mehrerer Instanzen in Azure Resource Manager](./media/template-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
 
@@ -31,11 +31,11 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
-* Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von Azure Resource Manager-Vorlagen](use-vs-code-to-create-template.md).
+* Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Weitere Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von ARM-Vorlagen](use-vs-code-to-create-template.md).
 
 ## <a name="open-a-quickstart-template"></a>Öffnen einer Schnellstartvorlage
 
-[Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) ist ein Repository für Resource Manager-Vorlagen. Statt eine Vorlage von Grund auf neu zu erstellen, können Sie eine Beispielvorlage verwenden und diese anpassen. Die in dieser Schnellstartanleitung verwendete Vorlage heißt [Standardspeicherkonto erstellen](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Die Vorlage definiert eine Azure Storage-Kontoressource.
+[Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) ist ein Repository für ARM-Vorlagen. Statt eine Vorlage von Grund auf neu zu erstellen, können Sie eine Beispielvorlage verwenden und diese anpassen. Die in dieser Schnellstartanleitung verwendete Vorlage heißt [Standardspeicherkonto erstellen](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Die Vorlage definiert eine Azure Storage-Kontoressource.
 
 1. Wählen Sie in Visual Studio Code **Datei**>**Datei öffnen** aus.
 2. Fügen Sie in **Dateiname** die folgende URL ein:
@@ -108,7 +108,7 @@ Die fertige Vorlage sieht folgendermaßen aus:
 }
 ```
 
-Weitere Informationen zum Erstellen mehrerer Instanzen finden Sie unter [Bereitstellen mehrerer Instanzen einer Ressource oder Eigenschaft in Azure Resource Manager-Vorlagen](./copy-resources.md).
+Weitere Informationen zum Erstellen mehrerer Instanzen finden Sie unter [Bereitstellen mehrerer Instanzen einer Ressource oder Eigenschaft in ARM-Vorlagen](./copy-resources.md).
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 

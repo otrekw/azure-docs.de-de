@@ -15,10 +15,10 @@ ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 7d8d1505a268976161636abd0ed2d24398978284
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75374297"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Was ist SQL Server auf virtuellen Azure-Computern? (Windows)
@@ -54,7 +54,7 @@ Wählen Sie als Erstes ein SQL Server-VM-Image mit der benötigten Version, der 
 > [!TIP]
 > Weitere Informationen zu den Preisen für SQL-Images finden Sie unter [Pricing guidance for SQL Server Azure VMs](virtual-machines-windows-sql-server-pricing-guidance.md) (Preisinformationen für SQL Server-Azure-VMs). 
 
-### <a id="payasyougo"></a> Nutzungsbasierte Bezahlung
+### <a name="pay-as-you-go"></a><a id="payasyougo"></a> Nutzungsbasierte Bezahlung
 Die folgende Tabelle enthält eine Matrix für SQL Server-Images mit nutzungsbasierter Bezahlung:
 
 | Version | Betriebssystem | Edition |
@@ -71,7 +71,7 @@ Informationen zu den verfügbaren Images für virtuelle Linux-Computer mit SQL S
 > [!NOTE]
 > Es ist nun möglich, das Lizenzierungsmodell eines virtuellen SQL Server-Computers mit nutzungsbasierter Bezahlung zu ändern und eine eigene Lizenz zu verwenden. Weitere Informationen finden Sie unter [Ändern des Lizenzierungsmodells für einen virtuellen SQL-Computer](virtual-machines-windows-sql-ahb.md). 
 
-### <a id="BYOL"></a> BYOL (Bring Your Own License)
+### <a name="bring-your-own-license"></a><a id="BYOL"></a> BYOL (Bring Your Own License)
 Sie können auch Ihre eigene Lizenz nutzen (BYOL). In diesem Fall zahlen Sie nur für die VM, ohne dass zusätzliche Gebühren für die SQL Server-Lizenzierung anfallen.  Durch die Nutzung einer eigenen Lizenz können Sie im Laufe der Zeit Geld für kontinuierliche Produktionsworkloads sparen. Weitere Anforderungen für diese Option finden Sie unter [Preisinformationen für virtuelle Azure-Computer mit SQL Server](virtual-machines-windows-sql-server-pricing-guidance.md#byol).
 
 Um Ihre eigene Lizenz zu verwenden, können Sie entweder einen vorhandenen virtuellen SQL-Computer mit nutzungsbasierter Bezahlung ändern oder ein Image mit dem Präfix **{BYOL}** bereitstellen. Weitere Informationen zum Umstellen Ihres Lizenzierungsmodells zwischen nutzungsbasierter Bezahlung und BYOL finden Sie unter [How to change the licensing model for a SQL virtual machine in Azure](virtual-machines-windows-sql-ahb.md) (Ändern des Lizenzierungsmodells für einen virtuellen SQL-Computer in Azure). 
@@ -125,7 +125,7 @@ Einzelheiten dazu finden Sie unter:
 - [Erstellen einer verwalteten Instanz](../../../sql-database/sql-database-managed-instance-get-started.md)
 - [Erstellen einer SQL-VM](quickstart-sql-vm-create-portal.md)
 
-## <a id="lifecycle"></a> Aktualisierungsrichtlinie für SQL-VM-Images
+## <a name="sql-vm-image-refresh-policy"></a><a id="lifecycle"></a> Aktualisierungsrichtlinie für SQL-VM-Images
 Azure verwaltet für jedes unterstützte Betriebssystem, jede Version und jede Kombination von Editionen nur ein VM-Image. Dies bedeutet, dass Images im Laufe der Zeit aktualisiert und ältere Images entfernt werden. Weitere Informationen finden Sie im Abschnitt **Images** der [häufig gestellten Fragen zu SQL Server-VMs](virtual-machines-windows-sql-server-iaas-faq.md#images).
 
 ## <a name="customer-experience-improvement-program-ceip"></a>Programm zur Verbesserung der Benutzerfreundlichkeit (Customer Experience Improvement Program, CEIP)

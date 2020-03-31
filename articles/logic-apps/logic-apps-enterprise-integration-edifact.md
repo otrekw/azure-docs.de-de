@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/26/2016
 ms.openlocfilehash: 3ada12a0cde122fb78815a1d3241d8acb9da2580
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77651456"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Austauschen von EDIFACT-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
@@ -97,7 +97,7 @@ Ihre Vereinbarung kann nun eingehende Nachrichten verarbeiten, die den ausgewäh
 
 ### <a name="acknowledgments"></a>Danksagungen
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | Nachrichtenquittung (CONTRL) |Wählen Sie dieses Kontrollkästchen, um eine technische Bestätigung (CONTRL) an den Austauschabsender zurückzugeben. Die Bestätigung wird anhand der Sendeeinstellungen für die Vereinbarung an den Austauschabsender gesendet. |
 | Bestätigung (CONTRL) |Aktivieren Sie dieses Kontrollkästchen, um eine funktionale Bestätigung (CONTRL) an den Austauschabsender zurückzugeben. Die Bestätigung wird anhand der Sendeeinstellungen für die Vereinbarung an den Austauschabsender gesendet. |
@@ -204,7 +204,7 @@ Ihre Vereinbarung kann nun ausgehende Nachrichten verarbeiten, die den ausgewäh
 
 Anders als beim Zeichensatz können Sie für jeden Nachrichtentyp einen anderen Satz zu verwendender Trennzeichen eingeben. Wenn ein Zeichensatz nicht für ein bestimmtes Nachrichtenschema angegeben ist, wird der Standardzeichensatz verwendet.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | UNB1.1 (Systembezeichner) |Wählen Sie den EDIFACT-Zeichensatz aus, der auf den ausgehenden Austauschvorgang angewendet werden soll. |
 | Schema |Wählen Sie in der Dropdownliste ein Schema aus. Nach Abschluss der einzelnen Zeilen wird jeweils automatisch eine neue Zeile hinzugefügt. Wählen Sie für das ausgewählte Schema den gewünschten Trennzeichensatz aus. Orientieren Sie sich dabei an den folgenden Trennzeichenbeschreibungen. |
@@ -226,7 +226,7 @@ Anders als beim Zeichensatz können Sie für jeden Nachrichtentyp einen anderen 
 
 Nach Abschluss der einzelnen Überprüfungszeilen wird jeweils automatisch eine weitere hinzugefügt. Wenn Sie keine Regeln angeben, verwendet die Überprüfung die Standardzeile.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | Nachrichtentyp |Wählen Sie den EDI-Nachrichtentyp aus. |
 | EDI-Überprüfung |Die EDI-Überprüfung erfolgt für Datentypen gemäß den EDI-Eigenschaften des Schemas, Längenbeschränkungen, leeren Datenelementen und nachfolgenden Trennzeichen. |

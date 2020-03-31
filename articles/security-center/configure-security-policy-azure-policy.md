@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: c218b5dc8ca3bfa0358a9b6a0d4867696762a8d4
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77430940"
 ---
 # <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>Konfigurieren einer Sicherheitsrichtlinie in Azure Policy über die REST-API
@@ -115,7 +115,7 @@ In diesem Beispiel wird gezeigt, wie Sie eine Zuweisung entfernt wird:
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
  ```
 
-## Referenz der Richtliniennamen <a name="policy-names"></a>
+## <a name="policy-names-reference"></a>Referenz der Richtliniennamen <a name="policy-names"></a>
 
 |Richtlinienname in Security Center|Richtlinienname, der in Azure Policy angezeigt wird |Name des Effect-Parameters der Richtlinie|
 |----|----|----|

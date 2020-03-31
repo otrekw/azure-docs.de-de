@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 37fc78971124240077a59d4ad99aa06cc408dbae
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74533969"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Indizieren von JSON-Blobs mit einem Blobindexer in der kognitiven Azure-Suche
@@ -143,7 +143,7 @@ Sie finden diese Werte im Portal:
 
 3. Wechseln Sie zu den Portalseiten für Ihr Speicherkonto. Klicken Sie im linken Navigationsbereich unter **Einstellungen** auf die Option **Zugriffsschlüssel**. Diese Seite enthält sowohl den Kontonamen als auch den Schlüssel. Kopieren Sie den Namen des Speicherkontos und einen der Schlüssel in den Editor.
 
-### <a name="2---create-a-data-source"></a>2 – Erstellen einer Datenquelle
+### <a name="2---create-a-data-source"></a>2 - Erstellen einer Datenquelle
 
 Dieser Schritt umfasst die Bereitstellung der Datenquellen-Verbindungsinformationen, die vom Indexer verwendet werden. Die Datenquelle ist ein benanntes Objekt in der kognitiven Azure-Suche, das die Verbindungsinformationen beibehält. Mit dem Datenquellentyp, `azureblob`, wird bestimmt, welches Datenextraktionsverhalten vom Indexer aufgerufen wird. 
 
@@ -160,7 +160,7 @@ Geben Sie gültige Werte für die Platzhalter von Dienstnamen, Administratorschl
         "container" : { "name" : "my-container", "query" : "optional, my-folder" }
     }   
 
-### <a name="3---create-a-target-search-index"></a>3 – Erstellen eines Zielsuchindexes 
+### <a name="3---create-a-target-search-index"></a>3 - Erstellen eines Zielsuchindex 
 
 Indexer sind mit einem Indexschema gekoppelt. Bereiten Sie bei Verwendung der API (anstelle des Portals) vorher einen Index vor, damit Sie ihn für den Indexervorgang angeben können.
 

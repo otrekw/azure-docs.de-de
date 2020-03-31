@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 448d46cd21a63488c4f567d5555fe6406fc0fa73
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67089089"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>Tutorial: Azure Active Directory-Integration mit Thirdlight
@@ -134,7 +134,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ThirdLig
 
 1. Navigieren Sie zu **Configuration** > **System Administration** > **SAML2** (Konfiguration > Systemverwaltung > SAML2):
 
-    ![Systemadministration](./media/thirdlight-tutorial/ic805843.png "Systemadministration")
+    ![System Administration (Systemverwaltung)](./media/thirdlight-tutorial/ic805843.png "Systemverwaltung")
 
 1. Führen Sie im Abschnitt für die SAML2-Konfiguration die folgenden Schritte aus:
   
@@ -231,4 +231,4 @@ Wenn Sie im Zugriffsbereich die Kachel „ThirdLight“ auswählen, sollten Sie 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

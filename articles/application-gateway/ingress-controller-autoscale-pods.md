@@ -7,18 +7,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: b98ab8d3c4d03115ea689b4dfd3d8dee753f019d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1169ed0e9a2b970ee0e30d73ea20c87001b62786
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715081"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239452"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>Automatische Skalierung Ihrer AKS-Pods mit Application Gateway-Metriken (Betaversion)
 
-Mit zunehmendem eingehenden Datenverkehr wird es immer wichtiger, Ihre Anwendungen bedarfsgerecht zentral hochzuskalieren.
+Mit zunehmendem eingehenden Datenverkehr wird es immer wichtiger, Ihre Anwendungen bedarfsgerecht hochzuskalieren.
 
-Im folgenden Tutorial wird erläutert, wie Sie die `AvgRequestCountPerHealthyHost`-Metrik des Application Gateway verwenden können, um Ihre Anwendung zentral hochzuskalieren. `AvgRequestCountPerHealthyHost` misst die durchschnittlichen Anforderungen, die an eine bestimmte Back-End-Pool- und eine bestimmte Back-End-HTTP-Einstellungskombination gesendet werden.
+Im folgenden Tutorial wird erläutert, wie Sie die `AvgRequestCountPerHealthyHost`-Metrik des Application Gateway verwenden können, um Ihre Anwendung hochzuskalieren. `AvgRequestCountPerHealthyHost` misst die durchschnittlichen Anforderungen, die an eine bestimmte Back-End-Pool- und eine bestimmte Back-End-HTTP-Einstellungskombination gesendet werden.
 
 Wir werden die folgenden beiden Komponenten verwenden:
 
@@ -29,7 +29,7 @@ Wir werden die folgenden beiden Komponenten verwenden:
 
 1. Zuerst erstellen wir einen Azure AAD-Dienstprinzipal und weisen ihm `Monitoring Reader`-Zugriff für die Application Gateway-Ressourcengruppe zu. 
 
-    ```bash
+    ```azurecli
         applicationGatewayGroupName="<application-gateway-group-id>"
         applicationGatewayGroupId=$(az group show -g $applicationGatewayGroupName -o tsv --query "id")
         az ad sp create-for-rbac -n "azure-k8s-metric-adapter-sp" --role "Monitoring Reader" --scopes applicationGatewayGroupId
@@ -90,11 +90,11 @@ kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appg
 # }
 ```
 
-## <a name="using-the-new-metric-to-scale-up-the-deployment"></a>Verwendung der neuen Metrik zum zentralen Hochskalieren der Bereitstellung
+## <a name="using-the-new-metric-to-scale-up-the-deployment"></a>Verwendung der neuen Metrik zum Hochskalieren der Bereitstellung
 
-Nachdem wir in der Lage sind, `appgw-request-count-metric` über den Metrikserver verfügbar zu machen, sind wir bereit, unsere Zielbereitstellung mit [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) zentral hochzuskalieren.
+Nachdem wir in der Lage sind, `appgw-request-count-metric` über den Metrikserver verfügbar zu machen, sind wir bereit, unsere Zielbereitstellung mit [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) hochzuskalieren.
 
-Im folgenden Beispiel wird eine Beispielbereitstellung von `aspnet` als Ziel verwendet. Die Pods werden zentral hochskaliert, wenn `appgw-request-count-metric` > 200 pro Pod bis zu einem Maximum von `10` Pods.
+Im folgenden Beispiel wird eine Beispielbereitstellung von `aspnet` als Ziel verwendet. Die Pods werden hochskaliert, wenn `appgw-request-count-metric` &gt; 200 pro Pod bis zu einem Maximum von `10` Pods.
 
 Ersetzen Sie den Namen Ihrer Zielbereitstellung, und wenden Sie die folgende automatische Skalierungskonfiguration an:
 ```yaml

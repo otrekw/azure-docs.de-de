@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 99efe375fad142963214b09df24be70bc3bc9d99
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77131604"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Übersicht über Livestreaming mit Media Services
@@ -137,7 +137,7 @@ Sie sind für das Beenden Ihrer Kanäle verantwortlich, wenn Sie die Nutzung des
 >
 >
 
-### <a id="states"></a>Kanalstatus und ihre Zuordnung zum Abrechnungsmodus
+### <a name="channel-states-and-how-they-map-to-the-billing-mode"></a><a id="states"></a>Kanalstatus und ihre Zuordnung zum Abrechnungsmodus
 Dies ist der aktuelle Status des Kanals. Mögliche Werte sind:
 
 * **Stopped**(Beendet): Dies ist der anfängliche Status des Kanals nach seiner Erstellung (es sei denn, im Portal wurde das automatische Starten gewählt). Dies ist der anfängliche Status des Kanals nach seiner Erstellung (es sei denn, im Portal wurde das automatische Starten gewählt). In diesem Status werden keine Gebühren berechnet. Ein Streaming ist jedoch nicht zulässig.

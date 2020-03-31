@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
 ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67178169"
 ---
 ## <a name="c-program-example"></a>Beispiel für C#-Programm
@@ -17,7 +17,7 @@ In den nächsten Abschnitten dieses Artikels wird ein C#-Programm vorgestellt, d
 
 - [Verbinden mit der SQL-Datenbank über ADO.NET](#cs_1_connect)
 - [Methoden, die T-SQL-Anweisungen zurückgeben](#cs_2_return)
-    - Erstellen von Tabellen.
+    - Erstellen von Tabellen
     - Auffüllen von Tabellen mit Daten
     - Aktualisieren, Löschen und Auswählen von Daten
 - [Übermitteln von T-SQL-Anweisungen an die Datenbank](#cs_3_submit)

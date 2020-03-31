@@ -4,17 +4,17 @@ description: Erfahren Sie, wie Sie einen Kurzdiagnosebefehl ausführen können, 
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: ea4432c9e92c4a0380517e39678814e2d1cb3bfc
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74456413"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>Überprüfen der Integrität einer Azure-Containerregistrierung
 
 Wenn Sie eine Azure-Containerregistrierung verwenden, können gelegentlich Probleme auftreten. Möglich ist beispielsweise, dass Sie ein Containerimage aufgrund eines Problems mit Docker nicht per Pull in Ihre lokale Umgebung übertragen können. Oder ein Netzwerkproblem verhindert ggf. das Herstellen einer Verbindung mit der Registrierung. 
 
-Führen Sie als ersten Diagnoseschritt den Befehl [az acr check-health][az-acr-check-health] aus, um Informationen zur Integrität der Umgebung abzurufen und optional Zugriff auf eine Zielregistrierung zu erhalten. Dieser Befehl ist ab Version 2.0.67 der Azure-Befehlszeilenschnittstelle verfügbar. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli].
+Führen Sie als ersten Diagnoseschritt den Befehl [az acr check-health][az-acr-check-health] aus, um Informationen zur Integrität der Umgebung abzurufen und optional Zugriff auf eine Zielregistrierung zu erhalten. Dieser Befehl ist ab Version 2.0.67 der Azure-Befehlszeilenschnittstelle verfügbar. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
 ## <a name="run-az-acr-check-health"></a>Ausführen von „az acr check-health“
 

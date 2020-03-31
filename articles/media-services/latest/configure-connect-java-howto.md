@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6b0f21c3fa7a9c827f7201f4b899a33ea77eaf08
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74888494"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Verbinden mit der Media Services v3-API – Java
@@ -35,7 +35,7 @@ In diesem Artikel wird Visual Studio Code zum Entwickeln der Beispiel-App verwen
    - Java-Erweiterungspaket
 - Achten Sie darauf, die Umgebungsvariablen `JAVA_HOME` und `PATH` festzulegen.
 - [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md) Merken Sie sich unbedingt den Namen der Ressourcengruppe und den Namen des Media Services-Kontos.
-- Führen Sie die Schritte im Thema [Access APIs](access-api-cli-how-to.md) (Zugriff auf APIs) aus. Halten Sie die Abonnement-ID, die Anwendungs-ID (Client-ID), den Authentifizierungsschlüssel und die Mandanten-ID fest. Sie benötigen diese Angaben in einem späteren Schritt.
+- Führen Sie die Schritte im Thema [Zugriff auf Azure Media Services API mit Azure CLI](access-api-cli-how-to.md) aus. Halten Sie die Abonnement-ID, die Anwendungs-ID (Client-ID), den Authentifizierungsschlüssel und die Mandanten-ID fest. Sie benötigen diese Angaben in einem späteren Schritt.
 
 Lesen Sie außerdem:
 

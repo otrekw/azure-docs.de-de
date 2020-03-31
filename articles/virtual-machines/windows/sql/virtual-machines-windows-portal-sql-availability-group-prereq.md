@@ -9,18 +9,18 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: c492db4c-3faa-4645-849f-5a1a663be55a
 ms.service: virtual-machines-sql
-ms.custom: seo-lt-2019
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: 4c89489964410104726b65e1b1fc3577945ce14a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.custom: seo-lt-2019
+ms.openlocfilehash: c80a4c07e0649612b4c024cac79833c4b730f55e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224753"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060171"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Voraussetzungen für die Erstellung von AlwaysOn-Verfügbarkeitsgruppen für SQL Server in Azure Virtual Machines
 
@@ -50,7 +50,7 @@ Sie benötigen ein Azure-Konto. Sie können entweder ein [kostenloses Azure-Kont
 
    ![Resource group](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroupsymbol.png)
 4. Klicken Sie auf **Ressourcengruppe**.
-5. Klicken Sie auf **Create**.
+5. Klicken Sie auf **Erstellen**.
 6. Geben Sie unter **Ressourcengruppenname** einen Namen für die Ressourcengruppe ein. Geben Sie beispielsweise **sql-ha-rg** ein.
 7. Falls Sie über mehrere Azure-Abonnements verfügen, vergewissern Sie sich, dass es sich bei dem Abonnement um das Azure-Abonnement handelt, in dem Sie die Verfügbarkeitsgruppe erstellen möchten.
 8. Wählen Sie einen Standort aus. Der Standort ist die Azure-Region, in der die Verfügbarkeitsgruppe erstellt werden soll. In diesem Artikel werden alle Ressourcen an einem Azure-Standort erstellt.
@@ -84,7 +84,7 @@ So erstellen Sie das virtuelle Netzwerk:
    | --- | --- |
    | **Name** |autoHAVNET |
    | **Adressraum** |10.33.0.0/24 |
-   | **Subnetzname** |Administrator |
+   | **Subnetzname** |Admin |
    | **Subnetzadressbereich** |10.33.0.0/29 |
    | **Abonnement** |Geben Sie das Abonnement an, das Sie verwenden möchten. Wenn Sie nur über ein einzelnes Abonnement verfügen, ist die Option **Abonnement** leer. |
    | **Ressourcengruppe** |Wählen Sie **Vorhanden** aus, und wählen Sie dann den Namen der Ressourcengruppe aus. |
@@ -94,7 +94,7 @@ So erstellen Sie das virtuelle Netzwerk:
 
    Im Beispiel wird der Subnetzname **Admin** verwendet. Dieses Subnetz ist für die Domänencontroller bestimmt.
 
-5. Klicken Sie auf **Create**.
+5. Klicken Sie auf **Erstellen**.
 
    ![Konfigurieren des virtuellen Netzwerks](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/06-configurevirtualnetwork.png)
 
@@ -183,13 +183,13 @@ Die folgende Tabelle enthält die Einstellungen für die beiden Computer:
 | **Ressourcengruppe** |SQL-HA-RG |
 | **Location** |*Ihr Standort* |
 | **Größe** |DS1_V2 |
-| **Speicher** | **Verwaltete Datenträger verwenden** - **Ja** |
+| **Storage** | **Verwaltete Datenträger verwenden** - **Ja** |
 | **Virtuelles Netzwerk** |autoHAVNET |
 | **Subnetz** |admin |
 | **Öffentliche IP-Adresse** |*Gleicher Name wie der VM* |
 | **Netzwerksicherheitsgruppe** |*Gleicher Name wie der VM* |
 | **Verfügbarkeitsgruppe** |adavailabilityset </br>**Fehlerdomänen**: 2 </br>**Updatedomänen**: 2|
-| **Diagnose** |Enabled |
+| **Diagnose** |Aktiviert |
 | **Diagnosespeicherkonto** |*Automatisch erstellt* |
 
    >[!IMPORTANT]
@@ -307,7 +307,7 @@ Nachdem der Server die Änderungen an der Konfiguration abgeschlossen hat, start
 
 Ändern Sie im Azure-Portal unter „Virtuelles Netzwerk“ den DNS-Server, sodass die IP-Adresse des sekundären Domänencontrollers eingeschlossen ist. Diese Einstellung ermöglicht einen redundanten DNS-Dienst.
 
-### <a name="DomainAccounts"></a> Konfigurieren der Domänenkonten
+### <a name="configure-the-domain-accounts"></a><a name="DomainAccounts"></a> Konfigurieren der Domänenkonten
 
 In den nächsten Schritten konfigurieren Sie die Active Directory-Konten. Die folgende Tabelle zeigt die Konten:
 
@@ -342,7 +342,7 @@ Führen Sie zum Erstellen jedes Kontos die folgenden Schritte aus.
 6. Aktivieren Sie das Kontrollkästchen **Computerobjekte erstellen**.
 
      ![Corp-Benutzerberechtigungen](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/33-addpermissions.png)
-7. Klicken Sie auf **OK** und dann erneut auf **OK**. Schließen Sie das Eigenschaftenfenster von **corp**.
+7. Klicken Sie auf **OK** und dann nochmals auf **OK**. Schließen Sie das Eigenschaftenfenster von **corp**.
 
 Nachdem Sie die Konfiguration von Active Directory und den Benutzerobjekten abgeschlossen haben, erstellen Sie jetzt zwei virtuelle SQL Server-Computer und einen virtuellen Computer als Zeugenserver. Führen Sie für alle drei Computer anschließend den Beitritt zur Domäne durch.
 
@@ -369,8 +369,8 @@ Im nächsten Schritt erstellen Sie drei virtuelle Computer: zwei virtuelle SQL S
 | Wählen Sie das passende Katalogelement aus. |**Windows Server 2016 Datacenter** |**SQL Server 2016 SP1 Enterprise unter Windows Server 2016** |**SQL Server 2016 SP1 Enterprise unter Windows Server 2016** |
 | **Grundlagen** |**Name** = cluster-fsw<br/>**Benutzername** = DomainAdmin<br/>**Kennwort** = Contoso!0000<br/>**Abonnement** = Ihr Abonnement<br/>**Ressourcengruppe** = SQL-HA-RG<br/>**Standort** = Ihr Azure-Standort |**Name** = sqlserver-0<br/>**Benutzername** = DomainAdmin<br/>**Kennwort** = Contoso!0000<br/>**Abonnement** = Ihr Abonnement<br/>**Ressourcengruppe** = SQL-HA-RG<br/>**Standort** = Ihr Azure-Standort |**Name** = sqlserver-1<br/>**Benutzername** = DomainAdmin<br/>**Kennwort** = Contoso!0000<br/>**Abonnement** = Ihr Abonnement<br/>**Ressourcengruppe** = SQL-HA-RG<br/>**Standort** = Ihr Azure-Standort |
 | Konfiguration des virtuellen Computers: **Größe** |**Größe** = DS1\_V2 (1 vCPU, 3,5 GB) |**Größe** = DS2\_V2 (2 vCPUs, 7 GB)</br>Die Größe muss SSD-Speicher (Premium-Datenträger) unterstützen. ) |**Größe** = DS2\_V2 (2 vCPUs, 7 GB) |
-| Konfiguration des virtuellen Computers: **Einstellungen** |**Speicher**: Verwaltete Datenträger verwenden.<br/>**Virtuelles Netzwerk** = autoHAVNET<br/>**Subnetz** = sqlsubnet(10.1.1.0/24)<br/>**Öffentliche IP-Adresse:** automatisch generiert.<br/>**Netzwerksicherheitsgruppe** = Keine<br/>**Überwachung und Diagnose** = Aktiviert<br/>**Diagnosespeicherkonto** = Automatisch generiertes Speicherkonto verwenden<br/>**Verfügbarkeitsgruppe** = sqlAvailabilitySet<br/> |**Speicher**: Verwaltete Datenträger verwenden.<br/>**Virtuelles Netzwerk** = autoHAVNET<br/>**Subnetz** = sqlsubnet(10.1.1.0/24)<br/>**Öffentliche IP-Adresse:** automatisch generiert.<br/>**Netzwerksicherheitsgruppe** = Keine<br/>**Überwachung und Diagnose** = Aktiviert<br/>**Diagnosespeicherkonto** = Automatisch generiertes Speicherkonto verwenden<br/>**Verfügbarkeitsgruppe** = sqlAvailabilitySet<br/> |**Speicher**: Verwaltete Datenträger verwenden.<br/>**Virtuelles Netzwerk** = autoHAVNET<br/>**Subnetz** = sqlsubnet(10.1.1.0/24)<br/>**Öffentliche IP-Adresse:** automatisch generiert.<br/>**Netzwerksicherheitsgruppe** = Keine<br/>**Überwachung und Diagnose** = Aktiviert<br/>**Diagnosespeicherkonto** = Automatisch generiertes Speicherkonto verwenden<br/>**Verfügbarkeitsgruppe** = sqlAvailabilitySet<br/> |
-| Konfiguration des virtuellen Computers: **SQL Server-Einstellungen** |Nicht zutreffend |**SQL-Konnektivität** = Privat (innerhalb von Virtual Network)<br/>**Port** = 1433<br/>**SQL-Authentifizierung** = Deaktiviert<br/>**Speicherkonfiguration** = Allgemein<br/>**Automatisiertes Patchen** = Sonntags, 2:00 Uhr<br/>**Automatisierte Sicherung** = Deaktiviert</br>**Azure Key Vault-Integration** = Deaktiviert |**SQL-Konnektivität** = Privat (innerhalb von Virtual Network)<br/>**Port** = 1433<br/>**SQL-Authentifizierung** = Deaktiviert<br/>**Speicherkonfiguration** = Allgemein<br/>**Automatisiertes Patchen** = Sonntags, 2:00 Uhr<br/>**Automatisierte Sicherung** = Deaktiviert</br>**Azure Key Vault-Integration** = Deaktiviert |
+| Konfiguration des virtuellen Computers: **Einstellungen** |**Storage**: Verwaltete Datenträger verwenden.<br/>**Virtuelles Netzwerk** = autoHAVNET<br/>**Subnetz** = sqlsubnet(10.1.1.0/24)<br/>**Öffentliche IP-Adresse:** automatisch generiert.<br/>**Netzwerksicherheitsgruppe** = Keine<br/>**Überwachung und Diagnose** = Aktiviert<br/>**Diagnosespeicherkonto** = Automatisch generiertes Speicherkonto verwenden<br/>**Verfügbarkeitsgruppe** = sqlAvailabilitySet<br/> |**Storage**: Verwaltete Datenträger verwenden.<br/>**Virtuelles Netzwerk** = autoHAVNET<br/>**Subnetz** = sqlsubnet(10.1.1.0/24)<br/>**Öffentliche IP-Adresse:** automatisch generiert.<br/>**Netzwerksicherheitsgruppe** = Keine<br/>**Überwachung und Diagnose** = Aktiviert<br/>**Diagnosespeicherkonto** = Automatisch generiertes Speicherkonto verwenden<br/>**Verfügbarkeitsgruppe** = sqlAvailabilitySet<br/> |**Storage**: Verwaltete Datenträger verwenden.<br/>**Virtuelles Netzwerk** = autoHAVNET<br/>**Subnetz** = sqlsubnet(10.1.1.0/24)<br/>**Öffentliche IP-Adresse:** automatisch generiert.<br/>**Netzwerksicherheitsgruppe** = Keine<br/>**Überwachung und Diagnose** = Aktiviert<br/>**Diagnosespeicherkonto** = Automatisch generiertes Speicherkonto verwenden<br/>**Verfügbarkeitsgruppe** = sqlAvailabilitySet<br/> |
+| Konfiguration des virtuellen Computers: **SQL Server-Einstellungen** |Nicht verfügbar |**SQL-Konnektivität** = Privat (innerhalb von Virtual Network)<br/>**Port** = 1433<br/>**SQL-Authentifizierung** = Deaktiviert<br/>**Speicherkonfiguration** = Allgemein<br/>**Automatisiertes Patchen** = Sonntags, 2:00 Uhr<br/>**Automatisierte Sicherung** = Deaktiviert</br>**Azure Key Vault-Integration** = Deaktiviert |**SQL-Konnektivität** = Privat (innerhalb von Virtual Network)<br/>**Port** = 1433<br/>**SQL-Authentifizierung** = Deaktiviert<br/>**Speicherkonfiguration** = Allgemein<br/>**Automatisiertes Patchen** = Sonntags, 2:00 Uhr<br/>**Automatisierte Sicherung** = Deaktiviert</br>**Azure Key Vault-Integration** = Deaktiviert |
 
 <br/>
 
@@ -381,7 +381,7 @@ Im nächsten Schritt erstellen Sie drei virtuelle Computer: zwei virtuelle SQL S
 
 Nachdem die drei virtuellen Computer vollständig bereitgestellt wurden, müssen Sie sie in die Domäne **corp.contoso.com** einbinden und „CORP\Install“ Administratorrechte für die Computer gewähren.
 
-### <a name="joinDomain"></a>Einbinden der Server in die Domäne
+### <a name="join-the-servers-to-the-domain"></a><a name="joinDomain"></a>Einbinden der Server in die Domäne
 
 Sie können die virtuellen Computer jetzt in **corp.contoso.com** einbinden. Führen Sie folgende Schritte für die SQL Server-VMs sowie die Dateifreigabe-Zeugenserver aus:
 
@@ -410,7 +410,7 @@ Fügen Sie nach dem Neustart aller virtuellen Computer als Mitglied der Domäne 
 7. Klicken Sie auf **OK**, um das Dialogfeld **Administratoreigenschaften** zu schließen.
 8. Wiederholen Sie die oben genannten Schritte für **sqlserver-1** und **cluster-fsw**.
 
-### <a name="setServiceAccount"></a>Festlegen der SQL Server-Dienstkonten
+### <a name="set-the-sql-server-service-accounts"></a><a name="setServiceAccount"></a>Festlegen der SQL Server-Dienstkonten
 
 Legen Sie das SQL Server-Dienstkonto auf jedem virtuellen SQL Server-Computer fest. Verwenden Sie die Konten, die Sie beim Konfigurieren der Domänenkonten erstellt haben.
 
@@ -486,7 +486,7 @@ Die Methode zum Öffnen der Ports richtet sich nach der Firewalllösung, die Sie
 1. Starten Sie auf dem **Startbildschirm** der ersten SQL Server-Instanz die **Windows-Firewall mit erweiterter Sicherheit**.
 2. Klicken Sie im linken Bereich auf **Eingehende Regeln**. Klicken Sie im rechten Bereich auf **Neue Regel**.
 3. Wählen Sie Für **Regeltyp** die Option **Port**.
-4. Geben Sie für den Port **TCP** an, und geben Sie die entsprechenden Portnummern ein. Siehe folgendes Beispiel:
+4. Geben Sie für den Port **TCP** an, und geben Sie die entsprechenden Portnummern ein. Sehen Sie sich folgendes Beispiel an:
 
    ![SQL-Firewall](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/35-tcpports.png)
 

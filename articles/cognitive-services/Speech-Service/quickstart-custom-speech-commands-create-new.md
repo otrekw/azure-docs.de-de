@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
 ms.openlocfilehash: 4ae8f13b4887bbc41b17defa3f9a20c07ed0cb45
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76155586"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Schnellstart: Erstellen eines benutzerdefinierten Befehls (Vorschau)
@@ -97,7 +97,7 @@ Jetzt können Sie einen Befehl erstellen. Lassen Sie uns ein Beispiel verwenden,
 
 Ein Befehl ist ein Satz von:
 
-| Group            | Beschreibung                                                                                                                 |
+| Group            | BESCHREIBUNG                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | Beispielsätze | Beispieläußerungen, die der Benutzer äußern kann, um diesen Befehl auszulösen.                                                                 |
 | Parameter       | Informationen, die zur Vervollständigung des Befehls erforderlich sind.                                                                                |
@@ -135,7 +135,7 @@ Fügen Sie jetzt eine Vervollständigungsregel hinzu, um dem Benutzer zu antwort
 > [!div class="mx-imgBorder"]
 > ![Erstellen einer Vervollständigungsregel](media/custom-speech-commands/create-basic-completion-response-rule.png)
 
-| Einstellung    | Vorgeschlagener Wert                          | Beschreibung                                        |
+| Einstellung    | Vorgeschlagener Wert                          | BESCHREIBUNG                                        |
 | ---------- | ---------------------------------------- | -------------------------------------------------- |
 | Regelname  | „ConfirmationResponse“                   | Ein Name, der den Zweck der Regel beschreibt.          |
 | Bedingungen | Keine                                     | Bedingungen, die bestimmen, wann die Regel ausgeführt werden kann.    |

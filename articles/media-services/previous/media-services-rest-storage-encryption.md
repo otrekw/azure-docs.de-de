@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 2a5ef1837375cc395a871f9a9860fa8bde572a94
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773600"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Verschlüsseln von Inhalten mit der Speicherverschlüsselung 
@@ -46,7 +46,7 @@ Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Heade
 
 ### <a name="storage-side-encryption"></a>Speicherseitige Verschlüsselung
 
-|Verschlüsselungsoption|Beschreibung|Media Services v2|Media Services v3|
+|Verschlüsselungsoption|BESCHREIBUNG|Media Services v2|Media Services v3|
 |---|---|---|---|
 |Media Services-Speicherverschlüsselung|AES-256-Verschlüsselung, Schlüssel von Media Services verwaltet|Unterstützt<sup>(1)</sup>|Nicht unterstützt<sup>(2)</sup>|
 |[Speicherdienstverschlüsselung für ruhende Daten](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Durch Azure Storage angebotene serverseitige Verschlüsselung – Schlüssel wird von Azure oder vom Kunden verwaltet|Unterstützt|Unterstützt|
@@ -113,7 +113,7 @@ Im Folgenden finden Sie allgemeine Schritte zum Generieren von Inhaltsschlüssel
 
     Bei der Speicherverschlüsselung sollten folgende Eigenschaften im Anforderungstext enthalten sein.
 
-    Eigenschaft im Anforderungstext    | Beschreibung
+    Eigenschaft im Anforderungstext    | BESCHREIBUNG
     ---|---
     Id | Die ContentKey-ID wird in folgendem Format generiert: „nb:kid:UUID:\<NEW GUID“.
     ContentKeyType | Der Inhaltsschlüsseltyp ist eine Ganzzahl, die den Schlüssel definiert. Für das Speicherverschlüsselungsformat ist der Wert 1.

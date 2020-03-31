@@ -1,20 +1,18 @@
 ---
 title: Einrichten Ihrer Anwendung im Veröffentlichungsportal
 description: Anleitung zur Einrichtung Ihrer Anwendung im Cloudveröffentlichungsportal.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricardo.Villalobos
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 1bf89f94d91e0d809428cf8098db0fb37afdb47a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 2676dbf72309eeb51be1f08e7bae2c1502cc671e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814678"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280200"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>Einrichten Ihrer Anwendung im Veröffentlichungsportal
 
@@ -54,7 +52,7 @@ Wenn z.B. der Verleger **„contoso“** ein Angebot mit der Angebots-ID **„sa
 
 In dieser Dropdownliste können Sie das Herausgeberprofil auswählen, unter dem das Angebot veröffentlicht werden soll. Beachten Sie, dass dieses Feld gesperrt wird, sobald ein Angebot online geschaltet wird.
 
-### <a name="name"></a>NAME
+### <a name="name"></a>Name
 
 Hierbei handelt es sich um den Anzeigenamen für Ihr Angebot. Dies ist der Name, der in [AppSource](https://appsource.microsoft.com/) angezeigt wird. Er darf aus höchstens 50 Zeichen bestehen.
 
@@ -101,7 +99,7 @@ Dies ist die Beschreibung, die auf der Detailseite Ihrer Anwendung angezeigt wir
 
 Wählen Sie die Branchen aus, für die Ihre Anwendung (App) am besten geeignet ist. Wenn sich Ihre App auf mehrere Branchen bezieht, können Sie dieses Feld leer lassen.
 
-### <a name="categories"></a>Categories
+### <a name="categories"></a>Kategorien
 
 Wählen Sie die Kategorien aus, die für Ihre App relevant sind. Wählen Sie maximal drei aus.
 

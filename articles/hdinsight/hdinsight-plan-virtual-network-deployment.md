@@ -5,25 +5,25 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 1e6a21e8bf9c284c83af09885aa66b612b52ad7c
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.custom: hdinsightactive
+ms.date: 02/25/2020
+ms.openlocfilehash: 30664d533215cb49fa6f436ec4cf88fa319c3300
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044713"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233558"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Planen eines virtuellen Netzwerks für Azure HDInsight
 
-Dieser Artikel enthält Hintergrundinformationen zur Verwendung von [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) mit Azure HDInsight. Außerdem werden Entwurfs- und Implementierungsentscheidungen erörtert, die vor der Implementierung eines virtuellen Netzwerks für Ihren HDInsight-Cluster getroffen werden müssen. Nachdem die Planungsphase abgeschlossen ist, können Sie mit dem [Create virtual networks for Azure HDInsight clusters (Erstellen von virtuellen Netzwerken für Azure HDInsight-Cluster)](hdinsight-create-virtual-network.md) fortfahren. Weitere Informationen zu den IP-Adressen für die HDInsight-Verwaltung, die für die ordnungsgemäße Konfiguration von Netzwerksicherheitsgruppen und benutzerdefinierten Routen erforderlich sind, finden Sie unter [HDInsight management IP addresses (IP-Adressen für die HDInsight-Verwaltung)](hdinsight-management-ip-addresses.md).
+Dieser Artikel enthält Hintergrundinformationen zur Verwendung von [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) (VNets) mit Azure HDInsight. Außerdem werden Entwurfs- und Implementierungsentscheidungen erörtert, die vor der Implementierung eines virtuellen Netzwerks für Ihren HDInsight-Cluster getroffen werden müssen. Nachdem die Planungsphase abgeschlossen ist, können Sie mit dem [Create virtual networks for Azure HDInsight clusters (Erstellen von virtuellen Netzwerken für Azure HDInsight-Cluster)](hdinsight-create-virtual-network.md) fortfahren. Weitere Informationen zu den IP-Adressen für die HDInsight-Verwaltung, die für die ordnungsgemäße Konfiguration von Netzwerksicherheitsgruppen (NSGs) und benutzerdefinierten Routen erforderlich sind, finden Sie unter [HDInsight-Verwaltungs-IP-Adressen](hdinsight-management-ip-addresses.md).
 
 Die Nutzung eines Azure Virtual Network ermöglicht die folgenden Szenarien:
 
 * Herstellen einer Verbindung mit HDInsight direkt über ein lokales Netzwerk
 * Herstellen einer Verbindung für HDInsight mit Datenspeichern in einem Azure Virtual Network
-* Direktes Zuweisen von [Apache Hadoop](https://hadoop.apache.org/)-Diensten, die nicht öffentlich über das Internet verfügbar sind. Zum Beispiel [Apache Kafka](https://kafka.apache.org/)-APIs oder die [Apache HBase](https://hbase.apache.org/)-Java-API.
+* Direktes Zuweisen von Apache Hadoop-Diensten, die nicht öffentlich über das Internet verfügbar sind. Zum Beispiel Apache Kafka-APIs oder die Apache HBase-Java-API.
 
 > [!IMPORTANT]
 > Wenn Sie einen HDInsight-Cluster in einem VNET erstellen, werden mehrere Netzwerkressourcen erstellt, z. B. NICs und Lastenausgleichsmodule. Löschen Sie diese Netzwerkressourcen **nicht**, da sie benötigt werden, damit Ihr Cluster mit dem VNET ordnungsgemäß funktioniert.
@@ -46,7 +46,7 @@ Sie müssen die folgenden Fragen beantworten, wenn Sie die Installation von HDIn
 
     HDInsight muss über eine uneingeschränkte Kommunikation mit bestimmten IP-Adressen im Azure-Rechenzentrum verfügen. Es gibt auch mehrere Ports, für die die Clientkommunikation durch Firewalls zugelassen sein muss. Weitere Informationen finden Sie im Abschnitt [Steuern des Netzwerkdatenverkehrs](#networktraffic).
 
-## <a id="existingvnet"></a>Hinzufügen von HDInsight zu einem vorhandenen virtuellen Netzwerk
+## <a name="add-hdinsight-to-an-existing-virtual-network"></a><a id="existingvnet"></a>Hinzufügen von HDInsight zu einem vorhandenen virtuellen Netzwerk
 
 Führen Sie die Schritte in diesem Abschnitt aus, um zu erfahren, wie Sie einen neuen HDInsight-Cluster einem vorhandenen Azure Virtual Network hinzufügen.
 
@@ -64,19 +64,19 @@ Führen Sie die Schritte in diesem Abschnitt aus, um zu erfahren, wie Sie einen 
 2. Verwenden Sie Netzwerksicherheitsgruppen, benutzerdefinierte Routen oder virtuelle Network Appliances, um Datenverkehr einzuschränken, der in das bzw. aus dem virtuellen Netzwerk fließt?
 
     Als verwalteter Dienst ist für HDInsight der uneingeschränkte Zugriff auf mehrere IP-Adressen im Azure-Rechenzentrum erforderlich. Aktualisieren Sie alle vorhandenen Netzwerksicherheitsgruppen oder benutzerdefinierten Routen, um die Kommunikation mit diesen IP-Adressen zuzulassen.
-    
+
     HDInsight hostet mehrere Dienste, für die viele verschiedene Ports verwendet werden. Verhindern Sie, dass der Datenverkehr für diesen Port blockiert wird. Eine Liste mit Ports, die für Firewalls von virtuellen Geräten zugelassen werden müssen, finden Sie im Abschnitt „Sicherheit“.
-    
+
     Verwenden Sie die folgenden Azure PowerShell- oder Azure CLI-Befehle, um Ihre vorhandene Sicherheitskonfiguration zu ermitteln:
 
     * Netzwerksicherheitsgruppen
 
         Ersetzen Sie `RESOURCEGROUP` durch den Namen der Ressourcengruppe, die das virtuelle Netzwerk enthält, und geben Sie dann diesen Befehl ein:
-    
+
         ```powershell
         Get-AzNetworkSecurityGroup -ResourceGroupName  "RESOURCEGROUP"
         ```
-    
+
         ```azurecli
         az network nsg list --resource-group RESOURCEGROUP
         ```
@@ -110,7 +110,7 @@ Führen Sie die Schritte in diesem Abschnitt aus, um zu erfahren, wie Sie einen 
    > [!IMPORTANT]  
    > Das Hinzufügen von HDInsight zu einem virtuellen Netzwerk ist ein optionaler Konfigurationsschritt. Achten Sie darauf, beim Konfigurieren des Clusters das virtuelle Netzwerk auszuwählen.
 
-## <a id="multinet"></a>Verbinden von mehreren Netzwerken
+## <a name="connecting-multiple-networks"></a><a id="multinet"></a>Verbinden von mehreren Netzwerken
 
 Die größte Herausforderung bei der Konfiguration von mehreren Netzwerken ist die Namensauflösung zwischen den Netzwerken.
 
@@ -141,7 +141,7 @@ Die Ausführung der folgenden Aktionen ist erforderlich, um die Namensauflösung
 4. Konfigurieren der Weiterleitung zwischen den DNS-Servern. Die Konfiguration richtet sich nach dem Typ des Remotenetzwerks.
 
    * Wenn das Remotenetzwerk ein lokales Netzwerk ist, können Sie das DNS wie folgt konfigurieren:
-        
+
      * __Benutzerdefiniertes DNS__ (im virtuellen Netzwerk):
 
          * Leiten Sie Anforderungen für das DNS-Suffix des virtuellen Netzwerks an den rekursiven Azure-Resolver (168.63.129.16) weiter. Azure verarbeitet Anforderungen von Ressourcen im virtuellen Netzwerk.
@@ -201,7 +201,7 @@ Verwenden Sie die folgenden Schritte, um über das virtuelle Netzwerk eine Verbi
 
 2. Informationen dazu, wie Sie den Knoten und Port ermitteln, auf dem ein Dienst verfügbar ist, finden Sie im Dokument [Von HDInsight verwendete Ports und URIs](./hdinsight-hadoop-port-settings-for-services.md).
 
-## <a id="networktraffic"></a>Steuern des Netzwerkdatenverkehrs
+## <a name="controlling-network-traffic"></a><a id="networktraffic"></a>Steuern des Netzwerkdatenverkehrs
 
 ### <a name="techniques-for-controlling-inbound-and-outbound-traffic-to-hdinsight-clusters"></a>Verfahren zum Steuern von ein- und ausgehendem Datenverkehr für HDInsight-Cluster
 
@@ -235,13 +235,13 @@ Weitere Informationen zum Steuern des ausgehenden Datenverkehrs von HDInsight-Cl
 
 #### <a name="forced-tunneling-to-on-premises"></a>Tunnelerzwingung für lokale Netzwerke
 
-Die Tunnelerzwingung ist eine benutzerdefinierte Routingkonfiguration, bei der für den gesamten Datenverkehr eines Subnetzes die Weiterleitung in ein bestimmtes Netzwerk bzw. an einen bestimmten Standort erzwungen wird, z.B. Ihr lokales Netzwerk. HDInsight bietet __keine__ Unterstützung für die Tunnelerzwingung bei Datenverkehr zu lokalen Netzwerken. 
+Die Tunnelerzwingung ist eine benutzerdefinierte Routingkonfiguration, bei der für den gesamten Datenverkehr eines Subnetzes die Weiterleitung in ein bestimmtes Netzwerk bzw. an einen bestimmten Standort erzwungen wird, z.B. Ihr lokales Netzwerk. HDInsight bietet __keine__ Unterstützung für die Tunnelerzwingung bei Datenverkehr zu lokalen Netzwerken.
 
-## <a id="hdinsight-ip"></a>Erforderliche IP-Adressen
+## <a name="required-ip-addresses"></a><a id="hdinsight-ip"></a>Erforderliche IP-Adressen
 
-Sie sollten sich den Abschnitt [HDInsight management IP addresses (IP-Adressen für die HDInsight-Verwaltung)](hdinsight-management-ip-addresses.md) ansehen, wenn Sie Netzwerksicherheitsgruppen oder benutzerdefinierte Routen zum Steuern von Datenverkehr verwenden.
-    
-## <a id="hdinsight-ports"></a>Erforderliche Ports
+Sie sollten sich den Abschnitt [HDInsight-Verwaltungs-IP-Adressen](hdinsight-management-ip-addresses.md) ansehen, wenn Sie Netzwerksicherheitsgruppen oder benutzerdefinierte Routen zum Steuern von Datenverkehr verwenden.
+
+## <a name="required-ports"></a><a id="hdinsight-ports"></a>Erforderliche Ports
 
 Wenn Sie eine **Firewall** verwenden und extern über bestimmte Ports auf den Cluster zugreifen möchten, müssen Sie möglicherweise Datenverkehr an den für Ihr Szenario erforderlichen Ports zulassen. Standardmäßig ist keine spezifische Whitelist von Ports erforderlich, solange der im vorherigen Abschnitt erläuterte Azure-Verwaltungsdatenverkehr für Cluster an Port 443 zulässig ist.
 
@@ -257,7 +257,10 @@ Wenn Sie einen HDInsight-Cluster erstellen, wird auch ein Lastenausgleich erstel
 
 Verbindungen mit dem Cluster über den öffentlichen Clusterendpunkt `https://<clustername>.azurehdinsight.net` werden über Clustergatewayknoten hergestellt, die als Proxy fungieren. Diese Verbindungen werden mit einem Protokoll namens TLS geschützt. Die Erzwingung höherer TLS-Versionen für Gateways erhöhen die Sicherheit dieser Verbindungen. Weitere Informationen dazu, warum Sie neuere Versionen von TLS verwenden sollten, finden Sie unter [Beheben des Problems mit TLS 1.0](https://docs.microsoft.com/security/solving-tls1-problem).
 
-Sie können die Mindestversionen von TLS steuern, die in den Gatewayknoten für Ihren HDInsight-Cluster unterstützt werden. Verwenden Sie dazu bei der Bereitstellung die Eigenschaft *minSupportedTlsVersion* in einer Resource Manager-Vorlage. Eine Beispielvorlage finden Sie unter [Bereitstellen eines HDInsight-Clusters, für den mindestens Version 1.2. des TLS-Protokolls erzwungen wird](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls). Diese Eigenschaft unterstützt drei Werte: 1.0, 1.1 und 1.2. Diese entsprechen jeweils TLS 1.0 oder höher, TLS 1.1 oder höher und TLS 1.2 oder höher. Ohne Angabe dieser Eigenschaft akzeptieren Azure HDInsight-Cluster standardmäßig TLS 1.2-Verbindungen an öffentlichen HTTPS-Endpunkten sowie ältere Versionen aus Gründen der Abwärtskompatibilität. In Zukunft erzwingt HDInsight mindestens TLS 1.2 für alle Gatewayknotenverbindungen.
+Azure HDInsight-Cluster akzeptieren standardmäßig TLS 1.2-Verbindungen an öffentlichen HTTPS-Endpunkten sowie ältere Versionen aus Gründen der Abwärtskompatibilität. Sie können die TLS-Mindestversion, die auf den Gatewayknoten während der Clustererstellung unterstützt wird, entweder im Azure-Portal oder über eine Resource Manager-Vorlage festlegen. Wählen Sie im Portal während der Clustererstellung auf der Registerkarte **Sicherheit + Netzwerk** die TLS-Version aus. Verwenden Sie für eine Resource Manager-Vorlage zum Zeitpunkt der Bereitstellung die Eigenschaft **minSupportedTlsVersion**. Eine Beispielvorlage finden Sie unter [Bereitstellen eines HDInsight-Clusters, für den mindestens Version 1.2. des TLS-Protokolls erzwungen wird](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls). Diese Eigenschaft unterstützt drei Werte: 1.0, 1.1 und 1.2. Diese entsprechen jeweils TLS 1.0 oder höher, TLS 1.1 oder höher und TLS 1.2 oder höher.
+
+> [!IMPORTANT]
+> Ab dem 30.06.2020 wird in Azure HDInsight für alle HTTPS-Verbindungen die Verwendung von mindestens TLS 1.2 erzwungen. Es wird empfohlen sicherzustellen, dass alle Ihre Clients für die Verarbeitung von TLS 1.2 oder höheren Versionen geeignet sind. Weitere Informationen finden Sie unter [Erzwingen von Azure HDInsight TLS 1.2](https://azure.microsoft.com/updates/azure-hdinsight-tls-12-enforcement/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

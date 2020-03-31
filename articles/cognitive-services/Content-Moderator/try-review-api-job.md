@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: 83ee8e0c0583cba72da8702e196f0f38128f8d8a
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "72935936"
 ---
 # <a name="define-and-use-moderation-jobs-rest"></a>Definieren und Verwenden von Moderationsaufträgen (REST)
@@ -51,7 +51,7 @@ Der Text des REST-Aufrufs enthält ein Feld: **ContentValue**. Fügen Sie bei de
 
 ### <a name="submit-your-request"></a>Senden der Anforderung
 
-Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus** `200 OK`, und im Feld **Antwortinhalt** wird eine ID für den Auftrag angezeigt. Kopieren Sie diese ID für die folgenden Schritte.
+Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus**`200 OK`, und im Feld **Antwortinhalt** wird eine ID für den Auftrag angezeigt. Kopieren Sie diese ID für die folgenden Schritte.
 
 ![Feld „Antwortinhalt“ mit Überprüfungs-ID in der Konsole „Überprüfen – Erstellen“](images/test-drive-job-3.PNG)
 
@@ -61,7 +61,7 @@ Um den Status und Details zu einem ausgeführten oder abgeschlossenen Auftrag ab
 
 ![Regionsauswahl auf der Seite „Job – Get“ (Auftrag – abrufen)](images/test-drive-region.png)
 
-Geben Sie die REST-Aufrufparameter wie im obigen Abschnitt ein. In diesem Schritt haben Sie beim Erstellen des Auftrags **JobId** als eindeutige ID-Zeichenfolge erhalten. Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus** `200 OK`, und im Feld **Antwortinhalt** wird der Auftrag im JSON-Format wie folgt angezeigt:
+Geben Sie die REST-Aufrufparameter wie im obigen Abschnitt ein. In diesem Schritt haben Sie beim Erstellen des Auftrags **JobId** als eindeutige ID-Zeichenfolge erhalten. Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus**`200 OK`, und im Feld **Antwortinhalt** wird der Auftrag im JSON-Format wie folgt angezeigt:
 
 ```json
 {  

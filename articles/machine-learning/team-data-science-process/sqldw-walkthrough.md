@@ -11,19 +11,19 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e64b951a8bb96b25a6ef917b4cebe077d6dd6657
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 96d0a5b2fb59e4612107d8ccbf7285fff7576585
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76718445"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128387"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure Synapse Analytics
 In diesem Tutorial führen wir Sie durch die Erstellung und Bereitstellung eines Machine Learning-Modells mit Azure Synapse Analytics für ein öffentlich zugängliches Dataset: das Dataset [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/). Das erstellte binäre Klassifizierungsmodell sagt vorher, ob ein Trinkgeld für eine Fahrt bezahlt wird.  Die Modelle umfassen die Multiklassenklassifizierung (unabhängig davon, ob es ein Trinkgeld gibt oder nicht) und die Regression (die Verteilung der gezahlten Trinkgeldbeträge).
 
 Das Verfahren folgt dem Workflow des [Team Data Science-Prozesses (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) . Wir zeigen das Einrichten einer Data Science-Umgebung, das Laden der Daten in Azure Synapse Analytics und wie entweder Azure Synapse Analytics oder ein IPython Notebook zum Untersuchen der Daten und Entwickeln von Modellierungsfeatures verwendet werden. Anschließend zeigen wir das Erstellen und Bereitstellen eines Modells mit Azure Machine Learning.
 
-## <a name="dataset"></a>Das Dataset „NYC Taxi Trips“
+## <a name="the-nyc-taxi-trips-dataset"></a><a name="dataset"></a>Das Dataset „NYC Taxi Trips“
 Die „NYC Taxi Trips“-Daten umfassen ca. 20 GB komprimierter CSV-Dateien (~48 GB unkomprimiert) mit Aufzeichnungen von mehr als 173 Millionen einzelner Fahrten mit den zugehörigen Preisen. Jeder Fahrtendatensatz enthält den Start- und Zielort, jeweils mit Uhrzeit, die anonymisierte Lizenznummer des Fahrers („Hack“) und die eindeutige ID des Taxis („Medallion“). Die Daten umfassen alle Fahrten im Jahr 2013. Sie werden für jeden Monat in den folgenden beiden Datasets bereitgestellt:
 
 1. Die Datei **trip_data.csv** enthält Fahrtendetails wie die Anzahl der Fahrgäste, Start- und Zielort, Fahrtdauer und Fahrtlänge. Es folgen einige Beispieleinträge:
@@ -49,7 +49,7 @@ Der **eindeutige Schlüssel** für die Zusammenführung von „trip\_data“ und
 * „hack\_license“ und
 * „pickup\_datetime“.
 
-## <a name="mltasks"></a>Drei Typen von Vorhersageaufgaben
+## <a name="address-three-types-of-prediction-tasks"></a><a name="mltasks"></a>Drei Typen von Vorhersageaufgaben
 Wir formulieren drei Vorhersageprobleme basierend auf *tip\_amount*, um drei Arten von Modellierungsaufgaben zu veranschaulichen:
 
 1. **Binäre Klassifizierung**: Vorhersagen, ob Trinkgeld für eine Fahrt bezahlt wurde. Das bedeutet: *tip\_amount* größer 0 ist ein Positivbeispiel, *tip\_amount* gleich 0 ist ein Negativbeispiel.
@@ -62,7 +62,7 @@ Wir formulieren drei Vorhersageprobleme basierend auf *tip\_amount*, um drei Art
         Class 4 : tip_amount > $20
 3. **Regressionsaufgabe**: Vorhersage des Trinkgeldbetrags für eine Fahrt.
 
-## <a name="setup"></a>Einrichten der Azure Data Science-Umgebung für die erweiterte Analyse
+## <a name="set-up-the-azure-data-science-environment-for-advanced-analytics"></a><a name="setup"></a>Einrichten der Azure Data Science-Umgebung für die erweiterte Analyse
 Zum Einrichten Ihrer Azure Data Science-Umgebung führen Sie die folgenden Schritte durch:
 
 **Erstellen Ihres eigenen Azure Blob Storage-Kontos**
@@ -75,16 +75,16 @@ Zum Einrichten Ihrer Azure Data Science-Umgebung führen Sie die folgenden Schri
   * **Containername** (in dem die Daten in Azure Blob Storage gespeichert werden sollen)
 
 **Stellen Sie Ihre Azure Synapse Analytics-Instanz bereit.**
-Folgen Sie der Dokumentation unter [Erstellen und Abfragen eines Azure SQL Data Warehouse im Azure-Portal](../../sql-data-warehouse/create-data-warehouse-portal.md), um eine Azure Synapse Analytics-Instanz bereitzustellen. Vergewissern Sie sich, dass Sie sich die folgenden Anmeldeinformationen für Azure Synapse Analytics notieren, die in späteren Schritten verwendet werden.
+Folgen Sie der Dokumentation unter [Erstellen und Abfragen eines Azure SQL Data Warehouse im Azure-Portal](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md), um eine Azure Synapse Analytics-Instanz bereitzustellen. Vergewissern Sie sich, dass Sie sich die folgenden Anmeldeinformationen für Azure Synapse Analytics notieren, die in späteren Schritten verwendet werden.
 
 * **Servername**: \<Servername>.database.windows.net
 * **SQLDW-Name (Datenbank)**
 * **Benutzername**
 * **Kennwort**
 
-**Installieren Sie Visual Studio und SQL Server Data Tools.** Anweisungen finden Sie unter [Erste Schritte mit Visual Studio 2019 für SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md).
+**Installieren Sie Visual Studio und SQL Server Data Tools.** Anweisungen finden Sie unter [Erste Schritte mit Visual Studio 2019 für SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md).
 
-**Stellen Sie mit Visual Studio eine Verbindung mit Azure Synapse Analytics her.** Eine Anleitung hierzu finden Sie unter [Herstellen einer Verbindung mit Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-connect-overview.md) in den Schritten 1 und 2.
+**Stellen Sie mit Visual Studio eine Verbindung mit Azure Synapse Analytics her.** Eine Anleitung hierzu finden Sie unter [Herstellen einer Verbindung mit Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-connect-overview.md) in den Schritten 1 und 2.
 
 > [!NOTE]
 > Führen Sie die folgende SQL-Abfrage für die Datenbank aus, die Sie in Azure Synapse Analytics erstellt haben (anstelle der Abfrage, die in Schritt 3 des Verbindungsthemas bereitgestellt wird), um **einen Hauptschlüssel zu erstellen**.
@@ -101,7 +101,7 @@ Folgen Sie der Dokumentation unter [Erstellen und Abfragen eines Azure SQL Data 
 
 **Erstellen Sie einen Machine Learning-Arbeitsbereich unter Ihrem Azure-Abonnement.** Eine Anleitung hierzu finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](../studio/create-workspace.md)beschriebenen Schritte.
 
-## <a name="getdata"></a>Laden der Daten Azure Synapse Analytics
+## <a name="load-the-data-into-azure-synapse-analytics"></a><a name="getdata"></a>Laden der Daten Azure Synapse Analytics
 Öffnen Sie eine Windows PowerShell-Befehlskonsole. Führen Sie die folgenden PowerShell-Befehle zum Herunterladen der Beispiel-SQL-Skriptdateien aus, die wir für Sie auf GitHub bereitstellen. Speichern Sie sie in einem lokalen Verzeichnis, das Sie mit dem Parameter *-DestDir* angeben. Sie können den Wert des Parameters *-DestDir* in ein beliebiges lokales Verzeichnis ändern. Wenn *-DestDir* nicht vorhanden ist, wird es vom PowerShell-Skript erstellt.
 
 > [!NOTE]
@@ -336,7 +336,7 @@ Nach erfolgreicher Ausführung wird folgender Bildschirm angezeigt:
 
 ![Ausgabe von einer erfolgreichen Skriptausführung][20]
 
-## <a name="dbexplore"></a>Durchsuchen von Daten und Entwickeln von Features in Azure Synapse Analytics
+## <a name="data-exploration-and-feature-engineering-in-azure-synapse-analytics"></a><a name="dbexplore"></a>Durchsuchen von Daten und Entwickeln von Features in Azure Synapse Analytics
 In diesem Abschnitt durchsuchen wir Daten und generieren Features durch das direkte Ausführen von SQL-Abfragen für Azure Synapse Analytics mit **Visual Studio Data Tools**. Alle in diesem Abschnitt verwendeten SQL-Abfragen finden Sie im Beispielskript *SQLDW_Explorations.sql*. Diese Datei wurde bereits vom PowerShell-Skript in das lokale Verzeichnis heruntergeladen. Sie können sie auch aus [GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/SQLDW/SQLDW_Explorations.sql) abrufen. In die Datei in GitHub sind jedoch keine Azure Synapse Analytics-Informationen eingebunden.
 
 Verbinden Sie sich mithilfe von Visual Studio unter Verwendung des Anmeldenamens und Kennworts von Azure Synapse Analytics mit Ihrem Azure Synapse Analytics, und öffnen Sie den **SQL-Objekt-Explorer**, um zu überprüfen, ob Datenbank sowie Tabellen importiert wurden. Rufen Sie die Datei *SQLDW_Explorations.sql* ab.
@@ -562,7 +562,7 @@ Wenn Sie bereit sind, mit Azure Machine Learning fortzufahren, können Sie:
 1. die letzte SQL-Abfrage zum Extrahieren und Erstellen von Stichprobendaten speichern und per Kopieren und Einfügen direkt in ein [Import Data][import-data]-Modul in Azure Machine Learning einfügen oder
 2. die extrahierten und verarbeiteten Daten, die Sie für Ihr Modell verwenden möchten, in einer neuen Azure Synapse Analytics-Tabelle speichern und dann die neue Tabelle im [Import Data][import-data]-Modul in Azure Machine Learning verwenden. Das PowerShell-Skript hat diese Aufgabe in einem früheren Schritt für Sie erledigt. Sie können Daten direkt aus dieser Tabelle in das „Import Data“-Modul einlesen.
 
-## <a name="ipnb"></a>Durchsuchen von Daten und Entwickeln von Features in IPython Notebook
+## <a name="data-exploration-and-feature-engineering-in-ipython-notebook"></a><a name="ipnb"></a>Durchsuchen von Daten und Entwickeln von Features in IPython Notebook
 In diesem Abschnitt werden wir Daten durchsuchen und Features generieren, und zwar sowohl mit Python als auch mit SQL-Abfragen für das zuvor erstellte Azure Synapse Analytics. Ein IPython Notebook-Beispiel namens **SQLDW_Explorations.ipynb** und eine Python-Skriptdatei namens **SQLDW_Explorations_Scripts.py** wurden in Ihr lokales Verzeichnis heruntergeladen. Sie stehen auch auf [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/SQLDW)zur Verfügung. Diese beiden Dateien sind in Python-Skripts identisch. Für den Fall, dass Sie keinen IPython Notebook-Server verwenden, wird die Python-Skriptdatei für Sie bereitgestellt. Diese beiden Python-Beispieldateien wurden unter **Python 2.7**entworfen.
 
 Die erforderlichen Azure Synapse Analytics-Informationen im IPython Notebook-Beispiel und die auf Ihren lokalen Computer heruntergeladene Python-Skriptdatei wurden zuvor vom PowerShell-Skript eingebunden. Sie sind ohne Änderung ausführbar.
@@ -802,7 +802,7 @@ In diesem Abschnitt untersuchen wir die Datenverteilungen anhand der Stichproben
     query = '''SELECT TOP 100 * FROM <schemaname>.<nyctaxi_sample>'''
     pd.read_sql(query,conn)
 
-## <a name="mlmodel"></a>Entwickeln von Modellen in Azure Machine Learning
+## <a name="build-models-in-azure-machine-learning"></a><a name="mlmodel"></a>Entwickeln von Modellen in Azure Machine Learning
 Wir können nun mit der Modellerstellung und -bereitstellung in [Azure Machine Learning](https://studio.azureml.net)fortfahren. Die Daten können jetzt für die oben beschriebenen Vorhersageprobleme verwendet werden:
 
 1. **Binäre Klassifizierung**: Vorhersage, ob Trinkgeld für eine Fahrt bezahlt wurde.
@@ -850,7 +850,7 @@ Ein Beispiel für ein binäres Klassifizierungsexperiment zum Lesen von Daten di
 >
 >
 
-## <a name="mldeploy"></a>Bereitstellen von Modellen in Azure Machine Learning
+## <a name="deploy-models-in-azure-machine-learning"></a><a name="mldeploy"></a>Bereitstellen von Modellen in Azure Machine Learning
 Wenn das Modell fertig ist, können Sie es problemlos als Webdienst direkt aus dem Experiment heraus bereitstellen. Weitere Informationen zum Bereitstellen von Azure ML-Webdiensten finden Sie unter [Bereitstellen von Azure Machine Learning-Webdiensten](../studio/deploy-a-machine-learning-web-service.md).
 
 So stellen Sie einen neuen Webdienst bereit:

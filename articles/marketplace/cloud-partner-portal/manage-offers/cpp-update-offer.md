@@ -1,19 +1,18 @@
 ---
 title: Aktualisieren von Marketplace-Angeboten | Azure Marketplace
 description: Aktualisieren von Angeboten in Azure Marketplace und AppSource über das Cloud-Partnerportal
-services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.author: pabutler
-ms.openlocfilehash: b3f579dbdc943b2380c9de3dde6b2ebf4754d4d1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 101369a050770be3acd9534cef6229037fe1c366
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826726"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288511"
 ---
 # <a name="update-azure-marketplace-and-appsource-offers"></a>Aktualisieren von Azure Marketplace- und AppSource-Angeboten
 
@@ -27,7 +26,7 @@ Es gibt verschiedene Arten von Aktualisierungen, die Sie auf Ihr Angebot anwende
 
 Das Portal verfügt auch über Features, die Ihnen bei der Verwaltung von Änderungen helfen, wie z. B. die Möglichkeit, Features zu vergleichen und einen Featureverlauf für ein Angebot anzuzeigen.  Nachdem Sie ein Angebot oder eine SKU geändert haben, muss es oder sie erneut veröffentlicht werden, bevor die Änderungen freigeschaltet werden.  In diesem Artikel werden die verschiedenen Aspekte zur Aktualisierung Ihres Marketplace-Angebots beleuchtet.
 
-## <a name="unpermitted-changes-to-an-offersku"></a>Nicht zugelassene Änderungen an Angeboten/-SKUs
+## <a name="unpermitted-changes-to-an-offersku"></a>Nicht zugelassene Änderungen an Angeboten/SKUs
 
 Einige Attribute von Angeboten oder SKUs können nicht geändert werden, nachdem das Angebot bzw. die SKU im Marketplace freigeschaltet wurde.  Die entsprechenden Felder sind auf der Registerkarte **Editor** des Portals deaktiviert, z. B.:  
 
@@ -70,7 +69,7 @@ Für AppSource-Angebote:
 
 1. Wählen Sie die Registerkarte **Storefrontdetails** aus.
 1. Klicken Sie neben der Bezeichnung **Unterstützte Länder/Regionen** auf **Unterstützte Länder/Regionen**. 
-1. Fügen Sie im Dialogfeld mit den unterstützten Länder/Regionen die Regionen für dieses Angebot hinzu, oder entfernen Sie sie.
+1. Fügen Sie im Dialogfeld mit den unterstützten Ländern/Regionen die Regionen für dieses Angebot hinzu, oder entfernen Sie sie.
 
 Für beide Marketplaces:
 

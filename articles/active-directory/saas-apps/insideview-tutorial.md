@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 2149b8410104b39652b176895a31b42e094265f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67100088"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Tutorial: Azure Active Directory-Integration mit InsideView
@@ -135,7 +135,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit InsideV
 
 1. Führen Sie im Abschnitt **Add a New SAML** (Neue SAML hinzufügen) die folgenden Schritte aus:
 
-    ![Abschnitt „Add a New SAML“ (Neue SAML hinzufügen)](./media/insideview-tutorial/ic794136.png "Abschnitt „Add a New SAML“ (Neue SAML hinzufügen)")
+    ![Abschnitt „Neue SAML hinzufügen“](./media/insideview-tutorial/ic794136.png "Abschnitt „Neue SAML hinzufügen“")
 
     1. Geben Sie im Textfeld **STS Name** (STS-Name) einen Namen für die Konfiguration ein.
 
@@ -224,4 +224,4 @@ Wenn Sie im Zugriffsbereich die Kachel „InsideView“ auswählen, sollten Sie 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

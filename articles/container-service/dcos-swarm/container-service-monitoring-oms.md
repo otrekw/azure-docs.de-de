@@ -8,10 +8,10 @@ ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
 ms.openlocfilehash: 1ab8d1cf3eb38a17f0b3d6c8137e37237498a527
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277320"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>(VERALTET) Überwachen eines Azure Container Service-DC/OS-Clusters mit Log Analytics
@@ -80,7 +80,7 @@ Weitere Informationen zur Log Analytics-Containerlösung finden Sie unter [Log A
 
 Wenn der Log Analytics-Agent nicht auf der richtigen Anzahl von Knoten bereitgestellt wurde oder wenn Sie VM-Skalierungsgruppe durch Hinzufügen weiterer virtueller Computer hochskalieren möchten, können Sie dies durch Skalieren des `msoms`-Diensts erreichen.
 
-Sie können dazu entweder zur Registerkarte „Marathon“ oder „DC/OS UI-Dienste“ wechseln und Ihre Knotenanzahl zentral hochskalieren.
+Sie können dazu entweder zur Registerkarte „Marathon“ oder „DC/OS UI-Dienste“ wechseln und Ihre Knotenanzahl hochskalieren.
 
 ![](media/container-service-monitoring-oms/image12.PNG)
 

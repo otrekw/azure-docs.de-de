@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 30a4dcbd15d8a47d99b3a61879a7e61938d3b133
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160539"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect"></a>Tutorial: Azure Active Directory-Integration in Mitel MiCloud Connect
@@ -128,7 +128,7 @@ Um MiCloud Connect mit einmaligem Anmelden für Azure AD zu konfigurieren, emp
     * **https://portal.shoretelsky.com** , um das Mitel-Kontoportal als Mitel-Standardanwendung zu verwenden
     * **https://teamwork.shoretel.com** , um Teamwork als Mitel-Standardanwendung zu verwenden
 
-    **HINWEIS**: Die Mitel-Standardanwendung ist die Anwendung, auf die zugegriffen wird, wenn ein Benutzer im Zugriffsbereich auf die Kachel „Mitel Connect“ klickt. Auf diese Anwendung wird auch zugegriffen, wenn Sie eine Testeinrichtung in Azure AD vornehmen.
+    **HINWEIS:** Die Mitel-Standardanwendung ist die Anwendung, auf die zugegriffen wird, wenn ein Benutzer im Zugriffsbereich auf die Kachel „Mitel Connect“ klickt. Auf diese Anwendung wird auch zugegriffen, wenn Sie eine Testeinrichtung in Azure AD vornehmen.
 
 8. Klicken Sie im Azure-Portal im Dialogfeld **Grundlegende SAML-Konfiguration** auf **Speichern**.
 
@@ -170,7 +170,7 @@ Beispiel: BrittaSimon@contoso.com.
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert im Feld **Kennwort**.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -228,4 +228,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Mitel Connect“ klicken, sollten 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

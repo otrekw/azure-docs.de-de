@@ -4,10 +4,10 @@ description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für Cont
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.openlocfilehash: a7f40cb0523c2366c47da228e49311c2f9579212
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76715905"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Gewusst wie: Aktualisieren von Azure Monitor für Container zum Aktivieren von Metriken
@@ -20,7 +20,7 @@ Mit Azure Monitor für Container wird Unterstützung für die Erfassung von Metr
 
 Im Rahmen dieses Features werden die folgenden Metriken aktiviert:
 
-| Metriknamespace | Metrik | Beschreibung |
+| Metriknamespace | Metrik | BESCHREIBUNG |
 |------------------|--------|-------------|
 | insights.container/nodes | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Dies sind Metriken vom Typ *node* (Knoten), die *host* als Dimension enthalten. Außerdem enthalten sie den<br> Namen des Knotens als Wert für die Dimension *host*. |
 | insights.container/pods | podCount | Dies sind Metriken vom Typ *pod*. Sie enthalten Folgendes als Dimension: ControllerName, Kubernetes-Namespace, Name, Phase. |

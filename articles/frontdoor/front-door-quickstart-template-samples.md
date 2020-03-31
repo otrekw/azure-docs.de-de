@@ -1,6 +1,6 @@
 ---
-title: Beispiele für Azure Resource Manager-Vorlagen – Azure Front Door Service
-description: Beispiele für Azure Resource Manager-Vorlagen für Azure Front Door Service
+title: 'Beispiele für Azure Resource Manager-Vorlagen: Azure Front Door'
+description: Beispiele für Azure Resource Manager-Vorlagen für Azure Front Door
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -10,16 +10,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/13/2018
 ms.author: sharadag
-ms.openlocfilehash: 2684c9852cb3e946d8ec1840fc166053204dfae0
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: de3b13162e7828542331e7e7a34d0101f7feaf71
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184593"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79471649"
 ---
 # <a name="azure-resource-manager-deployment-model-templates-for-front-door"></a>Vorlagen des Azure Resource Manager-Bereitstellungsmodells für Front Door
 
-Die folgende Tabelle enthält Links zu Vorlagen des Azure Resource Manager-Bereitstellungsmodells für Azure Front Door Service. 
+Die folgende Tabelle enthält Links zu Vorlagen des Azure Resource Manager-Bereitstellungsmodells für Azure Front Door. 
 
 | | |
 | ---| ---|
@@ -38,5 +38,5 @@ Die folgende Tabelle enthält Links zu Vorlagen des Azure Resource Manager-Berei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Erstellen einer Azure Front Door Service-Konfiguration](quickstart-create-front-door.md).
+- Erfahren Sie mehr über das [Erstellen einer Front Door-Instanz](quickstart-create-front-door.md).
 - Informieren Sie sich über die [Funktionsweise von Azure Front Door Service](front-door-routing-architecture.md).

@@ -1,19 +1,18 @@
 ---
 title: Seller Insights – Definitionen
 description: Enthält Definitionen für viele der in Seller Insights verwendeten Begriffe
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 2571f916f6efc61772b2734119e197996e2ffe3c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 082e5f13ae44a58088b7728103415dbfa5a969f1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73809111"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280132"
 ---
 <a name="seller-insights-definitions"></a>Seller Insights – Definitionen
 =======================

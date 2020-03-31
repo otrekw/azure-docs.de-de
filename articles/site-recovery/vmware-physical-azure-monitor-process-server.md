@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 54c161c40c881d7626f79fc9bfe1ec1c160480ae
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082245"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228882"
 ---
 # <a name="monitor-the-process-server"></a>Überwachen des Prozessservers
 
@@ -24,7 +24,7 @@ In diesem Artikel wird beschrieben, wie Sie den [Site Recovery](site-recovery-ov
 
 [Erfahren Sie mehr](vmware-physical-azure-config-process-server-overview.md) über die Rolle und die Bereitstellung von Prozessservern.
 
-## <a name="monitoring-overview"></a>Übersicht zur Überwachung
+## <a name="monitoring-overview"></a>Übersicht über die Überwachung
 
 Da der Prozessserver so viele Rollen hat, insbesondere bei der Zwischenspeicherung, Komprimierung und Übertragung von replizierten Daten in Azure, ist es wichtig, die Integrität des Prozessservers kontinuierlich zu überwachen.
 

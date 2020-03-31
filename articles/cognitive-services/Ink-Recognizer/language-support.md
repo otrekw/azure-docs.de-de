@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: aahi
 ms.openlocfilehash: 36f2fa65f47f824ccc3544f5c13b5f5ee9afd21a
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67721742"
 ---
 # <a name="language-and-region-support-for-the-ink-recognizer-api"></a>Sprach- und Regionsunterstützung für die Freihanderkennungs-API
@@ -39,7 +39,7 @@ In diesem Artikel wird erläutert, welche Sprachen für die Freihanderkennungs-A
 | Niederländisch (Niederlande)                        |     `nl-NL`     |
 | Englisch (Australien)                        |     `en-AU`     |
 | Englisch (Kanada)                           |     `en-CA`     |
-| Englisch (Vereinigtes Königreich)                   |     `en-GB`     |
+| Walisisch (Großbritannien)                   |     `en-GB`     |
 | Englisch (Indien)                            |     `en-IN`     |
 | Englisch (USA)                    |     `en-US`     |
 | Finnisch                                    |     `fi-FI`     |

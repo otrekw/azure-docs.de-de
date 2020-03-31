@@ -1,19 +1,18 @@
 ---
 title: Azure Table | Azure Marketplace
 description: Konfigurieren der Leadverwaltung mit Azure-Tabellen
-services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.author: evansma
-ms.openlocfilehash: 9b24e6eb714c531b49ba08591bf4ed33d0f10101
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: f511a60b533d6d1e0b1ae8847d0ee0fb6be3500c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812340"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288834"
 ---
 # <a name="configure-lead-management-using-an-azure-table"></a>Konfigurieren der Leadverwaltung mit Azure-Tabellen
 
@@ -146,7 +145,7 @@ In den nächsten Schritten richten Sie die Aktion ein, die entsprechend dem Erge
 19. Geben Sie im Fenster **Office 365 Outlook** Informationen in die folgenden Felder ein:
 
     1. **An**: Geben Sie eine E-Mail-Adresse für jede Person ein, die diese Benachrichtigung erhalten soll.
-    1. **Betreff**: Geben Sie einen Betreff für die E-Mail ein. Beispiel:  Neue Leads!
+    1. **Betreff**: Geben Sie einen Betreff für die E-Mail ein. Beispiel: Neue Leads!
     1. **Nachrichtentext**: Fügen Sie den Text hinzu, der in jede E-Mail einbezogen werden soll (optional), und fügen Sie dann den Text `body('Get_entities')?['value']` ein.
 
     >[!Note]

@@ -4,10 +4,10 @@ description: Erstellen eines Tokens mit Berechtigungen, die für bestimmte Repos
 ms.topic: article
 ms.date: 02/13/2020
 ms.openlocfilehash: 7d390bf4d97561e374c70f184534ac4f98a40611
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77444290"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Erstellen eines Token mit repositorybezogenen Berechtigungen
@@ -36,7 +36,7 @@ Zum Konfigurieren von repositorybezogenen Berechtigungen erstellen Sie ein *Toke
 
   Nach der Authentifizierung mit einem Token kann der Benutzer oder Dienst eine oder mehrere  *Aktionen* durchführen, die auf ein oder mehrere Repositorys verteilt sind.
 
-  |Aktion  |Beschreibung  | Beispiel |
+  |Aktion  |BESCHREIBUNG  | Beispiel |
   |---------|---------|--------|
   |`content/delete`    | Entfernen von Daten aus dem Repository  | Löschen eines Repositorys oder eines Manifests |
   |`content/read`     |  Lesen von Daten aus dem Repository |  Pullen eines Artefakts |
@@ -59,7 +59,7 @@ In der folgenden Abbildung wird die Beziehung zwischen Token und Gültigkeitsber
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Azure CLI**: Azure CLI-Befehle zum Erstellen und Verwalten von Token sind in Azure CLI Version 2.0.76 oder höher verfügbar. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+* **Azure CLI**: Azure CLI-Befehle zum Erstellen und Verwalten von Token sind in Azure CLI Version 2.0.76 oder höher verfügbar. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 * **Docker**: Um sich zum Pullen oder Pushen von Images bei der Registrierung zu authentifizieren, benötigen Sie eine lokale Docker-Installation. Docker-Installationsanleitungen stehen für Systeme unter [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) und [Linux](https://docs.docker.com/engine/installation/#supported-platforms) zur Verfügung.
 * **Containerregistrierung**: Erstellen Sie in Ihrem Azure-Abonnement eine Premium-Containerregistrierung, wenn noch keine Registrierung vorhanden ist, oder führen Sie ein Upgrade für eine vorhandene Registrierung durch. Verwenden Sie beispielsweise das [Azure-Portal](container-registry-get-started-portal.md) oder die [Azure CLI](container-registry-get-started-azure-cli.md). 
 

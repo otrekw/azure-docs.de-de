@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33830ce5822b2edee345cf58fc6f2a53d3c863fa
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cd021b9547048e9f5218ce4f2b8b110b15d05963
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227604"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80048557"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Tutorial: Azure Active Directory-Integration mit Deputy
 
@@ -174,13 +174,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Deputy 
 
 ### <a name="configure-deputy-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Deputy
 
-1. Navigieren Sie zu folgender URL:[https://(Ihre-Unterdomäne).deputy.com/exec/config/system_config]( https://(your-subdomain).deputy.com/exec/config/system_config). Wechseln Sie zu **Sicherheitseinstellungen**, und klicken Sie auf **Bearbeiten**.
+1. Navigieren Sie zur folgenden URL: `https://(your-subdomain).deputy.com/exec/config/system_config`. Wechseln Sie zu **Sicherheitseinstellungen**, und klicken Sie auf **Bearbeiten**.
    
-    ![Configure single sign-on](./media/deputy-tutorial/tutorial_deputy_004.png)
+    ![Einmaliges Anmelden konfigurieren](./media/deputy-tutorial/tutorial_deputy_004.png)
 
 2. Führen Sie auf der Seite **Sicherheitseinstellungen** die folgenden Schritte aus.
 
-    ![Configure single sign-on](./media/deputy-tutorial/tutorial_deputy_005.png)
+    ![Einmaliges Anmelden konfigurieren](./media/deputy-tutorial/tutorial_deputy_005.png)
     
     a. Aktivieren der **Anmeldung für soziale Netzwerke**.
    
@@ -217,7 +217,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

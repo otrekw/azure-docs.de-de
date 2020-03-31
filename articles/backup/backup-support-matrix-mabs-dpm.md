@@ -4,10 +4,10 @@ description: Dieser Artikel enthält eine Zusammenfassung der Unterstützung fü
 ms.date: 02/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 6664f7b226b75b364fd1c83f2abc56b5a275eff9
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77582652"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Unterstützungsmatrix für die Sicherung mit Microsoft Azure Backup Server oder System Center DPM
@@ -98,7 +98,7 @@ Sie können MABS auf einem virtuellen Azure Stack-Computer bereitstellen, sodass
 **MABS-Speicher** | Verwenden Sie ein separates Speicherkonto für den virtuellen MABS-Computer. Für den in MABS ausgeführten MARS-Agent ist temporärer Speicher für einen Cachespeicherort und zum Speichern der Datenwiederherstellung aus der Cloud erforderlich.
 **MABS-Speicherpool** | Die Größe des MABS-Speicherpools richtet sich nach der Anzahl und Größe der an den virtuellen MABS-Computer angefügten Datenträger. Für jede Azure Stack-VM-Größe ist eine maximale Anzahl an Datenträgern festgelegt. Beispielsweise umfasst A2 vier Datenträger.
 **MABS-Aufbewahrung** | Bewahren Sie keine gesicherte Daten mehr als fünf Tage auf den lokalen MABS-Datenträgern auf.
-**Zentrales Hochskalieren von MABS** | Zum zentralen Hochskalieren Ihrer Bereitstellung können Sie die Größe des virtuellen MABS-Computers erhöhen, Sie können beispielsweise von der Serie A zu Serie D wechseln.<br/><br/> Sie können ebenso sicherstellen, dass Sie Daten mit Sicherung regelmäßig auf Azure abladen. Sie können ggf. auch zusätzliche MABS-Server erstellen.
+**Hochskalieren von MABS** | Zum Hochskalieren Ihrer Bereitstellung können Sie die Größe des virtuellen MABS-Computers erhöhen, Sie können beispielsweise von der Serie A zu Serie D wechseln.<br/><br/> Sie können ebenso sicherstellen, dass Sie Daten mit Sicherung regelmäßig auf Azure abladen. Sie können ggf. auch zusätzliche MABS-Server erstellen.
 **.NET Framework in MABS** | Auf dem virtuellen MABS-Computer muss .NET Framework 3.3 SP1 oder höher installiert sein.
 **MABS-Domäne** | Der virtuelle MABS-Computer muss mit einer Domäne verknüpft sein. Ein Domänenbenutzer mit Administratorrechten muss MABS auf dem virtuellen Computer installieren.
 **Datensicherung auf virtuellem Azure Stack-Computer** | Sie können Dateien, Ordner und Anwendungen sichern.

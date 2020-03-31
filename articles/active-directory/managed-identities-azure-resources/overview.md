@@ -12,15 +12,15 @@ ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
-ms.date: 09/26/2019
+ms.date: 03/25/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a721d1e486010e22927512985611cccdd99f4505
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 707b03d46615f3acfa0797d1dc0865d53ef75dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78248319"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282119"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Was sind verwaltete Identitäten für Azure-Ressourcen?
 
@@ -56,7 +56,7 @@ Ihr Code kann eine verwaltete Identität zum Anfordern von Zugriffstokens für D
 
 Das folgende Diagramm zeigt, wie verwaltete Dienstidentitäten mit virtuellen Azure-Computern funktionieren:
 
-![Verwaltete Dienstidentitäten und Azure-VMs](media/overview/msi-vm-vmextension-imds-example.png)
+![Verwaltete Dienstidentitäten und Azure-VMs](media/overview/data-flow.png)
 
 |  Eigenschaft    | Systemseitig zugewiesene verwaltete Identität | Benutzerseitig zugewiesene verwaltete Identität |
 |------|----------------------------------|--------------------------------|
@@ -143,7 +143,7 @@ Erfahren Sie, wie Sie eine verwaltete Identität mit anderen Azure-Diensten verw
 * [Azure Data Factory](../../data-factory/data-factory-service-identity.md)
 
 
-## Welche Azure-Dienste unterstützen das Feature?<a name="which-azure-services-support-managed-identity"></a>
+## <a name="what-azure-services-support-the-feature"></a>Welche Azure-Dienste unterstützen das Feature?<a name="which-azure-services-support-managed-identity"></a>
 
 Verwaltete Identitäten für Azure-Ressourcen können zur Authentifizierung bei Diensten verwendet werden, die die Azure AD-Authentifizierung unterstützen. Eine Liste der Azure-Dienste, die die Funktion für verwaltete Identitäten für Azure-Ressourcen unterstützen, finden Sie unter [Services that support managed identities for Azure resources](services-support-msi.md) (Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen).
 

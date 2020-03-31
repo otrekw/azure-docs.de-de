@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: ad81ca75638b9510064b7f2c319d9429881c60d1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c94b670a33f7640d2d6f428287b3ba0fab766bc5
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79475925"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384873"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>Schnellstart: Erstellen eines Service Bus-Namespace mit einem Thema und einem Abonnement anhand einer Azure Resource Manager-Vorlage
 
@@ -38,8 +38,6 @@ Die vollständige Vorlage finden Sie unter [Service Bus namespace with topic and
 > * [Create a Service Bus namespace with topic, subscription, and rule (Erstellen eines Service Bus-Namespace mit Thema, Abonnement und Regel)](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
 > Die neuesten Vorlagen finden Sie, indem Sie im Katalog [Azure-Schnellstartvorlagen][Azure Quickstart Templates] nach **Service Bus** suchen.
-> 
-> 
 
 ## <a name="what-do-you-deploy"></a>Was stellen Sie bereit?
 
@@ -58,6 +56,7 @@ Mit Azure Resource Manager definieren Sie die Parameter für Werte, die Sie bei 
 Die Vorlage definiert die folgenden Parameter:
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
+
 Der Name des zu erstellenden Service Bus-Namespace.
 
 ```json
@@ -67,6 +66,7 @@ Der Name des zu erstellenden Service Bus-Namespace.
 ```
 
 ### <a name="servicebustopicname"></a>serviceBusTopicName
+
 Der Name des Themas, das im Service Bus-Namespace erstellt wird.
 
 ```json
@@ -76,6 +76,7 @@ Der Name des Themas, das im Service Bus-Namespace erstellt wird.
 ```
 
 ### <a name="servicebussubscriptionname"></a>serviceBusSubscriptionName
+
 Der Name des Abonnements, das im Service Bus-Namespace erstellt wird.
 
 ```json
@@ -85,6 +86,7 @@ Der Name des Abonnements, das im Service Bus-Namespace erstellt wird.
 ```
 
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
+
 Die Service Bus-API-Version der Vorlage.
 
 ```json
@@ -95,7 +97,9 @@ Die Service Bus-API-Version der Vorlage.
            "description": "Service Bus ApiVersion used by the template" 
        }
 ```
+
 ## <a name="resources-to-deploy"></a>Bereitzustellende Ressourcen
+
 Erstellt einen standardmäßigen Service Bus-Namespace des Typs **Messaging**mit Thema und Abonnement.
 
 ```json
@@ -134,19 +138,23 @@ Erstellt einen standardmäßigen Service Bus-Namespace des Typs **Messaging**mit
 JSON-Syntax und Eigenschaften finden Sie unter [Namespaces](/azure/templates/microsoft.servicebus/namespaces), [Themen](/azure/templates/microsoft.servicebus/namespaces/topics) und [Abonnements](/azure/templates/microsoft.servicebus/namespaces/topics/subscriptions).
 
 ## <a name="commands-to-run-deployment"></a>Befehle zum Ausführen der Bereitstellung
+
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ## <a name="powershell"></a>PowerShell
-```powershell
+
+```powershell-interactive
 New-AzureResourceGroupDeployment -Name \<deployment-name\> -ResourceGroupName \<resource-group-name\> -TemplateUri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-and-subscription/azuredeploy.json>
 ```
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-```azurecli
+
+```azurecli-interactive
 az group deployment create \<my-resource-group\> --name \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-and-subscription/azuredeploy.json>
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Da Sie nun Ressourcen mit Azure Resource Manager erstellt und bereitgestellt haben, lesen Sie die folgenden Artikel, und erfahren Sie, wie Sie diese Ressourcen verwalten können:
 
 * [Verwalten von Service Bus mit PowerShell](service-bus-manage-with-ps.md)

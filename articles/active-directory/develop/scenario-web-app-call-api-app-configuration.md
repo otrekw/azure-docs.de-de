@@ -15,10 +15,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 374b215a737efbe3d421b6dc49af01303ec54473
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76759159"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Web-App, die Web-APIs aufruft: Codekonfiguration
@@ -34,7 +34,7 @@ In den Szenarien [Web-App, die Benutzer anmeldet](scenario-web-app-sign-user-ove
 
 Die folgenden Bibliotheken in der Microsoft-Authentifizierungsbibliothek (Microsoft Authentification Library, MSAL) unterstützen den Autorisierungscodeflow für Web-Apps:
 
-| MSAL-Bibliothek | Beschreibung |
+| MSAL-Bibliothek | BESCHREIBUNG |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Unterstützung für .NET Framework- und .NET Core-Plattformen. Nicht unterstützt werden UWP (Universal Windows Platform), Xamarin.iOS und Xamarin.Android, da diese Plattformen zum Erstellen öffentlicher Clientanwendungen verwendet werden. |
 | ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL für Python | Unterstützung für Python-Webanwendungen. |
@@ -42,7 +42,7 @@ Die folgenden Bibliotheken in der Microsoft-Authentifizierungsbibliothek (Micros
 
 Wählen Sie die Registerkarte für die Plattform aus, die Sie interessiert:
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 Da die Benutzeranmeldung an die Middleware von OpenID Connect (OIDC) delegiert wird, müssen Sie mit dem OIDC-Prozess in Interaktion treten. Diese Interaktion hängt von dem Framework ab, das Sie verwenden.
 
@@ -57,7 +57,7 @@ Die Codebeispiele in diesem und dem folgenden Artikel stammen aus [Inkrementelle
 > [!NOTE]
 > Um die hier aufgeführten Codebeispiele in vollem Umfang zu verstehen, müssen Sie mit den [ASP.NET Core-Grundlagen](https://docs.microsoft.com/aspnet/core/fundamentals) und insbesondere mit der [Abhängigkeitsinjektion](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) und den [Optionen](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options) vertraut sein.
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 Da die Benutzeranmeldung an die Middleware von OpenID Connect (OIDC) delegiert wird, müssen Sie mit dem OIDC-Prozess in Interaktion treten. Diese Interaktion hängt von dem Framework ab, das Sie verwenden.
 
@@ -69,12 +69,12 @@ Bei ASP.NET Core abonnieren Sie OIDC-Middlewareereignisse:
 
 Die Codebeispiele in diesem und dem folgenden Artikel stammen aus dem [ASP.NET-Web-App-Beispiel](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect). Dieses Beispiel enthält auch ausführliche Informationen zur Implementierung.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Die Codebeispiele in diesem und dem folgenden Artikel stammen aus dem Web-App-Beispiel [Java-Webanwendung für den Aufruf von Microsoft Graph](https://github.com/Azure-Samples/ms-identity-java-webapp), bei dem MSAL für Java verwendet wird.
 Im Beispiel wird aktuell von MSAL für Java die Autorisierungscode-URL erzeugt und die Navigation zum Autorisierungsendpunkt für Microsoft Identity Platform gesteuert. Es ist auch möglich, die Sprint-Sicherheit für die Anmeldung des Benutzers zu verwenden. Das Beispiel enthält auch ausführliche Informationen zur Implementierung.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Die Codebeispiele in diesem und dem folgenden Artikel stammen aus dem Web-App-Beispiel [Python-Webanwendung für den Aufruf von Microsoft Graph](https://github.com/Azure-Samples/ms-identity-python-webapp), bei dem MSAL.Python verwendet wird.
 Im Beispiel wird derzeit von MSAL.Python die Autorisierungscode-URL erzeugt und die Navigation zum Autorisierungsendpunkt für Microsoft Identity Platform gesteuert. Das Beispiel enthält auch ausführliche Informationen zur Implementierung.
@@ -83,7 +83,7 @@ Im Beispiel wird derzeit von MSAL.Python die Autorisierungscode-URL erzeugt und 
 
 ## <a name="code-that-redeems-the-authorization-code"></a>Code, der den Autorisierungscode einlöst
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 ### <a name="startupcs"></a>Startup.cs
 
@@ -334,7 +334,7 @@ public class TokenAcquisition : ITokenAcquisition
 
 `AcquireTokenByAuthorizationCode` ist tatsächlich die Methode, die den von ASP.NET angeforderten Autorisierungscode einlöst und die Token abruft, die dem MSAL.NET-Benutzertokencache hinzugefügt werden. Aus dem Cache werden die Token anschließend in den ASP.NET Core-Controllern verwendet.
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 Die Verarbeitung durch ASP.NET ist mit der von ASP.NET Core vergleichbar, mit der Ausnahme, dass die Konfiguration von OpenID Connect und das Abonnement des `OnAuthorizationCodeReceived`-Ereignisses in der Datei [App_Start\Startup.Auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) erfolgen. Die Konzepte sind ebenfalls mit denen von ASP.NET Core vergleichbar, mit der Ausnahme, dass Sie in ASP.NET den `RedirectUri` in [Web.config#L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15) angeben müssen. Diese Konfiguration ist etwas weniger stabil als die in ASP.NET Core, da Sie beim Bereitstellen Ihrer Anwendung Änderungen vornehmen müssen.
 
@@ -405,7 +405,7 @@ public partial class Startup
 }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 Lesen Sie [Web-App, die Benutzer anmeldet: Codekonfiguration](scenario-web-app-sign-user-app-configuration.md?tabs=java#initialization-code), um zu verstehen, wie das Java-Beispiel den Autorisierungscode abruft. Nachdem die App den Code erhalten hat, geht [AuthFilter.java#L51-L56](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java#L51-L56) wie folgt vor:
 
@@ -474,7 +474,7 @@ Die `getAuthResultByAuthCode`-Methode ist in [AuthHelper.java#L176](https://gith
     }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Der Authorisierungscodeflow wird angefordert, wie in [Web-App, die Benutzer anmeldet: Codekonfiguration](scenario-web-app-sign-user-app-configuration.md?tabs=python#initialization-code) gezeigt. Der Empfang des Codes erfolgt dann über die Funktion `authorized` über Flask-Routen von der `/getAToken`-URL. Den vollständigen Kontext dieses Codes finden Sie unter [app.py#L30-L44](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/app.py#L30-L44):
 
@@ -507,7 +507,7 @@ Die Verwendung von Clientassertionen ist ein erweitertes Szenario, das unter [Cl
 > Die Tokencache-Implementierung für Web-Apps oder Web-APIs unterscheidet sich von der Implementierung für Desktopanwendungen, die häufig [dateibasiert](scenario-desktop-acquire-token.md#file-based-token-cache) ist.
 > Aus Sicherheits- und Leistungsgründen ist es wichtig, sicherzustellen, dass es für Web-Apps und Web-APIs ein Tokencache pro Benutzerkonto gibt. Sie müssen den Tokencache für jedes Konto serialisieren.
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 Im ASP.NET Core-Tutorial wird die Abhängigkeitsinjektion verwendet, um Ihnen die Entscheidung über die Tokencache-Implementierung in der Datei „Startup.cs“ für Ihre Anwendung zu ermöglichen. Microsoft.Identity.Web enthält eine Reihe vordefinierter Tokencache-Serialisierungsmodule, die unter [Tokencacheserialisierung](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/Microsoft.Identity.Web/README.md#token-cache-serialization) beschrieben sind. Eine interessante Möglichkeit besteht darin, [verteilte Arbeitsspeichercaches](https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache) von ASP.NET Core auszuwählen:
 
@@ -540,7 +540,7 @@ services.AddDistributedSqlServerCache(options =>
 
 Ausführliche Informationen zu den Tokencacheanbietern finden Sie auch in den [Tutorials zu ASP.NET Core-Web-Apps | Tokencaches](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache) in der entsprechenden Phase des Tutorials.
 
-# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+# <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 Die Tokencache-Implementierung für Web-Apps oder Web-APIs unterscheidet sich von der Implementierung für Desktopanwendungen, die häufig [dateibasiert](scenario-desktop-acquire-token.md#file-based-token-cache) ist.
 
@@ -565,7 +565,7 @@ public static class MsalAppBuilder
   }
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 MSAL Java stellt Methoden zum Serialisieren und Deserialisieren des Tokencaches bereit. Das Java-Beispiel behandelt die Serialisierung aus der Sitzung, wie in der `getAuthResultBySilentFlow`-Methode in [AuthHelper.java#L99-L122](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L99-L122) gezeigt:
 
@@ -598,7 +598,7 @@ IAuthenticationResult getAuthResultBySilentFlow(HttpServletRequest httpRequest, 
 
 Die Details der `SessionManagementHelper`-Klasse werden im [MSAL-Beispiel für Java](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/SessionManagementHelper.java) bereitgestellt.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Im Python-Beispiel wird die Vorgabe „ein Cache pro Konto“ durch erneutes Erstellen einer vertraulichen Clientanwendung für jede Anforderung und anschließende Serialisierung im Flask-Sitzungscache sichergestellt:
 

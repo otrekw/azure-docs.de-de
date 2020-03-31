@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: d44391624e29d2bdd182bb07452e0e8def2d1407
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67656692"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Tutorial: Azure Active Directory-Integration mit ITRP
@@ -139,17 +139,17 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ITRP die
 
 1. Wählen Sie im oberen Fensterbereich das Symbol **Settings** (Einstellungen) aus.
 
-    ![Symbol „Settings“ (Einstellungen)](./media/itrp-tutorial/ic775570.png "Symbol „Settings“ (Einstellungen)")
+    ![Symbol „Einstellungen“](./media/itrp-tutorial/ic775570.png "Symbol „Einstellungen“")
 
 1. Wählen Sie im linken Bereich **Single Sign-On** (Einmaliges Anmelden) aus:
 
-    ![Auswählen von „Single Sign-On“ (Einmaliges Anmelden)](./media/itrp-tutorial/ic775571.png "Auswählen von „Single Sign-On“ (Einmaliges Anmelden)")
+    ![Auswählen von „Einmaliges Anmelden“](./media/itrp-tutorial/ic775571.png "„Einmaliges Anmelden“ auswählen")
 
 1. Führen Sie im Konfigurationsabschnitt **Single Sign-On** (Einmaliges Anmelden) die folgenden Schritte aus:
 
-    ![Abschnitt „Single Sign-On“ (Einmaliges Anmelden)](./media/itrp-tutorial/ic775572.png "Abschnitt „Single Sign-On“ (Einmaliges Anmelden)")
+    ![Abschnitt „Einmaliges Anmelden“](./media/itrp-tutorial/ic775572.png "Abschnitt „Einmaliges Anmelden“")
 
-    ![Abschnitt „Single Sign-On“ (Einmaliges Anmelden)](./media/itrp-tutorial/ic775573.png "Abschnitt „Single Sign-On“ (Einmaliges Anmelden)")
+    ![Abschnitt „Einmaliges Anmelden“](./media/itrp-tutorial/ic775573.png "Abschnitt „Einmaliges Anmelden“")
 
     1. Wählen Sie **Aktiviert**.
 
@@ -221,19 +221,19 @@ Zum Erstellen eines Benutzerkontos führen Sie die folgenden Schritte aus:
 
 1. Wählen Sie im oberen Fensterbereich das Symbol **Records** (Datensätze) aus.
 
-    ![Symbol „Records“ (Datensätze)](./media/itrp-tutorial/ic775575.png "Symbol „Records“ (Datensätze)")
+    ![Symbol „Datensätze“](./media/itrp-tutorial/ic775575.png "Symbol „Datensätze“")
 
 1. Wählen Sie im Menü **People** (Personen) aus:
 
-    ![Auswählen von „People“ (Personen)](./media/itrp-tutorial/ic775587.png "Auswählen von „People“ (Personen)")
+    ![Auswählen von „Personen“](./media/itrp-tutorial/ic775587.png "„Personen“ auswählen")
 
 1. Wählen Sie das Pluszeichen ( **+** ) aus, um eine neue Person hinzuzufügen:
 
-    ![Auswählen des Pluszeichens](./media/itrp-tutorial/ic775576.png "Auswählen des Pluszeichens")
+    ![Auswählen des Pluszeichens](./media/itrp-tutorial/ic775576.png "Pluszeichen auswählen")
 
 1. Führen Sie im Dialogfeld **Add New Person** (Neue Person hinzufügen) die folgenden Schritte aus:
 
-    ![Dialogfeld „Add New Person“ (Neue Person hinzufügen)](./media/itrp-tutorial/ic775577.png "Dialogfeld „Add New Person“ (Neue Person hinzufügen)")
+    ![Dialogfeld „Neue Person hinzufügen“](./media/itrp-tutorial/ic775577.png "Dialogfeld „Neue Person hinzufügen“")
 
     1. Geben Sie den Namen und die E-Mail-Adresse eines gültigen Azure AD-Kontos ein, das Sie hinzufügen möchten.
 
@@ -254,4 +254,4 @@ Wenn Sie im Zugriffsbereich die Kachel „ITRP“ auswählen, sollten Sie automa
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

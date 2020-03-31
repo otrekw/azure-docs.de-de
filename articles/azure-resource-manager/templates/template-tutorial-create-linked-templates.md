@@ -5,16 +5,16 @@ author: mumian
 ms.date: 12/03/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: dab69c32f7277cd5d746e001b36118e673401bca
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: e1cce566fb7aab286c57f32d9348e51dd0a7c1ee
+ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250133"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80239322"
 ---
-# <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Tutorial: Erstellen verknüpfter Azure Resource Manager-Vorlagen
+# <a name="tutorial-create-linked-arm-templates"></a>Tutorial: Erstellen von verknüpften ARM-Vorlagen
 
-Informationen zum Erstellen verknüpfter Azure Resource Manager-Vorlagen. Mit verknüpften Vorlagen können Sie eine Vorlage durch eine andere Vorlage aufrufen lassen. Dies eignet sich hervorragend zum Modularisieren von Vorlagen. In diesem Tutorial verwenden Sie die gleiche Vorlage wie unter [Tutorial: Erstellen von Azure Resource Manager-Vorlagen mit abhängigen Ressourcen](./template-tutorial-create-templates-with-dependent-resources.md). Mit dieser Vorlage werden ein virtueller Computer, ein virtuelles Netzwerk und andere abhängige Ressourcen (einschließlich eines Speicherkontos) erstellt. Sie separieren die Erstellung der Speicherkontoressource in einer verknüpften Vorlage.
+Es wird beschrieben, wie Sie verknüpfte ARM-Vorlagen (Azure Resource Manager) erstellen. Mit verknüpften Vorlagen können Sie eine Vorlage durch eine andere Vorlage aufrufen lassen. Dies eignet sich hervorragend zum Modularisieren von Vorlagen. In diesem Tutorial verwenden Sie die gleiche Vorlage wie unter [Tutorial: Erstellen von ARM-Vorlagen mit abhängigen Ressourcen](./template-tutorial-create-templates-with-dependent-resources.md). Mit dieser Vorlage werden ein virtueller Computer, ein virtuelles Netzwerk und andere abhängige Ressourcen (z. B. ein Speicherkonto) erstellt. Sie separieren die Erstellung der Speicherkontoressource in einer verknüpften Vorlage.
 
 Das Aufrufen einer verknüpften Vorlage ähnelt einem Funktionsaufruf.  Außerdem erfahren Sie, wie Sie Parameterwerte an die verknüpfte Vorlage übergeben und „Rückgabewerte“ aus der verknüpften Vorlage abrufen.
 
@@ -39,18 +39,18 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
-* Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von Azure Resource Manager-Vorlagen](use-vs-code-to-create-template.md).
+* Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Weitere Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von ARM-Vorlagen](use-vs-code-to-create-template.md).
 * Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Administratorkonto des virtuellen Computers. Hier sehen Sie ein Beispiel für die Kennwortgenerierung:
 
     ```console
     openssl rand -base64 32
     ```
 
-    Azure Key Vault dient zum Schützen von kryptografischen Schlüsseln und anderen Geheimnissen. Weitere Informationen finden Sie im [Tutorial: Integrieren von Azure Key Vault in die Resource Manager-Vorlagenbereitstellung](./template-tutorial-use-key-vault.md). Wir empfehlen Ihnen auch, Ihr Kennwort alle drei Monate zu aktualisieren.
+    Azure Key Vault dient zum Schützen von kryptografischen Schlüsseln und anderen Geheimnissen. Weitere Informationen finden Sie im [Tutorial: Integrieren von Azure Key Vault in Ihre Bereitstellung einer ARM-Vorlage](./template-tutorial-use-key-vault.md). Wir empfehlen Ihnen auch, Ihr Kennwort alle drei Monate zu aktualisieren.
 
 ## <a name="open-a-quickstart-template"></a>Öffnen einer Schnellstartvorlage
 
-„Azure-Schnellstartvorlagen“ ist ein Repository für Resource Manager-Vorlagen. Statt eine Vorlage von Grund auf neu zu erstellen, können Sie eine Beispielvorlage verwenden und diese anpassen. Die in diesem Tutorial verwendete Vorlage heißt [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Bereitstellen eines einfachen virtuellen Windows-Computers). Hierbei handelt es sich um die gleiche Vorlage, die auch unter [Tutorial: Erstellen von Azure Resource Manager-Vorlagen mit abhängigen Ressourcen](./template-tutorial-create-templates-with-dependent-resources.md) verwendet haben. Sie speichern zwei Kopien der gleichen Vorlage, die verwendet werden sollen als:
+„Azure-Schnellstartvorlagen“ ist ein Repository für ARM-Vorlagen. Statt eine Vorlage von Grund auf neu zu erstellen, können Sie eine Beispielvorlage verwenden und diese anpassen. Die in diesem Tutorial verwendete Vorlage heißt [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Bereitstellen eines einfachen virtuellen Windows-Computers). Hierbei handelt es sich um die gleiche Vorlage, die auch unter [Tutorial: Erstellen von ARM-Vorlagen mit abhängigen Ressourcen](./template-tutorial-create-templates-with-dependent-resources.md) verwendet wird. Sie speichern zwei Kopien der gleichen Vorlage, die verwendet werden sollen als:
 
 * **Die Hauptvorlage**: Erstellen aller Ressourcen mit Ausnahme des Speicherkontos.
 * **Die verknüpfte Vorlage**: Erstellen des Speicherkontos.
@@ -165,7 +165,7 @@ Die verknüpfte Vorlage erstellt ein Speicherkonto. Die verknüpfte Vorlage kann
 
 ## <a name="upload-the-linked-template"></a>Hochladen der verknüpften Vorlage
 
-Von dort aus, wo Sie die Bereitstellung ausführen, muss der Zugriff auf die Hauptvorlage und die verknüpfte Vorlage möglich sein. In diesem Tutorial verwenden Sie die Cloud Shell-Bereitstellungsmethode, die Sie auch unter [Tutorial: Erstellen von Azure Resource Manager-Vorlagen mit abhängigen Ressourcen](./template-tutorial-create-templates-with-dependent-resources.md) verwendet haben. Die Hauptvorlage (azuredeploy.json) wird in die Shell hochgeladen. Die verknüpfte Vorlage (linkedTemplate.json) muss an einem sicheren Ort freigegeben werden. Das folgende PowerShell-Skript erstellt ein Azure Storage-Konto, lädt die Vorlage in das Storage-Konto hoch und generiert dann ein SAS-Token, um eingeschränkten Zugriff auf die Vorlagendatei zu gewähren. Zur Vereinfachung des Tutorials lädt das Skript eine vollständige verknüpfte Vorlage aus einem GitHub-Repository herunter. Wenn Sie die von Ihnen erstellte verknüpfte Vorlage verwenden möchten, können Sie sie mit [Cloud Shell](https://shell.azure.com) hochladen und das Skript zur Verwendung Ihrer eigenen verknüpften Vorlage anpassen.
+Von dort aus, wo Sie die Bereitstellung ausführen, muss der Zugriff auf die Hauptvorlage und die verknüpfte Vorlage möglich sein. In diesem Tutorial verwenden Sie die Cloud Shell-Bereitstellungsmethode, die Sie auch unter [Tutorial: Erstellen von ARM-Vorlagen mit abhängigen Ressourcen](./template-tutorial-create-templates-with-dependent-resources.md) verwendet haben. Die Hauptvorlage (azuredeploy.json) wird in die Shell hochgeladen. Die verknüpfte Vorlage (linkedTemplate.json) muss an einem sicheren Ort freigegeben werden. Das folgende PowerShell-Skript erstellt ein Azure Storage-Konto, lädt die Vorlage in das Storage-Konto hoch und generiert dann ein SAS-Token, um eingeschränkten Zugriff auf die Vorlagendatei zu gewähren. Zur Vereinfachung des Tutorials lädt das Skript eine vollständige verknüpfte Vorlage aus einem GitHub-Repository herunter. Wenn Sie die von Ihnen erstellte verknüpfte Vorlage verwenden möchten, können Sie sie mit [Cloud Shell](https://shell.azure.com) hochladen und das Skript zur Verwendung Ihrer eigenen verknüpften Vorlage anpassen.
 
 > [!NOTE]
 > Das Skript gibt vor, dass das SAS-Token innerhalb von acht Stunden verwendet werden muss. Falls Sie mehr Zeit zum Absolvieren dieses Tutorials benötigen, verlängern Sie die Ablaufzeit.
@@ -266,7 +266,7 @@ Die Hauptvorlage hat den Namen „azuredeploy.json“.
 
 ## <a name="configure-dependency"></a>Konfigurieren der Abhängigkeit
 
-Wie unter [Tutorial: Erstellen von Azure Resource Manager-Vorlagen mit abhängigen Ressourcen](./template-tutorial-create-templates-with-dependent-resources.md) beschrieben, hängt die VM-Ressource vom Speicherkonto ab:
+Wie unter [Tutorial: Erstellen von ARM-Vorlagen mit abhängigen Ressourcen](./template-tutorial-create-templates-with-dependent-resources.md) beschrieben, hängt die VM-Ressource vom Speicherkonto ab:
 
 ![Abhängigkeitsdiagramm für Azure Resource Manager-Vorlagen](./media/template-tutorial-create-linked-templates/resource-manager-template-visual-studio-code-dependency-diagram.png)
 

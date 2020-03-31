@@ -10,17 +10,15 @@ ms.assetid: e65c8fe1-7991-4a2a-86ef-fd80a7a06269
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
-ms.date: 10/17/2019
-ms.openlocfilehash: 8179e36342f4f3544a1ecd503d7f136ea437d374
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 03/24/2020
+ms.openlocfilehash: c1772ceb514e46542129759711f2d45db39abf82
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79217818"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371971"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Was ist Machine Learning Studio (klassisch)?
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -29,6 +27,9 @@ Microsoft Azure Machine Learning Studio (klassisch) ist ein zusammenarbeitsorien
 Machine Learning Studio (klassisch) vereint Data Science mit Predictive Analytics, Cloudressourcen und Ihren Daten.
 
 ## <a name="the-machine-learning-studio-classic--interactive-workspace"></a>Der interaktive Arbeitsbereich von Machine Learning Studio (klassisch)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 Für die Entwicklung eines prädiktiven Analysemodells verwendet man typischerweise Daten aus einer oder mehreren Quellen, transformiert und analysiert diese Daten mithilfe verschiedener Datenbearbeitungen und Statistikfunktionen und generiert einen Ergebnissatz. Das Entwickeln eines solchen Modells ist ein iterativer Prozess. Sie ändern die verschiedenen Funktionen und deren Parameter, und die Ergebnisse nähern sich an, bis Sie der Ansicht sind, dass Sie ein trainiertes, effektives Modell erreicht haben.
 
 Azure Machine Learning Studio (klassisch) stellt Ihnen einen interaktiven, visuellen Arbeitsbereich zur Verfügung, in dem Sie ein Vorhersageanalysemodell ganz einfach entwickeln, testen und durchlaufen können. Dazu ziehen Sie ***Datasets*** und ***Analysemodule*** per Drag & Drop auf eine interaktive Canvas und verbinden sie zu einem ***Experiment***, das Sie dann in Machine Learning Studio (klassisch) ausführen. Für die Iteration des Modelldesigns bearbeiten Sie das Experiment, speichern ggf. eine Kopie und führen es erneut aus. Wenn Sie bereit sind, können Sie Ihr ***Trainingsexperiment*** in ein ***Vorhersageexperiment*** konvertieren und anschließend als ***Webdienst*** veröffentlichen, damit andere Benutzer auf das Modell zugreifen können.
@@ -36,30 +37,6 @@ Azure Machine Learning Studio (klassisch) stellt Ihnen einen interaktiven, visue
 Es ist keinerlei Programmierung erforderlich. Sie müssen lediglich Datasets und Module auf der grafischen Benutzeroberfläche miteinander verbinden, um Ihr Predictive Analytics-Modell zu erstellen.
 
 ![Azure Machine Learning Studio-Diagramm (klassisch): Erstellen von Experimenten, Lesen von Daten aus vielen Quellen, Schreiben der ausgewerteten Daten, Erstellen von Modellen.](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
-
-<a name="compare"></a>
-## <a name="how-does-machine-learning-studio-classic-differ-from-azure-machine-learning"></a>Inwiefern unterscheidet sich Azure Machine Studio (klassisch) von Azure Machine Learning?
-
-In [Azure Machine Learning](../overview-what-is-azure-ml.md) stehen SDKs **und** der Azure Machine Learning-Designer (Vorschauversion) zur Verfügung, um im Handumdrehen Daten vorzubereiten und Machine Learning-Modell zu trainieren und bereitzustellen. Der Designer bietet eine ähnliche Drag & Drop-Umgebung wie Studio (klassisch). Im Gegensatz zur proprietären Computeplattform von Studio (klassisch) nutzt der Designer jedoch Ihre eigenen Computeressourcen und ist vollständig in Azure Machine Learning integriert.
-
-Im Anschluss finden Sie eine kurze Gegenüberstellung:
-
-|| Machine Learning Studio (klassisch) | Azure Machine Learning |
-|---| --- | --- |
-| Drag & Drop-Oberfläche | Ja | Ja (siehe [Was ist der Azure Machine Learning-Designer (Vorschau)?](../concept-designer.md)) |
-| Experiment | Skalierbar (Limit für Trainingsdaten: 10 GB) | Skalieren mit Computeziel |
-| Module für die Drag & Drop-Oberfläche | Mehrere | Anfänglicher Satz beliebter [Module](../algorithm-module-reference/module-reference.md)|
-|Trainieren von Computezielen| Proprietäres Computeziel, nur CPU-Unterstützung| Unterstützt Azure Machine Learning Compute (GPU oder CPU) und virtuelle Notebook-Computer.<br/>([Weitere Computeziele werden im SDK unterstützt.](../concept-compute-target.md#train))|
-|Rückschlusscomputeziele| Proprietäres Webdienstformat, nicht anpassbar |  Azure Kubernetes Service und AML Compute <br/>([Weitere Computeziele werden im SDK unterstützt.](../how-to-deploy-and-where.md)) |
-| ML-Pipeline | Nicht unterstützt | [Pipelines](../concept-ml-pipelines.md) unterstützt |
-| MLOps | Einfache Modellverwaltung und -bereitstellung | Konfigurierbare Bereitstellung: Versionsverwaltung und Nachverfolgung für Modelle und Pipelines |
-| Modellformat | Proprietäres Format, nur Studio (klassisch) | Standardformat (abhängig von der Art des Trainingsauftrags) |
-|Automatisiertes Modelltraining und Optimieren von Hyperparametern | Nein | Noch nicht im Designer <br/> ([Wird im SDK und auf der Landing Page des Arbeitsbereichs unterstützt.](../concept-automated-ml.md)) | 
-
-Testen Sie den Designer mit [Tutorial: Prognostizieren von Automobilpreisen mit dem Designer](../tutorial-designer-automobile-price-train-score.md).
-
-> [!NOTE]
-> In Studio (klassisch) erstellte Modelle können nicht von Azure Machine Learning bereitgestellt und verwaltet werden. Über den Designer erstellte und bereitgestellte Modelle können dagegen über den Azure Machine Learning-Arbeitsbereich verwaltet werden.
 
 ## <a name="download-the-machine-learning-studio-classic-overview-diagram"></a>Herunterladen des Übersichtsdiagramms für Machine Learning Studio (klassisch)
 Laden Sie das **Diagramm mit der Übersicht über die Funktionen von Microsoft Azure Machine Learning Studio (klassisch)** herunter, und verschaffen Sie sich einen allgemeinen Überblick über die Funktionen von Machine Learning Studio (klassisch). Drucken Sie das Diagramm in Tabloid-Größe (28 x 43 cm, 11 x 17 Zoll) aus, um schnell darauf zugreifen zu können.

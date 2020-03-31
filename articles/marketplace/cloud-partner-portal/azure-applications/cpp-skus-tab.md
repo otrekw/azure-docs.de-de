@@ -1,19 +1,18 @@
 ---
 title: Konfigurieren von SKUs für ein Azure-Anwendungsangebot | Azure Marketplace
 description: Vorgehensweise zum Konfigurieren der SKUs für eine verwaltete Azure-Anwendung und eine Azure-Lösungsvorlage.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: pabutler
-ms.openlocfilehash: 2430d7e6fa74438c148d3cb849510be06243faa0
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.author: dsindona
+ms.openlocfilehash: 043394a1303456ce5b209bb84b5afaf09f6beba4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543153"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80289072"
 ---
 # <a name="azure-application-skus-tab"></a>Registerkarte „SKUs“ für Azure-Anwendungen
 
@@ -44,7 +43,7 @@ In der nächsten Bildschirmaufnahme ist das „SKU-Details“-Formular für eine
 
 Geben Sie die folgenden SKU-Werte an.  Die mit einem Sternchen gekennzeichneten Felder müssen ausgefüllt werden.
 
-|    Feld         |       Beschreibung                                                            |
+|    Feld         |       BESCHREIBUNG                                                            |
 |  ---------       |     ---------------                                                          |
 |  **Titel\***     | Ein Titel für die SKU. Dieser Titel wird im Katalog für dieses Element angezeigt.   |
 | **Zusammenfassung\***    | Eine kurze Beschreibung der SKU. (Die maximale Länge beträgt 100 Zeichen.)  |
@@ -66,7 +65,7 @@ In der nächsten Bildschirmaufnahme ist das „SKU-Details“-Formular für eine
 
 Konfigurieren Sie die folgenden SKU-Einstellungen. Die mit einem Sternchen gekennzeichneten Felder müssen ausgefüllt werden.
 
-|    Feld         |       Beschreibung                                                            |
+|    Feld         |       BESCHREIBUNG                                                            |
 |  ---------       |     ---------------                                                          |
 |  **Titel\***     | Ein Titel für die SKU. Dieser Titel wird im Katalog für dieses Element angezeigt.   |
 | **Zusammenfassung\***    | Eine kurze Beschreibung der SKU. (Die maximale Länge beträgt 100 Zeichen.)  |

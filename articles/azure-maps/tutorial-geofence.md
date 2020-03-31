@@ -1,20 +1,20 @@
 ---
 title: 'Tutorial: Erstellen eines Geofence und Nachverfolgen von Geräten auf einer Karte | Microsoft Azure Maps'
 description: Es wird beschrieben, wie Sie mit dem räumlichen Dienst von Microsoft Azure Maps einen Geofence einrichten und Geräte in Relation zum Geofence nachverfolgen.
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e0e918a2508bb65de176b030a73598e221aff676
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: 126829f12d71e40511c26e781cb191988c1d031e
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77370171"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80333863"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Tutorial: Einrichten eines Geofence mit Azure Maps
 
@@ -150,13 +150,13 @@ Führen Sie nach der Installation der Postman-App die unten angegebenen Schritte
    }
    ```
 
-5. Klicken Sie auf „Senden“, und sehen Sie sich den Antwortheader an. Bei einer erfolgreichen Anforderung enthält der Header **Standort** den Status-URI. Der Status-URI hat das unten angegebene Format. 
+5. Klicken Sie auf „Senden“, und sehen Sie sich den Antwortheader an. Bei einer erfolgreichen Anforderung enthält der Header **Standort** den Status-URI. Der Status-URI hat das unten angegebene Format. Der Wert von „uploadStatusId“ ist nicht in geschweifte Klammern („{ }“) gesetzt. Die Verwendung von geschweiften Klammern ist eine gängige Vorgehensweise, um Werte anzugeben, die vom Benutzer eingegeben werden müssen oder die sich für unterschiedliche Benutzer unterscheiden.
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-6. Kopieren Sie Ihren Status-URI, und fügen Sie den Abonnementschlüssel an. Das Format des Status-URI sollte wie unten dargestellt aussehen. Beachten Sie, dass Sie im Format unten {subscription-key} durch Ihren Abonnementschlüssel ersetzen würden (einschließlich der geschweiften Klammern).
+6. Kopieren Sie Ihren Status-URI, und fügen Sie den Abonnementschlüssel an. Das Format des Status-URI sollte wie unten dargestellt aussehen. Beachten Sie, dass Sie im unten angegebenen Format „{subscription-key}“ durch Ihren Abonnementschlüssel ersetzen würden (ohne geschweifte Klammern).
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
@@ -166,7 +166,8 @@ Führen Sie nach der Installation der Postman-App die unten angegebenen Schritte
 
    ```JSON
    {
-    "udid" : "{udId}"
+    "status": "Succeeded",
+    "resourceLocation": "https://atlas.microsoft.com/mapData/metadata/{udId}?api-version=1.0"
    }
    ```
 

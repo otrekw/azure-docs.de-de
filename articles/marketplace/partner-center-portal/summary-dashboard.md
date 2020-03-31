@@ -1,19 +1,18 @@
 ---
 title: Dashboard „Zusammenfassung“ für Partner Center-Analysen im kommerziellen Marketplace
 description: Erfahren Sie, wie Sie über das Dashboard „Zusammenfassung“ im Partner Center auf Diagramme, Trends und Werte von aggregierten Daten zugreifen, mit deren Hilfe Marketplace-Aktivitäten zusammengefasst werden.
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: e20f3d156df139cfaf1935bae7fc7babd3e35fc5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3da3109bd813fc3b99a4f59e5a357fa351c75394
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475100"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281373"
 ---
 # <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Zusammenfassung“ in Analysen für den kommerziellen Marketplace
 
@@ -48,7 +47,7 @@ Oben rechts auf jeder Seite finden Sie eine Datumsbereichsauswahl. Passen Sie di
 
 ### <a name="summary-section"></a>Abschnitt „Zusammenfassung“
 
-Im Abschnitt „Zusammenfassung“ wird die Anzahl aller im ausgewählten Datumsbereich erstellten Aufträge, gewonnenen Kunden und gemeldeten Nutzungsstunden angezeigt. Der Teil des aktuellen Monats wird aus der Berechnung dieser Metriken ausgeschlossen. Beispiel:  Wenn Sie einen Zeitrahmen von 6 Monaten ausgewählt haben, werden die Nutzungsstunden für die sechs Monate vor dem aktuellen Monat berechnet. Wenn ein benutzerdefinierter Datumsbereich ausgewählt wurde, wird eine Teilmenge des aktuellen Monats aus der Berechnung ausgeschlossen.
+Im Abschnitt „Zusammenfassung“ wird die Anzahl aller im ausgewählten Datumsbereich erstellten Aufträge, gewonnenen Kunden und gemeldeten Nutzungsstunden angezeigt. Der Teil des aktuellen Monats wird aus der Berechnung dieser Metriken ausgeschlossen. Beispiel: Wenn Sie einen Zeitrahmen von 6 Monaten ausgewählt haben, werden die Nutzungsstunden für die sechs Monate vor dem aktuellen Monat berechnet. Wenn ein benutzerdefinierter Datumsbereich ausgewählt wurde, wird eine Teilmenge des aktuellen Monats aus der Berechnung ausgeschlossen.
 
 ![Wachstumstrends im Dashboard „Zusammenfassung“](./media/summary-summary-section.png)
 

@@ -4,10 +4,10 @@ description: Überwachen Sie die Leistung einer Website, ohne sie erneut bereitz
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.openlocfilehash: 63d632df61548d15a1e0a606cf2e198207faf341
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670048"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Instrumentieren von Web-Apps zur Laufzeit mit Anfügen ohne Code in Application Insights
@@ -84,7 +84,7 @@ Wenn Sie die App erneut veröffentlichen möchten, ohne Application Insights dem
 4. Stellen Sie alle Änderungen wieder her, die Sie an der CONFIG-Datei vorgenommen haben.
 
 
-## <a name="troubleshoot"></a>Problembehandlung
+## <a name="troubleshooting"></a><a name="troubleshoot"></a>Problembehandlung
 
 ### <a name="confirm-a-valid-installation"></a>Bestätigen einer gültigen Installation 
 
@@ -247,7 +247,7 @@ Ermitteln Sie, welche Apps überwacht werden:
 
 * Lädt das aktuelle Application Insights SDK auf den Server herunter.
 
-## <a name="questions"></a>Fragen zum Statusmonitor
+## <a name="questions-about-status-monitor"></a><a name="questions"></a>Fragen zum Statusmonitor
 
 ### <a name="what-is-status-monitor"></a>Was ist der Statusmonitor?
 
@@ -304,13 +304,13 @@ Für Anwendungen, die beim Kompilieren bereits instrumentiert sind:
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="download"></a>Herunterladen des Statusmonitors
+## <a name="download-status-monitor"></a><a name="download"></a>Herunterladen des Statusmonitors
 
 - Verwenden des neuen [PowerShell-Moduls](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)
 - Laden Sie den [Statusmonitor-Installer](https://go.microsoft.com/fwlink/?LinkId=506648) herunter, und starten Sie ihn.
 - Oder führen Sie den [Webplattform-Installer](https://www.microsoft.com/web/downloads/platform.aspx) aus, und suchen Sie darin nach dem Application Insights-Statusmonitor.
 
-## <a name="next"></a>Nächste Schritte
+## <a name="next-steps"></a><a name="next"></a>Nächste Schritte
 
 Anzeigen der Telemetrie:
 

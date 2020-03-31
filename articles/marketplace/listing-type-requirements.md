@@ -1,20 +1,18 @@
 ---
 title: Anforderungen nach Auflistungsart | Azure
 description: Dieser Artikel beschreibt die Eignungskriterien und Veröffentlichungsbedingungen für Partner, die sich über die Veröffentlichung von Apps im Azure Marketplace informieren möchten.
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: jm-aditi-ms
-manager: pabutler
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/19/2018
-ms.author: ellacroi
-ms.openlocfilehash: b9a2e8b37f746eb86b2e0fe6a7304cd888a293e1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 1ff6e34936234d6636fabc6c5e17dd32416b4ac2
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823031"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387851"
 ---
 # <a name="requirements-by-listing-type"></a>Listingtyp-Anforderungen  
 Die technischen und inhaltlichen (Marketing) Anforderungen variieren je nach Storefront, Angebotstyp und Auflistungsart. Die folgenden Spezifikationen müssen Ihre Konformität erfüllen:  
@@ -76,7 +74,7 @@ Der Auflistungsart „Liste“ enthält die folgenden Angebotstypen für die Sto
 | Requirements (Anforderungen) | Details |  
 |:--- |:--- |  
 | Merkmale des Dienstangebots | Ihr Beratungsdienst muss die folgenden Kriterien erfüllen:<ul> <li>Angebot mit festem Umfang, fester Dauer und festem Preis (oder kostenlos)</li> <li>Ausrichtung hauptsächlich auf Vertriebsvorbereitungen</li> <li>Beschränkung auf einen einzelnen Kunden</li> <li>Vor Ort durchgeführt</li> </ul> |  
-| Partneranforderungen für Beratungsdienste | Sie müssen den Silber- oder Gold-Standard in einer der folgenden Kompetenzen im relevanten Bereich für Ihren Dienst besitzen: <table><tr><th>Lösungsbereich</th><th>Kompetenz</th></tr><td>Cloudplattform und -infrastruktur</td><td>Cloudplattform<br />Rechenzentrum</td><tr><td>Anwendungsentwicklung und ISV</td><td>Anwendungsentwicklung<br />Anwendungsintegration<br />DevOps</td></tr><tr><td>Datenverwaltung und -analyse</td><td>Datenanalysen<br />Datenplattform</td></tr></table><ul> <li>Weitere Informationen zu den Kompetenzen finden Sie auf der Seite „Kompetenzpartner“ unter [partner.microsoft.com/membership/competencies](https://partner.microsoft.com/membership/competencies).</li> <li>Weitere Informationen zur Auflistung finden Sie auf der Seite „Azure Marketplace-Beratungsdienste“ unter [docs.microsoft.com/azure/marketplace/consulting-services](https://docs.microsoft.com/azure/marketplace/consulting-services).</li></ul> |  
+| Partneranforderungen für Beratungsdienste | Sie müssen den Silber- oder Gold-Standard in einer der folgenden Kompetenzen im relevanten Bereich für Ihren Dienst besitzen: <table><tr><th>Lösungsbereich</th><th>Kompetenz</th></tr><td>Cloudplattform und -infrastruktur</td><td>Cloudplattform<br />Rechenzentrum</td><tr><td>Anwendungsentwicklung und ISV</td><td>Anwendungsentwicklung<br />Anwendungsintegration<br />DevOps</td></tr><tr><td>Datenverwaltung und -analyse</td><td>Datenanalyse<br />Datenplattform</td></tr></table><ul> <li>Weitere Informationen zu den Kompetenzen finden Sie auf der Seite „Kompetenzpartner“ unter [partner.microsoft.com/membership/competencies](https://partner.microsoft.com/membership/competencies).</li> <li>Weitere Informationen zur Auflistung finden Sie auf der Seite „Azure Marketplace-Beratungsdienste“ unter [docs.microsoft.com/azure/marketplace/consulting-services](https://docs.microsoft.com/azure/marketplace/consulting-services).</li></ul> |  
 
 <!-- #### Requirements: Azure Marketplace: List: Contact Me -->
 

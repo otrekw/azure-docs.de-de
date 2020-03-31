@@ -7,10 +7,22 @@
       href: ../azure-management.md
     - name: Verwaltungsgruppen
       href: ./overview.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   expanded: true
   items:
     - name: Erstellen von Verwaltungsgruppen
       href: ./create.md
     - name: Verwalten Ihrer Ressourcen
       href: ./manage.md
+- name: Verweis
+  items:
+    - name: Azure-Befehlszeilenschnittstelle
+      href: /cli/azure/account/management-group
+    - name: Azure PowerShell
+      href: '/powershell/module/az.resources/#resources'
+    - name: Azure SDK für .NET
+      href: /dotnet/api/overview/azure/managementgroups
+    - name: Azure SDK für Node
+      href: /javascript/api/@azure/arm-managementgroups/managementgroups
+    - name: REST
+      href: /rest/api/resources/managementgroups

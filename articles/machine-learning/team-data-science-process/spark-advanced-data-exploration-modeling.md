@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 15d9d186ef36ee9181a6ce0386aa9cc5de7838e3
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76718650"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Erweitertes Untersuchen und Modellieren von Daten mit Spark
@@ -38,7 +38,7 @@ Die Modelle, die wir verwenden, umfassen logistische und lineare Regression, Ran
 * [Lineare Regression mit SGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) ist ein lineares Regressionsmodell, das eine SGD-Methode (Stochastic Gradient Descent, stochastisches Gradientenverfahren) zur Optimierung und Featureskalierung verwendet, um die gezahlten Trinkgeldbeträge vorherzusagen. 
 * [Logistische Regression mit LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) oder „Logit“-Regression ist ein Regressionsmodell, das verwendet werden kann, wenn die abhängige Variable für Datenklassifizierung kategorisch ist. LBFGS ist ein quasi-Newtonscher Optimierungsalgorithmus, der sich dem Broyden-Fletcher-Goldfarb-Shanno-Algorithmus (BFGS) unter Verwendung einer begrenzten Menge an Arbeitsspeicher annähert und häufig im Machine Learning verwendet wird.
 * [Random Forests](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) sind Ensembles von Entscheidungsstrukturen.  In ihnen sind viele Entscheidungsstrukturen kombiniert, um das Risiko der Überanpassung zu verringern. Random Forests werden für Regression und Klassifizierung genutzt, können Kategoriefeatures verarbeiten und in eine Klassifizierungseinstellung mit mehreren Klassen erweitert werden. Sie erfordern keine Featureskalierung und können Nichtlinearitäten und Interaktionen von Features erfassen. Random Forest zählen zu den erfolgreichsten Machine Learning-Modelle für Klassifizierung und Regression.
-* [Gradient-Boosted-Strukturen](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) sind Gruppen von Entscheidungsstrukturen. GBTS trainieren Entscheidungsstrukturen iterativ, um einen Funktionsverlust zu minimieren. GBTS werden für die Regression und Klassifizierung verwendet und können kategorische Features behandeln, erfordern keine Featureskalierung und können Nichtlinearitäten und Featureinteraktionen erfassen. Sie können auch in einer Mehrklassenklassifizierung verwendet werden.
+* [Gradient-Boosted-Strukturen](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) sind Gruppen von Entscheidungsstrukturen. GBTS trainieren Entscheidungsstrukturen iterativ, um eine Verlustfunktion zu minimieren. GBTS werden für die Regression und Klassifizierung verwendet und können kategorische Features behandeln, erfordern keine Featureskalierung und können Nichtlinearitäten und Featureinteraktionen erfassen. Sie können auch in einer Mehrklassenklassifizierung verwendet werden.
 
 Beispiele für die Modellierung mit Kreuzvalidierung und Hyperparameter-Sweeping werden für das binäre Klassifizierungsproblem gezeigt. Einfachere Beispiele (ohne Parameter-Sweeping) finden sich im Hauptthema zu Regressionsaufgaben. Im Anhang werden jedoch auch die Validierung mit Elastic Net für die lineare Regression und die Kreuzvalidierung mit Parameter-Sweeping für eine Regression der Random Forest veranschaulicht. **Elastic Net** ist eine regularisierte Regressionsmethode zum Anpassen linearer Regressionsmodelle, die die Metriken L1 und L2 als Abzüge für die Methoden [Lasso](https://en.wikipedia.org/wiki/Lasso%20%28statistics%29) und [Ridge](https://en.wikipedia.org/wiki/Tikhonov_regularization) kombiniert.   
 
@@ -308,7 +308,7 @@ Dieser Abschnitt enthält den Code für die Prozeduren zum Vorbereiten von Daten
 * Erstellen eines neuen Features durch Aufteilen von Stunden in Verkehrszeitcontainer
 * Indizieren und One-Hot-Codieren von kategorischen Features
 * Erstellen von bezeichneten Punktobjekten für die Eingabe in ML-Funktionen
-* Erstellen einer Zufallsunterauswahl der Daten und Aufteilung in Trainings- und Testsätze
+* Erstellen einer Zufallsunterauswahl der Daten und Aufteilen in Trainings- und Testsätze
 * Featureskalierung
 * Zwischenspeichern von Objekten im Arbeitsspeicher
 
@@ -438,7 +438,7 @@ Hier ist der Code angegeben, mit dem kategorische Textfeatures für die lineare 
         return  labPt
 
 
-### <a name="create-a-random-subsampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>Erstellen einer Zufallsunterauswahl der Daten und Aufteilung in Trainings- und Testsätze
+### <a name="create-a-random-subsampling-of-the-data-and-split-it-into-training-and-testing-sets"></a>Erstellen einer Zufallsunterauswahl der Daten und Aufteilen in Trainings- und Testsätze
 Dieser Code erstellt eine zufällige Stichprobe der Daten (25 % werden hier verwendet). Obwohl es aufgrund der Größe des Datasets in diesem Beispiel nicht erforderlich ist, zeigen wir Ihnen, wie Sie hier Stichproben erfassen können. Sie können dann dieses Verfahren bei Bedarf zur Lösung eigener Probleme verwenden. Bei großen Stichproben kann die Stichprobenentnahme beim Trainieren von Modellen deutlich Zeit sparen. Als Nächstes teilen wir die Stichprobe in einen Trainingsteil (hier 75 %) und einen Testteil (hier 25 %) zur Klassifizierung und Regressionsmodellierung.
 
     # RECORD START TIME

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 02/06/2020
 ms.author: tanmaygore
-ms.openlocfilehash: 3632e12f5e58f8cadefb1e666cf4014026e24358
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 7b5318ad7902f323a8af27d2cc5a7975e3c315e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77057011"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80117229"
 ---
 In diesem Artikel werden die Fehler aufgeführt und beschrieben, die bei der Migration von IaaS-Ressourcen vom klassischen Azure-Bereitstellungsmodell zum Azure Resource Manager-Stapel am häufigsten auftreten.
 
@@ -164,13 +164,15 @@ Update-AzureVM       b0ad3d4c-4v68-45vb-xxc1-134fd010d0f8 Succeeded
 Nach Abschluss des Migrationsvorgangs möchten Sie den virtuellen Computer möglicherweise in ein anderes Abonnement verschieben. Wenn Sie allerdings ein Geheimnis oder ein Zertifikat auf dem virtuellen Computer festgelegt haben, das auf eine Key Vault-Ressource verweist, ist die Verschiebung derzeit nicht möglich. Dies können Sie mit den folgenden Anweisungen umgehen. 
 
 #### <a name="powershell"></a>PowerShell
+
 ```powershell
 $vm = Get-AzVM -ResourceGroupName "MyRG" -Name "MyVM"
 Remove-AzVMSecret -VM $vm
 Update-AzVM -ResourceGroupName "MyRG" -VM $vm
 ```
+
 #### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-```bash
+```azurecli
 az vm update -g "myrg" -n "myvm" --set osProfile.Secrets=[]
 ```

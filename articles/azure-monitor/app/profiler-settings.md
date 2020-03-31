@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: f66a23c0562ec9f1987bd119a45b7b767f2dfe46
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671629"
 ---
 # <a name="configure-application-insights-profiler"></a>Konfigurieren von Application Insights Profiler
@@ -68,7 +68,7 @@ Ablaufverfolgungen | Anzahl der Ablaufverfolgungen, die einzelnen Anforderungen 
 CPU % | Prozentsatz der CPU, der während der Ausführung des Profilers verwendet wurde.
 Arbeitsspeicher % | Prozentsatz des Arbeitsspeichers, der während der Ausführung des Profilers verwendet wurde.
 
-## <a id="profileondemand"></a> Verwenden von Webleistungstests zum Generieren von Datenverkehr an Ihre Anwendung
+## <a name="use-web-performance-tests-to-generate-traffic-to-your-application"></a><a id="profileondemand"></a> Verwenden von Webleistungstests zum Generieren von Datenverkehr an Ihre Anwendung
 
 Sie können Profiler manuell mit einem einzigen Mausklick auslösen. Nehmen wir an, dass Sie einen Webleistungstest ausführen. Sie benötigen Ablaufverfolgungen, um besser zu verstehen, wie Ihre Web-App unter Last ausgeführt wird. Die Kontrolle über den Zeitpunkt der Erfassung von Ablaufverfolgungen ist entscheidend, da Sie wissen, wann der Auslastungstest ausgeführt wird. Bei einem zufälligen Intervall für die Stichprobenentnahme verpassen Sie diesen Zeitpunkt aber möglicherweise.
 

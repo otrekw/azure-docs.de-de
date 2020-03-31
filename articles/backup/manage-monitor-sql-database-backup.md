@@ -4,10 +4,10 @@ description: In diesem Artikel wird beschrieben, wie auf einer Azure-VM ausgefü
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 4daf068e97a08d1a611ef64cb64569cacd5d7420
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74172158"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Verwalten und Überwachen gesicherter SQL Server-Datenbanken
@@ -104,7 +104,7 @@ So setzen Sie den Schutz für eine SQL-­Datenbank fort:
 
 2. Wählen Sie im Menü **Sicherungsrichtlinie** eine Richtlinie aus, und klicken Sie dann auf **Speichern**.
 
-## <a name="run-an-on-demand-backup"></a>Ausführen einer bedarfsgesteuerten Sicherung
+## <a name="run-an-on-demand-backup"></a>Ausführen einer On-Demand-Sicherung
 
 Sie können verschiedene Arten von bedarfsgesteuerten Sicherungen ausführen:
 

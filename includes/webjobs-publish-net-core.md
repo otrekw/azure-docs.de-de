@@ -9,10 +9,10 @@ ms.date: 02/19/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 4860532e59227618ce819772887556719ecb53fc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76021315"
 ---
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **Veröffentlichen** aus.
@@ -25,7 +25,7 @@ ms.locfileid: "76021315"
 
     ![Dialogfeld „App Service erstellen“](./media/webjobs-publish-netcore/app-service-dialog.png)
 
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung                                |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG                                |
     | ------------ |  ------- | -------------------------------------------------- |
     | **App-Name** | Global eindeutiger Name | Name, der Ihre neue Funktions-App eindeutig identifiziert. |
     | **Abonnement** | Auswählen Ihres Abonnements | Das zu verwendende Azure-Abonnement. |

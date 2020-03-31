@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/23/2019
 ms.author: yelevin
 ms.openlocfilehash: 348576fbbdd1037f9e2e792218b96bbbecf36668
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588364"
 ---
 # <a name="connect-data-from-microsoft-cloud-app-security"></a>Verknüpfen von Microsoft Cloud App Security-Daten 

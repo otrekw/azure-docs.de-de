@@ -4,10 +4,10 @@ description: In diesem Tutorial erfahren Sie, wie Sie eine Containergruppe mit m
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: cce98ec56ee1d84c087150ba486b9482515b46f0
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74533587"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Tutorial: Bereitstellen einer Gruppe mit mehreren Containern mithilfe einer YAML-Datei
@@ -168,7 +168,7 @@ Wie Sie sehen können, erfolgt vom Sidecar in regelmäßigen Abständen eine HTT
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine Gruppe mit mehreren Containern mit einer YAML-Datei in Azure Container Instances bereitgestellt. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie eine Gruppe mit mehreren Containern mit einer YAML-Datei in Azure Container Instances bereitgestellt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Konfigurieren einer YAML-Datei für eine Gruppe mit mehreren Containern

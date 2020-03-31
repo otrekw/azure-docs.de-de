@@ -1,20 +1,18 @@
 ---
 title: Erstellen Ihrer Angebotsseite im Azure Marketplace | Azure
 description: Erfahren Sie, wie Sie eine Angebotsseite im Azure Marketplace und in Microsoft AppSource für App- und den Dienstherausgeber erstellen.
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: jm-aditi-ms
-manager: pabutler
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/04/2018
-ms.author: ellacroi
-ms.openlocfilehash: cf7d15ba375faf7dfb38bf5f691799875f2dd6e1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 0952c1d4b6955ff20f06afc6eaded18fbd105708
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819823"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387800"
 ---
 # <a name="build-your-landing-page"></a>Erstellen Ihrer Angebotsseite
 

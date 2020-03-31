@@ -19,9 +19,7 @@
           href: connect-metamask.md
         - name: Verwenden von Geth
           href: connect-geth.md
-        - name: Verwenden von Truffle
-          href: connect-truffle.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen von Smart Contracts
       href: send-transaction.md
@@ -41,7 +39,7 @@
       href: limits.md
     - name: 'Patchen, Aktualisieren und Versionsverwaltung'
       href: ledger-versions.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Konfigurieren des Azure AD-Zugriffs
       href: configure-aad.md

@@ -13,10 +13,10 @@ ms.date: 12/14/2017
 ms.author: damendo
 ms.custom: ''
 ms.openlocfilehash: c3a85de3a201a89d6d9500e4f4b2df9e667e3537
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840535"
 ---
 # <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Anzeigen der relativen Latenz für Azure-Regionen von bestimmten Standorten aus
@@ -124,7 +124,7 @@ Get-AzNetworkWatcherReachabilityReport `
 > [!NOTE]
 > Anders als bei Angabe eines einzelnen Standorts müssen Sie, wenn Sie keinen Standort oder mehrere Standorte angeben, wie z.B. „USA, Westen 2“, „USA, Westen“, beim Ausführen des Befehls einen Internetdienstanbieter angeben. 
 
-## <a name="view-available"></a>Anzeigen verfügbarer Länder/Regionen, US-Bundesstaaten, Städte und Anbieter
+## <a name="view-available-countriesregions-states-cities-and-providers"></a><a name="view-available"></a>Anzeigen verfügbarer Länder/Regionen, US-Bundesstaaten, Städte und Anbieter
 
 Daten sind für bestimmte Internetdienstanbieter, Länder/Regionen, US-Bundesstaaten und Städte verfügbar. Um eine Liste aller verfügbaren Internetdienstanbieter, Länder/Regionen, US-Bundesstaaten und Städte anzuzeigen, für die Sie Daten anzeigen können, geben Sie den folgenden Befehl ein:
 

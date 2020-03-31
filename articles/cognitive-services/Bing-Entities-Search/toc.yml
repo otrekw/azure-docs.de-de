@@ -7,7 +7,7 @@
     - name: Vergleichen der Bing-Suche-APIs
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: REST-API-Schnellstartanleitungen
+- name: Schnellstarts
   expanded: true
   items:
     - name: REST-API
@@ -28,7 +28,7 @@
       items:
         - name: Clientbibliotheken für die Bing-Entitätssuche
           href: ./quickstarts/client-libraries.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen einer Einzelseiten-Web-App
       href: tutorial-bing-entities-search-single-page-app.md
@@ -36,7 +36,7 @@
   items:
     - name: Codebeispiele
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Entity+Search'
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Ändern der Größe und Zuschneiden von Miniaturansichten
       maintainContext: true

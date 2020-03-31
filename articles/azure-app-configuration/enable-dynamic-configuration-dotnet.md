@@ -8,12 +8,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7ba3eae4ea5557b4bb1b1be4e2c79eab8f6e7988
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: 7780bdbc92868f62e8d066d171b2a04fe06a981d
+ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484875"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80245802"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>Tutorial: Verwenden der dynamischen Konfiguration in einer .NET Framework-App
 
@@ -38,13 +38,15 @@ In diesem Tutorial lernen Sie Folgendes:
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wählen Sie **Konfigurations-Explorer** >  **+ Erstellen** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
+6. Wählen Sie **Konfigurations-Explorer** >  **+ Erstellen** > **Schlüssel-Wert** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
 
-    | Key | value |
+    | Schlüssel | Wert |
     |---|---|
     | TestApp:Settings:Message | Daten aus Azure App Configuration |
 
     Lassen Sie **Bezeichnung** und **Inhaltstyp** vorerst leer.
+
+7. Wählen Sie **Übernehmen**.
 
 ## <a name="create-a-net-framework-console-app"></a>Erstellen einer .NET Framework-Konsolen-App
 
@@ -133,7 +135,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 1. Wählen Sie den **Konfigurations-Explorer** aus, und aktualisieren Sie die Werte der folgenden Schlüssel:
 
-    | Key | value |
+    | Schlüssel | Wert |
     |---|---|
     | TestApp:Settings:Message | Daten aus Azure App Configuration: Aktualisiert |
 

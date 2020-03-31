@@ -1,19 +1,18 @@
 ---
 title: Partner Center-Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace
 description: Erfahren Sie, wie Sie auf Analyseberichte in einem grafischen und herunterladbaren Format zugreifen, die Informationen zu Aufträgen für Ihre Marketplace-Angebote enthalten.
-author: ChJenk
-manager: evansma
-ms.author: v-chjen
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: bf4b48fafa5b877053abe653b569cf27eb50d57b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d0db6553a774a69bb8a55538cbd2b4a333be9316
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475316"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281407"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace
 
@@ -114,7 +113,7 @@ Sie können mehrere Filter auswählen, um das Diagramm nach den Kriterien zu ren
 
 - Angebotstypen und Angebotsnamen werden nur für Angebote aufgelistet, für die im ausgewählten Datumsbereich Aufträge vorhanden sind. In der Liste enthaltene Angebotsnamen werden für Angebotstypen angezeigt, die Sie aus der Liste ausgewählt haben.
 - Durch angewendete Filter werden die Gesamtmetriken innerhalb der einzelnen Auswahl(en) für jeden ausgewählten Filter angezeigt. Bei Verwendung der Standardauswahl werden keine angewendeten Filter angezeigt.
-- Wenn für eine der Dropdownlisten **Alle** ausgewählt wird, werden alle Metriken auf der ausgewählten Seite aggregiert. Beispiel:  Die Option „Alle“ in der Filteroption für Angebotstypen" bedeutet, dass alle Angebotstypen ausgewählt wurden. Dies ist die Standardauswahl für die Dropdownlisten. Bei Auswahl von **Alle** werden durch die angewendeten Filter keine Daten angezeigt.
+- Wenn für eine der Dropdownlisten **Alle** ausgewählt wird, werden alle Metriken auf der ausgewählten Seite aggregiert. Beispiel: Die Option „Alle“ in der Filteroption für Angebotstypen" bedeutet, dass alle Angebotstypen ausgewählt wurden. Dies ist die Standardauswahl für die Dropdownlisten. Bei Auswahl von **Alle** werden durch die angewendeten Filter keine Daten angezeigt.
 - **Auswahl mehrerer Werte**: Alle Metriken auf der Seite werden für alle in der Dropdownliste getroffenen Auswahlen aggregiert. Bei einer Mehrfachauswahl wird durch den angewendeten Filter die Anzahl aller vorgenommenen Auswahlen angezeigt. Siehe dazu folgende Abbildung.
 
     ![Partner Center, Auftrag analysieren, während mehrere Werte auf den Filter angewendet werden](./media/filters-applied.png)

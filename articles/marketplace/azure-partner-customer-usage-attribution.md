@@ -1,19 +1,18 @@
 ---
 title: Zuordnen der Nutzung durch Azure-Partner und -Kunden | Azure Marketplace
 description: Übersicht über die Nachverfolgung der Kundennutzung für Azure Marketplace-Lösungen
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: yijenj
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 9/23/2019
-ms.author: pabutler
-ms.openlocfilehash: c745a37805862b77e7893788d9d089c8447ae465
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.author: dsindona
+ms.openlocfilehash: 348633ffc91bc25a226b05743a18d2c87533a01d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78302864"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280642"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Zuordnen der Nutzung durch Kunden von Azure-Partnern
 

@@ -5,11 +5,11 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: b3d683153a1e70f4c65dcc5e401f4ee702af8b49
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355745"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235046"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Entwickeln von Azure Functions mithilfe von Visual Studio  
 
@@ -40,7 +40,7 @@ Andere Ressourcen, die Sie benötigen, z. B. ein Azure Storage-Konto, werden w�
 >
 > Überspringen Sie diesen Abschnitt, wenn Sie Visual Studio 2019 verwenden.
 
-### <a name="check-your-tools-version"></a>Überprüfen der Toolversion in Visual Studio 2017
+### <a name="check-your-tools-version-in-visual-studio-2017"></a><a name="check-your-tools-version"></a>Überprüfen der Toolversion in Visual Studio 2017
 
 1. Wählen Sie im Menü **Extras** auf **Erweiterungen und Updates**. Erweitern Sie **Installierte** > **Tools**, und wählen Sie **Azure Functions und Webauftragstools**.
 

@@ -1,19 +1,18 @@
 ---
 title: Erstellen einer mit Azure kompatiblen VHD für den Azure Marketplace
 description: Dieser Artikel erläutert, wie Sie eine VHD für ein VM-Angebot im Azure Marketplace erstellen.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/27/2018
-ms.author: pabutler
-ms.openlocfilehash: 37fecb8100ec40ace02960a4f3390420a8bfc735
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 2014a775edd4e24f5d302d863d0b69d83009b8a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816804"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277989"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Erstellen einer Azure-kompatiblen VHD
 
@@ -62,7 +61,7 @@ Erstellen Sie im [Microsoft Azure-Portal](https://ms.portal.azure.com/) das Basi
 
    ![Blatt „Größe“ für die neue VM](./media/publishvm_015.png)
 
-7. Legen Sie auf dem Blatt **Einstellungen** die Option **Verwaltete Datenträger verwenden** auf **Nein** fest.  Auf diese Weise können Sie die neue VHD manuell verwalten. (Auf dem Blatt **Einstellungen** können Sie auch weitere Optionen für Speicher und Netzwerk ändern. Sie können z.B. unter **Datenträgertyp** die Option **Premium (SSD)** auswählen.)  Klicken Sie auf **OK** , um fortzufahren.
+7. Legen Sie auf dem Blatt **Einstellungen** die Option **Verwaltete Datenträger verwenden** auf **Nein** fest.  Auf diese Weise können Sie die neue VHD manuell verwalten. (Auf dem Blatt **Einstellungen** können Sie auch weitere Optionen für Speicher und Netzwerk ändern. Sie können z.B. unter **Datenträgertyp** die Option **Premium (SSD)** auswählen.)  Klicken Sie zum Fortsetzen des Vorgangs auf **OK** .
 
     ![Blatt „Einstellungen“ für die neue VM](./media/publishvm_016.png)
 
