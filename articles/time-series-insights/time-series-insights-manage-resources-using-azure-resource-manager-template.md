@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/04/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1caa80469504d52d3103fb2776fb3e7210971690
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024397"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Erstellen von Time Series Insights-Ressourcen mit Azure Resource Manager-Vorlagen
@@ -24,7 +24,7 @@ In diesem Artikel wird das Erstellen und Bereitstellen von Time Series Insights-
 
 Time Series Insights unterstützt die folgenden Ressourcen:
 
-   | Resource | Beschreibung |
+   | Resource | BESCHREIBUNG |
    | --- | --- |
    | Environment | Eine Time Series Insights-Umgebung ist eine logische Gruppierung von Ereignissen, die aus Ereignisbrokern gelesen, gespeichert und zur Abfrage zur Verfügung gestellt werden. Weitere Informationen finden Sie unter [Planen Ihrer Azure Time Series Insights-Umgebung](time-series-insights-environment-planning.md). |
    | Ereignisquelle | Eine Ereignisquelle ist eine Verbindung mit einem Ereignisbroker, von dem Time Series Insights Daten liest und Ereignisse für die Umgebung erfasst. Derzeit werden IoT Hub und Event Hub als Ereignisquellen unterstützt. |
@@ -59,7 +59,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
 
    * Erforderliche Parameter
 
-     | Parameter | Beschreibung |
+     | Parameter | BESCHREIBUNG |
      | --- | --- |
      | eventHubNamespaceName | Der Namespace der Quelle (Event Hub). |
      | eventHubName | Der Name der Quelle (Event Hub). |
@@ -71,7 +71,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie PowerShell zum Bereitstellen ei
 
    * Optionale Parameter
 
-     | Parameter | Beschreibung |
+     | Parameter | BESCHREIBUNG |
      | --- | --- |
      | existingEventHubResourceId | Eine optionale Ressourcen-ID eines vorhandenen Event Hub, der über die Ereignisquelle mit der Time Series Insights-Umgebung verbunden wird. **HINWEIS:** Der Benutzer, der die Vorlage bereitstellt, muss über Berechtigungen zum Durchführen des Vorgangs „listkeys“ auf dem Event Hub verfügen. Wenn kein Wert übergeben wird, wird von der Vorlage ein neuer Event Hub erstellt. |
      | environmentDisplayName | Ein optionaler Anzeigenamen, der in Tools oder Benutzeroberflächen anstelle des Umgebungsnamens angezeigt wird. |

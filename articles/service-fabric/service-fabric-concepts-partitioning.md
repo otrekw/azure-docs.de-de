@@ -4,11 +4,11 @@ description: Beschreibt, wie Sie zustandsbehaftete Service Fabric-Dienste partit
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434064"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229358"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Partitionieren von Service Fabric Reliable Services
 Dieser Artikel enthält eine Einführung in die grundlegenden Konzepte der Partitionierung von Azure Service Fabric Reliable Services. Der in diesem Artikel verwendete Quellcode ist auch unter [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)verfügbar.
@@ -35,7 +35,7 @@ Mit Service Fabric ist es einfach, skalierbare zustandsbehaftete Dienste zu entw
 Die Partitionierung im Kontext von zustandsbehafteten Service Fabric-Diensten bezieht sich auf den Prozess der Ermittlung, ob eine bestimmte Dienstpartition für einen Teil des vollständigen Zustands des Diensts zuständig ist. (Wie bereits erwähnt, ist eine Partition ein Satz von [Replikaten](service-fabric-availability-services.md)). Der Vorteil von Service Fabric ist, dass die Partitionen auf unterschiedlichen Knoten angeordnet werden. Dadurch können sie bis zum Ressourcenlimit eines Knotens anwachsen. Wenn die Daten zunehmen müssen, werden die Partitionen vergrößert, und Service Fabric verteilt die Partitionen neu über die Knoten. Dadurch wird die fortgesetzte effiziente Nutzung von Hardwareressourcen sichergestellt.
 
 Beispiel: Sie beginnen mit einem Cluster mit fünf Knoten und einem Dienst, der für zehn Partitionen und einem Ziel von drei Replikaten konfiguriert ist. In diesem Fall verteilt Service Fabric die Replikate gleichmäßig im Cluster, und es werden zwei primäre [Replikate](service-fabric-availability-services.md) pro Knoten verwendet.
-Wenn Sie den Cluster nun auf zehn Knoten horizontal hochskalieren müssen, verteilt Service Fabric die primären [Replikate](service-fabric-availability-services.md) neu auf alle zehn Knoten. Falls Sie wieder auf fünf Knoten herunterskalieren, verteilt Service Fabric alle Replikate neu auf die fünf Knoten.  
+Wenn Sie den Cluster nun auf zehn Knoten aufskalieren müssen, verteilt Service Fabric die primären [Replikate](service-fabric-availability-services.md) neu auf alle zehn Knoten. Falls Sie wieder auf fünf Knoten herunterskalieren, verteilt Service Fabric alle Replikate neu auf die fünf Knoten.  
 
 Abbildung 2 zeigt die Verteilung von zehn Partitionen vor und nach dem Skalieren des Clusters.
 
@@ -44,7 +44,7 @@ Abbildung 2 zeigt die Verteilung von zehn Partitionen vor und nach dem Skaliere
 Das horizontale Hochskalieren wird erreicht, da Anforderungen von Clients über die Computer hinweg verteilt werden, die Gesamtleistung der Anwendung verbessert wird und Konflikte beim Zugreifen auf Datenblöcke verringert werden.
 
 ## <a name="plan-for-partitioning"></a>Planen der Partitionierung
-Vor der Implementierung eines Diensts sollten Sie immer die Partitionierungsstrategie bedenken, die für das horizontale Hochskalieren erforderlich ist. Es gibt unterschiedliche Ansätze, bei denen aber immer die Frage im Mittelpunkt steht, was mit der Anwendung erreicht werden soll. Im Rahmen dieses Artikels betrachten wir einige der wichtigeren Aspekte.
+Vor der Implementierung eines Diensts sollten Sie immer die Partitionierungsstrategie bedenken, die für das Aufskalieren erforderlich ist. Es gibt unterschiedliche Ansätze, bei denen aber immer die Frage im Mittelpunkt steht, was mit der Anwendung erreicht werden soll. Im Rahmen dieses Artikels betrachten wir einige der wichtigeren Aspekte.
 
 Ein guter Ansatz besteht darin, sich als ersten Schritt die Struktur des Zustands anzusehen, der partitioniert werden soll.
 
@@ -75,7 +75,7 @@ Auch die verfügbaren Computerressourcen müssen bei der Partitionierungsplanung
 * Einschränkungen des Systemarbeitsspeichers
 * Einschränkungen des Speicherplatzes
 
-Was passiert, wenn es auf einem ausgeführten Cluster zu Ressourceneinschränkungen kommt? Die Antwort lautet, dass Sie den Cluster einfach horizontal hochskalieren können, um die neuen Anforderungen abzudecken.
+Was passiert, wenn es auf einem ausgeführten Cluster zu Ressourceneinschränkungen kommt? Die Antwort lautet, dass Sie den Cluster einfach aufskalieren können, um die neuen Anforderungen abzudecken.
 
 [Leitfaden zur Kapazitätsplanung](service-fabric-capacity-planning.md) enthält eine Anleitung, wie Sie ermitteln, wie viele Knoten für Ihren Cluster benötigt werden.
 

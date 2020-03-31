@@ -7,10 +7,10 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 3714ce2a8098608851991115aa82afdc00d08a47
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459387"
 ---
 # <a name="add-authentication-to-your-apache-cordova-app"></a>Hinzufügen von Authentifizierung zu Ihrer Apache Cordova-App
@@ -19,12 +19,12 @@ ms.locfileid: "77459387"
 ## <a name="summary"></a>Zusammenfassung
 In diesem Tutorial fügen Sie dem Aufgabenlisten-Schnellstartprojekt unter Apache Cordova mithilfe eines unterstützten Identitätsanbieters eine Authentifizierung hinzu. Dieses Tutorial baut auf dem Tutorial [Erste Schritte mit mobilen Apps] auf, das Sie zuerst abschließen müssen.
 
-## <a name="register"></a>Registrieren Ihrer App für die Authentifizierung und Konfigurieren von App Service
+## <a name="register-your-app-for-authentication-and-configure-the-app-service"></a><a name="register"></a>Registrieren Ihrer App für die Authentifizierung und Konfigurieren von App Service
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
 [Ansehen eines Videos mit ähnlichen Schritten](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-8-Azure-authentication)
 
-## <a name="permissions"></a>Einschränken von Berechtigungen für authentifizierte Benutzer
+## <a name="restrict-permissions-to-authenticated-users"></a><a name="permissions"></a>Einschränken von Berechtigungen für authentifizierte Benutzer
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 Nun können Sie überprüfen, ob der anonyme Zugriff auf Ihr Back-End deaktiviert wurde. In Visual Studio:
@@ -35,7 +35,7 @@ Nun können Sie überprüfen, ob der anonyme Zugriff auf Ihr Back-End deaktivier
 
 Aktualisieren Sie nun die App, um Benutzer vor dem Anfordern von Ressourcen des Mobile App-Back-Ends zu authentifizieren.
 
-## <a name="add-authentication"></a>Hinzufügen von Authentifizierung zur App
+## <a name="add-authentication-to-the-app"></a><a name="add-authentication"></a>Hinzufügen von Authentifizierung zur App
 1. Öffnen Sie Ihr Projekt in **Visual Studio**, und öffnen Sie dann die Datei `www/index.html` zur Bearbeitung.
 2. Suchen Sie das `Content-Security-Policy` -Metatag im Kopfzeilenbereich.  Fügen Sie den OAuth-Host der Liste mit den zulässigen Quellen hinzu.
 
@@ -85,7 +85,7 @@ Aktualisieren Sie nun die App, um Benutzer vor dem Anfordern von Ressourcen des 
 4. Ersetzen Sie in dem gerade hinzugefügten Code `SDK_Provider_Name` durch den Namen des Login-Anbieters. Verwenden Sie für Azure Active Directory beispielsweise `client.login('aad')`.
 5. Führen Sie Ihr Projekt aus.  Wenn die Initialisierung des Projekts abgeschlossen ist, zeigt Ihre Anwendung die OAuth-Anmeldeseite für den ausgewählten Authentifizierungsanbieter an.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a><a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über die [Authentifizierung] mit Azure App Service.
 * Führen Sie das Tutorial fort, indem Sie Ihrer Apache Cordova-App [Pushbenachrichtigungen] hinzufügen.
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: cherylmc
 ms.openlocfilehash: 8aa4fe143c78d2053ce8c48e4866a5522057aa0c
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062972"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Migrieren zu Azure Virtual WAN
@@ -57,7 +57,7 @@ Das Netzwerkteam wurde mit der Bereitstellung eines globalen Netzwerkmodells bea
   - **VNET-to-Hub-to-Hub-to-VNET (V2H2H2V)** : Virtuelle Spoke-Netzwerke in unterschiedlichen Regionen müssen miteinander kommunizieren können.
 - Contoso-Roamingbenutzer (Laptop und Telefon) müssen auf Unternehmensressourcen zugreifen können, wenn sie sich nicht im Unternehmensnetzwerk befinden.
 
-## <a name="architecture"></a>Azure Virtual WAN-Architektur
+## <a name="azure-virtual-wan-architecture"></a><a name="architecture"></a>Azure Virtual WAN-Architektur
 
 Die folgende Abbildung zeigt eine allgemeine Übersicht über die aktualisierte Zieltopologie, in der die im vorherigen Abschnitt beschriebenen Anforderungen mit Azure Virtual WAN erfüllt wurden.
 

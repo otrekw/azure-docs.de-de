@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 03/16/2020
 ms.author: juliako
-ms.openlocfilehash: d4175f2508edab1cf54e415652e9e9cb37b879b1
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 35be4ec2c4f5f8c299120c0ba7dbdcb1dd112473
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514339"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472032"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---rest"></a>Tutorial: Codieren einer Remotedatei anhand einer URL und Streamen des Videos über REST
 
@@ -58,7 +58,9 @@ Klonen Sie ein GitHub-Repository mit der Postman-Sammlung und den Umgebungsdatei
  git clone https://github.com/Azure-Samples/media-services-v3-rest-postman.git
  ```
 
-[!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
+## <a name="access-api"></a>Zugriffs-API
+
+Ausführliche Informationen finden Sie unter [Abrufen von Anmeldeinformationen für den Zugriff auf die Media Services-API](access-api-howto.md).
 
 ## <a name="configure-postman"></a>Konfigurieren von Postman
 
@@ -75,7 +77,7 @@ Klonen Sie ein GitHub-Repository mit der Postman-Sammlung und den Umgebungsdatei
     > [!Note]
     > Aktualisieren Sie die Zugriffsvariablen mit Werten aus dem Abschnitt **Zugreifen auf die Media Services-API**.
 
-7. Doppelklicken Sie auf die ausgewählte Datei, und geben Sie Werte ein, die Sie durch Ausführen der Schritte für den [Zugriff auf die API](#access-the-media-services-api) erhalten.
+7. Doppelklicken Sie auf die ausgewählte Datei, und geben Sie Werte ein, die Sie durch Ausführen der Schritte für den [Zugriff auf die API](#access-api) erhalten.
 8. Schließen Sie das Dialogfeld.
 9. Wählen Sie in der Dropdownliste die Umgebung **Azure Media Service v3 Environment** aus.
 

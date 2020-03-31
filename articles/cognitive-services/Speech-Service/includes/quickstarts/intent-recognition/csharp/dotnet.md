@@ -7,10 +7,10 @@ ms.topic: include
 ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 4f8fe92a0a36bae2d5e7595bee7bf71fcd926da9
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "78924883"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -73,7 +73,7 @@ Sie müssen der Absichtserkennung ein `LanguageUnderstandingModel` zuordnen und 
 
 ## <a name="recognize-an-intent"></a>Erkennen einer Absicht
 
-Rufen Sie die Methode `RecognizeOnceAsync()` über das Objekt `IntentRecognizer` auf. Diese Methode teilt dem Spracherkennungsdienst mit, dass Sie einen einzelnen Ausdruck zur Erkennung senden, und dass die Spracherkennung beendet werden soll, sobald der Ausdruck ermittelt wurde.
+Rufen Sie die Methode `IntentRecognizer` über das Objekt `RecognizeOnceAsync()` auf. Diese Methode teilt dem Spracherkennungsdienst mit, dass Sie einen einzelnen Ausdruck zur Erkennung senden, und dass die Spracherkennung beendet werden soll, sobald der Ausdruck ermittelt wurde.
 
 Fügen Sie in der using-Anweisung unterhalb Ihres Modells den folgenden Code hinzu:
 

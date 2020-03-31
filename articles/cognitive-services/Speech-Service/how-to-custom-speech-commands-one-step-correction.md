@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: encorona
 ms.openlocfilehash: 86a12bd1dccc2b6ac15010546d7e990b768ebc02
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75453349"
 ---
 # <a name="how-to-add-a-one-step-correction-to-a-custom-command-preview"></a>Anleitung: Hinzufügen einer Korrektur mit einem Schritt zu einem benutzerdefinierten Befehl (Vorschau)
@@ -67,7 +67,7 @@ Um die Korrektur in einem Schritt zu veranschaulichen, erweitern wir den Befehl 
 Wählen Sie den Testbereich aus, und testen Sie einige Interaktionen.
 
 - Eingabe: Set alarm for tomorrow at noon (Alarm für morgen Mittag festlegen)
-- Ausgabe: "Are you sure you want to set an alarm for 12/07/2019 12:00:00?" (Möchten Sie wirklich einen Alarm für den 07.12.2019 12 Uhr festlegen?)
+- Ausgabe: "Are you sure you want to set an alarm for 12/07/2019 12:00:00?" (Möchten Sie einen Alarm für 07.12.2019 12 Uhr festlegen?)
 - Eingabe: Ja
 - Ausgabe: „Ok, alarm set for 12/07/2019 12:00:00“ (OK, Alarm für 06.12.2019 12 Uhr festgelegt)
 - Eingabe: Nein, morgen um 13 Uhr

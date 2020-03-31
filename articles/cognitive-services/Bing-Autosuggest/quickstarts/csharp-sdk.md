@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 12/20/2019
 ms.author: aahi
 ms.openlocfilehash: 6bcd89422188d8c0064547c37b4d425f47dd6496
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75450977"
 ---
 # <a name="quickstart-bing-autosuggest-client-library-for-net"></a>Schnellstart: Clientbibliothek für die Bing-Vorschlagssuche für .NET
@@ -48,7 +48,7 @@ Erstellen Sie unter Verwendung des Schlüssels und des Endpunkts der von Ihnen e
 
 Führen Sie die Schritte für Ihr Betriebssystem aus:
 <!-- replace the below endpoint and key examples -->
-#### <a name="windowstabwindows"></a>[Windows](#tab/windows)
+#### <a name="windows"></a>[Windows](#tab/windows)
 
 ```console
 setx AUTOSUGGEST_SUBSCRIPTION_KEY <replace-with-your-autosuggest-api-key>
@@ -57,7 +57,7 @@ setx AUTOSUGGEST_ENDPOINT <replace-with-your-autosuggest-api-endpoint>
 
 Starten Sie das Konsolenfenster neu, nachdem Sie die Umgebungsvariable hinzugefügt haben.
 
-#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+#### <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export AUTOSUGGEST_SUBSCRIPTION_KEY=<replace-with-your-autosuggest-api-key>
@@ -66,7 +66,7 @@ export AUTOSUGGEST_ENDPOINT=<replace-with-your-autosuggest-api-endpoint>
 
 Führen Sie nach dem Hinzufügen der Umgebungsvariablen im Konsolenfenster `source ~/.bashrc` aus, damit die Änderungen wirksam werden.
 
-#### <a name="macostabunix"></a>[macOS](#tab/unix)
+#### <a name="macos"></a>[macOS](#tab/unix)
 
 Bearbeiten Sie `.bash_profile`, und fügen Sie die Umgebungsvariable hinzu:
 

@@ -11,10 +11,10 @@ author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
 ms.openlocfilehash: 2bbd81f3858aa78b9e0e2d610c0fdb0a67816c8e
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78228305"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Bedarfsorientiertes Erstellen eines TensorFlow-Deep Learning-Modells mit Azure Machine Learning
@@ -22,7 +22,7 @@ ms.locfileid: "78228305"
 
 In diesem Artikel wird gezeigt, wie Sie Ihre [TensorFlow](https://www.tensorflow.org/overview)-Trainingsskripts bedarfsorientiert mit der [TensorFlow-Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)-Klasse von Azure Machine Learning ausführen. In diesem Beispiel wird ein TensorFlow-Modell trainiert und registriert, um handschriftliche Ziffern mithilfe eines Deep Neural Network (DNN) zu klassifizieren.
 
-Unabhängig davon, ob Sie ein TensorFlow-Modell von Grund auf entwickeln oder ob Sie ein [vorhandenes Modell](how-to-deploy-existing-model.md) in die Cloud bringen, können Sie Azure Machine Learning zum Erweitern von Open-Source-Trainingsaufträgen verwenden, um für die Produktion geeignete Modelle zu erstellen, bereitzustellen und zu überwachen sowie ihre Versionen zu verwalten.
+Unabhängig davon, ob Sie ein TensorFlow-Modell von Grund auf entwickeln oder ob Sie ein [vorhandenes Modell](how-to-deploy-existing-model.md) in die Cloud bringen, können Sie Azure Machine Learning zum Aufskalieren von Open-Source-Trainingsaufträgen verwenden, um für die Produktion geeignete Modelle zu erstellen, bereitzustellen und zu überwachen sowie ihre Versionen zu verwalten.
 
 Weitere Informationen zu [Deep Learning im Vergleich zum maschinellen Lernen](concept-deep-learning-vs-machine-learning.md).
 
@@ -179,7 +179,7 @@ Die Ausführung durchläuft die folgenden Phasen:
 
 - **Vorbereitung**: Gemäß dem TensorFlow-Estimator wird ein Docker-Image erstellt. Das Image wird in die Containerregistrierung des Arbeitsbereichs hochgeladen und für spätere Ausführungen zwischengespeichert. Darüber hinaus werden Protokolle in den Ausführungsverlauf gestreamt, mit deren Hilfe der Status überwacht werden kann.
 
-- **Skalierung**: Der Cluster versucht ein zentrales Hochskalieren, wenn der Batch KI-Cluster mehr Knoten zur Ausführung benötigt, als derzeit verfügbar sind.
+- **Skalierung**: Der Cluster versucht ein Hochskalieren, wenn der Batch KI-Cluster mehr Knoten zur Ausführung benötigt, als derzeit verfügbar sind.
 
 - **Wird ausgeführt:** Alle Skripts im Skriptordner werden auf das Computeziel hochgeladen, Datenspeicher werden bereitgestellt oder kopiert, und das „entry_script“ wird ausgeführt. Ausgaben aus „stdout“ und dem Ordner „./logs“ werden in den Ausführungsverlauf gestreamt und können zur Überwachung der Ausführung verwendet werden.
 

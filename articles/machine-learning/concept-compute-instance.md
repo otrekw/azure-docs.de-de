@@ -10,11 +10,11 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
 ms.openlocfilehash: 280851b2fea0b8100a7d0f8ec8105109a41c8c83
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77252075"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237146"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Was ist eine Azure Machine Learning-Compute-Instanz?
 
@@ -38,7 +38,7 @@ Eine Compute-Instanz ist eine vollständig verwaltete cloudbasierte Arbeitsstati
 |Vorkonfiguriert&nbsp;oder&nbsp;ML|Sparen Sie Zeit bei der Einrichtung von Aufgaben mit vorkonfigurierten und aktuellen ML-Paketen, Deep Learning- Frameworks und GPU-Treibern.|
 |Vollständig anpassbar|Umfassende Unterstützung für Azure-VM-Typen einschließlich GPUs und durchweg einfache Anpassungen wie die Installation von Paketen und Treibern machen erweiterte Szenarien zu einem Kinderspiel. |
 
-## <a name="contents"></a>Tools und Umgebungen
+## <a name="tools-and-environments"></a><a name="contents"></a>Tools und Umgebungen
 
 Eine Azure Machine Learning-Compute-Instanz ermöglicht Ihnen das Erstellen, Trainieren und Bereitstellen von Modellen in einer vollständig integrierten Notebookumgebung in Ihrem Arbeitsbereich.
 
@@ -139,7 +139,7 @@ Das Kontingent dedizierter Kerne pro Region, das für die Erstellung von Compute
 
 Compute-Instanzen können als [Trainingscomputeziele](concept-compute-target.md#train) verwendet werden, ähnlich wie Azure Machine Learning-Computetrainingscluster. Stellen Sie eine Multi-GPU-VM bereit, um verteilte Trainingsaufträge mithilfe von TensorFlow-/PyTorch-Schätzfunktionen auszuführen. Sie können auch eine Ausführungskonfiguration erstellen und damit Ihr Experiment auf der Compute-Instanz ausführen. Sie können die Compute-Instanz als gefolgertes lokales Bereitstellungsziel für Test- und Debugszenarien verwenden.
 
-## <a name="notebookvm"></a>Was ist mit der Notebook-VM passiert?
+## <a name="what-happened-to-notebook-vm"></a><a name="notebookvm"></a>Was ist mit der Notebook-VM passiert?
 
 Compute-Instanzen ersetzen die Notebook-VM.  
 

@@ -4,10 +4,10 @@ description: Konfigurieren Sie eine Azure Load Balancer-Instanz zum Öffnen von 
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: f4599b2e0174381ab7df04aeeb33db7e3ee60f26
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025383"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Öffnen von Port für einen Service Fabric-Cluster
@@ -50,7 +50,7 @@ az network lb rule create --backend-port 40000 --frontend-port 39999 --protocol 
 
 Der Azure CLI-Befehl verfügt über einige Parameter, die in der folgenden Tabelle beschrieben werden:
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --------- | ----------- |
 | `--backend-port`  | Port, an dem die Service Fabric-Anwendung lauscht |
 | `--frontend-port` | Port, den der Lastenausgleich für externe Verbindungen verfügbar macht |

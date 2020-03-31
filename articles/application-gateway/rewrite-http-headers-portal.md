@@ -9,10 +9,10 @@ ms.date: 11/13/2019
 ms.author: absha
 ms.custom: mvc
 ms.openlocfilehash: b90736b3ed1c1f69488fde4a386cf215d751c362
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74012858"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>Erneutes Generieren von HTTP-Anforderungs- und Antwortheadern mit Azure Application Gateway – Azure-Portal
@@ -67,7 +67,7 @@ In diesem Beispiel werden wir eine Umleitungs-URL ändern, indem der Adressheade
 
    - Geben Sie den Namen für den Satz zum erneuten Generieren in das Feld **Name** ein.
    - Wählen Sie eine oder mehrere Regeln aus, die in der Liste **Zugeordnete Routingregeln** aufgeführt sind. Sie können nur Regeln auswählen, die keinen anderen Sätzen zum erneuten Generieren zugeordnet sind. Die Regeln, die bereits anderen Sätzen zum erneuten Generieren zugeordnet sind, sind deaktiviert (abgeblendet).
-   - Klicken Sie auf **Weiter**.
+   - Wählen Sie **Weiter** aus.
    
      ![Hinzufügen von Name und Zuordnung](media/rewrite-http-headers-portal/name-and-association.png)
 

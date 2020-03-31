@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: f74d4cbc17e49345534a37e9e6612a36e19be295
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73903705"
 ---
 Wenn Sie jedoch Images außerhalb Ihres Azure-Mandanten freigeben möchten, sollten Sie eine App-Registrierung erstellen, um die Freigabe zu erleichtern.  Die Verwendung einer App-Registrierung kann komplexere Freigabeszenarien ermöglichen, wie z.B.: 
@@ -26,22 +26,22 @@ Wenn Sie jedoch Images außerhalb Ihres Azure-Mandanten freigeben möchten, soll
 Erstellen Sie eine App-Registrierung, die von beiden Mandanten verwendet wird, um die Ressourcen des Imagekatalogs freizugeben.
 1. Öffnen Sie die [App-Registrierungen (Vorschauversion) im Azure-Portal](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType//sourceType/).    
 1. Wählen im Menü oben auf der Seite die Schaltfläche **Neue Registrierung** aus.
-1. Geben Sie im Feld **Name** *myGalleryApp* ein.
+1. Geben Sie im Feld **Name***myGalleryApp* ein.
 1. Wählen Sie unter **Unterstützte Kontotypen** **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten** aus.
 1. Geben Sie unter **Umleitungs-URI** *https://www.microsoft.com* ein, und wählen Sie **Registrieren** aus. Nachdem die App-Registrierung erstellt wurde, öffnet sich die Übersichtsseite.
 1. Kopieren Sie auf der Übersichtsseite die **Anwendungs-ID (Client)** und speichern Sie sie zur späteren Verwendung.   
 1. Wählen Sie **Zertifikate & Geheimnisse** und dann **Neuer geheimer Clientschlüssel** aus.
-1. Geben Sie in **Beschreibung** *Mandantenübergreifendes App-Geheimnis für Katalog mit freigegebenen Images*.
+1. Geben Sie in **Beschreibung***Mandantenübergreifendes App-Geheimnis für Katalog mit freigegebenen Images*.
 1. Behalten Sie unter **Ablauf** die Standardeinstellung von **In 1 Jahr** bei, und wählen Sie dann **Hinzufügen** aus.
 1. Kopieren Sie den Wert des geheimen Schlüssels, und speichern Sie ihn an einem sicheren Ort. Sie können ihn nicht mehr abrufen, nachdem Sie die Seite verlassen haben.
 
 
 Erteilen Sie der App-Registrierung die Berechtigung, den Katalog mit freigegebenen Images zu nutzen.
 1. Wählen Sie im Azure-Portal den Katalog mit freigegebenen Images aus, den Sie für einen anderen Mandanten freigeben möchten.
-1. Wählen Sie **Zugriffssteuerung (IAM) auswählen** und dann unter **Rollenzuordnung hinzufügen** *Hinzufügen* aus. 
+1. Wählen Sie **Zugriffssteuerung (IAM) auswählen** und dann unter **Rollenzuordnung hinzufügen***Hinzufügen* aus. 
 1. Wählen Sie unter **Rolle** die Option **Leser** aus.
 1. Behalten Sie unter **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** bei.
-1. Geben Sie unter **Auswählen** *myGalleryApp* ein, und wählen Sie es aus, wenn es in der Liste angezeigt wird. Wählen Sie **Speichern** aus, wenn der Vorgang abgeschlossen ist.
+1. Geben Sie unter **Auswählen***myGalleryApp* ein, und wählen Sie es aus, wenn es in der Liste angezeigt wird. Wählen Sie **Speichern** aus, wenn der Vorgang abgeschlossen ist.
 
 
 ## <a name="give-tenant-2-access"></a>Mandant 2 Zugriff gewähren
@@ -57,7 +57,7 @@ Melden Sie sich im [Azure-Portal](https://portal.azure.com) als Mandant 2 an, un
 1. Wählen Sie die Ressourcengruppe und dann **Zugriffssteuerung (IAM)** aus. Wählen Sie unter **Rollenzuweisung hinzufügen** die Option **Hinzufügen** aus. 
 1. Geben Sie unter **Rolle** die Option **Mitwirkender** ein.
 1. Behalten Sie unter **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** bei.
-1. Geben Sie unter **Auswählen** *myGalleryApp* ein, und wählen Sie es dann aus, wenn es in der Liste angezeigt wird. Wählen Sie **Speichern** aus, wenn der Vorgang abgeschlossen ist.
+1. Geben Sie unter **Auswählen***myGalleryApp* ein, und wählen Sie es dann aus, wenn es in der Liste angezeigt wird. Wählen Sie **Speichern** aus, wenn der Vorgang abgeschlossen ist.
 
 > [!NOTE]
 > Sie müssen warten, bis die Imageversion vollständig erstellt und repliziert wurde, bevor Sie dieses verwaltete Image verwenden können, um eine weitere Imageversion zu erstellen.

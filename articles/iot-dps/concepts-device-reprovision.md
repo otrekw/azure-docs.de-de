@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 2bf369b784cddf307abc59d2b8766fc8a87e0985
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74975345"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>IoT Hub Device-Konzepte für die erneute Bereitstellung
 
 Im Lauf des Lebenszyklus einer IoT-Lösung kommt es häufig vor, dass Geräte von einem IoT-Hub zu einem anderen verlagert werden. Folgende Szenarien können der Grund für eine solche Verlagerung sein:
 
-* **Geolocation/Geolatenz**: Wenn ein Gerät von einem Standort zu einem anderen verlagert wird, lässt sich die Netzwerklatenz verbessern, indem das Gerät zu einem näher gelegenen IoT-Hub migriert wird.
+* **Geolocation oder Geolatenz**: Wenn ein Gerät von einem Standort zu einem anderen verlagert wird, lässt sich die Netzwerklatenz verbessern, indem das Gerät zu einem näher gelegenen IoT-Hub migriert wird.
 
 * **Mehrinstanzenfähigkeit**: Ein Gerät wird innerhalb der gleichen IoT-Lösung einem neuen Kunden oder Kundenstandort zugewiesen. Die Dienstbereitstellung für diesen neuen Kunden erfolgt möglicherweise über einen anderen IoT-Hub.
 
-* **Lösungsänderung**: Ein Gerät wird in eine neue oder aktualisierte IoT-Lösung verlagert. Aufgrund der Neuzuweisung muss das Gerät möglicherweise mit einem neuen IoT-Hub kommunizieren, der mit anderen Back-End-Komponenten verbunden ist.
+* **Änderung einer Lösung**: Ein Gerät wird in eine neue oder aktualisierte IoT-Lösung verlagert. Aufgrund der Neuzuweisung muss das Gerät möglicherweise mit einem neuen IoT-Hub kommunizieren, der mit anderen Back-End-Komponenten verbunden ist.
 
 * **Quarantäne**: Dieses Szenario ähnelt der Änderung einer Lösung. Ein Gerät, das Fehlfunktionen aufweist, eine Sicherheitslücke darstellt oder veraltet ist, kann einem IoT-Hub zugewiesen werden, der ausschließlich Updates ausführen kann, um die Compliance wiederherzustellen. Sobald das Gerät wieder ordnungsgemäß funktioniert, wird es wieder zu seinem primären Hub migriert.
 
@@ -50,17 +50,17 @@ Je nach Szenario ist es bei der Verlagerung von Geräten von einem IoT-Hub zu ei
 
 Je nach Szenario sendet ein Gerät in der Regel beim Neustart eine Anforderung an eine Provisioning Service-Instanz. Außerdem wird eine Methode zum manuellen Auslösen der Bereitstellung nach Bedarf unterstützt. Die in einem Registrierungseintrag befindliche Richtlinie für die erneute Bereitstellung bestimmt, wie die Device Provisioning Service-Instanz diese Bereitstellungsanforderungen verarbeitet. Die Richtlinie bestimmt auch, ob Gerätestatusdaten während der erneuten Bereitstellung migriert werden sollen. Für einzelne Registrierungen und Registrierungsgruppen sind die gleichen Richtlinien verfügbar:
 
-* **Erneut bereitstellen und Daten migrieren**: Dies ist die Standardrichtlinie für neue Registrierungseinträge. Diese Richtlinie wird angewendet, wenn Geräte, die dem Registrierungseintrag zugeordnet sind, eine neue Anforderung senden (1). Je nach Konfiguration des Registrierungseintrags wird das Gerät möglicherweise einem anderen IoT-Hub zugewiesen. Wenn das Gerät den IoT-Hub wechselt, wird die Geräteregistrierung für den ursprünglichen IoT-Hub entfernt. Die aktualisierten Gerätezustandsinformationen von diesem ursprünglichen IoT-Hub werden zum neuen IoT-Hub migriert (2). Während der Migration wird der Gerätestatus als **Wird zugewiesen** gemeldet.
+* **Gerät erneut bereitstellen und Daten migrieren**: Dies ist die Standardrichtlinie für neue Registrierungseinträge. Diese Richtlinie wird angewendet, wenn Geräte, die dem Registrierungseintrag zugeordnet sind, eine neue Anforderung senden (1). Je nach Konfiguration des Registrierungseintrags wird das Gerät möglicherweise einem anderen IoT-Hub zugewiesen. Wenn das Gerät den IoT-Hub wechselt, wird die Geräteregistrierung für den ursprünglichen IoT-Hub entfernt. Die aktualisierten Gerätezustandsinformationen von diesem ursprünglichen IoT-Hub werden zum neuen IoT-Hub migriert (2). Während der Migration wird der Gerätestatus als **Wird zugewiesen** gemeldet.
 
     ![Bereitstellen mit dem Device Provisioning Service](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
 
-* **Erneut bereitstellen und auf ursprüngliche Konfiguration zurücksetzen**: Diese Richtlinie wird angewendet, wenn Geräte, die dem Registrierungseintrag zugeordnet sind, eine neue Bereitstellungsanforderung senden (1). Je nach Konfiguration des Registrierungseintrags wird das Gerät möglicherweise einem anderen IoT-Hub zugewiesen. Wenn das Gerät den IoT-Hub wechselt, wird die Geräteregistrierung für den ursprünglichen IoT-Hub entfernt. Die anfänglichen Konfigurationsdaten, die von der Provisioning Service-Instanz bei der Bereitstellung des Geräts empfangen wurden, werden an den neuen IoT-Hub gesendet (2). Während der Migration wird der Gerätestatus als **Wird zugewiesen** gemeldet.
+* **Erneut zuweisen und auf anfängliche Konfiguration zurücksetzen**: Diese Richtlinie wird angewendet, wenn Geräte, die dem Registrierungseintrag zugeordnet sind, eine neue Bereitstellungsanforderung senden (1). Je nach Konfiguration des Registrierungseintrags wird das Gerät möglicherweise einem anderen IoT-Hub zugewiesen. Wenn das Gerät den IoT-Hub wechselt, wird die Geräteregistrierung für den ursprünglichen IoT-Hub entfernt. Die anfänglichen Konfigurationsdaten, die von der Provisioning Service-Instanz bei der Bereitstellung des Geräts empfangen wurden, werden an den neuen IoT-Hub gesendet (2). Während der Migration wird der Gerätestatus als **Wird zugewiesen** gemeldet.
 
     Diese Richtlinie wird häufig beim Zurücksetzen einer Factory verwendet, ohne die IoT-Hubs zu ändern.
 
     ![Bereitstellen mit dem Device Provisioning Service](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
 
-* **Nie erneut bereitstellen:** Das Gerät wird niemals einem anderen Hub zugewiesen. Diese Richtlinie dient der Verwaltung der Abwärtskompatibilität.
+* **Niemals erneut bereitstellen**: Das Gerät wird niemals einem anderen Hub zugewiesen. Diese Richtlinie dient der Verwaltung der Abwärtskompatibilität.
 
 ### <a name="managing-backwards-compatibility"></a>Verwalten der Abwärtskompatibilität
 

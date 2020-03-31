@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: 69e2c053c9fb874889bc3d5b08be6e0c7ce875a5
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162904"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services-Konzepte 
@@ -27,7 +27,7 @@ ms.locfileid: "77162904"
 
 Dieses Thema bietet eine Übersicht über die wichtigsten Konzepte von Media Services.
 
-## <a name="a-idassetsassets-and-storage"></a><a id="assets"/>Medienobjekte und Speicher
+## <a name="assets-and-storage"></a><a id="assets"/>Medienobjekte und Speicher
 ### <a name="assets"></a>Objekte
 Ein [Medienobjekt](https://docs.microsoft.com/rest/api/media/operations/asset) enthält digitale Dateien (z.B. Video, Audio, Bilder, Sammlungen von Miniaturansichten, Textspuren und Untertiteldateien) sowie die Metadaten zu diesen Dateien. Nachdem die digitalen Dateien in ein Medienobjekt geladen wurden, können Sie in den Codierungs- und Streaming-Workflows der Media Services verwendet werden.
 
@@ -75,7 +75,7 @@ Ein BLOB-Container dient zur Gruppierung eines Satzes von BLOBs. BLOB-Container 
 > 
 > 
 
-### <a name="a-idlocatorslocators"></a><a id="locators"/>Locators
+### <a name="locators"></a><a id="locators"/>Locators
 [Locator](https://docs.microsoft.com/rest/api/media/operations/locator)bieten einen Einstiegspunkt für den Zugriff auf die in einem Medienobjekt enthaltenen Dateien. Anhand einer Zugriffsrichtlinie werden die Berechtigungen eines Clients und die Dauer definiert, für die der Client auf eine bestimmte Ressource zugreifen kann. Locator können eine n:1-Beziehung mit einer Zugriffsrichtlinie aufweisen, wobei verschiedene Locator verschiedenen Clients verschiedene Startzeiten und Verbindungstypen bereitstellen können, wobei alle dieselben Berechtigungen und Einstellungen für die Dauer verwenden; aufgrund einer Einschränkung der Richtlinie für den gemeinsamen Zugriff, die von Azure Storage Services festgelegt wird, können jedoch nicht mehr als fünf eindeutige Locator mit einem bestimmten Medienobjekt gleichzeitig verknüpft sein. 
 
 Media Services unterstützt zwei Arten von Locatorobjekten: OnDemandOrigin-Locators, die zum Streamen von Medien (z.B. MPEG DASH, HLS oder Smooth Streaming) oder für den progressiven Download von Medien verwendet werden, und SAS-URL-Locators, die zum Hochladen oder Herunterladen von Mediendateien in bzw. von Azure Storage verwendet werden. 
@@ -91,7 +91,7 @@ Ein [Auftrag](https://docs.microsoft.com/rest/api/media/operations/job) wird nor
 
 Ein Auftrag enthält Metadaten zur auszuführenden Verarbeitung. Jeder Auftrag enthält eine oder mehrere [Aufgaben](https://docs.microsoft.com/rest/api/media/operations/task). Diese geben eine unteilbare Verarbeitungsaufgabe, die zugehörigen Eingabe- und Ausgabemedienobjekte, einen Medienprozessor und die zugehörigen Einstellungen an. Aufgaben innerhalb eines Auftrags können verkettet werden, wobei das Ausgabemedienobjekt als Eingabemedienobjekt für die nächste Aufgabe dient. Auf diese Weise kann ein Auftrag die gesamten Verarbeitungsschritte für eine Medienpräsentation umfassen.
 
-## <a id="encoding"></a>Codieren
+## <a name="encoding"></a><a id="encoding"></a>Codieren
 Azure Media Services bietet verschiedene Optionen für die Codierung von Medien in der Cloud.
 
 Bei Verwendung von Media Services ist es wichtig, den Unterschied zwischen Codecs und Dateiformaten zu kennen.
@@ -160,7 +160,7 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 - [Schützen mit PlayReady/Widevine](media-services-protect-with-playready-widevine.md)
 
 ## <a name="delivering"></a>Übermitteln
-### <a name="a-iddynamic_packagingdynamic-packaging"></a><a id="dynamic_packaging"/>Dynamische Paketerstellung
+### <a name="dynamic-packaging"></a><a id="dynamic_packaging"/>Dynamische Paketerstellung
 Bei der Arbeit mit Media Services empfiehlt es sich, Zwischendateien immer in einen MP4-Satz mit adaptiver Bitrate zu codieren und anschließend mithilfe der [dynamischen Paketerstellung](media-services-dynamic-packaging-overview.md)in das gewünschte Format zu konvertieren.
 
 ### <a name="streaming-endpoint"></a>Streamingendpunkt

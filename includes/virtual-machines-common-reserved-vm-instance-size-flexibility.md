@@ -5,10 +5,10 @@ ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 02-18-2020
 ms.openlocfilehash: aebe8f05bd1a3607da6d1153c87490891fc6b299
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471453"
 ---
 Wenn Sie eine reservierte VM-Instanz erwerben, können Sie sich entscheiden, die Flexibilität bei der Instanzgröße oder die Kapazitätspriorität zu optimieren. Weitere Informationen zum Festlegen oder Ändern der Optimierungseinstellung für reservierte VM-Instanzen finden Sie unter [Ändern der Optimierungseinstellung für reservierte VM-Instanzen](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).

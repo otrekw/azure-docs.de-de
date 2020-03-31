@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: 1805f6f7a61f7e0b0a6e4d5bd6931c0a7d1f1b6f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883708"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218920"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>Suche nach Entitäten mit der Bing-Entitäts-API
 
@@ -234,7 +234,7 @@ Das Ergebnis für einen Ort umfasst den Namen, die Adresse, die Telefonnummer de
 
 ## <a name="data-attribution"></a>Datenzuordnung
 
-Antworten der Bing-Entitätssuche-API enthalten Informationen, die Eigentum von Dritten sind. Es liegt in Ihrer Verantwortung sicherzustellen, dass Ihre Verwendung dieser Informationen angemessen ist, z.B. durch Einhaltung von Creative Commons-Lizenzen, auf denen Ihre Benutzeroberfläche möglicherweise basiert.
+Antworten der Bing-Entitätssuche-API enthalten Informationen, die Eigentum von Dritten sind. Es ist Ihre Aufgabe sicherzustellen, dass Sie diese in geeigneter Form verwenden, z.B. durch Einhaltung von Creative Commons-Lizenzen, auf denen Ihre Benutzeroberfläche möglicherweise basiert.
 
 Wenn eine Antwort oder ein Ergebnis die Felder `contractualRules`, `attributions` oder `provider` enthält, müssen Sie die Daten zuordnen. Enthält die Antwort keines dieser Felder, ist keine Zuordnung erforderlich. Wenn die Antwort das Feld `contractualRules` sowie die Felder `attributions` und/oder `provider` enthält, müssen Sie die vertraglichen Regeln zum Zuordnen der Daten verwenden.
 

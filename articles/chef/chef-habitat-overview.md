@@ -5,10 +5,10 @@ keywords: Azure, Chef, Devops, virtuelle Computer, Übersicht, automatisieren, H
 ms.date: 05/15/2018
 ms.topic: article
 ms.openlocfilehash: de444836c04d1d37a19a006ce4eafdcae867ca5a
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74158064"
 ---
 # <a name="use-habitat-to-deploy-your-application-to-azure"></a>Verwenden von Habitat zum Bereitstellen Ihrer Anwendung in Azure

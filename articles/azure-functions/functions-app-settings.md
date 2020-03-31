@@ -4,11 +4,11 @@ description: Referenzdokumentation für die App-Einstellungen für Azure Functio
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.openlocfilehash: 3853ccbfd492bfaf4a82d62e6d31ab938285ee2e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357575"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235270"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenz zu App-Einstellungen für Azure Functions
 
@@ -22,7 +22,7 @@ Es gibt andere globale Konfigurationsoptionen in der Datei [host.json](functions
 
 Der Application Insights-Instrumentierungsschlüssel, wenn Sie Application Insights verwenden. Weitere Informationen finden Sie unter [Überwachen von Azure Functions](functions-monitoring.md).
 
-|Key|Beispielwert|
+|Schlüssel|Beispielwert|
 |---|------------|
 |APPINSIGHTS_INSTRUMENTATIONKEY|5dbdd5e9-af77-484b-9032-64f83bb83bb|
 
@@ -34,7 +34,7 @@ Konfiguriert in Version 2.x oder höher der Functions-Runtime das App-Verhalten 
 
 Optionale Verbindungszeichenfolge für das Speicherkonto zum Speichern von Protokollen und zu deren Anzeige auf der Registerkarte **Überwachen** im Portal. Diese Einstellung ist nur für Apps gültig, die für Version 1.x der Azure Functions-Runtime gedacht sind. Das Speicherkonto muss ein allgemeines Konto sein, das BLOBs, Warteschlangen und Tabellen unterstützt. Weitere Informationen finden Sie unter [Speicherkontoanforderungen](storage-considerations.md#storage-account-requirements).
 
-|Key|Beispielwert|
+|Schlüssel|Beispielwert|
 |---|------------|
 |AzureWebJobsDashboard|DefaultEndpointsProtocol=https;AccountName=<name>;AccountKey=<key>|
 
@@ -45,7 +45,7 @@ Optionale Verbindungszeichenfolge für das Speicherkonto zum Speichern von Proto
 
 `true` bedeutet, dass die standardmäßige Landing Page deaktiviert wird, die für die Stamm-URL einer Funktionen-App angezeigt wird. Der Standardwert ist `false`.
 
-|Key|Beispielwert|
+|Schlüssel|Beispielwert|
 |---|------------|
 |AzureWebJobsDisableHomepage|true|
 
@@ -57,7 +57,7 @@ Wenn diese App-Einstellung ausgelassen oder auf `false` gesetzt wird, erfolgt al
 
 `true` bedeutet, dass beim Kompilieren von .NET-Code der Releasemodus verwendet wird, während `false` bedeutet, dass der Debugmodus verwendet wird. Der Standardwert ist `true`.
 
-|Key|Beispielwert|
+|Schlüssel|Beispielwert|
 |---|------------|
 |AzureWebJobsDotNetReleaseCompilation|true|
 
@@ -65,7 +65,7 @@ Wenn diese App-Einstellung ausgelassen oder auf `false` gesetzt wird, erfolgt al
 
 Eine durch Trennzeichen getrennte Liste der zu aktivierenden Features der Betaversion. Durch diese Flags aktivierten Features der Betaversion sind nicht bereit für die Produktion, können aber zur experimentellen Verwendung aktiviert werden, bevor sie live geschaltet werden.
 
-|Key|Beispielwert|
+|Schlüssel|Beispielwert|
 |---|------------|
 |AzureWebJobsFeatureFlags|Feature1,Feature2|
 
@@ -73,7 +73,7 @@ Eine durch Trennzeichen getrennte Liste der zu aktivierenden Features der Betave
 
 Gibt das Repository oder den Anbieter an, das bzw. der zum Speichern von Schlüsseln verwendet wird. Aktuell sind die unterstützten Repositorys der Blobspeicher („Blob“) und das lokale Dateisystem („Dateien“). In Version 2 ist der Blobspeicher die Standardeinstellung, in Version 1 das Dateisystem.
 
-|Key|Beispielwert|
+|Schlüssel|Beispielwert|
 |---|------------|
 |AzureWebJobsSecretStorageType|Dateien|
 
@@ -81,7 +81,7 @@ Gibt das Repository oder den Anbieter an, das bzw. der zum Speichern von Schlüs
 
 Die Azure Functions-Laufzeit verwendet diese Verbindungszeichenfolge des Speicherkontos für alle Funktionen, mit Ausnahme der per HTTP ausgelösten Funktionen. Das Speicherkonto muss ein allgemeines Konto sein, das BLOBs, Warteschlangen und Tabellen unterstützt. Weitere Informationen finden Sie unter [Speicherkonto](functions-infrastructure-as-code.md#storage-account) und [Anforderungen an das Speicherkonto](storage-considerations.md#storage-account-requirements).
 
-|Key|Beispielwert|
+|Schlüssel|Beispielwert|
 |---|------------|
 |AzureWebJobsStorage|DefaultEndpointsProtocol=https;AccountName=[Name];AccountKey=[Schlüssel]|
 
@@ -89,7 +89,7 @@ Die Azure Functions-Laufzeit verwendet diese Verbindungszeichenfolge des Speiche
 
 Der Pfad zum Compiler, der für TypeScript verwendet wird. Bei Bedarf können Sie den Standardwert außer Kraft setzen.
 
-|Key|Beispielwert|
+|Schlüssel|Beispielwert|
 |---|------------|
 |AzureWebJobs_TypeScriptPath|%HOME%\typescript|
 
@@ -97,7 +97,7 @@ Der Pfad zum Compiler, der für TypeScript verwendet wird. Bei Bedarf können Si
 
 Bestimmt, ob die Bearbeitung im Azure-Portal aktiviert ist. Gültige Werte sind „readwrite“ und „readonly“.
 
-|Key|Beispielwert|
+|Schlüssel|Beispielwert|
 |---|------------|
 |FUNCTION\_APP\_EDIT\_MODE|readonly|
 
@@ -105,7 +105,7 @@ Bestimmt, ob die Bearbeitung im Azure-Portal aktiviert ist. Gültige Werte sind 
 
 Die in dieser Funktionen-App zu verwendende Version der Functions-Runtime. Eine Tilde mit Hauptversion bedeutet, dass die neueste Version dieser Hauptversion verwendet wird (z.B. „~2“). Wenn neue Versionen für dieselbe Hauptversion verfügbar sind, werden sie automatisch in der Funktionen-App installiert. Verwenden Sie die vollständige Versionsnummer (z.B. „2.0.12345“), um die App an eine bestimmte Version anzuheften. Der Standardwert ist „~2“. Der Wert `~1` heftet Ihre App an Version 1.x der Runtime an.
 
-|Key|Beispielwert|
+|Schlüssel|Beispielwert|
 |---|------------|
 |FUNCTIONS\_EXTENSION\_VERSION|~2|
 
@@ -118,7 +118,7 @@ Diese Einstellung ermöglicht die Ausführung Ihrer Funktions-App in einem mit V
 
 [FUNCTIONS\_EXTENSION\_VERSION](functions-app-settings.md#functions_extension_version) muss dafür auf `~3` festgelegt werden.
 
-|Key|Beispielwert|
+|Schlüssel|Beispielwert|
 |---|------------|
 |FUNCTIONS\_V2\_COMPATIBILITY\_MODE|true|
 
@@ -126,7 +126,7 @@ Diese Einstellung ermöglicht die Ausführung Ihrer Funktions-App in einem mit V
 
 Gibt die maximale Anzahl von Sprachworkerprozessen mit einem Standardwert von `1` an. Der zulässige Höchstwert ist `10`. Funktionsaufrufe werden gleichmäßig zwischen Sprachworkerprozessen verteilt. Sprachworkerprozesse werden so lange alle 10 Sekunden erzeugt, bis die von FUNCTIONS\_WORKER\_PROCESS\_COUNT festgelegte Anzahl erreicht ist. Die Verwendung mehrerer Sprachworkerprozesse ist nicht dasselbe wie [Skalierung](functions-scale.md). Erwägen Sie die Verwendung dieser Einstellung, wenn Ihr Workload aus einer Mischung von CPU-gebundenen und E/A-gebundenen Aufrufen besteht. Diese Einstellung gilt für alle .NET-Sprachen.
 
-|Key|Beispielwert|
+|Schlüssel|Beispielwert|
 |---|------------|
 |FUNCTIONS\_WORKER\_PROCESS\_COUNT|2|
 
@@ -135,7 +135,7 @@ Gibt die maximale Anzahl von Sprachworkerprozessen mit einem Standardwert von `1
 
 Die Sprachworkerruntime, die in der Funktionen-App geladen werden soll.  Dies entspricht der Sprache, die in Ihrer Anwendung verwendet wird (z.B. „dotnet“). Bei Funktionen in mehreren Sprachen müssen Sie diese in verschiedenen Apps mit dem jeweils passenden Workerruntimewert veröffentlichen.  Gültige Werte sind `dotnet` (C#/F#), `node` (JavaScript/TypeScript), `java` (Java) und `powershell` (PowerShell) und `python` (Python).
 
-|Key|Beispielwert|
+|Schlüssel|Beispielwert|
 |---|------------|
 |FUNCTIONS\_WORKER\_RUNTIME|dotnet|
 
@@ -143,7 +143,7 @@ Die Sprachworkerruntime, die in der Funktionen-App geladen werden soll.  Dies en
 
 Nur für Verbrauchs- und Premium-Tarife. Die Verbindungszeichenfolge für das Speicherkonto, in dem der Code der Funktionen-App und die Konfiguration gespeichert werden. Weitere Informationen finden Sie unter [Erstellen einer Funktionen-App](functions-infrastructure-as-code.md#create-a-function-app).
 
-|Key|Beispielwert|
+|Schlüssel|Beispielwert|
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol=https;AccountName=[Name];AccountKey=[Schlüssel]|
 
@@ -151,18 +151,18 @@ Nur für Verbrauchs- und Premium-Tarife. Die Verbindungszeichenfolge für das Sp
 
 Nur für Verbrauchs- und Premium-Tarife. Der Dateipfad zum Code der Funktionen-App und zur Konfiguration. Wird mit WEBSITE_CONTENTAZUREFILECONNECTIONSTRING verwendet. Standardmäßig wird eine eindeutige Zeichenfolge verwendet, die mit dem Namen der Funktionen-App beginnt. Weitere Informationen finden Sie unter [Erstellen einer Funktionen-App](functions-infrastructure-as-code.md#create-a-function-app).
 
-|Key|Beispielwert|
+|Schlüssel|Beispielwert|
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
 
 ## <a name="website_max_dynamic_application_scale_out"></a>WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT
 
-Die maximale Anzahl der Instanzen, auf denen die Funktionen-App horizontal hochskaliert werden kann. Dieser Wert ist standardmäßig unbegrenzt.
+Die maximale Anzahl der Instanzen, auf denen die Funktionen-App aufskaliert werden kann. Dieser Wert ist standardmäßig unbegrenzt.
 
 > [!NOTE]
 > Diese Einstellung ist ein Vorschaufeature und funktioniert nur dann zuverlässig, wenn sie auf einen Wert <= 5 festgelegt wird.
 
-|Key|Beispielwert|
+|Schlüssel|Beispielwert|
 |---|------------|
 |WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT|5|
 
@@ -171,7 +171,7 @@ Die maximale Anzahl der Instanzen, auf denen die Funktionen-App horizontal hochs
 _Nur Windows._  
 Legt die Version von Node.js fest, die beim Ausführen Ihrer Funktions-App unter Windows verwendet werden soll. Verwenden Sie eine Tilde (~), damit die Laufzeit die neueste verfügbare Version der Zielhauptversion verwendet. Wenn Sie beispielsweise auf `~10` festlegen, wird die neueste Version von Node.js 10 verwendet. Wenn eine Hauptversion mittels Tilde vorgegeben wird, müssen Sie die Nebenversion nicht manuell aktualisieren. 
 
-|Key|Beispielwert|
+|Schlüssel|Beispielwert|
 |---|------------|
 |WEBSITE\_NODE\_DEFAULT_VERSION|~10|
 
@@ -179,7 +179,7 @@ Legt die Version von Node.js fest, die beim Ausführen Ihrer Funktions-App unter
 
 Ermöglicht es Ihrer Funktions-App, über eine bereitgestellte Paketdatei ausgeführt zu werden.
 
-|Key|Beispielwert|
+|Schlüssel|Beispielwert|
 |---|------------|
 |WEBSITE\_RUN\_FROM\_PACKAGE|1|
 
@@ -189,7 +189,7 @@ Gültige Werte sind entweder eine URL, die in den Speicherort einer Bereitstellu
 
 Standardmäßig nutzen Functions-Proxys eine Verknüpfung, um API-Aufrufe von Proxys direkt an Funktionen in derselben Funktionen-App zu senden, anstatt eine neue HTTP-Anforderung zu erstellen. Mit dieser Einstellung können Sie dieses Verhalten deaktivieren.
 
-|Key|value|BESCHREIBUNG|
+|Schlüssel|Wert|BESCHREIBUNG|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|true|Aufrufe mit einer Back-End-URL, die auf eine Funktion in der lokalen Funktions-App verweist, werden nicht mehr direkt an die Funktion gesendet. Stattdessen werden sie an das HTTP-Front-End für die Funktions-App zurückgeleitet.|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Dies ist der Standardwert. Aufrufe mit einer Back-End-URL, die auf eine Funktion in der lokalen Funktions-App verweist, werden direkt an diese Funktion geleitet.|
@@ -199,7 +199,7 @@ Standardmäßig nutzen Functions-Proxys eine Verknüpfung, um API-Aufrufe von Pr
 
 Diese Einstellung steuert, ob %2F in Routenparametern als Schrägstrich decodiert wird, wenn dieser Code in der Back-End-URL eingefügt wird. 
 
-|Key|value|Beschreibung|
+|Schlüssel|Wert|BESCHREIBUNG|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|true|Bei Routenparameter mit codierten Schrägstrichen werden diese decodiert. `example.com/api%2ftest` wird zu `example.com/api/test`.|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|Dies ist das Standardverhalten. Alle Routenparameter werden unverändert übergeben.|

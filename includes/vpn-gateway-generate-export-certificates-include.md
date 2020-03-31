@@ -5,17 +5,17 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 10/10/2019
+ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 1e18223736964b0327a4c8f6ddb73ddb4f58889a
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: e85dc8c079205484db9b7b7c43a0086f69feb3be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78305006"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80059910"
 ---
-## <a name="rootcert"></a>Erstellen eines selbstsignierten Stammzertifikats
+## <a name="create-a-self-signed-root-certificate"></a><a name="rootcert"></a>Erstellen eines selbstsignierten Stammzertifikats
 
 Verwenden Sie das Cmdlet „New-SelfSignedCertificate“, um ein selbstsigniertes Stammzertifikat zu erstellen. Zusätzliche Informationen zu den Parametern finden Sie in der Beschreibung zu [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
 
@@ -30,7 +30,7 @@ Verwenden Sie das Cmdlet „New-SelfSignedCertificate“, um ein selbstsignierte
    ```
  3. Lassen Sie die PowerShell-Konsole geöffnet, wenn Sie direkt nach dem Erstellen dieses Stammzertifikats ein Clientzertifikat erstellen möchten.
 
-## <a name="clientcert"></a>Generieren eines Clientzertifikats
+## <a name="generate-a-client-certificate"></a><a name="clientcert"></a>Generieren eines Clientzertifikats
 
 Auf jedem Clientcomputer, der per Punkt-zu-Standort eine Verbindung mit einem VNet herstellt, muss ein Clientzertifikat installiert sein. Sie generieren ein Clientzertifikat aus dem selbstsignierten Stammzertifikat und exportieren und installieren es anschließend. Wenn das Clientzertifikat nicht installiert ist, tritt bei der Authentifizierung ein Fehler auf. 
 
@@ -52,7 +52,7 @@ New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature 
 -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
 ```
 
-### <a name="ex2"></a>Beispiel 2: neue PowerShell-Konsolensitzung
+### <a name="example-2---new-powershell-console-session"></a><a name="ex2"></a>Beispiel 2: neue PowerShell-Konsolensitzung
 
 Wenn Sie zusätzliche Clientzertifikate erstellen oder nicht die gleiche PowerShell-Sitzung verwenden, in der Sie Ihr selbstsigniertes Stammzertifikat erstellt haben, führen Sie folgende Schritte aus:
 
@@ -90,7 +90,7 @@ Wenn Sie zusätzliche Clientzertifikate erstellen oder nicht die gleiche PowerSh
    -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
    ```
 
-## <a name="cer"></a>Exportieren des öffentlichen Schlüssels des Stammzertifikats (CER-Datei)
+## <a name="export-the-root-certificate-public-key-cer"></a><a name="cer"></a>Exportieren des öffentlichen Schlüssels des Stammzertifikats (CER-Datei)
 
 [!INCLUDE [Export public key](vpn-gateway-certificates-export-public-key-include.md)]
 
@@ -98,6 +98,6 @@ Wenn Sie zusätzliche Clientzertifikate erstellen oder nicht die gleiche PowerSh
 
 Möglicherweise möchten Sie das selbstsignierte Stammzertifikat exportieren und als Sicherung sicher speichern. Bei Bedarf können Sie es später auf einem anderen Computer installieren und weitere Clientzertifikate generieren. Um das selbstsignierte Stammzertifikat als PFX-Datei zu exportieren, wählen Sie das Stammzertifikat aus, und verwenden Sie die gleichen Schritte wie zum [Exportieren eines Clientzertifikats](#clientexport).
 
-## <a name="clientexport"></a>Exportieren des Clientzertifikats
+## <a name="export-the-client-certificate"></a><a name="clientexport"></a>Exportieren des Clientzertifikats
 
 [!INCLUDE [Export client certificate](vpn-gateway-certificates-export-client-cert-include.md)]

@@ -15,6 +15,8 @@
       href: web-query-data.md
 - name: Tutorials
   items:
+    - name: Schreiben von Abfragen
+      href: write-queries.md
     - name: Programmgesteuerte E2E-Bloberfassung
       items:
         - name: 'C#'
@@ -32,14 +34,22 @@
         - name: Übersicht über die Datenerfassung
           displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
           href: ingest-data-overview.md
+        - name: Datenerfassungseigenschaften
+          href: ingestion-properties.md
+        - name: Formate für die Datenerfassung
+          href: ingestion-supported-formats.md
     - name: Kusto-Abfragesprache
       items:
         - name: Kurzübersicht
           href: kql-quick-reference.md
     - name: Übersicht über die Datenvisualisierung
       href: viz-overview.md
-    - name: Sicherheitsübersicht
-      href: security.md
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsübersicht
+          href: security.md
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
 - name: Anleitungen
   items:
     - name: Erstellen eines Clusters und einer Datenbank
@@ -60,6 +70,8 @@
           href: ingest-data-one-click.md
         - name: Streamingerfassung
           href: ingest-data-streaming.md
+        - name: Verwenden von LightIngest
+          href: lightingest.md
         - name: Event Hub
           items:
             - name: Azure-Portal
@@ -106,8 +118,6 @@
           href: ingest-json-formats.md
     - name: Daten abfragen
       items:
-        - name: Schreiben von Abfragen
-          href: write-queries.md
         - name: Abfragen von Daten in Azure Data Lake
           href: data-lake-query-data.md
         - name: Abfragen von Daten in Azure Monitor
@@ -158,12 +168,22 @@
           href: k2bridge.md
     - name: Sicher
       items:
+        - name: Netzwerkisolation (VNET)
+          items:
+            - name: 'Erstellen eines Clusters in Ihrem VNET: Portal'
+              href: vnet-create-cluster-portal.md
+            - name: Bereitstellen Ihres Clusters in Ihrem VNET
+              href: vnet-deployment.md
+            - name: 'Behandeln von Problemen mit der VNET-Clustererstellung, -konnektivität und -verwendung'
+              href: vnet-deploy-troubleshoot.md
         - name: Verwalten der Clustersicherheit
           href: manage-cluster-security.md
         - name: Konfigurieren von verwalteten Identitäten
           href: managed-identities.md
         - name: Konfigurieren von kundenseitig verwalteten Schlüsseln
           items:
+            - name: Portal
+              href: customer-managed-keys-portal.md
             - name: 'C#'
               href: customer-managed-keys-csharp.md
             - name: Azure Resource Manager-Vorlage
@@ -214,10 +234,6 @@
               href: delete-data.md
             - name: Behandeln von doppelten Daten
               href: dealing-with-duplicates.md
-    - name: Bereitstellen
-      items:
-        - name: Bereitstellen des Clusters in Ihrem virtuellen Netzwerk
-          href: vnet-deployment.md
     - name: Überwachen
       items:
         - name: Verwenden von Diagnoseprotokollen zum Überwachen der Erfassung
@@ -236,6 +252,12 @@
               href: data-factory-template.md
             - name: Ausführen von Steuerungsbefehlen mithilfe von Azure Data Factory
               href: data-factory-command-activity.md
+        - name: "Microsoft\_Flow-Connector"
+          items:
+            - name: "Microsoft\_Flow-Connector"
+              href: flow.md
+            - name: "Verwendungsbeispiele für den Microsoft\_Flow-Connector"
+              href: flow-usage.md
         - name: Apache Spark-Connector
           href: spark-connector.md
         - name: Herstellen einer Databricks-Verbindung unter Verwendung von Python
