@@ -4,11 +4,11 @@ description: Erfahren Sie, wie Sie eingehende und ausgehende IP-Adressen für Fu
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.openlocfilehash: a1c4174b8f1f2349cbd35c32cbee468ee5b4cd4a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356900"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234858"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP-Adressen in Azure Functions
 
@@ -30,7 +30,7 @@ Jede Funktionen-App verfügt über eine einzelne eingehende IP-Adresse. So finde
 3. Wählen Sie **Plattformfeatures**.
 4. Wenn Sie **Eigenschaften** wählen, wird die eingehende IP-Adresse unter **Virtuelle IP-Adresse** angezeigt.
 
-## <a name="find-outbound-ip-addresses"></a>Ausgehende IP-Adressen einer Funktions-App
+## <a name="function-app-outbound-ip-addresses"></a><a name="find-outbound-ip-addresses"></a>Ausgehende IP-Adressen einer Funktions-App
 
 Jede Funktionen-App verfügt über einen Satz von verfügbaren ausgehenden IP-Adressen. Jede ausgehende Verbindung von einer Funktion, beispielsweise mit einer Back-End-Datenbank, verwendet eine der verfügbaren ausgehenden IP-Adressen als IP-Ursprungsadresse. Im Vorfeld ist nicht klar, welche IP-Adresse eine bestimmte Verbindung verwendet. Daher muss Ihr Back-End-Dienst seine Firewall für alle ausgehenden IP-Adressen der App öffnen.
 
@@ -80,7 +80,7 @@ Das JSON-Fragment für Westeuropa könnte beispielsweise folgendermaßen aussehe
 
  Informationen dazu, wann diese Datei aktualisiert wird und wann die IP-Adresse geändert wird, finden Sie im Abschnitt **Details** auf der [Download Center-Seite](https://www.microsoft.com/en-us/download/details.aspx?id=56519).
 
-## <a name="inbound-ip-address-changes"></a>Änderungen der eingehenden IP-Adresse
+## <a name="inbound-ip-address-changes"></a><a name="inbound-ip-address-changes"></a>Änderungen der eingehenden IP-Adresse
 
 Die eingehende IP-Adresse **kann** geändert werden, wenn Sie:
 

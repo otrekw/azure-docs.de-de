@@ -13,10 +13,10 @@ ms.custom: ''
 ms.date: 09/25/2019
 ms.author: juliako
 ms.openlocfilehash: 0d8f88e6c2fe273efa969278146de67ba18eaecf
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72391925"
 ---
 # <a name="signal-descriptive-audio-tracks"></a>Signalisieren beschreibender Audiospuren
@@ -219,7 +219,7 @@ Das Beispiel in diesem Thema beschäftigt sich mit Streaming. Sie können den gl
 
 ### <a name="get-streaming-urls"></a>Abrufen von Streaming-URLs
 
-Nachdem der **Streaminglocator** erstellt wurde, können Sie die Streaming-URLs wie unter [GetStreamingURLs](https://docs.microsoft.com/rest/api/media/streaminglocators) gezeigt abrufen. Zum Erstellen einer URL müssen Sie den Hostnamen des [Streamingendpunkts](https://docs.microsoft.com/rest/api/media/streamingendpoints) und den Pfad des **Streaminglocators** miteinander verketten. In diesem Beispiel wird der *standardmäßige* **Streamingendpunkt** verwendet. Bei der ersten Erstellung eines Media Services-Kontos befindet sich dieser *standardmäßige* **Streamingendpunkt** im Zustand „Beendet“. Sie müssen daher **Start** aufrufen.
+Nachdem der **Streaminglocator** erstellt wurde, können Sie die Streaming-URLs wie unter [GetStreamingURLs](https://docs.microsoft.com/rest/api/media/streaminglocators) gezeigt abrufen. Zum Erstellen einer URL müssen Sie den Hostnamen des [Streamingendpunkts](https://docs.microsoft.com/rest/api/media/streamingendpoints) und den Pfad des **Streaminglocators** miteinander verketten. In diesem Beispiel wird der *standardmäßige* **Streamingendpunkt** verwendet. Beim ersten Erstellen eines Media Services-Kontos weist dieser *standardmäßige* **Streamingendpunkt** den Status „Beendet“ auf. Sie müssen daher **Start** aufrufen.
 
 > [!NOTE]
 > In dieser Methode benötigen Sie den LocatorName, der beim Erstellen des **Streaminglocators** für das Ausgabeobjekt verwendet wurde.

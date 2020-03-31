@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74082558"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Vorbereiten der Netzwerkzuordnung für die Notfallwiederherstellung für Hyper-V-VMs in Azure
@@ -53,7 +53,7 @@ Die Netzwerkzuordnung funktioniert wie folgt:
 
 Im Anschluss folgt ein Beispiel zur Veranschaulichung dieses Mechanismus. Für das Beispiel verwenden wir eine Organisation mit zwei Standorten in New York und Chicago.
 
-**Location** | **VMM-Server** | **VM-Netzwerke** | **Zuordnung**
+**Location** | **VMM-Server** | **VM-Netzwerke** | **Zuordnungsziel**
 ---|---|---|---
 New York | VMM-NewYork| VMNetwork1-NewYork | Zugeordnet zu „VMNetwork1-Chicago“
  |  | VMNetwork2-NewYork | Nicht zugeordnet
@@ -88,7 +88,7 @@ Chicago | LogicalNetwork1-Chicago | VMNetwork1-Chicago
 
 Die folgende Tabelle zeigt die Optionen, die zur Verfügung stehen, wenn Sie bei Verwendung dieser Einstellungen das VM-Zielnetzwerk auswählen:
 
-**Auswahl** | **Geschützte Cloud** | **Schützende Cloud** | **Verfügbarkeit des Zielnetzwerks**
+**Auswählen** | **Geschützte Cloud** | **Schützende Cloud** | **Verfügbarkeit des Zielnetzwerks**
 ---|---|---|---
 VMNetwork1-Chicago | SilverCloud1 | SilverCloud2 | Verfügbar
  | GoldCloud1 | GoldCloud2 | Verfügbar

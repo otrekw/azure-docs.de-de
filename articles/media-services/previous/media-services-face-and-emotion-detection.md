@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.openlocfilehash: 2d746167f993438e5fce467365844df2078c08a6
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77919310"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Gesichts- und Emotionenerkennung mit Azure Media Analytics
@@ -55,7 +55,7 @@ Die API zur Gesichtserkennung und -nachverfolgung ermöglicht Gesichtspositionse
 
 Die erkannten und nachverfolgten Gesichter werden mit den Koordinaten (links, oben, Breite und Höhe) zurückgegeben, die die Position der Gesichter im Bild in Pixeln sowie eine Gesichts-ID angeben, die die Nachverfolgung einer einzelnen Person kenntlich macht. Gesichts-IDs können zurückgesetzt werden, wenn die Frontalansicht des Gesichts verloren geht oder im Frame überlappt wird, sodass einigen Personen möglicherweise mehrere IDs zugewiesen werden.
 
-## <a id="output_elements"></a>Elemente der JSON-Ausgabedatei
+## <a name="elements-of-the-output-json-file"></a><a id="output_elements"></a>Elemente der JSON-Ausgabedatei
 
 [!INCLUDE [media-services-analytics-output-json](../../../includes/media-services-analytics-output-json.md)]
 

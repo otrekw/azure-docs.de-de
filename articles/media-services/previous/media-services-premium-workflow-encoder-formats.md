@@ -15,11 +15,11 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: 87cd7c63939331190530a46071a6b4c40480562f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792583"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232786"
 ---
 # <a name="media-encoder-premium-workflow-formats-and-codecs"></a>Media Encoder Premium Workflow-Formate und -Codecs
 
@@ -34,7 +34,7 @@ Media Encoder Premium Workflow-Ausgabeformate und -Codecs
 
 **Medienencoder-Premium-Workflow** unterstützt Untertitel, wie in [diesem](#closed_captioning) Abschnitt beschrieben. 
 
-## <a id="input_formats"></a>Medienencoder-Premium-Workflow-Eingabeformate und -Codecs
+## <a name="media-encoder-premium-workflow-input-formats-and-codecs"></a><a id="input_formats"></a>Medienencoder-Premium-Workflow-Eingabeformate und -Codecs
 
 Im folgenden Abschnitt werden die Codecs und Formate aufgeführt, die dieser Medienprozessor als Eingabe unterstützt.
 
@@ -71,7 +71,7 @@ Im folgenden Abschnitt werden die Codecs und Formate aufgeführt, die dieser Med
 * Windows Media Audio
 * WAV/PCM
 
-## <a id="output_format"></a>Medienencoder-Premium-Workflow-Ausgabeformate und -Codecs
+## <a name="media-encoder-premium-workflow-output-formats-and-codecs"></a><a id="output_format"></a>Medienencoder-Premium-Workflow-Ausgabeformate und -Codecs
 
 Im folgenden Abschnitt werden die Codecs und Dateiformate aufgelistet, die als Ausgabe für diesen Medienprozessor unterstützt werden.
 
@@ -112,7 +112,7 @@ Im folgenden Abschnitt werden die Codecs und Dateiformate aufgelistet, die als A
 >[!NOTE]
 >Wenn Sie in Dolby® Digital (AC3) codieren, kann die Ausgabe nur in eine ISO MP4-Datei geschrieben werden.
 
-## <a id="closed_captioning"></a>Unterstützung für Untertitel
+## <a name="support-for-closed-captioning"></a><a id="closed_captioning"></a>Unterstützung für Untertitel
 
 Bei der Erfassung unterstützt **Medienencoder-Premium-Workflow** Folgendes:
 
@@ -139,7 +139,7 @@ Wenn Ihr Eingabevideo keine Untertitel enthält, enthält das Ausgabemedienobjek
 
 ## <a name="need-help"></a>Sie brauchen Hilfe?
 
-Sie können ein Supportticket öffnen, indem Sie zu [Neue Supportanfrage ](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) navigieren.
+Sie können ein Supportticket erstellen, indem Sie zu [Neue Supportanfrage ](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) navigieren.
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

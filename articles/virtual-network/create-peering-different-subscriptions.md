@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: anavin
 ms.openlocfilehash: d085279167b498b13cfb79b97703cfdff7d6dd8a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201746"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225206"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Erstellen eines Peerings virtueller Netzwerke gemäß dem Ressourcen-Manager-Modell in verschiedenen Abonnements
 
@@ -41,7 +41,7 @@ Wenn sich die virtuellen Netzwerke in unterschiedlichen Abonnements befinden und
 1. Fügen Sie den Benutzer aus jedem Active Directory-Mandanten dem entsprechenden anderen Azure Active Directory-Mandanten als [Gastbenutzer](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory) hinzu.
 1. Jeder Benutzer muss die Einladung als Gastbenutzer vom entsprechenden Azure Active Directory-Mandanten akzeptieren.
 
-## <a name="portal"></a>Erstellen eines Peerings: Azure-Portal
+## <a name="create-peering---azure-portal"></a><a name="portal"></a>Erstellen eines Peerings: Azure-Portal
 
 In den folgenden Schritten werden für jedes Abonnement unterschiedliche Konten genutzt. Wenn Sie ein Konto verwenden, das über Berechtigungen für beide Abonnements verfügt, können Sie dasselbe Konto für alle Schritte verwenden. Überspringen Sie die Schritte zum Abmelden vom Portal und zum Zuweisen weiterer Benutzerberechtigungen für die virtuellen Netzwerke.
 
@@ -97,7 +97,7 @@ In den folgenden Schritten werden für jedes Abonnement unterschiedliche Konten 
 28. **Optional**: Obwohl das Erstellen virtueller Computer in diesem Tutorial nicht behandelt wird, können Sie in jedem virtuellen Netzwerk virtuelle Computer erstellen und eine Verbindung zwischen ihnen herstellen, um die Konnektivität zu überprüfen.
 29. **Optional**: Zum Löschen der Ressourcen, die Sie in diesem Tutorial erstellt haben, führen Sie die Schritte im Abschnitt [Löschen von Ressourcen](#delete-portal) dieses Artikels aus.
 
-## <a name="cli"></a>Erstellen eines Peerings: Azure CLI
+## <a name="create-peering---azure-cli"></a><a name="cli"></a>Erstellen eines Peerings: Azure CLI
 
 In diesem Tutorial werden unterschiedliche Konten für jedes Abonnement verwendet. Wenn Sie ein Konto verwenden, das über Berechtigungen für beide Abonnements verfügt, können Sie dasselbe Konto für alle Schritte verwenden. Überspringen Sie die Schritte zum Abmelden von Azure und zum Entfernen der Skriptzeilen zum Erstellen von Benutzerrollenzuweisungen. Ersetzen Sie UserA@azure.com und UserB@azure.com in allen folgenden Skripts durch die Benutzernamen, die Sie für UserA und UserB verwenden. 
 
@@ -175,7 +175,7 @@ Anstatt die CLI und ihre Abhängigkeiten zu installieren, können Sie die Azure 
 
 Alle Azure-Ressourcen, die Sie in einem der virtuellen Netzwerke erstellen, sind in der Lage, miteinander über ihre IP-Adressen zu kommunizieren. Wenn Sie die standardmäßige Azure-Namensauflösung für virtuelle Netzwerke verwenden, können die Ressourcen in den virtuellen Netzwerken Namen nicht netzwerkübergreifend auflösen. Wenn Sie Namen netzwerkübergreifend in einem Peering auflösen möchten, müssen Sie einen eigenen DNS-Server erstellen. Weitere Informationen finden Sie im Artikel [Namensauflösung mithilfe eines eigenen DNS-Servers](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 
-## <a name="powershell"></a>Erstellen eines Peerings: PowerShell
+## <a name="create-peering---powershell"></a><a name="powershell"></a>Erstellen eines Peerings: PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -243,7 +243,7 @@ In diesem Tutorial werden unterschiedliche Konten für jedes Abonnement verwende
 13. **Optional**: Obwohl das Erstellen virtueller Computer in diesem Tutorial nicht behandelt wird, können Sie in jedem virtuellen Netzwerk virtuelle Computer erstellen und eine Verbindung zwischen ihnen herstellen, um die Konnektivität zu überprüfen.
 14. **Optional**: Zum Löschen der Ressourcen, die Sie in diesem Tutorial erstellt haben, führen Sie die Schritte im Abschnitt [Löschen von Ressourcen](#delete-powershell) in diesem Artikel aus.
 
-## <a name="template"></a>Erstellen eines Peerings: Resource Manager-Vorlage
+## <a name="create-peering---resource-manager-template"></a><a name="template"></a>Erstellen eines Peerings: Resource Manager-Vorlage
 
 1. Führen Sie die Schritte in den Abschnitten [Portal](virtual-network-manage-peering.md#permissions), [Azure CLI](#portal) oder [PowerShell](#cli) dieses Artikels durch, um ein virtuelles Netzwerk zu erstellen und die passenden [Berechtigungen](#powershell) zuzuweisen.
 2. Speichern Sie den darauf folgenden Text in einer Datei auf dem lokalen Computer. Ersetzen Sie `<subscription ID>` durch die Abonnement-ID von UserA. Sie können die Datei z.B. unter dem Namen „vnetpeeringA.json“ speichern.
@@ -284,10 +284,10 @@ In diesem Tutorial werden unterschiedliche Konten für jedes Abonnement verwende
 6. **Optional**: Obwohl das Erstellen virtueller Computer in diesem Tutorial nicht behandelt wird, können Sie in jedem virtuellen Netzwerk virtuelle Computer erstellen und eine Verbindung zwischen ihnen herstellen, um die Konnektivität zu überprüfen.
 7. **Optional**: Zum Löschen der Ressourcen, die Sie in diesem Tutorial erstellt haben, führen Sie mithilfe des Azure-Portals, von PowerShell oder der Azure-Befehlszeilenschnittstelle die Schritte im Abschnitt [Löschen von Ressourcen](#delete) dieses Artikels aus.
 
-## <a name="delete"></a>Löschen von Ressourcen
+## <a name="delete-resources"></a><a name="delete"></a>Löschen von Ressourcen
 Wenn Sie dieses Tutorial abgeschlossen haben, möchten Sie die Ressourcen, die Sie in diesem Tutorial erstellt haben, möglicherweise wieder löschen, damit keine Nutzungsgebühren anfallen. Durch das Löschen einer Ressourcengruppe werden auch alle Ressourcen in dieser Ressourcengruppe gelöscht.
 
-### <a name="delete-portal"></a>Azure-Portal
+### <a name="azure-portal"></a><a name="delete-portal"></a>Azure-Portal
 
 1. Melden Sie sich als UserA beim Azure-Portal an.
 2. Geben Sie in das Suchfeld im Portal **myResourceGroupA** ein. Klicken Sie in den Suchergebnissen auf **myResourceGroupA**.
@@ -296,7 +296,7 @@ Wenn Sie dieses Tutorial abgeschlossen haben, möchten Sie die Ressourcen, die S
 5. Melden Sie sich als UserA vom Portal ab, und melden Sie sich als UserB an.
 6. Führen Sie die Schritte 2-4 für myResourceGroupB aus.
 
-### <a name="delete-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a><a name="delete-cli"></a>Azure-Befehlszeilenschnittstelle
 
 1. Melden Sie sich als UserA bei Azure an, und führen Sie den folgenden Befehl aus:
 
@@ -311,7 +311,7 @@ Wenn Sie dieses Tutorial abgeschlossen haben, möchten Sie die Ressourcen, die S
    az group delete --name myResourceGroupB --yes
    ```
 
-### <a name="delete-powershell"></a>PowerShell
+### <a name="powershell"></a><a name="delete-powershell"></a>PowerShell
 
 1. Melden Sie sich als UserA bei Azure an, und führen Sie den folgenden Befehl aus:
 

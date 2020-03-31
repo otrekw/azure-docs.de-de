@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
 ms.openlocfilehash: 90d7da9c8ddd8c9c595f2209dcc34e2f595acfd2
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78196925"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurieren von Apache Hive-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket
@@ -52,7 +52,7 @@ In diesem Abschnitt erstellen Sie zwei Ranger-Richtlinien für den Zugriff auf �
 2. Wählen Sie unter **Hive** die Zeichenfolge **CLUSTERNAME_Hive** aus. Zwei vorkonfigurierte Richtlinien werden angezeigt.
 3. Wählen Sie **Neue Richtlinie hinzufügen** aus, und geben Sie die folgenden Werte ein:
 
-    |Eigenschaft |value |
+    |Eigenschaft |Wert |
     |---|---|
     |Richtlinienname|read-hivesampletable-all|
     |Hive-Datenbank|default|
@@ -70,7 +70,7 @@ In diesem Abschnitt erstellen Sie zwei Ranger-Richtlinien für den Zugriff auf �
 
 5. Wiederholen Sie die letzten beiden Schritte, um eine weitere Richtlinie mit folgenden Eigenschaften zu erstellen:
 
-    |Eigenschaft |value |
+    |Eigenschaft |Wert |
     |---|---|
     |Richtlinienname|read-hivesampletable-devicemake|
     |Hive-Datenbank|default|

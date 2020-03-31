@@ -12,10 +12,10 @@ ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
 ms.openlocfilehash: 7a868a5f9b06499e23710399733b0659d97f900d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68854902"
 ---
 # <a name="project-acoustics-unreal-bake-tutorial"></a>Unreal-Bakingtutorial für Projekt Akustik
@@ -102,7 +102,7 @@ Die Nachhallzeit eines bestimmten Materials in einem Raum ist umgekehrt proporti
 2. Eine kurze Beschreibung, welche Vorgänge Sie mit dieser Seite durchführen müssen.
 3. Die Liste der Materialien im Level; den mit **AcousticsGeometry** markierten Akteuren entnommen. Wenn Sie hier auf eines der Materialien klicken, werden alle Objekte in der Szene ausgewählt, die dieses Material verwenden.
 4. Anzeige der Akustikmaterialien, denen die Szenenmaterialien zugewiesen wurden. Klicken Sie auf eine Dropdownliste, um ein Szenenmaterial einem anderen Akustikmaterial zuzuweisen.
-5. Zeigt den Absorptionskoeffizienten des ausgewählten Akustikmaterials an, das in der vorherigen Spalte ausgewählt wurde. Ein Wert von „0“ bedeutet „perfekte Reflektion“ (keine Absorption), während ein Wert von „1“ „perfekte Absorption“ (keine Reflektion) bedeutet. Durch Ändern dieses Werts wird das Akustikmaterial (Schritt 4) in **Custom** (Benutzerdefiniert) aktualisiert.
+5. Zeigt den Absorptionskoeffizienten des ausgewählten Akustikmaterials an, das in der vorherigen Spalte ausgewählt wurde. Ein Wert von „0“ bedeutet „perfekte Reflexion“ (keine Absorption), während ein Wert von „1“ „perfekte Absorption“ (keine Reflexion) bedeutet. Durch Ändern dieses Werts wird das Akustikmaterial (Schritt 4) in **Custom** (Benutzerdefiniert) aktualisiert.
 
 Wenn Sie Änderungen an den Materialien in Ihrer Szene vornehmen, müssen Sie im Plug-In „Projekt Akustik“ die Registerkarte wechseln, um diese Änderungen auf der Registerkarte **Materials** (Materialien) zu sehen.
 
@@ -196,7 +196,7 @@ Sobald Sie einen Bakingvorgang gestartet haben, können Sie Unreal schließen. J
 
 Die Azure-Anmeldeinformationen werden sicher auf Ihrem lokalen Computer gespeichert und Ihrem Unreal-Projekt zugeordnet. Sie werden nur verwendet, um eine sichere Verbindung mit Azure herzustellen.
 
-### <a name="Estimating-bake-cost"></a> Schätzen der Bake-Kosten für Azure
+### <a name="estimating-azure-bake-cost"></a><a name="Estimating-bake-cost"></a> Schätzen der Bake-Kosten für Azure
 
 Wenn Sie einschätzen möchten, wie viel ein bestimmter Bake-Vorgang kosten wird, multiplizieren Sie den angezeigten Wert für **Estimated Compute Cost** (Geschätzte Computekosten) mit den stündlichen Kosten des ausgewählten **VM-Knotentyps** (in Ihrer lokalen Währung). Das Ergebnis umfasst nicht die Zeit, die erforderlich ist, um die Knoten bereit zu machen und auszuführen. Wenn Sie z. B. **Standard_F8s_v2** als Knotentyp ausgewählt haben (Kosten: 0,40 $/Stunde) und die geschätzte Computezeit 3 Stunden und 57 Minuten beträgt, betragen die geschätzten Kosten für die Ausführung des Auftrags „0,40 $ × ~4 h = ~1,60 $“. Die tatsächlichen Kosten sind aufgrund der zusätzlichen Zeit für das Starten der Knoten wahrscheinlich etwas höher. Die stündlichen Kosten für Knoten finden Sie auf der Seite [Virtuelle Linux-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/linux) (klicken Sie auf die Kategorie „Computeoptimiert“ oder „High Performance Computing“).
 
@@ -204,7 +204,7 @@ Wenn Sie einschätzen möchten, wie viel ein bestimmter Bake-Vorgang kosten wird
 
 Überprüfen Sie nach dem Bake-Vorgang, ob die Voxels und Testpunkte sich an den erwarteten Positionen befinden, indem Sie das Runtime-Plug-In ausführen.
 
-## <a name="Data-Files"></a>Datendateien
+## <a name="data-files"></a><a name="Data-Files"></a>Datendateien
 
 Es gibt vier Datendateien, die von diesem Plug-In an verschiedenen Speicherorten erstellt wurden. Nur eine davon ist zur Laufzeit erforderlich. Diese befindet sich im Ordner „Content/Acoustics“ Ihres Projekts, der dem Paketpfad des Projekts automatisch hinzugefügt wird. Die anderen drei befinden sich im Ordner „Acoustics Data“ und werden nicht in das Paket aufgenommen.
 

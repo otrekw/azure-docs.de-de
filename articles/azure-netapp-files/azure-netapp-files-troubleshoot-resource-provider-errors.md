@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: b-juche
 ms.openlocfilehash: 62e67d4965444df0e731b4387808ed3b89e4673a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72597205"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Beheben von Fehlern mit Azure NetApp Files-Ressourcenanbietern 
@@ -84,7 +84,7 @@ Dieser Fehler tritt auf, wenn Sie versuchen, den Domänennamen in Active Directo
 * Ursache:   
 Sie versuchen, die Domänennameneigenschaft zu aktualisieren.
 * Lösung:    
-None (Keine): Sie können den Domänennamen nicht ändern.
+Keine. Sie können den Domänennamen nicht ändern.
 * Problemumgehung:   
 Löschen Sie alle Volumes mithilfe der Active Directory-Konfiguration. Löschen Sie dann die Active Directory-Konfiguration, und erstellen Sie die Volumes neu.
 
@@ -108,7 +108,7 @@ Dieser Fehler ist ein Ausnahmefehler, bei dem die Ursache nicht bekannt ist.
 * Lösung:   
 Wenden Sie sich an das Azure-Supportcenter, um den genauen Grund zu melden, der in den Protokollen angegeben ist.
 * Problemumgehung:   
-None (Keine):
+Keine.
 
 ***Der Dateipfadname darf nur Buchstaben, Zahlen und Bindestriche („-“) enthalten.***
 
@@ -250,7 +250,7 @@ Die zugrunde liegende API antwortet nicht, was zu einem internen Fehler führt. 
 * Lösung:   
 Das Problem ist wahrscheinlich nur temporär. Die Anforderung sollte nach einiger Zeit erfolgreich durchgeführt werden.
 * Problemumgehung:   
-None (Keine): Die zugrunde liegende API ist für die Volumenverwaltung unerlässlich.
+Keine. Die zugrunde liegende API ist für die Volumenverwaltung unerlässlich.
 
 ***Keine Vorgangsergebnis-ID gefunden für „{0}“.***
 
@@ -294,7 +294,7 @@ Sie versuchen, ein aktives Verzeichnis zu erstellen (nicht zu aktualisieren), ab
 * Lösung:   
 Wenn die Active Directory-Konfiguration nicht verwendet wird, können Sie zunächst die bestehende Konfiguration löschen und dann den Erstellungsvorgang erneut ausführen.
 * Problemumgehung:   
-None (Keine): Es ist nur eine Active Directory-Instanz erlaubt.
+Keine. Es ist nur eine Active Directory-Instanz erlaubt.
 
 ***Der Vorgang „{operation}“ wird nicht unterstützt.***
 
@@ -331,7 +331,7 @@ Dieser Fehler tritt auf, wenn Sie versuchen, das Einbindungsziel oder die Moment
 Das Einbindungsziel wird bereits beim Erstellen definiert und kann nachträglich nicht mehr geändert werden.
 Die Momentaufnahmen enthalten keine Eigenschaften, die geändert werden können.
 * Lösung:   
-None (Keine): Diese Ressourcen verfügen nicht über Eigenschaften, die geändert werden können.
+Keine. Diese Ressourcen verfügen nicht über Eigenschaften, die geändert werden können.
 
 ***Poolgröße zu klein für die Gesamtvolumegröße.***
 
@@ -380,7 +380,7 @@ Dieser Fehler tritt auf, wenn Sie versuchen, `ProtocolType` für ein Volume zu a
 * Ursache:   
 Die `ProtocolType`-Eigenschaft wird beim Erstellen des Volumes festgelegt.  Sie kann nicht aktualisiert werden.
 * Lösung:   
-None (Keine):
+Keine.
 * Problemumgehung:   
 Erstellen Sie ein weiteres Volume mit neuen Protokolltypen.
 
@@ -435,7 +435,7 @@ Die Länge des SMB-Servernamens beträgt mehr als zehn Zeichen.
 * Lösung:   
 Verwenden Sie einen kürzeren Servernamen. Die maximale Länge beträgt zehn Zeichen.
 * Problemumgehung:   
-None (Keine):  Weitere Informationen finden Sie oben unter „Lösung“. 
+Keine.  Weitere Informationen finden Sie oben unter „Lösung“. 
 
 ***SubnetId kann nicht geändert werden.***
 
@@ -457,7 +457,7 @@ Dieser Fehler tritt auf, wenn Sie versuchen, ein neues Volume zu erstellen, aber
 * Lösung:   
 Überprüfen Sie den Wert für `subnetId`, um sicherzustellen, dass er eine `resourceId` für das verwendete Subnetz enthält.
 * Problemumgehung:   
-None (Keine): Weitere Informationen finden Sie oben unter „Lösung“. 
+Keine. Weitere Informationen finden Sie oben unter „Lösung“. 
 
 ***Das Subnetz muss über eine Delegierung von „Microsoft.NetApp/volumes“ verfügen.***
 
@@ -490,7 +490,7 @@ Die zugrunde liegende API sendet einen unbekannten Fehler. Dieser Fehler ist wah
 * Lösung:   
 Das Problem ist wahrscheinlich nur temporär, und die Anforderung sollte nach einiger Zeit erfolgreich durchgeführt werden. Wenn das Problem weiterhin besteht, erstellen Sie ein Supportticket, um das Problem untersuchen zu lassen.
 * Problemumgehung:   
-None (Keine): Die zugrunde liegende API ist für die Volumenverwaltung unerlässlich.
+Keine. Die zugrunde liegende API ist für die Volumenverwaltung unerlässlich.
 
 ***Empfangener Wert für eine unbekannte Eigenschaft „{propertyName}“.***
 
@@ -510,7 +510,7 @@ Es können nur Volumes aktualisiert werden. Dieser Fehler tritt auf, wenn Sie ve
 * Ursache:   
 Die Ressource, die Sie zu aktualisieren versuchen, unterstützt den Aktualisierungsvorgang nicht. Lediglich die Eigenschaften von Volumes können geändert werden.
 * Lösung:   
-None (Keine): Die Ressource, die Sie zu aktualisieren versuchen, unterstützt den Aktualisierungsvorgang nicht. Somit kann sie nicht geändert werden.
+Keine. Die Ressource, die Sie zu aktualisieren versuchen, unterstützt den Aktualisierungsvorgang nicht. Somit kann sie nicht geändert werden.
 * Problemumgehung:   
 Erstellen Sie für ein Volume eine neue Ressource mit vorhandenem Update, und migrieren Sie die Daten.
 
@@ -567,7 +567,7 @@ Das Volume ist nicht vorhanden, oder die Erstellung ist fehlgeschlagen.
 * Lösung:   
 Überprüfen Sie, ob Sie das richtige Volume ändern und ob die Erstellung des Volumes erfolgreich war. Oder überprüfen Sie, ob das Volume, für das Sie eine Momentaufnahme erstellen, vorhanden ist.
 * Problemumgehung:   
-None (Keine):  Weitere Informationen finden Sie oben unter „Lösung“. 
+Keine.  Weitere Informationen finden Sie oben unter „Lösung“. 
 
 ***Das angegebene Erstellungstoken ist bereits vorhanden***
 

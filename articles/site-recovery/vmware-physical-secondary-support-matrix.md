@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082188"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228798"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Unterstützungsmatrix für die Notfallwiederherstellung von VMware-VMs und physischen Servern
 
@@ -66,7 +66,7 @@ Nur Linux-Computer mit dem folgenden Speicher können repliziert werden:
 
 ## <a name="network-configuration---hostguest-vm"></a>Netzwerkkonfiguration – Host/Gast-VM
 
-**Konfiguration** | **Unterstützt**  
+**Configuration** | **Unterstützt**  
 --- | --- 
 Host – NIC-Teamvorgang | Ja 
 Host – VLAN | Ja 
@@ -92,7 +92,7 @@ Multipfad (MPIO) | Ja
 
 ### <a name="guest-or-physical-server-storage"></a>Gast- oder physischer Serverspeicher
 
-**Konfiguration** | **Unterstützt** 
+**Configuration** | **Unterstützt** 
 --- | --- 
 VMDK | Ja 
 VHD/VHDX | – 

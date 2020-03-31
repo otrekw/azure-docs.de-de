@@ -4,10 +4,10 @@ description: Die QnA Maker-Ressource und alle Wissensdatenbanken innerhalb diese
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: 5cb1dcd35649debbafd2e234606ad4c9d6906ea6
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "76843420"
 ---
 # <a name="design-knowledge-base-for-content-language"></a>Entwerfen einer Wissensdatenbank für die Inhaltssprache

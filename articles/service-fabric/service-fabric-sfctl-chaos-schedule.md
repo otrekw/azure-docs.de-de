@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 29b365c48e405830e238945f1d94156f477c15b4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76906183"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
@@ -17,7 +17,7 @@ Ruft den Zeitplan des Chaostests ab und legt diesen fest.
 
 ## <a name="commands"></a>Befehle
 
-|Get-Help|Beschreibung|
+|Get-Help|BESCHREIBUNG|
 | --- | --- |
 | get | Ruft den Chaostestzeitplan ab, der definiert, wann und wie der Chaostest ausgeführt werden soll. |
 | set | Legt den von Chaos verwendeten Zeitplan fest. |
@@ -29,13 +29,13 @@ Ruft die Version des verwendeten Chaostestzeitplans und den Chaostestzeitplan ab
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --timeout -t | Der Servertimeout für die Ausführung des Vorgangs in Sekunden. Dieser Timeout gibt die Zeitdauer an, die der Client bereit ist, auf den Abschluss des angeforderten Vorgangs zu warten. Der Standardwert für diesen Parameter ist 60 Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
@@ -50,7 +50,7 @@ Der Chaostest wird automatisch basierend auf dem Chaostestzeitplan ausgeführt. 
 
 ### <a name="arguments"></a>Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --chaos-parameters-dictionary | JSON-codierte Liste, die eine Zuordnung von Zeichenfolgennamen für die ChaosParameters-Klasse darstellt, die bei vom Jobs-Argument verwendet werden soll. |
 | --expiry-date-utc | Datum und Uhrzeit, wann die Verwendung des Chaostestzeitplans für die Planung des Chaostests beendet werden soll.  Standardwert\: „9999-12-31T23\:59\:59.999Z“. |
@@ -61,7 +61,7 @@ Der Chaostest wird automatisch basierend auf dem Chaostestzeitplan ausgeführt. 
 
 ### <a name="global-arguments"></a>Globale Argumente
 
-|Argument|Beschreibung|
+|Argument|BESCHREIBUNG|
 | --- | --- |
 | --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
 | --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |

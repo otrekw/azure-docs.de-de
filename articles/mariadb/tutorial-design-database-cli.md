@@ -6,14 +6,14 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 12/02/2019
+ms.date: 3/18/2020
 ms.custom: mvc
-ms.openlocfilehash: 91283b453e71e476d247e752b24e9eec0047a814
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 455d7a0c1b3826060ade1083ec6eea99e397574b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74776780"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79534846"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-using-azure-cli"></a>Tutorial: Entwerfen einer Azure Database for MariaDB-Instanz mithilfe der Azure CLI
 
@@ -24,7 +24,7 @@ Azure Database for MariaDB ist ein relationaler Datenbankdienst in der Microsoft
 > * Konfigurieren der Serverfirewall
 > * Verwenden des [mysql-Befehlszeilentools](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) zum Erstellen einer Datenbank
 > * Laden von Beispieldaten
-> * Abfragen von Daten
+> * Daten abfragen
 > * Aktualisieren von Daten
 > * Wiederherstellen von Daten
 
@@ -34,7 +34,7 @@ Sie können Azure Cloud Shell im Browser verwenden oder [die Azure CLI auf Ihrem
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). 
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). 
 
 Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource vorhanden ist oder in Rechnung gestellt wird. Wählen Sie eine bestimmte Abonnement-ID unter Ihrem Konto mit dem Befehl [az account set](/cli/azure/account#az-account-set) aus.
 ```azurecli-interactive
@@ -122,7 +122,7 @@ mysql -h mydemoserver.database.windows.net -u myadmin@mydemoserver -p
 ```
 
 ## <a name="create-a-blank-database"></a>Leere Datenbank erstellen
-Sobald Sie mit dem Server verbunden sind, erstellen Sie eine leere Datenbank.
+Erstellen Sie eine leere Datenbank, nachdem Sie eine Verbindung mit dem Server hergestellt haben.
 ```sql
 mysql> CREATE DATABASE mysampledb;
 ```
@@ -185,7 +185,7 @@ az mariadb server restore --resource-group myresourcegroup --name mydemoserver-r
 
 Für den Befehl `az mariadb server restore` sind folgende Parameter erforderlich:
 
-| Einstellung | Empfohlener Wert | BESCHREIBUNG  |
+| Einstellung | Vorgeschlagener Wert | BESCHREIBUNG  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  Die Ressourcengruppe, in der sich der Quellserver befindet.  |
 | name | mydemoserver-restored | Der Name des neuen Servers, der durch den Befehl „restore“ erstellt wird. |
@@ -203,6 +203,6 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Konfigurieren der Serverfirewall
 > * Verwenden des [mysql-Befehlszeilentools](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) zum Erstellen einer Datenbank
 > * Laden von Beispieldaten
-> * Abfragen von Daten
+> * Daten abfragen
 > * Aktualisieren von Daten
 > * Wiederherstellen von Daten

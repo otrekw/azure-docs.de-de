@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: e652aa29b1c1935fcc4887dbe13ef9b683a8bd05
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "75946049"
 ---
 # <a name="how-to-cache-the-authentication-token"></a>Vorgehensweise: Zwischenspeichern des Authentifizierungstokens
@@ -22,7 +22,7 @@ In diesem Artikel wird veranschaulicht, wie das Authentifizierungstoken zwischen
 
 ## <a name="using-aspnet"></a>Verwenden von ASP.NET
 
-Importieren Sie das NuGet-Paket **Microsoft.IdentityModel.Clients.ActiveDirectory**, das zum Abrufen eines Tokens verwendet wird. Verwenden Sie als nächstes den folgenden Code, um mithilfe der Authentifizierungswerte, die Sie beim [Erstellen der Plastischer Reader-Ressource](./how-to-create-immersive-reader.md) erhalten haben, ein `AuthenticationResult` abzurufen.
+Importieren Sie das NuGet-Paket **Microsoft.IdentityModel.Clients.ActiveDirectory**, das zum Abrufen eines Tokens verwendet wird. Verwenden Sie als nächstes den folgenden Code, um mithilfe der Authentifizierungswerte, die Sie beim `AuthenticationResult`Erstellen der Plastischer Reader-Ressource[ erhalten haben, ein ](./how-to-create-immersive-reader.md) abzurufen.
 
 ```csharp
 private async Task<AuthenticationResult> GetTokenAsync()

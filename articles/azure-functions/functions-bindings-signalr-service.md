@@ -6,17 +6,17 @@ ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
 ms.openlocfilehash: 863620ce6f0af33b05ef290ae95ccdc99a53a54d
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77523035"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Bindungen des SignalR-Diensts für Azure Functions
 
 In dieser Gruppe von Artikeln wird erläutert, wie Sie SignalR-Bindungen in Azure Functions verwenden, um mit [Azure SignalR Service](https://azure.microsoft.com/services/signalr-service/) verbundene Clients zu authentifizieren und Nachrichten in Echtzeit an sie zu senden. Azure Functions unterstützt Eingabe- und Ausgabebindungen für den SignalR-Dienst.
 
-| Aktion | type |
+| Action | type |
 |---------|---------|
 | Zurückgeben der Dienstendpunkt-URL und des Zugriffstokens | [Eingabebindung](./functions-bindings-signalr-service-input.md) |
 | Senden von SignalR Service-Nachrichten |[Ausgabebindung](./functions-bindings-signalr-service-output.md) |

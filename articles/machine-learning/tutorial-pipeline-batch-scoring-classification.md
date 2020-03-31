@@ -1,48 +1,50 @@
 ---
 title: 'Tutorial: ML-Pipelines für die Batchbewertung'
 titleSuffix: Azure Machine Learning
-description: In diesem Tutorial erstellen Sie eine Machine Learning-Pipeline zum Ausführen der Batchbewertung für ein Bildklassifizierungsmodell in Azure Machine Learning. Machine Learning-Pipelines optimieren Ihren Workflow durch Geschwindigkeit, Portabilität und Wiederverwendung, sodass Sie sich auf Ihre Machine Learning-Kenntnisse konzentrieren können, anstatt sich um Infrastruktur und Automatisierung kümmern zu müssen.
+description: In diesem Tutorial erstellen Sie eine Machine Learning-Pipeline, um die Batchbewertung in einem Bildklassifizierungsmodell durchzuführen. Mit Azure Machine Learning können Sie sich auf Machine Learning konzentrieren und müssen sich nicht um die Infrastruktur und Automatisierung kümmern.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
-ms.reviewer: trbye
-ms.date: 02/10/2020
-ms.openlocfilehash: 3dc0af3f0d1236e902f6fa845fae95e3f2a500d1
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.reviewer: laobri
+ms.date: 03/11/2020
+ms.openlocfilehash: 1ccd7a7f33c6ee5cab8b7173d8eb93365b6cb587
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116467"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79472219"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Tutorial: Erstellen einer Azure Machine Learning-Pipeline für die Batchbewertung
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In diesem Tutorial verwenden Sie eine Pipeline in Azure Machine Learning, um einen Batchbewertungsauftrag auszuführen. In diesem Beispiel wird das vorab trainierte TensorFlow-Modell [Inception-V3](https://arxiv.org/abs/1512.00567) eines künstlichen neuronalen Netzes (Convolutional Neural Network, CNN) verwendet, um Bilder ohne Bezeichnung zu klassifizieren. Nach dem Erstellen und Veröffentlichen einer Pipeline konfigurieren Sie einen REST-Endpunkt, mit dem Sie die Pipeline von einer beliebigen HTTP-Bibliothek auf einer beliebigen Plattform aus auslösen.
+Es wird beschrieben, wie Sie eine Pipeline in Azure Machine Learning erstellen, um einen Batchbewertungsauftrag auszuführen. Machine Learning-Pipelines optimieren Ihren Workflow durch eine Verbesserung in den Bereichen Geschwindigkeit, Portabilität und Wiederverwendung, sodass Sie sich auf Machine Learning konzentrieren können, anstatt sich um Infrastruktur und Automatisierung kümmern zu müssen. Nach dem Erstellen und Veröffentlichen einer Pipeline konfigurieren Sie einen REST-Endpunkt, mit dem Sie die Pipeline von einer beliebigen HTTP-Bibliothek auf einer beliebigen Plattform aus auslösen. 
 
-Machine Learning-Pipelines optimieren Ihren Workflow durch Geschwindigkeit, Portabilität und Wiederverwendung, sodass Sie sich auf Ihre Machine Learning-Kenntnisse konzentrieren können, anstatt sich um Infrastruktur und Automatisierung kümmern zu müssen. [Weitere Informationen zu Machine Learning-Pipelines](concept-ml-pipelines.md)
+In diesem Beispiel wird ein vorab trainiertes Modell [Inception-V3](https://arxiv.org/abs/1512.00567) eines künstlichen neuronalen Netzes (Convolutional Neural Network, CNN) verwendet, das in TensorFlow implementiert wird, um Bilder ohne Bezeichnung zu klassifizieren. [Weitere Informationen zu Machine Learning-Pipelines](concept-ml-pipelines.md)
 
 In diesem Tutorial führen Sie die folgenden Aufgaben durch:
 
 > [!div class="checklist"]
-> * Konfigurieren eines Arbeitsbereichs und Herunterladen von Beispieldaten
-> * Erstellen von Datenobjekten zum Abrufen und Ausgeben von Daten
+> * Konfigurieren des Arbeitsbereichs 
+> * Herunterladen und Speichern von Beispieldaten
+> * Erstellen von Datasetobjekten zum Abrufen und Ausgeben von Daten
 > * Herunterladen, Vorbereiten und Registrieren des Modells in Ihrem Arbeitsbereich
 > * Bereitstellen von Computezielen und Erstellen eines Bewertungsskripts
+> * Verwenden der `ParallelRunStep`-Klasse für die asynchrone Batchbewertung
 > * Erstellen, Ausführen und Veröffentlichen einer Pipeline
 > * Aktivieren eines REST-Endpunkts für die Pipeline
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
+Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Absolvieren Sie [Teil 1 des Einrichtungstutorials](tutorial-1st-experiment-sdk-setup.md), falls Sie noch nicht über einen Azure Machine Learning-Arbeitsbereich oder einen virtuellen Notebook-Computer verfügen.
 * Verwenden Sie nach Abschluss des Einrichtungstutorials den gleichen Notebook-Server, um das Notebook *tutorials/machine-learning-pipelines-advanced/tutorial-pipeline-batch-scoring-classification.ipynb* zu öffnen.
 
-Falls Sie das Einrichtungstutorial in Ihrer eigenen [lokalen Umgebung](how-to-configure-environment.md#local) ausführen möchten, können Sie über [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) auf das Tutorial zugreifen. Führen Sie `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` aus, um die erforderlichen Pakete abzurufen.
+Falls Sie das Einrichtungstutorial in Ihrer eigenen [lokalen Umgebung](how-to-configure-environment.md#local) ausführen möchten, können Sie über [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) auf das Tutorial zugreifen. Führen Sie `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps pandas requests` aus, um die erforderlichen Pakete abzurufen.
 
 ## <a name="configure-workspace-and-create-a-datastore"></a>Konfigurieren eines Arbeitsbereichs und Erstellen eines Datenspeichers
 
@@ -56,7 +58,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-### <a name="create-a-datastore-for-sample-images"></a>Erstellen eines Datenspeichers für Beispielbilder
+## <a name="create-a-datastore-for-sample-images"></a>Erstellen eines Datenspeichers für Beispielbilder
 
 Rufen Sie aus dem öffentlichen Blobcontainer `sampledata` für das Konto `pipelinedata` das öffentliche ImageNet-Bewertungsdatenbeispiel ab. Rufen Sie `register_azure_blob_container()` auf, um die Daten im Arbeitsbereich unter dem Namen `images_datastore` verfügbar zu machen. Legen Sie dann den Standarddatenspeicher des Arbeitsbereichs als Ausgabedatenspeicher fest. Verwenden Sie den Ausgabedatenspeicher, um die Ausgabe in der Pipeline zu bewerten.
 
@@ -72,38 +74,36 @@ batchscore_blob = Datastore.register_azure_blob_container(ws,
 def_data_store = ws.get_default_datastore()
 ```
 
-## <a name="create-data-objects"></a>Erstellen von Datenobjekten
+## <a name="create-dataset-objects"></a>Erstellen von Datasetobjekten
 
-Beim Erstellen einer Pipeline liest ein `DataReference`-Objekt Daten aus dem Arbeitsbereichsdatenspeicher. Ein `PipelineData`-Objekt überträgt Zwischendaten zwischen Pipelineschritten.
+Bei der Pipelineerstellung werden Objekte vom Typ `Dataset` zum Lesen von Daten aus Arbeitsbereich-Datenspeichern und Objekte vom Typ `PipelineData` zum Übertragen von Zwischendaten zwischen Pipelineschritten verwendet.
 
 > [!Important]
 > Das Beispiel für die Batchbewertung in diesem Tutorial verwendet nur einen Pipelineschritt. In Anwendungsfällen mit mehreren Schritten umfasst der typische Flow die folgenden Schritte:
 >
-> 1. Verwendung von Objekten vom Typ `DataReference` als *Eingaben* (zum Abrufen von Rohdaten), Ausführung von Transformationen sowie anschließende *Ausgabe* eines Objekts vom Typ `PipelineData`
+> 1. Verwendung von Objekten vom Typ `Dataset` als *Eingaben* (zum Abrufen von Rohdaten), Ausführung von Transformationen sowie anschließende *Ausgabe* eines Objekts vom Typ `PipelineData`
 >
 > 2. Verwendung des *Ausgabeobjekts* `PipelineData` aus dem vorherigen Schritt als *Eingabeobjekt*. Wiederholen Sie diesen Vorgang für nachfolgende Schritte.
 
-In diesem Szenario werden Objekte vom Typ `DataReference` erstellt, die den Datenspeicherverzeichnissen für Eingabebilder und Klassifizierungsbezeichnungen (y-Testwerte) entsprechen. Außerdem wird ein Objekt vom Typ `PipelineData` für die Ausgabedaten der Batchbewertung erstellt.
+In diesem Szenario werden Objekte vom Typ `Dataset` erstellt, die den Datenspeicherverzeichnissen für Eingabebilder und Klassifizierungsbezeichnungen (y-Testwerte) entsprechen. Außerdem wird ein Objekt vom Typ `PipelineData` für die Ausgabedaten der Batchbewertung erstellt.
 
 ```python
-from azureml.data.data_reference import DataReference
+from azureml.core.dataset import Dataset
 from azureml.pipeline.core import PipelineData
 
-input_images = DataReference(datastore=batchscore_blob, 
-                             data_reference_name="input_images",
-                             path_on_datastore="batchscoring/images",
-                             mode="download"
-                            )
-
-label_dir = DataReference(datastore=batchscore_blob, 
-                          data_reference_name="input_labels",
-                          path_on_datastore="batchscoring/labels",
-                          mode="download"                          
-                         )
-
+input_images = Dataset.File.from_files((batchscore_blob, "batchscoring/images/"))
+label_ds = Dataset.File.from_files((batchscore_blob, "batchscoring/labels/*.txt"))
 output_dir = PipelineData(name="scores", 
                           datastore=def_data_store, 
                           output_path_on_compute="batchscoring/results")
+```
+
+Registrieren Sie anschließend die Datasets im Arbeitsbereich.
+
+```python
+
+input_images = input_images.register(workspace = ws, name = "input_images")
+label_ds = label_ds.register(workspace = ws, name = "label_ds")
 ```
 
 ## <a name="download-and-register-the-model"></a>Herunterladen und Registrieren des Modells
@@ -164,15 +164,12 @@ except ComputeTargetException:
 
 Erstellen Sie für die Bewertung ein Batchbewertungsskript namens `batch_scoring.py`, und schreiben Sie es in das aktuelle Verzeichnis. Das Skript nimmt Eingabebilder entgegen, wendet das Klassifizierungsmodell an und gibt die Vorhersagen in eine Ergebnisdatei aus.
 
-Das Skript `batch_scoring.py` akzeptiert folgende Parameter. Sie werden im Rahmen des Pipelineschritts übergeben, den Sie später in diesem Tutorial erstellen:
+Das Skript `batch_scoring.py` akzeptiert folgende Parameter. Sie werden vom später erstellten `ParallelRunStep`-Element übergeben:
 
 - `--model_name`: Der Name des verwendeten Modells
-- `--label_dir`: Das Verzeichnis mit der Datei `labels.txt`
-- `--dataset_path`: Das Verzeichnis, das die Eingabebilder enthält
-- `--output_dir`: Das Ausgabeverzeichnis für die Datei `results-label.txt`, nachdem das Skript das Modell für die Daten ausgeführt hat
-- `--batch_size`: Die beim Ausführen des Modells verwendete Batchgröße
+- `--labels_name`: Der Name des `Dataset`-Elements, das die `labels.txt`-Datei enthält.
 
-Die Pipelineinfrastruktur verwendet die Klasse `ArgumentParser`, um Parameter an Pipelineschritte zu übergeben. Im folgenden Code erhält beispielsweise das erste Argument (`--model_name`) den Eigenschaftsbezeichner `model_name`. In der Funktion `main()` wird `Model.get_model_path(args.model_name)` für den Zugriff auf diese Eigenschaft verwendet.
+Die Pipelineinfrastruktur verwendet die Klasse `ArgumentParser`, um Parameter an Pipelineschritte zu übergeben. Im folgenden Code erhält beispielsweise das erste Argument (`--model_name`) den Eigenschaftsbezeichner `model_name`. In der Funktion `init()` wird `Model.get_model_path(args.model_name)` für den Zugriff auf diese Eigenschaft verwendet.
 
 
 ```python
@@ -187,141 +184,115 @@ from math import ceil
 import numpy as np
 import shutil
 from tensorflow.contrib.slim.python.slim.nets import inception_v3
+
+from azureml.core import Run
 from azureml.core.model import Model
+from azureml.core.dataset import Dataset
 
 slim = tf.contrib.slim
-
-parser = argparse.ArgumentParser(description="Start a tensorflow model serving")
-parser.add_argument('--model_name', dest="model_name", required=True)
-parser.add_argument('--label_dir', dest="label_dir", required=True)
-parser.add_argument('--dataset_path', dest="dataset_path", required=True)
-parser.add_argument('--output_dir', dest="output_dir", required=True)
-parser.add_argument('--batch_size', dest="batch_size", type=int, required=True)
-
-args = parser.parse_args()
 
 image_size = 299
 num_channel = 3
 
-# create output directory if it does not exist
-os.makedirs(args.output_dir, exist_ok=True)
 
-
-def get_class_label_dict(label_file):
+def get_class_label_dict():
     label = []
-    proto_as_ascii_lines = tf.gfile.GFile(label_file).readlines()
+    proto_as_ascii_lines = tf.gfile.GFile("labels.txt").readlines()
     for l in proto_as_ascii_lines:
         label.append(l.rstrip())
     return label
 
 
-class DataIterator:
-    def __init__(self, data_dir):
-        self.file_paths = []
-        image_list = os.listdir(data_dir)
-        self.file_paths = [data_dir + '/' + file_name.rstrip() for file_name in image_list]
-        self.labels = [1 for file_name in self.file_paths]
+def init():
+    global g_tf_sess, probabilities, label_dict, input_images
 
-    @property
-    def size(self):
-        return len(self.labels)
+    parser = argparse.ArgumentParser(description="Start a tensorflow model serving")
+    parser.add_argument('--model_name', dest="model_name", required=True)
+    parser.add_argument('--labels_name', dest="labels_name", required=True)
+    args, _ = parser.parse_known_args()
 
-    def input_pipeline(self, batch_size):
-        images_tensor = tf.convert_to_tensor(self.file_paths, dtype=tf.string)
-        labels_tensor = tf.convert_to_tensor(self.labels, dtype=tf.int64)
-        input_queue = tf.train.slice_input_producer([images_tensor, labels_tensor], shuffle=False)
-        labels = input_queue[1]
-        images_content = tf.read_file(input_queue[0])
+    workspace = Run.get_context(allow_offline=False).experiment.workspace
+    label_ds = Dataset.get_by_name(workspace=workspace, name=args.labels_name)
+    label_ds.download(target_path='.', overwrite=True)
 
-        image_reader = tf.image.decode_jpeg(images_content, channels=num_channel, name="jpeg_reader")
-        float_caster = tf.cast(image_reader, tf.float32)
-        new_size = tf.constant([image_size, image_size], dtype=tf.int32)
-        images = tf.image.resize_images(float_caster, new_size)
-        images = tf.divide(tf.subtract(images, [0]), [255])
-
-        image_batch, label_batch = tf.train.batch([images, labels], batch_size=batch_size, capacity=5 * batch_size)
-        return image_batch
-
-
-def main(_):
-    label_file_name = os.path.join(args.label_dir, "labels.txt")
-    label_dict = get_class_label_dict(label_file_name)
+    label_dict = get_class_label_dict()
     classes_num = len(label_dict)
-    test_feeder = DataIterator(data_dir=args.dataset_path)
-    total_size = len(test_feeder.labels)
-    count = 0
 
-    # get model from model registry
+    with slim.arg_scope(inception_v3.inception_v3_arg_scope()):
+        input_images = tf.placeholder(tf.float32, [1, image_size, image_size, num_channel])
+        logits, _ = inception_v3.inception_v3(input_images,
+                                              num_classes=classes_num,
+                                              is_training=False)
+        probabilities = tf.argmax(logits, 1)
+
+    config = tf.ConfigProto()
+    config.gpu_options.allow_growth = True
+    g_tf_sess = tf.Session(config=config)
+    g_tf_sess.run(tf.global_variables_initializer())
+    g_tf_sess.run(tf.local_variables_initializer())
+
     model_path = Model.get_model_path(args.model_name)
+    saver = tf.train.Saver()
+    saver.restore(g_tf_sess, model_path)
 
-    with tf.Session() as sess:
-        test_images = test_feeder.input_pipeline(batch_size=args.batch_size)
-        with slim.arg_scope(inception_v3.inception_v3_arg_scope()):
-            input_images = tf.placeholder(tf.float32, [args.batch_size, image_size, image_size, num_channel])
-            logits, _ = inception_v3.inception_v3(input_images,
-                                                  num_classes=classes_num,
-                                                  is_training=False)
-            probabilities = tf.argmax(logits, 1)
 
-        sess.run(tf.global_variables_initializer())
-        sess.run(tf.local_variables_initializer())
-        coord = tf.train.Coordinator()
-        threads = tf.train.start_queue_runners(sess=sess, coord=coord)
-        saver = tf.train.Saver()
-        saver.restore(sess, model_path)
-        out_filename = os.path.join(args.output_dir, "result-labels.txt")
-        with open(out_filename, "w") as result_file:
-            i = 0
-            while count < total_size and not coord.should_stop():
-                test_images_batch = sess.run(test_images)
-                file_names_batch = test_feeder.file_paths[i * args.batch_size:
-                                                          min(test_feeder.size, (i + 1) * args.batch_size)]
-                results = sess.run(probabilities, feed_dict={input_images: test_images_batch})
-                new_add = min(args.batch_size, total_size - count)
-                count += new_add
-                i += 1
-                for j in range(new_add):
-                    result_file.write(os.path.basename(file_names_batch[j]) + ": " + label_dict[results[j]] + "\n")
-                result_file.flush()
-            coord.request_stop()
-            coord.join(threads)
+def file_to_tensor(file_path):
+    image_string = tf.read_file(file_path)
+    image = tf.image.decode_image(image_string, channels=3)
 
-        shutil.copy(out_filename, "./outputs/")
+    image.set_shape([None, None, None])
+    image = tf.image.resize_images(image, [image_size, image_size])
+    image = tf.divide(tf.subtract(image, [0]), [255])
+    image.set_shape([image_size, image_size, num_channel])
+    return image
 
-if __name__ == "__main__":
-    tf.app.run()
 
+def run(mini_batch):
+    result_list = []
+    for file_path in mini_batch:
+        test_image = file_to_tensor(file_path)
+        out = g_tf_sess.run(test_image)
+        result = g_tf_sess.run(probabilities, feed_dict={input_images: [out]})
+        result_list.append(os.path.basename(file_path) + ": " + label_dict[result[0]])
+    return result_list
 ```
 
 > [!TIP]
 > Die Pipeline in diesem Tutorial enthält nur einen Schritt, und die Ausgabe wird in eine Datei geschrieben. Für Pipelines mit mehreren Schritten verwenden Sie zudem `ArgumentParser` zum Definieren eines Verzeichnisses, um Ausgabedaten für die Eingabe in nachfolgende Schritte zu schreiben. Im `ArgumentParser`Notebook[ finden Sie ein Beispiel für die Übergabe von Daten zwischen mehreren Pipelineschritten unter Verwendung des Entwurfsmusters ](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb).
 
-## <a name="build-and-run-the-pipeline"></a>Planen und Ausführen der Pipeline
+## <a name="build-the-pipeline"></a>Erstellen der Pipeline
 
-Bevor Sie die Pipeline ausführen können, müssen Sie ein Objekt erstellen, das die Python-Umgebung definiert und die erforderlichen Abhängigkeiten für Ihr Skript (`batch_scoring.py`) erstellt. Die wichtigste erforderliche Abhängigkeit ist TensorFlow. Für Hintergrundprozesse muss allerdings auch `azureml-defaults` aus dem SDK installiert werden. Erstellen Sie mithilfe der Abhängigkeiten ein Objekt vom Typ `RunConfiguration`. Geben Sie auch Docker- und Docker-GPU-Unterstützung an.
+Bevor Sie die Pipeline ausführen können, müssen Sie ein Objekt erstellen, das die Python-Umgebung definiert und die erforderlichen Abhängigkeiten für Ihr Skript (`batch_scoring.py`) erstellt. Die wichtigste erforderliche Abhängigkeit ist TensorFlow. Für Hintergrundprozesse muss allerdings auch `azureml-defaults` installiert werden. Erstellen Sie mithilfe der Abhängigkeiten ein Objekt vom Typ `RunConfiguration`. Geben Sie auch Docker- und Docker-GPU-Unterstützung an.
 
 ```python
-from azureml.core.runconfig import DEFAULT_GPU_IMAGE
-azureml.core.runconfig import RunConfiguration
+from azureml.core import Environment
 from azureml.core.conda_dependencies import CondaDependencies
+from azureml.core.runconfig import DEFAULT_GPU_IMAGE
 
 cd = CondaDependencies.create(pip_packages=["tensorflow-gpu==1.13.1", "azureml-defaults"])
-
-amlcompute_run_config = RunConfiguration(conda_dependencies=cd)
-amlcompute_run_config.environment.docker.enabled = True
-amlcompute_run_config.environment.docker.base_image = DEFAULT_GPU_IMAGE
-amlcompute_run_config.environment.spark.precache_packages = False
+env = Environment(name="parallelenv")
+env.python.conda_dependencies = cd
+env.docker.base_image = DEFAULT_GPU_IMAGE
 ```
 
-### <a name="parameterize-the-pipeline"></a>Parametrisieren der Pipeline
+### <a name="create-the-configuration-to-wrap-the-script"></a>Erstellen der Konfiguration zum Umschließen des Skripts
 
-Definieren Sie zum Steuern der Batchgröße einen benutzerdefinierten Parameter für die Pipeline. Nachdem die Pipeline veröffentlicht und über einen REST-Endpunkt verfügbar gemacht wurde, werden auch alle konfigurierten Parameter verfügbar gemacht. Sie können benutzerdefinierte Parameter in der JSON-Nutzlast angeben, wenn Sie die Pipeline über eine HTTP-Anforderung erneut ausführen.
-
-Erstellen Sie ein Objekt vom Typ `PipelineParameter`, um dieses Verhalten zu ermöglichen und einen Namen und einen Standardwert zu definieren.
+Erstellen Sie den Pipelineschritt mithilfe des Skripts, der Umgebungskonfiguration und der Parameter. Geben Sie das Computeziel an, das Sie bereits an Ihren Arbeitsbereich angefügt haben.
 
 ```python
-from azureml.pipeline.core.graph import PipelineParameter
-batch_size_param = PipelineParameter(name="param_batch_size", default_value=20)
+from azureml.contrib.pipeline.steps import ParallelRunConfig
+
+parallel_run_config = ParallelRunConfig(
+    environment=env,
+    entry_script="batch_scoring.py",
+    source_directory=".",
+    output_action="append_row",
+    mini_batch_size="20",
+    error_threshold=1,
+    compute_target=compute_target,
+    process_count_per_node=2,
+    node_count=1
+)
 ```
 
 ### <a name="create-the-pipeline-step"></a>Erstellen des Pipelineschritts
@@ -333,31 +304,28 @@ Ein Pipelineschritt ist ein Objekt, das alles kapselt, was Sie zum Ausführen ei
 * Eingabe- und Ausgabedaten sowie ggf. benutzerdefinierte Parameter
 * Verweis auf ein Skript oder eine SDK-Logik, die während des Schritts ausgeführt werden soll
 
-Mehrere Klassen erben von der übergeordneten Klasse [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py). Sie können Klassen auswählen, um bestimmte Frameworks oder Stapel zum Erstellen eines Schritts zu verwenden. In diesem Beispiel wird die Klasse [`PythonScriptStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) verwendet, um Ihre Schrittlogik mithilfe eines benutzerdefinierten Python-Skripts zu definieren. Wenn es sich bei einem Argument für Ihr Skript um eine Eingabe für den Schritt oder um eine Ausgabe des Schritts handelt, muss es *sowohl* im Array `arguments`*als auch* im Parameter `input` bzw. `output` definiert werden. 
+Mehrere Klassen erben von der übergeordneten Klasse [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py). Sie können Klassen auswählen, um bestimmte Frameworks oder Stapel zum Erstellen eines Schritts zu verwenden. In diesem Beispiel wird die Klasse `ParallelRunStep` verwendet, um Ihre Schrittlogik mithilfe eines benutzerdefinierten Python-Skripts zu definieren. Wenn es sich bei einem Argument für Ihr Skript um eine Eingabe für den Schritt oder um eine Ausgabe des Schritts handelt, muss es *sowohl* im Array `arguments`*als auch* im Parameter `input` bzw. `output` definiert werden. 
 
 In Szenarien mit mehreren Schritten wird ein Objektverweis im Array `outputs` als *Eingabe* für einen nachfolgenden Pipelineschritt verfügbar.
 
 ```python
-from azureml.pipeline.steps import PythonScriptStep
+from azureml.contrib.pipeline.steps import ParallelRunStep
 
-batch_score_step = PythonScriptStep(
-    name="batch_scoring",
-    script_name="batch_scoring.py",
-    arguments=["--dataset_path", input_images, 
-               "--model_name", "inception",
-               "--label_dir", label_dir, 
-               "--output_dir", output_dir, 
-               "--batch_size", batch_size_param],
-    compute_target=compute_target,
-    inputs=[input_images, label_dir],
-    outputs=[output_dir],
-    runconfig=amlcompute_run_config
+batch_score_step = ParallelRunStep(
+    name="parallel-step-test",
+    inputs=[input_images.as_named_input("input_images")],
+    output=output_dir,
+    models=[model],
+    arguments=["--model_name", "inception",
+               "--labels_name", "label_ds"],
+    parallel_run_config=parallel_run_config,
+    allow_reuse=False
 )
 ```
 
 Eine Liste mit allen Klassen für verschiedene Schritttypen finden Sie im [Schrittpaket](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py).
 
-### <a name="run-the-pipeline"></a>Führen Sie die Pipeline aus.
+## <a name="submit-the-pipeline"></a>Übermitteln der Pipeline
 
 Führen Sie die Pipeline nun aus. Erstellen Sie zunächst ein Objekt vom Typ `Pipeline` mit einem Verweis auf Ihren Arbeitsbereich sowie mit dem erstellten Pipelineschritt. Der Parameter `steps` ist ein Array mit Schritten. In diesem Fall ist allerdings nur ein Schritt für die Batchbewertung vorhanden. Wenn Sie Pipelines mit mehreren Schritten erstellen möchten, müssen Sie die Schritte in der gewünschten Reihenfolge in diesem Array platzieren.
 
@@ -371,7 +339,7 @@ from azureml.core import Experiment
 from azureml.pipeline.core import Pipeline
 
 pipeline = Pipeline(workspace=ws, steps=[batch_score_step])
-pipeline_run = Experiment(ws, 'batch_scoring').submit(pipeline, pipeline_parameters={"param_batch_size": 20})
+pipeline_run = Experiment(ws, 'batch_scoring').submit(pipeline)
 pipeline_run.wait_for_completion(show_output=True)
 ```
 
@@ -382,87 +350,20 @@ Führen Sie den folgenden Code aus, um die durch das Skript `batch_scoring.py` e
 ```python
 import pandas as pd
 
-step_run = list(pipeline_run.get_children())[0]
-step_run.download_file("./outputs/result-labels.txt")
+batch_run = next(pipeline_run.get_children())
+batch_output = batch_run.get_output_data("scores")
+batch_output.download(local_path="inception_results")
 
-df = pd.read_csv("result-labels.txt", delimiter=":", header=None)
+for root, dirs, files in os.walk("inception_results"):
+    for file in files:
+        if file.endswith("parallel_run_step.txt"):
+            result_file = os.path.join(root, file)
+
+df = pd.read_csv(result_file, delimiter=":", header=None)
 df.columns = ["Filename", "Prediction"]
+print("Prediction has ", df.shape[0], " rows")
 df.head(10)
 ```
-
-<div>
-<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Dateiname</th>
-      <th>Vorhersage</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>ILSVRC2012_val_00000102.JPEG</td>
-      <td>Rhodesian Ridgeback</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>ILSVRC2012_val_00000103.JPEG</td>
-      <td>Stativ</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>ILSVRC2012_val_00000104.JPEG</td>
-      <td>Schreibmaschinentastatur</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>ILSVRC2012_val_00000105.JPEG</td>
-      <td>Silky Terrier</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>ILSVRC2012_val_00000106.JPEG</td>
-      <td>Windsorknoten</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>ILSVRC2012_val_00000107.JPEG</td>
-      <td>Weberknecht</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>ILSVRC2012_val_00000108.JPEG</td>
-      <td>Geige</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>ILSVRC2012_val_00000109.JPEG</td>
-      <td>Lautsprecher</td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td>ILSVRC2012_val_00000110.JPEG</td>
-      <td>Schürze</td>
-    </tr>
-    <tr>
-      <td>9</td>
-      <td>ILSVRC2012_val_00000111.JPEG</td>
-      <td>Amerikanischer Hummer</td>
-    </tr>
-  </tbody>
-</table>
-</div>
 
 ## <a name="publish-and-run-from-a-rest-endpoint"></a>Veröffentlichen und Ausführen über einen REST-Endpunkt
 
@@ -477,7 +378,7 @@ published_pipeline = pipeline_run.publish_pipeline(
 published_pipeline
 ```
 
-Um die Pipeline über den REST-Endpunkt ausführen zu können, benötigen Sie einen OAuth2-Bearer-Authentifizierungsheader. Im folgenden Beispiel wird zur Veranschaulichung eine interaktive Authentifizierung verwendet. In den meisten Produktionsszenarien, die eine automatisierte oder monitorlose Authentifizierung erfordern, wird dagegen eine Dienstprinzipalauthentifizierung verwendet, wie in [diesem Notebook](https://aka.ms/pl-restep-auth) beschrieben.
+Um die Pipeline über den REST-Endpunkt ausführen zu können, benötigen Sie einen OAuth2-Bearer-Authentifizierungsheader. Im folgenden Beispiel wird zur Veranschaulichung eine interaktive Authentifizierung verwendet. In den meisten Produktionsszenarios, die eine automatisierte oder monitorlose Authentifizierung erfordern, wird dagegen eine Dienstprinzipalauthentifizierung verwendet, wie in [diesem Artikel](how-to-setup-authentication.md) beschrieben.
 
 Für die Dienstprinzipalauthentifizierung muss eine *App-Registrierung* in *Azure Active Directory* erstellt werden. Sie generieren zunächst einen geheimen Clientschlüssel und gewähren dem Dienstprinzipal anschließend *Rollenzugriff* auf Ihren Machine Learning-Arbeitsbereich. Verwenden Sie zur Verwaltung des Authentifizierungsflusses die Klasse [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py). 
 

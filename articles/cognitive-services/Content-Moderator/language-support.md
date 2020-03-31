@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 9574af31c881589668c462099cae46d9e83b454b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "73744365"
 ---
 # <a name="language-support-for-content-moderator-api"></a>Sprachunterstützung für Content Moderator-API
@@ -29,7 +29,7 @@ ms.locfileid: "73744365"
 | -------------------- |-------------|--------|---------------------|
 | Arabisch (romanisiert)   | Afrikaans   | Arabisch   | Arabisch |
 | Balinesisch | Albanisch | Chinesisch (vereinfacht)    | Dänisch |
-| Bangla | Amharisch | Chinesisch (traditionell)     | Niederländisch |
+| Bengali | Amharisch | Chinesisch (traditionell)     | Niederländisch |
 | Buginesisch | Arabisch | Tschechisch                     | Englisch |
 | Buhid | Armenisch | Dänisch                     | Finnisch |
 | Karisch | Assamesisch | Niederländisch                     | Französisch |

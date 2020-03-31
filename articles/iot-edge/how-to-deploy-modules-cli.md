@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e93360d4045f9c97d45abe2af489804a4c3c85f0
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 619ba7cb2d99e0137fd1834096dd5b66ffcd6ec9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673493"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240380"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Bereitstellen von Azure IoT Edge-Modulen mit der Azure CLI
 
@@ -116,7 +116,7 @@ Wechseln Sie in den Ordner, in dem das Bereitstellungsmanifest gespeichert ist. 
 
 Wenden Sie die Konfiguration mit dem folgenden Befehl auf ein IoT Edge-Gerät an:
 
-   ```cli
+   ```azurecli
    az iot edge set-modules --device-id [device id] --hub-name [hub name] --content [file path]
    ```
 
@@ -130,7 +130,7 @@ Nachdem Sie die Module auf Ihrem Gerät bereitgestellt haben, können Sie sie mi
 
 Zeigen Sie die Module auf Ihrem IoT Edge-Gerät an:
 
-   ```cli
+   ```azurecli
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 

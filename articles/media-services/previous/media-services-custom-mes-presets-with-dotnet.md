@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: juliako
 ms.openlocfilehash: 39a1dd5c3d26eeb6545a96aa35f9457bd9859c21
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61247242"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227090"
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Anpassen von Media Encoder Standard-Voreinstellungen  
 
@@ -32,7 +32,7 @@ In diesem Artikel erfahren Sie, wie Sie eine Voreinstellung anpassen, indem Sie 
 > [!NOTE]
 > Die in diesem Artikel beschriebenen benutzerdefinierten Voreinstellungen können nicht in [Media Services V3](https://docs.microsoft.com/azure/media-services/latest/)-Transformationen oder in den Befehlen der Befehlszeilenschnittstelle verwendet werden. Weitere Informationen finden Sie unter [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
-## <a id="customizing_presets"></a> Anpassen einer MES-Voreinstellung
+## <a name="customizing-a-mes-preset"></a><a id="customizing_presets"></a> Anpassen einer MES-Voreinstellung
 
 ### <a name="original-preset"></a>Ursprüngliche Voreinstellung
 
@@ -113,7 +113,7 @@ Speichern Sie das im Artikel [H264 Multiple Bitrate 720p](media-services-mes-pre
     }  
 ```
 
-## <a id="encoding_with_dotnet"></a>Codierung mit dem Media Services .NET SDK
+## <a name="encoding-with-media-services-net-sdk"></a><a id="encoding_with_dotnet"></a>Codierung mit dem Media Services .NET SDK
 
 Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die folgenden Aufgaben auszuführen:
 
@@ -125,7 +125,7 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
         string configuration = File.ReadAllText(fileName);  
 
 - Hinzufügen einer Codierungsaufgabe zum Auftrag 
-- Geben Sie das zu codierende Medienobjekt an.
+- Geben Sie das zu codierende Asset an.
 - Erstellen Sie ein Ausgabemedienobjekt, das das codierte Medienobjekt enthält.
 - Fügen Sie einen Ereignishandler hinzu, um den Auftragsstatus zu überprüfen.
 - Übermitteln des Auftrags.

@@ -6,17 +6,17 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.openlocfilehash: 29b5e9c7673b4a730a41bf7cf2b1c4a2a86209ed
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77462104"
 ---
 # <a name="azure-functions-http-triggers-and-bindings-overview"></a>Übersicht über HTTP-Trigger und -Bindungen in Azure Functions
 
 Azure Functions kann mittels HTTP-Anforderungen aufgerufen werden, um serverlose APIs zu erstellen und auf [Webhooks](https://en.wikipedia.org/wiki/Webhook) zu antworten.
 
-| Aktion | type |
+| Action | type |
 |---------|---------|
 | Ausführen einer Funktion aus einer HTTP-Anforderung | [Trigger](./functions-bindings-http-webhook-trigger.md) |
 | Zurückgeben einer HTTP-Antwort von einer Funktion |[Ausgabebindung](./functions-bindings-http-webhook-output.md) |

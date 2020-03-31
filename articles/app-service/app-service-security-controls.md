@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 2586821c4c48f809efb5408c3cdae5e42e3b3fcf
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74671446"
 ---
 # <a name="security-controls-for-azure-app-service"></a>Sicherheitskontrollen für Azure App Service
@@ -39,10 +39,10 @@ In diesem Artikel werden die in Azure App Service integrierten Sicherheitskontro
 
 | Sicherheitskontrolle | Ja/Nein | Notizen |  Dokumentation
 |---|---|--|
-| Authentication| Ja | Kunden können Anwendungen für App Service erstellen, die automatisch in [Azure Active Directory (Azure AD)](../active-directory/index.yml) sowie andere OAuth-kompatible Identitätsanbieter integriert werden. Für den Verwaltungszugriff auf App Service-Ressourcen wird der gesamte Zugriff durch eine Kombination von durch Azure AD authentifizierten Prinzipalen und RBAC-Rollen von Azure Resource Manager gesteuert. | [Authentifizierung und Autorisierung in Azure App Service](overview-authentication-authorization.md)
+| Authentifizierung| Ja | Kunden können Anwendungen für App Service erstellen, die automatisch in [Azure Active Directory (Azure AD)](../active-directory/index.yml) sowie andere OAuth-kompatible Identitätsanbieter integriert werden. Für den Verwaltungszugriff auf App Service-Ressourcen wird der gesamte Zugriff durch eine Kombination von durch Azure AD authentifizierten Prinzipalen und RBAC-Rollen von Azure Resource Manager gesteuert. | [Authentifizierung und Autorisierung in Azure App Service](overview-authentication-authorization.md)
 | Authorization| Ja | Für Verwaltungszugriff auf App Service-Ressourcen werden sämtliche Zugriffe mit einer Kombination aus Azure AD-authentifizierten Prinzipal- und Azure Resource Manager-RBAC-Rollen gesteuert.  | [Authentifizierung und Autorisierung in Azure App Service](overview-authentication-authorization.md)
 
-## <a name="data-protection"></a>Datenschutz
+## <a name="data-protection"></a>Schutz von Daten
 
 | Sicherheitskontrolle | Ja/Nein | Notizen | Dokumentation
 |---|---|--|

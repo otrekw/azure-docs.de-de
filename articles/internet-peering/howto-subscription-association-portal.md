@@ -9,17 +9,17 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: cee548aff49cd5e4a57eed994b8ade2d157c6313
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75912144"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Zuordnen der Peer-ASN zum Azure-Abonnement über das Portal
 
 Vor dem Einreichen einer Peeringanforderung sollten Sie zunächst mithilfe der unten dargestellten Schritte Ihre ASN dem Azure-Abonnement zuordnen.
 
-Falls Sie es vorziehen, können Sie diese Anleitung auch mithilfe der [PowerShell](howto-subscription-association-powershell.md) ausführen.
+Falls Sie es vorziehen, können Sie diese Anleitung auch mithilfe von [PowerShell](howto-subscription-association-powershell.md) ausführen.
 
 ## <a name="create-peerasn-to-associate-your-asn-with-azure-subscription"></a>Erstellen einer PeerAsn zum Zuordnen Ihrer ASN zum Azure-Abonnement
 
@@ -82,7 +82,7 @@ Sie können eine neue PeerAsn-Ressource erstellen, um ihr eine Autonome Systemnu
     * **Peername** entspricht dem Namen Ihres Unternehmens und muss so nah wie möglich an Ihrem PeeringDB-Profil sein. Beachten Sie, dass der Wert nur die Zeichen a–z, A–Z und Leerzeichen unterstützt.
     * Geben Sie Ihre ASN im Feld **Peer-ASN** ein.
     * Klicken Sie auf **Neue erstellen**, und geben Sie die **E-MAIL-ADRESSE** und **TELEFONNUMMER** Ihres Network Operations Center (NOC) ein.
-1. Klicken Sie dann auf **Überprüfen + Erstellen**, und beachten Sie, dass das Portal eine grundlegende Überprüfung der eingegebenen Informationen ausführt. Dies wird in einem Menüband oben auf der Seite angezeigt, als *Abschließende Überprüfung wird ausgeführt...* .
+1. Klicken Sie dann auf **Überprüfen + Erstellen**, und beachten Sie, dass das Portal eine grundlegende Überprüfung der eingegebenen Informationen ausführt. Dies wird auf einem Menüband im oberen Bereich als *Abschließende Überprüfung wird ausgeführt...* angezeigt.
 
     > [!div class="mx-imgBorder"]
     > ![Registerkarte „PeerAsn überprüfen“](./media/peerasn-review-tab-validation.png)
@@ -92,7 +92,7 @@ Sie können eine neue PeerAsn-Ressource erstellen, um ihr eine Autonome Systemnu
     > [!div class="mx-imgBorder"]
     > ![Registerkarte „PeerAsn überprüfen“](./media/peerasn-review-tab.png)
 
-1. Nachdem Sie die Anforderung übermittelt haben, warten Sie, bis die Bereitstellung beendet ist. Wenn bei der Bereitstellung ein Fehler auftritt, wenden Sie sich an [Microsoft Peering](mailto:peering@microsoft.com). Eine erfolgreiche Bereitstellung wird wie unten dargestellt angezeigt.
+1. Nachdem Sie die Anforderung übermittelt haben, warten Sie, bis die Bereitstellung beendet ist. Sollte bei der Bereitstellung ein Fehler auftreten, wenden Sie sich an [Microsoft Peering](mailto:peering@microsoft.com). Eine erfolgreiche Bereitstellung sieht wie unten dargestellt aus.
 
     > [!div class="mx-imgBorder"]
     > ![Erfolg von „PeerAsn“](./media/peerasn-success.png)
@@ -112,9 +112,9 @@ Das Löschen einer PeerAsn wird zurzeit nicht unterstützt. Wenn Sie die PeerAsn
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erstellen oder Ändern einer Instanz für Direct Peering über das Portal](howto-direct-portal.md)
-* [Konvertieren einer Legacy-Instanz für Direct Peering in eine Azure-Ressource über das Portal](howto-legacy-direct-portal.md)
+* [Konvertieren eines älteren direkten Peerings in eine Azure-Ressource über das Portal](howto-legacy-direct-portal.md)
 * [Erstellen oder Ändern einer Instanz für Exchange Peering über das Portal](howto-exchange-portal.md)
-* [Konvertieren einer Legacy-Instanz für Exchange Peering in eine Azure-Ressource über das Portal](howto-legacy-exchange-portal.md)
+* [Konvertieren einer älteren Instanz für Exchange Peering in eine Azure-Ressource über das Portal](howto-legacy-exchange-portal.md)
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

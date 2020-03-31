@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84b786a1701892823554a83fa2015ac88d6eff4d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60295142"
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>Ermitteln der Zugriffssteuerungsanforderungen für Ihre Hybrid-Identitätslösung
@@ -29,7 +29,7 @@ Wenn eine Organisation ihre Hybrid-Identitätslösung entwirft, kann sie bei die
 
 * Verwaltung
 * Authentication
-* Autorisierung
+* Authorization
 * Überwachung
 
 Im folgenden Abschnitt wird näher auf die Authentifizierung und Autorisierung eingegangen. Verwaltung und Überwachung sind Teil des Lebenszyklus von Hybrididentitäten. Weitere Informationen zu diesen Funktionen finden Sie unter [Ermitteln der Aufgaben für die Hybrididentitätsverwaltung](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).
@@ -81,6 +81,6 @@ Die Authentifizierung und Autorisierung sind wichtige Elemente, um über die Üb
 ## <a name="next-steps"></a>Nächste Schritte
 [Bestimmen der Anforderungen an Reaktionen auf Vorfälle](plan-hybrid-identity-design-considerations-incident-response-requirements.md)
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 [Überlegungen zum Entwurf – Übersicht](plan-hybrid-identity-design-considerations-overview.md)
 

@@ -11,10 +11,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 02/10/2020
 ms.author: robinsh
 ms.openlocfilehash: b71b86c14c55c312ef420a4d8517140fdded4072
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77122213"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Wettervorhersage mithilfe von Sensordaten Ihres IoT Hub in Azure Machine Learning
@@ -136,7 +136,7 @@ In diesem Abschnitt überprüfen Sie das Modell, richten einen Vorhersagewebdien
 
    **Ressourcengruppe**: Verwenden Sie dieselbe Ressourcengruppe wie für Ihren IoT Hub.
 
-   **Standort**: Verwenden Sie denselben Speicherort wie für Ihre Ressourcengruppe.
+   **Speicherort**: Verwenden Sie denselben Speicherort wie für Ihre Ressourcengruppe.
 
    **An Dashboard anheften**: Aktivieren Sie diese Option für den leichteren Zugriff auf Ihren IoT Hub über das Dashboard.
 
@@ -152,7 +152,7 @@ In diesem Abschnitt überprüfen Sie das Modell, richten einen Vorhersagewebdien
 
    **Eingabealias**: Der eindeutige Alias für die Eingabe.
 
-   **Quelle**: Wählen Sie **IoT-Hub** aus.
+   **Quelle**: Wählen Sie **IoT Hub** aus.
 
    **Consumergruppe**: Wählen Sie die Consumergruppe aus, die Sie erstellt haben.
 
@@ -186,13 +186,13 @@ In diesem Abschnitt überprüfen Sie das Modell, richten einen Vorhersagewebdien
 
    **Funktionsalias**: Geben Sie `machinelearning` ein.
 
-   **Funktionstyp**: Wählen Sie **Azure ML** aus.
+   **Funktionstyp**: Wählen Sie **Azure ML**.
 
-   **Importoption**: Wählen Sie **Aus einem anderen Abonnement importieren** aus.
+   **Importoption**: Wählen Sie **Aus einem anderen Abonnement importieren**.
 
    **URL**: Geben Sie die WEB SERVICE URL aus der Excel-Arbeitsmappe ein, die Sie notiert haben.
 
-   **Key**: Geben Sie den ACCESS KEY aus der Excel-Arbeitsmappe ein, den Sie notiert haben.
+   **Schlüssel**: Geben Sie den ACCESS KEY aus der Excel-Arbeitsmappe ein, den Sie notiert haben.
 
    ![Hinzufügen einer Funktion zum Stream Analytics-Auftrag in Azure](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
 
