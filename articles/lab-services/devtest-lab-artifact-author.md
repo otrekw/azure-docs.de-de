@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/30/2019
 ms.author: spelluru
 ms.openlocfilehash: 69b83590fb9b25c68d231b732b985ba633bb6884
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66399201"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Erstellen benutzerdefinierter Artefakte für Ihren virtuellen DevTest Labs-Computer
@@ -53,7 +53,7 @@ Das folgende Beispiel zeigt die Abschnitte, die die grundlegende Struktur einer 
       }
     }
 
-| Elementname | Erforderlich? | Description |
+| Elementname | Erforderlich? | BESCHREIBUNG |
 | --- | --- | --- |
 | $schema |Nein |Speicherort der JSON-Schemadatei Mithilfe der JSON-Schemadatei können Sie die Gültigkeit der Definitionsdatei testen. |
 | title |Ja |Der Name des im Lab angezeigten Artefakts. |
@@ -76,7 +76,7 @@ Sie definieren Parameter mit der folgenden Struktur:
       }
     }
 
-| Elementname | Erforderlich? | Description |
+| Elementname | Erforderlich? | BESCHREIBUNG |
 | --- | --- | --- |
 | type |Ja |Der Typ des Parameterwerts. In der folgenden Liste finden Sie die zulässigen Typen. |
 | displayName |Ja |Der Name des Parameters, der einem Benutzer im Labor angezeigt wird. |

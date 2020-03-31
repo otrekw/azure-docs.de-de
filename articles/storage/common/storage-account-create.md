@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 86aaebe652968a2ea33fd8e15f9de9c1dff31a30
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: c2d1e8b4975be0657983192df00cc434da00a6f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086968"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228370"
 ---
 # <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 
@@ -26,7 +26,7 @@ In diesem Artikel erfahren Sie, wie Sie über das [Azure-Portal](https://portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/), bevor Sie beginnen.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -219,7 +219,10 @@ az group create --name $resourceGroupName --location "$location" &&
 az group deployment create --resource-group $resourceGroupName --template-file "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
 ```
 
-Informationen zum Erstellen von Vorlagen finden Sie hier:
+> [!NOTE]
+> Diese Vorlage dient nur als Beispiel. Es gibt viele Speicherkontoeinstellungen, die in dieser Vorlage nicht konfiguriert sind. Wenn Sie z. B. [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) verwenden möchten, ändern Sie diese Vorlage, indem Sie die `isHnsEnabledad`-Eigenschaft des Objekts `StorageAccountPropertiesCreateParameters` auf `true` festlegen. 
+
+Informationen zum Ändern dieser Vorlage und zum Erstellen neuer Vorlagen finden Sie unter:
 
 - [Dokumentation zu Azure Resource Manager](/azure/azure-resource-manager/)
 - [Vorlagenreferenz für Speicherkonten](/azure/templates/microsoft.storage/allversions)

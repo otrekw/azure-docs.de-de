@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
 ms.openlocfilehash: bcaf45af4c02dad22e2cc611fa7ea5a32ad3a853
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75443882"
 ---
 # <a name="azure-operational-security-overview"></a>Azure Operational Security – Übersicht
@@ -100,7 +100,7 @@ Security Center verwendet den Microsoft Monitoring Agent. Dies ist der gleiche A
 
 Leistungsprobleme in Ihrer Cloud-App können Ihr Unternehmen beeinträchtigen. Durch mehrere miteinander verbundene Komponenten und häufige Versionswechsel können Leistungseinbußen jederzeit vorkommen. Bei der Entwicklung einer App werden von Ihren Benutzern in der Regel Probleme entdeckt, die Sie beim Testen nicht gefunden haben. Sie sollten sofort über diese Probleme Bescheid wissen und über Tools zu deren Diagnose und Beseitigung verfügen.
 
-[Azure Monitor](/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) ist ein grundlegendes Tool zum Überwachen von Diensten, die in Azure ausgeführt werden. Dieses Tool bietet Ihnen Daten auf Infrastrukturebene über den Durchsatz eines Diensts und über dessen Umgebung. Wenn Sie Ihre Apps vollständig in Azure verwalten und entscheiden müssen, ob Sie Ihre Ressourcen zentral hoch- oder herunterskalieren, bietet Azure Monitor den richtigen Ausgangspunkt.
+[Azure Monitor](/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) ist ein grundlegendes Tool zum Überwachen von Diensten, die in Azure ausgeführt werden. Dieses Tool bietet Ihnen Daten auf Infrastrukturebene über den Durchsatz eines Diensts und über dessen Umgebung. Wenn Sie Ihre Apps vollständig in Azure verwalten und entscheiden müssen, ob Sie Ihre Ressourcen hoch- oder herunterskalieren, bietet Azure Monitor den richtigen Ausgangspunkt.
 
 Sie können anhand der Überwachungsdaten auch umfassende Erkenntnisse zu Ihrer Anwendung gewinnen. Mithilfe dieser Kenntnisse können Sie die Leistung oder Wartungsfreundlichkeit der Anwendung verbessern oder Aktionen automatisieren, die andernfalls manuell ausgeführt werden müssten.
 
@@ -140,14 +140,14 @@ Network Watcher vereinfacht die Überwachung und Diagnose Ihres Azure-Netzwerks.
 
 Network Watcher verfügt derzeit über die folgenden Funktionen:
 
-- [Topology](/azure/network-watcher/network-watcher-topology-overview): Bietet eine Ansicht der verschiedenen Verbindungen und Beziehungen zwischen Netzwerkressourcen in einer Ressourcengruppe.
-- [Variable Paketerfassung:](/azure/network-watcher/network-watcher-packet-capture-overview) Erfasst die auf dem virtuellen Computer ein- und ausgehenden Paketdaten. Erweiterte Filteroptionen und präzise Steuerelemente ermöglichen beispielsweise das Festlegen von Zeit- und Größeneinschränkungen und bieten damit viel Flexibilität. Die Paketdaten können in einem Blobspeicher oder auf dem lokalen Datenträger im CAP-Format gespeichert werden.
+- [Topologie](/azure/network-watcher/network-watcher-topology-overview): Bietet eine Ansicht der verschiedenen Verbindungen und Beziehungen zwischen Netzwerkressourcen in einer Ressourcengruppe.
+- [Variable Paketerfassung](/azure/network-watcher/network-watcher-packet-capture-overview): Erfasst Paketdaten, die im virtuellen Computer ein- und ausgehen. Erweiterte Filteroptionen und präzise Steuerelemente ermöglichen beispielsweise das Festlegen von Zeit- und Größeneinschränkungen und bieten damit viel Flexibilität. Die Paketdaten können in einem Blobspeicher oder auf dem lokalen Datenträger im CAP-Format gespeichert werden.
 - [IP-Datenflussüberprüfung](/azure/network-watcher/network-watcher-ip-flow-verify-overview): Überprüft basierend auf 5-Tupel-Paketparametern für Datenflussinformationen (IP-Zieladresse, IP-Quelladresse, Zielport, Quellport und Protokoll), ob ein Paket zugelassen oder abgelehnt wird. Wenn eine Sicherheitsgruppe ein Paket ablehnt, werden die Regel und die Gruppe zurückgegeben, die das Paket abgelehnt haben.
-- [Nächster Hop:](/azure/network-watcher/network-watcher-next-hop-overview) Ermittelt den nächsten Hop für Pakete, die im Azure-Netzwerkfabric weitergeleitet werden, sodass Sie eine Diagnose zur Ermittlung von falsch konfigurierten benutzerdefinierten Routen durchführen können.
-- [Sicherheitsgruppenansicht:](/azure/network-watcher/network-watcher-security-group-view-overview) Ruft die geltenden und angewendeten Sicherheitsregeln ab, die auf einen virtuellen Computer angewendet werden.
+- [Nächster Hop](/azure/network-watcher/network-watcher-next-hop-overview): Ermittelt den nächsten Hop für Pakete, die im Azure-Netzwerkfabric weitergeleitet werden, sodass Sie eine Diagnose zur Ermittlung von falsch konfigurierten benutzerdefinierten Routen durchführen können.
+- [Sicherheitsgruppenansicht](/azure/network-watcher/network-watcher-security-group-view-overview): Ruft die geltenden und angewendeten Sicherheitsregeln ab, die auf einen virtuellen Computer angewendet werden.
 - [Datenflussprotokolle für Netzwerksicherheitsgruppen](/azure/network-watcher/network-watcher-nsg-flow-logging-overview): Ermöglichen die Erfassung von Protokollen zum Datenverkehr, der von den Sicherheitsregeln in der Gruppe zugelassen oder abgelehnt wird. Der Datenfluss wird durch 5-Tupel-Informationen definiert: IP-Quelladresse, IP-Zieladresse, Quellport, Zielport und Protokoll.
-- [Gateway des virtuellen Netzwerks und Problembehandlung für Verbindungen:](/azure/network-watcher/network-watcher-troubleshoot-manage-rest) Bietet die Möglichkeit zur Problembehandlung bei virtuellen Netzwerkgateways und -verbindungen.
-- [Grenzwerte für Netzwerkabonnements:](/azure/network-watcher/network-watcher-monitoring-overview) Ermöglicht die Anzeige der Verwendung von Netzwerkressourcen mit bestimmten Grenzwerten.
+- [Problembehandlung für virtuelle Netzwerkgateways und -verbindungen](/azure/network-watcher/network-watcher-troubleshoot-manage-rest): Ermöglicht die Behebung von Problemen, die bei virtuellen Netzwerkgateways und -verbindungen auftreten können.
+- [Grenzwerte für Netzwerkabonnements](/azure/network-watcher/network-watcher-monitoring-overview): Ermöglicht die Anzeige der Verwendung von Netzwerkressourcen mit bestimmten Grenzwerten.
 - [Diagnoseprotokolle](/azure/network-watcher/network-watcher-monitoring-overview): Stellt einen zentralen Bereich für das Aktivieren oder Deaktivieren von Diagnoseprotokollen für Netzwerkressourcen in einer Ressourcengruppe bereit.
 
 Weitere Informationen finden Sie unter [Konfigurieren von Network Watcher](/azure/network-watcher/network-watcher-create).

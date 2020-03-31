@@ -12,11 +12,11 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
 ms.openlocfilehash: fc328c34c1543a75fdc885087d44b28e24c0850a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818245"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232454"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>Tarif „Unternehmenskritisch“ – Azure SQL-Datenbank
 
@@ -61,5 +61,5 @@ Die wichtigsten Gründe dafür, dass Sie die Dienstebene „Unternehmenskritisch
 
 - Sehen Sie sich die Ressourcenmerkmale (Anzahl von Kernen, E/A, Arbeitsspeicher) der Ebene „Unternehmenskritisch“ für eine [verwaltete Instanz](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), für eine Einzeldatenbank im [V-Kern-Modell](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4) bzw. [DTU-Modell](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier) oder für einen Pool für elastische Datenbanken im [V-Kern-Modell](sql-database-vcore-resource-limits-elastic-pools.md#business-critical---provisioned-compute---gen4) und [DTU-Modell](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits) an.
 - Erfahren Sie mehr über die Tarife [Universell](sql-database-service-tier-general-purpose.md) und [Hyperscale](sql-database-service-tier-hyperscale.md).
-- Erfahren Sie mehr über [Service Fabric](../service-fabric/service-fabric-overview.md).
+- Informationen zu [Service Fabric](../service-fabric/service-fabric-overview.md)
 - Weitere Optionen zu Hochverfügbarkeit und Notfallwiederherstellung finden Sie unter [Geschäftskontinuität](sql-database-business-continuity.md).

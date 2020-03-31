@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: f355da7cd9c035b4ed0845bbd374a93bfb4a7350
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73904539"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-java"></a>Dienst-zu-Dienst-Authentifizierung bei Azure Data Lake Storage Gen1 mithilfe von Java
@@ -81,4 +81,4 @@ Das Data Lake Storage Gen1 SDK ermöglicht die komfortable Verwaltung der Sicher
 
 In diesem Artikel haben Sie erfahren, wie Sie die Authentifizierung von Endbenutzern verwenden, um sich mithilfe des Java SDK bei Data Lake Storage Gen1 zu authentifizieren. In den folgenden Artikeln wird erörtert, wie Sie das Java SDK mit Data Lake Storage Gen1 verwenden.
 
-* [Datenvorgänge in Data Lake Storage Gen1 mit dem Java SDK](data-lake-store-get-started-java-sdk.md)
+* [Dateisystemvorgänge in Azure Data Lake Storage Gen1 mit dem Java SDK](data-lake-store-get-started-java-sdk.md)

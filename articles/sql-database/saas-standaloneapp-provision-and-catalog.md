@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/24/2018
 ms.openlocfilehash: 02682a18f14e7ecbf5b42783ab84a1b55a4bb77b
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74133130"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Bereitstellen und Katalogisieren neuer Mandanten mithilfe des SaaS-Musters für eine Anwendung pro Mandant
@@ -26,7 +26,7 @@ Dieser Artikel setzt sich aus zwei Hauptteilen zusammen:
 * Tutorial zur Behandlung des PowerShell-Beispielcodes für die Durchführung der Bereitstellung und Katalogisierung
     * Im Tutorial wird die SaaS-Beispielanwendung Wingtip Tickets verwendet, die an das Muster für eine eigenständige Anwendung pro Mandant angepasst ist.
 
-## <a name="standalone-application-per-tenant-pattern"></a>Muster für eine eigenständige Anwendung pro Mandant
+## <a name="standalone-application-per-tenant-pattern"></a>Muster mit einer eigenständigen Anwendung pro Mandant
 
 Das Muster für eine eigenständige Anwendung pro Mandant ist eines von mehreren Mustern für mehrinstanzenfähige SaaS-Anwendungen.  Bei diesem Muster wird für jeden Mandanten eine eigenständige Anwendung bereitgestellt. Die Anwendung besteht aus Komponenten auf Anwendungsebene und einer SQL-Datenbank.  Jede Mandantenanwendung kann im Abonnement des Anbieters bereitgestellt werden.  Alternativ bietet Azure ein [Programm für verwaltete Anwendungen](https://docs.microsoft.com/azure/managed-applications/overview), in dem eine Anwendung im Abonnement eines Mandanten bereitgestellt und vom Anbieter im Auftrag des Mandanten verwaltet werden kann.
 
@@ -55,7 +55,7 @@ EDCL-Funktionen können aus Anwendungen oder PowerShell-Skripts aufgerufen werde
 
 Jeder Mandant erfordert eine neue Azure-Ressourcengruppe, die erstellt werden muss, bevor Ressourcen darin bereitgestellt werden können. Sobald die Ressourcengruppe vorhanden ist, kann eine Azure Resource Manager-Vorlage zum Bereitstellen der Anwendungskomponenten und der Datenbank verwendet und dann die Datenbankverbindung konfiguriert werden. Zum Initialisieren des Datenbankschemas kann die Vorlage eine BACPAC-Datei importieren.  Alternativ kann die Datenbank als eine Kopie einer Vorlagendatenbank erstellt werden.  Die Datenbank wird dann mit anfänglichen Daten zu Veranstaltungsorten weiter aktualisiert und im Katalog registriert.
 
-## <a name="tutorial"></a>Tutorial
+## <a name="tutorial"></a>Lernprogramm
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -71,7 +71,7 @@ Am Ende dieses Tutorials verfügen Sie über eine Reihe eigenständiger Mandante
 
 Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
-* Azure PowerShell ist installiert. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Azure PowerShell wurde installiert. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 * Die drei Beispielmandantenanwendungen sind bereitgestellt. Informationen zum Bereitstellen dieser Anwendungen in weniger als fünf Minuten finden Sie unter [Bereitstellen und Untersuchen des Musters der eigenständigen SaaS-Anwendung Wingtip Tickets](saas-standaloneapp-get-started-deploy.md).
 
 ## <a name="provision-the-catalog"></a>Bereitstellen des Katalogs

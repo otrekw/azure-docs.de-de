@@ -10,17 +10,17 @@ ms.custom: mvc
 ms.date: 03/18/2019
 ms.author: troyhop
 ms.openlocfilehash: 4401d4b93a27e76554368ce72d256b38de61df4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "61449022"
 ---
 # <a name="create-an-advanced-device-model"></a>Erstellen eines erweiterten Gerätemodells
 
 In dieser Schrittanleitung werden die JSON- und JavaScript-Dateien beschrieben, die ein benutzerdefiniertes Gerätemodell definieren. Der Artikel enthält einige Beispieldateien für die Gerätemodelldefinition und veranschaulicht, wie sie in Ihre Instanz der Gerätesimulation hochgeladen werden. Sie können erweiterte Gerätemodelle erstellen, um realistischere Verhaltensweisen der Geräte für Ihre Tests zu simulieren.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -34,7 +34,7 @@ Um die Gerätesimulation in Ihrem Browser auszuführen, navigieren Sie zunächst
 
 Sie werden unter Umständen aufgefordert, sich mit den Anmeldeinformationen Ihres Azure-Abonnements anzumelden.
 
-Klicken Sie anschließend auf der Kachel für die Gerätesimulation, die Sie im Rahmen der [Schnellstartanleitung zum Bereitstellen und Ausführen einer IoT-Gerätesimulation in Azure](quickstart-device-simulation-deploy.md) bereitgestellt haben, auf **Starten**.
+Klicken Sie anschließend auf der Kachel für die Gerätesimulation, die Sie im Rahmen der **Schnellstartanleitung zum Bereitstellen und Ausführen einer IoT-Gerätesimulation in Azure** bereitgestellt haben, auf [Starten](quickstart-device-simulation-deploy.md).
 
 ## <a name="device-models"></a>Gerätemodelle
 
@@ -56,7 +56,7 @@ Zu einem typischen Gerätemodell gehört Folgendes:
 Jede Gerätedefinitionsdatei enthält die Details eines simulierten Gerätemodells, einschließlich der folgenden Informationen:
 
 * Name des Gerätemodells: Zeichenfolge
-* Protokoll: AMQP | MQTT | HTTP.
+* Protokoll: AMQP, MQTT, HTTP
 * Der Anfangszustand des Geräts
 * Wie oft der Gerätezustand aktualisiert werden soll
 * Welche JavaScript-Datei zum Aktualisieren des Gerätezustands verwendet werden soll
@@ -165,7 +165,7 @@ Die im Schema aufgeführten Felder können den folgenden Typen entsprechen:
 * Boolean
 * Integer
 * Double
-* DateTime
+* Datetime
 
 ### <a name="supported-methods"></a>Unterstützte Methoden
 
@@ -504,7 +504,7 @@ Klicken Sie rechts oben auf der Seite auf **+ Add Device Models** (+ Gerätemode
 
 Klicken Sie auf **Advanced** (Erweitert), um die Registerkarte für erweiterte Gerätemodelle zu öffnen:
 
-![Registerkarte „Advanced“ (Erweitert)](media/iot-accelerators-device-simulation-advanced-device/advancedtab.png)
+![Erweitert (Registerkarte)](media/iot-accelerators-device-simulation-advanced-device/advancedtab.png)
 
 Klicken Sie auf **Browse** (Durchsuchen), und wählen Sie die erstellten JSON- und JavaScript-Dateien aus. Sie müssen alle drei Dateien auswählen. Wenn eine Datei fehlt, schlägt die Überprüfung fehl:
 

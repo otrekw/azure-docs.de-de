@@ -9,10 +9,10 @@ ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 11/22/2017
 ms.openlocfilehash: cb3ddf0c4147fa982e8ab0f9d440292d12803d35
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71309706"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>Entwickeln von U-SQL mit Python, R und C# für Azure Data Lake Analytics in Visual Studio Code
@@ -58,7 +58,7 @@ Registrieren Sie Assemblys für Python- und R-Erweiterungen für Ihr ADL-Konto.
         USING Outputters.Csv();
     ```
     
-3. Klicken Sie mit der rechten Maustaste auf eine Skriptdatei, und wählen Sie Folgendes aus: **ADL: Python-CodeBehind-Datei generieren**. 
+3. Klicken Sie mit der rechten Maustaste auf eine Skriptdatei, und klicken Sie dann auf **ADL: Generate Python Code Behind File** (ADL: Python-CodeBehind-Datei generieren). 
 4. Die Datei **xxx.usql.py** wird in Ihrem Arbeitsordner erstellt. Schreiben Sie Ihren Code in die Python-Datei. Im Anschluss sehen Sie ein Codebeispiel.
 
     ```Python
@@ -115,7 +115,7 @@ Registrieren Sie Assemblys für Python- und R-Erweiterungen für Ihr ADL-Konto.
     TO @OutputFilePredictions
     USING Outputters.Tsv();
     ```
-3. Klicken Sie mit der rechten Maustaste auf eine **USQL**-Datei, und wählen Sie Folgendes aus: **ADL: R-CodeBehind-Datei generieren**. 
+3. Klicken Sie mit der rechten Maustaste in die **USQL**-Datei, und klicken Sie dann auf **ADL: Generate R Code Behind File** (ADL: R-CodeBehind-Datei generieren). 
 4. Die Datei **xxx.usql.r** wird in Ihrem Arbeitsordner erstellt. Schreiben Sie Ihren Code in die R-Datei. Im Anschluss sehen Sie ein Codebeispiel.
 
     ```R
@@ -125,7 +125,7 @@ Registrieren Sie Assemblys für Python- und R-Erweiterungen für Ihr ADL-Konto.
 5. Klicken Sie mit der rechten Maustaste in die **USQL**-Datei. Sie können auf **Compile Script** (Skript kompilieren) oder **Auftrag übermitteln** klicken, um den Auftrag auszuführen.
 
 ## <a name="develop-c-file"></a>Entwickeln einer C#-Datei
-Eine CodeBehind-Datei ist eine C#-Datei, die einem U-SQL-Skript zugeordnet ist. Sie können ein Skript speziell für UDO, UDA, UDT und UDF in der CodeBehind-Datei definieren. UDO, UDA, UDT und UDF können direkt im Skript verwendet werden, ohne die Assembly zuvor zu registrieren. Die CodeBehind-Datei wird im gleichen Ordner wie die U-SQL-Skriptdatei für das Peering gespeichert. Wenn das Skript den Namen „xxx.usql“ erhält, heißt die CodeBehind-Datei „xxx.usql.cs“. Durch manuelles Löschen der CodeBehind-Datei wird das CodeBehind-Feature für das zugehörige U-SQL-Skript deaktiviert. Weitere Informationen zum Schreiben von benutzerdefiniertem Code für ein U-SQL-Skript finden Sie unter [Writing and Using Custom Code in U-SQL: User-Defined Functions]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/) (Schreiben und Verwenden von benutzerdefiniertem Code in U-SQL: benutzerdefinierte Funktionen).
+Eine CodeBehind-Datei ist eine C#-Datei, die einem U-SQL-Skript zugeordnet ist. Sie können ein Skript speziell für UDO, UDA, UDT und UDF in der CodeBehind-Datei definieren. UDO, UDA, UDT und UDF können direkt im Skript verwendet werden, ohne die Assembly zuvor zu registrieren. Die CodeBehind-Datei wird im gleichen Ordner wie die U-SQL-Skriptdatei für das Peering gespeichert. Wenn das Skript den Namen „xxx.usql“ erhält, heißt die CodeBehind-Datei „xxx.usql.cs“. Durch manuelles Löschen der CodeBehind-Datei wird das CodeBehind-Feature für das zugehörige U-SQL-Skript deaktiviert. Weitere Informationen zum Schreiben von Kundencode für ein U-SQL-Skript finden Sie unter [Writing and Using Custom Code in U-SQL: User-Defined Functions]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/) (Schreiben und Verwenden von benutzerdefiniertem Code in U-SQL: benutzerdefinierte Funktionen).
 
 1. Klicken Sie in Ihrem Arbeitsbereich auf **Neue Datei**.
 2. Schreiben Sie Ihren Code in die U-SQL-Datei. Im Anschluss sehen Sie ein Codebeispiel.
@@ -157,7 +157,7 @@ Eine CodeBehind-Datei ist eine C#-Datei, die einem U-SQL-Skript zugeordnet ist. 
         TO @"/output/SearchLogtest.txt" 
         USING Outputters.Tsv();
     ```
-3. Klicken Sie mit der rechten Maustaste auf eine **USQL**-Datei, und wählen Sie Folgendes aus: **ADL: CS-CodeBehind-Datei generieren**. 
+3. Klicken Sie mit der rechten Maustaste in die **USQL**-Datei, und klicken Sie dann auf **ADL: Generate CS Code Behind File** (ADL: CS-CodeBehind-Datei generieren). 
 4. Die Datei **xxx.usql.cs** wird in Ihrem Arbeitsordner erstellt. Schreiben Sie Ihren Code in die CS-Datei. Im Anschluss sehen Sie ein Codebeispiel.
 
     ```CS

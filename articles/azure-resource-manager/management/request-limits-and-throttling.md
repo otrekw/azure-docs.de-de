@@ -2,14 +2,14 @@
 title: Anforderungsgrenzwerte und -drosselung
 description: Beschreibt, wie eine Begrenzung von Azure Resource Manager-Anforderungen genutzt wird, wenn Abonnementgrenzwerte erreicht wurden.
 ms.topic: conceptual
-ms.date: 10/26/2019
+ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: eabc621ce02d4f30c5efb5bcef2635ea0e8dbcb2
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 4d387749261747eb9ea1ea26629ade4fe8729856
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944057"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239364"
 ---
 # <a name="throttling-resource-manager-requests"></a>Begrenzen von Resource Manager-Anforderungen
 
@@ -65,10 +65,6 @@ Verwenden Sie zum Überprüfen von VM-Instanzen innerhalb einer VM-Skalierungsgr
 ### <a name="azure-resource-graph-throttling"></a>Azure Resource Graph-Drosselung
 
 [Azure Resource Graph](../../governance/resource-graph/overview.md) begrenzt die Anzahl der Anforderungen nach seinen Vorgängen. Die Schritte in diesem Artikel zum Bestimmen der verbleibenden Anforderungen und zum Reagieren bei Erreichen des Grenzwerts gelten auch für Resource Graph. Resource Graph legt jedoch einen eigenen Grenzwert und eine eigene Rücksetzrate fest. Weitere Informationen finden Sie unter [Resource Graph-Drosselungsheader](../../governance/resource-graph/concepts/guidance-for-throttled-requests.md#understand-throttling-headers).
-
-## <a name="request-increase"></a>Anfordern einer Erhöhung
-
-Manchmal können Drosselungsgrenzwerte erhöht werden. Wenn Sie erfahren möchten, ob die Drosselungsgrenzwerte für Ihr Szenario erhöht werden können, erstellen Sie eine Supportanfrage. Die Details Ihres Aufrufmusters werden ausgewertet.
 
 ## <a name="error-code"></a>Fehlercode
 

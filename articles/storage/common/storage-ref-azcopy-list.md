@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: f02c1afadf18a7d3170eb178696487464e4a0bd3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74034097"
 ---
 # <a name="azcopy-list"></a>azcopy list
@@ -40,7 +40,7 @@ azcopy list [containerURL] [flags]
 azcopy list [containerURL]
 ```
 
-## <a name="options"></a>Optionen
+## <a name="options"></a>Tastatur
 
 |Option|BESCHREIBUNG|
 |--|--|

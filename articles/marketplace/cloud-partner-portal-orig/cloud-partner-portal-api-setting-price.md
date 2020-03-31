@@ -1,19 +1,18 @@
 ---
 title: Preise für VM-Angebote | Azure Marketplace
 description: Erläutert die drei Methoden zum Festlegen der Preise für VM-Angebote.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: c7ea5afeb46c30837c2ae53e871bb64f5d8cf292
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b96dcfa6a140d5c16208fd8183003a7462b1aa56
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827334"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280438"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>Preise für VM-Angebote
 ==================================
@@ -123,7 +122,7 @@ Die folgende Tabelle zeigt die verschiedenen Regionen, die Sie für angepasste K
 | BE         | Belgien              | EUR               |
 | BR         | Brasilien               | USD               |
 | BG         | Bulgarien             | BGN               |
-| CA         | Kanada               | CAD               |
+| CA         | Canada               | CAD               |
 | CL         | Chile                | CLP               |
 | CO         | Kolumbien             | COP               |
 | CR         | Costa Rica           | CRC               |
@@ -147,7 +146,7 @@ Die folgende Tabelle zeigt die verschiedenen Regionen, die Sie für angepasste K
 | IN         | Indien                | INR               |
 | id         | Indonesien            | IDR               |
 | IE         | Irland              | EUR               |
-| IL         | Israel               | ILS               |
+| BY         | Israel               | ILS               |
 | IT         | Italien                | EUR               |
 | JP         | Japan                | JPY               |
 | JO         | Jordan               | JOD               |
@@ -164,11 +163,11 @@ Die folgende Tabelle zeigt die verschiedenen Regionen, die Sie für angepasste K
 | MT         | Malta                | EUR               |
 | MX         | Mexiko               | MXN               |
 | ME         | Montenegro           | EUR               |
-| MA         | Marokko              | MAD               |
+| NI         | Marokko              | MAD               |
 | NL         | Niederlande          | EUR               |
 | NZ         | Neuseeland          | NZD               |
 | NG         | Nigeria              | NGN               |
-| NO         | Norwegen               | NOK               |
+| Nein         | Norwegen               | NOK               |
 | OM         | Oman                 | OMR               |
 | PK         | Pakistan             | PKR               |
 | PA         | Panama               | USD               |
@@ -198,7 +197,7 @@ Die folgende Tabelle zeigt die verschiedenen Regionen, die Sie für angepasste K
 | TR         | Türkei               | TRY               |
 | UA         | Ukraine              | UAH               |
 | AE         | Vereinigte Arabische Emirate | EUR               |
-| GB         | Vereinigtes Königreich       | GBP               |
+| GB         | United Kingdom       | GBP               |
 | US         | USA        | USD               |
 | UY         | Uruguay              | UYU               |
 | VE         | Venezuela            | USD               |

@@ -1,20 +1,18 @@
 ---
 title: Vorbereiten von AppSource-Paketen | Azure Marketplace
 description: Erläuterung zum Vorbereiten und Erstellen von AppSource-Paketen
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricardo.Villalobos
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 2c6b78e62afb43562910c872d31e2c9f564040da
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 76f8cbd6cb16b585a7dbda7b2ffa5eeeeb1b68d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73806094"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280608"
 ---
 # <a name="appsource-package-preparation"></a>Vorbereiten von AppSource-Paketen
 
@@ -35,7 +33,7 @@ Das Paket für Package Deployer ist ein Teil des AppSource-Pakets.
 Befolgen Sie zum Erstellen eines Pakets für Package Deployer die folgenden Anweisungen: [https://msdn.microsoft.com/library/dn688182.aspx](https://msdn.microsoft.com/library/dn688182.aspx). Nach Abschluss des Vorgangs besteht Ihr Paket aus den folgenden Ressourcen:
 
 1. Paketordner: Enthält alle Lösungen, Konfigurationsdaten, Flatfiles und Inhalte für das Paket. _Hinweis: Im folgenden Beispiel wird davon ausgegangen, dass der Paketordner „PkgFolder“ heißt._
-2. DLL-Datei: Die Assembly enthält den benutzerdefinierten Code für Ihr Paket. _Hinweis: Im folgenden Beispiel wird davon ausgegangen, dass diese Datei „MicrosoftSample.dll“ heißt._
+2. DLL-Datei: Die Assembly enthält den benutzerdefinierten Code für Ihre Paket. _Hinweis: Im folgenden Beispiel wird davon ausgegangen, dass diese Datei „MicrosoftSample.dll“ heißt._
 
 Sie müssen nun eine Datei namens **Content_Types.xml** erstellen. In dieser Datei sind alle Ressourcenerweiterungen aufgeführt, die Teil Ihres Pakets sind. Hier sehen Sie Beispielcode für die Datei:
 
@@ -112,10 +110,10 @@ Hier sehen Sie Beispielcode für „input.xml“. Definitionen finden Sie in der
 |SolutionAnchorName |Der Name der ZIP-Datei der Lösung in Package Deployer, der als Anzeigename und Beschreibung der Lösungsressourcen verwendet wird|
 | StartDate| Das Datum, an dem das Lösungspaket zur Verfügung gestellt wird. Format: MM/TT/JJJJ|
 |EndDate|Das Datum, ab dem das Lösungspaket nicht mehr verfügbar ist. Format: MM/TT/JJJJ |
-|SupportedCountries |Eine durch Trennzeichen getrennte Liste der Länder/Regionen, für die das Paket zur Verfügung gestellt werden soll. Eine Liste aller aktuellen Ländercodes erhalten Sie von den Onlinediensten. Zum Zeitpunkt der Erstellung dieses Artikels lautete die Liste: AE,AL,AM,AO,AR,AT,AU,AZ,BA,BB,BD,BE,BG,BH,BM,BN,BO,BR,BY,CA,CH,CI,CL,CM,CO,CR,CV,CW,CY,CZ,DE,DK,DO,DZ,EC,EE,EG,ES,FI,FR,GB,GE,GH,GR,GT,HK,HN,HR,HU,ID,IE,IL,IN,IQ,IS,IT,JM,JO,JP,KE,KG,KN,KR,KW,KY,KZ,LB,LK,LT,LU,LV,LY,MA,MC,MD,ME,MK,MN,MO,MT,MU,MX,MY,NG,NI,NL,NO,NZ,OM,PA,PE,PH,PK,PL,PR,PS,PT,PY,QA,RO,RS,RU,RW,SA,SE,SG,SI,SK,SN,SV,TH,TM,TN,TR,TT,TW,UA,US,UY,UZ,VE,VI,VN,ZA,ZW |
+|SupportedCountries |Eine durch Trennzeichen getrennte Liste der Länder/Regionen, für die das Paket zur Verfügung gestellt werden soll. Eine Liste aller aktuellen Ländercodes erhalten Sie von den Onlinediensten. Zum Zeitpunkt der Erstellung dieses Artikels lautete die Liste wie folgt: AE,AL,AM,AO,AR,AT,AU,AZ,BA,BB,BD,BE,BG,BH,BM,BN,BO,BR,BY,CA,CH,CI,CL,CM,CO,CR,CV,CW,CY,CZ,DE,DK,DO,DZ,EC,EE,EG,ES,FI,FR,GB,GE,GH,GR,GT,HK,HN,HR,HU,ID,IE,IL,IN,IQ,IS,IT,JM,JO,JP,KE,KG,KN,KR,KW,KY,KZ,LB,LK,LT,LU,LV,LY,MA,MC,MD,ME,MK,MN,MO,MT,MU,MX,MY,NG,NI,NL,NO,NZ,OM,PA,PE,PH,PK,PL,PR,PS,PT,PY,QA,RO,RS,RU,RW,SA,SE,SG,SI,SK,SN,SV,TH,TM,TN,TR,TT,TW,UA,US,UY,UZ,VE,VI,VN,ZA,ZW |
 |LearnMoreLink | URL zur Seite „Weitere Informationen“ für dieses Paket |
 |Locales|Eine Instanz dieses Knotens für jede UX-Sprache, die in der bevorzugten Lösungs-UX unterstützt werden soll. Dieser Knoten enthält untergeordnete Elemente, die das Gebietsschema, das Logo und Bedingungen für jede Sprache beschreiben.|
-|Locales: PackageLocale.Code|LCID der Sprache für diesen Knoten. Beispiel: Englisch (USA) ist 1033|
+|Locales: PackageLocale.Code|LCID der Sprache für diesen Knoten. Beispiel: Englisch (USA) ist 1033.|
 |Locales: PackageLocale.IsDefault|Gibt an, dass dies die Standardsprache ist. Auf diese Sprache wird ausgewichen, wenn die vom Kunden ausgewählte UX-Sprache nicht verfügbar ist.|
 |Locales: Logo|Das Logo, das Sie für dieses Paket verwenden möchten. Die Größe für das Symbol ist 32x32. Zulässige Formate: PNG und JPG|
 |Locales:Terms: PackageTerm.File|Der Dateiname des HTML-Dokuments, das Ihre Lizenzbedingungen enthält|

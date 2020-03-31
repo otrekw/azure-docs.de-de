@@ -14,10 +14,10 @@ ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: e0ac09a68bda539fe7abd05fce1739d1a58a3c99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62127343"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>Orchestrieren der Implementierung von Azure DevTest Labs
@@ -29,10 +29,10 @@ Dieser Artikel stellt einen empfohlenen Ansatz für die schnelle Bereitstellung 
 In diesem Artikel wird davon ausgegangen, dass die folgenden Elemente verfügbar sind, bevor mit einer DevTest Labs-Pilotimplementierung begonnen wird:
 
 - **Azure-Abonnement**: Das Pilotteam hat Zugriff auf die Bereitstellung von Ressourcen in einem Azure-Abonnement. Wenn sich die Workloads nur auf Entwicklung und Test beziehen, empfiehlt sich das Enterprise DevTest-Angebot, da es zusätzliche verfügbare Images und niedrigere Sätze für virtuelle Windows-Computer bietet.
-- **Lokaler Zugriff**: Falls erforderlich, wurde der lokale Zugriff bereits konfiguriert. Der lokale Zugriff kann mithilfe einer Site-to-Site-VPN-Verbindung oder über ExpressRoute realisiert werden. Die Einrichtung von Konnektivität mithilfe von ExpressRoute nimmt normalerweise viele Wochen in Anspruch – die ExpressRoute sollte bereits etabliert sein, bevor mit dem Projekt begonnen wird.
-- **Pilotteams**: Die ersten für die Entwicklung zuständigen Projektteams für DevTest Labs wurden benannt, die entsprechenden Entwicklungs- und Testaktivitäten wurden definiert, und die Anforderungen/Ziele für die Teams wurden festgelegt.
+- **Lokaler Zugriff**: Falls erforderlich, wurde lokaler Zugriff bereits konfiguriert. Der lokale Zugriff kann mithilfe einer Site-to-Site-VPN-Verbindung oder über ExpressRoute realisiert werden. Die Einrichtung von Konnektivität mithilfe von ExpressRoute nimmt normalerweise viele Wochen in Anspruch – die ExpressRoute sollte bereits etabliert sein, bevor mit dem Projekt begonnen wird.
+- **Pilotteams**: Das anfängliche Entwicklungsprojektteam (bzw. mehrere bei Bedarf) für DevTest Labs wurde benannt, geeignete Entwicklungs- und Testaktivitäten wurden definiert und Anforderungen/Ziele für das Team festgelegt.
 
-## <a name="milestone-1-establish-initial-network-topology-and-design"></a>Meilenstein 1: Einrichten der anfänglichen Netzwerktopologie und des ersten Netzwerkentwurfs
+## <a name="milestone-1-establish-initial-network-topology-and-design"></a>Meilenstein 1: Festlegen von anfänglicher Netzwerktopologie und Netzwerkentwurf
 Der erste Schwerpunkt bei der Bereitstellung einer Azure DevTest Labs-Lösung liegt in der Herstellung der geplanten Konnektivität für die virtuellen Computer. Die folgenden Schritte beschreiben die erforderlichen Prozeduren:
 
 1. Definieren der **anfänglichen IP-Adressbereiche**, die dem DevTest Labs-Abonnement in Azure zugewiesen werden. Für diesen Schritt muss die erwartete zukünftige Nutzung in Form der Anzahl der VMs eingeschätzt werden, damit ein für zukünftiges Wachstum ausreichend großer Block bereitgestellt werden kann.

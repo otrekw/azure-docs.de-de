@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.openlocfilehash: 6f4efd9a316b92f17f89cea66a7c81e84ac3cf06
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72991349"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Verwenden von SSH-Tunneling zum Zugriff auf die Apache Ambari-Webbenutzeroberfläche, JobHistory, NameNode, Apache Oozie und andere Benutzeroberflächen
@@ -54,7 +54,7 @@ Wenn Sie für die Clusteranpassung Skriptaktionen verwenden, benötigen Sie für
     >
     > Google Chrome basiert auch auf den Windows-Proxyeinstellungen. Allerdings können Sie Erweiterungen installieren, die SOCKS5 unterstützen. Wir empfehlen [FoxyProxy Standard](https://chrome.google.com/webstore/detail/foxyproxy-standard/gcknhkkoolaabfmlnjonogaaifnjlfnp).
 
-## <a name="usessh"></a>Erstellen von Tunneln mit dem Befehl "ssh"
+## <a name="create-a-tunnel-using-the-ssh-command"></a><a name="usessh"></a>Erstellen von Tunneln mit dem Befehl "ssh"
 
 Verwenden Sie den folgenden Befehl zum Erstellen eines SSH-Tunnels mithilfe des Befehls `ssh` . Ersetzen Sie `sshuser` durch einen SSH-Benutzer für Ihren HDInsight-Cluster und `CLUSTERNAME` durch den Namen des HDInsight-Clusters:
 
@@ -75,7 +75,7 @@ Durch diesen Befehl wird eine Verbindung erstellt, über die der Datenverkehr ü
 
 Nach Abschluss des Befehls wird der an den Port 9876 des lokalen Computers gesendete Datenverkehr an den Hauptknoten des Clusters weitergeleitet.
 
-## <a name="useputty"></a>Erstellen von Tunneln mit PuTTY
+## <a name="create-a-tunnel-using-putty"></a><a name="useputty"></a>Erstellen von Tunneln mit PuTTY
 
 [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty) ist ein SSH-Client für Windows mit grafischer Benutzeroberfläche. Wenn Sie mit PuTTY nicht vertraut sind, konsultieren Sie die [PuTTY-Dokumentation](https://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html). Führen Sie die folgenden Schritte aus, um mithilfe von PuTTY einen SSH-Tunnel zu erstellen:
 
@@ -85,7 +85,7 @@ Nach Abschluss des Befehls wird der an den Port 9876 des lokalen Computers gesen
 
 1. Wenn Sie noch keine gespeicherte Sitzung haben, geben Sie Ihre Verbindungsdaten ein:
 
-    |Eigenschaft |Wert |
+    |Eigenschaft |value |
     |---|---|
     |Hostname (oder IP-Adresse)|Die SSH-Adresse des HDInsight-Clusters. Beispiel: **mycluster-ssh.azurehdinsight.net**.|
     |Port|22|
@@ -99,7 +99,7 @@ Nach Abschluss des Befehls wird der an den Port 9876 des lokalen Computers gesen
 
 1. Geben Sie die folgenden Informationen in das Formular **Options controlling SSH port forwarding** ein:
 
-    |Eigenschaft |Wert |
+    |Eigenschaft |value |
     |---|---|
     |Quellport|Der Port auf dem Client, den Sie weiterleiten möchten. Beispiel: **9876**.|
     |Destination|Die SSH-Adresse des HDInsight-Clusters. Beispiel: **mycluster-ssh.azurehdinsight.net**.|

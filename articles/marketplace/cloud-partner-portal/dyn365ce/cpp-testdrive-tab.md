@@ -1,19 +1,18 @@
 ---
 title: Dynamics 365 for Customer Engagement-Anwendungsangebot – Registerkarte „Testversion“ | Azure Marketplace
 description: 'Veralteter CPP-Artikel, mit dem PC-Artikel verknüpft. Zuvor: „Konfigurieren einer Testversion für ein Dynamics 365 for Customer Engagement-Anwendungsangebot auf dem AppSource Marketplace“'
-services: Azure, Marketplace, AppSource, Cloud Partner Portal, Dynamics 365 for Customer Engagement
-author: ChJenk
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: v-chjen
-ms.openlocfilehash: 0e201f6d54d46fab7120239b26a58e1d2b92020e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: ef464ad288127ad0440d4a80a2a3745887dea973
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824649"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286607"
 ---
 # <a name="dynamics-365-for-customer-engagement-application-test-drive-tab"></a>Dynamics 365 for Customer Engagement-Angebot – Registerkarte „Testversion“
 

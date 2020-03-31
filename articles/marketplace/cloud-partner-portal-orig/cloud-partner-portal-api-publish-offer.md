@@ -1,19 +1,18 @@
 ---
 title: Veröffentlichen eines Angebots | Azure Marketplace
 description: API zum Veröffentlichen des angegebenen Angebots.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: b7ad8086c417cf1f14d9116fa4abcb0a88030922
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 4163bf5727c327d559b81db42f99684aa0cc8d5b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819654"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280523"
 ---
 <a name="publish-an-offer"></a>Veröffentlichen eines Angebots
 ================
@@ -27,8 +26,8 @@ Startet den Veröffentlichungsprozess für das angegebene Angebot. Bei diesem Au
 
 |  **Name**      |    **Beschreibung**                               |  **Datentyp** |
 |  ------------- |  ------------------------------------            |   -----------  |
-|  publisherId   | Herausgeber-ID, z.B. `contoso`      |   Zeichenfolge       |
-|  offerId       | Angebots-ID                                 |   Zeichenfolge       |
+|  publisherId   | Herausgeber-ID, z.B. `contoso`      |   String       |
+|  offerId       | Angebots-ID                                 |   String       |
 |  api-version   | Aktuelle Version der API                        |   Date         |
 |  |  |
 
@@ -65,7 +64,7 @@ Startet den Veröffentlichungsprozess für das angegebene Angebot. Bei diesem Au
 |  |  |
 
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
    `Operation-Location: /api/operations/contoso$56615b67-2185-49fe-80d2-c4ddf77bb2e8$2$preview?api-version=2017-10-31`
 

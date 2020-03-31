@@ -3,7 +3,7 @@ title: Erweiterte Ereignisse
 description: Beschreibt erweiterte Ereignisse (XEvents) in Azure SQL-Datenbank und wie sich Ereignissitzungen im Vergleich zu Microsoft SQL Server geringfügig unterscheiden.
 services: sql-database
 ms.service: sql-database
-ms.subservice: monitor
+ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
-ms.openlocfilehash: cab5b5baf318eb9eadc398ce525e0de716d0df2d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cb4eb4474ad074a3e69dc146c97b48d54343595b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822298"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79213960"
 ---
 # <a name="extended-events-in-sql-database"></a>Erweiterte Ereignisse in Azure SQL-Datenbank
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -31,7 +31,7 @@ In diesem Thema wird erläutert, wie sich die Implementierung erweiterter Ereign
 
 Weitere Informationen zu erweiterten Ereignissen für Azure SQL-Datenbank und Microsoft SQL Server finden Sie unter:
 
-- [Schnellstart: Erweiterte Ereignisse in SQL Server](https://msdn.microsoft.com/library/mt733217.aspx)
+- [Schnellstart: Erweiterte Ereignisse in Microsoft SQL Server](https://msdn.microsoft.com/library/mt733217.aspx)
 - [Erweiterte Ereignisse](https://msdn.microsoft.com/library/bb630282.aspx)
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -83,15 +83,15 @@ Das Feature "Erweiterte Ereignisse" wird von mehreren [Katalogsichten](https://m
 
 | Name der<br/>Katalogsicht | BESCHREIBUNG |
 |:--- |:--- |
-| **sys.database_event_session_actions** |Gibt eine Zeile für jede Aktion in jedem Ereignis einer Ereignissitzung zurück. |
+| **sys.database_event_session_actions** |Gibt für jede Aktion jedes Ereignisses einer Ereignissitzung eine Zeile zurück. |
 | **sys.database_event_session_events** |Gibt eine Zeile für jedes Ereignis in einer Ereignissitzung zurück. |
 | **sys.database_event_session_fields** |Gibt eine Zeile für jede anpassbare Spalte zurück, die für Ereignisse und Ziele explizit festgelegt wurde. |
-| **sys.database_event_session_targets** |Gibt eine Zeile für jedes Ereignisziel einer Ereignissitzung zurück. |
+| **sys.database_event_session_targets** |Gibt für eine Ereignissitzung eine Zeile für jedes Ereignisziel zurück. |
 | **sys.database_event_sessions** |Gibt eine Zeile für jede Ereignissitzung in der SQL-Datenbank zurück. |
 
 In Microsoft SQL Server haben ähnliche Katalogsichten Namen, die *.server\_* anstelle von *.database\_* enthalten. Das Namensmuster entspricht **sys.server_event_%** .
 
-## <a name="new-dynamic-management-views-dmvshttpsmsdnmicrosoftcomlibraryms188754aspx"></a>Neue dynamische Verwaltungssichten [(DMVs)](https://msdn.microsoft.com/library/ms188754.aspx)
+## <a name="new-dynamic-management-views-dmvs"></a>Neue dynamische Verwaltungssichten [(DMVs)](https://msdn.microsoft.com/library/ms188754.aspx)
 
 Azure SQL-Datenbank hat [dynamische Verwaltungsansichten (DMVs)](https://msdn.microsoft.com/library/bb677293.aspx) , die erweiterte Ereignisse unterstützen. DMVs informieren Sie über *aktive* Ereignissitzungen.
 
@@ -99,7 +99,7 @@ Azure SQL-Datenbank hat [dynamische Verwaltungsansichten (DMVs)](https://msdn.mi
 |:--- |:--- |
 | **sys.dm_xe_database_session_event_actions** |Gibt Informationen zu Ereignissitzungsaktionen zurück. |
 | **sys.dm_xe_database_session_events** |Gibt Informationen zu Sitzungsereignissen zurück. |
-| **sys.dm_xe_database_session_object_columns** |Zeigt die Konfigurationswerte für Objekte, die an eine Sitzung gebunden sind. |
+| **sys.dm_xe_database_session_object_columns** |Zeigt die Konfigurationswerte für Objekte an, die an eine Sitzung gebunden sind. |
 | **sys.dm_xe_database_session_targets** |Gibt Informationen zu Sitzungszielen zurück. |
 | **sys.dm_xe_database_sessions** |Gibt eine Zeile für jede Ereignissitzung zurück, die auf die aktuelle Datenbank begrenzt ist. |
 
@@ -154,7 +154,7 @@ Es folgen Ziele, die Ergebnisse aus Ihren Ereignissitzungen für SQL-Datenbank e
 
 Die [ETW](https://msdn.microsoft.com/library/ms751538.aspx) -API (Event Tracing for Windows) ist für erweiterte Ereignisse in SQL-Datenbank nicht verfügbar.
 
-## <a name="restrictions"></a>Einschränkungen
+## <a name="restrictions"></a>Beschränkungen
 
 Es gibt einige sicherheitsbezogene Unterschiede, die für die Cloudumgebung von SQL-Datenbank angemessen sind:
 

@@ -9,11 +9,11 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7f2c7a6f9c1146627f81dc20386c59a91724b245
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76273839"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228102"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Bereitstellen von StorSimple Virtual Array – Vorbereiten des Azure-Portals
 
@@ -87,9 +87,9 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr Portal für den StorSimple-Geräte-Manager-Dienst vorzubereiten.
 
-## <a name="step-1-create-a-new-service"></a>Schritt 1: Erstellen eines neuen Diensts
+## <a name="step-1-create-a-new-service"></a>Schritt 1: Erstellen eines neuen Diensts
 
-Mit einer einzelnen Instanz des StorSimple-Geräte-Manager-Diensts können mehrere StorSimple Virtual Arrays verwaltet werden. Führen Sie die folgenden Schritte aus, um eine Instanz des StorSimple-Geräte-Manager-Diensts zu erstellen. Falls Sie einen vorhandenen StorSimple-Geräte-Manager-Dienst zum Verwalten Ihrer virtuellen Arrays verwenden, können Sie diesen Schritt überspringen und mit Folgendem fortfahren: [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](#step-2-get-the-service-registration-key).
+Mit einer einzelnen Instanz des StorSimple-Geräte-Manager-Diensts können mehrere StorSimple Virtual Arrays verwaltet werden. Führen Sie die folgenden Schritte aus, um eine Instanz des StorSimple-Geräte-Manager-Diensts zu erstellen. Falls Sie einen vorhandenen StorSimple-Geräte-Manager-Dienst zum Verwalten Ihrer virtuellen Arrays verwenden, können Sie diesen Schritt überspringen und mit [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](#step-2-get-the-service-registration-key) fortfahren.
 
 [!INCLUDE [storsimple-virtual-array-create-new-service](../../includes/storsimple-virtual-array-create-new-service.md)]
 
@@ -97,7 +97,7 @@ Mit einer einzelnen Instanz des StorSimple-Geräte-Manager-Diensts können mehre
 > Wenn Sie nicht die automatische Erstellung eines Speicherkontos mit Ihrem Dienst aktiviert haben, müssen Sie mindestens ein Speicherkonto erstellen, nachdem Sie einen Dienst erstellt haben.
 > 
 > * Wenn Sie nicht automatisch ein Speicherkonto erstellt haben, finden Sie unter [Konfigurieren eines neuen Speicherkontos für den Dienst](#optional-step-configure-a-new-storage-account-for-the-service) ausführliche Anweisungen.
-> * Wenn Sie die automatische Erstellung eines Speicherkontos aktiviert haben, fahren Sie mit Folgendem fort: [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](#step-2-get-the-service-registration-key).
+> * Wenn Sie die automatische Erstellung eines Speicherkontos aktiviert haben, fahren Sie mit [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](#step-2-get-the-service-registration-key)fort.
 > 
 > 
 

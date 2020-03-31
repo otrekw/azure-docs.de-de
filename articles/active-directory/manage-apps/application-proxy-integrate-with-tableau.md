@@ -14,10 +14,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1aa99e7e71ad78a62c1a9da303b2ecc8347ebeb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65783849"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory-Anwendungsproxy und Tableau 
@@ -60,9 +60,9 @@ Für:
 
 5. Füllen Sie die Pflichtfelder mit Informationen zur neuen App aus. Befolgen Sie diese Anleitung für die folgenden Einstellungen: 
 
-    - **Interne URL:** Diese Anwendung muss über eine interne URL verfügen, die die Tableau-URL selbst ist. Beispiel: `https://adventure-works.tableau.com`. 
+    - **Interne URL**: Diese Anwendung muss über eine interne URL verfügen, die die Tableau-URL selbst ist. Beispiel: `https://adventure-works.tableau.com`. 
 
-    - **Methode für die Vorauthentifizierung:** Azure Active Directory (empfohlen, aber nicht erforderlich) 
+    - **Methode für die Vorauthentifizierung**: Azure Active Directory (empfohlen, aber nicht erforderlich). 
 
 6. Wählen Sie oben auf dem Blatt **Hinzufügen** aus. Ihre Anwendung wird hinzugefügt, das Schnellstartmenü wird geöffnet. 
 

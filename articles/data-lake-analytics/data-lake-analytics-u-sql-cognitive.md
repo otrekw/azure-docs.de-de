@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.openlocfilehash: 406eb1c9153e1ddbdc196cd64378c17cfa986dac
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71672707"
 ---
 # <a name="get-started-with-the-cognitive-capabilities-of-u-sql"></a>Erste Schritte mit den kognitiven Funktionen von U-SQL
@@ -22,14 +22,14 @@ ms.locfileid: "71672707"
 Kognitive Funktionen für U-SQL ermöglichen Entwicklern den Einsatz von Intelligenz in ihren Big Data-Programmen. 
 
 Die folgenden Beispiele für die Verwendung kognitiver Funktionen stehen zur Verfügung:
-* Bildverarbeitung: [Erkennen von Gesichtern](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
-* Bildverarbeitung: [Erkennen von Emotionen](https://github.com/Azure-Samples/usql-cognitive-imaging-emotion-detection-hello-world)
-* Bildverarbeitung: [Erkennen von Objekten (Markierung)](https://github.com/Azure-Samples/usql-cognitive-imaging-object-tagging-hello-world)
+* Bildverarbeitung: [Gesichtserkennung](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
+* Bildverarbeitung: [Gefühlserkennung](https://github.com/Azure-Samples/usql-cognitive-imaging-emotion-detection-hello-world)
+* Bildverarbeitung: [Objekterkennung (Markieren)](https://github.com/Azure-Samples/usql-cognitive-imaging-object-tagging-hello-world)
 * Bildverarbeitung: [OCR (Optical Character Recognition; optische Zeichenerkennung)](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
 * Text: [Schlüsselbegriffserkennung und Standpunktanalyse](https://github.com/Azure-Samples/usql-cognitive-text-hello-world)
 
 ## <a name="registering-cognitive-extensions-in-u-sql"></a>Registrieren kognitiver Erweiterungen in U-SQL
-Führen Sie zunächst die Schritte des folgenden Artikels aus, um kognitive Erweiterungen in U-SQL zu registrieren: [Registrieren kognitiver Erweiterungen in U-SQL](/u-sql/objects-and-extensions/cognitive-capabilities-in#registeringExtensions).
+Führen Sie zunächst die Schritte des folgenden Artikels aus, um kognitive Erweiterungen in U-SQL zu registrieren: [Registering Cognitive Extensions in U-SQL](/u-sql/objects-and-extensions/cognitive-capabilities-in#registeringExtensions) (Registrieren kognitiver Erweiterungen in U-SQL).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Beispiele für U-SQL/Kognitive Beispiele](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)

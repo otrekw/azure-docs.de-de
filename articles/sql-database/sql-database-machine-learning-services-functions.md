@@ -14,15 +14,15 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ms.openlocfilehash: 939798d5d9eb2843d7bbbbe74680342e4ce6ce95
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60702451"
 ---
 # <a name="write-advanced-r-functions-in-azure-sql-database-using-machine-learning-services-preview"></a>Schreiben erweiterter R-Funktionen in Azure SQL-Datenbank mit Machine Learning Services (Vorschauversion)
 
-In diesem Artikel wird beschrieben, wie mathematische R-Funktionen und Hilfsfunktionen in einer gespeicherten SQL-Prozedur eingebettet werden. Erweiterte statistische Funktionen, die in T-SQL kompliziert zu implementieren sind, können in R mit nur einer einzigen Codezeile verwirklicht werden.
+In diesem Artikel wird beschrieben, wie mathematische R-Funktionen und Hilfsfunktionen in einer gespeicherten SQL-Prozedur eingebettet werden. Erweiterte statistische Funktionen, deren Implementierung mit T-SQL kompliziert ist, können in R mit einer einzigen Codezeile durchgeführt werden.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
@@ -38,7 +38,7 @@ In diesem Artikel wird beschrieben, wie mathematische R-Funktionen und Hilfsfunk
 
 Der Einfachheit halber verwenden wir das R-Paket `stats`, das standardmäßig mit Azure SQL-Datenbank installiert und geladen wird, mit Machine Learning Services (Vorschau). Das Paket enthält Hunderte von Funktionen für allgemeine statistische Aufgaben, darunter die `rnorm`-Funktion. Diese Funktion generiert eine angegebene Anzahl von Zufallszahlen mit Normalverteilung, einer angegebenen Standardabweichung und einem Mittelwert.
 
-Der folgende R-Code gibt beispielsweise 100 Zahlen mit dem Mittelwert 50 zurück, für die eine Standardabweichung von 3 gilt.
+Der folgende R-Code gibt beispielsweise 100 Zahlen mit einem Mittelwert von 50 bei einer Standardabweichung von 3 zurück.
 
 ```R
 as.data.frame(rnorm(100, mean = 50, sd = 3));
@@ -57,7 +57,7 @@ WITH RESULT SETS(([Density] FLOAT NOT NULL));
 
 Wie gehen Sie vor, wenn Sie das Erstellen eines anderen Satzes von Zufallszahlen vereinfachen möchten?
 
-Das ist in Kombination mit SQL ganz einfach. Sie definieren eine gespeicherte Prozedur, die die Argumente vom Benutzer abfragt und dann diese Argumente als Variablen an das R-Skript übergibt.
+Das ist in Kombination mit SQL ganz einfach. Sie definieren eine gespeicherte Prozedur, die Argumente vom Benutzer abruft, und übergeben diese Argumente dann als Variablen an das R-Skript.
 
 ```sql
 CREATE PROCEDURE MyRNorm (

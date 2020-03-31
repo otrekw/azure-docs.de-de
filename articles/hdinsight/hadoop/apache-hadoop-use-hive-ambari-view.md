@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.openlocfilehash: 6c199a0dd75b89d9c9368e799c97a28b73758d06
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73097098"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>Verwenden der Apache Ambari-Hive-Ansicht mit Apache Hadoop in HDInsight
@@ -23,7 +23,7 @@ In diesem Artikel wird das folgende Thema erläutert: Ausführen von Apache Hive
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Hadoop-Cluster in HDInsight. Weitere Informationen finden Sie unter [Schnellstart: Erste Schritte mit Apache Hadoop und Apache Hive in Azure HDInsight mit einer Resource Manager-Vorlage](./apache-hadoop-linux-tutorial-get-started.md).
+* Ein Hadoop-Cluster in HDInsight. Weitere Informationen finden Sie unter [Erste Schritte mit HDInsight unter Linux](./apache-hadoop-linux-tutorial-get-started.md).
 * Aus einem Webbrowser
 
 ## <a name="run-a-hive-query"></a>Ausführen einer Hive-Abfrage
@@ -70,7 +70,7 @@ In diesem Artikel wird das folgende Thema erläutert: Ausführen von Apache Hive
 
    * `STORED AS TEXTFILE LOCATION`: Zeigt den Speicherort für die Daten an, und dass sie als Text gespeichert sind.
 
-   * `SELECT`: Wählt die Anzahl aller Zeilen aus, bei denen die Spalte t4 den Wert [ERROR] enthält.
+   * `SELECT`: Wählt die Anzahl aller Zeilen aus, bei denen die Spalte „t4“ den Wert „[ERROR]“ enthält.
 
    > [!IMPORTANT]  
    > Belassen Sie die Auswahl der __Database__ (Datenbank) bei __default__ (Standard). Die Beispiele in diesem Dokument verwenden die Standarddatenbank, die in HDInsight enthalten ist.
@@ -100,7 +100,7 @@ Klicken Sie auf die Registerkarte **Tez UI** unter dem Arbeitsblatt, um die Tez-
 > [!IMPORTANT]  
 > Tez wird nicht für die Auflösung aller Abfragen verwendet. Viele Abfragen können ohne Tez aufgelöst werden.
 
-## <a name="view-job-history"></a>Anzeige des Auftragsverlaufs
+## <a name="view-job-history"></a>Auftragsverlauf anzeigen
 
 Die Registerkarte __Jobs__ (Aufträge) zeigt einen Verlauf der Hive-Abfragen an.
 
@@ -161,7 +161,7 @@ Weitere Informationen zur Verwendung von UDFs mit Hive unter HDInsight finden Si
 
 Sie können verschiedene Hive-Einstellungen ändern, z.B. die Ausführungs-Engine für Hive von Tez (Standard) in MapReduce.
 
-## <a id="nextsteps"></a>Nächste Schritte
+## <a name="next-steps"></a><a id="nextsteps"></a>Nächste Schritte
 
 Allgemeine Informationen zu Hive in HDInsight:
 

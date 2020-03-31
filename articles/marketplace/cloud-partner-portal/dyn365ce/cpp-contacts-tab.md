@@ -1,19 +1,18 @@
 ---
 title: Dynamics 365 for Customer Engagement-Angebot – Registerkarte „Kontakte“ | Azure Marketplace
 description: 'CPP-Artikel als veraltet markiert und mit dem PC-Artikel verknüpft. Zuvor: „Konfigurieren von Kontaktinformationen für ein Dynamics 365 for Customer Engagement-Angebot im AppSource Marketplace“.'
-services: Dynamics 365 for Customer Engagement, Azure, AppSource, Marketplace, Cloud Partner Portal,
-author: ChJenk
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: v-chjen
-ms.openlocfilehash: a7f52979678713f73f08ea36f626b7889d1cd88a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 8c7973d267f083180f2dd73c55fbf90fef25e9ce
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818751"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278466"
 ---
 # <a name="azure-application-contacts-tab"></a>Registerkarte „Kontakte“ für eine Azure-Anwendung
 

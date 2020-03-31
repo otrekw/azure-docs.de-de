@@ -1,20 +1,18 @@
 ---
 title: Voraussetzungen für die Anwendungszusammenstellung
 description: 'Veralteter CPP-Artikel, mit dem PC-Artikel verknüpft. Zuvor: „Liste der Voraussetzungen für die Anwendungszusammenstellung“'
-services: Azure, Marketplace, Cloud Partner Portal,
-author: ChJenk
-manager: Ricardo.Villalobos
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: v-chjen
-ms.openlocfilehash: 98a50481612d93a9a2d9d7d5bfb04bfa22db6e00
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: e907c51e69b5b57da9986fa017d59fed2e58320d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819804"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280574"
 ---
 # <a name="prerequisites-for-application-curation"></a>Voraussetzungen für die Anwendungszusammenstellung
 

@@ -10,12 +10,12 @@ ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
 manager: dcscontentpm
-ms.openlocfilehash: ed80482147d415ed890bb50ee70be9457c9c5211
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: cf2d9b218fe63414af2446b8562d3ba187b2d395
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562291"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535764"
 ---
 # <a name="azure-sql-database-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Der Import-/Exportdienst von Azure SQL Datenbank benötigt viel Zeit, um eine Datenbank zu importieren oder zu exportieren
 
@@ -47,7 +47,7 @@ Wenn Ihre Datenbankexporte nur für die Wiederherstellung nach versehentlichem L
 
 ## <a name="things-to-consider-when-you-export-or-import-an-azure-sql-database"></a>Wichtige Punkte beim Exportieren oder Importieren einer Azure SQL-Datenbank
 
-* Bei allen in diesem Artikel behandelten Methoden wird das DTU-Kontingent (Database Transaction Unit, Datenbanktransaktionseinheit) verbraucht, was eine Drosselung durch den Azure SQL-Datenbank-Dienst zur Folge hat. Sie können [die DTU-Statistiken für die Datenbank im Azure-Portal anzeigen](https://docs.microsoft.com/azure/sql-database/sql-database-monitor-tune-overview#monitor-database-performance). Wenn die Datenbank ihre Ressourcenlimits erreicht hat, [führen Sie ein Upgrade der Dienstebene aus](https://docs.microsoft.com/azure/sql-database/sql-database-scale-resources), um weitere Ressourcen hinzuzufügen.
+* Bei allen in diesem Artikel behandelten Methoden wird das DTU-Kontingent (Database Transaction Unit, Datenbanktransaktionseinheit) verbraucht, was eine Drosselung durch den Azure SQL-Datenbank-Dienst zur Folge hat. Sie können [die DTU-Statistiken für die Datenbank im Azure-Portal anzeigen](https://docs.microsoft.com/azure/sql-database/sql-database-monitor-tune-overview#sql-database-resource-monitoring). Wenn die Datenbank ihre Ressourcenlimits erreicht hat, [führen Sie ein Upgrade der Dienstebene aus](https://docs.microsoft.com/azure/sql-database/sql-database-scale-resources), um weitere Ressourcen hinzuzufügen.
 * Clientanwendungen (wie etwa das Hilfsprogramm „SqlPackage“ oder Ihre benutzerdefinierte DAC-Anwendung) sollten im Idealfall auf einem virtuellen Computer in der gleichen Region ausgeführt werden, in der sich auch Ihre SQL-Datenbank befindet. Andernfalls treten ggf. durch Netzwerklatenz bedingte Leistungsproblemen auf.
 * Das Exportieren großer Tabellen ohne gruppierte Indizes kann sehr langsam sein oder sogar Fehler zur Folge haben. Dieses Verhalten tritt auf, da die Tabelle nicht parallel aufgeteilt und exportiert werden kann. Stattdessen muss sie in einer einzelnen Transaktion exportiert werden, was besonders bei großen Tabellen die Leistung beeinträchtigt und unter Umständen zu einem Exportfehler führt.
 

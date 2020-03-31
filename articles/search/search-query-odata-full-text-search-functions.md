@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 06eb29f2f3245d3f4fd047fb86b2b57fb1f0989e
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72793352"
 ---
 # <a name="odata-full-text-search-functions-in-azure-cognitive-search---searchismatch-and-searchismatchscoring"></a>Funktionen der OData-Volltextsuche in der kognitiven Azure-Suche: `search.ismatch` und `search.ismatchscoring`
@@ -54,10 +54,10 @@ search_mode ::= "'any'" | "'all'"
 Ein interaktives Syntaxdiagramm ist ebenfalls verfügbar:
 
 > [!div class="nextstepaction"]
-> [OData-Syntaxdiagramm für die kognitive Azure-Suche](https://azuresearch.github.io/odata-syntax-diagram/#search_is_match_call)
+> [OData-Syntaxdiagramm für Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/#search_is_match_call)
 
 > [!NOTE]
-> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md).
+> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md).
 
 ### <a name="searchismatch"></a>search.ismatch
 
@@ -86,7 +86,7 @@ Die Funktion `search.ismatch` gibt einen Wert vom Typ `Edm.Boolean` zurück. Die
 
 ### <a name="searchismatchscoring"></a>search.ismatchscoring
 
-Die Funktion `search.ismatchscoring` gibt ebenso wie die Funktion `search.ismatch` `true` für Dokumente zurück, die mit der als Parameter übergebenen Volltextsuchabfrage übereinstimmen. Der Unterschied zwischen den beiden Funktionen besteht darin, dass die Relevanzbewertung der Dokumente, die mit der Abfrage `search.ismatchscoring` übereinstimmen, in die Gesamtbewertung des Dokuments einfließt, während sich die Dokumentbewertung im Fall von `search.ismatch` nicht ändert. Die folgenden Überladungen dieser Funktion sind verfügbar (mit den gleichen Parametern wie bei `search.ismatch`):
+Die Funktion `search.ismatchscoring` gibt ebenso wie die Funktion `search.ismatch``true` für Dokumente zurück, die mit der als Parameter übergebenen Volltextsuchabfrage übereinstimmen. Der Unterschied zwischen den beiden Funktionen besteht darin, dass die Relevanzbewertung der Dokumente, die mit der Abfrage `search.ismatchscoring` übereinstimmen, in die Gesamtbewertung des Dokuments einfließt, während sich die Dokumentbewertung im Fall von `search.ismatch` nicht ändert. Die folgenden Überladungen dieser Funktion sind verfügbar (mit den gleichen Parametern wie bei `search.ismatch`):
 
 - `search.ismatchscoring(search)`
 - `search.ismatchscoring(search, searchFields)`
@@ -120,7 +120,7 @@ Suche nach Dokumenten, die die Begriffe „hotel“ und „airport“ in einem A
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
-- [Filter in der kognitiven Azure-Suche](search-filters.md)
-- [Übersicht über die OData-Ausdruckssprache für die kognitive Azure-Suche](query-odata-filter-orderby-syntax.md)
-- [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md)
-- [Suchen von Dokumenten &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Filter in Azure Cognitive Search](search-filters.md)
+- [Übersicht über die OData-Ausdruckssprache für Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
+- [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md)
+- [Suchen von Dokumenten &#40;Azure Cognitive Search-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

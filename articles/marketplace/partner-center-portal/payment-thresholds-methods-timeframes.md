@@ -2,17 +2,16 @@
 Description: Die voraussichtliche Zeit zum Überweisen von Zahlungen, die anwendbaren Zahlungsschwellenwerte und die Microsoft-Marketplaces, von denen Sie Zahlungen erhalten können, hängen von Ihrem Land/Ihrer Region und dem Zahlungskontotyp ab.
 title: Zahlungsschwellenwerte, -methoden und -zeitrahmen im kommerziellen Marketplace | Azure Marketplace
 ms.date: 12/10/2019
-ms.topic: article
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+ms.topic: conceptual
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: 6bb05513d59870b7fa0d997eb31510494a9938e0
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: fe18fab4a2ea61f41e017704105e37f28c20e456
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931878"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279724"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>Zahlungsschwellenwerte, -methoden und -zeitrahmen
 
@@ -77,7 +76,7 @@ In der Regel senden wir in einem Monat fällige Zahlungen am 15. des Monats, abe
 | Kongo (DRC)                      | Ja               | Ja                                      | Ja    | Nein              |
 | Republik Kongo               | Ja               | Ja                                      | Ja    | Nein              |
 | Costa Rica                       | Ja               | Ja                                      | Ja    | Ja             |
-| Côte d’Ivoire                    | Ja               | Ja                                      | Ja    | Nein              |
+| Elfenbeinküste                    | Ja               | Ja                                      | Ja    | Nein              |
 | Kroatien                          | Ja               | Ja                                      | Ja    | Nein              |
 | Zypern                           | Ja               | Ja                                      | Ja    | Ja             |
 | Tschechische Republik                   | Ja               | Ja                                      | Ja    | Ja             |

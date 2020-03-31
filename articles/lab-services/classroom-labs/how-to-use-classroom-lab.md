@@ -10,16 +10,16 @@ ms.service: lab-services
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: how-to
 ms.custom: mvc
-ms.date: 09/19/2019
+ms.date: 03/17/2020
 ms.author: spelluru
-ms.openlocfilehash: 2ac9e8b8d0635eceb7d4f85ad867b102f7d064f5
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: db1e60ccd7e05cb8b6923d6b2ec008cdfb76eaa1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585144"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79501929"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Zugreifen auf ein Classroom-Lab in Azure Lab Services
 In diesem Artikel wird beschrieben, wie Sie sich bei einem Classroom-Lab registrieren, alle Labs anzeigen, auf die Sie zugreifen können, einen virtuellen Computer im Lab starten/beenden und eine Verbindung mit dem virtuellen Computer herstellen. 
@@ -60,29 +60,6 @@ In diesem Artikel wird beschrieben, wie Sie sich bei einem Classroom-Lab registr
     3. Bei virtuellen **Linux**-Computern können Sie **SSH** oder **RDP** (sofern RDP aktiviert ist) für die Verbindungsherstellung verwenden. Weitere Informationen finden Sie unter [Enable and use remote desktop for Linux virtual machines in a lab in Azure Lab Services](how-to-enable-remote-desktop-linux.md) (Aktivieren und Verwenden von Remotedesktop für virtuelle Linux-Computer in einem Lab in Azure Lab Services). 
     1. Wenn Sie einen **Mac** verwenden, um eine Verbindung mit dem virtuellen Lab-Computer herzustellen, führen Sie die im nächsten Abschnitt beschriebenen Schritte aus. 
 
-## <a name="connect-to-a-vm-using-rdp-on-a-mac"></a>Herstellen einer RDP-Verbindung mit einem virtuellen Computer auf einem Mac
-In diesem Abschnitt wird gezeigt, wie ein Kursteilnehmer über einen Mac eine RDP-Verbindung mit einem virtuellen Computer herstellen kann.
-
-### <a name="step-1-install-microsoft-remote-desktop-on-a-mac"></a>Schritt 1: Installieren von Microsoft-Remotedesktop auf einem Mac
-1. Öffnen Sie den App Store auf Ihrem Mac, und suchen Sie nach **Microsoft-Remotedesktop**.
-
-    ![Microsoft-Remotedesktop](../media/how-to-use-classroom-lab/install-ms-remote-desktop.png)
-1. Installieren Sie die neueste Version von Microsoft-Remotedesktop. 
-
-### <a name="step-2-access-the-vm-from-your-mac-using-rdp"></a>Schritt 2: Zugreifen auf den virtuellen Computer über Ihren Mac per RDP
-1. Öffnen Sie die auf Ihren Computer heruntergeladene **RDP**-Datei. (Auf dem Computer muss **Microsoft-Remotedesktop** installiert sein.) Daraufhin sollte eine Verbindung mit dem virtuellen Computer hergestellt werden. 
-
-    ![Herstellen einer Verbindung mit dem virtuellen Computer](../media/how-to-use-classroom-lab/connect-linux-vm.png)
-1. Wählen Sie **Weiter** aus, wenn Sie die folgende Warnung erhalten. 
-
-    ![Zertifikatwarnung](../media/how-to-use-classroom-lab/certificate-error.png)
-1. Der virtuelle Computer sollte angezeigt werden. 
-
-    > [!NOTE]
-    > Das folgende Beispiel ist ein Beispiel für einen virtuellen Computer mit CentOS Linux. 
-
-    ![VM](../media/how-to-use-classroom-lab/vm-ui.png)
-
 ## <a name="progress-bar"></a>Statusanzeige 
 Die Statusanzeige auf der Kachel gibt Aufschluss darüber, wie viele Stunden der Ihnen zugewiesenen [Kontingentstunden](how-to-configure-student-usage.md#set-quotas-for-users) bereits verwendet wurden. Diese Zeit wurde Ihnen zusätzlich zu der geplanten Zeit für das Lab zugewiesen. Die Farbe der Statusanzeige und der Text unterhalb der Statusanzeige variieren gemäß den folgenden Szenarien:
 
@@ -111,7 +88,7 @@ Nachdem Sie sich bei den Labs registriert haben, können Sie alle Classroom-Labs
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Entsprechende Informationen finden Sie in den folgenden Artikeln:
+Weitere Informationen finden Sie in folgenden Artikeln:
 
 - [Erstellen und Verwalten von Labkonten als Administrator](how-to-manage-lab-accounts.md)
 - [Erstellen und Verwalten von Labs als Labbesitzer](how-to-manage-classroom-labs.md)

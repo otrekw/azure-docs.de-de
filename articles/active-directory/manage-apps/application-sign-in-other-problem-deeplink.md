@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 44825f32a13db0a221252c042dc9f23ec43a9c8f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65825429"
 ---
 # <a name="problems-signing-in-to-an-application-using-a-deeplink"></a>Probleme beim Anmelden bei einer Anwendung über einen Deeplink
@@ -51,7 +51,7 @@ Deeplinks oder Benutzerzugriffs-URLs sind Links, mit deren Hilfe Ihre Benutzer d
 
 -   Stellen Sie sicher, dass die **Kontaktinformationen für die Authentifizierung** des Benutzers aktuell sind, sodass Multi-Factor Authentication-Richtlinien oder Richtlinien für bedingten Zugriff erzwungen werden können.
 
--   Löschen Sie auch die Cookies in Ihrem Browser, und versuchen Sie sich erneut anzumelden.
+-   Stellen Sie sicher, dass der Benutzer die Cookies im Browser gelöscht hat, bevor er versucht, sich erneut anzumelden.
 
 ## <a name="checking-the-deeplink"></a>Überprüfen des Deeplinks
 
@@ -263,7 +263,7 @@ Nach kurzer Zeit können die ausgewählten Benutzer diese Anwendungen im Zugriff
 
 ## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Wenn das Problem mit diesen Problembehandlungsschritten nicht behoben wird, 
 
-öffnen Sie ein Supportticket mit den folgenden Informationen, sofern verfügbar:
+Öffnen Sie ein Supportticket mit den folgenden Informationen, sofern verfügbar:
 
 -   Fehlerkorrelations-ID
 

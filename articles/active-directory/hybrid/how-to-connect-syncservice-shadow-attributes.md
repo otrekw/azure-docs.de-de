@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 10a4078f49abbdf431f42c6cde7cf882112e5848
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60384703"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Schattenattribute für den Azure AD Connect-Synchronisierungsdienst
@@ -38,7 +38,7 @@ Das Unternehmen hat mehrere UPN-Suffixe in seinem lokalen Active Directory, von 
 ### <a name="userprincipalname"></a>userPrincipalName
 Ein Benutzer hat die folgenden Attributwerte in einer nicht bestätigten Domäne:
 
-| Attribut | Wert |
+| attribute | value |
 | --- | --- |
 | „userPrincipalName“ lokal | lee.sperry@fabrikam.com |
 | „shadowUserPrincipalName“ in Azure AD | lee.sperry@fabrikam.com |
@@ -53,7 +53,7 @@ Dasselbe Verfahren für ausschließlich bestätigte Domänen erfolgt auch für �
 
 Für einen Postfachbenutzer, ob lokal oder in Exchange Online, werden nur Werte für bestätigte Domänen angezeigt. Diese können wie folgt aussehen:
 
-| Attribut | Wert |
+| attribute | value |
 | --- | --- |
 | „proxyAddresses“ lokal | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
 | „proxyAddresses“ in Exchange Online | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |

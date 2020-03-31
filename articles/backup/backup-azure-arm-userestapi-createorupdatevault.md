@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
 ms.openlocfilehash: 1901c35d2b4d8bcd02cc064fcfc844e19969e3b5
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74173413"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Erstellen eines Azure Recovery Services-Tresors mit der REST-API
@@ -23,14 +23,14 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="create-a-request"></a>Erstellen einer Anforderung
 
-Zum Erstellen der *PUT*-Anforderung ist der `{subscription-id}`-Parameter erforderlich. Wenn Sie über mehrere Abonnements verfügen, lesen Sie [Verwenden mehrerer Abonnements](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest): Sie definieren zusammen mit dem `api-version`-Parameter einen `{resourceGroupName}` und `{vaultName}` für Ihre Ressourcen. In diesem Artikel wird `api-version=2016-06-01` verwendet.
+Zum Erstellen der *PUT*-Anforderung ist der `{subscription-id}`-Parameter erforderlich. Wenn Sie über mehrere Abonnements verfügen, lesen Sie [Verwenden mehrerer Abonnements](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest): Sie definieren zusammen mit dem `{resourceGroupName}`-Parameter einen `{vaultName}` und `api-version` für Ihre Ressourcen. In diesem Artikel wird `api-version=2016-06-01` verwendet.
 
 Die folgenden Header sind erforderlich:
 
 | Anforderungsheader   | BESCHREIBUNG |
 |------------------|-----------------|
 | *Content-Type:*  | Erforderlich. Legen Sie diese Option auf `application/json` fest. |
-| *Authorization:* | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer` [Zugriffstoken](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients) fest. |
+| *Authorization:* | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-[Zugriffstoken](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients) fest. |
 
 Weitere Informationen zum Erstellen der Anforderung finden Sie unter [Komponenten einer REST-API-Anforderung/Antwort](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
@@ -38,10 +38,10 @@ Weitere Informationen zum Erstellen der Anforderung finden Sie unter [Komponente
 
 Die folgenden allgemeinen Definitionen werden verwendet, um einen Anforderungstext zu erstellen:
 
-|NAME  |Erforderlich  |Typ  |BESCHREIBUNG  |
+|Name  |Erforderlich  |type  |BESCHREIBUNG  |
 |---------|---------|---------|---------|
-|eTag     |         |   Zeichenfolge      |  Optionales ETag       |
-|location     |  true       |Zeichenfolge         |   Speicherort von Ressourcen      |
+|eTag     |         |   String      |  Optionales ETag       |
+|location     |  true       |String         |   Ressourcenspeicherort      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Eigenschaften des Tresors       |
 |sku     |         |  [sku](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Gibt den eindeutigen Systembezeichner für jede Azure-Ressource an.     |
 |tags     |         | Object        |     Ressourcentags    |
@@ -66,7 +66,7 @@ Der folgende Beispieltext wird verwendet, um in „West US“ (USA, Westen) eine
 
 Es gibt zwei erfolgreiche Antworten für den Vorgang, um einen Recovery Services-Tresor zu erstellen oder zu aktualisieren:
 
-|NAME  |type  |BESCHREIBUNG  |
+|Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |200 – OK     |   [Tresor](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)      | OK        |
 |201 – Erstellt     | [Tresor](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   Erstellt      |

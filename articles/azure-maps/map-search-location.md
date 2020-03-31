@@ -1,7 +1,7 @@
 ---
 title: Anzeigen von Suchergebnissen auf einer Karte | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie, wie Sie mit dem Microsoft Azure Maps Web SDK eine Suchanfrage ausführen und die Ergebnisse auf der Karte anzeigen.
-author: jingjing-z
+author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 07/29/2019
 ms.topic: conceptual
@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 13daf20e364b1e629b3ae13be2c9406da3702211
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: e82a1daee381c7bad19c83fa735d0028bef2010e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209646"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371399"
 ---
 # <a name="show-search-results-on-the-map"></a>Anzeigen von Suchergebnissen auf der Karte
 
 In diesem Artikel erfahren Sie, wie nach einem bestimmten Ort gesucht wird und die Suchergebnisse auf der Karte angezeigt werden.
 
-Es gibt zwei Möglichkeiten, um nach einem bestimmten Ort zu suchen. Eine Möglichkeit besteht darin, über ein Dienstmodul eine Suchanforderung zu stellen. Die andere Möglichkeit ist, eine Suchanforderung über die [Fetch-API](https://fetch.spec.whatwg.org/) an die [Azure Maps-API für die Fuzzysuche](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) zu stellen. Beide Möglichkeiten werden im Folgenden erläutert.
+Es gibt zwei Möglichkeiten, um nach einem bestimmten Ort zu suchen. Eine Möglichkeit besteht darin, über ein Dienstmodul eine Suchanforderung zu stellen. Die andere Möglichkeit ist, eine Suchanforderung über die [Fetch-API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) an die [Azure Maps-API für die Fuzzysuche](https://fetch.spec.whatwg.org/) zu stellen. Beide Möglichkeiten werden im Folgenden erläutert.
 
 ## <a name="make-a-search-request-via-service-module"></a>Durchführen einer Suchanforderung über das Dienstmodul
 
@@ -59,6 +59,9 @@ Die Suchanforderung, die Datenquelle, die Symbolebene und die Kameragrenzen werd
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+> [!div class="nextstepaction"]
+> [Bewährte Methoden für die Verwendung des Suchdiensts](how-to-use-best-practices-for-search.md)
+
 Weitere Informationen zur **Fuzzysucheuche**:
 
 > [!div class="nextstepaction"]
@@ -72,7 +75,7 @@ Erfahren Sie mehr zu den in diesem Artikel verwendeten Klassen und Methoden:
 Die folgenden Artikel enthalten vollständige Codebeispiele:
 
 > [!div class="nextstepaction"]
-> [Abrufen von Informationen von einer Koordinate](./map-get-information-from-coordinate.md)
+> [Abrufen von Informationen von einer Koordinate](map-get-information-from-coordinate.md)
 <!-- Comment added to suppress false positive warning -->
 > [!div class="nextstepaction"]
-> [Anzeigen einer Wegbeschreibung von A nach B](./map-route.md)
+> [Anzeigen einer Wegbeschreibung von A nach B](map-route.md)

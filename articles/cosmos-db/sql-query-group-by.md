@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: tisande
 ms.openlocfilehash: e41e81457421bfe27e3c0313fc06e39e6df4cdce
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73819108"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>GROUP BY-Klausel in Azure Cosmos DB
@@ -41,7 +41,7 @@ Die GROUP BY-Klausel unterteilt die Ergebnisse der Abfrage anhand der Werte eine
   
    Ein beliebiger Skalarausdruck ist außer für skalare Unterabfragen und skalare Aggregate zulässig. Jeder Skalarausdruck muss mindestens einen Verweis auf eine Eigenschaft enthalten. Es gibt keine Begrenzung der Anzahl einzelner Ausdrücke oder der Kardinalität des jeweiligen Ausdrucks.
 
-## <a name="remarks"></a>Anmerkungen
+## <a name="remarks"></a>Bemerkungen
   
   Wenn eine Abfrage eine GROUP BY-Klausel verwendet, kann die SELECT-Klausel nur die Teilmenge der Eigenschaften und Systemfunktionen enthalten, die in der GROUP BY-Klausel enthalten ist. Eine Ausnahme bilden [aggregierte Systemfunktionen](sql-query-aggregates.md), die in der SELECT-Klausel vorkommen können, ohne in der GROUP BY-Klausel enthalten zu sein. Sie können in die SELECT-Klausel auch stets Literalwerte einschließen.
 
@@ -156,7 +156,7 @@ FROM Food f
 GROUP BY ARRAY_CONTAINS(f.tags, {name: 'orange'}), f.version BETWEEN 0 AND 2
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
 [{

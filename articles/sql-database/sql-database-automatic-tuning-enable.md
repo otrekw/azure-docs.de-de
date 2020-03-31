@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: bdd33d85ee0aac4808c343af088d4db1a0dc963e
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: eed839c277156046ff9b7d97c6e87636a0822889
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767771"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79299327"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>Aktivieren der automatischen Optimierung zum Überwachen von Abfragen und Verbessern der Workloadleistung
 
@@ -33,6 +33,13 @@ Die automatische Optimierung kann über das [Azure-Portal](sql-database-automati
 ## <a name="enable-automatic-tuning-on-server"></a>Aktivieren der automatischen Optimierung für den Server
 
 Auf Serverebene kann auf Wunsch die Konfiguration der automatischen Optimierung von „Azure-Standardwerte“ geerbt werden. In den Azure-Standardwerten sind FORCE_LAST_GOOD_PLAN und CREATE_INDEX aktiviert und DROP_INDEX deaktiviert.
+
+> [!IMPORTANT]
+> Ab März 2020 werden Änderungen an den Azure-Standardeinstellungen für die automatische Optimierung wie folgt wirksam:
+>
+> - Neue Azure-Standardwerte werden „FORCE_LAST_GOOD_PLAN“ = aktiviert, „CREATE_INDEX“ = deaktiviert und „DROP_INDEX“ = deaktiviert.
+> - Vorhandene Server ohne konfigurierte automatische Optimierungseinstellungen werden automatisch so konfiguriert, dass sie die neuen Azure-Standardeinstellungen ERBEN. Dies gilt für alle Kunden, bei denen sich die automatische Optimierung von Servereinstellungen in einem nicht definierten Zustand befindet.
+> - Neu erstellte Server werden automatisch so konfiguriert, dass sie die neuen Azure-Standardeinstellungen ERBEN (im Gegensatz zu früher, wo sich die automatische Optimierungskonfiguration bei der Erstellung neuer Server in einem nicht definierten Zustand befand).
 
 ### <a name="azure-portal"></a>Azure-Portal
 

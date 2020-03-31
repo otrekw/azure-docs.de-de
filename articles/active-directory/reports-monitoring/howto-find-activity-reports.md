@@ -15,10 +15,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d356f8c10ae3770d9f4ade100ab0496ee58d772f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74008214"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Speicherorte von Aktivitätsberichten im Azure-Portal
@@ -52,13 +52,13 @@ Sie können die erweiterte Filterung im Überwachungsbericht verwenden, um auf e
 
 Zu den Kategorien zählen:
 
-- Alle
+- All
 - AdministrativeUnit
 - ApplicationManagement
 - Authentication
 - Authorization
 - Kontakt
-- Gerät
+- Sicherungsmedium
 - DeviceConfiguration
 - DirectoryManagement
 - EntitlementManagement
@@ -73,7 +73,7 @@ Mithilfe des Dropdownfilters **Dienst** können Sie auch nach einem bestimmten D
 
 Zu diesen Diensten gehören:
 
-- Alle
+- All
 - Zugriffsüberprüfungen
 - Kontobereitstellung 
 - Anwendungs-SSO
@@ -114,7 +114,7 @@ Sie können den Bericht „Anmeldungen“ verwenden, um Details zur Anwendungsnu
 
 Berichte zu anomalen Aktivitäten enthalten Informationen zu sicherheitsbezogenen Risikoerkennungen, die in Azure AD erkannt und für die Berichte erstellt werden können.
 
-In der folgenden Tabelle sind die Azure AD-Sicherheitsberichte zu anomalen Aktivitäten und die entsprechenden Risikoerkennungstypen im Azure-Portal aufgeführt. Weitere Informationen finden Sie unter [Azure Active Directory-Risikoerkennungen](concept-risk-events.md).  
+In der folgenden Tabelle sind die Azure AD-Sicherheitsberichte zu anomalen Aktivitäten und die entsprechenden Risikoerkennungstypen im Azure-Portal aufgeführt. Weitere Informationen finden Sie unter [Azure Active Directory risk detections](concept-risk-events.md) (Azure Active Directory-Risikoerkennungen).  
 
 
 | Bericht zur anormalen Aktivität von Azure AD |  Identity Protection-Risikoerkennungstyp|
@@ -134,7 +134,7 @@ Folgende Azure AD-Sicherheitsberichte zu anomalen Aktivitäten sind nicht als R
 
 ### <a name="detected-risk-detections"></a>Erkannte Risikoerkennungen
 
-Sie können im [Azure-Portal](https://portal.azure.com) auf dem Blatt **Azure Active Directory** im Abschnitt **Sicherheit** auf die Berichte zu erkannten Risikoerkennungen zugreifen. Die erkannten Risikoerkennungen werden in den folgenden Berichten nachverfolgt:   
+Sie können im **Azure-Portal** auf dem Blatt **Azure Active Directory** im Abschnitt [Sicherheit](https://portal.azure.com) auf die Berichte zu erkannten Risikoerkennungen zugreifen. Die erkannten Risikoerkennungen werden in den folgenden Berichten nachverfolgt:   
 
 - [Gefährdete Benutzer](concept-user-at-risk.md)
 - [Riskante Anmeldungen](concept-risky-sign-ins.md)

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: d40e392984d2675c748bda00c61cdaeb1c0932da
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75387019"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Verbinden von Azure Cloud Services-Rollen mit einem in Azure gehosteten AD-Domänencontroller
@@ -27,7 +27,7 @@ Befolgen Sie diese Schrittanleitung, und fügen Sie am Ende des Artikels einen K
 Beim Netzwerk, auf das vom Clouddienst verwiesen wird, muss es sich um ein **klassisches virtuelles Netzwerk** handeln.
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
-Sie können ein virtuelles Netzwerk in Azure über das Azure-Portal oder über PowerShell erstellen. In diesem Tutorial wird PowerShell verwendet. Informationen zum Erstellen eines virtuellen Netzwerks über das Azure-Portal finden Sie unter [Erstellen eines virtuellen Netzwerks](../virtual-network/quick-create-portal.md). Im Artikel wird die Erstellung eines virtuellen Netzwerks (Resource Manager) beschrieben, aber Sie müssen ein virtuelles Netzwerk (klassisch) für Clouddienste erstellen. Wählen Sie hierzu im Portal die Option **Ressource erstellen**, geben Sie im Feld **Suche** den Suchbegriff *virtuelles Netzwerk* ein, und drücken Sie die **EINGABETASTE**. Wählen Sie in den Suchergebnissen unter **Alles** die Option **Virtuelles Netzwerk**. Wählen Sie unter **Bereitstellungsmodell auswählen** die Option **Klassisch** und die Option **Erstellen**. Anschließend können Sie die Schritte des Artikels ausführen.
+Sie können ein virtuelles Netzwerk in Azure über das Azure-Portal oder über PowerShell erstellen. In diesem Tutorial wird PowerShell verwendet. Informationen zum Erstellen eines virtuellen Netzwerks über das Azure-Portal finden Sie unter [Erstellen eines virtuellen Netzwerks](../virtual-network/quick-create-portal.md). Im Artikel wird die Erstellung eines virtuellen Netzwerks (Resource Manager) beschrieben, aber Sie müssen ein virtuelles Netzwerk (klassisch) für Clouddienste erstellen. Wählen Sie hierzu im Portal die Option **Ressource erstellen**, geben Sie im Feld *Suche* den Suchbegriff **virtuelles Netzwerk** ein, und drücken Sie die **EINGABETASTE**. Wählen Sie in den Suchergebnissen unter **Alles** die Option **Virtuelles Netzwerk**. Wählen Sie unter **Bereitstellungsmodell auswählen** die Option **Klassisch** und die Option **Erstellen**. Anschließend können Sie die Schritte des Artikels ausführen.
 
 ```powershell
 #Create Virtual Network

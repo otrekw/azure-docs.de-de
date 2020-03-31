@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: billgib
 ms.date: 12/04/2018
 ms.openlocfilehash: a54e8e5629f6f8ad688b6fe11bbf50fc038095bf
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73818527"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Wiederherstellen eines einzelnen Mandanten mit einer SaaS-Anwendung mit einer Datenbank pro Mandant
@@ -43,9 +43,9 @@ Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Vorauss
 
 Es gibt zwei einfache Muster zum Wiederherstellen der Daten eines einzelnen Mandanten. Da Mandantendatenbanken voneinander isoliert sind, hat das Wiederherstellen eines Mandanten keine Auswirkungen auf Daten anderer Mandanten. Das PITR-Feature (Point-in-Time-Wiederherstellung) von Azure SQL-Datenbank wird in beiden Mustern verwendet. Mit PITR wird stets eine neue Datenbank erstellt.
 
-* **Paralleles Wiederherstellen**: Beim ersten Muster wird eine neue Datenbank parallel zur aktuellen Datenbank des Mandanten erstellt. Der Mandant erhält anschließend schreibgeschützten Zugriff auf die wiederhergestellte Datenbank. Die wiederhergestellten Daten können überprüft und möglicherweise zum Überschreiben der aktuellen Datenwerte verwendet werden. Es ist Aufgabe des App-Designers, die Art des Mandantenzugriffs auf die wiederhergestellte Datenbank zu bestimmen und festzulegen, welche Optionen für die Wiederherstellung bereitgestellt werden. In manchen Szenarien reicht es bereits aus, dem Mandanten nur das Überprüfen seiner Daten zu einem früheren Zeitpunkt zu ermöglichen.
+* **Paralleles Wiederherstellen:** Beim ersten Muster wird eine neue Datenbank parallel zur aktuellen Datenbank des Mandanten erstellt. Der Mandant erhält anschließend schreibgeschützten Zugriff auf die wiederhergestellte Datenbank. Die wiederhergestellten Daten können überprüft und möglicherweise zum Überschreiben der aktuellen Datenwerte verwendet werden. Es ist Aufgabe des App-Designers, die Art des Mandantenzugriffs auf die wiederhergestellte Datenbank zu bestimmen und festzulegen, welche Optionen für die Wiederherstellung bereitgestellt werden. In manchen Szenarien reicht es bereits aus, dem Mandanten nur das Überprüfen seiner Daten zu einem früheren Zeitpunkt zu ermöglichen.
 
-* **Direktes Wiederherstellen**: Das zweite Muster ist hilfreich, wenn Daten verloren gegangen sind oder beschädigt wurden und der Mandant die Daten auf einen früheren Zeitpunkt wiederherstellen möchte. Der Mandant wird offline geschaltet, während die Datenbank wiederhergestellt wird. Die ursprüngliche Datenbank wird gelöscht, und die wiederhergestellte Datenbank wird umbenannt. Der Zugriff auf die Sicherungskette der ursprünglichen Datenbank bleibt nach dem Löschvorgang erhalten, sodass Sie bei Bedarf die Datenbank auf einen früheren Zeitpunkt wiederherstellen können.
+* **Direktes Wiederherstellen:** Das zweite Muster ist hilfreich, wenn Daten verloren gegangen sind oder beschädigt wurden und der Mandant die Daten auf einen früheren Zeitpunkt wiederherstellen möchte. Der Mandant wird offline geschaltet, während die Datenbank wiederhergestellt wird. Die ursprüngliche Datenbank wird gelöscht, und die wiederhergestellte Datenbank wird umbenannt. Der Zugriff auf die Sicherungskette der ursprünglichen Datenbank bleibt nach dem Löschvorgang erhalten, sodass Sie bei Bedarf die Datenbank auf einen früheren Zeitpunkt wiederherstellen können.
 
 Wenn die Datenbank die [aktive Georeplikation](sql-database-active-geo-replication.md) und die parallele Wiederherstellung verwendet, empfiehlt es sich, alle erforderlichen Daten aus der wiederhergestellten Kopie in die ursprüngliche Datenbank zu kopieren. Wenn Sie die ursprüngliche Datenbank durch die wiederhergestellte Datenbank ersetzen, müssen Sie die Georeplikation neu konfigurieren und synchronisieren.
 

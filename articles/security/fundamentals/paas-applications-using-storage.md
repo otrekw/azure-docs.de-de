@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
 ms.openlocfilehash: 675e10101d01d831aad7652c70cbfcf320085a3c
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70999170"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Bewährte Methoden zum Schützen webbasierter und mobiler PaaS-Anwendungen mit Azure Storage
@@ -27,7 +27,7 @@ In diesem Artikel wird eine Sammlung empfohlener Vorgehensweisen in Azure Storag
 
 Azure bietet Methoden zum Bereitstellen und Verwenden von Speicher, die lokal nicht möglich sind. Sie können in Azure Storage mit relativ geringem Aufwand ein hohes Maß an Skalierbarkeit und Verfügbarkeit erzielen. Azure Storage ist nicht nur die Grundlage für virtuelle Windows- und Linux-Computer in Azure, sondern unterstützt auch große verteilte Anwendungen.
 
-Azure Storage bietet die folgenden vier Dienste: Blobspeicher, Tabellenspeicher, Warteschlangenspeicher und Dateispeicher. Weitere Informationen finden Sie unter [Introduction to Microsoft Azure Storage](/azure/storage/common/storage-introduction) (Einführung in Microsoft Azure, in englischer Sprache).
+Azure Storage umfasst vier Dienste: Blob Storage, Table Storage, Queue Storage und File Storage. Weitere Informationen finden Sie unter [Introduction to Microsoft Azure Storage](/azure/storage/common/storage-introduction) (Einführung in Microsoft Azure, in englischer Sprache).
 
 Der [Azure Storage security guide](/azure/storage/common/storage-security-guide) (Azure Storage-Sicherheitsleitfaden, in englischer Sprache) ist eine hervorragende Quelle für ausführliche Informationen zu Azure Storage und Sicherheit. In diesem Artikel zu bewährten Methoden werden einige der Konzepte im Sicherheitsleitfaden in allgemeiner Form erläutert. Er enthält zudem Links zum Sicherheitsleitfaden und anderen Quellen, die weitere Informationen bieten.
 

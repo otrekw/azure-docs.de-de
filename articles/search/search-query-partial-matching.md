@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: ec1422d03cce78bdd8206f6687a78b63ddf989dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f78ba5b351a3da46d7b8b3780cf00772c4f3b2ea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75984926"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80289310"
 ---
 # <a name="match-on-patterns-and-special-characters-dashes"></a>Abgleichen von Mustern und Sonderzeichen (Bindestriche)
 
@@ -151,7 +151,7 @@ Im folgenden Beispiel ist ein benutzerdefiniertes Analysetool dargestellt, das Ã
   "sortable": false,
   "facetable": false
   }
-]
+],
 
 "analyzers": [
   {
@@ -191,7 +191,7 @@ Im folgenden Beispiel wird ein [EdgeNGramTokenFilter](https://lucene.apache.org/
   "sortable": false,
   "facetable": false
   }
-]
+],
 
 "analyzers": [
   {

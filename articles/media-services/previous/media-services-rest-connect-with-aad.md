@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: fc6766943747c066581fe3820481cfe4a35d5296
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: a693eb374365670da3fe8c4b2bb8ce664a024217
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774980"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295440"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Media Services-API mit REST
 
@@ -49,12 +49,12 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
+- Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), bevor Sie beginnen.
 - [Erstellen Sie ein Azure Media Services-Konto mithilfe des Azure-Portals](media-services-portal-create-account.md).
 - Lesen Sie den Artikel [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung – Übersicht](media-services-use-aad-auth-to-access-ams-api.md).
 - Installieren Sie den [Postman](https://www.getpostman.com/)-REST-Client, um die in diesem Artikel gezeigten REST-APIs auszuführen. 
 
-    In diesem Tutorial wird **Postman** verwendet, grundsätzlich ist aber jedes REST-Tool geeignet. Weitere Alternativen sind: **Visual Studio Code** mit dem REST-Plug-In oder **Telerik Fiddler**. 
+    In diesem Tutorial wird **Postman** verwendet, grundsätzlich ist aber jedes REST-Tool geeignet. Andere Alternativen sind: **Visual Studio Code** mit dem REST-Plug-In oder **Telerik Fiddler**. 
 
 ## <a name="get-the-authentication-information-from-the-azure-portal"></a>Abrufen der Authentifizierungsinformationen aus dem Azure-Portal
 
@@ -62,7 +62,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für den Zugriff auf die Media Services-API müssen Sie die folgenden Datenpunkte erfassen.
 
-|Einstellung|Beispiel|Beschreibung|
+|Einstellung|Beispiel|BESCHREIBUNG|
 |---|-------|-----|
 |Azure Active Directory-Mandantendomäne|microsoft.onmicrosoft.com|Ein STS-Endpunkt (Secure Token Service, Sicherheitstokendienst) für Azure AD wird unter Verwendung des folgenden Formats erstellt: <https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token>. Azure AD stellt ein JWT für den Ressourcenzugriff aus (ein Zugriffstoken).|
 |REST-API-Endpunkt|<https://amshelloworld.restv2.westus.media.azure.net/api/>|Dies ist der Endpunkt, über den alle Aufrufe der Media Services-REST-API in Ihrer Anwendung durchgeführt werden.|
@@ -83,7 +83,7 @@ Führen Sie die folgenden Schritte aus, um die Informationen abzurufen:
 5. Wählen Sie eine vorhandene **Azure AD-Anwendung** aus, oder erstellen Sie eine neue Anwendung (nachfolgend gezeigt).
 
     > [!NOTE]
-    > Damit die Azure Media Services-REST-Anforderung erfolgreich ist, muss der aufrufende Benutzer über die Rolle **Mitwirkender** oder **Besitzer** für das Media Services-Konto verfügen, auf das zugegriffen werden soll. Wenn eine Ausnahme mit dem Text „Der Remoteserver hat einen Fehler zurückgegeben: (401) nicht autorisiert“ zurückgegeben wird, lesen Sie den Abschnitt [Zugriffssteuerung](media-services-use-aad-auth-to-access-ams-api.md#access-control).
+    > Damit die Azure Media Services-REST-Anforderung erfolgreich ist, muss der aufrufende Benutzer über die Rolle **Mitwirkender** oder **Besitzer** für das Media Services-Konto verfügen, auf das zugegriffen werden soll. Wenn eine Ausnahme mit dem Text „Der Remoteserver hat einen Fehler zurückgegeben: 401 – Nicht autorisiert“ zurückgegeben wird, finden Sie weitere Informationen unter [Zugriffssteuerung](media-services-use-aad-auth-to-access-ams-api.md#access-control).
 
     Wenn Sie ein neues Speicherkonto erstellen möchten, gehen Sie wie folgt vor:
     
@@ -128,7 +128,7 @@ In diesem Abschnitt wird gezeigt, wie Sie mithilfe von **Postman** eine REST-API
 2. Wählen Sie **POST**aus.
 3. Geben Sie die URL mit Ihrem Mandantennamen im folgenden Format ein: Der Mandantenname muss auf **.onmicrosoft.com**, die URL muss auf **oauth2/token** enden: 
 
-    https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token
+    `https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token`
 
 4. Wählen Sie die Registerkarte **Headers** (Header) aus.
 5. Geben Sie die Informationen für **Headers** (Header) mithilfe der Schlüssel/Wert-Daten ein. 

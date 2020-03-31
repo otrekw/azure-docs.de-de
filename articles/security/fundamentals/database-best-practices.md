@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 316c3ef3c5bd16b52291029924d04fc159375bc8
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 0f2e0257c5bf855b0d9be61c43b68b4e30b3d80d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943661"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80125108"
 ---
 # <a name="azure-database-security-best-practices"></a>Bewährte Methoden für die Azure-Datenbanksicherheit
 In diesem Artikel werden bewährte Methoden für die Datenbanksicherheit beschrieben.
@@ -72,10 +72,10 @@ Bei Verwendung der SQL Server-Authentifizierung ist Folgendes erforderlich:
 
 - Sie verwalten die sicheren Anmeldeinformationen selbst.
 - Sie schützen die Anmeldeinformationen in der Verbindungszeichenfolge.
-- Sie schützen (falls zutreffend) die Anmeldeinformationen, die über das Netzwerk vom Webserver an die Datenbank übergeben werden. Weitere Informationen finden Sie unter [Vorgehensweise: Herstellen einer Verbindung mit SQL Server mit SQL-Authentifizierung in ASP.NET 2.0](/previous-versions/msp-n-p/ff648340(v=pandp.10)).
+- Sie schützen (falls zutreffend) die Anmeldeinformationen, die über das Netzwerk vom Webserver an die Datenbank übergeben werden. Weitere Informationen finden Sie unter [How To: Connect to SQL Server Using SQL Authentication in ASP.NET 2.0 (Vorgehensweise: Herstellen einer Verbindung mit SQL Server mit SQL-Authentifizierung in ASP.NET 2.0)](/previous-versions/msp-n-p/ff648340(v=pandp.10)).
 
 ### <a name="azure-active-directory-ad-authentication"></a>*Azure Active Directory-Authentifizierung*
-Die [Azure Active Directory](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)-Authentifizierung ist ein Mechanismus zum Herstellen einer Verbindung mit Azure SQL-Datenbank und SQL Data Warehouse unter Verwendung von Identitäten in Azure Active Directory (Azure AD). Mithilfe der Azure AD-Authentifizierung können Sie die Identitäten von Datenbankbenutzern und anderen Microsoft-Diensten zentral verwalten. Die zentrale ID-Verwaltung ermöglicht eine einheitliche Verwaltung von Datenbankbenutzern und vereinfacht die Berechtigungsverwaltung.
+Die [Azure Active Directory](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)-Authentifizierung ist ein Mechanismus zum Herstellen einer Verbindung mit Azure SQL-Datenbank und SQL Data Warehouse unter Verwendung von Identitäten in Azure Active Directory (Azure AD). Mithilfe der Azure AD-Authentifizierung können Sie die Identitäten von Datenbankbenutzern und anderen Microsoft-Diensten zentral verwalten. Die zentrale ID-Verwaltung ermöglicht eine einheitliche Verwaltung von Datenbankbenutzern und vereinfacht die Berechtigungsverwaltung.
 
 > [!NOTE]
 > Es wird empfohlen, die Azure AD-Authentifizierung zu verwenden.
@@ -95,7 +95,7 @@ Daraus ergeben sich u. a. die folgenden Vorteile:
 Die Konfigurationsschritte schließen die folgenden Verfahren zum Konfigurieren und Verwenden der Azure AD-Authentifizierung ein:
 
 - Erstellen und Auffüllen von Azure AD
-- Optional: Ordnen Sie die Active Directory-Instanz zu oder ändern Sie diejenige, die derzeit Ihrem Azure-Abonnement zugeordnet ist.
+- Optional: Ordnen Sie ein aktives Verzeichnis für Ihr Azure-Abonnement zu, oder ändern Sie dieses.
 - Erstellen Sie einen Azure Active Directory-Administrators für Azure SQL-Datenbank oder [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
 - Konfigurieren der Clientcomputer
 - Erstellen eigenständiger Datenbankbenutzer in der Datenbank, die Azure AD-Identitäten zugeordnet sind
@@ -145,18 +145,18 @@ Der Bedrohungsschutz ist mehr als nur das Erkennen von Bedrohungen. Der Bedrohun
 - Implementieren sicherer Konfigurationen in Ihrer Datenbank, um diese schützen zu können.
 - Ermitteln von und sofortiges Reagieren auf mögliche Bedrohungen, um deren Auswirkungen zu minimieren.
 
-**Bewährte Methode**: Ermitteln, klassifizieren und kennzeichnen Sie sensible Daten in Ihrer Datenbank.   
-**Detail**: Klassifizieren Sie die Daten in Ihrer SQL-Datenbank-Instanz, indem Sie die [Datenermittlung und -klassifizierung](/azure/sql-database/sql-database-data-discovery-and-classification) in Azure SQL-Datenbank aktivieren. Sie können den Zugriff auf Ihre sensiblen Daten auf dem Azure-Dashboard überwachen oder Berichte herunterladen.
+**Bewährte Methode:** Ermitteln, klassifizieren und kennzeichnen Sie sensible Daten in Ihrer Datenbank.   
+**Beschreibung:** Klassifizieren Sie die Daten in Ihrer SQL-Datenbank-Instanz, indem Sie die [Datenermittlung und -klassifizierung](/azure/sql-database/sql-database-data-discovery-and-classification) in Azure SQL-Datenbank aktivieren. Sie können den Zugriff auf Ihre sensiblen Daten auf dem Azure-Dashboard überwachen oder Berichte herunterladen.
 
-**Bewährte Methode**: Verfolgen Sie Datenbanksicherheitsrisiken, um Ihre Datenbanksicherheit proaktiv zu verbessern.   
-**Detail**: Verwenden Sie den Azure SQL-Datenbank-Dienst [Sicherheitsrisikobewertung](/azure/sql-database/sql-vulnerability-assessment), der Ihre Datenbank auf mögliche Sicherheitsrisiken prüft. Der Dienst verwendet eine Wissensdatenbank, die aus Regeln besteht, die Sicherheitsrisiken kennzeichnen und Abweichungen von bewährten Methoden hervorheben, z.B. Fehlkonfigurationen, übermäßige Berechtigungen und ungeschützte vertrauliche Daten.
+**Bewährte Methode:** Verfolgen Sie Datenbanksicherheitsrisiken, um Ihre Datenbanksicherheit proaktiv zu verbessern.   
+**Beschreibung:** Verwenden Sie den Azure SQL-Datenbank-Dienst [Sicherheitsrisikobewertung](/azure/sql-database/sql-vulnerability-assessment), der Ihre Datenbank auf mögliche Sicherheitsrisiken prüft. Der Dienst verwendet eine Wissensdatenbank, die aus Regeln besteht, die Sicherheitsrisiken kennzeichnen und Abweichungen von bewährten Methoden hervorheben, z.B. Fehlkonfigurationen, übermäßige Berechtigungen und ungeschützte vertrauliche Daten.
 
 Die Regeln basieren auf bewährten Methoden von Microsoft und konzentrieren sich auf die Sicherheitsprobleme, die das größte Risiko für Ihre Datenbank und deren wertvolle Daten darstellen. Sie betreffen sowohl Sicherheitsprobleme auf Datenbankebene als auch auf Serverebene wie Server-Firewalleinstellungen und Berechtigungen auf Serverebene. Diese Regeln stellen darüber hinaus viele der Anforderung von Regulierungsbehörden dar, um deren Konformitätsstandards zu erfüllen.
 
-**Bewährte Methode**: Aktivieren Sie die Bedrohungserkennung.  
-**Detail**:  Aktivieren Sie die [Bedrohungserkennung](/azure/sql-database/sql-database-threat-detection) in Azure SQL-Datenbank, um Sicherheitswarnungen und -empfehlungen bezüglich der Untersuchung und Abwehr von Bedrohungen zu erhalten. Dann erhalten Sie Warnungen zu verdächtigen Datenbankaktivitäten, potenziellen Sicherheitsrisiken sowie Angriffen durch Einschleusung von SQL-Befehlen und ungewöhnlichen Datenbankzugriffs- und -abfragemustern.
+**Bewährte Methode:** Aktivieren Sie die Bedrohungserkennung.  
+**Beschreibung:** Aktivieren Sie die [Bedrohungserkennung](/azure/sql-database/sql-database-threat-detection) in Azure SQL-Datenbank, um Sicherheitswarnungen und -empfehlungen bezüglich der Untersuchung und Abwehr von Bedrohungen zu erhalten. Dann erhalten Sie Warnungen zu verdächtigen Datenbankaktivitäten, potenziellen Sicherheitsrisiken sowie Angriffen durch Einschleusung von SQL-Befehlen und ungewöhnlichen Datenbankzugriffs- und -abfragemustern.
 
-[Advanced Threat Protection](/azure/sql-database/sql-advanced-threat-protection) ist ein einheitliches Paket für erweiterte SQL-Sicherheitsfunktionen. Es enthält die zuvor erwähnten Dienste: Datenermittlung und -klassifizierung, Sicherheitsrisikobewertung und Bedrohungserkennung. Hier können Sie diese Funktionen an einer Stelle aktivieren und verwalten.
+[Advanced Threat Protection](/azure/sql-database/sql-advanced-threat-protection) ist ein einheitliches Paket für erweiterte SQL-Sicherheitsfunktionen. Es enthält die bereits erwähnten Dienste: die Datenermittlung und -klassifizierung, die Sicherheitsrisikobewertung und die Bedrohungserkennung. Hier können Sie diese Funktionen an einer Stelle aktivieren und verwalten.
 
 Wenn Sie diese Funktionen aktivieren, werden Sie bei Folgendem unterstützt:
 

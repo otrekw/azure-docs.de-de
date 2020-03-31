@@ -1,19 +1,18 @@
 ---
 title: Abbrechen der Operations-API | Azure Marketplace
 description: Abbrechen von Vorgängen.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 374425dbd2abacb2114b5792d7476bc341fa353a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 6d4c1f52f0f3b1e05ec06f5a66a36323f346d4eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819788"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280540"
 ---
 # <a name="cancel-operation"></a>Abbrechen eines Vorgangs 
 
@@ -28,8 +27,8 @@ Sie können für die Anforderung eine kommagetrennte Liste mit E-Mail-Adressen a
 
 |  **Name**    |      **Beschreibung**                                  |    **Datentyp**  |
 | ------------ |     ----------------                                  |     -----------   |
-| publisherId  |  Herausgeber-ID (Beispiel: `contoso`)         |   Zeichenfolge          |
-| offerId      |  Angebots-ID                                     |   Zeichenfolge          |
+| publisherId  |  Herausgeber-ID (Beispiel: `contoso`)         |   String          |
+| offerId      |  Angebots-ID                                     |   String          |
 | api-version  |  Aktuelle Version der API                               |    Date           |
 |  |  |  |
 
@@ -65,7 +64,7 @@ Sie können für die Anforderung eine kommagetrennte Liste mit E-Mail-Adressen a
 |  |  |
 
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
   `Operation-Location: https://cloudpartner.azure.com/api/publishers/contoso/offers/contoso-virtualmachineoffer/operations/56615b67-2185-49fe-80d2-c4ddf77bb2e8`
 

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
 ms.openlocfilehash: feffbb634af62d70a840febcf2a04afb7bdeeddd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60580857"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>Klonen aus einer Sicherung des StorSimple Virtual Array
@@ -124,7 +124,7 @@ Jede Freigabe verfügt über einen Ordner *.backups* , der die letzten Sicherung
    
    Auf diese Weise werden die letzten fünf Sicherungen angezeigt, und können zur Wiederherstellung auf Elementebene verwendet werden. Zu den fünf letzten Sicherungen gehören sowohl die standardmäßig geplanten als auch die manuellen Sicherungen.
    
-   * **Geplante Sicherungen** weisen die Bezeichnung &lt;Gerätename&gt;DailySchedule-YYYYMMDD-HHMSS-UTC auf.
+   * **Geplante Sicherungen** weisen die Bezeichnung &lt;Gerätename&gt;DailySchedule-YYYYMMDD-HHMMSS-UTC auf.
    * **Manuelle Sicherungen** weisen die Bezeichnung „Ad-hoc-YYYYMMDD-HHMMSS-UTC“ auf.
      
      ![](./media/storsimple-virtual-array-clone/image14.png)

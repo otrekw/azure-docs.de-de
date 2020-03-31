@@ -13,16 +13,18 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 7dfd12729c5697d1935d098cbd4ed863a4551acd
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 0bb3abc7b7102da55c9ededcadd7a301f74065ab
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719873"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349335"
 ---
 # <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>Arbeiten mit R- und SQL-Daten in Azure SQL-Datenbank mit Machine Learning Services (Vorschauversion)
 
 In diesem Artikel werden einige häufige Probleme beschrieben, die ggf. auftreten können, wenn Sie Daten zwischen R und SQL-Datenbank in [Machine Learning Services (mit R) in Azure SQL-Datenbank](sql-database-machine-learning-services-overview.md) verschieben. In dieser Übung sammeln Sie praktische Erfahrungen, die Ihnen eine gute Grundlage für die Arbeit mit Daten in Ihrem eigenen Skript bieten.
+
+[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 Beispiele für häufige Probleme, die auftreten können:
 
@@ -30,8 +32,6 @@ Beispiele für häufige Probleme, die auftreten können:
 - Es können implizite Konvertierungen auftreten
 - Umwandlungs- und Konvertierungsvorgänge sind ggf. erforderlich
 - Für R und SQL werden unterschiedliche Datenobjekte genutzt
-
-[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -102,7 +102,7 @@ str(OutputDataSet);
 
 ```text
 STDOUT message(s) from external script:
-'data.frame':   3 obs. of  1 variable:
+'data.frame':    3 obs. of  1 variable:
 $ mytextvariable: Factor w/ 3 levels " ","hello","world": 2 1 3
 ```
 
@@ -110,13 +110,13 @@ $ mytextvariable: Factor w/ 3 levels " ","hello","world": 2 1 3
 
 ```text
 STDOUT message(s) from external script:
-'data.frame':   1 obs. of  3 variables:
+'data.frame':    1 obs. of  3 variables:
 $ c..hello..: Factor w/ 1 level "hello": 1
 $ X...      : Factor w/ 1 level " ": 1
 $ c..world..: Factor w/ 1 level "world": 1
 ```
 
-Sie sehen, dass eine geringfügige Änderung der R-Syntax eine große Auswirkung auf das Schema mit den Ergebnissen hat. Die Unterschiede der R-Datentypen sind in [„Advanced R“ von Hadley Wickham](http://adv-r.had.co.nz) im Abschnitt *Data Structures* ausführlich beschrieben.
+Sie sehen, dass eine geringfügige Änderung der R-Syntax eine große Auswirkung auf das Schema mit den Ergebnissen hat. Die Unterschiede der R-Datentypen sind in *„Advanced R“ von Hadley Wickham* im Abschnitt [Data Structures](http://adv-r.had.co.nz) ausführlich beschrieben.
 
 Vorerst sollten Sie nur bedenken, dass Sie die erwarteten Ergebnisse überprüfen sollten, wenn Sie für R-Objekte Datenrahmen verwenden.
 

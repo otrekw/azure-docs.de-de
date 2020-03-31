@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae932191c7b76590ea217386dfd729add5566f87
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60384108"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230106"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Verwenden von Connectors mit dem Azure AD Connect Synchronization Service Manager
 
@@ -31,17 +31,17 @@ ms.locfileid: "60384108"
 Die Registerkarte „Connectors“ wird verwendet, um alle Systeme zu verwalten, mit denen das Synchronisierungsmodul verbunden ist.
 
 ## <a name="connector-actions"></a>Connectoraktionen
-| Aktion | Comment |
+| Action | Comment |
 | --- | --- |
-| Erstellen |Nicht verwenden. Verwenden Sie den Installations-Assistenten zum Verbinden mit weiteren Active Directory-Gesamtstrukturen. |
+| Erstellen |Darf nicht verwendet werden. Verwenden Sie den Installations-Assistenten zum Verbinden mit weiteren Active Directory-Gesamtstrukturen. |
 | Eigenschaften |Wird zum Filtern von Domänen und Organisationseinheiten verwendet. |
 | [Löschen](#delete) |Wird zum Löschen der Daten im Connectorbereich oder zum Löschen der Verbindung mit einer Gesamtstruktur verwendet. |
 | [Ausführungsprofile konfigurieren](#configure-run-profiles) |Hier muss nur das Filtern von Domänen konfiguriert werden. Sie können diese Aktion verwenden, um bereits konfigurierte Ausführungsprofile anzuzeigen. |
 | Ausführen |Wird zum Starten einer einmaligen Ausführung eines Profils verwendet. |
 | Beenden |Beendet einen Connector, der gerade ein Profil ausführt. |
-| Connector exportieren |Nicht verwenden. |
-| Connector importieren |Nicht verwenden. |
-| Connector aktualisieren |Nicht verwenden. |
+| Connector exportieren |Darf nicht verwendet werden. |
+| Connector importieren |Darf nicht verwendet werden. |
+| Connector aktualisieren |Darf nicht verwendet werden. |
 | Schema aktualisieren |Aktualisiert das zwischengespeicherte Schema. Es wird empfohlen, die Option im Installations-Assistenten zu verwenden, da damit auch die Synchronisierungsregeln aktualisiert werden. |
 | [Connectorbereich durchsuchen](#search-connector-space) |Wird verwendet, um Objekte zu finden und um ein Objekt und dessen Daten durch das System zu verfolgen. |
 
@@ -80,7 +80,7 @@ Wenn Sie das Kontokennwort ändern, kann Synchronisierungsdienst Änderungen an 
 Um das Problem zu beheben, aktualisieren Sie das AD DS-Benutzerkonto wie folgt:
 
 
-1. Starten Sie Synchronization Service Manager („START“ > „Synchronization Service“).
+1. Starten Sie den Synchronization Service Manager („START“ > „Synchronisierungsdienst“).
 </br>![Synchronization Service Manager](./media/how-to-connect-sync-service-manager-ui-connectors/startmenu.png)
 2. Wechseln Sie zur Registerkarte **Connectors**.
 3. Wählen Sie den AD-Connector aus, der für das Verwenden des AD DS-Kontos konfiguriert ist.

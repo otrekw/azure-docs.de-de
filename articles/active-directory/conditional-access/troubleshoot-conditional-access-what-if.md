@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 661afc08c76c6cde61b02a29a55b4a8bec932e21
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73175819"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>Beheben von Problemen beim bedingten Zugriff mit dem Was-wäre-wenn-Tool
@@ -78,4 +78,4 @@ In diesen Test können weitere Datenpunkte aufgenommen werden, um den Bereich ei
 * [Was ist bedingter Zugriff?](overview.md)
 * [Was ist Azure Active Directory Identity Protection?](../identity-protection/overview-v2.md)
 * [Was ist eine Geräteidentität?](../devices/overview.md)
-* [So funktioniert's: Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md).
+* [Funktionsweise: Azure Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md)

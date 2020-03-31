@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: e035c1ff4c8e16fbf40883b54e3153eab9729040
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 6abb4f632535f1bda7e9f337f111ba372a624f2b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894278"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239618"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Verwenden von Azure Kubernetes Service mit Apache Kafka in HDInsight
 
@@ -37,7 +37,7 @@ In diesem Dokument wird vorausgesetzt, dass Sie mit dem Erstellen und Verwenden 
 
 Es wird ebenso vorausgesetzt, dass Sie das [Tutorial zu Azure Kubernetes Service](../../aks/tutorial-kubernetes-prepare-app.md) durchgearbeitet haben. In diesem Artikel werden ein Containerdienst, ein Kubernetes-Cluster und eine Containerregistrierung erstellt. Außerdem wird das Hilfsprogramm `kubectl` konfiguriert.
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>Aufbau
 
 ### <a name="network-topology"></a>Netzwerktopologie
 
@@ -69,7 +69,7 @@ Wenn Sie nicht bereits über einen AKS-Cluster verfügen, verwenden Sie eines de
 
 2. Wählen Sie in der Ressourcengruppe die Ressource __Virtuelles Netzwerk__ aus. Notieren Sie sich den Namen für die spätere Verwendung.
 
-3. Wählen Sie unter __Einstellungen__ die Option **Adressraum** aus. Notieren Sie sich den aufgelisteten Adressraum.
+3. Wählen Sie unter **Einstellungen** die Option __Adressraum__ aus. Notieren Sie sich den aufgelisteten Adressraum.
 
 ### <a name="create-virtual-network"></a>Virtuelles Netzwerk erstellen
 
@@ -77,7 +77,7 @@ Wenn Sie nicht bereits über einen AKS-Cluster verfügen, verwenden Sie eines de
 
 1. Erstellen Sie das Netzwerk gemäß der folgenden Richtlinien für bestimmte Eigenschaften:
 
-    |Eigenschaft | Wert |
+    |Eigenschaft | value |
     |---|---|
     |Adressraum|Sie müssen einen Adressraum verwenden, der sich nicht mit dem des AKS-Clusternetzwerks überschneidet.|
     |Location|Verwenden Sie den gleichen __Speicherort__ für das virtuelle Netzwerk, den Sie für den AKS-Cluster verwendet haben.|
@@ -90,7 +90,7 @@ Wenn Sie nicht bereits über einen AKS-Cluster verfügen, verwenden Sie eines de
 
 1. Wählen Sie __+ Hinzufügen__ aus, und verwenden Sie die folgenden Werte zum Ausfüllen des Formulars:
 
-    |Eigenschaft |Wert |
+    |Eigenschaft |value |
     |---|---|
     |Name für das Peering zwischen \<diesem VNET> und dem virtuellen Remotenetzwerk|Geben Sie einen eindeutigen Namen für diese Peeringkonfiguration ein.|
     |Virtuelles Netzwerk|Wählen Sie das virtuelle Netzwerk für den **AKS-Cluster** aus.|
@@ -118,13 +118,13 @@ In den folgenden Schritten konfigurieren Sie Kafka so, dass anstelle von Domäne
 
     ![Apache Ambari – Dienstkonfiguration](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
 
-4. Geben Sie zum Suchen der Konfiguration __kafka-env__ oben rechts in das Feld __Filter__ die Zeichenfolge `kafka-env` ein.
+4. Geben Sie zum Suchen der Konfiguration __kafka-env__ oben rechts in das Feld `kafka-env`Filter__die Zeichenfolge__ ein.
 
     ![Kafka-Konfiguration für kafka-env](./media/apache-kafka-azure-container-services/search-for-kafka-env.png)
 
 5. Um Kafka zum Ankündigen von IP-Adressen zu konfigurieren, fügen Sie den folgenden Text am Ende des Felds __Vorlage für kafka-env__ hinzu:
 
-    ```
+    ```bash
     # Configure Kafka to advertise IP addresses instead of FQDN
     IP_ADDRESS=$(hostname -i)
     echo advertised.listeners=$IP_ADDRESS
@@ -132,7 +132,7 @@ In den folgenden Schritten konfigurieren Sie Kafka so, dass anstelle von Domäne
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. Geben Sie zum Konfigurieren der Schnittstelle, an der Kafka lauscht, oben rechts in das Feld __Filter__ die Zeichenfolge `listeners` ein.
+6. Geben Sie zum Konfigurieren der Schnittstelle, an der Kafka lauscht, oben rechts in das Feld `listeners`Filter__die Zeichenfolge__ ein.
 
 7. Um Kafka zum Lauschen an allen Netzwerkschnittstellen zu konfigurieren, ändern Sie den Wert im Feld __Listener__ in `PLAINTEXT://0.0.0.0:9092`.
 
@@ -161,7 +161,7 @@ An diesem Punkt kommunizieren Kafka und Azure Kubernetes Service über die durch
 3. Bearbeiten Sie die Datei `index.js`, und ändern Sie die folgenden Zeilen:
 
     * `var topic = 'mytopic'`: Ersetzen Sie `mytopic` durch den Namen des von dieser Anwendung verwendeten Kafka-Themas.
-    * `var brokerHost = '176.16.0.13:9092`: Ersetzen Sie `176.16.0.13` durch die interne IP-Adresse eines der Brokerhosts für den Cluster.
+    * `var brokerHost = '176.16.0.13:9092`: Ersetzen Sie `176.16.0.13` durch die interne IP-Adresse eines der Broker-Hosts für den Cluster.
 
         Informationen zum Suchen der internen IP-Adresse der Broker-Hosts (Workerknoten) im Cluster finden Sie im Dokument [Apache Ambari-REST-API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes). Wählen Sie die IP-Adresse eines der Einträge aus, bei welcher der Domänenname mit `wn` beginnt.
 
@@ -176,7 +176,7 @@ An diesem Punkt kommunizieren Kafka und Azure Kubernetes Service über die durch
 
 5. Melden Sie sich bei der Containerregistrierung von Azure (Azure Container Registry, ACR) an, und suchen Sie den loginServer-Namen:
 
-    ```bash
+    ```azurecli
     az acr login --name <acrName>
     az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
     ```

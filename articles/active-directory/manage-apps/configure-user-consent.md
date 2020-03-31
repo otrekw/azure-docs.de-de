@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5bd305d2943d1b12756171748f28d32300081d71
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75443392"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Konfigurieren der Art und Weise, wie Endbenutzer Anwendungen zustimmen können
@@ -32,7 +32,7 @@ Microsoft empfiehlt die Deaktivierung zukünftiger Vorgänge für die Benutzerei
 
 Im Azure-Portal können Sie deaktivieren oder aktivieren, ob Benutzer Anwendungen zustimmen können, die auf die Daten Ihrer Organisation zugreifen:
 
-1. Melden Sie sich als [globaler Administrator](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich als [globaler Administrator](https://portal.azure.com) beim [Azure-Portal](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) an.
 2. Wählen Sie **Azure Active Directory**, **Unternehmensanwendungen** und dann **Benutzereinstellungen** aus.
 3. Aktivieren oder deaktivieren Sie die Benutzereinwilligung mit dem Steuerelement **Benutzer können Apps den Zugriff auf Unternehmensdaten in ihrem Namen gestatten**.
 4. (Optional) Konfigurieren Sie den [Workflow zum Anfordern der Administratoreinwilligung](configure-admin-consent-workflow.md), um sicherzustellen, dass Benutzer, die einer App nicht zustimmen dürfen, eine Genehmigung anfordern können.
@@ -151,4 +151,4 @@ Mit dem Azure AD PowerShell-Vorschaumodul ([AzureADPreview](https://docs.microso
 
 [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](../develop/active-directory-v2-scopes.md)
 
-[Azure AD bei Stack Overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[Azure AD bei StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

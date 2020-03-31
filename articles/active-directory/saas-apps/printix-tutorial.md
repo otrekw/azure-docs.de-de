@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Printix | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Printix | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Printix konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -16,10 +16,10 @@ ms.date: 06/29/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e883833f7998c073b574c892ed5c7777e01faab4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62111444"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>Tutorial: Azure Active Directory-Integration mit Printix
@@ -66,11 +66,11 @@ Zum Konfigurieren der Integration von Printix in Azure AD müssen Sie Printix au
 
 1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![ANWENDUNGEN][2]
+    ![Anwendungen][2]
     
 1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![ANWENDUNGEN][3]
+    ![Anwendungen][3]
 
 1. Geben Sie im Suchfeld **Printix**ein.
 
@@ -93,7 +93,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD mit Printix m�
 1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
 1. **[Erstellen eines Printix-Testbenutzers](#creating-a-printix-test-user)** , um eine Entsprechung von Britta Simon in Printix zu erhalten, die mit der Darstellung dieses Benutzers in Azure AD verknüpft ist.
 1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -103,15 +103,15 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Printix** auf **Einmaliges Anmelden**.
 
-    ![Configure single sign-on][4]
+    ![Einmaliges Anmelden konfigurieren][4]
 
 1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure single sign-on](./media/printix-tutorial/tutorial_printix_samlbase.png)
+    ![Einmaliges Anmelden konfigurieren](./media/printix-tutorial/tutorial_printix_samlbase.png)
 
 1. Führen Sie auf der Seite **Domäne und URLs für Printix** die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/printix-tutorial/tutorial_printix_url.png)
+    ![Einmaliges Anmelden konfigurieren](./media/printix-tutorial/tutorial_printix_url.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.printix.net`.
 
@@ -120,39 +120,39 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
  
 1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure single sign-on](./media/printix-tutorial/tutorial_printix_certificate.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/printix-tutorial/tutorial_printix_certificate.png) 
 
 1. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure single sign-on](./media/printix-tutorial/tutorial_general_400.png)
+    ![Einmaliges Anmelden konfigurieren](./media/printix-tutorial/tutorial_general_400.png)
 
 1. Melden Sie sich bei Ihrem Printix-Mandanten als Administrator an.
 
 1. Klicken Sie im Menü am oberen Rand auf das Symbol in der oberen rechten Ecke, und wählen Sie**Authentifizierung**.
    
-    ![Configure single sign-on](./media/printix-tutorial/tutorial_printix_06.png)
+    ![Einmaliges Anmelden konfigurieren](./media/printix-tutorial/tutorial_printix_06.png)
 
 1. Wählen Sie auf der Registerkarte **Setup** die Option **Azure-/Office 365-Authentifizierung aktivieren** aus.
    
-    ![Configure single sign-on](./media/printix-tutorial/tutorial_printix_07.png)
+    ![Einmaliges Anmelden konfigurieren](./media/printix-tutorial/tutorial_printix_07.png)
 
 1. Geben Sie auf der Registerkarte **Azure** im Textfeld **Verbundmetadaten-Dokument** die Verbundmetadaten-URL ein. 
 
     Fügen Sie die Metadaten-XML-Datei, die Sie von Azure AD heruntergeladen haben, an eine E-Mail an, und senden Sie sie an das [Printix-Supportteam](mailto:support@printix.net). Das Team lädt die XML-Datei hoch und stellt eine Verbundmetadaten-URL bereit.
    
-    ![Configure single sign-on](./media/printix-tutorial/tutorial_printix_08.png)
+    ![Einmaliges Anmelden konfigurieren](./media/printix-tutorial/tutorial_printix_08.png)
    
 1. Klicken Sie auf die Schaltfläche **Testen** und dann auf die Schaltfläche **OK**, wenn der Test erfolgreich war.
    
      Nachdem Sie auf die Schaltfläche **Testen** geklickt haben, wird die Azure Active Directory-Seite angezeigt. Eine Meldung der Art „Der Test war erfolgreich“ bedeutet in diesem Fall, dass nach dem Eingeben der Anmeldeinformationen für Ihr Azure-Testkonto die Meldung „Einstellungen getestet – OK“ angezeigt wird. Klicken Sie anschließend auf die Schaltfläche **OK**.
    
-    ![Configure single sign-on](./media/printix-tutorial/tutorial_printix_09.png)
+    ![Einmaliges Anmelden konfigurieren](./media/printix-tutorial/tutorial_printix_09.png)
 
 1. Klicken Sie auf der Seite **Authentifizierung** auf die Schaltfläche **Speichern**.
 
 
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -184,7 +184,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
  
 ### <a name="creating-a-printix-test-user"></a>Erstellen eines Printix-Testbenutzers
 
@@ -210,7 +210,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
 1. Wählen Sie in der Anwendungsliste **Printix**aus.
 
-    ![Configure single sign-on](./media/printix-tutorial/tutorial_printix_app.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/printix-tutorial/tutorial_printix_app.png) 
 
 1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 

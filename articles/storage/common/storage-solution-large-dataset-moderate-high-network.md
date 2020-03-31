@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: f7177a95bdd585ff2822c9ac8c94a85d12f9259b
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69900364"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Datenübertragung für große Datasets mit mittlerer bis hoher Netzwerkbandbreite
@@ -52,7 +52,7 @@ Wenn die verfügbare Netzwerkbandbreite hoch ist, verwenden Sie eines der folgen
 - **AzCopy**: Verwenden Sie dieses Befehlszeilentool, um Daten einfach und schnell in und aus Azure Blobs, Files und Table Storage mit optimaler Leistung zu kopieren. AzCopy unterstützt Nebenläufigkeit und Parallelität sowie die Fortsetzung unterbrochener Kopiervorgänge.
 - **Azure Storage REST-APIs/SDKs**: Beim Erstellen einer Anwendung können Sie die Anwendung mithilfe von Azure Storage REST-APIs entwickeln und die in mehreren Sprachen angebotenen Azure SDKs verwenden.
 - **Azure Data Box-Produktfamilie für Onlineübertragungen**: Data Box Edge und Data Box Gateway sind Onlinenetzwerkgeräte, die Daten in und aus Azure übertragen können. Verwenden Sie das physische Data Box Edge-Gerät, wenn gleichzeitig eine kontinuierliche Erfassung und Vorverarbeitung der Daten vor dem Hochladen erforderlich ist. Data Box Gateway ist eine virtuelle Version des Geräts mit den gleichen Datenübertragungsfunktionen. In jedem Fall wird die Datenübertragung vom Gerät verwaltet.
-- **Azure Data Factory**: Data Factory sollte verwendet werden, um einen Übertragungsvorgang zu skalieren, und wenn es Bedarf für Orchestrierung und Überwachungsfunktionen auf Unternehmensebene gibt. Verwenden Sie Data Factory, um regelmäßig Dateien zwischen mehreren Azure-Diensten, lokal oder in einer Kombination aus beidem zu übertragen. Mit Data Factory können Sie datengesteuerte Workflows (sogenannte Pipelines) erstellen und planen, die Daten aus unterschiedlichen Datenspeichern erfassen und die Datenbewegung und Datentransformation automatisieren.
+- **Azure Data Factory**: Data Factory sollte verwendet werden, um einen Übertragungsvorgang aufzuskalieren, und wenn es Bedarf für Orchestrierung und Überwachungsfunktionen auf Unternehmensebene gibt. Verwenden Sie Data Factory, um regelmäßig Dateien zwischen mehreren Azure-Diensten, lokal oder in einer Kombination aus beidem zu übertragen. Mit Data Factory können Sie datengesteuerte Workflows (sogenannte Pipelines) erstellen und planen, die Daten aus unterschiedlichen Datenspeichern erfassen und die Datenbewegung und Datentransformation automatisieren.
 
 ## <a name="comparison-of-key-capabilities"></a>Vergleich der Schlüsselfunktionen
 
@@ -62,7 +62,7 @@ In den folgenden Tabellen werden die Unterschiede bei den Schlüsselfunktionen f
 
 Wenn Sie die Offlinedatenübertragung nutzen, verwenden Sie die folgende Tabelle, um die Unterschiede in den Schlüsselfunktionen zu verstehen.
 
-|                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy            |    Import/Export                       |
+|                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy            |    Importieren/Exportieren                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
 |    Datengröße                        |    Bis zu 35 TB                 |    Bis zu 80 TB pro Gerät                       |    Bis zu 800 TB pro Gerät               |    Variable                            |
 |    Datentyp                        |    Azure-Blobs                  |    Azure-Blobs<br>Azure Files                    |    Azure-Blobs<br>Azure Files            |    Azure-Blobs<br>Azure Files          |
@@ -100,7 +100,7 @@ Bei Nutzung von Onlinedatenübertragung verwenden Sie die Tabelle im folgenden A
 
     - [Übertragen von Daten mit Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-quickstart-portal).
     - [Übertragen von Daten mit Data Box](https://docs.microsoft.com/azure/databox/data-box-quickstart-portal).
-- [Übertragen von Daten mit AzCopy](/azure/storage/common/storage-use-azcopy-v10)
+- [Übertragen von Daten mit AzCopy](/azure/storage/common/storage-use-azcopy-v10).
 - Informationen zum
     - [Übertragen von Daten mit Data Box Gateway](https://docs.microsoft.com/azure/databox-online/data-box-gateway-deploy-add-shares)
     - [Transformieren von Daten mit Data Box Edge vor dem Senden an Azure](https://docs.microsoft.com/azure/databox-online/data-box-edge-deploy-configure-compute).

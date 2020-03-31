@@ -16,10 +16,10 @@ ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8679f9a03fded546db68f058bca716ba053aa0fe
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73161195"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian Jira und Confluence – Administratorhandbuch für Azure Active Directory
@@ -28,7 +28,7 @@ ms.locfileid: "73161195"
 
 Das Plug-In zum einmaligen Anmelden (Single Sign-On, SSO) in Azure Active Directory (Azure AD) ermöglicht Microsoft Azure AD-Kunden, ihre Geschäfts- oder Schulkonten zur Anmeldung bei Atlassian JIRA- und Confluence Server-basierten Produkten zu verwenden. Es implementiert SSO auf SAML 2.0-Basis.
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 Wenn Benutzer sich bei einer Atlassian JIRA- oder Confluence-Anwendung anmelden möchten, sehen sie die Schaltfläche **Anmelden mit Azure AD** auf der Anmeldeseite. Wenn sie diese Option auswählen, müssen sie sich mit der Azure AD-Organisationsanmeldeseite (d.h. ihrem Geschäfts- oder Schulkonto) anmelden.
 
@@ -125,7 +125,7 @@ Die folgende Abbildung zeigt den Konfigurationsbildschirm in JIRA und Confluence
 
 * **Abmelde-URL**: Die Abmelde-URL aus Ihrem IdP. Dieses Feld wird aus Azure AD gefüllt, wenn die Metadaten-URL aufgelöst ist.
 
-* **X.509-Zertifikat**: Das X.509-Zertifikat Ihres IdP. Dieses Feld wird aus Azure AD gefüllt, wenn die Metadaten-URL aufgelöst ist.
+* **X. 509-Zertifikat**: Das X.509-Zertifikat Ihres IdP. Dieses Feld wird aus Azure AD gefüllt, wenn die Metadaten-URL aufgelöst ist.
 
 * **Anmeldeschaltflächen-Name**: Der Name der Anmeldeschaltfläche, die Ihre Organisation Benutzern auf der Anmeldeseite anzeigen möchte.
 
@@ -137,13 +137,13 @@ Die folgende Abbildung zeigt den Konfigurationsbildschirm in JIRA und Confluence
 
 * **Domänenname**: Der Domänenname bei AD FS-basiertem Anmelden.
 
-* **Einmaliges Anmelden aktivieren**: Erforderliche Auswahl, wenn eine Abmeldung bei Azure AD erfolgen soll, wenn ein Benutzer sich bei JIRA oder Confluence abmeldet.
+* **Einmaliges Abmelden aktivieren**: Erforderliche Auswahl, wenn eine Abmeldung bei Azure AD erfolgen soll, wenn ein Benutzer sich bei JIRA oder Confluence abmeldet.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-* **Fehlermeldung, dass mehrere Zertifikate vorliegen**: Melden Sie sich bei Azure AD an, und entfernen Sie mehrere Zertifikate, die für die App verfügbar sind. Stellen Sie sicher, dass nur ein Zertifikat vorhanden ist.
+* **Sie erhalten Fehlermeldungen, dass mehrere Zertifikate vorhanden sind**: Melden Sie sich bei Azure AD an, und entfernen Sie überzählige Zertifikate, die für die App verfügbar sind. Stellen Sie sicher, dass nur ein Zertifikat vorhanden ist.
 
-* **Ein Zertifikat läuft bald in Azure AD ab**: Add-Ons tragen Sorge für den automatischen Rollover des Zertifikats. Wenn ein Zertifikat in Kürze abläuft, sollte das neue Zertifikat als aktiv gekennzeichnet werden, und nicht verwendete Zertifikate sollten gelöscht werden. Wenn ein Benutzer versucht, sich in diesem Szenario bei JIRA anzumelden, ruft das Plug-In das neue Zertifikat ab und speichert es.
+* **Ein Zertifikat läuft in Azure AD ab**: Add-Ons kümmern sich um das automatische Rollover des Zertifikats. Wenn ein Zertifikat in Kürze abläuft, sollte das neue Zertifikat als aktiv gekennzeichnet werden, und nicht verwendete Zertifikate sollten gelöscht werden. Wenn ein Benutzer versucht, sich in diesem Szenario bei JIRA anzumelden, ruft das Plug-In das neue Zertifikat ab und speichert es.
 
 * **Sie möchten WebSudo (die sichere Administratorsitzung) deaktivieren**:
 
@@ -161,9 +161,9 @@ Die folgende Abbildung zeigt den Konfigurationsbildschirm in JIRA und Confluence
 
 * **Wenn der Fehler „Benutzer-ID wurde nicht gefunden“ auftritt, wenn der Benutzer versucht, sich anzumelden**: Erstellen Sie die Benutzer-ID in JIRA oder Confluence.
 
-* **„App nicht gefunden“-Fehlermeldung in Azure AD**: Stellen Sie fest, ob die entsprechende URL in Azure AD der App zugeordnet ist.
+* **Der Fehler „App nicht gefunden“ tritt in Azure AD auf**: Stellen Sie fest, ob die entsprechende URL der App in Azure AD zugeordnet ist.
 
-* **Benötigen Sie Support?** : Wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Das Team antwortet innerhalb von 24 bis 48 Geschäftsstunden.
+* **Sie benötigen Support**: Wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Das Team antwortet innerhalb von 24 bis 48 Geschäftsstunden.
 
   Sie können auch bei Microsoft ein Supportticket über den Azure-Portalkanal erstellen.
 

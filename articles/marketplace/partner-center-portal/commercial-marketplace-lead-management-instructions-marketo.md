@@ -1,19 +1,18 @@
 ---
 title: Konfigurieren der Leadverwaltung in Marketo | Azure Marketplace
 description: Konfigurieren der Leadverwaltung in Marketo für Azure Marketplace-Kunden.
-services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: evansma
-ms.openlocfilehash: 8d13e8c3aeabf6d3fdea80ffddbae47b80adc139
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 35d57d117f6308863965ffd789c0e28bedd0f301
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812136"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281509"
 ---
 # <a name="configure-lead-management-in-marketo"></a>Konfigurieren der Leadverwaltung in Marketo
 

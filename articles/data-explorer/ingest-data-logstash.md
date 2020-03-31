@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 86f6732cbf2409d3c79a3d7709100e8af24988a0
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66494545"
 ---
 # <a name="ingest-data-from-logstash-to-azure-data-explorer"></a>Erfassen von Daten aus Logstash in Azure Data Explorer
@@ -20,7 +20,7 @@ ms.locfileid: "66494545"
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Sollten Sie keins besitzen, erstellen Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/), bevor Sie beginnen.
+* ein Azure-Abonnement Sollten Sie keins besitzen, erstellen Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/), bevor Sie beginnen.
 * [Testcluster und Datenbank](create-cluster-database-portal.md) für Azure Data Explorer
 * Version 6 von Logstash ([Installationsanleitung](https://www.elastic.co/guide/en/logstash/current/installing-logstash.html))
 

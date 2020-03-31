@@ -1,19 +1,19 @@
 ---
 title: Konzepte für Wetterdienste | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie mehr über die Konzepte, die für Wetterdienste in Microsoft Azure Maps gelten.
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: af7ea5c6e9d09b05b2f9271d6954162c0fd429c6
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 03a16ac065b585c499efa268500e0a8c81c07738
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208725"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80333817"
 ---
 # <a name="weather-services-in-azure-maps"></a>Wetterdienste in Azure Maps
 
@@ -23,7 +23,7 @@ In diesem Artikel werden Konzepte vorgestellt, die für die [Wetterdienste von A
 
 Einige der Wetterdienst-APIs ermöglichen es dem Benutzer, anzugeben, ob die Daten entweder in metrischen oder in Zolleinheiten zurückgegeben werden. Die zurückgegebene Antwort für diese APIs enthält den unitType und einen numerischen Wert, der für die Übersetzung von Einheiten verwendet werden kann. Weitere Informationen zum Interpretieren dieser Werte finden Sie in der Tabelle unten.
 
-|unitType|Beschreibung         |
+|unitType|BESCHREIBUNG         |
 |--------|--------------------|
 |0       |Fuß                |
 |1       |Zoll              |

@@ -1,7 +1,7 @@
 ---
 title: Anzeigen von Informationen zu einer Koordinate auf einer Karte | Microsoft Azure Maps
 description: Hier erfahren Sie, wie Sie Informationen zu einer Adresse auf der Karte anzeigen, wenn ein Benutzer eine Koordinate auswählt.
-author: jingjing-z
+author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 07/29/2019
 ms.topic: conceptual
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 1a6b3b4665e6141fb4c95508a8d8405268de6d19
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 174bdc496e52a6ac8f2a2d631db92e0f21a819be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208521"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371432"
 ---
 # <a name="get-information-from-a-coordinate"></a>Abrufen von Informationen von einer Koordinate
 
@@ -55,6 +55,9 @@ Der dritte Codeblock fügt einen Ereignislistener für Mausklicks hinzu. Nach ei
 Die Änderung des Cursors, das Popup-Objekt und das Klickereignis werden jeweils im [Ladeereignislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) der Karte erstellt. Diese Codestruktur stellt sicher, dass die Karte vollständig geladen wurde, bevor Koordinateninformationen abgerufen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+> [!div class="nextstepaction"]
+> [Bewährte Methoden für die Verwendung des Suchdiensts](how-to-use-best-practices-for-search.md)
 
 Erfahren Sie mehr zu den in diesem Artikel verwendeten Klassen und Methoden:
 

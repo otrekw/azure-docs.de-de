@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: ec853657d6dd1f3b019d8a414cfa28edc1083b29
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74769913"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Verwenden von Azure Active Directory für die Authentifizierung mit PostgreSQL
@@ -43,7 +43,7 @@ Um Azure Active Directory-Authentifizierung zu konfigurieren und zu verwenden, v
 > [!NOTE]
 > Informationen zum Erstellen und Auffüllen von Azure AD und zum anschließenden Konfigurieren von Azure AD mit Azure Database for PostgreSQL finden Sie unter [Konfigurieren von und Anmelden mit Azure AD für Azure Database for PostgreSQL](howto-configure-sign-in-aad-authentication.md).
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>Aufbau
 
 Die folgende Abbildung bietet eine Übersicht über die Funktionsweise der Authentifizierung bei der Verwendung von Azure AD-Authentifizierung mit Azure Database for PostgreSQL. Die Pfeile zeigen die Kommunikationswege.
 
@@ -77,7 +77,7 @@ Nachdem Sie sich über Active Directory authentifiziert haben, rufen Sie ein Tok
 > [!NOTE]
 > Weitere Informationen zum Herstellen einer Verbindung mit einem Active Directory-Token finden Sie unter [Konfigurieren von und Anmelden mit Azure AD für Azure Database for PostgreSQL](howto-configure-sign-in-aad-authentication.md).
 
-## <a name="additional-considerations"></a>Zusätzliche Überlegungen
+## <a name="additional-considerations"></a>Weitere Überlegungen
 
 - Um die Verwaltungsmöglichkeiten zu verbessern, wird empfohlen, eine dedizierte Azure AD-Gruppe als Administrator bereitzustellen.
 - Es kann immer nur ein einzelner Azure AD-Administrator (Benutzer oder Gruppe) für einen Azure Database for PostgreSQL-Server konfiguriert werden.

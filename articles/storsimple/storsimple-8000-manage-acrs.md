@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
 ms.openlocfilehash: ade7da25d2307a382c17e7a3cbb26b601c34ef78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64693237"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>Verwalten von Zugriffssteuerungsdatensätzen mithilfe des StorSimple Manager-Diensts
@@ -129,5 +129,5 @@ Führen Sie die folgenden Schritte aus, um einen Zugriffssteuerungsdatensatz zu 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über das [Verwalten von StorSimple-Volumes](storsimple-8000-manage-volumes-u2.md).
-* Erfahren Sie mehr über das [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-8000-manager-service-administration.md).
+* Weitere Informationen zum [Verwenden Ihres StorSimple-Geräts mithilfe des StorSimple Manager-Diensts](storsimple-8000-manager-service-administration.md).
 

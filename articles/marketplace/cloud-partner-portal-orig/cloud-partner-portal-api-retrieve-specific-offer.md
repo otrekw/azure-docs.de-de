@@ -1,19 +1,18 @@
 ---
 title: API zum Abrufen eines bestimmten Angebots | Azure Marketplace
 description: Die API ruft das angegebene Angebot im Herausgebernamespace ab.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 030fb221b9227acf9c5dcda8797b106e51f56d64
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: a83b664bb770a88f3c4c13a672655e736a46ca75
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827351"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280455"
 ---
 <a name="retrieve-a-specific-offer"></a>Abrufen eines bestimmten Angebots
 =========================
@@ -41,8 +40,8 @@ Sie können auch eine bestimmte Version des Angebots abrufen oder das Angebot au
 
 | **Name**    | **Beschreibung**                                                                          | **Datentyp** |
 |-------------|------------------------------------------------------------------------------------------|---------------|
-| publisherId | Herausgeber-ID. Beispiel: Contoso                                                        | Zeichenfolge        |
-| offerId     | GUID, die das Angebot eindeutig identifiziert.                                                 | Zeichenfolge        |
+| publisherId | Herausgeber-ID. Beispiel: Contoso                                                        | String        |
+| offerId     | GUID, die das Angebot eindeutig identifiziert.                                                 | String        |
 | version     | Die Version des Angebots, das abgerufen wird. Standardmäßig wird die neueste Version des Angebots abgerufen. | Integer       |
 | slotId      | Der Slot, aus dem das Angebot abgerufen werden soll. Einer der folgenden Werte ist möglich:      <br/>  - `Draft` (Standard) Ruft die Angebotsversion ab, die sich aktuell im Entwurfsstadium befindet.  <br/>  -  `Preview` Ruft die Angebotsversion ab, die sich aktuell im Vorschaustadium befindet.     <br/>  -  `Production` Ruft die Angebotsversion ab, die sich aktuell im Produktionsstadium befindet.          |      enum |
 | api-version | Neueste Version der API                                                                    | Date          |
@@ -62,7 +61,7 @@ Sie können auch eine bestimmte Version des Angebots abrufen oder das Angebot au
 <a name="body-example"></a>Beispiel für Hauptteil
 ------------
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 ``` json
 {
@@ -200,7 +199,7 @@ Sie können auch eine bestimmte Version des Angebots abrufen oder das Angebot au
 |  NotStarted                 | Das Angebot ist neu, aber nicht gestartet.              |
 |  WaitingForPublisherReview  | Das Angebot wartet auf die Herausgebergenehmigung.      |
 |  Wird ausgeführt                    | Die Angebotsübermittlung wird verarbeitet.          |
-|  Succeeded                  | Die Verarbeitung der Angebotsübermittlung ist abgeschlossen.    |
+|  Erfolgreich                  | Die Verarbeitung der Angebotsübermittlung ist abgeschlossen.    |
 |  Canceled                   | Die Angebotsübermittlung wurde abgebrochen.                |
 |  Fehler                     | Fehler bei der Angebotsübermittlung.                      |
 |  |  |

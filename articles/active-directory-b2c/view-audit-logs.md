@@ -13,11 +13,11 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 83086fa2cb96eba423b9111134a0406d7256821f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78185776"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231082"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Zugriff auf Active Directory B2C-Überwachungsprotokolle
 
@@ -39,7 +39,7 @@ Die **B2C**-Kategorie in Überwachungsprotokollen umfasst die folgenden Aktivit�
 |Application | Erstellungs-, Lese-, Aktualisierungs- und Löschvorgänge (Create, Read, Update, Delete, CRUD) für B2C-Anwendungen. |
 |Key |CRUD-Vorgänge für in einem B2C-Schlüsselcontainer gespeicherte Schlüssel. |
 |Resource |CRUD-Vorgänge für B2C-Ressourcen. Beispielsweise Richtlinien und Identitätsanbieter.
-|Authentifizierung |Überprüfung von Benutzeranmeldeinformationen und Tokenausstellung.|
+|Authentication |Überprüfung von Benutzeranmeldeinformationen und Tokenausstellung.|
 
 Informationen zu den CRUD-Aktivitäten des Benutzerobjekts finden Sie in der Kategorie **Hauptverzeichnis**.
 

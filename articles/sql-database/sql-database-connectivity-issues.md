@@ -14,11 +14,11 @@ ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
 ms.openlocfilehash: d2b56e259f551f7655936c975a7a864a27a1df79
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027792"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232578"
 ---
 # <a name="troubleshooting-transient-connection-errors-to-sql-database"></a>Behandeln von Problemen bei vorübergehenden Verbindungsfehlern mit SQL-Datenbank
 
@@ -91,7 +91,7 @@ Um Ihre Wiederholungslogik zu testen, müssen Sie einen Fehler simulieren oder v
 Eine Möglichkeit, um Ihre Wiederholungslogik zu testen, besteht darin, Ihren Clientcomputer vom Netzwerk zu trennen, während das Programm ausgeführt wird. Der Fehler lautet:
 
 - **SqlException.Number** = 11001
-- Meldung: „Es ist kein solcher Host bekannt.“
+- Meldung: „Der angegebene Host ist unbekannt.“
 
 Im Rahmen des ersten Wiederholungsversuchs können Sie Ihren Clientcomputer wieder mit dem Netzwerk verbinden und dann versuchen, eine Verbindung herzustellen.
 
@@ -261,7 +261,7 @@ TCP port 1433 (ms-sql-s service): LISTENING
 
 <a id="g-diagnostics-log-your-errors" name="g-diagnostics-log-your-errors"></a>
 
-### <a name="diagnostics-log-your-errors"></a>Diagnose: Protokollieren der Fehler
+### <a name="diagnostics-log-your-errors"></a>Diagnose: Protokollieren Ihrer Fehler
 
 Periodisch auftretende Probleme lassen sich mitunter am besten diagnostizieren, indem Sie über mehrere Tage oder Wochen hinweg ein allgemeines Muster ermitteln.
 
@@ -275,7 +275,7 @@ Enterprise Library 6 (EntLib60) bietet verwaltete .NET-Klassen zur Unterstützun
 
 Nachfolgend finden Sie einige Transact-SQL-SELECT-Anweisungen, mit denen Fehlerprotokolle und andere Informationen abgefragt werden.
 
-| Protokollabfrage | Beschreibung |
+| Protokollabfrage | BESCHREIBUNG |
 |:--- |:--- |
 | `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |Die [sys.event_log](https://msdn.microsoft.com/library/dn270018.aspx)-Ansicht bietet Informationen zu einzelnen Ereignissen, einschließlich solcher, die vorübergehende Fehler oder Verbindungsfehler verursachen können.<br/><br/>Idealerweise können Sie die Werte **start_time** oder **end_time** den Zeiten zuordnen, zu denen in Ihrem Clientprogramm Probleme aufgetreten sind.<br/><br/>Sie müssen eine Verbindung mit der *Masterdatenbank* herstellen, um diese Abfrage auszuführen. |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |Die [sys.database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx)-Ansicht bietet aggregierte Werte der Ereignistypen für die weitere Diagnose.<br/><br/>Sie müssen eine Verbindung mit der *Masterdatenbank* herstellen, um diese Abfrage auszuführen. |
@@ -327,7 +327,7 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 
 Bei Enterprise Library 6 (EntLib60) handelt es sich um ein Framework aus .NET-Klassen, mit denen Sie stabile Clouddienstclients implementieren können (u. a. den SQL-Datenbankdienst). Unter [Enterprise Library 6 – April 2013](https://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx) finden Sie Themen zu den verschiedenen Bereichen, in denen EntLib60 hilfreich sein kann.
 
-EntLib60 kann beispielsweise für Wiederholungslogik zur Behandlung von vorübergehenden Fehlern hilfreich sein. Weitere Informationen finden Sie unter [4 – Hartnäckigkeit, das Geheimnis aller Erfolge: Anwendungsblock zum Behandeln vorübergehender Fehler](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx).
+EntLib60 kann beispielsweise für Wiederholungslogik zur Behandlung von vorübergehenden Fehlern hilfreich sein. Weitere Informationen finden Sie unter [4 – Hartnäckigkeit, das Geheimnis aller Erfolge: Verwenden des Anwendungsblocks für die Behandlung vorübergehender Fehler](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx).
 
 > [!NOTE]
 > Der Quellcode für EntLib60 steht im [Download Center](https://go.microsoft.com/fwlink/p/?LinkID=290898) zum öffentlichen Download bereit. Microsoft plant keine weiteren Funktions- oder Wartungsupdates für EntLib.
@@ -354,13 +354,13 @@ Im Namespace **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Test
 
 Unter folgenden Links finden Sie weitere Informationen zu EntLib60:
 
-- Kostenloses E-Book: [Developer's Guide to Microsoft Enterprise Library, 2nd Edition](https://www.microsoft.com/download/details.aspx?id=41145).
-- Bewährten Methoden: [Allgemeiner Leitfaden zum Wiederholen von Vorgängen](../best-practices-retry-general.md) bietet eine detaillierte Erläuterung wichtiger Aspekte im Zusammenhang mit Wiederholungslogik.
-- NuGet-Download: [Enterprise Library – Transient Fault Handling Application Block 6.0](https://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/).
+- Kostenloses E-Book: [Developer's Guide to Microsoft Enterprise Library, 2nd Edition](https://www.microsoft.com/download/details.aspx?id=41145)
+- Bewährte Methoden: [Allgemeiner Leitfaden zum Wiederholen von Vorgängen](../best-practices-retry-general.md) bietet eine detaillierte Erläuterung wichtiger Aspekte im Zusammenhang mit Wiederholungslogik.
+- NuGet-Download: [Enterprise Library – Transient Fault Handling Application Block 6.0](https://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/)
 
 <a id="entlib60-the-logging-block" name="entlib60-the-logging-block"></a>
 
-### <a name="entlib60-the-logging-block"></a>EntLib60: Der Protokollierungsblock
+### <a name="entlib60-the-logging-block"></a>EntLib60: der Protokollierungsblock
 
 - Der Protokollierungsblock ist eine äußerst flexible und umfassend konfigurierbare Lösung, die Folgendes ermöglicht:
   - Erstellen und Speichern von Protokollmeldungen an diversen Speicherorten.

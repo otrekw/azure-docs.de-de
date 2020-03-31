@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
 ms.openlocfilehash: c110a4e0429ba52e01c472097a2241f91d504cf5
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616204"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Bereitstellen von SAP S/4HANA oder BW/4HANA in Azure
@@ -119,7 +119,7 @@ Wir veranschaulichen nun die grundlegende Vorgehensweise zur Bereitstellung.
 
     d. Geben Sie für die Lösung ein **Masterkennwort** mit acht oder neun Zeichen ein. Das Kennwort wird von den Administratoren der verschiedenen Komponenten verwendet.
 
-   ![SAP CAL Basic Mode: Create Instance (Instanz erstellen)](./media/cal-s4h/s4h-pic10a.png)
+   ![Einfacher SAP CAL-Modus: Instanz erstellen](./media/cal-s4h/s4h-pic10a.png)
 
 1. Klicken Sie auf **Erstellen** und im angezeigten Meldungsfeld auf **OK**.
 

@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e662d2c6d7939756dee6eb25ca62fef171b7d6d0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67109329"
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>Definieren einer Strategie zur Hybrididentitätsübernahme
@@ -158,7 +158,7 @@ Hierfür müssen folgende Voraussetzungen erfüllt sein:
 * Eine DNS-Domäne kann nur in einem einzelnen Azure AD-Verzeichnis registriert werden, sodass die UPNs der Benutzer im lokalen AD separate Namespaces verwenden müssen.
 * Benutzer in einer Instanz von Azure AD können nur Benutzer aus ihrer Instanz sehen.  Sie können keine Benutzer in anderen Instanzen sehen.
 * Nur eines der Azure AD-Verzeichnisse kann den Exchange-Hybrid mit dem lokalen AD aktivieren.
-* Gegenseitige Ausschließlichkeit gilt auch für das Zurückschreiben.  Folglich werden einige Zurückschreibfeatures mit dieser Topologie nicht unterstützt, da sie eine lokale Einzelkonfiguration voraussetzen.  Dies umfasst:
+* Gegenseitige Ausschließlichkeit gilt auch für das Zurückschreiben.  Folglich werden einige Zurückschreibfeatures mit dieser Topologie nicht unterstützt, da sie eine lokale Einzelkonfiguration voraussetzen.  Dies schließt Folgendes ein:
   * Gruppenzurückschreibung mit Standardkonfiguration
   * Gerätezurückschreibung
 
@@ -182,20 +182,20 @@ Mehrstufige Entwurfsoptionen:
 
 | Zu sichernde Ressourcen | MFA in der Cloud | Lokale MFA |
 | --- | --- | --- |
-| Microsoft-Apps |Ja |Ja |
-| SaaS-Apps im Appkatalog |Ja |Ja |
-| Über den Azure AD-App-Proxy veröffentlichte IIS-Anwendungen |Ja |Ja |
-| Nicht über den Azure AD-App-Proxy veröffentlichte IIS-Anwendungen |no |Ja |
-| Remotezugriff wie VPN, RDG |no |Ja |
+| Microsoft-Apps |ja |ja |
+| SaaS-Apps im Appkatalog |ja |ja |
+| Über den Azure AD-App-Proxy veröffentlichte IIS-Anwendungen |ja |ja |
+| Nicht über den Azure AD-App-Proxy veröffentlichte IIS-Anwendungen |nein |ja |
+| Remotezugriff wie VPN, RDG |nein |ja |
 
 Selbst wenn Sie sich für eine Lösung für Ihre Strategie entschieden haben, müssen Sie noch mit der obigen Auswertung feststellen, wo sich die Benutzer befinden.  Dies kann zu einer Änderung der Lösung führen.  Verwenden Sie für diese Feststellung die folgende Tabelle:
 
 | Benutzerstandort | Bevorzugte Entwurfsoption |
 | --- | --- |
 | Azure Active Directory |Multi-Factor Authentication in der Cloud |
-| Azure AD und lokales AD über einen Verbund mit AD FS |Beides |
-| Azure AD und lokales AD mit Azure AD Connect ohne Kennwortsynchronisierung |Beides |
-| Azure AD und lokales AD mit Azure AD Connect mit Kennwortsynchronisierung |Beides |
+| Azure AD und lokales AD über einen Verbund mit AD FS |Beide |
+| Azure AD und lokales AD mit Azure AD Connect ohne Kennwortsynchronisierung |Beide |
+| Azure AD und lokales AD mit Azure AD Connect mit Kennwortsynchronisierung |Beide |
 | Lokales AD |Multi-Factor Authentication-Server |
 
 > [!NOTE]

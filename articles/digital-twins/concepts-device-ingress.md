@@ -9,10 +9,10 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.openlocfilehash: 5c2c519ece9806b92c3e455d5f550bc2abfc9f3b
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75862474"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Gerätekonnektivität und eingehende Telemetriedaten
@@ -67,7 +67,7 @@ Sie können das Nachrichtenformat und die Nutzlast Ihres Geräts entsprechend de
 
  Beim Nutzlastinhalt einer **Nachricht** kann es sich um beliebige Daten mit einer Größe von bis zu 256 KB handeln. Für Eigenschaften vom Typ [`Message.Properties`](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.message.properties?view=azure-dotnet) gelten einige wenige Einschränkungen. Die folgende Tabelle enthält die erforderlichen und optionalen Eigenschaften, die vom System unterstützt werden:
 
-| Eigenschaftenname | value | Erforderlich | Beschreibung |
+| Eigenschaftenname | value | Erforderlich | BESCHREIBUNG |
 |---|---|---|---|
 | **DigitalTwins-Telemetry** | 1.0 | Ja | Ein konstanter Wert, der eine Nachricht an das System identifiziert. |
 | **DigitalTwins-SensorHardwareId** | `string(72)` | Ja | Ein eindeutiger Bezeichner des Sensors, der die **Nachricht** sendet. Dieser Wert muss mit der **HardwareId**-Eigenschaft eines Objekts übereinstimmen, damit es vom System verarbeitet wird. Beispiel: `00FF0643BE88-CO2`. |

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 12d11cddf077d4d07732490255d44e89ddaf3217
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60531058"
 ---
 # <a name="storsimple-8000-series-update-22-release-notes"></a>Versionsanmerkungen zu Update 2.2 der StorSimple 8000-Serie
@@ -48,7 +48,7 @@ Die folgenden wichtigen Verbesserungen wurden mit Update 2.2 durchgeführt.
 ## <a name="issues-fixed-in-update-22"></a>Behobene Probleme in Update 2.2
 Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in den Updates 2.2 und 2.1 behoben wurden.    
 
-| Nein | Feature | Problem | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
+| Nein | Funktion | Problem | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
 | --- | --- | --- | --- | --- |
 | 1 |Host-Leistung |In der früheren Version wurden die hostseitigen Leistungsprobleme während der Erstellung eines lokalen Volumes und während der Konvertierung eines mehrstufigen Volumes in ein lokales Volume erfasst. Diese Probleme wurden in dieser Version behoben, was zu einer Verbesserung der Hostleistung während der Erstellung des Volume und des Konvertierungsverfahrens führt. |Ja |Nein |
 | 2 |Lokale Volumes |In seltenen Fällen stürzt das System beim Erstellen eines lokalen Volumes ab. Dieser Fehler wurde in dieser Version behoben. |Ja |Nein |
@@ -63,7 +63,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in den Upda
 ## <a name="known-issues-in-update-22"></a>Bekannte Probleme in Update 2.2
 Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme in dieser Version.
 
-| Nein. | Feature | Problem | Kommentare/Problemumgehung | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
+| Nein. | Funktion | Problem | Kommentare/Problemumgehung | Gilt für das physische Gerät | Gilt für das virtuelle Gerät |
 | --- | --- | --- | --- | --- | --- |
 | 1 |Datenträgerquorum |In seltenen Fällen kann der Speicherpool offline geschaltet werden, wenn der Großteil der Datenträger im EBOD-Gehäuse eines 8600-Geräts getrennt wird, sodass kein Datenträgerquorum verfügbar ist. Der Speicherpool bleibt offline, auch wenn die Verbindung zu den Datenträgern wiederhergestellt wird. |Sie müssen das Gerät neu starten. Wenn das Problem weiterhin auftritt, wenden Sie sich an den Microsoft-Support, um Informationen zu den nächsten Schritten zu erhalten. |Ja |Nein |
 | 2 |Falsche Controller-ID |Beim Austausch eines Controllers kann es vorkommen, dass Controller 0 als Controller 1 angezeigt wird. Während des Controlleraustauschs kann die Controller-ID anfänglich als ID des Peercontrollers angezeigt werden, wenn das Image vom Peerknoten geladen wurde. In seltenen Fällen kann dieses Verhalten auch nach einem Neustart des Systems auftreten. |Es ist keine Benutzeraktion erforderlich. Dieses Problem löst sich von selbst, nachdem der Controlleraustausch abgeschlossen ist. |Ja |Nein |

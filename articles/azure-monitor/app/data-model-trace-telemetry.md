@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 31958b26cdb8a7897cf0051af6600014c07949fd
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671952"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>Ablaufverfolgungstelemetrie: Application Insights-Datenmodell
@@ -19,7 +19,7 @@ Ablaufverfolgungstelemetrie stellt (in [Application Insights](../../azure-monito
 
 Ablaufverfolgungsmeldung.
 
-Max. Länge: 32768 Zeichen
+Maximale Länge: 32.768 Zeichen
 
 ## <a name="severity-level"></a>Schweregrad
 

@@ -12,15 +12,15 @@ ms.author: craigg
 ms.reviewer: sstein
 ms.date: 10/30/2018
 ms.openlocfilehash: c0d1829c52041446b4feb43d8af262265e2680fc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73822189"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Ausführen von Ad-hoc-Analyseabfragen für mehrere Azure SQL-Datenbanken
 
-In diesem Tutorial können Sie auf eine Gruppe von Mandantendatenbanken aufgeteilte Abfragen ausführen, um eine interaktive Ad-hoc-Berichterstellung durchzuführen. Diese Abfragen können Einblicke geben, die tief in den Regelbetriebsdaten der Wingtip Tickets-SaaS-App verborgen sind. Zur Durchführung dieser Datenextraktionen stellen Sie eine weitere Analysedatenbank auf dem Katalogserver bereit und erlauben verteilte Abfragen mithilfe von Elastic Query.
+In diesem Tutorial können Sie auf eine Gruppe von Mandantendatenbanken aufgeteilte Abfragen ausführen, um eine interaktive Ad-hoc-Berichterstellung durchzuführen. Diese Abfragen können Einblicke geben, die sonst in den tagtäglichen operativen Daten der SaaS-App Wingtip Tickets verborgen bleiben. Zur Durchführung dieser Datenextraktionen stellen Sie eine weitere Analysedatenbank auf dem Katalogserver bereit und erlauben verteilte Abfragen mithilfe von Elastic Query.
 
 
 In diesem Tutorial lernen Sie Folgendes kennen:
@@ -72,7 +72,7 @@ Um dieses Muster umzusetzen, enthalten alle Mandantentabellen eine *VenueId*-Spa
 
 In dieser Übung wird die Datenbank *adhocreporting* bereitgestellt. Dies ist die Hauptdatenbank, die das Schema enthält, das zum Abfragen aller Mandantendatenbanken verwendet wird. Die Datenbank wird auf dem vorhandenen Katalogserver bereitgestellt. Dies ist der Server, der für alle verwaltungsbezogenen Datenbanken in der Beispielanwendung verwendet wird.
 
-1. Öffnen Sie ...\\Learning Modules\\Operational Analytics*Adhoc Reporting* *Demo-AdhocReporting.ps1* in der \\PowerShell ISE\\, und legen Sie folgende Werte fest:
+1. Öffnen Sie ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReporting.ps1* in der *PowerShell ISE*, und legen Sie folgende Werte fest:
    * **$DemoScenario** = 2, **Ad-hoc-Analysedatenbank bereitstellen**.
 
 2. Drücken Sie **F5**, um das Skript auszuführen und die Datenbank *adhocreporting* zu erstellen.
@@ -138,7 +138,7 @@ Um ausführlichere Informationen zu erhalten, können Sie im Ausführungsplan au
 
    Diese Abfrage führt etwas komplexere Verknüpfungen und Aggregationen durch. Wesentlich ist zu beachten, dass der Hauptteil der Verarbeitung remote erfolgt. Erneut erhalten wir nur die Zeilen, die wir benötigen. Für die aggregierten Ticketverkaufszahlen jedes Veranstaltungsorts pro Tag wird jeweils nur eine Zeile zurückgegeben.
 
-   ![query](media/saas-multitenantdb-adhoc-reporting/query3-plan.png)
+   ![Abfrage](media/saas-multitenantdb-adhoc-reporting/query3-plan.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 90aa824b7df575eb2783ece5bd88322f0b55f0a2
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72299980"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Erste Schritte mit Azure Blob Storage und verbundenen Visual Studio-Diensten (WebJob-Projekte)
@@ -149,7 +149,7 @@ Die Warteschlangennachricht für nicht verarbeitbare Blobs ist ein JSON-Objekt, 
 * BlobType ("BlockBlob" oder "PageBlob")
 * ContainerName
 * BlobName
-* ETag (eine Blobversions-ID, z.B.: „0x8D1DC6E70A277EF“)
+* ETag (eine Blobversions-ID. Beispiel: 0x8D1DC6E70A277EF)
 
 Im folgenden Codebeispiel enthält die **CopyBlob**-Funktion Code, der bewirkt, dass bei jedem Aufruf ein Fehler auftritt. Nachdem das SDK die Funktion mit der maximalen Anzahl von Wiederholungen aufgerufen hat, wird in der Warteschlange für nicht verarbeitbare Blobs eine Nachricht erstellt. Diese Nachricht wird von der **LogPoisonBlob**-Funktion verarbeitet.
 
@@ -198,7 +198,7 @@ Blobbelege werden in einem Container mit dem Namen *azure-webjobs-hosts* in dem 
 * Containername
 * Blobtyp ("BlockBlob" oder "PageBlob")
 * Blobname
-* ETag (eine Blobversions-ID, z.B.: „0x8D1DC6E70A277EF“)
+* ETag (eine Blobversions-ID. Beispiel: 0x8D1DC6E70A277EF)
 
 Wenn Sie eine erneute Verarbeitung eines Blobs erzwingen möchten, können Sie den Blobbeleg für dieses Blob manuell aus dem Container *azure-webjobs-hosts* löschen.
 

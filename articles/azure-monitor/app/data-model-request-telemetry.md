@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: d8a28063bf6780c3cace4ead81e289779b95eb9a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671901"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Anforderungstelemetrie: Application Insights-Datenmodell
@@ -23,25 +23,25 @@ Der Name der Anforderung gibt den Codepfad für die Verarbeitung der Anforderung
 
 Mit dem Application Insights-Web-SDK wird der Anforderungsname im Hinblick auf die Groß-/Kleinschreibung unverändert gesendet. Bei der Gruppierung auf der Benutzeroberfläche wird die Groß-/Kleinschreibung beachtet, sodass `GET /Home/Index` und `GET /home/INDEX` separat gezählt werden, obwohl sie häufig zur gleichen Controller- und Aktionsausführung führen. Dies liegt daran, dass bei URLs allgemein die [Groß-/Kleinschreibung beachtet wird](https://www.w3.org/TR/WD-html40-970708/htmlweb.html). Sie können prüfen, ob für die in Großbuchstaben eingegebenen URLs alle `404` erfolgt sind. Weitere Informationen zur Anforderungsnamensammlung mit dem ASP.NET-Web-SDK finden Sie in diesem [Blogbeitrag](https://apmtips.com/blog/2015/02/23/request-name-and-url/).
 
-Max. Länge: 1.024 Zeichen
+Maximale Länge: 1.024 Zeichen
 
 ## <a name="id"></a>id
 
 Bezeichner einer Anforderungsaufrufinstanz. Wird für die Korrelation zwischen dem Anforderungselement und anderen Telemetrieelementen verwendet. Die ID muss global eindeutig sein. Weitere Informationen hierzu finden Sie auf der Seite [Korrelation](../../azure-monitor/app/correlation.md).
 
-Max. Länge: 128 Zeichen
+Maximale Länge: 128 Zeichen
 
 ## <a name="url"></a>url
 
 Anforderungs-URL mit allen Abfragezeichenfolgen-Parametern.
 
-Max. Länge: 2.048 Zeichen
+Maximale Länge: 2.048 Zeichen
 
 ## <a name="source"></a>`Source`
 
 Die Quelle der Anforderung. Beispiele sind der Instrumentierungsschlüssel des Aufrufers oder die IP-Adresse des Aufrufers. Weitere Informationen hierzu finden Sie auf der Seite [Korrelation](../../azure-monitor/app/correlation.md).
 
-Max. Länge: 1.024 Zeichen
+Maximale Länge: 1.024 Zeichen
 
 ## <a name="duration"></a>Duration
 
@@ -51,7 +51,7 @@ Dauer der Anforderung im Format `DD.HH:MM:SS.MMMMMM`. Muss positiv sein und unte
 
 Das Ergebnis einer Anforderungsausführung. HTTP-Statuscode für HTTP-Anforderungen. Kann ein `HRESULT`-Wert oder ein Ausnahmetyp für andere Anforderungstypen sein.
 
-Max. Länge: 1.024 Zeichen
+Maximale Länge: 1.024 Zeichen
 
 ## <a name="success"></a>Erfolg
 

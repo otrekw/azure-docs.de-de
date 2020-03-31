@@ -1,19 +1,18 @@
 ---
 title: Azure Marketplace-Leitfaden zur Suchmaschinenoptimierung (SEO)
 description: Enthält Anleitungen zu Verbesserungen der Suchmaschinenoptimierung (Search Engine Optimization, SEO).
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2019
-ms.author: pabutler
-ms.openlocfilehash: 7115798faadc3209413d22a384433417ec0ddff0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 761cdc2233bce3619d4c2c9ce1d7d7177d3bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819582"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280149"
 ---
 # <a name="azure-marketplace-seo-guidance"></a>Azure Marketplace-Leitfaden zur Suchmaschinenoptimierung (SEO)
 
@@ -30,11 +29,11 @@ Nachstehend sind die wichtigsten zu berücksichtigenden Felder aufgeführt.
  
 |  Feld                   | Wichtigkeit | Anleitungen                                                                                            |
 |  --------------------    | ----------                   | ---------------                                                                   |
-| Angebotsname               |  Hoch      | Eine genaue oder nahezu vollständige Übereinstimmung mit der Suchabfrage ergibt ein hohe Platzierung.                       |
-| Name des Herausgebers           |  Hoch      | Eine genaue oder nahezu vollständige Übereinstimmung mit der Suchabfrage ergibt ein hohe Platzierung.                       |
-| Kurze Beschreibung        |  Mittel    | Ein Angeben der Benennung von Apps und Herausgebern garantiert meist eine hohe Platzierung, ist aber möglicherweise nicht der relevanteste Aspekt. In diesem Fall ist eine kurze Beschreibung entscheidend. Der Text sollte so möglichst prägnant und präzise sein. Zum Erzielen bester Ergebnisse sollten Schlüsselwörter und erwartete Suchbegriffe einbezogen werden.  Zum Beispiel ist „Dies ist das beste Einzelhandels-KS, das vollständig auf Dynamics 365 aufsetzt“ weniger effektiv als „Einzelhandels-KS (Kassensystem) für Dynamics 365“.  | 
+| Angebotsname               |  High      | Eine genaue oder nahezu vollständige Übereinstimmung mit der Suchabfrage ergibt ein hohe Platzierung.                       |
+| Name des Herausgebers           |  High      | Eine genaue oder nahezu vollständige Übereinstimmung mit der Suchabfrage ergibt ein hohe Platzierung.                       |
+| Kurze Beschreibung        |  Medium    | Ein Angeben der Benennung von Apps und Herausgebern garantiert meist eine hohe Platzierung, ist aber möglicherweise nicht der relevanteste Aspekt. In diesem Fall ist eine kurze Beschreibung entscheidend. Der Text sollte so möglichst prägnant und präzise sein. Zum Erzielen bester Ergebnisse sollten Schlüsselwörter und erwartete Suchbegriffe einbezogen werden.  Zum Beispiel ist „Dies ist das beste Einzelhandels-KS, das vollständig auf Dynamics 365 aufsetzt“ weniger effektiv als „Einzelhandels-KS (Kassensystem) für Dynamics 365“.  | 
 | Lange Beschreibung         |  Niedrig       | Die Beschreibung bietet eine Möglichkeit, mehr in die Tiefe zu gehen. Am effektivsten ist es, Beschreibungen mit vernünftiger Länge sowie Schlüsselwörter zu verwenden.  Eine punktgenaue Beschreibung, in der Schlüsselwörter verwendet werden, bringt mehr Vorteile als ein langatmiger Text. Achten Sie darauf, dass Schlüsselbegriffe, z. B. „IoT“, in der Beschreibung enthalten sind.  |
-| Produktkategorien       | Mittel     |  Produktkategorien werden durch eine Kombination aus Herausgeberauswahl und Microsoft-Klassifizierung bestimmt. Sie sollten die jeweils geeigneten Kategorien auswählen, damit Benutzer die Apps problemlos in der richtigen Kategorie finden können. |
+| Produktkategorien       | Medium     |  Produktkategorien werden durch eine Kombination aus Herausgeberauswahl und Microsoft-Klassifizierung bestimmt. Sie sollten die jeweils geeigneten Kategorien auswählen, damit Benutzer die Apps problemlos in der richtigen Kategorie finden können. |
 |  |  |  |
 
 

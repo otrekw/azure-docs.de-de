@@ -2,18 +2,18 @@
 title: Leitfaden für die Veröffentlichung von VM-Angeboten für Azure Marketplace
 description: Dieser Artikel beschreibt die Anforderungen zum Veröffentlichen einer VM und einer kostenlosen Softwaretestversion, die auf dem Marketplace bereitgestellt werden.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: ellacroi
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/09/2018
-ms.author: ellacroi
-ms.openlocfilehash: 0f2047501b6c57b2bb98ff7e3c56498417644324
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 34de5f59e96a37282063741a1664f512697c167b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818990"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288715"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>Leitfaden für die Veröffentlichung von VM-Angeboten
 
@@ -23,14 +23,7 @@ Hierbei handelt es sich um Transaktionsangebote, die über den Marketplace berei
 
 ## <a name="free-trial"></a>Kostenlose Testversion 
 
-Wenn Sie das Abrechnungsmodell Bring-Your-Own-License (BYOL) verwenden, können Sie Benutzern das Testen Ihres Angebots mit befristeten Softwarelizenzen ermöglichen. Im Folgenden sind die Anforderungen zum Bereitstellen dieses Angebots aufgeführt. 
-
-|Requirements (Anforderungen)  |Details  |
-|---------|---------|
-|Kostenloser Testzeitraum und Testversion     |   Ihre Kunden können Ihre App für begrenzte Zeit kostenlos testen. Dabei fallen für Ihr Angebot keine Lizenz- oder Abonnementgebühren an. Ihr Kunde muss nicht für das zugrunde liegende Erstanbieterprodukt bzw. den zugrunde liegenden Erstanbieterdienst von Microsoft bezahlen. Alle Testoptionen werden in Ihrem Azure-Abonnement bereitgestellt. Sie haben alleinige Kontrolle über die Kostenoptimierung und -verwaltung. Sie können eine kostenlose Testversion oder eine interaktive Demo auswählen. Unabhängig von Ihrer Wahl muss Ihre kostenlose Testversion den Kunden einen vorab festgelegten Zeitraum ohne zusätzliche Kosten zur Verfügung stehen.|
-|Einfach konfigurierbare und einsatzbereite Lösungen    |  Ihre App muss sich einfach und schnell konfigurieren und einrichten lassen.       |
-|Verfügbarkeit/Betriebszeit    |    Ihre SaaS-App oder -Plattform benötigt eine Betriebszeit von mindestens 99,9 %.     |
-|Azure Active Directory     |    Ihr Angebot muss die einmalige Azure Active Directory-Verbundanmeldung (SSO) mit aktivierter Zustimmung zulassen.     |
+Wenn Sie das Abrechnungsmodell Bring-Your-Own-License (BYOL) verwenden, können Sie Benutzern das Testen Ihres Angebots mit befristeten Softwarelizenzen ermöglichen. 
 
 ## <a name="test-drive"></a>Testversion
 

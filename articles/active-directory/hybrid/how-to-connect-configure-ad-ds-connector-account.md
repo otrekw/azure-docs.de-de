@@ -12,13 +12,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eeb80c3a94e63a886e4a16c0b8fa445b2a8a34e4
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72515821"
 ---
-# <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurieren der Azure AD-Connector-Kontoberechtigungen 
+# <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurieren von AD DS-Connector-Kontoberechtigungen 
 
 Mit Build 1.1.880.0 (veröffentlicht im August 2018) wurde das PowerShell-Modul namens [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) eingeführt, das eine Sammlung von Cmdlets enthält, die Sie beim Konfigurieren der richtigen Active Directory-Berechtigungen für Ihre Azure AD Connect-Bereitstellung unterstützen. 
 
@@ -32,7 +32,7 @@ Für eine Azure AD Connect-Expressinstallation wird ein automatisch generiertes 
 ### <a name="permissions-summary"></a>Zusammenfassung der Berechtigungen 
 Die folgende Tabelle bietet eine Zusammenfassung der für AD-Objekte erforderlichen Berechtigungen: 
 
-| Feature | Berechtigungen |
+| Funktion | Berechtigungen |
 | --- | --- |
 | ms-DS-ConsistencyGuid |Lese- und Schreibberechtigungen für das Attribut „ms-DS-ConsistencyGuid“, das unter [Entwurfskonzepte – Verwendung von „ms-DS-ConsistencyGuid“ als „sourceAnchor“](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) dokumentiert ist. | 
 | Kennworthashsynchronisierung |<li>Verzeichnisänderungen replizieren</li>  <li>Verzeichnisänderungen replizieren: Alle |
@@ -136,7 +136,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 Dieses Cmdlet legt die folgenden Berechtigungen fest: 
  
 
-|type |NAME |Access |Gilt für| 
+|type |Name |Zugriff |Gilt für| 
 |-----|-----|-----|-----|
 |Allow |AD DS-Connector-Konto |Alle Eigenschaften lesen |Nachfolger-Geräteobjekte| 
 |Allow |AD DS-Connector-Konto|Alle Eigenschaften lesen |Nachfolger-InetOrgPerson-Objekte| 
@@ -162,7 +162,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 
 Dieses Cmdlet legt die folgenden Berechtigungen fest: 
 
-|type |NAME |Access |Gilt für|
+|type |Name |Zugriff |Gilt für|
 |-----|-----|-----|-----| 
 |Allow|AD DS-Connector-Konto|Lese-/Schreibeigenschaft|Nachfolger-Benutzerobjekte|
 
@@ -182,7 +182,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonPar
 
 Dieses Cmdlet legt die folgenden Berechtigungen fest: 
 
-|type |NAME |Access |Gilt für|
+|type |Name |Zugriff |Gilt für|
 |-----|-----|-----|-----| 
 |Allow |AD DS-Connector-Konto |Replizieren von Verzeichnisänderungen |Nur dieses Objekt (Domänenstamm)| 
 |Allow |AD DS-Connector-Konto |Replizieren von Verzeichnisänderungen: Alle |Nur dieses Objekt (Domänenstamm)| 
@@ -202,7 +202,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 ```
 Dieses Cmdlet legt die folgenden Berechtigungen fest: 
 
-|type |NAME |Access |Gilt für|
+|type |Name |Zugriff |Gilt für|
 |-----|-----|-----|-----| 
 |Allow |AD DS-Connector-Konto |Kennwort zurücksetzen |Nachfolger-Benutzerobjekte| 
 |Allow |AD DS-Connector-Konto |Schreiben für Eigenschaft „LockoutTime“ |Nachfolger-Benutzerobjekte| 
@@ -222,7 +222,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
  
 Dieses Cmdlet legt die folgenden Berechtigungen fest: 
 
-|type |NAME |Access |Gilt für|
+|type |Name |Zugriff |Gilt für|
 |-----|-----|-----|-----| 
 |Allow |AD DS-Connector-Konto |Generisches Lesen/Schreiben |Alle Attribute einer Objekttypgruppe und von Unterobjekten| 
 |Allow |AD DS-Connector-Konto |Erstellen/Löschen von untergeordneten Objekten |Alle Attribute einer Objekttypgruppe und von Unterobjekten| 
@@ -245,7 +245,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 Dieses Cmdlet legt die folgenden Berechtigungen fest:  
  
 
-|type |NAME |Access |Gilt für|
+|type |Name |Zugriff |Gilt für|
 |-----|-----|-----|-----| 
 |Allow |AD DS-Connector-Konto |Lesen/Schreiben für alle Eigenschaften |Nachfolger-Benutzerobjekte| 
 |Allow |AD DS-Connector-Konto |Lesen/Schreiben für alle Eigenschaften |Nachfolger-InetOrgPerson-Objekte| 
@@ -267,7 +267,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 ```
 Dieses Cmdlet legt die folgenden Berechtigungen fest: 
 
-|type |NAME |Access |Gilt für|
+|type |Name |Zugriff |Gilt für|
 |-----|-----|-----|-----| 
 |Allow |AD DS-Connector-Konto |Alle Eigenschaften lesen |Nachfolger-PublicFolder-Objekte| 
 
@@ -292,7 +292,7 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 
 Dieses Cmdlet legt die folgenden Berechtigungen fest: 
 
-|type |NAME |Access |Gilt für|
+|type |Name |Zugriff |Gilt für|
 |-----|-----|-----|-----| 
 |Allow |SYSTEM |Vollzugriff |Dieses Objekt 
 |Allow |Organisationsadministratoren |Vollzugriff |Dieses Objekt 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67178125"
 ---
 #### <a name="to-attach-the-sas-cables"></a>So schließen Sie die SAS-Kabel an
@@ -43,8 +43,8 @@ ms.locfileid: "67178125"
       
       | Bezeichnung | BESCHREIBUNG |
       |:--- |:--- |
-      | Eine Datei |Primäres Gehäuse |
-      | b |EBOD-Gehäuse |
+      | Ein |Primäres Gehäuse |
+      | B |EBOD-Gehäuse |
       | 1 |Controller 0 |
       | 2 |Controller 1 |
       | 3 |EBOD-Controller 0 |

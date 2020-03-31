@@ -4,17 +4,17 @@ description: Als Lösungsentwickler konfigurieren Sie eine IoT Central-Anwendung
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/02/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 7e5e8331509e99a7e556105ff1ea8ca2d0b285e7
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 7c2c14a937b4ef55d0e5f71e7b20214428ecd68c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023836"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158196"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Erweitern von Azure IoT Central mit benutzerdefinierten Analysen mithilfe von Azure Databricks
 
@@ -31,7 +31,7 @@ In dieser Schrittanleitung erfahren Sie Folgendes:
 
 Um die in dieser Anleitung aufgeführten Schritte ausführen zu können, benötigen Sie ein aktives Azure-Abonnement.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ### <a name="iot-central-application"></a>IoT Central-Anwendung
 
@@ -109,7 +109,7 @@ Navigieren Sie auf der Website des [Azure IoT Central-Anwendungs-Managers](https
     | Einstellung | value |
     | ------- | ----- |
     | Anzeigename | Exportieren nach Event Hubs |
-    | Aktiviert | Andererseits |
+    | Enabled | Andererseits |
     | Event Hubs-Namespace | Der Name Ihres Event Hubs-Namespace |
     | Event Hub | centralexport |
     | Messungen | Andererseits |

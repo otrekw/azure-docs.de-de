@@ -1,19 +1,18 @@
 ---
 title: Erstellen von Marketplace-Angeboten | Azure Marketplace
 description: Erstellen von Angeboten in Azure Marketplace und AppSource über das Cloud-Partnerportal
-services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: pabutler
-ms.openlocfilehash: 4aa4e154c99f20963485a98d1a21af4ae2b7a1b1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: d14940eff569a80759e9db0bfa2d6d1541a01377
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828095"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286471"
 ---
 # <a name="create-azure-marketplace-and-appsource-offers"></a>Erstellen von Azure Marketplace- und AppSource-Angeboten
 

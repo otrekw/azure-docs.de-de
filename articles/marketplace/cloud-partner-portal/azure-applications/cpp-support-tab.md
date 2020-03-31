@@ -1,19 +1,18 @@
 ---
 title: Konfigurieren des Supports für eine Azure-Anwendung | Azure Marketplace
 description: Konfigurieren des Supports für ein Azure-Anwendungsangebot im Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.author: pabutler
-ms.openlocfilehash: b6616f4caed3483af9e23c7d5d1326478213f6f0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 93dd8636f60ceca0f43d806d4f5b1a037ed21ee4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818186"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80289021"
 ---
 # <a name="azure-application-support-tab"></a>Registerkarte „Support“ für Azure-Anwendungen
 

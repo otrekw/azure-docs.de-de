@@ -13,10 +13,10 @@ ms.date: 04/02/2019
 tags: ''
 keywords: ''
 ms.openlocfilehash: 67af4eae03b773fad9cf38964152c1fb9d623bd5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72025941"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Installieren der IBM ZD&T-Entwicklungs-/Testumgebung in Azure
@@ -44,7 +44,7 @@ In diesem Artikel wird beschrieben, wie Sie die ZD&T Enterprise Edition in Azure
 > [!NOTE]
 > Die ZD&T Enterprise Edition von IBM kann ausschließlich in Entwicklungs-/Testumgebungen installiert werden. Der Einsatz in Produktionsumgebungen ist *nicht* möglich.
 
-- Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- ein Azure-Abonnement Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 - Sie benötigen Zugriff auf die Medien. Diese stehen nur IBM-Kunden und -Partnern zur Verfügung. Wenden Sie sich an Ihren Ansprechpartner bei IBM, oder nutzen Sie die Kontaktinformationen auf der [ZD&T-Website](https://www.ibm.com/us-en/marketplace/z-systems-development-test-environment), um weitere Informationen zu erhalten.
 
@@ -138,4 +138,4 @@ Beachten Sie, dass der Webserver beim Start unter der ZD&T-Benutzer-ID ausgefüh
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Set up an Application Developers Controlled Distribution (ADCD) in IBM zD&T v1 (Einrichten einer Application Developers Controlled Distribution (ADCD) in IBM ZD&T v1)](./demo.md)
+[Einrichten einer Application Developers Controlled Distribution (ADCD) in IBM ZD&T v1](./demo.md)

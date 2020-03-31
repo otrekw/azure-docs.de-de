@@ -1,19 +1,18 @@
 ---
 title: Veröffentlichen eines Azure-Containerimageangebots | Azure Marketplace
 description: Informationen zum Veröffentlichen eines Azure-Containerangebots.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
-ms.author: pabutler
-ms.openlocfilehash: cf422e3d77fa0722fe10a52073cf89ab2a76dcc0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: c612d2234e6c3c4e93c3c984242bb283ed85c27f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823171"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279979"
 ---
 # <a name="publish-container-offer"></a>Veröffentlichen eines Containerangebots
 

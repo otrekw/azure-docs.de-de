@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
 ms.openlocfilehash: 957fff73f2406e0e057a7c978dd76a6bd9c156b7
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67876204"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple als Sicherungsziel mit NetBackup
@@ -253,7 +253,7 @@ Erstellen Sie basierend auf diesen Annahmen ein mehrstufiges StorSimple-Volume m
 | Sicherungstyp | Größe (TiB) | GFS-Multiplikator\* | Gesamtkapazität (TiB)  |
 |---|---|---|---|
 | Wöchentlich vollständig | 1 | 4  | 4 |
-| Täglich inkrementell | 0,5 | 20 (Zyklen entsprechen der Anzahl von Wochen pro Monat) | 12 (2 für zusätzliches Kontingent) |
+| Täglich inkrementell | 0.5 | 20 (Zyklen entsprechen der Anzahl von Wochen pro Monat) | 12 (2 für zusätzliches Kontingent) |
 | Monatlich vollständig | 1 | 12 | 12 |
 | Jährlich vollständig | 1  | 10 | 10 |
 | GFS-Anforderung |   | 38 |   |
@@ -328,7 +328,7 @@ Bei der folgenden Sequenz wird vorausgesetzt, dass NetBackup und der Zielhost ge
 
    ![NetBackup-Verwaltungskonsole, Richtlinientyp auswählen](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
 
-5. Wählen Sie Ihren Host aus, aktivieren Sie das Kontrollkästchen **Detect client operating system** (Clientbetriebssystem ermitteln), und klicken Sie dann auf **Add** (Hinzufügen). Klicken Sie auf **Weiter**.
+5. Wählen Sie Ihren Host aus, aktivieren Sie das Kontrollkästchen **Detect client operating system** (Clientbetriebssystem ermitteln), und klicken Sie dann auf **Add** (Hinzufügen). Wählen Sie **Weiter** aus.
 
    ![NetBackup-Verwaltungskonsole, Clients in einer neuen Richtlinie auflisten](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
 
@@ -408,7 +408,7 @@ In der folgenden Tabelle wird gezeigt, wie Sicherungen für die Ausführung auf 
 
 ### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS-Beispielzeitplan: GFS-Rotation mit wöchentlichem, monatlichem und jährlichem Zeitplan
 
-| Woche | Vollständig | Inkrementell, Tag 1 | Inkrementell, Tag 2 | Inkrementell, Tag 3 | Inkrementell, Tag 4 | Inkrementell, Tag 5 |
+| Week | Vollständig | Inkrementell, Tag 1 | Inkrementell, Tag 2 | Inkrementell, Tag 3 | Inkrementell, Tag 4 | Inkrementell, Tag 5 |
 |---|---|---|---|---|---|---|
 | Woche 1 | Lokales RAID-Volume  | Lokales RAID-Volume | Lokales RAID-Volume | Lokales RAID-Volume | Lokales RAID-Volume | Lokales RAID-Volume |
 | Woche 2 | StorSimple, Woche 2-4 |   |   |   |   |   |
@@ -472,7 +472,7 @@ Nachdem Sie die ursprünglichen Datenträgerpools definiert haben, müssen Sie d
 | Sicherungstyp | Größe (TiB) | GFS-Multiplikator\* | Gesamtkapazität (TiB)  |
 |---|---|---|---|
 | Wöchentlich vollständig |  1  |  4 | 4  |
-| Täglich inkrementell  | 0,5  | 20 (Zyklen entsprechen der Anzahl von Wochen pro Monat) | 12 (2 für zusätzliches Kontingent) |
+| Täglich inkrementell  | 0.5  | 20 (Zyklen entsprechen der Anzahl von Wochen pro Monat) | 12 (2 für zusätzliches Kontingent) |
 | Monatlich vollständig  | 1 | 12 | 12 |
 | Jährlich vollständig | 1  | 10 | 10 |
 | GFS-Anforderung  |     |     | 38 |
@@ -535,12 +535,12 @@ Ein Notfall kann durch eine Vielzahl von Faktoren verursacht werden. In der folg
 | Ausfall des NetBackup-Servers | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Erstellen Sie den Sicherungsserver neu, und führen Sie eine Datenbankwiederherstellung durch. | Sie können den NetBackup-Server am Notfallwiederherstellungsstandort neu erstellen oder wiederherstellen. Stellen Sie die Datenbank auf den jüngsten Zeitpunkt wieder her. Wenn die wiederhergestellte NetBackup-Datenbank nicht mit Ihren jüngsten Sicherungsaufträgen synchron ist, ist eine Indizierung und Katalogisierung erforderlich. Das erneute Scannen von Index und Katalog kann dazu führen, dass alle Sicherungssätze gescannt und aus der Cloudspeicherstufe in die lokale Speicherstufe des Geräts übertragen werden. Damit wird diese Aufgabe noch zeitaufwendiger. |
 | Standortausfall, der zum Verlust des Sicherungsservers und von StorSimple führt | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Stellen Sie zuerst StorSimple und dann NetBackup wieder her. | Stellen Sie zuerst StorSimple und dann NetBackup wieder her. Wenn nach der Wiederherstellung des Geräts eine Datenwiederherstellung erforderlich ist, werden die vollständigen Arbeitssätze mit Daten aus der Cloud auf das neue Gerät abgerufen. Alle Vorgänge erfolgen mit der Geschwindigkeit der Cloud. |
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 
 Folgende Dokumente haben als Referenz für diesen Artikel gedient:
 
 - [StorSimple multipath I/O setup](storsimple-configure-mpio-windows-server.md) (StorSimple: Einrichten von Multipfad-E/A)
-- [Speicherszenarien: Schlanke Speicherzuweisung](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [Storage scenarios: Thin provisioning](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx) (Speicherszenarien: schlanke Speicherzuweisung)
 - [Using GPT drives](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD) (Verwenden von GPT-Laufwerken)
 - [Einrichten von Schattenkopien für freigegebene Ordner](https://technet.microsoft.com/library/cc771893.aspx)
 

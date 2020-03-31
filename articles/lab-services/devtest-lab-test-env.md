@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: c6b458091a8e5e22cca55d401e89e5e13bcf9de9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60623176"
 ---
 # <a name="use-azure-devtest-labs-for-vm-and-paas-test-environments"></a>Verwenden von Azure DevTest Labs für virtuelle Computer und PaaS-Testumgebungen
@@ -27,7 +27,7 @@ Mit Azure DevTest Labs lassen sich zahlreiche Schlüsselszenarien implementieren
 In diesem Szenario bietet DevTest Labs folgende Vorteile:
 
 - Tester können schnell Windows- und Linux-Umgebungen mit wiederverwendbaren Vorlagen und Artefakten bereitstellen und so die neueste Version ihrer Anwendung testen.
-- Tester können ihre Auslastungstests durch Bereitstellen mehrerer Test-Agents zentral hochskalieren.
+- Tester können ihre Auslastungstests durch Bereitstellen mehrerer Test-Agents hochskalieren.
 - Administratoren können die Kosten steuern, indem sie Folgendes sicherstellen:
   - Tester können nicht mehr virtuelle Computer erhalten, als sie benötigen.
   - Virtuelle Computer werden heruntergefahren, wenn sie nicht in Gebrauch sind.
@@ -111,7 +111,7 @@ Dieser Artikel enthält Informationen zu verschiedenen Azure DevTest Labs-Featur
    
    | Aufgabe | Lerninhalt |
    | --- | --- |
-   | [Definieren von Labrichtlinien.](devtest-lab-set-lab-policy.md) |Kontrollieren Sie Kosten durch Festlegen von Richtlinien im Lab. |
+   | [Definieren von Labrichtlinien](devtest-lab-set-lab-policy.md) |Kontrollieren Sie Kosten durch Festlegen von Richtlinien im Lab. |
    | [Löschen aller virtuellen Computer mithilfe eines PowerShell-Skripts](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Löschen Sie alle Labs in einem Vorgang, wenn die Tests abgeschlossen sind.|
 
 1. **Hinzufügen eines virtuellen Netzwerks zu einem Lab** 

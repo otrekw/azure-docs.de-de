@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 1857c1154af5e3de72803f297e8a3151b0dd7aeb
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: d7d2bcf487c37fbb523b648d5aa4c572add5dfa9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330973"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79297083"
 ---
 # <a name="streaming-ingestion-preview"></a>Streamingerfassung (Vorschauversion)
 
@@ -72,7 +72,7 @@ Es werden zwei Streamingerfassungstypen unterstützt:
 
 ## <a name="limitations"></a>Einschränkungen
 
-* [Datenbankcursor](/azure/kusto/management/databasecursor) und [Datenzuordnung](/azure/kusto/management/mappings) werden von der Streamingerfassung nicht unterstützt. Es wird nur die [vorab erstellte](/azure/kusto/management/tables#create-ingestion-mapping) Datenzuordnung unterstützt. 
+* [Datenbankcursor](/azure/kusto/management/databasecursor) und [Datenzuordnung](/azure/kusto/management/mappings) werden von der Streamingerfassung nicht unterstützt. Es wird nur die [vorab erstellte](/azure/kusto/management/create-ingestion-mapping-command) Datenzuordnung unterstützt. 
 * Leistung und Kapazität der Streamingerfassung werden für größere virtuelle Computer und Cluster skaliert. Gleichzeitige Erfassungen sind auf sechs Erfassungen pro Kern beschränkt. Beispielsweise besteht die maximale unterstützte Last bei 16-Kern-SKUs (z.B. D14 und L16) aus 96 gleichzeitigen Erfassungen. Bei 2-Kern-SKUs (z. B. D11) besteht die maximale unterstützte Last aus 12 gleichzeitigen Erfassungen.
 * Die Datengröße pro Erfassungsanforderung ist auf 4 MB beschränkt.
 * Schemaaktualisierungen wie etwa die Erstellung und Änderung von Tabellen und Erfassungszuordnungen können für den Streamingerfassungsdienst bis zu fünf Minuten dauern.

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 1d1368ef8ffb474c6bec1240f567f043961597fb
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838178"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231498"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Erstellen von HDInsight-Clustern mit Azure Data Lake Storage Gen1 mithilfe des Azure-Portals
 
@@ -51,7 +51,7 @@ So erstellen Sie einen HDInsight-Cluster mit einem Data Lake Storage Gen1-Konto 
 
     ![Hinzufügen eines Dienstprinzipals zu HDInsight-Cluster](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "Dienstprinzipal für HDInsight-Cluster hinzufügen")
 
-    * **Data Lake Store-Konto auswählen**: Wählen Sie ein vorhandenes Data Lake Storage Gen1-Konto aus. Ein vorhandenes Data Lake Storage Gen1-Konto ist erforderlich.  Siehe [Voraussetzungen](#prerequisites).
+    * **Data Lake Store-Konto wählen**: Wählen Sie ein vorhandenes Data Lake Storage Gen1-Konto aus. Ein vorhandenes Data Lake Storage Gen1-Konto ist erforderlich.  Siehe [Voraussetzungen](#prerequisites).
     * **Stammpfad**: Geben Sie einen Pfad ein, in dem die clusterspezifischen Dateien gespeichert werden sollen. Im Screenshot lautet der Pfad __/clusters/myhdiadlcluster/__ , in dem der Ordner __/clusters__ vorhanden sein muss. Der Ordner *myhdicluster* wird vom Portal erstellt.  *myhdicluster* ist der Clustername.
     * **Data Lake Store-Zugriff**: Konfigurieren Sie den Zugriff zwischen dem Data Lake Storage Gen1-Konto und dem HDInsight-Cluster. Eine Anleitung finden Sie unter [Konfigurieren des Data Lake Storage Gen1-Zugriffs](#configure-data-lake-storage-gen1-access).
     * **Zusätzliche Speicherkonten**: Fügen Sie Azure-Speicherkonten als zusätzliche Speicherkonten für den Cluster hinzu. Das Hinzufügen zusätzlicher Data Lake Storage Gen1-Konten erfolgt, indem dem Cluster die Berechtigungen für Daten in weiteren Data Lake Storage Gen1-Konten erteilt werden, während ein Data Lake Storage Gen1-Konto als primärer Speichertyp konfiguriert wird. Siehe [Konfigurieren des Data Lake Storage Gen1-Zugriffs](#configure-data-lake-storage-gen1-access).
@@ -106,7 +106,7 @@ So verwenden Sie einen im Azure-Portal vorhandenen Dienstprinzipal:
 
 1. Wählen Sie **Zugriff** aus, um den Zugriff auf den Ordner zu konfigurieren.  Siehe [Konfigurieren von Dateiberechtigungen](#configure-file-permissions).
 
-### <a name="configure-file-permissions"></a>Konfigurieren von Dateiberechtigungen
+### <a name="configure-file-permissions"></a><a name="configure-file-permissions"></a>Konfigurieren von Dateiberechtigungen
 
 Die Konfiguration variiert je nachdem, ob das Konto als Standardspeicher oder zusätzliches Speicherkonto verwendet wird:
 
@@ -146,7 +146,7 @@ Wenn Sie Data Lake Storage Gen1 als zusätzlichen Speicher verwenden, müssen Si
 
 ![Zuweisen von Dienstprinzipalberechtigungen zum HDInsight-Cluster](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.3-1.png "Zuweisen von Dienstprinzipalberechtigungen zum HDInsight-Cluster")
 
-## <a name="verify-cluster-set-up"></a>Überprüfen der Clustereinrichtung
+## <a name="verify-cluster-setup"></a><a name="verify-cluster-set-up"></a>Überprüfen der Clustereinrichtung
 
 Nachdem die Einrichtung des Clusters abgeschlossen ist, überprüfen Sie auf dem Blatt „Cluster“ Ihre Ergebnisse, indem Sie einen oder beide der folgenden Schritte ausführen:
 

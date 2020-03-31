@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: girobins
 ms.openlocfilehash: 48b9a67de5c870a187ee008bd97265760ca6c341
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70998367"
 ---
 # <a name="get-sql-query-execution-metrics-and-analyze-query-performance-using-net-sdk"></a>Abrufen von SQL-Abfrageausführungsmetriken und Analysieren der Abfrageleistung mit dem .NET SDK
@@ -129,7 +129,7 @@ IReadOnlyDictionary<string, QueryMetrics> queryMetrics = feedResponse.QueryMetri
 
 ## <a name="expensive-queries"></a>Ressourcenintensive Abfragen
 
-Sie können die von jeder Abfrage verbrauchten Anforderungseinheiten erfassen, um ressourcenintensive Abfragen oder Abfragen zu untersuchen, die einen hohen Durchsatz nutzen. Sie können die Anforderungsgebühr abrufen, indem Sie für das `FeedResponse`-Objekt die [RequestCharge](https://msdn.microsoft.com/library/azure/dn948712.aspx)-Eigenschaft verwenden. Weitere Informationen zum Abrufen der Anforderungsgebühr mithilfe des Azure-Portals und verschiedener SDKs finden Sie im Artikel [Ermitteln der Gebühr für eine Anforderungseinheit](find-request-unit-charge.md).
+Sie können die von jeder Abfrage verbrauchten Anforderungseinheiten erfassen, um ressourcenintensive Abfragen oder Abfragen zu untersuchen, die einen hohen Durchsatz nutzen. Sie können die Anforderungsgebühr abrufen, indem Sie für das [-Objekt die ](https://msdn.microsoft.com/library/azure/dn948712.aspx)RequestCharge`FeedResponse`-Eigenschaft verwenden. Weitere Informationen zum Abrufen der Anforderungsgebühr mithilfe des Azure-Portals und verschiedener SDKs finden Sie im Artikel [Ermitteln der Gebühr für eine Anforderungseinheit](find-request-unit-charge.md).
 
 ```csharp
 string query = "SELECT * FROM c";
@@ -233,7 +233,7 @@ Diese Abfrage kann jetzt über den Index verarbeitet werden.
 
 Weitere Informationen zum Optimieren der Abfrageleistung finden Sie im Artikel [Optimieren der Abfrageleistung](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-metrics).
 
-## <a id="References"></a>Referenzen
+## <a name="references"></a><a id="References"></a>Referenzen
 
 - [Azure Cosmos DB-SQL-Spezifikation](https://go.microsoft.com/fwlink/p/?LinkID=510612)
 - [ANSI SQL 2011](https://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=53681)

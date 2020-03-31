@@ -1,19 +1,18 @@
 ---
 title: Selbsttestclient zur Vorabüberprüfung eines virtuellen Computers | Azure Marketplace
 description: Erfahren Sie, wie Sie einen Selbsttestclient zur Vorabüberprüfung eines VM-Images für den Azure Marketplace erstellen.
-services: Azure, Marketplace, Cloud Partner Portal, Virtual Machine
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.author: pabutler
-ms.openlocfilehash: fc62875873f38630e592c79aebd6a138665ed6e4
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: fb568400cb60f108303909353bfa703e98ab6157
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73809206"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286420"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Erstellen eines Selbsttestclients zur Vorabüberprüfung eines Azure-VM-Images
 
@@ -301,7 +300,7 @@ Sie können eines der folgenden Programme verwenden, um ein Token zu erstellen u
 
 ### <a name="to-create-and-get-a-token-using-postman"></a>Erstellen und Abrufen eines Tokens mit Postman
 
- Um Auth0 für alle Ihre autorisierten Anwendungen nach Token abzufragen, führen Sie einen POST-Vorgang zum [https://login.microsoftonline.com/common/oauth2/token](https://login.microsoftonline.com/common/oauth2/token)-Endpunkt mit einer Nutzlast im folgenden Format durch:
+ Um Auth0 für beliebige Ihrer autorisierten Anwendungen nach Token abzufragen, führen Sie einen POST-Vorgang zum [https://login.microsoftonline.com/common/oauth2/token](https://login.microsoftonline.com/common/oauth2/token)-Endpunkt mit einer Nutzlast im folgenden Format durch:
 
 ```
 Method Type : POST

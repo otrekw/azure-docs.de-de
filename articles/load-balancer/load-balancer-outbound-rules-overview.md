@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 7/17/2019
 ms.author: allensu
 ms.openlocfilehash: d419c213b3bcfef3631d68eb9d4cb485291bed31
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78304190"
 ---
 # <a name="load-balancer-outbound-rules"></a>Load Balancer-Ausgangsregeln
@@ -36,7 +36,7 @@ Mit Ausgangsregeln können Sie steuern:
 - Wie lange das Leerlauftimeout für ausgehende Verbindungen dauert (4-120 Minuten)
 - Ob eine TCP-Zurücksetzung bei Leerlauftimeout gesendet wird
 
-Ausgangsregeln erweitern das in Artikel [Ausgehende Verbindungen](load-balancer-outbound-connections.md) beschriebene [Szenario 2](load-balancer-outbound-connections.md#lb). Die Rangfolge der Szenarien bleibt unverändert.
+Ausgangsregeln erweitern das in Artikel [Ausgehende Verbindungen](load-balancer-outbound-connections.md#lb) beschriebene [Szenario 2](load-balancer-outbound-connections.md). Die Rangfolge der Szenarien bleibt unverändert.
 
 ## <a name="outbound-rule"></a>Ausgehende Regel
 
@@ -64,7 +64,7 @@ Die API-Version „2018-07-01“ lässt eine Ausgangsregeldefinition mit der fol
 >[!NOTE]
 >Die effektive NAT-Konfiguration für ausgehenden Datenverkehr ist eine Kombination aller Ausgangs- und Lastenausgleichsregeln. Ausgangsregeln verhalten sich inkrementell zu Lastenausgleichsregeln. In Artikel [Deaktivieren von NAT für ausgehenden Datenverkehr für eine Lastenausgleichsregel](#disablesnat) finden Sie weitere nützliche Informationen, um die effektive NAT für ausgehenden Datenverkehr zu verwalten, wenn mehrere Regeln für eine VM gelten. Sie müssen [SNAT für ausgehenden Datenverkehr deaktivieren](#disablesnat), wenn Sie eine Ausgangsregel definieren, die die gleiche öffentliche IP-Adresse wie eine Lastenausgleichsregel verwendet.
 
-### <a name="scale"></a> Skalieren der NAT für ausgehenden Datenverkehr mit mehreren IP-Adressen
+### <a name="scale-outbound-nat-with-multiple-ip-addresses"></a><a name="scale"></a> Skalieren der NAT für ausgehenden Datenverkehr mit mehreren IP-Adressen
 
 Ausgangsregeln können jeweils mit nur einer einzigen öffentlichen IP-Adresse verwendet werden und erleichtern die Konfiguration beim Skalieren der NAT für ausgehenden Datenverkehr. Sie können mehrere IP-Adressen verwenden, um umfangreiche Szenarien zu planen. Mithilfe von Ausgangsregeln lassen sich außerdem die für die [SNAT-Überlastung](load-balancer-outbound-connections.md#snatexhaust) anfälligen Muster reduzieren.  
 
@@ -74,7 +74,7 @@ Darüber hinaus können Sie ein [Präfix für öffentliche IP-Adressen](https://
 
 Wenn Sie diese Option nutzen, können Sie keine einzelnen Ressourcen für öffentliche IP-Adressen aus dem Präfix für öffentliche IP-Adressen erstellen, da die Ausgangsregel die vollständige Kontrolle über das Präfix haben muss.  Wenn Sie eine differenziertere Steuerung wünschen, können Sie aus dem Präfix für öffentliche IP-Adressen eine individuelle öffentliche IP-Adressressource erstellen und mehrere öffentliche IP-Adressen einzeln dem Front-End einer Ausgangsregel zuweisen.
 
-### <a name="snatports"></a> Anpassen der SNAT-Portzuordnung
+### <a name="tune-snat-port-allocation"></a><a name="snatports"></a> Anpassen der SNAT-Portzuordnung
 
 Sie können Ausgangsregeln verwenden, um die [automatische SNAT-Portzuordnung basierend auf der Back-End-Poolgröße](load-balancer-outbound-connections.md#preallocatedports) anzupassen und mehr oder weniger Ressourcen zuzuweisen, als die automatische SNAT-Portzuordnung bereitstellt.
 
@@ -87,7 +87,7 @@ Jede öffentliche IP-Adresse aller Front-Ends einer Ausgangsregel stellt bis zu 
 
 Sie können die [automatische SNAT-Portzuordnung basierend auf der Back-End-Poolgröße](load-balancer-outbound-connections.md#preallocatedports) wiederherstellen, indem Sie als Portanzahl „0“ angeben. In diesem Fall erhalten die ersten 50 VM-Instanzen 1024 Ports. Die VM-Instanzen von 51-100 erhalten 512 usw. entsprechend der Tabelle.
 
-### <a name="idletimeout"></a> Steuern des Leerlauftimeouts für ausgehenden Datenfluss
+### <a name="control-outbound-flow-idle-timeout"></a><a name="idletimeout"></a> Steuern des Leerlauftimeouts für ausgehenden Datenfluss
 
 Ausgangsregeln stellen einen Konfigurationsparameter bereit, um das Leerlauftimeout für den ausgehenden Datenfluss zu steuern und ihn an die Anforderungen Ihrer Anwendung anzupassen.  Das Leerlauftimeout für ausgehenden Datenverkehr tritt standardmäßig nach 4 Minuten ein.  Der Parameter akzeptiert einen Wert von 4 bis 120, um die Minutenanzahl für das Leerlauftimeout für Datenflüsse festzulegen, die dieser speziellen Regel entsprechen.
 
@@ -95,7 +95,7 @@ Verwenden Sie den folgenden Parameter, um dieses Leerlauftimeout auf 1 Stunde fe
 
           "idleTimeoutInMinutes": 60
 
-### <a name="tcprst"></a> <a name="tcpreset"></a> Aktivieren der TCP-Zurücksetzung bei Leerlauftimeout
+### <a name="enable-tcp-reset-on-idle-timeout"></a><a name="tcprst"></a> <a name="tcpreset"></a> Aktivieren der TCP-Zurücksetzung bei Leerlauftimeout
 
 Das Standardverhalten von Load Balancer ist es, den Datenfluss allmählich zu entfernen, wenn das Leerlauftimeout für ausgehenden Datenverkehr erreicht wurde.  Mit dem Parameter „enableTCPReset“ können Sie ein besser vorhersagbares Anwendungsverhalten aktivieren und steuern, ob bidirektionale TCP-Zurücksetzung (TCP RST) außerhalb des Leerlauftimeouts für ausgehenden Datenverkehr gesendet wird. 
 
@@ -105,7 +105,7 @@ Verwenden Sie den folgenden Parameter, um die TCP-Zurücksetzung für eine Ausga
 
 Unter [TCP-Zurücksetzung bei Leerlauftimeout](https://aka.ms/lbtcpreset) finden Sie weitere Informationen, unter anderem zur regionalen Verfügbarkeit.
 
-### <a name="proto"></a> Unterstützen von TCP- und UDP-Transportprotokollen mit einer einzigen Regel
+### <a name="support-both-tcp-and-udp-transport-protocols-with-a-single-rule"></a><a name="proto"></a> Unterstützen von TCP- und UDP-Transportprotokollen mit einer einzigen Regel
 
 Sie werden wahrscheinlich die Option „Alle“ für das Ausgangsregel-Transportprotokoll verwenden wollen, doch Sie können die Ausgangsregel auch auf ein bestimmtes Transportprotokoll anwenden.
 
@@ -113,7 +113,7 @@ Verwenden Sie den folgenden Parameter, um das Protokoll auf TCP und UDP festzule
 
           "protocol": "All"
 
-### <a name="disablesnat"></a> Deaktivieren der NAT für ausgehenden Datenverkehr für eine Lastenausgleichsregel
+### <a name="disable-outbound-nat-for-a-load-balancing-rule"></a><a name="disablesnat"></a> Deaktivieren der NAT für ausgehenden Datenverkehr für eine Lastenausgleichsregel
 
 Wie bereits erwähnt, bieten Lastenausgleichsregeln eine automatische Programmierung der NAT für ausgehenden Datenverkehr. In einigen Szenarien müssen Sie jedoch die automatische Programmierung der NAT für ausgehenden Datenverkehr durch die Lastenausgleichsregel deaktivieren, um das Verhalten zu steuern oder zu verfeinern.  Ausgangsregeln umfassen Szenarien, in denen es wichtig ist, die automatische Programmierung der NAT für ausgehenden Datenverkehr zu stoppen.
 
@@ -145,7 +145,7 @@ Ausgangsregeln führen kein neues Konzept zum Definieren der VM-Gruppe ein, für
 
 ## <a name="scenarios"></a>Szenarien
 
-### <a name="groom"></a> Konfigurieren ausgehender Verbindungen für einen bestimmten Satz öffentlicher IP-Adressen
+### <a name="groom-outbound-connections-to-a-specific-set-of-public-ip-addresses"></a><a name="groom"></a> Konfigurieren ausgehender Verbindungen für einen bestimmten Satz öffentlicher IP-Adressen
 
 Sie können eine Ausgangsregel verwenden, um ausgehende Verbindungen so zu konfigurieren, dass sie scheinbar von einem bestimmten Satz öffentlicher IP-Adressen stammen, um Whitelistszenarien zu vereinfachen.  Diese öffentliche Quell-IP-Adresse kann die gleiche sein, die von einer Lastenausgleichsregel verwendet wird, oder ein anderer Satz öffentlicher IP-Adressen, als der von einer Lastenausgleichsregel verwendete.  
 
@@ -157,7 +157,7 @@ Sie können eine Ausgangsregel verwenden, um ausgehende Verbindungen so zu konfi
    
 Wenn die Lastenausgleichsregel nicht für den ausgehenden Datenverkehr verwendet werden soll, deaktivieren Sie [SNAT für ausgehenden Datenverkehr](#disablesnat) für die Lastenausgleichsregel.
 
-### <a name="modifysnat"></a> Ändern der SNAT-Portzuordnung
+### <a name="modify-snat-port-allocation"></a><a name="modifysnat"></a> Ändern der SNAT-Portzuordnung
 
 Sie können Ausgangsregeln verwenden, um die [automatische SNAT-Portzuweisung basierend auf der Back-End-Poolgröße](load-balancer-outbound-connections.md#preallocatedports) anzupassen.
 
@@ -165,7 +165,7 @@ Wenn Sie beispielsweise zwei VMs haben, die sich eine einzige öffentliche IP-Ad
 
 Erfahren Sie mehr über [ausgehende Verbindungen](load-balancer-outbound-connections.md) und darüber, wie [SNAT](load-balancer-outbound-connections.md#snat)-Ports zugeordnet und verwendet werden.
 
-### <a name="outboundonly"></a> Ausschließliches Aktivieren des ausgehenden Datenverkehrs
+### <a name="enable-outbound-only"></a><a name="outboundonly"></a> Ausschließliches Aktivieren des ausgehenden Datenverkehrs
 
 Sie können eine öffentliche Load Balancer Standard-Instanz verwenden, um NAT für ausgehenden Datenverkehr für eine Gruppe von VMs bereitzustellen. In diesem Szenario können Sie eine Ausgangsregel alleine ohne zusätzliche Regeln verwenden.
 
@@ -192,14 +192,14 @@ Beim Verwenden einer internen Load Balancer Standardinstanz ist die NAT für aus
    1. Deaktivieren Sie SNAT für ausgehenden Datenverkehr in der Lastenausgleichsregel.
    2. Konfigurieren Sie eine Ausgangsregel in derselben Load Balancer-Instanz.
    3. Verwenden Sie erneut den Back-End-Pool, den Ihre VMs bereits verwenden.
-   4. Geben Sie „Protokoll“: „Alle“ als Teil der Ausgangsregel an.
+   4. Geben Sie „Protokoll“ an: „Alle“ als Teil der Ausgangsregel.
 
 - Wenn nur NAT-Eingangsregeln verwendet werden, wird keine NAT für ausgehenden Datenverkehr bereitgestellt.
 
    1. Stellen Sie die VMs in einem Back-End-Pool bereit.
    2. Definieren Sie mindestens eine Front-End-IP-Konfiguration mit mindestens einer öffentlichen IP-Adresse oder einem Präfix für öffentliche IP-Adressen.
    3. Konfigurieren Sie eine Ausgangsregel in derselben Load Balancer-Instanz.
-   4. Geben Sie „Protokoll“: „Alle“ als Teil der Ausgangsregel an.
+   4. Geben Sie „Protokoll“ an: „Alle“ als Teil der Ausgangsregel.
 
 ## <a name="limitations"></a>Einschränkungen
 

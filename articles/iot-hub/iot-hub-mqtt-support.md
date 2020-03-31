@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
 ms.openlocfilehash: 2b200692610302bb135982e5419dcda36d5cfe60
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77648494"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233218"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT
 
@@ -93,7 +93,7 @@ Dabei sollten Sie die folgenden Punkte beachten:
 
 * Bei AMQP werden Fehler für viele Bedingungen zurückgegeben, bei MQTT wird dagegen die Verbindung beendet. Daher müssen an der Ausnahmebehandlungslogik möglicherweise einige Änderungen vorgenommen werden.
 
-* MQTT unterstützt beim Empfang von [Cloud-zu-Gerät-Nachrichten](iot-hub-devguide-messaging.md) keine *reject*-Vorgänge. Wenn Ihre Back-End-App eine Antwort von der Geräte-App erhalten muss, können Sie [direkte Methoden](iot-hub-devguide-direct-methods.md) verwenden.
+* MQTT unterstützt beim Empfang von *Cloud-zu-Gerät-Nachrichten* keine [reject](iot-hub-devguide-messaging.md)-Vorgänge. Wenn Ihre Back-End-App eine Antwort von der Geräte-App erhalten muss, können Sie [direkte Methoden](iot-hub-devguide-direct-methods.md) verwenden.
 
 * AMQP wird im Python SDK nicht unterstützt.
 
@@ -103,7 +103,7 @@ Wenn ein Gerät die SDKs von Geräten nicht verwenden kann, lässt es sich denno
 
 * Verwenden Sie für das Feld **ClientId** die **deviceId**-Eigenschaft.
 
-* Verwenden Sie `{iothubhostname}/{device_id}/?api-version=2018-06-30` für das Feld **Benutzername**, wobei `{iothubhostname}` der vollständige CNAME für den IoT Hub ist.
+* Verwenden Sie **für das Feld**Benutzername`{iothubhostname}/{device_id}/?api-version=2018-06-30`, wobei `{iothubhostname}` der vollständige CNAME für den IoT Hub ist.
 
     Beispiel: Wenn der Name für den IoT Hub **contoso.azure devices.net** und der Name des Geräts **MyDevice01** lautet, sollte das vollständige Feld **Benutzername** Folgendes enthalten:
 
@@ -339,7 +339,7 @@ Der Text der Antwort enthält den Abschnitt mit den Eigenschaften des Gerätezwi
 
 Die möglichen Statuscodes lauten:
 
-|Status | Beschreibung |
+|Status | BESCHREIBUNG |
 | ----- | ----------- |
 | 200 | Erfolg |
 | 429 | Zu viele Anforderungen (gedrosselt), siehe [IoT Hub-Drosselung](iot-hub-devguide-quotas-throttling.md) |

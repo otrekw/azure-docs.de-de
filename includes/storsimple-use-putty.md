@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: a5c62c67cd401c043352b06e6e6070a7fc0f1296
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67178129"
 ---
 #### <a name="to-connect-through-the-serial-console"></a>So stellen Sie über die serielle Konsole eine Verbindung her
@@ -24,8 +24,8 @@ ms.locfileid: "67178129"
    * Geschwindigkeit: 115.200
    * Datenbits: 8
    * Stoppbits: 1
-   * Parität: Keine
-   * Flusssteuerung: Keine
+   * Parität: Kein(e)
+   * Flusssteuerung: Kein(e)
      
      Diese Einstellungen werden in der folgenden Abbildung gezeigt.
      

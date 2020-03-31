@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: 50bcd42189b1bcc945d726277975892f07f1baa1
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78255528"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Auswählen der richtigen MySQL Server-Option in Azure
@@ -23,7 +23,7 @@ Berücksichtigen Sie bei der Entscheidung die beiden folgenden Optionen:
 
   Mit einer verwalteten Instanz von MySQL in Azure können Sie integrierte Features nutzen, die ansonsten eine umfangreiche Konfiguration erfordern, wenn der MySQL-Server entweder lokal oder auf einer Azure-VM gehostet wird.
 
-  Wenn Sie mit MySQL als Dienst arbeiten, bezahlen Sie für das, was Sie nutzen. Darüber hinaus haben Sie eine bessere Kontrolle, indem Sie ohne Unterbrechung horizontal oder zentral hochskalieren. Darüber hinaus verfügt Azure Database for MySQL im Gegensatz zu einem eigenständigen MySQL-Server über zusätzliche Funktionen wie integrierte Hochverfügbarkeit, Intelligence und Verwaltung.
+  Wenn Sie mit MySQL als Dienst arbeiten, bezahlen Sie für das, was Sie nutzen. Darüber hinaus haben Sie eine bessere Kontrolle, indem Sie ohne Unterbrechung auf- oder hochskalieren. Darüber hinaus verfügt Azure Database for MySQL im Gegensatz zu einem eigenständigen MySQL-Server über zusätzliche Funktionen wie integrierte Hochverfügbarkeit, Intelligence und Verwaltung.
 
 - **MySQL auf Azure-VMs**: Diese Option fällt in die Branchenkategorie IaaS. Mit diesem Dienst können Sie den MySQL-Server innerhalb eines vollständig verwalteten virtuellen Computers auf der Azure-Cloudplattform ausführen. Alle aktuellen Versionen und Editionen von MySQL können auf einem virtuellen IaaS-Computer installiert werden.
 

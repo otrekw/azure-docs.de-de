@@ -10,10 +10,10 @@ ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.openlocfilehash: 16c503fe2d584d5f8256c65bfc49825b300f6a36
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71672726"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Hinzufügen eines Benutzers im Azure-Portal
@@ -23,7 +23,7 @@ ms.locfileid: "71672726"
 2. Klicken Sie auf **Assistent für das Hinzufügen von Benutzern**.
 3. Suchen Sie im Schritt **Benutzer auswählen** nach dem Benutzer, den Sie hinzufügen möchten. Klicken Sie auf **Auswählen**.
 4. Wählen Sie im Schritt **Rolle auswählen** die Option **Data Lake Analytics-Entwickler** aus. Diese Rolle verfügt über die mindestens erforderlichen Berechtigungen zum Übermitteln/Überwachen/Verwalten von U-SQL-Aufträgen. Führen Sie eine Zuweisung zu dieser Rolle durch, wenn die Gruppe nicht zum Verwalten von Azure-Diensten vorgesehen ist.
-5. Wählen Sie im Schritt **Katalogberechtigungen auswählen** alle zusätzlichen Datenbanken aus, auf die der Benutzer Zugriff benötigt. Für das Übermitteln von Aufträgen ist Lese- und Schreibzugriff auf die Masterdatenbank erforderlich. Klicken Sie anschließend auf **OK**.
+5. Wählen Sie im Schritt **Katalogberechtigungen auswählen** alle zusätzlichen Datenbanken aus, auf die der Benutzer Zugriff benötigt. Für das Übermitteln von Aufträgen ist Lese- und Schreibzugriff auf die Masterdatenbank erforderlich. Abschließend klicken Sie auf **OK**.
 6. Überprüfen Sie im letzten Schritt **Ausgewählte Berechtigungen zuweisen** die Änderungen, die der Assistent vornehmen wird. Klicken Sie auf **OK**.
 
 
@@ -42,7 +42,7 @@ Erteilen Sie je nach Bedarf „R-X“ oder „RWX“ für Ordner mit Eingabe- un
 
 ## <a name="adding-a-user-using-powershell"></a>Hinzufügen eines Benutzers mit PowerShell
 
-1. Befolgen Sie die Anweisungen in diesem Leitfaden: [Installieren und Konfigurieren von Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
+1. Folgen Sie den Anweisungen in diesem Leitfaden: [Installieren und Konfigurieren von Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
 2. Laden Sie das PowerShell-Skript [Add-AdlaJobUser.ps1](https://github.com/Azure/AzureDataLake/blob/master/Samples/PowerShell/ADLAUsers/Add-AdlaJobUser.ps1) herunter.
 3. Führen Sie das PowerShell-Skript aus. 
 

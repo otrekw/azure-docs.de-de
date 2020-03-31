@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Streamingendpunkten mithilfe des Azure-Portals | Microsoft Docs
-description: In diesem Artikel wird gezeigt, wie Sie Streamingendpunkte mithilfe des Azure-Portals verwalten.
+description: In diesem Artikel erfahren Sie, wie Sie Streamingendpunkte mithilfe des Azure-Portals verwalten.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 57ec22cb02512577f8737718cae9175403fb5603
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74900881"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Verwalten von Streamingendpunkten mithilfe des Azure-Portals 
@@ -60,7 +60,7 @@ Führen Sie folgende Schritte aus, um einen Streamingendpunkt mithilfe des Azure
     ![Streamingendpunkt](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
 
 
-## <a id="configure_streaming_endpoints"></a>Konfigurieren des Streamingendpunkts
+## <a name="configuring-the-streaming-endpoint"></a><a id="configure_streaming_endpoints"></a>Konfigurieren des Streamingendpunkts
 Mit einem Streamingendpunkt können Sie die folgenden Eigenschaften konfigurieren:
 
 * Zugriffssteuerung
@@ -89,7 +89,7 @@ Eine kurze Beschreibung der Felder folgt.
 
 Weitere Informationen dazu finden Sie in [diesem Artikel](media-services-portal-scale-streaming-endpoints.md).
 
-## <a id="enable_cdn"></a>Aktivieren der Azure CDN-Integration
+## <a name="enable-azure-cdn-integration"></a><a id="enable_cdn"></a>Aktivieren der Azure CDN-Integration
 
 Wenn Sie ein neues Konto erstellen, ist die Streamingendpunkt-/Azure CDN-Integration standardmäßig aktiviert.
 
@@ -102,7 +102,7 @@ Nach der Aktivierung wird die Konfiguration von **Zugriffssteuerung**, **Benutze
 > [!IMPORTANT]
 > Die Azure Media Services-Integration in Azure CDN ist in **Azure CDN von Verizon**für Standard-Streamingendpunkte implementiert. Premium-Streamingendpunkte können mithilfe aller **Azure CDN-Tarife und -Anbieter** konfiguriert werden. Weitere Informationen zu Azure CDN-Features finden Sie in der [Übersicht über das Azure Content Delivery Network (CDN)](../../cdn/cdn-overview.md).
  
-### <a name="additional-considerations"></a>Zusätzliche Überlegungen
+### <a name="additional-considerations"></a>Weitere Überlegungen
 
 * Wenn CDN für einen Streamingendpunkt aktiviert ist, können die Clients keine Inhalte direkt vom Ursprung anfordern. Wenn Sie Ihre Inhalte mit oder ohne CDN testen können möchten, können Sie einen anderen Streamingendpunkt erstellen, für den kein CDN aktiviert ist.
 * Der Hostname für den Streamingendpunkt bleibt nach dem Aktivieren von CDN gleich. Sie müssen keine Änderungen an Ihrem Media Services-Workflow vornehmen, nachdem CDN aktiviert wurde. Wenn der Hostname des Streamingendpunkts z. B. "strasbourg.streaming.mediaservices.windows.net" lautet, wird nach der Aktivierung von CDN genau der gleiche Hostname verwendet.

@@ -7,10 +7,10 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.openlocfilehash: de2bc551547706fb820813e57996e77bf49148d1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73888930"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Häufige Anwendungsfälle für Azure Cosmos DB
@@ -68,7 +68,7 @@ Darüber hinaus können Daten in Azure Cosmos DB für Big Data-Analysen über Ap
 ## <a name="gaming"></a>Spiele
 Die Datenbankebene ist eine wesentliche Komponente von Gaming-Anwendungen. Moderne Spiele führen Grafikberechnungen auf Clients (mobile Endgeräte/Konsolen) durch, verlassen sich aber auf die Cloud, die benutzerdefinierten und personalisierten Inhalte wie In-Game Statistiken, Integration von sozialen Medien sowie Highscore-Listen zur Verfügung stellt. Spiele erfordern häufig Wartezeiten von einzelnen Millisekunden für Lese- und Schreibvorgänge, um ein ansprechendes Spielerlebnis bereitzustellen. Eine Spieldatenbank muss schnell sein und enorme Spitzen bei Anforderungsraten während der Einführung neuer Spiele und Featureupdates verarbeiten können.
 
-Azure Cosmos DB wird von Spielen wie [The Walking Dead: No Man's Land](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/), von [Next Games](https://www.nextgames.com/) und von [Halo 5: Guardians](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/) verwendet. Azure Cosmos DB bietet Spieleentwicklern die folgenden Vorteile:
+Azure Cosmos DB wird von Spielen wie [The Walking Dead: No Man's Land](https://azure.microsoft.com/blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/) von [Next Games](https://www.nextgames.com/) oder [Halo 5: Guardians](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/) verwendet. Azure Cosmos DB bietet Spieleentwicklern die folgenden Vorteile:
 
 * Azure Cosmos DB ermöglicht eine elastische zentrale Hoch- oder Herunterskalierung der Leistung. So können Spiele die Profile und Statistiken von gleichzeitig aktiven Spielern mit nur einem API-Aufruf aktualisieren – ganz egal, ob es sich um mehrere Dutzend oder mehrere Millionen Spieler handelt.
 * Azure Cosmos DB unterstützt Lese- und Schreibvorgänge in Millisekunden, um jede Verzögerung während des Spiels zu vermeiden.
@@ -86,7 +86,7 @@ Ein häufiger Anwendungsfall für Azure Cosmos DB ist die Speicherung und Abfrag
 
 Anwendungen, die in soziale Drittanbieter-Netzwerke integriert werden, müssen auf Schemaänderungen dieser Netzwerke reagieren. Da Daten in Cosmos DB standardmäßig und automatisch indiziert werden, können Daten jederzeit abgefragt werden. Daher verfügen diese Anwendungen über die Flexibilität, Projektionen entsprechend ihren jeweiligen Anforderungen abzurufen.
 
-Viele soziale Anwendungen werden auf globaler Ebene ausgeführt und können nicht vorhersagbare Nutzungsmuster aufweisen. Flexibilität bei der Skalierung des Datenspeichers ist von grundlegender Bedeutung, da die Anwendungsschicht in Abhängigkeit von der Nutzung skaliert werden muss.  Sie können den Speicher horizontal hochskalieren, indem Sie einem Cosmos DB-Konto weitere Datenpartitionen hinzufügen.  Darüber hinaus können Sie auch weitere Cosmos DB-Konten über mehrere Regionen hinweg erstellen. Informationen zur regionalen Verfügbarkeit von Cosmos DB-Diensten finden Sie unter [Azure-Region](https://azure.microsoft.com/regions/#services).
+Viele soziale Anwendungen werden auf globaler Ebene ausgeführt und können nicht vorhersagbare Nutzungsmuster aufweisen. Flexibilität bei der Skalierung des Datenspeichers ist von grundlegender Bedeutung, da die Anwendungsschicht in Abhängigkeit von der Nutzung skaliert werden muss.  Sie können den Speicher aufskalieren, indem Sie einem Cosmos DB-Konto weitere Datenpartitionen hinzufügen.  Darüber hinaus können Sie auch weitere Cosmos DB-Konten über mehrere Regionen hinweg erstellen. Informationen zur regionalen Verfügbarkeit von Cosmos DB-Diensten finden Sie unter [Azure-Region](https://azure.microsoft.com/regions/#services).
 
 ![Web-App-Referenzarchitektur für Azure Cosmos DB](./media/use-cases/apps-with-global-reach.png)
 

@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
 ms.openlocfilehash: bf8d8a2c11962467300ae8d65fe5bbbe9a65cf92
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75708354"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Hinzufügen der Zwischenspeicherung zum Verbessern der Leistung in Azure API Management
@@ -46,7 +46,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 + [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
 + [Importieren und Veröffentlichen Sie eine API.](import-and-publish.md)
 
-## <a name="caching-policies"> </a>Hinzufügen der Zwischenspeicherungsrichtlinien
+## <a name="add-the-caching-policies"></a><a name="caching-policies"> </a>Hinzufügen der Zwischenspeicherungsrichtlinien
 
 Mit den Zwischenspeicherungsrichtlinien in diesem Beispiel gibt die erste Anforderung an den Vorgang **GetSpeakers** eine Antwort vom Back-End-Dienst zurück. Diese Antwort wird zwischengespeichert und erhält einen Schlüssel, der auf den angegebenen Headern und Abfrageparametern basiert. Bei nachfolgenden Aufrufen der Operation mit denselben Parametern wird die zwischengespeicherte Antwort zurückgegeben, bis das Ablaufintervall abgelaufen ist.
 
@@ -77,7 +77,7 @@ Mit den Zwischenspeicherungsrichtlinien in diesem Beispiel gibt die erste Anford
 > [!TIP]
 > Wenn Sie wie unter [Verwenden einer externen Azure Cache for Redis-Instanz in Azure API Management](api-management-howto-cache-external.md) beschrieben einen externen Cache verwenden, empfiehlt es sich ggf., das Attribut `caching-type` der Cachingrichtlinien anzugeben. Ausführlichere Informationen finden Sie unter [Cacherichtlinien für API Management](api-management-caching-policies.md).
 
-## <a name="test-operation"> </a>Aufrufen einer Operation und Testen der Zwischenspeicherung
+## <a name="call-an-operation-and-test-the-caching"></a><a name="test-operation"> </a>Aufrufen einer Operation und Testen der Zwischenspeicherung
 Um die Zwischenspeicherung in Aktion zu sehen, können Sie den Vorgang über das Entwicklerportal aufrufen.
 
 1. Navigieren Sie im Azure-Portal zu Ihrer APIM-Instanz.
@@ -87,7 +87,7 @@ Um die Zwischenspeicherung in Aktion zu sehen, können Sie den Vorgang über das
 5. Klicken Sie im Menü rechts oben auf die Registerkarte **Test**.
 6. Klicken Sie auf **Senden**.
 
-## <a name="next-steps"> </a>Nächste Schritte
+## <a name="next-steps"></a><a name="next-steps"> </a>Nächste Schritte
 * Weitere Informationen zu Richtlinien für die Zwischenspeicherung finden Sie unter [Richtlinien für die Zwischenspeicherung][Caching policies] in der [Richtlinienreferenz für API Management][API Management policy reference].
 * Informationen zum Zwischenspeichern von Elementen nach Schlüssel mithilfe von Richtlinienausdrücken finden Sie unter [Benutzerdefiniertes Zwischenspeichern in Azure API Management](api-management-sample-cache-by-key.md).
 * Weitere Informationen zur Verwendung einer externen Azure Cache for Redis-Instanz finden Sie unter [Verwenden einer externen Azure Cache for Redis-Instanz in Azure API Management](api-management-howto-cache-external.md).

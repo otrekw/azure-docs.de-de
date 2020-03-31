@@ -1,19 +1,18 @@
 ---
 title: API zum Abrufen von Angeboten | Azure Marketplace
 description: Die API ruft eine zusammengefasste Liste der Angebote unter einem Herausgebernamespace ab.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 5c94c03a63936be2b086085a1e52064dedf214b0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: a1f15e269481b9706f81fd02f19effc9ad37df32
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819620"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280489"
 ---
 <a name="retrieve-offers"></a>Abrufen von Angeboten
 ===============
@@ -28,7 +27,7 @@ Ruft eine zusammengefasste Liste der Angebote unter einem Herausgebernamespace a
 
 | **Name**         |  **Beschreibung**                         |  **Datentyp** |
 | -------------    |  ------------------------------------    |  -----------   |
-|  publisherId     | Herausgeber-ID, z.B. `contoso` |   Zeichenfolge    |
+|  publisherId     | Herausgeber-ID, z.B. `contoso` |   String    |
 |  api-version     | Neueste Version der API                    |    Date        |
 |  |  |
 
@@ -46,7 +45,7 @@ Ruft eine zusammengefasste Liste der Angebote unter einem Herausgebernamespace a
 <a name="body-example"></a>Beispiel für Hauptteil
 ------------
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 ``` json
   200 OK 
@@ -98,7 +97,7 @@ Ruft eine zusammengefasste Liste der Angebote unter einem Herausgebernamespace a
 |  NotStarted                  | Das Angebot ist neu, aber nicht gestartet.                 |
 |  WaitingForPublisherReview   | Das Angebot wartet auf die Herausgebergenehmigung.         |
 |  Wird ausgeführt                     | Die Angebotsübermittlung wird verarbeitet.             |
-|  Succeeded                   | Die Verarbeitung der Angebotsübermittlung ist abgeschlossen.       |
+|  Erfolgreich                   | Die Verarbeitung der Angebotsübermittlung ist abgeschlossen.       |
 |  Canceled                    | Die Angebotsübermittlung wurde abgebrochen.                   |
 |  Fehler                      | Fehler bei der Angebotsübermittlung.                         |
 |  |  |

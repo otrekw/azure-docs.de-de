@@ -1,19 +1,18 @@
 ---
 title: Abrufen des Angebotsstatus | Azure Marketplace
 description: Die API ruft den aktuellen Status des Angebots ab.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 5ce546d79497f462f6c262de738036d7e3a30226
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 2f5211716145d6c05bbfb0132c4a6ba2f9cceabe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819662"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280506"
 ---
 <a name="retrieve-offer-status"></a>Abrufen des Angebotsstatus 
 =====================
@@ -27,8 +26,8 @@ Ruft den aktuellen Status des Angebots ab.
 
 |  **Name**       |   **Beschreibung**                            |  **Datentyp** |
 |  -------------  |  ------------------------------------------  |  ------------  |
-|  publisherId    | Herausgeber-ID, z.B. `Contoso`  |     Zeichenfolge     |
-|  offerId        | GUID, die das Angebot eindeutig identifiziert      |     Zeichenfolge     |
+|  publisherId    | Herausgeber-ID, z.B. `Contoso`  |     String     |
+|  offerId        | GUID, die das Angebot eindeutig identifiziert      |     String     |
 |  api-version    | Neueste Version der API                        |     Date       |
 |  |  |
 
@@ -36,7 +35,7 @@ Ruft den aktuellen Status des Angebots ab.
 <a name="header"></a>Header
 ------
 
-|  NAME           |  Wert               |
+|  Name           |  value               |
 |  -------------  | -------------------  |
 |  Content-Type   |  `application/json`  |
 |  Authorization  | `Bearer YOUR_TOKEN`  |
@@ -46,7 +45,7 @@ Ruft den aktuellen Status des Angebots ab.
 <a name="body-example"></a>Beispiel für Hauptteil
 ------------
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 ``` json
   {
@@ -159,7 +158,7 @@ Ruft den aktuellen Status des Angebots ab.
 |  NotStarted                  | Das Angebot ist neu und nicht gestartet.                            |
 |  WaitingForPublisherReview   | Das Angebot wartet auf die Herausgebergenehmigung.                 |
 |  Wird ausgeführt                     | Die Angebotsübermittlung wird verarbeitet.                     |
-|  Succeeded                   | Die Verarbeitung der Angebotsübermittlung ist abgeschlossen.               |
+|  Erfolgreich                   | Die Verarbeitung der Angebotsübermittlung ist abgeschlossen.               |
 |  Canceled                    | Die Angebotsübermittlung wurde abgebrochen.                           |
 |  Fehler                      | Fehler bei der Angebotsübermittlung.                                 |
 |  |  |
@@ -170,7 +169,7 @@ Ruft den aktuellen Status des Angebots ab.
 |  **Name**                    |    **Beschreibung**                           |
 |  -------------------------   |  ------------------------------------------  |
 |  NotStarted                  | Der Schritt wurde nicht gestartet.                        |
-|  In Bearbeitung                  | Der Schritt wird ausgeführt.                             |
+|  InProgress                  | Der Schritt wird ausgeführt.                             |
 |  WaitingForPublisherReview   | Für den Schritt wird auf die Herausgebergenehmigung gewartet.      |
 |  WaitingForApproval          | Für den Schritt wird auf die Verarbeitungsgenehmigung gewartet.        |
 |  Blockiert                     | Der Schritt ist blockiert.                             |

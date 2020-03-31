@@ -1,19 +1,18 @@
 ---
 title: Konfigurieren von Kundenleads | Azure Marketplace
 description: Konfigurieren von Kundenleads im Cloud-Partnerportal.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pabutler
-ms.openlocfilehash: 312e172321c25248f1b0801bdbccf71762319989
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 56012fb2a907a6db6f87554660ee36b99a3dcbf9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818810"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280319"
 ---
 <a name="get-customer-leads"></a>Generieren von Kundenleads
 ==================
@@ -66,7 +65,7 @@ Für jeden Lead, den Sie während des Kundengewinnungsprozesses empfangen, gibt 
 
 Das Format für einen Leadursprung ist **Ursprungs**-**Aktion** |  **Angebot**.
 
-**Quellen**: „AzureMarketplace“, „AzurePortal“, „TestDrive“ und „AppSource (SPZA)“
+**Ursprünge**: „AzureMarketplace“, „AzurePortal“, „TestDrive“ und „AppSource (SPZA)“
 
 **Aktionen**:
 - „INS“: Installation. Diese Aktion findet im Azure Marketplace oder in AppSource statt, wenn ein Kunde Ihr Produkt kauft.

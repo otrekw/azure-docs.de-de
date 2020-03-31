@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
 ms.openlocfilehash: ad6d3992f03802174eb03aa30b57b8d3dac1d6c4
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78942951"
 ---
 # <a name="azure-sql-database-security-features"></a>Sicherheitsfeatures für Azure SQL-Datenbank    
@@ -62,9 +62,9 @@ Da der Fabric Controller (FC) der zentrale Orchestrator von Azure-Fabric ist, si
 ### <a name="vlan-isolation"></a>VLAN-Isolation
 Das Azure-Produktionsnetzwerk ist in drei primäre VLAN-Netzwerke logisch getrennt:
 
-- Haupt-VLAN: Dient zum Verbinden nicht vertrauenswürdiger Kundenknoten.
+- Haupt-VLAN: Dient zum Verbinden von nicht vertrauenswürdigen Kundenknoten.
 - FC-VLAN: Enthält vertrauenswürdige FCs und unterstützende Systeme.
-- Geräte-VLAN: Enthält vertrauenswürdige Netzwerk- und andere Infrastrukturgeräte.
+- Geräte-VLAN: Enthält vertrauenswürdige Netzwerkgeräte und andere Infrastrukturgeräte.
 
 ### <a name="packet-filtering"></a>Paketfilterung
 Die IP-Filter und Softwarefirewalls, die im Stammbetriebssystem und im Gastbetriebssystem der Knoten implementiert sind, erzwingen Einschränkungen der Konnektivität und verhindern nicht autorisierten Datenverkehr zwischen virtuellen Computern.

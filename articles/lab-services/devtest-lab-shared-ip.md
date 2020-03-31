@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/12/2019
 ms.author: spelluru
 ms.openlocfilehash: f7c9feedddab1aea031cb3a8879e868aae04df00
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65236863"
 ---
 # <a name="understand-shared-ip-addresses-in-azure-devtest-labs"></a>Grundlegendes zu freigegebenen IP-Adressen in Azure DevTest Labs
@@ -36,7 +36,7 @@ Alle in diesem Lab erstellten virtuellen Computer verwenden standardmäßig eine
 
 ![Neuer virtueller Computer](media/devtest-lab-shared-ip/new-vm.png)
 
-- **Freigegeben**: Alle als **Freigegeben** erstellten virtuellen Computer werden in einer einzelnen Ressourcengruppe (RG) platziert. Dieser RG wird eine einzelne IP-Adresse zugewiesen, und diese IP-Adresse wird von allen virtuellen Computern in der RG verwendet.
+- **Freigegeben:** Alle als **Freigegeben** erstellten virtuellen Computer werden in einer einzelnen Ressourcengruppe (RG) platziert. Dieser RG wird eine einzelne IP-Adresse zugewiesen, und diese IP-Adresse wird von allen virtuellen Computern in der RG verwendet.
 - **Öffentlich:** Jeder virtuelle Computer, den Sie erstellen, besitzt eine eigene IP-Adresse und wird in seiner eigenen Ressourcengruppe erstellt.
 - **Privat:** Jeder virtuelle Computer, den Sie erstellen, verwendet eine private IP-Adresse. Mit diesem virtuellen Computer kann keine direkte Remotedesktopverbindung über das Internet hergestellt werden.
 
@@ -44,7 +44,7 @@ Wenn dem Subnetz ein virtueller Computer mit aktivierter IP-Adressfreigabe hinzu
 
 ## <a name="using-the-shared-ip"></a>Verwenden der freigegebenen IP-Adresse
 
-- **Linux-Benutzer:** Verwenden Sie die IP-Adresse oder den vollqualifizierten Domänennamen, gefolgt von einem Doppelpunkt und dem Port, um eine SSH-Verbindung mit dem virtuellen Computer herzustellen. In der folgenden Abbildung lautet die RDP-Adresse für die Verbindung mit dem virtuellen Computer `mydevtestlab597975021002.eastus.cloudapp.azure.com:50661`.
+- **Linux-Benutzer:** Verwenden Sie die IP-Adresse oder den vollqualifizierten Domänennamen gefolgt von einem Doppelpunkt und dem Port, um eine SSH-Verbindung mit dem virtuellen Computer herzustellen. In der folgenden Abbildung lautet die RDP-Adresse für die Verbindung mit dem virtuellen Computer `mydevtestlab597975021002.eastus.cloudapp.azure.com:50661`.
 
   ![Beispiel für einen virtuellen Computer](media/devtest-lab-shared-ip/vm-info.png)
 

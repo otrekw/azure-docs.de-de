@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
 ms.openlocfilehash: 877467b65d346c871dd93f4b3f96b2c1664fa4b9
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73906791"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>Vergleichen von Nachrichtenweiterleitung und Event Grid für IoT Hub
@@ -21,15 +21,15 @@ Azure IoT Hub stellt die Möglichkeit bereit, Daten von Ihren verbundenen Gerät
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-**[IoT Hub-Nachrichtenweiterleitung](iot-hub-devguide-messages-d2c.md)** : Dieses IoT Hub-Feature ermöglicht es Benutzern, Gerät-zu-Cloud-Nachrichten an Dienstendpunkte wie Azure Storage-Container, Event Hubs, Service Bus-Warteschlangen oder Service Bus-Themen weiterzuleiten. Die Weiterleitung verfügt auch über eine Abfragefunktion zum Filtern der Daten, bevor diese an die Endpunkte weitergeleitet werden. Zusätzlich zu Gerätetelemetriedaten können Sie auch [Ereignisse ohne Telemetriedaten](iot-hub-devguide-messages-d2c.md#non-telemetry-events) senden, die zum Auslösen von Aktionen verwendet werden können. 
+**[IoT Hub-Nachrichtenweiterleitung:](iot-hub-devguide-messages-d2c.md)** Dieses IoT Hub-Feature ermöglicht es Benutzern, Gerät-zu-Cloud-Nachrichten an Dienstendpunkte wie Azure Storage-Container, Event Hubs, Service Bus-Warteschlangen oder Service Bus-Themen weiterzuleiten. Die Weiterleitung verfügt auch über eine Abfragefunktion zum Filtern der Daten, bevor diese an die Endpunkte weitergeleitet werden. Zusätzlich zu Gerätetelemetriedaten können Sie auch [Ereignisse ohne Telemetriedaten](iot-hub-devguide-messages-d2c.md#non-telemetry-events) senden, die zum Auslösen von Aktionen verwendet werden können. 
 
-**IoT Hub-Integration mit Event Grid** Azure Event Grid ist ein vollständig verwalteter Ereignisroutingdienst, der ein Veröffentlichen-Abonnieren-Modell verwendet. IoT Hub und Event Grid [integrieren gemeinsam IoT Hub-Ereignisse in Azure- und Nicht-Azure-Dienste](iot-hub-event-grid.md) praktisch in Echtzeit. IoT Hub veröffentlicht sowohl [Geräteereignisse](iot-hub-event-grid.md#event-types) als auch Telemetrieereignisse.
+**IoT Hub-Integration mit Event Grid:** Azure Event Grid ist ein vollständig verwalteter Ereignisroutingdienst, der ein Veröffentlichen-Abonnieren-Modell verwendet. IoT Hub und Event Grid [integrieren gemeinsam IoT Hub-Ereignisse in Azure- und Nicht-Azure-Dienste](iot-hub-event-grid.md) praktisch in Echtzeit. IoT Hub veröffentlicht sowohl [Geräteereignisse](iot-hub-event-grid.md#event-types) als auch Telemetrieereignisse.
 
 ## <a name="differences"></a>Unterschiede
 
 Sowohl bei der Nachrichtenweiterleitung als auch bei Even Grid ist eine Warnungskonfiguration möglich, es gibt jedoch einige wichtige Unterschiede zwischen den beiden Methoden. Details finden Sie in der folgenden Tabelle:
 
-| Feature | IoT Hub-Nachrichtenweiterleitung | IoT Hub-Integration mit Event Grid |
+| Funktion | IoT Hub-Nachrichtenweiterleitung | IoT Hub-Integration mit Event Grid |
 | ------- | --------------- | ---------- |
 | **Gerätenachrichten und -ereignisse** | Ja, die Nachrichtenweiterleitung kann für Telemetriedaten verwendet werden und außerdem Änderungen beim Gerätezwilling, Ereignisse im Gerätelebenszyklus sowie Änderungsereignisse beim digitalen Zwilling (Teil der [Public Preview von IoT Plug & Play](../iot-pnp/overview-iot-plug-and-play.md)) melden. | Ja, Event Grid kann für Telemetriedaten verwendet werden, aber auch melden, wenn Geräte erstellt, gelöscht, verbunden oder von IoT Hub getrennt werden. |
 | **Reihenfolge** | Ja, die Reihenfolge von Ereignissen wird beibehalten.  | Nein, die Reihenfolge von Ereignissen ist nicht garantiert. | 
@@ -41,12 +41,12 @@ Sowohl bei der Nachrichtenweiterleitung als auch bei Even Grid ist eine Warnungs
 
 IoT Hub-Nachrichtenweiterleitung und Event Grid weisen auch Ähnlichkeiten auf, von denen einige in der folgenden Tabelle beschrieben werden:
 
-| Feature | IoT Hub-Nachrichtenweiterleitung | IoT Hub-Integration mit Event Grid |
+| Funktion | IoT Hub-Nachrichtenweiterleitung | IoT Hub-Integration mit Event Grid |
 | ------- | --------------- | ---------- |
 | **Maximale Nachrichtengröße** | 256 KB, Gerät-zu-Cloud | 256 KB, Gerät-zu-Cloud |
 | **Zuverlässigkeit** | Hoch: Jede Nachricht wird für jede Route mindestens einmal an den Endpunkt übermittelt. Alle Nachrichten, die nicht innerhalb einer Stunde übermittelt werden, laufen ab. | Hoch: Jede Nachricht wird für jedes Abonnement mindestens einmal an den Webhook übermittelt. Alle Ereignisse, die nicht innerhalb von 24 Stunden übermittelt werden, laufen ab. | 
-| **Skalierbarkeit** | Hoch: Für die Unterstützung von Millionen gleichzeitig verbundener Geräte optimiert, die Milliarden Nachrichten senden. | Hoch: Kann 10.000.000 Ereignisse pro Sekunde pro Region weiterleiten. |
-| **Latenz** | Niedrig: Nahezu in Echtzeit. | Niedrig: Nahezu in Echtzeit. |
+| **Skalierbarkeit** | Hoch: für die Unterstützung von Millionen gleichzeitig verbundener Geräte, die Milliarden Nachrichten senden, optimiert. | Hoch: kann 10.000.000 Ereignisse pro Sekunde pro Region weiterleiten. |
+| **Latenz** | Niedrig: nahezu in Echtzeit. | Niedrig: nahezu in Echtzeit. |
 | **Senden an mehrere Endpunkte** | Ja, Senden einer einzelnen Nachricht an mehrere Endpunkte. | Ja, Senden einer einzelnen Nachricht an mehrere Endpunkte.  
 | **Sicherheit** | IoT Hub ermöglicht gerätespezifische Identitäten und widerrufbare Zugriffssteuerung. Weitere Informationen finden Sie unter [IoT Hub-Zugriffssteuerung](iot-hub-devguide-security.md). | Event Grid bietet eine Überprüfung an drei Punkten: Ereignisabonnements, Ereignisveröffentlichung und Webhook-Ereignisübermittlung. Weitere Informationen finden Sie unter [Event Grid – Sicherheit und Authentifizierung](../event-grid/security-authentication.md). |
 

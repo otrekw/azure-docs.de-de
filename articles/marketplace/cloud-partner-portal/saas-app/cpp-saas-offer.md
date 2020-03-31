@@ -1,19 +1,18 @@
 ---
 title: Azure SaaS-Anwendungsangebot | Azure Marketplace
 description: Übersicht über den Prozess zum Veröffentlichen eines Azure-SaaS-Anwendungsangebots im Azure Marketplace.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.author: pabutler
-ms.openlocfilehash: afe1debbe7176a690500b4fe2cc8d5dcdd134298
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 83ed386b9f84a535850bd148920e945c049a46aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817477"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279877"
 ---
 # <a name="azure-saas-application-offer"></a>Azure-SaaS-Anwendungsangebot
 

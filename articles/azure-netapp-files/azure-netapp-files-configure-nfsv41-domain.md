@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: b-juche
 ms.openlocfilehash: 77178a23206eadae941794c92b8dd99fe2ca1e05
-ms.sourcegitcommit: f226cdd6406372b5693d46b6d04900f2f0cda4e6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73906249"
 ---
 # <a name="configure-nfsv41-default-domain-for-azure-netapp-files"></a>Konfigurieren der NFSv4.1-Fehlerdomäne für Azure NetApp Files
@@ -30,7 +30,7 @@ Die Stammzuordnung erfolgt standardmäßig mit dem Benutzer `nobody`, da die NFS
 
 ![Standardverhalten der Benutzer-/Gruppenzuordnung für NFSv4.1](../media/azure-netapp-files/azure-netapp-files-nfsv41-default-behavior-user-group-mapping.png)
 
-Wie das obige Beispiel zeigt, muss der Benutzer für `file1` `root` sein, doch er wird standardmäßig `nobody` zugeordnet.  Dieser Artikel beschreibt, wie Sie den Benutzer `file1` auf `root` festlegen.  
+Wie das obige Beispiel zeigt, muss der Benutzer für `file1``root` sein, doch er wird standardmäßig `nobody` zugeordnet.  Dieser Artikel beschreibt, wie Sie den Benutzer `file1` auf `root` festlegen.  
 
 ## <a name="steps"></a>Schritte 
 

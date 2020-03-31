@@ -9,10 +9,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.openlocfilehash: 75995eeb3f8255cb4c60d5be267f9c343edfea89
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74111858"
 ---
 # <a name="process-change-feed-in-azure-blob-storage-preview"></a>Verarbeiten von Änderungsfeeds in Azure Blob Storage (Vorschau)
@@ -22,7 +22,7 @@ Der Änderungsfeed stellt Transaktionsprotokolle für alle Änderungen bereit, d
 Weitere Informationen zu Änderungsfeeds finden Sie unter [Änderungsfeed in Azure Blob Storage (Vorschau)](storage-blob-change-feed.md).
 
 > [!NOTE]
-> Der Änderungsfeed befindet sich in der öffentlichen Vorschauphase und ist in den Regionen **westcentralus** und **westus2** verfügbar. Weitere Informationen zu dieser Funktion sowie bekannten Problemen und Einschränkungen finden Sie unter [Änderungsfeedunterstützung in Azure Blob Storage](storage-blob-change-feed.md). Die Change Feed Processor-Bibliothek kann sich ab dem jetzigen Zeitpunkt bis zum Zeitpunkt der allgemeinen Verfügbarkeit dieser Bibliothek ändern.
+> Der Änderungsfeed befindet sich in der öffentlichen Vorschauphase und ist in den Regionen **USA, Westen-Mitte** und **USA, Westen 2** verfügbar. Weitere Informationen zu dieser Funktion sowie bekannten Problemen und Einschränkungen finden Sie unter [Änderungsfeedunterstützung in Azure Blob Storage](storage-blob-change-feed.md). Die Change Feed Processor-Bibliothek kann sich ab dem jetzigen Zeitpunkt bis zum Zeitpunkt der allgemeinen Verfügbarkeit dieser Bibliothek ändern.
 
 ## <a name="get-the-blob-change-feed-processor-library"></a>Anfordern der Change Feed Processor-Bibliothek
 

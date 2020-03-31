@@ -12,10 +12,10 @@ ms.author: craigg
 ms.reviewer: ''
 ms.date: 02/12/2019
 ms.openlocfilehash: de5f23bf1e8acd8a5fcd0cf8e1526f88667800c1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73827134"
 ---
 # <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Verbinden von Excel mit einem Singleton in Azure SQL-Datenbank und Erstellen eines Berichts
@@ -33,7 +33,7 @@ Sie benötigen auch eine Kopie von Excel. In diesem Artikel wird [Microsoft Exce
 1. Um Excel mit einer SQL-Datenbank zu verbinden, öffnen Sie Excel und erstellen dann eine neue Arbeitsmappe oder öffnen eine vorhandene Excel-Arbeitsmappe.
 2. Wählen Sie auf der Menüleiste im oberen Bereich der Seite die Registerkarte **Daten**, dann **Daten abrufen**, „From Azure“ (Aus Azure) und schließlich **From Azure SQL Database** (Aus Azure SQL-Datenbank) aus. 
 
-   ![Auswählen einer Datenquelle: Verbinden von Excel mit SQL-Datenbank](./media/sql-database-connect-excel/excel_data_source.png)
+   ![Auswählen einer Datenquelle: Verbinden Sie Excel mit SQL-Datenbank.](./media/sql-database-connect-excel/excel_data_source.png)
 
    Der Datenverbindungs-Assistent wird geöffnet.
 3. Geben Sie im Dialogfeld **Zum Datenbankserver verbinden** den **Servernamen** der SQL-Datenbank, mit der Sie die Verbindung herstellen möchten, im Format <*Servername*> **.database.windows.net** ein. Beispiel: **msftestserver.database.windows.net**. Geben Sie optional den Namen der Datenbank ein. Wählen Sie **OK** aus, um das Fenster der Anmeldeinformationen zu öffnen. 
@@ -79,10 +79,10 @@ Wenn Sie die Verbindungsdetails dauerhaft speichern möchten, können Sie eine O
 
       ![Dialogfeld „Neue Verbindung“](media/sql-database-connect-excel/new-connection.png)
 
-2. Geben Sie im **Datenverbindungs-Assistenten** den Servernamen und die Anmeldeinformationen für SQL-Datenbank ein. Klicken Sie auf **Weiter**. 
+2. Geben Sie im **Datenverbindungs-Assistenten** den Servernamen und die Anmeldeinformationen für SQL-Datenbank ein. Wählen Sie **Weiter** aus. 
    1. Wählen Sie in der Dropdownliste die Datenbank aus, die die Daten enthält. 
    2. Wählen Sie die Tabelle oder Ansicht aus, an der Sie interessiert sind. Hier wurde vGetAllCategories ausgewählt.
-   3. Klicken Sie auf **Weiter**. 
+   3. Wählen Sie **Weiter** aus. 
 
       ![Datenverbindungs-Assistent](media/sql-database-connect-excel/data-connection-wizard.png) 
 

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 5f75ae1104297c461584e061f5a94aecd987caad
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78246788"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit Routingregeln auf URL-Pfadbasis mithilfe der Azure-Befehlszeilenschnittstelle
@@ -27,11 +27,11 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ![URL-Routingbeispiel](./media/application-gateway-create-url-route-cli/scenario.png)
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -45,7 +45,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen 
 
-Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet) ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens *myAGSubnet*. Dann können Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet) das Subnetz namens *myBackendSubnet* hinzufügen, das von den Back-End-Servern benötigt wird. Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip) eine öffentliche IP-Adresse namens *myAGPublicIPAddress*.
+Erstellen Sie mit *az network vnet create* ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens [myAGSubnet](/cli/azure/network/vnet). Dann können Sie mit *az network vnet subnet create* das Subnetz namens [myBackendSubnet](/cli/azure/network/vnet/subnet) hinzufügen, das von den Back-End-Servern benötigt wird. Erstellen Sie mit *az network public-ip create* eine öffentliche IP-Adresse namens [myAGPublicIPAddress](/cli/azure/network/public-ip).
 
 ```azurecli-interactive
 az network vnet create \
@@ -116,7 +116,7 @@ az network application-gateway frontend-port create \
 
 ### <a name="add-backend-listener"></a>Hinzufügen eines Back-End-Listeners
 
-Fügen Sie mit [az network application-gateway http-listener create](/cli/azure/network/application-gateway) den Back-End-Listener namens *backendListener* hinzu, der zum Weiterleiten von Datenverkehr erforderlich ist.
+Fügen Sie mit *az network application-gateway http-listener create* den Back-End-Listener namens [backendListener](/cli/azure/network/application-gateway) hinzu, der zum Weiterleiten von Datenverkehr erforderlich ist.
 
 
 ```azurecli-interactive
@@ -130,7 +130,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-url-path-map"></a>Hinzufügen einer URL-Pfadzuordnung
 
-URL-Pfadzuordnungen stellen sicher, dass bestimmte URLs an bestimmte Back-End-Pools weitergeleitet werden. Sie können mithilfe der Befehle [az network application-gateway url-path-map create](/cli/azure/network/application-gateway) und [az network application-gateway url-path-map rule create](/cli/azure/network/application-gateway) die URL-Pfadzuordnungen *imagePathRule* und *videoPathRule* hinzufügen.
+URL-Pfadzuordnungen stellen sicher, dass bestimmte URLs an bestimmte Back-End-Pools weitergeleitet werden. Sie können mithilfe der Befehle *az network application-gateway url-path-map create* und *az network application-gateway url-path-map rule create* die URL-Pfadzuordnungen [imagePathRule](/cli/azure/network/application-gateway) und [videoPathRule](/cli/azure/network/application-gateway) hinzufügen.
 
 ```azurecli-interactive
 az network application-gateway url-path-map create \
@@ -154,7 +154,7 @@ az network application-gateway url-path-map rule create \
 
 ### <a name="add-routing-rule"></a>Hinzufügen einer Routingregel
 
-Die Routingregel ordnet die URL-Zuordnungen dem von Ihnen erstellten Listener zu. Sie können mit dem Befehl [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) die Regel *rule2* hinzufügen.
+Die Routingregel ordnet die URL-Zuordnungen dem von Ihnen erstellten Listener zu. Sie können mit dem Befehl *az network application-gateway rule create* die Regel [rule2](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) hinzufügen.
 
 ```azurecli-interactive
 az network application-gateway rule create \

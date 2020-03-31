@@ -9,10 +9,10 @@ ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.openlocfilehash: c7211bc805f4ed1d026faedbfdc9d53d3c1dfd93
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68721281"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Verwenden des Warteschlangenspeichers mit Ruby
@@ -61,7 +61,7 @@ So rufen Sie diese Werte aus einem klassischen oder Resource Manager-Speicherkon
 4. Auf dem angezeigten Blatt „Zugriffsschlüssel“ sehen Sie Zugriffsschlüssel 1 und Zugriffsschlüssel 2. Sie können beide verwenden. 
 5. Klicken Sie auf das Symbol „Kopieren“, um den Schlüssel in die Zwischenablage zu kopieren. 
 
-## <a name="how-to-create-a-queue"></a>Anleitung: Erstellen einer Warteschlange
+## <a name="how-to-create-a-queue"></a>Erstellen einer Warteschlange
 Der folgende Code erstellt ein **Azure::QueueService** -Objekt, das Ihnen das Arbeiten mit Warteschlangen ermöglicht.
 
 ```ruby
@@ -78,14 +78,14 @@ rescue
 end
 ```
 
-## <a name="how-to-insert-a-message-into-a-queue"></a>Anleitung: Einfügen einer Nachricht in eine Warteschlange
+## <a name="how-to-insert-a-message-into-a-queue"></a>Einfügen einer Nachricht in eine Warteschlange
 Mit der **create_message()** -Methode können Sie eine neue Nachricht erstellen und zur Warteschlange hinzufügen.
 
 ```ruby
 azure_queue_service.create_message("test-queue", "test message")
 ```
 
-## <a name="how-to-peek-at-the-next-message"></a>Anleitung: Einsehen der nächsten Nachricht
+## <a name="how-to-peek-at-the-next-message"></a>Einsehen der nächsten Nachricht
 Sie können einen Blick auf die Nachricht am Anfang einer Warteschlange werfen, ohne sie aus der Warteschlange zu entfernen, indem Sie die Methode **peek\_messages()** aufrufen. Standardmäßig wird von **peek\_messages()** jeweils nur eine Nachricht angeschaut. Sie können jedoch auch angeben, wie viele Nachrichten Sie abrufen möchten.
 
 ```ruby
@@ -93,7 +93,7 @@ result = azure_queue_service.peek_messages("test-queue",
   {:number_of_messages => 10})
 ```
 
-## <a name="how-to-dequeue-the-next-message"></a>Anleitung: Entfernen der nächsten Nachricht aus der Warteschlange
+## <a name="how-to-dequeue-the-next-message"></a>Entfernen der nächsten Nachricht aus der Warteschlange
 Sie können eine Nachricht in zwei Schritten aus der Warteschlange entfernen.
 
 1. Wenn Sie **list\_messages()** aufrufen, wird standardmäßig die nächste Nachricht aus der Warteschlange abgerufen. Sie können jedoch auch angeben, wie viele Nachrichten Sie abrufen möchten. Die von **list\_messages()** zurückgegebene Nachricht ist für anderen Code nicht mehr sichtbar, der Nachrichten aus dieser Warteschlange liest. Sie übergeben das Sichtbarkeits-Zeitlimit in Sekunden als Parameter.
@@ -107,7 +107,7 @@ azure_queue_service.delete_message("test-queue",
   messages[0].id, messages[0].pop_receipt)
 ```
 
-## <a name="how-to-change-the-contents-of-a-queued-message"></a>Anleitung: Ändern des Inhalts von Nachrichten in der Warteschlange
+## <a name="how-to-change-the-contents-of-a-queued-message"></a>Ändern des Inhalts von Nachrichten in der Warteschlange
 Sie können den Inhalt einer Nachricht vor Ort in der Warteschlange ändern. Der folgende Code verwendet die **update_message()** -Methode zum Aktualisieren einer Nachricht. Der Code gibt ein Tupel zurück, das den Pop-Beleg der Warteschlangennachricht und einen Datums-/Uhrzeitwert in UTC zurück, der angibt, wann die Nachricht in der Warteschlange sichtbar sein wird.
 
 ```ruby
@@ -117,7 +117,7 @@ pop_receipt, time_next_visible = azure_queue_service.update_message(
   30)
 ```
 
-## <a name="how-to-additional-options-for-dequeuing-messages"></a>Anleitung: Zusätzliche Optionen für das Entfernen von Nachrichten aus der Warteschlange
+## <a name="how-to-additional-options-for-dequeuing-messages"></a>Zusätzliche Optionen für das Entfernen von Nachrichten aus der Warteschlange
 Es gibt zwei Möglichkeiten, wie Sie das Abrufen von Nachrichten aus der Warteschlange anpassen können.
 
 1. Sie können auch einen Nachrichtenstapel abrufen.
@@ -133,7 +133,7 @@ azure_queue_service.list_messages("test-queue", 300
 end
 ```
 
-## <a name="how-to-get-the-queue-length"></a>Anleitung: Abrufen der Warteschlangenlänge
+## <a name="how-to-get-the-queue-length"></a>Abrufen der Warteschlangenlänge
 Sie können die Anzahl der Nachrichten in einer Warteschlange schätzen lassen. Die Methode **get\_queue\_metadata()** ruft eine ungefähre Nachrichtenanzahl und Metadaten zur Warteschlange vom Warteschlangendienst ab.
 
 ```ruby
@@ -141,7 +141,7 @@ message_count, metadata = azure_queue_service.get_queue_metadata(
   "test-queue")
 ```
 
-## <a name="how-to-delete-a-queue"></a>Anleitung: Löschen einer Warteschlange
+## <a name="how-to-delete-a-queue"></a>Löschen von Warteschlangen
 Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen Sie die Methode **delete\_queue()** für das Warteschlangenobjekt auf.
 
 ```ruby

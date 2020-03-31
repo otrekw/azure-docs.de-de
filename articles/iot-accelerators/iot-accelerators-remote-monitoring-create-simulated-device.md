@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8babacfede6e13fde629492e1cd9f80af7f0e53f
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943071"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Erstellen und Testen eines neuen simulierten Geräts
@@ -111,7 +111,7 @@ Laden Sie den [Microservice "Gerätesimulation"](https://github.com/Azure/device
 
 Um den Microservice lokal auszuführen, klicken Sie auf **Debuggen > Debuggen starten**.
 
-Das Fenster **Terminal** in Visual Studio Code zeigt die Ausgabe aus dem laufenden Microservice, einschließlich einer URL für die Webdienst-Integritätsprüfung: [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status). Wenn Sie zu dieser Adresse navigieren, sollte der Status „OK: aktiv und gut“ lauten.
+Das Fenster **Terminal** in Visual Studio Code zeigt die Ausgabe aus dem laufenden Microservice, einschließlich einer URL für die Webdienst-Integritätsprüfung: [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status). Wenn Sie zu dieser Adresse navigieren, sollte der Status "OK: aktiv und gut" lauten.
 
 Lassen Sie den Microservice "Speicheradapter" weiterhin in dieser Instanz von Visual Studio Code ausführen, während Sie die nächsten Schritte erledigen.
 

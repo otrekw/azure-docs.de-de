@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: efc116c278bfe72419800603a3b365f461fe0a28
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60362787"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232234"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>Konfigurieren von CHAP für Ihr StorSimple-Gerät
 
@@ -127,7 +127,7 @@ Bei der bidirektionalen Authentifizierung muss das Ziel den Initiator und der In
       
        ![iSCSI-Initiator: Geheimer Schlüssel für wechselseitige CHAP-Authentifizierung](./media/storsimple-configure-chap/IC740949.png)
 5. Klicken Sie auf die Registerkarte **Ziele** .
-6. Klicken Sie auf die Schaltfläche **Verbinden** . 
+6. Klicken Sie auf die Schaltfläche **Verbinden**. 
 7. Klicken Sie im Dialogfeld **Mit Ziel verbinden** auf **Erweitert**.
 8. Gehen Sie im Dialogfeld **Erweiterte Eigenschaften** wie folgt vor:
    
@@ -141,7 +141,7 @@ Bei der bidirektionalen Authentifizierung muss das Ziel den Initiator und der In
 
 Weitere Informationen zum Konfigurieren von CHAP auf dem Windows-Hostserver finden Sie unter [Zusätzliche Überlegungen](#additional-considerations).
 
-## <a name="additional-considerations"></a>Zusätzliche Überlegungen
+## <a name="additional-considerations"></a>Weitere Überlegungen
 
 Das **Schnellverbindungsfeature** unterstützt keine Verbindungen mit aktiviertem CHAP. Verwenden Sie bei aktiviertem CHAP die Schaltfläche **Verbinden** auf der Registerkarte **Ziele**, um die Verbindung mit einem Ziel herzustellen.
 

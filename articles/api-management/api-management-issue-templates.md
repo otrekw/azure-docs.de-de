@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1dac90053797caf66af79e458b9dbb95b682cd17
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176644"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226578"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Problemvorlagen in Azure API Management
 Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des Entwicklerportals mit einem Satz von Vorlagen anzupassen, die den Inhalt konfigurieren. Unter Verwendung dieser Vorlagen können Sie die Seiteninhalte mithilfe von [DotLiquid](http://dotliquidmarkup.org/)-Syntax und dem Editor Ihrer Wahl (beispielsweise [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) sowie verschiedenen lokalisierten [Zeichenfolgenressourcen](api-management-template-resources.md#strings), [Glyph-Ressourcen](api-management-template-resources.md#glyphs) und [Seitensteuerelementen](api-management-page-controls.md) an Ihre Bedürfnisse anpassen.  
@@ -28,13 +28,13 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 -   [Problemliste](#IssueList)  
   
 > [!NOTE]
->  Beispielstandardvorlagen sind in der folgenden Dokumentation enthalten, können aber aufgrund der kontinuierlichen Verbesserungen geändert werden. Sie können die aktiven Standardvorlagen im Entwicklerportal anzeigen, indem Sie zu den gewünschten einzelnen Vorlagen navigieren. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](api-management-developer-portal-templates.md).  
+>  Beispielstandardvorlagen sind in der folgenden Dokumentation enthalten, können aber aufgrund von kontinuierlichen Verbesserungen geändert werden. Sie können die aktiven Standardvorlagen im Entwicklerportal anzeigen, indem Sie zu den gewünschten einzelnen Vorlagen navigieren. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](api-management-developer-portal-templates.md).  
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="IssueList"></a> Problemliste  
+##  <a name="issue-list"></a><a name="IssueList"></a> Problemliste  
  Mit der Vorlage für die **Problemliste** können Sie den Text der Problemlistenseite im Entwicklerportal anpassen.  
   
  ![Problemliste im Entwicklerportal](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM-Problemliste im Entwicklerportal")  
@@ -98,13 +98,13 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
   
 ### <a name="data-model"></a>Datenmodell  
   
-|Eigenschaft|Typ|BESCHREIBUNG|  
+|Eigenschaft|type|BESCHREIBUNG|  
 |--------------|----------|-----------------|  
 |`Issues`|Sammlung von [Problementitäten](api-management-template-data-model-reference.md#Issue).|Die für den aktuellen Benutzer sichtbaren Probleme.|  
 |`Paging`|Entität [Paging](api-management-template-data-model-reference.md#Paging).|Die Auslagerungsinformationen für die Anwendungssammlung.|  
 |`IsAuthenticated`|boolean|Gibt an, ob der aktuelle Benutzer im Entwicklerportal angemeldet ist.|  
 |`CanReportIssues`|boolean|Gibt an, ob der aktuelle Benutzer über Berechtigungen zum Melden eines Problems verfügt.|  
-|`Search`|Zeichenfolge|Diese Eigenschaft ist veraltet und sollte nicht verwendet werden.|  
+|`Search`|string|Diese Eigenschaft ist veraltet und sollte nicht verwendet werden.|  
   
 ### <a name="sample-template-data"></a>Vorlagenbeispieldaten  
   

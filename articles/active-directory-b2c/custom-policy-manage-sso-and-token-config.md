@@ -12,10 +12,10 @@ ms.date: 10/09/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ff9f57af92c50c0df6f628113bd9490ca83e1310
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78189292"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Verwalten von SSO und der Tokenanpassung mit benutzerdefinierten Richtlinien in Azure Active Directory B2C
@@ -90,7 +90,7 @@ Im vorstehenden Beispiel werden die folgenden Werte festgelegt:
 
 ## <a name="session-behavior-and-sso"></a>Sitzungsverhalten und SSO
 
-Zum Ändern Ihres Sitzungsverhaltens und der SSO-Konfigurationen ist es erforderlich, dass Sie im [RelyingParty](relyingparty.md)-Element ein **UserJourneyBehaviors**-Element hinzufügen.  Das **UserJourneyBehaviors**-Element muss unmittelbar nach **DefaultUserJourney** eingefügt werden. Das **UserJourneyBehavors**-Element sollte Folgendes enthalten:
+Zum Ändern Ihres Sitzungsverhaltens und der SSO-Konfigurationen ist es erforderlich, dass Sie im **RelyingParty**-Element ein [UserJourneyBehaviors](relyingparty.md)-Element hinzufügen.  Das **UserJourneyBehaviors**-Element muss unmittelbar nach **DefaultUserJourney** eingefügt werden. Das **UserJourneyBehavors**-Element sollte Folgendes enthalten:
 
 ```XML
 <UserJourneyBehaviors>

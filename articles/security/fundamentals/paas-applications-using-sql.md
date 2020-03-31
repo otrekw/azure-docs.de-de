@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: f7d993799fed637fbec55afc8f06d90c8fc6910f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c73f585e3102618cea378716491f9354810a6db8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726779"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80125012"
 ---
 # <a name="best-practices-for-securing-paas-databases-in-azure"></a>Bewährte Methoden zum Schützen von PaaS-Datenbanken in Azure
 
-In diesem Artikel erläutern wir eine Sammlung bewährter Methoden im Hinblick auf die Sicherheit bei [Azure SQL-Datenbank](../../sql-database/sql-database-technical-overview.md) und [SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) zum Schutz Ihrer webbasierten und mobilen PaaS-Anwendungen (Platform-as-a-Service). Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit Azure und den Erfahrungen von Kunden wie Ihnen abgeleitet.
+In diesem Artikel erläutern wir eine Sammlung bewährter Methoden im Hinblick auf die Sicherheit bei [Azure SQL-Datenbank](../../sql-database/sql-database-technical-overview.md) und [SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) zum Schutz Ihrer webbasierten und mobilen PaaS-Anwendungen (Platform-as-a-Service). Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit Azure und den Erfahrungen von Kunden wie Ihnen abgeleitet.
 
 Azure SQL-Datenbank und SQL Data Warehouse stellen einen Dienst für relationale Datenbanken für Ihre internetbasierten Anwendungen bereit. Sehen wir uns nun Dienste an, mit deren Hilfe Anwendungen und Daten bei Verwendung von Azure SQL-Datenbank und SQL Data Warehouse in einer PaaS-Bereitstellung geschützt werden:
 
 - Azure Active Directory-Authentifizierung (anstelle von SQL Server-Authentifizierung)
 - Azure SQL-Firewall
-- Transparent Data Encryption (TDE)
+- TDE (Transparent Data Encryption)
 
 ## <a name="use-a-centralized-identity-repository"></a>Verwenden eines zentralisierten Identitätsrepositorys
 Azure SQL-Datenbanken können so konfiguriert werden, dass sie einen von zwei Authentifizierungstypen verwenden:
@@ -53,7 +53,7 @@ Die [Azure Active Directory](../../active-directory/develop/authentication-scena
 Weitere Informationen zur Azure AD-Authentifizierung erhalten Sie unter:
 
 - [Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung bei SQL-Datenbank, der verwalteten Instanz oder SQL Data Warehouse](../../sql-database/sql-database-aad-authentication.md)
-- [Authentifizierung in Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-authentication.md)
+- [Authentifizierung in Azure SQL Data Warehouse](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-authentication.md)
 - [Tokenbasierte Authentifizierungsunterstützung für Azure SQL DB mithilfe der Azure AD-Authentifizierung](../../sql-database/sql-database-aad-authentication.md)
 
 > [!NOTE]
@@ -68,7 +68,7 @@ Die Standardeinschränkungen der Quell-IP-Adresse von SQL-Datenbank erlauben den
 
 Weitere Informationen zu Azure SQL-Firewall- und IP-Einschränkungen finden Sie unter:
 
-- [Zugriffssteuerung für Azure SQL-Datenbank und SQL Data Warehouse](../../sql-database/sql-database-control-access.md)
+- [Zugriffssteuerung für Azure SQL-Datenbank und SQL Data Warehouse](../../sql-database/sql-database-manage-logins.md)
 - [Firewallregeln für Azure SQL-Datenbank and SQL Data Warehouse](../../sql-database/sql-database-firewall-configure.md)
 
 

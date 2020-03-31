@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
 ms.openlocfilehash: ca1d1a5761e62b2838a474dcb83f450987972998
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73928957"
 ---
 # <a name="azure-security-center-for-iot-event-aggregation"></a>Ereignisaggregation im Azure Security Center für IoT
@@ -64,7 +64,7 @@ Jedes aggregierte Ereignis stellt einen 24-Stunden-Zeitraum von gesammelten Warn
 ## <a name="event-aggregation-twin-configuration"></a>Konfiguration der Ereignisaggregation von Modulzwillingen
 Nehmen Sie Änderungen an der Konfiguration der Ereignisaggregation von Azure Security Center für IoT im [Agentkonfigurationsobjekt](how-to-agent-configuration.md) der Modulzwillingsidentität des Moduls **azureiotsecurity** vor.
 
-| Konfigurationsname | Mögliche Werte | Details | Anmerkungen |
+| Konfigurationsname | Mögliche Werte | Details | Bemerkungen |
 |:-----------|:---------------|:--------|:--------|
 | aggregationEnabledProcessCreate | boolean | Ereignisaggregation für „ProcessCreate“-Ereignisse aktivieren/deaktivieren |
 | aggregationIntervalProcessCreate | ISO8601 TimeSpan-Zeichenfolge | Aggregationsintervall für „ProcessCreate“-Ereignisse |
