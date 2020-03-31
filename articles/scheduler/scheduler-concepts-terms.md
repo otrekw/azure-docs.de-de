@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
 ms.openlocfilehash: 0a744c2de320ddad2e7959cae7b62d7990879953
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78898568"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Konzepte, Terminologie und Entitäten in Microsoft Azure Scheduler
@@ -77,7 +77,7 @@ Allgemein betrachtet besteht ein Scheduler-Auftrag aus den folgenden grundlegend
 
 * Die Aktion, die beim Auslösen des Auftragszeitgebers ausgeführt wird
 * Optional: Die Zeit, zu der der Auftrag ausgeführt werden soll
-* Optional: Die Angabe, wann und wie oft der Auftrag wiederholt werden soll
+* Optional: Eine Angabe, wann und wie oft der Auftrag wiederholt werden soll
 * Optional: Eine Fehleraktion, die bei einem Fehler der primären Aktion ausgeführt wird
 
 Der Auftrag enthält auch vom System bereitgestellte Daten, beispielsweise die nächste geplante Ausführungszeit des Auftrags. Die Codedefinition des Auftrags ist ein Objekt im JSON-Format (JavaScript Object Notation), das folgende Elemente enthält:
@@ -246,7 +246,7 @@ Ein Auftrag wird wiederholt, wenn die JSON-Definition des Auftrags das **recurre
 },
 ```
 
-| Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
+| Eigenschaft | Erforderlich | value | BESCHREIBUNG | 
 |----------|----------|-------|-------------| 
 | **frequency** | Ja, wenn **recurrence** verwendet wird | Minute, Hour, Day, Week, Month, Year | Die Zeiteinheit zwischen Ausführungen. | 
 | **interval** | Nein | 1 bis einschließlich 1.000 | Eine positive ganze Zahl, die die Anzahl von Zeiteinheiten zwischen den einzelnen Ausführungen basierend auf dem Wert von **frequency** bestimmt. | 
@@ -276,7 +276,7 @@ Für den Fall, dass bei einem Scheduler-Auftrag ein Fehler auftritt, können Sie
 },
 ```
 
-| Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
+| Eigenschaft | Erforderlich | value | BESCHREIBUNG | 
 |----------|----------|-------|-------------| 
 | **retryType** | Ja | **Fixed**, **None** | Bestimmt, ob Sie eine Wiederholungsrichtlinie angeben (**fixed**) oder nicht (**none**). | 
 | **retryInterval** | Nein | PT30S | Gibt das Intervall und die Häufigkeit zwischen den Wiederholungsversuchen im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) an. Der Mindestwert ist 15 Sekunden und der Höchstwert 18 Monate. | 

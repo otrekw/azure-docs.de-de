@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ab7c38d23cb1f05e07488810640aeb791ded3d4a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74847387"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>Problembehandlung für die kombinierte Registrierung von Sicherheitsinformationen (Preview)
@@ -37,14 +37,14 @@ In der folgenden Tabelle werden alle Überwachungsereignisse aufgeführt, die mi
 
 | Aktivität | Status | `Reason` | BESCHREIBUNG |
 | --- | --- | --- | --- |
-| User registered all required security info (Der Benutzer hat alle erforderlichen Sicherheitsinformationen registriert) | Erfolgreich | Der Benutzer hat alle erforderlichen Sicherheitsinformationen registriert. | Dieses Ereignis tritt auf, wenn ein Benutzer die Registrierung erfolgreich abgeschlossen hat.|
+| User registered all required security info (Der Benutzer hat alle erforderlichen Sicherheitsinformationen registriert) | Erfolg | Der Benutzer hat alle erforderlichen Sicherheitsinformationen registriert. | Dieses Ereignis tritt auf, wenn ein Benutzer die Registrierung erfolgreich abgeschlossen hat.|
 | User registered all required security info (Der Benutzer hat alle erforderlichen Sicherheitsinformationen registriert) | Fehler | Der Benutzer hat die Registrierung der Sicherheitsinformationen abgebrochen. | Dieses Ereignis tritt auf, wenn ein Benutzer die Registrierung über den Interruptmodus abbricht.|
-| User registered security info (Der Benutzer hat Sicherheitsinformationen registriert) | Erfolgreich | Der Benutzer hat eine *Methode* registriert. | Dieses Ereignis tritt auf, wenn ein Benutzer eine individuelle Methode registriert. Bei der *Methode* kann es sich um eine Authenticator-App, ein Mobilgerät, eine E-Mail, Sicherheitsfragen, ein App-Kennwort, ein alternatives Mobilgerät usw. handeln.| 
-| User reviewed security info (Der Benutzer hat die Sicherheitsinformationen überprüft) | Erfolgreich | Der Benutzer hat die Sicherheitsinformationen erfolgreich überprüft. | Dieses Ereignis tritt ein, wenn ein Benutzer auf der Seite „Sicherheitsinformationen überprüfen“ die Option **Sieht gut aus** auswählt.|
+| User registered security info (Der Benutzer hat Sicherheitsinformationen registriert) | Erfolg | Der Benutzer hat eine *Methode* registriert. | Dieses Ereignis tritt auf, wenn ein Benutzer eine individuelle Methode registriert. Bei der *Methode* kann es sich um eine Authenticator-App, ein Mobilgerät, eine E-Mail, Sicherheitsfragen, ein App-Kennwort, ein alternatives Mobilgerät usw. handeln.| 
+| User reviewed security info (Der Benutzer hat die Sicherheitsinformationen überprüft) | Erfolg | Der Benutzer hat die Sicherheitsinformationen erfolgreich überprüft. | Dieses Ereignis tritt ein, wenn ein Benutzer auf der Seite „Sicherheitsinformationen überprüfen“ die Option **Sieht gut aus** auswählt.|
 | User reviewed security info (Der Benutzer hat die Sicherheitsinformationen überprüft) | Fehler | Die Überprüfung der Sicherheitsinformationen durch den Benutzer ist fehlgeschlagen. | Dieses Ereignis tritt ein, wenn ein Benutzer auf der Seite „Sicherheitsinformationen überprüfen“ die Option **Sieht gut aus** auswählt, jedoch ein Fehler am Back-End auftritt.|
-| User deleted security info (Der Benutzer hat die Sicherheitsinformationen gelöscht) | Erfolgreich | Der Benutzer hat die *Methode* gelöscht. | Dieses Ereignis tritt auf, wenn ein Benutzer eine individuelle Methode löscht. Bei der *Methode* kann es sich um eine Authenticator-App, ein Mobilgerät, eine E-Mail, Sicherheitsfragen, ein App-Kennwort, ein alternatives Mobilgerät usw. handeln.|
+| User deleted security info (Der Benutzer hat die Sicherheitsinformationen gelöscht) | Erfolg | Der Benutzer hat die *Methode* gelöscht. | Dieses Ereignis tritt auf, wenn ein Benutzer eine individuelle Methode löscht. Bei der *Methode* kann es sich um eine Authenticator-App, ein Mobilgerät, eine E-Mail, Sicherheitsfragen, ein App-Kennwort, ein alternatives Mobilgerät usw. handeln.|
 | User deleted security info (Der Benutzer hat die Sicherheitsinformationen gelöscht) | Fehler | Der Benutzer konnte die *Methode* nicht löschen. | Dieses Ereignis tritt ein, wenn der Benutzer versucht eine Methode zu löschen, dies jedoch aus irgendeinem Grund zu einem Fehler führt. Bei der *Methode* kann es sich um eine Authenticator-App, ein Mobilgerät, eine E-Mail, Sicherheitsfragen, ein App-Kennwort, ein alternatives Mobilgerät usw. handeln.|
-| User changed default security info (Der Benutzer hat die Standardsicherheitsinformationen geändert) | Erfolgreich | Der Benutzer hat die Standardsicherheitsinformationen für die *Methode* geändert. | Dieses Ereignis tritt ein, wenn ein Benutzer die Standardmethode ändert. Folgende *Methoden* sind möglich: „Benachrichtigung in Authenticator-App“, „Code aus meiner Authentifikator-App oder Token eingeben“, „+X XXXXXXXXXX anrufen“, „SMS mit Code an +X XXXXXXXXX senden“ usw.|
+| User changed default security info (Der Benutzer hat die Standardsicherheitsinformationen geändert) | Erfolg | Der Benutzer hat die Standardsicherheitsinformationen für die *Methode* geändert. | Dieses Ereignis tritt ein, wenn ein Benutzer die Standardmethode ändert. Folgende *Methoden* sind möglich: „Benachrichtigung in Authenticator-App“, „Code aus meiner Authentifikator-App oder Token eingeben“, „+X XXXXXXXXXX anrufen“, „SMS mit Code an +X XXXXXXXXX senden“ usw.|
 | User changed default security info (Der Benutzer hat die Standardsicherheitsinformationen geändert) | Fehler | Der Benutzer konnte die Standardsicherheitsinformationen für die *Methode* nicht ändern. | Dieses Ereignis tritt ein, wenn der Benutzer versucht, die Standardmethode zu ändern, dies jedoch aus irgendeinem Grund zu einem Fehler führt. Folgende *Methoden* sind möglich: „Benachrichtigung in Authenticator-App“, „Code aus meiner Authentifikator-App oder Token eingeben“, „+X XXXXXXXXXX anrufen“, „SMS mit Code an +X XXXXXXXXX senden“ usw.|
 
 ## <a name="troubleshooting-interrupt-mode"></a>Problembehandlung des Interruptmodus

@@ -4,17 +4,17 @@ description: Als Lösungsentwickler möchten Sie eine IoT Central-Anwendung konf
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/02/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 541cbc0c34a691f51c1a3a53f71920379c447f5d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 0e161cf83662df671b8cfb100ddc12c3b3e7359f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022442"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80158145"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Erweitern von Azure IoT Central mit benutzerdefinierten Regeln mithilfe von Stream Analytics, Azure Functions und SendGrid
 
@@ -34,7 +34,7 @@ In dieser Schrittanleitung erfahren Sie Folgendes:
 
 Um die in dieser Anleitung aufgeführten Schritte ausführen zu können, benötigen Sie ein aktives Azure-Abonnement.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ### <a name="iot-central-application"></a>IoT Central-Anwendung
 
@@ -231,10 +231,10 @@ Nach einigen Minuten erhält die E-Mail-Adresse des **Empfängers** eine E-Mail 
 ```txt
 The following device(s) have stopped sending telemetry:
 
-Device ID   Time
-test-device-1   2019-05-02T14:23:39.527Z
-test-device-2   2019-05-02T14:23:50.717Z
-test-device-3   2019-05-02T14:24:28.919Z
+Device ID    Time
+test-device-1    2019-05-02T14:23:39.527Z
+test-device-2    2019-05-02T14:23:50.717Z
+test-device-3    2019-05-02T14:24:28.919Z
 ```
 
 ## <a name="add-stream-analytics-query"></a>Hinzufügen einer Stream Analytics-Abfrage
@@ -317,7 +317,7 @@ Navigieren Sie auf der Website des [Azure IoT Central-Anwendungs-Managers](https
     | Einstellung | value |
     | ------- | ----- |
     | Anzeigename | Exportieren nach Event Hubs |
-    | Aktiviert | Andererseits |
+    | Enabled | Andererseits |
     | Event Hubs-Namespace | Der Name Ihres Event Hubs-Namespace |
     | Event Hub | centralexport |
     | Messungen | Andererseits |

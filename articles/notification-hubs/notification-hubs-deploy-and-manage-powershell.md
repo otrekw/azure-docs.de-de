@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 863fdb445cce41f0fe4cbee63a3d6198c0a79339
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76264643"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Bereitstellen und Verwalten von Notification Hubs mit PowerShell
@@ -38,7 +38,7 @@ Das Verwalten von Notification Hubs wird nicht direkt von den in Azure PowerShel
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Azure ist eine abonnementbasierte Plattform. Weitere Informationen zum Erwerb eines Abonnements finden Sie unter [Kaufoptionen], [Spezielle Angebote] oder [Kostenlose Testversion].
+- ein Azure-Abonnement Azure ist eine abonnementbasierte Plattform. Weitere Informationen zum Erwerb eines Abonnements finden Sie unter [Kaufoptionen], [Spezielle Angebote] oder [Kostenlose Testversion].
 - Einen Computer mit Azure PowerShell. Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell].
 - Allgemeine Kenntnisse über PowerShell-Skripts, NuGet-Pakete und .NET Framework.
 
@@ -97,12 +97,12 @@ In diesem Teil des Skripts erstellen Sie vier lokale Variablen.
 1. `$Namespace`: Legen Sie diese Variable auf den Namen des Namespace fest, in dem Sie einen Notification Hub erstellen möchten.
 2. `$Path`: Legen Sie diesen Pfad auf den Namen des neuen Notification Hubs fest.  Beispiel: "MyHub".
 3. `$WnsPackageSid`: Legen Sie diese Variable auf die Paket-SID für Ihre Windows-App aus dem [Windows Dev Center](https://developer.microsoft.com/en-us/windows) fest.
-4. `$WnsSecretkey`: Legen Sie diese mithilfe von [Windows Dev Center](https://developer.microsoft.com/en-us/windows) auf den geheimen Schlüssel für Ihre Windows-App fest.
+4. `$WnsSecretkey`: Legen Sie diese auf den geheimen Schlüssel für Ihre Windows-App mithilfe von [Windows Dev Center](https://developer.microsoft.com/en-us/windows) fest.
 
 Diese Variablen werden verwendet, um eine Verbindung mit dem Namespace herzustellen und einen neuen Notification Hub zu erstellen, damit Benachrichtigungen von Windows Notification Services (WNS) mit WNS-Anmeldeinformationen für eine Windows-App verarbeitet werden können. Weitere Informationen zum Abrufen der Paket-SID und des geheimen Schlüssels finden Sie im Lernprogramm [Erste Schritte mit Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) .
 
 - Der Codeausschnitt verwendet das `NamespaceManager`-Objekt, um zu prüfen, ob der von `$Path` erkannte Notification Hub vorhanden ist.
-- Falls er nicht vorhanden ist, erstellt das Skript eine `NotificationHubDescription` mit WNS-Anmeldeinformationen und übergibt diese an die `CreateNotificationHub`-Methode in der `NamespaceManager`-Klasse.
+- Falls er nicht vorhanden ist, erstellt das Skript eine `NotificationHubDescription` mit WNS-Anmeldeinformationen und übergibt diese an die `NamespaceManager`-Methode in der `CreateNotificationHub`-Klasse.
 
 ``` powershell
 $Namespace = "<Enter your namespace>"

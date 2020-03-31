@@ -14,10 +14,10 @@ ms.date: 03/02/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec825a562b57f081305af20ee6a6ce078d5c0505
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77159011"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>Verschieben von Anwendungen aus AD FS in Azure AD 
@@ -108,7 +108,7 @@ Die Migration beginnt damit, wie die Anwendung lokal konfiguriert wird, und mit 
 - AD FS-Begriff: Vertrauende Seite oder Vertrauensstellung der vertrauenden Seite.
 - Azure AD-Begriff: Unternehmensanwendung oder App-Registrierung (je nach App-Typ).
 
-|App-Konfigurationselement|Beschreibung|Position in AD FS-Konfiguration|Entsprechende Position in der Azure AD-Konfiguration|SAML-Tokenelement|
+|App-Konfigurationselement|BESCHREIBUNG|Position in AD FS-Konfiguration|Entsprechende Position in der Azure AD-Konfiguration|SAML-Tokenelement|
 |-----|-----|-----|-----|-----|
 |Anmelde-URL der App|URL der Anmeldeseite dieser Anwendung. Hierüber meldet sich der Benutzer in einem SP-initiierten SAML-Datenfluss an der App an.|–|In Azure AD ist die Anmelde-URL im Azure-Portal in den **SSO**-Eigenschaften der Anwendung konfiguriert.</br></br>(Unter Umständen müssen Sie **Erweiterte URL-Einstellungen anzeigen** wählen, um die Anmelde-URL anzuzeigen.)|–|
 |Antwort-URL der App|Die URL der App aus Sicht des Identitätsanbieters (IdP). An diesen Ort werden der Benutzer und das Token gesendet, nachdem sich der Benutzer beim IdP angemeldet hat.</br></br> Dies wird auch als „Consumerendpunkt der SAML-Assertion“ bezeichnet.|Sie befindet sich in der Vertrauensstellung der vertrauenden Seite von AD FS für die App. Klicken Sie mit der rechten Maustaste auf die vertrauende Seite, und wählen Sie **Eigenschaften** und dann die Registerkarte **Endpunkte**.|In Azure AD ist die Antwort-URL im Azure-Portal in den **SSO**-Eigenschaften der Anwendung konfiguriert.</br></br>(Unter Umständen müssen Sie **Erweiterte URL-Einstellungen anzeigen** wählen, um die Antwort-URL anzuzeigen.)|Ist im SAML-Token dem **Destination**-Element zugeordnet.</br></br> Beispielwert: `https://contoso.my.salesforce.com`|

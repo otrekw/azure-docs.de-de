@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: bb296db0d97382deac984369704777de5d5cb362
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65147688"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Unterstützung von Cross-Origin Resource Sharing (CORS) für die Azure Storage-Dienste
@@ -68,11 +68,11 @@ Im Folgenden sehen Sie ein Beispiel für eine einzelne CORS-Regel, die in einem 
 
 Jedes in der CORS-Regel enthaltene Element wird unten beschrieben:
 
-* **AllowedOrigins:** Die Ursprungsdomänen, die über CORS eine Anforderung an den Speicherdienst senden dürfen. Die Ursprungsdomäne ist die Domäne, von der die Anforderung stammt. Beachten Sie, dass die Groß-/Kleinschreibung der Ursprungsdomäne genau mit der der Ursprungsdomäne übereinstimmen muss, die der Benutzer-Agent an den Dienst sendet. Sie können auch das Platzhalterzeichen "*" verwenden, um allen Ursprungsdomänen die Ausführung von CORS-Anforderungen zu erlauben. Im Beispiel oben können die Domänen „http:\//www.contoso.com“ und „http:\//www.fabrikam.com“ über CORS Anforderungen an den Dienst senden.
-* **AllowedMethods:** Die Methoden (HTTP-Anforderungsverben), die die Ursprungsdomäne für eine CORS-Anforderung verwenden kann. Im vorangehenden Beispiel sind PUT- und GET-Anforderungen zulässig.
-* **AllowedHeaders:** Die Anforderungsheader, die die Ursprungsdomäne für die CORS-Anforderung angeben kann. Im vorangehenden Beispiel sind alle Metadatenheader zulässig, die mit x-ms-meta-data, x-ms-meta-target und x-ms-meta-abc beginnen. Das Platzhalterzeichen "*" zeigt an, dass beliebige Header, die mit dem angegebenen Präfix beginnen, zulässig sind.
-* **ExposedHeaders:** Die Antwortheader, die in der Antwort an die CORS-Anforderung gesendet und vom Browser gegenüber dem Anforderungsaussteller verfügbar gemacht werden können. Im vorangehenden Beispiel wird der Browser angewiesen, beliebige Header, die mit x-ms-meta beginnen, verfügbar zu machen.
-* **MaxAgeInSeconds:** Die maximale Zeit, über die die OPTIONS-Preflight-Anforderung vom Browser zwischengespeichert werden soll.
+* **AllowedOrigins**: Die Ursprungsdomänen, die über CORS eine Anforderung an den Speicherdienst senden dürfen. Die Ursprungsdomäne ist die Domäne, von der die Anforderung stammt. Beachten Sie, dass die Groß-/Kleinschreibung der Ursprungsdomäne genau mit der der Ursprungsdomäne übereinstimmen muss, die der Benutzer-Agent an den Dienst sendet. Sie können auch das Platzhalterzeichen "*" verwenden, um allen Ursprungsdomänen die Ausführung von CORS-Anforderungen zu erlauben. Im Beispiel oben können die Domänen „http:\//www.contoso.com“ und „http:\//www.fabrikam.com“ über CORS Anforderungen an den Dienst senden.
+* **AllowedMethods**: Die Methoden (HTTP-Anforderungsverben), die die Ursprungsdomäne für eine CORS-Anforderung verwenden kann. Im vorangehenden Beispiel sind PUT- und GET-Anforderungen zulässig.
+* **AllowedHeaders**: Die Anforderungsheader, die die Ursprungsdomäne für die CORS-Anforderung angeben kann. Im vorangehenden Beispiel sind alle Metadatenheader zulässig, die mit x-ms-meta-data, x-ms-meta-target und x-ms-meta-abc beginnen. Das Platzhalterzeichen "*" zeigt an, dass beliebige Header, die mit dem angegebenen Präfix beginnen, zulässig sind.
+* **ExposedHeaders**: Die Antwortheader, die in der Antwort an die CORS-Anforderung gesendet und vom Browser gegenüber dem Anforderungsaussteller verfügbar gemacht werden können. Im vorangehenden Beispiel wird der Browser angewiesen, beliebige Header, die mit x-ms-meta beginnen, verfügbar zu machen.
+* **MaxAgeInSeconds**: Die maximale Zeit, über die die OPTIONS-Preflight-Anforderung vom Browser zwischengespeichert werden soll.
 
 Die Angabe von Headern mit Präfix wird von den Azure Storage-Diensten sowohl für das **AllowedHeaders**-Element als auch für das **ExposedHeaders**-Element unterstützt. Um eine Headerkategorie zuzulassen, können Sie für diese Kategorie ein gemeinsames Präfix angeben. Wenn Sie z.B. *x-ms-meta** als Header mit Präfix angeben, wird eine Regel erstellt, durch die alle Header abgeglichen werden, die mit „x-ms-meta“ beginnen.
 
@@ -128,11 +128,11 @@ Im folgenden Beispiel wird ein partieller Anforderungstext für einen Vorgang an
 
 Betrachten Sie als Nächstes die folgenden CORS-Anforderungen:
 
-| Anforderung |  |  | response |  |
+| Anforderung |  |  | Antwort |  |
 | --- | --- | --- | --- | --- |
 | **Methode** |**Ursprung** |**Anforderungsheader** |**Regelübereinstimmung** |**Ergebnis** |
-| **PUT** |http:\//www.contoso.com |x-ms-blob-content-type |Erste Regel |Erfolgreich |
-| **GET** |http:\//www.contoso.com |x-ms-blob-content-type |Zweite Regel |Erfolgreich |
+| **PUT** |http:\//www.contoso.com |x-ms-blob-content-type |Erste Regel |Erfolg |
+| **GET** |http:\//www.contoso.com |x-ms-blob-content-type |Zweite Regel |Erfolg |
 | **GET** |http:\//www.contoso.com |x-ms-client-request-id |Zweite Regel |Fehler |
 
 Die erste Anforderung stimmt mit der ersten Regel überein – die Ursprungsdomäne fällt unter die zulässigen Ursprungsdomänen, die Methode unter die zulässigen Methoden und der Header unter die zulässigen Header – sie wird somit erfolgreich ausgeführt.
@@ -162,7 +162,7 @@ Bei Anforderungen, die andere Methoden als GET/HEAD verwenden, wird der Vary-Hea
 
 Der folgenden Tabelle können Sie entnehmen, wie Azure Storage in den oben beschriebenen Fällen auf GET-/HEAD-Anforderungen antwortet:
 
-| Anforderung | Kontoeinstellung und Ergebnis der Regelauswertung |  |  | response |  |  |
+| Anforderung | Kontoeinstellung und Ergebnis der Regelauswertung |  |  | Antwort |  |  |
 | --- | --- | --- | --- | --- | --- | --- |
 | **Origin-Header für Anforderung vorhanden** |**CORS-Regel(n) für den Dienst angegeben** |**Abgleichsregel vorhanden, die alle Ursprungsdomänen zulässt (*)** |**Abgleichsregel für genaue Übereinstimmung mit Ursprungsdomäne vorhanden** |**Antwort enthält Vary-Header, der auf "Origin" festgelegt ist** |**Antwort enthält „Access-Control-Allowed-Origin“: "*"** |**Antwort enthält Access-Control-Exposed-Header** |
 | Nein |Nein |Nein |Nein |Nein |Nein |Nein |

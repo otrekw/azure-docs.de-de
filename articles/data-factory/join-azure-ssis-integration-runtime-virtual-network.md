@@ -12,10 +12,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.openlocfilehash: 7e8a1793a329a863c9df97ae5ddcbee6cef10e8e
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76964327"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Beitreten einer Azure-SSIS-Integrationslaufzeit zu einem virtuellen Netzwerk
@@ -103,7 +103,7 @@ Dieses Diagramm veranschaulicht die für die Azure-SSIS IR erforderlichen Verbin
 
 ![Azure-SSIS-Integrationslaufzeit](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir.png)
 
-### <a name="perms"></a> Einrichten von Berechtigungen
+### <a name="set-up-permissions"></a><a name="perms"></a> Einrichten von Berechtigungen
 
 Der Benutzer, der die Azure-SSIS IR erstellt, muss über die folgenden Berechtigungen verfügen:
 
@@ -115,7 +115,7 @@ Der Benutzer, der die Azure-SSIS IR erstellt, muss über die folgenden Berechtig
 
 - Wenn Sie die SSIS IR mit einem klassischen virtuellen Netzwerk verknüpfen, wird empfohlen, die integrierte Rolle „Mitwirkender für klassische virtuelle Computer“ zu verwenden. Andernfalls müssen Sie eine benutzerdefinierte Rolle definieren, die die Berechtigung zum Einbinden in das virtuelle Netzwerk enthält.
 
-### <a name="subnet"></a> Auswählen des Subnetzes
+### <a name="select-the-subnet"></a><a name="subnet"></a> Auswählen des Subnetzes
 
 Hinweise zur Auswahl eines Subnetzes: 
 
@@ -125,7 +125,7 @@ Hinweise zur Auswahl eines Subnetzes:
 
 - Verwenden Sie kein Subnetz, das ausschließlich von anderen Azure-Diensten genutzt wird (z. B. für verwaltete SQL-Datenbank-Instanzen, App Services usw.). 
 
-### <a name="publicIP"></a>Auswählen der statischen öffentlichen IP-Adressen
+### <a name="select-the-static-public-ip-addresses"></a><a name="publicIP"></a>Auswählen der statischen öffentlichen IP-Adressen
 
 Wenn Sie Ihre eigenen statischen öffentlichen IP-Adressen für die Azure-SSIS IR verwenden möchten, während Sie sie mit einem virtuellen Netzwerk verknüpfen, müssen die Adressen die folgenden Anforderungen erfüllen:
 
@@ -139,7 +139,7 @@ Wenn Sie Ihre eigenen statischen öffentlichen IP-Adressen für die Azure-SSIS I
 
 - Die Adressen und das virtuelle Netzwerk müssen sich im selben Abonnement und in derselben Region befinden.
 
-### <a name="dns_server"></a> Einrichten des DNS-Servers 
+### <a name="set-up-the-dns-server"></a><a name="dns_server"></a> Einrichten des DNS-Servers 
 Wenn Sie Ihren eigenen DNS-Server in einem virtuellen Netzwerk verwenden müssen, das mit Ihrer Azure-SSIS IR verknüpft ist, stellen Sie zum Auflösen Ihres privaten Hostnamens sicher, dass auch globale Azure-Hostnamen aufgelöst werden können (z. B. der Azure Storage-Blobname `<your storage account>.blob.core.windows.net`). 
 
 Nachstehend finden Sie eine empfohlene Vorgehensweise: 
@@ -151,7 +151,7 @@ Weitere Informationen finden Sie unter [Namensauflösung mithilfe eines eigenen 
 > [!NOTE]
 > Verwenden Sie einen voll qualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) für Ihren privaten Hostnamen, z. B. `<your_private_server>.contoso.com` statt `<your_private_server>`, da Azure-SSIS IR Ihr eigenes DNS-Suffix nicht automatisch anfügen wird.
 
-### <a name="nsg"></a> Einrichten einer NSG
+### <a name="set-up-an-nsg"></a><a name="nsg"></a> Einrichten einer NSG
 Wenn Sie eine NSG für das Subnetz implementieren müssen, das von der Azure-SSIS IR verwendet wird, lassen Sie eingehenden und ausgehenden Datenverkehr über die folgenden Ports zu: 
 
 -   **Eingehende Anforderung von Azure-SSIS IR**
@@ -173,7 +173,7 @@ Wenn Sie eine NSG für das Subnetz implementieren müssen, das von der Azure-SSI
 | Ausgehend | TCP | VirtualNetwork | * | Storage | 445 | (Optional) Diese Regel ist nur erforderlich, wenn Sie das in Azure Files gespeicherte SSIS-Paket ausführen möchten. |
 ||||||||
 
-### <a name="route"></a> Verwenden von Azure ExpressRoute oder UDR
+### <a name="use-azure-expressroute-or-udr"></a><a name="route"></a> Verwenden von Azure ExpressRoute oder UDR
 Wenn Sie den ausgehenden Datenverkehr von Azure-SSIS IR überprüfen möchten, können Sie den von Azure-SSIS IR initiierten Datenverkehr über [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/)-Tunnelerzwingung (mit der Ankündigung einer BGP-Route, 0.0.0.0/0, an das virtuelle Netzwerk) an die lokale Firewallappliance oder das virtuelle Netzwerkgerät (Network Virtual Appliance, NVA) als Firewall oder [Azure Firewall](https://docs.microsoft.com/azure/firewall/) über [UDRs](../virtual-network/virtual-networks-udr-overview.md) weiterleiten. 
 
 ![NVA-Szenario für Azure-SSIS IR](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir-nva.png)
@@ -231,7 +231,7 @@ Wenn Sie den ausgehenden Datenverkehr von Azure-SSIS IR nicht überprüfen müs
 > [!NOTE]
 > Die Angabe einer Route mit dem Typ des nächsten Hobs **Internet** bedeutet, dass der gesamte Datenverkehr über das Internet gesendet wird. Solange die Zieladresse für einen der Azure-Dienste gilt, leitet Azure den Datenverkehr über das Azure-Backbonenetzwerk direkt an den Dienst weiter (und nicht ins Internet).
 
-### <a name="resource-group"></a> Einrichten der Ressourcengruppe
+### <a name="set-up-the-resource-group"></a><a name="resource-group"></a> Einrichten der Ressourcengruppe
 
 Die Azure SSIS-IR muss bestimmte Netzwerkressourcen unter der gleichen Ressourcengruppe erstellen wie das virtuelle Netzwerk. Diese Ressourcen umfassen Folgendes:
 - Ein Azure-Lastenausgleich mit dem Namen *\<GUID>-azurebatch-cloudserviceloadbalancer*.
@@ -250,7 +250,7 @@ Stellen Sie sicher, dass Sie keine Azure-Richtlinie haben, die verhindert, dass 
 - Microsoft.Network/NetworkSecurityGroups 
 - Microsoft.Network/PublicIPAddresses 
 
-### <a name="faq"></a> Häufig gestellte Fragen (FAQ)
+### <a name="faq"></a><a name="faq"></a> Häufig gestellte Fragen (FAQ)
 
 - Wie kann ich die öffentliche IP-Adresse schützen, die in meiner Azure-SSIS IR für eingehende Verbindungen verfügbar gemacht wird? Ist es möglich, die öffentliche IP-Adresse zu entfernen?
  
@@ -554,4 +554,4 @@ Weitere Informationen zur Azure-SSIS IR finden Sie in den folgenden Artikeln:
 - [Tutorial: Bereitstellen von SSIS-Paketen in Azure](tutorial-create-azure-ssis-runtime-portal.md). Dieses Tutorial enthält ausführliche Anweisungen zum Erstellen einer Azure-SSIS IR. Dabei wird Azure SQL-Datenbank zum Hosten des SSIS-Katalogs verwendet. 
 - [Erstellen einer Azure-SSIS IR](create-azure-ssis-integration-runtime.md). Dieser Artikel baut auf dem Tutorial auf. Sie erfahren, wie Sie Azure SQL-Datenbank mit VNET-Dienstendpunkten oder mit einer verwalteten Instanz in einem virtuellen Netzwerk verwenden, um den SSIS-Katalog zu hosten. Außerdem wird veranschaulicht, wie Sie die Azure-SSIS IR mit einem virtuellen Netzwerk verknüpfen. 
 - [Überwachen einer Azure-SSIS-Integrationslaufzeit](monitor-integration-runtime.md#azure-ssis-integration-runtime): In diesem Artikel erfahren Sie, wie Sie Informationen zur Azure-SSIS IR abrufen. Darüber hinaus enthält er Statusbeschreibungen für die zurückgegebenen Informationen. 
-- [Verwalten einer Azure-SSIS-Integrationslaufzeit](manage-azure-ssis-integration-runtime.md): In diesem Artikel wird beschrieben, wie Sie die Azure-SSIS IR beenden, starten oder löschen. Außerdem wird gezeigt, wie Sie Ihre Azure SSIS-IR horizontal hochskalieren, indem Sie weitere Knoten hinzufügen.
+- [Verwalten einer Azure-SSIS-Integrationslaufzeit](manage-azure-ssis-integration-runtime.md): In diesem Artikel wird beschrieben, wie Sie die Azure-SSIS IR beenden, starten oder löschen. Außerdem wird gezeigt, wie Sie Ihre Azure SSIS-IR aufskalieren, indem Sie weitere Knoten hinzufügen.

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: understand-apache-spark-data-formats
 ms.date: 01/31/2019
 ms.openlocfilehash: 36f39503ca32f1ee4b422ae7b1cf9abf48716f07
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73648167"
 ---
 # <a name="understand-differences-between-u-sql-and-spark-data-formats"></a>Grundlegendes zu den Unterschieden zwischen U-SQL- und Spark-Datenformaten
@@ -38,7 +38,7 @@ Die Ausgabe kann in U-SQL mit dem integrierten Parquet-Outputter und mithilfe de
 
 Nach dieser Transformation kopieren Sie die Daten entsprechend der Beschreibung im Abschnitt [Verschieben von in Azure Data Lake Storage Gen1-Dateien gespeicherten Dateien](#move-data-stored-in-azure-data-lake-storage-gen1-files).
 
-## <a name="caveats"></a>Einschränkungen
+## <a name="caveats"></a>Vorbehalte
 
 - Datensemantik: Beim Kopieren von Dateien erfolgt der Kopiervorgang auf Byteebene. Daher sollten die gleichen Daten im [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)-Konto angezeigt werden. Beachten Sie jedoch, dass einige Zeichen in Spark unterschiedlich interpretiert werden können. Beispielsweise kann in einer CSV-Datei ein anderer Standardwert für ein Zeilentrennzeichen verwendet werden.
     Wenn Sie typisierte Daten (aus Tabellen) kopieren, können in Parquet und Spark außerdem möglicherweise eine unterschiedliche Genauigkeit und Anzahl der Dezimalstellen für einige der typisierten Werte festgelegt sein (z. B. ein Gleitkommawert) und NULL-Werte unterschiedlich verarbeitet werden. In U-SQL wird z. B. die C#-Semantik für NULL-Werte verwendet, in Spark dagegen eine dreiwertige Logik.

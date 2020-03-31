@@ -3,7 +3,7 @@ title: 'Azure AD: Anzeigen von Berichten und Protokollen in der Berechtigungsver
 description: Erfahren Sie, wie Sie den Bericht zu Benutzerzuweisungen und Überwachungsprotokolle in der Azure Active Directory-Berechtigungsverwaltung anzeigen.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: jocastel-MSFT
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/28/2019
-ms.author: ajburnle
+ms.date: 03/22/2020
+ms.author: barclayn
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 819badb85e532275b4d5d6ca84c3e6e7fe527fa0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 514f8e86d6bd28cc5212e0f0058f00e270f43e35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422554"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128420"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Anzeigen von Berichten und Protokollen in der Azure AD-Berechtigungsverwaltung
 
@@ -109,5 +109,6 @@ Wenn die Zugriffspaketzuweisung des Benutzers abläuft, vom Benutzer abgebrochen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Archivieren von Berichten und Protokollen](entitlement-management-logs-and-reporting.md)
 - [Problembehandlung bei der Azure AD-Berechtigungsverwaltung](entitlement-management-troubleshoot.md)
 - [Gängige Szenarios](entitlement-management-scenarios.md)

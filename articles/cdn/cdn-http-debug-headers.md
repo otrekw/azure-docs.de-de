@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: magattus
 ms.openlocfilehash: dec753d7c891d226aa2e6d3efa993d8d24adfbaa
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593837"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>HTTP-Header „X-EC-Debug“ für Azure CDN-Regel-Engine
@@ -105,8 +105,8 @@ Der oben in der Antwortheadersyntax verwendete Begriff ist folgendermaßen defin
 
 Wert  | BESCHREIBUNG
 -------| --------
-JA    | Gibt an, dass der angeforderte Inhalt für das Zwischenspeichern geeignet war.
-NO     | Gibt an, dass der angeforderte Inhalt für das Zwischenspeichern nicht geeignet war. Dieses Status ergibt sich möglicherweise aufgrund einer der folgenden Ursachen: <br /> – Kundenspezifische Konfiguration: Eine für Ihr Konto spezifische Konfiguration kann verhindern, dass die POP-Server ein Objekt zwischenspeichern. Beispielsweise kann die Regel-Engine verhindern, dass ein Objekt zwischengespeichert wird, indem sie das Feature „Cache umgehen“ für die betreffenden Anforderungen aktiviert.<br /> – Cacheantwortheader: Die Header „Cache-Control“ und „Expires“ des angeforderten Objekts können verhindern, dass POP-Server das Objekt zwischenspeichern.
+YES    | Gibt an, dass der angeforderte Inhalt für das Zwischenspeichern geeignet war.
+Nein     | Gibt an, dass der angeforderte Inhalt für das Zwischenspeichern nicht geeignet war. Dieses Status ergibt sich möglicherweise aufgrund einer der folgenden Ursachen: <br /> – Kundenspezifische Konfiguration: Eine für Ihr Konto spezifische Konfiguration kann verhindern, dass die POP-Server ein Objekt zwischenspeichern. Beispielsweise kann die Regel-Engine verhindern, dass ein Objekt zwischengespeichert wird, indem sie das Feature „Cache umgehen“ für die betreffenden Anforderungen aktiviert.<br /> – Cacheantwortheader: Die Header „Cache-Control“ und „Expires“ des angeforderten Objekts können verhindern, dass POP-Server das Objekt zwischenspeichern.
 UNKNOWN | Gibt an, dass die Server nicht beurteilen konnten, ob das angeforderte Objekt zwischenspeicherbar war. Dieser Status tritt normalerweise auf, wenn die Anforderung aufgrund von tokenbasierter Authentifizierung abgelehnt wird.
 
 ### <a name="sample-response-header"></a>Beispielantwortheader

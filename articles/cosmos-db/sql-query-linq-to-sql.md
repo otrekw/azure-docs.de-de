@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: d43f95b91df7d0c9c442339de51936200f4688e2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75441256"
 ---
 # <a name="linq-to-sql-translation"></a>LINQ zu SQL-Übersetzung
@@ -54,7 +54,7 @@ Der Abfrageanbieter unterstützt die folgenden skalaren Ausdrücke:
     new int[] { 3, child.grade, 5 };
   ```
 
-## <a id="SupportedLinqOperators"></a>Unterstützte LINQ-Operatoren
+## <a name="supported-linq-operators"></a><a id="SupportedLinqOperators"></a>Unterstützte LINQ-Operatoren
 
 Der im SQL .NET SDK enthaltene LINQ-Anbieter unterstützt die folgenden Operatoren:
 

@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen von Knoten für VMware-Lösungen (AVS) – Azure
-description: Erfahren Sie, wie Sie mit AVS-Bereitstellung Knoten zu Ihrer VMware-Lösung hinzufügen können.
+title: Bereitstellen von Knoten für VMware Solution by CloudSimple – Azure
+description: Erfahren Sie, wie Sie mit CloudSimple-Bereitstellung Knoten zu Ihrer VMWare-Lösung hinzufügen können.
 author: dikamath
 ms.author: dikamath
 ms.date: 08/14/2019
@@ -8,34 +8,34 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 94ca681153f1e3ccd9ff628b41a9d0e547be5802
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: eb033425d18b472c9da1a2d6a1bb6f166702905e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024805"
 ---
-# <a name="provision-nodes-for-azure-vmware-solutions-avs"></a>Bereitstellen von Knoten für Azure-VMware-Lösungen (AVS)
+# <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>Bereitstellen von Knoten für Azure VMware Solution by CloudSimple
 
-Stellen Sie Knoten im Azure-Portal bereit. Danach können Sie für Ihre private AVS-Cloudumgebung eine Kapazität mit nutzungsbasierter Bezahlung einrichten.
+Stellen Sie Knoten im Azure-Portal bereit. Danach können Sie Kapazität mit nutzungsbasierter Bezahlung für die Umgebung Ihrer privaten CloudSimple-Cloud einrichten.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
-## <a name="add-a-node-to-your-avs-private-cloud"></a>Hinzufügen eines Knotens zu Ihrer privaten AVS-Cloud
+## <a name="add-a-node-to-your-cloudsimple-private-cloud"></a>Hinzufügen eines Knotens zu Ihrer privaten CloudSimple-Cloud
 
 1. Wählen Sie **Alle Dienste** aus.
-2. Suchen Sie nach **AVS Nodes** (AVS-Knoten).
+2. Suchen Sie nach **CloudSimple-Knoten**.
 
-   ![Suche AVS Nodes (AVS-Knoten)](media/create-cloudsimple-node-search.png)
+   ![Suchen nach CloudSimple-Knoten](media/create-cloudsimple-node-search.png)
 
-3. Wählen Sie **AVS Nodes** (AVS-Knoten) aus.
+3. Wählen Sie **CloudSimple-Knoten** aus.
 4. Klicken Sie auf **Hinzufügen**, um Knoten zu erstellen.
 
-    ![AVS-Knoten hinzufügen](media/create-cloudsimple-node-add.png)
+    ![Hinzufügen von CloudSimple-Knoten](media/create-cloudsimple-node-add.png)
 
-5. Wählen Sie das Abonnement aus, in dem Sie AVS-Knoten bereitstellen möchten.
+5. Wählen Sie das Abonnement aus, in dem Sie CloudSimple-Knoten bereitstellen möchten.
 6. Wählen Sie die Ressourcengruppe für die Knoten aus. Um eine neue Ressourcengruppe hinzuzufügen, klicken Sie auf **Neue erstellen**.
 7. Geben Sie das Präfix ein, um die Knoten zu kennzeichnen.
 8. Wählen Sie den Standort für die Knotenressourcen aus.
@@ -48,4 +48,4 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen einer privaten AVS-Cloud](create-private-cloud.md)
+* [Erstellen einer privaten Cloud](create-private-cloud.md)

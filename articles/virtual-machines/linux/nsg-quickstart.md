@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: d9488b7a466dfc67edbf2dcbee966fc1fc72e8b7
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: c29fb075fc2d8b512070d7a6cf3fef949def5894
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944544"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066633"
 ---
 # <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>Öffnen von Ports und Endpunkten für eine VM über die Azure-Befehlszeilenschnittstelle
 
@@ -29,7 +29,7 @@ Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre e
 ## <a name="quickly-open-a-port-for-a-vm"></a>Schnelles Öffnen eines Ports für einen virtuellen Computer
 Wenn Sie in einem Entwicklungs-/Test-Szenario schnell einen Port für einen virtuellen Computer öffnen müssen, können Sie den Befehl [az vm open-port](/cli/azure/vm) verwenden. Mit diesem Befehl werden eine Netzwerksicherheitsgruppe erstellt und eine Regel hinzugefügt, die auf einen virtuellen Computer oder ein Subnetz angewendet wird. Im folgenden Beispiel wird Port *80* auf dem virtuellen Computer *myVM* in der Ressourcengruppe *myResourceGroup* geöffnet.
 
-```azure-cli
+```azurecli
 az vm open-port --resource-group myResourceGroup --name myVM --port 80
 ```
 

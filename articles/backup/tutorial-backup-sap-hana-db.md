@@ -2,13 +2,13 @@
 title: 'Tutorial: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern'
 description: In diesem Tutorial wird beschrieben, wie Sie SAP HANA-Datenbanken, die auf einem virtuellen Azure-Computer ausgeführt werden, in einem Azure Backup Recovery Services-Tresor sichern.
 ms.topic: tutorial
-ms.date: 11/12/2019
-ms.openlocfilehash: bb84f6b362adf7c190f3300e6e3f1bc572153151
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 02/24/2020
+ms.openlocfilehash: f64dd74ad0e038c5cad152e20ae2255de03114e3
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75753978"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79501456"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Tutorial: Sichern von SAP HANA-Datenbanken auf einem virtuellen Azure-Computer
 
@@ -22,36 +22,16 @@ In diesem Tutorial wird veranschaulicht, wie Sie SAP HANA-Datenbanken, die auf 
 
 [Hier](sap-hana-backup-support-matrix.md#scenario-support) finden Sie alle Szenarien, die von uns derzeit unterstützt werden.
 
-## <a name="onboard-to-the-public-preview"></a>Onboarding in die öffentliche Vorschau
-
-Führen Sie das Onboarding in die öffentliche Vorschau wie folgt durch:
-
-* Registrieren Sie im Portal Ihre Abonnement-ID bei dem Recovery Services-Dienstanbieter [gemäß der Beschreibung in diesem Artikel](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal).
-
-* Führen Sie bei Verwendung von PowerShell das folgende Cmdlet aus. Der Vorgang sollte mit „Registered“ (Registriert) abgeschlossen werden.
-
-    ```powershell
-    Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Führen Sie vor dem Konfigurieren von Sicherungen unbedingt die folgenden Schritte aus:
 
-1. Installieren und aktivieren Sie auf dem virtuellen Computer, auf dem die SAP HANA-Datenbank ausgeführt wird, die im offiziellen SLES-Paket/auf den offiziellen SLES-Medien enthaltenen ODBC-Treiberpakete mithilfe von zypper. Gehen Sie dabei wie folgt vor:
-
-```bash
-sudo zypper update
-sudo zypper install unixODBC
-```
-
->[!NOTE]
-> Wenn Sie die Repositorys nicht aktualisieren, sollten Sie sicherstellen, dass mindestens Version 2.3.4 von unixODBC verwendet wird. Die Version von unixODBC zu ermitteln, führen Sie `odbcinst -j` als Stamm aus.
->
-
-2. Lassen Sie eine Verbindung des virtuellen Computers mit dem Internet zu, damit er Azure erreichen kann. Dies ist [weiter unten](#set-up-network-connectivity) beschrieben.
-
-3. Führen Sie das Vorregistrierungsskript auf dem virtuellen Computer aus, auf dem HANA als Root-Benutzer installiert ist. [Mit diesem Skript](https://aka.ms/scriptforpermsonhana) werden die [richtigen Berechtigungen](#setting-up-permissions) festgelegt.
+* Lassen Sie eine Verbindung des virtuellen Computers mit dem Internet zu, damit er Azure erreichen kann. Dies ist unten im Abschnitt [Einrichten der Netzwerkkonnektivität](#set-up-network-connectivity) beschrieben.
+* In **hdbuserstore** sollte ein Schlüssel enthalten sein, der die folgenden Kriterien erfüllt:
+  * Er sollte sich im Standardspeicher **hdbuserstore** befinden.
+  * Für MDC sollte der Schlüssel auf den SQL-Port von **NAMESERVER** verweisen. Für SDC sollte er auf den SQL-Port von **INDEXSERVER** verweisen.
+  * Es sollten Anmeldeinformationen zum Hinzufügen und Löschen von Benutzern vorhanden sein.
+* Führen Sie das Skript für die SAP HANA-Sicherungskonfiguration (Vorregistrierungsskript) auf dem virtuellen Computer, auf dem HANA installiert ist, als Stammbenutzer aus. Mit [diesem Skript](https://aka.ms/scriptforpermsonhana) wird das HANA-System für die Sicherung vorbereitet. Weitere Informationen zum Vorregistrierungsskript finden Sie unter [Aufgaben des Vorregistrierungsskripts](#what-the-pre-registration-script-does).
 
 ## <a name="set-up-network-connectivity"></a>Einrichten der Netzwerkkonnektivität
 
@@ -110,15 +90,22 @@ Verwenden von NSG-Diensttags | Einfachere Verwaltung, da Bereichsänderungen aut
 Verwenden von FQDN-Tags von Azure Firewall | Einfachere Verwaltung, da die erforderlichen FQDNs automatisch verwaltet werden | Nur mit Azure Firewall möglich
 Verwenden eines HTTP-Proxys | Feinsteuerung im Proxy über die Speicher-URLs zulässig <br/><br/> Zentraler Internetzugriffspunkt für VMs <br/><br/> Unterliegt keinen Azure-IP-Adressänderungen | Zusätzliche Kosten für das Ausführen einer VM mit der Proxysoftware
 
-## <a name="setting-up-permissions"></a>Einrichten von Berechtigungen
+## <a name="what-the-pre-registration-script-does"></a>Aufgaben des Vorregistrierungsskripts
 
-Mit dem Skript für die Vorregistrierung werden die folgenden Aktionen durchgeführt:
+Beim Ausführen des Skripts für die Vorregistrierung wird Folgendes durchgeführt:
 
-1. Erstellen von AZUREWLBACKUPHANAUSER im HANA-System und Hinzufügen der erforderlichen Rollen und Berechtigungen:
-   * DATABASE ADMIN: Erstellen neuer Datenbanken während der Wiederherstellung
-   * CATALOG READ: Lesen des Sicherungskatalogs
-   * SAP_INTERNAL_HANA_SUPPORT: Zugreifen auf einige private Tabellen
-2. Hinzufügen eines Schlüssels zum Hdbuserstore für das HANA-Plug-In, um alle Vorgänge (Datenbankabfragen, Wiederherstellungsvorgänge, Konfigurieren und Ausführen von Sicherungen) zu behandeln.
+* Es werden alle Pakete installiert bzw. aktualisiert, die vom Azure Backup-Agent Ihrer Distribution benötigt werden.
+* Es werden Konnektivitätsprüfungen in ausgehender Richtung mit Azure Backup-Servern und abhängigen Diensten wie Azure Active Directory und Azure Storage durchgeführt.
+* Die Anmeldung bei Ihrem HANA-System erfolgt mit dem Benutzerschlüssel, der Teil der [Voraussetzungen](#prerequisites) ist. Der Benutzerschlüssel wird zum Erstellen eines Sicherungsbenutzers (AZUREWLBACKUPHANAUSER) im HANA-System verwendet und kann gelöscht werden, nachdem das Vorregistrierungsskript erfolgreich ausgeführt wurde.
+* AZUREWLBACKUPHANAUSER werden die folgenden erforderlichen Rollen und Berechtigungen zugewiesen:
+  * DATABASE ADMIN (DATENBANKADMINISTRATOR, im Fall von MDC) und BACKUP ADMIN (SICHERUNGSADMINISTRATOR, im Fall von SDC): zum Erstellen neuer Datenbanken während der Wiederherstellung.
+  * CATALOG READ: Lesen des Sicherungskatalogs
+  * SAP_INTERNAL_HANA_SUPPORT: Zugreifen auf einige private Tabellen
+* Das Skript fügt einen Schlüssel zu **hdbuserstore** für AZUREWLBACKUPHANAUSER für das HANA-Sicherungs-Plug-In hinzu, um alle Vorgänge (Datenbankabfragen, Wiederherstellungsvorgänge, Konfigurieren und Ausführen von Sicherungen) zu behandeln.
+
+>[!NOTE]
+> Sie können den unter [Voraussetzungen](#prerequisites) aufgeführten Benutzerschlüssel explizit als Parameter an das Vorregistrierungsskript übergeben: `-sk SYSTEM_KEY_NAME, --system-key SYSTEM_KEY_NAME`. <br><br>
+>Führen Sie den Befehl `bash msawb-plugin-config-com-sap-hana.sh --help` aus, um zu erfahren, welche anderen Parameter vom Skript akzeptiert werden.
 
 Um die Schlüsselerstellung zu bestätigen, führen Sie auf dem HANA-Computer den Befehl HDBSQL mit SIDADM-Anmeldeinformationen aus:
 
@@ -129,8 +116,7 @@ hdbuserstore list
 Die Ausgabe des Befehls sollte den Schlüssel {SID} {DBNAME} und den Benutzer AZUREWLBACKUPHANAUSER enthalten.
 
 >[!NOTE]
-> Stellen Sie sicher, dass sich unter „/usr/sap/{SID}/home/.hdb/“ eine eindeutige Gruppe von SSFS-Dateien befindet. In diesem Pfad darf nur ein Ordner vorhanden sein.
->
+> Stellen Sie sicher, dass sich unter `/usr/sap/{SID}/home/.hdb/` eine eindeutige Gruppe von SSFS-Dateien befindet. In diesem Pfad darf nur ein Ordner vorhanden sein.
 
 ## <a name="create-a-recovery-service-vault"></a>Erstellen eines Recovery Services-Tresors
 
@@ -142,25 +128,25 @@ So erstellen Sie einen Recovery Services-Tresor
 
 2. Wählen Sie im Menü links die Option **Alle Dienste** aus.
 
-![Auswählen von „Alle Dienste“](./media/tutorial-backup-sap-hana-db/all-services.png)
+   ![Auswählen von „Alle Dienste“](./media/tutorial-backup-sap-hana-db/all-services.png)
 
 3. Geben Sie im Dialogfeld **Alle Dienste** **Recovery Services** ein. Die Liste der Ressourcen wird Ihrer Eingabe entsprechend gefiltert. Wählen Sie in der Liste der Ressourcen **Recovery Services-Tresore** aus.
 
-![Auswählen von Recovery Services-Tresoren](./media/tutorial-backup-sap-hana-db/recovery-services-vaults.png)
+   ![Auswählen von Recovery Services-Tresoren](./media/tutorial-backup-sap-hana-db/recovery-services-vaults.png)
 
 4. Wählen Sie im Dashboard **Recovery Services-Tresore** die Option **Hinzufügen** aus.
 
-![Hinzufügen des Recovery Services-Tresors](./media/tutorial-backup-sap-hana-db/add-vault.png)
+   ![Hinzufügen des Recovery Services-Tresors](./media/tutorial-backup-sap-hana-db/add-vault.png)
 
-Das Dialogfeld **Recovery Services-Tresor** wird geöffnet. Geben Sie Werte für **Name/Abonnement/Ressourcengruppe** und **Speicherort** an.
+   Das Dialogfeld **Recovery Services-Tresor** wird geöffnet. Geben Sie Werte für **Name/Abonnement/Ressourcengruppe** und **Speicherort** an.
 
-![Erstellen eines Recovery Services-Tresors](./media/tutorial-backup-sap-hana-db/create-vault.png)
+   ![Erstellen eines Recovery Services-Tresors](./media/tutorial-backup-sap-hana-db/create-vault.png)
 
-* **Name**: Der Name wird zum Identifizieren des Recovery Services-Tresors verwendet und muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der mindestens zwei, aber nicht mehr als 50 Zeichen enthält. Der Name muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten. In diesem Tutorial haben wir den Namen **SAPHanaVault**verwendet.
-* **Abonnement**: Wählen Sie das zu verwendende Abonnement aus. Wenn Sie nur in einem Abonnement Mitglied sind, wird dessen Name angezeigt. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Geschäfts-, Schul- oder Unikonto mehreren Azure-Abonnements zugeordnet ist. Hier haben wir das Abonnement **SAP HANA Solution Lab** verwendet.
-* **Ressourcengruppe**: Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. Hier haben wir **SAPHANADemo** verwendet.<br>
-Um eine Liste der verfügbaren Ressourcengruppen in Ihrem Abonnement anzuzeigen, wählen Sie **Vorhandene verwenden** und dann eine Ressource im Dropdownlistenfeld aus. Wählen Sie zum Erstellen einer neuen Ressourcengruppe **Neu erstellen** aus, und geben Sie den Namen ein. Umfassende Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
-* **Standort**: Wählen Sie die geografische Region für den Tresor aus. Die Region des Tresors muss mit der Region des virtuellen Computers übereinstimmen, auf dem SAP HANA ausgeführt wird. Wir haben **USA, Osten 2** verwendet.
+   * **Name**: Der Name wird zum Identifizieren des Recovery Services-Tresors verwendet und muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der mindestens zwei, aber nicht mehr als 50 Zeichen enthält. Der Name muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten. In diesem Tutorial haben wir den Namen **SAPHanaVault**verwendet.
+   * **Abonnement**: Wählen Sie das zu verwendende Abonnement aus. Wenn Sie nur in einem Abonnement Mitglied sind, wird dessen Name angezeigt. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Geschäfts-, Schul- oder Unikonto mehreren Azure-Abonnements zugeordnet ist. Hier haben wir das Abonnement **SAP HANA Solution Lab** verwendet.
+   * **Ressourcengruppe**: Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. Hier haben wir **SAPHANADemo** verwendet.<br>
+   Um eine Liste der verfügbaren Ressourcengruppen in Ihrem Abonnement anzuzeigen, wählen Sie **Vorhandene verwenden** und dann eine Ressource im Dropdownlistenfeld aus. Wählen Sie zum Erstellen einer neuen Ressourcengruppe **Neu erstellen** aus, und geben Sie den Namen ein. Umfassende Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
+   * **Standort**: Wählen Sie die geografische Region für den Tresor aus. Die Region des Tresors muss mit der Region des virtuellen Computers übereinstimmen, auf dem SAP HANA ausgeführt wird. Wir haben **USA, Osten 2** verwendet.
 
 5. Klicken Sie auf **Überprüfen + erstellen**.
 
@@ -185,15 +171,15 @@ Nachdem die zu sichernden Datenbanken ermittelt wurden, aktivieren wir die Siche
 
 1. Klicken Sie auf **Sicherung konfigurieren**.
 
-![Konfigurieren der Sicherung](./media/tutorial-backup-sap-hana-db/configure-backup.png)
+   ![Konfigurieren der Sicherung](./media/tutorial-backup-sap-hana-db/configure-backup.png)
 
 2. Wählen Sie unter **Elemente für die Sicherung auswählen** mindestens eine Datenbank aus, die Sie schützen möchten, und klicken Sie anschließend auf **OK**.
 
-![Auswählen von Elementen für die Sicherung](./media/tutorial-backup-sap-hana-db/select-items-to-backup.png)
+   ![Auswählen von Elementen für die Sicherung](./media/tutorial-backup-sap-hana-db/select-items-to-backup.png)
 
 3. Erstellen Sie unter **Sicherungsrichtlinie > Sicherungsrichtlinie auswählen** eine neue Sicherungsrichtlinie für die Datenbank(en), indem Sie die Anleitung im nächsten Abschnitt befolgen.
 
-![Auswählen der Sicherungsrichtlinie](./media/tutorial-backup-sap-hana-db/backup-policy.png)
+   ![Auswählen der Sicherungsrichtlinie](./media/tutorial-backup-sap-hana-db/backup-policy.png)
 
 4. Klicken Sie nach dem Erstellen der Richtlinie im Menü **Sicherung** auf **Sicherung aktivieren**.
 
@@ -212,11 +198,11 @@ Legen Sie die Richtlinieneinstellungen wie folgt fest:
 
 1. Geben Sie unter **Richtlinienname** einen Namen für die neue Richtlinie ein. Geben Sie für diesen Fall **SAPHANA** ein.
 
-![Eingeben eines Namens für die neue Richtlinie](./media/tutorial-backup-sap-hana-db/new-policy.png)
+   ![Eingeben eines Namens für die neue Richtlinie](./media/tutorial-backup-sap-hana-db/new-policy.png)
 
 2. Wählen Sie in **Richtlinie für vollständige Sicherung** eine **Sicherungshäufigkeit** aus. Sie können **Täglich** oder **Wöchentlich** auswählen. Für dieses Tutorial verwenden wir für die Sicherung die Option **Täglich**.
 
-![Auswählen einer Sicherungshäufigkeit](./media/tutorial-backup-sap-hana-db/backup-frequency.png)
+   ![Auswählen einer Sicherungshäufigkeit](./media/tutorial-backup-sap-hana-db/backup-frequency.png)
 
 3. Konfigurieren Sie unter **Beibehaltungsdauer** die Aufbewahrungseinstellungen für die vollständige Sicherung.
    * Standardmäßig sind alle Optionen ausgewählt. Deaktivieren Sie alle Optionen für die Beibehaltungsdauer, die Sie nicht verwenden möchten, und legen Sie die gewünschten Grenzwerte fest.
@@ -230,9 +216,9 @@ Legen Sie die Richtlinieneinstellungen wie folgt fest:
 
    ![Richtlinie für differenzielle Sicherung](./media/tutorial-backup-sap-hana-db/differential-backup-policy.png)
 
->[!NOTE]
->Inkrementelle Sicherungen werden derzeit nicht unterstützt.
->
+   >[!NOTE]
+   >Inkrementelle Sicherungen werden derzeit nicht unterstützt.
+   >
 
 7. Klicken Sie auf **OK**, um die Richtlinie zu speichern und zum Hauptmenü **Sicherungsrichtlinie** zurückzukehren.
 8. Wählen Sie **Protokollsicherung** aus, um eine Richtlinie für eine Transaktionsprotokollsicherung hinzuzufügen.
@@ -241,9 +227,9 @@ Legen Sie die Richtlinieneinstellungen wie folgt fest:
 
     ![Richtlinie für Protokollsicherung](./media/tutorial-backup-sap-hana-db/log-backup-policy.png)
 
->[!NOTE]
-> Protokollsicherungen werden erst nach erfolgreichem Abschluss einer vollständigen Sicherung übertragen.
->
+   >[!NOTE]
+   > Protokollsicherungen werden erst nach erfolgreichem Abschluss einer vollständigen Sicherung übertragen.
+   >
 
 9. Klicken Sie auf **OK**, um die Richtlinie zu speichern und zum Hauptmenü **Sicherungsrichtlinie** zurückzukehren.
 10. Klicken Sie nach dem Definieren der Sicherungsrichtlinie auf **OK**.

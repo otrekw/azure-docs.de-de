@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b448e6ce7c8b4522d5e7bdbafb39eccca982fdee
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74848509"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Authentifizierungsmethoden: Nutzung und Erkenntnisse (Vorschau)
@@ -33,7 +33,7 @@ Die folgenden Rollen können auf „Nutzung und Erkenntnisse“ zugreifen:
 
 Für den Zugriff auf „Nutzung und Erkenntnisse“ ist keine zusätzliche Lizenzierung erforderlich. Informationen zur Lizenzierung von Azure Multi-Factor Authentication und Self-Service-Kennwortzurücksetzung finden Sie auf der [Website mit Preisen für Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 So greifen Sie auf „Authentifizierungsmethoden: Nutzung und Erkenntnisse“ zu:
 
@@ -65,7 +65,7 @@ Wenn Sie auf die Kacheln **Registrierte Benutzer**, **Aktivierte Benutzer** oder
 
 Der Bericht mit den Registrierungsdetails enthält für jeden Benutzer die folgenden Informationen:
 
-- NAME
+- Name
 - Benutzername
 - Registrierungsstatus (Alle, Registriert, Nicht registriert)
 - Aktivierungsstatus (Alle, Aktiviert, Nicht aktiviert)
@@ -80,7 +80,7 @@ Wenn Sie auf das Diagramm „Registrierungen“ oder „Zurücksetzungen“ klic
 
 Der Bericht mit den Zurücksetzungsdetails enthält Registrierungs- und Zurücksetzungsereignisse der letzten 30 Tage sowie folgende Informationen:
 
-- NAME
+- Name
 - Benutzername
 - Funktion (Alle, Registrierung, Zurücksetzung)
 - Authentifizierungsmethode (App-Benachrichtigung, App-Code, Telefonanruf, geschäftlicher Telefonanruf, SMS, E-Mail, Sicherheitsfragen)

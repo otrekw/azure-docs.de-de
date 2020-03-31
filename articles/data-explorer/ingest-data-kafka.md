@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 03b46ff50683149a22c71ccb155480a0f08455bd
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66497281"
 ---
 # <a name="ingest-data-from-kafka-into-azure-data-explorer"></a>Erfassen von Daten aus Kafka in Azure Data Explorer
@@ -36,7 +36,7 @@ Kafka Connect ist ein Tool zum skalierbaren und zuverlässigen Streamen von Date
 
 Für Kafka kann ein `.jar`-Element als Plug-In geladen werden, das als benutzerdefinierter Connector fungiert. Um ein `.jar`-Element dieser Art zu erstellen, klonen wir den Code lokal und verwenden Maven für die Erstellung. 
 
-#### <a name="clone"></a>Klonen
+#### <a name="clone"></a>Klon
 
 ```bash
 git clone git://github.com:Azure/kafka-sink-azure-kusto.git
@@ -112,7 +112,7 @@ Erstellen Sie eine Tabelle in Azure Data Explorer, an die Kafka Daten senden kan
 
 Nachdem für den Kafka-Cluster die Verbindung mit Azure Data Explorer hergestellt wurde, können Sie die [Beispiel-App](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) verwenden, die Sie zum Generieren von Daten heruntergeladen haben.
 
-### <a name="clone"></a>Klonen
+### <a name="clone"></a>Klon
 
 Klonen Sie die Beispiel-App lokal:
 

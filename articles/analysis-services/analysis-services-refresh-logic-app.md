@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.openlocfilehash: 78bc629598c0635b7760285d0507b7a85a4ab551
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79126854"
 ---
 # <a name="refresh-with-logic-apps"></a>Aktualisieren mit Logic Apps
@@ -19,7 +19,7 @@ Mit Logic Apps und REST-Aufrufen können Sie automatisierte Datenaktualisierung
 
 Weitere Informationen zur Verwendung von REST-APIs mit Azure Analysis Services finden Sie unter [Asynchrones Aktualisieren mit der REST-API](analysis-services-async-refresh.md).
 
-## <a name="authentication"></a>Authentifizierung
+## <a name="authentication"></a>Authentication
 
 Alle Aufrufe müssen mit einem gültigen Azure Active Directory-Token (OAuth 2) authentifiziert werden.  In den Beispielen in diesem Artikel wird ein Dienstprinzipalname (Service Principal Name, SPN) für die Authentifizierung bei Azure Analysis Services verwendet. Weitere Informationen finden Sie unter [Erstellen eines Dienstprinzipals im Azure-Portal](../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -62,7 +62,7 @@ Dieser Schritt wird mit der HTTP-POST-URL aufgefüllt, sobald die Logik-App gesp
 
 Konfigurieren Sie die Aktivität „HTTP“ wie folgt:
 
-|Eigenschaft  |Wert  |
+|Eigenschaft  |value  |
 |---------|---------|
 |**Methode**     |POST         |
 |**URI**     | https://*Ihre Serverregion*/servers/*Name des AAS-Servers*/models/*Name Ihrer Datenbank*/refreshes <br /> <br /> Beispiel: https:\//westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes|

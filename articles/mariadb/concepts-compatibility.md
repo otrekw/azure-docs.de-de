@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: daec0aaf04cae26b6467cc4472305e75517cee5d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: a0cee198f028fd90e04dac15e98d7cd33aee9201
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772986"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79532347"
 ---
 # <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>MariaDB-Treiber und -Verwaltungstools, die mit Azure Database for MariaDB kompatibel sind
 
@@ -42,7 +42,7 @@ Der Kompatibilitätsvorteil erstreckt sich bis in die Datenbank-Verwaltungstools
 Erstellen, Aktualisieren, Lesen, Schreiben, Löschen | X | X | X
 SSL-Verbindung | X | X | X
 Automatische Vervollständigung von SQL-Abfragen | X | X |
-Importieren und Exportieren von Daten | X | X | X
+Daten importieren und exportieren | X | X | X
 Exportieren in mehreren Formaten | X | X | X
 Sichern und Wiederherstellen |  | X |
 Anzeigen von Serverparametern | X | X | X

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: ea506e137d71fc3124a4f93f1e97750a08dd4284
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76842936"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Verwenden der Paketerfassung für die proaktive Netzwerküberwachung mit Warnungen und Azure Functions
@@ -148,7 +148,7 @@ Um die Network Watcher-PowerShell-Cmdlets zu verwenden, laden Sie das neueste Po
 
     ![PowerShell-Dateien][functions7]
 
-### <a name="authentication"></a>Authentifizierung
+### <a name="authentication"></a>Authentication
 
 Um die PowerShell-Cmdlets zu verwenden, müssen Sie sich authentifizieren. Sie konfigurieren die Authentifizierung in der Funktions-App. Zum Konfigurieren der Authentifizierung müssen Sie Umgebungsvariablen konfigurieren und eine verschlüsselte Schlüsseldatei in die Funktionen-App hochladen.
 

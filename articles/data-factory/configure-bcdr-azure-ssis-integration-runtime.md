@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/14/2018
 ms.openlocfilehash: 92f7d25a9c19409b220b6a71fba87da91e51a415
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74928500"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>Konfigurieren von Azure-SSIS Integration Runtime mit Georeplikation der Azure SQL-Datenbank und Failover
@@ -51,11 +51,11 @@ Dieser Abschnitt gilt, wenn eine der folgenden Bedingungen erfüllt ist:
 
 - Azure-SSIS IR verweist auf den primären Serverendpunkt der Failovergruppe. Dieser Endpunkt ändert sich beim Auftreten eines Failovers.
 
-  OR
+  oder
 
 - Der Azure SQL-Datenbank-Server ist mit einer Regel des VNET-Dienstendpunkts konfiguriert.
 
-  OR
+  oder
 
 - Der Datenbankserver ist eine verwaltete SQL-Datenbankinstanz, die mit einem virtuellen Netzwerk konfiguriert ist.
 

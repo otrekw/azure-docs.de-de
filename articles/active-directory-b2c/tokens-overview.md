@@ -11,10 +11,10 @@ ms.date: 08/27/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: cbbd083a6b62733d71c316af95dffaa188b28955
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78186487"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Übersicht über Token in Azure Active Directory B2C
@@ -50,7 +50,7 @@ Die Ansprüche in ID-Token werden in keiner bestimmten Reihenfolge zurückgegebe
 
 Die folgende Tabelle enthält die Ansprüche, die in von Azure AD B2C ausgestellten ID-Token und Zugriffstoken zu erwarten sind:
 
-| Name | Anspruch | Beispielwert | Beschreibung |
+| Name | Anspruch | Beispielwert | BESCHREIBUNG |
 | ---- | ----- | ------------- | ----------- |
 | Zielgruppe | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Identifiziert den vorgesehenen Empfänger des Tokens. Für Azure AD B2C ist die Zielgruppe die Anwendungs-ID. Ihre Anwendung muss diesen Wert überprüfen und das Token ablehnen, wenn er nicht übereinstimmt. Die Zielgruppe ist synonym mit der Ressource. |
 | Issuer (Aussteller) | `iss` |`https://{tenant}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Identifiziert den Sicherheitstokendienst (Security Token Service, STS), der das Token erstellt und zurückgibt. Er identifiziert auch das Verzeichnis, in dem der Benutzer authentifiziert wurde. Ihre Anwendung muss den Ausstelleranspruch überprüfen, um sicherzustellen, dass das Token vom passenden Endpunkt stammt. |

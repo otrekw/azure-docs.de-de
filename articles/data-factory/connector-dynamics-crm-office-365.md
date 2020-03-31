@@ -13,10 +13,10 @@ ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
 ms.openlocfilehash: d065439839ba5db479305ae81c61892cb5cf5e70
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74929453"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Dynamics 365 (Common Data Service) oder Dynamics CRM mithilfe von Azure Data Factory
@@ -42,7 +42,7 @@ In der folgenden Tabelle finden Sie Informationen zu den unterstützten Authenti
 
 | Dynamics-Versionen | Authentifizierungstypen | Beispiele für verknüpfte Dienste |
 |:--- |:--- |:--- |
-| Common Data Service <br> Dynamics 365 (online) <br> Dynamics CRM Online | AAD-Dienstprinzipal <br> Office 365 | [Dynamics Online und AAD-Dienstprinzipal oder Office 365-Authentifizierung](#dynamics-365-and-dynamics-crm-online) |
+| Common Data Service <br> Dynamics 365 (online) <br> Dynamics CRM Online | AAD-Dienstprinzipal <br> Office365 | [Dynamics Online und AAD-Dienstprinzipal oder Office 365-Authentifizierung](#dynamics-365-and-dynamics-crm-online) |
 | Dynamics 365 lokal mit IFD <br> Dynamics CRM 2016 lokal mit IFD <br> Dynamics CRM 2015 lokal mit IFD | IFD | [Dynamics lokal mit IFD und IFD-Authentifizierung](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
 
 Für Dynamics 365 werden insbesondere die folgenden Anwendungstypen unterstützt:
@@ -250,7 +250,7 @@ Beim Kopieren von Daten aus Dynamics werden die folgenden Eigenschaften im Absch
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Copy-Aktivität muss auf **DynamicsSource**, **DynamicsCrmSource** oder **CommonDataServiceForAppsSource** festgelegt werden. | Ja |
-| query | FetchXML ist eine proprietäre Abfragesprache, die in Dynamics (online und lokal) verwendet wird. Siehe folgendes Beispiel. Weitere Informationen finden Sie unter [Erstellen von Abfragen mit FetchXML](https://msdn.microsoft.com/library/gg328332.aspx). | Nein (wenn „entityName“ im Dataset angegeben ist) |
+| Abfrage | FetchXML ist eine proprietäre Abfragesprache, die in Dynamics (online und lokal) verwendet wird. Siehe folgendes Beispiel. Weitere Informationen finden Sie unter [Erstellen von Abfragen mit FetchXML](https://msdn.microsoft.com/library/gg328332.aspx). | Nein (wenn „entityName“ im Dataset angegeben ist) |
 
 >[!NOTE]
 >Die PK-Spalte wird immer herauskopiert. Dies gilt auch, wenn sie nicht in der Spaltenprojektion enthalten ist, die Sie in der FetchXML-Abfrage konfigurieren.
@@ -378,16 +378,16 @@ Konfigurieren Sie anhand der folgenden Zuordnungstabelle den entsprechenden Data
 | AttributeType.DateTime | Datetime | ✓ | ✓ |
 | AttributeType.Decimal | Decimal | ✓ | ✓ |
 | AttributeType.Double | Double | ✓ | ✓ |
-| AttributeType.EntityName | Zeichenfolge | ✓ | ✓ |
+| AttributeType.EntityName | String | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
 | AttributeType.Lookup | Guid | ✓ | ✓ (mit Zuordnung eines einzelnen Ziels) |
 | AttributeType.ManagedProperty | Boolean | ✓ | |
-| AttributeType.Memo | Zeichenfolge | ✓ | ✓ |
+| AttributeType.Memo | String | ✓ | ✓ |
 | AttributeType.Money | Decimal | ✓ | ✓ |
 | AttributeType.Owner | Guid | ✓ | |
 | AttributeType.Picklist | Int32 | ✓ | ✓ |
 | AttributeType.Uniqueidentifier | Guid | ✓ | ✓ |
-| AttributeType.String | Zeichenfolge | ✓ | ✓ |
+| AttributeType.String | String | ✓ | ✓ |
 | AttributeType.State | Int32 | ✓ | ✓ |
 | AttributeType.Status | Int32 | ✓ | ✓ |
 

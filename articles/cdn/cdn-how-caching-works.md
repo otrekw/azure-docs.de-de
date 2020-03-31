@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: magattus
 ms.openlocfilehash: 92d93fbf9fa2f8df15acb62802d7ac53db836dc1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593845"
 ---
 # <a name="how-caching-works"></a>Funktionsweise der Zwischenspeicherung
@@ -116,7 +116,7 @@ Nicht alle Ressourcen können zwischengespeichert werden. Die folgende Tabelle z
 |-------------------|-----------------------------------|------------------------|------------------------------|
 | HTTP-Statuscodes | 200, 203, 206, 300, 301, 410, 416 | 200                    | 200, 203, 300, 301, 302, 401 |
 | HTTP-Methoden      | GET, HEAD                         | GET                    | GET                          |
-| Dateigrößenbeschränkungen  | 300 GB                            | 300 GB                 | – Optimierung der allgemeinen Webbereitstellung: 1,8 GB<br />– Medienstreaming-Optimierungen: 1,8 GB<br />– Optimierung großer Dateien: 150 GB |
+| Dateigrößenbeschränkungen  | 300 GB                            | 300 GB                 | – Optimierung der allgemeinen Webbereitstellung: 1,8 GB<br />– Medienstreaming-Optimierungen: 1,8 GB<br />– Optimierung großer Dateien: 150 GB |
 
 Damit das Zwischenspeichern von **Azure CDN Standard von Microsoft** bei einer Ressource funktioniert, muss der Ursprungsserver HEAD- und GET-HTTP-Anforderungen unterstützen, und die Inhaltslängenwerte müssen für alle HEAD- und GET-HTTP-Antworten für die Ressource identisch sein. Bei einer HEAD-Anforderung muss der Ursprungsserver die HEAD-Anforderung unterstützen und mit den gleichen Headern antworten wie beim Empfang einer GET-Anforderung.
 

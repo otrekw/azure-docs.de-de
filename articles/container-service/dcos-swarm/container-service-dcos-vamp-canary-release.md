@@ -8,10 +8,10 @@ ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
 ms.openlocfilehash: 2af20a1ddf4239b7eec6cceabf2ff9711959c128
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77189105"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(VERALTET) Canary-Release-Microservices mit VAMP in einem Azure Container Service-DC/OS-Cluster
@@ -233,7 +233,7 @@ Das Gateway **sava/sava_cluster/webport** (der Clusterendpunkt) wird ebenfalls a
 
 Stellen Sie bei beiden sava-Versionen, die im selben Cluster bereitgestellt werden, die Verteilung des Datenverkehrs zwischen ihnen ein, indem Sie den Schieberegler **GEWICHTUNG** verschieben.
 
-1. Klicken Sie neben **GEWICHTUNG** auf ![VAMP-Benutzeroberfläche – Bearbeiten](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png).
+1. Klicken Sie neben ![GEWICHTUNG](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) auf **VAMP-Benutzeroberfläche – Bearbeiten**.
 
 2. Legen Sie die Gewichtsverteilung auf 50/50 % fest, und klicken Sie auf **Speichern**.
 
@@ -270,7 +270,7 @@ Sie können eine Bedingung erstellen, um alle Firefox-Benutzer zu filtern und an
 
    ![VAMP-Benutzeroberfläche – Anwenden der Bedingung auf das Gateway](./media/container-service-dcos-vamp-canary-release/26_apply_condition.png)
 
-5. Abschließend stellen Sie die Gewichtung des Gateways so ein, dass sämtlicher verbleibender Datenverkehr (alle Benutzer, die kein Firefox verwenden) an die neue sava:1.1.0-Seite gesendet wird. Klicken Sie neben **GEWICHTUNG** auf ![VAMP-Benutzeroberfläche – Bearbeiten](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png), und legen Sie die Gewichtungsverteilung so fest, dass der gesamte Datenverkehr an die Route „sava/sava_cluster/sava:1.1.0/webport“ umgeleitet wird.
+5. Abschließend stellen Sie die Gewichtung des Gateways so ein, dass sämtlicher verbleibender Datenverkehr (alle Benutzer, die kein Firefox verwenden) an die neue sava:1.1.0-Seite gesendet wird. Klicken Sie neben ![GEWICHTUNG](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) auf **VAMP-Benutzeroberfläche – Bearbeiten**, und legen Sie die Gewichtungsverteilung so fest, dass der gesamte Datenverkehr an die Route „sava/sava_cluster/sava:1.1.0/webport“ umgeleitet wird.
 
    Sämtlicher Datenverkehr, der nicht von der Bedingung gefiltert wurde, wird nun an die neue sava:1.1.0-Seite umgeleitet.
 

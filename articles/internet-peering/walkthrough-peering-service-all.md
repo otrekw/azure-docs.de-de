@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: d626d98613bd5d988b599d0980c885d7f73bb958
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76720247"
 ---
 # <a name="peering-service-partner-walkthrough"></a>Exemplarische Vorgehensweise für Peering Service-Partner
@@ -23,13 +23,13 @@ In diesem Abschnitt werden die Schritte erläutert, die ein Anbieter befolgen mu
 Dienstanbieter können ihre geografische Reichweite erweitern, indem sie ein neues Direct Peering erstellen, das Peering Service unterstützt. Dies erreichen Sie folgendermaßen:
 1. Werden Sie Peering Service-Partner, wenn Sie dies noch nicht sind
 1. Befolgen Sie die Anweisungen zum [Erstellen oder Ändern einer Instanz für Direct Peering über das Portal](howto-direct-portal.md). Achten Sie darauf, dass sie die Hochverfügbarkeitsanforderung erfüllt.
-1. Befolgen Sie anschließend die Schritte zum [Aktivieren von Peering Service für Direct Peering über das Portal](howto-peering-service-portal.md).
+1. Befolgen Sie anschließend die Schritte zum [Aktivieren von Peering Service für direktes Peering über das Portal](howto-peering-service-portal.md).
 
 ## <a name="use-legacy-direct-peering-connection-for-peering-service"></a>Verwenden einer Legacy-Direct Peering-Verbindung für Peering Service
 Wenn Sie über ein Legacy-Direct Peering verfügen, das Sie zur Unterstützung von Peering Service verwenden möchten, gehen Sie wie folgt vor:
 1. Werden Sie Peering Service-Partner, wenn Sie dies noch nicht sind.
 1. Befolgen Sie die Anweisungen in [Konvertieren einer älteren Instanz für Direct Peering in eine Azure-Ressource über das Portal](howto-legacy-direct-portal.md). Falls erforderlich, bestellen Sie zusätzliche Leitungen, um den Anforderungen an Hochverfügbarkeit zu genügen.
-1. Befolgen Sie anschließend die Schritte zum [Aktivieren von Peering Service für Direct Peering über das Portal](howto-peering-service-portal.md).
+1. Befolgen Sie anschließend die Schritte zum [Aktivieren von Peering Service für direktes Peering über das Portal](howto-peering-service-portal.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

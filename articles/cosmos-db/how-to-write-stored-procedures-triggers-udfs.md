@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
 ms.openlocfilehash: 4dee017323bda5fc08598a9b24cadd11516807cf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75441733"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Schreiben von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in Azure Cosmos DB
@@ -25,7 +25,7 @@ Um eine gespeicherte Prozedur, einen Trigger und einer benutzerdefinierte Funkti
 > [!Tip]
 > Cosmos unterstützt die Bereitstellung von Containern mit gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen. Weitere Informationen finden Sie unter [Erstellen eines Azure Cosmos DB-Containers mit serverseitiger Funktionalität](manage-sql-with-resource-manager.md#create-sproc).
 
-## <a id="stored-procedures"></a>Schreiben gespeicherter Prozeduren
+## <a name="how-to-write-stored-procedures"></a><a id="stored-procedures"></a>Schreiben gespeicherter Prozeduren
 
 Gespeicherte Prozeduren werden mithilfe von JavaScript geschrieben und können Elemente in einem Azure Cosmos-Container erstellen, aktualisieren, lesen, abfragen und löschen. Gespeicherte Prozeduren werden pro Auflistung registriert und können auf beliebige Dokumente und Anhänge angewendet werden, die sich in dieser Auflistung befinden.
 
@@ -49,7 +49,7 @@ Das Kontextobjekt bietet Zugriff auf alle Vorgänge, die in Azure Cosmos DB ausg
 
 Nachdem eine gespeicherte Prozedur geschrieben wurde, muss sie bei einer Auflistung registriert werden. Weitere Informationen finden Sie im Artikel [Verwenden von gespeicherten Prozeduren in Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md#stored-procedures).
 
-### <a id="create-an-item"></a>Erstellen eines Elements mithilfe einer gespeicherten Prozedur
+### <a name="create-an-item-using-stored-procedure"></a><a id="create-an-item"></a>Erstellen eines Elements mithilfe einer gespeicherten Prozedur
 
 Wenn Sie ein Element mithilfe einer gespeicherten Prozedur erstellen, wird dieses Element in den Azure Cosmos-Container eingefügt, und es wird eine ID für das neu erstellte Element zurückgegeben. Das Erstellen eines Elements ist ein asynchroner Vorgang und hängt von den JavaScript-Rückruffunktionen ab. Die Rückruffunktion verfügt über zwei Parameter: einen für das Fehlerobjekt für den Fall eines Fehlers im Vorgang und einen anderen für einen Rückgabewert, in diesem Fall für das erstellte Objekt. Innerhalb des Rückrufs können Sie entweder die Ausnahme behandeln oder einen Fehler auslösen. Für den Fall, dass kein Rückruf bereitgestellt wird und ein Fehler auftritt, löst die Azure Cosmos DB-Laufzeitumgebung einen Fehler aus. 
 
@@ -88,7 +88,7 @@ function sample(arr) {
 }
 ```
 
-### <a id="transactions"></a>Transaktionen in gespeicherten Prozeduren
+### <a name="transactions-within-stored-procedures"></a><a id="transactions"></a>Transaktionen in gespeicherten Prozeduren
 
 Sie können Transaktionen mithilfe einer gespeicherten Prozedur in Elementen innerhalb eines Containers implementieren. Das folgende Beispiel verwendet Transaktionen in einer Football-Spiele-App, um Spieler in einem einzigen Vorgang zwischen zwei Mannschaften zu transferieren. Die gespeicherte Prozedur versucht, die beiden Azure Cosmos-Elemente zu lesen, die jeweils den als Argument übergebenen Spieler-IDs entsprechen. Wenn beide Spieler gefunden werden, aktualisiert die gespeicherte Prozedur die Elemente, indem die Mannschaften getauscht werden. Wenn im Verlauf des Vorgangs Fehler auftreten, löst die gespeicherte Prozedur eine JavaScript-Ausnahme aus, die die Transaktion implizit abbricht.
 
@@ -156,7 +156,7 @@ function tradePlayers(playerId1, playerId2) {
 }
 ```
 
-### <a id="bounded-execution"></a>Gebundene Ausführung innerhalb von gespeicherten Prozeduren
+### <a name="bounded-execution-within-stored-procedures"></a><a id="bounded-execution"></a>Gebundene Ausführung innerhalb von gespeicherten Prozeduren
 
 Im Folgenden finden Sie ein Beispiel einer gespeicherten Prozedur, die Elemente per Massenvorgang in einen Azure Cosmos-Container importiert. Die gespeicherte Prozedur verarbeitet die gebundene Ausführung, indem sie den booleschen Rückgabewert von `createDocument` prüft und dann die Anzahl der Elemente verwendet, die bei jedem Aufruf der gespeicherten Prozedur eingefügt werden, um den batchübergreifenden Fortschritt nachzuverfolgen und zu übernehmen.
 
@@ -211,11 +211,11 @@ function bulkImport(items) {
 }
 ```
 
-## <a id="triggers"></a>Schreiben von Triggern
+## <a name="how-to-write-triggers"></a><a id="triggers"></a>Schreiben von Triggern
 
 Azure Cosmos DB unterstützt vorangestellte und nachgestellte Trigger. Vorangestellte Trigger werden vor dem Ändern eines Datenbankelements ausgeführt, nachgestellte Trigger danach.
 
-### <a id="pre-triggers"></a>Vorangestellte Trigger
+### <a name="pre-triggers"></a><a id="pre-triggers"></a>Vorangestellte Trigger
 
 Das folgende Beispiel zeigt, wie ein vorangestellter Trigger zum Überprüfen der Eigenschaften eines Azure Cosmos-Elements verwendet werden kann, das erstellt wird. In diesem Beispiel nutzen wir das To-Do-Listen-Beispiel aus der [Schnellstartanleitung: Erstellen einer .NET-Web-App mit Azure Cosmos DB unter Verwendung der SQL-API und des Azure-Portals](create-sql-api-dotnet.md), um eine Timestamp-Eigenschaft zu einem neu hinzugefügten Element hinzuzufügen, falls dieses keine solche Eigenschaft enthält.
 
@@ -240,11 +240,11 @@ function validateToDoItemTimestamp() {
 
 Vorangestellte Trigger können keine Eingabeparameter übernehmen. Das Anforderungsobjekt im Trigger kann verwendet werden, um die Anforderungsnachricht zu verändern, die dem Vorgang zugeordnet ist. Im vorherigen Beispiel wird der vorangestellte Trigger ausgeführt, wenn ein Azure Cosmos-Element erstellt wird, und der Text der Anforderungsnachricht enthält das zu erstellende Element im JSON-Format.
 
-Wenn Trigger registriert werden, können Sie die Vorgänge angeben, mit denen sie ausgeführt werden können. Dieser Trigger wurde mit `TriggerOperation.Create` als `TriggerOperation`-Wert erstellt, d.h., die Verwendung des Triggers in einem Ersetzungsvorgang – wie im folgenden Code gezeigt – ist nicht zulässig.
+Wenn Trigger registriert werden, können Sie die Vorgänge angeben, mit denen sie ausgeführt werden können. Dieser Trigger wurde mit `TriggerOperation` als `TriggerOperation.Create`-Wert erstellt, d.h., die Verwendung des Triggers in einem Ersetzungsvorgang – wie im folgenden Code gezeigt – ist nicht zulässig.
 
 Beispiele für das Registrieren und Aufrufen eines vorangestellten Triggers finden Sie in den Artikeln [Vorangestellte Trigger](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) und [Nachgestellte Trigger](how-to-use-stored-procedures-triggers-udfs.md#post-triggers). 
 
-### <a id="post-triggers"></a>Nachgestellte Trigger
+### <a name="post-triggers"></a><a id="post-triggers"></a>Nachgestellte Trigger
 
 Das folgende Beispiel zeigt einen nachgestellten Trigger. Dieser Trigger fragt das Metadatenelement ab und aktualisiert es mit den Details zum neu erstellten Element.
 
@@ -286,7 +286,7 @@ Ein wichtiger Aspekt, den es zu beachten gilt, ist die transaktionale Ausführun
 
 Beispiele für das Registrieren und Aufrufen eines vorangestellten Triggers finden Sie in den Artikeln [Vorangestellte Trigger](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) und [Nachgestellte Trigger](how-to-use-stored-procedures-triggers-udfs.md#post-triggers). 
 
-## <a id="udfs"></a>Schreiben von benutzerdefinierten Funktionen
+## <a name="how-to-write-user-defined-functions"></a><a id="udfs"></a>Schreiben von benutzerdefinierten Funktionen
 
 Das folgende Beispiel erstellt eine benutzerdefinierte Funktion, um die Einkommenssteuer für verschiedene Einkommensgruppen zu berechnen. Diese benutzerdefinierte Funktion wird dann innerhalb einer Abfrage verwendet. Nehmen wir für dieses Beispiel an, dass ein Container namens „Incomes“ mit folgenden Eigenschaften vorhanden ist:
 

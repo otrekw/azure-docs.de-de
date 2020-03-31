@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277128"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228170"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Auspacken, Einbauen und Verkabeln des StorSimple 8600-Geräts
 
@@ -42,7 +42,7 @@ Führen Sie dann die folgenden Schritte aus, um das Gerät auszupacken.
    
     **Das ausgepackte Speichergerät**
    
-   | Bezeichnung | Beschreibung |
+   | Bezeichnung | BESCHREIBUNG |
    | --- | --- |
    |   1 |Karton |
    |   2 |SAS-Kabel (in der Verpackung für Zubehör und Kabel) |
@@ -106,7 +106,7 @@ Im Lieferumfang ist ein Satz Montageschienen für die Verwendung mit einem 19-Zo
    
     **Befestigen der Gleitschienen an den Seiten des Gehäuses**
    
-   | Bezeichnung | Beschreibung |
+   | Bezeichnung | BESCHREIBUNG |
    | --- | --- |
    |  1 |Rundkopfschrauben M3 x 4 |
    |  2 |Gehäusegleitschiene |
@@ -119,7 +119,7 @@ Im Lieferumfang ist ein Satz Montageschienen für die Verwendung mit einem 19-Zo
    
     **Befestigen der Schienenbaugruppen am Rack**
    
-   | Bezeichnung | Beschreibung |
+   | Bezeichnung | BESCHREIBUNG |
    | --- | --- |
    |   1 |Klemmschraube |
    |   2 |Vierkantloch-Schraube für vorderen Rackpfosten |
@@ -145,7 +145,7 @@ Führen Sie die folgenden Schritte aus, um das EBOD-Gehäuse unter Verwendung de
    
     **Anbringen der Flanschkappen**
    
-   | Bezeichnung | Beschreibung |
+   | Bezeichnung | BESCHREIBUNG |
    | --- | --- |
    |   1 |Befestigungsschraube für Gehäuse |
 
@@ -198,7 +198,7 @@ Verkabeln Sie Ihr Gerätenetzwerk wie in den folgenden Schritten beschrieben, um
    
     **Rückseite des Geräts mit Datenanschlüssen**
    
-   | Bezeichnung | Beschreibung |
+   | Bezeichnung | BESCHREIBUNG |
    | --- | --- |
    |   0,1,4,5 |1-GbE-Netzwerkschnittstellen |
    |   2,3 |10-GbE-Netzwerkschnittstellen |
@@ -209,7 +209,7 @@ Verkabeln Sie Ihr Gerätenetzwerk wie in den folgenden Schritten beschrieben, um
 
 **Netzwerkverkabelung des Geräts**
 
-| Bezeichnung | Beschreibung |
+| Bezeichnung | BESCHREIBUNG |
 | --- | --- |
 | Ein |LAN mit Internetzugriff |
 | B |Controller 0 |
@@ -256,7 +256,7 @@ Führen Sie die folgenden Schritte aus, um den seriellen Anschluss zu verkabeln.
 6. Stellen Sie sicher, dass die Verbindung funktioniert, indem Sie auf der Konsole die EINGABETASTE drücken. Ein Menü der seriellen Konsole sollte angezeigt werden.
 
 > [!NOTE]
-> **Lights-Out-Management:** Wenn das Gerät in einem Remoterechenzentrum oder in einem Computerraum mit beschränktem Zugriff installiert ist, stellen Sie sicher, dass die seriellen Verbindungen mit beiden Controllern immer mit einem Switch einer seriellen Konsole oder einem ähnlichen Gerät verbunden sind. Dies ermöglicht bei einer Netzwerkunterbrechung oder unerwarteten Fehlern Out-of-Band-Remotesteuerungs- und -Supportvorgänge.
+> **Lights-Out-Management:** Wenn das Gerät in einem Remoterechenzentrum oder in einem Computerraum mit beschränktem Zugriff installiert ist, stellen Sie sicher, dass die seriellen Verbindungen zu beiden Controllern immer mit einem Switch einer seriellen Konsole oder einem ähnlichen Gerät verbunden sind. Dies ermöglicht bei einer Netzwerkunterbrechung oder unerwarteten Fehlern Out-of-Band-Remotesteuerungs- und -Supportvorgänge.
 > 
 > 
 

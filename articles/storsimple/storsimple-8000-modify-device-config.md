@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 774f5a73a5fc30352698c0af0c279fbbe488c480
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60632156"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232150"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Ändern der StorSimple-Gerätekonfiguration
 
@@ -99,7 +99,7 @@ Um den sekundären DNS-Server im Azure-Portal zu ändern, führen Sie die folgen
 
 4. Klicken Sie auf der Befehlszeile auf **Speichern**. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **OK**.
 
-    ![Änderungen speichern und bestätigen](./media/storsimple-8000-modify-device-config/modify-secondary-dns-2.png)
+    ![Speichern und Bestätigen von Änderungen](./media/storsimple-8000-modify-device-config/modify-secondary-dns-2.png)
 
 
 

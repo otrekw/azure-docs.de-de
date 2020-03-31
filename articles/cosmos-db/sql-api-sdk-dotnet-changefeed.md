@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
 ms.openlocfilehash: 9252e3e41d0c639231a2abe20202499c6b3ee32a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75444857"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor-SDK: Download und Versionshinweise
@@ -46,7 +46,7 @@ ms.locfileid: "75444857"
 
 ### <a name="v2-builds"></a>V2-Builds
 
-### <a name="a-name228228"></a><a name="2.2.8"/>2.2.8
+### <a name="228"></a><a name="2.2.8"/>2.2.8
 * Verbesserungen hinsichtlich Stabilität und Diagnostizierbarkeit:
   * Die Erkennung lang andauernder Lesevorgänge des Änderungsfeeds wird nun unterstützt. Wenn es länger dauert, als vom Wert der `ChangeFeedProcessorOptions.ChangeFeedTimeout`-Eigenschaft angegeben, werden die folgenden Schritte ausgeführt:
     * Der Vorgang zum Lesen des Änderungsfeeds auf der problematischen Partition wird abgebrochen.
@@ -55,56 +55,56 @@ ms.locfileid: "75444857"
   * Es wurde eine neue öffentliche Eigenschaft hinzugefügt: `ChangeFeedProcessorOptions.ChangeFeedTimeout`. Der Standardwert dieser Eigenschaft ist 10 Minuten.
   * Es wurde ein neuer öffentlicher Enumerationswert hinzugefügt: `Monitoring.MonitoredOperation.ReadChangeFeed`. Wenn der Wert von `HealthMonitoringRecord.Operation` auf `Monitoring.MonitoredOperation.ReadChangeFeed` festgelegt ist, wird angegeben, dass sich das Integritätsproblem auf das Lesen des Änderungsfeeds bezieht.
 
-### <a name="a-name227227"></a><a name="2.2.7"/>2.2.7
+### <a name="227"></a><a name="2.2.7"/>2.2.7
 * Verbesserte Lastenausgleichsstrategie für ein Szenario, bei dem das Abrufen aller Leases länger dauert als das Leaseablaufintervall, z.B. aufgrund von Netzwerkproblemen:
   * In diesem Szenario wird ein Lastenausgleichsalgorithmus verwendet, um Leases fälschlicherweise als abgelaufen zu betrachten, was dazu führt, dass aktiven Besitzern Leases gestohlen werden. Dies könnte einen unnötigen erneuten Ausgleich vieler Leases auslösen.
   * Dieses Problem wurde in der vorliegenden Version folgendermaßen behoben: Bei einem Konflikt wird eine Wiederholung vermieden, wobei die abgelaufene Lease, die der Besitzer nicht geändert hat, abgerufen und dieser Abruf auf die nächste Iteration des Lastenausgleichs verschoben wird.
 
-### <a name="a-name226226"></a><a name="2.2.6"/>2.2.6
+### <a name="226"></a><a name="2.2.6"/>2.2.6
 * Verbesserte Behandlung von Beobachterausnahmen.
 * Umfangreichere Informationen Beobachterfehlern:
   * Wenn ein Beobachter aufgrund einer Ausnahme geschlossen wird, die von „ProcessChangesAsync“ des Beobachters ausgelöst wird, erhält „CloseAsync“ nun den reason-Parameter „ChangeFeedObserverCloseReason.ObserverError“.
   * Hinzugefügte Ablaufverfolgungen zum Bestimmen von Fehlern im Benutzercode bei einem Beobachter.
 
-### <a name="a-name225225"></a><a name="2.2.5"/>2.2.5
+### <a name="225"></a><a name="2.2.5"/>2.2.5
 * Unterstützung für die Verarbeitung von Aufteilungen von Sammlungen, die gemeinsam genutzten Datenbankdurchsatz verwenden, wurde hinzugefügt.
   * Diese Version behebt ein Problem, das u. U. bei einer Aufteilung von Sammlungen bei gemeinsam genutztem Datenbankdurchsatz entsteht, wenn die Aufteilung zu einem Partitionsausgleich (Partition Rebalancing) führt, bei dem nur ein untergeordneter Partitionsschlüsselbereich (statt zwei) erstellt wird. In diesem Fall kann der Change Feed Processor beim Löschen der Lease für den alten Partitionsschlüsselbereich hängen bleiben und erstellt keine neuen Leases mehr. Dieses Problem wurde in diesem Release behoben.
 
-### <a name="a-name224224"></a><a name="2.2.4"/>2.2.4
+### <a name="224"></a><a name="2.2.4"/>2.2.4
 * Die Eigenschaft ChangeFeedProcessorOptions.StartContinuation wurde hinzugefügt, um das Starten des Änderungsfeeds über das Fortsetzungstoken für die Anforderung zu unterstützen. Dies wird nur verwendet, wenn die Leasesammlung leer ist oder für eine Lease kein ContinuationToken festgelegt wurde. Bei Leases in einer Leasesammlung, für die ein ContinuationToken festgelegt wurde, wird dieses verwendet und ChangeFeedProcessorOptions.StartContinuation ignoriert.
 
-### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
+### <a name="223"></a><a name="2.2.3"/>2.2.3
 * Unterstützung für die Verwendung von benutzerdefinierten Speichern für das Beibehalten von Fortsetzungstoken pro Partition wurde hinzugefügt.
   * Ein benutzerdefinierter Leasespeicher kann z.B. eine Azure Cosmos DB-Leasesammlung sein, die auf eine beliebige benutzerdefinierte Weise partitioniert wurde.
   * Benutzerdefinierte Leasespeicher können den neuen Erweiterbarkeitspunkt ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager) und die öffentliche ILeaseStoreManager-Schnittstelle verwenden.
   * Die ILeaseManager-Schnittstelle wurde in mehrere Rollenschnittstellen umgestaltet.
 * Kleiner Breaking Change: Der Erweiterbarkeitspunkt ChangeFeedProcessorBuilder.WithLeaseManager(ILeaseManager) wurde entfernt. Verwenden Sie stattdessen ChangeFeedProcessorBuilder.WithLeaseStoreManager(ILeaseStoreManager).
 
-### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
+### <a name="222"></a><a name="2.2.2"/>2.2.2
 * Dieses Release behebt ein Problem, das während der Verarbeitung einer Teilung in einer überwachten Sammlung und bei Verwendung einer partitionierten Leasesammlung auftritt. Wenn Sie eine Lease für eine Teilungspartition verarbeiten, wird die Lease für diese Partition möglicherweise nicht gelöscht. Dieses Problem wurde in diesem Release behoben.
 
-### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
+### <a name="221"></a><a name="2.2.1"/>2.2.1
 * Die Berechnung der Schätzung für Multimasterkonten wurde korrigiert und ein neues Sitzungstokenformat eingeführt.
 
-### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+### <a name="220"></a><a name="2.2.0"/>2.2.0
 * Unterstützung für partitionierte Leasesammlungen wurde hinzugefügt. Der Partitionsschlüssel muss als „/id“ definiert werden.
 * Kleinerer Breaking Change: Die Methoden der IChangeFeedDocumentClient-Schnittstelle und der ChangeFeedDocumentClient-Klasse wurden geändert, um die Parameter RequestOptions und CancellationToken einzuschließen. IChangeFeedDocumentClient ist ein verbesserter Erweiterungspunkt, mit dem Sie eine benutzerdefinierte Implementierung des Document-Clients für die Verwendung bei der Verarbeitung des Änderungsfeeds bereitstellen können. Sie können z.B. DocumentClient ergänzen und alle Aufrufe an diesen abfangen, um eine zusätzliche Ablaufverfolgung, Fehlerbehandlung o.Ä. auszuführen. Mit diesem Update muss der Code, der IChangeFeedDocumentClient implementiert, geändert werden, um neue Parameter in die Implementierung einzuschließen.
 * Kleinere Verbesserungen bei der Diagnose.
 
-### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+### <a name="210"></a><a name="2.1.0"/>2.1.0
 * Neue API hinzugefügt, Task&lt;IReadOnlyList&lt;RemainingPartitionWork&gt;&gt; IRemainingWorkEstimator.GetEstimatedRemainingWorkPerPartitionAsync(). Kann verwendet werden, um den geschätzten Arbeitsaufwand für jede Partition abzurufen.
 * Unterstützt Microsoft.Azure.DocumentDB-SDK 2.0. Erfordert Microsoft.Azure.DocumentDB 2.0 oder höher.
 
-### <a name="a-name206206"></a><a name="2.0.6"/>2.0.6
+### <a name="206"></a><a name="2.0.6"/>2.0.6
 * Öffentliche Eigenschaft „ChangeFeedEventHost.HostName“ zur Kompatibilität mit v1 hinzugefügt.
 
-### <a name="a-name205205"></a><a name="2.0.5"/>2.0.5
+### <a name="205"></a><a name="2.0.5"/>2.0.5
 * Ein Problem mit einer Racebedingung, das während der Partitionsaufteilung auftritt, wurde behoben. Die Racebedingung kann dazu führen, dass das Lease angefordert, bei der Partitionsaufteilung sofort verloren geht und einen Konflikt verursacht. In diesem Release wurde das Problem mit der Racebedingung behoben.
 
-### <a name="a-name204204"></a><a name="2.0.4"/>2.0.4
+### <a name="204"></a><a name="2.0.4"/>2.0.4
 * Allgemeine Verfügbarkeit (GA) des SDK
 
-### <a name="a-name203-prerelease203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3 – Vorabversion
+### <a name="203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3 – Vorabversion
 * Die folgenden Probleme wurden behoben:
   * Wenn eine Partition geteilt wird, werden Dokumente, die vor der Teilung modifiziert wurden, möglicherweise doppelt verarbeitet.
   * Die GetEstimatedRemainingWork-API gab 0 zurück, wenn in der Leasesammlung keine Leases vorhanden waren.
@@ -115,11 +115,11 @@ ms.locfileid: "75444857"
   * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionNotFoundException.
   * Microsoft.Azure.Documents.ChangeFeedProcessor.Exceptions.PartitionSplitException. 
 
-### <a name="a-name202-prerelease202-prerelease"></a><a name="2.0.2-prerelease"/>2.0.2-Vorabversion
+### <a name="202-prerelease"></a><a name="2.0.2-prerelease"/>2.0.2-Vorabversion
 * Geringfügige API-Änderungen:
   * Die als veraltet gekennzeichnete ChangeFeedProcessorOptions.IsAutoCheckpointEnabled wurde entfernt.
 
-### <a name="a-name201-prerelease201-prerelease"></a><a name="2.0.1-prerelease"/>2.0.1-prerelease
+### <a name="201-prerelease"></a><a name="2.0.1-prerelease"/>2.0.1-prerelease
 * Verbesserungen der Stabilität:
   * Bessere Handhabung der Leasespeicherinitialisierung. Wenn der Leasespeicher leer ist, kann er nur von einer Instanz des Prozessors initialisiert werden, die anderen warten.
   * Stabilere/effizientere Leaseerneuerung/-freigabe. Das Erneuern und Freigeben einer Lease für eine Partition erfolgt unabhängig von der Erneuerung anderer Leases. In v1 erfolgte dies sequenziell für alle Partitionen.
@@ -140,33 +140,33 @@ ms.locfileid: "75444857"
 
 ### <a name="v1-builds"></a>V1-Builds
 
-### <a name="a-name133133"></a><a name="1.3.3"/>1.3.3
+### <a name="133"></a><a name="1.3.3"/>1.3.3
 * Weitere Protokollierung hinzugefügt.
 * Ein DocumentClient-Fehler beim mehrfachen Aufrufen der Schätzung für ausstehende Arbeit wurde behoben.
 
-### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
+### <a name="132"></a><a name="1.3.2"/>1.3.2
 * Korrekturen der Schätzung ausstehender Arbeit.
 
-### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
+### <a name="131"></a><a name="1.3.1"/>1.3.1
 * Verbesserungen der Stabilität.
   * Korrektur für das Behandeln von Problemen mit abgebrochenen Aufgaben, die dazu führen können, dass Beobachter auf einigen Partitionen beendet werden.
 * Unterstützung für das manuelle Setzen von Prüfpunkten.
 * Kompatibel mit [SQL .NET SDK](sql-api-sdk-dotnet.md), Version 1.21 und höher.
 
-### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
+### <a name="120"></a><a name="1.2.0"/>1.2.0
 * Unterstützung für .NET Standard 2.0 wurde hinzugefügt. Das Paket unterstützt nun die Frameworkmoniker `netstandard2.0` und `net451`.
 * Kompatibel mit [SQL .NET SDK](sql-api-sdk-dotnet.md), Version 1.17.0 und höher.
 * Kompatibel mit [SQL .NET Core SDK](sql-api-sdk-dotnet-core.md), Version 1.5.1 und höher.
 
-### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
+### <a name="111"></a><a name="1.1.1"/>1.1.1
 * Ein Problem bei der Kalkulierung der geschätzten verbleibenden Arbeit wurde behoben, wenn der Änderungsfeed leer war oder keine Arbeit ausstand.
 * Kompatibel mit [SQL .NET SDK](sql-api-sdk-dotnet.md), Version 1.13.2 und höher.
 
-### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
+### <a name="110"></a><a name="1.1.0"/>1.1.0
 * Eine Methode wurde hinzugefügt, mit der eine Schätzung der verbleibenden im Änderungsfeed zu verarbeitenden Arbeit abgerufen werden kann.
 * Kompatibel mit [SQL .NET SDK](sql-api-sdk-dotnet.md), Version 1.13.2 und höher.
 
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"/>1.0.0
 * Allgemeine Verfügbarkeit (GA) des SDK
 * Kompatibel mit [SQL .NET SDK](sql-api-sdk-dotnet.md), Version 1.14.1 und niedriger.
 

@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 7df283b12a0d04d2b785c13a2f12b03115581e79
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76841711"
 ---
 # <a name="delivery-and-retry"></a>Übermittlung und Wiederholung
@@ -29,7 +29,7 @@ Event Grid wartet nach der Zustellung einer Nachricht bis zu 60 Sekunden auf ein
 
 Es gibt zwei vorkonfigurierte Backoff-Warteschlangen, die den Zeitplan bestimmen, nach dem ein Wiederholungsversuch durchgeführt wird. Sie lauten wie folgt:
 
-| Zeitplan | Beschreibung |
+| Zeitplan | BESCHREIBUNG |
 | ---------| ------------ |
 | 1 Minute | Für Nachrichten, die hier aufgenommen werden, wird jede Minute ein Wiederholungsversuch unternommen.
 | 10 Minuten | Für Nachrichten, die hier aufgenommen werden, wird alle 10 Minuten ein Wiederholungsversuch unternommen.
@@ -54,7 +54,7 @@ Ein Ereignis wird gelöscht, wenn eins dieser Limits der Wiederholungsrichtlinie
 
 Es gibt zwei Eigenschaften, `brokers__defaultMaxDeliveryAttempts` und `broker__defaultEventTimeToLiveInSeconds`, die als Teil der Event Grid-Bereitstellung konfiguriert werden können, die die Standardeinstellungen für Wiederholungsrichtlinien für alle Abonnenten kontrolliert.
 
-| Eigenschaftenname | Beschreibung |
+| Eigenschaftenname | BESCHREIBUNG |
 | ---------------- | ------------ |
 | `broker__defaultMaxDeliveryAttempts` | Die maximale Anzahl der Versuche zur Übermittlung eines Ereignisses. Standardwert: 30.
 | `broker__defaultEventTimeToLiveInSeconds` | Ereignisgültigkeitsdauer (Time-to-Live, TTL) in Sekunden, nach der ein Ereignis gelöscht wird, wenn es nicht übermittelt wird. Standardwert: **7200** Sekunden

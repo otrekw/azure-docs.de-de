@@ -8,15 +8,15 @@ ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
 ms.openlocfilehash: 9d335bcf6daf0b38e7a68ca2d40894dd64c93e40
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75442151"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB-BulkExecutor-Bibliothek – Übersicht
  
-Azure Cosmos DB ist ein schneller, flexibler und global verteilter Datenbankdienst, der so konzipiert ist, dass er sich elastisch horizontal hochskalieren lässt und damit Folgendes unterstützt: 
+Azure Cosmos DB ist ein schneller, flexibler und global verteilter Datenbankdienst, der so konzipiert ist, dass er sich elastisch aufskalieren lässt und damit Folgendes unterstützt: 
 
 * Hohe Durchsätze für Lese- und Schreibvorgänge (Millionen von Vorgängen pro Sekunde).  
 * Speichern großer Mengen von Transaktions- und Vorgangsdaten (Hunderte von Terabytes oder sogar noch mehr) mit vorhersagbarer Latenz im Millisekundenbereich.  
@@ -32,7 +32,7 @@ Die BulkExecutor-Bibliothek hilft Ihnen, diesen massiven Durchsatz und Speicherp
 
 * Die Bibliothek verarbeitet die Begrenzung der Anforderungsrate, Anforderungstimeouts und andere vorübergehende Ausnahmen auf effiziente Weise, sodass Benutzer nicht mehr mühsam die Anwendungslogik dafür schreiben müssen.  
 
-* Zudem bietet sie einen vereinfachten Mechanismus, mit dem Anwendungen Massenvorgänge zum horizontalen Hochskalieren ausführen können. Eine einzige BulkExecutor-Instanz, die auf einem virtuellen Azure-Computer ausgeführt wird, kann mehr als 500.000 Anforderungseinheiten/Sek. verbrauchen, und Sie können eine höhere Durchsatzrate erzielen, indem Sie zusätzliche Instanzen auf einzelnen virtuellen Clientcomputern hinzufügen.  
+* Zudem bietet sie einen vereinfachten Mechanismus, mit dem Anwendungen Massenvorgänge zum Aufskalieren ausführen können. Eine einzige BulkExecutor-Instanz, die auf einem virtuellen Azure-Computer ausgeführt wird, kann mehr als 500.000 Anforderungseinheiten/Sek. verbrauchen, und Sie können eine höhere Durchsatzrate erzielen, indem Sie zusätzliche Instanzen auf einzelnen virtuellen Clientcomputern hinzufügen.  
  
 * Dank einer Architektur für die horizontale Skalierung kann eine solche Instanz innerhalb einer Stunde mehr als ein Terabyte an Daten importieren.  
 

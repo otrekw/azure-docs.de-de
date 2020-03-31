@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: c493f79a066f872be6b38d127622cc757ab3c1cc
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bae7e53a316fa6ca3158639cc551a0a3de5cb952
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100240"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536920"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Sichern und Wiederherstellen einer Oracle Database 12c-Datenbank auf einem virtuellen Azure Linux-Computer
 
@@ -36,11 +36,11 @@ Stellen Sie sicher, dass die Azure CLI installiert ist, bevor Sie beginnen. Weit
     Wie Sie eine Oracle-Datenbank erstellen, erfahren Sie im [Schnellstart zum Erstellen einer Oracle-Datenbank](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create).
 
 
-### <a name="step-2-connect-to-the-vm"></a>Schritt 2: Herstellen der Verbindung zur VM
+### <a name="step-2-connect-to-the-vm"></a>Schritt 2: Herstellen der Verbindung zum virtuellen Computer
 
 *   Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung (Secure Shell) mit dem virtuellen Computer. Ersetzen Sie die Kombination aus IP-Adresse und Hostname durch den `publicIpAddress`-Wert für Ihren virtuellen Computer.
 
-    ```bash 
+    ```bash
     ssh <publicIpAddress>
     ```
 
@@ -94,6 +94,7 @@ Stellen Sie sicher, dass die Azure CLI installiert ist, bevor Sie beginnen. Weit
     SQL> ALTER DATABASE OPEN;
     SQL> ALTER SYSTEM SWITCH LOGFILE;
     ```
+
 3.  (Optional) Erstellen Sie eine Tabelle zum Testen des Commits:
 
     ```bash
@@ -115,6 +116,7 @@ Stellen Sie sicher, dass die Azure CLI installiert ist, bevor Sie beginnen. Weit
     SQL> commit;
     Commit complete.
     ```
+
 4.  Überprüfen oder ändern Sie den Speicherort und die Größe der Sicherungsdatei:
 
     ```bash
@@ -125,6 +127,7 @@ Stellen Sie sicher, dass die Azure CLI installiert ist, bevor Sie beginnen. Weit
     db_recovery_file_dest                string      /u01/app/oracle/fast_recovery_area
     db_recovery_file_dest_size           big integer 4560M
     ```
+
 5. Verwenden Sie Oracle Recovery Manager (RMAN), um die Datenbank zu sichern:
 
     ```bash
@@ -140,7 +143,7 @@ Anwendungskonsistente Sicherungen sind eine neue Funktion in Azure Backup. Sie k
 
     Laden Sie VMSnapshotScriptPluginConfig.json von https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig herunter. Die Inhalte der Datei sehen in etwa wie folgt aus:
 
-    ```azurecli
+    ```output
     {
         "pluginName" : "ScriptRunner",
         "preScriptLocation" : "",
@@ -171,7 +174,7 @@ Anwendungskonsistente Sicherungen sind eine neue Funktion in Azure Backup. Sie k
 
     Bearbeiten Sie die Datei „VMSnapshotScriptPluginConfig.json“ so, dass Sie die Parameter `PreScriptLocation` und `PostScriptlocation` enthält. Beispiel:
 
-    ```azurecli
+    ```output
     {
         "pluginName" : "ScriptRunner",
         "preScriptLocation" : "/etc/azure/pre_script.sh",
@@ -306,7 +309,7 @@ Weitere Informationen finden Sie unter [Application-consistent backup for Linux 
 
     ![Befehl „Jetzt sichern“ für Recovery Services-Tresore](./media/oracle-backup-recovery/recovery_service_09.png)
 
-10. Klicken Sie auf die Schaltfläche **Sicherung**. Warten Sie, bis der Sicherungsvorgang abgeschlossen ist. Fahren Sie fort mit [Schritt 6: Entfernen der Datenbankdateien](#step-6-remove-the-database-files).
+10. Klicken Sie auf die Schaltfläche **Sicherung**. Warten Sie, bis der Sicherungsvorgang abgeschlossen ist. Gehen Sie dann zu [Schritt 6: Entfernen der Datenbankdateien](#step-6-remove-the-database-files).
 
     Klicken Sie auf **Aufträge**, um den Status des Sicherungsauftrags anzuzeigen.
 
@@ -368,6 +371,7 @@ Gehen Sie wie folgt vor, um die gelöschten Dateien wiederherzustellen:
     ```bash
     $ scp Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh <publicIpAddress>:/<folder>
     ```
+
 6. Ändern Sie die Datei so, dass sie im Besitz des Stamms ist.
 
     Ändern Sie die Datei im folgenden Beispiel so, dass sie im Besitz des Stamms ist. Ändern Sie dann die Berechtigungen.
@@ -379,9 +383,10 @@ Gehen Sie wie folgt vor, um die gelöschten Dateien wiederherzustellen:
     # chmod 755 /<folder>/Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh
     # /<folder>/Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh
     ```
+
     Im folgenden Beispiel wird dargestellt, was Ihnen nach der Ausführung des vorherigen Skripts angezeigt werden sollte. Geben Sie **Y** ein, wenn Sie zum Fortsetzen des Vorgangs aufgefordert werden.
 
-    ```bash
+    ```output
     Microsoft Azure VM Backup - File Recovery
     ______________________________________________
     The script requires 'open-iscsi' and 'lshw' to run.
@@ -429,6 +434,7 @@ Gehen Sie wie folgt vor, um die gelöschten Dateien wiederherzustellen:
     # cd /u01/app/oracle/oradata/cdb1
     # chown oracle:oinstall *.dbf
     ```
+
 9. Verwenden Sie im folgenden Skript RMAN, um die Datenbank wiederherzustellen:
 
     ```bash
@@ -440,7 +446,7 @@ Gehen Sie wie folgt vor, um die gelöschten Dateien wiederherzustellen:
     RMAN> alter database open resetlogs;
     RMAN> SELECT * FROM scott.scott_table;
     ```
-    
+
 10. Heben Sie die Bereitstellung des Datenträgers auf.
 
     Klicken Sie im Azure-Portal auf dem Blatt **Dateiwiederherstellung (Vorschauversion)** auf **Bereitstellung der Datenträger aufheben**.
@@ -495,7 +501,7 @@ Statt die aus den Recovery Services-Tresoren gelöschten Dateien wiederherzustel
 
     ![Status des Wiederherstellungsprozesses](./media/oracle-backup-recovery/recover_vm_09.png)
 
-### <a name="step-3-set-the-public-ip-address"></a>Schritt 3: Festlegen der öffentlichen IP-Adresse
+### <a name="step-3-set-the-public-ip-address"></a>Schritt 3: Einrichten der öffentlichen IP-Adresse
 Nachdem der virtuelle Computer wiederhergestellt wurde, können Sie die öffentliche IP-Adresse einrichten.
 
 1.  Geben Sie in das Suchfeld **öffentliche IP-Adresse** ein.
@@ -518,18 +524,18 @@ Nachdem der virtuelle Computer wiederhergestellt wurde, können Sie die öffentl
 
     ![Wert der IP-Adresse](./media/oracle-backup-recovery/create_ip_04.png)
 
-### <a name="step-4-connect-to-the-vm"></a>Schritt 4: Herstellen der Verbindung zur VM
+### <a name="step-4-connect-to-the-vm"></a>Schritt 4: Herstellen der Verbindung zum virtuellen Computer
 
 *   Verwenden Sie folgendes Skript, um eine Verbindung zum virtuellen Computer herzustellen:
 
-    ```bash 
+    ```bash
     ssh <publicIpAddress>
     ```
 
 ### <a name="step-5-test-whether-the-database-is-accessible"></a>Schritt 5: Testen, ob auf die Datenbank zugegriffen werden kann
 *   Verwenden Sie folgendes Skript, um den Zugriff zu testen:
 
-    ```bash 
+    ```bash
     $ sudo su - oracle
     $ sqlplus / as sysdba
     SQL> startup
@@ -563,7 +569,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Tutorial: Erstellen von hoch verfügbaren virtuellen Computern](../../linux/create-cli-complete.md)
+[Tutorial: Erstellen eines hoch verfügbaren virtuellen Computers](../../linux/create-cli-complete.md)
 
 [Erkunden der Azure CLI-Beispiele für die Bereitstellung virtueller Computer](../../linux/cli-samples.md)
 

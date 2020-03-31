@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: db7b2787df68e5e9baadddc7e6e6159cfff26097
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 69627c961d9224a124fda09f40901f837d627281
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887239"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233674"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Kapazitätsplanung für HDInsight-Cluster
 
@@ -56,7 +56,7 @@ Ein Cluster kann auf eine Kombination verschiedener Speicherkonten zugreifen. Ty
 * Sie möchten Daten bearbeiten, die Sie bereits in einen Blobcontainer hochgeladen haben, der für den Cluster verfügbar ist.
 * Sie möchten verschiedene Teile des Speichers aus Sicherheitsgründen, oder um die Administration zu vereinfachen, isolieren.
 
-Für einen Cluster mit 48 Knoten sollten Sie 4 bis 8 Speicherkonten verwenden. Es mag bereits ausreichend Gesamtspeicher verfügbar sein, doch jedes Speicherkonto bietet zusätzliche Netzwerkbandbreite für die Serverknoten. Wenn Sie mehrere Speicherkonten haben, verwenden Sie für jedes Speicherkonto einen zufälligen Namen ohne Präfix. Die zufällige Benennung soll die Wahrscheinlichkeit alle Konten übergreifender Speicherengpässe (Drosselung) oder üblicher Fehler reduzieren. Verwenden Sie nur einen Container pro Speicherkonto, um die Leistung zu verbessern.
+Verwenden Sie nur einen Container pro Speicherkonto, um die Leistung zu verbessern.
 
 ## <a name="choose-a-cluster-type"></a>Auswahl eines Clustertyps
 
@@ -76,7 +76,7 @@ Die Skalierung eines Clusters wird durch die Menge seiner VM-Knoten bestimmt. F�
 
 Je nach Clustertyp kann durch zusätzliche Workerknoten die Rechenkapazität (z.B. durch weitere Kerne) heraufgesetzt werden, damit jedoch auch der Gesamtbedarf an Arbeitsspeicher zur Unterstützung der In-Memory-Speicherung verarbeiteter Daten für den gesamten Cluster steigen. Wie bei der Wahl von VM-Größe und -Typ gilt für die richtige Clusterskalierung, dass sie in der Regel mit simulierten Workloads oder Testabfragen empirisch ermittelt wird.
 
-Sie können Ihren Cluster für Spitzenlastanforderungen horizontal hochskalieren und wieder herunterskalieren, wenn diese zusätzlichen Knoten nicht mehr benötigt werden. Das [Autoskalierungsfeature](hdinsight-autoscale-clusters.md) ermöglicht die automatische Skalierung Ihres Clusters auf der Grundlage vorab festgelegter Metriken und Zeitangaben. Weitere Informationen zur manuellen Clusterskalierung finden Sie unter [Skalieren von HDInsight-Clustern](hdinsight-scaling-best-practices.md).
+Sie können Ihren Cluster für Spitzenlastanforderungen aufskalieren und wieder abskalieren, wenn diese zusätzlichen Knoten nicht mehr benötigt werden. Das [Autoskalierungsfeature](hdinsight-autoscale-clusters.md) ermöglicht die automatische Skalierung Ihres Clusters auf der Grundlage vorab festgelegter Metriken und Zeitangaben. Weitere Informationen zur manuellen Clusterskalierung finden Sie unter [Skalieren von HDInsight-Clustern](hdinsight-scaling-best-practices.md).
 
 ### <a name="cluster-lifecycle"></a>Clusterlebenszyklus
 
@@ -92,7 +92,7 @@ Manchmal können Fehler aufgrund paralleler Ausführung von Mehrfachzuordnungen 
 
 ## <a name="quotas"></a>Kontingente
 
-Überprüfen Sie nach der Bestimmung von Größe, Skalierung und Typ der Zielcluster-VM die aktuellen Kontingentkapazitätsgrenzen Ihres Abonnements. Wenn Sie eine Kontingentgrenze erreichen, können Sie möglicherweise nicht neue Cluster bereitstellen oder vorhandene Cluster durch Hinzufügen weiterer Workerknoten horizontal hochskalieren. Die einzige Kontingentgrenze ist das Kontingent für CPU-Kerne, das auf Regionsebene für jedes Abonnement vorhanden ist. Ihr Abonnement kann z. B. den Grenzwert von 30 Kernen in der Region „USA, Osten“ aufweisen. 
+Überprüfen Sie nach der Bestimmung von Größe, Skalierung und Typ der Zielcluster-VM die aktuellen Kontingentkapazitätsgrenzen Ihres Abonnements. Wenn Sie eine Kontingentgrenze erreichen, können Sie möglicherweise nicht neue Cluster bereitstellen oder vorhandene Cluster durch Hinzufügen weiterer Workerknoten aufskalieren. Die einzige Kontingentgrenze ist das Kontingent für CPU-Kerne, das auf Regionsebene für jedes Abonnement vorhanden ist. Ihr Abonnement kann z. B. den Grenzwert von 30 Kernen in der Region „USA, Osten“ aufweisen. 
 
 Führen Sie die folgenden Schritte aus, um die verfügbaren Kerne zu überprüfen:
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
 ms.openlocfilehash: b207012335e68d389a07b54408e840dbb305a30c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930136"
 ---
 # <a name="azure-data-factory-unpivot-transformation"></a>Azure Data Factory: Entpivotierungstransformation
@@ -43,7 +43,7 @@ Wählen Sie abschließend die für die pivotierten Werte zu verwendende Aggregat
 
 (Optional) Sie können ein Benennungsmuster mit einem Präfix, einem Mittelteil und einem Suffix festlegen, das/der jedem neuen Spaltennamen aus den Zeilenwerten hinzugefügt wird.
 
-Wenn Sie beispielsweise „Umsatz“ nach „Region“ pivotieren, erhalten Sie einfach neue Spaltenwerte aus den einzelnen Umsatzzahlen. Beispiel:  „25“, „50“, „1000“, ... Wenn Sie jedoch den Präfixwert „Umsatz“ festlegen, wird „Umsatz“ den Werten vorangestellt.
+Wenn Sie beispielsweise „Umsatz“ nach „Region“ pivotieren, erhalten Sie einfach neue Spaltenwerte aus den einzelnen Umsatzzahlen. Beispiel: „25“, „50“, „1000“, ... Wenn Sie jedoch den Präfixwert „Umsatz“ festlegen, wird „Umsatz“ den Werten vorangestellt.
 
 <img src="media/data-flow/unpivot3.png" width="400">
 

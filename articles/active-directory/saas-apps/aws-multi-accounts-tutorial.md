@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration von Amazon Web Services (AWS) zum Verbinden mehrerer Konten | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration von Amazon Web Services (AWS) zum Verbinden mehrerer Konten | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure AD und mehreren Konten von Amazon Web Services (AWS) konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -17,10 +17,10 @@ ms.date: 01/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: edd54352b1328c95ae2c3e466003b64eaa0fcfde
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77368001"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>Tutorial: Azure Active Directory-Integration von mehreren Amazon Web Services-Konten (AWS-Konten)
@@ -209,13 +209,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     a. Wählen Sie **SAML 2.0-Verbund** unter **Typ der vertrauenswürdige Entität auswählen**.
 
-    b. Wählen Sie im**Abschnitt zum Auswählen eines SAML 2.0-Anbieters** den **SAML-Anbieter** aus, den Sie zuvor erstellt haben (Beispiel: *WAAD*).
+    b. Wählen Sie unter **SAML 2.0-Anbieterabschnitt auswählen** den **SAML-Anbieter** aus, den Sie zuvor erstellt haben (Beispiel: *WAAD*).
 
     c. Wählen Sie **Programmgesteuerten und AWS Management Console-Zugriff zulassen** aus.
   
-    d. Klicken Sie auf **Weiter: Permissions** (Weiter: Berechtigungen).
+    d. Klicken Sie auf **Weiter: Berechtigungen**.
 
-9. Fügen Sie im Dialogfeld **Berechtigungsrichtlinien anfügen** die entsprechende Richtlinie für Ihre Organisation an. Klicken Sie auf **Weiter: Review** (Weiter: Überprüfen).  
+9. Fügen Sie im Dialogfeld **Berechtigungsrichtlinien anfügen** die entsprechende Richtlinie für Ihre Organisation an. Klicken Sie auf **Weiter: Überprüfung**.  
 
     ![Einmaliges Anmelden konfigurieren – Richtlinie][33]
 
@@ -271,7 +271,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     f. Entnehmen Sie der Liste der abgerufenen Dienstprinzipale den Namen, den Sie ändern möchten. Sie können auch mit STRG+F die Anwendung in den aufgeführten Dienstprinzipalen suchen. Sie können die folgende Abfrage mit der **Objekt-ID** verwenden, die Sie auf der Seite der Azure AD-Eigenschaften kopiert haben, um zum jeweiligen Dienstprinzipal zu gelangen.
 
-    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
+    [https://login.microsoftonline.com/consumers/](`https://graph.microsoft.com/beta/servicePrincipals/<objectID>`).
 
     ![Dialogfeld „Graph-Tester“](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 

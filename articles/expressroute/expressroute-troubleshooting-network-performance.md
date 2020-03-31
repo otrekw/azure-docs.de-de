@@ -9,10 +9,10 @@ ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
 ms.openlocfilehash: bb68919fba731caa32dcca3f4c991b8881afc6f9
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74869645"
 ---
 # <a name="troubleshooting-network-performance"></a>Beheben von Problemen bei der Netzwerkleistung
@@ -146,7 +146,7 @@ Bei Problemen im WAN kann das Weiterleiten Ihrer Testergebnisse an Ihren Diensta
 
 Bei Problemen in Azure sollte nach der möglichst detaillierten Isolierung des Problems die [Dokumentation zum Azure-Netzwerk][Network Docs] zurate gezogen und dann bei Bedarf [ein Supportticket geöffnet werden][Ticket Link].
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 ### <a name="latencybandwidth-expectations"></a>Erwartungen im Hinblick auf Latenz und Bandbreite
 >[!TIP]
 > Die geografische Latenz (Meilen oder Kilometer) zwischen den getesteten Endpunkten macht bei Weitem den größten Teil der Latenz aus. Auch wenn Latenz zwischen Geräten (physische und virtuelle Komponenten, Anzahl der Hops usw.) zu verzeichnen ist, hat sich in Bezug auf WAN-Verbindungen die geografische Latenz als wichtigster Aspekt der gesamten Latenz erwiesen. Dabei ist auch zu beachten, dass es sich bei der Entfernung um die Entfernung der Faserstrecke und nicht um die Luftlinie oder die Entfernung nach Karte handelt. Diese Entfernung ist unglaublich schwierig genau zu bestimmen. Daher verwende ich im Allgemeinen einen Entfernungsrechner im Internet. Dabei bin ich mir bewusst, dass dies eine sehr ungenaue Methode ist, die für eine allgemeine Erwartung aber ausreicht.
@@ -179,7 +179,7 @@ Testeinrichtung:
 
 | | | | | | |
 |-|-|-|-|-|-|
-|ExpressRoute<br/>Location|Azure<br/>Region|Geschätzte<br/>Entfernung (km)|Latency|1 Sitzung:<br/>Bandbreite|Maximum<br/>Bandbreite|
+|ExpressRoute<br/>Position|Azure<br/>Region|Geschätzte<br/>Entfernung (km)|Latency|1 Sitzung:<br/>Bandbreite|Maximum<br/>Bandbreite|
 | Seattle | USA, Westen 2        |    191 km |   5 ms | 262 MBit/s |  3,74 GBit/s |
 | Seattle | USA (Westen)          |  1\.094 km |  18 ms |  82,3 MBit/s |  3,7 GBit/s |
 | Seattle | USA (Mitte)       |  2\.357 km |  40 ms |  38,8 MBit/s |  2,55 GBit/s |

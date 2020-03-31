@@ -1,14 +1,14 @@
 ---
 title: Steuerungen des Blaupausenbeispiels „DoD-Auswirkungsstufe 4“
 description: Steuerungszuordnung des Blaupausenbeispiels „DoD-Auswirkungsstufe 4“ Jede Steuerung wird mindestens einer Azure-Richtlinie zugeordnet, die Sie bei der Bewertung unterstützt.
-ms.date: 02/09/2020
+ms.date: 03/06/2020
 ms.topic: sample
-ms.openlocfilehash: 15ab3bc8bf53d54161ecc3b1f0dc138c3ff923c1
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 001c838ed6a19269a6abbcebd59ee2e344b6a296
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77154708"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79415392"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>Steuerungszuordnung des Blaupausenbeispiels „DoD-Auswirkungsstufe 4“
 
@@ -83,6 +83,20 @@ Diese Blaupause hilft Ihnen durch das Zuweisen von [Azure Policy](../../../polic
 - Remotedebuggen sollte für Funktions-Apps deaktiviert werden
 - Remotedebuggen muss für Webanwendung deaktiviert werden
 
+## <a name="ac-23-data-mining"></a>AC-23 Data Mining
+
+Diese Blaupause enthält Richtliniendefinitionen, mit denen Sie sicherstellen können, dass die Benachrichtigungen zur Datensicherheit richtig aktiviert sind. Darüber hinaus wird mit dieser Blaupause sichergestellt, dass Überprüfung und Advanced Data Security auf SQL Server-Instanzen konfiguriert sind.
+
+- Advanced Data Security muss für Ihre SQL-Server aktiviert werden.
+- Advanced Data Security muss für Ihre verwalteten SQL-Instanzen aktiviert werden.
+- Advanced Threat Protection-Typen sollten in den Advanced Data Security-Einstellungen für SQL Server auf „Alle“ festgelegt werden.
+- Advanced Threat Protection-Typen sollten in den Advanced Data Security-Einstellungen für verwaltete SQL-Instanzen auf „Alle“ festgelegt werden.
+- Überwachung muss für Advanced Data Security-Einstellungen für SQL Server aktiviert sein.
+- E-Mail-Benachrichtigungen an Administratoren und Abonnementbesitzer sollten in den erweiterten Einstellungen für Datensicherheit in SQL Server aktiviert werden.
+- In den Advanced Data Security-Einstellungen für die verwaltete SQL-Instanz müssen E-Mail-Benachrichtigungen an Administratoren und Abonnementbesitzer aktiviert sein
+- Advanced Data Security-Einstellungen für SQL Server sollten eine E-Mail-Adresse für den Empfang von Sicherheitswarnungen enthalten.
+- Advanced Data Security-Einstellungen für verwaltete SQL-Instanzen sollten eine E-Mail-Adresse für den Empfang von Sicherheitswarnungen enthalten.
+
 ## <a name="au-3-2-content-of-audit-records--centralized-management-of-planned-audit-record-content"></a>AU-3 (2) Inhalt der Überwachungsdatensätze | Zentrale Verwaltung von Inhalten geplanter Überwachungsdatensätze
 
 Von Azure Monitor erfasste Protokolldaten werden in einem Log Analytics-Arbeitsbereich gespeichert, um eine zentrale Konfiguration und Verwaltung zu ermöglichen. Mit dieser Blaupause können Sie sicherstellen, dass Ereignisse protokolliert werden, indem [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, die die Bereitstellung des Log Analytics-Agent auf virtuellen Azure-Computern überwachen und erzwingen.
@@ -123,8 +137,6 @@ Diese Richtliniendefinitionen überprüfen auch die Konfiguration von Diagnosepr
 Zur Durchführung einer ausführlichen Überprüfung und Überwachung auf Sicherheitsrisiken empfehlen wir Ihnen, auch Azure Sentinel und Azure Security Center zu nutzen.
 
 - \[Vorschau\]: Die Sicherheitsrisikobewertung muss auf VMs aktiviert sein
-- \[Vorschau\]: Aktivieren von Azure Monitor für VMs
-- \[Vorschau\]: Azure Monitor für VM Scale Sets (VMSS) aktivieren
 - Für Ihre SQL Server-Instanzen muss eine Sicherheitsrisikobewertung aktiviert sein.
 - Überwachen der Diagnoseeinstellung
 - Bewertung von Sicherheitsrisiken für verwaltete SQL-Instanzen aktivieren
@@ -133,6 +145,8 @@ Zur Durchführung einer ausführlichen Überprüfung und Überwachung auf Sicher
 - Sicherheitsrisiken in SQL-Datenbanken sollten beseitigt werden.
 - Sicherheitsrisiken sollten durch eine Lösung zur Sicherheitsrisikobewertung beseitigt werden.
 - Sicherheitsrisiken in der Sicherheitskonfiguration von VM-Skalierungsgruppen sollten beseitigt werden.
+- \[Vorschau\]: Bereitstellung des Log Analytics-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
+- \[Vorschau\]: Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
 
 ## <a name="au-12-audit-generation"></a>AU-12 Generierung von Überwachungsdatensätzen
 
@@ -236,6 +250,16 @@ Mit dieser Blaupause können Sie sichere Kennwörter erzwingen, indem [Azure Pol
 - \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, für die keine Mindestkennwortlänge von 14 Zeichen gilt
 - \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, die Kennwörter nicht mit umkehrbarer Verschlüsselung speichern
 
+## <a name="ir-6-2-incident-reporting--vulnerabilities-related-to-incidents"></a>IR-6 (2): Melden von Vorfällen | Sicherheitsrisiken in Verbindung mit Vorfällen
+
+Mit dieser Blaupause werden Richtliniendefinitionen bereitgestellt, mit denen Datensätze mit einer Analyse der Sicherheitsrisikobewertung auf virtuellen Computern, in VM-Skalierungsgruppen und auf SQL-Servern überwacht werden. Diese Erkenntnisse bieten Echtzeitinformationen zum Sicherheitsstatus Ihrer bereitgestellten Ressourcen und ermöglichen die Priorisierung von Aktionen zur Problembehebung.
+
+- Sicherheitsrisiken in der Sicherheitskonfiguration von VM-Skalierungsgruppen sollten beseitigt werden.
+- Sicherheitsrisiken sollten durch eine Lösung zur Sicherheitsrisikobewertung beseitigt werden.
+- Sicherheitsrisiken in der Sicherheitskonfiguration für Ihre Computer sollten beseitigt werden.
+- Sicherheitsrisiken in Containersicherheitskonfigurationen sollten behoben werden.
+- Sicherheitsrisiken in SQL-Datenbanken sollten beseitigt werden.
+
 ## <a name="ra-5-vulnerability-scanning"></a>RA-5 Überprüfung auf Sicherheitsrisiken
 
 Mit dieser Blaupause können Sie Sicherheitsrisiken im Informationssystem verwalten, indem [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, die Sicherheitsrisiken des Betriebssystems, SQL-Sicherheitsrisiken und Sicherheitsrisiken von virtuellen Computern in Azure Security Center überwachen. Azure Security Center umfasst Funktionen zur Berichterstellung, über die Sie in Echtzeit Einblick in den Sicherheitsstatus von bereitgestellten Azure-Ressourcen erhalten. Diese Blaupause weist außerdem Richtliniendefinitionen zu, die Advanced Data Security auf SQL-Servern überprüfen und erzwingen. Erweiterte Datensicherheit umfasst Sicherheitsrisikobewertung und erweiterte Funktionen zum Schutz vor Bedrohungen, damit Sie Sicherheitsrisiken in Ihren bereitgestellten Ressourcen besser verstehen.
@@ -312,6 +336,30 @@ Mit dieser Blaupause können Sie Fehler im Informationssystem verwalten, indem [
 - Sicherheitsrisiken in SQL-Datenbanken sollten beseitigt werden.
 - Sicherheitsrisiken sollten durch eine Lösung zur Sicherheitsrisikobewertung beseitigt werden.
 
+## <a name="si-02-06-flaw-remediation--removal-of-previous-versions-of-software--firmware"></a>SI-02 (06): Fehlerbehebung | Entfernen älterer Software- oder Firmwareversionen
+
+Mit dieser Blaupause werden Richtliniendefinitionen zugewiesen, mit denen Sie sicherstellen können, dass Anwendungen die neueste Version von .NET Framework, HTTP, Java, PHP, Python und TLS verwenden. Diese Blaupause weist darüber hinaus eine Richtliniendefinition zu, mit der sichergestellt wird, dass Kubernetes Service auf die Version ohne Sicherheitsrisiko aktualisiert wird.
+
+- Stellen Sie sicher, dass die neueste .NET Framework-Version angegeben ist, wenn sie als Teil der API-App verwendet wird.
+- Stellen Sie sicher, dass die neueste .NET Framework-Version angegeben ist, wenn sie als Teil der Funktions-App verwendet wird.
+- Stellen Sie sicher, dass die neueste .NET Framework-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird.
+- Stellen Sie sicher, dass die neueste HTTP-Version angegeben ist, wenn sie zum Ausführen der API-App verwendet wird.
+- Stellen Sie sicher, dass die neueste HTTP-Version angegeben ist, wenn sie zum Ausführen der Funktions-App verwendet wird.
+- Stellen Sie sicher, dass die neueste HTTP-Version angegeben ist, wenn sie zum Ausführen der Web-App verwendet wird.
+- Stellen Sie sicher, dass die neueste Java-Version angegeben ist, wenn sie als Teil der API-App verwendet wird.
+- Sicherstellen, dass die neueste Java-Version angegeben ist, wenn sie als Teil der Funktions-App verwendet wird
+- Stellen Sie sicher, dass die neueste Java-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird.
+- Stellen Sie sicher, dass die neueste PHP-Version angegeben ist, wenn sie als Teil der API-App verwendet wird.
+- Stellen Sie sicher, dass die neueste PHP-Version angegeben ist, wenn sie als Teil der Funktions-App verwendet wird.
+- Stellen Sie sicher, dass die neueste PHP-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird.
+- Stellen Sie sicher, dass die neueste Python-Version angegeben ist, wenn sie als Teil der API-App verwendet wird.
+- Stellen Sie sicher, dass die neueste Python-Version angegeben ist, wenn sie als Teil der Funktions-App verwendet wird.
+- Stellen Sie sicher, dass die neueste Python-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird.
+- In Ihrer API-App sollte die neueste TLS-Version verwendet werden.
+- In Ihrer Funktions-App sollte die neueste TLS-Version verwendet werden.
+- In Ihrer Web-App sollte die neueste TLS-Version verwendet werden.
+- \[Vorschau\]: Für Kubernetes Service muss ein Upgrade auf eine Kubernetes-Version ohne Sicherheitsrisiko durchgeführt werden.
+
 ## <a name="si-3-malicious-code-protection"></a>SI-3 Schutz vor schädlichem Code
 
 Diese Blaupause hilft Ihnen bei der Verwaltung des Endpunktschutzes, einschließlich des Schutzes vor schädlichem Code, indem sie [Azure Policy](../../../policy/overview.md)-Definitionen zuweist, die virtuelle Computer in Azure Security Center auf fehlenden Endpunktschutz überprüfen und die Microsoft-Antischadsoftwarelösung auf virtuellen Windows-Computern erzwingen.
@@ -347,6 +395,18 @@ Diese Blaupause hilft Ihnen bei der Überwachung Ihres Systems, indem sie die Pr
 - Bereitstellen von Bedrohungserkennung auf SQL-Servern
 - Allowed locations (Zulässige Speicherorte)
 - Zulässige Speicherorte für Ressourcengruppen
+
+## <a name="si-4-12-information-system-monitoring--automated-alerts"></a>SI-4 (12): Überwachung des Informationssystems | Automatisierte Warnungen
+
+Diese Blaupause enthält Richtliniendefinitionen, mit denen Sie sicherstellen können, dass die Benachrichtigungen zur Datensicherheit richtig aktiviert sind. Darüber hinaus wird mit dieser Blaupause sichergestellt, dass der Tarif „Standard“ für Azure Security Center aktiviert ist. Beachten Sie, dass der Tarif „Standard“ die Bedrohungserkennung für Netzwerke und VMs ermöglicht und Threat Intelligence-Daten, Anomalieerkennung und Verhaltensanalysen in Azure Security Center bereitstellt.
+
+- E-Mail-Benachrichtigung des Abonnementbesitzers bei Warnungen mit hohem Schweregrad muss aktiviert sein
+- Für Ihr Abonnement muss eine E-Mail-Adresse als Sicherheitskontakt angegeben sein 
+- In den Advanced Data Security-Einstellungen für die verwaltete SQL-Instanz müssen E-Mail-Benachrichtigungen an Administratoren und Abonnementbesitzer aktiviert sein 
+- E-Mail-Benachrichtigungen an Administratoren und Abonnementbesitzer sollten in den erweiterten Einstellungen für Datensicherheit in SQL Server aktiviert werden. 
+- Für Ihr Abonnement muss eine Telefonnummer für den Sicherheitskontakt angegeben werden
+- Advanced Data Security-Einstellungen für SQL Server sollten eine E-Mail-Adresse für den Empfang von Sicherheitswarnungen enthalten.
+- Standard-Tarif von Security Center muss ausgewählt sein
 
 ## <a name="si-4-18-information-system-monitoring--analyze-traffic--covert-exfiltration"></a>SI-4 (18) Überwachung des Informationssystems | Analyse des Datenverkehrs / verdeckte Ausschleusung
 

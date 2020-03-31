@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: 8ec6f32d7db0161cef00330aa38601ba9bdb309d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 3/18/2020
+ms.openlocfilehash: fc2b1bbe0a3249014e663d43ee4db87cab5eedcf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893143"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063266"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Konfigurieren von Serverparametern in Azure Database for MySQL mit dem Azure-Portal
 
@@ -40,13 +40,13 @@ Die InnoDB-Pufferpoolgröße kann nicht konfiguriert und an Ihren [Tarif](concep
 |**Tarif**|**vCore(s)**|**InnoDB-Pufferpoolgröße in MB<br> (Server, die bis zu 4 TB Speicher unterstützen)**| **InnoDB-Pufferpoolgröße in MB<br> (Server, die bis zu 16 TB Speicher unterstützen)**|
 |:---|---:|---:|---:|
 |Basic| 1| 832| |
-|Basic| 2| 2\.560| |
-|Allgemeiner Zweck| 2| 3\.584| 7168|
-|Allgemeiner Zweck| 4| 7\.680| 15360|
-|Allgemeiner Zweck| 8| 15360| 30720|
-|Allgemeiner Zweck| 16| 31.232| 62464|
-|Allgemeiner Zweck| 32| 62.976| 125952|
-|Allgemeiner Zweck| 64| 125952| 251904|
+|Basic| 2| 2560| |
+|Universell| 2| 3\.584| 7168|
+|Universell| 4| 7680| 15360|
+|Universell| 8| 15360| 30720|
+|Universell| 16| 31.232| 62464|
+|Universell| 32| 62.976| 125952|
+|Universell| 64| 125952| 251904|
 |Arbeitsspeicheroptimiert| 2| 7168| 14336|
 |Arbeitsspeicheroptimiert| 4| 15360| 30720|
 |Arbeitsspeicheroptimiert| 8| 30720| 61440|
@@ -78,7 +78,7 @@ CALL mysql.az_load_timezone();
 ```
 
 > [!IMPORTANT]
-> Sie sollten den Server neu starten, um sicherzustellen, dass die Zeitzonentabellen ordnungsgemäß aufgefüllt werden. Um den Server neu zu starten, verwenden Sie das [Azure-Portal](howto-restart-server-portal.md) oder die [Befehlszeilenschnittstelle (CLI)](howto-restart-server-cli.md).
+> Sie sollten den Server neu starten, um sicherzustellen, dass die Zeitzonentabellen ordnungsgemäß aufgefüllt werden. Um den Server neu zu starten, verwenden Sie das [Azure-Portal](howto-restart-server-portal.md) oder die [Befehlszeilenschnittstelle](howto-restart-server-cli.md).
 
 Um die verfügbaren Zeitzonenwerte anzuzeigen, führen Sie den folgenden Befehl aus:
 

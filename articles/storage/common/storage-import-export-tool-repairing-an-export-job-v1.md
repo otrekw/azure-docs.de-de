@@ -9,10 +9,10 @@ ms.date: 01/23/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: b2ba30bddfc6364c79e1bb01d30cde63b261a07f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74978014"
 ---
 # <a name="repairing-an-export-job"></a>Reparieren eines Exportauftrags
@@ -33,7 +33,7 @@ Die folgenden Parameter können mit **RepairExport** angegeben werden:
 |Parameter|BESCHREIBUNG|  
 |---------------|-----------------|  
 |**/r:&lt;Reparaturdatei\>**|Erforderlich. Pfad zur Reparaturdatei, die den Status der Reparatur verfolgt und das Fortsetzen einer unterbrochenen Reparatur ermöglicht. Jedes Laufwerk muss über genau eine Reparaturdatei verfügen. Wenn Sie mit der Reparatur eines bestimmten Laufwerks beginnen, wird der Pfad zu einer noch nicht vorhandenen Reparaturdatei übergeben. Zum Fortsetzen einer unterbrochenen Reparatur müssen Sie den Namen einer vorhandenen Reparaturdatei übergeben. Die Reparaturdatei für das Ziellaufwerk muss immer angegeben werden.|  
-|**/logdir:&lt;Protokollverzeichnis\>**|Optional. Das Protokollverzeichnis. In dieses Verzeichnis werden ausführliche Protokolldateien geschrieben. Wird kein Protokollverzeichnis angegeben, wird das aktuelle Verzeichnis als Protokollverzeichnis verwendet.|  
+|**/logdir:&lt;Protokollverzeichnis\>**|Optional. Das Protokollverzeichnis In dieses Verzeichnis werden ausführliche Protokolldateien geschrieben. Wird kein Protokollverzeichnis angegeben, wird das aktuelle Verzeichnis als Protokollverzeichnis verwendet.|  
 |**/d:&lt;Zielverzeichnis\>**|Erforderlich. Das zu überprüfende und zu reparierende Verzeichnis. Dies ist normalerweise das Stammverzeichnis des Exportlaufwerks, könnte aber auch eine Netzwerkdateifreigabe sein, die eine Kopie der exportierten Dateien enthält.|  
 |**/bk:&lt;BitLocker-Schlüssel\>**|Optional. Sie müssen den BitLocker-Schlüssel angeben, wenn das Tool ein verschlüsseltes Laufwerk entsperren soll, auf dem die exportierten Dateien gespeichert sind.|  
 |**/sn:&lt;Speicherkontoname\>**|Erforderlich. Der Name des Speicherkontos für den Exportauftrag.|  

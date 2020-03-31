@@ -5,28 +5,37 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 08/30/2019
+ms.date: 03/09/2020
 ms.author: helohr
-ms.openlocfilehash: 8c919326607100d48db1f681fd587776d2b88483
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+manager: lizross
+ms.openlocfilehash: d5165b160ffc196416052a56aaa0d93c05db56bc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368891"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79222287"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Tutorial: Erstellen eines Hostpools mit dem Azure Marketplace
 
+In diesem Tutorial erfahren Sie, wie Sie innerhalb eines Windows Virtual Desktop-Mandanten unter Verwendung eines Microsoft Azure Marketplace-Angebots einen Hostpool erstellen.
+
 Hostpools sind eine Sammlung identischer virtueller Computer innerhalb von Windows Virtual Desktop-Mandantenumgebungen. Jeder Hostpool kann eine App-Gruppe enthalten, mit der Benutzer genau wie auf einem physischen Desktop interagieren können.
 
-In diesem Tutorial erfahren Sie, wie Sie innerhalb eines Windows Virtual Desktop-Mandanten einen Hostpool unter Verwendung eines Microsoft Azure Marketplace-Angebots erstellen. Zu diesen Aufgaben zählen:
+Dieses Tutorial umfasst die folgenden Aufgaben:
 
 > [!div class="checklist"]
+>
 > * Erstellen eines Hostpools in Windows Virtual Desktop.
 > * Erstellen einer Ressourcengruppe mit VMs in Ihrem Azure-Abonnement.
 > * Verknüpfen der VMs mit der Active Directory-Domäne.
 > * Registrieren der VMs mit Windows Virtual Desktop.
 
-Zur Vorbereitung müssen Sie ggf. zunächst das [Windows Virtual Desktop-PowerShell-Modul herunterladen und importieren](/powershell/windows-virtual-desktop/overview/), um es in Ihrer PowerShell-Sitzung verwenden zu können. Führen Sie anschließend das folgende Cmdlet aus, um sich bei Ihrem Konto anzumelden:
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Ein Mandant in Virtual Desktop. In einem vorangehenden [Tutorial](tenant-setup-azure-active-directory.md) wird ein Mandant erstellt.
+* [Windows Virtual Desktop-PowerShell-Modul](/powershell/windows-virtual-desktop/overview/).
+
+Nachdem Sie das Modul heruntergeladen haben, führen Sie das folgende Cmdlet aus, um sich bei Ihrem Konto anzumelden:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
@@ -41,103 +50,113 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 So führen Sie das Azure Marketplace-Angebot aus, um einen neuen Hostpool bereitzustellen:
 
 1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus.
-2. Geben Sie **Windows Virtual Desktop** in das Marketplace-Suchfenster ein.
-3. Wählen Sie **Windows Virtual Desktop – Hostpool bereitstellen** und anschließend **Erstellen** aus.
+1. Geben Sie **Windows Virtual Desktop** in das Marketplace-Suchfenster ein.
+1. Wählen Sie **Windows Virtual Desktop – Hostpool bereitstellen** und anschließend **Erstellen** aus.
 
-Befolgen Sie anschließend die Anweisungen im nächsten Abschnitt, um die Informationen für die entsprechenden Blätter einzugeben.
+Befolgen Sie anschließend die Anweisungen im nächsten Abschnitt, um die Informationen auf den entsprechenden Registerkarten einzugeben.
 
 ### <a name="basics"></a>Grundlagen
 
-Gehen Sie auf dem Blatt **Grundlagen** wie folgt vor:
+Gehen Sie auf der Registerkarte **Grundlagen** wie folgt vor:
 
-1. Geben Sie für den Hostpool einen Namen ein, der innerhalb des Windows Virtual Desktop-Mandanten eindeutig ist.
-2. Wählen Sie die passende Option für einen persönlichen Desktop aus. Wenn Sie **Ja** auswählen, wird jeder Benutzer, der eine Verbindung mit diesem Hostpool herstellt, dauerhaft einem virtuellen Computer zugewiesen.
-3. Geben Sie eine kommagetrennte Liste mit Benutzern ein, die sich nach Abschluss des Azure Marketplace-Angebots bei Windows Virtual Desktop-Clients anmelden und auf einen Desktop zugreifen können sollen. Geben Sie also beispielsweise „user1@contoso.com,user2@contoso.com“ ein, um user1@contoso.com und user2@contoso.com Zugriff zu gewähren.
-4. Wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für die neue Ressourcengruppe an.
-5. Wählen Sie unter **Standort** den Standort des virtuellen Netzwerks aus, das mit dem Active Directory-Server verbunden ist.
-6. Wählen Sie **Weiter: Configure virtual machines** (Weiter: Virtuelle Computer konfigurieren) aus.
+1. Wählen Sie ein **Abonnement**aus.
+1. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, und geben Sie einen Namen für die neue Ressourcengruppe an.
+1. Wählen Sie eine **Region** aus.
+1. Geben Sie für den Hostpool einen Namen ein, der innerhalb des Windows Virtual Desktop-Mandanten eindeutig ist.
+1. Wählen Sie einen **Desktoptyp** aus. Wenn Sie **Persönlich** auswählen, wird jeder Benutzer, der eine Verbindung mit diesem Hostpool herstellt, dauerhaft einer VM zugewiesen.
+1. Geben Sie Benutzer ein, die sich bei den Windows Virtual Desktop-Clients anmelden und auf einen Desktop zugreifen können. Verwenden Sie dazu eine durch Trennzeichen getrennte Liste. Geben Sie also beispielsweise *`user1@contoso.com,user2@contoso.com`* ein, um `user1@contoso.com` und `user2@contoso.com` Zugriff zu gewähren.
+1. Wählen Sie als **Speicherort des Metadatendiensts** den Standort des virtuellen Netzwerks aus, das mit dem Active Directory-Server verbunden ist.
 
->[!IMPORTANT]
->Wenn Sie eine reine Azure Active Directory Domain Services- und Azure Active Directory-Lösung verwenden, stellen Sie sicher, dass Sie Ihren Hostpool in derselben Region wie Azure Active Directory Domain Services bereitstellen, um Fehler beim Domänenbeitritt und mit Anmeldeinformationen zu vermeiden.
+   >[!IMPORTANT]
+   >Wenn Sie eine reine Azure Active Directory Domain Services (Azure AD DS)- und Azure Active Directory (Azure AD)-Lösung verwenden, stellen Sie Ihren Hostpool in derselben Region wie Azure AD DS bereit, um Fehler beim Domänenbeitritt und mit Anmeldeinformationen zu vermeiden.
+
+1. Klicken Sie auf **Weiter: Configure virtual machines** (Virtuelle Computer konfigurieren).
 
 ### <a name="configure-virtual-machines"></a>Konfigurieren virtueller Computer
 
-Gehen Sie auf dem Blatt zum **Konfigurieren virtueller Computer** wie folgt vor:
+Gehen Sie auf der Registerkarte zum **Konfigurieren virtueller Computer** wie folgt vor:
 
-1. Übernehmen Sie die Standardeinstellungen, oder passen Sie Anzahl und Größe der virtuellen Computer an.
-    
+1. Übernehmen Sie die Standardeinstellungen, oder passen Sie die Anzahl und Größe der VMs an.
+
     >[!NOTE]
-    >Wird die gewünschte VM-Größe nicht in der VM-Größenauswahl angezeigt, liegt das daran, dass sie noch nicht ins Azure Marketplace-Tool aufgenommen wurde. Wenn Sie eine VM-Größe anfordern möchten, erstellen Sie im [Windows Virtual Desktop-UserVoice-Forum](https://windowsvirtualdesktop.uservoice.com/forums/921118-general) eine Anforderung, oder stimmen Sie dort für eine vorhandene Anforderung ab.
-    
-2. Geben Sie ein Namenspräfix für die virtuellen Computer ein. Wenn Sie also beispielsweise „prefix“ eingeben, heißen die virtuellen Computer „prefix-0“, „prefix-1“ usw.
-3. Wählen Sie **Weiter: Virtual machine settings** (Weiter: VM-Einstellungen) aus.
+    >Wird die gewünschte VM-Größe nicht in der VM-Größenauswahl angezeigt, wurde sie noch nicht ins Azure Marketplace-Tool aufgenommen. Wenn Sie eine VM-Größe anfordern möchten, erstellen Sie im [Windows Virtual Desktop-UserVoice-Forum](https://windowsvirtualdesktop.uservoice.com/forums/921118-general) eine Anforderung, oder stimmen Sie dort für eine vorhandene Anforderung ab.
+
+1. Geben Sie ein Namenspräfix für die virtuellen Computer ein. Wenn Sie also beispielsweise *prefix* eingeben, heißen die VMs **prefix-0**, **prefix-1** usw.
+1. Klicken Sie auf **Weiter: Virtual machine settings** (Weiter: VM-Einstellungen) aus.
 
 ### <a name="virtual-machine-settings"></a>Einstellungen des virtuellen Computers
 
-Gehen Sie auf dem Blatt mit den **VM-Einstellungen** wie folgt vor:
+Gehen Sie auf der Registerkarte mit den **Einstellungen des virtuellen Computers** wie folgt vor:
 
->[!NOTE]
-> Wenn Sie Ihre VMs mit einer Azure Active Directory Domain Services-Umgebung (Azure AD DS) verknüpfen, stellen Sie sicher, dass Ihre Domänenbeitrittsbenutzer Mitglied der [Gruppe „AAD DC-Administratoren“](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group) sind.
->
-> Das Konto muss außerdem Teil der verwalteten Azure AD DS-Domäne oder des Azure AD-Mandanten sein. Konten aus externen Verzeichnissen, die Ihrem Azure AD-Mandanten zugeordnet sind, können während des Domänenbeitritts nicht richtig authentifiziert werden. 
+1. Wählen Sie die Quelle für die **Imagequelle** aus, und geben Sie entsprechende Informationen zum Speicherort und zur Art der Speicherung ein. Die Optionen für Blob-Speicher, das verwaltete Image und den Katalog unterscheiden sich.
 
-1. Wählen Sie die Quelle für die **Imagequelle** aus, und geben Sie entsprechende Informationen zum Speicherort und zur Art der Speicherung ein. Falls Sie keine verwalteten Datenträger verwenden möchten, wählen Sie das Speicherkonto mit der VHD-Datei aus.
-2. Geben Sie den Benutzerprinzipalnamen und das Kennwort für das Domänenkonto ein, über das die virtuellen Computer mit der Active Directory-Domäne verknüpft werden. Auf den virtuellen Computern wird ein lokales Konto mit dem gleichen Benutzernamen und Kennwort erstellt. Diese lokalen Konten können später zurückgesetzt werden.
-3. Wählen Sie das virtuelle Netzwerk aus, das mit dem Active Directory-Server verbunden ist, und wählen Sie anschließend ein Subnetz als Host für die virtuellen Computer aus.
-4. Klicken Sie auf **Weiter: Windows Virtual Desktop information** (Weiter: Informationen zu Windows Virtual Desktop) aus.
+   Falls Sie keine verwalteten Datenträger verwenden möchten, wählen Sie das Speicherkonto mit der *VHD*-Datei aus.
+1. Geben Sie den Benutzerprinzipalnamen und das Kennwort ein. Bei diesem Konto muss es sich um das Domänenkonto handeln, mit dem die VMs der Active Directory-Domäne beitreten. Auf den virtuellen Computern wird ein lokales Konto mit dem gleichen Benutzernamen und Kennwort erstellt. Diese lokalen Konten können später zurückgesetzt werden.
+
+   >[!NOTE]
+   > Wenn Sie Ihre VMs einer Azure AD DS-Umgebung beitreten lassen, stellen Sie sicher, dass der Benutzer für den Domänenbeitritt Mitglied der [Gruppe „AAD DC-Administratoren“](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group) ist.
+   >
+   > Das Konto muss auch Mitglied der verwalteten Azure AD DS-Domäne oder des Azure AD-Mandanten sein. Konten aus externen Verzeichnissen, die Ihrem Azure AD-Mandanten zugeordnet sind, können während der Einbindung in die Domäne nicht richtig authentifiziert werden.
+
+1. Wählen Sie das **virtuelle Netzwerk**, das mit dem Active Directory-Server verbunden ist, und anschließend ein Subnetz als Host für die VMs aus.
+1. Klicken Sie auf **Weiter: Windows Virtual Desktop information** (Weiter: Informationen zu Windows Virtual Desktop) aus.
 
 ### <a name="windows-virtual-desktop-tenant-information"></a>Informationen zum Windows Virtual Desktop-Mandanten
 
-Gehen Sie auf dem Blatt mit den **Informationen zum Windows Virtual Desktop-Mandanten** wie folgt vor:
+Gehen Sie auf der Registerkarte mit den **Informationen zum Windows Virtual Desktop-Mandanten** wie folgt vor:
 
 1. Geben Sie in **Name der Windows Virtual Desktop-Mandantengruppe** den Namen für die Mandantengruppe ein, die Ihren Mandanten enthält. Lassen Sie den Standardnamen, es sei denn, Ihnen wurde ein spezieller Mandantengruppenname bereitgestellt.
-2. Geben Sie für **Name des Windows Virtual Desktop-Mandanten** den Namen des Mandanten ein, in dem Sie diesen Hostpool erstellen möchten.
-3. Geben Sie die Art der Anmeldeinformationen an, die Sie für die Authentifizierung als RDS-Besitzer des Windows Virtual Desktop-Mandanten verwenden möchten. Wenn Sie das Tutorial [Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell](./create-service-principal-role-powershell.md) abgeschlossen haben, wählen Sie **Dienstprinzipal** aus. Wenn **Azure AD-Mandanten-ID** angezeigt wird, geben Sie die ID der Azure Active Directory-Instanz ein, die den Dienstprinzipal enthält.
-4. Geben Sie die Anmeldeinformationen für das Administratorkonto des Mandanten ein. Es werden nur Dienstprinzipale mit Kennwort unterstützt.
-5. Wählen Sie **Weiter: Überprüfen + erstellen**.
+1. Geben Sie für **Name des Windows Virtual Desktop-Mandanten** den Namen des Mandanten ein, in dem Sie diesen Hostpool erstellen möchten.
+1. Geben Sie die Art der Anmeldeinformationen an, die Sie für die Authentifizierung als RDS-Besitzer des Windows Virtual Desktop-Mandanten verwenden möchten. Geben Sie den Benutzerprinzipalnamen (User Principal Name, UPN) oder Dienstprinzipal und ein Kennwort ein.
+
+   Wenn Sie das Tutorial [Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell](./create-service-principal-role-powershell.md) abgeschlossen haben, wählen Sie **Dienstprinzipal** aus.
+
+1. Geben Sie unter **Dienstprinzipal** für die **Azure AD-Mandanten-ID** das Mandantenadministratorkonto für die Azure AD-Instanz ein, die den Dienstprinzipal enthält. Es werden nur Dienstprinzipale mit Kennwort unterstützt.
+1. Klicken Sie auf **Weiter: Überprüfen + erstellen**.
 
 ## <a name="complete-setup-and-create-the-virtual-machine"></a>Abschließen der Einrichtung und Erstellen des virtuellen Computers
 
-Gehen Sie auf den letzten beiden Blättern wie folgt vor:
+Überprüfen Sie unter **Überprüfen und erstellen** die Setupinformationen. Falls Sie etwas ändern müssen, können Sie zurückgehen und Änderungen vornehmen. Wenn alle Angaben korrekt sind, wählen Sie **Erstellen** aus, um Ihren Hostpool bereitzustellen.
 
-1. Überprüfen Sie auf dem Blatt **Überprüfen und erstellen** die Setupinformationen. Sollten Änderungen erforderlich sein, kehren Sie zum entsprechenden Blatt zurück, und nehmen Sie die gewünschten Änderungen vor, bevor Sie den Vorgang fortsetzen. Sind die Angaben korrekt, wählen Sie **OK** aus.
-2. Wählen Sie **Erstellen** aus, um Ihren Hostpool bereitzustellen.
+Dieser Vorgang kann je nach Anzahl zu erstellender VMs 30 Minuten oder länger dauern.
 
-Dieser Vorgang kann abhängig von der zu erstellenden VM-Anzahl 30 Minuten oder länger dauern.
+>[!IMPORTANT]
+> Zum Schutz Ihrer Windows Virtual Desktop-Umgebung in Azure empfiehlt es sich, den eingehenden Port 3389 auf Ihren VMs nicht zu öffnen. Für Windows Virtual Desktop muss der eingehende Port 3389 nicht geöffnet sein, damit Benutzer auf die VMs des Hostpools zugreifen können.
+>
+> Wenn Sie den Port 3389 zur Problembehandlung öffnen müssen, verwenden Sie am besten den Just-In-Time-Zugriff. Weitere Informationen finden Sie unter [Sichern Ihrer Verwaltungsports mit Just-in-Time-Zugriff (JIT)](../security-center/security-center-just-in-time.md).
 
 ## <a name="optional-assign-additional-users-to-the-desktop-application-group"></a>Optional: Zuweisen zusätzlicher Benutzer zur Desktopanwendungsgruppe
 
-Nach Abschluss des Azure Marketplace-Angebots können Sie der Desktopanwendungsgruppe weitere Benutzer zuweisen, bevor Sie damit beginnen, die vollständigen Sitzungsdesktops auf Ihren virtuellen Computern zu testen. Falls Sie im Rahmen des Azure Marketplace-Angebots bereits Standardbenutzer hinzugefügt haben und keine weiteren Benutzer hinzufügen möchten, können Sie diesen Abschnitt überspringen.
+Nachdem Azure Marketplace die Erstellung des Pools abgeschlossen hat, können Sie der Desktopanwendungsgruppe weitere Benutzer zuweisen. Überspringen Sie diesen Abschnitt, falls Sie keine weiteren Benutzer hinzufügen möchten.
 
-Wenn Sie einer Desktopanwendungsgruppe Benutzer zuweisen möchten, müssen Sie zunächst ein PowerShell-Fenster öffnen. Danach müssen die beiden folgenden Cmdlets ausgeführt werden.
+So weisen Sie der Desktopanwendungsgruppe Benutzer zu:
 
-Führen Sie das folgende Cmdlet aus, um sich bei der Windows Virtual Desktop-Umgebung anzumelden:
+1. Öffnen Sie ein PowerShell-Fenster.
 
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
+1. Führen Sie den folgenden Befehl aus, um sich bei der Windows Virtual Desktop-Umgebung anzumelden:
 
-Fügen Sie Benutzer mit diesem Cmdlet der Desktopanwendungsgruppe hinzu:
+   ```powershell
+   Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+   ```
 
-```powershell
-Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
-```
+1. Fügen Sie der Desktopanwendungsgruppe mit diesem Befehl Benutzer hinzu:
 
-Der UPN des Benutzers muss der Identität des Benutzers in Azure Active Directory entsprechen (Beispiel: user1@contoso.com). Wenn Sie mehrere Benutzer hinzufügen möchten, müssen Sie dieses Cmdlet für jeden Benutzer separat ausführen.
+   ```powershell
+   Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
+   ```
 
-Nach Abschluss dieser Schritte können sich Benutzer, die der Desktopanwendungsgruppe hinzugefügt wurden, mit unterstützten Remotedesktopclients bei Windows Virtual Desktop anmelden und eine Ressource für einen Sitzungsdesktop anzeigen.
+   Der UPN des Benutzers muss der Identität des Benutzers in Azure AD entsprechen, beispielweise *user1@contoso.com* . Wenn Sie mehrere Benutzer hinzufügen möchten, müssen Sie den Befehl für jeden Benutzer separat ausführen.
+
+Benutzer, die Sie der Desktopanwendungsgruppe hinzufügen, können sich mit unterstützten Remotedesktopclients bei Windows Virtual Desktop anmelden und eine Ressource für einen Sitzungsdesktop anzeigen.
 
 Derzeit werden folgende Clients unterstützt:
 
-- [Remotedesktopclient für Windows 7 und Windows 10](connect-windows-7-and-10.md)
-- [Windows Virtual Desktop-Webclient](connect-web.md)
-
->[!IMPORTANT]
->Zum Schutz Ihrer Windows Virtual Desktop-Umgebung in Azure empfiehlt es sich, den eingehenden Port 3389 auf Ihren virtuellen Computern nicht zu öffnen. Für Windows Virtual Desktop muss der eingehende Port 3389 nicht geöffnet sein, damit Benutzer auf die virtuellen Computer des Hostpools zugreifen können. Wenn Sie den Port 3389 zur Problembehandlung öffnen müssen, verwenden Sie am besten den [Just-In-Time-Zugriff auf virtuelle Computer](../security-center/security-center-just-in-time.md).
+* [Remotedesktopclient für Windows 7 und Windows 10](connect-windows-7-and-10.md)
+* [Windows Virtual Desktop-Webclient](connect-web.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun einen Hostpool erstellt und Benutzer für den Zugriff auf dessen Desktop zugewiesen haben, können Sie den Hostpool mit RemoteApps-Programmen füllen. Weitere Informationen zum Verwalten von Apps in Windows Virtual Desktop finden Sie im folgenden Tutorial:
+Sie haben nun einen Hostpool erstellt und Benutzer zugewiesen, die Zugriff auf den zugehörigen Desktop haben. Als Nächstes können Sie Ihren Hostpool mit RemoteApp-Programmen füllen. Weitere Informationen zum Verwalten von Apps in Windows Virtual Desktop finden Sie im folgenden Tutorial:
 
 > [!div class="nextstepaction"]
 > [Manage app groups for Windows Virtual Desktop Preview](./manage-app-groups.md) (Verwalten von App-Gruppen für Windows Virtual Desktop (Vorschauversion))

@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: e0dec0a67ed33186797ccec8066aaad89ceb8dcb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75434754"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Bereitstellen für Mehrinstanzenfähigkeit 
 
 Für die vom Bereitstellungsdienst definierten Zuordnungsrichtlinien werden verschiedene Zuordnungsszenarien unterstützt. Zwei häufige Szenarien sind:
 
-* **Geolocation/Geolatenz**: Wenn ein Gerät von einem Standort an einen anderen verlagert wird, lässt sich die Netzwerklatenz verbessern, indem das Gerät jeweils auf dem IoT Hub bereitgestellt wird, der dem jeweiligen Standort am nächsten liegt. In diesem Szenario wird eine Gruppe mit regionsübergreifenden IoT Hubs für Registrierungen ausgewählt. Für diese Registrierungen wird die Zuordnungsrichtlinie **Niedrigste Latenz** ausgewählt. Diese Richtlinie bewirkt, dass der Device Provisioning Service die Gerätelatenz auswertet und aus der Gruppe mit den IoT Hubs den nächstgelegenen IoT Hub ermittelt. 
+* **Geolocation oder Geolatenz**: Wenn ein Gerät von einem Standort an einen anderen verlagert wird, lässt sich die Netzwerklatenz verbessern, indem das Gerät jeweils auf dem IoT Hub bereitgestellt wird, der dem jeweiligen Standort am nächsten liegt. In diesem Szenario wird eine Gruppe mit regionsübergreifenden IoT Hubs für Registrierungen ausgewählt. Für diese Registrierungen wird die Zuordnungsrichtlinie **Niedrigste Latenz** ausgewählt. Diese Richtlinie bewirkt, dass der Device Provisioning Service die Gerätelatenz auswertet und aus der Gruppe mit den IoT Hubs den nächstgelegenen IoT Hub ermittelt. 
 
 * **Mehrinstanzenfähigkeit**: Geräte, die in einer IoT-Lösung verwendet werden, müssen unter Umständen einem bestimmten IoT Hub oder einer Gruppe mit IoT Hubs zugewiesen werden. Für die Lösung kann es erforderlich sein, dass alle Geräte für einen bestimmten Mandanten mit einer bestimmten Gruppe von IoT Hubs kommunizieren. In einigen Fällen kann auch ein Mandant der Besitzer von IoT Hubs sein und erzwingen, dass Geräte seinen IoT Hubs zugewiesen werden.
 
@@ -57,7 +57,7 @@ In diesem Abschnitt verwenden Sie Azure Cloud Shell, um zwei neue regionale IoT 
     az group create --name contoso-us-resource-group --location eastus
     ```
 
-2. Verwenden Sie Azure Cloud Shell, um mit dem Befehl [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) in der Region **eastus** einen IoT Hub zu erstellen. Der IoT Hub wird *contoso-us-resource-group* hinzugefügt.
+2. Verwenden Sie Azure Cloud Shell, um mit dem Befehl **az iot hub create** in der Region [eastus](/cli/azure/iot/hub#az-iot-hub-create) einen IoT Hub zu erstellen. Der IoT Hub wird *contoso-us-resource-group* hinzugefügt.
 
     Im folgenden Beispiel wird in der Region *eastus* ein IoT Hub mit dem Namen *contoso-east-hub* erstellt. Sie müssen anstelle von **contoso-east-hub** Ihren eigenen eindeutigen Hubnamen verwenden.
 
@@ -67,7 +67,7 @@ In diesem Abschnitt verwenden Sie Azure Cloud Shell, um zwei neue regionale IoT 
     
     Die Ausführung dieses Befehls kann einige Minuten in Anspruch nehmen.
 
-3. Verwenden Sie Azure Cloud Shell, um mit dem Befehl [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) in der Region **westus** einen IoT Hub zu erstellen. Dieser IoT Hub wird ebenfalls *contoso-us-resource-group* hinzugefügt.
+3. Verwenden Sie Azure Cloud Shell, um mit dem Befehl **az iot hub create** in der Region [westus](/cli/azure/iot/hub#az-iot-hub-create) einen IoT Hub zu erstellen. Dieser IoT Hub wird ebenfalls *contoso-us-resource-group* hinzugefügt.
 
     Im folgenden Beispiel wird am Standort *westus* eine IoT Hub-Instanz mit dem Namen *contoso-west-hub* erstellt. Sie müssen anstelle von **contoso-west-hub** Ihren eigenen eindeutigen Hubnamen verwenden.
 
@@ -97,7 +97,7 @@ Der Einfachheit halber wird in diesem Artikel ein [Nachweis des symmetrischen Sc
 
     **Schlüssel automatisch generieren**: Dieses Kontrollkästchen sollte bereits aktiviert sein.
 
-    **Wählen Sie, wie Geräte den Hubs zugewiesen werden sollen**: Wählen Sie **Niedrigste Latenz**.
+    **Wählen Sie, wie Geräte den Hubs zugewiesen werden sollen**: Wählen Sie die Option **Niedrigste Latenz**.
 
     ![Hinzufügen einer mehrinstanzenfähigen Registrierungsgruppe für den Nachweis des symmetrischen Schlüssels](./media/how-to-provision-multitenant/create-multitenant-enrollment.png)
 
@@ -106,9 +106,9 @@ Der Einfachheit halber wird in diesem Artikel ein [Nachweis des symmetrischen Sc
 
     **Abonnement**: Wenn Sie über mehrere Abonnements verfügen, sollten Sie das Abonnement auswählen, in dem Sie die IoT Hubs für die Regionen erstellt haben.
 
-    **IoT-Hub**: Wählen Sie einen der regionalen Hubs aus, die Sie erstellt haben.
+    **IoT Hub**: Wählen Sie einen der regionalen Hubs aus, die Sie erstellt haben.
 
-    **Zugriffsrichtlinie**: Wählen Sie **iothubowner**.
+    **Zugriffsrichtlinie**: Wählen Sie **iothubowner** aus.
 
     ![Verknüpfen der regionalen IoT Hubs mit dem Provisioning Service](./media/how-to-provision-multitenant/link-regional-hubs.png)
 

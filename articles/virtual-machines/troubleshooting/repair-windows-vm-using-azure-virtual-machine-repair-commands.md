@@ -1,6 +1,6 @@
 ---
 title: Reparieren eines virtuellen Windows-Computers mit den Reparaturbefehlen für virtuelle Azure-Computer | Microsoft-Dokumentation
-description: In diesem Artikel ist beschrieben, wie Sie mit Reparaturbefehlen für virtuelle Computer den Datenträger mit einem anderen virtuellen Windows-Computer verbinden, um Fehler zu beheben, und dann Ihren ursprünglichen virtuellen Computer wiederherstellen.
+description: In diesem Artikel ist beschrieben, wie Sie mit Reparaturbefehlen für virtuelle Azure-Computer den Datenträger mit einem anderen virtuellen Windows-Computer verbinden, um Fehler zu beheben, und dann Ihren ursprünglichen virtuellen Computer wiederherstellen.
 services: virtual-machines-windows
 documentationcenter: ''
 author: v-miegge
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 09/10/2019
 ms.author: v-miegge
-ms.openlocfilehash: 6bda8cb831e84a56c889ed40109954551a34c113
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 2055558ef80a641084a7cf9d299281497d282936
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796176"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060673"
 ---
 # <a name="repair-a-windows-vm-by-using-the-azure-virtual-machine-repair-commands"></a>Reparieren eines virtuellen Windows-Computers mit dem Reparaturbefehlen virtueller Azure-Computer
 
@@ -62,31 +62,31 @@ Weitere Dokumentation und Anweisungen finden Sie unter [az vm repair](https://do
 
 2. Wenn Sie die `az vm repair`-Befehle zum ersten Mal verwenden, fügen Sie die CLI-Erweiterung „vm-repair“ hinzu.
 
-   ```azurepowershell-interactive
+   ```azurecli-interactive
    az extension add -n vm-repair
    ```
 
    Wenn Sie die `az vm repair`-Befehle bereits verwendet haben, wenden Sie alle Updates auf die Erweiterung „vm-repair“ an.
 
-   ```azurepowershell-interactive
+   ```azurecli-interactive
    az extension update -n vm-repair
    ```
 
-3. Führen Sie `az vm repair create`aus. Mit diesem Befehl wird eine Kopie des Betriebssystemdatenträgers der fehlerhaften VM erstellt, wird eine Reparatur-VM erstellt und wird der Datenträger zugeordnet.
+3. Führen Sie `az vm repair create` aus. Mit diesem Befehl wird eine Kopie des Betriebssystemdatenträgers der fehlerhaften VM erstellt, wird eine Reparatur-VM erstellt und wird der Datenträger zugeordnet.
 
-   ```azurepowershell-interactive
+   ```azurecli-interactive
    az vm repair create -g MyResourceGroup -n myVM --repair-username username --repair-password password!234 --verbose
    ```
 
-4. Führen Sie `az vm repair run`aus. Mit diesem Befehl wird das angegebene Reparaturskript auf dem zugeordneten Datenträger über die Reparatur-VM ausgeführt.
+4. Führen Sie `az vm repair run` aus. Mit diesem Befehl wird das angegebene Reparaturskript auf dem zugeordneten Datenträger über die Reparatur-VM ausgeführt.
 
-   ```azurepowershell-interactive
+   ```azurecli-interactive
    az vm repair run  –g MyResourceGroup –n MyVM -–run-on-repair --run-id 2 --verbose
    ```
 
-5. Führen Sie `az vm repair restore`aus. Mit diesem Befehl wird der ursprüngliche Betriebssystemdatenträger gegen den reparierten Betriebssystemdatenträger der VM getauscht.
+5. Führen Sie `az vm repair restore` aus. Mit diesem Befehl wird der ursprüngliche Betriebssystemdatenträger gegen den reparierten Betriebssystemdatenträger der VM getauscht.
 
-   ```azurepowershell-interactive
+   ```azurecli-interactive
    az vm repair restore -g MyResourceGroup -n MyVM --verbose
    ```
 
@@ -96,7 +96,7 @@ Im folgenden Beispiel wird die Diagnoseerweiterung in der VM namens ``myVMDeploy
 
 Azure-Befehlszeilenschnittstelle
 
-```azurepowershell-interactive
+```azurecli-interactive
 az vm boot-diagnostics enable --name myVMDeployed --resource-group myResourceGroup --storage https://mystor.blob.core.windows.net/
 ```
 

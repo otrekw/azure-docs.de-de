@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
 ms.openlocfilehash: 5a65982c5c13eb4e4273efcfd8d14910b0f35572
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78197146"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer Standard und Verfügbarkeitszonen
 
 Azure Load Balancer Standard unterstützt Szenarien mit [Verfügbarkeitszonen](../availability-zones/az-overview.md). Mit Load Balancer Standard können Sie die Verfügbarkeit in Ihrem End-to-End-Szenario optimieren, indem Sie Ressourcen mit Zonen abstimmen und auf mehrere Zonen verteilen.  Unter [Verfügbarkeitszonen](../availability-zones/az-overview.md) erfahren Sie, was Verfügbarkeitszonen sind und welche Regionen derzeit Verfügbarkeitszonen unterstützen. Außerdem finden Sie dort Informationen zu weiteren zugehörigen Konzepten und Produkten. Verfügbarkeitszonen und Load Balancer Standard bilden einen umfassenden und flexiblen Featuresatz für unterschiedlichste Szenarien.  Lesen Sie dieses Dokument, um diese [Konzepte](#concepts) und die [Entwurfsanleitung](#design) für das grundlegende Szenario zu verstehen.
 
-## <a name="concepts"></a> Auf den Load Balancer angewendete Verfügbarkeitszonenkonzepte
+## <a name="availability-zones-concepts-applied-to-load-balancer"></a><a name="concepts"></a> Auf den Load Balancer angewendete Verfügbarkeitszonenkonzepte
 
 Eine Load Balancer-Ressource selbst ist regional und nie zonal. Die Granularität der verfügbaren Konfigurationsoptionen wird durch die jeweilige Konfiguration von Front-End, Regel und Back-End-Pooldefinition eingeschränkt.
 Im Kontext von Verfügbarkeitszonen werden das Verhalten und die Eigenschaften einer Load Balancer-Regel als „zonenredundant“ oder „zonal“ beschrieben.  „Zonenredundant“ und „zonal“ beschreiben die Zonalität einer Eigenschaft.  Im Kontext des Load Balancers bezieht sich „zonenredundant“ immer auf *mehrere Zonen*, und „zonal“ bedeutet, dass der Dienst in einer *einzelnen Zone* isoliert wird.
@@ -75,9 +75,9 @@ Für die SNAT-Portvorabzuordnung wird unabhängig von der Verwendung von Verfüg
 
 Ihre vorhandenen Integritätstestdefinitionen bleiben so, wie sie ohne Verfügbarkeitszonen sind.  Wir haben allerdings das Integritätsmodell auf der Infrastrukturebene erweitert. 
 
-Bei Verwendung zonenredundanter Front-Ends erweitert Load Balancer sein internes Integritätsmodell, um unabhängig die Erreichbarkeit eines virtuellen Computers aus jeder Verfügbarkeitszone zu testen und Pfade, bei denen Fehler aufgetreten sind, zonenübergreifend ohne Eingriff des Kunden zu schließen.  Wenn ein bestimmter Pfad von der Load Balancer-Infrastruktur einer Zone zu einem virtuellen Computer in einer anderen Zone nicht verfügbar ist, kann Load Balancer diesen Fehler erkennen und vermeiden. Andere Zonen, die diesen virtuellen Computer erreichen können, bedienenden virtuellen Computer weiterhin von ihren jeweiligen Front-Ends aus.  Daher ist es möglich, dass die Zonen während Fehlerereignissen geringfügig unterschiedliche Verteilungen neuer Datenströme aufweisen, während die allgemeine Integrität Ihres End-to-End-Diensts geschützt wird.
+Bei Verwendung zonenredundanter Front-Ends erweitert Load Balancer sein internes Integritätsmodell, um unabhängig die Erreichbarkeit eines virtuellen Computers aus jeder Verfügbarkeitszone zu testen und Pfade, bei denen Fehler aufgetreten sind, zonenübergreifend ohne Eingriff des Kunden zu schließen.  Wenn ein bestimmter Pfad von der Load Balancer-Infrastruktur einer Zone zu einem virtuellen Computer in einer anderen Zone nicht verfügbar ist, kann Load Balancer diesen Fehler erkennen und vermeiden. Andere Zonen, die diesen virtuellen Computer erreichen können, bedienen{1}{2}den virtuellen Computer weiterhin von ihren jeweiligen Front-Ends aus.  Daher ist es möglich, dass die Zonen während Fehlerereignissen geringfügig unterschiedliche Verteilungen neuer Datenströme aufweisen, während die allgemeine Integrität Ihres End-to-End-Diensts geschützt wird.
 
-## <a name="design"></a> Überlegungen zum Entwurf
+## <a name="design-considerations"></a><a name="design"></a> Überlegungen zum Entwurf
 
 Load Balancer ist im Kontext von Verfügbarkeitszonen bewusst flexibel. Sie können sich für eine zonenbasierte Ausrichtung entscheiden oder zonenredundante Regeln verwenden.  Erhöhte Verfügbarkeit kann erhöhte Komplexität mit sich bringen, und Ihr Entwurf muss Verfügbarkeit bei optimaler Leistung bieten.  Lassen Sie uns ein paar wichtige Überlegungen zum Entwurf anstellen.
 
@@ -87,7 +87,7 @@ Load Balancer macht es Ihnen leicht, eine einzelne IP-Adresse als zonenredundant
 
 Zonenredundanz impliziert weder einen störungsfreien Datenpfad noch eine störungsfreie Steuerebene; es ist ausdrücklich eine Datenebene. Zonenredundante Datenströme können alle Zonen verwenden, und die Datenströme eines Kunden verwenden alle fehlerfreien Zonen in einer Region. Bei Ausfall einer Zone sind Datenströme, die zu diesem Zeitpunkt fehlerfreie Zonen verwenden, nicht betroffen.  Datenströme, die zum Zeitpunkt des Zonenausfalls eine Zone verwenden, können beeinträchtigt werden, aber Anwendungen können wiederhergestellt werden. Diese Datenströme können in den verbleibenden fehlerfreien Zonen innerhalb der Region nach nochmaliger Übertragung oder Wiederherstellung fortgeführt werden, wenn Azure den Zonenausfall in den Griff bekommen hat.
 
-### <a name="xzonedesign"></a> Zonenübergreifende Grenzen
+### <a name="cross-zone-boundaries"></a><a name="xzonedesign"></a> Zonenübergreifende Grenzen
 
 Sie müssen sich unbedingt darüber im Klaren sein, dass Sie jedes Mal, wenn ein End-to-End-Dienst zonenübergreifend wirkt, nicht nur von einer, sondern potenziell von mehreren Zonen abhängig sind.  Daraus resultiert, dass Ihr End-to-End-Dienst möglicherweise keine Verfügbarkeit über nicht zonale Bereitstellungen erlangt hat.
 

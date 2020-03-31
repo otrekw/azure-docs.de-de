@@ -14,10 +14,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8b872cc30ae66e83274f189138dad6d609e3f536
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74927049"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>Einfaches Kopieren oder Verschieben von Daten mit dem Kopier-Assistenten von Azure Data Factory
@@ -53,7 +53,7 @@ Der Kopier-Assistent ordnet Quell- und Zielschemaspalten automatisch zu. Sie kö
 
 ![Schemazuordnung](./media/data-factory-copy-wizard/schema-mapping.png)
 
-## <a name="filtering-data"></a>Daten filtern
+## <a name="filtering-data"></a>Filtern von Daten
 Mithilfe des Assistenten können Sie Quelldaten filtern, wenn nur bestimmte Daten in den Ziel-/Senkendatenspeicher kopiert werden sollen. Durch Filtern wird das Datenvolumen der in den Senkendatenspeicher kopierten Daten verringert. Der Durchsatz des Kopiervorgangs steigt. Der Assistent bietet flexible Möglichkeiten, die Daten einer relationalen Datenbank mittels der SQL-Abfragesprache oder Dateien in einem Azure-Blobordner mittels [Data Factory-Funktionen und -Systemvariablen](data-factory-functions-variables.md) zu filtern.   
 
 ### <a name="filtering-of-data-in-a-database"></a>Filtern von Datenbankdaten

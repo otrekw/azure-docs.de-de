@@ -9,17 +9,17 @@ services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: 7cbab38db859935c9f4490d79a131d6c9a7e302b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66427568"
 ---
 # <a name="deploy-a-new-simulated-device"></a>Bereitstellen eines neuen simulierten Geräts
 
 Sowohl mit dem Solution Accelerator für Remoteüberwachung als auch dem für Gerätesimulation können Sie Ihre eigenen simulierten Geräte definieren. In diesem Artikel wird gezeigt, wie Sie einen angepassten "Chiller"-Gerätetyp und einen neuen "Lightbulb"-Gerätetyp (Leuchtmittel) für den Solution Accelerator für die Remoteüberwachung bereitstellen.
 
-Bei den Schritten in diesem Artikel wird angenommen, dass Sie die Anleitung [Erstellen und Testen eines neuen simulierten Geräts](iot-accelerators-remote-monitoring-create-simulated-device.md) ausgeführt haben und über die Dateien zum Definieren des angepassten "Chiller"- und neuen "Lightbulb"-Gerätetyps verfügen.
+Bei den Schritten in diesem Artikel wird angenommen, dass Sie die Anleitung [Erstellen und Testen eines neuen simulierten Geräts](iot-accelerators-remote-monitoring-create-simulated-device.md) ausgeführt haben und über die Dateien zum Definieren des angepassten „Chiller“- und neuen „Lightbulb“-Gerätetyps verfügen.
 
 Die Schritte in dieser Anleitung zeigen Ihnen, wie Sie die folgenden Aktionen ausführen:
 

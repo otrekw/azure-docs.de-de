@@ -8,17 +8,17 @@ ms.date: 12/02/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 6f41adbb726313ef095084d079dc7852736e0c06
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74870529"
 ---
 # <a name="system-functions-azure-cosmos-db"></a>Systemfunktionen (Azure Cosmos DB)
 
  Cosmos DB bietet viele integrierte SQL-Funktionen. Die Kategorien der integrierten Funktionen sind unten aufgeführt.  
   
-|Funktionsgruppe|BESCHREIBUNG|Vorgänge|  
+|Funktionsgruppe|BESCHREIBUNG|Operationen (Operations)|  
 |--------------|-----------------|-----------------| 
 |[Arrayfunktionen](sql-query-array-functions.md)|Die Arrayfunktionen führen einen Vorgang für einen Arrayeingabewert aus und geben einen numerischen Wert, booleschen Wert oder Arraywert zurück. | [ARRAY_CONCAT](sql-query-array-concat.md), [ARRAY_CONTAINS](sql-query-array-contains.md), [ARRAY_LENGTH](sql-query-array-length.md), [ARRAY_SLICE](sql-query-array-slice.md) |
 |[Datums- und Uhrzeitfunktionen](sql-query-date-time-functions.md)|Mit den Datums- und Uhrzeitfunktionen können Sie die aktuellen UTC-Datums-/Uhrzeitwerte in zwei Formaten abrufen: als numerischer Zeitstempel, dessen Wert der Unix-Epochenzeit in Millisekunden entspricht, oder als Zeichenfolge gemäß dem ISO 8601-Format. | [GetCurrentDateTime](sql-query-getcurrentdatetime.md), [GetCurrentTimestamp](sql-query-getcurrenttimestamp.md) |

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/20/2019
 ms.author: jingwang
 ms.openlocfilehash: d97b3caccc92f0fdfeb229d94e30ee6499c26181
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74912404"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory"></a>Kopieren von Daten aus Office 365 mithilfe von Azure Data Factory
@@ -63,7 +63,7 @@ Wenn ADF als Teil einer verwalteten App erstellt wird und Azure-Richtlinienzuwei
 
 Sie können mithilfe eines der folgenden Tools oder SDKs eine Pipeline mit der Copy-Aktivität erstellen. Klicken Sie auf einen Link, um ein Tutorial mit Schritt-für-Schritt-Anweisungen zum Erstellen einer Pipeline mit einer Copy-Aktivität aufzurufen. 
 
-- [Azure-Portal](quickstart-create-data-factory-portal.md)
+- [Azure portal](quickstart-create-data-factory-portal.md)
 - [.NET SDK](quickstart-create-data-factory-dot-net.md)
 - [Python SDK](quickstart-create-data-factory-python.md)
 - [Azure PowerShell](quickstart-create-data-factory-powershell.md)
@@ -78,7 +78,7 @@ Folgende Eigenschaften werden für den mit Office 365 verknüpften Dienst unters
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Office 365** | Ja |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Office365** | Ja |
 | office365TenantId | Die Azure-Mandanten-ID, zu der das Office 365-Konto gehört. | Ja |
 | servicePrincipalTenantId | Geben Sie die Mandanteninformationen Ihrer Azure AD-Webanwendung an. | Ja |
 | servicePrincipalId | Geben Sie die Client-ID der Anwendung an. | Ja |
@@ -118,7 +118,7 @@ Zum Kopieren von Daten aus Office 365 werden die folgenden Eigenschaften unterst
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft des Datasets muss auf Folgendes festgelegt werden: **Office365Table** | Ja |
+| type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **Office365Table** | Ja |
 | tableName | Der Name des Datasets, das aus Office 365 extrahiert werden soll. [Hier](https://docs.microsoft.com/graph/data-connect-datasets#datasets) finden Sie die Liste der Office 365-Datasets, die für zum Extrahieren verfügbar sind. | Ja |
 
 Wenn Sie `dateFilterColumn`, `startTime`, `endTime` und `userScopeFilterUri` im Dataset festgelegt haben, wird es weiterhin unverändert unterstützt. Es wird jedoch empfohlen, zukünftig das neue Modell in der Aktivitätsquelle zu verwenden.

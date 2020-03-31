@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: v-miegge
 ms.openlocfilehash: 4839ce7a0188c782656fd3a4c42cbdd116b165e9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74849376"
 ---
 # <a name="data-to-collect-when-you-open-a-case-for-microsoft-azure-automation"></a>Zu erfassende Daten beim Öffnen eines Falls für Microsoft Azure Automation
@@ -55,7 +55,7 @@ Führen Sie über die in [4034605](https://support.microsoft.com/help/4034605/ho
 1. Exportieren Sie die folgenden Ereignisprotokolle in das EVTX-Format:
 
    * System
-   * Anwendung
+   * Application
    * Sicherheit
    * Operations Manager
    * Microsoft-SMA/Operational

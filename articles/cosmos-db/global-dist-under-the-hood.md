@@ -8,10 +8,10 @@ ms.date: 12/02/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: a46a69476a2ad6550bc7b3a533fd09565d461db3
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74872127"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globale Datenverteilung mit Azure Cosmos DB: Hintergrundinformationen
@@ -54,7 +54,7 @@ Eine Gruppe physischer Partitionen (jeweils eine aus jeder für die Cosmos-Daten
 
 ![Partitionsgruppen](./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png)
 
-Sie können sich eine Partitionsgruppe als eine geografisch verteilte „Superreplikatgruppe“ vorstellen, die mehrere Replikatgruppen mit denselben Schlüsselsätzen umfasst. Wie bei einer Replikatgruppe ist auch bei einer Partitionsgruppe die Mitgliedschaft dynamisch. Sie variiert in Abhängigkeit von impliziten Vorgängen zur Verwaltung physischer Partitionen beim Hinzufügen/Entfernen von Partitionen in einer Partitionsgruppe (wenn Sie z.B. den Durchsatz in einem Container skalieren, in Ihrer Cosmos-Datenbank eine Region hinzufügen/entfernen, oder bei Ausfällen). Damit die einzelnen Partitionen (einer Partitionsgruppe) die festgelegte Mitgliedschaft in der eigenen Replikatgruppe verwalten können, ist die Mitgliedschaft vollständig dezentralisiert und hochverfügbar angelegt. Während der Neukonfiguration einer Partitionsgruppe wird auch die Topologie der Überlagerung zwischen physischen Partitionen eingerichtet. Die Topologie wird dynamisch basierend auf der Konsistenzstufe, dem geografischen Abstand und der zwischen den physischen Quell- und Zielpartitionen verfügbaren Netzwerkbandbreite ausgewählt.  
+Sie können sich eine Partitionsgruppe als eine geografisch verteilte „Superreplikatgruppe“ vorstellen, die mehrere Replikatgruppen mit denselben Schlüsselsätzen umfasst. Wie bei einer Replikatgruppe ist auch bei einer Partitionsgruppe die Mitgliedschaft dynamisch. Sie variiert in Abhängigkeit von impliziten Vorgängen zur Verwaltung physischer Partitionen beim Hinzufügen/Entfernen von Partitionen in einer Partitionsgruppe (wenn Sie z.B. den Durchsatz in einem Container aufskalieren, in Ihrer Cosmos-Datenbank eine Region hinzufügen/entfernen, oder bei Ausfällen). Damit die einzelnen Partitionen (einer Partitionsgruppe) die festgelegte Mitgliedschaft in der eigenen Replikatgruppe verwalten können, ist die Mitgliedschaft vollständig dezentralisiert und hochverfügbar angelegt. Während der Neukonfiguration einer Partitionsgruppe wird auch die Topologie der Überlagerung zwischen physischen Partitionen eingerichtet. Die Topologie wird dynamisch basierend auf der Konsistenzstufe, dem geografischen Abstand und der zwischen den physischen Quell- und Zielpartitionen verfügbaren Netzwerkbandbreite ausgewählt.  
 
 Der Dienst ermöglicht es Ihnen, Ihre Cosmos-Datenbanken mit einer einzelnen oder mit mehreren Schreibregionen zu konfigurieren. Je nach Ihrer Auswahl werden die Partitionsgruppen so konfiguriert, dass sie Schreibanforderungen in genau einer oder in allen Regionen zulassen. Das System nutzt ein geschachteltes Konsensprotokoll mit zwei Ebenen: Eine Ebene agiert in den Replikaten einer Replikatgruppe einer physischen Partition, die Schreibanforderungen akzeptiert, und die andere agiert auf der Ebene der Partitionsgruppe, um alle committeten Schreibvorgänge in der Partitionsgruppe zu garantierten. Dieser geschachtelte Multiebenenkonsens ist sehr wichtig für die Implementierung unserer strikten SLAs für Hochverfügbarkeit sowie der Konsistenzmodelle, die Cosmos DB den Kunden bietet.  
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d56007e5a196a0857f3b69ac51f5e3b5a88c4f6e
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593492"
 ---
 # <a name="real-time-stats-in-microsoft-azure-cdn"></a>Echtzeitstatistiken in Microsoft Azure CDN
@@ -29,7 +29,7 @@ Dieses Dokument erläutert Echtzeitstatistiken in Microsoft Azure CDN.  Mit dies
 
 Die folgenden Diagramme sind verfügbar:
 
-* [Bandbreite](#bandwidth)
+* [Bandwidth](#bandwidth)
 * [Statuscodes](#status-codes)
 * [Cachestatus](#cache-statuses)
 * [Verbindungen](#connections)
@@ -91,6 +91,6 @@ Dieses Diagramm gibt an, wie viele Verbindungen mit den Edgeservern hergestellt 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Benachrichtigungen mit [Echtzeitwarnungen in Azure CDN](cdn-real-time-alerts.md)
-* Ausführlichere Informationen zu [erweiterten HTTP-Berichten](cdn-advanced-http-reports.md)
+* Informieren Sie sich ausführlicher über [erweiterte HTTP-Berichte](cdn-advanced-http-reports.md)
 * Analyse von [Verwendungsmustern](cdn-analyze-usage-patterns.md)
 

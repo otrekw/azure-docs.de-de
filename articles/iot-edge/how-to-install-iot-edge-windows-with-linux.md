@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: kgremban
-ms.openlocfilehash: 40e6f850a00a8f77e846d9574caedc345aa94cef
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 8a4579e092bbc4fd58954f1ce1f1dad3a8ddbbba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509987"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80133160"
 ---
 # <a name="use-iot-edge-on-windows-to-run-linux-containers"></a>Verwenden von IoT Edge unter Windows zum Ausführen von Linux-Containern
 
@@ -24,6 +24,8 @@ In einem Produktionsszenario sollten Windows-Geräte nur Windows-Container ausf�
 
 In diesem Artikel sind die Schritte zum Installieren der Azure IoT Edge-Runtime mit Linux-Containern auf Ihrem Windows-x64-System (AMD/Intel) aufgeführt. Weitere Informationen zum Installationsprogramm für die IoT Edge-Runtime sowie Details zu allen Installationsparametern finden Sie unter [Installieren der Azure IoT Edge-Runtime unter Windows](how-to-install-iot-edge-windows.md).
 
+Informationen zur aktuellen Version von IoT Edge finden Sie auf der Website für die [Releases von IoT Edge](https://github.com/Azure/azure-iotedge/releases).
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Überprüfen Sie anhand dieses Abschnitts, ob Ihr Windows-Gerät IoT Edge unterstützt, und bereiten Sie es vor der Installation für eine Container-Engine vor.
@@ -31,8 +33,6 @@ In diesem Artikel sind die Schritte zum Installieren der Azure IoT Edge-Runtime 
 ### <a name="supported-windows-versions"></a>Unterstützte Windows-Versionen
 
 Azure IoT Edge mit Linux-Containern kann unter jeder Windows-Version ausgeführt werden, die die [Anforderungen für Docker Desktop](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install) erfüllt.
-
-Weitere Informationen zur aktuellen Version von IoT Edge finden Sie auf der Website für die [Releases von IoT Edge](https://github.com/Azure/azure-iotedge/releases).
 
 Wenn Sie IoT Edge auf einer VM installieren möchten, sollten Sie die geschachtelte Virtualisierung aktivieren und mindestens 2 GB Arbeitsspeicher zuordnen. Wie Sie die geschachtelte Virtualisierung aktivieren, hängt vom verwendeten Hypervisor ab. Für Hyper-V verfügen virtuelle Computer der zweiten Generation über eine geschachtelte Virtualisierung, die standardmäßig aktiviert ist. Für VMware gibt es einen Umschalter zum Aktivieren des Features auf dem virtuellen Computer.
 

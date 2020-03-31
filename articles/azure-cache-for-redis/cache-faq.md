@@ -7,11 +7,11 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.openlocfilehash: ddf7999153e9d9722e627d148b116750fe3aaecf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433448"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235542"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Häufig gestellte Fragen zu Azure Cache for Redis
 In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und Best Practices für Azure Cache for Redis.
@@ -334,7 +334,7 @@ Anweisungen zum Herunterladen der Redis-Tools finden Sie im Abschnitt [Wie führ
 * Mit "redis-benchmark.exe" können Sie Auslastungstests für Ihren Redis-Server durchführen.
 * Stellen Sie sicher, dass sich Client und Azure Cache for Redis für die Auslastungstests in derselben Region befinden.
 * Verwenden Sie "redis-cli.exe", und überwachen Sie den Cache unter Verwendung des INFO-Befehls.
-* Wenn Ihre Datenlast zu einer hohen Arbeitsspeicherfragmentierung führt, sollte Sie eine zentrale Skalierung auf einen größeren Cache durchführen.
+* Wenn Ihre Datenlast zu einer hohen Arbeitsspeicherfragmentierung führt, sollten Sie eine Hochskalierung auf einen größeren Cache durchführen.
 * Anweisungen zum Herunterladen der Redis-Tools finden Sie im Abschnitt [Wie führe ich Redis-Befehle aus?](#cache-commands) .
 
 Die folgenden Befehle sind ein Beispiel für die Verwendung von „redis-benchmark.exe“. Führen Sie diese Befehle von einem virtuellen Computer in der gleichen Region wie Ihr Cache aus, um genaue Ergebnisse zu erhalten.

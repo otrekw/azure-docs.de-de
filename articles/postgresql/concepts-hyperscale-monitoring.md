@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: d2e9fcd6f6292c1da76e725e90deda4547b3682d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74975515"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---hyperscale-citus"></a>Überwachung und Optimierung von Azure Database for PostgreSQL – Hyperscale (Citus)
@@ -27,11 +27,11 @@ Zusätzlich zum Anzeigen von Diagrammen der Metriken können Sie Warnungen konfi
 
 Diese Metriken sind für Hyperscale-Knoten (Citus) verfügbar:
 
-|Metrik|Metrikanzeigename|Unit|BESCHREIBUNG|
+|Metrik|Metrikanzeigename|Einheit|BESCHREIBUNG|
 |---|---|---|---|
-|active_connections|Die aktiven Verbindungen.|Count|Die Anzahl aktiver Verbindungen mit dem Server|
+|active_connections|Die aktiven Verbindungen.|Anzahl|Die Anzahl aktiver Verbindungen mit dem Server|
 |cpu_percent|CPU in Prozent|Percent|Die CPU-Auslastung in Prozent|
-|iops|IOPS|Count|Weitere Informationen finden Sie unter [IOPS-Definition](../virtual-machines/linux/premium-storage-performance.md#iops) und [Hyperscale-Durchsatz](concepts-hyperscale-configuration-options.md).|
+|iops|IOPS|Anzahl|Weitere Informationen finden Sie unter [IOPS-Definition](../virtual-machines/linux/premium-storage-performance.md#iops) und [Hyperscale-Durchsatz](concepts-hyperscale-configuration-options.md).|
 |memory_percent|Arbeitsspeicher in Prozent|Percent|Die Arbeitsspeicherauslastung in Prozent|
 |network_bytes_ingress|Netzwerk eingehend|Byte|Eingehender Netzwerkdatenverkehr über aktive Verbindungen.|
 |network_bytes_egress|Netzwerk ausgehend|Byte|Ausgehender Netzwerkdatenverkehr über aktive Verbindungen.|

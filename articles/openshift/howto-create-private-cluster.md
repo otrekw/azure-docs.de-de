@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/02/2020
 keywords: aro, openshift, privater cluster, red hat
 ms.openlocfilehash: b34b5d622527742447847102526eba9ee6ca220d
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78399267"
 ---
 # <a name="create-a-private-cluster-with-azure-red-hat-openshift-311"></a>Erstellen eines privaten Clusters mit Azure Red Hat OpenShift 3.11
@@ -50,7 +50,7 @@ Wenn Sie die DNS-Namenserver im virtuellen Netzwerk des Clusters ändern, müsse
 
 Verwenden Sie die Beispielskripts in diesem Abschnitt zum Einrichten und Bereitstellen des privaten Clusters.
 
-### <a name="environment"></a>Umgebung
+### <a name="environment"></a>Environment
 
 Füllen Sie die Umgebungsvariablen unten mit Ihren eigenen Werten aus.
 

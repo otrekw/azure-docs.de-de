@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.openlocfilehash: d293b76e004d693813a074cb8551a86cb3c0bec2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76772330"
 ---
 # <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>Erfassen von Beispieldaten im JSON-Format in Azure Data Explorer
@@ -50,7 +50,7 @@ Das folgende Beispiel zeigt einfachen JSON-Code mit einer flachen Struktur. Die 
 
 In diesem Beispiel erfassen Sie JSON-Datensätze als Rohdaten in einer Tabelle mit nur einer Spalte. Vorgänge wie die Datenbearbeitung, Verwendung von Abfragen und Aktualisierung von Richtlinien werden nach dem Erfassen der Daten durchgeführt.
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
 Verwenden Sie die Kusto-Abfragesprache (KQL), um Daten im JSON-Rohformat zu erfassen.
 
@@ -82,7 +82,7 @@ Verwenden Sie die Kusto-Abfragesprache (KQL), um Daten im JSON-Rohformat zu erfa
     .ingest into table RawEvents h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=json, jsonMappingReference=RawEventMapping)
     ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 Verwenden Sie C#, um Daten im JSON-Rohformat zu erfassen.
 
@@ -159,7 +159,7 @@ Verwenden Sie C#, um Daten im JSON-Rohformat zu erfassen.
 > [!NOTE]
 > Die Daten werden gemäß der [Richtlinie für die Batchverarbeitung](/azure/kusto/concepts/batchingpolicy) aggregiert. Dies führt zu einer Latenz von einigen Minuten.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Verwenden Sie Python, um Daten im JSON-Rohformat zu erfassen.
 
@@ -208,7 +208,7 @@ Verwenden Sie Python, um Daten im JSON-Rohformat zu erfassen.
 
 In diesem Beispiel erfassen Sie die Daten von JSON-Datensätzen. Jede JSON-Eigenschaft wird einer Spalte der Tabelle zugeordnet. 
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
 1. Erstellen Sie eine neue Tabelle mit einem ähnlichen Schema wie für die JSON-Eingabedaten. Wir verwenden diese Tabelle für alle folgenden Beispiele und Erfassungsbefehle. 
 
@@ -232,7 +232,7 @@ In diesem Beispiel erfassen Sie die Daten von JSON-Datensätzen. Jede JSON-Eigen
 
     Die Datei „simple.json“ enthält einige JSON-Datensätze, die nach Zeilen getrennt sind. Das Format lautet `json`, und im Erfassungsbefehl wird das von Ihnen erstellte `FlatEventMapping`-Element für die Zuordnung genutzt.
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 1. Erstellen Sie eine neue Tabelle mit einem ähnlichen Schema wie für die JSON-Eingabedaten. Wir verwenden diese Tabelle für alle folgenden Beispiele und Erfassungsbefehle. 
 
@@ -291,7 +291,7 @@ In diesem Beispiel erfassen Sie die Daten von JSON-Datensätzen. Jede JSON-Eigen
 
     Die Datei „simple.json“ enthält einige JSON-Datensätze, die nach Zeilen getrennt sind. Das Format lautet `json`, und im Erfassungsbefehl wird das von Ihnen erstellte `FlatEventMapping`-Element für die Zuordnung genutzt.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 1. Erstellen Sie eine neue Tabelle mit einem ähnlichen Schema wie für die JSON-Eingabedaten. Wir verwenden diese Tabelle für alle folgenden Beispiele und Erfassungsbefehle. 
 
@@ -329,7 +329,7 @@ In diesem Beispiel erfassen Sie die Daten von JSON-Datensätzen. Jede JSON-Eigen
 
 In diesem Beispiel erfassen Sie mehrzeilige JSON-Datensätze. Jede JSON-Eigenschaft wird einer Spalte der Tabelle zugeordnet. Die Datei „multilined.json“ enthält einige eingezogene JSON-Datensätze. Mit dem Format `multijson` wird die Engine angewiesen, die Datensätze anhand der JSON-Struktur zu lesen.
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
 Erfassen Sie Daten in der Tabelle `Events`.
 
@@ -337,7 +337,7 @@ Erfassen Sie Daten in der Tabelle `Events`.
 .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/multilined.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=FlatEventMapping)
 ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 Erfassen Sie Daten in der Tabelle `Events`.
 
@@ -354,7 +354,7 @@ var properties =
 ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Erfassen Sie Daten in der Tabelle `Events`.
 
@@ -395,7 +395,7 @@ Arraydatentypen sind eine geordnete Sammlung von Werten. Die Erfassung eines JSO
 }
 ```
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
 1. Erstellen Sie eine `update policy`-Funktion, mit der die Sammlung von `records` so erweitert wird, dass jeder Wert der Sammlung über den Operator `mv-expand` in einer separaten Zeile angeordnet wird. Wir nutzen die Tabelle `RawEvents` als Quelltabelle und `Events` als Zieltabelle.
 
@@ -436,7 +436,7 @@ Arraydatentypen sind eine geordnete Sammlung von Werten. Die Erfassung eines JSO
     Events
     ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 1. Erstellen Sie eine Updatefunktion, mit der die Sammlung von `records` so erweitert wird, dass jeder Wert der Sammlung über den Operator `mv-expand` in einer separaten Zeile angeordnet wird. Wir nutzen die Tabelle `RawEvents` als Quelltabelle und `Events` als Zieltabelle.   
 
@@ -490,7 +490,7 @@ Arraydatentypen sind eine geordnete Sammlung von Werten. Die Erfassung eines JSO
     
 1. Sehen Sie sich die Daten in der Tabelle `Events` an.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 1. Erstellen Sie eine Updatefunktion, mit der die Sammlung von `records` so erweitert wird, dass jeder Wert der Sammlung über den Operator `mv-expand` in einer separaten Zeile angeordnet wird. Wir nutzen die Tabelle `RawEvents` als Quelltabelle und `Events` als Zieltabelle.   
 
@@ -570,7 +570,7 @@ JSON-Code mit einer Wörterbuchstruktur enthält Schlüssel-Wert-Paare. Für JSO
 }
 ```
 
-# <a name="kqltabkusto-query-language"></a>[KQL](#tab/kusto-query-language)
+# <a name="kql"></a>[KQL](#tab/kusto-query-language)
 
 1. Erstellen Sie eine JSON-Zuordnung.
 
@@ -584,7 +584,7 @@ JSON-Code mit einer Wörterbuchstruktur enthält Schlüssel-Wert-Paare. Für JSO
     .ingest into table Events h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/dictionary.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=multijson, jsonMappingReference=KeyValueEventMapping)
     ```
 
-# <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
+# <a name="c"></a>[C#](#tab/c-sharp)
 
 1. Erstellen Sie eine JSON-Zuordnung.
 
@@ -621,7 +621,7 @@ JSON-Code mit einer Wörterbuchstruktur enthält Schlüssel-Wert-Paare. Für JSO
     ingestClient.IngestFromSingleBlob(blobPath, deleteSourceOnSuccess: false, ingestionProperties: properties);
     ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 1. Erstellen Sie eine JSON-Zuordnung.
 

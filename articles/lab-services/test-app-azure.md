@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 09/04/2018
 ms.author: spelluru
 ms.openlocfilehash: f8c57b9e1fabbd04a7d9c92484b0f52f074c2577
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65872418"
 ---
 # <a name="test-your-app-in-azure"></a>Testen Ihrer App in Azure 
@@ -32,7 +32,7 @@ Dieser Artikel enthält Schritte zum Testen der Anwendung in Azure mithilfe von 
 
 ## <a name="mount-the-file-share-on-your-local-machine"></a>Einbinden der Dateifreigabe auf dem lokalen Computer
 1. Verwenden Sie auf dem lokalen Computer das Skript aus dem Abschnitt [Beibehalten von Anmeldeinformationen für eine Azure-Dateifreigabe in Windows](../storage/files/storage-how-to-use-files-windows.md#persisting-azure-file-share-credentials-in-windows) des Artikels [Verwenden einer Azure-Dateifreigabe mit Windows](../storage/files/storage-how-to-use-files-windows.md). 
-2. Verwenden Sie dann den Befehl `net use`, um die Dateifreigabe auf dem Computer einzubinden. Beispielbefehl: Geben Sie den Namen Ihres Azure-Speichers und der Dateifreigabe an, bevor Sie den Befehl ausführen. 
+2. Verwenden Sie dann den Befehl `net use`, um die Dateifreigabe auf dem Computer einzubinden. Nachfolgend ist ein Beispielbefehl aufgeführt. Geben Sie den Namen des Azure-Speichers und der Dateifreigabe an, bevor Sie den Befehl ausführen. 
 
     `net use Z: \\<YOUR AZURE STORAGE NAME>.file.core.windows.net\<YOUR FILE SHARE NAME> /persistent:yes`
 
@@ -84,7 +84,7 @@ In diesem Abschnitt veröffentlichen Sie Ihre App über Visual Studio auf einem 
 
 1. Navigieren Sie zu der Seite Ihres virtuellen Computers im Lab. 
 2. Wählen Sie auf der Symbolleiste **Starten** aus, um den virtuellen Computer zu starten, wenn er sich im Status „Beendet“ befindet. Sie können Richtlinien für das automatische Startes und Herunterfahren für die virtuellen Computer einrichten, um zu verhindern, dass sie jedes Mal gestartet und beendet werden. 
-3. Wählen Sie **Verbinden**aus.
+3. Wählen Sie **Verbinden**.
 
     ![Seite für den virtuellen Computer](media/test-app-in-azure/virtual-machine-page.png)
 4. Starten Sie **Datei-Explorer** innerhalb des virtuellen Computers, und wählen Sie **Dieser PC** aus, um Ihre Dateifreigabe zu suchen.

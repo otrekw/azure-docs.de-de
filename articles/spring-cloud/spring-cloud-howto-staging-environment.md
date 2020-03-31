@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 5612a514ed89f73453f3751b34263b0beeea1c59
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 2e29f6a75b303518ac34ecf9b570bd7638cf0c3a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138139"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471029"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Einrichten einer Stagingumgebung in Azure Spring Cloud
 
@@ -44,7 +44,7 @@ Navigieren Sie im Azure-Portal zu Ihrer Dienstinstanz, und wählen Sie **Bereits
 
 1. Nehmen Sie in Ihrer lokalen Entwicklungsumgebung eine kleine Änderung an der PiggyMetrics-Gatewayanwendung vor. Ändern Sie beispielsweise die Farbe in der Datei *gateway/src/main/resources/static/css/launch.css*. Auf diese Weise können Sie die beiden Bereitstellungen problemlos unterscheiden. Führen Sie den folgenden Befehl aus, um das JAR-Paket zu erstellen: 
 
-    ```azurecli
+    ```console
     mvn clean package
     ```
 

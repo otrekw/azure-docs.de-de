@@ -13,17 +13,17 @@ ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: rohink
 ms.openlocfilehash: 25864e3b419d86cbe1ec816bea4438958ca33124
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76934546"
 ---
 # <a name="azure-powershell-samples-for-traffic-manager"></a>Azure PowerShell-Beispiele für Traffic Manager
 
 Die folgende Tabelle enthält Links zu Traffic Manager-Skripts, die mit Azure PowerShell erstellt wurden.
 
-|Titel  |Beschreibung |
+|Titel  |BESCHREIBUNG |
 |---------|---------|
 |[Weiterleiten von Datenverkehr über mehrere Regionen hinweg für hohe Anwendungsverfügbarkeit](./scripts/traffic-manager-powershell-websites-high-availability.md)   |    Erstellt zwei App Service-Pläne, zwei Web-Apps, ein Traffic Manager-Profil und zwei Traffic Manager-Endpunkte.     |
 |    |         |

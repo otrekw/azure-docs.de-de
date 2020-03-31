@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.openlocfilehash: d2ad585cabefb9ea78b88e748e422c745c11d03f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75476008"
 ---
 # <a name="frequently-asked-questions-about-provisioned-throughput-in-azure-cosmos-db-autopilot-mode-preview"></a>Häufig gestellte Fragen zum bereitgestellten Durchsatz im Autopilot-Modus von Azure Cosmos DB (Vorschau)
@@ -52,8 +52,8 @@ Das Speicherlimit in GB für die einzelnen maximalen RU/s lautet: Max. RU/s der 
 ### <a name="what-happens-if-i-exceed-the-storage-limit-associated-with-my-max-throughput"></a>Was passiert, wenn ich das mit meinem maximalen Durchsatz verbundene Speicherlimit überschreite?
 Wenn das mit dem maximalen Durchsatz der Datenbank oder des Containers verbundene Speicherlimit überschritten wird, erhöht Azure Cosmos DB automatisch den maximalen Durchsatz auf die nächsthöhere Ebene, die dieses Speicherniveau unterstützen kann. Nehmen Sie z. B. an, eine Datenbank oder ein Container ist mit der Option 4000 RU/s für den maximalen Durchsatz bereitgestellt, die ein Speicherlimit von 50 GB aufweist. Erhöht sich der Speicherplatz der Ressource auf 100 GB, werden die maximalen RU/s der Datenbank oder des Containers automatisch auf 20.000 RU/s erhöht, die bis zu 200 GB unterstützen können. 
 
-### <a name="how-quickly-will-autopilot-scale-up-and-down-based-on-spikes-in-traffic"></a>Wie schnell skaliert der Autopilot-Modus aufgrund von Spitzenwerten im Datenverkehr zentral hoch oder herunter?
-Der Autopilot-Modus skaliert die RU/s innerhalb des minimalen und maximalen Bereichs der RU/s, basierend auf dem eingehenden Datenverkehr, unmittelbar zentral hoch oder herunter. Die Abrechnung erfolgt mit einer Granularität von einer Stunde, wobei die höchsten RU/s in einer bestimmten Stunde berechnet werden. 
+### <a name="how-quickly-will-autopilot-scale-up-and-down-based-on-spikes-in-traffic"></a>Wie schnell skaliert der Autopilot-Modus aufgrund von Spitzenwerten im Datenverkehr hoch oder herunter?
+Der Autopilot-Modus skaliert die RU/s innerhalb des minimalen und maximalen Bereichs der RU/s, basierend auf dem eingehenden Datenverkehr, unmittelbar hoch oder herunter. Die Abrechnung erfolgt mit einer Granularität von einer Stunde, wobei die höchsten RU/s in einer bestimmten Stunde berechnet werden. 
 
 ### <a name="can-i-specify-a-custom-max-throughput-rus-value-for-autopilot-mode"></a>Kann ich einen benutzerdefinierten Wert für den maximalen Durchsatz (RU/s) für den Autopilot-Modus festlegen?
 Derzeit können Sie in der Vorschauversion zwischen [vier Optionen](provision-throughput-autopilot.md#autopilot-limits) für den maximalen Durchsatz (RU/s) wählen.

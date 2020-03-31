@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
 ms.openlocfilehash: ef7d06dfb074a3453f5589284cbdaf079c48d111
-ms.sourcegitcommit: e6bce4b30486cb19a6b415e8b8442dd688ad4f92
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78933768"
 ---
 # <a name="provision-throughput-on-a-database-in-azure-cosmos-db"></a>Bereitstellen des Durchsatzes für eine Datenbank in Azure Cosmos DB
@@ -19,7 +19,7 @@ In diesem Artikel wird erläutert, wie Sie Durchsatz für eine Datenbank in Azur
 
 ## <a name="provision-throughput-using-azure-portal"></a>Bereitstellen des Durchsatzes mithilfe des Azure-Portals
 
-### <a id="portal-sql"></a>SQL-API (Core-API)
+### <a name="sql-core-api"></a><a id="portal-sql"></a>SQL-API (Core-API)
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -46,7 +46,7 @@ Weitere Informationen zum Erstellen einer Datenbank mit gemeinsamem Durchsatz fi
 > [!Note]
 > Sie können Cosmos SDKs für die SQL-API verwenden, um Durchsatz für alle APIs bereitzustellen. Sie können optional auch das folgende Beispiel für die Cassandra-API verwenden.
 
-### <a id="dotnet-all"></a>Alle APIs
+### <a name="all-apis"></a><a id="dotnet-all"></a>Alle APIs
 
 ### <a name="net-v2-sdk"></a>.NET V2 SDK
 
@@ -67,7 +67,7 @@ await client.CreateDatabaseIfNotExistsAsync(
 
 [!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/DatabaseDocsSampleCode.cs?name=DatabaseCreateWithThroughput)]
 
-### <a id="dotnet-cassandra"></a>Cassandra-API
+### <a name="cassandra-api"></a><a id="dotnet-cassandra"></a>Cassandra-API
 Ein ähnlicher Befehl kann über einen beliebigen CQL-kompatiblen Treiber ausgeführt werden. 
 ```csharp
 // Create a Cassandra keyspace and provision throughput of 400 RU/s

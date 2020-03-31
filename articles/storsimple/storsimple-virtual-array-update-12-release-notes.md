@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/29/2019
 ms.author: alkohli
 ms.openlocfilehash: ea7e4801dfaad533403c0f927a03735ae409cc52
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66420422"
 ---
 # <a name="storsimple-virtual-array-update-12-release-notes"></a>Versionsanmerkungen zu Update 1.2 für StorSimple Virtual Array
@@ -46,7 +46,7 @@ Laden Sie KB4502035 herunter, und folgen Sie diesen Anweisungen, um [das Update 
 
 Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in dieser Version behoben wurden:
 
-| Nein. | Feature | Problem |
+| Nein. | Funktion | Problem |
 | --- | --- | --- |
 | 1 |Löschen| In früheren Versionen der Software gab es ein Problem, dass sich die Nutzung des Geräts nicht änderte, selbst wenn Dateien gelöscht wurden. Dieses Problem wurde in dieser Version behoben. Das Tiering des Codepfads ist nun bei der Verarbeitung gelöschter Dateien resilienter.|
 | 2 |Ausnahmebehandlung| In früheren Versionen der Software gab es ein Problem nach dem Neustart des Systems, das potenziell zu Fehlern bei Sicherung, Wiederherstellung, Lesen aus der Cloud und automatisierter Speicherplatzrückgewinnung führen konnte. Diese Version enthält Änderungen in Bezug auf die Behandlung von Ausnahmen im Startpfad.|
@@ -59,7 +59,7 @@ Es wurden keine neuen Probleme in die Versionsanmerkungen für Update 1.2 aufgen
 
 Laden Sie KB4502035 herunter, und [wenden Sie das Update über die lokale Webbenutzeroberfläche an](storsimple-virtual-array-install-update-11.md#use-the-local-web-ui).
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 
 Suchen Sie nach älteren Versionsanmerkungen? Wechseln Sie zu:
 * [Versionsanmerkungen zu Update 1.1 für StorSimple Virtual Array](storsimple-virtual-array-update-11-release-notes.md)

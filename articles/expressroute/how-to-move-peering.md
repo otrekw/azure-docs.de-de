@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/12/2019
 ms.author: cherylmc
 ms.openlocfilehash: 48ecfcc0d6241e7926892a3ca1c9925b0dc07241
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75436842"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Umstellen von öffentlichem Peering auf Microsoft-Peering
@@ -22,7 +22,7 @@ Im öffentlichen Azure-Peering ist jeder BGP-Sitzung eine NAT-IP-Adresse zugeord
 
 Sobald öffentliches Peering aktiviert ist, werden Sie eine Verbindung mit allen Azure-Diensten herstellen können. Es ist Ihnen nicht gestattet, selektiv Dienste auszuwählen, zu denen wir Routen ankündigen. Das Microsoft-Peering stellt eine bidirektionale Konnektivität dar, die vom Microsoft Azure-Dienst und Ihrem WAN initiiert werden kann. Weitere Informationen zu Routingdomänen und Peering finden Sie unter [ExpressRoute-Verbindungen und Routingdomänen](expressroute-circuit-peerings.md).
 
-## <a name="before"></a>Voraussetzungen
+## <a name="before-you-begin"></a><a name="before"></a>Voraussetzungen
 
 Um eine Verbindung mit Microsoft-Peering herstellen zu können, müssen Sie die NAT einrichten und verwalten. Die NAT wird unter Umständen von Ihrem Konnektivitätsanbieter eingerichtet und verwaltet. Wenn Sie im Rahmen von Microsoft-Peering auf die Azure-PaaS- und Azure-SaaS-Dienste zugreifen möchten, muss der NAT-IP-Adresspool die richtige Größe haben. Weitere Informationen zur NAT für ExpressRoute finden Sie unter [NAT-Anforderungen für Microsoft-Peering](expressroute-nat.md#nat-requirements-for-microsoft-peering). Wenn Sie über Azure ExpressRoute (Microsoft-Peering) eine Verbindung mit Microsoft herstellen, verfügen Sie über mehrere Verbindungen mit Microsoft. Ihre vorhandene Internetverbindung und die ExpressRoute-Verbindung. Ein Teil des Datenverkehrs an Microsoft kann über die Internetverbindung gesendet und über ExpressRoute empfangen werden (oder umgekehrt).
 
@@ -36,7 +36,7 @@ Informieren Sie sich unter [Asymmetrisches Routing mit mehreren Netzwerkpfaden](
 * Wenn Sie öffentliches Peering verwenden und derzeit über IP-Netzwerkregeln für öffentliche IP-Adressen verfügen, mit denen auf [Azure Storage](../storage/common/storage-network-security.md) oder [Azure SQL-Datenbank](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md) zugegriffen wird, müssen Sie sicherstellen, dass der mit Microsoft-Peering konfigurierte NAT-IP-Adressenpool in der Liste der öffentlichen IP-Adressen für das Azure Storage- oder Azure SQL-Konto enthalten ist.<br>
 * Führen Sie die Schritte in diesem Artikel in der angegebenen Reihenfolge aus, damit es bei der Umstellung auf Microsoft-Peering zu keinen Ausfällen kommt.
 
-## <a name="create"></a>1. Erstellen von Microsoft-Peering
+## <a name="1-create-microsoft-peering"></a><a name="create"></a>1. Erstellen von Microsoft-Peering
 
 Falls Microsoft-Peering noch nicht erstellt wurde, gehen Sie gemäß einem der folgenden Artikel vor, um es zu erstellen. Wenn Ihr Konnektivitätsanbieter verwaltete Layer 3-Dienste anbietet, können Sie ihn mit der Aktivierung des Microsoft-Peerings für Ihre Verbindung beauftragen.
 
@@ -58,7 +58,7 @@ Eine ausführliche Anleitung zum Aktivieren des Microsoft-Peerings finden Sie in
 * [Erstellen von Microsoft-Peering mithilfe von Azure-PowerShell](expressroute-howto-routing-arm.md#msft)<br>
 * [Erstellen von Microsoft-Peering mithilfe der Azure-Befehlszeilenschnittstelle](howto-routing-cli.md#msft)
 
-## <a name="validate"></a>2. Überprüfen des Aktivierungsstatus von Microsoft-Peering
+## <a name="2-validate-microsoft-peering-is-enabled"></a><a name="validate"></a>2. Überprüfen des Aktivierungsstatus von Microsoft-Peering
 
 Vergewissern Sie sich, dass Microsoft-Peering aktiviert ist und die angekündigten öffentlichen Präfixe konfiguriert sind.
 
@@ -66,7 +66,7 @@ Vergewissern Sie sich, dass Microsoft-Peering aktiviert ist und die angekündigt
 * [Azure PowerShell](expressroute-howto-routing-arm.md#getmsft)<br>
 * [Azure-Befehlszeilenschnittstelle](howto-routing-cli.md#getmsft)
 
-## <a name="routefilter"></a>3. Konfigurieren eines Routenfilters und Anfügen des Routenfilters an die Verbindung
+## <a name="3-configure-and-attach-a-route-filter-to-the-circuit"></a><a name="routefilter"></a>3. Konfigurieren eines Routenfilters und Anfügen des Routenfilters an die Verbindung
 
 Standardmäßig kündigen neue Microsoft-Peerings keine Präfixe an, solange kein Routenfilter an die Verbindung angefügt wurde. Beim Erstellen einer Routenfilterregel können Sie die Liste der Dienstcommunitys für Azure-Regionen angeben, die Sie für Azure-PaaS-Dienste nutzen möchten. Dies bietet Ihnen mehr Flexibilität zum Filtern von Routen entsprechend Ihrem Bedarf, wie im folgenden Screenshot gezeigt:
 
@@ -78,14 +78,14 @@ Gehen Sie zum Konfigurieren von Routenfiltern gemäß einem der folgenden Artike
 * [Konfigurieren von Routenfiltern für Microsoft-Peering: PowerShell](how-to-routefilter-powershell.md)<br>
 * [Konfigurieren von Routenfiltern für Microsoft-Peering: Azure CLI](how-to-routefilter-cli.md)
 
-## <a name="delete"></a>4. Löschen des öffentlichen Peerings
+## <a name="4-delete-the-public-peering"></a><a name="delete"></a>4. Löschen des öffentlichen Peerings
 
 Nachdem Sie sich vergewissert haben, dass das Microsoft-Peering konfiguriert ist und die Präfixe, die Sie nutzen möchten, ordnungsgemäß für Microsoft-Peering angekündigt werden, können Sie das öffentliche Peering löschen. Gehen Sie zum Löschen des öffentlichen Peerings gemäß einem der folgenden Artikel vor:
 
 * [Löschen des öffentlichen Azure-Peerings mithilfe von Azure PowerShell](about-public-peering.md#powershell)
 * [Löschen des öffentlichen Azure-Peerings mithilfe der Befehlszeilenschnittstelle](about-public-peering.md#cli)
   
-## <a name="view"></a>5. Anzeigen der Peerings
+## <a name="5-view-peerings"></a><a name="view"></a>5. Anzeigen der Peerings
   
 Im Azure-Portal können Sie eine Liste mit allen ExpressRoute-Leitungen und -Peerings anzeigen. Weitere Informationen finden Sie unter [So zeigen Sie die Details zum Microsoft-Peering an](expressroute-howto-routing-portal-resource-manager.md#getmsft).
 

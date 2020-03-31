@@ -4,21 +4,21 @@ description: In diesem Artikel wird das Verbundmetadaten-Dokument beschrieben, d
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: c2d5f80b-aa74-452c-955b-d8eb3ed62652
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: ryanwi
-ms.reviewer: hirsin, dastrock
+ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: ff034da1f2f40ad0162e5b9fad477d066bc4c3e7
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: bcc44f61ccb7b4a19e7df39ab979669c5aa37da1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163691"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154898"
 ---
 # <a name="federation-metadata"></a>Verbundmetadaten
 
@@ -41,7 +41,7 @@ Für **mandantenspezifische Endpunkte** kann `TenantDomainName` einem der folgen
 * Ein registrierter Domänenname eines Azure AD-Mandanten (Beispiel: `contoso.onmicrosoft.com`).
 * Die unveränderliche Mandanten-ID der Domäne (Beispiel: `72f988bf-86f1-41af-91ab-2d7cd011db45`).
 
-Für **mandantenunabhängige Endpunkte** wird `common` als `TenantDomainName` verwendet. In diesem Dokument sind nur die Verbundmetadaten-Elemente aufgeführt, die für alle unter „login.microsoftonline.com“ gehosteten Azure AD-Mandanten gelten.
+Für **mandantenunabhängige Endpunkte** wird `TenantDomainName` als `common` verwendet. In diesem Dokument sind nur die Verbundmetadaten-Elemente aufgeführt, die für alle unter „login.microsoftonline.com“ gehosteten Azure AD-Mandanten gelten.
 
 Ein mandantenspezifischer Endpunkt kann etwa wie folgt lauten: `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`. Der mandantenunabhängige Endpunkt ist [https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml). Sie können das Verbundmetadaten-Dokument anzeigen, indem Sie diese URL in einen Browser eingeben.
 

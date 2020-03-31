@@ -9,10 +9,10 @@ ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.topic: conceptual
 ms.date: 03/21/2017
 ms.openlocfilehash: 46da3750e4d0ac78c5fd9df91ae37670e541302d
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71315760"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>Erste Schritte mit Azure Data Lake Analytics mithilfe des Azure-Portals
@@ -34,10 +34,10 @@ Nun erstellen Sie gleichzeitig ein Data Lake Analytics- und ein Azure Data Lake 
    * **Name**: Geben Sie dem Data Lake Analytics-Konto einen Namen (nur Kleinbuchstaben und Zahlen sind zulässig).
    * **Abonnement**: Wählen Sie das Azure-Abonnement aus, das für das Analytics-Konto verwendet wird.
    * **Ressourcengruppe**. Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe.
-   * **Standort**: Wählen Sie ein Azure-Rechenzentrum für das Data Lake Analytics-Konto aus.
+   * **Standort**. Wählen Sie ein Azure-Rechenzentrum für das Data Lake Analytics-Konto aus.
    * **Data Lake Storage Gen1:** Führen Sie die Anweisungen zum Erstellen eines neuen Data Lake Storage Gen1-Kontos aus, oder wählen Sie ein vorhandenes Konto aus. 
 4. Wählen Sie optional einen Tarif für Ihr Data Lake Analytics-Konto aus.
-5. Klicken Sie auf **Create**. 
+5. Klicken Sie auf **Erstellen**. 
 
 
 ## <a name="your-first-u-sql-script"></a>Ihr erstes U-SQL-Skript

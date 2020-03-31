@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 12/19/2018
-ms.openlocfilehash: 8272867f5b6144b92dbffcf96cc539eb82f75801
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/10/2020
+ms.openlocfilehash: bb62b087451140261aee7aaa2fab0de14ea36283
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587350"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79209450"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Verwenden des Intelligent Insights-Diagnoseprotokolls für die Leistung von Azure SQL-Datenbank
 
-Auf dieser Seite finden Sie Informationen zur Verwendung des von [Intelligent Insights](sql-database-intelligent-insights.md) erstellten Diagnoseprotokolls zur Leistung von Azure SQL-Datenbank, zu dessen Format und den Daten, die es für benutzerdefinierte Entwicklungsanforderungen enthält. Sie können dieses Diagnoseprotokoll an [Azure Monitor-Protokolle](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen senden.
+Auf dieser Seite finden Sie Informationen zur Verwendung des von [Intelligent Insights](sql-database-intelligent-insights.md) erstellten Diagnoseprotokolls zur Leistung von Azure SQL-Datenbank, zu dessen Format und den Daten, die es für benutzerdefinierte Entwicklungsanforderungen enthält. Sie können dieses Diagnoseprotokoll an [Azure Monitor-Protokolle](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-azure-storage) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen senden.
 
 ## <a name="log-header"></a>Protokollheader
 
@@ -47,8 +47,8 @@ Die Eigenschaft „Pool für elastische Datenbanken“ (elasticPoolName_s) gibt 
 ```json
 "intervalStartTime_t": "2017-9-25 11:00", // start of the issue reported time stamp
 "intervalEndTme_t":"2017-9-25 12:00", // end of the issue reported time stamp
-"elasticPoolName_s" : "", // resource elastic pool (if applicable) 
-"databaseName_s" : "db_name",  // database name
+"elasticPoolName_s" : "", // resource elastic pool (if applicable)
+"databaseName_s" : "db_name", // database name
 "issueId_d" : 1525, // unique ID of the issue detected
 "status_s" : "Active" // status of the issue – possible values: "Active", "Verifying", and "Complete"
 ```
@@ -64,7 +64,7 @@ Erkannte Leistungsprobleme werden mit der folgenden Struktur der Eigenschaft „
 "impact" : 1 to 3, // impact of the issue detected, possible values 1-3 (1 low, 2 moderate, 3 high impact)
 "category" : "Detectable performance pattern", // performance issue detected, see the table
 "details": <Details outputted> // details of an issue (see the table)
-}] 
+}]
 ```
 
 Erkennbare Leistungsmuster und die Details, die an das Diagnoseprotokoll ausgegeben werden, werden in der folgenden Tabelle bereitgestellt.
@@ -105,7 +105,7 @@ Im folgenden Protokollbeispiel wurde erkannt, dass sich die Ausführungsdauer de
 
 ```json
 "impact" : [{
-"entity" : { 
+"entity" : {
 "Type" : "Query", // type of entity - query
 "Value" : "query hash value", // for example "0x9102EXZ4" query hash value },
 "Metric" : "DurationIncreaseSeconds", // measured metric and the measurement unit (in this case seconds)
@@ -113,7 +113,7 @@ Im folgenden Protokollbeispiel wurde erkannt, dass sich die Ausführungsdauer de
 }]
 ```
 
-### <a name="metrics"></a>Metriken
+### <a name="metrics"></a>metrics
 
 Die Maßeinheit für jede gemeldete Metrik wird unter der Eigenschaft „Metric“ (Metrik) mit den möglichen Werten (Sekunden, Zahl und Prozent) angegeben. Der Wert einer gemessenen Metrik wird von der Eigenschaft „Value“ (Wert) gemeldet.
 
@@ -137,10 +137,8 @@ Der letzte Teil des Intelligent Insights-Leistungsprotokolls bezieht sich auf di
 Sie können das Intelligent Insights-Leistungsprotokoll mit [Azure Monitor-Protokolle]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Erfahren Sie mehr über die [Intelligent Insights](sql-database-intelligent-insights.md)-Konzepte.
 - Erfahren Sie mehr über das [Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
 - Erfahren Sie mehr über das [Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
 - Erfahren Sie mehr über das [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
-
-
-

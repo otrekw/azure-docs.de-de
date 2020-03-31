@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.openlocfilehash: c949556949e0c187d7c23c4dd32436e245bfbb95
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75889328"
 ---
 # <a name="troubleshoot-errors-when-onboarding-update-management-change-tracking-and-inventory"></a>Beheben von Fehlern beim Onboarding von Lösungen für Updateverwaltung, Änderungsnachverfolgung und Bestand
@@ -21,7 +21,7 @@ Beim Integrieren von Lösungen wie Updateverwaltung oder Änderungsnachverfolgun
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
-### <a name="node-rename"></a>Szenario: Das Umbenennen eines registrierten Knotens erfordert das Aufheben der Registrierung und das erneute Registrieren.
+### <a name="scenario-renaming-a-registered-node-requires-unregister--register-again"></a><a name="node-rename"></a>Szenario: Das Umbenennen eines registrierten Knotens erfordert das Aufheben der Registrierung und das erneute Registrieren.
 
 #### <a name="issue"></a>Problem
 
@@ -36,7 +36,7 @@ Beim Umbenennen registrierter Knoten wird der Knotenname in Azure Automation nic
 Heben Sie die Registrierung des Knotens in Azure Automation State Configuration auf, und registrieren Sie ihn erneut.  Berichte, die vor diesem Zeitpunkt im Dienst veröffentlicht wurden, sind anschließend nicht mehr verfügbar.
 
 
-### <a name="resigning-cert"></a>Szenario: Das erneute Signieren von Zertifikaten über den HTTPS-Proxy wird nicht unterstützt.
+### <a name="scenario-re-signing-certificates-via-https-proxy-is-not-supported"></a><a name="resigning-cert"></a>Szenario: Das erneute Signieren von Zertifikaten über den HTTPS-Proxy wird nicht unterstützt.
 
 #### <a name="issue"></a>Problem
 
@@ -52,7 +52,7 @@ Für dieses Szenario gibt es keine Problemumgehung.
 
 ## <a name="general-errors"></a>Allgemeine Fehler
 
-### <a name="missing-write-permissions"></a>Szenario: Fehler beim Onboarding mit der Meldung, dass die Lösung nicht aktiviert werden kann
+### <a name="scenario-onboarding-fails-with-the-message---the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>Szenario: Fehler beim Onboarding mit der Meldung, dass die Lösung nicht aktiviert werden kann
 
 #### <a name="issue"></a>Problem
 
@@ -74,7 +74,7 @@ Dieser Fehler wird durch falsche oder fehlende Berechtigungen auf dem virtuellen
 
 Stellen Sie sicher, dass Sie die erforderlichen Berechtigungen zum Integrieren des virtuellen Computers haben. Überprüfen Sie noch einmal [die Berechtigungen, die für das Onboarding von Computern erforderlich sind](../automation-role-based-access-control.md#onboarding), und wiederholen Sie das Onboarding für die Lösung. Wenn Sie den Fehler `The solution cannot be enabled on this VM because the permission to read the workspace is missing` erhalten, stellen Sie sicher, dass Sie über die Berechtigung `Microsoft.OperationalInsights/workspaces/read` verfügen, um herausfinden zu können, ob die VM in einen Arbeitsbereich integriert ist.
 
-### <a name="diagnostic-logging"></a>Szenario: Onboarding-Fehler mit der Meldung „Fehler beim Konfigurieren eines Automation-Kontos für die Diagnoseprotokollierung“
+### <a name="scenario-onboarding-fails-with-the-message---failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Szenario: Onboarding-Fehler mit der Meldung „Fehler beim Konfigurieren eines Automation-Kontos für die Diagnoseprotokollierung“
 
 #### <a name="issue"></a>Problem
 
@@ -92,7 +92,7 @@ Dieser Fehler kann auftreten, wenn der Tarif nicht mit dem Abrechnungsmodell des
 
 Erstellen Sie Ihren Log Analytics-Arbeitsbereich manuell, und wiederholen Sie den Onboardingprozess, um den erstellten Arbeitsbereich auszuwählen.
 
-### <a name="computer-group-query-format-error"></a>Szenario: ComputerGroupQueryFormatError
+### <a name="scenario-computergroupqueryformaterror"></a><a name="computer-group-query-format-error"></a>Szenario: ComputerGroupQueryFormatError
 
 #### <a name="issue"></a>Problem
 
@@ -106,7 +106,7 @@ Möglicherweise haben Sie die Abfrage geändert, oder sie wurde vom System geän
 
 Sie können die Abfrage für diese Lösung löschen und die Lösung erneut anwenden, wodurch die Abfrage neu erstellt wird. Die Abfrage finden Sie in Ihrem Arbeitsbereich unter **Gespeicherte Suchvorgänge**. Der Name der Abfrage lautet **MicrosoftDefaultComputerGroup**, und die Kategorie der Abfrage ist der Name der mit dieser Abfrage verknüpften Lösung. Wenn mehrere Lösungen aktiviert sind, wird **MicrosoftDefaultComputerGroup** unter **Speicherte Suchvorgänge** mehrfach angezeigt.
 
-### <a name="policy-violation"></a>Szenario: PolicyViolation
+### <a name="scenario-policyviolation"></a><a name="policy-violation"></a>Szenario: PolicyViolation
 
 #### <a name="issue"></a>Problem
 
@@ -128,7 +128,7 @@ Für eine erfolgreiche Bereitstellung der Lösung müssen Sie eine Änderung der
 
 Lesen Sie die Benachrichtigungen in der oberen rechten Ecke des Azure-Portals, oder navigieren Sie zum Anzeigen der fehlerhaften Bereitstellung zu der Ressourcengruppe, die Ihr Automation-Konto enthält, und wählen Sie unter **Einstellungen** die Option **Bereitstellungen** aus. Weitere Informationen zu Azure Policy finden Sie hier: [Übersicht zu Azure Policy](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
 
-### <a name="unlink"></a>Szenario: Fehler beim Versuch, die Verknüpfung eines Arbeitsbereichs aufzuheben
+### <a name="scenario-errors-trying-to-unlink-a-workspace"></a><a name="unlink"></a>Szenario: Fehler beim Versuch, die Verknüpfung eines Arbeitsbereichs aufzuheben
 
 #### <a name="issue"></a>Problem
 
@@ -158,7 +158,7 @@ Nachdem Sie die Lösungen entfernt haben, können Sie die Verknüpfung zu Ihrem 
   * Entfernen Sie alle Sperren für die Komponenten der Lösung in Ihrem Automation-Konto unter **Einstellungen** > **Sperren**.
   * Zusätzliche Schritte zum Entfernen der Lösung für das Starten/Beenden von VMs außerhalb der Geschäftszeiten finden Sie im Artikel [Starten/Beenden von VMs außerhalb der Geschäftszeiten – Entfernen der Lösung](../automation-solution-vm-management.md#remove-the-solution).
 
-## <a name="mma-extension-failures"></a>MMA-Erweiterungsfehler
+## <a name="mma-extension-failures"></a><a name="mma-extension-failures"></a>MMA-Erweiterungsfehler
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
@@ -168,7 +168,7 @@ Die Installation von MMA oder des Log Analytics-Agents für Linux kann aus versc
 
 Im folgenden Abschnitt werden verschiedene Probleme beschrieben, die bei der Integration auftreten können und die einen Fehler bei der Bereitstellung der MMA-Erweiterung verursachen.
 
-### <a name="webclient-exception"></a>Szenario: Ausnahme während einer WebClient-Anforderung
+### <a name="scenario-an-exception-occurred-during-a-webclient-request"></a><a name="webclient-exception"></a>Szenario: Ausnahme während einer WebClient-Anforderung
 
 Die MMA-Erweiterung auf dem virtuellen Computer kann nicht mit externen Ressourcen kommunizieren, und die Bereitstellung schlägt fehl.
 
@@ -196,7 +196,7 @@ Mögliche Ursachen für diesen Fehler:
 
 Stellen Sie sicher, dass die ordnungsgemäßen Ports und Adressen für die Kommunikation geöffnet sind. Eine Liste der Ports und Adressen finden Sie unter [Planen Ihres Netzwerks](../automation-hybrid-runbook-worker.md#network-planning).
 
-### <a name="transient-environment-issue"></a>Szenario: Fehler bei der Installation aufgrund vorübergehender Umgebungsprobleme
+### <a name="scenario-install-failed-because-of-a-transient-environment-issues"></a><a name="transient-environment-issue"></a>Szenario: Fehler bei der Installation aufgrund vorübergehender Umgebungsprobleme
 
 Die Installation der Microsoft Monitoring Agent-Erweiterung ist während der Bereitstellung aufgrund einer anderen Installation oder Aktion fehlgeschlagen, die die Installation blockiert.
 
@@ -227,7 +227,7 @@ Mögliche Ursachen für diesen Fehler:
 
 Dieser Fehler tritt nur vorübergehend auf. Wiederholen Sie die Bereitstellung, um die Erweiterung zu installieren.
 
-### <a name="installation-timeout"></a>Szenario: Zeitlimit für Installation
+### <a name="scenario-installation-timeout"></a><a name="installation-timeout"></a>Szenario: Zeitlimit für Installation
 
 Die Installation der MMA-Erweiterung wurde aufgrund eines Zeitlimits nicht abgeschlossen.
 

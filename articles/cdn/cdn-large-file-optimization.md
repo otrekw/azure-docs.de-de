@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: magattus
 ms.openlocfilehash: 4fe72985a799595908a0ff6bceb1a73dca823c8f
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593780"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Optimierung großer Dateidownloads mit Azure CDN
@@ -110,8 +110,8 @@ Für die Optimierung großer Dateien werden unterschiedliche Standardzeiten für
 
 |    | Allgemeine Webübermittlung | Optimierung großer Dateien 
 --- | --- | --- 
-Caching: Positiv <br> HTTP 200, 203, 300, <br> 301, 302 und 410 | 7 Tage |1 Tag  
-Caching: Negativ <br> HTTP 204, 305, 404 <br> und 405 | Keine | 1 Sekunde 
+Caching: positiv <br> HTTP 200, 203, 300, <br> 301, 302 und 410 | 7 Tage |1 Tag  
+Caching: negativ <br> HTTP 204, 305, 404 <br> und 405 | Keine | 1 Sekunde 
 
 ### <a name="deal-with-origin-failure"></a>Behandeln eines Ausfalls des Ursprungsservers
 
@@ -130,7 +130,7 @@ Minimale Dateigröße | 10 MB
 Maximale Dateigröße | 150 GB 
 Merkmale des Ursprungsservers | Muss Bytebereichsanforderungen unterstützen 
 
-## <a name="additional-considerations"></a>Zusätzliche Überlegungen
+## <a name="additional-considerations"></a>Weitere Überlegungen
 
 Berücksichtigen Sie für diesen Optimierungstyp auch folgende Punkte:
 

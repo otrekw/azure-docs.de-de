@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 0ed2bd7f1e03d8d5fa11f7e76010d087605f0fe1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75460701"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Datenimport-Assistent für die kognitive Azure-Suche
@@ -109,7 +109,7 @@ Der Assistent generiert einen unvollständigen Index, der mit Dokumenten aus der
 
 1. Legen Sie Attribute fest, um zu bestimmen, wie das Feld in einem Index verwendet wird. 
 
-   Nehmen Sie sich bei diesem Schritt Zeit, da Attribute den physischen Ausdruck von Feldern im Index bestimmen. Wenn Sie Attribute später ändern möchten, selbst programmgesteuert, müssen Sie fast immer den Index löschen und neu erstellen. Die [Auswirkungen](search-what-is-an-index.md#index-size) von Kernattributen wie **Searchable** und **Retrievable** auf den Speicher sind vernachlässigbar. Die Aktivierung von Filtern und die Verwendung von Vorschlagsfunktionen erhöht die Speicheranforderungen. 
+   Nehmen Sie sich bei diesem Schritt Zeit, da Attribute den physischen Ausdruck von Feldern im Index bestimmen. Wenn Sie Attribute später ändern möchten, selbst programmgesteuert, müssen Sie fast immer den Index löschen und neu erstellen. Die **Auswirkungen** von Kernattributen wie **Searchable** und [Retrievable](search-what-is-an-index.md#index-size) auf den Speicher sind vernachlässigbar. Die Aktivierung von Filtern und die Verwendung von Vorschlagsfunktionen erhöht die Speicheranforderungen. 
    
    + **Durchsuchbar** ermöglicht eine Volltextsuche. Jedes Feld, das in Freiformabfragen oder in Abfrageausdrücken verwendet wird, muss über dieses Attribut verfügen. Für jedes als **Durchsuchbar** markierte Feld werden invertierte Indizes erstellt.
 

@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: d36d2be59010c47348a8e196b28d87e5b967868e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67177962"
 ---
 ### <a name="step-1-navigate-to-the-virtual-network-gateway"></a>Schritt 1: Navigieren zum Gateway für virtuelle Netzwerke
@@ -26,7 +26,7 @@ ms.locfileid: "67177962"
 2. Klicken Sie auf **...** in der Zeile mit dem Namen der Verbindung, und wählen Sie in der Dropdownliste die Option **Löschen** aus.
 3. Klicken Sie auf **Ja**, um zu bestätigen, dass Sie die Verbindung löschen möchten. Wenn Sie über mehrere Verbindungen verfügen, löschen Sie jede Verbindung.
 
-### <a name="step-3-delete-the-virtual-network-gateway"></a>Schritt 3: Löschen des Gateways des virtuellen Netzwerks
+### <a name="step-3-delete-the-virtual-network-gateway"></a>Schritt 3: Löschen des Gateways für virtuelle Netzwerke
 
 Hinweis: Wenn Sie neben der S2S-Konfiguration noch über eine P2S-Konfiguration für dieses VNET verfügen, werden automatisch alle P2S-Clients ohne Warnung getrennt, wenn Sie das Gateway des virtuellen Netzwerks löschen.
 
