@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc8ba01ea8a443c4f8a3a8e7b911dcc605ee61ea
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 149718dcd325ef6bd6a6754ba100ffdc34be0a07
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967704"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "79136413"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit SignalFx
 
@@ -30,7 +30,7 @@ In diesem Tutorial erfahren Sie, wie Sie SignalFx in Azure Active Directory (Azu
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei SignalFx anzumelden.
 * Sie können Ihre Konten zentral über das Azure-Portal verwalten.
 
-Weitere Informationen zur Integration von SaaS-Anwendungen in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on).
+Weitere Informationen zur Integration von SaaS-Anwendungen in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -57,7 +57,7 @@ Gehen Sie wie folgt vor, um die SignalFx-Anwendung Ihrer Liste mit den verwaltet
 1. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** aus.
 1. Wählen Sie **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **SignalFx** in das Suchfeld ein, und wählen Sie die entsprechende Option aus.
-    * Es kann unter Umständen einige Minuten dauern, bis die Anwendung Ihrem Mandanten hinzugefügt wird.
+     * Es kann unter Umständen einige Minuten dauern, bis die Anwendung Ihrem Mandanten hinzugefügt wird.
 1. Lassen Sie das Azure-Portal geöffnet, und öffnen Sie einen neuen Webtab.    
 
 ## <a name="step-2-begin-signalfx-sso-configuration"></a>Schritt 2: Konfigurieren des einmaligen Anmeldens für SignalFx
@@ -118,7 +118,7 @@ Gehen Sie wie folgt vor, um im Azure-Portal einen Testbenutzer namens **B.Simon*
 
 1. Wählen Sie im Azure-Portal im Navigationsfenster auf der linken Seite **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
 1. Wählen Sie im oberen Bereich der Seite die Option **Neuer Benutzer** aus.
-1. Gehen Sie in den Benutzereigenschaften wie folgt vor: ****
+1. Gehen Sie in den **Benutzereigenschaften** wie folgt vor:
    1. Geben Sie unter **Benutzername** einen Benutzernamen im Format `username@companydomain.extension` ein (beispielsweise `b.simon@contoso.com`).
    1. Geben Sie unter **Name**`B.Simon` ein.
    1. Aktivieren Sie **Kennwort anzeigen**, und kopieren Sie den unter **Kennwort** angezeigten Wert. Er wird in einem späteren Schritt benötigt, um die Integration zu testen. 
@@ -175,7 +175,7 @@ Machen Sie sich mit der folgenden Anleitung zum Testen des einmaligen Anmeldens 
 
 - [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/what-is-single-sign-on)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](/azure/active-directory/manage-apps/what-is-single-sign-on)
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
