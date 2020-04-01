@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7762366f68bee2cd8c44e81bb22366c504ff1a73
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: ae3d38d92990d7a1af4146c25b017286ebd29352
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484416"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061039"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Konfigurieren eines Site-to-Site-VPN zur Verwendung mit Azure Files
 Sie können ein S2S-VPN (Site-to-Site) verwenden, um Ihre Azure-Dateifreigaben aus Ihrem lokalen Netzwerk über SMB einzubinden, ohne Port 445 zu öffnen. Sie können ein Site-to-Site-VPN mithilfe des [Azure VPN Gateways](../../vpn-gateway/vpn-gateway-about-vpngateways.md) einrichten, einer Azure-Ressource, die VPN-Dienste anbietet, und die in einer Ressourcengruppe zusammen mit Speicherkonten oder anderen Azure-Ressourcen bereitgestellt wird.
@@ -24,7 +24,9 @@ Es wird dringend empfohlen, vor der Lektüre des vorliegenden Artikels den Artik
 Der Artikel beschreibt die Schritte zur Konfiguration eines Site-to-Site-VPN, um Azure-Dateifreigaben direkt lokal einzubinden. Wenn Sie den Synchronisierungsdatenverkehr für die Azure-Dateisynchronisierung über ein Site-to-Site-VPN leiten möchten, lesen Sie den Artikel [Konfigurieren der Proxy- und Firewalleinstellungen der Dateisynchronisierung](storage-sync-files-firewall-and-proxy.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
-- Eine Azure-Dateifreigabe, die Sie lokal einbinden möchten. Sie können mit Ihrem Site-to-Site-VPN entweder eine Azure-Dateifreigabe vom Typ [Standard](storage-how-to-create-file-share.md) oder [Premium](storage-how-to-create-premium-fileshare.md) verwenden.
+- Eine Azure-Dateifreigabe, die Sie lokal einbinden möchten. Azure-Dateifreigaben werden in Speicherkonten bereitgestellt. Hierbei handelt es sich um Verwaltungskonstrukte, die einen gemeinsam genutzten Speicherpool darstellen, in dem Sie mehrere Dateifreigaben sowie weitere Speicherressourcen wie Blobcontainer oder Warteschlangen bereitstellen können. Weitere Informationen zum Bereitstellen von Azure-Dateifreigaben und Speicherkonten finden Sie unter [Erstellen einer Azure-Dateifreigabe](storage-how-to-create-file-share.md).
+
+- Ein privater Endpunkt für das Speicherkonto mit der Azure-Dateifreigabe, die Sie lokal bereitstellen möchten. Weitere Informationen zum Erstellen eines privaten Endpunkts finden Sie unter [Konfigurieren von Azure Files-Netzwerkendpunkten](storage-files-networking-endpoints.md?tabs=azure-portal). 
 
 - Ein mit Azure VPN Gateway kompatibles Netzwerkgerät oder ein Netzwerkserver in Ihrem lokalen Rechenzentrum. Azure Files ist unabhängig vom ausgewählten lokalen Netzwerkgerät, aber Azure VPN Gateway verwaltet eine [Liste der getesteten Geräte](../../vpn-gateway/vpn-gateway-about-vpn-devices.md). Unterschiedliche Netzwerkgeräte bieten unterschiedliche Features, Leistungsmerkmale und Verwaltungsfunktionen. Dies sollten Sie bei der Auswahl eines Netzwerkgeräts berücksichtigen.
 
@@ -75,23 +77,6 @@ Klicken Sie auf **Erstellen**, um das lokale Netzwerkgateway zu erstellen.
 
 ## <a name="configure-on-premises-network-appliance"></a>Konfigurieren eines lokale Netzwerkgeräts
 Die spezifischen Schritte zur Konfiguration Ihres lokalen Netzwerkgeräts hängen von dem von Ihrer Organisation ausgewählten Netzwerkgerät ab. Je nachdem, welches Gerät Ihre Organisation ausgewählt hat, enthält die [Liste der getesteten Geräte](../../vpn-gateway/vpn-gateway-about-vpn-devices.md) einen Link zu den Anweisungen Ihres Geräteanbieters für die Konfiguration mit Azure VPN Gateway.
-
-## <a name="create-private-endpoint-preview"></a>Erstellen eines privaten Endpunkts (Vorschau)
-Wenn Sie einen privaten Endpunkt für Ihr Speicherkonto erstellen, erhält Ihr Speicherkonto eine IP-Adresse im IP-Adressraum Ihres virtuellen Netzwerks. Wenn Sie Ihre Azure-Dateifreigabe von einer lokalen Umgebung aus mithilfe dieser privaten IP-Adresse einbinden, leiten die von der VPN-Installation automatisch definierten Routingregeln Ihre Einbindungsanforderung über das VPN an das Speicherkonto weiter. 
-
-Wählen Sie auf dem Blatt „Speicherkonto“ die Option **Private Endpunktverbindung** im linken Inhaltsverzeichnis und dann **+ Privater Endpunkt**, um einen neuen privaten Endpunkt zu erstellen. Im anschließend angezeigten Assistenten müssen mehrere Seiten ausgefüllt werden:
-
-![Screenshot des Abschnitts „Grundlagen“ des Abschnitts „Erstellen eines privaten Endpunkts“](media/storage-files-configure-s2s-vpn/create-private-endpoint-1.png)
-
-Wählen Sie auf der Registerkarte **Grundlagen** die gewünschte Ressourcengruppe, den Namen und die Region für Ihren privaten Endpunkt aus. Diese können beliebig sein und müssen nicht mit dem Speicherkonto übereinstimmen. Allerdings müssen Sie den privaten Endpunkt in derselben Region erstellen wie das virtuelle Netzwerk, in dem Sie den privaten Endpunkt erstellen möchten.
-
-Wählen Sie auf der Registerkarte **Ressourcen** das Optionsfeld für **Verbindung mit einer Azure-Ressource im eigenen Verzeichnis herstellen**. Wählen Sie als **Ressourcentyp** **Microsoft.Storage/storageAccounts** aus. Das Feld **Ressourcen** ist das Speicherkonto mit der Azure-Dateifreigabe, mit der Sie eine Verbindung herstellen möchten. Die untergeordnete Zielressource ist **file**, da es sich hier um Azure Files handelt.
-
-Auf der Registerkarte **Konfiguration** können Sie das spezifische virtuelle Netzwerk und das Subnetz auswählen, dem Sie Ihren privaten Endpunkt hinzufügen möchten. Wählen Sie das oben erstellte virtuelle Netzwerk aus. Sie müssen ein anderes Subnetz als das Subnetz auswählen, zu dem Sie oben Ihren Dienstendpunkt hinzugefügt haben.
-
-Auf der Registerkarte **Konfiguration** können Sie zudem eine private DNS-Zone einrichten. Dies ist nicht erforderlich. Dadurch können Sie jedoch zum Einbinden der Azure-Dateifreigabe einen benutzerfreundlichen UNC-Pfad (z. B. `\\mystorageaccount.privatelink.file.core.windows.net\myshare`) anstelle eines UNC-Pfads mit einer IP-Adresse verwenden. Dies kann auch mit ihren eigenen DNS-Servern innerhalb Ihres virtuellen Netzwerks erfolgen.
-
-Klicken Sie auf **Überprüfen + Erstellen**, um den privaten Endpunkt zu erstellen. Sobald der private Endpunkt erstellt wurde, sehen Sie zwei neue Ressourcen: den privaten Endpunkt und die verbundene virtuelle Netzwerkschnittstelle. Die virtuelle Netzwerkschnittstellenressource hat die dedizierte private IP des Speicherkonto. 
 
 ## <a name="create-the-site-to-site-connection"></a>Erstellen der Site-to-Site-Verbindung
 Um die Bereitstellung eines S2S-VPN abzuschließen, müssen Sie eine Verbindung zwischen Ihrem lokalen Netzwerkgerät (dargestellt durch das lokale Netzwerkgateway) und dem VPN Gateway herstellen. Navigieren Sie dafür zum oben erstellten VPN Gateway. Wählen Sie im Inhaltsverzeichnis für das VPN Gateway die Option **Verbindungen** aus, und klicken Sie auf **Hinzufügen**. Im daraufhin angezeigten Bereich **Verbindung hinzufügen** müssen folgende Felder ausgefüllt werden:

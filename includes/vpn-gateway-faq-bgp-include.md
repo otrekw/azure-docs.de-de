@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 0e3f996ab2a42057198368759c75f10e911d5f54
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 608b148dc3929065df44530da65e695df19be03e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68936809"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79485995"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Wird BGP von allen Azure-VPN-Gateway-SKUs unterstützt?
-Nein, BGP wird von Azure-VPN-Gateways vom Typ **VpnGw1**, **VpnGw2**, **VpnGw3**, **Standard** und **HighPerformance** unterstützt. Die SKU **Basic** wird NICHT unterstützt.
+BGP wird für alle Azure-VPN-Gateway-SKUs mit Ausnahme der SKU „Basic“ unterstützt.
 
 ### <a name="can-i-use-bgp-with-azure-policy-based-vpn-gateways"></a>Kann ich BGP mit richtlinienbasierten Azure-VPN-Gateways verwenden?
 Nein. BGP wird nur für routenbasierte VPN-Gateways unterstützt.
@@ -24,8 +24,8 @@ Nein. BGP wird nur für routenbasierte VPN-Gateways unterstützt.
 ### <a name="can-i-use-private-asns-autonomous-system-numbers"></a>Kann ich private ASNs (Autonome Systemnummern) verwenden?
 Ja. Sie können eigene öffentliche ASNs oder private ASNs verwenden – sowohl für Ihre lokalen Netzwerke als auch für Ihre virtuellen Azure-Netzwerke.
 
-### <a name="can-i-use-32-bit-asns-autonomous-system-numbers"></a>Kann ich 32-Bit-ASNs (Autonome Systemnummern) verwenden?
-Nein, Azure-VPN-Gateways unterstützen derzeit 16-Bit-ASNs.
+### <a name="can-i-use-32-bit-4-byte-asns-autonomous-system-numbers"></a>Kann ich ASNs (Autonome Systemnummern) mit 32 Bit (4 Bytes) verwenden?
+Ja, Azure-VPN-Gateways unterstützen nun 32-Bit-ASNs (4 Bytes). Verwenden Sie PowerShell, die CLI oder das SDK, um die Verwendung einer ASN im Dezimalformat zu konfigurieren.
 
 ### <a name="are-there-asns-reserved-by-azure"></a>Werden ASNs von Azure reserviert?
 Ja. Die folgenden ASNs werden von Azure sowohl für interne als auch für externe Peerings reserviert:

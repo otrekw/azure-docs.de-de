@@ -3,17 +3,17 @@ title: Einführung in Azure-Warteschlangen – Azure Storage
 description: Einführung in Azure-Warteschlangen
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 06/07/2019
+ms.date: 03/18/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: overview
 ms.reviewer: cbrooks
-ms.openlocfilehash: 0e8bac8344bec06b58a22b8c9162cd8bd22ee700
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 4a2bea77578282d68d86bc1a8cea765aa2cbd555
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750438"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80060847"
 ---
 # <a name="what-are-azure-queues"></a>Was sind Azure-Warteschlangen?
 
@@ -23,7 +23,7 @@ Azure Queue Storage ist ein Dienst für die Speicherung großer Nachrichtenmenge
 
 Der Warteschlangendienst umfasst die folgenden Komponenten:
 
-![Konzepte des Warteschlangendiensts](./media/storage-queues-introduction/queue1.png)
+![Diagramm, das die Beziehung zwischen einem Speicherkonto, Warteschlangen und Nachrichten zeigt](./media/storage-queues-introduction/queue1.png)
 
 * **URL-Format:** Warteschlangen können über das folgende URL-Format aufgerufen werden:
 

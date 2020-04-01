@@ -8,19 +8,20 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 28724f85ada989cbe3ce754418fb781bb0468de4
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 8752585e731f905636f57d31741e2be67f7140b3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77465954"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335037"
 ---
-<a name="azure-resource-manager-virtual-networking-limits"></a>Netzwerkgrenzwerte – Azure Resource Manager Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den **Azure Resource Manager** pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
+### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Netzwerkgrenzwerte – Azure Resource Manager
+Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den **Azure Resource Manager** pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 
 > [!NOTE]
 > Vor Kurzem wurden die Standardgrenzwerte auf die maximalen Grenzwerte erhöht. Falls die Spalte für den maximalen Grenzwert nicht vorhanden ist, gibt es für die entsprechende Ressource keine anpassbaren Grenzwerte. Wenn diese Grenzwerte für Sie in der Vergangenheit durch den Support erhöht wurden und die aktualisierten Grenzwerte in den folgenden Tabellen nicht angezeigt werden, [erstellen Sie eine kostenlose Online-Kundensupportanfrage](../articles/azure-resource-manager/templates/error-resource-quota.md).
 
-| Resource | Standard/maximales Limit | 
+| Resource | Begrenzung | 
 | --- | --- |
 | Virtuelle Netzwerke |1\.000 |
 | Subnetze pro virtuellem Netzwerk |3,000 |
@@ -48,7 +49,7 @@ ms.locfileid: "77465954"
 | TAPs für virtuelle Netzwerke |100 |
 | Netzwerkschnittstellen-TAP-Konfigurationen pro virtuellem Netzwerk-TAP |100 |
 
-#### <a name="publicip-address"></a>Grenzwerte für öffentliche IP-Adressen
+#### <a name="public-ip-address-limits"></a><a name="publicip-address"></a>Grenzwerte für öffentliche IP-Adressen
 | Resource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
 | Öffentliche IP-Adressen<sup>1</sup> | 10 für Basic. | Wenden Sie sich an den Support. |
@@ -59,12 +60,12 @@ ms.locfileid: "77465954"
 
 <sup>1</sup>Die Standardgrenzwerte für öffentliche IP-Adressen unterscheiden sich je nach Typ der Angebotskategorie, z. B. kostenlose Testversion, nutzungsbasierte Bezahlung, CSP. Beispielsweise ist der Standardwert für Enterprise Agreement-Abonnements 1000.
 
-#### <a name="load-balancer"></a>Load Balancer-Grenzwerte
+#### <a name="load-balancer-limits"></a><a name="load-balancer"></a>Load Balancer-Grenzwerte
 Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure Resource Manager pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 
 **Load Balancer Standard**
 
-| Resource                                | Standard/maximales Limit         |
+| Resource                                | Begrenzung         |
 |-----------------------------------------|-------------------------------|
 | Load Balancer                          | 1\.000                         |
 | Regeln pro Ressource                      | 1\.500                         |
@@ -72,12 +73,13 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Front-End-IP-Konfigurationen              | 600                           |
 | Größe des Back-End-Pools                       | 1\.000 IP-Konfigurationen, einzelnes virtuelles Netzwerk |
 | Hochverfügbarkeitsports                 | 1 pro internem Front-End       |
-| Ausgangsregeln pro Lastenausgleichsmodul         | 20                            |
+| Ausgangsregeln pro Lastenausgleichsmodul        | 20                            |
+| [TCP-Leerlauftimeout](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4 Minuten/30 Minuten          |
 
 
 **Load Balancer Basic**
 
-| Resource                                | Standard/maximales Limit        |
+| Resource                                | Begrenzung        |
 |-----------------------------------------|------------------------------|
 | Load Balancer                          | 1\.000                        |
 | Regeln pro Ressource                      | 250                          |
@@ -86,7 +88,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Größe des Back-End-Pools                       | 300 IP-Konfigurationen, einzelne Verfügbarkeitsgruppe |
 | Verfügbarkeitsgruppen pro Lastenausgleichsmodul     | 150                          |
 
-#### <a name="virtual-networking-limits-classic"></a>Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über das **klassische** Bereitstellungsmodell verwaltet werden (pro Abonnement). Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
+<a name="virtual-networking-limits-classic"></a>Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über das **klassische** Bereitstellungsmodell verwaltet werden (pro Abonnement). Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 
 | Resource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
