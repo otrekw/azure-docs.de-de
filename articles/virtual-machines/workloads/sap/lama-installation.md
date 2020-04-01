@@ -14,22 +14,22 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 2df0bfe8041216e207193832c8f7ca48967c4e5b
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: fda62ff0af29c7cf681d9438b02420d299535701
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76842434"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80293942"
 ---
 # <a name="sap-lama-connector-for-azure"></a>SAP LaMa-Connector für Azure
 
-[1877727]: https://launchpad.support.sap.com/#/notes/1877727
-[2343511]: https://launchpad.support.sap.com/#/notes/2343511
-[2350235]: https://launchpad.support.sap.com/#/notes/2350235
-[2562184]: https://launchpad.support.sap.com/#/notes/2562184
-[2628497]: https://launchpad.support.sap.com/#/notes/2628497
-[2445033]: https://launchpad.support.sap.com/#/notes/2445033
-[2815988]: https://launchpad.support.sap.com/#/notes/2815988
+[1877727]:https://launchpad.support.sap.com/#/notes/1877727
+[2343511]:https://launchpad.support.sap.com/#/notes/2343511
+[2350235]:https://launchpad.support.sap.com/#/notes/2350235
+[2562184]:https://launchpad.support.sap.com/#/notes/2562184
+[2628497]:https://launchpad.support.sap.com/#/notes/2628497
+[2445033]:https://launchpad.support.sap.com/#/notes/2445033
+[2815988]:https://launchpad.support.sap.com/#/notes/2815988
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 [dbms-guide]:dbms-guide.md
@@ -77,7 +77,7 @@ Der Azure-Connector ist seit SAP LaMa 3.0 SP05 im Lieferumfang des Tools inbegri
 
 Der Azure-Connector nutzt die Azure Resource Manager-API zum Verwalten Ihrer Azure-Ressourcen. SAP LaMa kann sich über einen Dienstprinzipal oder eine verwaltete Identität bei dieser API authentifizieren. Wenn Ihre SAP LaMa-Instanz auf einem virtuellen Azure-Computer ausgeführt wird, empfehlen wir die Verwendung einer verwalteten Identität, wie im Kapitel [Verwenden einer verwalteten Identität zum Erhalten von Zugriff auf die Azure-API](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d) beschrieben. Wenn Sie einen Dienstprinzipal verwenden möchten, befolgen Sie die Schritte im Kapitel [Verwenden eines Dienstprinzipals zum Erhalten von Zugriff auf die Azure-API](lama-installation.md#913c222a-3754-487f-9c89-983c82da641e).
 
-### <a name="913c222a-3754-487f-9c89-983c82da641e"></a>Verwenden eines Dienstprinzipals zum Erhalten von Zugriff auf die Azure-API
+### <a name="use-a-service-principal-to-get-access-to-the-azure-api"></a><a name="913c222a-3754-487f-9c89-983c82da641e"></a>Verwenden eines Dienstprinzipals zum Erhalten von Zugriff auf die Azure-API
 
 Der Azure-Connector kann einen Dienstprinzipal für die Autorisierung bei Microsoft Azure verwenden. Sie können folgendermaßen einen Dienstprinzipal für SAP Landscape Management (LaMa) erstellen.
 
@@ -103,7 +103,7 @@ Der Dienstprinzipal hat standardmäßig keine Zugriffsberechtigungen für Ihre A
 1. Klicken Sie auf Speichern.
 1. Wiederholen Sie die Schritte 3 bis 8 für alle Ressourcengruppen, die Sie in SAP LaMa verwenden möchten.
 
-### <a name="af65832e-6469-4d69-9db5-0ed09eac126d"></a>Verwenden einer verwalteten Identität zum Erhalten von Zugriff auf die Azure-API
+### <a name="use-a-managed-identity-to-get-access-to-the-azure-api"></a><a name="af65832e-6469-4d69-9db5-0ed09eac126d"></a>Verwenden einer verwalteten Identität zum Erhalten von Zugriff auf die Azure-API
 
 Um eine verwaltete Identität verwenden zu können, muss Ihre SAP LaMa-Instanz auf einer Azure-VM ausgeführt werden, die über eine vom System oder Benutzer zugewiesene Identität verfügt. Weitere Informationen zu verwalteten Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../../../active-directory/managed-identities-azure-resources/overview.md) und [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer über das Azure-Portal](../../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md).
 
@@ -129,7 +129,7 @@ Wählen Sie in Ihrer Azure-Connectorkonfiguration für SAP LaMa die Option „Ve
 * Label (Bezeichnung): Wählen Sie einen Namen für die Connectorinstanz aus.
 * User Name (Benutzername): Die Anwendungs-ID des Dienstprinzipals oder die ID der vom Benutzer zugewiesenen Identität des virtuellen Computers. Weitere Informationen finden Sie unter [Verwenden einer system- oder benutzerseitig zugewiesenen Identität].
 * Password (Kennwort): Schlüssel/Kennwort des Dienstprinzipals. Sie können dieses Feld leer lassen, wenn Sie eine vom System oder vom Benutzer zugewiesene Identität verwenden.
-* URL: Behalten Sie die Standardeinstellung https://management.azure.com/ bei.
+* URL: Behalten Sie die Standardeinstellung `https://management.azure.com/` bei.
 * Monitoring Interval (Sekunden) (Überwachungsintervall (Sekunden)): Sollte mindestens 300 sein
 * Verwaltete Identität verwenden: SAP LaMa kann für die Authentifizierung bei der Azure-API eine vom System oder vom Benutzer zugewiesene Identität verwenden. Weitere Informationen finden Sie im Kapitel [Verwenden einer verwalteten Identität zum Erhalten von Zugriff auf die Azure-API](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d) in diesem Handbuch.
 * Subscription ID (Abonnement-ID): Azure-Abonnement-ID

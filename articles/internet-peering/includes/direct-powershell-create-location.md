@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 86d768db7a31c634bdaca6c93f633c7bbaf10a65
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75773661"
 ---
 Das PowerShell-Cmdlet **Get-AzPeeringLocation** gibt mit dem obligatorischen Parameter `Kind` eine Liste der Peeringstandorte zurück, die Sie in späteren Schritten verwenden:
@@ -28,7 +28,7 @@ Direct Peering-Standorte enthalten die folgenden Felder:
 * PeeringDBFacilityLink
 * BandwidthOffers
 
-Überprüfen Sie anhand von [PeeringDB](https://w www.peeringdb.com), ob Sie in der gewünschten Peeringeinrichtung vorhanden sind.
+Überprüfen Sie anhand von [PeeringDB](https://wwww.peeringdb.com), ob Sie in der gewünschten Peeringeinrichtung vorhanden sind.
 
 Unten sehen Sie ein Beispiel, das zeigt, wie Sie Seattle als Peeringstandort zum Erstellen eines Direct Peerings verwenden:
 
