@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: e97a712664a5864062fef2bba36dda76175af715
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: ed0c570449a0c21e9eace1273228539db7c208da
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199851"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80238656"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Schnellstart: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank
 
@@ -37,7 +37,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 Erstellen Sie einen Azure Data Explorer-Cluster mit einem definierten Satz von Compute- und Speicherressourcen in einer Azure-Ressourcengruppe.
 
-1. Klicken Sie in der linken oberen Ecke des Portals auf die Schaltfläche **Ressource erstellen** (+).
+1. Wählen Sie in der linken oberen Ecke des Portals die Schaltfläche **+ Ressource erstellen**aus.
 
 1. Suchen Sie nach *Azure Data Explorer*.
 
