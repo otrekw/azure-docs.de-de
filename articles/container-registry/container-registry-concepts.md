@@ -3,12 +3,12 @@ title: Informationen zu Repositorys und Images
 description: Einführung in die grundlegenden Konzepte von Azure-Containerregistrierungen, Repositorys und Containerimages.
 ms.topic: article
 ms.date: 09/10/2019
-ms.openlocfilehash: 9de0c344b226a0b13e76c7f02977ba3c91ba2d2a
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ea6e2577d3eee91626dd613617a0b79e4ff3d6a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455295"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225802"
 ---
 # <a name="about-registries-repositories-and-images"></a>Informationen zu Registrierungen, Repositorys und Images
 
@@ -24,9 +24,7 @@ Zusätzlich zu den Docker-Containerimages unterstützt Azure Container Registry 
 
 Die Adresse eines Elements in einer Azure-Containerregistrierung enthält die folgenden Elemente. 
 
-```
-[loginUrl]/[namespace]/[artifact:][tag]
-```
+`[loginUrl]/[namespace]/[artifact:][tag]`
 
 * **loginUrl**: Der vollqualifizierte Name des Registrierungshosts. Der Registrierungshost in einer Azure-Containerregistrierung hat das Format *meineregistrierung*.azurecr.io (nur Kleinbuchstaben). Sie müssen die loginUrl angeben, wenn Sie Docker oder andere Clienttools verwenden, um Artefakte in eine Azure-Containerregistrierung zu pullen oder pushen. 
 * **namespace**: Schrägstrichgetrennte logische Gruppierung verwandter Images oder Artefakte – z.B. für eine Arbeitsgruppe oder App
@@ -36,9 +34,7 @@ Die Adresse eines Elements in einer Azure-Containerregistrierung enthält die fo
 
 Beispielsweise kann der vollständige Name eines Images in einer Azure-Containerregistrierung so aussehen:
 
-```
-myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2
-```
+*myregistry.azurecr.io/marketing/campaign10-18/email-sender:v2*
 
 Weitere Informationen zu diesen Elementen finden Sie in den folgenden Abschnitten.
 
@@ -46,21 +42,18 @@ Weitere Informationen zu diesen Elementen finden Sie in den folgenden Abschnitte
 
 Containerregistrierungen verwalten *Repositorys*, Sammlungen von Containerimages oder andere Artefakte mit dem gleichen Namen, aber anderen Tags. Die folgenden drei Images befinden sich beispielsweise im Repository „acr-helloworld“:
 
-```
-acr-helloworld:latest
-acr-helloworld:v1
-acr-helloworld:v2
-```
+
+- *acr-helloworld:latest*
+- *acr-helloworld:v1*
+- *acr-helloworld:v2*
 
 Repository-Namen können auch [Namespaces](container-registry-best-practices.md#repository-namespaces) enthalten. Namespaces ermöglichen die Gruppierung von Images mit durch Schrägstrich getrennten Repositorynamen. Beispiel:
 
-```
-marketing/campaign10-18/web:v2
-marketing/campaign10-18/api:v3
-marketing/campaign10-18/email-sender:v2
-product-returns/web-submission:20180604
-product-returns/legacy-integrator:20180715
-```
+- *marketing/campaign10-18/web:v2*
+- *marketing/campaign10-18/api:v3*
+- *marketing/campaign10-18/email-sender:v2*
+- *product-returns/web-submission:20180604*
+- *product-returns/legacy-integrator:20180715*
 
 ## <a name="image"></a>Image
 
@@ -92,8 +85,11 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName>
 
 Listen Sie beispielsweise die Manifeste für das Repository "acr-helloworld" auf:
 
-```console
-$ az acr repository show-manifests --name myregistry --repository acr-helloworld
+```azurecli
+az acr repository show-manifests --name myregistry --repository acr-helloworld
+```
+
+```output
 [
   {
     "digest": "sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108",
@@ -128,9 +124,7 @@ Sie können ein Image aus einer Registrierung pullen, indem Sie den Digest im Pu
 
 Hier ein Beispiel für das Pullen eines Images aus dem Repository „acr-helloworld“ per Manifest-Digest:
 
-```console
-$ docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108
-```
+`docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea9380ff8d7b637d3928783c55beb3f21a6e58d5d108`
 
 > [!IMPORTANT]
 > Wenn Sie wiederholt geänderte Bilder mit identischen Tags per Push übertragen, kann das zu verwaisten Images führen – Images ohne Tags, die Speicherplatz in der Registrierung belegen. Images ohne Tags werden beim Auflisten oder Anzeigen von Images nach Tag nicht in der Azure-Befehlszeilenschnittstelle oder im Azure-Portal angezeigt. Die Ebenen sind jedoch noch vorhanden und verbrauchen Speicherplatz in der Registrierung. Das Löschen eines nicht markierten Image gibt Speicherplatz in der Registrierung frei, wenn das Manifest das einzige oder letzte ist, das auf eine bestimmte Ebene zeigt. Informationen zum Freigeben von Speicherplatz, der von Images ohne Tags verwendet wird, finden Sie unter [Löschen von Containerimages in Azure Container Registry](container-registry-delete.md).

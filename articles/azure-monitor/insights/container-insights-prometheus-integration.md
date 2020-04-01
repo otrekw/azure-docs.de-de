@@ -4,10 +4,10 @@ description: In diesem Artikel wird beschrieben, wie Sie den Azure Monitor für 
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.openlocfilehash: b774bf042778ca9118a7bc9f051655b200d87659
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75931420"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Konfigurieren des Abrufs von Prometheus-Metriken mit Azure Monitor für Container
@@ -73,11 +73,11 @@ Das aktive Abrufen von Metriken von Prometheus erfolgt aus einer von zwei Perspe
 
 Wenn eine URL angegeben wird, erfasst Azure Monitor für Container nur den Endpunkt. Wenn „Kubernetes-Dienst“ angegeben wird, wird der Dienstname mit dem Cluster-DNS-Server aufgelöst, um die IP-Adresse abzurufen. Anschließend wird der aufgelöste Dienst abgerufen.
 
-|`Scope` | Key | Datentyp | value | Beschreibung |
+|`Scope` | Schlüssel | Datentyp | Wert | BESCHREIBUNG |
 |------|-----|-----------|-------|-------------|
 | Clusterweit | | | | Geben Sie eine der folgenden drei Methoden zum Abrufen von Endpunkten für Metriken an. |
 | | `urls` | String | Durch Trennzeichen getrenntes Array | HTTP-Endpunkt (entweder IP-Adresse oder gültiger URL-Pfad angegeben). Beispiel: `urls=[$NODE_IP/metrics]`. („$NODE_IP“ ist ein spezifischer Azure Monitor für Containerparameter und kann anstelle der Knoten-IP-Adresse verwendet werden. Muss alles in Großbuchstaben sein.) |
-| | `kubernetes_services` | String | Durch Trennzeichen getrenntes Array | Ein Array von Kubernetes Services zum Abrufen von Metriken aus „kube-state-metrics“. Beispiel: `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`.|
+| | `kubernetes_services` | String | Durch Trennzeichen getrenntes Array | Ein Array von Kubernetes Services zum Abrufen von Metriken aus „kube-state-metrics“. Beispiel: `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics",http://my-service-dns.my-namespace:9100/metrics]`.|
 | | `monitor_kubernetes_pods` | Boolean | true oder false | Wenn die Option in den clusterweiten Einstellungen auf `true` festgelegt ist, ruft der Azure Monitor für Container-Agent Kubernetes Pods aus dem gesamten Cluster für die folgenden Prometheus-Anmerkungen ab:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
 | | `prometheus.io/scrape` | Boolean | true oder false | Ermöglicht das Abrufen des Pods. `monitor_kubernetes_pods` muss auf `true` festgelegt werden. |
 | | `prometheus.io/scheme` | String | HTTP oder HTTPS | Nimmt den Standardwert Abrufen über HTTP an. Legen Sie diesen Wert bei Bedarf auf `https` fest. | 

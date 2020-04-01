@@ -65,7 +65,7 @@ Wenn Sie die von Ihnen verwendete Standardmethode für die Sicherheitsüberprüf
 
 1. Wählen Sie auf der Seite **Zusätzliche Sicherheitsüberprüfung** in der Liste **Welche Option bevorzugen Sie?** die gewünschte Methode aus. Ihnen werden zwar alle Optionen angezeigt, Sie können aber nur diejenigen auswählen, die Ihnen von Ihrer Organisation zur Verfügung gestellt werden.
 
-    - **Mich durch die App benachrichtigen**: Sie erhalten eine Benachrichtigung über Ihre Authentifikator-App, das eine Aufforderung zur Überprüfung auf Sie wartet.
+    - **Mich durch die App benachrichtigen**: Sie werden von der Authenticator-App darüber informiert, dass eine Aufforderung zur Überprüfung auf Sie wartet.
 
     - **Mein Authentifizierungstelefon anrufen**: Sie erhalten einen Anruf auf Ihrem Mobilgerät, in dem Sie aufgefordert werden, Ihre Informationen zu bestätigen.
 
