@@ -16,22 +16,22 @@ ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 90de49ae3137735683bae6a18b5f7c8951b021ae
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645870"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Bereitstellung von SAP MaxDB, SAP liveCache und SAP Content Server auf Azure-VMs
 
-[767598]: https://launchpad.support.sap.com/#/notes/767598
+[767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
-[826037]: https://launchpad.support.sap.com/#/notes/826037
+[826037]:https://launchpad.support.sap.com/#/notes/826037
 [965908]:https://launchpad.support.sap.com/#/notes/965908
 [1031096]:https://launchpad.support.sap.com/#/notes/1031096
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
-[1139904]: https://launchpad.support.sap.com/#/notes/1139904
-[1173395]: https://launchpad.support.sap.com/#/notes/1173395
+[1139904]:https://launchpad.support.sap.com/#/notes/1139904
+[1173395]:https://launchpad.support.sap.com/#/notes/1173395
 [1245200]:https://launchpad.support.sap.com/#/notes/1245200
 [1409604]:https://launchpad.support.sap.com/#/notes/1409604
 [1558958]:https://launchpad.support.sap.com/#/notes/1558958
@@ -41,7 +41,7 @@ ms.locfileid: "75645870"
 [1597355]:https://launchpad.support.sap.com/#/notes/1597355
 [1605680]:https://launchpad.support.sap.com/#/notes/1605680
 [1619720]:https://launchpad.support.sap.com/#/notes/1619720
-[1619726]: https://launchpad.support.sap.com/#/notes/1619726
+[1619726]:https://launchpad.support.sap.com/#/notes/1619726
 [1619967]:https://launchpad.support.sap.com/#/notes/1619967
 [1750510]:https://launchpad.support.sap.com/#/notes/1750510
 [1752266]:https://launchpad.support.sap.com/#/notes/1752266
@@ -54,7 +54,7 @@ ms.locfileid: "75645870"
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
 [1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
@@ -328,7 +328,7 @@ Es wird ausdrücklich empfohlen, stets die neueste Version des Betriebssystems M
 Die aktualisierte Liste zur SAP MaxDB-Dokumentation finden Sie in SAP-Hinweis [767598]
 
 ### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>SAP MaxDB-Konfigurationsrichtlinien für SAP-Installationen in Azure-VMs
-#### <a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Speicherkonfiguration
+#### <a name="storage-configuration"></a><a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Speicherkonfiguration
 Die Best Practices für Azure Storage mit SAP MaxDB orientieren sich an den allgemeinen Empfehlungen, die im Kapitel [Speicherstruktur einer VM für RDBMS-Bereitstellungen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64) beschrieben werden.
 
 > [!IMPORTANT]
@@ -348,12 +348,12 @@ Folgende Schritte müssen ausgeführt werden:
 ![Referenzkonfiguration der Azure-IaaS-VM für SAP MaxDB-DBMS](./media/dbms_maxdb_deployment_guide/Simple_disk_structure_maxdb.PNG)
 
 
-#### <a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>Sichern und Wiederherstellen
+#### <a name="backup-and-restore"></a><a name="23c78d3b-ca5a-4e72-8a24-645d141a3f5d"></a>Sichern und Wiederherstellen
 Bei der Bereitstellung von SAP MaxDB in Azure ist es erforderlich, die Sicherungsmethode zu überprüfen. Auch wenn es sich bei dem System nicht um ein Produktionssystem handelt, muss die durch SAP MaxDB gehostete SAP-Datenbank regelmäßig gesichert werden. Da Azure Storage drei Images vorhält, ist die Sicherung, um einen etwaigen Speicherabsturz und vor allem Betriebsausfälle und Verwaltungsfehler kompensieren zu können, weniger dringlich. Der wichtigste Grund, einen ordnungsgemäßen Sicherungs- und Wiederherstellungsplan zu verfolgen, besteht darin, dass Sie mithilfe der Point-in-Time-Wiederherstellung logische und manuelle Fehler beheben können. Das Ziel ist also entweder, Sicherungen für die Wiederherstellung des Zustands der Datenbank zu einem bestimmten Zeitpunkt zu erstellen, oder, mithilfe einer Sicherung in Azure durch Seeding ein anderes System aufzusetzen, indem die bestehende Datenbank kopiert wird. 
 
 Sicherung und Wiederherstellung einer Datenbank in Azure funktionieren wie bei lokalen Umgebungen. Sie können also die standardmäßigen Tools in SAP MaxDB zum Sichern und Wiederherstellen verwenden. Diese werden in einer SAP MaxDB-Dokumentation beschrieben, die im SAP-Hinweis [767598] aufgeführt wird. 
 
-#### <a name="77cd2fbb-307e-4cbf-a65f-745553f72d2c"></a>Leistungsüberlegungen hinsichtlich Sicherung und Wiederherstellung
+#### <a name="performance-considerations-for-backup-and-restore"></a><a name="77cd2fbb-307e-4cbf-a65f-745553f72d2c"></a>Leistungsüberlegungen hinsichtlich Sicherung und Wiederherstellung
 Wie bei Bare-Metal-Bereitstellungen hängt die Leistung bei der Sicherung und Wiederherstellung davon ab, wie viele Volumes parallel gelesen werden können und wie hoch deren Durchsatz ist. Es gilt also Folgendes:
 
 * Je geringer die Anzahl an Datenträgern, auf denen Datenbankgeräte gespeichert sind, desto geringer der Durchsatz beim Auslesen insgesamt.
@@ -370,7 +370,7 @@ Wenn Sie die Anzahl der Ziele erhöhen möchten, stehen Ihnen je nach Anforderun
 
 Weitere Informationen zum Striping von Volumes über mehrere bereitgestellte Datenträger finden Sie in [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md). 
 
-#### <a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>Weitere Überlegungen
+#### <a name="other-considerations"></a><a name="f77c1436-9ad8-44fb-a331-8671342de818"></a>Weitere Überlegungen
 Alle anderen allgemeinen Themen wie Azure-Verfügbarkeitsgruppen oder SAP-Überwachung (siehe [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md))  gelten ebenfalls für die Bereitstellung von VMs mit der SAP MaxDB-Datenbank.
 Andere SAP MaxDB-spezifische Einstellungen sind für Azure-VMs transparent. Diese sind in verschiedenen Dokumenten beschrieben, die in SAP-Hinweis [767598] und den folgenden SAP-Hinweisen aufgelistet sind:
 

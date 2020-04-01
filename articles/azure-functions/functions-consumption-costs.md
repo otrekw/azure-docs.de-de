@@ -4,17 +4,17 @@ description: Erfahren Sie, wie Sie die Kosten besser abschätzen, die Sie eventu
 ms.date: 9/20/2019
 ms.topic: conceptual
 ms.openlocfilehash: 0e3177d7c65eb1624441427f123e6f95095bdbbd
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76963987"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Abschätzen der Kosten des Verbrauchstarifs
 
 Zurzeit gibt es drei Typen von Hostingtarifen für eine App, die in Azure Functions ausgeführt wird, wobei jeder Tarif ein eigenes Preismodell aufweist: 
 
-| Planen | Beschreibung |
+| Planen | BESCHREIBUNG |
 | ---- | ----------- |
 | [**Verbrauch**](functions-scale.md#consumption-plan) | Ihnen wird nur die Zeit in Rechnung gestellt, die Ihre Funktions-App auch ausgeführt wird. Dieser Tarif umfasst pro Abonnement eine [free grant][seite mit der preisübersicht] (kostenlose Zuweisung).|
 | [**Premium**](functions-scale.md#premium-plan) | Bietet Ihnen dieselben Features und Skalierungsverfahren wie der Verbrauchstarif, aber mit mehr Leistung und VNET-Zugriff. Die Kosten basieren auf dem von Ihnen gewählten Tarif. Weitere Informationen finden Sie unter [Premium-Plan (Premium-Tarif) für Azure Functions](functions-premium-plan.md). |
@@ -45,7 +45,7 @@ Für Funktionen, die in einem Verbrauchstarif ausgeführt werden, bestehen die G
 
 Wenn Sie die Gesamtkosten für ihre Funktions-App und der zugehörige Dienste abschätzen, verwenden Sie den [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/?service=functions). 
 
-| Verwandte Kosten | Beschreibung |
+| Verwandte Kosten | BESCHREIBUNG |
 | ------------ | ----------- |
 | **Speicherkonto** | Für jede Funktions-App ist es erforderlich, dass Sie über ein zugeordnetes universelles [Azure Storage-Konto](../storage/common/storage-introduction.md#types-of-storage-accounts) verfügen, das [gesondert abgerechnet](https://azure.microsoft.com/pricing/details/storage/) wird. Dieses Konto wird von der Functions-Laufzeit intern verwendet, aber Sie können es auch für Storage-Trigger und -Bindungen verwenden. Wenn Sie kein Speicherkonto besitzen, wird mit der Erstellung der Funktions-App eins für Sie erstellt. Weitere Informationen finden Sie unter [Speicherkontoanforderungen](storage-considerations.md#storage-account-requirements).|
 | **Application Insights** | Functions basiert auf [Application Insights](../azure-monitor/app/app-insights-overview.md), um eine Hochleistungsüberwachungs-Erfahrung für Ihre Funktions-Apps bereitzustellen. Wenn dies auch nicht erforderlich ist, sollten Sie doch die [Application Insights-Integration aktivieren](functions-monitoring.md#enable-application-insights-integration). Monatlich ist eine kostenlose Zuweisung von Telemetriedaten enthalten. Weitere Informationen finden Sie auf der [Seite mit der Preisübersicht für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/). |
@@ -76,7 +76,7 @@ Verwenden Sie den [Azure Monitor-Metrik-Explorer](../azure-monitor/platform/metr
     ![Auswählen Ihrer Funktions-App](media/functions-consumption-costing/select-a-resource.png)
 
       
-    |Einstellung  |Vorgeschlagener Wert  |Beschreibung  |
+    |Einstellung  |Vorgeschlagener Wert  |BESCHREIBUNG  |
     |---------|---------|---------|
     | Subscription    |  Ihr Abonnement  | Das Abonnement Ihrer Funktions-App.  |
     | Resource group     | Ihre Ressourcengruppe  | Die Ressourcengruppe, die Ihre Funktions-App enthält.   |
@@ -237,5 +237,5 @@ customMetrics
 > [!div class="nextstepaction"]
 > [Weitere Informationen zur Überwachung von Funktions-Apps](functions-monitoring.md)
 
-[Seite mit der Preisübersicht]: https://azure.microsoft.com/pricing/details/functions/
+[Seite mit der Preisübersicht]:https://azure.microsoft.com/pricing/details/functions/
 [Azure portal]: https://portal.azure.com

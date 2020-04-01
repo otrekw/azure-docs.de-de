@@ -16,28 +16,28 @@ ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a852ddc68a6f51e677e5ff2e641ada25f4bf0105
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70101361"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload
-[1114181]: https://launchpad.support.sap.com/#/notes/1114181
-[1409604]: https://launchpad.support.sap.com/#/notes/1409604
-[1597355]: https://launchpad.support.sap.com/#/notes/1597355
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[1984787]: https://launchpad.support.sap.com/#/notes/1984787
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
-[2002167]: https://launchpad.support.sap.com/#/notes/2002167
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2039619]: https://launchpad.support.sap.com/#/notes/2039619
-[2069760]: https://launchpad.support.sap.com/#/notes/2069760
-[2171857]: https://launchpad.support.sap.com/#/notes/2171857
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2233094]: https://launchpad.support.sap.com/#/notes/2233094
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[1114181]:https://launchpad.support.sap.com/#/notes/1114181
+[1409604]:https://launchpad.support.sap.com/#/notes/1409604
+[1597355]:https://launchpad.support.sap.com/#/notes/1597355
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[1984787]:https://launchpad.support.sap.com/#/notes/1984787
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[2002167]:https://launchpad.support.sap.com/#/notes/2002167
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2039619]:https://launchpad.support.sap.com/#/notes/2039619
+[2069760]:https://launchpad.support.sap.com/#/notes/2069760
+[2171857]:https://launchpad.support.sap.com/#/notes/2171857
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2233094]:https://launchpad.support.sap.com/#/notes/2233094
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
 [deployment-guide]:deployment-guide.md
 [deployment-guide-3]:deployment-guide.md#b3253ee3-d63b-4d74-a49b-185e76c4088e
 [planning-guide]:planning-guide.md
@@ -108,7 +108,7 @@ Sie benötigen Kenntnisse der Microsoft Azure-Architektur sowie der Bereitstellu
 Installation und Konfiguration von Windows, Linux und DBMS sind generell weitgehend identisch mit allen VMs oder Bare-Metal-Computern, die Sie lokal installieren. Bei der Implementierung der Architektur und Systemverwaltung gibt es jedoch einige Entscheidungen, die bei der Nutzung von Azure IaaS anders sind. Dieses Dokument erläutert die spezifischen Unterschiede bei Architektur und Systemverwaltung, die Sie bei der Verwendung von Azure IaaS kennen sollten.
 
 
-## <a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>Speicherstruktur einer VM für RDBMS-Bereitstellungen
+## <a name="storage-structure-of-a-vm-for-rdbms-deployments"></a><a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>Speicherstruktur einer VM für RDBMS-Bereitstellungen
 Damit Sie diesem Kapitel folgen können, sollten Sie die Informationen [diesem Kapitel][deployment-guide-3] des [Bereitstellungshandbuchs][deployment-guide] gelesen und verstanden haben. Sie müssen die verschiedenen VM-Serien und die Unterschiede zwischen Standard- und Premium-Speicher verstehen und kennen, bevor Sie dieses Kapitel lesen. 
 
 Informationen zu Azure Storage für Azure-VMs finden Sie unter:
@@ -192,7 +192,7 @@ Informationen zum Konvertieren nicht verwalteter Datenträger in verwaltete Date
 - [Konvertieren einer Linux-VM von nicht verwalteten Datenträgern in verwaltete Datenträger](https://docs.microsoft.com/azure/virtual-machines/linux/convert-unmanaged-to-managed-disks)
 
 
-### <a name="c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f"></a>Zwischenspeichern für VMs und Datenträger
+### <a name="caching-for-vms-and-data-disks"></a><a name="c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f"></a>Zwischenspeichern für VMs und Datenträger
 Wenn Sie Datenträger auf VMs bereitstellen, können Sie auswählen, ob der E/A-Datenverkehr zwischen der VM und diesen Datenträgern in Azure Storage zwischengespeichert wird. Storage Standard und Premium verwenden zwei unterschiedliche Technologien für diese Art von Cache.
 
 Bei den folgenden Empfehlungen werden die E/A-Merkmale für Standard-DBMS zugrunde gelegt:
@@ -244,7 +244,7 @@ Weitere Informationen finden Sie unter [Understand the temporary drive on Window
 
 
 
-### <a name="10b041ef-c177-498a-93ed-44b3441ab152"></a>Microsoft Azure Storage – Resilienz
+### <a name="microsoft-azure-storage-resiliency"></a><a name="10b041ef-c177-498a-93ed-44b3441ab152"></a>Microsoft Azure Storage – Resilienz
 Microsoft Azure Storage speichert die Basis-VM (mit Betriebssystem) und angefügte Datenträger oder Blobs in mindestens drei getrennten Speicherknoten. Diese Art von Speicher wird als „lokal redundanter Speicher“ (LRS) bezeichnet. LRS ist die Standardeinstellung für alle Azure-Speichertypen.
 
 Es gibt andere Redundanzmethoden. Weitere Informationen finden Sie unter [Azure Storage-Replikation](https://docs.microsoft.com/azure/storage/common/storage-redundancy?toc=%2fazure%2fstorage%2fqueues%2ftoc.json).
@@ -372,5 +372,5 @@ Weitere Informationen zu einem bestimmten DBMS finden Sie unter:
 - [Bereitstellung von SAP MaxDB, SAP liveCache und SAP Content Server in Azure](dbms_guide_maxdb.md)
 - [SAP HANA in Azure – Betriebshandbuch](hana-vm-operations.md)
 - [Hochverfügbarkeit von SAP HANA für virtuelle Azure-Computer](sap-hana-availability-overview.md)
-- [Sicherungsanleitung für SAP HANA in Azure Virtual Machines](sap-hana-backup-guide.md)
+- [Sicherungsanleitung für SAP HANA auf virtuellen Azure-Computern](sap-hana-backup-guide.md)
 

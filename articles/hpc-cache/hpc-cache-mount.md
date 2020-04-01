@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: d906ed9a1a55e936c6374806a9037085c47e3b01
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73582213"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>Einbinden einer Azure HPC Cache-Instanz
@@ -35,7 +35,7 @@ Die virtuellen Namespacepfade werden auf der Seite **Speicherziele** angezeigt. 
 
 Verwenden Sie einen Einbindungsbefehl wie diesen:
 
-> sudo mount *cache_mount_address*:/*Namespacepfad* *lokaler_Pfad* {*Optionen*}
+> sudo mount *cache_mount_address*:/*namespace_path* *local_path* {*options*}
 
 Beispiel:
 
