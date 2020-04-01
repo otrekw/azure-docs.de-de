@@ -4,12 +4,12 @@ description: Enthält eine Übersicht über die Vorschauversion von Azure Blockc
 ms.date: 09/05/2019
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: 88c162539e5d0480d7f938c674b96c2f396774e3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 162626ba2303ab04bd2963a5add61c556615ebec
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75387070"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79203643"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Was ist Azure Blockchain Workbench?
 

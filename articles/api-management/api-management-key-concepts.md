@@ -14,11 +14,11 @@ ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: 8d7fa8b8119ddf1769b36bcb55831047d6242470
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073431"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215208"
 ---
 # <a name="about-api-management"></a>Informationen zu API Management
 
@@ -71,17 +71,17 @@ Weitere Informationen finden Sie im Whitepaper [Cloud-based API Management: Harn
  * Verwenden von Cloudlösungen im Vergleich zu lokalen Lösungen
  * Azure API Management
  
-## <a name="apis"></a>APIs und Operationen
+## <a name="apis-and-operations"></a><a name="apis"> </a>APIs und Operationen
 APIs sind die Grundlage einer API Management-Dienstinstanz. Jede API stellt Entwicklern einen Satz von Operationen zur Verfügung. Jede API enthält einen Verweis auf den Back-End-Dienst, der die API implementiert, und die Operationen der API sind den Operationen des Back-End-Diensts zugeordnet. Für Operationen in API Management ist eine umfangreiche Konfiguration möglich. Sie können die URL-Zuordnung, Abfrage- und Pfadparameter, Anforderungs- und Antwortinhalte sowie das Zwischenspeichern von Operationsantworten steuern. Durchsatzgrenzen, Kontingente und IP-Einschränkungen können ebenfalls auf API-Ebene oder für einzelne Operationen konfiguriert werden.
 
 Weitere Informationen finden Sie unter [Erstellen von APIs][How to create APIs] und [Hinzufügen von Operationen zu einer API][How to add operations to an API].
 
-## <a name="products"> </a> Produkte
+## <a name="products"></a><a name="products"> </a> Produkte
 APIs werden in Form von Produkten an Entwickler bereitgestellt. Produkte in API Management enthalten eine oder mehrere APIs und werden mit einem Titel, einer Beschreibung und Nutzungsbedingungen konfiguriert. Produkte können **Offen** oder **Geschützt** sein. Geschützte Produkte müssen abonniert werden, bevor Sie verwendet werden können, während offene Produkte ohne Abonnement genutzt werden können. Wenn ein Produkt bereit für die Nutzung durch Entwickler ist, kann es veröffentlicht werden. Nach der Veröffentlichung kann das Produkt (bei geschützten Produkten nach dem Abonnieren) durch die Entwickler angezeigt werden. Die Genehmigung von Abonnements wird auf der Produktebene konfiguriert. Abonnements können entweder eine Genehmigung eines Administrators erfordern oder automatisch genehmigt werden.
 
 Gruppen dienen zur Verwaltung der Sichtbarkeit von Produkten für Entwickler. Produkte gewähren Sichtbarkeit für Gruppen, und Entwickler können alle Produkte anzeigen und abonnieren, die für die Gruppen sichtbar sind, in denen sie Mitglied sind. 
 
-## <a name="groups"> </a> Gruppen
+## <a name="groups"></a><a name="groups"> </a> Gruppen
 Gruppen dienen zur Verwaltung der Sichtbarkeit von Produkten für Entwickler. API Management umfasst folgende unveränderliche Systemgruppen:
 
 * **Administratoren** – Azure-Abonnementadministratoren sind Mitglieder dieser Gruppe. Administratoren verwalten API Management-Dienstinstanzen und erstellen die APIs, Operationen und Produkte, die von den Entwicklern verwendet werden.
@@ -92,14 +92,14 @@ Zusätzlich zu diesen Systemgruppen können Administratoren benutzerdefinierte G
 
 Weitere Informationen finden Sie unter [Erstellen und Verwenden von Gruppen][How to create and use groups].
 
-## <a name="developers"> </a> Entwickler
+## <a name="developers"></a><a name="developers"> </a> Entwickler
 Entwickler stellen die Benutzerkonten in einer API Management-Dienstinstanz dar. Entwickler können von Administratoren erstellt oder eingeladen werden, oder sie können sich im [Entwicklerportal][Developer portal]anmelden. Jeder Entwickler ist Mitglied in einer oder mehreren Gruppen und kann die Produkte abonnieren, die für die entsprechenden Gruppen sichtbar sind.
 
 Wenn Entwickler ein Produkt abonnieren, erhalten sie den primären und den sekundären Schlüssel für das Produkt. Diese Schlüssel kommen bei den Aufrufen an die APIs des Produkts zum Einsatz.
 
 Weitere Informationen finden Sie unter [Erstellen und Einladen von Entwicklern][How to create or invite developers] und [Zuordnen von Entwicklern zu Gruppen][How to associate groups with developers].
 
-## <a name="policies"> </a> Richtlinien
+## <a name="policies"></a><a name="policies"> </a> Richtlinien
 Richtlinien sind ein praktisches Werkzeug in API Management, mit dem das Azure-Portal das Verhalten der API mittels Konfiguration verändern kann. Richtlinien sind eine Sammlung von Anweisungen, die sequenziell bei Anfragen oder Antworten einer API ausgeführt werden. Häufig verwendete Anweisungen sind etwa Formatumwandlungen von XML nach JSON und Aufrufratenlimits, um die Anzahl eingehender Aufrufe von einem Entwickler zu beschränken. Darüber hinaus stehen noch viele weitere Richtlinien zur Verfügung.
 
 Richtlinienausdrücke können als Attributwerte oder Textwerte in einer beliebigen API Management-Richtlinie verwendet werden, sofern in der Richtlinie nicht anders angegeben. Einige Richtlinien, beispielsweise [Ablaufsteuerung](/azure/api-management/api-management-advanced-policies#choose) und [Variable festlegen](/azure/api-management/api-management-advanced-policies#set-variable), basieren auf Richtlinienausdrücken. Weitere Informationen finden Sie unter [Erweiterte Richtlinien](/azure/api-management/api-management-advanced-policies#AdvancedPolicies) und [Richtlinienausdrücke](/azure/api-management/api-management-policy-expressions).
@@ -108,7 +108,7 @@ Richtlinienausdrücke können als Attributwerte oder Textwerte in einer beliebig
 Eine vollständige Liste der Richtlinien für API Management finden Sie unter [Gruppenrichtlinienreferenz][Policy reference]. Weitere Informationen zur Verwendung und Konfiguration von Richtlinien finden Sie unter [Richtlinien für API Management][API Management policies]. Ein Lernprogramm zum Erstellen eines Produkts mit Richtlinien für Durchsatzgrenzen und Kontingente finden Sie unter [Erstellen und Konfigurieren erweiterter Produkteinstellungen][How create and configure advanced product settings].
 
 
-## <a name="developer-portal"> </a> Entwicklerportal
+## <a name="developer-portal"></a><a name="developer-portal"> </a> Entwicklerportal
 Im Entwicklerportal können Entwickler auf Ihre APIs zugreifen, Operationen anzeigen und aufrufen und Produkte abonnieren. Potenzielle Kunden können das Entwicklerportal besuchen, APIs und Operationen anzeigen und sich anmelden. Sie finden die URL Ihres Entwicklerportals im Dashboard des Azure-Portals für Ihre API Management-Dienstinstanz.
 
 Sie können das Erscheinungsbild Ihres Entwicklerportals konfigurieren, indem Sie eigene Inhalte hinzufügen, Stilregeln anpassen und Ihr Markenbild einfügen.

@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 02/26/2020
 ms.author: dech
-ms.openlocfilehash: 729fd776321a90257289dcf92f13079a8206d9d9
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: 0b29f9c1f395e079c97d5877d08bd7bd73c7ea53
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78927417"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80240315"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-from-azure-cosmos-db-sql-api-account"></a>Schnellstart: Verwenden von Node.js zum Herstellen einer Verbindung mit einem und Abfragen von Daten aus einem Azure Cosmos DB-SQL-API-Konto
 
@@ -25,7 +25,13 @@ ms.locfileid: "78927417"
 > - [Python](create-sql-api-python.md)
 > - [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-In dieser Schnellstartanleitung erstellen und verwalten Sie ein Azure Cosmos DB-SQL-API-Konto im Azure-Portal mithilfe einer über GitHub geklonten Node.js-App. Azure Cosmos DB ist ein Multimodell-Datenbankdienst, mit dem Sie mithilfe der Funktionen für globale Verteilung und horizontale Skalierung schnell Dokument-, Tabellen-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen können.
+In dieser Schnellstartanleitung erstellen und verwalten Sie ein Azure Cosmos DB-SQL-API-Konto im Azure-Portal mithilfe einer über GitHub geklonten Node.js-App. Azure Cosmos DB ist ein Multimodell-Datenbankdienst, mit dem Sie mithilfe der Funktionen für globale Verteilung und horizontale Skalierung schnell Dokument-, Tabellen-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen können.
+
+## <a name="walkthrough-video"></a>Video mit exemplarischer Vorgehensweise
+
+Dieses Video enthält eine umfassende exemplarische Vorgehensweise für den Inhalt dieses Artikels.
+
+> [!VIDEO https://channel9.msdn.com/Shows/Docs-Azure/Quickstart-Use-Nodejs-to-connect-and-query-data-from-Azure-Cosmos-DB-SQL-API-account/player]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -60,7 +66,7 @@ Sie können nun mithilfe des Daten-Explorer-Tools im Azure-Portal eine Datenbank
    | Einstellung           | Vorgeschlagener Wert | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                           |
    | ----------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Datenbank-ID**   | Aufgaben           | Geben Sie _Tasks_ als Namen für die neue Datenbank ein. Datenbanknamen müssen zwischen 1 und 255 Zeichen lang sein und dürfen weder `/, \\, #, ?` noch nachgestellte Leerzeichen enthalten. Aktivieren Sie die Option **Provision database throughput** (Datenbankdurchsatz bereitstellen). Diese Option ermöglicht es Ihnen, den für die Datenbank bereitgestellten Durchsatz auf alle Container in der Datenbank zu verteilen. Darüber hinaus hilft sie Ihnen dabei, Kosten zu sparen. |
-   | **Durchsatz**    | 400             | Belassen Sie den Durchsatz bei 400 Anforderungseinheiten pro Sekunde (RU/s). Sie können den Durchsatz später zentral hochskalieren, wenn Sie Wartezeiten reduzieren möchten.                                                                                                                                                                                                                                                    |
+   | **Durchsatz**    | 400             | Belassen Sie den Durchsatz bei 400 Anforderungseinheiten pro Sekunde (RU/s). Sie können den Durchsatz später hochskalieren, wenn Sie Wartezeiten reduzieren möchten.                                                                                                                                                                                                                                                    |
    | **Container-ID**  | Items           | Geben Sie _Items_ als Namen für den neuen Container ein. Für Container-IDs gelten dieselben Zeichenanforderungen wie für Datenbanknamen.                                                                                                                                                                                                                                                               |
    | **Partitionsschlüssel** | /category       | Das in diesem Artikel beschriebene Beispiel verwendet _/category_ als Partitionsschlüssel.                                                                                                                                                                                                                                                                                                           |
 
@@ -115,13 +121,13 @@ Die folgenden Codeausschnitte stammen alle aus der Datei _app.js_.
 - Wählen Sie die Datenbank „Tasks“ aus.
 
   ```javascript
-  const database = await client.databases(databaseId);
+  const database = client.database(databaseId);
   ```
 
 - Wählen Sie den Container bzw. die Sammlung „Items“ aus.
 
   ```javascript
-  const container = await client.databases(containerId);
+  const container = database.container(containerId);
   ```
 
 - Wählen Sie alle Elemente im Container „Items“ aus.
@@ -132,7 +138,7 @@ Die folgenden Codeausschnitte stammen alle aus der Datei _app.js_.
     query: "SELECT * from c"
   };
 
-  const { resources: results } = await container.items
+  const { resources: items } = await container.items
     .query(querySpec)
     .fetchAll();
   ```
@@ -149,15 +155,15 @@ Die folgenden Codeausschnitte stammen alle aus der Datei _app.js_.
   const { id, category } = createdItem;
 
   createdItem.isComplete = true;
-  const { resource: itemToUpdate } = await container
+  const { resource: updatedItem } = await container
     .item(id, category)
-    .replace(itemToUpdate);
+    .replace(createdItem);
   ```
 
 - Löschen eines Elements
 
   ```javascript
-  const { resource: result } = await this.container.item(id, category).delete();
+  const { resource: result } = await container.item(id, category).delete();
   ```
 
 > [!NOTE]

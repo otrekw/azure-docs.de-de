@@ -4,10 +4,10 @@ description: Hier wird erläutert, wie Sie den Azure Blueprints-Dienst zum Erste
 ms.date: 11/21/2019
 ms.topic: overview
 ms.openlocfilehash: 07d84d658d88e977cd73176861e5c5e080c02857
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74321760"
 ---
 # <a name="what-is-azure-blueprints"></a>Was ist Azure Blueprint?
@@ -77,7 +77,7 @@ Wenn eine Blaupause erstellt wird, befindet sie sich im **Entwurfsmodus**. Wenn 
 
 ## <a name="blueprint-assignment"></a>Blaupausenzuweisung
 
-Jede **veröffentlichte** **Version** einer Blaupause kann (mit einem maximal 90 Zeichen langen Namen) einem vorhandenen Abonnement zugewiesen werden. Im Portal wird standardmäßig die **Version** der Blaupause verwendet, die zuletzt **veröffentlicht** wurde. Wenn Artefaktparameter (oder Blaupausenparameter) vorhanden sind, werden die Parameter während des Zuweisungsvorgangs definiert.
+Jede **veröffentlichte** **Version** einer Blaupause kann (mit einem maximal 90 Zeichen langen Namen) einem vorhandenen Abonnement zugewiesen werden. Im Portal wird standardmäßig die **Version** der Blaupause verwendet, die zuletzt **veröffentlicht** wurde. Wenn Artefaktparameter (oder Blaupausenparameter) vorhanden sind, werden die Parameter während des Zuweisungsvorgangs definiert.
 
 ## <a name="permissions-in-azure-blueprints"></a>Berechtigungen in Azure Blueprint
 
@@ -124,10 +124,10 @@ Für bestimmte Felder gelten die folgenden Einschränkungen:
 
 |Object|Feld|Zulässige Zeichen|Maximal Länge|
 |-|-|-|-|
-|Blaupause|NAME|Buchstaben, Ziffern, Bindestriche und Punkte|48|
+|Blaupause|Name|Buchstaben, Ziffern, Bindestriche und Punkte|48|
 |Blaupause|Version|Buchstaben, Ziffern, Bindestriche und Punkte|20|
-|Blaupausenzuweisung|NAME|Buchstaben, Ziffern, Bindestriche und Punkte|90|
-|Blaupausenartefakt|NAME|Buchstaben, Ziffern, Bindestriche und Punkte|48|
+|Blaupausenzuweisung|Name|Buchstaben, Ziffern, Bindestriche und Punkte|90|
+|Blaupausenartefakt|Name|Buchstaben, Ziffern, Bindestriche und Punkte|48|
 
 ## <a name="video-overview"></a>Videoübersicht
 

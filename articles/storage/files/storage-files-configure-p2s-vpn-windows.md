@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 90995b1c9d10c7b589706f5abf37f92d76e4362b
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 5f12b77f5baa1a3b06a093aac7267c65a038881e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75560350"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061018"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Konfigurieren eines P2S-VPN (Point-to-Site) unter Windows zur Verwendung mit Azure Files
 Sie können eine P2S-VPN-Verbindung (Point-to-Site) verwenden, um Ihre Azure-Dateifreigaben außerhalb von Azure über SMB einzubinden, ohne Port 445 zu öffnen. Eine P2S-VPN-Verbindung ist eine VPN-Verbindung zwischen Azure und einem einzelnen Client. Um eine P2S-VPN-Verbindung mit Azure Files zu verwenden, muss für jeden Client, der eine Verbindung herstellen möchte, eine P2S-VPN-Verbindung konfiguriert werden. Wenn Sie über viele Clients verfügen, die sich über Ihr lokales Netzwerk mit Ihren Azure-Dateifreigaben verbinden müssen, können Sie anstelle einer P2S-Verbindung für jeden Client eine S2S-VPN-Verbindung (Site-to-Site) verwenden. Weitere Informationen finden Sie unter [Konfigurieren eines S2S-VPN (Site-to-Site) zur Verwendung mit Azure Files](storage-files-configure-s2s-vpn.md).
@@ -24,18 +24,9 @@ Der Artikel beschreibt die Schritte zur Konfiguration eines P2S-VPN unter Window
 ## <a name="prerequisites"></a>Voraussetzungen
 - Die neueste Version des Azure PowerShell-Moduls. Informationen zum Installieren des Azure PowerShell-Moduls finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps) im Abschnitt zu Ihrem Betriebssystem. Wenn Sie lieber mit der Azure CLI unter Windows arbeiten möchten, können Sie dies tun, die folgenden Anweisungen beziehen sich jedoch auf Azure PowerShell.
 
-- Das PowerShell-Modul für privates Azure-DNS. Dieses wird aktuell nicht als Bestandteil des Azure PowerShell-Moduls bereitgestellt und muss deshalb mit der folgenden Methode installiert werden:
-    ```PowerShell
-    if ($PSVersionTable.PSVersion -ge [System.Version]::new(6, 0)) {
-        Install-Module -Name Az.PrivateDns -AllowClobber -AllowPrerelease
-    } else {
-        Install-Module -Name Az.PrivateDns -RequiredVersion "0.1.3"
-    }
+- Eine Azure-Dateifreigabe, die Sie lokal einbinden möchten. Azure-Dateifreigaben werden in Speicherkonten bereitgestellt. Hierbei handelt es sich um Verwaltungskonstrukte, die einen gemeinsam genutzten Speicherpool darstellen, in dem Sie mehrere Dateifreigaben sowie weitere Speicherressourcen wie Blobcontainer oder Warteschlangen bereitstellen können. Weitere Informationen zum Bereitstellen von Azure-Dateifreigaben und Speicherkonten finden Sie unter [Erstellen einer Azure-Dateifreigabe](storage-how-to-create-file-share.md).
 
-    Import-Module -Name Az.PrivateDns
-    ```  
-
-- Eine Azure-Dateifreigabe, die Sie lokal einbinden möchten. Sie können mit Ihrem P2S-VPN entweder eine Azure-Dateifreigabe vom Typ [Standard](storage-how-to-create-file-share.md) oder [Premium](storage-how-to-create-premium-fileshare.md) verwenden.
+- Ein privater Endpunkt für das Speicherkonto mit der Azure-Dateifreigabe, die Sie lokal bereitstellen möchten. Weitere Informationen zum Erstellen eines privaten Endpunkts finden Sie unter [Konfigurieren von Azure Files-Netzwerkendpunkten](storage-files-networking-endpoints.md?tabs=azure-powershell). 
 
 ## <a name="deploy-a-virtual-network"></a>Bereitstellen eines virtuellen Netzwerks
 Um von einer lokalen Umgebung aus über ein P2S-VPN auf Ihre Azure-Dateifreigabe und andere Azure-Ressourcen zuzugreifen, müssen Sie ein virtuelles Netzwerk (VNET) erstellen. Die automatisch erstellte P2S-VPN-Verbindung ist eine Brücke zwischen Ihrem lokalen Windows-Computer und diesem virtuellen Azure-Netzwerk.
@@ -85,91 +76,6 @@ $privateEndpointSubnet = $virtualNetwork.Subnets | `
     Where-Object { $_.Name -eq "PrivateEndpointSubnet" }
 $gatewaySubnet = $virtualNetwork.Subnets | ` 
     Where-Object { $_.Name -eq "GatewaySubnet" }
-```
-
-## <a name="restrict-the-storage-account-to-the-virtual-network"></a>Beschränken des Speicherkontos auf das virtuelle Netzwerk
-Standardmäßig können Sie beim Erstellen eines Speicherkontos von überall auf der Welt darauf zugreifen, solange Sie Ihre Anforderung authentifizieren können (z. B. mit Ihrer Active Directory-Identität oder mit dem Speicherkontoschlüssel). Um den Zugriff auf dieses Speicherkonto auf das soeben erstellte virtuelle Netzwerk zu beschränken, müssen Sie einen Netzwerkregelsatz erstellen, der den Zugriff innerhalb des virtuellen Netzwerks erlaubt und jeden weiteren Zugriff unterbindet.
-
-Die Beschränkung des Speicherkontos auf das virtuelle Netzwerk erfordert die Verwendung eines Dienstendpunkts. Der Dienstendpunkt ist eine Netzwerkkomponente, mit der nur innerhalb des virtuellen Netzwerks auf das öffentliche DNS/die öffentliche IP-Adresse zugegriffen werden kann. Da nicht garantiert werden kann, dass die öffentliche IP-Adresse unverändert bleibt, möchten wir einen privaten Endpunkt und keinen Dienstendpunkt für das Speicherkonto verwenden. Eine Beschränkung des Speicherkontos ist aber nur möglich, wenn auch ein Dienstendpunkt verfügbar gemacht wird.
-
-Denken Sie daran, `<storage-account-name>` durch das Speicherkonto zu ersetzen, auf das Sie zugreifen möchten.
-
-```PowerShell
-$storageAccountName = "<storage-account-name>"
-
-$storageAccount = Get-AzStorageAccount `
-    -ResourceGroupName $resourceGroupName `
-    -Name $storageAccountName
-
-$networkRule = Add-AzStorageAccountNetworkRule `
-    -ResourceGroupName $resourceGroupName `
-    -Name $storageAccountName `
-    -VirtualNetworkResourceId $serviceEndpointSubnet.Id
-
-Update-AzStorageAccountNetworkRuleSet `
-    -ResourceGroupName $resourceGroupName `
-    -Name $storageAccountName `
-    -Bypass AzureServices `
-    -DefaultAction Deny `
-    -VirtualNetworkRule $networkRule | Out-Null
-``` 
-
-## <a name="create-a-private-endpoint-preview"></a>Erstellen eines privaten Endpunkts (Vorschau)
-Wenn Sie einen privaten Endpunkt für Ihr Speicherkonto erstellen, erhält Ihr Speicherkonto eine IP-Adresse im IP-Adressraum Ihres virtuellen Netzwerks. Wenn Sie Ihre Azure-Dateifreigabe von einer lokalen Umgebung aus mithilfe dieser privaten IP-Adresse einbinden, leiten die von der VPN-Installation automatisch definierten Routingregeln Ihre Einbindungsanforderung über das VPN an das Speicherkonto weiter. 
-
-```PowerShell
-$internalVnet = Get-AzResource `
-    -ResourceId $virtualNetwork.Id `
-    -ApiVersion "2019-04-01"
-
-$internalVnet.Properties.subnets[1].properties.privateEndpointNetworkPolicies = "Disabled"
-$internalVnet | Set-AzResource -Force | Out-Null
-
-$privateEndpointConnection = New-AzPrivateLinkServiceConnection `
-    -Name "myConnection" `
-    -PrivateLinkServiceId $storageAccount.Id `
-    -GroupId "file"
-
-$privateEndpoint = New-AzPrivateEndpoint `
-    -ResourceGroupName $resourceGroupName `
-    -Name "$storageAccountName-privateEndpoint" `
-    -Location $region `
-    -Subnet $privateEndpointSubnet `
-    -PrivateLinkServiceConnection $privateEndpointConnection
-
-$zone = Get-AzPrivateDnsZone -ResourceGroupName $resourceGroupName
-if ($null -eq $zone) {
-    $zone = New-AzPrivateDnsZone `
-        -ResourceGroupName $resourceGroupName `
-        -Name "privatelink.file.core.windows.net"
-} else {
-    $zone = $zone[0]
-}
-
-$link = New-AzPrivateDnsVirtualNetworkLink `
-    -ResourceGroupName $resourceGroupName `
-    -ZoneName $zone.Name `
-    -Name ($virtualNetwork.Name + "-link") `
-    -VirtualNetworkId $virtualNetwork.Id
-
-$internalNic = Get-AzResource `
-    -ResourceId $privateEndpoint.NetworkInterfaces[0].Id `
-    -ApiVersion "2019-04-01"
-
-foreach($ipconfig in $internalNic.Properties.ipConfigurations) {
-    foreach($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) {
-        $recordName = $fqdn.split('.', 2)[0]
-        $dnsZone = $fqdn.split('.', 2)[1]
-        New-AzPrivateDnsRecordSet `
-            -ResourceGroupName $resourceGroupName `
-            -Name $recordName `
-            -RecordType A `
-            -ZoneName $zone.Name `
-            -Ttl 600 `
-            -PrivateDnsRecords (New-AzPrivateDnsRecordConfig `
-                -IPv4Address $ipconfig.properties.privateIPAddress) | Out-Null
-    }
-}
 ```
 
 ## <a name="create-root-certificate-for-vpn-authentication"></a>Erstellen eines Stammzertifikats für die VPN-Authentifizierung

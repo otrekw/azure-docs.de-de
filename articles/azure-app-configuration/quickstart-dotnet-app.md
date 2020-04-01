@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
-ms.openlocfilehash: 8190265753bddb3038c5403411c4be193dd8075c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c56088a2c51c50c7f9cf1ff1e790d580fdb08d8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433616"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80245394"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Schnellstart: Erstellen einer .NET Framework-App mit Azure App Configuration
 
@@ -29,13 +29,15 @@ In dieser Schnellanleitung integrieren Sie Azure App Configuration in eine auf .
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wählen Sie **Konfigurations-Explorer** > **Erstellen** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
+6. Wählen Sie **Konfigurations-Explorer** > **Erstellen** > **Schlüssel-Wert** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
 
-    | Key | value |
+    | Schlüssel | Wert |
     |---|---|
     | TestApp:Settings:Message | Daten aus Azure App Configuration |
 
     Lassen Sie **Bezeichnung** und **Inhaltstyp** vorerst leer.
+
+7. Wählen Sie **Übernehmen**.
 
 ## <a name="create-a-net-console-app"></a>Erstellen einer .NET-Konsolen-App
 
@@ -92,7 +94,7 @@ In dieser Schnellanleitung integrieren Sie Azure App Configuration in eine auf .
 
 1. Legen Sie eine Umgebungsvariable mit dem Namen **ConnectionString** auf die Verbindungszeichenfolge Ihres App Configuration-Speichers fest. Führen Sie bei Verwendung der Windows-Eingabeaufforderung den folgenden Befehl aus:
 
-    ```CLI
+    ```cmd
         setx ConnectionString "connection-string-of-your-app-configuration-store"
     ```
 

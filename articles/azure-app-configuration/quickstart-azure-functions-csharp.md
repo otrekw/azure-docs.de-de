@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: 71a330523f1d3393a365fec29fb66f5c9773b6cc
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 2f6efdad7ab0685e58d2edd73bc36b758e8dbae2
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207063"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80245496"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Schnellstart: Erstellen einer Azure Functions-App mit Azure App Configuration
 
@@ -28,13 +28,15 @@ In diesem Schnellstart integrieren Sie den Azure App Configuration-Dienst in ein
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wählen Sie **Konfigurations-Explorer** >  **+ Erstellen** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
+6. Wählen Sie **Konfigurations-Explorer** >  **+ Erstellen** > **Schlüssel-Wert** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
 
-    | Key | value |
+    | Schlüssel | Wert |
     |---|---|
     | TestApp:Settings:Message | Daten aus Azure App Configuration |
 
     Lassen Sie **Bezeichnung** und **Inhaltstyp** vorerst leer.
+
+7. Wählen Sie **Übernehmen**.
 
 ## <a name="create-a-functions-app"></a>Erstellen einer Functions-App
 
@@ -85,7 +87,7 @@ In diesem Schnellstart integrieren Sie den Azure App Configuration-Dienst in ein
 
 1. Legen Sie eine Umgebungsvariable mit dem Namen **ConnectionString** fest, und geben Sie dafür den Zugriffsschlüssel für Ihren App Configuration-Speicher an. Führen Sie bei Verwendung einer Windows-Eingabeaufforderung den folgenden Befehl aus, und starten Sie die Eingabeaufforderung neu, damit die Änderung wirksam wird:
 
-    ```CLI
+    ```cmd
         setx ConnectionString "connection-string-of-your-app-configuration-store"
     ```
 

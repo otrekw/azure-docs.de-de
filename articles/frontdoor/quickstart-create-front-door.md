@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/31/2018
 ms.author: sharadag
-ms.openlocfilehash: 67a4f9eb3290ba09a2c19325464cf7ad224856e7
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: a98a933113322509f6fda8678350e9415d0b4058
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184514"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79471420"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Schnellstart: Erstellen Sie eine „Front Door“ für eine hoch verfügbare globale Webanwendung.
 
@@ -39,10 +39,10 @@ Für diesen Schnellstart müssen Sie zwei Instanzen einer Webanwendung bereitges
 
      | Einstellung         | Wert     |
      | ---              | ---  |
-     | NAME           | Geben Sie einen eindeutigen Namen für Ihre Web-App ein.  |
+     | Name           | Geben Sie einen eindeutigen Namen für Ihre Web-App ein.  |
      | Resource group          | Wählen Sie **Neu** aus, und geben Sie *myResourceGroupFD1* ein. |
      | App Service-Plan/Standort         | Wählen Sie **Neu**aus.  Geben Sie als App Service-Plan *myAppServicePlanEastUS* ein, und klicken Sie dann auf **OK**. 
-     |      Location  |   East US        |
+     |      Position  |   East US        |
     |||
 
 3. Klicken Sie auf **Erstellen**.
@@ -51,10 +51,10 @@ Für diesen Schnellstart müssen Sie zwei Instanzen einer Webanwendung bereitges
 
      | Einstellung         | Wert     |
      | ---              | ---  |
-     | NAME           | Geben Sie einen eindeutigen Namen für Ihre Web-App ein.  |
+     | Name           | Geben Sie einen eindeutigen Namen für Ihre Web-App ein.  |
      | Resource group          | Wählen Sie **Neu** aus, und geben Sie *myResourceGroupFD2* ein. |
      | App Service-Plan/Standort         | Wählen Sie **Neu**aus.  Geben Sie als App Service-Plan *myAppServicePlanWestEurope* ein, und klicken Sie dann auf **OK**. 
-     |      Location  |   Europa, Westen      |
+     |      Position  |   Europa, Westen      |
     |||
 
 
@@ -66,7 +66,7 @@ Erstellen Sie eine Front Door-Konfiguration, die den Benutzerdatenverkehr basier
 2. Beginnen Sie unter **Frontdoor-Instanz erstellen** damit, die grundlegenden Informationen hinzuzufügen und ein Abonnement anzugeben, in dem Sie die Front Door-Instanz konfigurieren möchten. Wie bei jeder anderen Azure-Ressource müssen Sie auch eine Ressourcengruppe und eine Ressourcengruppenregion bereitstellen, wenn Sie eine neue erstellen. Zuletzt müssen Sie einen Namen für Ihre Front Door-Instanz angeben.
 3. Nachdem die grundlegenden Informationen ausgefüllt wurden, müssen Sie als Erstes den **Front-End-Host** für die Konfiguration definieren. Das Ergebnis muss ein gültiger Domänenname sein, z.B. `myappfrontend.azurefd.net`. Dieser Hostname muss global eindeutig sein, diese Validierung übernimmt jedoch Front Door. 
 
-### <a name="b-add-application-backend-and-backend-pools"></a>B: Hinzufügen des Anwendung-Back-Ends und von Back-End-Pools
+### <a name="b-add-application-backend-and-backend-pools"></a>B. Hinzufügen des Anwendung-Back-Ends und von Back-End-Pools
 
 Als Nächstes müssen Sie Ihre Anwendungs-Back-Ends in einem Back-End-Pool konfigurieren, damit Front Door weiß, wo sich Ihre Anwendung befindet. 
 

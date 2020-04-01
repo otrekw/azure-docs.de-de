@@ -9,14 +9,16 @@ ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
 ms.custom: mvc
-ms.openlocfilehash: a3c696a5bfa9286e664f69bd379bac408b7459d6
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 91386eaf7753f2aefada2d1423a11b366c3ee924
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863239"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79370898"
 ---
-# <a name="overview-of-azure-digital-twins"></a>Übersicht über Azure Digital Twins
+# <a name="overview-of-azure-digital-twins-preview"></a>Übersicht über die Vorschauversion von Azure Digital Twins
+
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
 Azure Digital Twins (Vorschauversion) ist ein Azure IoT-Dienst zur Erstellung umfassender Modelle der physischen Umgebung. Er kann Raumintelligenzgraphen erstellen, um die Beziehungen und Interaktionen zwischen Personen, Bereichen und Geräten zu modellieren.
 

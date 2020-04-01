@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: rohink
-ms.openlocfilehash: 36ad1c47e115f06aea2017a049cefe36304504bf
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: e19850243498fc24c9a726f4603590df15f3a046
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934837"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79531514"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>Schnellstart: Erstellen eines Traffic Manager-Profils für eine hochverfügbare Webanwendung mit der Azure-Befehlszeilenschnittstelle
 
@@ -29,7 +29,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie jetzt ein [kostenloses Kont
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.0.28 ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.0.28 ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 Erstellen Sie mit [az group create](https://docs.microsoft.com/cli/azure/group) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
@@ -88,6 +88,7 @@ az appservice plan create \
     --sku S1
 
 ```
+
 ### <a name="create-a-web-app-in-the-app-service-plan"></a>Erstellen einer Web-App im App Service-Plan
 Erstellen Sie zwei Instanzen der Webanwendung, indem Sie [az webapp create](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) in den App Service-Plänen in den Azure-Regionen *USA, Osten* und *USA, Westen* verwenden.
 
@@ -111,7 +112,7 @@ az webapp create \
 Fügen Sie die beiden Web-Apps dem Traffic Manager-Profil wie folgt als Traffic Manager-Endpunkte hinzu, indem Sie [az network traffic-manager endpoint create](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create) verwenden:
 
 - Ermitteln Sie die Web-App-ID, und fügen Sie die Web-App aus der Azure-Region *USA, Osten* als primären Endpunkt für das Routing des gesamten Benutzerdatenverkehrs hinzu. 
-- Ermitteln Sie die Web-App-ID, und fügen Sie die Web-App aus der Region *Europa, Westen* als Failoverendpunkt hinzu. 
+- Ermitteln Sie die Web-App-ID, und fügen Sie die Web-App aus der Azure-Region *Europa, Westen* als Failoverendpunkt hinzu. 
 
 Wenn der primäre Endpunkt nicht verfügbar ist, wird der Datenverkehr automatisch an den Failoverendpunkt weitergeleitet.
 
@@ -127,6 +128,7 @@ az webapp show \
     --query id
 
 ```
+
 Notieren Sie sich die in der Ausgabe angezeigte ID, und verwenden Sie sie im folgenden Befehl zum Hinzufügen des Endpunkts:
 
 ```azurecli-interactive
@@ -151,6 +153,7 @@ az webapp show \
     --query id
 
 ```
+
 Notieren Sie sich die in der Ausgabe angezeigte ID, und verwenden Sie sie im folgenden Befehl zum Hinzufügen des Endpunkts:
 
 ```azurecli-interactive
@@ -212,7 +215,7 @@ Kopieren Sie den Wert von **RelativeDnsName**. Der DNS-Name Ihres Traffic Manage
 
 Löschen Sie die Ressourcengruppen, Webanwendungen und alle dazugehörigen Ressourcen mit [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete), wenn Sie fertig sind.
 
-```azurepowershell-interactive
+```azurecli-interactive
 
 az group delete \
     --resource-group myResourceGroup

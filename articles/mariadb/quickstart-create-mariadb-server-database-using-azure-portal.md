@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: 9ba02f53ba5765d90e8bba80e4d99922d7eb7c46
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 3/19/2020
+ms.openlocfilehash: 698220a7f81dc5fb9d70d2aa65e96dfa199af444
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432046"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80063832"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>Erstellen eines Azure Database for MariaDB-Servers über das Azure-Portal
 
@@ -37,7 +37,7 @@ So erstellen Sie einen Azure Database for MariaDB-Server:
    ![Option „Azure Database for MariaDB“](./media/quickstart-create-mariadb-server-database-using-azure-portal/2_navigate-to-mariadb.png)
 
 3. Geben Sie die folgenden Serverdetails ein, oder wählen Sie sie aus:
-   
+
    ![Formular für die Servererstellung](./media/quickstart-create-mariadb-server-database-using-azure-portal/4-create-form.png)
 
     Einstellung | Vorgeschlagener Wert | BESCHREIBUNG
@@ -49,24 +49,22 @@ So erstellen Sie einen Azure Database for MariaDB-Server:
     Serveradministratoranmeldung | **myadmin** | Ein Anmeldekonto für die Verbindungsherstellung mit dem Server. Der Administratoranmeldename darf nicht **azure_superuser**, **admin**, **administrator**, **root**, **guest** oder **public** lauten.
     Kennwort | *Beliebig* | Geben Sie ein neues Kennwort für das Serveradministratorkonto ein. Es muss zwischen acht und 128 Zeichen lang sein. Das Kennwort muss Zeichen aus drei der folgenden Kategorien enthalten: Englische Großbuchstaben, englische Kleinbuchstaben, Zahlen (0-9) und nicht alphanumerische Zeichen (!, $, #, % usw.).
     Kennwort bestätigen | *Beliebig*| Bestätigen Sie das Kennwort des Administratorkontos.
-    Location | *Die Region, die Ihren Benutzern am nächsten ist*| Wählen Sie den Standort aus, der Ihren Benutzern oder Ihren anderen Azure-Anwendungen am nächsten ist.
+    Position | *Die Region, die Ihren Benutzern am nächsten ist*| Wählen Sie den Standort aus, der Ihren Benutzern oder Ihren anderen Azure-Anwendungen am nächsten ist.
     Version | *Die aktuelle Version*| Die aktuelle Version (es sei denn, Sie haben besondere Anforderungen, die eine andere Version erfordern).
     Tarif | Siehe Beschreibung. | Die Compute-, Speicher- und Sicherungskonfigurationen für Ihren neuen Server. Klicken Sie auf **Tarif** > **Universell**. Übernehmen Sie die Standardwerte für die folgenden Einstellungen:<br><ul><li>**Computegeneration** (Gen 5)</li><li>**Virtuelle Kerne** (4 virtuelle Kerne)</li><li>**Speicher** (100 GB)</li><li>**Aufbewahrungszeit für Sicherung** (sieben Tage)</li></ul><br>Wählen Sie zum Aktivieren der Serversicherungen in georedundantem Speicher unter **Optionen für Sicherungsredundanz** die Option **Georedundant** aus. <br><br>Klicken Sie auf **OK**, um die Tarifauswahl zu speichern. Der nächste Screenshot zeigt die gewählten Optionen.
   
    > [!NOTE]
    > Ziehen Sie die Verwendung des Tarifs „Basic“ in Betracht, wenn geringe Compute- und E/A-Leistung für Ihre Workload angemessen ist. Beachten Sie, dass im Tarif „Basic“ erstellte Server später nicht auf „Universell“ oder „Arbeitsspeicheroptimiert“ skaliert werden können. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/mariadb/).
-   > 
 
    ![Erstellen des Servers – Fenster „Tarif“](./media/quickstart-create-mariadb-server-database-using-azure-portal/3-pricing-tier.png)
 
-4.  Wählen Sie **Erstellen** aus, um den Server bereitzustellen. Die Bereitstellung kann bis zu 20 Minuten dauern.
-   
-5.  Klicken Sie auf der Symbolleiste auf **Benachrichtigungen** (Glockensymbol), um den Bereitstellungsprozess zu überwachen.
-   
+4. Wählen Sie **Bewerten + erstellen** aus, um den Server bereitzustellen. Die Bereitstellung kann bis zu 20 Minuten dauern.
+
+5. Klicken Sie auf der Symbolleiste auf **Benachrichtigungen** (Glockensymbol), um den Bereitstellungsprozess zu überwachen.
+
 Unter Ihrem Server werden standardmäßig folgende Datenbanken erstellt: **information_schema**, **mysql**, **performance_schema** und **sys**.
 
-
-## <a name="configure-firewall-rule"></a>Konfigurieren einer Firewallregel auf Serverebene
+## <a name="configure-a-server-level-firewall-rule"></a><a name="configure-firewall-rule"></a>Konfigurieren einer Firewallregel auf Serverebene
 
 Der Dienst „Azure Database for MariaDB“ erstellt eine Firewall auf der Serverebene. Die Firewall verhindert, dass externe Anwendungen und Tools eine Verbindung mit dem Server und den Datenbanken auf dem Server herstellen, sofern keine Firewallregel erstellt wird, um die Firewall für bestimmte IP-Adressen zu öffnen. 
 
@@ -77,20 +75,19 @@ So erstellen Sie eine Firewallregel auf Serverebene:
 2. Wählen Sie auf der Übersichtsseite für den Server die Option **Verbindungssicherheit** aus.
 
 3. Wählen Sie unter **Firewallregeln** in der Spalte **Regelname** das leere Textfeld aus, um mit der Erstellung der Firewallregel zu beginnen. Geben Sie den genauen IP-Adressbereich der Clients an, die eine Verbindung mit diesem Server herstellen.
-   
+
    ![Verbindungssicherheit – Firewallregeln](./media/quickstart-create-mariadb-server-database-using-azure-portal/5-firewall-2.png)
 
-4. Wählen Sie auf der oberen Symbolleiste der Seite **Verbindungssicherheit** die Option **Speichern** aus. Fahren Sie erst fort, nachdem die Benachrichtigung über den erfolgreichen Abschluss der Aktualisierung angezeigt wurde. 
+4. Wählen Sie auf der oberen Symbolleiste der Seite **Verbindungssicherheit** die Option **Speichern** aus. Fahren Sie erst fort, nachdem die Benachrichtigung über den erfolgreichen Abschluss der Aktualisierung angezeigt wurde.
 
    > [!NOTE]
    > Die Kommunikation für Verbindungen mit Azure Database for MariaDB erfolgt über Port 3306. Wenn Sie versuchen, eine Verbindung über ein Unternehmensnetzwerk herzustellen, wird ausgehender Datenverkehr über Port 3306 unter Umständen nicht zugelassen. In diesem Fall muss Ihre IT-Abteilung Port 3306 öffnen, damit Sie eine Verbindung mit dem Server herstellen können.
-   > 
 
 ## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
 
 Für die Verbindungsherstellung mit Ihrem Datenbankserver benötigen Sie den vollständigen Servernamen und die Administratoranmeldeinformationen. Diese Werte haben Sie möglicherweise weiter oben in diesem Artikel notiert. Falls nicht, finden Sie den Servernamen und die Anmeldeinformationen auf der Seite **Übersicht** des Servers oder auf der Seite **Eigenschaften** im Azure-Portal:
 
-1. Wechseln Sie zur Seite **Übersicht** für Ihren Server. Notieren Sie die Werte für **Servername** und **Anmeldename des Serveradministrators**. 
+1. Wechseln Sie zur Seite **Übersicht** für Ihren Server. Notieren Sie die Werte für **Servername** und **Anmeldename des Serveradministrators**.
 
 2. Um die Werte zu kopieren, zeigen Sie mit dem Cursor auf das Feld, das Sie kopieren möchten. Das Symbol „Kopieren“ wird rechts neben dem Text angezeigt. Wählen Sie das Kopiersymbol aus, um die Werte zu kopieren.
 
@@ -113,13 +110,13 @@ Als Erstes verwenden wir das [MySQL](https://dev.mysql.com/doc/refman/5.7/en/mys
 
     Verwenden Sie das folgende Format, um mit dem MySQL-Hilfsprogramm eine Verbindung mit dem Azure Database for MariaDB-Server herzustellen:
 
-    ```bash
+    ```cmd
     mysql --host <fully qualified server name> --user <server admin login name>@<server name> -p
     ```
 
     Mithilfe des folgenden Befehls wird beispielsweise eine Verbindung mit unserem Beispielserver hergestellt:
 
-    ```azurecli-interactive
+    ```cmd
     mysql --host mydemoserver.mariadb.database.azure.com --user myadmin@mydemoserver -p
     ```
 
@@ -129,11 +126,11 @@ Als Erstes verwenden wir das [MySQL](https://dev.mysql.com/doc/refman/5.7/en/mys
     --user | *Anmeldename des Serveradministrators* |Der Benutzername für die Serveradministratoranmeldung, den Sie zum Erstellen des Azure Database for MariaDB-Servers verwendet haben. Sollten Sie den Benutzernamen vergessen haben, führen Sie die Schritte zum Abrufen der Verbindungsinformationen im vorherigen Abschnitt aus. Das Format lautet: *Benutzername\@Servername*.
     -p | *Ihr Kennwort*<br>(Warten Sie, bis Sie zur Eingabe aufgefordert werden.) |Wenn Sie zur Eingabe aufgefordert werden, geben Sie das Kennwort ein, das Sie zum Erstellen des Servers verwendet haben. Die für das Kennwort eingegebenen Zeichen werden bei der Eingabe nicht in der Bash-Eingabeaufforderung angezeigt. Drücken Sie nach der Eingabe des Kennworts die EINGABETASTE.
 
-   Wenn das MySQL-Hilfsprogramm verbunden ist, wird eine `mysql>`-Eingabeaufforderung angezeigt. Sie können Befehle an der Eingabeaufforderung eingeben. 
+   Wenn das MySQL-Hilfsprogramm verbunden ist, wird eine `mysql>`-Eingabeaufforderung angezeigt. Sie können Befehle an der Eingabeaufforderung eingeben.
 
    Hier sehen Sie ein Beispiel für die MySQL-Ausgabe:
 
-    ```bash
+    ```output
     Welcome to the MySQL monitor.  Commands end with ; or \g.
     Your MySQL connection id is 65505
     Server version: 5.6.39.0 MariaDB Server
@@ -209,7 +206,6 @@ So stellen Sie mit MySQL Workbench eine Verbindung mit dem Server her:
 
     > [!NOTE]
     > SSL wird standardmäßig auf dem Server erzwungen. Daher sind einige zusätzliche Konfigurationsschritte erforderlich, um eine Verbindung herzustellen. Weitere Informationen finden Sie unter [Konfigurieren von SSL-Verbindungen in der Anwendung für eine sichere Verbindung mit Azure Database for MariaDB](./howto-configure-ssl.md). Um SSL für diesen Schnellstart zu deaktivieren, klicken Sie im Azure-Portal auf der Übersichtsseite des Servers im Menü auf **Verbindungssicherheit**. Wählen Sie für **SSL-Verbindung erzwingen** die Option **Deaktiviert** aus.
-    >
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -217,19 +213,18 @@ Zum Bereinigen der Ressourcen, die Sie in diesem Schnellstart erstellt haben, st
 
 > [!TIP]
 > Andere Schnellstarts in dieser Sammlung bauen auf diesem Schnellstart auf. Wenn Sie weitere Schnellstarts für Azure Database for MariaDB nutzen möchten, bereinigen Sie die hier erstellten Ressourcen nicht. Falls Sie nicht mit den Schnellstarts fortfahren möchten, gehen Sie wie folgt vor, um alle Ressourcen zu löschen, die Sie im Rahmen dieses Schnellstarts erstellt haben.
->
 
 So löschen Sie die gesamte Ressourcengruppe, einschließlich des neu erstellten Servers
 
-1.  Navigieren Sie im Azure-Portal zu Ihrer Ressourcengruppe. Klicken Sie im Menü auf **Ressourcengruppen**, und wählen Sie anschließend den Namen Ihrer Ressourcengruppe aus (in unserem Beispiel: **myresourcegroup**).
+1. Navigieren Sie im Azure-Portal zu Ihrer Ressourcengruppe. Klicken Sie im Menü auf **Ressourcengruppen**, und wählen Sie anschließend den Namen Ihrer Ressourcengruppe aus (in unserem Beispiel: **myresourcegroup**).
 
-2.  Klicken Sie auf der Seite für die Ressourcengruppe auf **Löschen**. Geben Sie dann den Namen der Ressourcengruppe ein (in unserem Beispiel **myresourcegroup**), um das Löschen zu bestätigen. Klicken Sie auf **Löschen**.
+2. Klicken Sie auf der Seite für die Ressourcengruppe auf **Löschen**. Geben Sie dann den Namen der Ressourcengruppe ein (in unserem Beispiel **myresourcegroup**), um das Löschen zu bestätigen. Klicken Sie auf **Löschen**.
 
 So löschen Sie ausschließlich den neu erstellten Server
 
 1. Navigieren Sie im Azure-Portal zu Ihrem Server, sofern Sie die zugehörige Seite noch nicht geöffnet haben. Wählen Sie im linken Menü die Option **Alle Ressourcen** aus. Suchen Sie anschließend nach dem Server, den Sie erstellt haben.
 
-2. Wählen Sie auf der Seite **Übersicht** die Option **Löschen** aus. 
+2. Wählen Sie auf der Seite **Übersicht** die Option **Löschen** aus.
 
    ![Azure Database for MariaDB – Löschen des Servers](./media/quickstart-create-mariadb-server-database-using-azure-portal/delete-server.png)
 

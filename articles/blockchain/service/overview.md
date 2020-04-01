@@ -1,15 +1,15 @@
 ---
 title: Azure Blockchain-Dienst – Übersicht
 description: Übersicht über Azure Blockchain Service
-ms.date: 11/21/2019
+ms.date: 03/12/2020
 ms.topic: overview
-ms.reviewer: janders
-ms.openlocfilehash: 55e1be191b21c7c66b013f70d83fe6c046488e05
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.reviewer: ravastra
+ms.openlocfilehash: b9f5deb501fb93327fa5d5cfcfd5bb583ed6135e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75387376"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79205066"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Was ist der Azure Blockchain-Dienst?
 
@@ -29,7 +29,7 @@ Die Bereitstellung von Azure Blockchain Service kann über das Azure-Portal, die
 
 ### <a name="performance-and-service-tiers"></a>Leistungs- und Dienstebenen
 
-Azure Blockchain Service bietet zwei Dienstebenen: *Basic* und *Standard*. Jede Ebene bietet unterschiedliche Leistungen und Funktionen zur Unterstützung von kompakten Entwicklungs- und Testworkloads bis hin zu massiv skalierten Produktions-Blockchainbereitstellungen. Beide Ebenen beinhalten mindestens einen Transaktionsknoten und einen Validierungsknoten (Basic) oder zwei Validierungsknoten (Standard).
+Azure Blockchain Service bietet zwei Dienstebenen: *Basic* und *Standard*. Jede Ebene bietet unterschiedliche Leistungen und Funktionen zur Unterstützung von kompakten Entwicklungs- und Testworkloads bis hin zu massiv skalierten Produktions-Blockchainbereitstellungen. Verwenden Sie *Basic* für die Entwicklung, das Testen und Proof of Concept-Vorgänge. Verwenden Sie *Standard* für Bereitstellungen für die Produktion. Beide Ebenen beinhalten mindestens einen Transaktionsknoten und einen Validierungsknoten (Basic) oder zwei Validierungsknoten (Standard). 
 
 ![Tarife](./media/overview/pricing-tiers.png)
 
@@ -45,7 +45,7 @@ Als verwalteter Dienst stellt der Azure Blockchain-Dienst sicher, dass die Knote
 
 Darüber hinaus bietet Azure Blockchain Service umfangreiche Metriken über den Azure Monitor-Dienst, die Einblicke in die CPU-, Arbeitsspeicher- und Speicherauslastung der Knoten bieten.  Azure Monitor ermöglicht zudem hilfreiche Einblicke in die Aktivitäten des Blockchainnetzwerks wie Transaktionen und abgeleitete Blöcke, Länge der Transaktionswarteschlange sowie aktive Verbindungen.  Metriken können angepasst werden, um Informationen anzuzeigen, die für Ihre Blockchainanwendung wichtig sind.  Darüber hinaus können Schwellenwerte durch Warnmeldungen definiert werden, die es Benutzern ermöglichen, Aktionen auszulösen, wie z.B. das Senden einer E-Mail oder Textnachricht, das Ausführen einer Logik-App, einer Azure Function oder das Senden an einen benutzerdefinierten Webhook.
 
-![metrics](./media/overview/metrics.png)
+![Metriken](./media/overview/metrics.png)
 
 Über Azure Log Analytics können Benutzer Protokolle anzeigen, die sich auf den Quorum-Ledger beziehen, oder andere wichtige Informationen, wie z.B. versuchte Verbindungen zu den Transaktionsknoten.
 

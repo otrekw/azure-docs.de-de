@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 12/02/2019
-ms.openlocfilehash: bbf2e3204cb1e703aba445822bfb699fae13a112
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 3/20/2020
+ms.openlocfilehash: 50a3eebaa18674a0d0a7e9da88b8d3386e5016c5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454314"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067795"
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Erstellen eines Servers für Azure-Datenbank für MySQL über das Azure-Portal
 
@@ -47,7 +47,7 @@ Führen Sie die folgenden Schritte aus, um einen Server für Azure-Datenbank fü
     Serveradministratoranmeldung | myadmin | Ein Anmeldekonto für die Verbindungsherstellung mit dem Server. Der Administratoranmeldename darf nicht **azure_superuser**, **admin**, **administrator**, **root**, **guest** oder **public** lauten.
     Kennwort | *Beliebig* | Geben Sie ein neues Kennwort für das Serveradministratorkonto an. Es muss zwischen acht und 128 Zeichen lang sein. Das Kennwort muss Zeichen aus drei der folgenden Kategorien enthalten: Englische Großbuchstaben, englische Kleinbuchstaben, Zahlen (0-9) und nicht alphanumerische Zeichen (!, $, #, % usw.).
     Kennwort bestätigen | *Beliebig*| Bestätigen Sie das Kennwort des Administratorkontos.
-    Location | *Die Region, die Ihren Benutzern am nächsten liegt*| Wählen Sie den Standort aus, der Ihren Benutzern oder anderen Azure-Anwendungen am nächsten liegt.
+    Position | *Die Region, die Ihren Benutzern am nächsten liegt*| Wählen Sie den Standort aus, der Ihren Benutzern oder anderen Azure-Anwendungen am nächsten liegt.
     Version | *Die aktuelle Hauptversion*| Die aktuelle Hauptversion (es sei denn, Sie haben besondere Anforderungen, die eine andere Version erfordern).
     Tarif | **Universell**, **Gen 5**, **2 virtuelle Kerne**, **5 GB**, **7 Tage**, **Georedundant** | Die Compute-, Speicher- und Sicherungskonfigurationen für Ihren neuen Server. Wählen Sie **Tarif**aus. Klicken Sie als Nächstes auf die Registerkarte **Universell**. *Gen 5*, *4 virtuelle Kerne*, *100 GB* und *7 Tage* sind die Standardwerte für **Computegeneration**, **Virtuelle Kerne**, **Speicher** und **Aufbewahrungszeit für Sicherung**. Sie können diese Schieberegler unverändert lassen. Wählen Sie zum Aktivieren der Serversicherungen in georedundantem Speicher unter **Optionen für Sicherungsredundanz** die Option **Georedundant** aus. Klicken Sie auf **OK**, um die Tarifauswahl zu speichern. Der nächste Screenshot zeigt die gewählten Optionen.
   
@@ -57,7 +57,7 @@ Führen Sie die folgenden Schritte aus, um einen Server für Azure-Datenbank fü
 
    ![Erstellen des Servers – Tariffenster](./media/quickstart-create-mysql-server-database-using-azure-portal/3-pricing-tier.png)
 
-4. Wählen Sie **Erstellen** aus, um den Server bereitzustellen. Die Bereitstellung kann bis zu 20 Minuten dauern.
+4. Wählen Sie **Bewerten + erstellen** aus, um den Server bereitzustellen. Die Bereitstellung kann bis zu 20 Minuten dauern.
    
 5. Wählen Sie auf der Symbolleiste die Option **Benachrichtigungen** (Glockensymbol) aus, um den Bereitstellungsprozess zu überwachen.
    
@@ -171,7 +171,7 @@ Sie haben nun eine Verbindung mit dem Server für Azure-Datenbank für MySQL her
 ## <a name="connect-to-the-server-by-using-the-mysql-workbench-gui-tool"></a>Herstellen einer Serververbindung mit dem GUI-Tool MySQL Workbench
 Führen Sie die folgenden Schritte aus, um über das GUI-Tool MySQL Workbench eine Verbindung mit dem Server herzustellen:
 
-1.  Öffnen Sie die Anwendung MySQL Workbench auf Ihrem Clientcomputer. Sie können MySQL Workbench [hier](https://dev.mysql.com/downloads/workbench/) herunterladen und installieren.
+1.    Öffnen Sie die Anwendung MySQL Workbench auf Ihrem Clientcomputer. Sie können MySQL Workbench [hier](https://dev.mysql.com/downloads/workbench/) herunterladen und installieren.
 
 2. Erstellen Sie eine neue Verbindung. Wählen Sie neben der Überschrift **MySQL Connections** (MySQL-Verbindungen) das Pluszeichen (+) aus.
 
@@ -202,9 +202,9 @@ Die im Rahmen dieser Schnellstartanleitung erstellten Ressourcen können auf zwe
 
 Führen Sie die folgenden Schritte aus, um die gesamte Ressourcengruppe (einschließlich des neu erstellten Servers) zu löschen:
 
-1.  Navigieren Sie im Azure-Portal zu Ihrer Ressourcengruppe. Wählen Sie im Menü auf der linken Seite **Ressourcengruppen** und anschließend den Namen Ihrer Ressourcengruppe (in unserem Beispiel: **myresourcegroup**) aus.
+1.    Navigieren Sie im Azure-Portal zu Ihrer Ressourcengruppe. Wählen Sie im Menü auf der linken Seite **Ressourcengruppen** und anschließend den Namen Ihrer Ressourcengruppe (in unserem Beispiel: **myresourcegroup**) aus.
 
-2.  Wählen Sie auf der Ressourcengruppenseite die Option **Löschen** aus. Geben Sie dann den Namen der Ressourcengruppe (in unserem Beispiel: **myresourcegroup**) in das Feld ein, um den Löschvorgang zu bestätigen, und wählen Sie anschließend **Löschen** aus.
+2.    Wählen Sie auf der Ressourcengruppenseite die Option **Löschen** aus. Geben Sie dann den Namen der Ressourcengruppe (in unserem Beispiel: **myresourcegroup**) in das Feld ein, um den Löschvorgang zu bestätigen, und wählen Sie anschließend **Löschen** aus.
 
 Wenn Sie nur den neu erstellten Server löschen möchten, gehen Sie wie folgt vor:
 

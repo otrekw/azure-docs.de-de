@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 17371e3bd426ea81b5e7e07610aac0073ea972c9
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74157684"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Schnellstart: Senden von Nachrichten in Echtzeit aus einer Konsolen-App
@@ -111,7 +111,7 @@ broadcast
 
 Sie können mehrere Clients mit unterschiedlichen Clientnamen starten.
 
-## <a name="usage"> </a> Integration in Drittanbieterdienste
+## <a name="integration-with-third-party-services"></a><a name="usage"> </a> Integration in Drittanbieterdienste
 
 Der Azure SignalR-Dienst ermöglicht die Integration von Drittanbieterdiensten in das System.
 
@@ -136,7 +136,7 @@ Senden an einige Benutzer | **&#x2713;** (Veraltet) | `N / A`
 [Hinzufügen eines Benutzers zu einer Gruppe](#add-user-to-group) | `N / A` | **&#x2713;**
 [Entfernen eines Benutzers aus einer Gruppe](#remove-user-from-group) | `N / A` | **&#x2713;**
 
-<a name="broadcast"></a>
+<a name="broadcast"> </a>
 ### <a name="broadcast-to-everyone"></a>Übertragen an alle
 
 Version | API-HTTP-Methode | Anfrage-URL | Anforderungstext
@@ -144,7 +144,7 @@ Version | API-HTTP-Methode | Anfrage-URL | Anforderungstext
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>` | `{"target": "<method-name>", "arguments": [...]}`
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>` | Wie oben
 
-<a name="broadcast-group"></a>
+<a name="broadcast-group"> </a>
 ### <a name="broadcast-to-a-group"></a>Übertragen an eine Gruppe
 
 Version | API-HTTP-Methode | Anfrage-URL | Anforderungstext
@@ -152,7 +152,7 @@ Version | API-HTTP-Methode | Anfrage-URL | Anforderungstext
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>/group/<group-name>` | `{"target": "<method-name>", "arguments": [...]}`
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>` | Wie oben
 
-<a name="send-user"></a>
+<a name="send-user"> </a>
 ### <a name="sending-to-specific-users"></a>Senden an bestimmte Benutzer
 
 Version | API-HTTP-Methode | Anfrage-URL | Anforderungstext
@@ -160,14 +160,14 @@ Version | API-HTTP-Methode | Anfrage-URL | Anforderungstext
 `1.0-preview` | `POST` | `https://<instance-name>.service.signalr.net:5002/api/v1-preview/hub/<hub-name>/user/<user-id>` | `{"target": "<method-name>", "arguments": [...]}`
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>` | Wie oben
 
-<a name="add-user-to-group"></a>
+<a name="add-user-to-group"> </a>
 ### <a name="adding-a-user-to-a-group"></a>Hinzufügen eines Benutzers zu einer Gruppe
 
 Version | API-HTTP-Methode | Anfrage-URL
 --- | --- | ---
 `1.0` | `PUT` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
 
-<a name="remove-user-from-group"></a>
+<a name="remove-user-from-group"> </a>
 ### <a name="removing-a-user-from-a-group"></a>Entfernen eines Benutzers aus einer Gruppe
 
 Version | API-HTTP-Methode | Anfrage-URL

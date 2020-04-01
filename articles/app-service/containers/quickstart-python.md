@@ -3,15 +3,15 @@ title: 'Schnellstart: Erstellen einer Linux-Python-App'
 description: Führen Sie erste Schritte mit Linux-Apps in Azure App Service aus, indem Sie Ihre erste Python-App in einem Linux-Container in App Service bereitstellen.
 ms.topic: quickstart
 ms.date: 10/22/2019
-ms.custom: cli-validate
+ms.custom: seo-python-october2019, cli-validate
 experimental: true
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 567e87b43c3fc3d7d2fb0c894ced53c89a133978
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 9cc314edf35d6a327522ed49fcc0c7798c7dcf63
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524062"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80045665"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Schnellstart: Erstellen einer Python-App in Azure App Service für Linux
 
@@ -90,7 +90,7 @@ Die Azure CLI bietet viele praktische Befehle, die Sie über ein lokales Termina
 
 Um Azure-Befehle in der Azure CLI auszuführen, müssen Sie sich zunächst mit dem Befehl `az login` anmelden. Dieser Befehl öffnet einen Browser zum Erfassen Ihrer Anmeldeinformationen.
 
-```terminal
+```azurecli
 az login
 ```
 
@@ -101,11 +101,11 @@ Mit dem Befehl [`az webapp up`](/cli/azure/webapp#az-webapp-up) wird die Web-App
 Führen Sie im Ordner *python-docs-hello-world*, der den Beispielcode enthält, den folgenden Befehl `az webapp up` aus. Ersetzen Sie `<app-name>` durch einen global eindeutigen App-Namen (*gültige Zeichen sind `a-z`, `0-9` und `-`* ). Ersetzen Sie außerdem `<location-name>` durch eine Azure-Region wie **centralus**, **eastasia**, **westeurope**, **koreasouth**, **brazilsouth**, **centralindia** oder dergleichen. (Sie können eine Liste der zulässigen Regionen für Ihr Azure-Konto abrufen, indem Sie den Befehl [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) ausführen.)
 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
-Die Ausführung dieses Befehls kann einige Minuten in Anspruch nehmen. Während der Ausführung werden Informationen angezeigt, die den Informationen im folgenden Beispiel ähneln:
+Die vollständige Ausführung dieses Befehls kann einige Minuten in Anspruch nehmen. Während der Ausführung werden Informationen angezeigt, die den Informationen im folgenden Beispiel ähneln:
 
 ```output
 The behavior of this command has been altered by the following extension: webapp
@@ -157,7 +157,7 @@ Speichern Sie Ihre Änderungen, und beenden Sie den Editor.
 
 Stellen Sie die Anwendung mit dem folgenden Befehl `az webapp up` erneut bereit. Verwenden Sie dabei den gleichen Befehl, den Sie beim ersten Bereitstellen der Anwendung verwendet haben, und ersetzen Sie `<app-name>` und `<location-name>` durch die gleichen Namen, die Sie zuvor verwendet haben. 
 
-```terminal
+```azurecli
 az webapp up --sku F1 -n <app-name> -l <location-name>
 ```
 
@@ -174,13 +174,13 @@ Sie können auf die Konsolenprotokolle zugreifen, die innerhalb der App und des 
 
 Aktivieren Sie als Erstes die Containerprotokollierung, indem Sie den folgenden Befehl in einem Terminal ausführen. Ersetzen Sie `<app-name>` durch den Namen Ihrer App und `<resource-group-name>` durch den Namen der Ressourcengruppe, die in der Ausgabe des von Ihnen verwendeten Befehls `az webapp up` angezeigt wird (Beispiel: appsvc_rg_Linux_centralus):
 
-```terminal
+```azurecli
 az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
 ```
 
 Führen Sie den folgenden Befehl aus, um den Protokolldatenstrom anzuzeigen, nachdem die Containerprotokollierung aktiviert wurde:
 
-```terminal
+```azurecli
 az webapp log tail --name <app-name> --resource-group <resource-group-name>
 ```
 
@@ -217,7 +217,7 @@ In den vorherigen Schritten haben Sie Azure-Ressourcen in einer Ressourcengruppe
 
 Wenn Sie diese Ressourcen in Zukunft nicht mehr benötigen, löschen Sie die Ressourcengruppe, indem Sie den folgenden Befehl ausführen. Ersetzen Sie `<resource-group-name>` durch die in der Ausgabe des Befehls `az webapp up` gezeigte Ressourcengruppe, wie z. B. appsvc_rg_Linux_centralus. Die Ausführung des Befehls kann eine Minute in Anspruch nehmen.
 
-```terminal
+```azurecli
 az group delete -n <resource-group-name>
 ```
 
