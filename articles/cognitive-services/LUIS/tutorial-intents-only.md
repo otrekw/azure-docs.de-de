@@ -1,22 +1,14 @@
 ---
 title: 'Tutorial: Vorhersagen von Absichten: LUIS'
-titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial erstellen Sie eine benutzerdefinierte App, die die Absicht eines Benutzers vorhersagt. Diese App stellt den einfachsten Typ von LUIS-App dar, da sie keine verschiedenen Datenelemente, wie E-Mail-Adressen oder Datumsangaben, aus dem Äußerungstext extrahiert.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 89fb76f8c5cc4323e1211524340c0965a7d0716d
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.date: 03/24/2020
+ms.openlocfilehash: c58c96f717de77c065d7f844928714eb4fb3e4db
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76262747"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80286743"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Tutorial: Erstellen einer LUIS-App zum Bestimmen von Benutzerabsichten
 
@@ -53,9 +45,13 @@ Diese Intentionen sind in **Absichten** kategorisiert.
 
 ## <a name="create-a-new-intent"></a>Erstellen einer neuen Absicht
 
-1. Wählen Sie im Portal im Abschnitt **Erstellen** der App die Option **+ Erstellen** aus. Geben Sie den neuen Namen der Absicht ein (`OrderPizza`), und wählen Sie dann **Fertig** aus.
+Eine Absicht wird verwendet, um Benutzeräußerungen auf der Grundlage der anhand des Texts in natürlicher Sprache bestimmten Benutzerabsicht zu klassifizieren.
 
-    Die `OrderPizza`-Absicht wird vorhergesagt, wenn ein Benutzer eine Pizza bestellen möchte.
+Um eine Äußerung klassifizieren zu können, werden Beispiele von Benutzeräußerungen benötigt, die mit dieser Absicht klassifiziert werden sollen.
+
+1. Wählen Sie im Abschnitt **Erstellen** auf der Seite **Absichten** die Option **+ Erstellen** aus, um eine neue Absicht zu erstellen. Geben Sie den neuen Namen der Absicht ein (`OrderPizza`), und wählen Sie dann **Fertig** aus.
+
+    Die Absicht `OrderPizza` wird vorhergesagt, wenn ein Benutzer eine Pizza bestellen möchte.
 
 1. Fügen Sie dieser Absicht mehrere voraussichtliche Beispieläußerungen von Benutzern hinzu:
 
@@ -70,7 +66,7 @@ Diese Intentionen sind in **Absichten** kategorisiert.
 
     ![Hinzufügen von Beispieläußerungen](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
 
-    Durch die Bereitstellung von _Beispieläußerungen_ trainieren Sie LUIS, welche Art von Äußerungen für diese Absicht vorhergesagt werden sollten.
+    Durch die Bereitstellung von _Beispieläußerungen_ bringen Sie LUIS bei, welche Art von Äußerungen für diese Absicht vorhergesagt werden sollen.
 
     [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]
 

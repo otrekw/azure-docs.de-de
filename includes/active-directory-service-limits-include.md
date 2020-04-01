@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 02/28/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 5356252432b70654648a832f9ac27698f29b6327
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: b65feeb99bb51419e19a8e4b537515be14c54ba8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78202551"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334808"
 ---
 Nachstehend finden Sie die Verwendungs- und andere Diensteinschränkungen für den Azure Active Directory-Dienst (Azure AD).
 
-| Category | Einschränkungen |
+| Category | Begrenzung |
 | --- | --- |
 | Verzeichnisse | Ein einzelner Benutzer kann als Mitglied oder Gast bis zu 500 Azure AD-Verzeichnissen angehören.<br/>Ein einzelner Benutzer kann maximal 20 Verzeichnisse erstellen. |
 | Domänen | Sie können nicht mehr als 900 verwaltete Domänennamen hinzufügen. Wenn Sie alle Ihre Domänen für den Verbund mit der lokalen Active Directory-Instanz einrichten möchten, können Sie in jedem Verzeichnis maximal 450 Domänennamen hinzufügen. |
@@ -30,4 +30,4 @@ Nachstehend finden Sie die Verwendungs- und andere Diensteinschränkungen für d
 | Anpassung des Zugriffsbereichs |<ul><li>Es gibt keine Beschränkung für die Anzahl der Anwendungen, die im Zugriffsbereich pro Benutzer angezeigt werden können. Dies gilt für Benutzer mit zugewiesenen Lizenzen für Azure AD Premium oder die Enterprise Mobility Suite.</li><li>Maximal 10 App-Kacheln können für jeden Benutzer im Zugriffsbereich angezeigt werden. Dieser Grenzwert gilt für Benutzer, denen Lizenzen für den Azure AD Free-Lizenzplan zugewiesen sind. Beispiele für App-Kacheln sind Box, Salesforce oder Dropbox. Diese Beschränkung gilt nicht für Administratorkonten.</li></ul> |
 | Berichte | In einem Bericht können maximal 1.000 Zeilen angezeigt oder heruntergeladen werden. Weitere Daten werden abgeschnitten. |
 | Verwaltungseinheiten | Eine Azure AD-Ressource kann zu höchstens 30 Verwaltungseinheiten gehören. |
-| Administratorrollen und -berechtigungen | <ul><li>Eine Gruppe kann nicht als [Besitzer](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership) hinzugefügt werden.</li><li>Eine Gruppe kann nicht zu einer [Rolle](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) zugewiesen werden.</li><li>Die Fähigkeit von Benutzern, Verzeichnisinformationen anderer Benutzer lesen zu können, kann außerhalb des Azure AD-organisatonsweiten Switches nicht eingeschränkt werden, um den Zugriff für alle Nicht-Administratorbenutzer auf alle Verzeichnisinformationen zu deaktivieren (wird nicht empfohlen). Weitere Informationen zu den Standardberechtigungen finden Sie [hier](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users).</li><li>Es kann bis zu 15 Minuten für Abmelden/Anmelden dauern, bevor Ergänzungen und Widerrufe für eine Mitgliedschaft in einer Administratorrolle wirksam werden.</li></ul> |
+| Administratorrollen und -berechtigungen | <ul><li>Eine Gruppe kann nicht als [Besitzer](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#object-ownership) hinzugefügt werden.</li><li>Eine Gruppe kann nicht zu einer [Rolle](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) zugewiesen werden.</li><li>Die Fähigkeit von Benutzern, Verzeichnisinformationen anderer Benutzer lesen zu können, kann außerhalb des Azure AD-organisationsweiten Switches nicht eingeschränkt werden, um den Zugriff für alle Nicht-Administratorbenutzer auf alle Verzeichnisinformationen zu deaktivieren (nicht empfohlen). Weitere Informationen zu den Standardberechtigungen finden Sie [hier](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context#to-restrict-the-default-permissions-for-member-users).</li><li>Es kann bis zu 15 Minuten für Abmelden/Anmelden dauern, bevor Ergänzungen und Widerrufe für eine Mitgliedschaft in einer Administratorrolle wirksam werden.</li></ul> |

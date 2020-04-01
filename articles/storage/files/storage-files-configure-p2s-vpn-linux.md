@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b988435fc6928d52321cb427e2412e7ca81680d2
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: cfff05ed52258ee448d83a521b99dca7d356a0f9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73126466"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80061045"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Konfigurieren eines P2S-VPN (Point-to-Site) unter Linux zur Verwendung mit Azure Files
 Sie können eine P2S-VPN-Verbindung (Point-to-Site) verwenden, um Ihre Azure-Dateifreigaben außerhalb von Azure über SMB einzubinden, ohne Port 445 zu öffnen. Eine P2S-VPN-Verbindung ist eine VPN-Verbindung zwischen Azure und einem einzelnen Client. Um eine P2S-VPN-Verbindung mit Azure Files zu verwenden, muss für jeden Client, der eine Verbindung herstellen möchte, eine P2S-VPN-Verbindung konfiguriert werden. Wenn Sie über viele Clients verfügen, die sich über Ihr lokales Netzwerk mit Ihren Azure-Dateifreigaben verbinden müssen, können Sie anstelle einer P2S-Verbindung für jeden Client eine S2S-VPN-Verbindung (Site-to-Site) verwenden. Weitere Informationen finden Sie unter [Konfigurieren eines S2S-VPN (Site-to-Site) zur Verwendung mit Azure Files](storage-files-configure-s2s-vpn.md).
@@ -24,7 +24,9 @@ Der Artikel beschreibt die Schritte zur Konfiguration eines P2S-VPN unter Linux,
 ## <a name="prerequisites"></a>Voraussetzungen
 - Die neueste Version der Azure CLI. Informationen zum Installieren der Azure CLI finden Sie unter [Installieren der Azure PowerShell CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) im Abschnitt zu Ihrem Betriebssystem. Wenn Sie lieber mit dem Azure PowerShell-Modul unter Linux arbeiten möchten, können Sie dies tun, die folgenden Anweisungen beziehen sich jedoch auf die Azure CLI.
 
-- Eine Azure-Dateifreigabe, die Sie lokal einbinden möchten. Sie können mit Ihrem P2S-VPN entweder eine Azure-Dateifreigabe vom Typ [Standard](storage-how-to-create-file-share.md) oder [Premium](storage-how-to-create-premium-fileshare.md) verwenden.
+- Eine Azure-Dateifreigabe, die Sie lokal einbinden möchten. Azure-Dateifreigaben werden in Speicherkonten bereitgestellt. Hierbei handelt es sich um Verwaltungskonstrukte, die einen gemeinsam genutzten Pool mit Speicherplatz darstellen, in dem Sie mehrere Dateifreigaben sowie weitere Speicherressourcen wie Blobcontainer oder Warteschlangen bereitstellen können. Weitere Informationen zum Bereitstellen von Azure-Dateifreigaben und Speicherkonten finden Sie unter [Erstellen einer Azure-Dateifreigabe](storage-how-to-create-file-share.md).
+
+- Ein privater Endpunkt für das Speicherkonto mit der Azure-Dateifreigabe, die Sie lokal bereitstellen möchten. Weitere Informationen zum Erstellen eines privaten Endpunkts finden Sie unter [Konfigurieren von Azure Files-Netzwerkendpunkten](storage-files-networking-endpoints.md?tabs=azure-cli). 
 
 ## <a name="install-required-software"></a>Installieren der erforderlichen Software
 Das Azure-Gateway für virtuelle Netzwerke kann VPN-Verbindungen über verschiedene VPN-Protokolle bereitstellen, darunter z. B. IPsec und OpenVPN. Dieser Leitfaden zeigt die Verwendung von IPsec und verwendet das strongSwan-Paket, um die Unterstützung unter Linux zu gewährleisten. 
@@ -77,85 +79,6 @@ gatewaySubnet=$(az network vnet subnet create \
     --name "GatewaySubnet" \
     --address-prefixes "192.168.2.0/24" \
     --query "id" | tr -d '"')
-```
-
-## <a name="restrict-the-storage-account-to-the-virtual-network"></a>Beschränken des Speicherkontos auf das virtuelle Netzwerk
-Standardmäßig können Sie beim Erstellen eines Speicherkontos von überall auf der Welt darauf zugreifen, solange Sie Ihre Anforderung authentifizieren können (z. B. mit Ihrer Active Directory-Identität oder mit dem Speicherkontoschlüssel). Um den Zugriff auf dieses Speicherkonto auf das soeben erstellte virtuelle Netzwerk zu beschränken, müssen Sie einen Netzwerkregelsatz erstellen, der den Zugriff innerhalb des virtuellen Netzwerks erlaubt und jeden weiteren Zugriff unterbindet.
-
-Die Beschränkung des Speicherkontos auf das virtuelle Netzwerk erfordert die Verwendung eines Dienstendpunkts. Der Dienstendpunkt ist eine Netzwerkkomponente, mit der nur innerhalb des virtuellen Netzwerks auf das öffentliche DNS/die öffentliche IP-Adresse zugegriffen werden kann. Da nicht garantiert werden kann, dass die öffentliche IP-Adresse unverändert bleibt, möchten wir einen privaten Endpunkt und keinen Dienstendpunkt für das Speicherkonto verwenden. Eine Beschränkung des Speicherkontos ist aber nur möglich, wenn auch ein Dienstendpunkt verfügbar gemacht wird.
-
-Denken Sie daran, `<storage-account-name>` durch das Speicherkonto zu ersetzen, auf das Sie zugreifen möchten.
-
-```bash
-storageAccountName="<storage-account-name>"
-
-az storage account network-rule add \
-    --resource-group $resourceGroupName \
-    --account-name $storageAccountName \
-    --subnet $serviceEndpointSubnet > /dev/null
-
-az storage account update \
-    --resource-group $resourceGroupName \
-    --name $storageAccountName \
-    --bypass "AzureServices" \
-    --default-action "Deny" > /dev/null
-```
-
-## <a name="create-a-private-endpoint-preview"></a>Erstellen eines privaten Endpunkts (Vorschau)
-Wenn Sie einen privaten Endpunkt für Ihr Speicherkonto erstellen, erhält Ihr Speicherkonto eine IP-Adresse im IP-Adressraum Ihres virtuellen Netzwerks. Wenn Sie Ihre Azure-Dateifreigabe von einer lokalen Umgebung aus mithilfe dieser privaten IP-Adresse einbinden, leiten die von der VPN-Installation automatisch definierten Routingregeln Ihre Einbindungsanforderung über das VPN an das Speicherkonto weiter. 
-
-```bash
-zoneName="privatelink.file.core.windows.net"
-
-storageAccount=$(az storage account show \
-    --resource-group $resourceGroupName \
-    --name $storageAccountName \
-    --query "id" | tr -d '"')
-
-az resource update \
-    --ids $privateEndpointSubnet \
-    --set properties.privateEndpointNetworkPolicies=Disabled > /dev/null
-
-az network private-endpoint create \
-    --resource-group $resourceGroupName \
-    --name "$storageAccountName-PrivateEndpoint" \
-    --location $region \
-    --subnet $privateEndpointSubnet \
-    --private-connection-resource-id $storageAccount \
-    --group-ids "file" \
-    --connection-name "privateEndpointConnection" > /dev/null
-
-az network private-dns zone create \
-    --resource-group $resourceGroupName \
-    --name $zoneName > /dev/null
-
-az network private-dns link vnet create \
-    --resource-group $resourceGroupName \
-    --zone-name $zoneName \
-    --name "$virtualNetworkName-link" \
-    --virtual-network $virtualNetworkName \
-    --registration-enabled false > /dev/null
-
-networkInterfaceId=$(az network private-endpoint show \
-    --name "$storageAccountName-PrivateEndpoint" \
-    --resource-group $resourceGroupName \
-    --query 'networkInterfaces[0].id' | tr -d '"')
- 
-storageAccountPrivateIP=$(az resource show \
-    --ids $networkInterfaceId \
-    --api-version 2019-04-01 \
-    --query "properties.ipConfigurations[0].properties.privateIPAddress" | tr -d '"')
-
-fqdnQuery="properties.ipConfigurations[0].properties.privateLinkConnectionProperties.fqdns[0]"
-fqdn=$(az resource show \
-    --ids $networkInterfaceId \
-    --api-version 2019-04-01 \
-    --query $fqdnQuery | tr -d '"')
-
-az network private-dns record-set a create \
-    --name $storageAccountName \
-    --zone-name $zoneName \
-    --resource-group $resourceGroupName > /dev/null
 ```
 
 ## <a name="create-certificates-for-vpn-authentication"></a>Erstellen von Zertifikaten für die VPN-Authentifizierung

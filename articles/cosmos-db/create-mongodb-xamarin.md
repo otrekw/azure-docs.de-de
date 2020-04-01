@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/20/2018
+ms.date: 03/16/2020
 ms.author: masoucou
-ms.openlocfilehash: a21e3705fe367e478ec02b82ec83c4ad7cfb4151
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 98b0ddf345ebd19e2cd974db3891e88c9f72530d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445457"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79481686"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Schnellstart: Erstellen einer Xamarin.Forms-App mit dem .NET-SDK und der API für MongoDB von Azure Cosmos DB
 
@@ -26,7 +26,7 @@ ms.locfileid: "75445457"
 > * [Golang](create-mongodb-golang.md)
 >  
 
-Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB zugrunde liegen.
+Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB zugrunde liegen.
 
 In diesem Schnellstart wird veranschaulicht, wie Sie mithilfe des Azure-Portals ein [Cosmos-Konto, das für die API für MongoDB von Azure Cosmos DB konfiguriert ist](mongodb-introduction.md), eine Dokumentendatenbank und eine Sammlung erstellen. Anschließend erstellen Sie eine Xamarin.Forms-Aufgaben-App mithilfe des [MongoDB .NET-Treibers](https://docs.mongodb.com/ecosystem/drivers/csharp/).
 
@@ -52,10 +52,18 @@ Das in diesem Artikel beschriebene Beispiel ist mit MongoDB.Driver-Version 2.6.1
 
 Laden Sie die Beispiel-App zunächst von GitHub herunter. Die App implementiert eine To-Do-App mit dem Dokumentspeichermodell von MongoDB.
 
-1. Öffnen Sie eine Eingabeaufforderung, erstellen Sie einen neuen Ordner namens „git-samples“, und schließen Sie die Eingabeaufforderung.
+
+
+# <a name="windows"></a>[Windows](#tab/windows)
+
+1. Öffnen Sie unter Windows eine Eingabeaufforderung bzw. unter macOS ein Terminal, erstellen Sie einen neuen Ordner mit dem Namen „git-samples“, und schließen Sie dann das Fenster.
+
+    ```batch
+    md "C:\git-samples"
+    ```
 
     ```bash
-    md "C:\git-samples"
+    mkdir '$home\git-samples\
     ```
 
 2. Öffnen Sie ein Git-Terminalfenster (z.B. git bash), und verwenden Sie den Befehl `cd`, um in den neuen Ordner zu gelangen und dort die Beispiel-App zu installieren.
@@ -86,6 +94,8 @@ Die folgenden Codeausschnitte stammen alle aus der `MongoService`-Klasse, die si
 
     settings.SslSettings =
         new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+
+    settings.RetryWrites = false;
 
     MongoClient mongoClient = new MongoClient(settings);
     ```
@@ -159,6 +169,11 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 2. Öffnen Sie die Datei **APIKeys.cs** im Verzeichnis **Helpers** (Hilfsprogramme) des Projekts **TaskList.Core**.
 
 3. Kopieren Sie den Wert Ihrer **primären Verbindungszeichenfolge** aus dem Portal (mithilfe der Schaltfläche zum Kopieren), und legen Sie ihn als Wert des Felds **ConnectionString** in der Datei **APIKeys.cs** fest.
+
+4. Entfernen Sie `&replicaSet=globaldb` aus der Verbindungszeichenfolge. Sie erhalten einen Laufzeitfehler, wenn Sie diesen Wert nicht aus der Abfragezeichenfolge entfernen.
+
+> [!IMPORTANT]
+> Sie müssen das Schlüssel-Wert-Paar `&replicaSet=globaldb` aus der Abfragezeichenfolge der Verbindungszeichenfolge entfernen, um einen Laufzeitfehler zu vermeiden.
 
 Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikation mit Azure Cosmos DB aktualisiert.
 

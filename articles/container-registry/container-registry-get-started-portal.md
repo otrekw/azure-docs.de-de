@@ -2,20 +2,20 @@
 title: 'Schnellstart: Erstellen einer Registrierung im Portal'
 description: Hier erfahren Sie, wie Sie ganz schnell eine private Docker-Registrierung über das Azure-Portal in Azure Container Registry erstellen.
 ms.topic: quickstart
-ms.date: 01/22/2019
+ms.date: 03/03/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 319fd670c8e82120ef63e94395f4d6809eeb2601
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 6fe6358655f50ab783b4017efa8ee1db351cd018
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611235"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79409252"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-portal"></a>Schnellstart: Erstellen einer privaten Containerregistrierung im Azure-Portal
 
-Eine Azure Container Registry-Instanz ist eine private Docker-Registrierung in Azure, in der Sie Ihre privaten Docker-Containerimages speichern und verwalten können. In dieser Schnellstartanleitung erstellen Sie eine Containerregistrierung über das Azure-Portal. Übertragen Sie anschließend mithilfe von Docker-Befehlen ein Containerimage per Push in die Registrierung. Rufen Sie abschließend das Image per Pull aus der Registrierung ab, und führen Sie es aus.
+Eine Azure Container Registry-Instanz ist eine private Docker-Registrierung in Azure, in der Sie private Docker-Containerimages und zugehörige Artefakte speichern und verwalten können. In dieser Schnellstartanleitung erstellen Sie eine Containerregistrierung über das Azure-Portal. Übertragen Sie anschließend mithilfe von Docker-Befehlen ein Containerimage per Push in die Registrierung. Rufen Sie abschließend das Image per Pull aus der Registrierung ab, und führen Sie es aus.
 
-Für diese Schnellstartanleitung müssen Sie die Azure CLI (mindestens Version 2.0.55 empfohlen) ausführen, um sich bei der Registrierung anmelden und Containerimages verwenden zu können. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli].
+Für diese Schnellstartanleitung müssen Sie die Azure CLI (mindestens Version 2.0.55 empfohlen) ausführen, um sich bei der Registrierung anmelden und Containerimages verwenden zu können. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
 Darüber hinaus muss Docker lokal installiert sein. Für Docker sind Pakete erhältlich, mit denen Docker problemlos auf einem [Mac][docker-mac]-, [Windows][docker-windows]- oder [Linux][docker-linux]-System konfiguriert werden kann.
 
@@ -29,9 +29,11 @@ Klicken Sie auf **Ressource erstellen** > **Container** > **Container Registry**
 
 ![Erstellen einer Containerregistrierung über das Azure-Portal][qs-portal-01]
 
-Geben Sie Werte für **Registrierungsname** und **Ressourcengruppe** ein. Der Registrierungsname muss innerhalb von Azure eindeutig sein und zwischen 5 und 50 alphanumerische Zeichen enthalten. Erstellen Sie im Rahmen dieser Schnellstartanleitung eine neue Ressourcengruppe namens `myResourceGroup` am Standort `West US`, und wählen Sie für **SKU** die Option „Basic“ aus. Klicken Sie auf **Erstellen**, um die ACR-Instanz bereitzustellen.
+Geben Sie auf der Registerkarte **Grundlagen** Werte für **Ressourcengruppe** und **Registrierungsname** ein. Der Registrierungsname muss innerhalb von Azure eindeutig sein und zwischen 5 und 50 alphanumerische Zeichen enthalten. Erstellen Sie im Rahmen dieser Schnellstartanleitung eine neue Ressourcengruppe namens `myResourceGroup` am Standort `West US`, und wählen Sie für **SKU** die Option „Basic“ aus. 
 
 ![Erstellen einer Containerregistrierung im Azure-Portal][qs-portal-03]
+
+Übernehmen Sie für die übrigen Einstellungen die Standardwerte. Wählen Sie dann **Überprüfen + erstellen** aus. Überprüfen Sie die Einstellungen, und wählen Sie anschließend **Erstellen** aus.
 
 In dieser Schnellstartanleitung erstellen Sie eine Registrierung vom Typ *Basic*. Dabei handelt es sich um eine kostenoptimierte Option für Entwickler, die sich mit Azure Container Registry vertraut machen. Ausführliche Informationen zu verfügbaren Dienstebenen finden Sie unter [Azure Container Registry-SKUs][container-registry-skus].
 
@@ -39,11 +41,11 @@ Wenn die Meldung **Bereitstellung erfolgreich** erscheint, wählen Sie die Conta
 
 ![Containerregistrierungsübersicht im Azure-Portal][qs-portal-05]
 
-Notieren Sie sich den Wert unter **Anmeldeserver**. Diesen Wert benötigen Sie in den folgenden Schritten, wenn Sie über die Azure CLI und Docker Aktionen für Ihre Registrierung ausführen.
+Notieren Sie sich den Wert unter **Anmeldeserver**. Sie verwenden diesen Wert in den folgenden Schritten bei den Push- und Pullvorgängen für Images mit Docker.
 
 ## <a name="log-in-to-registry"></a>Anmelden bei der Registrierung
 
-Bevor Sie Push- und Pullvorgänge für Containerimages ausführen können, müssen Sie sich bei der ACR-Instanz anmelden. Öffnen Sie in Ihrem Betriebssystem eine Befehlsshell, und verwenden Sie den Befehl [az acr login][az-acr-login] in der Azure CLI. (Geben Sie nur den Containernamen an. Beziehen Sie „azurecr.io“ nicht ein.)
+Bevor Sie Push- und Pullvorgänge für Containerimages ausführen können, müssen Sie sich bei der ACR-Instanz anmelden. Öffnen Sie in Ihrem Betriebssystem eine Befehlsshell, und verwenden Sie den Befehl [az acr login][az-acr-login] in der Azure CLI. (Geben Sie beim Anmelden nur den Registrierungsnamen an. Lassen Sie das Suffix „azurecr.io“ weg.)
 
 ```azurecli
 az acr login --name <acrName>
@@ -57,7 +59,7 @@ Der Befehl gibt nach Abschluss des Vorgangs `Login Succeeded` zurück.
 
 Navigieren Sie zum Auflisten der Images in Ihrer Registrierung im Portal zu Ihrer Registrierung, klicken Sie auf **Repositorys**, und wählen Sie das Repository aus, das Sie mit `docker push` erstellt haben.
 
-In diesem Beispiel wählen wir das Repository **hello-world** aus. Das mit `v1` markierte Image wird unter **TAGS** angezeigt.
+In diesem Beispiel wählen wir das Repository **hello-world** aus. Das mit `v1` markierte Image wird unter **Tags** angezeigt.
 
 ![Auflisten von Containerimages im Azure-Portal][qs-portal-09]
 

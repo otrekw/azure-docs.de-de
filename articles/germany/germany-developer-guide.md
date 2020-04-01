@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2019
 ms.author: ralfwi
-ms.openlocfilehash: 8902e6e4d65e2c9f9a0f464749197bc3a59ae010
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a24e33b77f1f83b61d0990d1e6b71925ec0f9c61
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436750"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80293494"
 ---
 # <a name="azure-germany-developer-guide"></a>Microsoft Azure Deutschland – Entwickler- und Benutzerhandbuch
 
 > [!IMPORTANT]
-> Seit [August 2018](https://news.microsoft.com/europe/2018/08/31/microsoft-to-deliver-cloud-services-from-new-datacentres-in-germany-in-2019-to-meet-evolving-customer-needs/) haben wir keine neuen Kunden akzeptiert und keine neuen Features und Dienste an den ursprünglichen Microsoft Cloud Germany-Standorten bereitgestellt.
+> Seit [August 2018](https://news.microsoft.com/europe/2018/08/31/microsoft-to-deliver-cloud-services-from-new-datacentres-in-germany-in-2019-to-meet-evolving-customer-needs/) haben wir keine neuen Kunden akzeptiert und keine neuen Features und Dienste an den ursprünglichen Microsoft Cloud Deutschland-Standorten bereitgestellt.
 >
 > Aufgrund der Weiterentwicklung der Kundenbedürfnisse haben wir vor Kurzem zwei neue Rechenzentrumsregionen in Deutschland [gestartet](https://azure.microsoft.com/blog/microsoft-azure-available-from-new-cloud-regions-in-germany/), die Data Residency für Kundendaten, umfassende Konnektivität mit dem globalen Cloudnetzwerk von Microsoft sowie wettbewerbsfähige Preise bieten. 
 >
@@ -58,20 +58,20 @@ In der folgenden Tabelle finden Sie Informationen für die Zuordnung von Azure- 
 
 | Name | Azure Deutschland-Endpunkt |
 | --- | --- |
-| ActiveDirectoryServiceEndpointResourceId | https://management.core.cloudapi.de/ |
-| GalleryUrl                               | https://gallery.cloudapi.de/ |
-| ManagementPortalUrl                      | https://portal.microsoftazure.de/ |
-| ServiceManagementUrl                     | https://management.core.cloudapi.de/ |
-| PublishSettingsFileUrl                   | https://manage.microsoftazure.de/publishsettings/index |
-| ResourceManagerUrl                       | https://management.microsoftazure.de/ |
-| SqlDatabaseDnsSuffix                     | .database.cloudapi.de |
-| StorageEndpointSuffix                    | core.cloudapi.de |
-| ActiveDirectoryAuthority                 | https://login.microsoftonline.de/ |
-| GraphUrl                                 | https://graph.cloudapi.de/ |
-| TrafficManagerDnsSuffix                  | azuretrafficmanager.de |
-| AzureKeyVaultDnsSuffix                   | vault.microsoftazure.de |
-| AzureKeyVaultServiceEndpointResourceId   | https://vault.microsoftazure.de |
-| Service Bus-Suffix                       | servicebus.cloudapi.de |
+| ActiveDirectoryServiceEndpointResourceId | `https://management.core.cloudapi.de/` |
+| GalleryUrl                               | `https://gallery.cloudapi.de/` |
+| ManagementPortalUrl                      | `https://portal.microsoftazure.de/` |
+| ServiceManagementUrl                     | `https://management.core.cloudapi.de/` |
+| PublishSettingsFileUrl                   | `https://manage.microsoftazure.de/publishsettings/index` |
+| ResourceManagerUrl                       | `https://management.microsoftazure.de/` |
+| SqlDatabaseDnsSuffix                     | `.database.cloudapi.de` |
+| StorageEndpointSuffix                    | `core.cloudapi.de` |
+| ActiveDirectoryAuthority                 | `https://login.microsoftonline.de/` |
+| GraphUrl                                 | `https://graph.cloudapi.de/` |
+| TrafficManagerDnsSuffix                  | `azuretrafficmanager.de` |
+| AzureKeyVaultDnsSuffix                   | `vault.microsoftazure.de` |
+| AzureKeyVaultServiceEndpointResourceId   | `https://vault.microsoftazure.de` |
+| Service Bus-Suffix                       | `servicebus.cloudapi.de` |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

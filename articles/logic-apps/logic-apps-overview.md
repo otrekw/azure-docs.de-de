@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: overview
 ms.custom: mvc
-ms.date: 06/29/2018
-ms.openlocfilehash: 2327632fc2a71855874bb8fe45e97af430fa696a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 03/11/2020
+ms.openlocfilehash: 0ba41d63195c906b57046dc6c9fd57c9f08399ab
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791840"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79290548"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>Übersicht: Was ist Azure Logic Apps?
 
@@ -36,7 +36,7 @@ Zum Erstellen von Lösungen für die Unternehmensintegration mit Azure Logic App
 
 Jeder Logik-App-Workflow beginnt mit einem Trigger, der ausgelöst wird, wenn ein bestimmtes Ereignis eintritt oder neue verfügbare Daten bestimmte Kriterien erfüllen. Viele von den Connectors in Logic Apps bereitgestellten Trigger enthalten grundlegende Planungsfunktionen, damit Sie festlegen können, wie regelmäßig Ihre Workloads ausgeführt werden. Für eine komplexere Zeitplanung oder fortgeschrittene Serien können Sie einen Recurrence-Trigger als ersten Schritt in einem Workflow verwenden. Informieren Sie sich über [zeitplanbasierte Workflows](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
-Bei jeder Auslösung des Triggers erstellt das Logic Apps-Modul eine Logik-App-Instanz, mit der die Aktionen im Workflow ausgeführt werden. Diese Aktionen können auch Datenkonvertierungen und Flusssteuerungen umfassen, z.B. bedingte Anweisungen, switch-Anweisungen, Schleifen und Verzweigungen. Diese Logik-App beginnt beispielsweise mit einem Dynamics 365-Trigger mit dem integrierten Kriterium „When a record is updated“ (Wenn ein Datensatz aktualisiert wird). Wenn der Trigger ein Ereignis erkennt, das mit diesem Kriterium übereinstimmt, wird der Trigger ausgelöst und führt die Aktionen des Workflows aus. Hier umfassen diese Aktionen eine XML-Transformation, Datenaktualisierungen, Entscheidungsverzweigungen und E-Mail-Benachrichtigungen.
+Bei jeder Auslösung des Triggers erstellt das Logic Apps-Modul eine Logik-App-Instanz, mit der die Aktionen im Workflow ausgeführt werden. Diese Aktionen können auch Datenkonvertierungen und Workflowsteuerungen umfassen, z. B. bedingte Anweisungen, switch-Anweisungen, Schleifen und Verzweigungen. Diese Logik-App beginnt beispielsweise mit einem Dynamics 365-Trigger mit dem integrierten Kriterium „When a record is updated“ (Wenn ein Datensatz aktualisiert wird). Wenn der Trigger ein Ereignis erkennt, das mit diesem Kriterium übereinstimmt, wird der Trigger ausgelöst und führt die Aktionen des Workflows aus. Hier umfassen diese Aktionen eine XML-Transformation, Datenaktualisierungen, Entscheidungsverzweigungen und E-Mail-Benachrichtigungen.
 
 ![Designer für Logik-Apps – Beispiel für Logik-App](./media/logic-apps-overview/azure-logic-apps-designer.png)
 
@@ -70,7 +70,7 @@ Einige Muster und Workflows sind leicht zu beschreiben, können im Code aber nur
 
 Unternehmen und Organisationen kommunizieren auf elektronischem Wege über Nachrichtenprotokolle und -formate miteinander, die zwar alle dem Branchenstandard entsprechen, aber unterschiedlicher Art sein können, z.B. EDIFACT, AS2 und X12. Mit den Features im [Enterprise Integration Pack (EIP)](../logic-apps/logic-apps-enterprise-integration-overview.md) können Sie Logik-Apps erstellen, mit denen von Ihren Partnern verwendete Nachrichtenformate in Formate transformiert werden, die von den Systemen Ihrer Organisation interpretiert und verarbeitet werden können. Mit Logic Apps wird dieser Nachrichtenaustausch reibungslos und außerdem sicher durchgeführt, indem Verschlüsselungen und digitale Signaturen verwendet werden.
 
-Beginnen Sie klein mit Ihren aktuellen Systemen und Diensten, und wachsen Sie Schritt für Schritt so schnell, wie es für Sie machbar ist. Wenn Sie bereit sind, erhalten Sie über Logic Apps und das EIP Unterstützung beim Implementieren und zentralen Hochskalieren auf anspruchsvollere Integrationsszenarien, indem diese und weitere Funktionen genutzt werden:
+Beginnen Sie klein mit Ihren aktuellen Systemen und Diensten, und wachsen Sie Schritt für Schritt so schnell, wie es für Sie machbar ist. Wenn Sie bereit sind, erhalten Sie über Logic Apps und das EIP Unterstützung beim Implementieren und Hochskalieren auf anspruchsvollere Integrationsszenarien, indem diese und weitere Funktionen genutzt werden:
 
 * Nutzen Sie die folgenden Produkte und Dienste:
 
@@ -100,6 +100,18 @@ In der anderen Richtung kann BizTalk Server eine Verbindung mit Logik-Apps herst
 
 Erstellen Sie Ihre Logik-Apps als Azure Resource Manager-Vorlagen, sodass Sie die [Bereitstellung von Logik-Apps](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) über mehrere Umgebungen und Regionen hinweg automatisieren können.
 
+### <a name="access-resources-inside-azure-virtual-networks"></a>Zugreifen auf Ressourcen in virtuellen Azure-Netzwerken
+
+Logik-Apps können auf geschützte Ressourcen zugreifen, z. B. virtuelle Computer (VMs) und andere Systeme oder Dienste, die sich in einem [virtuellen Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) befinden, wenn Sie eine [*Integrationsdienstumgebung* (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) erstellen. Eine ISE ist eine isolierte Instanz des Logic Apps-Diensts, die dedizierte Ressourcen verwendet und getrennt vom „globalen“ mehrinstanzenfähigen Logic Apps-Dienst ausgeführt wird.
+
+Das Ausführen von Logik-Apps als eigene separate isolierte Instanz trägt dazu bei, mögliche Auswirkungen anderer Azure-Mandanten auf die Leistung Ihrer Apps zu verringern. Dies ist auch als [„Noisy Neighbors“-Problem](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors) bekannt. Eine ISE bietet darüber hinaus die folgenden Vorteile:
+
+* Ihre eigenen statischen IP-Adressen. Diese sind gesondert von den statischen IP-Adressen, die von den Logik-Apps im mehrinstanzenfähigen Dienst gemeinsam verwendet werden. Sie können auch eine einzelne öffentliche, statische und vorhersagbare ausgehende IP-Adresse für die Kommunikation mit Zielsystemen einrichten. Auf diese Weise müssen Sie nicht für jede ISE an den Zielsystemen zusätzliche Firewallzugänge einrichten.
+
+* Höhere Grenzwerte für Ausführungsdauer, Speicheraufbewahrung, Durchsatz, Zeitlimits für HTTP-Anforderungen und -Antworten, Nachrichtengröße und benutzerdefinierte Connectoranforderungen. Weitere Informationen finden Sie unter [Grenzwerte und Konfiguration für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md).
+
+Wenn Sie eine ISE erstellen, *injiziert* Azure diese ISE bzw. stellt sie in Ihrem virtuellen Azure-Netzwerk bereit. Anschließend können Sie diese ISE als Speicherort für Logik-Apps und Integrationskonten verwenden, die Zugriff benötigen. Weitere Informationen zum Erstellen einer ISE finden Sie unter [Verbinden mit Azure Virtual Networks über Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment.md).
+
 ### <a name="built-in-extensibility"></a>Integrierte Erweiterbarkeit
 
 Wenn Sie den gewünschten Connector zum Ausführen von benutzerdefiniertem Code nicht finden, können Sie Logik-Apps erweitern, indem Sie Ihre eigenen Codeausschnitte bedarfsabhängig mit [Azure Functions](../azure-functions/functions-overview.md) erstellen und aufrufen. Erstellen Sie Ihre eigenen [APIs](../logic-apps/logic-apps-create-api-app.md) und [benutzerdefinierten Connectors](../logic-apps/custom-connector-overview.md), die Sie aus Logik-Apps aufrufen können.
@@ -114,6 +126,10 @@ Informieren Sie sich in diesen Einführungsvideos eingehender über Logic Apps:
 * [Enterprise integration with Microsoft Azure Logic Apps](https://channel9.msdn.com/Events/Ignite/Microsoft-Ignite-Orlando-2017/BRK2188) (Unternehmensintegration mit Microsoft Azure Logic Apps)
 * [Building advanced business processes with Logic Apps](https://channel9.msdn.com/Events/Ignite/Microsoft-Ignite-Orlando-2017/BRK3179) (Erstellen von erweiterten Geschäftsprozessen mit Logic Apps)
 
+## <a name="how-does-logic-apps-differ-from-functions-webjobs-and-power-automate"></a>Wie unterscheidet sich Logic Apps von Functions, WebJobs und Power Automate?
+
+All diese Dienste dienen Ihnen als Hilfe beim Verknüpfen bzw. Verbinden von verschiedenartigen Systemen. Jeder Dienst hat bestimmte Vorteile, sodass eine Kombination der jeweiligen Funktionen die beste Möglichkeit darstellt, schnell ein skalierbares, Integrationssystem mit vollem Funktionsumfang zu erstellen. Weitere Informationen finden Sie unter [Wählen zwischen Logic Apps, Functions, WebJobs und Power Automate](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md).
+
 <a name="logic-app-concepts"></a>
 
 ## <a name="key-terms"></a>Schlüsselbegriffe
@@ -127,10 +143,6 @@ Informieren Sie sich in diesen Einführungsvideos eingehender über Logic Apps:
 * **Aktionen**: Als Aktionen werden alle Schritte bezeichnet, die nach dem Trigger ausgeführt werden. Jede Aktion wird normalerweise einem Vorgang zugeordnet, der durch einen verwalteten Connector, eine benutzerdefiierte API oder einen benutzerdefinierten Connector definiert wird.
 
 * **Enterprise Integration Pack**: Für anspruchsvollere Integrationsszenarien enthält Logic Apps Funktionen von BizTalk Server. Über das Enterprise Integration Pack werden Connectors bereitgestellt, die für Logik-Apps die einfache Durchführung von Überprüfungen, Transformationen usw. ermöglichen.
-
-## <a name="how-does-logic-apps-differ-from-functions-webjobs-and-flow"></a>Wie unterscheidet sich Logic Apps von Functions, WebJobs und Flow?
-
-All diese Dienste dienen Ihnen als Hilfe beim Verknüpfen bzw. Verbinden von verschiedenartigen Systemen. Jeder Dienst hat bestimmte Vorteile, sodass eine Kombination der jeweiligen Funktionen die beste Möglichkeit darstellt, schnell ein skalierbares, Integrationssystem mit vollem Funktionsumfang zu erstellen. Weitere Informationen finden Sie unter [Auswahl zwischen Flow, Logic Apps, Functions und WebJobs](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md).
 
 ## <a name="get-started"></a>Erste Schritte
 

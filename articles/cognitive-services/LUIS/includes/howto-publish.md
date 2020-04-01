@@ -10,24 +10,25 @@ ms.date: 02/14/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
-ms.openlocfilehash: c10065707aa3bdf27cb20ab9c03d1cd22e6db050
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.openlocfilehash: 3b18e185480cc5275b97bba474f1c054c7bd1276
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77279453"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80286709"
 ---
 Damit Sie eine LUIS-Vorhersage in einem Chatbot oder einer anderen Clientanwendung empfangen können, muss die App im Endpunkt veröffentlicht werden.
 
-1. Klicken Sie im Navigationsbereich oben rechts auf **Veröffentlichen**.
+1. Wählen Sie im Navigationsbereich rechts oben die Option **Veröffentlichen** aus.
 
     ![Schaltfläche für das Veröffentlichen von LUIS im Endpunkt im Menü oben rechts](../media/howto-publish/publish-button.png)
 
-2. Wählen Sie den **Produktionsslot** und dann die Schaltfläche **Veröffentlichen** aus.
+2. Wählen Sie den Slot **Produktion** und anschließend **Fertig** aus.
 
-    ![Veröffentlichen von LUIS im Endpunkt](../media/howto-publish/publish-app-popup.png)
+    > [!div class="mx-imgBorder"]
+    > ![LUIS-Veröffentlichung am Endpunkt](../media/howto-publish/publish-app-popup.png)
 
-3. Die Veröffentlichung ist abgeschlossen, wenn oben auf der Webseite auf der Statusleiste der Erfolg angezeigt wird.
+3. Die Veröffentlichung ist abgeschlossen, wenn eine entsprechende Bestätigung angezeigt wird.
 
     ![Veröffentlichen von LUIS im Endpunkt](../media/howto-publish/publish-endpoint-success.png)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2020
 ms.author: allensu
-ms.openlocfilehash: aab6a4de7be57df1f691861533a4528a0bcae571
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: a94b51e49951948974b8f42f6c89cd3c84f95d65
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605646"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80064278"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Komponenten und Einschränkungen von Load Balancer
 Azure Load Balancer enthält mehrere wichtige Komponenten für den Betrieb.  Diese Komponenten können in Ihrem Abonnement über das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder über Azure PowerShell konfiguriert werden.  
@@ -31,7 +31,7 @@ Azure Load Balancer enthält mehrere wichtige Komponenten für den Betrieb.  Die
     - **[Private IP-Adresse](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses)**
 
 * **Back-End-Pool**: Die Gruppe virtueller Computer oder Instanzen in der VM-Skalierungsgruppe, von denen die eingehende Anforderung verarbeitet wird. Für eine kosteneffiziente Skalierung zur Bewältigung großer Mengen an eingehendem Datenverkehr empfiehlt es sich in der Regel, dem Back-End-Pool weitere Instanzen hinzuzufügen. Die Konfiguration von Load Balancer wird automatisch angepasst, wenn Sie Instanzen hoch- oder herunterskalieren. Durch Hinzufügen von virtuellen Computern zum bzw. Entfernen von virtuellen Computern aus dem Back-End-Pool wird Load Balancer ohne zusätzliche Vorgänge neu konfiguriert. Der Back-End-Pool wird für jeden beliebigen virtuellen Computer im virtuellen Netzwerk verwendet. Ein Back-End-Pool kann über bis zu 1.000 Back-End-Instanzen oder IP-Konfigurationen verfügen.
-Load Balancer Basic-Instanzen haben einen begrenzten Umfang (Verfügbarkeitsgruppe) und können nur auf maximal 300 IP-Konfigurationen zentral hochskaliert werden. Weitere Informationen zu Grenzwerten finden Sie unter [Load Balancer-Grenzwerte](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer). Wenn Sie überlegen, wie Sie Ihren Back-End-Pool gestalten, können Sie die Anzahl der einzelnen Back-End-Pool-Ressourcen so gering wie möglich halten, um die Dauer von Verwaltungsvorgängen weiter zu optimieren. Es gibt keinen Unterschied in der Datenebenenleistung oder -skalierung.
+Load Balancer Basic-Instanzen haben einen begrenzten Umfang (Verfügbarkeitsgruppe) und können nur auf maximal 300 IP-Konfigurationen hochskaliert werden. Weitere Informationen zu Grenzwerten finden Sie unter [Load Balancer-Grenzwerte](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer). Wenn Sie überlegen, wie Sie Ihren Back-End-Pool gestalten, können Sie die Anzahl der einzelnen Back-End-Pool-Ressourcen so gering wie möglich halten, um die Dauer von Verwaltungsvorgängen weiter zu optimieren. Es gibt keinen Unterschied in der Datenebenenleistung oder -skalierung.
 * **Integritätstests**: Mithilfe eines **[Integritätstest](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)** wird die Integrität der Instanzen im Back-End-Pool ermittelt. Sie können den gewünschten Fehlerschwellenwert für Ihre Integritätstests definieren. Wenn ein Test nicht reagiert, beendet Load Balancer das Senden neuer Verbindungen an die fehlerhaften Instanzen. Ein Testfehler wirkt sich nicht auf vorhandene Verbindungen aus. 
     
     Die Verbindung bleibt so lange bestehen, bis die Anwendung: 
@@ -50,10 +50,13 @@ Load Balancer Basic-Instanzen haben einen begrenzten Umfang (Verfügbarkeitsgr
 * **Lastenausgleichsregeln:** Mithilfe von Lastenausgleichsregeln wird gesteuert, welche Aktionen die Load Balancer-Instanz wann ausführen soll. 
 * **NAT-Eingangsregeln:** Mit einer NAT-Regel für eingehenden Datenverkehr wird Datenverkehr von einem bestimmten Port einer Front-End-IP-Adresse an einen bestimmten Port einer Back-End-Instanz im virtuellen Netzwerk weitergeleitet. Der **[Portweiterleitung](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal)** liegt die gleiche hashbasierte Verteilung zugrunde wie dem Lastenausgleich. Allgemeine Szenarien für diese Funktion sind RDP- (Remotedesktopprotokoll) oder SSH-Sitzungen (Secure Shell) für einzelne VM-Instanzen in einem Azure Virtual Network. Sie können Ports mehrere interne Endpunkte unter derselben Front-End-IP-Adresse zuordnen. Sie können die Front-End-IP-Adressen verwenden, um für Ihre VMs die Remoteverwaltung ohne zusätzliche Jumpbox durchzuführen.
 * **Ausgangsregeln**: Eine **[Ausgangsregel](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)** konfiguriert die Netzwerkadressenübersetzung (Network Address Translation, NAT) für ausgehenden Datenverkehr für alle virtuellen Computer oder Instanzen, die vom Back-End-Pool Ihrer Load Balancer Standard-Instanz für die Front-End-Übersetzung identifiziert wurden.
-Von Load Balancer Basic-Instanzen werden keine Ausgangsregeln unterstützt.
-![Azure-Lastenausgleich](./media/load-balancer-overview/load-balancer-overview.png)
 
-## <a name = "load-balancer-concepts"></a>Load Balancer-Konzepte
+  Von Load Balancer Basic-Instanzen werden keine Ausgangsregeln unterstützt.
+
+  ![Azure Load Balancer](./media/load-balancer-overview/load-balancer-overview.png)
+* **Transportprotokolle:** ICMP wird von Load Balancer nicht unterstützt. Für ICMP-Pings an ein öffentliches Lastenausgleichsmodul tritt eine Zeitüberschreitung auf. Verwenden Sie TCP-Ping, um Ihr öffentliches Lastenausgleichsmodul zu pingen.
+
+## <a name="load-balancer-concepts"></a><a name = "load-balancer-concepts"></a>Load Balancer-Konzepte
 
 Load Balancer stellt die folgenden grundlegenden Funktionen für TCP und UDP-Anwendungen bereit:
 
@@ -86,23 +89,23 @@ In der folgenden Abbildung wird die hashbasierte Verteilung angezeigt:
 
 * **Ausgehende Verbindungen**: Alle ausgehenden Flows von privaten IP-Adressen in Ihrem virtuellen Netzwerk zu öffentlichen IP-Adressen im Internet können in eine Front-End-IP-Adresse von Load Balancer übersetzt werden. Wenn ein öffentliches Front-End per Lastenausgleichsregel an einen virtuellen Back-End-Computer gebunden ist, übersetzt Azure ausgehende Verbindungen in die IP-Adresse des öffentlichen Front-Ends. Diese Konfiguration hat die folgenden Vorteile:
   * Einfache Upgrades und eine Notfallwiederherstellung von Diensten, da das Front-End dynamisch einer anderen Instanz des Diensts zugeordnet werden kann.
-  * Vereinfachte Verwaltung von Zugriffssteuerungslisten. Zugriffssteuerungslisten, die als Front-End-IP-Adressen ausgedrückt werden, ändern sich nicht, wenn Dienste zentral hoch- oder herunterskaliert oder erneut bereitgestellt werden. Die Übersetzung von ausgehenden Verbindungen in eine Anzahl von IP-Adressen, die geringer als die Anzahl von Computern ist, verringert den Aufwand für die Implementierung sicherer Empfängerlisten.
+  * Vereinfachte Verwaltung von Zugriffssteuerungslisten. Zugriffssteuerungslisten, die als Front-End-IP-Adressen ausgedrückt werden, ändern sich nicht, wenn Dienste hoch- oder herunterskaliert oder erneut bereitgestellt werden. Die Übersetzung von ausgehenden Verbindungen in eine Anzahl von IP-Adressen, die geringer als die Anzahl von Computern ist, verringert den Aufwand für die Implementierung sicherer Empfängerlisten.
 
-  Von Load Balancer Standard wird ein [robuster, skalierbarer und vorhersagbarer SNAT-Algorithmus](load-balancer-outbound-connections.md#snat) verwendet. Berücksichtigen Sie bei der Verwendung von Load Balancer Standard folgende Schlüsselaspekte:
+  Für Load Balancer Standard wird ein [stabiler, skalierbarer und vorhersagbarer SNAT-Algorithmus](load-balancer-outbound-connections.md#snat) genutzt. Dies sind die wichtigsten Grundsätze, die beim Arbeiten mit Standard Load Balancer zu beachten sind:
 
-    - Lastenausgleichsregeln folgen der SNAT-Programmierung. Lastenausgleichsregeln sind protokollspezifisch. SNAT ist protokollspezifisch, und dies sollte sich in der Konfiguration wiederfinden, statt einen Nebeneffekt zu erstellen.
+    - Lastenausgleichsregeln folgen der SNAT-Programmierung. Lastenausgleichsregeln sind protokollspezifisch. SNAT ist protokollspezifisch, und dies sollte sich in der Konfiguration wiederspiegeln und keine Nebenwirkung darstellen.
 
     - **Mehrere Front-Ends**: Wenn mehrere Front-Ends verfügbar sind, werden alle Front-Ends verwendet, und jedes Front-End multipliziert die Anzahl verfügbarer SNAT-Ports. Wenn Sie weitere SNAT-Ports benötigen, weil Sie einen hohen Bedarf an ausgehenden Verbindungen erwarten oder bereits feststellen, können Sie auch einen inkrementellen SNAT Portvorrat hinzufügen, indem Sie zusätzliche Front-Ends, Regeln und Back-End-Pools für dieselben Ressourcen der virtuellen Computer konfigurieren.
 
     - **Steuern, welches Front-End für ausgehende Verbindungen verwendet wird**: Sie können für ein bestimmtes Front-End festlegen, dass es nicht für ausgehende Verbindungen verwendet werden darf. Wenn Sie ausgehende Verbindungen so einschränken möchten, dass sie nur von einer bestimmten Front-End-IP-Adresse stammen, können Sie optional ausgehende SNAT-Ports in der Regel deaktivieren, in der die Zuordnung für ausgehende Verbindungen formuliert ist.
 
-    - **Steuern der ausgehenden Konnektivität**: Szenarien mit ausgehender Konnektivität sind explizit, und ausgehende Konnektivität steht erst zur Verfügung, nachdem sie angegeben wurde. Standard Load Balancer ist im Kontext des virtuellen Netzwerks vorhanden.  Ein virtuelles Netzwerk ist ein isoliertes privates Netzwerk.  Solange es keine Zuordnung zu einer öffentlichen IP-Adresse gibt, sind öffentliche Verbindungen nicht zulässig.  Sie können [VNet-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) erreichen, da sie sich in Ihrem virtuellen Netzwerk befinden und zu diesem lokal sind.  Wenn Sie eine ausgehende Verbindung zu einem Ziel außerhalb Ihres virtuellen Netzwerks herstellen möchten, haben Sie zwei Möglichkeiten:
+    - **Steuern der ausgehenden Konnektivität**: Szenarien mit ausgehender Konnektivität sind explizit, und ausgehende Konnektivität steht erst zur Verfügung, nachdem sie angegeben wurde. Standard Load Balancer ist im Kontext des virtuellen Netzwerks vorhanden.  Ein virtuelles Netzwerk ist ein isoliertes privates Netzwerk.  Solange es keine Zuordnung zu einer öffentlichen IP-Adresse gibt, sind öffentliche Verbindungen nicht zulässig.  Sie können [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) erreichen, weil sie sich lokal in Ihrem virtuellen Netzwerk befinden.  Wenn Sie eine ausgehende Verbindung zu einem Ziel außerhalb Ihres virtuellen Netzwerks herstellen möchten, haben Sie zwei Möglichkeiten:
         - Sie können der Ressource des virtuellen Computers eine öffentliche Standard-SKU-IP-Adresse als öffentliche IP-Adresse auf Instanzebene zuweisen, oder
         - Sie können die Ressource des virtuellen Computers im Back-End-Pool eines öffentlichen Standard Load Balancers platzieren.
 
         Auf beide Arten werden ausgehende Verbindungen aus dem virtuellen Netzwerk ermöglicht. 
 
-        Wenn Sie _nur_ einen internen Standard Load Balancer mit dem Back-End-Pool verknüpft haben, in dem sich die Ressource des virtuellen Computers befindet, kann Ihr virtueller Computer nur virtuelle Netzwerkressourcen und [VNet-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) erreichen.  Sie können die im vorherigen Abschnitt beschriebenen Schritte ausführen, um ausgehende Verbindungen zu erstellen.
+        Wenn Sie _nur_ einen internen Load Balancer Standard mit dem Back-End-Pool verknüpft haben, in dem sich die Ressource des virtuellen Computers befindet, kann Ihr virtueller Computer nur virtuelle Netzwerkressourcen und [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) erreichen.  Sie können die im vorherigen Abschnitt beschriebenen Schritte ausführen, um ausgehende Verbindungen zu erstellen.
 
         Ausgehende Verbindungen für eine Ressource eines virtuellen Computers, die keinen Standard-SKUs zugeordnet ist, bleiben ungeändert.
 
@@ -125,7 +128,7 @@ Weitere Informationen finden Sie in der [Übersicht über Hochverfügbarkeitspor
 Zum Vergleich: Basic Load Balancer wählt ein einzelnes Front-End nach dem Zufallsprinzip aus, und es gibt keine Möglichkeit, zu steuern, welches ausgewählt wird.
 ## <a name="load-balancer-types"></a>Load Balancer-Typen
 
-### <a name = "publicloadbalancer"></a>Öffentlicher Load Balancer
+### <a name="public-load-balancer"></a><a name = "publicloadbalancer"></a>Öffentlicher Load Balancer
 
 Bei einem öffentlichen Load Balancer werden die öffentliche IP-Adresse und der Port des eingehenden Datenverkehrs der privaten IP-Adresse und dem Port der VM zugeordnet. Für den Antwortdatenverkehr von der VM führt der Load Balancer eine Zuordnung in umgekehrter Richtung durch. Sie können bestimmte Typen von Datenverkehr auf verschiedene VMs oder Dienste verteilen, indem Sie Lastenausgleichsregeln anwenden. Sie können zum Beispiel die Netzwerklast von Webanforderungen auf mehrere Webserver verteilen.
 
@@ -144,7 +147,7 @@ Internetclients senden Webseitenanforderungen an die öffentliche IP-Adresse ein
 
 Standardmäßig verteilt Azure Load Balancer Netzwerkdatenverkehr gleichmäßig auf mehrere Instanzen virtueller Computer. Sie können auch Sitzungsaffinität konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren des Verteilungsmodus für Azure Load Balancer](load-balancer-distribution-mode.md).
 
-### <a name = "internalloadbalancer"></a> Interner Load Balancer
+### <a name="internal-load-balancer"></a><a name = "internalloadbalancer"></a> Interner Load Balancer
 
 Ein interner Lastenausgleich leitet Datenverkehr – im Gegensatz zu einem öffentlichen Lastenausgleich – nur an Ressourcen weiter, die sich innerhalb eines virtuellen Netzwerks befinden oder die für den Zugriff auf die Azure-Infrastruktur ein VPN verwenden. Die Azure-Infrastruktur schränkt den Zugriff auf die Front-End-IP-Adressen eines virtuellen Netzwerks ein, für die ein Lastenausgleich durchgeführt wird. Front-End-IP-Adressen und virtuelle Netzwerke werden nie direkt für einen Internetendpunkt verfügbar gemacht. Interne Branchenanwendungen werden in Azure ausgeführt. Auf sie wird aus Azure oder von lokalen Ressourcen aus zugegriffen.
 
@@ -162,7 +165,7 @@ Ein interner Load Balancer ermöglicht die folgenden Arten von Lastenausgleich:
 
 *Abbildung: Durchführen eines Lastenausgleichs für Anwendungen mit mehreren Ebenen mithilfe eines öffentlichen und eines internen Load Balancers*
 
-## <a name="skus"></a> Vergleich der Load Balancer-SKUs
+## <a name="load-balancer-sku-comparison"></a><a name="skus"></a> Vergleich der Load Balancer-SKUs
 
 Der Lastenausgleich unterstützt sowohl Basic- als auch Standard-SKUs. Diese SKUs unterscheiden sich in Bezug auf Skalierung, Features und Preise. Jedes Szenario, das mit dem Load Balancer im Tarif „Basic“ möglich ist, kann auch mit Load Balancer Standard erstellt werden. Die APIs für beide SKUs sind ähnlich, und sie werden über die Spezifikation einer SKU aufgerufen. Die API zur Unterstützung von SKUs für den Lastenausgleich und die öffentliche IP-Adressen ist ab der API-Version `2017-08-01` verfügbar. Beide SKUs verfügen über die gleiche allgemeine API und Struktur.
 
@@ -176,7 +179,7 @@ Eigenständige virtuelle Computer, Verfügbarkeitsgruppen und VM-Skalierungsgrup
 
 Weitere Informationen finden Sie unter [Load Balancer-Grenzwerte](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer). Lesen Sie für den Standard-Load Balancer auch die ausführlicheren Informationen unter [Übersicht](load-balancer-standard-overview.md), [Preise](https://aka.ms/lbpricing) und [SLA](https://aka.ms/lbsla).
 
-## <a name = "limitations"></a>Einschränkungen
+## <a name="limitations"></a><a name = "limitations"></a>Einschränkungen
 
 - SKUs sind nicht änderbar. Sie können die SKU einer vorhandenen Ressource nicht ändern.
 - Eine Ressource eines eigenständigen virtuellen Computers, eine Verfügbarkeitsgruppenressource oder eine Ressource einer VM-Skalierungsgruppe kann auf eine SKU verweisen, nie auf beide.

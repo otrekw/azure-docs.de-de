@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: sstein, carlrab
 ms.date: 09/26/2019
-ms.openlocfilehash: 2af153e5cf09cf331be016066e9c9210a0d39b03
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 25128442cd922f6b9130586e245695b6880f661c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838161"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80257613"
 ---
 # <a name="quickstart-create-an-azure-sql-database-managed-instance"></a>Schnellstart: Erstellen einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -51,7 +51,7 @@ In den folgenden Schritten wird veranschaulicht, wie Sie eine verwaltete Instanz
 
    Nutzen Sie die Tabelle unten als Referenz für die Informationen, die auf dieser Registerkarte erforderlich sind.
 
-   | Einstellung| Empfohlener Wert | BESCHREIBUNG |
+   | Einstellung| Vorgeschlagener Wert | BESCHREIBUNG |
    | ------ | --------------- | ----------- |
    | **Abonnement** | Ihr Abonnement | Ein Abonnement, mit dem Sie die Berechtigung zum Erstellen neuer Ressourcen erhalten |
    | **Ressourcengruppe** | Eine neue oder vorhandene Ressourcengruppe.|Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Benennungsregeln und Einschränkungen).|
@@ -74,7 +74,7 @@ In den folgenden Schritten wird veranschaulicht, wie Sie eine verwaltete Instanz
 
    Nutzen Sie die Tabelle unten als Referenz für die Informationen, die auf dieser Registerkarte erforderlich sind.
 
-   | Einstellung| Empfohlener Wert | BESCHREIBUNG |
+   | Einstellung| Vorgeschlagener Wert | BESCHREIBUNG |
    | ------ | --------------- | ----------- |
    | **Virtuelles Netzwerk** | Wählen Sie entweder **Neues virtuelles Netzwerk erstellen** oder ein gültiges virtuelles Netzwerk und ein Subnetz aus.| Wenn ein Netzwerk oder Subnetz nicht verfügbar ist, muss es [modifiziert werden, um die Netzwerkanforderungen zu erfüllen](sql-database-managed-instance-configure-vnet-subnet.md), bevor Sie es als Ziel für die neue verwaltete Instanz auswählen. Informationen zu den Anforderungen für das Konfigurieren der Netzwerkumgebung für eine verwaltete Instanz finden Sie unter [Konnektivitätsarchitektur für eine verwaltete Instanz in Azure SQL-Datenbank](sql-database-managed-instance-connectivity-architecture.md). |
    | **Verbindungstyp** | Wählen Sie zwischen einem Proxy und einer Umleitung als Verbindungstyp.|Weitere Informationen zu Verbindungstypen finden Sie unter [Verbindungsarchitektur von Azure SQL](sql-database-connectivity-architecture.md#connection-policy).|
@@ -91,12 +91,12 @@ In den folgenden Schritten wird veranschaulicht, wie Sie eine verwaltete Instanz
 
    Nutzen Sie die Tabelle unten als Referenz für die Informationen, die auf dieser Registerkarte erforderlich sind.
 
-   | Einstellung| Empfohlener Wert | BESCHREIBUNG |
+   | Einstellung| Vorgeschlagener Wert | BESCHREIBUNG |
    | ------ | --------------- | ----------- |
    | **Sortierung** | Wählen Sie die Sortierung aus, die Sie für Ihre verwaltete Instanz verwenden möchten. Wenn Sie Datenbanken von SQL Server migrieren, überprüfen Sie die Quellsortierung mit `SELECT SERVERPROPERTY(N'Collation')`, und verwenden Sie diesen Wert.| Informationen zu Sortierungen finden Sie unter [Festlegen oder Ändern der Serversortierung](https://docs.microsoft.com/sql/relational-databases/collations/set-or-change-the-server-collation).|   
    | **Zeitzone** | Wählen Sie die Zeitzone aus, die von der verwalteten Instanz verwendet wird.|Weitere Informationen finden Sie unter [Zeitzone in einer verwalteten Azure SQL-Datenbank-Instanz (Vorschauversion)](sql-database-managed-instance-timezone.md).|
    | **Als sekundären Failoverserver verwenden** | Wählen Sie **Ja** aus. | Aktivieren Sie diese Option, um die verwaltete Instanz als sekundäre Failovergruppe zu verwenden.|
-   | **Primäre verwaltete Instanz** (wenn **Als sekundären Failoverserver verwenden** auf **Ja** festgelegt ist) | Wählen Sie eine vorhandene primäre verwaltete Instanz aus, die in dieselbe DNS-Zone wie die von Ihnen erstellte verwaltete Instanz eingebunden wird. | Mit diesem Schritt wird die Konfiguration der Failovergruppe nach der Erstellung aktiviert. Weitere Informationen finden Sie unter [Tutorial: Hinzufügen einer verwalteten SQL-Datenbank-Instanz zu einer Failovergruppe](sql-database-managed-instance-failover-group-tutorial.md).|
+   | **Primäre verwaltete Instanz** (wenn **Als sekundären Failoverserver verwenden** auf **Ja** festgelegt ist) | Wählen Sie eine vorhandene primäre verwaltete Instanz aus, die in dieselbe DNS-Zone wie die von Ihnen erstellte verwaltete Instanz eingebunden wird. | Mit diesem Schritt wird die Konfiguration der Failovergruppe nach der Erstellung aktiviert. Weitere Informationen finden Sie im [Tutorial: Hinzufügen einer verwalteten SQL-Datenbank-Instanz zu einer Failovergruppe](sql-database-managed-instance-failover-group-tutorial.md).|
 
 ### <a name="review--create"></a>Bewerten + erstellen
 
@@ -122,6 +122,10 @@ In den folgenden Schritten wird veranschaulicht, wie Sie eine verwaltete Instanz
 > 1. Öffnen Sie im Azure-Portal die Ressourcengruppe (auf der Registerkarte **Grundlagen**), für die Sie eine verwaltete Instanz bereitstellen.
 > 2. Wählen Sie **Bereitstellungen** aus.
 > 3. Wählen Sie den Vorgang für die Bereitstellung der verwalteten Instanz aus, der derzeit durchgeführt wird.
+
+> [!IMPORTANT]
+> Sie müssen über **Leseberechtigungen** für die Ressourcengruppe verfügen, um den Status für die Erstellung von verwalteten Instanzen abrufen zu können. Falls Sie nicht über diese Berechtigung verfügen oder diese während der Erstellung der verwalteten Instanz widerrufen, kann dies dazu führen, dass die verwaltete Instanz in der Liste mit den bereitgestellten Ressourcengruppen nicht angezeigt wird.
+>
 
 ## <a name="post-deployment-operations"></a>Vorgänge nach der Bereitstellung
 

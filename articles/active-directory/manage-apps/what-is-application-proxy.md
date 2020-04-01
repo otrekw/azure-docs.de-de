@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f23b20d460952ae582c292c8015851b9dc2ea98
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7047dfd0f02ffe95dcacfdf4ddc014047a338513
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108161"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79481193"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Veröffentlichen von lokalen Apps für Remotebenutzer mit dem Azure AD-Anwendungsproxy
 
@@ -81,7 +81,7 @@ Externe Benutzer können nach dem Anmelden mit einer vertrauten URL oder mit dem
 
 ![Architektur des Azure AD-Anwendungsproxys](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Authentifizierung
 
 Es gibt mehrere Möglichkeiten, eine Anwendung für einmaliges Anmelden zu konfigurieren, und die gewählte Methode hängt von der Authentifizierung ab, die von der Anwendung verwendet wird. Der Anwendungsproxy unterstützt die folgenden Typen von Anwendungen:
 
@@ -122,7 +122,7 @@ Ein weiterer großer Vorteil der Implementierung des Anwendungsproxys ist die Er
 
 Weitere Informationen über das Migrieren von Apps zu Azure AD finden Sie im Whitepaper [Migrating Your Applications to Azure Active Directory](https://aka.ms/migrateapps/whitepaper) (Migrieren Ihrer Anwendungen zu Azure Active Directory, in englischer Sprache).
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>Aufbau
 
 Das folgende Diagramm veranschaulicht, wie die Azure AD-Authentifizierungsdienste und der Anwendungsproxy gemeinsam das einmalige Anmelden bei lokalen Anwendungen für Endbenutzer bereitstellen.
 
@@ -145,7 +145,7 @@ Das folgende Diagramm veranschaulicht, wie die Azure AD-Authentifizierungsdienst
 |Active Directory (AD)|Active Directory wird lokal ausgeführt, um die Authentifizierung für Domänenkonten durchzuführen. Wenn einmaliges Anmelden konfiguriert ist, kommuniziert der Connector mit AD, um jede weitere erforderliche Authentifizierung auszuführen.|
 |Lokale Anwendung|Schließlich kann der Benutzer auf eine lokale Anwendung zugreifen.|
 
-Der Azure AD-Anwendungsproxy besteht aus dem cloudbasierten Anwendungsproxydienst und einem lokalen Connector. Der Connector lauscht auf Anforderungen des Anwendungsproxydiensts und wickelt die Verbindungen mit den internen Anwendungen ab. Es ist zu beachten, dass die gesamte Kommunikation per SSL erfolgt und immer vom Connector zum Anwendungsproxydienst verläuft. Das heißt, dass nur ausgehende Kommunikation erfolgt. Der Connector verwendet ein Clientzertifikat, um den Anwendungsproxydienst für alle Aufrufe zu authentifizieren. Die einzige Ausnahme bei der Verbindungssicherheit ist hierbei der anfängliche Setupschritt, bei dem das Clientzertifikat eingerichtet wird. Weitere Informationen finden Sie im Abschnitt [Im Hintergrund](application-proxy-security.md#under-the-hood) des Artikels zum Anwendungsproxy.
+Der Azure AD-Anwendungsproxy besteht aus dem cloudbasierten Anwendungsproxydienst und einem lokalen Connector. Der Connector lauscht auf Anforderungen des Anwendungsproxydiensts und wickelt die Verbindungen mit den internen Anwendungen ab. Es ist zu beachten, dass die gesamte Kommunikation per TLS erfolgt und immer vom Connector zum Anwendungsproxydienst verläuft. Das heißt, dass nur ausgehende Kommunikation erfolgt. Der Connector verwendet ein Clientzertifikat, um den Anwendungsproxydienst für alle Aufrufe zu authentifizieren. Die einzige Ausnahme bei der Verbindungssicherheit ist hierbei der anfängliche Setupschritt, bei dem das Clientzertifikat eingerichtet wird. Weitere Informationen finden Sie im Abschnitt [Im Hintergrund](application-proxy-security.md#under-the-hood) des Artikels zum Anwendungsproxy.
 
 ### <a name="application-proxy-connectors"></a>Anwendungsproxyconnectors
 
@@ -180,10 +180,10 @@ Weitere Informationen zur Optimierung des Netzwerks und zur Auswahl des richtige
 
 ## <a name="other-use-cases"></a>Weitere Anwendungsfälle
 
-In den vorangehenden Ausführungen wurde der Anwendungsproxy verwendet, um lokale Apps extern zu veröffentlichen, während einmaliges Anmelden bei allen lokalen und Cloud-Apps ermöglicht wurde. Es gibt jedoch weitere Anwendungsfälle für den Anwendungsproxy, die der Betrachtung wert sind. Hierzu gehören folgende Berechtigungen:
+In den vorangehenden Ausführungen wurde der Anwendungsproxy verwendet, um lokale Apps extern zu veröffentlichen, während einmaliges Anmelden bei allen lokalen und Cloud-Apps ermöglicht wurde. Es gibt jedoch weitere Anwendungsfälle für den Anwendungsproxy, die der Betrachtung wert sind. Dazu gehören:
 
 * **Sicheres Veröffentlichen von REST-APIs**. Wenn Sie über Geschäftslogik oder APIs verfügen, die lokal oder auf virtuellen Computern in der Cloud ausgeführt werden, bietet der Anwendungsproxy einen öffentlichen Endpunkt für den API-Zugriff. Durch den Zugriff auf den API-Endpunkt können Sie Authentifizierung und Autorisierung steuern, ohne dass eingehenden Ports erforderlich sind. Er bietet mit Azure AD Premium-Features, z.B. mehrstufige Authentifizierung und gerätebasierter bedingter Zugriff für Desktops, iOS-, MAC- und Android-Geräte mithilfe von Intune, zusätzliche Sicherheit. Weitere Informationen finden Sie unter [Aktivieren von nativen Clientanwendungen für die Interaktion mit Proxyanwendungen](application-proxy-configure-native-client-application.md) und [Schützen einer API über OAuth 2.0 mit Azure Active Directory und API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad).
-* **Remotedesktopdienste** **(Remote Desktop Services, RDS)** . RDS-Standardbereitstellungen erfordern offene eingehende Verbindungen. Die [RDS-Bereitstellung mit dem Anwendungsproxy](application-proxy-integrate-with-remote-desktop-services.md) verfügt jedoch über eine permanente ausgehende Verbindung von dem Server, auf dem der Connectordienst ausgeführt wird. So können Sie durch das Veröffentlichen von lokalen Anwendungen über Remotedesktopdienste den Endbenutzern mehr Anwendungen anbieten. Sie können auch mit einem begrenzten Satz der zweistufigen Überprüfung und bedingtem Zugriff auf RDS die Angriffsfläche der Bereitstellung verringern.
+* **Remotedesktopdienste** **(RDS)** : RDS-Standardbereitstellungen erfordern offene eingehende Verbindungen. Die [RDS-Bereitstellung mit dem Anwendungsproxy](application-proxy-integrate-with-remote-desktop-services.md) verfügt jedoch über eine permanente ausgehende Verbindung von dem Server, auf dem der Connectordienst ausgeführt wird. So können Sie durch das Veröffentlichen von lokalen Anwendungen über Remotedesktopdienste den Endbenutzern mehr Anwendungen anbieten. Sie können auch mit einem begrenzten Satz der zweistufigen Überprüfung und bedingtem Zugriff auf RDS die Angriffsfläche der Bereitstellung verringern.
 * **Veröffentlichen von Anwendungen, die eine Verbindung über WebSockets herstellen**. Die Unterstützung von [Qlik Sense](application-proxy-qlik.md) ist in der öffentlichen Vorschau verfügbar und wird in Zukunft auf weitere Apps erweitert.
 * **Aktivieren von nativen Clientanwendungen für die Interaktion mit Proxyanwendungen**. Sie können mit dem Azure Active Directory-Anwendungsproxy Web-Apps veröffentlichen, er kann aber auch zum Veröffentlichen [nativer Clientanwendungen](application-proxy-configure-native-client-application.md) verwendet werden, die mit der Azure AD-Authentifizierungsbibliothek (ADAL) konfiguriert werden. Native Clientanwendungen unterscheiden sich von Web-Apps dadurch, dass sie auf einem Gerät installiert werden, während auf Web-Apps über einen Browser zugegriffen wird.
 

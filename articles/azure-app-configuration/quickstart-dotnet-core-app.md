@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
-ms.openlocfilehash: f27ad43fabbba92f97a4035b00f72a8a4af4cc5c
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 420d9b48013f5f6debe588667fe1cc0390517e66
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77500211"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80245377"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Schnellstart: Erstellen einer .NET Core-App mit App Configuration
 
@@ -27,13 +27,15 @@ In dieser Schnellanleitung integrieren Sie Azure App Configuration in eine .NET 
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Wählen Sie **Konfigurations-Explorer** > **Erstellen** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
+6. Wählen Sie **Konfigurations-Explorer** > **Erstellen** > **Schlüssel-Wert** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
 
-    | Key | value |
+    | Schlüssel | Wert |
     |---|---|
     | TestApp:Settings:Message | Daten aus Azure App Configuration |
 
     Lassen Sie **Bezeichnung** und **Inhaltstyp** vorerst leer.
+
+7. Wählen Sie **Übernehmen**.
 
 ## <a name="create-a-net-core-console-app"></a>Erstellen einer .NET Core-Konsolen-App
 
@@ -43,22 +45,22 @@ Sie verwenden die [.NET Core-Befehlszeilenschnittstelle (CLI)](https://docs.mic
 
 2. Führen Sie im neuen Ordner den folgenden Befehl aus, um ein neues Konsolen-App-Projekt vom Typ „ASP.NET Core “ zu erstellen:
 
-    ```CLI
-        dotnet new console
+    ```dotnetcli
+    dotnet new console
     ```
 
 ## <a name="connect-to-an-app-configuration-store"></a>Herstellen einer Verbindung mit einem App Configuration-Speicher
 
 1. Fügen Sie einen Verweis auf das NuGet-Paket `Microsoft.Extensions.Configuration.AzureAppConfiguration` hinzu, indem Sie den folgenden Befehl ausführen:
 
-    ```CLI
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration
+    ```dotnetcli
+    dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration
     ```
 
 2. Führen Sie den folgenden Befehl aus, um Pakete für Ihr Projekt wiederherzustellen:
 
-    ```CLI
-        dotnet restore
+    ```dotnetcli
+    dotnet restore
     ```
 
 3. Öffnen Sie *Program.cs*, und fügen Sie einen Verweis auf den App Configuration-Anbieter für .NET Core hinzu.
@@ -83,32 +85,34 @@ Sie verwenden die [.NET Core-Befehlszeilenschnittstelle (CLI)](https://docs.mic
 
 ## <a name="build-and-run-the-app-locally"></a>Lokales Erstellen und Ausführen der App
 
-1. Legen Sie eine Umgebungsvariable mit dem Namen **ConnectionString** fest, und geben Sie dafür den Zugriffsschlüssel für Ihren App Configuration-Speicher an. Führen Sie an der Befehlszeile den folgenden Befehl aus, und starten Sie die Eingabeaufforderung neu, damit die Änderung wirksam wird:
+1. Legen Sie eine Umgebungsvariable mit dem Namen **ConnectionString** fest, und geben Sie dafür den Zugriffsschlüssel für Ihren App Configuration-Speicher an. Führen Sie an der Befehlszeile den folgenden Befehl aus:
 
-    ```CLI
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
+    ```cmd
+    setx ConnectionString "connection-string-of-your-app-configuration-store"
     ```
 
     Führen Sie bei Verwendung von Windows PowerShell den folgenden Befehl aus:
 
     ```azurepowershell
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
     ```
 
     Führen Sie bei Verwendung von macOS oder Linux den folgenden Befehl aus:
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
+    Starten Sie die Eingabeaufforderung neu, damit die Änderung wirksam wird. Geben Sie den Wert der Umgebungsvariablen aus, um zu überprüfen, ob er richtig festgelegt wurde.
+
 2. Führen Sie den folgenden Befehl aus, um die Konsolen-App zu erstellen:
 
-    ```CLI
-        dotnet build
+    ```dotnetcli
+    dotnet build
     ```
 
 3. Führen Sie nach der erfolgreichen Erstellung den folgenden Befehl aus, um die App lokal auszuführen:
 
-    ```CLI
-        dotnet run
+    ```dotnetcli
+    dotnet run
     ```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

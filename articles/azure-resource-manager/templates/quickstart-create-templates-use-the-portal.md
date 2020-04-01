@@ -5,16 +5,16 @@ author: mumian
 ms.date: 06/12/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 66f730cae654c6c740e4224cfbb2ba1ae41d8df5
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: dd3d9caa8184b8637b509fc3318851751b211405
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689726"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80131876"
 ---
-# <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal
+# <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>Schnellstart: Erstellen und Bereitstellen von ARM-Vorlagen über das Azure-Portal
 
-Hier erfahren Sie, wie Sie mit dem Azure-Portal eine Resource Manager-Vorlage erstellen und diese dann über das Portal bearbeiten und bereitstellen. Resource Manager-Vorlagen sind JSON-Dateien, mit denen die Ressourcen definiert werden, die Sie für Ihre Lösung bereitstellen müssen. Weitere Informationen zu den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen finden Sie unter [Übersicht über Azure Resource Manager-Vorlagen](overview.md).
+Hier erfahren Sie, wie Sie mit dem Azure-Portal eine ARM-Vorlage (Azure Resource Manager) erstellen und diese dann über das Portal bearbeiten und bereitstellen. ARM-Vorlagen sind JSON-Dateien, mit denen die Ressourcen definiert werden, die Sie für Ihre Lösung bereitstellen müssen. Weitere Informationen zu den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen finden Sie unter [Übersicht über Azure Resource Manager-Vorlagen](overview.md).
 
 ![Diagramm: Resource Manager-Schnellstartvorlage über Portal](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
@@ -24,7 +24,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="generate-a-template-using-the-portal"></a>Generieren einer Vorlage über das Portal
 
-Das Erstellen einer Resource Manager-Vorlage von Grund auf ist keine einfache Aufgabe, insbesondere dann, wenn Sie noch nicht mit der Azure-Bereitstellung und dem JSON-Format vertraut sind. Über das Azure-Portal können Sie eine Ressource konfigurieren, z.B. ein Azure Storage-Konto. Vor dem Bereitstellen der Ressource können Sie Ihre Konfiguration in eine Resource Manager-Vorlage exportieren. Die Vorlage kann gespeichert und später wiederverwendet werden.
+Das Erstellen einer ARM-Vorlage von Grund auf ist vor allem dann keine einfache Aufgabe, wenn Sie noch nicht mit der Azure-Bereitstellung und dem JSON-Format vertraut sind. Über das Azure-Portal können Sie eine Ressource konfigurieren, z.B. ein Azure Storage-Konto. Vor dem Bereitstellen der Ressource können Sie Ihre Konfiguration in eine Vorlage exportieren. Die Vorlage kann gespeichert und später wiederverwendet werden.
 
 Viele erfahrene Vorlagenentwickler verwenden diese Methode, um Vorlagen zu generieren, wenn sie Azure-Ressourcen bereitstellen möchten, mit denen sie nicht vertraut sind. Weitere Informationen zum Exportieren von Vorlagen über das Portal finden Sie unter [Exportieren von Ressourcengruppen in Vorlagen](../management/manage-resource-groups-portal.md#export-resource-groups-to-templates). Als andere Möglichkeit kann über [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) eine funktionierende Vorlage gesucht werden.
 
@@ -38,7 +38,7 @@ Viele erfahrene Vorlagenentwickler verwenden diese Methode, um Vorlagen zu gener
     ![Erstellen eines Azure-Speicherkontos](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 1. Geben Sie Folgendes ein:
 
-    |Name|value|
+    |Name|Wert|
     |----|----|
     |**Ressourcengruppe**|Wählen Sie **Neu erstellen** aus, und geben Sie den gewünschten Namen für die Ressourcengruppennamen ein. Auf dem Screenshot lautet der Name der Ressourcengruppe *mystorage1016rg*. Eine Ressourcengruppe ist ein Container für Azure-Ressourcen. Eine Ressourcengruppe vereinfacht das Verwalten von Azure-Ressourcen. |
     |**Name**|Geben Sie einen eindeutigen Namen für Ihr Speicherkonto ein. Der Speicherkontoname muss in Azure eindeutig sein und darf nur Kleinbuchstaben und Ziffern enthalten. Der Name muss zwischen 3 und 24 Zeichen umfassen. Wenn die Fehlermeldung „Der Speicherkontoname ‚mystorage1016‘ wird bereits verwendet“ angezeigt wird, versuchen Sie es mit **&lt;Ihr Name>storage&lt;Aktuelles Datum im Format MMTT>** , z. B. **johndolestorage1016**. Weitere Informationen finden Sie unter [Benennungsregeln und -einschränkungen](/azure/architecture/best-practices/resource-naming).|
@@ -55,7 +55,7 @@ Viele erfahrene Vorlagenentwickler verwenden diese Methode, um Vorlagen zu gener
 
     ![Generieren einer Vorlage über das Portal](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template.png)
 
-    Im Hauptbereich wird die Vorlage angezeigt. Dabei handelt es sich um eine JSON-Datei mit sechs übergeordneten Elementen: `schema`, `contentVersion`, `parameters`, `variables`, `resources` und `output`. Weitere Informationen finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](./template-syntax.md).
+    Im Hauptbereich wird die Vorlage angezeigt. Dabei handelt es sich um eine JSON-Datei mit sechs übergeordneten Elementen: `schema`, `contentVersion`, `parameters`, `variables`, `resources` und `output`. Weitere Informationen finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](./template-syntax.md).
 
     Sechs Parameter wurden definiert. Einer davon heißt **storageAccountName**. Der zweite hervorgehobene Teil im vorherigen Screenshot veranschaulicht, wie in der Vorlage auf diesen Parameter zu verweisen ist. Im nächsten Abschnitt bearbeiten Sie die Vorlage, um einen generierten Name für das Speicherkonto zu verwenden.
 
@@ -152,7 +152,7 @@ Azure erfordert, dass jeder Azure-Dienst einen eindeutigen Namen aufweist. Die B
 1. Wählen Sie **Speichern** aus.
 1. Geben Sie die folgenden Werte ein:
 
-    |Name|value|
+    |Name|Wert|
     |----|----|
     |**Ressourcengruppe**|Wählen Sie den im letzten Abschnitt erstellten Ressourcengruppenname aus. |
     |**Location**|Wählen Sie einen Standort für das Speicherkonto aus. Beispiel: **USA, Mitte**. |

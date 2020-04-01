@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 01/27/2020
+ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0a32ee682490c5930b8c48d069087020c4763dcb
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: e62b3c551f41bca0055f35cf6bf62c59d921c73b
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127755"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80294833"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Was ist Windows Virtual Desktop? 
 
@@ -123,11 +123,32 @@ Ihr Netzwerk muss folgende Anforderungen erfüllen, um eine optimale Leistung zu
 
 Die folgenden Remotedesktopclients unterstützen Windows Virtual Desktop:
 
-* [Windows](connect-windows-7-and-10.md)
+* [Windows Desktop](connect-windows-7-and-10.md)
 * [Web](connect-web.md)
-* [Mac](connect-macos.md)
+* [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
 * [Android (Vorschau)](connect-android.md)
+
+> [!IMPORTANT]
+> Windows Virtual Desktop unterstützt nicht den RemoteApp-Client und den Client für Desktopverbindungen (RADC). Der Client für Remotedesktopverbindung (MSTSC) wird ebenfalls nicht unterstützt.
+
+> [!IMPORTANT]
+> Windows Virtual Desktop verfügt derzeit nicht über Unterstützung für den Remotedesktopclient aus dem Windows Store. Die Unterstützung für diesen Client wird in einer zukünftigen Version enthalten sein.
+
+Für die Remotedesktopclients muss Zugriff auf die folgenden URLs bestehen:
+
+|Adresse|Ausgehender Port|Zweck|Client(s)|
+|---|---|---|---|
+|*.wvd.microsoft.com|TCP-Port 443|Dienstdatenverkehr|All|
+|*.servicebus.windows.net|TCP-Port 443|Problembehandlung für Daten|All|
+|go.microsoft.com|TCP-Port 443|Microsoft FWLinks|All|
+|aka.ms|TCP-Port 443|Microsoft-URL-Verkürzung|All|
+|docs.microsoft.com|TCP-Port 443|Dokumentation|All|
+|privacy.microsoft.com|TCP-Port 443|Datenschutzbestimmungen|All|
+|query.prod.cms.rt.microsoft.com|TCP-Port 443|Clientupdates|Windows Desktop|
+
+>[!IMPORTANT]
+>Das Öffnen dieser URLs ist für einen zuverlässigen Clientbetrieb von entscheidender Bedeutung. Der Zugriff auf diese URLs darf nicht blockiert werden; andernfalls wird die Dienstfunktionalität beeinträchtigt. Diese URLs gelten lediglich für die Clientstandorte und -ressourcen und beinhalten keine URLs für andere Dienste wie Azure Active Directory.
 
 ## <a name="supported-virtual-machine-os-images"></a>Unterstützte Betriebssystemimages virtueller Computer
 

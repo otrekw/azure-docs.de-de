@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
 ms.openlocfilehash: d34f3a03e1bcd35c270d13c4dda57d0394a36e4b
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70387788"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Beispiel: Sprachenerkennung mithilfe der Textanalyse
@@ -34,7 +34,7 @@ Bei Inhalten in einer seltener verwendeten Sprache können Sie das Feature für 
 
 Sie benötigen JSON-Dokumente im folgenden Format: ID und Text.
 
-Ein Dokument darf maximal 5.119 Zeichen enthalten. Pro Sammlung können bis zu 1.000 Elemente (IDs) vorhanden sein. Die Sammlung wird im Hauptteil der Anforderung übermittelt. Das folgende Beispiel zeigt Inhalte, die Sie für die Sprachenerkennung übermitteln können:
+Ein Dokument darf maximal 5.119 Zeichen enthalten. Pro Sammlung können bis zu 1.000 Elemente (IDs) vorhanden sein. Die Sammlung wird im Hauptteil der Anforderung übermittelt. Das folgende Beispiel zeigt Inhalte, die Sie für die Sprachenerkennung übermitteln können:
 
 ```json
     {
@@ -270,7 +270,7 @@ In diesem Artikel haben Sie sich mit Konzepten und mit dem Workflow für die Spr
 + Die [Sprachenerkennung](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) ist für eine Vielzahl von Sprachen, Varianten und Dialekten sowie einige Regional- und Kultursprachen verfügbar.
 + JSON-Dokumente im Anforderungstext umfassen eine ID und Text.
 + Die POST-Anforderung wird an einen Endpunkt vom Typ `/languages` gesendet. Dabei werden ein personalisierter [Zugriffsschlüssel und ein Endpunkt](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) verwendet, der für Ihr Abonnement gültig ist.
-+ Die Antwortausgabe besteht aus Sprachen-IDs für die jeweilige Dokument-ID. Die Ausgabe kann an eine beliebige JSON-fähige App gestreamt werden. Zu den Beispiel-Apps zählen u. a. Excel und Power BI.
++ Die Antwortausgabe besteht aus Sprachen-IDs für die jeweilige Dokument-ID. Die Ausgabe kann an eine beliebige JSON-fähige App gestreamt werden. Zu den Beispiel-Apps zählen Excel und Power BI, um nur einige zu nennen.
 
 ## <a name="see-also"></a>Weitere Informationen
 

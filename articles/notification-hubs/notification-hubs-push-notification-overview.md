@@ -13,16 +13,16 @@ ms.tgt_pltfrm: multiple
 ms.devlang: multiple
 ms.topic: overview
 ms.custom: mvc
-ms.date: 02/20/2020
+ms.date: 03/23/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 04/30/2019
-ms.openlocfilehash: dad71d473ecb6107a5cf0d8f5953667f07bfce5c
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: f5b59d1669d89c73b93199d1f833da149003d399
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526772"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80159335"
 ---
 # <a name="what-is-azure-notification-hubs"></a>Was ist Azure Notification Hubs?
 
@@ -42,7 +42,7 @@ Pushbenachrichtigungen sind eine Form der Kommunikation zwischen einer App und B
 Pushbenachrichtigungen sind bei Privatkunden-Apps zum Steigern der App-Nutzung und bei Unternehmens-Apps zum Verbreiten aktueller Geschäftsinformationen von Bedeutung. Dies ist die beste Lösung für die Kommunikation zwischen App und Benutzer, da sie für Mobilgeräte energieeffizient, für die Absender von Benachrichtigungen flexibel und verfügbar ist, wenn entsprechende Apps nicht aktiv sind.
 
 > [!NOTE]
-> VoIP-Pushbenachrichtigungen (Voice over IP) werden von Azure Notification Hubs nicht unterstützt.
+> Für Azure Notification Hubs werden VoIP-Pushbenachrichtigungen (Voice over IP) nicht offiziell unterstützt. In [diesem Artikel](voip-apns.md) wird aber beschrieben, wie Sie APNS-VoIP-Benachrichtigungen über Azure Notification Hubs nutzen können.
 
 Weitere Informationen zu Pushbenachrichtigungen für einige gängige Plattformen finden Sie in den folgenden Themen:
 

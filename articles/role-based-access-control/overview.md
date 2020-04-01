@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/11/2019
+ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2ef528438591006be6e4cdec508dd15a7fb0a143
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6e3313e3ae201d0b730d8582fed9659d89f0d0c1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357680"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80063051"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen?
 
@@ -102,7 +102,7 @@ Sie können über das Azure-Portal, die Azure-Befehlszeilenschnittstelle, Azure 
 
 ## <a name="multiple-role-assignments"></a>Mehrere Rollenzuweisungen
 
-Was geschieht bei mehreren überlappenden Rollenzuweisungen? RBAC ist ein additives Modell. Die hinzugefügten Rollenzuweisungen stellen daher Ihre effektiven Berechtigungen dar. Sehen Sie sich das folgende Beispiel an, in dem einem Benutzer die Rolle „Mitwirkender“ im Abonnementbereich und die Rolle „Leser“ für eine Ressourcengruppe zugewiesen wird. Das Hinzufügen der Berechtigungen vom Typ „Mitwirkender“ und der Berechtigungen vom Typ „Leser“ stellt effektiv die Rolle „Mitwirkender“ für die Ressourcengruppe dar. Daher hat die Zuweisung der Rolle „Leser“ in diesem Fall keine Auswirkung.
+Was geschieht bei mehreren überlappenden Rollenzuweisungen? RBAC ist ein additives Modell. Die hinzugefügten Rollenzuweisungen stellen daher die Summe Ihrer effektiven Berechtigungen dar. Sehen Sie sich das folgende Beispiel an, in dem einem Benutzer die Rolle „Mitwirkender“ im Abonnementbereich und die Rolle „Leser“ für eine Ressourcengruppe zugewiesen wird. Die Summe der Berechtigungen vom Typ „Mitwirkender“ und der Berechtigungen vom Typ „Leser“ entspricht praktisch der Rolle „Mitwirkender“ für die Ressourcengruppe. Daher hat die Zuweisung der Rolle „Leser“ in diesem Fall keine Auswirkung.
 
 ![Mehrere Rollenzuweisungen](./media/overview/rbac-multiple-roles.png)
 

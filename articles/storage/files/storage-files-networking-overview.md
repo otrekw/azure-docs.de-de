@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 09d7f93c7a1d8ad9e567ecfe0bb3854d9d54f6e0
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 383ad5e5063a0a207320a517c34f3b41cc57804a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597744"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067148"
 ---
 # <a name="azure-files-networking-considerations"></a>Azure Files – Überlegungen zum Netzwerkbetrieb 
 Sie können auf zwei Arten eine Verbindung mit einer Azure-Dateifreigabe herstellen:
@@ -22,7 +22,9 @@ Sie können auf zwei Arten eine Verbindung mit einer Azure-Dateifreigabe herstel
 
 In diesem Artikel wird beschrieben, wie Sie das Netzwerk konfigurieren, wenn Ihr Anwendungsfall einen direkten Zugriff auf die Azure-Dateifreigabe statt der Nutzung der Azure-Dateisynchronisierung erfordert. Weitere Informationen zu Überlegungen zum Netzwerkbetrieb für eine Bereitstellung mit der Azure-Dateisynchronisierung finden Sie unter [Proxy- und Firewalleinstellungen der Azure-Dateisynchronisierung](storage-sync-files-firewall-and-proxy.md).
 
-Die Netzwerkkonfiguration für Azure-Dateifreigaben wird im Azure-Speicherkonto vorgenommen. Ein Speicherkonto ist ein Verwaltungskonstrukt, das einen gemeinsam genutzten Pool mit Speicherplatz darstellt, in dem Sie mehrere Dateifreigaben sowie weitere Speicherressourcen wie Blobcontainer oder Warteschlangen bereitstellen können. Speicherkonten machen verschiedene Einstellungen verfügbar, die zum Schutz des Netzwerkzugriffs auf Ihre Dateifreigaben beitragen. Hierzu zählen Netzwerkendpunkte, Speicherkonto-Firewalleinstellungen sowie Verschlüsselung während der Übertragung.
+Die Netzwerkkonfiguration für Azure-Dateifreigaben wird im Azure-Speicherkonto vorgenommen. Ein Speicherkonto ist ein Verwaltungskonstrukt, das einen gemeinsam genutzten Pool mit Speicherplatz darstellt, in dem Sie mehrere Dateifreigaben sowie weitere Speicherressourcen wie Blobcontainer oder Warteschlangen bereitstellen können. Speicherkonten machen verschiedene Einstellungen verfügbar, die zum Schutz des Netzwerkzugriffs auf Ihre Dateifreigaben beitragen. Hierzu zählen Netzwerkendpunkte, Speicherkonto-Firewalleinstellungen sowie Verschlüsselung während der Übertragung. 
+
+Wir empfehlen Ihnen, vor diesem konzeptionellen Leitfaden den Artikel [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md) zu lesen.
 
 ## <a name="accessing-your-azure-file-shares"></a>Zugreifen auf Ihre Azure-Dateifreigaben
 Wenn Sie eine Azure-Dateifreigabe innerhalb eines Speicherkontos bereitstellen, kann über den öffentlichen Endpunkt des Speicherkontos sofort auf die Dateifreigabe zugegriffen werden. Das bedeutet, dass authentifizierte Anforderungen (etwa Anforderungen, die durch die Anmeldeidentität eines Benutzers autorisiert wurden) auf sichere Weise verwendet werden können – ganz gleich, ob ihr Ursprung innerhalb oder außerhalb von Azure liegt. 
@@ -65,6 +67,8 @@ Die Verwendung privater Endpunkte mit Azure Files ermöglicht Folgendes:
 - Herstellen einer sicheren Verbindung mit Ihren Azure-Dateifreigaben aus lokalen Netzwerken über eine VPN- oder ExpressRoute-Verbindung mit privatem Peering
 - Schützen Ihrer Azure-Dateifreigaben, indem Sie die Speicherkontofirewall so konfigurieren, dass alle Verbindungen am öffentlichen Endpunkt blockiert werden. Durch die Erstellung eines privaten Endpunkts werden Verbindungen mit dem öffentlichen Endpunkt nicht standardmäßig blockiert.
 - Erhöhen der Sicherheit für das virtuelle Netzwerk durch die Möglichkeit zum Blockieren der Exfiltration von Daten aus dem virtuellen Netzwerk (und Peeringgrenzen)
+
+Informationen zum Erstellen eines privaten Endpunkts finden Sie unter [Konfigurieren von privaten Endpunkten für Azure Files](storage-files-networking-endpoints.md).
 
 ### <a name="private-endpoints-and-dns"></a>Private Endpunkte und DNS
 Wenn Sie einen privaten Endpunkt erstellen, wird standardmäßig auch eine private DNS-Zone erstellt, die der Unterdomäne `privatelink` entspricht, oder es wird eine vorhandene private DNS-Zone entsprechend aktualisiert. Streng genommen muss keine private DNS-Zone erstellt werden, um einen privaten Endpunkt für Ihr Speicherkonto zu verwenden. Es wird jedoch im Allgemeinen dringend empfohlen und ist explizit erforderlich, wenn Sie Ihre Azure-Dateifreigabe mit einem Active Directory Benutzerprinzipal einbinden oder über die FileREST-API zugreifen.
@@ -126,7 +130,7 @@ Dies zeigt, dass das Speicherkonto sowohl den öffentlichen Endpunkt als auch ei
 
 - Ändern der Datei „hosts“ auf Ihren Clients, damit `storageaccount.file.core.windows.net` in die private IP-Adresse des gewünschten privaten Endpunkts aufgelöst wird: Hiervon wird in Produktionsumgebungen dringend abgeraten, da Sie diese Änderungen für jeden Client vornehmen müssen, von dem Ihre Azure-Dateifreigaben eingebunden werden sollen, und Änderungen am Speicherkonto oder am privaten Endpunkt nicht automatisch behandelt werden.
 - Erstellen eines A-Eintrags für `storageaccount.file.core.windows.net` auf Ihren lokalen DNS-Servern: Diese Lösung hat den Vorteil, dass Clients in Ihrer lokalen Umgebung das Speicherkonto automatisch auflösen können, ohne dass jeder Client einzeln konfiguriert werden muss. Sie ist jedoch ähnlich fehleranfällig wie das Ändern der Hostdatei, da Änderungen nicht berücksichtigt werden. Für einige Umgebungen ist diese Lösung trotz ihrer Fehleranfälligkeit die beste Wahl.
-- Weiterleiten der Zone `core.windows.net` von Ihren lokalen DNS-Servern an Ihre private Azure-DNS-Zone: Der private Azure-DNS-Host ist über eine spezielle IP-Adresse (`168.63.129.16`) erreichbar, auf die nur innerhalb von virtuellen Netzwerken zugegriffen werden kann, die mit der privaten Azure-DNS-Zone verknüpft sind. Um diese Einschränkung zu umgehen, können Sie zusätzliche DNS-Server in Ihrem virtuellen Netzwerk ausführen, die `core.windows.net` an die private Azure-DNS-Zone weiterleiten. Zur Vereinfachung dieser Einrichtung stehen PowerShell-Cmdlets zur Verfügung, die automatisch DNS-Server in Ihrem virtuellen Azure-Netzwerk bereitstellen und wie gewünscht konfigurieren.
+- Weiterleiten der Zone `core.windows.net` von Ihren lokalen DNS-Servern an Ihre private Azure-DNS-Zone: Der private Azure-DNS-Host ist über eine spezielle IP-Adresse (`168.63.129.16`) erreichbar, auf die nur innerhalb von virtuellen Netzwerken zugegriffen werden kann, die mit der privaten Azure-DNS-Zone verknüpft sind. Um diese Einschränkung zu umgehen, können Sie zusätzliche DNS-Server in Ihrem virtuellen Netzwerk ausführen, die `core.windows.net` an die private Azure-DNS-Zone weiterleiten. Zur Vereinfachung dieser Einrichtung stehen PowerShell-Cmdlets zur Verfügung, die automatisch DNS-Server in Ihrem virtuellen Azure-Netzwerk bereitstellen und wie gewünscht konfigurieren. Informationen zum Einrichten der DNS-Weiterleitung finden Sie unter [Konfigurieren von DNS mit Azure Files](storage-files-networking-dns.md).
 
 ## <a name="storage-account-firewall-settings"></a>Speicherkonto-Firewalleinstellungen
 Eine Firewall ist eine Netzwerkrichtlinie, die steuert, von welchen Anforderungen auf den öffentlichen Endpunkt für ein Speicherkonto zugegriffen werden darf. Mithilfe der Speicherkontofirewall können Sie den Zugriff auf den öffentlichen Endpunkt des Speicherkontos auf bestimmte IP-Adressen oder -Bereiche oder auf ein virtuelles Netzwerk beschränken. Im Allgemeinen beschränken die meisten Firewallrichtlinien für Speicherkonten den Netzwerkzugriff auf ein virtuelles Netzwerk (oder auf mehrere). 

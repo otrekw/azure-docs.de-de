@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8a1f774aae071a561bdda2d8c349861d640cb287
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 68994f9b79af55b32527eed52bbc4e5866c89538
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572480"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79205159"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Schnellstart: Konfigurieren der Serverfirewall – Portal
 
@@ -22,7 +22,8 @@ In diesem Schnellstart wird beschrieben, wie Sie eine Firewall für Ihren Azure 
 
 - Ein Analysis Services-Server in Ihrem Abonnement. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Analysis Services-Servers im Azure-Portal](analysis-services-create-server.md) oder unter [Schnellstart: Erstellen eines Servers mit PowerShell](analysis-services-create-powershell.md).
 - Mindestens ein IP-Adressbereich für Clientcomputer (falls erforderlich).
-- Beachten Sie, dass das Importszenario von Power BI Premium derzeit nicht unterstützt wird.
+- Einige Szenarien, in denen Power BI Premium eine Verbindung mit Azure Analysis Services herstellt, einschließlich Datenimport (Aktualisierung) und paginierte Berichte, werden derzeit nicht unterstützt. Dies gilt auch, wenn „Zugriff über Power BI zulassen“ aktiviert ist. Das gängigere Szenario mit der Nutzung von Live Connect über Power BI Premium wird unterstützt. Alle Power BI Pro-Szenarien werden unterstützt.
+
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an. 
 

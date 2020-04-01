@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 03/03/2020
-ms.openlocfilehash: 27dae07328af125c25512ab9f1eb81d0f4eda99b
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.date: 03/24/2020
+ms.openlocfilehash: 475f89fc5b33948864fd83c39ee8058ab6908cad
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78271322"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80247196"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Neuerungen in der kognitiven Azure-Suche
 
@@ -26,6 +26,12 @@ Informieren Sie sich über die Neuerungen im Dienst. Legen Sie ein Lesezeichen f
 Azure Search wurde in **Azure Cognitive Search** umbenannt, um die erweiterte (optionale) Verwendung von kognitiven Skills und KI-Verarbeitung bei wichtigen Vorgängen widerzuspiegeln. API-Versionen, NuGet-Pakete, Namespaces und Endpunkte bleiben unverändert. Neue und bereits vorhandene Suchlösungen sind von der Änderung des Dienstnamens nicht betroffen.
 
 ## <a name="feature-announcements"></a>Featureankündigungen
+
+### <a name="march-2020"></a>März 2020
+
++ [Natives vorläufiges Löschen von Blobs (Vorschau)](search-howto-indexing-azure-blob-storage.md#incremental-indexing-and-deletion-detection) bedeutet, dass der Azure Blob Storage-Indexer in Azure Cognitive Search Blobs erkennt, die sich im vorläufig gelöschten Zustand befinden. Das entsprechende Suchdokument wird während der Indizierung entfernt.
+
++ Die neue stabile [Verwaltungs-REST-API (2020-03-13)](https://docs.microsoft.com/rest/api/searchmanagement/management-api-versions) ist jetzt verfügbar. 
 
 ### <a name="february-2020"></a>Februar 2020
 

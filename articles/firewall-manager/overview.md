@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 02/18/2020
+ms.date: 03/13/2020
 ms.author: victorh
-ms.openlocfilehash: 0ba2ce30cee3ff7e3a9f71b4f1b0928fa84e775d
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 149782f627d586e927c828506a7d4f1b5437b987
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443147"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79366273"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>Was ist Azure Firewall Manager (Vorschau)?
 
@@ -78,15 +78,16 @@ Azure Firewall-Richtlinien können regionsübergreifend verwendet werden. Beispi
 
 Für Azure Firewall Manager (Vorschau) sind die folgenden Probleme bekannt:
 
-|Problem  |Beschreibung  |Minderung  |
+|Problem  |BESCHREIBUNG  |Minderung  |
 |---------|---------|---------|
-|Einschränkungen für Drittanbieterfilterung|Eine V2I-Datenverkehrsfilterung mit Anbietern von Drittanbietern wird mit Azure Firewall B2V und V2V nicht unterstützt.|Das Problem wird zurzeit untersucht.|
-|Aktuell keine Unterstützung für eine Trennung des Datenverkehrs|Die Trennung von Office 365- und öffentlichem Azure-PaaS-Datenverkehr wird aktuell nicht unterstützt. Daher wird bei Auswahl eines Drittanbieters für V2I oder B2I auch der gesamte öffentliche Azure-PaaS- und Office 365-Datenverkehr über den Partnerdienst gesendet.|Die Datenverkehrstrennung am Hub wird aktuell untersucht.
-|Ein geschützter virtueller Hub pro Region|Sie können nicht mehr als einen geschützten virtuellen Hub pro Region verwenden.|Erstellen Sie mehrere virtuelle WANs in einer Region.|
-|Basisrichtlinien müssen in derselben Region wie die lokale Richtlinie vorliegen|Erstellen Sie sämtliche Ihrer lokalen Richtlinien in derselben Region wie die Basisrichtlinie. Eine in einer Region erstellte Richtlinie kann weiterhin auf einen geschützten Hub aus einer anderen Region angewendet werden.|Das Problem wird zurzeit untersucht.|
-|Die Kommunikation zwischen Hubs funktioniert nicht mit dem geschützten virtuellen Hub.|Die Kommunikation zwischen geschützten virtuellen Hubs wird noch nicht unterstützt.|Das Problem wird zurzeit untersucht.|
+|Einschränkungen für Drittanbieterfilterung.|Eine V2I-Datenverkehrsfilterung mit Anbietern von Drittanbietern wird mit Azure Firewall B2V und V2V nicht unterstützt.|Wird untersucht|
+|Die Trennung des Datenverkehrs wird derzeit nicht unterstützt.|Die Trennung von Office 365- und öffentlichem Azure-PaaS-Datenverkehr wird aktuell nicht unterstützt. Daher wird bei Auswahl eines Drittanbieters für V2I oder B2I auch der gesamte öffentliche Azure-PaaS- und Office 365-Datenverkehr über den Partnerdienst gesendet.|Die Datenverkehrstrennung am Hub wird untersucht.
+|Ein geschützter virtueller Hub pro Region.|Sie können nicht mehr als einen geschützten virtuellen Hub pro Region verwenden.|Erstellen Sie mehrere virtuelle WANs in einer Region.|
+|Basisrichtlinien müssen in derselben Region wie die lokale Richtlinie vorliegen.|Erstellen Sie sämtliche Ihrer lokalen Richtlinien in derselben Region wie die Basisrichtlinie. Eine in einer Region erstellte Richtlinie kann weiterhin auf einen geschützten Hub aus einer anderen Region angewendet werden.|Wird untersucht|
+|Die Kommunikation zwischen Hubs funktioniert nicht mit dem geschützten virtuellen Hub.|Die Kommunikation zwischen geschützten virtuellen Hubs wird noch nicht unterstützt.|Wird untersucht|
 |Alle geschützten virtuellen Hubs, die das gleiche virtuelle WAN nutzen, müssen sich in derselben Ressourcengruppe befinden.|Dieses Verhalten orientiert sich heute an Virtual WAN-Hubs.|Erstellen Sie mehrere Virtual WAN-Instanzen, um die Erstellung von geschützten virtuellen Hubs in verschiedenen Ressourcengruppen zu ermöglichen.|
-|IP-Adressgruppen werden in der Firewallrichtlinie nicht unterstützt.|IP-Adressgruppen befinden sich in der öffentlichen Vorschau und werden derzeit nur mit herkömmlichen Firewallregeln unterstützt.|Wir arbeiten bereits an einer Korrektur.
+|IP-Adressgruppen werden in der Firewallrichtlinie nicht unterstützt.|IP-Adressgruppen befinden sich in der öffentlichen Vorschauphase und werden derzeit nur mit herkömmlichen Firewallregeln unterstützt.|Fix wird angewendet.
+|Keine Unterstützung von CSP-Abonnements (Cloud Solution Provider).|[CSP-Abonnements](https://azure.microsoft.com/offers/ms-azr-0145p/) werden derzeit nicht unterstützt.|Wird untersucht
 
 ## <a name="next-steps"></a>Nächste Schritte
 

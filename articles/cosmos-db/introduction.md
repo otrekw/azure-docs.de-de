@@ -6,20 +6,20 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2019
-ms.openlocfilehash: f322a240835d86697ae18c984700f22ca7b00145
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 2a09d5af013e804f33327855fb7b9f2104bc225c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882182"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79215248"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Willkommen bei Azure Cosmos DB
 
 Moderne Anwendungen erfordern eine hohe Reaktionsschnelligkeit und müssen immer online sein. Um eine geringe Latenz und Hochverfügbarkeit zu erreichen, müssen Instanzen dieser Anwendungen in Rechenzentren eingesetzt werden, die sich in der Nähe ihrer Benutzer befinden. Anwendungen müssen in Echtzeit auf große Nutzungsänderungen zu Spitzenzeiten reagieren, immer größere Datenmengen speichern und diese den Benutzern innerhalb von Millisekunden zur Verfügung stellen.
 
-Azure Cosmos DB ist der global verteilte Datenbankdienst von Microsoft mit mehreren Modellen. Mit Cosmos DB können Sie Durchsatz und Speicher mit nur einem Klick elastisch und unabhängig voneinander über eine beliebige Anzahl von weltweiten Azure-Regionen hinweg skalieren. Sie können den Durchsatz und Speicherplatz elastisch skalieren und von einem schnellen Datenzugriff im einstelligen Millisekundenbereich über Ihre bevorzugte API mit SQL, MongoDB, Cassandra, Tables oder Gremlin profitieren. Cosmos DB bietet umfassende [Vereinbarungen zum Servicelevel](https://aka.ms/acdbsla) (Service Level Agreements, SLAs) mit Durchsatz-, Latenz-, Verfügbarkeits- und Konsistenzgarantien – dies kann kein anderer Datenbankdienst bereitstellen.
+Azure Cosmos DB ist der global verteilte Datenbankdienst von Microsoft mit mehreren Modellen. Mit Cosmos DB können Sie Durchsatz und Speicher mit nur einem Klick elastisch und unabhängig voneinander über eine beliebige Anzahl von weltweiten Azure-Regionen hinweg skalieren. Sie können den Durchsatz und Speicherplatz elastisch skalieren und von einem schnellen Datenzugriff im einstelligen Millisekundenbereich über Ihre bevorzugte API profitieren, z. B.: SQL, MongoDB, Cassandra, Tables oder Gremlin. Cosmos DB bietet umfassende [Vereinbarungen zum Servicelevel](https://aka.ms/acdbsla) (Service Level Agreements, SLAs) mit Durchsatz-, Latenz-, Verfügbarkeits- und Konsistenzgarantien – dies kann kein anderer Datenbankdienst bereitstellen.
 
-Sie können [Azure Cosmos DB ohne Azure-Abonnement kostenlos und unverbindlich testen](https://azure.microsoft.com/try/cosmosdb/).
+Sie können [Azure Cosmos DB kostenlos ohne Azure-Abonnement und ohne Verpflichtungen testen](https://azure.microsoft.com/try/cosmosdb/) oder ein [Azure Cosmos DB-Konto im Tarif „Free“](optimize-dev-test.md#azure-cosmos-db-free-tier) nutzen, bei dem die ersten 400 RU/s und 5 GB Speicher kostenlos sind.
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB kostenlos testen](https://azure.microsoft.com/try/cosmosdb/)
@@ -40,7 +40,7 @@ Aufgrund der engen Integration in die Azure-Infrastruktur und der [transparenten
 
 ### <a name="elastic-scalability-of-throughput-and-storage-worldwide"></a>Elastische Skalierbarkeit für Durchsatz und Speicher weltweit
 
-Cosmos DB wurde mit transparenter horizontaler Partitionierung und Multimasterreplikation konzipiert und bietet eine nie dagewesene elastische Skalierbarkeit für alle Ihre Schreib- und Lesevorgänge rund um den Globus. Sie können mit einem einzigen API-Aufruf von Tausenden auf Hunderte von Millionen Anforderungen/Sek. rund um den Globus zentral hochskalieren, wobei Sie nur für den von Ihnen benötigten Durchsatz (und Speicher) zahlen. Diese Funktionalität hilft Ihnen, unerwartete Belastungsspitzen in Ihren Workloads zu bewältigen, ohne für Spitzen übermäßig Kapazität vorhalten zu müssen. Weitere Informationen finden Sie unter [Partitionierung in Cosmos DB](partitioning-overview.md), [Bereitstellen des Durchsatzes für Container und Datenbanken](set-throughput.md) und [Globales Skalieren von bereitgestelltem Durchsatz](scaling-throughput.md).
+Cosmos DB wurde mit transparenter horizontaler Partitionierung und Multimasterreplikation konzipiert und bietet eine nie dagewesene elastische Skalierbarkeit für alle Ihre Schreib- und Lesevorgänge rund um den Globus. Sie können mit einem einzigen API-Aufruf von Tausenden auf Hunderte von Millionen Anforderungen/Sek. rund um den Globus hochskalieren, wobei Sie nur für den von Ihnen benötigten Durchsatz (und Speicher) zahlen. Diese Funktionalität hilft Ihnen, unerwartete Belastungsspitzen in Ihren Workloads zu bewältigen, ohne für Spitzen übermäßig Kapazität vorhalten zu müssen. Weitere Informationen finden Sie unter [Partitionierung in Cosmos DB](partitioning-overview.md), [Bereitstellen des Durchsatzes für Container und Datenbanken](set-throughput.md) und [Globales Skalieren von bereitgestelltem Durchsatz](scaling-throughput.md).
 
 ### <a name="guaranteed-low-latency-at-99th-percentile-worldwide"></a>Weltweit garantiert niedrige Latenz im 99. Quantil
 

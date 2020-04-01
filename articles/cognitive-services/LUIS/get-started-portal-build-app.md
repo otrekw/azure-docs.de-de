@@ -1,39 +1,31 @@
 ---
 title: 'Schnellstart: Erstellen einer neuen App im LUIS-Portal'
-titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung erstellen Sie die grundlegenden Komponenten einer App sowie Absichten und Entitäten. Außerdem verwenden Sie zu Testzwecken eine Beispieläußerung im LUIS-Portal.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 55ba025b9174f727a54ce0cd63da11c8661af91c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.openlocfilehash: f0c8f0c77f832e049dfc494f82e90edb61a8cb2a
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381986"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80244613"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Schnellstart: Erstellen einer neuen App im LUIS-Portal
 
-In diesem Schnellstart erstellen Sie eine neue App im LUIS-Portal. Zuerst erstellen Sie die Grundbestandteile einer App, **Absichten** und **Entitäten**. Anschließend testen Sie die App, indem Sie im interaktiven Testbereich eine Beispielbenutzeräußerung eingeben, um die vorhergesagte Absicht zu erhalten.
-
-Das Erstellen einer App ist kostenlos, und es ist kein Azure-Abonnement erforderlich. Wenn Sie so weit sind, Ihre App bereitzustellen, lesen Sie den [Schnellstart zum Bereitstellen einer App](get-started-portal-deploy-app.md). Dort erfahren Sie, wie Sie eine Azure Cognitive Service-Ressource erstellen und sie der App zuweisen.
+In diesem Schnellstart erstellen Sie eine neue App im LUIS-Portal. Erstellen Sie zunächst die Grundbestandteile einer App sowie **Absichten** und **Entitäten**. Testen Sie anschließend die App, indem Sie im interaktiven Testbereich eine Beispielbenutzeräußerung eingeben, um die vorhergesagte Absicht zu erhalten.
 
 [!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 ## <a name="create-an-app"></a>Erstellen einer App
 
-1. Wählen Sie auf der Kontextsymbolleiste die Option **+ Erstellen** aus.
+1. Wählen Sie auf der Kontextsymbolleiste die Option **+ New app for conversation** (+ Neue App für die Konversation) und anschließend **New app for conversation** (Neue App für die Konversation) aus.
 
-   [![Erstellen einer neuen App im LUIS-Portal](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > [![Erstellen einer neuen App im LUIS-Portal](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
 
 1. Konfigurieren Sie die App im Popupfenster mit den folgenden Einstellungen, und wählen Sie dann **Fertig** aus.
 
-   |Einstellungsname| value | Zweck|
+   |Einstellungsname| Wert | Zweck|
    |--|--|--|
    |Name|`myEnglishApp`|Eindeutiger Name der LUIS-App<br>required|
    |Kultur|**Englisch**|Sprache der Äußerungen von Benutzern, **en-us**<br>required|
@@ -70,7 +62,8 @@ Nach dem Erstellen von Absichten fügen Sie Beispieläußerungen hinzu. Beispiel
 
 Für die `FindForm`-Absicht dieser Beispielanwendung gehört zu den Beispieläußerungen die Formularnummer. Die Clientanwendung benötigt die Formularnummer, um die Anforderung des Benutzers zu erfüllen, daher ist es wichtig, sie in die Äußerung einzuschließen.
 
-[![Eingeben von Beispieläußerungen für die Absicht „FindForm“](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
+> [!div class="mx-imgBorder"]
+> [![Eingeben von Beispieläußerungen für die Absicht „FindForm“](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
 
 Fügen Sie der `FindForm`-Absicht die folgenden 15 Beispieläußerungen hinzu.
 
@@ -147,7 +140,8 @@ Die Beispieläußerungen der Absicht **None** dürfen nicht im Bereich der Clien
 
    Die Entität ist an den Stellen markiert, an denen sie in den Beispieläußerungen vorkommt. Falls Sie anstelle des Entitätsnamens den ursprünglichen Text anzeigen möchten, schalten Sie über die Symbolleiste die **Entities View** (Entitätsansicht) um.
 
-   [![Alle Beispieläußerungen mit markierten Entitäten](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
+   > [!div class="mx-imgBorder"]
+   > [![Alle Beispieläußerungen mit markierten Entitäten](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
 
 ## <a name="test-your-new-app-with-the-interactive-test-pane"></a>Testen der neuen App im interaktiven Testbereich
 
@@ -159,7 +153,10 @@ Verwenden Sie den interaktiven **Testbereich** im LUIS-Portal, um zu überprüfe
 
    ```Is there a form named hrf-234098```
 
-   ![Testen einer neuen Äußerung im Testbereich](./media/get-started-portal-build-app/test-new-utterance.png)
+    Wählen Sie **Überprüfen** aus, um Entitätsvorhersagen anzuzeigen.
+
+   > [!div class="mx-imgBorder"]
+   > ![Testen einer neuen Äußerung im Testbereich](./media/get-started-portal-build-app/test-new-utterance.png)
 
    Die am stärksten vorhergesagte Absicht ist richtigerweise **FindForm** mit einer Zuverlässigkeit von mehr als 90 % (0,977). Die Entität **Personalwesen-Formularnummer** wird mit dem Wert hrf-234098 extrahiert.
 

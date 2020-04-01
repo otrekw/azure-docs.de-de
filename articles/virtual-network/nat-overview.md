@@ -1,5 +1,6 @@
 ---
 title: Was ist Azure Virtual Network NAT?
+titlesuffix: Azure Virtual Network
 description: Enthält eine Übersicht über Features, Ressourcen, Architektur und Implementierung von Virtual Network NAT. Es wird beschrieben, wie Virtual Network NAT funktioniert und wie Sie NAT-Gatewayressourcen in der Cloud nutzen.
 services: virtual-network
 documentationcenter: na
@@ -11,16 +12,16 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/05/2020
+ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: 205826a6ad952383582f5a8086cbd8b85dbc3794
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 4b34d4208d8686cdac3f8164d2cf7efb2d881346
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78359251"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79409897"
 ---
-# <a name="what-is-virtual-network-nat-public-preview"></a>Was ist Virtual Network NAT (Public Preview)?
+# <a name="what-is-virtual-network-nat"></a>Was ist Virtual Network NAT?
 
 Virtual Network NAT (Network Address Translation, Netzwerkadressenübersetzung) vereinfacht für virtuelle Netzwerke die Einrichtung von ausschließlich ausgehenden Internetverbindungen. Bei der Konfiguration in einem Subnetz werden für die gesamte Konnektivität in ausgehender Richtung die von Ihnen angegebenen statischen öffentlichen IP-Adressen verwendet.  Die ausgehende Konnektivität ist möglich, ohne dass ein Lastenausgleich oder öffentliche IP-Adressen direkt virtuellen Computern zugeordnet werden. NAT ist vollständig verwaltet und äußerst resilient.
 
@@ -37,10 +38,6 @@ Virtual Network NAT (Network Address Translation, Netzwerkadressenübersetzung) 
 
 *Abbildung: Virtual Network NAT*
 
-
->[!NOTE] 
->Virtual Network NAT ist derzeit als öffentliche Vorschauversion (Public Preview) verfügbar. Dieser Dienst ist bisher nur in einer begrenzten Zahl von [Regionen](#region-availability) erhältlich. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
-
 ## <a name="static-ip-addresses-for-outbound-only"></a>Statische IP-Adressen ausschließlich für den Ausgang
 
 Die ausgehende Konnektivität kann für jedes Subnetz mit NAT definiert werden.  Mehrere Subnetze desselben virtuellen Netzwerks können über unterschiedliche NATs verfügen. Ein Subnetz wird konfiguriert, indem angegeben wird, welche [NAT-Gatewayressource](./nat-gateway-resource.md) verwendet werden soll. Für alle ausgehenden UDP- und TCP-Datenflüsse einer VM-Instanz wird NAT genutzt. 
@@ -53,7 +50,7 @@ Der gesamte ausgehende Datenverkehr für das Subnetz wird per NAT ohne Konfigura
 
 Für NAT wird die „Port-Netzwerkadressenübersetzung“ (Port Network Address Translation, PNAT/PAT) verwendet. Diese Vorgehensweise wird für die meisten Workloads empfohlen. Dynamische oder divergente Workloads können über die bedarfsgesteuerte Datenflusszuteilung in ausgehender Richtung problemlos abgedeckt werden. Eine umfassende Vorabplanung, Vorabzuteilung und damit verbundene Überbereitstellung von Ausgangsressourcen wird vermieden. SNAT-Portressourcen werden gemeinsam genutzt und sind in allen Subnetzen verfügbar, indem eine spezifische NAT-Gatewayressource verwendet und bei Bedarf bereitgestellt wird.
 
-Eine mit NAT verknüpfte öffentliche IP-Adresse stellt bis zu 64.000 gleichzeitige Datenflüsse für UDP und TCP bereit. Sie können mit einer einzelnen IP-Adresse beginnen und bis auf 16 öffentliche IP-Adressen zentral hochskalieren.
+Eine mit NAT verknüpfte öffentliche IP-Adresse stellt bis zu 64.000 gleichzeitige Datenflüsse für UDP und TCP bereit. Sie können mit einer einzelnen IP-Adresse beginnen und bis auf 16 öffentliche IP-Adressen hochskalieren.
 
 Bei NAT können Datenflüsse aus dem virtuellen Netzwerk ins Internet erstellt werden. Aus dem Internet zurückfließender Datenverkehr ist nur als Antwort auf einen aktiven Datenfluss zulässig.
 
@@ -91,9 +88,9 @@ Die private Seite von NAT sendet TCP-Zurücksetzungspakete, wenn versucht wird, 
 
 Die öffentliche Seite von NAT generiert keine TCP-Zurücksetzungspakete oder anderen Datenverkehr.  Es wird nur Datenverkehr ausgegeben, der aus dem virtuellen Netzwerk des Kunden stammt.
 
-## <a name="configurable-idle-timeout"></a>Konfigurierbares Leerlauftimeout
+## <a name="configurable-tcp-idle-timeout"></a>Konfigurierbares TCP-Leerlauftimeout
 
-Standardmäßig wird ein Leerlauftimeout von vier Minuten verwendet, das auf bis zu 120 Minuten erhöht werden kann. Bei allen Aktivitäten eines Datenflusses kann auch der Leerlaufzeitgeber, einschließlich TCP-Keep-Alives, zurückgesetzt werden.
+Standardmäßig wird ein TCP-Leerlauftimeout von vier Minuten verwendet, das auf bis zu 120 Minuten erhöht werden kann. Bei allen Aktivitäten eines Datenflusses kann auch der Leerlaufzeitgeber, einschließlich TCP-Keep-Alives, zurückgesetzt werden.
 
 ## <a name="regional-or-zone-isolation-with-availability-zones"></a>Regionale oder Zonenisolation mit Verfügbarkeitszonen
 
@@ -125,48 +122,6 @@ Sie können den Betrieb von NAT mit mehrdimensionalen Metriken überwachen, die 
 
 Bei allgemeiner Verfügbarkeit werden für den NAT-Datenpfad mindestens 99,9 % erreicht.
 
-## <a name = "region-availability"></a>Regionale Verfügbarkeit
-
-NAT ist derzeit in den folgenden Regionen verfügbar:
-
-- Europa, Westen
-- Japan, Osten
-- USA (Ost 2)
-- USA, Westen
-- USA, Westen 2
-- USA, Westen-Mitte
-
-## <a name = "enable-preview"></a>Teilnahme an der öffentlichen Vorschauversion
-
-Abonnements müssen registriert werden, um die Teilnahme an der öffentlichen Vorschauversion zu ermöglichen.  Für die Teilnahme ist ein zweistufiger Prozess erforderlich. Unten sind die Schritte für Azure CLI und Azure PowerShell angegeben.  Die Aktivierung kann mehrere Minuten dauern.
-
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-
-1. Registrieren Sie das Abonnement für Public Preview.
-
-    ```azurecli-interactive
-      az feature register --namespace Microsoft.Network --name AllowNatGateway
-    ```
-
-2. Aktivieren Sie die Registrierung.
-
-    ```azurecli-interactive
-      az provider register --namespace Microsoft.Network
-    ```
-
-### <a name="azure-powershell"></a>Azure PowerShell
-
-1. Registrieren Sie das Abonnement für Public Preview.
-
-    ```azurepowershell-interactive
-      Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowNatGateway
-    ```
-
-2. Aktivieren Sie die Registrierung.
-
-    ```azurepowershell-interactive
-      Register-AzResourceProvider -ProviderNamespace Microsoft.Network
-    ```
 
 ## <a name="pricing"></a>Preise
 
@@ -180,7 +135,9 @@ Für die Abrechnung des NAT-Gateways werden zwei separate Verbrauchseinheiten ve
 Die Ressourcenstunden geben den Zeitraum an, in dem eine NAT-Gatewayressource vorhanden ist.
 Die verarbeitete Datenmenge steht für den gesamten Datenverkehr, der von einer NAT-Gatewayressource verarbeitet wird.
 
-Während der öffentlichen Vorschauphase gilt für die Preise eine Ermäßigung von 50 %.
+## <a name="availability"></a>Verfügbarkeit
+
+Virtual Network NAT und die NAT-Gatewayressource sind in allen [Regionen](https://azure.microsoft.com/global-infrastructure/regions/) der öffentlichen Azure-Cloud verfügbar.
 
 ## <a name="support"></a>Support
 
@@ -188,12 +145,13 @@ Support für NAT ist über die üblichen Kanäle verfügbar.
 
 ## <a name="feedback"></a>Feedback
 
-Wir möchten wissen, wie wir den Dienst verbessern können. Senden Sie uns [Feedback zur öffentlichen Vorschauversion](https://aka.ms/natfeedback).  Sie haben auch die Möglichkeit, unter [UserVoice für NAT](https://aka.ms/natuservoice) Vorschläge zu den nächsten Entwicklungsschritten zu machen und darüber abzustimmen.
+Wir möchten wissen, wie wir den Dienst verbessern können. Unter [UserVoice für NAT](https://aka.ms/natuservoice) können Sie Vorschläge zu den nächsten Entwicklungsschritten machen und darüber abstimmen.
+
 
 ## <a name="limitations"></a>Einschränkungen
 
-* NAT ist mit öffentlichen IP-Adressen, Präfixen für öffentliche IP-Adressen und Lastenausgleichsressourcen der Standard-SKU kompatibel.   Basic-Ressourcen (z. B. Load Balancer im Tarif „Basic“) und alle davon abgeleiteten Produkte sind nicht mit NAT kompatibel.  Basic-Ressourcen müssen in einem Subnetz angeordnet sein, für das NAT nicht konfiguriert ist.
-* Die Familie der IPv4-Adressen wird unterstützt.  NAT interagiert nicht mit der Familie der IPv6-Adressen.  NAT kann nicht in einem Subnetz mit IPv6-Präfix bereitgestellt werden.
+* NAT ist mit öffentlichen IP-Adressen, Präfixen für öffentliche IP-Adressen und Lastenausgleichsressourcen der Standard-SKU kompatibel. Basic-Ressourcen, z. B. Load Balancer im Tarif „Basic“, und alle davon abgeleiteten Produkte sind nicht mit NAT kompatibel.  Basic-Ressourcen müssen in einem Subnetz angeordnet sein, für das NAT nicht konfiguriert ist.
+* Die Familie der IPv4-Adressen wird unterstützt.  NAT interagiert nicht mit der Familie der IPv6-Adressen.  Die NAT kann nicht in einem Subnetz mit IPv6-Präfix bereitgestellt werden.
 * Die Protokollierung von NSG-Datenflüssen wird bei Verwendung von NAT nicht unterstützt.
 * NAT kann übergreifend für mehrere virtuelle Netzwerke genutzt werden.
 
@@ -201,4 +159,4 @@ Wir möchten wissen, wie wir den Dienst verbessern können. Senden Sie uns [Feed
 
 * Informieren Sie sich über [NAT-Gatewayressourcen](./nat-gateway-resource.md).
 * [Teilen Sie uns bei UserVoice mit, welche Funktionen wir als Nächstes für Virtual Network NAT entwickeln sollen.](https://aka.ms/natuservoice)
-* [Senden Sie Feedback zur öffentlichen Vorschauversion](https://aka.ms/natfeedback).
+

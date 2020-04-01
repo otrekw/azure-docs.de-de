@@ -15,19 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 03/09/2020
 ms.author: allensu
 ms.custom: subject-armqs
-ms.openlocfilehash: 0f6a303bfa42538bf56efa7e9f669588c8bff66c
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 6b3dee698e63ed2b0a44f05b593b8840d1cd23ee
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082726"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80066401"
 ---
 # <a name="quickstart-create-a-nat-gateway---resource-manager-template"></a>Schnellstart: Erstellen eines NAT-Gateways: Resource Manager-Vorlage
 
-Hier finden Sie Informationen zu den ersten Schritten mit Virtual Network NAT unter Verwendung einer Azure Resource Manager-Vorlage.  Mit dieser Vorlage werden ein virtuelles Netzwerk, ein NAT-Gateway und ein virtueller Ubuntu-Computer bereitgestellt. Der virtuelle Ubuntu-Computer wird in einem Subnetz bereitgestellt, das dem NAT-Gateway zugeordnet ist.
-
->[!NOTE] 
->Azure Virtual Network NAT ist zurzeit als öffentliche Vorschauversion erhältlich und nur in bestimmten [Regionen](https://azure.microsoft.com/global-infrastructure/regions/) verfügbar. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms).
+Hier finden Sie Informationen zu den ersten Schritten mit Virtual Network NAT unter Verwendung einer Azure Resource Manager-Vorlage.  Mit dieser Vorlage werden ein virtuelles Netzwerk, eine NAT-Gatewayressource und ein virtueller Ubuntu-Computer bereitgestellt. Der virtuelle Ubuntu-Computer wird in einem Subnetz bereitgestellt, das der NAT-Gatewayressource zugeordnet ist.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 

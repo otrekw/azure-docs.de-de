@@ -11,14 +11,16 @@ ms.topic: overview
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: eb338c39ed3b1a095c1ad31e3f695e8d3fec0ed3
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: af49e80766d7ac4bd2d9ed677a2571fb0a5a3189
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565960"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80131746"
 ---
 # <a name="what-is-computer-vision"></a>Worum handelt es sich bei maschinellem Sehen?
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Über den Azure-Dienst für maschinelles Sehen haben Entwickler Zugriff auf erweiterte Algorithmen, die Bilder verarbeiten und Informationen zurückgeben, je nachdem, welche visuellen Features für Sie von Interesse sind. So kann maschinelles Sehen beispielsweise erkennen, ob ein Bild nicht jugendfreie Inhalte enthält, oder alle menschlichen Gesichter in einem Bild finden.
 
@@ -77,6 +79,6 @@ Wie bei allen Cognitive Services-Diensten müssen Entwickler, die den Maschinel
 
 Nutzen Sie die folgende Schnellstartanleitung als Einführung in die Verwendung von maschinellem Sehen:
 
-- [Schnellstart: Maschinelles Sehen: .NET SDK](quickstarts-sdk/csharp-sdk.md)
-- [Schnellstart: Maschinelles Sehen: Python SDK](quickstarts-sdk/python-sdk.md)
-- [Schnellstart: Maschinelles Sehen: Java SDK](quickstarts-sdk/java-sdk.md)
+- [Schnellstart: Verwenden der Clientbibliothek für maschinelles Sehen](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp) (.NET)
+- [Schnellstart: Verwenden der Clientbibliothek für maschinelles Sehen](./quickstarts-sdk/client-library.md?pivots=programming-language-python) (Python)
+- [Schnellstart: Verwenden der Clientbibliothek für maschinelles Sehen](./quickstarts-sdk/client-library.md?pivots=programming-language-java) (Java)

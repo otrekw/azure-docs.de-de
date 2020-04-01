@@ -10,16 +10,20 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 02/28/2020
 ms.author: pafarley
-ms.openlocfilehash: c154b75fc8f8a177ab73682fc2af77d1702ae075
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 82e9c9a6dd8dc18f186a21e72a1a3d205094b707
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207818"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80155187"
 ---
 # <a name="whats-new-in-computer-vision"></a>Neuerungen beim maschinellen Sehen
 
 Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versionshinweise, Videos, Blogbeiträge und andere Informationen handeln. Legen Sie ein Lesezeichen für diese Seite an, um über den Dienst auf dem Laufenden zu bleiben.
+
+## <a name="march-2020"></a>März 2020
+
+* TLS 1.2 wird nun für alle HTTP-Anforderungen erzwungen, die an diesen Dienst gerichtet werden. Weitere Informationen finden Sie unter [Sicherheit von Azure Cognitive Services](../cognitive-services-security.md).
 
 ## <a name="january-2020"></a>Januar 2020
 

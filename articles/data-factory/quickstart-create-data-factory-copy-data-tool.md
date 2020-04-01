@@ -10,13 +10,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 06/20/2018
-ms.openlocfilehash: edf03b663383f10168ee5b78a3ad5f1a9fdac288
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/18/2020
+ms.openlocfilehash: 26169755fbe252a4be2626dae50d40c005c7c6db
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440126"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80130904"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Schnellstart: Kopieren von Daten mithilfe des Tools zum Kopieren von Daten
 
@@ -35,13 +35,9 @@ In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Data Fac
 
 1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird zurzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). 
-1. Wählen Sie im Menü des Azure-Portals die Option **Ressource erstellen** aus.
+1. Wählen Sie im Azure-Portal im Menü die Option **Ressource erstellen** > **Analytics** > **Data Factory** aus:
 
-    ![Erstellen einer Ressource über das Menü des Azure-Portals](./media/quickstart-create-data-factory-copy-data-tool/create-data-factory-resource.png)
-
-1. Wählen Sie **Analytics** und dann **Data Factory** aus.
-
-   ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/quickstart-create-data-factory-copy-data-tool/new-azure-data-factory-menu.png)
+    ![Erstellen einer neuen Data Factory](./media/doc-common-process/new-azure-data-factory-menu.png)
 
 1. Geben Sie auf der Seite **Neue Data Factory** unter **Name** den Namen **ADFTutorialDataFactory** ein. 
  
@@ -79,11 +75,13 @@ In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Data Fac
 
     a. Klicken Sie auf **+ Neue Verbindung erstellen**, um eine Verbindung hinzuzufügen.
 
-    b. Wählen Sie im Katalog **Azure Blob Storage** aus, und klicken Sie dann auf **Fortsetzen**.
+    b. Wählen Sie den Typ des verknüpften Diensts aus, den Sie für die Quellverbindung erstellen möchten. In diesem Tutorial verwenden wir **Azure Blob Storage**. Wählen Sie diese Option im Katalog und dann **Weiter** aus.
+    
+    ![Blob auswählen](./media/quickstart-create-data-factory-copy-data-tool/select-blob-source.png)
 
-    c. Geben Sie auf der Seite **New Linked Service (Azure Blob Storage)** (Neuer verknüpfter Dienst (Azure Blob Storage)) einen Namen für Ihren verknüpften Dienst ein. Wählen Sie in der Liste **Speicherkontoname** Ihr Speicherkonto aus, testen Sie die Verbindung, und wählen Sie **Fertig stellen** aus. 
+    c. Geben Sie auf der Seite **New Linked Service (Azure Blob Storage)** (Neuer verknüpfter Dienst (Azure Blob Storage)) einen Namen für Ihren verknüpften Dienst ein. Wählen Sie in der Liste **Speicherkontoname** Ihr Speicherkonto aus, testen Sie die Verbindung, und wählen Sie dann **Erstellen** aus. 
 
-   ![Konfigurieren des Azure Blob Storage-Kontos](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
+    ![Konfigurieren des Azure Blob Storage-Kontos](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
 
     d. Wählen Sie den neu erstellten verknüpften Dienst als Quelle aus, und klicken Sie auf **Weiter**.
 
@@ -111,15 +109,19 @@ In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Data Fac
 
     ![Seite „Deployment complete“ (Bereitstellung abgeschlossen)](./media/quickstart-create-data-factory-copy-data-tool/deployment-page.png)
 
-1. Die Anwendung wechselt zur Registerkarte **Überwachen**. Der Status der Pipeline wird auf dieser Registerkarte angezeigt. Klicken Sie zum Aktualisieren der Liste auf **Aktualisieren**. 
-    
-1. Klicken Sie in der Spalte **Aktionen** auf den Link **View Activity Runs** (Aktivitätsausführungen anzeigen). Die Pipeline verfügt nur über eine Aktivität vom Typ **Copy**. 
-    
-1. Wenn Sie Details zum Kopiervorgang anzeigen möchten, klicken Sie in der Spalte **Aktionen** auf den Link **Details** (Brillensymbol). Einzelheiten zu den Eigenschaften finden Sie unter [Kopieraktivität in Azure Data Factory](copy-activity-overview.md).
+1. Die Anwendung wechselt zur Registerkarte **Überwachen**. Der Status der Pipeline wird auf dieser Registerkarte angezeigt. Klicken Sie zum Aktualisieren der Liste auf **Aktualisieren**. Klicken Sie auf den Link unter **PIPELINENAME**, um Details zur Aktivitätsausführung anzuzeigen oder die Pipeline erneut auszuführen. 
+   
+    ![Aktualisieren der Pipeline](./media/quickstart-create-data-factory-copy-data-tool/refresh-pipeline.png)
+
+1. Wählen Sie auf der Seite „Aktivitätsausführungen“ unter der Spalte **AKTIVITÄTSNAME** den Link **Details** (Brillensymbol) aus, um weitere Details zum Kopiervorgang anzuzeigen. Einzelheiten zu den Eigenschaften finden Sie unter [Kopieraktivität in Azure Data Factory](copy-activity-overview.md). 
+
+1. Wählen Sie im Breadcrumb-Menü den Link **Alle Pipelineausführungen** aus, um zur Ansicht „Pipelineausführungen“ zurückzukehren. Klicken Sie zum Aktualisieren der Ansicht auf **Aktualisieren**. 
 
 1. Vergewissern Sie sich, dass im Ordner **output** des Containers **adftutorial** die Datei **emp.txt** erstellt wird. Ist der Ausgabeordner nicht vorhanden, wird er vom Data Factory-Dienst automatisch erstellt. 
 
 1. Wechseln Sie im linken Bereich zur Registerkarte **Ersteller** über der Registerkarte **Überwachen**, um verknüpfte Dienste, Datasets und Pipelines zu bearbeiten. Informationen zum Bearbeiten dieser Elemente über die Data Factory-Benutzeroberfläche finden Sie unter [Erstellen einer Data Factory über die Azure Data Factory-Benutzeroberfläche](quickstart-create-data-factory-portal.md).
+
+    ![Auswählen der Registerkarte „Autor“](./media/quickstart-create-data-factory-copy-data-tool/select-author.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Die Pipeline in diesem Beispiel kopiert Daten in Azure Blob Storage von einem Speicherort in einen anderen. Arbeiten Sie die [Tutorials](tutorial-copy-data-portal.md) durch, um zu erfahren, wie Sie Data Factory in anderen Szenarien verwenden können. 

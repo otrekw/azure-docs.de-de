@@ -1,22 +1,14 @@
 ---
 title: 'Tutorial: Listenentität – LUIS'
-titleSuffix: Azure Cognitive Services
 description: Abrufen von Daten, die mit einer vordefinierten Liste von Elementen übereinstimmen. Jedes Element auf der Liste kann Synonyme aufweisen, die ebenfalls exakt übereinstimmen
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 056c64657f42d56879928f518598206d45493f60
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/12/2020
+ms.openlocfilehash: 1cfeccbd54e8ef8ec315d53fc7a766760c92a0d1
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447785"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79297406"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>Tutorial: Abrufen von Daten mit genauer Textübereinstimmung aus einer Äußerung mit Listenentität
 
@@ -42,7 +34,7 @@ Eine Listenentität ist eine gute Wahl für diese Art von Daten, wenn Folgendes 
 
 * Bei den Datenwerten handelt es sich um einen bekannten Satz.
 * Für den Satz werden die maximalen LUIS-[Grenzen](luis-boundaries.md) dieses Entitätstyps nicht überschritten.
-* Der Text in der Äußerung ist eine exakte Übereinstimmung mit einem Synonym oder dem kanonischen Namen. LUIS verwendet die Liste über genaue Textübereinstimmungen hinaus nicht. Wortstammerkennung, Pluralformen und andere Varianten lassen sich nur mithilfe einer Listenentität nicht auflösen. Um Varianten zu behandeln, sollten Sie die Verwendung eines [Musters](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) mit der optionalen Textsyntax in Erwägung ziehen.
+* Der Text in der Äußerung stimmt mit einem Synonym oder dem kanonischen Namen überein (ohne Berücksichtigung der Groß-/Kleinschreibung). Die Liste wird von LUIS nicht über die Übereinstimmung hinaus verwendet. Wortstammerkennung, Pluralformen und andere Varianten lassen sich nur mithilfe einer Listenentität nicht auflösen. Um Varianten zu behandeln, sollten Sie die Verwendung eines [Musters](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) mit der optionalen Textsyntax in Erwägung ziehen.
 
 > [!CAUTION]
 > Falls Sie unsicher sind, ob Sie eine Listenentität oder eine durch maschinelles Lernen erworbene Entität mit einer Ausdrucksliste als Deskriptor verwenden sollen, empfiehlt sich die Verwendung einer durch maschinelles Lernen erworbenen Entität mit einer Ausdrucksliste, da diese Option flexibler ist. Bei Verwendung dieser Methode kann LUIS die Werte der zu extrahierenden Daten lernen und erweitern.

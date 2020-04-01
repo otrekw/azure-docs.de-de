@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 03/13/2020
 ms.author: pafarley
-ms.openlocfilehash: a641893fece37c759480ab31f505b1673f50e2b9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 666b70ba8b632cb2cadf20de384e3e615acb2b3d
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973610"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79203559"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Schnellstart: Testen von Content Moderator im Web
 
@@ -32,9 +32,23 @@ Das Content Moderator-Prüfungstool ist ein webbasiertes Tool, mit dem menschlic
 
 ## <a name="create-a-review-team"></a>Erstellen eines Prüfungsteams
 
-Erstellen Sie als Nächstes ein Prüfungsteam. In einem Produktionsszenario ist dies die Gruppe von Personen, die manuell die Moderationsentscheidungen des Diensts überprüfen. Für diese Anleitung müssen Sie nur einen Teamnamen festlegen. Sie können Ihre Kollegen in das Team einladen, indem Sie ihre E-Mail-Adressen eingeben.
+Erstellen Sie als Nächstes ein Prüfungsteam. In einem Produktionsszenario ist dies die Gruppe von Personen, die manuell die Moderationsentscheidungen des Diensts überprüfen. Wenn Sie ein Team erstellen möchten, müssen Sie eine **Region** auswählen und einen Teamnamen (unter **Teamname**) sowie eine Team-ID (unter **Team-ID**) angeben. Sie können Ihre Kollegen in das Team einladen, indem Sie ihre E-Mail-Adressen eingeben.
 
-![Einladen von Teammitgliedern](images/QuickStart-2-small.png)
+> [!NOTE]
+> **Teamname** ist ein Anzeigename für Ihr Prüfungsteam. Dieser Name wird im Azure-Portal angezeigt. Die **Team-ID** dient zur programmgesteuerten Identifizierung Ihres Prüfungsteams.
+
+> [!div class="mx-imgBorder"]
+> ![Einladen von Teammitgliedern](images/create-team.png)
+
+Wenn Sie Daten mit einem kundenseitig verwalteten Schlüssel (Customer-Managed Key, CMK) verschlüsseln möchten, werden Sie zur Angabe der **Ressourcen-ID** für Ihre Content Moderator-Ressource im Tarif „E0“ aufgefordert. Die angegebene Ressource muss neu sein. 
+
+> [!div class="mx-imgBorder"]
+> ![Einladen von Teammitgliedern mit CMK](images/create-team-cmk.png)
+
+Wenn Sie versuchen, eine Content Moderator-Ressource erneut zu verwenden, wird die folgende Warnung angezeigt: 
+
+> [!div class="mx-imgBorder"]
+> ![CMK-Fehler](images/create-team-cmk-fail.png)
 
 ## <a name="upload-sample-content"></a>Hochladen von Beispielinhalten
 

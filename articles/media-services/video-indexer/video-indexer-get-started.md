@@ -7,19 +7,19 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
-ms.topic: tutorial
-ms.date: 02/03/2020
+ms.topic: quickstart
+ms.date: 03/17/2020
 ms.author: juliako
-ms.openlocfilehash: 1f3d442ea7cf6d95427aaa9c072410119e2735af
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 22b06ce99333750d48d1cb65d9f60779572723b9
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76989806"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79499629"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Schnellstart: Registrieren und Hochladen Ihres ersten Videos
 
-In diesem Tutorial zu den ersten Schritten wird veranschaulicht, wie Sie sich bei der Video Indexer-Website anmelden und Ihr erstes Video hochladen.
+In dieser Schnellstartanleitung zu den ersten Schritten wird veranschaulicht, wie Sie sich bei der Video Indexer-Website anmelden und Ihr erstes Video hochladen.
 
 Beim Erstellen eines Video Indexer-Kontos können Sie ein kostenloses Testkonto (mit einer bestimmten Anzahl von kostenlosen Indizierungsminuten) oder eine kostenpflichtige Option wählen (ohne Einschränkung durch eine Kontingentvorgabe). Bei der kostenlosen Testversion stellt Video Indexer bis zu 600 Minuten an kostenloser Indizierungszeit für Websitebenutzer und bis zu 2.400 Minuten an kostenloser Indizierungszeit für API-Benutzer bereit. Bei der kostenpflichtigen Option erstellen Sie ein Video Indexer-Konto, [das mit Ihrem Azure-Abonnement und einem Azure Media Services-Konto verbunden ist](connect-to-azure.md). Die Indizierungszeit wird minutenweise abgerechnet. Außerdem fallen Gebühren für das Azure Media Services-Konto an. 
 
@@ -27,10 +27,10 @@ Beim Erstellen eines Video Indexer-Kontos können Sie ein kostenloses Testkonto 
 
 Um mit der Entwicklung mit Video Indexer zu beginnen, müssen Sie sich bei der [Video Indexer](https://www.videoindexer.com)-Website registrieren.
 
-## <a name="upload-a-video-using-the-video-indexer-website"></a>Hochladen eines Videos auf der Video Indexer-Website
-
 > [!NOTE]
-> Der Name des Videos darf nicht mehr als 80 Zeichen umfassen.
+> Nachdem Sie mit der Nutzung von Video Indexer begonnen haben, werden Ihre gesamten gespeicherten Daten und hochgeladenen Inhalte im ruhenden Zustand mit einem von Microsoft verwalteten Schlüssel verschlüsselt.
+
+## <a name="upload-a-video-using-the-video-indexer-website"></a>Hochladen eines Videos auf der Video Indexer-Website
 
 ### <a name="supported-file-formats-for-video-indexer"></a>Unterstützte Dateiformate für Video Indexer
 
@@ -40,6 +40,9 @@ Im Artikel [Eingabecontainer/Dateiformate](../latest/media-encoder-standard-form
 
 1. Melden Sie sich bei der [Video Indexer](https://www.videoindexer.ai/)-Website an.
 2. Klicken Sie auf die Schaltfläche bzw. den Link **Hochladen**, um ein Video hochzuladen.
+
+    > [!NOTE]
+    > Der Name des Videos darf nicht mehr als 80 Zeichen umfassen.
 
     ![Upload](./media/video-indexer-get-started/video-indexer-upload.png)
 

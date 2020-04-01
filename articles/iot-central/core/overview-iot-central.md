@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 71d595ecb3a6900da3df79651ee2dddda594b9de
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 6c50e5892aca37bac47e68a9ae17435611c99817
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589408"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80157465"
 ---
 # <a name="what-is-azure-iot-central"></a>Was ist Azure IoT Central?
 
@@ -39,12 +39,10 @@ In diesem Artikel werden folgende Punkte für IoT Central behandelt:
 - Aufträge unterstützen keine komplexen Typen.
 - Array-Schematypen werden nicht unterstützt.
 - Nur das C-Geräte-SDK und die Node.js-Geräte-SDKs und -Dienst-SDKs werden unterstützt.
-- Verfügbarkeit besteht nur in den Regionen USA, Europa, Asien-Pazifik und Australien.
+- IoT Central ist derzeit in den Regionen USA, Europa, Asien-Pazifik, Australien, Vereinigtes Königreich und Japan verfügbar.
+- Sie können die Anwendungsvorlage **Benutzerdefinierte Anwendung (veraltet)** nicht in den Regionen Vereinigtes Königreich und Japan nutzen.
 - Für die Gerätefunktionsmodelle müssen alle Schnittstellen inline in derselben Datei definiert werden.
 - Die Unterstützung für [IoT Plug & Play](../../iot-pnp/overview-iot-plug-and-play.md) befindet sich in der Vorschauphase und ist nur in ausgewählten Regionen verfügbar.
-
-    > [!NOTE]
-    > Wenden Sie sich an den technischen Support, um Zugriff auf eine Vorschauanwendung mit Unterstützung von IoT Plug & Play-Geräten zu erhalten.
 
 ## <a name="personas"></a>Personas
 
@@ -76,7 +74,6 @@ Diese Gerätevorlage enthält Folgendes:
 - Ein _Gerätefunktionsmodell_, das die Funktionen beschreibt, die ein Gerät implementieren soll, z. B. die gesendeten Telemetriedaten und die gemeldeten Eigenschaften.
 - Cloudeigenschaften, die nicht auf dem Gerät gespeichert werden
 - Anpassungen, Dashboards und Formulare, die Teil der IoT Central-Anwendung sind
-
 
 ### <a name="pricing"></a>Preise
 

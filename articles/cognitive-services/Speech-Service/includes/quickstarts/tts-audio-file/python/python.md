@@ -1,21 +1,15 @@
 ---
-title: 'Schnellstart: Synthetisieren von Sprache in eine Audiodatei, Python – Speech-Dienst'
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: chlandsi
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 07/05/2019
-ms.author: chlandsi
-ms.openlocfilehash: df2c3fc2ab6f6c742f56273119923a7e02cf8e43
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.date: 03/20/2020
+ms.author: dapine
+ms.openlocfilehash: 983a3c38c19d60a2ad890255ab2120ea58776436
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78384110"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80116903"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -27,29 +21,31 @@ ms.locfileid: "78384110"
     * Linux: Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8 unter x64
 * Führen Sie unter Linux die folgenden Befehle aus, um die erforderlichen Pakete zu installieren:
 
-  * Auf Ubuntu:
+# <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-    ```sh
-    sudo apt-get update
-    sudo apt-get install build-essential libssl1.0.0 libasound2
-    ```
+```Bash
+sudo apt-get update
+sudo apt-get install build-essential libssl1.0.0 libasound2
+```
 
-  * Unter Debian 9:
+# <a name="debian-9"></a>[Debian 9](#tab/debian)
 
-    ```sh
-    sudo apt-get update
-    sudo apt-get install build-essential libssl1.0.2 libasound2
-    ```
+```Bash
+sudo apt-get update
+sudo apt-get install build-essential libssl1.0.2 libasound2
+```
 
-  * Unter RHEL/CentOS 8:
+# <a name="rhel--centos-8"></a>[RHEL/CentOS 8](#tab/rhel-centos)
 
-    ```sh
-    sudo yum update
-    sudo yum install alsa-lib openssl python3
-    ```
+```Bash
+sudo yum update
+sudo yum install alsa-lib openssl python3
+```
 
 > [!NOTE]
 > Befolgen Sie unter RHEL/CentOS 8 die Anweisungen zum [Konfigurieren von OpenSSL für Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
+
+---
 
 * Unter Windows benötigen Sie [Microsoft Visual C++ Redistributable für Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) für Ihre Plattform.
 
@@ -59,7 +55,7 @@ ms.locfileid: "78384110"
 
 Mit diesem Befehl wird das Python-Paket über [PyPI](https://pypi.org/) für das Speech SDK installiert:
 
-```sh
+```Bash
 pip install azure-cognitiveservices-speech
 ```
 
@@ -77,7 +73,7 @@ Falls Probleme auftreten oder ein Feature fehlt, sehen Sie sich die [Support- un
 
 Sie können den [Beispielcode](#sample-code) aus diesem Schnellstart in eine Quelldatei (`quickstart.py`) kopieren und in Ihrer integrierten Entwicklungsumgebung (Integrated Development Environment, IDE) oder in der Konsole ausführen:
 
-```sh
+```Bash
 python quickstart.py
 ```
 
@@ -85,8 +81,7 @@ Alternativ können Sie dieses Schnellstarttutorial als [Jupyter](https://jupyter
 
 ### <a name="sample-code"></a>Beispielcode
 
-````Python
-
+````python
 import azure.cognitiveservices.speech as speechsdk
 
 # Replace with your own subscription key and region identifier from here: https://aka.ms/speech/sdkregion
@@ -96,7 +91,7 @@ speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_r
 # Creates an audio configuration that points to an audio file.
 # Replace with your own audio filename.
 audio_filename = "helloworld.wav"
-audio_output = speechsdk.AudioOutputConfig(filename=audio_filename)
+audio_output = speechsdk.audio.AudioOutputConfig(filename=audio_filename)
 
 # Creates a synthesizer with the given settings
 speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_output)
@@ -138,14 +133,14 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 1. Kopieren Sie den [Python-Code](#sample-code), fügen Sie ihn in die neu erstellte Datei ein, und speichern Sie die Datei.
 1. Fügen Sie Ihre Abonnementinformationen für den Speech-Dienst ein.
 1. Wenn ein Python-Interpreter ausgewählt wurde, wird er auf der linken Seite der Statusleiste am unteren Rand des Fensters angezeigt.
-   Zeigen Sie andernfalls eine Liste der verfügbaren Python-Interpreter an. Öffnen Sie die Befehlspalette (STRG+UMSCHALT+P), und geben Sie **Python: Select Interpreter** ein. Wählen Sie einen passenden Interpreter aus.
+   Zeigen Sie andernfalls eine Liste der verfügbaren Python-Interpreter an. Öffnen Sie die Befehlspalette (<kbd>STRG+UMSCHALT+P</kbd>), und geben Sie **Python: Select Interpreter** ein. Wählen Sie einen passenden Interpreter aus.
 1. Sie können das Speech SDK-Paket für Python über Visual Studio Code installieren. Führen Sie diesen Schritt aus, wenn es für den ausgewählten Python-Interpreter noch nicht installiert wurde.
-   Öffnen Sie zum Installieren des Speech SDK-Pakets ein Terminal. Rufen Sie erneut die Befehlspalette (STRG+UMSCHALT+P) auf, und geben Sie **Terminal: Neues integriertes Terminal erstellen** eingeben.
+   Öffnen Sie zum Installieren des Speech SDK-Pakets ein Terminal. Öffnen Sie erneut die Befehlspalette (<kbd>STRG+UMSCHALT+P</kbd>), und geben Sie **Terminal: Neues integriertes Terminal erstellen** ein.
    Geben Sie im Terminal, das geöffnet wird, den Befehl `python -m pip install azure-cognitiveservices-speech` bzw. den entsprechenden Befehl für Ihr System ein.
 1. Klicken Sie zum Ausführen des Beispielcodes mit der rechten Maustaste an einer beliebigen Stelle im Editor. Wählen Sie **Run Python File in Terminal** (Python-Datei im Terminal ausführen) aus.
    Ihr Text wird in Sprache konvertiert und in den angegebenen Audiodaten gespeichert.
 
-   ```text
+   ```console
    Speech synthesized to [helloworld.wav] for text [Hello world!]
    ```
 

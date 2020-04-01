@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/12/2019
-ms.openlocfilehash: 857cfb4587d7b73a59fafac83dadbef3ad920ebf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 03/23/2020
+ms.openlocfilehash: c94ac0c27d747da1a98cd9d67ced91a5913147e6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971437"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80132684"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Schnellstart: Ausführen eines Spark-Auftrags in Azure Databricks mithilfe der Azure Resource Manager-Vorlage
 
@@ -47,7 +47,7 @@ In diesem Abschnitt erstellen Sie mithilfe der Azure Resource Manager-Vorlage ei
 
    Geben Sie außerdem die folgenden Werte an:
 
-   |Eigenschaft  |Beschreibung  |
+   |Eigenschaft  |BESCHREIBUNG  |
    |---------|---------|
    |**Abonnement**     | Wählen Sie in der Dropdownliste Ihr Azure-Abonnement aus.        |
    |**Ressourcengruppe**     | Geben Sie an, ob Sie eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe verwenden möchten. Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Weitere Informationen finden Sie in der [Übersicht über den Azure Resource Manager](../azure-resource-manager/management/overview.md). |
@@ -60,6 +60,8 @@ In diesem Abschnitt erstellen Sie mithilfe der Azure Resource Manager-Vorlage ei
 4. Die Erstellung des Arbeitsbereichs dauert einige Minuten. Während der Erstellung des Arbeitsbereichs wird im Portal auf der rechten Seite die Kachel **Bereitstellung für "Azure Databricks" wird gesendet** angezeigt. Möglicherweise müssen Sie im Dashboard nach rechts scrollen, um die Kachel zu sehen. Am oberen Bildschirmrand wird auch eine Statusanzeige angezeigt. Sie können den Status beider Bereiche beobachten.
 
    ![Databricks-Bereitstellungskachel](./media/quickstart-create-databricks-workspace-resource-manager-template/databricks-deployment-tile.png "Databricks-Bereitstellungskachel")
+
+   Wenn bei der Bereitstellung eines Arbeitsbereichs ein Fehler auftritt, wird der Arbeitsbereich mit dem Fehlerzustand trotzdem erstellt. Löschen Sie den fehlerhaften Arbeitsbereich, und erstellen Sie einen neuen, um die Bereitstellungsfehler zu beheben. Wenn Sie den fehlerhaften Arbeitsbereich löschen, werden auch die verwaltete Ressourcengruppe und alle Ressourcen gelöscht, für die die Bereitstellung erfolgreich war.
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Erstellen eines Spark-Clusters in Databricks
 

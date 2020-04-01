@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 10/18/2019
+ms.date: 03/17/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e928d67ba7102df3d342e77705ea895f9230ff3
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: d2b1d9748b243dcc2104ce7b8e0e8735a7b7276f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887700"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79497676"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Was ist Azure Active Directory Identity Protection?
 
@@ -53,7 +53,7 @@ Identity Protection identifiziert Risiken in folgenden Klassifizierungen:
 | Ungewöhnliche Anmeldeeigenschaften | Anmeldung mit Eigenschaften, die für den angegebenen Benutzer in letzter Zeit nicht verwendet wurden |
 | Mit Schadsoftware verknüpfte IP-Adresse | Anmeldung von einer mit Schadsoftware verknüpften IP-Adresse |
 | Kompromittierte Anmeldeinformationen | Diese Risikoerkennung gibt an, dass die gültigen Anmeldeinformationen des Benutzers kompromittiert wurden. |
-| Azure AD Threat Intelligence | Auf der Grundlage der internen und externen Quellen für Bedrohungsdaten von Microsoft wurde ein bekanntes Angriffsmuster identifiziert. |
+| Azure AD Threat Intelligence | Auf der Grundlage der internen und externen Quellen für Bedrohungsdaten von Microsoft wurde ein bekanntes Angriffsmuster identifiziert |
 
 Weitere Informationen zu diesen Risiken sowie zu deren Berechnung finden Sie im Artikel [Was bedeutet Risiko?](concept-identity-protection-risks.md).
 
@@ -78,6 +78,15 @@ Informationen zur Integration von Identity Protection-Informationen in Azure Se
 ## <a name="permissions"></a>Berechtigungen
 
 Benutzer müssen über die Rolle „Benutzer mit Leseberechtigung für Sicherheitsfunktionen“, „Sicherheitsoperator“, „Sicherheitsadministrator“, „Globaler Leser“ oder „Globaler Administrator“ verfügen, um auf Identity Protection zugreifen zu können.
+
+| Role | Möglich | Nicht möglich |
+| --- | --- | --- |
+| Globaler Administrator | Vollzugriff auf Identity Protection |   |
+| Sicherheitsadministrator | Vollzugriff auf Identity Protection | Zurücksetzen des Kennworts für einen Benutzer |
+| Sicherheitsoperator | Anzeigen aller Identity Protection-Berichte und des Blatts „Übersicht“ <br><br> Ignorieren des Benutzerrisikos, Bestätigen der sicheren Anmeldung, Bestätigen der Kompromittierung | Konfigurieren oder Ändern von Richtlinien <br><br> Zurücksetzen des Kennworts für einen Benutzer <br><br> Konfigurieren von Warnungen |
+| Sicherheitsleseberechtigter | Anzeigen aller Identity Protection-Berichte und des Blatts „Übersicht“ | Konfigurieren oder Ändern von Richtlinien <br><br> Zurücksetzen des Kennworts für einen Benutzer <br><br> Konfigurieren von Warnungen <br><br> Bereitstellen von Feedback zu Erkennungen |
+
+Administratoren für bedingten Zugriff können auch Richtlinien erstellen, bei denen das Risiko als Bedingung berücksichtigt wird. Weitere Informationen hierzu finden Sie im Artikel [Bedingter Zugriff: Bedingungen](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk).
 
 ## <a name="license-requirements"></a>Lizenzanforderungen
 

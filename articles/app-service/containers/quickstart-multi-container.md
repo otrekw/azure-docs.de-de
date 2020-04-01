@@ -6,13 +6,13 @@ author: msangapu-msft
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 19544d9ea9a86b6c0ad98debc7361f4579cbc998
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 62e34859775cb8c574d8d463f636ed81dce8ece3
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78247014"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80045867"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Erstellen einer App mit mehreren Containern (Vorschauversion) mithilfe einer Docker Compose-Konfiguration
 
@@ -96,6 +96,9 @@ Nach Erstellung des App Service-Plans zeigt die Azure-Befehlszeilenschnittstelle
 ```
 
 ## <a name="create-a-docker-compose-app"></a>Erstellen einer Docker Compose-App
+
+> [!NOTE]
+> Docker Compose unter Azure App Service verfügt derzeit über ein Limit von 4.000 Zeichen.
 
 Erstellen Sie im Cloud Shell-Terminal eine [Web-App](app-service-linux-intro.md) mit mehreren Containern im App Service-Plan `myAppServicePlan`, indem Sie den Befehl [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) verwenden. Vergessen Sie nicht, _\<app_name>_ durch einen eindeutigen App-Namen zu ersetzen (gültige Zeichen sind `a-z`, `0-9` und `-`).
 

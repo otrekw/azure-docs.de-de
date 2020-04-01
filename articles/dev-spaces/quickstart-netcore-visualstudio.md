@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, H
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 5deebf7a51917a2b199ad525ab087fd5b0268c18
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 5d0d1541600f4c10b021d5d7f7f435f1aa5ae589
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245032"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80239717"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>Schnellstart: Debuggen und iteratives Entwickeln unter Kubernetes: Visual Studio und .NET Core – Azure Dev Spaces
 
@@ -94,7 +94,9 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:62266
 Completed warmup for project 'webfrontend' in 125 seconds.
 ```
 
-Im obigen Beispiel lautet die öffentliche URL http://default.webfrontend.1234567890abcdef1234.eus.azds.io/. Navigieren Sie zur öffentlichen URL Ihres Diensts, und interagieren Sie mit dem Dienst, der in Ihrem Entwicklerbereich ausgeführt wird.
+Im obigen Beispiel lautet die öffentliche URL http://default.webfrontend.1234567890abcdef1234.eus.azds.io/. 
+
+Wählen Sie **Debuggen** und dann **Debuggen starten** aus. Nach einigen Sekunden wird Ihr Dienst gestartet, und von Visual Studio wird ein Browser mit der öffentlichen URL des Diensts geöffnet. Gehen Sie wie folgt vor, falls der Browser nicht automatisch geöffnet wird: Navigieren Sie im Browser zur öffentlichen URL Ihres Diensts, und interagieren Sie mit dem Dienst, der in Ihrem Entwicklungsbereich ausgeführt wird.
 
 Dieser Prozess kann den öffentlichen Zugriff auf Ihren Dienst deaktiviert haben. Um den öffentlichen Zugriff zu aktivieren, können Sie den [eingehenden Wert in der Datei *values.yaml*][ingress-update] aktualisieren.
 
@@ -106,7 +108,7 @@ Klicken Sie auf die Schaltfläche „Beenden“, wenn Visual Studio noch mit Ihr
 ViewData["Message"] = "Your application description page in Azure.";
 ```
 
-Speichern Sie Ihre Änderungen, und starten Sie Ihren Dienst, indem Sie in der Dropdownliste mit den Starteinstellungen die Option **Azure Dev Spaces** auswählen. Öffnen Sie die öffentliche URL Ihres Diensts in einem Browser, und klicken Sie auf *Info*. Sie sehen, dass Ihre aktualisierte Meldung angezeigt wird.
+Speichern Sie Ihre Änderungen, und wählen Sie **Debuggen** und dann **Debuggen starten** aus. Nach einigen Sekunden wird Ihr Dienst gestartet, und von Visual Studio wird ein Browser mit der öffentlichen URL des Diensts geöffnet. Gehen Sie wie folgt vor, falls der Browser nicht automatisch geöffnet wird: Navigieren Sie in einem Browser zur öffentlichen URL Ihres Diensts, und klicken Sie auf *Info*. Sie sehen, dass Ihre aktualisierte Meldung angezeigt wird.
 
 Anstatt bei jeder vorgenommenen Codeänderung erneut ein neues Containerimage zu erstellen und bereitzustellen, wird Code von Azure Dev Spaces im vorhandenen Container inkrementell kompiliert, um den Bearbeitungs-/Debugkreislauf zu beschleunigen.
 
@@ -133,5 +135,5 @@ az group delete --name MyResourceGroup --yes --no-wait
 > [!div class="nextstepaction"]
 > [Arbeiten mit mehreren Containern und Teamentwicklung](multi-service-netcore-visualstudio.md)
 
-[ingress-update]: how-dev-spaces-works.md#how-running-your-code-is-configured
+[ingress-update]: how-dev-spaces-works-up.md#how-running-your-code-is-configured
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

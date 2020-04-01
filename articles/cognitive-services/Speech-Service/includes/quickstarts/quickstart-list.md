@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 1e329e71298d5fc357f0a4cb7562883bfb742c6b
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 1bc7d5e4b895f451b1680408f6cd7d17d76019e7
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73992568"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80243674"
 ---
 - [Schnellstart: Erkennen von Spracheingaben per Mikrofon](~/articles/cognitive-services/speech-service/quickstarts/speech-to-text-from-microphone.md)
 - [Schnellstart: Erkennen von Sprache aus einer Datei](~/articles/cognitive-services/speech-service/quickstarts/speech-to-text-from-file.md)
@@ -13,3 +13,4 @@ ms.locfileid: "73992568"
 - [Schnellstart: Synthetisieren von Sprache über einen Lautsprecher](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech.md)
 - [Schnellstart: Synthetisieren von Sprache in eine Audiodatei](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-audio-file.md)
 - [Schnellstart: Erkennen von Absichten](~/articles/cognitive-services/speech-service/quickstarts/intent-recognition.md)
+- [Schnellstart: Erstellen eines benutzerdefinierten Sprachassistenten](~/articles/cognitive-services/speech-service/quickstarts/voice-assistants.md)

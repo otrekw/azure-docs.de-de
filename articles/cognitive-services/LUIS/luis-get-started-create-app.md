@@ -1,22 +1,14 @@
 ---
 title: 'Schnellstart: Erstellen einer App – LUIS'
-titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung lernen Sie, eine LUIS-App zu erstellen, die die vordefinierte Domäne `HomeAutomation` zum Ein- und Ausschalten von Beleuchtungen und Haushaltsgeräten verwendet. Diese vordefinierte Domäne bietet Absichten, Entitäten und Beispieläußerungen, die Sie nutzen können. Am Ende dieser Schnellstartanleitung verfügen Sie über einen LUIS-Endpunkt in der Cloud.
-services: cognitive-services
-author: diberry
-ms.custom: seodec18
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 302321a36a6ce7526ad5e3144f87b88edbfaaec7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.openlocfilehash: de6cf5e95ee63fc9500cf1b5edab78597bdb18af
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448102"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80287797"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Schnellstart: Verwenden der vordefinierten Home Automation-App
 
@@ -29,11 +21,11 @@ In dieser Schnellstartanleitung erstellen Sie eine LUIS-App, die die vordefinier
 ## <a name="create-a-new-app"></a>Erstellen einer neuen App
 Sie können Ihre Anwendungen auf der Seite **Meine Apps** erstellen und verwalten.
 
-1. Wählen Sie im LUIS-Portal in der Liste „Meine Apps“ die Option **+ Erstellen** aus.
+1. Wählen Sie in der Liste „Meine Apps“ die Option **+ New app for conversation** (+ Neue App für die Konversation) aus.
 
-    ![Wählen Sie im LUIS-Portal in der Liste „Meine Apps“ die Option „+ Erstellen“ aus.](./media/create-app-in-portal.png)
+1. Geben Sie im Dialogfeld den Namen `Home Automation` für Ihre Anwendung ein. Legen Sie die Kultur auf **Englisch** fest. Die Beschreibung ist optional und wird nicht für die Erstellung oder Vorhersage verwendet. Die Vorhersageressource ist auch bei der Erstellung einer LUIS-App optional. Wählen Sie **Fertig**aus.
 
-1. Geben Sie der Anwendung im Dialogfeld den Namen `Home Automation`, und wählen Sie anschließend **Fertig** aus. LUIS erstellt die App. Die Beschreibung ist optional und wird nicht für die Erstellung oder Vorhersage verwendet. Die Vorhersageressource ist auch bei der Erstellung einer LUIS-App optional. Bei der Veröffentlichung Ihrer App in der Produktion müssen Sie eine Vorhersageressource zuweisen, damit Ihre App zahlreiche Anforderungen verarbeiten kann.
+    LUIS erstellt die App. Bei der Veröffentlichung Ihrer App in der Produktion müssen Sie eine Vorhersageressource zuweisen, damit Ihre App zahlreiche Anforderungen verarbeiten kann.
 
     ![Geben Sie Ihrer Anwendung im Dialogfeld den Namen „Home Automation“.](./media/create-new-app-details.png)
 
@@ -66,23 +58,25 @@ Wählen Sie die Absicht **HomeAutomation.TurnOff** aus. Wie Sie sehen, enthält 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
 ## <a name="test-your-app"></a>Testen Ihrer App
-Nachdem Sie Ihre App trainiert haben, können Sie sie testen. Klicken Sie auf **Test**. Geben Sie eine Testäußerung wie `Turn off the lights` in den interaktiven Testbereich ein, und drücken Sie die EINGABETASTE.
+Nachdem Sie Ihre App trainiert haben, können Sie sie testen.
 
-```
-Turn off the lights
-```
+1. Wählen Sie im Navigationsbereich rechts oben die Option **Testen** aus. 1. Geben Sie eine Testäußerung wie `Turn off the lights` in den interaktiven Testbereich ein, und drücken Sie die EINGABETASTE.
 
-Überprüfen Sie, ob die Absicht mit der höchsten Bewertung der Absicht entspricht, die Sie für die einzelnen Testäußerungen erwartet haben.
+    ```
+    Turn off the lights
+    ```
 
-In diesem Beispiel wurde `Turn off the lights` korrekt als Absicht mit der höchsten Bewertung von **HomeAutomation.TurnOff** identifiziert.
+    Überprüfen Sie, ob die Absicht mit der höchsten Bewertung der Absicht entspricht, die Sie für die einzelnen Testäußerungen erwartet haben.
 
-![Screenshot des Testbereichs mit hervorgehobener Äußerung](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
+    In diesem Beispiel wurde `Turn off the lights` korrekt als Absicht mit der höchsten Bewertung von **HomeAutomation.TurnOff** identifiziert.
 
-Wählen Sie **Überprüfen** aus, um weitere Informationen zur Vorhersage anzuzeigen.
+    ![Screenshot des Testbereichs mit hervorgehobener Äußerung](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
 
-![Screenshot: Testbereich mit Überprüfungsinformationen](media/luis-quickstart-new-app/test.png)
+1. Wählen Sie **Überprüfen** aus, um weitere Informationen zur Vorhersage anzuzeigen.
 
-Klicken Sie erneut auf **Test** (Testen), um den Testbereich zuzuklappen.
+    ![Screenshot: Testbereich mit Überprüfungsinformationen](media/luis-quickstart-new-app/test.png)
+
+1. Schließen Sie den Testbereich.
 
 <a name="publish-your-app"></a>
 
@@ -96,14 +90,14 @@ Klicken Sie erneut auf **Test** (Testen), um den Testbereich zuzuklappen.
 
 [!INCLUDE [LUIS How to get endpoint first step](./includes/v3-prediction-endpoint.md)]
 
-1. Stellen Sie in der Adressleiste des Browsers für die Abfragezeichenfolge sicher, dass die URL die folgenden Name-Wert-Leisten aufweist. Fügen Sie diese Angaben hinzu, falls sie in der Abfragezeichenfolge nicht enthalten sind:
+2. Stellen Sie in der Adressleiste des Browsers für die Abfragezeichenfolge sicher, dass die URL die folgenden Name-Wert-Leisten aufweist. Fügen Sie diese Angaben hinzu, falls sie in der Abfragezeichenfolge nicht enthalten sind:
 
     |Name-Wert-Paar|
     |--|
     |`verbose=true`|
     |`show-all-intents=true`|
 
-1. Navigieren Sie in der Adressleiste des Browsers an das Ende der URL, und geben Sie `turn off the living room light` für den Wert _query_ ein. Drücken Sie anschließend die EINGABETASTE.
+3. Navigieren Sie in der Adressleiste des Browsers an das Ende der URL, und geben Sie `turn off the living room light` für den Wert _query_ ein. Drücken Sie anschließend die EINGABETASTE.
 
     ```json
     {
