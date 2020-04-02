@@ -1,19 +1,18 @@
 ---
 title: Go-To-Market-Dienste – Bewährte Methoden zur Angebotslistung | Azure
 description: Go-To-Market-Dienste – In diesem Abschnitt werden bewährte Methoden für die Angebotslistung beschrieben.
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/21/2018
-ms.author: ellacroi
-ms.openlocfilehash: 39dea152545d210c48e21853c3c03c63843a4d81
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.author: dsindona
+ms.openlocfilehash: 3cb625e613d8dbe9398e947925a8dc574a277614
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779101"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286250"
 ---
 # <a name="offer-listing-best-practices"></a>Bewährte Methoden für Angebotslistung
 

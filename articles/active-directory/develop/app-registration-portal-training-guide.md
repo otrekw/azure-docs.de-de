@@ -3,22 +3,22 @@ title: Neue Oberfläche für App-Registrierungen im Azure-Portal
 titleSuffix: Microsoft identity platform
 description: Einführung in die neue App-Registrierungsumgebung im Azure-Portal
 services: active-directory
-author: archieag
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/8/2019
-ms.author: aragra
+ms.author: marsma
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
-ms.openlocfilehash: 835924c92d0c5768c1125b3b1d26ee72cf2cec70
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 50c88dd1785bd9177219054fed3800ca725a5274
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698270"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154592"
 ---
 # <a name="the-new-azure-portal-app-registration-experience"></a>Die neue Oberfläche für App-Registrierungen im Azure-Portal
 
@@ -30,7 +30,7 @@ In der neuen Umgebung [App-Registrierungen](https://go.microsoft.com/fwlink/?lin
 
     > [!NOTE]
     > Sie müssen sich mit dem Konto anmelden, das Sie zum Registrieren der Anwendungen verwendet haben, damit diese im Azure-Portal angezeigt werden. Es wird empfohlen, zu überprüfen, ob der im Azure-Portal angemeldete Benutzer dem Benutzer entspricht, der im Anwendungsregistrierungsportal angemeldet war. Vergleichen Sie dazu die E-Mail-Adresse Ihres Profils.
-    > 
+    >
     > In einigen Fällen (besonders bei der Anmeldung mit persönlichen Microsoft-Konten wie Outlook, Live, Xbox usw. und einer Azure AD-E-Mail-Adresse) haben wir festgestellt, dass Sie beim Navigieren von der alten Umgebung zum Azure-Portal bei einem anderen Konto mit der gleichen E-Mail-Adresse im Azure AD-Mandanten angemeldet werden. Wenn Ihre Anwendungen weiterhin zu fehlen scheinen, melden Sie sich ab, und melden Sie sich mit dem richtigen Konto wieder an.
 
 - Live SDK-Apps, die mit persönlichen Microsoft-Konten erstellt wurden, werden im Azure-Portal noch nicht unterstützt und sind auch in naher Zukunft noch in der alten Umgebung zu finden.
@@ -86,14 +86,14 @@ In der neuen Umgebung befinden sich die Antwort-URLs im Abschnitt „Authentifiz
 
 Web-APIs werden auf der Seite „Eine API verfügbar machen“ konfiguriert.
 
-> [!NOTE] 
+> [!NOTE]
 > Testen Sie die neue Umgebung für die Authentifizierungseinstellungen, in der Sie Einstellungen für Ihre Anwendung basierend auf der Zielplattform oder dem Zielgerät konfigurieren können. [Weitere Informationen](quickstart-configure-app-access-web-apis.md#configure-platform-settings-for-your-application)
 
 ## <a name="microsoft-graph-permissionsapi-permissions"></a>Microsoft Graph-Berechtigungen/API-Berechtigungen
 
 -   Bei der Auswahl einer API in der alten Umgebung standen nur Microsoft Graph-APIs zur Auswahl. In der neuen Umgebung stehen viele Microsoft-APIs (einschließlich Microsoft Graph), APIs Ihrer Organisation und eigene APIs zur Auswahl. Dafür gibt es drei Registerkarten: „Microsoft-APIs“, „Von meiner Organisation verwendete APIs“ oder „Meine APIs“. Mit der Suchleiste auf der Registerkarte „Von meiner Organisation verwendete APIs“ können Sie die Dienstprinzipale im Mandanten durchsuchen.
-    
-    > [!NOTE] 
+
+    > [!NOTE]
     > Diese Registerkarte wird nicht angezeigt, wenn Ihre Anwendung keinem Mandanten zugeordnet ist. Weitere Informationen zum Anfordern von Berechtigungen in der neuen Umgebung finden Sie [in dieser Schnellstartanleitung](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/develop/quickstart-configure-app-access-web-apis.md).
 
 -   In der alten Umgebung gab es die Schaltfläche **Berechtigungen erteilen** nicht. Die neue Umgebung enthält im Abschnitt „API-Berechtigungen“ für eine App den Bereich „Einwilligung erteilen“ mit der Schaltfläche **Administratoreinwilligung erteilen**. Nur ein Administrator kann eine Einwilligung erteilen. Daher ist diese Schaltfläche nur bei Administratoren aktiviert. Wenn ein Administrator die Schaltfläche **Administratorzustimmung erteilen** auswählt, wird für alle angeforderten Berechtigungen Administratorzustimmung erteilt.

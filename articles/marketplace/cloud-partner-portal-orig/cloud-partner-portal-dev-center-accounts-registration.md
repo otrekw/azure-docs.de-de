@@ -1,19 +1,18 @@
 ---
 title: Erstellen eines Microsoft-Entwicklerkontos | Azure Marketplace
 description: Anforderungen und Schritte für das Erstellen eines Microsoft-Entwicklerkontos.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 522caa53123ad5ccb8076839d2dfa7dc1236b022
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 161abde1ef0dfd86842fb56afe699fa632e0d9ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818423"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280370"
 ---
 <a name="create-a-microsoft-developer-account"></a>Erstellen eines Microsoft-Entwicklerkontos
 ====================================
@@ -163,7 +162,7 @@ Wenn Sie kommerzielle Angebote veröffentlichen möchten, müssen Sie Auszahlung
     >
     >Wenn Sie Ihr Zahlungskonto ändern, kann dies dazu führen, dass sich Ihre Zahlungen um maximal einen Zahlungszyklus verzögern. Diese Verzögerung tritt auf, weil wir die Kontoänderung überprüfen müssen. Dies ist der gleiche Vorgang wie bei der ersten Einrichtung des Zahlungskontos. Nachdem das Konto bestätigt wurde, erhalten Sie trotzdem den vollen Betrag. Zahlungen, die für den aktuellen Zahlungszyklus fällig sind, werden im nächsten Zyklus hinzugefügt.
 
-4.  Klicken Sie auf **Weiter**.
+4.  Wählen Sie **Weiter** aus.
 
 **So stellen Sie Steuerinformationen bereit**
 
@@ -172,7 +171,7 @@ Wenn Sie kommerzielle Angebote veröffentlichen möchten, müssen Sie Auszahlung
 3.  Gehen Sie auf der Seite **Ihr Steuerformular einrichten** wie folgt vor:
     - Wählen Sie das Land oder die Region aus, in dem bzw. der Ihr dauerhafter Wohnsitz liegt.
     - Wählen Sie das Land aus, dessen primäre Staatsbürgerschaft Sie innehaben.
-    - Klicken Sie auf **Weiter**.
+    - Wählen Sie **Weiter** aus.
 4.  Geben Sie Ihre Steuerdaten ein, und wählen Sie **Weiter**.
 
 >[!WARNING]

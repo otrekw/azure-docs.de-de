@@ -1,20 +1,18 @@
 ---
 title: Web Analytics
-description: .
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Ricardo.Villalobos
+description: Dieser Artikel enthält Anweisungen, wie Sie Web Analytics kennenlernen und verwenden können, um Ihr Unternehmen optimal zu unterstützen.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: d47a67be157f71a30a6ae155790ed78a78fd6743
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 446e579a7205f0e785d7e940c1dbdd36cff8f370
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814645"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285332"
 ---
 <a name="web-analytics"></a>Web Analytics
 =============
