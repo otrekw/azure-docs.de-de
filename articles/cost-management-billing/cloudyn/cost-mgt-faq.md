@@ -1,24 +1,26 @@
 ---
-title: Häufig gestellte Fragen zu Cloudyn in Azure | Microsoft-Dokumentation
+title: Häufig gestellte Fragen zu Cloudyn in Azure
 description: Dieser Artikel bietet Antworten auf einige der häufig gestellten Fragen zu Cloudyn.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
-ms.topic: troubleshooting
+ms.date: 03/12/2020
+ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 5c770d83d59edf0a56184f8eea0bda6b0603893c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: b1ec81ea135079defb390becc025f51cde2dad7f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770081"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411238"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Häufig gestellte Fragen zu Cloudyn
 
 In diesem Artikel werden einige häufige Fragen zu Cloudyn beantwortet. Wenn Sie Fragen zu Cloudyn haben, können Sie diese in [Häufig gestellte Fragen zu Cloudyn](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-cloudyn-cost-management?forum=Cloudyn) stellen.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>Wie kann ich Fehler beheben, die häufig bei der indirekten Enterprise-Einrichtung auftreten?
 
@@ -58,13 +60,13 @@ Falls Sie keine Empfehlungsdaten für die Optimierung anzeigen können, sind ein
 
 So aktivieren Sie ein Konto:
 
-1.  Klicken Sie im Cloudyn-Portal in der rechten oberen Ecke auf **Settings** (Einstellungen), und wählen Sie **Cloud Accounts** (Cloudkonten) aus.
-2.  Suchen Sie auf der Registerkarte „Microsoft Azure-Konten“ nach Konten, für die **deaktivierte** Abonnements vorliegen.
-3.  Klicken Sie rechts neben einem deaktivierten Konto auf das Symbol **Bearbeiten**, das wie ein Bleistift aussieht.
-4.  Die Mandanten-ID und die Kosten-ID werden automatisch ermittelt. Klicken Sie auf **Weiter**.
-5.  Sie werden zum Azure-Portal weitergeleitet. Melden Sie sich beim Portal an, und autorisieren Sie für Cloudyn-Collector den Zugriff auf Ihre Azure-Daten.
-6.  Sie werden als Nächstes auf die Verwaltungsseite für Cloudyn-Konten weitergeleitet, und Ihr Abonnement wird aktualisiert, sodass als Kontostatus **aktiv** angezeigt wird. Es wird ein grünes Häkchen angezeigt.
-7.  Sollte für manche Abonnements kein grünes Häkchen angezeigt werden, bedeutet das, dass Sie nicht zum Erstellen einer Lese-App (Cloudyn-Collector) für das Abonnement berechtigt sind. Ein Benutzer mit höheren Berechtigungen für das Abonnement muss die Schritte 3 und 4 wiederholen.  
+1.    Klicken Sie im Cloudyn-Portal in der rechten oberen Ecke auf **Settings** (Einstellungen), und wählen Sie **Cloud Accounts** (Cloudkonten) aus.
+2.    Suchen Sie auf der Registerkarte „Microsoft Azure-Konten“ nach Konten, für die **deaktivierte** Abonnements vorliegen.
+3.    Klicken Sie rechts neben einem deaktivierten Konto auf das Symbol **Bearbeiten**, das wie ein Bleistift aussieht.
+4.    Die Mandanten-ID und die Kosten-ID werden automatisch ermittelt. Klicken Sie auf **Weiter**.
+5.    Sie werden zum Azure-Portal umgeleitet. Melden Sie sich beim Portal an, und autorisieren Sie für Cloudyn-Collector den Zugriff auf Ihre Azure-Daten.
+6.    Sie werden als Nächstes auf die Verwaltungsseite für Cloudyn-Konten weitergeleitet, und Ihr Abonnement wird aktualisiert, sodass als Kontostatus **aktiv** angezeigt wird. Es wird ein grünes Häkchen angezeigt.
+7.    Sollte für manche Abonnements kein grünes Häkchen angezeigt werden, bedeutet das, dass Sie nicht zum Erstellen einer Lese-App (Cloudyn-Collector) für das Abonnement berechtigt sind. Ein Benutzer mit höheren Berechtigungen für das Abonnement muss die Schritte 3 und 4 wiederholen.  
 
 Nachdem Sie die vorherigen Schritte ausgeführt haben, können Sie innerhalb von ein bis zwei Tagen Optimierungsempfehlungen anzeigen. Allerdings kann es bis zu fünf Tage dauern, bis vollständige Optimierungsdaten verfügbar sind.
 
@@ -75,7 +77,7 @@ Dies ist das häufigste Szenario, wie Benutzerkonten den Status *InitiallySuspen
 
 > Admin1 kann ein Microsoft Cloud Solution Provider oder Enterprise Agreement-Benutzer sein. Seine Organisation ist bereit, Cloudyn einzuführen.  Er registriert sich über das Azure-Portal und meldet sich im Cloudyn-Portal an. Da er den Cloudyn-Dienst registriert und sich im Cloudyn-Portal anmeldet, wird Admin1 zum *primären Administrator*. Admin1 erstellt keine Benutzerkonten. Mithilfe des Cloudyn-Portals erstellt er jedoch Azure-Konten und eine Entitätshierarchie. Admin1 informiert Admin2, einen Mandantenadministrator, dass er sich für Cloudyn registrieren und sich beim Cloudyn-Portal anmelden muss.
 >
-> Admin2 registriert sich über das Azure-Portal. Wenn er jedoch versucht, sich beim Cloudyn-Portal anzumelden, wird eine Fehlermeldung zurückgegeben, die besagt, dass sein Konto **gesperrt** ist. Der primäre Administrator, Admin1, wird über die Kontosperrung benachrichtigt. Admin1 muss das Konto von Admin2 aktivieren, *Administratorzugriff auf die richtigen Entitäten* gewähren, bestimmt Benutzerverwaltungszugriff und das Benutzerkonto aktivieren.
+> Admin2 registriert sich über das Azure-Portal. Wenn er jedoch versucht, sich beim Cloudyn-Portal anzumelden, wird eine Fehlermeldung zurückgegeben, die besagt, dass sein Konto **gesperrt** ist. Der primäre Administrator, Admin1, wird über die Kontosperrung benachrichtigt. Admin1 muss das Konto von Admin2 aktivieren und *Administratorzugriff auf die richtigen Entitäten* gewähren. Darüber hinaus ermöglicht er den Benutzerverwaltungszugriff und aktiviert das Benutzerkonto.
 
 
 Wenn Sie eine Warnung mit der Anforderung erhalten, dass der Zugriff für einen Benutzer zugelassen werden soll, müssen Sie das Benutzerkonto aktivieren.
@@ -95,7 +97,7 @@ Es wird empfohlen, mindestens zwei Cloudyn-Administratorkonten zu erstellen, fal
 
 Wenn Sie sich nicht beim Cloudyn-Portal anmelden können, sollten Sie sicherstellen, dass Sie die richtige URL für die Anmeldung bei Cloudyn verwenden. Verwenden Sie [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
 
-Vermeiden Sie die Verwendung der direkten Cloudyn-URL https://app.cloudyn.com.
+Vermeiden Sie die Verwendung der direkten Cloudyn-URL `https://app.cloudyn.com`.
 
 ## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Wie aktiviere ich deaktivierte Konten mit Azure-Anmeldeinformationen?
 

@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 6f5d2dc30ac0f6316587fa0836b87cbd4efc0a8b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75773693"
 ---
 Das PowerShell-Cmdlet **Get-AzPeeringLocation** gibt mit dem obligatorischen Parameter `Kind` eine Liste der Peeringstandorte zurück, die Sie in späteren Schritten verwenden:
@@ -30,7 +30,7 @@ Exchange Peering-Standorte enthalten die folgenden Felder:
 * MicrosoftIPv4Address
 * MicrosoftIPv6Address
 
-Überprüfen Sie anhand von [PeeringDB](https://w www.peeringdb.com), ob Sie in der gewünschten Peeringeinrichtung vorhanden sind.
+Überprüfen Sie anhand von [PeeringDB](https://wwww.peeringdb.com), ob Sie in der gewünschten Peeringeinrichtung vorhanden sind.
 
 Unten sehen Sie ein Beispiel, das zeigt, wie Sie Seattle als Peeringstandort zum Erstellen eines Peerings verwenden:
 

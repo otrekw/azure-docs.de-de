@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/07/2020
 ms.author: juliako
 ms.openlocfilehash: f1387273f9736fea70682177d5d48dc2f141bbad
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76933860"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer: Versionshinweise
@@ -82,7 +82,7 @@ Wenn der Streamingendpunkt deaktiviert ist, zeigt Video Indexer einen beschreibe
 
 ### <a name="error-handling-improvement"></a>Verbesserung der Fehlerbehandlung
 
-Der Statuscode 409 wird jetzt von den APIs [Video erneut indizieren](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video? https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?) und [Videoindex aktualisieren](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?) zurückgegeben, falls ein Video aktiv indiziert wird, um zu verhindern, dass die aktuellen Änderungen der Neuindizierung versehentlich überschrieben werden.
+Der Statuscode 409 wird jetzt von den APIs [Video erneut indizieren](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?) und [Videoindex aktualisieren](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?) zurückgegeben, falls ein Video aktiv indiziert wird, um zu verhindern, dass die aktuellen Änderungen der Neuindizierung versehentlich überschrieben werden.
 
 ## <a name="november-2019"></a>November 2019
  

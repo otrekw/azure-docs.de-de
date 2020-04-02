@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/03/2020
-ms.openlocfilehash: 8a4205002a98a5b9670839b0de7b53d81e0221a6
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: f4be3343f090c4d31ccb85eba8e99f22a3b1fcae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78271927"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529474"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Bedarfsorientiertes Extrahieren, Transformieren und Laden (ETL)
 
@@ -59,7 +59,7 @@ Quelldatendateien werden in der Regel an einen Speicherort in Azure Storage oder
 
 Azure Storage verfügt über verschiedene Arten von Blobs.  Ein *Anfügeblob* ist eine großartige Möglichkeit zum Speichern von Webprotokollen oder Sensordaten.  
 
-Mehrere Blobs können über mehrere Server verteilt werden, um den Zugriff darauf horizontal hochzuskalieren, aber ein einzelnes Blob kann nur von einem einzelnen Server bedient werden. Blobs können zwar logisch in Blob-Containern zusammengefasst werden, allerdings wirkt sich dies nicht auf die Partitionierung einer solchen Gruppierung aus.
+Mehrere Blobs können über mehrere Server verteilt werden, um den Zugriff darauf aufzuskalieren, aber ein einzelnes Blob kann nur von einem einzelnen Server bedient werden. Blobs können zwar logisch in Blob-Containern zusammengefasst werden, allerdings wirkt sich dies nicht auf die Partitionierung einer solchen Gruppierung aus.
 
 Azure Storage verfügt außerdem über eine WebHDFS-API-Ebene für den Blob-Speicher.  Alle Dienste in HDInsight können auf Dateien in Azure Blob Storage zugreifen, um Daten zu bereinigen und zu verarbeiten, auf ähnliche Weise, wie diese Dienste HDFS-Dateien (Hadoop Distributed Files System) verwenden würden.
 
@@ -85,7 +85,7 @@ Um Datasets in der Größenordnung von Terabytes hochzuladen, kann die Netzwerkw
 
 Azure SQL DW ist eine hervorragende Wahl, um bereinigte und vorbereitete Ergebnisse für zukünftige Analysen zu speichern.  Azure HDInsight kann verwendet werden, um diese Dienste für Azure SQL DW durchzuführen.
 
-Azure SQL Data Warehouse (SQL DW) ist ein für analytische Workloads optimierter relationaler Datenbankspeicher.  Azure SQL DW lässt sich am besten bei partitionierten Tabellen skalieren.  Tabellen können über mehrere Knoten hinweg partitioniert werden.  Azure SQL DW-Knoten werden zum Zeitpunkt der Erstellung ausgewählt.  Sie können gemäß dem Fakt skaliert werden, aber dies ist ein aktiver Prozess, der möglicherweise das Verschieben von Daten erfordert. Weitere Informationen finden Sie unter [SQL Data Warehouse – Verwalten von Computeressourcen](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
+Azure SQL Data Warehouse (SQL DW) ist ein für analytische Workloads optimierter relationaler Datenbankspeicher.  Azure SQL DW lässt sich am besten bei partitionierten Tabellen skalieren.  Tabellen können über mehrere Knoten hinweg partitioniert werden.  Azure SQL DW-Knoten werden zum Zeitpunkt der Erstellung ausgewählt.  Sie können gemäß dem Fakt skaliert werden, aber dies ist ein aktiver Prozess, der möglicherweise das Verschieben von Daten erfordert. Weitere Informationen finden Sie unter [SQL Data Warehouse – Verwalten von Computeressourcen](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 
 ### <a name="apache-hbase"></a>Apache HBase
 
@@ -105,7 +105,7 @@ Azure bietet drei verschiedene relationale Datenbanken als Platform-as-a-Service
 * [Azure Database for MySQL](../../mysql/overview.md) ist eine Implementierung von Oracle MySQL.
 * [Azure Database for PostgreSQL](../../postgresql/quickstart-create-server-database-portal.md) ist eine Implementierung von PostgreSQL.
 
-Diese Produkte skalieren zentral hoch, was bedeutet, dass sie durch Hinzufügen weiterer CPUs und von mehr Arbeitsspeicher skaliert werden.  Sie können sich auch entschließen, Premium-Datenträger mit den Produkten zu verwenden, um eine bessere E/A-Leistung zu erzielen.
+Diese Produkte skalieren hoch, was bedeutet, dass sie durch Hinzufügen weiterer CPUs und von mehr Arbeitsspeicher skaliert werden.  Sie können sich auch entschließen, Premium-Datenträger mit den Produkten zu verwenden, um eine bessere E/A-Leistung zu erzielen.
 
 ## <a name="azure-analysis-services"></a>Azure Analysis Services
 
