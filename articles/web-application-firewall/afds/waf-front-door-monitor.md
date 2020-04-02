@@ -7,12 +7,12 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: 3446df6effd85a07beb463c1caa40c5826a9e019
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 4488fadf5db3b32049b5dce4bbee1fa76c320e96
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76934708"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284142"
 ---
 # <a name="azure-web-application-firewall-monitoring-and-logging"></a>Überwachung und Protokollierung von Azure Web Application Firewall 
 
@@ -39,7 +39,7 @@ Mit der folgenden Beispielabfrage werden WAF-Protokolle für blockierte Anforder
 ``` WAFlogQuery
 AzureDiagnostics
 | where ResourceType == "FRONTDOORS" and Category == "FrontdoorWebApplicationFirewallLog"
-| where action_s == "Block"
+| where action_name_s == "Block"
 
 ```
 

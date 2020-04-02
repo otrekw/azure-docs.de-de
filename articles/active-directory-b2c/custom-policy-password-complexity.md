@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: af6a7611381cbf7a251e65969d156f4c40d71843
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: b16790e288f6569f08ce14e5a7c751bbd8083faf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126774"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79138433"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurieren der Kennwortkomplexität mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -153,4 +153,4 @@ Um die Kennwortkomplexität zu konfigurieren, überschreiben Sie die [Anspruchst
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über das [Konfigurieren der Kennwortänderung in benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-password-change.md).
-- - Weitere Informationen finden Sie unter den Elementen [Predicates](predicates.md) und [PredicateValidations](predicates.md#predicatevalidations) in der IEF-Referenz.
+- Weitere Informationen finden Sie unter den Elementen [Predicates](predicates.md) und [PredicateValidations](predicates.md#predicatevalidations) in der IEF-Referenz.
