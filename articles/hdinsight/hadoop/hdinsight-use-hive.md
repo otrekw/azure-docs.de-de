@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: 20fdafc3077d1017c17d1055596dab150dffec72
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: f7dc7b520cba2bbf2351d93795a1a26b3b5124be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78206638"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471352"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Was sind Apache Hive und HiveQL in Azure HDInsight?
 
 [Apache Hive](https://hive.apache.org/) ist ein Data Warehouse-System für Apache Hadoop. Hive ermöglicht das Zusammenfassen, Abfragen und Analysen von Daten. Hive-Abfragen werden in HiveQL geschrieben, einer SQL-ähnlichen Abfragesprache.
 
-Hive ermöglicht Ihnen die Projektstrukturierung größtenteils strukturierter Daten. Nachdem Sie die Struktur definiert haben, können Sie mit HiveQL Daten abfragen, ohne Java- oder MapReduce-Kenntnisse zu besitzen.
+Hive ermöglicht Ihnen die Strukturierung größtenteils unstrukturierter Daten. Nachdem Sie die Struktur definiert haben, können Sie mit HiveQL Daten abfragen, ohne Java- oder MapReduce-Kenntnisse zu besitzen.
 
 HDInsight bietet verschiedene Clustertypen, die für bestimmte Workloads optimiert sind. Die folgenden Clustertypen werden am häufigsten für Hive-Abfragen verwendet:
 
@@ -137,7 +137,7 @@ Im vorherigen Beispiel führen die HiveQL-Anweisungen die folgenden Aktionen aus
 |CREATE EXTERNAL TABLE|Erstellt eine neue **externe** Tabelle in Hive. Externe Tabellen speichern nur die Tabellendefinition in Hive. Die Daten verbleiben an ihrem ursprünglichen Speicherort und behalten das Originalformat bei.|
 |ROW FORMAT|Teilt Hive mit, wie die Daten formatiert werden. In diesem Fall werden die Felder in den einzelnen Protokollen durch Leerzeichen getrennt.|
 |STORED AS TEXTFILE LOCATION|Teilt Hive den Speicherort der Daten (das Verzeichnis `example/data`) mit und dass die Speicherung als Text erfolgt. Die Daten können sich in einer Datei befinden oder auf mehrere Dateien im Verzeichnis verteilt sein.|
-|SELECT|Wählt die Anzahl aller Zeilen aus, bei denen die Spalte **t4**den Wert**[ERROR]** enthält. Mit dieser Anweisung wird der Wert **3** zurückgegeben, da dieser Wert in drei Zeilen enthalten ist.|
+|SELECT|Wählt die Anzahl aller Zeilen aus, bei denen die Spalte **t4** den Wert **[ERROR]** enthält. Mit dieser Anweisung wird der Wert **3** zurückgegeben, da dieser Wert in drei Zeilen enthalten ist.|
 |INPUT__FILE__NAME LIKE '%.log'|Hive versucht, das Schema auf alle Dateien im Verzeichnis anzuwenden. In diesem Fall enthält das Verzeichnis Dateien, die dem Schema nicht entsprechen. Um überflüssige Daten in den Ergebnissen zu vermeiden, weist diese Anweisung Hive an, nur Daten aus Dateien zurückzugeben, die auf „.log“ enden.|
 
 > [!NOTE]  
@@ -168,7 +168,7 @@ Diese Anweisungen führen die folgenden Aktionen aus:
 |---|---|
 |CREATE TABLE IF NOT EXISTS|Erstellt die Tabelle, wenn sie nicht vorhanden ist. Da das **EXTERNAL**-Schlüsselwort nicht verwendet wird, erstellt diese Anweisung eine interne Tabelle. Die Tabelle wird im Hive-Data Warehouse gespeichert und vollständig von Hive verwaltet.|
 |STORED AS ORC|Speichert die Daten im ORC-Format (Optimized Row Columnar). ORC ist ein stark optimiertes und effizientes Format zum Speichern von Hive-Daten.|
-|INSERT OVERWRITE ... SELECT|Wählt Zeilen in der Tabelle **log4jLogs**aus, die**[ERROR]**enthalten, und fügt die Daten in die Tabelle**errorLogs** ein.|
+|INSERT OVERWRITE ... SELECT|Wählt Zeilen in der Tabelle **log4jLogs** aus, die **[ERROR]** enthalten, und fügt die Daten in die Tabelle **errorLogs** ein.|
 
 > [!NOTE]  
 > Anders als bei externen Tabellen werden beim Löschen von internen Tabellen auch die zugrunde liegenden Daten gelöscht.
