@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8e07d3e1815c1b47b9d37c08e8fac5359b71fe7c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e50d6d0623e87dfa68a7cc9744c3f595ff0179c6
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189017"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396385"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ Führen Sie die Schritte unter [Erste Schritte mit benutzerdefinierten Richtlini
 
 [!INCLUDE [active-directory-b2c-html-how-to](../../includes/active-directory-b2c-html-how-to.md)]
 
-## <a name="4-modify-the-extensions-file"></a>4. Ändern der Erweiterungsdatei
+### <a name="4-modify-the-extensions-file"></a>4. Ändern der Erweiterungsdatei
 
 Um die Anpassung der Benutzeroberfläche zu konfigurieren, kopieren Sie die **ContentDefinition** und ihre untergeordneten Elemente in der Basisdatei, und fügen Sie sie in die Erweiterungsdatei ein.
 
@@ -60,9 +60,9 @@ Um die Anpassung der Benutzeroberfläche zu konfigurieren, kopieren Sie die **Co
 
 1. Speichern Sie die Erweiterungsdatei.
 
-## <a name="5-upload-and-test-your-updated-custom-policy"></a>5. Hochladen und Testen Ihrer aktualisierten benutzerdefinierten Richtlinie
+### <a name="5-upload-and-test-your-updated-custom-policy"></a>5. Hochladen und Testen Ihrer aktualisierten benutzerdefinierten Richtlinie
 
-### <a name="51-upload-the-custom-policy"></a>5.1 Hochladen der benutzerdefinierten Richtlinie
+#### <a name="51-upload-the-custom-policy"></a>5.1 Hochladen der benutzerdefinierten Richtlinie
 
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
 1. Suchen Sie nach **Azure AD B2C**, und wählen Sie diese Option aus.
@@ -70,7 +70,7 @@ Um die Anpassung der Benutzeroberfläche zu konfigurieren, kopieren Sie die **Co
 1. Wählen Sie **Benutzerdefinierte Richtlinie hochladen** aus.
 1. Laden Sie die zuvor geänderte Erweiterungsdatei hoch.
 
-### <a name="52-test-the-custom-policy-by-using-run-now"></a>5.2 Testen der benutzerdefinierten Richtlinie mit **Jetzt ausführen**
+#### <a name="52-test-the-custom-policy-by-using-run-now"></a>5.2 Testen der benutzerdefinierten Richtlinie mit **Jetzt ausführen**
 
 1. Wählen Sie die hochgeladene Richtlinie aus, und wählen Sie dann **Jetzt ausführen** aus.
 1. Sie sollten sich mit einer E-Mail-Adresse registrieren können.

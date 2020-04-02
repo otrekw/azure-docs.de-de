@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8ec60f694000985f51db25db621e5814df62cdb3
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 13a5fa6a030d876d92651ca587e37fdc6a3ec600
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126813"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79136141"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-using-a-custom-policy-in-azure-active-directory-b2c"></a>Deaktivieren der E-Mail-Überprüfung bei der Kundenregistrierung in Azure Active Directory B2C mit einer benutzerdefinierten Richtlinie
 
@@ -28,8 +28,11 @@ Führen Sie die Schritte unter [Erste Schritte mit benutzerdefinierten Richtlini
 
 ## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>Hinzufügen der Metadaten zum selbstbestätigten technischen Profil
 
-Das technische Profil **LocalAccountSignUpWithLogonEmail** ist ein [sebstbestätigtes Profil](self-asserted-technical-profile.md), das beim Registrierungsflow aufgerufen wird. Um die E-Mail-Überprüfung zu deaktivieren, stellen Sie die Metadaten `EnforceEmailVerification` auf „false“ ein. Überschreiben Sie die technischen Profile „LocalAccountSignUpWithLogonEmail“ in der Erweiterungsdatei. Suchen Sie das Element `ClaimsProviders`. Fügen Sie dem `ClaimsProviders`-Element die folgenden Anspruchsanbieter hinzu:
+Das technische Profil **LocalAccountSignUpWithLogonEmail** ist ein [sebstbestätigtes Profil](self-asserted-technical-profile.md), das beim Registrierungsflow aufgerufen wird. Um die E-Mail-Überprüfung zu deaktivieren, stellen Sie die Metadaten `EnforceEmailVerification` auf „false“ ein. Überschreiben Sie die technischen Profile „LocalAccountSignUpWithLogonEmail“ in der Erweiterungsdatei. 
 
+1. Öffnen Sie die Erweiterungsdatei Ihrer Richtlinie. Beispiel: <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>.
+1. Suchen Sie das Element `ClaimsProviders`. Wenn das Element nicht vorhanden ist, fügen Sie es hinzu.
+1. Fügen Sie dem `ClaimsProviders`-Element die folgenden Anspruchsanbieter hinzu:
 
 ```XML
 <ClaimsProvider>
