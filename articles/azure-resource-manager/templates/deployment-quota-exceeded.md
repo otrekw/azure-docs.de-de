@@ -3,12 +3,12 @@ title: Überschreitung des Bereitstellungskontingents
 description: Beschreibt die Behebung des Fehlers, dass im Verlauf der Ressourcengruppe mehr als 800 Bereitstellungen vorkommen.
 ms.topic: troubleshooting
 ms.date: 10/04/2019
-ms.openlocfilehash: 7f389827513562a3add67f022fec360081754b02
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 919cd9a3482401cd47516e2677b0bf58387488b0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474320"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80245088"
 ---
 # <a name="resolve-error-when-deployment-count-exceeds-800"></a>Beheben des Fehlers, dass die Anzahl der Bereitstellungen 800 überschreitet
 
@@ -22,28 +22,28 @@ Während einer Bereitstellung erhalten Sie einen Fehler, dass die aktuelle Berei
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Verwenden Sie den Befehl [az group deployment delete](/cli/azure/group/deployment#az-group-deployment-delete), um Bereitstellungen aus dem Verlauf zu löschen.
+Verwenden Sie den Befehl [az deployment group delete](/cli/azure/group/deployment), um Bereitstellungen aus dem Verlauf zu löschen.
 
 ```azurecli-interactive
-az group deployment delete --resource-group exampleGroup --name deploymentName
+az deployment group delete --resource-group exampleGroup --name deploymentName
 ```
 
 Verwenden Sie Folgendes, um alle Bereitstellungen zu löschen, die älter als fünf Tage sind:
 
 ```azurecli-interactive
 startdate=$(date +%F -d "-5days")
-deployments=$(az group deployment list --resource-group exampleGroup --query "[?properties.timestamp<'$startdate'].name" --output tsv)
+deployments=$(az deployment group list --resource-group exampleGroup --query "[?properties.timestamp<'$startdate'].name" --output tsv)
 
 for deployment in $deployments
 do
-  az group deployment delete --resource-group exampleGroup --name $deployment
+  az deployment group delete --resource-group exampleGroup --name $deployment
 done
 ```
 
 Sie können die aktuelle Anzahl im Bereitstellungsverlauf mit dem folgenden Befehl abrufen:
 
 ```azurecli-interactive
-az group deployment list --resource-group exampleGroup --query "length(@)"
+az deployment group list --resource-group exampleGroup --query "length(@)"
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell

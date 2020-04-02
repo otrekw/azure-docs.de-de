@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/30/2017
 ms.author: yegu
 ms.openlocfilehash: 9596b8cb771f114cb09c5d6c6ae33b4fc4a8cada
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74122688"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Migrieren von Managed Cache Service zu Azure Cache for Redis
@@ -58,7 +58,7 @@ Für Microsoft Azure Cache for Redis sind die folgenden Tarife verfügbar:
 
 Diese Ausführungen unterscheiden sich hinsichtlich der Features und des Preises. Die Features werden weiter unten in diesem Leitfaden behandelt, weitere Informationen zu den Preisen finden Sie unter [Cache – Preisdetails](https://azure.microsoft.com/pricing/details/cache/).
 
-Als Ausgangspunkt für die Migration wählen Sie zunächst die Größe aus, die der Größe des bisherigen Managed Cache Service-Caches entspricht. Skalieren Sie die Größe dann je nach Anforderungen der Anwendung. Weitere Informationen bei der Auswahl des richtigen Azure Cache for Redis-Angebots finden Sie unter [Welches Azure Cache for Redis-Angebot und welche Azure Cache for Redis-Größe sollte ich verwenden?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use).
+Als Ausgangspunkt für die Migration wählen Sie zunächst die Größe aus, die der Größe des bisherigen Managed Cache Service-Caches entspricht. Skalieren Sie die Größe dann je nach Anforderungen der Anwendung hoch. Weitere Informationen bei der Auswahl des richtigen Azure Cache for Redis-Angebots finden Sie unter [Welches Azure Cache for Redis-Angebot und welche Azure Cache for Redis-Größe sollte ich verwenden?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use).
 
 ## <a name="create-a-cache"></a>Erstellen eines Caches
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -72,7 +72,7 @@ Nachdem der Cache erstellt und konfiguriert wurde, besteht der nächste Schritt 
 ### <a name="remove-the-managed-cache-service-configuration"></a>Entfernen der Managed Cache Service-Konfiguration
 Bevor die Clientanwendungen für Azure Cache for Redis konfiguriert werden können, müssen die vorhandene Managed Cache Service-Konfiguration und die Assemblyverweise entfernt werden. Deinstallieren Sie hierzu das Managed Cache Service-NuGet-Paket.
 
-Klicken Sie zum Deinstallieren des Managed Cache Service-NuGet-Pakets im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Wählen Sie den Knoten **Installierte Pakete** aus, und geben Sie im Suchfeld für installierte Pakete **WindowsAzure.Caching** ein. Wählen Sie **Windows** **Azure Cache** (oder **Windows** **Azure Caching**, je nach Version des NuGet-Pakets) aus, klicken Sie auf **Deinstallieren** und dann auf **Schließen**.
+Klicken Sie zum Deinstallieren des Managed Cache Service-NuGet-Pakets im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Wählen Sie den Knoten **Installierte Pakete** aus, und geben Sie im Suchfeld für installierte Pakete **WindowsAzure.Caching** ein. Wählen Sie **Windows** **Azure-Cache** (oder **Windows** **Azure Caching** abhängig von der Version des NuGet-Pakets) aus, klicken Sie auf **Deinstallieren**, und klicken Sie dann auf **Schließen**.
 
 ![Deinstallieren des Azure Managed Cache Service NuGet-Pakets](./media/cache-migrate-to-redis/IC757666.jpg)
 

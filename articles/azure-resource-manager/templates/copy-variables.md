@@ -3,16 +3,16 @@ title: Definieren mehrerer Instanzen einer Variablen
 description: Verwenden des copy-Vorgangs in einer Azure Resource Manager-Vorlage, um sie beim Erstellen einer Variablen mehrere Male zu durchlaufen.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: ea4caf3553b3cd14eec194b8cef0db59499a4f4c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: ed0c2d87c48a18b0a065f6c76e1e69142a9df048
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622886"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153300"
 ---
-# <a name="variable-iteration-in-azure-resource-manager-templates"></a>Variableniteration in Azure Resource Manager-Vorlagen
+# <a name="variable-iteration-in-arm-templates"></a>Variableniteration in ARM-Vorlagen
 
-In diesem Artikel wird gezeigt, wie Sie mehr als einen Wert für eine Variable in Ihrer Azure Resource Manager-Vorlage erstellen können. Durch das Hinzufügen des **copy**-Elements zum Variablenabschnitt Ihrer Vorlage können Sie die Anzahl der Elemente für eine Variable während der Bereitstellung dynamisch festlegen. Außerdem vermeiden Sie so die Wiederholung von Vorlagensyntax.
+In diesem Artikel wird gezeigt, wie Sie mehr als einen Wert für eine Variable in Ihrer Azure Resource Manager-Vorlage (ARM) erstellen können. Durch das Hinzufügen des **copy**-Elements zum Variablenabschnitt Ihrer Vorlage können Sie die Anzahl der Elemente für eine Variable während der Bereitstellung dynamisch festlegen. Außerdem vermeiden Sie so die Wiederholung von Vorlagensyntax.
 
 Sie können „copy“ auch mit [Ressourcen](copy-resources.md), [Eigenschaften in einer Ressource](copy-properties.md) und [Ausgaben](copy-outputs.md) verwenden.
 
@@ -312,11 +312,11 @@ Die folgenden Beispiele zeigen allgemeine Szenarien für das Erstellen mehrerer 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ein Tutorial, das Sie durcharbeiten können, finden Sie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen](template-tutorial-create-multiple-instances.md).
+* Ein Tutorial, das Sie durcharbeiten können, finden Sie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen (ARM)](template-tutorial-create-multiple-instances.md).
 * Informationen zu anderen Verwendungsmöglichkeiten des „copy“-Elements finden Sie unter:
-  * [Ressourceniteration in Azure Resource Manager-Vorlagen](copy-resources.md)
-  * [Eigenschafteniteration in Azure Resource Manager-Vorlagen](copy-properties.md)
-  * [Ausgabeniteration in Azure Resource Manager-Vorlagen](copy-outputs.md)
-* Informationen zu den Abschnitten einer Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](template-syntax.md).
-* Informationen zum Bereitstellen Ihrer Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](deploy-powershell.md).
+  * [Ressourceniteration in ARM-Vorlagen](copy-resources.md)
+  * [Eigenschafteniteration in ARM-Vorlagen](copy-properties.md)
+  * [Ausgabeiteration in ARM-Vorlagen](copy-outputs.md)
+* Informationen zu den Abschnitten einer Vorlage finden Sie unter [Erstellen von ARM-Vorlagen](template-syntax.md).
+* Informationen zum Bereitstellen Ihrer Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer ARM-Vorlage](deploy-powershell.md).
 

@@ -3,16 +3,16 @@ title: Vorlagenfunktionen – logisch
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Bestimmen von logischen Werten verwendet werden können.
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: aef520a26124a85f414c4f4aa1a3e307d383c29b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: f058baa32e5f93a4177913287a5e9873fa7a9acb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357359"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156309"
 ---
-# <a name="logical-functions-for-azure-resource-manager-templates"></a>Logische Funktionen für Azure Resource Manager-Vorlagen
+# <a name="logical-functions-for-arm-templates"></a>Logikfunktionen für ARM-Vorlagen
 
-Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in Vorlagen bereit.
+Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in Ihren Azure Resource Manager-Vorlagen (ARM) bereit.
 
 * [and](#and)
 * [bool](#bool)
@@ -66,7 +66,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| Name | type | value |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -119,7 +119,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | value |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | trueString | Bool | True |
 | falseString | Bool | False |
@@ -134,7 +134,7 @@ Gibt einen Wert abhängig davon zurück, ob eine Bedingung zutrifft oder nicht.
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | condition |Ja |boolean |Der Wert, für den überprüft wird, ob er zutrifft oder nicht. |
 | trueValue |Ja | Zeichenfolge, Integer, Objekt oder Array |Der zurückzugebende Wert, wenn die Bedingung zutrifft. |
@@ -177,7 +177,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| Name | type | value |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | yesOutput | String | ja |
 | noOutput | String | nein |
@@ -275,7 +275,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| Name | type | value |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |
@@ -299,7 +299,7 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| Name | type | value |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
@@ -311,7 +311,7 @@ Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |boolean |Der erste Wert, für den überprüft wird, ob er zutrifft. |
 | arg2 |Ja |boolean |Der zweite Wert, für den überprüft wird, ob er zutrifft. |
@@ -349,7 +349,7 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 
 Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 
-| Name | type | value |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
 | orExampleOutput | Bool | True |

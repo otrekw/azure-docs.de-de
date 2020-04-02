@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: a3583a5efd120733ce7f6b71a7594b5636593f99
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: f54381ddcd11a2e4a24d30d812468da85b5403de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796000"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335821"
 ---
 # <a name="annotations-for-application-gateway-ingress-controller"></a>Anmerkungen für den Azure Application Gateway-Eingangscontroller 
 
@@ -22,12 +22,12 @@ Die Kubernetes-Eingangsressource kann mit beliebigen Schlüssel-Wert-Paaren komm
 
 ## <a name="list-of-supported-annotations"></a>Liste unterstützter Anmerkungen
 
-Damit eine Eingangsressource von AGIC beobachtet wird, muss Sie mit `kubernetes.io/ingress.class: azure/application-gateway` **kommentiert** werden. Nur dann arbeitet AGIC mit der fraglichen Eingangsressource zusammen.
+Damit eine Eingangsressource von AGIC beobachtet wird, muss Sie mit `kubernetes.io/ingress.class: azure/application-gateway`**kommentiert** werden. Nur dann arbeitet AGIC mit der fraglichen Eingangsressource zusammen.
 
 | Anmerkungsschlüssel | Werttyp | Standardwert | Zulässige Werte
 | -- | -- | -- | -- |
 | [appgw.ingress.kubernetes.io/backend-path-prefix](#backend-path-prefix) | `string` | `nil` | |
-| [appgw.ingress.kubernetes.io/ssl-redirect](#ssl-redirect) | `bool` | `false` | |
+| [appgw.ingress.kubernetes.io/ssl-redirect](#tls-redirect) | `bool` | `false` | |
 | [appgw.ingress.kubernetes.io/connection-draining](#connection-draining) | `bool` | `false` | |
 | [appgw.ingress.kubernetes.io/connection-draining-timeout](#connection-draining) | `int32` (Sekunden) | `30` | |
 | [appgw.ingress.kubernetes.io/cookie-based-affinity](#cookie-based-affinity) | `bool` | `false` | |
@@ -70,7 +70,7 @@ Im Beispiel oben haben wir eine Eingangsressource namens `go-server-ingress-bkpr
 > [!NOTE] 
 > Im Beispiel oben haben wir nur eine Regel definiert. Die Anmerkungen gelten jedoch für die gesamte Eingangsressource. Wenn ein Benutzer also mehrere Regeln definiert hat, wird das Präfix für den Back-End-Pfad für jeden angegebenen Pfad eingerichtet. Wenn ein Benutzer unterschiedliche Regeln mit unterschiedlichen Pfadpräfixen (sogar für denselben Dienst) benötigt, müssten daher andere Eingangsressourcen definiert werden.
 
-## <a name="ssl-redirect"></a>SSL-Umleitung
+## <a name="tls-redirect"></a>TLS-Umleitung
 
 Application Gateway [kann so konfiguriert werden](https://docs.microsoft.com/azure/application-gateway/application-gateway-redirect-overview), dass HTTP-URLs automatisch an Ihre HTTPS-Entsprechungen umgeleitet werden. Wenn diese Anmerkung vorhanden und TLS ordnungsgemäß konfiguriert ist, erstellt der Kubernetes-Eingangscontroller eine [Routingregel mit einer Umleitungskonfiguration](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal#add-a-routing-rule-with-a-redirection-configuration) und wendet die Änderungen auf Ihr Application Gateway an. Die erstellte Umleitung lautet HTTP `301 Moved Permanently`.
 

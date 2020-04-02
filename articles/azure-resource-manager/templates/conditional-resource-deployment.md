@@ -3,16 +3,16 @@ title: Bedingte Bereitstellung mit Vorlagen
 description: Beschreibt, wie eine Ressource in einer Azure Resource Manager-Vorlage bedingt bereitgestellt werden kann.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: 83aa22ba57e0111d060665778922437723481c69
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: f170710118c0e3de6f3643b6216ed55b83b5c7df
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207790"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153419"
 ---
-# <a name="conditional-deployment-in-resource-manager-templates"></a>Bedingte Bereitstellung in Resource Manager-Vorlagen
+# <a name="conditional-deployment-in-arm-templates"></a>Bedingte Bereitstellung in ARM-Vorlagen
 
-Manchmal müssen Sie eine Ressource optional in einer Vorlage bereitstellen. Verwenden Sie das `condition`-Element, um anzugeben, ob die Ressource bereitgestellt wird. Der Wert für dieses Element wird mit „true“ oder „false“ aufgelöst. Wenn der Wert TRUE ist, wird die Ressource erstellt. Wenn der Wert FALSE ist, wird die Ressource nicht erstellt. Der Wert kann nur auf die gesamte Ressource angewandt werden.
+Manchmal müssen Sie eine Ressource optional in einer Azure Resource Manager-Vorlage (ARM) bereitstellen. Verwenden Sie das `condition`-Element, um anzugeben, ob die Ressource bereitgestellt wird. Der Wert für dieses Element wird mit „true“ oder „false“ aufgelöst. Wenn der Wert TRUE ist, wird die Ressource erstellt. Wenn der Wert FALSE ist, wird die Ressource nicht erstellt. Der Wert kann nur auf die gesamte Ressource angewandt werden.
 
 ## <a name="new-or-existing-resource"></a>Neue oder vorhandene Ressource
 
@@ -87,5 +87,5 @@ Wenn Sie eine Vorlage mit [vollständigem Modus](deployment-modes.md) bereitstel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Empfehlungen zum Erstellen von Vorlagen finden Sie unter [Azure Resource Manager template best practices (Bewährte Methoden für das Erstellen von Azure Resource Manager-Vorlagen)](template-best-practices.md).
-* Informationen, wie mehrere Instanzen einer Ressource erstellt werden, finden Sie unter [Iteration von Ressourcen in Azure Resource Manager-Vorlagen](copy-resources.md).
+* Empfehlungen zum Erstellen von Vorlagen finden Sie unter [Bewährte Methoden für ARM-Vorlagen](template-best-practices.md).
+* Informationen, wie mehrere Instanzen einer Ressource erstellt werden, finden Sie unter [Ressourceniteration in ARM-Vorlagen](copy-resources.md).

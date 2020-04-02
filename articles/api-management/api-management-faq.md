@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 21b46ba0012b71ed0e09dc09d041ceb020824843
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c32fdc67c74e100e0e31dad3afde128c05c356d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75967459"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335973"
 ---
 # <a name="azure-api-management-faqs"></a>Häufig gestellte Fragen zu Azure API Management
 Hier erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und bewährten Methoden für Azure API Management.
@@ -40,7 +40,7 @@ Hier erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu 
 * [Kann ich einen OAuth 2.0-Autorisierungsserver mit AD FS-Sicherheit konfigurieren?](#can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security)
 * [Welche Routingmethode verwendet API Management in Bereitstellungen an mehreren geografischen Standorten?](#what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations)
 * [Kann ich eine Azure Resource Manager-Vorlage zum Erstellen einer API Management-Dienstinstanz verwenden?](#can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance)
-* [Kann ich ein selbstsigniertes SSL-Zertifikat für ein Back-End verwenden?](#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)
+* [Kann ich ein selbstsigniertes TLS/SSL-Zertifikat für ein Back-End verwenden?](#can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end)
 * [Warum erhalte ich einen Authentifizierungsfehler, wenn ich versuche, ein Git-Repository zu klonen?](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
 * [Kann API Management mit Azure ExpressRoute verwendet werden?](#does-api-management-work-with-azure-expressroute)
 * [Warum benötigen wir in Resource Manager-VNETs ein dediziertes Subnetz, wenn API Management in ihnen bereitgestellt wird?](#why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them)
@@ -62,7 +62,7 @@ Wenn sich ein Feature in der Vorschauphase befindet, bedeutet das, dass wir sehr
 Sie haben verschiedene Optionen, die Verbindung zwischen dem API Management-Gateway und Ihren Back-End-Diensten zu sichern. Ihre Möglichkeiten:
 
 * Verwenden Sie die HTTP-Standardauthentifizierung. Weitere Informationen finden Sie unter [Import and publish your first API](import-and-publish.md) (Importieren und Veröffentlichen Ihrer ersten API).
-* Verwenden Sie die gegenseitige SSL-Authentifizierung wie unter [Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management](api-management-howto-mutual-certificates.md) beschrieben.
+* Verwenden Sie die gegenseitige TLS-Authentifizierung wie unter [Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management](api-management-howto-mutual-certificates.md) beschrieben.
 * Verwenden Sie IP-Whitelists für Ihren Back-End-Dienst. In allen Tarifen von API Management mit Ausnahme von „Verbrauch“ bleibt die IP-Adresse des Gateways konstant, aber es gelten einige Einschränkungen, die in dem [IP-Dokumentationsartikel](api-management-howto-ip-addresses.md) beschrieben sind.
 * Verbinden Sie Ihre API Management-Instanz mit einer Azure Virtual Network-Instanz.
 
@@ -115,7 +115,7 @@ API Management verwendet die [Routingmethode für Leistungsdatenverkehr](../traf
 ### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>Kann ich eine Azure Resource Manager-Vorlage zum Erstellen einer API Management-Dienstinstanz verwenden?
 Ja. Weitere Informationen finden Sie in den Schnellstartvorlagen für den [Azure API Management-Dienst](https://aka.ms/apimtemplate).
 
-### <a name="can-i-use-a-self-signed-ssl-certificate-for-a-back-end"></a>Kann ich ein selbstsigniertes SSL-Zertifikat für ein Back-End verwenden?
+### <a name="can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end"></a>Kann ich ein selbstsigniertes TLS/SSL-Zertifikat für ein Back-End verwenden?
 Ja. Sie können dafür PowerShell verwenden oder das Zertifikat direkt an die API übermitteln. Dadurch wird die Überprüfung der Zertifikatkette deaktiviert, und Sie können selbstsignierte oder privat signierte Zertifikate für die Kommunikation zwischen API Management und den Back-End-Diensten verwenden.
 
 #### <a name="powershell-method"></a>PowerShell-Methode ####

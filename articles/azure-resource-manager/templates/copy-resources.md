@@ -3,16 +3,16 @@ title: Bereitstellen mehrerer Instanzen von Ressourcen
 description: Verwenden des copy-Vorgangs und von Arrays in einer Azure Resource Manager-Vorlage, um einen Ressourcentyp mehrere Male bereitzustellen.
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: e90673504ceaccdc25a477e856defa77eed37d86
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: e65ab93c21daffa0053e53d953fe95fa9f28e2a3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620220"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153317"
 ---
-# <a name="resource-iteration-in-azure-resource-manager-templates"></a>Ressourceniteration in Azure Resource Manager-Vorlagen
+# <a name="resource-iteration-in-arm-templates"></a>Ressourceniteration in ARM-Vorlagen
 
-In diesem Artikel erfahren Sie, wie mehr als eine Instanz einer Ressource in Ihrer Azure Resource Manager-Vorlage erstellen. Durch das Hinzufügen des **copy**-Elements zum Ressourcenabschnitt Ihrer Vorlage können Sie die Anzahl der bereitzustellenden Ressourcen dynamisch festlegen. Außerdem vermeiden Sie so die Wiederholung von Vorlagensyntax.
+In diesem Artikel erfahren Sie, wie mehr als eine Instanz einer Ressource in Ihrer Azure Resource Manager-Vorlage (ARM) erstellen. Durch das Hinzufügen des **copy**-Elements zum Ressourcenabschnitt Ihrer Vorlage können Sie die Anzahl der bereitzustellenden Ressourcen dynamisch festlegen. Außerdem vermeiden Sie so die Wiederholung von Vorlagensyntax.
 
 „copy“ kann auch mit [Eigenschaften](copy-properties.md), [Variablen](copy-variables.md) und [Ausgaben](copy-outputs.md) verwendet werden.
 
@@ -270,7 +270,7 @@ Wenden Sie die [Bereitstellung im vollständigen Modus](deployment-modes.md) mit
 
 Die folgenden Beispiele zeigen allgemeine Szenarien für das Erstellen mehrerer Ressourcen oder Eigenschaften.
 
-|Vorlage  |Beschreibung  |
+|Vorlage  |BESCHREIBUNG  |
 |---------|---------|
 |[Speicher kopieren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |Stellt mehrere Speicherkonten mit einer Indexnummer im Namen bereit. |
 |[Speicher seriell kopieren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Stellt mehrere Speicherkonten nacheinander bereit. Der Name enthält die Indexnummer. |
@@ -280,12 +280,12 @@ Die folgenden Beispiele zeigen allgemeine Szenarien für das Erstellen mehrerer 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ein Tutorial, das Sie durcharbeiten können, finden Sie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen](template-tutorial-create-multiple-instances.md).
+* Ein Tutorial, das Sie durcharbeiten können, finden Sie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen (ARM)](template-tutorial-create-multiple-instances.md).
 * Informationen zu anderen Verwendungsmöglichkeiten des „copy“-Elements finden Sie unter:
-  * [Eigenschafteniteration in Azure Resource Manager-Vorlagen](copy-properties.md)
-  * [Variableniteration in Azure Resource Manager-Vorlagen](copy-variables.md)
-  * [Ausgabeniteration in Azure Resource Manager-Vorlagen](copy-outputs.md)
+  * [Eigenschafteniteration in ARM-Vorlagen](copy-properties.md)
+  * [Variableniteration in ARM-Vorlagen](copy-variables.md)
+  * [Ausgabeiteration in ARM-Vorlagen](copy-outputs.md)
 * Informationen zur Verwendung des „copy“-Elementes mit geschachtelten Vorlagen finden Sie unter [Verwenden des „copy“-Elements](linked-templates.md#using-copy).
-* Informationen zu den Abschnitten einer Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](template-syntax.md).
-* Informationen zum Bereitstellen Ihrer Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](deploy-powershell.md).
+* Informationen zu den Abschnitten einer Vorlage finden Sie unter [Erstellen von ARM-Vorlagen](template-syntax.md).
+* Informationen zum Bereitstellen Ihrer Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer ARM-Vorlage](deploy-powershell.md).
 

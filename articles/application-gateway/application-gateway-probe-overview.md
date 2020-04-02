@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: victorh
-ms.openlocfilehash: a4427c05d16a42879d37fdbd2e8b8be9095fcc9b
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: c5a53167c6a4ca6c886b858a1608eaa173185bd8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77505893"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335860"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Systemüberwachung des Application Gateways – Übersicht
 
@@ -59,12 +59,12 @@ Nachdem Sie die Abgleichskriterien angegeben haben, können sie der Testkonfigur
 
 ### <a name="default-health-probe-settings"></a>Einstellungen für die standardmäßige Integritätsüberprüfung
 
-| Überprüfungseigenschaft | value | BESCHREIBUNG |
+| Überprüfungseigenschaft | Wert | BESCHREIBUNG |
 | --- | --- | --- |
 | Überprüfungs-URL |http://127.0.0.1:\<port\>/ |URL-Pfad |
 | Intervall |30 |Wartezeitraum in Sekunden, bevor der nächste Integritätstest gesendet wird.|
 | Zeitüberschreitung |30 |Gibt in Sekunden an, wie lange das Anwendungsgateway auf eine Testantwort wartet, bevor der Test als fehlerhaft gekennzeichnet wird. Wenn ein Test als fehlerfrei zurückgegeben wird, wird das entsprechende Back-End sofort als fehlerfrei gekennzeichnet.|
-| Fehlerhafter Schwellenwert |3 |Steuert, wie viele Tests gesendet werden sollen, falls beim regulären Integritätstest ein Fehler auftritt. Diese zusätzlichen Integritätstests werden in kurzen Abständen gesendet, um die Back-End-Integrität schnell zu ermitteln und nicht auf das Testintervall zu warten. Der Back-End-Server wird als außer Betrieb markiert, nachdem die Anzahl der aufeinanderfolgenden fehlgeschlagenen Überprüfungen den fehlerhaften Schwellenwert erreicht. |
+| Fehlerhafter Schwellenwert |3 |Steuert, wie viele Tests gesendet werden sollen, falls beim regulären Integritätstest ein Fehler auftritt. Diese zusätzlichen Integritätstests werden in kurzen Abständen gesendet, um die Back-End-Integrität schnell zu ermitteln und nicht auf das Testintervall zu warten. Dieses Verhalten weist nur die v1-SKU auf. Bei der v2-SKU warten die Integritätstests auf das Intervall. Der Back-End-Server wird als außer Betrieb markiert, nachdem die Anzahl der aufeinanderfolgenden fehlgeschlagenen Überprüfungen den fehlerhaften Schwellenwert erreicht. |
 
 > [!NOTE]
 > Dieser Port stimmt mit dem Port in den HTTP-Einstellungen des Back-Ends überein.

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/16/2019
 ms.author: absha
-ms.openlocfilehash: d9d7ae3bc321f1f000fac1a875589df352077f33
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 84a7bdfb9f8f7c741140cbe2086149dff90db211
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129812"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132985"
 ---
 # <a name="how-an-application-gateway-works"></a>Funktionsweise von Anwendungsgateways
 
@@ -46,7 +46,7 @@ Nachdem das Anwendungsgateway einen Back-End-Pool ausgewählt hat, sendet es die
 
 Nachdem das Anwendungsgateway einen Back-End-Server festgelegt hat, öffnet es eine neue TCP-Sitzung mit dem Back-End-Server anhand der HTTP-Einstellungen. Die HTTP-Einstellungen geben das Protokoll, den Port und andere routingbezogene Einstellungen an, die zum Herstellen einer neuen Sitzung mit dem Back-End-Server erforderlich sind.
 
-Die Angaben für Port und Protokoll in den HTTP-Einstellungen legen fest, ob der Datenverkehr zwischen dem Anwendungsgateway und den Back-End-Servern verschlüsselt wird (sodass End-to-End-SSL erzielt wird) oder unverschlüsselt bleibt.
+Die Angaben für Port und Protokoll in den HTTP-Einstellungen legen fest, ob der Datenverkehr zwischen dem Anwendungsgateway und den Back-End-Servern verschlüsselt wird (sodass End-to-End-TLS erzielt wird) oder unverschlüsselt bleibt.
 
 Wenn ein Anwendungsgateway die ursprüngliche Anforderung an den Back-End-Server sendet, berücksichtigt es etwaige benutzerdefinierte Konfigurationen in den HTTP-Einstellungen, durch die Hostname, Pfad oder Protokoll überschrieben werden. Durch diese Aktion werden die cookiebasierte Sitzungsaffinität, der Verbindungsausgleich, die Auswahl des Hostnamens über das Back-End usw. beibehalten.
 

@@ -7,17 +7,17 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 2bca4521184fa42002e6649a90bb9101fded595c
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: d84340730391abd7dba4d13202503d37941c09b5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658439"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79500436"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Überwachen von Apps in Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) bietet integrierte Überwachungsfunktionen für Web-Apps, mobile und API-Apps im [Azure-Portal](https://portal.azure.com).
 
-Im Azure-Portal können Sie *Kontingente* und *Metriken* für eine App sowie den App Service-Plan einsehen und *Warnungen* und die *automatische Skalierung* einrichten, die auf den Metriken basieren.
+Im Azure-Portal können Sie *Kontingente* und *Metriken* für eine App sowie den App Service-Plan einsehen und Regeln für *Warnungen* und die *automatische Skalierung* auf Grundlage von Metriken einrichten.
 
 ## <a name="understand-quotas"></a>Grundlegende Informationen zu Kontingenten
 
@@ -61,13 +61,17 @@ Sie können Kontingente erhöhen oder aus Ihrer App entfernen, indem Sie ein Upg
 > **Dateisystemnutzung** ist eine neue Metrik, die global eingeführt wird. Es werden keine Daten erwartet, es sei denn, Sie wurden für die private Vorschau in die Whitelist aufgenommen.
 > 
 
+> [!IMPORTANT]
+> **Durchschnittliche Antwortzeit** wird eingestellt, um Verwechslungen mit Metrikaggregationen zu vermeiden. Verwenden Sie als Ersatz **Antwortzeit**.
+
 Metriken liefern Informationen zur App oder zum Verhalten des App Service-Plans.
 
 Für eine App sind folgende Metriken verfügbar:
 
 | Metrik | BESCHREIBUNG |
 | --- | --- |
-| **Durchschnittliche Antwortzeit** | Die durchschnittliche Zeit in Sekunden, die die App zum Bereitstellen von Anforderungen benötigt. |
+| **Antwortzeit** | Die Zeit in Sekunden, die die App zum Bedienen von Anforderungen benötigt. |
+| **Durchschnittliche Antwortzeit (veraltet)** | Die durchschnittliche Zeit in Sekunden, die die App zum Bereitstellen von Anforderungen benötigt. |
 | **Durchschnittlicher Arbeitssatz für Arbeitsspeicher** | Die durchschnittliche Menge an Arbeitsspeicher, die von der App verwendet wird, in Megabytes (MiB). |
 | **Verbindungen** | Die Anzahl gebundener Sockets in der Sandbox („w3wp.exe“ und untergeordnete Prozesse).  Ein gebundener Socket wird durch Aufrufen von bind()-/connect()-APIs erstellt und bleibt erhalten, bis er per „CloseHandle()“/“closesocket()“ geschlossen wird. |
 | **CPU-Zeit** | Die CPU-Menge in Sekunden, die von der App verbraucht wird. Weitere Informationen zu dieser Metrik finden Sie unter [CPU-Zeit und CPU-Prozentsatz](#cpu-time-vs-cpu-percentage). |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: 8f748764d0f61e4932b2d4710f5a6805a5eddf0e
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: f9758678708338a284a35b45f7f9dd43b9a9017c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77047473"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335959"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
 
@@ -139,7 +139,7 @@ Legen Sie vor dem Aufrufen der in den folgenden Abschnitten beschriebenen Vorgä
 request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 ```
 
-### <a name="step1"> </a>Sichern eines API Management-Diensts
+### <a name="back-up-an-api-management-service"></a><a name="step1"> </a>Sichern eines API Management-Diensts
 
 Zum Sichern eines API Management-Diensts führen Sie die folgende HTTP-Anforderung aus:
 
@@ -175,7 +175,7 @@ Beachten Sie bei Sicherungs- oder Wiederherstellungsanforderungen die folgenden 
 -   Vermeiden Sie während der Sicherung **Verwaltungsänderungen im Dienst** wie beispielsweise SKU-Upgrades oder Herabstufungen, Änderungen am Domänennamen usw.
 -   Die Wiederherstellung einer Sicherung nach ihrer Erstellung **wird nur 30 Tage lange garantiert**.
 -   **Nutzungsdaten** zum Erstellen von Analyseberichten sind in der Sicherung **nicht enthalten**. Verwenden Sie [Azure API Management REST API][azure api management rest api] , um regelmäßig Analyseberichte zur Aufbewahrung abzurufen.
--   Darüber hinaus sind die folgenden Elemente nicht Bestandteil der Sicherungsdaten: benutzerdefinierte SSL-Zertifikate für Domänen und alle vom Kunden hochgeladenen Zwischen- oder Stammzertifikate, Inhalte des Entwicklerportals und Integrationseinstellungen für virtuelle Netzwerke.
+-   Darüber hinaus sind die folgenden Elemente nicht Bestandteil der Sicherungsdaten: TLS/SSL-Zertifikate für benutzerdefinierte Domänen und alle vom Kunden hochgeladenen Zwischen- oder Stammzertifikate, Inhalte des Entwicklerportals und Integrationseinstellungen für virtuelle Netzwerke.
 -   Die Häufigkeit, mit der Sie Dienstsicherungen durchführen, wirkt sich auf das Ziel Ihres Wiederherstellungspunkts aus. Um die Auswirkungen zu minimieren, empfehlen wir, regelmäßige Sicherungen zu implementieren und bei Bedarf Sicherungen durchzuführen, wenn Sie Änderungen an Ihrem API Management-Dienst vorgenommen haben.
 -   **Änderungen** an der Dienstkonfiguration (z.B. APIs, Richtlinien, Erscheinungsbild des Entwicklerportals), die während des Sicherungsvorgangs vorgenommen werden, sind ggf. **nicht in der Sicherung enthalten und gehen verloren**.
 -   Sie müssen den Zugriff von der Steuerungsebene auf ein Azure Storage-Konto **zulassen**, wenn die [Firewall][azure-storage-ip-firewall] für das Konto aktiviert ist. Kunden sollte die [Azure API Management-IP-Adressen der Steuerungsebene][control-plane-ip-address] in ihren Speicherkonten für Sicherungen oder Wiederherstellungen öffnen. 
@@ -183,7 +183,7 @@ Beachten Sie bei Sicherungs- oder Wiederherstellungsanforderungen die folgenden 
 > [!NOTE]
 > Beim Versuch, eine Sicherung/Wiederherstellung über einen API Management-Dienst unter Verwendung eines Speicherkontos mit aktivierter [Firewall][azure-storage-ip-firewall] in derselben Azure-Region durchzuführen, wird dieser Vorgang nicht durchgeführt. Der Grund dafür ist, dass für Anforderungen an Azure Storage keine Übersetzung in eine öffentliche IP-Adresse über „Compute“ > (Azure API Management-Steuerungsebene) erfolgt. Bei regionsübergreifenden Speicheranforderungen wird eine Übersetzung in die Quellnetzwerkadresse durchgeführt.
 
-### <a name="step2"> </a>Wiederherstellen eines API Management-Diensts
+### <a name="restore-an-api-management-service"></a><a name="step2"> </a>Wiederherstellen eines API Management-Diensts
 
 Zum Wiederherstellen eines API Management-Diensts aus einer zuvor erstellten Sicherung führen Sie die folgende HTTP-Anforderung aus:
 

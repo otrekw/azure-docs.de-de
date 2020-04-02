@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/06/2020
+ms.date: 03/16/2020
 ms.author: memildin
-ms.openlocfilehash: 183b81134b2fe72a539cc6460a05d828342aafbb
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: 152168bbadd5815659bc5f70c91bd2a28f5e049d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79086494"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481958"
 ---
 # <a name="monitor-identity-and-access"></a>Überwachen der Identität und des Zugriffs
 
@@ -29,14 +29,16 @@ Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlu
 
 Der Fokus bei der Entwicklung des Sicherheitsbereichs wurde von der Netzwerkorientierung auf die Identitätsorientierung verlagert. Bei der Sicherheit geht es immer weniger um die Verteidigung Ihres Netzwerks und immer mehr um die Verteidigung Ihrer Daten sowie um die Verwaltung der Sicherheit Ihrer Apps und Benutzer. Da heutzutage jedoch immer mehr Daten und Apps in die Cloud verlagert werden, ist die Identität zur neuen Grenze geworden.
 
-Durch die Überwachung von Identitätsaktivitäten können Sie proaktive Maßnahmen ergreifen, bevor es zu einem Vorfall kommt, oder einen Angriffsversuch abwehren. Beispiele für Empfehlungen, die möglicherweise im Abschnitt zur Ressourcensicherheit von **Identität und Zugriff** von Azure Security Center angezeigt werden, sind:
+Durch die Überwachung von Identitätsaktivitäten können Sie proaktive Maßnahmen ergreifen, bevor es zu einem Vorfall kommt, oder einen Angriffsversuch abwehren. Beispielsweise kann Security Center als veraltet markierte Konten (Konten, die nicht mehr benötigt werden und für die Anmeldung durch Azure Active Directory blockiert sind) zum Entfernen markieren. 
+
+Beispiele für Empfehlungen, die möglicherweise im Abschnitt zur Ressourcensicherheit von **Identität und Zugriff** von Azure Security Center angezeigt werden, sind:
 
 - MFA sollte für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktiviert sein.
 - Maximal 3 Besitzer sollten für Ihr Abonnement festgelegt sein.
-- Veraltete Konten sollten aus Ihrem Abonnement entfernt werden.
 - Externe Konten mit Leseberechtigungen sollten aus Ihrem Abonnement entfernt werden
+- Veraltete Konten sollten aus Ihrem Abonnement entfernt werden.
 
-Eine vollständige Liste der Empfehlungen, die hier angezeigt werden können, finden Sie unter [Empfehlungen zu Identität und Zugriff](recommendations-reference.md#recs-identity).
+Weitere Informationen zu diesen Empfehlungen sowie eine vollständige Liste der Empfehlungen, die hier angezeigt werden können, finden Sie unter [Empfehlungen zu Identität und Zugriff](recommendations-reference.md#recs-identity).
 
 > [!NOTE]
 > Wenn Ihr Abonnement mehr als 600 Konten umfasst, kann das Security Center nicht die Identitätsempfehlungen für Ihr Abonnement ausführen. Empfehlungen, die nicht ausgeführt werden, werden unter „Nicht verfügbare Bewertungen“ aufgeführt.

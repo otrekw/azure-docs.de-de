@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: fac9cba28f90f3642de660ed7d070b165c06bb2e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: d46e2a9820ec0c45d197f135428f1ace712b2fb8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303255"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80125144"
 ---
 # <a name="container-security-in-security-center"></a>Containersicherheit in Security Center
 
@@ -54,7 +54,7 @@ Wenn Sie die Sicherheitsprobleme auf einem virtuellen Computer untersuchen, stel
 >[!NOTE]
 > Diese CIS-Benchmarkprüfungen können nicht auf von AKS oder Databricks verwalteten virtuellen Computern ausgeführt werden.
 
-### <a name="continuous-monitoring-of-your-kubernetes-clusters-preview"></a>Fortlaufende Überwachung ihrer Kubernetes-Cluster (Vorschau)
+### <a name="continuous-monitoring-of-your-kubernetes-clusters"></a>Fortlaufende Überwachung ihrer Kubernetes-Cluster
 Security Center kann zusammen mit Azure Kubernetes Service (AKS) verwendet werden, dem verwalteten Containerorchestrierungsdienst von Microsoft für die Entwicklung, Bereitstellung und Verwaltung von Anwendungen in Containern.
 
 AKS bietet Sicherheitssteuerungen und Einblicke in den Sicherheitsstatus ihrer Cluster. Security Center verwendet diese Features für Folgendes:
@@ -67,7 +67,7 @@ Ausführliche Informationen zu den möglichen relevanten Security Center-Empfehl
 
 Security Center bietet eine Echtzeit-Bedrohungserkennung für Ihre Containerumgebungen und generiert Warnungen für verdächtige Aktivitäten. Mit diesen Informationen können Sie schnell Sicherheitsprobleme lösen und die Sicherheit Ihrer Container verbessern.
 
-Bedrohungen werden auf Host- und AKS-Clusterebene erkannt. Ausführliche Informationen finden Sie unter [Bedrohungserkennung für Azure-Container](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-).
+Bedrohungen werden auf Host- und AKS-Clusterebene erkannt. Ausführliche Informationen finden Sie unter [Bedrohungserkennung für Azure-Container](threat-protection.md#azure-containers).
 
 
 ## <a name="container-security-faq"></a>Containersicherheit – häufig gestellte Fragen (FAQ)

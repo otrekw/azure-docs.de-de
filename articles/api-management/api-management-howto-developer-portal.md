@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 03/05/2020
+ms.date: 03/15/2020
 ms.author: apimpm
-ms.openlocfilehash: 311ce34a4b5cfbb9a54a285094dac34c7dd5a225
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: fefa5ff5d112b479110d484ee0ea4c358b5c88a7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79126530"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335911"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management-Entwicklerportal: Übersicht
 
@@ -30,7 +30,7 @@ In diesem Artikel werden die Unterschiede zwischen selbstgehosteten und verwalte
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="managed-vs-self-hosted"></a> Verwaltete und selbstgehostete Versionen
+## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a> Verwaltete und selbstgehostete Versionen
 
 Sie können Ihr Entwicklerportal auf zwei Arten erstellen:
 
@@ -64,11 +64,11 @@ Die Portalkomponenten können logisch in zwei Kategorien unterteilt werden: *Cod
 
 Das Portal basiert auf einem angepassten Fork des [Paperbits-Frameworks](https://paperbits.io/). Die ursprüngliche Paperbits-Funktionalität wurde erweitert, um für API Management spezifische Widgets (etwa eine Liste mit APIs oder Produkten) und einen API Management-Dienstconnector zum Speichern und Abrufen von Inhalten bereitzustellen.
 
-## <a name="faq"></a> Häufig gestellte Fragen
+## <a name="frequently-asked-questions"></a><a name="faq"></a> Häufig gestellte Fragen
 
 In diesem Abschnitt beantworten wir häufig gestellte Fragen zum Entwicklerportal, die allgemeiner Natur sind. Fragen, die sich speziell auf die selbstgehostete Version beziehen, finden Sie im [GitHub-Repository im Abschnitt „Wiki“](https://github.com/Azure/api-management-developer-portal/wiki).
 
-### <a name="a-idpreview-to-ga-how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"/> Wie kann ich von der Vorschauversion des Portals migrieren?
+### <a name="how-can-i-migrate-from-the-preview-version-of-the-portal"></a><a id="preview-to-ga"/> Wie kann ich von der Vorschauversion des Portals migrieren?
 
 Mit der Vorschauversion des Entwicklerportals haben Sie den Vorschauinhalt in Ihrem API Management-Dienst bereitgestellt. Der Standardinhalt wurde in der allgemein verfügbaren Version zur Verbesserung der Benutzerfreundlichkeit erheblich geändert. Außerdem sind neue Widgets enthalten.
 
@@ -136,26 +136,22 @@ Nachdem Sie die Delegierung eingerichtet haben, müssen Sie [das Portal erneut v
 
 Bei den meisten Konfigurationsänderungen (beispielsweise für das VNET, für die Anmeldung und für Produktbedingungen) ist eine [erneute Veröffentlichung des Portals](api-management-howto-developer-portal-customize.md#publish) erforderlich.
 
-### <a name="cors"></a> Beim Verwenden der interaktiven Konsole erhalte ich einen CORS-Fehler.
+### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a><a name="cors"></a> Beim Verwenden der interaktiven Konsole erhalte ich einen CORS-Fehler.
 
-Die interaktive Konsole sendet eine clientseitige API-Anforderung über den Browser. Sie können das CORS-Problem beheben, indem Sie [eine CORS-Richtlinie](api-management-cross-domain-policies.md#CORS) für Ihre API(s) hinzufügen. Sie können alle Parameter manuell angeben oder Platzhalterwerte (`*`) verwenden. Beispiel:
+Die interaktive Konsole sendet eine clientseitige API-Anforderung über den Browser. Beheben Sie das CORS-Problem, indem Sie [eine CORS-Richtlinie](api-management-cross-domain-policies.md#CORS) für Ihre API(s) hinzufügen.
 
-```XML
-<cors allow-credentials="true">
-    <allowed-origins>
-        <origin>https://contoso.com</origin>
-    </allowed-origins>
-    <allowed-methods preflight-result-max-age="300">
-        <method>*</method>
-    </allowed-methods>
-    <allowed-headers>
-        <header>*</header>
-    </allowed-headers>
-    <expose-headers>
-        <header>*</header>
-    </expose-headers>
-</cors>
-```
+Sie können den Status der CORS-Richtlinie im Abschnitt **Portalübersicht** Ihres API Management-Diensts im Azure-Portal überprüfen. Ein Warnfeld zeigt eine fehlende oder falsch konfigurierte Richtlinie an.
+
+![Entwicklerportal für API Management](media/api-management-howto-developer-portal/cors-azure-portal.png)
+
+Wenden Sie die COLRS-Richtlinie automatisch an, indem Sie auf die Schaltfläche **CORS aktivieren** klicken.
+
+Sie können CORS auch manuell aktivieren.
+
+1. Klicken Sie auf den Link **Manuelle Anwendung auf globaler Ebene**, um den generierten Richtliniencode anzuzeigen.
+2. Navigieren Sie im Azure-Portal im Abschnitt **APIs** Ihres API Management-Diensts zu **Alle APIs**.
+3. Klicken Sie im Abschnitt **Eingehende Verarbeitung** auf das Symbol **</>** .
+4. Fügen Sie die Richtlinie in den Abschnitt **<inbound>** der XML-Datei ein. Stellen Sie sicher, dass der **<origin>** -Wert mit der Domäne Ihres Entwicklerportals übereinstimmt.
 
 > [!NOTE]
 > 
@@ -203,7 +199,7 @@ Dieser Fehler wird angezeigt, wenn ein Aufruf vom Typ `GET` für `https://<manag
 
 Wenn sich Ihr API Management-Dienst in einem VNET befindet, lesen Sie weiter oben die Frage zur VNET-Konnektivität.
 
-Der Aufruffehler kann auch auf ein SSL-Zertifikat zurückzuführen sein, das einer benutzerdefinierten Domäne zugewiesen ist und dem der Browser nicht vertraut. Sie können die benutzerdefinierte Domäne des Verwaltungsendpunkts entfernen. API Management greift daraufhin auf den Standardendpunkt mit einem vertrauenswürdigen Zertifikat zurück.
+Der Aufruffehler kann auch auf ein TLS/SSL-Zertifikat zurückzuführen sein, das einer benutzerdefinierten Domäne zugewiesen ist und dem der Browser nicht vertraut. Sie können die benutzerdefinierte Domäne des Verwaltungsendpunkts entfernen. API Management greift daraufhin auf den Standardendpunkt mit einem vertrauenswürdigen Zertifikat zurück.
 
 ### <a name="whats-the-browser-support-for-the-portal"></a>Was ist die Browserunterstützung für das Portal?
 

@@ -1,5 +1,5 @@
 ---
-title: Workflowautomatisierung (Vorschauversion) in Azure Security Center | Microsoft-Dokumentation
+title: Workflowautomatisierung in Azure Security Center | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Workflows in Azure Security Center erstellen und automatisieren.
 services: security-center
 author: memildin
@@ -8,21 +8,21 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 57351ccf0c6155a1a3532ec9e6481a724e3219aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5d947cf41e13abdea9a2fd29f8a740d0c101dc6f
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462443"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397912"
 ---
-# <a name="workflow-automation-preview"></a>Workflowautomatisierung (Vorschauversion)
+# <a name="workflow-automation"></a>Workflowautomatisierung
 
 Jedes Sicherheitsprogramm umfasst mehrere Workflows für die Reaktion auf Vorfälle. Diese Prozesse können das Benachrichtigen relevanter Stakeholder, das Starten eines Change Management-Prozesses und das Anwenden spezifischer Korrekturschritte umfassen. Sicherheitsexperten empfehlen, möglichst viele Schritte dieser Verfahren zu automatisieren. Durch Automatisierung wird der Aufwand reduziert. Außerdem können Sie so die Sicherheit erhöhen, indem Sie sicherstellen, dass die Prozessschritte schnell, konsistent und gemäß Ihren vordefinierten Anforderungen ausgeführt werden.
 
-In diesem Artikel wird die Funktion zur Workflowautomatisierung (Vorschauversion) von Azure Security Center beschrieben. Diese Previewfunktion kann Logic Apps bei Sicherheitswarnungen und Empfehlungen auslösen. Beispielsweise können Sie von Security Center E-Mail-Nachrichten an einen bestimmten Benutzer senden, wenn eine Warnung auftritt. Außerdem erfahren Sie, wie Sie Logik-Apps mithilfe von [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview) erstellen.
+In diesem Artikel wird die Funktion zur Workflowautomatisierung von Azure Security Center beschrieben. Dieses Feature kann Logic Apps bei Sicherheitswarnungen und Empfehlungen auslösen. Beispielsweise können Sie von Security Center E-Mail-Nachrichten an einen bestimmten Benutzer senden, wenn eine Warnung auftritt. Außerdem erfahren Sie, wie Sie Logik-Apps mithilfe von [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview) erstellen.
 
 > [!NOTE]
-> Wenn Sie zuvor die Ansicht „Playbooks“ (Vorschauversion) auf der Seitenleiste verwendet haben, finden Sie dieselben Funktionen sowie die erweiterten Funktionen auf der neuen Seite „Workflowautomatisierung“ (Vorschauversion).
+> Wenn Sie zuvor die Ansicht „Playbooks“ (Vorschauversion) auf der Seitenleiste verwendet haben, finden Sie dieselben Funktionen sowie die erweiterten Funktionen auf der neuen Seite „Workflowautomatisierung“.
 
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
@@ -38,7 +38,7 @@ In diesem Artikel wird die Funktion zur Workflowautomatisierung (Vorschauversion
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>Erstellen einer Logik-App und Definieren des Zeitpunkts ihrer automatischen Ausführung 
 
-1. Wählen Sie auf der Seitenleiste in Security Center **Workflowautomatisierung (Vorschauversion)** aus.
+1. Wählen Sie auf der Seitenleiste in Security Center **Workflowautomatisierung** aus.
 
     [![Liste der Workflowautomatisierungen](media/workflow-automation/list-of-workflow-automations.png)](media/workflow-automation/list-of-workflow-automations.png#lightbox)
 
@@ -64,8 +64,11 @@ In diesem Artikel wird die Funktion zur Workflowautomatisierung (Vorschauversion
 
     Im Logik-App-Designer werden die folgenden Trigger der Security Center-Connectors unterstützt:
 
-    * **Beim Erstellen oder Auslösen einer Azure Security Center-Empfehlung (Vorschauversion)**
-    * **Beim Erstellen oder Auslösen einer Azure Security Center-Warnung (Vorschauversion)**
+    * **Beim Erstellen oder Auslösen einer Azure Security Center-Empfehlung**
+    * **Beim Erstellen oder Auslösen einer Azure Security Center-Warnung** 
+    
+    > [!TIP]
+    > Sie können den Auslöser so anpassen, dass er sich nur auf Warnungen mit den für Sie interessanten Schweregraden bezieht.
     
     > [!NOTE]
     > Wenn Sie den älteren Trigger „Beim Auslösen einer Antwort auf eine Azure Security Center-Warnung“ verwenden, wird Ihre Logik-App nicht von der Funktion Workflowautomatisierung gestartet. Verwenden Sie stattdessen einen der oben genannten Trigger. 
@@ -81,9 +84,9 @@ In diesem Artikel wird die Funktion zur Workflowautomatisierung (Vorschauversion
 
 ## <a name="manually-trigger-a-logic-app"></a>Manuelles Auslösen einer Logik-App
 
-Sie können Logik-Apps auch manuell ausführen, wenn Sie sich eine Sicherheitsempfehlung ansehen.
+Sie können Logik-Apps auch manuell ausführen, wenn Sie eine Sicherheitswarnung oder eine Empfehlung anzeigen, die eine [schnelle Problembehebung](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#quick-fix-remediation) anbietet.
 
-Um eine Logik-App manuell auszuführen, öffnen Sie eine Empfehlung, und klicken Sie auf „Logik-App auslösen (Vorschauversion)“:
+Um eine Logik-App manuell auszuführen, öffnen Sie eine Warnung oder eine Empfehlung, die die schnelle Problembehebung unterstützt, und klicken Sie auf **Logik-App auslösen** :
 
 [![Manuelles Auslösen einer Logik-App](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
 
@@ -93,10 +96,11 @@ Um die unformatierten Ereignisschemas der Sicherheitswarnungen oder Empfehlungse
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie Logik-Apps erstellen, diese manuell in Security Center ausführen und ihre Ausführung automatisieren. 
+In diesem Artikel haben Sie gelernt, wie Sie Logik-Apps erstellen, deren Ausführung in Security Center automatisieren und sie manuell ausführen. 
 
-Weitere verwandte Informationen finden Sie in den folgenden Artikeln: 
+Weitere verwandte Informationen finden Sie auf hier: 
 
+- [Das Microsoft Learn-Modul über die Verwendung der Workflowautomatisierung zur Automatisierung einer Sicherheitsreaktion](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
 - [Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md)
 - [Sicherheitswarnungen in Azure Security Center](security-center-alerts-overview.md)
 - [Informationen zu Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)

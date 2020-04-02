@@ -2,27 +2,27 @@
 title: Übersicht über Vorlagen
 description: Beschreibung der Vorteile der Verwendung von Azure Resource Manager-Vorlagen für die Bereitstellung von Ressourcen
 ms.topic: conceptual
-ms.date: 01/02/2020
-ms.openlocfilehash: a4b0dff4b351098095de0b98ede21d9af8a7eef9
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.date: 03/25/2020
+ms.openlocfilehash: 4570f5471ef6baf6f3f4a920be4d93c3f5a90438
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689700"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258123"
 ---
-# <a name="azure-resource-manager-templates-overview"></a>Übersicht über Azure Resource Manager-Vorlagen
+# <a name="what-are-arm-templates"></a>Was sind ARM-Vorlagen?
 
 Mit dem Wechsel zur Cloud haben viele Teams agile Entwicklungsmethoden eingeführt. Diese Teams führen schnelle Iterationen durch. Sie müssen ihre Lösungen wiederholt in der Cloud bereitstellen und sicher sein, dass sich ihre Infrastruktur in einem zuverlässigen Zustand befindet. Da die Infrastruktur Teil des iterativen Prozesses geworden ist, gibt es keine Trennung mehr zwischen Betrieb und Entwicklung. Die Teams müssen Infrastruktur und Anwendungscode in einem einheitlichen Prozess verwalten.
 
 Um diese Herausforderungen zu erfüllen, können Bereitstellungen automatisiert und die Infrastructure-as-Code-Methode verwendet werden. Im Code definieren Sie die Infrastruktur, die bereitgestellt werden muss. Der Infrastrukturcode wird Teil des Projekts. Genau wie Anwendungscode speichern Sie den Infrastrukturcode in einem Quellrepository und versionieren ihn. Jeder in Ihrem Team kann den Code ausführen und ähnliche Umgebungen bereitstellen.
 
-Verwenden Sie Azure Resource Manager-Vorlagen, um Infrastructure-as-Code für Ihre Azure-Lösungen zu implementieren. Die Vorlage ist eine JSON-Datei (JavaScript Object Notation), in der die Infrastruktur und die Konfiguration für Ihr Projekt definiert sind. Für die Vorlage wird deklarative Syntax verwendet. Hiermit können Sie angeben, was Sie bereitstellen möchten, ohne dass Sie die Folge der Programmierbefehle für die Erstellung schreiben müssen. In der Vorlage geben Sie die bereitzustellenden Ressourcen und die Eigenschaften für diese Ressourcen an.
+Verwenden Sie Azure Resource Manager-Vorlagen (ARM), um Infrastructure-as-Code für Ihre Azure-Lösungen zu implementieren. Die Vorlage ist eine JSON-Datei (JavaScript Object Notation), in der die Infrastruktur und die Konfiguration für Ihr Projekt definiert sind. Für die Vorlage wird deklarative Syntax verwendet. Hiermit können Sie angeben, was Sie bereitstellen möchten, ohne dass Sie die Folge der Programmierbefehle für die Erstellung schreiben müssen. In der Vorlage geben Sie die bereitzustellenden Ressourcen und die Eigenschaften für diese Ressourcen an.
 
-## <a name="why-choose-resource-manager-templates"></a>Warum sollten Sie Resource Manager-Vorlagen wählen?
+## <a name="why-choose-arm-templates"></a>Warum ARM-Vorlagen verwenden?
 
-Bei der Entscheidung zwischen Resource Manager-Vorlagen und einem der anderen Infrastructure-as-Code-Dienste sollten Sie die folgenden Vorteile von Vorlagen berücksichtigen:
+Bei der Entscheidung zwischen ARM-Vorlagen und einem der anderen Infrastructure-as-Code-Dienste sollten Sie die folgenden Vorteile von Vorlagen berücksichtigen:
 
-* **Deklarative Syntax**: Mit Resource Manager-Vorlagen können Sie eine gesamte Azure-Infrastruktur deklarativ erstellen und bereitstellen. Sie können beispielsweise nicht nur virtuelle Computer bereitstellen, sondern auch die Netzwerkinfrastruktur, die Speichersysteme und alle anderen Ressourcen, die Sie möglicherweise benötigen.
+* **Deklarative Syntax**: Mit ARM-Vorlagen können Sie eine gesamte Azure-Infrastruktur deklarativ erstellen und bereitstellen. Sie können beispielsweise nicht nur virtuelle Computer bereitstellen, sondern auch die Netzwerkinfrastruktur, die Speichersysteme und alle anderen Ressourcen, die Sie möglicherweise benötigen.
 
 * **Wiederholbare Ergebnisse**: Wiederholtes Bereitstellen Ihrer Infrastruktur während des gesamten Entwicklungslebenszyklus und Gewährleistung, dass Ihre Ressourcen einheitlich bereitgestellt werden. Vorlagen sind idempotent, d. h. Sie können dieselbe Vorlage mehrmals bereitstellen und erhalten immer dieselben Ressourcentypen im selben Zustand. Sie können eine Vorlage entwickeln, die den gewünschten Zustand darstellt, anstatt viele separate Vorlagen zur Darstellung von Aktualisierungen zu entwickeln.
 
@@ -44,7 +44,7 @@ Bei der Entscheidung zwischen Resource Manager-Vorlagen und einem der anderen In
 
 * **Bereitstellungsblaupausen**: Sie können von Microsoft bereitgestellte [Blaupausen](../../governance/blueprints/overview.md) nutzen, um gesetzliche Vorgaben und Konformitätsstandards einzuhalten. Diese Blaupausen umfassen vorgefertigte Vorlagen für verschiedene Architekturen.
 
-* **CI/CD-Integration**: Sie können Vorlagen in ihre Tools für Continuous Integration und Continuous Deployment (CI/CD) integrieren, die Ihre Releasepipelines für schnelle und zuverlässige Updates von Anwendungen und Infrastrukturen automatisieren können. Wenn Sie die Azure DevOps- und Resource Manager-Vorlagenaufgabe verwenden, können Sie Azure-Pipelines zum kontinuierlichen Erstellen und Bereitstellen von Azure Resource Manager-Vorlagenprojekten verwenden. Weitere Informationen finden Sie unter [VS-Projekte mit Pipelines](add-template-to-azure-pipelines.md) und [Continuous Integration mit Azure Pipelines](template-tutorial-use-azure-pipelines.md).
+* **CI/CD-Integration**: Sie können Vorlagen in ihre Tools für Continuous Integration und Continuous Deployment (CI/CD) integrieren, die Ihre Releasepipelines für schnelle und zuverlässige Updates von Anwendungen und Infrastrukturen automatisieren können. Wenn Sie die Azure DevOps- und Resource Manager-Vorlagenaufgaben verwenden, können Sie Azure-Pipelines zum kontinuierlichen Erstellen und Bereitstellen von ARM-Vorlagenprojekten verwenden. Weitere Informationen finden Sie unter [VS-Projekte mit Pipelines](add-template-to-azure-pipelines.md) und [Continuous Integration mit Azure Pipelines](template-tutorial-use-azure-pipelines.md).
 
 * **Exportierbarer Code**: Sie können eine Vorlage für eine vorhandene Ressourcengruppe abrufen, indem Sie entweder den aktuellen Zustand der Ressourcengruppe exportieren oder die Vorlage anzeigen, die für eine bestimmte Bereitstellung verwendet wurde. Das Anzeigen der [exportierten Vorlage](export-template-portal.md) ist hilfreich, um sich über die Vorlagensyntax zu informieren.
 
@@ -120,6 +120,6 @@ Informationen zu geschachtelten Vorlagen finden Sie unter [Verwenden von verknü
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ein Schritt-für-Schritt-Tutorial mit Anleitungen zum Erstellen einer Vorlage finden Sie unter [Tutorial: Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Vorlage](template-tutorial-create-first-template.md).
-* Informationen zu den Eigenschaften in Vorlagendateien finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](template-syntax.md).
-* Weitere Informationen zum Exportieren von Vorlagen finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](quickstart-create-templates-use-the-portal.md).
+* Ein Schritt-für-Schritt-Tutorial mit Anleitungen zum Erstellen einer Vorlage finden Sie unter [Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage](template-tutorial-create-first-template.md).
+* Informationen zu den Eigenschaften in Vorlagendateien finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Weitere Informationen zum Exportieren von Vorlagen finden Sie unter [Schnellstart: Erstellen und Bereitstellen von ARM-Vorlagen über das Azure-Portal](quickstart-create-templates-use-the-portal.md).

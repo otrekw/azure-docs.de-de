@@ -6,12 +6,12 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: 4438084a9471bf816b371b7e663856205f87f8ba
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 6f200e9649a00bfe890d46f86e62404f1a7e844f
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461418"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366282"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Hinzufügen von Pushbenachrichtigungen zu Ihrer Windows-App
 
@@ -23,13 +23,13 @@ In diesem Tutorial fügen Sie Pushbenachrichtigungen zum [Windows-Schnellstartpr
 
 Wenn Sie das heruntergeladene Schnellstart-Serverprojekt nicht verwenden, müssen Sie Ihrem Projekt das Erweiterungspaket für Pushbenachrichtigungen hinzufügen. Weitere Informationen finden Sie unter [Verwenden des .NET-Back-End-Server-SDKs für Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-## <a name="configure-hub"></a>Konfigurieren eines Notification Hubs
+## <a name="configure-a-notification-hub"></a><a name="configure-hub"></a>Konfigurieren eines Notification Hubs
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
 ## <a name="register-your-app-for-push-notifications"></a>Registrieren der App für Pushbenachrichtigungen
 
-Sie müssen Ihre App an den Microsoft Store übermitteln und dann Ihr Serverprojekt für die Integration in die [Windows-Benachrichtigungsdienste (Windows Notification Services, WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) konfigurieren, um Pushbenachrichtigungen senden zu können.
+Sie müssen Ihre App an den Microsoft Store übermitteln und dann Ihr Serverprojekt für die Integration in die [Windows-Pushbenachrichtigungsdienste (Windows Notification Services, WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) konfigurieren, um Pushbenachrichtigungen senden zu können.
 
 1. Klicken Sie im Projektmappen-Explorer von Visual Studio mit der rechten Maustaste auf das UWP-App-Projekt, und klicken Sie dann auf **Store** > **App mit Store verknüpfen...** .
 
@@ -51,11 +51,11 @@ Sie müssen Ihre App an den Microsoft Store übermitteln und dann Ihr Serverproj
 
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
-## <a id="update-service"></a>Aktualisieren des Servers zum Senden von Pushbenachrichtigungen
+## <a name="update-the-server-to-send-push-notifications"></a><a id="update-service"></a>Aktualisieren des Servers zum Senden von Pushbenachrichtigungen
 
 Verwenden Sie das passende Verfahren für Ihren Back-End-Projekttyp &mdash; entweder [.NET-Back-End](#dotnet) oder [Node.js-Back-End](#nodejs).
 
-### <a name="dotnet"></a>.NET-Back-End-Projekt
+### <a name="net-backend-project"></a><a name="dotnet"></a>.NET-Back-End-Projekt
 
 1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Serverprojekt, und klicken Sie auf **NuGet-Pakete verwalten**. Suchen Sie „Microsoft.Azure.Mobile.NotificationHubs“, und klicken Sie anschließend auf **Installieren**. Dadurch wird die Notification Hubs-Clientbibliothek installiert.
 2. Erweitern Sie **Controller**, öffnen Sie „TodoItemController.cs“, und fügen Sie die folgenden using-Anweisungen hinzu:
@@ -106,7 +106,7 @@ Verwenden Sie das passende Verfahren für Ihren Back-End-Projekttyp &mdash; entw
 
 4. Veröffentlichen Sie das Serverprojekt erneut.
 
-### <a name="nodejs"></a>Node.js-Back-End-Projekt
+### <a name="nodejs-backend-project"></a><a name="nodejs"></a>Node.js-Back-End-Projekt
 1. Richten Sie das Back-End-Projekt ein.
 2. Ersetzen Sie den bestehenden Code in der Datei „todoitem.js“ durch den folgenden Code:
 
@@ -156,7 +156,7 @@ Verwenden Sie das passende Verfahren für Ihren Back-End-Projekttyp &mdash; entw
 
 3. Beim Bearbeiten der Datei auf Ihrem lokalen Computer veröffentlichen Sie das Serverprojekt erneut.
 
-## <a id="update-app"></a>Hinzufügen von Pushbenachrichtigungen zur App
+## <a name="add-push-notifications-to-your-app"></a><a id="update-app"></a>Hinzufügen von Pushbenachrichtigungen zur App
 Als nächstes muss die App beim Start für Pushbenachrichtigungen registriert werden. Wenn Sie die Authentifizierung bereits aktiviert haben, achten Sie darauf, dass sich der Benutzer anmeldet, bevor die Registrierung für Pushbenachrichtigungen ausgeführt wird.
 
 1. Öffnen Sie die Projektdatei **App.xaml.cs**, und fügen Sie die folgenden `using`-Anweisungen hinzu:
@@ -197,11 +197,11 @@ Als nächstes muss die App beim Start für Pushbenachrichtigungen registriert we
 
 4. Erstellen Sie Ihr UWP-App-Projekt erneut. Ihre App kann jetzt Popupbenachrichtigungen empfangen.
 
-## <a id="test"></a>Testen von Pushbenachrichtigungen in der App
+## <a name="test-push-notifications-in-your-app"></a><a id="test"></a>Testen von Pushbenachrichtigungen in der App
 
 [!INCLUDE [app-service-mobile-windows-universal-test-push](../../includes/app-service-mobile-windows-universal-test-push.md)]
 
-## <a id="more"></a>Nächste Schritte
+## <a name="next-steps"></a><a id="more"></a>Nächste Schritte
 
 Informieren Sie sich ausführlicher über Pushbenachrichtigungen:
 

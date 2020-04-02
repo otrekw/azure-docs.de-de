@@ -3,29 +3,29 @@ title: Speicherort der Vorlagenressource
 description: Beschreibt, wie Sie den Speicherort von Ressourcen in einer Azure Resource Manager-Vorlage festlegen.
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 24d278df8f71fecfaec4f0fa3a84172bf1db942b
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: a8324dac1232eecd5624e5f1dc0e6656295c0a10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122405"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156428"
 ---
-# <a name="set-resource-location-in-resource-manager-template"></a>Festlegen des Ressourcenspeicherorts in Resource Manager-Vorlagen
+# <a name="set-resource-location-in-arm-template"></a>Festlegen der Ressourceniteration in ARM-Vorlagen
 
-Beim Bereitstellen einer Vorlage müssen Sie einen Speicherort für jede Ressource angeben. Der Speicherort muss nicht mit dem Speicherort für die Ressourcengruppe identisch sein.
+Beim Bereitstellen einer Azure Resource Manager-Vorlage (ARM) müssen Sie einen Speicherort für jede Ressource angeben. Der Speicherort muss nicht mit dem Speicherort für die Ressourcengruppe identisch sein.
 
 ## <a name="get-available-locations"></a>Abrufen der verfügbaren Speicherorte
 
 An verschiedenen Speicherorten werden unterschiedliche Ressourcentypen unterstützt. Verwenden Sie Azure PowerShell oder die Azure-Befehlszeilenschnittstelle, um die unterstützten Speicherorte für einen Ressourcentyp abzurufen.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 ((Get-AzResourceProvider -ProviderNamespace Microsoft.Batch).ResourceTypes `
   | Where-Object ResourceTypeName -eq batchAccounts).Locations
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli-interactive
 az provider show \
@@ -96,4 +96,4 @@ Das folgende Beispiel zeigt ein Speicherkonto, das an einem als Parameter angege
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Unter [Funktionen von Azure-Ressourcen-Manager-Vorlagen](template-functions.md)finden Sie eine vollständige Liste der Vorlagenfunktionen.
-* Weitere Informationen zu Vorlagendateien finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](template-syntax.md).
+* Weitere Informationen zu Vorlagendateien finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).

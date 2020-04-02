@@ -3,14 +3,14 @@ title: Verwalten von Updates für mehrere virtuelle Azure-Computer
 description: In diesem Artikel wird beschrieben, wie Sie Updates für Azure- und Nicht-Azure-VMs verwalten.
 services: automation
 ms.subservice: update-management
-ms.date: 01/16/2020
+ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: de7171d3807540ae7d5f09c3a877031631248e49
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: c9a3c88ea0c3e656adf0f8c514b418cfc07c9590
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76168050"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335774"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Verwalten von Updates für mehrere Computer
 
@@ -29,21 +29,7 @@ Zum Verwenden der Updateverwaltung benötigen Sie Folgendes:
 
 - Zugriff auf ein Updaterepository für virtuelle Linux-Computer, die in die Lösung integriert sind.
 
-## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
-
-Die Updateverwaltung wird für folgende Betriebssysteme unterstützt:
-
-|Betriebssystem  |Notizen  |
-|---------|---------|
-|Windows Server 2008, Windows Server 2008 R2 RTM    | Unterstützt nur Updatebewertungen.         |
-|Windows Server 2008 R2 SP1 und höher     |Windows PowerShell 4.0 oder höher ist erforderlich. ([WMF 4.0 herunterladen](https://www.microsoft.com/download/details.aspx?id=40855))</br> Für eine höhere Zuverlässigkeit wird Windows PowerShell 5.1 empfohlen. ([WMF 5.1 herunterladen](https://www.microsoft.com/download/details.aspx?id=54616))         |
-|CentOS 6 (x86/x64) und 7 (x64)      | |
-|Red Hat Enterprise 6 (x86/x64) und 7 (x64)     | |
-|SUSE Linux Enterprise Server 11 (x86/x64) und 12 (x64)     | |
-|Ubuntu 14.04 LTS, 16.04 LTS und 18.04 LTS (x86/x64)      | |
-
-> [!NOTE]
-> Damit unter Ubuntu keine Updates außerhalb der Wartungsfenster angewendet werden, konfigurieren Sie das „Unattended-Upgrade“-Paket erneut, um automatische Updates zu deaktivieren. Weitere Informationen finden Sie im [Thema zu automatischen Updates im Ubuntu-Serverhandbuch](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
+Informationen zu den Systemanforderungen für die Updateverwaltung finden Sie unter [Clientanforderungen für die Updateverwaltung](automation-update-management.md#clients).
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Aktivieren der Updateverwaltung für virtuelle Azure-Computer
 
@@ -79,7 +65,7 @@ Für Computer, für die die Updateverwaltung erst vor Kurzem aktiviert wurde, is
 
 - **Nicht bewertet**: Die Daten für die Updatebewertung wurden vom Computer nicht innerhalb des erwarteten Zeitrahmens empfangen. Bei Linux-Computern liegt der erwartete Zeitrahmen in der letzten Stunde. Bei Windows-Computer liegt der erwartete Zeitrahmen in den letzten 12 Stunden.
 
-Klicken Sie zum Anzeigen des Agent-Status auf den Link in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS**. Bei Auswahl dieser Option wird der Bereich **Hybrid Worker** geöffnet und der Status des Hybrid Worker angezeigt. In der folgenden Abbildung wird ein Beispiel für einen Agent gezeigt, der über einen längeren Zeitraum nicht mit der Updateverwaltung verbunden war:
+Klicken Sie zum Anzeigen des Agent-Status auf den Link in der Spalte **Bereitschaft des Update-Agents**. Bei Auswahl dieser Option wird der Bereich **Hybrid Worker** geöffnet und der Status des Hybrid Worker angezeigt. In der folgenden Abbildung wird ein Beispiel für einen Agent gezeigt, der über einen längeren Zeitraum nicht mit der Updateverwaltung verbunden war:
 
 ![Registerkarte „Computer“](./media/manage-update-multi/update-agent-broken.png)
 
@@ -95,7 +81,7 @@ Mit Agents, die auf VMs und Computern installiert sind, werden Daten zu Updates 
 
 In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von dieser Lösung unterstützt werden:
 
-| Verbundene Quelle | Unterstützt | Beschreibung |
+| Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 | --- | --- | --- |
 | Windows-Agents |Ja |Die Updateverwaltung sammelt Informationen zu Systemupdates von Windows-Agents und initiiert dann die Installation von erforderlichen Updates. |
 | Linux-Agents |Ja |Die Updateverwaltung sammelt Informationen zu Systemupdates von Linux-Agents und initiiert dann die Installation von erforderlichen Updates für unterstützte Distributionen. |
@@ -132,7 +118,7 @@ Geben Sie im Bereich **Neue Updatebereitstellung** die folgenden Informationen e
    >[!NOTE]
    >Wenn Sie die Option „Gespeicherte Suche“ auswählen, werden keine Computeridentitäten, sondern nur ihre Namen zurückgegeben. Wenn Sie über mehrere virtuelle Computer mit demselben Namen in mehreren Ressourcengruppen verfügen, werden diese in den Ergebnissen zurückgegeben. Die Verwendung der Option **Zu aktualisierende Gruppen** wird empfohlen, um sicherzustellen, dass Sie eindeutige VMS einschließen, die Ihren Kriterien entsprechen.
 
-   Bei Auswahl von **Computer** wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt. Sie können den Integritätsstatus des Computers sehen, bevor Sie die Updatebereitstellung planen. Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Azure Monitor-Protokollen finden Sie unter [Computergruppen in Azure Monitor-Protokollen](../azure-monitor/platform/computer-groups.md).
+   Wenn Sie **Computer** auswählen, wird die Bereitschaft des Computers in der Spalte **Update-Agent-Bereitschaft** angezeigt. Sie können den Integritätsstatus des Computers sehen, bevor Sie die Updatebereitstellung planen. Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Azure Monitor-Protokollen finden Sie unter [Computergruppen in Azure Monitor-Protokollen](../azure-monitor/platform/computer-groups.md).
 
   ![Bereich „Neue Updatebereitstellung“](./media/manage-update-multi/update-select-computers.png)
 
@@ -166,7 +152,7 @@ Geben Sie im Bereich **Neue Updatebereitstellung** die folgenden Informationen e
 
 - **Neustartsteuerung**: Diese Einstellung bestimmt, wie Neustarts für die Updatebereitstellung behandelt werden.
 
-   |Option|Beschreibung|
+   |Option|BESCHREIBUNG|
    |---|---|
    |Neustart bei Bedarf| **(Standard)** : Bei Bedarf wird ein Neustart eingeleitet, wenn das Wartungsfenster dies zulässt.|
    |Immer neu starten|Ein Neustart wird unabhängig davon eingeleitet, ob er erforderlich ist. |
@@ -204,5 +190,4 @@ Klicken Sie auf **Fehler**, um ausführliche Informationen zu Fehlern bei der Be
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Updateverwaltung, einschließlich der Protokolle, Ausgabe und Fehler, finden Sie unter [Lösung für die Updateverwaltung in Azure](../operations-management-suite/oms-solution-update-management.md).
-
+Weitere Informationen zu Updateverwaltungsprotokollen, -ausgaben und -fehlern finden Sie unter [Abfragen von Aktualisierungsdatensätzen für die Updateverwaltung](automation-update-management-query-logs.md).

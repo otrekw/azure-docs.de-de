@@ -4,7 +4,7 @@ description: Dieser Artikel bietet eine Reihe von empfohlenen Vorgehensweisen f�
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: barbkess
+manager: rkarlin
 editor: TomSh
 ms.assetid: 17ba67ad-e5cd-4a8f-b435-5218df753ca4
 ms.service: security
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/06/2019
+ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 83b4f2fce3dbae2168627194a45e62a2d4479936
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: c5bf62f434b2095f7200b5562c38c252a0195c5b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934746"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224706"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Bewährte Methoden für Datensicherheit und Datenverschlüsselung in Azure
 In diesem Artikel werden bewährte Methoden für die Datensicherheit und -verschlüsselung beschrieben.
@@ -108,7 +108,7 @@ Nachfolgend sind bewährte Methoden für die Sicherheit bei Verwendung von Azure
 **Detail**: Verwenden Sie [Point-to-Site-VPN](/azure/vpn-gateway/vpn-gateway-point-to-site-create).
 
 **Bewährte Methode**: Verschieben Sie größere Datasets über eine dedizierte Hochgeschwindigkeits-WAN-Verbindung.   
-**Detail**: Verwenden Sie [ExpressRoute](/azure/expressroute/expressroute-introduction). Falls Sie sich für die Verwendung von ExpressRoute entscheiden, können Sie die Daten auch auf Anwendungsebene verschlüsseln, indem Sie [SSL/TLS](https://support.microsoft.com/kb/257591) oder andere Protokolle für zusätzlichen Schutz verwenden.
+**Detail**: Verwenden Sie [ExpressRoute](/azure/expressroute/expressroute-introduction). Falls Sie sich für die Verwendung von ExpressRoute entscheiden, können Sie die Daten auch auf Anwendungsebene verschlüsseln, indem Sie SSL/TLS oder andere Protokolle für zusätzlichen Schutz verwenden.
 
 **Bewährte Methode**: Führen Sie die Interaktion mit Azure Storage über das Azure-Portal aus.   
 **Detail**: Alle Transaktionen erfolgen über HTTPS. Für die Interaktion mit [Azure Storage](https://azure.microsoft.com/services/storage/) können Sie auch die [Storage-REST-API](https://msdn.microsoft.com/library/azure/dd179355.aspx) über HTTPS verwenden.
@@ -128,7 +128,7 @@ Mit dieser Lösung für den Schutz von Informationen behalten Sie die Kontrolle 
 Wir empfehlen Folgendes:
 
 - [Stellen Sie Azure Information Protection](/azure/information-protection/deployment-roadmap) für Ihre Organisation bereit.
-- Wenden Sie Bezeichnungen entsprechend Ihrer Geschäftsanforderungen an. Beispiel:  Verwenden Sie die Bezeichnung „streng vertraulich“ für alle Dokumente und E-Mails, die streng vertrauliche Daten enthalten, um diese Daten zu klassifizieren und zu schützen. Dann können nur autorisierte Benutzer mit den von Ihnen angegebenen Einschränkungen auf diese Daten zugreifen.
+- Wenden Sie Bezeichnungen entsprechend Ihrer Geschäftsanforderungen an. Beispiel: Verwenden Sie die Bezeichnung „streng vertraulich“ für alle Dokumente und E-Mails, die streng vertrauliche Daten enthalten, um diese Daten zu klassifizieren und zu schützen. Dann können nur autorisierte Benutzer mit den von Ihnen angegebenen Einschränkungen auf diese Daten zugreifen.
 - Konfigurieren Sie die [Verwendungsprotokollierung für Azure RMS](/azure/information-protection/log-analyze-usage), damit Sie überwachen können, wie Ihre Organisation den Schutzdienst verwendet.
 
 Organisationen, die in Hinsicht auf die [Datenklassifizierung](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) und den Dateischutz Schwächen haben, sind möglicherweise anfälliger für Datenlecks oder Datenmissbrauch. Mit geeignetem Dateischutz können Sie Datenflüsse analysieren, um Einblicke in Ihre Geschäftsabläufe zu erhalten, riskante Verhalten zu erkennen und Abhilfemaßnahmen zu ergreifen, den Zugriff auf Dokumente nachzuverfolgen usw.

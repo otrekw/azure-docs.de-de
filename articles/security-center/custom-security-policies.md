@@ -6,20 +6,20 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/25/2020
 ms.author: memildin
-ms.openlocfilehash: 34dbace304ccf70891ef53dd768de60d87e26967
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: c709890ae6c57a001c6a0e9df4e973bd3bd24602
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666634"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258259"
 ---
-# <a name="using-custom-security-policies-preview"></a>Verwenden von benutzerdefinierten Sicherheitsrichtlinien (Vorschauversion)
+# <a name="using-custom-security-policies"></a>Verwenden benutzerdefinierter Sicherheitsrichtlinien
 
 Um Ihre Systeme und Ihre Umgebung zu sichern, generiert Azure Security Center Sicherheitsempfehlungen. Diese Empfehlungen basieren auf bewährten Methoden der Branche, die in die generische Standardsicherheitsrichtlinie integriert sind, die für alle Kunden bereitgestellt wird. Sie können auch aus Branchenwissen von Security Center und regulatorische Normen stammen.
 
-Mit dieser Previewfunktion können Sie eigene *benutzerdefinierte* Initiativen hinzufügen. Sie erhalten dann Empfehlungen, wenn Ihre Umgebung die von Ihnen erstellten Richtlinien nicht einhält. Alle von Ihnen erstellten benutzerdefinierten Initiativen werden neben den integrierten Initiativen im Compliance-Dashboard angezeigt, das im Tutorial [Verbessern der Einhaltung gesetzlicher Vorschriften](security-center-compliance-dashboard.md) beschrieben wird.
+Mit diesem Feature können Sie eigene *benutzerdefinierte* Initiativen hinzufügen. Sie erhalten dann Empfehlungen, wenn Ihre Umgebung die von Ihnen erstellten Richtlinien nicht einhält. Alle von Ihnen erstellten benutzerdefinierten Initiativen werden neben den integrierten Initiativen im Compliance-Dashboard angezeigt, das im Tutorial [Verbessern der Einhaltung gesetzlicher Vorschriften](security-center-compliance-dashboard.md) beschrieben wird.
 
 Wie [unter diesem Link](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) in der Azure Policy-Dokumentation erläutert, müsse Sie als Speicherort für Ihre benutzerdefinierte Initiative eine Verwaltungsgruppe oder ein Abonnement angeben. 
 
@@ -36,7 +36,7 @@ Wie [unter diesem Link](https://docs.microsoft.com/azure/governance/policy/conce
     >
     > Wenn Sie einen benutzerdefinierten Standard hinzufügen, wird diesem Bereich eine *Initiative* zugewiesen. Daher empfiehlt es sich, den größtmöglichen Bereich auszuwählen, der für diese Zuweisung erforderlich.
 
-1. Klicken Sie auf der Seite „Sicherheitsrichtlinie“ unter „Ihre benutzerdefinierten Initiativen (Vorschau)“ auf **Benutzerdefinierte Initiative hinzufügen**.
+1. Klicken Sie auf der Seite „Sicherheitsrichtlinie“ unter „Ihre benutzerdefinierten Initiativen“ auf **Benutzerdefinierte Initiative hinzufügen**.
 
     [![Klicken Sie auf **Benutzerdefinierte Initiative hinzufügen**](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
 

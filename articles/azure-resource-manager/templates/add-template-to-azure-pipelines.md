@@ -3,16 +3,16 @@ title: CI/CD mit Azure Pipelines und Vorlagen
 description: Beschreibt die Einrichtung von Continuous Integration in Azure Pipelines mithilfe von Bereitstellungsprojekten für Azure-Ressourcengruppen in Visual Studio für die Bereitstellung von Resource Manager-Vorlagen.
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 6f5d4846d32b4880ccd3fbd82f062f57948ac15a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7617bf47595fce7baa533b0f7cc94a1803ddd349
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474456"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153453"
 ---
-# <a name="integrate-resource-manager-templates-with-azure-pipelines"></a>Integrieren von Resource Manager-Vorlagen mit Azure Pipelines
+# <a name="integrate-arm-templates-with-azure-pipelines"></a>Integrieren von ARM-Vorlagen in Azure Pipelines
 
-Visual Studio umfasst das Azure-Ressourcengruppenprojekt zum Erstellen von Vorlagen und deren Bereitstellung in Ihrem Azure-Abonnement. Sie können dieses Projekt mit Azure Pipelines für Continuous Integration und Continuous Deployment (CI/CD) integrieren.
+Visual Studio umfasst das Azure-Ressourcengruppenprojekt zum Erstellen von Azure Resource Manager-Vorlagen (ARM) und für deren Bereitstellung in Ihrem Azure-Abonnement. Sie können dieses Projekt mit Azure Pipelines für Continuous Integration und Continuous Deployment (CI/CD) integrieren.
 
 Zum Bereitstellen von Vorlagen mit Azure Pipelines haben Sie zwei Möglichkeiten:
 
@@ -261,4 +261,4 @@ Sie können die aktuell laufende Pipeline auswählen, um Details zu den Aufgaben
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Schritt-für-Schritt-Anleitung zur Verwendung von Azure Pipelines mit Resource Manager-Vorlagen finden Sie im [Tutorial: Continuous Integration von Azure Resource Manager-Vorlagen mit Azure Pipelines](template-tutorial-use-azure-pipelines.md).
+Eine Schritt-für-Schritt-Anleitung zur Verwendung von Azure Pipelines mit ARM-Vorlagen finden Sie im [Tutorial: Continuous Integration von ARM-Vorlagen mit Azure Pipelines](template-tutorial-use-azure-pipelines.md).
