@@ -1,18 +1,14 @@
 ---
 title: Allgemeine Fragen zu VMware-Notfallwiederherstellung mit Azure Site Recovery
 description: Hier erhalten Sie Antworten auf allgemeine Fragen zur Notfallwiederherstellung von lokalen virtuellen VMware-Computern in Azure mithilfe von Azure Site Recovery.
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.author: raynew
-ms.openlocfilehash: 11f593bae6b3aab8355a8f39b56639cad8133b51
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: ae16138ae44262f53a8f9948d6287f0acf621244
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719550"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240019"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Allgemeine Fragen zur VMware-zu-Azure-Replikation
 
@@ -69,7 +65,7 @@ Site Recovery benötigt Zugriff auf VMware-Server, um folgende Aufgaben durchzuf
 
 ### <a name="is-replication-data-sent-to-site-recovery"></a>Werden Replikationsdaten an Site Recovery gesendet?
 
-Nein. Site Recovery fängt replizierte Daten nicht ab und besitzt keine Informationen dazu, was auf Ihren virtuellen Computern ausgeführt wird. Replikationsdaten werden zwischen VMware-Hypervisoren und Azure Storage ausgetauscht. Site Recovery hat keine Möglichkeit, diese Daten abzufangen. Nur die Metadaten, die zum Orchestrieren von Replikation und Failover erforderlich sind, werden an den Site Recovery-Dienst gesendet.  
+Nein. Site Recovery fängt replizierte Daten nicht ab und besitzt keine Informationen dazu, was auf Ihren virtuellen Computern ausgeführt wird. Replikationsdaten werden zwischen VMware-Hypervisoren und Azure Storage ausgetauscht. Site Recovery hat keine Möglichkeit, diese Daten abzufangen. Nur die Metadaten, die zum Orchestrieren von Replikation und Failover erforderlich sind, werden an den Site Recovery-Dienst gesendet.
 
 Site Recovery ist für ISO 27001:2013 und 27018, HIPAA und DPA zertifiziert. Die Bewertungen für SOC2 und FedRAMP JAB werden gerade durchgeführt.
 
@@ -305,6 +301,10 @@ Updates in den Versionen 9.24 und höher zeigen jetzt die [Integrität des Proze
 ### <a name="how-do-i-update-the-process-server-to-version-924-or-later-for-accurate-health-information"></a>Wie aktualisiere ich den Prozessserver auf Version 9.24 oder höher, um genaue Integritätsinformationen zu erhalten?
 
 Ab [Version 9.24](service-updates-how-to.md#links-to-currently-supported-update-rollups) wurden weitere Warnungen hinzugefügt, um die Integrität des Prozessservers anzuzeigen. [Aktualisieren Sie Ihre Site Recovery-Komponenten auf Version 9.24 oder neuer,](service-updates-how-to.md#links-to-currently-supported-update-rollups) damit alle Warnungen generiert werden.
+
+### <a name="how-can-i-ensure-high-availability-of-the-process-server"></a>Wie kann ich die Hochverfügbarkeit des Prozessservers sicherstellen?
+
+Da das Design bietet durch die Möglichkeit, mehrere Prozessserver zu konfigurieren, die Flexibilität, geschützte Computer von einem fehlerhaften Prozessserver auf einen funktionierenden Prozessserver zu verschieben. Das Verschieben eines Computers von einem Prozessserver auf einen anderen muss explizit/manuell über die hier beschriebenen Schritte initiiert werden: [Verschieben von VMS zwischen Prozessservern](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load).
 
 ## <a name="failover-and-failback"></a>Failover und Failback
 

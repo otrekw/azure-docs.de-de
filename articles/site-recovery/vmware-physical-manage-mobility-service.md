@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: e6e7beeb4c10098f36636aad2709e03d1a1a0fea
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 9be758c286e072b0fbefc5f8b20b7accc4e6741b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953648"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228850"
 ---
 # <a name="manage-the-mobility-agent"></a>Verwalten des Mobilitäts-Agent 
 
@@ -37,11 +37,24 @@ Sie richten einen Mobilitäts-Agent auf Ihrem Server ein, wenn Sie Azure Site Re
 
 ## <a name="update-mobility-service-through-powershell-script-on-windows-server"></a>Aktualisieren des Mobilitätsdiensts über ein PowerShell-Skript unter Windows Server
 
+Stellen Sie vor dem Start sicher, dass der Konfigurationsserver, der Prozessserver für horizontales Skalieren und alle Masterzielserver, die Teil der Bereitstellung sind, aktualisiert werden, bevor Sie mit der Aktualisierung von Mobility Service auf den geschützten Computern beginnen.
+
 Verwenden Sie das folgende Skript zum Aktualisieren des Mobilitätsdiensts auf einem Server über das PowerShell-Cmdlet:
 
 ```azurepowershell
 Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Account $fabric.fabricSpecificDetails.RunAsAccounts[0]
 ```
+
+## <a name="update-mobility-service-manually-on-each-protected-server"></a>Manuelles Aktualisieren des Mobilitätsdiensts auf den einzelnen geschützten Servern
+
+1. Stellen Sie vor dem Start sicher, dass der Konfigurationsserver, der Prozessserver für horizontales Skalieren und alle Masterzielserver, die Teil der Bereitstellung sind, aktualisiert werden, bevor Sie mit der Aktualisierung von Mobility Service auf den geschützten Computern beginnen.
+
+2. [Suchen Sie das Agent-Installationsprogramm](vmware-physical-mobility-service-overview.md#locate-installer-files) basierend auf dem Betriebssystem des Servers.
+
+>[!IMPORTANT]
+> Wenn Sie virtuelle Azure-IaaS-Computer von einer Azure-Region in eine andere replizieren, sollten Sie diese Methode nicht verwenden. Weitere Informationen zu allen verfügbaren Optionen finden Sie in [unserem Leitfaden](azure-to-azure-autoupdate.md).
+
+3. Kopieren Sie die Installationsdatei auf den geschützten Computer, und führen Sie sie aus, um den Mobilitäts-Agent zu aktualisieren.
 
 ## <a name="update-account-used-for-push-installation-of-mobility-service"></a>Aktualisieren des für die Pushinstallation des Mobilitätsdiensts verwendeten Kontos
 
