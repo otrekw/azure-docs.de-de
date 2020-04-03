@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.openlocfilehash: 9c5f6aa2900570aa00ddbc50ec8be4dbb0d16a34
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 3/19/2020
+ms.openlocfilehash: e8d5abd81feb86ba48fc442ee95615cb52230a24
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978048"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063827"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Überwachungsprotokolle in Azure Database for MariaDB
 
@@ -29,7 +29,7 @@ Weitere Parameter, die Sie anpassen können:
 - `audit_log_events`: steuert die zu protokollierenden Ereignisse. In der nachstehenden Tabelle finden Sie spezifische Überwachungsereignisse.
 - `audit_log_include_users`: MariaDB-Benutzer, die zur Protokollierung einbezogen werden sollen. Der Standardwert für diesen Parameter ist leer, wodurch alle Benutzer zur Protokollierung einbezogen werden. Dies hat eine höhere Priorität als `audit_log_exclude_users`. Die maximale Länge des Parameters ist 512 Zeichen.
 > [!Note]
-> `audit_log_include_users` hat eine höhere Priorität als `audit_log_exclude_users`. Wenn z.B. `audit_log_include_users` = `demouser` und `audit_log_exclude_users` = `demouser` einbezogen werden, wird der Benutzer in die Überwachungsprotokolle eingeschlossen, weil `audit_log_include_users` eine höhere Priorität besitzt.
+> `audit_log_include_users` hat eine höhere Priorität als `audit_log_exclude_users`. Wenn z. B. `audit_log_include_users` = `demouser` und `audit_log_exclude_users` = `demouser` einbezogen werden, wird der Benutzer in die Überwachungsprotokolle eingeschlossen, da `audit_log_include_users` eine höhere Priorität hat.
 - `audit_log_exclude_users`: MariaDB-Benutzer, die von der Protokollierung ausgeschlossen werden sollen. Maximal sind vier Benutzer zulässig. Die maximale Länge des Parameters ist 256 Zeichen.
 
 | **Event** | **Beschreibung** |
@@ -106,30 +106,59 @@ Das unten angegebene Schema gilt für die Ereignistypen GENERAL, DML_SELECT, DML
 | `sql_text_s` | Vollständiger Abfragetext |
 | `\_ResourceId` | Ressourcen-URI |
 
-### <a name="table-access"></a>Tabellenzugriff
+## <a name="analyze-logs-in-azure-monitor-logs"></a>Analysieren von Protokollen in Azure Monitor-Protokollen
 
-| **Eigenschaft** | **Beschreibung** |
-|---|---|
-| `TenantId` | Ihre Mandanten-ID |
-| `SourceSystem` | `Azure` |
-| `TimeGenerated [UTC]` | Zeitstempel für den Aufzeichnungsbeginn des Protokolls in UTC |
-| `Type` | Typ des Protokolls Immer `AzureDiagnostics` |
-| `SubscriptionId` | GUID für das Abonnement, zu dem der Server gehört |
-| `ResourceGroup` | Name der Ressourcengruppe, zu der der Server gehört |
-| `ResourceProvider` | Name des Ressourcenanbieters Immer `MICROSOFT.DBFORMARIADB` |
-| `ResourceType` | `Servers` |
-| `ResourceId` | Ressourcen-URI |
-| `Resource` | Name des Servers |
-| `Category` | `MySqlAuditLogs` |
-| `OperationName` | `LogEvent` |
-| `LogicalServerName_s` | Name des Servers |
-| `event_class_s` | `table_access_log` |
-| `event_subclass_s` | `READ`, `INSERT`, `UPDATE` oder `DELETE` |
-| `connection_id_d` | Von MariaDB generierte eindeutige Verbindungs-ID |
-| `db_s` | Name der Datenbank, auf die zugegriffen wird |
-| `table_s` | Name der Tabelle, auf die zugegriffen wird |
-| `sql_text_s` | Vollständiger Abfragetext |
-| `\_ResourceId` | Ressourcen-URI |
+Sobald Ihre Überwachungsprotokolle über Diagnoseprotokolle an Azure Monitor-Protokolle weitergeleitet wurden, können Sie weitere Analysen Ihrer überwachten Ereignisse durchführen. Im Folgenden finden Sie einige Beispielabfragen, die Ihnen beim Einstieg helfen. Stellen Sie sicher, dass Sie die Abfragen unten mit Ihrem Servernamen aktualisieren.
+
+- Auflisten von allgemeinen (GENERAL) Ereignissen auf einem bestimmten Server
+
+    ```kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlAuditLogs' and event_class_s == "general_log"
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | order by TimeGenerated asc nulls last 
+    ```
+
+- Auflisten von Verbindungsereignissen (CONNECTION) auf einem bestimmten Server
+
+    ```kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlAuditLogs' and event_class_s == "connection_log"
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | order by TimeGenerated asc nulls last
+    ```
+
+- Zusammenfassen von überwachten Ereignissen auf einem bestimmten Server
+
+    ```kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlAuditLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | summarize count() by event_class_s, event_subclass_s, user_s, ip_s
+    ```
+
+- Erstellen eines Diagramms der Verteilung von Überwachungsereignistypen auf einem bestimmten Server
+
+    ```kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlAuditLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | summarize count() by LogicalServerName_s, bin(TimeGenerated, 5m)
+    | render timechart 
+    ```
+
+- Auflisten von überwachten Ereignissen auf allen MariaDB-Servern mit aktivierten Diagnoseprotokollen für Überwachungsprotokolle
+
+    ```kusto
+    AzureDiagnostics
+    | where Category == 'MySqlAuditLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | order by TimeGenerated asc nulls last
+    ``` 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

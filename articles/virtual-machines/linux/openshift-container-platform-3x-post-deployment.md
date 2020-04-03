@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: d3008e2e2d720b67fcf0846c27d2fed1ef7db307
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1635589b282dc33f6a1e9c2552dc8a73c67b9004
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035511"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294745"
 ---
 # <a name="post-deployment-tasks"></a>Aufgaben nach der Bereitstellung
 
@@ -39,9 +39,9 @@ Um Azure Active Directory für die Authentifizierung zu verwenden, müssen Sie z
 Für diese Schritte wird die Azure-Befehlszeilenschnittstelle verwendet, um die App-Registrierung zu erstellen, und die grafische Benutzeroberfläche (das Portal), um die Berechtigungen festzulegen. Für die Erstellung der App-Registrierung werden die folgenden fünf Angaben benötigt:
 
 - Anzeigename: Der Name der App-Registrierung (z.B. OCPAzureAD)
-- Startseite: OpenShift-Konsolen-URL (z.B. https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- Bezeichner-URI: OpenShift-Konsolen-URL (z.B. https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- Antwort-URL: Öffentliche Master-URL und Name der App-Registrierung (z.B. https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
+- Startseite: OpenShift-Konsolen-URL (z. B. `https://masterdns343khhde.westus.cloudapp.azure.com/console`)
+- Bezeichner-URI: OpenShift-Konsolen-URL (z. B. `https://masterdns343khhde.westus.cloudapp.azure.com/console`)
+- Antwort-URL: Öffentliche Master-URL und Name der App-Registrierung (z. B. `https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD`)
 - Password (Kennwort): Sicheres Kennwort (verwenden Sie ein sicheres Kennwort)
 
 Im folgenden Beispiel wird eine App-Registrierung mit den obigen Informationen erstellt:
@@ -176,7 +176,7 @@ Wenn Metriken und die Protokollierung während der Installation des Clusters nic
 
 ### <a name="azure-cloud-provider-in-use"></a>Mit Azure-Cloudanbieter
 
-Stellen Sie eine SSH-Verbindung mit dem Bastion-Knoten oder dem ersten Masterknoten her (basierend auf der verwendeten Vorlage und dem Branch), und verwenden Sie dazu die während der Bereitstellung angegebenen Anmeldeinformationen. Geben Sie den folgenden Befehl ein:
+Stellen Sie eine SSH-Verbindung mit dem Bastion-Knoten oder dem ersten Masterknoten her (basierend auf der verwendeten Vorlage und dem Branch), und verwenden Sie dazu die während der Bereitstellung angegebenen Anmeldeinformationen. Führen Sie den folgenden Befehl aus:
 
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml \

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b29dbd7a034123b17b34b1c0fd4c8649e30810bd
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 272188b50fe59435031a4a2fb9c252f3f358bb6c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128173"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535730"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Erstellen eines FSLogix-Profilcontainers für einen Hostpool mit Azure NetApp Files
 
@@ -57,11 +57,11 @@ Zunächst müssen Sie ein Azure NetApp Files-Konto einrichten.
 
 5. Führen Sie nach dem Laden von Azure Cloud Shell die folgenden beiden Cmdlets aus.
 
-   ```powershell
+   ```azurecli
    az account set --subscription <subscriptionID>
    ```
 
-   ```powershell
+   ```azurecli
    az provider register --namespace Microsoft.NetApp --wait
    ```
 
@@ -73,7 +73,7 @@ Zunächst müssen Sie ein Azure NetApp Files-Konto einrichten.
 7. Wählen Sie in den Suchergebnissen den Eintrag **Azure NetApp Files** und dann die Option **Erstellen** aus.
 
 8. Wählen Sie die Schaltfläche **Hinzufügen** aus.
-9. Geben Sie die folgenden Werte ein, wenn das Blatt **Neues NetApp-Konto** geöffnet wird:
+9. Geben Sie die folgenden Werte ein, nachdem die Registerkarte **Neues NetApp-Konto** geöffnet wurde:
 
     - Geben Sie unter **Name** den Namen Ihres NetApp-Kontos ein.
     - Wählen Sie unter **Abonnement** im Dropdownmenü das Abonnement für das Speicherkonto aus, das Sie in Schritt 4 eingerichtet haben.
@@ -92,7 +92,7 @@ Erstellen Sie als Nächstes einen neuen Kapazitätspool:
 1. Navigieren Sie zum Azure NetApp Files-Menü, und wählen Sie Ihr neues Konto aus.
 2. Wählen Sie in Ihrem Kontomenü unter dem Storage-Dienst die Option **Kapazitätspools** aus.
 3. Wählen Sie **Pool hinzufügen** aus.
-4. Geben Sie die folgenden Werte ein, nachdem das Blatt **Neuer Kapazitätspool** geöffnet wurde:
+4. Geben Sie die folgenden Werte ein, nachdem die Registerkarte **Neuer Kapazitätspool** geöffnet wurde:
 
     - Geben Sie unter **Name** einen Namen für den neuen Kapazitätspool ein.
     - Wählen Sie unter **Servicelevel** im Dropdownmenü Ihren gewünschten Wert aus. Für die meisten Umgebungen lautet unsere Empfehlung **Premium**.
@@ -127,7 +127,7 @@ Als Nächstes müssen Sie ein neues Volume erstellen.
 
 1. Wählen Sie **Volumes** und dann **Volume hinzufügen** aus.
 
-2. Geben Sie die folgenden Werte ein, nachdem das Blatt **Volume erstellen** geöffnet wurde:
+2. Geben Sie die folgenden Werte ein, nachdem die Registerkarte **Volume erstellen** geöffnet wurde:
 
     - Geben Sie unter **Volumename** einen Namen für das neue Volume ein.
     - Wählen Sie unter **Kapazitätspool** im Dropdownmenü den gerade erstellten Kapazitätspool aus.

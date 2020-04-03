@@ -8,22 +8,25 @@ ms.author: edprice
 manager: edprice
 editor: edprice
 ms.topic: conceptual
-ms.date: 05/29/2019
+ms.date: 03/30/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: a5426c3cd7552b24739f9a20e01d5a4b42bd383c
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 5b3fa5faccf17df17bc4f7cc2d8b023b868fdbe1
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834575"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411197"
 ---
 # <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>Installieren von Micro Focus Enterprise Server 4.0 und Enterprise Developer 4.0 in Azure
 
 In diesem Artikel wird gezeigt, wie Sie [Micro Focus Enterprise Server 4.0](https://www.microfocus.com/documentation/enterprise-developer/es30/) und [Micro Focus Enterprise Developer 4.0](https://www.microfocus.com/documentation/enterprise-developer/ed_30/) in Azure einrichten.
 
 Eine gängige Workload für Azure ist eine Entwicklungs- und Testumgebung. Dieses Szenario ist gängig, weil es so kostengünstig sowie einfach bereitzustellen und zu beenden ist. Mit Enterprise Server hat Micro Focus eine der größten verfügbaren Mainframe-Rehostingplattformen erstellt. Sie können z/OS-Workloads auf einer weniger teuren x86-Plattform in Azure mithilfe von wahlweise Windows- oder Linux-VMs ausführen.
+
+> [!NOTE]
+> In Kürze verfügbar: Anweisungen zum Einrichten von [Micro Focus Enterprise Server 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) auf Azure-VMs.
 
 Dieses Setup verwendet Azure-VMs, die das Windows Server 2016-Image aus dem Azure Marketplace mit bereits installiertem Microsoft SQL Server 2017 ausführen. Dieses Setup ist auch für Azure Stack gültig.
 
@@ -33,7 +36,7 @@ Die entsprechende Entwicklungsumgebung für Enterprise Server ist Enterprise Dev
 
 Überprüfen Sie zunächst diese Voraussetzungen:
 
-- Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- Ein Azure-Abonnement. Sollten Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 - Die Micro Focus-Software und eine gültige Lizenz (oder Testlizenz). Wenn Sie ein Micro Focus-Bestandskunde sind, wenden Sie sich an Ihren Micro Focus-Vertreter. Andernfalls können Sie [eine Testversion anfordern](https://www.microfocus.com/products/enterprise-suite/enterprise-server/trial/).
 
@@ -76,7 +79,7 @@ Die entsprechende Entwicklungsumgebung für Enterprise Server ist Enterprise Dev
 
      ![Micro Focus Enterprise Server-Setupbildschirm](media/02-enterprise-server.png)
 
-### <a name="check-for-updates"></a>Prüfen auf Updates
+### <a name="check-for-updates"></a>Suchen nach Updates
 
 Achten Sie nach der Installation darauf, auf eventuell verfügbare Updates zu prüfen, da eine Reihe von Voraussetzungen zusammen mit Enterprise Server installiert wird, darunter die Microsoft C++ Redistributable und .NET Framework.
 

@@ -1,19 +1,19 @@
 ---
 title: Ändern einer Azure-VM-Skalierungsgruppe
 description: Erfahren Sie, wie Sie eine Azure-VM-Skalierungsgruppe mit den REST-APIs, Azure PowerShell und der Azure CLI ändern und aktualisieren.
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 02/14/2018
-ms.author: manayar
-ms.openlocfilehash: 49327ff0c3aeab25de02fc67c049f24597215d45
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.date: 03/10/2020
+ms.author: mimckitt
+ms.openlocfilehash: 66fd656b5175547641150a048e57c978dc06d291
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274451"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476823"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Ändern einer VM-Skalierungsgruppe
 
@@ -311,7 +311,7 @@ Um vorhandene virtuelle Computer zu aktualisieren, müssen Sie für jeden virtue
 >[!NOTE]
 > Für Service Fabric-Cluster kann nur der Modus *Automatisch* verwendet werden, das Update wird jedoch anders gehandhabt. Weitere Informationen finden Sie unter [Service Fabric-Anwendungsupgrades](../service-fabric/service-fabric-application-upgrade.md).
 
-Eine der Änderungen, die an globalen Skalierungsgruppeneigenschaften vorgenommen werden, entspricht nicht der Upgraderichtlinie. Änderungen am Skalierungsgruppen-Betriebssystemprofil (z.B. Administratorbenutzername und -kennwort) können nur in API-Versionen ab *2017-12-01* geändert werden. Diese Änderungen gelten nur für virtuelle Computer, die nach der Änderung im Skalierungsgruppenmodell erstellt wurden. Um vorhandene virtuelle Computer zu aktualisieren, müssen Sie ein Reimaging aller vorhandenen virtuellen Computer durchführen. Für dieses Reimaging können Sie Folgendes verwenden:
+Eine der Änderungen, die an globalen Skalierungsgruppeneigenschaften vorgenommen werden, entspricht nicht der Upgraderichtlinie. Änderungen am Betriebssystem- und Datenträgerprofil von Skalierungsgruppen (z. B. Administratorbenutzername und -kennwort) können nur in API-Versionen ab *2017-12-01* geändert werden. Diese Änderungen gelten nur für virtuelle Computer, die nach der Änderung im Skalierungsgruppenmodell erstellt wurden. Um vorhandene virtuelle Computer zu aktualisieren, müssen Sie ein Reimaging aller vorhandenen virtuellen Computer durchführen. Für dieses Reimaging können Sie Folgendes verwenden:
 
 - REST-API mit [compute/virtualmachinescalesets/reimage](/rest/api/compute/virtualmachinescalesets/reimage) wie folgt:
 
@@ -342,6 +342,7 @@ Einige Eigenschaften können nur beim Erstellen der Skalierungsgruppe festgelegt
 - Verfügbarkeitszonen
 - Imagereferenzherausgeber
 - Imagereferenzangebot
+- Imageverweis-SKU
 - Speicherkontotyp des verwalteten Betriebssystemdatenträgers
 
 ### <a name="properties-that-can-only-be-changed-based-on-the-current-value"></a>Eigenschaften, die nur auf Grundlage des aktuellen Werts geändert werden können
@@ -371,7 +372,7 @@ Anwendungen werden häufig auch über ein benutzerdefiniertes Image bereitgestel
 Bei Verwendung von Azure-Plattformimages können Sie das Image durch Ändern von *imageReference* aktualisieren. (Weitere Informationen finden Sie in der [REST-API-Dokumentation](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate).)
 
 >[!NOTE]
-> Bei Plattformimages wird als Imagereferenzversion häufig „aktuelle Version“ angegeben. Beim Erstellen, horizontalen Hochskalieren und Durchführen eines Reimagings werden die virtuellen Computer mit der neuesten verfügbaren Version erstellt. Das bedeutet jedoch **nicht**, dass das Betriebssystemimage im Lauf der Zeit automatisch aktualisiert wird, wenn neue Imageversionen veröffentlicht werden. Es befindet sich derzeit ein separates Feature in der Vorschau, das automatische Betriebssystemupgrades bereitstellt. Weitere Informationen finden Sie in der [Dokumentation zu automatischen Betriebssystemupgrades](virtual-machine-scale-sets-automatic-upgrade.md).
+> Bei Plattformimages wird als Imagereferenzversion häufig „aktuelle Version“ angegeben. Beim Erstellen, Aufskalieren und Durchführen eines Reimagings werden die virtuellen Computer mit der neuesten verfügbaren Version erstellt. Das bedeutet jedoch **nicht**, dass das Betriebssystemimage im Lauf der Zeit automatisch aktualisiert wird, wenn neue Imageversionen veröffentlicht werden. Es befindet sich derzeit ein separates Feature in der Vorschau, das automatische Betriebssystemupgrades bereitstellt. Weitere Informationen finden Sie in der [Dokumentation zu automatischen Betriebssystemupgrades](virtual-machine-scale-sets-automatic-upgrade.md).
 
 Bei Verwendung von benutzerdefinierten Images können Sie das Image durch Aktualisieren der *imageReference*-ID aktualisieren. (Weitere Informationen finden Sie in der [REST-API-Dokumentation](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate).)
 

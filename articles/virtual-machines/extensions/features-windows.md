@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4eb212cb6122803f78b13e6c17a55bac5bc48286
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: cd6439bf1b1f52b8e63819e8e519fc4971d1bc2a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587871"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066856"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Erweiterungen und Features für virtuelle Computer für Windows
 
@@ -353,7 +353,7 @@ Jede VM-Erweiterung kann für die Erweiterung spezifische Schritte zur Problembe
 
 Die folgenden Schritte zur Problembehandlung gelten für alle VM-Erweiterungen.
 
-1. Um die Protokolldatei des Windows-Gast-Agents zu überprüfen, sollten Sie die Aktivität bei der Bereitstellung der Erweiterung in *C:\WindowsAzure\Logs\WaAppAgent.txt* näher betrachten.
+1. Um die Protokolldatei des Windows-Gast-Agents zu überprüfen, sollten Sie die Aktivität bei der Bereitstellung der Erweiterung in *C:\WindowsAzure\Logs\WaAppAgent.log* näher betrachten.
 
 2. Überprüfen Sie die tatsächlichen Erweiterungsprotokolle unter *C:\WindowsAzure\Logs\Plugins\<extensionName>* für weitere Einzelheiten.
 

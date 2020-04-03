@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 17505084095eb8fbe46c20c7aa226131e128b286
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 36b15b41279edc60d337a7ba70abe2ca64d4bc7f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127414"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371595"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Mandanten- und Hostpoolerstellung
 
@@ -145,7 +145,7 @@ Beispiel für unformatierten Fehler:
 
 Führen Sie folgende Schritte aus, um dieses Problem zu beheben:
 
-1. Öffnen Sie das Azure-Portal, und wechseln Sie zum Blatt **Virtuelle Netzwerke**.
+1. Öffnen Sie das Azure-Portal, und wechseln Sie zur Registerkarte **Virtuelle Netzwerke**.
 2. Suchen Sie Ihr VNET, und wählen Sie dann **DNS-Server**aus.
 3. Das Menü für DNS-Server sollte auf der rechten Seite des Bildschirms angezeigt werden. Wählen Sie in diesem Menü **Benutzerdefiniert** aus.
 4. Stellen Sie sicher, dass die unter „Benutzerdefiniert“ aufgelisteten DNS-Server mit Ihrem Domänencontroller oder Ihrer Active Directory-Domäne übereinstimmen. Wenn Ihr DNS-Server nicht angezeigt wird, können Sie ihn hinzufügen, indem Sie den entsprechenden Wert in das Feld **DNS-Server hinzufügen** eingeben.
