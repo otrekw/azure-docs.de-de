@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa14b45235f2a62f05e84efafc41b899dc531d49
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: aa612ad30ae0faa42071613be15c1d91fb96b8f6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74868676"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80332261"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>Integrieren einer vorhandenen Gesamtstruktur in eine neue Gesamtstruktur mit einem einzelnen Azure AD-Mandanten
 
@@ -43,7 +43,7 @@ In diesem Szenario wird eine vorhandene Gesamtstruktur mithilfe der Azure AD C
 
      | Portnummer | Wie diese verwendet wird |
      | --- | --- |
-     | **80** | Herunterladen der Zertifikatssperrlisten (CRL) bei der Überprüfung des SSL-Zertifikats |
+     | **80** | Herunterladen der Zertifikatsperrlisten (Certificate Revocation Lists, CRLs) bei der Überprüfung des TLS/SSL-Zertifikats |
      | **443** | Verarbeitung der gesamten ausgehende Kommunikation mit dem Dienst |
      | **8080** (optional) | Agents melden ihren Status alle zehn Minuten über den Port 8080, wenn der Port 443 nicht verfügbar ist. Dieser Status wird im Azure AD-Portal angezeigt. |
      

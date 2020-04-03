@@ -1,22 +1,22 @@
 ---
 title: Kundenseitig verwaltete Transparent Data Encryption (TDE)
-description: 'Transparent Data Encryption (TDE) mit Azure Key Vault mit Bring Your Own Key-Unterstützung (BYOK) für Azure SQL-Datenbank und SQL Data Warehouse TDE mit BYOK: Überblick, Funktionsweise, Überlegungen und Empfehlungen'
+description: 'Transparent Data Encryption (TDE) mit Azure Key Vault mit Bring Your Own Key-Unterstützung (BYOK) für Azure SQL-Datenbank und Azure Synapse TDE mit BYOK: Überblick, Funktionsweise, Überlegungen und Empfehlungen'
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: seo-lt-2019
+ms.custom: seo-lt-2019, azure-synapse
 ms.devlang: ''
 ms.topic: conceptual
 author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
-ms.date: 02/12/2020
-ms.openlocfilehash: 8e91bb9223f3e6ccd4c76614d75db8591dbed045
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 03/18/2020
+ms.openlocfilehash: 462326fb16663a6f25ff4b51ea11791201086fd6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201514"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79528727"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption mithilfe eines kundenseitig verwalteten Schlüssels
 
@@ -24,7 +24,7 @@ Azure SQL [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/rel
 
 In diesem Szenario ist der Schlüssel, der für die Verschlüsselung des Datenbank-Verschlüsselungsschlüssels (Database Encryption Key, DEK) verwendet und auch als TDE-Schutzvorrichtung bezeichnet wird, ein vom Kunden verwalteter asymmetrischer Schlüssel, der in einer kundeneigenen und vom Kunden verwalteten [Azure Key Vault-Instanz (AKV)](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) gespeichert ist, einem cloudbasierten externen Schlüsselverwaltungssystem. Key Vault bietet hochverfügbaren und skalierbaren sicheren Speicher für RSA-Kryptografieschlüssel, der optional von FIPS 140-2 Level 2-geprüften Hardwaresicherheitsmodulen (HSM) gesichert wird. Dabei wird kein direkter Zugriff auf einen gespeicherten Schlüssel zugelassen, sondern Verschlüsselung und Entschlüsselung werden mithilfe des Schlüssels für die autorisierten Entitäten bereitgestellt. Der Schlüssel kann vom Schlüsseltresor generiert, importiert oder von [einem lokalen HSM-Gerät auf den Schlüsseltresor übertragen werden](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
 
-Bei Azure SQL-Datenbank und Azure SQL Data Warehouse ist die TDE-Schutzvorrichtung auf der logischen Serverebene festgelegt und wird von allen verschlüsselten Datenbanken geerbt, die diesem Server zugeordnet sind. Bei der verwalteten Azure SQL-Instanz ist die TDE-Schutzvorrichtung auf Instanzebene festgelegt und wird von allen verschlüsselten Datenbanken für diese Instanz geerbt. In diesem Dokument bezieht sich der Begriff *Server* sowohl auf den logischen SQL-Datenbank-Server als auch auf die Instanz (sofern nicht anders angegeben).
+Bei Azure SQL-Datenbank und Azure Synapse ist die TDE-Schutzvorrichtung auf der logischen Serverebene festgelegt und wird von allen verschlüsselten Datenbanken geerbt, die diesem Server zugeordnet sind. Bei der verwalteten Azure SQL-Instanz ist die TDE-Schutzvorrichtung auf Instanzebene festgelegt und wird von allen verschlüsselten Datenbanken für diese Instanz geerbt. In diesem Dokument bezieht sich der Begriff *Server* sowohl auf den logischen SQL-Datenbank-Server als auch auf die Instanz (sofern nicht anders angegeben).
 
 > [!IMPORTANT]
 > Für diejenigen, die eine dienstseitig verwaltete TDE verwenden und auf eine kundenseitig verwalteten TDE umsteigen möchten, bleiben die Daten während der Umstellung verschlüsselt, und es kommt nicht zu Ausfallzeiten oder einer Neuverschlüsselung der Datenbankdateien. Der Wechsel von einem dienstseitig verwalteten Schlüssel zu einem kundenseitig verwalteten Schlüssel erfordert lediglich eine erneute Verschlüsselung des Datenbankverschlüsselungsschlüssels (DEK), die schnell und online durchzuführen ist.
@@ -73,7 +73,7 @@ Prüfer können Azure Monitor verwenden, um die AuditEvent-Protokolle von Key Va
 
 - Der Schlüsseltresor und die (verwaltete) SQL-Datenbank-Instanz müssen demselben Azure Active Directory-Mandanten angehören. Mandantenübergreifende Interaktionen zwischen Schlüsseltresor und Server werden nicht unterstützt. Damit Ressourcen später verschoben werden können, muss die TDE mit AKV neu konfiguriert werden. Erfahren Sie mehr über das [Verschieben von Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 
-- Die Funktion zum [vorläufigen Löschen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) muss im Schlüsseltresor aktiviert sein, um bei einer versehentlichen Löschung des Schlüssels (oder Schlüsseltresors) Datenverluste zu vermeiden. Vorläufig gelöschte Ressourcen werden 90 Tage lang aufbewahrt, sofern sie nicht in der Zwischenzeit vom Kunden wiederhergestellt oder endgültig gelöscht werden. Den Aktionen *Wiederherstellen* und *Endgültig löschen* sind über Zugriffsrichtlinien für den Schlüsseltresor eigene Berechtigungen zugewiesen. Die Funktion für vorläufiges Löschen ist standardmäßig deaktiviert und kann mit [PowerShell](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell#enabling-soft-delete) oder der [Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-cli#enabling-soft-delete) aktiviert werden. Über das Azure-Portal ist die Aktivierung nicht möglich.  
+- Die Funktion zum [vorläufigen Löschen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) muss im Schlüsseltresor aktiviert sein, um bei einer versehentlichen Löschung des Schlüssels (oder Schlüsseltresors) Datenverluste zu vermeiden. Vorläufig gelöschte Ressourcen werden 90 Tage lang aufbewahrt, sofern sie nicht in der Zwischenzeit vom Kunden wiederhergestellt oder endgültig gelöscht werden. Den Aktionen *Wiederherstellen* und *Endgültig löschen* sind über Zugriffsrichtlinien für den Schlüsseltresor eigene Berechtigungen zugewiesen. Die Funktion für vorläufiges Löschen ist standardmäßig deaktiviert und kann über [PowerShell](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell#enabling-soft-delete) oder die Befehlszeilenschnittstelle ([CLI](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-cli#enabling-soft-delete)) aktiviert werden. Über das Azure-Portal ist die Aktivierung nicht möglich.  
 
 - Gewähren Sie dem SQL-Datenbank-Server oder der verwalteten Instanz über die Azure Active Directory-Identität Zugriff auf den Schlüsseltresor (get, wrapKey, unwrapKey). Wenn Sie das Azure-Portal verwenden, wird die Azure AD-Identität automatisch erstellt. Bei der Verwendung von PowerShell oder der Befehlszeilenschnittstelle muss die Azure AD-Identität explizit erstellt werden, und der Abschluss des Vorgangs sollte überprüft werden. Unter [Konfigurieren von TDE mit BYOK](transparent-data-encryption-byok-azure-sql-configure.md) und [Konfigurieren von TDE mit BYOK für verwaltete Instanz](https://aka.ms/sqlmibyoktdepowershell) finden Sie ausführliche Anleitungen für die Verwendung von PowerShell.
 
@@ -99,7 +99,7 @@ Prüfer können Azure Monitor verwenden, um die AuditEvent-Protokolle von Key Va
 
 - Aktivieren Sie die Überwachung und Berichterstellung für alle Verschlüsselungsschlüssel: Key Vault stellt Protokolle bereit, die sich problemlos in andere SIEM-Tools (Security Information & Event Management) einfügen lassen. [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault) in Operations Management Suite ist ein Beispiel für einen Dienst, der bereits integriert ist.
 
-- Verknüpfen Sie jeden Server mit zwei Schlüsseltresoren in unterschiedlichen Regionen, aber mit denselben Schlüsselmaterialien, um die Hochverfügbarkeit verschlüsselter Datenbanken zu gewährleisten. Markieren Sie nur den Schlüssel aus dem Schlüsseltresor in derselben Region als TDE-Schutzvorrichtung. System verwendet
+- Verknüpfen Sie jeden Server mit zwei Schlüsseltresoren in unterschiedlichen Regionen, aber mit denselben Schlüsselmaterialien, um die Hochverfügbarkeit verschlüsselter Datenbanken zu gewährleisten. Markieren Sie nur den Schlüssel aus dem Schlüsseltresor in derselben Region als TDE-Schutzvorrichtung. Wenn es zu einem Ausfall kommt, der sich auf den Schlüsseltresor in derselben Region auswirkt, wechselt das System automatisch zu diesem Tresor.
 
 ### <a name="recommendations-when-configuring-tde-protector"></a>Empfehlungen für die Konfiguration der TDE-Schutzvorrichtung
 - Bewahren Sie eine Kopie der TDE-Schutzvorrichtung an einem sicheren Ort auf, oder hinterlegen Sie sie bei einem entsprechenden Dienst.
@@ -163,7 +163,7 @@ Wenn der für die Wiederherstellung einer Sicherung erforderliche Schlüssel nic
 
 Um dieses Problem zu umgehen, führen Sie das Cmdlet [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) für den logischen SQL-Datenbank-Zielserver oder das Cmdlet [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) für eine verwaltete Zielinstanz aus, um die Liste der verfügbaren Schlüssel zurückzugeben und die fehlenden Schlüssel zu ermitteln. Um sicherzustellen, dass alle Sicherungen wiederhergestellt werden können, vergewissern Sie sich, dass der Zielserver für die Wiederherstellung auf alle erforderlichen Schlüssel zugreifen kann. Diese Schlüssel müssen nicht als TDE-Schutzvorrichtung gekennzeichnet sein.
 
-Weitere Informationen zu Sicherungswiederherstellung für SQL-Datenbank finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen](sql-database-recovery-using-backups.md). Weitere Informationen zu Sicherungswiederherstellung für SQL Data Warehouse finden Sie unter [Sicherung und Wiederherstellung in Azure SQL Data Warehouse](../sql-data-warehouse/backup-and-restore.md). Informationen zur nativen Sicherung/Wiederherstellung von SQL Server mit verwalteten Instanzen finden Sie unter [Schnellstart: Wiederherstellen einer Datenbank in einer verwalteten Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore).
+Weitere Informationen zu Sicherungswiederherstellung für SQL-Datenbank finden Sie unter [Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen](sql-database-recovery-using-backups.md). Weitere Informationen zur Sicherungswiederherstellung für SQL-Pools finden Sie unter [Wiederherstellen eines SQL-Pools](../synapse-analytics/sql-data-warehouse/backup-and-restore.md). Informationen zur nativen Sicherung/Wiederherstellung von SQL Server mit verwalteten Instanzen finden Sie unter [Schnellstart: Wiederherstellen einer Datenbank in einer verwalteten Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore).
 
 Ein weiterer zu berücksichtigender Aspekt für Protokolldateien: Gesicherte Protokolldateien bleiben auch dann mit der ursprünglichen TDE-Schutzvorrichtung verschlüsselt, wenn diese rotiert wurde und die Datenbank jetzt eine neue TDE-Schutzvorrichtung verwendet.  Zur Wiederherstellungszeit werden beide Schlüssel benötigt, um die Datenbank wiederherzustellen.  Wenn die Protokolldatei eine in Azure Key Vault gespeicherte TDE-Schutzvorrichtung verwendet, wird dieser Schlüssel zur Wiederherstellungszeit auch dann benötigt, wenn die Datenbank geändert wurde und mittlerweile die dienstseitig verwaltete TDE verwendet.
 

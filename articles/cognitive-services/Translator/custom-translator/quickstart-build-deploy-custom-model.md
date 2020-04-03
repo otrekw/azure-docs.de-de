@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: 82f2acb811bcb239f6329ab8d8b4008e13ac6490
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a22ae3b4b11a4eac7da147cf3ad896bbad435448
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446744"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80370175"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Schnellstart: Erstellen, Bereitstellen und Verwenden eines benutzerdefinierten Modells für die Übersetzung
 
@@ -26,7 +26,21 @@ Dieser Artikel enthält ausführliche Anweisungen zum Erstellen eines Übersetzu
 
 2. Abonnement für die Textübersetzungs-API über das Azure-Portal. Sie benötigen den Abonnementschlüssel der Textübersetzungs-API für die Zuordnung zu Ihrem Arbeitsbereich in Custom Translator. [Hier](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup) erfahren Sie, wie Sie sich für die Textübersetzungs-API registrieren.
 
-3. Sind die beiden Komponenten oben vorhanden, melden Sie sich beim [Custom Translator](https://portal.customtranslator.azure.ai)-Portal an. Navigieren Sie im Custom Translator-Portal zur Seite „Einstellungen“. Dort können Sie den Abonnementschlüssel Ihrer Microsoft-Textübersetzungs-API Ihrem Arbeitsbereich zuordnen.
+3. Sind die beiden Komponenten oben vorhanden, melden Sie sich beim Portal für den [benutzerdefinierten Translator](https://portal.customtranslator.azure.ai) an, um Arbeitsbereiche und Projekte zu erstellen, Dateien hochzuladen sowie Modelle zu erstellen und bereitzustellen.
+
+## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
+
+Als Erstbenutzer werden Sie aufgefordert, den Vertragsbedingungen zuzustimmen, um einen Arbeitsbereich zu erstellen und dem Abonnement für die Microsoft-Textübersetzungs-API zuzuordnen.
+
+![Erstellen eines Arbeitsbereichs](media/quickstart/terms-of-service.png)
+![Erstellen eines Arbeitsbereichs](media/quickstart/create-workspace-1.png)
+![Erstellen eines Arbeitsbereichs](media/quickstart/create-workspace-2.png)
+![Erstellen eines Arbeitsbereichs](media/quickstart/create-workspace-3.png)
+![Erstellen eines Arbeitsbereichs](media/quickstart/create-workspace-4.png)
+![Erstellen eines Arbeitsbereichs](media/quickstart/create-workspace-5.png)
+![Erstellen eines Arbeitsbereichs](media/quickstart/create-workspace-6.png)
+
+Navigieren Sie bei nachfolgenden Besuchen im Portal für den benutzerdefinierten Translator zur Seite „Einstellungen“. Dort können Sie den Arbeitsbereich verwalten, weitere Arbeitsbereiche erstellen, den Abonnementschlüssel der Microsoft-Textübersetzungs-API Ihren Arbeitsbereichen zuordnen, Mitbesitzer hinzufügen und Abonnementschlüssel ändern.
 
 ## <a name="create-a-project"></a>Erstellen eines Projekts
 

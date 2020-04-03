@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/23/2020
+ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 63aef8d2036e442659145e031d384e9677c779a1
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 03a3d3c7d572d7ec5b8d3ac3d527d0d59e649bc2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598067"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062243"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Auflisten von Rollenzuweisungen mithilfe von Azure RBAC und dem Azure-Portal
 
@@ -128,11 +128,11 @@ Um den Zugriff für einen Benutzer, eine Gruppe, einen Dienstprinzipal oder eine
 
 ## <a name="list-number-of-role-assignments"></a>Auflisten der Anzahl von Rollenzuweisungen
 
-Sie können in jedem Abonnement bis zu **2000** Rollenzuweisungen haben. Damit Sie diese Grenzwerte nachverfolgen können, enthält die Registerkarte **Rollenzuweisungen** ein Diagramm, in dem die aktuelle Anzahl der Rollenzuweisungen aufgeführt ist.
+Sie können in jedem Abonnement bis zu **2000** Rollenzuweisungen haben. Damit Sie diesen Grenzwert nachverfolgen können, enthält die Registerkarte **Rollenzuweisungen** ein Diagramm, in dem die Anzahl der Rollenzuweisungen für das aktuelle Abonnement aufgeführt ist.
 
 ![Zugriffssteuerung: Diagramm „Anzahl der Rollenzuweisungen“](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
 
-Wenn Sie sich der maximalen Anzahl nähern und versuchen, weitere Rollenzuweisungen hinzuzufügen, wird im Bereich **Rollenzuweisung hinzufügen** eine Warnung angezeigt. Sie können die Anzahl von Rollenzuweisungen verringern, indem Sie Rollenzuweisungen löschen, die nicht mehr benötigt werden, oder indem Sie Rollen, anstelle von einzelnen Benutzern, Gruppen zuweisen.
+Wenn Sie sich der maximalen Anzahl nähern und versuchen, weitere Rollenzuweisungen hinzuzufügen, wird im Bereich **Rollenzuweisung hinzufügen** eine Warnung angezeigt. Möglichkeiten, wie Sie die Anzahl der Rollenzuweisungen reduzieren können, finden Sie unter [Problembehandlung von Azure RBAC](troubleshooting.md#azure-role-assignments-limit).
 
 ![Zugriffssteuerung: Warnung „Rollenzuweisung hinzufügen“](./media/role-assignments-list-portal/add-role-assignment-warning.png)
 

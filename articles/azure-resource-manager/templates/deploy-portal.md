@@ -3,23 +3,23 @@ title: Bereitstellen von Ressourcen mit dem Azure-Portal
 description: Verwenden Sie das Azure-Portal und Azure Resource Manager zum Bereitstellen Ihrer Ressourcen in einer Ressourcengruppe in Ihrem Abonnement.
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 32c807b4881bc59b6bec0d26ab3664abdb200628
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: ea2faf810b3a5d1b8fa46575201022a501cc7d58
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358294"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153436"
 ---
-# <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal
+# <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>Bereitstellen von Ressourcen mit ARM-Vorlagen und dem Azure-Portal
 
-Hier erfahren Sie, wie Sie mit dem [Azure-Portal](https://portal.azure.com) und [Azure Resource Manager](overview.md) Ihre Azure-Ressourcen bereitstellen. Informationen zum Verwalten von Ressourcen finden Sie unter [Verwalten von Azure-Ressourcen unter Verwendung des Azure-Portals](../management/manage-resources-portal.md).
+Hier erfahren Sie, wie Sie mit dem [Azure-Portal](https://portal.azure.com) und [Azure Resource Manager-Vorlagen (ARM)](overview.md) Ihre Azure-Ressourcen bereitstellen. Informationen zum Verwalten von Ressourcen finden Sie unter [Verwalten von Azure-Ressourcen unter Verwendung des Azure-Portals](../management/manage-resources-portal.md).
 
 Zur Bereitstellung von Azure-Ressourcen mit dem Azure-Portal sind normalerweise zwei Schritte notwendig:
 
 - Erstellen Sie eine Ressourcengruppe.
 - Bereitstellen von Ressourcen in der Ressourcengruppe
 
-Außerdem können Sie eine Azure Resource Manager-Vorlage bereitstellen, um Azure-Ressourcen zu erstellen.
+Außerdem können Sie eine ARM-Vorlage bereitstellen, um Azure-Ressourcen zu erstellen.
 
 In diesem Artikel werden beide Methoden beschrieben.
 
@@ -73,7 +73,7 @@ Nachdem Sie eine Ressourcengruppe erstellt haben, können Sie über den Marketpl
 
 ## <a name="deploy-resources-from-custom-template"></a>Bereitstellen von Ressourcen mithilfe einer benutzerdefinierten Vorlage
 
-Wenn Sie eine Bereitstellung ausführen möchten, ohne eine der Vorlagen im Marketplace zu nutzen, können Sie eine angepasste Vorlage erstellen, mit der die Infrastruktur für Ihre Lösung definiert wird. Informationen zum Erstellen von Vorlagen finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](template-syntax.md).
+Wenn Sie eine Bereitstellung ausführen möchten, ohne eine der Vorlagen im Marketplace zu nutzen, können Sie eine angepasste Vorlage erstellen, mit der die Infrastruktur für Ihre Lösung definiert wird. Informationen zum Erstellen von Vorlagen finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
 
 > [!NOTE]
 > Für die Portalschnittstelle wird das Verweisen auf ein [Geheimnis aus einem Key Vault](key-vault-parameter.md) nicht unterstützt. Verwenden Sie stattdessen [PowerShell](deploy-powershell.md) oder [Azure CLI](deploy-cli.md), um Ihre Vorlage lokal oder über einen externen URI bereitzustellen.
@@ -126,5 +126,5 @@ Wenn Sie eine Bereitstellung ausführen möchten, ohne eine der Vorlagen im Mark
 
 - Informationen zum Anzeigen von Überwachungsprotokollen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../management/view-activity-logs.md).
 - Informationen zum Beheben von Bereitstellungsfehlern finden Sie unter [Anzeigen von Bereitstellungsvorgängen](deployment-history.md).
-- Informationen zum Exportieren einer Vorlage aus einer Bereitstellung oder Ressourcengruppe finden Sie unter [Exportieren von Azure Resource Manager-Vorlagen](export-template-portal.md).
+- Informationen zum Exportieren einer Vorlage aus einer Bereitstellung oder Ressourcengruppe finden Sie unter [Exportieren von ARM-Vorlagen](export-template-portal.md).
 - Informationen zum sicheren Rollout Ihres Dienst über mehrere Regionen finden Sie unter [Sichere Bereitstellungsmethoden mit dem Azure-Bereitstellungs-Manager (öffentliche Vorschau)](deployment-manager-overview.md).

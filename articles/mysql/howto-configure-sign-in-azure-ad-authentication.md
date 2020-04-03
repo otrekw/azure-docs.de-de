@@ -1,17 +1,17 @@
 ---
-title: Verwenden von Azure Active Directory – Azure Database for MySQL – Einzelserver
-description: Informieren Sie sich, wie Sie Azure Active Directory (Azur AD) für die Authentifizierung mit Azure Database for MySQL (Einzelserver) einrichten.
+title: Verwenden von Azure Active Directory – Azure Database for MySQL
+description: Informieren Sie sich, wie Sie Azure Active Directory (Azure AD) für die Authentifizierung mit Azure Database for MySQL einrichten.
 author: lfittl-msft
 ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: bb3a8c94b377fb9c9150945ec4cf5980e006dd34
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 0403edadd491609c2c88d5b5ac6980d97163f8d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110611"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79299004"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Verwenden von Azure Active Directory für die Authentifizierung mit MySQL
 
@@ -205,7 +205,7 @@ Die meisten Treiber werden unterstützt. Stellen Sie jedoch sicher, dass die Ein
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Überprüfen der Gesamtkonzepte für [Azure Active Directory-Authentifizierung mit Azure Database for MySQL: Einzelserver](concepts-azure-ad-authentication.md)
+* Überprüfen der Gesamtkonzepte für [Azure Active Directory-Authentifizierung mit Azure Database for MySQL](concepts-azure-ad-authentication.md)
 
 <!--Image references-->
 

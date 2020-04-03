@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: eef67ca8111983adb4d9994894ba215240daee6f
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 166902978d1641458f18aeee6269c8d819e85233
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78253731"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132924"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integration der Quellcodeverwaltung in Azure Automation
 
@@ -33,7 +33,7 @@ Azure Automation unterstützt drei Arten von Quellcodeverwaltung:
 
 * Ein Quellcodeverwaltungsrepository (GitHub oder Azure Repos)
 * Ein [ausführendes Konto](manage-runas-account.md).
-* Die [neuesten Azure-Module](automation-update-azure-modules.md) in Ihrem Automation-Konto, einschließlich des **Az.Accounts**-Moduls (Az-Modul-Entsprechung von „AzureRM.Profile“).
+* Die [neuesten Azure-Module](automation-update-azure-modules.md) in Ihrem Automation-Konto, einschließlich des `Az.Accounts`-Moduls (Az-Modul-Entsprechung von `AzureRM.Profile`).
 
 > [!NOTE]
 > Synchronisierungsaufträge für die Quellcodeverwaltung werden unter dem Automation-Konto eines Benutzers ausgeführt und mit der gleichen Rate wie andere Automation-Aufträge berechnet.
@@ -42,11 +42,11 @@ Azure Automation unterstützt drei Arten von Quellcodeverwaltung:
 
 In diesem Abschnitt erfahren Sie, wie Sie die Quellcodeverwaltung für Ihr Automation-Konto konfigurieren. Sie können das Azure-Portal oder PowerShell verwenden.
 
-### <a name="configure-source-control----azure-portal"></a>Konfigurieren der Quellcodeverwaltung – Azure-Portal
+### <a name="configure-source-control-in-azure-portal"></a>Konfigurieren der Quellcodeverwaltung im Azure-Portal
 
 Verwenden Sie dieses Verfahren, um die Quellcodeverwaltung über das Azure-Portal zu konfigurieren.
 
-1. Wählen Sie in Ihrem Automation-Konto **Quellcodeverwaltung** aus, und klicken Sie auf **+ Hinzufügen**.
+1. Wählen Sie in Ihrem Automation-Konto **Quellcodeverwaltung** aus, und klicken Sie auf **Hinzufügen**.
 
     ![Auswählen der Quellcodeverwaltung](./media/source-control-integration/select-source-control.png)
 
@@ -54,15 +54,15 @@ Verwenden Sie dieses Verfahren, um die Quellcodeverwaltung über das Azure-Porta
 
 3. Ein Browserfenster wird geöffnet, und Sie werden zur Anmeldung aufgefordert. Befolgen Sie die Aufforderungen, um die Authentifizierung abzuschließen.
 
-4. Verwenden Sie die Felder auf der Seite **Zusammenfassung der Quellcodeverwaltung**, um die unten definierten Eigenschaften der Quellcodeverwaltung einzutragen. Klicken Sie abschließend auf **Speichern**. 
+4. Verwenden Sie die Felder auf der Seite „Zusammenfassung der Quellcodeverwaltung“, um die unten definierten Eigenschaften der Quellcodeverwaltung einzutragen. Klicken Sie abschließend auf **Speichern**. 
 
     |Eigenschaft  |BESCHREIBUNG  |
     |---------|---------|
     |Name der Quellcodeverwaltung     | Ein Anzeigename für die Quellcodeverwaltung. Dieser Name darf nur Buchstaben und Zahlen enthalten.        |
-    |Typ der Quellcodeverwaltung     | Der Typ des Quellcodeverwaltungs-Mechanismus. Die verfügbaren Optionen lauten wie folgt:</br> GitHub</br>Azure Repos (Git)</br> Azure Repos (TFVC)        |
+    |Typ der Quellcodeverwaltung     | Der Typ des Quellcodeverwaltungs-Mechanismus. Die verfügbaren Optionen lauten wie folgt:</br> * GitHub</br>* Azure Repos (Git)</br> * Azure Repos (TFVC)        |
     |Repository     | Der Name des Repositorys oder Projekts. Die ersten 200 Repositorys werden abgerufen. Geben Sie zum Suchen nach einem Repository den Namen in das Feld ein, und klicken Sie auf **Search on GitHub** (Auf GitHub suchen).|
     |Verzweigung     | Die Verzweigung, aus der die Quelldateien abgerufen werden sollen. Die Ausrichtung auf Verzweigungen ist für den TFVC-Quellcodeverwaltungstyp nicht verfügbar.          |
-    |Ordnerpfad     | Der Ordner, der die zu synchronisierenden Runbooks enthält, z. B. „/Runbooks“. Nur im angegebenen Ordner enthaltene Runbooks werden synchronisiert. Rekursion wird nicht unterstützt.        |
+    |Ordnerpfad     | Der Ordner, der die zu synchronisierenden Runbooks enthält, z. B. **/Runbooks**. Nur im angegebenen Ordner enthaltene Runbooks werden synchronisiert. Rekursion wird nicht unterstützt.        |
     |Automatische Synchronisierung<sup>1</sup>     | Eine Einstellung, die die automatische Synchronisierung aktiviert oder deaktiviert, wenn im Repository für die Quellcodeverwaltung ein Commit durchgeführt wird.        |
     |Runbook veröffentlichen     | Die Einstellung ist „Ein“ (On), wenn Runbooks nach der Synchronisierung aus der Quellcodeverwaltung automatisch veröffentlicht werden, andernfalls ist sie „Aus“ (Off).           |
     |BESCHREIBUNG     | Text, der zusätzliche Details zur Quellcodeverwaltung angibt.        |
@@ -72,14 +72,14 @@ Verwenden Sie dieses Verfahren, um die Quellcodeverwaltung über das Azure-Porta
    ![Zusammenfassung der Quellcodeverwaltung](./media/source-control-integration/source-control-summary.png)
 
 > [!NOTE]
-> Ihre Anmeldung für Ihr Quellcodeverwaltungs-Repository kann von Ihrer Anmeldung beim Azure-Portal abweichen. Stellen Sie sicher, dass Sie mit dem richtigen Konto für Ihr Quellcodeverwaltungs-Repository angemeldet sind, wenn Sie die Quellcodeverwaltung konfigurieren. Wenn Sie diesbezüglich unsicher sind, öffnen Sie in Ihrem Browser eine neue Registerkarte, melden Sie sich von „visualstudio.com“ oder „github.com“ ab, und stellen Sie erneut eine Verbindung mit der Quellcodeverwaltung her.
+> Die Anmeldung für Ihr Quellcodeverwaltungs-Repository kann von Ihrer Anmeldung beim Azure-Portal abweichen. Stellen Sie sicher, dass Sie mit dem richtigen Konto für Ihr Quellcodeverwaltungs-Repository angemeldet sind, wenn Sie die Quellcodeverwaltung konfigurieren. Wenn Sie diesbezüglich unsicher sind, öffnen Sie in Ihrem Browser eine neue Registerkarte, melden Sie sich von **dev.azure.com**, **visualstudio.com** oder **github.com** ab, und versuchen Sie, erneut eine Verbindung mit der Quellcodeverwaltung herzustellen.
 
-### <a name="configure-source-control----powershell"></a>Konfigurieren der Quellcodeverwaltung – PowerShell
+### <a name="configure-source-control-in-powershell"></a>Konfigurieren der Quellcodeverwaltung in PowerShell
 
 Sie können auch PowerShell verwenden, um die Quellcodeverwaltung in Azure Automation zu konfigurieren. Um PowerShell-Cmdlets für diesen Vorgang zu verwenden, benötigen Sie ein persönliches Zugriffstoken (Personal Access Token, PAT). Verwenden Sie das Cmdlet [New-AzAutomationSourceControl](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationsourcecontrol?view=azps-3.5.0
 ), um die Verbindung für die Quellcodeverwaltung zu erstellen. Dieses Cmdlet erfordert eine sichere Zeichenfolge für das PAT. Informationen zum Erstellen einer sicheren Zeichenfolge finden Sie unter [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6).
 
-In den folgenden Unterabschnitten wird die Erstellung der Quellcodeverwaltung mit der PowerShell für GitHub, Azure Repos (Git) und Azure Repos (TFVC) veranschaulicht.
+In den folgenden Unterabschnitten wird die Erstellung der Quellcodeverwaltung mit der PowerShell für GitHub, Azure Repos (Git) und Azure Repos (TFVC) veranschaulicht. 
 
 #### <a name="create-source-control-connection-for-github"></a>Erstellen einer Verbindung mit der Quellcodeverwaltung für GitHub
 
@@ -89,14 +89,21 @@ New-AzAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<accoun
 
 #### <a name="create-source-control-connection-for-azure-repos-git"></a>Erstellen einer Verbindung mit der Quellcodeverwaltung für Azure Repos (Git)
 
+> [!NOTE]
+> Azure Repos (Git) verwendet eine URL, die auf **dev.azure.com** statt auf das in früheren Formaten verwendete **visualstudio.com** zugreift. Das ältere URL-Format `https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname>` ist veraltet, wird aber immer noch unterstützt. Das neue Format wird bevorzugt.
+
+
 ```powershell-interactive
-New-AzAutomationSourceControl -Name SCReposGit -RepoUrl https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname> -SourceType VsoGit -AccessToken <secureStringofPAT> -Branch master -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
+New-AzAutomationSourceControl -Name SCReposGit -RepoUrl https://dev.azure.com/<accountname>/<adoprojectname>/_git/<repositoryname> -SourceType VsoGit -AccessToken <secureStringofPAT> -Branch master -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
 ```
 
 #### <a name="create-source-control-connection-for-azure-repos-tfvc"></a>Erstellen einer Verbindung mit der Quellcodeverwaltung für Azure Repos (TFVC)
 
+> [!NOTE]
+> Azure Repos (TFVC) verwendet eine URL, die auf **dev.azure.com** statt auf das in früheren Formaten verwendete **visualstudio.com** zugreift. Das ältere URL-Format `https://<accountname>.visualstudio.com/<projectname>/_versionControl` ist veraltet, wird aber immer noch unterstützt. Das neue Format wird bevorzugt.
+
 ```powershell-interactive
-New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://<accountname>.visualstudio.com/<projectname>/_versionControl -SourceType VsoTfvc -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
+New-AzAutomationSourceControl -Name SCReposTFVC -RepoUrl https://dev.azure.com/<accountname>/<adoprojectname>/_git/<repositoryname> -SourceType VsoTfvc -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
 ```
 
 #### <a name="personal-access-token-pat-permissions"></a>Berechtigungen für persönliche Zugriffstoken (PAT)
@@ -109,13 +116,13 @@ In der folgenden Tabelle werden die für GitHub erforderlichen PAT-Mindestberech
 
 |`Scope`  |BESCHREIBUNG  |
 |---------|---------|
-|**Repository**     |         |
-|repo:status     | Zugriff auf den Commitstatus         |
-|repo_deployment      | Zugriff auf den Bereitstellungsstatus         |
-|public_repo     | Zugriff auf öffentliche Repositorys         |
-|**admin:repo_hook**     |         |
-|write:repo_hook     | Schreiben von Repositoryhooks         |
-|read:repo_hook|Lesen von Repositoryhooks|
+|**`repo`**     |         |
+|`repo:status`     | Zugriff auf den Commitstatus         |
+|`repo_deployment`      | Zugriff auf den Bereitstellungsstatus         |
+|`public_repo`     | Zugriff auf öffentliche Repositorys         |
+|**`admin:repo_hook`**     |         |
+|`write:repo_hook`     | Schreiben von Repositoryhooks         |
+|`read:repo_hook`|Lesen von Repositoryhooks|
 
 ##### <a name="minimum-pat-permissions-for-azure-repos"></a>PAT-Mindestberechtigungen für Azure Repos
 
@@ -123,20 +130,20 @@ In der folgenden Liste werden die für Azure Repos erforderlichen PAT-Mindestber
 
 | `Scope`  |  Zugriffstyp  |
 |---------| ----------|
-| Code      | Lesen  |
-| Projekt und Team | Lesen |
-| Identity | Lesen     |
-| Benutzerprofil | Lesen     |
-| Arbeitselemente | Lesen    |
-| Dienstverbindungen | Lesen, Abfragen und Verwalten<sup>1</sup>    |
+| `Code`      | Lesen  |
+| `Project and team` | Lesen |
+| `Identity` | Lesen     |
+| `User profile` | Lesen     |
+| `Work items` | Lesen    |
+| `Service connections` | Lesen, Abfragen und Verwalten<sup>1</sup>    |
 
-<sup>1</sup> Die Berechtigung für Dienstverbindungen ist nur erforderlich, wenn die automatische Synchronisierung aktiviert ist.
+<sup>1</sup> Die Berechtigung `Service connections` ist nur erforderlich, wenn die automatische Synchronisierung aktiviert ist.
 
 ## <a name="synchronizing"></a>Wird synchronisiert
 
-Führen Sie Folgendes aus, um eine Synchronisierung mit der Quellcodeverwaltung durchzuführen. 
+Führen Sie die folgenden Schritte aus, um eine Synchronisierung mit der Quellcodeverwaltung durchzuführen. 
 
-1. Wählen Sie die Quelle in der Tabelle auf der Seite **Quellcodeverwaltung** aus. 
+1. Wählen Sie die Quelle in der Tabelle auf der Seite „Quellcodeverwaltung“ aus. 
 
 2. Klicken Sie auf **Synchronisierung starten**, um den Synchronisierungsprozess zu starten. 
 
@@ -149,7 +156,7 @@ Führen Sie Folgendes aus, um eine Synchronisierung mit der Quellcodeverwaltung 
 5. Sie können die Ausgabe des Auftrags anzeigen, indem Sie auf einen Auftrag klicken. Dies ist ein Beispiel für die Ausgabe eines Synchronisierungsauftrags der Quellcodeverwaltung:
 
     ```output
-    ============================================================================
+    ===================================================================
 
     Azure Automation Source Control.
     Supported runbooks to sync: PowerShell Workflow, PowerShell Scripts, DSC Configurations, Graphical, and Python 2.
@@ -174,11 +181,11 @@ Führen Sie Folgendes aus, um eine Synchronisierung mit der Quellcodeverwaltung 
      - ExampleRunbook1.ps1
      - ExampleRunbook2.ps1
 
-     =========================================================================
+    ==================================================================
 
     ```
 
-6. Eine zusätzliche Protokollierung ist verfügbar, indem Sie auf der Seite **Quellcodeverwaltung – Übersicht zu Synchronisierungsauftrag** die Option **Alle Protokolle** wählen. Diese zusätzlichen Protokolleinträge können Ihnen als Hilfe beim Behandeln von Problemen dienen, die bei Verwendung der Quellcodeverwaltung auftreten können.
+6. Zusätzliche Protokollierung ist verfügbar, indem Sie auf der Seite „Quellcodeverwaltung – Übersicht zu Synchronisierungsauftrag“ die Option **Alle Protokolle** auswählen. Diese zusätzlichen Protokolleinträge können Ihnen als Hilfe beim Behandeln von Problemen dienen, die bei Verwendung der Quellcodeverwaltung auftreten können.
 
 ## <a name="disconnecting-source-control"></a>Trennen der Verbindung zur Quellcodeverwaltung
 
@@ -188,7 +195,7 @@ So trennen Sie die Verbindung mit einem Quellcodeverwaltungs-Repository
 
 2. Wählen Sie den Quellcodeverwaltungs-Mechanismus aus, den Sie entfernen möchten. 
 
-3. Klicken Sie auf der Seite **Quellcodeverwaltung – Übersicht** auf **Löschen**.
+3. Klicken Sie auf der Seite „Quellcodeverwaltung – Übersicht“ auf **Löschen**.
 
 ## <a name="handling-encoding-issues"></a>Behandeln von Codierungsproblemen
 
@@ -196,7 +203,7 @@ Wenn mehrere Personen in Ihrem Quellcodeverwaltungs-Repository Runbooks mit unte
 
 ## <a name="updating-the-pat"></a>Aktualisieren des PAT
 
-Derzeit gibt es keine Möglichkeit, das PAT in der Quellcodeverwaltung über das Azure-Portal zu aktualisieren. Nach Ablauf oder Widerruf Ihres PAT können Sie die Quellcodeverwaltung auf eine der folgenden Weisen mit einem neuen Zugriffstoken aktualisieren:
+Derzeit können Sie das PAT in der Quellcodeverwaltung nicht über das Azure-Portal aktualisieren. Nach Ablauf oder Widerruf Ihres PAT können Sie die Quellcodeverwaltung auf eine der folgenden Weisen mit einem neuen Zugriffstoken aktualisieren:
 
 * Verwenden Sie die [REST-API](https://docs.microsoft.com/rest/api/automation/sourcecontrol/update).
 * Verwenden Sie das Cmdlet [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol).

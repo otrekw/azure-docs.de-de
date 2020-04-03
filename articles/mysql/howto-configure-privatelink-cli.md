@@ -1,19 +1,19 @@
 ---
-title: Einrichten von Private Link für Azure Database for MySQL (Vorschau) über die Befehlszeilenschnittstelle
+title: Private Link – Azure-Befehlszeilenschnittstelle – Azure Database for MySQL
 description: Hier erfahren Sie, wie Sie Private Link für Azure Database for MySQL über die Azure-Befehlszeilenschnittstelle konfigurieren.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 7d9a401bfbf1f0c63995c8f7773abb6e8e874e7e
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: f83f52f1c1800803c5e1d47f1931f7b13b2c11de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561696"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79368008"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mysql-preview-using-cli"></a>Erstellen und Verwalten von Private Link für Azure Database for MySQL (Vorschau) über die Befehlszeilenschnittstelle
+# <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>Erstellen und Verwalten von Private Link für Azure Database for MySQL über die Befehlszeilenschnittstelle (CLI)
 
 Ein privater Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren. In diesem Artikel erfahren Sie, wie Sie einen virtuellen Computer in einem virtuellen Azure-Netzwerk und einen Azure Database for MySQL-Server mit einem privaten Azure-Endpunkt über die Azure-Befehlszeilenschnittstelle erstellen.
 
@@ -165,7 +165,7 @@ Stellen Sie wie folgt eine Verbindung mit dem virtuellen Computer *myVm* aus dem
 
 4. Geben Sie in **Neue Verbindung** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Verbindungsname| Wählen Sie den gewünschten Verbindungsnamen aus.|
     | Hostname | Select *mydemoserver.privatelink.mysql.database.azure.com* |

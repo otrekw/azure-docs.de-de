@@ -11,19 +11,19 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 02/14/2020
-ms.openlocfilehash: 9c084564fec3faf59317fe9e05f3e850a38454d6
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.date: 03/27/2020
+ms.openlocfilehash: d6252b7a0ecce553bc3a1519055375fd4cd034f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77251973"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336210"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Anpassen des Setups für eine Azure-SSIS Integration Runtime
 
 Das benutzerdefinierte Setup für eine Azure-SQL Server Integration Services Integration Runtime (Azure-SSIS IR) bietet eine Schnittstelle zum Hinzufügen Ihrer eigenen Schritte während der Einrichtung oder Neukonfiguration Ihrer Azure-SSIS IR. 
 
-Mithilfe des benutzerdefinierten Setups können Sie die Standardkonfiguration des Betriebssystems oder der Umgebung ändern, um beispielsweise zusätzliche Windows-Dienste zu starten oder die Zugriffsanmeldeinformationen für Dateifreigaben beizubehalten. Oder Sie können zusätzliche Komponenten, z. B. Assemblys, Treiber oder Erweiterungen, auf jedem Knoten ihrer Azure-SSIS IR installieren.
+Mithilfe des benutzerdefinierten Setups können Sie die Standardkonfiguration des Betriebssystems oder der Umgebung ändern, um beispielsweise zusätzliche Windows-Dienste zu starten, die Zugriffsanmeldeinformationen für Dateifreigaben beizubehalten oder eine starke Kryptografie/ein sichereres Netzwerkprotokoll (TLS 1.2) zu verwenden. Oder Sie können zusätzliche Komponenten, z. B. Assemblys, Treiber oder Erweiterungen, auf jedem Knoten ihrer Azure-SSIS IR installieren.
 
 Es gibt zwei Möglichkeiten zur Durchführung benutzerdefinierter Setups auf Ihrer Azure-SSIS IR: 
 * **Benutzerdefiniertes Express-Setup ohne ein Skript**: Führen Sie einige gängige Systemkonfigurationen und Windows-Befehle aus, oder installieren Sie einige beliebte oder empfohlene zusätzliche Komponenten, ohne Skripts zu verwenden.
@@ -127,6 +127,8 @@ Zum Anpassen Ihrer Azure-SSIS IR benötigen Sie die folgenden Elemente:
 
      * Wenn Sie die Komponente **KingswaySoft's SSIS Productivity Pack** auswählen, können Sie die Komponentensammlung [SSIS Productivity Pack](https://www.kingswaysoft.com/products/ssis-productivity-pack) von KingswaySoft in Ihrer Azure-SSIS Integration Runtime installieren, indem Sie den erworbenen Produktlizenzschlüssel im Feld **Lizenzschlüssel** eingeben. Die aktuelle integrierte Version ist **10.0**.
 
+     * Wenn Sie die Komponente **Theobald Software's Xtract IS** auswählen, können Sie die [Xtract IS](https://theobald-software.com/en/xtract-is/)-Suite von Connectors für das SAP-System (ERP, S/4HANA, BW) aus Theobald Software in Ihrer Azure-SSIS IR installieren, indem Sie die erworbene Produktlizenzdatei in das Feld **Lizenzdatei** ziehen und ablegen/hochladen. Die aktuelle integrierte Version ist **6.1.1.3**.
+
    Die hinzugefügten benutzerdefinierten Express-Setups werden im Abschnitt **Erweiterte Einstellungen** angezeigt. Wenn Sie sie entfernen möchten, können Sie die entsprechenden Kontrollkästchen aktivieren und dann **Löschen** auswählen.
 
    ![Erweiterte Einstellungen bei benutzerdefinierten Setups](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)
@@ -139,7 +141,7 @@ Zum Anpassen Ihrer Azure-SSIS IR benötigen Sie die folgenden Elemente:
    $AzureSSISName = "[your Azure-SSIS IR name]"
    # Custom setup info: Standard/express custom setups
    $SetupScriptContainerSasUri = "" # OPTIONAL to provide a SAS URI of blob container for standard custom setup where your script and its associated files are stored
-   $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO or leave it empty]" # OPTIONAL to configure an express custom setup without script
+   $ExpressCustomSetup = "[RunCmdkey|SetEnvironmentVariable|SentryOne.TaskFactory|oh22is.SQLPhonetics.NET|oh22is.HEDDA.IO|KingswaySoft.IntegrationToolkit|KingswaySoft.ProductivityPack|Theobald.XtractIS or leave it empty]" # OPTIONAL to configure an express custom setup without script
 
    # Add custom setup parameters if you use standard/express custom setups
    if(![string]::IsNullOrEmpty($SetupScriptContainerSasUri))
@@ -178,6 +180,24 @@ Zum Anpassen Ihrer Azure-SSIS IR benötigen Sie die folgenden Elemente:
        {
            $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup)
        }
+       if($ExpressCustomSetup -eq "KingswaySoft.IntegrationToolkit")
+       {
+           $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+           $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+       }
+       if($ExpressCustomSetup -eq "KingswaySoft.ProductivityPack")
+       {
+           $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString("YourLicenseKey")
+           $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+       }    
+       if($ExpressCustomSetup -eq "Theobald.XtractIS")
+       {
+           $jsonData = Get-Content -Raw -Path YourLicenseFile.json
+           $jsonData = $jsonData -replace '\s',''
+           $jsonData = $jsonData.replace('"','\"')
+           $licenseKey = New-Object Microsoft.Azure.Management.DataFactory.Models.SecureString($jsonData)
+           $setup = New-Object Microsoft.Azure.Management.DataFactory.Models.ComponentSetup($ExpressCustomSetup, $licenseKey)
+       }
        # Create an array of one or more express custom setups
        $setups = New-Object System.Collections.ArrayList
        $setups.Add($setup)
@@ -203,7 +223,7 @@ Zum Anpassen Ihrer Azure-SSIS IR benötigen Sie die folgenden Elemente:
 
    b. Wählen Sie **SAS-URI verwenden** aus, und geben Sie dann im Feld **URI** den folgenden SAS-URI ein:
 
-      `https://ssisazurefileshare.blob.core.windows.net/publicpreview?sp=rl&st=2018-04-08T14%3A10%3A00Z&se=2020-04-10T14%3A10%3A00Z&sv=2017-04-17&sig=mFxBSnaYoIlMmWfxu9iMlgKIvydn85moOnOch6%2F%2BheE%3D&sr=c`
+      `https://ssisazurefileshare.blob.core.windows.net/publicpreview?sp=rl&st=2020-03-25T04:00:00Z&se=2025-03-25T04:00:00Z&sv=2019-02-02&sr=c&sig=WAD3DATezJjhBCO3ezrQ7TUZ8syEUxZZtGIhhP6Pt4I%3D`
 
       ![Bereitstellen von Shared Access Signature für den Container](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image10.png)
 
@@ -219,9 +239,9 @@ Zum Anpassen Ihrer Azure-SSIS IR benötigen Sie die folgenden Elemente:
 
    e. Doppelklicken Sie auf den Ordner *UserScenarios*, um die folgenden Elemente zu suchen:
 
-      * Den Ordner *.NET FRAMEWORK 3.5* mit einem benutzerdefinierten Setup zum Installieren einer früheren Version von .NET Framework, das möglicherweise für benutzerdefinierte Komponenten auf jedem Knoten Ihrer Azure-SSIS IR erforderlich ist.
+      * Den Ordner *.NET FRAMEWORK 3.5* mit einem benutzerdefinierten Setupskript (*main.cmd*) zum Installieren einer früheren Version von .NET Framework, das für benutzerdefinierte Komponenten auf jedem Knoten Ihrer Azure-SSIS IR möglicherweise erforderlich ist.
 
-      * Den Ordner *BCP* mit einem benutzerdefinierten Setup zum Installieren von SQL Server-Befehlszeilenprogrammen (*MsSqlCmdLnUtils.msi*), einschließlich des Massenkopierprogramms (*bcp*), auf jedem Knoten Ihrer Azure-SSIS IR.
+      * Den Ordner *BCP* mit einem benutzerdefinierten Setupskript (*main.cmd*) zum Installieren von SQL Server-Befehlszeilenprogrammen (*MsSqlCmdLnUtils.msi*), einschließlich des Massenkopierprogramms (*bcp*), auf jedem Knoten Ihrer Azure-SSIS IR.
 
       * Den Ordner *EXCEL* mit einem benutzerdefinierten Setupskript (*main.cmd*) zum Installieren von C#-Assemblys und -Bibliotheken, die Sie in Skripttasks zum dynamischen Lesen und Schreiben von Excel-Dateien auf jedem Knoten Ihrer Azure-SSIS IR verwenden können. 
       
@@ -257,13 +277,15 @@ Zum Anpassen Ihrer Azure-SSIS IR benötigen Sie die folgenden Elemente:
       
         Laden Sie zuerst die 64-Bit- oder 32-Bit-Version von *librfc32.dll* aus dem SAP-Installationsordner zusammen mit *main.cmd* in Ihren Container hoch. Das Skript kopiert dann die SAP-Assembly während des Setups in den Ordner *%windir%\SysWow64* oder *%windir%\System32*.
 
-      * Den Ordner *STORAGE* mit einem benutzerdefinierten Setup zum Installieren von Azure PowerShell auf jedem Knoten Ihrer Azure-SSIS IR. Bei diesem Setup können Sie SSIS-Pakete bereitstellen und ausführen, die [PowerShell-Skripts zum Bearbeiten Ihres Azure Storage-Kontos](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-use-blobs-powershell) ausführen. 
+      * Den Ordner *STORAGE* mit einem benutzerdefinierten Setupskript (*main.cmd*) zum Installieren von Azure PowerShell auf jedem Knoten Ihrer Azure-SSIS IR. Bei diesem Setup können Sie SSIS-Pakete bereitstellen und ausführen, die [PowerShell-Skripts zum Bearbeiten Ihres Azure Storage-Kontos](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-use-blobs-powershell) ausführen. 
       
         Kopieren Sie *main.cmd*, ein Beispiel für *AzurePowerShell.msi* (oder verwenden Sie die neueste Version) und *storage.ps1* in Ihren Container. Verwenden Sie *PowerShell.dtsx* als Vorlage für Ihre Pakete. In der Paketvorlage sind der [Azure Blob-Download-Task](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task), der *storage.ps1* als modifizierbares PowerShell-Skript herunterlädt, und der [Task „Prozess ausführen“](https://blogs.msdn.microsoft.com/ssis/2017/01/26/run-powershell-scripts-in-ssis/) zusammengefasst, der das Skript auf jedem Knoten ausführt.
 
       * Der Ordner *TERADATA*, der ein benutzerdefiniertes Setupskript (*main.cmd*), die zugehörige Datei (*install.cmd*) und die Installer-Pakete ( *.msi*) enthält. Diese Dateien installieren die Teradata-Connectors, die Teradata Parallel Transporter (TPT)-API und den ODBC-Treiber auf jedem Knoten Ihrer Azure-SSIS IR Enterprise Edition. Mit diesem Setup können Sie den Teradata-Verbindungs-Manager, die Quelle und das Ziel für die Verbindung zum Teradata-Server verwenden. 
       
         [Laden Sie zuerst die ZIP-Datei „Teradata Tools und Utilities 15.x“ herunter](http://partnerintelligence.teradata.com) (z. B. *TeradataToolsAndUtilitiesBase__windows_indep.15.10.22.00.zip*), und laden Sie sie dann zusammen mit den zuvor erwähnten Dateien *.cmd* und *.msi* Dateien in Ihren Container hoch.
+
+      * Den Ordner *TLS 1.2* mit einem benutzerdefinierten Setupskript (*main.cmd*) zur Verwendung einer starken Kryptografie/eines sichereren Netzwerkprotokolls (TLS 1.2) und zum Deaktivieren von älteren SSL/TLS-Versionen auf jedem Knoten Ihrer Azure-SSIS IR.
 
       * Den Ordner *ZULU OPENJDK* Ordner mit einem benutzerdefinierten Setupskript (*main.cmd*) und einer PowerShell-Datei (*install_openjdk.ps1*) zum Installieren des Zulu OpenJDK auf jedem Knoten Ihrer Azure-SSIS IR. Dieses Setup ermöglicht Ihnen die Verwendung von Azure Data Lake Store- und Flexible File-Connectors zur Verarbeitung von ORC- und Parquet-Dateien. Weitere Informationen finden Sie unter [Azure Feature Pack für Integration Services](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-ver15#dependency-on-java). 
       

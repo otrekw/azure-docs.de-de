@@ -11,20 +11,20 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: b88557468c386bc07c2432e154a82fd1f4fcb438
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c5ce6a1c2f231d372a2a8113eb9043a236090388
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78194297"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061693"
 ---
 # <a name="tutorial-add-an-azure-sql-database-single-database-to-a-failover-group"></a>Tutorial: Hinzufügen einer Azure SQL-Einzeldatenbank zu einer Failovergruppe
 
-Konfigurieren Sie eine Failovergruppe für eine Azure SQL-Einzeldatenbank und testen Sie das Failover entweder mithilfe des Azure-Portals, PowerShell oder der Azure CLI.  In diesem Tutorial lernen Sie Folgendes:
+Eine [Failovergruppe](sql-database-auto-failover-group.md) ist eine deklarative Abstraktionsschicht, die es Ihnen ermöglicht, mehrere georeplizierte Datenbanken zu gruppieren. Informieren Sie sich, wie Sie eine Failovergruppe für eine Azure SQL-Einzeldatenbank konfigurieren und das Failover über das Azure-Portal, PowerShell oder die Azure CLI testen können.  In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > - Erstellen einer Azure SQL-Einzeldatenbank.
-> - Erstellen einer [Failovergruppe](sql-database-auto-failover-group.md) für eine Einzeldatenbank zwischen zwei logischen SQL Server-Instanzen.
+> - Erstellen einer Failovergruppe für eine Einzeldatenbank zwischen zwei logischen SQL Server-Instanzen.
 > - Testen des Failovers.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -62,7 +62,7 @@ Erstellen Sie Ihre Failovergruppe und fügen Sie Ihre Einzeldaten mithilfe des A
 
 1. Wählen Sie im linken Menü im [Azure-Portal](https://portal.azure.com) die Option **Azure SQL** aus. Wenn **Azure SQL** nicht in der Liste aufgeführt wird, wählen Sie **Alle Dienste** aus, und geben Sie dann „Azure SQL“ in das Suchfeld ein. (Optional:) Wählen Sie den Stern neben **Azure SQL** aus, um die Option als Favorit zu markieren und als Element im linken Navigationsbereich hinzuzufügen. 
 1. Wählen Sie die Einzeldatenbank aus, die in Abschnitt 1 erstellt wurde, z.B. `mySampleDatabase`. 
-1. Wählen Sie unter **Servername** den Namen des Servers aus, um die Einstellungen für diesen Server zu öffnen.
+1. Failovergruppen können auf Serverebene konfiguriert werden. Wählen Sie unter **Servername** den Namen des Servers aus, um die Einstellungen für diesen Server zu öffnen.
 
    ![Öffnen des Servers für einen Singleton](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
 

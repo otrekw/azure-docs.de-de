@@ -5,17 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.openlocfilehash: eae7e434ce21b5f9d9f3e6c40f94261df8baa426
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 3/19/2020
+ms.openlocfilehash: b42f0d7a8146f7f2b313959273abd22303c89a60
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972352"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062541"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Überwachungsprotokolle in Azure Database for MySQL
 
-In Azure Database for MySQL ist das Überwachungsprotokoll für Benutzer verfügbar. Das Überwachungsprotokoll kann verwendet werden, um Aktivitäten auf Datenbankebene nachzuverfolgen, und es wird häufig für Konformitätszwecke genutzt.
+In Azure Database for MySQL ist das Überwachungsprotokoll für Benutzer verfügbar. Das Überwachungsprotokoll dient zum Nachverfolgen von Aktivitäten auf Datenbankebene und häufig zu Konformitätszwecken.
 
 > [!IMPORTANT]
 > Diese Überwachungsprotokollfunktion ist derzeit in der Vorschauphase.
@@ -44,7 +44,7 @@ Weitere Parameter, die Sie anpassen können:
 | `DDL` | Abfragen wie DROP DATABASE |
 | `DCL` | Abfragen wie GRANT PERMISSION |
 | `ADMIN` | Abfragen wie SHOW STATUS |
-| `GENERAL` | Alle in „DML_SELECT“, „DML_NONSELECT“, „DML“, „DDL“, „DCL“ und „ADMIN“ |
+| `GENERAL` | Alle in DML_SELECT, DML_NONSELECT, DML, DDL, DCL und ADMIN |
 | `TABLE_ACCESS` | - Nur für MySQL 5.7 verfügbar <br> - Leseanweisungen für Tabelle, z. B. SELECT oder INSERT INTO... SELECT <br> - Löschanweisungen für Tabelle, z. B. DELETE oder TRUNCATE TABLE <br> - Einfügeanweisungen für Tabelle, z. B. INSERT oder REPLACE <br> - Aktualisierungsanweisungen für Tabelle, z. B. UPDATE |
 
 ## <a name="access-audit-logs"></a>Zugreifen auf Überwachungsprotokolle
@@ -113,6 +113,9 @@ Das unten angegebene Schema gilt für die Ereignistypen GENERAL, DML_SELECT, DML
 
 ### <a name="table-access"></a>Tabellenzugriff
 
+> [!NOTE]
+> Tabellenzugriffsprotokolle werden nur für MySQL 5.7 ausgegeben.
+
 | **Eigenschaft** | **Beschreibung** |
 |---|---|
 | `TenantId` | Ihre Mandanten-ID |
@@ -135,6 +138,60 @@ Das unten angegebene Schema gilt für die Ereignistypen GENERAL, DML_SELECT, DML
 | `table_s` | Name der Tabelle, auf die zugegriffen wird |
 | `sql_text_s` | Vollständiger Abfragetext |
 | `\_ResourceId` | Ressourcen-URI |
+
+## <a name="analyze-logs-in-azure-monitor-logs"></a>Analysieren von Protokollen in Azure Monitor-Protokollen
+
+Sobald Ihre Überwachungsprotokolle über Diagnoseprotokolle an Azure Monitor-Protokolle weitergeleitet wurden, können Sie weitere Analysen Ihrer überwachten Ereignisse durchführen. Im Folgenden finden Sie einige Beispielabfragen, die Ihnen beim Einstieg helfen. Stellen Sie sicher, dass Sie die Abfragen unten mit Ihrem Servernamen aktualisieren.
+
+- Auflisten von allgemeinen (GENERAL) Ereignissen auf einem bestimmten Server
+
+    ```kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlAuditLogs' and event_class_s == "general_log"
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | order by TimeGenerated asc nulls last 
+    ```
+
+- Auflisten von Verbindungsereignissen (CONNECTION) auf einem bestimmten Server
+
+    ```kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlAuditLogs' and event_class_s == "connection_log"
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | order by TimeGenerated asc nulls last
+    ```
+
+- Zusammenfassen von überwachten Ereignissen auf einem bestimmten Server
+
+    ```kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlAuditLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | summarize count() by event_class_s, event_subclass_s, user_s, ip_s
+    ```
+
+- Erstellen eines Diagramms der Verteilung von Überwachungsereignistypen auf einem bestimmten Server
+
+    ```kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlAuditLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | summarize count() by LogicalServerName_s, bin(TimeGenerated, 5m)
+    | render timechart 
+    ```
+
+- Auflisten von überwachten Ereignissen auf allen MySQL-Servern mit aktivierten Diagnoseprotokollen für Überwachungsprotokolle
+
+    ```kusto
+    AzureDiagnostics
+    | where Category == 'MySqlAuditLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | order by TimeGenerated asc nulls last
+    ``` 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

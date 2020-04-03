@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 2f147890887d5eb9dd1b2681bd09c662c14c74ff
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.date: 03/24/2020
+ms.openlocfilehash: 3c7ff0061a57d1a1a7525ec03b4f77c117415ca5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77431078"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80155850"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Data Lake Storage Gen2 mithilfe von Azure Data Factory
 
@@ -39,7 +39,7 @@ Dieser Connector bietet Ihnen für die Kopieraktivität folgende Möglichkeiten:
 - Kopieren von Daten aus/in Azure Data Lake Storage Gen2 durch Verwendung eines Kontoschlüssels, eines Dienstprinzipals oder verwalteter Identitäten für die Authentifizierung von Azure-Ressourcen.
 - Kopieren von Dateien im jeweiligen Zustand oder Analysieren bzw. Generieren von Dateien mit [unterstützten Dateiformaten und Komprimierungscodecs](supported-file-formats-and-compression-codecs.md).
 - [Beibehalten von Dateimetadaten beim Kopieren](#preserve-metadata-during-copy)
-- [Beibehalten von ACLs](#preserve-metadata-during-copy) während des Kopierens aus Azure Data Lake Storage Gen1
+- [Beibehalten von ACLs](#preserve-acls) beim Kopieren aus Azure Data Lake Storage Gen1/Gen2
 
 >[!IMPORTANT]
 >Wenn Sie die Option **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** in den Firewalleinstellungen von Azure Storage aktivieren und Azure Integration Runtime zum Herstellen einer Verbindung mit Data Lake Storage Gen2 verwenden möchten, müssen Sie die [Authentifizierung der verwalteten Identität](#managed-identity) für ADLS Gen2 verwenden.
@@ -123,7 +123,7 @@ Zum Verwenden der Dienstprinzipalauthentifizierung führen Sie die folgenden Sch
 
 Diese Eigenschaften werden im verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft muss auf **AzureBlobFS** festgelegt sein. |Ja |
 | url | Endpunkt für Data Lake Storage Gen2 im Format `https://<accountname>.dfs.core.windows.net`. | Ja |
@@ -156,7 +156,7 @@ Diese Eigenschaften werden im verknüpften Dienst unterstützt:
 }
 ```
 
-### <a name="managed-identity"></a>Verwaltete Identitäten für Azure-Ressourcenauthentifizierung
+### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a>Verwaltete Identitäten für Azure-Ressourcenauthentifizierung
 
 Eine Data Factory kann einer [verwalteten Identität für Azure-Ressourcen](data-factory-service-identity.md) zugeordnet werden, die diese spezielle Data Factory darstellt. Ähnlich wie bei der Verwendung Ihres eigenen Dienstprinzipals können Sie diese verwaltete Identität direkt für die Data Lake Storage Gen2-Authentifizierung verwenden. Sie erlaubt dieser bestimmten Factory den Zugriff auf Ihren Data Lake Storage Gen2 sowie das Kopieren von Daten nach oder aus Data Lake Storage Gen2.
 
@@ -209,7 +209,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Folgende Eigenschaften werden für Data Lake Storage Gen2 unter `location`-Einstellungen in formatbasierten Datasets unterstützt:
 
-| Eigenschaft   | Beschreibung                                                  | Erforderlich |
+| Eigenschaft   | BESCHREIBUNG                                                  | Erforderlich |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Die „type“-Eigenschaft unter `location` im Dataset muss auf **AzureBlobFSLocation** festgelegt werden. | Ja      |
 | fileSystem | Der Name des Data Lake Storage Gen2-Dateisystems.                              | Nein       |
@@ -380,12 +380,12 @@ Dieser Abschnitt beschreibt das resultierende Verhalten des Kopiervorgangs für 
 
 Beim Kopieren von Dateien von Amazon S3/Azure Blob/Azure Data Lake Storage Gen2 nach Azure Data Lake Storage Gen2/Azure Blob können Sie festlegen, dass die Dateimetadaten zusätzlich zu den Daten beibehalten werden sollen. Weitere Informationen finden Sie unter [Beibehalten von Metadaten](copy-activity-preserve-metadata.md#preserve-metadata).
 
-## <a name="preserve-acls-from-data-lake-storage-gen1"></a>Bewahren von Zugriffssteuerungslisten für Azure Data Lake Storage Gen1
+## <a name="preserve-acls-from-data-lake-storage-gen1gen2"></a><a name="preserve-acls"></a> Beibehalten von Zugriffssteuerungslisten aus Data Lake Storage Gen1/Gen2
+
+Beim Kopieren von Dateien aus Azure Data Lake Storage Gen1/Gen2 in Gen2 können Sie die Option wählen, bei der die POSIX-Zugriffssteuerungslisten (Access Control Lists, ACLs) zusammen mit den Daten beibehalten werden. Weitere Informationen finden Sie unter [Beibehalten von ACLs aus Data Lake Storage Gen1/Gen2 in Gen2](copy-activity-preserve-metadata.md#preserve-acls).
 
 >[!TIP]
 >Allgemeine Informationen zum Kopieren von Daten von Azure Data Lake Storage Gen1 in Gen2 sowie eine exemplarische Vorgehensweise und bewährte Methoden finden Sie unter [Kopieren von Daten aus Azure Data Lake Storage Gen1 in Gen2 mit Azure Data Factory](load-azure-data-lake-storage-gen2-from-gen1.md).
-
-Beim Kopieren von Dateien von Azure Data Lake Storage Gen1 in Gen2 können Sie die Option wählen, bei der die POSIX-Zugriffssteuerungslisten (Access Control Lists, ACLs) zusammen mit den Daten beibehalten werden. Weitere Informationen finden Sie unter [Beibehalten von ACLs aus Data Lake Storage Gen1 nach Gen2](copy-activity-preserve-metadata.md#preserve-acls).
 
 ## <a name="mapping-data-flow-properties"></a>Eigenschaften von Mapping Data Flow
 
@@ -409,7 +409,8 @@ Beispiele für Platzhalter:
 * ```[]```: Stimmt mit einem oder mehreren Zeichen in den Klammern überein
 
 * ```/data/sales/**/*.csv```: Ruft alle CSV-Dateien unter „/data/sales“ ab
-* ```/data/sales/20??/**```: Ruft alle Dateien aus dem 20. Jahrhundert ab
+* ```/data/sales/20??/**/```: Ruft alle Dateien aus dem 20. Jahrhundert ab
+* ```/data/sales/*/*/*.csv```: Ruft CSV-Dateien auf zwei Ebenen unter „/data/sales“ ab
 * ```/data/sales/2004/*/12/[XY]1?.csv```: Ruft alle CSV-Dateien aus Dezember 2004 ab, die mit X oder Y und einer zweistelligen Zahl als Präfix beginnen
 
 **Partitionsstammpfad**: Wenn Ihre Dateiquelle partitionierte Ordner mit dem Format ```key=value``` (z.B. „Jahr=2019“) enthält, können Sie die oberste Ebene dieser Ordnerstruktur einem Spaltennamen in Ihrem Datenfluss-Datenstrom zuweisen.
@@ -461,7 +462,7 @@ In der Senkentransformation können Sie in Azure Data Lake Storage Gen2 in einen
    * **Standard:** Lassen Sie zu, dass Spark Dateien basierend auf den PART-Standards benennt.
    * **Muster:** Geben Sie ein Muster ein, das Ihre Ausgabedateien pro Partition aufführt. Zum Beispiel erstellt **loans[n].csv** die Dateien „loans1.csv“, „loans2.csv“ usw.
    * **Pro Partition:** Geben Sie einen Dateinamen pro Partition ein.
-   * **Wie Daten in Spalte:** Legen Sie die Ausgabedatei auf den Wert einer Spalte fest. Der Pfad ist relativ zum Datasetcontainer und nicht zum Zielordner.
+   * **Wie Daten in Spalte:** Legen Sie die Ausgabedatei auf den Wert einer Spalte fest. Der Pfad ist relativ zum Datasetcontainer und nicht zum Zielordner. Wenn Ihr Dataset einen Ordnerpfad enthält, wird er überschrieben.
    * **Ausgabe in eine einzelne Datei:** Mit dieser Option werden die partitionierten Ausgabedateien in einer einzelnen Datei kombiniert. Der Pfad ist relativ zum Datasetordner. Bedenken Sie, dass der Zusammenführungsvorgang je nach Knotengröße zu Fehlern führen kann. Diese Option wird für große Datasets nicht empfohlen.
 
 **Alle in Anführungszeichen:** Bestimmt, ob alle Werte in Anführungszeichen eingeschlossen werden sollen.
@@ -530,7 +531,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Delete-Aktivi
 
 ### <a name="legacy-copy-activity-source-model"></a>Legacy-Kopieraktivität: Quellenmodell
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **AzureBlobFSSource** festgelegt sein. |Ja |
 | recursive | Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. Wenn „recursive“ auf „true“ festgelegt ist und es sich bei der Senke um einen dateibasierten Speicher handelt, wird ein leerer Ordner oder Unterordner nicht in die Senke kopiert oder dort erstellt.<br/>Zulässige Werte sind **true** (Standard) und **false**. | Nein |

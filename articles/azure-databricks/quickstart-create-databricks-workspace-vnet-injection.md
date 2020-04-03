@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
-ms.date: 12/04/2019
-ms.openlocfilehash: 046b2da7cdb966192e485ff9f5510eb63c9e0008
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.date: 03/23/2020
+ms.openlocfilehash: 63dd1b4d9396d340dd17a7afb92ff9c38a2b38b3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086551"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132673"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-your-own-virtual-network"></a>Schnellstart: Erstellen eines Azure Databricks-Arbeitsbereichs in Ihrem eigenen virtuellen Netzwerk
 
@@ -75,7 +75,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
     |Arbeitsbereichname|databricks-quickstart|Wählen Sie einen Namen für Ihren Azure Databricks-Arbeitsbereich aus.|
     |Subscription|\<Ihr Abonnement\>|Wählen Sie das gewünschte Azure-Abonnement aus.|
     |Resource group|databricks-quickstart|Wählen Sie die gleiche Ressourcengruppe wie für das virtuelle Netzwerk.|
-    |Location|\<Die Region, die Ihren Benutzern am nächsten liegt\>|Verwenden Sie denselben Standort wie für das virtuelle Netzwerk.|
+    |Position|\<Die Region, die Ihren Benutzern am nächsten liegt\>|Verwenden Sie denselben Standort wie für das virtuelle Netzwerk.|
     |Preisstufe|Wählen Sie entweder „Standard“ oder „Premium“.|Weitere Informationen zu diesen Tarifen, finden Sie auf der Seite [Databricks – Preise](https://azure.microsoft.com/pricing/details/databricks/).|
 
     ![Grundlegendes zum Erstellen eines Azure Databricks-Arbeitsbereichs](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
@@ -100,6 +100,8 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
     Die verwaltete Ressourcengruppe kann nicht geändert werden und wird nicht zum Erstellen virtueller Computer verwendet. Sie können virtuelle Computer nur in der Ressourcengruppe erstellen, die Sie verwalten.
 
     ![Verwaltete Ressourcengruppe in Azure Databricks](./media/quickstart-create-databricks-workspace-vnet-injection/managed-resource-group.png)
+
+    Wenn bei der Bereitstellung eines Arbeitsbereichs ein Fehler auftritt, wird der Arbeitsbereich mit dem Fehlerzustand trotzdem erstellt. Löschen Sie den fehlerhaften Arbeitsbereich, und erstellen Sie einen neuen, um die Bereitstellungsfehler zu beheben. Wenn Sie den fehlerhaften Arbeitsbereich löschen, werden auch die verwaltete Ressourcengruppe und alle Ressourcen gelöscht, für die die Bereitstellung erfolgreich war.
 
 ## <a name="create-a-cluster"></a>Erstellen eines Clusters
 

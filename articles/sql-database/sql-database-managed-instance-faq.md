@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
-ms.date: 07/16/2019
-ms.openlocfilehash: 1c1995b4daf3b76abf7663d8d6c1f4cb7b1d6e2b
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.date: 03/17/2020
+ms.openlocfilehash: 393d67b200a4f8d44cb001b3a7e2e491209e9d58
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201678"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80364157"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zur verwalteten SQL-Datenbank-Instanz
 
@@ -42,13 +42,13 @@ Informationen zu den verfügbaren Dienstebenen und ihren Merkmalen finden Sie un
 
 **Wo finde ich bekannte Probleme und Fehler?**
 
-Programmfehler und bekannte Probleme werden unter [Bekannte Probleme](sql-database-managed-instance-transact-sql-information.md#Issues) erörtert.
+Programmfehler und bekannte Probleme werden unter [Bekannte Probleme](sql-database-release-notes.md#known-issues) erörtert.
 
 ## <a name="new-features"></a>Neue Funktionen
 
 **Wo finde ich die neuesten Features sowie die Features in der öffentlichen Vorschau?**
 
-Neue Features und Previewfunktionen finden Sie in den [Versionshinweisen](/azure/sql-database/sql-database-release-notes?tabs=managed-instance).
+Neue Features und Previewfunktionen finden Sie in den [Versionshinweisen](sql-database-release-notes.md?tabs=managed-instance).
 
 ## <a name="deployment-times"></a>Bereitstellungszeiten 
 
@@ -60,7 +60,11 @@ Die erwartete Zeit zum Erstellen einer neuen verwalteten Instanz oder zum Änder
 
 **Kann eine verwaltete Instanz den gleichen Namen wie ein lokaler SQL Server haben?**
 
-Die Namen verwalteter Instanzen müssen mit *database.windows.net* enden. So verwenden Sie statt der Standardzone eine andere DNS-Zone, z. B. **mi-another-name**.contoso.com: 
+Die Namensänderung bei einer verwalteten Instanz wird nicht unterstützt.
+
+Die DNS-Standardzone *.database.windows.net* einer verwalteten Instanz könnte geändert werden. 
+
+So verwenden Sie statt der Standardzone eine andere DNS-Zone, z. B. *.contoso.com*: 
 - Verwenden Sie „CliConfig“ zum Definieren eines Alias. Weil das Tool nur ein Wrapper für Registrierungseinstellungen ist, könnte es auch mithilfe einer Gruppenrichtlinie oder eines Skripts ausgeführt werden.
 - Verwenden Sie *CNAME* mit der Option *TrustServerCertificate=true*.
 
@@ -125,24 +129,24 @@ Verwenden Sie die Option **Kumulierte Kosten**, und filtern Sie dann nach dem **
 
 **Wie kann ich NSG-Regeln für eingehenden Datenverkehr an Verwaltungsports festlegen?**
 
-Die integrierte Firewall-Funktion konfiguriert die Windows-Firewall auf allen virtuellen Computern im Cluster, um eingehende Verbindungen nur von IP-Adressbereichen zuzulassen, die Computern mit Microsoft-Verwaltung/-Bereitstellung und sicheren Administratorarbeitsstationen zugeordnet sind. So werden Eindringversuche über die Vermittlungsschicht effektiv verhindert.
+Die Steuerungsebene einer verwalteten Instanz verwaltet NSG-Regeln zum Schutz von Verwaltungsports.
 
-Ports und ihre Verwendung:
+Verwaltungsports werden für Folgendes verwendet:
 
 Port 9000 und 9003 werden für die Service Fabric-Infrastruktur verwendet. Die primäre Aufgabe von Service Fabric ist es, den virtuellen Cluster fehlerfrei zu halten und den Zielzustand hinsichtlich der Anzahl der Komponentenreplikate zu bewahren.
 
 Die Ports 1438, 1440 und 1452 werden vom Knoten-Agent verwendet. Der Knoten-Agent ist eine Anwendung, die im Cluster ausgeführt wird und von der Steuerungsebene zum Ausführen von Verwaltungsbefehlen verwendet wird.
 
-Die Kommunikation wird nicht nur von der integrierten Firewall in der Vermittlungsschicht, sondern auch durch Zertifikate geschützt.
+Zusätzlich zu den NSG-Regeln schützt die integrierte Firewall die Instanz auf Netzwerkebene. Auf Anwendungsebene wird die Kommunikation mit den Zertifikaten geschützt.
   
 Weitere Informationen zu diesem Thema und zum Überprüfen der integrierten Firewall finden Sie unter [Ermitteln einer Firewall, die in eine verwaltete Azure SQL-Datenbank-Instanz integriert ist](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
 
 
-## <a name="mitigate-network-risks"></a>Abschwächen von Netzwerkrisiken  
+## <a name="mitigate-data-exfiltration-risks"></a>Mindern von Risiken bei der Datenexfiltration  
 
-**Wie kann ich Netzwerkrisiken verringern?**
+**Wie kann ich Risiken bei der Datenexfiltration mindern?**
 
-Kunden wird empfohlen, zum Verringern von Netzwerkrisiken eine Reihe von Sicherheitseinstellungen und -kontrollen anzuwenden:
+Kunden wird empfohlen, zum Mindern von Risiken bei der Datenexfiltration eine Reihe von Sicherheitseinstellungen und -kontrollen anzuwenden:
 
 - Aktivieren Sie [Transparent Data Encryption (TDE)](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql) für alle Datenbanken.
 - Deaktivieren Sie die Common Language Runtime (CLR). Dies wird auch für lokale Umgebungen empfohlen.
@@ -180,19 +184,19 @@ Die DNS-Konfiguration wird letztendlich aktualisiert:
 Als Problemumgehung können Sie ein Downgrade der verwalteten Instanz auf 4 virtuelle Kerne durchführen und danach ein Upgrade der Instanz durchführen. Dies hat die Nebenwirkung, dass die DNS-Konfiguration aktualisiert wird.
 
 
-## <a name="static-ip-address"></a>Statische IP-Adresse
+## <a name="ip-address"></a>IP-Adresse
+
+**Kann ich mithilfe der IP-Adresse eine Verbindung mit einer verwalteten Instanz herstellen?**
+
+Das Herstellen einer Verbindung mit einer verwalteten Instanz mithilfe der IP-Adresse wird nicht unterstützt. Der Hostname der verwalteten Instanz wird dem Lastenausgleich (Load Balancer, LB) vor dem virtuellen Cluster dieser Instanz zugeordnet. Da ein einziger virtueller Cluster mehrere verwaltete Instanzen hosten könnte, könnte die Verbindung nicht an eine ordnungsgemäße verwaltete Instanz weitergeleitet werden, ohne deren Namen anzugeben.
+
+Weitere Informationen zur Architektur des virtuellen Clusters für verwaltete Instanzen finden Sie unter [Verbindungsarchitektur für virtuellen Cluster](sql-database-managed-instance-connectivity-architecture.md#virtual-cluster-connectivity-architecture).
 
 **Kann eine verwaltete Instanz eine statische IP-Adresse aufweisen?**
 
 In seltenen, jedoch erforderlichen Situationen müssen Sie eine Onlinemigration einer verwalteten Instanz zu einem neuen virtuellen Cluster durchführen. Gegebenenfalls ist diese Migration aufgrund von Änderungen in unserem Technologiestapel erforderlich, mit denen die Sicherheit und Zuverlässigkeit des Diensts verbessert werden sollen. Die Migration zu einem neuen virtuellen Cluster führt zum Andern der IP-Adresse, die dem Hostnamen der verwalteten Instanz zugeordnet ist. Der Dienst für die verwaltete Instanz beansprucht keine Unterstützung statischer IP-Adressen und behält sich das Recht vor, die IP-Adresse im Rahmen regulärer Wartungszyklen zu ändern.
 
 Aus diesem Grund wird dringend empfohlen, keine statische IP-Adresse zu verwenden, da dies zu unnötigen Ausfallzeiten führen kann.
-
-## <a name="moving-mi"></a>Verschieben verwalteter Instanzen
-
-**Kann ich eine verwaltete Instanz oder das zugehörige VNET in eine andere Ressourcengruppe verschieben?**
-
-Nein, dies ist die aktuelle Plattformeinschränkung. Nachdem eine verwaltete Instanz erstellt wurde, wird das Verschieben dieser Instanz oder des VNET in eine andere Ressourcengruppe oder ein anderes Abonnement nicht unterstützt.
 
 ## <a name="change-time-zone"></a>Ändern der Zeitzone
 

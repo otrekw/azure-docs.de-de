@@ -4,15 +4,15 @@ description: In diesem Artikel wird die Zertifizierungsabdeckung für Azure Cosm
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 03/18/2020
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: a41d95a5ab0665698676d0f17333e2f5c7f467eb
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 5a35ec10d7d9bc60bbbf28ee85c83c838108050b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872202"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79527366"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Compliance in Azure Cosmos DB 
 
@@ -44,6 +44,7 @@ Für Azure Cosmos DB wird die Zertifizierungsabdeckung ständig erweitert. Derze
 | ISO 27017:2015 | | | |
 | ISO 27018:2014 | | | |
 | ISO 9001:2015 | | | |
+| ISO 27701:2019| | | |
 | SOC 1, 2, 3 | | | |
 
 Weitere Informationen zu diesen Complianceangeboten und ihren Vorteilen finden Sie auf der Seite [Overview of Microsoft Azure compliance](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) (Übersicht über Microsoft Azure-Compliance).

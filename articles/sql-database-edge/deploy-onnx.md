@@ -6,16 +6,15 @@ services: sql-database-edge
 ms.service: sql-database-edge
 ms.subservice: machine-learning
 ms.topic: conceptual
-author: ronychatterjee
-ms.author: achatter
-ms.reviewer: davidph
-ms.date: 11/04/2019
-ms.openlocfilehash: 37fc04919b844d1edf87be62a587c34de4a8c4d5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+author: dphansen
+ms.author: davidph
+ms.date: 03/26/2020
+ms.openlocfilehash: aff9346595d3b8985d3558658af32d05f88c0554
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692341"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365453"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model-in-sql-database-edge-preview"></a>Bereitstellen eines ONNX-Modells und Treffen von Vorhersagen damit in der SQL Database Edge-Vorschau
 
@@ -32,8 +31,8 @@ Dieser Schnellstart basiert auf **SciKit-learn** und verwendet das [Boston Housi
 * Öffnen Sie Azure Data Studio, und führen Sie die folgenden Schritte zum Installieren der für diesen Schnellstart benötigten Pakete aus:
 
     1. Öffnen Sie [Neues Notebook](https://docs.microsoft.com/sql/azure-data-studio/sql-notebooks), das mit dem Python 3-Kernel verbunden ist. 
-    1. Klicken Sie auf **Pakete verwalten**, suchen Sie unter **Neues hinzufügen** nach **sklearn**, und installieren Sie das Paket „SciKit-learn“. 
-    1. Installieren Sie außerdem die Pakete **onnxmltools**, **onnxruntime**, **skl2onnx** und **sqlalchemy**.
+    1. Klicken Sie auf **Pakete verwalten**, suchen Sie unter **Neues hinzufügen** nach **scikit-learn**, und installieren Sie das Paket „SciKit-learn“. 
+    1. Installieren Sie außerdem die Pakete **setuptools**, **numpy**, **onnxmltools**, **onnxruntime**, **skl2onnx**, **pyodbc** und **sqlalchemy**.
     
 * Geben Sie jeden der nachstehenden Skriptteile in eine Zelle im Azure Data Studio-Notebook ein, und führen Sie die Zelle aus.
 
@@ -61,7 +60,6 @@ x = df.drop(['MEDV'], axis = 1)
 
 # y is what we are trying to predict - the median value
 y = df.iloc[:,-1]
-
 
 # Split the data frame into features and target
 x_train = df.drop(['MEDV'], axis = 1)
