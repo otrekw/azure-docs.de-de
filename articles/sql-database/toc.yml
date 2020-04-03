@@ -58,8 +58,6 @@
       href: sql-database-managed-instance-quickstart-guide.md
 - name: Konzepte
   items:
-    - name: Dokumentation zu allgemeinen Features
-      href: sql-database-paas-index.yml
     - name: Funktionsvergleiche
       href: sql-database-features.md
     - name: Schrittanleitung
@@ -280,8 +278,6 @@
                   href: sql-database-xevent-code-ring-buffer.md
     - name: Skalierbarkeit
       items:
-        - name: Dokumentation zur Skalierbarkeit
-          href: sql-database-scalability-index.yml
         - name: Hoch-/Herunterskalieren
           href: sql-database-scale-resources.md
         - name: Horizontale Leseskalierung
@@ -310,8 +306,6 @@
           href: sql-database-elastic-transactions-overview.md
     - name: Datenbankfeatures
       items:
-        - name: Dokumentation zu Datenbankfeatures
-          href: sql-database-features-index.yml
         - name: Funktionen für mehrere Modelle
           href: sql-database-multi-model-features.md
         - name: In-Memory
@@ -479,7 +473,7 @@
       items:
         - name: Erstellen
           items:
-            - name: Über das Azure-Portal
+            - name: Verwenden des Azure-Portals
               href: sql-database-single-database-get-started.md
             - name: Per ARM-Vorlage
               displayName: Resource Manager
@@ -685,7 +679,6 @@
         - name: Codebeispiele
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: Verwaltete SQL-Instanz
-  href: sql-database-managed-instance-index.yml
   items:
     - name: Übersicht
       items:
