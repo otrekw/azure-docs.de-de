@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/30/2020
 ms.author: akjosh
-ms.openlocfilehash: a0b5f45ba993033a9f56ee6b078193677b1c5aad
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 85977819d30ddc8745eb9231242eb1990222676c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191808"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530987"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics-VM-Erweiterung für Windows
 
@@ -36,6 +36,7 @@ Die folgende Tabelle enthält eine Zuordnung der Version der Log Analytics-VM-Er
 
 | Log Analytics-Agent-Paketversion für Windows | Version der Log Analytics-VM-Erweiterung für Windows | Veröffentlichungsdatum | Versionsinformationen |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18029 | 1.0.18029 | März 2020   | <ul><li>Fügt Unterstützung für SHA-2-Codesignaturen hinzu.</li><li>Verbessert Installation und Verwaltung von VM-Erweiterungen.</li><li>Behebt einen Fehler in Azure Arc für die Integration von Servern.</li><li>Fügt ein integriertes Tool zur Problembehandlung für den Kundensupport hinzu.</li><li>Fügt Unterstützung für zusätzliche Azure Government Regionen hinzu.</li> |
 | 10.20.18018 | 1.0.18018 | Oktober 2019 | <ul><li> Kleinere Fehlerbehebungen und Stabilisierungsverbesserungen </li></ul> |
 | 10.20.18011 | 1.0.18011 | Juli 2019 | <ul><li> Kleinere Fehlerbehebungen und Stabilisierungsverbesserungen </li><li> Erhöhung des Werts für „MaxExpressionDepth“ auf 10.000 </li></ul> |
 | 10.20.18001 | 1.0.18001 | Juni 2019 | <ul><li> Kleinere Fehlerbehebungen und Stabilisierungsverbesserungen </li><li> Hinzugefügte Möglichkeit, Standardanmeldeinformationen zu deaktivieren, wenn eine Proxyverbindung hergestellt wird (Unterstützung für WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH) </li></ul>|
@@ -46,6 +47,7 @@ Die folgende Tabelle enthält eine Zuordnung der Version der Log Analytics-VM-Er
 | 8.0.11081 | 1.0.11081 | November 2017 | | 
 | 8.0.11072 | 1.0.11072 | September 2017 | |
 | 8.0.11049 | 1.0.11049 | Februar 2017 | |
+
 
 ### <a name="azure-security-center"></a>Azure Security Center
 

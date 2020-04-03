@@ -18,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 251f72ab4f4d53fc2c836f06c78a1faa291b3a8a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b3919a016613da2470c14995663acc9c5415e483
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74276070"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382850"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>Schnellstart: Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers – Azure CLI
 
@@ -33,7 +33,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart mindestens Azure CLI-Version 2.0.28 ausführen. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). Führen Sie nach der Überprüfung der CLI-Version den Befehl `az login` aus, um eine Verbindung mit Azure zu erstellen. Die CLI-Befehle in dieser Schnellstartanleitung sind für die Ausführung in einer Bash-Shell formatiert.
+Wenn Sie die Azure-Befehlszeilenschnittstelle lokal installieren und verwenden möchten, benötigen Sie für diese Schnellstartanleitung mindestens die Version 2.0.28 der Azure-Befehlszeilenschnittstelle. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). Führen Sie nach der Überprüfung der Azure CLI-Version den Befehl `az login` aus, um eine Verbindung mit Azure herzustellen. Die Azure CLI-Befehle in dieser Schnellstartanleitung sind für die Ausführung in einer Bash-Shell formatiert.
 
 ## <a name="create-a-vm"></a>Erstellen einer VM
 
@@ -53,7 +53,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Die Erstellung des virtuellen Computers dauert einige Minuten. Fahren Sie erst mit den übrigen Schritten fort, wenn der virtuelle Computer erstellt und von der CLI eine Ausgabe zurückgegeben wurde.
+Die Erstellung des virtuellen Computers dauert einige Minuten. Fahren Sie erst mit den übrigen Schritten fort, wenn der virtuelle Computer erstellt und von der Azure CLI eine Ausgabe zurückgegeben wurde.
 
 ## <a name="test-network-communication"></a>Testen der Netzwerkkommunikation
 
@@ -134,7 +134,7 @@ az network nic list-effective-nsg \
 
 Die zurückgegebene Ausgabe enthält den folgenden Text für die Regel **AllowInternetOutbound**, die in einem vorherigen Schritt unter [Verwenden der IP-Flussüberprüfung](#use-ip-flow-verify) den ausgehenden Zugriff auf www.bing.com zugelassen hat:
 
-```azurecli
+```
 {
  "access": "Allow",
  "additionalProperties": {},
@@ -175,7 +175,7 @@ In der obigen Ausgabe sehen Sie, dass **Internet** als **destinationAddressPrefi
 
 Beim Ausführen des Befehls `az network watcher test-ip-flow` zum Testen der ausgehenden Kommunikation mit 172.131.0.100 (im Abschnitt [Verwenden der IP-Flussüberprüfung](#use-ip-flow-verify)) wurden Sie in der Ausgabe darüber informiert, dass die Kommunikation durch die Regel **DefaultOutboundDenyAll** verweigert wurde. Die Regel **DefaultOutboundDenyAll** entspricht der Regel **DenyAllOutBound**, die in der folgenden Ausgabe des Befehls `az network nic list-effective-nsg` aufgeführt ist:
 
-```azurecli
+```
 {
  "access": "Deny",
  "additionalProperties": {},
@@ -208,7 +208,7 @@ Die Regel listet **0.0.0.0/0** als **destinationAddressPrefix** auf. Die Regel v
 
 Beim Ausführen des Befehls `az network watcher test-ip-flow` zum Testen der eingehenden Kommunikation von 172.131.0.100 (im Abschnitt [Verwenden der IP-Flussüberprüfung](#use-ip-flow-verify)) wurden Sie in der Ausgabe darüber informiert, dass die Kommunikation durch die Regel **DefaultInboundDenyAll** verweigert wurde. Die Regel **DefaultInboundDenyAll** entspricht der Regel **DenyAllInBound**, die in der folgenden Ausgabe des Befehls `az network nic list-effective-nsg` aufgeführt ist:
 
-```azurecli
+```
 {
  "access": "Deny",
  "additionalProperties": {},

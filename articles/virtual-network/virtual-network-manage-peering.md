@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
-ms.openlocfilehash: 4103930e0d089f5f7c17586f22616431c8aa11d9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 97acac61d0397a4e13fb64d39a6aba92e4de2afd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978354"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80123303"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke
 
@@ -35,7 +35,7 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
 - Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/free) registrieren.
 - Wenn Sie das Portal verwenden, öffnen Sie https://portal.azure.com, und melden Sie sich mit einem Konto an, das über die [erforderlichen Berechtigungen](#permissions) für die Verwendung von Peerings verfügt.
 - Wenn Sie PowerShell-Befehle zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/powershell) oder durch Ausführen von PowerShell auf Ihrem Computer aus. Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Für dieses Tutorial ist das Azure PowerShell-Modul Version 1.0.0 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable Az` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie zum Herstellen einer Verbindung mit Azure auch `Connect-AzAccount` mit einem Konto ausführen, das über die [erforderlichen Berechtigungen](#permissions) für die Verwendung von Peerings verfügt.
-- Wenn Sie Befehle der Azure-Befehlszeilenschnittstelle (CLI) zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/bash) oder durch Ausführen der CLI auf Ihrem Computer aus. Für dieses Tutorial ist die Azure CLI-Version 2.0.31 oder höher erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli). Wenn Sie die Azure CLI lokal ausführen, müssen Sie zum Herstellen einer Verbindung mit Azure auch `az login` mit einem Konto ausführen, das über die [erforderlichen Berechtigungen](#permissions) für die Verwendung von Peerings verfügt.
+- Wenn Sie Befehle der Azure-Befehlszeilenschnittstelle (CLI) zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/bash) oder durch Ausführen der CLI auf Ihrem Computer aus. Für dieses Tutorial ist die Azure CLI-Version 2.0.31 oder höher erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli). Wenn Sie die Azure CLI lokal ausführen, müssen Sie zum Herstellen einer Verbindung mit Azure auch `az login` mit einem Konto ausführen, das über die [erforderlichen Berechtigungen](#permissions) für die Verwendung von Peerings verfügt.
 
 Das Konto, bei dem Sie sich anmelden oder das Sie zum Herstellen einer Verbindung mit Azure verwenden, muss der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten Rolle](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) zugewiesen sein, der die entsprechenden, unter [Berechtigungen](#permissions) aufgeführten Aktionen zugewiesen wurden.
 
@@ -60,9 +60,13 @@ Informieren Sie sich vor der Erstellung eines Peerings über die Anforderungen u
        Zusätzlich zum Weiterleiten von Datenverkehr an ein lokales Netzwerk kann ein VPN-Gateway Netzwerkdatenverkehr zwischen virtuellen Netzwerken weiterleiten, die mittels Peering mit dem virtuellen Netzwerk, in dem das Gateway enthalten ist, verknüpft sind. Die virtuellen Netzwerke müssen dabei nicht untereinander mittels Peering verknüpft werden. Die Weiterleitung von Datenverkehr über ein VPN-Gateway ist nützlich, wenn Sie ein VPN-Gateway im Hub eines virtuellen Netzwerks verwenden möchten, um Datenverkehr zwischen den Spokes des virtuellen Netzwerks, die nicht untereinander verknüpft sind, weiterzuleiten. (Weitere Informationen finden Sie in dem beschriebenen Beispiel zur Option **Weitergeleiteten Datenverkehr zulassen** bezüglich der Hub-Spoke-Topologie.) Weitere Informationen zum Zulassen der Verwendung eines Gateways für den Transit finden Sie unter [Konfigurieren eines VPN-Gateways für den Transit in einem Peering virtueller Netzwerke](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json). In diesem Szenario müssen benutzerdefinierte Routen implementiert werden, die das Gateway für virtuelle Netzwerke als Typ des nächsten Hops angeben. Weitere Informationen hierzu finden Sie unter [Benutzerdefinierte Routen](virtual-networks-udr-overview.md#user-defined). Als Typ des nächsten Hops in einer benutzerdefinierten Route können Sie nur ein VPN-Gateway angeben, jedoch kein ExpressRoute-Gateway.
 
     - **Remotegateways verwenden**: Aktivieren Sie dieses Kontrollkästchen, wenn Sie zulassen möchten, dass Datenverkehr von diesen virtuellen Netzwerken über ein Gateway für virtuelle Netzwerke geleitet werden soll, das mit dem mittels Peering verknüpften virtuellen Netzwerk verbunden ist. Beispielsweise ist an das virtuelle Netzwerk, mit dem Sie mittels Peering eine Verbindung herstellen, ein VPN-Gateway verbunden, dass Kommunikation mit einem lokalen Netzwerk ermöglicht.  Wird dieses Kontrollkästchen aktiviert, kann Datenverkehr aus diesem virtuellen Netzwerk über das verbundene VPN-Gateway an dieses mittels Peering verknüpfte virtuelle Netzwerk weitergeleitet werden. Wenn Sie dieses Kontrollkästchen aktivieren, muss ein Gateway für virtuelle Netzwerke mit dem mittels Peering verknüpften virtuellen Netzwerk verbunden sein. Zudem muss das Kontrollkästchen **Gatewaytransit zulassen** aktiviert sein. Wenn Sie dieses Kontrollkästchen deaktiviert (Standard) lassen, kann der Datenverkehr trotzdem von dem mittels Peering verknüpften Netzwerk an dieses virtuelle Netzwerk weitergeleitet werden, kann jedoch nicht über ein mit diesem virtuellen Netzwerk verbundenes Gateway für virtuelle Netzwerke erfolgen.
-    Diese Einstellung kann nur bei einem Peering für dieses virtuelle Netzwerk aktiviert sein.
+    
+      Diese Einstellung kann nur bei einem Peering für dieses virtuelle Netzwerk aktiviert sein.
 
-        Wenn bereits ein Gateway in Ihrem virtuellen Netzwerk konfiguriert ist, können keine Remotegateways verwendet werden. Weitere Informationen zur Verwendung eines Gateways für den Transit finden Sie unter [Konfigurieren eines VPN-Gateways für den Transit in einem Peering virtueller Netzwerke](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+      Wenn bereits ein Gateway in Ihrem virtuellen Netzwerk konfiguriert ist, können keine Remotegateways verwendet werden. Weitere Informationen zur Verwendung eines Gateways für den Transit finden Sie unter [Konfigurieren eines VPN-Gateways für den Transit in einem Peering virtueller Netzwerke](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+        
+    > [!NOTE]
+    > Wenn Sie ein Virtual Network-Gateway verwenden, um den lokalen Datenverkehr transitiv an ein mittels Peering verknüpftes VNet zu senden, muss der IP-Adressbereich des mittels Peering verknüpften VNets für das lokale VPN-Gerät auf „interessanter“ Datenverkehr festgelegt werden. Andernfalls können Ihre lokalen Ressourcen nicht mit Ressourcen im mittels Peering verknüpften VNet kommunizieren.
 
 6. Klicken Sie auf **OK**, um das Peering dem ausgewählten virtuellen Netzwerk hinzuzufügen.
 
@@ -142,7 +146,7 @@ Die Konten, mit denen Sie beim Peering virtueller Netzwerke arbeiten, müssen de
 
 Wenn Ihr Konto nicht einer der zuvor aufgeführten Rollen zugewiesen ist, müssen Sie es einer [benutzerdefinierten Rolle](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) zuweisen, die den erforderlichen Aktionen aus der folgenden Tabelle zugewiesen ist:
 
-| Action                                                          | Name |
+| Aktion                                                          | Name |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Erforderlich, um ein Peering zwischen dem virtuellen Netzwerk A und dem virtuellen Netzwerk B herzustellen. Das virtuelle Netzwerk A muss ein virtuelles Netzwerk sein (Resource Manager).          |
 | Microsoft.Network/virtualNetworks/peer/action                   | Erforderlich, um ein Peering zwischen dem virtuellen Netzwerk B (Resource Manager) und dem virtuellen Netzwerk A herzustellen.                                                       |

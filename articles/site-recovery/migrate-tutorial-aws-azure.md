@@ -9,16 +9,21 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4a1952f5ece4c021834fb98f8a09f1a2738e6469
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 929bc0695bda2e64f77f7e9286e06cee787822ba
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789386"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388966"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrieren von AWS-VMs (Amazon Web Services) zu Azure
 
-In diesem Tutorial erfahren Sie, wie Sie virtuelle AWS-Computer (Amazon Web Services-VMs) mithilfe von Azure Site Recovery zu Azure-VMs migrieren. Beim Migrieren von AWS EC2-Instanzen zu Azure werden die VMs wie physische lokale Computer behandelt. In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial erfahren Sie, wie Sie virtuelle AWS-Computer (Amazon Web Services) mithilfe von Azure Site Recovery zu Azure-VMs migrieren. Beim Migrieren von AWS EC2-Instanzen zu Azure werden die VMs wie physische lokale Computer behandelt. In diesem Tutorial lernen Sie Folgendes:
+
+
+> [!TIP]
+> Es wird empfohlen, anstelle des Azure Site Recovery-Diensts nun den Azure Migrate-Dienst zum Migrieren virtueller AWS-Computer zu Azure zu verwenden. [Weitere Informationen](../migrate/tutorial-migrate-physical-virtual-machines.md)
+
 
 > [!div class="checklist"]
 > * Überprüfen der Voraussetzungen
@@ -32,11 +37,8 @@ In diesem Tutorial erfahren Sie, wie Sie virtuelle AWS-Computer (Amazon Web Serv
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen, bevor Sie beginnen.
 
 
-> [!NOTE]
-> Sie können jetzt den Azure Migrate-Dienst verwenden, um AWS-Instanzen zu Azure zu migrieren. [Weitere Informationen](../migrate/tutorial-migrate-physical-virtual-machines.md)
-
 ## <a name="prerequisites"></a>Voraussetzungen
-- Vergewissern Sie sich, dass auf den zu migrierenden virtuellen Computern eine unterstützte Betriebssystemversion ausgeführt wird. Unterstützte Versionen: 
+- Vergewissern Sie sich, dass auf den zu migrierenden virtuellen Computern eine unterstützte Betriebssystemversion ausgeführt wird. Folgende Versionen werden unterstützt: 
   - Windows Server 2016 
   - Windows Server 2012 R2
   - Windows Server 2012 
@@ -92,8 +94,8 @@ Navigieren Sie zu **Dashboard** > **Alle Ressourcen**, um den neuen Tresor anzuz
 
 Wenn die Azure-VMs nach der Migration (Failover) erstellt werden, werden sie mit diesem Azure-Netzwerk verknüpft.
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Ressource erstellen** > **Netzwerk** >
-   **Virtuelles Netzwerk**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Optionen **Ressource erstellen** > **Netzwerk** >
+   **Virtuelles Netzwerk** aus.
 3. Geben Sie unter **Name** den Namen **myMigrationNetwork** ein.
 4. Übernehmen Sie den Standardwert für **Adressbereich** (Eingabe eines Werts erforderlich).
 5. Wählen Sie unter **Abonnement** das gewünschte Abonnement aus.
@@ -138,7 +140,7 @@ Wählen Sie auf der Seite **Quelle vorbereiten** die Option **+ Konfigurationsse
 
     1. Wählen Sie unter **Vorbereitung** die Option **Install the configuration server and process server** (Konfigurationsserver und Prozessserver installieren) und dann **Weiter**.
     2. Wählen Sie unter **Third-Party Software License** (Drittanbietersoftware-Lizenz) die Option **I accept the third-party license agreement** (Ich akzeptiere die Drittanbieter-Lizenzvereinbarung) und dann **Weiter**.
-    3. Wählen Sie unter **Registrierung** die Option **Durchsuchen**, und navigieren Sie dann zu dem Ort, an dem Sie die Schlüsseldatei für die Tresorregistrierung abgelegt haben. Klicken Sie auf **Weiter**.
+    3. Wählen Sie unter **Registrierung** die Option **Durchsuchen**, und navigieren Sie dann zu dem Ort, an dem Sie die Schlüsseldatei für die Tresorregistrierung abgelegt haben. Wählen Sie **Weiter** aus.
     4. Wählen Sie unter **Interneteinstellungen** die Option **Connect to Azure Site Recovery without a proxy server** (Ohne Proxyserver mit Azure Site Recovery verbinden) und dann **Weiter**.
     5. Auf der Seite **Prüfung der erforderlichen Komponenten** werden verschiedene Komponenten überprüft. Wählen Sie **Weiter**, wenn der Vorgang abgeschlossen ist.
     6. Geben Sie unter **MySQL Configuration** (MySQL-Konfiguration) die erforderlichen Kennwörter ein, und wählen Sie anschließend **Weiter**.

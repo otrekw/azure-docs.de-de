@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 01/30/2020
-ms.openlocfilehash: 972f0aa1f6d05c3cc65c62c0991fad87ab4676c4
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.date: 03/12/2020
+ms.openlocfilehash: 0488002352d222abb0166737f9a042060b1a1bb1
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623628"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389425"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Tutorial: Prognostizieren von Automobilpreisen mit dem Designer (Vorschau)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -103,7 +103,7 @@ Sie können die Daten visualisieren, um sich mit dem zu verwendenden Dataset ver
 
 1. Wählen Sie das Modul **Automobile price data (Raw)** (Automobilpreisdaten (Rohdaten)) aus.
 
-1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails die Option **Ausgaben** aus.
+1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails die Option **Ausgaben und Protokolle** aus.
 
 1. Wählen Sie das Diagrammsymbol aus, um die Daten zu visualisieren.
 
@@ -168,6 +168,12 @@ Auch nach dem Entfernen der Spalte **normalized-losses** weist Ihr Dataset noch 
 
 1. Wählen Sie das Modul **Clean Missing Data** (Fehlende Daten bereinigen) aus.
 
+1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails die Option **Spalte bearbeiten** aus.
+
+1. Erweitern Sie im angezeigten Fenster **Columns to be cleaned** (Zu bereinigende Spalten) das Dropdownmenü neben **Einschließen**. Wählen Sie **Alle Spalten** aus.
+
+1. Wählen Sie **Speichern** aus.
+
 1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails unter **Cleaning mode** (Bereinigungsmodus) die Option **Remove entire row** (Gesamte Zeile entfernen) aus.
 
 1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails das Textfeld **Kommentar** aus, und geben Sie *Remove missing value rows* (Zeilen mit fehlenden Werten entfernen) ein. 
@@ -213,9 +219,11 @@ Trainieren Sie das Modell, indem Sie ein Dataset mit Preis bereitstellen. Durch 
 
 1. Wählen Sie **Regression** > **Linear Regression** (Lineare Regression) aus, und ziehen Sie sie auf die Pipelinecanvas.
 
-1. Suchen Sie nach dem Modul **Train Model** (Modell trainieren), und ziehen Sie es auf die Pipelinecanvas. 
-
 1. Verbinden Sie die Ausgabe des Moduls **Linear Regression** (Lineare Regression) mit der linken Eingabe des Moduls **Train Model** (Modell trainieren).
+
+1. Erweitern Sie in der Modulpalette den Abschnitt **Module training** (Modultraining), und ziehen Sie das Modul **Train Model** (Modell trainieren) auf die Canvas.
+
+1. Wählen Sie das Modul **Train Model** (Modell trainieren) aus, und ziehen Sie es auf die Pipelinecanvas.
 
 1. Verbinden Sie die Trainingsdatenausgabe (linker Port) des Moduls **Split Data** (Daten aufteilen) mit der rechten Eingabe des Moduls **Train Model** (Modell trainieren).
     
@@ -224,8 +232,6 @@ Trainieren Sie das Modell, indem Sie ein Dataset mit Preis bereitstellen. Durch 
 
     ![Screenshot der richtigen Konfiguration des Moduls „Train Model“. Das Modul „Linear Regression“ ist mit dem linken Port des Moduls „Train Model“ verbunden, und das Modul „Split Data“ ist mit dem rechten Port von „Train Model“ verbunden.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
-1. Erweitern Sie in der Modulpalette den Abschnitt **Module training** (Modultraining), und ziehen Sie das Modul **Train Model** (Modell trainieren) auf die Canvas.
-
 1. Wählen Sie das Modul **Train Model** (Modell trainieren) aus.
 
 1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails den Selektor **Spalte bearbeiten** aus.
@@ -233,6 +239,9 @@ Trainieren Sie das Modell, indem Sie ein Dataset mit Preis bereitstellen. Durch 
 1. Erweitern Sie im Dialogfeld **Bezeichnungsspalte** das Dropdownmenü, und wählen Sie **Spaltennamen** aus. 
 
 1. Geben Sie *price* (Preis) in das Textfeld ein, um den Wert anzugeben, der von Ihrem Modell prognostiziert wird.
+
+    >[!IMPORTANT]
+    > Achten Sie darauf, dass Sie den Spaltennamen genau eingeben. Schreiben Sie **price** nicht groß. 
 
     Ihre Pipeline sollte wie folgt aussehen:
 
@@ -258,22 +267,24 @@ Verwenden Sie das Modul **Evaluate Model** (Modell auswerten), um auszuwerten, w
 
     ![Screenshot: Korrekte Konfiguration des der Pipeline](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
 
-## <a name="run-the-pipeline"></a>Führen Sie die Pipeline aus.
+## <a name="submit-the-pipeline"></a>Übermitteln der Pipeline
 
-Nachdem die Einrichtung Ihrer Pipeline jetzt abgeschlossen ist, können Sie eine Pipelineausführung übermitteln, um Ihr Machine Learning-Modell zu trainieren. Sie können eine Pipelineausführung jederzeit übermitteln, während Sie im Designer mit der Erstellung von Pipelines beschäftigt sind. Dies können Sie nutzen, um Ihre Arbeit zwischendurch zu überprüfen und sicherzustellen, dass Ihre Pipeline wie gewünscht funktioniert.
+Nachdem die Einrichtung Ihrer Pipeline jetzt abgeschlossen ist, können Sie eine Pipelineausführung übermitteln, um Ihr Machine Learning-Modell zu trainieren. Sie können jederzeit eine gültige Pipelineausführung übermitteln, mit der während der Entwicklung Änderungen an ihrer Pipeline überprüft werden können.
 
-1. Wählen Sie im oberen Bereich der Canvas die Option **Ausführen** aus.
+1. Wählen Sie im oberen Bereich der Canvas die Option **Senden** aus.
 
-1. Wählen Sie im Dialogfeld **Pipelineausführung einrichten** für **Experiment** die Option **+ Neues Experiment** aus.
+1. Wählen Sie im Dialogfeld **Pipelineausführung einrichten** die Option **Neu erstellen** aus.
 
     > [!NOTE]
     > Experimente fassen ähnliche Pipelineausführungen in einer Gruppe zusammen. Wenn Sie eine Pipeline mehrmals ausführen, können Sie für weitere Ausführungen das gleiche Experiment auswählen.
 
-    1. Geben Sie unter **Name des Experiments** einen aussagekräftigen Namen ein.
+    1. Geben Sie unter **Neuer Experimentname** einen aussagekräftigen Namen ein.
 
-    1. Klicken Sie auf **Run** (Ausführen).
+    1. Klicken Sie auf **Submit** (Senden).
     
     Ausführungsstatus und Details können rechts oben auf der Canvas angezeigt werden.
+    
+    Handelt es sich um die erste Ausführung, kann die vollständige Ausführung der Pipeline bis zu 20 Minuten dauern. In den Standardcomputeeinstellungen ist eine minimale Knotengröße von 0 festgelegt. Das bedeutet, dass der Designer Ressourcen nach dem Leerlauf zuordnen muss. Wiederholte Pipelineausführungen werden schneller abgeschlossen, da die Computeressourcen bereits zugeordnet sind. Außerdem verwendet der Designer für jedes Modul zwischengespeicherte Ergebnisse, um die Effizienz weiter zu steigern.
 
 ### <a name="view-scored-labels"></a>Anzeigen bewerteter Bezeichnungen
 
@@ -281,7 +292,7 @@ Nach Abschluss der Ausführung können Sie sich die Ergebnisse ansehen. Sehen Si
 
 1. Wählen Sie das Modul **Score Model** (Modell bewerten) aus, um dessen Ausgabe anzuzeigen.
 
-1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails **Ausgaben** > Diagrammsymbol ![Visualisierungssymbol](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) aus, um die Ergebnisse anzuzeigen.
+1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails **Ausgaben und Protokolle** > Diagrammsymbol ![Visualisierungssymbol](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) aus, um die Ergebnisse anzuzeigen.
 
     Hier sehen Sie die vorhergesagten Preise und die tatsächlichen Preise aus den Testdaten.
 
@@ -293,7 +304,7 @@ Verwenden Sie das Modul **Evaluate Model** (Modell auswerten), um zu prüfen, wi
 
 1. Wählen Sie das Modul **Evaluate Model** (Modell auswerten) aus, um dessen Ausgabe anzuzeigen.
 
-1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails **Ausgabe** > Diagrammsymbol ![Visualisierungssymbol](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) aus, um die Ergebnisse anzuzeigen.
+1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails **Ausgaben und Protokolle** > Diagrammsymbol ![Visualisierungssymbol](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) aus, um die Ergebnisse anzuzeigen.
 
 Die folgenden Statistiken werden für Ihr Modell angezeigt:
 

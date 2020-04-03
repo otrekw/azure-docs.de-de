@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: cf71f051b014c6ce56290acda5c4b931c23934e2
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 6f1c211a8110d95adb5e6802313c5b7deafe3864
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77208947"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80276460"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>Schnellstart: Erstellen eines Azure Functions-Projekts mit Visual Studio Code
 
@@ -32,7 +32,7 @@ Vergewissern Sie sich zunähst, dass Folgendes vorhanden ist:
 + [Node.js](https://nodejs.org/): Active LTS- und Maintenance LTS-Versionen (Empfehlung: 10.14.1). Verwenden Sie den Befehl `npm --version`, um Ihre Version zu überprüfen.
 ::: zone-end 
 ::: zone pivot="programming-language-python"
-+ [Python 3.7](https://www.python.org/downloads/release/python-375/) oder [Python 3.6](https://www.python.org/downloads/release/python-368/) (werden beide von Azure Functions unterstützt). Python 3.8 wird noch nicht unterstützt. 
++ [Python 3.8](https://www.python.org/downloads/release/python-381/), [Python 3.7](https://www.python.org/downloads/release/python-375/) und [Python 3.6](https://www.python.org/downloads/release/python-368/) werden von Azure Functions (x64) unterstützt.
 ::: zone-end   
 ::: zone pivot="programming-language-powershell"
 + [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)
@@ -41,7 +41,7 @@ Vergewissern Sie sich zunähst, dass Folgendes vorhanden ist:
 ::: zone-end  
 + [Visual Studio Code](https://code.visualstudio.com/) auf einer der [unterstützten Plattformen](https://code.visualstudio.com/docs/supporting/requirements#_platforms)  
 ::: zone pivot="programming-language-csharp"  
-+ [C#-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) für Visual Studio Code  
++ [C#-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) für Visual Studio Code  
 ::: zone-end  
 ::: zone pivot="programming-language-python"
 + [Python-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-python.python) für Visual Studio Code  
@@ -52,7 +52,7 @@ Vergewissern Sie sich zunähst, dass Folgendes vorhanden ist:
 
 + [Azure Functions-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) für Visual Studio Code 
 
-## <a name="create-an-azure-functions-project"></a>Erstellen Ihres lokalen Projekts 
+## <a name="create-your-local-project"></a><a name="create-an-azure-functions-project"></a>Erstellen Ihres lokalen Projekts 
 
 In diesem Abschnitt wird mithilfe von Visual Studio Code ein lokales Azure Functions-Projekt in der gewünschten Sprache erstellt. Weiter unten in diesem Artikel wird der Funktionscode in Azure veröffentlicht. 
 

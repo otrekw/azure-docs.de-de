@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 03/25/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c18613233d6dec59c76db120ed7f089dfbb5fbac
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8fe6c857e5b0c2f48f27c167c177dbf1f4651986
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77046718"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384108"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit ServiceNow
 
@@ -52,7 +52,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * ServiceNow unterstützt die [automatisierte Benutzerbereitstellung](servicenow-provisioning-tutorial.md).
 
-* Nach dem Konfigurieren von ServiceNow können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+* Nach dem Konfigurieren von ServiceNow können Sie Sitzungssteuerungen erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützen. Sitzungssteuerungen basieren auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
 
 * Die (mobile) ServiceNow Classic-Anwendung kann zur Aktivierung von SSO mit Azure AD konfiguriert werden. Sowohl Android-Benutzer als auch iOS-Benutzer werden unterstützt. In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
@@ -93,11 +93,18 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Screenshot: Seite „Einmaliges Anmelden (SSO) mit SAML einrichten“ mit hervorgehobenem Stiftsymbol](common/edit-urls.png)
 
-4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    a. Geben Sie unter **Anmelde-URL** eine URL mit dem folgenden Muster ein: `https://<instance-name>.service-now.com/navpage.do`
+    a. Geben Sie unter **Anmelde-URL** eine URL mit dem folgenden Muster ein: `https://instance.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>`
 
     b. Geben Sie unter **Bezeichner (Entitäts-ID)** eine URL mit dem folgenden Muster ein: `https://<instance-name>.service-now.com`
+
+    c. Geben Sie unter **Antwort-URL** eine der folgenden URLs ein:
+
+    |||
+    |-|-|
+    | `https://instancename.service-now.com/navpage.do` |
+    | `https://instancename.service-now.com/customer.do` | 
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner ersetzen. Dies wird im weiteren Verlauf des Tutorials erläutert. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -160,9 +167,16 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    a. Geben Sie unter **Anmelde-URL** eine URL mit dem folgenden Muster ein: `https://<instance-name>.service-now.com/navpage.do`
+    a. Geben Sie unter **Anmelde-URL** eine URL mit dem folgenden Muster ein: `https://instance.service-now.com/login_with_sso.do?glide_sso_id=<sys_id of the sso configuration>`
 
     b. Geben Sie unter **Bezeichner (Entitäts-ID)** eine URL mit dem folgenden Muster ein: `https://<instance-name>.service-now.com`
+
+    c. Geben Sie unter **Antwort-URL** eine der folgenden URLs ein:
+
+    |||
+    |-|-|
+    | `https://instancename.service-now.com/navpage.do` |
+    | `https://instancename.service-now.com/customer.do` |
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner ersetzen. Dies wird im weiteren Verlauf des Tutorials erläutert. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -183,7 +197,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Melden Sie sich bei Ihrer ServiceNow-Anwendung als Administrator an.
 
-2. Aktivieren Sie das Plug-In **Integration - Multiple Provider Single Sign-On Installer** (Integration – SSO-Installationsprogramm für mehrere Anbieter):
+1. Aktivieren Sie das Plug-In **Integration - Multiple Provider Single Sign-On Installer** (Integration – SSO-Installationsprogramm für mehrere Anbieter):
 
     a. Suchen Sie im linken Bereich mithilfe des Suchfelds nach dem Abschnitt **System Definition** (Systemdefinition), und wählen Sie **Plugins** (Plug-Ins) aus.
 
@@ -201,11 +215,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
      ![Screenshot: Dialogfeld zum Aktivieren des Plug-Ins mit hervorgehobener Option „Activate“ (Aktivieren)](./media/servicenow-tutorial/tutorial_activate1.png "Aktivieren des Plug-Ins")
 
-3. Suchen Sie im linken Bereich über die Suchleiste nach dem Abschnitt **Multi-Provider SSO** (Multi-Provider-SSO), und wählen Sie **Properties** (Eigenschaften) aus.
+1. Suchen Sie im linken Bereich über die Suchleiste nach dem Abschnitt **Multi-Provider SSO** (Multi-Provider-SSO), und wählen Sie **Properties** (Eigenschaften) aus.
 
     ![Screenshot: Abschnitt „Multi-Provider SSO“ (Multi-Provider-SSO) mit Hervorhebung von „Multi-Provider SSO“ (Multi-Provider-SSO) und „Properties“ (Eigenschaften)](./media/servicenow-tutorial/tutorial_servicenow_06.png "App-URL konfigurieren")
 
-4. Gehen Sie im Dialogfeld **Multiple Provider SSO Properties** (Eigenschaften von SSO für mehrere Anbieter) wie folgt vor:
+1. Gehen Sie im Dialogfeld **Multiple Provider SSO Properties** (Eigenschaften von SSO für mehrere Anbieter) wie folgt vor:
 
     ![Screenshot: Dialogfeld mit den Eigenschaften von SSO für mehrere Anbieter](./media/servicenow-tutorial/ic7694981.png "App-URL konfigurieren")
 
@@ -215,11 +229,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     * Wählen Sie unter **Enable debug logging for the multiple provider SSO integration** (Debugprotokollierung für die Multi-Provider SSO-Integration) die Option **Yes** (Ja) aus.
 
-    * Geben Sie unter **The field on the user table that...** (Das Feld in der Benutzertabelle, das...) die Zeichenfolge **user_name** ein.
+    * Geben Sie unter **The field on the user table that...** (Das Feld in der Benutzertabelle, das...) die Zeichenfolge **email** ein.
   
     * Wählen Sie **Speichern** aus.
 
-6. ServiceNow kann automatisch oder manuell konfiguriert werden. Führen Sie für die automatische Konfiguration von ServiceNow die folgenden Schritte aus:
+1. ServiceNow kann automatisch oder manuell konfiguriert werden. Führen Sie für die automatische Konfiguration von ServiceNow die folgenden Schritte aus:
 
     1. Kehren Sie im Azure-Portal zur SSO-Seite für **ServiceNow** zurück.
 
@@ -274,11 +288,16 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
              ![Screenshot: Seite mit hervorgehobener Option zum Testen der Verbindung](./media/servicenow-tutorial/tutorial_activate2.png "Aktivieren des Plug-Ins")
 
+             > [!NOTE]
+             > Wenn bei der Testverbindung ein Fehler auftritt und Sie diese Verbindung nicht aktivieren können, können Sie den Außerkraftsetzungsschalter von ServiceNow nutzen. Geben Sie **Sys_properties.LIST** in der **Suchnavigation** ein. Daraufhin wird die neue Seite der Systemeigenschaften geöffnet. Hier müssen Sie eine neue Eigenschaft mit dem Namen **glide.authenticate.multisso.test.connection.mandatory** und dem Wert **True/False** für **datatype** erstellen. Legen Sie dann für **Wert** die Option **False** fest.
+
+             > ![Screenshot der Seite mit den Testergebnissen](./media/servicenow-tutorial/testconnection-fail.png "Einmaliges Anmelden konfigurieren")
+        
           1. Geben Sie Ihre Anmeldeinformationen ein, wenn Sie dazu aufgefordert werden. Daraufhin wird die folgende Seite angezeigt. Der Fehler unter **SSO Logout Test Results** (Testergebnisse der SSO-Abmeldung) wird erwartet. Ignorieren Sie den Fehler, und wählen Sie **Activate** (Aktivieren) aus.
 
              ![Screenshot der Seite mit den Testergebnissen](./media/servicenow-tutorial/servicenowactivate.png "Einmaliges Anmelden konfigurieren")
   
-6. Führen Sie für die manuelle Konfiguration von **ServiceNow** die folgenden Schritte aus:
+1. Führen Sie für die manuelle Konfiguration von **ServiceNow** die folgenden Schritte aus:
 
     1. Melden Sie sich bei Ihrer ServiceNow-Anwendung als Administrator an.
 
@@ -319,12 +338,17 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
         * Vergewissern Sie sich, dass **NameID Policy** (NameID-Richtlinie) auf den Wert `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` festgelegt ist.
 
-        * Wählen Sie **Erweitert**aus. Geben Sie unter **User Field** (Benutzerfeld) den Wert **email** oder **user_name** ein (je nachdem, welches Feld für die eindeutige Identifizierung von Benutzern in Ihrer ServiceNow-Bereitstellung verwendet wird).
+        * Wählen Sie **Erweitert**aus. Geben Sie unter **User Field** (Benutzerfeld) den Wert **email** ein.
 
             > [!NOTE]
             > Sie können Azure AD so konfigurieren, dass entweder die Azure AD-Benutzer-ID (Benutzerprinzipalname) oder die E-Mail-Adresse als eindeutiger Bezeichner im SAML-Token ausgegeben wird. Wechseln Sie dazu im Azure-Portal zu **ServiceNow** > **Attribute** > **Einmaliges Anmelden**, und weisen Sie das gewünschte Feld dem Attribut **nameidentifier** zu. Der gespeicherte Wert für das ausgewählte Attribut in Azure AD (beispielsweise „Benutzerprinzipalname“) muss dem in ServiceNow gespeicherten Wert für das eingegebene Feld (beispielsweise „user_name“) entsprechen.
 
         * Wählen Sie rechts oben auf der Seite die Option **Test Connection** (Verbindung testen) aus.
+
+          > [!NOTE]
+          > Wenn bei der Testverbindung ein Fehler auftritt und Sie diese Verbindung nicht aktivieren können, können Sie den Außerkraftsetzungsschalter von ServiceNow nutzen. Geben Sie **Sys_properties.LIST** in der **Suchnavigation** ein. Daraufhin wird die neue Seite der Systemeigenschaften geöffnet. Hier müssen Sie eine neue Eigenschaft mit dem Namen **glide.authenticate.multisso.test.connection.mandatory** und dem Wert **True/False** für **datatype** erstellen. Legen Sie dann für **Wert** die Option **False** fest.
+
+          > ![Screenshot der Seite mit den Testergebnissen](./media/servicenow-tutorial/testconnection-fail.png "Einmaliges Anmelden konfigurieren")
 
         * Geben Sie Ihre Anmeldeinformationen ein, wenn Sie dazu aufgefordert werden. Daraufhin wird die folgende Seite angezeigt. Der Fehler unter **SSO Logout Test Results** (Testergebnisse der SSO-Abmeldung) wird erwartet. Ignorieren Sie den Fehler, und wählen Sie **Activate** (Aktivieren) aus.
 
@@ -420,7 +444,7 @@ In diesem Abschnitt wird in ServiceNow ein Benutzer namens B.Simon erstellt. Ser
 
     d. Geben Sie unter **Clock Skew** (Uhrabweichungen) den Wert **60** ein.
 
-    e. Geben Sie unter **User Field** (Benutzerfeld) den Wert **email** oder **user_name** ein (je nachdem, welches Feld für die eindeutige Identifizierung von Benutzern in Ihrer ServiceNow-Bereitstellung verwendet wird).
+    e. Geben Sie unter **User Field** (Benutzerfeld) den Wert **email** ein.
 
     > [!NOTE]
     > Sie können Azure AD so konfigurieren, dass entweder die Azure AD-Benutzer-ID (Benutzerprinzipalname) oder die E-Mail-Adresse als eindeutiger Bezeichner im SAML-Token ausgegeben wird. Wechseln Sie dazu im Azure-Portal zu **ServiceNow** > **Attribute** > **Einmaliges Anmelden**, und weisen Sie das gewünschte Feld dem Attribut **nameidentifier** zu. Der gespeicherte Wert für das ausgewählte Attribut in Azure AD (beispielsweise „Benutzerprinzipalname“) muss dem in ServiceNow gespeicherten Wert für das eingegebene Feld (beispielsweise „user_name“) entsprechen.
@@ -450,7 +474,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „ServiceNow“ klicken, sollten Sie
     *  Geben Sie unter **Username** (Benutzername) einen Benutzernamen ein (beispielsweise B.simon@contoso.com).
 
     *  Wählen Sie **USE EXTERNAL LOGIN** (EXTERNE ANMELDUNG VERWENDEN) aus. Sie werden zur Azure AD-Seite für die Anmeldung weitergeleitet.
-    
+
     *  Geben Sie Ihre Anmeldeinformationen ein. Falls eine Drittanbieterauthentifizierung vorhanden oder eine andere Sicherheitsfunktion aktiviert ist, muss der Benutzer entsprechend reagieren. Die **Startseite** der Anwendung wird angezeigt.
 
         ![Screenshot: Startseite der Anwendung](./media/servicenow-tutorial/test02.png)
@@ -467,6 +491,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „ServiceNow“ klicken, sollten Sie
 
 - [ServiceNow mit Azure AD ausprobieren](https://aad.portal.azure.com)
 
-- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Was ist Sitzungssteuerung in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/protect-servicenow)
 
-- [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/protect-servicenow)
+- [Schützen von Apps mit der App-Steuerung für bedingten Zugriff von Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -8,12 +8,12 @@ ms.author: babanisa
 ms.date: 11/15/2019
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: a9281ba1e2bf68da2318c32ab7037515697f92a5
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 5e38571cf84537fd722093b96cd277743e8ce80c
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708845"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80292154"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Schnellstart: Weiterleiten von benutzerdefinierten Ereignissen an eine Azure-Funktion mit Event Grid
 
@@ -124,7 +124,7 @@ Im ersten Beispiel wird die Azure-Befehlszeilenschnittstelle verwendet. Es ruft 
 ### <a name="azure-powershell"></a>Azure PowerShell
 Im zweiten Beispiel werden ähnliche Schritte mit PowerShell ausgeführt.
 
-1. Wählen Sie im Azure-Portal die Option **Cloud Shell** aus (navigieren Sie alternativ zu https://shell.azure.com/). Wählen Sie links oben im Cloud Shell-Fenster die Option **PowerShell** aus. Eine Beispielabbildung des Fensters **Cloud Shell** finden Sie im Abschnitt für die Azure-Befehlszeilenschnittstelle.
+1. Wählen Sie im Azure-Portal die Option **Cloud Shell** aus (navigieren Sie alternativ zu `https://shell.azure.com/`). Wählen Sie links oben im Cloud Shell-Fenster die Option **PowerShell** aus. Eine Beispielabbildung des Fensters **Cloud Shell** finden Sie im Abschnitt für die Azure-Befehlszeilenschnittstelle.
 2. Legen Sie die folgenden Variablen fest. Aktualisieren Sie nach dem Kopieren und Einfügen der einzelnen Befehle den Namen des Themas (**topic name**) und den Namen der Ressourcengruppe (**resource group name**), bevor Sie den Befehl ausführen:
 
     ```powershell

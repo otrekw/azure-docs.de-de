@@ -8,14 +8,14 @@ ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 7011d971ddb1888b312173a42ecd4a50f0954395
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f21200bc6f5b25f3330f5bb87c0843caa5a84e56
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76851109"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298882"
 ---
-#   <a name="pii-detection-cognitive-skill"></a>Die kognitive Qualifikation „PII-Erkennung“
+#    <a name="pii-detection-cognitive-skill"></a>Die kognitive Qualifikation „PII-Erkennung“
 
 > [!IMPORTANT] 
 > Diese Qualifikation ist zurzeit als öffentliche Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Derzeit werden weder das Portal noch das .NET SDK unterstützt.
@@ -38,9 +38,9 @@ Die maximale Größe eines Datensatzes beträgt 50.000 Zeichen (gemessen durch 
 
 Bei den Parametern, die alle optional sind, wird die Groß-/Kleinschreibung beachtet.
 
-| Parametername     | Beschreibung |
+| Parametername     | BESCHREIBUNG |
 |--------------------|-------------|
-| defaultLanguageCode | Sprachcode des Eingabetexts. Derzeit wird nur `en` unterstützt. |
+| defaultLanguageCode |    Sprachcode des Eingabetexts. Derzeit wird nur `en` unterstützt. |
 | minimumPrecision | Ein Wert zwischen 0,0 und 1,0. Wenn die Zuverlässigkeitsbewertung (in der `piiEntities`-Ausgabe) unter dem festgelegten `minimumPrecision`-Wert liegt, wird die Entität nicht zurückgegeben oder maskiert. Der Standard ist 0,0. |
 | maskingMode | Ein Parameter, der verschiedene Methoden zum Maskieren der erkannten PII im Eingabetext bereitstellt. Die folgenden Optionen werden unterstützt: <ul><li>`none` (Standard): Dies bedeutet, dass keine Maskierung erfolgt und die `maskedText`-Ausgabe nicht zurückgegeben wird. </li><li> `redact`: Mit dieser Option werden die erkannten Entitäten aus dem Eingabetext entfernt und nicht durch andere Inhalte ersetzt. Beachten Sie, dass sich der Offset in der `piiEntities`-Ausgabe in diesem Fall auf den ursprünglichen Text und nicht auf den maskierten Text bezieht. </li><li> `replace`: Mit dieser Option werden die erkannten Entitäten durch das im `maskingCharacter`-Parameter angegebene Zeichen ersetzt.  Das Zeichen wird auf die Länge der erkannten Entität wiederholt, sodass die Offsets ordnungsgemäß sowohl dem Eingabetext als auch dem ausgegebenen `maskedText` entsprechen.</li></ul> |
 | maskingCharacter | Das Zeichen, das zur Maskierung des Texts verwendet wird, wenn der Parameter `maskingMode` auf `replace` festgelegt ist. Die folgenden Optionen werden unterstützt: `*` (Standard), `#`, `X`. Dieser Parameter kann nur `null` sein, wenn `maskingMode` nicht auf `replace` festgelegt ist. |
@@ -48,19 +48,19 @@ Bei den Parametern, die alle optional sind, wird die Groß-/Kleinschreibung beac
 
 ## <a name="skill-inputs"></a>Skilleingaben
 
-| Eingabename      | Beschreibung                   |
+| Eingabename      | BESCHREIBUNG                   |
 |---------------|-------------------------------|
-| languageCode  | Optional. Der Standardwert ist `en`.  |
+| languageCode    | Optional. Der Standardwert ist `en`.  |
 | text          | Der zu analysierende Text          |
 
 ## <a name="skill-outputs"></a>Skillausgaben
 
-| Ausgabename     | Beschreibung                   |
+| Ausgabename      | BESCHREIBUNG                   |
 |---------------|-------------------------------|
 | piiEntities | Ein Array mit komplexen Typen und den folgenden Feldern: <ul><li>Text (die tatsächlich extrahierten PII)</li> <li>type</li><li>subType</li><li>Bewertung (ein höherer Wert bedeutet, dass es sich mit höherer Wahrscheinlichkeit um eine echte Entität handelt)</li><li>Offset (in den Eingabetext)</li><li>length</li></ul> </br> [Mögliche Typen und Untertypen finden Sie hier.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/named-entity-types?tabs=personal) |
 | maskedText | Ist `maskingMode` auf einen anderen Wert als `none` festgelegt, ist diese Ausgabe ist das Zeichenfolgenergebnis der für den Eingabetext durchgeführten Maskierung, wie durch den gewählten `maskingMode` beschrieben.  Ist `maskingMode` auf `none` festgelegt, ist diese Ausgabe nicht vorhanden. |
 
-##  <a name="sample-definition"></a>Beispieldefinition
+##    <a name="sample-definition"></a>Beispieldefinition
 
 ```json
   {
@@ -85,7 +85,7 @@ Bei den Parametern, die alle optional sind, wird die Groß-/Kleinschreibung beac
     ]
   }
 ```
-##  <a name="sample-input"></a>Beispieleingabe
+##    <a name="sample-input"></a>Beispieleingabe
 
 ```json
 {
@@ -101,7 +101,7 @@ Bei den Parametern, die alle optional sind, wird die Groß-/Kleinschreibung beac
 }
 ```
 
-##  <a name="sample-output"></a>Beispielausgabe
+##    <a name="sample-output"></a>Beispielausgabe
 
 ```json
 {
@@ -127,6 +127,7 @@ Bei den Parametern, die alle optional sind, wird die Groß-/Kleinschreibung beac
 }
 ```
 
+Beachten Sie, dass die für Entitäten in der Ausgabe dieses Skills zurückgegebenen Offsets direkt von der [Textanalyse-API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) zurückgegeben werden. Dies bedeutet, dass Sie, wenn Sie sie zum Indizieren in der ursprünglichen Zeichenfolge verwenden, die [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8)-Klasse in .NET verwenden müssen, um den richtigen Inhalt zu extrahieren.  [Weitere Informationen finden Sie hier.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/text-offsets)
 
 ## <a name="error-and-warning-cases"></a>Fälle für Fehler und Warnungen
 Wird der Sprachcode für das Dokument nicht unterstützt, wird eine Warnung zurückgegeben, und es werden keine Entitäten extrahiert.

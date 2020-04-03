@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: fae9b8a2101329383cc90c8f7f0ff225e3a9059c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d2f25f2b786686b8af9bad4ea8ce3c8aea9b589f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77913817"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371458"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>Migrieren von Webdiensten aus Google Maps
 
@@ -75,7 +75,7 @@ In der folgenden Tabelle werden die Parameter der Google Maps-API den vergleichb
 Ein Beispiel für die Verwendung des Suchdiensts finden Sie [hier](how-to-search-for-address.md). Machen Sie sich unbedingt mit den [bewährten Methoden für die Suche](how-to-use-best-practices-for-search.md) vertraut.
 
 > [!TIP]
-> Die Freiform-Geocodierung von Adressen und die APIs für die Fuzzysuche können im AutoVervollständigen-Modus verwendet werden, indem der Anforderungs-URL `&amp;typeahead=true` hinzugefügt wird. Dadurch wird dem Server mitgeteilt, dass der Eingabetext wahrscheinlich unvollständig ist, woraufhin die Suche in den Vorhersagemodus wechselt.
+> Die Freiform-Geocodierung von Adressen und die APIs für die Fuzzysuche können im AutoVervollständigen-Modus verwendet werden, indem der Anforderungs-URL `&typeahead=true` hinzugefügt wird. Dadurch wird dem Server mitgeteilt, dass der Eingabetext wahrscheinlich unvollständig ist, woraufhin die Suche in den Vorhersagemodus wechselt.
 
 ## <a name="reverse-geocode-a-coordinate"></a>Umgekehrte Geocodierung einer Koordinate
 
@@ -126,7 +126,7 @@ Azure Maps stellt mehrere Such-APIs für Points of Interest bereit:
 Azure Maps verfügt aktuell über keine API, die mit der Textsuche-API in Google Maps vergleichbar ist.
 
 > [!TIP]
-> Die APIs für die POI-Suche, die POI-Kategoriesuche und die Fuzzysuche können im AutoVervollständigen-Modus verwendet werden, indem der Anforderungs-URL `&amp;typeahead=true` hinzugefügt wird. Dadurch wird dem Server mitgeteilt, dass der Eingabetext wahrscheinlich unvollständig ist, woraufhin die Suche im Vorhersagemodus durchgeführt wird.
+> Die APIs für die POI-Suche, die POI-Kategoriesuche und die Fuzzysuche können im AutoVervollständigen-Modus verwendet werden, indem der Anforderungs-URL `&typeahead=true` hinzugefügt wird. Dadurch wird dem Server mitgeteilt, dass der Eingabetext wahrscheinlich unvollständig ist, woraufhin die Suche im Vorhersagemodus durchgeführt wird.
 
 Lesen Sie die Dokumentation mit [bewährten Methoden für die Suche](how-to-use-best-practices-for-search.md).
 
@@ -221,6 +221,8 @@ Die Routen-API von Azure Maps verfügt über zusätzliche Features, die in Googl
 - Angabe der maximale Fahrzeuggeschwindigkeit
 
 Darüber hinaus unterstützt der Routendienst in Azure Maps auch die [Berechnung von Bereichen für Routen](https://docs.microsoft.com/rest/api/maps/route/getrouterange). Diese werden auch als Isochrone bezeichnet. Hierzu wird ein Polygon für einen Bereich generiert, der von einem Ausgangspunkt aus in beliebiger Richtung zu erreichen ist (innerhalb eines bestimmten Zeitraums oder mit einer bestimmten Kraftstoffmenge bzw. einer bestimmten Akkuladung).
+
+Lesen Sie die Dokumentation mit [bewährten Methoden für die Routenplanung](how-to-use-best-practices-for-routing.md).
 
 ## <a name="retrieve-a-map-image"></a>Abrufen eines Kartenbilds
 
@@ -437,6 +439,8 @@ In der folgenden Tabelle werden die API-Parameter von Google Maps den vergleichb
 > [!TIP]
 > In der Entfernungsmatrix-API von Azure Maps werden alle erweiterten Routenplanungsoptionen unterstützt, die in der Routenplanungs-API von Azure Maps zur Verfügung stehen. Zu diesen erweiterten Routenplanungsoptionen zählen unter anderem LKW-Streckenplanung und Motorangaben.
 
+Lesen Sie die Dokumentation mit [bewährten Methoden für die Routenplanung](how-to-use-best-practices-for-routing.md).
+
 ## <a name="get-a-time-zone"></a>Abrufen einer Zeitzone
 
 Azure Maps bietet eine API zum Abrufen der Zeitzone einer Koordinate. Die Azure Maps-Zeitzonen-API ist mit der Zeitzonen-API von Google Maps vergleichbar:
@@ -476,6 +480,7 @@ Im Anschluss finden Sie zusätzliches Dokumentationsmaterial und weitere Ressour
 
 - [Bewährte Suchmethoden](how-to-use-best-practices-for-search.md)
 - [Suchen nach einer Adresse](how-to-search-for-address.md)
+- [Bewährte Methoden für den Azure Maps-Routendienst](how-to-use-best-practices-for-routing.md)
 - [Azure Maps-REST-Dienste-API – Referenzdokumentation](https://docs.microsoft.com/rest/api/maps/)
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -486,7 +491,10 @@ Erfahren Sie mehr über Azure Maps-REST-Dienste:
 > [Bewährte Methoden für die Verwendung des Suchdiensts](how-to-use-best-practices-for-search.md)
 
 > [!div class="nextstepaction"]
-> [Verwenden des Dienstmoduls (Web SDK)](how-to-use-services-module.md)
+> [Bewährte Methoden für die Verwendung des Routingdienst](how-to-use-best-practices-for-search.md)
+
+> [!div class="nextstepaction"]
+> [Verwenden des Dienstmoduls (Web SDK)](how-to-use-best-practices-for-routing.md)
 
 > [!div class="nextstepaction"]
 > [Codebeispiele](https://docs.microsoft.com/samples/browse/?products=azure-maps)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: 868a0238092786d0999a6a41de71d30011bbef7a
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 7e16eabc4f9572591eabd37b93258fcd783cce7e
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72246035"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80351148"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-fstab-errors"></a>Beheben von Problemen beim Starten von Linux-VMs aufgrund von Fehlern in „fstab“
 
@@ -29,27 +29,27 @@ Sie können über Secure Shell (SSH) keine Verbindung mit einem virtuellen Azure
 
 Im Folgenden finden Sie einige Beispiele für mögliche Fehler.
 
-### <a name="example-1-a-disk-is-mounted-by-the-scsi-id-instead-of-the-universally-unique-identifier-uuid"></a>Beispiel 1: Ein Datenträger wird anhand der SCSI-ID anstelle des universell eindeutigen Bezeichners (UUID) eingebunden.
+### <a name="example-1-a-disk-is-mounted-by-the-scsi-id-instead-of-the-universally-unique-identifier-uuid"></a>Beispiel 1: Ein Datenträger wird anhand der SCSI-ID anstelle des universell eindeutigen Bezeichners (UUID) eingebunden.
 
 ```
 [K[[1;31m TIME [0m] Timed out waiting for device dev-incorrect.device.
 [[1;33mDEPEND[0m] Dependency failed for /data.
 [[1;33mDEPEND[0m] Dependency failed for Local File Systems.
 …
-Welcome to emergency mode! After logging in, type “journalctl -xb” to viewsystem logs, “systemctl reboot” to reboot, “systemctl default” to try again to boot into default mode.
+Welcome to emergency mode! After logging in, type "journalctl -xb" to viewsystem logs, "systemctl reboot" to reboot, "systemctl default" to try again to boot into default mode.
 Give root password for maintenance
 (or type Control-D to continue)
 ```
 
-### <a name="example-2-an-unattached-device-is-missing-on-centos"></a>Beispiel 2: In CentOS fehlt ein nicht angefügtes Gerät.
+### <a name="example-2-an-unattached-device-is-missing-on-centos"></a>Beispiel 2: In CentOS fehlt ein nicht angefügtes Gerät.
 
 ```
 Checking file systems…
 fsck from util-linux 2.19.1
 Checking all file systems.
-/dev/sdc1: nonexistent device (“nofail” fstab option may be used to skip this device)
-/dev/sdd1: nonexistent device (“nofail” fstab option may be used to skip this device)
-/dev/sde1: nonexistent device (“nofail” fstab option may be used to skip this device)
+/dev/sdc1: nonexistent device ("nofail" fstab option may be used to skip this device)
+/dev/sdd1: nonexistent device ("nofail" fstab option may be used to skip this device)
+/dev/sde1: nonexistent device ("nofail" fstab option may be used to skip this device)
 
 [/sbin/fsck.ext3 (1) — /CODE] sck.ext3 -a /dev/sdc1
 fsck.ext3: No such file or directory while trying to open /dev/sdc1
@@ -67,7 +67,7 @@ e2fsck -b 8193 <device>
 [/sbin/fsck.ext3 (1) — /DATATEMP] fsck.ext3 -a /dev/sde1 fsck.ext3: No such file or directory while trying to open /dev/sde1
 ```
 
-### <a name="example-3-a-vm-cannot-start-because-of-an-fstab-misconfiguration-or-because-the-disk-is-no-longer-attached"></a>Beispiel 3: Ein virtueller Computer kann aufgrund einer fehlerhafter Konfiguration der Datei „fstab“ oder eines nicht mehr angefügten Datenträgers nicht gestartet werden.
+### <a name="example-3-a-vm-cannot-start-because-of-an-fstab-misconfiguration-or-because-the-disk-is-no-longer-attached"></a>Beispiel 3: Ein virtueller Computer kann aufgrund einer fehlerhafter Konfiguration der Datei „fstab“ oder eines nicht mehr angefügten Datenträgers nicht gestartet werden.
 
 ```
 The disk drive for /var/lib/mysql is not ready yet or not present.
@@ -90,7 +90,7 @@ fsck.ext4: Unable to resolve UUID="<UUID>"
 *** when you leave the shell.
 *** Warning — SELinux is active
 *** Disabling security enforcement for system recovery.
-*** Run ‘setenforce 1’ to reenable.
+*** Run 'setenforce 1' to reenable.
 type=1404 audit(1428047455.949:4): enforcing=0 old_enforcing=1 auid=<AUID> ses=4294967295
 Give root password for maintenance
 (or type Control-D to continue)
@@ -103,6 +103,42 @@ Dieses Problem tritt möglicherweise auf, wenn die Syntax der Dateisystemtabelle
 Um dieses Problem zu beheben, starten Sie den virtuellen Computer über die serielle Konsole für Azure Virtual Machines im Notfallmodus. Verwenden Sie dann das Tool zum Reparieren des Dateisystems. Wenn die serielle Konsole auf Ihrem virtuellen Computer nicht aktiviert ist, wechseln Sie zum Abschnitt [Reparieren des virtuellen Computers im Offlinestatus](#repair-the-vm-offline).
 
 ## <a name="use-the-serial-console"></a>Verwenden der seriellen Konsole
+
+### <a name="using-single-user-mode"></a>Verwenden des Einzelbenutzermodus
+
+1. Stellen Sie eine Verbindung mit der [seriellen Konsole](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux) her.
+2. Verwenden der seriellen Konsole für den Einzelbenutzermodus [Einzelbenutzermodus](https://docs.microsoft.com/azure/virtual-machines/linux/serial-console-grub-single-user-mode)
+3. Nachdem der virtuelle Computer im Einzelbenutzermodus gestartet wurde. Öffnen Sie die Datei „fstab“ mit Ihrem bevorzugten Text-Editor. 
+
+   ```
+   # nano /etc/fstab
+   ```
+
+4. Überprüfen Sie die aufgeführten Dateisysteme. Jede Zeile in der Datei „fstab“ gibt ein Dateisystem an, das beim Starten des virtuellen Computers eingebunden wird. Weitere Informationen zur Syntax der Datei „fstab“ erhalten Sie mit dem Befehl „man fstab“. Um einen Startfehler zu beheben, überprüfen Sie jede Zeile, um sicherzustellen, dass sowohl ihre Struktur als auch ihr Inhalt korrekt sind.
+
+   > [!Note]
+   > * Felder in den einzelnen Zeilen werden durch Tabstopps oder Leerzeichen voneinander getrennt. Leere Zeilen werden ignoriert. Zeilen, die als erstes Zeichen ein Nummernzeichen (#) aufweisen, sind Kommentare. Auskommentierte Zeilen können in der Datei „fstab“ verbleiben, werden aber nicht verarbeitet. Es wird empfohlen, dass Sie die Zeilen in „fstab“, bei denen Sie unsicher sind, nicht entfernen, sondern auskommentieren.
+   > * Damit der virtuelle Computer wiederhergestellt und gestartet werden kann, sollten die Dateisystempartitionen die einzigen erforderlichen Partitionen sein. Auf dem virtuellen Computer treten möglicherweise Anwendungsfehler zu zusätzlichen kommentierten Partitionen auf. Der virtuelle Computer sollte jedoch ohne die zusätzlichen Partitionen gestartet werden. Sie können die Auskommentierung etwaiger kommentierter Zeilen später wieder aufheben.
+   > * Es wird empfohlen, Datenträger auf Azure-VMs über die UUID der Dateisystempartition einzubinden. Führen Sie beispielsweise den folgenden Befehl aus: ``/dev/sdc1: LABEL="cloudimg-rootfs" UUID="<UUID>" TYPE="ext4" PARTUUID="<PartUUID>"``
+   > * Führen Sie den Befehl „blkid“ aus, um die UUID des Dateisystems zu ermitteln. Weitere Informationen zur Syntax erhalten Sie durch Ausführen des Befehls „blkid“.
+   > * Mit der Option „nofail“ können Sie sicherstellen, dass der virtuelle Computer auch dann gestartet wird, wenn das Dateisystem beschädigt oder beim Start nicht vorhanden ist. Es wird empfohlen, die Option „nofail“ in der Datei „fstab“ zu verwenden, damit der Startvorgang nach Fehlern in Partitionen, die für den Start des virtuellen Computers nicht erforderlich sind, fortgesetzt werden kann.
+
+5. Ändern Sie falsche oder unnötige Zeilen in der Datei „fstab“, oder kommentieren Sie sie aus, damit der virtuelle Computer ordnungsgemäß gestartet werden kann.
+
+6. Speichern Sie die Änderungen an der Datei „fstab“.
+
+7. Starten Sie den virtuellen Computer mit dem folgenden Befehl neu.
+   
+   ```
+   # reboot -f
+   ```
+> [!Note]
+   > Sie können auch den Befehl „Strg + X“ verwenden, um den virtuellen Computer neu zu starten.
+
+
+8. Wenn die Auskommentierung oder Korrektur der Einträge erfolgreich war, sollte das System eine Bash-Eingabeaufforderung im Portal erreichen. Überprüfen Sie, ob Sie eine Verbindung mit der VM herstellen können.
+
+### <a name="using-root-password"></a>Verwenden des Stammkennworts
 
 1. Stellen Sie eine Verbindung mit der [seriellen Konsole](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux) her.
 2. Melden Sie sich mit einem lokalen Benutzer und Kennwort beim System an.
@@ -156,7 +192,7 @@ Um dieses Problem zu beheben, starten Sie den virtuellen Computer über die seri
 
 2. Nachdem Sie den Systemdatenträger als Datenträger für Daten auf der Wiederherstellungs-VM eingebunden haben, sichern Sie die Datei „fstab“, bevor Sie Änderungen vornehmen, und führen Sie dann die folgenden Schritte aus, um die Datei „fstab“ zu korrigieren.
 
-3.  Suchen Sie nach dem Fehler, der angibt, dass der Datenträger nicht eingebunden wurde. Im folgenden Beispiel wurde im System versucht, einen nicht mehr vorhandenen Datenträger anzufügen:
+3.    Suchen Sie nach dem Fehler, der angibt, dass der Datenträger nicht eingebunden wurde. Im folgenden Beispiel wurde im System versucht, einen nicht mehr vorhandenen Datenträger anzufügen:
 
     ```
     [DEPEND] Dependency failed for /datadisk1.

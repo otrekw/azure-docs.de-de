@@ -1,20 +1,20 @@
 ---
-title: PowerShell-Skript zum Abrufen des bereitgestellten Durchsatzes (RU/s) für die SQL-API (Core-API) in Azure Cosmos DB
-description: 'Azure PowerShell-Skript: Azure Cosmos DB – Abrufen des bereitgestellten Durchsatzes (RU/s) für die SQL (Core)-API'
+title: PowerShell-Skript zum Abrufen des Durchsatzes (RU/s) für eine Datenbank oder einen Container der Azure Cosmos DB-SQL-API
+description: Azure PowerShell-Skript zum Abrufen des Durchsatzes (RU/s) für eine Datenbank oder einen Container der Azure Cosmos DB-SQL-API
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 07/03/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9b4450e18aa2666806faf2c0baed8af2285e69dc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f471b1d41314728a6c6f0c5d2ab981891e2caa87
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75441344"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365599"
 ---
-# <a name="get-the-provisioned-throughput-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>Abrufen des bereitgestellten Durchsatzes (RU/s) für eine Datenbank oder einen Container für Azure Cosmos DB – SQL (Core)-API
+# <a name="get-throughput-rus-for-azure-cosmos-db-sql-api-database-or-container"></a>Abrufen des Durchsatzes (RU/s) für eine Datenbank oder einen Container der Azure Cosmos DB-SQL-API
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -22,7 +22,7 @@ ms.locfileid: "75441344"
 
 ## <a name="sample-script"></a>Beispielskript
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-ru-get.ps1 "Get throughput for a database or container for SQL (Core) API")]
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-sql-ru-get.ps1 "Get throughput (RU/s) for Azure Cosmos DB SQL API database or container")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
@@ -38,8 +38,9 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | Get-Help | Notizen |
 |---|---|
-|**Azure-Ressourcen**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Dient zum Erstellen einer Ressource. |
+|**Azure Cosmos DB**| |
+| [Get-AzCosmosDBSqlDatabaseThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqldatabasethroughput) | Abrufen des Durchsatzes, der in einer Azure Cosmos DB-SQL-API-Datenbank bereitgestellt wird. |
+| [Get-AzCosmosDBSqlContainerThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbsqlcontainerthroughput) | Abrufen des Durchsatzes, der in einem Azure Cosmos DB-SQL-API-Container bereitgestellt wird. |
 |**Azure-Ressourcengruppen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 |||

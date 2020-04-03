@@ -1,15 +1,15 @@
 ---
 title: Herstellen einer Verbindung mit Azure Blockchain Service mithilfe von Visual Studio Code
 description: Herstellen einer Verbindung mit einem Azure Blockchain Service-Konsortiumsnetzwerk mithilfe des Azure Blockchain Development Kit für die Ethereum-Erweiterung in Visual Studio Code
-ms.date: 12/05/2019
+ms.date: 03/26/2020
 ms.topic: quickstart
-ms.reviewer: chrisseg
-ms.openlocfilehash: 1bcdfdafa9253fc4dc20ccb7cc237cb794b0af53
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.reviewer: caleteet
+ms.openlocfilehash: 269a3e419186daddf1e6a41a54e52e688f4bc7e3
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74977065"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80348581"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Schnellstart: Herstellen einer Verbindung mit einem Azure Blockchain Service-Konsortiumsnetzwerk mithilfe von Visual Studio Code
 
@@ -22,7 +22,7 @@ In diesem Schnellstart installieren und verwenden Sie das Azure Blockchain Devel
 * [Quickstart: Create a blockchain member using the Azure portal (Schnellstart: Erstellen eines Blockchainmitglieds über das Azure-Portal)](create-member.md) oder [Schnellstart: Erstellen eines Blockchainmitglieds für den Azure Blockchain-Dienst mithilfe der Azure CLI](create-member-cli.md)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Azure Blockchain Development Kit für Ethereum-Erweiterung](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
-* [Node.js 10.15.x oder höher](https://nodejs.org/download)
+* [Node.js 10.15.x oder höher](https://nodejs.org)
 * [Git 2.10.x oder höher](https://git-scm.com)
 * [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Fügen Sie Ihrem Pfad „python.exe“ hinzu. Python-Version 2.7.15 ist in Ihrem Pfad für das Azure Blockchain Development Kit erforderlich.
 * [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)

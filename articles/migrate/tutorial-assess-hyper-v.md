@@ -1,22 +1,19 @@
 ---
 title: Bewerten von Hyper-V-VMs für die Migration zu Azure mit Azure Migrate | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie lokale Hyper-V-VMs mithilfe von Azure Migrate für die Migration zu Azure bewerten.
+description: Hier erfahren Sie, wie Sie lokale Hyper-V-VMs mithilfe der Azure Migrate-Serverbewertung für die Migration zu Azure bewerten.
 ms.topic: tutorial
-ms.date: 01/23/2020
+ms.date: 03/23/2020
 ms.custom: mvc
-ms.openlocfilehash: e4c505d74ff3bebc21f696b1c4b894afcdaa9974
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: cb3c29e01b7917a6d639b6b2a53fc2842efc2172
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79222007"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80336770"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Bewerten von Hyper-V-VMs mit der Azure Migrate-Serverbewertung
 
-In diesem Artikel erfahren Sie, wie Sie lokale Hyper-V-VMs mithilfe der Azure Migrate-Serverbewertung bewerten.
-
-[Azure Migrate](migrate-services-overview.md) stellt einen Hub mit Tools bereit, die Ihnen dabei helfen, Apps, Infrastrukturen und Workloads zu ermitteln, zu bewerten und zu Microsoft Azure zu migrieren. Der Hub umfasst Azure Migrate-Tools sowie Angebote von unabhängigen Drittanbietern (Independent Software Vendors, ISVs).
-
+In diesem Artikel erfahren Sie, wie Sie lokale Hyper-V-VMs mithilfe des [Azure Migrate-Serverbewertungstools](migrate-services-overview.md#azure-migrate-server-assessment-tool) bewerten.
 
 
 Dieses Tutorial ist das zweite in einer Reihe zur Bewertung und Migration von Hyper-V-VMs zu Azure. In diesem Tutorial lernen Sie Folgendes:
@@ -38,9 +35,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 - [Absolvieren Sie das erste Tutorial dieser Reihe.](tutorial-prepare-hyper-v.md) Andernfalls funktionieren die Anweisungen in diesem Tutorial nicht.
 - Im ersten Tutorial müssen folgende Schritte ausgeführt werden:
-    - [Einrichten von Azure-Berechtigungen](tutorial-prepare-hyper-v.md#prepare-azure) für Azure Migrate
-    - [Vorbereiten von Hyper-V](tutorial-prepare-hyper-v.md#prepare-hyper-v-for-assessment) (Cluster, Hosts und VMs) für die Bewertung
-    - [Vorbereiten auf die Bereitstellung](tutorial-prepare-hyper-v.md#prepare-for-appliance-deployment) der Azure Migrate-Appliance, die für die Ermittlung und Bewertung virtueller Hyper-V-Computer verwendet wird
+    - [Vorbereiten von Azure](tutorial-prepare-hyper-v.md#prepare-azure) auf die Verwendung mit Azure Migrate
+    - [Vorbereiten der Bewertung von Hyper-V-Hosts](tutorial-prepare-hyper-v.md#prepare-hyper-v-for-assessment) und VMs
+    - [Überprüfen](tutorial-prepare-hyper-v.md#prepare-for-appliance-deployment), welche Komponenten für die Bereitstellung der Azure Migrate-Appliance für die Hyper-V-Bewertung erforderlich sind
 
 ## <a name="set-up-an-azure-migrate-project"></a>Einrichten eines Azure Migrate-Projekts
 
@@ -52,22 +49,12 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 4. Klicken Sie unter **Erste Schritte** auf **Tools hinzufügen**.
 5. Wählen Sie auf der Registerkarte **Projekt migrieren** Ihr Azure-Abonnement aus, und erstellen Sie bei Bedarf eine Ressourcengruppe.
-6. Geben Sie unter **Projektdetails** den Projektnamen und die Region an, in der Sie das Projekt erstellen möchten.
-
-
-    ![Erstellen eines Azure Migrate-Projekts](./media/tutorial-assess-hyper-v/migrate-project.png)
-
-    Azure Migrate-Projekte können in folgenden Regionen erstellt werden:
-
-    **Geografie** | **Region**
-    --- | ---
-    Asia  | Asien, Südosten
-    Europa | „Europa, Norden“ oder „Europa, Westen“
-    United Kingdom |  „Vereinigtes Königreich, Süden“ oder „Vereinigtes Königreich, Westen“
-    USA | „USA, Osten“, „USA, Westen 2“ oder „USA, Westen-Mitte“
+6. Geben Sie unter **Projektdetails** den Projektnamen und die Region an, in der Sie das Projekt erstellen möchten. Sehen Sie sich die [Regionen](migrate-support-matrix.md#supported-geographies) an, in denen Sie das Azure Migrate-Projekt erstellen können.
 
     - Die Projektregion dient nur zum Speichern der Metadaten, die von den lokalen VMs erfasst werden.
     - Bei der Migration der VMs kann eine andere Azure-Zielregion ausgewählt werden. Alle Azure-Regionen werden als Migrationsziel unterstützt.
+
+    ![Erstellen eines Azure Migrate-Projekts](./media/tutorial-assess-hyper-v/migrate-project.png)
 
 7. Klicken Sie auf **Weiter**.
 8. Wählen Sie unter **Bewertungstool auswählen** Folgendes aus: **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) > **Weiter**.
@@ -78,18 +65,13 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 10. Überprüfen Sie die Einstellungen unter **Review + add tools** (Überprüfen und Tools hinzufügen), und klicken Sie auf **Tools hinzufügen**.
 11. Warten Sie einige Minuten, bis das Azure Migrate-Projekt bereitgestellt wurde. Sie werden zur Projektseite weitergeleitet. Sollte das Projekt nicht angezeigt werden, können Sie auf dem Azure Migrate-Dashboard unter **Server** darauf zugreifen.
 
+## <a name="set-up-the-azure-migrate-appliance"></a>Einrichten der Azure Migrate-Appliance
 
+Bei der Azure Migrate-Serverbewertung wird eine einfache Azure Migrate-Appliance verwendet. Die Appliance ermittelt VMs und sendet Meta- und Leistungsdaten zu VMs an Azure Migrate.
+- Die Appliance kann auf einer Hyper-V-VM mit einer heruntergeladenen Hyper-V-VHD eingerichtet werden. Alternativ können Sie die Appliance auf einem virtuellen oder physischen Computer mit einem PowerShell-Installationsskript einrichten.
+- In diesem Tutorial wird die VHD verwendet. Lesen Sie [diesen Artikel](deploy-appliance-script.md), wenn Sie die Appliance mithilfe eines Skripts einrichten möchten.
 
-
-## <a name="set-up-the-appliance-vm"></a>Einrichten der Appliance-VM
-
-Für die Azure Migrate-Serverbewertung wird eine einfache Hyper-V-VM-Appliance ausgeführt.
-
-- Diese Appliance ermittelt VMs und sendet Meta- und Leistungsdaten zu VMs an die Azure Server Assessment“ (Azure Migrate-Serverbewertung) erstellen.
-- Die Einrichtung der Appliance umfasst Folgendes:
-    - Herunterladen einer komprimierten Hyper-V-VHD über das Azure-Portal
-    - Erstellen der Appliance und Überprüfen der Verbindungsherstellung mit der Azure Migrate-Serverbewertung
-    - Durchführen der Erstkonfiguration für die Appliance und Registrieren der Appliance beim Azure Migrate-Projekt
+Überprüfen Sie nach der Erstellung der Appliance, ob diese eine Verbindung mit der Azure Migrate-Serverbewertung herstellen kann. Führen Sie dann die Erstkonfiguration durch, und registrieren Sie sie für das Azure Migrate-Projekt.
 
 ### <a name="download-the-vhd"></a>Herunterladen der VHD
 
@@ -150,6 +132,9 @@ Vergewissern Sie sich, dass die Appliance-VM eine Verbindung mit [Azure-URLs](mi
 ### <a name="configure-the-appliance"></a>Konfigurieren der Appliance
 
 Führen Sie die Ersteinrichtung der Appliance durch.
+
+> [!NOTE]
+> Wenn Sie die Appliance mithilfe eines [PowerShell-Skripts](deploy-appliance-script.md) und nicht mit der heruntergeladenen VHD einrichten, sind die ersten beiden Schritte in diesem Verfahren nicht relevant.
 
 1. Klicken Sie im Hyper-V-Manager unter **Virtuelle Computer** mit der rechten Maustaste auf die VM, und klicken Sie anschließend auf **Verbinden**.
 2. Geben Sie die Sprache, die Zeitzone und das Kennwort für die Appliance an.

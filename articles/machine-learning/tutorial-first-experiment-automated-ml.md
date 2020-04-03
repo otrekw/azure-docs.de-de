@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.author: tzvikei
-author: tsikiksr
+author: cartacioS
+ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 02/04/2020
-ms.openlocfilehash: 96af942ab68d4ae738df56bf94d8410ee5d8cc34
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 03/04/2020
+ms.openlocfilehash: b5a335a3f215ad5883b1b223245ca9d3f9967c3b
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79129661"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366524"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Tutorial: Erstellen eines Klassifizierungsmodells mit automatisiertem maschinellem Lernen in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -53,7 +53,7 @@ Sie erstellen einen Arbeitsbereich über das Azure-Portal, einer webbasierten Ko
 
 Sie schließen die folgende Experimenteinrichtung ab und führen Schritte über Azure Machine Learning unter https://ml.azure.com aus. Hierbei handelt es sich um eine konsolidierte Weboberfläche mit Tools für maschinelles Lernen zur Durchführung von Data Science-Szenarien für Datenwissenschaftler jeglicher Qualifikation. Diese Oberfläche wird in Internet Explorer-Browsern nicht unterstützt.
 
-1. Melden Sie sich unter https://ml.azure.com bei Azure Machine Learning an.
+1. Melden Sie sich bei [Azure Machine Learning](https://ml.azure.com) an.
 
 1. Wählen Sie Ihr Abonnement und den erstellten Arbeitsbereich aus.
 
@@ -201,9 +201,9 @@ Bereitstellungsdateien sind größer als Daten- und Experimentdateien, sodass ih
 
 ### <a name="delete-the-deployment-instance"></a>Löschen der Bereitstellungsinstanz
 
-Löschen Sie nur die Bereitstellungsinstanz aus Azure Machine Learning unter https://ml.azure.com/, wenn Sie die Ressourcengruppe und den Arbeitsbereich für andere Tutorials und Untersuchungen behalten möchten. 
+Löschen Sie nur die Bereitstellungsinstanz aus Azure Machine Learning unter https:\//ml.azure.com/, wenn Sie die Ressourcengruppe und den Arbeitsbereich für andere Tutorials und Untersuchungen behalten möchten. 
 
-1. Navigieren Sie zu Azure Machine Learning unter https://ml.azure.com/. Navigieren Sie zu Ihrem Arbeitsbereich, und wählen Sie links unter dem Bereich **Ressourcen** die Option **Endpunkte** aus. 
+1. Wechseln Sie zu [Azure Machine Learning](https://ml.azure.com/). Navigieren Sie zu Ihrem Arbeitsbereich, und wählen Sie links unter dem Bereich **Ressourcen** die Option **Endpunkte** aus. 
 
 1. Wählen Sie die zu löschende Bereitstellung aus, und klicken Sie auf **Delete** (Löschen). 
 

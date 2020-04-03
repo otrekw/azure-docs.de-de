@@ -8,12 +8,12 @@ ms.date: 2/5/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3a71aa1a713891c773297a3789a9a9f4b36ab258
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: d2bad581c925bb62cbe65a45000f6d3ae35db011
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80236051"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372693"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Tutorial: Konfigurieren eines IoT Edge-Geräts
 
@@ -165,7 +165,7 @@ Führen Sie als Nächstes das Skript zum Erstellen des virtuellen Computers für
 
     * Erstellen der Ressourcengruppe, falls sie noch nicht vorhanden ist
     * Erstellen des virtuellen Computers
-    * Hinzufügen von NSG-Ausnahmen für die VM für Ports 22 (SSH), 5671 (AMQP), 5672 (AMPQ) und 443 (SSL)
+    * Hinzufügen von NSG-Ausnahmen für die VM für Ports 22 (SSH), 5671 (AMQP), 5672 (AMPQ) und 443 (TLS)
     * Installieren der [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
 
 7. Das Skript gibt die SSH-Verbindungszeichenfolge für die Herstellung der Verbindung mit der VM aus. Kopieren Sie die Verbindungszeichenfolge für den nächsten Schritt.

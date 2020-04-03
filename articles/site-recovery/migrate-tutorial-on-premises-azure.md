@@ -7,18 +7,20 @@ ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
-ms.custom: MVC
-ms.openlocfilehash: 24015810a295ef88b7d3e63bfc464ddddef6b55f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b978190776aee3c89d3beadde76d20c4327b012f
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73939619"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388915"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrieren von lokalen Computern zu Azure
 
 
-In diesem Artikel wird erläutert, wie Sie lokale Computer mithilfe von [Azure Site Recovery](site-recovery-overview.md) zu Azure migrieren. Site Recovery wird in der Regel für die Verwaltung und Orchestrierung der Notfallwiederherstellung von lokalen Computern sowie virtuellen Azure-Computern (VMs) verwendet. Der Dienst kann jedoch auch für die Migration verwendet werden. Bei der Migration werden mit einer Ausnahme die gleichen Schritte wie bei der Notfallwiederherstellung ausgeführt. Bei einer Migration ist das Failover der Computer vom lokalen Standort der letzte Schritt. Im Gegensatz zur Notfallwiederherstellung ist in einem Migrationsszenario kein Failback auf den lokalen Standort möglich.
+In diesem Artikel wird erläutert, wie Sie lokale Computer mithilfe von [Azure Site Recovery](site-recovery-overview.md) zu Azure migrieren. 
+
+> [!TIP]
+> Es wird empfohlen, anstelle des Azure Site Recovery-Diensts nun Azure Migrate zum Migrieren lokaler Computer zu Azure zu verwenden. [Weitere Informationen](../migrate/migrate-services-overview.md)
 
 
 In diesem Tutorial wird veranschaulicht, wie lokale VMs und physische Server in Azure migriert werden. Folgendes wird vermittelt:
@@ -36,7 +38,7 @@ In diesem Tutorial wird veranschaulicht, wie lokale VMs und physische Server in 
 
 ## <a name="before-you-start"></a>Vorbereitung
 
-Beachten Sie, das von paravirtualisierten Treibern exportierte Geräte nicht unterstützt werden.
+Von paravirtualisierten Treibern exportierte Geräte werden nicht unterstützt.
 
 
 ## <a name="prepare-azure-and-on-premises"></a>Vorbereiten von Azure und der lokalen Ressourcen
@@ -51,9 +53,9 @@ Wählen Sie aus, was Sie replizieren möchten und wohin die Daten repliziert wer
 1. Klicken Sie auf **Recovery Services-Tresore** > „Tresor“.
 2. Klicken Sie im Ressourcenmenü auf **Site Recovery** > **Infrastruktur vorbereiten** > **Schutzziel**.
 3. Wählen Sie in **Schutzziel** aus, was Sie migrieren möchten.
-    - **VMware**: Wählen Sie **To Azure** (Zu Azure) > **Yes, with VMWare vSphere Hypervisor** (Ja, mit VMware vSphere Hypervisor) aus.
-    - **Physischer Computer**: Wählen Sie **To Azure** (Zu Azure) > **Nicht virtualisiert/Andere** aus.
-    - **Hyper-V**: Wählen Sie **To Azure** (Zu Azure) > **Yes, with Hyper-V** (Ja, mit Hyper-V) aus. Wenn Hyper-V-VMs von VMM verwaltet werden, wählen Sie **Ja** aus.
+    - **VMware**: Wählen Sie **To Azure** (Zu Azure) > **Ja, mit VMware vSphere-Hypervisor**.
+    - **Physischer Computer:** Wählen Sie **To Azure** (Zu Azure) > **Nicht virtualisiert/Andere** aus.
+    - **Hyper-V:** Wählen Sie **To Azure** (Zu Azure) > **Ja, mit Hyper-V** aus. Wenn Hyper-V-VMs von VMM verwaltet werden, wählen Sie **Ja** aus.
 
 
 ## <a name="set-up-the-source-environment"></a>Einrichten der Quellumgebung
@@ -115,7 +117,7 @@ Führen Sie ein Failover für die zu migrierenden Computer aus.
 
 
 > [!WARNING]
-> **Brechen Sie ein Failover in Bearbeitung nicht ab:** Vor dem Starten des Failovers wird die VM-Replikation beendet. Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.
+> **Brechen Sie ein aktuell ausgeführtes Failover nicht ab**: Die VM-Replikation wird beendet, bevor das Failover gestartet wird. Wenn Sie ein Failover in Bearbeitung abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.
 
 In einigen Szenarien erfordert ein Failover zusätzliche Verarbeitungsschritte, die etwa 8 bis 10 Minuten dauern können. Bei physischen Servern, VMware-Linux-Computern, VMware-VMs ohne aktivierten DHCP-Dienst und VMware-VMs ohne die folgenden Starttreiber kann das Testfailover länger dauern: storvsc, vmbus, storflt, intelide, atapi.
 
@@ -132,7 +134,7 @@ Einige Schritte können im Rahmen des Migrationsvorgangs mithilfe der integriert
 - Führen Sie endgültige Anwendungs- und Migrationsakzeptanztests für die migrierte Anwendung durch, die nun in Azure ausgeführt wird.
 - Der [Azure-VM-Agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) verwaltet VM-Interaktionen mit dem Azure Fabric Controller. Dieser ist für einige Azure-Dienste wie Azure Backup, Site Recovery und das Azure Security Center erforderlich.
     - Wenn Sie VMware-Computer und physische Server migrieren, installiert das Mobility Service-Installationsprogramm verfügbare Azure-VM-Agents auf Windows-Computern. Auf Linux-VMs empfehlen wir, den Agent nach einem Failover zu installieren.
-    - Wenn Sie Azure-VMs in eine sekundäre Region migrieren, muss der Azure-VM-Agent vor der Migration auf der VM bereitgestellt werden.
+    - Wenn Sie Azure-VMs zu einer sekundären Region migrieren, muss der Azure-VM-Agent vor der Migration auf der VM bereitgestellt werden.
     - Wenn Sie Hyper-V-VMs zu Azure migrieren, installieren Sie nach der Migration den Azure-VM-Agent auf der Azure-VM.
 - Entfernen Sie manuell alle Site Recovery-Anbieter/-Agents von der VM. Wenn Sie virtuelle VMware-Computer oder physische Server migrieren, deinstallieren Sie den Mobilitätsdienst auf dem virtuellen Computer.
 - Beachten Sie zur Steigerung der Resilienz Folgendes:

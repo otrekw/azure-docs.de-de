@@ -1,14 +1,14 @@
 ---
 title: 'Schnellstart: Erstellen einer Blaupause im Portal'
 description: In dieser Schnellstartanleitung verwenden Sie Azure Blueprints, um Artefakte über das Azure-Portal zu erstellen, zu definieren und bereitzustellen.
-ms.date: 11/21/2019
+ms.date: 03/25/2020
 ms.topic: quickstart
-ms.openlocfilehash: fa9eb8285086e35f8b23798c41a09529d0f49582
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 457f4f9c53f45077129b291c904bc1580b6d965e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436620"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282051"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Schnellstart: Definieren und Zuweisen einer Blaupause im Portal
 
@@ -29,6 +29,8 @@ Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wi
    Sie können auch auf der Seite **Erste Schritte** die Option**Erstellen** wählen, um direkt mit dem Erstellen einer Blaupause fortzufahren.
 
    ![Erstellen einer Blaupause über die Seite „Blaupausendefinitionen“](./media/create-blueprint-portal/create-blueprint-button.png)
+
+1. Wählen Sie auf der Karte oben in der integrierten Blaupausenliste die Option **Mit leerer Blaupause beginnen** aus.
 
 1. Geben Sie einen **Namen der Blaupause** an, z. B. **MyBlueprint**. (Sie können maximal 48 Buchstaben und Zahlen verwenden, aber keine Leerzeichen oder Sonderzeichen.) Lassen Sie das Feld **Blaupausenbeschreibung** vorerst leer.
 

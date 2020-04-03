@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 01/24/2020
+ms.date: 03/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 71afce335910e4d42fb3d67f6d443510a6599b8b
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ac6bc8f78bd3d526e68dba3e81825a28a9ac47f7
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77918321"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80294123"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Schnellstart: Senden und Empfangen von Nachrichten mithilfe von Azure Service Bus-Warteschlangen und Java
 
@@ -41,9 +41,12 @@ In diesem Tutorial erfahren Sie, wie Sie Java-Anwendungen erstellen, um Nachrich
 
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
-Stellen Sie sicher, dass Sie das [Azure SDK für Java][Azure SDK for Java] vor dem Erstellen dieses Beispiels installiert haben. Wenn Sie Eclipse verwenden, können Sie das [Azure Toolkit für Eclipse][Azure Toolkit for Eclipse] installieren, das das Azure SDK für Java enthält. Sie können dann Ihrem Projekt die **Microsoft Azure-Bibliotheken für Java** hinzufügen:
+Stellen Sie sicher, dass Sie das [Azure SDK für Java][Azure SDK for Java] vor dem Erstellen dieses Beispiels installiert haben. 
+
+Wenn Sie Eclipse verwenden, können Sie das [Azure Toolkit für Eclipse][Azure Toolkit for Eclipse] installieren, das das Azure SDK für Java enthält. Sie können dann Ihrem Projekt die **Microsoft Azure-Bibliotheken für Java** hinzufügen. Lesen Sie bei Verwendung von IntelliJ die Informationen unter [Installieren des Azure-Toolkits für IntelliJ](/azure/java/intellij/azure-toolkit-for-intellij-installation). 
 
 ![Hinzufügen von Microsoft Azure-Bibliotheken für Java zu Ihrem Eclipse-Projekt](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
+
 
 Fügen Sie die folgenden `import`-Anweisungen am Anfang der Java-Datei ein:
 

@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 11/21/2019
-ms.openlocfilehash: 119ef52bd801f66cd25a844d3a87b1906881c484
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 03/27/2020
+ms.openlocfilehash: d41affc55134ad34c325c12ab4a14f4013c58f9e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76021033"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371674"
 ---
 Wenn Sie an eine reservierte Azure-VM-Instanz committen, können Sie Geld sparen. Der Reservierungsrabatt wird automatisch auf die Anzahl der ausgeführten virtuellen Computer angewendet, die dem Reservierungsbereich und den Reservierungsattributen entsprechen. Sie müssen einem virtuellen Computer keine Reservierung zuweisen, um die Rabatte zu erhalten. Beim Erwerb reservierter Instanzen wird nur der Computeteil ihrer VM-Nutzung abgedeckt. Bei Windows-VMs wird die Verwendungsmessung in zwei separate Verbrauchseinheiten aufgeteilt. Es gibt eine Computeverbrauchseinheit, die mit der Linux-Verbrauchseinheit identisch ist, und eine Windows-IP-Verbrauchseinheit. Die Gebühren, die Ihnen beim Kauf angezeigt werden, gelten nur für die Computekosten. Gebühren enthalten keine Windows-Softwarekosten. Weitere Informationen zu Softwarekosten finden Sie unter [In Azure Reserved VM Instances nicht enthaltene Softwarekosten](../articles/cost-management-billing/reservations/reserved-instance-windows-software-costs.md).
 
@@ -56,11 +56,10 @@ Wenn die Einstellung eingeschaltet ist, gelten Reservierungsrabatte automatisch 
 Weitere Informationen zur Instanzgrößenflexibilität finden Sie unter [Flexibilität bei der VM-Größe mit reservierten VM-Instanzen](../articles/virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
 
 ### <a name="analyze-your-usage-information"></a>Analysieren Ihrer Nutzungsinformationen
-Analysieren Sie Ihre Nutzungsinformationen, um besser ermitteln zu können, welche Reservierungen Sie erwerben sollten.
 
-Nutzungsdaten sind in der Nutzungsdatendatei und in APIs verfügbar. Verwenden Sie beides gemeinsam, um zu ermitteln, welche Reservierung Sie erwerben sollten. Prüfen Sie, ob VM-Instanzen vorhanden sind, die an allen Tagen eine hohe Nutzung aufweisen, um die Anzahl der zu erwerbenden Reservierungen zu ermitteln.
+Analysieren Sie Ihre Nutzungsinformationen, um besser ermitteln zu können, welche Reservierungen Sie erwerben sollten. Nutzungsdaten sind in der Nutzungsdatendatei und in APIs verfügbar. Verwenden Sie beides gemeinsam, um zu ermitteln, welche Reservierung Sie erwerben sollten. Prüfen Sie, ob VM-Instanzen vorhanden sind, die an allen Tagen eine hohe Nutzung aufweisen, um die Anzahl der zu erwerbenden Reservierungen zu ermitteln. Vermeiden Sie die Unterkategorie `Meter` und das Feld `Product` der Nutzungsdaten. Diese unterscheiden nicht zwischen VM-Größen, die Storage Premium verwenden. Wenn Sie diese Felder verwenden, um die VM-Größe für den Reservierungserwerb zu ermitteln, erwerben Sie möglicherweise eine falsche Größe. In diesem Fall erhalten Sie nicht den erwarteten Rabatt auf Ihre Reservierung. Beachten Sie stattdessen das Feld `AdditionalInfo` in Ihrer Nutzungsdatei oder die Nutzungs-API, um die richtige VM-Größe zu bestimmen.
 
-Vermeiden Sie die Unterkategorie `Meter` und das Feld `Product` der Nutzungsdaten. Diese unterscheiden nicht zwischen VM-Größen, die Storage Premium verwenden. Wenn Sie diese Felder verwenden, um die VM-Größe für den Reservierungserwerb zu ermitteln, erwerben Sie möglicherweise eine falsche Größe. In diesem Fall erhalten Sie nicht den erwarteten Rabatt auf Ihre Reservierung. Beachten Sie stattdessen das Feld `AdditionalInfo` in Ihrer Nutzungsdatei oder die Nutzungs-API, um die richtige VM-Größe zu bestimmen.
+Die Nutzungsdatei enthält Ihre Gebühren nach Abrechnungszeitraum und Daten zur täglichen Nutzung. Weitere Informationen zum Herunterladen der Nutzungsdatei finden Sie unter [Anzeigen und Herunterladen der Azure-Nutzung und -Gebühren](../articles/cost-management-billing/understand/download-azure-daily-usage.md). Anhand der Informationen in der Nutzungsdatei können Sie dann [die zu erwerbende Reservierung ermitteln](../articles/cost-management-billing/reservations/determine-reservation-purchase.md).
 
 ### <a name="purchase-restriction-considerations"></a>Überlegungen zu Kaufeinschränkungen
 
@@ -95,7 +94,7 @@ So kaufen Sie ein Instanz:
 Wenn Sie über eine EA-Vereinbarung verfügen, können Sie die Option **Weitere hinzufügen** verwenden, um schnell weitere Instanzen hinzuzufügen. Die Option ist für andere Abonnementtypen nicht verfügbar.
 
 
-| Feld      | Beschreibung|
+| Feld      | BESCHREIBUNG|
 |------------|--------------|
 |Subscription|Das zum Bezahlen für die Reservierung verwendete Abonnement. Die Zahlungsmethode für das Abonnement wird mit Zahlungen für die Reservierung belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) oder „Microsoft-Kundenvereinbarung“ oder ein einzelnes Abonnement mit Sätzen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein. Die Gebühren werden vom Guthaben in Bezug auf den Mindestverbrauch abgezogen oder als Überschreitung belastet. Bei einem Abonnement mit Sätzen für nutzungsbasierte Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung in Rechnung gestellt.|    
 |`Scope`       |Der Bereich der Reservierung kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen: <ul><li>**Einzelne Ressourcengruppe**: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.</li><li>**Einzelnes Abonnement**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.</li><li>**Gemeinsam genutzt**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für EA-Kunden ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.</li></ul>|

@@ -3,12 +3,12 @@ title: 'Muster: Auswirkungen einer Richtliniendefinition'
 description: Dieses Azure Policy-Muster enthält ein Beispiel für die Verwendung der verschiedenen Auswirkungen einer Richtliniendefinition.
 ms.date: 01/31/2020
 ms.topic: sample
-ms.openlocfilehash: b86a24bc0af6c9bdd7b29bb0a931d6c78865218b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1a9aec50bd328b76271d54f7830c75e0848d3cde
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77170458"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372635"
 ---
 # <a name="azure-policy-pattern-effects"></a>Azure Policy-Muster: Auswirkungen
 
@@ -22,7 +22,7 @@ Mit der folgenden Richtliniendefinition wird überprüft, ob das im Parameter **
 
 ### <a name="sample-1-explanation"></a>Beispiel 1: Erklärung
 
-:::code language="json" source="~/policy-templates/patterns/pattern-effect-details-1.json" range="30-34":::
+:::code language="json" source="~/policy-templates/patterns/pattern-effect-details-1.json" range="40-50":::
 
 Für die Auswirkung **modify** ist der Block **policyRule.then.details** erforderlich, in dem Rollendefinitions-IDs (**roleDefinitionIds**) und Vorgänge (**operations**) definiert werden. Mithilfe dieser Parameter wird Azure Policy mitgeteilt, welche Rollen erforderlich sind, um das Tag hinzuzufügen und die Ressource zu korrigieren, und welcher Vorgang vom Typ **modify** ausgeführt werden soll. In diesem Beispiel wird der **Vorgang** _add_ verwendet. Die Parameter dienen zum Festlegen des Tags und des zugehörigen Werts.
 

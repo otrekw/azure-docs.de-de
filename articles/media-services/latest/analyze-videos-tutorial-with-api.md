@@ -10,15 +10,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
-ms.date: 02/02/2020
+ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: abd4a3a3a3e8494ea325e65a78eea7fb56b78f94
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b7864d89cc14a1473fd43e94bfe74c368bcb391d
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76988361"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349486"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>Tutorial: Analysieren von Videos mit Media Services v3
 
@@ -92,6 +92,8 @@ Die folgende Funktion führt diese Aktionen aus:
 
 * Erstellen eines Medienobjekts
 * Abrufen einer nicht schreibgeschützten [SAS-URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) für den [Container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container) des Medienobjekts im Speicher
+
+    Beachten Sie Folgendes: Wenn Sie die Funktion [ListContainerSas](https://docs.microsoft.com/rest/api/media/assets/listcontainersas) des Medienobjekts zum Abrufen von SAS-URLs verwenden, gibt die Funktion mehrere SAS-URLs zurück, da für jedes Speicherkonto zwei Speicherkontoschlüssel vorhanden sind. Ein Speicherkonto verfügt über zwei Schlüssel, um eine nahtlose Rotation von Speicherkontoschlüsseln zu ermöglichen. (So kann beispielsweise ein Schlüssel geändert werden, während der andere in Gebrauch ist. Anschließend kann dann der neue Schlüssel verwendet werden, während der andere rotiert wird.) Die erste SAS-URL steht für Speicherschlüssel1 und die zweite für Speicherschlüssel2.
 * Hochladen der Datei in den Container im Speicher mithilfe der SAS-URL
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateInputAsset)]

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1aed1b0a13482bc932024a9d2a131ec5f1d948ba
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d3d6b33211f6f247d9f30c0f162b388085faabe6
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78186895"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80332548"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technische und Funktionsübersicht für Azure Active Directory B2C
 
@@ -195,7 +195,7 @@ Sie können einen Rest-API-Aufruf in jedem Schritt der User Journey hinzufügen,
 * Nachdem Azure AD B2C ein neues Konto im Verzeichnis erstellt hat
 * Bevor Azure AD B2C ein Zugriffstoken ausgibt
 
-Informationen zum Verwenden benutzerdefinierter Richtlinien für die RESTful-API-Integration in Azure AD B2C finden Sie unter [Integrieren von REST-API-Anspruchsaustausch-Vorgängen in Ihre Azure AD B2C User Journey](rest-api-claims-exchange-dotnet.md).
+Informationen zum Verwenden benutzerdefinierter Richtlinien für die RESTful-API-Integration in Azure AD B2C finden Sie unter [Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre benutzerdefinierte Azure AD B2C-Richtlinie](custom-policy-rest-api-intro.md).
 
 ## <a name="protect-customer-identities"></a>Schützen von Kundenidentitäten
 

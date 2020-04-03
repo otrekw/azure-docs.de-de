@@ -1,0 +1,176 @@
+---
+title: Beheben zeitweiliger Fehler bei ausgehenden Verbindungen in Azure App Service
+description: Beheben von zeitweiligen Verbindungsfehlern und zugehörigen Leistungsproblemen in Azure App Service
+author: v-miegge
+manager: barbkess
+ms.topic: troubleshooting
+ms.date: 03/24/2020
+ms.author: ramakoni
+ms.custom: security-recommendations
+ms.openlocfilehash: 028ddccdb989d35710e387081b08a3b973d75bdc
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80367270"
+---
+# <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Beheben zeitweiliger Fehler bei ausgehenden Verbindungen in Azure App Service
+
+In diesem Artikel erfahren Sie, wie Sie zeitweilige Verbindungsfehler und zugehörige Leistungsprobleme in [Azure App Service](https://docs.microsoft.com/azure/app-service/overview) beheben. Dieses Thema enthält weitere Informationen zu sowie Problembehandlungsmethoden für die Auslastung von SNAT-Ports (Source Address Network Translation). Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, wenden Sie sich an die Azure-Experten im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/). Alternativ dazu können Sie eine Azure-Supportanfrage erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie die Option **Support erhalten**.
+
+## <a name="symptoms"></a>Symptome
+
+Im Azure-App-Dienst gehostete Anwendungen und Funktionen weisen möglicherweise eines oder mehrere der folgenden Symptome auf:
+
+* Langsame Reaktionszeiten bei allen oder einigen der Instanzen in einem Dienstplan.
+* Zeitweilig auftretende 5xx- oder **Ungültiges Gateway**-Fehler.
+* Timeoutfehlermeldungen
+* Es konnte keine Verbindung mit externen Endpunkten hergestellt werden (z. B. SQLDB, Service Fabric, andere App-Dienste usw.).
+
+## <a name="cause"></a>Ursache
+
+Eine Hauptursache für diese Symptome ist, dass die Anwendungsinstanz keine neue Verbindung mit dem externen Endpunkt öffnen kann, da sie eins der folgenden Limits erreicht hat:
+
+* TCP-Verbindungen: Die Anzahl herstellbarer ausgehender Verbindungen ist begrenzt. Dies ist an die Größe des verwendeten Workers gebunden.
+* SNAT-Ports: Wie in [Ausgehende Verbindungen in Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) erläutert, verwendet Azure SNAT (Source Network Address Translation, Quellnetzwerkadressen-Übersetzung) und einen Load Balancer (dem Kunden nicht verfügbar gemacht), um mit Endpunkten außerhalb von Azure im öffentlichen IP-Adressraum zu kommunizieren. Jeder Instanz im Azure-App-Dienst wird zunächst eine vorab zugeordnete Anzahl von **128** SNAT-Ports zugewiesen. Dieses Limit wirkt sich auf das Öffnen von Verbindungen mit derselben Host- und Portkombination aus. Wenn Ihre App Verbindungen mit einer Mischung aus Adress- und Portkombinationen herstellt, werden Sie Ihre SNAT-Ports nicht aufbrauchen. Die SNAT-Ports werden aufgebraucht, wenn Sie wiederholten Aufrufe an dieselbe Kombination aus Adresse und Port vornehmen. Nach der Freigabe eines Ports kann er bei Bedarf erneut verwendet werden. Der Azure-Netzwerklastenausgleich gibt SNAT-Ports von geschlossenen Verbindungen erst nach einer Wartezeit von 4 Minuten zurück.
+
+Wenn Anwendungen oder Funktionen schnell eine neue Verbindung öffnen, können Sie ihr vorab zugewiesenes Kontingent von 128 Ports schnell erschöpfen. Sie werden dann blockiert, bis ein neuer SNAT-Port verfügbar wird, entweder durch dynamisches Zuweisen zusätzlicher SNAT-Ports oder durch Wiederverwendung eines freigegebenen SNAT-Ports. Bei Anwendungen oder Funktionen, die blockiert werden, weil keine neuen Verbindungen erstellt werden können, tritt mindestens eines der Probleme auf, die im Abschnitt **Symptome** dieses Artikels beschrieben werden.
+
+## <a name="avoiding-the-problem"></a>Vermeiden des Problems
+
+Das Vermeiden des SNAT-Portproblems bedeutet, das wiederholte Erstellen neuer Verbindungen mit demselben Host und Port zu vermeiden.
+
+Allgemeine Strategien zum Verringern der SNAT-Portauslastung finden Sie im Abschnitt zur [Problembehebung](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#problemsolving) der Dokumentation **Ausgehende Verbindungen von Azure**. Von diesen Strategien sind die folgenden anwendbar auf Apps und Funktionen, die im Azure-App-Dienst gehostet werden.
+
+### <a name="modify-the-application-to-use-connection-pooling"></a>Ändern der Anwendung für die Verwendung von Verbindungspooling
+
+* Lesen Sie zum Pooling von HTTP-Verbindungen [Poolen von HTTP-Verbindungen mit HttpClientFactory](https://docs.microsoft.com/aspnet/core/performance/performance-best-practices#pool-http-connections-with-httpclientfactory).
+* Informationen zum SQL Server-Verbindungspooling finden Sie unter [SQL Server-Verbindungspooling (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling).
+* Informationen zum Implementieren von Pooling mit Entity Framework-Anwendungen finden Sie unter [DBContext-Pooling](https://docs.microsoft.com/ef/core/what-is-new/ef-core-2.0#dbcontext-pooling).
+
+Im Folgenden finden Sie eine Auflistung von Links zum Implementieren von Verbindungspooling nach unterschiedlichem Lösungsstapel.
+
+#### <a name="node"></a>Node
+
+Standardmäßig werden Verbindungen für NodeJS nicht aufrechterhalten. Unten sind die gängigen Datenbanken und Pakete für das Verbindungspooling angegeben, die auch Beispiele zur Implementierung enthalten.
+
+* [MySQL](https://github.com/mysqljs/mysql#pooling-connections)
+* [MongoDB](https://blog.mlab.com/2017/05/mongodb-connection-pooling-for-express-applications/)
+* [PostgreSQL](https://node-postgres.com/features/pooling)
+* [SQL Server](https://github.com/tediousjs/node-mssql#connection-pools)
+
+HTTP-Keep-Alive
+
+* [agentkeepalive](https://www.npmjs.com/package/agentkeepalive)
+* [Node.js v13.9.0: Dokumentation](https://nodejs.org/api/http.html)
+
+#### <a name="java"></a>Java
+
+Unten sind die gängigen Bibliotheken aufgeführt, die für das JDBC-Verbindungspooling verwendet werden und Beispiele für die Implementierung enthalten: JDBC-Verbindungspooling.
+
+* [Tomcat 8](https://tomcat.apache.org/tomcat-8.0-doc/jdbc-pool.html)
+* [C3p0](https://github.com/swaldman/c3p0)
+* [HikariCP](https://github.com/brettwooldridge/HikariCP)
+* [Apache DBCP](https://commons.apache.org/proper/commons-dbcp/)
+
+HTTP-Verbindungspooling
+
+* [Apache-Verbindungsverwaltung](https://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html)
+* [PoolingHttpClientConnectionManager-Klasse](http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/impl/conn/PoolingHttpClientConnectionManager.html)
+
+#### <a name="php"></a>PHP
+
+Von PHP wird das Verbindungspooling zwar nicht unterstützt, aber Sie können versuchen, dauerhafte Datenbankverbindungen auf Ihrem Back-End-Server zu verwenden.
+ 
+* MySQL-Server
+
+   * [MySQLi-Verbindungen](https://www.php.net/manual/mysqli.quickstart.connections.php) für neuere Versionen
+   * [mysql_pconnect](https://www.php.net/manual/function.mysql-pconnect.php) für ältere Versionen von PHP
+
+* Weitere Datenquellen
+
+   * [PHP-Verbindungsverwaltung](https://www.php.net/manual/en/pdo.connections.php)
+
+#### <a name="python"></a>Python
+
+* [MySQL](https://github.com/mysqljs/mysql#pooling-connections)
+* [MongoDB](https://blog.mlab.com/2017/05/mongodb-connection-pooling-for-express-applications/)
+* [PostgreSQL](https://node-postgres.com/features/pooling)
+* [SQL Server](https://github.com/tediousjs/node-mssql#connection-pools) (HINWEIS: SQLAlchemy kann außer mit MicrosoftSQL Server auch mit anderen Datenbanken verwendet werden.)
+* [HTTP-Keep-Alive](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive) (Keep-Alive erfolgt automatisch bei Verwendung von [Session-Objekten](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive) in Sitzungen).
+
+Lesen Sie für andere Umgebungen die anbieter- oder treiberspezifischen Dokumente zum Implementieren von Verbindungspooling in Ihren Anwendungen.
+
+### <a name="modify-the-application-to-reuse-connections"></a>Ändern der Anwendung für die Wiederverwendung von Verbindungen
+
+*  Weitere Hinweise und Beispiele zum Verwalten von Verbindungen in Azure Functions finden Sie unter [Verwalten von Verbindungen in Azure Functions](https://docs.microsoft.com/azure/azure-functions/manage-connections).
+
+### <a name="modify-the-application-to-use-less-aggressive-retry-logic"></a>Ändern der Anwendung für die Verwendung weniger aggressiver Wiederholungslogik
+
+* Weitere Anleitungen und Beispiele finden Sie unter [Wiederholungsmuster](https://docs.microsoft.com/azure/architecture/patterns/retry).
+
+### <a name="use-keepalives-to-reset-the-outbound-idle-timeout"></a>Verwenden von Keep-Alives zum Zurücksetzen des Leerlauftimeouts für ausgehende Verbindungen
+
+* Informationen zum Implementieren von Keep-Alives für Node.js-Apps finden Sie unter [Meine Node-Anwendung führt zu viele ausgehende Aufrufe durch](https://docs.microsoft.com/azure/app-service/app-service-web-nodejs-best-practices-and-troubleshoot-guide#my-node-application-is-making-excessive-outbound-calls).
+
+### <a name="additional-guidance-specific-to-app-service"></a>Zusätzliche Anleitungen speziell für App Service:
+
+* Ein [Auslastungstest](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test) sollte reale Daten mit einer konstanten Zuführungsgeschwindigkeit simulieren. Mit dem Testen von Apps und Funktionen unter realen Belastungsbedingungen können Probleme mit der SNAT-Portauslastung vorzeitig erkannt und behoben werden.
+* Stellen Sie sicher, dass die Back-End-Dienste Antworten schnell zurückgeben können. Informationen zum Behandeln von Problemen mit der Azure SQL-Datenbank finden Sie unter [Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance#recommended-troubleshooting-flow).
+* Erweitern Sie den App Service-Plan auf weitere Instanzen. Weitere Informationen zur Skalierung finden Sie unter [Skalieren einer App in Azure App Service](https://docs.microsoft.com/azure/app-service/manage-scale-up). Jeder Workerinstanz in einem App Service-Plan wird eine Anzahl von SNAT-Ports zugeordnet. Wenn Sie Ihre Nutzung auf mehrere Instanzen verteilen, können Sie eventuell eine SNAT-Portnutzung pro Instanz unterhalb des empfohlenen Limits von 100 ausgehenden Verbindungen pro eindeutigem Remoteendpunkt erreichen.
+* Erwägen Sie die Umstellung auf [App Service-Umgebung (ASE)](https://docs.microsoft.com/azure/app-service/environment/using-an-ase), wobei Ihnen eine einzelne ausgehende IP-Adresse zugewiesen wird und die Grenzwerte für Verbindungen und SNAT-Ports weitaus höher sind.
+
+Die Vermeidung der ausgehenden TCP-Limits lässt sich leichter erreichen, weil die Limits durch die Größe Ihres Workers festgelegt werden. Sie finden die Limits in [Numerische Limits für sandboxübergreifende VM: TCP-Verbindungen](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits).
+
+|Limitname|BESCHREIBUNG|Klein (A1)|Mittel (A2)|Groß (A3)|Dienstebene „Isoliert“ (ASE)|
+|---|---|---|---|---|---|
+|Verbindungen|Anzahl von Verbindungen in der gesamten VM|1920|3968|8064|16.000|
+
+Um ausgehende TCP-Limits zu vermeiden, können Sie entweder die Größe Ihres Workers erhöhen oder horizontal erweitern.
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+Die Kenntnis der beiden Arten von Limits für ausgehende Verbindungen sowie des Verhaltens Ihrer App sollte die Problembehandlung erleichtern. Wenn Sie wissen, dass Ihre App viele Aufrufe an dasselbe Speicherkonto durchführt, könnten Sie ein SNAT-Limit vermuten. Wenn Ihre App viele Aufrufe an Endpunkte über das Internet erstellt, könnten Sie vermuten, dass Sie das VM-Limit erreichen werden.
+
+Wenn Sie das Anwendungsverhalten nicht gut genug kennen, um die Ursache schnell zu ermitteln, gibt es einige Tools und Methoden, die in App Service zur Unterstützung dieser Ermittlungsaufgabe verfügbar sind.
+
+### <a name="find-snat-port-allocation-information"></a>Auffinden von SNAT-Portzuordnungsinformationen
+
+Sie können die [App Service-Diagnose](https://docs.microsoft.com/azure/app-service/overview-diagnostics) verwenden, um SNAT-Portzuordnungsinformationen zu suchen, und die Zuordnungsmetrik von SNAT-Ports für eine App Service-Site beobachten. Gehen Sie wie folgt vor, um SNAT-Portzuordnungsinformationen zu finden:
+
+1. Navigieren Sie für den Zugriff auf die App Service-Diagnose zu Ihrer App Service-Web-App oder App Service-Umgebung im [Azure-Portal](https://portal.azure.com/). Wählen Sie im linken Navigationsbereich **Diagnose und Problembehandlung** aus.
+2. Wählen Sie die Kategorie „Verfügbarkeit und Leistung“ aus.
+3. Wählen Sie in der Liste der verfügbaren Kacheln unter der Kategorie die Kachel „SNAT-Portauslastung“ aus. Die Vorgehensweise besteht darin, den Wert unter 128 zu halten.
+Wenn Sie dies benötigen, können Sie immer noch ein Supportticket öffnen, und der Supporttechniker ruft die Metrik vom Back-End für Sie ab.
+
+Beachten Sie, dass, da SNAT-Portauslastung nicht als Metrik verfügbar ist, es nicht möglich ist, entweder automatisch auf Grundlage der SNAT-Portauslastung zu skalieren oder die automatische Skalierung auf Grundlage der SNAT-Portzuordnungsmetrik zu konfigurieren.
+
+### <a name="tcp-connections-and-snat-ports"></a>TCP-Verbindungen und SNAT-Ports
+
+TCP-Verbindungen und SNAT-Ports stehen in keinem direkten Zusammenhang. Eine Auslastungserkennung für TCP-Verbindungen befindet sich auf dem Blatt „Diagnose und Problembehandlung“ jeder App Service-Site. Suchen Sie nach dem Ausdruck „TCP-Verbindungen“, um sie zu finden.
+
+* Die SNAT-Ports werden nur für externe Netzwerkflows verwendet, während die gesamten TCP-Verbindungen lokale Loopbackverbindungen enthalten.
+* Ein SNAT-Port kann von verschiedenen Flows gemeinsam genutzt werden, wenn sich die Flows im Protokoll, bei der IP-Adresse oder dem Port unterscheiden. Die TCP-Verbindungenmetrik zählt jede TCP-Verbindung.
+* Das Limit für TCP-Verbindungen gilt auf Workerinstanzebene. Der ausgehende Lastenausgleich im Azure-Netzwerk verwendet die TCP-Verbindungenmetrik nicht für die SNAT-Portbegrenzung.
+* Sie finden die TCP-Verbindungslimits in [Numerische Limits für sandboxübergreifende VM: TCP-Verbindungen](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits).
+
+|Limitname|BESCHREIBUNG|Klein (A1)|Mittel (A2)|Groß (A3)|Dienstebene „Isoliert“ (ASE)|
+|---|---|---|---|---|---|
+|Verbindungen|Anzahl von Verbindungen in der gesamten VM|1920|3968|8064|16.000|
+
+### <a name="webjobs-and-database-connections"></a>WebJobs und Datenbankverbindungen
+ 
+Wenn WebJobs wegen erschöpfter SNAT-Ports keine Verbindung mehr mit der Azure SQL-Datenbank herstellen können, gibt es keine Metrik, die anzeigt, wie viele Verbindungen von den einzelnen Webanwendungsprozessen geöffnet sind. Um den problematischen WebJob zu finden, verschieben Sie mehrere WebJobs in einen anderen App Service-Plan, um festzustellen, ob sich die Situation verbessert, oder ob ein Problem in einem der Pläne bestehen bleibt. Wiederholen Sie den Vorgang, bis Sie den problematischen WebJob gefunden haben.
+
+### <a name="using-snat-ports-sooner"></a>Früheres Verwenden von SNAT-Ports
+
+Sie können keine Azure-Einstellungen dahingehend ändern, dass die verwendeten SNAT-Ports früher freigegeben werden, da alle SNAT-Ports gemäß den folgenden Bedingungen freigegeben werden, wobei dieses Verhalten entwurfsbedingt ist.
+ 
+* Wenn entweder der Server oder der Client FINACK sendet, wird der [SNAT-Port nach 240 Sekunden freigegeben](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#tcp-snat-port-release).
+* Tritt ein RST auf, wird der SNAT-Port nach 15 Sekunden freigegeben.
+* Wird das Leerlauftimeout erreicht, wird der Port freigegeben.
+ 
+## <a name="additional-information"></a>Zusätzliche Informationen
+
+* [SNAT mit App Service](https://4lowtherabbit.github.io/blogs/2019/10/SNAT/)
+* [Problembehandlung bei niedriger App-Leistung in Azure App Service](https://docs.microsoft.com/azure/app-service/troubleshoot-performance-degradation)

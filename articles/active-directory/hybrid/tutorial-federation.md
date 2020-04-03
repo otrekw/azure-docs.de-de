@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a51175d192a5afb1f84f8d0ed2de9796f198f82d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7a123a85d653415f7b067e0c144c90ed79f2d081
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "60296742"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80330996"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Tutorial: Erstellen eines Verbunds einer Umgebung mit einer AD-Gesamtstruktur mit der Cloud
 
@@ -88,7 +88,7 @@ Um das Erstellen des virtuellen Computers durchzuführen, müssen Sie die Instal
 5. Klicken Sie auf **Jetzt installieren**.
 6. Geben Sie Ihren Lizenzschlüssel ein, und klicken Sie auf **Weiter**.
 7. Aktivieren Sie „Ich stimme den Lizenzbedingungen zu“, und klicken Sie auf **Weiter**.
-8. Wählen Sie **Benutzerdefiniert: Nur Windows installieren (erweitert)** aus.
+8. Wählen Sie **Benutzerdefiniert:  Nur Windows installieren (Erweitert)** aus.
 9. Klicken Sie auf **Weiter**.
 10. Nach Abschluss der Installation starten Sie den virtuellen Computer neu, melden sich an und führen Windows-Updates aus, um sicherzustellen, dass die VM auf dem neuesten Stand ist.  Installieren Sie die neuesten Updates.
 
@@ -184,7 +184,7 @@ Set-ADUser -Identity $Identity -PasswordNeverExpires $true -ChangePasswordAtLogo
 ```
 
 ## <a name="create-a-certificate-for-ad-fs"></a>Erstellen eines Zertifikats für AD FS
-Jetzt erstellen wir ein SSL-Zertifikat, das von AD FS verwendet wird.  Es wird ein selbstsigniertes Zertifikat, das ausschließlich zu Testzwecken dient.  Microsoft empfiehlt nicht die Verwendung eines selbstsignierten Zertifikats in einer Produktionsumgebung. Gehen Sie folgendermaßen vor:
+Jetzt erstellen wir ein TLS-/SSL-Zertifikat, das von AD FS verwendet wird.  Es wird ein selbstsigniertes Zertifikat, das ausschließlich zu Testzwecken dient.  Microsoft empfiehlt nicht die Verwendung eines selbstsignierten Zertifikats in einer Produktionsumgebung. Gehen Sie folgendermaßen vor:
 
 1. Öffnen Sie die PowerShell ISE als Administrator.
 2. Führen Sie das folgende Skript aus.

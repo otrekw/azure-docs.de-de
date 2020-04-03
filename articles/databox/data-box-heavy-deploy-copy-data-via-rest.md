@@ -8,12 +8,12 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 43f6404a483cad8377e70591f5454180f0dd07a6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9f3ba0a7e9f7cf72b0eade16679d980fe2207f98
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77560336"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80297211"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Tutorial: Kopieren von Daten in Azure Data Box-Blobspeicher über REST-APIs  
 
@@ -98,7 +98,7 @@ Verwenden Sie zum Herunterladen des Zertifikats das Azure-Portal.
  
 ### <a name="import-certificate"></a>Importieren des Zertifikats 
 
-Der Zugriff auf Data Box-Blobspeicher über HTTPS erfordert ein SSL-Zertifikat für das Gerät. Die Art und Weise, wie dieses Zertifikat der Clientanwendung zur Verfügung gestellt wird, variiert von Anwendung zu Anwendung sowie zwischen Betriebssystemen und Distributionen. Einige Anwendungen können auf das Zertifikat zugreifen, nachdem es in den Zertifikatsspeicher des Systems importiert wurde, während andere Anwendungen diesen Mechanismus nicht nutzen.
+Der Zugriff auf Data Box-Blobspeicher über HTTPS erfordert ein TLS-/SSL-Zertifikat für das Gerät. Die Art und Weise, wie dieses Zertifikat der Clientanwendung zur Verfügung gestellt wird, variiert von Anwendung zu Anwendung sowie zwischen Betriebssystemen und Distributionen. Einige Anwendungen können auf das Zertifikat zugreifen, nachdem es in den Zertifikatsspeicher des Systems importiert wurde, während andere Anwendungen diesen Mechanismus nicht nutzen.
 
 Dieser Abschnitt enthält spezifische Informationen für einige Anwendungen. Weitere Informationen zu anderen Anwendungen finden Sie in der Dokumentation für die jeweilige Anwendung und für das verwendete Betriebssystem.
 

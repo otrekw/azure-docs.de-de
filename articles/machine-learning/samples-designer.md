@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: sample
 author: peterclu
 ms.author: peterlu
-ms.date: 03/10/2020
-ms.openlocfilehash: 82476b9cc8d92c815df602496ed3dcb33014a4fd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 03/29/2020
+ms.openlocfilehash: f9a8b0a4c51024d91e517db2f6ae10a4dba62384
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79037296"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389340"
 ---
 # <a name="designer-sample-pipelines"></a>Beispielpipelines für den Designer
 
@@ -30,6 +30,8 @@ Verwenden Sie die integrierten Beispiele in Azure Machine Learning-Designer, u
 
 Der Designer speichert eine Kopie der Beispielpipelines in Ihrem Studio-Arbeitsbereich. Sie können die Pipeline an Ihre Anforderungen anpassen und als eigene Pipeline speichern. Verwenden Sie sie als Ausgangspunkt, um Ihre Projekte zu beschleunigen.
 
+### <a name="open-a-sample-pipeline"></a>Öffnen einer Beispielpipeline
+
 1. Melden Sie sich bei <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.azure.com</a> an, und wählen Sie den gewünschten Arbeitsbereich aus.
 
 1. Wählen Sie **Designer** aus.
@@ -37,6 +39,31 @@ Der Designer speichert eine Kopie der Beispielpipelines in Ihrem Studio-Arbeitsb
 1. Wählen Sie im Abschnitt **Neue Pipeline** eine Beispielpipeline aus.
 
     Wählen Sie **Mehr Stichproben anzeigen** aus, um eine vollständige Liste mit Beispielen anzuzeigen.
+
+### <a name="submit-a-pipeline-run"></a>Übermitteln einer Pipelineausführung
+
+Zum Ausführen einer Pipeline müssen Sie zuerst das Standardcomputeziel für die Pipelineausführung festlegen.
+
+1. Wählen Sie rechts neben der Canvas im Bereich **Einstellungen** die Option **Computeziel auswählen** aus.
+
+1. Wählen Sie im angezeigten Dialogfeld ein vorhandenes Computeziel aus, oder erstellen Sie ein neues. Wählen Sie **Speichern** aus.
+
+1. Wählen Sie oben auf der Canvas **Übermitteln** aus, um eine Pipelineausführung zu übermitteln.
+
+Abhängig von der Beispielpipeline und den Computeeinstellungen kann die Ausführung einige Zeit in Anspruch nehmen. In den Standardcomputeeinstellungen ist eine minimale Knotengröße von 0 festgelegt. Das bedeutet, dass der Designer Ressourcen nach dem Leerlauf zuordnen muss. Wiederholte Pipelineausführungen werden schneller abgeschlossen, da die Computeressourcen bereits zugeordnet sind. Außerdem verwendet der Designer für jedes Modul zwischengespeicherte Ergebnisse, um die Effizienz weiter zu steigern.
+
+
+### <a name="review-the-results"></a>Überprüfen der Ergebnisse
+
+Nach Abschluss der Pipelineausführung können Sie die Pipeline überprüfen und die Ausgabe der einzelnen Module anzeigen, um weitere Informationen zu erhalten.
+
+Führen Sie die folgenden Schritte aus, um die Modulausgaben anzuzeigen:
+
+1. Wählen Sie ein Modul auf der Canvas aus.
+
+1. Wählen Sie rechts neben der Canvas im Bereich mit den Moduldetails die Option **Ausgaben und Protokolle** aus. Wählen Sie das Diagrammsymbol ![Visualisierungssymbol](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) aus, um die Ergebnisse der einzelnen Module anzuzeigen. 
+
+Verwenden Sie die Beispiele als Ausgangspunkt für einige der gängigsten Machine Learning-Szenarien.
 
 ## <a name="regression-samples"></a>Regressionsbeispiele
 

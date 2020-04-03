@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 12/05/2019
-ms.openlocfilehash: 9ed62ea6fdfc0732128ed340cc0bc48481eb73ec
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 03/25/2020
+ms.openlocfilehash: 248ef093601eda7a180a6465ccb97e6fc1c9fe41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76841079"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369710"
 ---
 # <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>Schnellstart: Erstellen einer Such-App im Portal (Azure Cognitive Search)
 
@@ -23,13 +23,13 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Es empfiehlt sich, ein Upgrade auf die [aktuelle Version von Microsoft Edge](https://www.microsoft.com/edge) oder auf die derzeit aktuelle Version des Chrome-Browsers von Google durchzuführen.
+Führen Sie ein Upgrade auf die [aktuelle Version von Microsoft Edge](https://www.microsoft.com/edge) aus, oder verwenden Sie den Chrome-Browser von Google für diese Schnellstartanleitung.
 
 [Erstellen Sie einen Dienst für die kognitive Azure-Suche](search-create-service-portal.md), oder [suchen Sie nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) in Ihrem aktuellen Abonnement. Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
 
 [Erstellen Sie einen Index](search-create-index-portal.md) als Grundlage für Ihre Anwendung. 
 
-In dieser Schnellstartanleitung werden die integrierten Immobilienbeispieldaten und der zugehörige Index verwendet, da sie Miniaturbilder enthalten. Führen Sie zum Erstellen des in dieser Übung verwendeten Index den Assistenten **Daten importieren** aus, und verwenden Sie die Datenquelle *realestate-us-sample*.
+In dieser Schnellstartanleitung werden die integrierten Immobilienbeispieldaten und der zugehörige Index verwendet, da sie Miniaturbilder enthalten. (Vom Assistenten wird das Hinzufügen von Bildern zur Ergebnisseite unterstützt.) Führen Sie zum Erstellen des in dieser Übung verwendeten Index den Assistenten **Daten importieren** aus, und verwenden Sie die Datenquelle *realestate-us-sample*.
 
 ![Datenquellenseite für Beispieldaten](media/search-create-app-portal/import-data-realestate.png)
 

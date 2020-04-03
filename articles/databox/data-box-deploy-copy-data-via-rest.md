@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: alkohli
-ms.openlocfilehash: b7d58bb13644c992894510f26a4848ea80c9df00
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 7642c009a5bcd1d00efb432975fff5a65c7ba340
+ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77471838"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80297200"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>Tutorial: Kopieren von Daten in Azure Data Box-Blobspeicher über REST-APIs  
 
@@ -23,6 +23,7 @@ In diesem Tutorial werden Verfahren zum Herstellen einer Verbindung mit Azure Da
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
+>
 > * Voraussetzungen
 > * Herstellen einer Verbindung mit Data Box-Blobspeicher über *HTTP* oder *HTTPS*
 > * Kopieren von Daten auf die Data Box
@@ -91,7 +92,7 @@ Verwenden Sie zum Herunterladen des Zertifikats das Azure-Portal.
  
 ### <a name="import-certificate"></a>Importieren des Zertifikats 
 
-Der Zugriff auf Data Box-Blobspeicher über HTTPS erfordert ein SSL-Zertifikat für das Gerät. Die Art und Weise, wie dieses Zertifikat der Clientanwendung zur Verfügung gestellt wird, variiert von Anwendung zu Anwendung sowie zwischen Betriebssystemen und Distributionen. Einige Anwendungen können auf das Zertifikat zugreifen, nachdem es in den Zertifikatsspeicher des Systems importiert wurde, während andere Anwendungen diesen Mechanismus nicht nutzen.
+Der Zugriff auf Data Box-Blobspeicher über HTTPS erfordert ein TLS-/SSL-Zertifikat für das Gerät. Die Art und Weise, wie dieses Zertifikat der Clientanwendung zur Verfügung gestellt wird, variiert von Anwendung zu Anwendung sowie zwischen Betriebssystemen und Distributionen. Einige Anwendungen können auf das Zertifikat zugreifen, nachdem es in den Zertifikatspeicher des Systems importiert wurde, während andere Anwendungen diesen Mechanismus nicht nutzen.
 
 Dieser Abschnitt enthält spezifische Informationen für einige Anwendungen. Weitere Informationen zu anderen Anwendungen finden Sie in der Dokumentation für die jeweilige Anwendung und für das verwendete Betriebssystem.
 
@@ -108,16 +109,16 @@ Führen Sie diese Schritte aus, um die `.cer`-Datei in den Stammspeicher eines W
 
 #### <a name="use-windows-server-ui"></a>Verwenden der Windows Server-Benutzeroberfläche
 
-1.  Klicken Sie mit der rechten Maustaste auf die `.cer`-Datei, und wählen Sie **Zertifikat installieren** aus. Mit dieser Aktion wird der Zertifikatimport-Assistent gestartet.
-2.  Wählen Sie für **Speicherort** die Option **Lokaler Computer** aus, und klicken Sie dann auf **Weiter**.
+1.   Klicken Sie mit der rechten Maustaste auf die `.cer`-Datei, und wählen Sie **Zertifikat installieren** aus. Mit dieser Aktion wird der Zertifikatimport-Assistent gestartet.
+2.   Wählen Sie für **Speicherort** die Option **Lokaler Computer** aus, und klicken Sie dann auf **Weiter**.
 
     ![Importieren des Zertifikats mithilfe von PowerShell](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
 
-3.  Wählen Sie **Alle Zertifikate in folgendem Speicher speichern** aus, und klicken Sie dann auf **Durchsuchen**. Navigieren Sie zum Stammspeicher des Remotehosts, und klicken Sie dann auf **Weiter**.
+3.   Wählen Sie **Alle Zertifikate in folgendem Speicher speichern** aus, und klicken Sie dann auf **Durchsuchen**. Navigieren Sie zum Stammspeicher des Remotehosts, und klicken Sie dann auf **Weiter**.
 
     ![Importieren des Zertifikats mithilfe von PowerShell](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
-4.  Klicken Sie auf **Fertig stellen**. Eine Meldung wird angezeigt, die besagt, dass der Import erfolgreich war.
+4.   Klicken Sie auf **Fertig stellen**. Eine Meldung wird angezeigt, die besagt, dass der Import erfolgreich war.
 
     ![Importieren des Zertifikats mithilfe von PowerShell](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
@@ -149,8 +150,9 @@ Führen Sie die Schritte zum [Konfigurieren von Partnersoftware aus, die Sie bei
 
 Nachdem Sie eine Verbindung mit dem Data Box-Blobspeicher hergestellt haben, kopieren Sie im nächsten Schritt Ihre Daten. Beachten Sie vor dem Kopieren von Daten Folgendes:
 
--  Stellen Sie beim Kopieren der Daten sicher, dass für die Datengröße die Größenbeschränkungen eingehalten werden, die im Artikel zu den [Grenzwerten für Azure Storage und Data Box](data-box-limits.md) beschrieben sind.
-- Falls von Data Box hochgeladene Daten gleichzeitig von anderen Anwendungen außerhalb von Data Box hochgeladen werden, kann dies zu Fehlern bei Uploadaufträgen und zu Datenbeschädigungen führen.
+* Stellen Sie beim Kopieren der Daten sicher, dass für die Datengröße die Größenbeschränkungen eingehalten werden, die im Artikel zu den [Grenzwerten für Azure Storage und Data Box](data-box-limits.md) beschrieben sind.
+* Falls von Data Box hochgeladene Daten gleichzeitig von anderen Anwendungen außerhalb von Data Box hochgeladen werden, kann dies zu Fehlern bei Uploadaufträgen und zu Datenbeschädigungen führen.
+* Bevor Sie bestätigen können, dass Data Box Ihre Daten nach Azure Storage übertragen hat, müssen Sie sicherstellen, dass Sie über eine Kopie der Quelldaten verfügen.
 
 In diesem Tutorial wird AzCopy zum Kopieren von Daten in den Data Box-Blospeicher verwendet. Sie können zum Kopieren der Daten auch den Azure Storage-Explorer (falls Sie ein GUI-basiertes Tool bevorzugen) oder eine Partnersoftware nutzen.
 

@@ -1,19 +1,19 @@
 ---
 title: Erstellen eines Suchindex im Azure-Portal
 titleSuffix: Azure Cognitive Search
-description: In diesem Portal-Schnellstart erfahren Sie, wie Sie den Datenimport-Assistenten verwenden, um Ihren ersten Suchindex in Azure Cognitive Search zu erstellen, zu laden und abzufragen.
+description: In dieser Schnellstartanleitung zum Azure-Portal erfahren Sie, wie Sie den Datenimport-Assistenten verwenden, um Ihren ersten Suchindex in Azure Cognitive Search zu erstellen, zu laden und abzufragen.
 author: tchristiani
 manager: nitinme
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/10/2020
-ms.openlocfilehash: 6a3bbdae0d3fa898621c1c805388252beb891ecf
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8324ca0184c508591fa4568175bad0f606f952a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79290428"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369453"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Schnellstart: Erstellen eines Index für Azure Cognitive Search im Azure-Portal
 > [!div class="op_single_selector"]

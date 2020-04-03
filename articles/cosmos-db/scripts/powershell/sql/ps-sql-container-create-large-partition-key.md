@@ -1,20 +1,20 @@
 ---
-title: PowerShell-Skript zum Erstellen eines Azure Cosmos-Containers mit einem großen Partitionsschlüssel
+title: PowerShell-Skript zum Erstellen eines Azure Cosmos DB-Containers mit einem großen Partitionsschlüssel
 description: 'Azure PowerShell-Beispielskript: Erstellen eines Containers mit großem Partitionsschlüssel in einem Azure Cosmos DB-Konto'
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 07/03/2019
+ms.date: 03/17/2020
 ms.author: mjbrown
-ms.openlocfilehash: ecc5e7c13d898f89bbd6b542faf69834de26e0e0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7746154fe89b655d09345a2de655fa85a0d4cbae
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75444985"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365933"
 ---
-# <a name="create-a-container-with-a-large-partition-key-in-an-azure-cosmos-account-using-powershell"></a>Erstellen eines Containers mit großem Partitionsschlüssel in einem Azure Cosmos DB-Konto mithilfe von PowerShell
+# <a name="create-a-container-with-a-large-partition-key-in-an-azure-cosmos-db-account-using-powershell"></a>Erstellen eines Containers mit großem Partitionsschlüssel in einem Azure Cosmos DB-Konto mithilfe von PowerShell
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -38,8 +38,10 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | Get-Help | Notizen |
 |---|---|
-|**Azure-Ressourcen**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Dient zum Erstellen einer Ressource. |
+|**Azure Cosmos DB**| |
+| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Erstellt ein neues Cosmos DB-Konto. |
+| [Set-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqldatabase) | Erstellt eine neue Cosmos DB-SQL-Datenbank oder aktualisiert eine vorhandene Cosmos DB-SQL-Datenbank. |
+| [Set-AzCosmosDBSqlContainer](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqlcontainer) | Erstellt einen neuen Cosmos DB-SQL-Container oder aktualisiert einen vorhandenen Cosmos DB-SQL-Container. |
 |**Azure-Ressourcengruppen**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 |||

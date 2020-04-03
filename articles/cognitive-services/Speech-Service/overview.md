@@ -8,28 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 02/10/2020
+ms.date: 03/12/2020
 ms.author: dapine
-ms.openlocfilehash: 7ddfae430e6aa4ec9549e40c937e5edcfd927f6d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 353e66c2d4ebb288244866b12a32e9acb7c765e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77119925"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371568"
 ---
 # <a name="what-is-the-speech-service"></a>Worum handelt es sich beim Speech-Dienst?
 
 Der Speech-Dienst dient zur Vereinheitlichung von Spracherkennung, Sprachsynthese und Sprachübersetzung in einem einzelnen Azure-Abonnement. Über das [Speech SDK](speech-sdk-reference.md), das [Speech Devices SDK](https://aka.ms/sdsdk-quickstart) oder [REST-APIs](rest-apis.md) können Sie Ihren Anwendungen, Tools und Geräten komfortabel mit Sprachfunktionen ausstatten.
 
 > [!IMPORTANT]
-> Der Speech-Dienst hat die Bing-Spracheingabe-API sowie Sprachübersetzung und Custom Speech abgelöst. Eine Migrationsanleitung finden Sie unter _Anleitungen > Migration_.
+> Der Speech-Dienst hat die Bing-Spracheingabe-API sowie die Sprachübersetzung abgelöst. Eine Migrationsanleitung finden Sie unter _Anleitungen > Migration_.
 
 Der Speech-Dienst umfasst folgende Features. Verwenden Sie die Links in der Tabelle, um weitere Informationen zu gängigen Anwendungsfällen für das jeweilige Feature zu erhalten oder sich die API-Referenz anzusehen.
 
 | Dienst | Funktion | BESCHREIBUNG | SDK | REST |
-| ------- | ------- | ----------- | --- | ---- |
-| [Spracherkennung](speech-to-text.md) | Spracherkennung | Die Spracherkennung wandelt Audiodatenströme in Echtzeit in Text um, der von Ihren Anwendungen, Tools oder Geräten genutzt oder angezeigt werden kann. In Kombination mit [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) können Sie Benutzerabsichten aus transkribierter Sprache ableiten und auf Sprachbefehle reagieren. | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| | [Batch-Transkription](batch-transcription.md) | Die Batch-Transkription ermöglicht eine asynchrone Spracherkennung/Transkription großer Datenmengen. Dieser REST-basierte Dienst verwendet den gleichen Endpunkt wie die Anpassung und Modellverwaltung. | Nein | [Ja](https://westus.cris.ai/swagger/ui/index) |
+|---------|---------|-------------|-----|------|
+| [Spracherkennung](speech-to-text.md) | Spracherkennung in Echtzeit | Mit der Spracherkennung können Sie Audiodatenströme oder lokale Dateien in Echtzeit in Text umwandeln oder übersetzen, der von Ihren Anwendungen, Tools oder Geräten genutzt oder angezeigt werden kann. In Kombination mit [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) können Sie Benutzerabsichten aus transkribierter Sprache ableiten und auf Sprachbefehle reagieren. | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| | [Batch-Spracherkennung](batch-transcription.md) | Die Batch-Spracherkennung ermöglicht die asynchrone Spracherkennungstranskription großer Mengen von in Azure Blob Storage gespeicherten Sprachaudiodaten. Außer der Konvertierung von Sprachaudiodaten in Text sind mit der Batch-Spracherkennung auch die Diarisierung und Stimmungsanalyse möglich. | Nein | [Ja](https://westus.cris.ai/swagger/ui/index) |
 | | [Konversation mit mehreren Geräten](multi-device-conversation.md) | Verbinden Sie mehrere Geräte oder Clients in einer Konversation, um sprach- oder textbasierte Nachrichten mit einfacher Unterstützung von Transkription und Übersetzung zu senden.| Ja | Nein |
 | | [Unterhaltungstranskription](conversation-transcription-service.md) | Dieser Dienst ermöglicht Spracherkennung, Sprecheridentifikation und Diarisierung in Echtzeit. Er eignet sich optimal für das Transkribieren persönlicher Besprechungen, wobei zwischen Sprechern unterschieden werden kann. | Ja | Nein |
 | | [Erstellen von benutzerdefinierten Sprachmodellen](#customize-your-speech-experience) | Wenn Sie die Spracherkennung für die Erkennung und Transkription in einer individuellen Umgebung verwenden, können Sie benutzerdefinierte Akustik-, Sprach- und Aussprachemodelle erstellen, um Umgebungsgeräusche zu kompensieren oder branchenspezifisches Vokabular zu berücksichtigen. | Nein | [Ja](https://westus.cris.ai/swagger/ui/index) |
@@ -38,12 +38,15 @@ Der Speech-Dienst umfasst folgende Features. Verwenden Sie die Links in der Tabe
 | [Sprachübersetzung](speech-translation.md) | Sprachübersetzung | Die Sprachübersetzung ermöglicht Echtzeitübersetzungen in mehreren Sprachen für Ihre Anwendungen, Tools und Geräte. Verwenden Sie diesen Dienst für die Übersetzung von Sprache in Sprache und Sprache in Text. | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | Nein |
 | [Sprachassistenten](voice-assistants.md) | Sprachassistenten | Sprachassistenten, die den Speech-Dienst verwenden, ermöglichen es Entwicklern, natürliche Konversationsschnittstellen für ihre Anwendungen und Umgebungen zu erstellen, die der menschlichen Sprache nahekommen. Der Dienst für Sprachassistenten ermöglicht eine schnelle und zuverlässige Interaktion zwischen einem Gerät und einer Assistentenimplementierung über den Direct Line Speech-Kanal des Bot-Frameworks oder über benutzerdefinierte Befehle (Vorschauversion) für die Aufgabenausführung. | [Ja](voice-assistants.md) | Nein |
 
+
+[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
+
 ## <a name="try-the-speech-service"></a>Testen des Speech-Diensts
 
 Wir stellen Schnellstartanleitungen für die gängigsten Programmiersprachen bereit. Diese sind jeweils so konzipiert, dass Sie in weniger als zehn Minuten über ausführbaren Code verfügen. Die folgende Tabelle enthält die beliebtesten Schnellstartanleitungen für die einzelnen Features. Über die Navigationsleiste auf der linken Seite gelangen Sie auf Wunsch zu weiteren Programmiersprachen und Plattformen.
 
 | Spracherkennung (SDK) | Sprachsynthese (SDK) | Übersetzung (SDK) |
-| -------------------- | -------------------- | ----------------- |
+|----------------------|----------------------|-------------------|
 | [Erkennen von Sprache aus einer Audiodatei](quickstarts/speech-to-text-from-file.md) | [Synthetisieren von Sprache in eine Audiodatei](quickstarts/text-to-speech-audio-file.md) | [Übersetzen von gesprochener Sprache in Text](quickstarts/translate-speech-to-text.md) |
 | [Erkennen von Sprache mit einem Mikrofon](quickstarts/speech-to-text-from-microphone.md) | [Synthetisieren von Sprache über einen Lautsprecher](quickstarts/text-to-speech.md) | [Übersetzen von Sprache in mehrere Zielsprachen](quickstarts/translate-speech-to-text-multiple-languages.md) |
 | [Erkennen von Sprache aus einem Blobspeicher](quickstarts/from-blob.md) | [Asynchrone Synthese für lange Audioinhalte](quickstarts/text-to-speech/async-synthesis-long-form-audio.md) | [Übersetzen von Sprache in Sprache](quickstarts/translate-speech-to-speech.md) |

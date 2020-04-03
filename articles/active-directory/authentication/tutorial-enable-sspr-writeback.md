@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccc64fb8dd8bd8abc198d9bfc9d643ef618188ea
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: f3578cb1326ebd701c3f00618c19a501a1476372
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78967779"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80332140"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Tutorial: Aktivieren des Rückschreibens von Azure Active Directory-Self-Service-Kennzurücksetzungen in eine lokale Umgebung
 
@@ -51,10 +51,9 @@ Mithilfe von Azure AD Connect können Sie Benutzer, Gruppen und Anmeldeinformati
 Damit Sie das SSPR-Rückschreiben ordnungsgemäß verwenden können, müssen für das in Azure AD Connect angegebene Konto die entsprechenden Berechtigungen und Optionen festgelegt sein. Wenn Sie nicht sicher sind, welches Konto derzeit verwendet wird, öffnen Sie Azure AD Connect, und wählen Sie die Option **Aktuelle Konfiguration anzeigen** aus. Das Konto, dem Sie Berechtigungen hinzufügen müssen, wird unter **Synchronisierte Verzeichnisse** angezeigt. Für das Konto müssen die folgenden Berechtigungen und Optionen festgelegt werden:
 
 * **Zurücksetzen des Kennworts**
-* **Kennwort ändern**
 * **Schreibberechtigungen** auf `lockoutTime`
 * **Schreibberechtigungen** auf `pwdLastSet`
-* **Erweiterte Rechte** für eines der folgenden Elemente:
+* **Erweiterte Rechte** für „Abgelaufenes Kennwort wiederherstellen“ für:
    * Das Stammobjekt von *jeder Domäne* in dieser Gesamtstruktur
    * Der Benutzerorganisationseinheiten, für die SSPR möglich sein soll
 
@@ -69,7 +68,6 @@ Um die entsprechenden Berechtigungen für das Kennwortrückschreiben einzurichte
 1. Wählen Sie unter **Prinzipal** das Konto aus, auf das die Berechtigungen angewendet werden sollen (das von Azure AD Connect verwendete Konto).
 1. Wählen Sie in der Dropdownliste **Gilt für** den Eintrag **Nachfolgerbenutzerobjekte** aus.
 1. Aktivieren Sie unter *Berechtigungen* die Kontrollkästchen für folgende Optionen:
-    * **Kennwort ändern**
     * **Zurücksetzen des Kennworts**
 1. Aktivieren Sie unter *Eigenschaften* die Kontrollkästchen für folgende Optionen. Sie müssen durch die Liste scrollen, um zu diesen Optionen zu gelangen. Möglicherweise sind sie bereits standardmäßig festgelegt:
     * **lockoutTime schreiben**
@@ -81,9 +79,12 @@ Um die entsprechenden Berechtigungen für das Kennwortrückschreiben einzurichte
 
 Wenn Sie Berechtigungen aktualisieren, kann es bis zu einer Stunde oder länger dauern, bis diese Berechtigungen an alle Objekte in Ihrem Verzeichnis repliziert wurden.
 
-Kennwortrichtlinien in der lokalen AD DS-Umgebung verhindern unter Umständen, dass Kennwortzurücksetzungen ordnungsgemäß verarbeitet werden. Damit Kennwortrückschreiben richtig funktioniert, muss die Gruppenrichtlinie für *Minimales Kennwortalter* auf „0“ festgelegt werden. Diese Einstellung finden Sie in `gpedit.msc` unter **Computerkonfiguration > Richtlinien > Windows-Einstellungen > Sicherheitseinstellungen > Kontorichtlinien**.
+Kennwortrichtlinien in der lokalen AD DS-Umgebung verhindern unter Umständen, dass Kennwortzurücksetzungen ordnungsgemäß verarbeitet werden. Damit Kennwortrückschreiben möglichst effizient funktioniert, muss die Gruppenrichtlinie für *Minimales Kennwortalter* auf „0“ festgelegt werden. Diese Einstellung finden Sie in `gpedit.msc` unter **Computerkonfiguration > Richtlinien > Windows-Einstellungen > Sicherheitseinstellungen > Kontorichtlinien**. 
 
 Warten Sie beim Aktualisieren der Gruppenrichtlinie, bis die aktualisierte Richtlinie repliziert wurde, oder verwenden Sie den Befehl `gpupdate /force`.
+
+> [!Note]
+> Damit Kennwörter sofort geändert werden können, muss für das Kennwortrückschreiben die Einstellung „0“ festgelegt werden. Wenn sich Benutzer aber an die lokalen Richtlinien halten und *Minimales Kennwortalter* auf einen höheren Wert als „0“ festgelegt ist, funktioniert das Kennwortrückschreiben auch nach dem Auswerten der lokalen Richtlinien noch. 
 
 ## <a name="enable-password-writeback-in-azure-ad-connect"></a>Aktivieren des Kennwortrückschreibens in Azure AD Connect
 

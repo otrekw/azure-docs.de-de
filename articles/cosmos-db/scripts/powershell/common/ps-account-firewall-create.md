@@ -1,19 +1,19 @@
 ---
-title: PowerShell-Skript zum Erstellen eines Azure Cosmos-Kontos mit IP-Firewall
-description: 'Azure PowerShell-Skriptbeispiel: Erstellen eines Azure Cosmos-Kontos mit IP-Firewall'
+title: PowerShell-Skript zum Erstellen eines Azure Cosmos DB-Kontos mit IP-Firewall
+description: 'Azure PowerShell-Skriptbeispiel: Erstellen eines Azure Cosmos DB-Kontos mit IP-Firewall'
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 09/20/2019
+ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: 6f018815bb8afd50bd9f21f8c088fd688ace1174
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f01e8e818a1b3cf4f999afa1e0801b2341ede2bf
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75445083"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365670"
 ---
-# <a name="create-an-azure-cosmos-account-with-ip-firewall"></a>Erstellen eines Azure Cosmos-Kontos mit IP-Firewall
+# <a name="create-an-azure-cosmos-db-account-with-ip-firewall"></a>Erstellen eines Azure Cosmos DB-Kontos mit IP-Firewall
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -40,10 +40,9 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | Get-Help | Notizen |
 |---|---|
-|**Azure-Ressourcen**| |
-| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | Dient zum Erstellen einer Ressource. |
+|**Azure Cosmos DB**| |
+| [New-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Erstellt ein neues Cosmos DB-Konto. |
 |**Azure-Ressourcengruppen**| |
-| [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 |||
 

@@ -14,18 +14,18 @@ ms.workload: infrastructure
 ms.date: 11/05/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 894fa2f3cda798a409db3ee8e9761c1702baf955
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: bc1dd56cd024ee65e29f227f4ec11cde436e388d
+ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/26/2020
-ms.locfileid: "79216128"
+ms.locfileid: "80294780"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Schnellstart: Erstellen eines virtuellen Linux-Computers im Azure-Portal
 
 Virtuelle Azure-Computer (VMs) können über das Azure-Portal erstellt werden. Das Azure-Portal ist eine browserbasierte Benutzeroberfläche, über die Sie Azure-Ressourcen erstellen können. In dieser Schnellstartanleitung wird gezeigt, wie Sie über das Azure-Portal einen virtuellen Linux-Computer unter Ubuntu 18.04 LTS bereitstellen. Wenn Sie den virtuellen Computer in Aktion sehen möchten, stellen Sie eine SSH-Verbindung mit dem virtuellen Computer her und installieren den NGINX-Webserver.
 
-Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="create-ssh-key-pair"></a>Erstellen eines SSH-Schlüsselpaars
 
@@ -89,7 +89,7 @@ Stellen Sie eine SSH-Verbindung mit dem virtuellen Computer her.
     ssh azureuser@10.111.12.123
     ```
 
-3. Verwenden Sie die gleiche Bash-Shell, die Sie auch zum Erstellen Ihres SSH-Schlüsselpaars verwendet haben. (Sie können Cloud Shell wieder öffnen, und zwar durch erneutes Auswählen von `>_` oder Aufrufen von https://shell.azure.com/bash) Fügen Sie dann den SSH-Verbindungsbefehl ein, um eine SSH-Sitzung zu erstellen.
+3. Verwenden Sie die gleiche Bash-Shell, die Sie auch zum Erstellen Ihres SSH-Schlüsselpaars verwendet haben. (Sie können Cloud Shell wieder öffnen, und zwar durch erneutes Auswählen von `>_` oder Aufrufen von `https://shell.azure.com/bash`.) Fügen Sie dann den SSH-Verbindungsbefehl ein, um eine SSH-Sitzung zu erstellen.
 
 ## <a name="install-web-server"></a>Installieren des Webservers
 

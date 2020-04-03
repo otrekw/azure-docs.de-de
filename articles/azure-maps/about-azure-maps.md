@@ -1,20 +1,20 @@
 ---
 title: Übersicht | Microsoft Azure Maps
 description: Hier finden Sie Informationen zu Diensten und Funktionen in Microsoft Azure Maps sowie zur Verwendung in Ihren Anwendungen.
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 01/15/2020
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 411ffb9c05b0f6b4d8b7d37a11d0838c8734ec5e
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: fdac12350db785e6194cd3d057f4d2adfefa5969
+ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79079805"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80335729"
 ---
 # <a name="what-is-azure-maps"></a>Was ist Azure Maps?
 
@@ -171,7 +171,7 @@ Für den Zugriff auf die Azure Maps-Dienste navigieren Sie zum [Azure-Portal](ht
 
 Für Azure Maps wird ein schlüsselbasiertes Authentifizierungsschema verwendet. Für Ihr Konto wurden bereits zwei Schlüssel generiert. Verwenden Sie einen dieser Schlüssel. Beginnen Sie damit, diese Standortfunktionen in Ihre Anwendung zu integrieren und Anforderungen an die Azure Maps-Dienste zu senden.
 
-Hinweis: Azure Maps gibt vom Kunden bereitgestellte Adress- oder Standortabfragen („Abfragen“) für die Zuordnungsfunktionalität an den Drittanbieter TomTom weiter. Abfragen sind nicht mit einem Kunden oder einem Endbenutzer verknüpft, wenn sie für TomTom freigegeben werden, und können nicht zur Identifizierung von Einzelpersonen verwendet werden. Microsoft ist derzeit dabei, TomTom zur Liste der Onlinedienstzulieferer hinzuzufügen. Beachten Sie, dass sich die Mobilitäts- und Wetterdienste, die die Integration in Moovit und AccuWeather beinhalten, derzeit in der [VORSCHAUPHASE](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) befinden.
+Hinweis: Azure Maps gibt vom Kunden bereitgestellte Adress- oder Standortabfragen („Abfragen“) für die Zuordnungsfunktionalität an den Drittanbieter TomTom weiter. Abfragen werden nicht mit Kunden oder Endbenutzern verknüpft, wenn sie für TomTom bereitgestellt werden, und können nicht für die Identifikation von Personen verwendet werden. Microsoft ist derzeit dabei, TomTom zur Liste der Onlinedienstzulieferer hinzuzufügen. Beachten Sie, dass sich die Mobilitäts- und Wetterdienste, die die Integration in Moovit und AccuWeather beinhalten, derzeit in der [VORSCHAUPHASE](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) befinden.
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 

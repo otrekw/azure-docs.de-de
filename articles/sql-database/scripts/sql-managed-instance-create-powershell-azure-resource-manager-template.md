@@ -1,6 +1,6 @@
 ---
 title: 'Vorlagenbeispiel: Erstellen einer verwalteten Instanz in Azure SQL-Datenbank'
-description: Azure PowerShell-Beispielskript zum Erstellen einer verwalteten Instanz in Azure SQL-Datenbank
+description: Verwenden Sie dieses Azure PowerShell-Beispielskript zum Erstellen einer verwalteten Instanz in Azure SQL-Datenbank.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: be6aa73fe72568e9762e5b7249bedc2e8c7d3bf7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a349be9ada756742f5fd5ba4819caa1d2a2d3268
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73691438"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80373166"
 ---
 # <a name="use-powershell-with-azure-resource-manager-template-to-create-a-managed-instance-in-azure-sql-database"></a>Verwenden von PowerShell mit einer Azure Resource Manager-Vorlage zum Erstellen einer verwalteten Instanz in Azure SQL-Datenbank
 
