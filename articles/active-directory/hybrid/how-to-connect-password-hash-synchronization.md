@@ -9,18 +9,18 @@ ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/02/2019
+ms.date: 02/26/2020
 ms.subservice: hybrid
 ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 405b2fb9d9b8ef3bce17a9370ac87592a3437026
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: c41b11ab65f5710d338ce0041579e1eb4678ec42
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585950"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331365"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 In diesem Artikel finden Sie alle Informationen, die Sie benötigen, um Benutzerkennwörter aus einer lokalen Active Directory-Instanz mit einer cloudbasierten Azure Active Directory-Instanz (Azure AD) zu synchronisieren.
@@ -57,7 +57,7 @@ Im folgenden Abschnitt wird ausführlich beschrieben, wie die Kennworthashsynchr
 4. Der Kennworthashsynchronisierungs-Agent erweitert den binären 16-Byte-Kennworthash auf 64 Bytes, indem zunächst der Hash in eine hexadezimale 32-Byte-Zeichenfolge umgewandelt wird, die anschließend mithilfe der UTF-16-Codierung wieder in das Binärformat konvertiert wird.
 5. Der Kennworthashsynchronisierungs-Agent fügt der 64-Byte-Binärdatei einen benutzerspezifischen Salt-Wert mit einer Länge von zehn Bytes hinzu, um den ursprünglichen Hash noch besser zu schützen.
 6. Anschließend kombiniert der Kennworthashsynchronisierungs-Agent den MD4-Hash mit dem benutzerspezifischen Salt-Wert und gibt das Ergebnis in die Funktion [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) ein. Hierzu werden 1.000 Iterationen des mit [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) verschlüsselten Hashalgorithmus verwendet. 
-7. Der Kennworthashsynchronisierungs-Agent verwendet den resultierenden 32-Byte-Hash, verkettet sowohl den benutzerspezifischen Salt-Wert als auch die Anzahl von SHA256-Iterationen damit (für die Verwendung durch Azure AD) und überträgt die Zeichenfolge anschließend von Azure AD Connect per SSL an Azure AD.</br> 
+7. Der Kennworthashsynchronisierungs-Agent verwendet den resultierenden 32-Byte-Hash, verkettet sowohl den benutzerspezifischen Salt-Wert als auch die Anzahl von SHA256-Iterationen damit (für die Verwendung durch Azure AD) und überträgt die Zeichenfolge anschließend von Azure AD Connect per TLS an Azure AD.</br> 
 8. Wenn ein Benutzer sich bei Azure AD anzumelden versucht und sein Kennwort eingibt, durchläuft das Kennwort denselben aus MD4+Salt+PBKDF2+HMAC-SHA256 bestehenden Prozess. Wenn der resultierende Hash dem in Azure AD gespeicherten Hash entspricht, hat der Benutzer das richtige Kennwort eingegeben, woraufhin er authentifiziert wird.
 
 > [!NOTE]
@@ -124,6 +124,7 @@ Nachteil: Wenn synchronisierte Konten vorhanden sind, die in Azure AD nicht abla
 
 > [!NOTE]
 > Dieses Feature befindet sich derzeit in der öffentlichen Vorschauphase.
+> Der PowerShell-Befehl „Set-MsolPasswordPolicy“ funktioniert nicht in Verbunddomänen. 
 
 #### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Öffentliche Vorschau der Synchronisierung von temporären Kennwörtern und Erzwingung der Änderung des Kennworts bei der nächsten Anmeldung
 
@@ -136,10 +137,10 @@ Wenn Sie in Azure AD temporäre Kennwörter für synchronisierte Benutzer unter
 `Set-ADSyncAADCompanyFeature  -ForcePasswordChangeOnLogOn $true`
 
 > [!NOTE]
-> Wenn ein Benutzer gezwungen wird, sein Kennwort bei der nächsten Anmeldung zu ändern, muss gleichzeitig eine Kennwortänderung vorgenommen werden.  AD Connect wählt das Flag zum Erzwingen der Kennwortänderung nicht selbst aus. Es ist eine Ergänzung zur erkannten Kennwortänderung, die bei der Kennworthashsynchronisierung erfolgt.
+> Wenn ein Benutzer gezwungen wird, sein Kennwort bei der nächsten Anmeldung zu ändern, muss gleichzeitig eine Kennwortänderung vorgenommen werden.  Azure AD Connect wählt das Flag zum Erzwingen der Kennwortänderung nicht selbst aus. Es ist eine Ergänzung zur erkannten Kennwortänderung, die bei der Kennworthashsynchronisierung erfolgt.
 
 > [!CAUTION]
-> Wenn Sie die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) in Azure AD nicht aktivieren, führt dies bei Benutzern zu einer verwirrenden Erfahrung, wenn sie ihr Kennwort in Azure AD zurücksetzen und dann versuchen, sich mit dem neuen Kennwort bei Active Directory anzumelden, weil das neue Kennwort in Active Directory nicht gültig ist. Sie sollten dieses Feature nur verwenden, wenn SSPR und Kennwortrückschreiben für den Mandanten aktiviert sind.
+> Sie sollten dieses Feature nur verwenden, wenn SSPR und Kennwortrückschreiben für den Mandanten aktiviert sind.  Auf diese Weise wird ein Benutzer, der sein Kennwort über SSPR ändert, mit Active Directory synchronisiert.
 
 > [!NOTE]
 > Dieses Feature befindet sich derzeit in der Public Preview-Phase.

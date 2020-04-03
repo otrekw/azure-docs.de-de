@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 2cf682a404154b9c1bb94680b3adb673892c1c72
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: eb0a2b2778b3217e185b9883def6eaa54674cc5b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566475"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79137902"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Indizieren von räumlichen Daten mit Azure Cosmos DB
 
@@ -25,6 +25,44 @@ Wenn Sie eine Indizierungsrichtlinie angeben, die einen räumlichen Index für �
 > Azure Cosmos DB unterstützt die Indizierung von Punkten, Linienfolgen (LineStrings), Polygonen und Multipolygonen.
 >
 >
+
+## <a name="modifying-geospatial-data-type"></a>Ändern des räumlichen Datentyps
+
+In Ihrem Container gibt `geospatialConfig` an, wie die räumlichen Daten indiziert werden. Sie sollten eine `geospatialConfig` pro Container angeben: „geography“ oder „geometry“. Ohne Angabe wird `geospatialConfig` standardmäßig auf den geography-Datentyp festgelegt. Wenn Sie `geospatialConfig` ändern, werden alle vorhandenen räumlichen Daten im Container neu indiziert.
+
+> [!NOTE]
+> Azure Cosmos DB unterstützt derzeit Änderungen von „geospatialConfig“ im .NET SDK nur in Version 3.6 und höher.
+>
+
+Das folgende Beispiel veranschaulicht, wie der räumliche Datentyp in `geometry` geändert wird, indem die `geospatialConfig`-Eigenschaft festgelegt und eine **boundingBox** hinzugefügt wird:
+
+```csharp
+    //Retrieve the container's details
+    ContainerResponse containerResponse = await client.GetContainer("db", "spatial").ReadContainerAsync();
+    //Set GeospatialConfig to Geometry
+    GeospatialConfig geospatialConfig = new GeospatialConfig(GeospatialType.Geometry);
+    containerResponse.Resource.GeospatialConfig = geospatialConfig;
+    // Add a spatial index including the required boundingBox
+    SpatialPath spatialPath = new SpatialPath
+            {  
+                Path = "/locations/*",
+                BoundingBox = new BoundingBoxProperties(){
+                    Xmin = 0,
+                    Ymin = 0,
+                    Xmax = 10,
+                    Ymax = 10
+                }
+            };
+    spatialPath.SpatialTypes.Add(SpatialType.Point);
+    spatialPath.SpatialTypes.Add(SpatialType.LineString);
+    spatialPath.SpatialTypes.Add(SpatialType.Polygon);
+    spatialPath.SpatialTypes.Add(SpatialType.MultiPolygon);
+
+    containerResponse.Resource.IndexingPolicy.SpatialIndexes.Add(spatialPath);
+
+    // Update container with changes
+    await client.GetContainer("db", "spatial").ReplaceContainerAsync(containerResponse.Resource);
+```
 
 ## <a name="geography-data-indexing-examples"></a>Beispiele für die Indizierung räumlicher Daten
 
@@ -58,11 +96,64 @@ Der folgende JSON-Codeausschnitt zeigt eine Indizierungsrichtlinie mit aktiviert
 
 > [!NOTE]
 > Wenn der GeoJSON-Wert "location" innerhalb des Dokuments fehlerhaft oder ungültig ist, wird er nicht für räumliche Abfragen indiziert. Sie können Werte von "location" mit ST_ISVALID und ST_ISVALIDDETAILED überprüfen.
->
->
->
 
 Sie können die Indizierungsrichtlinie mit der Azure-Befehlszeilenschnittstelle, PowerShell oder einem beliebigen SDK [ändern](how-to-manage-indexing-policy.md).
+
+## <a name="geometry-data-indexing-examples"></a>Beispiele für die Indizierung geometrischer Daten
+
+Beim **geometry**-Datentyp müssen Sie ähnlich wie beim geography-Datentyp relevante Pfade und Typen angeben, die indiziert werden sollen. Darüber hinaus müssen Sie eine `boundingBox` in der Indizierungsrichtlinie angeben, um den gewünschten Bereich anzugeben, der für den betreffenden Pfad indiziert werden soll. Für jeden räumlichen Pfad ist eine eigene `boundingBox` erforderlich.
+
+Der Begrenzungsrahmen umfasst folgende Eigenschaften:
+
+- **xmin**: die minimale indizierte x-Koordinate
+- **ymin**: die minimale indizierte y-Koordinate
+- **xmax**: die maximale indizierte x-Koordinate
+- **ymax**: die maximale indizierte y-Koordinate
+
+Ein Begrenzungsrahmen ist erforderlich, da geometrische Daten auf einer Ebene liegen, die unendlich sein kann. Für räumliche Indizes ist jedoch ein endlicher Raum erforderlich. Beim **geography**-Datentyp ist die Erde die Begrenzung, sodass Sie keinen Begrenzungsrahmen festlegen müssen.
+
+Sie sollten einen Begrenzungsrahmen erstellen, der alle (oder die meisten) Ihrer Daten enthält. Nur Vorgänge, die mit Objekten berechnet werden, die vollständig im Begrenzungsrahmen liegen, nutzen den räumlichen Index. Sie sollten den Begrenzungsrahmen nicht wesentlich größer als notwendig machen, da sich dies negativ auf die Abfrageleistung auswirkt.
+
+Nachstehend finden Sie ein Beispiel für eine Indizierungsrichtlinie, die **geometry**-Daten indiziert, wobei **geospatialConfig** auf `geometry` festgelegt ist:
+
+```json
+ {
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+        {
+            "path": "/*"
+        }
+    ],
+    "excludedPaths": [
+        {
+            "path": "/\"_etag\"/?"
+        }
+    ],
+    "spatialIndexes": [
+        {
+            "path": "/locations/*",
+            "types": [
+                "Point",
+                "LineString",
+                "Polygon",
+                "MultiPolygon"
+            ],
+            "boundingBox": {
+                "xmin": -10,
+                "ymin": -20,
+                "xmax": 10,
+                "ymax": 20
+            }
+        }
+    ]
+}
+```
+
+Die obige Indizierungsrichtlinie verfügt über eine **boundingBox** von (-10, 10) für die x-Koordinaten und (-20, 20) für die y-Koordinaten. Der Container mit der obigen Indizierungsrichtlinie indiziert alle Point-, Polygon-, MultiPolygon- und LineString-Objekte, die vollständig in diesem Bereich liegen.
+
+> [!NOTE]
+> Wenn Sie versuchen, eine Indizierungsrichtlinie mit einer **boundingBox** einem Container mit dem Datentyp `geography` hinzuzufügen, tritt ein Fehler auf. Vor dem Hinzufügen einer **boundingBox** sollten Sie die **geospatialConfig** des Containers in `geometry` ändern. Sie können Daten hinzufügen und den Rest der Indizierungsrichtlinie (z. B. Pfade und Typen) vor oder nach Auswahl des räumlichen Datentyps für den Container ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

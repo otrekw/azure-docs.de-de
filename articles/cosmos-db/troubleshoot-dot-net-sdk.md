@@ -3,17 +3,17 @@ title: Diagnostizieren und Behandeln von Problemen bei Verwendung des .NET SDK f
 description: Verwenden Sie Features wie clientseitige Protokollierung und andere Tools von Drittanbietern, um bei Verwenden des .NET SDK Probleme im Zusammenhang mit Azure Cosmos DB zu erkennen, zu diagnostizieren und zu beheben.
 author: j82w
 ms.service: cosmos-db
-ms.date: 05/28/2019
+ms.date: 03/11/2020
 ms.author: jawilley
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 51b37c43b94ad59090f32af0d57bbefaa57f30fa
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 5f92d98630c6fb875babeb907f92732b0c24bb52
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932554"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79137953"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostizieren und Behandeln von Problemen bei Verwendung des .NET SDK für Azure Cosmos DB
 Dieser Artikel behandelt allgemeine Probleme, Problemumgehungen, Diagnoseschritte und Tools bei der Verwendung des [.NET SDK](sql-api-sdk-dotnet.md) mit Azure Cosmos DB-SQL-API-Konten.
@@ -22,20 +22,20 @@ Das .NET SDK bietet eine clientseitige logische Darstellung für den Zugriff auf
 ## <a name="checklist-for-troubleshooting-issues"></a>Checkliste für die Problembehandlung:
 Gehen Sie die folgende Prüfliste durch, bevor Sie Ihre Anwendung in die Produktion überführen. Mithilfe der Prüfliste werden einige häufige Probleme vermieden, die möglicherweise auftreten. Sie können ein Problem auch schnell diagnostizieren, sobald es auftritt:
 
-*   Verwenden Sie das neueste [SDK](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md). SDKs in der Vorschauversion sollten nicht für die Produktion verwendet werden. Dadurch wird verhindert, dass bekannte Probleme, die bereits behoben wurden, erneut auftreten.
-*   Überprüfen Sie die [Leistungstipps](performance-tips.md), und implementieren Sie die Empfehlungen. Dadurch können Skalierungs-, Latenz- und andere Leistungsprobleme vermieden werden.
-*   Aktivieren Sie die SDK-Protokollierung, um die Problembehandlung zu unterstützen. Die Aktivierung der Protokollierung kann die Leistung beeinträchtigen, weshalb es am besten ist, sie nur für die Problembehandlung zu aktivieren. Sie können die folgenden Protokolle aktivieren:
-    *   [Protokollmetriken](monitor-accounts.md) im Azure-Portal. Metriken im Portal zeigen die Azure Cosmos DB-Telemetriedaten, die hilfreich sind, um festzustellen, ob das Problem im Zusammenhang mit Azure Cosmos DB steht oder ob es von der Clientseite kommt.
-    *   Protokollieren Sie in den Antworten des Verwaltungspunktsvorgangs die [Diagnosezeichenfolge](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet).
-    *   Protokollieren Sie in allen Abfrageantworten die [SQL-Abfragemetriken](sql-api-query-metrics.md). 
-    *   Führen Sie das Setup für die [SDK-Protokollierung]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md) aus.
+*    Verwenden Sie das neueste [SDK](sql-api-sdk-dotnet-standard.md). SDKs in der Vorschauversion sollten nicht für die Produktion verwendet werden. Dadurch wird verhindert, dass bekannte Probleme, die bereits behoben wurden, erneut auftreten.
+*    Überprüfen Sie die [Leistungstipps](performance-tips.md), und implementieren Sie die Empfehlungen. Dadurch können Skalierungs-, Latenz- und andere Leistungsprobleme vermieden werden.
+*    Aktivieren Sie die SDK-Protokollierung, um die Problembehandlung zu unterstützen. Die Aktivierung der Protokollierung kann die Leistung beeinträchtigen, weshalb es am besten ist, sie nur für die Problembehandlung zu aktivieren. Sie können die folgenden Protokolle aktivieren:
+    *    [Protokollmetriken](monitor-accounts.md) im Azure-Portal. Metriken im Portal zeigen die Azure Cosmos DB-Telemetriedaten, die hilfreich sind, um festzustellen, ob das Problem im Zusammenhang mit Azure Cosmos DB steht oder ob es von der Clientseite kommt.
+    *    Protokollieren Sie die [DiagnosticsString](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring)-Eigenschaft im V2 SDK oder die [Diagnostics](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics)-Eigenschaft im V3 SDK in den Antworten der Punktoperationen.
+    *    Protokollieren Sie in allen Abfrageantworten die [SQL-Abfragemetriken](sql-api-query-metrics.md). 
+    *    Führen Sie das Setup für die [SDK-Protokollierung]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md) aus.
 
 Sehen Sie sich den Abschnitt [Häufig auftretende Probleme und Problemumgehungen](#common-issues-workarounds) in diesem Artikel an.
 
 Überprüfen Sie den [Problemabschnitt auf GitHub](https://github.com/Azure/azure-cosmos-dotnet-v2/issues), der aktiv überwacht wird. Überprüfen Sie, ob Sie ein ähnliches Problem finden, für das bereits eine Problemumgehung dokumentiert wurde. Wenn Sie keine Lösung gefunden haben, legen Sie ein GitHub-Problem an. Bei dringenden Problemen können Sie ein Supportticket öffnen.
 
 
-## <a name="common-issues-workarounds"></a>Häufig auftretende Probleme und Problemumgehungen
+## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>Häufig auftretende Probleme und Problemumgehungen
 
 ### <a name="general-suggestions"></a>Allgemeine Empfehlungen
 * Führen Sie Ihre App nach Möglichkeit in der gleichen Azure-Region wie Ihr Azure Cosmos DB-Konto aus. 
@@ -44,13 +44,13 @@ Sehen Sie sich den Abschnitt [Häufig auftretende Probleme und Problemumgehungen
 ### <a name="check-the-portal-metrics"></a>Überprüfen der Metriken im Portal
 Das Überprüfen der [Metriken im Portal](monitor-accounts.md) hilft festzustellen, ob es sich um ein Problem auf Clientseite handelt oder ob es ein Problem mit dem Dienst gibt. Wenn die Metriken beispielsweise viele Anforderungen mit Ratenbegrenzungen aufweisen (HTTP-Statuscode 429), bedeutet dies, dass die Anforderung gedrosselt wird. Siehe dann den Abschnitt [Anforderungsrate zu hoch]. 
 
-### <a name="request-timeouts"></a>Timeouts von Anforderungen
-Ein Timeout einer Anforderung tritt in der Regel bei Verwenden von Direkt-/TCP-Verbindungen auf, kann aber auch im Gatewaymodus auftreten. Es folgen die gängigen bekannten Ursachen und Vorschläge zur Behebung des Problems.
+### <a name="requests-timeouts"></a><a name="request-timeouts"></a>Timeouts von Anforderungen
+Ein Timeout einer Anforderung tritt in der Regel bei Verwenden von Direkt-/TCP-Verbindungen auf, kann aber auch im Gatewaymodus auftreten. Nachstehend sind die Fehler der häufigsten bekannten Ursachen und Vorschläge zur Behebung des Problems aufgeführt.
 
-* Die CPU-Auslastung ist hoch, was zu Wartezeiten und/oder Timeouts bei Anforderungen führt. Der Kunde kann den Hostcomputer zentral skalieren, um ihn mit mehr Ressourcen auszustatten, oder die Last auf mehrere Computer verteilen.
+* Die CPU-Auslastung ist hoch, was zu Wartezeiten und/oder Timeouts bei Anforderungen führt. Der Kunde kann den Hostcomputer hochskalieren, um ihn mit mehr Ressourcen auszustatten, oder die Last auf mehrere Computer verteilen.
 * Die Verfügbarkeit von Sockets und Ports kann niedrig sein. Bei Ausführung in Azure kann es auf Clients, die das .NET SDK verwenden, zur Azure SNAT-Portauslastung (PAT) kommen. Um die Wahrscheinlichkeit zu verringern, dass dieses Problem auftritt, verwenden Sie die neueste Version 2.x oder 3.x des .NET SDK. Dies ist ein Beispiel dafür, warum es empfehlenswert ist, immer die neueste SDK-Version zu verwenden.
 * Das Erstellen mehrerer DocumentClient-Instanzen kann zu Verbindungskonflikten und Timeoutproblemen führen. Befolgen Sie die [Leistungstipps](performance-tips.md), und verwenden Sie eine einzige „DocumentClient“-Instanz für den gesamten Prozess.
-* Benutzer beobachten mitunter erhöhte Latenzen oder Timeouts bei Anforderungen, weil ihre Sammlungen unzureichend bereitgestellt sind, das Back-End Anforderungen drosselt und der Client intern Vorgänge wiederholt, ohne dies dem Aufrufer zu melden. Überprüfen Sie die [Metriken im Portal](monitor-accounts.md).
+* Benutzer beobachten mitunter erhöhte Latenzen oder Timeouts bei Anforderungen, weil ihre Sammlungen unzureichend bereitgestellt sind, das Back-End Anforderungen drosselt und der Client intern Vorgänge wiederholt. Überprüfen Sie die [Metriken im Portal](monitor-accounts.md).
 * Azure Cosmos DB verteilt den gesamten bereitgestellten Durchsatz gleichmäßig auf die physischen Partitionen. Überprüfen Sie die Metriken im Portal, um festzustellen, ob die Workload einen sehr aktiven [Partitionsschlüssel](partition-data.md) vorfindet. Dies führt dazu, dass der gesamte in Anspruch genommene Durchsatz (Anforderungseinheiten pro Sekunde, RU/s) anscheinend unter den bereitgestellten RU/s liegt, während der von einer einzelnen Partition genutzte Durchsatz (RU/s) den bereitgestellten Durchsatz übersteigt. 
 * Zusätzlich fügt das SDK 2.0 Direkt-/TCP-Verbindungen eine Kanalsemantik hinzu. Eine TCP-Verbindung wird für mehrere Anforderungen gleichzeitig verwendet. Dies kann unter bestimmten Umständen zu zwei Problemen führen:
     * Ein hoher Grad an Parallelität kann zu Konflikten im Kanal führen.
@@ -59,26 +59,42 @@ Ein Timeout einer Anforderung tritt in der Regel bei Verwenden von Direkt-/TCP-V
         * Versuchen Sie, die Anwendung zentral/hoch zu skalieren.
         * Darüber hinaus können über den [Ablaufverfolgungslistener](https://github.com/Azure/azure-cosmosdb-dotnet/blob/master/docs/documentdb-sdk_capture_etl.md) SDK-Protokolle erfasst werden, um weitere Details zu erhalten.
 
-### <a name="connection-throttling"></a>Verbindungsdrosselung
-Eine Verbindungsdrosselung kann aufgrund eines Verbindungslimits auf dem Hostcomputer auftreten. Vor Version 2.0 konnte es auf in Azure ausgeführten Clients zur [Azure SNAT-Portauslastung (PAT)] kommen.
+### <a name="high-network-latency"></a><a name="high-network-latency"></a>Hohe Netzwerklatenz
+Eine hohe Netzwerklatenz kann mithilfe der [DiagnosticsString](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet)-Eigenschaft im V2 SDK oder der [Diagnostics](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics)-Eigenschaft im V3 SDK ermittelt werden.
 
-### <a name="snat"></a>Azure SNAT-Portauslastung (PAT)
+Wenn keine [Timeouts](#request-timeouts) vorhanden sind und die Diagnose einzelne Anforderungen zeigt, bei denen die hohe Latenz durch den Unterschied zwischen `ResponseTime` und `RequestStartTime` wie folgt ersichtlich ist (in diesem Beispiel > 300 Millisekunden):
 
-Wenn Ihre App auf einem virtuellen Azure-Computer ohne öffentliche IP-Adresse bereitgestellt wird, werden standardmäßig [Azure SNAT-Ports](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) verwendet, um Verbindungen mit beliebigen Endpunkten außerhalb Ihres virtuellen Computers herzustellen. Die Anzahl zulässiger Verbindungen des virtuellen Computers mit dem Azure Cosmos DB-Endpunkt wird durch die [Azure SNAT-Konfiguration](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#preallocatedports) eingeschränkt.
+```bash
+RequestStartTime: 2020-03-09T22:44:49.5373624Z, RequestEndTime: 2020-03-09T22:44:49.9279906Z,  Number of regions attempted:1
+ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: rntbd://..., ...
+```
 
- Azure SNAT-Ports werden nur verwendet, wenn Ihr virtueller Computer eine private IP-Adresse besitzt und ein Prozess auf dem virtuellen Computer versucht, eine Verbindung mit einer öffentlichen IP-Adresse herzustellen. Es gibt zwei Problemumgehungen, um die Einschränkung durch Azure SNAT zu vermeiden:
+Diese Latenz kann mehrere Ursachen haben:
 
-* Fügen Sie Ihren Azure Cosmos DB-Dienstendpunkt dem Subnetz Ihres virtuellen Netzwerks von Azure Virtual Machines hinzu. Weitere Informationen finden Sie unter [Azure Virtual Network-Dienstendpunkte](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). 
+* Die Anwendung wird nicht in der gleichen Region ausgeführt, in der sich auch Ihr Azure Cosmos DB-Konto befindet.
+* Die [PreferredLocations](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations)- oder [ApplicationRegion](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion)-Konfiguration ist falsch und versucht, eine Verbindung zu einer anderen Region herzustellen, in der die Anwendung derzeit ausgeführt wird.
+* Durch hohen Datenverkehr kann es zu einem Engpass in der Netzwerkschnittstelle kommen. Wenn die Anwendung auf virtuellen Azure-Computern ausgeführt wird, gibt es mögliche Problemumgehungen:
+    * Erwägen Sie die Erstellung eines [virtuellen Computers, auf dem der beschleunigte Netzwerkbetrieb aktiviert ist](../virtual-network/create-vm-accelerated-networking-powershell.md).
+    * Aktivieren Sie den [beschleunigten Netzwerkbetrieb auf einem vorhandenen virtuellen Computer](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms).
+    * Verwenden Sie ggf. einen [leistungsfähigeren virtuellen Computer](../virtual-machines/windows/sizes.md).
 
-    Wenn der Dienstendpunkt aktiviert ist, werden die Anforderungen nicht mehr von einer öffentlichen IP-Adresse an Azure Cosmos DB gesendet. Stattdessen wird die Identität des virtuellen Netzwerks und des Subnetzes gesendet. Diese Änderung kann zu Firewallproblemen führen, wenn nur öffentliche IP-Adressen zulässig sind. Wenn Sie eine Firewall verwenden und den Dienstendpunkt aktivieren, fügen Sie der Firewall mithilfe von [VNET-ACLs](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl) ein Subnetz hinzu.
-* Weisen Sie Ihrem virtuellen Azure-Computer eine öffentliche IP-Adresse zu.
+### <a name="azure-snat-pat-port-exhaustion"></a><a name="snat"></a>Azure SNAT-Portauslastung (PAT)
+
+Wenn Ihre App auf einem [virtuellen Azure-Computer ohne öffentliche IP-Adresse](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) bereitgestellt wird, werden standardmäßig [Azure SNAT-Ports](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) verwendet, um Verbindungen mit beliebigen Endpunkten außerhalb Ihres virtuellen Computers herzustellen. Die Anzahl zulässiger Verbindungen des virtuellen Computers mit dem Azure Cosmos DB-Endpunkt wird durch die [Azure SNAT-Konfiguration](../load-balancer/load-balancer-outbound-connections.md#preallocatedports) eingeschränkt. Diese Situation kann zu einer Bandbreiteneinschränkung der Verbindung, zum Beenden der Verbindung oder den oben erwähnten [Timeouts von Anforderungen](#request-timeouts) führen.
+
+ Azure SNAT-Ports werden nur verwendet, wenn Ihr virtueller Computer eine private IP-Adresse besitzt und eine Verbindung mit einer öffentlichen IP-Adresse hergestellt wird. Es gibt zwei Problemumgehungen, um die Azure-SNAT-Einschränkung zu vermeiden (vorausgesetzt, dass Sie bereits eine einzelne Clientinstanz für die gesamte Anwendung verwenden):
+
+* Fügen Sie Ihren Azure Cosmos DB-Dienstendpunkt dem Subnetz Ihres virtuellen Netzwerks von Azure Virtual Machines hinzu. Weitere Informationen finden Sie unter [Azure Virtual Network-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md). 
+
+    Wenn der Dienstendpunkt aktiviert ist, werden die Anforderungen nicht mehr von einer öffentlichen IP-Adresse an Azure Cosmos DB gesendet. Stattdessen wird die Identität des virtuellen Netzwerks und des Subnetzes gesendet. Diese Änderung kann zu Firewallproblemen führen, wenn nur öffentliche IP-Adressen zulässig sind. Wenn Sie eine Firewall verwenden und den Dienstendpunkt aktivieren, fügen Sie der Firewall mithilfe von [VNET-ACLs](../virtual-network/virtual-networks-acl.md) ein Subnetz hinzu.
+* Weisen Sie Ihrem [virtuellen Azure-Computer eine öffentliche IP-Adresse](../load-balancer/load-balancer-outbound-connections.md#assignilpip) zu.
 
 ### <a name="http-proxy"></a>HTTP-Proxy
 Wenn Sie einen HTTP-Proxy verwenden, vergewissern Sie sich, dass er die Anzahl von Verbindungen unterstützt, die in `ConnectionPolicy` des SDK konfiguriert ist.
 Andernfalls treten Verbindungsprobleme auf.
 
-### Anforderungsrate zu groß<a name="request-rate-too-large"></a>
-„Anforderungsrate zu groß“ oder Fehlercode 429 bedeutet, dass Ihre Anforderungen gedrosselt werden, weil der in Anspruch genommene Durchsatz (RU/s) den bereitgestellten Durchsatz überschritten hat. Das SDK wiederholt Anforderungen basierend auf der angegebenen [Wiederholungsrichtlinie](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions?view=azure-dotnet) automatisch. Wenn dieser Fehler häufig auftritt, erwägen Sie das Erhöhen des Durchsatzes für die Sammlung. Überprüfen Sie die [Metriken im Portal](use-metrics.md) auf HTTP-Fehler des Typs 429. Überprüfen Sie Ihren [Partitionsschlüssel](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview#choose-partitionkey), um sicherzustellen, dass dieser zu einer gleichmäßigen Verteilung von Speicher- und Anforderungsvolumen führt. 
+### <a name="request-rate-too-large"></a><a name="request-rate-too-large"></a>Anforderungsrate zu hoch
+„Anforderungsrate zu groß“ oder Fehlercode 429 bedeutet, dass Ihre Anforderungen gedrosselt werden, weil der in Anspruch genommene Durchsatz (RU/s) den [bereitgestellten Durchsatz](set-throughput.md) überschritten hat. Das SDK wiederholt Anforderungen basierend auf der angegebenen [Wiederholungsrichtlinie](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions?view=azure-dotnet) automatisch. Wenn dieser Fehler häufig auftritt, erwägen Sie das Erhöhen des Durchsatzes für die Sammlung. Überprüfen Sie die [Metriken im Portal](use-metrics.md) auf 429-Fehler. Überprüfen Sie Ihren [Partitionsschlüssel](partitioning-overview.md#choose-partitionkey), um sicherzustellen, dass dieser zu einer gleichmäßigen Verteilung von Speicher- und Anforderungsvolumen führt. 
 
 ### <a name="slow-query-performance"></a>Schwache Abfrageleistung
 Anhand der [Metriken zu Abfragen](sql-api-query-metrics.md) können Sie bestimmen, wo die Abfrage die meiste Zeit verbringt. Sie können erkennen, wie viel Zeit im Back-End und auf dem Client verbracht wird.
@@ -90,7 +106,7 @@ Anhand der [Metriken zu Abfragen](sql-api-query-metrics.md) können Sie bestimme
 [Enable client SDK logging]: #logging
 [Anforderungsrate zu hoch]: #request-rate-too-large
 [Request Timeouts]: #request-timeouts
-[Azure SNAT-Portauslastung (PAT)]: #snat
+[Azure SNAT (PAT) port exhaustion]: #snat
 [Production check list]: #production-check-list
 
 

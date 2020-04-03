@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cddf2ab36b2372ce93ae8a2a6230ccb02ae30117
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: f9ed613972f166f1f9955fc34e9bb640d87da6b5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721032"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331443"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Installationsübersicht: Azure AD Connect und Azure AD Connect Health
 
@@ -45,8 +45,8 @@ Den Download für Azure AD Connect finden Sie im [Microsoft Download Center](htt
 |Azure AD Connect herunterladen | [Azure AD Connect herunterladen](https://go.microsoft.com/fwlink/?LinkId=615771)|
 |Installieren mit den Express-Einstellungen | [Expressinstallation von Azure AD Connect](./how-to-connect-install-express.md)|
 |Installieren mit benutzerdefinierten Einstellungen | [Benutzerdefinierte Installation von Azure AD Connect](./how-to-connect-install-custom.md)|
-|Upgrade von DirSync | [Upgrade von Azure AD-Synchronisierungstools (DirSync)](./how-to-dirsync-upgrade-get-started.md)|
-|Nach der Installation | [Überprüfen der Installation und Zuweisen von Lizenzen ](how-to-connect-post-installation.md)|
+|Upgrade von DirSync | [Upgrade von Azure AD-Synchronisierungstools (DirSync)](./how-to-dirsync-upgrade-get-started.md)|
+|Nach der Installation | [Überprüfen der Installation und Zuweisen von Lizenzen](how-to-connect-post-installation.md)|
 
 ### <a name="learn-more-about-install-azure-ad-connect"></a>Weitere Informationen über die Installation von Azure AD Connect
 Sie sollten sich auch auf [betriebliche](how-to-connect-sync-operations.md) Probleme vorbereiten. Verwenden Sie ggf. einen Standbyserver, um im [Notfall](how-to-connect-sync-staging-server.md#disaster-recovery) problemlos ein Failover ausführen zu können. Wenn Sie häufig Konfigurationsänderungen vornehmen möchten, sollten Sie einen [Stagingmodus](how-to-connect-sync-staging-server.md) -Server einplanen.
@@ -108,7 +108,7 @@ Das synchronisierte Konfigurationsmodell wird als [deklarative Bereitstellung](c
 
 Azure AD Connect bietet mehrere Features, die die Verbunderstellung mit Azure AD unter Verwendung von AD FS sowie die Verwaltung Ihrer Verbundvertrauensstellung vereinfachen. Azure AD Connect unterstützt AD FS ab Windows Server 2012 R2.
 
-[Aktualisieren Sie das SSL-Zertifikat der AD FS-Farm](how-to-connect-fed-ssl-update.md), auch wenn Sie Azure AD nicht für die Verwaltung Ihrer Verbundvertrauensstellung verwenden.
+[Aktualisieren Sie das TLS/SSL-Zertifikat der AD FS-Farm](how-to-connect-fed-ssl-update.md), auch wenn Sie Azure AD Connect nicht für die Verwaltung Ihrer Verbundvertrauensstellung verwenden.
 
 [Fügen Sie Ihrer Farm einen AD FS-Server hinzu](how-to-connect-fed-management.md#addadfsserver), um die Farm nach Bedarf zu erweitern.
 
@@ -162,7 +162,7 @@ Das Azure AD Connect Health-Portal zeigt Warnungen, Leistungsüberwachungsdaten 
 * **Schnellstart**: Wenn Sie diese Option auswählen, wird das Blatt **Schnellstart** geöffnet. Sie können Sie den Azure AD Connect Health-Agent herunterladen, indem Sie **Tools abrufen** auswählen. Sie können auch auf die Dokumentation zugreifen und Feedback geben.
 * **Azure Active Directory Connect (Sync)** : Diese Option zeigt Ihre Azure AD Connect-Server an, die derzeit von Azure AD Connect Health überwacht werden. Der Eintrag **Synchronisierungsfehler** zeigt allgemeine Synchronisierungsfehler des ersten integrierten Synchronisierungsdiensts nach Kategorien. Wenn Sie den Eintrag **Synchronisierungsdienste** auswählen, wird ein Blatt mit Informationen zu Ihren Azure AD Connect-Servern geöffnet. Weitere Informationen zu den Funktionen finden Sie unter [Verwenden von Azure AD Connect Health für die Synchronisierung](how-to-connect-health-sync.md).
 * **Active Directory-Verbunddienste**: Diese Option zeigt alle AD FS-Dienste an, die derzeit von Azure AD Connect Health überwacht werden. Wenn Sie eine Instanz auswählen, wird ein Blatt mit Informationen zu dieser Dienstinstanz geöffnet, darunter beispielsweise eine Übersicht, Eigenschaften, Warnungen, Überwachungsinformationen und eine Nutzungsanalyse. Weitere Informationen zu den Funktionen finden Sie unter [Verwenden von Azure AD Connect Health mit AD FS](how-to-connect-health-adfs.md).
-* **Active Directory Domain Services**: Diese Option zeigt alle AD DS-Gesamtstrukturen an, die derzeit von Azure AD Connect Health überwacht werden. Wenn Sie eine Gesamtstruktur auswählen, wird ein Blatt mit Informationen zu dieser Gesamtstruktur geöffnet. Diese Informationen umfassen eine Übersicht mit den wichtigsten Informationen, das Domänencontroller-Dashboard, das Replikationsstatus-Dashboard, Warnungen und Überwachungsdaten. Weitere Informationen zu den Funktionen finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](how-to-connect-health-adds.md).
+* **Active Directory Domain Services:** Diese Option zeigt alle AD DS-Gesamtstrukturen an, die derzeit von Azure AD Connect Health überwacht werden. Wenn Sie eine Gesamtstruktur auswählen, wird ein Blatt mit Informationen zu dieser Gesamtstruktur geöffnet. Diese Informationen umfassen eine Übersicht mit den wichtigsten Informationen, das Domänencontroller-Dashboard, das Replikationsstatus-Dashboard, Warnungen und Überwachungsdaten. Weitere Informationen zu den Funktionen finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](how-to-connect-health-adds.md).
 * **Konfigurieren**: In diesem Abschnitt können Sie folgende Optionen aktivieren oder deaktivieren:
 
    - **Automatisches Update** des Azure AD Connect Health-Agents auf die aktuelle Version: Der Azure AD Connect Health-Agent wird automatisch aktualisiert, wenn neue Versionen verfügbar sind. Diese Option ist standardmäßig aktiviert.

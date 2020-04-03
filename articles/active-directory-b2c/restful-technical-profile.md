@@ -8,31 +8,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/03/2020
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4638b5bfc3ff31d0d2149e7ee227c46d3360a306
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 410f413fc8450c0ee33c3ca95e860a3e8de34107
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78254987"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80332605"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen RESTful-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) bietet Unterstützung für Ihren eigenen RESTful-Dienst. Azure AD B2C sendet Daten an den RESTful-Dienst in einer Sammlung von Eingabeansprüchen und erhält Daten in einer Sammlung von Ausgabeansprüchen zurück. Mit der RESTful-Dienstintegration haben Sie folgende Möglichkeiten:
-
-- **Überprüfen von Benutzereingabedaten:** verhindert, dass falsch formatierte Daten in Azure AD B2C beibehalten werden. Wenn der Wert des Benutzers nicht gültig ist, gibt Ihr RESTful-Dienst eine Fehlermeldung zurück, in der der Benutzer angewiesen wird, einen Eintrag anzugeben. Beispielsweise können Sie überprüfen, ob die vom Benutzer angegebene E-Mail-Adresse in Ihrer Kundendatenbank vorhanden ist.
-- **Überschreiben von Eingabeansprüchen:** ermöglicht das Neuformatieren von Werten in Eingabeansprüchen. Wenn z.B. ein Benutzer den Vornamen vollständig in Kleinbuchstaben oder Großbuchstaben eingibt, können Sie den Namen so formatieren, dass nur der erste Buchstabe groß geschrieben wird.
-- **Erweitern von Benutzerdaten:** ermöglicht eine stärkere Integration in die Branchenanwendungen eines Unternehmens. Ihr RESTful-Dienst kann z.B. die E-Mail-Adresse des Benutzers empfangen, die Kundendatenbank abfragen und die Treuenummer des Benutzers an Azure AD B2C zurückgeben. Die Rückgabeansprüche können gespeichert, in den nächsten Orchestrierungsschritten ausgewertet oder in das Zugriffstoken eingebunden werden.
-- **Ausführen von benutzerdefinierter Geschäftslogik:** Sie können Pushbenachrichtigungen senden, Unternehmensdatenbanken aktualisieren, einen Benutzermigrationsprozess durchführen, Berechtigungen verwalten, Datenbanken überwachen und andere Aktionen ausführen.
-
-Die Richtlinie kann Eingabeansprüche an Ihre REST-API senden. Die REST-API kann auch Ausgabeansprüche zurückgeben, die Sie später in Ihrer Richtlinie verwenden können, oder sie kann eine Fehlermeldung ausgeben. Sie können die Integration in die RESTful-Dienste auf folgende Weise entwerfen:
-
-- **Technisches Validierungsprofil:** ruft den RESTful-Dienst auf. Mit dem technischen Validierungsprofil werden die vom Benutzer bereitgestellten Daten überprüft, bevor die User Journey fortgesetzt wird. Mit dem technischen Validierungsprofil wird eine Fehlermeldung auf einer Seite mit Selbstbestätigung angezeigt und in Ausgabeansprüche zurückgegeben.
-- **Anspruchsaustausch:** Aufrufe an den RESTful-Dienst erfolgen über einen Orchestrierungsschritt. In diesem Szenario gibt es keine Benutzeroberfläche zum Darstellen der Fehlermeldung. Wenn Ihre REST-API einen Fehler zurückgibt, wird der Benutzer zusammen mit der Fehlermeldung zurück zur Anwendung der vertrauenden Seite umgeleitet.
+Azure Active Directory B2C (Azure AD B2C) bietet Unterstützung für die Integration Ihres eigenen RESTful-Diensts. Azure AD B2C sendet Daten an den RESTful-Dienst in einer Sammlung von Eingabeansprüchen und erhält Daten in einer Sammlung von Ausgabeansprüchen zurück. Weitere Informationen finden Sie unter [Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre benutzerdefinierte Azure AD B2C-Richtlinie](custom-policy-rest-api-intro.md).  
 
 ## <a name="protocol"></a>Protocol
 
@@ -132,6 +122,7 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 | DebugMode | Nein | Führt das technische Profil im Debugmodus aus. Mögliche Werte sind `true` oder `false` (Standardwert). Im Debugmodus kann die REST-API mehr Informationen zurückgeben. Die entsprechenden Informationen finden Sie im Abschnitt [Zurückgegebene Fehlermeldung](#returning-error-message). |
 | IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
 | ResolveJsonPathsInJsonTokens  | Nein | Gibt an, ob das technische Profil JSON-Pfade auflöst. Mögliche Werte sind `true` oder `false` (Standardwert). Verwenden Sie diese Metadaten, um Daten aus einem geschachtelten JSON-Element zu lesen. Legen Sie in einem Ausgabeanspruch ([OutputClaim](technicalprofiles.md#outputclaims)) den Partneranspruchstyp (`PartnerClaimType`) auf das auszugebende JSON-Pfadelement fest. Beispiel: `firstName.localized` oder `data.0.to.0.email`|
+| UseClaimAsBearerToken| Nein| Der Name des Anspruchs, der das Bearertoken enthält.|
 
 ## <a name="cryptographic-keys"></a>Kryptografische Schlüssel
 
@@ -176,7 +167,7 @@ Das folgende Beispiel zeigt ein technisches Profil mit Standardauthentifizierung
 
 Wenn als Typ der Authentifizierung `ClientCertificate` festgelegt ist, enthält das **CryptographicKeys**-Element das folgende Attribut:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ClientCertificate | Ja | Das X509 Zertifikat (RSA-Schlüsselsatz) für die Authentifizierung. |
 
@@ -218,19 +209,7 @@ Wenn als Typ der Authentifizierung `Bearer` festgelegt ist, enthält das **Crypt
 
 ## <a name="returning-error-message"></a>Zurückgegebene Fehlermeldung
 
-Ihre REST-API muss möglicherweise eine Fehlermeldung zurückgeben (z.B. „Der Benutzer wurde nicht im CRM-System gefunden“). Wenn ein Fehler auftritt, sollte die REST-API einen HTTP-Fehler mit dem Antwort- oder Statuscode „409 Conflict“ (Konflikt) mit folgenden Attributen zurückgeben:
-
-| attribute | Erforderlich | BESCHREIBUNG |
-| --------- | -------- | ----------- |
-| version | Ja | 1.0.0 |
-| status | Ja | 409 |
-| code | Nein | Ein Fehlercode vom RESTful-Endpunktanbieter, der angezeigt wird, wenn `DebugMode` aktiviert ist. |
-| requestId | Nein | Eine Anforderungs-ID vom RESTful-Endpunktanbieter, die angezeigt wird, wenn `DebugMode` aktiviert ist. |
-| userMessage | Ja | Eine Fehlermeldung, die dem Benutzer angezeigt wird. |
-| developerMessage | Nein | Die ausführliche Beschreibung des Problems und Informationen zur Behebung, die angezeigt werden, wenn `DebugMode` aktiviert ist. |
-| moreInfo | Nein | Ein URI, der auf zusätzliche Informationen verweist, die angezeigt werden, wenn `DebugMode` aktiviert ist. |
-
-Das folgende Beispiel zeigt eine REST-API, die eine JSON-formatierte Fehlermeldung zurückgibt:
+Ihre REST-API muss möglicherweise eine Fehlermeldung zurückgeben (z.B. „Der Benutzer wurde nicht im CRM-System gefunden“). Wenn ein Fehler auftritt, sollte die REST-API eine HTTP-Fehlermeldung mit dem Antwortstatuscode 4xx zurückgeben, z B. 400 (Ungültige Anforderung) oder 409 (Konflikt). Der Antworttext enthält eine Fehlermeldung im JSON-Format:
 
 ```JSON
 {
@@ -243,6 +222,17 @@ Das folgende Beispiel zeigt eine REST-API, die eine JSON-formatierte Fehlermeldu
   "moreInfo": "https://restapi/error/API12345/moreinfo"
 }
 ```
+
+| attribute | Erforderlich | BESCHREIBUNG |
+| --------- | -------- | ----------- |
+| version | Ja | Die Version Ihrer REST-API. Beispiel: 1.0.1 |
+| status | Ja | Muss 409 sein |
+| code | Nein | Ein Fehlercode vom RESTful-Endpunktanbieter, der angezeigt wird, wenn `DebugMode` aktiviert ist. |
+| requestId | Nein | Eine Anforderungs-ID vom RESTful-Endpunktanbieter, die angezeigt wird, wenn `DebugMode` aktiviert ist. |
+| userMessage | Ja | Eine Fehlermeldung, die dem Benutzer angezeigt wird. |
+| developerMessage | Nein | Die ausführliche Beschreibung des Problems und Informationen zur Behebung, die angezeigt werden, wenn `DebugMode` aktiviert ist. |
+| moreInfo | Nein | Ein URI, der auf zusätzliche Informationen verweist, die angezeigt werden, wenn `DebugMode` aktiviert ist. |
+
 
 Das folgende Beispiel zeigt eine C#-Klasse, die eine Fehlermeldung zurückgibt:
 
@@ -263,7 +253,8 @@ public class ResponseContent
 
 In den folgenden Artikeln finden Sie Beispiele für die Verwendung eines technischen RESTful-Profils:
 
-- [Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey als Validierung der Benutzereingabe](rest-api-claims-exchange-dotnet.md)
-- [Schützen Ihrer RESTful-Dienste unter Verwendung der HTTP-Standardauthentifizierung](secure-rest-api-dotnet-basic-auth.md)
-- [Schützen Ihres RESTful-Diensts mit Clientzertifikaten](secure-rest-api-dotnet-certificate-auth.md)
-- [Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey als Validierung der Benutzereingabe](custom-policy-rest-api-claims-validation.md)
+- [Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre benutzerdefinierte Azure AD B2C-Richtlinie](custom-policy-rest-api-intro.md)
+- [Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey zur Validierung der Benutzereingabe](custom-policy-rest-api-claims-validation.md)
+- [Exemplarische Vorgehensweise: Hinzufügen von REST-API-Anspruchsaustauschvorgängen zu benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-rest-api-claims-validation.md)
+- [Sichern von REST-API-Diensten](secure-rest-api.md)
+

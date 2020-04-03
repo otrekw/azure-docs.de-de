@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d8f1bbd79e6dcbbd75e1ea1b98bd211d77ed1a9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 983470994c103cb25d0d2aff96ae8544080e6288
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275447"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481295"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Aktivieren des Remotezugriffs auf SharePoint per Azure AD-Anwendungsproxy
 
@@ -161,7 +161,7 @@ Da die interne URL das HTTPS-Protokoll (`https://SharePoint/`) verwendet, muss a
 1. Öffnen Sie die Konsole „Internetinformationsdienste-Manager“.
 1. Erweitern Sie den Server in der Strukturansicht, erweitern Sie **Websites**, wählen Sie die Website **SharePoint – AAD-Proxy** aus, und wählen Sie anschließend **Bindungen** aus.
 1. Wählen Sie **HTTPS-Bindung** und anschließend **Bearbeiten** aus.
-1. Wählen Sie im SSL-Zertifikatfeld die Zertifikatoption **SharePoint** und anschließend **OK** aus.
+1. Wählen Sie im TLS/SSL-Zertifikatfeld die Zertifikatoption **SharePoint** und anschließend **OK** aus.
 
 Nun können Sie extern über den Azure AD-Anwendungsproxy auf die SharePoint-Website zugreifen.
 

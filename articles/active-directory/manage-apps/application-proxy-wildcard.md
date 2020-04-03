@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5a9e7be5f582051e03cba08733fcbfa697cc8f5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3ad2032497b4b01476389428f5a2ef4a3961a1c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275043"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481244"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Platzhalteranwendungen im Azure Active Directory-Anwendungsproxy
 
@@ -62,7 +62,7 @@ Stellen Sie zunächst sicher, dass Sie diese Anforderungen erfüllen.
 Während [benutzerdefinierte Domänen](application-proxy-configure-custom-domain.md) für alle anderen Anwendungen optional sind, stellen Sie eine Voraussetzung für Platzhalteranwendungen dar. Zum Erstellen benutzerdefinierter Domänen müssen Sie die folgenden Schritte ausführen:
 
 1. Erstellen Sie eine überprüfte Domäne in Azure.
-1. Hochladen eines SSL-Zertifikats im PFX-Format in Ihren Anwendungsproxy
+1. Laden Sie ein TLS/SSL-Zertifikat im PFX-Format in Ihren Anwendungsproxy hoch.
 
 Erwägen Sie die Verwendung eines Platzhalterzertifikats für die Anwendung, die Sie erstellen möchten. Alternativ können Sie auch ein Zertifikat verwenden, in dem nur bestimmte Anwendungen aufgelistet werden. In diesem Fall kann über die Platzhalteranwendung nur auf die im Zertifikat aufgeführten Anwendungen zugegriffen werden.
 
@@ -158,7 +158,7 @@ Bei der Konfiguration wird die folgende Struktur implementiert:
 
 ![Zeigt die Struktur, die von der Beispielkonfiguration implementiert wird](./media/application-proxy-wildcard/05.png)
 
-| Farbe | BESCHREIBUNG |
+| Color | BESCHREIBUNG |
 | ---   | ---         |
 | Blau  | Anwendungen, die im Azure-Portal explizit veröffentlicht und angezeigt werden |
 | Grau  | Anwendungen, auf die über die übergeordnete Anwendung zugegriffen werden kann. |

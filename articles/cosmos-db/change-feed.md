@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: bf36c0697b5e30c77610d30475be20adc18810cd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 898dfe7a619981b93af98effa942fdecbeb42dde
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445592"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79368127"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Änderungsfeed in Azure Cosmos DB – Übersicht
 
@@ -42,11 +42,15 @@ Dieses Feature wird derzeit von den folgenden Azure Cosmos DB-APIs und Client-SD
 
 ## <a name="change-feed-and-different-operations"></a>Änderungsfeed und verschiedene Vorgänge
 
-Derzeit werden im Änderungsfeed alle Vorgänge angezeigt. Die Funktionalität, mit der Sie den Änderungsfeed für bestimmte Vorgänge steuern können, z.B. nur in Aktualisierungen und nicht in Einfügungen, steht noch nicht zur Verfügung. Sie können für das Element eine schwache Markierung für Aktualisierungen hinzufügen und dies bei der Verarbeitung von Elementen im Änderungsfeed entsprechend filtern. Aktuell protokollieren Änderungsfeeds keine Löschvorgänge. Ähnlich wie beim vorherigen Beispiel können Sie eine schwache Markierung für die Elemente hinzufügen, die gelöscht werden. Beispielweise können Sie im Element das Attribut „deleted“ hinzufügen und auf „true“ festlegen und eine Gültigkeitsdauer für das Element angeben, sodass es automatisch gelöscht werden kann. Sie können den Änderungsfeed nach früheren Elementen durchsuchen (der letzten Änderung, die dem Element entspricht; zwischenzeitliche Änderungen sind nicht enthalten), z.B. nach Elementen, die vor fünf Jahren hinzugefügt wurden. Sofern Elemente nicht gelöscht wurden, können Sie den Änderungsfeed bis zurück zum Ursprung des Containers lesen.
+Derzeit werden im Änderungsfeed alle Vorgänge angezeigt. Die Funktionalität, mit der Sie den Änderungsfeed für bestimmte Vorgänge steuern können, z.B. nur in Aktualisierungen und nicht in Einfügungen, steht noch nicht zur Verfügung. Sie können für das Element eine „schwache Markierung“ für Aktualisierungen hinzufügen und dies bei der Verarbeitung von Elementen im Änderungsfeed entsprechend filtern. Aktuell protokollieren Änderungsfeeds keine Löschvorgänge. Ähnlich wie beim vorherigen Beispiel können Sie eine schwache Markierung für die Elemente hinzufügen, die gelöscht werden. Beispielweise können Sie im Element das Attribut „deleted“ hinzufügen und auf „true“ festlegen und eine Gültigkeitsdauer für das Element angeben, sodass es automatisch gelöscht werden kann. Sie können den Änderungsfeed nach früheren Elementen durchsuchen (der letzten Änderung, die dem Element entspricht; zwischenzeitliche Änderungen sind nicht enthalten), z.B. nach Elementen, die vor fünf Jahren hinzugefügt wurden. Sofern Elemente nicht gelöscht wurden, können Sie den Änderungsfeed bis zurück zum Ursprung des Containers lesen.
 
 ### <a name="sort-order-of-items-in-change-feed"></a>Sortierreihenfolge der Elemente im Änderungsfeed
 
 Elemente im Änderungsfeed sind in der Reihenfolge des Zeitpunkts ihrer letzten Änderung aufgeführt. Diese Sortierreihenfolge ist pro logischem Partitionsschlüssel festgelegt.
+
+### <a name="consistency-level"></a>Konsistenzebene
+
+Bei Verarbeitung des Änderungsfeeds in einer späteren Konsistenzebene können in nachfolgenden Änderungsfeed-Lesevorgängen doppelte Ereignisse auftreten (das letzte Ereignis eines Lesevorgangs wird als erstes des nächsten angezeigt).
 
 ### <a name="change-feed-in-multi-region-azure-cosmos-accounts"></a>Änderungsfeed in Azure Cosmos-Konten mit mehreren Regionen
 

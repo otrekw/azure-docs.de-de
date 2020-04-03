@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e24442abd707706e035bc1f9dc0a46951e0711a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: bf7a5400fce2fce1b75cbd579830f929fcc0d0dd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848067"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454464"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP-Authentifizierung und Azure Multi-Factor Authentication-Server
 
@@ -38,8 +38,8 @@ Zum Konfigurieren der LDAP-Authentifizierung installieren Sie den Azure Multi-Fa
 
    ![LDAP-Authentifizierung in MFA Server](./media/howto-mfaserver-dir-ldap/ldap2.png)
 
-3. Ändern Sie auf der Registerkarte „Clients“ den TCP- und SSL-Port, wenn der Azure Multi-Factor Authentication-LDAP-Dienst an andere Ports als Standardports gebunden werden soll, um auf LDAP-Anforderungen zu lauschen.
-4. Wenn Sie LDAPS vom Client an den Azure Multi-Factor Authentication-Server verwenden möchten, muss ein SSL-Zertifikat auf demselben Server wie der MFA-Server installiert sein. Klicken Sie auf **Durchsuchen** neben dem Feld „SSL-Zertifikat“, und wählen Sie ein Zertifikat aus, das für die sichere Verbindung verwendet werden soll.
+3. Ändern Sie auf der Registerkarte „Clients“ den TCP- und SSL (TLS)-Port, wenn der Azure Multi-Factor Authentication-LDAP-Dienst an andere Ports als Standardports gebunden werden soll, um auf LDAP-Anforderungen zu lauschen.
+4. Wenn Sie die LDAPS-Kommunikation vom Client zum Azure Multi-Factor Authentication-Server verwenden möchten, muss ein TLS/SSL-Zertifikat auf demselben Server wie der MFA-Server installiert sein. Klicken Sie neben dem Feld „SSL (TLS)-Zertifikat“ auf **Durchsuchen**, und wählen Sie ein Zertifikat aus, das für die sichere Verbindung verwendet werden soll.
 5. Klicken Sie auf **Hinzufügen**.
 6. Geben Sie im Dialogfeld „LDAP-Client hinzufügen“ die IP-Adresse der Appliance, des Servers oder der Anwendung, die auf dem Server authentifiziert wird, und einen Anwendungsnamen (optional) ein. Der Anwendungsname wird in Azure Multi-Factor Authentication-Berichten und möglicherweise auch in Authentifizierungsnachrichten in SMS oder der mobilen App angezeigt.
 7. Aktivieren Sie das Kontrollkästchen **Multi-Factor Authentication-Benutzerabgleich erfordern**, wenn alle Benutzer in den Server importiert wurden oder werden und die zweistufige Überprüfung verwendet werden soll. Wenn eine hohe Anzahl von Benutzern noch nicht in den Server importiert wurde und/oder von der zweistufigen Überprüfung ausgenommen werden soll, lassen Sie das Kontrollkästchen deaktiviert. Weitere Informationen zu dieser Funktion finden Sie in der Hilfedatei zum MFA-Server.
@@ -66,7 +66,7 @@ Wenn die Multi-Factor Authentication zum Empfangen von LDAP-Authentifizierungen 
 8. Klicken Sie auf die Registerkarte **Attribute** . Der Server ist so vorkonfiguriert, dass Attribute aus Active Directory zugeordnet werden.
 9. Bei einer Bindung an ein anderes LDAP-Verzeichnis oder bei Änderung der vorkonfigurierten Attributzuordnungen klicken Sie auf **Bearbeiten...** .
 10. Ändern Sie im Dialogfeld "Attribute bearbeiten" die LDAP-Attributzuordnungen für Ihr Verzeichnis. Attributnamen können eingegeben oder ausgewählt werden, indem Sie auf die Schaltfläche **...** neben jedem Feld klicken. Klicken Sie auf den Link **Hilfe**, um weitere Informationen zu Attributen zu erhalten.
-11. Klicken Sie auf die Schaltfläche **OK**.
+11. Klicken Sie auf die Schaltfläche **OK** .
 12. Klicken Sie auf das Symbol **Unternehmenseinstellungen**, und wählen Sie die Registerkarte **Benutzernamenauflösung** aus.
 13. Wenn Sie von einem in die Domäne eingebundenen Server eine Verbindung mit Active Directory herstellen, sollten Sie das Optionsfeld **Windows-Sicherheits-IDs (SIDs) für den Abgleich von Benutzernamen verwenden** aktiviert lassen. Wählen Sie andernfalls das Optionsfeld **Eindeutiges LDAP-Bezeichnerattribut für den Abgleich von Benutzernamen verwenden** aus.
 
@@ -80,4 +80,4 @@ Verwenden Sie die folgenden Richtlinien, um den LDAP-Client zu konfigurieren:
 
 * Konfigurieren Sie Ihre Appliance, den Server oder die Anwendung so, dass die Authentifizierung über LDAP an den Azure Multi-Factor Authentication-Server stattfindet, als wäre es Ihr LDAP-Verzeichnis. Verwenden Sie die gleichen Einstellungen, die Sie normalerweise für die direkte Verbindung mit Ihrem LDAP-Verzeichnis verwenden würden, mit Ausnahme des Servernamens oder der IP-Adresse, die dem Azure Multi-Factor Authentication-Server entsprechen.
 * Konfigurieren Sie das LDAP-Timeout auf 30 bis 60 Sekunden, sodass genug Zeit ist, die Anmeldeinformationen des Benutzers mit dem LDAP-Verzeichnis zu überprüfen, die Überprüfung in zwei Schritten durchzuführen, deren Antwort zu empfangen und auf die LDAP-Zugriffsanforderung zu reagieren.
-* Bei Verwendung von LDAPs muss die Appliance oder der Server, die das LDAP abfragen, dem auf dem Azure Multi-Factor Authentication-Server installierten SSL-Zertifikat vertrauen.
+* Bei Verwendung der LDAPS-Kommunikation muss die Appliance oder der Server, die bzw. der LDAP-Abfragen ausgibt, dem auf dem Azure Multi-Factor Authentication-Server installierten TLS/SSL-Zertifikat vertrauen.

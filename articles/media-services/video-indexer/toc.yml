@@ -11,7 +11,7 @@
       href: video-indexer-get-started.md
     - name: Benutzer einladen
       href: invite-users.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Verwenden der Video Indexer-API
       href: video-indexer-use-apis.md
@@ -111,3 +111,5 @@
       href: release-notes.md
     - name: Uservoice
       href: 'https://cognitive.uservoice.com/forums/598144-video-indexer'
+    - name: Blogs
+      href: 'https://azure.microsoft.com/blog/tag/video-indexer/'

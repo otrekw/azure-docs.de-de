@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e0a282be9b8a20c64cd3e74e7860a289baa5aec6
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 2b29b8b0975639e5c5315a55e1382794d7662665
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183804"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80332506"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines selbstbestätigten technischen Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -120,6 +120,8 @@ Der `age`-Anspruch in der Basisrichtlinie wird dem Benutzer nicht mehr auf dem B
 
 Das **OutputClaims**-Element enthält eine Liste mit an den nächsten Orchestrierungsschritt zurückzugebenden Ansprüchen. Das **DefaultValue**-Attribut wird erst wirksam, wenn der Anspruch noch nie festgelegt wurde. Wenn er in einem vorherigen Orchestrierungsschritt festgelegt wurde, wird der Standardwert selbst dann nicht wirksam, wenn der Benutzer den Wert leer lässt. Um die Verwendung eines Standardwerts zu erzwingen, legen Sie das Attribut **AlwaysUseDefaultValue** auf `true` fest.
 
+Aus Sicherheitsgründen ist ein Kennwortanspruchswert (`UserInputType` auf `Password`festgelegt) nur für die technischen Validierungsprofile des selbstbestätigten technischen Profils verfügbar. Der Kennwortanspruch kann in den nächsten Orchestrierungsschritten nicht verwendet werden. 
+
 > [!NOTE]
 > In früheren Versionen von Identity Experience Framework (IEF) wurden Ausgabeansprüche verwendet, um Daten vom Benutzer zu erfassen. Verwenden Sie zum Erfassen von Daten vom Benutzer stattdessen eine **DisplayClaims**-Sammlung.
 
@@ -175,7 +177,7 @@ Im folgenden Beispiel wird die Verwendung eines selbstbestätigten technischen P
 
 ## <a name="persist-claims"></a>Beibehalten von Ansprüchen
 
-Wenn das **PersistedClaims**-Element nicht vorhanden ist, speichert das selbstbestätigte technische Profil die Daten nicht in Azure AD B2C. Stattdessen wird ein technisches Validierungsprofil aufgerufen, das für die Beibehaltung der Daten verantwortlich ist. So verwendet beispielsweise die Registrierungsrichtlinie das selbstbestätigte technische Profil `LocalAccountSignUpWithLogonEmail`, um das neue Benutzerprofil zu erfassen. Das technische Profil `LocalAccountSignUpWithLogonEmail` ruft das technische Validierungsprofil auf, um das Konto in Azure AD B2C zu erstellen.
+Das PersistedClaims-Element wird nicht verwendet. Das selbstbestätigte technische Profil speichert die Daten nicht in Azure AD B2C. Stattdessen wird ein technisches Validierungsprofil aufgerufen, das für die Beibehaltung der Daten verantwortlich ist. So verwendet beispielsweise die Registrierungsrichtlinie das selbstbestätigte technische Profil `LocalAccountSignUpWithLogonEmail`, um das neue Benutzerprofil zu erfassen. Das technische Profil `LocalAccountSignUpWithLogonEmail` ruft das technische Validierungsprofil auf, um das Konto in Azure AD B2C zu erstellen.
 
 ## <a name="validation-technical-profiles"></a>Verwenden von technischen Validierungsprofilen
 
@@ -187,18 +189,19 @@ Mit Ihrer Geschäftslogik können Sie durch eine weitere Integration in die Bran
 
 ## <a name="metadata"></a>Metadaten
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | setting.operatingMode <sup>1</sup>| Nein | Bei einer Anmeldeseite steuert diese Eigenschaft das Verhalten des Benutzernamensfelds also z.B. die Eingabeüberprüfung und Fehlermeldungen. Erwartete Werte: `Username` oder `Email`.  |
 | AllowGenerationOfClaimsWithNullValues| Nein| Ermöglicht das Generieren eines Anspruchs mit Nullwert. Beispielsweise für den Fall, dass ein Benutzer ein Kontrollkästchen nicht aktiviert.|
 | ContentDefinitionReferenceId | Ja | Der Bezeichner der [Inhaltsdefinition](contentdefinitions.md), die diesem technischen Profil zugeordnet ist. |
 | EnforceEmailVerification | Nein | Für die Registrierungs- oder Profilbearbeitung, erzwingt eine E-Mail-Überprüfung. Mögliche Werte: `true` (Standard) oder `false`. |
-| setting.retryLimit | Nein | Legt fest, wie oft ein Benutzer die Daten eingeben kann, die anhand des technischen Validierungsprofils überprüft werden. Beispiel: Ein Benutzer versucht, ein Konto zu registrieren, das bereits vorhanden ist, und wiederholt den Vorgang, bis der Grenzwert erreicht ist.
+| setting.retryLimit | Nein | Legt fest, wie viele Versuche ein Benutzer zur Eingabe der Daten hat, die anhand des technischen Validierungsprofils überprüft werden. Beispiel: Ein Benutzer versucht, ein Konto zu registrieren, das bereits vorhanden ist, und wiederholt den Vorgang, bis der Grenzwert erreicht ist.
 | SignUpTarget <sup>1</sup>| Nein | Der Austauschbezeichner für das Registrierungsziel. Wenn der Benutzer auf die Schaltfläche „Registrieren“ klickt, führt Azure AD B2C den angegebenen Austauschbezeichner aus. |
 | setting.showCancelButton | Nein | Zeigt die Schaltfläche „Abbrechen“ an. Mögliche Werte: `true` (Standard) oder `false` |
 | setting.showContinueButton | Nein | Zeigt die Schaltfläche „Weiter“ an. Mögliche Werte: `true` (Standard) oder `false` |
 | setting.showSignupLink <sup>2</sup>| Nein | Zeigt die Schaltfläche „Registrieren“ an. Mögliche Werte: `true` (Standard) oder `false` |
 | setting.forgotPasswordLinkLocation <sup>2</sup>| Nein| Zeigt den Link „Kennwort vergessen“ an. Mögliche Werte: `AfterInput` (Standard) Der Link wird unten auf der Seite angezeigt, oder `None` entfernt den Link „Kennwort vergessen“.|
+| setting.enableRememberMe <sup>2</sup>| Nein| Zeigt das Kontrollkästchen [Angemeldet bleiben](custom-policy-keep-me-signed-in.md) an. Mögliche Werte: `true` oder `false` (Standardwert). |
 | IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
 
 Hinweise:

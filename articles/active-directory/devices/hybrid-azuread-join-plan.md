@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76d3be0fc00465c35dbc79a258b57db962969cc8
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 152ff52ce52b573d7f24cbb2fafc944b1794f6d7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672326"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80129260"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -57,6 +57,7 @@ Azure AD Hybrid Join unterstützt zahlreiche Windows-Geräte. Da die Konfigurati
 
 - Windows 10
 - Windows Server 2016
+  - **Hinweis**: Kunden der nationalen Azure-Cloud benötigen Version 1809
 - Windows Server 2019
 
 Für Geräte, auf denen das Windows-Desktopbetriebssystem ausgeführt wird, sind die unterstützten Versionen in diesem Artikel aufgeführt: [Windows 10 Releaseinformationen](/windows/release-information/). Als bewährte Methode empfiehlt Microsoft, ein Upgrade auf die aktuelle Version von Windows 10 durchzuführen.
@@ -92,7 +93,7 @@ Als ersten Planungsschritt sollten Sie Ihre Umgebung überprüfen und ermitteln,
 ### <a name="handling-devices-with-azure-ad-registered-state"></a>Behandeln von Geräten mit registriertem Azure AD-Status
 Wenn Ihre in die Windows 10-Domäne eingebundenen Geräte für Ihren Mandanten [bei Azure AD registriert](overview.md#getting-devices-in-azure-ad) sind, kann dies zu einem Doppelstatus der Azure AD-Hybrideinbindung und der Registrierung bei Azure AD des Geräts führen. Es wird empfohlen, ein Upgrade auf Windows 10 1803 (mit angewandtem KB4489894) oder höher durchzuführen, um dieses Szenario automatisch zu beheben. In Releases vor 1803 müssen Sie die Registrierung bei Azure AD manuell entfernen, bevor Sie die Azure AD-Hybrideinbindung aktivieren. In Releases ab 1803 wurden die folgenden Änderungen vorgenommen, um diesen Doppelstatus zu vermeiden:
 
-- Eine etwaige Registrierung bei Azure AD wird nach der <i>Azure AD-Hybrideinbindung des Geräts</i> automatisch entfernt.
+- Jeder vorhandene Azure AD-Registrierungsstatus für einen Benutzer wird nach der <i>Azure AD-Hybrideinbindung des Geräts und der Anmeldung desselben Benutzers</i> automatisch entfernt. Wenn Benutzer A beispielsweise einen Azure AD-Registrierungsstatus auf dem Gerät hat, wird der Doppelstatus für Benutzer A nur dann bereinigt, wenn sich Benutzer A beim Gerät anmeldet. Bei mehreren Benutzer auf demselben Gerät wird der Doppelstatus individuell bei der Anmeldung der jeweiligen Benutzer bereinigt.
 - Sie können verhindern, dass Ihr in die Domäne eingebundenes Gerät bei Azure AD registriert wird, indem Sie diesen Registrierungsschlüssel hinzufügen: HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001.
 - Wenn Sie Windows Hello for Business unter Windows 10 1803 konfiguriert haben, muss der Benutzer Windows Hello for Business nach der Bereinigung des Doppelstatus erneut einrichten. Dieses Problem wird mit KB4512509 behoben.
 
@@ -102,7 +103,9 @@ Wenn Ihre in die Windows 10-Domäne eingebundenen Geräte für Ihren Mandanten 
 ### <a name="additional-considerations"></a>Weitere Überlegungen
 - Wenn in Ihrer Umgebung Virtual Desktop Infrastructure (VDI) verwendet wird, finden Sie unter [Geräteidentität und Desktopvirtualisierung](/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure) weitere Informationen.
 
-- Azure AD Hybrid Join wird für FIPS-konformes TPM 2.0 und nicht für TPM 1.2 unterstützt. Wenn Ihre Geräte über FIPS-konformes TPM 1.2 verfügen, müssen Sie sie deaktivieren, bevor Sie mit Azure AD Hybrid Join fortfahren. Microsoft stellt keine Tools zum Deaktivieren des FIPS-Modus für TPMs bereit, da dieser vom TPM-Hersteller abhängig ist. Wenden Sie sich an Ihren Hardware-OEM, um Unterstützung zu erhalten. Ab dem Windows 10-Release 1903 werden TPMs 1.2 nicht mehr für Azure AD Hybrid Join verwendet, und Geräte mit diesen TPMs werden so betrachtet, als würden sie nicht über ein TPM verfügen.
+- Azure AD Hybrid Join wird für FIPS-konformes TPM 2.0 und nicht für TPM 1.2 unterstützt. Wenn Ihre Geräte über FIPS-konformes TPM 1.2 verfügen, müssen Sie sie deaktivieren, bevor Sie mit Azure AD Hybrid Join fortfahren. Microsoft stellt keine Tools zum Deaktivieren des FIPS-Modus für TPMs bereit, da dieser vom TPM-Hersteller abhängig ist. Wenden Sie sich an Ihren Hardware-OEM, um Unterstützung zu erhalten. 
+
+- Ab Windows 10 Release 1903 werden TPMs 1.2 nicht mehr für die Azure AD-Hybrideinbindung verwendet, und Geräte mit diesen TPMs werden so betrachtet, als würden sie nicht über ein TPM verfügen.
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Überprüfung der kontrollierten Überprüfung der Azure AD-Hybrideinbindung
 
@@ -145,12 +148,15 @@ Lesen Sie auf Grundlage des Szenarios, das Ihrer Identitätsinfrastruktur entspr
 - [Konfigurieren der Azure Active Directory-Hybrideinbindung für eine Verbundumgebung](hybrid-azuread-join-federated-domains.md)
 - [Konfigurieren der Azure Active Directory-Hybrideinbindung für eine verwaltete Umgebung](hybrid-azuread-join-managed-domains.md)
 
-## <a name="review-on-premises-ad-upn-support-for-hybrid-azure-ad-join"></a>Überprüfung der lokalen AD UPN-Unterstützung (Benutzerprinzipalname) für Azure AD-Hybrideinbindung
+## <a name="review-on-premises-ad-users-upn-support-for-hybrid-azure-ad-join"></a>Überprüfen der Unterstützung lokaler AD-Benutzerprinzipalnamen (UPNs) in Azure AD Hybrid Join
 
-In einigen Fällen können Ihre lokalen AD-UPNs von den Azure AD-UPNs abweichen. In diesen Fällen bietet Azure AD Hybrid Join unter Windows 10 auf Grundlage der [Authentifizierungsmethode](/azure/security/fundamentals/choose-ad-authn), dem Domänentyp und der Windows 10-Version eingeschränkte Unterstützung für lokale AD-UPNs. Es gibt zwei Arten lokaler AD-UPNs, die in Ihrer Umgebung vorhanden sein können:
+In einigen Fällen können Ihre lokalen AD-Benutzerprinzipalnamen von den Azure AD-Benutzerprinzipalnamen abweichen. In diesen Fällen bietet Azure AD Hybrid Join unter Windows 10 auf Grundlage der [Authentifizierungsmethode](/azure/security/fundamentals/choose-ad-authn), dem Domänentyp und der Windows 10-Version eingeschränkte Unterstützung für lokale AD-UPNs. Es gibt zwei Arten lokaler AD-UPNs, die in Ihrer Umgebung vorhanden sein können:
 
-- Routingfähige Benutzerprinzipalnamen (UPNs): Ein routingfähiger UPN verfügt über eine gültige überprüfte Domäne, die bei einer Domänenregistrierungsstelle registriert ist. Ist beispielsweise „contoso.com“ die primäre Domäne in Azure AD, ist „contoso.org“ die primäre Domäne im lokalen Active Directory, die Contoso gehört und [in Azure AD überprüft wird](/azure/active-directory/fundamentals/add-custom-domain).
-- Nicht routingfähige Benutzerprinzipalnamen (UPNs): Ein nicht routingfähiger UPN verfügt nicht über eine überprüfte Domäne. Sie ist nur in einem privaten Netzwerk Ihrer Organisation gültig. Ist beispielsweise „contoso.com“ die primäre Domäne in Azure AD, ist „contoso.local“ die primäre Domäne im lokalen Active Directory, aber keine überprüfbare Domäne im Internet und wird nur innerhalb des Contoso-Netzwerks verwendet.
+- Routingfähige UPNs: Ein routingfähiger UPN verfügt über eine gültige überprüfte Domäne, die bei einer Domänenregistrierungsstelle registriert ist. Ist beispielsweise „contoso.com“ die primäre Domäne in Azure AD, ist „contoso.org“ die primäre Domäne im lokalen Active Directory, die Contoso gehört und [in Azure AD überprüft wird](/azure/active-directory/fundamentals/add-custom-domain).
+- Nicht routingfähige UPNs: Ein nicht routingfähiger UPN verfügt nicht über eine überprüfte Domäne. Sie ist nur in einem privaten Netzwerk Ihrer Organisation gültig. Ist beispielsweise „contoso.com“ die primäre Domäne in Azure AD, ist „contoso.local“ die primäre Domäne im lokalen Active Directory, aber keine überprüfbare Domäne im Internet und wird nur innerhalb des Contoso-Netzwerks verwendet.
+
+> [!NOTE]
+> Die Informationen in diesem Abschnitt gelten nur für einen lokalen Benutzerprinzipalnamen. Sie gelten nicht für ein lokales Computerdomänensuffix (Beispiel: computer1.contoso.local).
 
 Die folgende Tabelle enthält Details zur Unterstützung dieser lokalen AD UPNs in Azure AD Hybrid Join unter Windows 10
 

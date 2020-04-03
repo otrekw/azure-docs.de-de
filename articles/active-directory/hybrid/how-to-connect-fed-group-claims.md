@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 78b36e1f5ababf2551bd69682807a8ed308ae24d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: b8708aec1137836516852135412c4c7cec2feba4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78298444"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79408401"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Konfigurieren von Gruppenansprüchen für Anwendungen mit Azure Active Directory (öffentliche Vorschau)
 
@@ -84,7 +84,7 @@ Verwenden Sie die Optionsfelder, um die Gruppen auszuwählen, die im Token entha
 
 ![Benutzeroberfläche für Ansprüche](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
 
-| Auswahl | Beschreibung |
+| Auswahl | BESCHREIBUNG |
 |----------|-------------|
 | **Alle Gruppen** | Gibt Sicherheitsgruppen und Verteilerlisten sowie Rollen aus.  |
 | **Sicherheitsgruppen** | Gibt im Gruppenanspruch Sicherheitsgruppen aus, in denen der Benutzer Mitglied ist. |
@@ -107,7 +107,7 @@ Gruppen, die der Anwendung zugewiesen sind, werden in das Token eingeschlossen. 
 
 Um die der Anwendung zugewiesenen Gruppen zu ändern, wählen Sie die Anwendung in der Liste **Unternehmensanwendungen** aus, und klicken Sie dann im linken Navigationsmenü der Anwendung auf **Benutzer und Gruppen**.
 
-Ausführliche Informationen zum Verwalten der Gruppenzuweisung zu Anwendungen finden Sie im Dokument [Methoden zum Zuweisen von Benutzern und Gruppen zu einer App](../../active-directory/manage-apps/methods-for-assigning-users-and-groups.md#assign-groups).
+Ausführliche Informationen zum Verwalten der Gruppenzuweisung zu Anwendungen finden Sie im Dokument [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../../active-directory/manage-apps/assign-user-or-group-access-portal.md).
 
 ### <a name="advanced-options"></a>Erweiterte Optionen
 
@@ -140,7 +140,7 @@ Gruppenansprüche können auch im Abschnitt [Optionale Ansprüche](../../active-
 
 Gültige Werte sind:
 
-| Auswahl | Beschreibung |
+| Auswahl | BESCHREIBUNG |
 |----------|-------------|
 | **„All“** | Gibt Sicherheitsgruppen, Verteilerlisten und Rollen aus |
 | **„SecurityGroup“** | Gibt im Gruppenanspruch Sicherheitsgruppen aus, in denen der Benutzer Mitglied ist. |
@@ -177,7 +177,7 @@ Gültige Werte sind:
    }
    ```
 
-   | Schema für optionale Ansprüche | value |
+   | Schema für optionale Ansprüche | Wert |
    |----------|-------------|
    | **name:** | Muss „groups“ lauten. |
    | **source:** | Wird nicht verwendet. Auslassen oder NULL angeben. |
@@ -222,6 +222,6 @@ Ausgeben von Gruppennamen, die im Format „netbiosDomain\samAccountName“ als 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Methoden zum Zuweisen von Benutzern und Gruppen zu einer App](../../active-directory/manage-apps/methods-for-assigning-users-and-groups.md#assign-groups)
+[Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)
 
 [Konfigurieren von Rollenansprüchen](../../active-directory/develop/active-directory-enterprise-app-role-management.md)

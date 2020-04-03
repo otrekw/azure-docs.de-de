@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb7fed7cf5f38f9f7677126aff92492ccacd6e12
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 2cd782cdab625934fe60617142e5ac0baf756398
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75707943"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128756"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Problembehandlung von Geräten mit dem Befehl „dsregcmd“
 
@@ -134,7 +134,7 @@ In diesem Abschnitt wird der Status verschiedener Attribute für den aktuell am 
 - **CanReset:** Gibt an, ob die Windows Hello-Taste vom Benutzer zurückgesetzt werden kann. 
 - **Mögliche Werte:** „DestructiveOnly“, „NonDestructiveOnly“, „DestructiveAndNonDestructive“ oder „Unknown“ bei einem Fehler. 
 - **WorkplaceJoined:** Auf „JA“ festlegen, wenn für Azure AD registrierte Konten im aktuellen NTUSER-Kontext zum Gerät hinzugefügt wurden.
-- **WamDefaultSet:** Auf „JA“ festlegen, wenn für den angemeldeten Benutzer ein standardmäßiges WAM-WebAccount erstellt wird. Dieses Feld könnte einen Fehler anzeigen, wenn „dsreg /status“ im Administratorkontext ausgeführt wird. 
+- **WamDefaultSet:** Auf „JA“ festlegen, wenn für den angemeldeten Benutzer ein standardmäßiges WAM-WebAccount erstellt wird. In diesem Feld wird u.U. ein Fehler angezeigt, wenn „dsreg /status“ von einer Eingabeaufforderung mit erhöhten Rechten ausgeführt wird. 
 - **WamDefaultAuthority:** Für Azure AD auf „organizations“ (Organisationen) festgelegt.
 - **WamDefaultId:** Immer „https://login.microsoft.com“ für Azure AD.
 - **WamDefaultGUID:** Die GUID des WAM-Anbieters (Azure AD/Microsoft-Konto) für das standardmäßige WAM-WebAccount. 
@@ -211,8 +211,16 @@ In diesem Abschnitt werden verschiedene Tests durchgeführt, um die Diagnose von
 - **AD Configuration Test (AD-Konfigurationstest):** Der Test liest und überprüft, ob das SCP-Objekt in der lokalen AD-Gesamtstruktur ordnungsgemäß konfiguriert ist. Fehler in diesem Test würden wahrscheinlich zu Join-Fehlern mit dem Fehlercode 0x801c001d in der Ermittlungsphase führen.
 - **DRS Discovery Test (DRS-Ermittlungstest):** Der Test ruft die DRS-Endpunkte vom Endpunkt für die Ermittlung von Metadaten ab und führt eine Benutzerbereichsanforderung durch. Fehler in diesem Test würden wahrscheinlich zu Join-Fehlern in der Ermittlungsphase führen.
 - **DRS Connectivity Test (DRS-Verbindungstest):** Der Test führt einen grundlegenden Verbindungstest mit dem DRS-Endpunkt durch.
-- **Token acquisition Test (Tokenbeschaffungstest):** Der Test versucht, ein Azure AD-Authentifizierungstoken abzurufen, wenn der Benutzermandant einem Verbund hinzugefügt wird. Fehler in diesem Test würden wahrscheinlich zu Join-Fehlern in der Authentifizierungsphase führen. Wenn bei der Authentifizierung ein Fehler auftritt, wird „sync join“ als Fallback versucht, es sei denn, der Fallback wird explizit mit einem Registrierungsschlüssel deaktiviert.
-- **Fallback to Sync-Join (Fallback zu Sync-Join):** Auf „Aktiviert“ festlegen, wenn der Registrierungsschlüssel NICHT vorhanden ist, um den Fallback zu „sync join“ mit Authentifizierungsfehlern zu vermeiden. Diese Option ist ab Windows 10 1803 verfügbar.
+- **Token acquisition Test (Tokenbeschaffungstest):** Der Test versucht, ein Azure AD-Authentifizierungstoken abzurufen, wenn der Benutzermandant einem Verbund hinzugefügt wird. Fehler in diesem Test würden wahrscheinlich zu Join-Fehlern in der Authentifizierungsphase führen. Wenn bei der Authentifizierung ein Fehler auftritt, wird „sync join“ als Fallback versucht, sofern der Fallback nicht explizit mit den folgenden Registrierungsschlüsseleinstellungen deaktiviert wird.
+```
+    Keyname: Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\CDJ
+    Value: FallbackToSyncJoin
+    Type:  REG_DWORD
+    Value: 0x0 -> Disabled
+    Value: 0x1 -> Enabled
+    Default (No Key): Enabled
+ ```
+- **Fallback zu Sync-Join:** Auf „Aktiviert“ festlegen, wenn der obige Registrierungsschlüssel NICHT vorhanden ist, um den Fallback zu „Sync Join“ mit Authentifizierungsfehlern zu vermeiden. Diese Option ist ab Windows 10 1803 verfügbar.
 - **Previous Registration (Vorherige Registrierung):** Zeitpunkt des vorherigen Join-Versuchs. Es werden nur fehlerhafte Join-Versuche protokolliert.
 - **Error Phase (Fehlerphase):** Die Join-Phase, in der der Abbruch erfolgte. Mögliche Werte sind „pre-check“, „discover“, „auth“, „join“.
 - **Client ErrorCode (Clientfehlercode):** Der zurückgegebene Clientfehlercode (HRESULT).

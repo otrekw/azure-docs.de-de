@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9add6ac30184d87ef50200c3ab944698a1a660f8
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3202c2fbfedfce0b0b52be94b1e0d165a6e72546
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275538"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481312"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Hochverfügbarkeit und Lastenausgleich von Anwendungsproxy-Connectors und -Anwendungen
 
@@ -88,9 +88,9 @@ In diesem Szenario erfordert die Back-End-Webanwendung die Sitzungsbindung (Sitz
 Dieses Szenario kann komplizierter sein, da der Client in der Regel mehrere Verbindungen mit dem Anwendungsproxydienst herstellt. Anforderungen über verschiedene Verbindungen werden möglicherweise in unterschiedlichen Connectors und Servern in der Farm empfangen. Da jeder Connector seine eigene IP-Adresse für diese Kommunikation verwendet, kann der Load Balancer die Sitzungsbindung nicht basierend auf der IP-Adresse der Connectors sicherstellen. Auch die Quell-IP-Affinität kann nicht verwendet werden.
 Es folgen einige Optionen für Szenario 2:
 
-- Option 1: Basieren Sie die Sitzungspersistenz auf einem Sitzungscookie, das vom Lastenausgleich festgelegt wird. Diese Option wird empfohlen, da die Last gleichmäßiger auf die Back-End-Server verteilt werden kann. Hierfür ist ein Lastenausgleich der Ebene 7 mit dieser Funktion erforderlich, der den HTTP-Datenverkehr verarbeiten und die SSL-Verbindung beenden kann. Sie können Azure Application Gateway (Sitzungsaffinität) oder einen Lastenausgleich von einem anderen Anbieter verwenden.
+- Option 1: Basieren Sie die Sitzungspersistenz auf einem Sitzungscookie, das vom Lastenausgleich festgelegt wird. Diese Option wird empfohlen, da die Last gleichmäßiger auf die Back-End-Server verteilt werden kann. Hierfür ist ein Lastenausgleich auf Schicht 7 mit dieser Funktion erforderlich, der den HTTP-Datenverkehr verarbeiten und die TLS-Verbindung beenden kann. Sie können Azure Application Gateway (Sitzungsaffinität) oder einen Lastenausgleich von einem anderen Anbieter verwenden.
 
-- Option 2: Basieren Sie die Sitzungspersistenz auf dem Headerfeld „X-Forwarded-For“. Für diese Option ist ein Lastenausgleich der Ebene 7 mit dieser Funktion erforderlich, der den HTTP-Datenverkehr verarbeiten und die SSL-Verbindung beenden kann.  
+- Option 2: Basieren Sie die Sitzungspersistenz auf dem Headerfeld „X-Forwarded-For“. Für diese Option ist ein Lastenausgleich auf Schicht 7 mit dieser Funktion erforderlich, der den HTTP-Datenverkehr verarbeiten und die TLS-Verbindung beenden kann.  
 
 - Option 3: Konfigurieren Sie die Back-End-Anwendung so, dass keine Sitzungspersistenz erforderlich ist.
 

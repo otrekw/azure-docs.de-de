@@ -1,6 +1,6 @@
 ---
-title: Problembehandlung beim Kennwortschutz – Azure Active Directory
-description: Informationen zur allgemeinen Problembehandlung für den Azure AD-Kennwortschutz
+title: Problembehandlung beim lokalen Azure AD-Kennwortschutz
+description: Lernen Sie die Problembehandlung beim Azure AD-Kennwortschutz in einer lokalen Active Directory Domain Services-Umgebung kennen.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd609eb1f289c0a104bddaa08a60e7dc6202acee
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 79ebf543a3880a4f2c8ee8c0d706c268ef3f08d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847659"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79230906"
 ---
-# <a name="azure-ad-password-protection-troubleshooting"></a>Problembehandlung beim Azure AD-Kennwortschutz
+# <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Problembehandlung: Lokaler Azure AD-Kennwortschutz
 
 Nach der Bereitstellung des Azure AD-Kennwortschutzes ist möglicherweise eine Problembehandlung erforderlich. In diesem Artikel werden einige allgemeine Problembehandlungsschritte ausführlich beschrieben, damit Sie diese besser verstehen können.
 
@@ -82,9 +82,9 @@ Dieses Problem kann mehrere Ursachen haben.
 
 1. Ihr(e) DC-Agent(s) kann bzw. können eine Richtlinie nicht herunterladen oder vorhandene Richtlinien nicht entschlüsseln. Überprüfen Sie in den obigen Abschnitten, ob eines der dort beschriebenen Probleme die Ursache ist.
 
-1. Der Erwingungsmodus der Kennwortrichtlinie ist noch auf „Überwachung“ eingestellt. Wenn diese Konfiguration aktiv ist, konfigurieren Sie den Modus im Azure AD-Kennwortschutzportal neu, und legen Sie „Erzwingen“ fest. Siehe [Aktivieren des Kennwortschutzes](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+1. Der Erwingungsmodus der Kennwortrichtlinie ist noch auf „Überwachung“ eingestellt. Wenn diese Konfiguration aktiv ist, konfigurieren Sie den Modus im Azure AD-Kennwortschutzportal neu, und legen Sie „Erzwingen“ fest. Weitere Informationen finden Sie unter [Betriebsmodi](howto-password-ban-bad-on-premises-operations.md#modes-of-operation).
 
-1. Die Kennwortrichtlinie wurde deaktiviert. Wenn diese Konfiguration aktiv ist, konfigurieren Sie die Richtlinie im Azure AD-Kennwortschutzportal neu, und legen Sie „Aktiviert“ fest. Siehe [Aktivieren des Kennwortschutzes](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+1. Die Kennwortrichtlinie wurde deaktiviert. Wenn diese Konfiguration aktiv ist, konfigurieren Sie die Richtlinie im Azure AD-Kennwortschutzportal neu, und legen Sie „Aktiviert“ fest. Weitere Informationen finden Sie unter [Betriebsmodi](howto-password-ban-bad-on-premises-operations.md#modes-of-operation).
 
 1. Sie haben die DC-Agent-Software nicht auf allen Domänencontrollern in der Domäne installiert. In diesem Fall ist es schwierig sicherzustellen, dass Windows-Remoteclients während einer Kennwortänderung einen bestimmten Domänencontroller als Ziel verwenden. Wenn Sie der Meinung sind, dass Sie einen bestimmten Domänencontroller mit der DC-Agent-Software erfolgreich als Ziel festgelegt haben, können Sie dies im DC-Agent-Administratorereignisprotokoll nochmals überprüfen: Das Ergebnis der Kennwortüberprüfung wird unabhängig von seinem Wert in mindestens einem Ereignis dokumentiert. Ist für den Benutzer, dessen Kennwort geändert wird, kein Ereignis vorhanden, wurde die Kennwortänderung wahrscheinlich von einem anderen Domänencontroller verarbeitet.
 
@@ -189,13 +189,13 @@ PS C:\> Get-AzureADPasswordProtectionDCAgent | Where-Object {$_.SoftwareVersion 
 
 Die Azure AD-Kennwortschutz-Proxysoftware ist in keiner Version zeitlich begrenzt. Microsoft empfiehlt dennoch, dass sowohl für DC- als auch Proxy-Agents ein Upgrade auf die neuesten Versionen durchgeführt wird, sobald diese veröffentlicht werden. Mithilfe des Cmdlets `Get-AzureADPasswordProtectionProxy` kann nach Proxy-Agents gesucht werden, für die ein Upgrade erforderlich ist, ähnlich wie im Beispiel oben für DC-Agents.
 
-Weitere Informationen zu bestimmten Upgradeverfahren finden Sie unter [Upgrade des DC-Agents](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) und [Upgrade des Proxy-Agents](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-agent).
+Weitere Informationen zu bestimmten Upgradeverfahren finden Sie unter [Upgrade des DC-Agents](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-dc-agent) und [Upgrade des Proxydiensts](howto-password-ban-bad-on-premises-deploy.md#upgrading-the-proxy-service).
 
 ## <a name="emergency-remediation"></a>Notfallbereinigung
 
 Wenn der DC-Agent-Dienst Probleme verursacht, kann er sofort heruntergefahren werden. Die DC-Agent-Kennwortfilter-DLL versucht weiterhin, den nicht ausgeführten Dienst aufzurufen, und protokolliert die Warnungsereignisse (10012, 10013), aber alle eingehenden Kennwörter werden währenddessen akzeptiert. Der DC-Agent-Dienst kann dann auch bei Bedarf über den Dienststeuerungs-Manager von Windows mit dem Starttyp „Disabled“ konfiguriert werden.
 
-Als weitere Problembehandlungsmaßnahme könnten Sie im Azure AD-Kennwortschutzportal den Aktivierungmodus auf „Nein“ festlegen. Nachdem die aktualisierte Richtlinie heruntergeladen wurde, wechseln alle DC-Agent-Dienste in einen Ruhemodus, in dem alle Kennwörter unverändert akzeptiert werden. Weitere Informationen finden Sie unter [Erzwingungsmodus](howto-password-ban-bad-on-premises-operations.md#enforce-mode).
+Als weitere Problembehandlungsmaßnahme könnten Sie im Azure AD-Kennwortschutzportal den Aktivierungmodus auf „Nein“ festlegen. Nachdem die aktualisierte Richtlinie heruntergeladen wurde, wechseln alle DC-Agent-Dienste in einen Ruhemodus, in dem alle Kennwörter unverändert akzeptiert werden. Weitere Informationen finden Sie unter [Betriebsmodi](howto-password-ban-bad-on-premises-operations.md#modes-of-operation).
 
 ## <a name="removal"></a>Entfernen
 

@@ -19,7 +19,7 @@
           href: service-fabric-quickstart-java-spring-boot.md
         - name: Bereitstellen einer Reliable Services-Anwendung
           href: service-fabric-quickstart-java-reliable-services.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Bereitstellen einer .NET-App
       items:
@@ -358,7 +358,7 @@
       href: concepts-managed-identity.md
     - name: Konfigurieren der Anmeldeinformationen des Containerrepositorys
       href: configure-container-repository-credentials.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Einrichten der Entwicklungsumgebung
       items:
@@ -404,8 +404,6 @@
           items:
             - name: Bereitstellen einer ausführbaren Gastanwendungsdatei
               href: service-fabric-deploy-existing-app.md
-            - name: Bereitstellen mehrerer ausführbarer Gastanwendungsdateien
-              href: service-fabric-deploy-multiple-apps.md
         - name: Erstellen eines Containerdiensts
           items:
             - name: Docker Compose (Vorschau)

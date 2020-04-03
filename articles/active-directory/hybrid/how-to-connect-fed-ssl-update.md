@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Aktualisieren des SSL-Zertifikats für eine AD FS-Farm | Microsoft-Dokumentation'
-description: Dieses Dokument erläutert die Schritte zum Aktualisieren des SSL-Zertifikats einer AD FS-Farm mithilfe von Azure AD Connect.
+title: 'Azure AD Connect: Aktualisieren des TLS/SSL-Zertifikats für eine AD FS-Farm | Microsoft-Dokumentation'
+description: Dieses Dokument erläutert die Schritte zum Aktualisieren des TLS/SSL-Zertifikats einer AD FS-Farm mithilfe von Azure AD Connect.
 services: active-directory
 manager: daveba
 editor: billmath
@@ -16,19 +16,19 @@ author: billmath
 ms.custom: seohack1
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4fcdf75586de9621bd0e42cba6fa9c80e5d30817
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 8cc768162d98402fe52b52b2826a9dbf2840a581
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67595210"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331738"
 ---
-# <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Aktualisieren des SSL-Zertifikats für eine Active Directory-Verbunddienste-Farm (AD FS)
+# <a name="update-the-tlsssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Aktualisieren des TLS/SSL-Zertifikats für eine AD FS-Farm (Active Directory Federation Services)
 
 ## <a name="overview"></a>Übersicht
-In diesem Artikel wird beschrieben, wie Sie Azure AD Connect verwenden können, um das SSL-Zertifikat für eine AD FS-Farm (Active Directory Federation Services, Active Directory-Verbunddienste) zu aktualisieren. Sie können mit dem Tool Azure AD Connect das SSL-Zertifikat für die AD FS-Farm ganz einfach aktualisieren – auch dann, wenn die Anmeldemethode des Benutzers nicht auf AD FS festgelegt ist.
+In diesem Artikel wird beschrieben, wie Sie mit Azure AD Connect das TLS/SSL-Zertifikat für eine AD FS-Farm (Active Directory Federation Services) aktualisieren können. Sie können mit dem Azure AD Connect-Tool das TLS/SSL-Zertifikat für die AD FS-Farm ganz einfach aktualisieren, selbst wenn die ausgewählte Benutzeranmeldemethode nicht auf AD FS festgelegt ist.
 
-Sie können den gesamten Vorgang der Aktualisierung des SSL-Zertifikats für die AD FS-Farm über alle Verbundserver und Webanwendungsproxy-Server (WAP) hinweg in drei einfachen Schritten ausführen:
+Sie können den gesamten Aktualisierungsvorgang für das TLS/SSL-Zertifikats für die AD FS-Farm übergreifend für alle Verbundserver und Webanwendungsproxy-Server (WAP) in drei einfachen Schritten ausführen:
 
 ![Drei Schritte](./media/how-to-connect-fed-ssl-update/threesteps.png)
 
@@ -41,7 +41,7 @@ Sie können den gesamten Vorgang der Aktualisierung des SSL-Zertifikats für die
 * **AD FS-Farm**: Stellen Sie sicher, dass die AD FS-Farm unter Windows Server 2012 R2 oder höher ausgeführt wird.
 * **Azure AD Connect**: Stellen Sie sicher, dass die Version von Azure AD Connect 1.1.553.0 oder höher lautet. Sie verwenden den Vorgang **AD FS-SSL-Zertifikat aktualisieren**.
 
-![Vorgang „SSL aktualisieren“](./media/how-to-connect-fed-ssl-update/updatessltask.png)
+![Aktualisieren der TLS-Task](./media/how-to-connect-fed-ssl-update/updatessltask.png)
 
 ## <a name="step-1-provide-ad-fs-farm-information"></a>Schritt 1: Bereitstellen von Informationen zur AD FS-Farm
 
@@ -49,7 +49,7 @@ Azure AD Connect versucht, die Informationen zur AD FS-Farm über folgende Schri
 1. Abfragen der Farminformationen von AD FS (Windows Server 2016 oder höher)
 2. Verweisen auf die Informationen aus vorherigen Ausführungen, die mit Azure AD Connect lokal gespeichert werden
 
-Sie können die angezeigte Liste mit Servern bearbeiten, indem Sie Server hinzufügen oder entfernen, um die derzeitige Konfiguration der AD FS-Farm abzubilden. Sobald die Serverinformationen bereitgestellt wurden, zeigt Azure AD Connect die Konnektivität und den aktuellen Status des SSL-Zertifikats an.
+Sie können die angezeigte Liste mit Servern bearbeiten, indem Sie Server hinzufügen oder entfernen, um die derzeitige Konfiguration der AD FS-Farm abzubilden. Sobald die Serverinformationen bereitgestellt wurden, zeigt Azure AD Connect die Konnektivität und den aktuellen Status des TLS/SSL-Zertifikats an.
 
 ![AD FS-Serverinformationen](./media/how-to-connect-fed-ssl-update/adfsserverinfo.png)
 
@@ -60,11 +60,11 @@ Wenn die Liste einen Server enthält, der nicht zur AD FS-Farm gehört, klicken 
 >[!NOTE]
 > Das Entfernen eines Servers aus der Liste der Server für eine AD FS-Farm in Azure AD Connect ist ein lokaler Vorgang, durch den die Informationen für die AD FS-Farm aktualisiert werden, die Azure AD Connect lokal verwaltet. Azure AD Connect ändert nicht die AD FS-Konfiguration, um die Änderung wiederzugeben.    
 
-## <a name="step-2-provide-a-new-ssl-certificate"></a>Schritt 2: Bereitstellen eines neuen SSL-Zertifikats
+## <a name="step-2-provide-a-new-tlsssl-certificate"></a>Schritt 2: Bereitstellen eines neuen TLS/SSL-Zertifikats
 
-Nachdem Sie die Informationen zu den AD FS-Farmservern bestätigt haben, fragt Azure AD Connect nach dem neuen SSL-Zertifikat. Stellen Sie ein kennwortgeschütztes PFX-Zertifikat bereit, um die Installation fortzuführen.
+Nachdem Sie die Informationen zu den AD FS-Farmservern bestätigt haben, fragt Azure AD Connect nach dem neuen TLS/SSL-Zertifikat. Stellen Sie ein kennwortgeschütztes PFX-Zertifikat bereit, um die Installation fortzuführen.
 
-![SSL-Zertifikat](./media/how-to-connect-fed-ssl-update/certificate.png)
+![TLS/SSL-Zertifikat](./media/how-to-connect-fed-ssl-update/certificate.png)
 
 Nachdem Sie das Zertifikat bereitgestellt haben, geht Azure AD eine Reihe von Voraussetzungen durch. Überprüfen Sie das Zertifikat, um sicherzustellen, dass es für die AD FS-Farm passend ist:
 
@@ -75,7 +75,7 @@ Nachdem Sie das Zertifikat bereitgestellt haben, geht Azure AD eine Reihe von Vo
 
 ## <a name="step-3-select-servers-for-the-update"></a>Schritt 3: Auswählen von Servern für das Update
 
-Wählen Sie im nächsten Schritt die Server aus, deren SSL-Zertifikat aktualisiert werden muss. Server, die offline sind, können nicht für das Update ausgewählt werden.
+Wählen Sie im nächsten Schritt die Server aus, deren TLS/SSL-Zertifikat aktualisiert werden muss. Server, die offline sind, können nicht für das Update ausgewählt werden.
 
 ![Auswählen von zu aktualisierenden Servern](./media/how-to-connect-fed-ssl-update/selectservers.png)
 
@@ -85,7 +85,7 @@ Nachdem die Konfiguration abgeschlossen ist, zeigt Azure AD Connect die Meldung 
 
 ## <a name="faqs"></a>Häufig gestellte Fragen
 
-* **Was sollte der Antragstellername des Zertifikats für das neue AD FS-SSL-Zertifikats sein?**
+* **Wie sollte der Antragstellername des Zertifikats für das neue AD FS-TLS/SSL-Zertifikat lauten?**
 
     Azure AD Connect überprüft, ob der Antragstellername bzw. alternative Antragstellername des Zertifikats den Namen des Verbunddiensts enthält. Wenn der Name Ihres Verbunddiensts beispielsweise „fs.contoso.com“ lautet, muss der Antragstellername bzw. alternative Antragstellername „fs.contoso.com“ lauten.  Platzhalterzertifikate werden ebenfalls akzeptiert.
 
@@ -97,7 +97,7 @@ Nachdem die Konfiguration abgeschlossen ist, zeigt Azure AD Connect die Meldung 
 
     Azure AD Connect kann keinen Vorgang durchführen, solange der Server offline ist. Wenn der Server Teil einer AD FS-Farm ist, überprüfen Sie die Verbindung mit dem Server. Nachdem Sie das Problem behoben haben, klicken Sie im Assistenten zum Aktualisieren des Status auf das Aktualisierungssymbol. Wenn der Server zuvor Teil der Farm war, jedoch nicht mehr vorhanden ist, klicken Sie auf **Entfernen**, um ihn aus der Liste mit Servern zu löschen, die Azure AD Connect verwaltet. Durch das Entfernen des Servers aus der Liste in Azure AD Connect wird die AD FS-Konfiguration selbst nicht geändert. Wenn Sie AD FS unter Windows Server 2016 oder höher nutzen, verbleibt der Server in den Konfigurationseinstellungen und wird bei der nächsten Ausführung des Vorgangs erneut angezeigt.
 
-* **Kann ich einen Teil meiner Farm-Server mit dem neuen SSL-Zertifikat aktualisieren?**
+* **Kann ich einen Teil meiner Farmserver mit dem neuen TLS/SSL-Zertifikat aktualisieren?**
 
     Ja. Sie können den Vorgang **SSL-Zertifikat aktualisieren** jederzeit erneut ausführen, um die verbleibenden Server zu aktualisieren. Auf der Seite **Server für SSL-Zertifikataktualisierung auswählen** können Sie die Liste der Server nach **SSL-Ablaufdatum** sortieren, um einfach auf die Server zuzugreifen, die noch nicht aktualisiert wurden.
 

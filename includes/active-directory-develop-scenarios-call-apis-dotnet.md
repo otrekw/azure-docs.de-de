@@ -15,10 +15,10 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 3d4e45d1bf53bab4d1f9c45367f9d051f1668e2b
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76308992"
 ---
 ### <a name="authenticationresult-properties-in-msalnet"></a>AuthenticationResult-Eigenschaften in MSAL.NET
@@ -44,15 +44,15 @@ Im folgenden Diagramm ist die Struktur der `IAccount`-Schnittstelle dargestellt.
 
 Die `AccountId`-Klasse identifiziert ein Konto in einem bestimmten Mandanten mit den in der folgenden Tabelle aufgeführten Eigenschaften.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |----------|-------------|
 | `TenantId` | Eine Zeichenfolgendarstellung für eine GUID, bei der es sich um die ID des Mandanten handelt, in dem sich das Konto befindet. |
 | `ObjectId` | Eine Zeichenfolgendarstellung für eine GUID, bei der es sich um die ID des Benutzers handelt, der Besitzer des Kontos im Mandanten ist. |
-| `Identifier` | Eindeutiger Bezeichner für das Konto. `Identifier` ist die Verkettung von `ObjectId` und `TenantId`, durch ein Komma getrennt und nicht Base64-codiert. |
+| `Identifier` | Eindeutiger Bezeichner für das Konto. `Identifier` ist die Verkettung von `ObjectId` und `TenantId`, durch ein Komma getrennt. Sie sind nicht Base64-codiert. |
 
 Die `IAccount`-Schnittstelle stellt Informationen über ein einziges Konto dar. Ein und derselbe Benutzer kann in verschiedenen Mandanten vorhanden sein, was bedeutet, dass ein Benutzer über mehrere Konten verfügen kann. Die zugehörigen Member sind in der folgenden Tabelle aufgeführt.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |----------|-------------|
 | `Username` | Eine Zeichenfolge, die den anzeigbaren Wert im UPN-Format (UserPrincipalName) enthält, z. B. john.doe@contoso.com. Diese Zeichenfolge kann NULL sein. „HomeAccountId“ und „HomeAccountId.Identifier“ sind dagegen nie NULL. Diese Eigenschaft ersetzt die `DisplayableId`-Eigenschaft von `IUser` in früheren Versionen von MSAL.NET. |
 | `Environment` | Eine Zeichenfolge, die den Identitätsanbieter für dieses Konto (z. B. `login.microsoftonline.com`) enthält. Diese Eigenschaft ersetzt die `IdentityProvider`-Eigenschaft von `IUser`, mit der Ausnahme, dass `IdentityProvider` zusätzlich zur Cloudumgebung auch Informationen über den Mandanten enthielt. Hier umfasst der Wert nur den Host. |

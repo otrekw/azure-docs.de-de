@@ -4,18 +4,18 @@ description: Informationen zur Syntax von SQL-Aggregatfunktionen und Typen von A
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 03/16/2020
 ms.author: tisande
-ms.openlocfilehash: df9700dd51c8915ff28c34cf0a29c2f5e48baa44
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: 24acd1e9c13320244ff4c27abd13abeda6f70b2b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78897831"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79464460"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Aggregatfunktionen in Azure Cosmos DB
 
-Aggregatfunktionen führen eine Berechnung für eine Gruppe von Werten in der SELECT-Klausel durch und geben einen einzelnen Wert zurück. Bei der folgenden Abfrage wird beispielsweise die Anzahl von Elementen im `Families`-Container zurückgegeben:
+Aggregatfunktionen führen eine Berechnung für eine Gruppe von Werten in der `SELECT`-Klausel durch und geben einen einzelnen Wert zurück. Bei der folgenden Abfrage wird beispielsweise die Anzahl von Elementen im `Families`-Container zurückgegeben:
 
 ## <a name="examples"></a>Beispiele
 
@@ -61,7 +61,7 @@ Die Ergebnisse sind:
 
 ## <a name="types-of-aggregate-functions"></a>Typen von Aggregatfunktionen
 
-Die SQL-API unterstützt die folgenden Aggregatfunktionen. SUM und AVG werden für numerische Werte ausgeführt. COUNT, MIN und MAX werden für Zahlen, Zeichenfolgen, boolesche Werte und NULL-Werte verwendet.
+Die SQL-API unterstützt die folgenden Aggregatfunktionen. `SUM` und `AVG` werden für numerische Werte verwendet. `COUNT`, `MIN` und `MAX` werden für Zahlen, Zeichenfolgen, boolesche Werte und NULL-Werte verwendet.
 
 | Funktion | BESCHREIBUNG |
 |-------|-------------|
@@ -75,6 +75,10 @@ Sie können auch die Ergebnisse einer Array-Iteration aggregieren.
 
 > [!NOTE]
 > Im Daten-Explorer des Azure-Portals geben Aggregationsabfragen möglicherweise die teilweise aggregierten Ergebnisse für nur eine Abfrageseite zurück. Das SDK erzeugt einen einzelnen kumulativen Wert für alle Seiten. Zum Durchführen von Aggregationsabfragen mithilfe von Code benötigen Sie .NET SDK 1.12.0, .NET Core SDK 1.1.0 oder Java SDK 1.9.5 oder höher.
+
+## <a name="remarks"></a>Bemerkungen
+
+Diese Aggregatsystemfunktionen profitierten von einem [Bereichsindex](index-policy.md#includeexclude-strategy). Wenn Sie `COUNT`, `SUM`, `MIN`, `MAX` oder `AVG` für eine Eigenschaft erwarten, sollten Sie [den relevanten Pfad in die Indizierungsrichtlinie einfügen](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

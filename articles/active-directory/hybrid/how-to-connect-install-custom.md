@@ -14,12 +14,12 @@ ms.date: 11/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c99a6e018edd0806daac7cd429135e522f217f23
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: d5f83fa040de501adf3afa523086e100244fa619
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77159827"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331789"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Benutzerdefinierte Installation von Azure AD Connect
 Die **benutzerdefinierten Einstellungen** von Azure AD Connect werden verwendet, wenn Sie mehr Optionen für die Installation benötigen. Sie kommen zum Einsatz, wenn Sie über mehrere Gesamtstrukturen verfügen oder optionale Features konfigurieren möchten, die nicht Teil der Expressinstallation sind. Sie werden in allen Fällen verwendet, in denen die Option [**Expressinstallation**](how-to-connect-install-express.md) für Ihre Bereitstellung oder Topologie nicht ausreicht.
@@ -48,7 +48,7 @@ Nach der Installation der erforderlichen Komponenten werden Sie aufgefordert, di
 
 ![Benutzeranmeldung](./media/how-to-connect-install-custom/usersignin4.png)
 
-| Option zum einmaligen Anmelden | Beschreibung |
+| Option zum einmaligen Anmelden | BESCHREIBUNG |
 | --- | --- |
 | Kennworthashsynchronisierung |Benutzer können sich bei Microsoft Cloud Services wie Office 365 mit dem Kennwort anmelden, das sie auch in ihrem lokalen Netzwerk verwenden. Die Benutzerkennwörter werden über einen Kennworthash mit Azure AD synchronisiert, und die Authentifizierung erfolgt in der Cloud. Weitere Informationen finden Sie unter [Kennworthashsynchronisierung](how-to-connect-password-hash-synchronization.md). |
 |Passthrough-Authentifizierung|Benutzer können sich bei Microsoft Cloud Services wie Office 365 mit dem Kennwort anmelden, das sie auch in ihrem lokalen Netzwerk verwenden.  Das Benutzerkennwort wird zur Überprüfung an den lokalen Active Directory-Domänencontroller übergeben.
@@ -79,7 +79,7 @@ Zum Herstellen einer Verbindung mit Ihren Active Directory Domain Services benö
 
 Nachdem Sie den Namen der Gesamtstruktur eingegeben und auf **Verzeichnis hinzufügen** geklickt haben, wird ein Popupdialogfeld angezeigt, in dem Ihnen folgende Optionen angeboten werden:
 
-| Option | Beschreibung |
+| Option | BESCHREIBUNG |
 | --- | --- |
 | Erstellen eines neuen Kontos | Wählen Sie diese Option aus, wenn der Azure AD Connect-Assistent das AD DS-Konto erstellen soll, das von Azure AD Connect beim Synchronisieren der Verzeichnisse für die Verbindung mit der AD-Gesamtstruktur benötigt wird. Wenn Sie diese Option ausgewählt haben, geben Sie den Benutzernamen und das Kennwort für ein Administratorkonto des Unternehmens ein. Das angegebene Administratorkonto des Unternehmens wird vom Azure AD-Assistenten verwendet, um das erforderliche AD DS-Konto zu erstellen. Sie können den Domänenteil entweder im NetBIOS- oder FQDN-Format eingeben, also „FABRIKAM\administrator“ oder „fabrikam.com\administrator“. |
 | Vorhandenes Konto verwenden | Wählen Sie diese Option aus, wenn Sie ein vorhandenes AD DS-Konto angeben möchten, das von Azure AD Connect beim Synchronisieren der Verzeichnisse für die Verbindung mit der AD-Gesamtstruktur verwendet werden soll. Sie können den Domänenteil entweder im NetBIOS- oder FQDN-Format eingeben, also „FABRIKAM\syncuser“ oder „fabrikam.com\syncuser“. Dieses Konto kann ein normales Benutzerkonto sein, da nur die standardmäßigen Leseberechtigungen benötigt werden. Abhängig von Ihrem Szenario benötigen Sie jedoch möglicherweise weitere Berechtigungen. Weitere Informationen finden Sie unter [Azure AD Connect: Konten und Berechtigungen](reference-connect-accounts-permissions.md#create-the-ad-ds-connector-account). |
@@ -127,7 +127,7 @@ Mit dem Feature zum Abgleich über Gesamtstrukturen können Sie definieren, wie 
 
 ![Eindeutig](./media/how-to-connect-install-custom/unique2.png)
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 | --- | --- |
 | [Benutzer sind nur einmal in allen Gesamtstrukturen vorhanden.](plan-connect-topologies.md#multiple-forests-single-azure-ad-tenant) |Alle Benutzer werden in Azure AD jeweils als einzelne Objekte erstellt. Die Objekte werden nicht im Metaverse verknüpft. |
 | [E-Mail-Attribut](plan-connect-topologies.md#multiple-forests-single-azure-ad-tenant) |Diese Option verknüpft Benutzer und Kontakte, wenn dieses Attribut in verschiedenen Gesamtstrukturen denselben Wert aufweist. Verwenden Sie diese Option, wenn Ihre Kontakte mit GALSync erstellt wurden. Bei Verwendung dieser Option werden Benutzerobjekte, deren E-Mail-Attribut nicht aufgefüllt ist, nicht mit Azure AD synchronisiert. |
@@ -138,7 +138,7 @@ Mit dem Feature zum Abgleich über Gesamtstrukturen können Sie definieren, wie 
 #### <a name="select-how-users-should-be-identified-with-azure-ad---source-anchor"></a>Auswählen, wie Benutzer bei Azure AD identifiziert werden sollen – Quellanker
 Das sourceAnchor-Attribut ist während der Lebensdauer eines Benutzerobjekts unveränderlich. Das Attribut ist der Primärschlüssel, der den lokalen Benutzer mit dem Benutzer in Azure AD verknüpft.
 
-| Einstellung | Beschreibung |
+| Einstellung | BESCHREIBUNG |
 | --- | --- |
 | Ich möchte den Quellanker durch Azure verwalten lassen | Wählen Sie diese Option aus, wenn Azure AD das Attribut für Sie auswählen soll. Wenn Sie diese Option auswählen, wendet der Azure AD Connect-Assistent die Auswahllogik für das sourceAnchor-Attribut an, die im Abschnitt [Azure AD Connect: Entwurfskonzepte – Verwendung von „ms-DS-ConsistencyGuid“ als „sourceAnchor“](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). Nach Abschluss der benutzerdefinierten Installation informiert der Assistent Sie darüber, welches Attribut als Quellankerattribut ausgewählt wurde. |
 | Ein bestimmtes Attribut | Wählen Sie diese Option aus, wenn Sie ein vorhandenes AD-Attribut als sourceAnchor-Attribut angeben möchten. |
@@ -246,16 +246,16 @@ Das Konfigurieren von AD FS mit Azure AD Connect ist ganz einfach und mit wenige
 
 * Ein Server unter Windows Server 2012 R2 (oder höher) für den Verbundserver mit aktivierter Remoteverwaltung
 * Ein Server unter Windows Server 2012 R2 (oder höher) für den Webanwendungsproxy-Server mit aktivierter Remoteverwaltung
-* Ein SSL-Zertifikat für den Verbunddienstnamen, den Sie verwenden möchten (z.B. „sts.contoso.com“)
+* Ein TLS/SSL-Zertifikat für den Verbunddienstnamen, den Sie verwenden möchten (z.B. „sts.contoso.com“)
 
 >[!NOTE]
->Sie können das SSL-Zertifikat für Ihre AD FS-Farm mit Azure AD Connect aktualisieren, auch wenn Sie es nicht für die Verwaltung Ihrer Verbundvertrauensstellung verwenden.
+>Sie können ein TLS/SSL-Zertifikat für Ihre AD FS-Farm mit Azure AD Connect aktualisieren, auch wenn Sie es nicht für die Verwaltung Ihrer Verbundvertrauensstellung verwenden.
 
 ### <a name="ad-fs-configuration-pre-requisites"></a>Voraussetzungen für die AD FS-Konfiguration
 Vergewissern Sie sich, dass WinRM auf den Remoteservern aktiviert ist, damit Sie Ihre AD FS-Farm mithilfe von Azure AD Connect konfigurieren können. Vergewissern Sie sich, dass Sie die anderen Aufgaben unter [Voraussetzungen für die Verbundinstallation und -konfiguration](how-to-connect-install-prerequisites.md#prerequisites-for-federation-installation-and-configuration) abgeschlossen haben. Machen Sie sich außerdem unter [Tabelle 3: Azure AD Connect und Verbund-/WAP-Server](reference-connect-ports.md#table-3---azure-ad-connect-and-ad-fs-federation-serverswap) mit den Portanforderungen vertraut.
 
 ### <a name="create-a-new-ad-fs-farm-or-use-an-existing-ad-fs-farm"></a>Erstellen einer neuen AD FS-Farm oder Verwenden einer vorhandenen AD FS-Farm
-Sie können eine vorhandene AD FS-Farm verwenden oder eine neue AD FS-Farm erstellen. Wenn Sie eine neue Farm erstellen, müssen Sie ein SSL-Zertifikat bereitstellen. Bei Verwendung eines kennwortgeschützten SSL-Zertifikats werden Sie zur Eingabe des Kennworts aufgefordert.
+Sie können eine vorhandene AD FS-Farm verwenden oder eine neue AD FS-Farm erstellen. Wenn Sie eine neue Farm erstellen möchten, müssen Sie ein TLS/SSL-Zertifikat bereitstellen. Bei Verwendung eines kennwortgeschützten TLS/SSL-Zertifikats werden Sie zur Eingabe des Kennworts aufgefordert.
 
 ![AD FS-Farm](./media/how-to-connect-install-custom/adfs1.png)
 
@@ -320,7 +320,7 @@ Wenn Sie die Domäne in einem Verbund verwenden möchten, stellt Azure AD Connec
 ## <a name="configuring-federation-with-pingfederate"></a>Konfigurieren des Verbunds mit PingFederate
 Das Konfigurieren von PingFederate mit Azure AD Connect ist ganz einfach und mit wenigen Mausklicks erledigt. Allerdings ist Folgendes erforderlich:
 - PingFederate 8.4 oder höher.  Weitere Informationen finden Sie unter [PingFederate Integration with Azure Active Directory and Office 365](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html) (PingFederate-Integration in Azure Active Directory und Office 365)
-- Ein SSL-Zertifikat für den Verbunddienstnamen, den Sie verwenden möchten (z.B. „sts.contoso.com“)
+- Ein TLS/SSL-Zertifikat für den Verbunddienstnamen, den Sie verwenden möchten (z.B. „sts.contoso.com“)
 
 ### <a name="verify-the-domain"></a>Überprüfen der Domäne
 Nachdem Sie den Verbund mit PingFederate ausgewählt wurde, werden Sie dazu aufgefordert, die Domäne zu überprüfen, mit der ein Verbund hergestellt werden soll.  Wählen Sie im Dropdownfeld die Domäne aus.

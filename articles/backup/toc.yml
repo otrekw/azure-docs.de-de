@@ -166,10 +166,10 @@
           href: backup-azure-manage-mars.md
     - name: Sichern von Azure-Dateifreigaben
       items:
+        - name: Übersicht
+          href: azure-file-share-backup-overview.md
         - name: Über das Azure-Portal
           items:
-            - name: Übersicht
-              href: azure-file-share-backup-overview.md
             - name: Backup
               href: backup-afs.md
             - name: Restore
@@ -338,6 +338,8 @@
           href: backup-rm-template-samples.md
     - name: Sicherheit
       items:
+        - name: Übersicht
+          href: security-overview.md
         - name: Rollenbasierte Access Control
           href: backup-rbac-rs-vault.md
         - name: Sicherheit für Cloudworkloads
@@ -384,6 +386,8 @@
       href: /azure/templates/microsoft.recoveryservices/allversions
 - name: Ressourcen
   items:
+    - name: Kompatibilität
+      href: compliance-offerings.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: MSDN-Forum

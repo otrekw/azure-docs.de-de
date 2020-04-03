@@ -12,12 +12,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21ceacf27f92781b40a856b0c0a4d627d41a0738
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 13a5fc216abc890c19ce3a2d75335431fe2a6799
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028566"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79528641"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrieren vom Verbund zur Passthrough-Authentifizierung für Azure Active Directory
 
@@ -76,7 +76,7 @@ Führen Sie die Schritte in den folgenden Abschnitten aus, um sich darüber zu i
 2. Wählen Sie auf der Seite **Weitere Aufgaben** die Option **Aktuelle Konfiguration anzeigen** und anschließend **Weiter**.<br />
  
    ![Screenshot: Option „Aktuelle Konfiguration anzeigen“ auf der Seite „Weitere Aufgaben“](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image2.png)<br />
-3. Scrollen Sie auf der Seite **Lösung prüfen** zu **Active Directory-Verbunddienste (AD FS)** .<br />
+3. Scrollen Sie unter **Zusätzliche Tasks > Verbund verwalten** zu **Active Directory-Verbunddienste (AD FS)** .<br />
 
    * Wenn die AD FS-Konfiguration in diesem Abschnitt angezeigt wird, können Sie mit Sicherheit davon ausgehen, dass AD FS ursprünglich mit Azure AD Connect konfiguriert wurde. Sie können Ihre Domänen von Verbundidentität auf die verwaltete Identität umstellen, indem Sie die Azure AD Connect-Option **Benutzeranmeldung ändern** verwenden. Weitere Informationen zum Prozess finden Sie im Abschnitt **Option A: Konfigurieren der Passthrough-Authentifizierung mit Azure AD Connect**.
    * Wenn AD FS in den aktuellen Einstellungen nicht aufgeführt ist, müssen Sie Ihre Domänen per PowerShell manuell von der Verbundidentität auf die verwaltete Identität umstellen. Weitere Informationen zu diesem Prozess finden Sie im Abschnitt **Option B: Wechseln vom Verbund zur Passthrough-Authentifizierung mit Azure AD Connect und PowerShell**.

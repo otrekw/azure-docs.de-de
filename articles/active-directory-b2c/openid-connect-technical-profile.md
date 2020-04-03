@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/05/2020
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8e8a56fdfd57b44677cf5459eb1a4e6e46e6bdae
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: e259a57a9cd6b24362862ffd6cb738157ca912d5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78399074"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80332765"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OpenID Connect-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -91,6 +91,16 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 | MarkAsFailureOnStatusCode5xx | Nein | Gibt an, ob eine Anforderung an einen externen Dienst als fehlerhaft gekennzeichnet werden soll, wenn der HTTP-Statuscode im Bereich 5xx liegt. Der Standardwert lautet `false`. |
 | DiscoverMetadataByTokenIssuer | Nein | Gibt an, ob die OIDC-Metadaten mithilfe des Ausstellers im JWT-Token ermittelt werden sollen. |
 | IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
+
+### <a name="ui-elements"></a>Benutzeroberflächenelemente
+ 
+Die folgenden Einstellungen können verwendet werden, um die Fehlermeldung zu konfigurieren, die bei einem Fehler angezeigt wird. Die Metadaten sollten im technischen OpenID Connect-Profil konfiguriert werden. Die Fehlermeldungen können [lokalisiert](localization-string-ids.md#sign-up-or-sign-in-error-messages) werden.
+
+| attribute | Erforderlich | BESCHREIBUNG |
+| --------- | -------- | ----------- |
+| UserMessageIfClaimsPrincipalDoesNotExist | Nein | Die Meldung, die dem Benutzer angezeigt werden soll, wenn ein Konto mit dem angegebenen Benutzernamen nicht im Verzeichnis gefunden wurde. |
+| UserMessageIfInvalidPassword | Nein | Die Meldung, die dem Benutzer angezeigt werden soll, wenn das Kennwort falsch ist. |
+| UserMessageIfOldPasswordUsed| Nein |  Die Meldung, die dem Benutzer angezeigt werden soll, wenn ein altes Kennwort verwendet wurde.|
 
 ## <a name="cryptographic-keys"></a>Kryptografische Schlüssel
 

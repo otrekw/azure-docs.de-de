@@ -1,6 +1,6 @@
 ---
-title: Exportieren oder Importieren Ihrer Bereitstellungskonfiguration mithilfe von Microsoft Graph-API | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die Bereitstellungskonfiguration mithilfe von Microsoft Graph-API exportieren und importieren.
+title: Exportieren Ihrer Bereitstellungskonfiguration und Rollback auf einen als funktionierend bekannten Zustand zur Notfallwiederherstellung | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Ihre Bereitstellungskonfiguration exportieren und einen Rollback auf einen als funktionierend bekannten Zustand zur Notfallwiederherstellung ausführen.
 services: active-directory
 author: cmmdesai
 documentationcenter: na
@@ -12,28 +12,44 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/09/2019
+ms.date: 03/19/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2fa80726875c82cfa4b5d4cf6a14f4e0dae1871
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: a92a40a5fe3067cf96d3c742102c9ca66078cd5d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367794"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80051311"
 ---
-# <a name="export-or-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>Exportieren oder Importieren Ihrer Bereitstellungskonfiguration mithilfe von Microsoft Graph-API
+# <a name="export-your-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Exportieren Ihrer Bereitstellungskonfiguration und Rollback auf einen als funktionierend bekannten Zustand
 
+## <a name="export-and-import-your-provisioning-configuration-from-the-azure-portal"></a>Exportieren und Importieren Ihrer Bereitstellungskonfiguration im Azure-Portal
+
+### <a name="how-can-i-export-my-provisioning-configuration"></a>Wie kann ich meine Bereitstellungskonfiguration exportieren?
+So exportieren Sie Ihre Konfiguration
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) im linken Navigationsbereich **Azure Active Directory** aus.
+2. Wählen Sie im Bereich **Azure Active Directory** die Option **Unternehmensanwendungen** aus, und wählen Sie dann Ihre Anwendung aus.
+3. Wählen Sie im linken Navigationsbereich die Option **Bereitstellung** aus. Klicken Sie auf der Seite mit der Bereitstellungskonfiguration auf **Attributzuordnungen**, dann auf **Erweiterte Optionen anzeigen** und schließlich auf **Schema überprüfen**. Dadurch wird der Schema-Editor aufgerufen. 
+5. Klicken Sie in der Befehlsleiste oben auf der Seite auf „Download“, um Ihr Schema herunterzuladen.
+
+### <a name="disaster-recovery---roll-back-to-a-known-good-state"></a>Notfallwiederherstellung – Rollback auf einen als funktionierend bekannten Zustand
+Durch das Exportieren und Speichern Ihrer Konfiguration können Sie ein Rollback auf eine frühere Version Ihrer Konfiguration ausführen. Wir empfehlen, die Bereitstellungskonfiguration zu exportieren und zu speichern, damit Sie sie später jederzeit bei Änderungen an den Attributzuordnungen oder Bereichsfiltern verwenden können. Sie müssen nur die JSON-Datei, die Sie in den vorherigen Schritten heruntergeladen haben, öffnen, den gesamten Inhalt der JSON-Datei kopieren, den gesamten Inhalt der JSON-Nutzlast im Schema-Editor ersetzen und einen Speichervorgang ausführen. Falls ein aktiver Bereitstellungszyklus vorhanden ist, wird er abgeschlossen. Beim nächsten Zyklus wird dann das aktualisierte Schema verwendet. Der nächste Zyklus ist zudem ein Startzyklus, bei dem alle Benutzer und Gruppen anhand der neuen Konfiguration ausgewertet werden. Berücksichtigen Sie bei einem Rollback auf eine frühere Konfiguration die folgenden Aspekte:
+* Die Benutzer werden erneut ausgewertet, um zu bestimmen, ob sie zum Bereich gehören sollen. Wenn sich die Bereichsfilter geändert haben und ein Benutzer nicht mehr zum Bereich gehört, wird er deaktiviert. Auch wenn dieses Verhalten in den meisten Fällen wünschenswert ist, gibt es auch Momente, in denen Sie das verhindern möchten. In diesen Fällen können Sie die Funktion [Löschungen bei „Nicht im Bereich“ überspringen](https://docs.microsoft.com/azure/active-directory/app-provisioning/skip-out-of-scope-deletions). 
+* Durch die Änderung der Bereitstellungskonfiguration wird der Dienst neu gestartet, und ein [Startzyklus](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#provisioning-cycles-initial-and-incremental) wird ausgelöst.
+
+
+## <a name="export-and-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>Exportieren und Importieren Ihrer Bereitstellungskonfiguration mithilfe der Microsoft Graph-API
 Mit Microsoft Graph-API und dem Microsoft Graph-Tester können Sie die Attributzuordnungen und das Schema Ihrer Benutzerbereitstellung in eine JSON-Datei exportieren und wieder in Azure AD importieren. Sie können die hier aufgeführten Schritte auch verwenden, um eine Sicherung Ihrer Bereitstellungskonfiguration zu erstellen. 
 
-## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Schritt 1: Abrufen der Dienstprinzipal-ID der Bereitstellungs-App (Objekt-ID)
+### <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Schritt 1: Abrufen der Dienstprinzipal-ID der Bereitstellungs-App (Objekt-ID)
 
-1. Starten Sie das [Azure-Portal](https://portal.azure.com), und navigieren Sie zum Abschnitt „Eigenschaften“ Ihrer Bereitstellungsanwendung. Wenn Sie z. B. die Zuordnung Ihrer *Anwendung für die Benutzerbereitstellung von Workday in AD* exportieren möchten, navigieren Sie zum Abschnitt „Eigenschaften“ dieser App. 
+1. Starten Sie das [Azure-Portal](https://portal.azure.com), und navigieren Sie zum Abschnitt „Eigenschaften“ Ihrer Bereitstellungsanwendung. Wenn Sie beispielsweise die Zuordnung Ihrer *Anwendung für die Benutzerbereitstellung von Workday in AD* exportieren möchten, navigieren Sie zum Abschnitt „Eigenschaften“ dieser App. 
 1. Kopieren Sie im Abschnitt „Eigenschaften“ Ihrer Bereitstellungs-App den GUID-Wert, der dem Feld *Objekt-ID* zugeordnet ist. Dieser Wert wird auch als die **ServicePrincipalId** Ihrer App bezeichnet und in Microsoft Graph-Tester-Vorgängen verwendet.
 
    ![Dienstprinzipal-ID der Workday-App](./media/export-import-provisioning-configuration/wd_export_01.png)
 
-## <a name="step-2-sign-into-microsoft-graph-explorer"></a>Schritt 2: Anmelden bei Microsoft Graph-Tester
+### <a name="step-2-sign-into-microsoft-graph-explorer"></a>Schritt 2: Anmelden bei Microsoft Graph-Tester
 
 1. Starten Sie den [Microsoft Graph-Tester](https://developer.microsoft.com/graph/graph-explorer).
 1. Klicken Sie auf die Schaltfläche „Mit Microsoft anmelden“, und melden Sie sich mit den globalen Azure AD-Anmeldeinformationen oder mit den Anmeldeinformationen für den App-Administrator an.
@@ -42,7 +58,7 @@ Mit Microsoft Graph-API und dem Microsoft Graph-Tester können Sie die Attributz
 
 1. Nach der erfolgreichen Anmeldung sehen Sie die Details des Benutzerkontos im linken Bereich.
 
-## <a name="step-3-retrieve-the-provisioning-job-id-of-the-provisioning-app"></a>Schritt 3: Abrufen der Bereitstellungsauftrags-ID der Bereitstellungs-App
+### <a name="step-3-retrieve-the-provisioning-job-id-of-the-provisioning-app"></a>Schritt 3: Abrufen der Bereitstellungsauftrags-ID der Bereitstellungs-App
 
 Führen Sie im Microsoft Graph-Tester die folgende GET-Abfrage durch und ersetzen Sie [servicePrincipalId] durch die in [Schritt 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id) extrahierte **ServicePrincipalId**.
 
@@ -54,7 +70,7 @@ Sie erhalten eine Antwort, wie unten dargestellt. Kopieren Sie das „id attribu
 
    [![ID des Bereitstellungsauftrags](./media/export-import-provisioning-configuration/wd_export_03.png)](./media/export-import-provisioning-configuration/wd_export_03.png#lightbox)
 
-## <a name="step-4-download-the-provisioning-schema"></a>Schritt 4: Herunterladen des Bereitstellungsschemas
+### <a name="step-4-download-the-provisioning-schema"></a>Schritt 4: Herunterladen des Bereitstellungsschemas
 
 Führen Sie im Microsoft Graph-Tester die folgende GET-Abfrage durch und ersetzen Sie [servicePrincipalId] und [ProvisioningJobId] durch die in den vorherigen Schritten abgerufen Werten für „ServicePrincipalId“ und „ProvisioningJobId“.
 
@@ -64,7 +80,7 @@ Führen Sie im Microsoft Graph-Tester die folgende GET-Abfrage durch und ersetze
 
 Kopieren Sie das JSON-Objekt aus der Antwort, und speichern Sie sie in einer Datei, um eine Sicherung des Schemas zu erstellen.
 
-## <a name="step-5-import-the-provisioning-schema"></a>Schritt 5: Importieren des Bereitstellungsschemas
+### <a name="step-5-import-the-provisioning-schema"></a>Schritt 5: Importieren des Bereitstellungsschemas
 
 > [!CAUTION]
 > Führen Sie diesen Schritt nur aus, wenn Sie das Schema für eine Konfiguration ändern müssen, die nicht über das Azure-Portal geändert werden kann, oder wenn Sie die Konfiguration aus einer zuvor gesicherten Datei mit einem gültigen und funktionierenden Schema wiederherstellen müssen.

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa66299753ab11dcad280361cb5fb6f0c31ef242
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 7fe58ae95c8d9c6b93c7e92e093541af009781ce
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368174"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454430"
 ---
 # <a name="what-is-password-writeback"></a>Was ist Kennwortrückschreiben?
 
@@ -106,7 +106,7 @@ Das Kennwortrückschreiben ist ein äußerst sicherer Dienst. Zum Schutz Ihrer I
    * Nach der Erstellung des Service Bus Relays wird ein sicherer symmetrischer Schlüssel erstellt, mit dem das Kennwort verschlüsselt wird, bevor es gesendet wird. Dieser Schlüssel liegt ausschließlich im Speicher für geheime Schlüssel Ihres Unternehmens in der Cloud vor, der streng geschützt und überwacht wird, wie jedes andere Kennwort im Verzeichnis.
 * **Transport Layer Security (TLS) nach Industriestandard**
    1. Beim Zurücksetzen oder Ändern eines Kennworts in der Cloud wird das Klartextkennwort mit Ihrem öffentlichen Schlüssel verschlüsselt.
-   1. Das verschlüsselte Kennwort wird in eine HTTPS-Nachricht eingefügt, die über einen über SSL-Zertifikate von Microsoft verschlüsselten Kanal an Ihr Service Bus Relay gesendet wird.
+   1. Das verschlüsselte Kennwort wird in eine HTTPS-Nachricht eingefügt, die über einen über TLS/SSL-Zertifikate von Microsoft verschlüsselten Kanal an Ihr Service Bus Relay gesendet wird.
    1. Nachdem die Nachricht beim Service Bus eingetroffen ist, wird Ihr lokaler Agent reaktiviert und in Service Bus mithilfe des sicheren Kennworts authentifiziert, das zuvor generiert wurde.
    1. Der lokale Agent liest die verschlüsselte Nachricht und entschlüsselt sie mit dem privaten Schlüssel.
    1. Der lokale Agent versucht, das Kennwort über die SetPassword-API von AD DS festzulegen. In diesem Schritt kann Ihre lokale Active Directory-Kennwortrichtlinie (so z.B. die Komplexität, das Alter, der Verlauf, die Filter usw.) in der Cloud erzwungen werden.

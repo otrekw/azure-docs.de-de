@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: a5dae30c8b8f43602581b39005389211da83cb9e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: ab3ab25df6ce41d4045a270754830d501fe40689
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77022304"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80347174"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses
 
@@ -69,7 +69,8 @@ Laden Sie die Erweiterung in Ihrem Browser herunter, und installieren Sie sie:
 
 - **Mozilla Firefox** Wechseln Sie auf der Firefox-Seite **Firefox Add-Ons** zu [My Apps Secure Sign-in Extension](https://addons.mozilla.org/firefox/addon/access-panel-extension/), und klicken Sie dann auf **Zu Firefox hinzufügen**.
 
-- **Microsoft Edge** Wechseln Sie im Microsoft Store zu [My Apps Secure Sign-in Extension](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab), und klicken Sie dann auf **Herunterladen**.
+- **Microsoft Edge** Wechseln Sie im Microsoft Store zu [My Apps Secure Sign-in Extension](https://www.microsoft.com/p/my-apps-secure-sign-in-extension/9pc9sckkzk84?rtc=1&activetab=pivot%3Aoverviewtab), und wählen Sie dann **Herunterladen** aus, um die Erweiterung für Microsoft Edge Legacy abzurufen.  
+Wenn Sie den neuen Microsoft Edge-Browser (Edge Chromium) verwenden, können Sie die Erweiterung aus dem [Microsoft Store „Microsoft Edge Add-Ons“](https://microsoftedge.microsoft.com/addons/category/EdgeExtensionsEditorsPick) abrufen.
 
 Rechts neben der **Adressleiste** wird ein Symbol hinzugefügt, über das Sie sich anmelden und die Erweiterung anpassen können.
 

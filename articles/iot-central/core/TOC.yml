@@ -17,7 +17,7 @@
       href: quick-configure-rules.md
     - name: 4. Überwachen Ihrer Geräte
       href: quick-monitor-devices.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Herstellen einer Verbindung
       items:
@@ -49,7 +49,7 @@
       href: concepts-get-connected.md
     - name: Verbinden von IoT Edge-Geräten
       href: concepts-iot-edge.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Herstellen einer Verbindung
       items:
@@ -81,14 +81,10 @@
           href: howto-create-personal-dashboards.md
         - name: Ausführen eines Auftrags
           href: howto-run-a-job.md
-        - name: Gerätevorlagenversion
-          href: howto-version-device-template.md
     - name: Transformieren
       items:
         - name: Exportieren von Daten in Ziele in Azure
           href: howto-export-data.md
-        - name: Erkunden der IoT Central-APIs
-          href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
         - name: Erstellen von Webhooks für Regeln
           href: howto-create-webhooks.md
         - name: Verbinden von Azure Monitor-Aktionsgruppen für Regeln

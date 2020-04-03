@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/03/2020
+ms.date: 03/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83133fed401dac51a8dd6a653ccfd86117e956ed
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 562b551bc8a46a45135bf6a9a8e328b4b0e74f98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046457"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80048248"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurieren der Ablaufrichtlinie für Office 365-Gruppen
 
@@ -42,7 +42,7 @@ Informationen zum Herunterladen und Installieren der Azure AD-PowerShell-Cmdlets
 
 ## <a name="activity-based-automatic-renewal"></a>Aktivitätsbasierte automatische Erneuerung
 
-Mit Azure AD-Intelligence werden Gruppen nun automatisch erneuert, je nachdem, ob sie kürzlich verwendet wurden. Durch dieses Feature müssen Gruppenbesitzer nicht mehr manuell eingreifen, da es auf Benutzeraktivität von Gruppen in Office 365-Diensten wie Outlook, SharePoint, Teams oder Yammer basiert. Wenn z. B. ein Besitzer oder ein Gruppenmitglied ein Dokument in SharePoint hochlädt, einen Teams-Kanal besucht oder eine E-Mail an die Gruppe in Outlook sendet, wird die Gruppe automatisch erneuert, und der Besitzer erhält keine Benachrichtigung zur Erneuerung.
+Mit Azure AD-Intelligence werden Gruppen nun automatisch erneuert, je nachdem, ob sie kürzlich verwendet wurden. Durch dieses Feature müssen Gruppenbesitzer nicht mehr manuell eingreifen, da es auf der Benutzeraktivität in Gruppen in Office 365-Diensten wie Outlook, SharePoint oder Teams basiert. Wenn z. B. ein Besitzer oder ein Gruppenmitglied ein Dokument in SharePoint hochlädt, einen Teams-Kanal besucht oder eine E-Mail an die Gruppe in Outlook sendet, wird die Gruppe automatisch erneuert, und der Besitzer erhält keine Benachrichtigung zur Erneuerung.
 
 ### <a name="activities-that-automatically-renew-group-expiration"></a>Aktivitäten, durch die der Ablauf der Gruppe automatisch verlängert wird
 
@@ -98,7 +98,7 @@ Werden Gruppen nicht automatisch erneuert, werden E-Mail-Benachrichtigungen wie 
 
 ![E-Mail-Benachrichtigungen zum Ablauf](./media/groups-lifecycle/expiration-notification.png)
 
-Aus der Benachrichtigungs-E-Mail zu **Gruppe verlängern** können Gruppenbesitzer direkt auf die Seite mit den Gruppendetails im Zugriffsbereich zugreifen. Auf dieser Seite erhalten Benutzer weitere Informationen zur Gruppe, z.B. Beschreibung, Zeitpunkt der letzten Verlängerung, Ablaufzeitpunkt und Möglichkeit zur Verlängerung der Gruppe. Die Seite mit den Gruppendetails enthält jetzt auch Links zu den Office 365-Gruppenressourcen, sodass der Gruppenbesitzer den Inhalt und die Aktivitäten der Gruppe bequem anzeigen kann.
+Aus der Benachrichtigungs-E-Mail zu **Gruppe verlängern** können Gruppenbesitzer direkt auf die Seite mit den Gruppendetails im [Zugriffsbereich](https://account.activedirectory.windowsazure.com/r#/applications) zugreifen. Auf dieser Seite erhalten Benutzer weitere Informationen zur Gruppe, z.B. Beschreibung, Zeitpunkt der letzten Verlängerung, Ablaufzeitpunkt und Möglichkeit zur Verlängerung der Gruppe. Die Seite mit den Gruppendetails enthält jetzt auch Links zu den Office 365-Gruppenressourcen, sodass der Gruppenbesitzer den Inhalt und die Aktivitäten der Gruppe bequem anzeigen kann.
 
 Wenn eine Gruppe abläuft, wird die Gruppe einen Tag nach dem Ablaufdatum gelöscht. Eine E-Mail-Benachrichtigung wie diese wird an die Office 365-Gruppenbesitzer gesendet, um sie über den Ablauf und die nachfolgende Löschung ihrer Office 365-Gruppe zu informieren.
 

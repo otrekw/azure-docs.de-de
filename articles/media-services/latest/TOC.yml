@@ -13,7 +13,7 @@
     - name: Liveereignis mit Portal und Wirecast
       displayName: 'live, event, portal, wirecast'
       href: live-events-wirecast-quickstart.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Codieren von Remotedateien und Streamen von Videos
       items:
@@ -197,7 +197,7 @@
         - name: Hinweise zur Migration
           href: migrate-from-v2-to-v3.md
           displayName: naming
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Erste Schritte
       items:
@@ -401,7 +401,7 @@
           href: 'https://aka.ms/ams-v3-ruby-sdk'
     - name: Azure Media Services Explorer
       href: 'https://github.com/Azure/Azure-Media-Services-Explorer'
-    - name: Kontingente und Einschränkungen
+    - name: Kontingente und Grenzwerte
       href: limits-quotas-constraints.md
     - name: Azure-Clouds und -Regionen
       href: azure-clouds-regions.md

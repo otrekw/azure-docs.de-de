@@ -1,17 +1,17 @@
 ---
 title: Indizierungsrichtlinien für Azure Cosmos DB
 description: In diesem Artikel werden das Konfigurieren und Ändern der Standardindizierungsrichtlinie zur automatischen Indizierung und zur Steigerung der Leistung in Azure Cosmos DB erläutert.
-author: ThomasWeiss
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/10/2019
-ms.author: thweiss
-ms.openlocfilehash: 886d17098259ddbb78698a3c1280f797e370c714
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.date: 03/26/2020
+ms.author: tisande
+ms.openlocfilehash: 930f156ebec76be860e7af02d41540ce67982f92
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597161"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292067"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indizierungsrichtlinien in Azure Cosmos DB
 
@@ -30,11 +30,11 @@ Azure Cosmos DB unterstützt zwei Indizierungsmodi:
 - **Keine:** Die Indizierung ist für den Container deaktiviert. Dies wird häufig verwendet, wenn ein Container als reiner Schlüssel-Wert-Speicher verwendet wird, für den keine sekundären Indizes erforderlich sind. Sie kann auch verwendet werden, um die Leistung von Massenvorgängen zu verbessern. Nach Abschluss der Massenvorgänge kann der Indexmodus auf „Konsistent“ festgelegt und dann mit [IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk-v2) überwacht werden, bis er abgeschlossen ist.
 
 > [!NOTE]
-> Cosmos DB unterstützt auch einen verzögerten Indizierungsmodus. Bei der verzögerten Indizierung werden Updates des Indexes mit einer wesentlich niedrigeren Prioritätsstufe ausgeführt, wenn die Engine keine andere Arbeit ausführt. Dies kann zu **inkonsistenten oder unvollständigen** Abfrageergebnissen führen. Außerdem bietet die Verwendung der verzögerten Indizierung anstelle von „Keine“ für Massenvorgänge auch keinen Vorteil, da Änderungen am Indizierungsmodus bewirken, dass der Index gelöscht und neu erstellt wird. Aus diesen Gründen raten wir unseren Kunden von der Verwendung ab. Wenn Sie die Leistung für Massenvorgänge verbessern möchten, legen Sie den Indizierungsmodus auf „Keine“ fest, kehren Sie dann zum konsistenten Modus zurück, und überwachen Sie die `IndexTransformationProgress`-Eigenschaft im Container bis zum Abschluss.
+> Azure Cosmos DB unterstützt auch einen verzögerten Indizierungsmodus. Bei der verzögerten Indizierung werden Updates des Indexes mit einer wesentlich niedrigeren Prioritätsstufe ausgeführt, wenn die Engine keine andere Arbeit ausführt. Dies kann zu **inkonsistenten oder unvollständigen** Abfrageergebnissen führen. Wenn Sie beabsichtigen, einen Cosmos-Container abzufragen, sollten Sie nicht die verzögerte Indizierung verwenden.
 
 Diese Indizierungsrichtlinie ist standardmäßig auf `automatic` festgelegt. Hierzu wird die `automatic`-Eigenschaft der Indizierungsrichtlinie auf `true` festgelegt. Ist diese Eigenschaft auf `true` festgelegt, kann Azure Cosmos DB Dokumente automatisch indizieren, während sie geschrieben werden.
 
-## <a name="including-and-excluding-property-paths"></a>Ein- und Ausschließen von Eigenschaftenpfaden
+## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a> Ein- und Ausschließen von Eigenschaftenpfaden
 
 Mit einer benutzerdefinierten Indizierungsrichtlinie können Eigenschaftenpfade angegeben werden, die explizit in die Indizierung eingeschlossen oder von ihr ausgeschlossen werden. Durch das Optimieren der Anzahl der Pfade, die indiziert werden, können Sie das Speichervolumen, das von Ihrem Container verwendet wird, und die Latenz von Schreibvorgängen verringern. Diese Pfade werden anhand [der Methode, die im Übersichtsabschnitt zur Indizierung beschrieben wird](index-overview.md#from-trees-to-property-paths), definiert. Dabei gelten die folgenden Ergänzungen:
 
@@ -75,7 +75,9 @@ Jede Indizierungsrichtlinie muss den Stammpfad `/*` entweder als eingeschlossene
 
 - Für Pfade mit regulären Zeichen, die alphanumerische Zeichen und Unterstriche (_) enthalten, müssen Sie die Pfadzeichenkette nicht mit doppelten Anführungszeichen als Escapezeichen umgeben (z.B. "/Pfad/?"). Für Pfade mit anderen Sonderzeichen müssen Sie die Pfadzeichenkette mit doppelten Anführungszeichen als Escapezeichen umgeben (z.B. "/\"Pfad-abc\"/?"). Wenn Sie Sonderzeichen in Ihrem Pfad erwarten, können Sie aus Sicherheitsgründen jeden Pfad mit Escapezeichen umgeben. Funktionell macht es keinen Unterschied, ob Sie jedem Pfad mit Escapezeichen umgeben oder nur diejenigen mit Sonderzeichen.
 
-- Die Systemeigenschaft „etag“ wird von der Indizierung standardmäßig ausgeschlossen, sofern sie nicht zum für die Indizierung eingeschlossenen Pfad hinzugefügt wird.
+- Die Systemeigenschaft `_etag` wird von der Indizierung standardmäßig ausgeschlossen, sofern sie nicht zum für die Indizierung eingeschlossenen Pfad hinzugefügt wird.
+
+- Wenn der Indizierungsmodus auf **Konsistent** festgelegt ist, werden die Systemeigenschaften `id` und `_ts` automatisch indiziert.
 
 Beim Ein- und Ausschließen von Pfaden begegnen Ihnen unter Umständen folgende Attribute:
 
@@ -95,7 +97,7 @@ Ohne Angabe haben diese Eigenschaften die folgenden Standardwerte:
 
 Exemplarische Indizierungsrichtlinien zum Ein- und Ausschließen von Pfaden finden Sie in [diesem Abschnitt](how-to-manage-indexing-policy.md#indexing-policy-examples).
 
-## <a name="spatial-indexes"></a>Räumliche Indizes
+## <a name="spatial-indexes"></a>Räumlichkeitsindizes
 
 Wenn Sie in der Indizierungsrichtlinie einen räumlichen Pfad definieren, müssen Sie definieren, welche Art (```type```) von Index auf diesen Pfad angewendet werden soll. Für räumliche Indizes stehen folgende Arten zur Verfügung:
 
@@ -246,10 +248,10 @@ Wenn der Modus der neuen Indizierungsrichtlinie auf „Konsistent“ festgelegt 
 
 Für die Funktion [Gültigkeitsdauer](time-to-live.md) (Time-to-Live, TTL) muss die Indizierung für den Container aktiviert sein. Dies bedeutet Folgendes:
 
-- Es ist nicht möglich, die Gültigkeitsdauer (TTL) für einen Container zu aktivieren, wenn dessen Indizierungsmodus auf „Keine“ festgelegt ist.
-- Es ist nicht möglich, den Indizierungsmodus für einen Container, in dem die Gültigkeitsdauer (TTL) aktiviert ist, auf „Keine“ festzulegen.
+- Es ist nicht möglich, die TTL für einen Container zu aktivieren, wenn dessen Indizierungsmodus auf „Keine“ festgelegt ist.
+- Es ist nicht möglich, den Indizierungsmodus für einen Container, in dem die TTL aktiviert ist, auf „Keine“ festzulegen.
 
-Für Szenarien, in denen kein Eigenschaftenpfad indiziert werden muss, aber die Gültigkeitsdauer (TTL) erforderlich ist, können Sie eine Indizierungsrichtlinie mit Folgendem verwenden:
+Für Szenarien, in denen kein Eigenschaftenpfad indiziert werden muss, aber die TTL erforderlich ist, können Sie eine Indizierungsrichtlinie mit Folgendem verwenden:
 
 - Der Indizierungsmodus ist auf „Konsistent“ festgelegt.
 - Es wurde kein Pfad eingeschlossenen.

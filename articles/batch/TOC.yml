@@ -15,7 +15,7 @@
       href: quick-run-dotnet.md
     - name: Ausführen eines Batch-Auftrags – Python
       href: quick-run-python.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Parallele Dateiverarbeitung – .NET
       href: tutorial-parallel-dotnet.md
@@ -65,10 +65,12 @@
       href: batch-compute-node-environment-variables.md
     - name: Integration von Batch in Azure-Richtlinien
       href: batch-integration-policies.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Verwalten von Batch-Konten
       items:
+        - name: Verwalten Ihres Kontos
+          href: batch-manage-account-basics.md
         - name: Verwalten von Batch-Konten mit dem Portal
           href: batch-account-create-portal.md
         - name: Verwalten von Batch-Konten mit Batch Management .NET
@@ -83,8 +85,12 @@
           href: batch-aad-auth-management.md
         - name: Sicherer Zugriff auf Key Vault mit Batch
           href: credential-access-key-vault.md
+    - name: Verwenden von Anwendungspaketen
+      href: batch-application-packages.md
     - name: Kopieren von Dateien und Anwendungen auf Poolknoten
       items:
+        - name: Kopieren von Anwendungen und Daten auf Poolknoten
+          href: batch-applications-to-pool-nodes.md
         - name: Verwenden von Anwendungspaketen
           href: batch-application-packages.md
         - name: Erstellen von Ressourcendateien
