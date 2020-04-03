@@ -9,19 +9,19 @@ ms.service: germany
 ms.date: 12/12/2019
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: e4997ff1bc9f910660ded739380f685de23c28f9
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 45dee04601dd2d6ffb1dba79ccf81c90d859af08
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78331205"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548243"
 ---
 # <a name="migrate-compute-resources-to-global-azure"></a>Migrieren von Computeressourcen zu Azure weltweit
 
 > [!IMPORTANT]
 > Seit [August 2018](https://news.microsoft.com/europe/2018/08/31/microsoft-to-deliver-cloud-services-from-new-datacentres-in-germany-in-2019-to-meet-evolving-customer-needs/) haben wir keine neuen Kunden akzeptiert und keine neuen Features und Dienste an den ursprünglichen Microsoft Cloud Deutschland-Standorten bereitgestellt.
 >
-> Aufgrund der Weiterentwicklung der Kundenbedürfnisse haben wir vor Kurzem zwei neue Rechenzentrumsregionen in Deutschland [gestartet](https://azure.microsoft.com/blog/microsoft-azure-available-from-new-cloud-regions-in-germany/), die Datenresidenz für Kundendaten, umfassende Konnektivität mit dem globalen Cloudnetzwerk von Microsoft sowie wettbewerbsfähige Preise bieten. 
+> Aufgrund der Weiterentwicklung der Kundenbedürfnisse haben wir vor Kurzem zwei neue Rechenzentrumsregionen in Deutschland [gestartet](https://azure.microsoft.com/blog/microsoft-azure-available-from-new-cloud-regions-in-germany/), die Data Residency für Kundendaten, umfassende Konnektivität mit dem globalen Cloudnetzwerk von Microsoft sowie wettbewerbsfähige Preise bieten. 
 >
 > Profitieren Sie von der Vielfalt der Funktionen, Sicherheit auf Unternehmensniveau und den umfangreichen Features, die in unseren neuen deutschen Rechenzentrumsregionen zur Verfügung stehen, und [migrieren](germany-migration-main.md) Sie noch heute.
 
@@ -200,7 +200,7 @@ Um VM-Skalierungsgruppen zu Azure weltweit zu migrieren, exportieren Sie die Res
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu VM-Skalierungsgruppeen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu VM-Skalierungsgruppeen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/tutorial-create-and-manage-cli) durcharbeiten.
 - Erfahren Sie, wie Sie eine [Azure Resource Manager-Vorlage exportieren](../azure-resource-manager/templates/export-template-portal.md).
 - Lesen Sie die [Übersicht über Azure Resource Manager](../azure-resource-manager/management/overview.md).
 - Lesen Sie eine Übersicht zu [VM-Skalierungsgruppen](../virtual-machine-scale-sets/overview.md).
@@ -234,6 +234,6 @@ Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ress
 - [IoT](./germany-migration-iot.md)
 - [Integration](./germany-migration-integration.md)
 - [Identität](./germany-migration-identity.md)
-- [Sicherheit](./germany-migration-security.md)
+- [Security](./germany-migration-security.md)
 - [Verwaltungstools](./germany-migration-management-tools.md)
 - [Medien](./germany-migration-media.md)
