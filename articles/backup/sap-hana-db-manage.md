@@ -3,12 +3,12 @@ title: Verwalten von gesicherten SAP HANA-Datenbanken für Azure-VMs
 description: In diesem Artikel erfahren Sie mehr über allgemeine Aufgaben zum Verwalten und Überwachen von SAP HANA-Datenbanken, die auf virtuellen Azure-Computern ausgeführt werden.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: a9462f8608fc5ae35255ac321a0742b3f1834fde
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 89fd7f23163d301817e767771257d9bc6f4ed526
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390632"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480061"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Verwalten und Überwachen gesicherter SAP HANA-Datenbanken
 
@@ -57,7 +57,7 @@ Weitere Informationen zur Überwachung finden Sie unter [Überwachung im Azure-P
 
 Mit Azure Backup wird die Verwaltung einer gesicherten SAP HANA-Datenbank mit einer Vielzahl von Verwaltungsvorgängen vereinfacht, die unterstützt werden. Diese Vorgänge werden in den folgenden Abschnitten ausführlicher erläutert.
 
-### <a name="run-an-ad-hoc-backup"></a>Ausführen einer Ad-hoc-Sicherung
+### <a name="run-an-on-demand-backup"></a>Ausführen einer On-Demand-Sicherung
 
 Sicherungen werden gemäß dem Richtlinienzeitplan ausgeführt. Eine bedarfsgesteuerte Sicherung können Sie wie folgt ausführen:
 
@@ -65,6 +65,16 @@ Sicherungen werden gemäß dem Richtlinienzeitplan ausgeführt. Eine bedarfsgest
 2. Wählen Sie unter **Sicherungselemente** den virtuellen Computer aus, auf dem die SAP HANA-Datenbank ausgeführt wird, und klicken Sie dann auf **Jetzt sichern**.
 3. Verwenden Sie unter **Jetzt sichern** den Kalender, um den letzten Tag zur Beibehaltung des Wiederherstellungspunkts auszuwählen. Klicken Sie dann auf **OK**.
 4. Überwachen Sie die Portalbenachrichtigungen. Sie können den Auftragsstatus im Dashboard des Tresors unter **Sicherungsaufträge** > **In Bearbeitung** überwachen. Je nach Größe Ihrer Datenbank kann das Erstellen der ersten Sicherung einige Zeit dauern.
+
+### <a name="hana-native-client-integration"></a>Integration von nativen HANA-Clients
+
+Jetzt werden bedarfsgesteuerte vollständige Sicherungen, die von einem der nativen HANA-Clients ausgelöst werden, auf der Seite **Sicherungselemente** als vollständige Sicherungen angezeigt.
+
+![Zuletzt durchgeführte Sicherungen](./media/sap-hana-db-manage/last-backups.png)
+
+Diese vollständigen Ad-hoc-Sicherungen werden auch in der Liste der Wiederherstellungspunkte für die Wiederherstellung angezeigt.
+
+![Liste der Wiederherstellungspunkte](./media/sap-hana-db-manage/list-restore-points.png)
 
 ### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>Ausführen einer Sicherung des nativen SAP HANA-Clients für eine Datenbank, für die Azure Backup aktiviert ist
 
@@ -112,6 +122,37 @@ Sie können die zugrunde liegende Richtlinie für ein SAP HANA-Sicherungselement
 > Jede Änderung der Aufbewahrungsdauer wird nicht nur auf die neuen Wiederherstellungspunkte angewendet, sondern auch rückwirkend auf alle älteren.
 >
 > Inkrementelle Sicherungsrichtlinien können nicht für SAP HANA-Datenbanken verwendet werden. Inkrementelle Sicherungen werden für diese Datenbanken derzeit nicht unterstützt.
+
+### <a name="modify-policy"></a>Richtlinie ändern
+
+Bearbeiten Sie die Richtlinie, um Sicherungstypen, Sicherungshäufigkeit und Aufbewahrungsdauer zu ändern.
+
+>[!NOTE]
+>Jede Änderung der Aufbewahrungsdauer wird nicht nur auf die neuen Wiederherstellungspunkte angewendet, sondern auch rückwirkend auf alle älteren.
+
+1. Navigieren Sie im Tresordashboard zu **Verwalten > Sicherungsrichtlinien**, und wählen Sie die Richtlinie aus, die Sie bearbeiten möchten.
+
+   ![Auswählen der Richtlinie, die bearbeitet werden soll](./media/sap-hana-db-manage/manage-backup-policies.png)
+
+1. Wählen Sie **Ändern** aus.
+
+   ![„Ändern“ auswählen](./media/sap-hana-db-manage/modify-policy.png)
+
+1. Wählen Sie die Häufigkeit für die Sicherungstypen aus.
+
+   ![Sicherungshäufigkeit auswählen](./media/sap-hana-db-manage/choose-frequency.png)
+
+Eine Richtlinienänderung wirkt sich auf alle zugeordneten Sicherungselemente aus und löst entsprechende Aufträge zum **Konfigurieren des Schutzes** aus.
+
+### <a name="inconsistent-policy"></a>Inkonsistente Richtlinie
+
+Gelegentlich kann ein Vorgang zum Ändern einer Richtlinie zu einer **inkonsistenten** Richtlinienversion für einige Sicherungselemente führen. Dies geschieht, wenn der entsprechende Auftrag zum **Konfigurieren des Schutzes** für das Sicherungselement fehlschlägt, nachdem ein Vorgang zum Ändern der Richtlinie ausgelöst wurde. Es wird in der Ansicht „Sicherungselement“ folgendermaßen angezeigt:
+
+![Inkonsistente Richtlinie](./media/sap-hana-db-manage/inconsistent-policy.png)
+
+Sie können die Richtlinienversion für alle betroffenen Elemente mit einem Mausklick korrigieren:
+
+![Korrigieren der Richtlinienversion](./media/sap-hana-db-manage/fix-policy-version.png)
 
 ### <a name="stop-protection-for-an-sap-hana-database"></a>Beenden des Schutzes für eine SAP HANA-Datenbank
 
@@ -167,7 +208,7 @@ Erfahren Sie, wie Sie nach einem [Upgrade von SAP Hana 1.0 auf 2.0](backup-azure
 
 Erfahren Sie, wie Sie die Sicherung einer SAP HANA-Datenbank fortsetzen, deren [SID sich nach dem Upgrade nicht geändert hat](backup-azure-sap-hana-database-troubleshoot.md#upgrading-without-an-sid-change).
 
-### <a name="unregister-an-sap-hana-database"></a>Aufheben der Registrierung einer SAP HANA-Datenbank
+### <a name="unregister-an-sap-hana-instance"></a>Aufheben der Registrierung einer SAP HANA-Instanz
 
 Heben Sie die Registrierung einer SAP HANA-Instanz auf, nachdem Sie den Schutz deaktiviert haben, aber bevor Sie den Tresor löschen:
 
@@ -184,6 +225,12 @@ Heben Sie die Registrierung einer SAP HANA-Instanz auf, nachdem Sie den Schutz d
 * Klicken Sie mit der rechten Maustaste auf die geschützten Instanz, und wählen Sie dann **Registrierung aufheben** aus.
 
    ![Auswählen der Aufhebung der Registrierung](./media/sap-hana-db-manage/unregister.png)
+
+### <a name="re-register-extension-on-the-sap-hana-server-vm"></a>Erneutes Registrieren einer Erweiterung auf der SAP HANA Server-VM
+
+Manchmal kann die Workloaderweiterung auf dem virtuellen Computer aus dem einen oder anderen Grund beeinträchtigt werden. In solchen Fällen schlagen alle auf der VM ausgelösten Vorgänge fehl. Möglicherweise müssen Sie dann die Erweiterung erneut auf der VM registrieren. Bei der Neuregistrierung wird die Workloadsicherungserweiterung erneut auf der VM installiert, damit die Vorgänge fortgesetzt werden können.
+
+Verwenden Sie diese Option mit Vorsicht: Wenn dieser Vorgang auf einer VM mit bereits fehlerfreier Erweiterung ausgelöst wird, wird die Erweiterung dadurch neu gestartet. Dies kann dazu führen, dass alle in Bearbeitung befindlichen Aufträge fehlschlagen. Überprüfen Sie vor dem Auslösen der erneuten Registrierung, ob ein oder mehrere [Symptome](backup-azure-sap-hana-database-troubleshoot.md#re-registration-failures) vorhanden sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

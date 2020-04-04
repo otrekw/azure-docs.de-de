@@ -3,12 +3,12 @@ title: Sicherheitsfeatures für den Schutz von Cloudworkloads
 description: In diesem Artikel wird erläutert, wie Sie mit den Azure Backup-Sicherheitsfunktionen für mehr Sicherheit für Ihre Sicherungen sorgen können.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 20cf322dec0827c00b15a62bf4f7695fc4ed0992
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 57c9fd76ae32aea49f480f2a88d8296538d8052d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705495"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156071"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Sicherheitsfeatures für den Schutz von Cloudworkloads mit Azure Backup
 
@@ -124,7 +124,7 @@ WorkloadName     Operation            Status               StartTime            
 AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM     12/5/2019 12:47:40 PM     65311982-3755-46b5-8e53-c82ea4f0d2a2
 ```
 
-Der DeleteState des Sicherungselements wird auf „NotDeleted“ zurückgesetzt. Der Schutz bleibt jedoch weiterhin unterbrochen. Sie müssen [die Sicherung fortsetzen](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items), um den Schutz erneut zu aktivieren.
+Der DeleteState des Sicherungselements wird auf „NotDeleted“ zurückgesetzt. Der Schutz bleibt jedoch weiterhin unterbrochen. [Setzen Sie die Sicherung fort](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items), um den Schutz erneut zu aktivieren.
 
 ### <a name="soft-delete-for-vms-using-rest-api"></a>Vorläufiges Löschen für VMs über die REST-API
 
@@ -133,7 +133,7 @@ Der DeleteState des Sicherungselements wird auf „NotDeleted“ zurückgesetzt.
 
 ## <a name="disabling-soft-delete"></a>Deaktivieren des vorläufigen Löschens
 
-Vorläufiges Löschen ist für neu erstellte Tresore standardmäßig aktiviert, um Sicherungsdaten vor versehentlichen oder vorsätzlichen Löschvorgängen zu schützen.  Es wird davon abgeraten, dieses Feature zu deaktivieren. Sie sollten das vorläufige Löschen nur dann deaktivieren, wenn Sie planen, Ihre geschützten Elemente in einen neuen Tresor zu verschieben, und nicht die 14 Tage warten können, die für das Löschen und erneute Schützen erforderlich sind (z. B. in einer Testumgebung). Dieses Feature kann nur durch einen Sicherungsadministrator deaktiviert werden. Wenn Sie dieses Feature deaktivieren, führen alle Löschvorgänge von geschützten Elementen zur sofortigen und endgültigen Entfernung der Elemente. Sicherungsdaten, die vor der Deaktivierung dieses Features vorläufig gelöscht wurden, verbleiben im vorläufigen Löschzustand. Wenn Sie diese Elemente umgehend endgültig löschen möchten, müssen Sie sie wiederherstellen und anschließend erneut löschen, damit sie endgültig gelöscht werden.
+Vorläufiges Löschen ist für neu erstellte Tresore standardmäßig aktiviert, um Sicherungsdaten vor versehentlichen oder vorsätzlichen Löschvorgängen zu schützen.  Es wird davon abgeraten, dieses Feature zu deaktivieren. Sie sollten das vorläufige Löschen nur dann deaktivieren, wenn Sie planen, Ihre geschützten Elemente in einen neuen Tresor zu verschieben, und nicht die 14 Tage warten können, die für das Löschen und erneute Schützen erforderlich sind (z. B. in einer Testumgebung). Nur der Tresorbesitzer kann dieses Feature deaktivieren. Wenn Sie dieses Feature deaktivieren, führen alle künftigen Löschvorgänge geschützter Elemente zu einer sofortigen Entfernung, ohne dass eine Wiederherstellung möglich ist. Sicherungsdaten, die vor der Deaktivierung dieses Features mit dem Status „Vorläufig gelöscht“ vorhanden waren, behalten 14 Tage diesen Status. Wenn Sie diese Elemente umgehend endgültig löschen möchten, müssen Sie sie wiederherstellen und anschließend erneut löschen, damit sie endgültig gelöscht werden.
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>Deaktivieren des vorläufigen Löschens für VMs über das Azure-Portal
 
@@ -178,24 +178,23 @@ Folgen Sie diesen Schritten:
 1. Führen Sie die Schritte zum [Deaktivieren des vorläufigen Löschens](#disabling-soft-delete) aus.
 2. Navigieren Sie im Azure-Portal unter Ihrem Tresor zu **Sicherungselemente**, und wählen Sie den vorläufig gelöschten virtuellen Computer aus.
 
-![Auswählen des vorläufig gelöschten virtuellen Computers](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
+   ![Auswählen des vorläufig gelöschten virtuellen Computers](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
 3. Wählen Sie die Option **Wiederherstellen** aus.
 
-![Auswählen von „Wiederherstellen“](./media/backup-azure-security-feature-cloud/choose-undelete.png)
-
+   ![Auswählen von „Wiederherstellen“](./media/backup-azure-security-feature-cloud/choose-undelete.png)
 
 4. Daraufhin wird ein Fenster angezeigt. Wählen Sie **Wiederherstellen** aus.
 
-![Auswählen von „Wiederherstellen“](./media/backup-azure-security-feature-cloud/undelete-vm.png)
+   ![Auswählen von „Wiederherstellen“](./media/backup-azure-security-feature-cloud/undelete-vm.png)
 
 5. Wählen Sie **Sicherungsdaten löschen** aus, um die Sicherungsdaten endgültig zu löschen.
 
-![Auswählen von „Sicherungsdaten löschen“](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+   ![Auswählen von „Sicherungsdaten löschen“](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
 
 6. Geben Sie den Namen des Sicherungselements ein, um zu bestätigen, dass Sie die Wiederherstellungspunkte löschen möchten.
 
-![Eingeben des Namens des Sicherungselements](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+   ![Eingeben des Namens des Sicherungselements](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
 
 7. Wählen Sie **Löschen** aus, um die Sicherungsdaten des Elements zu löschen. Sie erhalten einer Benachrichtigung, dass die Sicherungsdaten gelöscht wurden.
 
@@ -246,28 +245,34 @@ Wenn Elemente vor der Deaktivierung des vorläufigen Löschens gelöscht wurden,
 
 ## <a name="encryption"></a>Verschlüsselung
 
-### <a name="encryption-of-backup-data-using-microsoft-managed-keys"></a>Verschlüsselung von Sicherungsdaten mit von Microsoft verwalteten Schlüsseln
+Alle Ihre gesicherten Daten werden automatisch verschlüsselt, wenn sie in der Cloud mit Azure Storage-Verschlüsselung gespeichert werden. Dies hilft Ihnen, Ihre Sicherheits- und Complianceverpflichtungen zu erfüllen. Ruhende Daten werden mit der AES-256-Verschlüsselung – einer der stärksten verfügbaren Blockchiffren – verschlüsselt und sind mit dem FIPS 140-2-Standard konform.
 
-Sicherungsdaten werden automatisch mit Azure Storage-Verschlüsselung verschlüsselt. Die Verschlüsselung schützt Ihre Daten und unterstützt Sie beim Einhalten der Sicherheits- und Complianceanforderungen Ihrer Organisation. Daten werden auf transparente Weise mit der AES-256-Verschlüsselung – einer der stärksten verfügbaren Blockchiffren – ver- und entschlüsselt und sind mit dem FIPS 140-2-Standard konform. Die Azure Storage-Verschlüsselung ähnelt der BitLocker-Verschlüsselung unter Windows.
-
-In Azure werden Daten bei der Übertragung zwischen Azure Storage und dem Tresor per HTTPS geschützt. Diese Daten bleiben im Azure-Backbone-Netzwerk.
+Zusätzlich zur Verschlüsselung ruhender Daten werden alle Ihre Sicherungsdaten während der Übertragung über HTTPS übertragen. Sie bleiben immer im Azure-Backbone-Netzwerk.
 
 Weitere Informationen finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](https://docs.microsoft.com/azure/storage/common/storage-service-encryption). Antworten auf Fragen zur Verschlüsselung können Sie in den [häufig gestellten Fragen zu Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-backup-faq#encryption) finden.
 
+### <a name="encryption-of-backup-data-using-platform-managed-keys"></a>Verschlüsselung von Sicherungsdaten mit von der Plattform verwalteten Schlüsseln
+
+Standardmäßig werden alle Ihre Daten mit von der Plattform verwalteten Schlüsseln verschlüsselt. Sie brauch von Ihrer Seite aus keine expliziten Maßnahmen ergreifen, um diese Verschlüsselung zu aktivieren, und sie gilt für alle Workloads, die in Ihrem Recovery Services-Tresor gesichert werden.
+
 ### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln
 
-Beim Sichern von Azure Virtual Machines haben Sie auch die Möglichkeit, Ihre Sicherungsdaten im Recovery Services-Tresor mithilfe der in Azure Key Vault gespeicherten Verschlüsselungsschlüssel zu verschlüsseln.
+Wenn Sie Ihre Azure-VMs sichern, können Sie Ihre Daten jetzt mithilfe von Schlüsseln verschlüsseln, die Sie besitzen und die von Ihnen verwaltet werden. Mit Azure Backup können Sie die in Azure Key Vault gespeicherten RSA-Schlüssel zum Verschlüsseln Ihrer Sicherungen verwenden. Der Verschlüsselungsschlüssel, der zum Verschlüsseln von Sicherungen verwendet wird, kann sich von dem für die Quelle verwendeten Verschlüsselungsschlüssel unterscheiden. Die Daten werden mithilfe eines AES-256 basierten Datenverschlüsselungsschlüssels (DEK) geschützt, der wiederum mit Ihren Schlüsseln geschützt wird. Dadurch erhalten Sie vollständige Kontrolle über die Daten und Schlüssel. Um die Verschlüsselung zu ermöglichen, muss dem Recovery Services-Tresor der Zugriff auf den Verschlüsselungsschlüssel in Azure Key Vault gewährt werden. Bei Bedarf können Sie den Schlüssel deaktivieren oder den Zugriff widerrufen. Sie müssen jedoch die Verschlüsselung mit ihren Schlüsseln aktivieren, bevor Sie versuchen, Elemente im Tresor zu schützen.
 
 >[!NOTE]
->Dieses Feature ist derzeit in einer frühen Verwendungsphase. Füllen Sie [diese Umfrage](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURE9TTDRIUEUyNFhNT1lZS1BNVDdZVllHWi4u) aus, wenn Sie Ihre Sicherungsdaten mit vom Kunden verwalteten Schlüsseln verschlüsseln möchten. Beachten Sie, dass die Möglichkeit zur Verwendung dieses Features der Genehmigung des Azure Backup Diensts unterliegt.
+>Dieses Feature ist zurzeit in nur eingeschränkt verfügbar. Füllen Sie [diese Umfrage](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURE9TTDRIUEUyNFhNT1lZS1BNVDdZVllHWi4u) aus und senden Sie sie per E-Mail an AskAzureBackupTeam@microsoft.com, wenn Sie Ihre Sicherungsdaten mit vom Kunden verwalteten Schlüsseln verschlüsseln möchten. Beachten Sie, dass die Möglichkeit zur Verwendung dieses Features der Genehmigung des Azure Backup Diensts unterliegt.
 
-### <a name="backup-of-managed-disk-vm-encrypted-using-customer-managed-keys"></a>Sichern von VMs mit verwalteten Datenträgern, die mit vom Kunden verwalteten Schlüsseln verschlüsselt wurden
+### <a name="backup-of-managed-disk-vms-encrypted-using-customer-managed-keys"></a>Sichern von VMs mit verwalteten Datenträgern, die mit vom Kunden verwalteten Schlüsseln verschlüsselt wurden
 
-Azure Backup ermöglicht Ihnen das Sichern von Azure Virtual Machines mit Datenträgern, die mit vom Kunden verwalteten Schlüsseln verschlüsselt wurden. Weitere Informationen finden Sie unter [Verschlüsselung verwalteter Datenträger mit vom Kunden verwalteten Schlüsseln](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys).
+Mit Azure Backup können Sie außerdem Azure-VMs sichern, die Ihren Schlüssel für die serverseitige Verschlüsselung verwenden. Der zum Verschlüsseln der Datenträger verwendete Schlüssel wird in Azure Key Vault gespeichert und von Ihnen verwaltet. Die serverseitige Verschlüsselung (SSE) mit vom Kunden verwalteten Schlüsseln unterscheidet sich von Azure Disk Encryption (ADE), da ADE BitLocker (für Windows) bzw. DM-Crypt (für Linux) verwendet, um Verschlüsselung auf Gastsystemen durchzuführen; SSE verschlüsselt die Daten im Speicherdienst, sodass Sie jedes beliebige Betriebssystem oder Image für Ihre VMs verwenden können. Weitere Informationen finden Sie unter [Verschlüsselung verwalteter Datenträger mit vom Kunden verwalteten Schlüsseln](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys).
 
-### <a name="backup-of-encrypted-vms"></a>Sichern verschlüsselter virtueller Computer
+### <a name="backup-of-vms-encrypted-using-ade"></a>Sichern von mit ADE verschlüsselten VMs
 
-Sie können virtuelle Azure-Computer (VMs) unter Windows oder Linux mit verschlüsselten Datenträgern mithilfe des Diensts Azure Backup sichern und wiederherstellen. Anleitungen finden Sie unter [Sichern und Wiederherstellen verschlüsselter virtueller Computer mit Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
+Mit Azure Backup können Sie auch Ihre virtuellen Azure-Computer sichern, deren Datenträger für Betriebssystem oder Daten mithilfe von Azure Disk Encryption verschlüsselt werden. ADE verwendet BitLocker für Windows-VMs bzw. DM-Crypt für Linux-VMs, um Verschlüsselung auf Gastsystemen durchzuführen. Weitere Informationen finden Sie unter [Sichern und Wiederherstellen verschlüsselter virtueller Computer mit Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
+
+## <a name="private-endpoints"></a>Private Endpunkte
+
+[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
 ## <a name="other-security-features"></a>Weitere Sicherheitsfeatures
 

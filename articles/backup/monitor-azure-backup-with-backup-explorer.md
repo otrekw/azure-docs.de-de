@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie Sie mit dem Backup-Explorer
 ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: b65f68e33b53dff341ee72f6b9e9f42e344c49b1
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: fa30a061dfe0d9f7721bd2405280f8a01bea87fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149574"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131807"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>Überwachen von Sicherungen mit dem Backup-Explorer
 
@@ -26,6 +26,7 @@ Diese Funktionen werden standardmäßig durch die native Integration mit Azure R
 > [!NOTE]
 > * Der Backup-Explorer ist derzeit nur für Daten von virtuellen Azure-Computern verfügbar.
 > * Er ist als operatives Dashboard zum Anzeigen von Informationen zu Ihren Sicherungen in den letzten 7 Tagen (maximal) gedacht.
+> * Backup-Explorer wird in nationalen Clouds derzeit nicht unterstützt.
 > * Derzeit kann die Vorlage für den Backup-Explorer nicht angepasst werden. 
 > * Es wird davon abgeraten, benutzerdefinierte Automatisierungen für Azure Resource Graph-Daten zu programmieren.
 

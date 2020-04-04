@@ -3,16 +3,23 @@ title: Sichern von SQL Server-Datenbanken in Azure
 description: In diesem Artikel erfahren Sie, wie Sie SQL Server in Azure sichern. In diesem Artikel wird auch die SQL Server-Wiederherstellung beschrieben.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 39f2348a95be95a03dada45d48952dce99ec4ec7
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 537257733d7693598fd8007da6ce12c28fbeb02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78392778"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79408759"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informationen zur SQL Server-Sicherung auf virtuellen Azure-Computern
 
-SQL Server-Datenbanken sind kritische Workloads, die eine niedrige Recovery Point Objective (RPO) und eine Langzeitaufbewahrung erfordern. Sie können auf virtuellen Azure-Computern ausgeführte SQL Server-Datenbanken mithilfe von [Azure Backup](backup-overview.md) sichern.
+[Azure Backup](backup-overview.md) bietet eine streambasierte, spezialisierte Lösung zum Sichern von SQL Server-Instanzen, die auf Azure-VMs ausgeführt werden. Diese Lösung ist an den Vorteilen von Azure Backup ausgerichtet: Sicherungen ohne Infrastruktur, langfristige Speicherung und zentrale Verwaltung. Außerdem bietet sie die folgenden Vorteile speziell für SQL Server:
+
+1. Workloadabhängige Sicherungen, die alle Sicherungstypen unterstützen: vollständige, differenzielle und Protokollsicherungen
+2. RPO (Recovery Point Objective) von 15 Minuten mit häufigen Protokollsicherungen
+3. Zeitpunktwiederherstellung von bis zu einer Sekunde
+4. Sicherung und Wiederherstellung einzelner Datenbankebenen
+
+Informationen zu den zurzeit unterstützten Sicherungs- und Wiederherstellungsszenarien finden Sie in der [Unterstützungsmatrix](sql-support-matrix.md#scenario-support).
 
 ## <a name="backup-process"></a>Sicherungsprozess
 
@@ -33,82 +40,8 @@ Die Lösung nutzt die nativen SQL-APIs, um Sicherungen Ihrer SQL-Datenbankinstan
 Überprüfen Sie zunächst Folgendes:
 
 1. Vergewissern Sie sich, dass in Azure eine SQL Server-Instanz ausgeführt wird. Im Marketplace können Sie [schnell eine SQL Server-Instanz erstellen](../virtual-machines/windows/sql/quickstart-sql-vm-create-portal.md).
-2. Informieren Sie sich über [Funktionsaspekte](#feature-consideration-and-limitations) und [Unterstützung von Szenarien](#scenario-support).
+2. Informieren Sie sich über [Funktionsaspekte](sql-support-matrix.md#feature-consideration-and-limitations) und [Unterstützung von Szenarien](sql-support-matrix.md#scenario-support).
 3. [Lesen Sie häufig gestellte Fragen](faq-backup-sql-server.md) zu diesem Szenario.
-
-## <a name="scenario-support"></a>Unterstützung von Szenarien
-
-**Unterstützung** | **Details**
---- | ---
-**Unterstützte Bereitstellungen** | SQL-Marketplace-Azure-VMs und Nicht-Marketplace-VMs (manuelle SQL Server-Installation) werden unterstützt.
-**Unterstützte geografische Räume** | „Australien, Südosten (ASE)“, „Australien, Osten (AE)“, „Australien, Mitte (AC)“, „Australien, Mitte 2 (AC)“ <br> Brasilien, Süden (BRS)<br> „Kanada, Mitte (CNC)“, „Kanada, Osten (CE)“<br> „Asien, Südosten (SEA)“, „Asien, Osten (EA)“ <br> „USA, Osten (EUS)“, „USA, Osten 2 (EUS2)“, „USA, Westen-Mitte (WCUS)“, „USA, Westen (WUS)“, „USA, Westen 2 (WUS 2)“, „USA, Norden-Mitte (NCUS)“, „USA, Mitte (CUS)“, „USA, Süden-Mitte (SCUS)“ <br> „Indien, Mitte (INC)“, „Indien, Süden (INS)“, „Indien, Westen“ <br> „Japan, Osten (JPE)“, „Japan, Westen (JPW)“ <br> „Südkorea, Mitte (KRC)“, „Südkorea, Süden (KRS)“ <br> „Europa, Norden (NE)“, „Europa, Westen“ <br> „Vereinigtes Königreich, Süden (UKS)“, „Vereinigtes Königreich, Westen (UKW)“ <br> „US Gov Arizona“, „US Gov Virginia“, „US Gov Texas“, „US DoD, Mitte“, „US DoD, Osten“ <br> „Deutschland, Norden“, „Deutschland, Westen-Mitte“ <br> „Schweiz, Norden“, „Schweiz, Westen“ <br> Frankreich, Mitte <br> „China, Osten“, „China, Osten 2“, „China, Norden“, „China, Norden 2“
-**Unterstützte Betriebssysteme** | Windows Server 2019, Windows Server 2016, Windows Server 2012, Windows Server 2008 R2 SP1 <br/><br/> Linux wird derzeit nicht unterstützt.
-**Unterstützte SQL Server-Versionen** | SQL Server 2019, SQL Server 2017 wie auf der Seite [Lebenszyklus für Produkt suchen](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017) beschrieben, SQL Server 2016 und SPs wie auf der Seite [Lebenszyklus für Produkt suchen](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack) beschrieben, SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, Standard, Web, Developer, Express
-**Unterstützte .NET-Versionen** | .NET Framework 4.5.2 oder höher auf dem virtuellen Computer installiert
-
-## <a name="feature-consideration-and-limitations"></a>Funktionsaspekte und Einschränkungen
-
-* SQL Server-Sicherung kann im Azure-Portal oder mit **PowerShell** konfiguriert werden. CLI wird nicht unterstützt.
-* Die Lösung wird für beide Arten von [Bereitstellungen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) unterstützt: Azure Resource Manager-VMs und klassische VMs.
-* Der virtuelle Computer, auf dem SQL Server ausgeführt wird, benötigt eine Internetverbindung, um auf öffentliche IP-Adressen von Azure zuzugreifen.
-* Eine SQL Server-**Failoverclusterinstanz (FCI)** wird nicht unterstützt.
-* Sicherungs- und Wiederherstellungsvorgänge für Spiegeldatenbanken und Datenbankmomentaufnahmen werden nicht unterstützt.
-* Die Verwendung mehrerer Sicherungslösungen zum Sichern Ihrer eigenständigen SQL Server-Instanz oder SQL Always On-Verfügbarkeitsgruppe kann zu Fehlern bei der Sicherung führen. Es ist daher ratsam, von dieser Vorgehensweise abzusehen.
-* Das Sichern von zwei Knoten einer Verfügbarkeitsgruppe mit derselben Lösung oder anderen Lösungen kann auch zu Fehlern bei der Sicherung führen.
-* Azure Backup unterstützt für **schreibgeschützte** Datenbanken nur die Sicherungstypen „Vollständig“ und „Nur vollständig kopieren“.
-* Datenbanken mit einer großen Anzahl von Dateien können nicht geschützt werden. Die maximale Anzahl von unterstützten Dateien beträgt **~1.000**.  
-* Sie können bis zu **~2.000** SQL Server-Datenbanken in einem Tresor sichern. Sie können mehrere Tresore erstellen, falls Sie über eine größere Anzahl von Datenbanken verfügen.
-* Sie können die Sicherung für bis zu **50** Datenbanken auf einmal konfigurieren; diese Einschränkung trägt dazu bei, Sicherungslasten zu optimieren.
-* Wir unterstützen Datenbanken bis zu einer Größe von **2 TB**. Über 2 TB treten unter Umständen Leistungsprobleme auf.
-* Um einen Eindruck davon zu bekommen, wie viele Datenbanken pro Server geschützt werden können, müssen wir Faktoren wie z.B. Bandbreite, VM-Größe, Sicherungshäufigkeit, Datenbankgröße usw. berücksichtigen. Laden Sie den Ressourcenplaner [hier](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) herunter. Er enthält die ungefähre Anzahl von Datenbanken, die basierend auf den VM-Ressourcen pro Server zulässig sind, sowie die Sicherungsrichtlinie.
-* Bei Verfügbarkeitsgruppen werden Sicherungen basierend auf einigen Faktoren auf den verschiedenen Knoten erstellt. Das Sicherungsverhalten für eine Verfügbarkeitsgruppe ist unten zusammengefasst.
-
-### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Sicherungsverhalten von Always On-Verfügbarkeitsgruppen
-
-Es wird empfohlen, die Sicherung nur auf einem Knoten der Verfügbarkeitsgruppe zu konfigurieren. Die Sicherung sollte immer in derselben Region wie der primäre Knoten konfiguriert werden. Anders ausgedrückt: Der primäre Knoten muss immer in der Region vorhanden sein, in der Sie die Sicherung konfigurieren. Wenn sich alle Knoten der Verfügbarkeitsgruppe in derselben Region befinden, in der die Sicherung konfiguriert ist, ist alles in Ordnung.
-
-#### <a name="for-cross-region-ag"></a>Für regionsübergreifende Verfügbarkeitsgruppe
-
-* Unabhängig von der Sicherungseinstellung werden Sicherungen nicht für die Knoten durchgeführt, die sich nicht in derselben Region befinden, in der die Sicherung konfiguriert ist. Dies liegt daran, dass regionsübergreifende Sicherungen nicht unterstützt werden. Wenn Sie nur über zwei Knoten verfügen und sich der sekundäre Knoten in der anderen Region befindet: In diesem Fall werden die Sicherungen weiterhin über den primären Knoten durchgeführt (sofern Ihre Sicherungseinstellung nicht „Nur sekundär“ lautet).
-* Wenn ein Failover in einer anderen Region als der Region durchgeführt wird, in der die Sicherung konfiguriert ist, tritt für Sicherungen auf den Knoten in der Failoverregion ein Fehler auf.
-
-Abhängig von der Sicherungseinstellung und den Sicherungstypen (Vollständig/Differenziell/Protokoll/Nur vollständig kopieren) werden die Sicherungen von einem bestimmten Knoten (Primär/Sekundär) erstellt.
-
-* **Sicherungseinstellung: Primär**
-
-**Sicherungstyp** | **Node**
-    --- | ---
-    Vollständig | Primär
-    Differenziell | Primär
-    Log |  Primär
-    Nur vollständig kopieren |  Primär
-
-* **Sicherungseinstellung: Nur sekundär**
-
-**Sicherungstyp** | **Node**
---- | ---
-Vollständig | Primär
-Differenziell | Primär
-Log |  Secondary
-Nur vollständig kopieren |  Secondary
-
-* **Sicherungseinstellung: Sekundär**
-
-**Sicherungstyp** | **Node**
---- | ---
-Vollständig | Primär
-Differenziell | Primär
-Log |  Secondary
-Nur vollständig kopieren |  Secondary
-
-* **Keine Sicherungseinstellung**
-
-**Sicherungstyp** | **Node**
---- | ---
-Vollständig | Primär
-Differenziell | Primär
-Log |  Secondary
-Nur vollständig kopieren |  Secondary
 
 ## <a name="set-vm-permissions"></a>Einrichten von Berechtigungen für virtuelle Computer
 

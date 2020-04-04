@@ -3,12 +3,12 @@ title: Informationen zum Sichern von Azure-Dateifreigaben
 description: Erfahren Sie, wie Sie Azure-Dateifreigaben im Recovery Services-Tresor sichern.
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 0e17b05a3febaa673fb29d45c2bcef25e2996df8
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: fd5bb51b2c7b5c09e9d859b69c3094eb50c205b5
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78385716"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396280"
 ---
 # <a name="about-azure-file-share-backup"></a>Informationen zum Sichern von Azure-Dateifreigaben
 
@@ -43,6 +43,15 @@ Bei der Sicherung von Azure-Dateifreigaben handelt es sich um eine native, cloud
 6. Sie können den Inhalt der Azure-Dateifreigabe (einzelne Dateien oder die gesamte Freigabe) aus den in der ursprünglichen Dateifreigabe verfügbaren Momentaufnahmen wiederherstellen. Nachdem der Vorgang ausgelöst wurde, wird die Momentaufnahme-URL aus dem Metadatenspeicher abgerufen, und die Daten werden aufgelistet und aus der Quellmomentaufnahme in die Zieldateifreigabe Ihrer Wahl übertragen.
 
 7. Die Überwachungsdaten zu den Sicherungs- und Wiederherstellungsaufträgen werden an den Azure Backup-Überwachungsdienst gepusht. Auf diese Weise können Sie Cloudsicherungen für Ihre Dateifreigaben auf einem zentralen Dashboard überwachen. Außerdem können Sie Warnungen oder E-Mail-Benachrichtigungen konfigurieren, wenn die Integrität der Sicherung beeinträchtigt ist. E-Mails werden über den Azure-E-Mail-Dienst gesendet.
+
+## <a name="backup-costs"></a>Sicherungskosten
+
+Das Sichern von Azure-Dateifreigaben ist eine auf Momentaufnahmen basierende Lösung, und die für Momentaufnahmen anfallenden Speichergebühren werden zusammen mit der Azure Files-Nutzung gemäß den [hier](https://azure.microsoft.com/pricing/details/storage/files/) aufgeführten Preisen in Rechnung gestellt.
+
+Die Gebühr für die geschützte Instanz für die Nutzung der Sicherungslösung entspricht jedoch dem im Abschnitt zum [Sichern von Azure Files](https://azure.microsoft.com/pricing/details/backup/) beschriebenen Preismodell. Der tatsächliche Preis wurde aktuell nur für die USA (USA, Westen-Mitte) aktualisiert. Für andere Regionen werden die genauen Preise in Kürze aktualisiert, mit geringfügigen regionalen Variationen, aber unter Verwendung des gleichen Preismodells.
+
+>[!NOTE]
+>Während der Vorschau gibt es keine „Gebühr für geschützte Instanzen“, und Ihnen werden nur Momentaufnahmen gemäß den [hier](https://azure.microsoft.com/pricing/details/storage/files/) aufgeführten Preisen in Rechnung gestellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

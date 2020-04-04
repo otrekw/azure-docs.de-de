@@ -3,12 +3,12 @@ title: Verwenden von Diagnoseeinstellungen für Recovery Services-Tresore
 description: In diesem Artikel wird beschrieben, wie die alten und neuen Diagnoseereignisse für Azure Backup verwendet werden.
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 7abf8873aafeb996476d818376057bfd8732d906
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: e3919d120e5f741af6cd30dd27e5a1dfa2b06cf2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583944"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79136938"
 ---
 # <a name="using-diagnostics-settings-for-recovery-services-vaults"></a>Verwenden von Diagnoseeinstellungen für Recovery Services-Tresore
 
@@ -56,7 +56,9 @@ Sobald die Daten in den Log Analytics-Arbeitsbereich fließen, werden im Arbeits
 
 Bisher waren alle sicherungsbezogenen Diagnosedaten für einen Tresor in einem einzelnen Ereignis namens „AzureBackupReport“ enthalten. Die sechs oben beschriebenen Ereignisse sind im Wesentlichen eine Aufschlüsselung aller Daten, die in „AzureBackupReport“ enthalten sind. 
 
-Auch aktuell unterstützen wir die Abwärtskompatibilität für das „AzureBackupReport“-Ereignis, wenn Benutzer über benutzerdefinierte Abfragen wie beispielsweise benutzerdefinierte Protokollwarnungen oder Visualisierungen für dieses Ereignis verfügen. Es wird jedoch empfohlen, für alle neuen Diagnoseeinstellungen im Tresor die neuen Ereignisse zu verwenden, da so die Arbeit mit den Daten in Protokollabfragen erleichtert wird, eine bessere Auffindbarkeit von Schemas und deren Struktur geboten wird und die Leistung sowohl in Hinsicht auf die Erfassungslatenz als auch die Abfragezeiten verbessert werden kann. Die Unterstützung für den Modus „Azure-Diagnose“ wird schließlich eingestellt, und es ist daher hilfreich, die neuen Ereignisse zu verwenden, um komplexe Migrationen zu einem späteren Zeitpunkt zu vermeiden.
+Auch aktuell unterstützen wir die Abwärtskompatibilität für das „AzureBackupReport“-Ereignis, wenn Benutzer über benutzerdefinierte Abfragen wie beispielsweise benutzerdefinierte Protokollwarnungen oder Visualisierungen für dieses Ereignis verfügen. **Es wird jedoch empfohlen, so früh wie möglich zu den neuen Ereignissen zu wechseln**, da so die Arbeit mit den Daten in Protokollabfragen erleichtert wird, eine bessere Auffindbarkeit von Schemas und deren Struktur geboten wird und die Leistung sowohl in Hinsicht auf die Erfassungslatenz als auch die Abfragezeiten verbessert werden kann. **Die Unterstützung für den Modus „Azure-Diagnose“ wird schließlich eingestellt, und es ist daher hilfreich, die neuen Ereignisse zu verwenden, um komplexe Migrationen zu einem späteren Zeitpunkt zu vermeiden.**
+
+Verwenden Sie die integrierte Azure Backup-Richtlinie, um für alle Ihre Tresore in einem bestimmten Bereich eine neue Diagnoseeinstellung mit den 6 neuen Ereignissen hinzuzufügen: [Bedarfsgerechtes Konfigurieren von Tresordiagnoseeinstellungen](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)
 
 Sie können separate Diagnoseeinstellungen für „AzureBackupReport“ und die sechs neuen Ereignisse erstellen, bis Sie alle benutzerdefinierten Abfragen migriert haben, um Daten aus den neuen Tabellen zu verwenden. Die folgende Abbildung zeigt ein Beispiel für einen Tresor mit zwei Diagnoseeinstellungen. Die erste Einstellung mit dem Namen **Setting1** sendet Daten des „AzureBackupReport“-Ereignisses an einen Log Analytics-Arbeitsbereich im Modus „Azure-Diagnose“. Die zweite Einstellung mit dem Namen **Setting2** sendet Daten der sechs neuen Azure Backup-Ereignisse an einen Log Analytics-Arbeitsbereich im Modus „Resource Specific“ (Ressourcenspezifisch).
 
