@@ -2,19 +2,19 @@
 author: genlin
 ms.service: virtual-network
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 02/14/2020
 ms.author: genli
-ms.openlocfilehash: d40f8fb263c5838d523108a1df7be99aba587354
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 280943bd965c4799ce294321129d1088be9c0caf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178000"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060466"
 ---
 ## <a name="scenario"></a>Szenario
-Um zu veranschaulichen, wie Sie eine statische IP-Adresse für einen virtuellen Computer konfigurieren, wird in diesem Dokument das folgende Szenario verwendet.
 
-![VNet-Szenario](./media/virtual-networks-static-ip-scenario-include/static-ip-scenario.png)
+Zur besseren Veranschaulichung der Konfiguration einer statischen IP-Adresse für einen virtuellen Computer wird in diesem Dokument das folgende Szenario verwendet:
 
-In diesem Szenario erstellen Sie einen virtuellen Computer mit der Bezeichnung **NS01** im **FrontEnd**-Subnetz und legen ihn so fest, dass die statische IP-Adresse **192.168.1.101** verwendet wird.
+![Szenario für virtuelle Netzwerke: Front-End- und Back-End-Subnetze mit einer statischen IP-Adresse für das Front-End-Subnetz](./media/virtual-networks-static-ip-scenario-include/static-ip-scenario.png)
 
+In diesem Szenario erstellen Sie im *FrontEnd*-Subnetz einen virtuellen Computer mit dem Namen *DNS01*, und dann legen Sie dafür fest, dass die statische IP-Adresse *192.168.1.101* verwendet wird.

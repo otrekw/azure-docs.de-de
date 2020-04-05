@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/13/2020
+ms.date: 03/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08852a9421d714b601d724c5309153a028c960bb
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: f0aaa13ff4d3331378cc17cd0cde29be43822397
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599567"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460788"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Welche SAP-Software wird für Azure-Bereitstellungen unterstützt?
 In diesem Artikel wird beschrieben, wie Sie ermitteln können, welche SAP-Software für Azure-Bereitstellungen unterstützt wird und welche Betriebssystemversionen bzw. DBMS-Releases benötigt werden.
@@ -94,6 +94,9 @@ Für die Ausführung von SAP HANA müssen bei SAP zahlreichere und höhere Infr
 > [!NOTE]
 > Die Einheiten, die mit dem Buchstaben „S“ beginnen, sind Einheiten vom Typ [HANA (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture). 
 
+> [!NOTE]
+> Für SAP gilt keine spezifische Zertifizierung, die von den SAP HANA-Hauptversionen abhängig ist. Entgegen der allgemeinen Meinung enthält die Spalte **Zertifizierungsszenario** in den [HANA-zertifizierten IaaS-Plattformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) **keine Angabe zu den zertifizierten HANA-Haupt- oder -Nebenversionen**. Sie müssen davon ausgehen, dass alle aufgeführten Einheiten für HANA 1.0 und HANA 2.0 verwendet werden können, sofern die zertifizierten Betriebssystemversionen für die jeweiligen Einheiten auch von HANA 1.0-Versionen unterstützt werden. 
+
 Für die Nutzung von SAP HANA gelten unter Umständen andere Betriebssystem-Mindestversionen als für die allgemeinen NetWeaver-Fälle. Sie müssen die unterstützten Betriebssysteme für jede Einheit einzeln überprüfen, da diese variieren können. Klicken Sie hierfür jeweils auf eine Einheit. Es werden weitere Details angezeigt. Eine der aufgeführten Angaben ist die Liste mit den unterschiedlichen Betriebssystemen, die für die jeweilige Einheit unterstützt werden.
 
 > [!NOTE]
@@ -108,7 +111,7 @@ Sie kennen die spezifischen HANA-Releases, die Sie für die jeweils gewünschte 
 
 
 ## <a name="certified-azure-vms-and-hana-large-instance-units-and-business-transaction-throughput"></a>Zertifizierte Azure-VMs und Einheiten vom Typ „HANA (große Instanzen)“ und Durchsatz von Geschäftstransaktionen
-Neben dem Evaluieren der unterstützten Betriebssystemversionen, DBMS-Releases und abhängigen SAP-Supportsoftware-Releases für Azure-Infrastruktureinheiten müssen Sie diese Einheiten anhand des Durchsatzes von Geschäftstransaktionen qualifizieren. Dies wird von SAP durch die Einheit „SAP“ ausgedrückt. Die gesamte SAP-Größenanpassung basiert auf SAPS. Beim Evaluieren von vorhandenen SAP-Systemen können Sie mit Unterstützung Ihres Infrastrukturanbieters den SAPS-Wert der Einheiten berechnen. Dies gilt sowohl für die DBMS-Ebene als auch für die Anwendungsschicht. In anderen Fällen, in denen neue Funktionen erstellt werden, kann anhand eines Größenanpassungsvorgangs mit SAP ermittelt werden, welche SAPS-Zahlen für die Anwendungsschicht und die DBMS-Ebene erforderlich sind. Als Infrastrukturanbieter muss Microsoft die Charakterisierung des SAP-Durchsatzes für die verschiedenen Einheiten bereitstellen, die über eine NetWeaver- bzw. eine HANA-Zertifizierung verfügen.
+Neben dem Evaluieren der unterstützten Betriebssystemversionen, DBMS-Releases und abhängigen SAP-Supportsoftware-Releases für Azure-Infrastruktureinheiten müssen Sie diese Einheiten anhand des Durchsatzes von Geschäftstransaktionen qualifizieren. Dies wird von SAP durch die Einheit „SAP“ ausgedrückt. Alle SAP-Größenanpassungen hängen von SAPS-Berechnungen ab. Beim Evaluieren von vorhandenen SAP-Systemen können Sie mit Unterstützung Ihres Infrastrukturanbieters den SAPS-Wert der Einheiten berechnen. Dies gilt sowohl für die DBMS-Ebene als auch für die Anwendungsschicht. In anderen Fällen, in denen neue Funktionen erstellt werden, kann anhand eines Größenanpassungsvorgangs mit SAP ermittelt werden, welche SAPS-Zahlen für die Anwendungsschicht und die DBMS-Ebene erforderlich sind. Als Infrastrukturanbieter muss Microsoft die Charakterisierung des SAP-Durchsatzes für die verschiedenen Einheiten bereitstellen, die über eine NetWeaver- bzw. eine HANA-Zertifizierung verfügen.
 
 Für Azure-VMs sind diese SAPS-Durchsatzzahlen im [SAP-Supporthinweis Nr. 1928533](https://launchpad.support.sap.com/#/notes/1928533) dokumentiert. Für Einheiten vom Typ „HANA (große Instanzen)“ sind die SAPS-Durchsatzzahlen im [SAP-Supporthinweis Nr. 2316233](https://launchpad.support.sap.com/#/notes/2316233) dokumentiert.
 
@@ -128,7 +131,7 @@ Für Business Objects Data Services wird in [SAP-Supporthinweis Nr. 22288344](h
 > [!NOTE]
 > Wie im SAP-Supporthinweis angegeben, müssen Sie in der SAP-Produktverfügbarkeitsmatrix (PAM) die richtige Supportpaketebene für die Unterstützung in Azure ermitteln.
 
-Die SAP Datahub/Vora-Unterstützung mit Azure Kubernetes Services (AKS) ist im [SAP-Supporthinweis Nr. 2464722](https://launchpad.support.sap.com/#/notes/2464722) beschrieben.
+Die Unterstützung für SAP Datahub/Vora in Azure Kubernetes Services (AKS) ist im [SAP-Supporthinweis Nr. 2464722](https://launchpad.support.sap.com/#/notes/2464722) beschrieben.
 
 Die Unterstützung für SAP BPC 10.1 SP08 ist im [SAP-Supporthinweis Nr. 2451795](https://launchpad.support.sap.com/#/notes/2451795) beschrieben.
 

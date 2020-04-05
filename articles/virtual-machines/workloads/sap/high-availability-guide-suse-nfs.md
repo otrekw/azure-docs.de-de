@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/06/2020
+ms.date: 03/26/2020
 ms.author: radeltch
-ms.openlocfilehash: 58e7eea487c5d00a33338a592dd064072bef3c64
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: 4dce0a675f5841591da00a322b72718964d382ac
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78926695"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80348873"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server
 
@@ -27,15 +27,15 @@ ms.locfileid: "78926695"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[2205917]: https://launchpad.support.sap.com/#/notes/2205917
-[1944799]: https://launchpad.support.sap.com/#/notes/1944799
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
-[1984787]: https://launchpad.support.sap.com/#/notes/1984787
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2205917]:https://launchpad.support.sap.com/#/notes/2205917
+[1944799]:https://launchpad.support.sap.com/#/notes/1944799
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1984787]:https://launchpad.support.sap.com/#/notes/1984787
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [1410736]:https://launchpad.support.sap.com/#/notes/1410736
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
@@ -147,15 +147,13 @@ Sie müssen zunächst die virtuellen Computer für diesen NFS-Cluster erstellen.
          1. IP-Adresse 10.0.0.5 für NW2
             * Wiederholen Sie die oben genannten Schritte für NW2.
       1. Erstellen der Back-End-Pools
-         1. Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des NFS-Clusters für NW1 sein sollen
+         1. Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des NFS-Clusters sein sollen
             1. Öffnen Sie den Lastenausgleich, wählen Sie Back-End-Pools und klicken Sie auf „Hinzufügen“.
-            1. Geben Sie den Namen des neuen Back-End-Pools ein (z.B. **nw1-backend**).
+            1. Geben Sie den Namen des neuen Back-End-Pools (z. B. **nw-backend**) ein.
             1. Virtuelles Netzwerk auswählen
             1. Klicken Sie auf „Virtuellen Computer hinzufügen“.
             1. Wählen Sie die virtuellen Computer des NFS-Clusters und deren IP-Adressen aus.
             1. Klicken Sie auf Hinzufügen.
-         1. Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des NFS-Clusters für NW2 sein sollen
-            * Wiederholen Sie die oben genannten Schritte, um einen Back-End-Pool für NW2 zu erstellen.
       1. Erstellen der Integritätstests
          1. Port 61000 für NW1
             1. Öffnen Sie den Lastenausgleich, wählen Sie Integritätstests aus, und klicken Sie auf „Hinzufügen“.
@@ -167,7 +165,7 @@ Sie müssen zunächst die virtuellen Computer für diesen NFS-Cluster erstellen.
       1. Lastenausgleichsregeln
          1. Öffnen Sie den Lastenausgleich, wählen Sie „Lastenausgleichsregeln“ aus, und klicken Sie auf „Hinzufügen“.
          1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z. B. **nw1-lb**).
-         1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z. B. **nw1-frontend**, **nw1-backend** und **nw1-hp**).
+         1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z. B. **nw1-frontend**, **nw-backend** und **nw1-hp**)
          1. Wählen Sie **HA-Ports** aus.
          1. Erhöhen Sie die Leerlaufzeitüberschreitung auf 30 Minuten.
          1. **Achten Sie darauf, dass Sie „Floating IP“ aktivieren.**
@@ -183,15 +181,13 @@ Sie müssen zunächst die virtuellen Computer für diesen NFS-Cluster erstellen.
          1. IP-Adresse 10.0.0.5 für NW2
             * Wiederholen Sie die oben genannten Schritte für NW2.
       1. Erstellen der Back-End-Pools
-         1. Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des NFS-Clusters für NW1 sein sollen
+         1. Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des NFS-Clusters sein sollen
             1. Öffnen Sie den Lastenausgleich, wählen Sie Back-End-Pools und klicken Sie auf „Hinzufügen“.
-            1. Geben Sie den Namen des neuen Back-End-Pools ein (z.B. **nw1-backend**).
+            1. Geben Sie den Namen des neuen Back-End-Pools (z. B. **nw-backend**) ein.
             1. Klicken Sie auf „Virtuellen Computer hinzufügen“.
             1. Wählen Sie die Verfügbarkeitsgruppe aus, die Sie zuvor erstellt haben.
             1. Wählen Sie die virtuellen Computer des NFS-Clusters aus.
             1. OK klicken
-         1. Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des NFS-Clusters für NW2 sein sollen
-            * Wiederholen Sie die oben genannten Schritte, um einen Back-End-Pool für NW2 zu erstellen.
       1. Erstellen der Integritätstests
          1. Port 61000 für NW1
             1. Öffnen Sie den Lastenausgleich, wählen Sie Integritätstests aus, und klicken Sie auf „Hinzufügen“.
@@ -468,9 +464,9 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
    Bei Verwendung von DRBD zum Synchronisieren von Daten zwischen verschiedenen Hosts kann ein sogenanntes Split Brain-Syndrom auftreten. Ein Split Brain-Syndrom ist ein Szenario, bei dem beide Clusterknoten das DRBD-Gerät als primäres Gerät höher gestuft haben und nicht mehr synchronisiert sind. Dies ist wohl ein selten auftretender Fall, dennoch sollte ein Split Brain-Problem schnellstmöglich behandelt und behoben werden. Es ist daher wichtig, dass bei einem aufgetretenen Split Brain-Problem eine Benachrichtigung erfolgt.
 
-   Informationen zum Einrichten einer Benachrichtigung zu einem Split Brain-Problem finden Sie in der [offiziellen DRBD-Dokumentation](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-split-brain-notification).
+   Informationen zum Einrichten einer Benachrichtigung zu einem Split Brain-Problem finden Sie in der [offiziellen DRBD-Dokumentation](https://www.linbit.com/drbd-user-guide/users-guide-drbd-8-4/#s-split-brain-notification).
 
-   Es ist zudem möglich, eine automatische Wiederherstellung nach einem Split Brain-Szenario durchzuführen. Weitere Informationen finden Sie unter [Automatic split brain recovery policies](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-automatic-split-brain-recovery-configuration) (Richtlinien zur automatischen Split Brain-Wiederherstellung).
+   Es ist zudem möglich, eine automatische Wiederherstellung nach einem Split Brain-Szenario durchzuführen. Weitere Informationen finden Sie unter [Automatic split brain recovery policies](https://www.linbit.com/drbd-user-guide/users-guide-drbd-8-4/#s-automatic-split-brain-recovery-configuration) (Richtlinien zur automatischen Split Brain-Wiederherstellung).
    
 ### <a name="configure-cluster-framework"></a>Konfigurieren des Clusterframeworks
 
@@ -478,7 +474,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
    > [!IMPORTANT]
    > Kürzlich durchgeführte Tests haben Situationen aufgezeigt, in denen netcat aufgrund von Backlog und der Einschränkung, nur eine Verbindung zu verarbeiten, nicht mehr auf Anforderungen reagiert. Die netcat-Ressource lauscht dann nicht mehr auf Azure Load Balancer-Anforderungen, und die Floating IP-Adresse ist nicht mehr verfügbar.  
-   > Für vorhandene Pacemaker-Cluster wurde zuvor empfohlen, netcat durch socat zu ersetzen. Zurzeit wird empfohlen, den Ressourcen-Agent azure-lb zu verwenden, der Teil des Pakets resource-agents ist. Dabei gelten die folgenden Versionsanforderungen:
+   > Für vorhandene Pacemaker-Cluster wurde zuvor empfohlen, netcat durch socat zu ersetzen. Zurzeit wird empfohlen, den Ressourcen-Agent azure-lb zu verwenden, der Teil des Pakets resource-agents ist. Dabei gelten die folgenden Versionsanforderungen für das Paket:
    > - Für SLES 12 SP4/SP5 muss die Version mindestens resource-agents-4.3.018.a7fb5035-3.30.1 sein.  
    > - Für SLES 15/15 SP1 muss die Version mindestens resource-agents-4.3.0184.6ee15eb2-4.13.1 sein.  
    >
@@ -574,6 +570,8 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    sudo crm configure colocation col-<b>NW2</b>_nfs_on_drbd inf: \
      g-<b>NW2</b>_nfs ms-drbd_<b>NW2</b>_nfs:Master
    </code></pre>
+
+   Die `crossmnt`-Option in den `exportfs`-Clusterressourcen ist in unserer Dokumentation für die Abwärtskompatibilität mit älteren SLES-Versionen enthalten.  
 
 1. **[1]** Deaktivieren Sie den Wartungsmodus.
    

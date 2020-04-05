@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/26/2020
+ms.date: 03/26/2020
 ms.author: radeltch
-ms.openlocfilehash: b58c24fdd7912b3e424a493932fe09b1a1f058c5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 11119d193cd08944bdff4737e8182cc7bece0abc
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77661276"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80351244"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver unter Red Hat Enterprise Linux mit Azure NetApp Files für SAP-Anwendungen
 
@@ -32,14 +32,14 @@ ms.locfileid: "77661276"
 [anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
-[2002167]: https://launchpad.support.sap.com/#/notes/2002167
-[2009879]: https://launchpad.support.sap.com/#/notes/2009879
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
+[2002167]:https://launchpad.support.sap.com/#/notes/2002167
+[2009879]:https://launchpad.support.sap.com/#/notes/2009879
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
 [1410736]:https://launchpad.support.sap.com/#/notes/1410736
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
@@ -101,8 +101,6 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS und die SAP HANA-Datenb
 
 * Frontendkonfiguration
   * IP-Adresse 192.168.14.9
-* Backendkonfiguration
-  * Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des (A)SCS/ERS-Clusters sein sollen
 * Testport
   * Port 620<strong>&lt;Nr.&gt;</strong>
 * Lastenausgleichsregeln
@@ -119,8 +117,6 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS und die SAP HANA-Datenb
 
 * Frontendkonfiguration
   * IP-Adresse 192.168.14.10
-* Backendkonfiguration
-  * Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des (A)SCS/ERS-Clusters sein sollen
 * Testport
   * Port 621<strong>&lt;nr&gt;</strong>
 * Lastenausgleichsregeln
@@ -130,6 +126,9 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS und die SAP HANA-Datenb
   * 5<strong>&lt;Nr.&gt;</strong>13 TCP
   * 5<strong>&lt;Nr.&gt;</strong>14 TCP
   * 5<strong>&lt;Nr.&gt;</strong>16 TCP
+
+* Backendkonfiguration
+  * Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des (A)SCS/ERS-Clusters sein sollen
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>Einrichten der Infrastruktur für Azure NetApp Files 
 
@@ -177,7 +176,7 @@ In diesem Beispiel wurden die Ressourcen manuell über das [Azure-Portal](https:
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Manuelles Bereitstellen von Linux über das Azure-Portal
 
-Zuerst müssen Sie die Azure NetApp Files-Volumes erstellen. Stellen Sie die VMs bereit. Anschließend erstellen Sie einen Lastenausgleich und verwenden die virtuellen Computer in den Back-End-Pools.
+Zuerst müssen Sie die Azure NetApp Files-Volumes erstellen. Stellen Sie die VMs bereit. Anschließend erstellen Sie einen Lastenausgleich und verwenden die virtuellen Computer im Back-End-Pool.
 
 1. Erstellen Sie einen Lastenausgleich (intern, Standard):  
    1. Erstellen der Front-End-IP-Adressen
@@ -188,14 +187,13 @@ Zuerst müssen Sie die Azure NetApp Files-Volumes erstellen. Stellen Sie die VMs
          1. OK klicken
       1. IP-Adresse 192.168.14.10 für ASCS ERS
          * Wiederholen Sie die oben unter „a“ angegebenen Schritte, um eine IP-Adresse für ERS zu erstellen (z. B. **192.168.14.10** und **frontend.QAS.ERS**).
-   1. Erstellen der Back-End-Pools
-      1. Erstellen eines Back-End-Pools für ASCS
-         1. Öffnen Sie den Lastenausgleich, wählen Sie Back-End-Pools und klicken Sie auf „Hinzufügen“.
-         1. Geben Sie den Namen des neuen Back-End-Pools ein (z. B. **backend.QAS**).
-         1. Klicken Sie auf „Virtuellen Computer hinzufügen“.
-         1. Wählen Sie einen virtuellen Computer aus. 
-         1. Wählen Sie die virtuellen Computer des (A)SCS-Clusters mit ihren IP-Adressen aus.
-         1. Klicken Sie auf "Hinzufügen".
+   1. Erstellen des Back-End-Pools
+      1. Öffnen Sie den Lastenausgleich, wählen Sie Back-End-Pools und klicken Sie auf „Hinzufügen“.
+      1. Geben Sie den Namen des neuen Back-End-Pools ein (z. B. **backend.QAS**).
+      1. Klicken Sie auf „Virtuellen Computer hinzufügen“.
+      1. Wählen Sie einen virtuellen Computer aus. 
+      1. Wählen Sie die virtuellen Computer des (A)SCS-Clusters mit ihren IP-Adressen aus.
+      1. Klicken Sie auf "Hinzufügen".
    1. Erstellen der Integritätstests
       1. Port 620**00** für ASCS
          1. Öffnen Sie den Lastenausgleich, wählen Sie Integritätstests aus, und klicken Sie auf „Hinzufügen“.
@@ -223,14 +221,13 @@ Zuerst müssen Sie die Azure NetApp Files-Volumes erstellen. Stellen Sie die VMs
          1. OK klicken
       1. IP-Adresse 192.168.14.10 für ASCS ERS
          * Wiederholen Sie die oben unter „a“ angegebenen Schritte, um eine IP-Adresse für ERS zu erstellen (z. B. **192.168.14.10** und **frontend.QAS.ERS**).
-   1. Erstellen der Back-End-Pools
-      1. Erstellen eines Back-End-Pools für ASCS
-         1. Öffnen Sie den Lastenausgleich, wählen Sie Back-End-Pools und klicken Sie auf „Hinzufügen“.
-         1. Geben Sie den Namen des neuen Back-End-Pools ein (z. B. **backend.QAS**).
-         1. Klicken Sie auf „Virtuellen Computer hinzufügen“.
-         1. Wählen Sie die Verfügbarkeitsgruppe aus, die Sie zuvor für ASCS erstellt haben. 
-         1. Wählen Sie die virtuellen Computer des A(SCS)-Clusters aus.
-         1. OK klicken
+   1. Erstellen des Back-End-Pools
+      1. Öffnen Sie den Lastenausgleich, wählen Sie Back-End-Pools und klicken Sie auf „Hinzufügen“.
+      1. Geben Sie den Namen des neuen Back-End-Pools ein (z. B. **backend.QAS**).
+      1. Klicken Sie auf „Virtuellen Computer hinzufügen“.
+      1. Wählen Sie die Verfügbarkeitsgruppe aus, die Sie zuvor für ASCS erstellt haben. 
+      1. Wählen Sie die virtuellen Computer des A(SCS)-Clusters aus.
+      1. OK klicken
    1. Erstellen der Integritätstests
       1. Port 620**00** für ASCS
          1. Öffnen Sie den Lastenausgleich, wählen Sie Integritätstests aus, und klicken Sie auf „Hinzufügen“.
@@ -751,7 +748,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    sudo firewall-cmd --zone=public --add-port=50116/tcp
    ```
 
-## <a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>Vorbereitung des SAP NetWeaver-Anwendungsservers
+## <a name="sap-netweaver-application-server-preparation"></a><a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>Vorbereitung des SAP NetWeaver-Anwendungsservers
 
    Für einige Datenbanken ist es erforderlich, dass die Installation der Datenbankinstanz auf einem Anwendungsserver ausgeführt wird. Bereiten Sie die virtuellen Computer für den Anwendungsserver vor, damit Sie diese in diesen Fällen verwenden können.  
 

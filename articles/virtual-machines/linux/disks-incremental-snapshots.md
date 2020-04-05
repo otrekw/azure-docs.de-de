@@ -1,18 +1,18 @@
 ---
-title: Inkrementelle Momentaufnahmen (Vorschauversion) für verwaltete Datenträger
-description: Erfahren Sie mehr über inkrementelle Momentaufnahmen (Vorschauversion) für verwaltete Datenträger samt Informationen, wie sie mit PowerShell und Azure Resource Manager erstellt werden.
+title: Inkrementelle Momentaufnahmen für verwaltete Datenträger
+description: Hier finden Sie Informationen zu inkrementellen Momentaufnahmen für verwaltete Datenträger, einschließlich dazu, wie Sie diese mit der Befehlszeilenschnittstelle (Command Line Interface, CLI) und Azure Resource Manager erstellen.
 author: roygara
-ms.service: virtual-machines
+ms.service: virtual-machines-linux
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 03/13/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 74c1c84b4deb1f2d904f88887fcf81b880f0f8ec
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: cc2685c234bceb302b86ebd84d0ec091ac11f098
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970412"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79370864"
 ---
-# <a name="creating-an-incremental-snapshot-preview-for-managed-disks"></a>Erstellen einer inkrementellen Momentaufnahme (Vorschau) für verwaltete Datenträger
-[!INCLUDE [virtual-machines-disks-incremental-snapshot](../../../includes/virtual-machines-disks-incremental-snapshot.md)]
+# <a name="create-an-incremental-snapshot-for-managed-disks---cli"></a>Erstellen einer inkrementellen Momentaufnahme für verwaltete Datenträger – CLI
+[!INCLUDE [virtual-machines-disks-incremental-snapshot-cli](../../../includes/virtual-machines-disks-incremental-snapshot-cli.md)]

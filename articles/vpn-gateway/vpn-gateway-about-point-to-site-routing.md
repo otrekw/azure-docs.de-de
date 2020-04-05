@@ -1,18 +1,18 @@
 ---
-title: 'Azure VPN Gateway: Informationen zum P2S-Routing'
+title: 'Azure-VPN Gateway: Informationen zum P2S-Routing'
 description: Anhand dieses Artikels können Sie das Verhalten von Point-to-Site-VPN-Routing nachvollziehen.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 10/08/2019
+ms.date: 03/24/2020
 ms.author: anzaman
-ms.openlocfilehash: 7205b5f3049773545d78c3a3e3423450779b78c5
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 4821f2eb694a36cf0570008b3e62ce39999c58d1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150968"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239747"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Informationen zu Point-to-Site-VPN-Routing
 
@@ -24,11 +24,11 @@ Azure unterstützt zurzeit zwei Protokolle für den Remotezugriff: IKEv2 und SST
 > Dieser Artikel gilt nur für IKEv2.
 >
 
-## <a name="diagrams"></a>Informationen zu den Abbildungen
+## <a name="about-the-diagrams"></a><a name="diagrams"></a>Informationen zu den Abbildungen
 
 Es gibt eine Anzahl verschiedener Abbildungen in diesem Artikel. Jeder Abschnitt zeigt eine andere Topologie oder Konfiguration. Im Rahmen dieses Artikels funktionieren Site-to-Site- (S2S) und VNet-to-VNet-Verbindungen auf die gleiche Weise, weil beide IPSec-Tunnel darstellen. Alle VPN-Gateways in diesem Artikel sind routenbasiert.
 
-## <a name="isolatedvnet"></a>Ein isoliertes VNet
+## <a name="one-isolated-vnet"></a><a name="isolatedvnet"></a>Ein isoliertes VNet
 
 Die Point-to-Site-VPN-Gatewayverbindung in diesem Beispiel gilt für ein VNet, das nicht mit einem anderen virtuellen Netzwerk (VNet1) verbunden ist und auch kein Peering aufweist. In diesem Beispiel können alle Clients nur auf VNet1 zugreifen.
 
@@ -44,15 +44,15 @@ Die Point-to-Site-VPN-Gatewayverbindung in diesem Beispiel gilt für ein VNet, d
 
 * Zu Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>Zugriff
 
 * Windows-Clients können auf VNet1 zugreifen.
 
 * Nicht-Windows-Clients können auf VNet1 zugreifen.
 
-## <a name="multipeered"></a>Mehrere VNets mit Peering
+## <a name="multiple-peered-vnets"></a><a name="multipeered"></a>Mehrere VNets mit Peering
 
-In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. Für VNet1 erfolgt Peering mit VNet2. Für VNet2 erfolgt Peering mit VNet3. Für VNet1 erfolgt Peering mit VNet4. Es gibt kein direktes Peering zwischen VNet1 und VNet3. Für VNet1 ist „Gatewaytransit zulassen“, für VNet2 „Remotegateways verwenden“ aktiviert.
+In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. Für VNet1 erfolgt Peering mit VNet2. Für VNet2 erfolgt Peering mit VNet3. Für VNet1 erfolgt Peering mit VNet4. Es gibt kein direktes Peering zwischen VNet1 und VNet3. Für VNet1 ist „Gatewaytransit zulassen“ aktiviert. Für VNet2 und VNet4 ist „Remotegateways verwenden“ aktiviert.
 
 Clients, die Windows verwenden, können auf VNets mit direktem Peering zugreifen, aber der VPN-Client muss erneut heruntergeladen werden, wenn Änderungen am VNet-Peering oder an der Netzwerktopologie vorgenommen werden. Nicht-Windows-Clients können auf VNets mit direktem Peering zugreifen. Der Zugriff ist nicht transitiv und nur auf VNets mit direktem Peering beschränkt.
 
@@ -74,13 +74,13 @@ Clients, die Windows verwenden, können auf VNets mit direktem Peering zugreifen
 
 * Zu Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.2.0.0/16, 10.4.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>Zugriff
 
 * Windows-Clients können auf VNet1, VNet2 und VNet4 zugreifen, aber der VPN-Client muss erneut heruntergeladen werden, damit alle Topologieänderungen wirksam werden.
 
 * Nicht-Windows-Clients können auf VNet1, VNet2 und VNet4 zugreifen.
 
-## <a name="multis2s"></a>Mehrere VNets, die über ein S2S-VPN verbunden sind
+## <a name="multiple-vnets-connected-using-an-s2s-vpn"></a><a name="multis2s"></a>Mehrere VNets, die über ein S2S-VPN verbunden sind
 
 In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. VNet1 ist mit VNet2 über eine Site-to-Site-VPN-Verbindung verbunden. VNet2 ist mit VNet3 über eine Site-to-Site-VPN-Verbindung verbunden. Direktes Peering oder eine Site-to-Site-VPN-Verbindung zwischen VNet1 und VNet3 ist nicht vorhanden. Alle Site-to-Site-Verbindungen führen nicht BGP für das Routing aus.
 
@@ -102,13 +102,13 @@ Clients, die Windows oder ein anderes unterstütztes Betriebssystem verwenden, k
 
 * Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.2.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>Zugriff
 
 * Windows-Clients können nur auf VNet1 zugreifen.
 
 * Nicht-Windows-Clients können nur auf VNet1 zugreifen.
 
-## <a name="multis2sbgp"></a>Mehrere VNets, die über ein S2S-VPN verbunden sind (BGP)
+## <a name="multiple-vnets-connected-using-an-s2s-vpn-bgp"></a><a name="multis2sbgp"></a>Mehrere VNets, die über ein S2S-VPN verbunden sind (BGP)
 
 In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. VNet1 ist mit VNet2 über eine Site-to-Site-VPN-Verbindung verbunden. VNet2 ist mit VNet3 über eine Site-to-Site-VPN-Verbindung verbunden. Direktes Peering oder eine Site-to-Site-VPN-Verbindung zwischen VNet1 und VNet3 ist nicht vorhanden. Alle Site-to-Site-Verbindungen führen BGP für das Routing aus.
 
@@ -130,13 +130,13 @@ Clients, die Windows oder ein anderes unterstütztes Betriebssystem verwenden, k
 
 * Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>Zugriff
 
 * Windows-Clients können auf VNet1, VNet2 und VNet3 zugreifen, Routen zu VNet2 und VNet3 müssen allerdings manuell hinzugefügt werden.
 
 * Nicht-Windows-Clients können auf VNet1, VNet2 und VNet3 zugreifen.
 
-## <a name="vnetbranch"></a>Ein VNet und eine Filiale
+## <a name="one-vnet-and-a-branch-office"></a><a name="vnetbranch"></a>Ein VNet und eine Filiale
 
 In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. Für VNet1 ist keine Verbindung bzw. kein Peering mit einem beliebigen anderen virtuellen Netzwerk vorhanden, es ist jedoch mit einem lokalen Standort über eine Site-to-Site-VPN-Verbindung verbunden, die nicht BGP ausführt.
 
@@ -156,13 +156,13 @@ Windows-Clients und Nicht-Windows-Clients können nur auf VNet1 zugreifen.
 
 * Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>Zugriff
 
 * Windows-Clients können nur auf VNet1 zugreifen.
 
 * Nicht-Windows-Clients können nur auf VNet1 zugreifen.
 
-## <a name="vnetbranchbgp"></a>Ein VNet und eine Filiale (BGP)
+## <a name="one-vnet-and-a-branch-office-bgp"></a><a name="vnetbranchbgp"></a>Ein VNet und eine Filiale (BGP)
 
 In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. Für VNet1 ist keine Verbindung bzw. kein Peering mit einem beliebigen anderen virtuellen Netzwerk vorhanden, es ist jedoch mit einem lokalen Standort (Site1) über eine Site-to-Site-VPN-Verbindung verbunden, die BGP ausführt.
 
@@ -182,14 +182,14 @@ Windows-Clients können auf das VNet und die Filiale (Site1) zugreifen, die Rout
 
 * Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>Zugriff
 
 * Windows-Clients können auf VNet1 und Site1 zugreifen, Routen zu Site1 müssen allerdings manuell hinzugefügt werden.
 
 * Nicht-Windows-Clients können auf VNet1 und Site1 zugreifen.
 
 
-## <a name="multivnets2sbranch"></a>Mehrere mithilfe von S2S verbundene VNets und eine Filiale
+## <a name="multiple-vnets-connected-using-s2s-and-a-branch-office"></a><a name="multivnets2sbranch"></a>Mehrere mithilfe von S2S verbundene VNets und eine Filiale
 
 In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. VNet1 ist mit VNet2 über eine Site-to-Site-VPN-Verbindung verbunden. VNet2 ist mit VNet3 über eine Site-to-Site-VPN-Verbindung verbunden. Direktes Peering oder ein Site-to-Site-VPN-Tunnel zwischen den VNet1- und VNet3-Netzwerken ist nicht vorhanden. VNet3 ist mit einer Filiale (Site1) über eine Site-to-Site-VPN-Verbindung verbunden. Alle VPN-Verbindungen führen BGP nicht aus.
 
@@ -213,13 +213,13 @@ Alle Clients können nur auf VNet1 zugreifen.
 
 * Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>Zugriff
 
 * Die Windows-Clients können nur auf VNet1 zugreifen.
 
 * Nicht-Windows-Clients können nur auf VNet1 zugreifen.
 
-## <a name="multivnets2sbranchbgp"></a>Mehrere mit S2S verbundene VNets und eine Filiale (BGP)
+## <a name="multiple-vnets-connected-using-s2s-and-a-branch-office-bgp"></a><a name="multivnets2sbranchbgp"></a>Mehrere mit S2S verbundene VNets und eine Filiale (BGP)
 
 In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. VNet1 ist mit VNet2 über eine Site-to-Site-VPN-Verbindung verbunden. VNet2 ist mit VNet3 über eine Site-to-Site-VPN-Verbindung verbunden. Direktes Peering oder ein Site-to-Site-VPN-Tunnel zwischen den VNet1- und VNet3-Netzwerken ist nicht vorhanden. VNet3 ist mit einer Filiale (Site1) über eine Site-to-Site-VPN-Verbindung verbunden. Alle VPN-Verbindungen führen BGP aus.
 
@@ -243,7 +243,7 @@ Clients mit Windows können auf VNets und Standorte zugreifen, die über eine Si
 
 * Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.2.0.0/16, 10.3.0.0/16, 10.101.0.0/16, 192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>Zugriff
 
 * Windows-Clients können auf VNet1, VNet2, VNet3 und Site1 zugreifen, die Routen zu VNet2, VNet3 und Site1 müssen dem Client aber manuell hinzugefügt werden.
 

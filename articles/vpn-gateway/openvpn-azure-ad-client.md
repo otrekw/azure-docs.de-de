@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: alzam
-ms.openlocfilehash: fc48b0ae9cf4162b4b9abba14c6e909ca091fd23
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 9250464e3d28bdac20840aa9f69cfac707f73b30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251620"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371487"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Konfigurieren eines VPN-Clients für P2S-VPN-Protokollverbindungen: Azure AD-Authentifizierung
 
@@ -22,21 +22,27 @@ Dieser Artikel unterstützt Sie beim Konfigurieren eines VPN-Clients für die Ve
 > Die Azure AD-Authentifizierung wird nur für Verbindungen mit dem OpenVPN®-Protokoll unterstützt.
 >
 
-## <a name="profile"></a>Arbeiten mit Clientprofilen
+## <a name="working-with-client-profiles"></a><a name="profile"></a>Arbeiten mit Clientprofilen
 
 Zum Herstellen einer Verbindung müssen Sie auf jedem Computer, der eine Verbindung mit dem VNET herstellen möchte, Azure VPN Client herunterladen und ein VPN-Clientprofil konfigurieren. Sie können ein Clientprofil auf einem Computer erstellen, das Profil exportieren und dann auf weiteren Computern importieren.
 
 ### <a name="to-download-the-azure-vpn-client"></a>So laden Sie Azure VPN Client herunter
 
-Verwenden Sie diesen [Link](https://go.microsoft.com/fwlink/?linkid=2117554), um Azure VPN Client herunterzuladen.
+Verwenden Sie diesen [Link](https://go.microsoft.com/fwlink/?linkid=2117554), um Azure VPN Client herunterzuladen. Stellen Sie sicher, dass Azure VPN Client über die Berechtigung für die Ausführung im Hintergrund verfügt. Führen Sie die folgenden Schritte aus, um die Berechtigung zu überprüfen/zu aktivieren:
 
-### <a name="cert"></a>So erstellen Sie ein zertifikatbasiertes Clientprofil
+1. Wechseln Sie zu „Start“, und wählen Sie dann „Einstellungen“ > „Datenschutz“ > „Hintergrund-Apps“ aus.
+2. Stellen Sie sicher, dass unter „Hintergrund-Apps“ die Option **Apps die Ausführung im Hintergrund gestatten** aktiviert ist.
+3. Legen Sie unter „Wählen Sie aus, welche Apps im Hintergrund ausgeführt werden dürfen“ die Einstellungen für Azure VPN Client auf **Ein** fest.
+
+  ![Berechtigung (permission)](./media/openvpn-azure-ad-client/backgroundpermission.png)
+
+### <a name="to-create-a-certificate-based-client-profile"></a><a name="cert"></a>So erstellen Sie ein zertifikatbasiertes Clientprofil
 
 Bei Verwendung eines zertifikatbasierten Profils müssen die entsprechenden Zertifikate auf dem Clientcomputer installiert sein. Weitere Informationen zu Zertifikaten finden Sie unter [Installieren von Clientzertifikaten](point-to-site-how-to-vpn-client-install-azure-cert.md).
 
   ![cert](./media/openvpn-azure-ad-client/create/create-cert1.jpg)
 
-### <a name="radius"></a>So erstellen Sie ein RADIUS-Clientprofil
+### <a name="to-create-a-radius-client-profile"></a><a name="radius"></a>So erstellen Sie ein RADIUS-Clientprofil
 
   ![Radius](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
   
@@ -44,7 +50,7 @@ Bei Verwendung eines zertifikatbasierten Profils müssen die entsprechenden Zert
 > Der geheime Serverschlüssel kann in das P2S-VPN-Clientprofil exportiert werden.  Anweisungen zum Exportieren eines Clientprofils finden Sie [hier](about-vpn-profile-download.md).
 >
 
-### <a name="export"></a>So exportieren und verteilen Sie ein Clientprofil
+### <a name="to-export-and-distribute-a-client-profile"></a><a name="export"></a>So exportieren und verteilen Sie ein Clientprofil
 
 Sobald Sie über ein Arbeitsprofil verfügen und es an andere Benutzer verteilen müssen, können Sie es mit den folgenden Schritten exportieren:
 
@@ -56,7 +62,7 @@ Sobald Sie über ein Arbeitsprofil verfügen und es an andere Benutzer verteilen
 
     ![Export](./media/openvpn-azure-ad-client/export/export2.jpg)
 
-### <a name="import"></a>So importieren Sie ein Clientprofil
+### <a name="to-import-a-client-profile"></a><a name="import"></a>So importieren Sie ein Clientprofil
 
 1. Wählen Sie auf der Seite **Importieren**aus.
 
@@ -78,7 +84,7 @@ Sobald Sie über ein Arbeitsprofil verfügen und es an andere Benutzer verteilen
 
     ![Import](./media/openvpn-azure-ad-client/import/import5.jpg)
 
-### <a name="delete"></a>So löschen Sie ein Clientprofil
+### <a name="to-delete-a-client-profile"></a><a name="delete"></a>So löschen Sie ein Clientprofil
 
 1. Wählen Sie die Auslassungszeichen neben dem Clientprofil aus, das Sie löschen möchten. Wählen Sie dann **Entfernen** aus.
 
@@ -88,7 +94,7 @@ Sobald Sie über ein Arbeitsprofil verfügen und es an andere Benutzer verteilen
 
     ![delete](./media/openvpn-azure-ad-client/delete/delete2.jpg)
 
-## <a name="connection"></a>Erstellen einer Verbindung
+## <a name="create-a-connection"></a><a name="connection"></a>Erstellen einer Verbindung
 
 1. Wählen Sie auf der Seite **+** aus und klicken Sie dann auf **+ Hinzufügen**.
 
@@ -110,7 +116,7 @@ Sobald Sie über ein Arbeitsprofil verfügen und es an andere Benutzer verteilen
 
     ![connection](./media/openvpn-azure-ad-client/create/create5.jpg)
 
-### <a name="autoconnect"></a>So stellen Sie die Verbindung automatisch her
+### <a name="to-connect-automatically"></a><a name="autoconnect"></a>So stellen Sie die Verbindung automatisch her
 
 Diese Schritte unterstützen Sie beim Konfigurieren der Verbindung, sodass sie automatische hergestellt wird und immer aktiv ist.
 
@@ -130,7 +136,7 @@ Diese Schritte unterstützen Sie beim Konfigurieren der Verbindung, sodass sie a
 
     ![auto](./media/openvpn-azure-ad-client/auto/auto4.jpg)
 
-## <a name="diagnose"></a>Diagnose von Verbindungsproblemen
+## <a name="diagnose-connection-issues"></a><a name="diagnose"></a>Diagnose von Verbindungsproblemen
 
 1. Zum Diagnostizieren von Verbindungsproblemen können Sie das **Diagnose**-Tool verwenden. Wählen Sie die **...** neben der VPN-Verbindung aus, die Sie diagnostizieren möchten, um das Menü einzublenden. Wählen Sie dann **Diagnose** aus.
 
@@ -184,6 +190,10 @@ Sie können die heruntergeladene XML-Profildatei ändern und die Tags **\<dnsser
 </clientconfig>
 </azvpnprofile>
 ```
+
+> [!NOTE]
+> Der OpenVPN-Azure AD-Client verwendet DNS-Einträge der Richtlinientabelle für die Namensauflösung (Name Resolution Policy Table, NRPT). Dies bedeutet, dass in der Ausgabe von `ipconfig /all` keine DNS-Server aufgeführt werden. Verwenden Sie [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) in PowerShell, um die von Ihnen derzeit verwendeten DNS-Einstellungen zu überprüfen.
+>
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Wie füge ich dem VPN-Client benutzerdefinierte Routen hinzu?
 

@@ -6,20 +6,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/15/2020
+ms.date: 03/04/2020
 ms.author: cherylmc
-ms.openlocfilehash: 18a9578cc454ea5259b9564d64dcd4308ee5ef87
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: d15efee635e131d658cd650b7f80eb9e670a0dea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77148979"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235758"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>Erstellen und Installieren von VPN-Clientkonfigurationsdateien für P2S-Konfigurationen mit nativer Azure-Zertifikatauthentifizierung
 
-VPN-Clientkonfigurationsdateien sind in einer ZIP-Datei enthalten. Konfigurationsdateien enthalten die Einstellungen, die zum Herstellen von Point-to-Site-Verbindungen mit nativer Azure-Zertifikatauthentifizierung zwischen einem nativen Windows-, Mac IKEv2 VPN- oder Linux-Client und einem VNET erforderlich sind.
+VPN-Clientkonfigurationsdateien sind in einer ZIP-Datei enthalten. Konfigurationsdateien enthalten die Einstellungen, die zum Herstellen von Point-to-Site-Verbindungen mit nativer Azure-Zertifikatauthentifizierung zwischen einem nativen Windows-, Mac IKEv2 VPN- oder Linux-Client und einem virtuellen Netzwerk erforderlich sind.
 
-Clientkonfigurationsdateien gelten spezifisch für die VPN-Konfiguration für das VNET. Wenn nach der Erstellung der VPN-Clientkonfigurationsdateien Änderungen an der P2S-VPN-Konfiguration (beispielsweise am VPN-Protokolltyp oder -Authentifizierungstyp) vorgenommen werden, müssen Sie neue VPN-Clientkonfigurationsdateien für die Benutzergeräte erstellen. 
+Clientkonfigurationsdateien gelten spezifisch für die VPN-Konfiguration für das virtuelle Netzwerk. Wenn nach der Erstellung der VPN-Clientkonfigurationsdateien Änderungen an der P2S-VPN-Konfiguration (beispielsweise am VPN-Protokolltyp oder -Authentifizierungstyp) vorgenommen werden, müssen Sie neue VPN-Clientkonfigurationsdateien für die Benutzergeräte erstellen. 
 
 * Weitere Informationen zu Point-to-Site-Verbindungen finden Sie unter [About Point-to-Site VPN](point-to-site-about.md) (Informationen zu P2S-VPN).
 * OpenVPN-Anweisungen finden Sie unter [Konfigurieren von OpenVPN-Clients für Azure VPN Gateway (Point-to-Site) (Vorschau)](vpn-gateway-howto-openvpn.md) sowie unter [Konfigurieren von OpenVPN-Clients für Azure VPN Gateway (Vorschau)](vpn-gateway-howto-openvpn-clients.md).
@@ -28,7 +28,7 @@ Clientkonfigurationsdateien gelten spezifisch für die VPN-Konfiguration für da
 >[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
 >
 
-## <a name="generate"></a>Generieren der VPN-Clientkonfigurationsdateien
+## <a name="generate-vpn-client-configuration-files"></a><a name="generate"></a>Generieren der VPN-Clientkonfigurationsdateien
 
 Stellen Sie zunächst sicher, dass für alle Benutzer, die eine Verbindung herstellen, ein gültiges Zertifikat auf den Benutzergeräten installiert ist. Weitere Informationen zum Installieren eines Clientzertifikats finden Sie unter [Install a client certificate for Point-to-Site Azure certificate authentication connections](point-to-site-how-to-vpn-client-install-azure-cert.md) (Installieren eines Clientzertifikats für Verbindungen für die P2S-Azure-Zertifikatauthentifizierung).
 
@@ -37,14 +37,16 @@ Sie können Clientkonfigurationsdateien mithilfe von PowerShell oder mithilfe de
   * **WindowsAmd64** und **WindowsX86**. Diese Ordner enthalten das Windows-32-Bit- bzw. das 64-Bit-Installer-Paket. Das Installer-Paket **WindowsAmd64** gilt nicht nur für Amd, sondern für alle unterstützten 64-Bit-Windows-Clients.
   * **Allgemein**: Dieser Ordner enthält allgemeine Informationen zum Erstellen Ihrer eigenen VPN-Clientkonfiguration. Der Ordner „Allgemein“ wird bereitgestellt, wenn für das Gateway IKEv2 oder SSTP und IKEv2 konfiguriert wurde. Wenn nur SSTP konfiguriert ist, ist der Ordner „Allgemein“ nicht vorhanden.
 
-### <a name="zipportal"></a>Erstellen von Dateien über das Azure-Portal
+### <a name="generate-files-using-the-azure-portal"></a><a name="zipportal"></a>Erstellen von Dateien über das Azure-Portal
 
 1. Navigieren Sie im Azure-Portal zum Gateway für das virtuelle Netzwerk, mit dem Sie eine Verbindung herstellen möchten.
 2. Klicken Sie auf der Seite mit dem Gateway für virtuelle Netzwerke auf **Point-to-Site-Konfiguration**.
+
+   ![Portal, Client herunterladen](./media/point-to-site-vpn-client-configuration-azure-cert/client-configuration-portal.png)
 3. Klicken Sie oben auf der Seite „Point-to-Site-Konfiguration“ auf **VPN-Client herunterladen**. Es dauert einige Minuten, bis das Clientkonfigurationspaket generiert wird.
 4. In Ihrem Browser wird ein Hinweis angezeigt, dass eine Clientkonfigurationsdatei im ZIP-Format verfügbar ist. Sie hat den gleichen Namen wie das Gateway. Entzippen Sie die Datei, um die Ordner anzuzeigen.
 
-### <a name="zipps"></a>Generieren von Dateien mithilfe von PowerShell
+### <a name="generate-files-using-powershell"></a><a name="zipps"></a>Generieren von Dateien mithilfe von PowerShell
 
 
 1. Beim Generieren von VPN-Clientkonfigurationsdateien ist für „-AuthenticationMethod“ der Wert „EapTls“ angegeben. Erstellen Sie die VPN-Clientkonfigurationsdateien mit dem folgenden Befehl:
@@ -56,7 +58,7 @@ Sie können Clientkonfigurationsdateien mithilfe von PowerShell oder mithilfe de
    ```
 2. Kopieren Sie die URL in Ihren Browser, um die ZIP-Datei herunterzuladen. Entzippen Sie dann die Datei, um die Ordner anzuzeigen.
 
-## <a name="installwin"></a>Windows
+## <a name="windows"></a><a name="installwin"></a>Windows
 
 Sie können auf jedem Windows-Clientcomputer das gleiche VPN-Clientkonfigurationspaket verwenden – vorausgesetzt, es handelt sich dabei um die passende Version für die Architektur des jeweiligen Clients. Die Liste mit den unterstützten Clientbetriebssystemen finden Sie im Abschnitt [Point-to-Site-Verbindungen](vpn-gateway-vpn-faq.md#P2S) der häufig gestellten Fragen zu VPN Gateway.
 
@@ -72,7 +74,7 @@ Führen Sie die folgenden Schritte aus, um den nativen Windows-VPN-Client für d
 3. Navigieren Sie auf dem Clientcomputer zu **Netzwerkeinstellungen**, und klicken Sie auf **VPN**. Die VPN-Verbindung zeigt den Namen des virtuellen Netzwerks an, mit dem eine Verbindung hergestellt wird. 
 4. Bevor Sie versuchen, eine Verbindung herzustellen, überprüfen Sie, ob Sie auf dem Clientcomputer ein Clientzertifikat installiert haben. Ein Clientzertifikat ist für die Authentifizierung erforderlich, wenn Sie den Typ „native Azure-Zertifikatauthentifizierung“ verwenden. Weitere Informationen zum Generieren von Zertifikaten finden Sie unter [Generieren von Zertifikaten](vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert). Weitere Informationen zum Installieren eines Clientzertifikats finden Sie unter [Installieren eines Clientzertifikats](point-to-site-how-to-vpn-client-install-azure-cert.md).
 
-## <a name="installmac"></a>Mac (OS X)
+## <a name="mac-os-x"></a><a name="installmac"></a>Mac (OS X)
 
  Sie müssen den IKEv2-VPN-Client auf jedem Mac, der sich mit Azure verbindet, manuell konfigurieren. Azure bietet für die native Azure-Zertifikatauthentifizierung nicht die MOBILECONFIG-Datei. **Allgemein** enthält alle Informationen, die Sie für die Konfiguration benötigen. Enthält der Download nicht den Ordner „Allgemein“, wurde als Tunneltyp wahrscheinlich nicht IKEv2 ausgewählt. Beachten Sie, dass die Basic-SKU des VPN-Gateways IKEv2 nicht unterstützt. Wählen Sie IKEv2 aus, und generieren Sie anschließend die ZIP-Datei erneut, um den Ordner „Allgemein“ abzurufen.<br>Der Ordner „Allgemein“ enthält die folgenden Dateien:
 
@@ -90,7 +92,7 @@ Führen Sie die folgenden Schritte aus, um den nativen VPN-Client auf dem Mac f�
     >
   
 2. Stellen Sie sicher, dass Sie ein Clientzertifikat installiert haben, das von dem Stammzertifikat, das Sie beim Konfigurieren der P2S-Einstellungen in Azure hochgeladen haben, ausgestellt wurde. Dies unterscheidet sich von der VPNServerRoot-Datei, die Sie im vorherigen Schritt installiert haben. Ein Clientzertifikat wird für die Authentifizierung verwendet und ist erforderlich. Weitere Informationen zum Generieren von Zertifikaten finden Sie unter [Generieren von Zertifikaten](vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert). Weitere Informationen zum Installieren eines Clientzertifikats finden Sie unter [Installieren eines Clientzertifikats](point-to-site-how-to-vpn-client-install-azure-cert.md).
-3. Öffnen Sie unter **Network Preferences** (Netzwerkeinstellungen) das Dialogfeld **Netzwerk**, und klicken Sie auf **„+“** , um ein neues VPN-Clientverbindungsprofil für eine P2S-Verbindung mit dem Azure-NET zu erstellen.
+3. Öffnen Sie unter **Netzwerkeinstellungen** das Dialogfeld **Netzwerk**, und klicken Sie auf das Pluszeichen ( **+** ), um ein neues VPN-Clientverbindungsprofil für eine P2S-Verbindung mit dem virtuellen Azure-Netzwerk zu erstellen.
 
    Für **Schnittstelle** ist der Wert „VPN“ und für **VPN-Typ** der Wert „IKEv2“ angegeben. Geben Sie im Feld **Dienstname** einen Namen für das Profil ein, und klicken Sie auf **Erstellen**, um das VPN-Clientverbindungsprofil zu erstellen.
 
@@ -115,21 +117,21 @@ Führen Sie die folgenden Schritte aus, um den nativen VPN-Client auf dem Mac f�
 8. Geben Sie im Feld **Local ID** (Lokale ID) den Namen des Zertifikats (aus Schritt 6) ein. In diesem Beispiel lautet er „ikev2Client.com“. Klicken Sie auf die Schaltfläche **Übernehmen**, um die Änderungen zu speichern.
 
    ![apply](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
-9. Klicken Sie im Dialogfeld **Netzwerk** auf **Übernehmen**, um alle Änderungen zu speichern. Klicken Sie auf **Verbinden**, um die P2S-Verbindung mit dem Azure-VNET zu starten.
+9. Klicken Sie im Dialogfeld **Netzwerk** auf **Übernehmen**, um alle Änderungen zu speichern. Klicken Sie dann auf **Verbinden**, um die P2S-Verbindung mit dem virtuellen Azure-Netzwerk zu starten.
 
-## <a name="linuxgui"></a>Linux (strongSwan mit grafischer Benutzeroberfläche)
+## <a name="linux-strongswan-gui"></a><a name="linuxgui"></a>Linux (strongSwan mit grafischer Benutzeroberfläche)
 
-### <a name="installstrongswan"></a>Installieren von strongSwan
+### <a name="install-strongswan"></a><a name="installstrongswan"></a>Installieren von strongSwan
 
 [!INCLUDE [install strongSwan](../../includes/vpn-gateway-strongswan-install-include.md)]
 
-### <a name="genlinuxcerts"></a>Generieren von Zertifikaten
+### <a name="generate-certificates"></a><a name="genlinuxcerts"></a>Generieren von Zertifikaten
 
 Wenn Sie noch keine Zertifikate generiert haben, verwenden Sie die folgenden Schritte:
 
 [!INCLUDE [strongSwan certificates](../../includes/vpn-gateway-strongswan-certificates-include.md)]
 
-### <a name="install"></a>Installieren und konfigurieren
+### <a name="install-and-configure"></a><a name="install"></a>Installieren und konfigurieren
 
 Die folgenden Anweisungen wurden für Ubuntu 18.0.4 erstellt. Ubuntu 16.0.10 unterstützt die strongSwan-GUI nicht. Wenn Sie Ubuntu 16.0.10 einsetzen möchten, müssen Sie die [Befehlszeile](#linuxinstallcli) verwenden. Die folgenden Beispiele entsprechen abhängig von Ihrer Version von Linux und strongSwan möglicherweise nicht den Bildschirmen, die Ihnen angezeigt werden.
 
@@ -138,7 +140,7 @@ Die folgenden Anweisungen wurden für Ubuntu 18.0.4 erstellt. Ubuntu 16.0.10 un
    ```
    sudo apt install network-manager-strongswan
    ```
-2. Wählen Sie **Einstellungen** und dann **Netzwerk** aus.
+2. Wählen Sie **Einstellungen** aus, und wählen Sie dann **Netzwerk** aus.
 
    ![Verbindungen bearbeiten](./media/point-to-site-vpn-client-configuration-azure-cert/editconnections.png)
 3. Erstellen Sie über die Schaltfläche **+** eine neue Verbindung.
@@ -156,7 +158,7 @@ Die folgenden Anweisungen wurden für Ubuntu 18.0.4 erstellt. Ubuntu 16.0.10 un
    ![Innere IP-Adresse anfordern](./media/point-to-site-vpn-client-configuration-azure-cert/turnon.png)
 8. Aktivieren Sie die Verbindung (**Ein**).
 
-## <a name="linuxinstallcli"></a>Linux (strongSwan mit Befehlszeilenschnittstelle)
+## <a name="linux-strongswan-cli"></a><a name="linuxinstallcli"></a>Linux (strongSwan mit Befehlszeilenschnittstelle)
 
 ### <a name="install-strongswan"></a>Installieren von strongSwan
 
