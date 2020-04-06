@@ -1,24 +1,24 @@
 ---
 title: KQL-Kurzübersicht
 description: Eine Liste mit hilfreichen KQL-Funktionen und deren Definitionen mit Syntaxbeispielen.
-author: yossi-karp
-ms.author: v-yokarp
+author: orspod
+ms.author: orspodek
 ms.reviewer: ''
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: c5d331b809d3f9f7db8d8c36add8b283bf0b9e39
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: e7196ccccb1203ce56b2e53fa358d091374cd3f8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664863"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79139078"
 ---
 # <a name="kql-quick-reference"></a>KQL-Kurzübersicht
 
 Dieser Artikel enthält eine Liste mit Funktionen und Beschreibungen, um Sie bei Ihren ersten Schritten mit der Kusto-Abfragesprache zu unterstützen.
 
-| Operator/Funktion                               | Beschreibung                           | Syntax                                           |
+| Operator/Funktion                               | BESCHREIBUNG                           | Syntax                                           |
 | :---------------------------------------------- | :------------------------------------ |:-------------------------------------------------|
 |**Filter/Suche/Bedingung**                      |**_Suche nach relevanten Daten mittels Filter- oder Suchvorgang_** |                      |
 | [where](/azure/kusto/query/whereoperator)                      | Filtert nach einem bestimmten Prädikat.           | `T | where Predicate`                         |

@@ -4,20 +4,20 @@ description: Aktivieren des Momentaufnahmedebuggers für .NET-Apps in Azure App 
 ms.topic: conceptual
 author: brahmnes
 ms.author: bfung
-ms.date: 03/07/2019
+ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: c23da585034e74d85be5a3c41b124f00408a0f4a
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 8af688e38003e0613a06d7d8622ce279a3838589
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77671425"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298274"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Aktivieren des Momentaufnahmedebuggers für .NET-Apps in Azure App Service
 
 Der Momentaufnahmedebugger kann derzeit für ASP.NET- und ASP.NET Core-Apps verwendet werden, die unter Azure App Service in Windows-Dienstplänen ausgeführt werden.
 
-## <a id="installation"></a> Aktivieren des Momentaufnahmedebuggers
+## <a name="enable-snapshot-debugger"></a><a id="installation"></a> Aktivieren des Momentaufnahmedebuggers
 Befolgen Sie die unten angegebenen Anweisungen, um den Momentaufnahmedebugger für eine App zu aktivieren. Wenn Sie eine andere Art von Azure-Dienst ausführen, helfen Ihnen diese Anweisungen zum Aktivieren des Momentaufnahmedebuggers auf anderen unterstützten Plattformen weiter:
 * [Azure Cloud Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric-Dienste](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
@@ -45,6 +45,48 @@ Der Application Insights-Momentaufnahmedebugger ist als Teil der App Services-Ru
 
 Führen Sie die gleichen Schritte wie zum **Aktivieren des Momentaufnahmedebuggers** aus, legen Sie jedoch beide Schalter für den Momentaufnahmedebugger auf **Aus** fest.
 Es wird empfohlen, den Momentaufnahmedebugger für alle Ihre Apps zu aktivieren, um die Diagnose von Anwendungsausnahmen zu erleichtern.
+
+## <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage
+
+Bei einer Azure App Service-App können Sie App-Einstellungen in einer Azure Resource Manager-Vorlage festlegen, um den Momentaufnahmedebugger und Profiler zu aktivieren. Sie fügen eine Konfigurationsressource hinzu, die die App-Einstellungen als untergeordnete Ressource der Website enthält:
+
+```json
+{
+  "apiVersion": "2015-08-01",
+  "name": "[parameters('webSiteName')]",
+  "type": "Microsoft.Web/sites",
+  "location": "[resourceGroup().location]",
+  "dependsOn": [
+    "[variables('hostingPlanName')]"
+  ],
+  "tags": { 
+    "[concat('hidden-related:', resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName')))]": "empty",
+    "displayName": "Website"
+  },
+  "properties": {
+    "name": "[parameters('webSiteName')]",
+    "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
+  },
+  "resources": [
+    {
+      "apiVersion": "2015-08-01",
+      "name": "appsettings",
+      "type": "config",
+      "dependsOn": [
+        "[parameters('webSiteName')]",
+        "[concat('AppInsights', parameters('webSiteName'))]"
+      ],
+      "properties": {
+        "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(resourceId('Microsoft.Insights/components', concat('AppInsights', parameters('webSiteName'))), '2014-04-01').InstrumentationKey]",
+        "APPINSIGHTS_PROFILERFEATURE_VERSION": "1.0.0",
+        "APPINSIGHTS_SNAPSHOTFEATURE_VERSION": "1.0.0",
+        "DiagnosticServices_EXTENSION_VERSION": "~3",
+        "ApplicationInsightsAgent_EXTENSION_VERSION": "~2"
+      }
+    }
+  ]
+},
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

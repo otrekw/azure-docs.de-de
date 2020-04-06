@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: d5b84a9d216457720e9bd4e17b002d6ab9490f9d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73888601"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Hochladen von Dateien in ein Media Services-Konto mit REST  
@@ -53,7 +53,7 @@ In diesem Tutorial erfahren Sie, wie Sie eine Datei hochladen und andere damit v
 Die folgenden Überlegungen gelten für die Verwendung der Media Services-REST-API:
  
 * Wenn Sie mithilfe der Media Services-REST-API auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md). <br/>Die in diesem Tutorial verwendete Postman-Sammlung sorgt dafür, dass alle notwendigen Header festgelegt werden.
-* Media Services verwendet beim Erstellen von URLs für den Streaminginhalt den Wert der IAssetFile.Name-Eigenschaft (z. B. http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters). Aus diesem Grund ist die Prozentkodierung nicht zulässig. Der Wert der **Name**-Eigenschaft darf keines der folgenden [für die Prozentcodierung reservierten Zeichen](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) enthalten: !*'();:@&=+$,/?%#[]". Darüber hinaus wird für die Dateinamenerweiterung nur ein Punkt (.) unterstützt.
+* Media Services verwendet beim Erstellen von URLs für den Streaminginhalt den Wert der IAssetFile.Name-Eigenschaft (z. B. http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters). Aus diesem Grund ist die Prozentkodierung nicht zulässig. Der Wert der **Name**-Eigenschaft darf keines der folgenden [für die Prozentcodierung reservierten Zeichen](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) enthalten: ! * '();:@&=+$,/?%#[]". Darüber hinaus wird für die Dateinamenerweiterung nur ein Punkt (.) unterstützt.
 * Die Länge des Namens darf 260 Zeichen nicht überschreiten.
 * Bei der Verarbeitung in Media Services werden nur Dateien bis zu einer bestimmten Größe unterstützt. Ausführliche Informationen zur Dateigrößenbeschränkung finden Sie in [diesem Artikel](media-services-quotas-and-limitations.md).
 
@@ -65,7 +65,7 @@ Schritte zum Einrichten von Postman für dieses Tutorial finden Sie unter [Konfi
 
 1. Fügen Sie Ihrer Umgebung Verbindungswerte hinzu. 
 
-    Einige Variablen, die Teil der **MediaServices**-[Umgebung](postman-environment.md) sind, müssen manuell gesetzt werden, bevor Sie mit der Ausführung von Vorgängen beginnen können, die in der [Sammlung](postman-collection.md) definiert sind.
+    Einige Variablen, die Teil der **MediaServices**-[Umgebung](postman-environment.md) sind, müssen manuell festgelegt werden, bevor Sie mit der Ausführung von Vorgängen beginnen können, die in der [Sammlung](postman-collection.md) definiert sind.
 
     Informationen zum Abrufen von Werten für die ersten fünf Variablen finden Sie unter [Zugriff auf die Azure Media Services-API mit der Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md). 
 

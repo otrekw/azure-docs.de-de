@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: c8d58180b11c12afb256dc888406c7c0d58fb119
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: a5264c14294f84858cd489f5892b8cdd19e117d0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314316"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455909"
 ---
 # <a name="select-columns-transform"></a>Select Columns Transform
 
-In diesem Artikel wird die Verwendung des Moduls „Select Columns Transform“ (Auswählen der Spaltentransformation) im Azure Machine Learning-Designer beschrieben. Der Zweck des Moduls „Select Columns Transform“ besteht darin sicherzustellen, dass für alle weiteren Machine Learning-Vorgänge ein vorhersagbarer, einheitlicher Satz von Spalten verwendet wird.
+In diesem Artikel wird die Verwendung des Moduls „Select Columns Transform“ (Auswählen der Spaltentransformation) im Azure Machine Learning-Designer (Vorschauversion) beschrieben. Der Zweck des Moduls „Select Columns Transform“ besteht darin sicherzustellen, dass für alle weiteren Machine Learning-Vorgänge ein vorhersagbarer, einheitlicher Satz von Spalten verwendet wird.
 
 Dieses Modul ist nützlich für Aufgaben wie Bewertung, für die bestimmte Spalten erforderlich sind. Änderungen in den verfügbaren Spalten können die Pipeline unterbrechen oder die Ergebnisse ändern.
 
@@ -48,7 +48,7 @@ In diesem Szenario wird davon ausgegangen, dass Sie die Featureauswahl verwenden
 
    > [!IMPORTANT]
    > Wenn Sie [Filter Based Feature Selection](filter-based-feature-selection.md) auf das Bewertungsdataset anwenden, können Sie nicht erwarten, dass dieselben Ergebnisse erzielt werden. Da die Featureauswahl auf Werten basiert, wird dabei unter Umständen ein anderer Satz von Spalten ausgewählt, was dazu führt, dass der Bewertungsvorgang fehlschlägt.
-7. Ausführen der Pipeline.
+7. Übermitteln Sie die Pipeline.
 
 Durch diese Vorgehensweise mit Speichern und anschließendem Anwenden einer Spaltenauswahl wird sichergestellt, dass für das Training und die Bewertung dasselbe Datenschema verfügbar ist.
 

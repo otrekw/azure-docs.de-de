@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: alkohli
 ms.openlocfilehash: b7562ab6c7ec9c6234ed3fbb867361307b80a638
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67673064"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box-heavy"></a>Sicheres Installieren und Betreiben von Azure Data Box Heavy
@@ -27,39 +27,39 @@ Lesen Sie alle Sicherheitshinweise in diesem Artikel, bevor Sie Azure Data Box H
 ## <a name="safety-icon-conventions"></a>Konventionen für Sicherheitssymbole
 Die folgenden Symbole finden Sie in den Sicherheitsvorkehrungen, die beachtet werden müssen, wenn Sie Data Box einrichten und ausführen.
 
-| Symbol | BESCHREIBUNG |
+| Symbol | Beschreibung |
 |:--- |:--- |
-| ![Symbol „Gefahr“](./media/data-box-heavy-safety/warning-icon.png)**GEFAHR!** |Zeigt eine Gefahrensituation an, die zum Tod oder schweren Verletzungen führen wird, wenn sie nicht vermieden wird. Dieses Signalwort ist auf extremste Situationen zu beschränken. |
-| ![Symbol „Warnung“](./media/data-box-heavy-safety/warning-icon.png)**WARNUNG!** |Zeigt eine Gefahrensituation an, die zum Tod oder schweren Verletzungen führen könnte, wenn sie nicht vermieden wird. |
-| ![Symbol „Warnung“](./media/data-box-heavy-safety/warning-icon.png)**VORSICHT!** |Zeigt eine Gefahrensituation an, die zu leichten bis mittelschweren Verletzungen führen könnte, wenn sie nicht vermieden wird. |
-| ![Symbol „Hinweis“](./media/data-box-heavy-safety/notice-icon.png)**HINWEIS:** |Zeigt als wichtig erachtete Informationen an, die allerdings nicht mit Gefahren in Verbindung stehen. |
-| ![Symbol „Stromschlag“](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png)**Gefahr durch Stromschlag** |Hochspannung. |
-| ![Symbol „Schwergewicht“](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png)**Schwergewicht** | |
-| ![Symbol „Keine vom Benutzer zu wartenden Teile“](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png)**Keine vom Benutzer zu wartenden Teile** |Zugriff nur bei ausreichender Schulung. |
+| ![Gefahrensymbol](./media/data-box-heavy-safety/warning-icon.png) **GEFAHR!** |Zeigt eine Gefahrensituation an, die zum Tod oder schweren Verletzungen führen wird, wenn sie nicht vermieden wird. Dieses Signalwort ist auf extremste Situationen zu beschränken. |
+| ![Warnsymbol](./media/data-box-heavy-safety/warning-icon.png) **WARNUNG!** |Zeigt eine Gefahrensituation an, die zum Tod oder schweren Verletzungen führen könnte, wenn sie nicht vermieden wird. |
+| ![Warnsymbol](./media/data-box-heavy-safety/warning-icon.png) **ACHTUNG!** |Zeigt eine Gefahrensituation an, die zu leichten bis mittelschweren Verletzungen führen könnte, wenn sie nicht vermieden wird. |
+| ![Hinweissymbol](./media/data-box-heavy-safety/notice-icon.png) **HINWEIS:** |Zeigt als wichtig erachtete Informationen an, die allerdings nicht mit Gefahren in Verbindung stehen. |
+| ![Symbol „Stromschlag“](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) **Gefahr durch Stromschlag** |Hochspannung. |
+| ![Symbol „Hohes Gewicht“](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **Hohes Gewicht** | |
+| ![Symbol „Keine vom Benutzer zu wartenden Teile“](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png) **Keine vom Benutzer zu wartenden Teile** |Zugriff nur bei ausreichender Schulung. |
 | ![Symbol „Sicherheitshinweis lesen“](./media/data-box-heavy-safety/read-safety-and-health-information-icon.png) **Alle Anleitungen zuvor lesen** | |
-| ![Symbol „Kippgefahr“](./media/data-box-heavy-safety/tip-hazard-icon.png)**Kippgefahr** | |
+| ![Symbol „Kippgefahr“](./media/data-box-heavy-safety/tip-hazard-icon.png) **Kippgefahr** | |
 | ![Symbol „Überlastkippgefahr“](./media/data-box-heavy-safety/overload-tip-hazard-icon.png) **Überlastkippgefahr** | |
 | ![Symbol „Mehrere Stromquellen“](./media/data-box-heavy-safety/multiple-power-sources-icon.png) **Mehrere Stromquellen** | |
 
 ## <a name="handling-precautions"></a>Vorsichtsmaßnahmen bei der Handhabung
 
-![Symbol "Warnung"](./media/data-box-heavy-safety/warning-icon.png)**WARNUNG!**
+![Warnsymbol](./media/data-box-heavy-safety/warning-icon.png) **WARNUNG!**
 
 * Beim Bewegen und Handhaben der Transportkiste sind die richtige Ausrüstung (z.B. Hubwagen) und persönliche Schutzausrüstung (z.B. Handschuhe) zu verwenden.
 * Die Rampe muss mit den mitgelieferten Schrauben an der Kiste befestigt werden, bevor Sie das Gerät entfernen, um Verletzungen oder Sachschäden zu vermeiden.
 
-![Symbol „Warnung“](./media/data-box-heavy-safety/warning-icon.png) ![Symbol „Kippgefahr“](./media/data-box-heavy-safety/tip-hazard-icon.png) **Kippgefahr**
+![Warnsymbol](./media/data-box-heavy-safety/warning-icon.png) ![Symbol „Kippgefahr“](./media/data-box-heavy-safety/tip-hazard-icon.png) **Kippgefahr**
 
 * Stellen Sie das Gerät auf eine ebene, harte und stabile Oberfläche, um eine mögliche Kipp- oder Quetschgefahr zu vermeiden.
 * Vergewissern Sie sich, dass die Rollen arretiert sind, bevor Sie das Gerät überprüfen, einschalten und bedienen.
 
-![Symbol „Warnung“](./media/data-box-heavy-safety/warning-icon.png)![Symbol „Stromschlag“](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png)![Symbol „Keine vom Benutzer zu wartenden Teile“](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png) **VORSICHT!** 
+![Warnsymbol](./media/data-box-heavy-safety/warning-icon.png) ![Symbol „Stromschlag“](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png)![Symbol „Keine vom Benutzer zu wartenden Teile“](./media/data-box-heavy-safety/no-user-serviceable-parts-icon.png) **VORSICHT!** 
 
 * Überprüfen Sie das *empfangene* Gerät auf Schäden. Wenn das Gerätegehäuse beschädigt ist, wenden Sie sich an den [Microsoft-Support](data-box-disk-contact-microsoft-support.md), um ein Austauschgerät zu erhalten. Versuchen Sie nicht, das Gerät in Betrieb zu nehmen. 
 * Das Gerät ist mit manipulationsgeschützten Schrauben ausgestattet. Wenn Sie vermuten, dass das Gerät defekt ist, wenden Sie sich an den [Microsoft-Support](data-box-disk-contact-microsoft-support.md), um ein Austauschgerät zu erhalten. Versuchen Sie nicht, das Gerät zu warten. 
 * Das Gerät enthält keine vom Benutzer zu wartenden Teile. Im Inneren sind gefährliche Spannungs-, Strom- und Leistungspegel vorhanden. Öffnen Sie es nicht. Senden Sie das Gerät zur Wartung an Microsoft zurück.
 
-![Symbol „Warnung“](./media/data-box-heavy-safety/warning-icon.png)![Symbol „Schwergewicht“](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png)**WARNUNG!** 
+![Warnsymbol](./media/data-box-heavy-safety/warning-icon.png) ![Symbol „Hohes Gewicht“](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **WARNUNG!** 
 
 * Ein vollständig konfiguriertes Gehäuse kann bis zu 326 kg wiegen. Versuchen Sie nicht, es allein zu heben.
 * Versuchen Sie nicht, das Gerät ohne entsprechende mechanische Hilfsmittel anzuheben. Beachten Sie, dass Versuche, dieses Gewicht anzuheben, schwere Verletzungen verursachen können.
@@ -67,11 +67,11 @@ Die folgenden Symbole finden Sie in den Sicherheitsvorkehrungen, die beachtet we
 * Verwenden Sie beim Bewegen und Heben von Geräten mechanische oder andere geeignete Hilfsmittel.
 
 
-![Symbol „Warnung“](./media/data-box-heavy-safety/warning-icon.png) ![Symbol „Überlastkippgefahr“](./media/data-box-heavy-safety/overload-tip-hazard-icon.png) ![Symbol „Kippgefahr“](./media/data-box-heavy-safety/tip-hazard-icon.png)![Symbol „Schwergewicht“](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **WARNUNG!**
+![Warnsymbol](./media/data-box-heavy-safety/warning-icon.png) ![Symbol „Überlastkippgefahr“](./media/data-box-heavy-safety/overload-tip-hazard-icon.png) ![Symbol „Kippgefahr“](./media/data-box-heavy-safety/tip-hazard-icon.png)![Symbol „Hohes Gewicht“](./media/data-box-heavy-safety/heavy-weight-hazard-icon.png) **WARNUNG!**
 * Data Box Heavy darf nicht als Tisch oder Arbeitsfläche verwendet werden. Das Hinzufügen jeglicher Art von Last kann eine potenzielle Gefahr darstellen, die zu Verletzungen oder Sachschäden führen kann.
 * In Racks eingebaute Geräte dürfen nicht als Ablage oder Arbeitsbereich verwendet werden. Stellen Sie Data Box Heavy nicht auf in Racks eingebaute Geräte. Das Aufbringen jeglicher Art von Last auf eine ausgefahrene im Rack eingebaute Einheit kann eine potenzielle Kippgefahr darstellen, die zu Verletzungen, Tod oder Produktschäden führen kann.
 
-![Symbol „Warnung“](./media/data-box-heavy-safety/warning-icon.png)**WARNUNG!**
+![Warnsymbol](./media/data-box-heavy-safety/warning-icon.png) **WARNUNG!**
 
 * Das System ist für den Betrieb in einer typischen Büroumgebung konzipiert. Wählen Sie einen Standort aus, auf den Folgendes zutrifft:
 
@@ -88,7 +88,7 @@ Die folgenden Symbole finden Sie in den Sicherheitsvorkehrungen, die beachtet we
 
 ## <a name="electrical-precautions"></a>Sicherheitsvorkehrungen für die Elektrik
 
-![Symbol „Warnung“](./media/data-box-heavy-safety/warning-icon.png)![Symbol „Stromschlag“](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png)**WARNUNG!**
+![Warnsymbol](./media/data-box-heavy-safety/warning-icon.png) ![Symbol „Stromschlag“](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) **WARNUNG!**
 
 * Stellen Sie eine sichere elektrische Erdung des Netzkabels her. Das Netzkabel hat einen dreiadrigen Erdungsstecker (einen Stecker mit Erdungsstift). Dieser Stecker passt nur in eine geerdete Steckdose. Umgehen Sie nicht den Zweck des Erdungsstifts.
 * Da der Stecker des Netzkabels die Haupttrennvorrichtung ist, stellen Sie sicher, dass sich die Steckdosen in der Nähe des Geräts befinden und leicht zugänglich sind.
@@ -109,17 +109,17 @@ Die folgenden Symbole finden Sie in den Sicherheitsvorkehrungen, die beachtet we
     - Das Netzkabel muss eine elektrische Leistung aufweisen, die größer ist als die des auf dem Produkt angegebenen elektrischen Nennstroms.
     - Das Netzkabel muss mit einem für die Steckdose geeigneten Erdungsstift oder -kontakt versehen sein.
 
-![Symbol „Warnung“](./media/data-box-heavy-safety/warning-icon.png) ![Symbol „Stromschlag“](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) ![Symbol „Mehrere Stromquellen“](./media/data-box-heavy-safety/multiple-power-sources-icon.png) **WARNUNG!**
+![Warnsymbol](./media/data-box-heavy-safety/warning-icon.png) ![Symbol „Stromschlag“](./media/data-box-heavy-safety/electrical-shock-hazard-icon.png) ![Symbol „Mehrere Stromquellen“ ](./media/data-box-heavy-safety/multiple-power-sources-icon.png) **WARNUNG!**
 
 * Trennen Sie alle Netzkabel, um das Gerät vollständig vom Netz zu trennen.
 
-![Symbol „Warnung“](./media/data-box-heavy-safety/warning-icon.png)**VORSICHT!**
+![Warnsymbol](./media/data-box-heavy-safety/warning-icon.png) **ACHTUNG!**
 
 * Dieses Gerät enthält Knopfzellenbatterien. Versuchen Sie nicht, das Gerät zu warten. Batterien in diesem Gerät können nicht vom Benutzer gewartet werden. 
 * **Nur für Wartungspersonal**: Explosionsgefahr, wenn die Batterie durch einen falschen Typ ersetzt wird. Entsorgen Sie die Altbatterien gemäß den Anweisungen.
 * Laserperipheriegeräte oder Geräte sind vorhanden. Um Risiken oder Strahlenbelastung und/oder Verletzungen zu vermeiden, öffnen Sie nicht das Gehäuse von Laserperipheriegeräten oder Geräten. Laserperipheriegeräte oder Geräte sind nicht wartbar. Verwenden Sie für optische Transceiver nur die zertifizierte und zugelassene Laserklasse I.
 
-![Symbol „Hinweis“](./media/data-box-heavy-safety/notice-icon.png)**HINWEIS:**
+![Hinweissymbol](./media/data-box-heavy-safety/notice-icon.png) **HINWEIS:**
 
 Für den ordnungsgemäßen Betrieb Ihres Geräts und zur Vermeidung von Produktschäden:
 
@@ -141,13 +141,13 @@ Für dieses Gerät gilt Folgendes:
 
 Die Leistungsdaten der Stromversorgung entnehmen Sie dem mit dem Gerät gelieferten Typenschild. 
 
-![Symbol „Hinweis“](./media/data-box-heavy-safety/notice-icon.png)**HINWEIS:** 
+![Hinweissymbol](./media/data-box-heavy-safety/notice-icon.png) **HINWEIS:** 
 
 Änderungen oder Modifikationen am Gerät, die nicht ausdrücklich von Microsoft genehmigt wurden, können zum Erlischen der Betriebserlaubnis des Benutzers führen.
 
 **Kanada und USA:**
 
-![Symbol „Hinweis“](./media/data-box-heavy-safety/notice-icon.png)**HINWEIS:** 
+![Hinweissymbol](./media/data-box-heavy-safety/notice-icon.png) **HINWEIS:** 
 
 Dieses Gerät wurde getestet und entspricht den Grenzwerten für ein Digitalgerät der Klasse A gemäß Teil 15 der FCC-Vorschriften. Diese Grenzwerte dienen dazu, einen angemessenen Schutz vor schädlichen Störungen zu bieten, wenn das Gerät in einer gewerblichen Umgebung betrieben wird. Dieses Gerät erzeugt und nutzt Hochfrequenzenergie und kann diese ausstrahlen. Wenn es nicht gemäß Bedienungsanleitung installiert und eingesetzt wird, kann es zu schädlichen Störungen der Hochfrequenzkommunikation kommen. Der Betrieb dieses Geräts in einem Wohngebiet kann zu schädlichen Störungen führen. In einem solchen Fall ist der Benutzer verpflichtet, die Störungen auf eigene Kosten zu beseitigen.
 
@@ -156,7 +156,7 @@ Dieses Gerät entspricht Teil 15 der Lizenzbestimmungen von FCC Rules and Indust
 - Dieses Gerät darf keine schädlichen Störungen verursachen.
 - Dieses Gerät muss alle empfangenen Störungen akzeptieren, einschließlich Störungen, die einen unerwünschten Betrieb des Geräts verursachen können.
 
-![Kanada](./media/data-box-heavy-safety/canada.png)
+![Canada](./media/data-box-heavy-safety/canada.png)
 
 CAN ICES-3(A)/NMB-3(A) Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA.
 USA: (800) 426-9400, Kanada: (800) 933-4750
@@ -165,7 +165,7 @@ USA: (800) 426-9400, Kanada: (800) 933-4750
 
 Eine Kopie der EU-Konformitätserklärung [anfordern](mailto:CSI_Compliance@microsoft.com).
 
-![Symbol „Warnung“](./media/data-box-heavy-safety/warning-icon.png)**WARNUNG!** 
+![Warnsymbol](./media/data-box-heavy-safety/warning-icon.png) **WARNUNG!** 
 
 Dies ist ein Produkt der Klasse A. In einem Privathaushalt kann dieses Produkt Funkstörungen verursachen. In einem solchen Fall kann der Benutzer aufgefordert werden, geeignete Maßnahmen zu ergreifen.
 

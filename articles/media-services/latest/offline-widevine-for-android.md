@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 55ed849b6083435e70d0943a359c83793ca0842d
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 64cd93acc78f4cb5b7ebc4266e7359aec662890c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705903"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295417"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Widevine-Offlinestreaming für Android mit Media Services v3
 
@@ -147,7 +147,7 @@ Wenn Sie Ihren mobilen Chrome-Browser auf einem Android-Smartphone mindestens au
 
 Die oben erwähnte Open-Source-PWA-App wurde in Node.js erstellt. Wenn Sie eine eigene Version auf einem Ubuntu-Server hosten möchten, beachten Sie die folgenden allgemeinen Probleme, die die Wiedergabe verhindern können:
 
-1. CORS-Problem: Das Beispielvideo in der Beispiel-App wird in https://storage.googleapis.com/biograf-video-files/videos/ gehostet. Google hat CORS für alle Testbeispiele eingerichtet, die im Google Cloud Storage-Bucket gehostet werden. Sie werden mit CORS-Headern bereitgestellt, die explizit den CORS-Eintrag angeben: https://biograf-155113.appspot.com (die Domäne, in der Google das Beispiel hostet). Dadurch wird der Zugriff durch andere Sites verhindert. Wenn Sie es versuchen, wird der folgende HTTP-Fehler ausgegeben: Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. Falls eine opake Antwort Ihre Anforderungen erfüllt, legen Sie den Modus der Anforderung auf 'no-cors' fest, um CORS für den Ressourcenabruf zu deaktivieren.
+1. CORS-Problem: Das Beispielvideo in der Beispiel-App wird in https://storage.googleapis.com/biograf-video-files/videos/ gehostet. Google hat CORS für alle Testbeispiele eingerichtet, die im Google Cloud Storage-Bucket gehostet werden. Sie werden mit CORS-Headern bereitgestellt, die explizit den CORS-Eintrag angeben: `https://biograf-155113.appspot.com` (die Domäne, in der Google das Beispiel hostet). Dadurch wird der Zugriff durch andere Sites verhindert. Wenn Sie es versuchen, wird der folgende HTTP-Fehler ausgegeben: `Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.`
 2. Zertifikatsproblem: Ab der Chrome-Version 58 wird von EME für Widevine HTTPS benötigt. Daher muss die Beispiel-App mit einem X.509-Zertifikat über HTTPS gehostet werden. Ein herkömmliches Testzertifikat funktioniert aufgrund der folgenden Anforderungen nicht: Sie müssen ein Zertifikat abrufen, dass die folgenden Mindestanforderungen erfüllt:
     - Für Chrome und Firefox muss das Zertifikat die Einstellung für den alternativen Antragstellernamen (Subject Alternative Name, SAN) enthalten.
     - Das Zertifikat muss über eine vertrauenswürdige Zertifizierungsstelle verfügen. Ein selbstsigniertes Entwicklungszertifikat kann nicht verwendet werden.
@@ -162,19 +162,19 @@ Wie kann ich für einige Clients/Benutzer permanente (offlinefähige) Lizenzen u
 ### <a name="answer"></a>Antwort
 Da Media Services v3 ein Medienobjekt mit mehreren StreamingLocators zulässt. Folgendes ist zulässig:
 
-1.  Eine ContentKeyPolicy mit license_type = "persistent", ContentKeyPolicyRestriction mit Anspruch auf "persistent", und der StreamingLocator;
-2.  Eine weitere ContentKeyPolicy mit license_type = "persistent", ContentKeyPolicyRestriction mit Anspruch auf "nonpersistent", und der StreamingLocator;
-3.  Die zwei StreamingLocators haben unterschiedliche Contentkey-Objekts.
+1.    Eine ContentKeyPolicy mit license_type = "persistent", ContentKeyPolicyRestriction mit Anspruch auf "persistent", und der StreamingLocator;
+2.    Eine weitere ContentKeyPolicy mit license_type = "persistent", ContentKeyPolicyRestriction mit Anspruch auf "nonpersistent", und der StreamingLocator;
+3.    Die zwei StreamingLocators haben unterschiedliche Contentkey-Objekts.
 
 Abhängig von der Geschäftslogik des benutzerdefinierten STS werden unterschiedliche Ansprüche im JWT-Token ausgegeben. Mit dem Token kann nur die dazugehörige Lizenz abgerufen und nur die entsprechende URL wiedergegeben werden.
 
 ### <a name="question"></a>Frage
 
-Als Widevine-Sicherheitsstufen sind [in der Dokumentation von Google](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) drei verschiedenen Sicherheitsstufen definiert. In der [Azure Media Services-Dokumentation zur Widevine-Lizenzvorlage](widevine-license-template-overview.md) sind dagegen fünf verschiedenen Sicherheitsstufen angegeben. Welche Beziehung oder Zuordnung besteht zwischen den beiden unterschiedlichen Gruppen von Sicherheitsstufen?
+Als Widevine-Sicherheitsstufen sind in der Dokumentation „Widevine DRM-Architekturübersicht“ von Google drei verschiedenen Sicherheitsstufen definiert. In der [Azure Media Services-Dokumentation zur Widevine-Lizenzvorlage](widevine-license-template-overview.md) sind dagegen fünf verschiedenen Sicherheitsstufen angegeben. Welche Beziehung oder Zuordnung besteht zwischen den beiden unterschiedlichen Gruppen von Sicherheitsstufen?
 
 ### <a name="answer"></a>Antwort
 
-In der [Widevine DRM-Architekturübersicht](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) von Google sind die drei folgenden Sicherheitsstufen definiert:
+In der Widevine DRM-Architekturübersicht von Google sind die drei folgenden Sicherheitsstufen definiert:
 
 1.  Sicherheitsstufe 1: Die gesamte Inhaltsverarbeitung, Kryptografie und Kontrolle findet innerhalb der vertrauenswürdigen Ausführungsumgebung (Trusted Execution Environment, TEE) statt. In einigen Implementierungsmodellen findet die Sicherheitsverarbeitung unter Umständen in unterschiedlichen Chips statt.
 2.  Sicherheitsstufe 2: Die gesamte Kryptografie (aber nicht die Videoverarbeitung) wird innerhalb der TEE durchgeführt. Entschlüsselte Puffer werden an die Anwendungsdomäne zurückgegeben und über separate Videohardware oder -software verarbeitet. Kryptografieinformationen werden auf der zweiten Stufe allerdings weiterhin nur innerhalb der TEE verarbeitet.

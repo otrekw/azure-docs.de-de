@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: bc1f40760c1602d81da042bf6909e44a540d35de
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: c48cf6a7a82e90d3c9d8dc4c35e37dfb944af99f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612154"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282680"
 ---
 # <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Entwicklungstools in Azure Data Science Virtual Machine
 
@@ -26,7 +26,7 @@ Auf der Data Science Virtual Machine (DVSM) sind mehrere beliebte Tools in einer
 |    |           |
 | ------------- | ------------- |
 | Was ist das?   | Universelle IDE      |
-| Unterstützte DSVM-Versionen      | Windows: Visual Studio 2017, Windows 2019 (Vorschau): Visual Studio 2019      |
+| Unterstützte DSVM-Versionen      | Windows: Visual Studio 2017, Windows 2019: Visual Studio 2019      |
 | Typische Verwendung      | Softwareentwicklung    |
 | Konfiguration und Installation auf der DSVM      | Data Science-Workload (Python- und R-Tools), Azure-Workload (Hadoop, Data Lake), Node.js, SQL Server-Tools, [Azure Machine Learning für Visual Studio Code](https://github.com/Microsoft/vs-tools-for-ai)    |
 | Verwenden und Ausführen      | Desktopverknüpfung (`C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\devenv.exe`). Öffnen Sie Visual Studio auf der Benutzeroberfläche über das Desktopsymbol oder das **Startmenü**. Suchen Sie nach Programmen (Windows-Logo-Taste+S) und anschließend nach **Visual Studio**. Von dort aus können Sie Projekte in Sprachen wie C#, Python, R und Node.js erstellen.   |
@@ -81,7 +81,7 @@ Auf der Data Science Virtual Machine (DVSM) sind mehrere beliebte Tools in einer
 |    |           |
 | ------------- | ------------- |
 | Was ist das?   | Client-IDE für Python    |
-| Unterstützte DSVM-Versionen      | Windows 2019-Vorschau, Linux      |
+| Unterstützte DSVM-Versionen      | Windows 2019, Linux      |
 | Typische Verwendung      |  Python-Entwicklung     |
 | Verwenden und Ausführen      | Desktopverknüpfung (`C:\Program Files\tk`) unter Windows Desktopverknüpfung (`/usr/bin/pycharm`) unter Linux      |
 | Verwandte Tools auf der DSVM      |   Visual Studio, Visual Studio Code, RStudio      |

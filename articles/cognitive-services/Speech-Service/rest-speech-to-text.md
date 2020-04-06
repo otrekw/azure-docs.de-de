@@ -3,23 +3,23 @@ title: 'Spracherkennungs-API-Referenz (REST): Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie die Spracherkennungs-REST-API verwenden. In diesem Artikel erfahren Sie mehr über Autorisierungs- und Abfrageoptionen sowie darüber, wie Sie eine Anforderung strukturieren und eine Antwort erhalten.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.author: erhopf
-ms.openlocfilehash: 26fe995f45a97a5863bfc20fd1564df89124ed88
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.date: 03/16/2020
+ms.author: dapine
+ms.openlocfilehash: 759ea697e4093da5bfc1c082c886c6dfda636f42
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168308"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79474797"
 ---
 # <a name="speech-to-text-rest-api"></a>Spracherkennungs-REST-API
 
-Als Alternative zum [Speech SDK](speech-sdk.md) ermöglicht der Speech-Dienst das Konvertieren von Sprache in Text mithilfe einer REST-API. Jeder zugängliche Endpunkt ist einer Region zugeordnet. Ihre Anwendung benötigt einen Abonnementschlüssel für den Endpunkt, den Sie verwenden möchten.
+Als Alternative zum [Speech SDK](speech-sdk.md) ermöglicht der Speech-Dienst das Konvertieren von Sprache in Text mithilfe einer REST-API. Jeder zugängliche Endpunkt ist einer Region zugeordnet. Ihre Anwendung benötigt einen Abonnementschlüssel für den Endpunkt, den Sie verwenden möchten. Die Möglichkeiten der REST-API sind stark eingeschränkt. Daher sollte die REST-API nur verwendet werden, wenn das [Speech SDK](speech-sdk.md) nicht verwendet werden kann.
 
 Vor der Verwendung der Spracherkennungs-REST-API müssen Sie Folgendes verstanden haben:
 
@@ -54,6 +54,7 @@ Diese Parameter können in der Abfragezeichenfolge der REST-Anforderung enthalte
 | `language` | Identifiziert die gesprochene Sprache, die erkannt wird. Siehe [Unterstützte Sprachen](language-support.md#speech-to-text). | Erforderlich |
 | `format` | Gibt das Ergebnisformat an. Zulässige Werte sind `simple` und `detailed`. Einfache Ergebnisse enthalten `RecognitionStatus`, `DisplayText`, `Offset` und `Duration`. Detaillierte Antworten enthalten mehrere Ergebnisse mit Zuverlässigkeitswerten und vier unterschiedliche Darstellungen. Die Standardeinstellung ist `simple`. | Optional |
 | `profanity` | Gibt den Umgang mit Obszönitäten in Erkennungsergebnissen an. Zulässige Werte sind `masked` (Obszönitäten werden durch Sternchen ersetzt), `removed` (Obszönitäten werden aus dem Ergebnis entfernt) und `raw` (Obszönitäten sind im Ergebnis enthalten). Die Standardeinstellung ist `masked`. | Optional |
+| `cid` | Wenn Sie das [Custom Speech-Portal](how-to-custom-speech.md) zum Erstellen von benutzerdefinierten Modellen verwenden, können Sie benutzerdefinierte Modelle über ihre **Endpunkt-ID** verwenden, die Sie auf der Seite **Bereitstellung** finden. Verwenden Sie die **Endpunkt-ID** als Argument für den Parameter `cid` der Abfragezeichenfolge. | Optional |
 
 ## <a name="request-headers"></a>Anforderungsheader
 
@@ -72,10 +73,10 @@ Diese Tabelle führt die erforderlichen und optionalen Header für Spracherkennu
 
 Audiodaten werden im Text der HTTP-`POST`-Anforderung gesendet. Sie müssen in einem der in der folgenden Tabelle aufgeführten Formate vorliegen:
 
-| Format | Codec | Bitrate | Samplingrate |
-|--------|-------|---------|-------------|
-| WAV | PCM | 16 Bit | 16 kHz, mono |
-| OGG | OPUS | 16 Bit | 16 kHz, mono |
+| Format | Codec | Bitrate | Samplingrate  |
+|--------|-------|---------|--------------|
+| WAV    | PCM   | 16 Bit  | 16 kHz, mono |
+| OGG    | OPUS  | 16 Bit  | 16 kHz, mono |
 
 >[!NOTE]
 >Die oben genannten Formate werden durch die REST-API und WebSocket im Speech-Dienst unterstützt. Das [Speech-SDK](speech-sdk.md) unterstützt gegenwärtig das WAV-Format mit dem PCM-Codec sowie [weitere Formate](how-to-use-codec-compressed-audio-input-streams.md).
@@ -100,50 +101,43 @@ Der HTTP-Statuscode jeder Antwort zeigt den Erfolg oder allgemeine Fehler an.
 
 | HTTP-Statuscode | BESCHREIBUNG | Mögliche Ursache |
 |------------------|-------------|-----------------|
-| 100 | Continue | Die ursprüngliche Anforderung wurde akzeptiert. Mit dem Senden der restlichen Daten fortfahren. (Wird mit segmentierter Übertragung verwendet.) |
-| 200 | OK | Die Anforderung war erfolgreich. Der Antworttext ist ein JSON-Objekt. |
-| 400 | Ungültige Anforderung | Der Sprachcode wurde nicht bereitgestellt, ist keine unterstützte Sprache, eine ungültige Audiodatei usw. |
-| 401 | Nicht autorisiert | Der Abonnementschlüssel oder das Autorisierungstoken ist in der angegebenen Region ungültig oder ungültiger Endpunkt. |
-| 403 | Verboten | Fehlender Abonnementschlüssel oder fehlendes Autorisierungstoken. |
+| `100` | Continue | Die ursprüngliche Anforderung wurde akzeptiert. Mit dem Senden der restlichen Daten fortfahren. (Wird bei segmentierter Übertragung verwendet) |
+| `200` | OK | Die Anforderung war erfolgreich. Der Antworttext ist ein JSON-Objekt. |
+| `400` | Ungültige Anforderung | Der Sprachcode wurde nicht bereitgestellt, ist keine unterstützte Sprache, eine ungültige Audiodatei usw. |
+| `401` | Nicht autorisiert | Der Abonnementschlüssel oder das Autorisierungstoken ist in der angegebenen Region ungültig oder ungültiger Endpunkt. |
+| `403` | Verboten | Fehlender Abonnementschlüssel oder fehlendes Autorisierungstoken. |
 
 ## <a name="chunked-transfer"></a>Segmentierte Übertragung
 
 Mithilfe der segmentierten Übertragung (`Transfer-Encoding: chunked`) kann die Erkennungslatenz verringert werden. Es ermöglicht dem Speech-Dienst, mit der Verarbeitung der Audiodatei zu beginnen, während sie übertragen wird. Der REST-API bietet keine Teil- oder Zwischenergebnisse.
 
-Dieses Codebeispiel zeigt, wie Sie Audio in Blöcken senden. Nur der erste Block sollte den Header der Audiodatei enthalten. `request` ist ein HTTPWebRequest-Objekt, das mit dem entsprechenden REST-Endpunkt verbunden ist. `audioFile` ist der Pfad zu einer Audiodatei auf dem Datenträger.
+Dieses Codebeispiel zeigt, wie Sie Audio in Blöcken senden. Nur der erste Block sollte den Header der Audiodatei enthalten. `request` ist ein `HttpWebRequest`-Objekt, das mit dem entsprechenden REST-Endpunkt verbunden ist. `audioFile` ist der Pfad zu einer Audiodatei auf dem Datenträger.
 
 ```csharp
+var request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
+request.SendChunked = true;
+request.Accept = @"application/json;text/xml";
+request.Method = "POST";
+request.ProtocolVersion = HttpVersion.Version11;
+request.Host = host;
+request.ContentType = @"audio/wav; codecs=audio/pcm; samplerate=16000";
+request.Headers["Ocp-Apim-Subscription-Key"] = "YOUR_SUBSCRIPTION_KEY";
+request.AllowWriteStreamBuffering = false;
 
-    HttpWebRequest request = null;
-    request = (HttpWebRequest)HttpWebRequest.Create(requestUri);
-    request.SendChunked = true;
-    request.Accept = @"application/json;text/xml";
-    request.Method = "POST";
-    request.ProtocolVersion = HttpVersion.Version11;
-    request.Host = host;
-    request.ContentType = @"audio/wav; codecs=audio/pcm; samplerate=16000";
-    request.Headers["Ocp-Apim-Subscription-Key"] = args[1];
-    request.AllowWriteStreamBuffering = false;
-
-using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
+using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 {
-    /*
-    * Open a request stream and write 1024 byte chunks in the stream one at a time.
-    */
+    // Open a request stream and write 1024 byte chunks in the stream one at a time.
     byte[] buffer = null;
     int bytesRead = 0;
-    using (Stream requestStream = request.GetRequestStream())
+    using (var requestStream = request.GetRequestStream())
     {
-        /*
-        * Read 1024 raw bytes from the input audio file.
-        */
+        // Read 1024 raw bytes from the input audio file.
         buffer = new Byte[checked((uint)Math.Min(1024, (int)fs.Length))];
         while ((bytesRead = fs.Read(buffer, 0, buffer.Length)) != 0)
         {
             requestStream.Write(buffer, 0, bytesRead);
         }
 
-        // Flush
         requestStream.Flush();
     }
 }
@@ -153,7 +147,7 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 Ergebnisse werden im JSON-Format bereitgestellt. Das `simple`-Format schließt diese Felder auf oberster Ebene ein.
 
-| Parameter | Beschreibung  |
+| Parameter | BESCHREIBUNG  |
 |-----------|--------------|
 |`RecognitionStatus`|Status, z.B. `Success` für erfolgreiche Erkennung. Siehe nächste Tabelle.|
 |`DisplayText`|Der erkannte Text nach Großschreibung, Interpunktion, inverser Textnormalisierung (Umwandlung von gesprochenem Text in kürzere Formen, z.B. 200 für „zweihundert“ oder „Dr. Smith“ für „doctor smith“) und Obszönitätenmaskierung. Nur bei Erfolg vorhanden.|
@@ -162,7 +156,7 @@ Ergebnisse werden im JSON-Format bereitgestellt. Das `simple`-Format schließt d
 
 Das `RecognitionStatus`-Feld kann diese Werte enthalten:
 
-| Status | Beschreibung |
+| Status | BESCHREIBUNG |
 |--------|-------------|
 | `Success` | Die Erkennung war erfolgreich, und das `DisplayText`-Feld ist vorhanden. |
 | `NoMatch` | Im Audiodatenstrom wurde Sprache erkannt, aber es wurde keine Übereinstimmung mit Wörtern aus der Zielsprache festgestellt. Normalerweise bedeutet dies, dass die Erkennungssprache eine andere Sprache ist als die, die der Benutzer spricht. |
@@ -177,7 +171,7 @@ Das Format `detailed` enthält die gleichen Daten wie das Format `simple` sowie 
 
 Jedes Objekt in der `NBest`-Liste enthält:
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 |-----------|-------------|
 | `Confidence` | Die Zuverlässigkeitsbewertung des Eintrags von 0,0 (keine Zuverlässigkeit) bis 1,0 (volle Zuverlässigkeit) |
 | `Lexical` | Die lexikalische Form des erkannten Texts: die tatsächlich erkannten Wörter. |

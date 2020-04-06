@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 507afad294e8233ea4de4130795f29925870fcdf
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74888052"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services 
@@ -51,7 +51,7 @@ Es folgt eine Liste der speziellen Formatdefinitionen, die für die Echtzeiterfa
 1. Im Abschnitt 3.3.6 in [1] wird das Feld mit der Bezeichnung **MovieFragmentRandomAccessBox** (**mfra**) definiert, das am Ende der Echtzeiterfassung gesendet werden KANN, um das Ende des Streams (End-of-Stream, EOS) für den Kanal anzugeben. Aufgrund der Erfassungslogik von Media Services ist die Verwendung von EOS (End-of-Stream) veraltet, und das Feld **mfra** für die Echtzeiterfassung SOLLTE NICHT gesendet werden. Wenn es dennoch gesendet wird, wird es in Media Services ohne Meldung ignoriert. Um den Status des Erfassungspunkts zurückzusetzen, empfehlen die Verwendung der [Kanalzurücksetzung](https://docs.microsoft.com/rest/api/media/operations/channel#reset_channels). Wir empfehlen auch die Verwendung des [Programmstopps](https://msdn.microsoft.com/library/azure/dn783463.aspx#stop_programs) zum Beenden einer Präsentation und eines Streams.
 1. Die Dauer der MP4-Fragmente SOLLTE konstant sein, um die Größe der Clientmanifeste zu reduzieren. Eine konstante MP4-Fragmentdauer verbessert auch die Clientdownloadheuristiken durch Verwendung von Wiederholungstags. Die Dauer KANN schwanken, um nicht ganzzahlige Frameraten auszugleichen.
 1. Die Dauer des MP4-Fragments SOLLTE zwischen ca. 2 und 6 Sekunden liegen.
-1. Zeitstempel und Indizes des MP4-Fragments (**TrackFragmentExtendedHeaderBox** `fragment_ absolute_ time` and `fragment_index`) SOLLTEN in aufsteigender Reihenfolge eingehen. Obwohl Fragmente in Media Services dupliziert werden können, sind die Möglichkeiten begrenzt, Fragmente entsprechend der Medienzeitachse neu anzuordnen.
+1. Zeitstempel und Indizes des MP4-Fragments (**TrackFragmentExtendedHeaderBox** `fragment_ absolute_ time` und `fragment_index`) SOLLTEN in aufsteigender Reihenfolge eingehen. Obwohl Fragmente in Media Services dupliziert werden können, sind die Möglichkeiten begrenzt, Fragmente entsprechend der Medienzeitachse neu anzuordnen.
 
 ## <a name="4-protocol-format--http"></a>4. Protokollformat – HTTP
 Bei der auf fragmentiertem ISO-MP4-basierenden Echtzeiterfassung für Media Services wird eine HTTP POST-Standardanforderung mit langer Laufzeit verwendet, um codierte Mediendaten im fragmentierten MP4-Format an den Dienst zu übertragen. Jede HTTP POST-Anforderung sendet einen vollständigen Bitstrom in fragmentiertem MP4 („Stream“), der mit den Headerfeldern (**ftyp**, **Live Server Manifest Box** und **moov**) beginnt und mit einer Sequenz von Fragmenten (Felder **moof** und **mdat**) fortgesetzt wird. Informationen zur URL-Syntax für die HTTP POST-Anforderung finden Sie in Abschnitt 9.2 in [1]. Beispiel für die POST-URL: 

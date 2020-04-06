@@ -1,29 +1,29 @@
 ---
 title: Details zu unterstützten Datenformaten | Microsoft Azure Maps
 description: Hier erfahren Sie, wie durch Trennzeichen getrennte räumliche Daten im räumlichen E/A-Modul analysiert werden.
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: fff801731c3c3a94b4039a8c65ad8ccaab7cc725
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: 3353620f1751e939a04543115fe704555fb3bc21
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402749"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334080"
 ---
 # <a name="supported-data-format-details"></a>Details zu unterstützten Datenformaten
 
-Dieser Artikel enthält Einzelheiten zur Lese- und Schreibunterstützung für alle XML-Tags und Well-known-Text-Geometrietypen. Außerdem erfahren Sie, wie durch Trennzeichen getrennte räumliche Daten im räumlichen E/A-Modul analysiert werden.
+Dieser Artikel enthält Einzelheiten zur Lese- und Schreibunterstützung für alle XML-Tags und Well-Known-Text-Geometrietypen. Außerdem erfahren Sie, wie durch Trennzeichen getrennte räumliche Daten im räumlichen E/A-Modul analysiert werden.
 
 ## <a name="supported-xml-namespaces"></a>Unterstützte XML-Namespaces
 
 Das räumliche E/A-Modul unterstützt XML-Tags aus den folgenden Namespaces:
 
-| Namespacepräfix | Namespace-URI   | Hinweise                                                                    |
+| Namespacepräfix | Namespace-URI   | Notizen                                                                    |
 |:------------------|:-----------------|:----------------------------------------|
 | `atom`           | `http://www.w3.org/2005/Atom`   |                                         |
 | `geo`            | `http://www.w3.org/2003/01/geo/wgs84_pos#`  | Schreibgeschützte Unterstützung in GeoRSS-Dateien.           |
@@ -45,7 +45,7 @@ Das räumliche E/A-Modul unterstützt die folgenden XML-Elemente. Alle nicht unt
 
 Das räumliche E/A-Modul unterstützt die folgenden KML-Elemente:
 
-| Elementname         | Lesen    | Schreiben   | Hinweise                                                                                                                      |
+| Elementname         | Lesen    | Schreiben   | Notizen                                                                                                                      |
 |----------------------|---------|---------|----------------------------------------------------------------------------------------------------------------------------|
 | `address`            | Teilweise | ja     | Das Objekt wird analysiert, aber nicht zum Positionieren der Form verwendet.                                                                    |
 | `AddressDetails`     | Teilweise | nein      | Das Objekt wird analysiert, aber nicht zum Positionieren der Form verwendet.                                                                    |
@@ -131,7 +131,7 @@ Das räumliche E/A-Modul unterstützt die folgenden KML-Elemente:
 
 Das räumliche E/A-Modul unterstützt die folgenden GeoRSS-Elemente:
 
-| Elementname             | Lesen    | Schreiben | Hinweise                                                                                          |
+| Elementname             | Lesen    | Schreiben | Notizen                                                                                          |
 |--------------------------|---------|-------|------------------------------------------------------------------------------------------------|
 | `atom:author`            | ja     | ja   |                                                                                                |
 | `atom:category`          | ja     | ja   |                                                                                                |
@@ -170,7 +170,7 @@ Das räumliche E/A-Modul unterstützt die folgenden GeoRSS-Elemente:
 | `georss:where`           | ja     | ja   |                                                                                                |
 | `geourl:latitude`        | ja     | nein    | Wird als `georss:point` geschrieben.                                                                   |
 | `geourl:longitude`       | ja     | nein    | Wird als `georss:point` geschrieben.                                                                   |
-| `position`               | ja     | nein    | Bei manchen XML-Feeds wird GML mit einem Positionstag (anstelle eines georss:where-Tags) umschlossen. Dieses Tag wird zwar gelesen, beim Schreiben wird jedoch ein georss:where-Tags verwendet. |
+| `position`               | ja     | nein    | Bei manchen XML-Feeds wird GML mit einem Positionstag (anstelle eines `georss:where`-Tags) umschlossen. Dieses Tag wird zwar gelesen, beim Schreiben wird jedoch ein `georss:where`-Tag verwendet. |
 | `rss`                    | ja     | nein    | GeoRSS (im ATOM-Format geschrieben).                                                                 |
 | `rss:author`             | ja     | Teilweise | Wird als `atom:author` geschrieben.                                                                 |
 | `rss:category`           | ja     | Teilweise | Wird als `atom:category` geschrieben.                                                               |
@@ -203,7 +203,7 @@ Das räumliche E/A-Modul unterstützt die folgenden GeoRSS-Elemente:
 
 Das räumliche E/A-Modul unterstützt die folgenden GML-Elemente: 
 
-| Elementname            | Lesen | Schreiben | Hinweise                                                                                  |
+| Elementname            | Lesen | Schreiben | Notizen                                                                                  |
 |-------------------------|------|-------|----------------------------------------------------------------------------------------|
 | `gml:coordinates`       | ja  | nein    | Wird als `gml:posList` geschrieben.                                                              |
 | `gml:curveMember`       | ja  | nein    |                                                                                        |
@@ -254,7 +254,7 @@ Das räumliche E/A-Modul unterstützt die folgenden GML-Elemente:
 
 Das räumliche E/A-Modul unterstützt die folgenden GPX-Elemente:
 
-| Elementname             | Lesen    | Schreiben   | Hinweise                                                                                       |
+| Elementname             | Lesen    | Schreiben   | Notizen                                                                                       |
 |--------------------------|---------|---------|---------------------------------------------------------------------------------------------|
 | `gpx:ageofdgpsdata`      | ja     | ja     |                                                                                             |
 | `gpx:author`             | ja     | ja     |                                                                                             |
@@ -304,7 +304,7 @@ Beim Schreiben gilt Folgendes:
 - MultiPoint-Elemente werden in einzelne Wegpunkte unterteilt.
 - Polygon- und MultiPolygon-Elemente werden als Strecken geschrieben. 
   
-## <a name="supported-well-known-text-geometry-types"></a>Unterstützte Well-known-Text-Geometrietypen
+## <a name="supported-well-known-text-geometry-types"></a>Unterstützte Well-Known-Text-Geometrietypen
 
 | Geometrietyp | Lesen | Schreiben |
 |--------------|:----:|:-----:|
@@ -343,7 +343,7 @@ Beim Schreiben gilt Folgendes:
 
 ## <a name="delimited-spatial-data-support"></a>Unterstützung von durch Trennzeichen getrennten räumlichen Daten
 
-Durch Trennzeichen getrennte räumliche Daten (beispielsweise CSV-Dateien) enthalten häufig Spalten mit räumlichen Daten. Dabei kann es sich beispielsweise um Spalten mit Breiten- und Längengradinformationen handeln. Im Well-known-Text-Format kann eine Spalte mit räumlichen Geometriedaten enthalten sein.
+Durch Trennzeichen getrennte räumliche Daten (beispielsweise CSV-Dateien) enthalten häufig Spalten mit räumlichen Daten. Dabei kann es sich beispielsweise um Spalten mit Breiten- und Längengradinformationen handeln. Im Well-Known-Text-Format kann eine Spalte mit räumlichen Geometriedaten enthalten sein.
 
 ### <a name="spatial-data-column-detection"></a>Erkennung von Spalten mit räumlichen Daten
 
@@ -383,9 +383,9 @@ Beim Lesen einer durch Trennzeichen getrennten Datei mit räumlichen Daten wird 
 - `alt`
 - `z`
 
-#### <a name="geography"></a>Geografie
+#### <a name="geography"></a>Gebiet
 
-Die erste Datenzeile wird nach Zeichenfolgen im Well-known-Text-Format durchsucht. 
+Die erste Datenzeile wird nach Zeichenfolgen im Well-Known-Text-Format durchsucht. 
 
 ### <a name="delimited-data-column-types"></a>Spaltentypen für durch Trennzeichen getrennte Daten
 
@@ -423,7 +423,7 @@ Bei der Überprüfung der Kopfzeile werden im Spaltennamen enthaltene Typinforma
 - edm.string
 - varchar
 - text
-- case 'string
+- Zeichenfolge
 
 Falls keine Typinformationen aus der Kopfzeile extrahiert werden können und beim Lesen die Option für die dynamische Typzuweisung aktiviert ist, wird jede Zelle einzeln analysiert, um zu bestimmen, welcher Datentyp am besten für die Umwandlung geeignet ist.
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: cae128505c61e7c640819041c6ffdae10a4947e7
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: efe09c1d516b37c23b024e07ae387772fa7e5992
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152277"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477611"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>Referenz des Moduls „Extract N-Gram Features from Text“
 
@@ -73,7 +73,7 @@ Das Modul unterstützt die folgenden Szenarien für die Verwendung eines N-Gramm
 
 1. Wählen Sie die Option **Normalize n-gram feature vectors** (N-Gramm-Merkmalsvektoren normalisieren) aus, um die Merkmalsvektoren zu normalisieren. Wenn diese Option aktiviert ist, wird jeder N-Gramm-Merkmalsvektor durch seine L2-Norm dividiert.
 
-1. Ausführen der Pipeline.
+1. Übermitteln Sie die Pipeline.
 
 ### <a name="use-an-existing-n-gram-dictionary"></a>Verwenden eines vorhandenen N-Gramm-Wörterbuchs
 
@@ -92,7 +92,7 @@ Das Modul unterstützt die folgenden Szenarien für die Verwendung eines N-Gramm
 
 1.  Informationen zu allen anderen Optionen finden Sie in den Eigenschaftenbeschreibungen im [vorherigen Abschnitt](#create-a-new-n-gram-dictionary).
 
-1.  Ausführen der Pipeline.
+1.  Übermitteln Sie die Pipeline.
 
 ### <a name="score-or-publish-a-model-that-uses-n-grams"></a>Bewerten oder Veröffentlichen eines Modells, das N-Gramme verwendet
 

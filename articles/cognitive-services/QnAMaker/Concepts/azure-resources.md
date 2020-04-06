@@ -2,13 +2,13 @@
 title: 'Azure-Ressourcen: QnA Maker'
 description: In QnA Maker werden verschiedene Azure-Quellen verwendet, von denen jede einen anderen Zweck erfüllt. Wenn Sie wissen, wie sie einzeln verwendet werden, können Sie den richtigen Tarif planen und auswählen oder bestimmen, wann ein Tarifwechsel sinnvoll ist. Das Verständnis dafür, wie sie kombiniert verwendet werden, ermöglicht es Ihnen, auftretende Probleme zu finden und zu beheben.
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.openlocfilehash: 77aced459c7731a2cac432538cfc66ed9ce83f9d
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 03/25/2020
+ms.openlocfilehash: 8a5cc0f4889e31470514015035a92d230c40ed43
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76902068"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284244"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-Ressourcen für QnA Maker
 
@@ -30,7 +30,9 @@ Sie sollten so planen, dass eine einzelne QnA Maker-Ressource alle Wissensdatenb
 
 Es gibt in der Regel drei Parameter, die Sie berücksichtigen müssen:
 
-* **Den Durchsatz, den Sie vom Dienst benötigen:** Wählen Sie den passenden [App-Plan](https://azure.microsoft.com/pricing/details/app-service/plans/) für Ihren App Service auf der Grundlage Ihrer Anforderungen aus. Sie können die App [zentral hochskalieren](https://docs.microsoft.com/azure/app-service/manage-scale-up) oder zentral herunterskalieren. Dies sollte auch Einfluss auf Ihre Wahl der Azure Cognitive Search SKU haben; weitere Details dazu finden Sie [hier](https://docs.microsoft.com/azure/search/search-sku-tier).
+* **Den Durchsatz, den Sie vom Dienst benötigen:**
+    * Wählen Sie den passenden [App-Plan](https://azure.microsoft.com/pricing/details/app-service/plans/) für Ihren App Service auf der Grundlage Ihrer Anforderungen aus. Sie können die App [hochskalieren](https://docs.microsoft.com/azure/app-service/manage-scale-up) oder herunterskalieren.
+    * Dies sollte auch Einfluss auf Ihre Wahl der Azure [Cognitive Search](https://docs.microsoft.com/azure/search/search-sku-tier)-SKU haben. Weitere Details dazu finden Sie **hier**. Darüber hinaus müssen Sie unter Umständen die Cognitive Search-[Kapazität](../../../search/search-capacity-planning.md) mit Replikaten anpassen.
 
 * **Größe und Anzahl von Wissensdatenbanken:** Wählen Sie eine geeignete [Azure Search-SKU](https://azure.microsoft.com/pricing/details/search/) für Ihr Szenario aus. Normalerweise entscheiden Sie über die Anzahl der erforderlichen Wissensdatenbanken anhand der Anzahl der verschiedenen Themendomänen. Eine Themendomäne (für eine einzelne Sprache) sollte in einer Wissensdatenbank vorliegen.
 
@@ -53,7 +55,7 @@ Die folgende Tabelle gibt Ihnen einige allgemeine Richtlinien.
 |Aktualisieren|`Reason`|
 |--|--|
 |[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) der QnA Maker Management-SKU|Sie möchten mehr QnA-Sätze oder Dokumentquellen in Ihre Wissensdatenbank aufnehmen.|
-|[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) der App Service-SKU|Ihre Wissensdatenbank muss mehr Anforderungen aus Ihrer Client-App verarbeiten, z.B. einen Chatbot.|
+|[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) der App Service-SKU, Überprüfen der Cognitive Search-Dienstebene und [Erstellen von Cognitive Search-Replikaten](../../../search/search-capacity-planning.md)|Ihre Wissensdatenbank muss mehr Anforderungen aus Ihrer Client-App verarbeiten, z.B. einen Chatbot.|
 |[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service) des Azure Cognitive Search-Diensts|Sie benötigen voraussichtlich eine Vielzahl von Wissensdatenbanken.|
 
 Rufen Sie die aktuellsten Runtime-Updates ab, indem Sie [Ihren App Service im Azure-Portal aktualisieren](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates).
@@ -114,7 +116,7 @@ Die zweite Bewertung wendet intelligente Filter an, die Metadaten und Folgeauffo
 
 #### <a name="qna-maker-resource-configuration-settings"></a>Ressourcenkonfigurationseinstellungen für QnA Maker
 
-Wenn Sie eine neue Wissensdatenbank im [QnA Maker-Portal](https://qnamaker.ai) erstellen, ist die Einstellung für **Sprache** die einzige Einstellung, die auf der Ressourcenebene angewendet wird. Sie wählen die Sprache aus, wenn Sie die erste Wissensdatenbank für die Ressource erstellen. 
+Wenn Sie eine neue Wissensdatenbank im [QnA Maker-Portal](https://qnamaker.ai) erstellen, ist die Einstellung für **Sprache** die einzige Einstellung, die auf der Ressourcenebene angewendet wird. Sie wählen die Sprache aus, wenn Sie die erste Wissensdatenbank für die Ressource erstellen.
 
 ### <a name="app-service-and-app-service-plan"></a>App Service und App Service-Plan
 
@@ -160,7 +162,7 @@ Verwenden Sie diese Schlüssel, wenn Sie Anforderungen an den Dienst über APIs 
 
 ![Schlüsselverwaltung](../media/qnamaker-how-to-key-management/key-management.png)
 
-|Name|Location|Zweck|
+|Name|Position|Zweck|
 |--|--|--|
 |Erstellungsschlüssel|[Azure portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Diese Schlüssel werden verwendet, um auf die [QnA Maker-Verwaltungsdienst-APIs](https://go.microsoft.com/fwlink/?linkid=2092179) zuzugreifen. Mit diesen APIs können Sie die Fragen und Antworten in Ihrer Wissensdatenbank bearbeiten und Ihre Wissensdatenbank veröffentlichen. Diese Schlüssel werden erstellt, wenn Sie einen neuen QnA Maker-Dienst erstellen.<br><br>Sie finden diese Schlüssel in der Ressource **Cognitive Services** auf der Seite **Schlüssel**.|
 |Abfrageendpunktschlüssel|[QnA Maker-Portal](https://www.qnamaker.ai)|Diese Schlüssel werden zum Abfragen des Endpunkts der veröffentlichten Wissensdatenbank verwendet, um eine Antwort auf eine Benutzerfrage abzurufen. In der Regel verwenden Sie diesen Abfrageendpunkt in Ihrem Chatbot oder im Clientanwendungscode, der eine Verbindung mit dem QnA Maker-Dienst herstellt. Diese Schlüssel werden erstellt, wenn Sie Ihre QnA Maker-Wissensdatenbank veröffentlichen.<br><br>Sie finden diese Schlüssel auf der Seite **Diensteinstellungen**. Suchen Sie diese Seite im Menü des Benutzers in der oberen rechten Ecke der Seite im Dropdownmenü.|

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2020
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: e4f4dd3c1e23855a8a1a69dac72c232779206f1d
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: f0723534d9d2187593cb73f058ffea62473b80a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121708"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235964"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>Angeben der Quellsprache für die Spracherkennung
 
@@ -114,24 +114,31 @@ SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageC
 
 ## <a name="how-to-specify-source-language-in-python"></a>Vorgehensweise: Angeben der Quellsprache in Python
 
-Im ersten Schritt wird ein `speech_config` erstellt:
+In diesem Beispiel wird die Ausgangssprache mithilfe eines `SpeechRecognizer`-Konstrukts explizit als Parameter bereitgestellt.
 
 ```Python
-speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"
-speech_config = speechsdk.SpeechConfig(subscription=speech_key, region=service_region)
+speech_recognizer = speechsdk.SpeechRecognizer(
+        speech_config=speech_config, language="de-DE", audio_config=audio_config)
 ```
 
-Geben Sie als nächstes die Quellsprache Ihrer Audiodatei mit `speech_recognition_language` an:
+In diesem Beispiel wird die Quellsprache mithilfe von `SourceLanguageConfig` bereitgestellt. `SourceLanguageConfig` wird dann als Parameter an das `SpeechRecognizer`-Konstrukt übergeben.
 
 ```Python
-speech_config.speech_recognition_language="de-DE"
+source_language_config = speechsdk.languageconfig.SourceLanguageConfig("de-DE")
+speech_recognizer = speechsdk.SpeechRecognizer(
+        speech_config=speech_config, source_language_config=source_language_config, audio_config=audio_config)
 ```
 
-Wenn Sie ein benutzerdefiniertes Modell zur Erkennung verwenden, können Sie den Endpunkt mit `endpoint_id` angeben:
+In diesem Beispiel werden die Quellsprache und der benutzerdefinierte Endpunkt mithilfe von `SourceLanguageConfig` bereitgestellt. `SourceLanguageConfig` wird dann als Parameter an das `SpeechRecognizer`-Konstrukt übergeben.
 
 ```Python
-speech_config.endpoint_id = "The Endpoint ID for your custom model."
+source_language_config = speechsdk.languageconfig.SourceLanguageConfig("de-DE", "The Endpoint ID for your custom model.")
+speech_recognizer = speechsdk.SpeechRecognizer(
+        speech_config=speech_config, source_language_config=source_language_config, audio_config=audio_config)
 ```
+
+>[!Note]
+> Die Eigenschaften `speech_recognition_language` und `endpoint_id` sind veraltete Eigenschaften der Klasse `SpeechConfig` in Python. Die Verwendung dieser Eigenschaften wird nicht empfohlen und sollte bei der Erstellung einer Spracherkennung (`SpeechRecognizer`) vermieden werden.
 
 ::: zone-end
 

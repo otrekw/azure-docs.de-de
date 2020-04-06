@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/28/2018
 ms.author: magattus
 ms.openlocfilehash: 9f185f58e1d33a3985777cb22bc7578f9f2c4541
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593797"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Verbessern der Leistung durch Komprimieren von Dateien in Azure CDN
@@ -141,20 +141,20 @@ Die folgenden Tabellen beschreiben das Verhalten der Azure CDN-Komprimierung fü
 ### <a name="compression-is-disabled-or-file-is-ineligible-for-compression"></a>Komprimierung deaktiviert oder Datei nicht zur Komprimierung geeignet
 | Vom Client angefordertes Format (über Accept-Encoding-Header) | Format der zwischengespeicherten Datei | CDN-Antwort an den Client | Hinweise&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 | --- | --- | --- | --- |
-| Komprimiert |Komprimiert |Komprimiert | |
-| Komprimiert |Nicht komprimiert |Nicht komprimiert | |
-| Komprimiert |Nicht zwischengespeichert |Komprimiert oder nicht komprimiert |Die Antwort vom Ursprungsserver bestimmt, ob CDN eine Komprimierung durchführt. |
-| Nicht komprimiert |Komprimiert |Nicht komprimiert | |
+| Compressed |Compressed |Compressed | |
+| Compressed |Nicht komprimiert |Nicht komprimiert | |
+| Compressed |Nicht zwischengespeichert |Komprimiert oder nicht komprimiert |Die Antwort vom Ursprungsserver bestimmt, ob CDN eine Komprimierung durchführt. |
+| Nicht komprimiert |Compressed |Nicht komprimiert | |
 | Nicht komprimiert |Nicht komprimiert |Nicht komprimiert | |
 | Nicht komprimiert |Nicht zwischengespeichert |Nicht komprimiert | |
 
 ### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>Komprimierung aktiviert und Datei zur Komprimierung geeignet
 | Vom Client angefordertes Format (über Accept-Encoding-Header) | Format der zwischengespeicherten Datei | CDN-Antwort an den Client | Notizen |
 | --- | --- | --- | --- |
-| Komprimiert |Komprimiert |Komprimiert |CDN transcodiert zwischen unterstützten Formaten. |
-| Komprimiert |Nicht komprimiert |Komprimiert |CDN führt eine Komprimierung durch. |
-| Komprimiert |Nicht zwischengespeichert |Komprimiert |CDN führt eine Komprimierung durch, wenn der Ursprungsserver eine nicht komprimierte Datei zurückgibt. <br/>**Azure CDN von Verizon** übergibt die nicht komprimierte Datei bei der ersten Anforderung, komprimiert anschließend die Datei und speichert sie für nachfolgende Anforderungen zwischen. <br/>Dateien mit dem Header `Cache-Control: no-cache` werden nie komprimiert. |
-| Nicht komprimiert |Komprimiert |Nicht komprimiert |CDN führt eine Dekomprimierung durch. |
+| Compressed |Compressed |Compressed |CDN transcodiert zwischen unterstützten Formaten. |
+| Compressed |Nicht komprimiert |Compressed |CDN führt eine Komprimierung durch. |
+| Compressed |Nicht zwischengespeichert |Compressed |CDN führt eine Komprimierung durch, wenn der Ursprungsserver eine nicht komprimierte Datei zurückgibt. <br/>**Azure CDN von Verizon** übergibt die nicht komprimierte Datei bei der ersten Anforderung, komprimiert anschließend die Datei und speichert sie für nachfolgende Anforderungen zwischen. <br/>Dateien mit dem Header `Cache-Control: no-cache` werden nie komprimiert. |
+| Nicht komprimiert |Compressed |Nicht komprimiert |CDN führt eine Dekomprimierung durch. |
 | Nicht komprimiert |Nicht komprimiert |Nicht komprimiert | |
 | Nicht komprimiert |Nicht zwischengespeichert |Nicht komprimiert | |
 

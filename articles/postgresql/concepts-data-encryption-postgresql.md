@@ -1,17 +1,17 @@
 ---
-title: Datenverschlüsselung auf Azure Database for PostgreSQL-Einzelservern mit einem kundenseitig verwalteten Schlüssel
+title: 'Datenverschlüsselung mit kundenseitig verwalteten Schlüsseln: Azure Database for PostgreSQL-Einzelserver'
 description: Datenverschlüsselung auf Azure Database for PostgreSQL-Einzelservern mit einem vom Kunden verwalteten Schlüssel ermöglicht Ihnen BYOK (Bring Your Own Key) für den Schutz von Daten im Ruhezustand. Sie bietet Organisationen auch eine Möglichkeit der Trennung von Aufgaben bei der Verwaltung von Schlüsseln und Daten.
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 5516bfcb3ed32ba6635943298db2a7773db0a622
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 20e01e681c382e3c9c69f76c95a90f709f409d6a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198699"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79297021"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Datenverschlüsselung auf Azure Database for PostgreSQL-Einzelservern mit einem kundenseitig verwalteten Schlüssel
 
@@ -32,9 +32,9 @@ Key Vault ist ein cloudbasiertes, externes Schlüsselverwaltungssystem. Es biete
 Die Datenverschlüsselung für Azure Database for PostgreSQL-Einzelserver bietet die folgenden Vorteile:
 
 * Datenzugriff wird von Ihnen vollständig durch die Möglichkeit gesteuert, den Schlüssel zu entfernen und so die Datenbank nicht zugänglich zu machen. 
-*   Vollständige Kontrolle über den Schlüssellebenszyklus, einschließlich der Rotation des Schlüssels zum Einhalten von Unternehmensrichtlinien
-*   Zentrale Verwaltung und Organisation von Schlüsseln in Azure Key Vault
-*   Möglichkeit zur Implementierung der Trennung von Aufgaben zwischen Sicherheitsbeauftragten, DBAs und Systemadministratoren
+*    Vollständige Kontrolle über den Schlüssellebenszyklus, einschließlich der Rotation des Schlüssels zum Einhalten von Unternehmensrichtlinien
+*    Zentrale Verwaltung und Organisation von Schlüsseln in Azure Key Vault
+*    Möglichkeit zur Implementierung der Trennung von Aufgaben zwischen Sicherheitsbeauftragten, DBAs und Systemadministratoren
 
 ## <a name="terminology-and-description"></a>Terminologie und Beschreibung
 

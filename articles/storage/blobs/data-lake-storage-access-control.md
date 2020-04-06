@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 6507c2a2d1100d480c879c73861c02e477d38416
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 192e46fd7f86b6053eaf658fa65e3c6cdfa3a4e7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77026131"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79528607"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Zugriffssteuerung in Azure Data Lake Storage Gen2
 
@@ -28,6 +28,9 @@ Für die RBAC werden Rollenzuweisungen verwendet, um *Sicherheitsprinzipalen* ef
 In der Regel sind diese Azure-Ressourcen auf Ressourcen oberster Ebene beschränkt, z. B. Azure Storage-Konten. Im Falle von Azure Storage und damit auch von Azure Data Lake Storage Gen2 wurde dieser Mechanismus auf die Containerressource (Dateisystem) ausgeweitet.
 
 Informationen zum Zuweisen von Rollen zu Sicherheitsprinzipalen im Bereich Ihres Speicherkontos finden Sie unter [Grant access to Azure blob and queue data with RBAC in the Azure portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Erteilen des Zugriffs auf Azure-Blob- und Warteschlangendaten mithilfe von RBAC im Azure-Portal).
+
+> [!NOTE]
+> Ein Gastbenutzer kann keine Rollenzuweisung erstellen.
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>Die Auswirkungen von Rollenzuweisungen auf Zugriffssteuerungslisten auf Datei- und Verzeichnisebene
 
@@ -50,9 +53,13 @@ SAS-Token enthalten zulässige Berechtigungen als Teil des Tokens. Die im SAS-To
 
 Sie können einem Sicherheitsprinzipal eine Zugriffsebene für Dateien und Verzeichnisse zuordnen. Diese Zuordnungen werden in einer *Zugriffssteuerungsliste (ACL)* erfasst. Jede Datei und jedes Verzeichnis in Ihrem Speicherkonto verfügt über eine Zugriffssteuerungsliste.
 
+> [!NOTE]
+> ACLs gelten nur für Sicherheitsprinzipale im gleichen Mandanten. Sie können einem Gastbenutzer keine Zugriffsebene zuordnen.  
+
 Wenn Sie einem Sicherheitsprinzipal eine Rolle auf Speicherkontoebene zugewiesen haben, können Sie diesem Sicherheitsprinzipal mit Zugriffssteuerungslisten Zugriff mit erhöhten Rechten auf bestimmte Dateien und Verzeichnisse gewähren.
 
 Zugriffssteuerungslisten können nicht verwendet werden, um eine Zugriffsebene bereitzustellen, die niedriger als eine durch eine Rollenzuweisung gewährte Ebene ist. Wenn Sie beispielsweise einem Sicherheitsprinzipal die Rolle [Mitwirkender an Speicherblob](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) zuweisen, können Sie nicht mithilfe von Zugriffssteuerungslisten verhindern, dass dieser Sicherheitsprinzipal in ein Verzeichnis schreibt.
+
 
 ### <a name="set-file-and-directory-level-permissions-by-using-access-control-lists"></a>Festlegen von Berechtigungen auf Datei- und Verzeichnisebene mithilfe von Zugriffssteuerungslisten
 
@@ -175,7 +182,7 @@ Die zuständige Gruppe kann von folgenden Benutzern geändert werden:
 
 Im folgenden Pseudocode wird der Zugriffsüberprüfungsalgorithmus für Speicherkonten veranschaulicht.
 
-```
+```console
 def access_check( user, desired_perms, path ) : 
   # access_check returns true if user has the desired permissions on the path, false otherwise
   # user is the identity that wants to perform an operation on path
@@ -254,7 +261,7 @@ Der „umask“-Wert, der von Azure Data Lake Storage Gen2 verwendet wird, bedeu
 
 Im folgenden Pseudocode wird gezeigt, wie der umask-Wert angewendet wird, wenn die ACLs für ein untergeordnetes Element erstellt werden.
 
-```
+```console
 def set_default_acls_for_new_child(parent, child):
     child.acls = []
     for entry in parent.acls :
@@ -284,7 +291,7 @@ Verwenden Sie in ACLs Azure AD-Sicherheitsgruppen stets als den zugewiesenen Pri
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>Welche Berechtigungen werden zum rekursiven Löschen eines Verzeichnisses und seines Inhalts benötigt?
 
-- Der Aufrufer verfügt über die Berechtigung „super-user“
+- Der Aufrufer verfügt über die Berechtigung „super-user“.
 
 oder
 
@@ -316,10 +323,11 @@ Beim Definieren von ACLs für Dienstprinzipale ist es wichtig, die Objekt-ID (OI
 
 Mit dem Befehl `az ad sp show` können Sie die OID für den Dienstprinzipal abrufen, der einer App-Registrierung entspricht. Geben Sie die Anwendungs-ID als Parameter an. Es folgt ein Beispiel für das Abrufen der OID für den Dienstprinzipal, der einer App-Registrierung mit der App-ID „18218b12-1895-43e9-ad80-6e8fc1ea88ce“ entspricht. Führen Sie in der Azure CLI den folgenden Befehl aus:
 
+```azurecli
+az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
 ```
-$ az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
-<<OID will be displayed>>
-```
+
+Die OID wird angezeigt.
 
 Wenn Sie über die richtige OID für den Dienstprinzipal verfügen, wechseln Sie zur Seite **Zugang verwalten** im Storage-Explorer, um die OID hinzuzufügen und entsprechende Berechtigungen für die OID zuzuweisen. Klicken Sie auf **Speichern**.
 

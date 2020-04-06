@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 3e25f55d82ba146f9076e38faf1e399c5228d947
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 9fbf55fbe16d958bf10541894159dade26668bef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79080383"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336722"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Behandeln von Problemen bei der Azure Migrate-Appliance und der Ermittlung
 
@@ -53,7 +53,7 @@ Ein Fehler bei der Datums- und Zeitsynchronisierung (Fehler 802) weist darauf hi
 
 ## <a name="unabletoconnecttoserver"></a>„UnableToConnectToServer“
 
-Wenn dieser Verbindungsfehler angezeigt wird, können Sie möglicherweise keine Verbindung mit vCenter Server „*Servername*.com:9443“ herstellen. Die Fehlerdetails weisen darauf hin, dass unter „https://*Servername*.com:9443/sdk“ kein Endpunkt lauscht, der die Nachricht akzeptieren kann.
+Wenn dieser Verbindungsfehler angezeigt wird, können Sie möglicherweise keine Verbindung mit vCenter Server „*Servername*.com:9443“ herstellen. Die Fehlerdetails weisen darauf hin, dass unter `https://\*servername*.com:9443/sdk` kein Endpunkt lauscht, der die Nachricht akzeptieren kann.
 
 - Überprüfen Sie, ob Sie die neueste Version der Appliance ausführen. Ist dies nicht der Fall, führen Sie ein Upgrade der Appliance auf die [neueste Version](https://docs.microsoft.com/azure/migrate/concepts-collector) durch.
 - Wenn das Problem bei der neuesten Version weiterhin auftritt, ist die Appliance möglicherweise nicht in der Lage, den angegebenen vCenter Server-Namen aufzulösen, oder der angegebene Port ist eventuell falsch. Wenn der Port nicht angegeben ist, versucht Collector standardmäßig, eine Verbindung mit Port 443 herzustellen.
@@ -120,7 +120,7 @@ Wenn Sie warten und der Zustand sich nicht ändert, wählen Sie **Aktualisieren*
 Wenn dies nicht funktioniert und Sie VMware-Server erkennen:
 
 - Stellen Sie sicher, dass das von Ihnen angegebene vCenter-Konto über ordnungsgemäß festgelegte Berechtigungen mit Zugriff auf mindestens einen virtuellen Computer verfügt.
-- Azure Migrate kann keine VMware-VMs erkennen, wenn dem vCenter-Konto auf Ebene des vCenter-VM-Ordners Zugriff gewährt wird. [Erfahren Sie mehr](tutorial-assess-vmware.md#set-the-scope-of-discovery) über das Beschränken der Ermittlung.
+- Azure Migrate kann keine VMware-VMs erkennen, wenn dem vCenter-Konto auf Ebene des vCenter-VM-Ordners Zugriff gewährt wird. [Erfahren Sie mehr](set-discovery-scope.md) über das Beschränken der Ermittlung.
 
 ## <a name="vm-data-not-in-portal"></a>VM-Daten nicht im Portal
 

@@ -1,18 +1,18 @@
 ---
 title: Automatisieren des Bereitstellens und Veröffentlichens Ihrer mobilen Anwendungen mit Visual Studio App Center und Azure-Diensten
 description: Erfahren Sie mehr über die Dienste, z. B. App Center, mit denen Sie eine Continuous Delivery-Pipeline für Ihre mobilen Anwendungen einrichten können.
-author: elamalani
+author: codemillmatt
 ms.assetid: 34a8a070-9b3c-4faf-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 6a8c8d9fc535d973c70eb2e477051dbd1dd1f6fb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: ccfd0fc0450a6fbd34192dce7e375fe2de7f47c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454468"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235356"
 ---
 # <a name="automate-the-deployment-and-release-of-your-mobile-applications-with-continuous-delivery-services"></a>Automatisieren des Bereitstellens und Veröffentlichens Ihrer mobilen Anwendungen mit Continuous Delivery-Diensten
 
@@ -26,7 +26,7 @@ Das Ausführen des Betatests Ihrer mobilen Anwendung ist einer der entscheidende
 Mit den folgenden Diensten können Sie eine Continuous Delivery-Pipeline in Ihren mobilen Apps ermöglichen.
 
 ### <a name="visual-studio-app-center"></a>Visual Studio App Center
-[App Center Distribute](/appcenter/distribution/) ist ein Tool für Entwickler, um schnell Builds auf Geräten veröffentlichen zu können. Mit einer vollständigen Installationsportalerfahrung ist App Center Distribute eine leistungsstarke Lösung für die Verteilung an Tester von Beta-Apps. Es stellt außerdem eine bequeme Alternative zur Verteilung über öffentliche App Stores dar. Entwickler können ihren Verteilungsworkflow mit App Center Build und der Integration in öffentliche App Stores noch weiter automatisieren.
+[App Center Distribute](/appcenter/distribution/) ist ein Tool für Entwickler, um schnell Builds auf Geräten veröffentlichen zu können. Mit einer vollständigen Installationsportalumgebung ist App Center Distribute eine leistungsstarke Lösung für die Verteilung an Tester von Beta-Apps. Es stellt außerdem eine bequeme Alternative zur Verteilung über öffentliche App Stores dar. Entwickler können ihren Verteilungsworkflow mit App Center Build und der Integration in öffentliche App Stores noch weiter automatisieren.
 
 **Wichtige Features**
 - Verteilen Sie Ihre App an Betatester und Benutzer, und stellen Sie sicher, dass alle Tester die neueste Version Ihrer Anwendung haben.

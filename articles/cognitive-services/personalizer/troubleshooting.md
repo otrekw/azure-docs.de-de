@@ -4,12 +4,12 @@ description: Dieser Artikel enth채lt Antworten auf Fragen zur Behandlung von Pro
 ms.topic: troubleshooting
 ms.date: 02/26/2020
 ms.author: diberry
-ms.openlocfilehash: 39db920b663ace12f2fc6ca35f9082a791da1541
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: 904953f028eb31afe42cf477ac05be43e8b72a4d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228043"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336028"
 ---
 # <a name="personalizer-troubleshooting"></a>Troubleshooting f체r Personalizer
 
@@ -61,7 +61,7 @@ Wenn Sie sich nicht sicher sind, wie Ihre Lernschleife sich derzeit verh채lt, f�
 
 **Antwort:** Die Personalisierung gibt die gleichen Wahrscheinlichkeiten in einem Rang-API-Ergebnis zur체ck, wenn die API gerade gestartet wurde und mit einem _leeren_ Modell arbeitet. Dies ist auch der Fall, wenn Sie die Personalisierungsschleife zur체cksetzen und das Modell sich noch im Zeitraum **Aktualisierungsh채ufigkeit des Modells** befindet.
 
-Wenn ein neuer Aktualisierungszeitraum beginnt, wird das aktualisierte Modell verwenden, und Sie werden feststellen, dass sich die Wahrscheinlichkeiten 채ndern.
+Wenn ein neuer Aktualisierungszeitraum beginnt, wird das aktualisierte Modell verwendet, und Sie werden feststellen, dass sich die Wahrscheinlichkeiten 채ndern.
 
 </details>
 

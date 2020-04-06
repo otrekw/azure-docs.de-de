@@ -7,33 +7,32 @@ metadata:
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: f7105a4f0330c61ee10d8dee00d40ce17bc40188
-  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.openlocfilehash: 5fc9e045162c03585f20e0b06a01524480070050
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 02/22/2020
-  ms.locfileid: "77562781"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415358"
 landingContent:
-- title: Erste Schritte
+- title: Informationen zum Speech Devices SDK
   linkLists:
   - linkListType: overview
     links:
-    - text: Informationen zum Speech-Geräte-SDK
+    - text: Was ist das Speech Devices SDK?
       url: speech-devices-sdk.md
   - linkListType: quickstart
     links:
-    - text: Verwenden des Speech-Geräte-SDKs (Windows)
+    - text: Verwenden des Speech Devices SDK (Windows)
       url: speech-devices-sdk-quickstart.md?pivots=platform-windows
-    - text: Verwenden des Speech-Geräte-SDKs (Linux)
+    - text: Verwenden des Speech Devices SDK (Linux)
       url: speech-devices-sdk-quickstart.md?pivots=platform-linux
-    - text: Verwenden des Speech-Geräte-SDKs (Android)
+    - text: Verwenden des Speech Devices SDK (Android)
       url: speech-devices-sdk-quickstart.md?pivots=platform-android
-- title: Ausführliche Leitfäden
+- title: Entwickeln mit dem Speech Devices SDK
   linkLists:
   - linkListType: how-to-guide
     links:

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Azure Resource Manager-Bereitstellungsvorgän
 tags: top-support-issue
 ms.topic: conceptual
 ms.date: 11/26/2019
-ms.openlocfilehash: 753071a3edca62690b772f7b8d34fec43641466f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b0f196f86bed05094b04bfc20c7cef2248a91c65
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75474332"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460295"
 ---
 # <a name="view-deployment-history-with-azure-resource-manager"></a>Anzeigen des Bereitstellungsverlaufs mit Azure Resource Manager
 
@@ -21,7 +21,7 @@ Unterstützung beim Beheben bestimmter Bereitstellungsfehler finden Sie unter [B
 
 Sie können Details zu einer Bereitstellung über das Azure-Portal, die PowerShell, die Azure CLI oder die REST-API anzeigen. Jede Bereitstellung verfügt über eine Korrelations-ID, die zum Nachverfolgen verwandter Ereignisse verwendet wird. Sie kann hilfreich sein, wenn Sie bei der Behandlung von Problemen mit einer Bereitstellung mit dem technischen Support zusammenarbeiten.
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Wählen Sie die zu untersuchende Ressourcengruppe aus.
 
@@ -33,11 +33,11 @@ Sie können Details zu einer Bereitstellung über das Azure-Portal, die PowerShe
 
    ![Auswählen der Bereitstellung](./media/deployment-history/select-details.png)
 
-1. Es wird eine Zusammenfassung der Bereitstellung angezeigt, einschließlich der Korrelations-ID. 
+1. Es wird eine Zusammenfassung der Bereitstellung angezeigt, einschließlich der Korrelations-ID.
 
     ![Zusammenfassung der Bereitstellungen](./media/deployment-history/show-correlation-id.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Um alle Bereitstellungen für eine Ressourcengruppe aufzulisten, verwenden Sie den Befehl [Get-AzResourceGroupDeployment](/powershell/module/az.resources/Get-AzResourceGroupDeployment).
 
@@ -57,29 +57,29 @@ Gehen Sie folgendermaßen vor, um die Korrelations-ID abzurufen:
 (Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment).CorrelationId
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Um die Bereitstellung für eine Ressourcengruppe aufzulisten, verwenden Sie [az group deployment list](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-list).
-
-```azurecli-interactive
-az group deployment list --resource-group ExampleGroup
-```
-
-Um eine bestimmte Bereitstellung abzurufen, verwenden Sie [az group deployment show](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-show) die Bereitstellung.
+Um die Bereitstellung für eine Ressourcengruppe aufzulisten, verwenden Sie [az deployment group list](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-list).
 
 ```azurecli-interactive
-az group deployment show --resource-group ExampleGroup --name ExampleDeployment
+az deployment group list --resource-group ExampleGroup
 ```
-  
+
+Um eine bestimmte Bereitstellung abzurufen, verwenden Sie [az deployment group show](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-show).
+
+```azurecli-interactive
+az deployment group show --resource-group ExampleGroup --name ExampleDeployment
+```
+
 Gehen Sie folgendermaßen vor, um die Korrelations-ID abzurufen:
 
 ```azurecli-interactive
-az group deployment show --resource-group ExampleGroup --name ExampleDeployment --query properties.correlationId
+az deployment group show --resource-group ExampleGroup --name ExampleDeployment --query properties.correlationId
 ```
 
-# <a name="httptabhttp"></a>[HTTP](#tab/http)
+# <a name="http"></a>[HTTP](#tab/http)
 
-Um die Bereitstellung für eine Ressourcengruppe aufzulisten, verwenden Sie den folgenden Vorgang. Informationen zur neuesten API-Versionsnummer, die in der Anforderung verwendet werden soll, finden Sie unter [Bereitstellungen – Liste nach Ressourcengruppe](/rest/api/resources/deployments/listbyresourcegroup). 
+Um die Bereitstellung für eine Ressourcengruppe aufzulisten, verwenden Sie den folgenden Vorgang. Informationen zur neuesten API-Versionsnummer, die in der Anforderung verwendet werden soll, finden Sie unter [Bereitstellungen – Liste nach Ressourcengruppe](/rest/api/resources/deployments/listbyresourcegroup).
 
 ```
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/?api-version={api-version}
@@ -113,7 +113,7 @@ Die Antwort enthält die Korrelations-ID.
 
 Jede Bereitstellung kann mehrere Vorgänge umfassen. Um weiter Informationen zu einer Bereitstellung anzuzeigen, zeigen Sie die Bereitstellungsvorgänge an. Beim Fehlschlagen einer Bereitstellung enthalten die Bereitstellungsvorgänge eine Fehlermeldung.
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Wählen Sie in der Zusammenfassung für eine Bereitstellung **Vorgangsdetails** aus.
 
@@ -123,7 +123,7 @@ Jede Bereitstellung kann mehrere Vorgänge umfassen. Um weiter Informationen zu 
 
     ![Anzeigen von Vorgangsdetails](./media/deployment-history/see-operation-details.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Verwenden Sie zum Anzeigen der Bereitstellungsvorgänge für die Bereitstellung in einer Ressourcengruppe den Befehl [Get-AzResourceGroupDeploymentOperation](/powershell/module/az.resources/get-azdeploymentoperation).
 
@@ -143,27 +143,27 @@ Verwenden Sie den folgenden Befehl, um die Statusmeldung für einen fehlerhaften
 ((Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy ).Properties | Where-Object ProvisioningState -eq Failed).StatusMessage.error
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Verwenden Sie zum Anzeigen der Bereitstellungsvorgänge für die Bereitstellung in einer Ressourcengruppe den Befehl [az group deployment operation list](/cli/azure/group/deployment/operation?view=azure-cli-latest#az-group-deployment-operation-list).
+Verwenden Sie zum Anzeigen der Bereitstellungsvorgänge für die Bereitstellung in einer Ressourcengruppe den Befehl [az deployment group operation list](/cli/azure/group/deployment/operation?view=azure-cli-latest#az-deployment-group-operation-list).
 
 ```azurecli-interactive
-az group deployment operation list --resource-group ExampleGroup --name ExampleDeployment
+az deployment group operation list --resource-group ExampleGroup --name ExampleDeployment
 ```
 
 Zum Anzeigen fehlerhafter Vorgänge filtern Sie Vorgänge mit dem Zustand **Fehler**.
 
 ```azurecli-interactive
-az group deployment operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed']"
+az deployment group operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed']"
 ```
 
 Verwenden Sie den folgenden Befehl, um die Statusmeldung für einen fehlerhaften Vorgang abzurufen:
 
 ```azurecli-interactive
-az group deployment operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
+az deployment group operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
 ```
 
-# <a name="httptabhttp"></a>[HTTP](#tab/http)
+# <a name="http"></a>[HTTP](#tab/http)
 
 Um Bereitstellungsvorgänge abzurufen, verwenden Sie den folgenden Vorgang. Informationen zur neuesten API-Versionsnummer, die in der Anforderung verwendet werden soll, finden Sie unter [Bereitstellungsvorgänge – Auflisten](/rest/api/resources/deploymentoperations/list).
 

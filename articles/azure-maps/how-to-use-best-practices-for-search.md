@@ -1,19 +1,19 @@
 ---
-title: Effizientes Suchen mit dem Suchdienst von Azure Maps | Microsoft Azure Maps
-description: Erfahren Sie, wie Sie mit Microsoft Azure Maps bewährte Methoden für den Suchdienst anwenden.
-author: farah-alyasari
-ms.author: v-faalya
+title: Bewährte Methoden für den Azure Maps-Suchdienst | Microsoft Azure Maps
+description: Erfahren Sie, wie Sie beim Nutzen des Suchdiensts von Microsoft Azure Maps bewährte Methoden verwenden.
+author: philmea
+ms.author: philmea
 ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 82e0339e02fa2fb27e7b2ca24f65934e3ce4fe23
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 8d62d7d278323baa0ae49b9e12f46468efb067a0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209799"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335305"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Bewährte Methoden für den Suchdienst von Azure Maps
 
@@ -69,12 +69,12 @@ Es wird empfohlen, die Azure Maps-API für die [Fuzzysuche](https://docs.microso
 
 * Verwenden Sie den Parameter `idxSet`, um den genauen Satz von Ergebnistypen zu priorisieren. Um einen genauen Satz von Ergebnissen zu priorisieren, können Sie eine durch Trennzeichen getrennte Liste von Indizes übermitteln. In der Liste spielt die Reihenfolge der Elemente keine Rolle. Azure Maps unterstützt die folgenden Indizes:
 
-    * `Addr` - **Adressbereiche**: Adresspunkte, die über Anfang und Ende der Straße interpoliert werden. Diese Punkte werden als Adressbereiche dargestellt.
-    * `Geo` - **Geografische Regionen:** Administrative Aufteilung von Land. Eine Geografie kann z. B. ein Land, ein Bundesstaat oder eine Stadt sein.
-    * `PAD` - **Punktadressen**: Adressen, die einen Straßennamen und eine Nummer enthalten. Punktadressen können in einem Index gefunden werden. Ein Beispiel ist *Soquel Dr 2501*. Eine Punktadresse bietet den höchsten Grad an Genauigkeit, der für Adressen verfügbar ist.  
-    * `POI` - **Points of Interest**: Punkte auf einer Karte, die als beachtenswert angesehen werden oder die interessant sein könnten. Die [Suchadressen-API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) gibt keine Points of Interest (POIs) zurück.  
-    * `Str` - **Straßen:** Straßen auf der Karte.
-    * `XStr` - **Querstraßen oder Kreuzungen**: Kreuzungen oder Orte, an denen sich zwei Straßen kreuzen.
+* `Addr` - **Adressbereiche**: Adresspunkte, die über Anfang und Ende der Straße interpoliert werden. Diese Punkte werden als Adressbereiche dargestellt.
+* `Geo` - **Geografische Regionen:** Administrative Aufteilung von Land. Eine Geografie kann z. B. ein Land, ein Bundesstaat oder eine Stadt sein.
+* `PAD` - **Punktadressen**: Adressen, die einen Straßennamen und eine Nummer enthalten. Punktadressen können in einem Index gefunden werden. Ein Beispiel ist *Soquel Dr 2501*. Eine Punktadresse bietet den höchsten Grad an Genauigkeit, der für Adressen verfügbar ist.  
+* `POI` - **Points of Interest**: Punkte auf einer Karte, die als beachtenswert angesehen werden oder die interessant sein könnten. Die [Suchadressen-API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) gibt keine Points of Interest (POIs) zurück.  
+* `Str` - **Straßen:** Straßen auf der Karte.
+* `XStr` - **Querstraßen oder Kreuzungen**: Kreuzungen oder Orte, an denen sich zwei Straßen kreuzen.
 
 
 #### <a name="usage-examples"></a>Anwendungsbeispiele
@@ -114,7 +114,6 @@ https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscrip
                 "municipality": "Redmond",
                 "country": "United States",
                 "countryCodeISO3": "USA",
-                },
                 "countrySubdivisionName": "Washington"
             },
             "position": "47.639454,-122.130455",
@@ -490,7 +489,6 @@ Um die Relevanz der Ergebnisse und der Informationen in der Antwort zu verbesser
 In einer Anforderung können Sie eine durch Trennzeichen getrennte Liste von Markennamen übermitteln. Schränken Sie die Ergebnisse mithilfe der Liste auf bestimmte Marken ein, indem Sie den Parameter `brandSet` festlegen. In Ihrer Liste spielt die Reihenfolge der Elemente keine Rolle. Wenn Sie mehrere Markenlisten bereitstellen, müssen die zurückgegebenen Ergebnisse zu mindestens einer Ihrer Listen gehören.
 
 Um die Markensuche zu untersuchen, fordern wir eine [POI-Kategoriensuche](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) an. Im folgenden Beispiel suchen wir nach Tankstellen in der Nähe des Microsoft-Campus in Redmond, Washington. Die Antwort zeigt Markeninformationen für jeden zurückgegebenen POI.
-
 
 #### <a name="sample-query"></a>Beispielabfrage
 
@@ -969,5 +967,10 @@ Antworten für die [Suchadressen](https://docs.microsoft.com/rest/api/maps/searc
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, [wie Sie Suchanforderungen für die Azure Maps-Suche erstellen](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address).
-* Machen Sie sich mit der [API-Dokumentation zum Suchdienst](https://docs.microsoft.com/rest/api/maps/search) von Azure Maps vertraut. 
+Weitere Informationen finden Sie unter:
+
+> [!div class="nextstepaction"]
+> [Erstellen von Anforderungen an den Azure Maps-Suchdienst](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)
+
+> [!div class="nextstepaction"]
+> [Dokumentation der Suchdienst-API](https://docs.microsoft.com/rest/api/maps/search)

@@ -1,6 +1,6 @@
 ---
 title: 'Azure Web Application Firewall: häufig gestellte Fragen'
-description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Web Application Firewall in Azure Front Door Service.
+description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Web Application Firewall in Azure Front Door.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2019
 ms.author: victorh
-ms.openlocfilehash: 263f929fa010450fcfb35b8db74f94cd6fd7dc84
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c40210f3a6f0fb10be1f20deef87b2acfa076a4c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511619"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460635"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Häufig gestellte Fragen zu Azure Web Application Firewall in Azure Front Door Service
 
@@ -23,15 +23,15 @@ In diesem Artikel werden allgemeine Fragen zu den Features und Funktionen von Az
 
 Azure WAF ist eine Web Application Firewall, die dazu beiträgt, Ihre Webanwendungen vor allgemeinen Bedrohungen wie Einschleusung von SQL-Befehlen, Cross-Site Scripting und anderen Web-Exploits zu schützen. Sie können eine WAF-Richtlinie mit einer Kombination aus benutzerdefinierten und verwalteten Regeln definieren, um den Zugriff auf Ihre Webanwendungen zu steuern.
 
-Eine Azure WAF-Richtlinie kann auf Webanwendungen angewendet werden, die in Application Gateway- oder Azure Front Door-Diensten gehostet werden.
+Eine Azure WAF-Richtlinie kann auf Webanwendungen angewendet werden, die in Application Gateway oder Azure Front Door gehostet werden.
 
-## <a name="what-is-waf-on-azure-front-door-service"></a>Was ist WAF für Azure Front Door Service? 
+## <a name="what-is-waf-on-azure-front-door"></a>Was ist WAF in Azure Front Door? 
 
 Azure Front Door Service ist ein hochgradig skalierbares, global verteiltes APN (Application Delivery Network) und CDN (Content Delivery Network). Nach der Integration in Front Door unterbindet Azure WAF Denial-of-Service-Angriffe und gezielte Anwendungsangriffe im Edgebereich nahe der Angriffsquelle, bevor Angreifer in Ihr virtuelles Netzwerk eindringen, und bietet Schutz ohne Leistungseinbußen.
 
 ## <a name="does-azure-waf-support-https"></a>Wird HTTPS von Azure WAF unterstützt?
 
-Front Door Service bietet SSL-Abladung. WAF ist nativ in Front Door integriert und kann Anforderungen nach ihrer Entschlüsselung untersuchen.
+Front Door bietet SSL-Abladung. WAF ist nativ in Front Door integriert und kann Anforderungen nach ihrer Entschlüsselung untersuchen.
 
 ## <a name="does-azure-waf-support-ipv6"></a>Wird IPv6 von Azure WAF unterstützt?
 
@@ -47,7 +47,7 @@ Das globale Bereitstellen einer WAF-Richtlinie dauert in der Regel etwa fünf Mi
 
 ## <a name="can-waf-policies-be-different-for-different-regions"></a>Können für verschiedene Regionen unterschiedliche WAF-Richtlinien verwendet werden?
 
-Wenn WAF in Front Door Service integriert wird, ist WAF eine globale Ressource. Die gleiche Konfiguration gilt also für alle Front Door-Standorte.
+Wenn WAF in Front Door integriert wird, ist WAF eine globale Ressource. Die gleiche Konfiguration gilt also für alle Front Door-Standorte.
  
 ## <a name="how-do-i-limit-access-to-my-back-end-to-be-from-front-door-only"></a>Wie kann ich den Zugriff auf mein Back-End allein auf Zugriffe über Front Door beschränken?
 

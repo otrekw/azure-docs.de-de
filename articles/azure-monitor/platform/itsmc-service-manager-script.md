@@ -1,17 +1,17 @@
 ---
-title: Automatisiertes Skript zum Erstellen einer Service Manager-Web-App zum Herstellen einer Verbindung mit dem ITSM-Connector in Azure | Microsoft-Dokumentation
+title: Erstellen einer Web-App für den Dienstverwaltungsconnector
 description: Erstellen Sie mithilfe eines automatisierten Skripts eine Service Manager-Web-App, um eine Verbindung mit dem ITSM-Connector in Azure herzustellen und die ITSM-Arbeitselemente zentral zu überwachen und zu verwalten.
 ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: f224e58905e2989caf16259e383726595c0206d5
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: decb674c2b55b93a81169c540ee04713bdf2799e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672190"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80054856"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Erstellen einer Service Manager-Web-App mithilfe des automatisierten Skripts
 
@@ -21,7 +21,7 @@ Führen Sie das Skript nach Bereitstellung der folgenden erforderlichen Details 
 
 - Details zum Azure-Abonnement
 - Ressourcengruppenname
-- Location
+- Position
 - Details zum Service Manager-Server (Servername, Domäne, Benutzername und Kennwort)
 - Präfix des Namens der Website für Ihre Web-App
 - Service Bus-Namespace.

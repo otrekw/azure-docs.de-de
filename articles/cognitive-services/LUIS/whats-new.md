@@ -3,18 +3,22 @@ title: Neuigkeiten – Language Understanding (LUIS)
 description: Dieser Artikel wird regelmäßig mit Neuigkeiten über die Language Understanding-API von Azure Cognitive Services aktualisiert.
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 716860b54e7d8e75984c0365cac61d14153c09ff
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 562f7f8b4974363daab91991e6a8219b352432fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137804"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156003"
 ---
 # <a name="whats-new-in-language-understanding"></a>Neuerungen in Language Understanding
 
 Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versionshinweise, Videos, Blogbeiträge und andere Informationen handeln. Legen Sie ein Lesezeichen für diese Seite an, um über den Dienst auf dem Laufenden zu bleiben.
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="march-2020"></a>März 2020
+
+* TLS 1.2 wird nun für alle HTTP-Anforderungen erzwungen, die an diesen Dienst gerichtet werden. Weitere Informationen finden Sie unter [Sicherheit von Azure Cognitive Services](../cognitive-services-security.md).
 
 ### <a name="november-4-2019---ignite"></a>4\. November 2019 – Ignite
 

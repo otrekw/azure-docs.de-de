@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/29/2019
-ms.openlocfilehash: 3a4d31cb6986f8fc841a6afe20388e40e9f28c9b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0557c9b9eb65654c4a11c1389ace4776ab60a61d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926671"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79532569"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Erstellen einer Triggerabhängigkeit für ein rollierendes Fenster
 
@@ -146,6 +146,10 @@ Ein täglicher Auftrag zur Verarbeitung von Telemetriedaten, der von einem ander
 Ein täglicher Auftrag ohne Lücken in den Ausgabedatenströmen des Auftrags:
 
 ![Beispiel für Selbstabhängigkeit](media/tumbling-window-trigger-dependency/tumbling-window-dependency06.png "Beispiel für Selbstabhängigkeit")
+
+Das folgende Video zeigt die Erstellung abhängiger Pipelines in Ihrer Azure Data Factory-Instanz mit einem Trigger für ein rollierendes Fenster:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Create-dependent-pipelines-in-your-Azure-Data-Factory/player]
 
 ## <a name="monitor-dependencies"></a>Überwachen von Abhängigkeiten
 

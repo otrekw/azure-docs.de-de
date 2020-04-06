@@ -1,6 +1,6 @@
 ---
 title: Partner für lokale Encoder werden – Azure Media Services
-description: Werden Sie ein Partner für lokale Encoder mit Azure Media Services.
+description: In diesem Artikel wird erläutert, wie Sie Ihre lokalen Livestreamingencoder überprüfen.
 services: media-services
 author: johndeu
 manager: johndeu
@@ -8,18 +8,20 @@ ms.author: johndeu
 ms.date: 03/02/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 6b00e430f960195e1badd2a73f9291997b94c833
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: f98d9942f8c30f06b0144503b056c1e8a393ae52
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78253147"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79298630"
 ---
-# <a name="become-an-on-premises-encoder-partner"></a>Partner für lokale Encoder werden
+# <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>Überprüfen der lokalen Livestreamingencoder
 
 Wenn Sie Azure Media Services-Partner für lokale Encoder werden, unterstützt Media Services Ihr Produkt, indem es Ihren Encoder Unternehmenskunden empfiehlt. Um Partner für lokale Encoder zu werden, müssen Sie die Kompatibilität Ihres lokalen Encoders mit Media Services bestätigen. Führen Sie hierzu die folgenden Überprüfungsschritte aus.
 
-### <a name="pass-through-live-event-verification"></a>Überprüfung von Pass-Through-Liveereignissen
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="pass-through-live-event-verification"></a>Überprüfung von Pass-Through-Liveereignissen
 
 1. Vergewissern Sie sich in Ihrem Media Services-Konto, dass der **Streamingendpunkt** ausgeführt wird. 
 2. Erstellen und starten Sie das **Pass-Through**-Liveereignis. <br/> Weitere Informationen finden Sie im Abschnitt [LiveEvent-Zustandswerte und Abrechnung](live-event-states-billing.md).
@@ -38,7 +40,7 @@ Wenn Sie Azure Media Services-Partner für lokale Encoder werden, unterstützt M
 15. Setzen Sie den Status des Liveereignisses nach dem Erstellen der einzelnen Stichproben zurück.
 16. Wiederholen Sie die Schritte 5 bis 15 für alle Konfigurationen, die von Ihrem Encoder unterstützt werden (mit und ohne Werbesignalisierung oder Untertiteln sowie in verschiedenen Codiergeschwindigkeiten).
 
-### <a name="live-encoding-live-event-verification"></a>Überprüfung von Liveereignissen mit Livecodierung
+## <a name="live-encoding-live-event-verification"></a>Überprüfung von Liveereignissen mit Livecodierung
 
 1. Vergewissern Sie sich in Ihrem Media Services-Konto, dass der **Streamingendpunkt** ausgeführt wird. 
 2. Erstellen und starten Sie ein **Livecodierungs**-Liveereignis. <br/> Weitere Informationen finden Sie im Abschnitt [LiveEvent-Zustandswerte und Abrechnung](live-event-states-billing.md).
@@ -57,17 +59,17 @@ Wenn Sie Azure Media Services-Partner für lokale Encoder werden, unterstützt M
 15. Setzen Sie den Status des Liveereignisses nach dem Erstellen der einzelnen Stichproben zurück.
 16. Wiederholen Sie die Schritte 5 bis 15 für alle Konfigurationen, die von Ihrem Encoder unterstützt werden (mit und ohne Werbesignalisierung oder Untertiteln sowie in verschiedenen Codiergeschwindigkeiten).
 
-### <a name="longevity-verification"></a>Überprüfung der Lebensdauer
+## <a name="longevity-verification"></a>Überprüfung der Lebensdauer
 
 Fügen Sie die gleichen Schritte wie bei der [Überprüfung von Pass-Through-Liveereignissen](#pass-through-live-event-verification) mit Ausnahme von Schritt 11 aus. <br/>Lassen Sie Ihren Liveencoder statt für 10 Minuten mindestens eine Woche lang laufen. Verwenden Sie einen Player wie [Azure Media Player](https://aka.ms/azuremediaplayer), um das Livestreaming (oder ein archiviertes Medienobjekt) von Zeit zu Zeit zu beobachten, um sicherzustellen, dass die Wiedergabe keine sichtbaren Störungen aufweist.
 
-### <a name="email-your-recorded-settings"></a>Senden Ihrer aufgezeichneten Einstellungen per E-Mail
+## <a name="email-your-recorded-settings"></a>Senden Ihrer aufgezeichneten Einstellungen per E-Mail
 
 Senden Sie schließlich eine E-Mail mit Ihren aufgezeichneten Einstellungen und Livearchivparametern als Benachrichtigung darüber, dass alle automatischen Überprüfungen bestanden wurden, unter amshelp@microsoft.com an Azure Media Services. Schließen Sie auch Ihre Kontaktinformationen für nachfolgende Kontaktaufnahmen ein. Setzen Sie sich bei Fragen zu dieser Vorgehensweise mit dem Azure Media Services-Team in Verbindung.
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[Empfohlene lokale Liveencoder](recommended-on-premises-live-encoders.md)
+[Getestete lokale Encoder](recommended-on-premises-live-encoders.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

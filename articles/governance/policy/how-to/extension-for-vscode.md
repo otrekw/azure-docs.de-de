@@ -1,14 +1,14 @@
 ---
 title: Azure Policy-Erweiterung für Visual Studio Code
 description: Erfahren Sie, wie Sie die Azure Policy-Erweiterung für Visual Studio Code zum Suchen nach Resource Manager-Aliasen verwenden.
-ms.date: 11/04/2019
+ms.date: 03/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 48ef098cf970b5128185c40c92f8bb02ad8d9698
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 0e9123f2975bda0d61e9d6e9bf894ecd359e6c5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873113"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231222"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Verwenden der Azure Policy-Erweiterung für Visual Studio Code
 
@@ -23,10 +23,10 @@ Die Azure Policy-Erweiterung für Visual Studio Code kann auf allen Plattformen 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für die Schritte in diesem Artikel ist Folgendes erforderlich:
+Die folgenden Elemente sind zum Ausführen der Schritte in diesem Artikel erforderlich:
 
 - Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-- [Visual Studio Code](https://code.visualstudio.com).
+- [Visual Studio Code](https://code.visualstudio.com)
 
 ## <a name="install-azure-policy-extension"></a>Installieren der Azure Policy-Erweiterung
 
@@ -82,7 +82,7 @@ Bei der ersten Anmeldung werden nur die Ressourcen und Richtlinien des Standarda
 
    - Befehlspalette: 
 
-     Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette**, und geben Sie **Azure Policy: Abonnements auswählen** ein.
+     Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette**, und geben Sie **Azure: Abonnements auswählen** ein.
 
    - Fensterfußzeile
 

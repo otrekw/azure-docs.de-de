@@ -1,5 +1,6 @@
 ---
 title: Vorläufiges Löschen in Azure Key Vault | Microsoft Docs
+description: Die Funktion für vorläufiges Löschen in Azure Key Vault ermöglicht Ihnen die Wiederherstellung gelöschter Schlüsseltresore und Schlüsseltresorobjekte, z. B. Schlüssel, Geheimnisse und Zertifikate.
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
@@ -7,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 31d3556609737212ee1257015d12e9e0621ea4ee
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 9c72b2ea71da94215fc9193ffdf3906449ec5571
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78197384"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79457371"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen
 

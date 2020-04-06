@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.openlocfilehash: 17312840b0081056ad04723f2b2c241c47902021
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74667292"
 ---
 # <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-c"></a>Erstellen von Datenbank- und Tabellenrichtlinien für Azure Data Explorer mithilfe von C#
@@ -25,7 +25,7 @@ Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Un
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Visual Studio 2019: Falls Sie Visual Studio 2019 nicht besitzen, können Sie das *kostenlose* [Visual Studio Community 2019](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
+* Visual Studio 2019: Falls Sie Visual Studio 2019 nicht besitzen, können Sie die *kostenlose* Edition [Visual Studio Community 2019](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
 * Ein Azure-Abonnement. Wenn erforderlich, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 * [Ein Testcluster und eine Testdatenbank](create-cluster-database-csharp.md)
 * [Eine Testtabelle](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
@@ -36,7 +36,7 @@ Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Un
 * Installieren Sie das [NuGet-Paket Microsoft.Azure.Kusto.Data.NETStandard](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard/). (Optional, zum Ändern von Tabellenrichtlinien.)
 * Installieren Sie das [NuGet-Paket Microsoft.IdentityModel.Clients.ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) für die Authentifizierung.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Authentifizierung
 Um die Beispiele in diesem Artikel ausführen zu können, benötigen Sie eine Azure Active Directory-Anwendung (Azure AD) und einen Dienstprinzipal, der auf Ressourcen zugreifen kann. Sie können dieselbe Azure AD-Anwendung für die Authentifizierung aus einem [Testcluster und einer Datenbank](create-cluster-database-csharp.md#authentication) verwenden. Wenn Sie eine andere Azure AD Anwendung verwenden möchten, finden Sie weitere Informationen unter [Erstellen einer Azure AD-Anwendung](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal), um eine kostenlose Azure AD-Anwendung zu erstellen und die Rollenzuweisung im Abonnementbereich hinzuzufügen. Dieser Artikel zeigt außerdem, wie Sie die Angaben `Directory (tenant) ID`, `Application ID` und `Client secret` abrufen. Möglicherweise müssen Sie die neue Azure AD-Anwendung als Prinzipal in der Datenbank hinzufügen. Weitere Informationen finden Sie unter [Verwalten der Berechtigungen für Datenbanken in Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions).
 
 ## <a name="alter-database-retention-policy"></a>Ändern der Aufbewahrungsrichtlinie für die Datenbank

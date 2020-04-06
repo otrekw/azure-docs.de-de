@@ -2,13 +2,13 @@
 title: 'Vorschläge für aktives Lernen: QnA Maker'
 description: Durch Vorschläge für aktives Lernen lässt sich die Qualität Ihrer Wissensdatenbank verbessern, indem auf der Grundlage von Benutzerbeiträgen alternative Fragen zu Ihrem Frage-Antwort-Paar vorgeschlagen werden.
 ms.topic: conceptual
-ms.date: 02/27/2020
-ms.openlocfilehash: 56f3ab870e148c39912d4f1f5e6e7133a5df4a98
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.date: 03/19/2020
+ms.openlocfilehash: af4f6b399bfd537b38ea741d03e59371ee81e588
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921651"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80053139"
 ---
 # <a name="active-learning-suggestions"></a>Vorschläge für aktives Lernen
 
@@ -32,6 +32,13 @@ Aktives Lernen wird basierend auf den Bewertungen der relevantesten Antworten au
 Das Feature für aktives Lernen liefert die bestmöglichen Vorschläge in Fällen, in denen die Endpunkte eine angemessene Anzahl und Vielfalt von Nutzungsabfragen erhalten. Wenn mindestens 5 ähnliche Abfragen gruppiert werden, sendet QnA Maker alle 30 Minuten die benutzerbasierten Fragen als Vorschläge an den Entwickler der Wissensdatenbank, um diese zu akzeptieren oder abzulehnen. Alle Vorschläge werden nach Ähnlichkeit gruppiert, und die besten Vorschläge für alternative Fragen werden basierend auf der Häufigkeit der jeweiligen Abfragen von Endbenutzern angezeigt.
 
 Sobald Fragen im QnA Maker-Portal vorgeschlagen werden, müssen Sie diese überprüfen und akzeptieren oder ablehnen. Es gibt keine API zum Verwalten von Vorschlägen.
+
+## <a name="turn-on-active-learning"></a>Aktivieren des Features für aktives Lernen
+
+Das Feature für aktives Lernen ist standardmäßig **deaktiviert**.
+So verwenden Sie aktives Lernen:
+* Sie müssen [aktives Lernen aktivieren](../How-To/use-active-learning.md#turn-on-active-learning-for-alternate-questions), damit QnA Maker alternative Fragen für Ihre Wissensdatenbank sammelt.
+* Verwenden Sie zum Anzeigen der vorgeschlagenen alternativen Fragen die [Anzeigeoptionen](../How-To/improve-knowledge-base.md#view-suggested-questions) auf der Seite „Bearbeiten“.
 
 ## <a name="how-qna-makers-implicit-feedback-works"></a>Funktionsweise des impliziten Feedbacks von QnA Maker
 

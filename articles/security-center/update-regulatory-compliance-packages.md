@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: cfa39799e44cee0a2d36efccd454ccf8ca15157f
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 4080825bbb1f6c274f5b5aafd28e8c672148b98f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603226"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159284"
 ---
 # <a name="update-to-dynamic-compliance-packages-in-your-regulatory-compliance-dashboard-preview"></a>Aktualisieren auf dynamische Compliancepakete in Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen (Vorschau)
 
@@ -51,6 +51,9 @@ In den folgenden Schritten wird erläutert, wie Sie das dynamische Paket zum Üb
 
 1. Klicken Sie optional auf **Weitere Standards hinzufügen**, um die Seite **Standards zur Einhaltung gesetzlicher Bestimmungen hinzufügen** zu öffnen. Dort können Sie manuell nach **Azure CIS 1.1.0 (neu)** und dynamischen Paketen für andere Compliancestandards wie **NIST SP 800-53 R4**, **SWIFT CSP CSCF-v2020**, **UKO und UK NHS** und **Canada PBMM** suchen.
     
+    > [!TIP]
+    > Nur Benutzer, die Besitzer oder Mitwirkende an Richtlinien sind, haben die erforderlichen Berechtigungen zum Hinzufügen von Compliancestandards. 
+
     ![Hinzufügen von Compliancepaketen zum Dashboard für die Einhaltung gesetzlicher Bestimmungen in Azure Security Center](./media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-additional-standards.png)
 
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: e3e8476d09541518d964bfaff4dabad47755eeb9
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 3f15033095b02dd35c2d8d7bda60ca184df64c9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77189646"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475018"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Datengesteuerte Formatvorlagenausdrücke (Web SDK)
 
@@ -41,7 +41,7 @@ Ausdrücke werden als JSON-Arrays dargestellt. Das erste Element eines Ausdrucks
 
 Das Azure Maps Web SDK unterstützt viele Typen von Ausdrücken. Ausdrücke können eigenständig oder in Kombination mit anderen Ausdrücken verwendet werden.
 
-| Art der Ausdrücke | Beschreibung |
+| Art der Ausdrücke | BESCHREIBUNG |
 |---------------------|-------------|
 | [Aggregatausdruck](#aggregate-expression) | Ein Ausdruck zum Definieren einer Berechnung, die über ein Dataset verarbeitet wird und mit der Option `clusterProperties` von `DataSource` verwendet werden kann. |
 | [Boolesche Ausdrücke](#boolean-expressions) | Bei booleschen Ausdrücken werden Ausdrücke mit booleschen Operatoren bereitgestellt, um boolesche Vergleiche auszuwerten. |
@@ -84,13 +84,15 @@ Mit Datenausdrücken wird der Zugriff auf die Eigenschaftsdaten in einem Feature
 | Ausdruck | Rückgabetyp | BESCHREIBUNG |
 |------------|-------------|-------------|
 | `['at', number, array]` | Objekt (object) | Ruft ein Element aus einem Array ab. |
-| `['geometry-type']` | string | Ruft den Geometrietyp des Features ab: Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon. |
+| `['geometry-type']` | Zeichenfolge | Ruft den Geometrietyp des Features ab: Point, MultiPoint, LineString, MultiLineString, Polygon, MultiPolygon. |
 | `['get', string]` | value | Ruft den Eigenschaftswert aus den Eigenschaften des aktuellen Features ab. Gibt null zurück, wenn die angeforderte Eigenschaft fehlt. |
 | `['get', string, object]` | value | Ruft den Eigenschaftswert aus den Eigenschaften des angegebenen Objekts ab. Gibt null zurück, wenn die angeforderte Eigenschaft fehlt. |
 | `['has', string]` | boolean | Ermittelt, ob die Eigenschaften eines Features über die angegebene Eigenschaft verfügen. |
 | `['has', string, object]` | boolean | Ermittelt, ob die Eigenschaften des Objekts über die angegebene Eigenschaft verfügen. |
 | `['id']` | value | Ruft die ID des Features ab, falls eine vorhanden ist. |
 | `['length', string | array]` | number | Ruft die Länge einer Zeichenfolge oder eines Arrays ab. |
+| `['in', boolean | string | number, array]` | boolean | Bestimmt, ob ein Element in einem Array vorhanden ist |
+| `['in', substring, string]` | boolean | Bestimmt, ob eine Teilzeichenfolge in einer Zeichenfolge vorhanden ist |
 
 **Beispiele**
 
@@ -139,7 +141,7 @@ Auf ähnliche Weise wird die Kontur von Polygonen auf Linienebenen gerendert. F�
 
 Bei mathematischen Ausdrücken werden mathematische Operatoren bereitgestellt, um datengesteuerte Berechnungen innerhalb des Ausdrucksframeworks durchzuführen.
 
-| Ausdruck | Rückgabetyp | Beschreibung |
+| Ausdruck | Rückgabetyp | BESCHREIBUNG |
 |------------|-------------|-------------|
 | `['+', number, number, …]` | number | Berechnet die Summe der angegebenen Zahlen. |
 | `['-', number]` | number | Subtrahiert von 0 die angegebene Zahl. |
@@ -400,12 +402,12 @@ Bei Typenausdrücken werden Tools zum Testen und Konvertieren unterschiedlicher 
 | Ausdruck | Rückgabetyp | BESCHREIBUNG |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | array \| object | Gibt einen Literalarray- oder Objektwert zurück. Verwenden Sie diesen Ausdruck, um zu verhindern, dass ein Array oder ein Objekt als Ausdruck ausgewertet wird. Dies ist erforderlich, wenn ein Array oder Objekt von einem Ausdruck zurückgegeben werden muss. |
-| `['image', string]` | string | Prüft, ob eine angegebene Image-ID in das Kartenbildsprite geladen wird. Wenn dies der Fall ist, wird die ID zurückgegeben, andernfalls wird NULL zurückgegeben. |
+| `['image', string]` | Zeichenfolge | Prüft, ob eine angegebene Image-ID in das Kartenbildsprite geladen wird. Wenn dies der Fall ist, wird die ID zurückgegeben, andernfalls wird NULL zurückgegeben. |
 | `['to-boolean', value]` | boolean | Konvertiert den Eingabewert in einen booleschen Wert. Das Ergebnis ist `false`, wenn die Eingabe eine leere Zeichenfolge ist oder `0`, `false`, `null` oder `NaN` lautet. Andernfalls lautet das Ergebnis `true`. |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | Konvertiert den Eingabewert in eine Farbe. Falls mehrere Werte bereitgestellt werden, werden sie der Reihe nach einzeln ausgewertet, bis die erste erfolgreiche Konvertierung erfolgt ist. Wenn keine der Eingaben konvertiert werden kann, ergibt sich für den Ausdruck ein Fehler. |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | number | Konvertiert den Eingabewert in eine Zahl, falls dies möglich ist. Wenn die Eingabe `null` oder `false` lautet, ist das Ergebnis 0. Wenn die Eingabe `true` lautet, ist das Ergebnis 1. Wenn die Eingabe eine Zeichenfolge ist, wird sie mit der Zeichenfolgenfunktion [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) der ECMAScript-Sprachspezifikation in eine Zahl konvertiert. Falls mehrere Werte bereitgestellt werden, werden sie der Reihe nach einzeln ausgewertet, bis die erste erfolgreiche Konvertierung erfolgt ist. Wenn keine der Eingaben konvertiert werden kann, ergibt sich für den Ausdruck ein Fehler. |
-| `['to-string', value]` | string | Konvertiert den Eingabewert in eine Zeichenfolge. Wenn die Eingabe `null` lautet, ist das Ergebnis `""`. Wenn die Eingabe ein boolescher Wert ist, ist das Ergebnis `"true"` oder `"false"`. Wenn die Eingabe eine Zahl ist, wird sie mit der Zeichenfolgenfunktion [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) der ECMAScript-Sprachspezifikation in eine Zeichenfolge konvertiert. Wenn die Eingabe eine Farbe ist, wird sie in die CSS-RGBA-Farbzeichenfolge `"rgba(r,g,b,a)"` konvertiert. Andernfalls wird die Eingabe mit der [JSON.stringify](https://tc39.github.io/ecma262/#sec-json.stringify)-Funktion der ECMAScript-Sprachspezifikation in eine Zeichenfolge konvertiert. |
-| `['typeof', value]` | string | Gibt eine Zeichenfolge zurück, mit der der Typ des angegebenen Werts beschrieben wird. |
+| `['to-string', value]` | Zeichenfolge | Konvertiert den Eingabewert in eine Zeichenfolge. Wenn die Eingabe `null` lautet, ist das Ergebnis `""`. Wenn die Eingabe ein boolescher Wert ist, ist das Ergebnis `"true"` oder `"false"`. Wenn die Eingabe eine Zahl ist, wird sie mit der Zeichenfolgenfunktion [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) der ECMAScript-Sprachspezifikation in eine Zeichenfolge konvertiert. Wenn die Eingabe eine Farbe ist, wird sie in die CSS-RGBA-Farbzeichenfolge `"rgba(r,g,b,a)"` konvertiert. Andernfalls wird die Eingabe mit der [JSON.stringify](https://tc39.github.io/ecma262/#sec-json.stringify)-Funktion der ECMAScript-Sprachspezifikation in eine Zeichenfolge konvertiert. |
+| `['typeof', value]` | Zeichenfolge | Gibt eine Zeichenfolge zurück, mit der der Typ des angegebenen Werts beschrieben wird. |
 
 > [!TIP]
 > Wenn in der Browserkonsole eine Fehlermeldung wie `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` angezeigt wird, bedeutet dies Folgendes: Ihr Code enthält einen Ausdruck mit einem Array, das als ersten Wert keine Zeichenfolge aufweist. Wenn der Ausdruck ein Array zurückgeben soll, müssen Sie das Array mit dem `literal`-Ausdruck umschließen. Im folgenden Beispiel wird die `offset`-Symboloption einer Symbolebene festgelegt, wobei es sich um ein Array mit zwei Zahlen handeln muss. Es wird ein `match`-Ausdruck verwendet, um basierend auf dem Wert der `entityType`-Eigenschaft des Punktfeatures zwischen zwei Offsetwerten zu wählen.
@@ -463,9 +465,9 @@ Mit Zeichenfolgenoperator-Ausdrücken werden Konvertierungsvorgänge für Zeiche
 
 | Ausdruck | Rückgabetyp | BESCHREIBUNG |
 |------------|-------------|-------------|
-| `['concat', string, string, …]` | string | Verkettet mehrere Zeichenfolgen miteinander. Jeder Wert muss eine Zeichenfolge sein. Verwenden Sie den Typenausdruck `to-string`, um bei Bedarf andere Werttypen in eine Zeichenfolge zu konvertieren. |
-| `['downcase', string]` | string | Konvertiert die angegebene Zeichenfolge in Kleinbuchstaben. |
-| `['upcase', string]` | string | Konvertiert die angegebene Zeichenfolge in Großbuchstaben. |
+| `['concat', string, string, …]` | Zeichenfolge | Verkettet mehrere Zeichenfolgen miteinander. Jeder Wert muss eine Zeichenfolge sein. Verwenden Sie den Typenausdruck `to-string`, um bei Bedarf andere Werttypen in eine Zeichenfolge zu konvertieren. |
+| `['downcase', string]` | Zeichenfolge | Konvertiert die angegebene Zeichenfolge in Kleinbuchstaben. |
+| `['upcase', string]` | Zeichenfolge | Konvertiert die angegebene Zeichenfolge in Großbuchstaben. |
 
 **Beispiel**
 
@@ -790,6 +792,44 @@ Auf dieser Ebene wird das Punktfeature wie in der folgenden Abbildung gerendert:
 <center>
 
 ![Beispiel für Number Format-Ausdruck](media/how-to-expressions/number-format-expression.png) </center>
+
+### <a name="image-expression"></a>Bildausdruck
+
+Ein Bildausdruck kann mit den Optionen `image` und `textField` einer Symbolebene und der `fillPattern`-Option der Polygonebene verwendet werden. Dieser Ausdruck überprüft, ob das angeforderte Bild im Stil vorhanden ist und gibt entweder den aufgelösten Bildnamen oder `null` zurück, abhängig davon, ob das Bild aktuell im Stil vorhanden ist oder nicht. Dieser Überprüfungsprozess ist synchron und erfordert es, dass das Bild dem Stil hinzugefügt wurde, bevor es im Bildargument angefordert wurde.
+
+**Beispiel**
+
+Im folgenden Beispiel wird ein `image`-Ausdruck verwendet, um ein Symbol innerhalb einer Textzeile in einer Symbolebene hinzuzufügen. 
+
+```javascript
+ //Load the custom image icon into the map resources.
+map.imageSprite.add('wifi-icon', 'wifi.png').then(function () {
+
+    //Create a data source and add it to the map.
+    datasource = new atlas.source.DataSource();
+    map.sources.add(datasource);
+
+    //Create a point feature and add it to the data source.
+    datasource.add(new atlas.data.Point(map.getCamera().center));
+
+    //Add a layer for rendering point data as symbols.
+    map.layers.add(new atlas.layer.SymbolLayer(datasource, null, {
+        iconOptions: {
+            image: 'none'
+        },
+        textOptions: {
+            //Create a formatted text string that has an icon in it.
+            textField: ["format", 'Ricky\'s ', ["image", "wifi-icon"], ' Palace']
+        }
+    }));
+});
+```
+
+Diese Ebene rendert das Textfeld in der Symbolebene wie in der Abbildung unten dargestellt:
+
+<center>
+
+![Beispiel für einen Bildausdruck](media/how-to-expressions/image-expression.png)</center>
 
 ## <a name="zoom-expression"></a>Zoom-Ausdruck
 

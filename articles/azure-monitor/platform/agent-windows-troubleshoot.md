@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 78625707bfa296eeb7ad8cc658657f46da1dc495
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 4112555347ce1d718375fbab3f166c6f2f5deeaa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668790"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80333508"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Behandeln von Problemen mit dem Log Analytics-Agent für Windows 
 
@@ -60,11 +60,11 @@ Es gibt mehrere Möglichkeiten zur Überprüfung, ob der Agent erfolgreich mit A
 
 - Filtern Sie das *Operations Manager*-Ereignisprotokoll nach **Ereignisquellen** - *Integritätsdienstmodule*, *Integritätsdienst* und *Dienstconnector*, und filtern Sie nach der **Ereignisebene** *Warnung* und *Fehler*, um zu überprüfen, ob Ereignisse geschrieben wurden, die in der folgenden Tabelle aufgeführt sind. Wenn dies der Fall ist, sehen Sie sich die Lösungsschritte für jedes mögliche Ereignis an.
 
-    |Ereignis-ID |`Source` |Beschreibung |Lösung |
+    |Ereignis-ID |`Source` |BESCHREIBUNG |Lösung |
     |---------|-------|------------|-----------|
     |2133 und 2129 |Integritätsdienst |Fehler bei der Verbindung des Agents mit dem Dienst |Dieser Fehler kann auftreten, wenn der Agent nicht direkt oder über eine Firewall/einen Proxyserver mit dem Azure Monitor-Dienst kommunizieren kann. Überprüfen Sie die Proxyeinstellungen des Agents, und stellen Sie sicher, dass die Netzwerkfirewall/der Netzwerkproxy den TCP-Datenverkehr vom Computer zum Dienst zulässt.|
     |2138 |Integritätsdienstmodule |Proxy erfordert Authentifizierung |Konfigurieren Sie die Proxyeinstellungen des Agents, und geben Sie den erforderlichen Benutzernamen und das Kennwort für die Authentifizierung beim Proxyserver an. |
-    |2129 |Integritätsdienstmodule |Fehler bei der Verbindung/Fehler bei der SSL-Aushandlung |Überprüfen Sie die TCP/IP-Einstellungen des Netzwerkadapters und die Proxyeinstellungen des Agents.|
+    |2129 |Integritätsdienstmodule |Fehler bei der Verbindung/Fehler bei der TLS-Aushandlung |Überprüfen Sie die TCP/IP-Einstellungen des Netzwerkadapters und die Proxyeinstellungen des Agents.|
     |2127 |Integritätsdienstmodule |Fehler beim Senden von Daten mit Empfang eines Fehlercodes |Wenn dies im Laufe des Tages nur zeitweilig auftritt, kann es sich einfach um eine zufällige Anomalie handeln, die ignoriert werden kann. Überwachen Sie dieses Verhalten, um festzustellen, wie häufig dieser Fehler auftritt. Tritt er im Laufe des Tages häufig auf, überprüfen Sie zunächst Ihre Netzwerkkonfiguration und die Proxyeinstellungen. Wenn die Beschreibung HTTP-Fehlercode 404 enthält und der Agent zum ersten Mal versucht, Daten an den Dienst zu senden, ist ein Fehlercode 500 mit einem internen Fehlercode 404 enthalten. 404 bedeutet „nicht gefunden“ und gibt an, dass der Speicherbereich für den neuen Arbeitsbereich weiterhin bereitgestellt wird. Beim nächsten Versuch werden Daten wie erwartet erfolgreich in den Arbeitsbereich geschrieben. Ein HTTP-Fehler 403 weist möglicherweise auf ein Problem mit Berechtigungen oder Anmeldeinformationen hin. Der Fehler 403 enthält weitere Informationen als Hilfe zur Problembehandlung.|
     |4000 |Dienstconnector |Fehler beim Auflösen des DNS-Namens |Der Computer konnte die Internetadresse, die beim Senden von Daten an den Dienst verwendet wurde, nicht auflösen. Dies kann an den Einstellungen der DNS-Auflösung auf Ihrem Computer, falschen Proxyeinstellungen oder an einem vorübergehenden DNS-Problem bei Ihrem Anbieter liegen. Wenn dieses Problem zeitweilig auftritt, kann es durch ein vorübergehendes Netzwerkproblem verursacht werden.|
     |4001 |Dienstconnector |Fehler bei der Verbindung mit dem Dienst |Dieser Fehler kann auftreten, wenn der Agent nicht direkt oder über eine Firewall/einen Proxyserver mit dem Azure Monitor-Dienst kommunizieren kann. Überprüfen Sie die Proxyeinstellungen des Agents, und stellen Sie sicher, dass die Netzwerkfirewall/der Netzwerkproxy den TCP-Datenverkehr vom Computer zum Dienst zulässt.|

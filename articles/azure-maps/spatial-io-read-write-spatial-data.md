@@ -1,19 +1,19 @@
 ---
 title: Lesen und Schreiben räumlicher Daten | Microsoft Azure Maps
 description: Erfahren Sie, wie Sie mit dem Modul Spatial IO, das vom Azure Maps Web SDK bereitgestellt wird, Daten lesen und schreiben.
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 03/01/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 458b307cf1158c467100e032e3f789462e8fdcca
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 4c47335689401ebce98224992c74c3396821a1dd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370353"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334160"
 ---
 # <a name="read-and-write-spatial-data"></a>Lesen und Schreiben von räumlichen Daten
 
@@ -28,7 +28,7 @@ Die folgende Tabelle listet die räumlichen Dateiformate auf, die für Lese- und
 | GML               | ✓  |  ✓  |
 | KMZ               | ✓  |  ✓  |
 | Spatial CSV       | ✓  |  ✓  |
-| Well Known Text   | ✓  |  ✓  |
+| Well-Known Text   | ✓  |  ✓  |
 
 In den folgenden Abschnitten werden die verschiedenen Tools zum Lesen und Schreiben räumlicher Daten mit dem Modul Spatial IO vorgestellt.
 
@@ -52,7 +52,7 @@ Das Ergebnis der Lesefunktion ist ein `SpatialDataSet`-Objekt. Dieses Objekt erw
 
 ## <a name="examples-of-reading-spatial-data"></a>Beispiele für das Lesen räumlicher Daten
 
-Der folgende Code zeigt, wie ein einfaches räumliches Dataset gelesen und mit der Klasse `SimpleDataLayer` auf der Karte gerendert werden kann. Der Code verwendet eine GPX-Datei, auf die eine URL zeigt.
+Der folgende Code zeigt, wie ein räumliches Dataset gelesen und mit der Klasse `SimpleDataLayer` auf der Karte gerendert werden kann. Der Code verwendet eine GPX-Datei, auf die eine URL zeigt.
 
 <br/>
 
@@ -66,17 +66,13 @@ Die nächste Codedemo zeigt, wie KML- oder KMZ-Daten gelesen und in die Karte ge
 <iframe height='500' scrolling='no' title='Load KML Onto Map' src='//codepen.io/azuremaps/embed/XWbgwxX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter <a href='https://codepen.io/azuremaps/pen/XWbgwxX/'>Load KML Onto Map</a> (Laden von KML in eine Karte) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Sie können optional einen Proxydienst für den Zugriff auf domänenübergreifende Objekte anbieten, für die möglicherweise CORS nicht aktiviert ist. In diesem Codeausschnitt wird gezeigt, wie Sie einen Proxydienst bereitstellen können:
+Sie können optional einen Proxydienst für den Zugriff auf domänenübergreifende Objekte bereitstellen, für die möglicherweise CORS nicht aktiviert ist. Die Lesefunktion versucht, mithilfe von CORS auf Dateien in einer anderen Domäne zuzugreifen. Nach dem ersten Fehlschlagen des Zugriffs auf eine beliebige Ressource in einer anderen Domäne mithilfe von CORS werden zusätzliche Dateien nur angefordert, wenn ein Proxydienst bereitgestellt wurde. Die Lesefunktion fügt die URL der Datei an das Ende der bereitgestellten Proxy-URL an. Dieser Codeausschnitt zeigt, wie der Lesefunktion ein Proxydienst übergeben wird:
 
 ```javascript
-
-//Set the location of your proxyServiceUrl file 
-var proxyServiceUrl = window.location.origin + '/CorsEnabledProxyService.ashx?url=';
-
-//Read a KML file from a URL or pass in a raw KML string.
-atlas.io.read('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1717245/2007SanDiegoCountyFires.kml', {
+//Read a file from a URL or pass in a raw data as a string.
+atlas.io.read('https://nonCorsDomain.example.com/mySuperCoolData.xml', {
     //Provide a proxy service
-    proxyService: proxyServiceUrl
+    proxyService: window.location.origin + '/YourCorsEnabledProxyService.ashx?url='
 }).then(async r => {
     if (r) {
         // Some code goes here . . .
@@ -115,46 +111,37 @@ Das folgende Beispiel erlaubt Ihnen, räumliche Dateien per Drag & Drop auf die 
 Sie können optional einen Proxydienst für den Zugriff auf domänenübergreifende Objekte bereitstellen, für die möglicherweise CORS nicht aktiviert ist. In diesem Codeausschnitt wird gezeigt, wie Sie einen Proxydienst einbinden können:
 
 ```javascript
-
-//Set the location of your proxyServiceUrl file 
-var proxyServiceUrl = window.location.origin + '/CorsEnabledProxyService.ashx?url=';
-
-function readData(data, fileName) {
-    loadingIcon.style.display = '';
-    fileCount++;
-    //Attempt to parse the file and add the shapes to the map.
-    atlas.io.read(data, {
-        //Provide a proxy service
-        proxyService: proxyServiceUrl
-    }).then(
-        //Success
-        function(r) {
-            //some code goes here ...
-        }
-    );
-}
+atlas.io.read(data, {
+    //Provide a proxy service
+    proxyService: window.location.origin + '/YourCorsEnabledProxyService.ashx?url='
+}).then(
+    //Success
+    function(r) {
+        //some code goes here ...
+    }
+);
 ```
 
-## <a name="read-and-write-well-known-text-wkt"></a>Lesen und Schreiben von Well Known Text (WKT)
+## <a name="read-and-write-well-known-text-wkt"></a>Lesen und Schreiben von Well-Known Text (WKT)
 
-[Well Known Text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) (WKT) ist ein OGC-Standard (Open Geospatial Consortium) zum Darstellen räumlicher Geometrien als Text. Viele räumliche Systeme unterstützen WKT, z. B. Azure SQL und Azure PostgreSQL, mithilfe des PostGIS-Plug-Ins. Wie die meisten OGC-Standards sind die Koordinaten als „Längengrad Breitengrad“ formatiert, um sie an die „x y“-Konvention anzupassen. Als Beispiel kann ein Punkt auf Längengrad -110 und Breitengrad 45 im WKT-Format als `POINT(-110 45)` geschrieben werden.
+[Well-Known Text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) (WKT) ist ein OGC-Standard (Open Geospatial Consortium) zum Darstellen räumlicher Geometrien als Text. Viele räumliche Systeme unterstützen WKT, z. B. Azure SQL und Azure PostgreSQL, mithilfe des PostGIS-Plug-Ins. Wie die meisten OGC-Standards sind die Koordinaten als „Längengrad Breitengrad“ formatiert, um sie an die „x y“-Konvention anzupassen. Als Beispiel kann ein Punkt auf Längengrad -110 und Breitengrad 45 im WKT-Format als `POINT(-110 45)` geschrieben werden.
 
 Das WKT-Format kann mit der `atlas.io.ogc.WKT.read`-Funktion gelesen und mit der `atlas.io.ogc.WKT.write`-Funktion geschrieben werden.
 
-## <a name="examples-of-reading-and-writing-well-known-text-wkt"></a>Beispiele für das Lesen und Schreiben von Well-Known Text (WKT)
+## <a name="examples-of-reading-and-writing-well-known-text-wkt"></a>Beispiele zum Lesen und Schreiben von Well-Known Text (WKT)
 
 Der folgende Code zeigt, wie die WKT-Zeichenfolge `POINT(-122.34009 47.60995)` gelesen und mithilfe einer Blasenebene auf der Karte gerendert werden kann.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Read Well Known Text' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/XWbabLd/'>Read Well Known Text</a> (Lesen von Well Known Text) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Lesen von Well-Known Text' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/XWbabLd/'>Read Well-Known Text</a> (Lesen von Well-Known Text) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Der folgende Code demonstriert, wie Well Known Text hin und her gelesen und geschrieben werden kann.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Read and write Well Known Text' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/JjdyYav/'>Read and write Well Known Text</a> (Lesen und Schreiben von Well Known Text) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Lesen und Schreiben von Well-Known Text' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/JjdyYav/'>Read and write Well-Known Text</a> (Lesen und Schreiben von Well-Known Text) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="read-and-write-gml"></a>Lesen und Schreiben von GML

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: 15c75d4add9615df6c42aa6121557659e54354d0
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 56a0cb66f5b54c817067970ab369d7ca471a1696
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666785"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132343"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Anwendungsüberwachung ohne Instrumentierung für gehostete Kubernetes-Anwendungen
 
@@ -59,7 +59,7 @@ kubectl label namespace <my-app-namespace> istio-injection=enabled
 ```
 
 > [!NOTE]
-> Da das Service Mesh Daten aus dem Kabel abruft, können wir den verschlüsselten Datenverkehr nicht abfangen. Verwenden Sie für Datenverkehr, der den Cluster nicht verlässt, ein unverschlüsseltes Protokoll (z.B. HTTP). Erwägen Sie für den externen Datenverkehr, der verschlüsselt werden muss, die [Einrichtung eines SSL-Abschlusses](https://kubernetes.io/docs/concepts/services-networking/ingress/#tls) am Eingangscontroller.
+> Da das Service Mesh Daten aus dem Kabel abruft, können wir den verschlüsselten Datenverkehr nicht abfangen. Verwenden Sie für Datenverkehr, der den Cluster nicht verlässt, ein unverschlüsseltes Protokoll (z.B. HTTP). Erwägen Sie für den externen Datenverkehr, der verschlüsselt werden muss, die [Einrichtung eines TLS-Abschlusses](https://kubernetes.io/docs/concepts/services-networking/ingress/#tls) am Eingangscontroller.
 
 Anwendungen, die außerhalb des Service Mesh ausgeführt werden, sind nicht betroffen.
 

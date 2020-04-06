@@ -1,26 +1,36 @@
 ---
-title: Einrichten der Abhängigkeitsvisualisierung ohne Agent in Azure Migrate
-description: Einrichten von Gruppen mit der Abhängigkeitsvisualisierung ohne Agent in der Azure Migrate-Serverbewertung.
-ms.topic: article
+title: Einrichten der Abhängigkeitsanalyse ohne Agent in der Azure Migrate-Serverbewertung
+description: Hier erfahren Sie, wie Sie die Abhängigkeitsanalyse ohne Agent in der Azure Migrate-Serverbewertung einrichten.
+ms.topic: how-to
 ms.date: 2/24/2020
-ms.openlocfilehash: c9425ad1fa78f14a194d3fe13c259dadf4eb5eb6
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: af767bf73a3b9a6f2a91298987f11974499fd694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77589129"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455705"
 ---
 # <a name="set-up-agentless-dependency-visualization"></a>Einrichten der Abhängigkeitsvisualisierung ohne Agent 
 
-In diesem Artikel wird das Einrichten der Abhängigkeitsvisualisierung in der Azure Migrate-Serverbewertung beschrieben. Mit der [Abhängigkeitsvisualisierung](concepts-dependency-visualization.md#what-is-dependency-visualization) können Sie Abhängigkeiten zwischen Computern, die Sie bewerten und zu Azure migrieren möchten, besser identifizieren und verstehen.
+In diesem Artikel wird das Einrichten der Abhängigkeitsanalyse ohne Agent in der Azure Migrate-Serverbewertung beschrieben. Mit der [Abhängigkeitsanalyse](concepts-dependency-visualization.md) können Sie Abhängigkeiten zwischen Computern, die Sie bewerten und zu Azure migrieren möchten, besser identifizieren und verstehen.
 
-Mit der Abhängigkeitsvisualisierung ohne Agent können Sie Abhängigkeiten von Computern identifizieren, ohne einen Agent auf einem Computer installieren zu müssen. Sie erfasst TCP-Verbindungsdaten von den Computern, für die sie aktiviert wurde.
 
 > [!IMPORTANT]
-> Die Abhängigkeitsvisualisierung ohne Agent ist derzeit als Vorschauversion nur für virtuelle Azure VMware-Computer verfügbar, die mithilfe des Azure Migrate-Serverbewertungstools ermittelt wurden.
+> Die Abhängigkeitsvisualisierung ohne Agent ist derzeit als Vorschauversion nur für VMware-VMs verfügbar, die mithilfe des Azure Migrate-Serverbewertungstools ermittelt wurden.
 > Die Funktionen sind möglicherweise eingeschränkt oder unvollständig.
 > Diese Vorschau wird durch den Kundensupport abgedeckt und kann für Produktionsworkloads verwendet werden.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+
+
+## <a name="before-you-start"></a>Vorbereitung
+
+- [Erfahren Sie mehr über](concepts-dependency-visualization.md#agentless-analysis) die Abhängigkeitsanalyse ohne Agent.
+- [Überprüfen](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) Sie die Voraussetzungen und Supportanforderungen zum Einrichten der Abhängigkeitsanalyse ohne Agent für VMware-VMs.
+- Stellen Sie sicher, dass Sie ein Azure Migrate-Projekt [erstellt](how-to-add-tool-first-time.md) haben.
+- Wenn Sie bereits ein Projekt erstellt haben, vergewissern Sie sich, dass Sie das Serverbewertungstool von Azure Migrate [hinzugefügt](how-to-assess.md) haben.
+- Stellen Sie sicher, dass Sie eine [Azure Migrate-Appliance](migrate-appliance.md) eingerichtet haben, mit der Ihre lokalen Computer ermittelt werden können. Erfahren Sie, wie Sie eine Appliance für virtuelle [VMware](how-to-set-up-appliance-vmware.md)-Computer einrichten. Die Appliance ermittelt lokale Computer und sendet Metadaten und Leistungsdaten an die Azure Migrate-Serverbewertung.
+
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 
@@ -28,21 +38,10 @@ Mit der Abhängigkeitsvisualisierung ohne Agent können Sie Abhängigkeiten von 
 - Eine Abhängigkeitszuordnung für eine Gruppe von Servern ist derzeit nicht verfügbar.
 - Die Abhängigkeitsdaten können derzeit nicht im Tabellenformat heruntergeladen werden.
 
-## <a name="before-you-start"></a>Vorbereitung
-
-- [Überprüfen](concepts-dependency-visualization.md#agentless-visualization) Sie die Anforderungen und die Kosten, die mit der Abhängigkeitsvisualisierung ohne Agent verbunden sind.
-- Überprüfen Sie die [Supportanforderungen](migrate-support-matrix-vmware.md#agentless-dependency-visualization) für das Einrichten einer Abhängigkeitsvisualisierung ohne Agent.
-- Stellen Sie sicher, dass Sie ein Azure Migrate-Projekt [erstellt](how-to-add-tool-first-time.md) haben.
-- Wenn Sie bereits ein Projekt erstellt haben, vergewissern Sie sich, dass Sie das Serverbewertungstool von Azure Migrate [hinzugefügt](how-to-assess.md) haben.
-- Stellen Sie sicher, dass Sie eine [Azure Migrate-Appliance](migrate-appliance.md) eingerichtet haben, mit der Ihre lokalen Computer ermittelt werden können. Erfahren Sie, wie Sie eine Appliance für virtuelle [VMware](how-to-set-up-appliance-vmware.md)-Computer einrichten. Die Appliance ermittelt lokale Computer und sendet Metadaten und Leistungsdaten an die Azure Migrate-Serverbewertung.
-
-
 ## <a name="create-a-user-account-for-discovery"></a>Erstellen eines Benutzerkontos für die Ermittlung
 
-Richten Sie ein Benutzerkonto ein, damit die Serverbewertung zur Ermittlung auf den virtuellen Computer zugreifen kann. Sie können ein Benutzerkonto angeben.
+Richten Sie ein Benutzerkonto ein, damit die Serverbewertung zur Ermittlung auf den virtuellen Computer zugreifen kann. [Informieren Sie sich](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) über die Kontoanforderungen.
 
-- **Virtuelle Windows-Computer:** Das Benutzerkonto muss ein lokales Konto oder ein Domänenadministratorkonto sein.
-- **Virtuelle Linux-Computer:** Für das Konto ist root-Berechtigung erforderlich. Alternativ benötigt das Benutzerkonto diese beiden Funktionen für /bin/netstat- und /bin/ls-Dateien: CAP_DAC_READ_SEARCH und CAP_SYS_PTRACE.
 
 ## <a name="add-the-user-account-to-the-appliance"></a>Hinzufügen des Benutzerkontos zur Appliance
 

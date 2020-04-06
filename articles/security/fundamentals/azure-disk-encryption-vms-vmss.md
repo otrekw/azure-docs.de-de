@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 239bfb4f5a0e9115c113bb2d5ddbc931f41c0f3d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: c881b2b9743766e4d35e6cb05f6f3469803850bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72599808"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062125"
 ---
 # <a name="azure-disk-encryption-for-virtual-machines-and-virtual-machine-scale-sets"></a>Azure Disk Encryption für virtuelle Computer und VM-Skalierungsgruppen
 
@@ -29,6 +29,7 @@ Die folgenden Artikel enthalten Informationen zur Verschlüsselung virtueller Li
 - [Erstellen und Verschlüsseln einer Linux-VM mit der Azure-Befehlszeilenschnittstelle](../../virtual-machines/linux/disk-encryption-cli-quickstart.md)
 - [Erstellen und Verschlüsseln eines virtuellen Linux-Computers mit Azure PowerShell](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
 - [Erstellen und Verschlüsseln eines virtuellen Linux-Computers mit dem Azure-Portal](../../virtual-machines/linux/disk-encryption-portal-quickstart.md)
+- [Azure Disk Encryption-Erweiterungsschema für Linux](../../virtual-machines/extensions/azure-disk-enc-linux.md)
 - [Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption](../../virtual-machines/linux/disk-encryption-key-vault.md)
 - [Azure Disk Encryption-Beispielskripts](../../virtual-machines/linux/disk-encryption-sample-scripts.md)
 - [Azure Disk Encryption-Problembehandlung](../../virtual-machines/linux/disk-encryption-troubleshooting.md)
@@ -51,6 +52,7 @@ Die folgenden Artikel enthalten Informationen zur Verschlüsselung virtueller Wi
 - [Erstellen und Verschlüsseln eines virtuellen Windows-Computers mit der Azure-Befehlszeilenschnittstelle](../../virtual-machines/windows/disk-encryption-cli-quickstart.md)
 - [Erstellen und Verschlüsseln eines virtuellen Windows-Computers mit Azure PowerShell](../../virtual-machines/windows/disk-encryption-powershell-quickstart.md)
 - [Erstellen und Verschlüsseln eines virtuellen Windows-Computers mit dem Azure-Portal](../../virtual-machines/windows/disk-encryption-portal-quickstart.md)
+- [Azure Disk Encryption-Erweiterungsschema für Windows](../../virtual-machines/extensions/azure-disk-enc-windows.md)
 - [Erstellen und Konfigurieren eines Schlüsseltresors für Azure Disk Encryption](../../virtual-machines/windows/disk-encryption-key-vault.md)
 - [Azure Disk Encryption-Beispielskripts](../../virtual-machines/windows/disk-encryption-sample-scripts.md)
 - [Azure Disk Encryption-Problembehandlung](../../virtual-machines/windows/disk-encryption-troubleshooting.md)

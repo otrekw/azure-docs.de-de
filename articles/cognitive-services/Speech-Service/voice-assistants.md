@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: d687d1d353c1734c5d98121f658003afde2eb182
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 9219c9a72ce9e1cfba3504b0b8e16ade77f8a5e5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812908"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79369895"
 ---
-# <a name="about-voice-assistants"></a>Informationen zu Sprach-Assistenten
+# <a name="what-is-a-voice-assistant"></a>Was ist ein Sprachassistent?
 
 Sprachassistenten, die den Speech-Dienst verwenden, ermöglichen es Entwicklern, natürliche Konversationsschnittstellen für ihre Anwendungen und Umgebungen zu erstellen, die der menschlichen Sprache nahekommen.
 
@@ -58,9 +58,9 @@ Wir bieten Schnellstarts an, die so konzipiert sind, dass Sie in weniger als 10 
 
 | Schnellstart | Plattform | API-Referenz |
 |------------|----------|---------------|
-| C#, UWP | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| Java | Windows, macOS, Linux | [Browse](https://aka.ms/csspeech/javaref) |
-| Java | Android | [Browse](https://aka.ms/csspeech/javaref) |
+| C#, UWP | Windows | [Durchsuchen](https://aka.ms/csspeech/csharpref) |
+| Java | Windows, macOS, Linux | [Durchsuchen](https://aka.ms/csspeech/javaref) |
+| Java | Android | [Durchsuchen](https://aka.ms/csspeech/javaref) |
 
 ## <a name="sample-code"></a>Beispielcode
 
@@ -69,7 +69,7 @@ Beispielcode für die Erstellung eines Sprachassistenten ist auf GitHub verfügb
 * [Beispiele für Sprachassistenten (SDK)](https://aka.ms/csspeech/samples)
 * [Tutorial: Sprachaktivierung für Ihren Assistenten mit dem Speech SDK, C#](tutorial-voice-enable-your-bot-speech-sdk.md)
 
-## <a name="tutorial"></a>Tutorial
+## <a name="tutorial"></a>Lernprogramm
 
 In diesem Tutorial erfahren Sie, wie Sie Ihren [Assistenten mithilfe des Speech SDK und des Direct Line-Speech-Kanals für Sprache aktivieren](tutorial-voice-enable-your-bot-speech-sdk.md).
 

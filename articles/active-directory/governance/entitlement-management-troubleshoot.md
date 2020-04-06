@@ -3,7 +3,7 @@ title: Problembehandlung bei der Berechtigungsverwaltung – Azure AD
 description: Erfahren Sie, welche Punkte Sie überprüfen sollten, um Probleme mit der Azure Active Directory-Berechtigungsverwaltung zu beheben.
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.subservice: compliance
-ms.date: 10/26/2019
-ms.author: ajburnle
+ms.date: 03/22/2020
+ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e291a032c1aac45ebc783126e69b524e1d0af95b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c38e1a61827da547bb39a699a0e92043e63466c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422490"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128471"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Problembehandlung bei der Azure AD-Berechtigungsverwaltung
 
@@ -48,6 +48,10 @@ In diesem Artikel werden einige Punkte beschrieben, die Sie überprüfen sollten
 * Wenn Sie ein Teammitglied entfernen, wird es auch aus der Office 365-Gruppe entfernt. Das Entfernen aus der Chatfunktion des Teams kann etwas länger dauern. Weitere Informationen finden Sie unter [Gruppenmitgliedschaft](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership).
 
 * Stellen Sie sicher, dass Ihr Verzeichnis nicht für Multi-Geo-Funktionen konfiguriert ist. Die Berechtigungsverwaltung unterstützt aktuell keine Multi-Geo-Standorte für SharePoint Online. SharePoint Online-Standorte müssen sich am standardmäßigen geografischen Standort befinden, um mit der Berechtigungsverwaltung gesteuert werden zu können. Weitere Informationen finden Sie unter [Multi-Geo-Funktionen in OneDrive und SharePoint Online](https://docs.microsoft.com/Office365/Enterprise/multi-geo-capabilities-in-onedrive-and-sharepoint-online-in-office-365).
+
+## <a name="access-packages"></a>Zugriffspakete
+
+* Wenn Sie versuchen, ein Zugriffspaket oder eine Zugriffsrichtlinie zu löschen, wird unter Umständen eine Fehlermeldung mit dem Hinweis angezeigt, dass aktive Zuweisungen vorhanden sind. In diesem Fall sollten Sie überprüfen, ob kürzlich gelöschte Benutzer noch über Zuweisungen verfügen, wenn keine Benutzer mit Zuweisungen angezeigt werden. Das Benutzerkonto kann während eines Zeitfensters von 30 Tagen nach der Löschung eines Benutzers wiederhergestellt werden.   
 
 ## <a name="external-users"></a>Externe Benutzer
 

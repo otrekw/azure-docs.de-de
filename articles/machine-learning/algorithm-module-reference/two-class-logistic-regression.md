@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: b1afd99a569de96e9075b4b5b6eff902abd8642e
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 7eb1ad00c3c947c3ed6d4ca450bddc0956a08d71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916760"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455824"
 ---
 # <a name="two-class-logistic-regression-module"></a>Modul „Two-Class Logistic Regression“ (Logistische Regression mit zwei Klassen)
 
@@ -75,7 +75,7 @@ Beispielsweise kann die Bezeichnungsspalte [Abgestimmt] mit den möglichen Werte
   
     -   Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, müssen Sie das Modul [Train Model](./train-model.md) (Trainieren des Modells) verwenden.  
   
-9. Ausführen der Pipeline.  
+9. Übermitteln Sie die Pipeline.  
   
 ## <a name="results"></a>Ergebnisse
 

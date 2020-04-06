@@ -11,18 +11,22 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
-ms.openlocfilehash: 0c81523d43fd316c3dc65cc2a5b34557f24014b5
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: bae7104eaded8c2ed153bc141faf7eba0bb86bae
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303408"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80346296"
 ---
 # <a name="download-the-results-of-a-job"></a>Herunterladen der Ergebnisse eines Auftrags
 
 In Azure Media Services müssen Sie bei der Verarbeitung von Videos (z. B. Codierung oder Analyse) eine [Ausgaberessource](assets-concept.md) erstellen, um das Ergebnis Ihres [Auftrags](transforms-jobs-concept.md) zu speichern. Anschließend können Sie diese Ergebnisse mithilfe von Media Service- und Storage-APIs in einen lokalen Ordner herunterladen. 
 
 In diesem Artikel wird veranschaulicht, wie Sie die Ergebnisse über Java und .NET SDKs herunterladen.
+
+## <a name="prerequisites"></a>Voraussetzungen 
+
+Informieren Sie sich über das [Verwalten von Ressourcen](manage-asset-concept.md).
 
 ## <a name="java"></a>Java
 

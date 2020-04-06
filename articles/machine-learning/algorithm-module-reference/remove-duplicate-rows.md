@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 429ddd62cccb8657aa18ec844968cc12df778f55
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 490d3305abcbcd906a0f727d736db8cab7e4287e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153790"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456020"
 ---
 # <a name="remove-duplicate-rows-module"></a>Modul „Remove Duplicate Rows“
 
@@ -69,7 +69,7 @@ Wenn Sie das Modul ausführen, erstellt es ein Kandidaten-Dataset und gibt eine 
     + Wenn das Kontrollkästchen aktiviert ist, wird die erste Zeile zurückgegeben, und die anderen Zeilen werden verworfen. 
     + Wenn Sie das Kontrollkästchen deaktivieren, wird die letzte doppelte Zeile in den Ergebnissen beibehalten, und die anderen Zeilen werden verworfen. 
 
-5. Ausführen der Pipeline.
+5. Übermitteln Sie die Pipeline.
 
 6. Um die Ergebnisse anzuzeigen, klicken Sie mit der rechten Maustaste auf das Modul, und wählen Sie **Visualisieren** aus. 
 

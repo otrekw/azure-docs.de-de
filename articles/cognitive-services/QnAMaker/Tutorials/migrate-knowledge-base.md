@@ -1,26 +1,24 @@
 ---
 title: 'Migrieren von Wissensdatenbanken: QnA Maker'
-titleSuffix: Azure Cognitive Services
 description: Die Migration einer Wissensdatenbank erfordert den Export aus einer Wissensdatenbank und den Import in eine andere.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/28/2020
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: 942932c229ace82a0bf66da7a5421f936b028088
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.date: 03/25/2020
+ms.openlocfilehash: 13e5e79bf4eaf6ec59e41b3e12aa1bb23f2c1578
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78302558"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258089"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrieren einer Knowledge Base durch Exportieren und Importieren
 
-Die Migration einer Wissensdatenbank erfordert den Export aus einer Wissensdatenbank und den Import in eine andere.
+Die Migration ist der Prozess zum Erstellen einer neuen Wissensdatenbank auf der Grundlage einer vorhandenen Wissensdatenbank. Sie können eine Migration aus verschiedenen Gründen ausführen:
+
+* Sicherungs- und Wiederherstellungsprozesse
+* CI/CD-Pipeline
+* Verschieben von Regionen
+
+Die Migration einer Wissensdatenbank erfordert den Export aus einer vorhandenen Wissensdatenbank und den Import in eine andere.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -49,6 +47,20 @@ Die Migration einer Wissensdatenbank erfordert den Export aus einer Wissensdaten
 1. **Testen** Sie die neue Knowledge Base im Testbereich. Erfahren Sie mehr über das [Testen Ihrer Knowledge Base](../How-To/test-knowledge-base.md).
 
 1. **Veröffentlichen** Sie die Wissensdatenbank, und erstellen Sie einen Chatbot. Erfahren Sie mehr über das [Veröffentlichen Ihrer Knowledge Base](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
+
+## <a name="programmatically-migrate-a-knowledge-base-from-qna-maker"></a>Programmgesteuertes Migrieren einer Wissensdatenbank von QnA Maker
+
+Die Migration kann programmgesteuert über die folgenden REST-APIs ausgeführt werden:
+
+**Export**
+
+* [Herunterladen der Wissensdatenbank-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)
+
+**Importieren**
+
+* [Ersetzen der API (erneutes Laden mit der gleichen Wissensdatenbank-ID)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)
+* [Erstellen der API (Laden mit der neuen Wissensdatenbank-ID)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
+
 
 ## <a name="chat-logs-and-alterations"></a>Chatprotokolle und Varianten
 Varianten (Synonyme) ohne Berücksichtigung von Groß-/Kleinbuchstaben werden nicht automatisch importiert. Verwenden Sie die [V4-APIs](https://go.microsoft.com/fwlink/?linkid=2092179), um die Änderungen in die neue Wissensdatenbank zu verschieben.

@@ -3,12 +3,12 @@ title: Erstellen einer neuen Azure Application Insights-Ressource | Microsoft Do
 description: Richten Sie manuell die Application Insights-Überwachung für eine neue Liveanwendung ein.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 090c983dcca101557f8dec479d1267275d24908b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: c1b3a6920723ad59b714cce4bd69e1b95fe1995f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672037"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132419"
 ---
 # <a name="create-an-application-insights-resource"></a>Erstellen einer Application Insights-Ressource
 
@@ -24,7 +24,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und erstellen 
 
 ![Klicken Sie links oben auf das Pluszeichen (+). Auswählen von „Entwicklertools“ und „Application Insights“](./media/create-new-resource/new-app-insights.png)
 
-   | Einstellungen        |  value           | BESCHREIBUNG  |
+   | Einstellungen        |  Wert           | BESCHREIBUNG  |
    | ------------- |:-------------|:-----|
    | **Name**      | Eindeutiger Wert | Der Name, der die zu überwachende App identifiziert |
    | **Ressourcengruppe**     | myResourceGroup      | Der Name der neuen oder vorhandenen Ressourcengruppe, die Application Insights-Daten hosten soll |
@@ -41,7 +41,7 @@ Wenn Ihre App erstellt wurde, wird ein neuer Bereich geöffnet. In diesem Bereic
 
 ## <a name="copy-the-instrumentation-key"></a>Kopieren des Instrumentationsschlüssels
 
-Der Instrumentierungsschlüssel identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Sie müssen den Instrumentierungsschlüssel kopieren, um ihn in Ihrem Anwendungscode hinzuzufügen.
+Der Instrumentierungsschlüssel identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Sie müssen den Instrumentierungsschlüssel kopieren und Ihrem Anwendungscode hinzufügen.
 
 ![Auswählen und Kopieren des Instrumentierungsschlüssels](./media/create-new-resource/instrumentation-key.png)
 

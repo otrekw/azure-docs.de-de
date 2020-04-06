@@ -7,69 +7,56 @@ metadata:
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 50027fde619d4e69fdbb181544d23dba4a9cf144
-  ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+  ms.openlocfilehash: 6ae919317269753cbc3c8bf5b0df11e19a47989f
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 03/09/2020
-  ms.locfileid: "78943332"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79415154"
 landingContent:
-- title: Erste Schritte
+- title: Informationen zu Sprach-Assistenten
   linkLists:
   - linkListType: overview
     links:
-    - text: Lösungen für Sprach-Assistenten
+    - text: Was ist ein Sprachassistent?
       url: voice-assistants.md
-    - text: Informationen zu benutzerdefinierten Befehlen
+    - text: Was ist eine App für benutzerdefinierte Befehle?
       url: custom-commands.md
-    - text: Informationen zu Direct Line Speech
+    - text: Was ist Direct Line Speech?
       url: direct-line-speech.md
   - linkListType: reference
     links:
-    - text: Preise
-      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
     - text: Häufig gestellte Fragen zu Sprachassistenten
       url: faq-voice-assistants.md
-- title: Benutzerdefiniertes Schlüsselwort
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Benutzerdefiniertes Schlüsselwort
-      url: speech-devices-sdk-create-kws.md
-  - linkListType: reference
-    links:
-    - text: Benutzerdefinierte Benennungsrichtlinien für Schlüsselwörter
-      url: speech-devices-sdk-kws-guidelines.md
-- title: Benutzerdefinierte Befehle
+    - text: Preise für Sprachassistenten
+      url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services
+- title: Entwickeln mit benutzerdefinierten Befehlen
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Erstellen eines benutzerdefinierten Befehls (Vorschau)
+    - text: Erstellen einer App für benutzerdefinierte Befehle
       url: quickstart-custom-speech-commands-create-new.md
-    - text: Erstellen eines benutzerdefinierten Befehls mit Parametern (Vorschau)
+    - text: Erstellen eines benutzerdefinierten Befehls mit Parametern
       url: quickstart-custom-speech-commands-create-parameters.md
-    - text: Verwenden benutzerdefinierter Befehle mit Custom Voice (Vorschau)
+    - text: Verwenden benutzerdefinierter Befehle mit Custom Voice
       url: quickstart-custom-speech-commands-select-custom-voice.md
-    - text: Verwenden benutzerdefinierter Befehle mit dem Speech SDK (Vorschau)
+    - text: Verwenden benutzerdefinierter Befehle mit dem Speech SDK
       url: quickstart-custom-speech-commands-speech-sdk.md
   - linkListType: how-to-guide
     links:
-    - text: Benutzerdefinierte Befehle mit dem Speech SDK
+    - text: Ausführen der Befehle eines Clients
       url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: Ausführen benutzerdefinierter Befehle mit dem Speech SDK
-      url: how-to-custom-speech-commands-fulfill-sdk.md
-    - text: Hinzufügen einer Parameterüberprüfung zu einem benutzerdefinierten Befehl
+    - text: Hinzufügen einer Parameterüberprüfung
       url: how-to-custom-speech-commands-validations.md
-    - text: Hinzufügen einer Bestätigung zu einem benutzerdefinierten Befehl
+    - text: Hinzufügen einer Bestätigung
       url: how-to-custom-speech-commands-confirmations.md
-    - text: Hinzufügen einer Korrektur mit einem Schritt zu einem benutzerdefinierten Befehl
+    - text: Hinzufügen einer Korrektur mit einem Schritt
       url: how-to-custom-speech-commands-one-step-correction.md
-- title: Direct Line Speech
+- title: Entwickeln mit Direct Line Speech
   linkLists:
   - linkListType: quickstart
     links:
@@ -83,3 +70,13 @@ landingContent:
     links:
     - text: Ermöglichen der Verwendung von Sprache mit dem Speech SDK
       url: tutorial-voice-enable-your-bot-speech-sdk.md
+- title: Entwickeln mit einem benutzerdefinierten Schlüsselwort
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen eines benutzerdefinierten Schlüsselworts
+      url: speech-devices-sdk-create-kws.md
+  - linkListType: reference
+    links:
+    - text: Benutzerdefinierte Benennungsrichtlinien für Schlüsselwörter
+      url: speech-devices-sdk-kws-guidelines.md

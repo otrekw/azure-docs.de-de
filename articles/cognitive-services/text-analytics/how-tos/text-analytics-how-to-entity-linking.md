@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: aahi
-ms.openlocfilehash: 0622aca5579c64c6d840761abb151665af559eea
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 243086ddaae47eba20eea6877fe6d7f8f9889290
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79117475"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79203490"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Verwenden der Erkennung benannter Entitäten in der Textanalyse
 
@@ -182,14 +182,13 @@ Die Textanalyse-API ist zustandslos. Auf Ihrem Konto werden keine Daten gespeich
 
 Alle POST-Anforderungen geben eine Antwort im JSON-Format mit den IDs und erkannten Entitätseigenschaften zurück.
 
-Die Ausgabe wird umgehend zurückgegeben. Sie können die Ergebnisse an eine Anwendung streamen, die JSON akzeptiert, oder die Ausgabe in einer Datei auf dem lokalen System speichern und sie anschließend in eine Anwendung importieren, in der Sie die Daten sortieren, durchsuchen und bearbeiten können.
-
+Die Ausgabe wird umgehend zurückgegeben. Sie können die Ergebnisse an eine Anwendung streamen, die JSON akzeptiert, oder die Ausgabe in einer Datei auf dem lokalen System speichern und sie anschließend in eine Anwendung importieren, in der Sie die Daten sortieren, durchsuchen und bearbeiten können. Aufgrund der Unterstützung von Emojis und mehreren Sprachen enthält der Antworttext unter Umständen Textversätze. Weitere Informationen finden Sie unter [Textversätze in der Ausgabe der Textanalyse-API](../concepts/text-offsets.md).
 
 #### <a name="version-30-preview"></a>[Version 3.0-Preview](#tab/version-3)
 
 ### <a name="example-v3-responses"></a>Beispiel für eine Antwort von Version 3
 
-Version 3 bietet separate Endpunkte für NER und Entitätsverknüpfung. Die Antworten für beide Vorgänge sind unten aufgeführt.
+Version 3 bietet separate Endpunkte für NER und Entitätsverknüpfung. Die Antworten für beide Vorgänge sind unten aufgeführt. 
 
 #### <a name="example-ner-response"></a>Beispiel für eine NER-Antwort
 

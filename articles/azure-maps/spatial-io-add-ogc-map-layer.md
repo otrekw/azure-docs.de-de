@@ -1,30 +1,30 @@
 ---
 title: Hinzufügen einer OGC-Kartenebene (Open Geospatial Consortium) | Microsoft Azure Maps
 description: Erfahren Sie, wie Sie eine OGC-Kartenebene auf der Karte überlagern und die verschiedenen Optionen in der OgcMapLayer-Klasse nutzen können.
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c41ee293c853572ec9e1f9dd3edf001c805924d3
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: b753ecfc07cfb3806838f8a05dbe33ef0bb92730
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78402776"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334299"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>Hinzufügen einer Kartenebene aus Open Geospatial Consortium (OGC)
 
-Die Klasse `atlas.layer.OgcMapLayer` kann WMS-Aufnahmen (Web Mapping Services) und WMTS-Aufnahmen (Web Mapping Tile Services) auf der Karte überlagern. WMS ist ein von OGC entwickeltes Standardprotokoll für die Bereitstellung georeferenzierter Kartenbilder im Internet. Die Georeferenzierung von Bildern ist der Prozess der Zuordnung eines Bilds zu einem geografischen Ort. WMTS ist auch ein von OGC entwickeltes Standardprotokoll. Es ist für die Bereitstellung vorgerenderter und georeferenzierter Kartenkacheln konzipiert.
+Die Klasse `atlas.layer.OgcMapLayer` kann WMS-Aufnahmen (Web Map Services) und WMTS-Aufnahmen (Web Map Tile Services) auf der Karte überlagern. WMS ist ein von OGC entwickeltes Standardprotokoll für die Bereitstellung georeferenzierter Kartenbilder im Internet. Die Georeferenzierung von Bildern ist der Prozess der Zuordnung eines Bilds zu einem geografischen Ort. WMTS ist auch ein von OGC entwickeltes Standardprotokoll. Es ist für die Bereitstellung vorgerenderter und georeferenzierter Kartenkacheln konzipiert.
 
-In den folgenden Abschnitten werden die Web Mapping Service-Funktionen beschrieben, die von der Klasse `OgcMapLayer` unterstützt werden.
+In den folgenden Abschnitten werden die Web Map Service-Funktionen beschrieben, die von der Klasse `OgcMapLayer` unterstützt werden.
 
-**Web Mapping Service (WMS)**
+**Web Map Service (WMS)**
 
 - Unterstützte Versionen: `1.0.0`, `1.1.0`, `1.1.1` und `1.3.0`
-- Der Dienst muss das Projektionssystem `EPSG:3857` unterstützen oder in der Lage sein, Neuprojektionen durchzuführen.
+- Der Dienst muss das `EPSG:3857`-Projektionssystem unterstützen oder in der Lage sein, Neuprojektionen durchzuführen.
 - GetFeatureInfo erfordert, dass der Dienst `EPSG:4326` unterstützt oder Neuprojektionen durchführt. 
 - Unterstützte Vorgänge:
 
@@ -34,7 +34,7 @@ In den folgenden Abschnitten werden die Web Mapping Service-Funktionen beschrieb
     | GetMap | Ruft ein Kartenbild für eine angegebene Region ab |
     | GetFeatureInfo | Ruft `feature_info` ab, worin sich die zugrunde liegende Daten zum Feature befinden |
 
-**Web Mapping Tile Service (WMTS)**
+**Web Map Tile Service (WMTS)**
 
 - Unterstützte Versionen: `1.0.0`
 - Kacheln müssen quadratisch sein, z. B. `TileWidth == TileHeight`.

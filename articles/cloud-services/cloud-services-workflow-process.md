@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 04/08/2019
 ms.author: kwill
 ms.openlocfilehash: 5dd57a87658554bf59acf5cee1b6daf67b8692b8
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71162150"
 ---
 #    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Workflow der klassischen Windows-Azure-VM-Architektur 
@@ -43,8 +43,8 @@ Das folgende Diagramm zeigt die Architektur von Azure-Ressourcen.
 
 **D**.  WindowsAzureGuestAgent ist für Folgendes zuständig:
 
-1. Konfigurieren des Gastbetriebssystems, einschließlich Firewall, Zugriffssteuerungslisten (Access Control List, ACL), LocalStorage-Ressourcen, Dienstpaket, Konfiguration und Zertifikate,
-2. sowie Einrichten der Sicherheits-ID (SID) für das Benutzerkonto, unter dem die Rolle ausgeführt wird.
+1. Konfigurieren des Gastbetriebssystems, einschließlich Firewall, Zugriffssteuerungslisten (Access Control List, ACL), LocalStorage-Ressourcen, Dienstpaket und -konfiguration sowie Zertifikaten
+2. Einrichten der Sicherheits-ID (SID) für das Benutzerkonto, unter dem die Rolle ausgeführt wird
 3. Melden des Rollenstatus an das Fabric
 4. Starten und Überwachen von WaHostBootstrapper, um sicherzustellen, dass sich die Rolle im Zielzustand befindet
 

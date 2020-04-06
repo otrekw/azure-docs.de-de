@@ -3,18 +3,17 @@ title: Entwicklerhandbuch zu Azure-Schlüsseltresor
 description: Mit Azure-Schlüsseltresor können Entwickler kryptografische Schlüssel in der Microsoft Azure-Umgebung verwalten.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 331e3d5855e4ea1fc18a3b638741f6297a7a27d8
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a8cb0ea9fb3c6e8388271c4274baf4ecc7282cda
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184671"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80247230"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Entwicklerhandbuch zu Azure-Schlüsseltresor
 
@@ -23,7 +22,7 @@ Mithilfe des Schlüsseltresors können Sie in Ihren Anwendungen sicher auf vertr
 - Schlüssel und geheime Schlüssel werden geschützt, ohne dass Sie den Code selbst schreiben müssen, und können auf einfache Weise in Ihren Anwendungen verwendet werden.
 - Ihre Kunden können die Verantwortung für ihre eigenen Schlüssel übernehmen und diese selbst verwalten, sodass Sie sich auf die Bereitstellung der Hauptfunktionen der Software konzentrieren können. Auf diese Weise müssen Ihre Anwendungen weder die Verantwortung noch die Haftung für die Mandantenschlüssel und geheimen Mandantenschlüssel Ihrer Kunden übernehmen.
 - Ihre Anwendung kann Signatur- und Verschlüsselungsschlüssel verwenden, wobei die Schlüssel außerhalb der Anwendung verwaltet werden, damit die Lösung auch für eine geografisch verteilte App geeignet ist.
-- Mit der Key Vault-Version vom September 2016 können Ihre Anwendungen nun auch Key Vault-Zertifikate verwalten. Weitere Informationen finden Sie im Artikel [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](/rest/api/keyvault/about-keys--secrets-and-certificates).
+- Verwalten Sie Key Vault-Zertifikate. Weitere Informationen finden Sie im Artikel [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](about-keys-secrets-and-certificates.md).
 
 Allgemeine Informationen zu Azure Key Vault finden Sie unter [Was ist der Schlüsseltresor?](key-vault-overview.md).
 
@@ -39,9 +38,14 @@ Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen finden S
 
 Bevor Sie mit Schlüsseln, Geheimnissen oder Zertifikaten in Ihrem Schlüsseltresor arbeiten können, müssen Sie diesen über die CLI, PowerShell, Azure Resource Manager-Vorlagen oder REST erstellen und verwalten. Die jeweilige Vorgehensweise wird in den folgenden Artikeln beschrieben:
 
-- [Erstellen und Verwalten von Schlüsseltresoren über die CLI](key-vault-manage-with-cli2.md)
-- [Erstellen und Verwalten von Schlüsseltresoren mit PowerShell](key-vault-overview.md)
-- [Erstellen eines Schlüsseltresors und Hinzufügen eines Geheimnisses über eine Azure Resource Manager-Vorlage](../azure-resource-manager/resource-manager-template-keyvault.md)
+- [Erstellen und Verwalten von Schlüsseltresoren über die CLI](quick-create-cli.md)
+- [Erstellen und Verwalten von Schlüsseltresoren mit PowerShell](quick-create-powershell.md)
+- [Erstellen und Verwalten von Schlüsseltresoren über das Azure-Portal](quick-create-portal.md)
+- [Erstellen und Verwalten von Schlüsseltresoren mit Python](quick-create-python.md)
+- [Erstellen und Verwalten von Schlüsseltresoren mit Java](quick-create-java.md)
+- [Erstellen und Verwalten von Schlüsseltresoren mit Node.js](quick-create-node.md)
+- [Erstellen und Verwalten von Schlüsseltresoren mit .NET (v4 SDK)](quick-create-net.md)
+- [Erstellen eines Schlüsseltresors und Hinzufügen eines Geheimnisses über eine Azure Resource Manager-Vorlage](quick-create-template.md)
 - [Erstellen und Verwalten von Schlüsseltresoren über REST](/rest/api/keyvault/)
 
 
@@ -59,7 +63,7 @@ Das Key Vault-Verwaltungssystem für Programmierer besteht aus mehreren Schnitts
 
 #### <a name="net"></a>.NET
 
-[.NET-API-Referenz für Key Vault](/dotnet/api/microsoft.azure.keyvault).
+[.NET-API-Referenz für Key Vault](/dotnet/api/overview/azure/key-vault?view=azure-dotnet).
 
 Weitere Informationen über die .NET SDK-Version 2.x finden Sie in den [Anmerkungen zu dieser Version](key-vault-dotnet2api-release-notes.md).
 
@@ -71,24 +75,19 @@ Weitere Informationen über die .NET SDK-Version 2.x finden Sie in den [Anmerkun
 
 Die Key Vault-Verwaltungs-API und die Key Vault-Objekt-API sind in Node.js getrennt. In den folgenden Übersichtsartikeln erhalten Sie weitere Informationen zu beiden. 
 
-[Azure Key Vault-Module für Node.js](/nodejs/api/overview/azure/key-vault)
+[Azure Key Vault-Module für Node.js](/javascript/api/overview/azure/key-vault?view=azure-node-latest)
 
 #### <a name="python"></a>Python
 
-[Azure Key Vault-Bibliotheken für Python](/python/api/overview/azure/key-vault)
+[Azure Key Vault-Bibliotheken für Python](/python/api/overview/azure/key-vault?view=azure-python)
 
-#### <a name="azure-cli-2"></a>Azure CLI 2
+#### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-[Azure CLI für Key Vault](/cli/azure/keyvault)
+[Azure CLI für Key Vault](/cli/azure/keyvault?view=azure-cli-latest)
 
 #### <a name="azure-powershell"></a>Azure PowerShell 
 
-[Azure PowerShell für Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)
-
-### <a name="quickstart-guides"></a>Schnellstarthandbücher
-
-- [Erstellen eines Schlüsseltresors](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
-- [Erste Schritte mit Key Vault in Node.js](https://github.com/Azure-Samples/key-vault-node-getting-started)
+[Azure PowerShell für Key Vault](/powershell/module/az.keyvault/?view=azps-3.6.1#key_vault)
 
 ### <a name="code-examples"></a>Codebeispiele
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
 ms.openlocfilehash: a69babdf2fffb4cb9d963f1806f3c85755e50294
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74454361"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Delegieren von Benutzerregistrierung und Produktabonnierung
@@ -26,7 +26,7 @@ Mit der Delegierung können Sie Anmeldung, Registrierung und Produktabonnierung 
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="delegate-signin-up"></a>Delegieren von Anmeldung und Registrierung für Entwickler
+## <a name="delegating-developer-sign-in-and-sign-up"></a><a name="delegate-signin-up"> </a>Delegieren der Anmeldung und Registrierung für Entwickler
 
 Um die Anmeldung und Registrierung für Entwickler bei Ihrer vorhandenen Website zu delegieren, müssen Sie einen speziellen Delegierungsendpunkt für Ihre Website erstellen. Er muss als Einstiegspunkt für über das API Management-Entwicklerportal initiierte Anforderungen dieser Art fungieren.
 
@@ -92,7 +92,7 @@ Sie müssen die folgenden Abfrageparameter für Operationen zur Kontoverwaltung 
 * **salt**: Eine spezielle Salt-Zeichenfolge, mit der ein Sicherheitshash generiert wird
 * **sig**: Ein berechneter Sicherheitshash zum Vergleich mit dem von Ihnen generierten Hash
 
-## <a name="delegate-product-subscription"></a>Delegieren der Produktabonnierung
+## <a name="delegating-product-subscription"></a><a name="delegate-product-subscription"> </a>Delegieren der Produktabonnierung
 Die Delegierung der Produktabonnierung funktioniert genauso wie die Delegierung der Anmeldung und Registrierung. Der komplette Workflow sieht wie folgt aus:
 
 1. Ein Entwickler wählt ein Produkt im API Management-Entwicklerportal aus und klickt auf die Schaltfläche „Abonnieren“.
@@ -131,7 +131,7 @@ Stellen Sie anschließend sicher, dass der Delegierungsendpunkt die folgenden Ak
 3. Verarbeiten Sie das Produktabonnement basierend auf dem im Parameter **operation** angeforderten Vorgang, z. B. Abrechnung, weitere Fragen usw.
 4. Nachdem der Benutzer das Produkt auf Ihrer Seite erfolgreich abonniert hat, abonnieren Sie das Produkt in API Management für den Benutzer, indem Sie die [Aufrufen der REST-API für Abonnements] aufrufen.
 
-## <a name="delegate-example-code"></a> Beispielcode
+## <a name="example-code"></a><a name="delegate-example-code"> </a> Beispielcode
 
 Die Codebeispiele zeigen Folgendes:
 

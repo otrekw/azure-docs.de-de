@@ -1,5 +1,5 @@
 ---
-title: Informationen zum Speech-Geräte-SDK (Speech-Dienst)
+title: 'Speech Devices SDK: Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Erste Schritte mit dem Speech-Geräte-SDK Der Speech-Dienst kann mit verschiedensten Geräten und Audioquellen verwendet werden. Beim Speech-Geräte-SDK handelt es sich um eine vorab optimierte Bibliothek, die mit spezifischen mikrofonfähigen Development Kits kombiniert wurde.
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 43d08b466076672587e7f6545193e326283c0031
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: add0d27ae6a612fed0320b5329d19236b7bbbd01
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330786"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79370643"
 ---
-# <a name="about-the-speech-devices-sdk"></a>Informationen zum Speech-Geräte-SDK
+# <a name="what-is-the-speech-devices-sdk"></a>Was ist das Speech Devices SDK?
 
 Der [Speech-Dienst](overview.md) kann mit verschiedensten Geräten und Audioquellen verwendet werden. Jetzt können Sie einen Schritt weiter gehen und Ihre Sprachanwendungen mit angepasster Hardware und Software nutzen. Beim Speech-Geräte-SDK handelt es sich um eine vorab optimierte Bibliothek, die mit spezifischen mikrofonfähigen Development Kits kombiniert wurde.
 
@@ -49,7 +49,7 @@ Die Anwendung wird mit dem Speech SDK-Paket und der Eclipse Java-IDE (v4) unter 
 Für Linux wird die Beispielanwendung als plattformübergreifende Java-Anwendung bereitgestellt. Laden Sie die neueste Version des [Speech-Geräte-SDK für die JRE](https://aka.ms/sdsdk-download-JRE) herunter.
 Die Anwendung wird mit dem Speech SDK-Paket und der Eclipse Java-IDE (v4) unter 64-Bit-Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9, RHEL 8, CentOS 8) erstellt. Sie wird in einer 64-Bit Java 8-JRE (Runtime Environment) ausgeführt.
 
-Zusätzliche Binärdateien werden bereitgestellt, um demnächst erscheinende Geräte, [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2) und [Urbetter DDK-](https://aka.ms/sdsdk-download-urbetter) zu unterstützen.
+Zusätzliche Binärdateien werden bereitgestellt, um zukünftige Geräte, [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2), [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter) und [GGEC Speaker](https://aka.ms/sdsdk-download-speaker) zu unterstützen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 11/25/2019
+ms.date: 03/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 3694c8cb34b2a050c9e18265c8cc0a0198456076
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 8d26efec2783d6f121c319e46b1b505b6e1b1e09
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533718"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79498935"
 ---
 # <a name="request-limits-for-translator-text"></a>Anforderungslimits für die Textübersetzungs-API
 
@@ -23,7 +23,7 @@ In diesem Artikel werden die Drosselungslimits für die Textübersetzungs-API au
 
 ## <a name="character-and-array-limits-per-request"></a>Zeichen- und Arraygrenzwerte pro Anforderung
 
-Jede Übersetzungsanforderung (Translate) kann maximal 5.000 Zeichen lang sein. Die Abrechnung erfolgt nach der Anzahl der Zeichen, nicht nach der Anzahl der Anforderungen. Es wird empfohlen, kürzere Anforderungen zu senden.
+Jede Übersetzungsanforderung ist auf 5.000 Zeichen in allen von Ihnen verwendeten Zielsprachen beschränkt. Beispiel: Das Senden einer Übersetzungsanforderung von 1.500 Zeichen für die Übersetzung in drei verschiedene Sprachen ergibt eine Anforderungsgröße von 1.500 · 3 = 4.500 Zeichen. Dies entspricht dem Anforderungsgrenzwert. Die Abrechnung erfolgt nach der Anzahl der Zeichen, nicht nach der Anzahl der Anforderungen. Es wird empfohlen, kürzere Anforderungen zu senden.
 
 In der folgenden Tabelle sind Arrayelement- und Zeichengrenzwerte für jeden Vorgang der Textübersetzungs-API aufgeführt.
 

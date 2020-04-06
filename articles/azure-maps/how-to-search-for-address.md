@@ -1,19 +1,19 @@
 ---
 title: Suchen nach einem Ort mit dem Suchdienst von Azure Maps | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Suchdiensts von Microsoft Azure Maps einen Ort für die Geocodierung und inverse Geocodierung suchen.
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 01/15/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 40066f24fec00610a1efd10b2cb874b1100acdee
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: cf0e5267885df1ace51271c53bb2d68ee5002f00
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209884"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335431"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Suchen nach einem Ort mit dem Suchdienst von Azure Maps
 
@@ -55,7 +55,7 @@ Wenn Sie über eine Gruppe von Adressen für die Geocodierung verfügen, können
 
 ![Adresssuche](./media/how-to-search-for-address/address_search_params.png) 
 
-| Key | value | 
+| Schlüssel | Wert | 
 |------------------|-------------------------| 
 | api-version | 1.0 | 
 | subscription-key | \<Ihr Azure Maps-Schlüssel\> | 
@@ -73,7 +73,7 @@ In diesem Fall haben Sie eine Abfrage für eine vollständige Adresse angegeben 
 
 6. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**: 
 
-| Key | value | 
+| Schlüssel | Wert | 
 |-----|------------| 
 | typeahead | true | 
 
@@ -105,7 +105,7 @@ Die meisten Suchabfragen sind zur Leistungssteigerung und Verringerung ungewöhn
 
     ![Fuzzysuche](./media/how-to-search-for-address/fuzzy_search_params.png)
 
-    | Key | value |
+    | Schlüssel | Wert |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<Ihr Azure Maps-Schlüssel\> |
@@ -119,7 +119,7 @@ Die meisten Suchabfragen sind zur Leistungssteigerung und Verringerung ungewöhn
 
 5. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
 
-    | Key | value |
+    | Schlüssel | Wert |
     |------------------|-------------------------|
     | countrySet | US |
   
@@ -131,7 +131,7 @@ Die meisten Suchabfragen sind zur Leistungssteigerung und Verringerung ungewöhn
 
     ![Fuzzysuche](./media/how-to-search-for-address/fuzzy_search_latlon.png)
   
-    | Key | value |
+    | Schlüssel | Wert |
     |-----|------------|
     | lat | 47.620525 |
     | lon | -122.349274 |
@@ -159,7 +159,7 @@ Wenn Sie über eine Gruppe von Koordinatenpositionen für die inverse Geocodieru
   
     ![Parameter für inverse Adresssuche](./media/how-to-search-for-address/reverse_address_search_params.png)
   
-    | Key | value |
+    | Schlüssel | Wert |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<Ihr Azure Maps-Schlüssel\> |
@@ -171,7 +171,7 @@ Wenn Sie über eine Gruppe von Koordinatenpositionen für die inverse Geocodieru
   
 5. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
 
-    | Key | value |
+    | Schlüssel | Wert |
     |-----|------------|
     | number | true |
 
@@ -179,7 +179,7 @@ Wenn Sie über eine Gruppe von Koordinatenpositionen für die inverse Geocodieru
   
 6. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
 
-    | Key | value |
+    | Schlüssel | Wert |
     |-----|------------|
     | returnSpeedLimit | true |
   
@@ -187,7 +187,7 @@ Wenn Sie über eine Gruppe von Koordinatenpositionen für die inverse Geocodieru
 
 7. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
 
-    | Key | value |
+    | Schlüssel | Wert |
     |-----|------------|
     | returnRoadUse | true |
 
@@ -195,7 +195,7 @@ Wenn Sie über eine Gruppe von Koordinatenpositionen für die inverse Geocodieru
 
 8. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
 
-    | Key | value |
+    | Schlüssel | Wert |
     |-----|------------|
     | roadUse | true |
 
@@ -217,7 +217,7 @@ Wenn Sie über eine Gruppe von Koordinatenpositionen für die inverse Geocodieru
   
 3. Klicken Sie auf **Params** (Parameter), und geben Sie die folgenden Schlüssel-Wert-Paare zur Verwendung als Abfrage- oder Pfadparameter in der Anforderungs-URL ein:
   
-    | Key | value |
+    | Schlüssel | Wert |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<Ihr Azure Maps-Schlüssel\> |
@@ -227,5 +227,5 @@ Wenn Sie über eine Gruppe von Koordinatenpositionen für die inverse Geocodieru
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Machen Sie sich mit der API-Dokumentation zum [Suchdienst von Azure Maps](https://docs.microsoft.com/rest/api/maps/search) vertraut.
-- Erfahren Sie mehr über [Bewährte Methoden](https://docs.microsoft.com/azure/azure-maps/how-to-use-best-practices-for-search).
+- Machen Sie sich mit der [REST API-Dokumentation zum Suchdienst](https://docs.microsoft.com/rest/api/maps/search) von Azure Maps vertraut.
+- Informieren Sie sich über [Bewährte Methoden für den Azure Maps-Suchdienst](https://docs.microsoft.com/azure/azure-maps/how-to-use-best-practices-for-search) und über das Optimieren Ihrer Abfragen.

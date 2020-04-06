@@ -4,12 +4,12 @@ description: Beispiele für die Verwendung des Azure Application Insights-ILogge
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2c97c79229c6f136c154169253f2299b7756a105
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 0f40c1c1a8ee7f20c769a62e9746da43face4cc7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78192471"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80276375"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider für .NET Core-ILogger-Protokolle
 
@@ -18,9 +18,9 @@ Weitere Informationen finden Sie unter [Protokollierung in ASP.NET Core](https:/
 
 ## <a name="aspnet-core-applications"></a>ASP.NET Core-Anwendungen
 
-ApplicationInsightsLoggerProvider wird in [Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) Version 2.7.1 (und höher) standardmäßig aktiviert, wenn Sie die normale Application Insights-Überwachung über eine der Standardmethoden aktivieren:
+ApplicationInsightsLoggerProvider wird in Version 2.7.1 (und höher) des [Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) standardmäßig aktiviert, wenn Sie die normale Application Insights-Überwachung über eine der folgenden Methoden aktivieren:
 
-- Durch Aufrufen der **UseApplicationInsights**-Erweiterungsmethode für IWebHostBuilder
+- Durch Aufrufen der **UseApplicationInsights**-Erweiterungsmethode für IWebHostBuilder (jetzt veraltet)
 - Durch Aufrufen der **AddApplicationInsightsTelemetry**-Erweiterungsmethode für IServiceCollection
 
 Von ApplicationInsightsLoggerProvider erfasste ILogger-Protokolle unterliegen der gleichen Konfiguration wie alle sonstigen erfassten Telemetriedaten. Sie weisen dieselben TelemetryInitializers und TelemetryProcessors auf, verwenden denselben TelemetryChannel, und die Korrelation und Stichprobenentnahme erfolgt wie bei anderen Telemetriedaten. Wenn Sie Version 2.7.1 oder höher verwenden, müssen Sie zum Erfassen von ILogger-Protokollen keine Aktion ausführen.
@@ -78,7 +78,7 @@ Mit dem Code in Schritt 2 wird `ApplicationInsightsLoggerProvider` konfiguriert.
 ```csharp
 public class ValuesController : ControllerBase
 {
-    private readonly `ILogger` _logger;
+    private readonly ILogger _logger;
 
     public ValuesController(ILogger<ValuesController> logger)
     {
@@ -159,7 +159,7 @@ public class Program
 ```csharp
 public class Startup
 {
-    private readonly `ILogger` _logger;
+    private readonly ILogger _logger;
 
     public Startup(IConfiguration configuration, ILogger<Startup> logger)
     {
@@ -325,22 +325,20 @@ In den folgenden Beispielen werden Filterregeln auf ApplicationInsightsLoggerPro
 
 ### <a name="create-filter-rules-in-configuration-with-appsettingsjson"></a>Erstellen von Filterregeln in der Konfiguration mit „appsettings.json“
 
-Für ApplicationInsightsLoggerProvider lautet der Anbieteralias `ApplicationInsights`. Der folgende Abschnitt von *appsettings.json* konfiguriert, dass Protokolle für *Warnung* und höher aus allen Kategorien und *Fehler* und höher aus Kategorien, die mit „Microsoft“ beginnen, an `ApplicationInsightsLoggerProvider` gesendet werden.
+Für ApplicationInsightsLoggerProvider lautet der Anbieteralias `ApplicationInsights`. Der folgende Abschnitt der Datei *appsettings.json* weist Protokollierungsanbieter generell an, auf der Ebene *Warnung* und höher zu protokollieren. Anschließend wird `ApplicationInsightsLoggerProvider` überschrieben, um Kategorien, die mit „Microsoft“ beginnen, auf der Ebene *Fehler* und höher zu protokollieren.
 
 ```json
 {
   "Logging": {
-    "ApplicationInsights": {
-      "LogLevel": {
-        "Default": "Warning",
-        "Microsoft": "Error"
-      }
-    },
     "LogLevel": {
       "Default": "Warning"
+    },
+    "ApplicationInsights": {
+      "LogLevel": {
+        "Microsoft": "Error"
+      }
     }
-  },
-  "AllowedHosts": "*"
+  }
 }
 ```
 

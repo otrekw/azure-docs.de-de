@@ -3,12 +3,12 @@ title: Python-Entwicklerreferenz für Azure Functions
 description: Entwickeln von Funktionen mit Python
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: cfac28c4a759cee66c932c7b8cfea053c9c4f505
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 30f40db33b6aa8b40202c023f301265565257180
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921793"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234918"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Python-Entwicklerhandbuch für Azure Functions
 
@@ -22,25 +22,9 @@ Azure Functions geht davon aus, dass eine Funktion eine zustandslose Methode in 
 
 Daten von Triggern und Bindungen werden mittels Methodenattributen an die Funktion gebunden, die die in der Konfigurationsdatei *function.json* definierte Eigenschaft `name` verwenden. Beispielsweise beschreibt die unten stehende _function.json_ eine einfache Funktion, die von einer HTTP-Anforderung namens `req` ausgelöst wird:
 
-```json
-{
-  "bindings": [
-    {
-      "name": "req",
-      "direction": "in",
-      "type": "httpTrigger",
-      "authLevel": "anonymous"
-    },
-    {
-      "name": "$return",
-      "direction": "out",
-      "type": "http"
-    }
-  ]
-}
-```
+:::code language="son" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 
-Die Datei `__init__.py` enthält folgenden Funktionscode:
+Basierend auf dieser Definition könnte die Datei `__init__.py`, die den Funktionscode enthält, wie im folgenden Beispiel aussehen:
 
 ```python
 def main(req):
@@ -81,16 +65,16 @@ Die empfohlene Ordnerstruktur für ein Python Functions-Projekt sieht wie im fol
 
 ```
  __app__
- | - MyFirstFunction
+ | - my_first_function
  | | - __init__.py
  | | - function.json
  | | - example.py
- | - MySecondFunction
+ | - my_second_function
  | | - __init__.py
  | | - function.json
- | - SharedCode
- | | - myFirstHelperFunction.py
- | | - mySecondHelperFunction.py
+ | - shared_code
+ | | - my_first_helper_function.py
+ | | - my_second_helper_function.py
  | - host.json
  | - requirements.txt
  tests
@@ -105,19 +89,47 @@ Der Hauptprojektordner (\_\_app\_\_) kann die folgenden Dateien enthalten:
 
 Jede Funktion verfügt über eine eigene Codedatei sowie über eine eigene Bindungskonfigurationsdatei (function.json). 
 
-Freigegebener Code sollte in einem separaten Ordner in \_\_app\_\_ gespeichert werden. Um auf Module im Ordner „SharedCode“ zu verweisen, können Sie die folgende Syntax verwenden:
+Wenn Sie Ihr Projekt in einer Funktions-App in Azure bereitstellen, sollte der gesamte Inhalt des Hauptprojektordners ( *\_\_app\_\_* ) in das Paket aufgenommen werden, jedoch nicht der Ordner selbst. Es wird empfohlen, dass Sie Ihre Tests in einem Ordner außerhalb des Projektordners speichern; in diesem Beispiel ist dies `tests`. Dadurch wird die Bereitstellung von Testcode mit der App verhindert. Weitere Informationen finden Sie unter [Komponententests](#unit-testing).
+
+## <a name="import-behavior"></a>Importverhalten
+
+Sie können Module in Ihrem Funktionscode sowohl über explizite relative und als auch über absolute Verweise importieren. Basierend auf der oben gezeigten Ordnerstruktur funktionieren die folgenden Importe innerhalb der Funktionsdatei *\_\_app\_\_\my\_first\_function\\_\_init\_\_.py*:
 
 ```python
-from __app__.SharedCode import myFirstHelperFunction
+from . import example #(explicit relative)
 ```
-
-Um auf Module zu verweisen, die lokal für eine Funktion sind, können Sie die relative Importsyntax wie folgt verwenden:
 
 ```python
-from . import example
+from ..shared_code import my_first_helper_function #(explicit relative)
 ```
 
-Wenn Sie Ihr Projekt in einer Funktions-App in Azure bereitstellen, sollte der gesamte Inhalt des Ordners *FunctionApp* in das Paket aufgenommen werden, jedoch nicht der Ordner selbst. Es wird empfohlen, dass Sie Ihre Tests in einem Ordner außerhalb des Projektordners speichern; in diesem Beispiel ist dies `tests`. Dadurch wird die Bereitstellung von Testcode mit der App verhindert. Weitere Informationen finden Sie unter [Komponententests](#unit-testing).
+```python
+from __app__ import shared_code #(absolute)
+```
+
+```python
+import __app__.shared_code #(absolute)
+```
+
+Die folgenden Importe funktionieren *nicht* innerhalb derselben Datei:
+
+```python
+import example
+```
+
+```python
+from example import some_helper_code
+```
+
+```python
+import shared_code
+```
+
+Freigegebener Code sollte in einem separaten Ordner in *\_\_app\_\_* gespeichert werden. Um auf Module im Ordner *shared\_code* zu verweisen, können Sie die folgende Syntax verwenden:
+
+```python
+from __app__.shared_code import my_first_helper_function
+```
 
 ## <a name="triggers-and-inputs"></a>Trigger und Eingaben
 
@@ -236,7 +248,7 @@ def main(req):
 
 Es sind zusätzliche Protokollierungsmethoden verfügbar, mit denen Sie auf anderen Ablaufverfolgungsebenen in die Konsole schreiben können:
 
-| Methode                 | Beschreibung                                |
+| Methode                 | BESCHREIBUNG                                |
 | ---------------------- | ------------------------------------------ |
 | **`critical(_message_)`**   | Schreibt eine Meldung mit der Stufe KRITISCH in die Stammprotokollierung.  |
 | **`error(_message_)`**   | Schreibt eine Meldung mit der Stufe ERROR in die Stammprotokollierung.    |
@@ -382,7 +394,18 @@ Für die lokale Entwicklung werden Anwendungseinstellungen [in der Datei „loca
 
 ## <a name="python-version"></a>Python-Version 
 
-Derzeit unterstützt Azure Functions sowohl Python 3.6.x als auch 3.7.x (offizielle CPython-Verteilungen). Bei lokaler Ausführung verwendet die Runtime die verfügbare Python-Version. Wenn Sie beim Erstellen der Funktions-App in Azure eine bestimmte Python-Version anfordern möchten, verwenden Sie die `--runtime-version`-Option des Befehls [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create). Die Versionsänderung ist nur bei der Erstellung von Funktions-Apps zulässig.  
+Azure Functions unterstützt die folgenden Python-Versionen:
+
+| Functions-Version | Python-Versionen<sup>*</sup> |
+| ----- | ----- |
+| 3.x | 3.8<br/>3,7<br/>3.6 |
+| 2.x | 3,7<br/>3.6 |
+
+<sup>*</sup>Offizielle CPython-Distributionen
+
+Wenn Sie beim Erstellen der Funktions-App in Azure eine bestimmte Python-Version anfordern möchten, verwenden Sie die `--runtime-version`-Option des Befehls [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create). Die Functions-Runtimeversion wird mit der Option `--functions-version` festgelegt. Die Python-Version wird bei der Erstellung der Funktions-App festgelegt und kann nicht geändert werden.  
+
+Bei lokaler Ausführung verwendet die Runtime die verfügbare Python-Version. 
 
 ## <a name="package-management"></a>Paketverwaltung
 
@@ -587,7 +610,7 @@ class TestFunction(unittest.TestCase):
 Die `tempfile.gettempdir()`-Methode gibt einen temporären Ordner zurück, unter Linux `/tmp`. Die Anwendung kann dieses Verzeichnis zum Speichern von temporären Dateien verwenden, die von ihren Funktionen während der Ausführung generiert und verwendet werden. 
 
 > [!IMPORTANT]
-> Für Dateien, die in das temporäre Verzeichnis geschrieben werden, wird nicht garantiert, dass sie über Aufrufe hinweg beibehalten werden. Beim horizontalen Hochskalieren werden temporäre Dateien nicht von Instanzen gemeinsam verwendet. 
+> Für Dateien, die in das temporäre Verzeichnis geschrieben werden, wird nicht garantiert, dass sie über Aufrufe hinweg beibehalten werden. Beim Aufskalieren werden temporäre Dateien nicht von Instanzen gemeinsam verwendet. 
 
 Im folgenden Beispiel wird eine benannte temporäre Datei im temporären Verzeichnis (`/tmp`) erstellt:
 

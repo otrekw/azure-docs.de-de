@@ -9,10 +9,10 @@ ms.date: 010/17/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 26e48d1af8e29c7d00a80910dcca62811da14822
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67673338"
 ---
 Im Azure-Portal können Sie zur gewünschten Verbindung navigieren und den Verbindungsstatus für eine klassische VNet-VPN Gateway-Instanz anzeigen. Die folgenden Schritte zeigen eine Möglichkeit, zu Ihrer Verbindung zu navigieren und sie zu überprüfen.
@@ -27,4 +27,4 @@ Im Azure-Portal können Sie zur gewünschten Verbindung navigieren und den Verbi
     ![Verbindungsstatus](./media/vpn-gateway-verify-connection-azureportal-classic/siteconnectstatus.png "Verbindungsstatus")
 5. Klicken Sie zum Anzeigen von weiteren Informationen zur Verbindung auf den Namen der Verbindung, um das Blatt **Standort-zu-Standort-VPN-Verbindungen** zu öffnen.
 
-    ![Verbindungsstatus – Weitere Informationen](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "Verbindungsstatus – Weitere Informationen")
+    ![Verbindungsstatus: Mehr](./media/vpn-gateway-verify-connection-azureportal-classic/connections4.png "Weitere Informationen zum Verbindungsstatus")

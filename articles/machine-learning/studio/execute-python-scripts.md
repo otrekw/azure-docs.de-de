@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: ec210fcdf521413438edd256cc3ee988b67f293f
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: c79f6bd63fa5d8d8c6b22ff271d8ca513a94fd64
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168660"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218082"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Ausführen von Python-Machine Learning-Skripts in Azure Machine Learning Studio (klassisch)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Python ist ein wertvolles Tool im Werkzeugkasten vieler Datenanalysten. Es wird in jeder Phase typischer Workflows beim maschinellen Lernen verwendet, einschließlich des Durchsuchens von Daten, der Featureextraktion, des Modelltrainings und der Modellvalidierung sowie der Bereitstellung.
 
@@ -65,13 +67,13 @@ Studio-Datasets sind nicht das gleiche wie Panda-Datenrahmen. Das hat zur Folge,
 
 **Alle Eingabedatenrahmen in der Python-Funktion haben stets einen numerischen 64-Bit-Index von 0 bis zur Anzahl der Zeilen minus 1*
 
-## <a id="import-modules"></a>Importieren vorhandener Python-Skriptmodule
+## <a name="importing-existing-python-script-modules"></a><a id="import-modules"></a>Importieren vorhandener Python-Skriptmodule
 
 Das zum Ausführen von Python-Code verwendete Back-End basiert auf [Anaconda](https://www.anaconda.com/distribution/), einer weitverbreiteten wissenschaftlichen Python-Distribution. Sie wird mit knapp 200 der gängigsten Python-Pakete geliefert, die für datenorientierte Workloads verwendet werden. Studio (klassisch) bietet aktuell keine Unterstützung für Paketverwaltungssystem wie Pip oder Conda zum Installieren und Verwalten externer Bibliotheken.  Wenn die Notwendigkeit besteht, zusätzliche Bibliotheken einzubinden, verwenden Sie das folgende Szenario als Richtschnur.
 
 Ein häufiger Anwendungsfall besteht in der Einbeziehung vorhandener Python-Skripts in Studio-Experimenten (klassisch). Das Modul [Execute Python Script][execute-python-script] nimmt eine ZIP-Datei mit Python-Modulen am dritten Eingabeport entgegen. Die Datei wird zur Laufzeit vom Ausführungs-Framework entpackt, und die Inhalte werden dem Bibliothekspfad des Python-Interpreters hinzugefügt. Die `azureml_main` -Einstiegspunktfunktion kann diese Module anschließend direkt importieren. 
 
-Stellen Sie sich beispielsweise die Datei "Hello.py" mit einer einfachen "Hello, World"-Funktion vor.
+Ein Beispiel wäre etwa die Datei „Hello.py“ mit einer einfachen Funktion vom Typ „Hello, World“.
 
 ![Benutzerdefinierte Funktion in der Datei „Hello.py“](./media/execute-python-scripts/figure4.png)
 
@@ -122,13 +124,13 @@ Ein aus diesem Experiment erstellter Webdienst würde die folgenden Aktionen aus
 1. Senden des Python-Ausdrucks an den Python-Interpreter
 1. Rückgabe einer Tabelle, die sowohl den Ausdruck als auch das bewertete Ergebnis enthält.
 
-## <a id="visualizations"></a>Arbeiten mit Visualisierungen
+## <a name="working-with-visualizations"></a><a id="visualizations"></a>Arbeiten mit Visualisierungen
 
 Mit MatplotLib erstellte Plots können vom Modul [Execute Python Script][execute-python-script] zurückgegeben werden. Allerdings werden Plots nicht, wie bei R, automatisch in Bilder umgeleitet. Daher muss der Benutzer Plots explizit als PNG-Dateien speichern.
 
 Um Bilder aus MatplotLib zu generieren, müssen Sie die folgenden Schritte ausführen:
 
-1. Ändern Sie das Back-End vom Qt-basierten Standardrenderer in „AGG“.
+1. Stellen Sie das Back-End vom Qt-basierten Standardrenderer auf „AGG“ um.
 1. Erstellen Sie ein neues Abbildungsobjekt.
 1. Rufen Sie die Achse ab, und generieren Sie alle zugehörigen Plots.
 1. Speichern Sie die Abbildung als PNG-Datei.
@@ -153,7 +155,7 @@ Dies ist die Python-Funktion zum Berechnen der Wichtigkeitsbewertungen und zum S
 
 ![Funktion zum Klassifizieren von Features nach Bewertungen](./media/execute-python-scripts/figure8.png)
 
-Der folgende Versuch berechnet anschließend die Wichtigkeitsbewertungen der Features und gibt sie im Dataset „Pima Indian Diabetes“ in Azure Machine Learning Studio (klassisch) aus:
+Im folgenden Experiment werden dann die Wichtigkeitsbewertungen der Features berechnet und im Dataset „Pima Indian Diabetes“ in Azure Machine Learning Studio (Classic) ausgegeben:
 
 ![Versuch zum Klassifizieren von Features im Dataset „Pima Indian Diabetes“ mithilfe von Python](./media/execute-python-scripts/figure9a.png)
 

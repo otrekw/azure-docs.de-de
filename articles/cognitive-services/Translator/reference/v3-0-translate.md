@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 11/12/2019
+ms.date: 03/20/2020
 ms.author: swmachan
-ms.openlocfilehash: d58383b20e4311f8ab9490dc241722eee2e44ad6
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 1821623fbe2a22234af649934ac06e72897a19cf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184807"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80052398"
 ---
 # <a name="translator-text-api-30-translate"></a>Textübersetzungs-API 3.0: Translate
 
@@ -119,7 +119,7 @@ Anforderungsheader enthalten Folgendes:
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td><em>Optional</em>.<br/>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung. Sie können diesen Header nur weglassen, wenn Sie die Ablaufverfolgungs-ID in die Abfragezeichenfolge über einen Abfrageparameter namens <code>ClientTraceId</code> einschließen.</td>
+    <td><em>Optional:</em><br/>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung. Sie können diesen Header nur weglassen, wenn Sie die Ablaufverfolgungs-ID in die Abfragezeichenfolge über einen Abfrageparameter namens <code>ClientTraceId</code> einschließen.</td>
   </tr>
 </table> 
 
@@ -164,7 +164,7 @@ Eine erfolgreiche Antwort ist ein JSON-Array mit einem Ergebnis für jede Zeiche
 
     Das `transliteration`-Objekt ist nur dann enthalten, wenn eine Transliteration erfolgt.
 
-    * `alignment`: Ein Objekt mit einer einzelnen Zeichenfolgeneigenschaft namens `proj`, das dem übersetzten Text Eingabetext zuordnet. Die Informationen für die Ausrichtung werden nur bereitgestellt, wenn der Anforderungsparameter `includeAlignment` `true` ist. Die Ausrichtung wird als Zeichenfolgenwert mit dem folgenden Format zurückgegeben: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  Der Doppelpunkt trennt Start- und Endindex, der Bindestrich trennt die Sprachen, und Leerzeichen trennen die Wörter. Ein Wort kann mit Null, einem oder mehreren Wörtern in der anderen Sprache übereinstimmen, und die ausgerichteten Wörter sind möglicherweise nicht zusammenhängend. Wenn keine Informationen für die Ausrichtung verfügbar sind, ist das Ausrichtungselement leer. Beispiele und Einschränkungen finden Sie in Abschnitt [Abrufen von Ausrichtungsinformationen](#obtain-alignment-information).
+    * `alignment`: Ein Objekt mit einer einzelnen Zeichenfolgeneigenschaft namens `proj`, das dem übersetzten Text Eingabetext zuordnet. Die Informationen für die Ausrichtung werden nur bereitgestellt, wenn der Anforderungsparameter `includeAlignment``true` ist. Die Ausrichtung wird als Zeichenfolgenwert mit dem folgenden Format zurückgegeben: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  Der Doppelpunkt trennt Start- und Endindex, der Bindestrich trennt die Sprachen, und Leerzeichen trennen die Wörter. Ein Wort kann mit Null, einem oder mehreren Wörtern in der anderen Sprache übereinstimmen, und die ausgerichteten Wörter sind ggf. nicht zusammenhängend. Wenn keine Informationen für die Ausrichtung verfügbar sind, ist das Ausrichtungselement leer. Beispiele und Einschränkungen finden Sie in Abschnitt [Abrufen von Ausrichtungsinformationen](#obtain-alignment-information).
 
     * `sentLen`: Ein Objekt, das Satzgrenzen in den Eingabe- und Ausgabetexten zurückgibt.
 
@@ -172,7 +172,7 @@ Eine erfolgreiche Antwort ist ein JSON-Array mit einem Ergebnis für jede Zeiche
 
       * `transSentLen`:  Ein Integer-Array, das die Länge der Sätze im übersetzten Text darstellt. Die Länge des Arrays stellt die Anzahl von Sätzen dar, und die Werte stehen jeweils für die Länge der einzelnen Sätze.
 
-    Satzgrenzen sind nur enthalten, wenn der Anforderungsparameter `includeSentenceLength` `true` ist.
+    Satzgrenzen sind nur enthalten, wenn der Anforderungsparameter `includeSentenceLength``true` ist.
 
   * `sourceText`: Ein Objekt mit einer einzelnen Zeichenfolgeneigenschaft namens `text`, das den Eingabetext im Standardskript der Quellsprache bereitstellt. Die Eigenschaft `sourceText` ist nur vorhanden, wenn die Eingabe in einem Skript ausgedrückt wird, das nicht das übliche Skript für die Sprache ist. Wenn die Eingabe z.B. ein arabischer Text ist, der im lateinischen Skript verfasst wurde, würde `sourceText.text` diesen arabischen Text in das arabische Skript konvertieren.
 
@@ -202,7 +202,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
   <th>BESCHREIBUNG</th>
   <tr>
     <td>200</td>
-    <td>Erfolgreich.</td>
+    <td>Erfolg.</td>
   </tr>
   <tr>
     <td>400</td>
@@ -479,14 +479,15 @@ Die Antwort lautet:
 Die Informationen für die Ausrichtung beginnen mit `0:2-0:1`, was bedeutet, dass die ersten drei Zeichen im Quelltext (`The`) den beiden ersten Zeichen im übersetzten Text (`La`) zugeordnet sind.
 
 #### <a name="limitations"></a>Einschränkungen
-Beachten Sie folgende Einschränkungen:
+Das Abrufen der Ausrichtungsinformationen ist ein experimentelles Feature, das für prototypbasierte Untersuchungen und Umgebungen mit möglichen Ausdruckszuordnungen aktiviert wurde. Dieses Features wird in Zukunft unter Umständen nicht mehr unterstützt. Nachfolgend finden Sie einige relevante Einschränkungen bei der Unterstützung von Ausrichtungen:
 
 * Ausrichtung ist für Text im HTML-Format – d.h. textType=html – nicht verfügbar.
 * Die Ausrichtung wird nur für eine Teilmenge der Sprachpaare zurückgegeben:
-  - aus dem Englischen in eine andere Sprache;
+  - aus dem Englischen in eine andere Sprache
   - aus einer beliebigen anderen Sprache ins Englische mit Ausnahme von Chinesisch (vereinfacht) und Chinesisch (traditionell) sowie aus dem Lettischen ins Englische;
   - aus dem Japanischen ins Koreanische und aus dem Koreanischen ins Japanische.
 * Sie erhalten keine Ausrichtung, wenn es sich bei dem Satz um eine vordefinierte Übersetzung handelt. Beispiele für vordefinierte Übersetzung sind „This is a test“, „I love you“ und andere häufig verwendete Sätze.
+* Die Ausrichtung ist nicht verfügbar, wenn Sie einen der [hier beschriebenen](../prevent-translation.md) Ansätze zum Verhindern der Übersetzung anwenden.
 
 ### <a name="obtain-sentence-boundaries"></a>Abrufen von Satzgrenzen
 

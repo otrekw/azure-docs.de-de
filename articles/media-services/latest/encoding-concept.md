@@ -13,18 +13,21 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 6a134d2bdfe7f370503b80703933ff646970d976
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 6e1c9aa5c2e049d5fc1ebd8bf745417f56d232ec
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981107"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366575"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Codieren von Video- und Audiodaten mit Media Services
 
 Der Begriff Codierung beschreibt in Media Services den Prozess der Konvertierung von Dateien, die digitale Video- und/oder Audiodateien enthalten, von einem Format in ein anderes Format. Ziel ist es, (a) die Größe der Dateien zu verringern und/oder (b) ein Format zu erzeugen, das mit einer Vielzahl von Geräten und Anwendungen kompatibel ist. Dieser Prozess wird auch als Videokomprimierung oder Transcodierung bezeichnet. Weitere Erläuterungen zu diesem Konzept finden Sie unter [Datenkomprimierung](https://en.wikipedia.org/wiki/Data_compression) und [Was bedeutet Codierung und Transcodierung?](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx).
 
 Videos werden in der Regel durch einen [progressiven Download](https://en.wikipedia.org/wiki/Progressive_download) oder per [Adaptive Bitrate Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) an Geräte und Apps übermittelt.
+
+> [!IMPORTANT]
+> Bei Media Services erfolgt keine Abrechnung für abgebrochene oder fehlerhafte Aufträge. Beispielsweise wird ein Auftrag, der einen Status von 50 % erreicht hat und abgebrochen wird, nicht mit 50 % der Auftragsminuten berechnet. Ihnen werden nur abgeschlossene Aufträge in Rechnung gestellt.
 
 * Zur Bereitstellung mittels progressivem Download können Sie Azure Media Services zum Konvertieren einer digitalen Mediendatei (Mezzanine) in eine [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14)-Datei verwenden. Diese enthält das Video, das mit dem [H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC)-Codec codiert wurde, sowie die Audiodatei, die mit dem [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)-Codec codiert wurde. Diese MP4-Datei wird in ein Medienobjekt in Ihrem Speicherkonto geschrieben. Sie können die Azure Storage-APIs oder -SDKs verwenden (z.B. [Storage-REST-API](../../storage/common/storage-rest-api-auth.md) oder [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)), um die Datei direkt herunterzuladen. Wenn Sie das Ausgabemedienobjekt mit einem bestimmten Containernamen im Speicher erstellt haben, verwenden Sie die diesen Speicherort. Andernfalls können Sie Media Services verwenden, um [die Medienobjektcontainer-URLs aufzulisten](https://docs.microsoft.com/rest/api/media/assets/listcontainersas). 
 * Die Mezzanine-Datei muss mit mehreren Bitraten (hoch bis niedrig) codiert werden, um Inhalte für die Übermittlung durch das Adaptive Bitrate Streaming vorzubereiten. Um eine gleichmäßige Qualitätsabnahme zu gewährleisten, wird mit sinkender Bitrate auch die Auflösung des Videos verringert. Dies führt zu einer sogenannten „Codierungsleiter“ – einer Tabelle mit Auflösungen und Bitraten. Weitere Informationen hierzu erhalten Sie unter [Codieren mit einer automatisch generierten Reihe von Bitraten-/Auflösungspaaren](autogen-bitrate-ladder.md). Sie können mithilfe von Media Services Ihre Mezzanine-Dateien mit verschiedenen Bitraten codieren. Auf diese Weise erhalten Sie einen Satz MP4-Dateien und zugehörige Konfigurationsdateien für das Streaming, die in ein Medienobjekt in Ihrem Speicherkonto geschrieben werden. Sie können dann die Funktion [Dynamische Paketerstellung](dynamic-packaging-overview.md) in Media Services verwenden, um das Video über Streamingprotokolle wie [MPEG-DASH](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) oder [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming) bereitzustellen. Dazu müssen Sie einen [Streaminglocator](streaming-locators-concept.md) und Streaming-URLs erstellen, die dem unterstützten Protokoll entsprechen. Dieses kann dann je nach Funktionen von Geräten/Apps an diese übergeben werden.
@@ -39,11 +42,11 @@ In diesem Thema erhalten Sie Anleitungen zum Codieren Ihrer Inhalte mit Media Se
 
 Um mit Media Services v3 codieren zu können, müssen Sie eine [Transformation](https://docs.microsoft.com/rest/api/media/transforms) und einen [Auftrag](https://docs.microsoft.com/rest/api/media/jobs) erstellen. Die Transformation definiert eine Anweisung für die Codierungseinstellungen und -ausgaben. Der Auftrag ist eine Instanz der Anweisung. Weitere Informationen finden Sie unter [Transformationen und Aufträge](transforms-jobs-concept.md).
 
-Bei der Codierung mit Media Services verwenden Sie Voreinstellungen, um dem Encoder mitzuteilen, wie die eingegebenen Mediendateien verarbeitet werden sollen. Beispielsweise können Sie die gewünschte Videoauflösung und/oder die Anzahl der Audiokanäle für den codierten Inhalt angeben.
+Bei der Codierung mit Media Services verwenden Sie Voreinstellungen, um dem Encoder mitzuteilen, wie die eingegebenen Mediendateien verarbeitet werden sollen. In Media Services v3 verwenden Sie den Standard-Encoder zum Codieren Ihrer Dateien. Beispielsweise können Sie die gewünschte Videoauflösung und/oder die Anzahl der Audiokanäle für den codierten Inhalt angeben.
 
 Mit einer der empfohlenen integrierten Voreinstellungen basierend auf in der Branche bewährten Vorgehensweisen können Sie schnell einsteigen. Alternativ können Sie eine benutzerdefinierte Voreinstellung für Ihr spezielles Szenario oder Ihre Geräteanforderungen erstellen. Weitere Informationen finden Sie unter [Codieren mit einer benutzerdefinierten Transformation](customize-encoder-presets-how-to.md).
 
-Ab Januar 2019 wird bei der Codierung mit Media Encoder Standard zum Erzeugen von MP4-Dateien eine neue MPI-Datei generiert und dem Ausgabeasset hinzugefügt. Diese MPI-Datei dient zum Verbessern der Leistung für die [dynamische Paketerstellung](dynamic-packaging-overview.md) und Streamingszenarios.
+Ab Januar 2019 wird bei der Codierung mit dem Standard-Encoder zum Erzeugen von MP4-Dateien eine neue MPI-Datei generiert und dem Ausgabeasset hinzugefügt. Diese MPI-Datei dient zum Verbessern der Leistung für die [dynamische Paketerstellung](dynamic-packaging-overview.md) und Streamingszenarios.
 
 > [!NOTE]
 > Sie sollten die MPI-Datei nicht ändern oder entfernen und auch keine Abhängigkeiten vom Vorhandensein (oder Nichtvorhandensein) einer solchen Datei in Ihren Dienst integrieren.
@@ -135,6 +138,12 @@ In Media Services v3 sind Voreinstellungen stark typisierte Entitäten in der AP
 ## <a name="scaling-encoding-in-v3"></a>Skalieren der Codierung in v3
 
 Informationen zum Skalieren der Medienverarbeitung finden Sie unter [Skalieren mit CLI](media-reserved-units-cli-how-to.md).
+
+## <a name="billing"></a>Abrechnung
+
+Bei Media Services erfolgt keine Abrechnung für abgebrochene oder fehlerhafte Aufträge. Beispielsweise wird ein Auftrag, der einen Status von 50 % erreicht hat und abgebrochen wird, nicht mit 50 % der Auftragsminuten berechnet. Ihnen werden nur abgeschlossene Aufträge in Rechnung gestellt.
+
+Weitere Informationen finden Sie unter [Azure Data Lake Storage – Preise](https://azure.microsoft.com/pricing/details/media-services/).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Fragen stellen, Feedback geben, Updates abrufen
 

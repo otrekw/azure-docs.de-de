@@ -2,13 +2,13 @@
 title: Unterstützung des Verschiebevorgangs nach Ressourcentyp
 description: Eine Liste von Azure-Ressourcentypen, die in eine neue Ressourcengruppe oder ein neues Abonnement verschoben werden können.
 ms.topic: conceptual
-ms.date: 01/22/2020
-ms.openlocfilehash: 3fe404b8b501056f75ac45ccebc5bdbed1acbe43
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.date: 03/17/2020
+ms.openlocfilehash: 2250283136608161956716abadb63b9f706bf581
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705478"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460414"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 In diesem Artikel wird aufgeführt, für welche Azure-Ressourcentypen der Verschiebevorgang unterstützt wird. Außerdem finden Sie hier Informationen zu speziellen Bedingungen, die beim Verschieben einer Ressource berücksichtigt werden müssen.
@@ -76,11 +76,13 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.DevOps](#microsoftdevops)
 > - [Microsoft.DevSpaces](#microsoftdevspaces)
 > - [Microsoft.DevTestLab](#microsoftdevtestlab)
+> - [Microsoft.DigitalTwins](#microsoftdigitaltwins)
 > - [Microsoft.DocumentDB](#microsoftdocumentdb)
 > - [Microsoft.DomainRegistration](#microsoftdomainregistration)
 > - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
 > - [Microsoft.EventGrid](#microsofteventgrid)
 > - [Microsoft.EventHub](#microsofteventhub)
+> - [Microsoft.Falcon](#microsoftfalcon)
 > - [Microsoft.Genomics](#microsoftgenomics)
 > - [Microsoft.GuestConfiguration](#microsoftguestconfiguration)
 > - [Microsoft.HanaOnAzure](#microsofthanaonazure)
@@ -93,7 +95,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
 > - [Microsoft.IoTSpaces](#microsoftiotspaces)
 > - [Microsoft.KeyVault](#microsoftkeyvault)
-> - [Microsoft.Kubernetes](#microsoftkubernetes)
 > - [Microsoft.Kusto](#microsoftkusto)
 > - [Microsoft.LabServices](#microsoftlabservices)
 > - [Microsoft.LocationBasedServices](#microsoftlocationbasedservices)
@@ -133,7 +134,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > - [Microsoft.ResourceHealth](#microsoftresourcehealth)
 > - [Microsoft.Resources](#microsoftresources)
 > - [Microsoft.SaaS](#microsoftsaas)
-> - [Microsoft.Scheduler](#microsoftscheduler)
 > - [Microsoft.Search](#microsoftsearch)
 > - [Microsoft.Security](#microsoftsecurity)
 > - [Microsoft.SecurityInsights](#microsoftsecurityinsights)
@@ -214,6 +214,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- | ---------- |
 > | Dienst | Ja | Ja |
 
+> [!IMPORTANT]
+> Ein auf die Verbrauchs-SKU festgelegter API Management-Dienst kann nicht verschoben werden.
+
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
 > [!div class="mx-tableFixed"]
@@ -283,7 +286,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- | ---------- |
 > | hybriddatamanagers | Nein | Nein |
 > | postgresinstances | Nein | Nein |
-> | sqlbigdataclusters | Nein | Nein |
 > | sqlinstances | Nein | Nein |
 > | sqlserverregistrations | Ja | Ja |
 
@@ -442,11 +444,12 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | hostgroups | Nein | Nein |
 > | hostgroups/hosts | Nein | Nein |
 > | images | Ja | Ja |
-> | proximityplacementgroups | Nein | Nein |
+> | proximityplacementgroups | Ja | Ja |
 > | restorepointcollections | Nein | Nein |
 > | sharedvmimages | Nein | Nein |
 > | sharedvmimages/versions | Nein | Nein |
 > | snapshots | Ja | Ja |
+> | sshpublickeys | Nein | Nein |
 > | virtualmachines | Ja | Ja |
 > | virtualmachines/extensions | Ja | Ja |
 > | virtualmachinescalesets | Ja | Ja |
@@ -683,6 +686,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | servergroups | Nein | Nein |
 > | servers | Ja | Ja |
 > | serversv2 | Ja | Ja |
+> | singleservers | Ja | Ja |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 
@@ -732,6 +736,13 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | labs/virtualmachines | Ja | Nein |
 > | schedules | Ja | Ja |
 
+## <a name="microsoftdigitaltwins"></a>Microsoft.DigitalTwins
+
+> [!div class="mx-tableFixed"]
+> | Ressourcentyp | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | digitaltwinsinstances | Nein | Nein |
+
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tableFixed"]
@@ -762,6 +773,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | eventSubscriptions | Nein, kann nicht unabhängig verschoben, aber automatisch mit abonnierter Ressource verschoben werden. | Nein, kann nicht unabhängig verschoben, aber automatisch mit abonnierter Ressource verschoben werden. |
 > | eventsubscriptions | Nein, kann nicht unabhängig verschoben, aber automatisch mit abonnierter Ressource verschoben werden. | Nein, kann nicht unabhängig verschoben, aber automatisch mit abonnierter Ressource verschoben werden. |
 > | extensiontopics | Nein | Nein |
+> | partnernamespaces | Ja | Ja |
+> | partnertopics | Ja | Ja |
+> | systemtopics | Ja | Ja |
 > | topics | Ja | Ja |
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
@@ -770,6 +784,13 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
 > | clusters | Ja | Ja |
+> | Namespaces | Ja | Ja |
+
+## <a name="microsoftfalcon"></a>Microsoft.Falcon
+
+> [!div class="mx-tableFixed"]
+> | Ressourcentyp | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
 > | Namespaces | Ja | Ja |
 
 ## <a name="microsoftgenomics"></a>Microsoft.Genomics
@@ -846,7 +867,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | actiongroups | Ja | Ja |
 > | activitylogalerts | Nein | Nein |
 > | alertrules | Ja | Ja |
-> | automatedexportsettings | Nein | Nein |
 > | autoscalesettings | Ja | Ja |
 > | baseline | Nein | Nein |
 > | calculatebaseline | Nein | Nein |
@@ -863,6 +883,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | metricnamespaces | Nein | Nein |
 > | metrics | Nein | Nein |
 > | myworkbooks | Nein | Nein |
+> | privatelinkscopes | Ja | Ja |
 > | scheduledqueryrules | Ja | Ja |
 > | Topologie | Nein | Nein |
 > | Transaktionen | Nein | Nein |
@@ -898,13 +919,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 
 > [!IMPORTANT]
 > Für die Datenträgerverschlüsselung verwendete Schlüsseltresore können nicht in einer Ressourcengruppe im gleichen Abonnement oder zwischen Abonnements verschoben werden.
-
-## <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
-
-> [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | connectedclusters | Nein | Nein |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
@@ -994,6 +1008,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
 > | workspaces | Nein | Nein |
+> | workspaces/computes | Nein | Nein |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
@@ -1078,25 +1093,27 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | dnszones | Ja | Ja |
 > | expressroutecircuits | Nein | Nein |
 > | expressroutegateways | Nein | Nein |
+> | firewallpolicies | Ja | Ja |
 > | frontdoors | Nein | Nein |
 > | frontdoorwebapplicationfirewallpolicies | Nein | Nein |
+> | ipgroups | Ja | Ja |
 > | loadbalancers | Ja: Basic-SKU<br>Nein: Standard-SKU | Ja: Basic-SKU<br>Nein: Standard-SKU |
 > | localnetworkgateways | Ja | Ja |
+> | natgateways | Ja | Ja |
 > | networkexperimentprofiles | Ja | Ja |
 > | networkintentpolicies | Ja | Ja |
 > | networkinterfaces | Ja | Ja |
 > | networkprofiles | Nein | Nein |
 > | networksecuritygroups | Ja | Ja |
-> | networkwatchers | Ja | Ja |
-> | networkwatchers/connectionmonitors | Ja | Ja |
-> | networkwatchers/flowlogs | Ja | Ja |
-> | networkwatchers/lenses | Ja | Ja |
-> | networkwatchers/pingmeshes | Ja | Ja |
+> | networkwatchers | Ja | Nein |
+> | networkwatchers/connectionmonitors | Ja | Nein |
+> | networkwatchers/flowlogs | Ja | Nein |
+> | networkwatchers/pingmeshes | Ja | Nein |
 > | p2svpngateways | Nein | Nein |
 > | privatednszones | Ja | Ja |
 > | privatednszones/virtualnetworklinks | Ja | Ja |
 > | privateendpointredirectmaps | Nein | Nein |
-> | privateendpoints | Nein | Nein |
+> | privateendpoints | Ja | Ja |
 > | privatelinkservices | Nein | Nein |
 > | publicipaddresses | Ja: Basic-SKU<br>Nein: Standard-SKU | Ja: Basic-SKU<br>Nein: Standard-SKU |
 > | publicipprefixes | Ja | Ja |
@@ -1274,13 +1291,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | ------------- | ----------- | ---------- |
 > | applications | Ja | Nein |
 
-## <a name="microsoftscheduler"></a>Microsoft.Scheduler
-
-> [!div class="mx-tableFixed"]
-> | Ressourcentyp | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | jobcollections | Ja | Ja |
-
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
 > [!div class="mx-tableFixed"]
@@ -1304,7 +1314,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | complianceresults | Nein | Nein |
 > | compliances | Nein | Nein |
 > | datacollectionagents | Nein | Nein |
-> | datacollectionresults | Nein | Nein |
 > | devicesecuritygroups | Nein | Nein |
 > | informationprotectionpolicies | Nein | Nein |
 > | iotsecuritysolutions | Ja | Ja |
@@ -1321,8 +1330,10 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | bookmarks | Nein | Nein |
 > | cases | Nein | Nein |
 > | dataconnectors | Nein | Nein |
+> | dataconnectorscheckrequirements | Nein | Nein |
 > | entities | Nein | Nein |
 > | entityqueries | Nein | Nein |
+> | incidents | Nein | Nein |
 > | officeconsents | Nein | Nein |
 > | settings | Nein | Nein |
 
@@ -1352,6 +1363,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | containergroups | Nein | Nein |
 > | containergroupsets | Nein | Nein |
 > | edgeclusters | Nein | Nein |
+> | managedclusters | Nein | Nein |
 > | networks | Nein | Nein |
 > | secretstores | Nein | Nein |
 > | volumes | Nein | Nein |
@@ -1408,6 +1420,8 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | servers | Ja | Ja |
 > | servers/databases | Ja | Ja |
 > | servers/elasticpools | Ja | Ja |
+> | servers/jobaccounts | Ja | Ja |
+> | servers/jobagents | Ja | Ja |
 > | virtualclusters | Ja | Ja |
 
 > [!IMPORTANT]
@@ -1496,7 +1510,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | createsupportticket | Nein | Nein |
 > | supporttickets | Nein | Nein |
 
 ## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
@@ -1529,8 +1542,8 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
 > | account | Nein | Nein |
-> | account/extension | Nein | Nein |
-> | account/project | Nein | Nein |
+> | account/extension | Ja | Ja |
+> | account/project | Ja | Ja |
 
 > [!IMPORTANT]
 > Informationen zum Ändern des Abonnements für Azure DevOps finden Sie unter [Change or remove the Azure subscription that your organization uses for billing](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json) (Ändern oder Entfernen des Azure-Abonnements, das von Ihrer Organisation für die Abrechnung verwendet wird).

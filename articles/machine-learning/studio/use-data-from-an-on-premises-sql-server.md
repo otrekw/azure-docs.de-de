@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 9afac1adef801956f176dd339c795e2df533a2c7
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 648dbdb7e9e9d1b20c55d3fa5b314b7e4657d5e7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77169114"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79204181"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>Durchführen von Analysen mit Azure Machine Learning Studio (klassisch) mit einer lokalen SQL Server-Datenbank
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Unternehmen, die mit lokalen Daten arbeiten, möchten häufig die Vorteile der Skalierung und Flexibilität der Cloud für ihre Machine Learning-Workloads nutzen. Sie möchten jedoch nicht ihre aktuellen Geschäftsprozesse und Workflows durch Verschieben ihrer lokalen Daten in die Cloud unterbrechen. Azure Machine Learning Studio (klassisch) unterstützt jetzt das Lesen von Daten aus einer lokalen SQL Server-Datenbank und anschließendes Trainieren und Bewerten von Modellen mit diesen Daten. Sie müssen die Daten zwischen der Cloud und dem lokalen Server nicht mehr manuell kopieren und synchronisieren. Stattdessen kann das Modul **Import Data** in Azure Machine Learning Studio (klassisch) jetzt direkt aus einer lokalen SQL Server-Datenbank für Ihre Trainings- und Bewertungsaufträge lesen.
 
@@ -118,7 +120,7 @@ Der erste Schritt ist das Erstellen und Einrichten des Gateways für den Zugriff
 Damit ist die Einrichtung des Gateways in Azure Machine Learning Studio (klassisch) abgeschlossen.
 Nun können Sie Ihre lokalen Daten nutzen.
 
-Sie können in Studio (klassisch) mehrere Gateways für jeden Arbeitsbereich erstellen und einrichten. Nehmen Sie an, Sie haben ein Gateway, das Sie während der Entwicklung mit den Testdatenquellen verbinden möchten, und ein anderes Gateway für Ihre Produktionsdatenquellen. Azure Machine Learning Studio (klassisch) bietet Ihnen die Flexibilität, abhängig von Ihrer Unternehmensumgebung mehrere Gateways einzurichten. Derzeit kann ein Gateway nicht in verschiedenen Arbeitsbereichen genutzt werden, und auf einem einzelnen Computer kann nur ein einziges Gateway installiert werden. Weitere Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](../../data-factory/tutorial-hybrid-copy-portal.md).
+Sie können in Studio (klassisch) mehrere Gateways für jeden Arbeitsbereich erstellen und einrichten. Nehmen Sie an, Sie haben ein Gateway, das Sie während der Entwicklung mit den Testdatenquellen verbinden möchten, und ein anderes Gateway für Ihre Produktionsdatenquellen. Azure Machine Learning Studio (klassisch) bietet Ihnen die Flexibilität, abhängig von Ihrer Unternehmensumgebung mehrere Gateways einzurichten. Derzeit kann ein Gateway nicht in verschiedenen Arbeitsbereichen genutzt werden, und auf einem einzelnen Computer kann nur ein einzelnes Gateway installiert werden. Weitere Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](../../data-factory/tutorial-hybrid-copy-portal.md).
 
 ### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>Schritt 2: Verwenden des Gateways zum Lesen von Daten aus einer lokalen Datenquelle
 Nachdem Sie das Gateway eingerichtet haben, können Sie ein **Import Data** -Modul einem Experiment hinzufügen, das die Daten aus einer lokalen SQL Server-Datenbank eingibt.

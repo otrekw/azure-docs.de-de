@@ -8,17 +8,22 @@ ms.date: 03/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: bb78536326885e043279de1ff77e6e8efcd95193
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: 2f10c7378ae7681b14df6e96b6a6f1adac832d1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037148"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80287814"
 ---
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Herstellen einer privaten Verbindung mit einer Web-App mithilfe eines privaten Azure-Endpunkts (Vorschau)
 
 Der private Azure-Endpunkt ist der grundlegende Baustein für Private Link in Azure. Er ermöglicht das Herstellen einer privaten Verbindung mit Ihrer Web-App.
 In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Web-App mit einem privaten Endpunkt bereitstellen und von einem virtuellen Computer aus eine Verbindung mit dieser Web-App herstellen.
+
+Weitere Informationen finden Sie unter [Verwenden privater Endpunkte für eine Azure-Web-App (Vorschau)][privatenedpointwebapp].
+
+> [!Note]
+>Die Vorschauversion ist in den Regionen „USA, Osten“ und „USA, Westen 2“ für alle Windows- und Linux-Web-Apps vom Typ „PremiumV2“ verfügbar. 
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -26,7 +31,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="virtual-network-and-virtual-machine"></a>Virtuelles Netzwerk und virtueller Computer
 
-In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Hosten des virtuellen Computers, der für den Zugriff auf Ihre Web-App über den privaten Endpunkt verwendet wird.
+In diesem Abschnitt erstellen Sie das virtuelle Netzwerk und das Subnetz zum Hosten des virtuellen Computers, der für den Zugriff auf Ihre Web-App über den privaten Endpunkt verwendet wird.
 
 ### <a name="create-the-virtual-network"></a>Erstellen des virtuellen Netzwerks
 
@@ -36,15 +41,18 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und ein Subnetz.
 
 1. Geben Sie unter **Virtuelles Netzwerk erstellen** auf der Registerkarte „Grundlagen“ die folgenden Informationen ein, oder wählen Sie sie aus:
 
- ![Erstellen eines virtuellen Netzwerks][1]
+   > [!div class="mx-imgBorder"]
+   > ![Erstellen des virtuellen Netzwerks][1]
 
-1. Klicken Sie auf **Weiter: IP-Adressen >** , und geben Sie die folgenden Informationen ein, oder wählen Sie sie aus:
+1. Klicken Sie auf **Weiter: IP-Adressen >** , und geben Sie die folgenden Informationen ein, oder wählen Sie sie aus:
 
-![Konfigurieren von IP-Adressen][2]
+   > [!div class="mx-imgBorder"]
+   >![Konfigurieren der IP-Adressen][2]
 
 1. Klicken Sie im Abschnitt für das Subnetz auf **+ Subnetz hinzufügen**, geben Sie die folgenden Informationen ein, und klicken Sie auf **Hinzufügen**.
 
-![Hinzufügen eines Subnetzes][3]
+   > [!div class="mx-imgBorder"]
+   >![Hinzufügen des Subnetzes][3]
 
 1. Klicken Sie auf **Überprüfen + erstellen**.
 
@@ -56,15 +64,17 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und ein Subnetz.
 
 1. Geben Sie unter „Virtuellen Computer erstellen – Grundlagen“ die folgenden Informationen ein, oder wählen Sie sie aus:
 
-![Virtueller Computer – Grundlagen ][4]
+   > [!div class="mx-imgBorder"]
+   >![Virtueller Computer: Grundlegende Einstellungen][4]
 
 1. Wählen Sie **Weiter: Datenträger** aus.
 
-Übernehmen Sie die Standardeinstellungen.
+   Übernehmen Sie die Standardeinstellungen.
 
-1. Wählen Sie **Weiter: Netzwerk** und dann die folgenden Informationen aus:
+1. Wählen Sie **Weiter: Netzwerk** und anschließend die folgenden Informationen aus:
 
-![Netzwerk ][5]
+   > [!div class="mx-imgBorder"]
+   >![Netzwerk][5]
 
 1. Klicken Sie auf **Überprüfen + erstellen**.
 
@@ -75,7 +85,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und ein Subnetz.
 In diesem Abschnitt erstellen Sie eine private Web-App und verwenden dafür einen privaten Endpunkt.
 
 > [!Note]
->Das Feature „Privater Endpunkt“ ist nur für Premium V2 und Isolated mit externer ASE-SKU verfügbar.
+>Das Feature „Privater Endpunkt“ ist nur für die Premium V2-SKU verfügbar.
 
 ### <a name="web-app"></a>Web App
 
@@ -83,7 +93,8 @@ In diesem Abschnitt erstellen Sie eine private Web-App und verwenden dafür eine
 
 1. Geben Sie unter „Web-App erstellen – Grundlagen“ die folgenden Informationen ein, oder wählen Sie sie aus:
 
-![Web-App – Grundlagen ][6]
+   > [!div class="mx-imgBorder"]
+   >![Web-App: Grundeinstellungen][6]
 
 1. Wählen Sie **Überprüfen + erstellen** aus.
 
@@ -93,31 +104,37 @@ In diesem Abschnitt erstellen Sie eine private Web-App und verwenden dafür eine
 
 1. Wählen Sie unter den Web-App-Eigenschaften die Option **Einstellungen** > **Netzwerk** aus, und klicken Sie auf **Verbindungen mit privaten Endpunkten konfigurieren**.
 
-![Web-App – Netzwerk][7]
+   > [!div class="mx-imgBorder"]
+   >![Web-App: Netzwerk][7]
 
 1. Klicken Sie im Assistenten auf **+ Hinzufügen**.
 
-![Web-App – Privater Endpunkt][8]
+   > [!div class="mx-imgBorder"]
+   >![Web-App: Privater Endpunkt][8]
 
-1. Geben Sie die Informationen zu Abonnement, virtuellem Netzwerk und Subnetz ein, und klicken Sie auf **OK**.
+1. Geben Sie die Informationen zu Abonnement, VNET und Subnetz ein, und klicken Sie auf **OK**.
 
-![Web-App-Netzwerk][9]
+   > [!div class="mx-imgBorder"]
+   >![Web-App: Netzwerk][9]
 
 1. Überprüfen Sie die Erstellung des privaten Endpunkts.
 
-![Überprüfen][10]
-![Endansicht des privaten Endpunkts][11]
+   > [!div class="mx-imgBorder"]
+   >![Überprüfen][10]
+   >![Endansicht des privaten Endpunkts][11]
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Herstellen einer Verbindung mit einem virtuellen Computer über das Internet
 
 1. Geben Sie in der Suchleiste des Portals **myVm** ein.
 1. Wählen Sie die Schaltfläche **Verbinden** aus. Nach dem Auswählen der Schaltfläche „Verbinden“ wird „Verbindung mit virtuellem Computer herstellen“ geöffnet. Wählen Sie **RDP** aus.
 
-![Schaltfläche „RDP“][12]
+   > [!div class="mx-imgBorder"]
+   >![Schaltfläche „RDP“][12]
 
 1. Azure erstellt eine Remotedesktopprotokoll-Datei (RDP) und lädt sie auf Ihren Computer herunter, nachdem Sie auf **RDP-Datei herunterladen** geklickt haben.
 
-![Herunterladen der RDP-Datei][13]
+   > [!div class="mx-imgBorder"]
+   >![Herunterladen der RDP-Datei][13]
 
 1. Öffnen Sie die heruntergeladene RDP-Datei.
 
@@ -139,38 +156,45 @@ In diesem Abschnitt stellen Sie unter Verwendung des privaten Endpunkts eine pri
 
 1. Rufen Sie die private IP-Adresse Ihres privaten Endpunkts ab. Dazu geben Sie in der Suchleiste **Private Link** ein und wählen „Private Link“ aus.
 
-![Private Link][14]
+   > [!div class="mx-imgBorder"]
+   >![Private Link][14]
 
 1. Wählen Sie im Private Link-Center die Option **Private Endpunkte** aus, um alle Ihre privaten Endpunkte aufzulisten.
 
-![Private Link-Center][15]
+   > [!div class="mx-imgBorder"]
+   >![Private Link-Center][15]
 
 1. Wählen Sie den Privater Endpunkt-Link zu Ihrer Web-App und Ihrem Subnetz aus.
 
-![Eigenschaften eines privaten Endpunkts][16]
+   > [!div class="mx-imgBorder"]
+   >![Eigenschaften des privaten Endpunkts][16]
 
 1. Kopieren Sie die private IP-Adresse Ihres privaten Endpunkts und den FQDN Ihrer Web-App (in diesem Fall webappdemope.azurewebsites.net 10.10.2.4).
 
-1. Vergewissern Sie sich in „myVM“, dass auf die Web-App nicht über die öffentliche IP-Adresse zugegriffen werden kann. Öffnen Sie einen Browser, und kopieren Sie den Namen der Web-App. Es muss eine Fehlerseite vom Typ „403 Verboten“ angezeigt werden.
+1. Vergewissern Sie sich in „myVM“, dass auf die Web-App nicht über die öffentliche IP-Adresse zugegriffen werden kann. Öffnen Sie einen Browser, und fügen Sie den Namen der Web-App ein. Es muss eine Fehlerseite vom Typ „403 Verboten“ angezeigt werden.
 
-![Verboten][17]
+   > [!div class="mx-imgBorder"]
+   >![Verboten][17]
 
-> [!Note]
+> [!Important]
 > Da sich dieses Feature in der Vorschauphase befindet, müssen Sie den DNS-Eintrag manuell verwalten.
 
 1. Erstellen Sie den Hosteintrag. Dazu öffnen Sie den Datei-Explorer und suchen die Datei „hosts“.
 
-![Datei „hosts“][18]
+   > [!div class="mx-imgBorder"]
+   >![Datei „hosts“][18]
 
 1. Bearbeiten Sie die Datei „hosts“ im Editor, und fügen Sie einen Eintrag mit der privaten IP-Adresse und dem öffentlichen Namen Ihrer Web-App hinzu.
 
-![Inhalt von „hosts“][19]
+   > [!div class="mx-imgBorder"]
+   >![Inhalt von „hosts“][19]
 
 1. Speichern Sie die Datei.
 
 1. Öffnen Sie einen Browser, und geben Sie die URL Ihrer Web-App ein.
 
-![Website mit PE][20]
+   > [!div class="mx-imgBorder"]
+   >![Website mit PE][20]
 
 1. Sie greifen über den privaten Endpunkt auf Ihre Web-App zu.
 
@@ -209,4 +233,5 @@ In dieser Schnellstartanleitung haben Sie einen virtuellen Computer in einem vir
 [20]: ./media/create-private-endpoint-webapp-portal/webappwithpe.png
 
 <!--Links-->
+[privatenedpointwebapp]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint
 [privateendpoint]: https://docs.microsoft.com/azure/private-link/private-endpoint-overview

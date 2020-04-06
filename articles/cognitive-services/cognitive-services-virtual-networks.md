@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 1ae3caa2d1f90bbbae1070d95d676eb206a361a0
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 0988c8154c63bb408493edf3243078e625c80d53
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647348"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371221"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurieren von virtuellen Netzwerken für Azure Cognitive Services
 
@@ -39,7 +39,7 @@ Netzwerkregeln werden für alle Netzwerkprotokolle in Azure Cognitive Services d
 
 ## <a name="supported-regions-and-service-offerings"></a>Unterstützte Regionen und Dienstangebote
 
-Die Unterstützung virtueller Netzwerke für Cognitive Services ist auf die Azure-Regionen *Canary – USA, Mitte EUAP*, *Europa, Westen* und *USA, Westen 2*  beschränkt. Außerdem unterstützen nicht alle Cognitive Service-Angebote virtuelle Netzwerke. Die folgenden Cognitive Service-Angebote erlauben die Verwendung virtueller Netzwerke. Wenn ein Dienstangebot hier nicht aufgeführt ist, unterstützt es virtuelle Netzwerke nicht.
+Die im Anschluss aufgeführte Unterstützung virtueller Netzwerke für Cognitive Services ist auf die Azure-Regionen *USA, Mitte (EUAP)* , *USA, Süden-Mitte*, *USA, Osten*, *USA, Westen 2*, *Europa, Norden*, *Südafrika, Norden*, *Europa, Westen*, *Indien, Mitte*, *Australien, Osten*, *USA, Westen* und *US Gov Virginia* beschränkt. Wenn ein Dienstangebot hier nicht aufgeführt ist, unterstützt es virtuelle Netzwerke nicht.
 
 > [!div class="checklist"]
 > * [Anomalieerkennung](./anomaly-detector/index.yml)
@@ -51,6 +51,27 @@ Die Unterstützung virtueller Netzwerke für Cognitive Services ist auf die Azur
 > * [LUIS](./luis/index.yml)
 > * [Personalisierung](./personalizer/index.yml)
 > * [Textanalyse](./text-analytics/index.yml)
+> * [QnA Maker](./qnamaker/index.yml)
+
+Die im Anschluss aufgeführte Unterstützung virtueller Netzwerke für Cognitive Services ist auf die Azure-Regionen *USA, Mitte (EUAP)* , *USA, Süden-Mitte*, *USA, Osten*, *USA, Westen 2*, *Global* und *US Gov Virginia* beschränkt.
+> [!div class="checklist"]
+> * [Textübersetzung](./translator/index.yml)
+
+## <a name="service-tags"></a>Diensttags
+Neben der Unterstützung von VNET-Dienstendpunkten für die obigen Dienste unterstützt Cognitive Services auch ein Diensttag für die Konfiguration von Netzwerkregeln für ausgehenden Datenverkehr. Das Diensttag „CognitiveServicesManagement“ beinhaltet folgende Dienste:
+> [!div class="checklist"]
+> * [Anomalieerkennung](./anomaly-detector/index.yml)
+> * [Maschinelles Sehen](./computer-vision/index.yml)
+> * [Content Moderator](./content-moderator/index.yml)
+> * [Custom Vision](./custom-vision-service/index.yml)
+> * [Gesichtserkennung](./face/index.yml)
+> * [Formularerkennung](./form-recognizer/index.yml)
+> * [LUIS](./luis/index.yml)
+> * [Personalisierung](./personalizer/index.yml)
+> * [Textanalyse](./text-analytics/index.yml)
+> * [QnA Maker](./qnamaker/index.yml)
+> * [Textübersetzung](./translator/index.yml)
+> * [Spracherkennungsdienst](./speech-service/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>Ändern der Standard-Netzwerkzugriffsregel
 
@@ -63,7 +84,7 @@ Standardmäßig akzeptieren Cognitive Services-Ressourcen Verbindungen von Clien
 
 Standardmäßige Netzwerkzugriffsregeln für Cognitive Services-Ressourcen können über das Azure-Portal, über PowerShell oder per Azure-CLI verwaltet werden.
 
-# <a name="azure-portaltabportal"></a>[Azure-Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
 1. Navigieren Sie zu der Cognitive Services-Ressource, die Sie schützen möchten.
 
@@ -78,7 +99,7 @@ Standardmäßige Netzwerkzugriffsregeln für Cognitive Services-Ressourcen könn
 
 1. Klicken Sie zum Übernehmen der Änderungen auf **Speichern**.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 1. Installieren Sie [Azure PowerShell](/powershell/azure/install-az-ps), und [melden Sie sich an](/powershell/azure/authenticate-azureps), oder wählen Sie **Testen** aus.
 
@@ -114,7 +135,7 @@ Standardmäßige Netzwerkzugriffsregeln für Cognitive Services-Ressourcen könn
     Update-AzCognitiveServicesAccountNetworkRuleSet @parameters
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 1. Installieren Sie die [Azure-CLI](/cli/azure/install-azure-cli), und [melden Sie sich an](/cli/azure/authenticate-azure-cli), oder wählen Sie **Testen** aus.
 
@@ -165,7 +186,7 @@ Die Cognitive Services-Ressource und die virtuellen Netzwerke, denen Zugriff gew
 
 Regeln für virtuelle Netzwerke für Cognitive Services-Ressourcen können über das Azure-Portal, über PowerShell oder per Azure-CLI verwaltet werden.
 
-# <a name="azure-portaltabportal"></a>[Azure-Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
 1. Navigieren Sie zu der Cognitive Services-Ressource, die Sie schützen möchten.
 
@@ -200,7 +221,7 @@ Regeln für virtuelle Netzwerke für Cognitive Services-Ressourcen können über
 
 1. Klicken Sie zum Übernehmen der Änderungen auf **Speichern**.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 1. Installieren Sie [Azure PowerShell](/powershell/azure/install-az-ps), und [melden Sie sich an](/powershell/azure/authenticate-azureps), oder wählen Sie **Testen** aus.
 
@@ -260,7 +281,7 @@ Regeln für virtuelle Netzwerke für Cognitive Services-Ressourcen können über
     Remove-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 1. Installieren Sie die [Azure-CLI](/cli/azure/install-azure-cli), und [melden Sie sich an](/cli/azure/authenticate-azure-cli), oder wählen Sie **Testen** aus.
 
@@ -340,7 +361,7 @@ Wenn Sie [ExpressRoute](../expressroute/expressroute-introduction.md) lokal für
 
 Regeln für IP-Netzwerke für Cognitive Services-Ressourcen können über das Azure-Portal, über PowerShell oder per Azure-CLI verwaltet werden.
 
-# <a name="azure-portaltabportal"></a>[Azure-Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
 1. Navigieren Sie zu der Cognitive Services-Ressource, die Sie schützen möchten.
 
@@ -358,7 +379,7 @@ Regeln für IP-Netzwerke für Cognitive Services-Ressourcen können über das Az
 
 1. Klicken Sie zum Übernehmen der Änderungen auf **Speichern**.
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 1. Installieren Sie [Azure PowerShell](/powershell/azure/install-az-ps), und [melden Sie sich an](/powershell/azure/authenticate-azureps), oder wählen Sie **Testen** aus.
 
@@ -416,7 +437,7 @@ Regeln für IP-Netzwerke für Cognitive Services-Ressourcen können über das Az
     Remove-AzCognitiveServicesAccountNetworkRule @parameters
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 1. Installieren Sie die [Azure-CLI](/cli/azure/install-azure-cli), und [melden Sie sich an](/cli/azure/authenticate-azure-cli), oder wählen Sie **Testen** aus.
 

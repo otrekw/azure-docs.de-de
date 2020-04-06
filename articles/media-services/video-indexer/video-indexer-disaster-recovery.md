@@ -1,6 +1,7 @@
 ---
-title: Geschäftskontinuität und Notfallwiederherstellung von Video Indexer –Azure
-description: Erfahren Sie, wie Sie im Falle eines Ausfalls oder Fehlers des regionalen Rechenzentrums ein Failover auf ein sekundäres Video Indexer-Konto ausführen.
+title: Video Indexer-Failover und -Notfallwiederherstellung
+titleSuffix: Azure Media Services
+description: Erfahren Sie, wie Sie im Falle eines Ausfalls oder Notfalls des regionalen Rechenzentrums ein Failover auf ein sekundäres Video Indexer-Konto ausführen.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,29 +14,29 @@ ms.topic: article
 ms.custom: ''
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: 2f54c340226a9ea78643df8e0a984c8ed8475c94
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 17c21900448fcb6d0a40fe5407f3b8bd62f9e3e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513574"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79499607"
 ---
-# <a name="handle-video-indexer-business-continuity-and-disaster-recovery"></a>Vorkehrungen für die Geschäftskontinuität und Notfallwiederherstellung von Video Indexer
+# <a name="video-indexer-failover-and-disaster-recovery"></a>Video Indexer-Failover und -Notfallwiederherstellung
 
-Azure Media Services Video Indexer bietet kein sofortiges Failover des Diensts, wenn es zu einem Ausfall oder Fehler des regionalen Rechenzentrums gekommen ist. In diesem Artikel wird erläutert, wie Sie Ihre Umgebung für ein Failover konfigurieren, um eine optimale Verfügbarkeit für Anwendungen und eine minimale Wiederherstellungszeit bei einem Notfall sicherzustellen.
+Azure Media Services Video Indexer bietet kein sofortiges Failover des Diensts, wenn es zu einem Ausfall oder Fehler des regionalen Rechenzentrums gekommen ist. In diesem Artikel wird erläutert, wie Sie Ihre Umgebung für ein Failover konfigurieren, um eine optimale Verfügbarkeit für Apps und eine minimale Wiederherstellungszeit bei einem Notfall sicherzustellen.
 
 Wir empfehlen das Konfigurieren von Business Continuity Disaster Recovery (BCDR) zwischen Regionalpaaren, um von Richtlinien für Isolierung und Verfügbarkeit von Azure zu profitieren. Weitere Informationen finden Sie unter [Azure-Regionspaare](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
-## <a name="prerequisites"></a>Voraussetzungen 
+## <a name="prerequisites"></a>Voraussetzungen
 
 Ein Azure-Abonnement. Wenn Sie noch nicht über ein Azure-Abonnement verfügen, können Sie sich für ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) registrieren.
 
 ## <a name="failover-to-a-secondary-account"></a>Failover auf ein sekundäres Konto
 
-Um BCDR implementieren zu können, müssen Sie über zwei Video Indexer-Konten verfügen, um Redundanz sicherzustellen.
+Um BCDR zu implementieren, müssen Sie über zwei Video Indexer-Konten verfügen, um Redundanz sicherzustellen.
 
-1. Erstellen Sie zwei Video Indexer-Konten, die mit Azure verbunden sind (siehe [Erstellen von Konten](connect-to-azure.md)). Ein Konto für Ihre primäre Region und das andere für die gekoppelte Azure-Region. 
-1. Wenn in Ihrer primären Region ein Fehler auftritt, wechseln Sie mit dem sekundären Konto zur Indizierung.
+1. Erstellen Sie zwei Video Indexer-Konten, die mit Azure verbunden sind (siehe [Erstellen eines Video Indexer-Kontos](connect-to-azure.md)). Erstellen Sie ein Konto für Ihre primäre Region und das andere für die gekoppelte Azure-Region.
+1. Wenn in Ihrer primären Region ein Fehler auftritt, wechseln Sie zur Indizierung mit dem sekundären Konto.
 
 > [!TIP]
 > Sie können BCDR automatisieren, indem Sie Aktivitätsprotokollwarnungen für Dienstintegritätsbenachrichtigungen gemäß den Ausführungen unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../../service-health/alerts-activity-log-service-notifications.md) einrichten.

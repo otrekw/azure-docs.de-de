@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: d4d837bb49e4ce80340d59f8a01334f3c80ff413
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60403092"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>.NET-Anwendungen mit mehreren Ebenen unter Verwendung von Azure Service Bus-Warteschlangen
@@ -353,7 +353,7 @@ Sie werden nun die Workerrolle zur Verarbeitung der übermittelten Nachrichten e
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Servicebus finden Sie in den folgenden Ressourcen:  
 
-* [Erste Schritte mit der Verwendung von Service Bus-Warteschlangen][sbacomqhowto]
+* [Erste Schritte mit Service Bus-Warteschlangen][sbacomqhowto]
 * [Service Bus-Dienstseite][sbacom]  
 
 Weitere Informationen zu Szenarien mit mehreren Ebenen finden Sie unter:  

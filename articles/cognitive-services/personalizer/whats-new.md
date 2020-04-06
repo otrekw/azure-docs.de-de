@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 1ec0c83655574cb09724bcf97be19519e1f6d72f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 450328fecde3be0ee0cead174c9d172bf3ac1000
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467066"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80155969"
 ---
 # <a name="whats-new-in-personalizer"></a>Neuerungen in der Personalisierung
 
@@ -23,12 +23,16 @@ Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versi
 
 ## <a name="release-notes"></a>Versionshinweise 
 
+### <a name="march-2020"></a>März 2020
+
+* TLS 1.2 wird nun für alle HTTP-Anforderungen erzwungen, die an diesen Dienst gerichtet werden. Weitere Informationen finden Sie unter [Sicherheit von Azure Cognitive Services](../cognitive-services-security.md).
+
 ### <a name="november-2019---ignite-conference"></a>November 2019 – Ignite-Konferenz
 
 * Die Personalisierung ist allgemein verfügbar (GA)
 * Azure Notebooks-[Tutorial](tutorial-use-azure-notebook-generate-loop-data.md) mit dem gesamten Lebenszyklus
 
-### <a name="may-6-2019---build-conference"></a>6\. Mai 2019 – //Build-Konferenz
+### <a name="may-2019---build-conference"></a>Mai 2019 – //Build-Konferenz
 
 Die folgenden Previewfunktionen wurden bei der Build 2019-Konferenz veröffentlicht:
 

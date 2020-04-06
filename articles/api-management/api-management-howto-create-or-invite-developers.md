@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: 9de75b5537b3e267116882e7f151d893de575071
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70072469"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Verwalten von Benutzerkonten in Azure API Management
@@ -31,7 +31,7 @@ Führen Sie Aufgaben in diesem Artikel aus: [Erstellen einer neuen Azure API Man
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-developer"></a>Erstellen eines neuen Entwicklers
+## <a name="create-a-new-developer"></a><a name="create-developer"> </a>Erstellen eines neuen Entwicklers
 
 Um einen neuen Benutzer hinzuzufügen, führen Sie die Schritte in diesem Abschnitt aus:
 
@@ -44,7 +44,7 @@ Um einen neuen Benutzer hinzuzufügen, führen Sie die Schritte in diesem Abschn
 
 Neu erstellte Entwicklerkonten sind standardmäßig **Aktiv** und werden der Gruppe **Entwickler** zugewiesen. Entwicklerkonten mit dem Status **Aktiv** können sämtliche APIs aufrufen, die sie abonniert haben. Informationen zum Zuordnen des neu erstellten Entwicklers zu weiteren Gruppen finden Sie unter [Zuordnen von Entwicklern zu Gruppen][How to associate groups with developers].
 
-## <a name="invite-developer"></a>Einladen eines Entwicklers
+## <a name="invite-a-developer"></a><a name="invite-developer"> </a>Einladen eines Entwicklers
 Um einen Entwickler einzuladen, führen Sie die Schritte in diesem Abschnitt aus:
 
 1. Wählen Sie auf der linken Seite des Bildschirms die Registerkarte **Gruppen** aus.
@@ -56,7 +56,7 @@ Wenn Sie einen Entwickler einladen, wird eine E-Mail an diesen Entwickler geschi
 
 Nachdem die Einladung angenommen wurde, ist das Konto aktiv.
 
-## <a name="block-developer"></a> Deaktivieren oder erneutes Aktivieren eines Entwicklerkontos
+## <a name="deactivate-or-reactivate-a-developer-account"></a><a name="block-developer"> </a> Deaktivieren oder erneutes Aktivieren eines Entwicklerkontos
 
 Neu erstellte oder eingeladene Entwicklerkonten sind standardmäßig **Aktiv**. Klicken Sie auf **Blockieren**, um ein Entwicklerkonto zu deaktivieren. Klicken Sie auf **Aktivieren**, um ein blockiertes Entwicklerkonto erneut zu aktivieren. Blockierte Entwicklerkonten haben keinen Zugriff auf das Entwicklerportal und können keine APIs aufrufen. Klicken Sie zum Löschen eines Benutzerkontos auf **Löschen**.
 
@@ -70,7 +70,7 @@ Um einen Benutzer zu blockieren, führen Sie die folgenden Schritte aus.
 
 Informationen zur programmgesteuerten Verwendung von Benutzerkonten finden Sie in der Dokumentation zur Benutzerentität in der Referenz zur [API Management REST-API](/rest/api/apimanagement/). Um das Kennwort eines Benutzerkontos auf einen bestimmten Wert zurückzusetzen, können Sie den Vorgang [Aktualisieren eines Benutzers](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) verwenden und das gewünschte Kennwort angeben.
 
-## <a name="next-steps"> </a>Nächste Schritte
+## <a name="next-steps"></a><a name="next-steps"> </a>Nächste Schritte
 Nachdem Sie das Entwicklerkonto erstellt haben, können Sie das Konto zu Rollen zuweisen und Produkte und APIs abonnieren. Weitere Informationen finden Sie unter [Erstellen und Verwenden von Gruppen][How to create and use groups].
 
 [api-management-management-console]: ./media/api-management-howto-create-or-invite-developers/api-management-management-console.png

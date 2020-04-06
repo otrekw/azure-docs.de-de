@@ -3,12 +3,12 @@ title: Problembehandlung bei Sicherungsfehlern in SAP HANA-Datenbanken
 description: Beschreibt, wie häufige Fehler behoben werden, die auftreten können, wenn Sie SAP HANA-Datenbanken mithilfe von Azure Backup sichern.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 04f9bafba0ca490b33a0daf3c3725e57d81bcc7e
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 6520f106011b632da2725f456aeb278c7748ddc9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664597"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79459309"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Behandeln von Problemen beim Sichern von SAP HANA-Datenbanken in Azure
 
@@ -16,9 +16,16 @@ Dieser Artikel enthält Informationen zur Problembehandlung beim Sichern von SAP
 
 ## <a name="prerequisites-and-permissions"></a>Voraussetzungen und Berechtigungen
 
-Sehen Sie vor dem Konfigurieren von Sicherungen die Abschnitte [Voraussetzungen](tutorial-backup-sap-hana-db.md#prerequisites) und [Einrichten von Berechtigungen](tutorial-backup-sap-hana-db.md#setting-up-permissions) ein.
+Informationen finden Sie in den Abschnitten zu den [Voraussetzungen](tutorial-backup-sap-hana-db.md#prerequisites) und [Aufgaben des Vorregistrierungsskripts](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) vor dem Konfigurieren von Sicherungen.
 
 ## <a name="common-user-errors"></a>Häufige Benutzerfehler
+
+### <a name="usererrorhanainternalrolenotpresent"></a>UserErrorHANAInternalRoleNotPresent
+
+| **Fehlermeldung**      | <span style="font-weight:normal">Azure Backup hat nicht die erforderlichen Rollenberechtigungen zum Ausführen der Sicherung</span>    |
+| ---------------------- | ------------------------------------------------------------ |
+| **Mögliche Ursachen**    | Die Rolle wurde möglicherweise überschrieben.                          |
+| **Empfohlene Maßnahme** | Um das Problem zu beheben, führen Sie das Skript im Bereich **DBs ermitteln** aus, oder laden Sie es [hier](https://aka.ms/scriptforpermsonhana) herunter. Fügen Sie alternativ die Rolle SAP_INTERNAL_HANA_SUPPORT dem Benutzer für die Workloadsicherung (AZUREWLBACKUPHANAUSER) hinzu. |
 
 ### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
 
@@ -117,6 +124,26 @@ Upgrades auf OS oder SAP HANA, die keine SID-Änderung bewirken, können wie unt
 - Führen Sie das [Vorregistrierungsskript](https://aka.ms/scriptforpermsonhana) erneut aus. Beim Upgradeprozess werden in der Regel die erforderlichen Rollen entfernt. Durch Ausführen des Vorregistrierungsskripts werden alle erforderlichen Rollen überprüft.
 - [Setzen Sie den Schutz](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database) für die Datenbank fort.
 
+## <a name="re-registration-failures"></a>Fehler bei der erneuten Registrierung
+
+Überprüfen Sie vor dem Auslösen der erneuten Registrierung, ob ein oder mehrere der folgenden Symptome vorhanden sind:
+
+- Für alle Vorgänge (z.B. Sicherung, Wiederherstellung und Sicherungskonfiguration) tritt auf der VM ein Fehler mit einem der folgenden Fehlercodes auf: **WorkloadExtensionNotReachable, UserErrorWorkloadExtensionNotInstalled, WorkloadExtensionNotPresent, WorkloadExtensionDidntDequeueMsg**.
+- Wenn im Bereich **Sicherungsstatus** für das Sicherungselement der Status **Nicht erreichbar** angezeigt wird, schließen Sie alle anderen Gründe aus, die zum gleichen Status führen könnten:
+
+  - Fehlende Berechtigung zur Durchführung von sicherungsbezogenen Vorgängen auf der VM
+  - Herunterfahren des virtuellen Computers, sodass die Sicherungen nicht durchgeführt werden können
+  - Netzwerkfehler
+
+Zu diesen Symptomen kann es aufgrund von einer oder mehreren der folgenden Ursachen kommen:
+
+- Eine Erweiterung wurde gelöscht oder im Portal deinstalliert.
+- Die VM wurde über eine direkte Datenträgerwiederherstellung rechtzeitig wiederhergestellt.
+- Die VM wurde für längere Zeit heruntergefahren, sodass die Erweiterungskonfiguration dafür abgelaufen ist.
+- Die VM wurde gelöscht, und eine andere VM wurde mit dem gleichen Namen und in derselben Ressourcengruppe wie die gelöschte VM erstellt.
+
+In den vorhergehenden Szenarien sollten Sie einen Neuregistrierungsvorgang auf der VM auszulösen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie die [häufig gestellten Fragen](https://docs.microsoft.com/azure/backup/sap-hana-faq-backup-azure-vm) zum Sichern von SAP HANA-Datenbanken auf Azure-VMs ein.
+- Sehen Sie sich die [häufig gestellten Fragen](https://docs.microsoft.com/azure/backup/sap-hana-faq-backup-azure-vm) zum Sichern von SAP HANA-Datenbanken auf Azure-VMs an.

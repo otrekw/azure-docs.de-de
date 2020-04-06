@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e42234e9fcdcfe3ee5ce975babbe03b64a750e36
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74846826"
 ---
 # <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Sicherheitsanleitung zur Verwendung von Azure Multi-Factor Authentication mit Azure AD-Konten
@@ -57,7 +57,7 @@ Beim Erstellen des Authentifizierungsanbieters müssen Sie ein Verzeichnis ausw�
   * Pro Authentifizierung: Jede Überprüfung wird abgerechnet. Verwenden Sie dieses Modell, wenn Sie die zweistufige Überprüfung für jede Person verwenden möchten, die auf eine bestimmte App zugreift, nicht nur für bestimmte Benutzer.
   * Pro aktiviertem Benutzer: Jeder Benutzer, den Sie für Azure MFA aktivieren, wird abgerechnet. Verwenden Sie dieses Modell, wenn einige Ihrer Benutzer Azure AD Premium- oder Enterprise Mobility Suite-Lizenzen verwenden, andere dagegen nicht.
 
-### <a name="supportability"></a>Unterstützungsmöglichkeiten
+### <a name="supportability"></a>Unterstützbarkeit
 
 Die meisten Benutzer sind es gewöhnt, für die Authentifizierung lediglich Kennwörter zu verwenden. Daher ist es wichtig, dass Ihr Unternehmen das Bewusstsein für diesen Prozess bei sämtlichen Benutzern fördert. Dadurch lassen sich Anrufe beim Helpdesk aufgrund kleinerer Probleme im Zusammenhang mit MFA reduzieren. In einigen Szenarien muss MFA jedoch vorübergehend deaktiviert werden. Befolgen Sie die unten stehenden Richtlinien für den Umgang mit diesen Szenarien:
 
@@ -68,7 +68,7 @@ Die meisten Benutzer sind es gewöhnt, für die Authentifizierung lediglich Kenn
 
 Wenn Ihr Unternehmen die eigene Infrastruktur für die Aktivierung von MFA nutzen möchte, müssen Sie [einen lokalen Azure Multi-Factor Authentication-Server bereitstellen](howto-mfaserver-deploy.md). In der folgenden Abbildung sind die MFA-Serverkomponenten dargestellt:
 
-![Die Standardkomponenten von MFA Server](./media/multi-factor-authentication-security-best-practices/server.png) \*Nicht standardmäßig installiert \**Installiert, aber nicht standardmäßig aktiviert
+![Die Standardkomponenten von MFA-Server](./media/multi-factor-authentication-security-best-practices/server.png) \*Nicht standardmäßig installiert \**Installiert, aber nicht standardmäßig aktiviert
 
 Der Microsoft Azure Multi-Factor Authentication-Server kann Cloudressourcen und lokale Ressourcen durch Verwendung des Verbunds sichern. Sie müssen über AD FS verfügen und für die Verbunddienste einen Partnerverbund mit Ihrem Azure AD-Mandanten konfiguriert haben.
 Berücksichtigen Sie bei der Einrichtung des Multi-Factor Authentication-Servers folgende Aspekte:

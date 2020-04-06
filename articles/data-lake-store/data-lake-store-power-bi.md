@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: d8717b8f365e692b5f27bf8a04d65c5147b8f31b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65603209"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Analysieren von Daten in Azure Data Lake Storage Gen1 mithilfe von Power BI
@@ -33,7 +33,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 1. Starten Sie Power BI Desktop auf Ihrem Computer.
 2. Klicken Sie auf dem Menüband **Start** auf **Daten abrufen** und dann auf „Mehr“. Klicken Sie im Dialogfeld **Daten abrufen** auf **Azure**. Klicken Sie auf **Azure Data Lake Store** und dann auf **Verbinden**.
    
-    ![Herstellen einer Verbindung mit Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Herstellen einer Verbindung mit Data Lake Storage Gen1")
+    ![Herstellen der Verbindung mit Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account.png "Herstellen der Verbindung mit Data Lake Storage Gen1")
 3. Wenn ein Dialogfeld anzeigt, dass der Connector sich in der Entwicklungsphase befindet, klicken Sie auf die Option zum Fortfahren.
 4. Geben Sie im Dialogfeld **Azure Data Lake Store** die URL für Ihr Data Lake Storage Gen1-Konto an, und klicken Sie dann auf **OK**.
    
@@ -43,10 +43,10 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
     ![Anmelden bei Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "Anmelden bei Data Lake Storage Gen1")
 6. Wenn Sie sich erfolgreich angemeldet haben, klicken Sie auf **Verbinden**.
    
-    ![Herstellen einer Verbindung mit Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Herstellen einer Verbindung mit Data Lake Storage Gen1")
+    ![Herstellen der Verbindung mit Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "Herstellen der Verbindung mit Data Lake Storage Gen1")
 7. Das nächste Dialogfeld zeigt die Datei an, die Sie in Ihr Data Lake Storage Gen1-Konto hochgeladen haben. Überprüfen Sie die Informationen, und klicken Sie dann auf **Laden**.
    
-    ![Laden von Daten aus Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "Laden von Daten aus Data Lake Storage Gen1")
+    ![Herunterladen von Daten aus Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "Herunterladen von Daten aus Data Lake Storage Gen1")
 8. Nachdem die Daten erfolgreich in Power BI geladen wurden, werden auf der Registerkarte **Felder** folgende Felder angezeigt.
    
     ![Importierte Felder](./media/data-lake-store-power-bi/imported-fields.png "Importierte Felder")
@@ -58,19 +58,19 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
     In den nächsten Schritten aktualisieren wir die Abfrage, sodass die importierten Daten in das gewünschte Format konvertiert werden.
 9. Klicken Sie auf dem Menüband **Start** auf **Abfragen bearbeiten**.
    
-    ![Bearbeiten von Abfragen](./media/data-lake-store-power-bi/edit-queries.png "Bearbeiten von Abfragen")
+    ![Bearbeiten von Abfragen](./media/data-lake-store-power-bi/edit-queries.png "Abfragen bearbeiten")
 10. Klicken Sie im Abfrage-Editor unter der Spalte **Inhalt** auf **Binär**.
     
-    ![Bearbeiten von Abfragen](./media/data-lake-store-power-bi/convert-query1.png "Bearbeiten von Abfragen")
+    ![Bearbeiten von Abfragen](./media/data-lake-store-power-bi/convert-query1.png "Abfragen bearbeiten")
 11. Es wird ein Dateisymbol angezeigt, das die von Ihnen hochgeladene Datei **Drivers.txt** darstellt. Klicken Sie mit der rechten Maustaste auf die Datei, und klicken Sie auf **CSV**.    
     
-    ![Bearbeiten von Abfragen](./media/data-lake-store-power-bi/convert-query2.png "Bearbeiten von Abfragen")
+    ![Bearbeiten von Abfragen](./media/data-lake-store-power-bi/convert-query2.png "Abfragen bearbeiten")
 12. Es sollte eine Ausgabe wie unten angezeigt werden. Ihre Daten stehen jetzt in einem Format zur Verfügung, das Sie zum Erstellen von Visualisierungen verwenden können.
     
-    ![Bearbeiten von Abfragen](./media/data-lake-store-power-bi/convert-query3.png "Bearbeiten von Abfragen")
+    ![Bearbeiten von Abfragen](./media/data-lake-store-power-bi/convert-query3.png "Abfragen bearbeiten")
 13. Klicken Sie auf dem Menüband **Start** auf **Schließen und übernehmen** und dann auf **Schließen & übernehmen**.
     
-    ![Bearbeiten von Abfragen](./media/data-lake-store-power-bi/load-edited-query.png "Bearbeiten von Abfragen")
+    ![Bearbeiten von Abfragen](./media/data-lake-store-power-bi/load-edited-query.png "Abfragen bearbeiten")
 14. Sobald die Abfrage aktualisiert wurde, zeigt die Registerkarte **Felder** die neuen Felder, die zur Visualisierung verfügbar sind.
     
     ![Aktualisierte Felder](./media/data-lake-store-power-bi/updated-query-fields.png "Aktualisierte Felder")
@@ -78,7 +78,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
     
     1. Klicken Sie auf der Registerkarte „Visualisierungen“ auf das Symbol für ein Kreisdiagramm.
        
-        ![Erstellen eines Kreisdiagramms](./media/data-lake-store-power-bi/create-pie-chart.png "Erstellen eines Kreisdiagramms")
+        ![Erstellen eines Kreisdiagramms](./media/data-lake-store-power-bi/create-pie-chart.png "Kreisdiagramm erstellen")
     2. Wir verwenden folgende Spalten: **Spalte 4** (Name der Stadt) und **Spalte 7** (Name des Landes bzw. der Region). Ziehen Sie diese Spalten aus der Registerkarte **Felder** auf die Registerkarte **Visualisierungen**, wie unten gezeigt.
        
         ![Erstellen von Visualisierungen](./media/data-lake-store-power-bi/create-visualizations.png "Erstellen von Visualisierungen")
@@ -87,10 +87,10 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
         ![Kreisdiagramm](./media/data-lake-store-power-bi/pie-chart.png "Erstellen von Visualisierungen")
 16. Indem Sie aus den Filtern auf Seitenebene ein bestimmtes Land bzw. eine bestimmte Region auswählen, können Sie die Anzahl von Fahrern in jeder Stadt des ausgewählten Landes bzw. der ausgewählten Region anzeigen. Wählen Sie z.B. auf der Registerkarte **Visualisierungen** unter **Filter auf Seitenebene** als Land **Brasilien** aus.
     
-    ![Auswählen eines Lands](./media/data-lake-store-power-bi/select-country.png "Auswählen eines Lands bzw. einer Region")
+    ![Auswählen eines Lands](./media/data-lake-store-power-bi/select-country.png "Auswählen eines Lands/einer Region")
 17. Das Kreisdiagramm wird automatisch aktualisiert und zeigt die Fahrer in den brasilianischen Städten an.
     
-    ![Treiber in einem Land](./media/data-lake-store-power-bi/driver-per-country.png "Treiber pro Land/Region")
+    ![Fahrer in einem Land](./media/data-lake-store-power-bi/driver-per-country.png "Fahrer pro Land/Region")
 18. Klicken Sie im Menü **Datei** auf **Speichern**, um die Visualisierung als Power BI Desktop-Datei zu speichern.
 
 ## <a name="publish-report-to-power-bi-service"></a>Veröffentlichen des Berichts im Power BI-Dienst

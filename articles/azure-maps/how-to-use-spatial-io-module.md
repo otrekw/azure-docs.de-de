@@ -1,31 +1,34 @@
 ---
 title: Verwenden des Moduls Spatial IO von Azure Maps | Microsoft Azure Maps
 description: Erfahren Sie, wie Sie das Modul Spatial IO verwenden, das vom Azure Maps Web SDK bereitgestellt wird. Dieses Modul bietet zuverlässige Features, die es Entwicklern erleichtern, räumliche Daten in das Azure Maps Web SDK zu integrieren.
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 02/28/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c309473529666d369e8accd1617021249867fb19
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 5bcfeebc1fcb96cfdf6ea802293eb4027f339815
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370393"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335213"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Verwenden des Moduls Spatial IO von Azure Maps
 
 Das Azure Maps Web SDK bietet das Modul **Spatial IO** , das räumliche Daten mittels JavaScript oder TypeScript in das Azure Maps Web SDK integriert. Die stabilen Features in diesem Modul ermöglichen Entwicklern Folgendes:
 
-- [Lesen und Schreiben von Daten in übliche räumliche Dateien](spatial-io-read-write-spatial-data.md). Folgende Dateiformate werden unterstützt: KML, KMZ, GPX, GeoRSS, GML und CSV-Dateien mit Spalten mit räumlichen Informationen.
-- [Verbinden mit OGC-Diensten (Open Geospatial Consortium) und Integrieren in das Azure Maps Web SDK. Überlagern von Web Mapping Services (WMS) und Web Map Tile Services (WMTS) als Ebenen auf der Karte](spatial-io-add-ogc-map-layer.md).
+- [Lesen und Schreiben von allgemeinen räumlichen Datendateien](spatial-io-read-write-spatial-data.md). Folgende Dateiformate werden unterstützt: KML-, KMZ-, GPX-, GeoRSS-, GML-, GeoJSON- und CSV-Dateien, die Spalten mit räumlichen Informationen enthalten. Unterstützt außerdem WKT (Well-Known Text).
+- [Verbinden mit OGC-Diensten (Open Geospatial Consortium) und Integrieren in das Azure Maps Web SDK. Überlagern von Web Map Services (WMS) und Web Map Tile Services (WMTS) als Ebenen auf der Karte](spatial-io-add-ogc-map-layer.md).
 - [Abfragen von Daten in einem WFS-Dienst (Web Feature Service)](spatial-io-connect-wfs-service.md).
-- [Überlagern komplexer Datasets mit Stilinformationen und deren automatisches Rendering.](spatial-io-add-simple-data-layer.md)
+- [Überlagern komplexer Datasets mit Stilinformationen und deren automatisches Rendering mit minimalem Codeeinsatz](spatial-io-add-simple-data-layer.md).
 - [Nutzen sehr schneller Klassen zum Lesen und Schreiben von XML-Dateien und Dateien mit Trennzeichen](spatial-io-core-operations.md).
 
 In diesem Leitfaden erfahren Sie, wie Sie das Modul Spatial IO in eine Webanwendung integrieren und verwenden können.
+
+> [!WARNING]
+> Verwenden Sie nur Daten und Dienste, die aus einer vertrauenswürdigen Quelle stammen, insbesondere, wenn sie von einer anderen Domäne aus darauf verweisen. Das räumliche IO-Modul unternimmt Maßnahmen zum Minimieren des Risikos, der sicherste Ansatz besteht aber darin, von vornherein keine gefährlichen Daten in Ihrer Anwendung zuzulassen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -111,7 +114,7 @@ Sie können das Azure Maps-Modul Spatial IO mit einer der beiden folgenden Opti
     </html>
     ```
 
-2. Laden Sie das Azure Maps-Modul Spatial IO. Verwenden Sie für diese Übung das CDN für das Azure Maps-Modul Spatial IO. Fügen Sie den nachstehenden Verweis dem Element `<head>` Ihrer HTML-Datei hinzu:
+2. Laden Sie das Azure Maps-Modul Spatial IO. Verwenden Sie für diese Übung das CDN für das Azure Maps-Modul Spatial IO. Fügen Sie dem `<head>`-Element Ihrer HTML-Datei den Verweis unten hinzu:
 
     ```html
     <script src="https://atlas.microsoft.com/sdk/javascript/spatial/0/atlas-spatial.js"></script>

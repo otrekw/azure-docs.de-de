@@ -1,7 +1,7 @@
 ---
 title: Bereitstellen einer VM-Skalierungsgruppe in Visual Studio
 description: Bereitstellen von VM-Skalierungsgruppen mit Visual Studio und einer Resource Manager-Vorlage
-ms.custom: H1Hack27Feb2017
+ms.custom: vs-azure, H1Hack27Feb2017
 ms.workload: azure-vs
 author: mayanknayar
 tags: azure-resource-manager
@@ -10,12 +10,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: manayar
-ms.openlocfilehash: 0d0dc3fbb7e48b1f7e6936cfb65473dba882b776
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: c49b4f42bc726c68880bdd4d6f58956936e83177
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274232"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066976"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Erstellen einer VM-Skalierungsgruppe mit Visual Studio
 
@@ -35,7 +35,7 @@ Um mit der Bereitstellung von Microsoft Azure Virtual Machine Scale Sets in Visu
 >[!NOTE]
 >In diesem Artikel wird Visual Studio 2019 mit [Azure SDK 2.8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/) verwendet.
 
-## Erstellen eines Projekts <a name="creating-a-project"></a> 
+## <a name="create-a-project"></a>Erstellen eines Projekts <a name="creating-a-project"></a> 
 
 1. Öffnen Sie Visual Studio, und wählen Sie **Neues Projekt erstellen** aus.
 
@@ -83,7 +83,7 @@ Stellen Sie die Azure Resource Manager-Vorlage bereit, um die VM-Skalierungsgrup
 
    ![Ausgabe der Ergebnisse](media/virtual-machine-scale-sets-vs-create/deployment-output.png)
 
-## Auswerten der VM-Skalierungsgruppe <a name="exploring-your-virtual-machine-scale-set"></a>
+## <a name="explore-your-virtual-machine-scale-set"></a>Auswerten der VM-Skalierungsgruppe <a name="exploring-your-virtual-machine-scale-set"></a>
 
 Wählen Sie **Ansicht** > **Cloud-Explorer**, um die neue VM-Skalierungsgruppe anzuzeigen. Verwenden Sie falls nötig **Alle aktualisieren**.
 
@@ -95,4 +95,4 @@ Mit dem **Cloud-Explorer** können Sie Azure-Ressourcen in Visual Studio verwalt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie VM-Skalierungsgruppen erfolgreich über Visual Studio bereitgestellt haben, können Sie Ihr Projekt den Anforderungen der Anwendung entsprechend weiter anpassen. Konfigurieren Sie z. B. die automatische Skalierung durch Hinzufügen einer **Insights**-Ressource. Sie können Ihrer Vorlage eine Infrastruktur hinzufügen, z. B. eigenständige virtuelle Computer, oder Anwendungen mithilfe der benutzerdefinierten Skript Erweiterung bereitstellen. Eine gute Quelle für Beispielvorlagen ist das GitHub-Repository für [Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates). Suchen Sie nach `vmss`.
+Nachdem Sie Virtual Machine Scale Sets erfolgreich über Visual Studio bereitgestellt haben, können Sie Ihr Projekt den Anforderungen der Anwendung entsprechend weiter anpassen. Konfigurieren Sie z. B. die automatische Skalierung durch Hinzufügen einer **Insights**-Ressource. Sie können Ihrer Vorlage eine Infrastruktur hinzufügen, z. B. eigenständige virtuelle Computer, oder Anwendungen mithilfe der benutzerdefinierten Skript Erweiterung bereitstellen. Eine gute Quelle für Beispielvorlagen ist das GitHub-Repository für [Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates). Suchen Sie nach `vmss`.

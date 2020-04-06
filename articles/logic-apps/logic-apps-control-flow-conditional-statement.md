@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
 ms.openlocfilehash: fe79cf5af86e1f303e4735214b993d8db4488a25
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74793249"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Erstellen bedingter Anweisungen zum Steuern von Workflowaktionen in Azure Logic Apps
@@ -40,7 +40,7 @@ Angenommen Sie verfügen über eine Logik-App, die zu viele E-Mails sendet, wenn
 
    ![Hinzufügen einer Aktion zwischen Schritten](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
-   Wenn Sie eine Bedingung am Ende Ihres Workflows hinzufügen möchten, wählen Sie in Ihrer Logik-App unten die Option **+ Neuer Schritt** > **Aktion hinzufügen** aus.
+   Wenn Sie eine Bedingung am Ende Ihres Workflows hinzufügen möchten, wählen Sie unten in Ihrer Logik-App die Option **+ Neuer Schritt** > **Aktion hinzufügen** aus.
 
 1. Geben Sie im Suchfeld den Begriff „Bedingung“ als Filter ein. Wählen Sie diese Aktion aus: **Bedingung – steuern**
 

@@ -1,5 +1,5 @@
 ---
-title: Informationen zur Mehrgerätekonversation (Vorschauversion) – Speech-Dienst
+title: 'Mehrgerätekonversation (Vorschau): Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: ''
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: d94b3392d6bd5ab539d49c8a4cfdd568fbbb1cd0
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: b3802e66b0ba5a68c898e69ec64b01edce1541c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77560812"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371357"
 ---
-# <a name="about-multi-device-conversation-preview"></a>Informationen zur Mehrgerätekonversation (Vorschauversion)
+# <a name="what-is-multi-device-conversation-preview"></a>Worum handelt es sich bei der Konversation mit mehreren Geräten (Vorschauversion)?
 
 Mit der **Mehrgerätekonversation** können Sie auf einfache Weise eine Sprach- oder Textkonversation zwischen mehreren Clients erstellen und die zwischen ihnen gesendeten Nachrichten koordinieren.
 
@@ -64,7 +64,7 @@ Sie können auch Untertitel für Präsentationen und Vorträge auf dem Bildschir
 
 ## <a name="how-it-works"></a>Funktionsweise
 
-Alle Clients verwenden das Speech SDK, um eine Konversation zu erstellen oder dieser beizutreten. Das Speech SDK interagiert mit dem Mehrgerätekonversations-Dienst, der die Lebensdauer einer Konversation verwaltet. Dies schließt auch die Liste der Teilnehmer, die ausgewählten Sprachen der einzelnen Clients und die gesendeten Nachrichten ein.  
+Alle Clients verwenden das Speech SDK, um eine Konversation zu erstellen oder dieser beizutreten. Das Speech SDK interagiert mit dem Mehrgerätekonversations-Dienst, der die Lebensdauer einer Konversation verwaltet. Dies schließt auch die Liste der Teilnehmer, die ausgewählten Sprachen der einzelnen Clients und die gesendeten Nachrichten ein.  
 
 Jeder Client kann Audiodaten oder Sofortnachrichten senden. Der Dienst verwendet die Spracherkennung, um Audiodaten in Text zu konvertieren und damit unveränderte Sofortnachrichten zu senden. Wenn Clients andere Sprachen auswählen, übersetzt der Dienst alle Nachrichten in die angegebenen Sprachen für die einzelnen Clients.
 
@@ -75,8 +75,8 @@ Jeder Client kann Audiodaten oder Sofortnachrichten senden. Der Dienst verwendet
 Eine **Konversation** ist eine Sitzung, die ein Benutzer startet und der die anderen Teilnehmer beitreten können. Alle Clients verwenden für das Herstellen einer Verbindung mit der Konversation den aus fünf Buchstaben bestehenden **Konversationscode**.
 
 Jede Konversation erstellt Metadaten, die Folgendes enthalten:
--   Zeitstempel für die Anfangs- und Endzeit der Konversation
--   Liste aller Teilnehmer an der Konversation, einschließlich der ausgewählten Spitznamen der einzelnen Benutzer und der primären Sprachen für Sprach- oder Texteingaben
+-    Zeitstempel für die Anfangs- und Endzeit der Konversation
+-    Liste aller Teilnehmer an der Konversation, einschließlich der ausgewählten Spitznamen der einzelnen Benutzer und der primären Sprachen für Sprach- oder Texteingaben
 
 
 Es gibt zwei Benutzertypen in einer Konversation: **Gastgeber** und **Teilnehmer**.

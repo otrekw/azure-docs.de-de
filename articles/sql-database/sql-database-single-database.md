@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: 7b084954cb53d19739a0f633661e0c76fa82dd13
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: fc63de4057def632d3ac1980e8cb3eaedbff2175
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820943"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79500755"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Einzeldatenbank in Azure SQL-Datenbank?
 
@@ -37,7 +37,7 @@ Eine Einzeldatenbank kann in einen oder aus einem [Pool für elastische Datenban
 
 ## <a name="monitoring-and-alerting"></a>Überwachung und Warnung
 
-Verwenden Sie die [integrierten Features für die Leistungsüberwachung](sql-database-performance.md) sowie [Warnungstools](sql-database-insights-alerts-portal.md) in Kombination mit den Leistungsbewertungen. Mit diesen Tools können Sie die Auswirkungen des zentralen Hoch- oder Herunterskalierens je nach Ihren derzeitigen bzw. projektbezogenen Leistungsanforderungen schnell bewerten. Darüber hinaus kann SQL-Datenbank zur einfacheren Überwachung [Metriken und Diagnoseprotokolle ausgeben](sql-database-metrics-diag-logging.md).
+Verwenden Sie die [integrierten Features für die Leistungsüberwachung](sql-database-performance-guidance.md) sowie [Warnungstools](sql-database-insights-alerts-portal.md) in Kombination mit den Leistungsbewertungen. Mit diesen Tools können Sie die Auswirkungen des zentralen Hoch- oder Herunterskalierens je nach Ihren derzeitigen bzw. projektbezogenen Leistungsanforderungen schnell bewerten. Darüber hinaus kann SQL-Datenbank zur einfacheren Überwachung [Metriken und Ressourcenprotokolle ausgeben](sql-database-metrics-diag-logging.md).
 
 ## <a name="availability-capabilities"></a>Verfügbarkeitsfunktionen
 

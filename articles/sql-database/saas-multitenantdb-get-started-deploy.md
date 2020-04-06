@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: billgib, stein
 ms.date: 10/16/2018
 ms.openlocfilehash: 3277318e01362df8fc21ff7ca769aaeb8006abc6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73827988"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen Anwendung mit Sharding
@@ -57,7 +57,7 @@ Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Vorauss
 ### <a name="plan-the-names"></a>Planen von Namen
 
 In den Schritten in diesem Abschnitt geben Sie einen Wert für *Benutzer* an, mit dem sichergestellt wird, dass Ressourcennamen global eindeutig sind, sowie einen Namen für die *Ressourcengruppe*, die alle Ressourcen enthält, die durch eine Bereitstellung der App erstellt werden. Für eine Person mit dem Namen *Ann Finley* wird Folgendes empfohlen:
-- *Benutzer:* **af1** *(Dessen Initialen mit einer Ziffer. Verwenden Sie einen anderen Wert (z. B. „af2“), wenn Sie die App ein zweites Mal bereitstellen.)*
+- *Benutzer:* **af1**  *(Die Initialen mit einer Ziffer. Verwenden Sie einen anderen Wert (z. B. „af2“), wenn Sie die App ein zweites Mal bereitstellen.)*
 - *Ressourcengruppe:* **wingtip-mt-af1** *(„wingtip-mt“ gibt an, dass es sich um die mehrinstanzenfähige App mit Sharding handelt. Durch Anhängen des Benutzernamens „af1“ wird der Name der Ressourcengruppe mit den Namen der darin enthaltenen Ressourcen korreliert.)*
 
 Wählen Sie nun Ihre Namen aus, und notieren Sie sich diese. 
@@ -124,7 +124,7 @@ Jeder Veranstaltungsort erhält eine personalisierte Web-App, über die Veransta
 Auf der zentralen Webseite **Veranstaltungshub** wird eine Liste mit Links zu den Mandanten in der jeweiligen Bereitstellung aufgeführt. Anhand der folgenden Schritte können Sie die Webseite **Veranstaltungshub** und die jeweilige Web-App erkunden:
 
 1. Öffnen Sie den **Ereignis-Hub** in Ihrem Webbrowser:
-   - http://events.wingtip-mt.&lt ;Benutzer&gt;.trafficmanager.net &nbsp; *(Ersetzen Sie &lt; Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung.)*
+   - http://events.wingtip-mt.&lt ;user&gt;.trafficmanager.net &nbsp; *(Ersetzen Sie &lt; user&gt; durch den Benutzerwert Ihrer Bereitstellung.)*
 
      ![Events Hub](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
@@ -207,7 +207,7 @@ Als Nächstes stellen wir einen anderen Mandanten bereit, dieses Mal in seiner e
 
 Betrachten wir nun einige der Ressourcen, die bereitgestellt wurden:
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com), zur Liste der Ressourcengruppen. Öffnen Sie die Ressourcengruppe, die Sie bei der Bereitstellung der Anwendung erstellt haben.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur Liste der Ressourcengruppen. Öffnen Sie die Ressourcengruppe, die Sie bei der Bereitstellung der Anwendung erstellt haben.
 
    ![Ressourcengruppe](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
 

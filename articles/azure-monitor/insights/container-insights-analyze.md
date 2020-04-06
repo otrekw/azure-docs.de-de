@@ -2,13 +2,13 @@
 title: Kubernetes-Überwachung mit Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor für Container die Leistung eines Kubernetes-Clusters anzeigen und analysieren.
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: f57f8982b2aa045156e6f48316610137260d6597
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.date: 03/26/2020
+ms.openlocfilehash: 227fe70512536790d179797394b6fba22e7eb50e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75731015"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298374"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Überwachen der Leistung von Kubernetes-Clustern mit Azure Monitor für Container
 
@@ -117,7 +117,7 @@ Azure Monitor für Container unterstützt auch den Azure Monitor-[Metrik-Explore
 
 Im Metrik-Explorer können Sie Metriken für aggregierte Knoten und Podnutzung aus Azure Monitor für Container anzeigen. In der folgenden Tabelle sind die Details zur Verwendung der Metrikdiagramme für die Visualisierung von Containermetriken zusammengefasst.
 
-|Namespace | Metrik | Beschreibung | 
+|Namespace | Metrik | BESCHREIBUNG | 
 |----------|--------|-------------|
 | insights.container/nodes | |
 | | cpuUsageMillicores | Aggregierte Messung der CPU-Auslastung im gesamten Cluster. Hierbei handelt es sich um eine Aufteilung des CPU-Kerns in 1000 Einheiten (Milli = 1000). Dient zum Bestimmen der Verwendung von Kernen in einem Container, in dem viele Anwendungen einen einzigen Kern verwenden können.| 
@@ -189,7 +189,7 @@ Mit diesen Informationen können Sie schnell feststellen, ob Sie das richtige Ve
 
 In der folgenden Tabelle sind die Informationen beschrieben, die beim Anzeigen der Registerkarte **Knoten** angezeigt werden.
 
-| Column | Beschreibung | 
+| Column | BESCHREIBUNG | 
 |--------|-------------|
 | Name | Der Name des Hosts. |
 | Status | Kubernetes-Ansicht des Knotenstatus. |
@@ -199,6 +199,20 @@ In der folgenden Tabelle sind die Informationen beschrieben, die beim Anzeigen d
 | Betriebszeit | Stellt den Zeitraum dar, der seit dem Start oder Neustart eines Knotens verstrichen ist. |
 | Controller | Nur für Container und Pods. Zeigt an, unter welchem Controller sich ein Element befindet. Nicht alle Pods befinden sind in einem Controller, sodass einige Spalten **N/V** anzeigen. | 
 | Trend Min.&nbsp;%, Mittelw.&nbsp;%, 50.&nbsp;%, 90.&nbsp;%, 95.&nbsp;%, Max.&nbsp;% | Balkendiagrammtrend, der die durchschnittliche Perzentilmetrik des Controllers in Prozent anzeigt. |
+
+Nach dem Erweitern eines Knotens mit dem Namen **Anderer Prozess** bemerken Sie möglicherweise eine Workload. Sie stellt Nicht-Containerprozesse dar, die auf dem Knoten ausgeführt werden, und umfasst Folgendes:
+
+* Nicht-Containerprozesse in selbstverwaltetem oder verwaltetem Kubernetes
+
+* Container-Laufzeitprozesse  
+
+* Kubelet  
+
+* Auf dem Knoten ausgeführte Systemprozesse
+
+* Andere Nicht-Kubernetes-Workloads, die auf Knotenhardware oder der VM ausgeführt werden
+
+Berechnung: *Gesamtauslastung von cAdvisor* - *Auslastung vom Containerprozess*  
 
 Wählen Sie im Selektor **Controller** aus.
 
@@ -218,7 +232,7 @@ Wählen Sie den Wert in der Spalte **Knoten** für den spezifischen Controller a
 
 In der folgenden Tabelle sind die Informationen beschrieben, die bei der Anzeige von Controllern erscheinen.
 
-| Column | Beschreibung | 
+| Column | BESCHREIBUNG | 
 |--------|-------------|
 | Name | Der Name des Controllers.|
 | Status | Der Rollupstatus der Container, wenn deren Ausführung mit einem Status abgeschlossen wurde, z. B. *OK*, *Abgebrochen*, *Fehler*, *Beendet* oder *Angehalten*. Wenn der Container ausgeführt wird, aber der Status entweder nicht richtig angezeigt oder vom Agent nicht übernommen wurde und seit über 30 Minuten keine Antwort erfolgt ist, lautet der Status *Unbekannt*. Zusätzliche Informationen zum Statussymbol finden Sie in der folgenden Tabelle.|
@@ -255,7 +269,7 @@ Von einem Container aus können Sie per Drilldown zu einem Pod oder Knoten navig
 
 In der folgenden Tabelle sind die Informationen beschrieben, die bei der Anzeige von Containern erscheinen.
 
-| Column | Beschreibung | 
+| Column | BESCHREIBUNG | 
 |--------|-------------|
 | Name | Der Name des Controllers.|
 | Status | Status der Container, sofern vorhanden. Zusätzliche Informationen zum Statussymbol finden Sie in der folgenden Tabelle.|

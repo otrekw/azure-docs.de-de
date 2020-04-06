@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ca3df9e68e1d7e82675a6765f0320d42599a63da
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 35d4d44f0b9f1b210f38a034575b589c7211d55c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943637"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246669"
 ---
 # <a name="azure-security-baseline-for-azure-sql-database"></a>Azure-Sicherheitsbaseline für Azure SQL-Datenbank
 
@@ -238,20 +238,19 @@ https://docs.microsoft.com/azure/virtual-machines/windows/time-sync
 
 Darüber hinaus können Sie Azure SQL-Diagnosetelemetriedaten an „Azure SQL-Analyse“ streamen. Dies ist eine Cloudlösung, die die Leistung von Azure SQL-Datenbanken, Pools für elastische Datenbanken und verwalteten Instanzen bedarfsgesteuert und abonnementübergreifend überwacht. Die Lösung ermöglicht Ihnen das Erfassen und Visualisieren von Leistungsmetriken für Azure SQL-Datenbank und verfügt über integrierte intelligente Funktionen für die Behandlung von Leistungsproblemen.
 
-
 Einrichten der Überwachung für Ihre Azure SQL-Datenbank:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-auditing
 
 
-Sammeln von Plattformprotokollen und -metriken mit Azure Monitor:
+Erfassen und Analysieren von Metriken und Ressourcenprotokollen mit Azure Monitor:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-metrics-diag-logging
 
 
 Streamen von Diagnosedaten an Azure SQL-Analyse:
 
-https://docs.microsoft.com/azure/sql-database/sql-database-metrics-diag-logging#stream-diagnostic-telemetry-into-sql-analytics
+https://docs.microsoft.com/azure/sql-database/sql-database-metrics-diag-logging#configure-the-streaming-export-of-diagnostic-telemetry
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -787,7 +786,7 @@ https://docs.microsoft.com/azure/security-center/security-center-vulnerability-a
 
 Exportieren eines Berichts zur Sicherheitsrisikobewertung in Azure Security Center:
 
-https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#implementing-vulnerability-assessment
+https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment#implement-vulnerability-assessment
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1342,7 +1341,7 @@ https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
 
 
 
-Weitere Informationen zur Microsoft-Strategie und Durchführung von Red Team- und Livewebsite-Penetrationstests für von Microsoft verwaltete Cloudinfrastruktur, Dienste und Anwendungen finden Sie hier: https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e.
+Weitere Informationen zur Microsoft-Strategie und Durchführung von Red Team- und Livewebsite-Penetrationstests für von Microsoft verwaltete Cloudinfrastruktur, Dienste und Anwendungen finden Sie hier: https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

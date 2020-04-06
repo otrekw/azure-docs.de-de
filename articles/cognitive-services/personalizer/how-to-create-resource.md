@@ -2,13 +2,13 @@
 title: Erstellen einer Personalisierungsressource
 description: Die Dienstkonfiguration umfasst die Art, wie der Dienst Belohnungen behandelt, wie oft der Dienst Untersuchungen durchführt, wie oft das Modell neu trainiert wird und wie viele Daten gespeichert werden.
 ms.topic: conceptual
-ms.date: 02/19/2020
-ms.openlocfilehash: cb14415f3a5950ad1534d9eb8da94198a41f4f91
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.date: 03/26/2020
+ms.openlocfilehash: adb97db53d1fc0b6f0cdb14b697c82ec52501b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77624184"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336058"
 ---
 # <a name="create-a-personalizer-resource"></a>Erstellen einer Personalisierungsressource
 
@@ -29,20 +29,24 @@ Erstellen Sie eine Personalisierungsressource für jede Feedbackschleife.
 
 1. Wählen Sie **Erstellen** aus, um die Ressource zu erstellen.
 
-1. Sobald Ihre Ressource bereitgestellt ist, wählen Sie die Schaltfläche **Zur Ressource wechseln** aus, um zu Ihrer Personalisierungsressource zu gelangen. Wechseln Sie zur Seite **Konfiguration** der neuen Ressource, um [die Lernschleife zu konfigurieren](how-to-settings.md).
+1. Wählen Sie nach der Bereitstellung Ihrer Ressource die Schaltfläche **Zu Ressource wechseln** aus, um zu Ihrer Personalisierungsressource zu gelangen.
+
+1. Wählen Sie die Seite **Schnellstart** für Ihre Ressource aus, und kopieren Sie die Werte für den Endpunkt und den Schlüssel. Sie benötigen den Ressourcenendpunkt und -schlüssel, um die Rang- und Relevanz-APIs verwenden zu können.
+
+1. Wählen Sie die Seite **Konfiguration** der neuen Ressource aus, um [die Lernschleife zu konfigurieren](how-to-settings.md).
 
 ## <a name="create-a-resource-with-the-azure-cli"></a>Erstellen einer Ressource mit der Azure-Befehlszeilenschnittstelle
 
 1. Melden Sie sich mit folgendem Befehl bei der Azure-Befehlszeilenschnittstelle an:
 
-    ```bash
+    ```azurecli-interactive
     az login
     ```
 
 1. Erstellen Sie eine Ressourcengruppe, eine logische Gruppierung zur Verwaltung aller Azure-Ressourcen, die Sie mit der Personalisierungsressource verwenden möchten.
 
 
-    ```bash
+    ```azurecli-interactive
     az group create \
         --name your-personalizer-resource-group \
         --location westus2
@@ -50,7 +54,7 @@ Erstellen Sie eine Personalisierungsressource für jede Feedbackschleife.
 
 1. Erstellen Sie eine neue Personalisierungsressource, _Lernschleife_, mit dem folgenden Befehl für eine vorhandene Ressourcengruppe.
 
-    ```bash
+    ```azurecli-interactive
     az cognitiveservices account create \
         --name your-personalizer-learning-loop \
         --resource-group your-personalizer-resource-group \
@@ -59,6 +63,19 @@ Erstellen Sie eine Personalisierungsressource für jede Feedbackschleife.
         --location westus2 \
         --yes
     ```
+
+    Dadurch wird ein JSON-Objekt zurückgegeben, das Ihren **Ressourcenendpunkt** enthält.
+
+1. Verwenden Sie zum Abrufen des **Ressourcenschlüssels** den folgenden Azure CLI-Befehl:
+
+    ```azurecli-interactive
+        az cognitiveservices account keys list \
+        --name your-personalizer-learning-loop \
+        --resource-group your-personalizer-resource-group
+    ```
+
+    Sie benötigen den Ressourcenendpunkt und -schlüssel, um die Rang- und Relevanz-APIs verwenden zu können.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Konfigurieren](how-to-settings.md) der Lernschleife der Personalisierung

@@ -1,109 +1,79 @@
 ---
 title: 'Bearbeiten einer Wissensdatenbank: QnA Maker'
-titleSuffix: Azure Cognitive Services
 description: Mit QnA Maker können Sie die Inhalte Ihrer Wissensdatenbank auf einer benutzerfreundlichen Bearbeitungsoberfläche verwalten.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: cc4ead968a0ee2c9890c1cd24a6b70516b2b2e74
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.date: 03/19/2020
+ms.openlocfilehash: 223ad3a607adc20bbe608598da9742d56788b2c6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326800"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131654"
 ---
-# <a name="edit-a-knowledge-base-in-qna-maker"></a>Bearbeiten einer Wissensdatenbank in QnA Maker
+# <a name="edit-qna-sets-in-your-knowledge-base"></a>Bearbeiten von Frage-Antwort-Sätzen in Ihrer Wissensdatenbank
 
 Mit QnA Maker können Sie die Inhalte Ihrer Wissensdatenbank auf einer benutzerfreundlichen Bearbeitungsoberfläche verwalten.
 
-<a name="add-datasource"></a>
+Frage-Antwort-Sätze werden aus einer Datenquelle (beispielsweise eine Datei oder URL) oder als redaktionelle Quelle hinzugefügt. Eine redaktionelle Quelle deutet darauf hin, dass der Frage-Antwort-Satz manuell im QnA-Portal hinzugefügt wurde. Alle Frage-Antwort-Sätze können bearbeitet werden.
 
-## <a name="edit-your-knowledge-base-content"></a>Bearbeiten der Inhalte Ihrer Wissensdatenbank
+## <a name="add-an-editorial-qna-set"></a>Hinzufügen eines redaktionellen Frage-Antwort-Satzes
+1. Melden Sie sich beim [QnA-Portal](https://www.qnamaker.ai/) an, und wählen Sie die Wissensdatenbank aus, der Sie den Frage-Antwort-Satz hinzufügen möchten.
+1. Wählen Sie auf der Seite **BEARBEITEN** der Wissensdatenbank die Option **Add QnA set** (Frage-Antwort-Satz hinzufügen) aus, um einen neuen Frage-Antwort-Satz hinzuzufügen.
 
-1.  Wählen Sie in der oberen Navigationsleiste **Meine Wissensdatenbanken** aus. 
+1. Fügen Sie in der Zeile des neuen Frage-Antwort-Satzes die erforderlichen Felder für **Frage** und **Antwort** hinzu. Die anderen Felder sind optional. Alle Felder können jederzeit geändert werden.
 
-    Es werden alle Dienste, die Sie erstellt haben oder die für Sie freigegeben wurden, in absteigender Reihenfolge nach dem Datum für **Letzte Änderung** angezeigt.
+1. Fügen Sie optional **alternative Formulierungen** hinzu. Eine alternative Formulierung ist eine beliebige Form der Frage, die sich deutlich von der ursprünglichen Frage unterscheidet, aber die gleiche Antwort liefern sollte.
 
-    ![Meine Wissensdatenbanken](../media/qnamaker-how-to-edit-kb/my-kbs.png)
+    Wenn Ihre Wissensdatenbank veröffentlicht wurde und Sie aktives Lernen aktiviert haben, sammelt QnA Maker alternative Formulierungen, die Sie akzeptieren können. Diese Optionen werden ausgewählt, um die Vorhersagegenauigkeit zu erhöhen.
 
-1. Wählen Sie eine bestimmte Wissensdatenbank aus, um Änderungen daran vorzunehmen.
- 
-1. Wählen Sie **Settings**aus. Hier können Sie das Pflichtfeld „Dienstname“ bearbeiten.
-  
-    |Zielsetzung|Aktion|
-    |--|--|
-    |URL hinzufügen|Sie können neue URLs hinzufügen, um der Wissensdatenbank neue FAQ-Inhalte hinzuzufügen, indem Sie auf den Link **Wissensdatenbank verwalten > „+ URL hinzufügen“** klicken.|
-    |URL löschen|Sie können vorhandene URLs löschen, indem Sie das Löschsymbol, d.h. den Papierkorb, auswählen.|
-    |Inhalt aktualisieren|Damit Ihre Wissensdatenbank den neuesten Inhalt vorhandener URLs durchforstet, aktivieren Sie das Kontrollkästchen **Aktualisieren**. Dadurch wird die Wissensdatenbank einmal mit den neuesten URL-Inhalten aktualisiert. Es wird kein regelmäßiger Zeitplan für Updates festgelegt.|
-    |Datei hinzufügen|Sie können einer Wissensdatenbank ein unterstütztes Dateidokument hinzufügen, indem Sie **Wissensdatenbank verwalten** und dann **+ Datei hinzufügen** auswählen.|
-    |Importieren|Sie können auch vorhandene Wissensdatenbanken importieren, indem Sie die Schaltfläche **Wissensdatenbank importieren** auswählen. |
-    |Aktualisieren|Das Aktualisieren der Wissensdatenbank hängt vom **Verwaltungstarif** ab, der beim Erstellen des QnA Maker-Diensts verwendet wird, der mit Ihrer Wissensdatenbank verknüpft ist. Sie können den Verwaltungstarif auch über das Azure-Portal aktualisieren, wenn erforderlich.
+1. Fügen Sie optional **Metadaten** hinzu. Wählen Sie im Kontextmenü die Option **Ansichtsoptionen** aus, um Metadaten anzuzeigen. Metadaten bieten Filter für die Antworten, die von der Clientanwendung (beispielsweise von einem Chatbot) bereitgestellt werden.
 
-1. Wenn Sie alle Änderungen an der Wissensdatenbank vorgenommen haben, wählen Sie auf der Seite oben rechts **Speichern und trainieren** aus, um die Änderungen dauerhaft zu speichern.    
+1. Fügen Sie optional **Folgeaufforderungen** hinzu. Folgeaufforderungen bieten zusätzliche Konversationspfade, die die Clientanwendung dem Benutzer präsentieren kann.
 
-    ![Speichern und trainieren](../media/qnamaker-how-to-edit-kb/save-and-train.png)
+1. Wählen Sie **Save and train** (Speichern und trainieren) aus, um Vorhersagen mit dem neuen Frage-Antwort-Satz zu erhalten.
 
-    >[!CAUTION]
-    >Wenn Sie die Seite verlassen, bevor Sie **Speichern und trainieren** auswählen, gehen alle Änderungen verloren.
+## <a name="edit-a-qna-set"></a>Bearbeiten eines Frage-Antwort-Satzes
 
-## <a name="add-a-qna-pair"></a>Hinzufügen eines Fragen-und-Antworten-Paars
+Jedes Feld eines Frage-Antwort-Satzes kann bearbeitet werden – unabhängig von der ursprünglichen Datenquelle. Aufgrund der aktuellen **Ansichtsoptionen** (auf der Kontextsymbolleiste) werden unter Umständen nicht alle Felder angezeigt.
 
-Wählen Sie auf der Seite **BEARBEITEN** die Option **Fragen-und-Antworten-Paar hinzufügen** aus, um der Wissensdatenbanktabelle eine neue Zeile hinzuzufügen.
+## <a name="delete-a-qna-set"></a>Löschen eines Frage-Antwort-Satzes
 
-![Hinzufügen eines Fragen-und-Antworten-Paars](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
+Zum Löschen eines Fragen-und-Antworten-Paars klicken Sie in der Fragen-und-Antworten-Zeile ganz rechts auf das Symbol **Löschen**. Das Paar wird endgültig gelöscht. Dieser Vorgang kann nicht rückgängig gemacht werden. Es empfiehlt sich gegebenenfalls, vor dem Löschen von Frage-Antwort-Sätzen Ihre Wissensdatenbank auf der Seite **Veröffentlichen** zu exportieren.
 
-## <a name="delete-a-qna-pair"></a>Löschen eines Fragen-und-Antworten-Paars
+![Löschen eines Frage-Antwort-Satzes](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
-Zum Löschen eines Fragen-und-Antworten-Paars klicken Sie in der Fragen-und-Antworten-Zeile ganz rechts auf das Symbol **Löschen**. Das Paar wird endgültig gelöscht. Dieser Vorgang kann nicht rückgängig gemacht werden. Es ist ratsam, Ihre Wissensdatenbank auf der Seite **Veröffentlichen** zu exportieren, bevor Sie Paare löschen. 
+## <a name="find-the-qna-set-id"></a>Ermitteln der ID eines Frage-Antwort-Satzes
 
-![Löschen eines Fragen-und-Antworten-Paars](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
+Die ID eines Frage-Antwort-Satzes kann auf zwei Arten ermittelt werden:
+
+* Zeigen Sie in der Zeile des gewünschten Frage-Antwort-Satzes auf das Löschsymbol. Der daraufhin eingeblendete Text enthält die ID des Frage-Antwort-Satzes.
+* Exportieren Sie die Wissensdatenbank. Die ID des Frage-Antwort-Satzes ist im jeweiligen Frage-Antwort-Satz in der Wissensdatenbank enthalten.
 
 ## <a name="add-alternate-questions"></a>Hinzufügen alternativer Fragen
 
-Fügen Sie alternative Fragen zu einem vorhandenen Fragen-und-Antworten-Paar hinzu, um die Wahrscheinlichkeit einer Übereinstimmung mit einer Benutzerabfrage zu erhöhen.
+Fügen Sie einem vorhandenen Frage-Antwort-Satz alternative Fragen hinzu, um die Wahrscheinlichkeit eines Treffers für eine Benutzerabfrage zu erhöhen.
 
 ![Hinzufügen alternativer Fragen](../media/qnamaker-how-to-edit-kb/add-alternate-question.png)
 
+## <a name="linking-qna-sets"></a>Verknüpfen von Frage-Antwort-Sätzen
+
+Zur Verknüpfung von Frage-Antwort-Sätzen werden [Folgeaufforderungen](multiturn-conversation.md) verwendet. Hierbei handelt es sich um eine logische Verbindung zwischen Frage-Antwort-Sätzen, die auf der Ebene der Wissensdatenbank verwaltet wird. Folgeaufforderungen können im QnA Maker-Portal bearbeitet werden.
+
+Frage-Antwort-Sätze können nicht in den Metadaten der Antwort verknüpft werden.
+
 ## <a name="add-metadata"></a>Hinzufügen von Metadaten
 
-Fügen Sie Metadatenpaare hinzu, indem Sie zuerst **Ansichtsoptionen** und dann **Metadaten anzeigen** auswählen. Dadurch wird die Metadatenspalte angezeigt. Wählen Sie anschließend das Zeichen **+** aus, um ein Metadatenpaar hinzuzufügen. Dieses Paar besteht aus einem Schlüssel und einen Wert.
+Fügen Sie Metadatensätze hinzu, indem Sie zuerst **Ansichtsoptionen** und dann **Metadaten anzeigen** auswählen. Dadurch wird die Metadatenspalte angezeigt. Wählen Sie anschließend das Zeichen **+** aus, um einen Metadatensatz hinzuzufügen. Dieser Satz besteht aus einem Schlüssel und einem Wert.
+
+## <a name="save-changes-to-the-qna-sets"></a>Speichern von Änderungen an Frage-Antwort-Sätzen
+
+Wählen Sie bei der Bearbeitung regelmäßig **Save and train** (Speichern und trainieren) aus, damit keine Änderungen verloren gehen.
 
 ![Hinzufügen von Metadaten](../media/qnamaker-how-to-edit-kb/add-metadata.png)
-
-> [!TIP]
-> Denken Sie daran, die Wissensdatenbank beim Durchführen von Änderungen in regelmäßigen Abständen zu speichern („Speichern und trainieren“), um einen Verlust von Änderungen zu vermeiden.
-
-## <a name="manage-large-knowledge-bases"></a>Verwalten großer Wissensdatenbanken
-
-* **Datenquellengruppen:** Die Fragen und Antworten werden nach der Datenquelle gruppiert, aus der sie extrahiert wurden. Sie können die Datenquelle erweitern oder reduzieren.
-
-    ![Verwenden der Datenquellenleiste von QnA Maker, um Datenquellenfragen und -antworten zu reduzieren bzw. zu erweitern](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
-
-* **Durchsuchen der Wissensdatenbank:** Sie können in der Wissensdatenbank suchen, indem Sie einen Suchbegriff in das Textfeld am oberen Rand der Wissensdatenbanktabelle eingeben. Drücken Sie die EINGABETASTE, um in den Fragen, Antworten oder Metadaten danach zu suchen. Klicken Sie auf das X-Symbol, um den Suchfilter zu entfernen.
-
-    ![Verwenden des Suchfelds von QnA Maker (über den Fragen und Antworten), um nur Elemente anzuzeigen, die den Filterkriterien entsprechen](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
-
-* **Paginierung:** Navigieren Sie zur Verwaltung umfangreicher Wissensdatenbanken schnell durch Datenquellen.
-
-    ![Verwenden der Paginierungsfeatures von QnA Maker (über den Fragen und Antworten), um seitenweise durch Fragen und Antworten zu navigieren](../media/qnamaker-how-to-edit-kb/pagination.png)
-
-## <a name="delete-knowledge-bases"></a>Löschen von Wissensdatenbanken
-
-Das Löschen einer Wissensdatenbank (Knowledge Base, KB) ist ein endgültiger Vorgang. Dieser Vorgang kann nicht rückgängig gemacht werden. Vor dem Löschen einer Wissensdatenbank, sollten Sie die Wissensdatenbank auf der Seite **Einstellungen** im QnA Maker-Portal exportieren. 
-
-Wenn Sie Ihre Wissensdatenbank für [Projektmitarbeiter](collaborate-knowledge-base.md) freigeben und sie dann löschen, verlieren alle Benutzer den Zugriff auf die Wissensdatenbank. 
-
-## <a name="delete-azure-resources"></a>Löschen von Azure-Ressourcen 
-
-Wenn Sie Azure-Ressourcen löschen, die für Ihre QnA Maker-Wissensdatenbanken verwendet werden, funktionieren diese Wissensdatenbanken nicht mehr. Stellen Sie vor dem Löschen von Ressourcen sicher, dass Sie Ihre Wissensdatenbanken auf der Seite **Einstellungen** exportieren. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
 > [Zusammenarbeiten an einer Wissensdatenbank](./collaborate-knowledge-base.md)
+
+* [Verwalten von QnA Maker-Ressourcen](set-up-qnamaker-service-azure.md)

@@ -1,19 +1,19 @@
 ---
-title: Einrichten von Private Link für Azure Database for MariaDB (Vorschau) über die Befehlszeilenschnittstelle
+title: Private Link – Azure CLI – Azure Database for MariaDB
 description: Erfahren Sie, wie Sie Private Link für Azure Database for MariaDB über die Azure-Befehlszeilenschnittstelle konfigurieren.
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: b2d9fb9d4dc8268c0be45f8a6f24759a7be58427
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: c28c5494c1cff2c198a94ea6b92003ae74ee2c8e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561798"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371697"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mariadb-preview-using-cli"></a>Erstellen und Verwalten von Private Link für Azure Database for MariaDB (Vorschau) über die Befehlszeilenschnittstelle
+# <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>Erstellen und Verwalten von Private Link für Azure Database for MariaDB über die CLI
 
 Ein privater Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren. In diesem Artikel erfahren Sie, wie Sie einen virtuellen Computer in einem virtuellen Azure-Netzwerk und einen Azure Database for MariaDB-Server mit einem privaten Azure-Endpunkt und der Azure-Befehlszeilenschnittstelle erstellen.
 
@@ -168,7 +168,7 @@ Stellen Sie wie folgt eine Verbindung mit dem virtuellen Computer *myVm* aus dem
 
 4. Geben Sie in **Neue Verbindung** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Verbindungsname| Wählen Sie den gewünschten Verbindungsnamen aus.|
     | Hostname | Wählen Sie *mydemoserver.privateLink.mariadb.database.azure.com* aus. |

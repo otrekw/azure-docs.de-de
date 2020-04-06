@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 35046d33a85eaed913454f188f2a4526715526a9
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 5b8dab14a9416795eccef1f71988a048c8bedb48
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168779"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218169"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Definieren von benutzerdefinierten R-Modulen für Azure Machine Learning Studio (klassisch)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 In diesem Thema erfahren Sie, wie ein benutzerdefiniertes R-Studio (klassisch) erstellt und bereitgestellt wird. Es wird beschrieben, was ein benutzerdefiniertes R-Modul ist und welche Dateien verwendet werden, um es zu definieren. Es veranschaulicht, wie die Dateien erstellt werden, die ein Modul definieren, und wie dieses Modul zur Bereitstellung in einem Machine Learning-Arbeitsbereich registriert wird. Die in der Definition des benutzerdefinierten Moduls verwendeten Elemente und Attribute werden dann ausführlicher beschrieben. Ebenfalls wird erläutert, wie zusätzliche Funktionen und Dateien sowie mehrere Ausgaben zu verwenden sind. 
 
@@ -200,7 +202,7 @@ Wenn Sie also beispielsweise das Modul **Custom Add Rows** ändern möchten, um 
     </Ports> 
 
 
-Geben Sie dann die Liste der Objekte in einer Liste in der richtigen Reihenfolge in "CustomAddRows.R" zurück:
+Geben Sie dann die Liste der Objekte in einer Liste in der richtigen Reihenfolge in „CustomAddRows.R“ zurück:
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) { 
         if (swap) { dataset <- rbind(dataset2, dataset1)) } 
@@ -337,7 +339,7 @@ Jede Datei in der ZIP-Datei des benutzerdefinierten Moduls ist während der Ausf
 > 
 > 
 
-Angenommen Sie möchten alle Zeilen mit NAs und alle doppelten Zeilen in einem DataSet entfernen, bevor Sie es an CustomAddRows ausgeben, und bereits eine R-Funktion geschrieben haben, die dies in einer Datei „RemoveDupNARows.R“ ausführt:
+Angenommen Sie möchten alle Zeilen mit NAs und alle doppelten Zeilen in einem DataSet entfernen, bevor Sie es an CustomAddRows ausgeben, und bereits eine R-Funktion geschrieben haben, die Folgendes in einer Datei „RemoveDupNARows.R“ ausführt:
 
     RemoveDupNARows <- function(dataFrame) {
         #Remove Duplicate Rows:
@@ -359,7 +361,7 @@ Sie können die zusätzliche Datei "RemoveDupNARows.R" in der "CustomAddRows"-Fu
         return (dataset)
     }
 
-Laden Sie anschließend eine ZIP-Datei mit "CustomAddRows.R", "CustomAddRows.xml" und "RemoveDupNARows.R" als benutzerdefiniertes R-Modul hoch.
+Laden Sie anschließend eine ZIP-Datei mit „CustomAddRows.R“, „CustomAddRows.xml“ und „RemoveDupNARows.R“ als benutzerdefiniertes R-Modul hoch.
 
 ## <a name="execution-environment"></a>Ausführungsumgebung
 Die Ausführungsumgebung für das R-Skript verwendet die gleiche Version von R wie das Modul **Execute R Script** und kann die gleichen Standardpakete verwenden. Sie können Ihrem benutzerdefinierten Modul auch zusätzliche R-Pakete hinzufügen, indem Sie sie in das ZIP-Paket des benutzerdefinierten Moduls einschließen. Laden Sie sie einfach wie in Ihrer eigenen R-Umgebung in Ihr R-Skript. 

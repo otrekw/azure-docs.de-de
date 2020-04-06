@@ -2,13 +2,13 @@
 title: 'Importieren aus Datenquellen: QnA Maker'
 description: Eine QnA Maker-Wissensdatenbank besteht aus einer Reihe von Frage-Antwort-Sätzen (QnA) und optionalen Metadaten, die jedem QnA-Paar zugeordnet sind.
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.openlocfilehash: d47d994366a8057521c1cc2ab1ab8a7ec3393965
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 03/16/2020
+ms.openlocfilehash: e7772b2c76dfb92ced4d2c0d4b8dae97a59d1b83
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843352"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79457820"
 ---
 # <a name="importing-from-data-sources"></a>Importieren aus Datenquellen
 
@@ -56,7 +56,9 @@ Die Spalte für eine `.tsv`-Datei mit Mehrfachdurchläufen, die sich speziell f�
 
 ## <a name="export-as-example"></a>Exportieren als Beispiel
 
-Wenn Sie nicht sicher sind, wie Sie Ihren QnA-Satz in der `.tsv`-Datei darstellen, erstellen Sie den Satz im QnA Maker-Portal, speichern Sie ihn, und exportieren Sie dann die Wissensdatenbank, um ein Beispiel für die Darstellung der Gruppe zu erhalten.
+Wenn Sie nicht sicher sind, wie Sie Ihren QnA-Satz in der Datei vom Typ `.tsv` darstellen, gehen Sie wie folgt vor:
+* Verwenden Sie [dieses Beispiel](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx?raw=true) zum Herunterladen von GitHub.
+* Oder erstellen Sie den Satz im QnA Maker-Portal, speichern Sie ihn, und exportieren Sie dann die Wissensdatenbank, um ein Beispiel für die Darstellung des Satzes zu erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

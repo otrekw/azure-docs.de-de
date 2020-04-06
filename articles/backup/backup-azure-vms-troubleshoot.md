@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Fehler beheben können, die
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 1b82d43a58a25dc1c475180a4780106220e1ceeb
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 15e4b4c8850798fd2386cd2874b6ab58a18d5406
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597319"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79297389"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Problembehandlung bei Sicherungsfehlern auf virtuellen Azure-Computern
 
@@ -24,7 +24,7 @@ Dieser Abschnitt behandelt Fehler im Sicherungsvorgang für virtuelle Azure-Comp
 * Stellen Sie sicher, dass der VM-Agent (WA-Agent) die [neueste Version](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent) aufweist.
 * Stellen Sie sicher, dass die Betriebssystemversion des virtuellen Windows- oder Linux-Computers unterstützt wird. Entsprechende Informationen finden Sie in der [Supportmatrix zur IaaS-VM-Sicherung](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas).
 * Überprüfen Sie, ob kein anderer Sicherungsdienst ausgeführt wird.
-  * Um sicherzustellen, dass keine Probleme bei der Momentaufnahmenerweiterung vorliegen, [deinstallieren Sie die Erweiterungen, um erneutes Laden zu erzwingen, und wiederholen Sie die Sicherung](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-backup-extension-fails-to-update-or-load).
+  * Um sicherzustellen, dass keine Probleme bei der Momentaufnahmenerweiterung vorliegen, [deinstallieren Sie die Erweiterungen, um erneutes Laden zu erzwingen, und wiederholen Sie die Sicherung](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout).
 * Überprüfen Sie, ob der virtuelle Computer über Internetkonnektivität verfügt.
   * Vergewissern Sie sich, dass kein anderer Sicherungsdienst ausgeführt wird.
 * Stellen Sie über `Services.msc` sicher, dass sich der **Microsoft Azure-Gast-Agent-Dienst** im Status **Wird ausgeführt** befindet. Wenn der **Microsoft Azure-Gast-Agent-Dienst** nicht vorhanden ist, installieren Sie ihn aus [Sichern virtueller Azure-Computer in einem Recovery Services-Tresor](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent).
@@ -125,7 +125,7 @@ Wenn für das Verzeichnis **MachineKeys** andere Berechtigungen als die Standard
    * Leseberechtigungen
 2. Löschen Sie alle Zertifikate, für die **Ausgestellt für** das klassische Bereitstellungsmodell oder **Windows Azure CRP Certificate Generator** ist:
 
-   * [Öffnen Sie in der Konsole auf dem lokalen Computer die Zertifikate](https://msdn.microsoft.com/library/ms788967(v=vs.110).aspx).
+   * [Öffnen Sie in der Konsole auf dem lokalen Computer die Zertifikate](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in).
    * Löschen Sie unter **Eigene Zertifikate** > **Zertifikate** alle Zertifikate, für die **Ausgestellt für** das klassische Bereitstellungsmodell ist, oder löschen Sie **Microsoft Azure CRP Certificate Generator**.
 3. Lösen Sie einen Sicherungsauftrag für den virtuellen Computer aus.
 
@@ -190,7 +190,7 @@ So wird sichergestellt, dass die Momentaufnahmen nicht über den Gast, sondern �
 | Der VM-Agent ist auf dem virtuellen Computer nicht vorhanden: <br>Installieren Sie alle erforderlichen Komponenten und den VM-Agent. Wiederholen Sie dann den Vorgang. |Erfahren Sie mehr über die [VM-Agent-Installation und das Überprüfen der VM-Agent-Installation](#vm-agent). |
 | **Fehlercode**: ExtensionSnapshotFailedNoSecureNetwork <br/> **Fehlermeldung**: Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Erstellen eines sicheren Netzwerkkommunikationskanals fehlgeschlagen. | <ol><li> Öffnen Sie den Registrierungs-Editor, indem Sie **regedit.exe** im Modus mit erhöhten Rechten ausführen. <li> Identifizieren Sie alle auf Ihrem System vorhandenen Versionen von .NET Framework. Sie werden unter der Hierarchie des Registrierungsschlüssels **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** aufgeführt. <li> Fügen Sie für jede im Registrierungsschlüssel vorhandene .NET Framework-Version den folgenden Schlüssel hinzu: <br> **SchUseStrongCrypto"=dword:00000001** </ol>|
 | **Fehlercode**: ExtensionVCRedistInstallationFailure <br/> **Fehlermeldung**: Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Installieren von Visual C++ Redistributable für Visual Studio 2012 fehlgeschlagen. | Navigieren Sie zu „C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion“, und installieren Sie „vcredist2013_x64“.<br/>Stellen Sie sicher, dass der richtige Registrierungsschlüsselwert zum Zulassen der Dienstinstallation festgelegt wird. Das heißt, legen Sie den Wert für **Start** in **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** auf **3** und nicht auf **4** fest. <br><br>Wenn immer noch Probleme bei der Installation bestehen, starten Sie den Installationsdienst neu, indem Sie an einer Eingabeaufforderung mit erhöhten Rechten den Befehl **MSIEXEC /UNREGISTER** und dann **MSIEXEC /REGISTER** ausführen.  |
-
+| **Fehlercode**:  UserErrorRequestDisallowedByPolicy <BR> **Fehlermeldung**: Auf der VM wurde eine ungültige Richtlinie konfiguriert, die den Momentaufnahmevorgang verhindert. | Erwägen Sie bei einer Azure Policy-Richtlinie, mit der die [Tag-Governance in Ihrer Umgebung verwaltet wird](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags), entweder die Änderung der Richtlinie von der [Auswirkung „Deny“](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny) in die [Auswirkung „Modify“](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify), oder erstellen Sie die Ressourcengruppe manuell gemäß des [für Azure Backup erforderlichen Benennungsschemas](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines).
 ## <a name="jobs"></a>Aufträge
 
 | Fehlerdetails | Problemumgehung |

@@ -3,12 +3,12 @@ title: 'Häufig gestellte Fragen: Sichern von SAP HANA-Datenbanken auf virtuelle
 description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Sichern von SAP HANA-Datenbanken mit dem Azure Backup-Dienst.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: d9d10e38885ba814045d8476b83671153feb7b8c
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: a46c4d6cccc00452a56567880400ef5779e6aed4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77919684"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80155391"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Häufig gestellte Fragen: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 
@@ -52,6 +52,14 @@ Wenn Sie das Skript vor der Registrierung ausführen, werden die erforderlichen 
 ### <a name="will-backups-work-after-migrating-sap-hana-from-10-to-20"></a>Funktionieren Sicherungen nach der Migration von SAP HANA aus Version 1.0 zu 2.0?
 
 Weitere Informationen finden Sie in [diesem Abschnitt](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20) des Leitfadens zur Problembehandlung.
+
+### <a name="can-azure-hana-backup-be-set-up-against-a-virtual-ip-load-balancer-and-not-a-virtual-machine"></a>Kann die HANA-Sicherung in Azure für eine virtuelle IP-Adresse (Lastenausgleich) und nicht einen virtuellen Computer eingerichtet werden?
+
+Zurzeit besteht keine Möglichkeit, die Lösung für eine virtuelle IP-Adresse allein einzurichten. Es wird ein virtueller Computer zum Ausführen der Lösung benötigt.
+
+### <a name="i-have-a-sap-hana-system-replication-hsr-how-should-i-configure-backup-for-this-setup"></a>Ich verfüge über eine SAP HANA-Systemreplikation (HSR). Wie kann ich die Sicherung für dieses Setup konfigurieren?
+
+Die primären und sekundären Knoten der HSR werden als zwei einzelne, nicht in Verbindung stehende VMs behandelt. Sie müssen die Sicherung auf dem primären Knoten konfigurieren, und wenn das Failover durchgeführt wird, müssen Sie die Sicherung auf dem sekundären Knoten konfigurieren (der nun zum primären Knoten wird). Es erfolgt kein automatisches „Failover“ der Sicherung auf den anderen Knoten.
 
 ## <a name="restore"></a>Restore
 

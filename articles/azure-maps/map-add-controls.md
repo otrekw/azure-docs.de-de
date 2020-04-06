@@ -1,19 +1,19 @@
 ---
 title: Hinzufügen von Steuerelementen zu einer Karte | Microsoft Azure Maps
 description: Erfahren Sie, wie Sie einer Karte Steuerelemente für Zoom, Neigung und Drehen sowie eine Stilauswahl in Microsoft Azure Maps hinzufügen.
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: e386c136e7d0258d00c22c627dfa5047ba803169
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 094dc9fd01ec71f378a173a2b4fa64cc672d7c97
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209765"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334559"
 ---
 # <a name="add-controls-to-a-map"></a>Hinzufügen von Steuerelementen zu einer Karte
 
@@ -75,7 +75,20 @@ Nachfolgend finden Sie das vollständige ausführbare Codebeispiel für die oben
 
 ## <a name="a-map-with-all-controls"></a>Eine Karte mit allen Steuerelementen
 
-Das folgende Codebeispiel fügt die Stilauswahl-, Zoom-, Neigungs- und Kompasssteuerelemente in die untere rechte Ecke der Karte hinzu. Beachten Sie, wie sie automatisch gestapelt werden. Die Reihenfolge der Steuerelementobjekte im Skript bestimmt die Reihenfolge, in der sie auf der Karte angezeigt werden. Wenn Sie die Reihenfolge der Steuerelemente auf der Karte ändern möchten, ändern Sie ihre Reihenfolge im Skript.
+Mehrere Steuerelemente können in einem Array platziert, der Karte in einem Durchgang hinzugefügt und im gleichen Bereich der Karte positioniert werden, um die Entwicklung zu vereinfachen. Nachfolgend werden mit diesem Ansatz der Karte die Standard-Navigationssteuerelemente hinzugefügt.
+
+```javascript
+map.controls.add([
+    new atlas.control.ZoomControl(),
+    new atlas.control.CompassControl(),
+    new atlas.control.PitchControl(),
+    new atlas.control.StyleControl()
+], {
+    position: "top-right"
+});
+```
+
+Das folgende Codebeispiel fügt die Zoom-, Kompass- Neigungs- und Stilauswahl-Steuerelemente in der oberen rechten Ecke der Karte hinzu. Beachten Sie, wie sie automatisch gestapelt werden. Die Reihenfolge der Steuerelementobjekte im Skript bestimmt die Reihenfolge, in der sie auf der Karte angezeigt werden. Wenn Sie die Reihenfolge der Steuerelemente auf der Karte ändern möchten, ändern Sie ihre Reihenfolge im Array.
 
 <br/>
 

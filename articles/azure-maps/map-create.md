@@ -1,7 +1,7 @@
 ---
 title: Erstellen einer Karte mit Azure Maps | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe des Microsoft Azure Maps Web SDK eine Karte auf einer Webseite rendern.
-author: jingjing-z
+author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 07/26/2019
 ms.topic: conceptual
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 578abae5b206b31674b00b9d27ef34174b93759f
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: cfeff430e5313c8728582c4790c9aca9482d63aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76988582"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79534915"
 ---
 # <a name="create-a-map"></a>Erstellen einer Karte
 
@@ -22,7 +22,7 @@ In diesem Artikel erfahren Sie, wie Sie eine Karte erstellen und animieren.
 
 ## <a name="loading-a-map"></a>Laden einer Karte
 
-Um eine Karte zu laden, erstellen Sie eine neue Instanz der [Map-Klasse](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest). Beim Initialisieren der Karte übergeben Sie eine DIV-Element-ID zum Rendern der Karte und eine Reihe von Optionen, die beim Laden der Karte verwendet werden. Wenn im `atlas`-Namespace keine standardmäßigen Authentifizierungsinformationen angegeben sind, müssen diese Informationen beim Laden der Karte in den Kartenoptionen angegeben werden. Die Karte lädt aus Leistungsgründen verschiedene Ressourcen asynchron. Fügen Sie daher nach dem Erstellen der Karteninstanz ein `ready`- oder ein `load`-Ereignis zur Karte hinzu, und fügen Sie dann zusätzlichen Code, der mit der Karte interagiert, zum Ereignishandler hinzu. Das `ready`-Ereignis wird ausgelöst, sobald genügend Ressourcen geladen wurden, um eine programmgesteuerte Interaktion mit der Karte zu ermöglichen. Das `load`-Ereignis wird ausgelöst, nachdem die anfängliche Kartenansicht vollständig geladen wurde. 
+Um eine Karte zu laden, erstellen Sie eine neue Instanz der [Map-Klasse](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map). Beim Initialisieren der Karte übergeben Sie eine DIV-Element-ID zum Rendern der Karte und eine Reihe von Optionen, die beim Laden der Karte verwendet werden. Wenn im `atlas`-Namespace keine standardmäßigen Authentifizierungsinformationen angegeben sind, müssen diese Informationen beim Laden der Karte in den Kartenoptionen angegeben werden. Die Karte lädt aus Leistungsgründen verschiedene Ressourcen asynchron. Fügen Sie daher nach dem Erstellen der Karteninstanz ein `ready`- oder ein `load`-Ereignis zur Karte hinzu, und fügen Sie dann zusätzlichen Code, der mit der Karte interagiert, zum Ereignishandler hinzu. Das `ready`-Ereignis wird ausgelöst, sobald genügend Ressourcen geladen wurden, um eine programmgesteuerte Interaktion mit der Karte zu ermöglichen. Das `load`-Ereignis wird ausgelöst, nachdem die anfängliche Kartenansicht vollständig geladen wurde. 
 
 <br/>
 
@@ -43,6 +43,18 @@ Wenn der Maßstab einer Karte auf einem Breitbildschirm verkleinert wird, werden
 Sehen Sie sich den Pen <a href='https://codepen.io/azuremaps/pen/eqMYpZ/'>renderWorldCopies = false</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a> an.
 </iframe>
 
+
+## <a name="map-options"></a>Kartenoptionen
+
+Beim Erstellen einer Karte können mehrere verschiedene Typen von Optionen übergeben werden, um die Funktionsweise der Karte anzupassen. Diese sind nachfolgend aufgeführt.
+
+- Mit [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraoptions) und [CameraBoundOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraboundsoptions) wird der Bereich angegeben, der auf der Karte angezeigt werden soll.
+- Mit [ServiceOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.serviceoptions) wird angegeben, wie die Karte mit Diensten interagieren soll, die die Karte unterstützen.
+- Mit [StyleOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.styleoptions) wird angegeben, wie die Karte formatiert und gerendert werden soll.
+- Mit [UserInteractionOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.userinteractionoptions) wird angegeben, wie die Karte erreicht werden soll, wenn der Benutzer mit der Karte interagiert. 
+
+Diese Optionen können auch nach dem Laden der Karte mit den Funktionen `setCamera`, `setServiceOptions`, `setStyle`und `setUserInteraction` aktualisiert werden. 
+
 ## <a name="controlling-the-map-camera"></a>Steuern der Kartenkamera
 
 Es gibt zwei Möglichkeiten, um den angezeigten Kartenbereich mithilfe der Kamera einer Karte festzulegen. Sie können die Kameraoptionen beim Laden der Karte festlegen. Sie können die Option `setCamera` auch jederzeit nach dem Laden der Karte aufrufen, um die Kartenansicht programmgesteuert zu aktualisieren.  
@@ -51,7 +63,25 @@ Es gibt zwei Möglichkeiten, um den angezeigten Kartenbereich mithilfe der Kamer
 
 ### <a name="set-the-camera"></a>Festlegen der Kamera
 
-Im folgenden Code wird ein [Map-Objekt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) erstellt, und die Optionen für Zentrieren und Zoomen werden festgelegt. Karteneigenschaften wie „Zentrieren“ und „Zoomfaktor“ gehören zu [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions).
+Mit der Kartenkamera wird gesteuert, was im Viewport der Kartencanvas angezeigt wird. Kameraoptionen können bei der Initialisierung in den Kartenoptionen übermittelt oder in der Funktion `setCamera` der Karte übergeben werden.
+
+```javascript
+//Set the camera options when creating the map.
+var map = new atlas.Map('map', {
+    center: [-122.33, 47.6],
+    zoom: 12
+
+    //Additional map options.
+};
+
+//Update the map camera at anytime using setCamera function.
+map.setCamera({
+    center: [-110, 45],
+    zoom: 5 
+});
+```
+
+Im folgenden Code wird ein [Map-Objekt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) erstellt, und die Optionen für Zentrieren und Zoomen werden festgelegt. Karteneigenschaften wie „Zentrieren“ und „Zoomfaktor“ gehören zu [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.cameraoptions).
 
 <br/>
 
@@ -62,7 +92,16 @@ Im folgenden Code wird ein [Map-Objekt](https://docs.microsoft.com/javascript/ap
 
 ### <a name="set-the-camera-bounds"></a>Festlegen der Kameragrenzen
 
-Im folgenden Code wird über `new atlas.Map()` ein [Map-Objekt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) konstruiert. Karteneigenschaften wie `CameraBoundsOptions` können mit der Funktion [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) der Map-Klasse definiert werden. Eigenschaften von Begrenzungen und Abständen werden mit `setCamera` festgelegt.
+Ein Begrenzungsrahmen kann zum Aktualisieren der Kartenkamera verwendet werden. Wenn der Begrenzungsrahmen aus Punktdaten berechnet wurde, ist es oft hilfreich, in den Kameraoptionen auch einen Pixelauffüllungswert anzugeben, um die Symbolgröße zu berücksichtigen. Dadurch wird sichergestellt, dass keine Punkte am Rand des Kartenviewports ausgelassen werden.
+
+```javascript
+map.setCamera({
+    bounds: [-122.4, 47.6, -122.3, 47.7],
+    padding: 10
+});
+```
+
+Im folgenden Code wird über `new atlas.Map()` ein [Map-Objekt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) konstruiert. Karteneigenschaften wie `CameraBoundsOptions` können mit der Funktion [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map) der Map-Klasse definiert werden. Eigenschaften von Begrenzungen und Abständen werden mit `setCamera` festgelegt.
 
 <br/>
 
@@ -70,6 +109,17 @@ Im folgenden Code wird über `new atlas.Map()` ein [Map-Objekt](https://docs.mic
 </iframe>
 
 ### <a name="animate-map-view"></a>Animieren der Kartenansicht
+
+Beim Festlegen der Kameraoptionen der Karte können auch [Animationsoptionen](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.animationoptions) festgelegt werden. Mit diesen Optionen werden der Animationstyp und die Dauer zum Verschieben der Kamera angegeben.
+
+```javascript
+map.setCamera({
+    center: [-122.33, 47.6],
+    zoom: 12,
+    duration: 1000,
+    type: 'fly'  
+});
+```
 
 Im folgenden Code erstellt der erste Codeblock eine Karte und legt die Kartenstile für Zentrierung und Zoom fest. Im zweiten Codeblock wird ein Klickereignishandler für die Schaltfläche zum Animieren erstellt. Beim Klicken auf diese Schaltfläche wird die `setCamera`-Funktion mit zufällig generierten Werten für [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions) und [AnimationOptions](/javascript/api/azure-maps-control/atlas.animationoptions) aufgerufen.
 
@@ -89,7 +139,7 @@ Schauen Sie sich die Codebeispiele an. Sie können den JavaScript-Code auf der R
 Erfahren Sie mehr zu den in diesem Artikel verwendeten Klassen und Methoden:
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map)
 
 > [!div class="nextstepaction"]
 > [CameraOptions](/javascript/api/azure-maps-control/atlas.cameraoptions)

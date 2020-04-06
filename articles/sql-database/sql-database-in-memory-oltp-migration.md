@@ -4,26 +4,24 @@ description: Verwenden von In-Memory OLTP zum Verbessern der Transaktionsleistun
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
-ms.openlocfilehash: 0f10936867c101c07cc8d29d68dc45021bfad1b3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 653ed75341d5d56ecbe06cb59f0efafa1e68aa0f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810303"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067267"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>Verwenden von In-Memory-OLTP zur Verbesserung der Anwendungsleistung in SQL-Datenbank
 
 [In-Memory-OLTP](sql-database-in-memory.md) kann verwendet werden, um die Leistung der Transaktionsverarbeitung, der Datenerfassung und der vorübergehenden Datenszenarien in Datenbanken des Tarifs [„Premium“ und „Unternehmenskritisch“](sql-database-service-tiers-vcore.md) zu verbessern, ohne den Tarif zu erhöhen. 
 
 > [!NOTE] 
-> Erfahren Sie mehr zu diesem Thema: [Quorum doubles key database’s workload while lowering DTU by 70% with SQL Database (Quorum verdoppelt die Arbeitslast der wichtigen Datenbank, während die DTU mit der SQL-Datenbank um 70 % verringert wird; in englischer Sprache)](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+> Erfahren Sie mehr darüber, wie ein [Quorum die Arbeitslast der wichtigen Datenbank verdoppelt, während die DTU mit SQL-Datenbank um 70 Prozent verringert wird](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
 
 
 Führen Sie diese Schritte durch, um In-Memory-OLTP in Ihrer vorhandenen Datenbank zu übernehmen.

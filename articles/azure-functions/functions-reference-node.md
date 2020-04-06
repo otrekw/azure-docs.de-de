@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mithilfe von JavaScript Funktionen entwickeln
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: b0cd9541deac106525cfe80244d1867f513825f0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 345df8e1ea88caa6f8dbe941245c1f989c3e81c6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356802"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234962"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -363,6 +363,7 @@ Das `context.res`-Objekt (Antwortobjekt) weist die folgenden Eigenschaften auf:
 | _headers_ | Ein Objekt, das die Header der Antwort enthält.             |
 | _isRaw_   | Gibt an, dass die Formatierung für die Antwort übersprungen wird.    |
 | _status_  | Der HTTP-Statuscode der Antwort.                     |
+| _cookies_ | Ein Array von HTTP-Cookieobjekten, die in der Antwort festgelegt sind. Ein HTTP-Cookieobjekt verfügt über einen Namen (`name`) und einen Wert (`value`) sowie über andere Cookieeigenschaften wie etwa `maxAge` oder `sameSite`. |
 
 ### <a name="accessing-the-request-and-response"></a>Zugreifen auf Anforderung und Antwort 
 
@@ -634,7 +635,7 @@ Beachten Sie beim Arbeiten mit JavaScript-Funktionen die Überlegungen in den fo
 
 ### <a name="choose-single-vcpu-app-service-plans"></a>Auswählen von App Service-Plänen mit einzelner vCPU
 
-Wenn Sie eine Funktions-App erstellen, die den App Service-Plan verwendet, sollten Sie statt eines Plans mit mehreren vCPUs einen Plan mit einer einzelnen vCPU auswählen. Derzeit führt Functions JavaScript-Funktionen auf virtuellen Computern mit einer einzelnen vCPU effizienter aus. Die Verwendung größerer virtueller Computer führt nicht zu den erwarteten Leistungsverbesserungen. Bei Bedarf können Sie manuell horizontal hochskalieren, indem Sie weitere Instanzen virtueller Computer mit einer einzelnen vCPU hinzufügen. Sie können aber auch die automatische Skalierung aktivieren. Weitere Informationen finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json).
+Wenn Sie eine Funktions-App erstellen, die den App Service-Plan verwendet, sollten Sie statt eines Plans mit mehreren vCPUs einen Plan mit einer einzelnen vCPU auswählen. Derzeit führt Functions JavaScript-Funktionen auf virtuellen Computern mit einer einzelnen vCPU effizienter aus. Die Verwendung größerer virtueller Computer führt nicht zu den erwarteten Leistungsverbesserungen. Bei Bedarf können Sie manuell aufskalieren, indem Sie weitere Instanzen virtueller Computer mit einer einzelnen vCPU hinzufügen. Sie können aber auch die automatische Skalierung aktivieren. Weitere Informationen finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json).
 
 ### <a name="cold-start"></a>Kaltstart
 

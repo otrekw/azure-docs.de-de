@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/24/2020
-ms.openlocfilehash: 8611abd4e504e0378b744b12d0adb5fa22f5476b
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: e4511cf4393172e7d2b1ab8a985c76d8f98d4015
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920364"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456062"
 ---
 # <a name="permutation-feature-importance"></a>Permutation Feature Importance (PFI)
 
@@ -54,7 +54,7 @@ Um einen Satz mit Featurebewertungen zu generieren, müssen Sie bereits über ei
 
      Eine ausführlichere Beschreibung dieser Metriken für die Auswertung und deren Berechnung finden Sie im Artikel zur [Modellauswertung](evaluate-model.md).  
 
-6.  Ausführen der Pipeline.  
+6.  Übermitteln Sie die Pipeline.  
 
 7.  Das Modul gibt eine Liste mit Featurespalten und den zugeordneten Bewertungen aus. Die Liste ist in absteigender Reihenfolge nach den Ergebnissen sortiert.  
 

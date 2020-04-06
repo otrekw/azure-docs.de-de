@@ -4,10 +4,10 @@ description: Erfahren Sie, wie Sie Workflows entwerfen, um Ihre Azure Policy-Def
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.openlocfilehash: 0914ba6510c9d2ef87d3f83417f97340d42c8bce
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74267280"
 ---
 # <a name="design-policy-as-code-workflows"></a>Entwerfen von Workflows für Policy-as-Code
@@ -87,7 +87,7 @@ Ebenso wie bei Richtliniendefinitionen sollte der Workflow die Initiativendefini
 
 Sobald die Automatisierung Ihre neu erstellten oder aktualisierten Richtlinien- oder Initiativendefinitionen übernommen und das entsprechende Objekt in Azure aktualisiert hat, ist es an der Zeit, die Änderungen zu testen. Entweder die Richtlinie oder die zugehörige Initiative sollte Ressourcen in der Umgebung zugewiesen werden, die am weitesten von der Produktion entfernt ist. Diese Umgebung ist in der Regel die Entwicklungsumgebung: _Dev_.
 
-Die Zuweisung sollte den [enforcementMode](./assignment-structure.md#enforcement-mode) _deaktiviert_ verwenden, damit Ressourcenerstellung und -aktualisierung nicht blockiert, aber vorhandene Ressourcen weiterhin auf Einhaltung der aktualisierten Richtliniendefinition überwacht werden. Auch im enforcementMode wird empfohlen, entweder eine Ressourcengruppe oder ein Abonnement, das speziell zur Validierung von Richtlinien dient, als Zuweisungsbereich zu verwenden.
+Die Zuweisung sollte den [enforcementMode](./assignment-structure.md#enforcement-mode)_deaktiviert_ verwenden, damit Ressourcenerstellung und -aktualisierung nicht blockiert, aber vorhandene Ressourcen weiterhin auf Einhaltung der aktualisierten Richtliniendefinition überwacht werden. Auch im enforcementMode wird empfohlen, entweder eine Ressourcengruppe oder ein Abonnement, das speziell zur Validierung von Richtlinien dient, als Zuweisungsbereich zu verwenden.
 
 > [!NOTE]
 > Dieser Modus ist zwar hilfreich, darf aber gründliche Tests einer Richtliniendefinition unter verschiedenen Bedingungen nicht ersetzen. Die Richtliniendefinition sollte mit den REST-API-Aufrufen `PUT` und `PATCH`, konformen und nicht konformen Ressourcen sowie für Sonderfälle wie fehlenden Ressourceneigenschaften getestet werden.

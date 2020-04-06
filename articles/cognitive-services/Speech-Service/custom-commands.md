@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 9349969f1f9b037a271cb727233517daba999acd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2e1b6ee0bd6c392804915fac6ff23278a00b6d33
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446980"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79367838"
 ---
-# <a name="custom-commands-preview"></a>Benutzerdefinierte Befehle (Vorschau)
+# <a name="what-are-custom-commands-preview"></a>Was sind benutzerdefinierte Befehle (Vorschau)?
 
-Sprachanwendungen, wie etwa [Sprachassistenten](voice-assistants.md), hören den Benutzern zu und ergreifen als Reaktion eine Aktion, wobei sie dabei oftmals antworten. Sie verwenden die [Spracherkennung](speech-to-text.md), um die Sprache des Benutzers zu erfassen, und ergreifen dann Maßnahmen zum in natürlicher Sprache verstandenen Text. Diese Aktion umfasst häufig die Sprachausgabe des Assistenten, die mit [Sprachsynthese](text-to-speech.md) generiert wurde. Geräte stellen eine Verbindung mit Assistenten über das `DialogServiceConnector`-Objekt des Speech SDKs her.
+Sprachanwendungen, wie etwa [Sprachassistenten](voice-assistants.md), hören den Benutzern zu und ergreifen als Reaktion eine Aktion, wobei sie dabei oftmals antworten. Sie verwenden die [Spracherkennung](speech-to-text.md), um die Sprache des Benutzers zu erfassen, und ergreifen dann Maßnahmen zum in natürlicher Sprache verstandenen Text. Diese Aktion umfasst häufig die Sprachausgabe des Assistenten, die mit [Sprachsynthese](text-to-speech.md) generiert wurde. Geräte stellen eine Verbindung mit Assistenten über das `DialogServiceConnector`-Objekt des Speech SDK her.
 
 **Benutzerdefinierte Befehle (Vorschau)** sind eine optimierte Lösung zum Erstellen von Sprachanwendungen. Es bietet eine einheitliche Benutzeroberfläche für die Erstellung, ein automatisches Hostingmodell und eine relativ geringere Komplexität im Vergleich zu anderen Erstellungsoptionen wie [Direct Line Speech](direct-line-speech.md). Diese Vereinfachung geht jedoch mit einer Verringerung der Flexibilität einher. Daher ist Benutzerdefinierte Befehle (Vorschau) am besten geeignet für die Aufgabenerledigung oder Befehl-und-Steuerung-Szenarien (Command-and-Control). Das Feature eignet sich besonders gut für IoT-Geräte (Internet of Things, Internet der Dinge) und monitorlose Geräte.
 

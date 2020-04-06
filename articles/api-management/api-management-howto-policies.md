@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: apimpm
 ms.openlocfilehash: c10939b50a66cd608d27a71f02d959fbc2380f59
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70072305"
 ---
 # <a name="policies-in-azure-api-management"></a>Richtlinien in Azure API Management
@@ -27,7 +27,7 @@ Richtlinien werden im Gateway, das sich zwischen API-Consumer und der verwaltete
 
 Richtlinienausdrücke können als Attributwerte oder Textwerte in einer beliebigen API Management-Richtlinie verwendet werden, sofern in der Richtlinie nicht anders angegeben. Einige Richtlinien, beispielsweise [Ablaufsteuerung][Control flow] und [Variable festlegen][Set variable], basieren auf Richtlinienausdrücken. Weitere Informationen finden Sie unter [Erweiterte Richtlinien][Advanced policies] und [Richtlinienausdrücke][Policy expressions].
 
-## <a name="sections"></a>Grundlegendes zur Richtlinienkonfiguration
+## <a name="understanding-policy-configuration"></a><a name="sections"> </a>Grundlegendes zur Richtlinienkonfiguration
 
 Die Richtliniendefinition ist ein einfaches XML-Dokument, das eine Sequenz eingehender und ausgehender Anweisungen beschreibt. Das XML-Dokument kann direkt im Definitionsfenster bearbeitet werden. Auf der rechten Seite sehen Sie eine Liste mit Anweisungen, und die für den aktuellen Bereich anwendbaren Anweisungen sind aktiviert und hervorgehoben.
 
@@ -60,7 +60,7 @@ Die Konfiguration ist in `inbound`, `backend`, `outbound` und `on-error` unterte
 
 Wenn bei der Verarbeitung einer Anfrage ein Fehler auftritt, werden alle verbleibenden Schritte in den `inbound`-, `backend`- oder `outbound`-Abschnitten übersprungen und die Ausführung bei den Anweisungen im `on-error`-Abschnitt fortgesetzt. Durch Platzieren von Richtlinienanweisungen im `on-error`-Abschnitt können Sie den Fehler überprüfen, indem Sie die `context.LastError`-Eigenschaft verwenden, die Fehlerantwort mit der `set-body`-Richtlinie untersuchen und anpassen sowie konfigurieren, was geschieht, wenn ein Fehler auftritt. Es gibt Fehlercodes für integrierte Schritte und für Fehler, die während der Verarbeitung von Richtlinienanweisungen auftreten können. Weitere Informationen finden Sie unter [Error handling in API Management policies](/azure/api-management/api-management-error-handling-policies)(in englischer Sprache).
 
-## <a name="scopes"></a>Konfigurieren von Richtlinien
+## <a name="how-to-configure-policies"></a><a name="scopes"> </a>Konfigurieren von Richtlinien
 
 Informationen zum Konfigurieren von Richtlinien finden Sie unter [How to set or edit Azure API Management policies](set-edit-policies.md) (Festlegen oder Bearbeiten von Azure API Management-Richtlinien).
 
@@ -119,7 +119,7 @@ Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:
 
 + [Transform and protect your API](transform-api.md) (Transformieren und Schützen von APIs)
 + Unter [Richtlinien für die API-Verwaltung](api-management-policy-reference.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
-+ [API Management policy samples](policy-samples.md) (API Management-Richtlinienbeispiele)   
++ [API Management-Richtlinienbeispiele](policy-samples.md)   
 
 [Policy Reference]: api-management-policy-reference.md
 [Product]: api-management-howto-add-products.md

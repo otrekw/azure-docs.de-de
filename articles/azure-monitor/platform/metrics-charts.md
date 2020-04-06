@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: c754f33ab5f4346413b6603ca2cd404acac5443f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2df1e0bb7d586edb13dc86e163f0e5728608d2a2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662399"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371598"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Erweiterte Funktionen von Azure Metrik-Explorer
 
@@ -110,6 +110,19 @@ Verwenden Sie zum Steuern des Bereichs der Y-Achse das Diagrammmenü „...“, 
 
 > [!WARNING]
 > Wenn Sie die Grenzen der Y-Achse für Diagramme festlegen möchten, die verschiedene Anzahlwerte oder Summen für einen Zeitraum nachverfolgen und somit Anzahl-, Summen-, Minimum- oder Maximum-Aggregationen verwenden, muss in der Regel anstelle der automatischen Standardwerte auch eine feste Zeitgranularität angegeben werden. Dies ist erforderlich, da sich die Werte in Diagrammen ändern, wenn der Benutzer die Größe des Browserfensters oder die Bildschirmauflösung ändert, was eine automatische Änderung der Zeitgranularität zur Folge hat. Die resultierende Änderung der Zeitgranularität wirkt sich auf die Darstellung des Diagramms aus und macht die aktuelle Auswahl des Y-Achsenbereichs ungültig.
+
+## <a name="change-colors-of-chart-lines"></a>Ändern der Farben von Diagrammlinien
+
+Nachdem Sie die Diagramme konfiguriert haben, werden den Diagrammlinien automatisch Farben aus einer Standardpalette zugewiesen. Sie können diese Farben ändern.
+
+Um die Farbe einer Diagrammlinie zu ändern, klicken Sie auf den farbigen Balken in der zum Diagramm gehörenden Legende. Das Dialogfeld für die Farbauswahl wird geöffnet. Verwenden Sie die Farbauswahl, um die Farbe für die Linie zu konfigurieren.
+
+Nachdem Sie die Diagrammfarben konfiguriert haben, bleiben sie in dieser Form erhalten, wenn Sie das Diagramm an ein Dashboard anheften. Im folgenden Abschnitt wird erläutert, wie Sie ein Diagramm anheften.
+
+> [!NOTE]
+> Aufgrund von Einschränkungen des Release- und Veröffentlichungszeitplans ist es zum Ändern der Farben von Diagrammlinien vorübergehend erforderlich, einen speziellen Parameter ( **?feature.colorpicker=true**) beim Starten des Azure-Portals zu übergeben ([https://portal.azure.com/?feature.colorpicker=true](https://portal.azure.com/?feature.colorpicker=true)). Diese Einschränkung wird bald entfernt. 
+
+![Abbildung eines Diagramms mit Metriken](./media/metrics-charts/018.png)
 
 ## <a name="pin-charts-to-dashboards"></a>Anheften von Diagrammen an Dashboards
 

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 11/06/2019
-ms.openlocfilehash: ddd81c4788cae7c239678366305fe97c6c08ba99
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.date: 03/17/2020
+ms.openlocfilehash: 924bd2fdba2359e6f1108c39802ad3ce95ebdf07
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76932213"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79472374"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning"></a>Verwenden eines vorhandenen Modells mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -69,11 +69,13 @@ Weitere Informationen finden Sie in der [Model.register()](https://docs.microsof
 az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 ```
 
+> [!TIP]
+> Sie können auch `tags`- und `properties`-Wörterbuchobjekte zum registrierten Modell hinzufügen. Diese Werte können später verwendet werden, um ein bestimmtes Modell zu identifizieren, z. B. das verwendete Framework, Trainingsparameter usw.
+
 Weitere Informationen finden Sie in der [az ml model register](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-register)-Referenz.
 
 
 Weitere Informationen zur Modellregistrierung im Allgemeinen finden Sie unter [Verwalten, Bereitstellen und Überwachen von Modellen für maschinelles Lernen](concept-model-management-and-deployment.md).
-
 
 ## <a name="define-inference-configuration"></a>Definieren der Rückschlusskonfiguration
 

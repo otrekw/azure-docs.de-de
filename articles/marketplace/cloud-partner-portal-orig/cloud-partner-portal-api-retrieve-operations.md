@@ -1,19 +1,18 @@
 ---
 title: Abrufen der Operations-API | Azure Marketplace
 description: Ruft alle Vorgänge im Angebot oder einen bestimmten Vorgang für die angegebene Vorgangs-ID ab.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 09/14/2018
-ms.author: pabutler
-ms.openlocfilehash: c3eb77744d61322ca0aed20bb2b3f486cc02ac70
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 4fc77407ae1c5854d3fe977da5a81f4226bf5305
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819590"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280472"
 ---
 <a name="retrieve-operations"></a>Abrufen von Vorgängen
 ===================
@@ -34,10 +33,10 @@ Ruft alle Vorgänge im Angebot oder einen bestimmten Vorgang für die angegebene
 
 |  **Name**          |      **Beschreibung**                                                                                           | **Datentyp** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
-|  publisherId       |  Herausgeber-ID, z.B. `Contoso`                                                                   |  Zeichenfolge       |
-|  offerId           |  Angebots-ID                                                                                              |  Zeichenfolge       |
+|  publisherId       |  Herausgeber-ID, z.B. `Contoso`                                                                   |  String       |
+|  offerId           |  Angebots-ID                                                                                              |  String       |
 |  operationId       |  GUID, die den Vorgang im Angebot eindeutig identifiziert. Die Vorgangs-ID kann mithilfe dieser API abgerufen werden. Sie wird auch im HTTP-Header der Antwort für lang ausgeführte Vorgänge zurückgegeben, wie z.B. bei der [API zum Veröffentlichen von Angeboten](./cloud-partner-portal-api-publish-offer.md).  |   Guid   |
-|  filteredStatus    | Optionaler Abfrageparameter zum Filtern nach dem Status (z.B. `running`) in der von dieser API zurückgegebenen Sammlung.  |   Zeichenfolge |
+|  filteredStatus    | Optionaler Abfrageparameter zum Filtern nach dem Status (z.B. `running`) in der von dieser API zurückgegebenen Sammlung.  |   String |
 |  api-version       | Neueste Version der API                                                                                           |    Date      |
 |  |  |  |
 
@@ -55,7 +54,7 @@ Ruft alle Vorgänge im Angebot oder einen bestimmten Vorgang für die angegebene
 <a name="body-example"></a>Beispiel für Hauptteil
 ------------
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 #### <a name="get-operations"></a>GET-Vorgänge
 
@@ -183,7 +182,7 @@ Ruft alle Vorgänge im Angebot oder einen bestimmten Vorgang für die angegebene
 |  submissionType              | Gibt den Typ des Vorgangs, der für das Angebot gemeldet wird, an, z.B. `Publish/GGoLive`      |
 |  createdDateTime             | UTC-Datum und -Uhrzeit der Erstellung des Vorgangs                                                       |
 |  lastActionDateTime          | UTC-Datum und -Uhrzeit der letzten Änderung des Vorgangs                                       |
-|  status                      | Status des Vorgangs: `not started` \| `running` \| `failed` \| `completed`. Nur ein Vorgang kann jeweils den Status `running` aufweisen. |
+|  status                      | Status des Vorgangs: `not started` \| `running` \| `failed` \| `completed` Nur ein Vorgang kann jeweils den Status `running` aufweisen. |
 |  error                       | Fehlermeldung für Vorgangsfehler                                                               |
 |  |  |
 

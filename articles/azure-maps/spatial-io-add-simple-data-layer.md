@@ -1,27 +1,85 @@
 ---
 title: Hinzufügen einer einfachen Datenebene | Microsoft Azure Maps
 description: Erfahren Sie, wie Sie mit dem Modul Spatial IO, das vom Azure Maps Web SDK bereitgestellt wird, eine einfache Datenebene hinzufügen.
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 02/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3fa54e3227496c11fcafc2f42e980daa5c716365
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 7671d07a468a9f67a4851ec828fe18896d7a6c66
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370377"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334277"
 ---
-# <a name="add-a-simple-data-layer"></a>Hinzufügen einer einfachen Datens chicht
+# <a name="add-a-simple-data-layer"></a>Hinzufügen einer einfachen Datenschicht
 
 Das Modul Spatial IO bietet die Klasse `SimpleDataLayer`. Diese Klasse vereinfacht das Rendern Features mit Stilen auf der Karte. Es kann sogar Datasets mit Stileigenschaften und Datasets mit gemischten Geometrietypen rendern. Die einfache Datenebene erreicht diese Funktionalität durch Umschließen mehrerer Renderingebenen und Verwenden von Stilausdrücken. Die Stilausdrücke suchen innerhalb dieser umschlossenen Ebenen nach gemeinsamen Stileigenschaften der Features. Die Funktionen `atlas.io.read` und `atlas.io.write` verwenden diese Eigenschaften, um Stile in einem unterstützten Dateiformat zu lesen und zu schreiben. Nach Hinzufügen der Eigenschaften zu einem unterstützten Dateiformat kann die Datei für verschiedene Zwecke verwendet werden. Die Datei kann zum Beispiel dazu genutzt werden, die Features mit Stilen auf der Karte anzuzeigen.
 
 Zusätzlich zu den Stilfeatures bietet die `SimpleDataLayer`-Klasse ein integriertes Popupfeature mit einer Popupvorlage. Das Popup wird angezeigt, wenn auf ein Feature geklickt wird. Das standardmäßige Popupfeature kann nach Wunsch deaktiviert werden. Diese Ebene unterstützt auch Daten in Clustern. Wenn auf einen Cluster geklickt wird, wird der Cluster in der Karte vergrößert und in Einzelpunkte und Untercluster erweitert.
 
 Die Klasse `SimpleDataLayer` ist für große Datasets mit vielen Geometrietypen und vielen auf die Features angewendeten Stilen vorgesehen. Wenn diese Klasse verwendet wird, fügt sie zusätzliche sechs Ebenen mit Stilausdrücken hinzu. Es gibt also Fälle, bei denen es effizienter ist, für das Rendering die Kernebenen zu verwenden. Verwenden Sie beispielsweise eine Kernebene, um mehrere Geometrietypen und einige Stile in einem Feature zu rendern.
+
+## <a name="use-a-simple-data-layer"></a>Verwenden einer einfachen Datenebene
+
+Die Klasse `SimpleDataLayer` wird wie die anderen Renderingebenen verwendet. Der folgende Code zeigt, wie eine einfache Datenebene in einer Karte verwendet wird:
+
+```javascript
+//Create a data source and add it to the map.
+var datasource = new atlas.source.DataSource();
+map.sources.add(datasource);
+
+//Add a simple data layer for rendering data.
+var layer = new atlas.layer.SimpleDataLayer(datasource);
+map.layers.add(layer);
+```
+
+Fügen Sie der Datenquelle Features hinzu. Anschließend ermittelt die einfache Datenebene, wie die Features am besten gerendert werden können. Stile für einzelne Features können im Feature als Eigenschaften festgelegt werden. Der folgende Code zeigt ein GeoJSON-Punktfeature mit der Eigenschaft `color`, die auf `red` festgelegt ist. 
+
+```json
+{
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [0, 0]
+    },
+    "properties": {
+        "color": "red"
+    }
+}
+```
+
+Der folgende Code rendert das obige Punktfeature unter Verwendung der einfachen Datenebene. 
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Use the Simple data layer" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true"> Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>Use the Simple data layer</a> (Verwenden der einfachen Datenebene) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+Die tatsächliche Leistungsfähigkeit der einfachen Datenebene kommt in folgenden Fällen zum Tragen:
+
+- Es gibt mehrere verschiedene Typen von Features in einer Datenquelle oder
+- Für Features in dem Dataset sind mehrere Stileigenschaften individuell festgelegt oder
+- Sie nicht sicher sind, was das Dataset genau enthält.
+
+Beim Analysieren von XML-Datenfeeds sind Ihnen möglicherweise die genauen Stile und Geometrietypen der Features nicht bekannt. Das folgende Beispiel zeigt die Leistungsfähigkeit der einfachen Datenebene, indem die Features einer KML-Datei gerendert werden. Außerdem werden verschiedene Optionen veranschaulicht, die die Klasse mit der einfachen Datenebene bereitstellt.
+
+<br/>
+
+<iframe height="700" style="width: 100%;" scrolling="no" title="Simple data layer options" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true"> Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>Simple data layer options</a> (Optionen für die einfache Datenebene) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+</iframe>
+
+
+> [!NOTE]
+> Diese einfache Datenebene verwendet die Klasse [Popupvorlagen](map-add-popup.md#add-popup-templates-to-the-map), um KML-Ballons oder Funktionseigenschaften als Tabelle anzuzeigen. Standardmäßig werden alle im Popup gerenderten Inhalte aus Sicherheitsgründen in einer Sandbox innerhalb eines iframes ausgeführt. Es gibt jedoch Einschränkungen:
+>
+> - Die gesamte Funktionalität von Skripts, Formularen, der Zeigersperre und der oberen Navigationsleiste ist deaktiviert. Das Öffnen von angeklickten Links wird auf einer neuen Registerkarte erlaubt. 
+> - Ältere Browser, die den `srcdoc`-Parameter in iframes nicht unterstützen, werden auf das Rendern einer kleinen Menge von Inhalten eingeschränkt.
+> 
+> Wenn Sie die in die Popups geladenen Daten als vertrauenswürdig einstufen und diesen in Popups geladenen Skripts möglicherweise den Zugriff auf Ihre Anwendung gestatten möchten, können Sie dies deaktivieren, indem Sie die Option `sandboxContent` der Popupvorlagen auf „false“ festlegen. 
 
 ## <a name="default-supported-style-properties"></a>Standardmäßig unterstützte Stileigenschaften
 
@@ -31,9 +89,7 @@ Azure Maps- und GitHub-Stileigenschaften sind die beiden wichtigsten Gruppen unt
 
 Wenn der Reader auf eine weniger verbreitete Stileigenschaft stößt, konvertiert er sie in die naheliegendste Azure Maps-Stileigenschaft. Zusätzlich können die Standardstilausdrücke überschrieben werden, indem die `getLayers`-Funktion der einfachen Datenebene verwendet und die Optionen für beliebige der Ebenen aktualisiert werden.
 
-Der nächste Abschnitt enthält Einzelheiten zu den Standardstileigenschaften, die von der einfachen Datenebene unterstützt werden. Die Reihenfolge der unterstützten Eigenschaftsnamen ist gleichzeitig die Priorität der Eigenschaft. Wenn zwei Stileigenschaften für die gleiche Ebenenoption definiert sind, hat die erste in der Liste höhere Priorität.
-
-## <a name="simple-data-layer-options"></a>Optionen für die einfache Datenebene
+Die folgenden Abschnitte enthalten Einzelheiten zu den Standardstileigenschaften, die von der einfachen Datenebene unterstützt werden. Die Reihenfolge der unterstützten Eigenschaftsnamen ist gleichzeitig die Priorität der Eigenschaft. Wenn zwei Stileigenschaften für die gleiche Ebenenoption definiert sind, hat die erste in der Liste höhere Priorität.
 
 ### <a name="bubble-layer-style-properties"></a>Stileigenschaften auf der Blasenebene
 
@@ -113,56 +169,6 @@ Wenn das Feature `Polygon` oder `MultiPolygon` ist und eine `height`-Eigenschaft
 | `base` | `base` | `0` |
 | `fillColor` | `fillColor`, `fill` | `'#1E90FF'` |
 | `height` | `height` | `0` |
-
-## <a name="use-a-simple-data-layer"></a>Verwenden einer einfachen Datenebene
-
-Die Klasse `SimpleDataLayer` wird wie die anderen Renderingebenen verwendet. Der folgende Code zeigt, wie eine einfache Datenebene in einer Karte verwendet wird:
-
-```javascript
-//Create a data source and add it to the map.
-var datasource = new atlas.source.DataSource();
-map.sources.add(datasource);
-
-//Add a simple data layer for rendering data.
-var layer = new atlas.layer.SimpleDataLayer(datasource);
-map.layers.add(layer);
-```
-
-Fügen Sie der Datenquelle Features hinzu. Anschließend ermittelt die einfache Datenebene, wie die Features am besten gerendert werden können. Stile für einzelne Features können im Feature als Eigenschaften festgelegt werden. Der folgende Code zeigt ein GeoJSON-Punktfeature mit der Eigenschaft `color`, die auf `red` festgelegt ist. 
-
-```json
-{
-    "type": "Feature",
-    "geometry": {
-        "type": "Point",
-        "coordinates": [0, 0]
-    },
-    "properties": {
-        "color": "red"
-    }
-}
-```
-
-Der folgende Code rendert das obige Punktfeature unter Verwendung der einfachen Datenebene. 
-
-<br/>
-
-<iframe height="500" style="width: 100%;" scrolling="no" title="Use the Simple data layer" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true"> Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>Use the Simple data layer</a> (Verwenden der einfachen Datenebene) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-Die tatsächliche Leistungsfähigkeit der einfachen Datenebene kommt in folgenden Fällen zum Tragen:
-
-- Es gibt mehrere verschiedene Typen von Features in einer Datenquelle oder
-- Für Features in dem Dataset sind mehrere Stileigenschaften individuell festgelegt oder
-- Sie nicht sicher sind, was das Dataset genau enthält.
-
-Beim Analysieren von XML-Datenfeeds sind Ihnen möglicherweise die genauen Stile und Geometrietypen der Features nicht bekannt. Das folgende Beispiel zeigt die Leistungsfähigkeit der einfachen Datenebene, indem die Features einer KML-Datei gerendert werden. Außerdem werden verschiedene Optionen veranschaulicht, die die Klasse mit der einfachen Datenebene bereitstellt.
-
-<br/>
-
-<iframe height="700" style="width: 100%;" scrolling="no" title="Simple data layer options" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true"> Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>Simple data layer options</a> (Optionen für die einfache Datenebene) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

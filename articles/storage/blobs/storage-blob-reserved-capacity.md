@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 03/26/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 3f9a1cfa92ffa454758849f52cc1977cef6df63a
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: e73686629de8481f6a37e5bfafc9b723206b4853
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76768392"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80351027"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>Optimieren der Kosten für Blobspeicher mit reservierter Kapazität
 
@@ -33,7 +33,9 @@ Sie können reservierte Azure Storage-Kapazität in Einheiten von 100 TB und 1 P
 
 ### <a name="reservation-scope"></a>Reservierungsumfang
 
-Reservierte Azure Storage-Kapazität ist für ein einzelnes Abonnement oder eine freigegebene Ressourcengruppe verfügbar. Wenn Sie reservierte Azure Storage-Kapazität erwerben, können Sie Ihre Reservierung für Blockblob- und Azure Data Lake Storage Gen2-Daten verwenden. Die Reservierung gilt für Ihre Nutzung im erworbenen Umfang. Die Reservierung kann nicht auf ein bestimmtes Speicherkonto, einen bestimmten Container oder ein bestimmtes Objekt innerhalb des Abonnements beschränkt werden. Eine Reservierung kann nicht auf mehrere Abonnements aufgeteilt werden.
+Reservierte Azure Storage-Kapazität ist für ein einzelnes Abonnement oder für mehrere Abonnements (freigegebener Bereich) verfügbar. Bei Zuordnung zu einem einzelnen Abonnement wird der Reservierungsrabatt nur auf das ausgewählte Abonnement angewendet. Bei Zuordnung zu mehreren Abonnements wird der Reservierungsrabatt auf diese Abonnements innerhalb des Abrechnungskontexts des Kunden aufgeteilt.
+
+Wenn Sie reservierte Azure Storage-Kapazität erwerben, können Sie Ihre Reservierung für Blockblob- und Azure Data Lake Storage Gen2-Daten verwenden. Die Reservierung gilt für Ihre Nutzung im erworbenen Umfang. Die Reservierung kann nicht auf ein bestimmtes Speicherkonto, einen bestimmten Container oder ein bestimmtes Objekt innerhalb des Abonnements beschränkt werden. Eine Reservierung kann nicht auf mehrere Abonnements aufgeteilt werden.
 
 Eine Azure Storage-Reservierung deckt nur die Menge der Daten ab, die in einem Abonnement oder einer freigegebenen Ressourcengruppe gespeichert werden. Gebühren für vorzeitiges Löschen, Betrieb, Bandbreite und Datenübertragung sind nicht in der Reservierung enthalten. Sobald Sie eine Reservierung erworben haben, werden die Kapazitätsgebühren für die jeweiligen Reservierungsattribute rabattiert und nicht mehr zu den Preisen der nutzungsbasierten Bezahlung abgerechnet. Weitere Informationen zu Azure-Reservierungen finden Sie unter [Was sind Azure-Reservierungen?](/azure/billing/billing-save-compute-costs-reservations).
 
@@ -76,7 +78,7 @@ Gehen Sie folgendermaßen vor, um reservierte Kapazität zu erwerben:
 
     ![Screenshot, der den Erwerb reservierter Kapazität veranschaulicht](media/storage-blob-reserved-capacity/select-reserved-capacity.png)
 
-   |Feld  |Beschreibung  |
+   |Feld  |BESCHREIBUNG  |
    |---------|---------|
    |**Umfang**   |  Zeigt an, wie viele Abonnements die mit der Reservierung verbundenen Abrechnungsvorteile nutzen können. Sie steuert auch, wie die Reservierung auf bestimmte Abonnements angewendet wird. <br/><br/> Wenn Sie **Gemeinsam** auswählen, gilt der Reservierungsrabatt für die Azure Storage-Kapazität in einem beliebigen Abonnement innerhalb des Abrechnungskontexts. Der Abrechnungskontext basiert darauf, wie Sie sich für Azure registriert haben. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Bezahlung umfasst der freigegebene Umfang alle Abonnements mit Preisen für nutzungsbasierte Bezahlung, die vom Kontoadministrator erstellt wurden.  <br/><br/>  Wenn Sie **Einzelabonnement** auswählen, gilt der Reservierungsrabatt für die Azure Storage-Kapazität im ausgewählten Abonnement. <br/><br/> Wenn Sie die Option **Einzelne Ressourcengruppe** wählen, gilt der Reservierungsrabatt für die Azure Storage-Kapazität im ausgewählten Abonnement und in der ausgewählten Ressourcengruppe in diesem Abonnement. <br/><br/> Sie können den Reservierungsumfang nach dem Erwerb der Reservierung ändern.  |
    |**Abonnement**  | Das Abonnement, das für die Bezahlung der Azure Storage-Reservierung verwendet wird. Die Zahlungsmethode für das ausgewählte Abonnement wird für das Inrechnungstellen der Kosten verwendet. Es muss einer der folgenden Abonnementtypen vorliegen: <br/><br/>  Enterprise Agreement (Angebotsnummer: MS-AZR-0017P oder MS-AZR-0148P): Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet. <br/><br/> Einzelnes Abonnement mit Preisen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P): Bei einem individuellen Abonnement mit Preisen für nutzungsbasierte Bezahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung berechnet.    |

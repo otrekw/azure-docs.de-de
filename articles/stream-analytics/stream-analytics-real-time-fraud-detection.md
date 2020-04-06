@@ -6,14 +6,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: b7ca4677507f73467dddac09050f250ae34342a9
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: c0b2943e1f0d7f2386ec09da03d297a570eede7a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78329460"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80276477"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Erste Schritte mit Azure Stream Analytics: Betrugsermittlung in Echtzeit
 
@@ -69,7 +69,7 @@ In diesem Verfahren erstellen Sie zuerst einen Event Hub-Namespace und fügen di
     
 5. Wählen Sie ein Abonnement aus, und erstellen oder wählen Sie eine Ressourcengruppe. Klicken Sie dann auf **Erstellen**.
 
-    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-namespace-new-portal.png" alt="Create event hub namespace in Azure portal" width="300px"/>
+    <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-namespace-new-portal.png" alt="Create event hub namespace in Azure portal" width="300px"/>
 
 6. Wenn die Bereitstellung des Namespace abgeschlossen ist, suchen Sie in Ihrer Liste der Azure-Ressourcen den Event Hub-Namespace. 
 
@@ -79,7 +79,7 @@ In diesem Verfahren erstellen Sie zuerst einen Event Hub-Namespace und fügen di
  
 8. Vergeben Sie einen Namen für den neuen Event Hub `asa-eh-frauddetection-demo`. Sie können auch einen anderen Namen verwenden. In diesem Fall sollten Sie sich den Namen notieren, da Sie ihn später noch benötigen. Vorerst müssen Sie keine weiteren Optionen für den Event Hub festlegen.
 
-    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
+    <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
 9. Klicken Sie auf **Erstellen**.
 
@@ -87,32 +87,33 @@ In diesem Verfahren erstellen Sie zuerst einen Event Hub-Namespace und fügen di
 
 Damit ein Prozess Daten an einen Event Hub senden kann, muss der Event Hub mit einer Richtlinie versehen sein, die einen entsprechenden Zugriff ermöglicht. Die Zugriffsrichtlinie erzeugt eine Verbindungszeichenfolge, die Autorisierungsinformationen enthält.
 
-1.  Klicken Sie im Bereich „Ereignis-Namespace“ auf **Event Hubs** und dann auf den Namen Ihres neuen Event Hubs.
+1. Klicken Sie im Bereich „Ereignis-Namespace“ auf **Event Hubs** und dann auf den Namen Ihres neuen Event Hubs.
 
-2.  Klicken Sie im Bereich „Event Hub“ auf **SAS-Richtlinien** und dann auf **+&nbsp;Hinzufügen**.
+2. Klicken Sie im Bereich „Event Hub“ auf **SAS-Richtlinien** und dann auf **+&nbsp;Hinzufügen**.
 
-    >[!NOTE]
-    >Stellen Sie sicher, dass Sie mit dem Event Hub arbeiten und nicht mit dem Event Hub-Namespace.
+    > [!NOTE]
+    > Stellen Sie sicher, dass Sie mit dem Event Hub arbeiten und nicht mit dem Event Hub-Namespace.
 
-3.  Fügen Sie die Richtlinie namens `asa-policy-manage-demo` hinzu, und wählen Sie für **Anspruch** die Option **Verwalten**.
+3. Fügen Sie die Richtlinie namens `asa-policy-manage-demo` hinzu, und wählen Sie für **Anspruch** die Option **Verwalten**.
 
-    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
+    <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4.  Klicken Sie auf **Erstellen**.
+4. Klicken Sie auf **Erstellen**.
 
-5.  Nachdem die Richtlinie bereitgestellt wurde, klicken sie in der Liste der SAS-Richtlinien darauf.
+5. Nachdem die Richtlinie bereitgestellt wurde, klicken sie in der Liste der SAS-Richtlinien darauf.
 
-6.  Navigieren Sie zum Feld **VERBINDUNGSZEICHENFOLGE – PRIMÄRSCHLÜSSEL**, und klicken Sie neben der Verbindungszeichenfolge auf die Schaltfläche „Kopieren“. 
+6. Navigieren Sie zum Feld **VERBINDUNGSZEICHENFOLGE – PRIMÄRSCHLÜSSEL**, und klicken Sie neben der Verbindungszeichenfolge auf die Schaltfläche „Kopieren“. 
 
-    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-shared-access-policy-copy-connection-string-new-portal.png" alt="Stream Analytics shared access policy" width="300px"/>
+    <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-shared-access-policy-copy-connection-string-new-portal.png" alt="Stream Analytics shared access policy" width="300px"/>
  
-7.  Fügen Sie die Verbindungszeichenfolge in einen Texteditor ein. Sie benötigen diese Verbindungszeichenfolge für den nächsten Abschnitt, nachdem Sie einige kleine Änderungen vorgenommen haben.
+7. Fügen Sie die Verbindungszeichenfolge in einen Texteditor ein. Sie benötigen diese Verbindungszeichenfolge für den nächsten Abschnitt, nachdem Sie einige kleine Änderungen vorgenommen haben.
 
     Die Verbindungszeichenfolge sieht folgendermaßen aus:
 
-        Endpoint=sb://YOURNAME-eh-ns-demo.servicebus.windows.net/;SharedAccessKeyName=asa-policy-manage-demo;SharedAccessKey=Gw2NFZwU1Di+rxA2T+6hJYAtFExKRXaC2oSQa0ZsPkI=;EntityPath=asa-eh-frauddetection-demo
+    `Endpoint=sb://YOURNAME-eh-ns-demo.servicebus.windows.net/;SharedAccessKeyName=asa-policy-manage-demo;SharedAccessKey=Gw2NFZwU1Di+rxA2T+6hJYAtFExKRXaC2oSQa0ZsPkI=;EntityPath=asa-eh-frauddetection-demo`
 
     Beachten Sie, dass die Verbindungszeichenfolge mehrere durch ein Semikolon getrennte Schlüssel/Wert-Paare enthält: `Endpoint`, `SharedAccessKeyName`, `SharedAccessKey` und `EntityPath`.  
+
 
 ## <a name="configure-and-start-the-event-generator-application"></a>Konfigurieren und starten der Ereignisgenerator-Anwendung
 
@@ -129,20 +130,27 @@ Bevor Sie die TelcoGenerator-App starten, müssen Sie sie so konfigurieren, dass
    * Legen Sie den Wert des Schlüssels `EventHubName` auf den Event Hub-Namen fest (d.h. auf den Wert des Entitätspfads).
    * Legen Sie den Wert des Schlüssels `Microsoft.ServiceBus.ConnectionString` auf die Verbindungszeichenfolge fest. 
 
-   Der Abschnitt `<appSettings>` sollte wie im folgenden Beispiel aussehen. (Der Übersichtlichkeit halber wurden die Zeilen umbrochen und einige Zeichen aus dem Autorisierungstoken entfernt.)
+   Der Abschnitt `<appSettings>` sieht wie im folgenden Beispiel aus:
 
-   ![TelcoGenerator-Konfigurationsdatei mit Event Hub-Namen und Verbindungszeichenfolge](./media/stream-analytics-real-time-fraud-detection/stream-analytics-telcogenerator-config-file-app-settings.png)
+    ```xml
+    <appSettings>
+     <!-- Service Bus specific app setings for messaging connections -->
+     <add key="EventHubName" value="asa-eh-ns-demo"/>
+     <add key="Microsoft.ServiceBus.ConnectionString" value="Endpoint=sb://asa-eh-ns-demo.servicebus.windows.net/;SharedAccessKeyName=asa-policy-manage-demo;SharedAccessKey=GEcnTKf2//1MRn6SN1A2u0O76MP9pj3v0Ccyf1su4Zo="/>
+   </appSettings>
+    ```
  
 4. Speichern Sie die Datei . 
 
 ### <a name="start-the-app"></a>Starten der App
-1.  Öffnen Sie ein Befehlsfenster, und wechseln Sie zum Ordner, in dem sich die entzippte TelcoGenerator-App befindet.
 
-2.  Geben Sie den folgenden Befehl ein:
+1. Öffnen Sie ein Befehlsfenster, und wechseln Sie zum Ordner, in dem sich die entzippte TelcoGenerator-App befindet.
 
-   ```cmd
-   telcodatagen.exe 1000 0.2 2
-   ```
+2. Geben Sie den folgenden Befehl ein:
+
+    ```console
+    telcodatagen.exe 1000 0.2 2
+    ```
 
    Die Parameter lauten wie folgt: 
 
@@ -176,7 +184,7 @@ Nachdem Sie einen Datenstrom von Anrufereignissen eingerichtet haben, können Si
 
     Es empfiehlt sich, den Auftrag und den Event Hub in derselben Region zu platzieren, damit Sie von einer optimalen Leistung profitieren und Ihnen keine Kosten für die Übertragung von Daten zwischen Regionen entstehen.
 
-    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
+    <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
 
 3. Klicken Sie auf **Erstellen**.
 
@@ -193,7 +201,7 @@ Nachdem Sie einen Datenstrom von Anrufereignissen eingerichtet haben, können Si
 
    |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
    |---------|---------|---------|
-   |Eingabealias  |  CallStream   |  Geben Sie einen Namen zur Identifizierung der Auftragseingabe ein.   |
+   |Eingabealias  |  CallStream   |  Geben Sie einen Namen zur Identifizierung der Eingabe des Auftrags ein.   |
    |Subscription   |  \<Ihr Abonnement\> |  Wählen Sie das Azure-Abonnement aus, in dem sich der erstellte Event Hub befindet.   |
    |Event Hub-Namespace  |  asa-eh-ns-demo |  Geben Sie den Namen des Event Hub-Namespace ein.   |
    |Event Hub-Name  | asa-eh-frauddetection-demo | Wählen Sie den Namen Ihres Event Hubs aus.   |
@@ -269,11 +277,11 @@ In vielen Fällen sind bei Ihrer Analyse nicht alle Spalten der Datenstromeingab
 
 1. Ändern Sie die Abfrage im Code-Editor wie folgt:
 
-   ```SQL
-   SELECT CallRecTime, SwitchNum, CallingIMSI, CallingNum, CalledNum 
-   FROM 
-       CallStream
-   ```
+    ```SQL
+    SELECT CallRecTime, SwitchNum, CallingIMSI, CallingNum, CalledNum 
+    FROM 
+        CallStream
+    ```
 
 2. Klicken Sie erneut auf **Test**. 
 
@@ -287,13 +295,13 @@ Für diese Transformation sollte eine Sequenz von temporalen Fenstern erzeugt we
 
 1. Ändern Sie die Abfrage im Code-Editor wie folgt:
 
-        ```SQL
-        SELECT 
-            System.Timestamp as WindowEnd, SwitchNum, COUNT(*) as CallCount 
-        FROM
-            CallStream TIMESTAMP BY CallRecTime 
-        GROUP BY TUMBLINGWINDOW(s, 5), SwitchNum
-        ```
+    ```SQL
+    SELECT 
+        System.Timestamp as WindowEnd, SwitchNum, COUNT(*) as CallCount 
+    FROM
+        CallStream TIMESTAMP BY CallRecTime 
+    GROUP BY TUMBLINGWINDOW(s, 5), SwitchNum
+    ```
 
     Diese Abfrage verwendet das Schlüsselwort `Timestamp By` in der Klausel `FROM`, um anzugeben, welches Zeitstempelfeld in der Datenstromeingabe für die Definition des rollierenden Fensters verwendet werden soll. In diesem Fall werden die Daten im Fenster in Segmente unterteilt, und zwar anhand des Felds `CallRecTime` in jedem Datensatz. (Wird kein Feld angegeben, verwendet der Windowingvorgang die Zeit, zu der jedes Ereignis beim Event Hub eingeht.) Weitere Informationen finden Sie unter „Ankunftszeit vs. Anwendungszeit“ in der [Referenz zur Stream Analytics-Abfragesprache](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). 
 
@@ -315,19 +323,19 @@ Wenn Sie eine Verknüpfung mit Streamingdaten durchführen, müssen bei der Verk
 
 1. Ändern Sie die Abfrage im Code-Editor wie folgt: 
 
-        ```SQL
-        SELECT  System.Timestamp as Time, 
-            CS1.CallingIMSI, 
-            CS1.CallingNum as CallingNum1, 
-            CS2.CallingNum as CallingNum2, 
-            CS1.SwitchNum as Switch1, 
-            CS2.SwitchNum as Switch2 
-        FROM CallStream CS1 TIMESTAMP BY CallRecTime 
-            JOIN CallStream CS2 TIMESTAMP BY CallRecTime 
-            ON CS1.CallingIMSI = CS2.CallingIMSI 
-            AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5 
-        WHERE CS1.SwitchNum != CS2.SwitchNum
-        ```
+    ```SQL
+    SELECT  System.Timestamp as Time, 
+        CS1.CallingIMSI, 
+        CS1.CallingNum as CallingNum1, 
+        CS2.CallingNum as CallingNum2, 
+        CS1.SwitchNum as Switch1, 
+        CS2.SwitchNum as Switch2 
+    FROM CallStream CS1 TIMESTAMP BY CallRecTime 
+        JOIN CallStream CS2 TIMESTAMP BY CallRecTime 
+        ON CS1.CallingIMSI = CS2.CallingIMSI 
+        AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5 
+    WHERE CS1.SwitchNum != CS2.SwitchNum
+    ```
 
     Diese Abfrage ähnelt einer beliebigen SQL-Verknüpfung mit Ausnahme der Funktion `DATEDIFF` in der Verknüpfung. Diese Version von `DATEDIFF` ist spezifisch für Stream Analytics und muss in der `ON...BETWEEN`-Klausel aufgeführt werden. Die Parameter umfassen eine Zeiteinheit (in diesem Beispiel Sekunden) und die Aliase der beiden Quellen für die Verknüpfung. Dies unterscheidet sich von der standardmäßigen SQL-Funktion `DATEDIFF`.
 
@@ -339,7 +347,7 @@ Wenn Sie eine Verknüpfung mit Streamingdaten durchführen, müssen bei der Verk
 
 3. Klicken Sie auf **Speichern**, um die Selbstverknüpfungsabfrage als Teil des Stream Analytics-Auftrags zu speichern. (Die Beispieldaten werden nicht gespeichert.)
 
-    <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-query-editor-save-button-new-portal.png" alt="Save Stream Analytics query in portal" width="300px"/>
+    <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-query-editor-save-button-new-portal.png" alt="Save Stream Analytics query in portal" width="300px"/>
 
 ## <a name="create-an-output-sink-to-store-transformed-data"></a>Erstellen einer Ausgabesenke zum Speichern von transformierten Daten
 
@@ -363,7 +371,7 @@ Wenn ein Blob Storage-Konto vorhanden ist, können Sie dieses verwenden. In dies
 
    |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
    |---------|---------|---------|
-   |Ausgabealias  |  CallStream-FraudulentCalls   |  Geben Sie einen Namen zur Identifizierung der Auftragsausgabe ein.   |
+   |Ausgabealias  |  CallStream-FraudulentCalls   |  Geben Sie einen Namen ein, um die Ausgabe des Auftrags kenntlich zu machen.   |
    |Subscription   |  \<Ihr Abonnement\> |  Wählen Sie das Azure-Abonnement mit dem von Ihnen erstellten Speicherkonto aus. Das Speicherkonto kann sich im gleichen oder in einem anderen Abonnement befinden. In diesem Beispiel wird davon ausgegangen, dass Sie ein Speicherkonto im gleichen Abonnement erstellt haben. |
    |Speicherkonto  |  asaehstorage |  Geben Sie den Namen des von Ihnen erstellten Speicherkontos ein. |
    |Container  | asa-fraudulentcalls-demo | Wählen Sie „Neu erstellen“ aus, und geben Sie einen Containernamen ein. |

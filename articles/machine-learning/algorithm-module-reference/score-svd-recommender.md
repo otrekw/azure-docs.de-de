@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/10/2020
-ms.openlocfilehash: a3eafc28dc6d0f44a1f1019cb3393259aa2a698a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 82c3454ad4c8db3a9b19084f5b6ece988cc86b9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920347"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455977"
 ---
 # <a name="score-svd-recommender"></a>Bewerten des SVD-Empfehlungsmoduls
 
@@ -53,7 +53,7 @@ Bei der Vorhersage von Bewertungen berechnet das Modell anhand der Trainingsdate
 
    Das Dataset kann eine optionale dritte Spalte mit Bewertungen für das Benutzer-Element-Paar aus der ersten und zweiten Spalte enthalten. Diese dritte Spalte wird bei der Vorhersage jedoch ignoriert.
 
-4. Ausführen der Pipeline.
+4. Übermitteln Sie die Pipeline.
 
 ### <a name="results-for-rating-predictions"></a>Ergebnisse der Bewertungsvorhersagen 
 
@@ -99,7 +99,7 @@ Zum Empfehlen von Elementen für Benutzer geben Sie eine Liste von Benutzern und
 
     Um diesen Filter anzuwenden, verbinden Sie das ursprüngliche Trainingsdataset mit dem Eingabeport.
 
-8. Ausführen der Pipeline.
+8. Übermitteln Sie die Pipeline.
 
 ### <a name="results-of-item-recommendation"></a>Ergebnisse der Elementempfehlung
 

@@ -9,14 +9,14 @@ ms.author: johndeu
 ms.date: 02/10/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 60f9209129c75e329b283045d19b4b5140b40ec2
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 5e16f1fb948ddb435c5002c16125b36fa61d50a7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268192"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336242"
 ---
-# <a name="recommended-on-premises-live-streaming-encoders"></a>Empfohlene lokale Livestreamingencoder
+# <a name="tested-on-premises-live-streaming-encoders"></a>Getestete lokale Livestreamingencoder
 
 In Azure Media Services stellt ein [Liveereignis](https://docs.microsoft.com/rest/api/media/liveevents) (Kanal) eine Pipeline zum Verarbeiten von Livestreaminginhalten dar. Es gibt zwei Arten, auf die Live-Eingabestreams vom Liveereignis empfangen werden können.
 
@@ -24,10 +24,12 @@ In Azure Media Services stellt ein [Liveereignis](https://docs.microsoft.com/res
 
     Bei Verwendung von Mehrfachbitraten-Datenströmen für das Pass-Through-Liveereignis müssen die Video-GOP-Größe und die Videofragmente unterschiedlicher Bitraten synchronisiert werden, um ein unerwartetes Verhalten bei der Wiedergabe zu vermeiden.
 
-  > [!NOTE]
+  > [!TIP]
   > Die Verwendung der Pass-Through-Methode ist die wirtschaftlichste Form des Livestreamings.
  
 * Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an das Liveereignis, das zum Ausführen der Livecodierung mit Media Services in einem der folgenden Formate aktiviert wurde: RTMP oder Smooth Streaming (fragmentiertes MP4). Vom Liveereignis wird dann eine Livecodierung des Eingabestreams mit Einzelbitrate in einen (adaptiven) Videostream mit Mehrfachbitrate ausgeführt.
+
+In diesem Artikel werden getestete lokale Livestreamingencoder behandelt. Anweisungen zum Überprüfen Ihres lokalen Liveencoders finden Sie unter [Überprüfen Ihres lokalen Encoders](become-on-premises-encoder-partner.md).
 
 Ausführliche Informationen zur Livecodierung mit Media Services finden Sie unter [Livestreaming mit Media Services v3](live-streaming-overview.md).
 
@@ -96,11 +98,18 @@ Damit Inhalte wiedergegeben werden können, müssen sowohl ein Audio- als auch e
 - Bei der Verwendung softwarebasierter Encoder schließen Sie alle nicht benötigten Programme.
 - Das Ändern der Encoderkonfiguration, nachdem die Pushübertragung begonnen hat, führt zu negativen Auswirkungen auf das Ereignis. Durch Konfigurationsänderungen kann das Ereignis instabil werden. 
 - Nehmen Sie sich zum Einrichten Ihres Ereignisses unbedingt ausreichend Zeit. Für Großereignisse empfiehlt es sich, eine Stunde vor dem Ereignis mit dem Setup zu beginnen.
+- Verwenden Sie die H.264-Video- und die AAC-Audiocodecausgabe.
+- Stellen Sie sicher, dass eine zeitliche Ausrichtung anhand von Keyframe oder GOP übergreifend über Videoqualitäten hinweg vorliegt.
+- Vergewissern Sie sich, dass jede Videoqualität durch einen eindeutigen Streamnamen gekennzeichnet ist.
+- Verwenden Sie strenge CBR-Codierung, die für eine optimale Leistung bei adaptiver Bitrate empfohlen wird.
+
+> [!IMPORTANT]
+> Beobachten Sie die Hardwareressourcen des Computers (CPU, Arbeitsspeicher usw.), da das Hochladen von Fragmenten in die Cloud CPU- und E/A-Vorgänge mit sich bringt. Wenn Sie Einstellungen im Encoder ändern, achten Sie darauf, die Kanäle/Liveereignisse zurückzusetzen, damit die Änderung wirksam wird.
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[Partner für lokale Encoder werden](become-on-premises-encoder-partner.md)
+[Livestreaming mit Media Services v3](live-streaming-overview.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Livestreaming mit Media Services v3](live-streaming-overview.md)
+[Überprüfen des Encoders](become-on-premises-encoder-partner.md)

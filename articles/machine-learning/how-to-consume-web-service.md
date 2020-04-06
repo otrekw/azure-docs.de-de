@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4c3e60e9c296dc8e3a1e31a52a262d8462237407
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: a86b8ddb59719db9bdaffea44aecd5428ad16834
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75765662"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282663"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,7 +44,7 @@ Die [azureml.core.Webservice](https://docs.microsoft.com/python/api/azureml-core
 * `auth_enabled`: Wenn Schlüsselauthentifizierung aktiviert ist `True`, andernfalls `False`.
 * `token_auth_enabled`: Wenn Tokenauthentifizierung aktiviert ist `True`, andernfalls `False`.
 * `scoring_uri`: Die REST-API-Adresse.
-* `swagger_uri`: Die Adresse der OpenAPI-Spezifikation. Dieser URI ist verfügbar, wenn Sie die automatische Schemagenerierung aktiviert haben. Weitere Informationen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md#schema).
+* `swagger_uri`: Die Adresse der OpenAPI-Spezifikation. Dieser URI ist verfügbar, wenn Sie die automatische Schemagenerierung aktiviert haben. Weitere Informationen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
 Es gibt drei Möglichkeiten zum Abrufen dieser Informationen für bereitgestellte Webdienste:
 
@@ -75,12 +75,12 @@ Es gibt drei Möglichkeiten zum Abrufen dieser Informationen für bereitgestellt
 
 ### <a name="secured-web-service"></a>Geschützter Webdienst
 
-Wenn Sie den bereitgestellten Webdienst mit einem SSL-Zertifikat geschützt haben, können Sie über [HTTPS](https://en.wikipedia.org/wiki/HTTPS) eine Verbindung mit dem Dienst unter Verwendung des Bewertungs- oder Swagger-URIs herstellen. Mit HTTPS wird die Kommunikation zwischen einem Client und einem Webdienst geschützt, indem sie verschlüsselt wird. Die Verschlüsselung verwendet [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security). In einigen Fällen wird TLS immer noch als *Secure Sockets Layer* (SSL) bezeichnet, der Vorgänger von TLS.
+Wenn Sie den bereitgestellten Webdienst mit einem TSL/SSL-Zertifikat geschützt haben, können Sie über [HTTPS](https://en.wikipedia.org/wiki/HTTPS) eine Verbindung mit dem Dienst unter Verwendung des Bewertungs- oder Swagger-URIs herstellen. Mit HTTPS wird die Kommunikation zwischen einem Client und einem Webdienst geschützt, indem sie verschlüsselt wird. Die Verschlüsselung verwendet [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security). In einigen Fällen wird TLS immer noch als *Secure Sockets Layer* (SSL) bezeichnet, der Vorgänger von TLS.
 
 > [!IMPORTANT]
 > Über Azure Machine Learning bereitgestellte Webdienste unterstützen nur TLS-Version 1.2. Stellen Sie beim Erstellen einer Clientanwendung sicher, dass diese Version unterstützt wird.
 
-Weitere Informationen finden Sie unter [Verwenden von SSL zum Schützen eines Webdiensts mit Azure Machine Learning](how-to-secure-web-service.md).
+Weitere Informationen finden Sie unter [Verwenden von TLS zum Absichern eines Webdiensts mit Azure Machine Learning](how-to-secure-web-service.md).
 
 ### <a name="authentication-for-services"></a>Authentifizierung für Dienste
 
@@ -88,7 +88,7 @@ Azure Machine Learning bietet zwei Möglichkeiten zur Steuerung des Zugriffs auf
 
 |Authentifizierungsmethode|ACI|AKS|
 |---|---|---|
-|Key|Standardmäßig deaktiviert| Standardmäßig aktiviert|
+|Schlüssel|Standardmäßig deaktiviert| Standardmäßig aktiviert|
 |Token| Nicht verfügbar.| Standardmäßig deaktiviert |
 
 Verwenden Sie beim Senden einer Anforderung an einen Dienst, der mit einem Schlüssel oder Token gesichert ist, den __Authorization__-Header, um den Schlüssel oder das Token zu übergeben. Der Schlüssel oder das Token muss als `Bearer <key-or-token>` formatiert sein, wobei `<key-or-token>` der Schlüssel- oder Tokenwert ist.

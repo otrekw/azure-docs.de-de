@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: apimpm
 ms.openlocfilehash: 2e8863eed774884a99de8643c9e497378368d166
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70072501"
 ---
 # <a name="use-an-external-azure-cache-for-redis-in-azure-api-management"></a>Verwenden einer externen Azure Cache for Redis-Instanz in Azure API Management
@@ -47,13 +47,13 @@ Für dieses Tutorial benötigen Sie Folgendes:
 + [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
 + Verständnis der [Zwischenspeicherung in Azure API Management](api-management-howto-cache.md)
 
-## <a name="create-cache"> </a> Erstellen von Azure Cache for Redis
+## <a name="create-azure-cache-for-redis"></a><a name="create-cache"> </a>Erstellen von Azure Cache for Redis
 
 In diesem Abschnitt erfahren Sie, wie Sie eine Azure Cache for Redis-Instanz in Azure erstellen. Falls Sie bereits über eine Azure Cache for Redis-Instanz verfügen (innerhalb oder außerhalb von Azure), können Sie <a href="#add-external-cache">direkt mit dem nächsten Abschnitt fortfahren</a>.
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-## <a name="add-external-cache"> </a>Hinzufügen eines externen Caches
+## <a name="add-an-external-cache"></a><a name="add-external-cache"> </a>Hinzufügen eines externen Caches
 
 Gehen Sie wie folgt vor, um in Azure API Management eine externe Azure Cache for Redis-Instanz hinzuzufügen:
 
@@ -87,7 +87,7 @@ Gehen Sie wie folgt vor, um in Azure API Management eine externe Azure Cache for
 
 Nachdem der externe Cache in Azure API Management konfiguriert wurde, kann er über Zwischenspeicherungsrichtlinien verwendet werden. Ausführliche Informationen finden Sie unter [Hinzufügen der Zwischenspeicherung zum Verbessern der Leistung in Azure API Management](api-management-howto-cache.md).
 
-## <a name="next-steps"> </a>Nächste Schritte
+## <a name="next-steps"></a><a name="next-steps"> </a>Nächste Schritte
 
 * Weitere Informationen zu Richtlinien für die Zwischenspeicherung finden Sie unter [Richtlinien für die Zwischenspeicherung][Caching policies] in der [Richtlinienreferenz für API Management][API Management policy reference].
 * Informationen zum Zwischenspeichern von Elementen nach Schlüssel mithilfe von Richtlinienausdrücken finden Sie unter [Benutzerdefiniertes Zwischenspeichern in Azure API Management](api-management-sample-cache-by-key.md).

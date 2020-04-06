@@ -8,12 +8,12 @@ ms.assetid: 4e5a3a0a-6d7f-43ed-aeb5-c3b3979a1e0a
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: d66926d8ba87096537800d22a9c116b7b10d23cf
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 69a48952ef273acb8cf7eb0ec5968e12b962b622
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309738"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454362"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>Verwalten von Azure Data Lake Analytics unter Verwendung der Azure-Befehlszeilenschnittstelle (CLI)
 
@@ -30,7 +30,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie folgende Ressourc
 
 * Azure-Befehlszeilenschnittstelle. Weitere Informationen finden Sie unter [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-   * Laden Sie für diese Demo die **Vorabversion** [Azure Command-line Tools (CLI) for Data Lake](https://github.com/MicrosoftBigData/AzureDataLake/releases) herunter, und installieren Sie sie.
+   * Laden Sie für diese Demo die **Vorabversion** der [Azure CLI-Tools](https://github.com/MicrosoftBigData/AzureDataLake/releases) herunter, und installieren Sie sie.
 
 * Authentifizieren Sie sich mithilfe des Befehls `az login`, und wählen Sie das Abonnement aus, das Sie verwenden möchten. Weitere Informationen zur Authentifizierung mit einem Geschäfts- oder Schulkonto finden Sie unter [Herstellen einer Verbindung mit einem Azure-Abonnement über die Azure-Befehlszeilenschnittstelle](/cli/azure/authenticate-azure-cli).
 
@@ -86,7 +86,7 @@ Auflisten von Data Lake Analysekonten in einer bestimmten Ressourcengruppe
    az dla account delete --account "<Data Lake Analytics account name>" --resource-group "<Resource group name>"
    ```
 
-## <a name="manage-data-sources"></a>Verwalten von Datenquellen
+## <a name="manage-data-sources"></a>Datenquellen verwalten
 
 Data Lake Analytics unterstützt derzeit die folgenden beiden Datenquellen:
 
@@ -158,7 +158,7 @@ So löschen Sie ein Blob-Speicherkonto:
    az dla account blob-storage delete --account "<Data Lake Analytics account name>" --storage-account-name "<Data Lake Store account name>"
    ```
 
-## <a name="manage-jobs"></a>Verwalten von Aufträgen
+## <a name="manage-jobs"></a>Aufträge verwalten
 Für das Erstellen eines Auftrags ist ein Data Lake Analytics-Konto erforderlich.  Weitere Informationen finden Sie unter [Verwalten von Data Lake Analytics-Konten](#manage-accounts).
 
 ### <a name="list-jobs"></a>Auflisten von Aufträgen
@@ -197,7 +197,7 @@ Suchen Sie mithilfe des Befehls „list“ nach der Auftrags-ID, und brechen Sie
 
 Verwenden Sie die Befehle `az dla job pipeline`, um die Pipelineinformationen für zuvor übermittelte Aufträge anzuzeigen.
 
-```
+```azurecli
 az dla job pipeline list --account "<Data Lake Analytics Account Name>"
 
 az dla job pipeline show --account "<Data Lake Analytics Account Name>" --pipeline-identity "<Pipeline ID>"
@@ -205,7 +205,7 @@ az dla job pipeline show --account "<Data Lake Analytics Account Name>" --pipeli
 
 Verwenden Sie die Befehle `az dla job recurrence`, um die Wiederholungsinformationen für zuvor übermittelte Aufträge anzuzeigen.
 
-```
+```azurecli
 az dla job recurrence list --account "<Data Lake Analytics Account Name>"
 
 az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"

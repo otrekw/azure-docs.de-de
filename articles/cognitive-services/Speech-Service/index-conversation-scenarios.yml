@@ -1,48 +1,51 @@
 ### YamlMime:Landing
 title: Dokumentation zu Konversationsszenarien
-summary: Erkunden Sie die verschiedenen Unterhaltungsszenarien, Unterhaltungstranskriptionen oder Konversationen mit mehreren Geräten.
+summary: Erkunden Sie die verschiedenen Konversationsszenarien. Erfahren Sie, wie Sie in Besprechungsszenarien die Unterhaltungstranskription oder die Konversation mit mehreren Geräten und in Callcenterszenarien die Transkription nutzen.
 metadata:
   title: 'Dokumentation zu Unterhaltungsszenarien: Tutorials, API-Referenz – Azure Cognitive Services | Microsoft-Dokumentation'
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: IEvangelist
   manager: nitinme
-  layout: LandingPage
   ms.service: speech-service
   ms.topic: landing-page
-  ms.date: 02/11/2020
+  ms.date: 03/16/2020
   ms.author: dapine
-  ms.openlocfilehash: d6ea318c2745f7d80a49e5fcb1b47381a9f276f7
-  ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+  ms.openlocfilehash: 75254b0b0b3afb391006a422300c0d4cb9d27fdb
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 02/22/2020
-  ms.locfileid: "77562817"
+  ms.lasthandoff: 03/28/2020
+  ms.locfileid: "79479687"
 landingContent:
-- title: Unterhaltungstranskription
+- title: Informationen zur Unterhaltungstranskription (Besprechungsszenario)
   linkLists:
   - linkListType: overview
     links:
-    - text: Informationen zur Unterhaltungstranskription
+    - text: Worum handelt es sich bei der Unterhaltungstranskription in Besprechungen?
       url: conversation-transcription.md
   - linkListType: how-to-guide
     links:
-    - text: Transkribieren einer Unterhaltung in Echtzeit
+    - text: Unterhaltungstranskription in Echtzeit
       url: how-to-use-conversation-transcription.md
-    - text: Asynchrones Transkribieren von Unterhaltungen
+    - text: Asynchrone Unterhaltungstranskription
       url: how-to-async-conversation-transcription.md
-    - text: Behandeln von Callcenterszenarien
-      url: call-center-transcription.md
-- title: Konversation mit mehreren Geräten
+- title: Informationen zu Konversationen mit mehreren Geräten (Besprechungsszenario)
   linkLists:
   - linkListType: overview
     links:
-    - text: Informationen zur Konversation mit mehreren Geräten
+    - text: Worum handelt es sich bei der Konversation mit mehreren Geräten?
       url: multi-device-conversation.md
   - linkListType: quickstart
     links:
     - text: Starten einer Konversation und Beitreten zu einer Konversation
       url: quickstarts/multi-device-conversation.md
+- title: Callcentertranskription (Szenario mit Kunde/Mitarbeiter)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Behandeln von Callcenterszenarien
+      url: call-center-transcription.md
 - title: Verweis
   linkLists:
   - linkListType: reference
@@ -51,5 +54,5 @@ landingContent:
       url: conversation-transcription.md#language-support
     - text: Sprachunterstützung für die Konversationen mit mehreren Geräten
       url: multi-device-conversation.md#language-support
-    - text: Preise
+    - text: Preise für die Sprachtranskription
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/

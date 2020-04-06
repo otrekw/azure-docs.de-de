@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: fa41649e002bd4845b95e787c1d0589ed1987588
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 550c315023c0ae907c369778c81b16e137004bec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587242"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067261"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>SQL-Datenbank-Ressourcenlimits und -Ressourcenkontrolle
 
@@ -58,7 +58,7 @@ Bei zunehmender Datenbank-Computenutzung (gemessen an DTUs und eDTUs oder virtue
 Wenn eine hohe Computenutzung festgestellt wird, stehen folgende Optionen als Gegenmaßnahmen zur Verfügung:
 
 - Erhöhen der Computegröße der Datenbank oder des Pools für elastische Datenbanken, um mehr Computeressourcen für die Datenbank bereitzustellen. Siehe [Skalieren der Ressourcen für einzelne Datenbanken](sql-database-single-database-scale.md) und [Skalieren der Ressourcen für elastische Pools in Azure SQL-Datenbank](sql-database-elastic-pool-scale.md).
-- Optimieren der Abfragen, um die Ressourcenverwendung für jede Abfrage zu reduzieren. Weitere Informationen finden Sie unter [Abfrageoptimierung/Abfragehinweise](sql-database-performance-guidance.md#query-tuning-and-hinting).
+- Optimieren von Abfragen, um die Ressourcenverwendung durch die einzelnen Abfragen zu verringern. Weitere Informationen finden Sie unter [Abfrageoptimierung/Abfragehinweise](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
 ### <a name="storage"></a>Storage
 
@@ -78,6 +78,24 @@ Wenn eine hohe Sitzungs- oder Workernutzung festgestellt wird, stehen folgende O
 
 - Erhöhen der Dienstebene oder Computegröße der Datenbank oder des Pools für elastische Datenbanken. Siehe [Skalieren der Ressourcen für einzelne Datenbanken](sql-database-single-database-scale.md) und [Skalieren der Ressourcen für elastische Pools in Azure SQL-Datenbank](sql-database-elastic-pool-scale.md).
 - Optimieren von Abfragen, um die Ressourcenverwendung durch die einzelnen Abfragen zu verringern, wenn die Ursache der zunehmenden Auslastung durch Worker Konflikte bezüglich der Computeressourcen sind. Weitere Informationen finden Sie unter [Abfrageoptimierung/Abfragehinweise](sql-database-performance-guidance.md#query-tuning-and-hinting).
+- Verringern der Einstellung [MAXDOP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (maximaler Grad an Parallelität).
+- Optimieren der Abfragearbeitsauslastung, um die Anzahl von Vorkommen und die Dauer der Abfrageblockierung zu verringern.
+
+### <a name="resource-consumption-by-user-workloads-and-internal-processes"></a>Ressourcenauslastung durch Benutzerarbeitsauslastungen und interne Prozesse
+
+Die CPU- und Arbeitsspeicherauslastung durch Benutzerarbeitsauslastungen in den einzelnen Datenbanken wird in den Spalten `avg_cpu_percent` und `avg_memory_usage_percent` der Sichten [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) und [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) gemeldet. Bei Pools für elastische Datenbanken wird die Ressourcenauslastung auf Poolebene in der Sicht [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) gemeldet. Die CPU-Auslastung durch Benutzerarbeitsauslastungen wird auch über die Azure Monitor-Metrik `cpu_percent` gemeldet, und zwar für [Einzeldatenbanken](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases) und für [Pools für elastische Datenbanken](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) auf Poolebene.
+
+Azure SQL-Datenbank benötigt Computeressourcen zur Implementierung zentraler Dienstfeatures wie Hochverfügbarkeit und Notfallwiederherstellung, Datenbanksicherung und -wiederherstellung, Überwachung, Abfragespeicher, automatische Optimierung und Ähnliches. Ein gewisser Teil der Gesamtressourcen wird mithilfe von Mechanismen der [Ressourcengovernance](#resource-governance) für diese internen Prozesse reserviert. Die übrigen Ressourcen stehen für Benutzerarbeitsauslastungen zur Verfügung. Wenn von internen Prozessen keine Computeressourcen beansprucht werden, werden die Ressourcen für Benutzerarbeitsauslastungen bereitgestellt.
+
+Die gesamte CPU- und Arbeitsspeicherauslastung durch Benutzerarbeitsauslastungen und interne Prozesse der SQL Server-Instanz, die eine Einzeldatenbank oder einen Pool für elastische Datenbanken hostet, wird in den Spalten `avg_instance_cpu_percent` und `avg_instance_memory_percent` der Sichten [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database?view=azuresqldb-current) und [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database?view=azuresqldb-current) gemeldet. Diese Daten werden auch über die Azure Monitor-Metriken `sqlserver_process_core_percent` und `sqlserver_process_memory_percent` gemeldet, und zwar für [Einzeldatenbanken](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserversdatabases) und für [Pools für elastische Datenbanken](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftsqlserverselasticpools) auf Poolebene.
+
+Eine detailliertere Aufschlüsselung der aktuellen Ressourcenauslastung durch Benutzerarbeitsauslastungen und interne Prozesse finden Sie in den Sichten [sys.dm_resource_governor_resource_pools_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-resource-pools-history-ex-azure-sql-database) und [sys.dm_resource_governor_workload_groups_history_ex](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-history-ex-azure-sql-database). Ausführliche Informationen zu Ressourcenpools und Arbeitsauslastungsgruppen, auf die in diesen Sichten verwiesen wird, finden Sie unter [Ressourcengovernance](#resource-governance). In diesen Sichten wird die Ressourcenverwendung durch Benutzerarbeitsauslastungen und bestimmte interne Prozesse in den zugeordneten Ressourcenpools und Arbeitsauslastungsgruppen gemeldet.
+
+Bei der Leistungsüberwachung und Problembehandlung muss sowohl die **benutzerspezifische CPU-Auslastung** (`avg_cpu_percent`, `cpu_percent`) als auch die **CPU-Gesamtauslastung** nach Benutzerarbeitsauslastungen und internen Prozessen (`avg_instance_cpu_percent`, `sqlserver_process_core_percent`) berücksichtigt werden.
+
+Die **benutzerspezifische CPU-Auslastung** wird als Prozentsatz der Grenzwerte für Benutzerarbeitsauslastungen in den einzelnen Dienstzielen berechnet. Eine **benutzerspezifische CPU-Auslastung** von 100 Prozent gibt an, dass für die Benutzerarbeitsauslastung der Grenzwert des Dienstziels erreicht wurde. Wenn sich jedoch die **CPU-Gesamtauslastung** im Bereich zwischen 70 und 100 Prozent bewegt, kann es zu einer Abflachung des Durchsatzes für Benutzerarbeitsauslastungen sowie zu einer Erhöhung der Abfragewartezeit kommen, auch wenn die gemeldete **benutzerspezifische CPU-Auslastung** deutlich unter 100 Prozent liegt. Dieses Verhalten wird durch die Verwendung kleinerer Dienstziele mit einer moderaten Zuordnung von Computeressourcen, aber relativ intensiven Benutzerarbeitsauslastungen (etwa in [umfangreichen Pools für elastische Datenbanken](sql-database-elastic-pool-resource-management.md)) begünstigt. Es kann aber auch bei kleineren Dienstzielen auftreten, wenn interne Prozesse vorübergehend zusätzliche Ressourcen benötigen (etwa beim Erstellen eines neuen Replikats der Datenbank).
+
+Bei einer hohen **CPU-Gesamtauslastung** stehen die gleichen Abhilfeoptionen zur Verfügung, die weiter oben bereits erwähnt wurden. Hierzu zählen unter anderem die Erhöhung des Dienstziels und/oder die Optimierung der Benutzerarbeitsauslastung.
 
 ## <a name="resource-governance"></a>Ressourcengovernance
 
@@ -128,7 +146,7 @@ Die Anpassung von Traffic durch die Protokollratenkontrolle tritt über die folg
 |||
 
 Wenn es zu einer Begrenzung der Protokollrate zu kommen droht, die die gewünschte Skalierbarkeit beeinträchtigt, können Sie die folgenden Optionen in Erwägung ziehen:
-- Skalieren Sie auf einen höheren Servicelevel, um die maximale Protokollrate von 96 MB/s zu erhalten. 
+- Skalieren Sie zentral auf einen höheren Servicelevel hoch, um die maximale Protokollrate von 96 MB/s zu erhalten, oder wechseln Sie zu einer anderen Dienstebene. Die Dienstebene [Hyperscale](sql-database-service-tier-hyperscale.md) bietet unabhängig vom gewählten Servicelevel eine Protokollrate von 100 MB/s.
 - Wenn die Daten, die geladen werden, kurzlebig sind, wie z. B. Stagingdaten in einem ETL-Prozess, können sie in eine tmpdb geladen werden (für die nur die minimal notwendigen Protokolle erstellt werden). 
 - In Analyseszenarios kann das Laden in eine gruppierte von einem Columnstore abgedeckte Tabelle erfolgen. Dadurch wird die erforderliche Protokollrate über Komprimierung reduziert. Dieses Vorgehen erhöht jedoch die CPU-Auslastung und eignet sich nur für Datasets, die von gruppierten Columnstore-Indizes profitieren. 
 

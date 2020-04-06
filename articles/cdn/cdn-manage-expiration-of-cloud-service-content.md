@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.author: magattus
 ms.openlocfilehash: a701c332659181081184906a73826b7137d8c49c
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593716"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Verwalten des Ablaufs von Webinhalten in Azure CDN
@@ -72,9 +72,9 @@ Die bevorzugte Methode zum Einrichten des `Cache-Control`-Headers für einen Web
 
 1. Erstellen Sie unter **Benutzerdefinierte Cacheregeln** zwei Übereinstimmungsbedingungen:
 
-     a. Legen Sie die erste **Übereinstimmungsbedingung** auf **Pfad** fest, und geben Sie für den **Übereinstimmungswert** `/webfolder1/*` ein. Legen Sie das **Verhalten beim Zwischenspeichern** auf **Außerkraftsetzung** fest, und geben Sie im Feld **Stunden** den Wert 4 ein.
+     a. Legen Sie die erste **Übereinstimmungsbedingung** auf **Pfad** fest, und geben Sie für den **Übereinstimmungswert**`/webfolder1/*` ein. Legen Sie das **Verhalten beim Zwischenspeichern** auf **Außerkraftsetzung** fest, und geben Sie im Feld **Stunden** den Wert 4 ein.
 
-     b. Legen Sie die erste **Übereinstimmungsbedingung** auf **Pfad** fest, und geben Sie für den **Übereinstimmungswert** `/webfolder1/file1.txt` ein. Legen Sie das **Verhalten beim Zwischenspeichern** auf **Außerkraftsetzung** fest, und geben Sie im Feld **Stunden** den Wert 2 ein.
+     b. Legen Sie die erste **Übereinstimmungsbedingung** auf **Pfad** fest, und geben Sie für den **Übereinstimmungswert**`/webfolder1/file1.txt` ein. Legen Sie das **Verhalten beim Zwischenspeichern** auf **Außerkraftsetzung** fest, und geben Sie im Feld **Stunden** den Wert 2 ein.
 
     ![Beispiel für benutzerdefinierte CDN-Cacheregeln](./media/cdn-manage-expiration-of-cloud-service-content/cdn-custom-caching-rules-example.png)
 

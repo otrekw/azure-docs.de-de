@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 994ac88f78dfe5a5b0ee6fef3fa97d66d53c911b
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 96312bac369cfa5fe3cb8a00fd63ecfbec624918
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156691"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80348528"
 ---
 # <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>Schnellstart: Erstellen eines benutzerdefinierten Befehls mit Parametern (Vorschau)
 
@@ -34,7 +34,7 @@ In diesem Artikel wird diese Anwendung um Parameter erweitert, sodass sie das Ei
    > [!div class="mx-imgBorder"]
    > ![Erstellen von Parametern](media/custom-speech-commands/create-on-off-parameter.png)
 
-   | Einstellung            | Vorgeschlagener Wert     | Beschreibung                                                                                               |
+   | Einstellung            | Vorgeschlagener Wert     | BESCHREIBUNG                                                                                               |
    | ------------------ | ------------------- | --------------------------------------------------------------------------------------------------------- |
    | Name               | OnOff               | Ein aussagekräftiger Name für Ihren Parameter.                                                                     |
    | Is Global          | Deaktiviert           | Kontrollkästchen, das angibt, ob ein Wert für diesen Parameter global auf alle Befehle im Projekt angewendet wird. |
@@ -46,7 +46,7 @@ In diesem Artikel wird diese Anwendung um Parameter erweitert, sodass sie das Ei
 
    - Als nächstes wählen Sie erneut das Symbol `+` aus, um einen zweiten Parameter hinzuzufügen, der den Namen der Geräte darstellt. Für dieses Beispiel ein Fernseher und ein Lüfter.
 
-   | Einstellung            | Vorgeschlagener Wert       | Beschreibung                                                                                               |
+   | Einstellung            | Vorgeschlagener Wert       | BESCHREIBUNG                                                                                               |
    | ------------------ | --------------------- | --------------------------------------------------------------------------------------------------------- |
    | Name               | SubjectDevice         | Ein aussagekräftiger Name für Ihren Parameter.                                                                     |
    | Is Global          | Deaktiviert             | Kontrollkästchen, das angibt, ob ein Wert für diesen Parameter global auf alle Befehle im Projekt angewendet wird. |
@@ -91,7 +91,7 @@ turn something
 1. Bearbeiten Sie die Sprachantwortaktion, um `OnOff` und `SubjectDevice` zu verwenden:
 
    ```
-   Ok, turning {OnOff} the {SubjectDevice}
+   - Ok, turning {OnOff} the {SubjectDevice}
    ```
 
 ## <a name="try-it-out"></a>Ausprobieren
@@ -111,4 +111,4 @@ turn something
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
-> [Schnellstart: Herstellen einer Verbindung mit einer Anwendung für benutzerdefinierte Befehle mit dem Speech SDK (Vorschau)](./quickstart-custom-speech-commands-speech-sdk.md)
+> [Schnellstart: Verwenden benutzerdefinierter Befehle mit Custom Voice (Vorschau)](./quickstart-custom-speech-commands-select-custom-voice.md)

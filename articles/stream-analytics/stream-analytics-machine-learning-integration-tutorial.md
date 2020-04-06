@@ -6,17 +6,21 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/11/2019
+ms.date: 03/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: c683cfeadcc13e5112a4687e18db9338d3574cd3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b33aeeee03fa57d87a60fd4c1904d5e4a86dd004
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459601"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067087"
 ---
-# <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic-preview"></a>Durchführen von Standpunktanalysen mit Azure Stream Analytics und Azure Machine Learning Studio (klassisch) (Vorschau)
+# <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Durchführen von Standpunktanalysen mit Azure Stream Analytics und Azure Machine Learning Studio (Classic)
+
 Dieser Artikel beschreibt, wie Sie schnell einen einfachen Azure Stream Analytics-Auftrag mit Azure Machine Learning Studio-Integration (klassisch) einrichten. Sie nutzen ein Stimmungsanalysemodell für Machine Learning aus dem Cortana Intelligence-Katalog, um Streamingtextdaten zu analysieren und den Stimmungswert in Echtzeit zu ermitteln. Über die Cortana Intelligence Suite können Sie diese Aufgabe ausführen, ohne sich um die Komplexität der Erstellung eines Analysemodells für die Stimmung kümmern zu müssen.
+
+> [!TIP]
+> Es wird ausdrücklich empfohlen, [UDFs für Azure Machine Learning](machine-learning-udf.md) anstelle von UDFs für Azure Machine Learning Studio (Classic) zu verwenden, um Leistung und Zuverlässigkeit zu verbessern.
 
 Sie können das in diesem Artikel Gelernte u.a. in folgenden Szenarien anwenden:
 
@@ -135,7 +139,7 @@ Der Auftrag ruft seine Eingabe aus der CSV-Datei ab, die Sie zuvor in den Blobsp
 3. Fügen Sie auf dem Blatt **Blobspeicher** die folgenden Werte ein:
 
    
-   |Feld  |value  |
+   |Feld  |Wert  |
    |---------|---------|
    |**Eingabealias** | Verwenden Sie den Namen `datainput`, und wählen Sie die Option **Select blob storage from your subscription** (Blobspeicher aus Ihrem Abonnement wählen).       |
    |**Speicherkonto**  |  Wählen Sie das zuvor erstellte Speicherkonto aus.  |
@@ -155,7 +159,7 @@ Der Auftrag sendet die Ergebnisse an denselben Blobspeicher, aus dem er die Eing
 
 3. Fügen Sie auf dem Blatt **Blobspeicher** die folgenden Werte ein:
 
-   |Feld  |value  |
+   |Feld  |Wert  |
    |---------|---------|
    |**Ausgabealias** | Verwenden Sie den Namen `datamloutput`, und wählen Sie die Option **Select blob storage from your subscription** (Blobspeicher aus Ihrem Abonnement wählen).       |
    |**Speicherkonto**  |  Wählen Sie das zuvor erstellte Speicherkonto aus.  |
@@ -178,7 +182,7 @@ In diesem Abschnitt des Tutorials definieren Sie eine Funktion im Stream Analysi
 
 3. Fügen Sie auf dem Blatt **Azure Machine Learning-Funktion** die folgenden Werte ein:
 
-   |Feld  |value  |
+   |Feld  |Wert  |
    |---------|---------|
    | **Funktionsalias** | Verwenden Sie den Namen `sentiment`, und wählen Sie **Einstellungen für Azure Machine Learning-Funktion manuell angeben**. Es wird eine Option zum Eingeben der URL und des Schlüssels angezeigt.      |
    | **URL**| Fügen Sie die Webdienst-URL ein.|

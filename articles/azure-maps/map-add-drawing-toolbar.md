@@ -1,19 +1,19 @@
 ---
 title: Hinzufügen einer Zeichnungssymbolleiste zu einer Karte | Microsoft Azure Maps
 description: Hinzufügen einer Zeichnungssymbolleiste zu einer Karte mithilfe des Azure Maps Web SDK
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: cb0f70bc42c9ac0f7026c910593950516f027a88
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: bebf1ddfbca3aec5a551193609381cf3510bc3ac
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209748"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334502"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>Hinzufügen einer Symbolleiste mit Zeichentools zu einer Karte
 
@@ -23,7 +23,7 @@ In diesem Artikel erfahren Sie, wie Sie das Modul mit Zeichentools verwenden und
 
 Mit dem folgenden Code wird eine Instanz des Zeichnungs-Managers erstellt und die Symbolleiste auf der Karte angezeigt.
 
-```Javascript
+```javascript
 //Create an instance of the drawing manager and display the drawing toolbar.
 drawingManager = new atlas.drawing.DrawingManager(map, {
         toolbar: new atlas.control.DrawingToolbar({
@@ -46,7 +46,7 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 Mit dem folgenden Code wird eine Instanz des Zeichnungs-Managers erstellt und die Symbolleiste mit nur einem Polygonzeichnungstool auf der Karte angezeigt. 
 
-```Javascript
+```javascript
 //Create an instance of the drawing manager and display the drawing toolbar with polygon drawing tool.
 drawingManager = new atlas.drawing.DrawingManager(map, {
         toolbar: new atlas.control.DrawingToolbar({
@@ -68,25 +68,53 @@ Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azure
 
 ## <a name="change-drawing-rendering-style"></a>Ändern des Zeichnungsrenderingstils
 
-Der folgende Code ruft die Renderingebenen aus dem Zeichnungs-Manager ab und ändert die zugehörigen Optionen, um den Renderingstil für das Zeichnen zu ändern. In diesem Fall werden die Punkte mit einem blauen Markersymbol gerendert. Die Linien werden rot und vier Pixel breit sein. Polygone haben eine grüne Füllfarbe und eine orangefarbene Kontur.
+Der Stil der gezeichneten Formen kann angepasst werden, indem mithilfe der `drawingManager.getLayers()`-Funktion die zugrundeliegenden Ebenen des Zeichnungs-Managers abgerufen und dann Optionen in den einzelnen Ebenen festgelegt werden. Die Ziehpunkte, die für Koordinaten beim Bearbeiten einer Form angezeigt werden, stellen HTML-Marker dar. Der Stil der Ziehpunkte kann angepasst werden, indem HTML-Markeroptionen an die Optionen `dragHandleStyle` und `secondaryDragHandleStyle` des Zeichnungs-Managers übergeben werden.  
 
-```Javascript
+Der folgende Code ruft die Renderingebenen aus dem Zeichnungs-Manager ab und ändert die zugehörigen Optionen, um den Renderingstil für das Zeichnen zu ändern. In diesem Fall werden die Punkte mit einem blauen Markersymbol gerendert. Die Linien werden rot und vier Pixel breit sein. Polygone haben eine grüne Füllfarbe und eine orangefarbene Kontur. Anschließend wird der Stil der Ziehpunkte in quadratische Symbole geändert. 
+
+```javascript
+//Get rendering layers of drawing manager.
 var layers = drawingManager.getLayers();
-    layers.pointLayer.setOptions({
-        iconOptions: {
-            image: 'marker-blue'
-        }
-    });
-    layers.lineLayer.setOptions({
-        strokeColor: 'red',
-        strokeWidth: 4
-    });
-    layers.polygonLayer.setOptions({
-        fillColor: 'green'
-    });
-    layers.polygonOutlineLayer.setOptions({
-        strokeColor: 'orange'
-    });
+
+//Change the icon rendered for points.
+layers.pointLayer.setOptions({
+    iconOptions: {
+        image: 'marker-blue'
+    }
+});
+
+//Change the color and width of lines.
+layers.lineLayer.setOptions({
+    strokeColor: 'red',
+    strokeWidth: 4
+});
+
+//Change fill color of polygons.
+layers.polygonLayer.setOptions({
+    fillColor: 'green'
+});
+
+//Change the color of polygon outlines.
+layers.polygonOutlineLayer.setOptions({
+    strokeColor: 'orange'
+});
+
+//Update the style of the drag handles that appear when editting.
+drawingManager.setOptions({
+    //Primary drag handle that represents coordinates in the shape.
+    dragHandleStyle: {
+        anchor: 'center',
+        htmlContent: '<svg width="15" height="15" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg" style="cursor:pointer"><rect x="0" y="0" width="15" height="15" style="stroke:black;fill:white;stroke-width:4px;"/></svg>',
+        draggable: true
+    },
+
+    //Secondary drag hanle that represents mid-point coordinates that users can grab to add new cooridnates in the middle of segments.
+    secondaryDragHandleStyle: {
+        anchor: 'center',
+        htmlContent: '<svg width="10" height="10" viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg" style="cursor:pointer"><rect x="0" y="0" width="10" height="10" style="stroke:white;fill:black;stroke-width:4px;"/></svg>',
+        draggable: true
+    }
+});  
 ```
 
 Nachstehend finden Sie das vollständige, ausführbare Codebeispiel für die oben erläuterte Funktionalität:

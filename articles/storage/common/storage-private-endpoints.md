@@ -1,34 +1,37 @@
 ---
-title: Verwenden privater Endpunkte mit Azure Storage | Microsoft-Dokumentation
+title: Verwenden privater Endpunkte
+titleSuffix: Azure Storage
 description: Übersicht über private Endpunkte für den sicheren Zugriff auf Speicherkonten über virtuelle Netzwerke.
 services: storage
 author: santoshc
 ms.service: storage
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 44d8a9e71b0415dc5dc7f5d31441bdc1e2aeb372
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: c51f2db698f30368c9d4090d3d571fa0c131178a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252641"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79299055"
 ---
-# <a name="using-private-endpoints-for-azure-storage-preview"></a>Verwenden privater Endpunkte für Azure Storage (Vorschau)
+# <a name="use-private-endpoints-for-azure-storage"></a>Verwenden privater Endpunkte für Azure Storage
 
-Sie können [private Endpunkte](../../private-link/private-endpoint-overview.md) für Ihre Azure Storage-Konten verwenden, um Clients in einem virtuellen Netzwerk (VNET) den sicheren Zugriff auf Daten über [Private Link](../../private-link/private-link-overview.md) zu ermöglichen. Der private Endpunkt verwendet eine IP-Adresse aus dem VNET-Adressraum für Ihren Speicherkontodienst. Der Netzwerkdatenverkehr zwischen den Clients im VNET und dem Speicherkonto wird über das VNET und eine private Verbindung im Microsoft-Backbone-Netzwerk geleitet, sodass keine Offenlegung im öffentlichen Internet erfolgt.
+Sie können [private Endpunkte](../../private-link/private-endpoint-overview.md) für Ihre Azure Storage-Konten verwenden, um Clients in einem virtuellen Netzwerk (VNET) den sicheren Zugriff auf Daten über [Private Link](../../private-link/private-link-overview.md) zu ermöglichen. Der private Endpunkt verwendet eine IP-Adresse aus dem VNET-Adressraum für Ihren Speicherkontodienst. Der Netzwerkdatenverkehr zwischen den Clients im VNET und dem Speicherkonto wird über das VNET und eine private Verbindung im Microsoft-Backbone-Netzwerk geleitet, sodass keine Offenlegung im öffentlichen Internet erfolgt.
 
 Die Verwendung privater Endpunkte für Ihr Speicherkonto bietet Ihnen folgende Möglichkeiten:
+
 - Schützen Ihres Speicherkontos, indem Sie die Speicherfirewall so konfigurieren, dass alle Verbindungen am öffentlichen Endpunkt für den Speicherdienst blockiert werden.
 - Erhöhen der Sicherheit für das virtuelle Netzwerk (VNET), indem Sie die Exfiltration von Daten aus dem VNET blockieren.
 - Sicheres Verbinden mit Speicherkonten aus lokalen Netzwerken, die eine Verbindung mit dem VNET über [VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md) oder [ExpressRoutes](../../expressroute/expressroute-locations.md) mit privatem Peering herstellen.
 
 ## <a name="conceptual-overview"></a>Konzeptionelle Übersicht
-![Private Endpunkte für Azure Storage – Übersicht](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
 
-Ein privater Endpunkt ist eine spezielle Netzwerkschnittstelle für einen Azure-Dienst in Ihrem [Virtual Network](../../virtual-network/virtual-networks-overview.md) (VNET). Wenn Sie einen privaten Endpunkt für Ihr Speicherkonto erstellen, wird eine sichere Verbindung zwischen Clients in Ihrem VNET und Ihrem Speicher bereitgestellt. Dem privaten Endpunkt wird eine IP-Adresse aus dem IP-Adressbereich Ihres VNET zugewiesen. Für die Verbindung zwischen dem privaten Endpunkt und dem Speicherdienst wird eine sichere private Verbindung verwendet.
+![Übersicht über private Endpunkte für Azure Storage](media/storage-private-endpoints/storage-private-endpoints-overview.jpg)
+
+Ein privater Endpunkt ist eine spezielle Netzwerkschnittstelle für einen Azure-Dienst in Ihrem [virtuellen Netzwerk](../../virtual-network/virtual-networks-overview.md) (VNET). Wenn Sie einen privaten Endpunkt für Ihr Speicherkonto erstellen, wird eine sichere Verbindung zwischen Clients in Ihrem VNET und Ihrem Speicher bereitgestellt. Dem privaten Endpunkt wird eine IP-Adresse aus dem IP-Adressbereich Ihres VNET zugewiesen. Für die Verbindung zwischen dem privaten Endpunkt und dem Speicherdienst wird eine sichere private Verbindung verwendet.
 
 Anwendungen im VNET können eine nahtlose Verbindung mit dem Speicherdienst über den privaten Endpunkt herstellen, und zwar **mit denselben Verbindungszeichenfolgen und Autorisierungsmechanismen, die auch sonst verwendet würden**. Private Endpunkte können mit allen vom Speicherkonto unterstützten Protokollen verwendet werden, einschließlich REST und SMB.
 
@@ -36,14 +39,14 @@ Private Endpunkte können in Subnetzen erstellt werden, die [Dienstendpunkte](..
 
 Wenn Sie einen privaten Endpunkt für einen Speicherdienst in Ihrem VNET erstellen, wird an den Speicherkontobesitzer eine Einwilligungsanforderung zur Genehmigung gesendet. Wenn der Benutzer, der die Erstellung des privaten Endpunkts anfordert, auch ein Besitzer des Speicherkontos ist, wird diese Einwilligungsanforderung automatisch genehmigt.
 
-Speicherkontobesitzer können Einwilligungsanforderungen und die privaten Endpunkte über die Registerkarte *Private Endpunkte* für das Speicherkonto im [Azure-Portal](https://portal.azure.com) verwalten.
+Speicherkontobesitzer können Einwilligungsanforderungen und die privaten Endpunkte im [Azure-Portal](https://portal.azure.com) über die Registerkarte *Private Endpunkte* für das Speicherkonto verwalten.
 
 > [!TIP]
 > Wenn der Zugriff auf Ihr Speicherkonto nur über den privaten Endpunkt erfolgen soll, konfigurieren Sie die Speicherfirewall so, dass der Zugriff über den öffentlichen Endpunkt verweigert oder gesteuert wird.
 
 Sie können Ihr Speicherkonto schützen, indem nur Verbindungen über das VNET akzeptiert werden. Dazu [konfigurieren Sie die Speicherfirewall](storage-network-security.md#change-the-default-network-access-rule) so, dass der Zugriff über den öffentlichen Endpunkt standardmäßig verweigert wird. Sie brauchen keine Firewallregel, um Datenverkehr aus einem VNET mit einem privaten Endpunkt zuzulassen, da die Speicherfirewall nur den Zugriff über den öffentlichen Endpunkt steuert. Private Endpunkte verwenden stattdessen den Einwilligungsflow, um Subnetzen den Zugriff auf den Speicherdienst zu gewähren.
 
-### <a name="private-endpoints-for-storage-service"></a>Private Endpunkte für den Speicherdienst
+### <a name="private-endpoints-for-azure-storage"></a>Private Endpunkte für Azure Storage
 
 Beim Erstellen des privaten Endpunkts müssen Sie das Speicherkonto und den Speicherdienst angeben, mit dem eine Verbindung hergestellt wird. Sie brauchen einen separaten privaten Endpunkt für jeden Speicherdienst in einem Speicherkonto, auf den Sie zugreifen müssen. Dies sind [Blobs](../blobs/storage-blobs-overview.md), [Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md), [Files](../files/storage-files-introduction.md), [Warteschlangen](../queues/storage-queues-introduction.md), [Tabellen](../tables/table-storage-overview.md) oder [statische Websites](../blobs/storage-blob-static-website.md).
 
@@ -51,8 +54,6 @@ Beim Erstellen des privaten Endpunkts müssen Sie das Speicherkonto und den Spei
 > Erstellen Sie einen separaten privaten Endpunkt für die sekundäre Instanz des Speicherdiensts, um die Leseleistung für RA-GRS-Konten zu verbessern.
 
 Für Lesezugriff auf die sekundäre Region mit einem Speicherkonto, das für georedundanten Speicher konfiguriert ist, benötigen Sie separate private Endpunkte sowohl für die primäre als auch die sekundäre Instanz des Diensts. Sie müssen für ein **Failover** keinen privaten Endpunkt für die sekundäre Instanz erstellen. Der private Endpunkt stellt nach einem Failover automatisch eine Verbindung mit der neuen primären Instanz her. Weitere Informationen zu den Speicherredundanzoptionen finden Sie unter [Azure Storage-Redundanz](storage-redundancy.md).
-
-#### <a name="resources"></a>Ressourcen
 
 Ausführlichere Informationen zum Erstellen eines privaten Endpunkts für das Speicherkonto finden Sie in den folgenden Artikeln:
 
@@ -78,7 +79,7 @@ Wenn Sie die Speicherendpunkt-URL von außerhalb des VNET mit dem privaten Endpu
 
 Beim oben gezeigten Beispiel lauten die DNS-Ressourceneinträge für das Speicherkonto „StorageAccountA“ bei Auflösung von außerhalb des VNET, das den privaten Endpunkt hostet, wie folgt:
 
-| Name                                                  | type  | value                                                 |
+| Name                                                  | type  | Wert                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<Öffentlicher Endpunkt des Speicherdiensts\>                   |
@@ -88,7 +89,7 @@ Wie bereits erwähnt, können Sie den Zugriff für Clients außerhalb des VNET �
 
 Die DNS-Ressourceneinträge für „StorageAccountA“ lauten nach dem Auflösen durch einen Client im VNET, das den privaten Endpunkt hostet, wie folgt:
 
-| Name                                                  | type  | value                                                 |
+| Name                                                  | type  | Wert                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | Ein     | 10.1.1.5                                              |
@@ -111,8 +112,6 @@ Die empfohlenen DNS-Zonennamen für private Endpunkte für die Speicherdienste l
 | Tabellenspeicherdienst          | `privatelink.table.core.windows.net` |
 | Statische Websites        | `privatelink.web.core.windows.net`   |
 
-#### <a name="resources"></a>Ressourcen
-
 Weitere Informationen zum Konfigurieren des eigenen DNS-Servers für die Unterstützung privater Endpunkte finden Sie in den folgenden Artikeln:
 
 - [Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
@@ -124,16 +123,23 @@ Ausführliche Preisinformationen finden Sie unter [Azure Private Link – Preise
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
+Beachten Sie die folgenden bekannten Probleme im Zusammenhang mit privaten Endpunkten für Azure Storage:
+
 ### <a name="copy-blob-support"></a>Unterstützung für „Copy Blob“
 
-Während der Vorschauphase werden Befehle vom Typ [Copy Blob](https://docs.microsoft.com/rest/api/storageservices/Copy-Blob), die für Speicherkonten ausgegeben werden, auf die über private Endpunkte zugegriffen wird, nicht unterstützt, wenn das Quellspeicherkonto durch eine Firewall geschützt ist.
+Wenn das Speicherkonto durch eine Firewall geschützt ist und über private Endpunkte auf das Konto zugegriffen wird, kann dieses Konto nicht als Quelle für einen Blobkopiervorgang ([Copy Blob](/rest/api/storageservices/copy-blob)) verwendet werden.
 
-### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Einschränkungen des Speicherzugriffs für Clients in VNETs mit privaten Endpunkten
+### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Einschränkungen beim Speicherzugriff für Clients in VNETs mit privaten Endpunkten
 
-Für Clients in VNETs mit vorhandenen privaten Endpunkten bestehen Einschränkungen beim Zugriff auf andere Speicherkonten mit privaten Endpunkten. Angenommen, ein VNET N1 hat einen privaten Endpunkt für ein Speicherkonto A1 für den Blob-Dienst. Wenn das Speicherkonto A2 einen privaten Endpunkt in einem VNET N2 für den Blob-Dienst hat, müssen Clients im VNET N1 auch auf den Blob-Dienst des Kontos A2 über einen privaten Endpunkt zugreifen. Hat das Speicherkonto A2 keine privaten Endpunkte für den Blob-Dienst, können Clients im VNET N1 ohne einen privaten Endpunkt auf den Blob-Dienst zugreifen.
+Für Clients in VNETs mit vorhandenen privaten Endpunkten bestehen Einschränkungen beim Zugriff auf andere Speicherkonten mit privaten Endpunkten. Angenommen, das VNET N1 verfügt über einen privaten Endpunkt für das Speicherkonto A1 für Blobspeicher. Wenn nun das Speicherkonto A2 über einen privaten Endpunkt im VNET N2 für Blobspeicher verfügt, müssen Clients im VNET N1 auch auf Blobspeicher im Konto A2 über einen privaten Endpunkt zugreifen. Hat das Speicherkonto A2 keine privaten Endpunkte für Blobspeicher, können Clients im VNET N1 ohne privaten Endpunkt auf Blobspeicher in diesem Konto zugreifen.
 
 Diese Einschränkung ist die Folge der DNS-Änderungen, die vorgenommen werden, wenn Konto A2 einen privaten Endpunkt erstellt.
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Netzwerksicherheitsgruppen-Regeln für Subnetze mit privaten Endpunkten
 
 Derzeit können keine [Netzwerksicherheitsgruppen](../../virtual-network/security-overview.md)-Regeln und benutzerdefinierten Routen für private Endpunkte konfiguriert werden. Netzwerksicherheitsgruppen-Regeln, die auf das Subnetz angewendet werden, das den privaten Endpunkt hostet, werden auf den privaten Endpunkt angewendet. Eine eingeschränkte Umgehung dieses Problems ist das Implementieren Ihrer Zugriffsregeln für private Endpunkte in den Quellsubnetzen, obwohl dieser Ansatz möglicherweise einen höheren Verwaltungsaufwand erfordert.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](storage-network-security.md)
+- [Sicherheitsempfehlungen für Blob Storage](../blobs/security-recommendations.md)

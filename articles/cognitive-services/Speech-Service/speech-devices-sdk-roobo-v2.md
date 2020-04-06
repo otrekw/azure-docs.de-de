@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: v-anusp
-ms.openlocfilehash: 5cf851bc9333004c0e14713cde44f470fb8c0c02
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 2f325c80877068c53d690bd7ff74f768dab3a174
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78304270"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80371581"
 ---
 # <a name="device-roobo-smart-audio-dev-kit-v2"></a>Gerät: Roobo Smart Audio Dev Kit v2
 
@@ -36,6 +36,6 @@ Weitere Informationen zur Entwicklung finden Sie im [Roobo-Entwicklungshandbuch]
 
 ## <a name="audio-recordplay"></a>Audioaufnahme/-wiedergabe
 
-DDK2-Audiooperationen können auf die folgenden Weisen durchgeführt werden：
+DDK2-Audiooperationen können auf folgende Weise durchgeführt werden：
 * Verwenden Sie ALSA-Open-Source-Bibliotheken und ihre Anwendungen.
 * Verwenden Sie die appmainprog-Schnittstelle für die Anwendungsentwicklung. DDK2-Audio – Das zugehörige Softwareframework verwendet das ALSA-Standardframework. Sie können libasound verwenden. Um also Software direkt zu entwickeln. Daher können Sie „arecord“ und „aplay“ von ALSA direkt verwenden, um Audio aufzuzeichnen und wiederzugeben.

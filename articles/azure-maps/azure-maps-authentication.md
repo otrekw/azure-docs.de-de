@@ -1,20 +1,20 @@
 ---
 title: Authentifizierungsmethoden | Microsoft Azure Maps
 description: In diesem Artikel wird die Authentifizierung per Azure Active Directory (Azure AD) und gemeinsam verwendetem Schlüssel beschrieben. Beide Verfahren werden für Microsoft Azure Maps-Dienste verwendet. Lesen Sie, wie Sie einen Azure Maps-Abonnementschlüssel erhalten.
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 01/28/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 171219c001f43137a52f29b282fb1705b3d836aa
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 21d29cba85adfc147ec9deb6ab362a5da943bf10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649822"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335701"
 ---
 # <a name="authentication-with-azure-maps"></a>Authentifizierung mit Azure Maps
 
@@ -25,7 +25,7 @@ Azure Maps unterstützt zwei Möglichkeiten für die Authentifizierung von Anfor
 
 ## <a name="shared-key-authentication"></a>Authentifizierung mit gemeinsam verwendetem Schlüssel
 
- Nach dem Erstellen des Azure Maps-Kontos werden der Primär- und der Sekundärschlüssel generiert. Sie sollten den Primärschlüssel als Abonnementschlüssel verwenden, wenn Sie Azure Maps mithilfe der Authentifizierung mit gemeinsam verwendetem Schlüssel aufrufen. Bei der Authentifizierung mit einem gemeinsam verwendeten Schlüssel wird ein von einem Azure Maps-Konto generierter Schlüssel an einen Azure Maps-Dienst übergeben. Fügen Sie für jede Anforderung, die an Azure Maps-Dienste gesendet wird, der URL den *Abonnementschlüssel* als Parameter hinzu. Der Sekundärschlüssel kann in Szenarien wie Änderungen beim Schlüsselrollover verwendet werden.  
+ Nach dem Erstellen des Azure Maps-Kontos werden der Primär- und der Sekundärschlüssel generiert. Sie sollten den Primärschlüssel als Abonnementschlüssel verwenden, wenn Sie Azure Maps mithilfe der Authentifizierung mit gemeinsam verwendetem Schlüssel aufrufen. Bei der Authentifizierung mit einem gemeinsam verwendeten Schlüssel wird ein von einem Azure Maps-Konto generierter Schlüssel an einen Azure Maps-Dienst übergeben. Fügen Sie für jede Anforderung, die an Azure Maps-Dienste gesendet wird, der URL den *Abonnementschlüssel* als Parameter hinzu. Der Sekundärschlüssel kann in Szenarien wie Änderungen beim Schlüsselrollover verwendet werden.  
 
 Informationen zum Anzeigen der Schlüssel im Azure-Portal finden Sie unter [Verwalten der Authentifizierung in Azure Maps](https://aka.ms/amauthdetails).
 
@@ -60,7 +60,7 @@ Allgemeine Informationen zum Anfordern von Token aus Azure AD finden Sie unter [
 
 Nachdem Azure AD ein Token empfangen hat, sendet Azure Maps eine Anforderung mit dem folgenden Satz erforderlicher Anforderungsheader:
 
-| Anforderungsheader    |    value    |
+| Anforderungsheader    |    Wert    |
 |:------------------|:------------|
 | x-ms-client-id    | 30d7cc….9f55|
 | Authorization     | Bearer eyJ0e….HNIVN |

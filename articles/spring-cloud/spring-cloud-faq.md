@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
-ms.openlocfilehash: e4fbeef06ae49ffe24f84b1a12dbcdfe0a5f1fec
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 62623bcadb35f21117ddc2601195e34598c2dff5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278571"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298771"
 ---
 # <a name="azure-spring-cloud-faq"></a>Häufig gestellte Fragen zu Azure Spring Cloud
 
@@ -44,7 +44,7 @@ Weitere Informationen finden Sie unter [Häufig gestellte Fragen zum Azure-Suppo
 
 Sicherheit und Datenschutz gehören zu den wichtigsten Prioritäten für Azure- und Azure Spring Cloud-Kunden. Azure gewährleistet durch eine sichere Datenverschlüsselung, dass nur Kunden Zugriff auf Anwendungsdaten, Protokolle oder Konfigurationen haben. In Azure Spring Cloud sind alle Dienstinstanzen voneinander isoliert.
 
-Azure Spring Cloud bietet eine umfassende SSL- und Zertifikatverwaltung.
+Azure Spring Cloud bietet eine umfassende TLS/SSL- und Zertifikatverwaltung.
 
 Wichtige Sicherheitspatches für OpenJDK- und Spring Cloud-Runtimes werden so bald wie möglich auf Azure Spring Cloud angewendet.
 

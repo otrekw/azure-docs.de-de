@@ -3,16 +3,16 @@ title: Verwalten von Azure Recovery Services-Tresoren und -Servern
 description: In diesem Artikel erfahren Sie, wie Sie das Dashboard „Übersicht“ des Recovery Services-Tresors zum Überwachen und Verwalten Ihrer Recovery Services-Tresore verwenden.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 5ae875b2e767768e90a9fbc6ff4ecfc6efb239c5
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 1a4d23c157700f42422cfe7ca8fa1c49e2cf128a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586443"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131976"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Überwachen und Verwalten von Recovery Services-Tresoren
 
-In diesem Artikel wird erläutert, wie Sie das Dashboard **Übersicht** des Recovery Services-Tresors zum Überwachen und Verwalten Ihrer Recovery Services-Tresore verwenden. Wenn Sie einen Recovery Services-Tresor aus der Liste öffnen, wird das Dashboard **Übersicht** für den ausgewählten Tresor geöffnet. Das Dashboard stellt verschiedene Details zum Tresor bereit. Es gibt *Kacheln*, auf denen Folgendes angezeigt wird: der Status von kritischen Warnungen und allgemeinen Warnmeldungen, in Bearbeitung befindliche und fehlerhafte Sicherungsaufträge sowie die Menge von belegtem lokal redundantem Speicher (LRS) und georedundantem Speicher (GRS). Wenn Sie Azure-VMs in den Tresor sichern, werden auf der Kachel [**Status der Sicherungsvorüberprüfung** alle kritischen oder fehlerhaften Elemente angezeigt](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/). In der folgenden Abbildung wird das Dashboard **Übersicht** für **Contoso-vault** angezeigt. Auf der Kachel **Sicherungselemente** wird angezeigt, dass es neun beim Tresor registrierte Elemente gibt.
+In diesem Artikel wird erläutert, wie Sie das Dashboard **Übersicht** des Recovery Services-Tresors zum Überwachen und Verwalten Ihrer Recovery Services-Tresore verwenden. Wenn Sie einen Recovery Services-Tresor aus der Liste öffnen, wird das Dashboard **Übersicht** für den ausgewählten Tresor geöffnet. Das Dashboard stellt verschiedene Details zum Tresor bereit. Es gibt *Kacheln*, auf denen Folgendes angezeigt wird: der Status von kritischen Warnungen und allgemeinen Warnmeldungen, in Bearbeitung befindliche und fehlerhafte Sicherungsaufträge sowie die Menge von belegtem lokal redundantem Speicher (LRS) und georedundantem Speicher (GRS). Wenn Sie Azure-VMs in den Tresor sichern, werden auf der Kachel [**Status der Sicherungsvorüberprüfung** alle kritischen oder fehlerhaften Elemente angezeigt](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status). In der folgenden Abbildung wird das Dashboard **Übersicht** für **Contoso-vault** angezeigt. Auf der Kachel **Sicherungselemente** wird angezeigt, dass es neun beim Tresor registrierte Elemente gibt.
 
 ![Dashboard des Recovery Services-Tresors](./media/backup-azure-manage-windows-server/rs-vault-blade.png)
 
@@ -49,7 +49,7 @@ Das Dashboard **Übersicht** des Recovery Services-Tresors enthält Kacheln für
 Im Abschnitt „Überwachung“ werden die Ergebnisse vordefinierter Abfragen für **Sicherungswarnungen** und **Sicherungsaufträge** angezeigt. Die Kacheln des Abschnitts „Überwachung“ enthalten aktuelle Informationen über:
 
 * Kritische Warnungen und allgemeine Warnmeldungen für Sicherungsaufträge (in den letzten 24 Stunden)
-* Status der Vorüberprüfung für Azure-VMs – Umfassende Informationen zum Vorüberprüfungsstatus finden Sie im [Sicherungsblog zum Status der Sicherungsvorüberprüfung](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/).
+* Status der Vorüberprüfung für virtuelle Azure-Computer. Ausführliche Informationen zum Status der Vorüberprüfung finden Sie unter [Status der Sicherungsvorüberprüfung](#backup-pre-check-status).
 * Die Sicherungsaufträge, die gerade ausgeführt werden, und Aufträge, die fehlgeschlagen sind (in den letzten 24 Stunden).
 
 Die Kacheln des Abschnitts „Nutzung“ enthalten folgende Informationen:
@@ -62,6 +62,22 @@ Klicken Sie auf die Kacheln (außer „Sicherungsspeicher“), um das zugehörig
 ![Menü „Sicherungswarnungen“, gefiltert nach kritischen Warnungen](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
 
 Das Menü „Sicherungswarnungen“ im Bild oben ist gefiltert nach: Status ist „Aktiv“, Schweregrad ist „Kritisch, und die Zeit sind die letzten 24 Stunden.
+
+### <a name="backup-pre-check-status"></a>Status der Sicherungsvorüberprüfung
+
+Sicherungsvorüberprüfungen überprüfen die Konfiguration Ihrer virtuellen Computer auf Probleme, die Sicherungen beeinträchtigen können. Die aggregierten Informationen können direkt auf dem Dashboard des Recovery Services-Tresors angezeigt werden. Darüber hinaus werden Empfehlungen für Korrekturmaßnahmen bereitgestellt, um erfolgreiche datei- oder anwendungskonsistente Sicherungen zu gewährleisten. Für die Vorüberprüfungen ist keine Infrastruktur erforderlich, und es fallen keine zusätzlichen Kosten an.  
+
+Sicherungsvorüberprüfungen werden im Rahmen der geplanten Sicherungsvorgänge für Ihre virtuellen Azure-Computer ausgeführt. Sie werden mit einer der folgenden Statusoptionen abgeschlossen:
+
+* **Erfolgreich**: Dieser Status gibt an, dass die Konfiguration Ihres virtuellen Computers zu erfolgreichen Sicherungen führen sollte und keine Korrekturmaßnahmen erforderlich sind.
+* **Warnung**: Dieser Status gibt an, dass mindestens ein Problem mit der Konfiguration des virtuellen Computers vorliegt, das *möglicherweise* zu Sicherungsfehlern führt. Es werden *empfohlene* Schritte angegeben, um erfolgreiche Sicherungen zu gewährleisten. So kann es beispielsweise zu zeitweiligen Sicherungsfehlern kommen, wenn nicht der aktuelle VM-Agent installiert ist. In diesem Fall wird ein Warnungsstatus angegeben.
+* **Kritisch**: Dieser Status gibt an, dass mindestens ein Problem mit der Konfiguration des virtuellen Computers vorliegt, das *sicher* zu Sicherungsfehlern führt, und es werden *erforderliche* Schritte angegeben, um erfolgreiche Sicherungen zu gewährleisten. So führt beispielsweise ein Netzwerkproblem, das durch eine Aktualisierung der NSG-Regeln eines virtuellen Computers verursacht wird, dazu, dass Sicherungen nicht erfolgreich sind, da der virtuelle Computer nicht mit dem Azure Backup-Dienst kommunizieren kann. In diesem Fall wird ein kritischer Status angegeben.
+
+Führen Sie die folgenden Schritte aus, um alle Probleme zu beheben, die von den Sicherungsvorüberprüfungen für VM-Sicherungen in Ihrem Recovery Services-Tresor gemeldet werden.
+
+* Wählen Sie im Dashboard des Recovery Services-Tresors die Kachel **Status der Sicherungsvorüberprüfung (Azure-VMs)** aus.
+* Wählen Sie einen beliebigen virtuellen Computer mit dem Sicherungsvorüberprüfungsstatus **Kritisch** oder **Warnung** aus. Daraufhin wird der Bereich **VM-Details** geöffnet.
+* Wählen Sie im oberen Bereich des Bereichs die Bereichsbenachrichtigung aus, um die Beschreibung des Konfigurationsproblems und die Abhilfeschritte anzuzeigen.
 
 ## <a name="manage-backup-alerts"></a>Verwalten von Sicherungswarnungen
 
@@ -162,7 +178,7 @@ Um einen bestimmten Typ einer geschützten Instanz zu untersuchen, klicken Sie a
 
 ![Liste der Sicherungstypen](./media/backup-azure-manage-windows-server/list-of-protected-virtual-machines.png)
 
-Die Liste der virtuellen Computer enthält nützliche Daten: die zugeordnete Ressourcengruppe, die vorherige [Sicherungsvorüberprüfung](https://azure.microsoft.com/blog/azure-vm-backup-pre-checks/), der Status der letzten Sicherung und das Datum des letzten Wiederherstellungspunkts. Über die Auslassungspunkte in der letzten Spalte wird das Menü zum Auslösen allgemeiner Aufgaben geöffnet. Die Spalten enthalten für die einzelnen Sicherungstypen unterschiedliche hilfreiche Daten.
+Die Liste der virtuellen Computer enthält nützliche Daten: die zugeordnete Ressourcengruppe, die vorherige [Sicherungsvorüberprüfung](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#backup-pre-check-status), der Status der letzten Sicherung und das Datum des letzten Wiederherstellungspunkts. Über die Auslassungspunkte in der letzten Spalte wird das Menü zum Auslösen allgemeiner Aufgaben geöffnet. Die Spalten enthalten für die einzelnen Sicherungstypen unterschiedliche hilfreiche Daten.
 
 ![Liste der Sicherungstypen](./media/backup-azure-manage-windows-server/ellipsis-menu.png)
 
@@ -272,4 +288,3 @@ Auf der Kachel „Sicherungsspeicher“ im Dashboard wird der in Azure genutzte 
 
 * [Wiederherstellen von Windows-Servern oder Windows-Clients aus Azure](backup-azure-restore-windows-server.md)
 * Weitere Informationen zu Azure Backup finden Sie unter [Azure Backup – Übersicht](backup-introduction-to-azure-backup.md)
-

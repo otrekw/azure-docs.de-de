@@ -4,12 +4,12 @@ description: Überwachen von Azure Backup-Workloads und Erstellen von benutzerde
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 0673291ac6bd1692c6ebe07540e05077e3025d55
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 547cef66be9902468f4e2755c31e5f586eccad5e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77583866"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79459513"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Überwachen im richtigen Maßstab mithilfe von Azure Monitor
 
@@ -29,7 +29,7 @@ In Azure Monitor können Sie Ihre eigenen Warnungen in einem Log Analytics-Arbei
 > [!IMPORTANT]
 > Weitere Informationen zu den Kosten für das Erstellen dieser Abfrage finden Sie unter[Azure Monitor-Preise](https://azure.microsoft.com/pricing/details/monitor/).
 
-Öffnen Sie den Abschnitt **Protokolle** des Log Analytics-Arbeitsbereichs, und schreiben Sie eine Abfrage für Ihre eigenen Protokolle. Wenn Sie **Neue Warnungsregel** auswählen, wird die Azure Monitor-Seite für die Warnungserstellung geöffnet. Die folgende Abbildung zeigt dies.
+Öffnen Sie den Abschnitt **Protokolle** des Log Analytics-Arbeitsbereichs, und erstellen Sie eine Abfrage für Ihre eigenen Protokolle. Wenn Sie **Neue Warnungsregel** auswählen, wird die Azure Monitor-Seite für die Warnungserstellung geöffnet. Die folgende Abbildung zeigt dies.
 
 ![Erstellen einer Warnung in einem Log Analytics-Arbeitsbereich](media/backup-azure-monitoring-laworkspace/custom-alert.png)
 

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
 ms.openlocfilehash: 309a2592dbac2918aeb532fbe91e33d296f4e5a5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280882"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79219160"
 ---
 # <a name="intents-in-your-luis-app"></a>Absichten in Ihrer LUIS-App
 
@@ -53,7 +53,7 @@ Die Absicht stellt die Aktion dar, die die Anwendung für den Benutzer ausführe
 
 Erstellen Sie eine Absicht, wenn die _Benutzerabsicht_ eine Aktion in der Clientanwendung auslösen würde. Dies kann z. B. ein Aufruf der checkweather()-Funktion sein. Erstellen Sie dann Entitäten zur Darstellung der Parameter, die zum Ausführen der Aktion erforderlich sind. 
 
-|Absicht   | Entität | Beispieläußerung   | 
+|Intent   | Entität | Beispieläußerung   | 
 |------------------|------------------------------|------------------------------|
 | CheckWeather | { "type": "location", "entity": "seattle" }<br>{ "type": "builtin.datetimeV2.date","entity": "tomorrow","resolution":"2018-05-23" } | What's the weather like in `Seattle` `tomorrow`? |
 | CheckWeather | { "type": "date_range", "entity": "this weekend" } | Show me the forecast for `this weekend` | 

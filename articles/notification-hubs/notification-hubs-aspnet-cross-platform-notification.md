@@ -16,14 +16,14 @@ ms.date: 09/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 10/02/2019
-ms.openlocfilehash: 8f4de88ed79ee802866579448681cfe6cee3e654
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: fc3cec348517244c8a7f54d2d3d17298c58e4262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293419"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127046"
 ---
-# <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>Senden plattformübergreifender Benachrichtigungen an Benutzer mit Benachrichtigungs-Hubs
+# <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>Senden plattformübergreifender Benachrichtigungen mit Azure Notification Hubs
 
 Dieses Tutorial baut auf dem vorherigen Tutorial [Senden von Benachrichtigungen an bestimmte Benutzer mit Azure Notification Hubs] auf. Das vorherige Tutorial beschreibt, wie Sie Pushbenachrichtigungen an alle Geräte eines bestimmten authentifizierten Benutzers senden können. Der dort verwendete Ansatz erfordert mehrere Anforderungen zum Senden einer Benachrichtigung an jede unterstützte Clientplattform. Azure Notification Hubs unterstützt Vorlagen, mit denen Sie angeben können, wie ein bestimmtes Gerät Benachrichtigungen empfangen soll. Auf diese Weise können Sie den Versand plattformübergreifender Benachrichtigungen vereinfachen.
 

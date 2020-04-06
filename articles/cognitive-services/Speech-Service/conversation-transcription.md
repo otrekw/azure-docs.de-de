@@ -1,23 +1,23 @@
 ---
-title: Informationen zur Unterhaltungstranskription (Vorschau) – Speech-Dienst
+title: 'Unterhaltungstranskription (Vorschau): Speech-Dienst'
 titleSuffix: Azure Cognitive Services
-description: Die Unterhaltungstranskription ist eine Spracherkennungslösung, die Spracherkennung, Sprecheridentifikation und Satzzuordnung zu jedem Sprecher (auch als Diarisierung bezeichnet) kombiniert, um eine Echtzeit- und/oder asynchrone Transkription einer beliebigen Unterhaltung zu ermöglichen.
+description: Bei der Unterhaltungstranskription handelt es sich um eine Lösung für Besprechungen, die Erkennung, Sprecher-ID und Diarisierung miteinander kombiniert, um die Transkription einer beliebigen Unterhaltung zu ermöglichen.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 03/16/2020
 ms.author: dapine
-ms.openlocfilehash: 8e36a5c4d9ce2bc38565d6c9c256ed2cc7efe357
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: ba56c7fb989658195f6394c7390c4f83027c7c96
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561067"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79479738"
 ---
-# <a name="about-conversation-transcription-preview"></a>Informationen zur Unterhaltungstranskription (Vorschau)
+# <a name="what-is-conversation-transcription-in-meetings-preview"></a>Worum handelt es sich bei der Unterhaltungstranskription (Vorschau) in Besprechungen?
 
 Die Unterhaltungstranskription ist eine [Spracherkennungslösung](speech-to-text.md), die Spracherkennung, Sprecheridentifikation und Satzzuordnung zu jedem Sprecher (auch als _Diarisierung_ bezeichnet) kombiniert, um eine Echtzeit- und/oder asynchrone Transkription einer beliebigen Unterhaltung zu ermöglichen. Die Unterhaltungstranskription unterscheidet Sprecher in einer Unterhaltung, um festzustellen, wer was wann gesagt hat, und vereinfacht es für Entwickler, ihren Anwendungen, die eine Diarisierung mit mehreren Sprechern durchführen, eine Spracherkennung hinzuzufügen.
 

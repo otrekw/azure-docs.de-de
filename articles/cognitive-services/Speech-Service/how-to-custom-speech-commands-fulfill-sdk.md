@@ -1,23 +1,23 @@
 ---
-title: Ausführen der benutzerdefinierten Befehle auf dem Client mit dem Speech SDK
+title: Ausführen von Befehlen auf einem Client mit dem Speech SDK
 titleSuffix: Azure Cognitive Services
-description: In diesem Artikel wird erläutert, wie Aktivitäten benutzerdefinierter Befehle auf dem Client mit dem Speech SDK verarbeitet werden.
+description: In diesem Artikel wird erläutert, wie Aktivitäten benutzerdefinierter Befehle auf einem Client mit dem Speech SDK verarbeitet werden.
 services: cognitive-services
 author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 03/12/2020
 ms.author: donkim
-ms.openlocfilehash: b55bb1c8379cf0a80a95aa0ba1a29297154d5831
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: e109955774722da7f55defe1417de35ff202cce8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156504"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79367739"
 ---
-# <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>Anleitung: Ausführen der Befehle auf dem Client mit dem Speech SDK (Vorschau)
+# <a name="fulfill-commands-from-a-client-with-the-speech-sdk-preview"></a>Ausführen von Befehlen auf einem Client mit dem Speech SDK (Vorschau)
 
 Um Aufgaben mit einer Anwendung für benutzerdefinierte Befehle abzuschließen, können Sie benutzerdefinierte Nutzlasten an ein verbundenes Clientgerät senden.
 
@@ -49,7 +49,7 @@ In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie eine Clientanwendun
    > [!div class="mx-imgBorder"]
    > ![Vervollständigungsregel zum Senden von Aktivitäten](media/custom-speech-commands/fulfill-sdk-completion-rule.png)
 
-   | Einstellung | Vorgeschlagener Wert | Beschreibung |
+   | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
    | ------- | --------------- | ----------- |
    | Regelname | UpdateDeviceState | Ein Name, der den Zweck der Regel beschreibt. |
    | Bedingungen | Erforderlicher Parameter – `OnOff` und `SubjectDevice` | Bedingungen, die bestimmen, wann die Regel ausgeführt werden kann. |

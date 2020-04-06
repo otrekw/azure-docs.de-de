@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 3141795ed9ccfdabc9fd462a1cd09a74690f9c5b
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 0a9728e05aee27e74054a77e2c9be7dc08968207
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137919"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455858"
 ---
 # <a name="train-model-module"></a>Train Model-Modul
 
@@ -62,9 +62,9 @@ In Azure Machine Learning werden Machine Learning-Modelle in der Regel in einem 
     > [!TIP] 
     > Tipps zur richtigen Verwendung der Spaltenauswahl finden Sie im Artikel zum [Auswählen von Spalten im Dataset](./select-columns-in-dataset.md). Dort werden einige häufige Szenarien beschrieben, und Sie erhalten Tipps zur Verwendung der Optionen **WITH RULES** und **BY NAME**.
   
-5.  Ausführen der Pipeline. Wenn Sie über eine große Datenmenge verfügen, kann dies eine Weile dauern.
+5.  Übermitteln Sie die Pipeline. Wenn Sie über eine große Datenmenge verfügen, kann dies eine Weile dauern.
 
-## <a name="bkmk_results"></a> Ergebnisse
+## <a name="results"></a><a name="bkmk_results"></a> Ergebnisse
 
 Nachdem das Modell trainiert wurde:
 

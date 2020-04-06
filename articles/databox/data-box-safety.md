@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: alkohli
 ms.openlocfilehash: db6e2eadbf19d78a203a4d4ba6111ad88430b192
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68985946"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>Sichere Installation und Bedienung Ihrer Azure Data Box
-![Symbol "Warnung"](./media/data-box-safety/warning_icon.png)
-![Symbol "Sicherheitshinweis lesen"](./media/data-box-safety/read_safety_and_health_information_icon.png)**LESEN SIE DIE INFORMATIONEN ZUR SICHERHEIT UND INTEGRITÄT**
+![Symbol „Warnung“](./media/data-box-safety/warning_icon.png)
+![Symbol „Sicherheitshinweis lesen“](./media/data-box-safety/read_safety_and_health_information_icon.png) **SICHERHEITS- UND GESUNDHEITSINFORMATIONEN LESEN**
 
 Lesen Sie alle Sicherheitshinweise in diesem Artikel, bevor Sie Azure Data Box verwenden. Die Nichtbeachtung von Anweisungen kann zu Bränden, Stromschlägen oder anderen Verletzungen oder Schäden an Ihren Systemen führen.
 
@@ -26,35 +26,35 @@ Die folgenden Symbole finden Sie in den Sicherheitsvorkehrungen, die beachtet we
 
 | Symbol | BESCHREIBUNG |
 |:--- |:--- |
-| ![Symbol "Gefahr"](./media/data-box-safety/warning_icon.png)**GEFAHR!** |Zeigt eine Gefahrensituation an, die zum Tod oder schweren Verletzungen führen wird, wenn sie nicht vermieden wird. Dieses Signalwort ist auf extremste Situationen zu beschränken. |
-| ![Symbol "Warnung"](./media/data-box-safety/warning_icon.png)**WARNUNG!** |Zeigt eine Gefahrensituation an, die zum Tod oder schweren Verletzungen führen könnte, wenn sie nicht vermieden wird. |
-| ![Symbol "Warnung"](./media/data-box-safety/warning_icon.png)**VORSICHT!** |Zeigt eine Gefahrensituation an, die zu leichten bis mittelschweren Verletzungen führen könnte, wenn sie nicht vermieden wird. |
-| ![Symbol "Hinweis"](./media/data-box-safety/notice_icon.png)**HINWEIS:** |Zeigt als wichtig erachtete Informationen an, die allerdings nicht mit Gefahren in Verbindung stehen. |
-| ![Symbol "Stromschlag"](./media/data-box-safety/electrical_shock_hazard_icon.png)**Elektrischer Schlag** |Hochspannung. |
-| ![Symbol "Schwergewicht"](./media/data-box-safety/heavy_weight_hazard_icon.png)**Schwergewicht** | |
-| ![Symbol "Keine durch Benutzer zu wartenden Teile"](./media/data-box-safety/no_user_serviceable_parts_icon.png)**Keine durch Benutzer zu wartenden Teile** |Zugriff nur bei ausreichender Schulung. |
-| ![Symbol "Sicherheitshinweis lesen"](./media/data-box-safety/read_safety_and_health_information_icon.png) **Alle Anleitungen zuvor lesen** | |
-| ![Symbol "Kippgefahr"](./media/data-box-safety/tip_hazard_icon.png)**Kippgefahr** | |
+| ![Symbol „Gefahr“](./media/data-box-safety/warning_icon.png) **GEFAHR!** |Zeigt eine Gefahrensituation an, die zum Tod oder schweren Verletzungen führen wird, wenn sie nicht vermieden wird. Dieses Signalwort ist auf extremste Situationen zu beschränken. |
+| ![Symbol „Warnung“](./media/data-box-safety/warning_icon.png) **WARNUNG!** |Zeigt eine Gefahrensituation an, die zum Tod oder schweren Verletzungen führen könnte, wenn sie nicht vermieden wird. |
+| ![Symbol „Warnung“](./media/data-box-safety/warning_icon.png) **ACHTUNG!** |Zeigt eine Gefahrensituation an, die zu leichten bis mittelschweren Verletzungen führen könnte, wenn sie nicht vermieden wird. |
+| ![Symbol „Hinweis“](./media/data-box-safety/notice_icon.png) **HINWEIS:** |Zeigt als wichtig erachtete Informationen an, die allerdings nicht mit Gefahren in Verbindung stehen. |
+| ![Symbol „Stromschlag“](./media/data-box-safety/electrical_shock_hazard_icon.png) **Gefahr durch Stromschlag** |Hochspannung. |
+| ![Symbol „Hohes Gewicht“](./media/data-box-safety/heavy_weight_hazard_icon.png) **Hohes Gewicht** | |
+| ![Symbol „Keine vom Benutzer zu wartenden Teile“](./media/data-box-safety/no_user_serviceable_parts_icon.png) **Keine vom Benutzer zu wartenden Teile** |Zugriff nur bei ausreichender Schulung. |
+| ![Symbol „Sicherheitshinweis lesen“](./media/data-box-safety/read_safety_and_health_information_icon.png) **Alle Anleitungen zuvor lesen** | |
+| ![Symbol „Kippgefahr“](./media/data-box-safety/tip_hazard_icon.png) **Kippgefahr** | |
 
 ## <a name="handling-precautions"></a>Vorsichtsmaßnahmen bei der Handhabung
 
-![Symbol "Warnung"](./media/data-box-safety/warning_icon.png)![Symbol "Stromschlag"](./media/data-box-safety/electrical_shock_hazard_icon.png)![Symbol "Keine durch Benutzer zu wartenden Teile"](./media/data-box-safety/no_user_serviceable_parts_icon.png) **VORSICHT** 
+![Symbol „Warnung“](./media/data-box-safety/warning_icon.png) ![Symbol „Stromschlag“](./media/data-box-safety/electrical_shock_hazard_icon.png)![Symbol „Keine vom Benutzer zu wartenden Teile“](./media/data-box-safety/no_user_serviceable_parts_icon.png) **VORSICHT!** 
 
 * Überprüfen Sie das *empfangene* Gerät auf Schäden. Wenn das Gerätegehäuse beschädigt ist, wenden Sie sich an den [Microsoft-Support](data-box-disk-contact-microsoft-support.md), um ein Austauschgerät zu erhalten. Versuchen Sie nicht, das Gerät in Betrieb zu nehmen. 
 * Das Gerät ist mit manipulationsgeschützten Schrauben ausgestattet. Wenn Sie vermuten, dass das Gerät defekt ist, wenden Sie sich an den [Microsoft-Support](data-box-disk-contact-microsoft-support.md), um ein Austauschgerät zu erhalten. Versuchen Sie nicht, das Gerät zu warten. 
 * Das Gerät enthält keine vom Benutzer zu wartenden Teile. Im Inneren sind gefährliche Spannungs-, Strom- und Leistungspegel vorhanden. Öffnen Sie es nicht. Senden Sie das Gerät zur Wartung an Microsoft zurück.
 
-![Symbol "Warnung"](./media/data-box-safety/warning_icon.png)![Symbol "Schwergewicht"](./media/data-box-safety/heavy_weight_hazard_icon.png)**WARNUNG!** 
+![Symbol „Warnung“](./media/data-box-safety/warning_icon.png) ![Symbol „Hohes Gewicht“](./media/data-box-safety/heavy_weight_hazard_icon.png) **WARNUNG!** 
 
 * Ein vollständig konfiguriertes Gehäuse kann bis zu 22,7 kg wiegen. Versuchen Sie nicht, es allein zu heben.
 * Stellen Sie vor dem Verschieben des Gehäuses immer sicher, dass zwei Personen verfügbar sind, um das Gewicht zu tragen. Denken Sie daran: Wenn eine Person versucht, das Gewicht alleine zu heben, kann dies zu Verletzungen führen.
 
 
-![Symbol "Warnung"](./media/data-box-safety/warning_icon.png)![Symbol "Kippgefahr"](./media/data-box-safety/tip_hazard_icon.png)**WARNUNG!**
+![Symbol „Warnung“](./media/data-box-safety/warning_icon.png) ![Symbol „Kippgefahr“](./media/data-box-safety/tip_hazard_icon.png) **WARNUNG!**
 * Stellen Sie das Gerät auf eine ebene, harte und tragfähige Oberfläche, um mögliche Kippgefahren zu vermeiden.
 * In Racks eingebaute Geräte dürfen nicht als Ablage oder Arbeitsbereich verwendet werden. Stellen Sie die Data Box nicht auf im Rack eingebaute Geräte. Das Aufbringen jeglicher Art von Last auf eine ausgefahrene im Rack eingebaute Einheit kann eine potenzielle Kippgefahr darstellen, die zu Verletzungen, Tod oder Produktschäden führen kann.
 
-![Symbol "Warnung"](./media/data-box-safety/warning_icon.png)**WARNUNG!**
+![Symbol „Warnung“](./media/data-box-safety/warning_icon.png) **WARNUNG!**
 
 * Richten Sie das Gerät in einem Arbeitsbereich ein, der eine ausreichende Luftzirkulation um das Gerät gewährleistet.
 * Installieren Sie das Gerät in einem klimatisierten Innenbereich ohne leitfähige Verunreinigungen, und sorgen Sie für ausreichende Luftzirkulation um das Gerät.
@@ -63,7 +63,7 @@ Die folgenden Symbole finden Sie in den Sicherheitsvorkehrungen, die beachtet we
 
 ## <a name="electrical-precautions"></a>Sicherheitsvorkehrungen für die Elektrik
 
-![Warning Icon](./media/data-box-safety/warning_icon.png)![Electrical Shock Icon](./media/data-box-safety/electrical_shock_hazard_icon.png)**WARNUNG!**
+![Symbol „Warnung“](./media/data-box-safety/warning_icon.png) ![Symbol „Stromschlag“](./media/data-box-safety/electrical_shock_hazard_icon.png) **WARNUNG!**
 
 * Stellen Sie eine sichere elektrische Erdung des Netzkabels her. Das Netzkabel hat einen dreiadrigen Erdungsstecker (einen Stecker mit Erdungsstift). Dieser Stecker passt nur in eine geerdete Steckdose. Umgehen Sie nicht den Zweck des Erdungsstifts.
 * Da der Stecker des Netzkabels die Haupttrennvorrichtung ist, stellen Sie sicher, dass sich die Steckdosen in der Nähe des Geräts befinden und leicht zugänglich sind.
@@ -81,12 +81,12 @@ Die folgenden Symbole finden Sie in den Sicherheitsvorkehrungen, die beachtet we
     - Stromstärke: 6 A, maximal
     - Häufigkeit: 50 bis 60 Hz
 
-![Symbol "Warnung"](./media/data-box-safety/warning_icon.png)**VORSICHT:**
+![Symbol „Warnung“](./media/data-box-safety/warning_icon.png) **ACHTUNG:**
 
 * Dieses Gerät enthält Knopfzellenbatterien. Versuchen Sie nicht, das Gerät zu warten. Batterien in diesem Gerät können nicht vom Benutzer gewartet werden. 
 * **Nur für Wartungspersonal**: Explosionsgefahr bei Austausch der Batterie durch einen falschen Typ. Entsorgen Sie die Altbatterien gemäß den Anweisungen.
 
-![Symbol "Hinweis"](./media/data-box-safety/notice_icon.png)**HINWEIS:**
+![Symbol „Hinweis“](./media/data-box-safety/notice_icon.png) **HINWEIS:**
 
 Für den ordnungsgemäßen Betrieb Ihres Geräts und zur Vermeidung von Produktschäden:
 
@@ -108,19 +108,19 @@ Für dieses Gerät gilt Folgendes:
 
 Die Leistungsdaten der Stromversorgung entnehmen Sie dem mit dem Gerät gelieferten Typenschild. 
 
-![Symbol "Hinweis"](./media/data-box-safety/notice_icon.png)**HINWEIS:** 
+![Symbol „Hinweis“](./media/data-box-safety/notice_icon.png) **HINWEIS:** 
 
 Änderungen oder Modifikationen am Gerät, die nicht ausdrücklich von Microsoft genehmigt wurden, können zum Erlischen der Betriebserlaubnis des Benutzers führen.
 
 **Kanada und USA:**
 
-![Symbol "Hinweis"](./media/data-box-safety/notice_icon.png)**HINWEIS:** 
+![Symbol „Hinweis“](./media/data-box-safety/notice_icon.png) **HINWEIS:** 
 
 Dieses Gerät wurde getestet und entspricht den Grenzwerten für ein Digitalgerät der Klasse A gemäß Teil 15 der FCC-Vorschriften. Diese Grenzwerte dienen dazu, einen angemessenen Schutz vor schädlichen Störungen zu bieten, wenn das Gerät in einer gewerblichen Umgebung betrieben wird. Dieses Gerät erzeugt und nutzt Hochfrequenzenergie und kann diese ausstrahlen. Wenn es nicht gemäß Bedienungsanleitung installiert und eingesetzt wird, kann es zu schädlichen Störungen der Hochfrequenzkommunikation kommen. Der Betrieb dieses Geräts in einem Wohngebiet kann zu schädlichen Störungen führen. In einem solchen Fall ist der Benutzer verpflichtet, die Störungen auf eigene Kosten zu beseitigen.
 
 Dieses Gerät entspricht Teil 15 der Lizenzbestimmungen von FCC Rules and Industry Canada – ausgenommen RSS-Standard(s). Der Betrieb unterliegt den beiden folgenden Bedingungen: 1.) Dieses Gerät darf keine schädlichen Störungen verursachen. 2.) Dieses Gerät muss alle empfangenen Störungen akzeptieren, einschließlich Störungen, die einen unerwünschten Betrieb des Geräts verursachen können.
 
-![Kanada](./media/data-box-safety/canada.png)
+![Canada](./media/data-box-safety/canada.png)
 
 CAN ICES-3(A)/NMB-3(A)
 
@@ -134,7 +134,7 @@ Kanada: (800) 933-4750
 
 [Eine Kopie der EU-Konformitätserklärung anfordern](mailto:CSI_Compliance@microsoft.com).
 
-![Symbol "Warnung"](./media/data-box-safety/warning_icon.png)**WARNUNG:** 
+![Symbol „Warnung“](./media/data-box-safety/warning_icon.png) **WARNUNG:** 
 
 Dies ist ein Produkt der Klasse A. In einem Privathaushalt kann dieses Produkt Funkstörungen verursachen. In einem solchen Fall kann der Benutzer aufgefordert werden, geeignete Maßnahmen zu ergreifen.
 

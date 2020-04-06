@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ad01751f7f7c573352c8fd15cc0f8cc2ebbbe700
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 887f6d9163f800ecbe8a5ab9a0715fd171f1d3d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945105"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80244510"
 ---
 # <a name="applying-content-tags-to-images"></a>Anwenden von Inhaltstags auf Bilder
 
@@ -28,7 +28,7 @@ Nachdem Sie ein Bild hochgeladen oder eine Bild-URL angegeben haben, geben die A
 
 Die folgende JSON-Antwort veranschaulicht, was vom maschinellen Sehen beim Taggen von visuellen Merkmalen zurückgegeben wird, die im Beispielbild erkannt wurden.
 
-![Ein blaues Haus mit Vorgarten](./Images/house_yard.png).
+![Ein blaues Haus mit Vorgarten](./Images/house_yard.png)erforderlich.
 
 ```json
 {
@@ -83,6 +83,13 @@ Die folgende JSON-Antwort veranschaulicht, was vom maschinellen Sehen beim Tagge
 }
 ```
 
+## <a name="use-the-api"></a>Verwenden der API
+
+Das Tagging-Feature ist Teil der [Bildanalyse-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa). Sie können diese API über ein natives SDK oder REST-Aufrufe aufrufen. Beziehen Sie `Tags` in den Abfrageparameter **visualFeatures** ein. Nachdem Sie die vollständige JSON-Antwort erhalten haben, analysieren Sie einfach die Zeichenfolge auf den Inhalt im Abschnitt `"tags"`.
+
+* [Schnellstart: Maschinelles Sehen: .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [Schnellstart: Analysieren eines Bilds (REST-API)](./quickstarts/csharp-analyze.md)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über Konzepte zum [Kategorisieren von Bildern](concept-categorizing-images.md) und [Beschreiben von Bildern](concept-describing-images.md).
+Machen Sie sich mit den verwandten Konzepten [Kategorisieren von Bildern](concept-categorizing-images.md) und [Beschreiben von Bildern](concept-describing-images.md) vertraut.

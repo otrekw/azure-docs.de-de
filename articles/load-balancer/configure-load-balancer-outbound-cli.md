@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: allensu
 ms.openlocfilehash: 7230b0c2b80137b068bbeacf43ab2133491a69b0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74225468"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>Konfigurieren von Lastenausgleichs- und Ausgangsregeln in Load Balancer Standard mithilfe der Azure CLI
@@ -169,7 +169,7 @@ az network lb outbound-rule create \
 
 Wenn Sie keinen separaten ausgehenden Pool verwenden möchten, können Sie das Argument des Adresspools im vorhergehenden Befehl ändern, um stattdessen *bepoolinbound* anzugeben.  Es wird empfohlen, separate Pools zu verwenden, um die Flexibilität und Lesbarkeit der resultierenden Konfiguration sicherzustellen.
 
-Jetzt können Sie mit dem Hinzufügen Ihrer virtuellen Computer zum Back-End-Pool *bepoolinbound* __und__ *bepooloutbound* fortfahren, indem Sie die IP-Konfiguration der entsprechenden NIC-Ressourcen mit [az network nic ip-config address-pool add](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) aktualisieren.
+Nun können Sie mit dem Hinzufügen Ihrer virtuellen Computer zum Back-End-Pool *bepoolinbound* __und__ *bepooloutbound* fortfahren, indem Sie die IP-Konfiguration der entsprechenden NIC-Ressourcen mit [az network nic ip-config address-pool add](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) aktualisieren.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

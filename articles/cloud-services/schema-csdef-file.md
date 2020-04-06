@@ -1,5 +1,6 @@
 ---
 title: Azure Cloud Services-Definitionsschema (CSDEF-Datei) | Microsoft-Dokumentation
+description: In einer Dienstdefinitionsdatei (.csdef) wird ein Dienstmodell für eine Anwendung definiert, das verfügbare Rollen, Endpunkte und Konfigurationswerte für den Dienst enthält.
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -8,12 +9,12 @@ ms.topic: reference
 caps.latest.revision: 42
 author: tgore03
 ms.author: tagore
-ms.openlocfilehash: 11660fe4f76cad9577b66e72893670dd1b9b559d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dadb50bd0663f47e6a1bf3d58b5187c8b466964d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449075"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79528369"
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Azure Cloud Services-Definitionsschema (.CSDEF-Datei)
 Die Dienstdefinitionsdatei definiert das Dienstmodell für eine Anwendung. Die Datei enthält die Definitionen für die Rollen, die für einen Clouddienst verfügbar sind, gibt die Anbieterendpunkte an und legt Konfigurationseinstellungen für den Dienst fest. Konfigurationseinstellungswerte werden in der Dienstkonfigurationsdatei festgelegt, wie im [Clouddienst-Konfigurationsschema (klassisch)](/previous-versions/azure/reference/ee758710(v=azure.100)) beschrieben.
@@ -57,7 +58,7 @@ In den folgenden Themen wird das Schema beschrieben:
 - [WorkerRole-Schema](schema-csdef-workerrole.md)
 - [NetworkTrafficRules-Schema](schema-csdef-networktrafficrules.md)
 
-##  <a name="ServiceDefinition"></a> Element ServiceDefinition
+##  <a name="servicedefinition-element"></a><a name="ServiceDefinition"></a> Element ServiceDefinition
 Das Element `ServiceDefinition` ist das Element der obersten Ebene der Dienstdefinitionsdatei.
 
 In der folgenden Tabelle werden die Attribute des Elements `ServiceDefinition` beschrieben.

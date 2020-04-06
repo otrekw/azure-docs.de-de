@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2b9b8da550d80b027da919ba0834e43e2c83d4b4
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 477349f1addf71a30e8ecb179266d8eac5510887
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945309"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80244749"
 ---
 # <a name="categorize-images-by-subject-matter"></a>Kategorisieren von Bildern nach Schlüsselinhalt
 
@@ -53,13 +53,20 @@ Die folgende JSON-Antwort veranschaulicht, was das maschinelle Sehen bei der Kat
 
 Die folgende Tabelle zeigt einen typischen Satz von Bildern und die vom maschinellen Sehen zurückgegebene Kategorie für jedes Bild.
 
-| Image | Category (Kategorie) |
+| Image | Category |
 |-------|----------|
 | ![Vier Personen, die zusammen als Familie posieren](./Images/family_photo.png) | people_group |
 | ![Ein Welpe, der in einem Feld sitzt](./Images/cute_dog.png) | animal_dog |
 | ![Eine Person, die bei Sonnenuntergang auf einem Gebirgsfelsen steht](./Images/mountain_vista.png) | outdoor_mountain |
 | ![Mehrere Brötchen auf einem Tisch](./Images/bread.png) | food_bread |
 
+## <a name="use-the-api"></a>Verwenden der API
+
+Das Kategorisierungsfeature ist Teil der [Bildanalyse-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa). Sie können diese API über ein natives SDK oder REST-Aufrufe aufrufen. Beziehen Sie `Categories` in den Abfrageparameter **visualFeatures** ein. Nachdem Sie die vollständige JSON-Antwort erhalten haben, analysieren Sie einfach die Zeichenfolge auf den Inhalt im Abschnitt `"categories"`.
+
+* [Schnellstart: Maschinelles Sehen: .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [Schnellstart: Analysieren eines Bilds (REST-API)](./quickstarts/csharp-analyze.md)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über Konzepte zum [Taggen von Bildern](concept-tagging-images.md) und [Beschreiben von Bildern](concept-describing-images.md).
+Machen Sie sich mit den verwandten Konzepten [Taggen von Bildern](concept-tagging-images.md) und [Beschreiben von Bildern](concept-describing-images.md) vertraut.
