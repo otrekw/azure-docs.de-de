@@ -3,12 +3,12 @@ title: SharePoint-Dateien – QnA Maker
 description: Fügen Sie Ihrer Wissensdatenbank geschützte SharePoint-Datenquellen hinzu, um sie um Fragen und Antworten zu erweitern, die mit Active Directory geschützt werden können.
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 402d8239ee9fbac01e64e3624a7e4d8a13f2e7d8
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 6f05079e39c8afb001bd4ba09d68f435c18efad5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650434"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294878"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Hinzufügen einer geschützten SharePoint-Datenquelle zu Ihrer Wissensdatenbank
 
@@ -21,7 +21,7 @@ Falls der QnA Maker-Wissensdatenbank-Manager nicht der Active Directory-Manage
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Cloudbasiertes SharePoint – QnA Maker verwendet Microsoft Graph für Berechtigungen. Wenn Ihr SharePoint lokal verfügbar ist, können Sie nicht aus SharePoint extrahieren, da Microsoft Graph nicht in der Lage ist, die Berechtigungen zu bestimmen.
-* URL-Format – QnA Maker unterstützt nur SharePoint-URLs, die für die Freigabe generiert werden und das Format „https://*.sharepoint.com“ aufweisen.
+* URL-Format – QnA Maker unterstützt nur SharePoint-URLs, die für die Freigabe generiert werden und das Format `https://\*.sharepoint.com` aufweisen.
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>Hinzufügen unterstützter Dateitypen zur Wissensdatenbank
 
@@ -32,7 +32,7 @@ Sie können Ihrer Wissensdatenbank alle von QnA Maker unterstützten [Dateitypen
 
    ![Rufen Sie die URL der SharePoint-Datei ab, indem Sie das Menü mit den Auslassungszeichen der Datei auswählen und die URL kopieren.](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
 
-1. Navigieren Sie im QnA Maker-Portal zur Seite **Einstellungen**, und [fügen Sie die URL der Wissensdatenbank hinzu](edit-knowledge-base.md#add-datasource).
+1. Navigieren Sie im QnA Maker-Portal zur Seite **Einstellungen**, und [fügen Sie die URL der Wissensdatenbank hinzu](manage-knowledge-bases.md#edit-knowledge-base).
 
 ### <a name="images-with-sharepoint-files"></a>Bilder mit SharePoint-Dateien
 
@@ -69,7 +69,7 @@ Nachdem der QnA Maker-Manager das Konto ausgewählt hat, erhält der Azure Activ
 
 ### <a name="active-directory-manager-grant-file-read-access-to-qna-maker"></a>Active Directory-Manager: Gewähren von Dateilesezugriff für QnA Maker
 
-Der Active Directory-Manager (nicht der QnA Maker-Manager) muss QnA Maker über [diesen Link](https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=id_token&scope=Files.Read%20Files.Read.All%20Sites.Read.All%20User.Read%20User.ReadBasic.All%20profile%20openid%20email&client_id=c2c11949-e9bb-4035-bda8-59542eb907a6&redirect_uri=https%3A%2F%2F www.qnamaker.ai%3A%2FCreate&state=68) Zugriff auf die SharePoint-Ressource gewähren, um die App „QnAMakerPortalSharepoint“ zu autorisieren und ihr Dateileseberechtigungen zu erteilen.
+Der Active Directory-Manager (nicht der QnA Maker-Manager) muss QnA Maker über [diesen Link](https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=id_token&scope=Files.Read%20Files.Read.All%20Sites.Read.All%20User.Read%20User.ReadBasic.All%20profile%20openid%20email&client_id=c2c11949-e9bb-4035-bda8-59542eb907a6&redirect_uri=https%3A%2F%2Fwww.qnamaker.ai%3A%2FCreate&state=68) Zugriff auf die SharePoint-Ressource gewähren, um die App „QnAMakerPortalSharepoint“ zu autorisieren und ihr Dateileseberechtigungen zu erteilen.
 
 ![Azure Active Directory-Manager gewährt interaktiv Berechtigungen](../media/add-sharepoint-datasources/aad-manager-grants-permission-interactively.png)
 

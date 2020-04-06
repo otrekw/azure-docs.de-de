@@ -1,7 +1,7 @@
 ---
-title: Konfigurieren von End-to-End-SSL-Verschlüsselung mithilfe des Portals
+title: Konfigurieren von End-to-End-TLS-Verschlüsselung mithilfe des Portals
 titleSuffix: Azure Application Gateway
-description: Erfahren Sie, wie Sie das Azure-Portal zum Erstellen eines Anwendungsgateways mit End-to-End-SSL-Verschlüsselung verwenden.
+description: Erfahren Sie, wie Sie das Azure-Portal zum Erstellen eines Anwendungsgateways mit End-to-End-TLS-Verschlüsselung verwenden.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: a878b966266bdd326db35d266bc14b2f81161e92
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 6f86f32e64bbbe79ea5a403d04f7d6c29ee6b980
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075137"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80133007"
 ---
-# <a name="configure-end-to-end-ssl-by-using-application-gateway-with-the-portal"></a>Konfigurieren von End-to-End-SSL mit Application Gateway im Azure-Portal
+# <a name="configure-end-to-end-tls-by-using-application-gateway-with-the-portal"></a>Konfigurieren von End-to-End-TLS mit Application Gateway im Azure-Portal
 
-In diesem Artikel wird beschrieben, wie Sie das Azure-Portal zum Konfigurieren der End-to-End-SSL-Verschlüsselung (Secure Sockets Layer) mit einer Azure Application Gateway v1-SKU verwenden.
+In diesem Artikel wird beschrieben, wie Sie das Azure-Portal zum Konfigurieren der End-to-End-TLS-Verschlüsselung (Transport Layer Security), vorher als SSL-Verschlüsselung (Secure Sockets Layer) bekannt, mit einer Azure Application Gateway v1-SKU verwenden.
 
 > [!NOTE]
 > Zum Aktivieren der End-to-End-Konfiguration mit einer Application Gateway v2-SKU sind vertrauenswürdige Stammzertifikate erforderlich.
@@ -27,19 +27,19 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Zum Konfigurieren von End-to-End-SSL mit einem Anwendungsgateway benötigen Sie ein Zertifikat für das Gateway. Auch für die Back-End-Server sind Zertifikate erforderlich. Das Gatewayzertifikat wird zum Ableiten eines symmetrischen Schlüssels gemäß der Spezifikation des SSL-Protokolls verwendet. Der symmetrische Schlüssel wird dann zum Verschlüsseln und Entschlüsseln des Datenverkehrs mit dem Gateway verwendet. 
+Zum Konfigurieren von End-to-End-TLS mit einem Anwendungsgateway benötigen Sie ein Zertifikat für das Gateway. Auch für die Back-End-Server sind Zertifikate erforderlich. Das Gatewayzertifikat wird zum Ableiten eines symmetrischen Schlüssels gemäß der Spezifikation des TLS-Protokolls verwendet. Der symmetrische Schlüssel wird dann zum Verschlüsseln und Entschlüsseln des Datenverkehrs mit dem Gateway verwendet. 
 
-Für die End-to-End-SSL-Verschlüsselung müssen die richtigen Back-End-Server explizit im Application Gateway zugelassen werden. Um diesen Zugriff zu erlauben, laden Sie das öffentliche Zertifikat der Back-End-Server (auch als Authentifizierungszertifikate (v1) oder vertrauenswürdige Stammzertifikate (v2) bezeichnet) auf das Anwendungsgateway hoch. Durch das Hinzufügen des Zertifikats wird sichergestellt, dass das Anwendungsgateway nur mit bekannten Back-End-Instanzen kommuniziert. Außerdem wird mit dieser Konfiguration die End-to-End-Kommunikation geschützt.
+Für die End-to-End-TLS-Verschlüsselung müssen die richtigen Back-End-Server explizit im Application Gateway zugelassen werden. Um diesen Zugriff zu erlauben, laden Sie das öffentliche Zertifikat der Back-End-Server (auch als Authentifizierungszertifikate (v1) oder vertrauenswürdige Stammzertifikate (v2) bezeichnet) auf das Anwendungsgateway hoch. Durch das Hinzufügen des Zertifikats wird sichergestellt, dass das Anwendungsgateway nur mit bekannten Back-End-Instanzen kommuniziert. Außerdem wird mit dieser Konfiguration die End-to-End-Kommunikation geschützt.
 
-Weitere Informationen finden Sie unter [SSL termination and end-to-end SSL (Übersicht über End-to-End-SSL mit Application Gateway)](https://docs.microsoft.com/azure/application-gateway/ssl-overview).
+Weitere Informationen finden Sie unter [Übersicht über TLS-Beendigung und End-to-End-TLS mit Application Gateway](https://docs.microsoft.com/azure/application-gateway/ssl-overview).
 
-## <a name="create-a-new-application-gateway-with-end-to-end-ssl"></a>Erstellen eines neuen Anwendungsgateways mit End-to-End-SSL
+## <a name="create-a-new-application-gateway-with-end-to-end-tls"></a>Erstellen eines neuen Anwendungsgateways mit End-to-End-TLS
 
-Sie müssen zunächst die SSL-Terminierung beim Erstellen eines neuen Anwendungsgateways aktivieren, um ein neues Anwendungsgateway mit End-to-End-SSL-Verschlüsselung zu erstellen. Durch diese Aktion wird die SSL-Verschlüsselung für die Kommunikation zwischen dem Client und dem Anwendungsgateway aktiviert. Anschließend müssen Sie die Zertifikate für die Back-End-Server in den HTTP-Einstellungen der Liste der sicheren Empfänger hinzufügen. Durch diese Konfiguration wird die SSL-Verschlüsselung für die Kommunikation zwischen dem Anwendungsgateway und den Back-End-Servern aktiviert. Damit wird die End-to-End-SSL-Verschlüsselung eingerichtet.
+Sie müssen zunächst die TLS-Terminierung beim Erstellen eines neuen Anwendungsgateways aktivieren, um ein neues Anwendungsgateway mit End-to-End-TLS-Verschlüsselung zu erstellen. Durch diese Aktion wird die TLS-Verschlüsselung für die Kommunikation zwischen dem Client und dem Anwendungsgateway aktiviert. Anschließend müssen Sie die Zertifikate für die Back-End-Server in den HTTP-Einstellungen der Liste der sicheren Empfänger hinzufügen. Durch diese Konfiguration wird die TLS-Verschlüsselung für die Kommunikation zwischen dem Anwendungsgateway und den Back-End-Servern aktiviert. Damit wird die End-to-End-TLS-Verschlüsselung eingerichtet.
 
-### <a name="enable-ssl-termination-while-creating-a-new-application-gateway"></a>Aktivieren der SSL-Terminierung beim Erstellung eines neuen Anwendungsgateways
+### <a name="enable-tls-termination-while-creating-a-new-application-gateway"></a>Aktivieren der TLS-Terminierung beim Erstellen eines neuen Anwendungsgateways
 
-Weitere Informationen finden Sie unter [Aktivieren der SSL-Terminierung beim Erstellung eines neuen Anwendungsgateways](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
+Weitere Informationen finden Sie unter [Aktivieren der TLS-Terminierung beim Erstellen eines neuen Anwendungsgateways](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
 
 ### <a name="add-authenticationroot-certificates-of-back-end-servers"></a>Hinzufügen von Authentifizierung/Stammzertifikaten für Back-End-Server
 
@@ -69,14 +69,14 @@ Weitere Informationen finden Sie unter [Aktivieren der SSL-Terminierung beim Ers
 
 8. Wählen Sie **Speichern** aus.
 
-## <a name="enable-end-to-end-ssl-for-an-existing-application-gateway"></a>Aktivieren von End-to-End-SSL für ein vorhandenes Anwendungsgateway
+## <a name="enable-end-to-end-tls-for-an-existing-application-gateway"></a>Aktivieren von End-to-End-TLS für ein vorhandenes Anwendungsgateway
 
-Sie müssen zunächst die SSL-Terminierung im Listener aktivieren, um ein vorhandenes Anwendungsgateway mit End-to-End-SSL-Verschlüsselung zu konfigurieren. Durch diese Aktion wird die SSL-Verschlüsselung für die Kommunikation zwischen dem Client und dem Anwendungsgateway aktiviert. Fügen Sie anschließend die Zertifikate für die Back-End-Server in den HTTP-Einstellungen der Liste der sicheren Empfänger hinzu. Durch diese Konfiguration wird die SSL-Verschlüsselung für die Kommunikation zwischen dem Anwendungsgateway und den Back-End-Servern aktiviert. Damit wird die End-to-End-SSL-Verschlüsselung eingerichtet.
+Sie müssen zunächst die TLS-Terminierung im Listener aktivieren, um ein vorhandenes Anwendungsgateway mit End-to-End-TLS-Verschlüsselung zu konfigurieren. Durch diese Aktion wird die TLS-Verschlüsselung für die Kommunikation zwischen dem Client und dem Anwendungsgateway aktiviert. Fügen Sie anschließend die Zertifikate für die Back-End-Server in den HTTP-Einstellungen der Liste der sicheren Empfänger hinzu. Durch diese Konfiguration wird die TLS-Verschlüsselung für die Kommunikation zwischen dem Anwendungsgateway und den Back-End-Servern aktiviert. Damit wird die End-to-End-TLS-Verschlüsselung eingerichtet.
 
-Sie müssen einen Listener mit dem HTTPS-Protokoll und einem Zertifikat zum Aktivieren der SSL-Terminierung verwenden. Sie können einen vorhandenen Listener verwenden, der diese Bedingungen erfüllt, oder einen neuen Listener erstellen. Wenn Sie sich für die erste Option entscheiden, können Sie den folgenden Abschnitt zum Aktivieren der SSL-Terminierung in einem vorhandenen Anwendungsgateway überspringen und direkt mit dem Abschnitt „Hinzufügen von Authentifizierung/vertrauenswürdigen Stammzertifikaten für Back-End-Server“ fortfahren.
+Sie müssen einen Listener mit dem HTTPS-Protokoll und einem Zertifikat zum Aktivieren der TLS-Terminierung verwenden. Sie können einen vorhandenen Listener verwenden, der diese Bedingungen erfüllt, oder einen neuen Listener erstellen. Wenn Sie sich für die erste Option entscheiden, können Sie den folgenden Abschnitt zum Aktivieren der TLS-Terminierung in einem vorhandenen Anwendungsgateway überspringen und direkt mit dem Abschnitt „Hinzufügen von Authentifizierung/vertrauenswürdigen Stammzertifikaten für Back-End-Server“ fortfahren.
 
 Wenn Sie sich für die zweite Option entscheiden, wenden Sie die Schritte im folgenden Verfahren an.
-### <a name="enable-ssl-termination-in-an-existing-application-gateway"></a>Aktivieren der SSL-Terminierung in einem vorhandenen Anwendungsgateway
+### <a name="enable-tls-termination-in-an-existing-application-gateway"></a>Aktivieren der TLS-Terminierung in einem vorhandenen Anwendungsgateway
 
 1. Wählen Sie **Alle Ressourcen** und dann **myAppGateway** aus.
 
@@ -86,7 +86,7 @@ Wenn Sie sich für die zweite Option entscheiden, wenden Sie die Schritte im fol
 
 4. Wählen Sie unter **Protokoll** die Option **HTTPS** aus. Ein Bereich für das **Zertifikat** wird angezeigt.
 
-5. Laden Sie das PFX-Zertifikat hoch, das Sie für die SSL-Terminierung zwischen dem Client und dem Anwendungsgateway verwenden möchten.
+5. Laden Sie das PFX-Zertifikat hoch, das Sie für die TLS-Terminierung zwischen dem Client und dem Anwendungsgateway verwenden möchten.
 
    > [!NOTE]
    > Sie können zu Testzwecken ein selbstsigniertes Zertifikat verwenden. Dies wird jedoch nicht für Produktionsworkloads empfohlen, da sie schwieriger zu verwalten und nicht vollständig sicher sind. Weitere Informationen hierzu finden Sie unter [Erstellen eines selbstsignierten Zertifikats](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal#create-a-self-signed-certificate).

@@ -1,18 +1,18 @@
 ---
 title: Erstellen eines Azure Red Hat OpenShift 4.3-Clusters | Microsoft-Dokumentation
-description: Erstellen eines Clusters mit Azure Red Hat OpenShift 3.11
+description: Erstellen eines Clusters mit Azure Red Hat OpenShift 4.3
 author: lamek
 ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
 keywords: aro, openshift, az aro, red hat, cli
-ms.openlocfilehash: 3c336a1fbfb9f991ff824e8deafe84f3d899771d
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 423f09c135da51b8401c1933a4a271d0becd2c8f
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79082828"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349434"
 ---
 # <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>Erstellen, Zugreifen auf und Verwalten eines Azure Red Hat OpenShift 4.3-Clusters
 
@@ -56,7 +56,7 @@ Mit der `az aro`-Erweiterung können Sie Azure Red Hat OpenShift-Cluster mithilf
 2. Führen Sie zum Installieren der `az aro`-Erweiterung den folgenden Befehl aus:
 
    ```console
-   az extension add --source https://arosvc.blob.core.windows.net/az-preview/aro-0.1.0-py2.py3-none-any.whl
+   az extension add -n aro --index https://az.aroapp.io/preview
    ```
 
 3. Vergewissern Sie sich, dass die ARO-Erweiterung registriert ist.
@@ -79,7 +79,15 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Netzwerk mit zwei leer
    LOCATION=eastus        #the location of your cluster
    RESOURCEGROUP="v4-$LOCATION"    #the name of the resource group where you want to create your cluster
    CLUSTER=cluster        #the name of your cluster
+   PULL_SECRET="<optional-pull-secret>"
    ```
+   >[!NOTE]
+   > Das optionale Pullgeheimnis ermöglicht dem Cluster den Zugriff auf Red Hat-Containerregistrierungen zusammen mit zusätzlichem Inhalt.
+   >
+   > Greifen Sie auf Ihr Pullgeheimnis zu, indem Sie zu https://cloud.redhat.com/openshift/install/azure/installer-provisioned navigieren und auf *Pullgeheimnis kopieren* klicken.
+   >
+   > Sie müssen sich bei Ihrem Red Hat-Konto anmelden oder ein neues Red Hat-Konto mit ihrer geschäftlichen E-Mail-Adresse erstellen und den Geschäftsbedingungen zustimmen.
+ 
 
 2. Erstellen Sie eine Ressourcengruppe für Ihren Cluster.
 
@@ -87,7 +95,7 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Netzwerk mit zwei leer
    az group create -g "$RESOURCEGROUP" -l $LOCATION
    ```
 
-3. Erstellen Sie das virtuelle Netzwerk.
+3. Erstellen des virtuellen Netzwerks
 
    ```console
    az network vnet create \
@@ -132,7 +140,8 @@ az aro create \
   -n "$CLUSTER" \
   --vnet vnet \
   --master-subnet "$CLUSTER-master" \
-  --worker-subnet "$CLUSTER-worker"
+  --worker-subnet "$CLUSTER-worker" \
+  --pull-secret "$PULL_SECRET"
 ```
 
 >[!NOTE]

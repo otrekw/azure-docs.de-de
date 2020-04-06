@@ -1,19 +1,18 @@
 ---
 title: Seller Insights – häufig gestellte Fragen
 description: Häufig gestellte Fragen zum Feature Seller Insights des Cloud-Partnerportals.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pabutler
-ms.openlocfilehash: b015d21005448d24d24923ba424a10a4af0d47b1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 011558baa43ee3db2803e9229d1d15df5158d668
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821599"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285383"
 ---
 <a name="seller-insights-faq"></a>Seller Insights – häufig gestellte Fragen
 ===================
@@ -42,7 +41,7 @@ Zeigen Sie nach dem Herunterladen Ihrer Transaktionen aus dem Modul „Auszahlun
 <a name="calculate-revenue-by-customer-usage-period"></a>Berechnen des Umsatzes nach Kundennutzungsdauer
 ------------------------------------------
 
-Zeigen Sie nach dem Herunterladen Ihrer Transaktionen aus dem Modul „Auszahlung“ die Spalte mit der Bezeichnung **Transaktionsstatus** an, und wenden Sie den Filter auf den Wert „Bezahlt“ an.   Für jede aufgelistete Transaktion gibt die Spalte mit der Bezeichnung **Auszahlungsbetrag (PC)** den Betrag an, der Ihnen bezahlt wurde.  Um die mit der Transaktion verbundene Nutzungsdauer zu schätzen, verwenden Sie die Spalte **Abrechnungsdatum**, eine enge Annäherung an den letzten Nutzungstag des Zeitraums, auf den sich die Transaktion bezieht.
+Zeigen Sie nach dem Herunterladen Ihrer Transaktionen aus dem Modul „Auszahlung“ die Spalte mit der Bezeichnung **Transaktionsstatus** an, und wenden Sie den Filter auf den Wert „Bezahlt“ an.   Für jede aufgelistete Transaktion gibt die Spalte mit der Bezeichnung **Auszahlungsbetrag (PC)** den Betrag an, der Ihnen bezahlt wurde.  Um die mit der Transaktion verbundene Nutzungsdauer zu schätzen, verwenden Sie die Spalte **Abrechnungsdatum**, eine enge Annäherung an den letzten Nutzungstag des Zeitraums, auf den sich die Transaktion bezieht.
 
 
 <a name="calculate-your-bad-debt"></a>Berechnen Ihres Forderungsausfalls

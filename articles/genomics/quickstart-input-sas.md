@@ -10,10 +10,10 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 03/02/2018
 ms.openlocfilehash: d6228762b9a1299d8e9229f7a0f73dc7d0bca2b2
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72248582"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>Übermitteln eines Workflows per SAS anstelle eines Speicherkontoschlüssels an Microsoft Genomics 
@@ -53,7 +53,7 @@ Es gibt zwei Möglichkeiten, ein SAS-Token zu erstellen: entweder mit Azure Stor
 
 Der SAS-Bereich für die Eingabedateien sollte auf die spezifische Eingabedatei (Blob) festgelegt werden. Befolgen Sie [diese Anleitung](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer), um ein SAS-Token zu erstellen. Nachdem Sie die SAS erstellt haben, wird die vollständige URL mit der Abfragezeichenfolge sowie die Abfragezeichenfolge selbst bereitgestellt. Sie können diese Angaben auf dem Bildschirm kopieren.
 
- ![Genomics SAS – Storage-Explorer](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "Genomics SAS – Storage-Explorer")
+ ![Genomics SAS-Storage-Explorer](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "Genomics SAS-Storage-Explorer")
 
 
 ### <a name="set-up-create-a-sas-programmatically"></a>Einrichten: Programmgesteuertes Erstellen einer SAS
@@ -66,7 +66,7 @@ Zum Erstellen einer SAS ohne SDK kann die SAS-Abfragezeichenfolge direkt erstell
 ## <a name="add-the-sas-to-the-configtxt-file"></a>Hinzufügen der SAS zur Datei „config.txt“
 Um einen Workflow per SAS-Abfragezeichenfolge über den Microsoft Genomics-Dienst auszuführen, müssen Sie die Schlüssel aus der Datei „config.txt“ entfernen. Fügen Sie anschließend die SAS-Abfragezeichenfolge (die mit `?` beginnt) wie gezeigt an den Namen des Ausgabecontainers an. 
 
-![Konfigurationsdatei für Genomics SAS](./media/quickstart-input-sas/genomics-sas-config.png "Konfigurationsdatei für Genomics SAS")
+![Genomics SAS-Konfiguration](./media/quickstart-input-sas/genomics-sas-config.png "Genomics SAS-Konfiguration")
 
 Verwenden Sie den Microsoft Genomics-Python-Client, um Ihren Workflow mit dem folgenden Befehl zu übermitteln, indem Sie die entsprechende SAS-Abfragezeichenfolge an die einzelnen Eingabeblobnamen anfügen:
 
@@ -77,7 +77,7 @@ msgen submit -f [full path to your config file] -b1 [name of your first paired e
 ### <a name="if-adding-the-input-file-names-to-the-configtxt-file"></a>Beim Hinzufügen der Eingabedateinamen zur Datei „config.txt“
 Alternativ hierzu können die Namen der Dateien mit Abschnitten mit gepaarten Enden direkt der Datei „config.txt“ hinzugefügt werden, wobei die SAS-Abfragetoken wie hier gezeigt angefügt werden:
 
-![Genomics SAS – Blobnamen für Konfiguration](./media/quickstart-input-sas/genomics-sas-config-blobnames.png "Genomics SAS – Blobnamen für Konfiguration")
+![Blobnamen der Genomics SAS-Konfiguration](./media/quickstart-input-sas/genomics-sas-config-blobnames.png "Blobnamen der Genomics SAS-Konfiguration")
 
 Verwenden Sie in diesem Fall den folgenden Befehl, um Ihren Workflow über den Microsoft Genomics-Python-Client zu übermitteln. Lassen Sie hierbei die Befehle `-b1` und `-b2` weg:
 

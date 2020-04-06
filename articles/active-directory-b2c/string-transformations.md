@@ -3,20 +3,20 @@ title: Beispiele für Transformation von Zeichenfolgenansprüchen für benutzerd
 titleSuffix: Azure AD B2C
 description: Beispiele für die Transformation von Zeichenfolgenansprüchen für das Identity Experience Framework (IEF) von Azure Active Directory B2C.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
-ms.author: marsma
+ms.date: 03/16/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e220009ec04ce732d99a53432077d681707e28d1
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: acacba591c9b895f1bd6abfbab5d3d4a4c858d12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585729"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79472774"
 ---
 # <a name="string-claims-transformations"></a>Transformationen von Zeichenfolgen-Ansprüchen
 
@@ -34,7 +34,7 @@ Zwei Ansprüche werden miteinander verglichen, und es wird eine Ausnahme ausgel�
 | InputClaim | inputClaim2 | Zeichenfolge | Der Typ des zweiten Anspruchs, der verglichen werden soll. |
 | InputParameter | stringComparison | Zeichenfolge | Zeichenfolgenvergleich, einer der Werte: Ordinal, OrdinalIgnoreCase. |
 
-Die Anspruchstransformation **AssertStringClaimsAreEqual** wird immer über ein [technisches Validierungsprofil](validation-technical-profile.md) ausgeführt, das von einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) aufgerufen wird (oder von einem Element vom Typ [DisplayControl](display-controls.md)). Die `UserMessageIfClaimsTransformationStringsAreNotEqual`-Metadaten eines selbstbestätigten technischen Profils steuern die Fehlermeldung, die dem Benutzer angezeigt wird.
+Die Anspruchstransformation **AssertStringClaimsAreEqual** wird immer über ein [technisches Validierungsprofil](validation-technical-profile.md) ausgeführt, das von einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) aufgerufen wird (oder von einem Element vom Typ [DisplayControl](display-controls.md)). Die `UserMessageIfClaimsTransformationStringsAreNotEqual`-Metadaten eines selbstbestätigten technischen Profils steuern die Fehlermeldung, die dem Benutzer angezeigt wird. Die Fehlermeldungen können [lokalisiert](localization-string-ids.md#claims-transformations-error-messages) werden.
 
 
 ![Ausführung von AssertStringClaimsAreEqual](./media/string-transformations/assert-execution.png)
@@ -363,7 +363,7 @@ Mithilfe dieser Anspruchstransformation können Sie eine beliebige Zeichenfolge 
 - Ausgabeansprüche:
     - **outputClaim:** Joe Fernando
 
-## <a name="getlocalizedstringstransformation"></a>GetLocalizedStringsTransformation 
+## <a name="getlocalizedstringstransformation"></a>GetLocalizedStringsTransformation
 
 Kopiert lokalisierte Zeichenfolgen in Ansprüche.
 
@@ -428,9 +428,9 @@ Die Anspruchstransformation legt den Wert des Anspruchstyps *subject* mit dem We
 
 - Ausgabeansprüche:
   - **subject**: E-Mail-Prüfcode für Contoso-Konto
-  - **message**: Vielen Dank für die Bestätigung Ihres Kontos! 
-  - **codeIntro**: Ihr Code lautet: 
-  - **signature**: Mit freundlichen Grüßen  
+  - **message**: Vielen Dank für die Bestätigung Ihres Kontos!
+  - **codeIntro**: Ihr Code lautet:
+  - **signature**: Mit freundlichen Grüßen
 
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
@@ -550,7 +550,7 @@ Im folgenden Beispiel wird in einer der Sammlungen von inputParameter nach dem D
     - **microsoft.com:** 0213308f-17cb-4398-b97e-01da7bd4804e
     - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
     - **errorOnFailedLookup**: true
-- Fehler:
+- Error:
     - In der Liste der Eingabeparameter-IDs wurde keine Entsprechung für den Eingabeanspruchswert gefunden, und „errorOnFailedLookup“ ist „true“.
 
 
@@ -618,7 +618,7 @@ Mithilfe dieser Anspruchstransformation können Sie den Domänennamen hinter dem
 | OutputClaim | outputClaim | Zeichenfolge | Wenn es eine Übereinstimmung mit dem regulären Ausdruck gibt, enthält dieser Ausgabeanspruch den Wert des Eingabeparameters `outputClaimIfMatched`. Oder Null, wenn keine Übereinstimmung vorliegt. |
 | OutputClaim | regexCompareResultClaim | boolean | Der Ausgabeanspruchstyp des Übereinstimmungsergebnisses mit dem regulären Ausdruck, der anhand des Übereinstimmungsergebnisses auf `true` oder `false` festgelegt werden muss. |
 
-Beispiel: Anhand des Musters des regulären Ausdrucks für Telefonnummern wird überprüft, ob die angegebene Telefonnummer gültig ist.  
+Beispiel: Anhand des Musters des regulären Ausdrucks für Telefonnummern wird überprüft, ob die angegebene Telefonnummer gültig ist.
 
 ```XML
 <ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="setClaimsIfRegexMatch">
@@ -755,7 +755,7 @@ Bestimmt, ob eine angegebene Teilzeichenfolge im Eingabeanspruch vorhanden ist. 
 Mithilfe dieser Anspruchstransformation können Sie überprüfen, ob ein Zeichenfolgenanspruchstyp eine Teilzeichenfolge enthält. Im folgenden Beispiel wird überprüft, ob der Zeichenfolgenanspruchstyp `roles` den Wert **admin** enthält.
 
 ```XML
-<ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains"> 
+<ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
   </InputClaims>
@@ -765,7 +765,7 @@ Mithilfe dieser Anspruchstransformation können Sie überprüfen, ob ein Zeichen
   </InputParameters>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="isAdmin" TransformationClaimType="outputClaim"/>
-  </OutputClaims>         
+  </OutputClaims>
 </ClaimsTransformation>
 ```
 
@@ -777,7 +777,7 @@ Mithilfe dieser Anspruchstransformation können Sie überprüfen, ob ein Zeichen
     - **contains**: "admin,"
     - **ignoreCase**: true
 - Ausgabeansprüche:
-    - **outputClaim**: true 
+    - **outputClaim**: true
 
 ## <a name="stringsubstring"></a>StringSubstring
 
@@ -790,7 +790,7 @@ Extrahiert Teile eines Zeichenfolgenanspruchstyps ab dem Zeichen an der angegebe
 | InputParameter | length | INT | Die Anzahl der Zeichen in der Teilzeichenfolge. |
 | OutputClaim | outputClaim | boolean | Eine Zeichenfolge, die der Teilzeichenfolge mit der Länge ab „startIndex“ in dieser Instanz entspricht, oder „Empty“, wenn „startIndex“ der Länge dieser Instanz entspricht und „length“ Null ist. |
 
-Ruft z. B. die Ländervorwahl der Telefonnummer ab.  
+Ruft z. B. die Ländervorwahl der Telefonnummer ab.
 
 
 ```XML
@@ -828,7 +828,7 @@ Durchsucht die Zeichenfolge eine Anspruchstyps nach einem bestimmten Wert und gi
 | InputParameter | newValue | Zeichenfolge | Die Zeichenfolge, die alle Vorkommen von `oldValue` ersetzen soll |
 | OutputClaim | outputClaim | boolean | Eine Zeichenfolge, die der aktuellen Zeichenfolge entspricht, nur dass alle Instanzen von „oldValue“ durch „newValue“ ersetzt werden. Wenn „oldValue“ in der aktuellen Instanz nicht gefunden wird, gibt die Methode die aktuelle Instanz unverändert zurück. |
 
-Beispielsweise können Sie eine Telefonnummer normalisieren, indem Sie die Zeichen `-` entfernen.  
+Beispielsweise können Sie eine Telefonnummer normalisieren, indem Sie die Zeichen `-` entfernen.
 
 
 ```XML
@@ -864,7 +864,7 @@ Verkettet die Elemente eines bestimmten stringCollection-Anspruchstyps und verwe
 | InputClaim | inputClaim | stringCollection | Eine Auflistung, die die zu verkettenden Zeichenfolgen enthält. |
 | InputParameter | Trennzeichen | Zeichenfolge | Die als Trennzeichen zu verwendende Zeichenfolge, z. B. Komma `,`. |
 | OutputClaim | outputClaim | Zeichenfolge | Eine Zeichenfolge, die aus den Membern der Zeichenfolgenauflistung `inputClaim` besteht, getrennt durch den Eingabeparameter `delimiter`. |
-  
+
 Im folgenden Beispiel wird eine Zeichenfolgenauflistung von Benutzerrollen in eine Zeichenfolge mit Kommatrennzeichen konvertiert. Mit dieser Methode können Sie eine Zeichenfolgenauflistung im Azure AD-Benutzerkonto speichern. Wenn Sie später das Konto aus dem Verzeichnis lesen, konvertieren Sie die Zeichenfolge mit Kommatrennzeichen mithilfe von `StringSplit` zurück in die Zeichenfolgenauflistung.
 
 ```XML
@@ -900,7 +900,7 @@ Gibt ein Zeichenfolgenarray zurück, das die Teilzeichenfolgen in dieser Instanz
 | InputClaim | inputClaim | Zeichenfolge | Ein Zeichenfolgenanspruchstyp, der die zu unterteilenden Teilzeichenfolgen enthält. |
 | InputParameter | Trennzeichen | Zeichenfolge | Die als Trennzeichen zu verwendende Zeichenfolge, z. B. Komma `,`. |
 | OutputClaim | outputClaim | stringCollection | Eine Zeichenfolgenauflistung, deren Elemente die Teilzeichenfolgen in dieser Zeichenfolge enthalten, die durch den Eingabeparameter `delimiter` getrennt sind. |
-  
+
 Im folgenden Beispiel wird eine Zeichenfolge mit durch Kommas getrennten Benutzerrollen in eine Zeichenfolgenauflistung konvertiert.
 
 ```XML
@@ -925,11 +925,11 @@ Im folgenden Beispiel wird eine Zeichenfolge mit durch Kommas getrennten Benutze
   - **delimiter**: ","
 - Ausgabeansprüche:
   - **outputClaim**: [ "Admin", "Author", "Reader" ]
-  
+
 ## <a name="string-claim-transformations-expressions"></a>Transformationsausdrücke für Zeichenfolgenansprüche
 Anspruchstransformationsausdrücke in benutzerdefinierten Azure AD B2C-Richtlinien liefern Kontextinformationen zur Mandanten-ID und zur ID des technischen Profils.
 
-  | Ausdruck | Beschreibung | Beispiel |
+  | Ausdruck | BESCHREIBUNG | Beispiel |
  | ----- | ----------- | --------|
  | `{TechnicalProfileId}` | Der Name der ID des technischen Profils. | Facebook-OAUTH |
  | `{RelyingPartyTenantId}` | Die Mandanten-ID der Richtlinie für die vertrauende Seite. | Ihr-Mandan.onmicrosoft.com |

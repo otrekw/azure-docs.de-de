@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 3b2f6b2bb1dc5f9e16c537f78b5a456ee4984e80
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: ba788518951e72c1701d99decf46350e8665dbae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77916726"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455807"
 ---
 # <a name="two-class-support-vector-machine-module"></a>Modul „Zweiklassige Support Vector Machine“
 
@@ -68,7 +68,7 @@ Für diesen Modelltyp wird empfohlen, dass Sie den Datensatz normalisieren, bevo
   
     -   Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, müssen Sie das Modul [Train Model](train-model.md) (Trainieren des Modells) verwenden.
   
-10. Ausführen der Pipeline.
+10. Übermitteln Sie die Pipeline.
 
 ## <a name="results"></a>Ergebnisse
 

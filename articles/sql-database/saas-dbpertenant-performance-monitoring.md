@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: e2e752ec37f71ea501dcee586e7daf0fc950919d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 34c50795567615637e31446ad3dc51a5e1b355f6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822236"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79214467"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Überwachen und Verwalten der Leistung von Azure SQL-Datenbanken und Pools in einer mehrinstanzenfähigen SaaS-App
 
@@ -30,7 +30,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > 
 > * Simulieren der Verwendung der Mandantendatenbanken durch Ausführen eines bereitgestellten Lastengenerators
 > * Überwachen der Mandantendatenbanken während ihrer Reaktion auf einen Lastenanstieg
-> * Zentrales Hochskalieren von Pools für elastische Datenbanken als Reaktion auf die erhöhte Datenbankauslastung
+> * Hochskalieren von Pools für elastische Datenbanken als Reaktion auf die erhöhte Datenbankauslastung
 > * Bereitstellen eines zweiten Pools für elastische Datenbanken, um einen Lastenausgleich der Datenbankaktivität vorzunehmen
 
 
@@ -50,13 +50,13 @@ Pools und die Datenbanken in den Pools sollten überwacht werden, um sicherzuste
 ### <a name="performance-management-strategies"></a>Leistungsverwaltungsstrategien
 
 * Um die Leistung nicht manuell überwachen zu müssen, ist es am effizientesten, **Benachrichtigungen einzurichten, die ausgelöst werden, wenn Datenbanken oder Pools vom Normalbereich abweichen**.
-* Um auf kurzfristige Schwankungen in der aggregierten Computegröße eines Pools zu reagieren, **kann die Pool-eDTU-Stufe hoch- oder herunterskaliert werden**. Wenn diese Fluktuation in regelmäßigen oder vorhersagbaren Abständen auftritt, **kann die Skalierung des Pools geplant werden und automatische erfolgen**. Skalieren Sie z.B. zentral herunter, wenn Sie wissen, dass der Workload gering sein wird, beispielsweise nachts oder an den Wochenenden.
+* Um auf kurzfristige Schwankungen in der aggregierten Computegröße eines Pools zu reagieren, **kann die Pool-eDTU-Stufe hoch- oder herunterskaliert werden**. Wenn diese Fluktuation in regelmäßigen oder vorhersagbaren Abständen auftritt, **kann die Skalierung des Pools geplant werden und automatische erfolgen**. Skalieren Sie z.B. herunter, wenn Sie wissen, dass der Workload gering sein wird, beispielsweise nachts oder an den Wochenenden.
 * Um auf längerfristige Schwankungen oder Änderungen bei der Anzahl der Datenbanken zu reagieren, **können einzelne Datenbanken in anderen Pools verschoben werden**.
 * Um auf kurzfristige Anstiege *einzelner* Datenbanklasten zu reagieren, **können Sie einzelne Datenbanken aus dem Pool entfernen und eine individuelle Computegröße zuweisen**. Sobald die Last sich verringert, kann die Datenbank wieder dem Pool hinzugefügt werden. Wenn dies im Voraus bekannt ist, können Datenbanken vorsorglich verschoben werden, um sicherzustellen, dass die Datenbank immer über die erforderlichen Ressourcen verfügt, und um Auswirkungen auf andere Datenbanken im Pool zu vermeiden. Wenn diese Anforderungen vorhersagbar sind, wenn beispielsweise für eine beliebte Veranstaltung an einem Veranstaltungsort ein Run auf die Tickets zu erwarten ist, kann dieses Verwaltungsverhalten in die Anwendung integriert werden.
 
-Das [Azure-Portal](https://portal.azure.com) bietet integrierte Überwachung und Benachrichtigungen für die meisten Ressourcen. In SQL-Datenbank sind Überwachung und Benachrichtigungen für Datenbanken und Pools verfügbar. Die integrierte Überwachungs- und Benachrichtigungsfunktionalität ist ressourcenspezifisch, daher lässt sie sich bequem für eine kleine Anzahl von Ressourcen verwenden, ist aber bei der Arbeit mit vielen Ressourcen nicht sehr praktisch.
+Das [Azure-Portal](https://portal.azure.com) bietet integrierte Überwachung und Benachrichtigungen für die meisten Ressourcen. In SQL-Datenbank sind Überwachung und Warnung für Datenbanken und Pools verfügbar. Die integrierte Überwachungs- und Benachrichtigungsfunktionalität ist ressourcenspezifisch, daher lässt sie sich bequem für eine kleine Anzahl von Ressourcen verwenden, ist aber bei der Arbeit mit vielen Ressourcen nicht sehr praktisch.
 
-In Szenarien mit hohem Volumen, bei denen Sie mit vielen Ressourcen arbeiten, können [Azure Monitor-Protokolle](saas-dbpertenant-log-analytics.md) verwendet werden. Dies ist ein separater Azure-Dienst, der Analysen über ausgegebene Diagnoseprotokolle und Telemetriedaten bietet, die in einem Log Analytics-Arbeitsbereich gesammelt werden. Azure Monitor-Protokolle können Telemetriedaten aus einer Vielzahl von Diensten sammeln und zum Abfragen und Festlegen von Warnungen verwendet werden.
+In Szenarien mit hohem Volumen, bei denen Sie mit vielen Ressourcen arbeiten, können [Azure Monitor-Protokolle](saas-dbpertenant-log-analytics.md) verwendet werden. Dies ist ein separater Azure-Dienst, der Analysen über ausgegebene Protokolle bietet, die in einem Log Analytics-Arbeitsbereich gesammelt werden. Azure Monitor-Protokolle können Telemetriedaten aus einer Vielzahl von Diensten sammeln und zum Abfragen und Festlegen von Warnungen verwendet werden.
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Abrufen der Skripts zur SaaS-Anwendung Wingtip Tickets mit einer Datenbank pro Mandant
 
@@ -137,7 +137,7 @@ Gehen Sie folgendermaßen vor, um eine Benachrichtigung für den Pool festzulege
    ![Warnung festlegen](media/saas-dbpertenant-performance-monitoring/alert-rule.png)
 
 
-## <a name="scale-up-a-busy-pool"></a>Zentrales Hochskalieren eines ausgelasteten Pools
+## <a name="scale-up-a-busy-pool"></a>Hochskalieren eines ausgelasteten Pools
 
 Wenn der aggregierte Auslastungsgrad für einen Pool sich bis zu dem Punkt erhöht, an dem das Limit des Pools und sowie eine eDTU-Nutzung von 100 % erreicht ist, wird die Leistung einzelner Datenbanken beeinträchtigt, und die Antwortzeiten für Abfragen verlangsamen sich möglicherweise für alle Datenbanken im Pool.
 
@@ -154,7 +154,7 @@ Sie können einen ausgelasteten Pool simulieren, indem Sie die vom Generator erz
 
 Überwachen Sie die erhöhte Pool-eDTU-Nutzung im oben angezeigten Diagramm. Es dauert einige Minuten, bis die neue, höhere Last zum Tragen kommt, aber Sie sollten schnell erkennen können, dass der Pool die maximale Auslastung erreicht, sich die Auslastung in einem neuen Muster stabilisiert und der Pool schnell überlastet ist.
 
-1. Um den Pool zentral hochzuskalieren, klicken Sie im oberen Bereich der Seite **Pool1** auf **Pool konfigurieren**.
+1. Um den Pool hochzuskalieren, klicken Sie im oberen Bereich der Seite **Pool1** auf **Pool konfigurieren**.
 1. Passen Sie die Einstellung **Pool-eDTU** auf **100** an. Das Ändern der Pool-eDTUs ändert die Einstellungen für die einzelnen Datenbanken nicht (die Obergrenze liegt weiterhin bei 50 eDTUs pro Datenbank). Die Einstellungen für die einzelnen Datenbanken werden rechts auf der Seite **Pool konfigurieren** angezeigt.
 1. Klicken Sie auf **Speichern**, um die Anforderung zum Skalieren des Pools zu senden.
 
@@ -206,7 +206,7 @@ In dieser Übung werden die Auswirkungen simuliert, wenn der Ticketverkauf für 
 
 1. Prüfen Sie das Diagramm **Überwachung des Pools für elastische Datenbanken**, und achten Sie auf eine erhöhte Pool-eDTU-Nutzung. Nach ein oder zwei Minuten sollte die höhere Auslastung sichtbar werden, und Sie sollten schnell erkennen, dass der Pool eine Auslastung von 100 % erreicht.
 2. In der Anzeige **Überwachung der elastischen Datenbank** werden die meistverwendeten Datenbanken der letzten Stunde angezeigt. Die Datenbank *contosoconcerthall* sollte in Kürze unter den fünf meist verwendeten Datenbanken angezeigt werden.
-3. Klicken Sie auf das Diagramm **Überwachung der elastischen** **Datenbank**. Hierdurch wird die Seite **Datenbank-Ressourcennutzung** geöffnet, mit der Sie beliebige Datenbanken überwachen können. Dadurch können Sie die Anzeige für die Datenbank *contosoconcerthall* isolieren.
+3. **Klicken Sie auf das „Überwachung der elastischen Datenbank“** -**Diagramm**. Hierdurch wird die Seite **Datenbank-Ressourcennutzung** geöffnet, mit der Sie beliebige Datenbanken überwachen können. Dadurch können Sie die Anzeige für die Datenbank *contosoconcerthall* isolieren.
 4. Klicken Sie in der Liste der Datenbanken auf **contosoconcerthall**.
 5. Klicken Sie auf **Tarif (DTUs skalieren)** , um die Seite **Leistung konfigurieren** zu öffnen. Auf dieser können Sie eine eigenständige Computegröße für die Datenbank festlegen.
 6. Klicken Sie auf die Registerkarte **Standard**, um die Skalierungsoptionen des Standard-Tarifs zu öffnen.
@@ -218,7 +218,7 @@ Sobald die erhöhte Last der Datenbank „contosoconcerthall“ nachlässt, soll
 
 ## <a name="other-performance-management-patterns"></a>Andere Leistungsverwaltungsmuster
 
-**Präemptive Skalierung** In der oben angegebenen Übung, in der die Skalierung einer isolierten Datenbank behandelt wurde, wussten Sie, nach welcher Datenbank Sie suchen mussten. Wenn Wingtip von der Verwaltung der Contoso Concert Hall über den bevorstehenden Ticketverkauf informiert worden wäre, hätte die Datenbank vorsorglich aus dem Pool verschoben werden können. Andernfalls wäre es wahrscheinlich erforderlich gewesen, eine Benachrichtigung für den Pool oder die Datenbank auszugeben, um die Situation zu erkennen. Sehr ungünstig wäre es, wenn Sie erst davon erfahren hätten, weil sich die anderen Mandanten im Pool über die Beeinträchtigung der Leistung beschwert hätten. Wenn der Mandant einschätzen kann, wie lange zusätzliche Ressourcen benötigt werden, können Sie ein Azure Automation-Runbook einrichten, um die Datenbank nach einem definierten Zeitplan aus dem Pool in einen anderen Pool und dann wieder zurück zu verschieben.
+**Präemptive Skalierung** In der oben angegebenen Übung, in der die Skalierung einer isolierten Datenbank behandelt wurde, wussten Sie, nach welcher Datenbank Sie suchen mussten. Wenn Wingtips von der Verwaltung der Contoso Concert Hall über den bevorstehenden Ticketverkauf informiert worden wäre, hätte die Datenbank vorsorglich aus dem Pool verschoben werden können. Andernfalls wäre es wahrscheinlich erforderlich gewesen, eine Benachrichtigung für den Pool oder die Datenbank auszugeben, um die Situation zu erkennen. Sehr ungünstig wäre es, wenn Sie erst davon erfahren hätten, weil sich die anderen Mandanten im Pool über die Beeinträchtigung der Leistung beschwert hätten. Wenn der Mandant einschätzen kann, wie lange zusätzliche Ressourcen benötigt werden, können Sie ein Azure Automation-Runbook einrichten, um die Datenbank nach einem definierten Zeitplan aus dem Pool in einen anderen Pool und dann wieder zurück zu verschieben.
 
 **Self-Service-Skalierung des Mandanten** Da die Skalierung eine Aufgabe ist, die problemlos über das Verwaltungs-API aufgerufen werden kann, können Sie die Fähigkeit, Mandantendatenbanken zu skalieren, ganz leicht in Ihre mandantenseitige Anwendung integrieren und als Feature Ihres SaaS-Diensts anbieten. Lassen Sie Mandanten beispielsweise das zentrale Hoch- oder Herunterskalieren selbst verwalten, vielleicht direkt verknüpft mit der Abrechnung.
 
@@ -235,7 +235,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Simulieren der Verwendung der Mandantendatenbanken durch Ausführen eines bereitgestellten Lastengenerators
 > * Überwachen der Mandantendatenbanken während ihrer Reaktion auf einen Lastenanstieg
-> * Zentrales Hochskalieren von Pools für elastische Datenbanken als Reaktion auf die erhöhte Datenbankauslastung
+> * Hochskalieren von Pools für elastische Datenbanken als Reaktion auf die erhöhte Datenbankauslastung
 > * Bereitstellen eines zweiten Pools für elastische Datenbanken, um einen Lastenausgleich der Datenbankaktivität vorzunehmen
 
 [Tutorial zum Wiederherstellen eines einzelnen Mandanten](saas-dbpertenant-restore-single-tenant.md)

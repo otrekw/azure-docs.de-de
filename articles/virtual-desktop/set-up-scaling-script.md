@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 02/06/2020
+ms.date: 03/26/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2078869aef5964b30723d8b6854c4b15f0423205
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 3a853dc32f8716f3f2ba32896a7a4a239efcc5bd
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127539"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349877"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>Skalieren von Sitzungshosts mit Azure Automation
 
@@ -28,8 +28,8 @@ Das Skalierungstool bietet eine kostengünstige Automatisierungsoption für Kund
 Sie können das Skalierungstool für Folgendes verwenden:
  
 - Planen des Startens und Beendens von VMs basierend auf Spitzenzeiten und ruhigeren Geschäftszeiten
-- Horizontales Hochskalieren von VMs basierend auf der Anzahl von Sitzungen pro CPU-Kern
-- Horizontales Herunterskalieren von VMs außerhalb von Spitzenzeiten unter Beibehaltung einer Mindestanzahl von Sitzungshost-VMs
+- Aufskalieren von VMs basierend auf der Anzahl von Sitzungen pro CPU-Kern
+- Abskalieren von VMs außerhalb von Spitzenzeiten unter Beibehaltung einer Mindestanzahl von Sitzungshost-VMs
 
 Das Skalierungstool nutzt eine Kombination aus Azure Automation-PowerShell-Runbooks, Webhooks und Azure Logic Apps. Wenn das Tool ausgeführt wird, ruft Azure Logic Apps einen Webhook auf, um das Azure Automation-Runbook zu starten. Das Runbook erstellt dann einen Auftrag.
 
@@ -97,11 +97,11 @@ Zunächst benötigen Sie ein Azure Automation-Konto zum Ausführen des PowerShel
 
 5. Die Ausgabe des Cmdlets enthält einen Webhook-URI. Notieren Sie sich den URI unbedingt, da Sie ihn als Parameter verwenden, wenn Sie den Ausführungszeitplan für Azure Logic Apps einrichten.
 
-Nachdem Sie Ihr Azure Automation-Konto eingerichtet haben, melden Sie sich bei Ihrem Azure-Abonnement an, und überprüfen Sie, ob Ihr Azure Automation-Konto und das zugehörige Runbook in der angegebenen Ressourcengruppe angezeigt werden, wie in der folgenden Abbildung dargestellt:
+6. Nachdem Sie Ihr Azure Automation-Konto eingerichtet haben, melden Sie sich bei Ihrem Azure-Abonnement an, und überprüfen Sie, ob Ihr Azure Automation-Konto und das zugehörige Runbook in der angegebenen Ressourcengruppe angezeigt werden, wie in der folgenden Abbildung dargestellt:
 
-![Darstellung der Azure-Übersicht mit dem neu erstellten Automation-Konto und den Runbooks.](media/automation-account.png)
+   ![Darstellung der Azure-Übersicht mit dem neu erstellten Automation-Konto und den Runbooks.](media/automation-account.png)
 
-Um zu überprüfen, ob sich der Webhook an der vorgesehenen stelle befindet, wechseln Sie auf der linken Seite des Bildschirms zur Ressourcenliste, und wählen Sie **Webhook** aus.
+  Wählen Sie den Namen Ihres Runbooks aus, um zu überprüfen, ob sich Ihr Webhook dort befindet, wo er sein sollte. Navigieren Sie als nächstes zum Abschnitt „Ressourcen“ des Runbooks, und wählen Sie **Webhooks**aus.
 
 ## <a name="create-an-azure-automation-run-as-account"></a>Erstellen eines ausführenden Azure Automation-Kontos
 
@@ -256,3 +256,7 @@ Sie können die Protokolle der Vorgänge für das horizontale Hoch- und Herunter
 Navigieren Sie in der Ressourcengruppe, in der das Azure Automation-Konto gehostet wird, zum Runbook (der Standardname ist „WVDAutoScaleRunbook“), und wählen Sie **Übersicht** aus. Wählen Sie auf der Seite „Übersicht“ unter „Kürzlich ausgeführte Aufträge“ einen Auftrag aus, um die zugehörige Ausgabe des Skalierungstools anzuzeigen, wie in der folgenden Abbildung dargestellt.
 
 ![Darstellung des Ausgabefensters für das Skalierungstool](media/tool-output.png)
+
+## <a name="report-issues"></a>Melden von Problemen
+
+Wenn Probleme mit dem Skalierungstool auftreten, melden Sie sie auf der [RDS GitHub-Seite](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps).

@@ -3,12 +3,12 @@ title: Diagnostizieren von Fehlern und Ausnahmen mit Azure Application Insights
 description: Erfassen von Ausnahmen von ASP.NET-Apps zusammen mit der Anforderungstelemetrie.
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 24b7acfa6610c2040daf0f7d8d25f25391140303
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: ccfcb354e27d36f40810b114a1729cf6addf8fb6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666155"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294685"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostizieren von Ausnahmen in Ihren Web-Apps mit Application Insights
 Ausnahmen in Ihrer Live-Web-App werden von [Application Insights](../../azure-monitor/app/app-insights-overview.md) gemeldet. Auf diese Weise können Sie Anforderungsfehler mit Ausnahmen und anderen Ereignissen auf dem Client und auf dem Server zueinander in Beziehung setzen und dadurch die Ursachen schnell diagnostizieren.
@@ -27,6 +27,8 @@ Ausnahmen in Ihrer Live-Web-App werden von [Application Insights](../../azure-mo
   * [Web-API 1.*](#web-api-1x)
   * [Web-API 2.*](#web-api-2x)
   * [WCF](#wcf)
+
+  Dieser Artikel konzentriert sich speziell auf .NET Framework-Apps aus Codebeispielperspektive. Einige der Methoden, die für .NET Framework eingesetzt werden, sind im .NET Core SDK veraltet. Wenn Sie eine .NET Core-App besitzen, nutzen Sie die Informationen in der [.NET Core SDK-Dokumentation](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core).
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>Diagnostizieren von Ausnahmen mithilfe von Visual Studio
 Öffnen Sie für das Debuggen die App-Projektmappe in Visual Studio.
@@ -89,7 +91,7 @@ Anforderungsdetails enthalten nicht die Daten, die in einem POST-Aufruf an Ihre 
 * Fügen Sie Code in die Anwendung ein, um [Microsoft.ApplicationInsights.TrackTrace()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) aufzurufen. Senden Sie die POST-Daten im "message"-Parameter. Es gibt eine Größenbeschränkung, daher sollten Sie versuchen, nur die notwendigen Daten zu senden.
 * Wenn Sie eine fehlerhafte Anforderung untersuchen, suchen Sie die zugehörigen Ablaufverfolgungen.
 
-## <a name="exceptions"></a> Erfassen von Ausnahmen und zugehörigen Diagnosedaten
+## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a> Erfassen von Ausnahmen und zugehörigen Diagnosedaten
 Zunächst werden im Portal nicht alle Ausnahmen angezeigt, die in Ihrer App zu Fehlern führen. Sie sehen alle Browserausnahmen (bei Verwendung des [JavaScript-SDK](../../azure-monitor/app/javascript.md) in Ihren Webseiten). Die meisten Serverausnahmen werden jedoch von IIS abgefangen, und Sie müssen ein wenig Code schreiben, um sie anzuzeigen.
 
 Ihre Möglichkeiten:

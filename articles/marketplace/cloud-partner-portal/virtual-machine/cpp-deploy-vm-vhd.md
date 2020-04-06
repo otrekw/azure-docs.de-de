@@ -1,19 +1,18 @@
 ---
 title: Bereitstellen einer VM von Ihren VHDs für den Azure Marketplace
 description: Dieser Artikel erläutert, wie Sie eine VM von einer in Azure bereitgestellten virtuellen Festplatte registrieren.
-services: Azure, Marketplace, Cloud Partner Portal,
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/08/2019
-ms.author: evansma
-ms.openlocfilehash: 797c258c963d0daec32a8f9ac7c4e0665dc465d3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 5263d24c411ef8de4187c2fd750013374d779f04
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73813417"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277938"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>Bereitstellen eines virtuellen Computers auf Basis der VHDs
 
@@ -63,9 +62,9 @@ Nachdem Ihr virtueller Computer bereitgestellt wurde, können Sie [Ihr VM-Image 
    | DNS-Name für öffentliche IP-Adresse      | DNS-Name der öffentlichen IP-Adresse. Der DNS-Name ist der des virtuellen Computers. Sie legen ihn nach der Bereitstellung des Angebots im Azure-Portal fest.  |
    | Administratorbenutzername             | Der Benutzername des Administratorkontos für die neue VM                                  |
    | Administratorkennwort              | Das Kennwort des Administratorkontos für die neue VM                                  |
-   | OS Type (Betriebssystemtyp)                     | VM-Betriebssystem: `Windows` \| `Linux`                                    |
+   | Betriebssystemtyp                     | VM-Betriebssystem: `Windows` \| `Linux`                                    |
    | Abonnement-ID             | Bezeichner des ausgewählten Abonnements                                      |
-   | Location                    | Geografischer Standort der Bereitstellung                                        |
+   | Position                    | Geografischer Standort der Bereitstellung                                        |
    | Größe des virtuellen Computers                     | [Größe des virtuellen Azure-Computers](https://docs.microsoft.com/azure/virtual-machines/windows/sizes), z.B. `Standard_A2` |
    | Öffentliche IP-Adresse      | Name der öffentlichen IP-Adresse                                               |
    | VM-Name                     | Name des neuen virtuellen Computers                                                           |

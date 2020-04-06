@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3af62a75228959478a80c2628307fff2b47c3c4a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: e5339136513d4a9553c46bb50c0dd29f9785c7fa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78187490"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80330942"
 ---
 # <a name="localization-string-ids"></a>Lokalisierungszeichenfolgen-IDs
 
@@ -33,7 +33,7 @@ Die folgenden IDs werden für eine Inhaltsdefinition mit der ID `api.signuporsig
 | **logonIdentifier_email** | E-Mail-Adresse |
 | **requiredField_email** | Geben Sie Ihre E-Mail-Adresse ein. |
 | **invalid_email** | Geben Sie eine gültige E-Mail-Adresse ein. |
-| **email_pattern** | ^[a-zA-Z0-9.!#$%&’' *+/=?^_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)* $ |
+| **email_pattern** | ^[a-zA-Z0-9.!#$%&'' *+/=?^_\`{\|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)* $ |
 | **local_intro_username** | Melden Sie sich mit Ihrem Benutzernamen an. |
 | **logonIdentifier_username** | Username |
 | **requiredField_username** | Geben Sie Ihren Benutzernamen ein. |
@@ -215,9 +215,55 @@ Im Folgenden finden Sie die IDs für ein [Anzeigesteuerelement zur Überprüfung
 |verification_control_but_send_code |Code senden |
 |verification_control_but_send_new_code |Neuen Code senden |
 |verification_control_but_verify_code |Code überprüfen |
+|verification_control_code_sent| Prüfcode wurde gesendet. Kopieren Sie den Code in das nachstehende Eingabefeld. |
+
+### <a name="example"></a>Beispiel
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_change_claims">Change</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_fail_send_code">Failed to send the code, please try again later.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_fail_verify_code">Failed to verify the code, please try again later.</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_send_code">Send Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_send_new_code">Send New Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_but_verify_code">Verify Code</LocalizedString>
+    <LocalizedString ElementType="UxElement" StringId="verification_control_code_sent">Verification code has been sent. Please copy it to the input box below.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+## <a name="azure-mfa-error-messages"></a>Azure MFA-Fehlermeldungen
+
+Im Folgenden finden Sie die IDs für Fehlermeldungen für ein [technisches Profil mit Azure MFA](multi-factor-auth-technical-profile.md):
+
+| id | Standardwert |
+| -- | ------------- |
+|UserMessageIfCouldntSendSms | SMS kann nicht an das Telefon gesendet werden, versuchen Sie es mit einer anderen Telefonnummer. |
+|UserMessageIfInvalidFormat | Das Format Ihrer Telefonnummer ist ungültig. Korrigieren Sie sie, und versuchen Sie es erneut.|
+|UserMessageIfMaxAllowedCodeRetryReached | Falscher Code wurde zu oft eingegeben, versuchen Sie es später erneut.|
+|UserMessageIfServerError | MFA-Dienst kann nicht verwendet werden, versuchen Sie es später erneut.|
+|UserMessageIfThrottled | Ihre Anforderung wurde gedrosselt, versuchen Sie es später erneut.|
+|UserMessageIfWrongCodeEntered|Falscher Code wurde eingegeben, versuchen Sie es erneut.|
+
+### <a name="example"></a>Beispiel
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfCouldntSendSms">Cannot Send SMS to the phone, please try another phone number.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidFormat">Your phone number is not in a valid format, please correct it and try again.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxAllowedCodeRetryReached">Wrong code entered too many times, please try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfServerError">Cannot use MFA service, please try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfThrottled">Your request has been throttled, please try again later.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfWrongCodeEntered">Wrong code entered, please try again.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
 
 ## <a name="one-time-password-error-messages"></a>Fehlermeldungen für Einmalkennwort
-Im Folgenden finden Sie die IDs für Fehlermeldungen für ein [technisches Profil mit Einmalkennwort](one-time-password-technical-profile.md)
+
+Im Folgenden finden Sie die IDs für Fehlermeldungen für ein [technisches Profil mit Einmalkennwort](one-time-password-technical-profile.md).
 
 | id | Standardwert |
 | -- | ------------- |
@@ -225,6 +271,44 @@ Im Folgenden finden Sie die IDs für Fehlermeldungen für ein [technisches Profi
 |UserMessageIfSessionDoesNotExist |Überprüfungssitzung für Einmalkennwort ist abgelaufen |
 |UserMessageIfSessionConflict |Konflikt bei der Überprüfungssitzung für Einmalkennwort |
 |UserMessageIfInvalidCode |Das Einmalkennwort für die Überprüfung ist falsch |
+
+### <a name="example"></a>Beispiel
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfInvalidCode">You have entered the wrong code.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+
+## <a name="claims-transformations-error-messages"></a>Fehlermeldungen zu Transformationen von Ansprüchen
+
+Im Folgenden finden Sie die IDs für Fehlermeldungen zu Transformationen von Ansprüchen:
+
+| id | Transformation von Ansprüchen | Standardwert |
+| -- | ------------- |------------- |
+|UserMessageIfClaimsTransformationBooleanValueIsNotEqual |[AssertBooleanClaimIsEqualToValue](boolean-transformations.md#assertbooleanclaimisequaltovalue) | Fehler bei booleschem Anspruchswertvergleich für Anspruchstyp „inputClaim“.| 
+|DateTimeGreaterThan |[AssertDateTimeIsGreaterThan](date-transformations.md#assertdatetimeisgreaterthan) | Fehler bei Anspruchswertvergleich: Der angegebene linke Operand ist größer als der rechte Operand.|
+|UserMessageIfClaimsTransformationStringsAreNotEqual |[AssertStringClaimsAreEqual](string-transformations.md#assertstringclaimsareequal) | Fehler bei Anspruchswertvergleich mithilfe von StringComparison „OrdinalIgnoreCase“.|
+
+### <a name="example"></a>Beispiel
+
+```XML
+<LocalizedResources Id="api.localaccountsignup.en">
+  <LocalizedStrings>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsTransformationBooleanValueIsNotEqual">Your email address hasn't been verified.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="DateTimeGreaterThan">Expiration date must be greater that the current date.</LocalizedString>
+    <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsTransformationStringsAreNotEqual">The email entry fields do not match. Please enter the same email address in both fields and try again.</LocalizedString>
+  </LocalizedStrings>
+</LocalizedResources>
+```
+
+
 
 
 

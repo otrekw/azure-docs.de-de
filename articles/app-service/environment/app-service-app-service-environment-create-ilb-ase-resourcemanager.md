@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 9cbd8b178bfd2edcf99e3bba9b0d967aebcb5cc2
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 1a0ec9465be3b714e90bfca6a15b60423d6065a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688774"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295581"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Gewusst wie: Erstellen einer ILB-ASE mit Azure Resource Manager-Vorlagen
 
@@ -29,7 +29,7 @@ Die Automatisierung einer ILB-ASE-Erstellung umfasst drei Schritte:
 
 1. Zuerst wird die Basis-ASE in einem virtuellen Netzwerk erstellt, indem anstelle einer öffentlichen VIP die Adresse eines internen Load Balancers verwendet wird.  Im Rahmen dieses Schritts wird der ILB-ASE ein Stammdomänenname zugewiesen.
 2. Nachdem die ILB-ASE erstellt wurde, wird ein SSL-Zertifikat hochgeladen.  
-3. Das hochgeladene SSL-Zertifikat wird der ILB-ASE explizit als SSL-Standardzertifikat zugewiesen.  Dieses SSL-Zertifikat wird für SSL-Datenverkehr zu Apps in der ILB-ASE verwendet, wenn die Apps mit der allgemeinen Stammdomäne adressiert werden, die der ASE zugewiesen ist (z.B. https://someapp.mycustomrootcomain.com) ).
+3. Das hochgeladene SSL-Zertifikat wird der ILB-ASE explizit als SSL-Standardzertifikat zugewiesen.  Dieses SSL-Zertifikat wird für SSL-Datenverkehr zu Apps in der ILB-ASE verwendet, wenn die Apps mit der allgemeinen Stammdomäne adressiert werden, die der ASE zugewiesen ist (z. B. `https://someapp.mycustomrootcomain.com`).
 
 ## <a name="creating-the-base-ilb-ase"></a>Erstellen der Basis-ILB-ASE
 Eine Azure Resource Manager-Beispielvorlage und die zugeordnete Parameterdatei stehen [hier][quickstartilbasecreate] auf GitHub zur Verfügung.
@@ -54,8 +54,8 @@ Nach der Erstellung der ILB-ASE sollte ein SSL-Zertifikat der ASE als SSL-Standa
 
 Es gibt viele Möglichkeiten, ein gültiges SSL-Zertifikat zu beschaffen, z.B. interne Zertifizierungsstellen, Erwerb eines Zertifikats von einem externen Aussteller und Verwendung eines selbstsignierten Zertifikats.  Unabhängig von der Quelle des SSL-Zertifikats müssen die folgenden Zertifikatattribute richtig konfiguriert werden:
 
-* *Antragsteller*:  Dieses Attribut muss auf * *.your-root-domain-here.com* festgelegt werden.
-* *Alternativer Antragstellername*:  Dieses Attribut muss sowohl * *.your-root-domain-here.com* als auch * *.scm.your-root-domain-here.com* enthalten.  Der Grund für den zweiten Eintrag ist, dass für SSL-Verbindungen zur SCM/Kudu-Website, die jeder App zugeordnet ist, eine Adresse im Format *your-app-name.scm.your-root-domain-here.com*verwendet wird.
+* *Antragsteller:*  Dieses Attribut muss auf * *.your-root-domain-here.com* festgelegt werden.
+* *Alternativer Antragstellername:*  Dieses Attribut muss sowohl * *.your-root-domain-here.com* als auch * *.scm.your-root-domain-here.com* enthalten.  Der Grund für den zweiten Eintrag ist, dass für SSL-Verbindungen zur SCM/Kudu-Website, die jeder App zugeordnet ist, eine Adresse im Format *your-app-name.scm.your-root-domain-here.com*verwendet wird.
 
 Wenn ein gültiges SSL-Zertifikat vorhanden ist, sind zwei weitere Vorbereitungsschritte erforderlich.  Das SSL-Zertifikat muss in eine PFX-Datei konvertiert bzw. in diesem Format gespeichert werden.  Beachten Sie, dass die PFX-Datei alle Zwischen- und Stammzertifikate enthalten und mit einem Kennwort geschützt werden muss.
 
@@ -80,7 +80,7 @@ Nachdem das SSL-Zertifikat erfolgreich generiert und in eine Base64-codierte Zei
 Die Parameter in der Datei *azuredeploy.parameters.json* sind nachfolgend aufgeführt:
 
 * *appServiceEnvironmentName*:  Der Name der ILB-ASE, die konfiguriert wird.
-* *existingAseLocation*:  Die Textzeichenfolge mit der Azure-Region, in der die ILB-ASE bereitgestellt wurde.  Beispiel:   „USA, Süden-Mitte“
+* *existingAseLocation*:  Die Textzeichenfolge mit der Azure-Region, in der die ILB-ASE bereitgestellt wurde.  Beispiel:  „USA, Süden-Mitte“
 * *pfxBlobString*:  Die Base64-codierte Zeichenfolgendarstellung der PFX-Datei.  Bei Verwendung des weiter oben angegebenen Codeausschnitts kopieren Sie die in „exportedcert.pfx.b64“ enthaltene Zeichenfolge und fügen sie als Wert des Attributs *pfxBlobString* ein.
 * *password*:  Das Kennwort, das zum Schützen der PFX-Datei verwendet wird.
 * *certificateThumbprint*:  Der Fingerabdruck des Zertifikats.  Wenn Sie diesen Wert aus PowerShell abrufen (z.B. *$certificate.Thumbprint* aus dem Codeausschnitt weiter oben), können Sie den Wert unverändert nutzen.  Falls Sie den Wert aus dem Windows-Zertifikatdialogfeld kopieren, müssen Sie die überflüssigen Leerzeichen entfernen.  *certificateThumbprint* sollte etwa wie folgt aussehen:  AF3143EB61D43F6727842115BB7F17BBCECAECAE

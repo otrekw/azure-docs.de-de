@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: ajburnle
 ms.reviewer: kexia
-ms.custom: fasttrack-edit
+ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea0bc131f7eb3fc66f3b024b4c9902f8c73f9a7d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 441fdd14cc2c734b6ce532f3ad1d30663b2f56c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422836"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049790"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Hinzufügen von Branding zur Azure Active Directory-Anmeldeseite Ihrer Organisation
 Verwenden Sie das Logo und benutzerdefinierte Farbschemas Ihrer Organisation, um Ihren Azure Active Directory-Anmeldeseiten (Azure AD) ein konsistentes Aussehen und Verhalten zu verleihen. Ihre Anmeldeseiten werden angezeigt, wenn sich Benutzer bei webbasierten Apps Ihrer Organisation wie Office 365 anmelden, die Azure AD als Identitätsanbieter verwenden.
@@ -27,7 +27,7 @@ Verwenden Sie das Logo und benutzerdefinierte Farbschemas Ihrer Organisation, um
 >Für das Hinzufügen eines benutzerdefinierten Brandings müssen Sie eine der Editionen Azure Active Directory Premium 1, Premium 2 oder Basic verwenden oder eine Office 365-Lizenz besitzen. Weitere Informationen zu Lizenzierung und Editionen finden Sie unter [Registrieren für Azure AD Premium](active-directory-get-started-premium.md).<br><br>Die Azure AD-Editionen Premium und Basic stehen für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure Active Directory arbeiten. Allerdings werden die Azure AD-Editionen „Premium“ und „Basic“ derzeit nicht durch den Azure-Dienst unterstützt, der in China von 21Vianet betrieben wird. Sollten Sie weitere Informationen benötigen, können Sie sich über das [Azure Active Directory-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/) mit uns in Verbindung setzen.
 
 ## <a name="customize-your-azure-ad-sign-in-page"></a>Anpassen Ihrer Azure AD-Anmeldeseite
-Sie können Ihre Azure AD-Anmeldeseiten anpassen, die angezeigt werden, wenn sich Benutzer bei mandantenspezifischen Apps Ihrer Organisation anmelden, z. B. [ *https://outlook.com/contoso.com* ](https://outlook.com/contoso.com), oder bei der Übergabe einer Domänenvariable, z. B. [ *https://passwordreset.microsoftonline.com/?whr=contoso.com* ](https://passwordreset.microsoftonline.com/?whr=contoso.com).
+Sie können Ihre Azure AD-Anmeldeseiten anpassen, die angezeigt werden, wenn sich Benutzer bei mandantenspezifischen Apps Ihrer Organisation anmelden, z. B. `https://outlook.com/contoso.com`, oder bei der Übergabe einer Domänenvariablen, z. B. `https://passwordreset.microsoftonline.com/?whr=contoso.com`.
 
 Ihr benutzerdefiniertes Branding wird nicht sofort angezeigt, wenn Ihre Benutzer zu Websites wie www\.office.com navigieren. Stattdessen muss sich der Benutzer anmelden, bevor Ihr benutzerdefiniertes Branding angezeigt wird. Nach der Anmeldung des Benutzers kann es 15 Minuten oder länger dauern, bis das Branding angezeigt wird. 
 
@@ -130,9 +130,9 @@ Fügen Sie Ihr benutzerdefiniertes Branding zu Seiten hinzu, indem Sie das Ende 
 **Beispiele:**
 
 **Original-URL:** https://aka.ms/MFASetup<br>
-**Benutzerdefinierte URL:** https://account.activedirectory.windowsazure.com/proofup.aspx?whr=contoso.com
+**Benutzerdefinierte URL:** `https://account.activedirectory.windowsazure.com/proofup.aspx?whr=contoso.com`
 
 **Original-URL:** https://aka.ms/SSPR<br>
-**Benutzerdefinierte URL:** https://passwordreset.microsoftonline.com/?whr=contoso.com
+**Benutzerdefinierte URL:** `https://passwordreset.microsoftonline.com/?whr=contoso.com`
 
  

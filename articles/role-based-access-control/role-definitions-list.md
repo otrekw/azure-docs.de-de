@@ -1,6 +1,6 @@
 ---
-title: Auflisten von Rollendefinitionen in Azure RBAC mithilfe des Azure-Portals, Azure PowerShell oder der Azure CLI | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie integrierte und benutzerdefinierte Rollen in Azure RBAC mithilfe des Azure-Portals, Azure PowerShell oder der Azure CLI auflisten.
+title: Auflisten von Rollendefinitionen in Azure RBAC mit Azure-Portal, Azure PowerShell, Azure CLI oder REST-API | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie integrierte und benutzerdefinierte Rollen in Azure RBAC mit Azure-Portal, Azure PowerShell, Azure CLI oder REST-API auflisten.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 839393d7535de530a27752f77e311c87c75825d9
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: aa888eedc81ceb3188f801e273c70722207bf512
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74709866"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062987"
 ---
 # <a name="list-role-definitions-in-azure-rbac"></a>Auflisten von Rollendefinitionen in Azure RBAC
 
@@ -311,6 +311,66 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
   "Microsoft.Storage/storageAccounts/read"
 ]
 ```
+
+## <a name="rest-api"></a>REST-API
+
+### <a name="list-role-definitions"></a>Auflisten der Rollendefinitionen
+
+Verwenden Sie zum Auflisten von Rollendefinitionen die [Rollendefinitionen – Liste](/rest/api/authorization/roledefinitions/list)-REST-API. Um die Ergebnisse einzugrenzen, geben Sie einen Bereich und einen optionalen Filter an.
+
+1. Beginnen Sie mit der folgenden Anforderung:
+
+    ```http
+    GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?$filter={$filter}&api-version=2015-07-01
+    ```
+
+1. Ersetzen Sie innerhalb des URIs *{scope}* durch den Bereich, für den die Rollendefinitionen aufgelistet werden sollen.
+
+    > [!div class="mx-tableFixed"]
+    > | `Scope` | type |
+    > | --- | --- |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Verwaltungsgruppe |
+    > | `subscriptions/{subscriptionId1}` | Subscription |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | Resource |
+
+    Im vorherigen Beispiel ist „microsoft.web“ ein Ressourcenanbieter, der auf eine App Service-Instanz verweist. Analog dazu können Sie einen beliebigen anderen Ressourcenanbieter verwenden und den Bereich angeben. Weitere Informationen finden Sie unter [Azure-Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md) und unter unterstützten [Vorgängen für Azure Resource Manager-Ressourcenanbieter](resource-provider-operations.md).  
+     
+1. Ersetzen Sie *{filter}* durch die Bedingung, die zum Filtern der Liste mit den Rollendefinitionen angewendet werden soll.
+
+    > [!div class="mx-tableFixed"]
+    > | Filtern | BESCHREIBUNG |
+    > | --- | --- |
+    > | `$filter=atScopeAndBelow()` | Listet Rollendefinitionen für den angegebenen Bereich und alle Unterbereiche auf. |
+    > | `$filter=type+eq+'{type}'` | Listet Rollendefinitionen des angegebenen Typs auf. Der Typ der Rolle kann `CustomRole` oder `BuiltInRole`sein. |
+
+### <a name="list-a-role-definition"></a>Auflisten einer Rollendefinition
+
+Um die Details einer bestimmten Rolle aufzulisten, verwenden Sie die REST-API [Rollendefinitionen – Abrufen](/rest/api/authorization/roledefinitions/get) oder [Rollendefinitionen – Abrufen nach ID](/rest/api/authorization/roledefinitions/getbyid).
+
+1. Beginnen Sie mit der folgenden Anforderung:
+
+    ```http
+    GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
+    ```
+
+    Für eine Rollendefinition auf Verzeichnisebene können Sie diese Anforderung verwenden:
+
+    ```http
+    GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
+    ```
+
+1. Ersetzen Sie innerhalb des URIs *{scope}* durch den Bereich, für den die Rollendefinition aufgelistet werden soll.
+
+    > [!div class="mx-tableFixed"]
+    > | `Scope` | type |
+    > | --- | --- |
+    > | `providers/Microsoft.Management/managementGroups/{groupId1}` | Verwaltungsgruppe |
+    > | `subscriptions/{subscriptionId1}` | Subscription |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
+    > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | Resource |
+     
+1. Ersetzen Sie *{roleDefinitionId}* durch den Bezeichner der Rollendefinition.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

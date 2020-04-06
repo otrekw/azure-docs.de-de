@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: acdf268874b1dc1c24116ba36e2b4233a2702a5f
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 085280a8064e4d12ac63939ada7cdb296d47dc70
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77064494"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365776"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Zertifikatbasierte Authentifizierung für eine Azure AD-Identität für den Zugriff auf Schlüssel aus einem Azure Cosmos DB-Konto
 
@@ -137,18 +137,20 @@ In diesem Schritt melden Sie sich bei Azure an, indem Sie die Anwendung und das 
    Disconnect-AzAccount -Username <Your_Azure_account_email_id> 
    ```
 
-1. Überprüfen Sie anschließend, ob Sie sich bei Azure-Portal anmelden können, indem Sie die Anmeldeinformationen der Anwendung verwenden und auf die Azure Cosmos DB-Schlüssel zugreifen:
+1. Überprüfen Sie anschließend, ob Sie sich beim Azure-Portal anmelden können, indem Sie die Anmeldeinformationen der Anwendung verwenden und auf die Azure Cosmos DB-Schlüssel zugreifen:
 
    ```powershell
    Login-AzAccount -ApplicationId <Your_Application_ID> -CertificateThumbprint $cert.Thumbprint -ServicePrincipal -Tenant <Tenant_ID_of_your_application>
 
-   Invoke-AzResourceAction -Action listKeys -ResourceType "Microsoft.DocumentDB/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName <Resource_Group_Name_of_your_Azure_Cosmos_account> -ResourceName <Your_Azure_Cosmos_Account_Name> 
+   Get-AzCosmosDBAccountKey `
+      -ResourceGroupName "<Resource_Group_Name_of_your_Azure_Cosmos_account>" `
+      -Name "<Your_Azure_Cosmos_Account_Name>" `
+      -Type "Keys"
    ```
 
-Mit dem vorherigen Befehl werden der primäre und sekundäre Hauptschlüssel Ihres Azure Cosmos-Kontos angezeigt. Sie können das Aktivitätsprotokoll Ihres Azure Cosmos-Kontos einsehen, um zu überprüfen, ob die Anfrage zum Abrufen von Schlüsseln erfolgreich war und das Ereignis von der Anwendung „sampleApp“ ausgelöst wird. 
- 
-![Überprüfen des Aufrufs zum Abrufen der Schlüssel in Azure AD](./media/certificate-based-authentication/activity-log-validate-results.png)
+Mit dem vorherigen Befehl werden der primäre und sekundäre Hauptschlüssel Ihres Azure Cosmos-Kontos angezeigt. Sie können das Aktivitätsprotokoll Ihres Azure Cosmos-Kontos einsehen, um zu überprüfen, ob die Anfrage zum Abrufen von Schlüsseln erfolgreich war und das Ereignis von der Anwendung „sampleApp“ ausgelöst wird.
 
+![Überprüfen des Aufrufs zum Abrufen der Schlüssel in Azure AD](./media/certificate-based-authentication/activity-log-validate-results.png)
 
 ## <a name="access-the-keys-from-a-c-application"></a>Zugreifen auf die Schlüssel aus einer C#-Anwendung 
 
@@ -245,4 +247,4 @@ Wie im vorherigen Abschnitt können Sie das Aktivitätsprotokoll Ihres Azure Cos
 
 * [Sichern von Azure Cosmos-Schlüsseln mit Azure Key Vault](access-secrets-from-keyvault.md)
 
-* [Sicherheitskontrollen für Azure Cosmos DB](cosmos-db-security-controls.md)
+* [Sicherheitsbaseline für Azure Cosmos DB](security-baseline.md)

@@ -4,14 +4,14 @@ description: Dieses Dokument beschreibt die Schritte, die zum Einrichten eines V
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 03/26/2020
 ms.author: mjbrown
-ms.openlocfilehash: 36f6152e52d6cb45d0a30b385678596331232560
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 442623880c1b95f3d7e038ae44832b74853d2c4a
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980689"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366240"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Konfigurieren des Zugriffs über virtuelle Netzwerke (VNET)
 
@@ -30,7 +30,7 @@ Die folgenden Abschnitte beschreiben, wie Sie den VNET-Dienstendpunkt für ein A
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a id="configure-using-portal"></a>Konfigurieren eines Dienstendpunkts über das Azure-Portal
+## <a name="configure-a-service-endpoint-by-using-the-azure-portal"></a><a id="configure-using-portal"></a>Konfigurieren eines Dienstendpunkts über das Azure-Portal
 
 ### <a name="configure-a-service-endpoint-for-an-existing-azure-virtual-network-and-subnet"></a>Konfigurieren eines Dienstendpunkts für ein vorhandenes virtuelles Azure-Netzwerk und Subnetz
 
@@ -72,19 +72,19 @@ Wenn Ihr Azure Cosmos DB-Konto von anderen Azure-Diensten wie z. B. Azure Cogn
 
 Um sicherzustellen, dass Sie vom Portal aus auf Azure Cosmos DB-Metriken zugreifen können, müssen Sie Optionen für **Zugriff über das Azure-Portal zulassen** aktivieren. Weitere Informationen zu diesen Optionen finden Sie im Artikel [Konfigurieren einer IP-Firewall](how-to-configure-firewall.md). Nachdem Sie den Zugriff aktiviert haben, klicken Sie auf **Speichern**, um die Einstellungen zu speichern.
 
-## <a id="remove-vnet-or-subnet"></a>Entfernen eines virtuellen Netzwerks oder eines Subnetzes
+## <a name="remove-a-virtual-network-or-subnet"></a><a id="remove-vnet-or-subnet"></a>Entfernen eines virtuellen Netzwerks oder eines Subnetzes
 
 1. Suchen Sie auf dem Blatt **Alle Ressourcen** das Azure Cosmos DB-Konto, dem Sie Dienstendpunkte zugewiesen haben.  
 
-2. Wählen Sie aus Einstellungsmenü die Option **Firewalls und virtuelle Netzwerke** aus.  
+1. Wählen Sie aus Einstellungsmenü die Option **Firewalls und virtuelle Netzwerke** aus.  
 
-3. Um eine Regel für ein virtuelles Netzwerk oder ein Subnetz zu entfernen, klicken Sie neben dem virtuellen Netzwerk oder dem Subnetz auf **...** , und wählen Sie **Entfernen** aus.
+1. Um eine Regel für ein virtuelles Netzwerk oder ein Subnetz zu entfernen, klicken Sie neben dem virtuellen Netzwerk oder dem Subnetz auf **...** , und wählen Sie **Entfernen** aus.
 
    ![Entfernen eines Virtual Network](./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png)
 
-4. Klicken Sie zum Übernehmen der Änderungen auf **Speichern**.
+1. Klicken Sie zum Übernehmen der Änderungen auf **Speichern**.
 
-## <a id="configure-using-powershell"></a>Konfigurieren eines Dienstendpunkts über Azure PowerShell
+## <a name="configure-a-service-endpoint-by-using-azure-powershell"></a><a id="configure-using-powershell"></a>Konfigurieren eines Dienstendpunkts über Azure PowerShell
 
 > [!NOTE]
 > Wenn Sie PowerShell oder die Azure CLI verwenden, stellen Sie sicher, dass Sie die vollständige Liste der IP-Filter und Zugriffssteuerungslisten des virtuellen Netzwerks in den Parametern angeben, und nicht nur diejenigen, die hinzugefügt werden müssen.
@@ -96,94 +96,61 @@ Führen Sie die folgenden Schritte aus, um über Azure PowerShell einen Diensten
 1. Aktivieren Sie den Dienstendpunkt für ein vorhandenes Subnetz eines Virtual Network.  
 
    ```powershell
-   $rgname = "<Resource group name>"
-   $vnName = "<Virtual network name>"
-   $sname = "<Subnet name>"
+   $resourceGroupName = "<Resource group name>"
+   $vnetName = "<Virtual network name>"
+   $subnetName = "<Subnet name>"
    $subnetPrefix = "<Subnet address range>"
+   $serviceEndpoint = "Microsoft.AzureCosmosDB"
 
    Get-AzVirtualNetwork `
-    -ResourceGroupName $rgname `
-    -Name $vnName | Set-AzVirtualNetworkSubnetConfig `
-    -Name $sname  `
-    -AddressPrefix $subnetPrefix `
-    -ServiceEndpoint "Microsoft.AzureCosmosDB" | Set-AzVirtualNetwork
+      -ResourceGroupName $resourceGroupName `
+      -Name $vnetName | Set-AzVirtualNetworkSubnetConfig `
+      -Name $subnetName `
+      -AddressPrefix $subnetPrefix `
+      -ServiceEndpoint $serviceEndpoint | Set-AzVirtualNetwork
    ```
 
 1. Rufen Sie Informationen zum virtuellen Netzwerk ab.
 
    ```powershell
-   $vnProp = Get-AzVirtualNetwork `
-     -Name $vnName `
-     -ResourceGroupName $rgName
+   $vnet = Get-AzVirtualNetwork `
+      -ResourceGroupName $resourceGroupName `
+      -Name $vnetName
+
+   $subnetId = $vnet.Id + "/subnets/" + $subnetName
    ```
 
-1. Rufen Sie Eigenschaften des Azure Cosmos DB-Kontos ab, indem Sie das folgende Cmdlet ausführen:  
+1. Vorbereiten einer Cosmos DB-Regel für das virtuelle Netzwerk
 
    ```powershell
-   $apiVersion = "2015-04-08"
-   $acctName = "<Azure Cosmos DB account name>"
-
-   $cosmosDBConfiguration = Get-AzResource `
-     -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
-     -ApiVersion $apiVersion `
-     -ResourceGroupName $rgName `
-     -Name $acctName
+   $vnetRule = New-AzCosmosDBVirtualNetworkRule `
+      -Id $subnetId
    ```
 
-1. Initialisieren Sie die Variablen für die spätere Verwendung. Richten Sie alle Variablen aus der vorhandenen Kontodefinition ein.
+1. Aktualisieren Sie die Azure Cosmos DB-Kontoeigenschaften mit der neuen Virtual Network-Endpunktkonfiguration: 
 
    ```powershell
-   $locations = @()
+   $accountName = "<Cosmos DB account name>"
 
-   foreach ($readLocation in $cosmosDBConfiguration.Properties.readLocations) {
-      $locations += , @{
-         locationName     = $readLocation.locationName;
-         failoverPriority = $readLocation.failoverPriority;
-      }
-   }
-
-   $virtualNetworkRules = @(@{
-      id = "$($vnProp.Id)/subnets/$sname";
-   })
-
-   if ($cosmosDBConfiguration.Properties.isVirtualNetworkFilterEnabled) {
-      $virtualNetworkRules = $cosmosDBConfiguration.Properties.virtualNetworkRules + $virtualNetworkRules
-   }
-   ```
-
-1. Aktualisieren Sie die Azure Cosmos DB-Kontoeigenschaften mit der neuen Konfiguration, indem Sie die folgenden Cmdlets ausführen: 
-
-   ```powershell
-   $cosmosDBProperties = @{
-      databaseAccountOfferType      = $cosmosDBConfiguration.Properties.databaseAccountOfferType;
-      consistencyPolicy             = $cosmosDBConfiguration.Properties.consistencyPolicy;
-      ipRangeFilter                 = $cosmosDBConfiguration.Properties.ipRangeFilter;
-      locations                     = $locations;
-      virtualNetworkRules           = $virtualNetworkRules;
-      isVirtualNetworkFilterEnabled = $True;
-   }
-
-   Set-AzResource `
-     -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
-     -ApiVersion $apiVersion `
-     -ResourceGroupName $rgName `
-     -Name $acctName `
-     -Properties $CosmosDBProperties
+   Update-AzCosmosDBAccount `
+      -ResourceGroupName $resourceGroupName `
+      -Name $accountName `
+      -EnableVirtualNetwork $true `
+      -VirtualNetworkRuleObject @($vnetRule)
    ```
 
 1. Führen Sie den folgenden Befehl aus, um zu überprüfen, ob Ihr Azure Cosmos DB-Konto mit dem VNET-Dienstendpunkt aktualisiert wurde, den Sie im vorherigen Schritt konfiguriert haben:
 
    ```powershell
-   $UpdatedcosmosDBConfiguration = Get-AzResource `
-     -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
-     -ApiVersion $apiVersion `
-     -ResourceGroupName $rgName `
-     -Name $acctName
+   $account = Get-AzCosmosDBAccount `
+      -ResourceGroupName $resourceGroupName `
+      -Name $accountName
 
-   $UpdatedcosmosDBConfiguration.Properties
+   $account.IsVirtualNetworkFilterEnabled
+   $account.VirtualNetworkRules
    ```
 
-## <a id="configure-using-cli"></a>Konfigurieren eines Dienstendpunkts über die Azure CLI
+## <a name="configure-a-service-endpoint-by-using-the-azure-cli"></a><a id="configure-using-cli"></a>Konfigurieren eines Dienstendpunkts über die Azure CLI
 
 Azure Cosmos-Konten können für Dienstendpunkte konfiguriert werden, wenn sie zu einem späteren Zeitpunkt erstellt oder aktualisiert werden, sofern das Subnetz bereits für sie konfiguriert wurde. Dienstendpunkte können auch für das Cosmos-Konto aktiviert werden, wenn das Subnetz noch nicht für sie konfiguriert wurde. Die Endpunkte werden aktiv, wenn das Subnetz später konfiguriert wird. Diese Flexibilität ermöglicht Administratoren, die weder Zugriff auf das Cosmos-Konto noch auf virtuelle Netzwerkressourcen haben, Konfigurationen unabhängig voneinander vorzunehmen.
 
@@ -291,90 +258,49 @@ az network vnet subnet update \
    --service-endpoints Microsoft.AzureCosmosDB
 ```
 
-## <a id="migrate-from-firewall-to-vnet"></a>Migrieren einer IP-Firewallregel zur Zugriffssteuerungsliste eines virtuellen Netzwerks
+## <a name="migrating-from-an-ip-firewall-rule-to-a-virtual-network-acl"></a><a id="migrate-from-firewall-to-vnet"></a>Migrieren einer IP-Firewallregel zur Zugriffssteuerungsliste eines virtuellen Netzwerks
 
-Die folgenden Schritte sind nur für Azure Cosmos DB-Konten mit vorhandenen IP-Firewallregeln erforderlich, die ein Subnetz zulassen, wenn Sie anstelle einer Firewallregel VNET- und subnetzbasierte Zugriffssteuerungslisten verwenden möchten.
+Führen Sie die folgenden Schritte aus, um ein Azure Cosmos DB-Konto von der Verwendung von IP-Firewallregeln zur Verwendung von VNET-Dienstendpunkten zu migrieren.
 
-Sobald ein Dienstendpunkt für das Azure Cosmos DB-Konto für ein Subnetz aktiviert wurde, werden die Anforderungen mit einer Quelle gesendet, die anstelle einer öffentlichen IP-Adresse Informationen zu einem virtuellen Netzwerk und Subnetz enthält. Diese Anforderungen entsprechen keinem IP-Filter. Dieser Quellenwechsel erfolgt für alle Azure Cosmos DB-Konten, auf die über das Subnetz mit aktiviertem Dienstendpunkt zugegriffen wird. Um eine Downtime zu vermeiden, führen Sie die folgenden Schritte aus:
+Sobald ein Azure Cosmos DB-Konto für einen Dienstendpunkt für ein Subnetz konfiguriert ist, werden Anforderungen von diesem Subnetz mit Informationen zu virtuellem Netzwerk und Subnetzquelle statt an eine öffentliche IP-Adresse an Azure Cosmos DB gesendet. Diese Anforderungen stimmen nicht mehr mit einem für das Azure Cosmos DB-Konto konfigurierten IP-Filter überein. Aus diesem Grund sind die folgenden Schritte erforderlich, um Ausfallzeiten zu vermeiden.
 
-1. Rufen Sie Eigenschaften des Azure Cosmos DB-Kontos ab, indem Sie das folgende Cmdlet ausführen:
+Bevor Sie fortfahren, aktivieren Sie den Azure Cosmos DB-Dienstendpunkt im virtuellen Netzwerk und Subnetz mit dem oben unter „Aktivieren Sie den Dienstendpunkt für ein vorhandenes Subnetz eines Virtual Network“ aufgeführten Schritt.
 
-   ```powershell
-   $apiVersion = "2015-04-08"
-   $acctName = "<Azure Cosmos DB account name>"
-
-   $cosmosDBConfiguration = Get-AzResource `
-     -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
-     -ApiVersion $apiVersion `
-     -ResourceGroupName $rgName `
-     -Name $acctName
-   ```
-
-1. Initialisieren Sie die Variablen für die spätere Verwendung. Richten Sie alle Variablen aus der vorhandenen Kontodefinition ein. Fügen Sie die ACL des virtuellen Netzwerks zu allen Azure Cosmos DB-Konten hinzu, auf die über das Subnetz mit dem Flag `ignoreMissingVNetServiceEndpoint` zugegriffen wird.
+1. Abrufen der Informationen zu virtuellem Netzwerk und Subnetz:
 
    ```powershell
-   $locations = @()
+   $resourceGroupName = "myResourceGroup"
+   $accountName = "mycosmosaccount"
+   $vnetName = "myVnet"
+   $subnetName = "mySubnet"
 
-   foreach ($readLocation in $cosmosDBConfiguration.Properties.readLocations) {
-      $locations += , @{
-         locationName     = $readLocation.locationName;
-         failoverPriority = $readLocation.failoverPriority;
-      }
-   }
+   $vnet = Get-AzVirtualNetwork `
+      -ResourceGroupName $resourceGroupName `
+      -Name $vnetName
 
-   $subnetID = "Subnet ARM URL" e.g "/subscriptions/f7ddba26-ab7b-4a36-a2fa-7d01778da30b/resourceGroups/testrg/providers/Microsoft.Network/virtualNetworks/testvnet/subnets/subnet1"
-
-   $virtualNetworkRules = @(@{
-      id = $subnetID;
-      ignoreMissingVNetServiceEndpoint = "True";
-   })
-
-   if ($cosmosDBConfiguration.Properties.isVirtualNetworkFilterEnabled) {
-      $virtualNetworkRules = $cosmosDBConfiguration.Properties.virtualNetworkRules + $virtualNetworkRules
-   }
+   $subnetId = $vnet.Id + "/subnets/" + $subnetName
    ```
 
-1. Aktualisieren Sie die Azure Cosmos DB-Kontoeigenschaften mit der neuen Konfiguration, indem Sie die folgenden Cmdlets ausführen:
+1. Bereiten Sie ein neues Virtual Network-Regelobjekt für das Azure Cosmos DB-Konto vor:
 
    ```powershell
-   $cosmosDBProperties = @{
-      databaseAccountOfferType      = $cosmosDBConfiguration.Properties.databaseAccountOfferType;
-      consistencyPolicy             = $cosmosDBConfiguration.Properties.consistencyPolicy;
-      ipRangeFilter                 = $cosmosDBConfiguration.Properties.ipRangeFilter;
-      locations                     = $locations;
-      virtualNetworkRules           = $virtualNetworkRules;
-      isVirtualNetworkFilterEnabled = $True;
-   }
-
-   Set-AzResource `
-      -ResourceType "Microsoft.DocumentDB/databaseAccounts" `
-      -ApiVersion $apiVersion `
-      -ResourceGroupName $rgName `
-      -Name $acctName `
-      -Properties $CosmosDBProperties
+   $vnetRule = New-AzCosmosDBVirtualNetworkRule `
+      -Id $subnetId
    ```
 
-1. Wiederholen Sie die Schritte 1 bis 3 für alle Azure Cosmos DB-Konten, auf die Sie aus dem Subnetz zugreifen.
+1. Aktualisieren Sie das Azure Cosmos DB-Konto, um den Dienstendpunktzugriff aus dem Subnetz zu aktivieren:
 
-1.  Warten Sie 15 Minuten, und aktualisieren Sie dann das Subnetz, um den Dienstendpunkt zu aktivieren.
+   ```powershell
+   Update-AzCosmosDBAccount `
+      -ResourceGroupName $resourceGroupName `
+      -Name $accountName `
+      -EnableVirtualNetwork $true `
+      -VirtualNetworkRuleObject @($vnetRule)
+   ```
 
-1.  Aktivieren Sie den Dienstendpunkt für ein vorhandenes Subnetz eines Virtual Network.
+1. Wiederholen Sie die vorherigen Schritte für alle Azure Cosmos DB-Konten, auf die Sie aus dem Subnetz zugreifen.
 
-    ```powershell
-    $rgname= "<Resource group name>"
-    $vnName = "<virtual network name>"
-    $sname = "<Subnet name>"
-    $subnetPrefix = "<Subnet address range>"
-
-    Get-AzVirtualNetwork `
-       -ResourceGroupName $rgname `
-       -Name $vnName | Set-AzVirtualNetworkSubnetConfig `
-       -Name $sname `
-       -AddressPrefix $subnetPrefix `
-       -ServiceEndpoint "Microsoft.AzureCosmosDB" | Set-AzVirtualNetwork
-    ```
-
-1. Entfernen Sie die IP-Firewallregel für das Subnetz.
+1. Entfernen Sie die IP-Firewallregel für das Subnetz aus den Firewallregeln des Azure Cosmos DB-Kontos.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

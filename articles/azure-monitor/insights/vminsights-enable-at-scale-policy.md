@@ -1,21 +1,21 @@
 ---
-title: Aktivieren von Azure Monitor für VMs mithilfe von Azure Policy | Microsoft-Dokumentation
+title: Aktivieren von Azure Monitor für VMs mit Azure Policy
 description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für VMs für mehrere Azure-VMs oder VM-Skalierungsgruppen mithilfe von Azure Policy aktivieren.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/15/2019
-ms.openlocfilehash: 267072b06d936822eae7e7257d62566a020471bb
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/12/2020
+ms.openlocfilehash: 7069f2cc96b8876f5514acfa4ba49274b61be46f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656227"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282935"
 ---
-# <a name="enable-azure-monitor-for-vms-preview-by-using-azure-policy"></a>Aktivieren von Azure Monitor für VMs (Vorschauversion) mithilfe von Azure Policy
+# <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Aktivieren von Azure Monitor für VMs mit Azure Policy
 
-In diesem Artikel wird beschrieben, wie Sie Azure Monitor für VMs (Vorschauversion) für Azure-VMs oder VM-Skalierungsgruppen mithilfe von Azure Policy aktivieren. Am Ende dieses Prozesses haben Sie die Aktivierung der Log Analytics- und Dependency-Agents erfolgreich konfiguriert und nicht konforme virtuelle Computer identifiziert.
+In diesem Artikel wird beschrieben, wie Sie Azure Monitor für VMs für Azure-VMs oder VM-Skalierungsgruppen mithilfe von Azure Policy aktivieren. Am Ende dieses Prozesses haben Sie die Aktivierung der Log Analytics- und Dependency-Agents erfolgreich konfiguriert und nicht konforme virtuelle Computer identifiziert.
 
 Um Azure Monitor für VMs für alle Ihre Azure-VMs oder VM-Skalierungsgruppen zu erkennen, zu verwalten und zu aktivieren, können Sie entweder Azure Policy oder Azure PowerShell verwenden. Azure Policy ist die von uns empfohlene Methode, da Sie Richtliniendefinitionen so verwalten können, dass Ihre Abonnements effektiv gesteuert werden, um eine durchgängige Konformität und automatische Aktivierung neu bereitgestellter VMs zu gewährleisten. Aufgaben dieser Richtliniendefinitionen:
 
@@ -23,17 +23,26 @@ Um Azure Monitor für VMs für alle Ihre Azure-VMs oder VM-Skalierungsgruppen zu
 * Melden Konformitätsergebnisse
 * Beheben nicht konforme VMs
 
-Wenn Sie diese Aufgaben mit Azure PowerShell oder einer Azure Resource Manager-Vorlage ausführen möchten, lesen Sie [Aktivieren von Azure Monitor für VMs (Preview) mit Azure PowerShell oder einer Resource Manager-Vorlage](vminsights-enable-at-scale-powershell.md).
+Wenn Sie diese Aufgaben mit Azure PowerShell oder einer Azure Resource Manager-Vorlage ausführen möchten, lesen Sie [Aktivieren von Azure Monitor für VMs mit Azure PowerShell oder einer Resource Manager-Vorlage](vminsights-enable-at-scale-powershell.md).
+
+## <a name="prerequisites"></a>Voraussetzungen
+Vor der Verwendung einer Richtlinie zum Integrieren Ihrer Azure-VMS und VM-Skalierungsgruppen in die Azure-Überwachung für VMs müssen Sie die VMInsights-Lösung in dem Arbeitsbereich aktivieren, den Sie zum Speichern der Überwachungsdaten verwenden möchten. Diese Aufgabe kann über die Seite **Erste Schritte** in Azure Monitor auf der Registerkarte **Andere Onboardingoptionen** abgeschlossen werden.  Wählen Sie die Option **Konfigurieren eines Arbeitsbereichs** aus, woraufhin Sie aufgefordert werden, den zu konfigurierenden Arbeitsbereich auszuwählen.
+
+![Konfigurieren des Arbeitsbereichs](media/vminsights-enable-at-scale-policy/configure-workspace.png)
+
+Sie können den Arbeitsbereich auch durch Auswahl von **Über Richtlinie aktivieren** und dann Auswahl der Symbolleistenschaltfläche **Arbeitsbereich konfigurieren** konfigurieren.  Dann wird die VMInsights-Lösung im ausgewählten Arbeitsbereich installiert, sodass der Arbeitsbereich die von den virtuellen Computern und VM-Skalierungsgruppen, die Sie mithilfe der Richtlinie aktivieren, gesendeten Überwachungsdaten speichern kann. 
+
+![Über Richtlinie aktivieren](media/vminsights-enable-at-scale-policy/enable-using-policy.png)
 
 ## <a name="manage-policy-coverage-feature-overview"></a>Übersicht über das Feature „Richtlinienabdeckung“
 
-Ursprünglich erfolgte die Verwaltung und Bereitstellung der Richtliniendefinitionen für Azure Monitor für VMs ausschließlich über Azure Policy. Durch die Funktion „Richtlinienabdeckung verwalten“ werden die Erkennung, Verwaltung und Aktivierung der Initiative **Aktivieren von Azure Monitor für VMs** nach Maß einfacher, die die zuvor genannten Richtliniendefinitionen einschließt. Sie können auf diese neue Funktion über die Registerkarte **Erste Schritte** in Azure Monitor für VMs zugreifen. Wählen Sie **Richtlinienabdeckung verwalten** aus, um die Seite **Azure Monitor für VMs – Richtlinienabdeckung** zu öffnen.
+Die Richtlinienabdeckung von Azure Monitor für VMs vereinfacht die bedarfsorientierte Erkennung, Verwaltung und Aktivierung der Initiative **Aktivieren von Azure Monitor für VMs**, die die zuvor genannten Richtliniendefinitionen einschließt. Um auf diese Funktion zuzugreifen, wählen Sie **Andere Onboardingoptionen** auf der Registerkarte **Erste Schritte** in Azure Monitor für VMS aus. Wählen Sie **Richtlinienabdeckung verwalten** aus, um die Seite **Azure Monitor für VMs – Richtlinienabdeckung** zu öffnen.
 
 ![Azure Monitor für VMs-Registerkarte „Erste Schritte“](./media/vminsights-enable-at-scale-policy/get-started-page.png)
 
 Hier können Sie die Abdeckung der Initiative für alle Ihre Verwaltungsgruppen und Abonnements überprüfen und verwalten. Sie können auch erfahren, wie viele VMs in den einzelnen Verwaltungsgruppen und Abonnements vorhanden sind und welchen Konformitätsstatus sie haben.
 
-![Azure Monitor für VMs-Seite „Richtlinienabdeckung“](./media/vminsights-enable-at-scale-policy/manage-policy-page-01.png)
+![Azure Monitor für VMs-Seite „Richtlinienabdeckung“](media/vminsights-enable-at-scale-policy/manage-policy-page-01.png)
 
 Diese Informationen sind nützlich, um Ihr Governance-Szenario für Azure Monitor für VMs an einem zentralen Ort zu planen und zu realisieren. Während Azure Policy eine Konformitätsansicht bereitstellt, sobald eine Richtlinie oder Initiative einem Geltungsbereich zugeordnet ist, können Sie auf dieser neuen Seite feststellen, wo die Richtlinie oder Initiative nicht zugewiesen ist, und sie direkt zuweisen. Bei allen Aktionen wie dem Zuweisen, Anzeigen und Bearbeiten erfolgt eine direkte Umleitung zu Azure Policy. Die Seite **Azure Monitor für VMs – Richtlinienabdeckung** ist eine erweiterte und integrierte Umgebung ausschließlich für die Initiative **Aktivieren von Azure Monitor für VMs**.
 
@@ -42,7 +51,7 @@ Auf dieser Seite können Sie auch Ihren Log Analytics-Arbeitsbereich für Azure 
 - Installieren Sie die Dienstzuordnungslösung.
 - Aktivieren der Leistungsindikatoren des Betriebssystems, die von den Leistungsdiagrammen, Arbeitsmappen und Ihren benutzerdefinierten Protokollabfragen und Benachrichtigungen verwendet werden.
 
-![Azure Monitor für VMs, Arbeitsbereich konfigurieren](./media/vminsights-enable-at-scale-policy/manage-policy-page-02.png)
+![Azure Monitor für VMs, Arbeitsbereich konfigurieren](media/vminsights-enable-at-scale-policy/manage-policy-page-02.png)
 
 Diese Option bezieht sich nicht auf Richtlinienaktionen. Sie dient zur Bereitstellung einer einfachen Möglichkeit, die [Voraussetzungen](vminsights-enable-overview.md) für die Aktivierung von Azure Monitor für VMs zu erfüllen.  
 
@@ -78,13 +87,13 @@ Die Richtliniendefinitionen für eine Azure-VM sind in der folgenden Tabelle auf
 
 |Name |BESCHREIBUNG |type |
 |-----|------------|-----|
-|\[Vorschau\]: Aktivieren von Azure Monitor für VMs |Hiermit aktivieren Sie Azure Monitor für die virtuellen Computer in dem angegebenen Bereich (Verwaltungsgruppe, Abonnement oder Ressourcengruppe). Akzeptiert den Log Analytics-Arbeitsbereich als Parameter. |Initiative |
-|\[Vorschau\]: Überwachen der Bereitstellung des Dependency-Agents – VM-Image (Betriebssystem) nicht aufgelistet |Meldet VMs als nicht konform, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
-|\[Vorschau\]: Überwachen der Bereitstellung des Log Analytics-Agents – VM-Image (Betriebssystem) nicht aufgelistet |Meldet VMs als nicht konform, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
-|\[Vorschau\]: Bereitstellen des Dependency-Agents für Linux-VMs |Hiermit stellen Sie den Dependency-Agent für Linux-VMs bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
-|\[Vorschau\]: Bereitstellen des Dependency-Agents für Windows-VMs |Hiermit stellen Sie den Dependency-Agent für Windows-VMs bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
-|\[Vorschau\]: Bereitstellen des Log Analytics-Agents für Linux-VMs |Hiermit stellen Sie den Log Analytics-Agent für Linux-VMs bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
-|\[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs |Hiermit stellen Sie den Log Analytics-Agent für Windows-VMs bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
+|Aktivieren von Azure Monitor für VMs |Hiermit aktivieren Sie Azure Monitor für die virtuellen Computer in dem angegebenen Bereich (Verwaltungsgruppe, Abonnement oder Ressourcengruppe). Akzeptiert den Log Analytics-Arbeitsbereich als Parameter. |Initiative |
+|Überwachen der Bereitstellung des Dependency-Agents – VM-Image (Betriebssystem) nicht aufgelistet |Meldet VMs als nicht konform, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
+|Überwachen der Bereitstellung des Log Analytics-Agents – VM-Image (Betriebssystem) nicht aufgelistet |Meldet VMs als nicht konform, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
+|Bereitstellen des Dependency-Agents für Linux-VMs |Hiermit stellen Sie den Dependency-Agent für Linux-VMs bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
+|Bereitstellen des Dependency-Agents für Windows-VMs |Hiermit stellen Sie den Dependency-Agent für Windows-VMs bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
+|Bereitstellen des Log Analytics-Agents für Linux-VMs |Hiermit stellen Sie den Log Analytics-Agent für Linux-VMs bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
+|Bereitstellen des Log Analytics-Agents für Windows-VMs |Hiermit stellen Sie den Log Analytics-Agent für Windows-VMs bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
 
 ### <a name="policies-for-azure-virtual-machine-scale-sets"></a>Richtlinien für Azure-VM-Skalierungsgruppen
 
@@ -92,19 +101,19 @@ Die Richtliniendefinitionen für eine Azure-VM-Skalierungsgruppe sind in der fol
 
 |Name |BESCHREIBUNG |type |
 |-----|------------|-----|
-|\[Vorschau\]: Aktivieren von Azure Monitor für VM-Skalierungsgruppen |Hiermit aktivieren Sie Azure Monitor für VM-Skalierungsgruppen im angegebenen Umfang (Verwaltungsgruppe, Abonnement oder Ressourcengruppe). Akzeptiert den Log Analytics-Arbeitsbereich als Parameter. Hinweis: Wenn die Upgraderichtlinie für Skalierungsgruppen auf „Manuell“ festgelegt ist, wenden Sie die Erweiterung auf alle VMs in der Gruppe an, indem Sie für diese ein Upgrade durchführen. In der CLI lautet der Befehl `az vmss update-instances`. |Initiative |
-|\[Vorschau\]: Überwachen der Bereitstellung des Dependency-Agents in VM-Skalierungsgruppen – VM-Image (Betriebssystem) nicht aufgelistet |Meldet VM-Skalierungsgruppen als nicht konform, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
-|\[Vorschau\]: Überwachen der Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen – VM-Image (Betriebssystem) nicht aufgelistet |Meldet VM-Skalierungsgruppen als nicht konform, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
-|\[Vorschau\]: Bereitstellen des Dependency-Agents für Linux-VM-Skalierungsgruppen |Hiermit stellen Sie den Dependency-Agent für Linux-VM-Skalierungsgruppen bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
-|\[Vorschau\]: Bereitstellen des Dependency-Agents für Windows-VM-Skalierungsgruppen |Hiermit stellen Sie den Dependency-Agent für Windows-VM-Skalierungsgruppen bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
-|\[Vorschau\]: Bereitstellen des Log Analytics-Agents für Linux-VM-Skalierungsgruppen |Hiermit stellen Sie den Log Analytics-Agent für Linux-VM-Skalierungsgruppen bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
-|\[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VM-Skalierungsgruppen |Hiermit stellen Sie den Log Analytics-Agent für Windows-VM-Skalierungsgruppen bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
+|Aktivieren von Azure Monitor für VM-Skalierungsgruppen |Hiermit aktivieren Sie Azure Monitor für VM-Skalierungsgruppen im angegebenen Umfang (Verwaltungsgruppe, Abonnement oder Ressourcengruppe). Akzeptiert den Log Analytics-Arbeitsbereich als Parameter. Hinweis: Wenn die Upgraderichtlinie für Skalierungsgruppen auf „Manuell“ festgelegt ist, wenden Sie die Erweiterung auf alle VMs in der Gruppe an, indem Sie für diese ein Upgrade durchführen. In der CLI lautet der Befehl `az vmss update-instances`. |Initiative |
+|Überwachen der Bereitstellung des Dependency-Agents in VM-Skalierungsgruppen – VM-Image (Betriebssystem) nicht aufgelistet |Meldet VM-Skalierungsgruppen als nicht konform, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
+|Überwachen der Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen – VM-Image (Betriebssystem) nicht aufgelistet |Meldet VM-Skalierungsgruppen als nicht konform, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
+|Bereitstellen des Dependency-Agents für Linux-VM-Skalierungsgruppen |Hiermit stellen Sie den Dependency-Agent für Linux-VM-Skalierungsgruppen bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
+|Bereitstellen des Dependency-Agents für Windows-VM-Skalierungsgruppen |Hiermit stellen Sie den Dependency-Agent für Windows-VM-Skalierungsgruppen bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
+|Bereitstellen des Log Analytics-Agents für Linux-VM-Skalierungsgruppen |Hiermit stellen Sie den Log Analytics-Agent für Linux-VM-Skalierungsgruppen bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
+|Bereitstellen des Log Analytics-Agents für Windows-VM-Skalierungsgruppen |Hiermit stellen Sie den Log Analytics-Agent für Windows-VM-Skalierungsgruppen bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
 
 Die eigenständige Richtlinie (nicht in der Initiative enthalten) wird hier beschrieben:
 
 |Name |BESCHREIBUNG |type |
 |-----|------------|-----|
-|\[Vorschau\]: Überwachen des Log Analytics-Arbeitsbereichs für VM – Berichtskonflikt |Meldet VMs als nicht konform, wenn sie keine Protokolle an den in der Richtlinien- oder Initiativenzuweisung angegebenen Log Analytics-Arbeitsbereich senden. |Richtlinie |
+|Überwachen des Log Analytics-Arbeitsbereichs für VM – Berichtskonflikt |Meldet VMs als nicht konform, wenn sie keine Protokolle an den in der Richtlinien- oder Initiativenzuweisung angegebenen Log Analytics-Arbeitsbereich senden. |Richtlinie |
 
 ### <a name="assign-the-azure-monitor-initiative"></a>Zuweisen der Azure Monitor-Initiative
 
@@ -116,7 +125,7 @@ Wenn Sie die Richtlinie oder Initiative zuweisen, kann der in der Zuweisung ausg
 
 2. Wählen Sie im Azure-Portal die Option **Überwachen** aus. 
 
-3. Wählen Sie im Bereich **Insights** **Virtuelle Computer (Vorschau)** aus.
+3. Wählen Sie im Bereich **Insights** die Option **Virtuelle Computer** aus.
  
 4. Wählen Sie die Registerkarte **Erste Schritte** aus. Wählen Sie auf der Seite die Option **Richtlinienabdeckung verwalten** aus.
 
@@ -175,19 +184,19 @@ Auf der Grundlage der in der Initiative enthaltenen Richtlinien werden VMs in de
 
 * Der Log Analytics-Agent oder der Dependency-Agent wurde nicht bereitgestellt.  
     Dieses Szenario ist typisch für einen Bereich mit vorhandenen virtuellen Computern. Um das Problem abzumildern, [erstellen Sie Wartungstasks](../../governance/policy/how-to/remediate-resources.md) für eine nicht konforme Richtlinie, um die erforderlichen Agents bereitzustellen.  
-    - \[Vorschau\]: Bereitstellen des Dependency-Agents für Linux-VMs
-    - \[Vorschau\]: Bereitstellen des Dependency-Agents für Windows-VMs
-    - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Linux-VMs
-    - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs
+    - Bereitstellen des Dependency-Agents für Linux-VMs
+    - Bereitstellen des Dependency-Agents für Windows-VMs
+    - Bereitstellen des Log Analytics-Agents für Linux-VMs
+    - Bereitstellen des Log Analytics-Agents für Windows-VMs
 
 * Das VM-Image (Betriebssystem) wird in der Richtliniendefinition nicht identifiziert.  
     Die Kriterien der Bereitstellungsrichtlinie schließen nur VMs ein, die aus bekannten Azure VM-Images bereitgestellt werden. Überprüfen Sie anhand der Dokumentation, ob das Betriebssystem der VM unterstützt wird. Ist das nicht der Fall, müssen Sie die Bereitstellungsrichtlinie duplizieren und sie aktualisieren oder ändern, damit das Image konform wird.  
-    - \[Vorschau\]: Überwachen der Bereitstellung des Dependency-Agents – VM-Image (Betriebssystem) nicht aufgelistet
-    - \[Vorschau\]: Überwachen der Bereitstellung des Log Analytics-Agents – VM-Image (Betriebssystem) nicht aufgelistet
+    - Überwachen der Bereitstellung des Dependency-Agents – VM-Image (Betriebssystem) nicht aufgelistet
+    - Überwachen der Bereitstellung des Log Analytics-Agents – VM-Image (Betriebssystem) nicht aufgelistet
 
 * VMs melden sich nicht am angegebenen Log Analytics-Arbeitsbereich an.  
     Es ist möglich, dass sich einige VMs im Bereich der Initiative bei einem anderen Log Analytics-Arbeitsbereich anmelden, als dem, der in der Richtlinienzuweisung angegeben ist. Diese Richtlinie ist ein Tool, um zu bestimmen, welche VMs an einen nicht kompatiblen Arbeitsbereich berichten.  
-    - \[Vorschau\]: Überwachen des Log Analytics-Arbeitsbereichs für VM – Berichtskonflikt
+    - Überwachen des Log Analytics-Arbeitsbereichs für VM – Berichtskonflikt
 
 ## <a name="edit-an-initiative-assignment"></a>Bearbeiten einer Initiativenzuweisung
 

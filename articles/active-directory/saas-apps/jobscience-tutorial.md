@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8199f106c234e216a0982dc9e51413ccf30ae93a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2f0ea5b922b2c958aabf5be3a6123bb81a8f0234
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60268700"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80048504"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Tutorial: Azure Active Directory-Integration mit Jobscience
 
@@ -66,11 +66,11 @@ Zum Konfigurieren der Integration von Jobscience in Azure AD müssen Sie Jobscie
 
 1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![ANWENDUNGEN][2]
+    ![Anwendungen][2]
     
 1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![ANWENDUNGEN][3]
+    ![Anwendungen][3]
 
 1. Geben Sie im Suchfeld den Namen **Jobscience** ein.
 
@@ -93,7 +93,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Jobscience
 1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
 1. **[Erstellen eines Jobscience-Testbenutzers](#creating-a-jobscience-test-user)** , um ein Pendant von Britta Simon in Jobscience zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
 1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -103,15 +103,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Jobscience** auf **Einmaliges Anmelden**.
 
-    ![Configure single sign-on][4]
+    ![Einmaliges Anmelden konfigurieren][4]
 
 1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure single sign-on](./media/jobscience-tutorial/tutorial_jobscience_samlbase.png)
+    ![Einmaliges Anmelden konfigurieren](./media/jobscience-tutorial/tutorial_jobscience_samlbase.png)
 
 1. Führen Sie auf der Seite **Domäne und URLs für Jobscience** die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/jobscience-tutorial/tutorial_jobscience_url.png)
+    ![Einmaliges Anmelden konfigurieren](./media/jobscience-tutorial/tutorial_jobscience_url.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `http://<company name>.my.salesforce.com`.
     
@@ -120,21 +120,21 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
 1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)** , und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure single sign-on](./media/jobscience-tutorial/tutorial_jobscience_certificate.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/jobscience-tutorial/tutorial_jobscience_certificate.png) 
 
 1. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure single sign-on](./media/jobscience-tutorial/tutorial_general_400.png)
+    ![Einmaliges Anmelden konfigurieren](./media/jobscience-tutorial/tutorial_general_400.png)
 
 1. Klicken Sie im Abschnitt **Jobscience-Konfiguration** auf **Jobscience konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure single sign-on](./media/jobscience-tutorial/tutorial_jobscience_configure.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/jobscience-tutorial/tutorial_jobscience_configure.png) 
 
 1. Melden Sie sich bei der Jobscience-Unternehmenswebsite als Administrator an.
 
 1. Wechseln Sie zu **Setup**.
    
-   ![Setup](./media/jobscience-tutorial/IC784358.png "Setup")
+   ![Einrichtung](./media/jobscience-tutorial/IC784358.png "Einrichten")
 
 1. Klicken Sie im linken Navigationsbereich im Abschnitt **Verwalten** auf **Domänenverwaltung**, um den entsprechenden Abschnitt zu erweitern, und klicken Sie anschließend auf **Meine Domäne**, um die Seite **Meine Domäne** zu öffnen. 
    
@@ -146,19 +146,19 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie auf der Jobscience-Unternehmenswebsite auf **Sicherheitskontrollen** und anschließend auf **Einstellungen für einmaliges Anmelden**.
     
-    ![Sicherheitskontrollen](./media/jobscience-tutorial/ic784364.png "Sicherheitskontrollen")
+    ![Security Controls (Sicherheitskontrollen)](./media/jobscience-tutorial/ic784364.png "Einstellungen für einmaliges Anmelden")
 
 1. Führen Sie im Abschnitt **Einstellungen für einmaliges Anmelden** die folgenden Schritte aus:
     
-    ![Einstellungen für einmaliges Anmelden](./media/jobscience-tutorial/ic781026.png "Einstellungen für einmaliges Anmelden")
+    ![SSO-Einstellungen](./media/jobscience-tutorial/ic781026.png "Einstellungen für einmaliges Anmelden")
     
     a. Wählen Sie **SAML aktiviert**aus.
 
-    b. Klicken Sie auf **New**.
+    b. Klicken Sie auf **Neu**.
 
 1. Führen Sie im Dialogfeld **Einstellungen für einmaliges Anmelden mit SAML – Bearbeiten** die folgenden Schritte aus:
     
-    ![SAML-Einstellungen für einmaliges Anmelden](./media/jobscience-tutorial/ic784365.png "SAML-Einstellungen für einmaliges Anmelden")
+    ![SAML-Einstellung für einmaliges Anmelden](./media/jobscience-tutorial/ic784365.png "SAML-Einstellung für einmaliges Anmelden")
     
     a. Geben Sie im Textfeld **Name** einen Namen für die Konfiguration ein.
 
@@ -192,9 +192,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie zum Abrufen der Anmelde-URL für vom Dienstanbieter initiiertes einmaliges Anmelden im Menüabschnitt **Sicherheitskontrollen** auf **Einstellungen für einmaliges Anmelden**.
 
-    ![Sicherheitskontrollen](./media/jobscience-tutorial/ic784368.png "Sicherheitskontrollen")
+    ![Security Controls (Sicherheitskontrollen)](./media/jobscience-tutorial/ic784368.png "Einstellungen für einmaliges Anmelden")
     
-    Klicken Sie auf das SSO-Profil, das Sie im obigen Schritt erstellt haben. Auf dieser Seite wird die SSO-URL für Ihr Unternehmen angezeigt (z.B. [https://companyname.my.salesforce.com?so=companyid](https://companyname.my.salesforce.com?so=companyid)).    
+    Klicken Sie auf das SSO-Profil, das Sie im obigen Schritt erstellt haben. Auf dieser Seite wird die SSO-URL für Ihr Unternehmen angezeigt (z. B. `https://companyname.my.salesforce.com?so=companyid`).    
 
 > [!TIP]
 > Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -229,7 +229,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
  
 ### <a name="creating-a-jobscience-test-user"></a>Erstellen eines Jobscience-Testbenutzers
 
@@ -245,7 +245,7 @@ Damit sich Azure AD-Benutzer bei Jobscience anmelden können, müssen sie in Job
 
 1. Wechseln Sie zu „Setup“.
    
-   ![Setup](./media/jobscience-tutorial/ic784358.png "Setup")
+   ![Einrichtung](./media/jobscience-tutorial/ic784358.png "Einrichten")
 1. Navigieren Sie zu **Benutzer verwalten \> Benutzer**.
    
    ![Benutzer](./media/jobscience-tutorial/ic784369.png "Benutzer")
@@ -288,7 +288,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 1. Wählen Sie in der Anwendungsliste die Option **Jobscience** aus.
 
-    ![Configure single sign-on](./media/jobscience-tutorial/tutorial_jobscience_app.png) 
+    ![Einmaliges Anmelden konfigurieren](./media/jobscience-tutorial/tutorial_jobscience_app.png) 
 
 1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 

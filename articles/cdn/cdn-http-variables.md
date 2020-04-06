@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
 ms.openlocfilehash: 53ad0c516547e17801bd57c2fd6b0d1704383797
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593813"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>HTTP-Variablen für Azure CDN-Regel-Engine
@@ -34,11 +34,11 @@ HTTP-Variablen stellen die Methoden für den Abruf von HTTP-Anforderungs- und -A
 In der folgenden Tabelle sind die unterstützten HTTP-Variablen beschrieben. Ein leerer Wert wird zurückgegeben, wenn GEO-Metadaten (z.B. Postleitzahl) für eine bestimmte Anforderung nicht verfügbar sind.
 
 
-| NAME | Variable | BESCHREIBUNG | Beispielwert |
+| Name | Variable | BESCHREIBUNG | Beispielwert |
 | ---- | -------- | ----------- | ------------ |
 | ASN (Anfordernde Person) | %{geo_asnum} | Gibt die AS-Nummer der anfordernden Person an. <br /><br />**Veraltet:** %{virt_dst_asnum}. <br />Diese Variable wurde zugunsten von „%{geo_asnum}“ als veraltet markiert. Eine Regel mit dieser veralteten Variable funktioniert zwar weiterhin, Sie sollten sie jedoch so aktualisieren, dass die neue Variable verwendet wird. | AS15133 |
 | Ort (Anfordernde Person) | %{geo_city} | Gibt den Ort der anfordernden Person an. | Los Angeles |
-| Kontinent (Anfordernde Person) | %{geo_continent} | Gibt den Kontinent der anfordernden Person über die jeweilige Abkürzung an. <br />Gültige Werte sind: <br />AF: Afrika<br />AS: Asien<br />EU: Europa<br />NA: Nordamerika<br />OC: Ozeanien<br />SA: Südamerika<br /><br />**Veraltet:** %{virt_dst_continent}. <br />Diese Variable wurde zugunsten von „%{geo_continent}“ als veraltet markiert. <br />Eine Regel mit dieser veralteten Variable funktioniert zwar weiterhin, Sie sollten sie jedoch so aktualisieren, dass die neue Variable verwendet wird.| – |
+| Kontinent (Anfordernde Person) | %{geo_continent} | Gibt den Kontinent der anfordernden Person über die jeweilige Abkürzung an. <br />Gültige Werte sind: <br />AF: Afrika<br />AS: Asia<br />EU: Europa<br />NA: Nordamerika<br />OC: Ozeanien<br />SA: Südamerika<br /><br />**Veraltet:** %{virt_dst_continent}. <br />Diese Variable wurde zugunsten von „%{geo_continent}“ als veraltet markiert. <br />Eine Regel mit dieser veralteten Variable funktioniert zwar weiterhin, Sie sollten sie jedoch so aktualisieren, dass die neue Variable verwendet wird.| – |
 | Cookiewert | %{cookie_Cookie} | Gibt den Wert zurück, der dem durch den Cookieausdruck identifizierten Cookieschlüssel entspricht. | Verwendungsbeispiel: <br />%{cookie__utma}<br /><br />Beispielwert:<br />111662281.2.10.1222100123 |
 | Land (Anfordernde Person) | %{geo_country} | Gibt das Herkunftsland der anfordernden Person über den jeweiligen Ländercode an. <br />**Veraltet:** %{virt_dst_country}. <br /><br />Diese Variable wurde zugunsten von „%{geo_country}“ als veraltet markiert. Eine Regel mit dieser veralteten Variable funktioniert zwar weiterhin, Sie sollten sie jedoch so aktualisieren, dass die neue Variable verwendet wird. | US |
 | Designated Market Area (Anfordernde Person) | %{geo_dma_code} |Gibt den Medienmarkt der anfordernden Person anhand des Regionscodes an. <br /><br />Dieses Feld gilt nur für Anforderungen, die aus den Vereinigten Staaten stammen.| 745 |
@@ -96,7 +96,7 @@ Die Trennzeichen sind in der folgenden Tabelle beschrieben.
 | --------- | ----------- |
 | := | Gibt an, dass der Variablen ein Standardwert zugewiesen wird, wenn eine der folgenden Bedingungen auf sie zutrifft: <br />– Fehlt <br />– Auf NULL festgelegt. |
 | :+ | Gibt an, dass der Variablen ein Standardwert zugewiesen wird, wenn ihr ein Wert zugewiesen wurde. |
-| : | Gibt an, dass eine Teilzeichenfolge des Werts erweitert wird, die der Variablen zugewiesen ist. |
+| decodiert werden: | Gibt an, dass eine Teilzeichenfolge des Werts erweitert wird, die der Variablen zugewiesen ist. |
 | # | Gibt an, dass das nach diesem Trennzeichen angegebene Muster gelöscht werden soll, wenn es sich am Anfang des der Variablen zugeordneten Werts befindet. |
 | % | Gibt an, dass das nach diesem Trennzeichen angegebene Muster gelöscht werden soll, wenn es sich am Ende des der Variablen zugeordneten Werts befindet. <br />Diese Definition ist nur anwendbar, wenn das Symbol „%“ als Trennzeichen verwendet wird. |
 | / | Begrenzt eine HTTP-Variable oder ein Muster. |

@@ -1,6 +1,6 @@
 ---
 title: Datenermittlung und -klassifizierung
-description: Azure SQL-Datenbank und Datenermittlung sowie -klassifizierung
+description: Datenermittlung und -klassifizierung für Azure SQL-Datenbank und Azure Synapse Analytics
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -13,16 +13,16 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/05/2020
 tags: azure-synapse
-ms.openlocfilehash: e22205e81178ac0caff4b71462ece776238900f6
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 98b21969ce86f84b20fbe78dbdf3002769ef65f5
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191944"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387868"
 ---
-# <a name="azure-sql-database-and-azure-synapse-analytics-data-discovery--classification"></a>Azure SQL-Datenbank und Azure Synapse Analytics: Datenermittlung und -klassifizierung
+# <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Datenermittlung und -klassifizierung für Azure SQL-Datenbank und Azure Synapse Analytics
 
-Datenermittlung und -klassifizierung bietet erweiterte Funktionen für Azure SQL-Datenbank zum **Ermitteln**, **Klassifizieren**, **Bezeichnen** & **Berichten** sensibler Daten in Ihren Datenbanken.
+Datenermittlung und -klassifizierung bietet erweiterte Funktionen für Azure SQL-Datenbank zum **Ermitteln**, **Klassifizieren**, **Bezeichnen** und **Melden** sensibler Daten in Ihren Datenbanken.
 
 Das Ermitteln und Klassifizieren Ihrer besonders sensiblen Daten (Geschäfts-/Finanz-/Gesundheitsdaten, persönlich identifizierbare Daten (PII) usw.) kann eine entscheidende Rolle in der Strategie Ihrer Organisation zum Datenschutz spielen. Sie kann für Folgendes als Infrastruktur gelten:
 
@@ -35,9 +35,9 @@ Datenermittlung und -klassifizierung ist Teil des Angebots [Advanced Data Securi
 > [!NOTE]
 > Dieses Dokument bezieht sich auf Azure SQL-Datenbank und Azure Synapse. Der Einfachheit halber wird „SQL-Datenbank“ verwendet, wenn sowohl auf SQL-Datenbank als auch auf Azure Synapse verwiesen wird. Informationen zu SQL Server (lokal) finden Sie unter [SQL-Datenermittlung und -klassifizierung](https://go.microsoft.com/fwlink/?linkid=866999).
 
-## <a id="subheading-1"></a>Was ist Datenermittlung und -klassifizierung?
+## <a name="what-is-data-discovery--classification"></a><a id="subheading-1"></a>Was ist Datenermittlung und -klassifizierung?
 
-Datenermittlung und -klassifizierung führt eine Reihe von erweiterten Diensten und neuen SQL-Funktionen ein und bildet damit ein neues SQL Information Protection-Paradigma für den Schutz der Daten (nicht nur der Datenbank):
+Datenermittlung und -klassifizierung führt eine Reihe von erweiterten Diensten und neuen SQL-Funktionen ein und bildet damit ein neues SQL Information Protection-Paradigma für den Schutz der Daten – nicht nur der Datenbank:
 
 - **Ermittlung und Empfehlungen**
 
@@ -55,7 +55,7 @@ Datenermittlung und -klassifizierung führt eine Reihe von erweiterten Diensten 
 
   Der Klassifizierungsstatus der Datenbank kann in einem detaillierten Dashboard im Portal angezeigt werden. Darüber hinaus können Sie einen Bericht (im Excel-Format) herunterladen, der für Compliance- und Überwachungszwecke und für weitere Zwecke verwendet werden kann.
 
-## <a id="subheading-2"></a>Ermitteln, Klassifizieren und Bezeichnen von vertraulichen Spalten
+## <a name="discover-classify--label-sensitive-columns"></a><a id="subheading-2"></a>Ermitteln, Klassifizieren und Bezeichnen von vertraulichen Spalten
 
 Im folgenden Abschnitt werden die Schritte zum Ermitteln, Klassifizieren und Bezeichnen von Spalten mit sensiblen Daten in Ihrer Datenbank sowie das Anzeigen des aktuellen Klassifizierungsstatus Ihrer Datenbank und das Exportieren von Berichten beschrieben.
 
@@ -66,7 +66,7 @@ Die Klassifizierung umfasst zwei Metadatenattribute:
 
 ## <a name="define-and-customize-your-classification-taxonomy"></a>Definieren und Anpassen der Klassifizierungstaxonomie
 
-SQL-Datenermittlung und -klassifizierung verfügt über einen integrierten Satz von Vertraulichkeitsbezeichnungen und einen integrierten Satz von Informationstypen und Ermittlungslogik. Sie haben jetzt die Möglichkeit, diese Taxonomie anzupassen und eine spezielle Gruppe und Rangfolge von Klassifizierungskonstrukten für Ihre Umgebung zu definieren.
+Datenermittlung und -klassifizierung verfügt über einen integrierten Satz von Vertraulichkeitsbezeichnungen und einen integrierten Satz von Informationstypen und Ermittlungslogik. Sie haben jetzt die Möglichkeit, diese Taxonomie anzupassen und eine spezielle Gruppe und Rangfolge von Klassifizierungskonstrukten für Ihre Umgebung zu definieren.
 
 Die Definition und Anpassung Ihrer Klassifizierungstaxonomie erfolgt an zentraler Stelle für den ganzen Azure-Mandanten. Diese Stelle befindet sich im [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) und ist Bestandteil Ihrer Sicherheitsrichtlinie. Nur Benutzer mit Administratorrechten für die Stammverwaltungsgruppe des Mandanten können diese Aufgabe ausführen.
 
@@ -89,17 +89,11 @@ Sobald die mandantenweite Richtlinie definiert wurde, können Sie die Klassifizi
 
 4. Um einen Bericht im Excel-Format herunterzuladen, klicken Sie oben im Fenster im Menü auf die Option **Exportieren**.
 
-   ![Exportieren in Excel](./media/sql-data-discovery-and-classification/3_data_classification_export_report.png)
-
 5. <a id="step-5"></a>Um die Klassifizierung Ihrer Daten zu starten, klicken Sie oben im Fenster auf die Registerkarte **Klassifikation**.
-
-    ![Klassifizieren von Daten](./media/sql-data-discovery-and-classification/4_data_classification_classification_tab_click.png)
 
 6. Das Klassifizierungsmodul scannt Ihre Datenbank nach Spalten mit potenziell sensiblen Daten und stellt eine Liste der **empfohlenen Spaltenklassifizierungen** bereit. So zeigen Sie Klassifizierungsempfehlungen an und übernehmen sie
 
-   - Um die Liste der empfohlenen Spaltenklassifizierungen anzuzeigen, klicken Sie am unteren Rand des Fensters auf den Empfehlungsbereich:
-
-      ![Klassifizieren von Daten](./media/sql-data-discovery-and-classification/5_data_classification_recommendations_panel.png)
+   - Um die Liste der empfohlenen Spaltenklassifizierungen anzuzeigen, klicken Sie am unteren Rand des Fensters auf den Empfehlungsbereich.
 
    - Überprüfen Sie die Liste der Empfehlungen. Um eine Empfehlung für eine bestimmte Spalte zu akzeptieren, aktivieren Sie das Kontrollkästchen in der linken Spalte der entsprechenden Zeile. Sie können auch *alle Empfehlungen* als akzeptiert markieren, indem Sie das Kontrollkästchen im Tabellenkopf der Empfehlungen aktivieren.
 
@@ -107,13 +101,9 @@ Sobald die mandantenweite Richtlinie definiert wurde, können Sie die Klassifizi
 
    - Klicken Sie zum Anwenden Ihrer ausgewählten Empfehlungen auf die blaue Schaltfläche **Accept selected recommendations** (Ausgewählte Änderungen akzeptieren).
 
-      ![Anwenden von Empfehlungen](./media/sql-data-discovery-and-classification/7_data_classification_accept_selected_recommendations.png)
-
 7. Alternativ oder zusätzlich zur empfehlungsbasierten Klassifizierung können Sie Spalten auch **manuell klassifizieren**:
 
    - Klicken Sie im oberen Menü des Fensters auf **Klassifizierung hinzufügen**.
-
-      ![Manuelles Hinzufügen einer Klassifizierung](./media/sql-data-discovery-and-classification/8_data_classification_add_classification_button.png)
 
    - Wählen Sie im daraufhin geöffneten Kontextfenster das Schema, die Tabelle und dann die Spalte, die Sie klassifizieren möchten, sowie den Informationstyp und die Vertraulichkeitsbezeichnung aus. Klicken Sie dann auf die Schaltfläche **Klassifizierung hinzufügen** am unteren Rand des Kontextfensters.
 
@@ -121,15 +111,13 @@ Sobald die mandantenweite Richtlinie definiert wurde, können Sie die Klassifizi
 
 8. Klicken Sie im oberen Menü des Fensters auf **Speichern**, um Ihre Klassifizierung zu vervollständigen und die Datenbankspalten dauerhaft mit den neuen Klassifizierungsmetadaten zu bezeichnen (Tag).
 
-   ![Speichern](./media/sql-data-discovery-and-classification/10_data_classification_save.png)
-
-## <a id="subheading-3"></a>Überwachen des Zugriffs auf sensible Daten
+## <a name="auditing-access-to-sensitive-data"></a><a id="subheading-3"></a>Überwachen des Zugriffs auf sensible Daten
 
 Ein wichtiger Aspekt des Paradigmas für den Schutz von Informationen ist die Möglichkeit, den Zugriff auf sensible Daten zu überwachen. Die [Azure SQL-Datenbank-Überwachung](sql-database-auditing.md) wurde erweitert, um das Überwachungsprotokoll um das neue Feld *data_sensitivity_information* zu ergänzen. In diesem werden die Vertraulichkeitsklassifizierungen (Bezeichnungen) der eigentlichen Daten erfasst, die bei der Abfrage zurückgegeben wurden.
 
 ![Überwachungsprotokoll](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
-## <a id="subheading-4"></a>Berechtigungen
+## <a name="permissions"></a><a id="subheading-4"></a>Berechtigungen
 
 Die folgenden integrierten Rollen können die Datenklassifizierung einer Azure SQL-Datenbank lesen: `Owner`, `Reader`, `Contributor`, `SQL Security Manager` und `User Access Administrator`.
 
@@ -137,7 +125,7 @@ Die folgenden integrierten Rollen können die Datenklassifizierung einer Azure S
 
 Weitere Informationen zu [RBAC für Azure Resources](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-## <a id="subheading-5"></a>Verwalten von Klassifizierungen
+## <a name="manage-classifications"></a><a id="subheading-5"></a>Verwalten von Klassifizierungen
 
 # <a name="t-sql"></a>[T-SQL](#tab/azure-t-sql)
 Mit T-SQL können Sie Spaltenklassifizierungen hinzufügen/entfernen sowie alle Klassifizierungen für die gesamte Datenbank abrufen.
@@ -181,7 +169,7 @@ Sie können PowerShell verwenden, um Klassifizierungen und Empfehlungen für Azu
 
 ---
 
-## <a id="subheading-6"></a>Nächste Schritte
+## <a name="next-steps"></a><a id="subheading-6"></a>Nächste Schritte
 
 - Erfahren Sie mehr über [Advanced Data Security](sql-database-advanced-data-security.md).
 - Sie sollten in Betracht ziehen, die [Azure SQL-Datenbank-Überwachung](sql-database-auditing.md) für die Überwachung und Überprüfung des Zugriffs auf Ihre klassifizierten sensiblen Daten zu konfigurieren.

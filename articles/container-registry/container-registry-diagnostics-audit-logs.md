@@ -3,12 +3,12 @@ title: Erfassen und Analysieren von Ressourcenprotokollen
 description: Aufzeichnen und Analysieren von Ressourcenprotokollereignissen für Azure Container Registry wie Authentifizierung, Imagepush und Imagepull.
 ms.topic: article
 ms.date: 01/03/2020
-ms.openlocfilehash: 72d03149cd24636ba2086dfaaff0dbba16d30f1e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 00f9468721126bd166051df47cec1596356e9b54
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748004"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409642"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry-Protokolle für die Diagnoseauswertung und -überwachung
 
@@ -20,11 +20,7 @@ In diesem Artikel wird erläutert, wie Sie Protokolldaten für eine Azure-Contai
 
 Das Sammeln von Ressourcenprotokolldaten mithilfe von Azure Monitor kann zusätzliche Kosten verursachen. Weitere Informationen finden Sie unter [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/). 
 
-
-> [!IMPORTANT]
-> Diese Funktion befindet sich derzeit in der Vorschauphase. Es gelten einige [Einschränkungen](#preview-limitations). Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
-
-## <a name="preview-limitations"></a>Einschränkungen der Vorschau
+## <a name="repository-events"></a>Repositoryereignisse
 
 Die folgenden Ereignisse auf Repositoryebene für Images und andere Artefakte werden zurzeit protokolliert:
 
@@ -109,5 +105,3 @@ Sie können-Diagnoseprotokollereignisse auch an einen [Azure Event Hub](../event
 * Erfahren Sie mehr über das Verwenden von [Log Analytics](../azure-monitor/log-query/get-started-portal.md) und das Erstellen von [Protokollabfragen](../azure-monitor/log-query/get-started-queries.md).
 * Informationen zu Plattformprotokollen, die auf unterschiedlichen Ebenen von Azure verfügbar sind, finden Sie unter [Übersicht über Protokolle der Azure-Plattform](../azure-monitor/platform/platform-logs-overview.md).
 
-<!-- LINKS - External -->
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

@@ -1,19 +1,18 @@
 ---
 title: Abrufen des Shared Access Signature-URI für Ihr Microsoft Azure-basiertes VM-Image | Azure Marketplace
 description: In diesem Artikel wird erläutert, wie Sie den Shared Access Signature-URI (SAS) für Ihre VM-Images abrufen.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/19/2018
-ms.author: pabutler
-ms.openlocfilehash: cb6f1772c7c6f9abd268a8cb58550b253f095dbf
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.author: dsindona
+ms.openlocfilehash: 6fe15fb18d8865911363a4696e44dd7fe1d90c09
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132446"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80277802"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Abrufen des Shared Access Signature-URI für Ihr VM-Image
 
@@ -22,7 +21,7 @@ Während des Veröffentlichungsprozesses müssen Sie einen Uniform Resource Iden
 Beachten Sie beim Generieren der SAS-URIs für Ihre virtuellen Festplatten folgende Anforderungen:
 
 - Es werden nur nicht verwaltete virtuelle Festplatten unterstützt.
-- `List`- und `Read`-Berechtigungen sind ausreichend. Stellen Sie *keinen* `Write`- oder `Delete`-Zugriff bereit.
+- `List`- und `Read`-Berechtigungen sind ausreichend. Stellen Sie *keinen*`Write`- oder `Delete`-Zugriff bereit.
 - Die Zugriffsdauer (*Ablaufdatum*) sollte mindestens drei Wochen betragen, gerechnet ab dem Erstellungsdatum des SAS-URI.
 - Um Fehler aufgrund von Zeitabweichungen von der UTC zu vermeiden, legen Sie das Startdatum auf einen Tag vor dem aktuellen Datum fest. Wählen Sie beispielsweise 05.10.2014 aus, wenn das aktuelle Datum der 6. Oktober 2014 ist.
 
@@ -30,18 +29,17 @@ Beachten Sie beim Generieren der SAS-URIs für Ihre virtuellen Festplatten folge
 
 Der SAS-URI kann auf zwei gängige Arten mithilfe der folgenden Tools generiert werden:
 
--   Microsoft Azure Storage-Explorer: grafisches Tool für Windows, macOS und Linux
--   Microsoft Azure CLI: empfohlen für Nicht-Windows-Betriebssysteme und automatisierte oder Continuous Integration-Umgebungen
-
+- Microsoft Azure Storage-Explorer: grafisches Tool für Windows, macOS und Linux
+- Microsoft Azure CLI: empfohlen für Nicht-Windows-Betriebssysteme und automatisierte oder Continuous Integration-Umgebungen
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 Führen Sie zum Generieren eines SAS-URI mit der Azure CLI die folgenden Schritte aus.
 
-1. Laden Sie die [Microsoft Azure CLI](https://azure.microsoft.com/documentation/articles/xplat-cli-install/) herunter, und installieren Sie sie.  Es stehen Versionen für Windows, macOS und verschiedene Linux-Distributionen zur Verfügung.
+1. Laden Sie die [Microsoft Azure CLI](https://azure.microsoft.com/documentation/articles/xplat-cli-install/) herunter, und installieren Sie sie. Es stehen Versionen für Windows, macOS und verschiedene Linux-Distributionen zur Verfügung.
 2. Erstellen Sie eine PowerShell-Datei (Dateierweiterung: `.ps1`), kopieren Sie den folgenden Code in die Datei, und speichern Sie sie lokal.
 
-   ``` powershell
+   ```azurecli-interactive
    az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' --name <vhd-name> --permissions rl --start '<start-date>' --expiry '<expiry-date>'
    ```
 
@@ -54,8 +52,8 @@ Führen Sie zum Generieren eines SAS-URI mit der Azure CLI die folgenden Schritt
 
    Das folgende Beispiel zeigt richtige Parameterwerte (zum Zeitpunkt der Erstellung dieses Dokuments).
 
-   ``` powershell
-       az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ONc+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net' --name vhds --permissions rl --start '2017-11-06T00:00:00Z' --expiry '2018-08-20T00:00:00Z'
+   ```azurecli-interactive
+   az storage container generate-sas --connection-string 'DefaultEndpointsProtocol=https;AccountName=st00009;AccountKey=6L7OWFrlabs7Jn23OaR3rvY5RykpLCNHJhxsbn9ONc+bkCq9z/VNUPNYZRKoEV1FXSrvhqq3aMIDI7N3bSSvPg==;EndpointSuffix=core.windows.net' --name vhds --permissions rl --start '2017-11-06T00:00:00Z' --expiry '2018-08-20T00:00:00Z'
    ```
 
 4. Speichern Sie die Änderungen an diesem PowerShell-Skript.
@@ -81,7 +79,6 @@ Führen Sie zum Generieren eines SAS-URI mit der Azure CLI die folgenden Schritt
     `https://catech123.blob.core.windows.net/vhds/TestRGVM2.vhd?st=2018-05-06T07%3A00%3A00Z&se=2019-08-02T07%3A00%3A00Z&sp=rl&sv=2017-04-17&sr=c&sig=wnEw9RfVKeSmVgqDfsDvC9IHhis4x0fc9Hu%2FW4yvBxk%3D`
 
 Wiederholen Sie diese Schritte für jede virtuelle Festplatte in den SKUs, die Sie veröffentlichen möchten.
-
 
 ### <a name="microsoft-storage-explorer"></a>Microsoft Storage-Explorer
 
@@ -119,16 +116,15 @@ Führen Sie die folgenden Schritte aus, um einen SAS-URI mit dem Microsoft Azure
 
 Wiederholen Sie diese Schritte für jede virtuelle Festplatte in den SKUs, die Sie veröffentlichen möchten.
 
-
 ## <a name="verify-the-sas-uri"></a>Überprüfen des SAS-URI
 
 Überprüfen und verifizieren Sie jeden generierten SAS-URI anhand der folgenden Checkliste.  Verifizieren Sie Folgendes:
+
 - Der URI weist folgendes Format auf: `<blob-service-endpoint-url>` + `/vhds/` + `<vhd-name>?` + `<sas-connection-string>`
 - Der URI enthält den Namen Ihres VHD-Images, einschließlich der Dateierweiterung „.vhd“.
 - In der Mitte des URI wird `sp=rl` angezeigt. Diese Zeichenfolge gibt an, dass die Zugriffsberechtigungen `Read` und `List` festgelegt sind.
 - Danach wird `sr=c` angezeigt. Diese Zeichenfolge gibt an, dass der Zugriff auf Containerebene festgelegt ist.
 - Kopieren Sie den URI, und fügen Sie ihn in einen Browser ein, um mit dem Herunterladen des zugehörigen Blobs zu beginnen.  (Sie können den Vorgang abbrechen, bevor der Download abgeschlossen ist.)
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

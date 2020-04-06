@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 939ac7caacac7cfb55bd29ed9a5d9c136a8e5c90
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 29934758ab729e0fb888c10b7f834da3d0bf7fb0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314248"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456079"
 ---
 # <a name="one-vs-all-multiclass"></a>One-vs-All-Multiklasse
 
-In diesem Artikel erfahren Sie, wie Sie das Modul „One-vs-All-Multiklasse“ im Azure Machine Learning-Designer verwenden. Das Ziel besteht darin, ein Klassifizierungsmodell zu erstellen, das mehrere Klassen unter Verwendung des *One-vs-All*-Ansatzes vorhersagen kann.
+In diesem Artikel erfahren Sie, wie Sie das Modul „One-vs-All-Multiklasse“ im Azure Machine Learning-Designer (Vorschauversion) verwenden. Das Ziel besteht darin, ein Klassifizierungsmodell zu erstellen, das mehrere Klassen unter Verwendung des *One-vs-All*-Ansatzes vorhersagen kann.
 
 Dieses Modul ist nützlich zum Erstellen von Modellen, mit denen drei oder mehr mögliche Ergebnisse vorhergesagt werden, wenn das Ergebnis von kontinuierlichen oder kategorialen Vorhersagevariablen abhängt. Mit dieser Methode können Sie auch Binärklassifizierungsmethoden für Probleme verwenden, die mehrere Ausgabeklassen erfordern.
 
@@ -50,7 +50,7 @@ Wenn Sie die Modelle kombinieren, erstellt „One-vs-All-Multiklasse“ mehrere 
 
 4. Stellen Sie für die andere Eingabe von [Train Model](train-model.md) (Modell trainieren) eine Verbindung mit einem bezeichneten Trainingsdataset her, das über mehrere Klassenwerte verfügt.
 
-5. Ausführen der Pipeline.
+5. Übermitteln Sie die Pipeline.
 
 ## <a name="results"></a>Ergebnisse
 

@@ -5,16 +5,16 @@ services: container-service
 author: saudas
 manager: saudas
 ms.topic: article
-ms.date: 09/11/2019
+ms.date: 03/10/2019
 ms.author: saudas
-ms.openlocfilehash: 6d00fd72c338fc101420bf78b5608516715d44ad
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 85efc6d9d203ca06c5f7566376993b4c13950788
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77592967"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369967"
 ---
-# <a name="preview---use-managed-identities-in-azure-kubernetes-service"></a>Vorschau – Verwenden verwalteter Identitäten in Azure Kubernetes Service
+# <a name="use-managed-identities-in-azure-kubernetes-service"></a>Verwenden verwalteter Identitäten in Azure Kubernetes Service
 
 Derzeit erfordert ein AKS-Cluster (Azure Kubernetes Service) und insbesondere der Kubernetes-Cloudanbieter einen *Dienstprinzipal*, um zusätzliche Ressourcen wie Lastenausgleich und verwaltete Datenträger in Azure zu erstellen. Entweder müssen Sie einen Dienstprinzipal bereitstellen, oder AKS erstellt einen Dienstprinzipal in Ihrem Namen. Dienstprinzipale haben in der Regel ein Ablaufdatum. Cluster erreichen letztendlich einen Zustand, in dem der Dienstprinzipal erneuert werden muss, damit der Cluster ordnungsgemäß funktioniert. Die Verwaltung von Dienstprinzipalen erhöht die Komplexität.
 
@@ -23,48 +23,15 @@ Derzeit erfordert ein AKS-Cluster (Azure Kubernetes Service) und insbesondere de
 AKS erstellt zwei verwaltete Identitäten:
 
 - **Systemseitig zugewiesene verwaltete Identität**: die Identität, die der Kubernetes-Cloudanbieter zum Erstellen von Azure-Ressourcen im Auftrag des Benutzers verwendet. Der Lebenszyklus der systemseitig zugewiesenen Identität ist an den des Clusters gebunden. Die Identität wird gelöscht, wenn der Cluster gelöscht wird.
-- **Benutzerseitig zugewiesene verwaltete Identität**: die Identität, die für die Autorisierung im Cluster verwendet wird. Die benutzerseitig zugewiesene Identität wird beispielsweise verwendet, um AKS zum Verwenden von Access Control-Datensätzen (Access Control Records, ACRs) oder das Kubelet zum Abrufen von Metadaten aus Azure zu autorisieren.
+- **Benutzerseitig zugewiesene verwaltete Identität**: die Identität, die für die Autorisierung im Cluster verwendet wird. Die benutzerseitig zugewiesene Identität wird beispielsweise verwendet, um AKS zum Verwenden von Azure Container Registrys (ACRs) oder das Kubelet zum Abrufen von Metadaten aus Azure zu autorisieren.
 
-Während dieses Vorschauzeitraums ist ein Dienstprinzipal immer noch erforderlich. Er wird für die Autorisierung von Add-Ons wie Überwachung, virtuelle Knoten, Azure Policy und HTTP-Anwendungsrouting verwendet. Die Arbeit wird ausgeführt, um die Abhängigkeit von Add-Ons für den Dienstprinzipalnamen (Service Principal Name, SPN) zu entfernen. Schließlich wird die Anforderung eines SPN in AKS vollständig entfernt.
-
-> [!IMPORTANT]
-> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Vorschauversionen werden „wie besehen“ und „wie verfügbar“ bereitgestellt und sind von den Vereinbarungen zum Service Level und der eingeschränkten Garantie ausgeschlossen. AKS-Vorschauversionen werden teilweise vom Kundensupport auf der Grundlage der bestmöglichen Leistung abgedeckt. Daher sind diese Funktionen nicht für die Verwendung in der Produktion vorgesehen. Weitere Informationen finden Sie in den folgenden Supportartikeln:
->
-> - [Unterstützungsrichtlinien für Azure Kubernetes Service](support-policies.md)
-> - [Häufig gestellte Fragen zum Azure-Support](faq.md)
+Add-Ons authentifizieren auch über eine verwaltete Identität. Für jedes Add-On wird eine verwaltete Identität von AKS erstellt und für die Lebensdauer des Add-Ons beibehalten. Verwenden Sie zum Erstellen und Verwenden Ihres eigenen VNET, Ihrer eigenen statischen IP-Adresse oder Ihres eigenen angeschlossenen Azure-Datenträgers, auf dem sich die Ressourcen außerhalb der Ressourcengruppe MC_ * befinden, die PrincipalID des Clusters, um eine Rollenzuweisung auszuführen. Weitere Informationen zur Rollenzuweisung finden Sie unter [Delegieren des Zugriffs auf andere Azure-Ressourcen](kubernetes-service-principal.md#delegate-access-to-other-azure-resources).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 Die folgenden Ressourcen müssen installiert sein:
 
-- Die Azure CLI, Version 2.0.70 oder höher
-- Die aks-preview 0.4.14-Erweiterung
-
-Verwenden Sie zum Installieren der aks-preview 0.4.14-Erweiterung oder höher die folgenden Azure CLI-Befehle:
-
-```azurecli
-az extension add --name aks-preview
-az extension list
-```
-
-> [!CAUTION]
-> Nachdem Sie ein Feature für ein Abonnement registriert haben, können Sie die Registrierung dieses Features momentan nicht mehr aufheben. Wenn Sie einige Previewfunktionen aktivieren, können Standardwerte für alle AKS-Cluster verwendet werden, die anschließend im Abonnement erstellt werden. Aktivieren Sie keine Vorschaufeatures für Produktionsabonnements. Verwenden Sie stattdessen ein separates Abonnement, um Previewfunktionen zu testen und Feedback zu erfassen.
-
-```azurecli-interactive
-az feature register --name MSIPreview --namespace Microsoft.ContainerService
-```
-
-Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](https://docs.microsoft.com/cli/azure/feature?view=azure-cli-latest#az-feature-list) überprüfen:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MSIPreview')].{Name:name,State:properties.state}"
-```
-
-Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register) aktualisieren:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
+- Die Azure CLI, Version 2.2.0 oder höher.
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>Erstellen eines AKS-Clusters mit verwalteten Identitäten
 
@@ -81,6 +48,15 @@ Erstellen Sie anschließend einen AKS-Cluster:
 
 ```azurecli-interactive
 az aks create -g MyResourceGroup -n MyManagedCluster --enable-managed-identity
+```
+
+Bei einer erfolgreichen Clustererstellung mit verwalteten Identitäten sind folgende Dienstprinzipal-Profilinformationen enthalten:
+
+```json
+"servicePrincipalProfile": {
+    "clientId": "msi",
+    "secret": null
+  }
 ```
 
 Rufen Sie schließlich Anmeldeinformationen für den Zugriff auf den Cluster ab:

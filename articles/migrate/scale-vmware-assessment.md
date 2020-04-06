@@ -1,18 +1,14 @@
 ---
-title: Bewerten einer großen Anzahl von VMware-VMs für die Migration zu Azure mit Azure Migrate | Microsoft-Dokumentation
+title: Bewerten einer großen Anzahl von VMware-VMs für die Migration zu Azure mit Azure Migrate
 description: Erfahren Sie, wie Sie eine große Anzahl von VMware-VMs mithilfe des Azure Migrate-Diensts für die Migration zu Azure bewerten.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
-ms.topic: conceptual
-ms.date: 07/12/2019
-ms.author: hamusa
-ms.openlocfilehash: f76134ffc6a7becb9b5719dcb3d826130b7cfa86
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.topic: how-to
+ms.date: 03/23/2020
+ms.openlocfilehash: d404583b1bad474a5e24e8c7cf060aeb80d610bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453280"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336851"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Bewerten einer großen Anzahl von VMware-VMs für die Migration zu Azure
 
@@ -69,7 +65,7 @@ Wenn Sie eine Umgebung mit mehreren Mandanten planen, können Sie die Ermittlung
 
 - Sie können den Umfang der Appliance-Ermittlung auf vCenter Server-Rechenzentren, Cluster, Clusterordner, Hosts, Hostordner oder einzelne VMs festlegen.
 - Wenn Ihre Umgebung für mehrere Mandanten gemeinsam genutzt wird und Sie jeden Mandanten separat ermitteln möchten, können Sie den Zugriff auf das vCenter-Konto einschränken, das die Appliance für die Ermittlung verwendet. 
-    - Sie können den Umfang nach VM-Ordnern festlegen, wenn die Mandanten Hosts gemeinsam nutzen. Azure Migrate kann keine VMs erkennen, wenn dem vCenter-Konto auf Ebene des vCenter-VM-Ordners Zugriff gewährt wird. Wenn Ihre Ermittlung auf VM-Ordnern basieren soll, muss das vCenter-Konto reinen Lesezugriff auf der VM-Ebene haben. Erfahren Sie [hier](tutorial-assess-vmware.md#set-the-scope-of-discovery) mehr über das Festlegen des Ermittlungsumfangs.
+    - Sie können den Umfang nach VM-Ordnern festlegen, wenn die Mandanten Hosts gemeinsam nutzen. Azure Migrate kann keine VMs erkennen, wenn dem vCenter-Konto auf Ebene des vCenter-VM-Ordners Zugriff gewährt wird. Wenn Ihre Ermittlung auf VM-Ordnern basieren soll, muss das vCenter-Konto reinen Lesezugriff auf der VM-Ebene haben. [Weitere Informationen](set-discovery-scope.md)
 
 ## <a name="prepare-for-assessment"></a>Vorbereiten für die Bewertung
 

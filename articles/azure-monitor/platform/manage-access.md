@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/22/2019
-ms.openlocfilehash: 24ff081d40d5cd3adf771511ca0b52d66c287b63
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 1e559309b8e8d9768ca2f79dabfb01ec6086a961
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78272622"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80348718"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Verwalten des Zugriffs auf Protokolldaten und Arbeitsbereiche in Azure Monitor
 
@@ -25,7 +25,7 @@ In diesem Artikel erfahren Sie, wie Sie den Zugriff auf Protokolle sowie die Arb
 
 ## <a name="configure-access-control-mode"></a>Konfigurieren des Zugriffssteuerungsmodus
 
-Sie können den für einen Arbeitsbereich konfigurierten Zugriffssteuerungsmodus über das Azure-Portal oder mit Azure PowerShell anzeigen.  Diese Einstellung kann mit einer der folgenden unterstützten Methoden geändert werden:
+Sie können den für einen Arbeitsbereich konfigurierten [Zugriffssteuerungsmodus](design-logs-deployment.md) über das Azure-Portal oder mit Azure PowerShell anzeigen.  Diese Einstellung kann mit einer der folgenden unterstützten Methoden geändert werden:
 
 * Azure-Portal
 

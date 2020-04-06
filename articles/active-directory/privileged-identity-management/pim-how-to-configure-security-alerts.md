@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/13/2019
+ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 530eebea19d9e53f85a0079d6fba91c615ee6dd1
-ms.sourcegitcommit: 0a9419aeba64170c302f7201acdd513bb4b346c8
+ms.openlocfilehash: 86dbcdc24c90ba8b161b041af96cbdd0665ad827
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77498922"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227726"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Konfigurieren von Sicherheitswarnungen für Azure AD-Rollen in Privileged Identity Management
 
@@ -87,7 +87,7 @@ Dieser Abschnitt enthält alle Sicherheitswarnungen für Azure AD-Rollen sowie I
 | **Wie behebe ich das Problem?** | Überprüfen Sie die Konten in der Liste. Wenn kein Zugriff darauf mehr erforderlich ist, entfernen sie aus ihren privilegierten Rollen. |
 | **Prävention** | Stellen Sie sicher, dass die starken Kennwörter für freigegebenen Konten rotiert werden, wenn sich die Benutzer ändern, die das Kennwort kennen. </br>Überprüfen Sie Konten mit privilegierten Rollen regelmäßig mithilfe von [Zugriffsüberprüfungen](pim-how-to-start-security-review.md), und entfernen Sie nicht mehr benötigte Rollenzuweisungen. |
 | **Aktionen zur Risikominderung im Portal** | Entfernt das Konto aus der privilegierte Rolle. |
-| **bewährten Methoden** | Für freigegebene Konten sowie Dienst- und Notfallzugriffskonten, die ein Kennwort zur Authentifizierung verwenden und administrativen Rollen mit hohen Berechtigungen (z. B. der Rolle „Globaler Administrator“ oder „Sicherheitsadministrator“) zugewiesen sind, ist für die folgenden Fälle eine Kennwortrotation erforderlich:<ul><li>Nach einem Sicherheitsvorfall, bei dem administrative Zugriffsrechte missbraucht oder kompromittiert wurden</li><li>Nachdem die Berechtigungen eines Benutzers geändert wurden, sodass er kein Administrator mehr ist (beispielsweise nachdem ein Mitarbeiter, der ein Administrator war, die IT-Abteilung oder Organisation verlassen hat)</li><li>In regelmäßigen Abständen (z. B. vierteljährlich oder jährlich), auch wenn keine Sicherheitsverletzung bekannt ist oder kein Wechsel im IT-Personal stattgefunden hat</li></ul>Da mehrere Personen Zugriff auf die Anmeldeinformationen dieser Konten haben, sollte durch eine Rotation der Anmeldeinformationen sichergestellt werden, dass Personen, die ihre Rollen nicht mehr innehaben, keinen Zugriff auf die Konten mehr haben. [Weitere Informationen](https://aka.ms/breakglass) |
+| **bewährten Methoden** | Für freigegebene Konten sowie Dienst- und Notfallzugriffskonten, die ein Kennwort zur Authentifizierung verwenden und administrativen Rollen mit hohen Berechtigungen (z. B. der Rolle „Globaler Administrator“ oder „Sicherheitsadministrator“) zugewiesen sind, ist für die folgenden Fälle eine Kennwortrotation erforderlich:<ul><li>Nach einem Sicherheitsvorfall, bei dem administrative Zugriffsrechte missbraucht oder kompromittiert wurden</li><li>Nachdem die Berechtigungen eines Benutzers geändert wurden, sodass er kein Administrator mehr ist (beispielsweise nachdem ein Mitarbeiter, der ein Administrator war, die IT-Abteilung oder Organisation verlassen hat)</li><li>In regelmäßigen Abständen (z. B. vierteljährlich oder jährlich), auch wenn keine Sicherheitsverletzung bekannt ist oder kein Wechsel im IT-Personal stattgefunden hat</li></ul>Da mehrere Personen Zugriff auf die Anmeldeinformationen dieser Konten haben, sollte durch eine Rotation der Anmeldeinformationen sichergestellt werden, dass Personen, die ihre Rollen nicht mehr innehaben, keinen Zugriff auf die Konten mehr haben. [Erfahren Sie mehr über das Sichern von Konten.](../users-groups-roles/directory-admin-roles-secure.md) |
 
 ### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>Rollen werden außerhalb von Privileged Identity Management zugewiesen
 

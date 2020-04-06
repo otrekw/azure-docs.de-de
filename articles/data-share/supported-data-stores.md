@@ -6,12 +6,12 @@ author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 11c759dc8865da9de63e3acbfa1d4e26836d010a
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 624bb45de3e2ff184326949611d437f71f3e2def
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622445"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79501806"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Unterstützte Datenspeicher in Azure Data Share
 
@@ -50,7 +50,13 @@ In der folgenden Tabelle sind die verschiedenen Kombinationen und Auswahlmöglic
 Azure Data Share unterstützt die Freigabe von Dateien, Ordnern und Dateisystemen über Azure Data Lake Gen1 und Azure Data Lake Gen2. Außerdem unterstützt es die Freigabe von Blobs, Ordnern und Containern über Azure Blob Storage. Derzeit wird nur das Blockblob unterstützt. Wenn Ordner in einer auf Momentaufnahmen basierenden Freigabe freigegeben werden, kann der Datenconsumer wahlweise eine vollständige Kopie der Freigabedaten erstellen oder die Funktion der inkrementellen Momentaufnahme nutzen, um nur neue oder aktualisierte Dateien zu kopieren. Vorhandene Dateien mit demselben Namen werden überschrieben.
 
 ## <a name="share-from-a-sql-based-source"></a>Freigeben über eine SQL-basierte Quelle
-Azure Data Share unterstützt die Freigabe von Tabellen oder Sichten aus Azure SQL-Datenbank und Azure Synapse Analytics (ehemals „Azure SQL DW“). Der Datenconsumer kann die Daten wahlweise in Azure Data Lake Storage Gen2 oder Azure Blob Storage als CSV- oder Parquet-Datei akzeptieren. Die vollständige Momentaufnahme überschreibt den Inhalt der Zieldatei. Alternativ kann der Datenconsumer die Daten in einer SQL-Tabelle akzeptieren. Wenn die SQL-Zieltabelle auf der Datenconsumerseite nicht verfügbar ist, erstellt Azure Data Share die SQL-Tabelle mit dem Quellschema. Die vollständige Momentaufnahme fügt den Inhalt der Quelltabelle an die SQL-Zieltabelle an. Die inkrementelle Momentaufnahme wird derzeit nicht unterstützt.
+Azure Data Share unterstützt die Freigabe von Tabellen oder Sichten aus Azure SQL-Datenbank und Azure Synapse Analytics (ehemals „Azure SQL DW“). Der Datenconsumer kann die Daten wahlweise in Azure Data Lake Store Gen2 oder Azure Blob Storage als CSV- oder Parquet-Datei akzeptieren. Beachten Sie, dass CSV das standardmäßige Dateiformat ist. Der Datenconsumer kann die Daten bei Bedarf im Parquet-Format erhalten. Dies kann beim Empfang der Daten in den Datasetzuordnungseinstellungen erfolgen. 
+
+Wenn Sie Daten in Azure Data Lake Store Gen2 oder Azure Blob Storage akzeptieren, überschreiben vollständige Momentaufnahmen den Inhalt der Zieldatei. 
+
+Ein Datenconsumer kann auswählen, Daten in einer Tabelle seiner Wahl zu empfangen. Wenn die Zieltabelle in diesem Szenario nicht bereits vorhanden ist, erstellt Azure Data Share die SQL-Tabelle mit dem Quellschema. Wenn bereits eine Zieltabelle mit demselben Namen vorhanden ist, wird sie gelöscht und mit der letzten vollständigen Momentaufnahme überschrieben. Bei der Zuordnung der Zieltabelle können ein alternatives Schema und ein alternativer Tabellenname angegeben werden. Inkrementelle Momentaufnahmen werden derzeit nicht unterstützt. 
+
+Die Freigabe von SQL-basierten Quellen umfasst Voraussetzungen für Firewallregeln und -berechtigungen. Ausführliche Informationen finden Sie im Abschnitt zu den Voraussetzungen im [Tutorial: Freigeben von Daten mithilfe von Azure Data Share](share-your-data.md).
 
 ## <a name="share-from-azure-data-explorer"></a>Freigeben über Azure Data Explorer
 Azure Data Share unterstützt die Möglichkeit zur direkten Freigabe von Datenbanken über Azure Data Explorer-Cluster. Der Datenanbieter kann auf Datenbank- oder Clusterebene freigeben. Wenn der Datenconsumer auf Datenbankebene freigegeben wurde, kann er nur auf die vom Datenanbieter freigegebene(n) Datenbank(en) zugreifen. Wenn der Datenconsumer auf Clusterebene freigegeben wurde, kann er auf alle Datenbanken aus dem Cluster des Anbieters zugreifen, einschließlich zukünftiger Datenbanken, die vom Datenanbieter erstellt werden.

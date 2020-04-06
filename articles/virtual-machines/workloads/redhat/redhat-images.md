@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 7913cb888e1799efae0f3ecdf3391d19736cc273
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: f06c4304be67fbc2f3116375dae33b10228723a4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970151"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239880"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Übersicht über Red Hat Enterprise Linux-Images
 
@@ -45,22 +45,22 @@ az vm image list --publisher RedHat --all
 
 VM-Images in Azure sind nach Herausgeber, Angebot, SKU und Version organisiert. Die Kombination aus Herausgeber:Angebot:SKU:Version ist der Image-URN, durch den das zu verwendende Image eindeutig identifiziert wird.
 
-Beispielsweise verweist `RedHat:RHEL:7-LVM:7.6.2018103108` auf ein RHEL 7.6-Image mit LVM-Partitionierung (Logical Volume Manager), das am 31. Oktober 2018 erstellt wurde.
+Beispielsweise verweist `RedHat:RHEL:8-LVM:8.1.20200318` auf ein RHEL 8.1-Image mit LVM-Partitionierung (Logical Volume Manager), das am 18. März 2020 erstellt wurde.
 
-Ein Beispiel zum Erstellen einer RHEL 7.6-VM wird hier gezeigt.
+Ein Beispiel zum Erstellen einer RHEL 8.1-VM wird hier gezeigt.
 
 ```azurecli-interactive
-az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-LVM:7.6.2018103108 --no-wait
+az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:8.1.20200318 --no-wait
 ```
 
 ### <a name="the-latest-moniker"></a>Der Moniker „latest“
 
 Die Azure-REST-API ermöglicht die Verwendung des Monikers „latest“ für die Version anstelle der genauen Version. Mit „latest“ wird das neueste verfügbare Image für die angegebene Kombination aus Herausgeber, Angebot und SKU bereitgestellt.
 
-Beispielsweise verweist `RedHat:RHEL:7-LVM:latest` auf das neueste verfügbare Image der RHEL 7 Familie mit LVM-Partitionierung.
+Beispielsweise verweist `RedHat:RHEL:8-LVM:latest` auf das neueste verfügbare Image der RHEL 8-Familie mit LVM-Partitionierung.
 
 ```azurecli-interactive
-az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-LVM:latest --no-wait
+az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:8-LVM:latest --no-wait
 ```
 
 >[!NOTE]
@@ -104,8 +104,8 @@ Weitere Informationen zu RHEL 8-Imagetypen finden Sie unten.
 
 |Herausgeber | Angebot | SKU-Wert | Version | Details
 |----------|-------|------------|---------|--------
-|RedHat | RHEL | 8 | Verkettete Werte der RHEL-Nebenversion und des Veröffentlichungsdatums (z. B. 8.0.20191023) | Bei diesen Images handelt es sich um LVM-partitionierte RHEL 8.0-Images, die mit Standardrepositorys von Red Hat verbunden sind.
-|RedHat | RHEL | 8-gen2 | Verkettete Werte der RHEL-Nebenversion und des Veröffentlichungsdatums (z. B. 8.0.20191024) | Bei diesen Images handelt es sich um LVM-partitionierte Hyper-V Generation 2-RHEL 8.0-Images, die mit Standardrepositorys von Red Hat verbunden sind. Weitere Informationen zu VMs der Generation 2 finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2).
+|RedHat | RHEL | 8 | Verkettete Werte der RHEL-Nebenversion und des Veröffentlichungsdatums (z. B. 8.0.20191023) | Bei diesen Images handelt es sich um LVM-partitionierte RHEL 8-Images, die mit Standardrepositorys von Red Hat verbunden sind.
+|RedHat | RHEL | 8-gen2 | Verkettete Werte der RHEL-Nebenversion und des Veröffentlichungsdatums (z. B. 8.0.20191024) | Bei diesen Images handelt es sich um LVM-partitionierte Hyper-V Generation 2-RHEL 8-Images, die mit Standardrepositorys von Red Hat verbunden sind. Weitere Informationen zu VMs der Generation 2 finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2).
 
 ## <a name="rhel-longer-support-add-ons"></a>Längere RHEL-Unterstützung für Add-Ons
 

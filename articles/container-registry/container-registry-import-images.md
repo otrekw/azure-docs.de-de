@@ -2,13 +2,13 @@
 title: Importieren von Containerimages
 description: Importieren von Containerimages in eine Azure-Containerregistrierung mithilfe von Azure-APIs, ohne dass Docker-Befehle ausgeführt werden müssen
 ms.topic: article
-ms.date: 02/06/2019
-ms.openlocfilehash: e649447d7b9280dbebef1ae332c1f25910f5a516
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 03/16/2020
+ms.openlocfilehash: caf7a47ac8f7ff0e72d2e049a7013542d274a225
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456310"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80051919"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Importieren von Containerimages in eine Containerregistrierung
 
@@ -28,10 +28,10 @@ Der Imageimport in eine Azure-Containerregistrierung bietet gegenüber der Verwe
 
 * Wenn Sie Images mit mehreren Architekturen (etwa offizielle Docker-Images) importieren, werden Images für alle Architekturen und Plattformen kopiert, die in der Manifestliste angegeben sind.
 
-Damit Sie Containerimages importieren können, muss für diesen Artikel die Azure-Befehlszeilenschnittstelle in Azure Cloud Shell oder lokal (Version 2.0.55 oder höhere Version empfohlen) ausgeführt werden. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli].
+Damit Sie Containerimages importieren können, muss für diesen Artikel die Azure-Befehlszeilenschnittstelle in Azure Cloud Shell oder lokal (Version 2.0.55 oder höhere Version empfohlen) ausgeführt werden. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli].
 
 > [!NOTE]
-> Azure Container Registry unterstützt darüber hinaus die [Georeplikation](container-registry-geo-replication.md), falls Sie identische Containerimages auf mehrere Azure-Regionen verteilen müssen. Durch die Georeplikation einer Registrierung (Premium-SKU erforderlich) können Sie in mehreren Regionen identische Image- und Tagnamen aus einer einzelnen Registrierung bereitstellen.
+> Azure Container Registry unterstützt darüber hinaus die [Georeplikation](container-registry-geo-replication.md), falls Sie identische Containerimages auf mehrere Azure-Regionen verteilen müssen. Durch die Georeplikation einer Registrierung (Premium-Dienstebene erforderlich) können Sie in mehreren Regionen identische Image- und Tagnamen aus einer einzelnen Registrierung bereitstellen.
 >
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -47,19 +47,27 @@ Um ein Image in eine Azure-Containerregistrierung importieren zu können, muss I
 Verwenden Sie beispielsweise den Befehl [az acr import][az-acr-import], um das Image `hello-world:latest` mit mehreren Architekturen aus Docker Hub in eine Registrierung namens *myregistry* zu importieren. `hello-world` ist ein offizielles Image von Docker Hub und befindet sich daher im `library`-Standardrepository. Fügen Sie den Repositorynamen und optional ein Tag in den Wert des Imageparameters `--source` ein. (Optional können Sie ein Image anhand seines Manifest-Digest anstelle seines Tags bestimmen. Damit wird eine bestimmte Version eines Images garantiert.)
  
 ```azurecli
-az acr import --name myregistry --source docker.io/library/hello-world:latest --image hello-world:latest
+az acr import \
+  --name myregistry \
+  --source docker.io/library/hello-world:latest \
+  --image hello-world:latest
 ```
 
 Mit dem Befehl `az acr repository show-manifests` können Sie überprüfen, ob diesem Image mehrere Manifeste zugeordnet sind:
 
 ```azurecli
-az acr repository show-manifests --name myregistry --repository hello-world
+az acr repository show-manifests \
+  --name myregistry \
+  --repository hello-world
 ```
 
 Das folgende Beispiel importiert ein öffentliches Images aus dem Repository `tensorflow` in Docker Hub:
 
 ```azurecli
-az acr import --name myregistry --source docker.io/tensorflow/tensorflow:latest-gpu --image tensorflow:latest-gpu
+az acr import \
+  --name myregistry \
+  --source docker.io/tensorflow/tensorflow:latest-gpu \
+  --image tensorflow:latest-gpu
 ```
 
 ### <a name="import-from-microsoft-container-registry"></a>Importieren aus der Microsoft-Containerregistrierung
@@ -67,7 +75,10 @@ az acr import --name myregistry --source docker.io/tensorflow/tensorflow:latest-
 Importieren Sie beispielsweise das aktuelle Windows Server Core-Image aus dem Repository `windows` in die Microsoft-Containerregistrierung.
 
 ```azurecli
-az acr import --name myregistry --source mcr.microsoft.com/windows/servercore:latest --image servercore:latest
+az acr import \
+--name myregistry \
+--source mcr.microsoft.com/windows/servercore:latest \
+--image servercore:latest
 ```
 
 ## <a name="import-from-another-azure-container-registry"></a>Importieren aus einer anderen Azure-Containerregistrierung
@@ -83,21 +94,30 @@ Mithilfe integrierter Azure Active Directory-Berechtigungen können Sie ein Imag
 Importieren Sie beispielsweise das Image `aci-helloworld:latest` aus der Quellregistrierung *mysourceregistry* in *myregistry* im gleichen Azure-Abonnement.
 
 ```azurecli
-az acr import --name myregistry --source mysourceregistry.azurecr.io/aci-helloworld:latest --image hello-world:latest
+az acr import \
+  --name myregistry \
+  --source mysourceregistry.azurecr.io/aci-helloworld:latest \
+  --image aci-helloworld:latest
 ```
 
 Das folgende Beispiel importiert ein Image nicht anhand des Tags, sondern anhand des Manifest-Digest (SHA-256-Hash, dargestellt als `sha256:...`):
 
 ```azurecli
-az acr import --name myregistry --source mysourceregistry.azurecr.io/aci-helloworld@sha256:123456abcdefg 
+az acr import \
+  --name myregistry \
+  --source mysourceregistry.azurecr.io/aci-helloworld@sha256:123456abcdefg 
 ```
 
 ### <a name="import-from-a-registry-in-a-different-subscription"></a>Importieren aus einer Registrierung in einem anderen Abonnement
 
-Im folgenden Beispiel befindet sich *mysourceregistry* im gleichen Active Directory-Mandanten in einem anderen Abonnement als *myregistry*. Geben Sie die Ressourcen-ID der Quellregistrierung mit dem Parameter `--registry` an. Beachten Sie, dass der Parameter `--source` nur das Quellrepository und den Imagenamen, aber nicht den Namen des Anmeldeservers für die Registrierung angibt.
- 
+Im folgenden Beispiel befindet sich *mysourceregistry* im gleichen Active Directory-Mandanten in einem anderen Abonnement als *myregistry*. Geben Sie die Ressourcen-ID der Quellregistrierung mit dem Parameter `--registry` an. Beachten Sie, dass der Parameter `--source` nur das Quellrepository und Tag, aber nicht den Namen des Anmeldeservers für die Registrierung angibt.
+
 ```azurecli
-az acr import --name myregistry --source sourcerepo/aci-helloworld:latest --image aci-hello-world:latest --registry /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/mysourceregistry
+az acr import \
+  --name myregistry \
+  --source samples/aci-helloworld:latest \
+  --image aci-hello-world:latest \
+  --registry /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/mysourceregistry
 ```
 
 ### <a name="import-from-a-registry-using-service-principal-credentials"></a>Importieren aus einer Registrierung mit Dienstprinzipal-Anmeldeinformationen
@@ -105,7 +125,12 @@ az acr import --name myregistry --source sourcerepo/aci-helloworld:latest --imag
 Sie können für den Import aus einer Registrierung, auf die Sie nicht mit Active Directory-Berechtigungen zugreifen können, Anmeldeinformationen für einen Dienstprinzipal verwenden (sofern verfügbar). Geben Sie die App-ID und das Kennwort eines Active Directory-[Dienstprinzipals](container-registry-auth-service-principal.md) an, der über ACRPull-Zugriff auf die Quellregistrierung verfügt. Die Verwendung eines Dienstprinzipals empfiehlt sich für Buildsysteme und andere unbeaufsichtigte Systeme, die Images in Ihre Registrierung importieren müssen.
 
 ```azurecli
-az acr import --name myregistry --source sourceregistry.azurecr.io/sourcerepo/sourceimage:tag --image targetimage:tag --username <SP_App_ID> –-password <SP_Passwd>
+az acr import \
+  --name myregistry \
+  --source sourceregistry.azurecr.io/sourcerrepo:tag \
+  --image targetimage:tag \
+  --username <SP_App_ID> \
+  –-password <SP_Passwd>
 ```
 
 ## <a name="import-from-a-non-azure-private-container-registry"></a>Importieren aus einer Azure-fremden privaten Containerregistrierung
@@ -113,7 +138,12 @@ az acr import --name myregistry --source sourceregistry.azurecr.io/sourcerepo/so
 Importieren Sie ein Image aus einer privaten Registrierung, indem Sie Anmeldeinformationen angeben, die den Pullzugriff auf die Registrierung ermöglichen. Rufen Sie beispielsweise ein Image per Pull aus einer privaten Docker-Registrierung ab: 
 
 ```azurecli
-az acr import --name myregistry --source docker.io/sourcerepo/sourceimage:tag --image sourceimage:tag --username <username> --password <password>
+az acr import \
+  --name myregistry \
+  --source docker.io/sourcerepo/sourceimage:tag \
+  --image sourceimage:tag \
+  --username <username> \
+  --password <password>
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

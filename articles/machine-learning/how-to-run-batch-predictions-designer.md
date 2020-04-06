@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 02/24/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: fdda35d3a617a30169748f4f6b42c8726e7e3512
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 01d69bffcf2c17abceba8ba2e0893360bead8b12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920687"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477220"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>Ausführen von Batchvorhersagen mit dem Azure Machine Learning-Designer (Vorschau)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -43,13 +43,13 @@ Zum Erstellen einer Rückschlusspipeline muss Ihre Trainingspipeline mindestens 
 
 1. Wählen Sie die Trainingspipeline aus, mit der das Modell trainiert wird, mit dem Sie eine Vorhersage treffen möchten.
 
-1. **Führen** Sie die Pipeline aus.
+1. **Übermitteln** der Pipeline
 
-    ![Führen Sie die Pipeline aus.](./media/how-to-run-batch-predictions-designer/run-training-pipeline.png)
+    ![Übermitteln der Pipeline](./media/how-to-run-batch-predictions-designer/run-training-pipeline.png)
 
 Nachdem die Trainingspipeline ausgeführt wurde, können Sie nun eine Batchrückschlusspipeline erstellen.
 
-1. Wählen Sie neben **Ausführen** die neue Dropdownliste **Rückschlusspipeline erstellen** aus.
+1. Wählen Sie neben **Übermitteln** die neue Dropdownliste **Rückschlusspipeline erstellen** aus.
 
 1. Wählen Sie **Batchrückschlusspipeline** aus.
 
@@ -110,13 +110,13 @@ In diesem Abschnitt richten Sie eine manuelle Pipelineausführung ein und änder
 
     Auf der Seite mit den Pipelinedetails finden Sie ausführliche Informationen zum Ausführungsverlauf und zur Verbindungszeichenfolge für die Pipeline. 
     
-1. Wählen Sie **Ausführen** aus, um eine manuelle Ausführung der Pipeline zu erstellen.
+1. Wählen Sie **Übermitteln** aus, um eine manuelle Ausführung der Pipeline zu erstellen.
 
     ![Pipelinedetails](./media/how-to-run-batch-predictions-designer/submit-manual-run.png)
     
 1. Ändern Sie den Parameter, um ein anderes Dataset zu verwenden.
     
-1. Wählen Sie **Ausführen** aus, um die Pipeline auszuführen.
+1. Wählen Sie **Übermitteln** aus, um die Pipeline auszuführen.
 
 ### <a name="use-the-rest-endpoint"></a>Verwenden des REST-Endpunkts
 
@@ -145,3 +145,4 @@ Sie können auch eine neue Standardpipeline auf der Registerkarte **Veröffentli
 ## <a name="next-steps"></a>Nächste Schritte
 
 Zum Trainieren und Bereitstellen eines Regressionsmodells befolgen Sie die Schritte im Designer-[Tutorial](tutorial-designer-automobile-price-train-score.md).
+''

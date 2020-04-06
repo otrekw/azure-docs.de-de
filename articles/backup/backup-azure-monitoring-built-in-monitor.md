@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie mehr über die Überwachungs- und Be
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: ea5102a95a9bef17f25219e00dec4654bf7f06d6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: de5a82f5ad1d8113b27c07484f2f08f4cf97c759
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172875"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294935"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Überwachen von Azure Backup-Workloads
 
@@ -27,13 +27,13 @@ Im Folgenden werden die Aufträge der folgenden Azure Backup-Lösungen vorgestel
 
 - Azure VM Backup
 - Azure-Dateisicherung
-- Azure-Workloadsicherung wie SQL
+- Azure-Workloadsicherung wie SQL und SAP HANA
 - Azure Backup-Agent (Microsoft Azure Backup, MAB)
 
 Aufträge aus System Center Data Protection Manager (SC-DPM) und Microsoft Azure Backup Server (MABS) werden nicht aufgeführt.
 
 > [!NOTE]
-> Azure-Workloads wie SQL-Sicherungen in Azure-VMs umfassen viele Sicherungsaufträge. Protokollsicherungen können beispielsweise alle 15 Minuten ausgeführt werden. Für solche Datenbankworkloads werden darum nur vom Benutzer ausgelöste Vorgänge angezeigt. Geplante Sicherungsvorgänge werden nicht angezeigt.
+> Azure-Workloads wie SQL- und SAP HANA-Sicherungen in Azure-VMs umfassen viele Sicherungsaufträge. Protokollsicherungen können beispielsweise alle 15 Minuten ausgeführt werden. Für solche Datenbankworkloads werden darum nur vom Benutzer ausgelöste Vorgänge angezeigt. Geplante Sicherungsvorgänge werden nicht angezeigt.
 
 ## <a name="backup-alerts-in-recovery-services-vault"></a>Sicherungswarnungen im Recovery Services-Tresor
 
@@ -47,32 +47,37 @@ Die folgenden Szenarios werden vom Dienst als solche definiert, in denen Warnung
 - Sicherung mit Warnungen für Azure Backup-Agent (MAB) erfolgreich abgeschlossen
 - Beenden des Schutzes unter Beibehaltung der Daten/Beenden des Schutzes inklusive Löschung der Daten
 
-### <a name="exceptions-when-an-alert-is-not-raised"></a>Ausnahmen, bei denen keine Warnung ausgelöst wird
-
-Es gibt folgende Ausnahmefälle, in denen keine Warnung ausgelöst wird:
-
-- Wenn der Benutzer den ausgeführten Auftrag explizit abgebrochen hat
-- Wenn der Auftrag fehlschlägt, weil ein anderer Sicherungsauftrag gerade ausgeführt wird (keine Handlung erforderlich, da gewartet werden muss, bis der aktuelle Auftrag abgeschlossen ist)
-- Wenn der Sicherungsauftrag der VM fehlschlägt, weil die gesicherte Azure-VM nicht mehr existiert
-
-Diese Ausnahmen wurden eingeführt, weil das Ergebnis der oben aufgeführten Vorgänge, die in erster Linie vom Benutzer ausgelöst werden, direkt im Portal bzw. im PS- oder CLI-Client dargestellt wird. Sie sind dem Benutzer also bekannt, sodass keine Benachrichtigung erforderlich ist.
-
 ### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>Hier sehen Sie die Warnungen der folgenden Azure Backup-Lösungen:
 
 - Azure-VM-Sicherungen
 - Azure-Dateisicherungen
-- Azure-Workloadsicherungen wie SQL
+- Azure-Workloadsicherungen wie SQL, SAP HANA
 - Azure Backup-Agent (Microsoft Azure Backup, MAB)
 
 > [!NOTE]
 > Warnungen aus System Center Data Protection Manager (SC-DPM) und Microsoft Azure Backup Server (MABS) werden hier nicht aufgeführt.
+
+### <a name="consolidated-alerts"></a>Konsolidierte Warnungen
+
+Für Azure-Workloadsicherungslösungen wie SQL und SAP Hana können Protokollsicherungen sehr häufig generiert werden (gemäß der Richtlinie bis zu alle 15 Minuten). Es ist also auch möglich, dass die Fehler bei der Protokollsicherung sehr häufig auftreten (bis zu alle 15 Minuten). In diesem Szenario ist der Endbenutzer überfordert, wenn für jeden auftretenden Fehler eine Warnung ausgelöst wird. Daher wird für das erste Vorkommen eine Warnung gesendet, und wenn die nachfolgenden Fehler aufgrund derselben Grundursache auftreten, werden keine weiteren Warnungen generiert. Die erste Warnung wird mit der Fehleranzahl aktualisiert. Wenn die Warnung jedoch vom Benutzer deaktiviert wird, löst das nächste Vorkommen eine andere Warnung aus, und diese wird als erste Warnung für dieses Vorkommen behandelt. Auf diese Weise führt Azure Backup eine Warnungskonsolidierung für SQL- und SAP Hana-Sicherungen durch.
+
+### <a name="exceptions-when-an-alert-is-not-raised"></a>Ausnahmen, bei denen keine Warnung ausgelöst wird
+
+Es gibt folgende Ausnahmefälle, in denen keine Warnung ausgelöst wird. Sie lauten wie folgt:
+
+- Wenn der Benutzer den ausgeführten Auftrag explizit abgebrochen hat
+- Wenn der Auftrag fehlschlägt, weil ein anderer Sicherungsauftrag gerade ausgeführt wird (keine Handlung erforderlich, da gewartet werden muss, bis der aktuelle Auftrag abgeschlossen ist)
+- Wenn der Sicherungsauftrag der VM fehlschlägt, weil die gesicherte Azure-VM nicht mehr existiert
+- [Konsolidierte Warnungen](#consolidated-alerts)
+
+Diese Ausnahmen wurden eingeführt, weil das Ergebnis der oben aufgeführten Vorgänge, die in erster Linie vom Benutzer ausgelöst werden, direkt im Portal bzw. im PS- oder CLI-Client dargestellt wird. Sie sind dem Benutzer also bekannt, sodass keine Benachrichtigung erforderlich ist.
 
 ### <a name="alert-types"></a>Warnungstypen
 
 Je nach Schweregrad der Warnung werden diese drei Arten zugeordnet:
 
 - **Kritisch**: Im Prinzip führt jeder Fehler bei der Sicherung oder Wiederherstellung (geplant oder vom Benutzer ausgelöst) zu einer Warnung, die als „Kritisch“ angezeigt wird. Das gilt auch für destruktive Vorgänge wie das Löschen der Sicherung.
-- **Warnung**: Wenn der Sicherungsvorgang erfolgreich war, aber einige Warnungen auslöst werden, werden diese als „Warnung“ aufgeführt.
+- **Warnung:** Wenn der Sicherungsvorgang erfolgreich war, aber einige Warnungen auslöst werden, werden diese als „Warnung“ aufgeführt.
 - **Informativ:** Derzeit werden keine informativen Warnungen von Azure Backup generiert.
 
 ## <a name="notification-for-backup-alerts"></a>Benachrichtigungen für Azure Backup-Warnungen
@@ -83,9 +88,6 @@ Je nach Schweregrad der Warnung werden diese drei Arten zugeordnet:
 Wenn eine Warnung ausgelöst wird, werden die Benutzer benachrichtigt. Azure Backup enthält einen Mechanismus, der Benachrichtigungen per E-Mail sendet. Sie können einzelne E-Mail-Adressen oder Verteilerlisten angeben, die benachrichtigt werden sollen, wenn eine Warnung generiert wurde. Sie können ebenfalls Benachrichtigungen für jede einzelne Warnung aktivieren oder diese in einer stündlichen Übersicht gruppieren.
 
 ![Im Recovery Services-Tresor integrierte E-Mail-Benachrichtigung](media/backup-azure-monitoring-laworkspace/rs-vault-inbuiltnotification.png)
-
-> [!NOTE]
-> Die Warnungen für SQL-Sicherungen werden konsolidiert, und die E-Mail-Benachrichtigung wird nur für das erste Vorkommen gesendet. Wenn die Warnung jedoch vom Benutzer deaktiviert wird, löst das nächste Vorkommen eine weitere E-Mail aus.
 
 Wenn Sie die Benachrichtigungen konfiguriert haben, erhalten Sie eine Begrüßungs-E-Mail bzw. eine einführende E-Mail. Dadurch wird bestätigt, dass Azure Backup E-Mails an diese Adressen senden kann, wenn eine Warnung ausgelöst wird.<br>
 

@@ -1,19 +1,18 @@
 ---
 title: Azure-Tabelle im kommerziellen Marketplace-Programm | Azure Marketplace
 description: Konfigurieren der Leadverwaltung für Azure Blob
-services: Azure, Marketplace, commercial marketplace, Partner Center
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 7/30/2019
-ms.author: evansma
-ms.openlocfilehash: 5da4e0ab315b3f66a477b816f6fc5d27de7aa339
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 062252b007e22fcd2644c8b647fc0ecc2f5938cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812367"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285247"
 ---
 # <a name="lead-management-instructions-for-azure-blob"></a>Anweisungen für die Leadverwaltung für Azure Blob
 

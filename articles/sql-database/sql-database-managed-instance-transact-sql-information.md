@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
-ms.date: 02/10/2020
+ms.date: 03/11/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: d3e631fae4899fffafad9bd140abaae4fb170624
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: e01c61ca4f415ffbb46c86034d4b7441bc2617d9
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462580"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365496"
 ---
-# <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Verwaltete Instanz, T-SQL-Unterschiede, Einschränkungen und bekannte Probleme
+# <a name="managed-instance-t-sql-differences-and-limitations"></a>T-SQL-Unterschiede bei verwalteten Instanzen und Einschränkungen
 
 In diesem Artikel werden die Unterschiede in der Syntax und dem Verhalten zwischen einer verwalteten Azure SQL-Datenbank-Instanz und einer lokalen SQL Server-Datenbank-Engine zusammengefasst und erläutert. Die Bereitstellungsoption „Verwaltete Instanz“ bietet umfassende Kompatibilität mit einer lokalen SQL Server-Datenbank-Engine. Die meisten Features der SQL Server-Datenbank-Engine werden in verwalteten Instanzen unterstützt.
 
@@ -34,11 +34,11 @@ Es gibt einige PaaS-Einschränkungen, die in der verwalteten Instanz eingeführt
 
 Die meisten dieser Features sind architekturbezogene Einschränkungen und stellen Dienstfeatures dar.
 
-Auf dieser Seite werden auch [temporäre bekannte Probleme](#Issues) erläutert, die in einer verwalteten Instanz erkannt wurden und in Zukunft behoben werden.
+Temporäre bekannte Probleme, die in einer verwalteten Instanz erkannt wurden und in Zukunft behoben werden, werden in [Versionshinweisen](sql-database-release-notes.md) beschrieben.
 
 ## <a name="availability"></a>Verfügbarkeit
 
-### <a name="always-on-availability-groups"></a>Always On-Verfügbarkeitsgruppen
+### <a name="always-on-availability-groups"></a><a name="always-on-availability-groups"></a>Always On-Verfügbarkeitsgruppen
 
 [Hochverfügbarkeit](sql-database-high-availability.md) ist in verwalteten Instanzen integriert und kann von Benutzern nicht gesteuert werden. Folgende Anweisungen werden nicht unterstützt:
 
@@ -65,7 +65,6 @@ Einschränkungen:
 
 - Bei verwalteten Instanzen können Sie eine Instanzdatenbank in einer Sicherung mit bis zu 32 Stripes sichern. Dies ist ausreichend für Datenbanken mit bis zu 4 TB, wenn die Sicherungskomprimierung verwendet wird.
 - Sie können `BACKUP DATABASE ... WITH COPY_ONLY` nicht in einer Datenbank ausführen, die mit vom Dienst verwalteter Transparent Data Encryption (TDE) verschlüsselt ist. Die vom Dienst verwaltete TDE erzwingt die Verschlüsselung von Sicherungen mit einem internen TDE-Schlüssel. Der Schlüssel kann nicht exportiert werden, daher können Sie die Sicherung nicht wiederherstellen. Verwenden Sie automatische Sicherungen und die Point-in-Time-Wiederherstellung, oder verwenden Sie stattdessen [vom Kunden verwaltete Transparent Data Encryption – BYOK (Bring Your Own Key)](transparent-data-encryption-azure-sql.md#customer-managed-transparent-data-encryption---bring-your-own-key). Sie können die Verschlüsselung für die Datenbank auch deaktivieren.
-- Manuelle Sicherungen in Azure-Blobspeicher werden nur für [BlockBlobStorage-Konten](/azure/storage/common/storage-account-overview#types-of-storage-accounts) unterstützt.
 - Die maximale Stripegröße für Sicherungen mit dem Befehl `BACKUP` in einer verwalteten Instanz beträgt 195 GB. Dies ist die maximale Blobgröße. Erhöhen Sie die Streifenanzahl im Backup-Befehl, um die einzelne Streifengröße zu reduzieren und innerhalb dieser Einschränkungen zu bleiben.
 
     > [!TIP]
@@ -140,8 +139,8 @@ Eine verwaltete Instanz kann nicht auf Dateien zugreifen. Daher können keine Kr
     Verwaltete Instanzen unterstützen Azure AD-Datenbankprinzipale mit der Syntax `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`. Dieses Feature wird auch als Azure AD-Benutzer für eigenständige Datenbanken bezeichnet.
 
 - Windows-Anmeldungen, die mit der Syntax `CREATE LOGIN ... FROM WINDOWS` erstellt wurden, werden nicht unterstützt. Verwenden Sie Azure Active Directory-Anmeldungen und -Benutzer.
-- Der Azure AD-Benutzer, der die Instanz erstellt hat, verfügt über [uneingeschränkte Administratorrechte](sql-database-manage-logins.md#unrestricted-administrative-accounts).
-- Azure AD-Benutzer auf Datenbankebene ohne Administratorrechte können mit der Syntax `CREATE USER ... FROM EXTERNAL PROVIDER` erstellt werden. Siehe [CREATE USER ... FROM EXTERNAL PROVIDER](sql-database-manage-logins.md#non-administrator-users).
+- Der Azure AD-Benutzer, der die Instanz erstellt hat, verfügt über [uneingeschränkte Administratorrechte](sql-database-manage-logins.md).
+- Azure AD-Benutzer auf Datenbankebene ohne Administratorrechte können mit der Syntax `CREATE USER ... FROM EXTERNAL PROVIDER` erstellt werden. Siehe [CREATE USER ... FROM EXTERNAL PROVIDER](sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities).
 - Azure AD-Serverprinzipale (Anmeldungen) unterstützen SQL-Funktionen nur innerhalb einer verwalteten Instanz. Funktionen, die eine instanzübergreifende Interaktion erfordern – unabhängig davon, ob innerhalb desselben Azure AD-Mandanten oder in verschiedenen Mandanten –, werden für Azure AD-Benutzer nicht unterstützt. Beispiele für solche Funktionen:
 
   - SQL-Transaktionsreplikation
@@ -470,6 +469,7 @@ Der instanzübergreifende Service Broker wird nicht unterstützt:
   - `allow polybase export`
   - `allow updates`
   - `filestream_access_level`
+  - `remote access`
   - `remote data archive`
   - `remote proc trans`
 - `sp_execute_external_scripts` wird nicht unterstützt. Siehe [sp_execute_external_scripts](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples).
@@ -489,7 +489,7 @@ Die folgenden Variablen, Funktionen und Sichten geben abweichende Ergebnisse zur
 - `SUSER_ID` wird unterstützt. Gibt NULL zurück, wenn die Azure AD-Anmeldung in „sys.syslogins“ nicht vorhanden ist. Siehe [SUSER_ID](/sql/t-sql/functions/suser-id-transact-sql). 
 - `SUSER_SID` wird nicht unterstützt. Es werden falsche Daten zurückgegeben. Dies ist ein bekanntes vorübergehendes Problem. Siehe [SUSER_SID](/sql/t-sql/functions/suser-sid-transact-sql). 
 
-## <a name="Environment"></a>Umgebungseinschränkungen
+## <a name="environment-constraints"></a><a name="Environment"></a>Umgebungseinschränkungen
 
 ### <a name="subnet"></a>Subnet
 -  Sie können keine anderen Ressourcen (z. B. virtuelle Computer) in dem Subnetz platzieren, in dem Sie Ihre verwaltete Instanz bereitgestellt haben. Stellen Sie diese Ressourcen in einem anderen Subnetz bereit.
@@ -531,181 +531,9 @@ Die folgenden MSDB-Schemas in der verwalteten Instanz müssen ihren jeweiligen v
 
 Eine verwaltete Instanz stellt ausführliche Informationen in Fehlerprotokollen zur Verfügung. Es gibt viele interne Systemereignisse, die im Fehlerprotokoll protokolliert werden. Verwenden Sie zum Lesen von Fehlerprotokollen eine benutzerdefinierte Prozedur, die einige nicht relevante Einträge herausfiltert. Weitere Informationen finden Sie unter [Verwaltete Instanz – sp_readmierrorlog ](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) oder [Verwaltete Instanzerweiterung (Vorschauversion)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) für Azure Data Studio.
 
-## <a name="Issues"></a> Bekannte Probleme
-
-
-### <a name="limitation-of-manual-failover-via-portal-for-failover-groups"></a>Einschränkung beim manuellen Failover über das Portal für Failovergruppen
-
-**Datum:** Januar 2020
-
-Wenn sich die Failovergruppe über mehrere Instanzen in verschiedenen Azure-Abonnements oder Ressourcengruppen erstreckt, kann von der primären Instanz in der Failovergruppe kein manuelles Failover initiiert werden.
-
-**Problemumgehung**: Initiieren Sie das Failover über das Portal von der geosekundären Instanz.
-
-### <a name="sql-agent-roles-need-explicit-execute-permissions-for-non-sysadmin-logins"></a>SQL-Agent-Rollen benötigen explizite EXECUTE-Berechtigungen für Anmeldungen, die keine Systemadministratoranmeldungen sind
-
-**Datum:** Dezember 2019
-
-Wenn Nicht-Systemadministratoranmeldungen einer der [festen SQL-Agent-Datenbankrollen](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent-fixed-database-roles) hinzugefügt werden, gibt es ein Problem, bei dem den gespeicherten Masterprozeduren explizite EXECUTE-Berechtigungen gewährt werden müssen, damit diese Anmeldungen funktionieren. Wenn dieses Problem auftritt, wird die Fehlermeldung „The EXECUTE permission was denied on the object <object_name> (Microsoft SQL Server, Error: 229)“ (Die Berechtigung EXECUTE wurde für das Objekt <objekt_name> verweigert (Microsoft SQL Server, Fehler: 229) angezeigt.
-
-**Problemumgehung**: Nachdem Sie einer der festen SQL-Agent-Datenbankrollen (SQLAgentUserRole, SQLAgentReaderRole oder SQLAgentOperatorRole) Anmeldungen hinzugefügt haben, führen Sie für jede Anmeldung, die diesen Rollen hinzugefügt wurde, das folgende T-SQL-Skript aus, um den aufgelisteten gespeicherten Prozeduren explizit EXECUTE-Berechtigungen zu erteilen.
-
-```tsql
-USE [master]
-GO
-CREATE USER [login_name] FOR LOGIN [login_name]
-GO
-GRANT EXECUTE ON master.dbo.xp_sqlagent_enum_jobs TO [login_name]
-GRANT EXECUTE ON master.dbo.xp_sqlagent_is_starting TO [login_name]
-GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
-```
-
-### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>SQL Agent-Aufträge können durch den Neustart des Agent-Prozesses unterbrochen werden
-
-**Datum:** Dezember 2019
-
-Der SQL-Agent erstellt jedes Mal, wenn der Auftrag gestartet wird, eine neue Sitzung und erhöht den Speicherverbrauch allmählich. Um zu vermeiden, dass die interne Arbeitsspeichergrenze erreicht wird, wodurch die Ausführung geplanter Aufträge blockiert würde, wird der Agent-Prozess neu gestartet, sobald der Arbeitsspeicherverbrauch den Schwellenwert erreicht. Dies kann dazu führen, dass die Ausführung von Aufträgen unterbrochen wird, die zum Zeitpunkt des Neustarts ausgeführt werden.
-
-### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>In-Memory-OLTP-Arbeitsspeicherlimits werden nicht angewendet.
-
-**Datum:** Oktober 2019
-
-In einigen Fällen wird die Dienstebene „Unternehmenskritisch“ [maximale Arbeitsspeicherlimits für speicheroptimierte Objekte](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space) nicht ordnungsgemäß anwenden. Die verwaltete Instanz ermöglicht es vielleicht, dass die Workload mehr Arbeitsspeicher für In-Memory-OLTP-Vorgänge belegt. Dies kann sich auf die Verfügbarkeit und Stabilität der Instanz auswirken. In-Memory-OLTP-Abfragen, die die Grenzwerte erreichen, führen möglicherweise nicht sofort zu Fehlern. Dieses Problem wird bald behoben. Die Abfragen, die mehr In-Memory-OLTP-Arbeitsspeicher belegen, werden früher fehlschlagen, wenn sie die [Limits](sql-database-managed-instance-resource-limits.md#in-memory-oltp-available-space) erreichen.
-
-**Problemumgehung:** [Überwachen der In-Memory-OLTP-Arbeitsspeichernutzung](https://docs.microsoft.com/azure/sql-database/sql-database-in-memory-oltp-monitoring) mithilfe von [SQL Server Management Studio ](/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage#bkmk_Monitoring), um sicherzustellen, dass die Workload nicht mehr als den verfügbaren Arbeitsspeicher belegt. Erhöhen Sie die Arbeitsspeicherlimits, die von der Anzahl von virtuellen Kernen abhängen, oder optimieren Sie Ihre Workload, damit sie weniger Arbeitsspeicher belegt.
-
-### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>Zurückgegebener Fehler bei dem Versuch, eine nicht leere Datei zu entfernen
-
-**Datum:** Oktober 2019
-
-SQL Server/Verwaltete Instanz [erlaubt Benutzern nicht das Löschen von Dateien, die nicht leer sind](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). Wenn Sie versuchen, eine nicht leere Datendatei mithilfe der `ALTER DATABASE REMOVE FILE`-Anweisung zu entfernen, wird der Fehler `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` nicht sofort zurückgegeben. Die verwaltete Instanz versucht fortgesetzt, die Datei zu löschen, und der Vorgang schlägt nach 30 Minuten mit `Internal server error` fehl.
-
-**Problemumgehung**: Entfernen Sie den Inhalt der Datei mit dem `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)`-Befehl. Wenn es sich um die einzige Datei in der Dateigruppe handelt, müssten Sie Daten aus der Tabelle oder Partition löschen, die dieser Dateigruppe zugeordnet ist, bevor Sie die Datei verkleinern, und diese Daten optional in eine andere Tabelle/Partition laden.
-
-### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore"></a>Das Ändern der Dienstebene und Erstellen von Instanzvorgängen wird durch die laufende Datenbankwiederherstellung blockiert
-
-**Datum:** September 2019
-
-Durch die laufende `RESTORE`-Anweisung blockieren der Migrationsprozess des Datenmigrationsdiensts und die integrierte Point-in-Time-Wiederherstellung das Aktualisieren der Dienstebene oder eine Größenänderung bei der vorhandenen Instanz sowie das Erstellen neuer Instanzen so lange, bis der Wiederherstellungsvorgang abgeschlossen ist. Der Wiederherstellungsvorgang blockiert diese Vorgänge für die verwalteten Instanzen und Instanzenpools in demselben Subnetz, in dem der Wiederherstellungsvorgang ausgeführt wird. Die Instanzen in Instanzenpools sind davon nicht betroffen. Die Vorgänge des Erstellens oder Änderns von Dienstebenen führen nicht zu einem Fehler oder Timeout. Sie werden nach dem Abschluss oder einem Abbrechen des Wiederherstellungsvorgangs fortgesetzt.
-
-**Problemumgehung**: Warten Sie, bis der Wiederherstellungsvorgang abgeschlossen ist, oder brechen Sie ihn ab, wenn der Vorgang des Erstellens oder Aktualisierens der Dienstebene höhere Priorität hat.
-
-### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Resource Governor auf Dienstebene „Unternehmenskritisch“ muss möglicherweise nach einem Failover neu konfiguriert werden
-
-**Datum:** September 2019
-
-Die Funktion [Resource Governor](/sql/relational-databases/resource-governor/resource-governor), die Ihnen ermöglicht, die der Benutzerworkload zugewiesenen Ressourcen einzuschränken, könnte eine andere Benutzerworkload nach einem Failover oder einer vom Benutzer initiierten Änderung der Dienstebene (z. B. Änderung der maximalen virtuellen Kerne oder maximalen Instanzspeichergröße) falsch klassifizieren.
-
-**Problemumgehung**: Führen Sie `ALTER RESOURCE GOVERNOR RECONFIGURE` regelmäßig oder als Teil des SQL Agent-Auftrags aus, der den SQL-Task ausführt, wenn die Instanz gestartet wird, wenn Sie [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) verwenden.
-
-### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Datenbankübergreifende Service Broker-Dialoge müssen nach dem Upgrade der Dienstebene erneut initialisiert werden.
-
-**Datum:** August 2019
-
-Datenbankübergreifenden Service Broker-Dialoge stellen die Zustellung der Nachrichten an die Dienste in anderen Datenbanken nach Änderung der Dienstebene ein. Die Nachrichten sind **nicht verloren**, sondern befinden sich in der Absenderwarteschlange. Jegliche Änderung virtueller Kerne oder der Instanzspeichergröße in der verwalteten Instanz führt dazu, dass der Wert `service_broke_guid` in der Sicht [sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) für alle Datenbanken geändert wird. Ein `DIALOG`, der mit der Anweisung [BEGIN DIALOG](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) erstellt wurde und auf Service Broker in einer anderen Datenbank verweist, stellt die Zustellung von Nachrichten an den Zieldienst ein.
-
-**Problemumgehung:** Beenden Sie alle Aktivitäten, die datenbankübergreifende Dialogkonversationen des Service Brokers verwenden, bevor Sie die Dienstebene aktualisieren, und initialisieren Sie sie danach neu. Wenn es noch Nachrichten gibt, die nach dem Ändern der Dienstebene nicht zugestellt werden, lesen Sie die Nachrichten aus der Quellwarteschlange, und senden Sie sie erneut an die Zielwarteschlange.
-
-### <a name="impersonification-of-azure-ad-login-types-is-not-supported"></a>Identitätswechsel für Azure AD-Anmeldetypen werden nicht unterstützt.
-
-**Datum:** Juli 2019
-
-Der Identitätswechsel mithilfe von `EXECUTE AS USER` oder `EXECUTE AS LOGIN` der folgenden AAD-Prinzipale wird nicht unterstützt:
--   AAD-Benutzer mit Alias. In diesem Fall wird der Fehler `15517` zurückgegeben.
-- AAD-Anmeldungen und-Benutzer, die auf AAD-Anwendungen oder -Dienstprinzipalen basieren. In diesem Fall werden die Fehler `15517` und `15406` zurückgegeben.
-
-### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>Der Parameter @query wird in sp_send_db_mail nicht unterstützt.
-
-**Datum:** April 2019
-
-Der `@query`-Parameter in der Prozedur [sp_send_db_mail](/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) funktioniert nicht.
-
-### <a name="transactional-replication-must-be-reconfigured-after-geo-failover"></a>Die Transaktionsreplikation muss nach einem geografischen Failover neu konfiguriert werden.
-
-**Datum:** März 2019
-
-Wenn die Transaktionsreplikation für eine Datenbank in einer Autofailover-Gruppe aktiviert ist, muss der Administrator der verwalteten Instanz alle Veröffentlichungen für die alte primäre Instanz bereinigen und nach einem Failover in eine andere Region für die neue primäre Instanz erneut konfigurieren. Weitere Informationen finden Sie unter [Replikation](#replication).
-
-### <a name="aad-logins-and-users-are-not-supported-in-ssdt"></a>AAD-Anmeldungen und -Benutzer werden in SSDT nicht unterstützt.
-
-**Datum:** November 2019
-
-SQL Server Data Tools unterstützen Azure Active Directory-Anmeldungen und -Benutzer nicht vollständig.
-
-### <a name="temporary-database-is-used-during-restore-operation"></a>Temporäre Datenbank wird während des RESTORE-Vorgangs verwendet
-
-Wenn eine Datenbank auf einer verwalteten Instanz wiederhergestellt wird, erstellt der Wiederherstellungsdienst zunächst eine leere Datenbank mit dem gewünschten Namen, um den Namen auf der Instanz zuzuweisen. Nach einiger Zeit wird diese Datenbank gelöscht, und die Wiederherstellung der eigentlichen Datenbank wird gestartet. Die Datenbank, die sich im Status *Wird wiederhergestellt* befindet, weist temporär einen zufälligen GUID-Wert anstelle des Namens auf. Nachdem der Wiederherstellungsvorgang abgeschlossen ist, wird der temporäre Name in den in der `RESTORE`-Anweisung angegebenen gewünschten Namen geändert. In der Anfangsphase kann der Benutzer auf die leere Datenbank zugreifen und sogar Tabellen erstellen oder Daten in diese Datenbank laden. Diese temporäre Datenbank wird gelöscht, wenn der Wiederherstellungsdienst die zweite Phase startet.
-
-**Problemumgehung**: Greifen Sie erst dann auf die Datenbank zu, die Sie wiederherstellen, wenn Sie feststellen, dass die Wiederherstellung abgeschlossen ist.
-
-### <a name="tempdb-structure-and-content-is-re-created"></a>Struktur und Inhalt von TEMPDB werden neu erstellt.
-
-Die Datenbank `tempdb` ist immer in 12 Datendateien aufgeteilt, und die Dateistruktur kann nicht geändert werden. Die maximale Größe pro Datei kann nicht geändert werden. Zudem können `tempdb` keine neuen Dateien hinzugefügt werden. `Tempdb` wird beim Start oder Failover einer Instanz immer als leere Datenbank neu erstellt. Änderungen an `tempdb` werden nicht beibehalten.
-
-### <a name="exceeding-storage-space-with-small-database-files"></a>Überschreiten des Speicherplatzes mit kleinen Datenbankdateien
-
-`CREATE DATABASE`-, `ALTER DATABASE ADD FILE`- und `RESTORE DATABASE`-Anweisungen schlagen möglicherweise fehl, weil die Instanz das Azure-Speicherlimit erreichen kann.
-
-Jede verwaltete Instanz in der Dienstebene „Universell“ reserviert bis zu 35 TB Speicherplatz für Azure Premium-Datenträger. Jede Datenbankdatei wird auf einem separaten physischen Datenträger platziert. Mögliche Datenträgergrößen sind 128 GB, 256 GB, 512 GB, 1 TB oder 4 TB. Nicht verwendeter Speicherplatz auf dem Datenträger wird nicht berechnet, aber die Gesamtgröße der Azure Premium-Datenträger darf 35 TB nicht überschreiten. In einigen Fällen kann eine verwaltete Instanz, die nicht insgesamt 8 TB benötigt, aufgrund interner Fragmentierung das Azure-Limit von 35 TB überschreiten.
-
-Ein Beispiel: In einer verwalteten Instanz der Dienstebene „Universell“ gibt es eine große Datei (1,2 TB), die auf einem 4-TB-Datenträger gespeichert ist. Es kann auch 248 Dateien mit einer Größe von jeweils 1 GB geben, die auf separaten 128-GB-Datenträgern gespeichert sind. In diesem Beispiel:
-
-- Die Gesamtgröße des zugewiesenen Datenträgerspeichers beträgt 1 x 4 TB + 248 x 128 GB = 35 TB.
-- Der reservierte Gesamtspeicherplatz für Datenbanken in der Instanz beträgt 1 x 1,2 TB + 248 x 1 GB = 1,4 TB.
-
-Dieses Beispiel verdeutlicht, dass eine verwaltete Instanz unter bestimmten Umständen aufgrund einer spezifischen Verteilung von Dateien das für einen angefügten Azure Premium-Datenträger reservierte Limit von 35 TB erreichen kann, auch wenn Sie dies möglicherweise nicht erwarten.
-
-In diesem Beispiel funktionieren vorhandene Datenbanken weiterhin und können ohne Probleme weiter wachsen, solange keine neuen Dateien hinzugefügt werden. Es könnten jedoch keine neuen Datenbanken erstellt oder wiederhergestellt werden, da für neue Datenträgerlaufwerke nicht genügend Speicherplatz vorhanden ist, selbst nicht dann, wenn die Gesamtgröße aller Datenbanken das Größenlimit der Instanz nicht überschreitet. Der Fehler, der in diesem Fall zurückgegeben wird, ist nicht klar.
-
-Sie können mithilfe von Systemansichten [die Anzahl von verbleibenden Dateien identifizieren](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1). Wenn Sie dieses Limit erreichen, versuchen Sie, [einige der kleineren Dateien mithilfe der DBCC SHRINKFILE-Anweisung zu leeren und zu löschen](/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file), oder wechseln Sie zur [Dienstebene „Unternehmenskritisch“, für die dieses Limit nicht gilt](/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
-
-### <a name="guid-values-shown-instead-of-database-names"></a>Anstelle von Datenbanknamen werden GUID-Werte gezeigt.
-
-Mehrere Systemansichten, Leistungsindikatoren, Fehlermeldungen, XEvents und Fehlerprotokolleinträge zeigen GUID-Datenbankbezeichner anstelle der eigentlichen Datenbanknamen an. Verlassen Sie sich nicht auf diese GUIDs, da sie in Zukunft durch tatsächliche Datenbanknamen ersetzt werden.
-
-### <a name="error-logs-arent-persisted"></a>Fehlerprotokolle werden nicht persistent gespeichert
-
-Die Fehlerprotokolle in einer verwalteten Instanz werden nicht persistent gespeichert, und ihre Größe wird im Speicherlimit nicht berücksichtigt. Fehlerprotokolle werden im Falle eines Failovers möglicherweise automatisch gelöscht. Möglicherweise gibt es Lücken im Fehlerprotokollverlauf, weil die verwaltete Instanz auf mehreren virtuellen Computern mehrmals verschoben wurde.
-
-### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>Ein Transaktionsbereich in zwei Datenbanken in derselben Instanz wird nicht unterstützt
-
-Die `TransactionScope`-Klasse in .NET funktioniert nicht, wenn zwei Abfragen an zwei Datenbanken in derselben Instanz im gleichen Transaktionsbereich gesendet werden:
-
-```csharp
-using (var scope = new TransactionScope())
-{
-    using (var conn1 = new SqlConnection("Server=quickstartbmi.neu15011648751ff.database.windows.net;Database=b;User ID=myuser;Password=mypassword;Encrypt=true"))
-    {
-        conn1.Open();
-        SqlCommand cmd1 = conn1.CreateCommand();
-        cmd1.CommandText = string.Format("insert into T1 values(1)");
-        cmd1.ExecuteNonQuery();
-    }
-
-    using (var conn2 = new SqlConnection("Server=quickstartbmi.neu15011648751ff.database.windows.net;Database=b;User ID=myuser;Password=mypassword;Encrypt=true"))
-    {
-        conn2.Open();
-        var cmd2 = conn2.CreateCommand();
-        cmd2.CommandText = string.Format("insert into b.dbo.T2 values(2)");        cmd2.ExecuteNonQuery();
-    }
-
-    scope.Complete();
-}
-
-```
-
-Obwohl dieser Code mit Daten innerhalb derselben Instanz funktioniert, erforderte er MS DTC.
-
-**Problemumgehung:** Verwenden Sie [SqlConnection.ChangeDatabase(String)](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase), um anstelle von zwei Verbindungen eine andere Datenbank im Verbindungskontext zu verwenden.
-
-### <a name="clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address"></a>CLR-Module und Verbindungsserver können manchmal nicht auf eine lokale IP-Adresse verweisen
-
-CLR-Module, die in einer verwalteten Instanz bereitgestellt werden, und Verbindungsserver oder verteilte Abfragen, die auf eine aktuelle Instanz verweisen, können die IP-Adresse der lokalen Instanz manchmal nicht auflösen. Dieser Fehler ist ein vorübergehendes Problem.
-
-**Problemumgehung:** Verwenden Sie nach Möglichkeit Kontextverbindungen im CLR-Modul.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu verwalteten Instanzen finden Sie unter [Was ist eine verwaltete Instanz?](sql-database-managed-instance.md)
 - Informationen zu den Funktionen und eine Vergleichsliste finden Sie unter [Funktionsvergleich: Azure SQL-Datenbank und SQL Server](sql-database-features.md).
+- Informationen zu Releaseupdates und bekannten Problemen finden Sie unter [Versionshinweise zu SQL-Datenbank](sql-database-release-notes.md)
 - Einen Schnellstart zum Erstellen einer neuen verwalteten Instanz finden Sie unter [Erstellen einer verwalteten Instanz](sql-database-managed-instance-get-started.md).

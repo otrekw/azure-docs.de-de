@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f7fbc82c08d89d73d671a49fb31b9d3cca01c721
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 6962a264787bd8a55b6f6a2ebdb6eeb615c33d5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195514"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218400"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Einrichten von Azure Key Vault mit Schlüsselrotation und Überwachung
 
@@ -23,21 +23,16 @@ ms.locfileid: "78195514"
 
 Nach dem Erstellen eines Schlüsseltresors können Sie Schlüssel und Geheimnisse in diesem Tresor speichern. Ihre Schlüssel und Geheimnisse müssen in Ihren Anwendungen nicht mehr dauerhaft gespeichert werden, sondern können bei Bedarf aus dem Tresor angefordert werden. Mit einem Schlüsseltresor können Sie Schlüssel und Geheimnisse ohne Auswirkungen auf das Verhalten Ihrer Anwendung aktualisieren, was eine Vielzahl von Möglichkeiten für die Verwaltung von Schlüsseln und Geheimnissen eröffnet.
 
->[!IMPORTANT]
-> Die Beispiele in diesem Artikel werden lediglich zur Veranschaulichung bereitgestellt. Sie sind nicht für Produktionszwecke vorgesehen. 
+In diesem Artikel wird beschrieben, wie Sie eine geplante Rotation von Speicherkontoschlüsseln implementieren, die Schlüsseltresor-Überwachungsprotokolle überwachen und bei unerwarteten Anforderungen Warnungen auslösen. 
 
-In diesem Artikel wird Folgendes beschrieben:
+Sie müssen zunächst mithilfe der Methode Ihrer Wahl einen Schlüsseltresor erstellen:
 
-- Ein Beispiel für die Verwendung von Azure Key Vault zum Speichern eines Geheimnisses. In diesem Artikel handelt es sich bei dem gespeicherten Geheimnis um den Azure Storage-Kontoschlüssel, auf den eine Anwendung zugreift. 
-- Sie lernen die Implementierung einer geplanten Rotation dieses Speicherkontoschlüssels kennen.
-- Sie lernen die Überwachung der Überwachungsprotokolle des Schlüsseltresors kennen, und wie bei unerwarteten Anforderungen Warnungen ausgelöst werden.
+- [Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe der Azure CLI](quick-create-cli.md)
+- [Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mit PowerShell](quick-create-powershell.md)
+- [Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault im Azure-Portal](quick-create-portal.md)
 
-> [!NOTE]
-> In diesem Artikel werden nicht die Einzelheiten der erstmaligen Einrichtung Ihres Schlüsseltresors behandelt. Die entsprechenden Informationen finden Sie unter [Was ist Azure Key Vault?](key-vault-overview.md). Anleitungen für die plattformübergreifende Befehlszeilenschnittstelle finden Sie unter [Verwalten von Key Vault mit der Azure CLI](key-vault-manage-with-cli2.md).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="set-up-key-vault"></a>Einrichten von Key Vault
+## <a name="store-a-secret"></a>Speichern eines Geheimnisses
 
 Damit eine Anwendung einen geheimen Schlüssel aus Key Vault abrufen kann, müssen Sie zuerst den geheimen Schlüssel erstellen und ihn in den Tresor hochladen.
 

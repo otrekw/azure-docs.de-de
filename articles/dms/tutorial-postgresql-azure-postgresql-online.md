@@ -3,8 +3,8 @@ title: 'Tutorial: Onlinemigration von PostgreSQL zu Azure Database for PostgreSQ
 titleSuffix: Azure Database Migration Service
 description: Hier erfahren Sie, wie Sie mit Azure Database Migration Service über die Befehlszeilenschnittstelle eine Onlinemigration von einer lokalen PostgreSQL-Instanz zu Azure Database for PostgreSQL durchführen.
 services: dms
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/17/2020
-ms.openlocfilehash: fc2852aaa77dec9537aa8fc42f7f08ca441a129a
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 44df35957dfbd3aa4856d256dc1a7d9e6527fde0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255638"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240669"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>Tutorial: Onlinemigration von PostgreSQL zu Azure Database for PostgreSQL mit Database Migration Service über die Azure-Befehlszeilenschnittstelle
 
@@ -33,7 +33,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Überwachen der Migration
 
 > [!NOTE]
-> Die Verwendung von Azure Database Migration Service zum Ausführen einer Onlinemigration erfordert das Erstellen einer Instanz auf der Grundlage des Premium-Tarifs.
+> Die Verwendung von Azure Database Migration Service zum Ausführen einer Onlinemigration erfordert das Erstellen einer Instanz auf der Grundlage des Premium-Tarifs. Wir verschlüsseln den Datenträger, um Datendiebstahl während der Migration zu verhindern.
 
 > [!IMPORTANT]
 > Für eine optimale Migration empfiehlt Microsoft die Erstellung einer Azure Database Migration Service-Instanz in derselben Azure-Region, in der sich auch die Zieldatenbank befindet. Die Verschiebung von Daten zwischen Regionen oder Geografien kann den Migrationsvorgang verlangsamen und Fehler verursachen.
@@ -159,7 +159,7 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
 
 1. Installieren der DMS-Synchronisierungserweiterung:
    * Melden Sie sich mithilfe des folgenden Befehls bei Azure an:
-       ```
+       ```azurecli
        az login
        ```
 
@@ -167,24 +167,24 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
    * Fügen Sie die DMS-Erweiterung hinzu:
        * Um die verfügbaren Erweiterungen aufzulisten, führen Sie den folgenden Befehl aus:
 
-           ```
+           ```azurecli
            az extension list-available –otable
            ```
 
        * Führen Sie zum Installieren der Erweiterung den folgenden Befehl aus:
 
-           ```
+           ```azurecli
            az extension add –n dms-preview
            ```
 
    * Um zu überprüfen, ob Sie die DMS-Erweiterung richtig installiert haben, führen Sie den folgenden Befehl aus:
 
-       ```
+       ```azurecli
        az extension list -otable
        ```
        Die folgende Ausgabe wird angezeigt.
 
-       ```
+       ```output
        ExtensionType    Name
        ---------------  ------
        whl              dms
@@ -195,19 +195,19 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
 
    * Jederzeit können Sie alle in DMS unterstützten Befehle anzeigen, indem Sie Folgendes ausführen:
 
-       ```
+       ```azurecli
        az dms -h
        ```
 
    * Wenn Sie über mehrere Azure-Abonnements verfügen, führen Sie den folgenden Befehl aus, um das Abonnement festzulegen, mit dem Sie eine Instanz des DMS-Diensts bereitstellen möchten.
 
-        ```
+        ```azurecli
        az account set -s 97181df2-909d-420b-ab93-1bff15acb6b7
         ```
 
 2. Stellen Sie eine Instanz von DMS bereit, indem Sie den folgenden Befehl ausführen:
 
-   ```
+   ```azurecli
    az dms create -l [location] -n <newServiceName> -g <yourResourceGroupName> --sku-name Premium_4vCores --subnet/subscriptions/{vnet subscription id}/resourceGroups/{vnet resource group}/providers/Microsoft.Network/virtualNetworks/{vnet name}/subnets/{subnet name} –tags tagName1=tagValue1 tagWithNoValue
    ```
 
@@ -218,7 +218,7 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
    * Ressourcengruppenname: PostgresDemo
    * DMS-Dienstname: PostgresCLI
 
-   ```
+   ```azurecli
    az dms create -l eastus2 -g PostgresDemo -n PostgresCLI --subnet /subscriptions/97181df2-909d-420b-ab93-1bff15acb6b7/resourceGroups/ERNetwork/providers/Microsoft.Network/virtualNetworks/AzureDMS-CORP-USC-VNET-5044/subnets/Subnet-1 --sku-name Premium_4vCores
    ```
 
@@ -226,19 +226,19 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
 
 3. Um die IP-Adresse des DMS-Agent zu identifizieren, damit Sie ihn der Postgres-Datei „pg_hba.conf“ hinzufügen können, führen Sie den folgenden Befehl aus:
 
-    ```
+    ```azurecli
     az network nic list -g <ResourceGroupName>--query '[].ipConfigurations | [].privateIpAddress'
     ```
 
     Beispiel:
 
-    ```
+    ```azurecli
     az network nic list -g PostgresDemo --query '[].ipConfigurations | [].privateIpAddress'
     ```
 
     Das Ergebnis sollte in etwa der folgenden Adresse entsprechen: 
 
-    ```
+    ```output
     [
       "172.16.136.18"
     ]
@@ -256,7 +256,7 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
 
 5. Erstellen Sie als Nächstes ein PostgreSQL-Migrationsprojekt mithilfe des folgenden Befehls:
     
-    ```
+    ```azurecli
     az dms project create -l <location> -g <ResourceGroupName> --service-name <yourServiceName> --source-platform PostgreSQL --target-platform AzureDbforPostgreSQL -n <newProjectName>
     ```
 
@@ -269,7 +269,7 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
    * Quellplattform: PostgreSQL
    * Zielplattform: AzureDbForPostgreSql
 
-     ```
+     ```azurecli
      az dms project create -l westcentralus -n PGMigration -g PostgresDemo --service-name PostgresCLI --source-platform PostgreSQL --target-platform AzureDbForPostgreSql
      ```
 
@@ -279,7 +279,7 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
 
    * Um eine vollständige Liste der Optionen anzuzeigen, führen Sie diesen Befehl aus:
 
-       ```
+       ```azurecli
        az dms project task create -h
        ```
 
@@ -287,7 +287,7 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
 
        Das Format des JSON-Verbindungsobjekts für PostgreSQL-Verbindungen.
         
-       ```
+       ```json
        {
                    "userName": "user name",    // if this is missing or null, you will be prompted
                    "password": null,           // if this is missing or null (highly recommended) you will
@@ -301,7 +301,7 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
 
    * Es gibt auch eine Datenbankoptions-JSON-Datei, die die JSON-Objekte auflistet. Für PostgreSQL ist das Format des Datenbankoptions-JSON-Objekts unten dargestellt:
 
-       ```
+       ```json
        [
            {
                "name": "source database",
@@ -313,7 +313,7 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
 
    * Erstellen Sie eine JSON-Datei mit dem Editor, kopieren Sie die folgenden Befehle, fügen Sie sie in die Datei ein, und speichern Sie die Datei unter „C:\DMS\source.json“.
 
-        ```
+        ```json
        {
                    "userName": "postgres",    
                    "password": null,           
@@ -326,7 +326,7 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
 
    * Erstellen Sie eine andere Datei mit dem Namen „target.json“, und speichern Sie sie unter „C:\DMS\target.json“. Beziehen Sie die folgenden Befehle ein:
 
-       ```
+       ```json
        {
                "userName": " dms@builddemotarget",    
                "password": null,           
@@ -338,7 +338,7 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
 
    * Erstellen Sie eine Datenbankoptions-JSON-Datei, in der Bestand wie die zu migrierende Datenbank aufgeführt ist:
 
-       ``` 
+       ```json
        [
            {
                "name": "dvdrental",
@@ -349,7 +349,7 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
 
    * Führen Sie den folgenden Befehl aus, der Quelle, Ziel und Datenbankoptions-JSON-Dateien akzeptiert.
 
-       ``` 
+       ```azurecli
        az dms project task create -g PostgresDemo --project-name PGMigration --source-platform postgresql --target-platform azuredbforpostgresql --source-connection-json c:\DMS\source.json --database-options-json C:\DMS\option.json --service-name PostgresCLI --target-connection-json c:\DMS\target.json –task-type OnlineMigration -n runnowtask    
        ```
 
@@ -357,19 +357,19 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
 
 7. Um den Fortschritt der Aufgabe anzuzeigen, führen Sie den folgenden Befehl aus:
 
-   ```
+   ```azurecli
    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
    ```
 
    oder
 
-    ```
+    ```azurecli
    az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output
     ```
 
 8. Sie können den migrationState auch über „expand output“ abfragen:
 
-    ```
+    ```azurecli
     az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask --expand output --query 'properties.output[].migrationState | [0]' "READY_TO_COMPLETE"
     ```
 
@@ -377,7 +377,7 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
 
 In der Ausgabedatei gibt es mehrere Parameter, die den Status der Migration angeben. Betrachten Sie z.B. die folgende Ausgabedatei:
 
-  ```
+  ```output
     "output": [                                 Database Level
           {
             "appliedChanges": 0,        //Total incremental sync applied after full load
@@ -472,19 +472,19 @@ Um sicherzustellen, dass alle Daten erfasst sind, vergleichen Sie die Zeilenanza
 
 1. Führen Sie die Übernahmemigrationsaufgabe mit dem folgenden Befehl durch:
 
-    ```
+    ```azurecli
     az dms project task cutover -h
     ```
 
     Beispiel:
 
-    ```
+    ```azurecli
     az dms project task cutover --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask  --object-name Inventory
     ```
 
 2. Überwachen Sie den Übernahmefortschritt mithilfe des folgenden Befehls :
 
-    ```
+    ```azurecli
     az dms project task show --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
     ```
 
@@ -499,28 +499,28 @@ Wenn Sie DMS-Aufgaben, -Projekte oder -Dienste abbrechen oder löschen müssen, 
 
 1. Um eine momentan ausgeführte Aufgabe abzubrechen, verwenden Sie den folgenden Befehl:
 
-    ```
+    ```azurecli
     az dms project task cancel --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
      ```
 
 2. Um eine momentan ausgeführte Aufgabe zu löschen, verwenden Sie den folgenden Befehl:
-    ```
+    ```azurecli
     az dms project task delete --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask
     ```
 
 3. Um ein momentan ausgeführtes Projekt abzubrechen, verwenden Sie den folgenden Befehl:
-     ```
+     ```azurecli
     az dms project task cancel -n runnowtask --project-name PGMigration -g PostgresDemo --service-name PostgresCLI
      ```
 
 4. Um ein momentan ausgeführtes Projekt zu löschen, verwenden Sie den folgenden Befehl:
-    ```
+    ```azurecli
     az dms project task delete -n runnowtask --project-name PGMigration -g PostgresDemo --service-name PostgresCLI
     ```
 
 5. Um einen DMS-Dienst zu löschen, verwenden Sie den folgenden Befehl:
 
-     ```
+     ```azurecli
     az dms delete -g ProgresDemo -n PostgresCLI
      ```
 

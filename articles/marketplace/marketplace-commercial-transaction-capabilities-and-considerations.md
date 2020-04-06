@@ -2,19 +2,18 @@
 title: 'Kommerzielle Transaktionen ‎im Marketplace: Möglichkeiten und Überlegungen | Azure'
 description: In diesem Artikel werden Überlegungen zur Preisfindung, Abrechnung, Rechnungsstellung und Auszahlung für einen Angebotstyp für die Veröffentlichungsoption „Transaktion“ beschrieben.
 services: Azure, Marketplace, Compute, Storage, Networking, Transact Offer Type
-author: yijenj
-manager: nuno costa
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/29/2018
-ms.author: pabutler
-ms.openlocfilehash: 969f2f6b2e25d9eb804349eccbed66e17b7fbb87
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: dsindona
+ms.openlocfilehash: de93a3c48e0b0aceb447e54e11190f487d1aa2d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427156"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80279826"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Transaktionen auf dem kommerziellen Marketplace: Funktionen und Überlegungen
 
@@ -130,7 +129,7 @@ Diese Option ermöglicht höhere oder niedrigere Preise als für das öffentlich
 **SaaS-App-Abonnement**
 
 Diese Option muss für den Verkauf über Microsoft konfiguriert sein und kann per Pauschalpreis oder pro Benutzer monatlich oder jährlich berechnet werden.
-•   Wenn Sie für ein SaaS-Angebot die Option „Über Microsoft verkaufen“ aktivieren, verfügen Sie über die folgende Kostenstruktur.
+*    Wenn Sie für ein SaaS-Angebot die Option „Über Microsoft verkaufen“ aktivieren, verfügen Sie über die folgende Kostenstruktur.
 
 |Ihre Lizenzkosten       | 100,00 USD pro Monat  |
 |--------------|---------|

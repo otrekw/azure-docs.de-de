@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.openlocfilehash: 935635c474190413545d1a2731c367a691bfa56d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ccb840caea5d28975daaf8cbf6f0d4985bdf006d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61363158"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79499143"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Grundlegendes zur Identitätsregistrierung in Ihrer IoT Hub-Instanz
 
@@ -79,6 +79,8 @@ Verwenden Sie asynchrone Vorgänge im [Endpunkt des IoT Hub-Ressourcenanbieters]
 
 Weitere Informationen zu den Import- und Export-APIs finden Sie unter [REST-APIs für den IoT Hub-Ressourcenanbieter](/rest/api/iothub/iothubresource). Weitere Informationen zum Ausführen von Import- und Exportaufträgen finden Sie unter [Massenverwaltung von IoT Hub-Geräteidentitäten](iot-hub-bulk-identity-mgmt.md).
 
+Geräteidentitäten können auch entweder über die [REST-API](/rest/api/iothub/service/jobclient/createimportexportjob) oder eines der [Dienst-SDKs](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks) von IoT Hub über die Dienst-API aus einem IoT-Hub exportiert und dorthin importiert werden.
+
 ## <a name="device-provisioning"></a>Gerätebereitstellung
 
 Die Gerätedaten, die von einer bestimmten IoT-Lösung gespeichert werden, richten sich nach den jeweiligen Anforderungen der Lösung. Von einer Lösung müssen aber mindestens die Geräteidentitäten und Authentifizierungsschlüssel gespeichert werden. Azure IoT Hub enthält eine Identitätsregistrierung, die Werte für jedes Gerät speichern kann, z.B. IDs, Authentifizierungsschlüssel und Statuscodes. Eine Lösung kann andere Azure-Dienste wie Table Storage, Blob Storage oder Cosmos DB nutzen, um zusätzliche Gerätedaten zu speichern.
@@ -105,12 +107,12 @@ Eigenschaften: Nachrichtensystemeigenschaften ist das Symbol `$` vorangestellt.
 
 Benachrichtigung für ein Gerät:
 
-| NAME | Wert |
+| Name | Wert |
 | --- | --- |
 |$content-type | Anwendung/json |
 |$iothub-enqueuedtime |  Uhrzeit, zu der die Benachrichtigung gesendet wurde |
 |$iothub-message-source | deviceLifecycleEvents |
-|$content-encoding | utf-8 |
+|$content-encoding | UTF-8 |
 |opType | **createDeviceIdentity** oder **deleteDeviceIdentity** |
 |hubName | Name des IoT Hub |
 |deviceId | ID des Geräts |
@@ -141,12 +143,12 @@ Hauptteil: Dieser Abschnitt hat das JSON-Format und stellt den Zwilling der erst
 ```
 Benachrichtigung für ein Modul:
 
-| NAME | Wert |
+| Name | Wert |
 | --- | --- |
 $content-type | Anwendung/json |
 $iothub-enqueuedtime |  Uhrzeit, zu der die Benachrichtigung gesendet wurde |
 $iothub-message-source | moduleLifecycleEvents |
-$content-encoding | utf-8 |
+$content-encoding | UTF-8 |
 opType | **createModuleIdentity** oder **deleteModuleIdentity** |
 hubName | Name des IoT Hub |
 moduleId | ID des Moduls |
@@ -181,7 +183,7 @@ Hauptteil: Dieser Abschnitt liegt im JSON-Format vor und stellt den Zwilling der
 
 Geräteidentitäten werden als JSON-Dokumente mit den folgenden Eigenschaften dargestellt:
 
-| Eigenschaft | Optionen | BESCHREIBUNG |
+| Eigenschaft | Tastatur | BESCHREIBUNG |
 | --- | --- | --- |
 | deviceId |erforderlich, bei Aktualisierungen schreibgeschützt |Eine Zeichenfolge (bis zu 128 Zeichen lang) mit Beachtung von Groß-/Kleinschreibung, die aus alphanumerischen 7-Bit-ASCII-Zeichen sowie bestimmten Sonderzeichen (`- . + % _ # * ? ! ( ) , = @ $ '`) besteht. |
 | generationId |erforderlich, schreibgeschützt |Eine vom IoT-Hub generierte Zeichenfolge mit Berücksichtigung der Groß-/Kleinschreibung und einer Länge von bis zu 128 Zeichen. Dieser Wert dient zur Unterscheidung von Geräten mit derselben **deviceId**, wenn diese gelöscht und neu erstellt wurden. |
@@ -205,7 +207,7 @@ Geräteidentitäten werden als JSON-Dokumente mit den folgenden Eigenschaften da
 
 Modulidentitäten werden als JSON-Dokumente mit den folgenden Eigenschaften dargestellt:
 
-| Eigenschaft | Optionen | BESCHREIBUNG |
+| Eigenschaft | Tastatur | BESCHREIBUNG |
 | --- | --- | --- |
 | deviceId |erforderlich, bei Aktualisierungen schreibgeschützt |Eine Zeichenfolge (bis zu 128 Zeichen lang) mit Beachtung von Groß-/Kleinschreibung, die aus alphanumerischen 7-Bit-ASCII-Zeichen sowie bestimmten Sonderzeichen (`- . + % _ # * ? ! ( ) , = @ $ '`) besteht. |
 | moduleId |erforderlich, bei Aktualisierungen schreibgeschützt |Eine Zeichenfolge (bis zu 128 Zeichen lang) mit Beachtung von Groß-/Kleinschreibung, die aus alphanumerischen 7-Bit-ASCII-Zeichen sowie bestimmten Sonderzeichen (`- . + % _ # * ? ! ( ) , = @ $ '`) besteht. |

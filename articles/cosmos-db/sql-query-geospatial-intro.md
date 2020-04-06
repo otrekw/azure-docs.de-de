@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
-ms.openlocfilehash: 0fe83b8e28b96f1d89a7c98cfe86a6e924f1bc49
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 59c8b31dcc8594d2cafb2db7832e290b01026f60
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77566467"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79367583"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Räumliche Daten und GeoJSON-Standortdaten in Azure Cosmos DB
 
@@ -25,7 +25,10 @@ Dieser Artikel bietet eine Einführung in die Funktionalität von Geodaten in Az
 
 Räumliche Daten beschreiben die Position und Form von Objekten im Raum. In den meisten Fällen entsprechen diese Daten Objekten auf der Erde und Geodaten. Räumliche Daten dienen zur Darstellung des Orts einer Person, einer Sehenswürdigkeit, der Umgrenzung einer Stadt oder eines Sees. Zu den häufigen Einsatzbereichen gehören oft Abfragen zur örtlichen Nähe, z.B.: „suche alle Cafés in der Nähe meines aktuellen Standorts“.
 
-Die SQL-API von Azure Cosmos DB unterstützt den Datentyp **Geografie**. Der **geography** -Datentyp stellt Daten in einem Erdkugel-Koordinatensystem dar.
+Die SQL-API von Azure Cosmos DB unterstützt zwei Typen räumlicher Daten: **geometrische** und **geografische**.
+
+- Der **geometrische** Datentyp stellt Daten in einem euklidischen (zweidimensionalen) Koordinatensystem dar.
+- Der **geography** -Datentyp stellt Daten in einem Erdkugel-Koordinatensystem dar.
 
 ## <a name="supported-data-types"></a>Unterstützte Datentypen
 
@@ -70,7 +73,11 @@ Räumliche Datentypen können in ein Azure Cosmos DB-Dokument eingebettet werd
 }
 ```
 
-### <a name="points-in-geography-coordinate-system"></a>Punkte im Geografiekoordinatensystem
+### <a name="points-in-a-geometry-coordinate-system"></a>Punkte in einem Geometriekoordinatensystem
+
+Für den **geometrischen** Datentyp gibt die GeoJson-Spezifikation zuerst die horizontale Achse und dann die vertikale Achse an.
+
+### <a name="points-in-a-geography-coordinate-system"></a>Punkte in einem Geografiekoordinatensystem
 
 Für den Datentyp **Geografie** gibt die GeoJSON-Spezifikation zuerst den Längengrad und dann den Breitengrad an. Wie in anderen Kartenprogrammen sind Längen- und Breitengrade Winkel, die in Grad dargestellt werden. Längengradwerte werden ab dem Nullmeridian gemessen und liegen zwischen –180,0 und +180,0 Grad. Breitengradwerte werden ab dem Äquator gemessen und liegen zwischen –90,0 und +90,0 Grad.
 
@@ -125,20 +132,20 @@ Bei **MultiPolygons** handelt es sich um ein Array mit null oder mehr Polygonen.
 ```json
 {
     "type":"MultiPolygon",
-    "coordinates":[ [
+    "coordinates":[[[
         [52.0, 12.0],
         [53.0, 12.0],
         [53.0, 13.0],
         [52.0, 13.0],
         [52.0, 12.0]
-    ],
-    [
+        ]],
+        [[
         [50.0, 0.0],
         [51.0, 0.0],
         [51.0, 5.0],
         [50.0, 5.0],
         [50.0, 0.0]
-    ] ]
+        ]]]
 }
 ```
 

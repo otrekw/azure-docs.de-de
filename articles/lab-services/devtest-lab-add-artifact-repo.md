@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 1555eb4e48a0cf43a38aa811e20ffbbed8ee87a9
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1e7587c60e180fb35e1a2bed735b053b6b0c388a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755818"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294606"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Hinzufügen eines Git-Repositorys zum Speichern von benutzerdefinierten Artefakten und Resource Manager-Vorlagen
 
@@ -54,7 +54,7 @@ Bevor Sie Ihrem Lab ein Repository hinzufügen können, rufen Sie zunächst wich
 
 ### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>Abrufen der Klon-URL und des persönlichen Zugriffstokens für Azure Repos
 
-1. Wechseln Sie zur Startseite Ihrer Teamsammlung (z.B. https://contoso-web-team.visualstudio.com) ), und wählen Sie dann das Projekt aus.
+1. Wechseln Sie zur Startseite Ihrer Teamsammlung (z. B. `https://contoso-web-team.visualstudio.com`), und wählen Sie dann das Projekt aus.
 2. Wählen Sie auf der Startseite des Projekts **Code**.
 3. Um die Klon-URL für das Projekt anzuzeigen, wählen Sie auf der Seite **Code** die Option **Klonen** aus.
 4. Speichern Sie die URL. Sie benötigen die URL später.

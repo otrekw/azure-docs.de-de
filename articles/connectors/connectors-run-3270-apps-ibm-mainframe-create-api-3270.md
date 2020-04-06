@@ -9,12 +9,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: a9d3d0287e7839d6396553d532ba6f293fb19b68
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 808eef5424d678559ae94ffd04e41eacd0f16aee
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77647664"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371102"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integrieren von bildschirmgesteuerten 3270-Apps auf IBM Mainframes mit Azure mithilfe von Azure Logic Apps und IBM 3270-Connector
 
@@ -358,7 +358,7 @@ Wenn Sie alle diese Schritte abgeschlossen haben, können Sie die Aktion, die Si
 
 1. Wenn noch keine Verbindung besteht, geben Sie die erforderlichen Informationen für Ihre Verbindung an, und wählen Sie **Erstellen** aus.
 
-   | Eigenschaft | Erforderlich | value | Beschreibung |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Verbindungsname** | Ja | <*connection-name*> | Name der Verbindung |
    | **ID des Integrationskontos** | Ja | <*integration-account-name*> | Name Ihres Integrationskontos |
@@ -368,7 +368,7 @@ Wenn Sie alle diese Schritte abgeschlossen haben, können Sie die Aktion, die Si
    | **Gerätetyp** | Nein | <*IBM-terminal-model*> | Der Name oder die Nummer des Modells für das zu emulierende IBM-Terminal. Wird das Feld nicht ausgefüllt, verwendet der Connector Standardwerte. |
    | **Codepage** | Nein | <*code-page-number*> | Die Codepagenummer für den Host. Wird das Feld nicht ausgefüllt, verwendet der Connector `37` als Standardwert. |
    | **Name der logischen Einheit** | Nein | <*logical-unit-name*> | Der Name der spezifischen logischen Einheit, die vom Host angefordert werden soll. |
-   | **SSL aktivieren?** | Nein | „Ein“ oder „Aus“ | Aktivieren oder Deaktivieren der SSL-Verschlüsselung |
+   | **SSL aktivieren?** | Nein | „Ein“ oder „Aus“ | Aktivieren oder Deaktivieren der TLS-Verschlüsselung |
    | **SSL-Zertifikat des Hosts überprüfen?** | Nein | „Ein“ oder „Aus“ | Aktivieren oder deaktivieren Sie die Überprüfung des Serverzertifikats. |
    ||||
 
@@ -378,7 +378,7 @@ Wenn Sie alle diese Schritte abgeschlossen haben, können Sie die Aktion, die Si
 
 1. Geben Sie die erforderlichen Informationen für die Aktion ein:
 
-   | Eigenschaft | Erforderlich | value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **HIDX-Name** | Ja | <*HIDX-file-name*> | Wählen Sie die zu verwendende 3270 HIDX-Datei aus. |
    | **Methodenname** | Ja | <*method-name*> | Wählen Sie die Methode in der HIDX-Datei aus, die Sie verwenden möchten. Nachdem Sie eine Methode ausgewählt haben, wird die Liste **Neuen Parameter hinzufügen** angezeigt, sodass Sie Parameter auswählen können, die mit dieser Methode verwendet werden sollen. |

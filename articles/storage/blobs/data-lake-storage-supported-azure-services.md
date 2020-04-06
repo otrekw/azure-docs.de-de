@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 03/26/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: cb68f1bc851a8573ddec01d1eee803135a11b067
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 0cf8a4a78894cb7f0e1ddcf7aa18bbb4006bbeeb
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78195357"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345633"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Azure-Dienste, die Azure Data Lake Storage Gen2 unterstützen
 
@@ -40,7 +40,8 @@ In dieser Tabelle sind die Azure-Dienste aufgeführt, die mit Azure Data Lake St
 |Power BI| Allgemein verfügbar|[Analysieren von Daten in Azure Data Lake Storage Gen2 mit Power BI](https://docs.microsoft.com/power-query/connectors/datalakestorage)|
 |SQL Data Warehouse|Allgemein verfügbar|[Azure SQL Data Warehouse – PolyBase](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase)|
 |SQL Server Integration Services (SSIS)|Allgemein verfügbar|[Azure Storage-Verbindungs-Manager](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-2017)|
-|Azure Cognitive Search| Vorschau|[Indizieren von Dokumenten in Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|
+|Azure Cognitive Search|Vorschau|[Indizieren von Dokumenten in Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|
+|Azure-Daten-Explorer|Vorschau|[Abfragen von Daten in Azure Data Lake mit Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/data-lake-query-data)|
 |Azure Content Delivery Network|Noch nicht unterstützt|[Indizieren von Dokumenten in Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/cdn/cdn-overview)|
 
 

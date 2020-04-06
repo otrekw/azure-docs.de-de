@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: e2e82c551117f2ae96e026b39c08ccf56e7ce8e2
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: e4d85bd460c39964c9f42ac946e3522f5f129c1c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561815"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79474440"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Verwalten des Zugriffs, der Energieeinstellungen und des Konnektivitätsmodus für Azure Data Box Gateway
 
@@ -58,16 +58,16 @@ Beim Workflow zum Zurücksetzen muss der Benutzer das alte Kennwort nicht kennen
 
 Für die Erstellung Ihrer Data Box Edge-/Data Box Gateway-, IoT Hub- und Azure Storage-Ressourcen müssen Sie mindestens über Berechtigungen als Mitwirkender auf der Ressourcengruppenebene verfügen. Außerdem müssen die entsprechenden Ressourcenanbieter registriert sein. Für sämtliche Vorgänge mit Aktivierungsschlüssel und Anmeldeinformationen sind zudem Berechtigungen für die Azure Active Directory-Graph-API erforderlich. Diese werden in den folgenden Abschnitten beschrieben.
 
-### <a name="manage-microsoft-azure-active-directory-graph-api-permissions"></a>Verwalten von Berechtigungen für die Microsoft Azure Active Directory Graph-API
+### <a name="manage-microsoft-graph-api-permissions"></a>Verwalten von Microsoft Graph-API-Berechtigungen
 
-Wenn Sie den Aktivierungsschlüssel für das Data Box Edge-Gerät generieren oder Vorgänge ausführen, die Anmeldeinformationen erfordern, müssen Sie über Berechtigungen für die Azure Active Directory-Graph-API verfügen. Im Anschluss folgen einige Beispiele für Vorgänge, die Anmeldeinformationen erfordern:
+Wenn Sie den Aktivierungsschlüssel für das Data Box Edge-Gerät generieren oder Vorgänge ausführen, die Anmeldeinformationen erfordern, müssen Sie über Berechtigungen für die Microsoft Graph-API verfügen. Im Anschluss folgen einige Beispiele für Vorgänge, die Anmeldeinformationen erfordern:
 
 -  Erstellen einer Freigabe mit einem zugeordneten Speicherkonto
 -  Erstellen eines Benutzers, der auf die Freigaben auf dem Gerät zugreifen kann
 
 Sie müssen über `User`-Zugriff auf den Active Directory-Mandanten verfügen, da Sie die Aktion `Read all directory objects` ausführen können müssen. Gastbenutzer sind nicht zur Aktion `Read all directory objects` berechtigt. Für Gastbenutzer tritt bei Vorgängen wie dem Generieren eines Aktivierungsschlüssels, dem Erstellen einer Freigabe auf Ihrem Data Box Edge-Gerät oder dem Erstellen eines Benutzers jeweils ein Fehler auf.
 
-Weitere Informationen dazu, wie Sie Benutzern den Zugriff auf die Azure Active Directory-Graph-API ermöglichen können, finden Sie unter [Standardzugriff für Administratoren, Benutzer und Gastbenutzer](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
+Weitere Informationen darüber, wie Sie Benutzern Zugriff auf die Microsoft Graph-API gewähren können, finden Sie unter [Referenz zu Microsoft Graph-Berechtigungen](https://docs.microsoft.com/graph/permissions-reference).
 
 ### <a name="register-resource-providers"></a>Registrieren von Ressourcenanbietern
 

@@ -1,6 +1,6 @@
 ---
-title: Protokollunterstützung für HTTP-Header in Azure Front Door Service | Microsoft-Dokumentation
-description: Dieser Artikel beschreibt HTTP-Headerprotokolle, die Front Door Service unterstützt.
+title: Protokollunterstützung für HTTP-Header in Azure Front Door | Microsoft-Dokumentation
+description: Dieser Artikel beschreibt HTTP-Headerprotokolle, die Front Door unterstützt.
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,31 +11,31 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 7c77527b7300c1149e96c94a4dbe122da226ac6d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: bb1de5d51afd01cf0aa519f12aa3665bee804efd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76720434"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471675"
 ---
-# <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>Protokollunterstützung für HTTP-Header in Azure Front Door Service
-Dieser Artikel beschreibt das Protokoll, das Front Door Service mit Teilen des Aufrufpfads unterstützt (siehe Abbildung). Die folgenden Abschnitte enthalten weitere Informationen zu HTTP-Headern, die von Front Door Service unterstützt werden.
+# <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Protokollunterstützung für HTTP-Header in Azure Front Door
+Dieser Artikel beschreibt das Protokoll, das Front Door mit Teilen des Aufrufpfads unterstützt (siehe Abbildung). Die folgenden Abschnitte enthalten weitere Informationen zu HTTP-Headern, die von Front Door unterstützt werden.
 
-![HTTP-Headerprotokoll von Azure Front Door Service][1]
+![HTTP-Headerprotokoll von Azure Front Door][1]
 
 >[!IMPORTANT]
->Front Door Service zertifiziert keine HTTP-Header, die hier nicht dokumentiert sind.
+>Front Door zertifiziert keine HTTP-Header, die hier nicht dokumentiert sind.
 
-## <a name="client-to-front-door-service"></a>Client zu Front Door Service
-Front Door Service akzeptiert die meisten Header aus der eingehenden Anforderung, ohne sie zu ändern. Einige reservierte Header werden aus der eingehenden Anforderung entfernt, falls gesendet, einschließlich der Header mit dem X-FD-*-Präfix.
+## <a name="client-to-front-door"></a>Client zu Front Door
+Front Door akzeptiert die meisten Header aus der eingehenden Anforderung, ohne sie zu ändern. Einige reservierte Header werden aus der eingehenden Anforderung entfernt, falls gesendet, einschließlich der Header mit dem X-FD-*-Präfix.
 
-## <a name="front-door-service-to-backend"></a>Front Door Service zu Back-End
+## <a name="front-door-to-backend"></a>Front Door zum Back-End
 
-Front Door Service enthält Header aus einer eingehenden Anforderung, sofern sie nicht aufgrund von Einschränkungen entfernt werden. Front Door fügt außerdem die folgenden Header hinzu:
+Front Door enthält Header aus einer eingehenden Anforderung, sofern sie nicht aufgrund von Einschränkungen entfernt werden. Front Door fügt außerdem die folgenden Header hinzu:
 
 | Header  | Beispiel und Beschreibung |
 | ------------- | ------------- |
-| Via |  Via: 1.1 Azure </br> Front Door fügt die HTTP-Version des Clients, gefolgt von *Azure*, als Wert für den Via-Header hinzu. Dies gibt die HTTP-Version des Clients an, und dass Front Door für die Anforderung zwischen dem Client und dem Back-End als Empfänger zwischengeschaltet war.  |
+| Via |  Via: 1.1 Azure </br> Front Door fügt die HTTP-Version des Clients, gefolgt von *Azure*, als Wert für den Via-Header hinzu. Dieser Header gibt die HTTP-Version des Clients an, und dass Front Door für die Anforderung zwischen dem Client und dem Back-End als Empfänger zwischengeschaltet war.  |
 | X-Azure-ClientIP | X-Azure-ClientIP: 127.0.0.1 </br> Stellt die Client-IP-Adresse dar, die mit der zu verarbeitenden Anforderung verknüpft ist. Beispiel: Eine Anforderung von einem Proxy wird möglicherweise dem X-Forwarded-For-Header hinzugefügt, um die IP-Adresse des ursprünglichen Aufrufers anzugeben. |
 | X-Azure-SocketIP |  X-Azure-SocketIP: 127.0.0.1 </br> Stellt die Socket-IP-Adresse dar, die mit der TCP-Verbindung verknüpft ist, von der die aktuelle Anforderung stammt. Die Client-IP-Adresse einer Anforderung entspricht möglicherweise nicht der Socket-IP-Adresse, da sie durch einen Benutzer willkürlich überschrieben werden kann.|
 | X-Azure-Ref |  X-Azure-Ref: 0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz </br> Dies ist eine eindeutige Referenzzeichenfolge, die eine von Front Door verarbeitete Anforderung identifiziert. Sie wird zum Durchsuchen von Zugriffsprotokollen verwendet und ist zur Problembehandlung wichtig.|
@@ -45,7 +45,7 @@ Front Door Service enthält Header aus einer eingehenden Anforderung, sofern sie
 | X-Forwarded-Proto | X-Forwarded-Proto: http </br> Das X-Forwarded-Proto-HTTP-Headerfeld wird häufig zum Identifizieren des Ursprungsprotokolls einer HTTP-Anforderung verwendet, da Front Door basierend auf der Konfiguration über HTTPS mit dem Back-End kommunizieren könnte. Dies gilt auch, wenn eine HTTP-Anforderung an den Reverseproxy gesendet wird. |
 | X-FD-HealthProbe | Das HTTP-Headerfeld X-FD-HealthProbe wird verwendet, um den Integritätstest von Azure Front Door zu identifizieren. Wenn der Header auf 1 festgelegt ist, wird ein Integritätstest angefordert. Sie können ihn verwenden, um den Zugriff von Front Door mit dem Headerfeld „X-Forwarded-Host“ einzuschränken. |
 
-## <a name="front-door-service-to-client"></a>Front Door Service zu Client
+## <a name="front-door-to-client"></a>Front Door zum Client
 
 Vom Back-End an Front Door gesendete Header werden auch an den Client weitergeleitet. Die folgenden Header werden von Front Door an Clients gesendet.
 

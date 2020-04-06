@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 03/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 7ab811635ca50c3a28ecd8bdf6d0f18fad4c384f
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: db249ccde1026cd468a1c30942891119482697ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137376"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372482"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Verstehen von Ablehnungszuweisungen für Azure-Ressourcen
 
@@ -30,7 +30,7 @@ In diesem Artikel wird die Definition von Ablehnungszuweisungen beschrieben.
 
 ## <a name="how-deny-assignments-are-created"></a>Wie werden Ablehnungszuweisungen erstellt?
 
-Ablehnungszuweisungen werden von Azure erstellt und verwaltet, um Ressourcen zu schützen. Azure Blueprints und von Azure verwaltete Apps verwenden Ablehnungszuweisungen, um systemseitig verwaltete Ressourcen zu schützen. Azure Blueprints und von Azure verwaltete Apps stellen die einzige Möglichkeit dar, Ablehnungszuweisungen zu erstellen. Sie können Ihre eigenen Ablehnungszuweisungen nicht direkt erstellen.  Weitere Informationen finden Sie unter [Schützen neuer Ressourcen mit Azure Blueprints-Ressourcensperren](../governance/blueprints/tutorials/protect-new-resources.md).
+Ablehnungszuweisungen werden von Azure erstellt und verwaltet, um Ressourcen zu schützen. Azure Blueprints und von Azure verwaltete Apps verwenden Ablehnungszuweisungen, um systemseitig verwaltete Ressourcen zu schützen. Azure Blueprints und von Azure verwaltete Apps stellen die einzige Möglichkeit dar, Ablehnungszuweisungen zu erstellen. Sie können Ihre eigenen Ablehnungszuweisungen nicht direkt erstellen. Weitere Informationen zur Verwendung von Ablehnungszuweisungen zum Sperren von Ressourcen durch Blueprints finden Sie unter [Grundlegendes zur Ressourcensperre in Azure Blueprints](../governance/blueprints/concepts/resource-locking.md).
 
 > [!NOTE]
 > Sie können Ihre eigenen Ablehnungszuweisungen nicht direkt erstellen.
@@ -89,5 +89,5 @@ Principals              : {
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* [Tutorial: Schützen neuer Ressourcen mit Azure Blueprints-Ressourcensperren](../governance/blueprints/tutorials/protect-new-resources.md)
 * [Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mit dem Azure-Portal](deny-assignments-portal.md)
-* [Grundlegendes zu Rollendefinitionen für Azure-Ressourcen](role-definitions.md)

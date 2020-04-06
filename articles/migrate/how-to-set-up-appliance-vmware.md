@@ -2,29 +2,26 @@
 title: Einrichten einer Azure Migrate-Appliance für VMware
 description: In diesem Artikel erfahren Sie, wie Sie eine Azure Migrate-Appliance für die Bewertung und Migration von VMware-VMs einrichten.
 ms.topic: article
-ms.date: 11/18/2019
-ms.openlocfilehash: e331d45d3e87f8007642675a0349839e7494958c
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/23/2020
+ms.openlocfilehash: 7a7d0007d2824abc781411f9529f9fa4ac89e55c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598152"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336792"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Einrichten einer Appliance für VMware-VMs
 
-In diesem Artikel erfahren Sie, wie Sie eine Azure Migrate-Appliance einrichten, wenn Sie VMware-VMs mithilfe des Azure Migrate-Serverbewertungstools bewerten oder VMware-VMs mithilfe des Azure Migrate-Servermigrationstools ohne Agent zu Azure migrieren.
+In diesem Artikel erfahren Sie, wie Sie eine Azure Migrate-Appliance für die Bewertung mithilfe des Tools [Azure Migrate-Serverbewertung](migrate-services-overview.md#azure-migrate-server-assessment-tool) und für die Migration ohne Agent mithilfe des Tools [Azure Migrate-Servermigration](migrate-services-overview.md#azure-migrate-server-migration-tool) einrichten.
 
-Bei der VMware-VM-Appliance handelt es sich um eine einfache Appliance, die von der Azure Migrate-Serverbewertung/-migration für Folgendes verwendet wird:
+Die [Azure Migrate-Appliance](migrate-appliance.md) ist eine einfache Appliance, die von Azure Migrate-Serverbewertung und Azure Migrate-Servermigration verwendet wird, um lokale VMware-VMS zu ermitteln, VM-Metadaten/Leistungsdaten an Azure zu senden und für die Replikation von VMware-VMs während der Migration ohne Agent.
 
-- Ermitteln Sie lokale virtuelle VMware-Computer.
-- Senden von Meta- und Leistungsdaten für ermittelte VMs an die Azure Migrate-Serverbewertung/-migration
-
-[Erfahren Sie mehr](migrate-appliance.md) über die Azure Migrate-Appliance.
+Sie können die Azure Migrate-Appliance für die VMware-VM-Bewertung mithilfe einer OVA-Vorlage einrichten, die Sie herunterladen, oder mithilfe eines PowerShell-Installationsskripts. In diesem Artikel wird beschrieben, wie Sie die Appliance mithilfe der OVA-Vorlage einrichten. Wenn Sie die Appliance mithilfe des Skripts einrichten möchten, befolgen Sie die Anleitung in [diesem Artikel](deploy-appliance-script.md).
 
 
-## <a name="appliance-deployment-steps"></a>Schritte für die Appliancebereitstellung
+## <a name="appliance-deployment-ova"></a>Bereitstellung der Appliance (OVA)
 
-Die Einrichtung der Appliance umfasst Folgendes:
+Gehen Sie zum Einrichten der Appliance mithilfe einer OVA-Vorlage wie folgt vor:
 - Herunterladen einer OVA-Vorlagendatei und Importieren der Datei in vCenter Server
 - Erstellen der Appliance und Überprüfen der Verbindungsherstellung mit der Azure Migrate-Serverbewertung
 - Durchführen der Erstkonfiguration für die Appliance und Registrieren der Appliance beim Azure Migrate-Projekt
@@ -72,7 +69,7 @@ Vergewissern Sie sich, dass die Appliance-VM eine Verbindung mit [Azure-URLs](mi
 
 ## <a name="configure-the-appliance"></a>Konfigurieren der Appliance
 
-Führen Sie die Ersteinrichtung der Appliance durch.
+Führen Sie die Ersteinrichtung der Appliance durch. Wenn Sie die Appliance mithilfe eines Skripts anstelle einer OVA-Vorlage bereitstellen, gelten die ersten beiden Schritte im Verfahren nicht.
 
 1. Klicken Sie in der vSphere-Clientkonsole mit der rechten Maustaste auf den virtuellen Computer, und wählen Sie **Konsole öffnen** aus.
 2. Geben Sie die Sprache, die Zeitzone und das Kennwort für die Appliance an.
@@ -109,7 +106,7 @@ Die Appliance muss eine Verbindung mit der vCenter Server-Instanz herstellen, um
 
 ### <a name="specify-vcenter-server-details"></a>vCenter Server-Details angeben
 1. Geben Sie unter **vCenter Server-Details angeben** den Namen (FQDN) oder die IP-Adresse der vCenter Server-Instanz an. Sie können den Standardport beibehalten oder einen benutzerdefinierten Port angeben, an dem Ihre vCenter Server-Instanz lauscht.
-2. Geben Sie unter **Benutzername** und **Kennwort** die Anmeldeinformationen für das schreibgeschützte Konto an, über das die Appliance VMs in der vCenter Server-Instanz ermittelt. Sie können das Ermittlungsspektrum festlegen, indem Sie den Zugriff für das vCenter-Konto entsprechend beschränken. Weitere Informationen zur Beschränkung der Ermittlung finden Sie [hier](tutorial-assess-vmware.md#set-the-scope-of-discovery).
+2. Geben Sie unter **Benutzername** und **Kennwort** die Anmeldeinformationen für das schreibgeschützte Konto an, über das die Appliance VMs in der vCenter Server-Instanz ermittelt. Sie können den Ermittlungsbereich festlegen, indem Sie den Zugriff auf das vCenter-Konto einschränken. [Weitere Informationen](set-discovery-scope.md)
 3. Vergewissern Sie sich durch Klicken auf **Verbindung überprüfen**, dass die Appliance eine Verbindung mit vCenter Server herstellen kann.
 
 ### <a name="specify-vm-credentials"></a>Angeben der VM-Anmeldeinformationen

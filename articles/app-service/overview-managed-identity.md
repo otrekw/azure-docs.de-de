@@ -1,17 +1,17 @@
 ---
 title: Verwaltete Identitäten
-description: Erfahren Sie, wie verwaltete Identitäten in Azure App Service und Azure Functions funktionieren, wie Sie eine verwaltete Identität konfigurieren und wie Sie einen Token für eine Back-End-Ressource erstellen.
+description: Erfahren Sie, wie verwaltete Identitäten in Azure App Service und Azure Functions funktionieren, wie Sie eine verwaltete Identität konfigurieren und ein Token für eine Back-End-Ressource erstellen.
 author: mattchenderson
 ms.topic: article
-ms.date: 10/30/2019
+ms.date: 03/04/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 3e414e40cb92f5c7e8c2e1d083419d57e06a0995
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 6e3169f2bfcba0a02af1490f875cbab8a14d02f6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161918"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79235946"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Verwenden verwalteter Identitäten für App Service und Azure Functions
 
@@ -24,7 +24,7 @@ Ihrer Anwendung können zwei Arten von Identitäten zugewiesen werden:
 - Eine **systemseitig zugewiesene Identität** ist an Ihre Anwendung gebunden und wird gelöscht, wenn Ihre App gelöscht wird. Eine App kann nur über eine systemseitig zugewiesene Identität verfügen.
 - Eine **benutzerseitig zugewiesene Identität** ist eine eigenständige Azure-Ressource, die Ihrer App zugewiesen werden kann. Eine App kann über mehrere benutzerseitig zugewiesene Identitäten verfügen.
 
-## <a name="adding-a-system-assigned-identity"></a>Hinzufügen einer systemseitig zugewiesenen Identität
+## <a name="add-a-system-assigned-identity"></a>Hinzufügen einer systemseitig zugewiesenen Identität
 
 Für die Erstellung einer App mit einer systemseitig zugewiesenen Identität muss eine zusätzliche Eigenschaft für die Anwendung festgelegt werden.
 
@@ -47,7 +47,7 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie wie gewohnt zu
 Um mithilfe der Azure CLI eine verwaltete Entität einzurichten, müssen Sie für eine vorhandene Anwendung den Befehl `az webapp identity assign` ausführen. Für die Ausführung der Beispiele in diesem Abschnitt gibt es drei Optionen:
 
 - Verwenden Sie [Azure Cloud Shell](../cloud-shell/overview.md) über das Azure-Portal.
-- Verwenden Sie die eingebettete Azure Cloud Shell, indem Sie die Schaltfläche „Ausprobieren“ in der oberen rechten Ecke der unten aufgeführten Codeblocks verwenden.
+- Verwenden Sie die eingebettete Azure Cloud Shell über die Schaltfläche „Ausprobieren“ in der rechten oberen Ecke der unten aufgeführten Codeblöcke.
 - [Installieren Sie die neueste Version der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 oder höher), wenn Sie lieber eine lokale CLI-Konsole verwenden möchten. 
 
 In den folgenden Schritten werden Sie durch das Erstellen einer Web-App und das Zuweisen einer Identität zur App mithilfe der CLI geleitet:
@@ -146,10 +146,10 @@ Wenn die Website erstellt wurde, weist sie folgende zusätzliche Eigenschaften a
 }
 ```
 
-Hierbei werden `<TENANTID>` und `<PRINCIPALID>` durch GUIDs ersetzt. Die Eigenschaft „tenantId“ kennzeichnet, zu welchem AAD-Mandanten die Identität gehört. Die Eigenschaft „principalId“ ist ein eindeutiger Bezeichner für die neue Identität der Anwendung. In AAD weist der Dienstprinzipal denselben Namen auf, den Sie für Ihre App Service- oder Azure Functions-Instanz vergeben haben.
+Die Eigenschaft „tenantId“ kennzeichnet, zu welchem AAD-Mandanten die Identität gehört. Die Eigenschaft „principalId“ ist ein eindeutiger Bezeichner für die neue Identität der Anwendung. In AAD weist der Dienstprinzipal denselben Namen auf, den Sie für Ihre App Service- oder Azure Functions-Instanz vergeben haben.
 
 
-## <a name="adding-a-user-assigned-identity"></a>Hinzufügen einer benutzerseitig zugewiesenen Identität
+## <a name="add-a-user-assigned-identity"></a>Hinzufügen einer benutzerseitig zugewiesenen Identität
 
 Für das Erstellen einer App mit einer benutzerseitig zugewiesenen Identität müssen Sie die Identität erstellen und dann den Ressourcenbezeichner der Identität zu Ihrer App-Konfiguration hinzufügen.
 
@@ -230,15 +230,17 @@ Wenn die Website erstellt wurde, weist sie folgende zusätzliche Eigenschaften a
 }
 ```
 
-Hierbei werden `<PRINCIPALID>` und `<CLIENTID>` durch GUIDs ersetzt. „principalId“ ist ein eindeutiger Bezeichner für die Identität, der bei der AAD-Verwaltung verwendet wird. „clientId“ ist ein eindeutiger Bezeichner für die neue Identität der Anwendung, der bei Runtimeaufrufen angibt, welche Identität verwendet werden soll.
+„principalId“ ist ein eindeutiger Bezeichner für die Identität, der bei der AAD-Verwaltung verwendet wird. „clientId“ ist ein eindeutiger Bezeichner für die neue Identität der Anwendung, der bei Runtimeaufrufen angibt, welche Identität verwendet werden soll.
 
 
-## <a name="obtaining-tokens-for-azure-resources"></a>Abrufen von Tokens für Azure-Ressourcen
+## <a name="obtain-tokens-for-azure-resources"></a>Abrufen von Tokens für Azure-Ressourcen
 
 Eine App kann mithilfe ihrer verwalteten Identität Token für den Zugriff auf andere durch AAD geschützte Ressourcen wie z. B. Azure Key Vault abrufen. Diese Tokens stellen die Anwendung dar, die auf die Ressource zugreift, nicht einen bestimmten Benutzer der Anwendung. 
 
+Sie müssen die Zielressource möglicherweise für den Zugriff über die Anwendung konfigurieren. Wenn Sie beispielsweise ein Token für den Zugriff auf Key Vault anfordern, müssen Sie sicherstellen, dass Sie eine Zugriffsrichtlinie hinzugefügt haben, die die Identität Ihrer Anwendung enthält. Andernfalls werden Ihre Aufrufe von Key Vault abgelehnt, auch wenn diese das Token enthalten. Informationen zu den Ressourcen, die Azure Active Directory-Token unterstützen, finden Sie unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+
 > [!IMPORTANT]
-> Sie müssen die Zielressource möglicherweise für den Zugriff über die Anwendung konfigurieren. Wenn Sie beispielsweise ein Token für den Zugriff auf Key Vault anfordern, müssen Sie sicherstellen, dass Sie eine Zugriffsrichtlinie hinzugefügt haben, die die Identität Ihrer Anwendung enthält. Andernfalls werden Ihre Aufrufe von Key Vault abgelehnt, auch wenn diese das Token enthalten. Informationen zu den Ressourcen, die Azure Active Directory-Token unterstützen, finden Sie unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+> Die Back-End-Dienste für verwaltete Identitäten behalten pro Ressourcen-URI für ca. 8 Stunden einen Cache bei. Wenn Sie die Zugriffsrichtlinie einer bestimmten Zielressource aktualisieren und sofort ein Token für diese Ressource abrufen, erhalten Sie möglicherweise weiterhin ein zwischengespeichertes Token mit veralteten Berechtigungen, bis dieses Token abläuft. Zurzeit gibt es keine Möglichkeit, eine Tokenaktualisierung zu erzwingen.
 
 Zum Abrufen eines Tokens in App Service und Azure Functions ist ein einfaches REST-Protokoll verfügbar. Dies kann für alle Anwendungen und Sprachen verwendet werden. Für .NET und Java bietet das Azure SDK eine Abstraktion über dieses Protokoll und bietet so die Möglichkeit zur lokalen Entwicklung.
 
@@ -301,7 +303,7 @@ Content-Type: application/json
 
 ### <a name="code-examples"></a>Codebeispiele
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!TIP]
 > Für .NET-Sprachen können Sie auch [Microsoft.Azure.Services.AppAuthentication](#asal) verwenden, statt diese Anforderung selbst zu entwerfen.
@@ -317,7 +319,7 @@ public async Task<HttpResponseMessage> GetToken(string resource)  {
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const rp = require('request-promise');
@@ -333,7 +335,7 @@ const getToken = function(resource, cb) {
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```python
 import os
@@ -352,7 +354,7 @@ def get_bearer_token(resource_uri):
     return access_token
 ```
 
-# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 $resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"
@@ -363,7 +365,7 @@ $accessToken = $tokenResponse.access_token
 
 ---
 
-### <a name="asal"></a>Verwendung der Microsoft.Azure.Services.AppAuthentication-Bibliothek für .NET
+### <a name="using-the-microsoftazureservicesappauthentication-library-for-net"></a><a name="asal"></a>Verwendung der Microsoft.Azure.Services.AppAuthentication-Bibliothek für .NET
 
 Bei .NET-Anwendungen und -Funktionen stellt das Microsoft.Azure.Services.AppAuthentication-Paket die einfachste Methode für das Arbeiten mit einer verwalteten Identität dar. Mithilfe dieser Bibliothek können Sie zudem Ihren Code lokal auf dem Entwicklungscomputer testen. Hierzu verwenden Sie Ihr Benutzerkonto aus Visual Studio, aus der [Azure CLI](/cli/azure) oder der integrierten Active Directory-Authentifizierung. Weitere Informationen zu Optionen für die lokale Entwicklung mit dieser Bibliothek finden Sie in der [Microsoft.Azure.Services.AppAuthentication-Referenz]. In diesem Abschnitt werden die ersten Schritte mit der Bibliothek in Ihrem Code erläutert.
 
@@ -411,9 +413,9 @@ Für Java-Anwendungen und -Funktionen besteht die einfachste Methode für die Ar
     ```
 
 
-## <a name="remove"></a>Entfernen einer Identität
+## <a name="remove-an-identity"></a><a name="remove"></a>Entfernen einer Identität
 
-Eine systemseitig zugewiesene Identität kann entfernt werden, indem das Feature über das Portal, PowerShell oder die Befehlszeilenschnittstelle auf die gleiche Weise wie bei der Erstellung deaktiviert wird. Benutzerseitig zugewiesene Identitäten können einzeln entfernt werden. Um alle Identitäten zu entfernen, legen Sie im REST/ARM-Vorlagenprotokoll den Typ auf „None“ fest:
+Eine systemseitig zugewiesene Identität kann entfernt werden, indem das Feature über das Portal, PowerShell oder die Befehlszeilenschnittstelle auf die gleiche Weise wie bei der Erstellung deaktiviert wird. Benutzerseitig zugewiesene Identitäten können einzeln entfernt werden. Um alle Identitäten zu entfernen, legen Sie den Typ in der [ARM-Vorlage](#using-an-azure-resource-manager-template) auf „Kein“ fest:
 
 ```json
 "identity": {

@@ -1,34 +1,34 @@
 ---
-title: Einrichten der Abhängigkeitsvisualisierung in Azure Migrate
-description: In diesem Artikel wird das Einrichten der Abhängigkeitsvisualisierung in der Azure Migrate-Serverbewertung beschrieben.
-ms.topic: article
+title: Einrichten der agentbasierten Abhängigkeitsanalyse in der Azure Migrate-Serverbewertung
+description: In diesem Artikel wird das Einrichten der agentbasierten Abhängigkeitsanalyse in der Azure Migrate-Serverbewertung beschrieben.
+ms.topic: how-to
 ms.date: 2/24/2020
-ms.openlocfilehash: 2b75a38a376558946841d08ab7a9dbf730232e51
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: e61b7b4e6c3e566aa67d2bd585d2049ae885083b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78940999"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79453614"
 ---
 # <a name="set-up-dependency-visualization"></a>Einrichten der Abhängigkeitsvisualisierung
 
-In diesem Artikel wird das Einrichten der Abhängigkeitsvisualisierung in der Azure Migrate-Serverbewertung beschrieben. Mit der [Abhängigkeitsvisualisierung](concepts-dependency-visualization.md#what-is-dependency-visualization) können Sie Abhängigkeiten zwischen Computern, die Sie bewerten und zu Azure migrieren möchten, besser identifizieren und verstehen.
+In diesem Artikel wird das Einrichten der agentbasierten Abhängigkeitsanalyse in der Azure Migrate-Serverbewertung beschrieben. Mit der [Abhängigkeitsanalyse](concepts-dependency-visualization.md) können Sie Abhängigkeiten zwischen Computern, die Sie bewerten und zu Azure migrieren möchten, besser identifizieren und verstehen.
 
 ## <a name="before-you-start"></a>Vorbereitung
 
-- [Überprüfen](concepts-dependency-visualization.md) Sie die Anforderungen und die verbundenen Kosten für die Abhängigkeitsvisualisierung.
+- [Erfahren Sie mehr über](concepts-dependency-visualization.md#agent-based-analysis) die agentbasierte Abhängigkeitsanalyse.
+- Überprüfen Sie die Voraussetzungen und Supportanforderungen zum Einrichten der agentbasierten Abhängigkeitsvisualisierung für [VMware-VMS](migrate-support-matrix-vmware.md#agent-based-dependency-analysis-requirements), [physische Server](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements) und [Hyper-V-VMS](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements).
 - Stellen Sie sicher, dass Sie ein Azure Migrate-Projekt [erstellt](how-to-add-tool-first-time.md) haben.
-- Wenn Sie bereits ein Projekt erstellt haben, vergewissern Sie sich, dass Sie das Tool Azure Migrate-Serverbewertung[hinzugefügt](how-to-assess.md): Migrate-Serverbewertung bewerten.
-- Stellen Sie sicher, dass Sie eine [Azure Migrate-Appliance](migrate-appliance.md) eingerichtet haben, mit der Ihre lokalen Computer ermittelt werden können. Erfahren Sie, wie Sie eine Appliance für [VMware](how-to-set-up-appliance-vmware.md) oder [Hyper-V](how-to-set-up-appliance-hyper-v.md) einrichten. Die Appliance ermittelt lokale Computer und sendet Metadaten und Leistungsdaten an Azure Migrate: Server Assessment“ (Azure Migrate-Serverbewertung) erstellen.
+- Wenn Sie bereits ein Projekt erstellt haben, vergewissern Sie sich, dass Sie das Serverbewertungstool von Azure Migrate [hinzugefügt](how-to-assess.md) haben.
+- Stellen Sie sicher, dass Sie eine [Azure Migrate-Appliance](migrate-appliance.md) eingerichtet haben, mit der Ihre lokalen Computer ermittelt werden können. Erfahren Sie, wie Sie eine Appliance für [VMware](how-to-set-up-appliance-vmware.md), [Hyper-V](how-to-set-up-appliance-hyper-v.md) oder [physische Server](how-to-set-up-appliance-physical.md) einrichten können. Die Appliance ermittelt lokale Computer und sendet Metadaten und Leistungsdaten an die Azure Migrate-Serverbewertung.
 - Sie müssen einem Azure Migrate-Projekt einen [Log Analytics-Arbeitsbereich](../azure-monitor/platform/manage-access.md) zuordnen, um die Abhängigkeitsvisualisierung nutzen zu können:
+    - Sie können einen Arbeitsbereich erst nach Einrichten der Azure Migrate-Appliance anhängen, und wenn Sie Computer im Projekt Azure Migrate ermittelt haben.
     - Stellen Sie sicher, dass Sie über einen Arbeitsbereich in dem Abonnement mit dem Azure Migrate-Projekt verfügen.
     - Der Arbeitsbereich muss sich in einer der Regionen „USA, Osten“, „Asien, Südosten“ oder „Europa, Westen“ befinden. Arbeitsbereiche in anderen Regionen können keinem Projekt zugeordnet werden.
     - Der Arbeitsbereich muss sich in einer Region befinden, in der die [Dienstzuordnung unterstützt wird](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites).
     - Sie können einem Azure Migrate-Projekt einen neuen oder vorhandenen Log Analytics-Arbeitsbereich zuordnen.
     - Sie hängen den Arbeitsbereich bei der ersten Einrichtung der Visualisierung von Abhängigkeiten für einen Computer an. Der Arbeitsbereich für ein Azure Migrate-Projekt kann nach dem Hinzufügen nicht mehr geändert werden.
     - In Log Analytics wird der Arbeitsbereich, der Azure Migrate zugeordnet ist, mit dem Schlüssel des Migrationsprojekts und dem Projektnamen gekennzeichnet.
-
-- Sie können einen Arbeitsbereich erst dann anhängen, wenn Sie im Projekt Azure Migrate Computer ermittelt haben. Sie können dies tun, indem Sie eine Azure Migrate-Appliance für [VMware](how-to-set-up-appliance-vmware.md) oder [Hyper-V](how-to-set-up-appliance-hyper-v.md) einrichten. Die Appliance ermittelt lokale Computer und sendet Metadaten und Leistungsdaten an Azure Migrate: Server Assessment“ (Azure Migrate-Serverbewertung) erstellen. [Weitere Informationen](migrate-appliance.md)
 
 ## <a name="associate-a-workspace"></a>Zuordnen eines Arbeitsbereichs
 
@@ -51,7 +51,7 @@ In diesem Artikel wird das Einrichten der Abhängigkeitsvisualisierung in der Az
 Installieren Sie die Agents auf jedem Computer, den Sie analysieren möchten.
 
 > [!NOTE]
-    > Bei Computern, die von System Center Operations Manager 2012 R2 oder höher überwacht werden, müssen Sie den MMA-Agent nicht installieren. Die Dienstzuordnung ist in den Operations Manager integriert. [Befolgen Sie diese](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites) Anleitung zur Integration.
+> Bei Computern, die von System Center Operations Manager 2012 R2 oder höher überwacht werden, müssen Sie den MMA-Agent nicht installieren. Die Dienstzuordnung ist in den Operations Manager integriert. [Befolgen Sie](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites) die Anleitung zur Integration.
 
 1. Klicken Sie in **Azure Migrate: Serverbewertung** auf **Ermittelte Server**.
 2. Klicken Sie für jeden Computer, den Sie mit der Abhängigkeitsvisualisierung analysieren möchten, in der Spalte **Abhängigkeiten** auf **Agent-Installation erforderlich**.

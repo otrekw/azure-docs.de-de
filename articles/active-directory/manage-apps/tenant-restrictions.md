@@ -15,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: mimart
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70cdb4b42e835a9bfa03f4551ba25088ef8c5226
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: ecd49b340810f92727f0fc98f84031c8cbf68179
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78942849"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481176"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Verwalten des Zugriffs auf SaaS-Cloudanwendungen mithilfe von Mandanteneinschränkungen
 
@@ -38,13 +38,13 @@ Die Lösung umfasst folgende Komponenten:
 
 1. **Azure AD**: Wenn `Restrict-Access-To-Tenants: <permitted tenant list>` vorhanden ist, stellt Azure AD nur Sicherheitstoken für die zugelassenen Mandanten aus.
 
-2. **Lokale Proxyserver-Infrastruktur**: Bei dieser Infrastruktur handelt es sich um ein Proxygerät, das zur SSL-Überprüfung (Secure Sockets Layer) geeignet ist. Sie müssen den Proxy so konfigurieren, dass er den Header mit der Liste der zulässigen Mandanten in den für Azure AD bestimmten Datenverkehr einfügt.
+2. **Lokale Proxyserver-Infrastruktur**: Bei dieser Infrastruktur handelt es sich um ein Proxygerät, das zur TLS-Überprüfung (Transport Layer Security) geeignet ist. Sie müssen den Proxy so konfigurieren, dass er den Header mit der Liste der zulässigen Mandanten in den für Azure AD bestimmten Datenverkehr einfügt.
 
 3. **Clientsoftware**: Zur Unterstützung von Mandanteneinschränkungen muss Clientsoftware Token direkt von Azure AD anfordern, damit Datenverkehr von der Proxyinfrastruktur abgefangen werden kann. Browserbasierte Office 365-Anwendungen unterstützen derzeit Mandanteneinschränkungen, ebenso wie Office-Clients, die eine moderne Authentifizierung verwenden (wie OAuth 2.0).
 
 4. **Moderne Authentifizierung**: Clouddienste müssen eine moderne Authentifizierung verwenden, um Mandanteneinschränkungen nutzen und den Zugriff auf nicht zugelassene Mandanten blockieren zu können. Sie müssen Office 365-Clouddienste standardmäßig für die Verwendung moderner Authentifizierungsprotokolle konfigurieren. Aktuelle Informationen zur Unterstützung von moderner Authentifizierung durch Office 365 finden Sie unter [Updated Office 365 modern authentication](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/) (Aktualisierte moderne Authentifizierung für Office 365).
 
-Das folgende Diagramm veranschaulicht den allgemeinen Datenverkehrsfluss. Mandanteneinschränkungen erfordern die SSL-Überprüfung nur bei Datenverkehr zu Azure AD, nicht bei Datenverkehr zu den Office 365-Clouddiensten. Diese Unterscheidung ist wichtig, da der durch die Authentifizierung bedingte Datenverkehr für Azure AD in der Regel erheblich geringer ausfällt als der Datenverkehr für SaaS-Anwendungen wie Exchange Online und SharePoint Online.
+Das folgende Diagramm veranschaulicht den allgemeinen Datenverkehrsfluss. Mandanteneinschränkungen erfordern die TLS-Überprüfung nur bei Datenverkehr zu Azure AD, nicht bei Datenverkehr zu den Office 365-Clouddiensten. Diese Unterscheidung ist wichtig, da der durch die Authentifizierung bedingte Datenverkehr für Azure AD in der Regel erheblich geringer ausfällt als der Datenverkehr für SaaS-Anwendungen wie Exchange Online und SharePoint Online.
 
 ![Datenverkehrsfluss für Mandanteneinschränkungen – Diagramm](./media/tenant-restrictions/traffic-flow.png)
 
@@ -62,9 +62,9 @@ Die folgende Konfiguration ist erforderlich, um Mandanteneinschränkungen über 
 
 #### <a name="prerequisites"></a>Voraussetzungen
 
-- Der Proxy muss SSL abfangen, HTTP-Header einfügen und Ziele unter Verwendung von FQDNs/URLs filtern können.
+- Der Proxy muss TLS abfangen, HTTP-Header einfügen und Ziele unter Verwendung von FQDNs/URLs filtern können.
 
-- Clients müssen der Zertifikatkette vertrauen, die vom Proxy für die SSL-Kommunikation präsentiert wird. Wenn also z. B. Zertifikate einer internen [PKI (Public Key-Infrastruktur)](/windows/desktop/seccertenroll/public-key-infrastructure) verwendet werden, muss dem Zertifikat der internen ausstellenden Stammzertifizierungsstelle vertraut werden.
+- Clients müssen der Zertifikatkette vertrauen, die vom Proxy für die TLS-Kommunikation präsentiert wird. Wenn also z. B. Zertifikate einer internen [PKI (Public Key-Infrastruktur)](/windows/desktop/seccertenroll/public-key-infrastructure) verwendet werden, muss dem Zertifikat der internen ausstellenden Stammzertifizierungsstelle vertraut werden.
 
 - In Office 365-Abonnements ist dieses Feature bereits enthalten. Wenn Sie mit Mandanteneinschränkungen allerdings den Zugriff auf andere SaaS-Apps steuern möchten, benötigen Sie Azure AD Premium 1-Lizenzen.
 

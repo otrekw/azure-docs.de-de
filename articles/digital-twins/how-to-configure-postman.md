@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: 377639d7a88478308709743ab842db71028686ed
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: ffcfb4f6ec5f6c654d0b243af85034ab575e0d88
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023309"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297172"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Vorgehensweise: Konfigurieren von Postman für Azure Digital Twins
 
@@ -29,7 +29,7 @@ Führen Sie erste Schritte mit Azure Digital Twins aus, indem Sie ein REST-Clien
 
 [Postman](https://www.getpostman.com/) ist ein REST-Testtool, das wichtige HTTP-Anforderungsfunktionen in einer nützlichen desktop- und plugin-basierten grafischen Benutzeroberfläche ermittelt.
 
-Über den Postman-Client können Lösungsentwickler die Art der HTTP-Anforderung (*POST*, *GET*, *UPDATE*, *PATCH* und *DELETE*), den aufzurufenden API-Endpunkt und die Verwendung von SSL angeben. Postman unterstützt außerdem das Hinzufügen von HTTP-Anforderungsheadern, Parametern, Formulardaten und Textkörpern.
+Über den Postman-Client können Lösungsentwickler die Art der HTTP-Anforderung (*POST*, *GET*, *UPDATE*, *PATCH* und *DELETE*), den aufzurufenden API-Endpunkt und die Verwendung von TLS angeben. Postman unterstützt außerdem das Hinzufügen von HTTP-Anforderungsheadern, Parametern, Formulardaten und Textkörpern.
 
 ## <a name="configure-azure-active-directory-to-use-the-oauth-20-implicit-grant-flow"></a>Konfigurieren von Azure Active Directory für die Verwendung der impliziten OAuth 2.0-Gewährung
 
@@ -63,7 +63,7 @@ Richten Sie Postman ein, und konfigurieren Sie das Tool so, dass ein Azure Activ
 
 1. Wir möchten eine GET-Anforderung erstellen. Wählen Sie die Registerkarte **Authorization** (Autorisierung) und anschließend „OAuth 2.0“ und **Get New Access Token** (Neues Zugriffstoken abrufen) aus.
 
-    | Feld  | value |
+    | Feld  | Wert |
     |---------|---------|
     | Gewährungstyp | `Implicit` |
     | Rückruf-URL | `https://www.getpostman.com/oauth2/callback` |

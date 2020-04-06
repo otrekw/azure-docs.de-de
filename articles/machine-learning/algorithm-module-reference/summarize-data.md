@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 01/27/2020
-ms.openlocfilehash: be6fd633f026c98e8f75467dc8661e695e121721
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: b0def12582dd3795e1b17334406e28d77c3c5656
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841266"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477441"
 ---
 # <a name="summarize-data"></a>Zusammenfassen von Daten
 
@@ -40,13 +40,13 @@ Das Modul berechnet die wichtigen Maßzahlen für jede Spalte und gibt eine Zeil
 
 1. Es sind keine weiteren Parameter erforderlich. Standardmäßig analysiert das Modul alle Spalten, die als Eingabe bereitgestellt werden, und abhängig vom Typ der Werte in den Spalten gibt das Modul einen relevanten Satz von statistischen Werten zurück, die im Abschnitt [Ergebnisse](#results) beschrieben sind.
 
-1. Ausführen der Pipeline.
+1. Übermitteln Sie die Pipeline.
 
 ## <a name="results"></a>Ergebnisse
 
 Der Bericht aus dem Modul kann die folgenden statistischen Werte enthalten. 
 
-|Spaltenname|Beschreibung|
+|Spaltenname|BESCHREIBUNG|
 |------|------|  
 |**Feature**|Name der Spalte|
 |**Count**|Anzahl aller Zeilen|

@@ -7,16 +7,16 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 09/05/2019
 ms.author: victorh
-ms.openlocfilehash: 516e327cca1aa6a691a1d932c5f48c9108d818b4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 158bfe30bf48ee420be8efb9ff32fff0e555d9e7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510187"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475823"
 ---
 #  <a name="custom-rules-for-web-application-firewall-with-azure-front-door"></a>Benutzerdefinierte Regeln für Web Application Firewall mit Azure Front Door
 
-Azure Web Application Firewall (WAF) mit Front Door Service ermöglicht Ihnen, den Zugriff auf Ihre Webanwendungen anhand der Bedingungen zu steuern, die Sie definieren. Eine benutzerdefinierte WAF-Regel besteht aus einer Prioritätsnummer, einem Regeltyp, Übereinstimmungsbedingungen und einer Aktion. Es gibt zwei Arten von benutzerdefinierten Regeln: Übereinstimmungsregeln und Ratenlimitregeln. Eine Übereinstimmungsregel steuert den Zugriff basierend auf einer Reihe von Übereinstimmungsbedingungen, während eine Ratenlimitregel den Zugriff basierend auf Übereinstimmungsbedingungen und den Raten der eingehenden Anforderungen steuert. Sie können eine benutzerdefinierte Regel deaktivieren, damit sie nicht ausgewertet wird, aber dennoch die Konfiguration beibehalten. 
+Azure Web Application Firewall (WAF) mit Front Door ermöglicht Ihnen, den Zugriff auf Ihre Webanwendungen anhand der Bedingungen zu steuern, die Sie definieren. Eine benutzerdefinierte WAF-Regel besteht aus einer Prioritätsnummer, einem Regeltyp, Übereinstimmungsbedingungen und einer Aktion. Es gibt zwei Arten von benutzerdefinierten Regeln: Übereinstimmungsregeln und Ratenlimitregeln. Eine Übereinstimmungsregel steuert den Zugriff basierend auf einer Reihe von Übereinstimmungsbedingungen, während eine Ratenlimitregel den Zugriff basierend auf Übereinstimmungsbedingungen und den Raten der eingehenden Anforderungen steuert. Sie können eine benutzerdefinierte Regel deaktivieren, damit sie nicht ausgewertet wird, aber dennoch die Konfiguration beibehalten. 
 
 ## <a name="priority-match-conditions-and-action-types"></a>Priorität, Übereinstimmungsbedingungen und Aktionstypen
 
@@ -43,7 +43,7 @@ Sie können den Zugriff mit einer benutzerdefinierten WAF-Regel steuern, die ein
   - **Operator:**
     - Beliebig: wird häufig verwendet, um die Standardaktion zu definieren, wenn mit keiner Regel Übereinstimmung vorliegt. Der Beliebig-Operator stimmt mit allem überein.
     - Gleich
-    - Contains
+    - Enthält
     - LessThan: Größenbeschränkung
     - GreaterThan: Größenbeschränkung
     - LessThanOrEqual: Größenbeschränkung
@@ -69,7 +69,7 @@ Sie können den Zugriff mit einer benutzerdefinierten WAF-Regel steuern, die ein
   - **Transformation [optional]:** Eine Zeichenfolgenliste mit Namen von Transformationen, die vor dem Abgleich ausgeführt werden sollen. Mögliche Transformationen:
      - Großbuchstaben 
      - Kleinbuchstaben
-     - Trim
+     - Glätten
      - RemoveNulls
      - UrlDecode
      - UrlEncode
@@ -79,7 +79,7 @@ Sie können den Zugriff mit einer benutzerdefinierten WAF-Regel steuern, die ein
      - POST
      - PUT
      - HEAD
-     - DELETE
+     - Delete
      - LOCK
      - UNLOCK
      - PROFILE

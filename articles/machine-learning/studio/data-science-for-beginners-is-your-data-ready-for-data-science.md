@@ -11,10 +11,10 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: ccc422dfb3105fd1e12569a84a4ebfd22182b225
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73837798"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Sind Ihre Daten für Data Science bereit?
@@ -46,7 +46,7 @@ Bevor Sie sich mit Data Science die gewünschten Antworten verschaffen können, 
 In Data Science gibt es bestimmte Zutaten, die zusammengebracht werden müssen:
 
 * Relevanz
-* Verbundenheit
+* Verbunden
 * Genauigkeit
 * Ausreichende Menge für die Verarbeitung
 

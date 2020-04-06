@@ -3,12 +3,12 @@ title: 'Azure Application Insights: Außerkraftsetzen der SDK-Standardendpunkte'
 description: Ändern der Standardendpunkte des Azure Monitor Application Insights SDK für Regionen wie Azure Government
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 3aa18a6b96458533c3dc53f3f420ed264b298a3e
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: b4ab05c7ee815b385ffb2d1ff9e621063d744dd7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77671986"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298317"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Überschreiben der Standardendpunkte von Application Insights
 
@@ -187,11 +187,15 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 </script>
 ```
 
+### <a name="python"></a>Python
+
+Anleitungen zum Ändern des Erfassungsendpunkts für das opencensus-python-SDK finden Sie im [opencensus-python-Repository](https://github.com/census-instrumentation/opencensus-python/blob/af284a92b80bcbaf5db53e7e0813f96691b4c696/contrib/opencensus-ext-azure/opencensus/ext/azure/common/__init__.py).
+
 ## <a name="regions-that-require-endpoint-modification"></a>Regionen, für die Endpunktänderungen erforderlich sind
 
 Derzeit sind [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) und [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide) die einzigen Regionen, für die Endpunktänderungen erforderlich sind.
 
-|Region |  Endpoint Name (Endpunktname) | value |
+|Region |  Endpoint Name (Endpunktname) | Wert |
 |-----------------|:------------|:-------------|
 | Azure China | Telemetriekanal | `https://dc.applicationinsights.azure.cn/v2/track` |
 | Azure China | QuickPulse (Live Metrics) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
@@ -203,7 +207,7 @@ Derzeit sind [Azure Government](https://docs.microsoft.com/azure/azure-governmen
 Wenn Sie derzeit die [Application Insights-REST-API](https://dev.applicationinsights.io/
 ) nutzen, auf die normalerweise über „api.applicationinsights.io“ zugegriffen wird, müssen Sie einen lokalen Endpunkt in Ihrer Region verwenden:
 
-|Region |  Endpoint Name (Endpunktname) | value |
+|Region |  Endpoint Name (Endpunktname) | Wert |
 |-----------------|:------------|:-------------|
 | Azure China | REST-API | `api.applicationinsights.azure.cn` |
 | Azure Government | REST-API | `api.applicationinsights.us`|

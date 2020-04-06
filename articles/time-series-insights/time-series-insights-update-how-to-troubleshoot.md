@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: a306707f0ed47fba8fd854d820554bc1bd80e8bc
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: 667dee6365f38ae058e91c61c24838d8912df26a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110300"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80152649"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>Diagnose und Problembehandlung einer Preview-Umgebung
 
@@ -72,6 +72,20 @@ Möglicherweise werden Sie Daten ohne die Time Series-ID.
 
     > [!NOTE]
     > Zurzeit unterstützt Time Series Insights eine maximale Datenerfassungsrate von 6 Mbit/s.
+
+## <a name="problem-data-was-showing-but-now-ingestion-has-stopped"></a>Problem: Es wurden Daten angezeigt, aber die Erfassung wurde nun beendet.
+
+- Möglicherweise wurde der Ereignisquellenschlüssel neu generiert, und ihre Vorschauumgebung benötigt den neuen Ereignisquellenschlüssel.
+
+Dieses Problem tritt auf, wenn der Schlüssel, der beim Erstellen der Ereignisquelle angegeben wurde, nicht mehr gültig ist. In Time Series Insights werden in Ihrem Hub Telemetriedaten, aber keine empfangenen Nachrichten angezeigt. Wenn Sie nicht sicher sind, ob der Schlüssel neu generiert wurde, können Sie das Aktivitätsprotokoll Ihres Event Hubs nach „Namespace-Autorisierungsregeln erstellen oder aktualisieren“ oder „Dient zum Erstellen oder Aktualisieren von Iot Hub-Ressourcen“ für den IoT-Hub durchsuchen. 
+
+Um Ihre Time Series Insights-Vorschauumgebung mit dem neuen Schlüssel zu aktualisieren, öffnen Sie die Hubressource im Azure-Portal und kopieren den neuen Schlüssel. Navigieren Sie zu ihrer TSI-Ressource, und klicken Sie auf „Ereignisquellen“. 
+
+   [![Aktualisieren des Schlüssels.](media/preview-troubleshoot/update-hub-key-step-1.png)](media/preview-troubleshoot/update-hub-key-step-1.png#lightbox)
+
+Wählen Sie die Ereignisquelle(n) aus, deren Erfassung beendet wurde, fügen Sie den neuen Schlüssel ein, und klicken Sie auf „Speichern“.
+
+   [![Aktualisieren des Schlüssels.](media/preview-troubleshoot/update-hub-key-step-2.png)](media/preview-troubleshoot/update-hub-key-step-2.png#lightbox)
 
 ## <a name="problem-my-event-sources-timestamp-property-name-doesnt-work"></a>Problem: Die Timestamp-Eigenschaft für den Namen meiner Ereignisquelle funktioniert nicht.
 

@@ -16,12 +16,12 @@ ms.date: 10/09/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67ae5d2661371c256f753d05eb496d2cd53a0017
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0518c58abf156c718ee083ffadb0ef8e0a590252
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60350489"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331545"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect und Verbund
 Mit Azure Active Directory (Azure AD) Connect können Sie einen Verbund mit lokalen Active Directory-Verbunddiensten (AD FS) und Azure AD konfigurieren. Mit der Verbundanmeldung können sich Benutzer mit ihren lokalen Kennwörtern bei Azure AD-basierten Diensten anmelden, während sie in ihrem Unternehmensnetzwerk angemeldet sind - und das, ohne ihre Kennwörter erneut eingeben zu müssen. Mithilfe der Verbundoption mit AD FS können Sie eine neue Installation von AD FS bereitstellen oder eine vorhandene Installation in einer Windows Server 2012 R2-Farm angeben.
@@ -42,7 +42,7 @@ Dieses Thema ist das zentrale Thema zu verbundbezogenen Funktionen für Azure AD
 | [Hinzufügen eines neuen AD FS-Servers](how-to-connect-fed-management.md#addadfsserver) |Erweitern einer AD FS-Farm mit einer zusätzlichen AD FS-Serverinstallation nach der Erstinstallation |
 | [Hinzufügen eines neuen AD FS-WAP-Servers](how-to-connect-fed-management.md#addwapserver) |Erweitern einer AD FS-Farm mit einer zusätzlichen WAP-Serverinstallation (Web Application Proxy) nach der Erstinstallation |
 | [Hinzufügen einer neuen Verbunddomäne](how-to-connect-fed-management.md#addfeddomain) |Hinzufügen einer weiteren Domäne für den Verbund mit Azure AD |
-| [Aktualisieren des SSL-Zertifikats](how-to-connect-fed-ssl-update.md)| Aktualisieren des SSL-Zertifikats für eine AD FS-Farm |
+| [Aktualisieren des TSL/SSL-Zertifikats](how-to-connect-fed-ssl-update.md)| Aktualisieren Sie das TSL/SSL-Zertifikat für eine AD FS-Farm. |
 | [Erneuern von Verbundzertifikaten für Office 365 und Azure AD](how-to-connect-fed-o365-certs.md)|Erneuern Sie Ihr O365-Zertifikat bei Azure AD.|
 | **Andere Verbundkonfiguration** | |
 | [Erstellen eines Verbunds mit mehreren Instanzen von Azure AD und einer Einzelinstanz von AD FS](how-to-connect-fed-single-adfs-multitenant-federation.md) | Zusammenfassen mehrerer Azure AD-Instanzen zu einem Verbund mit einer einzelnen AD FS-Farm| 

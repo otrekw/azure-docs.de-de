@@ -4,12 +4,12 @@ description: Bereitstellen und Konfigurieren eines Hyperledger Fabric-Konsortium
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: v-umha
-ms.openlocfilehash: 5aed420295fd17cf4e7b26c86e8b84c4687e6545
-ms.sourcegitcommit: f0f73c51441aeb04a5c21a6e3205b7f520f8b0e1
+ms.openlocfilehash: 2312c002e5c2e0b813f8acbdc3e3bff597f204d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77029910"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476439"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric-Konsortium auf Azure Kubernetes Service (AKS)
 
@@ -78,7 +78,7 @@ Navigieren Sie zum [Azure-Portal](https://portal.azure.com), um mit der Bereitst
     ![Vorlage „Hyperledger Fabric auf Azure Kubernetes Service“](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-settings.png)
 
 5. Geben Sie die folgenden Details ein:
-    - **Name der Organisation:** Der Name der Fabric-Organisation, die für verschiedene Datenebenenvorgänge erforderlich ist.
+    - **Name der Organisation:** Der Name der Fabric-Organisation, die für verschiedene Datenebenenvorgänge erforderlich ist. Der Name der Organisation muss pro Bereitstellung eindeutig sein. 
     - **Fabric-Netzwerkkomponente**: Wählen Sie entsprechend der Blockchain-Netzwerkkomponente, die Sie einrichten möchten, entweder „Anordnungsdienst“ oder „Peerknoten“ aus.
     - **Anzahl der Knoten**: Es gibt die beiden folgenden Knotentypen:
         - Anordnungsdienst: Wählen Sie die Anzahl der Knoten aus, um Fehlertoleranz für das Netzwerk bereitzustellen. Als Anzahl für Anordnerknoten werden nur 3, 5 und 7 unterstützt.

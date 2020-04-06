@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door Service – URL-Rewrite| Microsoft-Dokumentation
-description: In diesem Artikel erläutert, wie Azure Front Door Service die URL-Rewrite-Funktion durchführt, wenn diese konfiguriert wurde.
+title: Azure Front Door – URL-Rewrite| Microsoft-Dokumentation
+description: In diesem Artikel erläutert, wie Azure Front Door die URL-Rewrite-Funktion durchführt, wenn diese konfiguriert wurde.
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -11,15 +11,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: dc2126276e3e8e0d35ce8ed1f835544386659eff
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 1e5bd565be7a1cabf08ddf33c65eb12b5294249f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "60736179"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471471"
 ---
 # <a name="url-rewrite-custom-forwarding-path"></a>URL-Rewrite (benutzerdefinierter Weiterleitungspfad)
-Azure Front Door Service unterstützt URL-Rewrite, indem es Ihnen ermöglicht, einen optionalen **benutzerdefinierten Weiterleitungspfad** zu konfigurieren, der beim Erstellen der Anforderung zum Weiterleiten an das Back-End verwendet werden soll. Wenn kein benutzerdefinierter Weiterleitungspfad bereitgestellt wird, kopiert Front Door standardmäßig den URL-Eingangspfad in die URL, die in der weitergeleiteten Anforderung verwendet wurde. Der in der weitergeleiteten Anforderung verwendete Hostheader wird für das ausgewählten Back-End konfiguriert. Informationen zu den Aktionen und zur Konfiguration des Hostheaders finden Sie unter [Back-End-Hostheader](front-door-backend-pool.md#hostheader).
+Azure Front Door unterstützt URL-Rewrite, indem Sie die Möglichkeit erhalten, einen optionalen **benutzerdefinierten Weiterleitungspfad** zu konfigurieren, der beim Erstellen der Anforderung zum Weiterleiten an das Back-End verwendet werden soll. Wenn kein benutzerdefinierter Weiterleitungspfad bereitgestellt wird, kopiert Front Door standardmäßig den URL-Eingangspfad in die URL, die in der weitergeleiteten Anforderung verwendet wurde. Der in der weitergeleiteten Anforderung verwendete Hostheader wird für das ausgewählten Back-End konfiguriert. Informationen zu den Aktionen und zur Konfiguration des Hostheaders finden Sie unter [Back-End-Hostheader](front-door-backend-pool.md#hostheader).
 
 Die Stärke von URL-Rewrite anhand eines benutzerdefinierten Weiterleitungspfads besteht darin, dass ein beliebiger Teil des Eingangspfads, der einem Platzhalterpfad entspricht, in den weitergeleiteten Pfad kopiert wird (diese Pfadsegmente sind die **grün** dargestellten Segmente im folgenden Beispiel):
 </br>
@@ -28,7 +28,7 @@ Die Stärke von URL-Rewrite anhand eines benutzerdefinierten Weiterleitungspfads
 ## <a name="url-rewrite-example"></a>Beispiel für URL-Rewrite
 Sehen wir uns eine Routingregel mit folgenden konfigurierten Front-End-Hosts und Pfaden an:
 
-| Host      | Paths       |
+| Hosts      | Paths       |
 |------------|-------------|
 | www\.contoso.com | /\*         |
 |            | /foo        |
@@ -59,7 +59,7 @@ Es gibt zusätzliche, optionale Einstellungen, die Sie für alle Routingregelein
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Erstellen einer Azure Front Door Service-Konfiguration](quickstart-create-front-door.md).
+- Erfahren Sie mehr über das [Erstellen einer Front Door-Instanz](quickstart-create-front-door.md).
 - Informieren Sie sich über die [Funktionsweise von Azure Front Door Service](front-door-routing-architecture.md).
 
 <!--Image references-->

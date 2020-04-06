@@ -1,5 +1,6 @@
 ---
 title: Azure Cloud Services – Definition LoadBalancerProbe-Schema | Microsoft-Dokumentation
+description: Der vom Kunden definierte LoadBalancerProbe ist ein Integritätstest von Endpunkten in Rolleninstanzen. Er wird mit Web- oder Workerrollen in einer Dienstdefinitionsdatei kombiniert.
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -8,12 +9,12 @@ ms.topic: reference
 caps.latest.revision: 14
 author: georgewallace
 ms.author: tagore
-ms.openlocfilehash: bc2c0f5137ce78392a8df7c6c2fdd402ded5355a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6d0e84b6724d9df4162d4be3e06a9952087a53a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449057"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537345"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure Cloud Services-Definition LoadBalancerProbe-Schema
 Der Lastenausgleichstest ist ein vom Kunden definierter Integritätstest von UDP-Endpunkten und Endpunkten in Rolleninstanzen. `LoadBalancerProbe` ist kein eigenständiges Element; es wird mit der Webrolle oder der Workerrolle in einer Dienstdefinitionsdatei kombiniert. Ein `LoadBalancerProbe` kann von mehreren Rollen verwendet werden.
@@ -46,10 +47,10 @@ Das Element `LoadBalancerProbes` der Dienstdefinitionsdatei umfasst folgende Ele
 - [Element LoadBalancerProbes](#LoadBalancerProbes)
 - [Element LoadBalancerProbe](#LoadBalancerProbe)
 
-##  <a name="LoadBalancerProbes"></a> Element LoadBalancerProbes
+##  <a name="loadbalancerprobes-element"></a><a name="LoadBalancerProbes"></a> Element LoadBalancerProbes
 Das Element `LoadBalancerProbes` beschreibt die Sammlung von Lastenausgleichstests. Dieses Element ist dem [LoadBalancerProbe-Element](#LoadBalancerProbe) übergeordnet. 
 
-##  <a name="LoadBalancerProbe"></a> Element LoadBalancerProbe
+##  <a name="loadbalancerprobe-element"></a><a name="LoadBalancerProbe"></a> Element LoadBalancerProbe
 Das Element `LoadBalancerProbe` definiert den Integritätstest für ein Modell. Sie können mehrere Lastenausgleichstests definieren. 
 
 In der folgenden Tabelle sind die Attribute des `LoadBalancerProbe`-Elements beschrieben:

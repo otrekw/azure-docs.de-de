@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Partnerlösungen für Azure Monitor und
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 40ba4c4f0a90d5bca03afea67302a5dbb77de027
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 33ab913c64b651db9e75d4791ecb631ed7e081a5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77659457"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298391"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor – integrierte Partnerlösungen
 
@@ -49,7 +49,7 @@ Sie können für Azure Monitor-Warnungen JIRA-Tickets erstellen.
 
 ![Circonus-Logo](./media/partners/circonus.png)
 
-Circonus ist eine Mikroservicesüberwachungs- und -analyseplattform für lokale oder SaaS-Bereitstellung. Ihre vollständig automatisierbare API-zentrierte Plattform ist skalierbarer und zuverlässiger als die Systeme, die sie überwacht. Circonus wurde für die Anforderungen von DevOps entwickelt und bietet perzentilbasierte Warnungen, Diagramme, Dashboards und Machine Learning-Intelligenz, die Geschäftsoptimierung ermöglichen. Circonus überwacht Ihre Microsoft Azure-Cloudressourcen und ihre Anwendungen in Echtzeit. Sie können Circonus zum Erfassen und Nachverfolgen von Metriken für die Variablen verwenden, die Sie für Ihre Ressourcen und Anwendungen messen möchten. Mit Circonus erhalten Sie einen systemweiten Einblick in die Ressourcenverwendung, Anwendungsleistung und Betriebsintegrität von Azure.
+Circonus ist der Computerdatenanalyse-Experte, der die einzige Computerdatenanalyse-Plattform bereitstellt, die Milliarden von Metrikstreams in Echtzeit verarbeiten kann und Ihnen so beispiellose geschäftliche Einblicke bietet, die Sie zur Wertschöpfung nutzen können. Verwenden Sie Circonus, um Schlüsselmetriken für Ihre Microsoft Azure-Einrichtung zu sammeln, zu verfolgen und zu visualisieren. Sie erhalten einen systemweiten Einblick in die Ressourcenverwendung, Anwendungsleistung und Betriebsintegrität von Azure.
 
 [Zur Dokumentation.][circonus-doc]
 
@@ -115,7 +115,7 @@ InfluxData, der Entwickler von InfluxDB, liefert eine moderne Open Source-Plattf
 
 ![LogicMonitor-Logo](./media/partners/logicmonitor.png)
 
-LogicMonitor® ist die führende SaaS-basierte Plattform zur Leistungsüberwachung für komplexe IT-Infrastrukturen. Mit einer Abdeckung für Tausende von Technologien bietet LogicMonitor einen detaillierten Einblick in die Infrastruktur und Anwendungsleistung. Die umfassende Azure-Überwachung von LM Cloud ermöglicht Benutzern, die Leistung der Azure-Cloud sowie lokaler und hybrider Cloudressourcen über eine einzige Plattform aus zu korrelieren. Automatisierte Ressourcenerkennung, integrierte Überwachungsvorlagen, vorkonfigurierte Schwellenwerte für Warnungen und anpassbare Dashboards bieten IT-Mitarbeitern die für den Erfolg erforderliche Geschwindigkeit, Flexibilität und Transparenz.
+LogicMonitor&reg; ist die führende SaaS-basierte Plattform zur Leistungsüberwachung für komplexe IT-Infrastrukturen. Mit einer Abdeckung für Tausende von Technologien bietet LogicMonitor einen detaillierten Einblick in die Infrastruktur und Anwendungsleistung. Die umfassende Azure-Überwachung von LM Cloud ermöglicht Benutzern, die Leistung der Azure-Cloud sowie lokaler und hybrider Cloudressourcen von einer einzigen Plattform aus zu korrelieren. Automatisierte Ressourcenerkennung, integrierte Überwachungsvorlagen, vorkonfigurierte Schwellenwerte für Warnungen und anpassbare Dashboards bieten IT-Mitarbeitern die für den Erfolg erforderliche Geschwindigkeit, Flexibilität und Transparenz.
 
 [Zur Dokumentation.][logicmonitor-doc]
 
@@ -205,6 +205,14 @@ Serverless360 ist ein Tool für eine Plattform zum Betreiben, Verwalten und Übe
 
 [Weitere Informationen.][serverless360-doc]
 
+## <a name="servicenow"></a>ServiceNow
+
+![ServiceNow-Logo](./media/partners/servicenow.png)
+
+Reduzieren Sie Vorfälle und MTTR mit der NOW AIOps-Plattform, um Störungen zu vermeiden, Prioritäten zu setzen, die Grundursache mit ML zu identifizieren und mit ITX-Workflows zu beheben.  Informieren Sie sich über den aktuellen Status Ihrer IaaS-/PaaS-/FaaS-Dienste von Azure, und erstellen Sie Dienstzuordnungen von Tags, um den Anwendungsdienstkontext für die Analyse der geschäftlichen Auswirkungen zu erstellen.    
+
+[Weitere Informationen.](https://www.servicenow.com/solutions/aiops.html)
+
 ## <a name="signalfx"></a>SignalFx
 
 ![SignalFX-Logo](./media/partners/signalfx.png)
@@ -214,6 +222,7 @@ SignalFX ist führender Anbieter im Bereich Operational Intelligence in Echtzeit
 [Zur Dokumentation.][signalfx-doc]
 
 ## <a name="signl4"></a>SIGNL4
+
 ![SIGNL4-Logo](./media/partners/signl4.png)
 
 SIGNL4, die mobile App für Benachrichtigungen für Einsatzteams, ist der schnellste Weg, kritische Warnungen von Azure Monitor zur richtigen Zeit an die richtigen Personen weiterzuleiten – jederzeit auf dem Laufenden mit Pushnachrichten, Textnachrichten und Sprachanrufen. SIGNL4 verwaltet Bereitschaftsdienste und Schichten Ihres Teams, verfolgt die Zustellung sowie den Besitz von Warnmeldungen und eskaliert diese bei Bedarf. Die App bietet volle Transparenz für das gesamte Team. Mit dem einfachen REST-Webhook von SIGNL4 kann jeder Azure-Dienst mühelos verbunden werden. Mit SIGNL4 erhalten Sie eine bis zu zehnmal schnellere Antwort auf E-Mail-Benachrichtigungen und manuelle Warnmeldungen.
@@ -232,6 +241,14 @@ Das Azure Monitor-Add-On für Splunk steht [hier in der Splunkbase zur Verfügun
 
 [Zur Dokumentation.][splunk-doc]
 
+## <a name="squaredup"></a>SquaredUp 
+
+![SquaredUp-Logo](./media/partners/squaredup.png)
+
+Mit SquaredUp für Azure ist die Visualisierung Ihrer Azure-Anwendungen faszinierend einfach. Interaktive Echtzeitdashboards stehen Ihnen zur Verfügung. Sie können einen Drilldown in Abonnements, Ressourcengruppen, Tags und einzelne Ressourcen ausführen, um Metriken wie etwa zu CPU, den meisten eingehenden Verbindungen, Application Insights-Antwortzeit, Gesamtkosten und den zusammengefassten Integritätsstatus anzuzeigen, und einen Drillacross durchführen, um verwandte Daten wie Warnungen, Log Analytics-Ereignisse, ausführlichere Metriken oder verwandte Daten aus anderen von Ihnen verwendeten Tools wie beispielsweise ServiceNow, Dynatrace, PagerDuty oder Pingdom anzuzeigen.  Sie können Ihre eigenen Dashboards anpassen, veröffentlichen und für Einzelpersonen oder Intranetseiten freigeben. 
+
+[Weitere Informationen.](https://squaredup.com/)
+
 ## <a name="sumo-logic"></a>Sumo Logic
 
 ![Sumo Logic-Logo](./media/partners/SumoLogic.png)
@@ -249,6 +266,7 @@ Turbonomic automatisiert Workloads für Hybrid Clouds durch gleichzeitige Optimi
 [Weitere Informationen.][turbonomic-doc]
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - [Weitere Informationen zu Azure Monitor](../../azure-monitor/overview.md)
 - [Zugreifen auf Metriken über die REST-API](rest-api-walkthrough.md)
 - [Streamen des Aktivitätsprotokolls an einen Nicht-Microsoft-Dienst](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)

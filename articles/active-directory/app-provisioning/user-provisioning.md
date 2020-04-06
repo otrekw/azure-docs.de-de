@@ -15,12 +15,12 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a24a557cb436f18252abd88a4c82f15004f4390
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 5e828fd9c2561007c332db67bfd0b20dda9b845f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522049"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454532"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für Anwendungen mit Azure Active Directory
 
@@ -73,7 +73,7 @@ Als Hilfe bei der Automatisierung der Bereitstellung und Bereitstellungsaufhebun
 
 Zur Bewältigung dieser Aufgaben verfügt die SCIM-Spezifikation über ein gemeinsames Benutzerschema, damit Benutzer Apps zugeordnet werden können und diese verwenden können. SCIM wird immer mehr zum De-facto-Standard für die Bereitstellung. Bei Verwendung zusammen mit Verbundstandards wie SAML oder OpenID Connect verfügen Administratoren über eine auf Standards basierende End-to-End-Lösung für die Zugriffsverwaltung.
 
-Eine ausführliche Anleitung zur Verwendung von SCIM zum Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern und Gruppen für eine Anwendung finden Sie unter [Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung](use-scim-to-provision-users-and-groups.md).
+Eine ausführliche Anleitung zum Entwickeln eines SCIM-Endpunkts zum Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern und Gruppen für eine Anwendung finden Sie unter [Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung](use-scim-to-provision-users-and-groups.md). Für vorab integrierte Anwendungen im Katalog (Slack, Azure Databricks, Snowflake usw.) können Sie die Entwicklerdokumentation überspringen und die [hier](../saas-apps/tutorial-list.md) bereitgestellten Tutorials verwenden.
 
 ## <a name="manual-vs-automatic-provisioning"></a>Manuelle und automatische Bereitstellung
 

@@ -1,17 +1,17 @@
 ---
 title: Verteilte Ablaufverfolgung für Telemetriedaten in Azure Application Insights | Microsoft-Dokumentation
-description: Enthält Informationen zur Microsoft-Unterstützung für verteilte Ablaufverfolgung durch unsere lokale Weiterleitung und die Partnerschaft im OpenCensus-Projekt
+description: Enthält Informationen zur Microsoft-Unterstützung für verteilte Ablaufverfolgung durch unsere Partnerschaft im OpenCensus-Projekt
 ms.topic: conceptual
 author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 49e61a7677007c52d1a584c4b49ccaadc3a02df3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: c2f384370c3ceaf24164e4a27adc05b1a1e1ddf7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669589"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294961"
 ---
 # <a name="what-is-distributed-tracing"></a>Was ist die verteilte Ablaufverfolgung?
 
@@ -38,7 +38,7 @@ Die verteilte Ablaufverfolgung wird von den Application Insights SDKs für .NET,
 * [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
 * [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
-* [Python (Vorschau)](opencensus-python.md)
+* [Python](opencensus-python.md)
 
 Wenn das richtige Application Insights SDK installiert und konfiguriert ist, werden Ablaufverfolgungsinformationen für gängige Frameworks, Bibliotheken und Technologien automatisch von der automatischen Erfassung (Auto-Collectors) für SDK-Abhängigkeiten gesammelt. Die vollständige Liste der unterstützten Technologien finden Sie unter [Automatisches Sammeln von Abhängigkeiten](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies).
 
@@ -48,7 +48,7 @@ Wenn das richtige Application Insights SDK installiert und konfiguriert ist, wer
 
 Zusätzlich zu den Application Insights SDKs unterstützt Application Insights auch die verteilte Ablaufverfolgung durch [OpenCensus](https://opencensus.io/). OpenCensus ist eine herstellerunabhängige, Open Source-Einzelverteilung von Bibliotheken, mit denen Funktionen für das Sammeln von Metriken und für die verteilte Ablaufverfolgung für Dienste bereitgestellt werden. Darüber hinaus ermöglicht es der Open Source-Community, die verteilte Ablaufverfolgung mit gängigen Technologien wie Redis, Memcached oder MongoDB zu durchzuführen. [Microsoft arbeitet bei OpenCensus mit mehreren anderen Überwachungs- und Cloud-Partnern zusammen](https://open.microsoft.com/2018/06/13/microsoft-joins-the-opencensus-project/).
 
-[Python (Vorschau)](opencensus-python.md) 
+[Python](opencensus-python.md) 
 
 Auf der OpenCensus-Website finden Sie API-Referenzdokumentation für [Python](https://opencensus.io/api/python/trace/usage.html) und [Go](https://godoc.org/go.opencensus.io), sowie verschiedene andere Anleitungen für die Verwendung von OpenCensus. 
 

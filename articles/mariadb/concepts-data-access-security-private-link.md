@@ -1,21 +1,21 @@
 ---
-title: Private Link für Azure Database for MariaDB (Vorschau)
+title: Private Link – Azure Database for MariaDB
 description: Erfahren Sie, wie Private Link für Azure Database for MariaDB funktioniert.
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 01/09/2020
-ms.openlocfilehash: 92d7522c8382ded182c5f482df3f3d917b4b3a14
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 03/10/2020
+ms.openlocfilehash: b05a202537492fe54a76cf40a3b15987e099a7e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982383"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79367719"
 ---
-# <a name="private-link-for-azure-database-for-mariadb-preview"></a>Private Link für Azure Database for MariaDB (Vorschau)
+# <a name="private-link-for-azure-database-for-mariadb"></a>Private Link für Azure Database for MariaDB
 
-Private Link ermöglicht das Herstellen von Verbindungen mit verschiedenen PaaS-Diensten in Azure über einen privaten Endpunkt. im Prinzip macht Azure Private Link Azure-Dienste in Ihrem privaten virtuellen Netzwerk (VNET) verfügbar. Der Zugriff auf die PaaS-Ressourcen erfolgt wie bei anderen Ressourcen im VNET auch über die private IP-Adresse.
+Private Link ermöglicht Ihnen das Erstellen privater Endpunkte für Azure Database for MariaDB und integriert so Azure-Dienste in Ihr privates virtuelles Netzwerk (VNET). Der private Endpunkt macht eine private IP-Adresse verfügbar, die Sie verwenden können, um mit Ihrem Azure Database for MariaDB-Datenbankserver wie mit jeder anderen Ressource im VNET eine Verbindung herzustellen.
 
 Eine Liste der PaaS-Dienste, die die Private Link-Funktion unterstützen, finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/private-link/index) zu Private Link. Ein privater Endpunkt ist eine private IP-Adresse in einem bestimmten [VNET](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) und Subnetz.
 
@@ -58,10 +58,7 @@ Zum Aktivieren von Private Link sind private Endpunkte erforderlich. Hierfür k�
 
 ### <a name="approval-process"></a>Genehmigungsprozess
 
-Nachdem der Netzwerkadministrator den privaten Endpunkt (PE) erstellt hat, kann der Administrator die private Endpunktverbindung (Private Endpoint Connection, PEC) mit Azure Database for MariaDB verwalten.
-
-> [!NOTE]
-> Zurzeit unterstützt Azure Database for MariaDB nur die automatische Genehmigung für den privaten Endpunkt.
+Nachdem der Netzwerkadministrator den privaten Endpunkt (PE) erstellt hat, kann der Administrator die private Endpunktverbindung (Private Endpoint Connection, PEC) mit Azure Database for MariaDB verwalten. Diese Aufteilung von Aufgaben zwischen dem Netzwerkadministrator und Datenbankadministrator ist für die Verwaltung der Konnektivität von Azure Database for MariaDB hilfreich. 
 
 * Navigieren Sie im Azure-Portal zur Azure Database for MariaDB-Serverressource. 
     * Auswählen der privaten Endpunktverbindung im linken Bereich
@@ -86,7 +83,7 @@ Nachdem der Netzwerkadministrator den privaten Endpunkt (PE) erstellt hat, kann 
 
 Clients können eine Verbindung mit dem privaten Endpunkt über das gleiche VNET, über das mittels Peering verbundene VNET in der gleichen Region oder regionsübergreifend über eine VNET-zu-VNET-Verbindung herstellen. Darüber hinaus können Clients von der lokalen Umgebung aus eine Verbindung über ExpressRoute, privates Peering oder VPN-Tunneling herstellen. Die gängigen Anwendungsfälle sind im folgenden Diagramm vereinfacht dargestellt:
 
-![Auswählen der Übersicht über den privaten Endpunkt](media/concepts-data-access-and-security-private-link/show-private-link-overview.png)
+![Übersicht zum Auswählen des privaten Endpunkts](media/concepts-data-access-and-security-private-link/show-private-link-overview.png)
 
 ### <a name="connecting-from-an-azure-vm-in-peered-virtual-network-vnet"></a>Herstellen einer Verbindung über einen virtuellen Azure-Computer in einem virtuellen Netzwerk (VNET) mit Peering
 Konfigurieren Sie das [VNET-Peering](https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-powershell), um über einen virtuellen Azure-Computer in einem VNET mit Peering eine Verbindung mit der Azure Database for MariaDB-Instanz herzustellen.
@@ -110,6 +107,19 @@ Folgende Fälle und Ergebnisse sind bei Verwendung von Private Link in Verbindun
 * Wenn Sie öffentlichen Datenverkehr oder einen Dienstendpunkt konfigurieren und private Endpunkte erstellen, werden verschiedene Arten von eingehendem Datenverkehr durch den entsprechenden Typ der Firewallregel autorisiert.
 
 * Wenn Sie keinen öffentlichen Datenverkehr oder Dienstendpunkt konfigurieren und private Endpunkte erstellen, kann auf Azure Database for MariaDB nur über die privaten Endpunkte zugegriffen werden. Wenn Sie keinen öffentlichen Datenverkehr und keinen Dienstendpunkt konfigurieren, ist nach dem Ablehnen oder Löschen aller genehmigten privaten Endpunkte kein Datenverkehr mit Azure Database for MariaDB möglich.
+
+## <a name="deny-public-access-for-azure-database-for-mariadb"></a>Verweigern des öffentlichen Zugriffs für Azure Database for MariaDB
+
+Wenn Sie sich für den Zugriff auf Ihre Azure Database for MariaDB-Instanz nur auf private Endpunkte verlassen möchten, können Sie das Festlegen aller öffentlichen Endpunkte ([Firewallregeln](concepts-firewall-rules.md) und [VNET-Dienstendpunkte](concepts-data-access-security-vnet.md)) deaktivieren, indem Sie die Konfiguration **Zugriff auf öffentliches Netzwerk verweigern** auf dem Datenbankserver festlegen. 
+
+Wenn diese Einstellung auf *Ja* festgelegt ist, sind nur Verbindungen über private Endpunkte mit Ihrer Azure Database for MariaDB-Instanz zulässig. Wenn diese Einstellung auf *NEIN*festgelegt ist, können Clients basierend auf Ihren Firewall- oder VNET-Dienstendpunkt-Einstellungen eine Verbindung mit Ihrer Azure Database for MariaDB-Instanz herstellen. Sobald der Wert des privaten Netzwerkzugriffs festgelegt ist, können Sie außerdem weder Firewall- oder VNET-Dienstendpunkt-Regeln hinzufügen noch vorhandene aktualisieren.
+
+> [!Note]
+> Dieses Feature steht in allen Azure-Regionen zur Verfügung, in denen Azure Database for PostgreSQL-Einzelserver die Tarife „Universell“ und „Arbeitsspeicheroptimiert“ unterstützen.
+>
+> Diese Einstellung hat keinerlei Auswirkung auf die SSL- und TLS-Konfigurationen für Ihre Azure Database for MariaDB-Instanz.
+
+Informationen zum Festlegen von **Zugriff auf öffentliches Netzwerk verweigern** für Ihre Azure Database for MariaDB-Instanz im Azure-Portal finden Sie unter [Verweigern des Zugriffs auf öffentliche Netzwerke in Azure Database for MySQL im Azure-Portal](howto-deny-public-network-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

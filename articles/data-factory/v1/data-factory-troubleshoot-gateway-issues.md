@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 0b8aee32869202a8cc24a27dec85c93ffd294c6b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 09d51de3ae0bd4baca585d2abdd936b1a29567d0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931601"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065028"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Behandeln von Problemen bei der Verwendung des Datenverwaltungsgateways
 Dieser Artikel enthält Informationen zur Problembehandlung bei der Verwendung des Datenverwaltungsgateways.
@@ -196,7 +196,7 @@ Wenn dieser Fehler angezeigt wird, kann die Seite „Einstellungen“ des Datenv
 ![Die Datenbank wurde nicht gefunden](media/data-factory-troubleshoot-gateway-issues/database-cannot-be-reached.png)
 
 #### <a name="cause"></a>Ursache
-Möglicherweise ist das SSL-Zertifikat auf dem Gatewaycomputer nicht mehr vorhanden. Das derzeit für die SSL-Verschlüsselung verwendete Zertifikat kann vom Gatewaycomputer nicht geladen werden. Sie erhalten möglicherweise auch eine Fehlermeldung im Ereignisprotokoll, die der folgenden Meldung ähnlich ist.
+Möglicherweise ist das TLS/SSL-Zertifikat auf dem Gatewaycomputer nicht mehr vorhanden. Das derzeit für die TLS-Verschlüsselung verwendete Zertifikat kann vom Gatewaycomputer nicht geladen werden. Sie erhalten möglicherweise auch eine Fehlermeldung im Ereignisprotokoll, die der folgenden Meldung ähnlich ist.
 
  `Unable to get the gateway settings from cloud service. Check the gateway key and the network connection. (Certificate with thumbprint cannot be loaded.)`
 
@@ -205,10 +205,10 @@ Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
 
 1. Starten Sie den Datenverwaltungsgateway-Konfigurations-Manager.
 2. Wechseln Sie zur Registerkarte **Einstellungen**.  
-3. Klicken Sie auf die Schaltfläche **Ändern**, um das SSL-Zertifikat zu ändern.
+3. Klicken Sie auf die Schaltfläche **Ändern**, um das TLS/SSL-Zertifikat zu ändern.
 
    ![Schaltfläche „Zertifikat ändern“](media/data-factory-troubleshoot-gateway-issues/change-button-ssl-certificate.png)
-4. Wählen Sie ein neues Zertifikat als das SSL-Zertifikat aus. Sie können ein beliebiges SSL-Zertifikat verwenden, das von Ihnen oder einer beliebigen Organisation generiert wurde.
+4. Wählen Sie ein neues Zertifikat als das TLS/SSL-Zertifikat aus. Sie können ein beliebiges TLS/SSL-Zertifikat verwenden, das von Ihnen oder einer beliebigen Organisation generiert wurde.
 
    ![Angeben des Zertifikats](media/data-factory-troubleshoot-gateway-issues/specify-http-end-point.png)
 
@@ -232,7 +232,7 @@ Im folgenden Abschnitt finden Sie Anweisungen zum Testen der Verbindung mit dem 
 Wenn Sie Fehler bei der Datenspeicherverbindung oder den Datenspeichertreibern bemerken, führen Sie folgende Schritte aus:
 
 1. Starten Sie den Datenverwaltungsgateway-Konfigurations-Manager auf dem Gatewaycomputer.
-2. Wechseln Sie zur Registerkarte **Diagnose**.
+2. Wechseln Sie zur Registerkarte **Diagnose** .
 3. Fügen Sie in **Verbindung testen** die Werte der Gatewaygruppe hinzu.
 4. Klicken Sie auf **Testen**, um festzustellen, ob Sie vom Gatewaycomputer aus mithilfe der Verbindungs- und Anmeldeinformationen eine Verbindung mit der lokalen Datenquelle herstellen können. Wenn das Testen der Verbindung weiter misslingt, nachdem Sie einen Treiber installiert haben, starten Sie das Gateway neu, damit es die letzte Änderung übernimmt.
 

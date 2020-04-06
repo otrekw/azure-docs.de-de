@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/11/2020
+ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 48324d252e22ca898f923e1f0ad9b76df1c10861
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 5d89d123fe757b0502f4c6b3a0d33c185b25224b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183651"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80057313"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informationen zu technischen Profilen in benutzerdefinierten Azure Active Directory B2C-Richtlinien
 
@@ -28,19 +28,21 @@ Ein technisches Profil bietet ein Framework mit einem integrierten Mechanismus f
 
 Ein technisches Profil ermöglicht die folgenden Szenarien:
 
+- [Application Insights](application-insights-technical-profile.md) – Senden von Ereignisdaten an [Application Insights](../azure-monitor/app/app-insights-overview.md).
 - [Azure Active Directory](active-directory-technical-profile.md) – Bietet Unterstützung für die Azure Active Directory B2C-Benutzerverwaltung.
+- [Azure Multi-Factor Authentication](multi-factor-auth-technical-profile.md) – bietet Unterstützung für die Überprüfung einer Telefonnummer mithilfe von Azure Multi-Factor Authentication (MFA). 
+- [Anspruchstransformation](claims-transformation-technical-profile.md) – Aufrufen von Transformationen für Ausgabeansprüche, um Anspruchswerte zu ändern, Ansprüche zu überprüfen oder Standardwerte für eine Gruppe von Ausgabeansprüchen festzulegen.
 - [JWT-Tokenaussteller](jwt-issuer-technical-profile.md) – Gibt ein JWT-Token aus, das an die Anwendung der vertrauenden Seite zurückgegeben wird.
-- **Telefonfaktoranbieter** – Mehrstufige Authentifizierung (Multi-Factor Authentication, MFA).
 - [OAuth1](oauth1-technical-profile.md) – Verbund mit einem beliebigen Identitätsanbieter für das Protokoll OAuth 1.0.
 - [OAuth2](oauth2-technical-profile.md) – Verbund mit einem beliebigen Identitätsanbieter für das Protokoll OAuth 2.0.
+- [Einmalkennwort](one-time-password-technical-profile.md): Bietet Unterstützung zum Verwalten der Erstellung und Überprüfung von Einmalkennwörtern.
 - [OpenID Connect](openid-connect-technical-profile.md) – Verbund mit einem beliebigen Identitätsanbieter für das OpenID Connect-Protokoll
-- [Anspruchstransformation](claims-transformation-technical-profile.md) – Aufrufen von Transformationen für Ausgabeansprüche, um Anspruchswerte zu ändern, Ansprüche zu überprüfen oder Standardwerte für eine Gruppe von Ausgabeansprüchen festzulegen.
+- [MFA per Telefon](phone-factor-technical-profile.md) – Unterstützung für das Registrieren und Überprüfen von Telefonnummern.
 - [RESTful-Anbieter](restful-technical-profile.md) – Aufrufen von REST-API-Diensten, z. B. Überprüfung von Benutzereingaben, Ergänzung von Benutzerdaten oder Integration von Branchenanwendungen
 - [SAML2](saml-technical-profile.md) – Verbund mit einem beliebigen Identitätsanbieter für das SAML-Protokoll.
+- [SAML-Tokenaussteller](saml-issuer-technical-profile.md) – gibt ein SAML-Token aus, das an die Anwendung der vertrauenden Seite zurückgegeben wird.
 - [Selbstbestätigt](self-asserted-technical-profile.md) – Interaktion mit dem Benutzer. Beispiel: Sammeln der Anmeldeinformationen des Benutzers für die Anmeldung, Rendern der Anmeldeseite oder Kennwortzurücksetzung.
 - [Sitzungsverwaltung](custom-policy-reference-sso.md) – Verarbeiten verschiedener Typen von Sitzungen.
-- [Application Insights](../azure-monitor/app/usage-overview.md)
-- [Einmalkennwort](one-time-password-technical-profile.md): Bietet Unterstützung zum Verwalten der Erstellung und Überprüfung von Einmalkennwörtern.
 
 ## <a name="technical-profile-flow"></a>Fluss technischer Profile
 

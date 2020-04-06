@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie SQL Server-Datenbanken auf 
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 7a6bae3a850b5e67af8da80a06b862e7e2e7561d
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 5b10907738feeecbec06669175e82578f2915f92
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77120831"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233886"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern
 
@@ -97,6 +97,10 @@ Zulassen von IP-Adressbereichen | Keine zusätzlichen Kosten | Komplexe Verwaltu
 Verwenden von NSG-Diensttags | Einfachere Verwaltung, da Bereichsänderungen automatisch zusammengeführt werden <br/><br/> Keine zusätzlichen Kosten <br/><br/> | Nur mit NSGs möglich <br/><br/> Zugriff auf den gesamten Dienst
 Verwenden von FQDN-Tags von Azure Firewall | Einfachere Verwaltung, da die erforderlichen FQDNs automatisch verwaltet werden | Nur mit Azure Firewall möglich
 Verwenden eines HTTP-Proxys | Zentraler Internetzugriffspunkt für VMs <br/> | Zusätzliche Kosten für das Ausführen einer VM mit der Proxysoftware <br/> Keine veröffentlichten FQDN-Adressen, Zulassungsregeln unterliegen Änderungen von Azure-IP-Adressen
+
+#### <a name="private-endpoints"></a>Private Endpunkte
+
+[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
 ### <a name="database-naming-guidelines-for-azure-backup"></a>Benennungsrichtlinien für Datenbanken in Azure Backup
 

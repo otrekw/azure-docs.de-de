@@ -1,17 +1,17 @@
 ---
 title: Diagnoseprotokolle für Azure SignalR Service
 description: Erfahren Sie, wie Sie Diagnoseprotokolle für Azure SignalR Service einrichten und diese für die eigenständige Problembehandlung nutzen.
-author: wanl
+author: wanlwanl
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
-ms.openlocfilehash: 33d9a338e12fa4b3d2449f0c5b0576895364c3cf
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 72f57ba4bbbbde07f6d26edc88c158f301ebe2f2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750266"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536733"
 ---
 # <a name="diagnostic-logs-for-azure-signalr-service"></a>Diagnoseprotokolle für Azure SignalR Service
 
@@ -31,22 +31,22 @@ Sie können Diagnoseprotokolle für Azure SignalR Service anzeigen. Diese Protok
 
 Diagnoseprotokolle sind standardmäßig deaktiviert. Führen Sie folgende Schritte aus, um die Diagnoseprotokolle zu aktivieren:
 
-1.  Klicken Sie im [Azure-Portal](https://portal.azure.com) unter **Überwachung** auf **Diagnoseeinstellungen**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) unter **Überwachung** auf **Diagnoseeinstellungen**.
 
     ![Bereich „Navigation zu Diagnoseeinstellungen“](./media/signalr-tutorial-diagnostic-logs/diagnostic-settings-menu-item.png)
 
-1.  Klicken Sie dann auf **Diagnoseeinstellung hinzufügen**.
+1. Klicken Sie dann auf **Diagnoseeinstellung hinzufügen**.
 
     ![Hinzufügen von Diagnoseprotokollen](./media/signalr-tutorial-diagnostic-logs/add-diagnostic-setting.png)
 
-1.  Legen Sie das gewünschte Archivierungsziel fest. Zurzeit unterstützen wir **In einem Speicherkonto archivieren** und **An Log Analytics senden**.
+1. Legen Sie das gewünschte Archivierungsziel fest. Zurzeit unterstützen wir **In einem Speicherkonto archivieren** und **An Log Analytics senden**.
 
 1. Wählen Sie die Protokolle aus, die Sie archivieren möchten.
 
     ![Bereich „Diagnoseeinstellungen“](./media/signalr-tutorial-diagnostic-logs/diagnostics-settings-pane.png)
 
 
-1.  Speichern Sie die neuen Diagnoseeinstellungen.
+1. Speichern Sie die neuen Diagnoseeinstellungen.
 
 Neue Einstellungen werden in etwa zehn Minuten wirksam. Danach werden die Protokolle im gewünschten Archivierungsziel im Bereich **Diagnoseprotokolle** angezeigt.
 
@@ -68,7 +68,7 @@ JSON-Zeichenfolgen im Archivprotokoll enthalten Elemente, die in den folgenden T
 
 **Format**
 
-Name | Beschreibung
+Name | BESCHREIBUNG
 ------- | -------
 time | Protokollereigniszeit
 level | Protokollereignisebene
@@ -81,7 +81,7 @@ properties | Detaillierte Eigenschaften im Zusammenhang mit diesem Protokollerei
 
 **Eigenschaftentabelle**
 
-Name | Beschreibung
+Name | BESCHREIBUNG
 ------- | -------
 type | Typ des Protokollereignisses. Aktuell bieten wir Informationen zur Konnektivität mit dem Azure SignalR Service. Nur der Typ `ConnectivityLogs` ist verfügbar.
 collection | Sammlung des Protokollereignisses. Zulässige Werte sind `Connection`, `Authorization` und `Throttling`.
@@ -128,12 +128,12 @@ Um Diagnoseprotokolle anzuzeigen, führen Sie diese Schritte aus:
 
 Archivprotokollspalten enthalten Elemente, die in der folgenden Tabelle aufgeführt sind:
 
-Name | Beschreibung
+Name | BESCHREIBUNG
 ------- | ------- 
 TimeGenerated | Protokollereigniszeit
 Collection | Sammlung des Protokollereignisses. Zulässige Werte sind `Connection`, `Authorization` und `Throttling`.
 Vorgangsname | Vorgangsname des Ereignisses.
-Location | Standort Ihres Azure SignalR Service.
+Position | Standort Ihres Azure SignalR Service.
 Ebene | Protokollereignisebene
 CallerIpAddress | IP-Adresse Ihres Servers/Clients.
 `Message` | Ausführliche Meldung des Protokollereignisses.
@@ -162,9 +162,9 @@ Der Unterschied zwischen `ConnectionAborted` und `ConnectionEnded` besteht darin
 
 Die Gründe für Abbrüche sind in der folgenden Tabelle aufgeführt:
 
-`Reason` | Beschreibung
+`Reason` | BESCHREIBUNG
 ------- | ------- 
-Anzahl der Verbindungen erreicht das Limit. | Die Anzahl der Verbindungen erreicht das Limit Ihres aktuellen Tarifs. Erwägen Sie, die Diensteinheit zentral hochzuskalieren.
+Anzahl der Verbindungen erreicht das Limit. | Die Anzahl der Verbindungen erreicht das Limit Ihres aktuellen Tarifs. Erwägen Sie, die Diensteinheit hochzuskalieren.
 Der Anwendungsserver hat die Verbindung geschlossen. | Der App-Server löst den Abbruch aus. Dies kann als erwarteter Abbruch betrachtet werden.
 Timeout des Verbindungspings. | Normalerweise wird dies durch Netzwerkprobleme verursacht. Erwägen Sie, die Verfügbarkeit Ihres App-Servers aus dem Internet zu überprüfen.
 Erneutes Laden des Diensts, Wiederherstellen der Verbindung. | Azure SignalR Service wird neu geladen. Azure SignalR unterstützt automatisches erneutes Verbinden. Sie können bis zur erneuten Verbindungsherstellung warten oder die Verbindung mit Azure SignalR Service manuell erneut herstellen.
@@ -195,4 +195,5 @@ Stellen Sie Folgendes bereit:
 4. Auf Server-/Clientseite erfasste Protokolle sowie weitere Materialien, die nützlich sein könnten
 5. [Optional] Reproduktionscode
 
-> Hinweis: Wenn Sie ein Problem in GitHub öffnen, halten Sie Ihre vertraulichen Informationen (z. B. Ressourcen-ID, Server-/Clientprotokolle) privat, und senden Sie diese nur privat an Mitglieder in der Microsoft-Organisation.  
+> [!NOTE]
+> Wenn Sie ein Problem in GitHub öffnen, halten Sie Ihre vertraulichen Informationen (z. B. Ressourcen-ID, Server-/Clientprotokolle) privat, und senden Sie diese nur privat an Mitglieder in der Microsoft-Organisation.

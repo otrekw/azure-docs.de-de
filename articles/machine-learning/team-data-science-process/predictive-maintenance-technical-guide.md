@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 3b3a0b00ee6e1e170023584c2e643a5802166428
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: 0542106f70e96b6c2f63e8ca03d2532de191d365
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79087456"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477169"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>Technischer Leitfaden für die Lösungsvorlage für Predictive Maintenance für Luft- und Raumfahrt
 
@@ -193,7 +193,8 @@ In den folgenden Schritten wird erklärt, wie Sie die PBIX-Datei mit der SQL-Dat
      <br/>
    * Um eine Aktualisierung der Daten zu planen, zeigen Sie auf das Dataset **PredictiveMaintenanceAerospace**, klicken Sie auf die ![Auslassungspunkte](./media/predictive-maintenance-technical-guide/icon-elipsis.png), und wählen Sie anschließend **Aktualisierung planen** aus.
      <br/>
-     **Hinweis:** Wenn eine Warnmeldung angezeigt wird, klicken Sie auf **Anmeldeinformationen bearbeiten**, und vergewissern Sie sich, dass die Anmeldeinformationen für die Datenbank mit den in Schritt 1 angegebenen Informationen identisch sind.
+     > [!NOTE]
+     > Wenn eine Warnmeldung angezeigt wird, klicken Sie auf **Anmeldeinformationen bearbeiten**, und vergewissern Sie sich, dass die Anmeldeinformationen für die Datenbank mit den in Schritt 1 angegebenen Informationen identisch sind.
      <br/>
      ![Aktualisierung planen](./media/predictive-maintenance-technical-guide/schedule-refresh.png)
      <br/>

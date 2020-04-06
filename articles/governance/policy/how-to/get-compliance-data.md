@@ -4,11 +4,11 @@ description: Azure Policy-Auswertungen und -Effekte bestimmen die Konformität. 
 ms.date: 02/01/2019
 ms.topic: how-to
 ms.openlocfilehash: 891c9c72d8e83dc8f9adb930e8ebd11b70f6aad8
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873147"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236134"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Abrufen von Compliancedaten von Azure-Ressourcen
 
@@ -244,7 +244,7 @@ Die folgende Beispielantwort wurde der Kürze halber auf eine einzige nicht konf
 }
 ```
 
-### <a name="view-events"></a>Ereignisse anzeigen
+### <a name="view-events"></a>Anzeigen von Ereignissen
 
 Wenn eine Ressource erstellt oder aktualisiert wird, wird ein Ergebnis der Richtlinienauswertung generiert. Diese Ergebnisse werden als _Richtlinienereignisse_ bezeichnet. Verwenden Sie den folgenden URI, um die neuesten Richtlinienereignisse anzuzeigen, die dem Abonnement zugewiesen sind.
 

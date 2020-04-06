@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/02/2020
-ms.openlocfilehash: 10149c6eb06e6d2994233aa365f237e6d9330c48
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 32100e9cad86f12dc8111ee8a0282a515540a4db
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644754"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80346607"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Join-Transformation in einem Zuordnungsdatenfluss
 
@@ -32,7 +32,7 @@ Bei einem inneren Join werden nur Zeilen ausgegeben, die übereinstimmende Werte
 Bei einem linken äußeren Join werden alle Zeilen aus dem linken Stream sowie übereinstimmende Datensätze aus dem rechten Stream zurückgegeben. Ist für eine Zeile aus dem linken Stream keine Übereinstimmung vorhanden, werden die Ausgabespalten aus dem rechten Stream auf NULL festgelegt. Die Ausgabe umfasst die von einem inneren Join zurückgegebenen Zeilen sowie die nicht übereinstimmenden Zeilen aus dem linken Stream.
 
 > [!NOTE]
-> Die von Datenflüssen verwendete Spark-Engine kann in Ihren Joinbedingungen u. U. kartesische Produkte verwenden. Wenn dies der Fall ist, können Sie zu einem benutzerdefinierten Kreuzprodukt wechseln und die Joinbedingung manuell eingeben. Dies kann zu einer geringeren Leistung in Ihren Datenflüssen führen, da die Ausführungs-Engine u. U. alle Zeilen von beiden Seiten der Beziehung berechnen und dann Zeilen filtern muss.
+> Bei der von Datenflüssen verwendeten Spark-Engine wird aufgrund etwaiger kartesischer Produkte in Ihren Joinbedingungen gelegentlich ein Fehler auftreten. Wenn dies der Fall ist, können Sie zu einem benutzerdefinierten Kreuzprodukt wechseln und die Joinbedingung manuell eingeben. Dies kann zu einer geringeren Leistung in Ihren Datenflüssen führen, da die Ausführungs-Engine u. U. alle Zeilen von beiden Seiten der Beziehung berechnen und dann Zeilen filtern muss.
 
 ### <a name="right-outer"></a>Rechter äußerer Join
 

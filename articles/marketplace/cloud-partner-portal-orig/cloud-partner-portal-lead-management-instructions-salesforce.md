@@ -1,19 +1,18 @@
 ---
 title: Konfigurieren der Leadverwaltung in Salesforce | Azure Marketplace
 description: Konfigurieren Sie die Leadverwaltung in Salesforce für Azure Marketplace-Kunden.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: dan-wesley
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: pabutler
-ms.openlocfilehash: fa1bfdcd172b17f88f6acf14a9d9b80e13767da8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 4261f16cbe76a788f8a8a91445d432f2f810c4ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827709"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280251"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Konfigurieren der Leadverwaltung in Salesforce
 

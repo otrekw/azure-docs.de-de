@@ -1,5 +1,5 @@
 ---
-title: Importieren und Exportieren von Azure IoT Hub-Geräteidentitäten | Microsoft Docs
+title: Importieren/Exportieren von Azure IoT Hub-Geräteidentitäten | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mithilfe des Azure IoT-Dienst-SDK Massenvorgänge zum Importieren und Exportieren von Geräteidentitäten auf die Identitätsregistrierung anwenden. Mit Importvorgängen können Sie Geräteidentitäten per Massenvorgang erstellen, aktualisieren und löschen.
 author: robinsh
 manager: philmea
@@ -8,18 +8,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 0d0643adc56a3dcdeef163708c26f2425ab8af43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2a0394e6e7c17e0a4954bbdddb1d5b2811959746
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429255"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371578"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Importieren und Exportieren von IoT Hub-Geräteidentitäten per Massenvorgang
 
 Jeder IoT Hub verfügt über eine Identitätsregistrierung, die Sie zum Erstellen von gerätebasierten Ressourcen im Dienst verwenden können. Außerdem wird mit der Identitätsregistrierung der Zugriff auf geräteseitige Endpunkte ermöglicht. In diesem Artikel wird das massenhafte Importieren und Exportieren von Geräteidentitäten in und aus einer Identitätsregistrierung beschrieben. Wenn Sie in C# ein funktionierendes Beispiel sehen und erfahren möchten, wie Sie diese Funktion beim Klonen eines Hubs in eine andere Region verwenden können, lesen Sie [Klonen einer IoT Hub-Instanz](iot-hub-how-to-clone.md).
 
-[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
+> [!NOTE]
+> IoT Hub hat vor kurzem Unterstützung für virtuelle Netzwerke in einer begrenzten Anzahl von Regionen hinzugefügt. Diese Funktion sichert Import- und Exportvorgänge und macht Hauptschlüssel zur Authentifizierung überflüssig.  Anfänglich ist die Unterstützung virtueller Netzwerke nur in den folgenden Regionen verfügbar: *WestUS2*, *EastUS* und *SouthCentralUS*. Weitere Informationen zur Unterstützung virtueller Netzwerke und den API-Aufrufen zu deren Implementierung finden Sie unter [IoT Hub-Unterstützung für virtuelle Netzwerke](virtual-network-support.md).
 
 Import- und Exportvorgänge erfolgen im Kontext von *Aufträgen*, die Ihnen das Anwenden von Massendienstvorgängen auf einen IoT Hub ermöglichen.
 
@@ -27,6 +28,7 @@ Die **RegistryManager**-Klasse enthält die Methoden **ExportDevicesAsync** und 
 
 In diesem Thema wird die Verwendung der Klasse **RegistryManager** und des **Job**-Systems zum Ausführen von Massenimport- und -exportvorgängen von Geräten in die bzw. aus der Identitätsregistrierung eines IoT-Hubs erörtert. Ferner können Sie den Azure IoT Hub Device Provisioning-Dienst auch dazu verwenden, eine Just-in-Time-Bereitstellung auf einem oder mehreren IoT-Hubs zu ermöglichen, die keinen menschlichen Eingriff erfordert. Weitere Informationen finden Sie in der [Dokumentation zum Bereitstellungsdienst](/azure/iot-dps).
 
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 ## <a name="what-are-jobs"></a>Was sind Aufträge?
 
@@ -84,6 +86,10 @@ while(true)
   await Task.Delay(TimeSpan.FromSeconds(5));
 }
 ```
+
+> [!NOTE]
+> Wenn für Ihr Speicherkonto Firewallkonfigurationen vorhanden sind, die die Konnektivität von IoT Hub einschränken, sollten Sie die Verwendung der [Ausnahme vertrauenswürdiger Microsoft-Erstanbieter](./virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) in Erwägung ziehen (in ausgewählten Regionen für IoT-Hubs mit verwalteter Dienstidentität verfügbar).
+
 
 ## <a name="device-importexport-job-limits"></a>Grenzwerte bei Geräteimport-/exportaufträgen
 

@@ -3,16 +3,22 @@ title: Informationen zur Sicherung von Azure-VMs
 description: In diesem Artikel erfahren Sie, wie der Azure Backup-Dienst virtuelle Azure-Computer sichert und wie bewährte Methoden befolgt werden können.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 8ffbf0d0164cbf6f085518d57566b0befde6e124
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: f4b36f57362607a13c09896cd7109596aba0a852
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597251"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79415968"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Ein Überblick über die Sicherung von Azure-VMs
 
 In diesem Artikel wird beschrieben, wie Azure-VMs (Virtual Machines) mit dem Dienst [Azure Backup](backup-introduction-to-azure-backup.md) gesichert werden.
+
+Azure Backup bietet unabhängige und isolierte Sicherungen zum Schutz vor dem versehentlichen Löschen der Daten auf Ihren VMs. Sicherungen werden in einem Recovery Services-Tresor mit integrierter Verwaltung von Wiederherstellungspunkten gespeichert. Konfiguration und Skalierung sind unkompliziert. Sicherungen werden außerdem optimiert und können bei Bedarf problemlos wiederhergestellt werden.
+
+Im Rahmen des Sicherungsvorgangs wird eine [Momentaufnahme](#snapshot-creation) erstellt, und die Daten werden ohne Auswirkung auf Produktionsworkloads in den Recovery Services-Tresor übertragen. Die Momentaufnahme bietet wie [hier](#snapshot-consistency) beschrieben unterschiedliche Konsistenzebenen.
+
+Azure Backup hat auch spezielle Angebote für Datenbankworkloads wie [SQL Server](backup-azure-sql-database.md) und [SAP HANA](sap-hana-db-about.md), die workloadorientiert sind, ein 15-Minuten-RPO (Recovery Point Objective) bieten und Sicherung und Wiederherstellung einzelner Datenbanken ermöglichen.
 
 ## <a name="backup-process"></a>Sicherungsprozess
 
@@ -20,8 +26,8 @@ Hier erfahren Sie, wie Azure Backup eine Sicherung für Azure-VMs durchführt:
 
 1. Für Azure-VMs, die zur Sicherung ausgewählt sind, startet Azure Backup einen Sicherungsauftrag gemäß dem von Ihnen angegebenen Sicherungszeitplan.
 1. Während der ersten Sicherung wird auf dem virtuellen Computer eine Sicherungserweiterung installiert, wenn die VM ausgeführt wird.
-    - Für virtuelle Windows-Computer wird die Erweiterung _VMSnapshot_ installiert.
-    - Für virtuelle Linux-Computer wird die Erweiterung _VMSnapshotLinux_ installiert.
+    - Für virtuelle Windows-Computer wird die [Erweiterung VMSnapshot](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-windows) installiert.
+    - Für virtuelle Linux-Computer wird die [Erweiterung VMSnapshotLinux](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-linux) installiert.
 1. Bei ausgeführten Windows-VMs erstellt Azure Backup in Koordination mit dem Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS) von Windows eine App-konsistente Momentaufnahme des virtuellen Computers.
     - Backup erstellt standardmäßig vollständige VSS-Sicherungen.
     - Wenn Backup keine App-konsistente Momentaufnahme erstellen kann, wird eine dateikonsistente Momentaufnahme des zugrunde liegenden Speichers erstellt (weil keine Schreibvorgänge der Anwendung stattfinden, solange die VM beendet ist).
@@ -66,7 +72,7 @@ Azure Backup erstellt Momentaufnahmen gemäß des Sicherungszeitplans.
   - Wenn die Pre-Skripts und Post-Skripts erfolgreich ausgeführt werden, markiert Azure Backup den Wiederherstellungspunkt als anwendungskonsistent. Allerdings sind Sie bei Verwendung benutzerdefinierter Skripts letztendlich für die Anwendungskonsistenz verantwortlich.
   - [Erfahren Sie mehr](backup-azure-linux-app-consistent.md) über die Konfiguration von Skripts.
 
-### <a name="snapshot-consistency"></a>Konsistenz von Momentaufnahmen
+## <a name="snapshot-consistency"></a>Konsistenz von Momentaufnahmen
 
 In der folgenden Tabelle werden die verschiedenen Typen der Konsistenz von Momentaufnahmen erläutert:
 

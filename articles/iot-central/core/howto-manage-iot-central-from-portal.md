@@ -6,14 +6,14 @@ ms.service: iot-central
 author: dominicbetts
 ms.author: dobett
 ms.date: 02/11/2020
-ms.topic: conceptual
+ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 27517c375265b552d2e1dec4d8c167d1bc86549d
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: e7efda8efa27044168386e3ebbc557bf7fb74e8c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137653"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157924"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Verwalten von IoT Central über das Azure-Portal
 
@@ -41,8 +41,7 @@ Füllen Sie alle Felder im Formular aus. Dieses Formular ähnelt dem Formular, d
 
 ![Erstellen eines IoT Central-Formulars](media/howto-manage-iot-central-from-portal/image6a.png)
 
-**Standort** beschreibt die [geografische Region](https://azure.microsoft.com/global-infrastructure/geographies/), in der Sie Ihre Anwendung erstellen möchten. Normalerweise wählen Sie den Standort aus, der Ihren Geräten physisch am nächsten liegt, um eine optimale Leistung zu erzielen. Azure IoT Central ist derzeit in den Regionen in den **USA**, in **Australien**, **Asien-Pazifik** und **Europa** verfügbar.  Nachdem Sie einen Standort ausgewählt haben, können Sie Ihre Anwendung nicht zu einem späteren Zeitpunkt an einen anderen Standort verschieben.
-
+**Standort** beschreibt die [geografische Region](https://azure.microsoft.com/global-infrastructure/geographies/), in der Sie Ihre Anwendung erstellen möchten. Normalerweise wählen Sie den Standort aus, der Ihren Geräten physisch am nächsten liegt, um eine optimale Leistung zu erzielen. Azure IoT Central ist derzeit in den geografischen Regionen **Australien**, **Asien-Pazifik**, **Europa**, **USA**, **Vereinigtes Königreich** und **Japan** verfügbar. Nachdem Sie einen Standort ausgewählt haben, können Sie Ihre Anwendung nicht zu einem späteren Zeitpunkt an einen anderen Standort verschieben.
 
 Wählen Sie **Erstellen** aus, wenn Sie alle Felder ausgefüllt haben.
 

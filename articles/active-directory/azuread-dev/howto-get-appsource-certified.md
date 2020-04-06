@@ -4,7 +4,6 @@ description: Detailinformationen zur Zertifizierung Ihrer AppSource-Anwendung f�
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 21206407-49f8-4c0b-84d1-c25e17cd4183
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.topic: conceptual
@@ -13,12 +12,13 @@ ms.date: 08/21/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 8b966df3f0ca59edbaa304212f05daffeb9ef17d
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3ad4efa3b8126a9b9c6557822f61e3bfff3fe120
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163587"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154881"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Zertifizieren von AppSource für Azure Active Directory
 
@@ -59,7 +59,7 @@ Die kundengeführte Testversion ist die Benutzeroberfläche, die AppSource empfi
 
 <table >
 <tr>
-    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png" width="85%" alt-text="Shows Free trial for customer-led trial experience"/><ul><li>Benutzer findet Ihre Anwendung auf der AppSource-Website</li><li>Wählt die Option „Kostenlose Testversion“</li></ul></td>
+    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png" width="85%" alt-text="Shows Free trial for customer-led trial experience"/><ul><li>Benutzer findet Ihre Anwendung auf der AppSource-Website</li><li>Wählt die Option „Kostenlose Testversion“ aus</li></ul></td>
     <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step2.png" width="85%" alt-text="Shows how user is redirected to a URL in your web site"/><ul><li>AppSource leitet den Benutzer zu einer URL auf Ihrer Website um</li><li>Ihre Website startet automatisch (beim Laden der Seite) den Prozess des <i>einmaligen Anmeldens</i></li></ul></td>
     <td valign="top" width="33%">3.<br/><img src="media/active-directory-devhowto-appsource-certified/customer-led-trial-step3.png" width="85%" alt-text="Shows the Microsoft sign-in page"/><ul><li>Benutzer wird zur Microsoft-Anmeldeseite umgeleitet</li><li>Benutzer stellt Anmeldeinformationen zum Anmelden bereit</li></ul></td>
 </tr>
@@ -76,7 +76,7 @@ Sie können die partnergeführte Testbenutzeroberfläche verwenden, wenn ein man
 
 <table valign="top">
 <tr>
-    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%" alt-text="Shows Contact me for partner-led trial experience"/><ul><li>Benutzer findet Ihre Anwendung auf der AppSource-Website</li><li>Wählt die Option „Kontaktformular“</li></ul></td>
+    <td valign="top" width="33%">1.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step1.png" width="85%" alt-text="Shows Contact me for partner-led trial experience"/><ul><li>Benutzer findet Ihre Anwendung auf der AppSource-Website</li><li>Wählt die Option „Kontaktformular“ aus</li></ul></td>
     <td valign="top" width="33%">2.<br/><img src="media/active-directory-devhowto-appsource-certified/partner-led-trial-step2.png" width="85%" alt-text="Shows an example form with contact info"/><ul><li>Füllt ein Formular mit Kontaktinformationen aus</li></ul></td>
      <td valign="top" width="33%">3.<br/><br/>
         <table bgcolor="#f7f7f7">

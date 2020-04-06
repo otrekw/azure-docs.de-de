@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b55199ec2684ab7b95ce4e4988b19814c27b2cc3
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 074a0a39090e22a29f778fc1c99060848c6bfd99
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189581"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80051490"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -70,7 +70,7 @@ Das **ContentDefinition**-Element enthält die folgenden Elemente:
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | Eine Zeichenfolge, die die URL der HTML5-Seite für die Inhaltsdefinition enthält. |
-| RecoveryUri | 1:1 | Eine Zeichenfolge, die die URL der HTML-Seite für die Anzeige eines Fehlers im Zusammenhang mit der Inhaltsdefinition enthält. |
+| RecoveryUri | 1:1 | Eine Zeichenfolge, die die URL der HTML-Seite für die Anzeige eines Fehlers im Zusammenhang mit der Inhaltsdefinition enthält. Derzeit nicht verwendet, der Wert muss `~/common/default_page_error.html` sein. |
 | DataUri | 1:1 | Eine Zeichenfolge mit der relativen URL einer HTML-Datei, die die Benutzeroberfläche, die für den Schritt aufgerufen werden soll, bereitstellt. |
 | Metadaten | 0:1 | Eine Sammlung von Schlüssel-Wert-Paaren, die Metadaten enthält, die von der Inhaltsdefinition genutzt werden. |
 | LocalizedResourcesReferences | 0:1 | Eine Sammlung von Verweisen auf lokalisierte Ressourcen. Verwenden Sie dieses Element, um die Lokalisierung einer Benutzeroberfläche und eines Anspruchsattributs anzupassen. |
@@ -139,13 +139,13 @@ Das **Item**-Element des **Metadata**-Elements enthält die folgenden Attribute:
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| Key | Ja | Der Metadatenschlüssel.  |
+| Schlüssel | Ja | Der Metadatenschlüssel.  |
 
 #### <a name="metadata-keys"></a>Metadatenschlüssel
 
 Die Inhaltsdefinition unterstützt die folgenden Metadatenelemente:
 
-| Key | Erforderlich | BESCHREIBUNG |
+| Schlüssel | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | DisplayName | Nein | Eine Zeichenfolge, die den Namen der Inhaltsdefinition enthält. |
 
@@ -188,7 +188,7 @@ Weitere Informationen zum Hinzufügen von Unterstützung für die Lokalisierung 
 
 Das ID-Attribut des **ContentDefinition**-Elements gibt den Typ der Seite an, die mit der Inhaltsdefinition verknüpft ist. Das Element definiert den Kontext, den eine benutzerdefinierte HTML5/CSS-Vorlage anwendet. In der folgenden Tabelle werden die Gruppe mit den IDs der Inhaltsdefinitionen, die vom Identity Experience Framework erkannt werden, und die entsprechenden Seitentypen beschrieben. Sie können eigene Inhaltsdefinitionen mit beliebigen IDs erstellen.
 
-| id | Standardvorlage | Beschreibung |
+| id | Standardvorlage | BESCHREIBUNG |
 | -- | ---------------- | ----------- |
 | **api.error** | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Fehlerseite:** zeigt eine Fehlerseite an, wenn eine Ausnahme oder ein Fehler auftreten. |
 | **api.idpselections** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Seite zur Auswahl des Identitätsanbieters:** Auf dieser Seite sind Identitätsanbieter aufgelistet, unter denen Benutzer bei der Anmeldung wählen können. Bei den Optionen handelt es sich normalerweise um Unternehmensidentitätsanbieter oder Identitätsanbieter in Form von sozialen Netzwerken wie Facebook und Google+ oder lokale Konten. |
