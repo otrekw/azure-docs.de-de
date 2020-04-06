@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: c5ceeb2e6419cab7945454087edd4c821db28343
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7fe5afbc4984c430cbf393e4e2b44122bdd43983
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65204219"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297122"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>Erfahren Sie mehr über das Behandeln von Problemen mit Azure Data Box-Blobspeicher.
 
@@ -27,7 +27,7 @@ In diesem Abschnitt werden einige der Probleme beschrieben, die bei Verwendung v
 |---------|---------|
 |Untergeordnete Ressourcen können nicht abgerufen werden. Der Wert eines der HTTP-Header weist nicht das richtige Format auf.|Wählen Sie im Menü **Bearbeiten** die Option **Target Azure Stack APIs** (Azure Stack-APIs als Ziel verwenden) aus. <br>Starten Sie Azure Storage-Explorer neu.|
 |`getaddrinfo ENOTFOUND <accountname>.blob.<serialnumber>.microsoftdatabox.com` |Vergewissern Sie sich, dass der Endpunktname `<accountname>.blob.<serialnumber>.microsoftdatabox.com` der Datei „Hosts“ in folgendem Pfad hinzugefügt wurde: <li>`C:\Windows\System32\drivers\etc\hosts` unter Windows oder </li><li> `/etc/hosts` unter Linux.</li>|
-|Untergeordnete Ressourcen können nicht abgerufen werden. <br>Details: selbstsigniertes Zertifikat |Importieren Sie das SSL-Zertifikat für Ihr Gerät in Azure Storage-Explorer: <li>Laden Sie das Zertifikat aus dem Azure-Portal herunter. Weitere Informationen finden Sie unter [Herunterladen des Zertifikats](data-box-deploy-copy-data-via-rest.md#download-certificate).</li><li>Wählen Sie im Menü **Bearbeiten** die Option **SSL-Zertifikate** und dann **Zertifikate importieren** aus.</li>|
+|Untergeordnete Ressourcen können nicht abgerufen werden. <br>Details: selbstsigniertes Zertifikat |Importieren Sie das TLS/SSL-Zertifikat für Ihr Gerät in Azure Storage-Explorer: <li>Laden Sie das Zertifikat aus dem Azure-Portal herunter. Weitere Informationen finden Sie unter [Herunterladen des Zertifikats](data-box-deploy-copy-data-via-rest.md#download-certificate).</li><li>Wählen Sie im Menü **Bearbeiten** die Option **SSL-Zertifikate** und dann **Zertifikate importieren** aus.</li>|
 
 ## <a name="errors-seen-in-azcopy-for-windows"></a>In AzCopy für Windows auftretende Fehler
 
@@ -36,7 +36,7 @@ In diesem Abschnitt werden einige der Probleme beschrieben, die bei Verwendung v
 |Fehlermeldung  |Empfohlene Maßnahme |
 |---------|---------|
 |Der AzCopy-Befehl reagiert eine Minute lang nicht mehr, dann wird dieser Fehler angezeigt: <br>Fehler beim Aufzählen des Verzeichnisses „https://…“ Der Remotename konnte nicht aufgelöst werden: `<accountname>.blob.<serialnumber>.microsoftdatabox.com`.|Vergewissern Sie sich, dass der Endpunktname `<accountname>.blob.<serialnumber>.microsoftdatabox.com` der Datei „Hosts“ unter `C:\Windows\System32\drivers\etc\hosts` hinzugefügt wurde.|
-|Der AzCopy-Befehl reagiert eine Minute lang nicht mehr, dann wird dieser Fehler angezeigt: <br>Fehler beim Analysieren des Quellspeicherorts. Die zugrunde liegende Verbindung wurde geschlossen: Es konnte keine Vertrauensstellung für den sicheren SSL/TLS-Kanal eingerichtet werden.|Importieren Sie das SSL-Zertifikat für Ihr Gerät in den Zertifikatspeicher des Systems. Weitere Informationen finden Sie unter [Herunterladen des Zertifikats](data-box-deploy-copy-data-via-rest.md#download-certificate).|
+|Der AzCopy-Befehl reagiert eine Minute lang nicht mehr, dann wird dieser Fehler angezeigt: <br>Fehler beim Analysieren des Quellspeicherorts. Die zugrunde liegende Verbindung wurde geschlossen: Es konnte keine Vertrauensstellung für den sicheren SSL/TLS-Kanal eingerichtet werden.|Importieren Sie das TLS/SSL-Zertifikat für Ihr Gerät in den Zertifikatspeicher des Systems. Weitere Informationen finden Sie unter [Herunterladen des Zertifikats](data-box-deploy-copy-data-via-rest.md#download-certificate).|
 
 
 ## <a name="errors-seen-in-azcopy-for-linux"></a>In AzCopy für Linux auftretende Fehler
@@ -46,7 +46,7 @@ In diesem Abschnitt werden einige der Probleme beschrieben, die bei Verwendung v
 |Fehlermeldung  |Empfohlene Maßnahme |
 |---------|---------|
 |Der AzCopy-Befehl reagiert 20 Minuten lang nicht mehr, dann wird dieser Fehler angezeigt: <br>Fehler beim Analysieren des Quellspeicherorts `https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>`. Gerät oder Adresse nicht vorhanden|Vergewissern Sie sich, dass der Endpunktname `<accountname>.blob.<serialnumber>.microsoftdatabox.com` der Datei „Hosts“ unter `/etc/hosts` hinzugefügt wurde.|
-|Der AzCopy-Befehl reagiert 20 Minuten lang nicht mehr, dann wird dieser Fehler angezeigt: <br>Fehler beim Analysieren des Quellspeicherorts „…“. Es konnte keine SSL-Verbindung hergestellt werden.|Importieren Sie das SSL-Zertifikat für Ihr Gerät in den Zertifikatspeicher des Systems. Weitere Informationen finden Sie unter [Herunterladen des Zertifikats](data-box-deploy-copy-data-via-rest.md#download-certificate).|
+|Der AzCopy-Befehl reagiert 20 Minuten lang nicht mehr, dann wird dieser Fehler angezeigt: <br>Fehler beim Analysieren des Quellspeicherorts „…“. Es konnte keine SSL-Verbindung hergestellt werden.|Importieren Sie das TLS/SSL-Zertifikat für Ihr Gerät in den Zertifikatspeicher des Systems. Weitere Informationen finden Sie unter [Herunterladen des Zertifikats](data-box-deploy-copy-data-via-rest.md#download-certificate).|
 
 ## <a name="errors-seen-in-azure-storage-library-for-python"></a>In der Azure Storage-Bibliothek für Python auftretende Fehler
 
@@ -55,7 +55,7 @@ In diesem Abschnitt werden einige der wichtigsten Probleme bei der Bereitstellun
 |Fehlermeldung  |Empfohlene Maßnahme |
 |---------|---------|
 |Der Wert eines der HTTP-Header weist nicht das richtige Format auf. |Die installierte Version der Microsoft Azure Storage-Bibliothek für Python wird von Data Box nicht unterstützt. Unterstützte Versionen finden Sie in den Azure Data Box-Blobspeicheranforderungen.|
-|… [SSL: CERTIFICATE_VERIFY_FAILED] …|Legen Sie vor dem Ausführen von Python die Umgebungsvariable REQUESTS_CA_BUNDLE auf den Pfad der Base64-codierten SSL-Zertifikatsdatei fest. (Weitere Informationen zum [Herunterladen des Zertifikats](data-box-deploy-copy-data-via-rest.md#download-certificate).) <br>Beispiel:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer` <br>`python` <br>Alternativ können Sie das Zertifikat dem Zertifikatspeicher des Systems hinzufügen und dann diese Umgebungsvariable auf den Pfad dieses Speichers festlegen. <br> Beispiel für Ubuntu: <br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` <br>`python`|
+|… [SSL: CERTIFICATE_VERIFY_FAILED] …|Legen Sie vor dem Ausführen von Python die Umgebungsvariable REQUESTS_CA_BUNDLE auf den Pfad der Base64-codierten TLS-Zertifikatsdatei fest. (Weitere Informationen zum [Herunterladen des Zertifikats](data-box-deploy-copy-data-via-rest.md#download-certificate).) <br>Beispiel:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer` <br>`python` <br>Alternativ können Sie das Zertifikat dem Zertifikatspeicher des Systems hinzufügen und dann diese Umgebungsvariable auf den Pfad dieses Speichers festlegen. <br> Beispiel für Ubuntu: <br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt` <br>`python`|
 
 
 ## <a name="common-errors"></a>Häufige Fehler

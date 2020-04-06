@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 7023651b09abc8c3124c7bf71608018d5cb72e25
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 4b265bb574895e4728ad93ee25c9dad0da226ea4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77161999"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240305"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Twitter-Standpunktanalyse in Echtzeit in Azure Stream Analytics
 
@@ -39,7 +39,7 @@ In dieser Schrittanleitung verwenden Sie eine Clientanwendung, die eine Verbindu
 
 * Die Anwendung TwitterClientCore, die den Twitter-Feed liest. Um diese Anwendung zu erhalten, laden Sie [TwitterClientCore-](https://github.com/Azure/azure-stream-analytics/tree/master/DataGenerators/TwitterClientCore) herunter.
 
-* Installieren Sie die [.NET Core CLI](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x).
+* Installieren Sie die [.NET Core-CLI](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x), Version 2.1.0.
 
 ## <a name="create-an-event-hub-for-streaming-input"></a>Erstellen eines Event Hubs für Streamingeingaben
 
@@ -48,7 +48,7 @@ Die Beispielanwendung generiert Ereignisse und überträgt sie mithilfe von Push
 ### <a name="create-an-event-hub-namespace-and-event-hub"></a>Erstellen eines Event Hub-Namespace und eines Event Hubs
 In diesem Abschnitt erstellen Sie einen Event Hub-Namespace und fügen diesem Namespace einen Event Hub hinzu. Event Hub-Namespaces werden verwendet, um verwandte Ereignisbusinstanzen logisch zu gruppieren. 
 
-1. Melden Sie sich beim Azure-Portal an, und wählen Sie **Ressource erstellen** aus. Suchen Sie dann nach **Event Hubs**, und wählen Sie **Erstellen** aus.
+1. Melden Sie sich beim Azure-Portal an, und wählen Sie **Ressource erstellen** aus. Dann suchen Sie nach **Event Hubs** und wählen **Erstellen** aus.
 
 2. Geben Sie auf der Seite **Namespace erstellen** einen Namen für den Namespace ein. Sie können einen beliebigen Namen für den Namespace verwenden. Der Name muss lediglich für eine URL gültig und innerhalb von Azure eindeutig sein. 
     
@@ -94,12 +94,6 @@ Damit ein Prozess Daten an einen Event Hub senden kann, benötigt der Event Hub 
    > [!NOTE]
    > Aus Sicherheitsgründen wurden Teile der Verbindungszeichenfolge in dem Beispiel entfernt.
 
-8.  Entfernen Sie im Texteditor das `EntityPath`-Paar aus der Verbindungszeichenfolge (denken Sie daran, das vorangehende Semikolon zu entfernen). Danach sieht die Verbindungszeichenfolge folgendermaßen aus:
-   
-   ```
-   Endpoint=sb://EVENTHUBS-NAMESPACE.servicebus.windows.net/;SharedAccessKeyName=socialtwitter-access;SharedAccessKey=Gw2NFZw6r...FxKbXaC2op6a0ZsPkI=
-   ```
-
 ## <a name="configure-and-start-the-twitter-client-application"></a>Konfigurieren und Starten der Twitter-Clientanwendung
 
 Die Clientanwendung ruft Tweet-Ereignisse direkt über Twitter ab. Zu diesem Zweck benötigt die Anwendung die Berechtigung zum Aufrufen der Streaming-APIs von Twitter. Um diese Berechtigung zu konfigurieren, erstellen Sie eine Anwendung in Twitter, die eindeutige Anmeldeinformationen (z.B. ein OAuth-Token) generiert. Sie können die Clientanwendung dann so konfigurieren, dass diese Anmeldeinformationen bei API-Aufrufen verwendet werden. 
@@ -110,7 +104,7 @@ Wenn Sie noch keine Twitter-Anwendung besitzen, die Sie für diese Schrittanleit
 > [!NOTE]
 > Der genaue Vorgang in Twitter zum Erstellen einer Anwendung und zum Abrufen der Schlüssel, Geheimnisse und des Tokens kann variieren. Wenn diese Anweisungen nicht der Twitter-Website entsprechen, lesen Sie die Twitter-Entwicklerdokumentation.
 
-1. Wechseln Sie in einem Webbrowser zu [Twitter For Developers](https://developer.twitter.com/en/apps), und wählen Sie **App erstellen** aus. Möglicherweise wird eine Meldung angezeigt, dass Sie ein Twitter-Entwicklerkonto beantragen müssen. Zögern Sie nicht, diese Anfrage zu übermitteln, und nachdem sie genehmigt wurde, sollten Sie eine Bestätigungs-E-Mail erhalten. Es kann mehrere Tage dauern, bis die Genehmigung für ein Entwicklerkonto erfolgt ist.
+1. Navigieren Sie in einem Webbrowser zu [Twitter For Developers](https://developer.twitter.com/en/apps), erstellen Sie ein Entwicklerkonto, und wählen Sie **App erstellen** aus. Möglicherweise wird eine Meldung angezeigt, dass Sie ein Twitter-Entwicklerkonto beantragen müssen. Zögern Sie nicht, diese Anfrage zu übermitteln, und nachdem sie genehmigt wurde, sollten Sie eine Bestätigungs-E-Mail erhalten. Es kann mehrere Tage dauern, bis die Genehmigung für ein Entwicklerkonto erfolgt ist.
 
    ![Twitter-Anwendungsdetails](./media/stream-analytics-twitter-sentiment-analysis-trends/provide-twitter-app-details.png "Twitter-Anwendungsdetails")
 
@@ -139,7 +133,7 @@ Bevor die Anwendung ausgeführt wird, benötigt diese bestimmte Informationen vo
    * Legen Sie `oauth_consumer_secret` auf das Twitter-Consumergeheimnis (API-Geheimnis) fest.
    * Legen Sie `oauth_token` auf das Twitter-Zugriffstoken fest.
    * Legen Sie `oauth_token_secret` auf das Twitter-Geheimnis für das Zugriffstoken fest.
-   * Legen Sie `EventHubNameConnectionString` auf die Verbindungszeichenfolge fest. Stellen Sie sicher, dass Sie die Verbindungszeichenfolge verwenden, aus der Sie das Schlüssel/Wert-Paar `EntityPath` entfernt haben.
+   * Legen Sie `EventHubNameConnectionString` auf die Verbindungszeichenfolge fest.
    * Legen Sie `EventHubName` auf den Event Hub-Namen fest (d. h. auf den Wert des Entitätspfads).
 
 3. Öffnen Sie die Befehlszeile, und navigieren Sie zu dem Verzeichnis, in dem sich die TwitterClientCore-App befindet. Verwenden Sie den Befehl `dotnet build`, um das Projekt zu erstellen. Verwenden Sie dann den Befehl `dotnet run`, um die App auszuführen. Die App sendet Tweets an Ihren Event Hub.

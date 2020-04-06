@@ -8,28 +8,22 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.openlocfilehash: 8658bc44e41f61e717cf228a6d8e7cee6b477022
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 5e323d8faa19ceb0712aa6183df17740ce2a0a1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264949"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79370377"
 ---
 # <a name="public-preview-service-limits"></a>Diensteinschränkungen der öffentlichen Vorschauversion
 
-Für die Public Preview von Azure Digital Twins gelten die nachfolgend beschriebenen temporären Abonnement-, Instanz- und Anzahlgrenzwerte.
+[!INCLUDE [digital-twins-preview-limit-alert](../../includes/digital-twins-preview-limit-alert.md)]
 
-Diese Einschränkungen gibt es, um das Kennenlernen des neuen Diensts und seiner zahlreichen Funktionen vereinfachen.
-
-> [!NOTE]
-> Die Grenzwerte werden gemäß der allgemeinen Verfügbarkeit erhöht oder entfernt.
+Für die Public Preview von Azure Digital Twins gelten die nachfolgend beschriebenen temporären Abonnement-, Instanz- und Anzahlgrenzwerte für vorhandene Kunden. Diese Einschränkungen sollen dazu beitragen, das Erlernen des neuen Diensts und seiner vielen Features zu vereinfachen, und sie werden durch die allgemeine Verfügbarkeit (GA) erhöht oder beseitigt.
 
 ## <a name="per-subscription-limits"></a>Grenzwerte pro Abonnement
 
-In der Public Preview kann jedes Azure-Abonnement jeweils genau eine Azure Digital Twins-Instanz erstellen oder ausführen.
-
-> [!TIP]
-> Wenn Sie Ihre Instanz löschen, können Sie eine neue erstellen.
+In der Public Preview kann jedes Azure-Abonnement jeweils genau eine Azure Digital Twins-Instanz erstellen oder ausführen. Wenn Sie Ihre Instanz löschen, können Sie eine neue erstellen.
 
 ## <a name="per-instance-limits"></a>Grenzwerte pro Instanz
 
@@ -71,7 +65,7 @@ Es gelten die folgenden Grenzwerte für die Gesamtanzahl der Aufrufe, die von be
 Die folgenden Grenzwerte deckeln die Gesamtanzahl aller Nachrichten, die Ihre Geräte an Ihre Azure Digital Twins Instanz senden können:
 
 - 100 Nachrichten pro Sekunde auf allen Geräten
--   25 Nachrichten pro Sekunde und Gerät
+-    25 Nachrichten pro Sekunde und Gerät
 
 ## <a name="next-steps"></a>Nächste Schritte
 

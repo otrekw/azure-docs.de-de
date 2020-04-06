@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 11/04/2019
-ms.openlocfilehash: ec2d9152bf8d3d7c60f00e902f155212ee1b81cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: f9ca75943eaec2ae018b54145d872fc09294035e
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232990"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398179"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Was sind Computeziele in Azure Machine Learning? 
 
@@ -48,12 +48,14 @@ Erfahren Sie, [wo und wie Sie Ihr Modell auf einem Computeziel bereitstellen](ho
 
 Eine verwaltete Computeressource wird von Azure Machine Learning erstellt und verwaltet. Diese Computeressource ist für Machine Learning-Workloads optimiert. Azure Machine Learning-Computecluster und -[Compute-Instanzen](concept-compute-instance.md) sind die einzigen verwalteten Computeressourcen. Möglicherweise werden künftig weitere verwaltete Computeressourcen hinzugefügt.
 
-Sie können Azure Machine Learning-Compute-Instanzen (Vorschau) oder -Computecluster erstellen in:
+Sie können Azure Machine Learning-Compute-Instanzen (Vorschau) oder -Computecluster erstellen über:
+* Azure Machine Learning Studio
+* Azure-Portal
+* Python SDK-Klassen [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) und [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py)
+* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets)
+* Resource Manager-Vorlage
 
-| | Azure Machine Learning Studio | Azure-Portal | SDK | Resource Manager-Vorlage | Befehlszeilenschnittstelle (CLI) |
-|---| ----- | ----- | ----- | ----- | ----- |
-| Compute-Instanz | ja | ja | ja | ja |  |
-| Computecluster | ja | ja | ja | ja | ja |
+Sie können auch Computecluster mit der [Erweiterung für maschinelles Lernen für die Azure CLI](tutorial-train-deploy-model-cli.md#create-the-compute-target-for-training) erstellen.
 
 Nach der Erstellung sind diese Computeressourcen im Gegensatz zu anderen Arten von Computezielen automatisch Teil Ihres Arbeitsbereichs.
 

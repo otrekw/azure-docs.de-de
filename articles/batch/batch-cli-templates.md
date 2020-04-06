@@ -11,12 +11,12 @@ ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: c7459c4dc700f034feafbf133b831a52b9233d11
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: df7db30e987c408ff158acfc468010948c821b8d
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020164"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397533"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Verwenden von Azure Batch-CLI-Vorlagen und Dateiübertragung
 
@@ -68,7 +68,7 @@ Azure Batch-Vorlagen sind Azure Resource Manager-Vorlagen in Bezug auf Funktiona
 
 -   **Parameter**
 
-    -   Sie ermöglichen die Angabe von Eigenschaftenwerten in einem Textabschnitt, wobei Parameterwerte nur bei der Verwendung der Vorlage angegeben werden müssen. Beispielsweise könnte die vollständige Definition für einen Pool in den Text eingefügt und nur ein Parameter für die Pool-ID definiert werden. Für die Erstellung eines Pools müsste dann nur eine Pool-ID-Zeichenfolge angegeben werden.
+    -   Sie ermöglichen die Angabe von Eigenschaftenwerten in einem Textabschnitt, wobei Parameterwerte nur bei der Verwendung der Vorlage angegeben werden müssen. Beispielsweise könnte die vollständige Definition für einen Pool in den Text eingefügt und nur ein Parameter für `poolId` definiert werden. Für die Erstellung eines Pools müsste dann nur eine Pool-ID-Zeichenfolge angegeben werden.
         
     -   Der Vorlagentext kann von einem Benutzer mit Kenntnissen zu Batch und den von Batch ausgeführten Anwendungen erstellt werden. Bei der Verwendung der Vorlage müssen nur Werte für die vom Autor definierten Parameter angegeben werden. Daher kann ein Benutzer ohne fundierte Kenntnisse zu Batch und/oder den Anwendungen die Vorlagen verwenden.
 

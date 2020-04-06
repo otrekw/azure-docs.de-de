@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 12/06/2018
-ms.author: cherylmc
-ms.openlocfilehash: 2c37dadeb669fb88f858b5487379828a8dddec6c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.date: 03/26/2020
+ms.author: osamaz
+ms.openlocfilehash: 5304aefaf3ad70bb552b4b0d1b26fcce9867c9c0
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076668"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397744"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Beispiele für die Routerkonfiguration zum Einrichten und Verwalten des Routings
 Diese Seite enthält Schnittstellen- und Routingkonfigurationsbeispiele für Router der Reihen Cisco IOS-XE und Juniper MX für die Arbeit mit ExpressRoute. Diese Beispiele dienen nur als Leitfaden und müssen nicht wie angegeben verwendet werden. Sie können mit Ihrem Anbieter an der Ausarbeitung geeigneter Konfigurationen für Ihr Netzwerk zusammenarbeiten. 
@@ -91,6 +91,25 @@ Anhand von Routenzuordnungen und Präfixlisten können Sie Präfixe filtern, die
     !
     route-map <MS_Prefixes_Inbound> permit 10
      match ip address prefix-list <MS_Prefixes>
+    !
+
+### <a name="5-configuring-bfd"></a>5. Konfigurieren von BFD
+
+Sie werden BFD an zwei Stellen konfigurieren. Einmal auf der Schnittstellenebene und einmal auf der BGP-Ebene. Das folgende Beispiel ist für die QinQ-Schnittstelle vorgesehen. 
+
+    interface GigabitEthernet<Interface_Number>.<Number>
+     bfd interval 300 min_rx 300 multiplier 3
+     encapsulation dot1Q <s-tag> seconddot1Q <c-tag>
+     ip address <IPv4_Address><Subnet_Mask>
+    
+    router bgp <Customer_ASN>
+     bgp log-neighbor-changes
+     neighbor <IP#2_used_by_Azure> remote-as 12076
+     !        
+     address-family ipv4
+      neighbor <IP#2_used_by_Azure> activate
+      neighbor <IP#2_used_by_Azure> fall-over bfd
+     exit-address-family
     !
 
 
@@ -173,7 +192,7 @@ Sie können den Router so konfigurieren, dass Microsoft bestimmte Präfixe angek
     }
 
 
-### <a name="4-route-maps"></a>4. Routenzuordnungen
+### <a name="4-route-policies"></a>4. Routenrichtlinien
 Anhand von Routenzuordnungen und Präfixlisten können Sie Präfixe filtern, die in Ihrem Netzwerk weitergegeben werden. Diese Aufgabe können Sie mit dem folgenden Beispiel durchführen. Stellen Sie sicher, dass entsprechende Präfixlisten eingerichtet wurden.
 
     policy-options {
@@ -203,6 +222,24 @@ Anhand von Routenzuordnungen und Präfixlisten können Sie Präfixe filtern, die
         }                                   
     }
 
+### <a name="4-configuring-bfd"></a>4. Konfigurieren von BFD
+Sie werden BFD nur unter dem Abschnitt „BGP protokollieren“ konfigurieren.
+
+    protocols {
+        bgp { 
+            group <Group_Name> { 
+                peer-as 12076;              
+                neighbor <IP#2_used_by_Azure>;
+                bfd-liveness-detection {
+                       minimum-interval 3000;
+                       multiplier 3;
+                }
+            }                               
+        }                                   
+    }
+
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md) .
+
+
 

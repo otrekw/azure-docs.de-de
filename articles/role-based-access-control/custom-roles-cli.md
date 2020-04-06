@@ -11,17 +11,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/20/2019
+ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d2b2ffde66468ae7cb2818010ac374126d2973be
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 44676f7b92c2bcd30612295840054ab2f0c0cf12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703137"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062229"
 ---
 # <a name="create-or-update-custom-roles-for-azure-resources-using-azure-cli"></a>Erstellen oder aktualisieren von benutzerdefinierten Rollen für Azure-Ressourcen mithilfe der Azure CLI
+
+> [!IMPORTANT]
+> Das Hinzufügen einer Verwaltungsgruppe zu `AssignableScopes` befindet sich derzeit in der Vorschauphase.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Wenn die [integrierten Rollen für Azure-Ressourcen](built-in-roles.md) den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie Ihre eigenen benutzerdefinierten Rollen erstellen. In diesem Artikel wird beschrieben, wie Sie benutzerdefinierte Rollen mithilfe der Azure CLI auflisten, erstellen, aktualisieren oder löschen.
 
@@ -186,7 +191,7 @@ Zum Aktualisieren einer benutzerdefinierten Rolle verwenden Sie zuerst [az role 
 az role definition update --role-definition <role_definition>
 ```
 
-Im folgenden Beispiel wird der Vorgang *Microsoft.Insights/diagnosticSettings/* zu *Actions* der benutzerdefinierten Rolle *Virtual Machine Operator* hinzugefügt.
+Das folgende Beispiel fügt den Vorgang *Microsoft.Insights/diagnosticSettings/* zu `Actions` und eine Verwaltungsgruppe zu `AssignableScopes` für die benutzerdefinierte Rolle *Virtual Machine Operator* hinzu. Das Hinzufügen einer Verwaltungsgruppe zu `AssignableScopes` befindet sich derzeit in der Vorschauphase.
 
 vmoperator.json
 
@@ -213,7 +218,8 @@ vmoperator.json
   ],
   "AssignableScopes": [
     "/subscriptions/11111111-1111-1111-1111-111111111111",
-    "/subscriptions/33333333-3333-3333-3333-333333333333"
+    "/subscriptions/33333333-3333-3333-3333-333333333333",
+    "/providers/Microsoft.Management/managementGroups/marketing-group"
   ]
 }
 ```

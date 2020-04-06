@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9bbbcc38116c5681e3b5c867690c296f60507ad1
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: dd8be482009e067bf9016cc8e351fc42a2db39c7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196109"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79233394"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informationen zu Schlüsseln, Geheimnissen und Zertifikaten
 
@@ -120,6 +120,7 @@ Die kryptografischen Module, die Key Vault verwendet – sowohl HSM als auch Sof
 -   **ES384** – ECDSA für SHA-384-Hashs und -Schlüssel, erstellt mit P-384-Kurve. Dieser Algorithmus wird im [RFC 7518](https://tools.ietf.org/html/rfc7518) beschrieben.
 -   **ES512** – ECDSA für SHA-512-Hashs und -Schlüssel, erstellt mit P-521-Kurve. Dieser Algorithmus wird im [RFC 7518](https://tools.ietf.org/html/rfc7518) beschrieben.
 
+
 ###  <a name="rsa-algorithms"></a>RSA-Algorithmen  
  Die folgenden Algorithmusbezeichner werden mit RSA- und RSA-HSM-Schlüsseln in Key Vault unterstützt.  
 
@@ -130,6 +131,9 @@ Die kryptografischen Module, die Key Vault verwendet – sowohl HSM als auch Sof
 
 #### <a name="signverify"></a>SIGN/VERIFY
 
+-   **PS256**: RSASSA-PSS unter Verwendung von SHA-256 und MGF1 mit SHA-256, wie in [RFC7518](https://tools.ietf.org/html/rfc7518) beschrieben.
+-   **PS384**: RSASSA-PSS unter Verwendung von SHA-384 und MGF1 mit SHA-384, wie in [RFC7518](https://tools.ietf.org/html/rfc7518) beschrieben.
+-   **PS512**: RSASSA-PSS unter Verwendung von SHA-512 und MGF1 mit SHA-512, wie in [RFC7518](https://tools.ietf.org/html/rfc7518) beschrieben.
 -   **RS256**: RSASSA-PKCS-v1_5 mithilfe von SHA-256. Der von der Anwendung bereitgestellte Zusammenfassungswert muss mithilfe von SHA-256 berechnet werden und 32 Byte lang sein.  
 -   **RS384**: RSASSA-PKCS-v1_5 mithilfe von SHA-384. Der von der Anwendung bereitgestellte Zusammenfassungswert muss mithilfe von SHA-384 berechnet werden und 48 Byte lang sein.  
 -   **RS512**: RSASSA-PKCS-v1_5 mithilfe von SHA-512. Der von der Anwendung bereitgestellte Zusammenfassungswert muss mithilfe von SHA-512 berechnet werden und 64 Byte lang sein.  
