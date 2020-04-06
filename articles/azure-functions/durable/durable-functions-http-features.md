@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: a7d8891c6f925cfac326685f01ba5f6149a1b233
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 29d837446960b7535b26284efdfab7a1c59ea968
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357801"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132499"
 ---
 # <a name="http-features"></a>HTTP-Features
 
@@ -258,7 +258,7 @@ Wenn Ihr Anwendungsfall durch eine dieser Einschränkungen beeinträchtigt wird,
 
 Das Anpassen des Verhaltens des internen HTTP-Clients der Orchestrierung kann mithilfe von [Azure Functions .NET-Abhängigkeitsinjektion](https://docs.microsoft.com/azure/azure-functions/functions-dotnet-dependency-injection) erfolgen. Diese Funktion kann nützlich sein, um geringfügige Verhaltensänderungen vorzunehmen. Sie kann auch hilfreich sein, um Komponententests für den HTTP-Client durch Einfügen von Pseudoobjekten durchzuführen.
 
-Das folgende Beispiel veranschaulicht die Verwendung der Abhängigkeitsinjektion, um die SSL-Zertifikatüberprüfung für Orchestratorfunktionen zu deaktivieren, die externe HTTP-Endpunkte aufrufen.
+Das folgende Beispiel veranschaulicht die Verwendung der Abhängigkeitsinjektion, um die TLS/SSL-Zertifikatüberprüfung für Orchestratorfunktionen zu deaktivieren, die externe HTTP-Endpunkte aufrufen.
 
 ```csharp
 public class Startup : FunctionsStartup
@@ -276,7 +276,7 @@ public class MyDurableHttpMessageHandlerFactory : IDurableHttpMessageHandlerFact
 {
     public HttpMessageHandler CreateHttpMessageHandler()
     {
-        // Disable SSL certificate validation (not recommended in production!)
+        // Disable TLS/SSL certificate validation (not recommended in production!)
         return new HttpClientHandler
         {
             ServerCertificateCustomValidationCallback =

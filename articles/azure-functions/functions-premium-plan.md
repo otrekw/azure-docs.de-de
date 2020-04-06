@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: cf70124f2e310dd62fd32de0e17edb40c047a318
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: dd7f6d0760f2b848435e7c77657e261517d29dd8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77615680"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234986"
 ---
 # <a name="azure-functions-premium-plan"></a>Premium-Tarif für Azure Functions
 
@@ -27,7 +27,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 --location <REGION> --sku EP1
 ```
 
-Ersetzen Sie in diesem Beispiel `<RESOURCE_GROUP>` durch Ihre Ressourcengruppe und `<PLAN_NAME>` durch einen Namen für Ihren Plan, der in der Ressourcengruppe eindeutig ist. Geben Sie eine [unterstützte `<REGION>`](#regions) an. Wenn Sie einen Premium-Plan mit Linux-Unterstützung erstellen möchten, schließen Sie die Option `--is-linux` ein.
+Ersetzen Sie in diesem Beispiel `<RESOURCE_GROUP>` durch Ihre Ressourcengruppe und `<PLAN_NAME>` durch einen Namen für Ihren Plan, der in der Ressourcengruppe eindeutig ist. Geben Sie eine [unterstützte `<REGION>`](https://azure.microsoft.com/global-infrastructure/services/?products=functions) an. Wenn Sie einen Premium-Plan mit Linux-Unterstützung erstellen möchten, schließen Sie die Option `--is-linux` ein.
 
 Nach Erstellung des Plans können Sie mithilfe von [az functionapp create](/cli/azure/functionapp#az-functionapp-create) Ihre Funktions-App erstellen. Im Portal werden Plan und App gleichzeitig erstellt. Ein Beispiel für ein vollständiges Azure CLI-Skript finden Sie unter [Erstellen einer Funktions-App in einem Premium-Tarif](scripts/functions-cli-create-premium-plan.md).
 
@@ -37,11 +37,11 @@ Die folgenden Features sind für Funktions-Apps verfügbar, die für einen Premi
 
 ### <a name="pre-warmed-instances"></a>Vorab aufgewärmte Instanzen
 
-Wenn für einen bestimmten Tag keine Ereignisse und Ausführungen im Verbrauchsplan aufgeführt werden, wird Ihre App möglicherweise auf null Instanzen horizontal herunterskaliert. Wenn neue Ereignisse eingehen, muss eine neue Instanz zum Ausführen Ihrer App eingerichtet werden.  Das Einrichten einer neuen Instanz kann je nach App einige Zeit dauern.  Diese zusätzliche Wartezeit beim ersten Aufruf wird häufig als App-Kaltstart bezeichnet.
+Wenn für einen bestimmten Tag keine Ereignisse und Ausführungen im Verbrauchsplan aufgeführt werden, wird Ihre App möglicherweise auf null Instanzen abskaliert. Wenn neue Ereignisse eingehen, muss eine neue Instanz zum Ausführen Ihrer App eingerichtet werden.  Das Einrichten einer neuen Instanz kann je nach App einige Zeit dauern.  Diese zusätzliche Wartezeit beim ersten Aufruf wird häufig als App-Kaltstart bezeichnet.
 
 Im Premium-Plan können Sie Ihre App in einem „vorab aufgewärmten“ Zustand für eine angegebene Anzahl von Instanzen vorhalten, bis zur Größe Ihres Mindestplans.  Mit vorab aufgewärmten Instanzen können Sie eine App auch vor hoher Last vorab skalieren. Erfolgt eine Erweiterung für die App, wird die App zunächst in die vorab aufgewärmten Instanzen skaliert. In Vorbereitung auf den nächsten Skalierungsvorgang werden sofort weitere Instanzen gepuffert und aufgewärmt. Dadurch, dass es einen Puffer mit vorab aufgewärmten Instanzen gibt, können Sie Kaltstartwartezeiten effektiv vermeiden.  Vorab aufgewärmte Instanzen ist ein Feature für den Premium-Plan, und Sie müssen während der gesamten Zeit, in der der Plan aktiv ist, mindestens eine Instanz aktiv und verfügbar halten.
 
-Sie können die Anzahl der vorab aufgewärmten Instanzen im Azure-Portal konfigurieren, indem Sie Ihre **Funktions-App** auswählen, zur Registerkarte **Plattformfeatures** wechseln und die **Horizontal skalieren**-Optionen auswählen. Im Bearbeitungsfenster für eine Funktions-App gelten vorab aufgewärmte Instanzen speziell für diese App, aber die Mindestanzahl und die maximale Anzahl von Instanzen gelten für Ihren gesamten Plan.
+Sie können die Anzahl der vorab aufgewärmten Instanzen im Azure-Portal konfigurieren, indem Sie Ihre **Funktions-App** auswählen, zur Registerkarte **Plattformfeatures** wechseln und die **Aufskalieren**-Optionen auswählen. Im Bearbeitungsfenster für eine Funktions-App gelten vorab aufgewärmte Instanzen speziell für diese App, aber die Mindestanzahl und die maximale Anzahl von Instanzen gelten für Ihren gesamten Plan.
 
 ![Einstellungen für elastisches Skalieren](./media/functions-premium-plan/scale-out.png)
 
@@ -65,7 +65,7 @@ Weitere Compute-Instanzen werden automatisch für Ihre App hinzugefügt. Dazu wi
 
 ### <a name="longer-run-duration"></a>Längere Ausführungsdauer
 
-Azure Functions in einem Verbrauchsplan sind auf 10 Minuten für eine einzelne Ausführung beschränkt.  Im Premium-Plan wird die Ausführungsdauer standardmäßig auf 30 Minuten festgelegt, um Endlosausführungen zu verhindern. Sie können jedoch [die host.json-Konfiguration ändern](./functions-host-json.md#functiontimeout), um die Ausführungsdauer für Premium-Plan-Apps auf 60 Minuten festzulegen.
+Azure Functions in einem Verbrauchsplan sind auf 10 Minuten für eine einzelne Ausführung beschränkt.  Im Premium-Plan wird die Ausführungsdauer standardmäßig auf 30 Minuten festgelegt, um Endlosausführungen zu verhindern. Sie können jedoch [die Konfiguration „host.json“ ändern](./functions-host-json.md#functiontimeout), um die Ausführungsdauer für Apps im Premium-Tarif auf unbegrenzt (garantierte 60 Minuten) festzulegen.
 
 ## <a name="plan-and-sku-settings"></a>Plan- und SKU-Einstellungen
 
@@ -74,9 +74,9 @@ Wenn Sie den Plan erstellen, konfigurieren Sie zwei Einstellungen: die Mindestan
 > [!IMPORTANT]
 > Ihnen wird jede Instanz, die entsprechend der Mindestanzahl von Instanzen zugeordnet ist, in Rechnung gestellt, unabhängig davon, ob Funktionen ausgeführt werden oder nicht.
 
-Wenn Ihre App mehr Instanzen erfordert, als Ihre Plangröße vorgibt, kann diese erweitert werden, bis die Anzahl von Instanzen den maximalen Burstgrenzwert erreicht hat.  Instanzen, die sich außerhalb Ihrer Plangröße befinden, werden Ihnen nur in Rechnung gestellt, während sie ausgeführt werden und für Sie bereitgestellt sind.  Es wird versucht, ein Erweitern Ihrer App bis zu deren definiertem maximalen Grenzwert bestmöglich vorzunehmen, während die im Plan festgelegte Mindestanzahl von Instanzen für Ihre App garantiert ist.
+Wenn Ihre App mehr Instanzen erfordert, als Ihre Plangröße vorgibt, kann diese aufskaliert werden, bis die Anzahl von Instanzen den maximalen Burstgrenzwert erreicht hat.  Instanzen, die sich außerhalb Ihrer Plangröße befinden, werden Ihnen nur in Rechnung gestellt, während sie ausgeführt werden und für Sie bereitgestellt sind.  Es wird versucht, ein Erweitern Ihrer App bis zu deren definiertem maximalen Grenzwert bestmöglich vorzunehmen, während die im Plan festgelegte Mindestanzahl von Instanzen für Ihre App garantiert ist.
 
-Sie können die Plangröße und die Maximalwerte im Azure-Portal konfigurieren, indem Sie die **Horizontal skalieren**-Optionen im Plan oder eine Funktions-App auswählen, die für diesen Plan bereitgestellt ist (unter **Plattformfeatures**).
+Sie können die Plangröße und die Maximalwerte im Azure-Portal konfigurieren, indem Sie die **Aufskalieren**-Optionen im Plan oder eine Funktions-App auswählen, die für diesen Plan bereitgestellt ist (unter **Plattformfeatures**).
 
 Sie können auch den maximalen Burstgrenzwert über die Azure-Befehlszeilenschnittstelle erhöhen:
 
@@ -86,7 +86,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 ### <a name="available-instance-skus"></a>Verfügbare Instanz-SKUs
 
-Wenn Sie Ihren Plan erstellen oder skalieren, können Sie zwischen drei Instanzgrößen wählen.  Ihnen werden die Gesamtanzahl von Kernen und der Arbeitsspeicher in Rechnung gestellt, die pro Sekunde genutzt werden.  Ihre App kann automatisch nach Bedarf auf mehrere Instanzen hochskaliert werden.  
+Wenn Sie Ihren Plan erstellen oder skalieren, können Sie zwischen drei Instanzgrößen wählen.  Ihnen werden die Gesamtanzahl von Kernen und der Arbeitsspeicher in Rechnung gestellt, die pro Sekunde genutzt werden.  Ihre App kann automatisch nach Bedarf auf mehrere Instanzen aufskaliert werden.  
 
 |SKU|Kerne|Arbeitsspeicher|Storage|
 |--|--|--|--|
@@ -99,43 +99,42 @@ Das Ausführen auf einem Computer mit mehr Arbeitsspeicher bedeutet nicht immer,
 
 Beispielsweise wird eine JavaScript-Funktions-App durch das standardmäßige Arbeitsspeicherlimit in „Node.js“ eingeschränkt. Um dieses feste Arbeitsspeicherlimit zu erhöhen, fügen Sie die App-Einstellung `languageWorkers:node:arguments` mit dem Wert `--max-old-space-size=<max memory in MB>` hinzu.
 
-## <a name="regions"></a>Regions
+## <a name="region-max-scale-out"></a>Maximale horizontale Hochskalierung der Region
 
-Nachstehend werden die derzeit unterstützten Regionen für jedes Betriebssystem aufgeführt.
+Im Folgenden werden die derzeit unterstützten maximalen Werte für horizontales Hochskalieren für einen einzelnen Tarif in jeder Region und Betriebssystemkonfiguration aufgeführt. Wenn Sie eine Erhöhung anfordern möchten, öffnen Sie ein Supportticket.
+
+Sehen Sie sich die gesamte regionale Verfügbarkeit von Functions an: [Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
 
 |Region| Windows | Linux |
 |--| -- | -- |
-|Australien, Mitte| ✔<sup>1</sup> | |
-|Australien, Mitte 2| ✔<sup>1</sup> | |
-|Australien (Osten)| ✔ | ✔<sup>1</sup> |
-|Australien, Südosten | ✔ | ✔<sup>1</sup> |
-|Brasilien Süd| ✔<sup>2</sup> |  |
-|Kanada, Mitte| ✔ | ✔<sup>1</sup> |
-|USA (Mitte)| ✔ |  |
-|Asien, Osten| ✔ |  |
-|East US | ✔ | ✔<sup>1</sup> |
-|USA (Ost) 2| ✔ | ✔<sup>1</sup> |
-|Frankreich, Mitte| ✔ |  |
-|Deutschland, Westen-Mitte| ✔ | |
-|Japan, Osten| ✔ | ✔<sup>1</sup> |
-|Japan, Westen| ✔ | ✔<sup>1</sup> |
-|Korea, Mitte| ✔ | ✔<sup>1</sup> |
-|USA Nord Mitte| ✔ |  |
-|Nordeuropa| ✔ | ✔<sup>1</sup> |
-|USA Süd Mitte| ✔ | ✔<sup>1</sup> |
-|Indien (Süden) | ✔ | |
-|Asien, Südosten| ✔ | ✔<sup>1</sup> |
-|UK, Süden| ✔ | ✔<sup>1</sup> |
-|UK, Westen| ✔ |  |
-|Europa, Westen| ✔ | ✔<sup>1</sup> |
-|Indien, Westen| ✔ |  |
-|USA, Westen-Mitte| | ✔<sup>1</sup> |
-|USA (Westen)| ✔ | ✔<sup>1</sup> |
-|USA, Westen 2| ✔ |  |
-
-<sup>1</sup>Maximale horizontale Hochskalierung auf 20 Instanzen beschränkt.  
-<sup>2</sup>Maximale horizontale Hochskalierung auf 60 Instanzen beschränkt.
-
+|Australien, Mitte| 20 | Nicht verfügbar. |
+|Australien, Mitte 2| 20 | Nicht verfügbar. |
+|Australien (Osten)| 100 | 20 |
+|Australien, Südosten | 100 | 20 |
+|Brasilien Süd| 60 | 20 |
+|Kanada, Mitte| 100 | 20 |
+|USA (Mitte)| 100 | 20 |
+|Asien, Osten| 100 | 20 |
+|East US | 100 | 20 |
+|USA (Ost) 2| 100 | 20 |
+|Frankreich, Mitte| 100 | 20 |
+|Deutschland, Westen-Mitte| 100 | Nicht verfügbar. |
+|Japan, Osten| 100 | 20 |
+|Japan, Westen| 100 | 20 |
+|Korea, Mitte| 100 | 20 |
+|USA Nord Mitte| 100 | 20 |
+|Nordeuropa| 100 | 20 |
+|Norwegen, Osten| 20 | 20 |
+|USA Süd Mitte| 100 | 20 |
+|Indien (Süden) | 100 | Nicht verfügbar. |
+|Asien, Südosten| 100 | 20 |
+|UK, Süden| 100 | 20 |
+|UK, Westen| 100 | 20 |
+|Europa, Westen| 100 | 20 |
+|Indien, Westen| 100 | 20 |
+|USA, Westen-Mitte| 20 | 20 |
+|USA (Westen)| 100 | 20 |
+|USA, Westen 2| 100 | 20 |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

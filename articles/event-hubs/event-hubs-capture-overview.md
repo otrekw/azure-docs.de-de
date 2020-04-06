@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: 9b69feef7c6587f7356648e6a6828277ba500aea
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: c166f4cace6a8cc25b36a84f4614033801e69a51
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77460074"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231326"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Erfassen von Ereignissen über Azure Event Hubs in Azure Blob Storage oder Azure Data Lake Storage
 Azure Event Hubs ermöglicht Ihnen die automatische Erfassung von Streamingdaten in Event Hubs in einem [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/)- oder [Azure Data Lake Store Gen 1 oder Gen 2](https://azure.microsoft.com/services/data-lake-store/)-Konto Ihrer Wahl. Um für mehr Flexibilität zu sorgen, ist dabei die Angabe eines Zeit- oder Größenintervalls möglich. Das Einrichten von Capture geht schnell, für das Ausführen fallen keine Verwaltungskosten an, und die Skalierung erfolgt automatisch mit den [Event Hub-Durchsatzeinheiten](event-hubs-scalability.md#throughput-units). Event Hubs Capture ist die einfachste Möglichkeit zum Laden von Streamingdaten in Azure und ermöglicht es Ihnen, sich auf die Datenverarbeitung anstatt auf die Datenerfassung zu konzentrieren.
@@ -94,10 +94,11 @@ Ein vollständiges umfassendes Beispiel finden Sie im Repository zum bedarfsorie
 
 ### <a name="use-apache-spark"></a>Verwenden von Apache Spark
 
-[Apache Spark][Apache Spark] ist eine „vereinheitlichte Engine zur Verarbeitung von umfangreichen Daten“. Sie unterstützt verschiedene Sprachen, z.B. SQL, und der Zugriff auf Azure Blob Storage ist einfach. Es gibt zwei Optionen für die Ausführung von Apache Spark in Azure, die beide einfachen Zugriff auf Azure Blob Storage ermöglichen:
+[Apache Spark][Apache Spark] ist eine „vereinheitlichte Engine zur Verarbeitung von umfangreichen Daten“. Sie unterstützt verschiedene Sprachen, z.B. SQL, und der Zugriff auf Azure Blob Storage ist einfach. Es gibt mehrere Optionen für die Ausführung von Apache Spark in Azure, die jeweils einfachen Zugriff auf Azure Blob Storage ermöglichen:
 
 - [HDInsight: Zugreifen auf Dateien in Azure-Speicher][HDInsight: Address files in Azure storage]
 - [Azure Databricks: Azure Blob Storage][Azure Databricks: Azure Blob Storage]
+- [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/spark-job) 
 
 ### <a name="use-avro-tools"></a>Verwenden von Avro-Tools
 
@@ -164,4 +165,4 @@ Erfahren Sie, wie Sie diese Funktion über das Azure-Portal und mit einer Azure 
 [HDInsight: Address files in Azure storage]:https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage
 [Azure Databricks: Azure Blob Storage]:https://docs.databricks.com/spark/latest/data-sources/azure/azure-storage.html
 [Apache Drill: Azure Blob Storage Plugin]:https://drill.apache.org/docs/azure-blob-storage-plugin/
-[Bedarfsorientiertes Streaming: Event Hubs Capture]: https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture
+[Bedarfsorientiertes Streaming: Event Hubs Capture]:https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture

@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 02/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 744151a1ce8cde630e26c17ccf06569ebd0efb61
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 77a768f907ad989a457ee498f26ad0f6e004f786
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771001"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231302"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Abrufen einer Event Hubs-Verbindungszeichenfolge
 
@@ -55,7 +55,7 @@ In diesem Artikel werden verschiedene Möglichkeiten zum Abrufen der Verbindungs
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Mit dem Cmdlet [Get-AzEventHubNamespaceKey](/powershell/module/az.eventhub/get-azeventhubkey) können Sie die Verbindungszeichenfolge für den angegebenen Richtlinien- oder Regelnamen wie unten gezeigt abrufen:
+Mit dem Cmdlet [Get-AzEventHubKey](/powershell/module/az.eventhub/get-azeventhubkey) können Sie die Verbindungszeichenfolge für den angegebenen Richtlinien- oder Regelnamen wie unten gezeigt abrufen:
 
 ```azurepowershell-interactive
 Get-AzEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey

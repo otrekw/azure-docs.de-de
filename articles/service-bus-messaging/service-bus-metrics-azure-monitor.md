@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 569eb31c6cbe8b95773d52f6e1325801fbabf86f
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 227dfaff211eb60c5c2b25b5c76ecc82b6ce3edc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773547"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240786"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Service Bus-Metriken in Azure Monitor
 
@@ -60,7 +60,7 @@ Alle Metrikwerte werden minütlich an Azure Monitor gesendet. Das Aggregationsin
 
 Zählt die Anzahl der Anforderungen von Daten und Verwaltungsvorgängen
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 | Eingehende Anforderungen| Die Anzahl der Anforderungen an den Service Bus-Dienst in einem bestimmten Zeitraum <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
 |Erfolgreiche Anforderungen|Die Anzahl der erfolgreichen Anforderungen an den Service Bus-Dienst in einem bestimmten Zeitraum<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
@@ -78,7 +78,7 @@ Die beiden folgenden Arten von Fehlern werden als Benutzerfehler klassifiziert:
 
 ## <a name="message-metrics"></a>Nachrichtenmetriken
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 |Eingehende Nachrichten|Die Anzahl von Ereignissen oder Nachrichten, die in einem bestimmten Zeitraum an Service Bus gesendet wurden<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
 |Ausgehende Nachrichten|Die Anzahl von Ereignissen oder Nachrichten, die in einem bestimmten Zeitraum von Service Bus empfangen wurden<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
@@ -87,9 +87,16 @@ Die beiden folgenden Arten von Fehlern werden als Benutzerfehler klassifiziert:
 | Unzustellbare Nachrichten| Anzahl von unzustellbaren Nachrichten in einer Warteschlange/einem Thema. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average <br/>Dimension: EntityName |
 | Geplante Nachrichten| Anzahl von geplanten Nachrichten in einer Warteschlange/einem Thema. <br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Average  <br/> Dimension: EntityName |
 
+> [!NOTE]
+> Werte für die folgenden Metriken sind Zeitpunktwerte. Eingehende Nachrichten, die unmittelbar nach diesem Zeitpunkt verarbeitet wurden, werden in diesen Metriken möglicherweise nicht berücksichtigt. 
+> - Meldungen
+> - Aktive Nachrichten 
+> - Unzustellbare Nachrichten 
+> - Geplante Nachrichten 
+
 ## <a name="connection-metrics"></a>Verbindungsmetriken
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 |ActiveConnections|Die Anzahl der aktiven Verbindungen in einem Namespace und bei einer Entität<br/><br/> Einheit: Anzahl <br/> Aggregationstyp: Gesamt <br/> Dimension: EntityName|
 
@@ -97,8 +104,12 @@ Die beiden folgenden Arten von Fehlern werden als Benutzerfehler klassifiziert:
 
 > [!NOTE] 
 > Die folgenden Metriken sind nur mit dem **Premium**-Tarif verfügbar. 
+> 
+> Wichtige Metriken, die bei Ausfällen für einen Namespace im Premium-Tarif überwacht werden müssen: **CPU-Auslastung pro Namespace** und **Arbeitsspeichergröße pro Namespace**. [Richten Sie mit Azure Monitor Warnungen](../azure-monitor/platform/alerts-metric.md) für diese Metriken ein.
+> 
+> Die andere Metrik, die Sie überwachen können, ist **Gedrosselt Anforderungen**. Es sollte jedoch kein Problem vorliegen, solange der Namespace innerhalb der Grenzwerte für Arbeitsspeicher, CPU und vermittelte Verbindungen bleibt. Weitere Informationen finden Sie unter [Drosselung im Tarif „Premium“ von Azure Service Bus](service-bus-throttling.md#throttling-in-azure-service-bus-premium-tier)
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 | ------------------- | ----------------- |
 |CPU-Auslastung pro Namespace|Der Prozentsatz der CPU-Auslastung des Namespace<br/><br/> Einheit: Percent <br/> Aggregationstyp: Maximum <br/> Dimension: EntityName|
 |Auslastung der Arbeitsspeichergröße pro Namespace|Der Prozentsatz der Arbeitsspeichernutzung des Namespace<br/><br/> Einheit: Percent <br/> Aggregationstyp: Maximum <br/> Dimension: EntityName|
@@ -107,7 +118,7 @@ Die beiden folgenden Arten von Fehlern werden als Benutzerfehler klassifiziert:
 
 Azure Service Bus unterstützt folgende Dimensionen für Metriken in Azure Monitor. Das Hinzufügen von Dimensionen zu Ihren Metriken ist optional. Wenn Sie keine Dimensionen hinzufügen, werden Metriken auf Namespaceebene angegeben. 
 
-|Dimensionsname|Beschreibung|
+|Dimensionsname|BESCHREIBUNG|
 | ------------------- | ----------------- |
 |EntityName| Service Bus unterstützt Messagingentitäten unter dem Namespace.|
 

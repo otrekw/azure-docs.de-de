@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 3115c65c7027f5624b7b60b9be702ee4192d8cb6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 857a4da0b24d600ecc572933af578e2e8faf501a
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464453"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366316"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
@@ -160,7 +160,7 @@ Sie können das POA-Verhalten entsprechend Ihren Anforderungen konfigurieren. Ü
 |MaxResultsToCache    |Long                              | Die maximale Anzahl von Windows Update-Ergebnissen, die zwischengespeichert werden sollen. <br><br>Der Standardwert ist 3.000, wobei Folgendes angenommen wird: <br> &nbsp;&nbsp;- Es sind 20 Knoten vorhanden. <br> &nbsp;&nbsp;- Jeden Monat können 5 Updates für einen Knoten durchgeführt werden. <br> &nbsp;&nbsp;- Pro Vorgang können 10 Ergebnisse vorliegen. <br> &nbsp;&nbsp;- Es sollen die Ergebnisse für die letzten drei Monate gespeichert werden. |
 |TaskApprovalPolicy   |Enum <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy gibt die Richtlinie an, die vom Koordinatordienst zum Installieren von Windows-Updates auf den Service Fabric-Clusterknoten verwendet werden soll.<br><br>Zulässige Werte sind: <br>*NodeWise:* Windows-Updates werden immer nur auf jeweils einem Knoten installiert. <br> *UpgradeDomainWise:* Windows-Updates werden immer nur in jeweils einer Updatedomäne installiert. (Allenfalls kann ein Windows-Update für alle Knoten in einer Updatedomäne verwendet werden.)<br><br> Informationen dazu, welche Richtlinie für Ihren Cluster am besten geeignet ist, finden Sie im Abschnitt [Häufig gestellte Fragen](#frequently-asked-questions).
 |LogsDiskQuotaInMB   |Long  <br> (Standard: *1024*)               | Die maximale Größe der Patch Orchestration Application-Protokolle in MB, die lokal auf jedem Knoten beibehalten werden können.
-| WUQuery               | string<br>(Standard: *IsInstalled=0*)                | Abfrage zum Abrufen von Windows-Updates. Weitere Informationen finden Sie unter [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx).
+| WUQuery               | Zeichenfolge<br>(Standard: *IsInstalled=0*)                | Abfrage zum Abrufen von Windows-Updates. Weitere Informationen finden Sie unter [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx).
 | InstallWindowsOSOnlyUpdates | *Boolescher Wert* <br> (Standard: false)                 | Verwenden Sie dieses Flag, um zu steuern, welche Updates heruntergeladen und installiert werden sollen. Folgende Werte sind zulässig. <br>TRUE: installiert nur Updates des Windows-Betriebssystems.<br>FALSE: installiert alle verfügbaren Updates auf dem Computer.          |
 | WUOperationTimeOutInMinutes | Int <br>(Standard: *90*)                   | Gibt den Timeoutwert für jeden Windows Update-Vorgang an (Suchen/Herunterladen/Installieren). Wenn der Vorgang nicht innerhalb des angegebenen Timeoutzeitraums abgeschlossen ist, wird er abgebrochen.       |
 | WURescheduleCount     | Int <br> (Standard: *5*)                  | Gibt an, wie oft der Dienst das Windows-Update maximal erneut plant, falls bei dem Vorgang wiederholt ein Fehler auftritt.          |
@@ -401,7 +401,7 @@ A: Die zum Patchen eines kompletten Clusters benötigte Zeit hängt von folgende
 
 - Richtlinie des Koordinatordiensts. Die Standardrichtlinie „NodeWise“ führt dazu, dass nur jeweils ein Knoten gepatcht wird. Dies dauert länger als die Anwendung der Richtlinie „UpgradeDomainWise“. 
 
-   Beispiel:  Das Patchen eines Knotens dauert ca. 1 Stunde. Ein Cluster mit 20 Knoten (gleichen Typs) mit 5 Updatedomänen mit jeweils 4 Knoten soll gepatcht werden. Dauer des Patchprozesses:
+   Beispiel: Das Patchen eines Knotens dauert ca. 1 Stunde. Ein Cluster mit 20 Knoten (gleichen Typs) mit 5 Updatedomänen mit jeweils 4 Knoten soll gepatcht werden. Dauer des Patchprozesses:
     - Bei „NodeWise“: ca. 20 Stunden
     - Bei „UpgradeDomainWise“: ca. 5 Stunden
 
@@ -432,6 +432,10 @@ Es ist auch möglich, dass das Patchen auf einem Knoten blockiert wird, weil der
 **F: Warum muss der Knoten deaktiviert sein, wenn er in POA gepatcht wird?**
 
 A: In POA wird der Knoten mit der Absicht *Restart* deaktiviert, wodurch alle auf dem Knoten ausgeführten Service Fabric-Dienste beendet oder neu zugeordnet werden. Dies soll sicherstellen, dass Anwendungen keine Mischung aus alten und neuen DLLs verwenden. Daher wird empfohlen, einen Knoten nicht zu patchen, ohne ihn zuvor zu deaktivieren.
+
+**F: Wie hoch ist die maximale Anzahl von Knoten, die mithilfe von POA aktualisiert werden können?**
+
+A: POA verwendet Service Fabric Repair Manager, um Reparaturtasks für Knoten für Updates zu erstellen. Es können jedoch nicht mehr als 250 Reparaturtasks gleichzeitig vorhanden sein. Zurzeit erstellt POA die Reparaturtasks für alle jeden Knoten gleichzeitig, sodass POA nicht mehr als 250 Knoten in einem Cluster aktualisieren kann. 
 
 ## <a name="disclaimers"></a>Haftungsausschlüsse
 

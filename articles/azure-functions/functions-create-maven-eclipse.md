@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d2d353e6ccd7dad7be302a5f40c65012f32deba7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c82432a3d76a84eba1ad921d936b2f3ba064e2ae
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227124"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79136832"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Erstellen der ersten Funktion mit Java und Eclipse 
 
@@ -42,8 +42,8 @@ Es wird dringend empfohlen, auch [Version 2 der Azure Functions Core Tools](func
 1. Wählen Sie **Add Archetype** (Archetyp hinzufügen) aus, und fügen Sie die Einträge für [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) hinzu.
     - Archetypgruppen-ID: com.microsoft.azure
     - Archetypartefakt-ID: azure-functions-archetype
-    - Version: Verwenden Sie die neueste Version **1.22** aus [dem zentralen Repository](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    ![Erstellung eines Maven-Projekts in Eclipse](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
+    - Version: Überprüfen und Verwenden der neusten Version aus dem [zentralen Repository](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    ![In Eclipse/Maven erstellen](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
 1. Klicken Sie auf **OK** und anschließend auf **Weiter**.  Sie müssen Werte für alle Felder eingeben, einschließlich `resourceGroup`, `appName` und `appRegion` (geben Sie einen anderen appName als **fabrikam-function-20170920120101928** an), und wählen Sie abschließend **Fertig stellen** aus.
     ![Erstellung eines Maven-Projekts in Eclipse 2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 

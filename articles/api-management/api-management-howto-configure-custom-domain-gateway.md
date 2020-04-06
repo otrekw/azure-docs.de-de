@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
-ms.openlocfilehash: 1df2cce04021c1cd14c356311df921dd1c0298e4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1f2184c7c62887a98a76877528b167d173c3d75b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510583"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335944"
 ---
 # <a name="configure-a-custom-domain-name"></a>Konfigurieren eines benutzerdefinierten Domänennamens
 
@@ -37,7 +37,7 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
 - Ein selbstgehostetes Gateway. Weitere Informationen finden Sie unter [Bereitstellen eines selbstgehosteten Gateways in Azure API Management](api-management-howto-provision-self-hosted-gateway.md).
 -   Einen benutzerdefinierten Domänennamen, der sich in Ihrem Besitz oder im Besitz Ihrer Organisation befindet. Dieses Thema enthält keine Anleitung zum Erwerben eines benutzerdefinierten Domänennamens.
 -   Ein DNS-Eintrag, der auf einem DNS-Server gehostet wird, der den benutzerdefinierten Domänennamen der IP-Adresse des selbstgehosteten Gateways zuordnet. Dieses Thema enthält keine Anleitung zum Hosten eines DNS-Eintrags.
--   Sie benötigen ein gültiges Zertifikat mit einem öffentlichen und privaten Schlüssel (.pfx). Der Antragstellername oder der alternative Antragstellername (Subject Alternative Name, SAN) muss dem Domänennamen entsprechen, damit die API Management-Instanz auf sichere Weise URLs über SSL verfügbar machen kann.
+-   Sie benötigen ein gültiges Zertifikat mit einem öffentlichen und privaten Schlüssel (.pfx). Der Antragstellername oder der alternative Antragstellername (Subject Alternative Name, SAN) muss dem Domänennamen entsprechen, damit die API Management-Instanz auf sichere Weise URLs über TLS verfügbar machen kann.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 

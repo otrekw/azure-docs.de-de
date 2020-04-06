@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a585ab059319b15be1f2a86bf10b7dc58da72494
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: b6d949b50be348e72cedfc3710383308b04de106
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299464"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336005"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Kapazität einer Azure API Management-Instanz
 
@@ -48,7 +48,7 @@ Die **Kapazität** ist ein Indikator für die Auslastung einer API Management-In
 
 + API Management-Diensten auf Datenebene, wie z. B. die Anforderungsverarbeitung, die das Weiterleiten von Anforderungen oder das Ausführen einer Richtlinie umfassen kann
 + API Management-Diensten auf Verwaltungsebene, z. B. über das Azure-Portal oder ARM angewandte Verwaltungsaktionen oder vom [Entwicklerportal](api-management-howto-developer-portal.md) stammende Lasten
-+ Ausgewählten Betriebssystemprozessen, einschließlich Prozessen, für die Kosten für SSL-Handshakes bei neuen Verbindungen anfallen
++ Ausgewählten Betriebssystemprozessen, einschließlich Prozessen, für die Kosten für TLS-Handshakes bei neuen Verbindungen anfallen
 
 Die **Gesamtkapazität** ist ein Durchschnitt der eigenen Werte aus jeder Einheit einer API Management-Instanz.
 

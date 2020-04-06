@@ -1,16 +1,16 @@
 ---
 title: Netzwerkkonfiguration für Azure Dev Spaces in verschiedenen Netzwerktopologien
 services: azure-dev-spaces
-ms.date: 01/10/2020
+ms.date: 03/17/2020
 ms.topic: conceptual
 description: Beschreibung der Netzwerkanforderungen für die Ausführung von Azure Dev Spaces in Azure Kubernetes Service
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, CNI, kubenet, SDN, Netzwerk
-ms.openlocfilehash: 9e32e3b65451dceefaeeaf7faed7c8337797e0b8
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 82d046aa36fe9caf6337aa7f58ca0db525062283
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76044991"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240570"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Netzwerkkonfiguration für Azure Dev Spaces in verschiedenen Netzwerktopologien
 
@@ -51,7 +51,7 @@ Azure Dev Spaces ermöglicht zum Debuggen die direkte Kommunikation mit einem Po
 
 ### <a name="ingress-only-network-traffic-requirements"></a>Anforderungen für nur eingehenden Netzwerkdatenverkehr
 
-Azure Dev Spaces ermöglicht das Routing zwischen Pods in unterschiedlichen Namespaces. Beispielsweise können Namespaces mit aktiviertem Azure Dev Spaces eine Über- und Unterordnungsbeziehung aufweisen, sodass Netzwerkdatenverkehr zwischen Pods in den übergeordneten und untergeordneten Namespaces weitergeleitet werden kann. Damit diese Funktion ausgeführt wird, müssen Sie eine Netzwerkrichtlinie hinzufügen, die Datenverkehr zwischen Namespaces zulässt, in denen der Netzwerkdatenverkehr weitergeleitet wird, z. B. zwischen übergeordneten und untergeordneten Namespaces. Wenn der Eingangscontroller im *azds*-Namespace bereitgestellt wird, muss der Eingangscontroller mit Pods kommunizieren, die von Azure Dev Spaces in einem anderen Namespace instrumentiert werden. Damit der Eingangscontroller ordnungsgemäß ausgeführt wird, muss der Netzwerkdatenverkehr vom *azds*-Namespace zu dem Namespace zugelassen werden, in dem die instrumentierten Pods ausgeführt werden.
+Azure Dev Spaces ermöglicht das Routing zwischen Pods in unterschiedlichen Namespaces. Beispielsweise können Namespaces mit aktiviertem Azure Dev Spaces eine Über- und Unterordnungsbeziehung aufweisen, sodass Netzwerkdatenverkehr zwischen Pods in den übergeordneten und untergeordneten Namespaces weitergeleitet werden kann. Azure Dev Spaces stellt auch Dienstendpunkte mit eigenem FQDN bereit. Weitere Informationen zum Konfigurieren verschiedener Optionen zum Bereitstellen von Diensten sowie zu den Auswirkungen auf das Routing auf Namespaceebene finden Sie unter [Verwenden verschiedener Endpunktoptionen][endpoint-options].
 
 ## <a name="using-azure-cni"></a>Verwenden von Azure CNI
 
@@ -65,6 +65,23 @@ In AKS-Clustern können Sie zusätzliche Sicherheitseinstellungen konfigurieren,
 
 Derzeit wird Azure Dev Spaces nicht mit [privaten AKS-Clustern][aks-private-clusters] unterstützt.
 
+## <a name="using-different-endpoint-options"></a>Verwenden verschiedener Endpunktoptionen
+
+Azure Dev Spaces bietet die Möglichkeit, Endpunkte für Ihre bereitzustellen, die unter AKS ausgeführt werden. Wenn Sie Azure Dev Spaces für Ihren Cluster aktivieren, stehen Ihnen die folgenden Optionen zur Verfügung, um den Endpunkttyp für Ihren Cluster zu konfigurieren:
+
+* Ein *öffentlicher* Endpunkt (Standardeinstellung) stellt einen Eingangscontroller mit einer öffentlichen IP-Adresse bereit. Die öffentliche IP-Adresse wird im DNS des Clusters registriert und ermöglicht öffentlichen Zugriff auf ihre Dienste mithilfe einer URL. Sie können diese URL mit `azds list-uris` anzeigen.
+* Ein *privater* Endpunkt stellt einen Eingangscontroller mit einer privaten IP-Adresse bereit. Mit einer privaten IP-Adresse kann nur innerhalb des virtuellen Netzwerks des Clusters auf den Load Balancer für den Cluster zugegriffen werden. Die private IP-Adresse des Load Balancers wird im DNS des Clusters registriert, sodass auf Dienste im virtuellen Netzwerk des Clusters mithilfe einer URL zugegriffen werden kann. Sie können diese URL mit `azds list-uris` anzeigen.
+* Wenn Sie *Keine* als Endpunktoption festlegen, wird kein Eingangscontroller bereitgestellt. Wenn kein Eingangscontroller bereitgestellt wird, funktionieren die [Azure Dev Spaces-Routingfunktionen][dev-spaces-routing] nicht. Optional können Sie eine eigene Eingangscontrollerlösung mit [traefik][traefik-ingress] oder [NGINX][nginx-ingress] implementieren, damit die Routingfunktionen wieder funktionieren.
+
+Verwenden Sie zum Konfigurieren der Endpunktoption *-e* oder *--endpoint*, wenn Sie Azure Dev Spaces auf Ihrem Cluster aktivieren. Beispiel:
+
+> [!NOTE]
+> Die Endpunktoption setzt voraus, dass Sie Version 2.2.0 oder höher der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
+
+```azurecli
+az aks use-dev-spaces -g MyResourceGroup -n MyAKS -e private
+```
+
 ## <a name="client-requirements"></a>Clientanforderungen
 
 In Azure Dev Spaces werden zum Debuggen clientseitige Tools, z. B. die CLI-Erweiterung für Azure Dev Spaces, die Visual Studio Code-Erweiterung und die Visual Studio-Erweiterung, für die Kommunikation mit dem AKS-Cluster verwendet. Zum Verwenden von clientseitigen Tools in Azure Dev Spaces müssen Sie den Datenverkehr von den Entwicklungscomputern zur Domäne *azds-\*.azds.io* zulassen. Den genauen vollqualifizierten Domänennamen finden Sie in *dataplaneFqdn* unter `USERPROFILE\.azds\settings.json`. Wenn Sie [vom API-Server autorisierte IP-Adressbereiche][auth-range-section] verwenden, müssen Sie außerdem die IP-Adressen aller Entwicklungscomputer zulassen, die zum Debuggen eine Verbindung mit dem AKS-Cluster herstellen, um eine Verbindung mit dem API-Server herzustellen.
@@ -74,7 +91,7 @@ In Azure Dev Spaces werden zum Debuggen clientseitige Tools, z. B. die CLI-Erwe
 Informieren Sie sich darüber, wie Azure Dev Spaces Sie bei der Entwicklung komplexerer containerübergreifender Anwendungen unterstützt und wie Sie die gemeinsame Entwicklung vereinfachen können, indem Sie in verschiedenen Bereichen mit verschiedenen Versionen oder Branches Ihres Codes arbeiten.
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Entwicklung im Team mit Java unter Kubernetes mithilfe von Azure Dev Spaces][team-quickstart]
+> [Schnellstart: Entwicklung im Team unter Kubernetes: Azure Dev Spaces][team-quickstart]
 
 [aks-cni]: ../aks/configure-azure-cni.md
 [aks-cni-ip-planning]: ../aks/configure-azure-cni.md#plan-ip-addressing-for-your-cluster
@@ -86,7 +103,10 @@ Informieren Sie sich darüber, wie Azure Dev Spaces Sie bei der Entwicklung komp
 [aks-network-policies]: ../aks/use-network-policies.md
 [aks-private-clusters]: ../aks/private-clusters.md
 [auth-range-section]: #using-api-server-authorized-ip-ranges
+[azure-cli-install]: /cli/azure/install-azure-cli
 [dev-spaces-ip-auth-range-regions]: https://github.com/Azure/dev-spaces/tree/master/public-ips
+[dev-spaces-routing]: how-dev-spaces-works-routing.md
+[endpoint-options]: #using-different-endpoint-options
 [traefik-ingress]: how-to/ingress-https-traefik.md
 [nginx-ingress]: how-to/ingress-https-nginx.md
 [team-quickstart]: quickstart-team-development.md

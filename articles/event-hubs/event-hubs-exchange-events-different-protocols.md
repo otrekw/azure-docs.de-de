@@ -3,7 +3,7 @@ title: 'Azure Event Hubs: Austauschen von Ereignissen mithilfe verschiedener Pro
 description: In diesem Artikel wird erläutert, wie Consumer und Producer, die unterschiedliche Protokolle verwenden (AMQP, Apache Kafka und HTTPS), über Azure Event Hubs Ereignisse austauschen können.
 services: event-hubs
 documentationcenter: ''
-author: basilhariri
+author: femila
 manager: ''
 ms.service: event-hubs
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/20/2019
-ms.author: bahariri
-ms.openlocfilehash: aecde0c36fc48f75e5174ca3e1ab9e2b3476d08a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: femila
+ms.openlocfilehash: 368cc568c40e878338e6b45205e74cba1d0b6378
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437181"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80372211"
 ---
 # <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Austauschen von Ereignissen zwischen Consumern und Producern, die unterschiedliche Protokolle verwenden: AMQP, Kafka und HTTPS
 Azure Event Hubs unterstützt drei Protokolle für Consumer und Producer: AMQP, Kafka und HTTPS. Bei jedem dieser Protokolle wird eine Nachricht auf eigene Weise dargestellt, daher stellt sich die folgende Frage: Wenn eine Anwendung Ereignisse an einen Event Hub mit einem Protokoll sendet und diese mit einem anderen Protokoll nutzt, wie sehen dann die verschiedenen Komponenten und Werte der Ereignisse aus, wenn sie beim Consumer eingehen? In diesem Artikel werden bewährte Methoden für Producer und Consumer erörtert, um sicherzustellen, dass die Werte innerhalb eines Ereignisses von der Consumer-Anwendung richtig interpretiert werden.
@@ -339,10 +339,10 @@ String myStringProperty = new String(rawbytes, StandardCharsets.UTF_8);
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie erfahren, wie Daten an Kafka-fähige Event Hubs gestreamt werden können, ohne dass Sie Protokollclients ändern oder eigene Cluster betreiben müssen. Weitere Informationen zu Event Hubs und Event Hubs für Kafka finden Sie in folgenden Artikeln:  
+In diesem Artikel haben Sie erfahren, wie Daten an Event Hubs gestreamt werden, ohne dass Sie Protokollclients ändern oder eigene Cluster ausführen müssen. Weitere Informationen zu Event Hubs und Event Hubs für Kafka finden Sie in folgenden Artikeln:  
 
 * [Informationen zu Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Informationen zu Event Hubs für Kafka](event-hubs-for-kafka-ecosystem-overview.md)
 * [Weitere Beispiele zu Event Hubs für Kafka auf GitHub](https://github.com/Azure/azure-event-hubs-for-kafka)
-* Verwenden Sie [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) zum [Streamen von Ereignissen aus der lokalen Kafka-Instanz an Kafka-fähige Event Hubs in der Cloud](event-hubs-kafka-mirror-maker-tutorial.md).
-* Erfahren Sie, wie Sie [native Kafka-Anwendungen](event-hubs-quickstart-kafka-enabled-event-hubs.md), [Apache Flink](event-hubs-kafka-flink-tutorial.md) oder [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) zum Streamen an Kafka-fähige Event Hubs verwenden.
+* Verwenden Sie [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) zum [Streamen von Ereignissen aus der lokalen Kafka-Instanz an fähige Event Hubs in der Cloud](event-hubs-kafka-mirror-maker-tutorial.md).
+* Erfahren Sie, wie Sie [native Kafka-Anwendungen](event-hubs-quickstart-kafka-enabled-event-hubs.md), [Apache Flink](event-hubs-kafka-flink-tutorial.md) oder [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) zum Streamen an Event Hubs verwenden.

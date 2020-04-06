@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 86f474370fe38c7b281e275614b88def5a6c1357
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 09afca7eaf385795baf9c4a3c94232622527e357
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605097"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79500967"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafische Erstellung in Azure Automation
 
@@ -21,7 +21,7 @@ Mithilfe der grafischen Erstellung können Sie ohne die Komplexität des zugrund
 
 ## <a name="graphical-runbooks"></a>Grafische Runbooks
 
-Alle Runbooks in Azure Automation sind Windows PowerShell-Workflows. Grafische Runbooks und grafische PowerShell-Workflow-Runbooks generieren PowerShell-Code, den die Automation-Worker ausführen, Sie jedoch weder anzeigen noch ändern können. Sie können ein grafisches Runbook in ein grafisches PowerShell-Workflow-Runbook konvertieren und umgekehrt. Diese Runbooks können jedoch nicht in ein Textrunbook konvertiert werden. Außerdem kann der grafische Automatisierungs-Editor kein vorhandenes Textrunbook importieren.
+Alle Runbooks in Azure Automation sind Windows PowerShell-Workflows. Grafische Runbooks und grafische PowerShell-Workflow-Runbooks generieren PowerShell-Code, den die Automation-Worker ausführen, Sie jedoch weder anzeigen noch ändern können. Sie können ein grafisches Runbook in ein grafisches PowerShell-Workflow-Runbook konvertieren und umgekehrt. Diese Runbooks können jedoch nicht in ein Textrunbook konvertiert werden. Außerdem kann der grafische Automatisierungs-Editor kein Textrunbook importieren.
 
 ## <a name="overview-of-graphical-editor"></a>Übersicht über den grafischen Editor
 
@@ -31,7 +31,7 @@ Sie können den grafischen Editor im Azure-Portal öffnen, indem Sie ein grafisc
 
 Die folgenden Abschnitte beschreiben die Steuerelemente im grafischen Editor.
 
-### <a name="canvas"></a>Canvas
+### <a name="canvas-control"></a>Canvas-Steuerelement
 
 Das Canvas-Steuerelement ermöglicht Ihnen, Ihr Runbook zu entwerfen. Sie können über die Knoten im Steuerelement „Bibliothek“ dem Runbook Aktivitäten hinzufügen und mit Verknüpfungen Verbindungen mit ihnen herstellen, um die Logik des Runbooks zu definieren. Über die Steuerelemente am unteren Rand der Canvas können Sie die Ansicht vergrößern und verkleinern.
 
@@ -48,7 +48,7 @@ Das Canvas-Steuerelement ermöglicht Ihnen, Ihr Runbook zu entwerfen. Sie könne
 
 ### <a name="configuration-control"></a>Steuerelement "Konfiguration"
 
-Mit dem Steuerelement „Konfiguration“ können Sie Details für ein auf der Canvas ausgewähltes Objekt angeben. Welche Eigenschaften in diesem Steuerelement zur Verfügung stehen, hängt von der Art des ausgewählten Objekts ab. Wenn Sie im Steuerelement „Konfiguration“ eine Option auswählen, werden zusätzliche Blätter zum Angeben weiterer Informationen geöffnet.
+Mit dem Steuerelement „Konfiguration“ können Sie Details für ein auf der Canvas ausgewähltes Objekt angeben. Welche Eigenschaften in diesem Steuerelement zur Verfügung stehen, hängt von der Art des ausgewählten Objekts ab. Wenn Sie im Steuerelement „Konfiguration“ eine Option wählen, werden zusätzliche Blätter zum Angeben weiterer Informationen geöffnet.
 
 ### <a name="test-control"></a>Steuerelement "Test"
 
@@ -56,19 +56,19 @@ Das Steuerelement "Test" wird beim ersten Start des grafischen Editors nicht ang
 
 ## <a name="activities"></a>activities
 
-Aktivitäten sind die Bausteine eines Runbooks. Bei einer Aktivität kann es sich um ein PowerShell-Cmdlet, um ein untergeordnetes Runbook oder einen Workflow handeln. Sie können dem Runbook eine Aktivität hinzufügen, indem Sie mit der rechten Maustaste im Steuerelement „Bibliothek“ auf das Runbook klicken und die Option **Zur Canvas hinzufügen**auswählen. Anschließend können Sie die Aktivität per Drag & Drop an einer beliebigen Stelle auf der Canvas platzieren. Die Position der Aktivität auf der Canvas hat keinerlei Einfluss auf den Vorgang im Runbook. Sie können das Layout Ihres Runbooks so gestalten, wie es Ihnen zur visuellen Darstellung der Vorgänge am geeignetsten erscheint.
+Aktivitäten sind die Bausteine eines Runbooks. Bei einer Aktivität kann es sich um ein PowerShell-Cmdlet, um ein untergeordnetes Runbook oder einen Workflow handeln. Sie können dem Runbook eine Aktivität hinzufügen, indem Sie mit der rechten Maustaste im Steuerelement „Bibliothek“ auf das Runbook klicken und die Option **Zur Canvas hinzufügen**auswählen. Anschließend können Sie die Aktivität per Drag & Drop an einer beliebigen Stelle auf der Canvas platzieren. Die Position der Aktivität auf der Canvas hat keinen Einfluss auf den Vorgang im Runbook. Sie können das Layout Ihres Runbooks so gestalten, wie es Ihnen zur visuellen Darstellung der Vorgänge am geeignetsten erscheint.
 
-![Zum Zeichenbereich hinzufügen](media/automation-graphical-authoring-intro/add-to-canvas-revised20165.png)
+![Zum Zeichenbereich hinzufügen](media/automation-graphical-authoring-intro/add-to-canvas-cmdlet.png)
 
 Wählen Sie eine Aktivität auf der Canvas aus, um ihre Eigenschaften und Parameter im Blatt „Konfiguration“ zu konfigurieren. Sie können die Bezeichnung der Aktivität in einen für Sie aussagekräftigen Namen ändern. Das Runbook führt weiterhin das ursprüngliche Cmdlet aus. Sie ändern einfach den Anzeigenamen, der im grafischen Editor verwendet wird. Beachten Sie, dass die Bezeichnung innerhalb des Runbooks eindeutig sein muss.
 
 ### <a name="parameter-sets"></a>Parametersätze
 
-Ein Parametersatz definiert die erforderlichen und optionalen Parameter, die Werte für ein bestimmtes Cmdlet akzeptieren. Alle Cmdlets müssen über mindestens einen Parametersatz verfügen, einige enthalten mehrere Sätze. Wenn ein Cmdlet mehrere Parametersätze aufweist, können Sie die Parameter erst konfigurieren, wenn Sie den zu verwendenden Parametersatz ausgewählt haben. Sie ändern den durch eine Aktivität verwendeten Parametersatz, indem Sie **Parametersatz** auswählen und einen anderen Satz angeben. In diesem Fall gehen alle bereits konfigurierten Parameterwerte verloren.
+Ein Parametersatz definiert die erforderlichen und optionalen Parameter, die Werte für ein bestimmtes Cmdlet akzeptieren. Alle Cmdlets müssen über mindestens einen Parametersatz verfügen, einige enthalten mehrere Sätze. Wenn ein Cmdlet mehrere Parametersätze aufweist, können Sie Parameter erst konfigurieren, nachdem Sie den zu verwendenden Parametersatz ausgewählt haben. Sie ändern den durch eine Aktivität verwendeten Parametersatz, indem Sie **Parametersatz** auswählen und einen anderen Satz angeben. In diesem Fall gehen alle bereits konfigurierten Parameterwerte verloren.
 
-Im folgenden Beispiel besitzt das Cmdlet [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm?view=azps-3.5.0) drei Parametersätze. Im Beispiel wird der Parametersatz ListVirtualMachineInResourceGroupParamSet mit einem einzelnen optionalen Parameter zum Zurückgeben aller virtuellen Computer in einer Ressourcengruppe verwendet. Im Beispiel wird auch der GetVirtualMachineInResourceGroupParamSet-Parametersatz verwendet, um den zurückzugebenden virtuellen Computer anzugeben. Dieser Satz verfügt über zwei obligatorische Parameter und einen optionalen Parameter.
+Im folgenden Beispiel besitzt das Cmdlet [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm?view=azps-3.5.0) drei Parametersätze. Im Beispiel wird der Parametersatz **ListVirtualMachineInResourceGroupParamSet** mit einem einzelnen optionalen Parameter zum Zurückgeben aller virtuellen Computer in einer Ressourcengruppe verwendet. Im Beispiel wird auch der Parametersatz **GetVirtualMachineInResourceGroupParamSet** verwendet, um den zurückzugebenden virtuellen Computer anzugeben. Dieser Satz verfügt über zwei obligatorische Parameter und einen optionalen Parameter.
 
-![Parametersatz](media/automation-graphical-authoring-intro/get-azurermvm-parameter-sets.png)
+![Parametersatz](media/automation-graphical-authoring-intro/get-azvm-parameter-sets.png)
 
 #### <a name="parameter-values"></a>Parameterwerte
 
@@ -88,7 +88,7 @@ Wenn Sie einen Wert für einen Parameter angeben, wählen Sie eine Datenquelle a
 
 #### <a name="optional-additional-parameters"></a>Optionale zusätzliche Parameter
 
-Alle Cmdlets bieten die Möglichkeit, zusätzliche Parameter festzulegen. Hierbei handelt es sich um allgemeine PowerShell-Parameter oder andere benutzerdefinierte Parameter. Der grafische Editor zeigt ein Textfeld an, in dem Sie unter Verwendung der PowerShell-Syntax Parameter bereitstellen können. Um beispielsweise den allgemeinen Parameter *Verbose* zu verwenden, geben Sie `-Verbose:$True` an.
+Alle Cmdlets bieten die Möglichkeit, zusätzliche Parameter festzulegen. Hierbei handelt es sich um allgemeine PowerShell-Parameter oder andere benutzerdefinierte Parameter. Der grafische Editor zeigt ein Textfeld an, in dem Sie unter Verwendung der PowerShell-Syntax Parameter bereitstellen können. Um beispielsweise den allgemeinen Parameter `Verbose` zu verwenden, geben Sie `-Verbose:$True` an.
 
 ### <a name="retry-activity"></a>Wiederholen der Aktivität
 
@@ -102,14 +102,14 @@ Die Wiederholungsbedingung ist ein PowerShell-Ausdruck, der nach jeder Ausführu
 
 ![Wiederholungsverzögerung für Aktivität](media/automation-graphical-authoring-intro/retry-condition.png)
 
-Die Wiederholungsbedingung kann eine Variable namens „$RetryData“ enthalten, die Zugriff auf Informationen zu den Aktivitätswiederholungen bereitstellt. Diese Variable weist die in der folgenden Tabelle aufgeführten Eigenschaften auf:
+Die Wiederholungsbedingung kann eine Variable namens `RetryData` enthalten, die Zugriff auf Informationen zu den Aktivitätswiederholungen bereitstellt. Diese Variable weist die in der folgenden Tabelle aufgeführten Eigenschaften auf:
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| NumberOfAttempts |Häufigkeit, mit der die Aktivität ausgeführt wurde. |
-| Output |Die Ausgabe nach der letzten Ausführung der Aktivität. |
-| TotalDuration |Vergangene Zeit seit dem ersten Start der Aktivität. |
-| StartedAt |Uhrzeit (im UTC-Format), zu der die Aktivität zuerst gestartet wurde. |
+| `NumberOfAttempts` |Häufigkeit, mit der die Aktivität ausgeführt wurde. |
+| `Output` |Die Ausgabe nach der letzten Ausführung der Aktivität. |
+| `TotalDuration` |Vergangene Zeit seit dem ersten Start der Aktivität. |
+| `StartedAt` |Uhrzeit (im UTC-Format), zu der die Aktivität zuerst gestartet wurde. |
 
 Es folgen Beispiele von Bedingungen für die Wiederholung von Aktivitäten.
 
@@ -136,7 +136,7 @@ Wenn Sie eine Wiederholungsbedingung für eine Aktivität konfiguriert haben, ve
 
 Bei einem Workflowskript-Steuerelement handelt es sich um eine spezielle Aktivität, die je nach Art des zu erstellenden grafischen Runbooks ein PowerShell- oder PowerShell-Workflow-Skript akzeptiert. Dieses Steuerelement bietet Funktionen, die andernfalls möglicherweise nicht verfügbar wären. Es kann keine Parameter akzeptieren, kann jedoch Variablen für die Aktivitätsausgabe und Runbookeingabeparameter verwenden. Alle Ausgaben der Aktivität werden dem Datenbus hinzugefügt. Eine Ausnahme ist die Ausgabe ohne ausgehende Verknüpfung. In diesem Fall wird die Ausgabe der Ausgabe des Runbooks hinzugefügt.
 
-Der folgende Code beispielsweise führt Datumsberechnungen unter Verwendung einer Runbookeingabevariable namens „$NumberOfDays“ durch. Anschließend wird ein berechneter DateTime-Wert als Ausgabe an nachfolgende Aktivitäten im Runbook gesendet.
+Der folgende Code beispielsweise führt Datumsberechnungen unter Verwendung einer Runbookeingabevariable namens `NumberOfDays` durch. Anschließend wird ein berechneter DateTime-Wert als Ausgabe an nachfolgende Aktivitäten im Runbook gesendet.
 
 ```powershell-interactive
 $DateTimeNow = (Get-Date).ToUniversalTime()
@@ -152,7 +152,7 @@ Eine Verknüpfung in einem grafischen Runbook verbindet zwei Aktivitäten mitein
 
 Sie können eine Verknüpfung zwischen zwei Aktivitäten erstellen, indem Sie die Quellaktivität auswählen und auf den Kreis am unteren Ende der Form klicken. Ziehen Sie den Pfeil bis zur Zielaktivität, und lassen Sie die Maustaste los.
 
-![Erstellen einer Verknüpfung](media/automation-graphical-authoring-intro/create-link-revised20165.png)
+![Erstellen einer Verknüpfung](media/automation-graphical-authoring-intro/create-link-options.png)
 
 Wählen Sie die Verknüpfung aus, um ihre Eigenschaften im Blatt "Konfiguration" zu konfigurieren. Zu den Eigenschaften zählt beispielsweise der Verknüpfungstyp, der in der folgenden Tabelle beschrieben wird.
 
@@ -167,21 +167,21 @@ Ein grafisches Runbook wird mit allen Aktivitäten gestartet, die keine eingehen
 
 ### <a name="link-conditions"></a>Verknüpfungsbedingungen
 
-Wenn Sie für eine Verknüpfung eine Bedingung angeben, wird die Zielaktivität nur ausgeführt, wenn die Bedingung als „True“ ausgewertet wird. Sie verwenden typischerweise eine $ActivityOutput-Variable in einer Bedingung, um die Ausgabe der Quellaktivität abzurufen.
+Wenn Sie für eine Verknüpfung eine Bedingung angeben, wird die Zielaktivität nur ausgeführt, wenn die Bedingung als „True“ ausgewertet wird. Sie verwenden üblicherweise eine `ActivityOutput`-Variable in einer Bedingung, um die Ausgabe der Quellaktivität abzurufen.
 
-Für eine Pipelineverknüpfung müssen Sie eine Bedingung für ein einzelnes Objekt angeben. Das Runbook wertet die Bedingung für jedes Objekt aus, das von der Quellaktivität ausgegeben wird. Dann führt es die Zielaktivität für jedes Objekt aus, das die Bedingung erfüllt. Wenn Sie beispielsweise **Get-AzVM** als Quellaktivität verwenden, kann die folgende Syntax für eine bedingte Pipelineverknüpfung verwendet werden, um nur virtuelle Computer aus der Ressourcengruppe Group1 abzurufen.
+Für eine Pipelineverknüpfung müssen Sie eine Bedingung für ein einzelnes Objekt angeben. Das Runbook wertet die Bedingung für jedes Objekt aus, das von der Quellaktivität ausgegeben wird. Dann führt es die Zielaktivität für jedes Objekt aus, das die Bedingung erfüllt. Wenn Sie beispielsweise `Get-AzVM` als Quellaktivität verwenden, kann die folgende Syntax für eine bedingte Pipelineverknüpfung verwendet werden, um nur virtuelle Computer aus der Ressourcengruppe Group1 abzurufen.
 
 ```powershell-interactive
 $ActivityOutput['Get Azure VMs'].Name -match "Group1"
 ```
 
-Bei einer Sequenzverknüpfung wertet das Runbook die Bedingung nur einmal aus, da ein einzelnes Array mit sämtlichen Objekten zurückgegeben wird, die von der Quellaktivität ausgegeben werden. Aus diesem Grund kann das Runbook zum Filtern keine Sequenzverknüpfung wie eine Pipelineverknüpfung verwenden. Die Sequenzverknüpfung kann einfach bestimmen, ob die nächste Aktivität ausgeführt wird.
+Bei einer Sequenzverknüpfung wertet das Runbook die Bedingung nur einmal aus, da ein einzelnes Array mit sämtlichen Objekten zurückgegeben wird, die von der Quellaktivität ausgegeben werden. Aus diesem Grund kann das Runbook zum Filtern keine Sequenzverknüpfung verwenden, wie dies bei einer Pipelineverknüpfung der Fall ist. Die Sequenzverknüpfung kann einfach bestimmen, ob die nächste Aktivität ausgeführt wird.
 
-Betrachten Sie beispielsweise den folgenden Satz von Aktivitäten aus unserem Runbook zum Starten des virtuellen Computers:
+Betrachten Sie beispielsweise den folgende Reihe von Aktivitäten aus unserem Runbook **Start VM**:
 
 ![Bedingte Verknüpfung mit Sequenzen](media/automation-graphical-authoring-intro/runbook-conditional-links-sequence.png)
 
-Das Runbook verwendet drei verschiedene Sequenzverknüpfungen, die Werte der Eingabeparameter *VMName* und *ResourceGroupName* überprüfen, um die entsprechende Aktion zu bestimmen. Mögliche Aktionen sind Starten eines einzelnen virtuellen Computers, Starten aller virtuellen Computer in der Ressourcengruppe oder Starten aller VMs in einem Abonnement. Die Bedingungslogik für die Sequenzverknüpfung zwischen „Connect to Azure“ (Verbindung mit Azure herstellen) und „Get single VM“ (Einzelnen virtuellen Computer abrufen“) sieht wie folgt aus:
+Das Runbook verwendet drei verschiedene Sequenzverknüpfungen, die Werte der Eingabeparameter `VMName` und `ResourceGroupName` überprüfen, um die entsprechende Aktion zu bestimmen. Mögliche Aktionen sind Starten eines einzelnen virtuellen Computers, Starten aller virtuellen Computer in der Ressourcengruppe oder Starten aller VMs in einem Abonnement. Für die Sequenzverknüpfung zwischen `Connect to Azure` und `Get single VM`gilt die folgende Bedingungslogik:
 
 ```powershell-interactive
 <#
@@ -196,11 +196,11 @@ Both VMName and ResourceGroupName runbook input parameters have values
 
 Wenn Sie eine bedingte Verknüpfung verwenden, werden die verfügbaren Daten aus der Quellaktivität für andere Aktivitäten in dieser Verzweigung durch die Bedingung gefiltert. Wenn eine Aktivität die Quelle für mehrere Verknüpfungen ist, richten sich die für Aktivitäten verfügbaren Daten in jeder Verzweigung nach der Bedingung in der Verknüpfung, die mit dieser Verzweigung verbunden ist.
 
-So startet beispielsweise die Aktivität **Start-AzVM** im nachstehenden Runbook alle virtuellen Computer. Sie verfügt über zwei bedingte Verknüpfungen: Die erste bedingte Verknüpfung verwendet den Ausdruck `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -eq $true`, um zu filtern, ob die **Start-AzVM**-Aktivität erfolgreich abgeschlossen wurde. Die zweite bedingte Verknüpfung verwendet den Ausdruck `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -ne $true`, um zu filtern, ob die **Start-AzVM**-Aktivität den virtuellen Computer nicht starten kann.
+So startet beispielsweise die Aktivität `Start-AzVM` im nachstehenden Runbook alle virtuellen Computer. Sie verfügt über zwei bedingte Verknüpfungen: Die erste bedingte Verknüpfung verwendet den Ausdruck `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -eq $true`, um zu filtern, ob die `Start-AzVM`-Aktivität erfolgreich abgeschlossen wurde. Die zweite bedingte Verknüpfung verwendet den Ausdruck `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -ne $true`, um zu filtern, ob die `Start-AzVm`-Aktivität den virtuellen Computer nicht starten kann.
 
 ![Beispiel einer bedingten Verknüpfung](media/automation-graphical-authoring-intro/runbook-conditional-links.png)
 
-Alle Aktivitäten, die auf die erste Verknüpfung folgen und die Aktivitätsausgabe von **Get-AzureVM** verwenden, empfangen nur die virtuellen Computer, die zum Zeitpunkt der Ausführung von **Get-AzureVM** gestartet waren. Alle Aktivitäten, die der zweiten Verknüpfung folgen, rufen nur die virtuellen Computer ab, die zum Zeitpunkt der Ausführung von **Get-AzureVM** beendet waren. Alle Aktivitäten, die der dritten Verknüpfung folgen, rufen alle virtuellen Computer ab, unabhängig von deren Ausführungsstatus.
+Alle Aktivitäten, die auf die erste Verknüpfung folgen und die Aktivitätsausgabe von `Get-AzureVM` verwenden, empfangen nur die virtuellen Computer, die zum Zeitpunkt der Ausführung von `Get-AzureVM` gestartet wurden. Alle Aktivitäten, die der zweiten Verknüpfung folgen, rufen nur die virtuellen Computer ab, die zum Zeitpunkt der Ausführung von `Get-AzureVM` beendet waren. Alle Aktivitäten, die der dritten Verknüpfung folgen, rufen alle virtuellen Computer ab, unabhängig von deren Ausführungsstatus.
 
 ### <a name="junctions"></a>Verbindungen
 
@@ -232,7 +232,7 @@ Der erste Mechanismus verwendet eine Aktivitätsausgabe-Datenquelle, um einen Pa
 
 ![Aktivitätsausgabe](media/automation-graphical-authoring-intro/activity-output-datasource-revised20165.png)
 
-Der zweite Datenzugriffsmechanismus ruft die Ausgabe einer Aktivität in einer PowerShell-Ausdruck-Datenquelle ab oder mit einer ActivityOutput-Variablen mithilfe nachstehender Syntax aus einer Workflowskript-Aktivität. Wenn es sich bei der Ausgabe um ein Objekt handelt, kann das Runbook eine einzelne Eigenschaft festlegen.
+Der zweite Datenzugriffsmechanismus ruft die Ausgabe einer Aktivität in einer PowerShell-Ausdrucksdatenquelle oder einer Workflowskriptaktivität mit einer `ActivityOutput`-Variablen mithilfe der unten gezeigten Syntax ab. Wenn es sich bei der Ausgabe um ein Objekt handelt, kann das Runbook eine einzelne Eigenschaft festlegen.
 
 ```powershell-interactive
 $ActivityOutput['Activity Label']
@@ -245,17 +245,17 @@ Sie können [Prüfpunkte](automation-powershell-workflow.md#checkpoints) in eine
 
 ![Prüfpunkt](media/automation-graphical-authoring-intro/set-checkpoint.png)
 
-Prüfpunkte stehen nur in grafischen PowerShell-Workflow-Runbooks zur Verfügung, nicht in grafischen Runbooks. Wenn das Runbook Azure-Cmdlets verwendet, sollte auf jede Aktivität, nach der ein Prüfpunkt festgelegt wird, eine **Connect-AzAccount**-Aktivität folgen. Der Verbindungsvorgang wird verwendet, wenn das Runbook angehalten wird und von diesem Prüfpunkt auf einem anderen Worker neu gestartet werden muss.
+Prüfpunkte stehen nur in grafischen PowerShell-Workflow-Runbooks zur Verfügung, nicht in grafischen Runbooks. Wenn das Runbook Azure-Cmdlets verwendet, sollte auf jede Aktivität, nach der ein Prüfpunkt festgelegt wird, eine `Connect-AzAccount`-Aktivität folgen. Der Verbindungsvorgang wird verwendet, wenn das Runbook angehalten wird und von diesem Prüfpunkt auf einem anderen Worker neu gestartet werden muss.
 
 ## <a name="runbook-input-and-output"></a>Eingabe und Ausgabe in Runbooks
 
-### <a name="runbook-input"></a>Runbookeingabe
+### <a name="runbook-input"></a>Runbookeingabe<a name="runbook-input"></a>
 
 Ein Runbook erfordert Eingaben durch den Benutzer, der es über das Azure-Portal oder (wenn das aktuelle Runbook als untergeordnetes Runbook verwendet wird) aus einem anderen Runbook startet. Beispielsweise muss der Benutzer für ein Runbook, das einen virtuellen Computer erstellt, bei jedem Start des Runbooks möglicherweise Informationen wie den Namen des virtuellen Computers und andere Eigenschaften bereitstellen.
 
 Das Runbook akzeptiert die Eingabe bei Definition eines oder mehrerer Eingabeparameter. Der Benutzer stellt bei jedem Start des Runbooks Werte für diese Parameter bereit. Wenn der Benutzer das Runbook mithilfe des Azure-Portals startet, wird der Benutzer aufgefordert, Werte für jeden Eingabeparameter anzugeben, der vom Runbook unterstützt wird.
 
-Beim Erstellen Ihres Runbooks können Sie auf dessen Eingabeparameter zugreifen, indem Sie auf die Schaltfläche **Eingabe und Ausgabe** auf der Symbolleiste des Runbooks klicken. Daraufhin wird das Steuerelement **Eingabe und Ausgabe** geöffnet, in dem Sie einen vorhandenen Eingabeparameter bearbeiten oder durch Klicken auf **Eingabe hinzufügen** einen neuen Eingabeparameter erstellen können.
+Beim Erstellen Ihres Runbooks können Sie auf dessen Eingabeparameter zugreifen, indem Sie auf **Eingabe und Ausgabe** auf der Symbolleiste des Runbooks klicken. Daraufhin wird das Steuerelement „Eingabe und Ausgabe“ geöffnet, in dem Sie einen vorhandenen Eingabeparameter bearbeiten oder durch Klicken auf **Eingabe hinzufügen** einen neuen Eingabeparameter erstellen können.
 
 ![Eingabe hinzufügen](media/automation-graphical-authoring-intro/runbook-edit-add-input.png)
 
@@ -263,11 +263,11 @@ Jeder Eingabeparameter wird durch die Eigenschaften in der folgenden Tabelle def
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| Name |Der eindeutige Name des Parameters. Dieser Name darf nur aus alphanumerischen Zeichen bestehen und keine Leerzeichen enthalten. |
-| BESCHREIBUNG |Eine optionale Beschreibung für den Eingabeparameter. |
-| type |Der für den Parameterwert erwartete Datentyp. Das Azure-Portal bietet ein geeignetes Steuerelement zum Eingeben des jeweiligen Datentyps für jeden Parameter. |
-| Obligatorisch. |Die Einstellung gibt an, ob ein Wert für den Parameter bereitgestellt werden muss. Das Runbook kann nicht gestartet werden, wenn der Wert für einen erforderlichen Parameter fehlt, für den kein Standardwert definiert wurde. |
-| Standardwert |Der für den Parameter verwendete Wert, wenn kein Wert bereitgestellt wird. Legen Sie hierfür NULL oder einen bestimmten Wert fest. |
+| Name | Erforderlich. Der Name des Parameters. Der Name muss innerhalb des Runbooks eindeutig sein. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Unterstriche enthalten. Der Name darf kein Leerzeichen enthalten. |
+| BESCHREIBUNG |Optional. Beschreibung zum Zweck des Eingabeparameters. |
+| type | Optional. Der für den Parameterwert erwartete Datentyp. Das Azure-Portal bietet ein geeignetes Steuerelement zum Eingeben des jeweiligen Datentyps für jeden Parameter. Folgende Parametertypen werden unterstützt: String, Int32, Int64, Decimal, Boolean, DateTime und Object. Wenn kein Datentyp ausgewählt wird, wird standardmäßig „String“ verwendet.|
+| Obligatorisch. | Optional. Die Einstellung gibt an, ob ein Wert für den Parameter angegeben werden muss. Wenn Sie `yes` auswählen, muss beim Starten des Runbooks ein Wert angegeben werden. Wenn Sie `no` auswählen, ist beim Starten des Runbooks kein Wert erforderlich, und es kann ein Standardwert verwendet werden. Das Runbook kann nicht gestartet werden, wenn der Wert für einen erforderlichen Parameter fehlt, für den kein Standardwert definiert wurde. |
+| Standardwert | Optional. Der Wert, der für einen Parameter verwendet wird, wenn dieser beim Start des Runbooks nicht übergeben wird. Wählen Sie `Custom` aus, um einen Standardwert festzulegen. Wählen Sie `None` aus, wenn Sie keinen Standardwert angeben möchten. |
 
 ### <a name="runbook-output"></a>Runbookausgabe
 
@@ -278,6 +278,7 @@ Die grafische Erstellung speichert Daten, die von einer Aktivität ohne ausgehen
 Einer der Vorteile der grafischen Erstellung ist, dass Sie ein Runbook erstellen können, wenn Sie nur über wenig PowerShell-Kenntnisse verfügen. Derzeit benötigen Sie aber einige PowerShell-Kenntnisse, um bestimmte [Parameterwerte](#activities) einzufügen und [Verknüpfungsbedingungen](#links-and-workflow) festzulegen. Dieser Abschnitt enthält eine kurze Einführung in PowerShell-Ausdrücke. Alle Details von PowerShell sind unter [Skripterstellung mit Windows PowerShell](https://technet.microsoft.com/library/bb978526.aspx)verfügbar.
 
 ### <a name="powershell-expression-data-source"></a>PowerShell-Ausdruck als Datenquelle
+
 Sie können einen PowerShell-Ausdruck als Datenquelle verwenden, um den Wert eines [Aktivitätsparameters](#activities) mit den Ergebnissen von PowerShell-Code zu füllen. Bei dem Ausdruck kann es sich um eine einzelne Codezeile handeln, mit der eine einfache Funktion durchgeführt wird, oder um mehrere Zeilen, mit denen die Schritte einer komplexen Logik ausgeführt werden. Alle Ausgaben eines Befehls, der keiner Variablen zugewiesen ist, werden an den Parameterwert ausgegeben.
 
 Mit dem folgenden Befehl wird beispielsweise das aktuelle Datum ausgegeben.
@@ -286,7 +287,7 @@ Mit dem folgenden Befehl wird beispielsweise das aktuelle Datum ausgegeben.
 Get-Date
 ```
 
-Mit den nächsten Befehlen wird aus dem aktuellen Datum eine Zeichenfolge erstellt und einer Variablen zugewiesen. Der Code sendet die Inhalte der Variablen an die Ausgabe.
+Mit den nächsten Codeausschnitten wird aus dem aktuellen Datum eine Zeichenfolge erstellt und einer Variablen zugewiesen. Der Code sendet die Inhalte der Variablen an die Ausgabe.
 
 ```powershell-interactive
 $string = "The current date is " + (Get-Date)
@@ -303,7 +304,7 @@ else { "Weekday" }
 
 ### <a name="activity-output"></a>Aktivitätsausgabe
 
-Zum Verwenden der Ausgabe einer vorherigen Aktivität in Ihrem Runbook nutzen Sie die $ActivityOutput-Variable mit der unten angegebenen Syntax.
+Zum Verwenden der Ausgabe einer vorherigen Aktivität in Ihrem Runbook verwenden Sie die `ActivityOutput`-Variable mit der unten angegebenen Syntax.
 
 ```powershell-interactive
 $ActivityOutput['Activity Label'].PropertyName
@@ -331,7 +332,7 @@ Das Runbook kann die Ausgabe einer Aktivität in einen komplexeren Ausdruck wie 
 
 Verwenden Sie [Vergleichsoperatoren](https://technet.microsoft.com/library/hh847759.aspx) , um Werte zu vergleichen, oder bestimmen Sie, ob ein Wert mit einem bestimmten Muster übereinstimmt. Bei einem Vergleich wird entweder der Wert „True“ oder „False“ zurückgegeben.
 
-Mit der folgenden Bedingung wird beispielsweise bestimmt, ob der virtuelle Computer einer Aktivität mit dem Namen **Get-AzureVM** derzeit beendet ist.
+Mit der folgenden Bedingung wird beispielsweise bestimmt, ob der virtuelle Computer einer Aktivität mit dem Namen `Get-AzureVM` derzeit beendet ist.
 
 ```powershell-interactive
 $ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped"
@@ -343,7 +344,7 @@ Die folgende Bedingung bestimmt, ob sich derselbe virtuelle Computer in einem an
 $ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
 ```
 
-Sie können in Ihrem Runbook mehrere Bedingungen mit einem [logischen Operator](https://technet.microsoft.com/library/hh847789.aspx) wie **-and** oder **-or** verknüpfen. Mit der folgenden Bedingung wird beispielsweise überprüft, ob sich der virtuelle Computer aus dem vorherigen Beispiel im Zustand „Beendet“ oder „Wird beendet“ befindet.
+Sie können in Ihrem Runbook mehrere Bedingungen mit einem [logischen Operator](https://technet.microsoft.com/library/hh847789.aspx) wie `-and` oder `-or` verknüpfen. Mit der folgenden Bedingung wird beispielsweise überprüft, ob sich der virtuelle Computer aus dem vorherigen Beispiel im Zustand „Beendet“ oder „Wird beendet“ befindet.
 
 ```powershell-interactive
 ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopping")
@@ -368,7 +369,7 @@ $h = @{'q'=$query; 'lr'='lang_ja';  'count'=$Count}
 $h
 ```
 
-Im folgenden Beispiel wird die Ausgabe eine Aktivität mit dem Namen **Get Twitter Connection** (Twitter-Verbindung abrufen) zum Auffüllen einer Hashtabelle verwendet.
+Im folgenden Beispiel wird die Ausgabe einer Aktivität mit dem Namen `Get Twitter Connection` zum Auffüllen einer Hashtabelle mit Werten verwendet.
 
 ```powershell-interactive
 @{'ApiKey'=$ActivityOutput['Get Twitter Connection'].ConsumerAPIKey;
@@ -379,40 +380,40 @@ Im folgenden Beispiel wird die Ausgabe eine Aktivität mit dem Namen **Get Twitt
 
 ## <a name="authenticating-to-azure-resources"></a>Authentifizierung bei Azure-Ressourcen
 
-Zur Verwaltung von Azure-Ressourcen verwendete Runbooks in Azure Automation erfordern eine Authentifizierung bei Azure. Das [ausführende Konto](automation-create-runas-account.md) (auch als Dienstprinzipal bezeichnet) ist der Standardmechanismus, mit dem ein Automation-Runbook in Ihrem Abonnement auf Azure Resource Manager-Ressourcen zugreift. Diese Funktion können Sie einem grafischen Runbook hinzufügen, indem Sie der Canvas das Verbindungsobjekt AzureRunAsConnection, das das PowerShell-Cmdlet [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) verwendet, und das Cmdlet [Connect-AzAccount](/powershell/module/az.profile/connect-azaccount) hinzufügen. Dieses Szenario ist im folgenden Beispiel dargestellt.
+Zur Verwaltung von Azure-Ressourcen verwendete Runbooks in Azure Automation erfordern eine Authentifizierung bei Azure. Das [ausführende Konto](automation-create-runas-account.md) (auch als Dienstprinzipal bezeichnet) ist der Standardmechanismus, mit dem ein Automation-Runbook in Ihrem Abonnement auf Azure Resource Manager-Ressourcen zugreift. Diese Funktion können Sie einem grafischen Runbook hinzufügen, indem Sie der Canvas das Verbindungsobjekt `AzureRunAsConnection` hinzufügen, das das PowerShell-Cmdlet [Get-AutomationConnection](https://technet.microsoft.com/library/dn919922%28v=sc.16%29.aspx) verwendet. Sie können auch das Cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) hinzufügen. Dieses Szenario ist im folgenden Beispiel dargestellt.
 
 ![Authentifizierungsaktivitäten für „Ausführen als“](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 
-Die **Aktivität „Get Run As Connection“** (Verbindung für „Ausführen als“ abrufen) oder **Get-AutomationConnection** ist mit einer Datenquelle namens AzureRunAsConnection mit konstantem Wert konfiguriert.
+Die `Get Run As Connection`-Aktivität oder `Get-AutomationConnection` wird mit einer konstanten Wertdatenquelle mit dem Namen `AzureRunAsConnection` konfiguriert.
 
 ![Verbindungskonfiguration für „Ausführen als“](media/automation-graphical-authoring-intro/authenticate-runas-parameterset.png)
 
-Die nächste Aktivität **Connect-AzAccount** fügt das authentifizierte ausführende Konto hinzu, damit es im Runbook verwendet werden kann.
+Die nächste Aktivität (`Connect-AzAccount`) fügt das authentifizierte ausführende Konto hinzu, damit es im Runbook verwendet werden kann.
 
 ![Parametersatz Connect-AzAccount](media/automation-graphical-authoring-intro/authenticate-conn-to-azure-parameter-set.png)
 
 >[!NOTE]
->Für PowerShell-Runbooks sind **Add-AzAccount** und **Add-AzureRMAccount** Aliase für **Connect-AzAccount**. Beachten Sie, dass diese Aliase für Ihre grafischen Runbooks nicht verfügbar sind. Ein grafisches Runbook kann nur **Connect-AzAccount** selbst verwenden.
+>Für PowerShell-Runbooks sind `Add-AzAccount` und `Add-AzureRMAccount` Aliase für `Connect-AzAccount`. Beachten Sie, dass diese Aliase für Ihre grafischen Runbooks nicht verfügbar sind. Ein grafisches Runbook kann nur `Connect-AzAccount` selbst verwenden.
 
 Für die Parameterfelder **APPLICATIONID**, **CERTIFICATETHUMBPRINT** und **TENANTID** muss der Name der Eigenschaft für den Feldpfad angegeben werden, da die Aktivität ein Objekt mit mehreren Eigenschaften ausgibt. Andernfalls kann beim Ausführen des Runbooks keine Authentifizierung erfolgen. Dies sind die Mindestanforderungen, die für die Authentifizierung Ihres Runbooks mit dem ausführenden Konto erfüllt sein müssen.
 
-Einige Abonnenten erstellen ein Automation-Konto mithilfe eines [Azure AD-Benutzerkontos](automation-create-aduser-account.md) zum Verwalten der klassischen Azure-Bereitstellung oder für Azure Resource Manager-Ressourcen. Um die Abwärtskompatibilität für diese Abonnenten aufrechtzuerhalten, wird in Ihrem Runbook das **Add-AzureAccount**-Cmdlet mit einem [Anmeldeinformationsobjekt](automation-credentials.md), das einen Active Directory-Benutzer mit Zugriff auf das Azure-Konto darstellt, als Authentifizierungsmechanismus verwendet.
+Einige Abonnenten erstellen ein Automation-Konto mithilfe eines [Azure AD-Benutzerkontos](automation-create-aduser-account.md) zum Verwalten der klassischen Azure-Bereitstellung oder für Azure Resource Manager-Ressourcen. Um die Abwärtskompatibilität für diese Abonnenten aufrechtzuerhalten, ist der in Ihrem Runbook zu verwendende Authentifizierungsmechanismus das Cmdlet `Add-AzureAccount` mit einem [Anmeldeinformationenobjekt](automation-credentials.md). Das Objekt stellt einen Active Directory-Benutzer mit Zugriff auf das Azure-Konto dar.
 
-Sie können diese Funktionalität Ihrem grafischen Runbook hinzufügen, indem Sie der Canvas ein Anmeldeinformationsobjekt gefolgt von einer **Add-AzureAccount**-Aktivität, die das Anmeldeinformationsobjekt für seine Eingabe verwendet, hinzufügen. Siehe folgendes Beispiel.
+Sie können diese Funktionalität für Ihr grafisches Runbook aktivieren, indem Sie der Canvas ein Anmeldeinformationenobjekt, gefolgt von einer `Add-AzureAccount`-Aktivität hinzufügen, die das Anmeldeinformationenobjekt als Eingabe verwendet. Siehe folgendes Beispiel.
 
 ![Authentifizierungsaktivitäten](media/automation-graphical-authoring-intro/authentication-activities.png)
 
-Das Runbook muss sich am Anfang und nach jedem Prüfpunkt authentifizieren. Dies bedeutet, dass Sie nach jeder Checkpoint-Workflow-Aktivität eine **Add-AzureAccount**-Aktivität verwenden müssen. Es ist keine zusätzliche Anmeldeinformationenaktivität erforderlich.
+Das Runbook muss sich am Anfang und nach jedem Prüfpunkt authentifizieren. Daher müssen Sie nach jeder `Checkpoint-Workflow`-Aktivität eine `Add-AzureAccount`-Aktivität verwenden. Es ist keine zusätzliche Anmeldeinformationenaktivität erforderlich.
 
 ![Aktivitätsausgabe](media/automation-graphical-authoring-intro/authentication-activity-output.png)
 
 ## <a name="exporting-and-importing-a-graphical-runbook"></a>Exportieren und Importieren eines grafischen Runbooks
 
-Sie können nur die veröffentlichte Version eines grafisch Runbooks exportieren. Wenn das Runbook noch nicht veröffentlicht wurde, ist die Schaltfläche **Exportieren** deaktiviert. Beim Klicken auf die Schaltfläche **Exportieren** wird das Runbook auf Ihren lokalen Computer heruntergeladen. Der Name der Datei entspricht dem Namen des Runbooks mit der Erweiterung „.graphrunbook“.
+Sie können nur die veröffentlichte Version eines grafisch Runbooks exportieren. Wenn das Runbook noch nicht veröffentlicht wurde, ist die Schaltfläche **Exportieren** deaktiviert. Beim Klicken auf die Schaltfläche **Exportieren** wird das Runbook auf Ihren lokalen Computer heruntergeladen. Der Name der Datei entspricht dem Namen des Runbooks mit der Erweiterung **.graphrunbook**.
 
 Sie können eine Datei für ein grafisches Runbook oder für ein grafisches PowerShell-Workflow-Runbook importieren, indem Sie beim Hinzufügen eines Runbooks die Option **Importieren** auswählen. Wenn Sie die zu importierende Datei auswählen, können Sie den Namen beibehalten oder einen neuen vergeben. Im Feld **Runbooktyp** wird der Typ des Runbooks angezeigt, nachdem die ausgewählte Datei bewertet wurde. Wenn Sie versuchen, einen anderen Typ auszuwählen, der nicht korrekt ist, zeigt der grafische Editor eine Meldung an, die auf potenzielle Konflikte hinweist und darauf, dass während der Konvertierung Syntaxfehler auftreten können.
 
-![Runbook importieren](media/automation-graphical-authoring-intro/runbook-import-revised20165.png)
+![Runbook importieren](media/automation-graphical-authoring-intro/runbook-import.png)
 
 ## <a name="testing-a-graphical-runbook"></a>Testen eines grafischen Runbooks
 

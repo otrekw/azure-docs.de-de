@@ -5,12 +5,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Erfahren Sie, wie Sie Azure Dev Spaces für die Verwendung eines benutzerdefinierten NGINX-Eingangscontrollers und HTTPS mithilfe dieses Eingangscontrollers konfigurieren.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
-ms.openlocfilehash: 9c3598ea39dd7b48c622126a9adbaa75d4c9d934
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 0fe9fec263b72ac06839b58fdc5b0142a724718c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622417"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80155446"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Verwenden eines benutzerdefinierten NGINX-Eingangscontrollers und Konfigurieren von HTTPS
 
@@ -23,20 +23,20 @@ In diesem Artikel wird erläutert, wie Sie Azure Dev Spaces für die Verwendung 
 * Ein [Azure Kubernetes Service-Cluster (AKS-Cluster) mit aktiviertem Azure Dev Spaces-Dienst][qs-cli].
 * [kubectl][kubectl] muss installiert sein.
 * [Helm 3 muss installiert sein.][helm-installed]
-* [Eine benutzerdefinierte Domäne][custom-domain] mit einer [DNS-Zone][dns-zone], die sich in derselben Ressourcengruppe befindet wie Ihr AKS-Cluster.
+* [Eine benutzerdefinierte Domäne][custom-domain] mit einer [DNS-Zone][dns-zone].  In diesem Artikel wird davon ausgegangen, dass sich die benutzerdefinierte Domäne und DNS-Zone in derselben Ressourcengruppe wie Ihr AKS-Cluster befinden. Es ist jedoch möglich, eine benutzerdefinierte Domäne und DNS-Zone in einer anderen Ressourcengruppe zu verwenden.
 
 ## <a name="configure-a-custom-nginx-ingress-controller"></a>Konfigurieren eines benutzerdefinierten NGINX-Eingangscontrollers
 
 Stellen Sie unter Verwendung des Kubernetes-Befehlszeilenclients ([kubectl][kubectl]) eine Verbindung mit Ihrem Cluster her. Mit dem Befehl [az aks get-credentials][az-aks-get-credentials] können Sie `kubectl` für die Verbindungsherstellung mit Ihrem Kubernetes-Cluster konfigurieren. Mit diesem Befehl werden die Anmeldeinformationen heruntergeladen, und die Kubernetes-Befehlszeilenschnittstelle wird für deren Verwendung konfiguriert.
 
-```azurecli-interactive
+```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKS
 ```
 
 Überprüfen Sie die Verbindung mit Ihrem Cluster mithilfe des Befehls [kubectl get][kubectl-get], um eine Liste der Clusterknoten zurückzugeben.
 
 ```console
-$ kubectl get nodes
+kubectl get nodes
 NAME                                STATUS   ROLES   AGE    VERSION
 aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
 ```
@@ -79,7 +79,7 @@ nginx-nginx-ingress-controller        LoadBalancer   10.0.19.39     MY_EXTERNAL_
 
 Fügen Sie Ihrer DNS-Zone mithilfe von [az network dns record-set a add-record][az-network-dns-record-set-a-add-record] einen *A*-Datensatz mit der externen IP-Adresse des NGINX-Diensts hinzu.
 
-```console
+```azurecli
 az network dns record-set a add-record \
     --resource-group myResourceGroup \
     --zone-name MY_CUSTOM_DOMAIN \
@@ -249,7 +249,7 @@ gateway:
 Führen Sie für die Beispielanwendung mithilfe von `helm` ein Upgrade durch:
 
 ```console
-helm upgrade bikesharing . --namespace dev --atomic
+helm upgrade bikesharingsampleapp . --namespace dev --atomic
 ```
 
 Navigieren Sie zur Beispielanwendung im untergeordneten Bereich *dev/azureuser1*, und beachten Sie, dass Sie zur Verwendung von HTTPS umgeleitet werden. Beachten Sie auch, dass die Seite geladen wird, im Browser jedoch einige Fehler angezeigt werden. Wenn Sie die Browserkonsole öffnen, wird angezeigt, dass sich der Fehler auf eine HTTPS-Seite bezieht, auf der HTTP-Ressourcen geladen werden. Beispiel:
@@ -288,7 +288,7 @@ Aktualisieren Sie [BikeSharingWeb/package.json][package-json] mit einer Abhängi
 ...
 ```
 
-Aktualisieren Sie die *getApiHostAsync*-Methode in [BikeSharingWeb/pages/helpers.js][helpers-js] zur Verwendung von HTTPS:
+Aktualisieren Sie die *getApiHostAsync*-Methode in [BikeSharingWeb/lib/helpers.js][helpers-js] für die Verwendung von HTTPS:
 
 ```javascript
 ...
@@ -335,7 +335,7 @@ Informieren Sie sich darüber, wie Azure Dev Spaces Sie bei der Entwicklung komp
 [cert-manager]: https://cert-manager.io/
 [helm-installed]: https://helm.sh/docs/intro/install/
 [helm-stable-repo]: https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository
-[helpers-js]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/pages/helpers.js#L7
+[helpers-js]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/lib/helpers.js#L7
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [letsencrypt-staging-issuer]: https://cert-manager.io/docs/configuration/acme/#creating-a-basic-acme-issuer

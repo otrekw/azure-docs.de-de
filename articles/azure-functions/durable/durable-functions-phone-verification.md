@@ -4,12 +4,12 @@ description: In diesem Artikel wird erläutert, wie Sie die Benutzerinteraktion 
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 0c16ef092c30a94cd04b55c91d3643ac29b82be0
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 4e0f71369bc02fdce5625d9c74e1d52264ed86be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562104"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335761"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Benutzerinteraktion in Durable Functions: Beispiel zur Telefonüberprüfung
 
@@ -36,7 +36,7 @@ Mit Durable Functions wird die Komplexität dieses Szenarios erheblich reduziert
 In diesem Artikel werden die folgenden Funktionen in der Beispiel-App schrittweise erläutert:
 
 * `E4_SmsPhoneVerification`: Eine [Orchestratorfunktion](durable-functions-bindings.md#orchestration-trigger), die den Telefonüberprüfungsprozess durchführt, einschließlich der Verwaltung von Timeouts und Wiederholungsversuchen.
-* `E4_SendSmsChallenge`: Eine [Orchestratorfunktion](durable-functions-bindings.md#activity-trigger), die einen Code per SMS sendet.
+* `E4_SendSmsChallenge`: Eine [Aktivitätsfunktion](durable-functions-bindings.md#activity-trigger), die einen Code über eine SMS sendet.
 
 ### <a name="e4_smsphoneverification-orchestrator-function"></a>Orchestratorfunktion „E4_SmsPhoneVerification“
 

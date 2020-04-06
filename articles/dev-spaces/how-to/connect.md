@@ -1,18 +1,18 @@
 ---
-title: Verbinden Ihres Entwicklungscomputers mit einem AKS-Cluster (Vorschauversion)
+title: Verbinden Ihres Entwicklungscomputers mit einem AKS-Cluster (Vorschau)
 services: azure-dev-spaces
 ms.date: 11/04/2019
 ms.topic: conceptual
 description: Erfahren Sie, wie Sie Ihren Entwicklungscomputer mithilfe von Azure Dev Spaces mit einem AKS-Cluster verbinden.
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: 13e6f16e66941be0ae463e8280827dc0b8183450
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 772f221a8047a71902f36fa98ded6c24b5e02d27
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78196092"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235004"
 ---
-# <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>Verbinden Ihres Entwicklungscomputers mit einem AKS-Cluster (Vorschauversion)
+# <a name="connect-your-development-computer-to-an-aks-cluster-preview"></a>Verbinden Ihres Entwicklungscomputers mit einem AKS-Cluster (Vorschau)
 
 Azure Dev Spaces ermöglicht das Ausführen und Debuggen von Code mit oder ohne Container auf dem Entwicklungscomputer, während weiterhin eine Verbindung mit dem Kubernetes-Cluster mit den restlichen Anwendungen oder Diensten besteht. Durch Verbinden des Entwicklungscomputers mit dem Cluster können Sie Ihre Anwendung schnell entwickeln und End-to-End-Tests durchführen, ohne eine Docker- oder Kubernetes-Konfiguration erstellen zu müssen. Außerdem können Sie eine Verbindung mit dem AKS-Cluster herstellen, ohne dass sich das auf andere Workloads oder Benutzer auswirkt, die denselben Cluster verwenden.
 
@@ -22,7 +22,7 @@ In diesem Leitfaden lernen Sie Folgendes:
 
 * Einrichten von Azure Dev Spaces in einem verwalteten Kubernetes-Cluster in Azure
 * Bereitstellen einer umfangreichen Anwendung mit mehreren Microservices in einem Entwicklungsbereich.
-* Verwenden von Azure Dev Spaces zum Umleiten von Datenverkehr zwischen dem AKS-Cluster und dem auf dem Entwicklungscomputer ausgeführten Code
+* Verwenden von Azure Dev Spaces zum Umleiten von Datenverkehr zwischen dem AKS-Cluster und dem auf dem Entwicklungscomputer ausgeführten Code.
 
 > [!IMPORTANT]
 > Diese Funktion steht derzeit als Vorschau zur Verfügung. Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
@@ -42,7 +42,7 @@ In dieser Anleitung wird die [Azure Dev Spaces-Beispielanwendung „Bike Sharing
 * [Visual Studio Code][vs-code] mit installierter [Azure Dev Spaces-Erweiterung][azds-vs-code] und ausgeführt unter macOS oder Windows 10.
 * Ausführung der [Azure Dev Spaces-Beispielanwendung „Bike Sharing“](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) oder Ihrer eigenen Anwendung in einem AKS-Cluster.
 
-## <a name="connect-your-development-machine"></a>Verbinden Ihres Entwicklungscomputers
+## <a name="connect-your-development-computer"></a>Verbindendes Entwicklungscomputers
 
 Öffnen Sie *dev-spaces/samples/BikeSharingApp/Bikes* in Visual Studio Code, und verwenden Sie die Azure Dev Spaces-Erweiterung, um den Entwicklungscomputer mit dem AKS-Cluster zu verbinden.
 
@@ -108,7 +108,7 @@ In Azure Dev Spaces wird auf einer Statusleiste auch der Verbindungsstatus angez
 
 Überprüfen Sie, ob auf der Statusleiste *Dev Spaces: Connected to dev/bikes on local port 3000* (Dev Spaces: Verbunden mit „dev/bikes“ am lokalen Port 3000) angezeigt wird.
 
-### <a name="configure-your-application-on-your-development-machine"></a>Konfigurieren der Anwendung auf dem Entwicklungscomputer
+### <a name="configure-your-application-on-your-development-computer"></a>Konfigurieren der Anwendung auf dem Entwicklungscomputer
 
 Öffnen Sie das Terminalfenster *AZDS Connect – Bikes*, und führen Sie `npm install` aus:
 
@@ -151,7 +151,7 @@ Klicken Sie auf *Debuggen* und dann auf *Konfigurationen öffnen*. Wenn Sie zur 
   }
 ```
 
-### <a name="start-your-application-on-your-development-machine"></a>Starten der Anwendung auf dem Entwicklungscomputer
+### <a name="start-your-application-on-your-development-computer"></a>Starten der Anwendung auf dem Entwicklungscomputer
 
 Klicken Sie links auf das Symbol *Debuggen* und dann oben auf die Startschaltfläche neben *Über NPM starten*.
 
@@ -208,26 +208,32 @@ Beispiel für `azds-local.env`:
 
 ```
 # This downloads the "whitelist" volume from the container,
-# saves it to a temporary directory on your development machine,
+# saves it to a temporary directory on your development computer,
 # and sets the full path to an environment variable called WHITELIST_PATH.
 
 WHITELIST_PATH=${volumes.whitelist}/whitelist
 
 # This downloads a file from the container's 'default-token-<any>' mount directory 
-# to /var/run/secrets/kubernetes.io/serviceaccount on your development machine.
+# to /var/run/secrets/kubernetes.io/serviceaccount on your development computer.
 
 KUBERNETES_IN_CLUSTER_CONFIG_OVERWRITE=${volumes.default-token-*|/var/run/secrets/kubernetes.io/serviceaccount}
 
 
-# This makes the myapp1 service available to your development machine
+# This makes the myapp1 service available to your development computer
 # regardless of the AKS cluster you are connected to and
 # sets the local IP to an environment variable called MYAPP1_SERVICE_HOST.
-
-MYAPP1_SERVICE_HOST=${services.myapp1}
 
 # If the myapp1 service is made available in this way, 
 # you can also access it using "myapp1" and "myapp1.svc.cluster.local"
 # in addition to the IP in the MYAPP1_SERVICE_HOST environment variable.
+
+MYAPP1_SERVICE_HOST=${services.myapp1}
+
+# This makes the service myapp2 in namespace mynamespace available to your 
+# development computer regardless of the AKS cluster you are connected to and
+# sets the local IP to an environment variable called MYAPP2_SERVICE_HOST.
+
+MYAPP2_SERVICE_HOST=${services.mynamespace.myapp2}
 ```
 
 ## <a name="using-logging-and-diagnostics"></a>Verwenden der Protokollierung und Diagnose

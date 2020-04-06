@@ -5,12 +5,12 @@ keywords: Azure App Service, Web-App, mobile App, API-App, Funktions-App, Sicher
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 28394689048e730aa0c84e3bf807ef3afb898b1e
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: e28935f73511e5ad973929517658cc626b5a6ea2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688554"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475373"
 ---
 # <a name="security-in-azure-app-service"></a>Sicherheit in Azure App Service
 
@@ -65,7 +65,7 @@ Von der App Service-Authentifizierung und -Autorisierung werden mehrere Authenti
 Für die Authentifizierung bei einem Back-End-Dienst bietet App Service zwei unterschiedliche bedarfsspezifische Mechanismen:
 
 - **Dienstidentität:** Melden Sie sich unter Verwendung der Identität der App bei der Remoteressource an. Mit App Service können Sie ganz einfach eine [verwaltete Identität](overview-managed-identity.md) erstellen und für die Authentifizierung bei anderen Diensten (beispielsweise [Azure SQL-Datenbank](/azure/sql-database/) oder [Azure Key Vault](/azure/key-vault/)) verwenden. Ein umfassendes Tutorial für diesen Ansatz finden Sie unter [Tutorial: Schützen der SQL-Datenbank-Verbindung mittels verwalteter Identität](app-service-web-tutorial-connect-msi.md).
-- **Im Namen von (on behalf of, OBO):** Greifen Sie unter Verwendung von delegiertem Zugriff im Namen des Benutzers auf Remoteressourcen zu. Mit Azure Active Directory als Authentifizierungsanbieter kann Ihre App Service-App eine delegierte Anmeldung bei einem Remotedienst durchführen – etwa bei der [Azure Active Directory Graph-API](../active-directory/develop/active-directory-graph-api.md) oder bei einer Remote-API-App in App Service. Ein umfassendes Tutorial für diesen Ansatz finden Sie unter [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service](app-service-web-tutorial-auth-aad.md).
+- **Im Namen von (on behalf of, OBO):** Greifen Sie unter Verwendung von delegiertem Zugriff im Namen des Benutzers auf Remoteressourcen zu. Mit Azure Active Directory als Authentifizierungsanbieter kann Ihre App Service-App eine delegierte Anmeldung bei einem Remotedienst durchführen – etwa bei der [Microsoft Graph-API](../active-directory/develop/microsoft-graph-intro.md) oder bei einer Remote-API-App in App Service. Ein umfassendes Tutorial für diesen Ansatz finden Sie unter [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service](app-service-web-tutorial-auth-aad.md).
 
 ## <a name="connectivity-to-remote-resources"></a>Konnektivität mit Remoteressourcen
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2020
 ms.author: shvija
-ms.openlocfilehash: 1244fe64d0c23782fdae7a0f92415bada4bef55a
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: bf90120157bf64bd62a3b5ec9d8a6b2c6260e024
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76907185"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398297"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>Ausgleichen der Partitionsauslastung über mehrere Instanzen der Anwendung hinweg
 Um die Ereignisverarbeitungsanwendung zu skalieren, können Sie mehrere Instanzen der Anwendung ausführen und die Auslastung zwischen diesen untereinander ausgleichen. In älteren Versionen konnte [EventProcessorHost](event-hubs-event-processor-host.md) die Last zwischen mehreren Instanzen Ihres Programms und Prüfpunktereignissen bei deren Empfang ausgleichen. In den neueren Versionen (5.0 oder höher) ermöglichen **EventProcessorClient** (.NET und Java) oder **EventHubConsumerClient** (Python und JavaScript) die gleiche Funktionalität. Das Entwicklungsmodell wird durch die Verwendung von-Ereignissen vereinfacht. Sie abonnieren die Ereignisse, an denen Sie interessiert sind, indem Sie einen Ereignishandler registrieren.
@@ -52,7 +52,7 @@ In den meisten Produktionsszenarien wird empfohlen, den Ereignisprozessorclient 
 
 Eine Ereignisprozessorinstanz ist in der Regel Besitzer von Ereignissen und verarbeitet Ereignisse aus mindestens einer Partition. Der Besitz von Partitionen wird gleichmäßig auf alle aktiven Ereignisprozessorinstanzen verteilt, die mit einer Kombination aus Event Hub und Consumergruppe verknüpft sind. 
 
-Jeder Ereignisprozessor erhält einen eindeutigen Bezeichner und beansprucht den Besitz von Partitionen, indem ein Eintrag in einem Prüfpunktspeicher hinzugefügt oder aktualisiert wird. Alle Ereignisprozessorinstanzen kommunizieren in regelmäßigen Abständen mit diesem Speicher, um den eigenen Verarbeitungsstatus zu aktualisieren und Informationen zu anderen aktiven Instanzen zu erhalten. Diese Daten werden dann verwendet, um die Last zwischen den aktiven Prozessoren auszugleichen. Neue Instanzen können dem Verarbeitungspool zum horizontalen Hochskalieren beitreten. Wenn Instanzen aufgrund von Fehlern oder durch Herunterskalieren ausfallen, wird der Partitionsbesitz ordnungsgemäß auf andere aktive Prozessoren übertragen.
+Jeder Ereignisprozessor erhält einen eindeutigen Bezeichner und beansprucht den Besitz von Partitionen, indem ein Eintrag in einem Prüfpunktspeicher hinzugefügt oder aktualisiert wird. Alle Ereignisprozessorinstanzen kommunizieren in regelmäßigen Abständen mit diesem Speicher, um den eigenen Verarbeitungsstatus zu aktualisieren und Informationen zu anderen aktiven Instanzen zu erhalten. Diese Daten werden dann verwendet, um die Last zwischen den aktiven Prozessoren auszugleichen. Neue Instanzen können dem Verarbeitungspool zum Aufskalieren beitreten. Wenn Instanzen aufgrund von Fehlern oder durch Herunterskalieren ausfallen, wird der Partitionsbesitz ordnungsgemäß auf andere aktive Prozessoren übertragen.
 
 Die Partitionsbesitz-Datensätze im Prüfpunktspeicher verfolgen den Event Hubs-Namespace, den Event Hub-Namen, die Consumergruppe, den Bezeichner des Ereignisprozessors (auch als Besitzer bezeichnet), die Partitions-ID und den Zeitpunkt der letzten Änderung nach.
 
@@ -63,8 +63,8 @@ Die Partitionsbesitz-Datensätze im Prüfpunktspeicher verfolgen den Event Hubs-
 | mynamespace.servicebus.windows.net | myeventhub     | myconsumergroup    | 3be3f9d3-9d9e-4c50-9491-85ece8334ff6 | 0            | 2020-01-15T01:22:15 |
 | mynamespace.servicebus.windows.net | myeventhub     | myconsumergroup    | f5cc5176-ce96-4bb4-bbaa-a0e3a9054ecf | 1            | 2020-01-15T01:22:17 |
 | mynamespace.servicebus.windows.net | myeventhub     | myconsumergroup    | 72b980e9-2efc-4ca7-ab1b-ffd7bece8472 | 2            | 2020-01-15T01:22:10 |
-|                                    |                | :                  |                                      |              |                     |
-|                                    |                | :                  |                                      |              |                     |
+|                                    |                | decodiert werden:                  |                                      |              |                     |
+|                                    |                | decodiert werden:                  |                                      |              |                     |
 | mynamespace.servicebus.windows.net | myeventhub     | myconsumergroup    | 844bd8fb-1f3a-4580-984d-6324f9e208af | 15           | 2020-01-15T01:22:00 |
 
 Jede Ereignisprozessorinstanz übernimmt den Besitz einer Partition und beginnt mit der Verarbeitung der Partition ab dem letzten bekannten [Prüfpunkt](# Checkpointing). Wenn ein Prozessor ausfällt (VM wird heruntergefahren), erkennen andere Instanzen dies, indem sie den Zeitpunkt der letzten Änderung untersuchen. Andere Instanzen versuchen, den Besitz der Partitionen zu erhalten, die sich zuvor im Besitz der inaktiven Instanz befanden, und der Prüfpunktspeicher garantiert, dass nur eine der Instanzen erfolgreich den Besitz einer Partition beanspruchen kann. Daher gibt es zu einem beliebigen Zeitpunkt höchstens einen Prozessor, der Ereignisse von einer Partition empfängt.
@@ -82,6 +82,13 @@ Das *Festlegen von Prüfpunkten* ist ein Vorgang, durch den ein Ereignisprozesso
 Wenn ein Ereignisprozessor die Verbindung mit einer Partition trennt, kann eine andere Instanz die Verarbeitung der Partition am Prüfpunkt fortsetzen, für den zuvor vom letzten Prozessor dieser Partition in dieser Consumergruppe ein Commit ausgeführt wurde. Wenn der Prozessor eine Verbindung herstellt, übergibt er den Offset an den Event Hub, um die Position für den Beginn des nächsten Lesevorgangs anzugeben. Auf diese Weise können mithilfe von Prüfpunkten Ereignisse von Downstreamanwendungen als abgeschlossen markiert werden. Darüber hinaus sorgen Prüfpunkte für Resilienz, wenn ein Ereignisprozessor ausfällt. Sie können ältere Daten zurückgeben, indem Sie einen niedrigeren Offset aus diesem Prüfpunktprozess angeben. 
 
 Wenn der Prüfpunkt ausgeführt wird, um ein Ereignis als verarbeitet zu markieren, wird ein Eintrag im Prüfpunktspeicher mit dem Offset und der Sequenznummer des Ereignisses hinzugefügt oder aktualisiert. Benutzer sollten die Häufigkeit festlegen, mit der der Prüfpunkt aktualisiert wird. Das Aktualisieren nach jedem erfolgreich verarbeiteten Ereignis kann Auswirkungen auf die Leistung und die Kosten haben, da es einen Schreibvorgang in den zugrunde liegenden Prüfpunktspeicher auslöst. Außerdem ist das Versehen mit Prüfpunkten aller Ereignisse ein Hinweis auf ein Messagingmuster mit Warteschlangen, für das eine Service Bus-Warteschlange möglicherweise besser als ein Event Hub geeignet ist. Das Konzept hinter Event Hubs ist, dass mindestens eine Übermittlung in großem Umfang erfolgt. Indem Sie Ihre Downstreamsysteme idempotent machen, ist es einfach, nach Fehlern oder Neustarts, die dazu führen, dass dieselben Ereignisse mehrmals empfangen werden, eine Wiederherstellung durchzuführen.
+
+> [!NOTE]
+> Wenn Sie Azure Blob Storage als Prüfpunktspeicher in einer Umgebung verwenden, die eine andere Version des Storage Blob SDK unterstützt als diejenigen, die in der Regel in Azure verfügbar sind, müssen Sie Code verwenden, um die Version der Speicherdienst-API in die von dieser Umgebung unterstützte Version zu ändern. Wenn Sie z. B. [Event Hubs mit einer Azure Stack Hub-Version 2002](https://docs.microsoft.com/azure-stack/user/event-hubs-overview) ausführen, ist die höchste verfügbare Version für den Speicherdienst Version 2017-11-09. In diesem Fall müssen Sie Code verwenden, um Version 2017-11-09 der Storage Service-API als Ziel zu nutzen. Ein Beispiel für die Verwendung einer bestimmten Storage-API-Version als Ziel finden Sie in den folgenden Beispielen auf GitHub: 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
+> - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithOlderStorageVersion.java)
+> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.js) oder [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.ts)
+> - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/event_processor_blob_storage_example_with_storage_api_version.py)
 
 ## <a name="thread-safety-and-processor-instances"></a>Threadsicherheit und Prozessorinstanzen
 

@@ -5,16 +5,16 @@ author: mumian
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: jgao
-ms.openlocfilehash: b9d4150779842614a5dc284a2b3a489593fabfe1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: bc42585204e5cc2c3ece5293a3934fd22fe8507b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78388525"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156445"
 ---
-# <a name="resource-manager-template-deployment-what-if-operation-preview"></a>Resource Manager-Vorlagenbereitstellung: Was-wäre-wenn-Vorgang (Preview)
+# <a name="arm-template-deployment-what-if-operation-preview"></a>ARM-Vorlagenbereitstellung: Was-wäre-wenn-Vorgang (Vorschau)
 
-Vor dem Bereitstellen einer Vorlage können Sie eine Vorschau der Änderungen anzeigen, die vorgenommen werden. Azure Resource Manager stellt den Was-wäre-wenn-Vorgang bereit, damit Sie sehen können, wie sich Ressourcen ändern, wenn Sie die Vorlage bereitstellen. Der Was-wäre-wenn-Vorgang nimmt keine Änderungen an vorhandenen Ressourcen vor. Stattdessen sagt er die Änderungen vorher, wenn die angegebene Vorlage bereitgestellt wird.
+Vor dem Bereitstellen einer ARM-Vorlage (Azure Resource Manager) können Sie eine Vorschau der Änderungen anzeigen, die vorgenommen werden. Azure Resource Manager stellt den Was-wäre-wenn-Vorgang bereit, damit Sie sehen können, wie sich Ressourcen ändern, wenn Sie die Vorlage bereitstellen. Der Was-wäre-wenn-Vorgang nimmt keine Änderungen an vorhandenen Ressourcen vor. Stattdessen sagt er die Änderungen vorher, wenn die angegebene Vorlage bereitgestellt wird.
 
 > [!NOTE]
 > Der Was-wäre-wenn-Vorgang befindet sich zurzeit in der Preview-Phase. Um ihn zu verwenden, müssen Sie sich [für die Preview registrieren](https://aka.ms/armtemplatepreviews). Als Previewrelease können die Ergebnisse mitunter anzeigen, dass sich eine Ressource ändert, wenn tatsächlich gar keine Änderung stattfindet. Wir arbeiten daran, diese Probleme zu verringern, aber hierzu benötigen wir Ihre Hilfe. Melden Sie diese Probleme bitte unter [https://aka.ms/whatifissues](https://aka.ms/whatifissues).
@@ -287,5 +287,5 @@ Die erwarteten Änderungen werden angezeigt, und Sie können bestätigen, dass d
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Wenn Sie falsche Ergebnisse von Was-wäre-wenn aus der Previewversion bemerken, melden Sie die Probleme unter [https://aka.ms/whatifissues](https://aka.ms/whatifissues).
-- Informationen zum Bereitstellen von Vorlagen mit Azure PowerShell finden Sie unter [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Azure PowerShell](deploy-powershell.md).
-- Informationen zum Bereitstellen mit REST finden Sie unter [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Resource Manager-REST-API](deploy-rest.md).
+- Informationen zum Bereitstellen von Vorlagen mit Azure PowerShell finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md).
+- Informationen zum Bereitstellen von Vorlagen mit REST finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und der Resource Manager-REST-API](deploy-rest.md).

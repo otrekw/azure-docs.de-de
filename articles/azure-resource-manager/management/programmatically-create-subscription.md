@@ -3,14 +3,15 @@ title: Programmgesteuertes Erstellen von Azure-Abonnements
 description: Es wird beschrieben, wie Sie programmgesteuert zusätzliche Azure-Abonnements erstellen.
 author: amberbhargava
 ms.topic: conceptual
-ms.date: 04/10/2019
+ms.date: 03/17/2020
+ms.reviewer: andalmia
 ms.author: banders
-ms.openlocfilehash: 47d4454c47967d07898492176438e547b1e561b6
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 33f1d154f438b917b79cd299e81c9078e2f2e81d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198682"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460397"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>Programmgesteuertes Erstellen von Azure-Abonnements (Vorschau)
 
@@ -22,6 +23,8 @@ Wenn Sie ein Azure-Abonnement programmgesteuert erstellen, unterliegt es der Ver
 
 
 ## <a name="create-subscriptions-for-an-ea-billing-account"></a>Erstellen von Abonnements für ein Abrechnungskonto vom Typ „EA“
+
+Verwenden Sie die Informationen in den folgenden Abschnitten, um EA-Abonnements zu erstellen.
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
@@ -165,7 +168,7 @@ Führen Sie den folgenden [New-AzSubscription](/powershell/module/az.subscriptio
 New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId <enrollmentAccountObjectId> -OwnerObjectId <userObjectId1>,<servicePrincipalObjectId>
 ```
 
-| Elementname  | Erforderlich | type   | Beschreibung                                                                                               |
+| Elementname  | Erforderlich | type   | BESCHREIBUNG                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `Name` | Nein      | String | Der Anzeigename des Abonnements. Wenn kein Anzeigename angegeben wird, wird er auf den Namen des Angebots festgelegt, z.B. auf „Microsoft Azure Enterprise“.                                 |
 | `OfferType`   | Ja      | String | Das Angebot des Abonnements. Die beiden Optionen für EA sind [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/) (Verwendung in der Produktion) und [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/) (Dev/Test, muss [mit dem EA-Portal aktiviert werden](https://ea.azure.com/helpdocs/DevOrTestOffer)).                |
@@ -202,7 +205,7 @@ Wenn Sie eine vollständige Liste aller Parameter anzeigen möchten, finden Sie 
 ### <a name="limitations-of-azure-enterprise-subscription-creation-api"></a>Einschränkungen der Azure Enterprise-Abonnementerstellungs-API
 
 - Nur Azure Enterprise-Abonnements können mithilfe dieser API erstellt werden.
-- Es sind maximal 200 Abonnements pro Registrierungskonto möglich. Im Anschluss können weitere Abonnements für das Konto nur über das Azure-Portal erstellt werden. Wenn Sie über die API weitere Abonnements erstellen möchten, erstellen Sie ein weiteres Registrierungskonto.
+- Es sind maximal 500 Abonnements pro Registrierungskonto möglich. Im Anschluss können weitere Abonnements für das Konto nur über das Azure-Portal erstellt werden. Wenn Sie über die API weitere Abonnements erstellen möchten, erstellen Sie ein weiteres Registrierungskonto.
 - Benutzer, die keine Kontobesitzer sind, aber per RBAC einem Registrierungskonto hinzugefügt wurden, können über das Azure-Portal keine Abonnements erstellen.
 - Sie können den Mandanten nicht auswählen, in dem das Abonnement erstellt werden soll. Das Abonnement wird immer im Basismandanten des Kontobesitzers erstellt. Wenn Sie das Abonnement in einen anderen Mandanten verschieben möchten, finden Sie weitere Informationen unter [Ändern des Abonnementmandanten](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 

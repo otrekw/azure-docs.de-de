@@ -5,12 +5,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Informationen zum Konfigurieren von Azure Dev Spaces für die Verwendung eines benutzerdefinierten Traefik-Eingangscontrollers und zum Konfigurieren von HTTPS mithilfe dieses Eingangscontrollers
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
-ms.openlocfilehash: 9e0c726d97fc87a25d559ecc3478d3f85df4eeb8
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: fd11b3bbd3f90b75203084ff0753c1485d57a35b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623161"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80155428"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Verwenden eines benutzerdefinierten Traefik-Eingangscontrollers und Konfigurieren von HTTPS
 
@@ -23,20 +23,20 @@ In diesem Artikel erfahren Sie, wie Sie Azure Dev Spaces für die Verwendung ein
 * Ein [Azure Kubernetes Service-Cluster (AKS-Cluster) mit aktiviertem Azure Dev Spaces-Dienst][qs-cli].
 * [kubectl][kubectl] muss installiert sein.
 * [Helm 3 muss installiert sein.][helm-installed]
-* [Eine benutzerdefinierte Domäne][custom-domain] mit einer [DNS-Zone][dns-zone], die sich in derselben Ressourcengruppe befindet wie Ihr AKS-Cluster.
+* [Eine benutzerdefinierte Domäne][custom-domain] mit einer [DNS-Zone][dns-zone]. In diesem Artikel wird davon ausgegangen, dass sich die benutzerdefinierte Domäne und DNS-Zone in derselben Ressourcengruppe wie Ihr AKS-Cluster befinden. Es ist jedoch möglich, eine benutzerdefinierte Domäne und DNS-Zone in einer anderen Ressourcengruppe zu verwenden.
 
 ## <a name="configure-a-custom-traefik-ingress-controller"></a>Konfigurieren eines benutzerdefinierten Traefik-Eingangscontrollers
 
 Stellen Sie unter Verwendung des Kubernetes-Befehlszeilenclients ([kubectl][kubectl]) eine Verbindung mit Ihrem Cluster her. Mit dem Befehl [az aks get-credentials][az-aks-get-credentials] können Sie `kubectl` für die Verbindungsherstellung mit Ihrem Kubernetes-Cluster konfigurieren. Mit diesem Befehl werden die Anmeldeinformationen heruntergeladen, und die Kubernetes-Befehlszeilenschnittstelle wird für deren Verwendung konfiguriert.
 
-```azurecli-interactive
+```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKS
 ```
 
 Überprüfen Sie die Verbindung mit Ihrem Cluster mithilfe des Befehls [kubectl get][kubectl-get], um eine Liste der Clusterknoten zurückzugeben.
 
 ```console
-$ kubectl get nodes
+kubectl get nodes
 NAME                                STATUS   ROLES   AGE    VERSION
 aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
 ```
@@ -50,7 +50,7 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 Erstellen Sie einen Kubernetes-Namespace für den Traefik-Eingangscontroller, und installieren Sie ihn mithilfe von `helm`.
 
 > [!NOTE]
-> Wenn in Ihrem AKS RBAC nicht aktiviert ist, entfernen Sie den Parameter *--set rbac.enabled=true*.
+> Wenn in Ihrem AKS-Cluster RBAC nicht aktiviert ist, entfernen Sie den Parameter *--set rbac.enabled=true*.
 
 ```console
 kubectl create ns traefik
@@ -81,7 +81,7 @@ traefik   LoadBalancer   10.0.205.78   MY_EXTERNAL_IP   80:32484/TCP,443:30620/T
 
 Fügen Sie Ihrer DNS-Zone mithilfe von [az network dns record-set a add-record][az-network-dns-record-set-a-add-record] einen *A*-Eintrag mit der externen IP-Adresse des Traefik-Diensts hinzu.
 
-```console
+```azurecli
 az network dns record-set a add-record \
     --resource-group myResourceGroup \
     --zone-name MY_CUSTOM_DOMAIN \
@@ -217,11 +217,49 @@ Verwenden Sie `kubectl`, um `letsencrypt-clusterissuer.yaml` anzuwenden.
 kubectl apply -f letsencrypt-clusterissuer.yaml --namespace traefik
 ```
 
-Führen Sie ein Upgrade von Traefik durch, um HTTPS mithilfe von `helm` zu verwenden.
+Entfernen Sie die vorherige *Traefik*-*ClusterRole* und -*ClusterRoleBinding*und führen Sie dann ein Upgrade von Traefik aus, um HTTPS mithilfe von `helm` zu verwenden.
+
+> [!NOTE]
+> Wenn in Ihrem AKS-Cluster RBAC nicht aktiviert ist, entfernen Sie den Parameter *--set rbac.enabled=true*.
 
 ```console
-helm upgrade traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --version 1.85.0 --set ssl.enabled=true --set ssl.enforced=true --set ssl.permanentRedirect=true
+kubectl delete ClusterRole traefik
+kubectl delete ClusterRoleBinding traefik
+helm upgrade traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set rbac.enabled=true --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --version 1.85.0 --set ssl.enabled=true --set ssl.enforced=true --set ssl.permanentRedirect=true
 ```
+
+Rufen Sie die aktualisierte IP-Adresse des Traefik-Eingangscontrollerdiensts mithilfe von [kubectl get][kubectl-get] ab.
+
+```console
+kubectl get svc -n traefik --watch
+```
+
+Die Beispielausgabe enthält die IP-Adressen für alle Dienste im *traefik*-Namespace.
+
+```console
+NAME      TYPE           CLUSTER-IP    EXTERNAL-IP          PORT(S)                      AGE
+traefik   LoadBalancer   10.0.205.78   <pending>            80:32484/TCP,443:30620/TCP   20s
+...
+traefik   LoadBalancer   10.0.205.78   MY_NEW_EXTERNAL_IP   80:32484/TCP,443:30620/TCP   60s
+```
+
+Fügen Sie Ihrer DNS-Zone mithilfe von [az network dns record-set a add-record][az-network-dns-record-set-a-add-record] einen *A*-Eintrag mit der neuen externen IP-Adresse des Traefik-Diensts hinzu, und entfernen Sie den vorherigen *A*-Eintrag mit [az network dns record-set a remove-record][az-network-dns-record-set-a-remove-record].
+
+```azurecli
+az network dns record-set a add-record \
+    --resource-group myResourceGroup \
+    --zone-name MY_CUSTOM_DOMAIN \
+    --record-set-name *.traefik \
+    --ipv4-address MY_NEW_EXTERNAL_IP
+
+az network dns record-set a remove-record \
+    --resource-group myResourceGroup \
+    --zone-name  MY_CUSTOM_DOMAIN \
+    --record-set-name *.traefik \
+    --ipv4-address PREVIOUS_EXTERNAL_IP
+```
+
+Im Beispiel oben wird der *A*-Eintrag in der DNS-Zone *MY_CUSTOM_DOMAIN* aktualisiert, um *PREVIOUS_EXTERNAL_IP* zu verwenden.
 
 Aktualisieren Sie [values.yaml][values-yaml], sodass die Details für die Verwendung von *cert-manager* und HTTPS eingeschlossen sind. Nachstehend finden Sie ein Beispiel für eine aktualisierte `values.yaml`-Datei:
 
@@ -257,10 +295,15 @@ gateway:
 Führen Sie für die Beispielanwendung mithilfe von `helm` ein Upgrade durch:
 
 ```console
-helm upgrade bikesharing . --namespace dev --atomic
+helm upgrade bikesharingsampleapp . --namespace dev --atomic
 ```
 
-Navigieren Sie zur Beispielanwendung im untergeordneten Bereich *dev/azureuser1*, und beachten Sie, dass Sie zur Verwendung von HTTPS umgeleitet werden. Beachten Sie auch, dass die Seite geladen wird, im Browser jedoch einige Fehler angezeigt werden. Wenn Sie die Browserkonsole öffnen, wird angezeigt, dass sich der Fehler auf eine HTTPS-Seite bezieht, auf der HTTP-Ressourcen geladen werden. Beispiel:
+Navigieren Sie zur Beispielanwendung im untergeordneten Bereich *dev/azureuser1*, und beachten Sie, dass Sie zur Verwendung von HTTPS umgeleitet werden.
+
+> [!IMPORTANT]
+> Es kann 30 Minuten oder länger dauern, bis die DNS-Änderungen abgeschlossen wurden und auf die Beispielanwendung zugegriffen werden kann.
+
+Beachten Sie auch, dass die Seite geladen wird, im Browser jedoch einige Fehler angezeigt werden. Wenn Sie die Browserkonsole öffnen, wird angezeigt, dass sich der Fehler auf eine HTTPS-Seite bezieht, auf der HTTP-Ressourcen geladen werden. Beispiel:
 
 ```console
 Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/devsignin' was loaded over HTTPS, but requested an insecure resource 'http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/api/user/allUsers'. This request has been blocked; the content must be served over HTTPS.
@@ -291,7 +334,7 @@ Aktualisieren Sie [BikeSharingWeb/package.json][package-json] mit einer Abhängi
 ...
 ```
 
-Aktualisieren Sie die *getApiHostAsync*-Methode in [BikeSharingWeb/pages/helpers.js][helpers-js] zur Verwendung von HTTPS:
+Aktualisieren Sie die *getApiHostAsync*-Methode in [BikeSharingWeb/lib/helpers.js][helpers-js] zur Verwendung von HTTPS:
 
 ```javascript
 ...
@@ -328,6 +371,7 @@ Informieren Sie sich darüber, wie Azure Dev Spaces Sie bei der Entwicklung komp
 [az-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-add-record
+[az-network-dns-record-set-a-remove-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-remove-record
 [custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-the-domain
 [dns-zone]: ../../dns/dns-getstarted-cli.md
 [qs-cli]: ../quickstart-cli.md
@@ -338,7 +382,7 @@ Informieren Sie sich darüber, wie Azure Dev Spaces Sie bei der Entwicklung komp
 [cert-manager]: https://cert-manager.io/
 [helm-installed]: https://helm.sh/docs/intro/install/
 [helm-stable-repo]: https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository
-[helpers-js]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/pages/helpers.js#L7
+[helpers-js]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/lib/helpers.js#L7
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [letsencrypt-staging-issuer]: https://cert-manager.io/docs/configuration/acme/#creating-a-basic-acme-issuer

@@ -11,51 +11,38 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 769a70cee4f5a1d5d5f77cdd4e55108e3ba40fa1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: fb11d1bdcf8145d4e78285833789b41c92b0ce4e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978691"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064876"
 ---
-# <a name="azure-event-hubs---use-firewall-rules"></a>Azure Event Hubs: Verwenden von Firewallregeln
+# <a name="configure-ip-firewall-rules-for-an-azure-event-hubs-namespace"></a>Konfigurieren von IP-Firewallregeln für einen Azure Event Hubs-Namespace
+Standardmäßig kann über das Internet auf Event Hubs-Namespaces zugegriffen werden, solange die Anforderung eine gültige Authentifizierung und Autorisierung aufweist. Mit der IP-Firewall können Sie den Zugriff auf eine Gruppe von IPv4-Adressen oder IPv4-Adressbereichen in der [CIDR-Notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) weiter einschränken.
 
-Für Szenarien, in denen Azure Event Hubs nur von bestimmten bekannten Sites aus zugänglich sein soll, können Sie mithilfe von Firewallregeln Regeln für die Annahme von Datenverkehr konfigurieren, der von bestimmten IPv4-Adressen stammt. Bei diesen Adressen kann es sich beispielsweise um die Adressen eines unternehmenseigenen NAT-Gateways handeln.
+Diese Funktion ist in Szenarien hilfreich, in denen Azure Event Hubs nur von bestimmten bekannten Websites aus zugänglich sein soll. Mithilfe von Firewallregeln können Sie Regeln konfigurieren, um Datenverkehr von bestimmten IPv4-Adressen zuzulassen. Wenn Sie z. B. Event Hubs mit [Azure Express Route][express-route] verwenden, können Sie eine **Firewallregel** erstellen, um Datenverkehr nur von den IP-Adressen Ihrer lokalen Infrastruktur zuzulassen. 
 
-## <a name="when-to-use"></a>Verwendung
+## <a name="ip-firewall-rules"></a>IP-Firewallregeln
+Die IP-Firewallregeln werden auf der Event Hubs-Namespaceebene angewendet. Daher gelten die Regeln für alle Clientverbindungen mit einem beliebigen unterstützten Protokoll. Jeder Verbindungsversuch von einer IP-Adresse, die nicht mit einer zulässigen IP-Regel im Event Hubs-Namespace übereinstimmt, wird als nicht autorisiert abgelehnt. In der Antwort wird die IP-Regel nicht erwähnt. IP-Filterregeln werden der Reihe nach angewendet, und die erste Regel, die eine Übereinstimmung mit der IP-Adresse ergibt, bestimmt die Aktion (Zulassen oder Ablehnen).
 
-Wenn Sie Ihren Event Hubs-Namespace so einrichten möchten, dass nur Datenverkehr aus einem bestimmten IP-Adressbereich empfangen wird, können Sie eine *Firewallregel* verwenden, um Event Hub-Endpunkte von anderen IP-Adressen zu blockieren. Wenn Sie z. B. Event Hubs mit [Azure Express Route][express-route] verwenden, können Sie eine *Firewallregel* erstellen, um den Datenverkehr von den IP-Adressen Ihrer lokalen Infrastruktur einzuschränken.
+## <a name="use-azure-portal"></a>Verwenden des Azure-Portals
+In diesem Abschnitt erfahren Sie, wie Sie im Azure-Portal IP-Firewallregeln für einen Event Hubs-Namespace erstellen. 
 
-## <a name="how-filter-rules-are-applied"></a>Anwenden von Filterregeln
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem **Event Hubs-Namespace**.
+2. Wählen Sie im Menü auf der linken Seite die Option **Netzwerk** aus. Wenn Sie die Option **Alle Netzwerke** auswählen, akzeptiert der Event Hub Verbindungen von beliebigen IP-Adressen. Diese Einstellung entspricht einer Regel, bei der der IP-Adressbereich 0.0.0.0/0 zulässig ist. 
 
-Die IP-Filterregeln werden auf der Event Hubs-Namespaceebene angewendet. Daher gelten die Regeln für alle Clientverbindungen mit einem beliebigen unterstützten Protokoll.
+    ![Firewall: Option „Alle Netzwerke“ ausgewählt](./media/event-hubs-firewall/firewall-all-networks-selected.png)
+1. Um den Zugriff auf bestimmte Netzwerke und IP-Adressen einzuschränken, wählen Sie die Option **Ausgewählte Netzwerke** aus. Gehen Sie im Abschnitt **Firewall** wie folgt vor:
+    1. Wählen Sie die Option **Client-IP-Adresse hinzufügen** aus, um Ihrer aktuellen Client-IP Zugriff auf den Namespace zu gewähren. 
+    2. Geben Sie für **Adressbereich** eine bestimmte IPv4-Adresse oder einen Bereich von IPv4-Adressen in der CIDR-Notation ein. 
+    3. Wählen Sie unter **Vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlauben?** die Option „Ja“ oder „Nein“ aus. 
 
-Jeder Verbindungsversuch von einer IP-Adresse, die nicht mit einer zulässigen IP-Regel im Event Hubs-Namespace übereinstimmt, wird als nicht autorisiert abgelehnt. In der Antwort wird die IP-Regel nicht erwähnt.
+        ![Firewall: Option „Alle Netzwerke“ ausgewählt](./media/event-hubs-firewall/firewall-selected-networks-trusted-access-disabled.png)
+3. Klicken Sie auf der Symbolleiste auf **Speichern**, um die Einstellungen zu speichern. Warten Sie einige Minuten, bis die Bestätigung in den Portalbenachrichtigungen angezeigt wird.
 
-## <a name="default-setting"></a>Standardeinstellung
 
-Das Raster **IP-Filter** im Portal ist für Event Hubs standardmäßig leer. Diese Standardeinstellung bedeutet, dass Ihr Event Hub Verbindungen von allen IP-Adressen akzeptiert. Die Standardeinstellung entspricht einer Regel, bei der der IP-Adressbereich 0.0.0.0/0 zulässig ist.
-
-## <a name="ip-filter-rule-evaluation"></a>Auswertung von IP-Filterregeln
-
-IP-Filterregeln werden der Reihe nach angewendet, und die erste Regel, die eine Übereinstimmung mit der IP-Adresse ergibt, bestimmt die Aktion (Zulassen oder Ablehnen).
-
->[!WARNING]
-> Durch das Implementieren von Firewalls kann verhindert werden, dass andere Azure-Dienste mit Event Hubs interagieren.
->
-> Vertrauenswürdige Microsoft-Dienste werden bei der Implementierung von IP-Filterung (Firewalls) nicht unterstützt und werden in Kürze bereitgestellt.
->
-> Im Anschluss finden Sie einige allgemeine Azure-Szenarien, in denen die IP-Filterung nicht funktioniert. (Hinweis: Die Liste ist **NICHT** vollständig.)
-> - Azure Stream Analytics
-> - Integration in Azure Event Grid
-> - Azure IoT Hub-Routen
-> - Azure IoT Device Explorer
->
-> Die folgenden Microsoft-Dienste müssen in einem virtuellen Netzwerk ausgeführt werden:
-> - Azure-Web-Apps
-> - Azure-Funktionen
-
-### <a name="creating-a-firewall-rule-with-azure-resource-manager-templates"></a>Erstellen einer Firewallregel mit Azure Resource Manager-Vorlagen
+## <a name="use-resource-manager-template"></a>Verwenden von Resource Manager-Vorlagen
 
 > [!IMPORTANT]
 > Firewallregeln werden in den Tarifen **Standard** und **Dediziert** von Event Hubs unterstützt. Sie werden nicht im Basic-Tarif unterstützt.
@@ -133,6 +120,7 @@ Vorlagenparameter:
                 "action":"Allow"
             }
           ],
+          "trustedServiceAccessEnabled": false,
           "defaultAction": "Deny"
         }
       }

@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 16d8faa1f20227241d1a582dd4d80e0123f7a31e
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 1fa8f7a48c03ead7e939185b23834b3049b3e21c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368492"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064864"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Autorisieren des Zugriffs auf Event Hubs-Ressourcen mit Azure Active Directory
 Azure Event Hubs unterstützt die Verwendung von Azure Active Directory (Azure AD) zum Autorisieren von Anforderungen an Event Hubs-Ressourcen. Mit Azure AD können Sie die rollenbasierte Zugriffssteuerung (RBAC) zum Gewähren von Berechtigungen für einen Sicherheitsprinzipal verwenden, bei dem es sich um einen Benutzer oder einen Anwendungsdienstprinzipal handeln kann. Weitere Informationen zu Rollen und Rollenzuweisungen finden Sie unter [Grundlegendes zu den verschiedenen Rollen](../role-based-access-control/overview.md).
@@ -21,7 +21,7 @@ Azure Event Hubs unterstützt die Verwendung von Azure Active Directory (Azure A
 ## <a name="overview"></a>Übersicht
 Wenn ein Sicherheitsprinzipal (ein Benutzer oder eine Anwendung) versucht, auf eine Event Hubs-Ressource zuzugreifen, muss die Anforderung autorisiert werden. Mit Azure AD ist der Zugriff auf eine Ressource ein zweistufiger Prozess. 
 
- 1. Zunächst wird die Identität des Sicherheitsprinzipals authentifiziert, und ein OAuth 2.0-Token wird zurückgegeben. Der Ressourcenname zum Anfordern eines Tokens ist `https://eventhubs.azure.net/`.
+ 1. Zunächst wird die Identität des Sicherheitsprinzipals authentifiziert, und ein OAuth 2.0-Token wird zurückgegeben. Der Ressourcenname zum Anfordern eines Tokens ist `https://eventhubs.azure.net/`. Für Kafka-Clients ist die Ressource zum Anfordern eines Tokens `https://<namespace>.servicebus.windows.net`.
  1. Anschließend wird das Token als Teil einer Anforderung an den Event Hubs-Dienst übergeben, um den Zugriff auf die angegebene Ressource zu autorisieren.
 
 Für den Authentifizierungsschritt ist es erforderlich, dass eine Anwendungsanforderung zur Laufzeit ein OAuth 2.0-Zugriffstoken enthält. Wenn eine Anwendung in einer Azure-Entität, z.B. einem virtuellen Azure-Computer, einer VM-Skalierungsgruppe oder einer Azure Functions-App, ausgeführt wird, kann der Zugriff auf die Ressourcen über eine verwaltete Identität erfolgen. Informationen zum Authentifizieren von Anforderungen, die von einer verwalteten Identität an den Event Hubs-Dienst übermittelt werden, finden Sie unter [Authentifizieren des Zugriffs auf Azure Event Hubs-Ressourcen mit Azure Active Directory und verwalteten Identitäten für Azure-Ressourcen](authenticate-managed-identity.md). 

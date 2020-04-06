@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 60ba0a7723861d6e642a23418dda6a1daa57f14e
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 25187fd055f40e8b32d840ead2a9c54882446b88
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77523491"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80348789"
 ---
 # <a name="azure-app-configuration-faq"></a>Häufig gestellte Fragen zu Azure App Configuration
 
@@ -59,13 +59,15 @@ Für ein einzelnes Schlüssel-Wert-Element gilt eine Beschränkung von 10 KB.
 
 Sie kontrollieren auf Speicherebene (also pro Speicher), wer Zugriff auf App Configuration hat. Verwenden Sie für jede Umgebung, die andere Berechtigungen erfordert, einen separaten Speicher. Dieser Ansatz bietet Ihnen die beste Sicherheitsisolierung.
 
+Wenn Sie keine Sicherheitsisolierung zwischen Umgebungen benötigen, können Sie Bezeichnungen verwenden, um zwischen Konfigurationswerten zu unterscheiden. Unter [Verwenden von Bezeichnungen zum Aktivieren verschiedener Konfigurationen für verschiedene Umgebungen](./howto-labels-aspnet-core.md) finden Sie ein vollständiges Beispiel.
+
 ## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>Welche Methoden werden für die Verwendung von App Configuration empfohlen?
 
 Siehe unter [Bewährte Methoden](./howto-best-practices.md).
 
 ## <a name="how-much-does-app-configuration-cost"></a>Wie viel kostet App Configuration?
 
-Es gibt zwei Tarife: 
+Es gibt zwei Tarife:
 
 - Free-Tarif
 - Standard-Tarif.
@@ -96,6 +98,25 @@ Nachfolgend sind verschiedene Aspekte aufgeführt, die Ihnen bei der Auswahl ein
 Ein Upgrade vom Free-Tarif in den Standard-Tarif ist jederzeit möglich.
 
 Ein Downgrade vom Standard-Tarif in den Free-Tarif ist nicht möglich. Sie können einen neuen Speicher im Free-Tarif erstellen und dann [Konfigurationsdaten in diesen Speicher importieren](howto-import-export-data.md).
+
+## <a name="are-there-any-limits-on-the-number-of-requests-made-to-app-configuration"></a>Gibt es Beschränkungen hinsichtlich der Anzahl von Anforderungen, die an die App-Konfiguration gerichtet werden?
+
+Konfigurationsspeicher im Free-Tarif sind auf 1.000 Anforderungen pro Tag beschränkt. Für Konfigurationsspeicher im Standard-Tarif kann eine temporäre Drosselung auftreten, wenn die Anforderungsrate 20.000 Anforderungen pro Stunde überschreitet.
+
+Wenn ein Speicher seine Grenze erreicht, wird der HTTP-Statuscode 429 für alle Anforderungen zurückgegeben, die bis zum Ablauf des Zeitraums vorgenommen wurden. Der `retry-after-ms`-Header in der Antwort gibt eine vorgeschlagene Wartezeit (in Millisekunden) vor der Wiederholung der Anforderung an.
+
+Wenn Ihre Anwendung regelmäßig Antworten mit dem HTTP-Statuscode 429 erhält, sollten Sie sie so umgestalten, dass die Anzahl der vorgenommenen Anforderungen verringert wird. Weitere Informationen finden Sie unter [Verringern der Anzahl der Anforderungen an die App-Konfiguration](./howto-best-practices.md#reduce-requests-made-to-app-configuration).
+
+## <a name="my-application-receives-http-status-code-429-responses-why"></a>Meine Anwendung empfängt Antworten mit dem HTTP-Statuscode429. Warum?
+
+Unter den folgenden Umständen erhalten Sie eine Antwort mit dem HTTP-Statuscode 429:
+
+* Überschreiten des täglichen Anforderungslimits für einen Speicher im Free-Tarif.
+* Temporäre Drosselung aufgrund einer hohen Anforderungsrate für einen Speicher im Standard-Tarif.
+* Übermäßige Bandbreitenauslastung.
+* Versuch, einen Schlüssel zu erstellen oder zu ändern, wenn das Speicherkontingent überschritten wird.
+
+Überprüfen Sie den Text der 429-Antwort, um den genauen Grund zu ermitteln, warum die Anforderung fehlgeschlagen ist.
 
 ## <a name="how-can-i-receive-announcements-on-new-releases-and-other-information-related-to-app-configuration"></a>Wie kann ich Ankündigungen zu neuen Releases und andere Informationen im Zusammenhang mit App Configuration erhalten?
 

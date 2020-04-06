@@ -1,23 +1,23 @@
 ---
 title: Erforderliche Zertifikate zum Zulassen von Back-End-Servern
 titleSuffix: Azure Application Gateway
-description: In diesem Artikel erfahren Sie, wie Sie ein SSL-Zertifikat in ein Authentifizierungszertifikat und ein vertrauenswürdiges Stammzertifikat konvertieren können, die erforderlich sind, um Back-End-Instanzen in Azure Application Gateway zuzulassen.
+description: In diesem Artikel erfahren Sie, wie Sie ein TLS-/SSL-Zertifikat in ein Authentifizierungszertifikat und ein vertrauenswürdiges Stammzertifikat konvertieren können, die erforderlich sind, um Back-End-Instanzen in Azure Application Gateway zuzulassen.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 48944c513bd075e3859503fdadc4001261dc8c4a
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 20f588639c54b0a8b7cd304f33b5a9d633a73be6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048167"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80133047"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Erstellen von Zertifikaten zum Zulassen des Back-Ends für Azure Application Gateway
 
-Für die End-to-End-SSL-Verschlüsselung erfordert Application Gateway, dass Back-End-Instanzen zugelassen werden, indem Authentifizierungs- bzw. vertrauenswürdige Stammzertifikate hochgeladen werden. Für die v1-SKU sind Authentifizierungszertifikate erforderlich, aber für die v2-SKU werden vertrauenswürdige Stammzertifikate benötigt, um die Zertifikate zuzulassen.
+Für die End-to-End-TLS-Verschlüsselung erfordert Application Gateway, dass Back-End-Instanzen zugelassen werden, indem Authentifizierungs- bzw. vertrauenswürdige Stammzertifikate hochgeladen werden. Für die v1-SKU sind Authentifizierungszertifikate erforderlich, aber für die v2-SKU werden vertrauenswürdige Stammzertifikate benötigt, um die Zertifikate zuzulassen.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -28,17 +28,17 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Es muss ein Back-End-Zertifikat vorhanden sein, um die Authentifizierungszertifikate oder vertrauenswürdigen Stammzertifikate zu generieren, die für das Zulassen von Back-End-Instanzen mit Application Gateway erforderlich sind. Das Back-End-Zertifikat kann mit dem SSL-Zertifikat identisch sein (oder ein anderes Zertifikat, um die Sicherheit zu erhöhen). Application Gateway bietet keine Möglichkeit, ein SSL-Zertifikat zu erstellen oder zu erwerben. Sie können zu Testzwecken ein selbstsigniertes Zertifikat erstellen. Dieses sollten Sie aber nicht für Produktionsworkloads verwenden. 
+Es muss ein Back-End-Zertifikat vorhanden sein, um die Authentifizierungszertifikate oder vertrauenswürdigen Stammzertifikate zu generieren, die für das Zulassen von Back-End-Instanzen mit Application Gateway erforderlich sind. Das Back-End-Zertifikat kann mit dem TLS-/SSL-Zertifikat identisch sein (oder ein anderes Zertifikat, um die Sicherheit zu erhöhen). Application Gateway bietet keine Möglichkeit, ein TLS-/SSL-Zertifikat zu erstellen oder zu erwerben. Sie können zu Testzwecken ein selbstsigniertes Zertifikat erstellen. Dieses sollten Sie aber nicht für Produktionsworkloads verwenden. 
 
 ## <a name="export-authentication-certificate-for-v1-sku"></a>Exportieren des Authentifizierungszertifikats (für die v1-SKU)
 
-Sie benötigen ein Authentifizierungszertifikat, um Back-End-Instanzen in der v1-SKU von Application Gateway zulassen zu können. Das Authentifizierungszertifikat ist der öffentliche Schlüssel der Back-End-X.509-Serverzertifikate im Base64-codierten Format (.CER). In diesem Beispiel verwenden Sie ein SSL-Zertifikat als Back-End-Zertifikat und exportieren dessen öffentlichen Schlüssel, der dann als Authentifizierungszertifikat verwendet wird. Sie verwenden zudem den Windows-Zertifikat-Manager, um die erforderlichen Zertifikate zu exportieren. Sie können auch ein beliebiges anderes Tool verwenden, das für Ihre Zwecke geeignet ist.
+Sie benötigen ein Authentifizierungszertifikat, um Back-End-Instanzen in der v1-SKU von Application Gateway zulassen zu können. Das Authentifizierungszertifikat ist der öffentliche Schlüssel der Back-End-X.509-Serverzertifikate im Base64-codierten Format (.CER). In diesem Beispiel verwenden Sie ein TLS-/SSL-Zertifikat als Back-End-Zertifikat und exportieren dessen öffentlichen Schlüssel, der dann als Authentifizierungszertifikat verwendet wird. Sie verwenden zudem den Windows-Zertifikat-Manager, um die erforderlichen Zertifikate zu exportieren. Sie können auch ein beliebiges anderes Tool verwenden, das für Ihre Zwecke geeignet ist.
 
-Exportieren Sie die CER-Datei mit dem öffentlichen Schlüssel aus Ihrem SSL-Zertifikat (nicht den privaten Schlüssel). Führen Sie die folgenden Schritte durch, um die CER-Datei mit dem Base64-kodierten X.509-Zertifikat für Ihr Zertifikat zu exportieren:
+Exportieren Sie die CER-Datei mit dem öffentlichen Schlüssel aus Ihrem TLS-/SSL-Zertifikat (nicht den privaten Schlüssel). Führen Sie die folgenden Schritte durch, um die CER-Datei mit dem Base64-kodierten X.509-Zertifikat für Ihr Zertifikat zu exportieren:
 
 1. Öffnen Sie **Benutzerzertifikate verwalten**, um eine CER-Datei für das Zertifikat zu erhalten. Suchen Sie das Zertifikat (in der Regel befindet es sich unter „Certificates > Aktueller Benutzer\Personal\Certificates“), und klicken Sie mit der rechten Maustaste darauf. Klicken Sie auf **Alle Aufgaben** und anschließend auf **Exportieren**. Dadurch wird der **Zertifikatexport-Assistent**geöffnet. Wenn Sie das Zertifikat unter „Aktueller Benutzer\Eigene Zertifikate\Zertifikate“ nicht finden, haben Sie unter Umständen versehentlich „Zertifikate – Lokaler Benutzer“ anstelle von „Zertifikate – Aktueller Benutzer“ geöffnet. Wenn Sie den Zertifikat-Manager im Bereich für den aktuellen Benutzer mithilfe von PowerShell öffnen möchten, geben Sie *certmgr* ins Konsolenfenster ein.
 
-   ![Export](./media/certificates-for-backend-authentication/export.png)
+   ![Exportieren](./media/certificates-for-backend-authentication/export.png)
 
 2. Klicken Sie im Assistenten auf **Weiter**.
 
@@ -62,7 +62,7 @@ Exportieren Sie die CER-Datei mit dem öffentlichen Schlüssel aus Ihrem SSL-Zer
 
 7. Das Zertifikat wurde erfolgreich exportiert.
 
-   ![Erfolgreich](./media/certificates-for-backend-authentication/success.png)
+   ![Erfolg](./media/certificates-for-backend-authentication/success.png)
 
    Das exportierte Zertifikat sieht in etwa wie folgt aus:
 
@@ -74,7 +74,7 @@ Exportieren Sie die CER-Datei mit dem öffentlichen Schlüssel aus Ihrem SSL-Zer
 
 ## <a name="export-trusted-root-certificate-for-v2-sku"></a>Exportieren des vertrauenswürdigen Stammzertifikats (für die v2-SKU)
 
-Sie benötigen ein vertrauenswürdiges Stammzertifikat, um Back-End-Instanzen in der v2-SKU von Application Gateway in die Whitelist aufnehmen zu können. Das Stammzertifikat ist ein Base64-kodiertes X.509-Stammzertifikat (.CER) aus den Zertifikaten des Back-End-Servers. In diesem Beispiel verwenden wir ein SSL-Zertifikat als Back-End-Zertifikat, exportieren dessen öffentlichen Schlüssel, und exportieren anschließend das Stammzertifikat der vertrauenswürdigen Zertifizierungsstelle aus dem öffentlichen Schlüssel im Base64-kodierten Format, um das vertrauenswürdige Stammzertifikat zu erhalten. Zwischenzertifikate sollten mit dem Serverzertifikat gebündelt und auf dem Back-End-Server installiert werden.
+Sie benötigen ein vertrauenswürdiges Stammzertifikat, um Back-End-Instanzen in der v2-SKU von Application Gateway in die Whitelist aufnehmen zu können. Das Stammzertifikat ist ein Base64-kodiertes X.509-Stammzertifikat (.CER) aus den Zertifikaten des Back-End-Servers. In diesem Beispiel verwenden wir ein TLS-/SSL-Zertifikat als Back-End-Zertifikat, exportieren dessen öffentlichen Schlüssel, und exportieren anschließend das Stammzertifikat der vertrauenswürdigen Zertifizierungsstelle aus dem öffentlichen Schlüssel im Base64-codierten Format, um das vertrauenswürdige Stammzertifikat zu erhalten. Zwischenzertifikate sollten mit dem Serverzertifikat gebündelt und auf dem Back-End-Server installiert werden.
 
 Führen Sie die folgenden Schritte durch, um die CER-Datei für Ihr Zertifikat zu exportieren:
 
@@ -106,5 +106,5 @@ Führen Sie die folgenden Schritte durch, um die CER-Datei für Ihr Zertifikat z
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Jetzt verfügen Sie über das Authentifizierungszertifikat und das vertrauenswürdige Sicherheitszertifikat im CER-Format (Base64-kodierte X.509-Zertifikate). Sie können diese Zertifikate zu Application Gateway hinzufügen, um Ihre Back-End-Server für die End-to-End-SSL-Verschlüsselung in die Whitelist aufzunehmen. Weitere Informationen finden Sie unter [Konfigurieren von End-to-End-SSL mit Application Gateway mithilfe von PowerShell](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
+Jetzt verfügen Sie über das Authentifizierungszertifikat und das vertrauenswürdige Sicherheitszertifikat im CER-Format (Base64-kodierte X.509-Zertifikate). Sie können diese Zertifikate zu Application Gateway hinzufügen, um Ihre Back-End-Server für die End-to-End-TLS-Verschlüsselung in die Whitelist aufzunehmen. Weitere Informationen finden Sie unter [Konfigurieren von End-to-End-TLS mit Application Gateway mithilfe von PowerShell](https://docs.microsoft.com/azure/application-gateway/application-gateway-end-to-end-ssl-powershell).
 

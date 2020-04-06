@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 318f16df6ac10be5909b255f2f1988be028d0eef
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.openlocfilehash: 8608aaab7bb8b6d10e67f27678c17f20a6c243da
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78162422"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80370858"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – Administratorhandbuch
 IT-Administratoren, die die Cloudressourcen einer Universität verwalten, sind in der Regel auch dafür verantwortlich, das Lab-Konto für diese Universität einzurichten. Nachdem ein Lab-Konto eingerichtet wurde, erstellen Administratoren oder Lehrkräfte Classroom-Labs, die im Lab-Konto enthalten sind. Dieser Artikel bietet eine allgemeine Übersicht über die beteiligten Azure-Ressourcen und die Anleitungen zu deren Erstellung.
@@ -79,15 +79,15 @@ Ein Classroom-Lab enthält virtuelle Computer, die jeweils einem einzelnen Stude
 
 Beachten Sie die folgenden Punkte, wenn Sie ermitteln, wie Sie Ihre Classroom-Labs strukturieren möchten:
 
-- **Alle VMs innerhalb eines Classroom-Labs werden mit demselben veröffentlichten Image bereitgestellt**. 
+- **Alle VMs innerhalb eines Classroom-Labs werden mit demselben veröffentlichten Image bereitgestellt**.
 
     Hieraus resultiert, dass Sie, wenn Sie einen Kurs haben, für den verschiedene Lab-Images gleichzeitig veröffentlicht werden müssen, für jeden Kurs gesonderte Classroom-Labs erstellen müssen.
   
-- **Das Nutzungskontingent wird auf Lab-Ebene festgelegt und gilt für alle Benutzer innerhalb des Labs**. 
+- **Das Nutzungskontingent wird auf Lab-Ebene festgelegt und gilt für alle Benutzer innerhalb des Labs**.
     
     Um unterschiedliche Kontingente für Benutzer festzulegen, müssen Sie gesonderte Classroom-Labs erstellen. Es ist jedoch möglich, auch nach dem Festlegen des Kontingents einem bestimmten Benutzer noch weitere Stunden hinzuzufügen.
   
-- **Der Zeitplan für das Starten oder Herunterfahren wird auf Lab-Ebene festgelegt und gilt für alle virtuellen Computer innerhalb des Labs**. 
+- **Der Zeitplan für das Starten oder Herunterfahren wird auf Lab-Ebene festgelegt und gilt für alle virtuellen Computer innerhalb des Labs**.
 
     Ähnlich wie bei dem vorherigen Punkt, müssen Sie, wenn Sie unterschiedliche Zeitpläne für Benutzer festlegen müssen, gesonderte Classroom-Labs erstellen. 
 
@@ -125,39 +125,55 @@ Beim Einstieg in Azure Lab Services wird empfohlen, dass Sie Benennungskonventio
 
 Weitere Informationen zur Benennung anderer Azure-Ressourcen finden Sie unter [Namenskonventionen für Azure-Ressourcen](/azure/architecture/best-practices/naming-conventions).
 
-## <a name="regions-or-locations"></a>Regionen oder Standorte
-Beim Einrichten Ihrer Azure Lab Services-Ressourcen müssen Sie eine Region (oder einen Standort) des Rechenzentrums angeben, in dem die Ressource gehostet werden soll. Hier finden Sie weitere Details dazu, wie sich die Region auf jede der folgenden Ressourcen auswirkt, die in Ihrer Lab-Bereitstellung verwendet werden:
+## <a name="regionslocations"></a>Regionen/Standorte
 
-- **Ressourcengruppe**
+Beim Einrichten Ihrer Azure Lab Services-Ressourcen müssen Sie eine Region (oder einen Standort) des Rechenzentrums angeben, in dem die Ressource gehostet werden soll. Im Folgenden finden Sie weitere Details dazu, wie sich die Region auf die einzelnen Ressourcen auswirkt, die beim Einrichten eines Labs verwendet werden.
 
-    Die Region gibt das Rechenzentrum an, in dem Informationen über die Ressourcengruppe gespeichert werden. In der Ressourcengruppe enthaltene Azure-Ressourcen können sich in anderen Regionen befinden als ihre übergeordneten Ressourcen.
-- **Lab-Konto oder Classroom-Lab**
+### <a name="resource-group"></a>Resource group
 
-    Der Standort des Lab-Kontos zeigt die Region für diese Ressource an.  
+Die Region gibt das Rechenzentrum an, in dem Informationen über die Ressourcengruppe gespeichert werden. In der Ressourcengruppe enthaltene Azure-Ressourcen können sich in anderen Regionen befinden als ihre übergeordneten Ressourcen.
+
+### <a name="lab-account"></a>Lab-Konto
+
+Der Speicherort des Lab-Kontos zeigt die Region an, in der die Ressource vorhanden ist.  
+
+### <a name="classroom-lab"></a>Classroom-Lab
     
-    Bei Classroom-Labs wählt Azure Lab Services automatisch die Region aus, in der die einzelnen Labs basierend auf der verfügbaren Kapazität bereitgestellt werden.  Azure Lab Services sucht insbesondere in [Regionen, die sich im gleichen geografischen Raum wie das Lab-Konto befinden](https://azure.microsoft.com/global-infrastructure/regions), nach Verfügbarkeit. 
-    
-    Wenn ein Administrator den Erstellern von Labs gestattet, den Standort ihrer Classroom-Labs auszuwählen, basieren die zur Auswahl stehenden Standorte auf der zum Zeitpunkt der Erstellung des Labs verfügbaren regionalen Kapazität.
+Der Speicherort, an dem ein Classroom-Lab vorhanden ist, variiert basierend auf den folgenden Faktoren:
 
-    Der Standort des Classroom-Labs bestimmt außerdem die VM-Computegrößen, die für die Auswahl zur Verfügung stehen. Bestimmte Computegrößen sind nur innerhalb bestimmter Regionen verfügbar.
-- **Shared Image Gallery**
+  - **Peering des Lab-Kontos mit einem virtuellen Netzwerk (VNET)**
+  
+    Für ein Lab-Konto kann [Peering mit einem VNET](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-connect-peer-virtual-network) erfolgen, wenn beides sich in derselben Region befindet.  Wenn für ein Lab-Konto Peering mit einem VNET verwendet wird, werden Classroom-Labs automatisch in der gleichen Region erstellt wie das Lab-Konto und das VNET.
 
-    Die Region zeigt die Quellregion an, in der die erste Imageversion gespeichert wird, bevor sie automatisch in Zielregionen repliziert wird.
+    > [!NOTE]
+    > Wenn für ein Lab-Konto Peering mit einem VNET erfolgt, ist die Einstellung **Auswahl des Lab-Speicherorts durch Lab-Ersteller zulassen** deaktiviert. Weitere Informationen zu dieser Einstellung finden Sie im folgenden Artikel: [Auswahl des Lab-Speicherorts durch Lab-Ersteller zulassen](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location).
     
-Eine allgemeine Regel ist es, die Region einer Ressource auf eine Region festzulegen, die ihren Benutzern am nächsten liegt. Bei Classroom-Labs bedeutet dies, das Classroom-Lab in maximaler Nähe zu Ihren Schülern zu erstellen. Für Onlinekurse, bei denen Schüler sich weltweit verteilt aufhalten, müssen Sie nach Ihrem Ermessen verfahren, um ein Classroom-Lab zu erstellen, das zentral angesiedelt ist. Alternativ können Sie einen Kurs auch in mehrere Classroom-Labs aufteilen, basierend auf der jeweiligen Region Ihrer Schüler.
+  - **Kein Peering mit VNET ***und*** Lab-Ersteller dürfen den Lab-Speicherort nicht auswählen**
+  
+    Wenn **kein** Peering eines VNET mit dem Lab-Konto erfolgt *und* [Lab-Ersteller **nicht** den Lab-Speicherort auswählen dürfen](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location), werden Classroom-Labs automatisch in einer Region erstellt, die über verfügbare VM-Kapazität verfügt.  Azure Lab Services sucht insbesondere in [Regionen, die sich im gleichen geografischen Raum wie das Lab-Konto befinden](https://azure.microsoft.com/global-infrastructure/regions), nach Verfügbarkeit.
+
+  - **Kein Peering mit VNET ***und*** Lab-Ersteller dürfen den Lab-Speicherort auswählen**
+       
+    Wenn **kein** Peering mit dem VNET erfolgt und [Lab-Ersteller den Lab-Speicherort auswählen dürfen](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location), basieren die Speicherorte, die vom Lab-Ersteller ausgewählt werden können, auf der verfügbaren Kapazität.
+
+Eine allgemeine Regel ist es, die Region einer Ressource auf eine Region festzulegen, die ihren Benutzern am nächsten liegt. Bei Classroom-Labs bedeutet dies, das Classroom-Lab in maximaler Nähe zu Ihren Kursteilnehmern zu erstellen. Für Onlinekurse, bei denen Schüler sich weltweit verteilt aufhalten, müssen Sie nach Ihrem Ermessen verfahren, um ein Classroom-Lab zu erstellen, das zentral angesiedelt ist. Alternativ können Sie einen Kurs auch in mehrere Classroom-Labs aufteilen, basierend auf der jeweiligen Region Ihrer Kursteilnehmer.
+
+### <a name="shared-image-gallery"></a>Shared Image Gallery
+
+Die Region zeigt die Quellregion an, in der die erste Imageversion gespeichert wird, bevor sie automatisch in Zielregionen repliziert wird.
 
 ## <a name="vm-sizing"></a>Festlegen der VM-Größe
 Wenn Administratoren oder Ersteller von Labs ein Classroom-Lab erstellen, können Sie unter den folgenden VM-Größen auswählen, basierend auf den Anforderungen für Ihren Kurs. Denken Sie daran, dass die Computegrößen, die verfügbar sind, von der Region abhängen, in der sich Ihr Lab-Konto befindet:
 
-| Size | Spezifikationen | Vorgeschlagene Verwendung |
-| ---- | ----- | ------------- |
-| Klein| <ul><li>2 Kerne</li><li>3,5 GB RAM</li></ul> | Diese Größe eignet sich am besten für die Befehlszeile, das Öffnen von Webbrowsern, Webserver mit geringem Datenverkehr und kleine bis mittelgroße Datenbanken. |
-| Medium | <ul><li>4 Kerne</li><li>7 GB RAM</li></ul> | Diese Größe eignet sich am besten für relationale Datenbanken, speicherinternes Caching und Analysen. |
-| Mittel (geschachtelte Virtualisierung) | <ul><li>4 Kerne</li><li>16 GB RAM</li></ul> | Diese Größe eignet sich am besten für relationale Datenbanken, speicherinternes Caching und Analysen.  Sie unterstützt auch die geschachtelte Virtualisierung. |
-| Groß | <ul><li>8 Kerne</li><li>32 GB RAM</li></ul> | Diese Größe eignet sich am besten für Anwendungen, die schnellere CPUs, eine bessere lokale Datenträgerleistung, große Datenbanken und große Caches benötigen.  Sie unterstützt auch die geschachtelte Virtualisierung. |
-| Kleine GPU (Visualisierung) | <ul><li>6 Kerne</li><li>56 GB RAM</li> | Diese Größe eignet sich am besten für Remotevisualisierung, Streaming, Spiele und Codierung mit Frameworks wie OpenGL und DirectX. |
-| Kleine GPU (Compute) | <ul><li>6 Kerne</li><li>56 GB RAM</li></ul> |Diese Größe eignet sich am besten für rechenintensive Anwendungen wie künstliche Intelligenz und Deep Learning. |
-| Mittlere GPU (Visualisierung) | <ul><li>12 Kerne</li><li>112 GB RAM</li></ul> | Diese Größe eignet sich am besten für Remotevisualisierung, Streaming, Spiele und Codierung mit Frameworks wie OpenGL und DirectX. |
+| Size | Spezifikationen | Reihen | Vorgeschlagene Verwendung |
+| ---- | ----- | ------ | ------------- |
+| Klein| <ul><li>2 Kerne</li><li>3,5 GB RAM</li> | [Standard_A2_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Diese Größe eignet sich am besten für die Befehlszeile, das Öffnen von Webbrowsern, Webserver mit geringem Datenverkehr und kleine bis mittelgroße Datenbanken. |
+| Medium | <ul><li>4 Kerne</li><li>7 GB RAM</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Diese Größe eignet sich am besten für relationale Datenbanken, speicherinternes Caching und Analysen. |
+| Mittel (geschachtelte Virtualisierung) | <ul><li>4 Kerne</li><li>16 GB RAM</li></ul> | [Standard_DC4s_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Diese Größe eignet sich am besten für relationale Datenbanken, speicherinternes Caching und Analysen.  Sie unterstützt auch die geschachtelte Virtualisierung. |
+| Groß | <ul><li>8 Kerne</li><li>32 GB RAM</li></ul>  | [Standard_DC8_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Diese Größe eignet sich am besten für Anwendungen, die schnellere CPUs, eine bessere lokale Datenträgerleistung, große Datenbanken und große Caches benötigen.  Sie unterstützt auch die geschachtelte Virtualisierung. |
+| Kleine GPU (Visualisierung) | <ul><li>6 Kerne</li><li>56 GB RAM</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Diese Größe eignet sich am besten für Remotevisualisierung, Streaming, Spiele und Codierung mit Frameworks wie OpenGL und DirectX. |
+| Kleine GPU (Compute) | <ul><li>6 Kerne</li><li>56 GB RAM</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Diese Größe eignet sich am besten für rechenintensive Anwendungen wie künstliche Intelligenz und Deep Learning. |
+| Mittlere GPU (Visualisierung) | <ul><li>12 Kerne</li><li>112 GB RAM</li></ul>  | [Standard_NC12](https://docs.microsoft.com/azure/virtual-machines/nc-series) | Diese Größe eignet sich am besten für Remotevisualisierung, Streaming, Spiele und Codierung mit Frameworks wie OpenGL und DirectX. |
 
 ## <a name="manage-identity"></a>Verwalten der Identität
 Mithilfe der [rollenbasierten Zugriffssteuerung von Azure](https://docs.microsoft.com/azure/role-based-access-control/overview) können die folgenden Rollen zugewiesen werden, um Zugriff auf Lab-Konten und Classroom-Labs zu gestatten:
@@ -209,20 +225,20 @@ Die Preise für Azure Lab Services werden in dem folgenden Artikel beschrieben: 
 Sie müssen außerdem die Preise für die Shared Image Gallery berücksichtigen, wenn Sie planen, sie zum Speichern und Verwalten von Imageversionen zu verwenden. 
 
 ### <a name="shared-image-gallery"></a>Shared Image Gallery
-Das Erstellen einer Shared Image Gallery und das Anfügen des Katalogs an Ihr Lab sind kostenlos. Es fallen erst Kosten an, nachdem Sie eine Imageversion im Katalog gespeichert haben. Typischerweise sind die Preise für die Verwendung einer Shared Image Gallery praktisch vernachlässigbar, doch es ist wichtig zu verstehen, wie die Berechnung erfolgt, da die Gebühren nicht in den Preisen für Azure Lab Services enthalten sind.  
+Das Erstellen einer Shared Image Gallery und das Anfügen des Katalogs an Ihr Lab sind kostenlos. Es fallen erst Kosten an, nachdem Sie eine Imageversion im Katalog gespeichert haben. Normalerweise sind die Preise für die Verwendung einer Shared Image Gallery praktisch vernachlässigbar, doch es ist wichtig zu verstehen, wie die Berechnung erfolgt, da die Gebühren nicht in den Preisen für Azure Lab Services enthalten sind.  
 
-### <a name="storage-charges"></a>Speichergebühren
+#### <a name="storage-charges"></a>Speichergebühren
 Um Imageversionen zu speichern, verwendet eine Shared Image Gallery standardmäßig verwaltete HDD-Datenträger. Die Größe des verwendeten, verwalteten HDD-Datenträgers hängt von der Größe der Imageversion ab, die gespeichert wird. Die Preise finden Sie im folgenden Artikel: [Preise für verwaltete Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 
-### <a name="replication-and-network-egress-charges"></a>Kosten für Replikation und ausgehende Netzwerkdaten
+#### <a name="replication-and-network-egress-charges"></a>Kosten für Replikation und ausgehende Netzwerkdaten
 Wenn Sie eine Imageversion mittels einer Vorlagen-VM eines Classroom-Labs speichern, speichert Azure Lab Services diese zuerst in einer Quellregion und repliziert die Quellimageversion dann automatisch in mindestens eine Zielregion. Es ist wichtig zu beachten, dass Azure Lab Services die Quellimageversion automatisch in alle [Zielregionen innerhalb des geografischen Raums](https://azure.microsoft.com/global-infrastructure/regions/) repliziert, in dem sich das Classroom-Lab befindet. Wenn sich Ihr Classroom-Lab beispielsweise im geografischen Raum der USA befindet, wird eine Imageversion in jede der acht Regionen repliziert, die innerhalb der USA vorhanden sind.
 
 Eine Gebühr für ausgehenden Netzwerkdatenverkehr fällt an, wenn eine Imageversion aus der Quellregion in zusätzliche Zielregionen repliziert wird. Die Höhe der berechneten Gebühr basiert auf der Größe der Imageversion, wenn die Daten des Images anfänglich ausgehend aus der Quellregion übertragen werden.  Details zu den Preisen finden Sie im folgenden Artikel: [Bandbreite: Preisübersicht](https://azure.microsoft.com/pricing/details/bandwidth/).
 
 Kunden von [Education-Lösungen](https://www.microsoft.com/licensing/licensing-programs/licensing-for-industries?rtc=1&activetab=licensing-for-industries-pivot:primaryr3) wird die Zahlung von Gebühren für ausgehenden Datenverkehr möglicherweise erlassen. Wenden Sie sich an Ihren Account Manager, um mehr zu erfahren.  Weitere Information finden Sie im Abschnitt **Häufig gestellte Fragen** in dem verlinkten Dokument, insbesondere unter der Frage „Welche Datenübertragungsprogramme sind für akademische Kunden vorhanden, und wie qualifiziere ich mich dafür?“.
 
-### <a name="pricing-example"></a>Preisbeispiel
+#### <a name="pricing-example"></a>Preisbeispiel
 Um die zuvor beschriebenen Preise zu rekapitulieren, sehen wir uns ein Beispiel für das Speichern unseres Vorlagen-VM-Images in der Shared Image Gallery an. Vorausgesetzt werden die folgenden Szenarien:
 
 - Sie verfügen über ein benutzerdefiniertes VM-Image.
@@ -238,10 +254,10 @@ In diesem Beispiel betragen die Kosten:
 
 1 benutzerdefiniertes Image (32 GB) x 2 Versionen x 8 US-Regionen x $ 1,54 = $ 24,64 pro Monat
 
-### <a name="cost-management"></a>Kostenverwaltung
-Es ist wichtig, dass Lab-Kontoadministratoren die Kosten verwalten, indem Sie routinemäßig nicht mehr benötigte Imageversionen aus dem Katalog löschen. 
+#### <a name="cost-management"></a>Kostenverwaltung
+Es ist wichtig, dass Lab-Kontoadministratoren die Kosten verwalten, indem sie routinemäßig nicht mehr benötigte Imageversionen aus dem Katalog löschen. 
 
 Sie sollten nicht die Replikation in bestimmte Regionen löschen, um auf diese Weise die Kosten zu senken (diese Option ist in der Shared Image Gallery vorhanden). Replikationsänderungen können nachteilige Effekte auf die Fähigkeit von Azure Lab Service haben, VMs aus Images zu veröffentlichen, die in einer Shared Image Gallery gespeichert sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Schrittweise Anleitungen zum Erstellen eines Lab-Kontos und eines Labs finden Sie in folgendem Tutorial: [Tutorial: Einrichten eines Lab-Kontos](tutorial-setup-lab-account.md)
+Schrittweise Anleitungen zum Erstellen eines Lab-Kontos und eines Labs finden Sie in folgendem Tutorial: [Leitfaden für die Einrichtung](tutorial-setup-lab-account.md)

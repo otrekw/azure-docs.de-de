@@ -1,5 +1,5 @@
 ---
-title: VNET-Dienstendpunkte – Azure Service Bus
+title: Konfigurieren von Dienstendpunkten virtueller Netzwerke für Azure Service Bus
 description: In diesem Artikel werden Informationen zum Hinzufügen eines Microsoft.ServiceBus-Dienstendpunkts zu einem virtuellen Netzwerk beschrieben.
 services: service-bus
 documentationcenter: ''
@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 212cd96571561362003e7dcbd89efc5d2c54ab48
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9dbf65522d5c85e1054ed3f1f6ca9f86180e7f7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980799"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454980"
 ---
-# <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Verwenden von Virtual Network-Dienstendpunkten mit Azure Service Bus
+# <a name="configure-virtual-network-service-endpoints-for-azure-service-bus"></a>Konfigurieren von Dienstendpunkten virtueller Netzwerke für Azure Service Bus
 
 Die Integration von Service Bus mit [VNET-Dienstendpunkten][vnet-sep] ermöglicht den sicheren Zugriff auf Messagingfunktionen für Workloads, z. B. an virtuelle Netzwerke (VNETs) gebundene virtuelle Computer. Der Pfad für den Netzwerkdatenverkehr ist dabei an beiden Enden geschützt.
 
@@ -25,27 +25,10 @@ Nachdem die Konfiguration der Bindung an mindestens einen Dienstendpunkt des VNE
 
 Das Ergebnis ist eine private und isolierte Beziehung zwischen den Workloads, die an das Subnetz gebunden sind, und dem entsprechenden Service Bus-Namespace, obwohl sich die beobachtbare Netzwerkadresse des Messaging-Dienstendpunkts in einem öffentlichen IP-Bereich befindet.
 
->[!WARNING]
-> Die Implementierung der VNET-Integration kann verhindern, dass andere Azure-Dienste mit Service Bus interagieren.
->
-> Vertrauenswürdige Microsoft-Dienste werden bei Implementierung von Virtual Networks nicht unterstützt.
->
-> Allgemeine Azure-Szenarien, die nicht mit Virtual Networks funktionieren (beachten Sie, dass die Liste **NICHT** vollständig ist):
-> - Azure Stream Analytics
-> - Integration in Azure Event Grid
-> - Azure IoT Hub-Routen
-> - Azure IoT Device Explorer
->
-> Die folgenden Microsoft-Dienste müssen in einem virtuellen Netzwerk ausgeführt werden:
-> - Azure App Service
-> - Azure-Funktionen
-
 > [!IMPORTANT]
 > Virtuelle Netzwerke werden nur in Service Bus-Namespaces im [Tarif Premium](service-bus-premium-messaging.md) unterstützt.
-
-## <a name="enable-service-endpoints-with-service-bus"></a>Aktivieren von Dienstendpunkten mit Service Bus
-
-Ein wichtiger Aspekt bei der Verwendung von VNET-Dienstendpunkten mit Service Bus besteht darin, dass Sie diese Endpunkte nicht in Anwendungen aktivieren sollten, in denen Service Bus-Namespaces der Tarife Standard und Premium gemischt werden. Da VNETs im Tarif Standard nicht unterstützt werden, ist der Endpunkt auf Namespaces im Tarif Premium beschränkt.
+> 
+> Bei der Verwendung von VNET-Dienstendpunkten mit Service Bus sollten Sie diese Endpunkte nicht in Anwendungen aktivieren, in denen Service Bus-Namespaces der Tarife Standard und Premium gemischt werden. Die Tarif Standard unterstützt keine VNETs. Der Endpunkt ist nur auf Namespaces im Premium-Tarif beschränkt.
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Erweiterte Sicherheitsszenarien basierend auf der VNET-Integration 
 
@@ -59,12 +42,36 @@ Dies bedeutet, dass Ihre sicherheitsrelevanten Cloudlösungen nicht nur Zugriff 
 
 *VNET-Regeln* sind das Feature für die Firewallsicherheit, mit dem gesteuert wird, ob Ihr Azure Service Bus-Server Verbindungen eines bestimmten VNET-Subnetzes akzeptiert.
 
-Das Binden eines Service Bus-Namespace an ein virtuelles Netzwerk ist ein Prozess mit zwei Schritten. Zuerst müssen Sie einen **VNET-Dienstendpunkt** in einem Virtual Network-Subnetz erstellen und für „Microsoft.ServiceBus“ aktivieren, wie in der [Übersicht über Dienstendpunkte][vnet-sep] beschrieben. Nachdem Sie den Dienstendpunkt hinzugefügt haben, binden Sie den Service Bus-Namespace mit einer *VNET-Regel* daran.
+Das Binden eines Service Bus-Namespace an ein virtuelles Netzwerk ist ein Prozess mit zwei Schritten. Zunächst müssen Sie einen **VNET-Dienstendpunkt** in einem Virtual Network-Subnetz erstellen und für **Microsoft.ServiceBus** aktivieren, wie unter [Übersicht über Dienstendpunkte][vnet-sep] beschrieben. Nachdem Sie den Dienstendpunkt hinzugefügt haben, binden Sie den Service Bus-Namespace mit einer **VNET-Regel** daran.
 
 Die VNET-Regel ist eine Zuordnung des Service Bus-Namespace zu einem Subnetz eines virtuellen Netzwerks. Während die Regel vorhanden ist, wird allen Workloads, die an das Subnetz gebunden sind, Zugriff auf den Service Bus-Namespace gewährt. Service Bus stellt selbst niemals ausgehende Verbindungen her, muss keinen Zugriff erhalten und erhält daher niemals die Gewährung des Zugriffs auf Ihr Subnetz, indem diese Regel aktiviert wird.
 
-### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Erstellen einer VNET-Regel mit Azure Resource Manager-Vorlagen
+## <a name="use-azure-portal"></a>Verwenden des Azure-Portals
+In diesem Abschnitt erfahren Sie, wie Sie mit dem Azure-Portal einen Dienstendpunkt eines virtuellen Netzwerks hinzufügen. Zum Beschränken des Zugriffs müssen Sie den Dienstendpunkt des virtuellen Netzwerks (VNET-Dienstendpunkt) für diesen Event Hubs-Namespace integrieren.
 
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem **Service Bus-Namespace**.
+2. Wählen Sie im Menü auf der linken Seite die Option **Netzwerk** aus. Standardmäßig ist die Option **Alle Netzwerke** ausgewählt. Ihr Namespace akzeptiert Verbindungen von jeder IP-Adresse. Die Standardeinstellung entspricht einer Regel, bei der der IP-Adressbereich 0.0.0.0/0 zulässig ist. 
+
+    ![Firewall: Option „Alle Netzwerke“ ausgewählt](./media/service-endpoints/firewall-all-networks-selected.png)
+1. Wählen Sie oben auf der Seite die Option **Ausgewählte Netzwerke** aus.
+2. Wählen Sie im Abschnitt **Virtuelles Netzwerk** der Seite die Option **+ Vorhandenes virtuelles Netzwerk hinzufügen** aus. 
+
+    ![Hinzufügen eines vorhandenen virtuellen Netzwerks](./media/service-endpoints/add-vnet-menu.png)
+3. Wählen Sie in der Liste der virtuellen Netzwerke das virtuelle Netzwerk aus, und wählen Sie dann das **Subnetz** aus. Sie müssen den Dienstendpunkt aktivieren, bevor Sie das virtuelle Netzwerk der Liste hinzufügen. Wenn der Dienstendpunkt nicht aktiviert ist, erhalten Sie im Portal eine entsprechende Aufforderung.
+   
+   ![Auswählen des Subnetzes](./media/service-endpoints/select-subnet.png)
+
+4. Die folgende Erfolgsmeldung sollte angezeigt werden, nachdem der Dienstendpunkt für das Subnetz für **Microsoft.ServiceBus** aktiviert wurde. Wählen Sie **Hinzufügen** unten auf der Seite aus, um das Netzwerk hinzuzufügen. 
+
+    ![Auswählen des Subnetzes und Aktivieren des Endpunkts](./media/service-endpoints/subnet-service-endpoint-enabled.png)
+
+    > [!NOTE]
+    > Falls Sie den Dienstendpunkt nicht aktivieren können, können Sie den fehlenden VNET-Dienstendpunkt ignorieren und die Resource Manager-Vorlage verwenden. Diese Funktionalität ist nicht im Portal verfügbar.
+6. Wählen Sie auf der Symbolleiste **Speichern** aus, um die Einstellungen zu speichern. Warten Sie einige Minuten, bis die Bestätigung in den Portalbenachrichtigungen angezeigt wird. Die Schaltfläche **Speichern** sollte deaktiviert sein. 
+
+    ![Speichern des Netzwerks](./media/service-endpoints/save-vnet.png)
+
+## <a name="use-resource-manager-template"></a>Verwenden von Resource Manager-Vorlagen
 Mithilfe der folgenden Resource Manager-Vorlage können Sie einem vorhandenen Service Bus-Namespace eine VNET-Regel hinzufügen.
 
 Vorlagenparameter:
@@ -178,6 +185,7 @@ Vorlage:
             }
           ],
           "ipRules":[<YOUR EXISTING IP RULES>],
+          "trustedServiceAccessEnabled": false,          
           "defaultAction": "Deny"
         }
       }

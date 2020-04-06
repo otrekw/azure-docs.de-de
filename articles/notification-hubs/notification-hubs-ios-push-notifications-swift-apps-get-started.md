@@ -16,14 +16,14 @@ ms.date: 05/21/2019
 ms.author: miparker
 ms.reviewer: jowargo
 ms.lastreviewed: 05/21/2019
-ms.openlocfilehash: 8dae5bcc082ba5dd0953e3e97f609e4031547a35
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: a721c519c7a836e20455c6f1887bcfa7b52951f3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030645"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336640"
 ---
-# <a name="tutorial-push-notifications-to-swift-ios-apps-that-use-the-notification-hubs-rest-api"></a>Tutorial: Senden von Pushbenachrichtigungen an Swift-iOS-Apps, die die Notification Hubs-REST-API verwenden
+# <a name="tutorial-send-push-notifications-to-swift-ios-apps-using-notification-hubs-rest-api"></a>Tutorial: Senden von Pushbenachrichtigungen an Swift-iOS-Apps über die Notification Hubs-REST-API
 
 > [!div class="op_single_selector"]
 > * [Objective-C](notification-hubs-ios-apple-push-notification-apns-get-started.md)
@@ -41,6 +41,8 @@ In diesem Tutorial werden die folgenden Schritte erklärt:
 > * Konfigurieren des Benachrichtigungshubs mit APNs-Informationen
 > * Verbinden Ihrer iOS-App mit einem Benachrichtigungshub
 > * Testen der Lösung
+
+Den vollständigen Code für dieses Tutorial finden Sie [auf GitHub](https://github.com/xamcat/mobcat-samples/tree/master/notification_hub_rest).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -81,7 +83,7 @@ In diesem Abschnitt erstellen Sie die iOS-App, die die Verbindung mit dem Benach
 
    1. Legen Sie die **Sprache** auf **Swift** fest.
 
-   1. Klicken Sie auf **Weiter**.
+   1. Wählen Sie **Weiter** aus.
 
 1. Erstellen Sie einen neuen Ordner namens **SupportingFiles**.
 
@@ -91,10 +93,10 @@ In diesem Abschnitt erstellen Sie die iOS-App, die die Verbindung mit dem Benach
 
    | Schlüssel                            | type                     | Wert                     |
    |--------------------------------| -------------------------| --------------------------|
-   | notificationHubKey             | Zeichenfolge                   | \<Hubschlüssel>                  |
-   | notificationHubKeyName         | Zeichenfolge                   | \<Hubschlüsselname>              |
-   | notificationHubName            | Zeichenfolge                   | \<Hubname>                 |
-   | notificationHubNamespace       | Zeichenfolge                   | \<Hubnamespace>            |
+   | notificationHubKey             | String                   | \<Hubschlüssel>                  |
+   | notificationHubKeyName         | String                   | \<Hubschlüsselname>              |
+   | notificationHubName            | String                   | \<Hubname>                 |
+   | notificationHubNamespace       | String                   | \<Hubnamespace>            |
 
    Die erforderlichen Werte finden Sie durch Navigieren zur Benachrichtigungshubressource im Azure-Portal. Die Werte **notificationHubName** und **notificationHubNamespace** finden Sie in der rechten oberen Ecke der **Essentials** (Zusammenfassung) auf der **Übersichtsseite**.
 
@@ -114,18 +116,18 @@ In diesem Abschnitt erstellen Sie die iOS-App, die die Verbindung mit dem Benach
 
 1. Suchen Sie nach **Identität**, und legen Sie den Wert **Bündel-ID** so fest, dass er mit dem für die **App-ID** aus einem vorhergehenden Schritt übereinstimmt, d. h. `com.<organization>.PushDemo`.
 
-1. Suchen Sie nach **Signing** (Signieren), und wählen Sie dann das passende **Team** für Ihr **Apple Developer-Konto** aus. Der Wert für **Team** sollte mit dem Wert übereinstimmen, unter dem Sie Ihre Zertifikate und Profile erstellt haben.
+1. Suchen Sie nach **Signing & Capabilities** (Signieren und Funktionen), und wählen Sie dann das passende **Team** für Ihr **Apple Developer-Konto** aus. Der Wert für **Team** sollte mit dem Wert übereinstimmen, unter dem Sie Ihre Zertifikate und Profile erstellt haben.
 
-1. Xcode sollte auf der Grundlage Ihrer **Bündel-ID** automatisch das entsprechende **Bereitstellungsprofil** abrufen. Wenn der neue Wert für das **Bereitstellungsprofil** nicht angezeigt wird, aktualisieren Sie die Profile für die **Signing Identity** (Signierungsidentität), indem Sie nacheinander auf **Xcode** > **Einstellungen** > **Konto** > **Details anzeigen** klicken. Klicken Sie auf **Signing Identity** (Signierungsidentität) und anschließend auf die Schaltfläche **Aktualisieren** in der rechten unteren Ecke, um die Profile herunterzuladen.
+1. Xcode sollte auf der Grundlage Ihrer **Bündel-ID** automatisch das entsprechende **Bereitstellungsprofil** abrufen. Wenn der neue Wert für das **Bereitstellungsprofil** nicht angezeigt wird, aktualisieren Sie die Profile für die **Signing Identity** (Signierungsidentität), indem Sie nacheinander auf **Xcode** > **Einstellungen** > **Konto** klicken und dann die Schaltfläche **Manuelle Profile herunterladen** auswählen, um die Profile herunterzuladen.
 
-1. Vergewissern Sie sich auf der Registerkarte **Funktionen**, dass **Pushbenachrichtigungen** aktiviert sind.
+1. Klicken Sie auf der Registerkarte **Signing & Capabilities** (Signieren und Funktionen) auf die Schaltfläche **+ Capability** (Funktion), und doppeltippen Sie dann in der Liste auf **Push Notifications** (Pushbenachrichtigungen), um sicherzustellen, dass **Pushbenachrichtigungen** aktiviert sind.
 
 1. Öffnen Sie Ihre Datei **AppDelegate.swift**, um das Protokoll **UNUserNotificationCenterDelegate** zu implementieren, und fügen Sie am Anfang der Klasse folgenden Code hinzu:
 
     ```swift
     @UIApplicationMain
     class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
-
+        
         ...
 
         var configValues: NSDictionary?
@@ -134,13 +136,12 @@ In diesem Abschnitt erstellen Sie die iOS-App, die die Verbindung mit dem Benach
         var notificationHubKeyName : String?
         var notificationHubKey : String?
         let tags = ["12345"]
-        let genericTemplate = PushTemplate(withBody: "{\"aps\":{\"alert\":\"$(message)\"}}")
-
+        
         ...
     }
     ```
 
-    Sie verwenden diese Member später noch einmal. Sie verwenden die Elemente **tags** und **genericTemplate** als Teil der Registrierung. Weitere Informationen zu Tags finden Sie unter [Tags für Registrierungen](notification-hubs-tags-segment-push-message.md) und [Vorlagenregistrierungen](notification-hubs-templates-cross-platform-push-messages.md).
+    Sie verwenden diese Member später noch einmal. Sie verwenden das Element **tags** als Teil der Registrierung mithilfe einer **benutzerdefinierten Vorlage**. Weitere Informationen zu Tags finden Sie unter [Tags für Registrierungen](notification-hubs-tags-segment-push-message.md) und [Vorlagenregistrierungen](notification-hubs-templates-cross-platform-push-messages.md).
 
 1. Fügen Sie in derselben Datei folgenden Code zur Funktion **didFinishLaunchingWithOptions** hinzu:
 
@@ -186,7 +187,8 @@ In diesem Abschnitt erstellen Sie die iOS-App, die die Verbindung mit dem Benach
     func showAlert(withText text : String) {
         let alertController = UIAlertController(title: "PushDemo", message: text, preferredStyle: UIAlertControllerStyle.alert)
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
-        self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+        let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
     }
     ```
 
@@ -211,6 +213,11 @@ In diesem Abschnitt erstellen Sie die iOS-App, die die Verbindung mit dem Benach
     ```
 
 1. Fügen Sie am Ende der Funktion **didRegisterForRemoteNotificationsWithDeviceToken** print-Anweisungen ein, um zu überprüfen, ob **installationId** und **pushChannel** Werte zugewiesen werden.
+
+    ```swift
+    print(installationId)
+    print(pushChannel)
+    ```
 
 1. Erstellen Sie die Ordner **Models** (Modelle), **Services** (Dienste) und **Utilities** (Hilfsprogramme) für die grundlegenden Komponenten, die Sie dem Projekt später hinzufügen.
 
@@ -313,7 +320,7 @@ So fügen Sie den Bridgingheader hinzu und konfigurieren ihn
 
 1. Aktualisieren Sie die **Buildeinstellungen** des Ziels so, dass sie auf den Bridgingheader verweisen:
 
-   1. Öffnen Sie die Registerkarte **Gebäudeeinstellung**, und scrollen Sie nach unten zum Abschnitt "**Swift-Compiler**.
+   1. Tippen Sie auf das Projekt **PushDemo**, und scrollen Sie nach unten zum Abschnitt **Swift Compiler**.
 
    1. Stellen Sie sicher, dass die Option **Install Objective-C Compatibility Header** (Objective-C-Kompatibilitätsheader installieren) auf **Ja** festgelegt ist.
 
@@ -392,11 +399,25 @@ So fügen Sie den Bridgingheader hinzu und konfigurieren ihn
 
    Das [Azure Storage SDK für iOS](https://github.com/Azure/azure-storage-ios/blob/master/Lib/Azure%20Storage%20Client%20Library/Azure%20Storage%20Client%20Library/AZSUtil.m) dient als ausgezeichnetes Beispiel für die Umsetzung dieser Vorgänge in Objective-C. Weitere Informationen zu SAS-Token von Azure Service Bus finden Sie in der [Dokumentation zu Azure Service Bus](../service-bus-messaging/service-bus-sas.md).
 
+1. Fügen Sie in **AppDelegate.swift** der Funktion *didRegisterForRemoteNotificationsWithDeviceToken* den folgenden Code hinzu, um zu überprüfen, ob **TokenUtility.getSasToken** ein gültiges Token generiert.
+    
+    ```swift
+    let baseAddress = "https://<notificaitonHubNamespace>.servicebus.windows.net/<notifiationHubName>"
+
+    let tokenData = TokenUtility.getSasToken(forResourceUrl: baseAddress,
+                                                withKeyName: self.notificationHubKeyName!,
+                                                andKey: self.notificationHubKey!)
+    
+    print(tokenData.token)
+    ```
+
+    Denken Sie daran, die Platzhalterwerte in der Zeichenfolge **baseAddress** durch Ihre eigenen Werte zu ersetzen.
+
 ### <a name="verify-the-sas-token"></a>Überprüfen des SAS-Tokens
 
 Bevor Sie den Installationsdienst im Client implementieren, vergewissern Sie sich mithilfe eines HTTP-Hilfsprogramms Ihrer Wahl, dass unsere App das SAS-Token ordnungsgemäß generiert. Im Rahmen dieses Tutorials verwenden wir **Postman**.
 
-Verwenden Sie eine entsprechend platzierte print-Anweisung oder einen Breakpoint, um die von der App generierten Werte **installationId** und **token** zu notieren.
+Notieren Sie sich die **installationId**- und **Token**-Werte, die von der App generiert werden.
 
 Gehen Sie zum Aufrufen der **Installations**-API folgendermaßen vor:
 
@@ -455,7 +476,8 @@ class NotificationRegistrationService {
     private let keyName : String
     private let key : String
     private var tokenData : TokenData? = nil
-
+    private var tokenExpiryDate : Date? = nil
+    
     init(withInstallationId installationId : String,
             andPushChannel pushChannel : String,
             andHubNamespace hubNamespace : String,
@@ -470,58 +492,67 @@ class NotificationRegistrationService {
         self.key = key
         self.defaultHeaders = ["Content-Type": "application/json", "x-ms-version": apiVersion]
     }
-
+    
     func register(
         withTags tags : [String]? = nil,
         andTemplates templates : Dictionary<String, PushTemplate>? = nil,
         completeWith completion: ((_ result: Bool) -> ())? = nil) {
-
+        
         var deviceInstallation = DeviceInstallation(withInstallationId: installationId, andPushChannel: pushChannel)
-
+        
         if let tags = tags {
             deviceInstallation.tags = tags
         }
-
+        
         if let templates = templates {
             deviceInstallation.templates = templates
         }
-
+        
         if let deviceInstallationJson = encodeToJson(deviceInstallation) {
             let sasToken = getSasToken()
             let requestUrl = String.init(format: tokenizedCreateOrUpdateInstallationRequest, installationId, apiVersion)
             let apiEndpoint = "\(getBaseAddress())\(requestUrl)"
-
+            
             var request = URLRequest(url: URL(string: apiEndpoint)!)
             request.httpMethod = "PUT"
-
+            
             for (key,value) in self.defaultHeaders {
                 request.addValue(value, forHTTPHeaderField: key)
             }
-
+            
             request.addValue(sasToken, forHTTPHeaderField: "Authorization")
             request.httpBody = Data(deviceInstallationJson.utf8)
-
+            
             (self.session.dataTask(with: request) { dat, res, err in
                 if let completion = completion {
-                        completion(err == nil && (res as! HTTPURLResponse).statusCode == 200)
+                        completion(err == nil && 
+                        (res as! HTTPURLResponse).statusCode == 200)
                 }
             }).resume()
         }
     }
-
+    
     private func getBaseAddress() -> String {
         return String.init(format: tokenizedBaseAddress, hubNamespace, hubName)
     }
-
+    
     private func getSasToken() -> String {
         if (tokenData == nil ||
-            Date(timeIntervalSince1970: Double((tokenData?.expiration)!)) < Date(timeIntervalSinceNow: -(5 * 60))) {
-            self.tokenData = TokenUtility.getSasToken(forResourceUrl: getBaseAddress(), withKeyName: self.keyName, andKey: self.key)
+            tokenExpiryDate == nil ||
+            Date() >= tokenExpiryDate!) {
+            
+            self.tokenData = TokenUtility.getSasToken(
+                forResourceUrl: getBaseAddress(),
+                withKeyName: self.keyName,
+                andKey: self.key)
+            
+            self.tokenExpiryDate = Date(timeIntervalSinceNow: -(5 * 60))
+                .addingTimeInterval(TimeInterval(tokenData!.expiration))
         }
 
         return (tokenData?.token)!
     }
-
+    
     private func encodeToJson<T : Encodable>(_ object: T) -> String? {
         do {
             let jsonData = try jsonEncoder.encode(object)
@@ -552,10 +583,11 @@ Schließlich konvertiert **encodeToJson** die jeweiligen Modellobjekte in JSON, 
 
 Der letzte Schritt besteht im Aktualisieren von **AppDelegate** für die Verwendung von **NotifiationRegistrationService** zum Registrieren unseres **NotificationHub**.
 
-1. Öffnen Sie **AppDelegate.swift**, und fügen Sie eine Variable auf Klassenebene hinzu, in der ein Verweis auf **NotificationRegistrationService** gespeichert wird:
+1. Öffnen Sie **AppDelegate.swift**, und fügen Sie Variablen auf Klassenebene hinzu, in denen ein Verweis auf **NoficiationRegistrationService** und die generische **PushTemplate** gespeichert wird:
 
     ```swift
     var registrationService : NotificationRegistrationService?
+    let genericTemplate = PushTemplate(withBody: "{\"aps\":{\"alert\":\"$(message)\"}}")
     ```
 
 1. Aktualisieren Sie in derselben Datei die Funktion **didRegisterForRemoteNotificationsWithDeviceToken** zum Initialisieren von **NotificationRegistrationService** mit den erforderlichen Parametern, und rufen Sie dann die **register**-Funktion auf.
@@ -617,6 +649,8 @@ Sie können jetzt zum [Überprüfen des SAS-Tokens](#verify-the-sas-token) die g
     }
 }
 ```
+
+Wenn Ihr vorheriges **SAS-Token** abgelaufen ist, können Sie **Zeile 24** der **TokenUtility**-Klasse einen **Breakpoint** hinzufügen, um ein neues **SAS-Token** zu erhalten und den **Authorization**-Header mit diesem neuen Wert zu aktualisieren.
 
 ### <a name="send-a-test-notification-azure-portal"></a>Senden einer Testbenachrichtigung (Azure-Portal)
 
@@ -692,7 +726,7 @@ Sie können Benachrichtigungen mithilfe von **Postman** über die [REST-API](/re
 
 1. Wählen Sie die Schaltfläche **Send (Senden)** aus.
 
-Sie sollten einen Erfolgsstatuscode und die Benachrichtigung auf dem Clientgerät empfangen.
+Sie sollten einen Erfolgsstatuscode **201 Created** und die Benachrichtigung auf dem Clientgerät empfangen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie verfügen nun über eine einfache iOS-Swift-App, die über die [REST-API](/rest/api/notificationhubs/) mit einem Benachrichtigungshub verbunden ist und Benachrichtigungen senden und empfangen kann. Weitere Informationen finden Sie in den folgenden Artikeln:
