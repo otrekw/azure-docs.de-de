@@ -13,13 +13,15 @@
       href: quick-create-cli.md
     - name: Erstellen mit Azure PowerShell
       href: quick-create-powershell.md
-    - name: Erstellen mit einer Vorlage
+    - name: Erstellen mit einer ARM-Vorlage
       items:
         - name: Linux-Skalierungsgruppe
+          displayName: 'ARM, resource manager'
           href: quick-create-template-linux.md
         - name: Windows-Skalierungsgruppe
+          displayName: 'ARM, resource manager'
           href: quick-create-template-windows.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: '1: Erstellen/Verwalten einer Skalierungsgruppe'
       items:

@@ -3,12 +3,12 @@ title: Unterstützte Clusterversionen in Azure Service Fabric
 description: Erfahren Sie mehr über Clusterversionen in Azure Service Fabric, einschließlich eines Links zu den neuesten Releases des Service Fabric-Teamblogs.
 ms.topic: troubleshooting
 ms.date: 03/02/2020
-ms.openlocfilehash: ea2dcc3da2f59aa00b12aedd181dc27df00e9d58
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 1158266857f0864ed2f442edb100032c70063719
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78252721"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385043"
 ---
 # <a name="supported-service-fabric-versions"></a>Unterstützte Service Fabric-Versionen
 
@@ -36,8 +36,11 @@ Die folgende Tabelle enthält die Versionen von Service Fabric und das jeweilige
 | 6.2.* | 6.0.232.* |Alle Versionen bis einschließlich Version 3.1 |26. Oktober 2018   |
 | 6.3.* | 6.1.480.* |Alle Versionen bis einschließlich Version 3.2 |31. März 2019  |
 | 6.4.* | 6.2.301.* |Alle Versionen bis einschließlich Version 3.3 |15. September 2019 |
-| 6.5.* | 6.4.617.* |Alle Versionen bis einschließlich Version 3.4 |1\. Mai 2020 |
-| 7.0.* | 6.4.664.# |Alle Versionen bis einschließlich Version 4.0 |Aktuelle Version, daher kein Enddatum |
+| 6.5.* | 6.4.617.* |Alle Versionen bis einschließlich Version 3.4 |1\. August 2020 |
+| 7.0.466.* | 6.4.664.* |Alle Versionen bis einschließlich Version 4.0|Aktuelle Version, daher kein Enddatum |
+| 7.0.466.* | 6.5.* |Alle Versionen bis einschließlich Version 4.0|Aktuelle Version, daher kein Enddatum |
+| 7.0.470.* | 7.0.466.* |Alle Versionen bis einschließlich Version 4.0 |Aktuelle Version, daher kein Enddatum |
+
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
 Die folgende Tabelle enthält die unterstützten Betriebssysteme für die unterstützten Service Fabric-Versionen.

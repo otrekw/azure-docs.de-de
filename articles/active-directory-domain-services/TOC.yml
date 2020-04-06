@@ -93,6 +93,8 @@
           href: security-audit-events.md
         - name: "Analysieren von Überwachungsereignissen mit Azure\_Monitor-Arbeitsmappen"
           href: use-azure-monitor-workbooks.md
+        - name: Sicherer Remotezugriff auf virtuelle Computer
+          href: secure-remote-vm-access.md
     - name: Einbinden virtueller Computer in eine Domäne
       items:
         - name: Virtueller Windows Server-Computer aus einer Vorlage
@@ -143,13 +145,9 @@
       href: faqs.md
     - name: Dienstupdates
       href: 'https://azure.microsoft.com/updates/?product=active-directory-ds'
-    - name: Kompatible Drittanbietersoftware
-      href: compatible-software.md
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/active-directory-ds/'
     - name: Azure AD-Feedbackforum
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
-    - name: Kontakt
-      href: contact-us.md
     - name: Verwenden von Azure AD Domain Services in Azure CSP-Abonnements
       href: csp.md

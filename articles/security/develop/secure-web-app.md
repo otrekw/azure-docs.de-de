@@ -16,16 +16,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 640900458eccc36afe58cb148ffd7b94b43be879
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 75890efebc42b74c56fb95ed1803152b516588b9
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934914"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385213"
 ---
 # <a name="develop-a-secure-web-app"></a>Entwickeln einer sicheren Web-App
 
-Bei diesem Beispiel handelt es sich um eine einfache Python-Beispiel-App, die eine Webseite anzeigt, die Links zu Sicherheitsressourcen für die Entwicklung von Apps in Azure enthält. Diese App implementiert bewährte Sicherheitsmethoden, die den Sicherheitsstatus Ihrer Anwendung und Ihres Unternehmens bei der Entwicklung in Azure verbessern können.
+Bei diesem Beispiel handelt es sich um eine einfache Python-Beispiel-App, die eine Webseite anzeigt, die Links zu Sicherheitsressourcen für die Entwicklung von Apps in Azure enthält. Diese App implementiert bewährte Sicherheitsmethoden, die den Sicherheitsstatus Ihrer Anwendung und Ihrer Organisation bei der Entwicklung in Azure verbessern können.
 
 Sie sollten die in diesem Artikel beschriebenen Schritte befolgen, um sicherzustellen, dass die Anwendungskomponenten ordnungsgemäß konfiguriert sind. Die Datenbank, die Azure App Service-Instanz, die Azure Key Vault-Instanz und die Azure Application Gateway-Instanz sind voneinander abhängig.
 
@@ -45,7 +45,8 @@ Sobald Sie diese App entwickelt und bereitgestellt haben, haben Sie die folgende
 
 ![Beispiel-Web-App](./media/secure-web-app/demo-app.png)
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>Aufbau
+
 Bei der App handelt es sich um eine n-schichtige Anwendung mit drei Schichten. Die Front-End-, Back-End- und Datenbankebenen mit integrierten Überwachungs- und Geheimnisverwaltungskomponenten werden in der folgenden Abbildung veranschaulicht:
 
 ![App-Architektur](./media/secure-web-app/architecture.png)
@@ -59,6 +60,7 @@ Die Architektur umfasst die folgenden Komponenten:
 - [Azure Security Center](../../security-center/index.yml) und [Azure Application Insights:](../../azure-monitor/app/app-insights-overview.md) Stellt Überwachung und Warnungen für die Ausführung der App zur Verfügung.
 
 ## <a name="threat-model"></a>Bedrohungsmodell
+
 Die Bedrohungsmodellierung ist der Prozess, bei dem potenzielle Sicherheitsbedrohungen für Ihr Unternehmen und Ihre Anwendung identifiziert werden und dann sichergestellt wird, dass geeignete vorbeugende Maßnahmen wirksam sind.
 
 In diesem Beispiel wird das [Microsoft Threat Modeling Tool](threat-modeling-tool.md) zum Implementieren der Bedrohungsmodellierung für die sichere Beispiel-App verwendet. Mithilfe von Diagrammen der Komponenten und Datenflüsse können Sie Probleme und Bedrohungen frühzeitig im Entwicklungsprozess identifizieren. Das spart Ihnen später Zeit und Geld.
@@ -76,6 +78,7 @@ Beispielsweise wird die SQL-Injektion in der vorangehenden Bedrohungsmodellausga
 Entwickler verbessern die allgemeine Sicherheit des Systems, indem sie die Bedrohungen in der Ausgabe des Bedrohungsmodells verhindern.
 
 ## <a name="deployment"></a>Bereitstellung
+
 Mithilfe der folgenden Optionen können Sie Linux in Azure App Service ausführen:
 
 - Wählen Sie einen Container aus der Liste vorgefertigter Microsoft-Container in Azure aus, die mit unterstützenden Technologien erstellt wurden (Python, Ruby, PHP, Java, Node.js, .NET Core).
@@ -104,6 +107,7 @@ Für diese Anwendung wurde Folgendes verwendet:
 ## <a name="security-considerations"></a>Sicherheitshinweise
 
 ### <a name="network"></a>Netzwerk
+
 Die Beispiel-App verwendet End-to-End-SSL-Verschlüsselung während der Übertragung für die Daten, die in und aus dem Netzwerk fließen. Das Gateway wurde mit einem selbstsignierten Zertifikat konfiguriert.
 > [!IMPORTANT]
 > In dieser Demonstration wird ein selbstsigniertes Zertifikat verwendet. In einer Produktionsumgebung sollten Sie Zertifikate von einer verifizierten Zertifizierungsstelle verwenden.
@@ -112,6 +116,7 @@ Die Anwendungsfirewall überprüft auch den eingehenden Datenverkehr und warnt A
 Application Gateway verhindert mögliche DDoS-Attacken und SQL-Injektionen, die im Bedrohungsmodell erkannt werden.
 
 ### <a name="identity"></a>Identity
+
 Die Beispiel-App verwendet die mehrstufige Authentifizierung für Azure Active Directory-Administratoren, denen der Zugriff auf die Ressourcen zugewiesen ist, für die Anmeldung beim Portal.
 Die Beispiel-App verwendet verwaltete Identitäten, um die Berechtigungen zum Lesen und Abrufen von Geheimnissen aus Azure Key Vault abzurufen, wodurch sichergestellt wird, dass die App keine hartcodierten Anmeldeinformationen und Tokens zum Lesen von Geheimnissen benötigt. Azure AD erstellt die zum Lesen und Ändern der Geheimnisse erforderlichen Dienstprinzipale automatisch, wenn verwaltete Identitäten verwendet werden.
 
@@ -119,46 +124,53 @@ Verwaltete Identitäten für Azure-Ressourcen und die mehrstufige Authentifizier
 Die App verwendet OAuth, was in der OAuth-App registrierten Benutzern die Anmeldung bei der App ermöglicht.
 
 ### <a name="storage"></a>Storage
+
 Die Daten in der PostgreSQL-Datenbank werden im Ruhezustand automatisch von Azure Database for PostgreSQL verschlüsselt. Die Datenbank autorisiert die App Service-IP-Adressen, sodass nur die bereitgestellte App Service-Web-App mit den richtigen Authentifizierungsanmeldeinformationen auf die Datenbankressourcen zugreifen kann.
 
 ### <a name="logging-and-auditing"></a>Protokollierung und Überwachung
+
 Die App implementiert die Protokollierung mithilfe von Application Insights, um Metriken, Protokolle und auftretende Ausnahmen nachzuverfolgen. Diese Protokollierung stellt ausreichend App-Metadaten bereit, um Entwickler und Betriebsteammitglieder über den Status der App zu informieren. Sie stellt außerdem ausreichend Daten für die Rückverfolgung bei Sicherheitsvorfällen bereit.
 
 ## <a name="cost-considerations"></a>Kostenbetrachtung
+
 Wenn Sie über kein Azure-Konto verfügen, können Sie ein kostenloses Konto erstellen. Rufen Sie zunächst die [Seite zur Erstellung eines kostenlosen Kontos](https://azure.microsoft.com/free/) auf, und sehen Sie sich an, was Sie mit einem kostenlosen Azure-Konto tun können und welche Produkte 12 Monate lang kostenlos genutzt werden können.
 
 Sie müssen für einige Premium-Features zahlen, die Sie zur Bereitstellung der Ressourcen für die Beispiel-App mit Sicherheitsfeatures benötigen. Mit der Skalierung der App müssen die kostenlosen Tarife und Testversionen von Azure aktualisiert werden, um die Anwendungsanforderungen zu erfüllen. Dadurch können die Kosten steigen. Verwenden Sie den [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/), um Ihre Kosten zu ermitteln.
 
 ## <a name="deploy-the-solution"></a>Bereitstellen der Lösung
+
 ### <a name="prerequisites"></a>Voraussetzungen
+
 Sie müssen die folgenden Tools installieren, um die Anwendung ausführen zu können:
 
 - Ein Code-Editor zum Ändern und Anzeigen des Anwendungscodes. [Visual Studio Code](https://code.visualstudio.com/) bietet sich hier als Open-Source-Option an.
-- Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&viewFallbackFrom=azure-cli-latest,) auf Ihrem Entwicklungscomputer.
+- Die [Azure CLI](/cli/azure/install-azure-cli) auf Ihrem Entwicklungscomputer.
 - [Git](https://git-scm.com/) muss auf Ihrem System installiert sein. Git wird verwendet, um den Quellcode lokal zu klonen.
 - Sie benötigen auch [jq](https://stedolan.github.io/jq/). Dies ist ein benutzerfreundliches UNIX-Tool für das Abfragen von JSON.
 
 Außerdem benötigen Sie ein Azure-Abonnement für die Bereitstellung der Ressourcen der Beispiel-App. Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), um die Beispiel-App zu testen.
 
-Sobald Sie diese Tools installiert haben, sind Sie bereit, die App in Azure bereitzustellen.
+Sobald Sie diese Tools installiert haben, können Sie die App in Azure bereitstellen.
 
 ### <a name="environment-setup"></a>Einrichten der Umgebung
+
 Führen Sie die Bereitstellungsskripts aus, um die Umgebung und das Abonnement einzurichten:
 
 1. Verwenden Sie den folgenden Git-Befehl, um das Quellcoderepository zu klonen:
 
-   ``` git
+   ```shell
    git clone https://github.com/Azure-Samples/sample-linux-python-app tutorial-project
    ```
+
 2. Verwenden Sie den folgenden Befehl, um das Verzeichnis aufzurufen:
 
-   ```
+   ```shell
    cd tutorial-project/scripts
    ```
 
-3. Im Skriptordner befinden sich Dateien, die spezifisch für Ihre Plattform sind (Windows oder Linux). Da die Azure CLI bereits installiert ist, melden Sie sich mithilfe des folgenden Befehls über die Befehlszeilenschnittstelle mit Ihrem Azure-Konto an:
+3. Im Skriptordner befinden sich Dateien, die spezifisch für Ihre Plattform sind (Windows oder Linux). Da die Azure CLI bereits installiert ist, melden Sie sich mithilfe des folgenden Azure CLI-Befehls mit Ihrem Azure-Konto an:
 
-   ``` azurecli
+   ```azurecli-interactive
    az login
    ```
 
@@ -173,6 +185,7 @@ So stellen Sie die Projektmappe bereit:
 In den folgenden Beispielen werden Codeausschnitte aus den Schlüsselkomponenten veranschaulicht. Sie können die Beispiele individuell oder mit den restlichen Komponenten bereitstellen, indem Sie die Bereitstellungsdateien ausführen.
 
 ### <a name="implementation-guidance"></a>Implementierungsleitfaden
+
 Das Bereitstellungsskript kann in vier Phasen unterteilt werden. In jeder Phase wird eine Azure-Ressource bereitgestellt und konfiguriert, die im [Architekturdiagramm](#architecture) veranschaulicht wird.
 
 Die vier Phasen lauten wie folgt:
@@ -187,6 +200,7 @@ Jede Phase baut auf der vorherigen auf, indem die Konfiguration der zuvor bereit
 Stellen Sie sicher, dass Sie die unter [Voraussetzungen](#prerequisites) aufgeführten Tools installiert haben, um diese Implementierungsschritte durchführen zu können.
 
 #### <a name="deploy-azure-key-vault"></a>Bereitstellen von Azure Key Vault
+
 In diesem Abschnitt erstellen Sie eine Azure Key Vault-Instanz, die zum Speichen von Geheimnissen und Zertifikaten verwendet wird, und stellen diese bereit.
 
 Sobald die Bereitstellung abgeschlossen ist, verfügen Sie über eine in Azure bereitgestellte Azure Key Vault-Instanz.
@@ -198,7 +212,7 @@ So stellen Sie Azure Key Vault mithilfe der Azure CLI bereit:
 3. Erstellen Sie die Ressourcengruppe für die Instanz.
 4. Erstellen Sie die Azure Key Vault-Instanz in der Ressourcengruppe, die Sie in Schritt 3 erstellt haben.
 
-   ``` azurecli
+   ```powershell-interactive
 
     function Get-Hash() {
         return (New-Guid).Guid.Split('-')[4]
@@ -233,9 +247,11 @@ So stellen Sie Azure Key Vault mithilfe der Azure CLI bereit:
        --verbose
 
    ```
+
 Die Verwendung verwalteter Identitäten für Azure-Ressourcen in Apps, die Azure Key Vault für den Zugriff auf Ressourcen verwenden, ist eine bewährte Methode. Ihr Sicherheitsstatus verbessert sich, wenn Zugriffsschlüssel für Azure Key Vault weder im Code noch in der Konfiguration gespeichert werden.
 
 #### <a name="deploy-azure-database-for-postgresql"></a>Bereitstellen von Azure Database for PostgreSQL
+
 Azure Database for PostgreSQL funktioniert wie folgt, zunächst wird der Datenbankserver erstellt und dann wird die Datenbank erstellt, in der das Schema und die Daten gespeichert werden.
 
 Nach Abschluss der Bereitstellung verfügen Sie über einen PostgreSQL-Server und eine Datenbank in Azure.
@@ -250,7 +266,7 @@ So stellen Sie Azure Database for PostgreSQL mithilfe der Azure CLI bereit:
 
 Im folgenden Code werden die in Azure Key Vault gespeicherten Geheimnisse PGUSERNAME und PGPASSWORD aus dem obigen Schritt zur Bereitstellung von Azure Key Vault verwendet.
 
-   ``` azurecli
+   ```powershell-interactive
    $pgUsername = $(az keyvault secret show --name PGUSERNAME --vault-name $kvName --query value) -replace '"',''
    $pgPassword = $(az keyvault secret show --name PGPASSWORD --vault-name $kvName --query value) -replace '"',''
 
@@ -309,13 +325,13 @@ Wenn Sie Cloud Shell anstelle eines lokalen psql-Tools verwenden, wählen Sie **
 Stellen Sie dann eine Verbindung mit der Instanz her, indem Sie den folgenden psql-Befehl mit Verbindungszeichenfolgenparametern aus der Registerkarte **Verbindungszeichenfolgen** der PostgreSQL-Instanz im Azure-Portal ausführen.
 Ersetzen Sie die leeren Klammern durch Parameter aus dem Blatt „Verbindungszeichenfolge“ der Datenbank und das Kennwort durch das Kennwort aus Azure Key Vault.
 
-```sql
+```shell
 psql "host={} port=5432 dbname=hellodb user={} password=PGPASSWORD sslmode=require"
 ```
 
 Führen Sie das folgende PL/pgSQL-Skript aus, nachdem Sie sichergestellt haben, dass Sie mit der Datenbank verbunden sind. Das Skript erstellt die gespeicherten Funktionen zum Einfügen von Daten in die Datenbank.
 
-```sql
+```shell
 CREATE OR REPLACE FUNCTION insert_visitor(country VARCHAR(40), browser VARCHAR(40), operating_system VARCHAR(40)) RETURNS void AS $$
 BEGIN
     INSERT INTO visitor(
@@ -332,7 +348,6 @@ BEGIN
 END;
 $$ LANGUAGE PLPGSQL;
 
-
 CREATE OR REPLACE FUNCTION insert_azure_document(title VARCHAR(40), url VARCHAR(100), category VARCHAR(40)) RETURNS void AS $$
 BEGIN
     INSERT INTO azure_document(
@@ -348,29 +363,29 @@ END;
 $$ LANGUAGE PLPGSQL;
 ```
 
-
-Weitere Informationen zum Einrichten der Überprüfung von SSL und den Zertifizierungsstellen für PostgreSQL finden Sie unter [Konfigurieren von SSL-Verbindungen in Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security).
+Weitere Informationen zum Einrichten der Überprüfung von SSL und den Zertifizierungsstellen für PostgreSQL finden Sie unter [Konfigurieren von SSL-Verbindungen in Azure Database for PostgreSQL](/azure/postgresql/concepts-ssl-connection-security).
 
 Im Container ist ein Stammzertifikat enthalten. Die Schritte zum Abrufen des Zertifikats lauten wie folgt:
 
 1. Laden Sie die Zertifikatdatei von der [Zertifizierungsstelle](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt) herunter.
-2. [Laden Sie OpenSSL auf Ihren Computer herunter, und installieren Sie die Software](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security).
+2. [Laden Sie OpenSSL auf Ihren Computer herunter, und installieren Sie die Software](/azure/postgresql/concepts-ssl-connection-security).
 3. Decodieren Sie die Zertifikatdatei:
 
-   ```powershell
+   ```shell
    openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
    ```
 
-Weitere Informationen zum Konfigurieren der SSL-Sicherheit für PostgreSQL finden Sie unter [Konfigurieren von SSL-Verbindungen in Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security).
+Weitere Informationen zum Konfigurieren der SSL-Sicherheit für PostgreSQL finden Sie unter [Konfigurieren von SSL-Verbindungen in Azure Database for PostgreSQL](/azure/postgresql/concepts-ssl-connection-security).
 
 #### <a name="deploy-azure-web-apps-on-linux"></a>Bereitstellen von Azure-Web-Apps für Linux
+
 Sie können Linux-Dienste ganz einfach auf Azure App Service aufbauen, da Azure vorgefertigte Container und Images für häufig verwendete Sprachen wie Python, Ruby, C# und Java bereitstellt. Azure unterstützt außerdem benutzerdefinierte Container, die praktisch alle Programmiersprachen auf der Azure App Service-Plattform zulassen.
 
 Bei der App, die bereitgestellt wird, handelt es sich um eine einfache Python-App, die in der neuesten Ubuntu Linux-Verteilung ausgeführt wird. Sie stellt eine Verbindung mit den Azure Key Vault- und PostgreSQL-Instanzen her, die in den vorherigen Abschnitten jeweils für die Verwaltung von Anmeldeinformationen und Datenspeicherung erstellt wurden.
 
 Die folgende Dockerfile wird im Stammordner der App bereitgestellt:
 
-``` docker
+```dockerfile
 # Docker file for the basic web app
 # Using the latest Alpine Linux
 
@@ -431,7 +446,7 @@ Der folgende Code:
 4. aktiviert die Protokollierung für den Web-App-Container.
 5. legt einige App-Konfigurationen in den App-Einstellungen des Containers fest.
 
-   ```
+   ```powershell-interactive
    Write-Host "Retrieving the Azure Key Vault URL"
    $kvURI = $(az keyvault show --name $kvName --query properties.vaultUri)
 
@@ -500,7 +515,6 @@ Der folgende Code:
            --end-ip-address $outboundIps[$i] `
            --verbose
    }
-
    ```
 
 Dieses Skript erstellt eine zugewiesene Identität für die App Service-Instanz, die mit MSI für die Interaktion mit Azure Key Vault verwendet werden kann, ohne eine Hartcodierung für Geheimnisse im Code oder in der Konfiguration vorzunehmen.
@@ -517,6 +531,7 @@ Da die Anwendung nur Schlüssel abrufen muss, wählen Sie die **Get**-Berechtigu
 Speichern Sie die Zugriffsrichtlinie, und speichern Sie dann die neue Änderung auf der Registerkarte **Zugriffsrichtlinien**, um die Richtlinien zu aktualisieren.
 
 #### <a name="deploy-application-gateway-with-web-application-firewall-enabled"></a>Bereitstellen von Application Gateway mit aktivierter Web Application Firewall
+
 Es wird davon abgeraten, Dienste in Web-Apps direkt für Außenstehende im Internet zur Verfügung zu stellten.
 Lastenausgleiche und Firewallregeln stellen mehr Sicherheit und Kontrolle über eingehenden Datenverkehr bereit und helfen Ihnen bei der Verwaltung.
 
@@ -529,7 +544,7 @@ So stellen Sie eine Application Gateway-Instanz bereit:
 5. Stellen Sie das Anwendungsgateway bereit.
 6. Aktivieren Sie die Web Application Firewall für das Gateway.
 
-   ``` azurecli
+   ```powershell-interactive
    az keyvault certificate create --vault-name $kvName `
        --name $certName `
        --policy `@policy.json `
@@ -564,7 +579,7 @@ Das vorherige Skript:
 
 Der folgende Abschnitt stellt das Anwendungsgateway bereit:
 
-```powershell
+```powershell-interactive
 # Create a virtual network required by the gateway
 Write-Host "Creating the Azure Virtual Network: $($vnetName)"
 az network vnet create --name $vnetName `
@@ -677,6 +692,7 @@ App Service-Instanzen können in virtuelle Netzwerke integriert werden. Diese In
    ![Neue VNET-Integration](./media/secure-web-app/app-vnet-menu.png)
 
     *Neue VNET-Integration für App Service*
+
 1. Klicken Sie auf der nächsten Seite auf **VNET hinzufügen (Vorschau)** .
 
 1. Wählen Sie im nächsten Menü das in der Bereitstellung erstellte virtuelle Netzwerk aus, das mit `hello-vnet` beginnt. Sie können entweder ein neues Subnetz erstellen oder ein vorhandenes auswählen.
@@ -743,7 +759,6 @@ Sie können die IP-Adresse des Gateways auf der Übersichtsseite abrufen. Geben 
 
 *Zulassen des Zugriffs auf App Service nur für die IP-Adresse des Gateways*
 
-
 #### <a name="implement-azure-active-directory-oauth"></a>Implementieren von OAuth für Azure Active Directory
 
 Bei den Azure-Dokumenten, die auf der Seite der Beispiel-Web-App verteilt werden, handelt es sich um Ressourcen der App, die möglicherweise geschützt werden müssen. Sie können Azure Active Directory zum Implementieren der Authentifizierung für Web-, Desktop- und Mobile Apps verwenden, indem Sie verschiedene Authentifizierungsflows anwenden.
@@ -760,7 +775,7 @@ Konfigurieren Sie die App im Azure-Portal für die Verwendung der erforderlichen
    *Erstellen einer Azure AD-App-Registrierung*
 
 3. Geben Sie auf der nächsten Seite den Namen der App ein. Wählen Sie unter **Unterstützte Kontotypen** die Option **Nur Konten in diesem Organisationsverzeichnis** aus.
-    Geben Sie unter **Umleitungs-URI** die Basisdomäne, auf der die App ausgeführt wird, sowie den Tokenendpunkt ein. Beispiel:  *GATEWAY_HASH*.cloudapp.net/token.
+    Geben Sie unter **Umleitungs-URI** die Basisdomäne, auf der die App ausgeführt wird, sowie den Tokenendpunkt ein. Beispiel: *GATEWAY_HASH*.cloudapp.net/token.
 
    ![Konfigurieren der Azure AD-App-Registrierung](./media/secure-web-app/ad-auth-type.png)
 
@@ -813,6 +828,7 @@ Nachdem Sie die Application Insights-Instanz für die einfache Beispiel-App erst
 Legen Sie ein `APPINSIGHTSKEY`-Geheimnis in Key Vault mit dem Instrumentierungsschlüssel als Wert fest. Dadurch kann die App Protokolle und Metriken an Application Insights senden.
 
 #### <a name="implement-multi-factor-authentication-for-azure-active-directory"></a>Implementieren der mehrstufigen Authentifizierung für Azure Active Directory
+
 Administratoren müssen sicherstellen, dass die Abonnementkonten im Portal geschützt sind. Das Abonnement ist für Angriffe anfällig, da es die von Ihnen erstellten Ressourcen verwaltet. Aktivieren Sie die mehrstufige Authentifizierung über die Registerkarte **Azure Active Directory** des Abonnements, um das Abonnement zu schützen.
 
 Azure Active Directory funktioniert auf Basis von Richtlinien, die auf Benutzer oder Benutzergruppen angewendet werden, die bestimmte Kriterien erfüllen.
@@ -847,8 +863,9 @@ Sie können die Richtlinie aktivieren, indem Sie das Kontrollkästchen in der An
 Es gibt eine Basisrichtlinie, die mehrstufige Authentifizierung für alle Azure-Administratoren erfordert. Sie können diese im Portal direkt aktivieren. Wenn Sie diese Richtlinie aktivieren, wird Ihre aktuelle Sitzung möglicherweise ungültig und erfordert eine erneute Anmeldung.
 
 Gehen Sie wie folgt vor, wenn die Basisrichtlinie nicht aktiviert ist:
-1.  Klicken Sie auf **Require MFA for admins** (Mehrstufige Authentifizierung für Administratoren anfordern).
-2.  Wählen Sie dann **Richtlinie sofort verwenden** aus.
+
+1. Klicken Sie auf **Require MFA for admins** (Mehrstufige Authentifizierung für Administratoren anfordern).
+2. Wählen Sie dann **Richtlinie sofort verwenden** aus.
 
    ![Auswahl von „Richtlinie sofort verwenden“](./media/secure-web-app/ad-mfa-conditional-enable.png)
 
@@ -916,6 +933,7 @@ So erstellen Sie diesen Arbeitsbereich:
 Sobald Sie die Metriken eingerichtet haben, verfügt Azure Sentinel über Daten für die Analyse.
 
 ## <a name="evaluate-and-verify"></a>Auswerten und Überprüfen
+
 Nachdem Sie die Architektur entwickelt und bereitgestellt haben, müssen Sie sicherstellen, dass der Code und die bereitgestellten Dienste gewisse Sicherheitsstandards erfüllen. Im Folgenden werden einige Schritte zur Überprüfung der Software beschrieben:
 
 - Statische Codeanalyse
@@ -925,6 +943,7 @@ Nachdem Sie die Architektur entwickelt und bereitgestellt haben, müssen Sie sic
 Dies sind Grundbausteine für bewährte Methoden für die sichere Entwicklung.
 
 ### <a name="static-code-analysis"></a>Statische Codeanalyse
+
 Für die Beispiel-App umfasst die Überprüfung mit Tools für die statische Analyse die Suche nach Sicherheitsrisiken im App-Code mithilfe von Verfahren wie die Taint-Prüfung und Datenflussanalyse. Mit Python-Tools für die statische Analyse können Sie sich der Sicherheit Ihrer App sicher sein.
 
 **Linting**
@@ -950,6 +969,7 @@ Nachdem Sie einige der Codefehler gefunden haben, die von den Lintingtools ermit
 *Nach PyLint*
 
 ### <a name="vulnerability-scanning"></a>Überprüfung auf Sicherheitsrisiken
+
 Bei dem [ZAP-Tool von OWASP](https://www.zaproxy.org/) handelt es sich um eine Open-Source-Überprüfung auf Sicherheitsrisiken von Webanwendungen, die Sie verwenden können, um die Beispiel-App auf Sicherheitsrisiken zu untersuchen. Beim Ausführen des Tools für die Beispiel-App werden einige mögliche Fehler und Angriffsvektoren aufgezeigt.
 
 ![ZAP-Tool](./media/secure-web-app/zap-tool.png)
@@ -957,6 +977,7 @@ Bei dem [ZAP-Tool von OWASP](https://www.zaproxy.org/) handelt es sich um eine O
 *ZAP-Tool*
 
 ### <a name="find-and-fix-vulnerabilities-in-app-dependencies"></a>Suchen und Beheben von Sicherheitsrisiken in App-Abhängigkeiten
+
 Sie können die [Abhängigkeitsüberprüfung von OWASP](https://www.owasp.org/index.php/OWASP_Dependency_Check) zum Suchen und Beheben von Anwendungsabhängigkeiten verwenden.
 
 „Safety“ ist eine ähnliche Anwendung, die Abhängigkeiten überprüft. Sie können Sie auf [GitHub](https://github.com/pyupio/safety) finden. Safety scannt nach Sicherheitsrisiken, die in bekannten Datenbanken für Sicherheitsrisiken dokumentiert wurden.
@@ -966,6 +987,7 @@ Sie können die [Abhängigkeitsüberprüfung von OWASP](https://www.owasp.org/in
 *Safety*
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zum Entwerfen, Entwickeln und Bereitstellen sicherer Anwendungen finden Sie in den folgenden Artikeln.
 
 - [Entwurf](secure-design.md)

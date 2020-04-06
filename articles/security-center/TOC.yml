@@ -29,6 +29,8 @@
       href: quick-onboard-azure-stack.md
 - name: Tutorials
   items:
+    - name: Leitfaden zu Planung und Betrieb
+      href: security-center-planning-and-operations-guide.md
     - name: Schützen von Ressourcen
       href: tutorial-protect-resources.md
     - name: Reagieren auf Incidents
@@ -71,8 +73,8 @@
           href: security-center-incident.md
         - name: Korrelation von intelligenten Cloudwarnungen (Vorfälle)
           href: security-center-alerts-cloud-smart.md
-        - name: Karte mit Sicherheitswarnungen und Informationen zu Bedrohungen
-          href: security-center-threat-intel.md
+        - name: Berichte zu Bedrohungen
+          href: security-center-threat-report.md
         - name: Warnungsüberprüfung (EICAR-Testdatei)
           href: security-center-alert-validation.md
 - name: Anleitungen
@@ -149,6 +151,8 @@
           href: security-center-sql-service-recommendations.md
         - name: Schützen von Identität und Zugriff
           href: security-center-identity-access.md
+        - name: Benutzerdaten für Untersuchung verwalten
+          href: security-center-investigation-user-data.md
     - name: Anwenden von Schutzmaßnahmen für die Cloud
       items:
         - name: Verwalten des Just-in-Time-Zugriffs
@@ -159,24 +163,6 @@
           href: security-center-file-integrity-monitoring.md
         - name: Adaptives Erhöhen des Netzwerkschutzes
           href: security-center-adaptive-network-hardening.md
-    - name: Archivieren
-      items:
-        - name: Anwenden der Datenträgerverschlüsselung
-          href: security-center-apply-disk-encryption.md
-        - name: Systemupdates anwenden
-          href: security-center-apply-system-updates.md
-        - name: Endpoint Protection installieren
-          href: security-center-install-endpoint-protection.md
-        - name: Berichte zu Bedrohungen
-          href: security-center-threat-report.md
-        - name: Zuverlässigkeitsbewertung für Warnungen
-          href: security-center-confidence-score.md
-        - name: Untersuchung
-          href: security-center-investigation.md
-        - name: Benutzerdaten für Untersuchung verwalten
-          href: security-center-investigation-user-data.md
-        - name: Planung und Betrieb
-          href: security-center-planning-and-operations-guide.md
 - name: Verweis
   items:
     - name: REST-APIs

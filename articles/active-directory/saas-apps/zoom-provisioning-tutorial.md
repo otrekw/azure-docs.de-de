@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Konfigurieren von Zoom für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in Zoom konfigurieren.
+description: Erfahren Sie, wie Sie Benutzerkonten aus Azure AD für Zoom automatisch bereitstellen und die Bereitstellung wieder aufheben.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -14,75 +14,80 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
-ms.author: jeedes
-ms.openlocfilehash: cd832a9dfec4680222d2c985f49aba499a56aaac
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.author: Zhchia
+ms.openlocfilehash: 94c261da0c935cb7a41dde768069099b4e5ed251
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77062765"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384074"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zoom für die automatische Benutzerbereitstellung
 
-In diesem Tutorial werden die Schritte erläutert, die in Zoom und Azure Active Directory (Azure AD) ausgeführt werden müssen, um Azure AD zum automatischen Bereitstellen und Aufheben der Bereitstellung von Benutzern und/oder Gruppen in Zoom zu konfigurieren.
+In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in Zoom als auch in Azure Active Directory (Azure AD) ausführen müssen, um die automatische Benutzerbereitstellung zu konfigurieren. Bei der Konfiguration stellt Azure AD automatisch mithilfe des Azure AD-Bereitstellungsdiensts Benutzer und Gruppen für [Zoom](https://zoom.us/pricing/) bereit bzw. hebt deren Bereitstellung auf. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md). 
 
-> [!NOTE]
-> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md).
->
-> Dieser Connector befindet sich derzeit in der Public Preview-Phase. Weitere Informationen zu den allgemeinen Nutzungsbedingungen von Microsoft Azure für Previewfunktionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+## <a name="capabilities-supported"></a>Unterstützte Funktionen
+> [!div class="checklist"]
+> * Erstellen von Benutzern in Zoom
+> * Entfernen von Benutzern aus Zoom, wenn diese keinen Zugriff mehr benötigen
+> * Synchronisieren von Benutzerattributen zwischen Azure AD und Zoom
+> * [Einmaliges Anmelden (SSO)](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-tutorial) bei Zoom (empfohlen)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
-* Einen Azure AD-Mandanten
+* [Einen Azure AD-Mandanten](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
 * [Einen Zoom-Mandanten](https://zoom.us/pricing)
-* Ein Benutzerkonto in Zoom mit Administratorrechten
+* Ein Benutzerkonto in Zoom mit Administratorberechtigungen
 
-## <a name="add-zoom-from-the-gallery"></a>Hinzufügen von Zoom aus dem Katalog
+## <a name="step-1-plan-your-provisioning-deployment"></a>Schritt 1: Planen der Bereitstellung
+1. Erfahren Sie, [wie der Bereitstellungsdienst funktioniert](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+2. Bestimmen Sie, wer [in den Bereitstellungsbereich](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) einbezogen werden soll.
+3. Legen Sie fest, welche Daten [zwischen Azure AD und Zoom zugeordnet werden sollen](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
-Bevor Sie Zoom für die automatische Benutzerbereitstellung mit Azure AD konfigurieren, müssen Sie Zoom aus dem Azure AD-Anwendungskatalog der Liste mit den verwalteten SaaS-Anwendungen hinzufügen.
+## <a name="step-2-configure-zoom-to-support-provisioning-with-azure-ad"></a>Schritt 2: Konfigurieren von Zoom für die Unterstützung der Bereitstellung mit Azure AD
 
-**Führen Sie die folgenden Schritte aus, um Zoom aus dem Azure AD-Anwendungskatalog hinzuzufügen:**
+1. Melden Sie sich bei Ihrer [Zoom Admin-Konsole](https://zoom.us/signin) an. Navigieren Sie zu **Erweitert > Zoom für Entwickler** im linken Navigationsbereich.
 
-1. Wählen Sie im **[Azure-Portal](https://portal.azure.com)** im linken Navigationsbereich **Azure Active Directory** aus.
+    ![„Integrationen“ in Zoom](media/zoom-provisioning-tutorial/zoom01.png)
 
-    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
+2. Navigieren Sie rechts oben auf der Seite zu **Verwalten**. 
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
+    ![„Installieren“ in Zoom](media/zoom-provisioning-tutorial/zoom02.png)
 
-    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+3. Navigieren Sie zu Ihrer erstellten Azure AD-App. 
+    
+    ![Zoom-App](media/zoom-provisioning-tutorial/zoom03.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+4. Wählen Sie im linken Navigationsbereich **App-Anmeldeinformationen** aus.
 
-    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
+    ![Zoom-App](media/zoom-provisioning-tutorial/zoom04.png)
 
-4. Geben Sie im Suchfeld **Zoom** ein, wählen Sie im Ergebnisbereich **Zoom** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+5. Kopieren und speichern Sie das **JWT-Token**. Dieser Wert wird im Feld **Geheimes Token** auf der Registerkarte „Bereitstellung“ der Zoom-Anwendung im Azure-Portal eingegeben. Wenn Sie ein neues unbefristetes Token benötigen, müssen Sie den Ablaufzeitpunkt neu konfigurieren, wodurch automatisch ein neues Token generiert wird. 
 
-    ![Zoom in der Ergebnisliste](common/search-new-app.png)
+    ![„Installieren“ in Zoom](media/zoom-provisioning-tutorial/zoom05.png)
 
-## <a name="assign-users-to-zoom"></a>Zuweisen von Benutzern zu Zoom
+## <a name="step-3-add-zoom-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von Zoom aus dem Azure AD-Anwendungskatalog
 
-Azure Active Directory ermittelt anhand von *Zuweisungen*, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
+Fügen Sie Zoom aus dem Azure AD-Anwendungskatalog hinzu, um mit dem Verwalten der Bereitstellung in Zoom zu beginnen. Wenn Sie Zoom zuvor für das einmalige Anmelden (SSO) eingerichtet haben, können Sie dieselbe Anwendung verwenden. Es ist jedoch empfehlenswert, beim erstmaligen Testen der Integration eine separate App zu erstellen. [Hier](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) erfahren Sie mehr über das Hinzufügen einer Anwendung aus dem Katalog. 
 
-Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD Zugriff auf Zoom benötigen. Anschließend können Sie diese Benutzer bzw. Gruppen Zoom wie folgt zuweisen:
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Schritt 4. Definieren der Benutzer für den Bereitstellungsbereich 
 
-* [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md)
+Mit dem Azure AD-Bereitstellungsdienst können Sie anhand der Zuweisung zur Anwendung oder aufgrund von Attributen für den Benutzer/die Gruppe festlegen, wer in die Bereitstellung einbezogen werden soll. Wenn Sie sich dafür entscheiden, anhand der Zuweisung festzulegen, wer für Ihre App bereitgestellt werden soll, können Sie der Anwendung mithilfe der folgenden [Schritte](../manage-apps/assign-user-or-group-access-portal.md) Benutzer und Gruppen zuweisen. Wenn Sie allein anhand der Attribute des Benutzers oder der Gruppe auswählen möchten, wer bereitgestellt wird, können Sie einen [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) beschriebenen Bereichsfilter verwenden. 
 
-### <a name="important-tips-for-assigning-users-to-zoom"></a>Wichtige Tipps zum Zuweisen von Benutzern zu Zoom
+* Beim Zuweisen von Benutzern und Gruppen zu Zoom müssen Sie eine andere Rolle als **Standardzugriff** auswählen. Benutzer mit der Rolle „Standardzugriff“ werden von der Bereitstellung ausgeschlossen und in den Bereitstellungsprotokollen als „nicht effektiv berechtigt“ gekennzeichnet. Wenn für die Anwendung nur die Rolle „Standardzugriff“ verfügbar ist, können Sie das [Anwendungsmanifest aktualisieren](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) und weitere Rollen hinzufügen. 
 
-* Es wird empfohlen, Zoom einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der automatischen Benutzerbereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
+* Fangen Sie klein an. Testen Sie die Bereitstellung mit einer kleinen Gruppe von Benutzern und Gruppen, bevor Sie sie für alle freigeben. Wenn der Bereitstellungsbereich auf zugewiesene Benutzer und Gruppen festgelegt ist, können Sie dies durch Zuweisen von einem oder zwei Benutzern oder Gruppen zur App kontrollieren. Ist der Bereich auf alle Benutzer und Gruppen festgelegt, können Sie einen [attributbasierten Bereichsfilter](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) angeben. 
 
-* Beim Zuweisen eines Benutzers zu Zoom müssen Sie im Dialogfeld für die Zuweisung eine gültige anwendungsspezifische Rolle auswählen (sofern verfügbar). Benutzer mit der Rolle **Standardzugriff** werden von der Bereitstellung ausgeschlossen.
 
-## <a name="configure-automatic-user-provisioning-to-zoom"></a>Konfigurieren der automatischen Benutzerbereitstellung in Zoom 
+## <a name="step-5-configure-automatic-user-provisioning-to-zoom"></a>Schritt 5: Konfigurieren der automatischen Benutzerbereitstellung in Zoom 
 
-In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitstellungsdiensts zum Erstellen, Aktualisieren und Deaktivieren von Benutzern oder Gruppen in Zoom auf der Grundlage von Benutzer- oder Gruppenzuweisungen in Azure AD erläutert.
+In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitstellungsdiensts zum Erstellen, Aktualisieren und Deaktivieren von Benutzern bzw. Gruppen in ServiceNow auf der Grundlage von Benutzer- oder Gruppenzuweisungen in Azure AD erläutert.
 
-> [!TIP]
-> Sie können auch das SAML-basierte einmalige Anmelden für Zoom aktivieren. Befolgen Sie dazu die Anweisungen im [SSO-Tutorial zu Zoom](zoom-tutorial.md). Einmaliges Anmelden kann unabhängig von der automatischen Benutzerbereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
-
-### <a name="configure-automatic-user-provisioning-for-zoom-in-azure-ad"></a>Konfigurieren der automatischen Benutzerbereitstellung für Zoom in Azure AD
+### <a name="to-configure-automatic-user-provisioning-for-zoom-in-azure-ad"></a>So konfigurieren Sie die automatischen Benutzerbereitstellung für Zoom in Azure AD:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
 
@@ -100,73 +105,60 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
     ![Registerkarte „Bereitstellung“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://api.zoom.us/scim` ein. Führen Sie die Schritte der in Schritt 6 beschriebenen exemplarischen Vorgehensweise aus, um das **geheime Token** Ihres Zoom-Kontos abzurufen.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://api.zoom.us/scim` ein. Geben Sie den Wert für das **JWT-Token** ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Zoom herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Zoom-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
-6. Melden Sie sich bei Ihrer [Zoom Admin-Konsole](https://zoom.us/signin) an. Navigieren Sie zu **Erweitert > Zoom für Entwickler** im linken Navigationsbereich.
+    ![Bereitstellung von Zoom](./media/zoom-provisioning-tutorial/provisioning.png)
 
-    ![„Integrationen“ in Zoom](media/zoom-provisioning-tutorial/zoom01.png)
-
-    Navigieren Sie rechts oben auf der Seite zu **Verwalten**. 
-
-    ![„Installieren“ in Zoom](media/zoom-provisioning-tutorial/zoom02.png)
-
-    Navigieren Sie zu Ihrer erstellten Azure AD-App. 
-    
-    ![Zoom-App](media/zoom-provisioning-tutorial/zoom03.png)
-
-    Wählen Sie im linken Navigationsbereich **App-Anmeldeinformationen** aus.
-
-    ![Zoom-App](media/zoom-provisioning-tutorial/zoom04.png)
-
-    Rufen Sie den nachstehend gezeigten JWT-Tokenwert ab, und geben Sie diesen in das Feld **Geheimes Token** in Azure AD ein. Wenn Sie ein neues unbefristetes Token benötigen, müssen Sie den Ablaufzeitpunkt neu konfigurieren, wodurch automatisch ein neues Token generiert wird. 
-
-    ![„Installieren“ in Zoom](media/zoom-provisioning-tutorial/zoom05.png)
-
-7. Klicken Sie nach dem Auffüllen der in Schritt 5 gezeigten Felder auf **Verbindung testen**, um sich zu vergewissern, dass Azure AD eine Verbindung mit Zoom herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Zoom-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
-
-    ![Token](common/provisioning-testconnection-tenanturltoken.png)
-
-8. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
+6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
     ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
-9. Klicken Sie auf **Speichern**.
+7. Wählen Sie **Speichern** aus.
 
-10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Zoom synchronisieren**.
+8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Zoom synchronisieren**.
 
-    ![Benutzerzuordnungen in Zoom](media/zoom-provisioning-tutorial/zoom-user-mapping.png)
+9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Zoom synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Zoom für Updatevorgänge verwendet werden. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) zu ändern, müssen Sie sicherstellen, dass die Zoom-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Zoom synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Zoom für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
-    
-     ![Benutzerzuordnungen in Zoom](media/zoom-provisioning-tutorial/zoom-user-attributes.png)
+   |attribute|type|
+   |---|---|
+   |userName|String|
+   |aktiv|Boolean|
+   |name.givenName|String|
+   |name.familyName|String|
+   |emails[type eq "work"]|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
 
-12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Um den Azure AD-Bereitstellungsdienst für Zoom zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
-    
+11. Um den Azure AD-Bereitstellungsdienst für Zoom zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
+
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
-14. Legen Sie die Benutzer bzw. Gruppen fest, die in Zoom bereitgestellt werden sollen. Wählen Sie dazu im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte aus.
+12. Legen Sie die Benutzer bzw. Gruppen fest, die in Zoom bereitgestellt werden sollen. Wählen Sie dazu im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte aus.
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-15. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
+13. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 
-Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst in Zoom ausgeführt werden.
+Durch diesen Vorgang wird der erstmalige Synchronisierungszyklus für alle Benutzer und Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert wurden. Der erste Zyklus dauert länger als nachfolgende Zyklen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. 
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
+## <a name="step-6-monitor-your-deployment"></a>Schritt 6: Überwachen der Bereitstellung
+Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden Ressourcen die Bereitstellung überwachen:
+
+1. Mithilfe der [Bereitstellungsprotokolle](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) können Sie ermitteln, welche Benutzer erfolgreich bzw. nicht erfolgreich bereitgestellt wurden.
+2. Anhand der [Fortschrittsleiste](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
+3. Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
 
 ## <a name="connector-limitations"></a>Connector-Einschränkungen
-
-* Die Bereitstellung für Gruppen wird von Zoom nicht unterstützt.
+* In Zoom sind derzeit maximal 9.999 Basic-Benutzer zulässig.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../manage-apps/check-status-user-account-provisioning.md)

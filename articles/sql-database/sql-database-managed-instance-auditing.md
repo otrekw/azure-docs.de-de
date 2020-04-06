@@ -12,13 +12,13 @@ f1_keywords:
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 04/08/2019
-ms.openlocfilehash: 9b96969027431f289e366b150fbfc6a62ee6a908
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 03/27/2020
+ms.openlocfilehash: 405ac27fad3c24d3064f11476f452ad00abb9b02
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719907"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387766"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Erste Schritte bei der Überwachung von verwalteten Azure SQL-Datenbank-Instanzen
 
@@ -32,7 +32,7 @@ Die [Überwachung verwalteter Instanzen](sql-database-managed-instance.md) verfo
 Der folgende Abschnitt beschreibt die Konfiguration der Überwachung für Ihre verwaltete Instanz.
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-1. Erstellen Sie einen Azure Storage-**Container**, in dem die Überwachungsprotokolle gespeichert werden.
+2. Erstellen Sie einen Azure Storage-**Container**, in dem die Überwachungsprotokolle gespeichert werden.
 
    1. Navigieren Sie zu der Azure Storage-Instanz, in der Sie Ihre Überwachungsprotokolle speichern möchten.
 
@@ -50,8 +50,10 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung für Ihre v
    1. Geben Sie einen **Namen** für den Container an, legen Sie die öffentliche Zugriffsebene auf **Privat** fest, und klicken Sie dann auf **OK**.
 
       ![Erstellen einer Blobcontainerkonfiguration](./media/sql-managed-instance-auditing/3_create_container_config.png)
-
-1. Nach dem Erstellen des Containers für die Überwachungsprotokolle gibt es zwei Möglichkeiten, ihn als Ziel für die Überwachungsprotokolle zu konfigurieren: [mit T-SQL](#blobtsql) oder [mithilfe der Benutzeroberfläche von SQL Server Management Studio (SSMS)](#blobssms):
+  > [!IMPORTANT]
+  > Kunden, die eine unveränderliche Protokollspeicherung für Überwachungsereignisse auf Server- oder Datenbankebene konfigurieren möchten, sollten der [von Azure Storage bereitgestellten Anleitung](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage#enabling-allow-protected-append-blobs-writes) folgen (stellen Sie sicher, dass Sie beim Konfigurieren des unveränderlichen Blobspeichers **Weitere Anfügungen zulassen** aktiviert haben).
+  
+3. Nach dem Erstellen des Containers für die Überwachungsprotokolle gibt es zwei Möglichkeiten, ihn als Ziel für die Überwachungsprotokolle zu konfigurieren: [mit T-SQL](#blobtsql) oder [mithilfe der Benutzeroberfläche von SQL Server Management Studio (SSMS)](#blobssms):
 
    - <a id="blobtsql"></a>Konfigurieren von Blob Storage für Überwachungsprotokolle mit T-SQL:
 
@@ -138,12 +140,12 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung für Ihre v
 
      1. Klicken Sie im Dialogfeld „Überwachung erstellen“ auf **OK**.
 
-1. <a id="createspec"></a>Erstellen Sie nach dem Konfigurieren des Blobcontainers als Ziel für die Überwachungsprotokolle eine Spezifikation für die Serverüberwachung oder die Datenbanküberwachung. Die Vorgehensweise entspricht der für SQL Server:
+4. <a id="createspec"></a>Erstellen und aktivieren Sie nach dem Konfigurieren des Blobcontainers als Ziel für die Überwachungsprotokolle eine Spezifikation für die Serverüberwachung oder die Datenbanküberwachung. Die Vorgehensweise entspricht der für SQL Server:
 
    - [Erstellen einer Spezifikation für die Serverüberwachung – T-SQL-Anleitung](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
    - [Erstellen einer Spezifikation für die Datenbanküberwachung – T-SQL-Anleitung](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
 
-1. Aktivieren Sie die Serverüberwachung, die Sie in Schritt 6 erstellt haben:
+5. Aktivieren Sie die Serverüberwachung, die Sie in Schritt 3 erstellt haben:
 
     ```SQL
     ALTER SERVER AUDIT [<your_audit_name>]
@@ -184,7 +186,7 @@ Weitere Informationen:
     GO
     ```
 
-9. Erstellen Sie eine Spezifikation für die Serverüberwachung oder die Datenbanküberwachung wie für SQL Server:
+9. Erstellen und aktivieren Sie eine Spezifikation für die Serverüberwachung oder die Datenbanküberwachung wie für SQL Server:
 
    - [Erstellen einer Spezifikation für die Serverüberwachung – T-SQL-Anleitung](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
    - [Erstellen einer Spezifikation für die Datenbanküberwachung – T-SQL-Anleitung](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
@@ -192,7 +194,8 @@ Weitere Informationen:
 10. Aktivieren Sie die Serverüberwachung, die Sie in Schritt 8 erstellt haben:
  
     ```SQL
-    ALTER SERVER AUDIT [<your_audit_name>] WITH (STATE=ON);
+    ALTER SERVER AUDIT [<your_audit_name>]
+    WITH (STATE=ON);
     GO
     ```
 

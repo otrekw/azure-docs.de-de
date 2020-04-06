@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/13/2020
-ms.author: sedusch
+ms.date: 03/11/2020
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 48e06ed31de35ad29a0fda271feaaf50b5efaf8a
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 7ddcc5165f5588ff9015d7fafbc2b822268ffea7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616819"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80337161"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver
 
@@ -33,14 +33,14 @@ ms.locfileid: "77616819"
 [1139904]:https://launchpad.support.sap.com/#/notes/1139904
 [1173395]:https://launchpad.support.sap.com/#/notes/1173395
 [1245200]:https://launchpad.support.sap.com/#/notes/1245200
-[1409604]: https://launchpad.support.sap.com/#/notes/1409604
+[1409604]:https://launchpad.support.sap.com/#/notes/1409604
 [1558958]:https://launchpad.support.sap.com/#/notes/1558958
 [1585981]:https://launchpad.support.sap.com/#/notes/1585981
 [1588316]:https://launchpad.support.sap.com/#/notes/1588316
 [1590719]:https://launchpad.support.sap.com/#/notes/1590719
-[1597355]: https://launchpad.support.sap.com/#/notes/1597355
+[1597355]:https://launchpad.support.sap.com/#/notes/1597355
 [1605680]:https://launchpad.support.sap.com/#/notes/1605680
-[1619720]: https://launchpad.support.sap.com/#/notes/1619720
+[1619720]:https://launchpad.support.sap.com/#/notes/1619720
 [1619726]:https://launchpad.support.sap.com/#/notes/1619726
 [1619967]:https://launchpad.support.sap.com/#/notes/1619967
 [1750510]:https://launchpad.support.sap.com/#/notes/1750510
@@ -52,24 +52,24 @@ ms.locfileid: "77616819"
 [1772688]:https://launchpad.support.sap.com/#/notes/1772688
 [1814258]:https://launchpad.support.sap.com/#/notes/1814258
 [1882376]:https://launchpad.support.sap.com/#/notes/1882376
-[1909114]: https://launchpad.support.sap.com/#/notes/1909114
+[1909114]:https://launchpad.support.sap.com/#/notes/1909114
 [1922555]:https://launchpad.support.sap.com/#/notes/1922555
-[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1941500]:https://launchpad.support.sap.com/#/notes/1941500
 [1956005]:https://launchpad.support.sap.com/#/notes/1956005
 [1973241]:https://launchpad.support.sap.com/#/notes/1973241
-[1984787]: https://launchpad.support.sap.com/#/notes/1984787
-[1999351]: https://launchpad.support.sap.com/#/notes/1999351
-[2002167]: https://launchpad.support.sap.com/#/notes/2002167
-[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[1984787]:https://launchpad.support.sap.com/#/notes/1984787
+[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[2002167]:https://launchpad.support.sap.com/#/notes/2002167
+[2015553]:https://launchpad.support.sap.com/#/notes/2015553
 [2039619]:https://launchpad.support.sap.com/#/notes/2039619
-[2069760]: https://launchpad.support.sap.com/#/notes/2069760
+[2069760]:https://launchpad.support.sap.com/#/notes/2069760
 [2121797]:https://launchpad.support.sap.com/#/notes/2121797
 [2134316]:https://launchpad.support.sap.com/#/notes/2134316
-[2178632]: https://launchpad.support.sap.com/#/notes/2178632
-[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2178632]:https://launchpad.support.sap.com/#/notes/2178632
+[2191498]:https://launchpad.support.sap.com/#/notes/2191498
 [2233094]:https://launchpad.support.sap.com/#/notes/2233094
-[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[2243692]:https://launchpad.support.sap.com/#/notes/2243692
 
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
@@ -353,7 +353,7 @@ Im gesamten Dokument werden die folgenden Begriffe verwendet:
 
 
 
-### <a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>Ressourcen
+### <a name="resources"></a><a name="e55d1e22-c2c8-460b-9897-64622a34fdff"></a>Ressourcen
 Den Einstiegspunkt für die SAP-Workload in der Azure-Dokumentation finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). Beginnend mit diesem Einstiegspunkt finden Sie zahlreiche Artikel, die folgende Themen behandeln:
 
 - SAP NetWeaver und Business One in Azure
@@ -391,7 +391,7 @@ Allgemeine standardmäßige und maximale Einschränkungen von Azure-Abonnements 
 ## <a name="possible-scenarios"></a>Mögliche Szenarien
 SAP wird in Unternehmen häufig als eine der Anwendungen angesehen, die am wichtigsten für den Erfolg sind. Die Architektur und Abläufe dieser Anwendungen sind in der Regel komplex, und es ist wichtig, dass Sie die Verfügbarkeits- und Leistungsanforderungen erfüllen.
 
-Unternehmen müssen daher sorgfältig abwägen, welchen Cloudanbieter sie auswählen, bei dem diese unternehmenskritischen Geschäftsprozesse ausgeführt werden sollen. Azure ist die ideale öffentliche Cloudplattform für unternehmenskritische SAP-Anwendungen und Geschäftsprozesse. Angesichts der Vielfältigkeit der Azure-Infrastruktur können heute nahezu sämtliche vorhandene SAP NetWeaver- und S/4HANA-Systeme in Azure gehostet werden. Azure bietet VMs mit vielen Terabyte Arbeitsspeicher und mehr als 200 CPUs an. Darüber hinaus bietet Azure [HANA (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) als Möglichkeit, HANA-Bereitstellungen horizontal auf bis zu 24 TB und HANA-Bereitstellungen horizontal auf bis zu 120 TB zu skalieren. Heutzutage können fast alle lokalen SAP-Szenarien auch in Azure ausgeführt werden. 
+Unternehmen müssen daher sorgfältig abwägen, welchen Cloudanbieter sie auswählen, bei dem diese unternehmenskritischen Geschäftsprozesse ausgeführt werden sollen. Azure ist die ideale öffentliche Cloudplattform für unternehmenskritische SAP-Anwendungen und Geschäftsprozesse. Angesichts der Vielfältigkeit der Azure-Infrastruktur können heute nahezu sämtliche vorhandene SAP NetWeaver- und S/4HANA-Systeme in Azure gehostet werden. Azure bietet VMs mit vielen Terabyte Arbeitsspeicher und mehr als 200 CPUs an. Darüber hinaus bietet Azure [HANA (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) als Möglichkeit, HANA-Bereitstellungen horizontal auf bis zu 24 TB und SAP HANA-Bereitstellungen horizontal auf bis zu 120 TB zu skalieren. Heutzutage können fast alle lokalen SAP-Szenarien auch in Azure ausgeführt werden. 
 
 Eine grobe Beschreibung der Szenarien und einiger nicht unterstützter Szenarien finden Sie im Dokument [SAP-Workload in Szenarien mit Unterstützung von virtuellen Azure-Computern](./sap-planning-supported-configurations.md).
 
@@ -416,87 +416,98 @@ Zum Sammeln von Daten für die Planung Ihrer Bereitstellung in Azure ist Folgend
 Details zu unterstützten SAP-Komponenten in Azure, unterstützten Azure-Infrastruktureinheiten sowie zugehörigen Betriebssystemreleases und DBMS-Releases werden im Artikel [Welche SAP-Software wird für Azure-Bereitstellungen unterstützt?](./sap-supported-product-on-azure.md) erläutert. Die Ergebnisse der Auswertung gültiger SAP-Releases, Betriebssysteme und DBMS-Releases haben großen Einfluss auf die Bemühungen, SAP-Systeme nach Azure zu verschieben. Die Ergebnisse dieser Auswertung legen fest, ob in Fällen, in denen SAP-Releaseupgrades oder Betriebssystemänderungen benötigt werden, erhebliche Vorbereitungsmaßnahmen erforderlich sind.
 
 
+## <a name="azure-regions"></a><a name="be80d1b9-a463-4845-bd35-f4cebdb5424a"></a>Azure-Regionen
+Die Azure-Dienste von Microsoft werden in Azure-Regionen gesammelt. Bei einer Azure-Region handelt es sich um ein Rechenzentrum oder eine Sammlung von Rechenzentren mit der Hardware und Infrastruktur, die die verschiedenen Azure-Dienste ausführt und hostet. Diese Infrastruktur umfasst eine Vielzahl von Knoten, die als Computeknoten oder Speicherknoten fungieren bzw. Netzwerkfunktionen ausführen. 
 
-## <a name="first-steps-planning-a-deployment"></a>Erste Schritte bei der Planung einer Bereitstellung
-Der erste Schritt bei der Bereitstellungsplanung besteht NICHT darin, VMs zu suchen, die für die Ausführung von SAP verfügbar sind. Der erste Schritt kann sehr zeitaufwändig sein. Insbesondere muss aber zusammen mit den Konformitäts- und Sicherheitsteams in Ihrem Unternehmen unbedingt geklärt werden, welche Randbedingungen für die Bereitstellung der jeweiligen SAP-Workloads oder -Geschäftsprozesse in der öffentlichen Cloud bestehen. Wenn Ihr Unternehmen zuvor andere Software in Azure bereitgestellt hat, kann der Prozess einfach sein. Wenn Ihr Unternehmen erst am Anfang der Reise steht, sind möglicherweise umfangreichere Diskussionen erforderlich, um die Randbedingungen und Sicherheitsbedingungen zu ermitteln, die das Hosten bestimmter SAP-Daten und SAP-Geschäftsprozesse in der öffentlichen Cloud beeinflussen.
+Eine Liste der verschiedenen Azure-Regionen finden Sie im Artikel [Azure-Geografien](https://azure.microsoft.com/global-infrastructure/geographies/). Nicht alle Azure-Regionen bieten dieselben Dienste an. Abhängig vom SAP-Produkt, das Sie ausführen möchten, und vom dazugehörigen Betriebssystem und DBMS kann es zu der Situation kommen, dass eine bestimmte Region nicht die erforderlichen VM-Typen bietet. Dies gilt insbesondere für das Ausführen von SAP HANA, bei dem Sie normalerweise virtuelle Computer der M/Mv2-VM-Serie benötigen. Diese VM-Familien werden nur in einem Teilbereich der Regionen bereitgestellt. Informationen zu den jeweils verfügbaren virtuellen Computern, Typen, Azure-Speichertypen oder anderen Azure-Diensten in den einzelnen Regionen finden Sie auf der Website [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/). Am Anfang Ihrer Planung müssen Sie zunächst untersuchen, ob die erforderlichen Dienste in diesen Regionen verfügbar sind, wenn bestimmte Regionen als primäre Region und ggf. sekundäre Region verwendet werden sollen. 
 
-Hilfreich können dabei die Informationen unter [Microsoft-Complianceangebote](https://docs.microsoft.com/microsoft-365/compliance/offering-home) sein. Dort finden Sie eine Liste der von Microsoft bereitgestellten Complianceangebote. 
+### <a name="availability-zones"></a>Verfügbarkeitszonen
+In einigen Azure-Regionen ist ein Konzept namens „Verfügbarkeitszonen“ implementiert. Verfügbarkeitszonen sind physisch getrennte Standorte in einer Azure-Region. Jede Verfügbarkeitszone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Die Bereitstellung von zwei VMs in zwei Verfügbarkeitszonen von Azure und die Implementierung eines Hochverfügbarkeitsframeworks für Ihr SAP-DBMS-System oder die SAP Central Services bietet beispielsweise die beste SLA in Azure. Überprüfen Sie für diese spezielle SLA für virtuelle Computer in Azure die neueste Version der [SLAs für virtuellen Computer](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Da Azure-Regionen in den letzten Jahren schnell entwickelt und erweitert wurden, kann die Topologie der Azure-Regionen, die Anzahl der physischen Rechenzentren, der Abstand zwischen diesen Rechenzentren und der Abstand zwischen Azure-Verfügbarkeitszonen abweichen. Dies gilt somit auch für die Netzwerklatenz.
 
-Weitere Aspekte wie die Datenverschlüsselung für ruhende Daten oder die Verschlüsselung im Azure-Dienst sind in der [Übersicht zur Azure-Verschlüsselung](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview) dokumentiert.
-
-Unterschätzen Sie diese Phase des Projekts in ihrer Planung nicht. Nur wenn einvernehmliche Regeln zu diesem Thema vorhanden sind, können Sie zum nächsten Schritt übergehen, d. h. der Planung der in Azure bereitgestellten Netzwerkarchitektur.
+Das Prinzip von Verfügbarkeitszonen gilt nicht für den HANA-spezifischen Dienst [HANA (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture). Vereinbarungen zum Servicelevel für HANA (große Instanzen) finden Sie im Artikel [SLA für SAP HANA in Azure (große Instanzen)](https://azure.microsoft.com/support/legal/sla/sap-hana-large/) 
 
 
+### <a name="fault-domains"></a><a name="df49dc09-141b-4f34-a4a2-990913b30358"></a>Fehlerdomänen
+Fehlerdomänen stellen eine physische Fehlereinheit dar, die eng mit der physischen Infrastruktur in Rechenzentren verwandt ist, und obwohl ein physisches Blade oder Rack als Fehlerdomäne betrachtet werden kann, gibt es keine direkte 1:1-Zuordnung zwischen den beiden.
 
-## <a name="microsoft-azure-virtual-machine-services"></a>Microsoft Azure Virtual Machine-Dienste
-Die Microsoft Azure-Plattform ist eine internetweite Clouddiensteplattform, die in Microsoft-Rechenzentren gehostet und betrieben wird. Die Plattform umfasst die Microsoft Azure Virtual Machine-Dienste (Infrastructure as a Service oder IaaS) und eine Reihe von umfassenden PaaS-Funktionen (Platform as a Service)-Funktionen.
+Wenn Sie mehrere virtuelle Computer als Teil eines SAP-Systems in Microsoft Azure Virtual Machine-Diensten bereitstellen, können Sie die Azure Fabric Controller zum Bereitstellen der Anwendung in verschiedenen Fehlerdomänen einsetzen und so die höheren Anforderungen der Verfügbarkeits-SLAs erfüllen. Allerdings ist die Verteilung von Fehlerdomänen über eine Azure-Skalierungseinheit (Sammlung von Hunderten von Serverknoten oder Speicherknoten und Netzwerken) oder die Zuweisung von virtuellen Computern zu einer bestimmten Fehlerdomäne etwas, das Sie nicht direkt steuern können. Um Azure Fabric Controller anzuweisen, eine Gruppe von virtuellen Computern in verschiedenen Fehlerdomänen bereitzustellen, müssen Sie den virtuellen Computern zum Zeitpunkt der Bereitstellung eine Azure-Verfügbarkeitsgruppe zuweisen. Weitere Informationen zu Azure-Verfügbarkeitsgruppen finden Sie im Kapitel [Azure-Verfügbarkeitsgruppen][planning-guide-3.2.3] in diesem Dokument.
 
-Die Azure-Plattform verringert die Notwendigkeit für den Vorabkauf von Technologie und Infrastruktur. Sie vereinfacht die Wartung und den Betrieb von Anwendungen durch die Bereitstellung von bedarfsgesteuerten Server- und Speicherressourcen zum Hosten, Skalieren und Verwalten von Webanwendungen und verbundenen Anwendungen. Die Infrastrukturverwaltung wird mit einer Plattform automatisiert, die für Hochverfügbarkeit und dynamische Skalierung konzipiert wurde, um den Nutzungsanforderungen mit der Option eines nutzungsbasierten Preismodells zu entsprechen.
+
+### <a name="upgrade-domains"></a><a name="fc1ac8b2-e54a-487c-8581-d3cc6625e560"></a>Upgradedomänen
+Upgradedomänen stellen eine logische Einheit dar, mit deren Hilfe Sie bestimmen können, wie eine VM innerhalb eines SAP-Systems aktualisiert wird, das aus SAP-Instanzen besteht, die auf mehreren VMs ausgeführt werden. Wenn ein Upgrade durchgeführt wird, durchläuft Microsoft Azure nacheinander den Aktualisierungsprozess für diese Upgradedomänen. Durch das Verteilen von virtuellen Computern zum Zeitpunkt der Bereitstellung über verschiedene Upgradedomänen können Sie Ihr SAP-System teilweise vor potenziellen Ausfallzeiten schützen. Um zu erzwingen, dass Azure die virtuellen Computer eines SAP-Systems bereitstellt, das über verschiedene Upgradedomänen verteilt ist, müssen Sie ein bestimmtes Attribut zum Zeitpunkt der Bereitstellung der einzelnen virtuellen Computer festlegen. Ähnlich wie Fehlerdomänen ist auch eine Azure-Skalierungseinheit in mehrere Upgradedomänen unterteilt. Um Azure Fabric Controller anzuweisen, eine Gruppe aus virtuellen Computern in verschiedenen Upgradedomänen bereitzustellen, müssen Sie den virtuellen Computern zum Zeitpunkt der Bereitstellung eine Azure-Verfügbarkeitsgruppe zuweisen. Weitere Informationen zu Azure-Verfügbarkeitsgruppen finden Sie im Kapitel [Azure-Verfügbarkeitsgruppen][planning-guide-3.2.3] weiter unten.
+
+
+### <a name="azure-availability-sets"></a><a name="18810088-f9be-4c97-958a-27996255c665"></a>Azure-Verfügbarkeitsgruppen
+Virtuelle Azure-Computer innerhalb einer Azure-Verfügbarkeitsgruppe werden von Azure Fabric Controller auf verschiedene Fehler- und Upgradedomänen verteilt. Der Zweck der Verteilung auf verschiedene Fehler- und Upgradedomänen besteht darin, zu verhindern, dass alle virtuellen Computer eines SAP-Systems im Falle von Infrastrukturwartungsarbeiten oder eines Fehler innerhalb einer Fehlerdomäne heruntergefahren werden. Standardmäßig sind virtuelle Computer nicht Teil einer Verfügbarkeitsgruppe. Die Mitgliedschaft einer VM in einer Verfügbarkeitsgruppe wird zum Zeitpunkt der Bereitstellung oder später durch eine Neukonfiguration und erneute Bereitstellung einer VM definiert.
+
+Lesen Sie zum besseren Verständnis des Konzepts von Azure-Verfügbarkeitsgruppen und der Beziehung von Verfügbarkeitsgruppen zu Fehler- und Upgradedomänen [diesen Artikel][virtual-machines-manage-availability]. 
+
+Wenn Sie Verfügbarkeitsgruppen definieren und verschiedene VMs unterschiedlicher VM-Familien in einer Verfügbarkeitsgruppe mischen möchten, treten möglicherweise Probleme auf, die verhindern, dass Sie einen bestimmten VM-Typ in eine solche Verfügbarkeitsgruppe einfügen können. Der Grund hierfür liegt darin, dass die Verfügbarkeitsgruppe an die Skalierungseinheit gebunden ist, die einen bestimmten Typ von Computehosts enthält. Auf einem bestimmten Computehosttyp können nur bestimmte Typen von VM-Familien ausgeführt werden. Wenn Sie z. B. eine Verfügbarkeitsgruppe erstellen, den ersten virtuellen Computer in der Verfügbarkeitsgruppe bereitstellen, einen VM-Typ der Esv3-Familie auswählen und dann als zweiten virtuellen Computer einen virtuellen Computer der M-Familie bereitstellen möchten, wird die zweite Zuteilung abgelehnt. Der Grund hierfür ist, dass virtuelle Computer der Esv3-Familie nicht auf derselben Hosthardware wie die virtuellen Computer der M-Familie ausgeführt werden. Das gleiche Problem kann auftreten, wenn Sie versuchen, die Größe der virtuellen Computer zu ändern und einen virtuellen Computer der Esv3-Familie in einen VM-Typ der M-Familie zu verschieben. Um die Größe einer VM-Familie zu ändern, die nicht auf derselben Hosthardware gehostet werden kann, müssen Sie alle virtuellen Computer in der Verfügbarkeitsgruppe herunterfahren und deren Größe ändern, damit sie auf dem anderen Hostcomputertyp ausgeführt werden kann. Informationen zu SLAs von virtuellen Computern, die in der Verfügbarkeitsgruppe bereitgestellt werden, finden Sie im Artikel [SLAs für virtuelle Computer](https://azure.microsoft.com/support/legal/sla/virtual-machines/). 
+
+Das Prinzip von Verfügbarkeitsgruppen sowie der zugehörigen Updatedomäne und Fehlerdomäne gilt nicht für den HANA-spezifischen Dienst [HANA (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture). Vereinbarungen zum Servicelevel für HANA (große Instanzen) finden Sie im Artikel [SLA für SAP HANA in Azure (große Instanzen)](https://azure.microsoft.com/support/legal/sla/sap-hana-large/). 
+
+> [!IMPORTANT]
+> Die Konzepte von Azure-Verfügbarkeitszonen und Azure-Verfügbarkeitsgruppen schließen sich gegenseitig aus. Dies bedeutet, dass Sie entweder zwei oder mehrere VMs in einer bestimmten Verfügbarkeitszone oder einer Azure-Verfügbarkeitsgruppe bereitstellen können, jedoch nicht in beiden.
+
+
+## <a name="azure-virtual-machine-services"></a>Dienste für virtuelle Azure-Computer
+Azure bietet eine umfangreiche Auswahl an virtuellen Computern, die Sie für die Bereitstellung auswählen können. Ein Vorabkauf von Technologie und Infrastruktur ist nicht notwendig. Das Azure-Dienstangebot für virtuelle Computer vereinfacht die Wartung und den Betrieb von Anwendungen durch die Bereitstellung von bedarfsgesteuerten Server- und Speicherressourcen zum Hosten, Skalieren und Verwalten von Webanwendungen und verbundenen Anwendungen. Die Infrastrukturverwaltung wird mit einer Plattform automatisiert, die für Hochverfügbarkeit und dynamische Skalierung konzipiert wurde, um den Nutzungsanforderungen mit der Option mehrerer verschiedener Preismodelle zu entsprechen.
 
 ![Positionieren von Microsoft Azure Virtual Machine-Dienste][planning-guide-figure-400]
 
-Mit Azure Virtual Machine Services ermöglicht Ihnen Microsoft das Bereitstellen benutzerdefinierter Images in Azure als IaaS-Instanzen. Die virtuellen Computer in Azure basieren auf virtuellen Festplatten (VHDs) und können unterschiedliche Betriebssysteme als Gastbetriebssysteme ausführen.
+Mit virtuellen Azure-Computern ermöglicht Ihnen Microsoft das Bereitstellen benutzerdefinierter Images in Azure als IaaS-Instanzen. Sie können auch Betriebssystemimages aus den umfangreichen Auswahlmöglichkeiten im Azure-Imagekatalog auswählen.
 
-Aus Betriebsperspektive bietet der Azure Virtual Machine-Dienst ähnliche Funktionen wie lokal bereitgestellte virtuellen Computer. Er hat jedoch den wichtigen Vorteil, dass Sie keine Infrastruktur beschaffen, verwalten und managen müssen. Entwickler und Administratoren haben Vollzugriff auf das Betriebssystemimage auf diesen virtuellen Computern. Administratoren können sich remote bei diesen virtuellen Computern anmelden, um Wartungs- und Problembehandlungsaufgaben sowie Softwarebereitstellungsaufgaben auszuführen. Hinsichtlich der Bereitstellung sind die einzigen Einschränkungen die Größen und Funktionen von virtuellen Azure-Computern. Diese Größen sind möglicherweise nicht so präzise konfigurierbar, wie es lokal möglich wäre. Es gibt eine Auswahl von virtuellen Computertypen, die eine Kombination aus Folgendem darstellen:
+Aus Betriebsperspektive bietet der Azure Virtual Machine-Dienst ähnliche Funktionen wie lokal bereitgestellte virtuellen Computer. Für Verwaltung, Betrieb und Patchen des jeweiligen Betriebssystems, das auf einer Azure-VM ausgeführt wird, und den zugehörigen Anwendungen auf dem betreffenden virtuellen Computer sind Sie verantwortlich. Microsoft stellt keine weiteren Dienste bereit, die über das Hosting des betreffenden virtuellen Computers in der Azure-Infrastruktur (Infrastructure-as-a-Service, IaaS) hinausgehen. Für SAP-Workloads, die Sie als Kunde bereitstellen, gibt es von Microsoft keine über die IaaS-Angebote hinausgehenden Angebote. 
 
-* Anzahl der vCPUs
-* Arbeitsspeicher
-* Anzahl der VHDs, die angefügt werden können
-* Netzwerk- und Speicherbandbreiten
+Die Microsoft Azure-Plattform ist eine Plattform für mehrere Mandanten. Daher werden Speicher-, Netzwerk-und Computeressourcen, die virtuelle Azure-Computer hosten, mit wenigen Ausnahmen von Mandanten gemeinsam genutzt. Intelligente Drosselungs- und Kontingentlogik wird verwendet, um zu verhindern, dass ein Mandant die Leistung eines anderen Mandanten deutlich beeinträchtigt ("Noisy Neighbor"). Insbesondere bei der Zertifizierung der Azure-Plattform für SAP HANA muss Microsoft die Isolierung von Ressourcen für Fälle nachweisen, in denen mehrere VMs für SAP regelmäßig auf demselben Host ausgeführt werden können. Obwohl durch Logik in Azure versucht wird, Bandbreitenabweichungen klein zu halten, tendieren Plattformen mit umfangreicher gemeinsamer Nutzung zu größeren Abweichungen in der Ressourcen-/Bandbreitenverfügbarkeit, als die Kunden dies von ihren lokalen Bereitstellungen kennen. Die Wahrscheinlichkeit, dass ein SAP-System in Azure stärkere Schwankungen als ein lokales System aufweist, muss berücksichtigt werden.
 
-Die Größen und Einschränkungen verschiedener angebotener virtueller Computer finden Sie in einer Tabelle in [diesem Artikel (für Linux)][virtual-machines-sizes-linux] und [diesem Artikel (für Windows)][virtual-machines-sizes-windows].
+### <a name="azure-virtual-machines-for-sap-workload"></a>Virtuelle Azure-Computer für SAP-Workloads
 
-Nicht alle VM-Serien werden in jeder Azure-Region angeboten. Beachten Sie auch, dass nicht alle virtuellen Computer oder VM-Serie für SAP zertifiziert sind.
+Für SAP-Workloads haben wir die Auswahlmöglichkeiten auf verschiedene VM-Familien beschränkt, die für SAP-Workloads und insbesondere für SAP HANA-Workloads geeignet sind. Informationen zum Ermitteln des richtigen VM-Typs und dessen Funktionalität für die Verarbeitung von SAP-Workloads finden Sie im Dokument [Welche SAP-Software wird für Azure-Bereitstellungen unterstützt?](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure). 
 
-> [!IMPORTANT]
-> Für die Verwendung von SAP NetWeaver, S/4HANA und SAP HANA werden nur die im SAP-Hinweis [1928533] aufgeführten VM-Typen unterstützt. Überprüfen Sie für SAP HANA-zertifizierte Azure-Einheiten das [SAP HANA-Hardwareverzeichnis](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure).
->
+> [!NOTE]
+> Bei VM-Typen, die für SAP-Workloads zertifiziert sind, gibt es keine Überdimensionierung von CPU-und Arbeitsspeicherressourcen.
 
-Die Microsoft Azure-Plattform ist eine Plattform für mehrere Mandanten. Infolgedessen werden Speicher-, Netzwerk- und andere Ressourcen von Mandanten gemeinsam genutzt. Intelligente Drosselungs- und Kontingentlogik wird verwendet, um zu verhindern, dass ein Mandant die Leistung eines anderen Mandanten deutlich beeinträchtigt ("Noisy Neighbor"). Insbesondere bei der Zertifizierung der Azure-Plattform für SAP HANA muss Microsoft die Isolierung von Ressourcen für Fälle nachweisen, in denen mehrere VMs für SAP regelmäßig auf demselben Host ausgeführt werden können. Obwohl durch Logik in Azure versucht wird, Bandbreitenabweichungen klein zu halten, tendieren Plattformen mit umfangreicher gemeinsamer Nutzung zu größeren Abweichungen in der Ressourcen-/Bandbreitenverfügbarkeit, als die Kunden dies von ihren lokalen Bereitstellungen kennen. Die Wahrscheinlichkeit, dass ein SAP-System in Azure stärkere Schwankungen als ein lokales System aufweist, muss berücksichtigt werden.
+Neben der Auswahl der jeweils unterstützten virtuellen Computer müssen Sie auch auf der Website [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/) überprüfen, ob diese in einer bestimmten Region verfügbar sind. Weitaus wichtiger ist es jedoch, festzustellen, ob die
 
-Daher müssen Kunden mit den verschiedenen Funktionen der Azure-Typen vertraut sein, die mit SAP in folgenden Bereichen unterstützt werden:
+- CPU und Speicherressourcen verschiedener VM-Typen 
+- IOPS-Bandbreite verschiedener VM-Typen
+- Netzwerkfunktionen verschiedener VM-Typen
+- Anzahl der Datenträger, die angefügt werden können
+- Möglichkeit, bestimmte Azure-Speichertypen zu nutzen
 
-* CPU und Speicherressourcen verschiedener VM-Typen 
-* IOPS-Bandbreite verschiedener VM-Typen
-* Netzwerkfunktionen verschiedener VM-Typen
+Ihren Anforderungen entsprechen. Die meisten dieser Daten für einen bestimmten VM-Typ finden Sie [hier (für Linux)][virtual-machines-sizes-linux] und [hier (für Windows)][virtual-machines-sizes-windows].
 
-Die meisten dieser Daten finden Sie [hier (für Linux)][virtual-machines-sizes-linux] und [hier (für Windows)][virtual-machines-sizes-windows].
+Als Preismodell stehen verschiedene Preisoptionen zur Verfügung, die wie folgt aussehen:
 
+- Nutzungsbasierte Bezahlung
+- 1 Jahr reserviert
+- 3 Jahre reserviert
+- Spot-Preise
 
-### <a name="be80d1b9-a463-4845-bd35-f4cebdb5424a"></a>Azure-Regionen
-Auf virtuellen Computern werden sogenannte *Azure-Regionen* bereitgestellt. Eine Azure-Region kann ein oder mehrere Rechenzentren umfassen, die sich nahe beieinander befinden. Für die meisten geopolitischen Regionen auf der Welt verfügt Microsoft über mindestens zwei Azure-Regionen. In Europa gibt es z. B. die Azure-Regionen *Europa, Norden* und *Europa, Westen*. Diese zwei Azure-Regionen in einer geopolitischen Region haben genug Abstand zueinander, sodass sich Naturkatastrophen oder technische Notfälle nicht auf beide Azure-Regionen in der gleichen geopolitischen Region auswirken können. Da Microsoft kontinuierlich neue Azure-Regionen in verschiedenen geopolitischen Regionen in aller Welt aufbaut, werden diese Regionen immer zahlreicher. Im Dezember 2015 gab es bereits 20 Azure-Regionen, und zusätzliche Regionen wurden bereits angekündigt. Als Kunde können Sie SAP-Systeme in allen diesen Regionen bereitstellen, auch in den beiden Azure-Regionen in China. Aktuelle Informationen zu Azure-Regionen finden Sie auf der folgenden Website: <https://azure.microsoft.com/regions/>
+Die Preise für die einzelnen Angebote mit verschiedenen Dienstangeboten für Betriebssysteme und verschiedene Regionen finden Sie auf den Websites [Virtuelle Linux-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) und [Virtuelle Windows-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Informationen zu Details und Flexibilität von für ein Jahr und drei Jahre reservierte Instanzen finden Sie in den folgenden Artikeln:
 
-### <a name="8d8ad4b8-6093-4b91-ac36-ea56d80dbf77"></a>Das Konzept der virtuellen Microsoft Azure-Computer
-Microsoft Azure bietet eine IaaS-Lösung (Infrastruktur as a Service) zum Hosten von virtuellen Computern mit ähnlichen Funktionen wie eine lokale Virtualisierungslösung. Sie können virtuelle Computer innerhalb des Azure-Portals, PowerShell und der CLI erstellen, die ebenfalls Bereitstellungs- und Verwaltungsfunktionen bieten.
+- [Was sind Azure-Reservierungen?](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations)
+- [Flexibilität bei der VM-Größe mit reservierten VM-Instanzen](https://docs.microsoft.com/azure/virtual-machines/windows/reserved-vm-instance-size-flexibility)
+- [Anwendung des Rabatts für Azure-Reservierungen auf virtuelle Computer](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-vm-reservation-charges) 
 
-Mit dem Azure-Ressourcen-Manager können Sie Ihre Anwendungen mit einer deklarativen Vorlage bereitstellen. In einer Vorlage können Sie mehrere Dienste zusammen mit ihren Abhängigkeiten bereitstellen. Sie verwenden die gleiche Vorlage, um Ihre Anwendung in allen Phasen des Anwendungslebenszyklus wiederholt bereitzustellen.
+Weitere Informationen zu den Spot-Preisen finden Sie im Artikel [Virtuelle Azure Spot-Computer](https://azure.microsoft.com/pricing/spot/). Die Preise für einen VM-Typ können in verschiedenen Azure-Regionen unterschiedlich sein. Für einige Kunden war es sinnvoll, die Bereitstellung in einer kostengünstigeren Azure-Region durchzuführen.
 
-Weitere Informationen zu Resource Manager-Vorlagen finden Sie hier:
+Außerdem bietet Azure das Konzept eines dedizierten Hosts an. Das Konzept dedizierter Hosts bietet Ihnen mehr Kontrolle über Patchzyklen, die von Azure ausgeführt werden. Sie können Patchvorgänge eigenen Zeitplänen entsprechend terminieren. Dieses Angebot richtet sich speziell an Kunden mit Workloads, die möglicherweise nicht dem normalen Workloadzyklus folgen. Informationen zu den Konzepten, die dedizierte Azure-Host bieten, finden Sie im Artikel [Dedizierter Azure-Host](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts). Dieses Angebot wird für SAP-Workloads unterstützt und von mehreren SAP-Kunden verwendet, die mehr Kontrolle über das Patchen der Infrastruktur und die jeweiligen Wartungspläne von Microsoft haben möchten. Weitere Informationen dazu, wie Microsoft die Azure-Infrastruktur, die virtuelle Computer hostet, verwaltet und patcht finden Sie im Artikel [Wartung für VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/maintenance-and-updates).
 
-* [Bereitstellen und Verwalten von virtuellen Computern mit Azure-Ressourcen-Manager-Vorlagen und der Azure-CLI](../../linux/create-ssh-secured-vm-from-template.md)
-* [Verwalten virtueller Computer mit Azure Resource Manager und PowerShell][virtual-machines-deploy-rmtemplates-powershell]
-* <https://azure.microsoft.com/documentation/templates/>
+#### <a name="generation-1-and-generation-2-virtual-machines"></a>Virtuelle Computer der Generation 1 und 2
+Der Microsoft-Hypervisor kann zwei verschiedene Generationen virtueller Computer verarbeiten. Die betreffenden Formate werden **Generation 1** und **Generation 2** genannt. **Generation 2** wurde im Jahr 2012 mit dem Windows Server 2012-Hypervisor eingeführt. In Azure wurden zu Anfang virtuelle Computer der Generation 1 verwendet. Beim Bereitstellen von virtuellen Azure-Computern wird standardmäßig weiterhin das Format der Generation 1 verwendet. Inzwischen können Sie ebenfalls VM-Formate der Generation 2 bereitstellen. Im Artikel [Unterstützung für VMs der Generation 2 in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) sind die Azure-VM-Familien aufgelistet, die als VM der Generation 2 bereitgestellt werden können. In diesem Artikel werden auch die sehr wichtigen funktionalen Unterschiede von virtuellen Computern der Generation 2 aufgelistet, da sie in privaten Hyper-V-Clouds und in Azure ausgeführt werden können. Wichtiger Bestandteil dieses Artikels ist auch eine Liste der funktionalen Unterschiede zwischen virtuellen Computern der Generation 1 und virtuellen Computern der Generation 2, die in Azure ausgeführt werden. 
 
-Ein weiteres interessantes Feature ist die Möglichkeit zum Erstellen von Images von virtuellen Computern, die es Ihnen ermöglichen, bestimmte Repositorys vorzubereiten, von denen Sie schnell virtuelle Computerinstanzen bereitstellen können, die Ihren Anforderungen entsprechen.
+> [!NOTE]
+> Es gibt funktionale Unterschiede zwischen virtuellen Computern der Generation 1 und der Generation 2 in Azure. Ein Liste der jeweiligen Unterschiede finden Sie im Artikel [Unterstützung für VMs der Generation 2 in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2).  
+ 
+Ein Verschieben einer vorhandenen VM von einer Generation in die andere Generation ist nicht möglich. Um die Generation des virtuellen Computers zu ändern, müssen Sie einen neuen virtuellen Computer der gewünschten Generation bereitstellen und die Software, die auf dem ersten virtuellen Computer ausgeführt wird, auf dem zweiten neu installieren. Dies wirkt sich nur auf das VHD-Basisimage des virtuellen Computers aus und hat keine Auswirkung auf die Datenträger oder die angefügten NFS- oder SMB-Freigaben. Datenträger, NFS- oder SMB-Freigaben, die ursprünglich zugewiesen waren, z. B. auf einem virtuellen Computer der Generation 1
 
-Weitere Informationen zum Erstellen von Images von virtuellen Computern finden Sie in [diesem Artikel (für Linux)][virtual-machines-linux-capture-image-resource-manager] und [diesem Artikel (für Windows)][virtual-machines-windows-capture-image-resource-manager].
+Zurzeit tritt dieses Problem insbesondere bei virtuellen Azure-Computern der M-Serie und der Mv2-Serie auf. Aufgrund von Einschränkungen im VM-Format der Generation 1 konnten die großen virtuellen Computer der Mv2-Familie nicht im Format der Generation 1, sondern nur exklusiv in Generation 2 angeboten werden. Andererseits ist die Bereitstellung der VM-Familie der M-Serie in Generation 2 noch nicht möglich. Folglich ist für die Neudimensionierung zwischen virtuellen Computern der M-Serie und der Mv2-Serie eine Neuinstallation der Software auf einem virtuellen Zielcomputer der anderen VM-Familie erforderlich. Microsoft arbeitet daran, die Bereitstellung von virtuellen Computern der M-Serie für die Bereitstellung der Generation 2 zu ermöglichen. Wenn Sie virtuelle Computer der M-Serie in Zukunft als virtuelle Computer der Generation 2 bereitstellen, wird eine nahtlose Neudimensionierung zwischen virtuellen Computern der M-Serie und der Mv2-Serie möglich sein. In beiden Richtungen ist ein Upsizing von der M-Serie zu größeren virtuellen Computern der Mv2-Serie bzw. ein Downsizing von größeren virtuellen Computern der Mv2-Serie zu kleineren virtuellen Computern der M-Serie möglich. Die Dokumentation wird aktualisiert, sobald virtuelle Computer der M-Serie als virtuelle Computer der Generation 2 bereitgestellt werden können.    
 
-#### <a name="df49dc09-141b-4f34-a4a2-990913b30358"></a>Fehlerdomänen
-Fehlerdomänen stellen eine physische Fehlereinheit dar, die eng mit der physischen Infrastruktur in Rechenzentren verwandt ist, und obwohl ein physisches Blade oder Rack als Fehlerdomäne betrachtet werden kann, gibt es keine direkte 1:1-Zuordnung zwischen den beiden.
+ 
 
-Wenn Sie mehrere virtuelle Computer als Teil eines SAP-Systems in Microsoft Azure Virtual Machine-Diensten bereitstellen, können Sie die Azure Fabric Controller zum Bereitstellen der Anwendung in verschiedenen Fehlerdomänen einsetzen und so die Anforderungen des Microsoft Azure-SLA erfüllen. Allerdings ist die Verteilung von Fehlerdomänen über eine Azure-Skalierungseinheit (Sammlung von Hunderten von Serverknoten oder Speicherknoten und Netzwerken) oder die Zuweisung von virtuellen Computern zu einer bestimmten Fehlerdomäne etwas, das Sie nicht direkt steuern können. Um Azure Fabric Controller anzuweisen, eine Gruppe von virtuellen Computern in verschiedenen Fehlerdomänen bereitzustellen, müssen Sie den virtuellen Computern zum Zeitpunkt der Bereitstellung eine Azure-Verfügbarkeitsgruppe zuweisen. Weitere Informationen zu Azure-Verfügbarkeitsgruppen finden Sie im Kapitel [Azure-Verfügbarkeitsgruppen][planning-guide-3.2.3] in diesem Dokument.
-
-#### <a name="fc1ac8b2-e54a-487c-8581-d3cc6625e560"></a>Upgradedomänen
-Upgradedomänen stellen eine logische Einheit dar, mit deren Hilfe Sie bestimmen können, wie eine VM innerhalb eines SAP-Systems aktualisiert wird, das aus SAP-Instanzen besteht, die auf mehreren VMs ausgeführt werden. Wenn ein Upgrade durchgeführt wird, durchläuft Microsoft Azure nacheinander den Aktualisierungsprozess für diese Upgradedomänen. Durch das Verteilen von virtuellen Computern zum Zeitpunkt der Bereitstellung über verschiedene Upgradedomänen können Sie Ihr SAP-System teilweise vor potenziellen Ausfallzeiten schützen. Um zu erzwingen, dass Azure die virtuellen Computer eines SAP-Systems bereitstellt, das über verschiedene Upgradedomänen verteilt ist, müssen Sie ein bestimmtes Attribut zum Zeitpunkt der Bereitstellung der einzelnen virtuellen Computer festlegen. Ähnlich wie Fehlerdomänen ist auch eine Azure-Skalierungseinheit in mehrere Upgradedomänen unterteilt. Um Azure Fabric Controller anzuweisen, eine Gruppe aus virtuellen Computern in verschiedenen Upgradedomänen bereitzustellen, müssen Sie den virtuellen Computern zum Zeitpunkt der Bereitstellung eine Azure-Verfügbarkeitsgruppe zuweisen. Weitere Informationen zu Azure-Verfügbarkeitsgruppen finden Sie im Kapitel [Azure-Verfügbarkeitsgruppen][planning-guide-3.2.3] weiter unten.
-
-#### <a name="18810088-f9be-4c97-958a-27996255c665"></a>Azure-Verfügbarkeitsgruppen
-Virtuelle Azure-Computer innerhalb einer Azure-Verfügbarkeitsgruppe werden von Azure Fabric Controller auf verschiedene Fehler- und Upgradedomänen verteilt. Der Zweck der Verteilung auf verschiedene Fehler- und Upgradedomänen besteht darin, zu verhindern, dass alle virtuellen Computer eines SAP-Systems im Falle von Infrastrukturwartungsarbeiten oder eines Fehler innerhalb einer Fehlerdomäne heruntergefahren werden. Standardmäßig sind virtuelle Computer nicht Teil einer Verfügbarkeitsgruppe. Die Mitgliedschaft einer VM in einer Verfügbarkeitsgruppe wird zum Zeitpunkt der Bereitstellung oder später durch eine Neukonfiguration und erneute Bereitstellung einer VM definiert.
-
-Lesen Sie zum besseren Verständnis des Konzepts von Azure-Verfügbarkeitsgruppen und der Beziehung von Verfügbarkeitsgruppen zu Fehler- und Upgradedomänen [diesen Artikel][virtual-machines-manage-availability].
-
-Informationen zum Definieren von Verfügbarkeitsgruppen für den Azure Resource Manager über eine JSON-Vorlage finden Sie in den [REST-API-Spezifikationen](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2015-06-15/swagger/compute.json). Suchen Sie dort nach „Verfügbarkeit“.
-
-### <a name="a72afa26-4bf4-4a25-8cf7-855d6032157f"></a>Speicher: Microsoft Azure Storage und Datenträger
+### <a name="storage-microsoft-azure-storage-and-data-disks"></a><a name="a72afa26-4bf4-4a25-8cf7-855d6032157f"></a>Speicher: Microsoft Azure Storage und Datenträger
 Microsoft Azure Virtual Machines nutzt verschiedene Speichertypen. Bei der Implementierung von SAP auf Azure Virtual Machine-Diensten ist es wichtig, die Unterschiede zwischen diesen zwei Speicherhaupttypen zu verstehen:
 
 * Nicht permanenter, temporärer Speicher.
@@ -536,7 +547,7 @@ Der Azure Storage Standard war der verfügbare Speichertyp, als Azure IaaS verö
 
 Datenträger, die in Azure Storage Standard-Konten gespeichert werden, werden basierend auf den tatsächlich gespeicherten Daten, der Menge der Speichertransaktionen, den ausgehenden Datenübertragungen und der ausgewählten Redundanzoption in Rechnung gestellt. Viele Datenträger können mit der Maximalgröße von 1 TB erstellt werden, aber solange sie leer bleiben, werden sie nicht in Rechnung gestellt. Wenn Sie dann eine virtuelle Festplatte mit 100 GB füllen, wird Ihnen das Speichern von 100 GB in Rechnung gestellt, nicht die nominale Größe, mit der die virtuelle Festplatte erstellt wurde.
 
-#### <a name="ff5ad0f9-f7f4-4022-9102-af07aef3bc92"></a>Azure Storage Premium
+#### <a name="azure-premium-storage"></a><a name="ff5ad0f9-f7f4-4022-9102-af07aef3bc92"></a>Azure Storage Premium
 Azure Storage Premium wurde mit dem Ziel, Folgendes bereitzustellen, eingeführt:
 
 * Bessere E/A-Latenz.
@@ -576,7 +587,7 @@ Innerhalb von Azure folgt ein VHD-Name der folgenden Benennungskonvention, die e
 
 Die oben genannte Zeichenfolge muss die VHD eindeutig identifizieren, die in Azure Storage gespeichert ist.
 
-#### <a name="c55b2c6e-3ca1-4476-be16-16c81927550f"></a>Verwaltete Datenträger
+#### <a name="managed-disks"></a><a name="c55b2c6e-3ca1-4476-be16-16c81927550f"></a>Verwaltete Datenträger
 
 Bei Managed Disks handelt es sich um einen neuen Ressourcentyp in Azure Resource Manager, der anstelle von in Azure Storage-Konten gespeicherten VHDs verwendet werden kann. Verwaltete Datenträger können automatisch an die Verfügbarkeitsgruppe des virtuellen Computers, mit der sie verbunden sind, angepasst werden und erhöhen daher die Verfügbarkeit Ihres virtuellen Computers sowie der Dienste, die auf dem virtuellen Computer ausgeführt werden. Weitere Informationen finden Sie [in diesem allgemeinen Artikel](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview).
 
@@ -597,7 +608,7 @@ Es gibt mehrere weitere Redundanzmethoden, die im Artikel [Azure Storage-Replika
 > Für DBMS-Bereitstellungen wird die Verwendung von georedundantem Speicher, verfügbar mit Azure-Standardspeicher, nicht empfohlen, da er erhebliche Leistungseinbußen zur Folge hat und die Schreibreihenfolge auf verschiedenen VHDs, die an eine VM angeschlossen sind, nicht berücksichtigt. Das Ignorieren der Schreibreihenfolge über verschiedene VHDs hinweg erhöht das Risiko für inkonsistente Datenbanken auf Seiten des Replikationsziels, wenn Datenbank- und Protokoll-/Wiederholungsdateien über mehrere VHDs (wie üblich) auf der Quell-VM verteilt werden.
 
 
-### <a name="61678387-8868-435d-9f8c-450b2424f5bd"></a>Microsoft Azure-Netzwerk
+### <a name="microsoft-azure-networking"></a><a name="61678387-8868-435d-9f8c-450b2424f5bd"></a>Microsoft Azure-Netzwerk
 
 Microsoft Azure stellt eine Netzwerkinfrastruktur bereit, die die Zuordnung aller Szenarios ermöglicht, die wir mit SAP-Software umsetzen möchten. Die Funktionen sind:
 
@@ -736,11 +747,11 @@ In diesem Blog und im angehängten Dokument finden Sie Informationen zu SAP-Grö
 
 **Schritt 2:** Bei vorhandenen Systemen sollten das E/A-Volumen sowie die E/A-Vorgänge pro Sekunde auf dem DBMS-Server gemessen werden. Bei neu geplanten Systemen sollten die Dimensionierungstests für das neue System auch grob Aufschluss über die E/A-Anforderungen auf DBMS-Seite geben. Falls Sie sich unsicher sind, sollten Sie eventuell eine Machbarkeitsstudie durchführen.
 
-**Schritt 3:** Vergleichen Sie die SAPS-Anforderungen für den DBMS-Server mit den SAPS der verschiedenen von Azure bereitgestellten VM-Typen. Informationen zu den SAPS der verschiedenen Azure-VM-Typen finden Sie in SAP-Hinweis [1928533]. Hauptaugenmerk sollten Sie zunächst auf die DBMS-VM legen, da die Datenbankebene die Ebene in einem SAP-NetWeaver-System ist, die sich in den meisten Bereitstellungen nicht verteilen lässt. Im Gegensatz dazu lässt sich die SAP-Anwendungsebene durchaus verteilen. Wenn keiner der von SAP unterstützten VM-Typen von Azure die erforderlichen SAPS bereitstellt, kann die Workload des geplanten SAP-Systems nicht in Azure ausgeführt werden. Sie müssen das System entweder lokal bereitstellen oder das Volumen der Arbeitslast für das System ändern.
+**Schritt 3:** Vergleichen Sie die SAPS-Anforderungen für den DBMS-Server mit den SAPS der verschiedenen von Azure bereitgestellten VM-Typen. Informationen zu den SAPS der verschiedenen Azure-VM-Typen finden Sie in SAP-Hinweis [1928533]. Hauptaugenmerk sollten Sie zunächst auf die DBMS-VM legen, da die Datenbankebene die Ebene in einem SAP-NetWeaver-System ist, die sich in den meisten Bereitstellungen nicht aufskalieren lässt. Im Gegensatz dazu lässt sich die SAP-Anwendungsebene durchaus verteilen. Wenn keiner der von SAP unterstützten VM-Typen von Azure die erforderlichen SAPS bereitstellt, kann die Workload des geplanten SAP-Systems nicht in Azure ausgeführt werden. Sie müssen das System entweder lokal bereitstellen oder das Volumen der Arbeitslast für das System ändern.
 
 **Schritt 4:** Wie [hier (für Linux)][virtual-machines-sizes-linux] und [hier (für Windows)][virtual-machines-sizes-windows] dokumentiert, erzwingt Azure ein IOPS-Kontingent pro Datenträger unabhängig davon, ob Sie Storage Standard oder Storage Premium verwenden. Abhängig vom VM-Typ variiert die Anzahl der Datenträger für Daten, die bereitgestellt werden können. Daher können Sie eine maximale Anzahl von IOPS berechnen, die mit den verschiedenen VM-Typen erreicht werden kann. Abhängig vom Layout der Datenbankdatei können Sie Datenträger so aufteilen, dass sie ein Volumen des Gastbetriebssystems werden. Wenn allerdings das aktuelle IOPS-Volumen eines bereitgestellten SAP-Systems die berechneten Grenzen des größten VM-Typs von Azure überschreitet und keine Möglichkeit besteht, dies mit zusätzlichem Speicher zu kompensieren, kann dies die Arbeitslast des SAP-Systems erheblich beeinträchtigen. In solchen Fällen kann ein Punkt erreicht werden, an dem das System nicht mehr in Azure bereitgestellt werden sollte.
 
-**Schritt 5:** Gerade bei lokal in 2-Ebenen-Konfigurationen bereitgestellten SAP-Systemen ist die Wahrscheinlichkeit groß, dass das System in Azure in einer 3-Ebenen-Konfiguration konfiguriert werden muss. In diesem Schritt prüfen Sie, ob die SAP-Anwendungsschicht Komponenten enthält, die nicht verteilt werden können und sich daher nicht in die von den verschiedenen Azure-VM-Typen bereitgestellten CPU- und Arbeitsspeicherressourcen einpassen. Sollte es tatsächlich eine solche Komponente geben, können das SAP-System und seine Workload nicht in Azure bereitgestellt werden. Lassen sich die SAP-Anwendungskomponenten jedoch auf mehrere Azure-VMs verteilen, so kann das System in Azure bereitgestellt werden.
+**Schritt 5:** Gerade bei lokal in 2-Ebenen-Konfigurationen bereitgestellten SAP-Systemen ist die Wahrscheinlichkeit groß, dass das System in Azure in einer 3-Ebenen-Konfiguration konfiguriert werden muss. In diesem Schritt prüfen Sie, ob die SAP-Anwendungsschicht Komponenten enthält, die nicht verteilt werden können und sich daher nicht in die von den verschiedenen Azure-VM-Typen bereitgestellten CPU- und Arbeitsspeicherressourcen einpassen. Sollte es tatsächlich eine solche Komponente geben, können das SAP-System und seine Workload nicht in Azure bereitgestellt werden. Lassen sich die SAP-Anwendungskomponenten jedoch auf mehrere Azure-VMs aufskalieren, so kann das System in Azure bereitgestellt werden.
 
 **Schritt 6:** Wenn die Komponenten der DBMS- und SAP-Anwendungsebene auf Azure-VMs ausgeführt werden können, müssen bei der Konfiguration die folgenden Punkte berücksichtigt werden:
 
@@ -799,6 +810,17 @@ Informationen zur Installation, Konfiguration und Verwendung der Befehle der Bef
 
 Weitere Informationen zur Verwendung der Azure-Befehlszeilenschnittstelle zum Bereitstellen der Azure-Erweiterung für SAP finden Sie im [Bereitstellungshandbuch][planning-guide] im Kapitel [Azure CLI für virtuelle Linux-Computer][deployment-guide-4.5.2].
 
+
+## <a name="first-steps-planning-a-deployment"></a>Erste Schritte bei der Planung einer Bereitstellung
+Der erste Schritt bei der Bereitstellungsplanung besteht NICHT darin, VMs zu suchen, die für die Ausführung von SAP verfügbar sind. Der erste Schritt kann sehr zeitaufwändig sein. Insbesondere muss aber zusammen mit den Konformitäts- und Sicherheitsteams in Ihrem Unternehmen unbedingt geklärt werden, welche Randbedingungen für die Bereitstellung der jeweiligen SAP-Workloads oder -Geschäftsprozesse in der öffentlichen Cloud bestehen. Wenn Ihr Unternehmen zuvor andere Software in Azure bereitgestellt hat, kann der Prozess einfach sein. Wenn Ihr Unternehmen erst am Anfang der Reise steht, sind möglicherweise umfangreichere Diskussionen erforderlich, um die Randbedingungen und Sicherheitsbedingungen zu ermitteln, die das Hosten bestimmter SAP-Daten und SAP-Geschäftsprozesse in der öffentlichen Cloud beeinflussen.
+
+Hilfreich können dabei die Informationen unter [Microsoft-Complianceangebote](https://docs.microsoft.com/microsoft-365/compliance/offering-home) sein. Dort finden Sie eine Liste der von Microsoft bereitgestellten Complianceangebote. 
+
+Weitere Aspekte wie die Datenverschlüsselung für ruhende Daten oder die Verschlüsselung im Azure-Dienst sind in der [Übersicht zur Azure-Verschlüsselung](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview) dokumentiert.
+
+Unterschätzen Sie diese Phase des Projekts in ihrer Planung nicht. Nur wenn einvernehmliche Regeln zu diesem Thema vorhanden sind, können Sie zum nächsten Schritt übergehen, d. h. der Planung der in Azure bereitgestellten Netzwerkarchitektur.
+
+
 ## <a name="different-ways-to-deploy-vms-for-sap-in-azure"></a>Verschiedene Möglichkeiten der Bereitstellung von VMs für SAP in Azure
 
 In diesem Kapitel lernen Sie verschiedene Methoden der Bereitstellung von VMs in Azure kennen. Zudem werden weitere Vorbereitungsverfahren wie auch die Behandlung von VHDs und VMs in Azure beschrieben.
@@ -807,11 +829,11 @@ In diesem Kapitel lernen Sie verschiedene Methoden der Bereitstellung von VMs in
 
 Microsoft Azure bietet verschiedene Methoden der Bereitstellung von VMs und der zugehörigen Datenträger. Daher ist es wichtig, die Unterschiede zu kennen, da die Vorbereitung der VMs je nach Bereitstellungsmethode variiert. Insbesondere werfen wir einen Blick auf die folgenden Szenarios:
 
-#### <a name="4d175f1b-7353-4137-9d2f-817683c26e53"></a>Verschieben eines virtuellen lokalen Computers mit einem nicht generalisierten Datenträger in Azure
+#### <a name="moving-a-vm-from-on-premises-to-azure-with-a-non-generalized-disk"></a><a name="4d175f1b-7353-4137-9d2f-817683c26e53"></a>Verschieben eines virtuellen lokalen Computers mit einem nicht generalisierten Datenträger in Azure
 
 Sie planen, ein bestimmtes SAP-System vom lokalen Standort nach Azure zu verschieben. Dies kann erfolgen, indem Sie die VHD mit dem Betriebssystem und den SAP- und DBMS-Binärdateien sowie die VHDs mit den Daten- und Protokolldateien des DBMS in Azure hochladen. Im Gegensatz zu [Szenario 2 unten][planning-guide-5.1.2] werden Hostname, SAP-SID und SAP-Benutzerkonten auf der Azure-VM entsprechend der Konfiguration in der lokalen Umgebung beibehalten. Daher ist eine Generalisierung des Images nicht erforderlich. Lokale Vorbereitungsschritte sowie Informationen zum Hochladen nicht generalisierter VMs oder VHDs in Azure finden Sie in diesem Dokument im Kapitel [Vorbereitung der Verschiebung eines virtuellen lokalen Computers mit einem nicht generalisierten Datenträger in Azure][planning-guide-5.2.1]. Ausführliche Schritte zur Bereitstellung eines solchen Images in Azure finden Sie im Kapitel [Szenario 3: Verschieben eines virtuellen lokalen Computers mit einer nicht generalisierten virtuellen Azure-Festplatte mit SAP][deployment-guide-3.4] des [Bereitstellungshandbuchs][deployment-guide].
 
-#### <a name="e18f7839-c0e2-4385-b1e6-4538453a285c"></a>Bereitstellen eines virtuellen Computers mit einem kundenspezifischen Image
+#### <a name="deploying-a-vm-with-a-customer-specific-image"></a><a name="e18f7839-c0e2-4385-b1e6-4538453a285c"></a>Bereitstellen eines virtuellen Computers mit einem kundenspezifischen Image
 
 Aufgrund der spezifischen Patch-Anforderungen Ihrer Betriebssystem- bzw. DBMS-Version sind die im Azure Marketplace erhältlichen Images möglicherweise nicht für Ihren Bedarf geeignet. Daher muss möglicherweise anhand eines eigenen, benutzerdefinierten OS/DBMS-VM-Images ein virtueller Computer erstellt werden, der anschließend mehrmals bereitgestellt werden kann. Bei der Vorbereitung eines solchen privaten Images für die Duplizierung müssen folgende Punkte berücksichtigt werden:
 
@@ -834,11 +856,11 @@ Wenn Sie auf Ihrer lokalen VM bereits SAP-Inhalte installiert haben (insbesonder
 
 Sie möchten ein von Microsoft oder einem Drittanbieter bereitgestelltes VM-Image aus dem Azure Marketplace zur Bereitstellung Ihrer VM verwenden. Nachdem Sie Ihre VM in Azure bereitgestellt haben, verwenden Sie dieselben Richtlinien und Tools zum Installieren der SAP-Software und/oder des DBMS auf der VM wie in einer lokalen Umgebung. Eine detailliertere Beschreibung der Bereitstellung finden Sie im Kapitel [Szenario 1: Bereitstellen eines virtuellen Computers aus dem Azure Marketplace für SAP][deployment-guide-3.2] des [Bereitstellungshandbuchs][deployment-guide].
 
-### <a name="6ffb9f41-a292-40bf-9e70-8204448559e7"></a>Vorbereiten virtueller Computer mit SAP für Azure
+### <a name="preparing-vms-with-sap-for-azure"></a><a name="6ffb9f41-a292-40bf-9e70-8204448559e7"></a>Vorbereiten virtueller Computer mit SAP für Azure
 
 Vor dem Hochladen von VMs in Azure müssen Sie sicherstellen, dass die VMs und VHDs bestimmte Anforderungen erfüllen. Abhängig von der Bereitstellungsmethode gibt es hierbei geringfügige Unterschiede.
 
-#### <a name="1b287330-944b-495d-9ea7-94b83aff73ef"></a>Vorbereitung des Verschiebens eines virtuellen lokalen Computers mit einem nicht generalisierten Datenträger in Azure
+#### <a name="preparation-for-moving-a-vm-from-on-premises-to-azure-with-a-non-generalized-disk"></a><a name="1b287330-944b-495d-9ea7-94b83aff73ef"></a>Vorbereitung des Verschiebens eines virtuellen lokalen Computers mit einem nicht generalisierten Datenträger in Azure
 
 Eine gängige Bereitstellungsmethode ist die Migration einer vorhandenen VM mit einem lokal ausgeführten SAP-System nach Azure. Diese VM und das SAP-System auf der VM sollten in Azure mit dem gleichen Hostnamen und vermutlich auch derselben SAP-SID ausgeführt werden. Das Gastbetriebssystem der VM sollte in diesem Fall nicht für mehrere Bereitstellungen generalisiert werden. Wenn das lokale Netzwerk auf Azure erweitert wurde, können sogar dieselben Domänenkonten auf der VM verwendet werden, die zuvor lokal verwendet wurden.
 
@@ -865,7 +887,7 @@ Für die Vorbereitung Ihres eigenen Azure-VM-Datenträgers gelten folgende Anfor
 >
 
 ---
-#### <a name="57f32b1c-0cba-4e57-ab6e-c39fe22b6ec3"></a>Vorbereitung der Bereitstellung eines virtuellen Computers mit einem kundenspezifischen Image für SAP
+#### <a name="preparation-for-deploying-a-vm-with-a-customer-specific-image-for-sap"></a><a name="57f32b1c-0cba-4e57-ab6e-c39fe22b6ec3"></a>Vorbereitung der Bereitstellung eines virtuellen Computers mit einem kundenspezifischen Image für SAP
 
 VHD-Dateien, die ein generalisiertes Betriebssystem enthalten, werden in Azure-Speicherkonten in Containern oder als Images für einen verwalteten Datenträger gespeichert. Von einem solchen Image können Sie eine neue VM bereitstellen, indem Sie in Ihren Vorlagendateien für die Bereitstellung als Quelle auf die VHD oder das Image für einen verwalteten Datenträger verweisen. Diese Methode wird im Kapitel [Szenario 2: Bereitstellen eines virtuellen Computers mit einem benutzerdefinierten Image für SAP][deployment-guide-3.3] des [Bereitstellungshandbuchs][deployment-guide] beschrieben.
 
@@ -914,7 +936,7 @@ Zum Hochladen von VM-Images und -Datenträgern in Azure ist das Azure-Portal ung
 
 Eine weitere Alternative sind die verschiedenen auf dem Markt erhältlichen GUI-ähnlichen Tools von Drittanbietern. Vor der Verwendung eines solchen Tools sollten Sie jedoch sicherstellen, dass das Tool Azure-Seitenblobs unterstützt. Für unsere Zwecke müssen wir den Azure-Seitenblobspeicher verwenden (die Unterschiede werden hier beschrieben: <https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>). Mit den von Azure bereitgestellten Tools lassen sich die VMs und VHDs vor dem Upload auch effizient komprimieren. Dadurch reduziert sich die zum Hochladen benötigte Zeit (die ohnehin schon je nach Upload-Link zum Internet zwischen dem lokalen Standort und der gewünschten Azure-Bereitstellungsregion variiert). Es ist leicht nachzuvollziehen, dass das Hochladen von VMs oder VHDs von einem europäischen Standort in ein Azure-Rechenzentrum in den USA länger dauert als das Hochladen derselben VMs/VHDs in ein Azure-Rechenzentrum in Europa.
 
-#### <a name="a43e40e6-1acc-4633-9816-8f095d5a7b6a"></a>Hochladen einer virtuellen Festplatte vom lokalen Standort in Azure
+#### <a name="uploading-a-vhd-from-on-premises-to-azure"></a><a name="a43e40e6-1acc-4633-9816-8f095d5a7b6a"></a>Hochladen einer virtuellen Festplatte vom lokalen Standort in Azure
 Eine vorhandene VM oder VHD, die Sie aus dem lokalen Netzwerk hochladen möchten, muss die Anforderungen erfüllen, die in diesem Dokument im Kapitel [Vorbereitung des Verschiebens eines virtuellen lokalen Computers mit einem nicht generalisierten Datenträger in Azure][planning-guide-5.2.1] beschrieben werden.
 
 Eine solche VM muss nicht generalisiert werden und kann in dem Zustand hochgeladen werden, den sie nach dem Herunterfahren am lokalen Standort hat. Das Gleiche gilt auch für zusätzliche VHDs, die kein Betriebssystem enthalten.
@@ -944,7 +966,7 @@ In diesem Fall möchten wir eine VHD mit oder ohne Betriebssystem hochladen und 
 **Vorlage**
 
 * Hochladen der VHD mit PowerShell oder der Azure-Befehlszeilenschnittstelle
-* (Optional) Erstellen Sie einen verwalteten Datenträger aus der VHD mit PowerShell, der Azure CLI oder dem Azure-Portal.
+* (Optional) Erstellen eines verwalteten Datenträgers aus der VHD mit PowerShell, der Azure CLI oder dem Azure-Portal
 * Stellen Sie die VM mit einer JSON-Vorlage bereit, die auf die VHD verweist, wie in [dieser JSON-Beispielvorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json) gezeigt, oder mit verwalteten Datenträgern wie in [dieser JSON-Beispielvorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/sap-2-tier-user-image-md/azuredeploy.json) gezeigt.
 
 #### <a name="deployment-of-a-vm-image"></a>Bereitstellen eines VM-Image
@@ -979,7 +1001,7 @@ Eine vorhandene VM oder VHD, die Sie aus dem lokalen Netzwerk hochladen möchten
 #### <a name="downloading-vhds-or-managed-disks-to-on-premises"></a>Lokales Herunterladen von VHDs oder verwalteten Datenträgern
 Azure Infrastructure as a Service (IaaS) ist keine Einbahnstraße, auf der Sie VHDs und SAP-Systeme nur in eine Richtung hochladen können. Vielmehr können Sie Ihre SAP-Systeme auch wieder aus Azure zurück an Ihren lokalen Standort übertragen.
 
-Während des Downloads dürfen die VHDs oder Managed Disks allerdings nicht aktiv sein. Selbst wenn Sie Datenträger herunterladen, die auf VMs bereitgestellt werden, müssen Sie diese VMs herunterfahren und ihre Zuordnung aufheben. Wenn Sie nur den Inhalt der Datenbank herunterladen möchten, um daraus lokal ein neues System einzurichten, und es akzeptabel ist, dass das System während des Downloads und der Einrichtung des neuen Systems in Azure betriebsbereit bleibt, können Sie eine lange Ausfallzeit vermeiden, indem Sie eine komprimierte Datenbanksicherung auf einem Datenträger erstellen und anschließend anstatt der VM mit der Betriebssystembasis nur diesen Datenträger herunterladen.
+Während des Downloads dürfen die VHDs oder Managed Disks allerdings nicht aktiv sein. Selbst wenn Sie Datenträger herunterladen, die auf VMs bereitgestellt werden, müssen Sie diese VMs herunterfahren und ihre Zuordnung aufheben. Wenn Sie nur den Inhalt der Datenbank herunterladen möchten, um daraus lokal ein neues System einzurichten, und es akzeptabel ist, dass das System während des Downloads und der Einrichtung des neuen Systems in Azure betriebsbereit bleibt, können Sie eine lange Ausfallzeit vermeiden, indem Sie eine komprimierte Datenbanksicherung auf einem Datenträger erstellen und anschließend anstatt der VM mit der Betriebssystembasis nur diesen Datenträger herunterladen.Wenn Sie nur den Inhalt der Datenbank herunterladen möchten, um daraus lokal ein neues System einzurichten, und es akzeptabel ist, dass das System während des Downloads und der Einrichtung des neuen Systems in Azure betriebsbereit bleibt, können Sie eine lange Ausfallzeit vermeiden, indem Sie eine komprimierte Datenbanksicherung auf einem Datenträger erstellen und anschließend anstatt der VM mit der Betriebssystembasis nur diesen Datenträger herunterladen.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -1012,7 +1034,8 @@ Während des Downloads dürfen die VHDs oder Managed Disks allerdings nicht akti
 #### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 * Herunterladen eines verwalteten Datenträgers  
   Zunächst brauchen Sie Zugriff auf den zugrundeliegenden Blob des verwalteten Datenträgers. Dann können Sie den zugrundeliegenden Blob in ein neues Speicherkonto kopieren und den Blob aus diesem Speicherkonto herunterladen.
-  ```
+
+  ```azurecli
   az disk grant-access --ids "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" --duration-in-seconds 3600
   az storage blob download --sas-token "<sas token>" --account-name <account name> --container-name <container name> --name <blob name> --file <local file>
   az disk revoke-access --ids "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>"
@@ -1023,7 +1046,7 @@ Während des Downloads dürfen die VHDs oder Managed Disks allerdings nicht akti
 
   Sie geben dann den Befehl mit den Parametern „blob“ und „container“ der herunterzuladenden VHD sowie „destination“ (physischer Zielspeicherort der VHD, einschließlich ihres Namens) ein. Der Befehl kann wie folgt aussehen:
 
-  ```
+  ```azurecli
   az storage blob download --name <name of the VHD to download> --container-name <container of the VHD to download> --account-name <storage account name of the VHD to download> --account-key <storage account key> --file <destination of the VHD to download>
   ```
 
@@ -1052,9 +1075,9 @@ New-AzDisk -ResourceGroupName <resource group name> -DiskName <disk name> -Disk 
 
 ##### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Wie in [diesem Artikel][storage-azure-cli-copy-blobs] beschrieben, können Sie VHDs mithilfe der Azure-Befehlszeilenschnittstelle kopieren. Um einen neuen verwalteten Datenträger zu erstellen, verwenden Sie *az disk create*, so wie in folgendem Beispiel gezeigt.
+Sie können die Azure CLI zum Kopieren einer VHD verwenden. Um einen neuen verwalteten Datenträger zu erstellen, verwenden Sie *az disk create*, so wie in folgendem Beispiel gezeigt.
 
-```
+```azurecli
 az disk create --source "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" --name <disk name> --resource-group <resource group name> --location <location>
 ```
 
@@ -1094,9 +1117,10 @@ $disk = New-AzDisk -DiskName <disk name> -Disk $diskConfig -ResourceGroupName <r
 $vm = Add-AzVMDataDisk -VM $vm -Caching <caching option> -Lun <lun, for example 0> -CreateOption attach -ManagedDiskId $disk.Id
 $vm | Update-AzVM
 ```
+
 ##### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-```
+```azurecli
 
 # attach a vhd to a vm
 az vm unmanaged-disk attach --resource-group <resource group name> --vm-name <vm name> --vhd-uri <path to vhd>
@@ -1112,7 +1136,7 @@ az disk create --name <new disk name> --resource-group <resource group name> --l
 az vm disk attach --disk <new disk name or managed disk id> --resource-group <resource group name> --vm-name <vm name> --caching <caching option> --lun <lun, for example 0>
 ```
 
-#### <a name="9789b076-2011-4afa-b2fe-b07a8aba58a1"></a>Kopieren von Datenträgern zwischen Azure-Speicherkonten
+#### <a name="copying-disks-between-azure-storage-accounts"></a><a name="9789b076-2011-4afa-b2fe-b07a8aba58a1"></a>Kopieren von Datenträgern zwischen Azure-Speicherkonten
 Diese Aufgabe kann nicht im Azure-Portal ausgeführt werden. Verwenden Sie stattdessen die Azure PowerShell-Cmdlets, die Azure CLI oder einen Speicherbrowser eines Drittanbieters. Mit den PowerShell-Cmdlets bzw. den Befehlen der Befehlszeilenschnittstelle können Sie Blobs erstellen und verwalten. Dies schließt auch die Möglichkeit des asynchronen Kopierens von Blobs zwischen Speicherkonten und Regionen innerhalb des Azure-Abonnements ein.
 
 ##### <a name="powershell"></a>PowerShell
@@ -1141,23 +1165,21 @@ Beispiele finden Sie in [diesem Artikel][storage-powershell-guide-full-copy-vhd]
 ##### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 * Starten Sie die Kopie mit:
 
-```
+```azurecli
 az storage blob copy start --source-blob <source blob name> --source-container <source container name> --source-account-name <source storage account name> --source-account-key <source storage account key> --destination-container <target container name> --destination-blob <target blob name> --account-name <target storage account name> --account-key <target storage account name>
 ```
 
 * Wenn sich die Kopie nach wie vor in einer Schleife befindet, überprüfen Sie den Status mit Folgendem:
 
-```
+```azurecli
 az storage blob show --name <target blob name> --container <target container name> --account-name <target storage account name> --account-key <target storage account name>
 ```
 
 * Fügen Sie die neue VHD an eine VM an, wie oben beschrieben.
 
-Beispiele finden Sie in [diesem Artikel][storage-azure-cli-copy-blobs].
-
 ### <a name="disk-handling"></a>Behandlung von Datenträgern
 
-#### <a name="4efec401-91e0-40c0-8e64-f2dceadff646"></a>VM-/Datenträgerstruktur für SAP-Bereitstellungen
+#### <a name="vmdisk-structure-for-sap-deployments"></a><a name="4efec401-91e0-40c0-8e64-f2dceadff646"></a>VM-/Datenträgerstruktur für SAP-Bereitstellungen
 
 Im Idealfall sollten die Verfahren in Verbindung mit VM-Strukturen und den zugehörigen Datenträgern einfach sein. In lokalen Installationen finden die verschiedensten kundenspezifischen Strukturierungskonzepte für Serverinstallationen Anwendung.
 
@@ -1181,14 +1203,14 @@ Im Idealfall sollten die Verfahren in Verbindung mit VM-Strukturen und den zugeh
 >
 >
 
-```
+```console
 ResourceDisk.EnableSwap=y
 ResourceDisk.SwapSizeMB=30720
 ```
 
 Zur Aktivierung der Änderungen müssen Sie den Linux-Agenten neu starten:
 
-```
+```console
 sudo service waagent restart
 ```
 
@@ -1251,13 +1273,13 @@ Sie müssen sich als Nächstes entscheiden, ob Sie eine neuen und leeren Datentr
 ---
 Außerdem müssen Sie den neuen Datenträger, wenn er noch leer ist, formatieren. Für die Formatierung gelten insbesondere für DBMS-Daten- und Protokolldateien dieselben Empfehlungen wie für Bare-Metal-Bereitstellungen des DBMS.
 
-Wie bereits im Kapitel [Das Konzept der virtuellen Microsoft Azure-Computer][planning-guide-3.2] erwähnt, stellt ein Azure Storage-Konto keine unbegrenzten Ressourcen in Bezug auf E/A-Volumen, IOPS und Datenvolumen bereit. DBMS-VMs sind in der Regel am meisten davon betroffen. Falls Sie nur wenige VMs mit großem E/A-Volumen bereitstellen müssen, sollten Sie möglichst für jede VM ein eigenes Speicherkonto einrichten, damit Sie innerhalb des Größenlimits für Azure-Speicherkonten bleiben. Andernfalls müssen Sie versuchen, diese VMs auf die verschiedenen Speicherkonten aufzuteilen, ohne die Grenzen einzelner Speicherkonten zu sprengen. Weitere Einzelheiten hierzu finden Sie im [DBMS-Bereitstellungshandbuch][dbms-guide]. Diese Einschränkungen sollten Sie auch bei reinen SAP-Anwendungsserver-VMs oder anderen VMs bedenken, denen vermutlich irgendwann einmal weitere VHDs hinzugefügt werden müssen. Diese Einschränkungen gelten nicht, wenn Sie Managed Disks verwenden. Wenn Sie Storage Premium verwenden möchten, wird empfohlen, dass Sie Managed Disks verwenden.
+Ein Azure-Speicherkonto stellt keine unbegrenzten Ressourcen hinsichtlich E/A-Volumen, IOPS und Datenvolumen bereit. DBMS-VMs sind in der Regel am meisten davon betroffen. Falls Sie nur wenige VMs mit großem E/A-Volumen bereitstellen müssen, sollten Sie möglichst für jede VM ein eigenes Speicherkonto einrichten, damit Sie innerhalb des Größenlimits für Azure-Speicherkonten bleiben. Andernfalls müssen Sie versuchen, diese VMs auf die verschiedenen Speicherkonten aufzuteilen, ohne die Grenzen einzelner Speicherkonten zu sprengen. Weitere Einzelheiten hierzu finden Sie im [DBMS-Bereitstellungshandbuch][dbms-guide]. Diese Einschränkungen sollten Sie auch bei reinen SAP-Anwendungsserver-VMs oder anderen VMs bedenken, denen vermutlich irgendwann einmal weitere VHDs hinzugefügt werden müssen. Diese Einschränkungen gelten nicht, wenn Sie Managed Disks verwenden. Wenn Sie Storage Premium verwenden möchten, wird empfohlen, dass Sie Managed Disks verwenden.
 
 Ein weiterer wichtiger Punkt, der bei Speicherkonten bedacht werden sollte, ist, ob die VHDs in einem Speicherkonto geografisch repliziert werden. Die Georeplikation wird auf Ebene des Speicherkontos, nicht auf VM-Ebene aktiviert oder deaktiviert. Wenn die Georeplikation aktiviert ist, werden die VHDs eines Speicherkontos an ein anderes Azure-Rechenzentrum innerhalb derselben Region repliziert. Bei Ihrer Entscheidung sollten Sie die folgende Einschränkung berücksichtigen:
 
 Die Georeplikation von Azure erfolgt lokal und individuell für jede VHD einer VM, d.h., die E/As werden nicht in chronologischer Reihenfolge über mehrere VHDs einer VM repliziert. Das bedeutet, dass die VHD mit der Basis-VM sowie alle weiteren VHDs, die an der VM angefügt sind, unabhängig voneinander repliziert werden. Es findet also keine Synchronisierung zwischen den Änderungen innerhalb der verschiedenen VHDs statt. Da die E/As unabhängig von der Reihenfolge repliziert werden, in der sie geschrieben wurden, ist die Georeplikation für Datenbankserver, deren Datenbanken über mehrere VHDs verteilt sind, völlig ungeeignet. Neben DBMS gibt es auch andere Anwendungen, deren Prozesse Daten auf mehreren VHDs schreiben oder bearbeiten, wobei die Reihenfolge der Änderungen erhalten bleiben muss. Falls dies eine Voraussetzung ist, sollte die Georeplikation in Azure nicht aktiviert werden. Wenn Sie wissen, dass Sie für bestimmte VMs Georeplikation benötigen, für andere hingegen nicht, können Sie diese VMs und deren VHDs bereits unter verschiedenen Speicherkonten einrichten, für die Sie dann nach Bedarf Georeplikation aktivieren oder deaktivieren.
 
-#### <a name="17e0d543-7e8c-4160-a7da-dd7117a1ad9d"></a>Festlegen der automatischen Bereitstellung für angefügte Datenträger
+#### <a name="setting-automount-for-attached-disks"></a><a name="17e0d543-7e8c-4160-a7da-dd7117a1ad9d"></a>Festlegen der automatischen Bereitstellung für angefügte Datenträger
 ---
 > ![Windows][Logo_Windows] Windows
 >
@@ -1344,7 +1366,7 @@ Die SAP-GUI stellt zu keiner der aktiven SAP-Instanzen (Port 32xx) eine direkte 
 wie in [Sicherheitseinstellungen für den SAP Message-Server](https://help.sap.com/saphelp_nwpi71/helpdata/en/47/c56a6938fb2d65e10000000a42189c/content.htm) dokumentiert.
 
 
-### <a name="3e9c3690-da67-421a-bc3f-12c520d99a30"></a>Einzelner virtueller Computer mit SAP NetWeaver-Demo/Schulungsszenario
+### <a name="single-vm-with-sap-netweaver-demotraining-scenario"></a><a name="3e9c3690-da67-421a-bc3f-12c520d99a30"></a>Einzelner virtueller Computer mit SAP NetWeaver-Demo/Schulungsszenario
 
 ![Ausführung von SAP-Demo-Systemen mit einem einzelnen virtuellen Computer mit denselben VM-Namen, isoliert in Azure Cloud Services][planning-guide-figure-1700]
 
@@ -1362,6 +1384,7 @@ Die Abfolge der Ereignisse zur Implementierung dieses Szenarios sieht wie folgt 
 $rgName = "SAPERPDemo1"
 New-AzResourceGroup -Name $rgName -Location "North Europe"
 ```
+
 * Erstellen Sie ein neues Speicherkonto, wenn Sie Managed Disks nicht verwenden möchten.
 
 ```powershell
@@ -1475,7 +1498,7 @@ Der folgende Beispielcode ist für Linux vorgesehen. Für Windows verwenden Sie 
 
 * Erstellen einer neuen Ressourcengruppe für jede Schulungs-/Demoumgebung
 
-```
+```azurecli
 rgName=SAPERPDemo1
 rgNameLower=saperpdemo1
 az group create --name $rgName --location "North Europe"
@@ -1483,13 +1506,13 @@ az group create --name $rgName --location "North Europe"
 
 * Erstellen eines neuen Speicherkontos
 
-```
+```azurecli
 az storage account create --resource-group $rgName --location "North Europe" --kind Storage --sku Standard_LRS --name $rgNameLower
 ```
 
 * Erstellen Sie für jede Schulungs-/Demoumgebung ein neues virtuelles Netzwerk, so dass der gleiche Hostname und die gleichen IP-Adressen verwendet werden können. Das virtuelle Netzwerk wird durch eine Netzwerksicherheitsgruppe geschützt, die nur Datenverkehr an Port 3389 (für Remotedesktopzugriff) und Port 22 (für SSH) zulässt.
 
-```
+```azurecli
 az network nsg create --resource-group $rgName --location "North Europe" --name SAPERPDemoNSG
 az network nsg rule create --resource-group $rgName --nsg-name SAPERPDemoNSG --name SAPERPDemoNSGRDP --protocol \* --source-address-prefix \* --source-port-range \* --destination-address-prefix \* --destination-port-range 3389 --access Allow --priority 100 --direction Inbound
 az network nsg rule create --resource-group $rgName --nsg-name SAPERPDemoNSG --name SAPERPDemoNSGSSH --protocol \* --source-address-prefix \* --source-port-range \* --destination-address-prefix \* --destination-port-range 22 --access Allow --priority 101 --direction Inbound
@@ -1500,19 +1523,19 @@ az network vnet subnet create --resource-group $rgName --vnet-name SAPERPDemoVNe
 
 * Erstellen Sie eine neue öffentliche IP-Adresse, über die Zugriff auf die VM über das Internet möglich ist.
 
-```
+```azurecli
 az network public-ip create --resource-group $rgName --name SAPERPDemoPIP --location "North Europe" --dns-name $rgNameLower --allocation-method Dynamic
 ```
 
 * Erstellen Sie eine neue Netzwerkschnittstelle für die VM.
 
-```
+```azurecli
 az network nic create --resource-group $rgName --location "North Europe" --name SAPERPDemoNIC --public-ip-address SAPERPDemoPIP --subnet Subnet1 --vnet-name SAPERPDemoVNet
 ```
 
 * Erstellen Sie eine VM. Für dieses Szenario erhält jede VM den gleichen Namen. Auch die SAP-SIDs der SAP NetWeaver-Instanzen dieser VMs sind identisch. Innerhalb einer Azure-Ressourcengruppe müssen die Namen von VMs eindeutig sein, aber in verschiedenen Azure-Ressourcengruppen können VMs mit identischen Namen ausgeführt werden. Die Standardkonten „Administrator“ (Windows) und „root“ (Linux) sind nicht gültig. Daher muss ein neuer Benutzername mit Administratorrechten samt Kennwort eingerichtet werden. Auch die Größe der VM muss definiert werden.
 
-```
+```azurecli
 #####
 # Create virtual machines using storage accounts
 #####
@@ -1530,7 +1553,7 @@ az vm create --resource-group $rgName --location "North Europe" --name SAPERPDem
 #az vm create --resource-group $rgName --location "North Europe" --name SAPERPDemo --nics SAPERPDemoNIC --image "Oracle:Oracle-Linux:7.2:latest" --admin-username <username> --admin-password <password> --size Standard_DS11_v2 --os-disk-name os --authentication-type password
 ```
 
-```
+```azurecli
 #####
 # Create a new virtual machine with a VHD that contains the private image that you want to use
 #####
@@ -1546,7 +1569,7 @@ az vm create --resource-group $rgName --location "North Europe" --name SAPERPDem
 
 * Fügen Sie optional weitere Datenträger hinzu, und stellen Sie erforderliche Inhalte wieder her. Innerhalb von Azure müssen alle Blobnamen (URLs zu den Blobs) eindeutig sein.
 
-```
+```azurecli
 # Optional: Attach additional VHD data disks
 az vm unmanaged-disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 --vhd-uri https://$rgNameLower.blob.core.windows.net/vhds/data.vhd  --new
 
@@ -1623,9 +1646,7 @@ Mit diesem Dokument sollten Sie auf dem VPN-Gerät dedizierte Ports für bestimm
 
 Als weitere Sicherheitsmaßnahme bei der Bereitstellung von virtuellen Computern in einem solchen Szenario können Sie eine [Netzwerksicherheitsgruppe][virtual-networks-nsg] erstellen, um Zugriffsregeln zu definieren.
 
-### <a name="dealing-with-different-virtual-machine-series"></a>Umgang mit anderen virtuellen Computerserien
 
-Microsoft hat viele weitere VM-Typen hinzugefügt, die sich entweder hinsichtlich der Anzahl der vCPUs, des Speichers oder (noch wichtiger) der Hardware unterscheiden, auf der sie ausgeführt werden. Nicht alle diese virtuellen Computer werden von SAP unterstützt (unterstützte virtuelle Computertypen finden Sie im SAP-Hinweis [1928533]). Einige dieser virtuellen Computer werden auf anderen Host-Hardwaregenerationen ausgeführt. Die Bereitstellung dieser Host-Hardwaregenerationen erfolgt in der Granularität einer Azure-Skalierungseinheit. Es können Fällen auftreten, in denen die verschiedenen von Ihnen ausgewählten VM-Typen nicht mit derselben Skalierungseinheit ausgeführt werden können. Eine Verfügbarkeitsgruppe kann nur Skalierungseinheiten für unterschiedliche Hardware umfassen.  Wenn Sie z. B. die SAP-DBMS-Ebene auf einer E64s_v3-VM ausführen, die sich zusammen mit der VM, auf der die sekundäre DBMS-Instanz in einer Hochverfügbarkeitskonfiguration ausgeführt wird, in einer Verfügbarkeitsgruppe befindet, können Sie die sekundäre VM nicht einfach anhalten und als VM der M-Serie neu starten, weil Sie etwa ein Upgrade für die VM durchführen möchten. Grund hierfür ist, dass VMs der M-Serie und VMs der Ev3-Serie auf unterschiedlicher Hardware und somit in verschiedenen Skalierungseinheiten ausgeführt werden. Sie müssten eine neue Verfügbarkeitsgruppe erstellen, die sekundäre VM der Ev3-Serie löschen, ohne den Speicher zu löschen, und die VM dann als VM der M-Serie erneut in der neuen Verfügbarkeitsgruppe bereitstellen.
 
 #### <a name="printing-on-a-local-network-printer-from-sap-instance-in-azure"></a>Drucken auf einem lokalen Netzwerkdrucker von einer SAP-Instanz in Azure
 
@@ -1754,7 +1775,7 @@ SAP-Instanzen in Azure müssen auf Dateifreigaben innerhalb der lokalen Systeme 
 
 ## <a name="supportability"></a>Unterstützbarkeit
 
-### <a name="6f0a47f3-a289-4090-a053-2521618a28c3"></a>Azure-Erweiterung für SAP
+### <a name="azure-extension-for-sap"></a><a name="6f0a47f3-a289-4090-a053-2521618a28c3"></a>Azure-Erweiterung für SAP
 
 Um einen Teil der Informationen über die Azure-Infrastruktur, der sich auf unternehmenskritische SAP-Systeme bezieht, an SAP-Host-Agent-Instanzen zu übertragen, die auf virtuellen Computern installiert sind, muss für die bereitgestellten VMs eine Azure-Erweiterung für SAP (VM) installiert werden. Da bei SAP spezifische Anforderungen hinsichtlich SAP-Anwendungen gelten, hat sich Microsoft entschieden, die erforderliche Funktionalität nicht generisch in Azure zu implementieren. Die Kunden sollten die erforderliche VM-Erweiterung und die Konfigurationen selbst auf ihren virtuellen Computer in Azure bereitstellen. Die Bereitstellung und das Lebenszyklusmanagement der Azure-Erweiterung für SAP (VM) wird jedoch zum Großteil von Azure automatisiert.
 
@@ -1908,7 +1929,7 @@ Für wichtige SAP-Komponenten haben wir bisher Folgendes erreicht:
 
 Um Hochverfügbarkeit des gesamten SAP-Systems zu erreichen, müssen Sie alle kritischen SAP-Systemkomponenten wie redundante SAP-Anwendungsserver und einmalige Komponenten (z. B. Single Point of Failure) wie eine SAP-(A)SCS-Instanz und DBMS schützen.
 
-#### <a name="5d9d36f9-9058-435d-8367-5ad05f00de77"></a>Hohe Verfügbarkeit für SAP-Anwendungsserver
+#### <a name="high-availability-for-sap-application-servers"></a><a name="5d9d36f9-9058-435d-8367-5ad05f00de77"></a>Hohe Verfügbarkeit für SAP-Anwendungsserver
 
 Für die SAP-Anwendungsserver/Dialoginstanzen ist keine spezielle Hochverfügbarkeitslösung erforderlich. Die Hochverfügbarkeit wird durch Redundanz erzielt, die durch die verschiedenen virtuellen Computer mehr als genügend gegeben ist. Die virtuellen Computer sollten alle in derselben Azure-Verfügbarkeitsgruppe platziert werden, um zu vermeiden, dass sie während geplanter Wartungsausfallzeiten alle zur gleichen Zeit aktualisiert werden. Die grundlegende Funktion, die auf unterschiedlichen Upgrade- und Fehlerdomänen innerhalb einer Azure-Skalierungseinheit basiert, wurde bereits im Kapitel [Upgradedomänen][planning-guide-3.2.2] vorgestellt. Azure-Verfügbarkeitsgruppen wurden im Kapitel [Azure-Verfügbarkeitsgruppen][planning-guide-3.2.3] dieses Dokuments vorgestellt.
 
@@ -1963,7 +1984,7 @@ Die folgende Abbildung veranschaulicht die gleiche Landschaft mit Managed Disks
 
 Die Architektur für SAP HA unter Linux in Azure ist im Grunde mit der oben für Windows beschriebenen Architektur identisch. Eine Liste unterstützter Hochverfügbarkeitslösungen finden Sie im SAP-Hinweis [1928533].
 
-### <a name="4e165b58-74ca-474f-a7f4-5e695a93204f"></a>Verwenden von Autostart für SAP-Instanzen
+### <a name="using-autostart-for-sap-instances"></a><a name="4e165b58-74ca-474f-a7f4-5e695a93204f"></a>Verwenden von Autostart für SAP-Instanzen
 
 SAP bot diese Funktion zum Starten von SAP-Instanzen unmittelbar nach dem Start des Betriebssystems auf dem virtuellen Computer an. Die genauen Schritte sind im SAP Knowledge Base-Artikel [1909114] dokumentiert. SAP rät jetzt jedoch von der Verwendung dieser Einstellung ab, da die Reihenfolge der Instanzneustarts nicht gesteuert wird, in der Annahme, dass mehrere virtuelle Computer betroffen sind oder mehrere Instanzen pro virtuellem Computer ausgeführt wurden. Bei einem typischen Azure-Szenario mit einer SAP-Anwendungsserverinstanz auf einer VM, bei der eine einzelne VM neu gestartet wird, ist der Autostart-Parameter nicht wichtig und kann durch Hinzufügen des folgenden Parameters aktiviert werden:
 

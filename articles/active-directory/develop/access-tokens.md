@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 3/27/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 06a3ef7677d52ebb0d835dfed2f47fc66870f0ec
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 417829389a4b3a6bb55dcff9bfe59c2bc8693ca0
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620881"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80383207"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity Platform-Zugriffstoken
 
@@ -30,7 +30,7 @@ Wenn Ihre Anwendung eine Ressource (Web-API) ist, für die Clients den Zugriff a
 In den folgenden Abschnitten erfahren Sie, wie eine Ressource die Ansprüche innerhalb eines Zugriffstokens überprüfen und verwenden kann.
 
 > [!IMPORTANT]
-> Zugriffstoken werden basierend auf der *Zielgruppe* des Tokens erstellt, d. h. der Anwendung, die die Bereiche im Token besitzt.  Auf diese Weise ermöglicht die Ressourceneinstellung `accessTokenAcceptedVersion` im [Anwendungsmanifest](reference-app-manifest.md#manifest-reference) für `2` einem Client, der den v1.0-Endpunkt aufruft, den Empfang eines v2.0-Zugriffstokens.  Aus diesem Grund ändert die Änderung des Zugriffstokens [optionale Ansprüche](active-directory-optional-claims.md) für Ihren Client auch nicht die Zugriffstoken, die beim Anfordern eines Tokens für `user.read` empfangen wurde, das der MS Graph-Ressource gehört.  
+> Zugriffstoken werden basierend auf der *Zielgruppe* des Tokens erstellt, d. h. der Anwendung, die die Bereiche im Token besitzt.  Auf diese Weise ermöglicht die Ressourceneinstellung `accessTokenAcceptedVersion` im [Anwendungsmanifest](reference-app-manifest.md#manifest-reference) für `2` einem Client, der den v1.0-Endpunkt aufruft, den Empfang eines v2.0-Zugriffstokens.  Aus diesem Grund ändert die Änderung des Zugriffstokens [optionale Ansprüche](active-directory-optional-claims.md) für Ihren Client auch nicht die Zugriffstoken, die beim Anfordern eines Tokens für `user.read` empfangen wurde, das der Ressource gehört.
 > Wenn Sie Ihre Clientanwendung mit einem persönlichen Konto (z. B. „hotmail.com“ oder „outlook.com“) testen, kann es aus demselben Grund vorkommen, dass das von Ihrem Client empfangene Zugriffstoken eine nicht transparente Zeichenfolge ist. Dies ist darauf zurückzuführen, dass die Ressource, auf die zugegriffen wird, ältere MSA-Tickets (Microsoft-Konto) angefordert hat, die verschlüsselt sind und nicht vom Client verstanden werden können.
 
 ## <a name="sample-tokens"></a>Beispieltoken
@@ -82,9 +82,9 @@ Ansprüche sind nur enthalten, wenn ein Wert zum Füllen des Anspruchs vorhanden
 
 | Anspruch | Format | BESCHREIBUNG |
 |-----|--------|-------------|
-| `aud` | Zeichenfolge, ein App-ID-URI | Identifiziert den vorgesehenen Empfänger des Tokens. In ID-Token ist die Zielgruppe die Ihrer App im Azure-Portal zugewiesene Anwendungs-ID der App. Ihre App sollte diesen Wert überprüfen und das Token ablehnen, wenn der Wert nicht übereinstimmt. |
+| `aud` | Zeichenfolge, ein App-ID-URI | Identifiziert den vorgesehenen Empfänger des Tokens. In ID-Token ist die Zielgruppe die Anwendungs-ID Ihrer App, die der App im Azure-Portal zugewiesen wurde. Ihre App sollte diesen Wert überprüfen und das Token ablehnen, wenn der Wert nicht übereinstimmt. |
 | `iss` | Zeichenfolge, ein STS-URI | Identifiziert den Sicherheitstokendienst (STS), der das Token und den Azure AD-Mandanten, in dem der Benutzer authentifiziert wurde, erstellt und zurückgibt. Wenn das ausgegebene Token ein v2. 0-Token ist (weitere Informationen finden Sie im Anspruch `ver`), endet der URI in `/v2.0`. Die GUID, die angibt, dass der Benutzer ein Consumer-Benutzer eines Microsoft-Kontos ist, lautet `9188040d-6c67-4c5b-b112-36a304b66dad`. Ihre App sollte ggf. den GUID-Teil des Anspruchs verwenden, um die Mandanten einzuschränken, die sich bei der App anmelden können. |
-|`idp`| Zeichenfolge, in der Regel ein STS-URI | Der Identitätsanbieter, der den Antragsteller des Tokens authentifiziert hat. Dieser Wert ist identisch mit dem Wert des Ausstelleranspruchs, es sei denn, das Benutzerkonto ist nicht im gleichen Mandanten wie der Aussteller vorhanden (etwa Gäste). Wenn der Anspruch nicht vorhanden ist, bedeutet dies, dass stattdessen der Wert `iss` verwendet werden kann.  Für in einem Organisationskontext verwendete persönliche Konten (etwa ein zu einem Azure AD-Mandanten eingeladenes persönliches Konto) kann der `idp`-Anspruch „live.com“ oder ein STS-URI sein, der den Microsoft-Kontomandanten `9188040d-6c67-4c5b-b112-36a304b66dad` enthält. |  
+|`idp`| Zeichenfolge, in der Regel ein STS-URI | Der Identitätsanbieter, der den Antragsteller des Tokens authentifiziert hat. Dieser Wert ist identisch mit dem Wert des Ausstelleranspruchs, es sei denn, das Benutzerkonto ist nicht im gleichen Mandanten wie der Aussteller vorhanden (etwa Gäste). Wenn der Anspruch nicht vorhanden ist, bedeutet dies, dass stattdessen der Wert `iss` verwendet werden kann.  Für in einem Organisationskontext verwendete persönliche Konten (etwa ein zu einem Azure AD-Mandanten eingeladenes persönliches Konto) kann der `idp`-Anspruch „live.com“ oder ein STS-URI sein, der den Microsoft-Kontomandanten `9188040d-6c67-4c5b-b112-36a304b66dad` enthält. |
 | `iat` | Ganze Zahl, ein UNIX-Zeitstempel | „Issued At“ gibt an, wann die Authentifizierung für dieses Token erfolgt ist. |
 | `nbf` | Ganze Zahl, ein UNIX-Zeitstempel | Der Anspruch „nbf“ (nicht vor) gibt die Zeit an, vor der das JWT NICHT für die Bearbeitung akzeptiert werden darf. |
 | `exp` | Ganze Zahl, ein UNIX-Zeitstempel | Der Anspruch „exp“ (Ablaufzeit) gibt die Ablaufzeit an, ab oder nach der das JWT NICHT für die Bearbeitung akzeptiert werden darf. Wichtig ist hierbei, dass eine Ressource das Token auch vor diesem Zeitpunkt ablehnen kann (beispielsweise wenn eine Änderung der Authentifizierung erforderlich ist oder ein Tokenwiderruf erkannt wurde). |
@@ -100,9 +100,9 @@ Ansprüche sind nur enthalten, wenn ein Wert zum Füllen des Anspruchs vorhanden
 | `scp` | Zeichenfolge, eine durch Leerzeichen getrennte Liste von Bereichen | Die von Ihrer Anwendung verfügbar gemachte Gruppe von Bereichen, für die die Clientanwendung eine Einwilligung angefordert (und empfangen) hat. Ihre App sollte überprüfen, ob diese Bereiche gültige, von Ihrer App verfügbar gemachte Bereiche sind, und Autorisierungsentscheidungen basierend auf dem Wert der Bereiche treffen. Wird nur für [Benutzertoken](#user-and-application-tokens) verwendet. |
 | `roles` | Array von Zeichenfolgen, eine Liste der Berechtigungen | Die von Ihrer Anwendung verfügbar gemachte Gruppe von Berechtigungen, für die der anfordernden Anwendung bzw. dem anfordernden Benutzer die Berechtigung zum Aufrufen gewährt wurde. Bei [Anwendungstoken](#user-and-application-tokens) wird dieser Anspruch während des Flows für Clientanmeldeinformationen ([v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v2.0](v2-oauth2-client-creds-grant-flow.md)) anstelle von Benutzerbereichen verwendet.  Bei [Benutzertoken](#user-and-application-tokens) wird dieser Wert mit den Rollen aufgefüllt, die dem Benutzer für die Zielanwendung zugewiesen wurden. |
 | `wids` | Array von [RoleTemplateID](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids)-GUIDs | Gibt die mandantenweiten Rollen an, die diesem Benutzer aus dem Abschnitt mit Rollen auf der Seite[Administratorrollen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#role-template-ids) zugewiesen wurden.  Dieser Anspruch wird über die `groupMembershipClaims`-Eigenschaft des [Anwendungsmanifests](reference-app-manifest.md) anwendungsspezifisch konfiguriert.  Der Wert muss auf „All“ oder „DirectoryRole“ festgelegt werden.  Ist in Token, die über den impliziten Flow abgerufen wurden, aufgrund von Beschränkungen der Tokenlänge u. U. nicht enthalten. |
-| `groups` | JSON-Array von GUIDs | Enthält die Objekt-IDs, die die Gruppenmitgliedschaften des Antragstellers darstellen. Diese Werte sind eindeutig (siehe „Object ID“) und eignen sich zum sicheren Verwalten des Zugriffs, z.B. für das Erzwingen der Autorisierung für den Zugriff auf eine Ressource. Die im Anspruch „groups“ enthaltenen Gruppen werden über die `groupMembershipClaims`-Eigenschaft des [Anwendungsmanifests](reference-app-manifest.md) anwendungsspezifisch konfiguriert. Mit dem Wert "null" werden alle Gruppen ausgeschlossen. Beim Wert "SecurityGroup" sind nur Active Directory-Sicherheitsgruppenmitglieder enthalten. Beim Wert "All" sind sowohl Sicherheitsgruppen als auch Office 365-Verteilerlisten enthalten. <br><br>Informationen zur Verwendung des Anspruchs `groups` mit impliziter Gewährung finden Sie unter dem Anspruch `hasgroups`. <br>Wenn bei anderen Flows die Anzahl von Gruppen, denen der Benutzer angehört, einen Grenzwert überschreitet (150 für SAML, 200 für JWT), wird den Anspruchsquellen, die auf den AAD Graph-Endpunkt mit der Liste der Gruppen für den Benutzer verweisen, ein Überschreitungsanspruch hinzugefügt. |
-| `hasgroups` | Boolean | Ist immer auf `true` festgelegt (sofern vorhanden) und gibt an, dass der Benutzer mindestens einer Gruppe angehört. Wird anstelle des Anspruchs `groups` für JWTs in Flows mit impliziter Gewährung verwendet, wenn der Anspruch für vollständige Gruppen das URI-Fragment über die URL-Längenbeschränkung (derzeit 6 oder mehr Gruppen) erweitert. Gibt an, dass der Client über den Graph die Gruppen des Benutzers bestimmen soll (`https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects`). |
-| `groups:src1` | JSON-Objekt | Für Tokenanforderungen ohne Längenbeschränkung (siehe `hasgroups` oben), die aber dennoch zu groß für das Token sind, ist ein Link zur Liste der vollständigen Gruppen für den Benutzer enthalten. Für JWTs als verteilter Anspruch, für SAML als neuer Anspruch anstelle des Anspruchs `groups`. <br><br>**JWT-Beispielwert**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }` |
+| `groups` | JSON-Array von GUIDs | Enthält die Objekt-IDs, die die Gruppenmitgliedschaften des Antragstellers darstellen. Diese Werte sind eindeutig (siehe „Object ID“) und eignen sich zum sicheren Verwalten des Zugriffs, z.B. für das Erzwingen der Autorisierung für den Zugriff auf eine Ressource. Die im Anspruch „groups“ enthaltenen Gruppen werden über die `groupMembershipClaims`-Eigenschaft des [Anwendungsmanifests](reference-app-manifest.md) anwendungsspezifisch konfiguriert. Mit dem Wert "null" werden alle Gruppen ausgeschlossen. Beim Wert "SecurityGroup" sind nur Active Directory-Sicherheitsgruppenmitglieder enthalten. Beim Wert "All" sind sowohl Sicherheitsgruppen als auch Office 365-Verteilerlisten enthalten. <br><br>Informationen zur Verwendung des Anspruchs `groups` mit impliziter Gewährung finden Sie unter dem Anspruch `hasgroups`. <br>Wenn bei anderen Flows die Anzahl von Gruppen, denen der Benutzer angehört, einen Grenzwert überschreitet (150 für SAML, 200 für JWT), wird den Anspruchsquellen, die auf den Microsoft Graph-Endpunkt mit der Liste der Gruppen für den Benutzer verweisen, ein Überschreitungsanspruch hinzugefügt. |
+| `hasgroups` | Boolean | Ist immer auf `true` festgelegt (sofern vorhanden) und gibt an, dass der Benutzer mindestens einer Gruppe angehört. Wird anstelle des Anspruchs `groups` für JWTs in Flows mit impliziter Gewährung verwendet, wenn der Anspruch für vollständige Gruppen das URI-Fragment über die URL-Längenbeschränkung (derzeit 6 oder mehr Gruppen) erweitert. Gibt an, dass der Client die Gruppen des Benutzers über die Microsoft Graph-API bestimmen soll (`https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects`). |
+| `groups:src1` | JSON-Objekt | Für Tokenanforderungen ohne Längenbeschränkung (siehe `hasgroups` oben), die aber dennoch zu groß für das Token sind, ist ein Link zur Liste der vollständigen Gruppen für den Benutzer enthalten. Für JWTs als verteilter Anspruch, für SAML als neuer Anspruch anstelle des Anspruchs `groups`. <br><br>**JWT-Beispielwert**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }` |
 | `sub` | Zeichenfolge, eine GUID | Der Prinzipal, für den das Token Informationen zusichert, z. B. der Benutzer einer App. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann für die sichere Durchführung von Autorisierungsüberprüfungen verwendet werden, z.B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Er kann auch als Schlüssel in Datenbanktabellen verwendet werden. Da der Antragsteller immer in den Token vorhanden ist, die Azure AD ausstellt, wird die Nutzung dieses Werts in einem allgemeinen Autorisierungssystem empfohlen. Der Antragsteller ist allerdings ein paarweiser Bezeichner: Er gilt nur für eine bestimmte Anwendungs-ID. Wenn sich ein Benutzer bei zwei verschiedenen Apps mit zwei verschiedenen Client-IDs anmeldet, erhalten diese Apps zwei unterschiedliche Werte für den Antragstelleranspruch. Dies kann abhängig von den Architektur- und Datenschutzanforderungen möglicherweise wünschenswert sein oder nicht. Siehe auch den `oid`-Anspruch (der innerhalb eines Mandanten für alle Apps immer gleich bleibt). |
 | `oid` | Zeichenfolge, eine GUID | Der unveränderliche Bezeichner für ein Objekt in der Microsoft Identity Platform (in diesem Fall ein Benutzerkonto). Er kann auch verwendet werden, um Autorisierungsüberprüfungen auf sichere Weise durchzuführen, und er kann als Schlüssel in Datenbanktabellen genutzt werden. Diese ID identifiziert den Benutzer anwendungsübergreifend eindeutig: Zwei verschiedene Anwendungen, die den gleichen Benutzer anmelden, erhalten den gleichen Wert im `oid`-Anspruch. Dies bedeutet, dass `oid` beim Senden von Abfragen an Microsoft-Onlinedienste wie Microsoft Graph verwendet werden kann. Microsoft Graph gibt diese ID als `id`-Eigenschaft für ein bestimmtes [Benutzerkonto](/graph/api/resources/user) zurück. Da mit `oid` mehrere Apps Benutzer korrelieren können, ist der `profile`-Bereich erforderlich, um diesen Anspruch zu erhalten. Beachten Sie Folgendes: Wenn ein einzelner Benutzer in mehreren Mandanten vorhanden ist, enthält der Benutzer in jedem Mandanten eine andere Objekt-ID. Sie werden als unterschiedliche Konten betrachtet, obwohl sich der Benutzer bei jedem Konto mit den gleichen Anmeldeinformationen anmeldet. |
 | `tid` | Zeichenfolge, eine GUID | Stellt den Azure AD-Mandanten dar, aus dem der Benutzer stammt. Bei Geschäfts- und Schulkonten ist die GUID die unveränderliche Mandanten-ID der Organisation, zu der der Benutzer gehört. Für persönliche Konten lautet der Wert `9188040d-6c67-4c5b-b112-36a304b66dad`. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
@@ -111,28 +111,28 @@ Ansprüche sind nur enthalten, wenn ein Wert zum Füllen des Anspruchs vorhanden
 | `rh` | Nicht transparente Zeichenfolge | Ein interner Anspruch, der von Azure zum erneuten Überprüfen von Token verwendet wird. Ressourcen sollten diesen Anspruch nicht verwenden. |
 | `ver` | Zeichenfolge, `1.0` oder `2.0` | Gibt die Version des Zugriffstokens an. |
 
+**Gruppenüberschreitungsanspruch**
 
-> [!NOTE]
-> **Gruppenüberschreitungsanspruch**
->
-> Azure AD schränkt die Anzahl von Objekt-IDs im Gruppenanspruch ein, um sicherzustellen, dass die Tokengröße die Grenzwerte für HTTP-Header nicht übersteigt. Wenn ein Benutzer Mitglied mehrerer Gruppen als die zulässige Überschreitungsgrenze (150 für SAML-Token, 200 für JWT-Token) ist, gibt Azure AD den Gruppenanspruch nicht im Token aus. Stattdessen ist ein Überschreitungsanspruch im Token enthalten, der der Anwendung anzeigt, dass die Graph-API abgefragt werden soll, um die Gruppenmitgliedschaft des Benutzers abzurufen.
-  ```csharp
-  {
-    ...
-    "_claim_names": {
-     "groups": "src1"
-      },
-      {
-    "_claim_sources": {
-      "src1": {
-          "endpoint":"[Graph Url to get this user's group membership from]"
-          }
-         }
+Azure AD schränkt die Anzahl von Objekt-IDs im Gruppenanspruch ein, um sicherzustellen, dass die Tokengröße die Grenzwerte für HTTP-Header nicht übersteigt. Wenn ein Benutzer Mitglied mehrerer Gruppen als die zulässige Überschreitungsgrenze (150 für SAML-Token, 200 für JWT-Token) ist, gibt Azure AD den Gruppenanspruch nicht im Token aus. Stattdessen ist ein Überschreitungsanspruch im Token enthalten, der der Anwendung anzeigt, dass die Microsoft Graph-API abgefragt werden soll, um die Gruppenmitgliedschaft des Benutzers abzurufen.
+
+```JSON
+{
+  ...
+  "_claim_names": {
+   "groups": "src1"
+    },
+    {
+  "_claim_sources": {
+    "src1": {
+        "endpoint":"[Url to get this user's group membership from]"
+        }
        }
-    ...
-   }
-   ```
-> Sie können die im Ordner [App-Erstellungsskripts](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims/blob/master/AppCreationScripts/) verfügbare Datei `BulkCreateGroups.ps1` verwenden, um Überschreitungsszenarien zu testen.
+     }
+  ...
+ }
+ ```
+
+Sie können die im Ordner [App-Erstellungsskripts](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-2-Groups/AppCreationScripts) verfügbare Datei `BulkCreateGroups.ps1` verwenden, um Überschreitungsszenarien zu testen.
 
 #### <a name="v10-basic-claims"></a>Grundlegende v1.0-Ansprüche
 
@@ -154,7 +154,7 @@ Die folgenden Ansprüche werden ggf. in v1.0-Token eingeschlossen, sind standard
 
 Microsoft-Identitäten können auf verschiedene Arten authentifiziert werden, die möglicherweise für Ihre Anwendung relevant sind. Der `amr`-Anspruch ist ein Array, das mehrere Elemente (beispielsweise `["mfa", "rsa", "pwd"]`) für eine Authentifizierung enthalten kann, bei der sowohl ein Kennwort als auch die Authenticator-App verwendet wurden.
 
-| value | BESCHREIBUNG |
+| Wert | BESCHREIBUNG |
 |-----|-------------|
 | `pwd` | Kennwortauthentifizierung, entweder das Microsoft-Kennwort eines Benutzers oder der geheime Clientschlüssel einer App. |
 | `rsa` | Die Authentifizierung erfolgt basierend auf der Prüfung eines RSA-Schlüssels, beispielsweise mit der [Microsoft Authenticator-App](https://aka.ms/AA2kvvu). Dies beinhaltet auch, ob die Authentifizierung von einem selbst signierten JWT mit einem X509-Zertifikat im Besitz eines Diensts durchgeführt wurde. |
@@ -170,9 +170,9 @@ Microsoft-Identitäten können auf verschiedene Arten authentifiziert werden, di
 
 Bei der Überprüfung eines „id_token“ oder eines „access_token“ muss Ihre App sowohl die Signatur des Tokens als auch die Ansprüche überprüfen. Um Zugriffstoken zu überprüfen, sollte Ihre App auch den Aussteller, die Zielgruppe und die signierenden Token validieren. Diese müssen anhand der Werte im OpenID Discovery-Dokument überprüft werden. Die mandantenunabhängige Version des Dokuments finden Sie beispielsweise unter [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration).
 
-Azure AD-Middleware verfügt über integrierte Funktionen zum Überprüfen von Zugriffstoken. Sie können auch unsere [Beispiele](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples) nach einer gewünschten Programmiersprache durchsuchen. Weitere Informationen zur expliziten Überprüfung von JWT-Token finden Sie im [Beispiel zur manuellen JWT-Überprüfung](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation).
+Azure AD-Middleware verfügt über integrierte Funktionen zum Überprüfen von Zugriffstoken. Sie können auch unsere [Beispiele](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples) nach einer gewünschten Programmiersprache durchsuchen.
 
-Wir bieten Bibliotheken und Codebeispiele, die zeigen, wie Sie die Tokenüberprüfung problemlos ausführen können. Die folgenden Informationen sind für Leser vorgesehen, die den zugrunde liegenden Prozess verstehen möchten. Für die JWT-Überprüfung stehen zudem verschiedene Open Source-Bibliotheken von Drittanbietern zur Verfügung. Für nahezu jede Plattform und Programmiersprache ist mindestens eine Option verfügbar. Weitere Informationen zu Azure AD-Authentifizierungsbibliotheken und Codebeispiele finden Sie unter [v1.0-Authentifizierungsbibliotheken](../azuread-dev/active-directory-authentication-libraries.md) und [v2.0-Authentifizierungsbibliotheken](reference-v2-libraries.md).
+Wir bieten Bibliotheken und Codebeispiele, die zeigen, wie Sie die Tokenüberprüfung ausführen können. Die folgenden Informationen sind für Leser vorgesehen, die den zugrunde liegenden Prozess verstehen möchten. Für die JWT-Überprüfung stehen zudem verschiedene Open Source-Bibliotheken von Drittanbietern zur Verfügung. Für nahezu jede Plattform und Programmiersprache ist mindestens eine Option verfügbar. Weitere Informationen zu Azure AD-Authentifizierungsbibliotheken und Codebeispiele finden Sie unter [v1.0-Authentifizierungsbibliotheken](../azuread-dev/active-directory-authentication-libraries.md) und [v2.0-Authentifizierungsbibliotheken](reference-v2-libraries.md).
 
 ### <a name="validating-the-signature"></a>Überprüfen der Signatur
 
@@ -210,7 +210,7 @@ Dieses Metadatendokument:
 > [!NOTE]
 > Der v1.0-Endpunkt gibt beide Ansprüche zurück, `x5t` und `kid`, der v2.0-Endpunkt dagegen antwortet nur mit Anspruch `kid`. Für das weitere Vorgehen wird empfohlen, Ihr Token mithilfe des Anspruchs `kid` zu überprüfen.
 
-Die Signaturüberprüfung wird in diesem Dokument nicht erläutert. Es stehen jedoch zahlreiche Open Source-Bibliotheken mit hilfreichen Informationen zur Verfügung.  Die Microsoft Identity Platform verfügt jedoch über eine Tokensignaturerweiterung für die Standards – benutzerdefinierte Signaturschlüssel.  
+Die Signaturüberprüfung wird in diesem Dokument nicht erläutert. Es stehen jedoch zahlreiche Open Source-Bibliotheken mit hilfreichen Informationen zur Verfügung.  Die Microsoft Identity Platform verfügt jedoch über eine Tokensignaturerweiterung für die Standards – benutzerdefinierte Signaturschlüssel.
 
 Wenn Ihre App durch die Verwendung der Funktion [Anspruchszuordnung](active-directory-claims-mapping.md) über benutzerdefinierte Signaturschlüssel verfügt, müssen Sie einen `appid`-Abfrageparameter mit der App-ID anfügen, um einen `jwks_uri` abzurufen, der auf die Signaturschlüsselinformationen Ihrer App verweist, die für die Überprüfung verwendet werden sollen. Beispiel: `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` enthält einen `jwks_uri` von `https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`.
 
@@ -233,13 +233,15 @@ Ihre Anwendung kann Token im Namen eines Benutzers (der übliche Flow) oder dire
 
 * Nur für die App geltende Token enthalten keinen `scp`-Anspruch, stattdessen aber möglicherweise einen `roles`-Anspruch. Hier wird die Anwendungsberechtigung (im Gegensatz zu delegierten Berechtigungen) aufgezeichnet. Weitere Informationen zu delegierten Berechtigungen und Anwendungsberechtigungen finden Sie im Thema über Berechtigungen und die Einwilligung ([v1.0](../azuread-dev/v1-permissions-consent.md), [v2.0](v2-permissions-and-consent.md)).
 * Viele benutzerspezifische Ansprüche fehlen, beispielsweise `name` oder `upn`.
-* Der `sub`- und `oid`-Anspruch sind identisch. 
+* Der `sub`- und `oid`-Anspruch sind identisch.
 
 ## <a name="token-revocation"></a>Widerrufen von Token
 
 Aktualisierungstoken können jederzeit aus vielen verschiedenen Gründen ungültig werden. Hierbei gibt es zwei Hauptkategorien: Zeitüberschreitungen und Widerrufe.
 
 ### <a name="token-timeouts"></a>Tokenzeitüberschreitungen
+
+Mit der [Konfiguration der Tokenlebensdauer](active-directory-configurable-token-lifetimes.md) kann die Lebensdauer von Aktualisierungstoken geändert werden.  Es ist bei einigen Token normal und erwartungsgemäß, dass sie nicht verwendet werden (wenn z. B. der Benutzer die App drei Monate lang nicht öffnet) und daher ablaufen.  Für Apps können Szenarien eintreten, in denen der Anmeldeserver ein Aktualisierungstoken aufgrund seines Alters ablehnt. 
 
 * MaxInactiveTime: Wenn das Aktualisierungstoken innerhalb des von MaxInactiveTime vorgegebenen Zeitraums nicht verwendet wurde, ist es nicht mehr gültig.
 * MaxSessionAge: Wenn „MaxAgeSessionMultiFactor“ oder „MaxAgeSessionSingleFactor“ auf einen anderen Wert als die Standardeinstellung (Until-revoked) festgelegt wurden, ist eine erneute Authentifizierung erforderlich, nachdem der in „MaxAgeSession*“ festgelegte Zeitraum abgelaufen ist.
@@ -249,6 +251,8 @@ Aktualisierungstoken können jederzeit aus vielen verschiedenen Gründen ungült
 
 ### <a name="revocation"></a>Widerruf
 
+Aktualisierungstoken können vom Server aufgrund einer Änderung der Anmeldeinformationen oder aufgrund der Verwendung oder einer Administratoraktion widerrufen werden.  Aktualisierungstoken werden in zwei Klassen unterteilt: solche, die für vertrauliche Clients ausgestellt werden (die Spalte ganz rechts), und Aktualisierungstoken, die für öffentliche Clients (alle anderen Spalten) ausgestellt werden.   
+
 |   | Kennwortbasiertes Cookie | Kennwortbasiertes Token | Nicht kennwortbasiertes Cookie | Nicht kennwortbasiertes Token | Vertrauliches Clienttoken |
 |---|-----------------------|----------------------|---------------------------|--------------------------|---------------------------|
 | Kennwort läuft ab | Bleibt aktiv | Bleibt aktiv | Bleibt aktiv | Bleibt aktiv | Bleibt aktiv |
@@ -256,7 +260,7 @@ Aktualisierungstoken können jederzeit aus vielen verschiedenen Gründen ungült
 | Benutzer verwendet SSPR | Widerrufen | Widerrufen | Bleibt aktiv | Bleibt aktiv | Bleibt aktiv |
 | Administrator setzt Kennwort zurück | Widerrufen | Widerrufen | Bleibt aktiv | Bleibt aktiv | Bleibt aktiv |
 | Benutzer widerruft Aktualisierungstoken [über PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) | Widerrufen | Widerrufen | Widerrufen | Widerrufen | Widerrufen |
-| Admin widerruft alle Aktualisierungstoken für den Mandanten [über PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Widerrufen | Widerrufen |Widerrufen | Widerrufen | Widerrufen |
+| Administrator widerruft alle Aktualisierungstoken für einen Benutzer [über PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) | Widerrufen | Widerrufen |Widerrufen | Widerrufen | Widerrufen |
 | Einmaliges Abmelden ([v1.0](../azuread-dev/v1-protocols-openid-connect-code.md#single-sign-out), [v2.0](v2-protocols-oidc.md#single-sign-out)) im Web | Widerrufen | Bleibt aktiv | Widerrufen | Bleibt aktiv | Bleibt aktiv |
 
 > [!NOTE]
@@ -264,7 +268,7 @@ Aktualisierungstoken können jederzeit aus vielen verschiedenen Gründen ungült
 >
 > Primäre Aktualisierungstoken (PRT) unter Windows 10 werden auf Grundlage der Anmeldeinformationen getrennt. Beispielsweise besitzen Windows Hello und Kennwort ihre jeweiligen PRTs, die voneinander isoliert sind. Wenn sich ein Benutzer mit Hello-Anmeldeinformationen (PIN oder Biometrie) anmeldet und dann das Kennwort ändert, wird das zuvor abgerufene kennwortbasierte PRT widerrufen. Bei erneuter Anmeldung mit einem Kennwort wird das alte PRT ungültig und ein neues angefordert.
 >
-> Beim Abrufen eines neuen Zugriffstoken und Aktualisierungstoken verwendete Aktualisierungstoken sind ungültig oder wurden aufgehoben.  
+> Beim Abrufen eines neuen Zugriffstoken und Aktualisierungstoken verwendete Aktualisierungstoken sind ungültig oder wurden aufgehoben.  Ihre App sollte jedoch das alte verwerfen, sobald es verwendet wird, und durch das neue ersetzen, da für das neue Token eine neue Ablaufzeit gilt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

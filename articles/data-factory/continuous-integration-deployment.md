@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: 7c9f22d27351b0f57c5a0158821f347073ae60b4
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 8bbb11a8811582bea26e784636564eb5d5a4d284
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187809"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384329"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery in Azure Data Factory
 
@@ -60,7 +60,7 @@ Unten ist eine Beispielübersicht des CI/CD-Lebenszyklus in einer Azure Data Fac
 
    ![Erstellen einer eigenen Vorlage](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
-1. Wählen Sie die Option **Datei laden** und anschließend die generierte Resource Manager-Vorlage aus.
+1. Wählen Sie die Option **Datei laden** und anschließend die generierte Resource Manager-Vorlage aus. Dies ist die Datei **arm_template.json** in der ZIP-Datei, die Sie in Schritt 1 exportiert haben.
 
    ![Bearbeiten der Vorlage](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
@@ -171,7 +171,7 @@ Es gibt zwei Möglichkeiten, um Geheimnisse zu verarbeiten:
 
     Die Parameterdatei muss sich auch im Branch für die Veröffentlichung befinden.
 
--  Fügen Sie vor der im vorherigen Abschnitt beschriebenen Aufgabe für die Azure Resource Manager-Bereitstellung eine [Azure Key Vault-Aufgabe](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault) hinzu:
+1. Fügen Sie vor der im vorherigen Abschnitt beschriebenen Aufgabe für die Azure Resource Manager-Bereitstellung eine [Azure Key Vault-Aufgabe](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault) hinzu:
 
     1.  Erstellen Sie auf der Registerkarte **Tasks** eine neue Aufgabe. Suchen Sie nach **Azure Key Vault**, und fügen Sie die Komponente hinzu.
 
@@ -179,9 +179,9 @@ Es gibt zwei Möglichkeiten, um Geheimnisse zu verarbeiten:
 
     ![Hinzufügen einer Key Vault-Aufgabe](media/continuous-integration-deployment/continuous-integration-image8.png)
 
-   #### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Gewähren von Berechtigungen für den Azure Pipelines-Agent
+#### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Gewähren von Berechtigungen für den Azure Pipelines-Agent
 
-   Unter Umständen tritt bei der Azure Key Vault-Aufgabe ein Fehler vom Typ „Zugriff verweigert“ auf, wenn nicht die richtigen Berechtigungen festgelegt wurden. Laden Sie die Protokolle für das Release herunter, und suchen Sie nach der PS1-Datei, die den Befehl zum Erteilen von Berechtigungen für den Azure Pipelines-Agent enthält. Sie können den Befehl direkt ausführen. Alternativ können Sie die Prinzipal-ID aus der Datei kopieren und die Zugriffsrichtlinie manuell im Azure-Portal hinzufügen. Die Berechtigungen `Get` und `List` sind mindestens erforderlich.
+Unter Umständen tritt bei der Azure Key Vault-Aufgabe ein Fehler vom Typ „Zugriff verweigert“ auf, wenn nicht die richtigen Berechtigungen festgelegt wurden. Laden Sie die Protokolle für das Release herunter, und suchen Sie nach der PS1-Datei, die den Befehl zum Erteilen von Berechtigungen für den Azure Pipelines-Agent enthält. Sie können den Befehl direkt ausführen. Alternativ können Sie die Prinzipal-ID aus der Datei kopieren und die Zugriffsrichtlinie manuell im Azure-Portal hinzufügen. Die Berechtigungen `Get` und `List` sind mindestens erforderlich.
 
 ### <a name="update-active-triggers"></a>Aktualisieren von aktiven Triggern
 
@@ -214,7 +214,7 @@ Wenn Sie ein Skript nach der Bereitstellung ausführen, müssen Sie im Feld **Sk
 
 `-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
 
-    ![Azure PowerShell task](media/continuous-integration-deployment/continuous-integration-image11.png)
+![Azure PowerShell-Aufgabe](media/continuous-integration-deployment/continuous-integration-image11.png)
 
 Hier ist das Skript, das für vor und nach der Bereitstellung verwendet werden kann. Es berücksichtigt gelöschte Ressourcen und Ressourcenverweise.
 
@@ -366,7 +366,13 @@ if ($predeployment -eq $true) {
     Write-Host "Stopping deployed triggers"
     $triggerstostop | ForEach-Object { 
         Write-host "Disabling trigger " $_
-        Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
+        Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force
+    $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
+    while ($status.Status -ne "Disabled"){
+            Start-Sleep -s 15
+            $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
+    }
+    Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
     }
 }
 else {
@@ -459,7 +465,13 @@ else {
     Write-Host "Starting active triggers"
     $activeTriggerNames | ForEach-Object { 
         Write-host "Enabling trigger " $_
-        Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
+        Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force
+    $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
+    while ($status.Status -ne "Enabled"){
+            Start-Sleep -s 15
+            $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
+    }
+    Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
     }
 }
 ```
@@ -471,7 +483,10 @@ Im Git-Modus können Sie die Standardeigenschaften in Ihrer Resource Manager-Vor
 * Sie verwenden automatisierte CI/CD und möchten einige Eigenschaften während der Resource Manager-Bereitstellung ändern, die Eigenschaften sind standardmäßig aber nicht parametrisiert.
 * Die Resource Manager-Standardvorlage ist aufgrund der Größe Ihrer Factory ungültig, da sie mehr als die maximal zulässige Parameteranzahl (256) enthält.
 
-In diesen Fällen können Sie die Standardparametrisierungsvorlage wie folgt außer Kraft setzen: Erstellen Sie in dem als Stammordner für die Data Factory-Git-Integration angegebenen Ordner eine Datei mit dem Namen „arm-template-parameters-definition.json“. Sie müssen exakt diesen Dateinamen verwenden. Data Factory liest diese Datei aus dem Branch aus, in dem Sie sich im Azure Data Factory-Portal gerade befinden (nicht nur aus dem Kollaborationsbranch). Sie können die Datei in einem privaten Branch erstellen oder bearbeiten und Ihre Änderungen testen, indem Sie auf der Benutzeroberfläche die Option **Export ARM Template** (ARM-Vorlage exportieren) auswählen. Anschließend können Sie die Datei mit dem Kollaborationsbranch zusammenführen. Sollte keine Datei gefunden werden, wird die Standardvorlage verwendet.
+In diesen Fällen können Sie die Standardparametrisierungsvorlage wie folgt außer Kraft setzen: Erstellen Sie in dem als Stammordner für die Data Factory-Git-Integration angegebenen Ordner eine Datei mit dem Namen **arm-template-parameters-definition.json**. Sie müssen exakt diesen Dateinamen verwenden. Data Factory liest diese Datei aus dem Branch aus, in dem Sie sich im Azure Data Factory-Portal gerade befinden (nicht nur aus dem Kollaborationsbranch). Sie können die Datei in einem privaten Branch erstellen oder bearbeiten und Ihre Änderungen testen, indem Sie auf der Benutzeroberfläche die Option **Export ARM Template** (ARM-Vorlage exportieren) auswählen. Anschließend können Sie die Datei mit dem Kollaborationsbranch zusammenführen. Sollte keine Datei gefunden werden, wird die Standardvorlage verwendet.
+
+> [!NOTE]
+> Durch eine benutzerdefinierte Parametrisierungsvorlage wird das ARM-Vorlagenparameterlimit von 256 nicht geändert. Sie können in ihr die parametrisierten Eigenschaften auswählen und ihre Anzahl verringern.
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>Syntax einer benutzerdefinierten Parameterdatei
 
@@ -657,7 +672,7 @@ Nachfolgend ist die aktuelle Standardvorlage für die Parametrisierung dargestel
                     "database": "=",
                     "serviceEndpoint": "=",
                     "batchUri": "=",
-            "poolName": "=",
+                    "poolName": "=",
                     "databaseName": "=",
                     "systemNumber": "=",
                     "server": "=",
@@ -821,25 +836,25 @@ Wenn Sie Git nicht konfiguriert haben, können Sie über die Option **Export ARM
 
 Wenn Sie eine Factory in der Produktionsumgebung bereitstellen und ein sofort zu behebender Fehler vorhanden ist, Sie den aktuellen Kollaborationsbranch aber nicht bereitstellen können, müssen Sie unter Umständen einen Hotfix verwenden. Dieser Ansatz wird als Quick Fix Engineering oder QFE bezeichnet.
 
-1.  Navigieren Sie in Azure DevOps zu dem Release, das für die Produktion bereitgestellt wurde. Suchen Sie nach dem letzten bereitgestellten Commit.
+1.    Navigieren Sie in Azure DevOps zu dem Release, das für die Produktion bereitgestellt wurde. Suchen Sie nach dem letzten bereitgestellten Commit.
 
-2.  Rufen Sie aus der Commitmeldung die Commit-ID des Kollaborationsbranch ab.
+2.    Rufen Sie aus der Commitmeldung die Commit-ID des Kollaborationsbranch ab.
 
-3.  Erstellen Sie aus diesem Commit einen neuen Hotfixbranch.
+3.    Erstellen Sie aus diesem Commit einen neuen Hotfixbranch.
 
-4.  Navigieren Sie zur Azure Data Factory-Benutzeroberfläche und dort zum neuen Hotfixbranch.
+4.    Navigieren Sie zur Azure Data Factory-Benutzeroberfläche und dort zum neuen Hotfixbranch.
 
-5.  Beheben Sie den Fehler auf der Azure Data Factory-Benutzeroberfläche. Testen Sie die Änderungen.
+5.    Beheben Sie den Fehler auf der Azure Data Factory-Benutzeroberfläche. Testen Sie die Änderungen.
 
-6.  Wählen Sie nach der Verifizierung der Fehlerbehebung die Option **Export ARM Template** (ARM-Vorlage exportieren) aus, um die Resource Manager-Vorlage für den Hotfix abzurufen.
+6.    Wählen Sie nach der Verifizierung der Fehlerbehebung die Option **Export ARM Template** (ARM-Vorlage exportieren) aus, um die Resource Manager-Vorlage für den Hotfix abzurufen.
 
-7.  Checken Sie diesen Build manuell im Branch „adf_publish“ ein.
+7.    Checken Sie diesen Build manuell im Branch „adf_publish“ ein.
 
-8.  Wenn Sie die Releasepipeline so konfiguriert haben, dass sie bei Check-Ins in „adf_publish“ automatisch ausgelöst wird, wird automatisch ein neues Release gestartet. Reihen Sie andernfalls manuell ein Release in die Warteschlange ein.
+8.    Wenn Sie die Releasepipeline so konfiguriert haben, dass sie bei Check-Ins in „adf_publish“ automatisch ausgelöst wird, wird automatisch ein neues Release gestartet. Reihen Sie andernfalls manuell ein Release in die Warteschlange ein.
 
-9.  Stellen Sie das Hotfixrelease für die Test- und Produktionsfactorys bereit. Dieses Release enthält die vorherige Nutzlast der Produktionsumgebung sowie die Korrektur, die Sie in Schritt 5 vorgenommen haben.
+9.    Stellen Sie das Hotfixrelease für die Test- und Produktionsfactorys bereit. Dieses Release enthält die vorherige Nutzlast der Produktionsumgebung sowie die Korrektur, die Sie in Schritt 5 vorgenommen haben.
 
-10. Fügen Sie dem Entwicklungsbranch die Änderungen aus dem Hotfix hinzu, damit spätere Releases nicht den gleichen Fehler enthalten.
+10.    Fügen Sie dem Entwicklungsbranch die Änderungen aus dem Hotfix hinzu, damit spätere Releases nicht den gleichen Fehler enthalten.
 
 ## <a name="best-practices-for-cicd"></a>Bewährte Methoden für CI/CD
 

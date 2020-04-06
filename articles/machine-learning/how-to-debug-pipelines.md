@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: likebupt
 ms.author: keli19
-ms.date: 12/12/2019
-ms.openlocfilehash: 0080b64e16b979b32aa5a91f9ee497e5f9ec47fb
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.date: 03/18/2020
+ms.openlocfilehash: b68efbb64e9634ade001373e8cd9d61355bf786f
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77485368"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388983"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Debuggen und Problembehandlung für Machine Learning-Pipelines
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -79,7 +79,7 @@ Die folgende Tabelle enthält häufige Probleme bei der Pipelinentwicklung mit m
 | Problem | Mögliche Lösung |
 |--|--|
 | Daten können nicht in das Verzeichnis `PipelineData` übergeben werden | Stellen Sie sicher, dass Sie im Skript ein Verzeichnis erstellt haben, das dem entspricht, wo Ihre Pipeline die Schrittausgabedaten erwartet. In den meisten Fällen definiert ein Eingabeargument das Ausgabeverzeichnis, und dann erstellen Sie das Verzeichnis explizit. Verwenden Sie `os.makedirs(args.output_dir, exist_ok=True)`, um das Ausgabeverzeichnis zu erstellen. Im [Tutorial](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) finden Sie ein Beispiel für ein Bewertungsskript, das dieses Entwurfsmuster zeigt. |
-| Fehler bei Abhängigkeiten | Wenn Sie Skripts lokal entwickelt und getestet haben, aber beim Ausführen auf einem Remotecomputer in der Pipeline Abhängigkeitsprobleme auftreten, stellen Sie sicher, dass Ihre Abhängigkeiten und Versionen der Computeumgebung mit Ihrer Testumgebung übereinstimmen. |
+| Fehler bei Abhängigkeiten | Wenn Sie Skripts lokal entwickelt und getestet haben, aber beim Ausführen auf einem Remotecomputer in der Pipeline Abhängigkeitsprobleme auftreten, stellen Sie sicher, dass Ihre Abhängigkeiten und Versionen der Computeumgebung mit Ihrer Testumgebung übereinstimmen. (Siehe [Erstellen, Zwischenspeichern und Wiederverwenden von Umgebungen](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse))|
 | Mehrdeutige Fehler bei Computezielen | Das Löschen und erneute Erstellen von Computezielen kann bestimmte Probleme mit Computezielen beheben. |
 | Pipeline verwendet Schritte nicht wieder | Die Wiederverwendung von Schritten ist standardmäßig aktiviert, aber stellen Sie sicher, dass Sie sie in einem Pipelineschritt nicht deaktiviert haben. Wenn die Wiederverwendung deaktiviert ist, wird der Parameter `allow_reuse` im Schritt auf `False` festgelegt. |
 | Pipeline wird unnötigerweise erneut ausgeführt | Um sicherzustellen, dass Schritte nur dann erneut ausgeführt werden, wenn sich die zugrunde liegenden Daten oder Skripts ändern, entkoppeln Sie Ihre Verzeichnisse für die einzelnen Schritte. Wenn Sie dasselbe Quellverzeichnis für mehrere Schritte verwenden, kann es zu unnötigen Wiederholungen kommen. Verwenden Sie den Parameter `source_directory` in einem Pipelineschrittobjekt, um auf Ihr isoliertes Verzeichnis für diesen Schritt zu verweisen, und stellen Sie sicher, dass Sie nicht denselben `source_directory`-Pfad für mehrere Schritte verwenden. |
@@ -136,7 +136,7 @@ Die **Protokolldateien** für die im Designer erstellten Pipelines finden Sie en
 Wenn Sie eine Pipelineausführung übermitteln und auf der Seite zur Dokumenterstellung bleiben, finden Sie die für die einzelnen Module generierten Protokolldateien.
 
 1. Wählen Sie ein beliebiges Modul im Zeichenbereich der Dokumenterstellung aus.
-1. Wechseln Sie im Eigenschaftenbereich zur Registerkarte **Protokolle**.
+1. Wechseln Sie im rechten Bereich des Moduls zur Registerkarte **Ausgaben und Protokolle**.
 1. Wählen Sie die Protokolldatei `70_driver_log.txt` aus.
 
     ![Modulprotokolle auf der Seite zur Dokumenterstellung](./media/how-to-debug-pipelines/pipelinerun-05.png)
@@ -148,7 +148,7 @@ Sie finden die Protokolldateien bestimmter Ausführungen auch auf der Detailseit
 1. Wählen Sie eine im Designer erstellte Pipelineausführung aus.
     ![Pipelineausführungsseite](./media/how-to-debug-pipelines/pipelinerun-04.png)
 1. Wählen Sie im Vorschaubereich ein beliebiges Modul aus.
-1. Wechseln Sie im Eigenschaftenbereich zur Registerkarte **Protokolle**.
+1. Wechseln Sie im rechten Bereich des Moduls zur Registerkarte **Ausgaben und Protokolle**.
 1. Wählen Sie die Protokolldatei `70_driver_log.txt` aus.
 
 ## <a name="debug-and-troubleshoot-in-application-insights"></a>Debuggen und Problembehandlung in Application Insights
@@ -283,7 +283,7 @@ if not (args.output_train is None):
 
 ### <a name="configure-ml-pipeline"></a>Konfigurieren der ML-Pipeline
 
-Erstellen Sie eine [Umgebung](), und legen Sie `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']` fest, um die zum Starten von PTVSD erforderlichen Python-Pakete bereitzustellen und den Ausführungskontext abzurufen. Legen Sie die SDK-Version auf die von Ihnen verwendete Version fest. Im folgenden Codeausschnitt wird die Vorgehensweise zum Erstellen einer Umgebung veranschaulicht:
+Erstellen Sie eine Umgebung, und legen Sie `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']` fest, um die zum Starten von PTVSD erforderlichen Python-Pakete bereitzustellen und den Ausführungskontext abzurufen. Legen Sie die SDK-Version auf die von Ihnen verwendete Version fest. Im folgenden Codeausschnitt wird die Vorgehensweise zum Erstellen einer Umgebung veranschaulicht:
 
 ```python
 # Use a RunConfiguration to specify some additional requirements for this step.
@@ -328,7 +328,7 @@ Timeout for debug connection: 300
 ip_address: 10.3.0.5
 ```
 
-Speichern Sie den Wert von `ip_address`. Sie wird im nächsten Abschnitt verwendet.
+Speichern Sie den Wert von `ip_address`. Sie werden im nächsten Abschnitt verwendet.
 
 > [!TIP]
 > Die IP-Adresse finden Sie auch in den Ausführungsprotokollen für die untergeordnete Ausführung dieses Pipelineschritts. Weitere Informationen zum Anzeigen dieser Informationen finden Sie unter [Überwachen von Azure ML-Experimentausführungen und -metriken](how-to-track-experiments.md).

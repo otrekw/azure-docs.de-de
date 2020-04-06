@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/24/2019
+ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: fb1e381f9b956a0c6414a82505aced2cbdb2d680
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: a75be23e2e8215d86aebcfd7f4317f2f597d3c5b
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559275"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385077"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptive Netzwerkhärtung in Azure Security Center
 Hier erfahren Sie, wie Sie die adaptive Netzwerkhärtung in Azure Security Center konfigurieren.
@@ -28,12 +28,14 @@ Der Einsatz von [Netzwerksicherheitsgruppen (NSGs)](https://docs.microsoft.com/a
 
 Die adaptive Netzwerkhärtung liefert Empfehlungen zur weiteren Härtung der NSG-Regeln. Dabei kommt ein Machine Learning-Algorithmus zum Einsatz, der Faktoren wie tatsächlichen Datenverkehr, bekannte vertrauenswürdige Konfiguration und Bedrohungsinformationen sowie weitere Anzeichen einer Kompromittierung berücksichtigt und auf der Grundlage dieser Faktoren Empfehlungen abgibt, um nur Datenverkehr von bestimmten IP-/Port-Tupeln zuzulassen.
 
-Ein Beispiel: Angenommen, die vorhandene NSG-Regel lässt Datenverkehr von 140.20.30.10/24 am Port 22 zu. Die analysebasierte Empfehlung der adaptiven Netzwerkhärtung lautet, den Bereich einzugrenzen und Datenverkehr von 140.23.30.10/29 (enger gefasster IP-Adressbereich) zuzulassen sowie jeglichen anderen Datenverkehr an diesem Port zu verweigern.
+Ein Beispiel: Angenommen, die vorhandene NSG-Regel lässt Datenverkehr von 140.20.30.10/24 an Port 22 zu. Die analysebasierte Empfehlung der adaptiven Netzwerkhärtung lautet, den Bereich einzugrenzen und Datenverkehr von 140.23.30.10/29 (enger gefasster IP-Adressbereich) zuzulassen sowie jeglichen anderen Datenverkehr an diesem Port zu verweigern.
+
+>[!TIP]
+> Empfehlungen der adaptiven Netzwerkhärtung werden nur für folgende Ports unterstützt (für UDP und DCP): 13, 17, 19, 22, 23, 53, 69, 81, 111, 119, 123, 135, 137, 138, 139, 161, 162, 389, 445, 512, 514, 593, 636, 873, 1433, 1434, 1900, 2049, 2301, 2323, 2381, 3268, 3306, 3389, 4333, 5353, 5432, 5555, 5800, 5900, 5900, 5985, 5986, 6379, 6379, 7000, 7001, 7199, 8081, 8089, 8545, 9042, 9160, 9300, 11211, 16379, 26379, 27017, 37215
+
 
 ![Ansicht der Netzwerkhärtung](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
 
-> [!NOTE]
-> Empfehlungen der adaptiven Netzwerkhärtung werden für folgende Ports unterstützt: 22, 3389, 21, 23, 445, 4333, 3306, 1433, 1434, 53, 20, 5985, 5986, 5432, 139, 66, 1128
 
 ## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Anzeigen von Warnungen und Regeln der adaptiven Netzwerkhärtung
 
@@ -43,7 +45,7 @@ Ein Beispiel: Angenommen, die vorhandene NSG-Regel lässt Datenverkehr von 140.2
    * **Nicht überprüfte Ressourcen:** Virtuelle Computer, auf denen der Algorithmus der adaptiven Netzwerkhärtung aus einem der folgenden Gründe nicht ausgeführt werden kann:
       * **Virtuelle Computer sind klassische virtuelle Computer**: Es werden nur virtuelle Azure Resource Manager-Computer unterstützt.
       * **Nicht genügend Daten verfügbar:** Security Center benötigt mindestens Datenverkehrsdaten eines Zeitraums von 30 Tagen, um fundierte Härtungsempfehlungen abgeben zu können.
-      * **Virtueller Computer nicht durch ASC (Standard) geschützt:** Dieses Feature kann nur für virtuelle Computer genutzt werden, die auf den Standard-Tarif von Security Center festgelegt sind.
+      * **Virtueller Computer nicht durch ASC (Standard) geschützt:** Dieses Feature kann nur für VMs genutzt werden, die auf den Standard-Tarif von Security Center festgelegt sind.
 
      ![Fehlerhafte Ressourcen](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
 
@@ -73,7 +75,7 @@ Ein Beispiel: Angenommen, die vorhandene NSG-Regel lässt Datenverkehr von 140.2
     ![Erzwingen von Regeln](./media/security-center-adaptive-network-hardening/enforce-hard-rule2.png)
 
 
-### Ändern einer Regel  <a name ="modify-rule"> </a>
+### <a name="modify-a-rule"></a>Ändern einer Regel <a name ="modify-rule"> </a>
 
 Die Parameter einer empfohlenen Regel können bei Bedarf geändert werden. So können Sie beispielsweise die empfohlenen IP-Adressbereiche ändern.
 
@@ -106,7 +108,7 @@ Im Anschluss finden Sie einige wichtige Richtlinien, die beim Ändern einer Rege
 
     ![Erzwingen einer Regel](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
-### Hinzufügen einer neuen Rolle <a name ="add-rule"> </a>
+### <a name="add-a-new-rule"></a>Hinzufügen einer neuen Rolle <a name ="add-rule"> </a>
 
 Sie können eine Regel vom Typ „Zulassen“ hinzufügen, die nicht von Security Center empfohlen wurde.
 
@@ -129,7 +131,7 @@ Sie können eine Regel vom Typ „Zulassen“ hinzufügen, die nicht von Securit
     ![Erzwingen einer Regel](./media/security-center-adaptive-network-hardening/enforce-hard-rule.png)
 
 
-### Löschen einer Regel <a name ="delete-rule"> </a>
+### <a name="delete-a-rule"></a>Löschen einer Regel <a name ="delete-rule"> </a>
 
 Bei Bedarf können Sie eine empfohlene Regel für die aktuelle Sitzung löschen. Dies kann beispielsweise erforderlich sein, wenn Sie feststellen, dass eine vorgeschlagene Regel die Blockierung von zulässigem Datenverkehr zur Folge hätte.
 
@@ -138,12 +140,3 @@ Bei Bedarf können Sie eine empfohlene Regel für die aktuelle Sitzung löschen.
 1. Klicken Sie auf der Registerkarte **Regeln** auf die drei Punkte (...) am Ende der Zeile mit der Regel, und klicken Sie anschließend auf **Löschen**.  
 
     ![Härtungsregeln](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)
-
-
-
-
-
-
-
- 
-

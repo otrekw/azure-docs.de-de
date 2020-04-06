@@ -5,15 +5,15 @@ services: iot-edge
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 07/22/2019
+ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 8c174c5c201aecd83fb343a217c7944d503616c3
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 9722c7dec3a066d8f776424cb599be0d463416d9
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76509291"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384856"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Entwickeln und Debuggen von Modulen für Azure IoT Edge mithilfe von Visual Studio 2019
 
@@ -71,7 +71,7 @@ Wenn Visual Studio 2019 bereit ist, benötigen Sie auch die folgenden Tools und 
 
 ### <a name="check-your-tools-version"></a>Überprüfen Ihrer Tools-Version
 
-1. Wählen Sie im Menü **Extras** die Option **Erweiterungen und Updates** aus. Erweitern Sie **Installiert > Tools**. Dort finden Sie **Azure IoT Edge-Tools** und **Cloud-Explorer für Visual Studio**.
+1. Wählen Sie im Menü **Erweiterungen** die Option **Erweiterungen verwalten** aus. Erweitern Sie **Installiert > Tools**. Dort finden Sie **Azure IoT Edge-Tools für Visual Studio** und **Cloud-Explorer für Visual Studio**.
 
 1. Notieren Sie sich die installierte Version. Sie können diese Version mit der neuesten Version in Visual Studio Marketplace vergleichen ([Cloud-Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS2019), [Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16iotedgetools)).
 
@@ -79,7 +79,7 @@ Wenn Visual Studio 2019 bereit ist, benötigen Sie auch die folgenden Tools und 
 
 ### <a name="update-your-tools"></a>Aktualisieren Ihrer Tools
 
-1. Erweitern Sie im Dialogfeld **Erweiterungen und Updates** die Option **Updates > Visual Studio Marketplace**, wählen Sie **Azure IoT Edge-Tools** oder **Cloud-Explorer für Visual Studio** und dann **Aktualisieren** aus.
+1. Erweitern Sie im Fenster **Erweiterungen verwalten** die Option **Updates > Visual Studio Marketplace**, wählen Sie **Azure IoT Edge-Tools** oder **Cloud-Explorer für Visual Studio** und dann **Aktualisieren** aus.
 
 1. Nachdem das Toolupdate heruntergeladen wurde, schließen Sie Visual Studio, damit die Tools mit dem VSIX-Installationsprogramm aktualisiert werden.
 
@@ -122,7 +122,7 @@ Wenn Sie bereit sind, die Modulvorlage mit Ihrem eigenen Code anzupassen, erstel
 
    ![Kopieren der Edge-Geräteverbindungszeichenfolge](./media/how-to-visual-studio-develop-csharp-module/copy-edge-conn-string.png)
 
-1. Wechseln Sie zu **Tools** > **Azure IoT Edge-Tools** > **IoT Edge Simulator einrichten**, fügen Sie die Verbindungszeichenfolge ein, und klicken Sie auf **OK**.
+1. Wählen Sie im Menü **Tools** die Option **Azure IoT Edge-Tools** > **IoT Edge Simulator einrichten** aus, fügen Sie die Verbindungszeichenfolge ein, und klicken Sie auf **OK**.
 
    ![Öffnen des Fensters „Set Edge Device Connection String“ (Edge-Geräteverbindungszeichenfolge festlegen)](./media/how-to-visual-studio-develop-csharp-module/set-edge-conn-string.png)
 
@@ -135,7 +135,7 @@ Wenn Sie bereit sind, die Modulvorlage mit Ihrem eigenen Code anzupassen, erstel
 
 In der Regel möchten Sie jedes Modul testen und debuggen, bevor Sie es in einer Gesamtlösung mit mehreren Modulen ausführen.
 
-1. Klicken Sie mit der rechten Maustaste auf **IotEdgeModule1**, und wählen Sie im Kontextmenü **Als Startprojekt festlegen** aus.
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **IotEdgeModule1**, und wählen Sie im Kontextmenü **Als Startprojekt festlegen** aus.
 
    ![Startprojekt festlegen](./media/how-to-visual-studio-develop-csharp-module/module-start-up-project.png)
 
@@ -166,7 +166,7 @@ In der Regel möchten Sie jedes Modul testen und debuggen, bevor Sie es in einer
 
 Nachdem Sie ein Einzelmodul entwickelt haben, möchten Sie jetzt vielleicht eine Gesamtlösung mit mehreren Modulen ausführen und debuggen.
 
-1. Fügen Sie der Lösung ein zweites Modul hinzu, indem Sie mit der rechten Maustaste auf **AzureIoTEdgeApp1** klicken und **Hinzufügen** > **Neues IoT Edge-Modul** auswählen. Der Standardname des zweiten Moduls lautet **IotEdgeModule2**, und es fungiert als ein weiteres Pipemodul.
+1. Fügen Sie im **Projektmappen-Explorer** ein zweites Modul zu der Lösung hinzu, indem Sie mit der rechten Maustaste auf **AzureIoTEdgeApp1** klicken und **Hinzufügen** > **Neues IoT Edge-Modul** auswählen. Der Standardname des zweiten Moduls lautet **IotEdgeModule2**, und es fungiert als ein weiteres Pipemodul.
 
 1. Öffnen Sie die Datei `deployment.template.json`. Dann sehen Sie, dass **IotEdgeModule2** im Abschnitt **Module** hinzugefügt wurde. Ersetzen Sie den Abschnitt **routes** durch Folgendes: Wenn Sie Ihre Modulnamen angepasst haben, stellen Sie sicher, dass Sie diese Namen entsprechend aktualisieren.
 
@@ -194,7 +194,7 @@ Nachdem Sie ein Einzelmodul entwickelt haben, möchten Sie jetzt vielleicht eine
     > [!NOTE]
     > Bei der Auswahl von **Debuggen** verwendet Visual Studio `Dockerfile.(amd64|windows-amd64).debug` zum Erstellen von Docker-Images. Dies bindet den .NET Core-Befehlszeilendebugger VSDBG beim Erstellen in Ihr Containerimage ein. Wir empfehlen Ihnen, für produktionsbereite IoT Edge-Module die Konfiguration **Version** zu verwenden, die `Dockerfile.(amd64|windows-amd64)` ohne VSDBG verwendet.
 
-1. Wenn Sie eine private Registrierung wie Azure Container Registry verwenden, melden Sie sich dort mit dem folgenden Docker-Befehl an. Wenn Sie eine lokale Registrierung verwenden, können Sie [eine lokale Registrierung ausführen](https://docs.docker.com/registry/deploying/#run-a-local-registry).
+1. Wenn Sie eine private Registrierung wie Azure Container Registry (ACR) verwenden, melden Sie sich dort mit dem folgenden Docker-Befehl an.  Sie erhalten den Benutzernamen und das Kennwort über die Seite **Zugriffsschlüssel** der Registrierung im Azure-Portal. Wenn Sie eine lokale Registrierung verwenden, können Sie [eine lokale Registrierung ausführen](https://docs.docker.com/registry/deploying/#run-a-local-registry).
 
     ```cmd
     docker login -u <ACR username> -p <ACR password> <ACR login server>
@@ -216,9 +216,7 @@ Nachdem Sie ein Einzelmodul entwickelt haben, möchten Sie jetzt vielleicht eine
           }
     ```
 
-1. Klicken Sie mit der rechten Maustaste auf **AzureIoTEdgeApp1**, und wählen Sie die Option **Edge-Lösung kompilieren und pushen** aus, um das Docker-Image für jedes Modul zu kompilieren und zu pushen.
-
-   ![Erstellen und des Images mithilfe von Push](./media/how-to-visual-studio-develop-csharp-module/build-and-push.png)
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **AzureIoTEdgeApp1**, und wählen Sie **Build and Push IoT Edge Modules** (IoT Edge-Module erstellen und pushen) aus, um das Docker-Image für jedes Modul zu kompilieren und zu pushen.
 
 ## <a name="deploy-the-solution"></a>Bereitstellen der Lösung
 
@@ -228,18 +226,15 @@ Im Schnellstartartikel, anhand dessen Sie Ihr IoT Edge-Gerät eingerichtet haben
 
 1. Erweitern Sie in **Cloud-Explorer** Ihr Abonnement, suchen Sie Ihren Azure IoT Hub und das Azure IoT Edge-Gerät, das Sie bereitstellen möchten.
 
-1. Klicken Sie mit der rechten Maustaste auf das IoT Edge-Gerät, um eine Bereitstellung dafür zu erstellen. Sie müssen unter `$AzureIoTEdgeAppSolutionDir\config\deployment.(amd64|amd64.debug|windows-amd64).json` die Bereitstellungsmanifestdatei auswählen.
-
-   > [!NOTE]
-   > Wählen Sie auf keinen Fall `$AzureIoTEdgeAppSolutionDir\config\deployment_for_local_debug.json` aus.
+1. Klicken Sie mit der rechten Maustaste auf das IoT Edge Gerät, um eine Bereitstellung dafür zu erstellen. Navigieren Sie zu dem für Ihre Plattform konfigurierten Bereitstellungsmanifest im Ordner **config** der Visual Studio-Projektmappe, z. B. `deployment.arm32v7.json`.
 
 1. Klicken Sie auf die Schaltfläche „Aktualisieren“, um sich anzusehen, wie die neuen Module zusammen mit dem **SimulatedTemperatureSensor**-Modul sowie **$edgeAgent** und **$edgeHub** ausgeführt werden.
 
 ## <a name="view-generated-data"></a>Anzeigen generierter Daten
 
-1. Um die D2C-Nachricht für ein bestimmtes Gerät zu überwachen, wählen Sie dieses Gerät in der Liste aus, und klicken Sie im Fenster **Aktion** auf **Überwachen des integrierten Ereignisendpunkts starten**.
+1. Um die D2C-Nachricht für ein bestimmtes IoT Edge-Gerät zu überwachen, wählen Sie dieses im IoT-Hub im **Cloud-Explorer** aus, und klicken Sie dann im Fenster **Aktion** auf **Überwachen des integrierten Ereignisendpunkts starten**.
 
-1. Um die Überwachung von Daten zu beenden, wählen Sie das Gerät in der Liste aus. Wählen Sie dann im Fenster **Aktion** die Option **Überwachen des integrierten Ereignisendpunkts beenden** aus.
+1. Um die Überwachung von Daten zu beenden, wählen Sie im Fenster **Aktion** die Option **Überwachen des integrierten Ereignisendpunkts beenden** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

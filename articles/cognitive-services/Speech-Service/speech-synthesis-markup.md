@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 03/23/2020
 ms.author: dapine
-ms.openlocfilehash: c4a27db8bec6dbbd2f1b2be8acfdd034d45d37d5
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 7d5dd79399b15ade90173a55aeb71dacbc61fa78
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77561919"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80365803"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Verbessern der Synthese mit Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML)
 
@@ -50,7 +50,7 @@ Jedes SSML-Dokument wird mit SSML-Elementen (oder Tags) erstellt. Diese Elemente
 **Syntax**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="string"></speak>
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="string"></speak>
 ```
 
 **Attribute**
@@ -59,7 +59,7 @@ Jedes SSML-Dokument wird mit SSML-Elementen (oder Tags) erstellt. Diese Elemente
 |-----------|-------------|---------------------|
 | `version` | Gibt die Version der SSML-Spezifikation an, die zum Interpretieren des Dokumentmarkups verwendet wird. Die aktuelle Version ist 1.0. | Erforderlich |
 | `xml:lang` | Gibt die Sprache des Stammdokuments an. Der Wert kann einen Kleinbuchstaben, einen Sprachcode aus zwei Buchstaben (z. B. `en`) oder den Sprachcode und Land/Region aus Großbuchstaben (z. B. `en-US`) enthalten. | Erforderlich |
-| `xmlns` | Gibt den URI zu dem Dokument an, in dem das Markupvokabular (die Elementtypen und Attributnamen) des SSML-Dokuments definiert werden. Der aktuelle URI ist https://www.w3.org/2001/10/synthesis. | Erforderlich |
+| `xmlns` | Gibt den URI zu dem Dokument an, in dem das Markupvokabular (die Elementtypen und Attributnamen) des SSML-Dokuments definiert werden. Der aktuelle URI ist http://www.w3.org/2001/10/synthesis. | Erforderlich |
 
 ## <a name="choose-a-voice-for-text-to-speech"></a>Auswählen einer Stimme für Sprachsynthese
 
@@ -82,11 +82,11 @@ Das `voice`-Element ist erforderlich. Hiermit wird die Stimme angeben, für die 
 **Beispiel**
 
 > [!NOTE]
-> In diesem Beispiel wird die Stimme `en-US-Jessa24kRUS` verwendet. Eine vollständige Liste der unterstützten Stimmen finden Sie unter [Sprachunterstützung](language-support.md#text-to-speech).
+> In diesem Beispiel wird die Stimme `en-US-AriaRUS` verwendet. Eine vollständige Liste der unterstützten Stimmen finden Sie unter [Sprachunterstützung](language-support.md#text-to-speech).
 
 ```XML
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         This is the text that is spoken.
     </voice>
 </speak>
@@ -176,12 +176,12 @@ speechConfig!.setPropertyTo(
 **Beispiel**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         Good morning!
     </voice>
     <voice name="en-US-Guy24kRUS">
-        Good morning to you too Jessa!
+        Good morning to you too Aria!
     </voice>
 </speak>
 ```
@@ -194,44 +194,48 @@ speechConfig!.setPropertyTo(
 Standardmäßig synthetisiert der Sprachanalysedienst Text mithilfe einer neutralen Sprechweise sowohl bei Standard- als auch neuronalen Stimmen. Bei neuronalen Stimmen können Sie die Sprechweise anpassen, um mit dem `<mstts:express-as>`-Element Fröhlichkeit, Einfühlungsvermögen oder Stimmung auszudrücken. Dies ist ein optionales Element und für den Speech-Dienst eindeutig.
 
 Anpassungen der Sprechweise werden derzeit bei diesen neuronalen Stimmen unterstützt:
-* `en-US-JessaNeural`
+* `en-US-AriaNeural`
 * `zh-CN-XiaoxiaoNeural`
+* `pt-BR-FranciscaNeural`
 
 Änderungen werden auf Satzebene angewendet, und die Sprechweise variiert je nach Stimme. Wenn keine Sprechweise unterstützt wird, gibt der Dienst Sprache in der neutralen Standardsprechweise zurück.
 
 **Syntax**
 
 ```xml
-<mstts:express-as type="string"></mstts:express-as>
+<mstts:express-as style="string"></mstts:express-as>
 ```
 
 **Attribute**
 
 | attribute | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
-| `type` | Gibt die Sprechweise an. Sprechweisen sind derzeit stimmenspezifisch. | Erforderlich, wenn die Sprechweise für eine neuronale Stimme angepasst wird. Bei Verwendung von `mstts:express-as` muss der Typ angegeben werden. Bei Angabe eines ungültigen Werts wird dieses Element ignoriert. |
+| `style` | Gibt die Sprechweise an. Sprechweisen sind derzeit stimmenspezifisch. | Erforderlich, wenn die Sprechweise für eine neuronale Stimme angepasst wird. Bei Verwendung von `mstts:express-as` muss die Sprechweise angegeben werden. Bei Angabe eines ungültigen Werts wird dieses Element ignoriert. |
 
 Ermitteln Sie anhand dieser Tabelle, welche Sprechweisen für die einzelnen neuronalen Stimmen unterstützt werden.
 
-| Sprache | type | BESCHREIBUNG |
+| Sprache | Style | BESCHREIBUNG |
 |-------|------|-------------|
-| `en-US-JessaNeural` | `type="cheerful"` | Drückt eine positive und glückliche Emotion aus |
-| | `type="empathy"` | Drückt ein Gefühl von Anteilnahme und Verständnis aus |
-| | `type="chat"` | Sprechen in einem lockeren, ungezwungenen Ton |
-| | `type="newscast"` | Drückt einen formalen Ton ähnlich wie bei Nachrichtensendungen aus |
-| | `type="customerservice"` | Sprechen Sie als Kundendienst freundlich und geduldig |
-| `zh-CN-XiaoxiaoNeural` | `type="newscast"` | Drückt einen formalen Ton ähnlich wie bei Nachrichtensendungen aus |
-| | `type="sentiment"` | Vermittelt eine anrührende Botschaft oder Geschichte |
+| `en-US-AriaNeural` | `style="newscast"` | Formeller und professioneller Ton für Nachrichten |
+| | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport |
+| | `style="chat"` | Lockerer und zwangloser Ton |
+| | `style="cheerful"` | Positiver und fröhlicher Ton |
+| | `style="empathetic"` | Drückt ein Gefühl von Anteilnahme und Verständnis aus |
+| `zh-CN-XiaoxiaoNeural` | `style="newscast"` | Formeller und professioneller Ton für Nachrichten |
+| | `style="customerservice"` | Freundlicher und hilfsbereiter Ton für den Kundensupport |
+| | `style="assistant"` | Herzlicher und zwangloser Ton für digitale Assistenten  |
+| | `style="lyrical"` | Melodischer und gefühlvoller Ton zum Ausdrücken von Emotionen |
+| `pt-BR-FranciscaNeural` | `style="cheerful"` | Positiver und fröhlicher Ton |
 
 **Beispiel**
 
 Dieser SSML-Codeausschnitt veranschaulicht, wie die Sprechweise mithilfe des `<mstts:express-as>`-Elements in `cheerful` (fröhlich) geändert wird.
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis"
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"
        xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
-    <voice name="en-US-JessaNeural">
-        <mstts:express-as type="cheerful">
+    <voice name="en-US-AriaNeural">
+        <mstts:express-as style="cheerful">
             That'd be just amazing!
         </mstts:express-as>
     </voice>
@@ -254,7 +258,7 @@ Verwenden Sie das `break`-Element zum Einfügen von Pausen (oder Unterbrechungen
 
 **Attribute**
 
-| attribute | Beschreibung | Erforderlich/optional |
+| attribute | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
 | `strength` | Gibt die relative Dauer einer Pause mit einem der folgenden Werte an:<ul><li>none</li><li>x-weak</li><li>weak</li><li>medium (Standard)</li><li>strong</li><li>x-strong</li></ul> | Optional |
 | `time` | Gibt die absolute Dauer einer Pause in Sekunden oder Millisekunden an. Beispiele für gültige Werte sind `2s` und `500` | Optional |
@@ -272,8 +276,8 @@ Verwenden Sie das `break`-Element zum Einfügen von Pausen (oder Unterbrechungen
 **Beispiel**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         Welcome to Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.
     </voice>
 </speak>
@@ -297,8 +301,8 @@ Das `s`-Element kann Text und die folgenden Elemente enthalten: `audio`, `break`
 **Beispiel**
 
 ```XML
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         <p>
             <s>Introducing the sentence element.</s>
             <s>Used to mark individual sentences.</s>
@@ -327,26 +331,129 @@ Phonetische Alphabete bestehen aus Phonen (Lauten), die sich aus Buchstaben, Zah
 
 | attribute | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
-| `alphabet` | Gibt das phonetische Alphabet an, das verwendet werden soll, wenn die Aussprache der Zeichenfolge im `ph`-Attribut synthetisiert wird. Die Zeichenfolge, die das Alphabet angibt, muss in Kleinbuchstaben angegeben werden. Nachstehend sind die Alphabete aufgeführt, die Sie angeben können.<ul><li>ipa &ndash; International Phonetic Alphabet (Internationales phonetisches Alphabet)</li><li>sapi &ndash; Speech API Phone Set (Phongruppe für Spracheingabe-API)</li><li>ups &ndash; Universal Phone Set (Universelle Phongruppe)</li></ul>Das Alphabet gilt nur für das Phonem im Element. Weitere Informationen finden Sie unter [Phonetic Alphabet Reference (Referenz zum phonetischen Alphabet)](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx). | Optional |
+| `alphabet` | Gibt das phonetische Alphabet an, das verwendet werden soll, wenn die Aussprache der Zeichenfolge im `ph`-Attribut synthetisiert wird. Die Zeichenfolge, die das Alphabet angibt, muss in Kleinbuchstaben angegeben werden. Nachstehend sind die Alphabete aufgeführt, die Sie angeben können.<ul><li>`ipa` &ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">Internationales phonetisches Alphabet <span class="docon docon-navigate-external x-hidden-focus"></span></a></li><li>`sapi` &ndash; [Phonetisches Alphabet des Speech-Diensts](speech-ssml-phonetic-sets.md)</li><li>`ups` &ndash; Universeller Phonemsatz</li></ul><br>Das Alphabet gilt nur für das `phoneme` im Element. | Optional |
 | `ph` | Eine Zeichenfolge mit Phonen, die die Aussprache des Worts im `phoneme`-Element angeben. Wenn die angegebene Zeichenfolge nicht erkannte Phone enthält, weist der Sprachsynthesedienst das gesamte SSML-Dokument zurück und erzeugt keine der im Dokument angegebenen Sprachausgaben. | Erforderlich, wenn Phoneme verwendet werden. |
 
 **Beispiele**
 
-```XML
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
-        <s>His name is Mike <phoneme alphabet="ups" ph="JH AU"> Zhou </phoneme></s>
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
+        <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme>
     </voice>
 </speak>
 ```
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
-        <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme>
+    <voice name="en-US-AriaRUS">
+        <phoneme alphabet="sapi" ph="iy eh n y uw eh s"> en-US </phoneme>
     </voice>
 </speak>
 ```
+
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
+        <s>His name is Mike <phoneme alphabet="ups" ph="JH AU"> Zhou </phoneme></s>
+    </voice>
+</speak>
+```
+
+## <a name="use-custom-lexicon-to-improve-pronunciation"></a>Verwenden eines benutzerdefinierten Lexikons zum Verbessern der Aussprache
+
+In einigen Fällen kann TTS ein Wort nicht richtig aussprechen, z. B. einen Firmennamen oder einen fremdsprachlichen Begriff. Entwickler können das Lesen dieser Entitäten in SSML mithilfe der Tags `phoneme` und `sub` definieren. Sie können auch das Lesen mehrerer Entitäten definieren, indem sie mithilfe des `lexicon`-Tags auf eine benutzerdefinierte Lexikondatei verweisen.
+
+**Syntax**
+
+```XML
+<lexicon uri="string"/>
+```
+
+**Attribute**
+
+| attribute | BESCHREIBUNG | Erforderlich/optional |
+|-----------|-------------|---------------------|
+| `uri` | Die Adresse des externen PLS-Dokuments. | Erforderlich. |
+
+**Verwendung**
+
+Schritt 1: Definieren Sie ein benutzerdefiniertes Lexikon. 
+
+Sie können das Lesen von Entitäten anhand einer Liste benutzerdefinierter Lexikonelemente definieren, die als XML- oder PLS-Datei gespeichert werden.
+
+**Beispiel**
+
+```xml
+<?xml version="1.0" encoding="UTF-16"?>
+<lexicon version="1.0" 
+      xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon 
+        http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
+      alphabet="ipa" xml:lang="en-US">
+  <lexeme>
+    <grapheme>BTW</grapheme> 
+    <alias>By the way</alias> 
+  </lexeme>
+  <lexeme>
+    <grapheme> Benigni </grapheme> 
+    <phoneme> bɛˈniːnji</phoneme>
+  </lexeme>
+</lexicon>
+```
+
+Jedes `lexeme`-Element ist ein Lexikonelement. `grapheme` enthält Text, der die Orthografie von `lexeme` beschreibt. Das Vorleseformular kann als `alias` bereitgestellt werden. Die Telefonzeichenfolge könnte im `phoneme`-Element angegeben werden.
+
+Das `lexicon`-Element enthält mindestens ein `lexeme`-Element. Jedes `lexeme`-Element enthält mindestens ein `grapheme`-Element und mindestens eines der Elemente `grapheme`, `alais` und `phoneme`. Das `grapheme`-Element enthält Text, der die <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">Orthografie<span class="docon docon-navigate-external x-hidden-focus"></span></a> beschreibt. Mithilfe der `alias`-Elemente wird die Aussprache eines Akronyms oder eines abgekürzten Begriffs angegeben. Das `phoneme`-Element stellt Text bereit, der die Aussprache von `lexeme` beschreibt.
+
+Weitere Informationen zu benutzerdefinierten Lexikondateien finden Sie auf der W3C-Website unter [Pronunciation Lexicon Specification (PLS) Version 1.0](https://www.w3.org/TR/pronunciation-lexicon/) (Spezifikation für Aussprachelexika (PLS) Version 1.0).
+
+Schritt 2: Laden Sie die benutzerdefinierte Lexikondatei hoch, die Sie in Schritt 1 online erstellt haben. Sie können sie an einer beliebigen Stelle speichern, wobei empfohlen wird, sie in Microsoft Azure zu speichern, beispielsweise in [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
+
+Schritt 3: Verweisen Sie in SSML auf die benutzerdefinierte Lexikondatei.
+
+```xml
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
+          xmlns:mstts="http://www.w3.org/2001/mstts" 
+          xml:lang="en-US">
+<lexicon uri="http://www.example.com/customlexicon.xml"/>
+BTW, we will be there probably 8:00 tomorrow morning.
+Could you help leave a message to Robert Benigni for me?
+</speak>
+```
+„BTW“ wird als „By the way“ gelesen. „Benigni“ wird mit der bereitgestellten IPA als „bɛˈniːnji“ gelesen.  
+
+**Einschränkung**
+- Dateigröße: Die maximale Größe benutzerdefinierter Lexikondateien beträgt 100 KB. Wenn diese Größe überschritten wird, treten bei Syntheseanforderungen Fehler auf.
+- Lexikoncacheaktualisierung: Das benutzerdefinierte Lexikon wird beim ersten Laden mit dem URI als Schlüssel im TTS-Dienst zwischengespeichert. Ein Lexikon mit demselben URI wird innerhalb von 15 Minuten nicht neu geladen, sodass Änderungen am benutzerdefinierten Lexikon nach maximal 15 Minuten in Kraft treten.
+
+**Phonetische Sätze des Speech-Diensts**
+
+Im obigen Beispiel wird das als IPA-Phonemsatz bezeichnete internationale phonetische Alphabet verwendet. Wir empfehlen Entwicklern, das IPA zu verwenden, da es der internationale Standard ist. Da das IPA nicht leicht zu merken ist, definiert der Speech-Dienst einen phonetischen Satz für sieben Sprachen (`en-US`, `fr-FR`, `de-DE`, `es-ES`, `ja-JP`, `zh-CN` und `zh-TW`).
+
+Sie können `sapi` wie unten gezeigt als Wert des `alphabet`-Attributs mit benutzerdefinierten Lexika verwenden.
+
+```xml
+<?xml version="1.0" encoding="UTF-16"?>
+<lexicon version="1.0" 
+      xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.w3.org/2005/01/pronunciation-lexicon
+        http://www.w3.org/TR/2007/CR-pronunciation-lexicon-20071212/pls.xsd"
+      alphabet="sapi" xml:lang="en-US">
+  <lexeme>
+    <grapheme>BTW</grapheme>
+    <alias> By the way </alias>
+  </lexeme>
+  <lexeme>
+    <grapheme> Benigni </grapheme>
+    <phoneme> b eh 1 - n iy - n y iy </phoneme>
+  </lexeme>
+</lexicon>
+```
+
+Ausführliche Informationen zum phonetischen Alphabet des Speech-Diensts finden Sie unter [Phonetische Sätze des Speech-Diensts](speech-ssml-phonetic-sets.md).
 
 ## <a name="adjust-prosody"></a>Anpassen des Satzrhythmus
 
@@ -378,7 +485,7 @@ Die Sprechgeschwindigkeit kann auf Standardstimmen auf Wort- oder Satzebene ange
 **Beispiel**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-Guy24kRUS">
         <prosody rate="+30.00%">
             Welcome to Microsoft Cognitive Services Text-to-Speech API.
@@ -394,8 +501,8 @@ Die Sprechgeschwindigkeit kann auf Standardstimmen auf Wort- oder Satzebene ange
 **Beispiel**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         <prosody volume="+20.00%">
             Welcome to Microsoft Cognitive Services Text-to-Speech API.
         </prosody>
@@ -410,7 +517,7 @@ Die Sprechgeschwindigkeit kann auf Standardstimmen auf Wort- oder Satzebene ange
 **Beispiel**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-Guy24kRUS">
         Welcome to <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody>
     </voice>
@@ -425,8 +532,8 @@ Die Sprechgeschwindigkeit kann auf Standardstimmen auf Wort- oder Satzebene ange
 **Beispiel**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         <prosody contour="(80%,+20%) (90%,+30%)" >
             Good morning.
         </prosody>
@@ -445,7 +552,7 @@ Die Sprechgeschwindigkeit kann auf Standardstimmen auf Wort- oder Satzebene ange
 
 **Attribute**
 
-| attribute | Beschreibung | Erforderlich/optional |
+| attribute | BESCHREIBUNG | Erforderlich/optional |
 |-----------|-------------|---------------------|
 | `interpret-as` | Gibt an, welchen Inhaltstyp der Text des Elements darstellt. Die folgende Tabelle listet die unterschiedlichen Typen auf. | Erforderlich |
 | `format` | Enthält weitere Informationen, wie genau der Elementtext formatiert ist, für Inhaltstypen, die mehrdeutige Formate haben können. SSML definiert Formate für Inhaltstypen, die diese verwenden (siehe Tabelle unten). | Optional |
@@ -476,8 +583,8 @@ Das `say-as`-Element darf nur Text enthalten.
 Die Sprachsynthese-Engine spricht den Beispielsatz wie folgt aus: „Ihre erste Anfrage war für ein Zimmer am neunzehnten Oktober zweitausendzehn mit frühzeitiger Ankunft um zwölf Uhr fünfunddreißig nachmittags“.
  
 ```XML
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         <p>
         Your <say-as interpret-as="ordinal"> 1st </say-as> request was for <say-as interpret-as="cardinal"> 1 </say-as> room
         on <say-as interpret-as="date" format="mdy"> 10/19/2010 </say-as>, with early arrival at <say-as interpret-as="time" format="hms12"> 12:35pm </say-as>.
@@ -492,7 +599,7 @@ Die Sprachsynthese-Engine spricht den Beispielsatz wie folgt aus: „Ihre erste 
 
 Alle Audiodaten, die im SSML-Dokument enthalten sind, müssen die folgenden Anforderungen erfüllen:
 
-* Die MP3-Datei muss auf einem HTTPS-Endpunkt gehostet werden, der über das Internet zugänglich ist. HTTPS ist erforderlich, und die Domäne, die die MP3-Datei hostet, muss ein gültiges vertrauenswürdiges SSL-Zertifikat enthalten.
+* Die MP3-Datei muss auf einem HTTPS-Endpunkt gehostet werden, der über das Internet zugänglich ist. HTTPS ist erforderlich, und die Domäne, die die MP3-Datei hostet, muss über ein gültiges vertrauenswürdiges TSL/SSL-Zertifikat verfügen.
 * Es muss es sich um eine gültige MP3-Datei (MPEG v2) handeln.
 * Die Bitrate muss 48 KBit/s betragen.
 * Die Abtastrate muss bei 16.000 Hz liegen.
@@ -514,8 +621,8 @@ Alle Audiodaten, die im SSML-Dokument enthalten sind, müssen die folgenden Anfo
 **Beispiel**
 
 ```xml
-<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Jessa24kRUS">
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice name="en-US-AriaRUS">
         <p>
             <audio src="https://contoso.com/opinionprompt.wav"/>
             Thanks for offering your opinion. Please begin speaking after the beep.
@@ -555,7 +662,7 @@ Pro SSML-Dokument ist nur eine Hintergrundaudiodatei zulässig. Sie können jedo
 ```xml
 <speak version="1.0" xml:lang="en-US" xmlns:mstts="http://www.w3.org/2001/mstts">
     <mstts:backgroundaudio src="https://contoso.com/sample.wav" volume="0.7" fadein="3000" fadeout="4000"/>
-    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)">
+    <voice name="Microsoft Server Speech Text to Speech Voice (en-US, AriaRUS)">
         The text provided in this document will be spoken over the background audio.
     </voice>
 </speak>

@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: bf4c5e364b7f18b363f9915f54e43c7ea54c33c4
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: ae139ea7aca7c3896fcd7b0acf2bf6673490a2f4
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76834671"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382901"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Diagnostizieren eines Netzwerkroutingproblems eines virtuellen Computers – Azure CLI
 
@@ -32,7 +32,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 2.0.28 der Azure CLI ausführen. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). Führen Sie nach der Überprüfung der CLI-Version den Befehl `az login` aus, um eine Verbindung mit Azure zu erstellen. Die CLI-Befehle in diesem Artikel sind für die Ausführung in einer Bash-Shell formatiert.
+Wenn Sie die Azure-Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die Azure CLI-Version 2.0.28 oder höher ausführen. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). Führen Sie nach der Überprüfung der Azure CLI-Version den Befehl `az login` aus, um eine Verbindung mit Azure herzustellen. Die Azure CLI-Befehle in diesem Artikel sind für die Ausführung in einer Bash-Shell formatiert.
 
 ## <a name="create-a-vm"></a>Erstellen einer VM
 
@@ -52,7 +52,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Die Erstellung des virtuellen Computers dauert einige Minuten. Fahren Sie erst mit den übrigen Schritten fort, wenn der virtuelle Computer erstellt und von der CLI eine Ausgabe zurückgegeben wurde.
+Die Erstellung des virtuellen Computers dauert einige Minuten. Fahren Sie erst mit den übrigen Schritten fort, wenn der virtuelle Computer erstellt und von Azure CLI eine Ausgabe zurückgegeben wurde.
 
 ## <a name="test-network-communication"></a>Testen der Netzwerkkommunikation
 
@@ -113,7 +113,7 @@ az network nic show-effective-route-table \
 
 Die zurückgegebene Ausgabe enthält den folgenden Text:
 
-```azurecli
+```
 {
   "additionalProperties": {
     "disableBgpRoutePropagation": false
@@ -133,7 +133,7 @@ Wenn Sie unter [Verwenden der Funktion „Nächster Hop“](#use-next-hop) den B
 
 Wenn Sie jedoch den Befehl `az network watcher show-next-hop` zum Testen der ausgehenden Kommunikation mit 172.31.0.100 verwendet haben, wurden Sie im Ergebnis darüber informiert, dass kein Typ des nächsten Hops vorhanden war. In der zurückgegebenen Ausgabe finden Sie auch den folgenden Text:
 
-```azurecli
+```
 {
   "additionalProperties": {
     "disableBgpRoutePropagation": false

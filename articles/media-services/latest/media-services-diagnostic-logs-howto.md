@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: bf83c87c71c8e05dc74d7754c82c76489de1bd85
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 4d4587c701a054828fc34785e2ae680fef47625d
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750898"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382918"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Überwachen von Media Services-Diagnoseprotokollen
 
 [Azure Monitor](../../azure-monitor/overview.md) ermöglicht Ihnen die Überwachung von Metriken und Diagnoseprotokollen, die Ihnen zu verstehen helfen, wie sich Ihre Anwendungen verhalten. Eine ausführliche Beschreibung dieser Funktion und Argumente für die Verwendung der Azure Media Services-Metriken und -Diagnoseprotokolle finden Sie unter [Überwachen von Media Services-Metriken und -Diagnoseprotokollen](media-services-metrics-diagnostic-logs.md).
 
-Dieser Artikel zeigt Ihnen, wie Sie Daten an das Speicherkonto weiterleiten und dann die Daten anzeigen können. 
+Dieser Artikel zeigt Ihnen, wie Sie Daten an das Speicherkonto weiterleiten und dann die Daten anzeigen können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -34,7 +34,7 @@ Dieser Artikel zeigt Ihnen, wie Sie Daten an das Speicherkonto weiterleiten und 
 ## <a name="route-data-to-the-storage-account-using-the-portal"></a>Weiterleiten von Daten an das Speicherkonto über das Portal
 
 1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
-1. Navigieren Sie zu Ihrem Media Services-Konto, und klicken Sie auf **Diagnoseeinstellungen** unter **Überwachen**. Es wird eine Liste aller Ressourcen in Ihrem Abonnement eingeblendet, die mithilfe von Azure Monitor Überwachungsdaten generieren. 
+1. Navigieren Sie zu Ihrem Media Services-Konto, und klicken Sie auf **Diagnoseeinstellungen** unter **Überwachen**. Es wird eine Liste aller Ressourcen in Ihrem Abonnement eingeblendet, die mithilfe von Azure Monitor Überwachungsdaten generieren.
 
     ![Abschnitt „Diagnoseeinstellungen“](media/media-services-diagnostic-logs/logs01.png)
 
@@ -53,11 +53,11 @@ Dieser Artikel zeigt Ihnen, wie Sie Daten an das Speicherkonto weiterleiten und 
 
 Zu Ihrer Ressource gehörige Überwachungsdaten werden nun in das Speicherkonto übertragen.
 
-## <a name="route-data-to-the-storage-account-using-the-cli"></a>Weiterleiten von Daten an das Speicherkonto über die CLI
+## <a name="route-data-to-the-storage-account-using-the-azure-cli"></a>Weiterleiten von Daten an das Speicherkonto mithilfe der Azure CLI
 
-Sie würden den folgenden `az monitor diagnostic-settings` CLI-Befehl ausführen, um das Speichern von Diagnoseprotokollen in einem Speicherkonto zu aktivieren: 
+Um das Speichern von Diagnoseprotokollen in einem Speicherkonto zu aktivieren, führen Sie den Azure CLI-Befehl `az monitor diagnostic-settings` wie folgt aus:
 
-```cli
+```azurecli-interactive
 az monitor diagnostic-settings create --name <diagnostic name> \
     --storage-account <name or ID of storage account> \
     --resource <target resource object ID> \
@@ -75,7 +75,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 
 Beispiel:
 
-```cli
+```azurecli-interactive
 az monitor diagnostic-settings create --name amsv3diagnostic \
     --storage-account storageaccountforams  \
     --resource "/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount" \

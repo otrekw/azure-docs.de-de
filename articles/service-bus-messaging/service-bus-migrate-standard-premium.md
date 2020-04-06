@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 548163f4c86f4df4d858b31afd95e0e4615f1696
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 27e3260b91bebee14ff12188a7dbd6c7cf76355c
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587497"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80385026"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrieren von vorhandenen Azure Service Bus-Standardnamespaces zum Premium-Tarif
+
 Bisher bot der Azure Service Bus Namespaces nur im Standard-Tarif an. Namespaces sind mehrinstanzenfähige Setups, die für niedrige Durchsätze und Entwicklerumgebungen optimiert wurden. Der Premium-Tarif bietet dedizierte Ressourcen pro Namespace für vorhersagbare Latenz und höheren Durchsatz zu einem festen Preis. Der Premium-Tarif ist für hohen Durchsatz und Produktionsumgebungen optimiert, die zusätzliche Enterprisefeatures erfordern.
 
 In diesem Artikel wird beschrieben, wie Sie vorhandene Standard-Tarif-Namespaces zum Premium-Tarif migrieren.  
@@ -27,14 +28,16 @@ In diesem Artikel wird beschrieben, wie Sie vorhandene Standard-Tarif-Namespaces
 >[!WARNING]
 > Mit der Migration wird ein Upgrade von Service Bus-Standardnamespaces zum Premium-Tarif durchgeführt. Ein Herabstufen wird vom Migrationstool nicht unterstützt.
 
-Beachten Sie folgende Punkte: 
+Beachten Sie folgende Punkte:
+
 - Diese Migration erfolgt direkt, was bedeutet, dass vorhandene Sender- und Empfängeranwendungen **keine Code- oder Konfigurationsänderungen erfordern**. Die bestehende Verbindungszeichenfolge verweist automatisch auf den neuen Premiumnamespace.
-- Der **Premiumnamespace** sollte **keine Entitäten** enthalten, damit die Migration erfolgreich ausgeführt werden kann. 
-- Alle **Entitäten** im Standardnamespace werden während des Migrationsprozesses in den Premiumnamespace **kopiert**. 
-- Die Migration unterstützt **1.000 Entitäten pro Messagingeinheit** im Premium-Tarif. Um zu ermitteln, wie viele Messagingeinheiten Sie benötigen, beginnen Sie mit der Anzahl der Einheiten, die Sie in Ihrem aktuellen Standardnamespace haben. 
+- Der **Premiumnamespace** sollte **keine Entitäten** enthalten, damit die Migration erfolgreich ausgeführt werden kann.
+- Alle **Entitäten** im Standardnamespace werden während des Migrationsprozesses in den Premiumnamespace **kopiert**.
+- Die Migration unterstützt **1.000 Entitäten pro Messagingeinheit** im Premium-Tarif. Um zu ermitteln, wie viele Messagingeinheiten Sie benötigen, beginnen Sie mit der Anzahl der Einheiten, die Sie in Ihrem aktuellen Standardnamespace haben.
 - Sie können nicht direkt vom **Basic-Tarif** zum **Premium-Tarif** migrieren, jedoch indirekt, indem Sie zuerst vom Basic- zum Standard-Tarif und dann im nächsten Schritt vom Standard- zum Premium-Tarif migrieren.
 
 ## <a name="migration-steps"></a>Schritte bei der Migration
+
 Einige Bedingungen sind mit dem Migrationsprozess verbunden. Machen Sie sich mit den folgenden Schritten vertraut, um die Fehlerwahrscheinlichkeit zu reduzieren. Der Migrationsprozess ist in diese Schritte gegliedert, und die Informationen zu den einzelnen Schritten finden Sie in den folgenden Abschnitten.
 
 1. Erstellen Sie einen neuen Premiumnamespace.
@@ -54,7 +57,8 @@ Führen Sie die Migration Ihres Service Bus-Standardnamespace zu Premium mit der
 1. Erstellen Sie einen neuen Service Bus-Premiumnamespace. Sie können auf die [Azure Resource Manager-Vorlagen](service-bus-resource-manager-namespace.md) verweisen oder das [Azure-Portal](service-bus-create-namespace-portal.md) verwenden. Wählen Sie für den **serviceBusSku**-Parameter **premium** aus.
 
 1. Legen Sie die folgenden Umgebungsvariablen fest, um die Migrationsbefehle zu vereinfachen.
-   ```azurecli
+
+   ```
    resourceGroup = <resource group for the standard namespace>
    standardNamespace = <standard namespace to migrate>
    premiumNamespaceArmId = <Azure Resource Manager ID of the premium namespace to migrate to>
@@ -66,17 +70,18 @@ Führen Sie die Migration Ihres Service Bus-Standardnamespace zu Premium mit der
 
 1. Koppeln Sie die Standard- und Premiumnamespaces, und starten Sie die Synchronisierung mit dem folgenden Befehl:
 
-    ```azurecli
+    ```azurecli-interactive
     az servicebus migration start --resource-group $resourceGroup --name $standardNamespace --target-namespace $premiumNamespaceArmId --post-migration-name $postMigrationDnsName
     ```
 
-
 1. Überprüfen Sie den Migrationsstatus mithilfe des folgenden Befehls:
-    ```azurecli
+
+    ```azurecli-interactive
     az servicebus migration show --resource-group $resourceGroup --name $standardNamespace
     ```
 
     Die Migration wird als abgeschlossen betrachtet, wenn Sie die folgenden Werte sehen:
+
     * MigrationState = "Active"
     * pendingReplicationsOperationsCount = 0
     * provisioningState = "Succeeded"
@@ -84,7 +89,8 @@ Führen Sie die Migration Ihres Service Bus-Standardnamespace zu Premium mit der
     Dieser Befehl zeigt außerdem die Migrationskonfiguration an. Stellen Sie sicher, dass die Werte richtig festgelegt sind. Überprüfen Sie außerdem den Premiumnamespace im Portal, um sicherzustellen, dass alle Warteschlangen und Themen angelegt wurden und mit dem übereinstimmen, was im Standardnamespace vorhanden war.
 
 1. Committen Sie die Migration, indem Sie den folgenden Abschlussbefehl ausführen:
-   ```azurecli
+
+   ```azurecli-interactive
    az servicebus migration complete --resource-group $resourceGroup --name $standardNamespace
    ```
 
@@ -122,22 +128,22 @@ Die Migration über das Azure-Portal hat den gleichen logischen Ablauf wie die M
 
 Einige der im Standard-Tarif von Azure Service Bus zur Verfügung stehenden Features werden im Premium-Tarif nicht unterstützt. Dies ist beabsichtigt, da der Premium-Tarif dedizierte Ressourcen für planbaren Durchsatz und planbare Wartezeit bietet.
 
-Im Anschluss folgt eine Liste mit Features, die im Premium-Tarif nicht unterstützt werden, und entsprechenden Abhilfemaßnahmen: 
+Im Anschluss folgt eine Liste mit Features, die im Premium-Tarif nicht unterstützt werden, und entsprechenden Abhilfemaßnahmen:
 
 ### <a name="express-entities"></a>Expressentitäten
 
    Expressentitäten, die keine Nachrichtendaten im Speicher committen, werden im Premium-Tarif nicht unterstützt. Dedizierte Ressourcen sorgen für eine erhebliche Durchsatzverbesserung und stellen gleichzeitig eine dauerhafte Speicherung der Daten sicher, wie dies von einem Messagingsystem für Unternehmen erwartet wird.
-   
+
    Bei der Migration werden alle Expressentitäten aus Ihrem Standard-Namespace als Nicht-Expressentitäten im Premium-Namespace erstellt.
-   
+
    Bei Verwendung von ARM-Vorlagen (Azure Resource Manager) muss das Flag „enableExpress“ aus der Bereitstellungskonfiguration entfernt werden, damit Ihre automatisierten Workflows fehlerfrei ausgeführt werden.
 
 ### <a name="partitioned-entities"></a>Partitionierte Entitäten
 
    Partitionierte Entitäten wurden im Standard-Tarif unterstützt, um die Verfügbarkeit in einer Umgebung mit mehreren Mandanten zu verbessern. Dank der Bereitstellung dedizierter, pro Namespace verfügbarer Ressourcen ist dies im Premium-Tarif nicht mehr nötig.
-   
+
    Bei der Migration werden alle partitionierten Entitäten aus Ihrem Standard-Namespace als nicht partitionierte Entitäten im Premium-Namespace erstellt.
-   
+
    Falls „enablePartitioning“ in Ihrer ARM-Vorlage für eine bestimmte Warteschlange oder ein bestimmtes Thema auf „true“ festgelegt ist, wird sie bzw. es vom Broker ignoriert.
 
 ## <a name="faqs"></a>Häufig gestellte Fragen
@@ -160,19 +166,22 @@ Nachdem die Nachrichten entladen wurden, löschen Sie den Standardnamespace.
 > Nach der Entladung der Nachrichten aus dem Standardnamespace löschen Sie den Standardnamespace. Dies ist wichtig, da die Verbindungszeichenfolge, die zunächst auf den Standardnamespace verwies, nun auf den Premiumnamespace verweist. Sie benötigen den Standardnamespace nicht mehr. Wenn Sie den migrierten Standardnamespace löschen, können später weniger Unklarheiten auftreten.
 
 ### <a name="how-much-downtime-do-i-expect"></a>Wie viel Ausfallzeit kann ich erwarten?
+
 Der Migrationsprozess soll die zu erwartende Downtime der Anwendungen reduzieren. Die Downtime wird durch die Verwendung der Verbindungszeichenfolge reduziert, mit der Sender- und Empfängeranwendungen auf den neuen Premiumnamespace verweisen.
 
 Die Downtime der Anwendung ist auf die Zeit beschränkt, die benötigt wird, um den DNS-Eintrag zu aktualisieren und auf den Premiumnamespace zu verweisen. Die Downtime beträgt ca. fünf Minuten.
 
 ### <a name="do-i-have-to-make-any-configuration-changes-while-doing-the-migration"></a>Muss ich während der Migration Konfigurationsänderungen vornehmen?
+
 Nein, es sind keine Code- oder Konfigurationsänderungen erforderlich, um die Migration durchzuführen. Die Verbindungszeichenfolge, die Sender- und Empfängeranwendungen für den Zugriff auf den Standardnamespace verwenden, wird automatisch als Alias für den Premiumnamespace abgebildet.
 
 ### <a name="what-happens-when-i-abort-the-migration"></a>Was geschieht, wenn ich die Migration abbreche?
-Die Migration kann entweder mit dem Befehl `Abort` oder über das Azure-Portal abgebrochen werden. 
+
+Die Migration kann entweder mit dem Befehl `Abort` oder über das Azure-Portal abgebrochen werden.
 
 #### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-```azurecli
+```azurecli-interactive
 az servicebus migration abort --resource-group $resourceGroup --name $standardNamespace
 ```
 

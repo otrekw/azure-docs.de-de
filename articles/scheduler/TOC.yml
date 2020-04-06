@@ -1,5 +1,5 @@
-- name: Dokumentation zu Scheduler
-  href: index.md
+- name: Dokumentation zu Azure Scheduler
+  href: index.yml
 - name: Übersicht
   items:
     - name: Was ist Azure Scheduler?
@@ -14,7 +14,7 @@
   items:
     - name: 'Konzepte, Bedingungen und Entitäten'
       href: scheduler-concepts-terms.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Planen und Entwerfen
       items:

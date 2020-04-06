@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 164f07f6545c1c225814958bba5722536b11a9b4
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 883dbc95ee77d03aee4c3231c6ab8c03f9f7f6e4
+ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78269437"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80387834"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Installieren von AMD-GPU-Treibern für virtuelle Computer der N-Serie unter Windows
 
@@ -40,7 +40,7 @@ Informationen zu grundlegenden Spezifikationen, Speicherkapazitäten und Details
 
 2. Wenn Sie Kunde von NVv4 Vorschau sind, beenden Sie die VM, und warten Sie dann, bis sie den Staus „Stopped(Deallocated)“ (Beendet, Zuordnung aufgehoben) aufweist.
 
-3. Starten Sie die VM, und deinstallieren Sie den Vorschautreiber, indem Sie „amdcleanuputility-x64.exe“ im Ordner „...\AMDCleanUninstallUtility“ ausführen. Der genaue Pfad hängt davon ab, wo sich die vorherigen Treiberinstallationsdateien befinden.  
+3. Starten Sie die VM, und laden Sie das aktuelle [AMD-Bereinigungsprogramm](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe) herunter. Deinstallieren Sie den vorhandenen Treiber, indem Sie „amdcleanuputility-x64. exe“ ausführen. Verwenden Sie KEIN vorhandenes Bereinigungsprogramm, das mit dem vorherigen Treiber installiert wurde.  
 
 4. Laden Sie den neuesten Treiber herunter, und installieren Sie ihn.
 

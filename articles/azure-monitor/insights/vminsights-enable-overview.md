@@ -1,25 +1,25 @@
 ---
-title: 'Aktivieren von Azure Monitor für VMs (Vorschauversion): Übersicht | Microsoft-Dokumentation'
+title: 'Aktivieren von Azure Monitor für VMs: Übersicht'
 description: Erfahren Sie, wie Sie eine Azure Monitor für VMs bereitstellen und konfigurieren. Informieren Sie sich über die Systemanforderungen.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/14/2019
-ms.openlocfilehash: 44422f66f6fc995dcaf96947ea05b183c7131ea3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/27/2020
+ms.openlocfilehash: 26ed33e967aff1714d2a6fb174eab623e71534c2
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669572"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80382731"
 ---
-# <a name="enable-azure-monitor-for-vms-preview-overview"></a>Aktivieren von Azure Monitor für VMs (Vorschauversion): Übersicht
+# <a name="enable-azure-monitor-for-vms-overview"></a>Aktivieren von Azure Monitor für VMs: Übersicht
 
-Dieser Artikel bietet eine Übersicht über die verfügbaren Optionen zum Einrichten von Azure Monitor für VMs. Verwenden Sie Azure Monitor für VMs, um die Integrität und Leistung zu überwachen. Erkennen Sie Anwendungsabhängigkeiten, die für virtuelle Azure-Computer (VMs) und VM-Skalierungsgruppen, lokale virtuelle Computer oder virtuelle Computer in einer anderen Cloudumgebung ausgeführt werden.  
+Dieser Artikel bietet eine Übersicht über die verfügbaren Optionen zum Aktivieren von Azure Monitor für VMs auf Ihren virtuellen Computern, um die Integrität und Leistung zu überwachen. Erkennen Sie Anwendungsabhängigkeiten, die für virtuelle Azure-Computer (VMs) und VM-Skalierungsgruppen, lokale virtuelle Computer oder virtuelle Computer in einer anderen Cloudumgebung ausgeführt werden.  
 
 So richten Sie Azure Monitor für VMs ein
 
-* Aktivieren Sie einen einzelnen virtuellen Azure-Computer bzw. eine VM-Skalierungsgruppe, indem Sie direkt auf der VM oder in der VM-Skalierungsgruppe die Option **Insights (Vorschau)** wählen.
+* Aktivieren Sie einen einzelnen virtuellen Azure-Computer bzw. eine VM-Skalierungsgruppe, indem Sie direkt auf der VM oder in der VM-Skalierungsgruppe die Option **Insights**  wählen.
 * Aktivieren Sie zwei oder mehr Azure-VMs und VM-Skalierungsgruppen, indem Sie Azure Policy verwenden. Diese Methode stellt sicher, dass bei bestehenden und neuen virtuellen Computern und Skalierungsgruppen die erforderlichen Abhängigkeiten installiert und ordnungsgemäß konfiguriert werden. Nicht konforme VMs und Skalierungsgruppen werden gemeldet, sodass Sie entscheiden können, ob Sie sie aktivieren und den Zustand korrigieren möchten.
 * Aktivieren Sie mindestens zwei virtuelle Azure-Computer oder VM-Skalierungsgruppen über ein bestimmtes Abonnement oder eine bestimmte Ressourcengruppe mithilfe von PowerShell.
 * Aktivieren Sie Azure Monitor für VMs zum Überwachen von virtuellen Computern oder physischen Computern, die in Ihrem Unternehmensnetzwerk oder einer anderen Cloudumgebung gehostet werden.
@@ -55,20 +55,20 @@ Azure Monitor für VMs unterstützt einen Log Analytics-Arbeitsbereich in den fo
 - Australien, Südosten
 
 >[!NOTE]
->Sie können virtuelle Azure-Computer aus beliebigen Regionen bereitstellen. Diese virtuellen Computer sind nicht auf die vom Log Analytics-Arbeitsbereich unterstützten Bereiche beschränkt.
+>Sie können Azure-VMs in jeder Region überwachen. Die VMs selbst sind nicht auf die vom Log Analytics-Arbeitsbereich unterstützten Bereiche beschränkt.
 >
 
-Wenn Sie über keinen Arbeitsbereich verfügen, können Sie einen erstellen, indem Sie eine der folgenden Ressourcen verwenden:
-* [Die Azure-CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
+Wenn Sie über keinen Log Analytics-Arbeitsbereich verfügen, können Sie einen erstellen, indem Sie eine der folgenden Ressourcen verwenden:
+* [Azure-Befehlszeilenschnittstelle](../../azure-monitor/learn/quick-create-workspace-cli.md)
 * [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
-* [Azure-Portal](../../azure-monitor/learn/quick-create-workspace.md)
+* [Azure portal](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
 
 Sie können auch einen Arbeitsbereich erstellen, während Sie im Azure-Portal die Überwachung für einen einzelnen virtuellen Azure-Computer oder eine VM-Skalierungsgruppe aktivieren.
 
 So richten Sie in Ihrem Log Analytics-Arbeitsbereich ein bedarfsorientiertes Szenario ein, das Vorlagen für Azure Policy, Azure PowerShell oder Azure Resource Manager verwendet
 
-* Installieren Sie die Projektmappen „ServiceMap“ und „InfrastructureInsights“. Sie können diese Installation mithilfe einer bereitgestellten Azure Resource Manager-Vorlage abschließen. Oder wählen Sie auf der Registerkarte **Erste Schritte** die Option **Arbeitsbereich konfigurieren** aus.
+* Installieren Sie die Projektmappen *ServiceMap* und *InfrastructureInsights*. Sie können diese Installation mithilfe einer bereitgestellten Azure Resource Manager-Vorlage abschließen. Oder wählen Sie auf der Registerkarte **Erste Schritte** im Azure-Portal die Option **Arbeitsbereich konfigurieren** aus.
 * Konfigurieren Sie den Log Analytics-Arbeitsbereich zur Erfassung von Leistungsindikatoren.
 
 Verwenden Sie zum Konfigurieren Ihres Arbeitsbereichs für das bedarfsorientierte Szenario eine der folgenden Methoden:
@@ -165,7 +165,7 @@ In einer Hybridumgebung können Sie den Dependency-Agent manuell oder automatisc
 
 In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die vom Zuordnungsfeature in einer Hybridumgebung unterstützt werden.
 
-| Verbundene Quelle | Unterstützt | Beschreibung |
+| Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 |:--|:--|:--|
 | Windows-Agents | Ja | Zusätzlich zum [Log Analytics-Agent für Windows](../../azure-monitor/platform/log-analytics-agent.md) benötigen Windows-Agents den Dependency-Agent. Weitere Informationen finden Sie unter [Unterstützte Betriebssysteme](#supported-operating-systems). |
 | Linux-Agents | Ja | Zusätzlich zum [Log Analytics-Agent für Linux](../../azure-monitor/platform/log-analytics-agent.md) benötigen Linux-Agents den Dependency-Agent. Weitere Informationen finden Sie unter [Unterstützte Betriebssysteme](#supported-operating-systems). |
@@ -175,8 +175,8 @@ Sie können den Dependency-Agent über die folgenden Speicherorte herunterladen:
 
 | Datei | OS | Version | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.9.2 | 6DFF19B9690E42CA190E3B69137C77904B657FA02895033EAA4C3A6A41DA5C6A |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.9.1 | 1CB447EF30FC042FE7499A686638F3F9B4F449692FB9D80096820F8024BE4D7C |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.2.9060 | B7725B6B205CF8C336D9AAD87956336C816412740E9D6499BCACB6F862AE3896  |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.2.9060 | C6995A67A7782AEC312647D74A99C3C823F68F5FFA490FD4BB6006A2FF2941B0 |
 
 ## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 
@@ -184,60 +184,16 @@ Um die Features in Azure Monitor für VMs zu aktivieren und darauf zuzugreifen, 
 
 Weitere Informationen zur Zugriffssteuerung auf einen Log Analytics-Arbeitsbereich finden Sie unter [Verwalten von Arbeitsbereichen](../../azure-monitor/platform/manage-access.md).
 
-## <a name="how-to-enable-azure-monitor-for-vms-preview"></a>Gewusst wie: Aktivieren von Azure Monitor für VMs (Vorschauversion)
+## <a name="how-to-enable-azure-monitor-for-vms"></a>Gewusst wie: Aktivieren von Azure Monitor für VMs
 
 Aktivieren Sie Azure Monitor für VMs, indem Sie eine der in dieser Tabelle beschriebenen Methoden verwenden:
 
 | Bereitstellungszustand | Methode | BESCHREIBUNG |
 |------------------|--------|-------------|
-| Einzelne Azure-VM oder VM-Skalierungsgruppe | [Über die VM aktivieren](vminsights-enable-single-vm.md) | Sie können einen einzelnen virtuellen Azure-Computer aktivieren, indem Sie direkt auf der VM oder in der VM-Skalierungsgruppe die Option **Insights (Vorschau)** wählen. |
+| Einzelne Azure-VM oder VM-Skalierungsgruppe | [Über die VM aktivieren](vminsights-enable-single-vm.md) | Sie können einen einzelnen virtuellen Azure-Computer aktivieren, indem Sie direkt auf der VM oder in der VM-Skalierungsgruppe die Option **Insights** wählen. |
 | Mehrere Azure-VMs oder VM-Skalierungsgruppen | [Über Azure Policy aktivieren](vminsights-enable-at-scale-policy.md) | Sie können mehrere Azure-VMs aktivieren, indem Sie Azure Policy und die verfügbaren Richtliniendefinitionen verwenden. |
 | Mehrere Azure-VMs oder VM-Skalierungsgruppen | [Über Azure PowerShell- oder Azure Resource Manager-Vorlagen aktivieren](vminsights-enable-at-scale-powershell.md) | Sie können mehrere Azure-VMs oder VM-Skalierungsgruppen übergreifend für ein angegebenes Abonnement oder eine Ressourcengruppe aktivieren, indem Sie Azure PowerShell- oder Azure Resource Manager-Vorlagen verwenden. |
 | Hybrid Cloud | [Für Hybridumgebungen aktivieren](vminsights-enable-hybrid-cloud.md) | Sie können die Bereitstellung auf virtuellen oder physischen Computern durchführen, die in Ihrem Rechenzentrum oder in anderen Cloudumgebungen gehostet werden. |
-
-## <a name="performance-counters-enabled"></a>Aktivierte Leistungsindikatoren 
-
-Azure Monitor für VMs konfiguriert einen Log Analytics-Arbeitsbereich, um die verwendeten Leistungsindikatoren zu sammeln. In der folgenden Tabelle sind die Objekte und Indikatoren aufgelistet, die alle 60 Sekunden erfasst werden.
-
->[!NOTE]
->Sie können zusätzlich zu den von Azure Monitor für VMs aktivierten Leistungsindikatoren in der folgenden Liste weitere Leistungsindikatoren aktivieren, die Sie für die Erfassung von virtuellen Computern benötigen, die Berichte an den Arbeitsbereich senden. Wenn Sie diese Leistungsindikatoren deaktivieren, wird verhindert, dass in den Leistungsdiagrammen, die im Leistungsfeature enthalten sind, die Ressourcenverwendung der VMs angezeigt wird.
-
-### <a name="windows-performance-counters"></a>Windows-Leistungsindikatoren
-
-|Objektname |Name des Leistungsindikators |
-|------------|-------------|
-|Logischer Datenträger |% freier Speicher |
-|Logischer Datenträger |Durchschn. Datenträger s/gelesen |
-|Logischer Datenträger |Durchschn. Datenträger s/übertragen |
-|Logischer Datenträger |Durchschn. Datenträger s/geschrieben |
-|Logischer Datenträger |Datenträger Bytes/s |
-|Logischer Datenträger |Byte gelesen/s |
-|Logischer Datenträger |Lesevorgänge/s |
-|Logischer Datenträger |Übertragungen/s |
-|Logischer Datenträger |Byte geschrieben/s |
-|Logischer Datenträger |Schreibvorgänge/s |
-|Logischer Datenträger |Freie Megabytes |
-|Arbeitsspeicher |Verfügbare MB |
-|Netzwerkadapter |Empfangene Byte/Sek. |
-|Netzwerkadapter |Gesendete Byte/Sek. |
-|Prozessor |% Prozessorzeit |
-
-### <a name="linux-performance-counters"></a>Leistungsindikatoren von Linux
-
-|Objektname |Name des Leistungsindikators |
-|------------|-------------|
-|Logischer Datenträger |% verwendeter Speicher |
-|Logischer Datenträger |Byte gelesen/s |
-|Logischer Datenträger |Lesevorgänge/s |
-|Logischer Datenträger |Übertragungen/s |
-|Logischer Datenträger |Byte geschrieben/s |
-|Logischer Datenträger |Schreibvorgänge/s |
-|Logischer Datenträger |Freie Megabytes |
-|Logischer Datenträger |Logischer Datenträger Bytes/s |
-|Arbeitsspeicher |Verfügbarer Speicher in MB |
-|Netzwerk |Summe empfangene Bytes |
-|Netzwerk |Summe übertragene Bytes |
-|Prozessor |% Prozessorzeit |
 
 ## <a name="management-packs"></a>Management Packs
 

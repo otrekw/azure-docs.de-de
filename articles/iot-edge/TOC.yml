@@ -143,12 +143,18 @@
           href: how-to-auto-provision-x509-certs.md
         - name: Nachweis des symmetrischen Schlüssels
           href: how-to-auto-provision-symmetric-keys.md
-    - name: Entwickeln und Debuggen von benutzerdefinierten Modulen
+    - name: Entwickeln von benutzerdefinierten Modulen
       items:
-        - name: "Visual Studio\_2019"
+        - name: "Entwickeln mit Visual Studio\_2019"
           href: how-to-visual-studio-develop-module.md
-        - name: Visual Studio Code
+        - name: Entwickeln mit Visual Studio Code
           href: how-to-vs-code-develop-module.md
+        - name: Konfigurieren des Moduls „createOptions“
+          items:
+            - name: Verstehen und Verwenden von „createOptions“
+              href: how-to-use-create-options.md
+            - name: Gewähren des Zugriff auf den lokalen Speicher eines Geräts für Module
+              href: how-to-access-host-storage-from-module.md
     - name: Bereitstellen von Modulen
       items:
         - name: Bereitstellen auf einzelnen Geräten
@@ -183,11 +189,9 @@
           href: deploy-modbus-gateway.md
     - name: Konfigurieren der Proxyunterstützung
       href: how-to-configure-proxy-support.md
-    - name: Speichern von Daten im Edge-Bereich
+    - name: Azure Blob Storage auf IoT Edge
       items:
-        - name: Gewähren des Zugriff auf den lokalen Speicher eines Geräts für Module
-          href: how-to-access-host-storage-from-module.md
-        - name: Azure Blob Storage auf IoT Edge
+        - name: Grundlegendes zu Blobspeicher im Edge-Bereich
           href: how-to-store-data-blob.md
         - name: "Bereitstellen von Blob\_Storage-Modulen"
           href: how-to-deploy-blob.md

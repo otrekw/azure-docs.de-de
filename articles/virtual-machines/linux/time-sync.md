@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 1e459e96c128e20f44f1a5adcb18c5b1824c3bf5
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: c3571d9ba94e1803259457d473ed3f1669ea67ea
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534117"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80330583"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Zeitsynchronisierung für Linux-VMs in Azure
 
@@ -133,34 +133,35 @@ Dabei sollte **hyperv** zurückgegeben werden.
 
 ### <a name="chrony"></a>chrony
 
-Unter Red Hat Enterprise Linux und CentOS 7.x wird [chrony](https://chrony.tuxfamily.org/) für die Verwendung einer PTP-Zeitquelle konfiguriert. Der Network Time Protocol-Daemon (ntpd) unterstützt keine PTP-Quellen, daher wird die Verwendung von **chronyd** empfohlen. Aktualisieren Sie **chrony.conf**, um PTP zu aktivieren.
+Unter Ubuntu 19.10 und höher, Red Hat Enterprise Linux und CentOS 7.x wird [chrony](https://chrony.tuxfamily.org/) für die Verwendung einer PTP-Zeitquelle konfiguriert. Anstelle von chrony verwenden ältere Linux-Releases den Network Time Protocol-Daemon (ntpd), der keine PTP-Quellen unterstützt. Um PTP in diesen Releases zu aktivieren, muss chrony manuell installiert und mit dem folgenden Code konfiguriert (in chrony.conf) werden:
 
 ```bash
 refclock PHC /dev/ptp0 poll 3 dpoll -2 offset 0
 ```
 
+Weitere Informationen zu Ubuntu und NTP finden Sie unter [Zeitsynchronisierung](https://help.ubuntu.com/lts/serverguide/NTP.html).
+
 Weitere Informationen zu Red Hat und NTP finden Sie unter [Konfigurieren von NTP](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/s1-configure_ntp). 
 
-Weitere Informationen zu chrony finden Sie unter [Verwenden von Chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony).
+Weitere Informationen zu „chrony“ finden Sie unter [Verwenden von Chrony](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony).
 
-Wenn chrony- und TimeSync-Quellen gleichzeitig aktiviert werden, können Sie eine Quelle als **bevorzugt** kennzeichnen, wodurch die andere Quelle als Sicherung festlegt wird. Da NTP-Dienste die Uhr bei großen Abweichungen außer nach einem längeren Zeitraum nicht aktualisieren, stellt der VMICTimeSync-Dienst die Uhr nach Ereignissen von angehaltenen virtuellen Computern deutlich schneller wieder her als NTP-basierte Tools alleine.
+Wenn chrony- und TimeSync-Quellen gleichzeitig aktiviert sind, können Sie eine Quelle als **bevorzugt** kennzeichnen, wodurch die andere Quelle als Sicherung festlegt wird. Da NTP-Dienste die Uhr bei großen Abweichungen außer nach einem längeren Zeitraum nicht aktualisieren, stellt der VMICTimeSync-Dienst die Uhr nach Ereignissen von angehaltenen virtuellen Computern deutlich schneller wieder her als NTP-basierte Tools alleine.
 
-Standardmäßig beschleunigt oder verlangsamt chronyd die Systemuhr, um zeitliche Abweichungen zu beheben. Wenn die Abweichung zu groß wird, kann diese von chrony nicht mehr behoben werden. Dieses Problem kann umgangen werden, indem der `makestep`-Parameter in **/etc/chrony.conf** so geändert wird, dass eine Zeitsynchronisierung erzwungen wird, wenn die Drift den angegebenen Schwellenwert überschreitet.
+Standardmäßig beschleunigt oder verlangsamt chronyd die Systemuhr, um zeitliche Abweichungen zu beheben. Wenn die Abweichung zu groß wird, kann diese von „chrony“ nicht mehr behoben werden. Dieses Problem kann umgangen werden, indem der `makestep`-Parameter in **/etc/chrony.conf** so geändert wird, dass eine Zeitsynchronisierung erzwungen wird, wenn die Drift den angegebenen Schwellenwert überschreitet.
+
  ```bash
 makestep 1.0 -1
 ```
-Hier erzwingt chrony ein Zeitupdate, wenn die Drift größer als eine Sekunde ist. Starten Sie den chronyd-Dienst neu, um die Änderungen zu übernehmen.
+
+Hier erzwingt chrony ein Zeitupdate, wenn die Drift größer als eine Sekunde ist. Starten Sie den chronyd-Dienst neu, um die Änderungen zu übernehmen:
 
 ```bash
 systemctl restart chronyd
 ```
 
-
 ### <a name="systemd"></a>systemd 
 
-Unter Ubuntu und SUSE wird die Zeitsynchronisierung mithilfe von [systemd](https://www.freedesktop.org/wiki/Software/systemd/) konfiguriert. Weitere Informationen zu Ubuntu finden Sie unter [Zeitsynchronisierung](https://help.ubuntu.com/lts/serverguide/NTP.html). Weitere Informationen zu SUSE finden Sie im Anschnitt 4.5.8 in den [Versionshinweisen zu SUSE Linux Enterprise Server 12 SP3](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement).
-
-
+Unter SuSE- und Ubuntu-Releases vor 19.10 wird die Zeitsynchronisierung mit [systemd](https://www.freedesktop.org/wiki/Software/systemd/) konfiguriert. Weitere Informationen zu Ubuntu finden Sie unter [Zeitsynchronisierung](https://help.ubuntu.com/lts/serverguide/NTP.html). Weitere Informationen zu SUSE finden Sie im Anschnitt 4.5.8 in den [Versionshinweisen zu SUSE Linux Enterprise Server 12 SP3](https://www.suse.com/releasenotes/x86_64/SUSE-SLES/12-SP3/#InfraPackArch.ArchIndependent.SystemsManagement).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

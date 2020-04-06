@@ -8,16 +8,20 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
-ms.openlocfilehash: 8e256aac16bb8c2d2f1eca494981458f71cc2e4d
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: a7107eae5c798deb78d4d35eccdf4adcf5273335
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620621"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80388898"
 ---
 # <a name="about-migration"></a>Informationen zur Migration
 
 In diesem Artikel finden Sie einen schnellen Überblick darüber, wie der Dienst [Azure Site Recovery](site-recovery-overview.md) Ihnen bei der Migration von Computern hilft. 
+
+> [!TIP]
+> Es wird empfohlen, anstelle des Azure Site Recovery-Diensts nun den Azure Migrate-Dienst zum Migrieren von VMs und Servern zu Azure zu verwenden. [Weitere Informationen](../migrate/migrate-services-overview.md)
+
 
 Mit Site Recovery können Sie wie folgt migrieren:
 
@@ -36,7 +40,7 @@ Zusätzlich zur Verwendung von Site Recovery für die Notfallwiederherstellung v
 - Bei der Migration replizieren Sie lokale Computer in Azure oder Azure-VMs in eine sekundäre Region. Dann führen Sie für die VM ein Failover vom primären an den sekundären Standort aus und schließen den Migrationsprozess ab. Hierbei erfolgt kein Failback.  
 
 
-## <a name="migration-scenarios"></a>Migrationsszenarien
+## <a name="migration-scenarios"></a>Migrationsszenarios
 
 **Szenario** | **Details**
 --- | ---

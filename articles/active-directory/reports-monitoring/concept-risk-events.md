@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1f3755d61b5fa082665cfdb9aa91d1e31e2d4e4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 4caa248f6972609ecb6bf71dd521c68d78cebd70
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014466"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80383955"
 ---
 # <a name="azure-active-directory-risk-detections"></a>Azure Active Directory-Risikoerkennungen
 
@@ -91,6 +91,9 @@ Bei diesem Algorithmus werden offensichtliche falsch positive Ergebnisse ignorie
 Mit diesem Risikoerkennungstyp werden die Standorte der letzten Anmeldung (IP, Breiten-/Längengrad und ASN) berücksichtigt, um neue oder unbekannte Standorte zu ermitteln. Im System werden Informationen zu den vorherigen Standorten gespeichert, die von einem Benutzer genutzt wurden, und diese werden als „vertraute“ Standorte angesehen. Die Risikoerkennung wird ausgelöst, wenn die Anmeldung von einem Standort aus erfolgt, der in der Liste der bekannten Standorte noch nicht enthalten ist. Das System benötigt einen anfänglichen Lernzeitraum von 30 Tagen, in dem neue Standorte nicht als unbekannte Orte gekennzeichnet werden. Außerdem ignoriert das System Anmeldungen von vertrauten Geräten und von Standorten aus, die geografisch nahe an einem bekannten Speicherort liegen. 
 
 Identity Protection erkennt Anmeldungen von unbekannten Standorten auch bei der Standardauthentifizierung/älteren Protokollen. Da diese Protokolle nicht über die modernen vertrauten Funktionen wie Client-ID verfügen, reichen die Telemetriedaten nicht aus, um falsch positive Ergebnisse zu reduzieren. Um die Anzahl der erkannten Risikoerkennungen zu reduzieren, sollten Sie zur modernen Authentifizierung wechseln.   
+
+> [!NOTE]
+> Wenn der Benutzername und das Kennwort für die Anmeldung nicht übereinstimmen, schlägt die Anmeldung fehl, und es erfolgt keine Risikoerkennung. Die Risikoerkennung für die Anmeldung von unbekanntem Standorten wird nur bei erfolgreicher Anmeldung ausgelöst.
 
 ### <a name="sign-ins-from-infected-devices"></a>Anmeldungen von infizierten Geräten
 

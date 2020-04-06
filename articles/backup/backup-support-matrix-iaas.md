@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung virtueller Azure-Computer mit dem Azure Backup-Dienst.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: d4d5168ee7f2f8c71b3a63fea64873a8dd71658b
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: d86ce94c62ec9f25b364e9fdc963e3043b274722
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602205"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389289"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -43,8 +43,6 @@ Weitere Informationen zum Sichern finden Sie in den Artikeln zu [Sicherungsserve
 
 **Aktion** | **Unterstützung**
 --- | ---
-Aktivieren der Sicherung beim Erstellen eines virtuellen Windows-Azure-Computers | Unterstützung für: <br/><br/> - Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> - Windows Server 2008 R2 (RTM und SP1 Standard)
-Aktivieren der Sicherung beim Erstellen eines virtuellen Linux-Computers | Unterstützung für:<br/><br/> – Ubuntu Server: 18.04, 17.10, 17.04, 16.04 (LTS), 14.04 (LTS)<br/><br/> – Red Hat: RHEL 6.7, 6.8, 6.9, 7.2, 7.3, 7.4<br/><br/> – SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> – Debian: 8, 9<br/><br/> – CentOS: 6.9, 7.3<br/><br/> – Oracle Linux: 6.7, 6.8, 6.9, 7.2, 7.3
 Sichern eines heruntergefahrenen virtuellen Computers / einer Offline-VM | Unterstützt.<br/><br/> Die Momentaufnahme ist nur ausfallkonsistent, jedoch nicht anwendungskonsistent.
 Sicherung von Datenträgern nach Migration zu verwalteten Datenträgern | Unterstützt.<br/><br/> Sicherung wird weiterhin durchgeführt. Keine Aktion erforderlich.
 Sicherung von verwalteten Datenträgern nach Aktivierung einer Ressourcengruppensperre | Wird nicht unterstützt.<br/><br/> Die älteren Wiederherstellungspunkte können von Azure Backup nicht gelöscht werden, und bei Sicherungen treten Fehler auf, wenn die maximale Anzahl von Wiederherstellungspunkten erreicht ist.
@@ -66,7 +64,7 @@ In der folgenden Tabelle sind die unterstützten Betriebssysteme für die Sicher
 **Szenario** | **Betriebssystemunterstützung**
 --- | ---
 Sicherung mit der Azure-VM-Agent-Erweiterung | – Windows 10 Client (nur 64 Bit) <br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> - Windows Server 2008 R2 (RTM und SP1 Standard)  <br/><br/> – Windows Server 2008 (nur 64 Bit)
-Sicherung mit dem MARS-Agent | [Unterstützte](backup-support-matrix-mars-agent.md#support-for-direct-backups) Betriebssysteme
+Sicherung mit dem MARS-Agent | [Unterstützte](backup-support-matrix-mars-agent.md#supported-operating-systems) Betriebssysteme
 Sicherung mit DPM/MABS | Unterstützte Betriebssysteme für die Sicherung mit [MABS](backup-mabs-protection-matrix.md) und [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807)
 
 Azure Backup unterstützt keine 32-Bit-Betriebssysteme.
@@ -117,7 +115,6 @@ Wiederherstellungspunkte auf DPM-/MABS-Datenträger | 64 für Dateiserver und 44
 **Wiederherstellen** | **Unterstützt**
 --- | ---
 Wiederherstellen von Dateien unter verschiedenen Betriebssystemen | Sie können Dateien auf allen Computern wiederherstellen, die dasselbe (oder ein kompatibles) Betriebssystem wie der gesicherte virtuelle Computer haben. Weitere Informationen finden Sie in der Tabelle mit [kompatiblen Betriebssystemen](backup-azure-restore-files-from-vm.md#system-requirements).
-Wiederherstellen von Dateien auf klassischen virtuellen Computern | Wird nicht unterstützt.
 Wiederherstellen von Dateien von verschlüsselten virtuellen Computern | Wird nicht unterstützt.
 Wiederherstellen von Dateien von Speicherkonten mit Netzwerkbeschränkung | Wird nicht unterstützt.
 Wiederherstellen von Dateien auf virtuellen Computern mit Windows-Speicherplätzen | Die Wiederherstellung auf demselben Computer wird nicht unterstützt.<br/><br/> Führen Sie stattdessen die Wiederherstellung der Dateien auf einem kompatiblen virtuellen Computer durch.
@@ -165,7 +162,7 @@ Azure-VM-Datenträger (für Daten) | Sichern eines virtuellen Computers mit maxi
 Datenträgergröße | Die Größe einzelner Datenträger kann bis zu 32 TB und maximal 256 TB für alle Datenträger in einer VM betragen.
 Speichertyp | HDD Standard, SSD Standard, SSD Premium.
 Verwaltete Datenträger | Unterstützt.
-Verschlüsselte Datenträger | Unterstützt.<br/><br/> Virtuelle Azure-Computer mit aktiviertem Azure Disk Encryption können (mit oder ohne Azure AD-App) gesichert werden.<br/><br/> Verschlüsselte virtuelle Computer können nicht auf Datei- oder Ordnerebene wiederhergestellt werden. Stattdessen muss die gesamte VM wiederhergestellt werden.<br/><br/> Sie können die Verschlüsselung auf virtuellen Computern aktivieren, die bereits durch Azure Backup geschützt werden.
+Verschlüsselte Datenträger | Unterstützt.<br/><br/> Virtuelle Azure-Computer mit aktiviertem Azure Disk Encryption können (mit oder ohne Azure AD-App) gesichert werden.<br/><br/> Verschlüsselte VMs können nicht auf Datei- oder Ordnerebene wiederhergestellt werden. Stattdessen muss die gesamte VM wiederhergestellt werden.<br/><br/> Sie können die Verschlüsselung auf virtuellen Computern aktivieren, die bereits durch Azure Backup geschützt werden.
 Datenträger mit aktivierter Schreibbeschleunigung | Wird nicht unterstützt.<br/><br/> Azure Backup schließt Datenträger mit aktivierter Schreibbeschleunigung bei der Sicherung automatisch aus. Da sie nicht gesichert werden, können Sie diese Datenträger nicht über Wiederherstellungspunkte der VM wiederherstellen.
 Sichern und Wiederherstellen von deduplizierten VMs/Datenträgern | Azure Backup unterstützt nicht die Deduplizierung. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-support-matrix#disk-deduplication-support). <br/> <br/>  – Azure Backup dedupliziert nicht VM-übergreifend im Recovery Services-Tresor. <br/> <br/>  – Wenn es während der Wiederherstellung VMs im Deduplizierungsstatus gibt, können die Dateien nicht wieder hergestellt werden, da der Tresor das Format nicht versteht. Allerdings können Sie die vollständige VM-Wiederherstellung erfolgreich ausführen.
 Hinzufügen eines Datenträgers zu geschütztem virtuellen Computer | Unterstützt.

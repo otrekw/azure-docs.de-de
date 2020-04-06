@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c929ac1c171547a4ff485fc43f0f329440f9c3b5
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: a9f12849525daeea69ece6e81077446f062e8889
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74763639"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384397"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Verwenden von Azure Active Directory für die Authentifizierung mit PostgreSQL
 
@@ -93,7 +93,7 @@ Stellen Sie sicher, dass die [Azure CLI](/cli/azure/install-azure-cli) installie
 
 Rufen Sie das Azure CLI-Tool auf, um sich über Azure AD zu authentifizieren. Sie müssen Ihre Azure AD-Benutzer-ID und das Kennwort angeben.
 
-```
+```azurecli-interactive
 az login
 ```
 
@@ -109,19 +109,19 @@ Rufen Sie das Azure CLI-Tool auf, um ein Zugriffstoken für den über Azure AD a
 
 Beispiel (für die öffentliche Cloud):
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource https://ossrdbms-aad.database.windows.net
 ```
 
 Der oben genannte Ressourcenwert muss genau wie gezeigt angegeben werden. Für andere Clouds kann der Ressourcenwert wie folgt nachgeschlagen werden:
 
-```shell
+```azurecli-interactive
 az cloud show
 ```
 
 Für Version 2.0.71 oder höher der Azure CLI kann der Befehl in der folgenden, bequemeren Version für alle Clouds angegeben werden:
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource-type oss-rdbms
 ```
 
@@ -163,7 +163,7 @@ export PGPASSWORD=<copy/pasted TOKEN value from step 2>
 Nun können Sie eine Verbindung mit Azure Database for PostgreSQL wie gewohnt initiieren:
 
 ```shell
-psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres"
+psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgres sslmode=require"
 ```
 
 Sie sind jetzt bei Ihrem PostgreSQL-Server über Azure AD-Authentifizierung authentifiziert.
@@ -172,10 +172,10 @@ Sie sind jetzt bei Ihrem PostgreSQL-Server über Azure AD-Authentifizierung auth
 
 Azure AD-Authentifizierung in Azure Database for PostgreSQL stellt sicher, dass der Benutzer auf dem PostgreSQL-Server vorhanden ist, und überprüft die Gültigkeit des Tokens, indem der Inhalt des Tokens überprüft wird. Die folgenden Tokenvalidierungsschritte werden ausgeführt:
 
--   Das Token ist von Azure AD signiert und wurde nicht manipuliert.
--   Das Token wurde von Azure AD für den dem Server zugeordneten Mandanten ausgestellt.
--   Das Token ist nicht abgelaufen.
--   Das Token gilt für die Azure Database for PostgreSQL-Ressource (und nicht für eine andere Azure-Ressource).
+- Das Token ist von Azure AD signiert und wurde nicht manipuliert.
+- Das Token wurde von Azure AD für den dem Server zugeordneten Mandanten ausgestellt.
+- Das Token ist nicht abgelaufen.
+- Das Token gilt für die Azure Database for PostgreSQL-Ressource (und nicht für eine andere Azure-Ressource).
 
 ## <a name="migrating-existing-postgresql-users-to-azure-ad-based-authentication"></a>Migrieren vorhandener PostgreSQL-Benutzer zu Azure AD-basierter Authentifizierung
 

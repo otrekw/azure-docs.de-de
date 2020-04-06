@@ -6,41 +6,122 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
-ms.topic: conceptual
-ms.date: 02/28/2020
+ms.topic: how-to
+ms.date: 03/20/2020
 ms.author: pafarley
-ms.openlocfilehash: fa419d7dd9668ac2ce8f2b0eb904117c7e22692d
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 795d21e05ade652b52c06d597ca4c5fef85e7245
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78207832"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80152821"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Bereitstellen des Samplebezeichnungstools
 
-Das Formularerkennungstool für die Bezeichnung von Beispielen ist eine Anwendung, die in einem Docker-Container ausgeführt wird. Es stellt eine hilfreiche Benutzeroberfläche bereit, mit der Sie Formulardokumente für das überwachte Lernen manuell bezeichnen können. Im Schnellstart [Trainieren mit Bezeichnungen](./quickstarts/label-tool.md) wird gezeigt, wie Sie das Tool auf einem lokalen Computer ausführen. Dies ist das häufigste Szenario. 
+Das Formularerkennungstool für die Beschriftung von Beispielen ist eine Anwendung mit einer einfachen Benutzeroberfläche, mit der Sie Formulare (Dokumente) zum überwachten Lernen manuell beschriften können. In diesem Artikel finden Sie Links und Anweisungen zu folgenden Aufgaben:
 
-In dieser Anleitung werden alternative Möglichkeiten erläutert, wie Sie das Tool zur Beispielbezeichnung bereitstellen und ausführen können. 
+* [Lokales Ausführen des Tools für die Beschriftung von Beispielen](#run-the-sample-labeling-tool-locally)
+* [Bereitstellen des Tools für die Beschriftung von Beispielen in einer Azure-Containerinstanz](#deploy-with-azure-container-instances-aci)
+* [Verwenden des Open-Source-OCR Form Labeling Tool und Mitwirken am Tool](#open-source-on-github)
 
-## <a name="deploy-with-azure-container-instances"></a>Bereitstellen mit Azure Container Instances
+## <a name="run-the-sample-labeling-tool-locally"></a>Lokales Ausführen des Tools für die Beschriftung von Beispielen
 
-Sie können das Bezeichnungstool in einem Docker-Web-App-Container ausführen. [Erstellen Sie zunächst eine neue Web-App-Ressource](https://ms.portal.azure.com/#create/Microsoft.WebSite) im Azure-Portal. Füllen Sie das Formular mit den Details Ihres Abonnements und der Ressourcengruppe aus. Geben Sie die folgenden Informationen in die erforderlichen Felder ein:
-* **Veröffentlichen**: Docker-Container
-* **Betriebssystem:** Linux
+Die schnellste Möglichkeit, um mit dem Beschriften von Daten loszulegen, ist die lokale Ausführung des Tools für die Beschriftung von Beispielen. Im folgenden Schnellstart wird gezeigt, wie Sie die Formularerkennungs-REST-API und das Tool für die Beschriftung von Beispielen verwenden, um ein benutzerdefiniertes Modell mit manuell beschrifteten Daten zu trainieren. 
 
-Füllen Sie auf der nächsten Seite die folgenden Felder für die Einrichtung des Docker-Containers aus:
+* [Schnellstart: Beschriften von Formularen, Trainieren eines Modells und Analysieren eines Formulars mithilfe des Tools für die Beschriftung von Beispielen](./quickstarts/label-tool.md)
 
-* **Optionen:** Einzelner Container
-* **Imagequelle:** Azure Container Registry
-* **Zugriffstyp:** öffentlich
-* **Image und Tag:** mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest
+## <a name="deploy-with-azure-container-instances-aci"></a>Bereitstellen mit Azure Container Instances (ACI)
 
-Die folgenden Schritte sind optional. Nachdem die Bereitstellung Ihrer App abgeschlossen wurde, können Sie sie ausführen und online auf das Bezeichnungstool zugreifen.
+Zum Bereitstellen des Tools für die Beschriftung von Beispielen in einer Azure-Containerinstanz gibt es zwei Möglichkeiten. Beide Optionen werden verwendet, um das Tool für die Beschriftung von Beispielen mit ACI auszuführen: 
+
+* [Verwenden des Azure-Portals](#azure-portal)
+* [Verwenden der Azure-Befehlszeilenschnittstelle](#azure-cli)
+
+### <a name="azure-portal"></a>Azure-Portal
+
+Führen Sie die folgenden Schritte aus, um eine neue Ressource im Azure-Portal zu erstellen: 
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/signin/index/) an.
+2. Wählen Sie **Ressource erstellen**. 
+3. Wählen Sie anschließend **Web-App** aus. 
+
+   > [!div class="mx-imgBorder"]
+   > ![Auswählen von „Web-App“](./media/quickstarts/formre-create-web-app.png)
+   
+4. Vergewissern Sie sich zunächst, dass die Registerkarte **Grundlagen** ausgewählt ist. Jetzt müssen Sie einige Informationen angeben: 
+
+   > [!div class="mx-imgBorder"]
+   > ![Auswählen von „Grundlagen“](./media/quickstarts/formre-select-basics.png)
+   * Abonnement: Wählen Sie ein vorhandenes Azure-Abonnement aus.
+   * Ressourcengruppe: Sie können eine vorhandene Ressourcengruppe wiederverwenden oder eine neue Ressourcengruppe für das Projekt erstellen. Es wird empfohlen, eine neue Ressourcengruppe zu erstellen.
+   * Name: Geben Sie einen Namen für Ihre Web-App ein. 
+   * Veröffentlichen: Wählen Sie **Docker-Container** aus.
+   * Betriebssystem: Wählen Sie **Linux** aus.
+   * Region: Wählen Sie eine für Sie geeignete Region aus.
+   * Linux-Plan: Wählen Sie einen Tarif/Plan für Ihre App Service-App aus. 
+
+   > [!div class="mx-imgBorder"]
+   > ![Konfigurieren der Web-App](./media/quickstarts/formre-select-docker-linux.png)
+
+5. Wählen Sie als Nächstes die Registerkarte **Docker** aus. 
+
+   > [!div class="mx-imgBorder"]
+   > ![Auswählen von „Docker“](./media/quickstarts/formre-select-docker.png)
+
+6. Konfigurieren Sie nun Ihren Docker-Container. Alle Felder sind erforderlich, sofern nicht anders angegeben:
+
+   * Optionen: Wählen Sie **Einzelner Container** aus.
+   * Imagequelle: Wählen Sie **Private Registrierung** aus. 
+   * Server-URL: Legen Sie die URL auf `https://mcr.microsoft.com` fest.
+   * Benutzername (optional): Erstellen Sie einen Benutzernamen. 
+   * Kennwort (optional): Erstellen Sie ein sicheres Kennwort, das Sie sich gut merken können.
+   * Image und Tag: Legen Sie diese Einstellung auf `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest` fest.
+   * Startbefehl: Legen Sie diese Einstellung auf `./run.sh eula=accept` fest.
+
+   > [!div class="mx-imgBorder"]
+   > ![Konfigurieren von Docker](./media/quickstarts/formre-configure-docker.png)
+
+7. Das ist alles. Wählen Sie als Nächstes **Überprüfen + Erstellen** und dann **Erstellen** aus, um die Web-App bereitzustellen. Nach der Bereitstellung können Sie unter der URL, die in der **Übersicht** für Ihre Ressource angegeben ist, auf die Web-App zugreifen.
+
+> [!NOTE]
+> Beim Erstellen Ihrer Web-App können Sie auch die Autorisierung/Authentifizierung konfigurieren. Für die ersten Schritte ist dies jedoch nicht erforderlich. 
+
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+
+Als Alternative zum Azure-Portal können Sie die Azure-Befehlszeilenschnittstelle (Azure CLI) zum Erstellen einer Ressource verwenden. Bevor Sie fortfahren, müssen Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) installieren. Sie können diesen Schritt überspringen, falls Sie sie bereits verwenden. 
+
+Es gibt einige Dinge, die Sie über diesen Befehl wissen sollten:
+
+* `DNS_NAME_LABEL=aci-demo-$RANDOM` generiert einen zufälligen DNS-Namen. 
+* Dieses Beispiel setzt voraus, dass Sie über eine Ressourcengruppe verfügen, die Sie zum Erstellen einer Ressource verwenden können. Ersetzen Sie `<resource_group_name>` durch eine gültige Ressourcengruppe, die Ihrem Abonnement zugeordnet ist. 
+* Sie müssen angeben, wo die Ressource erstellt werden soll. Ersetzen Sie `<region name>` durch die gewünschte Region für die Web-App. 
+* Dieser Befehl akzeptiert automatisch die Lizenzbedingungen.
+
+Führen Sie in der Azure CLI den folgenden Befehl aus, um eine Web-App-Ressource für das Tool für die Beschriftung von Beispielen zu erstellen: 
+
+```azurecli
+DNS_NAME_LABEL=aci-demo-$RANDOM
+
+az container create \
+  --resource-group <resorunce_group_name> \
+  --name <name> \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool \
+  --ports 3000 \
+  --dns-name-label $DNS_NAME_LABEL \
+  --location <region name> \
+  --cpu 2 \
+  --memory 8
+  --command-line "./run.sh eula=accept"
+```
 
 ### <a name="connect-to-azure-ad-for-authorization"></a>Herstellen einer Verbindung mit Azure AD zur Autorisierung
 
-Es wird empfohlen, eine Verbindung zwischen Ihrer Web-App und Azure Active Directory (AAD) herzustellen, sodass sich nur Personen mit Ihren Anmeldeinformationen anmelden und die App verwenden können. Befolgen Sie die Anweisungen in [Konfigurieren Ihrer App Service-App](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad), um eine Verbindung mit AAD herzustellen.
+Wir empfehlen, Ihre Web-App mit Azure Active Directory zu verbinden. Dadurch wird sichergestellt, dass nur Benutzer mit gültigen Anmeldeinformationen sich anmelden und Ihre Web-App verwenden können. Folgen Sie den Anweisungen unter [Konfigurieren Ihrer App Service-App ](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad), um eine Verbindung mit Azure Active Directory herzustellen.
+
+## <a name="open-source-on-github"></a>Open-Source auf GitHub
+
+Das OCR Form Labeling Tool steht auch als Open-Source-Projekt auf GitHub zur Verfügung. Bei dem Tool handelt es sich um eine mit React + Redux erstellte und in TypeScript geschriebene Webanwendung. Besuchen Sie [OCR Form Labeling Tool](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md), wenn Sie weitere Informationen benötigen oder sich beteiligen möchten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wechseln Sie zurück zum Schnellstart [Trainieren mit Bezeichnungen](./quickstarts/label-tool.md), um zu erfahren, wie Sie das Tool verwenden, um Trainingsdaten manuell zu bezeichnen und das überwachte Lernen auszuführen.
+Im Schnellstart zum [Trainieren mit Beschriftungen](./quickstarts/label-tool.md) erfahren Sie, wie Sie mit dem Tool Trainingsdaten manuell beschriften und überwachtes Lernen ausführen.

@@ -9,25 +9,26 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
-ms.date: 11/04/2019
-ms.openlocfilehash: 2ef3cbc83cd67647709a53fee2c32b444c5d86f4
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.date: 02/28/2020
+ms.openlocfilehash: c8864e00be9f491d87478c253286070b9334a26e
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526126"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80383190"
 ---
 # <a name="what-is-automated-machine-learning"></a>Was ist automatisiertes maschinelles Lernen?
 
 Automatisiertes maschinelles Lernen, auch als automatisiertes ML bezeichnet, ist der Prozess des Automatisierens der zeitaufwändigen, iterativen Aufgaben der Entwicklung eines Machine Learning-Modells. Es versetzt Data Scientists, Analysten und Entwickler in die Lage, ML-Modelle mit hoher Skalierbarkeit, Effizienz und Produktivität zu erstellen und gleichzeitig die Modellqualität zu erhalten. Automatisiertes Machine Learning basiert auf einem Durchbruch der [Microsoft Research-Abteilung](https://arxiv.org/abs/1705.05355).
 
-Die Entwicklung traditioneller Machine Learning-Modelle ist ressourcenintensiv und erfordert viel Fachwissen und Zeit, um Dutzende von Modellen zu erstellen und zu vergleichen. Sie arbeiten mit automatisiertem ML, wenn Sie möchten, dass Azure Machine Learning mit der von Ihnen angegebenen Zielmetrik ein Modell für Sie trainiert und optimiert. Der Dienst durchläuft die ML-Algorithmen dann iterativ im Zusammenspiel mit Featureauswahlen, wobei für jede Iteration ein Modell mit einer Trainingsbewertung erzeugt wird. Je höher die Bewertung ist, desto besser wird das Modell als „passend“ für Ihre Daten angesehen.
+Die Entwicklung traditioneller Machine Learning-Modelle ist ressourcenintensiv und erfordert viel Fachwissen und Zeit, um Dutzende von Modellen zu erstellen und zu vergleichen. Mit automatisiertem maschinellem Lernen verkürzen Sie die Zeit, die benötigt wird, um produktionsbereite ML-Modelle mit großer Leichtigkeit und Effizienz zu erhalten.
 
-Mit automatisiertem maschinellem Lernen verkürzen Sie die Zeit, die benötigt wird, um produktionsbereite ML-Modelle mit großer Leichtigkeit und Effizienz zu erhalten.
+ 
+
 
 ## <a name="when-to-use-automated-ml"></a>Nutzung von automatisiertem Machine Learning
 
-Automatisiertes ML demokratisiert den Entwicklungsprozess eines Machine Learning-Modells und befähigt seine Benutzer, unabhängig von deren Data Science-Kenntnissen, eine durchgängige Machine Learning-Pipeline für jedes Problem zu bestimmen.
+Sie arbeiten mit automatisiertem ML, wenn Sie möchten, dass Azure Machine Learning mit der von Ihnen angegebenen Zielmetrik ein Modell für Sie trainiert und optimiert. Automatisiertes ML demokratisiert den Entwicklungsprozess eines Machine Learning-Modells und befähigt seine Benutzer, unabhängig von deren Data Science-Kenntnissen, eine durchgängige Machine Learning-Pipeline für jedes Problem zu bestimmen.
 
 Data Scientists, Analysten und Entwickler aus den verschiedensten Branchen können automatisiertes ML für Folgendes verwenden:
 
@@ -44,7 +45,7 @@ Klassifizierung| Zeitreihenvorhersage | Regression
 |[Marketingvorhersage](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)|[Bedarfsvorhersage](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)|
 |[Newsgroup-Datenklassifizierung](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)|[Vorhersage für die Getränkeproduktion](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)|
 
-## <a name="how-automated-ml-works"></a>Funktionsweise von automatisiertem ML
+## <a name="design-automated-ml-experiments"></a>Entwerfen automatisierter ML-Experimente
 
 Mithilfe von **Azure Machine Learning** können Sie automatisierte ML-Trainingsexperimente mit den folgenden Schritten entwerfen und ausführen:
 
@@ -60,9 +61,12 @@ Mithilfe von **Azure Machine Learning** können Sie automatisierte ML-Trainingse
 
 1. **Übermitteln der Trainingsausführung.**
 
+## <a name="how-automated-ml-works"></a>Funktionsweise von automatisiertem ML
+
+Während des Trainings erstellt Azure Machine Learning eine Reihe von parallelen Pipelines, die unterschiedliche Algorithmen und Parametern ausprobieren. Der Dienst durchläuft die ML-Algorithmen iterativ im Zusammenspiel mit der jeweiligen Featureauswahl, wobei für jede Iteration ein Modell mit einer Trainingsbewertung erzeugt wird. Je höher die Bewertung ist, desto besser wird das Modell als „passend“ für Ihre Daten angesehen.  Die Ausführung wird beendet, sobald die im Experiment definierten Beendigungskriterien erreicht werden. Dieser Prozess wird anhand des folgenden Diagramms veranschaulicht. 
+
   ![Automatisiertes maschinelles Lernen](./media/concept-automated-ml/automl-concept-diagram2.png)
 
-Während des Trainings erstellt Azure Machine Learning eine Reihe von parallelen Pipelines, die unterschiedliche Algorithmen und Parametern ausprobieren. Die Ausführung wird beendet, sobald die im Experiment definierten Beendigungskriterien erreicht werden.
 
 Sie können die protokollierten Ausführungsinformationen auch untersuchen. Sie enthalten die während der Ausführung [erfassten Metriken](how-to-understand-automated-ml.md). Bei der Trainingsausführung wird ein serialisiertes Python-Objekt (`.pkl`-Datei) generiert, das die Vorabverarbeitung des Modells und der Daten enthält.
 
@@ -95,67 +99,25 @@ In jedem automatisierten Machine Learning-Experiment werden Ihre Daten automatis
 
 ### <a name="advanced-preprocessing-optional-featurization"></a>Erweiterte Vorverarbeitung: optionale Featurebereitstellung
 
-Außerdem stehen zusätzliche erweiterte Vorverarbeitung und Featurebereitstellung zur Verfügung, z. B. Schutzmaßnahmen für Daten, Codierung und Transformationen. [Weitere Informationen zur enthaltenen Featurebereitstellung](how-to-create-portal-experiments.md#featurization). Diese Einstellung kann aktiviert werden über:
+Außerdem stehen zusätzliche erweiterte Vorverarbeitung und Featurebereitstellung zur Verfügung, z. B. Schutzmaßnahmen für Daten, Codierung und Transformationen. [Weitere Informationen zur enthaltenen Featurebereitstellung](how-to-use-automated-ml-for-ml-models.md#featurization). Diese Einstellung kann aktiviert werden über:
 
-+ Azure Machine Learning Studio: Aktivieren Sie die **Automatische Merkmalserstellung** im Abschnitt **Konfigurationsausführung** [mit diesen Schritten](how-to-create-portal-experiments.md#create-and-run-experiment).
++ Azure Machine Learning Studio: Aktivieren Sie die **Automatische Merkmalserstellung** im Abschnitt **Konfigurationsausführung** [mit diesen Schritten](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
 
 + Python SDK: Angeben von `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` für die [`AutoMLConfig`-Klasse](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig). 
 
-## <a name="prevent-over-fitting"></a>Verhindern von Überanpassung
+## <a name="classification--regression"></a>Klassifizierung und Regression
 
-Überanpassung bei maschinellem Lernen tritt auf, wenn ein Modell zu gut zu den Trainingsdaten passt und daher nicht in der Lage ist, eine genaue Vorhersage für unbekannte Testdaten zu bieten. Mit anderen Worten, das Modell hat sich schlicht bestimmte Muster und bestimmtes Rauschen in den Trainingsdaten gemerkt, ist aber nicht flexibel genug, um Vorhersagen zu echten Daten zu treffen. In den gravierendsten Fällen führt ein überangepasstes Modell zu der Annahme, dass die beim Training verwendeten Featurewertkombinationen immer die exakt selbe Ausgabe für das Ziel bringen. 
+Klassifikation und Regression sind die häufigsten Arten von Aufgaben des maschinellen Lernens. Beides sind Arten des überwachten Lernens, bei denen Modelle anhand von Trainingsdaten lernen und diese Erkenntnisse auf neue Daten anwenden. Azure Machine Learning bietet Featurebereitstellungen speziell für diese Aufgaben, z. B. Textfeaturizer für Deep Neural Network zur Klassifizierung. Erfahren Sie mehr über die [Optionen für die Featurebereitstellung](how-to-use-automated-ml-for-ml-models.md#featurization). 
 
-Die beste Möglichkeit, eine über Anpassung zu verhindern, besteht darin, die bewährten Methoden für maschinelles Lernen (ML) zu befolgen. Dazu gehören:
+Das Hauptziel von Klassifizierungsmodellen besteht darin, auf der Grundlage der Erkenntnisse aus den Trainingsdaten vorherzusagen, in welche Kategorien neue Daten fallen werden. Zu den gängigen Klassifizierungsbeispielen gehören Betrugserkennung, Handschrifterkennung und Objekterkennung.  Hier erhalten Sie weitere Informationen und ein Beispiel für die [Klassifizierung mit automatisiertem maschinellen Lernen](tutorial-train-models-with-aml.md).
 
-* Verwenden von möglichst vielen Trainingsdaten und Eliminieren statistischer systematischer Abweichungen
-* Verhindern von Zielungenauigkeit (target leakage)
-* Verwenden weniger Features
-* **Regularisierung und Hyperparameteroptimierung**
-* **Einschränkungen der Modellkomplexität**
-* **Kreuzvalidierung**
-
-Im Kontext von automatisiertem ML sind die ersten drei dieser Aspekte **bewährte Methoden, die Sie implementieren**. Die letzten drei fett formatierten Aspekte sind **bewährte Methoden, die standardmäßig von automatischem ML implementiert werden**, um Überanpassung zu vermeiden. In Konfigurationen ohne automatisiertes ML sollten alle sechs bewährten Methoden beachtet werden, um Überanpassung von Modellen zu verhindern.
-
-### <a name="best-practices-you-implement"></a>Bewährte Methoden, die Sie implementieren
-
-Die Verwendung von **mehr Daten** ist die einfachste und beste Möglichkeit, eine Überanpassung zu verhindern, und erhöht als Zusatzbonus in den meisten Fällen die Genauigkeit. Wenn Sie mehr Daten verwenden, wird es für das Modell schwieriger, sich genaue Muster zu merken, und es ist gezwungen, Lösungen zu finden, die flexibler sind, um mehr Bedingungen zu erfüllen. Außerdem ist es wichtig, **statistische systematische Abweichungen** zu erkennen, um sicherzustellen, dass die Trainingsdaten keine isolierten Muster enthalten, die in echten Vorhersagedaten nicht vorhanden sind. Ein Auflösen dieses Szenarios kann schwierig sein, da möglicherweise keine Überanpassung zwischen Ihren Trainings- und Testsätzen vorliegt, beim Vergleich mit echten Testdaten aber Überanpassung vorhanden ist.
-
-Zielungenauigkeit (target leakage) ist ein ähnliches Problem, bei dem Sie möglicherweise keine Überanpassung zwischen den Trainings- und Testsätzen feststellen, aber Überanpassung zur Vorhersagezeit auftritt. Zielungenauigkeit tritt auf, wenn Ihr Modell während des Trainings „betrügt“, indem es Zugriff auf Daten hat, auf die es zur Vorhersagezeit normalerweise keinen Zugriff haben sollte. Angenommen, Ihr Problem darin besteht, am Montag den Preis vorherzusagen, den eine Ware am Freitag haben wird, aber eines Ihrer Features enthielt versehentlich Daten von Donnerstagen, und dies wären Daten, die das Modell zur Vorhersagezeit nicht zur Verfügung hat, weil es nicht in die Zukunft schauen kann. Zielungenauigkeit ist ein Fehler, der sich leicht übersehen lässt, ist aber häufig durch eine ungewöhnlich hohe Genauigkeit für Ihr Problem gekennzeichnet. Wenn Sie versuchen, den Aktienkurs vorherzusagen und ein Modell mit einer Genauigkeit von 95 % trainiert haben, gibt es wahrscheinlich eine Zielungenauigkeit in ihren Features.
-
-Ein Entfernen von Features kann ebenfalls gegen Überanpassung helfen, indem verhindert wird, dass das Modell zu viele Felder verwendet, um sich bestimmte Muster zu merken. Dies führt dazu, dass das Modell flexibler wird. Ein quantitatives Messen ist möglicherweise schwierig, aber wenn Sie Features entfernen und dieselbe Genauigkeit beibehalten können, haben Sie das Modell wahrscheinlich flexibler gestaltet und das Risiko einer Überanpassung verringert.
-
-### <a name="best-practices-automated-ml-implements"></a>Bewährte Methoden, die von automatisiertem ML implementiert werden
-
-Regularisierung ist der Prozess, bei dem eine Kostenfunktion minimiert wird, um komplexe und überangepasste Modelle zu pönalisieren. Es gibt unterschiedliche Arten von Regularisierungsfunktionen, aber normalerweise pönalisieren diese alle die Modellkoeffizientengröße, -varianz und -komplexität. Automatisiertes ML verwendet L1 (Lasso), L2 (Ridge) und ElasticNet (L1 und L2 gleichzeitig) in verschiedenen Kombinationen mit unterschiedlichen Modellhyperparametereinstellungen, die Überanpassung steuern. In einfachen Worten, automatisiertes ML variiert, wie stark ein Modell reguliert wird, und wählt das beste Ergebnis aus.
-
-Automatisiertes ML implementiert auch explizite Einschränkungen der Modellkomplexität, um Überanpassung zu verhindern. In den meisten Fällen erfolgt diese Implementierung speziell für Entscheidungsstruktur- oder Gesamtstrukturalgorithmen, bei denen die maximale Tiefe der einzelnen Strukturen und die Gesamtzahl der in der Gesamtstruktur oder in den Kombinationstechniken verwendeten Strukturen begrenzt sind.
-
-Kreuzvalidierung ist der Prozess, bei dem viele Teilmengen Ihrer vollständigen Trainingsdaten erstellt werden und ein Modell mit jeder Teilmenge trainiert wird. Die Idee ist, dass ein Modell „glücklich“ werden und eine große Genauigkeit mit einer Teilmenge erzielen könnte, aber durch Verwenden vieler Teilmengen wird das Modell diese hohe Genauigkeit nicht jedes Mal erzielen. Wenn Sie eine Kreuzvalidierung vornehmen, stellen Sie ein Validierungsdataset mit zurückgehaltenen Daten bereit, und geben Sie Ihre Kreuzvalidierungsfalten (Anzahl der Teilmengen) an. Automatisiertes ML trainiert daraufhin Ihr Modell und optimiert Hyperparameter, um den Fehler für Ihren Validierungssatz zu minimieren. Eine Kreuzvalidierungsfalte könnte überangepasst sein, aber dadurch, dass viele von ihnen verwendet werden, wird die Wahrscheinlichkeit verringert, dass das endgültige Modell überangepasst ist. Der Nachteil ist, dass Kreuzvalidierung längere Trainingszeiten und somit höhere Kosten verursacht, denn anstatt ein Modell einmal zu trainieren, trainieren Sie es einmal mit jeder der *n* Kreuzvalidierungsteilmengen.
-
-> [!NOTE]
-> Kreuzvalidierung ist nicht standardmäßig aktiviert. Sie muss in den Einstellungen für automatisiertes ML konfiguriert werden. Nachdem Kreuzvalidierung konfiguriert und ein Validierungsdataset bereitgestellt wurde, wird der Prozess aber für Sie automatisiert.
-
-### <a name="identifying-over-fitting"></a>Erkennen von Überanpassung
-
-Sehen Sie sich die folgenden trainierten Modelle und deren entsprechende Trainings- und Testgenauigkeiten an.
-
-| Modell | Trainingsgenauigkeit | Testgenauigkeit |
-|-------|----------------|---------------|
-| Ein | 99,9 % | 95 % |
-| B | 87 % | 87 % |
-| C | 99,9 % | 45 % |
-
-Bei Betrachtung von Modell **A** gibt es ein gängiges Missverständnis: Wenn die Testgenauigkeit bei unbekannten Daten niedriger ist als die Trainingsgenauigkeit, ist das Modell überangepasst. Die Testgenauigkeit sollte jedoch immer kleiner als die Trainingsgenauigkeit sein, und die Unterscheidung zwischen „überangepasst“ und „angemessen angepasst“ wird heruntergebrochen auf *wie viel* ungenauer. 
-
-Wenn die Modelle **A** und **B** verglichen werden, ist das Modell **A** ein besseres Modell, da es eine höhere Testgenauigkeit hat, und obwohl die Testgenauigkeit geringfügig niedriger bei 95 % liegt, ist dies kein bedeutender Unterschied, der nahelegt, dass eine Überanpassung vorliegt. Modell **B** würde einfach deshalb nicht ausgewählt, weil die Trainings- und die Testgenauigkeit näher beieinander liegen.
-
-Model **C** repräsentiert einen eindeutigen Fall von Überanpassung. Die Trainingsgenauigkeit ist sehr hoch, aber die Testgenauigkeit ist nirgends annähernd so hoch. Diese Unterscheidung ist subjektiv, aber sie ergibt sich aus dem Wissen über Ihr Problem und Ihre Daten und darüber, welches Ausmaß an Fehlern akzeptabel ist. 
+Anders als bei der Klassifizierung, bei der die vorhergesagten Ausgabewerte kategorisch sind, sagen Regressionsmodelle numerische Ausgabewerte auf der Grundlage unabhängiger Vorhersagefaktoren voraus. Bei der Regression besteht das Ziel darin, die Beziehung zwischen diesen unabhängigen Vorhersagevariablen herzustellen, indem geschätzt wird, wie eine Variable die anderen beeinflusst. Beispiel: Der Fahrzeugpreis basierend auf Merkmalen wie Kraftstoffverbrauch, Sicherheitseinstufung, usw. Hier erhalten Sie weitere Informationen und ein Beispiel für die [Regression mit automatisiertem maschinellen Lernen](tutorial-auto-train-models.md).
 
 ## <a name="time-series-forecasting"></a>Zeitreihenvorhersagen
 
 Die Erstellung von Vorhersagen ist ein integraler Bestandteil jedes Unternehmens, unabhängig davon, ob es sich um Einnahmen, Lagerbestände, Umsätze oder Kundennachfrage handelt. Sie können automatisiertes maschinelles Lernen verwenden, um verschiedene Techniken und Ansätze zu kombinieren. Außerdem erhalten Sie dabei eine beliebte und hochwertige Zeitreihenprognose.
 
-Automatisierte Zeitreihenexperimente werden als multivariate Regressionsprobleme behandelt. Zeitreihenwerte aus der Vergangenheit werden pivotiert und dienen so zusammen mit anderen Vorhersageelementen als zusätzliche Dimensionen für den Regressor. Dieser Ansatz hat im Gegensatz zu klassischen Zeitreihenmethoden den Vorteil, dass mehrere kontextbezogene Variablen und deren Beziehungen zueinander beim Training auf natürliche Weise integriert werden. Beim automatisierten maschinellen Lernen wird ein zwar einfaches, aber häufig in interne Verzweigungen unterteiltes Modell für alle Elemente im Dataset und in den Vorhersagehorizonten erlernt. Dadurch sind mehr Daten verfügbar, um Modellparameter zu schätzen, und die Generalisierung von unbekannten Reihen wird möglich.
+Automatisierte Zeitreihenexperimente werden als multivariate Regressionsprobleme behandelt. Zeitreihenwerte aus der Vergangenheit werden „pivotiert“ und dienen so zusammen mit anderen Vorhersageelementen als zusätzliche Dimensionen für den Regressor. Dieser Ansatz hat im Gegensatz zu klassischen Zeitreihenmethoden den Vorteil, dass mehrere kontextbezogene Variablen und deren Beziehungen zueinander beim Training auf natürliche Weise integriert werden. Beim automatisierten maschinellen Lernen wird ein zwar einfaches, aber häufig in interne Verzweigungen unterteiltes Modell für alle Elemente im Dataset und in den Vorhersagehorizonten erlernt. Dadurch sind mehr Daten verfügbar, um Modellparameter zu schätzen, und die Generalisierung von unbekannten Reihen wird möglich.
 
 Hier erhalten Sie weitere Informationen und ein Beispiel zum [automatisierten maschinellen Lernen für die Zeitreihenvorhersage](how-to-auto-train-forecast.md). Oder sehen Sie sich das Notebook zu Energiebedarf ([auto-ml-forecasting-energy-demand.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)) an. Dort finden Sie ausführliche Codebeispiele zu einer erweiterten Vorhersagekonfiguration, einschließlich:
 
@@ -166,7 +128,7 @@ Hier erhalten Sie weitere Informationen und ein Beispiel zum [automatisierten ma
 * Konfigurierbare Verzögerungen (Lags)
 * Aggregierte Zeitfenstermerkmale (Rolling Window Features)
 
-## <a name="ensemble"></a> Ensemblemodelle
+## <a name="ensemble-models"></a><a name="ensemble"></a> Ensemblemodelle
 
 Automatisiertes Machine Learning unterstützt Ensemblemodelle, die standardmäßig aktiviert sind. Das Lernen mit Ensembles verbessert die Ergebnisse des maschinellen Lernens und die Vorhersageleistung, da nicht einzelne Modelle verwendet, sondern mehrere Modelle kombiniert werden. Die Ensemble-Iterationen erfolgen als abschließende Iterationen Ihrer Ausführung. Automatisiertes Machine Learning verwendet die beiden Ensemble-Methoden „voting“ (Abstimmen) und „stacking“ (Stapeln) gemeinsam, um Modelle zu kombinieren:
 
@@ -176,36 +138,6 @@ Automatisiertes Machine Learning unterstützt Ensemblemodelle, die standardmäß
 Der [Caruana-Algorithmus für die Ensembleauswahl](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf) mit sortierter Ensembleinitialisierung wird verwendet, um zu entscheiden, welche Modell innerhalb des Ensembles verwendet werden sollen. Generell initialisiert dieser Algorithmus das Ensemble mit bis zu fünf Modellen mit den besten Einzelbewertungen und überprüft, ob diese Modelle innerhalb des 5 %-Schwellenwerts der besten Bewertung liegen, um ein schlechtes Ausgangsensemble zu vermeiden. Dann wird für jede Ensemble-Iteration ein neues Modell zum vorhandenen Ensemble hinzugefügt, und die resultierende Bewertung wird berechnet. Wenn ein neues Modell die vorhandene Ensemblebewertung verbessert hat, wird das Ensemble so aktualisiert, dass es das neue Modell aufnimmt.
 
 Informationen zum Ändern der Standard-Ensembleeinstellungen beim automatisierten Machine Learning finden Sie unter [Gewusst wie:](how-to-configure-auto-train.md#ensemble).
-
-## <a name="imbalance"></a> Unausgeglichene Daten
-
-Unausgeglichene Daten finden sich häufig in Daten für Klassifizierungsszenarien des maschinellen Lernens und beziehen sich auf Daten, die ein überproportionales Verhältnis von Beobachtungen in den einzelnen Klassen enthalten. Diese Unausgeglichenheit kann zu einem falsch wahrgenommenen positiven Effekt der Genauigkeit eines Modells führen, da die Eingabedaten eine Abweichung zu einer Klasse aufweisen, was dazu führt, dass das trainierte Modell diese Abweichung imitiert. 
-
-Als Teil seines Ziels, den Workflow des maschinellen Lernens zu vereinfachen, verfügt das automatisierte maschinelle Lernen über integrierte Funktionen, die bei der Verarbeitung unausgeglichener Daten helfen. Beispiel: 
-
-- Eine **Gewichtungsspalte**: Das automatisierte maschinelle Lernen unterstützt eine gewichtete Spalte als Eingabe, wodurch Zeilen in den Daten eine höhere oder niedrigere Gewichtung erhalten. Auf diese Weise wird eine Klasse mehr oder weniger „wichtig“.
-
-- Die vom automatisierten maschinellen Lernen verwendeten Algorithmen können eine Unausgeglichenheit von bis zu 20:1 verarbeiten. Das bedeutet, dass die häufigste Klasse 20 mal mehr Zeilen in den Daten aufweisen kann als die am wenigsten häufige Klasse.
-
-### <a name="identify-models-with-imbalanced-data"></a>Identifizieren von Modellen mit unausgeglichenen Daten
-
-Da Klassifizierungsalgorithmen häufig nach Genauigkeit bewertet werden, ist die Überprüfung der Genauigkeitsbewertung eines Modells eine geeignete Möglichkeit, um festzustellen, ob es von unausgeglichenen Daten beeinflusst wurde. Hat es für bestimmte Klassen über eine wirklich hohe oder über eine wirklich niedrige Genauigkeit verfügt?
-
-Darüber hinaus generieren Durchläufe des automatisierten maschinellen Lernens automatisch die folgenden Diagramme, die Ihnen helfen können, die Richtigkeit der Klassifizierungen Ihres Modells zu verstehen und Modelle zu identifizieren, die möglicherweise von nicht ausgeglichenen Daten beeinflusst werden.
-
-Diagramm| Beschreibung
----|---
-[Konfusionsmatrix](how-to-understand-automated-ml.md#confusion-matrix)| Bewertet die ordnungsgemäß klassifizierten Bezeichnungen anhand der tatsächlichen Bezeichnungen der Daten. 
-[Genauigkeit-Trefferquote](how-to-understand-automated-ml.md#precision-recall-chart)| Bewertet das Verhältnis der richtigen Bezeichnungen anhand des Verhältnisses der gefundenen Bezeichnungsinstanzen der Daten. 
-[ROC-Kurven](how-to-understand-automated-ml.md#roc)| Bewertet das Verhältnis von richtigen Bezeichnungen anhand des Verhältnisses von falsch positiven Bezeichnungen.
-
-### <a name="handle-imbalanced-data"></a>Behandeln von unausgeglichenen Daten 
-
-Die folgenden Verfahren sind zusätzliche Optionen zum Behandeln von unausgeglichenen Daten außerhalb des automatisierten maschinellen Lernens. 
-
-- Erneutes Sampling zum Ausgleichen der Unausgeglichenheit von Klassen, entweder durch Upsampling der kleineren Klassen oder durch Downsampling der größeren Klassen. Diese Methoden erfordern Fachwissen, um sie zu verarbeiten und zu analysieren.
-
-- Verwenden Sie eine Leistungsmetrik, die besser mit unausgeglichenen Daten umgeht. So ist z. B. der F1-Score ein gewichteter Mittelwert aus Genauigkeit und Trefferquote. Die Genauigkeit misst die Präzision eines Klassifizierers. Eine niedrige Genauigkeit zeigt eine hohe Anzahl von falsch positiven Werten an. Die Trefferquote misst hingegen die Vollständigkeit eines Klassifizierers. Eine niedrige Trefferquote zeigt eine hohe Anzahl von falsch negativen Werten an. 
 
 ## <a name="use-with-onnx-in-c-apps"></a>Verwenden von ONNX in C#-Apps
 
@@ -255,7 +187,8 @@ Beste Modellregistrierung| ✓|✓
 Beste Modellimplementierung| ✓| ✓
 Beste Modellerklärung| ✓|✓
 Aktivieren von Abstimmungsensemble- und Stapelensemble-Modellen| ✓|✓
-Anzeigen des besten Modells auf der Basis von nicht primärer Metrik|✓|Aktivieren/Deaktivieren der Kompatibilität des ONNX-Modells|✓|
+Anzeigen des besten Modells auf der Basis von nicht primärer Metrik|✓|
+Aktivieren/Deaktivieren der Kompatibilität des ONNX-Modells|✓|
 Testen des Modells | ✓| |
 
 ### <a name="run-control-settings"></a>Ausführen der Steuerelementeinstellungen
@@ -278,7 +211,7 @@ Erfahren Sie, wie Modelle mithilfe des automatisierten maschinellen Lernens erst
 + [Tutorial: Automatisches Trainieren eines Regressionsmodell mithilfe von Azure Machine Learning](tutorial-auto-train-models.md)
 
 + Konfigurieren Sie die Einstellungen für ein automatisches Trainingsexperiment:
-  + Verwenden Sie in Azure Machine Learning Studio [diese Schritte](how-to-create-portal-experiments.md).
+  + Verwenden Sie in Azure Machine Learning Studio [diese Schritte](how-to-use-automated-ml-for-ml-models.md).
   + Mit dem Python SDK [verwenden Sie diese Schritte](how-to-configure-auto-train.md).
 
 + Erfahren Sie, wie automatisches Training mithilfe von Zeitreihendaten funktioniert, indem Sie [diese Schritte verwenden](how-to-auto-train-forecast.md).

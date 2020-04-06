@@ -2,16 +2,14 @@
 title: Verwenden von GPUs in Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie GPUs für Hochleistungscompute- oder grafikintensive Workloads in Azure Kubernetes Service (AKS) verwendet werden können.
 services: container-service
-author: zr-msft
 ms.topic: article
-ms.date: 05/16/2019
-ms.author: zarhoads
-ms.openlocfilehash: 9179d8bbf16913b89f7384fcee7519f8a205012b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/27/2020
+ms.openlocfilehash: 242fefb3b153d11e23d66f26049d0b68c0a4bf4a
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595585"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80383989"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Verwenden von GPUs für computeintensive Workloads in Azure Kubernetes Service (AKS)
 
@@ -54,7 +52,7 @@ Rufen Sie die Anmeldeinformationen für Ihren AKS-Cluster mit dem Befehl [az aks
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="install-nvidia-drivers"></a>Installieren von Nvidia-Treibern
+## <a name="install-nvidia-drivers"></a>Installieren von NVIDIA-Treibern
 
 Um die GPUs in den Knoten verwenden zu können, muss zunächst ein DaemonSet für das NVIDIA-Geräte-Plug-In bereitgestellt werden. Diese DaemonSet führt einen Pod für jeden Knoten aus, um die erforderlichen Treiber für die GPUs bereitzustellen.
 
@@ -67,12 +65,15 @@ kubectl create namespace gpu-resources
 Erstellen Sie eine Datei mit dem Namen *nvidia-device-plugin-ds.yaml*, und fügen Sie das folgende YAML-Manifest ein. Dieses Manifest wird im Rahmen des Projekts [NVIDIA device plugin for Kubernetes][nvidia-github] (NVIDIA-Geräte-Plug-In für Kubernetes) bereitgestellt.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: nvidia-device-plugin-daemonset
   namespace: gpu-resources
 spec:
+  selector:
+    matchLabels:
+      name: nvidia-device-plugin-ds
   updateStrategy:
     type: RollingUpdate
   template:
@@ -109,7 +110,7 @@ spec:
             path: /var/lib/kubelet/device-plugins
 ```
 
-Erstellen Sie als Nächstes mithilfe des Befehls [kubectl apply][kubectl-apply] das DaemonSet, und vergewissern Sie sich, dass das Nvidia-Geräte-Plug-In erfolgreich erstellt wurde, wie in der folgenden Beispielausgabe zu sehen:
+Erstellen Sie als Nächstes mithilfe des Befehls [kubectl apply][kubectl-apply] das DaemonSet, und vergewissern Sie sich, dass das NVIDIA-Geräte-Plug-In erfolgreich erstellt wurde, wie in der folgenden Beispielausgabe zu sehen:
 
 ```console
 $ kubectl apply -f nvidia-device-plugin-ds.yaml
@@ -187,7 +188,7 @@ Um die GPU in Aktion zu sehen, planen Sie eine GPU-fähige Workload mit der ents
 Erstellen Sie eine Datei mit dem Namen *samples-tf-mnist-demo.yaml*, und fügen Sie das folgende YAML-Manifest ein. Das folgende Auftragsmanifest enthält ein Ressourcenlimit von `nvidia.com/gpu: 1`:
 
 > [!NOTE]
-> Wenn Sie beim Aufruf von Treibern einen Versionsfehler erhalten (z.B., dass die CUDA-Treiberversion für die CUDA-Laufzeitversion nicht ausreicht), überprüfen Sie das nVidia-Treibermatrix-Kompatibilitätsdiagramm: [https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
+> Wenn Sie beim Aufruf von Treibern einen Versionsfehler erhalten (z. B., dass die CUDA-Treiberversion für die CUDA-Laufzeitversion nicht ausreicht), überprüfen Sie das NVIDIA-Treibermatrix-Kompatibilitätsdiagramm: [https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
 
 ```yaml
 apiVersion: batch/v1
