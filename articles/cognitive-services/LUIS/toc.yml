@@ -193,10 +193,10 @@
       href: luis-how-to-publish-app.md
     - name: Verwalten der App
       items:
-        - name: Erstellungs- und Laufzeitschlüssel
+        - name: Azure-Ressourcen
           displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
           href: luis-how-to-azure-subscription.md
-        - name: Migrieren zum Erstellungsschlüssel
+        - name: Migrieren zur Dokumenterstellungsressource
           items:
             - name: Übersicht
               href: luis-migration-authoring.md

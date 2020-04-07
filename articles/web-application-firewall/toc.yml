@@ -18,6 +18,14 @@
       items:
         - name: "Web Application Firewall für Azure\_CDN"
           href: ./cdn/cdn-overview.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: Application Gateway
+      items:
+        - name: 'Bereitstellen von WAF v2: ARM-Vorlage'
+          displayName: Resource Manager
+          href: ./ag/quick-create-template.md
 - name: Tutorials
   items:
     - name: Application Gateway
