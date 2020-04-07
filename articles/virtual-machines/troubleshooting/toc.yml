@@ -77,6 +77,8 @@
           href: troubleshoot-guide-critical-process-died.md
         - name: Fehler beim kritischen Dienst
           href: troubleshoot-critical-service-failed-boot-error.md
+        - name: Virtueller Computer reagiert beim Anwenden der Richtlinie für lokale Benutzer und Gruppen nicht
+          href: troubleshoot-vm-unresponsive-group-policy-local-users.md
         - name: Kein startbarer Datenträger
           href: troubleshoot-guide-not-bootable-disk.md
         - name: Neustartschleife
@@ -87,6 +89,8 @@
           href: troubleshoot-vm-boot-configure-update.md
         - name: Der virtuelle Computer kann aufgrund des Windows-Start-Managers nicht gestartet werden.
           href: troubleshoot-guide-windows-boot-manager-menu.md
+        - name: 'Der virtuelle Computer reagiert nicht, weil er gerade aktualisiert wird.'
+          href: unresponsive-vm-apply-windows-update.md
 - name: Es kann keine Verbindung mit meinem virtuellen Computer hergestellt werden
   items:
     - name: RDP

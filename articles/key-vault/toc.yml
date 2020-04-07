@@ -26,7 +26,7 @@
     - name: ARM-Vorlage
       displayName: Resource Manager
       href: quick-create-template.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Azure-Web-Apps
       items:
@@ -75,6 +75,8 @@
           href: overview-security.md
         - name: Sicherheitsbaseline
           href: security-baseline.md
+        - name: Integrierte Sicherheit
+          href: key-vault-security-controls.md
         - name: Sicherheitsumgebungen (Security Worlds)
           href: key-vault-ovw-security-worlds.md
         - name: Schützen einer Key Vault-Instanz
@@ -101,7 +103,7 @@
           href: create-certificate.md
         - name: Überwachen und Verwalten der Zertifikaterstellung
           href: create-certificate-scenarios.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Sicherheit
       items:

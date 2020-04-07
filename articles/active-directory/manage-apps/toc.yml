@@ -7,6 +7,8 @@
       href: what-is-application-management.md
     - name: Worum handelt es sich beim Anwendungsproxy für lokale Apps?
       href: what-is-application-proxy.md
+    - name: Allgemeine App-Verwaltungsszenarien
+      href: common-scenarios.md
     - name: Was ist die Anwendungsbereitstellung?
       href: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
 - name: Schnellstarts
@@ -15,7 +17,7 @@
       href: add-application-portal.md
     - name: Anzeigen Ihrer Unternehmensanwendungen
       href: view-applications-portal.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: "Integrierte Katalog-Apps (z.\_B. ServiceNow, Salesforce, Dropbox)"
       href: /azure/active-directory/saas-apps/
@@ -92,7 +94,7 @@
           href: application-proxy-high-availability-load-balancing.md
         - name: Vergleichen von Remotezugriffslösungen
           href: application-proxy-migration.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   expanded: true
   items:
     - name: Cloud-Apps und einmaliges Anmelden

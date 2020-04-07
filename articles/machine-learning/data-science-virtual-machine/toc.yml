@@ -17,8 +17,6 @@
       href: provision-vm.md
     - name: Erstellen einer Data Science Virtual Machine-Instanz für Ubuntu
       href: dsvm-ubuntu-intro.md
-    - name: Erstellen einer Data Science VM-Instanz unter CentOS
-      href: linux-dsvm-intro.md
     - name: Erstellen einer Data Science Virtual Machine-Instanz für geografische KI
       href: provision-geo-ai-dsvm.md
 - name: Konzepte
@@ -41,7 +39,7 @@
       href: dsvm-enterprise-overview.md
 - name: Beispiele
   href: dsvm-samples-and-walkthroughs.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Verwenden einer Data Science Virtual Machine-Instanz für Windows
       href: vm-do-ten-things.md
@@ -67,8 +65,6 @@
   items:
     - name: Data Science Virtual Machine für Ubuntu
       href: reference-ubuntu-vm.md
-    - name: Data Science Virtual Machine für CentOS
-      href: reference-centos-vm.md
     - name: Versionshinweise
       href: release-notes.md
     - name: Bekannte Probleme
