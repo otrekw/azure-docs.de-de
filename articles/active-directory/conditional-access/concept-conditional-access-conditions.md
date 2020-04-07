@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/25/2020
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dff80d849268c770e4227ff8c99b8f4d133c4d78
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: bb14369275a111476867f2263766e1bb87b7c87d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620728"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295335"
 ---
 # <a name="conditional-access-conditions"></a>Bedingter Zugriff: Bedingungen
 
@@ -30,7 +30,7 @@ Beispielsweise kann ein Administrator beim Zugriff auf eine sensible Anwendung n
 
 ## <a name="sign-in-risk"></a>Anmelderisiko
 
-Für Kunden mit Zugriff auf [Identity Protection](../identity-protection/overview-identity-protection.md) kann das Anmelderisiko im Rahmen einer Richtlinie für bedingten Zugriff ausgewertet werden. Ein Anmelderisiko stellt die Wahrscheinlichkeit dar, dass eine bestimmte Authentifizierungsanforderung vom Identitätsbesitzer nicht autorisiert wurde. Weitere Informationen zu Anmelderisiken finden Sie in den Artikeln [Was bedeutet Risiko?](../identity-protection/concept-identity-protection-risks.md#sign-in-risk) und [Anleitung: Konfigurieren und Aktivieren von Risikorichtlinien](../identity-protection/howto-identity-protection-configure-risk-policies.md).
+Für Kunden mit Zugriff auf [Identity Protection](../identity-protection/overview-identity-protection.md) kann das Anmelderisiko im Rahmen einer Richtlinie für bedingten Zugriff ausgewertet werden. Ein Anmelderisiko ist die Möglichkeit, dass eine bestimmte Authentifizierungsanforderung vom Identitätsbesitzer nicht autorisiert wurde. Weitere Informationen zu Anmelderisiken finden Sie in den Artikeln [Was bedeutet Risiko?](../identity-protection/concept-identity-protection-risks.md#sign-in-risk) und [Anleitung: Konfigurieren und Aktivieren von Risikorichtlinien](../identity-protection/howto-identity-protection-configure-risk-policies.md).
 
 ## <a name="device-platforms"></a>Geräteplattformen
 
@@ -71,15 +71,15 @@ Richtlinien für bedingten Zugriff gelten standardmäßig für browserbasierte A
    - Andere Clients
       - Diese Option umfasst Clients, die Standard-/Legacyauthentifizierungsprotokolle verwenden, die keine moderne Authentifizierung unterstützen.
          - Authentifiziertes SMTP: Wird von POP- und IMAP-Clients zum Senden von E-Mail-Nachrichten verwendet.
-         - AutoErmittlung: Wird von Outlook- und EAS-Clients verwendet, um Postfächer in Exchange Online zu suchen und eine Verbindung damit herzustellen.
-         - Exchange Online PowerShell: Wird zum Herstellen einer Verbindung mit Exchange Online über Remote-PowerShell verwendet. Wenn Sie die Standardauthentifizierung für Exchange Online PowerShell blockieren, müssen Sie das Exchange Online PowerShell-Modul verwenden, um eine Verbindung herzustellen. Entsprechende Anweisungen finden Sie unter [Herstellen einer Verbindung mit Exchange Online PowerShell mithilfe der mehrstufigen Authentifizierung](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
-         - Exchange Web Services (EWS): Eine Programmierschnittstelle, die von Outlook, Outlook für Mac und Drittanbieter-Apps verwendet wird.
-         - IMAP4: Wird von IMAP-E-Mail-Clients verwendet.
-         - MAPI über HTTP (MAPI/HTTP): Wird von Outlook 2010 und höher verwendet.
-         - Offlineadressbuch (OAB): Eine Kopie der Adressenlistensammlungen, die von Outlook heruntergeladen und verwendet werden.
-         - Outlook Anywhere (RPC über HTTP): Wird von Outlook 2016 und früher verwendet.
-         - Outlook-Dienst: Wird von der Mail- und Kalender-App für Windows 10 verwendet.
-         - POP3: Wird von POP-E-Mail-Clients verwendet.
+         - AutoErmittlung: wird von Outlook und EAS-Clients verwendet, um Postfächer in Exchange Online zu suchen und diese zu verbinden
+         - Exchange Online PowerShell: wird zum Herstellen einer Verbindung mit Exchange Online über Remote-PowerShell verwendet Wenn Sie die Standardauthentifizierung für Exchange Online PowerShell blockieren, müssen Sie das Exchange Online PowerShell-Modul verwenden, um eine Verbindung herzustellen. Anweisungen finden Sie unter [Herstellen einer Verbindung mit Exchange Online PowerShell mithilfe der mehrstufigen Authentifizierung](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
+         - Exchange Web Services (EWS): eine Programmierschnittstelle, die von Outlook, Outlook für Mac und Drittanbieter-Apps verwendet wird
+         - IMAP4: wird von IMAP-E-Mail-Clients verwendet
+         - MAPI über HTTP (MAPI/HTTP): wird von Outlook 2010 und höher verwendet
+         - Offlineadressbuch (OAB): eine Kopie der Adressenlistensammlungen, die von Outlook heruntergeladen und verwendet werden
+         - Outlook Anywhere (RPC über HTTP): wird von Outlook 2016 und früher verwendet
+         - Outlook-Dienst: wird von der Mail- und Kalender-App für Windows 10 verwendet
+         - POP3: wird von POP-E-Mail-Clients verwendet
          - Berichtswebdienste: Werden zum Abrufen von Berichtsdaten in Exchange Online verwendet.
 
 Diese Bedingungen werden häufig verwendet, wenn ein verwaltetes Gerät erforderlich ist, Legacyauthentifizierung blockiert wird und Webanwendungen blockiert werden, aber mobile oder Desktop-Apps zulässig sind.
@@ -142,8 +142,8 @@ Diese Einstellung hat Auswirkungen auf Zugriffsversuche von den folgenden mobile
 | E-Mail-/Kalender-/Kontakte-App, Outlook 2016, Outlook 2013 (mit moderner Authentifizierung)| Microsoft Office 365 Exchange Online | Windows 10 |
 | MFA- und Standort-Richtlinien für Apps Gerätebasierte Richtlinien werden nicht unterstützt.| Alle Meine Apps-App-Dienste | Android und iOS |
 | Microsoft Teams-Dienste: steuert alle Dienste, die Microsoft-Teams unterstützen, und alle dazugehörigen Client-Apps – Windows Desktop, iOS, Android, WP und Webclient | Microsoft Teams | Windows 10, Windows 8.1, Windows 7, iOS, Android und macOS |
-| Office 2016-Apps, Office 2013 (mit moderner Authentifizierung), [OneDrive-Synchronisierungsclient](https://docs.microsoft.com/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 8.1, Windows 7 |
-| Office 2016-Apps, universelle Office-Apps, Office 2013 (mit moderner Authentifizierung), [OneDrive-Synchronisierungsclient](https://docs.microsoft.com/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 10 |
+| Office 2016-Apps, Office 2013 (mit moderner Authentifizierung), [OneDrive-Synchronisierungsclient](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 8.1, Windows 7 |
+| Office 2016-Apps, universelle Office-Apps, Office 2013 (mit moderner Authentifizierung), [OneDrive-Synchronisierungsclient](/onedrive/enable-conditional-access) | Office 365 SharePoint Online | Windows 10 |
 | Office 2016 (nur Word, Excel, PowerPoint und OneNote). | Office 365 SharePoint Online | macOS |
 | Office 2019| Office 365 SharePoint Online | Windows 10, macOS |
 | Office Mobile-Apps | Office 365 SharePoint Online | Android, iOS |

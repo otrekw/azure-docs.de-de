@@ -16,12 +16,12 @@ ms.date: 03/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd923a47c49bfa7a6ab16e822a80c8e7f4f9a3e0
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: 59bf7ae5914f5cc886d95f25b36abccfdf09c4a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096063"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331283"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory-Passthrough-Authentifizierung: Häufig gestellte Fragen
 
@@ -75,7 +75,7 @@ Wenn Sie das Kennwortrückschreiben für einen bestimmten Benutzer nicht konfigu
 ## <a name="what-do-pass-through-authentication-agents-communicate-over-ports-80-and-443"></a>Was kommunizieren Passthrough-Authentifizierungs-Agents über die Ports 80 und 443?
 
 - Die Authentifizierungs-Agents stellen HTTPS-Anforderungen für alle Funktionsvorgänge über Port 443 aus.
-- Die Authentifizierungs-Agents stellen HTTP-Anforderungen über Port 80, um die SSL-Zertifikatsperrlisten (CRLs) herunterzuladen.
+- Die Authentifizierungs-Agents stellen HTTP-Anforderungen über Port 80, um die TLS/SSL-Zertifikatsperrlisten (CRLs) herunterzuladen.
 
      >[!NOTE]
      >In kürzlich veröffentlichten Updates wurde die Zahl der Ports, die für diese Funktion erforderlich sind, gesenkt. Wenn Sie eine ältere Version von Azure AD Connect oder des Authentifizierungs-Agents verwenden, halten Sie auch folgende Ports offen: 5671, 8080, 9090, 9091, 9350, 9352 und 10100–10120.

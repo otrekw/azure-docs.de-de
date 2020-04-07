@@ -15,16 +15,16 @@ ms.date: 09/09/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 289347474189d1fb57d95a2f424cf381e1e37875
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 19d76f69669ffa13d1d55ffa807e6c4818b8840c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522661"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282187"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung
 
-Azure Active Directory beinhaltet einen [Dienst zur Benutzerkontobereitstellung](user-provisioning.md), mit dem die Bereitstellung bzw. die Aufhebung der Bereitstellung von Benutzerkonten in SaaS-Apps und anderen Systemen für End-to-End-Identity Lifecycle Management automatisiert werden kann. Azure AD unterstützt vorab integrierte Benutzerbereitstellungsconnectors für alle Anwendungen und Systeme im Abschnitt „Ausgewählt“ des [Azure AD-Anwendungskatalogs](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
+Azure Active Directory beinhaltet einen [Dienst zur Benutzerkontobereitstellung](user-provisioning.md), mit dem die Bereitstellung bzw. die Aufhebung der Bereitstellung von Benutzerkonten in SaaS-Apps und anderen Systemen für End-to-End-Identity Lifecycle Management automatisiert werden kann. Azure AD unterstützt vorab integrierte Benutzerbereitstellungsconnectors für alle Anwendungen und Systeme mit [hier](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) erhältlichen Tutorials für die Benutzerbereitstellung.
 
 In diesem Artikel wird beschrieben, wie der Status von Bereitstellungsaufträgen nach ihrer Einrichtung überprüft wird, und Probleme bei der Bereitstellung einzelner Benutzer und Gruppen behandelt werden.
 

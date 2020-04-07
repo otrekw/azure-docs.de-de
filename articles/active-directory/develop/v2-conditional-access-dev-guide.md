@@ -7,7 +7,7 @@ author: rwike77
 manager: CelesteDG
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
-ms.date: 02/25/2020
+ms.date: 03/16/2020
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c1f581cf5971cfa4eafda60c679a64d827109bb
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: a9d82840681450ec855cb35c8700da2a53b9dd6b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78201987"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481448"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Anleitung für Entwickler zum bedingten Zugriff mit Azure Active Directory
 
@@ -186,3 +186,4 @@ Wenn Sie dieses Szenario testen möchten, sehen Sie sich unser [“Im-Auftrag-vo
 * Weitere Azure AD-Codebeispiele finden Sie unter [Beispiele](sample-v2-code.md).
 * Weitere Informationen zum MSAL-SDK und zum Zugriff auf die Referenzdokumentation finden Sie in der [Microsoft Authentication Library-Übersicht](msal-overview.md).
 * Weitere Informationen zu Szenarien mit mehreren Mandanten finden Sie unter [Anmelden von Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster](howto-convert-app-to-be-multi-tenant.md).
+* Weitere Informationen finden Sie unter [Bedingter Zugriff und Sichern des Zugriffs auf IOT-Apps](/azure/architecture/example-scenario/iot-aad/iot-aad).

@@ -12,12 +12,13 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: b91cc5249b386a465ea98b5e81b199323481a733
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: c290cbf36fd53d5afb5fd805cda896fb6879bb4b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163707"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154949"
 ---
 # <a name="application-types-in-v10"></a>Anwendungstypen in v1.0
 
@@ -71,7 +72,7 @@ Zum besseren Verständnis der Bereitstellung ist es hilfreich zu wissen, dass es
 
 ### <a name="additional-considerations-when-developing-single-tenant-or-multi-tenant-apps"></a>Weitere Überlegungen bei der Entwicklung von Einzelinstanz-Apps oder mehrinstanzenfähigen Apps
 
-Bei der Entwicklung einer mehrinstanzenfähigen Anwendung müssen im Gegensatz zur Einzelinstanzanwendung einige zusätzliche Aspekte berücksichtigt werden. Ein Beispiel: Wenn Sie die Anwendung für Benutzer in mehreren Verzeichnissen verfügbar machen, müssen Sie ermitteln, in welchem Mandaten sich diese befinden. Eine Einzelinstanzanwendung muss nur im eigenen Verzeichnis nach einem Benutzer suchen. Eine mehrinstanzenfähige Anwendung muss dagegen einen bestimmten Benutzer in sämtlichen Verzeichnissen in Azure AD identifizieren. Für diese Aufgabe bietet Azure AD anstelle eines mandantenspezifischen Endpunkts einen gemeinsamen Authentifizierungsendpunkt, an den jede mehrinstanzenfähige Anwendung Anmeldeanforderungen richten kann. Dieser Endpunkt lautet für alle Verzeichnisse in Azure AD wie folgt: https://login.microsoftonline.com/common. Im Gegensatz dazu sieht ein mandantenspezifischer Endpunkt beispielsweise wie folgt aus: https://login.microsoftonline.com/contoso.onmicrosoft.com. Der gemeinsame Endpunkt muss insbesondere bei der Anwendungsentwicklung berücksichtigt werden, da Sie die Logik implementieren müssen, die die Verarbeitung mehrerer Mandanten bei der Anmeldung, Abmeldung und Tokenüberprüfung ermöglicht.
+Bei der Entwicklung einer mehrinstanzenfähigen Anwendung müssen im Gegensatz zur Einzelinstanzanwendung einige zusätzliche Aspekte berücksichtigt werden. Beispiel: Wenn Sie die Anwendung für Benutzer in mehreren Verzeichnissen verfügbar machen, müssen Sie ermitteln, in welchem Mandaten sich diese befinden. Eine Einzelinstanzanwendung muss nur im eigenen Verzeichnis nach einem Benutzer suchen. Eine mehrinstanzenfähige Anwendung muss dagegen einen bestimmten Benutzer in sämtlichen Verzeichnissen in Azure AD identifizieren. Für diese Aufgabe bietet Azure AD anstelle eines mandantenspezifischen Endpunkts einen gemeinsamen Authentifizierungsendpunkt, an den jede mehrinstanzenfähige Anwendung Anmeldeanforderungen richten kann. Dieser Endpunkt lautet für alle Verzeichnisse in Azure AD wie folgt: `https://login.microsoftonline.com/common`. Im Gegensatz dazu sieht ein mandantenspezifischer Endpunkt beispielsweise wie folgt aus: `https://login.microsoftonline.com/contoso.onmicrosoft.com`. Der gemeinsame Endpunkt muss insbesondere bei der Anwendungsentwicklung berücksichtigt werden, da Sie die notwendige Logik zum Verarbeiten mehrerer Mandanten bei der Anmeldung, Abmeldung und Tokenüberprüfung benötigen.
 
 Wenn Sie gerade eine Einzelinstanzanwendung entwickeln, diese aber für mehrere Organisationen verfügbar machen möchten, können Sie die Anwendung und deren Konfiguration problemlos in Azure AD ändern, um eine mehrinstanzenfähige Anwendung zu erhalten. Darüber hinaus verwendet Azure AD für alle Token in allen Verzeichnissen den gleichen Anmeldeschlüssel. Es spielt also keine Rolle, ob Sie die Authentifizierung in einer Einzelinstanzanwendung oder in einer mehrinstanzenfähigen Anwendung bereitstellen.
 

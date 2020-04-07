@@ -3,14 +3,14 @@ author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 02/26/2020
+ms.date: 03/19/2020
 ms.author: mimart
-ms.openlocfilehash: 053349996e15dbc0f58f062ffa966d0d894f5e0d
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: af11283f9e9dbd925ec994dcb1d96393332b90fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189015"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80117168"
 ---
 ## <a name="use-custom-page-content"></a>Verwenden benutzerdefinierter Seiteninhalte
 
@@ -72,6 +72,7 @@ Wenn Sie eigene HTML- und CSS-Dateien zum Anpassen der Benutzeroberfläche verwe
   - Eingeschränkte Unterstützung für Internet Explorer 9 und 8
   - Google Chrome 42.0 und höher
   - Mozilla Firefox 38.0 und höher
+  - Safari für iOS und macOS, Version 12 und höher
 - Aufgrund von Sicherheitseinschränkungen unterstützt Azure AD B2C keine HTML-Elemente vom Typ `frame`, `iframe` oder `form`.
 
 ## <a name="custom-page-content-walkthrough"></a>Exemplarische Vorgehensweise für benutzerdefinierte Seiteninhalte
@@ -133,7 +134,7 @@ Führen Sie die folgenden Schritte aus, um im Blob-Speicher einen öffentlichen 
 
 1. Wählen Sie unter **Blob-Dienst** im linken Menü die Option **Blobs** aus.
 1. Wählen Sie **+ Container** aus.
-1. Geben Sie im Feld **Name** die Zeichenfolge *root* ein. Dies kann ein Name Ihrer Wahl sein, z. B. *wingtiptoys*, aber in diesem Beispiel verwenden wir der Einfachheit halber *root*.
+1. Geben Sie im Feld **Name** die Zeichenfolge *root* ein. Dies kann ein Name Ihrer Wahl sein, z. B. *contoso*, aber in diesem Beispiel verwenden wir der Einfachheit halber *root*.
 1. Wählen Sie für **Öffentliche Zugriffsebene** die Option **Blob** aus, und klicken Sie dann auf **OK**.
 1. Wählen Sie **root** aus, um den neuen Container zu öffnen.
 
@@ -164,6 +165,9 @@ Führen Sie die folgenden Schritte aus, um den Blob-Speicher für die Ressourcen
 
 Führen Sie die folgenden Schritte aus, um zu überprüfen, ob Sie bereit sind:
 
-1. Navigieren Sie zur Website [www.test-cors.org](https://www.test-cors.org/), und fügen Sie die URL in das Feld **Remote URL** ein.
+1. Wiederholen Sie den CORS-Konfigurationsschritt. Geben Sie für **Zulässige Ursprünge** den Wert `https://www.test-cors.org` ein.
+1. Navigieren Sie zu [www.test-cors.org](https://www.test-cors.org/). 
+1. Fügen Sie im Feld **Remote-URL** die URL Ihrer HTML-Datei ein. Zum Beispiel, `https://your-account.blob.core.windows.net/azure-ad-b2c/unified.html`
 1. Wählen Sie **Anforderung senden** aus.
+    Das Ergebnis sollte `XHR status: 200` lauten. 
     Wenn ein Fehler ausgegeben wird, sollten Sie sich vergewissern, ob Ihre CORS-Einstellungen richtig sind. Außerdem müssen Sie unter Umständen Ihren Browsercache löschen oder eine InPrivate-Browsersitzung öffnen, indem Sie STRG+UMSCHALT+P drücken.

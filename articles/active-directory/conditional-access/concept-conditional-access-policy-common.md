@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cfb5fb17abd5a433c177d3efc5a4f0a2cec3d4d7
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 20b699f0672b49dd2f947e0cf00d0ffcef7961e6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77186137"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295306"
 ---
 # <a name="common-conditional-access-policies"></a>Allgemeine Richtlinien für bedingten Zugriff
 
@@ -33,18 +33,23 @@ Weitere Informationen zu Notfallzugriffskonten und warum sie wichtig sind, finde
 
 ## <a name="typical-policies-deployed-by-organizations"></a>Typische Richtlinien, die von Unternehmen bereitgestellt werden
 
+* [Blockieren älterer Authentifizierungsmethoden](howto-conditional-access-policy-block-legacy.md)\*
 * [Vorschreiben der MFA für Administratoren](howto-conditional-access-policy-admin-mfa.md)\*
 * [Vorschreiben der MFA für die Azure-Verwaltung](howto-conditional-access-policy-azure-management.md)\*
 * [Erzwingen der MFA für alle Benutzer](howto-conditional-access-policy-all-users-mfa.md)\*
-* [Blockieren älterer Authentifizierungsmethoden](howto-conditional-access-policy-block-legacy.md)\*
+
+\* Bei gemeinsamer Konfiguration imitieren diese vier Richtlinien die Funktionalität, die durch [Sicherheitsstandards](../fundamentals/concept-fundamentals-security-defaults.md) aktiviert wird.
+
+## <a name="additional-policies"></a>Weitere Richtlinien
+
 * [Risikobasierter bedingter Zugriff (erfordert Azure AD Premium P2)](howto-conditional-access-policy-risk.md)
 * [Vorschreiben eines vertrauenswürdigen Standorts für die MFA-Registrierung](howto-conditional-access-policy-registration.md)
 * [Blockieren des Zugriffs nach Standort](howto-conditional-access-policy-location.md)
 * [Erzwingen eines kompatiblen Geräts](howto-conditional-access-policy-compliant-device.md)
-
-\* Bei gemeinsamer Konfiguration imitieren diese vier Richtlinien die Funktionalität, die durch [Sicherheitsstandards](../fundamentals/concept-fundamentals-security-defaults.md) aktiviert wird.
+* [Blockieren des Zugriffs mit Ausnahme bestimmter Apps](howto-conditional-access-policy-block-access.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Simulieren des Anmeldeverhaltens mit dem What If-Tool für bedingten Zugriff](troubleshoot-conditional-access-what-if.md)
+
 - [Verwenden des Modus „Nur Bericht“ für bedingten Zugriff zum Ermitteln der Auswirkungen neuer Richtlinienentscheidungen](concept-conditional-access-report-only.md)

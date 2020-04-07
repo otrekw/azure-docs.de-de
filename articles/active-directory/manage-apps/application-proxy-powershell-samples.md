@@ -12,12 +12,12 @@ ms.date: 12/05/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25097f8b72c7c8dde742701ce576c1b0e2fbabd2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 476bdfdd2c0b81d86900cee18024cc261ee80a07
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475280"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481261"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD PowerShell-Beispiele für Azure AD-Anwendungsproxy
 
@@ -45,6 +45,6 @@ Weitere Informationen zu den in diesen Beispielen verwendeten Cmdlets finden Sie
 | [Abrufen aller Anwendungsproxy-Apps mit Platzhalterveröffentlichung](scripts/powershell-get-all-wildcard-apps.md) | Listet alle Anwendungsproxy-Apps mit Platzhalterveröffentlichung auf. |
 |**Konfiguration benutzerdefinierter Domänen**||
 | [Abrufen aller Anwendungsproxy-Apps, die benutzerdefinierte Domänen verwenden, und der Zertifikatinformationen](scripts/powershell-get-all-custom-domains-and-certs.md) | Listet alle Anwendungsproxy-Apps auf, die benutzerdefinierte Domänen verwenden, und listet die den benutzerdefinierten Domänen zugeordneten Zertifikatinformationen auf. |
-| [Abrufen aller Azure AD-Anwendungsproxy-Apps, die ohne ein hochgeladenes Zertifikat veröffentlicht wurden](scripts/powershell-get-all-custom-domain-no-cert.md) | Listet alle Anwendungsproxy-Apps auf, die benutzerdefinierte Domänen verwenden, aber für die kein gültiges SSL-Zertifikat hochgeladen wurde. |
+| [Abrufen aller Azure AD-Anwendungsproxy-Apps, die ohne ein hochgeladenes Zertifikat veröffentlicht wurden](scripts/powershell-get-all-custom-domain-no-cert.md) | Listet alle Anwendungsproxy-Apps auf, die benutzerdefinierte Domänen verwenden, aber für die kein gültiges TLS/SSL-Zertifikat hochgeladen wurde. |
 | [Abrufen aller mit einem identischen Zertifikat veröffentlichten Azure AD-Anwendungsproxy-Apps](scripts/powershell-get-custom-domain-identical-cert.md) | Listet alle Azure AD-Anwendungsproxy-Apps auf, die mit einem identischen Zertifikat veröffentlicht wurden. |
 | [Abrufen aller mit einem identischen Zertifikat veröffentlichten Azure AD-Anwendungsproxy-Apps und Ersetzen des Zertifikats](scripts/powershell-get-custom-domain-replace-cert.md) | Damit können Sie das Zertifikat für alle mit einem identischen Zertifikat veröffentlichten Azure AD-Anwendungsproxy-Apps in einem Massenvorgang ersetzen. |

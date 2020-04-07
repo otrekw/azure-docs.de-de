@@ -10,14 +10,15 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ryanwi
-ms.reviewer: saeeda, jmprieur, andret
+ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e65a31192be8b79720ea15d1721fbf37908a8cbe
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9ecf711f5442b6f21de53d2735ad1c94d7cb6223
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163483"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154796"
 ---
 # <a name="native-apps"></a>Native Apps
 
@@ -35,9 +36,9 @@ Bei Verwendung der AD-Authentifizierungsbibliotheken werden Ihnen die meisten de
 
 1. Über ein Browser-Popup sendet die systemeigene Anwendung eine Anforderung an den Autorisierungsendpunkt in Azure AD. Diese Anforderung enthält die Anwendungs-ID und den Umleitungs-URI der nativen Anwendung gemäß Angabe im Azure-Portal sowie den Anwendungs-ID-URI für die Web-API. Falls sich der Benutzer noch nicht angemeldet hat, wird er dazu aufgefordert.
 1. Azure AD authentifiziert den Benutzer. Wenn es sich um eine mehrinstanzenfähige Anwendung handelt und für die Verwendung der Anwendung eine Zustimmung erforderlich ist, muss der Benutzer zustimmen, sofern nicht bereits geschehen. Nach der Zustimmung und einer erfolgreichen Authentifizierung gibt Azure AD eine Antwort mit einem Autorisierungscode an den Umleitungs-URI der Clientanwendung zurück.
-1. Wenn Azure AD einen Autorisierungscode an den Umleitungs-URI zurückgibt, beendet die Clientanwendung die Interaktion mit dem Browser und extrahiert den Autorisierungscode aus der Antwort. Auf der Grundlage dieses Autorisierungscodes sendet die Clientanwendung eine Anforderung an den Token-Endpunkt von Azure AD. Diese Anforderung enthält den Autorisierungscode, Details zur Clientanwendung (Anwendungs-ID und Umleitungs-URI) sowie die gewünschte Ressource (Anwendungs-ID-URI für die Web-API).
+1. Wenn Azure AD einen Autorisierungscode an den Umleitungs-URI zurückgibt, beendet die Clientanwendung die Interaktion mit dem Browser und extrahiert den Autorisierungscode aus der Antwort. Auf der Grundlage dieses Autorisierungscodes sendet die Clientanwendung eine Anforderung an den Tokenendpunkt von Azure AD. Diese Anforderung enthält den Autorisierungscode, Details zur Clientanwendung (Anwendungs-ID und Umleitungs-URI) sowie die gewünschte Ressource (Anwendungs-ID-URI für die Web-API).
 1. Der Autorisierungscode sowie die Informationen zu Clientanwendung und Web-API werden von Azure AD überprüft. Bei erfolgreicher Validierung gibt Azure AD zwei Token zurück: ein JWT-Zugriffstoken und ein JWT-Aktualisierungstoken. Darüber hinaus gibt Azure AD grundlegende Benutzerinformationen wie Anzeigename und Mandanten-ID zurück.
-1. Die Clientanwendung fügt der Web-API über HTTPS und unter Verwendung des zurückgegebenen JWT-Zugriffstokens die JWT-Zeichenfolge mit der Angabe „Bearer“ (Träger) im Autorisierungsheader der Anforderung hinzu. Daraufhin überprüft die Web-API das JWT-Token und gibt bei erfolgreicher Validierung die gewünschte Ressource zurück.
+1. Die Clientanwendung fügt der Web-API über HTTPS und unter Verwendung des zurückgegebenen JWT-Zugriffstokens die JWT-Zeichenfolge mit der Angabe „Bearer“ im Autorisierungsheader der Anforderung hinzu. Daraufhin überprüft die Web-API das JWT-Token und gibt bei erfolgreicher Validierung die gewünschte Ressource zurück.
 1. Wenn das Zugriffstoken abläuft, erhält die Clientanwendung eine Fehlermeldung mit dem Hinweis, dass sich der Benutzer erneut authentifizieren muss. Wenn die Anwendung über ein gültiges Aktualisierungstoken verfügt, kann damit ohne erneute Anmeldeaufforderung ein neues Zugriffstoken abgerufen werden. Wenn das Aktualisierungstoken abläuft, muss die Anwendung den Benutzer interaktiv neu authentifizieren.
 
 > [!NOTE]
@@ -51,7 +52,7 @@ Sehen Sie sich die Codebeispiele für Szenarien vom Typ „Systemeigene Anwendun
 
 Informationen zum Registrieren einer Anwendung beim Azure AD v1.0-Endpunkt finden Sie unter [Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
 
-* Einzelinstanzenfähige Anwendung: Sowohl die native Anwendung als auch die Web-API müssen in Azure AD im gleichen Verzeichnis registriert werden. Die Web-API kann so konfiguriert werden, dass sie einen Satz von Berechtigungen verfügbar macht, die den Ressourcenzugriff der systemeigenen Anwendung beschränken. Die Clientanwendung wählt daraufhin die gewünschten Berechtigungen aus dem Dropdownmenü „Berechtigungen für andere Anwendungen“ des Azure-Portals aus.
+* Einzelinstanzenfähige Anwendung: Sowohl die native Anwendung als auch die Web-API müssen in Azure AD im gleichen Verzeichnis registriert werden. Die Web-API kann so konfiguriert werden, dass sie einen Satz von Berechtigungen verfügbar macht, der den Zugriff der nativen Anwendung auf ihre Ressourcen beschränkt. Die Clientanwendung wählt daraufhin im Azure-Portal die gewünschten Berechtigungen im Dropdownmenü „Berechtigungen für andere Anwendungen“ aus.
 * Mehrinstanzenfähige Anwendung: Die native Anwendung wird zum einen immer nur im Verzeichnis des Entwicklers oder des Herausgebers registriert. Zum anderen ist die systemeigene Anwendung so konfiguriert, dass sie die Berechtigungen angibt, die für eine ordnungsgemäße Verwendung erforderlich sind. Die Liste mit den erforderlichen Berechtigungen wird in einem Dialogfeld angezeigt, wenn ein Benutzer oder Administrator im Zielverzeichnis der Anwendung zustimmt. Dadurch wird die Anwendung in ihrer Organisation verfügbar. Einige Anwendungen benötigen nur Berechtigungen auf Benutzerebene. Diesen kann jeder Benutzer in der Organisation zustimmen. Andere Anwendungen benötigen Berechtigungen auf Administratorebene. Diesen kann ein Benutzer in der Organisation nicht zustimmen. Nur ein Verzeichnisadministrator kann seine Zustimmung für Anwendungen geben, die diese Berechtigungsebene erfordern. Wenn der Benutzer oder Administrator seine Zustimmung gibt, wird nur die Web-API in seinem Verzeichnis registriert. 
 
 ## <a name="token-expiration"></a>Tokenablauf

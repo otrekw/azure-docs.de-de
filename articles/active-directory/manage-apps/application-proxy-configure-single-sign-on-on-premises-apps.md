@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1046c11e064e69ed0ddb18c77bf5935ba60fb5aa
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: ccf34b52e06e369fe4dd459ff9dfa2880596fb35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461282"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481346"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>SAML-SSO (Single Sign-On, einmaliges Anmelden) für lokale Anwendungen mit dem Anwendungsproxy
 
@@ -58,7 +58,7 @@ In den Protokolldiagrammen unten sind die SSO-Sequenzen für einen vom Dienstanb
 
 Bevor Sie SSO für lokale Anwendungen bereitstellen können, müssen Sie den Anwendungsproxy aktivieren und einen Connector installieren. Im Tutorial [Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory](application-proxy-add-on-premises-application.md) wird beschrieben, wie Sie Ihre lokale Umgebung vorbereiten, einen Connector installieren und registrieren und diesen dann testen. Führen Sie anschließend diese Schritte aus, um Ihre neue Anwendung mit dem Anwendungsproxy zu veröffentlichen. Andere Einstellungen, die unten nicht beschrieben sind, finden Sie im Abschnitt [Hinzufügen einer lokalen App zu Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
 
-1. Wählen Sie bei geöffneter Anwendung im Azure-Portal die Option **Anwendungsproxy**. Geben Sie die **interne URL** für die Anwendung an. Bei Verwendung einer benutzerdefinierten Domäne müssen Sie auch das SSL-Zertifikat für Ihre Anwendung hochladen. 
+1. Wählen Sie bei geöffneter Anwendung im Azure-Portal die Option **Anwendungsproxy**. Geben Sie die **interne URL** für die Anwendung an. Bei Verwendung einer benutzerdefinierten Domäne müssen Sie auch das TLS/SSL-Zertifikat für Ihre Anwendung hochladen. 
    > [!NOTE]
    > Es hat sich bewährt, für eine optimierte Benutzerfreundlichkeit nach Möglichkeit benutzerdefinierte Domänen zu verwenden. Weitere Informationen finden Sie unter [Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy](application-proxy-configure-custom-domain.md).
 

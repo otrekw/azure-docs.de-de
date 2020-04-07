@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: b3278615b90fe2ef539456c3f00eb877918aa9c2
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: edd607c4d708df9fcfd3cbd5fdb71f0a7652d6c0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78248358"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80330905"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Planen der Bereitstellung eines Azure AD-Anwendungsproxys
 
@@ -68,7 +68,7 @@ Die folgenden grundlegenden Anforderungen müssen erfüllt sein, um den Azure AD
 
 * **Diensteinschränkungen**: Zum Schutz vor übermäßigem Ressourcenverbrauch durch einzelne Mandanten gelten bestimmte Drosselungsgrenzwerte pro Anwendung und Mandant. Die Grenzwerte finden Sie unter [Dienst- und andere Einschränkungen für Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions). Die Drosselungsgrenzwerte basieren auf einem Richtwert, der weit über dem typischen Nutzungsvolumen liegt und für die meisten Bereitstellungen ausreichend Puffer bietet.
 
-* **Öffentliches Zertifikat**: Wenn Sie benutzerdefinierte Domänennamen verwenden, müssen Sie ein SSL-Zertifikat beschaffen. Je nach den Anforderungen Ihrer Organisation kann die Beschaffung eines Zertifikats einige Zeit dauern. Wir empfehlen Ihnen daher, sich so früh wie möglich darum zu kümmern. Für den Azure-Anwendungsproxy werden Zertifikate vom Typ „Standard“, [„Platzhalter“](application-proxy-wildcard.md) oder „SAN-basiert“ unterstützt. Weitere Einzelheiten finden Sie unter [Konfigurieren von benutzerdefinierten Domänen per Azure AD-Anwendungsproxy](application-proxy-configure-custom-domain.md).
+* **Öffentliches Zertifikat**: Wenn Sie benutzerdefinierte Domänennamen verwenden, müssen Sie ein TLS/SSL-Zertifikat beschaffen. Je nach den Anforderungen Ihrer Organisation kann die Beschaffung eines Zertifikats einige Zeit dauern. Wir empfehlen Ihnen daher, sich so früh wie möglich darum zu kümmern. Für den Azure-Anwendungsproxy werden Zertifikate vom Typ „Standard“, [„Platzhalter“](application-proxy-wildcard.md) oder „SAN-basiert“ unterstützt. Weitere Einzelheiten finden Sie unter [Konfigurieren von benutzerdefinierten Domänen per Azure AD-Anwendungsproxy](application-proxy-configure-custom-domain.md).
 
 * **Domänenanforderungen**: Das einmalige Anmelden bei Ihren veröffentlichten Anwendungen mithilfe der eingeschränkten Kerberos-Delegierung (Kerberos Constrained Delegation, KCD) erfordert, dass der Server, auf dem der Connector ausgeführt wird, und der Server, auf dem die App ausgeführt wird, in Domänen eingebunden sind und derselben Domäne oder vertrauenswürdigen Domänen angehören.
 Ausführliche Informationen zu diesem Thema finden Sie unter [Eingeschränkte Delegierung von Kerberos für die einmalige Anmeldung zu Ihren Apps mit dem Anwendungsproxy](application-proxy-configure-single-sign-on-with-kcd.md). Der Connectordienst wird im Kontext des lokalen Systems ausgeführt und sollte nicht für die Verwendung einer benutzerdefinierten Identität konfiguriert werden.
@@ -155,7 +155,7 @@ Mit den folgenden Entwurfselementen erhöhen sich die Erfolgschancen Ihrer direk
 
 **Einstellungen für einmaliges Anmelden**: Einige Einstellungen für einmaliges Anmelden verfügen über spezifische Abhängigkeiten, deren Einrichtung zeitaufwendig sein kann. Vermeiden Sie daher Verzögerungen bei der Änderungssteuerung, indem Sie sicherstellen, dass die Einrichtung der Abhängigkeiten rechtzeitig geregelt wird. Dies umfasst auch das Einbinden von Connectorhosts in die Domäne, um einmaliges Anmelden per eingeschränkter Kerberos-Delegierung (KCD) durchzuführen, sowie das Durchführen anderer zeitaufwendiger Aktivitäten. Ein Beispiel hierfür ist das Einrichten einer PingAccess-Instanz, falls headerbasiertes einmaliges Anmelden benötigt wird.
 
-**SSL zwischen Connectorhost und Zielanwendung**: Da die Sicherheit an oberster Stelle steht, sollte zwischen dem Connectorhost und den Zielanwendungen immer TLS verwendet werden. Dies gilt vor allem, wenn die Webanwendung für die formularbasierte Authentifizierung (FBA) konfiguriert wird, da die Benutzeranmeldeinformationen dann auf effektive Weise als Klartext übertragen werden.
+**TLS zwischen Connectorhost und Zielanwendung**: Da die Sicherheit an oberster Stelle steht, sollte zwischen dem Connectorhost und den Zielanwendungen immer TLS verwendet werden. Dies gilt vor allem, wenn die Webanwendung für die formularbasierte Authentifizierung (FBA) konfiguriert wird, da die Benutzeranmeldeinformationen dann auf effektive Weise als Klartext übertragen werden.
 
 **Inkrementelles Implementieren und Testen jedes Schritts**: Führen Sie nach dem Veröffentlichen einer Anwendung einen grundlegenden Funktionstest durch, um sicherzustellen, dass alle Benutzer- und Geschäftsanforderungen erfüllt sind, indem Sie die folgenden Schritte ausführen:
 

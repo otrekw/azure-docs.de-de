@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42fc10c1e7e88e36e4d2174671702e043fb96538
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: 0507989ec25db595a85b89f15d8ff7d056a970f8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78926847"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297682"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung mit Azure Active Directory (Azure AD)
 
@@ -287,10 +287,10 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 
 #### <a name="get-user"></a>Benutzer abrufen
 
-###### <a name="request-1"></a>Anforderung
+###### <a name="request"></a><a name="request-1"></a>Anforderung
 *GET /Users/5d48a0a8e9f04aa38008* 
 
-###### <a name="response-1"></a>Antwort (Benutzer gefunden)
+###### <a name="response-user-found"></a><a name="response-1"></a>Antwort (Benutzer gefunden)
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -334,11 +334,11 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 
 #### <a name="get-user-by-query"></a>Benutzer nach Abfrage abrufen
 
-##### <a name="request-2"></a>Anforderung
+##### <a name="request"></a><a name="request-2"></a>Anforderung
 
 *GET /Users?filter=userName eq "Test_User_dfeef4c5-5681-4387-b016-bdf221e82081"*
 
-##### <a name="response-2"></a>Antwort
+##### <a name="response"></a><a name="response-2"></a>Antwort
 
 *HTTP/1.1 200 OK*
 ```json
@@ -375,11 +375,11 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 
 #### <a name="get-user-by-query---zero-results"></a>Benutzer nach Abfrage abrufen – keine Ergebnisse
 
-##### <a name="request-3"></a>Anforderung
+##### <a name="request"></a><a name="request-3"></a>Anforderung
 
 *GET /Users?filter=userName eq "non-existent user"*
 
-##### <a name="response-3"></a>Antwort
+##### <a name="response"></a><a name="response-3"></a>Antwort
 
 *HTTP/1.1 200 OK*
 ```json
@@ -395,7 +395,7 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 
 #### <a name="update-user-multi-valued-properties"></a>Benutzer aktualisieren [mehrwertige Eigenschaften]
 
-##### <a name="request-4"></a>Anforderung
+##### <a name="request"></a><a name="request-4"></a>Anforderung
 
 *PATCH /Users/6764549bef60420686bc HTTP/1.1*
 ```json
@@ -416,7 +416,7 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 }
 ```
 
-##### <a name="response-4"></a>Antwort
+##### <a name="response"></a><a name="response-4"></a>Antwort
 
 *HTTP/1.1 200 OK*
 ```json
@@ -446,7 +446,7 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 
 #### <a name="update-user-single-valued-properties"></a>Benutzer aktualisieren [einwertige Eigenschaften]
 
-##### <a name="request-5"></a>Anforderung
+##### <a name="request"></a><a name="request-5"></a>Anforderung
 
 *PATCH /Users/5171a35d82074e068ce2 HTTP/1.1*
 ```json
@@ -460,7 +460,7 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 }
 ```
 
-##### <a name="response-5"></a>Antwort
+##### <a name="response"></a><a name="response-5"></a>Antwort
 
 *HTTP/1.1 200 OK*
 ```json
@@ -491,7 +491,7 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 
 ### <a name="disable-user"></a>Benutzer deaktivieren
 
-##### <a name="request-14"></a>Anforderung
+##### <a name="request"></a><a name="request-14"></a>Anforderung
 
 *PATCH /Users/5171a35d82074e068ce2 HTTP/1.1*
 ```json
@@ -509,7 +509,7 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 }
 ```
 
-##### <a name="response-14"></a>Antwort
+##### <a name="response"></a><a name="response-14"></a>Antwort
 
 ```json
 {
@@ -545,11 +545,11 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 ```
 #### <a name="delete-user"></a>Benutzer löschen
 
-##### <a name="request-6"></a>Anforderung
+##### <a name="request"></a><a name="request-6"></a>Anforderung
 
 *DELETE /Users/5171a35d82074e068ce2 HTTP/1.1*
 
-##### <a name="response-6"></a>Antwort
+##### <a name="response"></a><a name="response-6"></a>Antwort
 
 *HTTP/1.1 204 No Content*
 
@@ -562,7 +562,7 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 
 #### <a name="create-group"></a>Erstellen einer Gruppe
 
-##### <a name="request-7"></a>Anforderung
+##### <a name="request"></a><a name="request-7"></a>Anforderung
 
 *POST /Groups HTTP/1.1*
 ```json
@@ -576,7 +576,7 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 }
 ```
 
-##### <a name="response-7"></a>Antwort
+##### <a name="response"></a><a name="response-7"></a>Antwort
 
 *HTTP/1.1 201 Created*
 ```json
@@ -597,11 +597,11 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 
 #### <a name="get-group"></a>Gruppe abrufen
 
-##### <a name="request-8"></a>Anforderung
+##### <a name="request"></a><a name="request-8"></a>Anforderung
 
 *GET /Groups/40734ae655284ad3abcc?excludedAttributes=members HTTP/1.1*
 
-##### <a name="response-8"></a>Antwort
+##### <a name="response"></a><a name="response-8"></a>Antwort
 *HTTP/1.1 200 OK*
 ```json
 {
@@ -619,10 +619,10 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 
 #### <a name="get-group-by-displayname"></a>Gruppe nach „displayName“ abrufen
 
-##### <a name="request-9"></a>Anforderung
+##### <a name="request"></a><a name="request-9"></a>Anforderung
 *GET /Groups?excludedAttributes=members&filter=displayName eq "displayName" HTTP/1.1*
 
-##### <a name="response-9"></a>Antwort
+##### <a name="response"></a><a name="response-9"></a>Antwort
 
 *HTTP/1.1 200 OK*
 ```json
@@ -648,7 +648,7 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 
 #### <a name="update-group-non-member-attributes"></a>Gruppe aktualisieren [Nichtmitglieder-Attribute]
 
-##### <a name="request-10"></a>Anforderung
+##### <a name="request"></a><a name="request-10"></a>Anforderung
 
 *PATCH /Groups/fa2ce26709934589afc5 HTTP/1.1*
 ```json
@@ -662,13 +662,13 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 }
 ```
 
-##### <a name="response-10"></a>Antwort
+##### <a name="response"></a><a name="response-10"></a>Antwort
 
 *HTTP/1.1 204 No Content*
 
 ### <a name="update-group-add-members"></a>Gruppe aktualisieren [Mitglieder hinzufügen]
 
-##### <a name="request-11"></a>Anforderung
+##### <a name="request"></a><a name="request-11"></a>Anforderung
 
 *PATCH /Groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
@@ -685,13 +685,13 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 }
 ```
 
-##### <a name="response-11"></a>Antwort
+##### <a name="response"></a><a name="response-11"></a>Antwort
 
 *HTTP/1.1 204 No Content*
 
 #### <a name="update-group-remove-members"></a>Gruppe aktualisieren [Mitglieder entfernen]
 
-##### <a name="request-12"></a>Anforderung
+##### <a name="request"></a><a name="request-12"></a>Anforderung
 
 *PATCH /Groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
@@ -708,17 +708,17 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
 }
 ```
 
-##### <a name="response-12"></a>Antwort
+##### <a name="response"></a><a name="response-12"></a>Antwort
 
 *HTTP/1.1 204 No Content*
 
 #### <a name="delete-group"></a>Gruppe löschen
 
-##### <a name="request-13"></a>Anforderung
+##### <a name="request"></a><a name="request-13"></a>Anforderung
 
 *DELETE /Groups/cdb1ce18f65944079d37 HTTP/1.1*
 
-##### <a name="response-13"></a>Antwort
+##### <a name="response"></a><a name="response-13"></a>Antwort
 
 *HTTP/1.1 204 No Content*
 
@@ -752,10 +752,368 @@ TLS 1.2-Verschlüsselungssammlungen (Minimum):
 
 ## <a name="step-3-build-a-scim-endpoint"></a>Schritt 3: Erstellen eines SCIM-Endpunkts
 
-Nachdem Sie das Schema entworfen und die Azure AD-SCIM-Implementierung verstanden haben, können Sie mit der Entwicklung Ihres SCIM-Endpunkts beginnen. Anstatt bei Null anzufangen und die Implementierung komplett selbst zu erstellen, können Sie sich auf eine Reihe von Open-Source-SCIM-Bibliotheken zurückgreifen, die von der SCIM-Community veröffentlicht werden.  
+Nachdem Sie das Schema entworfen und die Azure AD-SCIM-Implementierung verstanden haben, können Sie mit der Entwicklung Ihres SCIM-Endpunkts beginnen. Anstatt bei Null anzufangen und die Implementierung komplett selbst zu erstellen, können Sie auf eine Reihe von Open-Source-SCIM-Bibliotheken zurückgreifen, die von der SCIM-Community veröffentlicht werden.
+
 Der Open-Source-[Referenzcode](https://aka.ms/SCIMReferenceCode) für .NET Core, der vom Azure AD-Bereitstellungsteam veröffentlicht wird, ist eine solche Ressource, die Ihnen einen schnellen Einstieg in die Entwicklung ermöglicht. Nachdem Sie den SCIM-Endpunkt erstellt haben, sollten Sie ihn testen. Sie können die Sammlung von [Postman-Tests](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) verwenden, die als Teil des Referenzcodes bereitgestellt werden, oder die [oben](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#user-operations) aufgeführten Beispielanforderungen/-antworten ausführen.  
 
-Hinweis: Der Referenzcode soll Ihnen den Einstieg in das Erstellen des SCIM-Endpunkts erleichtern und wird in unveränderter Form zur Verfügung gestellt. Beiträge aus der Community sind stets willkommen, um den Code weiter auszubauen und zu pflegen. 
+   > [!Note]
+   > Der Referenzcode soll Ihnen den Einstieg in das Erstellen des SCIM-Endpunkts erleichtern und wird in unveränderter Form zur Verfügung gestellt. Beiträge aus der Community sind stets willkommen, um den Code weiter auszubauen und zu pflegen.
+
+Die Lösung besteht aus zwei Projekten: _Microsoft.SCIM_ und _Microsoft.SCIM.WebHostsample_.
+
+Das Projekt _Microsoft.SCIM_ ist eine Bibliothek und definiert die Komponenten des Webdiensts, welcher der SCIM-Spezifikation entspricht. Er deklariert die Schnittstelle _Microsoft.SCIM.IProvider_. Anforderungen werden in Aufrufe der Methoden des Anbieters übersetzt, die für den Betrieb in einem Identitätsspeicher programmiert werden.
+
+![Aufschlüsselung: Eine Anforderung, die in Aufrufe der Methoden des Anbieters übersetzt wurde](media/use-scim-to-provision-users-and-groups/scim-figure-3.png)
+
+Das Projekt _Microsoft.SCIM.WebHostSample_ ist eine ASP.NET Core-Webanwendung von Visual Studio, die auf der _leeren_ Vorlage basiert. Dadurch kann der Beispielcode eigenständig bereitgestellt werden und in Containern oder in Internetinformationsdiensten gehostet werden. Implementiert wird auch die Schnittstelle _Microsoft.SCIM.IProvider_, die Klassen im Arbeitsspeicher als Beispielidentitätsspeicher beibehält.
+
+```csharp
+    public class Startup
+    {
+        ...
+        public IMonitor MonitoringBehavior { get; set; }
+        public IProvider ProviderBehavior { get; set; }
+
+        public Startup(IWebHostEnvironment env, IConfiguration configuration)
+        {
+            ...
+            this.MonitoringBehavior = new ConsoleMonitor();
+            this.ProviderBehavior = new InMemoryProvider();
+        }
+        ...
+```
+
+### <a name="building-a-custom-scim-endpoint"></a>Erstellen eines benutzerdefinierten SCIM-Endpunkts
+
+Der SCIM-Dienst muss über eine HTTP-Adresse und über ein Serverauthentifizierungszertifikat mit einer der folgenden Stammzertifizierungsstellen verfügen:
+
+* CNNIC
+* Comodo
+* CyberTrust
+* DigiCert
+* GeoTrust
+* GlobalSign
+* Go Daddy
+* VeriSign
+* WoSign
+
+Der .NET Core-SDK enthält ein HTTPS-Entwicklungszertifikat, das bei der Entwicklung verwendet werden kann. Dieses Zertifikat wird im Rahmen der Erstausführung installiert. Je nach Ausführung der ASP.NET Core-Webanwendung lauscht es an einem anderen Port:
+
+* Microsoft.SCIM.WebHostSample: https://localhost:5001
+* IIS Express: https://localhost:44359/
+
+Weitere Informationen zu HTTPS in ASP.NET Core erhalten Sie über folgenden Link: [Erzwingen von HTTPS in ASP.NET Core](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl)
+
+### <a name="handling-endpoint-authentication"></a>Behandeln der Endpunktauthentifizierung
+
+Anforderungen aus Azure Active Directory enthalten ein OAuth 2.0-Bearertoken. Alle Dienste, die die Anforderung empfangen, müssen den Aussteller als Azure Active Directory für den erwarteten Azure Active Directory-Mandanten authentifizieren.
+
+Im Token wird der Aussteller durch einen iss-Anspruch identifiziert (z. B. `"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"`). In diesem Beispiel wird die Basisadresse des Anspruchswerts (`https://sts.windows.net`) zum Identifizieren von Azure Active Directory als Aussteller verwendet, während das Segment mit der relativen Adresse (_cbb1a5ac-f33b-45fa-9bf5-f37db0fed422_) ein eindeutiger Bezeichner des Azure Active Directory-Mandanten ist, für den das Token ausgestellt wurde.
+
+Zielgruppe für das Token ist die Anwendungsvorlagen-ID für die Anwendung im Katalog. Jede in einem einzelnen Mandanten registrierte Anwendung empfängt mit SCIM-Anforderungen möglicherweise denselben `iss`-Anspruch. Jede Anwendung im Katalog verfügt über eine andere Anwendungsvorlagen-ID. Bei Fragen rund um die Anwendungsvorlagen-ID für eine Kataloganwendung wenden Sie sich an [ProvisioningFeedback@microsoft.com](mailto:ProvisioningFeedback@microsoft.com). Die Anwendungsvorlagen-ID für alle benutzerdefinierten Apps lautet _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_.
+
+Im Beispielcode werden Anforderungen mit dem Microsoft.AspNetCore.Authentication.JwtBearer-Paket authentifiziert. Mit dem folgenden Code wird erzwungen, dass Anforderungen an Endpunkte des Diensts mit dem von Azure Active Directory für einen bestimmten Mandanten ausgegebenen Bearertoken authentifiziert werden:
+
+```csharp
+        public void ConfigureServices(IServiceCollection services)
+        {
+            if (_env.IsDevelopment())
+            {
+                ...
+            }
+            else
+            {
+                services.AddAuthentication(options =>
+                {
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                    .AddJwtBearer(options =>
+                    {
+                        options.Authority = " https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/";
+                        options.Audience = "8adf8e6e-67b2-4cf2-a259-e3dc5476c621";
+                        ...
+                    });
+            }
+            ...
+        }
+
+        public void Configure(IApplicationBuilder app)
+        {
+            ...
+            app.UseAuthentication();
+            app.UseAuthorization();
+            ...
+       }
+```
+
+Ein Bearertoken ist auch zur Verwendung der bereitgestellten [Postman-Tests](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) und zum lokalen Debuggen mithilfe von „localhost“ erforderlich. Für den Beispielcode werden ASP.NET Core-Umgebungen verwendet, damit im Entwicklungsstadium die Authentifizierungsoptionen geändert und selbstsignierte Token verwendet werden können.
+
+Weitere Informationen zu mehreren Umgebungen in ASP.NET Core erhalten Sie über den folgenden Link: [Verwenden von mehreren Umgebungen in ASP.NET Core](
+https://docs.microsoft.com/aspnet/core/fundamentals/environments)
+
+Mit dem folgenden Code wird erzwungen, dass Anforderungen an Endpunkte des Diensts mit einem Bearertoken, das mit einem benutzerdefinierten Schlüssel signiert wurde, authentifiziert werden:
+
+```csharp
+        public void ConfigureServices(IServiceCollection services)
+        {
+            if (_env.IsDevelopment())
+            {
+                services.AddAuthentication(options =>
+                {
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                    .AddJwtBearer(options =>
+                    {
+                        options.TokenValidationParameters =
+                            new TokenValidationParameters
+                            {
+                                ValidateIssuer = false,
+                                ValidateAudience = false,
+                                ValidateLifetime = false,
+                                ValidateIssuerSigningKey = false,
+                                ValidIssuer = "Microsoft.Security.Bearer",
+                                ValidAudience = "Microsoft.Security.Bearer",
+                                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("A1B2C3D4E5F6A1B2C3D4E5F6"))
+                            };
+                    });
+            }
+        ...
+```
+
+Senden Sie eine GET-Anforderung an den Tokencontroller, um ein gültiges Bearertoken abzurufen. Die Methode _GenerateJSONWebToken_ ist für die Erstellung eines Tokens verantwortlich, das den für die Entwicklung konfigurierten Parametern entspricht:
+
+```csharp
+        private string GenerateJSONWebToken()
+        {
+            // Create token key
+            SymmetricSecurityKey securityKey =
+                new SymmetricSecurityKey(Encoding.UTF8.GetBytes("A1B2C3D4E5F6A1B2C3D4E5F6"));
+            SigningCredentials credentials =
+                new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+
+            // Set token expiration
+            DateTime startTime = DateTime.UtcNow;
+            DateTime expiryTime = startTime.AddMinutes(120);
+
+            // Generate the token
+            JwtSecurityToken token =
+                new JwtSecurityToken(
+                    "Microsoft.Security.Bearer",
+                    "Microsoft.Security.Bearer",
+                    null,
+                    notBefore: startTime,
+                    expires: expiryTime,
+                    signingCredentials: credentials);
+
+            string result = new JwtSecurityTokenHandler().WriteToken(token);
+            return result;
+        }
+```
+
+### <a name="handling-provisioning-and-deprovisioning-of-users"></a>Vorgehensweise beim Bereitstellen und beim Aufheben der Bereitstellung von Benutzern
+
+***Beispiel 1: Abfragen des Diensts nach einem passenden Benutzer***
+
+Azure Active Directory fragt den Dienst nach einem Benutzer mit einem externalId-Attributwert ab, der mit dem mailNickname-Attributwert eines Benutzers in Azure AD übereinstimmt. Die Abfrage wird als Hypertext Transfer-Protokoll-Anforderung (HTTP-Anforderung) wie in diesem Beispiel ausgedrückt, wobei „jyoung“ ein Beispiel für ein mailNickname-Attribut eines Benutzers in Azure Active Directory ist.
+
+>[!NOTE]
+> Dies ist nur ein Beispiel. Nicht alle Benutzer verfügen über ein mailNickname-Attribut, und der Wert eines Benutzers ist möglicherweise im Verzeichnis nicht eindeutig. Das für den Abgleich verwendete Attribut (in diesem Fall „externalId“) kann auch in den [Azure AD-Attributzuordnungen](customize-application-attributes.md) konfiguriert werden.
+
+```
+GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
+ Authorization: Bearer ...
+```
+
+Im Beispielcode wird die Anforderung in einen Aufruf der QueryAsync-Methode des Dienstanbieters übersetzt. Dies ist die Signatur dieser Methode: 
+
+```csharp
+ // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
+ // Microsoft.SCIM.IRequest is defined in 
+ // Microsoft.SCIM.Service.  
+ // Microsoft.SCIM.Resource is defined in 
+ // Microsoft.SCIM.Schemas.  
+ // Microsoft.SCIM.IQueryParameters is defined in 
+ // Microsoft.SCIM.Protocol.  
+
+ Task<Resource[]> QueryAsync(IRequest<IQueryParameters> request);
+```
+
+In der Beispielabfrage für einen Benutzer mit einem bestimmten Wert für das externalId-Attribut lauten die Werte der Argumente, die an die QueryAsync-Methode übergeben werden, wie folgt:
+
+* parameters.AlternateFilters.Count: 1
+* parameters.AlternateFilters.ElementAt(0).AttributePath: "externalId"
+* parameters.AlternateFilters.ElementAt(0).ComparisonOperator: ComparisonOperator.Equals
+* parameters.AlternateFilter.ElementAt(0).ComparisonValue: "jyoung"
+
+***Beispiel 2: Bereitstellen eines Benutzers***
+
+Wenn in der Antwort auf eine Abfrage an den Webdienst für einen Benutzer mit einem externalId-Attributwert, der mit dem mailNickname-Attributwert eines Benutzers übereinstimmt, keine Benutzer zurückgegeben werden, stellt Azure Active Directory die folgende Anforderung: Der Dienst muss einen Benutzer bereitstellen, der dem Benutzer in Azure Active Directory entspricht.  Dies ist ein Beispiel für eine Anforderung dieser Art: 
+
+```
+ POST https://.../scim/Users HTTP/1.1
+ Authorization: Bearer ...
+ Content-type: application/scim+json
+ {
+   "schemas":
+   [
+     "urn:ietf:params:scim:schemas:core:2.0:User",
+     "urn:ietf:params:scim:schemas:extension:enterprise:2.0User"],
+   "externalId":"jyoung",
+   "userName":"jyoung",
+   "active":true,
+   "addresses":null,
+   "displayName":"Joy Young",
+   "emails": [
+     {
+       "type":"work",
+       "value":"jyoung@Contoso.com",
+       "primary":true}],
+   "meta": {
+     "resourceType":"User"},
+    "name":{
+     "familyName":"Young",
+     "givenName":"Joy"},
+   "phoneNumbers":null,
+   "preferredLanguage":null,
+   "title":null,
+   "department":null,
+   "manager":null}
+```
+
+Im Beispielcode wird die Anforderung in einen Aufruf der CreateAsync-Methode des Dienstanbieters übersetzt. Dies ist die Signatur dieser Methode: 
+
+```csharp
+ // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
+ // Microsoft.SCIM.IRequest is defined in 
+ // Microsoft.SCIM.Service.  
+ // Microsoft.SCIM.Resource is defined in 
+ // Microsoft.SCIM.Schemas.  
+
+ Task<Resource> CreateAsync(IRequest<Resource> request);
+```
+
+In der Anforderung einer Benutzerbereitstellung entspricht der Wert des Ressourcenarguments einer Instanz der Klasse „Microsoft.SCIM.Core2EnterpriseUser“, die in der Microsoft.SCIM.Schemas-Bibliothek definiert ist.  Wenn die Anforderung der Benutzerbereitstellung erfolgreich ist, soll die Implementierung der Methode eine Instanz der Klasse „Microsoft.SCIM.Core2EnterpriseUser“ zurückgeben. Dabei muss der Wert der Eigenschaft „Identifier“ auf den eindeutigen Bezeichner des neu bereitgestellten Benutzers eingestellt sein.  
+
+***Beispiel 3: Abfragen des aktuellen Status eines Benutzers*** 
+
+Zum Aktualisieren eines Benutzers, der in einem Identitätsspeicher mit vorgelagertem SCIM vorhanden ist, geht Azure Active Directory so vor, dass der aktuelle Status dieses Benutzers vom Dienst per Anforderung abgefragt wird. Die Anforderung hierzu sieht wie folgt aus: 
+
+```
+ GET ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
+ Authorization: Bearer ...
+```
+
+Im Beispielcode wird die Anforderung in einen Aufruf der RetrieveAsync-Methode des Dienstanbieters übersetzt. Dies ist die Signatur dieser Methode: 
+
+```csharp
+ // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
+ // Microsoft.SCIM.IRequest is defined in 
+ // Microsoft.SCIM.Service.  
+ // Microsoft.SCIM.Resource and 
+ // Microsoft.SCIM.IResourceRetrievalParameters 
+ // are defined in Microsoft.SCIM.Schemas 
+
+ Task<Resource> RetrieveAsync(IRequest<IResourceRetrievalParameters> request);
+```
+
+Im Beispiels für eine Anforderung zum Abrufen des aktuellen Status eines Benutzers lauten die Werte der Eigenschaften des Objekts, das als Wert des parameters-Arguments angegeben wird, wie folgt: 
+  
+* Bezeichner: „54D382A4-2050-4C03-94D1-E769F1D15682“
+* SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+
+***Beispiel 4: Abfragen des Werts eines zu aktualisierenden Referenzattributs*** 
+
+Wenn ein Verweisattribut aktualisiert werden soll, fragt Azure Active Directory den Dienst ab, um zu ermitteln, ob der aktuelle Wert des Verweisattributs im Identitätsspeicher mit vorgelagertem Dienst bereits mit dem Wert dieses Attributs in Azure Active Directory übereinstimmt. Bei Benutzern ist das einzige Attribut, für das der aktuelle Wert auf diese Weise abgefragt wird, das manager-Attribut. Dies ist ein Beispiel für eine Anforderung, mit der ermittelt wird, ob das „manager“-Attribut eines Benutzerobjekts derzeit über einen bestimmten Wert verfügt: Im Beispielcode wird die Anforderung in einen Aufruf der QueryAsync-Methode des Dienstanbieters übersetzt. Der Wert der Eigenschaften des Objekts, das als Wert des parameters-Arguments angegeben wird, lautet wie folgt: 
+  
+* parameters.AlternateFilters.Count: 2
+* parameters.AlternateFilters.ElementAt(x).AttributePath: „ID“
+* parameters.AlternateFilters.ElementAt(x).ComparisonOperator: ComparisonOperator.Equals
+* parameters.AlternateFilter.ElementAt(x).ComparisonValue: „54D382A4-2050-4C03-94D1-E769F1D15682“
+* parameters.AlternateFilters.ElementAt(y).AttributePath: "manager"
+* parameters.AlternateFilters.ElementAt(y).ComparisonOperator: ComparisonOperator.Equals
+* parameters.AlternateFilter.ElementAt(y).ComparisonValue: „2819c223-7f76-453a-919d-413861904646“
+* parameters.RequestedAttributePaths.ElementAt(0): „ID“
+* parameters.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+
+Hier kann der Wert von Index x „0“ und der Wert von Index y „1“ lauten, oder der Wert von x kann „1“ und der Wert von y „0“ lauten. Dies hängt von der Reihenfolge bei den Ausdrücken des Filterabfrageparameters ab.   
+
+***Beispiel 5: Anforderung von Azure AD an einen SCIM-Dienst zur Aktualisierung eines Benutzers*** 
+
+Dies ist ein Beispiel für eine Anforderung von Azure Active Directory an einen SCIM-Dienst zum Aktualisieren eines Benutzers: 
+
+```
+  PATCH ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
+  Authorization: Bearer ...
+  Content-type: application/scim+json
+  {
+    "schemas": 
+    [
+      "urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+    "Operations":
+    [
+      {
+        "op":"Add",
+        "path":"manager",
+        "value":
+          [
+            {
+              "$ref":"http://.../scim/Users/2819c223-7f76-453a-919d-413861904646",
+              "value":"2819c223-7f76-453a-919d-413861904646"}]}]}
+```
+
+Im Beispielcode wird die Anforderung in einen Aufruf der UpdateAsync-Methode des Dienstanbieters übersetzt. Dies ist die Signatur dieser Methode: 
+
+```csharp
+ // System.Threading.Tasks.Tasks and 
+ // System.Collections.Generic.IReadOnlyCollection<T>  // are defined in mscorlib.dll.  
+ // Microsoft.SCIM.IRequest is defined in
+ // Microsoft.SCIM.Service.
+ // Microsoft.SCIM.IPatch, 
+ // is defined in Microsoft.SCIM.Protocol. 
+
+ Task UpdateAsync(IRequest<IPatch> request);
+```
+
+Im Beispiel für eine Anforderung zum Aktualisieren eines Benutzers verfügt das Objekt, das als Wert des patch-Arguments angegeben wird, über diese Eigenschaftswerte: 
+  
+* ResourceIdentifier.Identifier: „54D382A4-2050-4C03-94D1-E769F1D15682“
+* ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
+* (PatchRequest as PatchRequest2).Operations.Count: 1
+* (PatchRequest as PatchRequest2).Operations.ElementAt(0).OperationName: OperationName.Add
+* (PatchRequest as PatchRequest2).Operations.ElementAt(0).Path.AttributePath: "manager"
+* (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.Count: 1
+* (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Reference: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
+* (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Value: 2819c223-7f76-453a-919d-413861904646
+
+***Beispiel 6: Aufheben der Bereitstellung eines Benutzers***
+
+Um die Bereitstellung für einen Benutzer aus einem Identitätsspeicher mit vorgelagertem SCIM-Dienst aufzuheben, sendet Azure AD eine Anforderung der folgenden Art:
+
+```
+  DELETE ~/scim/Users/54D382A4-2050-4C03-94D1-E769F1D15682 HTTP/1.1
+  Authorization: Bearer ...
+```
+
+Im Beispielcode wird die Anforderung in einen Aufruf der DeleteAsync-Methode des Dienstanbieters übersetzt. Dies ist die Signatur dieser Methode: 
+
+```csharp
+ // System.Threading.Tasks.Tasks is defined in mscorlib.dll.  
+ // Microsoft.SCIM.IRequest is defined in 
+ // Microsoft.SCIM.Service.  
+ // Microsoft.SCIM.IResourceIdentifier, 
+ // is defined in Microsoft.SCIM.Protocol. 
+
+ Task DeleteAsync(IRequest<IResourceIdentifier> request);
+```
+
+Im Beispiel für eine Anforderung zum Aufheben der Bereitstellung eines Benutzers verfügt das Objekt, das als Wert des resourceIdentifier-Arguments angegeben wird, über diese Eigenschaftswerte: 
+
+* ResourceIdentifier.Identifier: „54D382A4-2050-4C03-94D1-E769F1D15682“
+* ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
 ## <a name="step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client"></a>Schritt 4: Integrieren Ihres SCIM-Endpunkts mit dem Azure AD SCIM-Client
 
@@ -786,7 +1144,7 @@ Anwendungen, die das SCIM-Profil wie in diesem Artikel beschrieben erfüllen, k�
    ![Beispiel: Bereitstellungsseite einer App im Azure-Portal](media/use-scim-to-provision-users-and-groups/scim-figure-2b.png)<br/>
    *Konfigurieren der Bereitstellung im Azure-Portal*
 
-7. Geben Sie im Feld **Mandanten-URL** die URL des SCIM-Endpunkts der Anwendung ein. Beispiel: https://api.contoso.com/scim/
+7. Geben Sie im Feld **Mandanten-URL** die URL des SCIM-Endpunkts der Anwendung ein. Beispiel: `https://api.contoso.com/scim/`
 8. Wenn der SCIM-Endpunkt ein OAuth-Bearertoken benötigt, das von einem anderen Aussteller als Azure AD stammt, kopieren Sie das erforderliche OAuth-Bearertoken in das optionale Feld **Geheimes Token**. Wird dieses Feld leer gelassen, fügt Azure AD in jede Anforderung ein von Azure AD ausgestelltes OAuth-Bearertoken ein. Apps, die Azure AD als Identitätsanbieter verwenden, können dieses von Azure AD ausgestellte Token überprüfen. 
    > [!NOTE]
    > Es wird ***nicht*** empfohlen, dieses Feld leer zu lassen und sich auf ein von Azure AD generiertes Token zu verlassen. Diese Option steht in erster Linie zu Testzwecken zur Verfügung.

@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/08/2017
+ms.date: 03/13/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa7b5c82f0b057e2eb029b9cc632d8da02206678
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6fd6794bafc3c209032f32626e8c46b51769d05e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108388"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481227"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Sicherheitsaspekte beim Remotezugriff auf Apps mit dem Azure AD-Anwendungsproxy
 
@@ -81,15 +81,11 @@ Software ohne die richtigen Patches ist immer noch eine häufige Ursache für ei
 
 Zur Erhöhung der Sicherheit von Anwendungen, die vom Azure AD-Anwendungsproxy veröffentlicht werden, blockieren wir die Indizierung und Archivierung Ihrer Anwendungen durch Webcrawlerroboter. Wenn ein Webcrawler versucht, die robots-Einstellungen für eine veröffentlichte App abzurufen, antwortet der Anwendungsproxy mit einer Datei namens „robots.txt“, die `User-agent: * Disallow: /` enthält.
 
-### <a name="ddos-prevention"></a>DDoS-Prävention
+#### <a name="azure-ddos-protection-service"></a>Azure DDoS Protection-Dienst
 
-Über den Anwendungsproxy veröffentlichte Anwendungen sind vor verteilten Denial-of-Service-Angriffen (Distributed Denial of Service, DDoS) geschützt.
+Über den Anwendungsproxy veröffentlichte Anwendungen sind vor verteilten Denial-of-Service-Angriffen (Distributed Denial of Service, DDoS) geschützt. **Azure DDoS Protection** ist ein Dienst, der mit der Azure-Plattform angeboten wird, um Ihre Azure-Ressourcen vor Denial-of-Service-Angriffen zu schützen. Der Tarif **Basic** ist für den Dienst automatisch aktiviert. Er ermöglicht eine permanente Datenverkehrsüberwachung und die Abwehr von häufigen Angriffen auf der Vermittlungsschicht in Echtzeit. Ein Tarif **Standard** ist ebenfalls verfügbar. Er bietet zusätzliche Funktionen zur Angriffsabwehr, die speziell für virtuelle Azure-Netzwerkressourcen optimiert sind. Einzelheiten dazu finden Sie in der [Übersicht über Azure DDoS Protection Standard](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
 
-Der Anwendungsproxydienst überwacht den Umfang des Datenverkehrs, der Ihre Anwendungen und Ihr Netzwerk zu erreichen versucht. Wenn die Anzahl der Geräte, die Remotezugriff auf Ihre Anwendungen anfordern, einen Höchststand erreicht, drosselt Microsoft den Zugriff auf Ihr Netzwerk. 
-
-Microsoft überwacht Datenverkehrsmuster für einzelne Anwendungen und für Ihr gesamtes Abonnement. Wenn eine Anwendung eine außergewöhnlich hohe Anzahl von Anforderungen empfängt, werden für eine kurze Zeitspanne Anforderungen des Zugriffs auf diese Anwendung abgelehnt. Wenn Sie für Ihr gesamtes Abonnement eine außergewöhnlich hohe Anzahl von Anforderungen erhalten, werden die Zugriffsanforderungen für alle Ihre Apps abgelehnt. Diese Vorsichtsmaßnahme verhindert die Überlastung der Anwendungsserver durch Remotezugriffsanforderungen, sodass die lokalen Benutzer weiterhin auf ihre Apps zugreifen können. 
-
-## <a name="under-the-hood"></a>Im Hintergrund
+## <a name="under-the-hood"></a>Hinter den Kulissen
 
 Der Azure AD-Anwendungsproxy besteht aus zwei Teilen:
 
@@ -103,7 +99,7 @@ Ein Flow zwischen dem Connector und dem Anwendungsproxydienst wird in folgenden 
 * Ein Benutzer greift auf eine veröffentlichte Anwendung zu.
 
 >[!NOTE]
->Die gesamte Kommunikation erfolgt per SSL und verläuft immer vom Connector zum Anwendungsproxydienst. Der Dienst gilt nur für ausgehenden Datenverkehr.
+>Die gesamte Kommunikation erfolgt über TLS und verläuft immer vom Connector zum Anwendungsproxydienst. Der Dienst gilt nur für ausgehenden Datenverkehr.
 
 Der Connector verwendet ein Clientzertifikat, um den Anwendungsproxydienst für nahezu alle Aufrufe zu authentifizieren. Die einzige Ausnahme zu dieser Vorgehensweise ist hierbei der anfängliche Setupschritt, bei dem das Clientzertifikat eingerichtet wird.
 

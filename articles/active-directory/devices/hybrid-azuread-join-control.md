@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6bb57a60b2ed3b39bf83154d3afea88071efbac
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: f43db805ccbb7d4e546c51bbe39350f4bbba2efb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672425"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049976"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Kontrollierte Überprüfung der Azure AD-Hybrideinbindung
 
@@ -43,7 +43,7 @@ Verwenden Sie zum Ändern der SCP-Objekte in AD den Schnittstellen-Editor der Ac
 1. Starten Sie die Desktopanwendung **ADSI Edit** als Unternehmensadministrator auf einer Verwaltungsarbeitsstation oder auf einem Domänencontroller.
 1. Stellen Sie eine Verbindung mit dem **Konfigurationsnamenskontext** Ihrer Domäne her.
 1. Navigieren Sie zu **CN=Configuration,DC=contoso,DC=com** > **CN=Services** > **CN=Device Registration Configuration**.
-1. Klicken Sie unter **CN=Device Registration Configuration** mit der rechten Maustaste auf das Blattobjekt, und wählen Sie **Eigenschaften** aus.
+1. Klicken Sie mit der rechten Maustaste auf das Blattobjekt **CN=62a0ff2e-97b9-4513-943f-0d221bd30080**, und wählen Sie **Eigenschaften** aus.
    1. Wählen Sie im Fenster **Attribut-Editor** die Option **Schlüsselwörter** aus, und klicken Sie auf **Bearbeiten**
    1. Wählen Sie nacheinander die Werte **azureADId** und **azureADName** aus, und klicken Sie auf **Entfernen**
 1. Schließen Sie **ADSI Edit**.

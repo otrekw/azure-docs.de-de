@@ -2,26 +2,23 @@
 title: Dienst-zu-Dienst-Apps in Azure Active Directory
 description: Hier wird beschrieben, worum es sich bei Dienst-zu-Dienst-Anwendungen handelt, und Sie erfahren mehr über die Grundlagen des Protokollflusses, der Registrierung und des Tokenablaufs für diesen App-Typ.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: ryanwi
-ms.reviewer: saeeda, jmprieur, andret
+ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: ff27ada23e45f2bbbb09e47af9458c1f83af277a
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: 179034533d90dbbb6ca362fc6f72996f32873729
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163423"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154762"
 ---
 # <a name="service-to-service-apps"></a>Dienst-zu-Dienst-Apps
 
@@ -35,7 +32,7 @@ Dienst-zu-Dienst-Anwendungen können eine Daemon- oder Serveranwendung sein, die
 
 - Eine Serveranwendung (z. B. eine Web-API), die auf der Grundlage der OAuth 2.0-Entwurfsspezifikation „Im Auftrag von“ eine Web-API aufruft.
 
-    In diesem Szenario wird davon ausgegangen, dass sich ein Benutzer bei einer systemeigenen Anwendung authentifiziert hat und diese native Anwendung eine Web-API aufrufen muss. Azure AD stellt ein JWT-Zugriffstoken für den Web-API-Aufruf aus. Wenn die Web-API ihrerseits eine nachgelagerte Web-API aufrufen muss, kann sie den On-Behalf-Of-Fluss verwenden, um die Identität des Benutzers zu delegieren und sich gegenüber der Web-API der zweiten Ebene zu authentifizieren.
+    In diesem Szenario wird davon ausgegangen, dass sich ein Benutzer bei einer systemeigenen Anwendung authentifiziert hat und diese native Anwendung eine Web-API aufrufen muss. Azure AD stellt ein JWT-Zugriffstoken für den Web-API-Aufruf aus. Wenn die Web-API ihrerseits eine nachgelagerte Web-API aufrufen muss, kann sie den On-Behalf-Of-Flow verwenden, um die Identität des Benutzers zu delegieren und sich bei der Web-API der zweiten Ebene zu authentifizieren.
 
 ## <a name="diagram"></a>Diagramm
 
@@ -45,9 +42,9 @@ Dienst-zu-Dienst-Anwendungen können eine Daemon- oder Serveranwendung sein, die
 
 ### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>Anwendungsidentität mit OAuth 2.0-Clientanmeldeinformationen
 
-1. Zuerst muss sich die Serveranwendung mit Azure AD ohne Benutzerinteraktion (also beispielsweise ohne interaktives Anmeldedialogfeld) als sie selbst authentifizieren. Sie sendet eine Anfrage an den Token-Endpunkt von Azure AD. Diese Anfrage enthält die Anmeldeinformationen, die Anwendungs-ID und den Anwendungs-ID-URI.
+1. Zuerst muss sich die Serveranwendung mit Azure AD ohne Benutzerinteraktion (also beispielsweise ohne interaktives Anmeldedialogfeld) als sie selbst authentifizieren. Sie sendet eine Anforderung an den Token-Endpunkt von Azure AD, welche die Anmeldeinformationen, die Anwendungs-ID und den Anwendungs-ID-URI enthält.
 1. Azure AD authentifiziert die Anwendung und gibt ein JWT-Zugriffstoken zurück, das zum Aufrufen der Web-API verwendet wird.
-1. Die Webanwendung fügt der Web-API über HTTPS und unter Verwendung des zurückgegebenen JWT-Zugriffstokens die JWT-Zeichenfolge mit der Angabe „Bearer“ (Träger) im Autorisierungsheader der Anforderung hinzu. Daraufhin überprüft die Web-API das JWT-Token und gibt bei erfolgreicher Validierung die gewünschte Ressource zurück.
+1. Die Webanwendung fügt der Web-API über HTTPS und unter Verwendung des zurückgegebenen JWT-Zugriffstokens die JWT-Zeichenfolge mit der Angabe „Bearer“ im Autorisierungsheader der Anforderung hinzu. Daraufhin überprüft die Web-API das JWT-Token und gibt bei erfolgreicher Validierung die gewünschte Ressource zurück.
 
 ### <a name="delegated-user-identity-with-oauth-20-on-behalf-of-draft-specification"></a>Delegierte Benutzeridentität mit OAuth 2.0-Entwurfsspezifikation „On-Behalf-Of“
 

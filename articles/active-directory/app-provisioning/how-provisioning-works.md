@@ -15,18 +15,18 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 892cdeea20780c90ce325e8be9b7b91fee0d9fad
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 555fb39836054be05102f4c28167d72016805639
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522525"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481499"
 ---
 # <a name="how-provisioning-works"></a>Funktionsweise der Bereitstellung
 
 Die automatische Bereitstellung bezieht sich auf das Erstellen von Benutzeridentitäten und -rollen in den Cloudanwendungen, auf die Benutzer Zugriff benötigen. Zusätzlich zur Erstellung von Benutzeridentitäten umfasst die automatische Bereitstellung auch die Wartung und Entfernung von Benutzeridentitäten, wenn sich der Status oder die Rollen ändern. Bevor Sie eine Bereitstellung starten, können Sie diesen Artikel lesen, um Informationen zur Funktionsweise der Azure AD-Bereitstellung und Konfigurationsempfehlungen zu erhalten. 
 
-Der **Azure AD-Bereitstellungsdienst** stellt Benutzer für SaaS-Apps und andere Systeme bereit, indem er eine Verbindung mit einem Endpunkt der SCIM 2.0-Benutzerverwaltungs-API herstellt, der vom Anwendungsanbieter zur Verfügung gestellt wird. Dieser SCIM-Endpunkt (System for Cross-Domain Identity Management, System für die domänenübergreifende Identitätsverwaltung) ermöglicht Azure AD das programmgesteuerte Erstellen, Aktualisieren und Entfernen von Benutzern. Bei bestimmten Anwendungen kann der Bereitstellungsdienst auch zusätzliche identitätsbezogene Objekte wie Gruppen und Rollen erstellen, aktualisieren und entfernen. Der für die Bereitstellung zwischen Azure AD und der Anwendung verwendete Kanal wird mit HTTPS-SSL-Verschlüsselung verschlüsselt.
+Der **Azure AD-Bereitstellungsdienst** stellt Benutzer für SaaS-Apps und andere Systeme bereit, indem er eine Verbindung mit einem Endpunkt der SCIM 2.0-Benutzerverwaltungs-API herstellt, der vom Anwendungsanbieter zur Verfügung gestellt wird. Dieser SCIM-Endpunkt (System for Cross-Domain Identity Management, System für die domänenübergreifende Identitätsverwaltung) ermöglicht Azure AD das programmgesteuerte Erstellen, Aktualisieren und Entfernen von Benutzern. Bei bestimmten Anwendungen kann der Bereitstellungsdienst auch zusätzliche identitätsbezogene Objekte wie Gruppen und Rollen erstellen, aktualisieren und entfernen. Der für die Bereitstellung zwischen Azure AD und der Anwendung verwendete Kanal wird mit HTTPS-TLS-Verschlüsselung verschlüsselt.
 
 
 ![Azure AD-Bereitstellungsdienst](./media/how-provisioning-works/provisioning0.PNG)

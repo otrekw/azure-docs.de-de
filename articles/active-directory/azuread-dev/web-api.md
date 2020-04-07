@@ -5,23 +5,21 @@ services: active-directory
 documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ryanwi
-ms.reviewer: saeeda, jmprieur, andret
+ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 93e487063944801129090d6b9952143b8df887da
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9cf5a9c81ca1d7a42a5a8e342dee55f335656c3e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163327"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154422"
 ---
 # <a name="web-api"></a>Web-API
 
@@ -45,14 +43,14 @@ Die Anwendungsidentität und die delegierte Benutzeridentität werden im folgend
 1. Ein Benutzer ist in der Webanwendung bei Azure AD angemeldet (siehe den Abschnitt zu **Web-Apps**).
 1. Die Webanwendung muss ein Zugriffstoken abrufen, damit sie sich gegenüber der Web-API authentifizieren und die gewünschte Ressource abrufen kann. Sie sendet eine Anforderung an den Tokenendpunkt von Azure AD. Diese Anforderung enthält die Anmeldeinformationen, die Anwendungs-ID und den Anwendungs-ID-URI der Web-API.
 1. Azure AD authentifiziert die Anwendung und gibt ein JWT-Zugriffstoken zurück, das zum Aufrufen der Web-API verwendet wird.
-1. Die Webanwendung fügt der Web-API über HTTPS und unter Verwendung des zurückgegebenen JWT-Zugriffstokens die JWT-Zeichenfolge mit der Angabe „Bearer“ (Träger) im Autorisierungsheader der Anforderung hinzu. Daraufhin überprüft die Web-API das JWT-Token und gibt bei erfolgreicher Validierung die gewünschte Ressource zurück.
+1. Die Webanwendung fügt der Web-API über HTTPS und unter Verwendung des zurückgegebenen JWT-Zugriffstokens die JWT-Zeichenfolge mit der Angabe „Bearer“ im Autorisierungsheader der Anforderung hinzu. Daraufhin überprüft die Web-API das JWT-Token und gibt bei erfolgreicher Validierung die gewünschte Ressource zurück.
 
 ### <a name="delegated-user-identity-with-openid-connect"></a>Delegierte Benutzeridentität mit OpenID Connect
 
 1. Ein Benutzer ist mit Azure AD bei einer Webanwendung angemeldet (siehe „Webbrowser zu Webanwendung“ im Abschnitt weiter oben). Wenn der Benutzer der Webanwendung noch keine Zustimmung für den Aufruf der Web-API erteilt hat, muss er diesen Schritt noch durchführen. Die Anwendung zeigt die erforderlichen Berechtigungen an. Handelt es sich bei einer dieser Berechtigungen um eine Berechtigung auf Administratorebene, kann die Zustimmung nicht durch einen normalen Benutzer im Verzeichnis erteilt werden. Dieser Zustimmungsprozess gilt nur für mehrinstanzenfähige Anwendungen. Einzelinstanzanwendungen verfügen bereits über die erforderlichen Berechtigungen. Bei der Anmeldung des Benutzers hat die Webanwendung ein ID-Token mit Benutzerinformationen sowie einen Autorisierungscode erhalten.
 1. Auf der Grundlage des Autorisierungscodes von Azure AD sendet die Webanwendung eine Anforderung an den Token-Endpunkt von Azure AD. Diese Anforderung enthält den Autorisierungscode, Details zur Clientanwendung (Anwendungs-ID und Umleitungs-URI) sowie die gewünschte Ressource (Anwendungs-ID-URI für die Web-API).
 1. Der Autorisierungscode sowie die Informationen zu Webanwendung und Web-API werden von Azure AD überprüft. Bei erfolgreicher Validierung gibt Azure AD zwei Token zurück: ein JWT-Zugriffstoken und ein JWT-Aktualisierungstoken.
-1. Die Webanwendung fügt der Web-API über HTTPS und unter Verwendung des zurückgegebenen JWT-Zugriffstokens die JWT-Zeichenfolge mit der Angabe „Bearer“ (Träger) im Autorisierungsheader der Anforderung hinzu. Daraufhin überprüft die Web-API das JWT-Token und gibt bei erfolgreicher Validierung die gewünschte Ressource zurück.
+1. Die Webanwendung fügt der Web-API über HTTPS und unter Verwendung des zurückgegebenen JWT-Zugriffstokens die JWT-Zeichenfolge mit der Angabe „Bearer“ im Autorisierungsheader der Anforderung hinzu. Daraufhin überprüft die Web-API das JWT-Token und gibt bei erfolgreicher Validierung die gewünschte Ressource zurück.
 
 ### <a name="delegated-user-identity-with-oauth-20-authorization-code-grant"></a>Delegierte Benutzeridentität mit OAuth 2.0-Autorisierungscode
 
@@ -62,7 +60,7 @@ Die Anwendungsidentität und die delegierte Benutzeridentität werden im folgend
 1. Wenn der Benutzer seine Zustimmung gegeben hat, erhält die Webanwendung den Autorisierungscode, den sie zum Abrufen eines Zugriffstokens benötigt.
 1. Auf der Grundlage des Autorisierungscodes von Azure AD sendet die Webanwendung eine Anforderung an den Token-Endpunkt von Azure AD. Diese Anforderung enthält den Autorisierungscode, Details zur Clientanwendung (Anwendungs-ID und Umleitungs-URI) sowie die gewünschte Ressource (Anwendungs-ID-URI für die Web-API).
 1. Der Autorisierungscode sowie die Informationen zu Webanwendung und Web-API werden von Azure AD überprüft. Bei erfolgreicher Validierung gibt Azure AD zwei Token zurück: ein JWT-Zugriffstoken und ein JWT-Aktualisierungstoken.
-1. Die Webanwendung fügt der Web-API über HTTPS und unter Verwendung des zurückgegebenen JWT-Zugriffstokens die JWT-Zeichenfolge mit der Angabe „Bearer“ (Träger) im Autorisierungsheader der Anforderung hinzu. Daraufhin überprüft die Web-API das JWT-Token und gibt bei erfolgreicher Validierung die gewünschte Ressource zurück.
+1. Die Webanwendung fügt der Web-API über HTTPS und unter Verwendung des zurückgegebenen JWT-Zugriffstokens die JWT-Zeichenfolge mit der Angabe „Bearer“ im Autorisierungsheader der Anforderung hinzu. Daraufhin überprüft die Web-API das JWT-Token und gibt bei erfolgreicher Validierung die gewünschte Ressource zurück.
 
 ## <a name="code-samples"></a>Codebeispiele
 

@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c2036bf9995725e4bbef44e4c039f8336eb81a0
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: b097ce3781a77a8c5e8a94b9c2bf0977f3efcfd9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997036"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481329"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Grundlegendes zu Azure AD-Anwendungsproxyconnectors
 
@@ -88,7 +88,7 @@ Weitere Informationen zu Connectorgruppen finden Sie unter [Veröffentlichen von
 
 ## <a name="capacity-planning"></a>Kapazitätsplanung
 
-Sie sollten unbedingt sicherstellen, dass Sie ausreichend Kapazität zwischen den Connectors zum Verarbeiten des erwarteten Datenverkehrs geplant haben. Um Hochverfügbarkeit und Skalierung zu gewährleisten, wird empfohlen, jeder Connectorgruppe mindestens zwei Connectors zuzuweisen. Mit drei Connectors sind Sie in dem Fall, dass Sie einen Computer warten müssen, optimal aufgestellt.
+Sie sollten unbedingt sicherstellen, dass Sie ausreichend Kapazität zwischen den Connectors zum Verarbeiten des erwarteten Datenverkehrs geplant haben. Um Hochverfügbarkeit und Skalierung zu gewährleisten, sollten jeder Connectorgruppe mindestens zwei Connectors zugewiesen werden. Mit drei Connectors sind Sie in dem Fall, dass Sie einen Computer warten müssen, optimal aufgestellt.
 
 Im Allgemeinen gilt: Je mehr Benutzer Sie haben, desto größer muss der Computer dimensioniert sein. Die Tabelle weiter unten bietet einen Überblick über das Volumen und die erwartete Latenz bei verschiedenen Computern. Hinweis: Da Nutzungsmuster variieren und sich somit nicht für die Lastprognose eignen, basieren die Angaben nicht auf Benutzern, sondern jeweils auf den erwarteten Transaktionen pro Sekunde (TPS). Abhängig von der Antwortgröße und der Antwortzeit der Back-End-Anwendung ist außerdem mit gewissen Abweichungen zu rechnen: Bei größeren Antworten und längeren Antwortzeiten verringert sich der TPS-Maximalwert. Es wird empfohlen, zusätzliche Computer einzusetzen, um für die auf die Computer verteilte Last immer ausreichend Puffer zur Verfügung zu haben. Die zusätzliche Kapazität sorgt für Hochverfügbarkeit und Resilienz.
 
@@ -118,7 +118,7 @@ Weitere Informationen zum Konfigurieren von Firewallregeln für ausgehenden Date
 
 Die Skalierung für den Anwendungsproxy ist transparent, aber die Skalierung in Bezug auf Connectors ist ein wichtiger Faktor. Sie müssen über eine ausreichende Zahl von Connectors verfügen, um Spitzenlasten verarbeiten zu können. Da Connectors zustandslos sind, wirkt sich die Anzahl von Benutzern oder Sitzungen nicht auf sie aus. Stattdessen wirkt sich die Anzahl von Anforderungen und deren Nutzlastgröße auf sie aus. Bei standardmäßigem Webdatenverkehr kann ein Computer mit durchschnittlicher Leistungsfähigkeit einige Tausend Anforderungen pro Sekunde verarbeiten. Diese Kapazität richtet sich nach den genauen Eigenschaften des jeweiligen Computers.
 
-Die Connectorleistung wird durch die CPU und das Netzwerk bestimmt. Eine gute CPU-Leistung wird für die SSL-Verschlüsselung und -Entschlüsselung benötigt, und die Netzwerkeigenschaften sind wichtig, um eine gute Konnektivität für die Anwendungen und den Online-Dienst in Azure zu erzielen.
+Die Connectorleistung wird durch die CPU und das Netzwerk bestimmt. Eine gute CPU-Leistung wird für die TLS-Verschlüsselung und -Entschlüsselung benötigt, und die Netzwerkeigenschaften sind wichtig, um eine gute Konnektivität für die Anwendungen und den Online-Dienst in Azure zu erzielen.
 
 Der Arbeitsspeicher ist für Connectors dagegen weniger wichtig. Der Online-Dienst übernimmt einen Großteil der Verarbeitung und den gesamten nicht authentifizierten Datenverkehr. Alle Schritte, die in der Cloud ausgeführt werden können, werden auch in der Cloud ausgeführt.
 
@@ -160,7 +160,7 @@ Import-module AppProxyPSModule
 Register-AppProxyConnector
 ```
 
-## <a name="under-the-hood"></a>Im Hintergrund
+## <a name="under-the-hood"></a>Hinter den Kulissen
 
 Connectors basieren auf dem Windows Server-Webanwendungsproxy und verwenden daher einen Großteil der gleichen Verwaltungstools wie z. B. Windows-Ereignisprotokolle.
 

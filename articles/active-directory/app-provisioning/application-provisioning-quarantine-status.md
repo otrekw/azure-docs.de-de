@@ -16,12 +16,12 @@ ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d689bb5f76eef36b784a3285749a7d250144fd7
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 563c049bf3d1606e87db54e3b003dac987594610
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522712"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154626"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Anwendungsbereitstellung im Quarantänestatus
 
@@ -36,6 +36,8 @@ Es gibt drei Möglichkeiten, um zu überprüfen, ob sich eine Anwendung in Quara
 - Navigieren Sie im Azure-Portal zu **Azure Active Directory** > **Unternehmensanwendungen** > &lt;*Anwendungsname*&gt; > **Bereitstellung**, und scrollen Sie nach unten zur Statusanzeige.  
 
   ![Statusanzeige für die Bereitstellung mit dem Quarantänestatus](./media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
+
+- Navigieren Sie im Azure-Portal zu **Azure Active Directory** > **Überwachungsprotokolle**, und legen Sie den Filter auf **Aktivität: Quarantäne** fest, und überprüfen Sie den Quarantäneverlauf. Die Ansicht in der Statusanzeige zeigt zwar, wie oben beschrieben, an, ob sich die Bereitstellung derzeit in Quarantäne befindet, aber mit den Überwachungsprotokollen können Sie den Quarantäneverlauf für eine Anwendung anzeigen. 
 
 - Verwenden Sie die Microsoft Graph-Anforderung [GET synchronizationJob](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-beta&tabs=http), um den Status des Bereitstellungsauftrags programmgesteuert abzurufen:
 

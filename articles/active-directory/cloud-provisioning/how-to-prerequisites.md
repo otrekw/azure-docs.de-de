@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 382c588ca005f95f4ae38e7506c0e3e8d842bd2c
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 45648170f69d513b15e79cdd76f56e66bbc88bfa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78298648"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80332089"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Voraussetzungen für die Azure AD Connect-Cloudbereitstellung
 Dieser Artikel enthält Anleitungen zur Auswahl und Verwendung der Azure Active Directory (Azure AD) Connect-Cloudbereitstellung als Identitätslösung.
@@ -53,7 +53,7 @@ Führen Sie das [IdFix-Tool](https://docs.microsoft.com/office365/enterprise/pre
 
         | Portnummer | Wie diese verwendet wird |
         | --- | --- |
-        | **80** | Herunterladen der Zertifikatsperrlisten (CRL) bei der Überprüfung des SSL-Zertifikats  |
+        | **80** | Herunterladen der Zertifikatsperrlisten (CRLs) bei der Überprüfung des TLS/SSL-Zertifikats.  |
         | **443** | Verarbeiten der gesamten ausgehenden Kommunikation mit dem Dienst |
         | **8080** (optional) | Agents melden ihren Status alle zehn Minuten über den Port 8080, wenn der Port 443 nicht verfügbar ist. Dieser Status wird im Azure AD-Portal angezeigt. |
      

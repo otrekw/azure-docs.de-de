@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 02/21/2020
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5df7eedcd92d338d3f741f7092ff6ef73f3442d
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 02ec8dace971cd4dc1407c9e8d20839504c9ecc3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77585882"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331842"
 ---
 # <a name="conditional-access-grant"></a>Bedingter Zugriff: Erteilen
 
@@ -35,7 +35,7 @@ Das Blockieren des Zugriffs ist ein leistungsstarkes Steuerelement, das nur mit 
 Administratoren können auswählen, ob beim Gewähren des Zugriffs ein oder mehrere Steuerelemente erzwungen werden sollen. Diese Steuerelemente umfassen die folgenden Optionen: 
 
 - [Mehrstufige Authentifizierung erforderlich (Azure Multi-Factor Authentication)](../authentication/concept-mfa-howitworks.md)
-- [Markieren des Geräts als kompatibel erforderlich (Microsoft Intune)](https://docs.microsoft.com/intune/protect/device-compliance-get-started)
+- [Markieren des Geräts als kompatibel erforderlich (Microsoft Intune)](/intune/protect/device-compliance-get-started)
 - [Gerät mit Hybrid-Azure AD-Einbindung erforderlich](../devices/concept-azure-ad-join-hybrid.md)
 - [Genehmigte Client-App erforderlich](app-based-conditional-access.md)
 - [App-Schutzrichtlinie erforderlich](app-protection-based-conditional-access.md)
@@ -53,9 +53,9 @@ Wenn Sie dieses Kontrollkästchen aktivieren, müssen Benutzer Azure Multi-Facto
 
 ### <a name="require-device-to-be-marked-as-compliant"></a>Markieren des Geräts als kompatibel erforderlich
 
-Organisationen, die Microsoft Intune bereitstellen, können die von ihren Geräten zurückgegebenen Informationen verwenden, um Geräte zu identifizieren, die bestimmte Kompatibilitätsanforderungen erfüllen. Diese Informationen zur Richtliniencompliance werden von Intune an Azure AD weitergeleitet, sodass der bedingte Zugriff Entscheidungen zum Gewähren oder Blockieren des Zugriffs auf Ressourcen treffen kann. Weitere Informationen zu Konformitätsrichtlinien finden Sie im Artikel [Legen Sie mit Intune Regeln auf Geräten fest, um Zugriff auf Ressourcen in Ihrer Organisation zu gewähren](https://docs.microsoft.com/intune/protect/device-compliance-get-started).
+Organisationen, die Microsoft Intune bereitstellen, können die von ihren Geräten zurückgegebenen Informationen verwenden, um Geräte zu identifizieren, die bestimmte Kompatibilitätsanforderungen erfüllen. Diese Informationen zur Richtliniencompliance werden von Intune an Azure AD weitergeleitet, sodass der bedingte Zugriff Entscheidungen zum Gewähren oder Blockieren des Zugriffs auf Ressourcen treffen kann. Weitere Informationen zu Konformitätsrichtlinien finden Sie im Artikel [Legen Sie mit Intune Regeln auf Geräten fest, um Zugriff auf Ressourcen in Ihrer Organisation zu gewähren](/intune/protect/device-compliance-get-started).
 
-Ein Gerät kann von Intune (beliebiges Gerätebetriebssystem) oder vom MDM-System eines Drittanbieters für Windows 10-Geräte als konform markiert werden. MDM-Systeme von Drittanbietern für andere Arten von Gerätebetriebssystemen als Windows 10 werden nicht unterstützt.
+Ein Gerät kann von Intune (beliebiges Gerätebetriebssystem) oder vom MDM-System eines Drittanbieters für Windows 10-Geräte als konform markiert werden. Jamf Pro ist das einzige unterstützte MDM-Drittanbietersystem. Weitere Informationen zur Integration finden Sie im Artikel [Integrieren von Jamf Pro in Intune zu Konformitätszwecken](/intune/protect/conditional-access-integrate-jamf).
 
 Geräte müssen in Azure AD registriert werden, damit Sie als kompatibel gekennzeichnet werden können. Weitere Informationen zur Geräteregistrierung finden Sie im Artikel [Was ist eine Geräteidentität?](../devices/overview.md).
 
@@ -67,7 +67,9 @@ Organisationen können die Geräteidentität als Teil ihrer Richtlinie für bedi
 
 Organisationen können festlegen, dass ein versuchter Zugriff auf die ausgewählten Cloud-Apps über eine genehmigte Client-App erfolgen muss. Diese genehmigten Client-Apps unterstützen [Intune-App-Schutzrichtlinien](/intune/app-protection-policy) unabhängig von jeglicher MDM-Lösung (Mobile-Device Management, Verwaltung mobiler Geräte).
 
-Diese Einstellung gilt für die folgenden Client-Apps:
+Um dieses Gewährungssteuerelement zu nutzen, muss für den bedingten Zugriff das Gerät in Azure Active Directory registriert sein. Dafür ist eine Broker-App erforderlich. Die Broker-App kann entweder Microsoft Authenticator für iOS oder das Microsoft-Unternehmensportal für Android-Geräte sein. Wenn der Benutzer versucht, sich zu authentifizieren, und auf dem Gerät keine Broker-App installiert ist, wird er zum App Store umgeleitet, um die Broker-App zu installieren.
+
+Diese Einstellung gilt für die folgenden iOS- und Android-Apps:
 
 - Microsoft Azure Information Protection
 - Microsoft Bookings
@@ -80,6 +82,8 @@ Diese Einstellung gilt für die folgenden Client-Apps:
 - Microsoft Invoicing
 - Microsoft Kaizala
 - Microsoft Launcher
+- Microsoft Office
+- Microsoft Office Hub
 - Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook
@@ -96,17 +100,23 @@ Diese Einstellung gilt für die folgenden Client-Apps:
 - Microsoft Visio
 - Microsoft Word
 - Microsoft Yammer
+- Microsoft Whiteboard
 
 **Anmerkungen**
 
 - Die genehmigten Client-Apps unterstützen das Intune-Feature für die mobile Anwendungsverwaltung.
 - Anforderung **Genehmigte Client-App erforderlich**:
    - Unterstützt als Geräteplattformbedingung nur iOS und Android.
+   - Zum Registrieren des Geräts ist eine Broker-App erforderlich. Bei iOS ist Microsoft Authenticator die Broker-App, und bei Android ist es die Intune-Unternehmensportal-App.
 - Der bedingte Zugriff kann Microsoft Edge im InPrivate-Modus einer genehmigten Client-App nicht berücksichtigen.
+
+Konfigurationsbeispiele finden Sie im Artikel [Gewusst wie: Vorschreiben der Verwendung von genehmigten Client-Apps für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs](app-based-conditional-access.md).
 
 ### <a name="require-app-protection-policy"></a>App-Schutzrichtlinie erforderlich
 
 In Ihrer Richtlinie für bedingten Zugriff können Sie festlegen, dass eine [Intune-App-Schutzrichtlinie](/intune/app-protection-policy) für die Client-App vorhanden sein muss, um auf die ausgewählten Cloud-Apps zugreifen zu können. 
+
+Um dieses Gewährungssteuerelement zu nutzen, muss für den bedingten Zugriff das Gerät in Azure Active Directory registriert sein. Dafür ist eine Broker-App erforderlich. Die Broker-App kann entweder Microsoft Authenticator für iOS oder das Microsoft-Unternehmensportal für Android-Geräte sein. Wenn der Benutzer versucht, sich zu authentifizieren, und auf dem Gerät keine Broker-App installiert ist, wird er zum App Store umgeleitet, um die Broker-App zu installieren.
 
 Diese Einstellung gilt für die folgenden Client-Apps:
 
@@ -120,6 +130,9 @@ Diese Einstellung gilt für die folgenden Client-Apps:
 - Apps für die App-Schutzrichtlinie unterstützen die mobile Anwendungsverwaltung mit Intune mit Richtlinienschutz.
 - Die Voraussetzung **App-Schutzrichtlinie erforderlich**:
     - Unterstützt als Geräteplattformbedingung nur iOS und Android.
+    - Zum Registrieren des Geräts ist eine Broker-App erforderlich. Bei iOS ist Microsoft Authenticator die Broker-App, und bei Android ist es die Intune-Unternehmensportal-App.
+
+Konfigurationsbeispiele finden Sie im Artikel [Gewusst wie: Erzwingen einer App-Schutzrichtlinie und einer genehmigten Client-App für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs](app-protection-based-conditional-access.md).
 
 ### <a name="terms-of-use"></a>Nutzungsbedingungen
 

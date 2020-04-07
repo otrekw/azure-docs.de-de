@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: de2b40ea0339b564b97d17601415d1071bdc6a6e
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 31587777ba22dd8b4cebf81f0ff98979bb30fade
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77367914"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410719"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)
 
@@ -53,9 +53,9 @@ Empfehlungen finden Sie unter [Hochverfügbarkeit und Lastenausgleich von Anwend
 
 Nein, dieses Szenario wird nicht unterstützt. Nur der Connector und die Updatedienste können für die Verwendung eines Weiterleitungsproxys für ausgehenden Datenverkehr an Azure konfiguriert werden. Weitere Informationen finden Sie unter [Verwenden von vorhandenen lokalen Proxyservern](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers).
 
-### <a name="is-ssl-termination-sslhttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>Wird die SSL-Terminierung (SSL-/HTTPS-Prüfung oder -Beschleunigung) für Datenverkehr von den Connectorservern an Azure unterstützt?
+### <a name="is-tls-termination-tlshttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>Wird die TLS-Terminierung (TLS/HTTPS-Prüfung oder -Beschleunigung) für Datenverkehr von den Connectorservern zu Azure unterstützt?
 
-Der Anwendungsproxyconnector führt eine zertifikatbasierte Authentifizierung bei Azure durch. Die SSL-Terminierung (SSL-/HTTPS-Prüfung oder -Beschleunigung) unterbricht diese Authentifizierungsmethode und wird nicht unterstützt. Der Datenverkehr vom Connector an Azure muss alle Geräte umgehen, die eine SSL-Terminierung ausführen.  
+Der Anwendungsproxyconnector führt eine zertifikatbasierte Authentifizierung bei Azure durch. Die TLS-Terminierung (TLS/HTTPS-Prüfung oder -Beschleunigung) unterbricht diese Authentifizierungsmethode und wird nicht unterstützt. Der Datenverkehr vom Connector zu Azure muss alle Geräte umgehen, die eine TLS-Terminierung ausführen.  
 
 ### <a name="should-i-create-a-dedicated-account-to-register-the-connector-with-azure-ad-application-proxy"></a>Sollte ich ein dediziertes Konto erstellen, um den Connector beim Azure AD-Anwendungsproxy zu registrieren?
 
@@ -113,7 +113,7 @@ Nein, dieses Szenario wird nicht unterstützt, weil der Anwendungsproxy den TLS-
 
 Entsprechende Informationen finden Sie unter [Veröffentlichen des Remotedesktops per Azure AD-Anwendungsproxy](application-proxy-integrate-with-remote-desktop-services.md).
 
-### <a name="can-i-use-kerberos-constrained-delegation-in-the-remote-desktop-gateway-publishing-scenario"></a>Kann ich die eingeschränkte Kerberos-Delegierung im Szenario der Remotedesktopgateway-Veröffentlichung verwenden?
+### <a name="can-i-use-kerberos-constrained-delegation-single-sign-on---windows-integrated-authentication-in-the-remote-desktop-gateway-publishing-scenario"></a>Kann ich die eingeschränkte Kerberos-Delegierung (Einmaliges Anmelden – Windows Integrated Authentication) im Szenario der Remotedesktopgateway-Veröffentlichung verwenden?
 
 Nein, dieses Szenario wird nicht unterstützt.  
 
@@ -121,7 +121,7 @@ Nein, dieses Szenario wird nicht unterstützt.
 
 Ja, das entspricht dem erwarteten Verhalten. Für das Szenario der Vorauthentifizierung ist ein ActiveX-Steuerelement erforderlich, das in Browsern von Drittanbietern nicht unterstützt wird.
 
-### <a name="is-the-remote-desktop-web-client-supported"></a>Wird der Remotedesktop-Webclient unterstützt?
+### <a name="is-the-remote-desktop-web-client-html5-supported"></a>Wird der Remotedesktop-Webclient (HTML5) unterstützt?
 
 Nein, dieses Szenario wird derzeit nicht unterstützt. Besuchen Sie regelmäßig unser [UserVoice](https://aka.ms/aadapuservoice)-Feedbackforum, um Updates zu diesem Feature zu erhalten.
 
@@ -135,6 +135,10 @@ Ja, das entspricht dem erwarteten Verhalten. Wenn der Computer des Benutzers in 
 
 Entsprechende Informationen finden Sie unter [Aktivieren des Remotezugriffs auf SharePoint per Azure AD-Anwendungsproxy](application-proxy-integrate-with-sharepoint-server.md).
 
+### <a name="can-i-use-the-sharepoint-mobile-app-ios-android-to-access-a-published-sharepoint-server"></a>Kann ich die mobile SharePoint-App (iOS/Android) verwenden, um auf einen veröffentlichten SharePoint-Server zuzugreifen?
+
+Die [mobile SharePoint-App](https://docs.microsoft.com/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises) unterstützt derzeit keine Azure Active Directory-Vorauthentifizierung.
+
 ## <a name="active-directory-federation-services-ad-fs-publishing"></a>Veröffentlichung von Active Directory-Verbunddienste (AD FS) 
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>Kann ich den Azure AD-Anwendungsproxy als AD FS-Proxy (wie den Webanwendungsproxy) verwenden?
@@ -147,7 +151,7 @@ Nein. Der Azure AD-Anwendungsproxy ist für die Arbeit mit Azure AD konzipiert u
 
 Derzeit befindet sich die WebSocket-Protokollunterstützung noch in der öffentlichen Vorschauphase und funktioniert möglicherweise nicht für andere Anwendungen. Einige Kunden verzeichneten einen gemischten Erfolg beim Verwenden des WebSocket-Protokolls mit anderen Anwendungen. Wenn Sie solche Szenarien testen, würden wir uns über Feedback zu Ihren Ergebnissen freuen. Senden Sie uns Ihr Feedback an aadapfeedback@microsoft.com.
 
-Features (Ereignisprotokolle, PowerShell und Remotedesktopdienste) im Windows Admin Center (WAC) oder Remotedesktop-Webclient funktionieren derzeit nicht über den Azure AD-Anwendungsproxy.
+Features (Ereignisprotokolle, PowerShell und Remotedesktopdienste) im Windows Admin Center (WAC) oder Remotedesktop-Webclient (HTML5) funktionieren derzeit nicht über den Azure AD-Anwendungsproxy.
 
 ## <a name="link-translation"></a>Linkübersetzung
 

@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a35558b81d064680981bcf403a3584e3a3d00e4f
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 466e1ce0efbdec3f5475634f3857d02554d93d98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311743"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049126"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Problem beim Installieren des Anwendungsproxy-Agent-Connectors
 
@@ -48,7 +48,7 @@ Wenn bei der Installation eines Connectors ein Fehler auftritt, entstammt die Ha
 
 2.  Wenn einer dieser Ports nicht verfügbar ist, überprüfen Sie, ob die Firewall oder der Back-End-Proxy Zugriff auf die erforderlichen Domänen und Ports hat. Weitere Informationen hierzu finden Sie unter [Vorbereiten Ihrer lokalen Umgebung](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
 
-3.  Öffnen Sie einen Browser (separate Registerkarte), und wechseln Sie zur folgenden Webseite: <https://login.microsoftonline.com>. Stellen Sie sicher, dass Sie sich bei dieser Seite anmelden können.
+3.  Öffnen Sie einen Browser (separate Registerkarte), und wechseln Sie zur folgenden Webseite: `https://login.microsoftonline.com`. Stellen Sie sicher, dass Sie sich bei dieser Seite anmelden können.
 
 ## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-cert"></a>Überprüfen der Unterstützung des Vertrauensstellungszertifikats des Anwendungsproxys durch Computer und Back-End-Komponenten
 
@@ -71,7 +71,7 @@ Wenn bei der Installation eines Connectors ein Fehler auftritt, entstammt die Ha
 
 **So überprüfen Sie, ob die Anmeldeinformationen korrekt sind:**
 
-Stellen Sie eine Verbindung mit <https://login.microsoftonline.com> her, und verwenden Sie die gleichen Anmeldeinformationen. Überprüfen Sie, ob die Anmeldung erfolgreich war. Sie können die Benutzerrolle überprüfen, indem Sie zu **Azure Active Directory** -&gt; **Benutzer und Gruppen** -&gt; **Alle Benutzer** wechseln. 
+Stellen Sie eine Verbindung mit `https://login.microsoftonline.com` her, und verwenden Sie die gleichen Anmeldeinformationen. Überprüfen Sie, ob die Anmeldung erfolgreich war. Sie können die Benutzerrolle überprüfen, indem Sie zu **Azure Active Directory** -&gt; **Benutzer und Gruppen** -&gt; **Alle Benutzer** navigieren. 
 
 Wählen Sie Ihr Benutzerkonto aus, und klicken Sie dann im daraufhin angezeigten Menü auf „Verzeichnisrolle“. Stellen Sie sicher, dass die Rolle „Anwendungsadministrator“ ausgewählt ist. Wenn Sie in diesen Schritten nicht auf die Seiten zugreifen können, verfügen Sie nicht über die erforderliche Rolle.
 
