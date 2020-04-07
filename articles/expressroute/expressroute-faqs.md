@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 9f2b106df531dfdf26c2c83b765e3f7270a63df5
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 845c53ec970777901ae8d1c0abf5032ac705d3e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770984"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231298"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -50,7 +50,15 @@ Ja. Sobald eine ExpressRoute-Verbindung eingerichtet ist, können Sie gleichzeit
 
 ### <a name="how-are-vnets-advertised-on-expressroute-private-peering"></a>Wie werden virtuelle Netzwerke beim privaten Peering in ExpressRoute angekündigt?
 
-Das ExpressRoute-Gateway kündigt den *Adressraum* des virtuellen Azure-Netzwerks an. Auf Subnetzebene können Sie keine Adressen einschließen oder ausschließen. Es wird immer der Adressraum des virtuellen Netzwerks angekündigt. Wenn VNET-Peering verwendet wird und für das über Peering verbundene virtuelle Netzwerk das Verwenden eines Remotegateway möglich ist, wird der Adressraum des über Peering verbundenen virtuellen Netzwerks ebenfalls angekündigt.
+Das ExpressRoute-Gateway kündigt die *Adressräume* des virtuellen Azure-Netzwerks an. Auf Subnetzebene können Sie keine Adressen einschließen oder ausschließen. Es wird immer der Adressraum des virtuellen Netzwerks angekündigt. Wenn VNET-Peering verwendet wird und für das über Peering verbundene virtuelle Netzwerk das Verwenden eines Remotegateway möglich ist, wird der Adressraum des über Peering verbundenen virtuellen Netzwerks ebenfalls angekündigt.
+
+### <a name="how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering"></a>Wie viele Präfixe können beim privaten Peering in ExpressRoute von einem virtuellen Netzwerk zu den lokalen Standorten angekündigt werden?
+
+Es werden maximal 200 Präfixe für eine einzelne ExpressRoute-Verbindung oder über VNet-Peering mit Gatewaytransit angekündigt. Wenn Sie z. B. über 199 Adressräume in einem einzelnen virtuellen Netzwerk verfügen, die mit einer ExpressRoute-Verbindung verbunden sind, werden alle 199 Präfixe lokal angekündigt. Wenn Sie ein virtuelles Netzwerk aktiviert haben, das den Gatewaytransit mit einem Adressraum zulässt, und 150 virtuelle Spoke-Netzwerke über die Option „Remotegateway zulassen“ aktiviert haben, wird das mit dem Gateway bereitgestellte virtuelle Netzwerk 151 Präfixe für lokale Standorte ankündigen.
+
+### <a name="what-happens-if-i-exceed-the-prefix-limit-on-an-expressroute-connection"></a>Was passiert, wenn ich das Präfixlimit für eine ExpressRoute-Verbindung überschreite?
+
+Die Verbindung zwischen der ExpressRoute-Verbindung und dem Gateway (und ggf. den virtuellen Peeringnetzwerken mit Gatewaytransit) wird unterbrochen. Sie wird wieder eingerichtet, wenn das Präfixlimit nicht mehr überschritten wird.  
 
 ### <a name="can-i-filter-routes-coming-from-my-on-premises-network"></a>Kann ich Routen filtern, die von meinem lokalen Netzwerk ausgehen?
 
@@ -164,7 +172,7 @@ Sie müssen das Attribut *Local Preference* (Lokale Einstellung) auf Ihrem Route
 
 Weitere Informationen zur BGP-Pfadauswahl und allgemeinen Routerkonfigurationen finden Sie [hier](https://docs.microsoft.com/azure/expressroute/expressroute-optimize-routing#path-selection-on-microsoft-and-public-peerings). 
 
-### <a name="onep2plink"></a>Wenn ich mich nicht am selben Standort wie ein Cloud Exchange befinde und mein Dienstanbieter Punkt-zu-Punkt-Verbindungen bereitstellt, muss ich zwei physische Verbindungen zwischen meinem lokalen Netzwerk und Microsoft anfordern?
+### <a name="if-im-not-co-located-at-a-cloud-exchange-and-my-service-provider-offers-point-to-point-connection-do-i-need-to-order-two-physical-connections-between-my-on-premises-network-and-microsoft"></a><a name="onep2plink"></a>Wenn ich mich nicht am selben Standort wie ein Cloud Exchange befinde und mein Dienstanbieter Punkt-zu-Punkt-Verbindungen bereitstellt, muss ich zwei physische Verbindungen zwischen meinem lokalen Netzwerk und Microsoft anfordern?
 
 Wenn Ihr Dienstanbieter zwei virtuelle Ethernetverbindungen über die physische Verbindung herstellen kann, benötigen Sie nur eine einzige physische Verbindung. Die physische Verbindung (z.B. Glasfaser) wird auf einem Layer 1-Gerät (L1) beendet (siehe Abbildung). Die zwei virtuellen Ethernet-Verbindungen werden mit unterschiedlichen VLAN-IDs markiert, eine für die primäre Verbindung und eine für die sekundäre Verbindung. Diese VLAN-IDs befinden sich im äußeren 802.1Q-Ethernet-Header. Der innere 802.1Q-Ethernet-Header (nicht dargestellt) wird einer bestimmten [ExpressRoute-Routingdomäne](expressroute-circuit-peerings.md) zugeordnet.
 
@@ -293,7 +301,7 @@ ExpressRoute Premium ist eine Sammlung der folgenden Features:
     *  Beim Microsoft-Peering werden Präfixe anderer geopolitischer Regionen so angekündigt, dass Sie sich z. B. über eine Verbindung im Silicon Valley mit SQL Azure in der Region „Europa, Westen“ verbinden können.
 
 
-### <a name="limits"></a>Wie viele VNETs und ExpressRoute Global Reach-Verbindungen kann ich für eine ExpressRoute-Verbindung aktivieren, wenn ich über ExpressRoute Premium verfüge?
+### <a name="how-many-vnets-and-expressroute-global-reach-connections-can-i-enable-on-an-expressroute-circuit-if-i-enabled-expressroute-premium"></a><a name="limits"></a>Wie viele VNETs und ExpressRoute Global Reach-Verbindungen kann ich für eine ExpressRoute-Verbindung aktivieren, wenn ich über ExpressRoute Premium verfüge?
 
 In den folgenden Tabellen sind die ExpressRoute-Grenzwerte und die Anzahl von VNETs und ExpressRoute Global Reach-Verbindungen pro ExpressRoute-Verbindung angegeben:
 
@@ -399,10 +407,10 @@ Ihre vorhandene Verbindung kündigt weiterhin die Präfixe für Office 365 an. W
 
 * Beim Microsoft-Peering von ExpressRoute-Verbindungen, die am oder nach dem 1. August 2017 konfiguriert wurden, werden Präfixe erst angekündigt, wenn der Verbindung ein Routenfilter hinzugefügt wurde. Standardmäßig werden dabei keine Präfixe angezeigt.
 
-## <a name="expressRouteDirect"></a>ExpressRoute Direct
+## <a name="expressroute-direct"></a><a name="expressRouteDirect"></a>ExpressRoute Direct
 
 [!INCLUDE [ExpressRoute Direct](../../includes/expressroute-direct-faq-include.md)]
 
-## <a name="globalreach"></a>Global Reach
+## <a name="global-reach"></a><a name="globalreach"></a>Global Reach
 
 [!INCLUDE [Global Reach](../../includes/expressroute-global-reach-faq-include.md)]

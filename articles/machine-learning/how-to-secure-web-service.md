@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1f4b699476902fa24fa285754f13b1c61ddca8f0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: a58b0120feaba907c62bc646f4f85d9185227fed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355530"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80287338"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Verwenden von TLS zum Absichern eines Webdiensts mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,12 +43,12 @@ Dies ist der allgemeine Prozess zum Sichern eines Webdiensts:
 
 2. Rufen Sie ein digitales Zertifikat ab.
 
-3. Stellen Sie den Webdienst mit aktiviertem SSL bereit, bzw. aktualisieren Sie ihn.
+3. Stellen Sie den Webdienst mit aktiviertem TLS bereit oder aktualisieren Sie ihn.
 
 4. Aktualisieren Sie Ihren DNS, so dass er auf den Dienst verweist.
 
 > [!IMPORTANT]
-> Wenn Sie für Azure Kubernetes Service (AKS) bereitstellen, können Sie Ihr eigenes Zertifikat erwerben oder ein von Microsoft bereitgestelltes Zertifikat verwenden. Wenn Sie ein Zertifikat von Microsoft verwenden, müssen Sie weder einen Domänennamen noch ein SSL-Zertifikat abrufen. Weitere Informationen finden Sie im Abschnitt [Aktivieren und Bereitstellen von SSL](#enable) dieses Artikels.
+> Wenn Sie für Azure Kubernetes Service (AKS) bereitstellen, können Sie Ihr eigenes Zertifikat erwerben oder ein von Microsoft bereitgestelltes Zertifikat verwenden. Wenn Sie ein Zertifikat von Microsoft verwenden, müssen Sie weder einen Domänennamen noch ein TLS/SSL-Zertifikat abrufen. Weitere Informationen finden Sie im Abschnitt [Aktivieren und Bereitstellen von TLS](#enable) dieses Artikels.
 
 Es bestehen bei den verschiedenen [Bereitstellungszielen](how-to-deploy-and-where.md) geringfügige Unterschiede beim Schützen von Webdiensten.
 
@@ -56,9 +56,9 @@ Es bestehen bei den verschiedenen [Bereitstellungszielen](how-to-deploy-and-wher
 
 Wenn Sie nicht bereits über einen Domänennamen verfügen, können Sie einen solchen von einer *Domänennamen-Registrierungsstelle* erwerben. Die Prozesse und Preise der Registrierungsstellen sind unterschiedlich. Die Registrierungsstelle bietet Tools zum Verwalten des Domänennamens. Sie verwenden diese Tools zum Zuordnen eines vollqualifizierten Domänennamens (Fully Qualified Domain Name, FQDN) – z.B. www\.contoso.com – zu der IP-Adresse, die Ihren Webdienst hostet.
 
-## <a name="get-an-ssl-certificate"></a>Beziehen eines SSL-Zertifikats
+## <a name="get-a-tlsssl-certificate"></a>Abrufen eines TLS/SSL-Zertifikats
 
-Es gibt viele Möglichkeiten, ein SSL-Zertifikat (digitales Zertifikat) zu erhalten. Die verbreitetste Methode ist der Erwerb eines Zertifikats von einer *Zertifizierungsstelle* (Certificate Authority, CA). Unabhängig davon, wo Sie das Zertifikat abrufen, benötigen Sie die folgenden Dateien:
+Es gibt viele Möglichkeiten, ein TLS/SSL-Zertifikat (digitales Zertifikat) zu erhalten. Die verbreitetste Methode ist der Erwerb eines Zertifikats von einer *Zertifizierungsstelle* (Certificate Authority, CA). Unabhängig davon, wo Sie das Zertifikat abrufen, benötigen Sie die folgenden Dateien:
 
 * Ein **Zertifikat**. Das Zertifikat muss die vollständige Zertifikatkette enthalten und „PEM-codiert“ sein.
 * Einen **Schlüssel**. Der Schlüssel muss auch PEM-codiert sein.
@@ -71,9 +71,9 @@ Wenn Sie ein Zertifikat anfordern, müssen Sie den FQDN der Adresse angeben, die
 > [!WARNING]
 > Verwenden Sie *selbstsignierte* Zertifikate nur für die Entwicklung. Verwenden Sie sie nicht in Produktionsumgebungen. Selbstsignierte Zertifikate können Probleme in Ihren Clientanwendungen verursachen. Weitere Informationen finden Sie in der Dokumentation für die Netzwerkbibliotheken, die Ihre Clientanwendung verwendet.
 
-## <a id="enable"></a> Aktivieren und Bereitstellen von SSL
+## <a name="enable-tls-and-deploy"></a><a id="enable"></a> Aktivieren und Bereitstellen von TLS
 
-Legen Sie zum Bereitstellen (oder erneuten Bereitstellen) des Diensts mit aktiviertem SSL den *ssl_enabled*-Parameter auf „True“ fest, wenn zutreffend. Legen Sie den *ssl_certificate*-Parameter auf den Wert der *Zertifikatdatei* fest. Legen Sie den *ssl_key* auf den Wert der *Schlüsseldatei* fest.
+Legen Sie zum Bereitstellen (oder erneuten Bereitstellen) des Diensts mit aktiviertem TLS den *ssl_enabled*-Parameter auf „True“ fest, wenn zutreffend. Legen Sie den *ssl_certificate*-Parameter auf den Wert der *Zertifikatdatei* fest. Legen Sie den *ssl_key* auf den Wert der *Schlüsseldatei* fest.
 
 ### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>Bereitstellen auf AKS und Field-Programmable Gate Array (FPGA)
 
@@ -89,16 +89,16 @@ Die **enable_ssl**-Methode kann ein Zertifikat verwenden, das von Microsoft bere
 
   * Wenn Sie ein Zertifikat von Microsoft verwenden, müssen Sie den *leaf_domain_label*-Parameter verwenden. Dieser Parameter generiert den DNS-Namen für den Dienst. Der Wert „contoso“ erstellt z. B. den Domänennamen „contoso\<sechs zufällige Zeichen>.\<azureregion>.cloudapp.azure.com“, wobei \<Azureregion> die Region ist, die den Dienst enthält. Optional können Sie den *overwrite_existing_domain*-Parameter zum Überschreiben des vorhandenen *leaf_domain_label* verwenden.
 
-    Legen Sie zum Bereitstellen (oder erneuten Bereitstellen) des Diensts mit aktiviertem SSL den *ssl_enabled*-Parameter auf „True“ fest, wenn zutreffend. Legen Sie den *ssl_certificate*-Parameter auf den Wert der *Zertifikatdatei* fest. Legen Sie den *ssl_key* auf den Wert der *Schlüsseldatei* fest.
+    Legen Sie zum Bereitstellen (oder erneuten Bereitstellen) des Diensts mit aktiviertem TLS den *ssl_enabled*-Parameter auf „True“ fest, wenn zutreffend. Legen Sie den *ssl_certificate*-Parameter auf den Wert der *Zertifikatdatei* fest. Legen Sie den *ssl_key* auf den Wert der *Schlüsseldatei* fest.
 
     > [!IMPORTANT]
     > Wenn Sie ein Zertifikat von Microsoft verwenden, müssen Sie nicht Ihr eigenes Zertifikat oder Ihren eigenen Domänennamen erwerben.
 
-    Im folgenden Beispiel wird das Erstellen einer Konfiguration veranschaulicht, die ein SSL-Zertifikat von Microsoft aktiviert:
+    Im folgenden Beispiel wird das Erstellen einer Konfiguration veranschaulicht, die ein TLS/SSL-Zertifikat von Microsoft aktiviert:
 
     ```python
     from azureml.core.compute import AksCompute
-    # Config used to create a new AKS cluster and enable SSL
+    # Config used to create a new AKS cluster and enable TLS
     provisioning_config = AksCompute.provisioning_configuration()
     # Leaf domain label generates a name using the formula
     #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
@@ -106,7 +106,7 @@ Die **enable_ssl**-Methode kann ein Zertifikat verwenden, das von Microsoft bere
     provisioning_config.enable_ssl(leaf_domain_label = "contoso")
 
 
-    # Config used to attach an existing AKS cluster to your workspace and enable SSL
+    # Config used to attach an existing AKS cluster to your workspace and enable TLS
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                           cluster_name = cluster_name)
     # Leaf domain label generates a name using the formula
@@ -115,11 +115,11 @@ Die **enable_ssl**-Methode kann ein Zertifikat verwenden, das von Microsoft bere
     attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
 
-  * Wenn Sie *ein Zertifikat verwenden, das Sie erworben haben*, verwenden Sie die Parameter *ssl_cert_pem_file*, *ssl_key_pem_file* und *ssl_cname*. Im folgenden Beispiel wird veranschaulicht, wie *PEM*-Dateien zum Erstellen einer Konfiguration verwendet werden, die ein von Ihnen erworbenes SSL-Zertifikat verwendet:
+  * Wenn Sie *ein Zertifikat verwenden, das Sie erworben haben*, verwenden Sie die Parameter *ssl_cert_pem_file*, *ssl_key_pem_file* und *ssl_cname*. Im folgenden Beispiel wird veranschaulicht, wie *PEM*-Dateien zum Erstellen einer Konfiguration verwendet werden, die ein von Ihnen erworbenes TLS/SSL-Zertifikat verwendet:
 
     ```python
     from azureml.core.compute import AksCompute
-    # Config used to create a new AKS cluster and enable SSL
+    # Config used to create a new AKS cluster and enable TLS
     provisioning_config = AksCompute.provisioning_configuration()
     provisioning_config.enable_ssl(ssl_cert_pem_file="cert.pem",
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
@@ -134,7 +134,7 @@ Weitere Informationen zu *enable_ssl* finden Sie unter [AksProvisioningConfigura
 
 ### <a name="deploy-on-azure-container-instances"></a>Bereitstellen in Azure Container Instances
 
-Wenn Sie in Azure Container Instances bereitstellen möchten, geben Sie Werte für die SSL-Parameter an, wie im folgenden Codeausschnitt gezeigt:
+Wenn Sie in Azure Container Instances bereitstellen möchten, geben Sie Werte für die TLS-Parameter an, wie im folgenden Codeausschnitt gezeigt:
 
 ```python
 from azureml.core.webservice import AciWebservice
@@ -143,7 +143,7 @@ aci_config = AciWebservice.deploy_configuration(
     ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
 ```
 
-Weitere Informationen finden Sie unter [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-).
+Weitere Informationen finden Sie unter [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-).
 
 ## <a name="update-your-dns"></a>Aktualisieren Ihres DNS
 
@@ -162,11 +162,11 @@ Als Nächstes müssen Sie Ihren DNS aktualisieren, so dass er auf den Dienst ver
 
   Aktualisieren Sie das DNS der öffentlichen IP-Adresse des AKS-Clusters im linken Bereich auf der Registerkarte **Konfiguration** unter **Einstellungen**. (Siehe folgende Abbildung.) Die öffentliche IP-Adresse ist ein Ressourcentyp, der unter der Ressourcengruppe erstellt wird, die die AKS-Agent-Knoten und weitere Netzwerkressourcen enthält.
 
-  [![Azure Machine Learning: Sichern von Webdiensten mit SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
+  [![Azure Machine Learning: Sichern von Webdiensten mit TLS](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
-## <a name="update-the-ssl-certificate"></a>Aktualisieren des SSL-Zertifikats
+## <a name="update-the-tlsssl-certificate"></a>Aktualisieren des TSL/SSL-Zertifikats
 
-SSL-Zertifikate laufen ab und müssen erneuert werden. In der Regel erfolgt dies jedes Jahr. Verwenden Sie die Informationen in den folgenden Abschnitten, um das Zertifikat für in Azure Kubernetes Service bereitgestellte Modelle zu aktualisieren und zu erneuern:
+TLS/SSL-Zertifikate laufen ab und müssen erneuert werden. In der Regel erfolgt dies jedes Jahr. Verwenden Sie die Informationen in den folgenden Abschnitten, um das Zertifikat für in Azure Kubernetes Service bereitgestellte Modelle zu aktualisieren und zu erneuern:
 
 ### <a name="update-a-microsoft-generated-certificate"></a>Aktualisieren eines von Microsoft generierten Zertifikats
 
@@ -239,9 +239,9 @@ Weitere Informationen finden Sie in den folgenden Referenzen:
 * [SslConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.sslconfiguration?view=azure-ml-py)
 * [AksUpdateConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.aks.aksupdateconfiguration?view=azure-ml-py)
 
-## <a name="disable-ssl"></a>Deaktivieren von SSL
+## <a name="disable-tls"></a>Deaktivieren von TLS
 
-Erstellen Sie zum Deaktivieren von SSL für ein in Azure Kubernetes Service bereitgestelltes Modell ein `SslConfiguration`-Element mit `status="Disabled"`, und führen Sie dann die Aktualisierung aus:
+Erstellen Sie zum Deaktivieren von TLS für ein in Azure Kubernetes Service bereitgestelltes Modell ein `SslConfiguration`-Element mit `status="Disabled"`, und führen Sie dann die Aktualisierung aus:
 
 ```python
 from azureml.core.compute import AksCompute
@@ -251,7 +251,7 @@ from azureml.core.compute.aks import SslConfiguration
 # Get the existing cluster
 aks_target = AksCompute(ws, clustername)
 
-# Disable SSL
+# Disable TLS
 ssl_configuration = SslConfiguration(status="Disabled")
 update_config = AksUpdateConfiguration(ssl_configuration)
 aks_target.update(update_config)

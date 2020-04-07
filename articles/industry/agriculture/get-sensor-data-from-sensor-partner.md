@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 9364c344c58d17f9f6e6404dd8aa850af032cee9
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 113ab07af8ada16c0779da510c5f5b1f1f5a290b
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138366"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398237"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Abrufen der Sensordaten von Sensorpartnern
 
@@ -37,35 +37,44 @@ Nachdem Sie das Streamen von Sensordaten gestartet haben, können Sie mit dem Ab
  - Geheimer Clientschlüssel
  - EventHub-Verbindungszeichenfolge
 
-Sie können die oben beschriebenen Informationen mit den folgenden Schritten generieren: (Beachten Sie, dass diese Schritte auf Azure durchgeführt werden müssen, daher benötigen Sie Zugriff auf das Azure-Abonnement, in dem FarmBeats bereitgestellt wird)
+Führen Sie die folgenden Schritte aus, um die obigen Informationen zu generieren:
 
-1. Laden Sie die [ZIP-Datei](https://aka.ms/farmbeatspartnerscriptv2) herunter, und extrahieren Sie sie auf Ihrem lokalen Laufwerk. Es wird eine Datei in der ZIP-Datei enthalten sein.
+> [!NOTE]
+> Diese Schritte müssen in Azure ausgeführt werden, um auf das Azure-Abonnement zuzugreifen, in dem FarmBeats bereitgestellt wird.
 
-2. Melden Sie sich bei https://portal.azure.com/ an.
+1. Melden Sie sich bei https://portal.azure.com/ an.
 
-3. **Überspringen Sie bei Verwendung der Version 1.2.7 von FarmBeats (oder höher) die Schritte 3a, 3b und 3c, und fahren Sie mit Schritt 4 fort.** Sie können die FarmBeats-Version überprüfen, indem Sie auf der FarmBeats-Benutzeroberfläche oben rechts auf das Symbol „Einstellungen“ klicken.
+2. **Wenn Sie über FarmBeats Version 1.2.7 oder höher verfügen, überspringen Sie die Schritte a, b und c, und fahren Sie mit Schritt 3 fort.** Sie können die FarmBeats-Version überprüfen, indem Sie das Symbol **Einstellungen** in der oberen rechten Ecke der FarmBeats-Benutzeroberfläche auswählen.
 
-3a. Navigieren Sie zu „Azure Active Directory“ > „App-Registrierungen“.
+      a.  Wechseln Sie zu **Azure Active Directory** > **App-Registrierungen**.
 
-3b. Klicken Sie auf die App-Registrierung, die als Teil Ihrer FarmBeats-Bereitstellung erstellt wurde. Sie wird denselben Namen aufweisen wie Ihr FarmBeats-Datenhub.
+      b. Wählen Sie die **App-Registrierung**, die als Teil Ihrer FarmBeats-Bereitstellung erstellt wurde. Sie wird denselben Namen aufweisen wie Ihr FarmBeats-Datenhub.
 
-3c. Klicken Sie auf „Expose an API“ (API offenlegen) -> Klicken Sie auf „Add a client application“ (Clientanwendung hinzufügen), und geben Sie **04b07795-8ddb-461a-bbee-02f9e1bf7b46** ein. Aktivieren Sie dann die Option „Authorize Scope“ (Bereich autorisieren). Dies ermöglicht den Zugriff auf die Azure CLI (Cloud Shell), um die nachfolgenden Schritte durchzuführen.
+      c. Wählen Sie **Expose an API** (API offenlegen) -> **Add a client application** (Clientanwendung hinzufügen) aus, und geben Sie **04b07795-8ddb-461a-bbee-02f9e1bf7b46** ein. Aktivieren Sie dann die Option **Authorize Scope** (Bereich autorisieren). Dies ermöglicht den Zugriff auf die Azure CLI (Cloud Shell), um die nachfolgenden Schritte durchzuführen:
 
-4. Öffnen Sie Cloud Shell. Diese Option ist auf der Symbolleiste in der rechten oberen Ecke des Azure-Portals verfügbar.
+3. Öffnen Sie Cloud Shell. Diese Option ist auf der Symbolleiste in der rechten oberen Ecke des Azure-Portals verfügbar.
 
     ![Symbolleiste im Azure-Portal](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-5. Vergewissern Sie sich, dass die Umgebung auf **PowerShell** festgelegt ist. Standardmäßig ist sie auf „Bash“ festgelegt.
+4. Vergewissern Sie sich, dass die Umgebung auf **PowerShell** festgelegt ist. Standardmäßig ist sie auf „Bash“ festgelegt.
 
     ![Einstellung „PowerShell“ auf der Symbolleiste](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-6. Laden Sie die Datei aus dem ersten Schritt in Ihre Cloud Shell-Instanz hoch.
+5. Wechseln Sie zu Ihrem Basisverzeichnis.
 
-    ![Uploadschaltfläche auf der Symbolleiste](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
+    ```azurepowershell-interactive 
+    cd  
+    ```
 
-7. Wechseln Sie in das Verzeichnis, in das die Datei hochgeladen wurde. Die Datei wird standardmäßig in das Basisverzeichnis unter dem Benutzernamen hochgeladen.
+6. Führen Sie den folgenden Befehl aus. Dadurch wird ein Skript in Ihr Basisverzeichnis heruntergeladen.
 
-8. Führen Sie das folgende Skript aus. Das Skript fragt nach der Mandanten-ID, die Sie auf der Seite „Azure Active Directory -> Übersicht“ erhalten können.
+    ```azurepowershell-interactive 
+
+    wget –q https://aka.ms/farmbeatspartnerscriptv3 -O ./generatePartnerCredentials.ps1
+
+    ```
+
+7. Führen Sie das folgende Skript aus. Das Skript fragt nach der Mandanten-ID, die Sie auf der Seite **Azure Active Directory** > **Übersicht** erhalten können.
 
     ```azurepowershell-interactive 
 
@@ -73,7 +82,7 @@ Sie können die oben beschriebenen Informationen mit den folgenden Schritten gen
 
     ```
 
-9. Folgen Sie den Anweisungen auf dem Bildschirm, um die Werte für **API-Endpunkt**, **Mandanten-ID**, **Client-ID**, **Geheimer Clientschlüssel** und **EventHub-Verbindungszeichenfolge** zu erfassen.
+8. Folgen Sie den Anweisungen auf dem Bildschirm, um die Werte für **API-Endpunkt**, **Mandanten-ID**, **Client-ID**, **Geheimer Clientschlüssel** und **EventHub-Verbindungszeichenfolge** zu erfassen.
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Integrieren von Gerätedaten unter Verwendung der generierten Anmeldeinformationen
 
@@ -83,12 +92,16 @@ Nun haben Sie die folgenden Informationen aus dem vorherigen Abschnitt generiert
  - Client-ID
  - Geheimer Clientschlüssel
  - Mandanten-ID
- 
-Diese müssen Sie Ihrem Gerätepartner für die Verknüpfung von FarmBeats zur Verfügung stellen. Rufen Sie das Gerätepartnerportal auf, um diesen Schritt auszuführen. Wenn Sie beispielsweise Geräte von Davis Instruments verwenden, navigieren Sie auf die folgende Seite:
 
-[Davis Instruments](https://weatherlink.github.io/azure-farmbeats/setup)
+Diese müssen Sie Ihrem Gerätepartner für die Verknüpfung von FarmBeats zur Verfügung stellen. Rufen Sie das Gerätepartnerportal auf, um diesen Schritt auszuführen. Wenn Sie z. B. Geräte von Davis Instruments, Teralytic oder Pessl Instruments (Metos.at) verwenden, wechseln Sie zu den entsprechenden Seiten, wie unten erläutert:
 
- Die erfolgreiche Integration wird vom Geräteanbieter bestätigt. Nach Erhalt der Bestätigung können Sie in Azure FarmBeats alle Geräte und Sensoren anzeigen.
+1. [Davis Instruments](https://weatherlink.github.io/azure-farmbeats/setup)
+
+2. [Teralytic](https://app.teralytic.com/)
+
+3. [Pessl Instruments](https://ng.fieldclimate.com/user-api-services)
+
+Die erfolgreiche Integration wird vom Geräteanbieter bestätigt. Nach Erhalt der Bestätigung können Sie in Azure FarmBeats alle Geräte und Sensoren anzeigen.
 
 ## <a name="view-devices-and-sensors"></a>Anzeigen von Geräten und Sensoren
 
@@ -101,7 +114,7 @@ Für FarmBeats werden derzeit folgende Geräte unterstützt:
 - **Knoten:** Ein Gerät, das mit mindestens einem Sensor verknüpft ist.
 - **Gateway**: Ein Gerät, das mit mindestens einem Knoten verknüpft ist.
 
-Führen Sie folgende Schritte durch:
+Folgen Sie diesen Schritten:
 
 1. Wählen Sie auf der Startseite im Menü die Option **Geräte** aus.
   Auf der Seite **Geräte** werden Typ, Modell und Status des Geräts, der zugehörige landwirtschaftliche Betrieb und das letzte Aktualisierungsdatum der Metadaten angezeigt. Die Spalte für den landwirtschaftlichen Betrieb ist standardmäßig auf *NULL* festgelegt. Sie können angeben, dass ein Gerät einem landwirtschaftlichen Betrieb zugewiesen werden soll. Weitere Informationen finden Sie unter [Zuweisen von Geräten](#assign-devices).
@@ -111,7 +124,7 @@ Führen Sie folgende Schritte durch:
 
 ### <a name="view-sensors"></a>Anzeigen von Sensoren
 
-Führen Sie folgende Schritte durch:
+Folgen Sie diesen Schritten:
 
 1. Wählen Sie auf der Startseite im Menü die Option **Sensoren** aus.
   Auf der Seite **Sensoren** werden Details wie Sensortyp, zugehöriger landwirtschaftlicher Betrieb, übergeordnetes Gerät, Portname, Porttyp und letzter aktualisierter Status angezeigt.
@@ -135,11 +148,12 @@ Die eingehenden Sensordaten können dem landwirtschaftlichen Betrieb zugewiesen 
     ![Fenster „Geräte zuordnen“](./media/get-sensor-data-from-sensor-partner/associate-devices-1.png)
 
 6. Wenn Sie die einzelnen Geräte jeweils einem anderen landwirtschaftlichen Betrieb zuordnen möchten, wählen Sie in der Spalte **Assign to Farm** (Landwirtschaftlichem Betrieb zuweisen) den Dropdownpfeil und anschließend einen landwirtschaftlichen Betrieb für jede Gerätezeile aus.
+
 7. Wählen Sie **Zuweisen** aus, um die Gerätezuweisung abzuschließen.
 
 ### <a name="visualize-sensor-data"></a>Visualisieren von Sensordaten
 
-Führen Sie folgende Schritte durch:
+Folgen Sie diesen Schritten:
 
 1. Wählen Sie auf der Startseite im Menü die Option **Farms** (Landwirtschaftliche Betriebe) aus, um die Seite **Farms** (Landwirtschaftliche Betriebe) anzuzeigen.
 2. Wählen Sie den **landwirtschaftlichen Betrieb** aus, für den Sie die Sensordaten anzeigen möchten.
@@ -149,7 +163,7 @@ Führen Sie folgende Schritte durch:
 
 ## <a name="delete-a-sensor"></a>Löschen eines Sensors
 
-Führen Sie folgende Schritte durch:
+Folgen Sie diesen Schritten:
 
 1. Wählen Sie auf der Startseite im Menü die Option **Sensoren** aus, um die Seite **Sensoren** zu öffnen.
 2. Wählen Sie das zu löschende Gerät und anschließend im Bestätigungsfenster die Option **Löschen** aus.
@@ -160,7 +174,7 @@ Eine Bestätigungsmeldung mit dem Hinweis, dass das Löschen des Sensors erfolgr
 
 ## <a name="delete-devices"></a>Löschen von Geräten
 
-Führen Sie folgende Schritte durch:
+Folgen Sie diesen Schritten:
 
 1. Wählen Sie im Menü auf der Startseite die Option **Geräte** aus, um die Seite **Geräte** zu öffnen.
 2. Wählen Sie das zu löschende Gerät und anschließend im Bestätigungsfenster die Option **Löschen** aus.

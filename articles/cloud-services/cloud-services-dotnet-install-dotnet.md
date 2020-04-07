@@ -10,29 +10,29 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: tagore
-ms.openlocfilehash: c950fbedde19e3b7708d3640487d413fcac7787f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c830dc0ee38ad808579a62274e3db87d0696e099
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75360989"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79214722"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Installieren von .NET in Rollen in Azure Cloud Services
 Dieser Artikel beschreibt die Installation von .NET Framework-Versionen, die nicht im Funktionsumfang des Azure-Gastbetriebssystems vorhanden sind. Sie können .NET im Gastbetriebssystem zum Konfigurieren Ihrer Clouddienstweb- und -workerrollen nutzen.
 
-Sie können .NET 4.6.2 für die Gastbetriebssystemfamilie 4 installieren, die keine Version von .NET 4.6 enthält. (Die Gastbetriebssystemfamilie 5 ist hingegen in .NET 4.6 enthalten.) Aktuelle Informationen zu Versionen von Azure-Gastbetriebssystemversionen finden Sie unter [Neuigkeiten zur Version des Azure-Gastbetriebssystems](cloud-services-guestos-update-matrix.md). 
+Sie können .NET Framework 4.6.2 für die Gastbetriebssystemfamilie 4 installieren, die keine Version von .NET Framework 4.6 enthält. (Die Gastbetriebssystemfamilie 5 ist in .NET Framework 4.6 enthalten.) Aktuelle Informationen zu Versionen von Azure-Gastbetriebssystemversionen finden Sie unter [Neuigkeiten zur Version des Azure-Gastbetriebssystems](cloud-services-guestos-update-matrix.md). 
 
 >[!IMPORTANT]
->Das Azure SDK 2.9 weist eine Einschränkung für die Bereitstellung von .NET 4.6 in Gastbetriebssystemfamilien bis Version 4 auf. Eine Lösung zum Beseitigen dieser Einschränkung finden Sie auf der Website mit der [Microsoft-Dokumentation](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9).
+>Das Azure SDK 2.9 weist eine Einschränkung für die Bereitstellung von .NET Framework 4.6 in Gastbetriebssystemfamilien bis Version 4 auf. Eine Lösung zum Beseitigen dieser Einschränkung finden Sie auf der Website mit der [Microsoft-Dokumentation](https://github.com/MicrosoftDocs/azure-cloud-services-files/tree/master/Azure%20Targets%20SDK%202.9).
 
 Zum Installieren von .NET für Ihre Web- und Workerrollen fügen Sie Ihrem Clouddienstprojekt den .NET-Webinstaller hinzu. Starten Sie den Installer im Rahmen der Startaufgaben der Rolle. 
 
 ## <a name="add-the-net-installer-to-your-project"></a>Das Installationsprogramm für .NET zu Ihrem Projekt hinzufügen
 Laden Sie den Webinstaller der .NET Framework-Version herunter, die Sie installieren möchten:
 
-* [Webinstaller für .NET 4.8](https://dotnet.microsoft.com/download/thank-you/net48)
-* [Webinstaller für .NET 4.7.2](https://go.microsoft.com/fwlink/?LinkId=863262)
-* [Webinstaller für .NET 4.6.2](https://www.microsoft.com/download/details.aspx?id=53345)
+* [Webinstaller für .NET Framework 4.8](https://dotnet.microsoft.com/download/thank-you/net48)
+* [Webinstaller für .NET Framework 4.7.2](https://go.microsoft.com/fwlink/?LinkId=863262)
+* [Webinstaller für .NET Framework 4.6.2](https://www.microsoft.com/download/details.aspx?id=53345)
 
 So fügen Sie den Installer für eine *Webrolle* hinzu
   1. Klicken Sie im **Projektmappen-Explorer** im Clouddienstprojekt unter **Rollen** mit der rechten Maustaste auf Ihre *Webrolle*, und wählen Sie **Hinzufügen** > **Neuer Ordner** aus. Erstellen Sie einen Ordner mit dem Namen **bin**.
@@ -44,7 +44,7 @@ So fügen Sie den Installer für eine *Workerrolle* hinzu
 Wenn Dateien auf diese Weise dem Inhaltsordner für die Rolle hinzugefügt werden, werden sie automatisch Ihrem Clouddienstpaket hinzugefügt. Die Dateien werden dann in einem einheitlichen Speicherort auf dem virtuellen Computer bereitgestellt. Wiederholen Sie diesen Vorgang für alle Web- und Workerrollen in Ihrem Clouddienst, sodass alle Rollen über eine Kopie des Installers verfügen.
 
 > [!NOTE]
-> Sie müssen .NET 4.6.2 für Ihre Clouddienstrolle installieren, selbst wenn Ihre Anwendung .NET 4.6 verwendet. Das Gastbetriebssystem enthält [Update 3098779](https://support.microsoft.com/kb/3098779) und [Update 3097997](https://support.microsoft.com/kb/3097997) aus der Knowledge Base. Probleme beim Ausführen Ihrer .NET-Anwendungen können auftreten, wenn .NET 4.6 über die Knowledge Base-Updates installiert wird. Um diese Probleme zu vermeiden, installieren Sie .NET 4.6.2 anstelle von Version 4.6. Weitere Informationen finden Sie in den Knowledge Base-Artikeln [3118750](https://support.microsoft.com/kb/3118750) und [4340191](https://support.microsoft.com/kb/4340191).
+> Sie sollten .NET Framework 4.6.2 für Ihre Clouddienstrolle installieren, auch wenn Ihre Anwendung auf .NET Framework 4.6 ausgerichtet ist. Das Gastbetriebssystem enthält [Update 3098779](https://support.microsoft.com/kb/3098779) und [Update 3097997](https://support.microsoft.com/kb/3097997) aus der Knowledge Base. Probleme beim Ausführen Ihrer .NET-Anwendungen können auftreten, wenn .NET Framework 4.6 über die Knowledge Base-Updates installiert wird. Installieren Sie .NET Framework 4.6.2 statt Version 4.6, um diese Probleme zu vermeiden. Weitere Informationen finden Sie in den Knowledge Base-Artikeln [3118750](https://support.microsoft.com/kb/3118750) und [4340191](https://support.microsoft.com/kb/4340191).
 > 
 > 
 
@@ -82,7 +82,7 @@ Mit Startaufgaben können Sie Vorgänge ausführen, bevor eine Rolle gestartet w
 
 2. Erstellen Sie eine Datei mit dem Namen **install.cmd**, und fügen Sie ihr das folgende Installationsskript hinzu.
 
-   Das Skript überprüft, ob die angegebene .NET-Framework-Version bereits auf dem Computer installiert ist, indem die Registrierung abgefragt wird. Wenn die .NET-Version nicht installiert ist, wird der .NET-Webinstaller geöffnet. Zur Unterstützung der Problembehandlung protokolliert das Skript alle Aktivitäten in einer Datei mit dem Namen „startuptasklog-(aktuelles Datum mit Uhrzeit).txt“, die unter **InstallLogs** lokal gespeichert ist.
+   Das Skript überprüft, ob die angegebene .NET-Framework-Version bereits auf dem Computer installiert ist, indem die Registrierung abgefragt wird. Wenn die .NET Framework-Version nicht installiert ist, wird der .NET Framework-Webinstaller geöffnet. Zur Unterstützung der Problembehandlung protokolliert das Skript alle Aktivitäten in einer Datei mit dem Namen „startuptasklog-(aktuelles Datum mit Uhrzeit).txt“, die unter **InstallLogs** lokal gespeichert ist.
    
    > [!IMPORTANT]
    > Erstellen Sie die Datei „install.cmd“ in einem einfachen Texteditor wie Windows-Editor. Wenn Sie eine Textdatei mit Visual Studio erstellen und die Erweiterung in „.cmd“ ändern, kann die Datei immer noch eine UTF-8-Bytereihenfolge-Marke enthalten. Diese Marke kann einen Fehler verursachen, wenn die erste Zeile des Skripts ausgeführt wird. Um diesen Fehler zu vermeiden, versehen Sie die erste Zeile des Skripts mit einer REM-Anweisung, die von der Bytereihenfolgenverarbeitung übersprungen werden kann. 

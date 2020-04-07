@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: fd10a3e62bcbe438eb17edfc71a5285ad071e29a
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: da45c0db027dffc89bd058b70331a4bd6d093b08
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77366222"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336955"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Beschreibung von Azure Machine Learning-Pipelines
 
@@ -188,7 +188,7 @@ Angesichts der Wiederverwendung zwischengespeicherter Ergebnisse, der fein abges
 
 * Enge Kopplung zwischen Schritten einer Pipeline. Wenn das Refactoring eines abhängigen Schritts häufig die Änderung der Ausgaben eines früheren Schritts erforderlich macht, ist es recht wahrscheinlich, dass die separaten Schritte zurzeit mehr kosten als sie nutzen. Ein weiterer Hinweis auf übermäßig enge Kopplung sind Argumente für einen Schritt, die nicht Daten darstellen sondern Flags zur Prozesssteuerung. 
 
-* Vorzeitiges Optimieren von Computeressourcen. Beispielsweise besteht die Datenaufbereitung häufig aus verschiedenen Phasen, und man stößt häufig auf solche Stellen „Oh, an dieser Stelle könnte ich ein `MpiStep` für parallele Programmierung einsetzen, aber hier ist eine Stelle, wo ich `PythonScriptStep` mit einem weniger leistungsstarken Computeziel verwenden könnte“ usw. Und vielleicht erweist sich das Erstellen fein abgestufter Schritte auf lange Sicht wirklich als lohnend, insbesondere, wenn die Möglichkeit zur Verwendung zwischengespeicherter Ergebnisse besteht, statt immer neu zu berechnen. Pipelines sind aber nicht als Ersatz für das `multiprocessing`-Modul gedacht. 
+* Vorzeitiges Optimieren von Computeressourcen. Beispielsweise besteht die Datenaufbereitung häufig aus verschiedenen Phasen, und man stößt häufig auf solche Stellen „Oh, an dieser Stelle könnte ich ein `MpiStep` für parallele Programmierung einsetzen, aber hier ist eine Stelle, wo ich `PythonScriptStep` mit einem weniger leistungsstarken Computeziel verwenden könnte“ usw. Und vielleicht erweist sich das Erstellen fein abgestufter Schritte auf lange Sicht wirklich als lohnend, insbesondere, wenn die Möglichkeit zur Verwendung zwischengespeicherter Ergebnisse besteht, statt immer neu zu berechnen. Aber Pipelines sind nicht als Ersatz für das native `multiprocessing`-Modul von Python vorgesehen. 
 
 Bis zu dem Punkt, dass ein Projekt groß wird oder sich der Bereitstellung nähert, sollten Ihre Pipelines eher grob statt fein abgestuft sein. Wenn Sie sich Ihr ML-Projekt in Form von _Phasen_ und eine Pipeline als Mittel zur Bereitstellung eines vollständigen Workflows vorstellen, der Sie durch eine bestimmte Phase bringt, sind Sie auf dem richtigen Weg. 
 
@@ -204,6 +204,12 @@ Die wichtigsten Argumente für das Verwenden von Pipelines für Ihre Workflows m
 |**Nachverfolgung und Versionierung**|Statt Daten- und Ergebnispfade bei der Iteration manuell zu verfolgen, verwenden Sie das Pipelines SDK, um Ihre Datenquellen, Eingaben und Ausgaben explizit zu benennen und Versionen zu verwalten. Sie können Skripts und Daten auch separat verwalten, um die Produktivität zu steigern.|
 | **Modularität** | Das Trennen von Bereichen mit verschiedenen Anliegen und das Isolieren von Änderungen ermöglicht die schnellere Entwicklung von Software mit höherer Qualität. | 
 |**Kollaboration**|Pipelines ermöglichen Data Scientists, in allen Bereichen des Entwurfsprozesses für maschinelles Lernen zusammenzuarbeiten, während sie gleichzeitig an Pipelineschritten arbeiten können.|
+
+### <a name="choosing-the-proper-pipelinestep-subclass"></a>Auswählen der richtigen PipelineStep-Unterklasse
+
+`PythonScriptStep` ist die flexibelste Unterklasse des abstrakten `PipelineStep`. Andere Unterklassen, z. B. `EstimatorStep`-Unterklassen und `DataTransferStep`, können bestimmte Aufgaben mit weniger Code durchführen. So kann z. B. ein `EstimatorStep` durch einfache Eingabe eines Namens für den Schritt, eines `Estimator` und eines Computeziels erstellt werden. Oder Sie können Ein- und Ausgaben, Pipelineparameter und Argumente außer Kraft setzen. Weitere Informationen finden Sie unter [Trainieren von Azure Machine Learning-Modellen mit einem Estimator](how-to-train-ml-models.md). 
+
+Der `DataTransferStep` gestaltet das Verschieben von Daten zwischen Datenquellen und -senken einfach. Der Code, um dies manuell durchzuführen, ist unkompliziert, aber redundant. Stattdessen können Sie einfach ein `DataTransferStep` mit einem Namen, Verweisen auf eine Datenquelle und eine Datensenke sowie ein Computeziel erstellen. Diese Flexibilität wird durch das Notebook [Azure Machine Learning-Pipeline mit DataTransferStep](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb) veranschaulicht.
 
 ## <a name="modules"></a>Module
 

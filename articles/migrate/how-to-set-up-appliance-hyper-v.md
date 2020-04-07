@@ -2,29 +2,27 @@
 title: Einrichten einer Azure Migrate-Appliance für Hyper-V
 description: Erfahren Sie, wie Sie eine Azure Migrate-Appliance einrichten, um virtuelle Hyper-V-Computer zu bewerten und zu migrieren.
 ms.topic: article
-ms.date: 11/19/2019
-ms.openlocfilehash: 8199525a118ffca2cfc03734283eb26facba8483
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/23/2020
+ms.openlocfilehash: 80db2c1d4f5482604ca1507174b127c150f76044
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598339"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336809"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Einrichten einer Appliance für Hyper-V-VMs
 
-In diesem Artikel erfahren Sie, wie Sie eine Azure Migrate-Appliance einrichten, wenn Sie Hyper-V-VMs mithilfe des Azure Migrate-Serverbewertungstools bewerten oder VMware-VMs mithilfe des Azure Migrate-Servermigrationstools zu Azure migrieren.
+In diesem Artikel wird beschrieben, wie die Azure Migrate-Appliance für die Bewertung von Hyper-V-VMs mit dem Tool [Azure Migrate-Serverbewertung](migrate-services-overview.md#azure-migrate-server-assessment-tool) eingerichtet wird.
 
-Bei der Hyper-V-VM-Appliance handelt es sich um eine einfache Appliance, die von der Azure Migrate-Serverbewertung/-migration für Folgendes verwendet wird:
+Die [Azure Migrate-Appliance](migrate-appliance.md) ist eine einfache Appliance, die von der Azure Migrate-Serverbewertung/-Migration verwendet wird, um lokale Hyper-V-VMs zu entdecken und VM-Metadaten/-Leistungsdaten an Azure zu senden.
 
-- Ermitteln lokaler Hyper-V-VMs
-- Senden von Meta- und Leistungsdaten für ermittelte VMs an die Azure Migrate-Serverbewertung/-migration
-
-[Erfahren Sie mehr](migrate-appliance.md) über die Azure Migrate-Appliance.
+Sie können die Azure Migrate-Appliance für die Hyper-V-VM-Bewertung mithilfe einer VHD-Vorlage einrichten, die Sie herunterladen, oder mithilfe eines PowerShell-Installationsskripts. In diesem Artikel wird beschrieben, wie Sie die Appliance mithilfe der VHD-Vorlage einrichten. Wenn Sie die Appliance mithilfe des Skripts einrichten möchten, befolgen Sie die Anleitung in [diesem Artikel](deploy-appliance-script.md).
 
 
-## <a name="appliance-deployment-steps"></a>Schritte für die Appliancebereitstellung
+## <a name="appliance-deployment-vhd"></a>Bereitstellung der Appliance (VHD)
 
-Die Einrichtung der Appliance umfasst Folgendes:
+So richten Sie die Appliance mithilfe einer VHD-Vorlage ein
+
 - Herunterladen einer komprimierten Hyper-V-VHD über das Azure-Portal
 - Erstellen der Appliance und Überprüfen der Verbindungsherstellung mit der Azure Migrate-Serverbewertung
 - Durchführen der Erstkonfiguration für die Appliance und Registrieren der Appliance beim Azure Migrate-Projekt
@@ -79,7 +77,7 @@ Vergewissern Sie sich, dass die Appliance-VM eine Verbindung mit [Azure-URLs](mi
 
 ## <a name="configure-the-appliance"></a>Konfigurieren der Appliance
 
-Führen Sie die Ersteinrichtung der Appliance durch.
+Führen Sie die Ersteinrichtung der Appliance durch. Wenn Sie die Appliance mithilfe eines Skripts anstelle einer VHD bereitstellen, gelten die ersten beiden Schritte im Verfahren nicht.
 
 1. Klicken Sie im Hyper-V-Manager unter **Virtuelle Computer** mit der rechten Maustaste auf die VM, und klicken Sie anschließend auf **Verbinden**.
 2. Geben Sie die Sprache, die Zeitzone und das Kennwort für die Appliance an.
