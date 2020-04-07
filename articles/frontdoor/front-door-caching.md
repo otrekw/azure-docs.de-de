@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door Service – Zwischenspeicherung | Microsoft-Dokumentation
-description: In diesem Artikel wird erläutert, wie Azure Front Door Service die Integrität Ihrer Back-Ends überwacht.
+title: Azure Front Door – Zwischenspeicherung | Microsoft-Dokumentation
+description: In diesem Artikel wird erläutert, wie Azure Front Door die Integrität Ihrer Back-Ends überwacht.
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 70ee0af0b39e80aa90d143303b3c522fbb3cc780
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d4fed878e2c0b1430e963f43743fd772493d3270
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839216"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471743"
 ---
-# <a name="caching-with-azure-front-door-service"></a>Zwischenspeicherung mit Azure Front Door Service
-In diesem Dokument wird das Verhalten von Azure Front Door Service für Routingregeln mit aktivierter Zwischenspeicherung erläutert.
+# <a name="caching-with-azure-front-door"></a>Zwischenspeicherung mit Azure Front Door
+In diesem Dokument wird das Verhalten von Azure Front Door Service für Routingregeln mit aktivierter Zwischenspeicherung erläutert. Front Door ist ein modernes Content Delivery Network (CDN) und unterstützt daher neben der Beschleunigung dynamischer Websites und dem Lastenausgleich auch Zwischenspeicherungsverhalten wie jedes andere CDN.
 
 ## <a name="delivery-of-large-files"></a>Übermittlung großer Dateien
-Azure Front Door Service übermittelt große Dateien ohne Beschränkung der Dateigröße. Bei Azure Front Door Service kommt eine Technik namens Objektblockerstellung zum Einsatz. Wenn eine große Datei angefordert wird, ruft Azure Front Door Service kleinere Teile der Datei vom Back-End ab. Nach dem Empfang einer vollständigen oder auf einen Bytebereich beschränkten Anforderung, fordert eine Azure Front Door Service-Umgebung die Datei in Blöcken von 8 MB vom Back-End an.
+Azure Front Door übermittelt große Dateien ohne Beschränkung der Dateigröße. Bei Azure Front Door Service kommt eine Technik namens Objektblockerstellung zum Einsatz. Wenn eine große Datei angefordert wird, ruft Azure Front Door Service kleinere Teile der Datei vom Back-End ab. Nach dem Empfang einer vollständigen oder auf einen Bytebereich beschränkten Anforderung, fordert eine Azure Front Door Service-Umgebung die Datei in Blöcken von 8 MB vom Back-End an.
 
 </br>Nachdem der Block in der Azure Front Door Service-Umgebung angekommen ist, wird er zwischengespeichert und sofort für den Benutzer bereitgestellt. Azure Front Door Service ruft den nächsten Block dann parallel dazu ab. Durch diesen Vorabruf wird sichergestellt, dass der Inhalt dem Benutzer immer einen Block voraus ist, sodass sich die Wartezeit reduziert. Dieser Prozess wird fortgesetzt, bis die gesamte Datei heruntergeladen wurde (falls angefordert), alle Bytebereiche verfügbar sind (falls angefordert) oder der Client die Verbindung beendet.
 
@@ -92,8 +92,8 @@ Azure Front Door Service speichert Ressourcen zwischen, bis die Gültigkeitsdaue
 </br>Die bewährte Methode, um sicherzustellen, dass Ihre Benutzer immer die neueste Kopie Ihrer Assets abrufen, besteht darin, Ihre Assets für jedes Update mit einer Version zu versehen und sie als neue URLs zu veröffentlichen. Azure Front Door Service ruft sofort die neuen Ressourcen für die nächsten Clientanforderungen ab. Manchmal möchten Sie möglicherweise zwischengespeicherten Inhalt aus allen Edgeknoten löschen und sie zwingen, neue aktualisierte Assets abzurufen. Als Gründe hierfür kommen z. B. Updates Ihrer Webanwendung oder schnelle Aktualisierung von Assets, die falsche Informationen enthalten, infrage.
 
 </br>Wählen Sie, welche Assets Sie aus dem Edgeknoten löschen möchten. Wenn Sie alle Ressourcen löschen möchten, aktivieren Sie das Kontrollkästchen „Alles löschen“. Geben Sie andernfalls den vollständigen Pfad jeder Ressource, die Sie löschen möchten, in das Textfeld „Pfad“ ein. Folgende Formate werden im Pfad unterstützt.
-1. **Einzelne URL löschen**: Löschen Sie einzelne Ressourcen, indem Sie die vollständige URL mit der Dateierweiterung angeben. Beispiel: /pictures/strasbourg.png.
-2. **Mit Platzhalter löschen**: Das Sternchen (\*) kann als Platzhalterzeichen verwendet werden. Löschen Sie alle Ordner, Unterordner und Dateien unter einem Endpunkt, indem Sie „/\*“ im Pfad angeben, oder löschen Sie alle Unterordner und Dateien unter einem bestimmten Ordner, indem Sie den Ordner gefolgt von „/\*“ angeben. Beispiel: /pictures/\*.
+1. **Löschen eines einzelnen Pfads**: Löschen Sie einzelne Ressourcen, indem Sie den vollständigen Pfad der Ressource, ohne Protokoll und Domäne, aber mit der Dateierweiterung angeben. Beispiel: „/pictures/strasbourg.png“.
+2. **Mit Platzhalter löschen**: Das Sternchen (\*) kann als Platzhalterzeichen verwendet werden. Löschen Sie alle Ordner, Unterordner und Dateien unter einem Endpunkt, indem Sie „/\*“ im Pfad angeben, oder löschen Sie alle Unterordner und Dateien unter einem bestimmten Ordner, indem Sie den Ordner gefolgt von „/\*“ angeben. Beispiel: „/pictures/\*“.
 3. **Stammdomäne löschen**: Löschen Sie den Stamm des Endpunkts, indem Sie „/“ im Pfad angeben.
 
 Bei Cachebereinigungen in Azure Front Door Service muss die Groß-/Kleinschreibung beachtet werden. Darüber hinaus sind Cachebereinigungen abfragezeichenfolgenagnostisch, d. h. beim Bereinigen einer URL werden alle Abfragezeichenfolgenvariationen der URL gelöscht. 
@@ -106,15 +106,13 @@ Die folgende Headerreihenfolge wird verwendet, um zu bestimmen, wie lange ein El
 
 Cache-Control-Antwortheader, die angeben, dass die Antwort nicht zwischengespeichert wird (z. B. „Cache-Control: private“, „Cache-Control: no-cache“ und „Cache-Control: no-store“), werden berücksichtigt. Wenn auf einem POP-Server mehrere Anforderungen für dieselbe URL ausgeführt werden, gilt die Antwort jedoch möglicherweise für alle dieser Anforderungen. Ist keine Angabe für „Cache-Control“ vorhanden, ist das Standardverhalten wie folgt: Azure Front Door Service speichert die Ressource für einen Zeitraum X zwischen. Für X wird dabei ein zufällig gewählter Wert von ein bis drei Tagen verwendet.
 
-
 ## <a name="request-headers"></a>Anforderungsheader
 
 Die folgenden Anforderungsheader werden bei Verwendung der Zwischenspeicherung nicht an ein Back-End weitergeleitet.
-- Authorization
 - Content-Length
 - Transfer-Encoding
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Erstellen einer Azure Front Door Service-Konfiguration](quickstart-create-front-door.md).
+- Erfahren Sie mehr über das [Erstellen einer Front Door-Instanz](quickstart-create-front-door.md).
 - Informieren Sie sich über die [Funktionsweise von Azure Front Door Service](front-door-routing-architecture.md).
