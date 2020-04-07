@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 12/27/2019
-ms.custom: seodec18
-ms.openlocfilehash: 70d843f5773f66e6e17c40d0441553e3cb096c64
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.date: 03/17/2020
+ms.custom: seoapril2019, seodec18
+ms.openlocfilehash: f779781eee81bf85f6420e5bae6b0feb62680b8d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77462155"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064186"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>So funktioniert Azure Machine Learning: Architektur und Konzepte
 
@@ -28,9 +28,9 @@ Informationen zu Architektur, Konzepten und Workflows von Azure Machine Learning
 Für den Workflow des Machine Learning-Modells werden in der Regel diese Schritte ausgeführt:
 
 1. **Trainieren**
-    + Entwickeln Sie Machine Learning-Trainingsskripts in **Python** oder mit dem Visual Designer.
+    + Entwickeln Sie Machine Learning-Trainingsskripts in **Python**, **R** oder mit dem Visual Designer.
     + Erstellen und Konfigurieren eines **Computeziels**
-    + **Übermitteln der Skripts** an das konfigurierte Computeziel zur Ausführung in dieser Umgebung. Während des Trainings können die Skripts **Datenspeicher** lesen oder beschreiben. Die Datensätze zur Ausführung werden zudem als **Ausführungen** im **Arbeitsbereich** gespeichert und unter **Experimente** gruppiert.
+    + **Übermitteln der Skripts** an ein konfiguriertes Computeziel zur Ausführung in dieser Umgebung. Während des Trainings können die Skripts **Datenspeicher** lesen oder beschreiben. Die während des Trainings erzeugten Protokolle und Ausgaben werden als **Ausführungen** im **Arbeitsbereich** gespeichert und unter **Experimente** gruppiert.
 
 1. **Paket**: Nachdem eine zufriedenstellende Ausführung gefunden wurde, können Sie das dauerhafte Modell in der **Modellregistrierung** registrieren.
 
@@ -135,7 +135,7 @@ Verwenden Sie beim Entwickeln Ihrer Lösung das Azure Machine Learning Python SD
 
 Machine Learning-Pipelines werden zum Erstellen und Verwalten von Workflows verwendet, die Machine Learning-Phasen zusammenfügen. Eine Pipeline kann beispielsweise eine Datenaufbereitungs-, eine Modelltrainings-, eine Modellimplementierungs- und eine Rückschluss-/Bewertungsphase enthalten. Jede Phase kann mehrere Schritte umfassen, von denen wiederum jeder Schritt auf verschiedenen Computezielen unbeaufsichtigt ausgeführt werden kann. 
 
-Pipelineschritte sind wiederverwendbar und lassen sich ausführen, ohne dass nachfolgende Schritte erneut ausgeführt werden müssen, wenn sich die Ausgabe dieses Schritts nicht geändert hat. Beispielsweise können Sie ein Modell erneut trainieren, ohne teure Schritte zur Datenvorbereitung erneut auszuführen, wenn sich die Daten nicht geändert haben. Pipelines ermöglichen Data Scientists auch, bei der Arbeit an separaten Bereichen eines Machine Learning-Workflows zusammenzuarbeiten.
+Pipelineschritte sind wiederverwendbar und können ohne erneute Ausführung der vorherigen Schritte ausgeführt werden, wenn sich die Ausgabe dieser Schritte nicht geändert hat. Beispielsweise können Sie ein Modell erneut trainieren, ohne teure Schritte zur Datenvorbereitung erneut auszuführen, wenn sich die Daten nicht geändert haben. Pipelines ermöglichen Data Scientists auch, bei der Arbeit an separaten Bereichen eines Machine Learning-Workflows zusammenzuarbeiten.
 
 Weitere Informationen zu Machine Learning-Pipelines für diesen Dienst finden Sie unter [Pipelines und Azure Machine Learning](concept-ml-pipelines.md).
 
@@ -212,7 +212,7 @@ Wenn Sie die Überwachung aktiviert haben, erfasst Azure Telemetriedaten aus dem
 Azure IoT Edge stellt sicher, dass Ihr Modul ausgeführt wird, und überwacht das Gerät, auf dem es gehostet wird.
 
 
-### <a name="compute-instance"></a>Compute-Instanz (Vorschauversion)
+### <a name="compute-instance-preview"></a><a name="compute-instance"></a>Compute-Instanz (Vorschauversion)
 
 Eine **Azure Machine Learning-Compute-Instanz** (früher Notebook-VM) ist eine vollständig verwaltete, cloudbasierte Arbeitsstation, die mehrere für Machine Learning installierte Tools und Umgebungen umfasst. Compute-Instanzen können als Computeziel für Trainings- und Rückschlussaufträge verwendet werden. Bei großen Aufgaben sind [Azure Machine Learning-Computecluster](how-to-set-up-training-targets.md#amlcompute) mit Skalierungsmöglichkeiten dank mehrerer Knoten die bessere Wahl eines Computeziels.
 

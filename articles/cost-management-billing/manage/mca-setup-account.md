@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 24f7a81b267e858d16ae0805f9c7ab384be3b2fc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 81b6b8a7024de9ff3361e24cb14190d479e50681
+ms.sourcegitcommit: 2a09565db8681cdb76607e7ed51eecf68f4ff8f0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200641"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80258055"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Einrichten Ihres Abrechnungskontos für eine Microsoft-Kundenvereinbarung
 
@@ -81,7 +81,7 @@ Das neue Abrechnungskonto vereinfacht die Abrechnung für Ihre Organisation und 
 1. Mit dem Abrechnungskonto verwalten Sie die Abrechnung für Ihre Microsoft-Kundenvereinbarung. Unternehmensadministratoren werden Besitzer des Abrechnungskontos. Weitere Informationen zum Abrechnungskonto finden Sie unter [Grundlegendes zum Abrechnungskonto](../understand/mca-overview.md#your-billing-account).
 2. Mit dem Abrechnungsprofil verwalten Sie die Abrechnung für Ihre Organisation ähnlich wie bei der Enterprise Agreement-Registrierung. Unternehmensadministratoren werden Besitzer des Abrechnungsprofils. Weitere Informationen zu Abrechnungsprofilen finden Sie unter [Grundlegendes zu Abrechnungsprofilen](../understand/mca-overview.md#billing-profiles).
 3. Sie verwenden einen Rechnungsabschnitt zum Organisieren Ihrer Kosten entsprechend Ihren Anforderungen. Dies ähnelt den Abteilungen in Ihrer Enterprise Agreement-Registrierung. Abteilungen werden zu Rechnungsabschnitten und Abteilungsadministratoren zu Besitzern der jeweiligen Rechnungsabschnitte. Weitere Informationen zu Rechnungsabschnitten finden Sie unter [Grundlegendes zu Rechnungsabschnitten](../understand/mca-overview.md#invoice-sections).
-4. Die Konten, die in Ihrem Enterprise Agreement erstellt wurden, werden beim neuen Abrechnungskonto nicht unterstützt. Die Abonnements des Kontos gehören dem jeweiligen Rechnungsabschnitt für die entsprechende Abteilung an. Kontobesitzer können Abonnements für ihre Rechnungsabschnitte erstellen und verwalten.
+4. Die Konten, die in Ihrem Enterprise Agreement erstellt wurden, werden im neuen Abrechnungskonto nicht unterstützt. Die Abonnements des Kontos gehören dem jeweiligen Rechnungsabschnitt für die entsprechende Abteilung an. Kontobesitzer können Abonnements für ihre Rechnungsabschnitte erstellen und verwalten.
 
 ## <a name="changes-to-billing-administrator-access"></a>Änderungen am Zugriff des Abrechnungsadministrators
 
@@ -115,7 +115,7 @@ Benachrichtigungskontakte erhalten E-Mail-Benachrichtigungen über das Azure Ent
 
 ### <a name="spending-quotas"></a>Ausgabenkontingente
 
-Ausgabenkontingente, die für Abteilungen in Ihrer Enterprise Agreement-Registrierung festgelegt wurden, werden durch Budgets im neuen Abrechnungskonto ersetzt. Ein Budget wird für jedes Ausgabenkontingent erstellt, das für Abteilungen in Ihrer Registrierung festgelegt wurde. Weitere Informationen zu Budgets finden Sie unter [Erstellen und Verwalten von Azure-Budgets](../cloudyn/manage-budgets.md).
+Ausgabenkontingente, die für Abteilungen in Ihrer Enterprise Agreement-Registrierung festgelegt wurden, werden durch Budgets im neuen Abrechnungskonto ersetzt. Ein Budget wird für jedes Ausgabenkontingent erstellt, das für Abteilungen in Ihrer Registrierung festgelegt wurde. Weitere Informationen zu Budgets finden Sie unter [Tutorial: Erstellen und Verwalten von Azure-Budgets](../costs/tutorial-acm-create-budgets.md).
 
 ### <a name="cost-centers"></a>Kostenstellen
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 2e12952c04373fe47eaebb24b61a4fc563121185
-ms.sourcegitcommit: b8d0d72dfe8e26eecc42e0f2dbff9a7dd69d3116
+ms.openlocfilehash: f038293b48956ac89314e426df3f5dc491954df3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79037117"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064218"
 ---
 # <a name="execute-r-script"></a>Execute R Script
 
@@ -97,13 +97,16 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
 
-Nachdem die Pipeline erfolgreich übermittelt wurde, können Sie eine Vorschau des Images im rechten Bereich des Moduls ![Uploaded-image](media/module/upload-image-in-r-script.png) anzeigen.
+Nachdem die Pipelineausführung abgeschlossen ist, können Sie eine Vorschau des Images im rechten Bereich des Moduls anzeigen.
+
+> [!div class="mx-imgBorder"]
+> ![Uploaded-image](media/module/upload-image-in-r-script.png)
 
 ## <a name="how-to-configure-execute-r-script"></a>Konfigurieren von Execute R Script
 
 Das Modul **Execute R Script** enthält R-Beispielcode, den Sie als Ausgangspunkt verwenden können. Stellen Sie zum Konfigurieren des Moduls **Execute R Script** die erforderlichen Eingaben und den auszuführenden Code bereit.
 
-![R-Modul](media/module/upload-image-in-r-script.png)
+![R-Modul](media/module/execute-r-script.png)
 
 Im Designer gespeicherte Datasets werden automatisch in einen R-Datenrahmen konvertiert, wenn sie mit diesem Modul geladen werden.
 
@@ -123,25 +126,25 @@ Im Designer gespeicherte Datasets werden automatisch in einen R-Datenrahmen konv
 
     Um Ihnen den Einstieg zu erleichtern, ist das Textfeld **R Script** mit Beispielcode vorab ausgefüllt, den Sie bearbeiten oder ersetzen können.
     
-```R
-# R version: 3.5.1
-# The script MUST contain a function named azureml_main
-# which is the entry point for this module.
+    ```R
+    # R version: 3.5.1
+    # The script MUST contain a function named azureml_main
+    # which is the entry point for this module.
 
-# The entry point function can contain up to two input arguments:
-#   Param<dataframe1>: a R DataFrame
-#   Param<dataframe2>: a R DataFrame
-azureml_main <- function(dataframe1, dataframe2){
-  print("R script run.")
+    # The entry point function can contain up to two input arguments:
+    #   Param<dataframe1>: a R DataFrame
+    #   Param<dataframe2>: a R DataFrame
+    azureml_main <- function(dataframe1, dataframe2){
+    print("R script run.")
 
-  # If a zip file is connected to the third input port, it is
-  # unzipped under "./Script Bundle". This directory is added
-  # to sys.path.
+    # If a zip file is connected to the third input port, it is
+    # unzipped under "./Script Bundle". This directory is added
+    # to sys.path.
 
-  # Return datasets as a Named List
-  return(list(dataset1=dataframe1, dataset2=dataframe2))
-}
-```
+    # Return datasets as a Named List
+    return(list(dataset1=dataframe1, dataset2=dataframe2))
+    }
+    ```
 
  * Das Skript muss eine Funktion mit dem Namen `azureml_main` als Einstiegspunkt für dieses Modul enthalten.
 
@@ -155,7 +158,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 1.  **Random Seed** (Zufälliger Startwert): Geben Sie einen Wert ein, der in der R-Umgebung als zufälliger Startwert verwendet werden soll. Dieser Parameter entspricht dem Aufrufen von `set.seed(value)` im R-Code.  
 
-1. Ausführen der Pipeline.  
+1. Übermitteln Sie die Pipeline.  
 
 ## <a name="results"></a>Ergebnisse
 
@@ -174,9 +177,9 @@ Es gibt viele Möglichkeiten, wie Sie Ihre Pipeline mithilfe eines benutzerdefin
 
 Das Modul **Execute R Script** unterstützt beliebige R-Skriptdateien als Eingaben. Dazu müssen sie als Teil der ZIP-Datei in Ihren Arbeitsbereich hochgeladen werden.
 
-1. Um eine ZIP-Datei mit R-Code in Ihren Arbeitsbereich hochzuladen, klicken Sie auf **New** (Neu), dann auf **Dataset** und wählen anschließend **From local file** (Aus lokaler Datei) und die Option **Zip file** (ZIP-Datei) aus.  
+1. Um eine ZIP-Datei mit R-Code in Ihren Arbeitsbereich hochzuladen, wechseln Sie zur Ressourcenseite für **Datasets**, klicken Sie auf **Create dataset**, und wählen Sie dann **From local file** und die Datasettypoption **File** aus.  
 
-1. Stellen Sie sicher, dass die ZIP-Datei in der Liste **Saved Datasets** (Gespeicherte Datasets) verfügbar ist.
+1. Überprüfen Sie, ob die ZIP-Datei in der Liste **My Datasets** unter der Kategorie **Datasets** in der linken Modulstruktur verfügbar ist.
 
 1.  Verbinden Sie das Dataset mit dem Eingabeport **Script Bundle**.
 

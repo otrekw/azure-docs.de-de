@@ -2,20 +2,20 @@
 title: Unformatierte Azure CDN-HTTP-Protokolle
 description: In diesem Artikel werden die unformatierten Azure CDN-HTTP-Protokolle beschrieben.
 services: cdn
-author: asudbring
-manager: KumudD
+author: sohamnchatterjee
+manager: danielgi
 ms.service: azure-cdn
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/10/2020
-ms.author: allensu
-ms.openlocfilehash: 79ced4df8df12bf2ef1fbe0075b53d02fafb2aff
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.date: 03/23/2020
+ms.author: sohamnc
+ms.openlocfilehash: c6e8570746ae3dd0051dbec084c89d90580d28b1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129838"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371632"
 ---
 # <a name="azure-cdn-http-raw-logs"></a>Unformatierte Azure CDN-HTTP-Protokolle
 Unformatierte Protokolle bieten umfassende Informationen zu Vorgängen und Fehlern, die für die Überwachung und Problembehandlung wichtig sind. Unformatierte Protokolle unterscheiden sich von Aktivitätsprotokollen. Aktivitätsprotokolle geben Einblicke in die Vorgänge, die für Azure-Ressourcen ausgeführt wurden. Unformatierte Protokolle stellen einen Datensatz für Vorgänge der Ressourcen bereit.
@@ -62,7 +62,7 @@ So konfigurieren Sie unformatierte Protokolle für Azure CDN über Microsoft-Pro
 
 ## <a name="raw-logs-properties"></a>Eigenschaften von unformatierten Protokollen
 
-Azure CDN vom Microsoft-Dienst stellt zurzeit unformatierte Protokolle bereit (stündlich in Batches zusammengefasst). Unformatierte Protokolle enthalten einzelne API-Anforderungen, wobei jeder Eintrag folgendem Schema entspricht: 
+Azure CDN vom Microsoft-Dienst stellt zurzeit unformatierte Protokolle bereit. Unformatierte Protokolle enthalten einzelne API-Anforderungen, wobei jeder Eintrag folgendem Schema entspricht: 
 
 | Eigenschaft              | BESCHREIBUNG                                                                                                                                                                                          |
 |-----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -83,6 +83,11 @@ Azure CDN vom Microsoft-Dienst stellt zurzeit unformatierte Protokolle bereit (s
 | HttpStatusDetails     | Resultierender Status in der Anforderung. Informationen zur Bedeutung dieses Zeichenfolgenwerts finden Sie in der Verweistabelle zum Status.                                                                                              |
 | POP                   | Der Edge-POP, der auf die Benutzeranforderung geantwortet hat. Die POP-Abkürzungen sind Flughafencodes der jeweiligen Regionen.                                                                                   |
 | Cachestatus          | Gibt an, ob das Objekt aus dem Cache zurückgegeben wurde oder vom Ursprung stammt.                                                                                                             |
+> [!IMPORTANT]
+> Das Feature der unformatierten HTTP-Protokolle ist automatisch für alle Profile verfügbar, die nach dem **25. Februar 2020** erstellt oder aktualisiert wurden. Bei früher erstellten CDN-Profilen sollte der CDN-Endpunkt nach der Einrichtung der Protokollierung aktualisiert werden. Sie können z. B. zur geografischen Filterung unter CDN-Endpunkte navigieren und jedes Land, das für ihre Workload nicht relevant ist, blockieren und auf „Speichern“ klicken. 
+
+> [!NOTE]
+> Die Protokolle können unter Ihrem Log Analytics-Profil durch Ausführen einer Abfrage angezeigt werden. Eine Beispielabfrage würde wie folgt aussehen: AzureDiagnostics | where Category == „AzureCdnAccessLog“
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie unformatierte HTTP-Protokolle für den Microsoft CDN-Dienst aktiviert.

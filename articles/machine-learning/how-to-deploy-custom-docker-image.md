@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 03/05/2020
-ms.openlocfilehash: 24ca37f5610589ae675a47a1dd966871b3004800
-ms.sourcegitcommit: f5e4d0466b417fa511b942fd3bd206aeae0055bc
+ms.date: 03/16/2020
+ms.openlocfilehash: 1f11d6667c22990b3cba2079959bec6f413d5951
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78851271"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80296930"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Bereitstellen eines Modells mithilfe eines benutzerdefinierten Docker-Basisimages
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -95,6 +95,8 @@ Wenn Sie bereits Modelle mit Azure Machine Learning trainiert oder bereitgestell
     ```
 
     Folgen Sie den Anweisungen, um sich beim Abonnement zu authentifizieren.
+
+    [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
 
 2. Verwenden Sie den folgenden Befehl, um die Containerregistrierung für den Arbeitsbereich aufzulisten. Ersetzen Sie `<myworkspace>` durch den Namen Ihres Azure Machine Learning-Arbeitsbereichs. Ersetzen Sie `<resourcegroup>` durch die Azure-Ressourcengruppe, die Ihren Arbeitsbereich enthält:
 
@@ -277,18 +279,49 @@ Weitere Informationen zur Anpassung Ihrer Python-Umgebung finden Sie unter [Erst
 > [!IMPORTANT]
 > Derzeit kann die Machine Learning-CLI Images aus der Azure Container Registry für Ihren Arbeitsbereich oder aus öffentlich zugänglichen Repositorys verwenden. Sie kann keine Images aus eigenständigen privaten Registrierungen verwenden.
 
-Wenn Sie ein Modell über die Machine Learning-CLI bereitstellen, stellen Sie eine Rückschlusskonfigurationsdatei zur Verfügung, die auf das benutzerdefinierte Image verweist. Das folgende JSON-Dokument zeigt, wie auf ein Image in einer öffentlichen Containerregistrierung verwiesen wird:
+Bevor Sie ein Modell mit der Machine Learning-CLI bereitstellen, erstellen Sie eine [Umgebung](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py), die das benutzerdefinierte Image verwendet. Erstellen Sie dann eine Rückschlusskonfigurationsdatei, die auf die Umgebung verweist. Sie können die Umgebung auch direkt in der Rückschlusskonfigurationsdatei definieren. Das folgende JSON-Dokument zeigt, wie auf ein Image in einer öffentlichen Containerregistrierung verwiesen wird. In diesem Beispiel wird die Umgebung inline definiert:
 
 ```json
 {
-   "entryScript": "score.py",
-   "runtime": "python",
-   "condaFile": "infenv.yml",
-   "extraDockerfileSteps": null,
-   "sourceDirectory": null,
-   "enableGpu": false,
-   "baseImage": "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda",
-   "baseImageRegistry": "mcr.microsoft.com"
+    "entryScript": "score.py",
+    "environment": {
+        "docker": {
+            "arguments": [],
+            "baseDockerfile": null,
+            "baseImage": "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda",
+            "enabled": false,
+            "sharedVolumes": true,
+            "shmSize": null
+        },
+        "environmentVariables": {
+            "EXAMPLE_ENV_VAR": "EXAMPLE_VALUE"
+        },
+        "name": "my-deploy-env",
+        "python": {
+            "baseCondaEnvironment": null,
+            "condaDependencies": {
+                "channels": [
+                    "conda-forge"
+                ],
+                "dependencies": [
+                    "python=3.6.2",
+                    {
+                        "pip": [
+                            "azureml-defaults",
+                            "azureml-telemetry",
+                            "scikit-learn",
+                            "inference-schema[numpy-support]"
+                        ]
+                    }
+                ],
+                "name": "project_environment"
+            },
+            "condaDependenciesFile": null,
+            "interpreterPath": "python",
+            "userManagedDependencies": false
+        },
+        "version": "1"
+    }
 }
 ```
 

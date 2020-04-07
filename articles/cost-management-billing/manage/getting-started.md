@@ -1,19 +1,19 @@
 ---
-title: Vermeiden unerwarteter Kosten und Verwalten der Abrechnung in Azure
-description: Hier erwarten Sie, wie Sie unerwartete Gebühren in Ihrer Azure-Abrechnung vermeiden. Verwenden Sie Kostenüberwachungs- und Kostenverwaltungsfeatures für Ihr Azure-Konto.
+title: Vermeiden und Analysieren unerwarteter Gebühren mit Azure Cost Management und der Abrechnung
+description: Hier erfahren Sie, wie Sie unerwartete Gebühren auf Ihrer Azure-Rechnung vermeiden und Features zur Kostennachverfolgung und -verwaltung für Ihr Azure-Konto verwenden.
 author: bandersmsft
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 3/11/2020
+ms.date: 3/30/2020
 ms.author: banders
-ms.openlocfilehash: 0e0003b3adfdb6ebba49bd8d014fc0ba287ca3aa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 79af6f78e8e9bf93c49deafe79f6a421cbb77d1a
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238141"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475266"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Vermeiden unerwarteter Gebühren bei der Azure-Abrechnung und -Kostenverwaltung
 
@@ -112,11 +112,6 @@ Wählen Sie auf der linken Seite **Kosten** aus. Auf der Registerkarte **Kosten*
 
 Unter [Optimieren von Kosten mithilfe von Empfehlungen](../costs/tutorial-acm-opt-recommendations.md) finden Sie ein geführtes Tutorial zu Advisor-Empfehlungen für Kosteneinsparungen.
 
-## <a name="review-charges-against-your-latest-invoice"></a>Überprüfen der Gebühren anhand der letzten Rechnung
-
-Ihre Rechnung steht am Ende des Abrechnungszeitraums zur Verfügung. Sie können [Rechnungen und detaillierte Nutzungsdateien herunterladen](download-azure-invoice-daily-usage-date.md) und miteinander vergleichen, um sich zu vergewissern, dass die Abrechnung korrekt ist. Weitere Informationen für den Vergleich Ihrer täglichen Nutzung mit Ihrer Rechnung finden Sie unter [Erläuterungen zur Rechnung für Microsoft Azure](../understand/review-individual-bill.md).
-
-Wenn Sie Azure im Rahmen einer Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) verwenden, können Sie auch [Ihre Rechnung mit den Transaktionen vergleichen](../understand/review-customer-agreement-bill.md#review-invoiced-transactions-in-the-azure-portal), um die Gebühren auf Ihrer Rechnung nachzuvollziehen.
 
 ## <a name="integrate-with-billing-and-consumption-apis"></a>Integrieren von Abrechnungs- und Nutzungs-APIs
 
@@ -178,9 +173,65 @@ Bei einigen Diensten gibt es Voraussetzungen für die Anwendung der SLA. Bei vir
 
 Weitere Informationen finden Sie unter [Vereinbarungen zum Servicelevel (SLAs)](https://azure.microsoft.com/support/legal/sla/) und in der [DLV-Übersicht für Azure-Dienste](https://azure.microsoft.com/support/legal/sla/summary/).
 
-## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
+## <a name="analyze-unexpected-charges"></a>Analysieren unerwarteter Gebühren
 
-Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
+Die Cloudressourceninfrastruktur, die Sie für Ihre Organisation aufgebaut haben, ist wahrscheinlich komplex. Für viele Azure-Ressourcentypen können unterschiedliche Arten von Gebühren anfallen. Die Zuständigkeit für Azure-Ressourcen ist möglicherweise auf verschiedene Teams in Ihrer Organisation verteilt, und für unterschiedliche Ressourcen werden unter Umständen verschiedene Arten von Abrechnungsmodellen verwendet. Beginnen Sie Ihre Analyse mit einzelnen oder mehreren Strategien aus den folgenden Abschnitten, um die Gebühren besser zu verstehen.
+
+### <a name="review-your-invoice-and-identify-the-resource-that-is-responsible-for-the-charge"></a>Überprüfen Ihrer Rechnung und Ermitteln der Ressource, die für die Gebühr verantwortlich ist
+
+Die Art des Erwerbs Ihrer Azure-Dienste hilft Ihnen bei der Bestimmung der Methodik und Tools, die Ihnen bei der Ermittlung der mit einer Gebühr zusammenhängenden Ressource zur Verfügung stehen. [Ermitteln Sie zunächst Ihren Azure-Angebotstyp](../costs/understand-cost-mgt-data.md#determine-your-offer-type), um die passende Methodik zu bestimmen. Ermitteln Sie anschließend anhand der Liste der [unterstützten Azure-Angebote](../costs/understand-cost-mgt-data.md#supported-microsoft-azure-offers) Ihre Kundenkategorie.
+
+Die folgenden Artikel enthalten ausführliche Schritte zur Überprüfung Ihrer Rechnung auf der Grundlage Ihres Kundentyps. Die Artikel enthalten jeweils eine Anleitung zum Herunterladen einer CSV-Datei mit Nutzungs- und Kostendetails für einen bestimmten Abrechnungszeitraum.
+
+- [Überprüfungsprozess für Rechnungen mit nutzungsbasierter Zahlung](../understand/review-individual-bill.md#compare-invoiced-charges-with-usage-file)
+- [Überprüfungsprozess für Enterprise Agreement-Rechnungen](../understand/review-enterprise-agreement-bill.md)
+- [Überprüfungsprozess für MCA-Rechnungen (Microsoft Customer Agreement, Microsoft-Kundenvereinbarung)](../understand/review-customer-agreement-bill.md#analyze-your-azure-usage-charges)
+- [Überprüfungsprozess für MPA-Rechnungen (Microsoft Partner Agreement, Microsoft Partner-Vereinbarung)](../understand/review-partner-agreement-bill.md#analyze-your-azure-usage-charges)
+
+In Ihrer Azure-Rechnung werden Gebühren für den Monat auf der Grundlage von _Verbrauchseinheiten_ aggregiert. Verbrauchseinheiten dienen zur Nachverfolgung der Nutzung einer Ressource im Laufe der Zeit und werden zur Berechnung Ihrer Rechnung verwendet. Wenn Sie eine einzelne Azure-Ressource (etwa einen virtuellen Computer) erstellen, wird für die Ressource mindestens eine Verbrauchseinheit erstellt.
+
+Filtern Sie die CSV-Nutzungsdatei basierend auf dem Namen der in der Rechnung enthaltenen Verbrauchseinheit (_MeterName_), die Sie analysieren möchten, um alle Positionen anzuzeigen, die die Verbrauchseinheit betreffen. Die Instanz-ID (_InstanceID_) für die Position entspricht der eigentlichen Azure-Ressource, auf die die Gebühr zurückzuführen ist.
+
+Wenn Sie die betreffende Ressource ermittelt haben, können Sie die ressourcenbezogenen Kosten mithilfe der Kostenanalyse in Azure Cost Management weiter analysieren. Weitere Informationen zur Verwendung der Kostenanalyse finden Sie unter [Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse](../costs/quick-acm-cost-analysis.md).
+
+### <a name="identify-spikes-in-cost-over-time"></a>Identifizieren von Kostenspitzen im Zeitverlauf
+
+Manchmal wissen Sie unter Umständen nicht, welche kürzlich angefallenen Kosten zu Änderungen an den abgerechneten Gebühren geführt haben. In diesem Fall können Sie mithilfe der Kostenanalyse [eine tages- oder monatsbasierte Aufschlüsselung der Kosten im Zeitverlauf anzeigen](../costs/cost-analysis-common-uses.md#view-costs-per-day-or-by-month), um zu ermitteln, was sich geändert hat. Gruppieren Sie die Gebühren nach Erstellung der Ansicht entweder nach **Dienst** oder nach **Ressource**, um die Änderungen zu ermitteln. Zur besseren Visualisierung der Daten kann die Ansicht auch als **Liniendiagramm** dargestellt werden.
+
+![Beispiel für Kosten im Zeitverlauf in der Kostenanalyse](./media/getting-started/costs-over-time.png)
+
+### <a name="determine-resource-pricing-and-understand-its-billing-model"></a>Ermitteln der Ressourcenpreise und Verstehen des Abrechnungsmodells
+
+Für eine einzelne Ressource können Gebühren in mehreren Azure-Produkten und -Diensten anfallen. Weitere Informationen zu den Preisen für die einzelnen Azure-Dienste finden Sie auf der Seite [Preisangaben nach Produkten](https://azure.microsoft.com/pricing/#product-pricing). Für einen einzelnen, in Azure erstellten virtuellen Computer können zur Nachverfolgung der Nutzung beispielsweise die folgenden Verbrauchseinheiten erstellt werden. Dabei können jeweils unterschiedliche Preise gelten.
+
+- Computestunden
+- IP-Adressstunden
+- Eingehende Datenübertragung
+- Ausgehende Datenübertragung
+- Verwalteter Datenträger Standard
+- Managed Disks Standard-Vorgänge
+- Standard-E/A – Datenträger
+- Standard-E/A – Blockblob-Lesevorgangseinheiten
+- Standard-E/A – Blockblob-Schreibvorgangseinheiten
+- Standard-E/A – Blockblob-Löschvorgangseinheiten
+
+Nachdem der virtuelle Computer erstellt wurde, beginnen diese Verbrauchseinheiten mit der Ausgabe von Nutzungsdatensätzen. Die Nutzung und der Preis der Verbrauchseinheit werden im Azure-System zur Messung von Verbrauchseinheiten nachverfolgt. Die zur Berechnung Ihrer Rechnung verwendeten Verbrauchseinheiten werden in der CSV-Nutzungsdatei angezeigt.
+
+### <a name="find-the-people-responsible-for-the-resource-and-engage-them"></a>Ermitteln und Einbeziehen der für die Ressource zuständigen Personen
+
+Das für eine bestimmte Ressource zuständige Team weiß häufig über Änderungen Bescheid, die für eine Ressource vorgenommen wurden. Daher ist es hilfreich, das Team in die Ermittlung der Ursache für entstandene Gebühren einzubeziehen. So kann es beispielsweise sein, dass das zuständige Team die Ressource vor Kurzem erstellt, die zugehörige SKU aktualisiert (und somit den Ressourcensatz geändert) oder aufgrund von Codeänderungen die Last für die Ressource erhöht hat. Die folgenden Abschnitte enthalten weitere Techniken zur Bestimmung des Ressourcenbesitzers.
+
+#### <a name="analyze-the-audit-logs-for-the-resource"></a>Analysieren der Überwachungsprotokolle für die Ressource
+
+Wenn Sie über Berechtigungen zum Anzeigen einer Ressource verfügen, sollten Sie auf die zugehörigen Überwachungsprotokolle zugreifen können. Ermitteln Sie anhand der Protokolle den Benutzer, der für die neuesten Änderungen an einer Ressource verantwortlich ist. Weitere Informationen finden Sie unter [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../../azure-monitor/platform/activity-log-view.md).
+
+#### <a name="analyze-user-permissions-to-the-resources-parent-scope"></a>Analysieren von Benutzerberechtigungen für den übergeordneten Bereich der Ressource
+
+Personen mit Schreibzugriff auf ein Abonnement oder eine Ressourcengruppe verfügen in der Regel über Informationen zu den erstellten Ressourcen. Sie sollten den Zweck einer Ressource erklären oder Sie an die Person verweisen können, die über die entsprechenden Informationen verfügt. Informationen zur Ermittlung der Personen mit Berechtigungen für einen Abonnementbereich finden Sie unter [Anzeigen von Rollenzuweisungen](../../role-based-access-control/check-access.md#view-role-assignments). Für Ressourcengruppen kann ein ähnlicher Prozess verwendet werden.
+
+### <a name="get-help-to-identify-charges"></a>Anfordern von Unterstützung bei der Identifizierung von Gebühren
+
+Sollten Sie eine Gebühr trotz der obigen Strategien nicht nachvollziehen können oder anderweitige Unterstützung bei Abrechnungsproblemen benötigen, können Sie [eine Supportanfrage erstellen](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Informieren Sie sich über die Verwendung von [Ausgabenlimits](spending-limit.md), um Überschreitungen zu vermeiden.

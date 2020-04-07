@@ -1,20 +1,20 @@
 ---
-title: Vorbereiten des Kaufs einer Azure-Reservierung
-description: Informieren Sie sich über wichtige Aspekte, bevor Sie eine Azure-Reservierung erwerben.
+title: Erwerben einer Azure-Reservierung
+description: Informieren Sie sich über wichtige Aspekte, wenn Sie eine Azure-Reservierung erwerben.
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 03/30/2020
 ms.author: banders
-ms.openlocfilehash: 1f5ca2d43356eab98cffe8414c00d97e5744739a
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 3a45a04786bb9976a42269191c8b24282905f96f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80235649"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436970"
 ---
-# <a name="prepare-to-buy-a-reservation"></a>Vorbereiten des Kaufs einer Reservierung
+# <a name="buy-a-reservation"></a>Kaufen einer Reservierung
 
 Mit Azure-Reservierungen können Sie Geld sparen, indem Sie sich bei zahlreichen Azure-Ressourcen für Pläne mit einer Laufzeit von einem Jahr oder drei Jahren entscheiden. Bevor Sie eine Verpflichtung zum Kauf einer Reservierung eingehen, lesen Sie unbedingt die folgenden Abschnitte, um den Kauf vorzubereiten.
 
@@ -50,6 +50,17 @@ Sie können den Bereich nach dem Erwerb einer Reservierung immer aktualisieren. 
 
 ![Beispiel für eine Änderung des Reservierungsbereichs](./media/prepare-buy-reservation/rescope-reservation-resource-group.png)
 
+## <a name="discounted-subscription-and-offer-types"></a>Abonnements und Angebotstypen mit Rabatt
+
+Reservierungsrabatte gelten für die folgenden berechtigten Abonnements und Angebotstypen.
+
+- Enterprise Agreement (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P)
+- Abonnements im Rahmen einer Microsoft-Kundenvereinbarung
+- Individuelle Pläne mit Tarifen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P)
+- CSP-Abonnements
+
+Für Ressourcen, die in einem Abonnement mit anderen Angebotstypen ausgeführt werden, gilt der Reservierungsrabatt nicht.
+
 ## <a name="purchase-reservations"></a>Erwerben von Reservierungen
 
 Sie können Reservierungen über das Azure-Portal, APIs, PowerShell und die CLI erwerben. Lesen Sie die folgenden Artikel, wenn Sie Reservierungen kaufen möchten:
@@ -66,6 +77,54 @@ Sie können Reservierungen über das Azure-Portal, APIs, PowerShell und die CLI 
 - [SQL-Datenbank](../../sql-database/sql-database-reserved-capacity.md)
 - [SQL Data Warehouse](prepay-sql-data-warehouse-charges.md)
 - [Virtuelle Computer](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+
+## <a name="buy-reservations-with-monthly-payments"></a>Erwerben von Reservierungen mit monatlicher Zahlung
+
+Sie können für Reservierungen auch monatlich bezahlen. Bei einem Kauf mit Vorauszahlung zahlen Sie den gesamten Betrag. Bei der monatlichen Zahlungsoption werden dagegen die Gesamtkosten der Reservierung gleichmäßig auf die einzelnen Monate der Laufzeit aufgeteilt. Die Gesamtkosten für vorab bezahlte und monatliche Reservierungen sind gleich. Es fallen keine zusätzlichen Gebühren an, wenn Sie sich für die monatliche Zahlung entscheiden.
+
+Wird eine Reservierung über die Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) erworben, variiert Ihr monatlicher Zahlungsbetrag möglicherweise abhängig vom Wechselkurs des aktuellen Monats für Ihre lokale Währung.
+
+Monatliche Zahlungen sind für Folgendes nicht verfügbar: Databricks, SUSE Linux-Reservierungen, Red Hat-Pläne und Azure Red Hat OpenShift Compute.
+
+### <a name="view-payments-made"></a>Anzeigen geleisteter Zahlungen
+
+Geleistete Zahlungen können mithilfe von APIs und Nutzungsdaten sowie in der Kostenanalyse angezeigt werden. Bei Reservierungen mit monatlicher Zahlung wird der Häufigkeitswert in Nutzungsdaten und in der Reservierungsgebühren-API als **Serie** angezeigt. Bei Reservierungen mit Vorauszahlung wird der Wert als **Einmalig** angezeigt.
+
+In der Standardansicht der Kostenanalyse werden monatliche Käufe angezeigt. Wenden Sie auf **Gebührentyp** den Filter **Einkauf** und auf **Häufigkeit** den Filter **Serie** an, um alle Käufe anzuzeigen. Sollen nur Reservierungen angezeigt werden, wenden Sie einen Filter für **Reservierung** an.
+
+![Beispiel für Reservierungserwerbskosten in der Kostenanalyse](./media/prepare-buy-reservation/cost-analysis.png)
+
+### <a name="exchange-and-refunds"></a>Umtausch und Rückerstattungen
+
+Mit monatlicher Abrechnung erworbene Reservierungen können genau wie andere Reservierungen erstattet oder umgetauscht werden. 
+
+Wenn Sie eine Reservierung mit monatlicher Zahlung umtauschen, müssen die Kosten für die gesamte Lebensdauer des neuen Einkaufs höher sein als die Restzahlungen, die für die zurückgegebene Reservierung storniert werden. Ansonsten gelten für den Umtausch keine weiteren Einschränkungen, und es fallen auch keine Gebühren an. Sie können eine Reservierung mit Vorauszahlung umtauschen, um eine neue Reservierung mit monatlicher Abrechnung zu erwerben. Der Wert für die Lebensdauer der neuen Reservierung muss jedoch höher sein als der anteilige Wert der zurückgegebenen Reservierung.
+
+Wenn Sie eine Reservierung stornieren, die monatlich bezahlt wird, werden zukünftige Zahlungen mit dem Rückerstattungslimit von 50.000 USD verrechnet.
+
+Weitere Informationen zu Umtausch und Rückerstattungen finden Sie unter [Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen](exchange-and-refund-azure-reservations.md).
+
+## <a name="reservation-notifications"></a>Reservierungsbenachrichtigungen
+
+Je nachdem, wie Sie für Ihr Azure-Abonnement bezahlen, werden per E-Mail Reservierungsbenachrichtigungen an die folgenden Benutzer Ihrer Organisation gesendet. Benachrichtigungen werden für verschiedene Ereignisse gesendet, z. B.: 
+
+- Purchase
+- Bevorstehender Reservierungsablauf
+- Expiry
+- Verlängerung
+- Abbruch
+- Bereichsänderung
+
+Für Kunden mit EA-Abonnements:
+
+- Benachrichtigungen werden nur an die EA-Benachrichtigungskontakte gesendet.
+- Benutzer, die einer Reservierung per RBAC-Berechtigung (IAM) hinzugefügt werden, erhalten keine E-Mail-Benachrichtigungen.
+
+Für Kunden mit Einzelabonnements:
+
+- Der Käufer erhält eine Kaufbenachrichtigung.
+- Zum Zeitpunkt des Kaufs erhält der Besitzer des Abrechnungskontos eines Abonnements eine Kaufbenachrichtigung.
+- Der Kontobesitzer erhält alle anderen Benachrichtigungen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

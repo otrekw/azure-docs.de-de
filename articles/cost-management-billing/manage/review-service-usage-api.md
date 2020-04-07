@@ -3,15 +3,15 @@ title: Überprüfen der Azure-Dienstressourcennutzung mit der REST-API
 description: Erfahren Sie, wie Sie mit Azure-REST-APIs die Azure-Dienstressourcennutzung überprüfen.
 author: lleonard-msft
 ms.service: cost-management-billing
-ms.topic: article
-ms.date: 02/12/2020
+ms.topic: reference
+ms.date: 03/31/2020
 ms.author: banders
-ms.openlocfilehash: 337523c489089eeae5d669252b61cc61478ae1b3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 60a9e17b16f0b539693beb987b4d0610d11a3050
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202844"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521196"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>Überprüfen der Azure-Ressourcennutzung mithilfe der REST-API
 
@@ -32,7 +32,9 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-Der Parameter `{subscriptionGuid}` ist erforderlich und sollte eine Abonnement-ID enthalten, die mithilfe der im API-Token bereitgestellten Anmeldeinformationen gelesen werden kann. Das `{reportName}`
+Der Parameter `{subscriptionGuid}` ist erforderlich und sollte eine Abonnement-ID enthalten, die mithilfe der im API-Token bereitgestellten Anmeldeinformationen gelesen werden kann. 
+
+Der Parameter `{reportName}` gibt den Namen des Berichts an. Zum Abrufen der Liste mit Berichtsnamen können Sie den Vorgang „Reports_List“ verwenden: `/subscriptions/{subscriptionId}/providers/Microsoft.CostManagement/reports`. Eine Beispielausgabe können Sie sich auf [GitHub](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/cost-management/resource-manager/Microsoft.CostManagement/preview/2018-08-01-preview/examples/ReportList.json) ansehen.
 
 Die folgenden Header sind erforderlich:
 

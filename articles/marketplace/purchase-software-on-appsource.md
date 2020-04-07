@@ -1,46 +1,40 @@
 ---
 title: Kaufen von Software in AppSource | Azure Marketplace
 description: Schritte zum Kaufen von Software in AppSource | Azure Marketplace
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/05/2019
-ms.openlocfilehash: 70e51d7c05e93e7d5f4451fa383023605a02af99
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.date: 03/20/2020
+ms.openlocfilehash: bc19246354bebd1ba2a827e7718cbad95b896e14
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933496"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284975"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Kaufen von Software in Microsoft AppSource
 
 Microsoft [AppSource](https://appsource.microsoft.com/) ermöglicht Kunden nun das Abonnieren von SaaS-Anwendungen, die von Microsoft-Partnern angeboten werden. Kunden können im Store zertifizierte Webanwendungen finden und die Gebühren, Upgrades, Downgrades und Stornierungen an zentraler Stelle mithilfe des Admin Centers von Microsoft verwalten. In diesem Artikel wird beschrieben, wie Sie eine App im Store kaufen können.
 
+AppSource bietet Ihnen eine Vielzahl von Apps zur Auswahl, darunter kostenlose, Test- und kostenpflichtige Abonnements. In diesem Artikel wird beschrieben, wie Sie über AppSource kostenpflichtige Abonnements erwerben können.
+
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
 Für den Kauf von SaaS-Angeboten benötigen Sie Folgendes:
 
-- Ein Geschäfts-, Schul- oder Unikonto.
+- Ein Geschäfts-, Schul- oder Unikonto. Wenn Sie nicht über ein Geschäfts-, Schul- oder Unikonto verfügen, folgen Sie während des Kaufvorgangs dem Link zum Registrieren eines kostenlosen Kontos.
+
+- Eine gültige Kreditkarte in dem Land/der Region, in dem/der Sie das Angebot erwerben.
 
     > [!Note]
-    > Wenn Sie kein Geschäfts-, Schul- oder Unikonto haben, müssen Sie einen Azure Active Directory-Mandanten erstellen, dem ein Geschäfts-, Schul- oder Unikonto hinzugefügt werden kann. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines neuen Mandanten in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
-
-- Eine gültige Kreditkarte.
-
-    > [!Note]
-    > Die Kreditkarte muss zum Land bzw. zur Region passen, in dem/der der Kunde das Angebot kauft. Um ein anderes Land auszuwählen, wählen Sie unten auf der Seite „Abrechnungsland/-region ändern“ aus.
+    > Das Land der Kreditkartenabrechnung kann an den Standort Ihrer Azure Active Directory-Instanz gebunden sein.
 
 ## <a name="steps-for-making-purchases-on-appsource"></a>Schritte zum Kauf in AppSource
 
 1. Treffen Sie in [AppSource](https://appsource.microsoft.com/) eine Wahl für „Abrechnungsland/-region“.
 1. Suchen Sie die Anwendung, die Sie kaufen möchten.
-
-    > [!Note]
-    > AppSource bietet Ihnen eine Vielzahl von Apps zur Auswahl, darunter kostenlose, Test- und kostenpflichtige Abonnements. In diesem Artikel wird beschrieben, wie Sie über AppSource kostenpflichtige Abonnements erwerben können.
-
 1. Wählen Sie **Jetzt anfordern** aus.
 1. Wählen Sie den Plan:
 

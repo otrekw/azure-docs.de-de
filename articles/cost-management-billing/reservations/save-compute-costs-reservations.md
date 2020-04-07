@@ -5,14 +5,14 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 03/30/2020
 ms.author: banders
-ms.openlocfilehash: 6277a7e7dc5891a3bc67c298a31344284c92e31d
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 97bd03fb2aa8f5b486ef87a04f260fec43eb81bd
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80235631"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396696"
 ---
 # <a name="what-are-azure-reservations"></a>Was sind Azure-Reservierungen?
 
@@ -20,7 +20,7 @@ Mit Azure-Reservierungen können Sie Geld sparen, indem Sie sich bei mehreren Pr
 
 Sie können für eine Reservierung im Voraus oder monatlich bezahlen. Die Gesamtkosten für vorab bezahlte und monatliche Reservierungen sind gleich. Es fallen keine zusätzlichen Gebühren an, wenn Sie sich für die monatliche Zahlung entscheiden. Die monatliche Zahlung ist für Azure-Reservierungen verfügbar, nicht für Produkte von Drittanbietern.
 
-Sie können eine Reservierung im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) erwerben.
+Sie können eine Reservierung im Azure-Portal unter [https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) erwerben.
 
 ## <a name="why-buy-a-reservation"></a>Warum eine Reservierung kaufen?
 
@@ -34,6 +34,48 @@ Weitere Informationen zur Anwendung des Rabatts finden Sie unter [Anwendung des 
 
 Weitere Informationen zur Funktionsweise des Reservierungsbereichs finden Sie unter [Bereichsreservierungen](prepare-buy-reservation.md#scope-reservations).
 
+## <a name="determine-what-to-purchase"></a>Entscheidungshilfe für den Kauf 
+
+Mit Ausnahme von Azure Databricks sind alle Reservierungen stundenbasiert. Erwerben Sie Reservierungen auf der Grundlage der konsistenten Basisnutzung. Sie können bestimmen, welche Reservierung erworben werden soll, indem Sie Ihre Nutzungsdaten analysieren oder Reservierungsempfehlungen nutzen. Empfehlungen sind hier verfügbar:
+
+- Azure Advisor (nur VMs)
+- Benutzeroberfläche für den Reservierungskauf im Azure-Portal
+- Cost Management-Power BI-App
+- APIs 
+
+Weitere Informationen finden Sie unter  [Ermitteln der zu erwerbenden Reservierung](determine-reservation-purchase.md). 
+
+## <a name="buying-a-reservation"></a>Erwerben einer Reservierung 
+
+Sie können Reservierungen über das Azure-Portal, APIs, PowerShell und die CLI erwerben. 
+
+Navigieren Sie für den Kauf zum Azure-Portal (https://ms.portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs). 
+
+Weitere Informationen finden Sie unter [Vorbereiten des Kaufs einer Reservierung](prepare-buy-reservation.md). 
+
+## <a name="how-is-a-reservation-billed"></a>Wie wird eine Reservierung abgerechnet? 
+
+Die Reservierung wird mit der Zahlungsmethode in Rechnung gestellt, die mit dem Abonnement verknüpft ist. Die Reservierungskosten werden ggf. von Ihrem Verpflichtungsguthaben abgezogen. Wenn Ihr Zahlungsverpflichtungssaldo die Kosten für die Reservierung nicht abdeckt, wird Ihnen die Überschreitung in Rechnung gestellt. Wenn Sie über ein Abonnement in einem individuellen Plan mit Preisen für nutzungsbasierte Bezahlung verfügen, wird die Kreditkarte Ihres Konto umgehend für Vorabkäufe belastet. Monatliche Zahlungen werden auf Ihrer Rechnung angezeigt, und Ihre Kreditkarte wird monatlich belastet. Wenn Sie Rechnungen erhalten, sind die Gebühren Ihrer nächsten Rechnung aufgeführt. 
+
+## <a name="permissions-to-view-and-manage-reservations"></a>Berechtigungen zum Anzeigen und Verwalten von Reservierungen 
+
+Der Benutzer, der eine Reservierung erwirbt, und der Kontoadministrator des Abonnements, das für die Abrechnung der Reservierung verwendet wird, erhalten die Rolle „Besitzer“ im Reservierungsauftrag und in der Reservierung.
+
+Sie können die Verwaltung einer Reservierung delegieren, indem Sie den Rollen im Reservierungsauftrag oder in der Reservierung Personen hinzufügen. Sie weisen die Rollen im Azure-Portal oder mithilfe von APIs und PowerShell zu. 
+
+Weitere Informationen finden Sie unter  [Hinzufügen oder Ändern von Benutzern, die eine Reservierung verwalten können](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation). 
+
+## <a name="get-reservation-details-and-utilization-after-purchase"></a>Abrufen der Reservierungsdetails und -nutzung nach dem Kauf
+
+Wenn Sie über die Berechtigung zum Anzeigen der Reservierung verfügen, können Sie diese und ihre Verwendung im Azure-Portal anzeigen. Sie können die Daten auch mithilfe von APIs abrufen. 
+
+Weitere Informationen zum Anzeigen von Reservierungen im Azure-Portal finden Sie unter  [Anzeigen von Azure-Reservierungen im Azure-Portal](view-reservations.md). 
+
+## <a name="manage-reservations-after-purchase"></a>Verwalten von Reservierungen nach dem Kauf 
+
+Nachdem Sie eine Azure-Reservierung erworben haben, können Sie den Bereich aktualisieren, um die Reservierung auf ein anderes Abonnement anzuwenden, ändern, wer die Reservierung verwalten kann, eine Reservierung in kleinere Teile aufgliedern oder die Instanzgrößenflexibilität ändern. 
+
+Weitere Informationen finden Sie unter  [Verwalten von Reservierungen für Azure-Ressourcen](manage-reserved-vm-instance.md). 
 
 ## <a name="flexibility-with-azure-reservations"></a>Flexibilität mit Azure-Reservierungen
 

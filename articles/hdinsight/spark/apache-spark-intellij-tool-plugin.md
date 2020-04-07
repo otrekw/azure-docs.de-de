@@ -1,23 +1,23 @@
 ---
-title: 'Tutorial: Azure-Toolkit für IntelliJ: Spark-App: HDInsight'
-description: 'Tutorial: Verwenden Sie das Azure Toolkit für IntelliJ, um in Scala geschriebene Spark-Anwendungen zu entwickeln und an einen HDInsight Spark-Cluster zu senden.'
+title: 'Azure-Toolkit für IntelliJ: Spark-App: HDInsight'
+description: Verwenden Sie das Azure Toolkit für IntelliJ, um in Scala geschriebene Spark-Anwendungen zu entwickeln und diese an einen HDInsight Spark-Cluster zu senden.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 2631a0906a0f0886bdc106f1afef99860a6fe00b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d80f4cb12c79519818f6eccb2bb565bac472b471
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223587"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397696"
 ---
-# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Tutorial: Erstellen von Apache Spark-Anwendungen für einen HDInsight-Cluster mit dem Azure-Toolkit für IntelliJ
+# <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Erstellen von Apache Spark-Anwendungen für einen HDInsight-Cluster mit dem Azure-Toolkit für IntelliJ
 
-In diesem Tutorial wird gezeigt, wie Sie mit dem **Azure-Toolkit-Plug-In** für die IntelliJ-IDE Apache Spark-Anwendungen in Azure HDInsight entwickeln. [Azure HDInsight](../hdinsight-overview.md) ist ein verwalteter Open-Source-Analyse-Dienst in der Cloud, mit dem Sie Open-Source-Frameworks wie Hadoop, Apache Spark, Apache Hive und Apache Kafka verwenden können.
+In diesem Artikel wird gezeigt, wie Sie mit dem **Azure-Toolkit-Plug-In** für die IntelliJ-IDE Apache Spark-Anwendungen in Azure HDInsight entwickeln. [Azure HDInsight](../hdinsight-overview.md) ist ein verwalteter Open-Source-Analyse-Dienst in der Cloud, mit dem Sie Open-Source-Frameworks wie Hadoop, Apache Spark, Apache Hive und Apache Kafka verwenden können.
 
 Sie können das **Azure-Toolkit-Plug-In** auf mehrere Arten verwenden:
 
@@ -25,7 +25,7 @@ Sie können das **Azure-Toolkit-Plug-In** auf mehrere Arten verwenden:
 * Zugreifen auf Ihre Azure HDInsight Spark-Clusterressourcen
 * Entwickeln und lokales Ausführen einer Scala Spark-Anwendung
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > [!div class="checklist"]
 > * Verwenden des Plug-Ins „Azure-Toolkit für IntelliJ“
 > * Entwickeln von Apache Spark-Anwendungen
@@ -35,7 +35,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 * Ein Apache Spark-Cluster unter HDInsight. Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
-* [Oracle Java Development Kit.](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)  In diesem Tutorial wird die Java-Version 8.0.202 verwendet.
+* [Oracle Java Development Kit.](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)  In diesem Artikel wird die Java-Version 8.0.202 verwendet.
 
 * IntelliJ IDEA. In diesem Artikel wird [IntelliJ IDEA Community  2018.3.4](https://www.jetbrains.com/idea/download/) verwendet.
 
@@ -77,7 +77,7 @@ Führen Sie die folgenden Schritte aus, um das Scala-Plug-In zu installieren:
 
     |  Eigenschaft   | BESCHREIBUNG   |  
     | ----- | ----- |  
-    |Projektname| Geben Sie einen Namen ein.  In diesem Tutorial wird `myApp` verwendet.|  
+    |Projektname| Geben Sie einen Namen ein.  In diesem Artikel wird `myApp` verwendet.|  
     |Project&nbsp;location (Projektspeicherort)| Geben Sie den gewünschten Speicherort für Ihr Projekt ein.|
     |Project SDK (Projekt-SDK)| Dieses Feld ist bei der erstmaligen Verwendung von IDEA möglicherweise leer.  Wählen Sie **New...** (Neu...) aus, und navigieren Sie zu Ihrem JDK.|
     |Spark-Version|Der Erstellungs-Assistent integriert die passende Version für das Spark-SDK und das Scala-SDK. Wenn Sie eine ältere Spark-Clusterversion als 2.0 verwenden, wählen Sie **Spark 1.x** aus. Wählen Sie andernfalls **Spark 2.x** aus. In diesem Beispiel wird **Spark 2.3.0 (Scala 2.11.8)** verwendet.|
@@ -472,7 +472,7 @@ Wenn Sie diese Anwendung nicht mehr benötigen, gehen Sie wie folgt vor, um den 
 
 1. Wählen Sie unter **Dienste** die Option **HDInsight-Cluster** aus.
 
-1. Klicken Sie in der daraufhin angezeigten Liste mit den HDInsight-Clustern neben dem Cluster, den Sie für dieses Tutorial erstellt haben, auf die Auslassungspunkte ( **...** ).
+1. Klicken Sie in der daraufhin angezeigten Liste mit den HDInsight-Clustern neben dem Cluster, den Sie für diesen Artikel erstellt haben, auf die Auslassungspunkte ( **...** ).
 
 1. Klicken Sie auf **Löschen**. Wählen Sie **Ja** aus.
 
@@ -480,7 +480,7 @@ Wenn Sie diese Anwendung nicht mehr benötigen, gehen Sie wie folgt vor, um den 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie gelernt, wie Sie mit dem Plug-In „Azure-Toolkit für IntelliJ“ in [Scala](https://www.scala-lang.org/) geschriebene Apache Spark-Anwendungen entwickeln und dann direkt aus der IntelliJ-IDE (Integrated Development Environment, integrierte Entwicklungsumgebung) an einen HDInsight Spark-Cluster senden. Fahren Sie mit dem nächsten Artikel fort, um zu erfahren, wie die in Apache Spark registrierten Daten in ein BI-Analyse-Tool wie Power BI gezogen werden können.
+In diesem Artikel haben Sie gelernt, wie Sie mit dem Plug-In „Azure-Toolkit für IntelliJ“ in [Scala](https://www.scala-lang.org/) geschriebene Apache Spark-Anwendungen entwickeln und dann direkt aus der IntelliJ-IDE (Integrated Development Environment, integrierte Entwicklungsumgebung) an einen HDInsight Spark-Cluster senden. Fahren Sie mit dem nächsten Artikel fort, um zu erfahren, wie die in Apache Spark registrierten Daten in ein BI-Analyse-Tool wie Power BI gezogen werden können.
 
 > [!div class="nextstepaction"]
 > [Tutorial: Analysieren von Apache Spark-Daten mithilfe von Power BI in HDInsight](apache-spark-use-bi-tools.md)
