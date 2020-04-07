@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/24/2020
+ms.date: 03/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8bde9a9e9227f0c8715b38a9a376fad3015c7bf3
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 40885e1de4ff4c16d2a50399c654d8596396ab53
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77586256"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366366"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Verbinden von Hybridcomputern mit Azure über das Azure-Portal
 
@@ -56,6 +56,7 @@ Das Skript zum Automatisieren des Download- und Installationsvorgangs sowie zum 
 ## <a name="install-and-validate-the-agent-on-windows"></a>Installieren und Überprüfen des Agents unter Windows
 
 ### <a name="install-manually"></a>Manuelle Installation
+
 Sie können den Azure Connected Machine-Agent manuell installieren, indem Sie das Windows Installer-Paket *AzureConnectedMachineAgent.msi* ausführen. 
 
 > [!NOTE]
@@ -64,14 +65,19 @@ Sie können den Azure Connected Machine-Agent manuell installieren, indem Sie da
 
 Wenn der Computer über einen Proxyserver mit dem Dienst kommunizieren muss, muss nach der Installation des Agents ein weiter unten in diesem Artikel beschriebener Befehl ausgeführt werden. Dadurch wird die Systemumgebungsvariable `https_proxy` für den Proxyserver festgelegt.
 
-In der folgenden Tabelle sind die Parameter hervorgehoben, die von Setup für den Agent auf der Befehlszeile unterstützt werden.
+Wenn Sie nicht mit den Befehlszeilenoptionen für Windows Installer-Pakete vertraut sind, lesen Sie die Artikel [Standardmäßige Installer-Befehlszeilenoptionen](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options) und [Befehlszeilenoptionen](https://docs.microsoft.com/windows/win32/msi/command-line-options).
 
-| Parameter | BESCHREIBUNG |
-|:--|:--|
-| /? | Gibt eine Liste der Befehlszeilenoptionen zurück. |
-| /S | Führt eine automatische Installation ohne Benutzereingriff aus. |
+Führen Sie das Installationsprogramm z. B. mit dem Parameter `/?` aus, um die Hilfe- und Kurzübersichtsoption anzuzeigen. 
 
-Geben Sie beispielsweise `msiexec.exe /i AzureConnectedMachineAgent.msi /?` ein, um das Installationsprogramm mit dem Parameter `/?` auszuführen.
+```dos
+msiexec.exe /i AzureConnectedMachineAgent.msi /?
+```
+
+Führen Sie den folgenden Befehl aus, um den Agent im Hintergrund zu installieren und eine Setupprotokolldatei im Ordner `C:\Support\Logs` zu erstellen.
+
+```dos
+msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
+```
 
 Dateien für den Azure Connected Machine-Agent werden standardmäßig unter *C:\Programme\AzureConnectedMachineAgent* installiert. Sollte der Agent nach Abschluss des Setups nicht gestartet werden, suchen Sie in den Protokollen nach ausführlichen Fehlerinformationen. Das Protokollverzeichnis ist *%Programfiles%\AzureConnectedMachineAgentAgent\logs*.
 
@@ -147,58 +153,6 @@ Führen Sie nach Abschluss der Agent-Installation den folgenden Befehl aus, um d
 Vergewissern Sie sich im Azure-Portal, dass die Serververbindung erfolgreich hergestellt wurde, nachdem Sie den Agent installiert und für die Verbindungsherstellung mit Azure Arc für Server (Vorschauversion) konfiguriert haben. Zeigen Sie Ihre Computer im [Azure-Portal](https://aka.ms/hybridmachineportal) an.
 
 ![Erfolgreiche Serververbindung](./media/onboard-portal/arc-for-servers-successful-onboard.png)
-
-## <a name="clean-up"></a>Bereinigung
-
-Gehen Sie wie folgt vor, um die Verbindung zwischen einem Computer und Azure Arc für Server (Vorschauversion) zu trennen:
-
-1. Öffnen Sie Azure Arc für Server (Vorschauversion), indem Sie zum [Azure-Portal](https://aka.ms/hybridmachineportal) navigieren.
-
-1. Wählen Sie den Computer in der Liste aus. Wählen Sie dann die Auslassungspunkte ( **...** ) und anschließend **Löschen** aus.
-
-1. Gehen Sie zum Deinstallieren des Windows-Agents auf dem Computer wie folgt vor:
-
-    a. Melden Sie sich bei dem Computer mit einem Konto an, das über Administratorberechtigungen verfügt.  
-    b. Wählen Sie in der **Systemsteuerung** die Option **Programme und Features** aus.  
-    c. Wählen Sie unter **Programme und Features** Folgendes aus: **Azure Connected Machine-Agent** >**Deinstallieren** > **Ja**.  
-
-    >[!NOTE]
-    > Sie können auch auf das Installer-Paket **AzureConnectedMachineAgent.msi** doppelklicken, um den Setup-Assistenten für den Agent auszuführen.
-
-    Wenn Sie ein Skript für das Entfernen des Agents erstellen möchten, können Sie das folgende Beispiel verwenden. In diesem Beispiel wird der Produktcode abgerufen und der Agent über die Msiexec-Befehlszeile (`msiexec /x {Product Code}`) deinstalliert. Gehen Sie folgendermaßen vor:  
-    
-    a. Öffnen Sie den Registrierungs-Editor.  
-    b. Suchen Sie unter dem Registrierungsschlüssel `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall` nach der Produktcode-GUID, und kopieren Sie sie.  
-    c. Anschließend können Sie den Agent mithilfe von Msiexec deinstallieren.
-
-    Im folgenden Beispiel wird das Deinstallieren des Agents gezeigt:
-
-    ```powershell
-    Get-ChildItem -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall | `
-    Get-ItemProperty | `
-    Where-Object {$_.DisplayName -eq "Azure Connected Machine Agent"} | `
-    ForEach-Object {MsiExec.exe /x "$($_.PsChildName)" /qn}
-    ```
-
-1. Beim Deinstallieren des Linux-Agents ist der zu verwendende Befehl vom Linux-Betriebssystem abhängig.
-
-    - Führen Sie für Ubuntu den folgenden Befehl aus:
-
-      ```bash
-      sudo apt purge azcmagent
-      ```
-
-    - Führen Sie für RHEL, CentOS und Amazon Linux den folgenden Befehl aus:
-
-      ```bash
-      sudo yum remove azcmagent
-      ```
-
-    - Führen Sie für SLES den folgenden Befehl aus:
-
-      ```bash
-      sudo zypper remove azcmagent
-      ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

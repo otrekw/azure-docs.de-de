@@ -1,18 +1,18 @@
 ---
 title: Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen
 description: Es wird beschrieben, wie Sie das Betriebssystemimage auf VM-Instanzen in einer Skalierungsgruppe automatisch aktualisieren.
-author: shandilvarun
+author: mayanknayar
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 07/16/2019
-ms.author: vashan
-ms.openlocfilehash: c452ba5b8abfce4227d72922139824d639c62755
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.date: 03/18/2020
+ms.author: manayar
+ms.openlocfilehash: 6d550e8e960cb8e212702796467c91d1cd1ebb23
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278160"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235177"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen
 
@@ -21,9 +21,9 @@ Das Aktivieren der automatischen Betriebssystemimage-Upgrades auf Ihrer Skalieru
 Das automatische Betriebssystemupgrade weist folgende Merkmale auf:
 
 - Nach der Konfiguration wird das neueste von den Imageherausgebern veröffentlichte Betriebssystemimage automatisch ohne Benutzereingriff auf die Skalierungsgruppe angewendet.
-- Aktualisiert Batches von Instanzen immer parallel, wenn ein neues Plattformimage vom Herausgeber veröffentlicht wird.
+- Aktualisiert Batches von Instanzen immer parallel, wenn ein neues Image vom Herausgeber veröffentlicht wird.
 - Wird in Anwendungsintegritätstests und [Anwendungsintegritätserweiterung](virtual-machine-scale-sets-health-extension.md) integriert.
-- Unterstützt alle VM-Größen und sowohl Windows- als auch Linux-Plattformimages.
+- Unterstützt alle VM-Größen und sowohl Windows- als auch Linux-Images.
 - Sie können automatische Upgrades jederzeit abwählen (Betriebssystemupgrades können auch manuell initiiert werden).
 - Der Betriebssystemdatenträger eines virtuellen Computers wird durch den neuen, mit der neuesten Imageversion erstellten Betriebssystemdatenträger ersetzt. Konfigurierte Erweiterungen und benutzerdefinierte Datenskripts werden ausgeführt, wobei persistente Datenträger weiterhin aufbewahrt werden.
 - [Erweiterungssequenzierung](virtual-machine-scale-sets-extension-sequencing.md) wird unterstützt.
@@ -35,7 +35,7 @@ Bei einem Upgrade wird der Betriebssystemdatenträger eines virtuellen Computers
 
 Der Upgradeprozess funktioniert wie folgt:
 1. Bevor mit dem Upgradeprozess begonnen wird, stellt der Orchestrator sicher, dass nicht mehr als 20% der Instanzen in der gesamten Skalierungsgruppe (aus beliebigem Grund) fehlerhaft sind.
-2. Der Upgradeorchestrator identifiziert den Batch zu aktualisierender VM-Instanzen, wobei ein Batch maximal 20% der gesamten Instanzenzahl aufweist. Bei kleineren Skalierungsgruppen mit fünf oder weniger Instanzen umfasst die Batchgröße für ein Upgrade eine VM-Instanz.
+2. Der Upgradeorchestrator identifiziert den Batch zu aktualisierender VM-Instanzen, wobei ein Batch maximal 20% der gesamten Instanzenzahl aufweist, abhängig von einer minimalen Batchgröße eines virtuellen Computers.
 3. Der Betriebssystemdatenträger des ausgewählten Batches mit VM-Instanzen wird durch einen neuen Betriebssystemdatenträger ersetzt, der aus dem aktuellen Image erstellt wurde. Alle angegebenen Erweiterungen und Konfigurationen im Skalierungsgruppenmodell werden auf die aktualisierte Instanz angewendet.
 4. Für Skalierungsgruppen mit konfigurierten Anwendungsintegritätstests oder Anwendungsintegritätserweiterung wartet das Upgrade bis zu 5 Minuten darauf, dass die Instanz fehlerfrei wird, bevor mit der Aktualisierung des nächsten Batches fortgefahren wird. Wenn für eine Instanz die Integrität innerhalb von fünf Minuten nach einem Upgrade nicht wiederhergestellt werden kann, wird standardmäßig der vorherige Betriebssystemdatenträger für die Instanz wiederhergestellt.
 5. Der Upgradeorchestrator verfolgt auch den Prozentsatz der Instanzen nach, die nach einem Upgrade fehlerhaft werden. Das Upgrade wird beendet, wenn mehr als 20% der aktualisierten Instanzen während des Upgradeprozesses fehlerhaft werden.
@@ -44,9 +44,9 @@ Der Upgradeprozess funktioniert wie folgt:
 Der Upgradeorchestrator für das Skalierungsgruppen-Betriebssystem überprüft die allgemeine Skalierungsgruppenintegrität, bevor die einzelnen Batches aktualisiert werden. Beim Aktualisieren eines Batches finden eventuell andere gleichzeitige geplante oder nicht geplante Wartungsaktivitäten statt, die die Integrität Ihrer Skalierungsgruppeninstanzen beeinträchtigen könnten. Wenn in solchen Fällen mehr als 20% der Instanzen der Skalierungsgruppe fehlerhaft werden, endet das Upgrade der Skalierungsgruppe am Ende des aktuellen Batches.
 
 ## <a name="supported-os-images"></a>Unterstützte Betriebssystemimages
-Derzeit werden nur bestimmte Betriebssystemplattform-Images unterstützt. Benutzerdefinierte Images werden derzeit nicht unterstützt.
+Derzeit werden nur bestimmte Betriebssystemplattform-Images unterstützt. Die Unterstützung für benutzerdefinierte Images ist über [Shared Image Gallery](shared-image-galleries.md) als [Vorschau](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images-preview) für benutzerdefinierte Images verfügbar.
 
-Derzeit werden die folgenden SKUs unterstützt (und weitere werden regelmäßig hinzugefügt):
+Derzeit werden die folgenden Plattform-SKUs unterstützt (weitere werden regelmäßig hinzugefügt):
 
 | Herausgeber               | Betriebssystemangebot      |  Sku               |
 |-------------------------|---------------|--------------------|
@@ -66,7 +66,7 @@ Derzeit werden die folgenden SKUs unterstützt (und weitere werden regelmäßig 
 
 ## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>Anforderungen für das Konfigurieren des automatischen Upgrades von Betriebssystemimages
 
-- Die *version*-Eigenschaft des Plattformimages muss auf *latest* festgelegt werden.
+- Die *version*-Eigenschaft des Images muss auf *latest* festgelegt werden.
 - Verwenden Sie Anwendungsintegritätstests oder [Anwendungsintegritätserweiterung](virtual-machine-scale-sets-health-extension.md) für Nicht-Service Fabric-Skalierungsgruppen.
 - Verwenden Sie Compute-API-Version 2018-10-01 oder höher.
 - Stellen Sie sicher, dass im Skalierungsgruppenmodell angegebene externe Ressourcen verfügbar und aktualisiert sind. Zu den Beispielen zählen SAS-URI für die Bootstrap-Nutzlast in VM-Erweiterungseigenschaften, Nutzlast im Speicherkonto, Verweis auf Geheimnisse im Modell und Sonstiges.
@@ -80,6 +80,86 @@ Stellen Sie bei Verwendung von Service Fabric sicher, dass die folgenden Bedingu
 -   Die Dauerhaftigkeitsstufe sollte im Service Fabric-Cluster und für die Service Fabric-Erweiterung in der Skalierungsgruppenmodell-Definition gleich sein.
 
 Stellen Sie sicher, dass die Dauerhaftigkeitseinstellungen im Service Fabric-Cluster und für die Service Fabric-Erweiterung nicht in Konflikt stehen, weil dies zu Upgradefehlern führt. Dauerhaftigkeitsstufen können mit den Richtlinien geändert werden, die auf [dieser Seite](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels) beschrieben sind.
+
+
+## <a name="automatic-os-image-upgrade-for-custom-images-preview"></a>Automatisches Upgrade von Betriebssystemimages für benutzerdefinierte Images (Vorschau)
+
+> [!IMPORTANT]
+> Das automatische Upgrade von Betriebssystemimages für benutzerdefinierte Images befindet sich derzeit in der öffentlichen Vorschauphase. Es ist ein Opt-in-Verfahren erforderlich, um die unten beschriebenen Funktionen der öffentlichen Vorschauversion zu nutzen.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Das automatische Upgrade von Betriebssystemimages für benutzerdefinierte Images ist als Vorschau für benutzerdefinierte Images verfügbar, die über [Shared Image Gallery](shared-image-galleries.md) bereitgestellt wurden. Andere benutzerdefinierte Images werden für automatische Upgrades von Betriebssystemimages nicht unterstützt.
+
+Zum Aktivieren der Vorschaufunktion ist ein einmaliges Opt-in des Features *AutomaticOSUpgradeWithGalleryImage* pro Abonnement erforderlich, wie unten beschrieben.
+
+### <a name="rest-api"></a>REST-API
+Im folgenden Beispiel wird beschrieben, wie Sie die Vorschauversion für Ihr Abonnement aktivieren:
+
+```
+POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticOSUpgradeWithGalleryImage/register?api-version=2015-12-01`
+```
+
+Die Featureregistrierung kann bis zu 15 Minuten dauern. So überprüfen Sie den Registrierungsstatus:
+
+```
+GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/AutomaticOSUpgradeWithGalleryImage?api-version=2015-12-01`
+```
+
+Schließen Sie den Opt-in-Prozess ab, nachdem Sie das Feature für Ihr Abonnement registriert haben, indem Sie die Änderung an den Computeressourcenanbieter weitergeben.
+
+```
+POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2019-10-01`
+```
+
+### <a name="azure-powershell"></a>Azure PowerShell
+Verwenden Sie das Cmdlet [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature), um die Vorschauversion für Ihr Abonnement zu aktivieren.
+
+```azurepowershell-interactive
+Register-AzProviderFeature -FeatureName AutomaticOSUpgradeWithGalleryImage -ProviderNamespace Microsoft.Compute
+```
+
+Die Featureregistrierung kann bis zu 15 Minuten dauern. So überprüfen Sie den Registrierungsstatus:
+
+```azurepowershell-interactive
+Get-AzProviderFeature -FeatureName AutomaticOSUpgradeWithGalleryImage -ProviderNamespace Microsoft.Compute
+```
+
+Schließen Sie den Opt-in-Prozess ab, nachdem Sie das Feature für Ihr Abonnement registriert haben, indem Sie die Änderung an den Computeressourcenanbieter weitergeben.
+
+```azurepowershell-interactive
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
+```
+
+### <a name="azure-cli-20"></a>Azure CLI 2.0
+Verwenden Sie [az feature register](/cli/azure/feature#az-feature-register), um die Vorschauversion für Ihr Abonnement zu aktivieren.
+
+```azurecli-interactive
+az feature register --namespace Microsoft.Compute --name AutomaticOSUpgradeWithGalleryImage
+```
+
+Die Featureregistrierung kann bis zu 15 Minuten dauern. So überprüfen Sie den Registrierungsstatus:
+
+```azurecli-interactive
+az feature show --namespace Microsoft.Compute --name AutomaticOSUpgradeWithGalleryImage
+```
+
+Schließen Sie den Opt-in-Prozess ab, nachdem Sie das Feature für Ihr Abonnement registriert haben, indem Sie die Änderung an den Computeressourcenanbieter weitergeben.
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Compute
+```
+
+### <a name="additional-requirements-for-custom-images"></a>Weitere Anforderungen für benutzerdefinierte Images
+- Der oben beschriebene Opt-in-Prozess muss nur einmal pro Abonnement durchgeführt werden. Nach Abschluss des Opt-in-Prozesses können automatische Betriebssystemupgrades für jede Skalierungsgruppe im jeweiligen Abonnement aktiviert werden.
+- Shared Image Gallery kann sich in einem beliebigen Abonnement befinden, ein separates Opt-in ist nicht erforderlich. Das Feature-Opt-in ist nur für das Skalierungsgruppenabonnement erforderlich.
+- Der Konfigurationsprozess für das automatische Upgrade von Betriebssystemimages ist für alle Skalierungsgruppen identisch (siehe Beschreibung im [Konfigurationsabschnitt](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade) dieser Seite).
+- Skalierungsgruppeninstanzen, die für automatische Upgrades von Betriebssystemimages konfiguriert sind, werden auf die neueste Version des Shared Image Gallery-Images aktualisiert, wenn eine neue Version des Images veröffentlicht und in die Region der betreffenden Skalierungsgruppe [repliziert](shared-image-galleries.md#replication) wird. Wenn das neue Image nicht in der Region repliziert wird, in der die Skalierung bereitgestellt wird, erfolgt kein Upgrade der Skalierungsgruppeninstanzen auf die neueste Version. Die regionale Imagereplikation ermöglicht es Ihnen, das Rollout des neuen Images für Ihre Skalierungsgruppen zu steuern.
+- Die neue Imageversion sollte nicht aus der aktuellen Version für das betreffende Katalogimage ausgeschlossen werden. Für Imageversionen, die aus der aktuellen Version des Katalogimages ausgeschlossen werden, erfolgt durch das automatische Upgrade von Betriebssystemimages kein Rollout in der Skalierungsgruppe.
+
+> [!NOTE]
+>Es kann bis zu 2 Stunden dauern, bis eine Skalierungsgruppe das erste Imagerollout erhält, nachdem die Skalierungsgruppe für automatische Betriebssystemupgrades konfiguriert wurde. Dies ist eine einmalige Verzögerung pro Skalierungsgruppe. Nachfolgende Imagerollouts werden ohne diese Verzögerung auf die Skalierungsgruppe angewendet.
+
 
 ## <a name="configure-automatic-os-image-upgrade"></a>Konfigurieren des automatischen Upgrades von Betriebssystemimages
 Stellen Sie zum Konfigurieren des automatischen Upgrades von Betriebssystemimages sicher, dass die Eigenschaft *automaticOSUpgradePolicy.enableAutomaticOSUpgrade* in der Definition des Skalierungsgruppenmodells auf *true* festgelegt ist.
@@ -143,13 +223,13 @@ Der Lastenausgleichstest kann im *networkProfile* der Skalierungsgruppe referenz
 > [!NOTE]
 > Wenn Sie automatische Betriebssystemupgrades mit Service Fabric verwenden, wird das neue Betriebssystemimage nacheinander in einzelnen Updatedomänen bereitgestellt. So wird gewährleistet, dass die in Service Fabric ausgeführten Dienste hochverfügbar bleiben. Um automatische Betriebssystemupgrades in Service Fabric nutzen zu können, muss Ihr Cluster zur Verwendung der Dauerhaftigkeitsstufe „Silber“ oder höher konfiguriert sein. Weitere Informationen zu den Dauerhaftigkeitsmerkmalen von Service Fabric-Clustern finden Sie in [dieser Dokumentation](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
 
-### <a name="keep-credentials-up-to-date"></a>Die Anmeldeinformationen müssen aktuell sein
+### <a name="keep-credentials-up-to-date"></a>Ihre Anmeldeinformationen müssen aktuell sein
 Wenn Ihre Skalierungsgruppe Anmeldeinformationen zum Zugreifen auf externe Ressourcen verwendet – z. B. eine VM-Erweiterung, die für die Verwendung eines SAS-Tokens für das Speicherkonto konfiguriert wurde –, sollten Sie sicherstellen, dass die Anmeldeinformationen aktuell sind. Wenn die verwendeten Anmeldeinformationen (Zertifikate und Token eingeschlossen) abgelaufen sind, kommt es beim Upgrade zu einem Fehler, und der erste VM-Batch wechselt in einen Fehlerzustand.
 
 Führen Sie die folgenden Schritte aus, um nach einem Fehler bei der Ressourcenauthentifizierung die VMs wiederherzustellen und automatische Betriebssystemupgrades erneut zu aktivieren:
 
 * Generieren Sie das Token (oder andere Anmeldeinformationen) neu, die an Ihre Erweiterungen übergeben werden.
-* Stellen Sie sicher, dass auf dem virtuellen Computer verwendete Anmeldeinformationen für die Kommunikation mit externen Entitäten aktuell sind.
+* Stellen Sie sicher, dass in der VM verwendete Anmeldeinformationen zur Kommunikation mit externen Entitäten aktuell sind.
 * Aktualisieren Sie Erweiterungen im Skalierungsgruppenmodell mit den neuen Token.
 * Stellen Sie die aktualisierte Skalierungsgruppe bereit, um alle VM-Instanzen – einschließlich der fehlerhaften – zu aktualisieren.
 
@@ -249,7 +329,7 @@ In bestimmten Fällen, in denen Sie nicht auf das Anwenden des aktuellen Images 
 > Die manuelle Auslösung von Upgrades des Betriebssystemimages verfügt nicht über Funktionen für den automatischen Rollback. Wenn eine Instanz nach einem Upgradevorgang die Integrität nicht wiedererlangt, kann der vorherige Betriebssystemdatenträger nicht wiederhergestellt werden.
 
 ### <a name="rest-api"></a>REST-API
-Verwenden Sie den API-Aufruf zum [Starten eines Betriebssystemupgrades](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade), um ein paralleles Upgrade zu starten, bei dem alle VM-Skalierungsgruppeninstanzen auf die neueste verfügbare Plattformimage-Betriebssystemversion aktualisiert werden. Instanzen, auf denen bereits die neueste verfügbare Betriebssystemversion ausgeführt wird, sind nicht betroffen. Das folgende Beispiel zeigt, wie Sie ein paralleles Betriebssystemupgrade für eine Skalierungsgruppe mit dem Namen *myScaleSet* in der Ressourcengruppe *myResourceGroup* starten können:
+Verwenden Sie den API-Aufruf zum [Starten eines Betriebssystemupgrades](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade), um ein paralleles Upgrade zu starten, bei dem alle VM-Skalierungsgruppeninstanzen auf die neueste verfügbare Imagebetriebssystemversion aktualisiert werden. Instanzen, auf denen bereits die neueste verfügbare Betriebssystemversion ausgeführt wird, sind nicht betroffen. Das folgende Beispiel zeigt, wie Sie ein paralleles Betriebssystemupgrade für eine Skalierungsgruppe mit dem Namen *myScaleSet* in der Ressourcengruppe *myResourceGroup* starten können:
 
 ```
 POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2018-10-01`

@@ -1,19 +1,19 @@
 ---
 title: Definieren eines neuen IoT-Gerätetyps in Azure IoT Central | Microsoft-Dokumentation
-description: In diesem Tutorial für Ersteller erfahren Sie, wie Sie in Ihrer Azure IoT Central-Anwendung eine neue Azure IoT-Gerätevorlage erstellen. Sie definieren die Telemetriedaten, den Zustand, die Eigenschaften und die Befehle für den Typ.
+description: In diesem Artikel für Ersteller erfahren Sie, wie Sie in Ihrer Azure IoT Central-Anwendung eine neue Azure IoT-Gerätevorlage erstellen. Sie definieren die Telemetriedaten, den Zustand, die Eigenschaften und die Befehle für den Typ.
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/06/2019
-ms.topic: tutorial
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 2313c347e3836b6fa9d6055f99c258624e44c51f
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6f93d74653aab78e48e613ddf9252a0876548b95
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023785"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157669"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Definieren eines neuen IoT-Gerätetyps in Ihrer Azure IoT Central-Anwendung
 
@@ -114,7 +114,7 @@ Telemetrie ist ein Wertedatenstrom, der vom Gerät gesendet wird, üblicherweise
 
 In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Telemetriefunktion angegeben:
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | ----- | ----------- |
 | Anzeigename | Der Anzeigename für den Telemetriewert, der in Dashboards und Formularen verwendet wird. |
 | Name | Der Name des Felds in der Telemetrienachricht. IoT Central generiert einen Wert für dieses Feld aus dem Anzeigenamen, Sie können aber ggf. einen eigenen Wert auswählen. |
@@ -126,7 +126,7 @@ In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Telemetr
 | Einheit | Eine Einheit für den Telemetriewert, z. B. **km/h**, **%** oder **&deg;C**. |
 | Anzeigeeinheit | Eine Anzeigeeinheit zur Verwendung in Dashboards und Formularen. |
 | Comment | Beliebige Kommentare zur Telemetriefunktion. |
-| Beschreibung | Eine Beschreibung der Telemetriefunktion. |
+| BESCHREIBUNG | Eine Beschreibung der Telemetriefunktion. |
 
 ### <a name="properties"></a>Eigenschaften
 
@@ -134,7 +134,7 @@ Eigenschaften stellen Zeitpunktwerte dar. Ein Gerät kann beispielsweise eine Ei
 
 In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Eigenschaftsfunktion angegeben:
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | ----- | ----------- |
 | Anzeigename | Der Anzeigename für den Eigenschaftswert, der in Dashboards und Formularen verwendet wird. |
 | Name | Der Name der Eigenschaft. IoT Central generiert einen Wert für dieses Feld aus dem Anzeigenamen, Sie können aber ggf. einen eigenen Wert auswählen. |
@@ -147,7 +147,7 @@ In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Eigensch
 | Einheit | Eine Einheit für den Eigenschaftswert, z. B. **km/h**, **%** oder **&deg;C**. |
 | Anzeigeeinheit | Eine Anzeigeeinheit zur Verwendung in Dashboards und Formularen. |
 | Comment | Beliebige Kommentare zur Eigenschaftsfunktion. |
-| Beschreibung | Eine Beschreibung der Eigenschaftsfunktion. |
+| BESCHREIBUNG | Eine Beschreibung der Eigenschaftsfunktion. |
 
 ### <a name="commands"></a>Befehle
 
@@ -155,14 +155,14 @@ Sie können Gerätebefehle über IoT Central aufrufen. Befehle übergeben option
 
 In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Befehlsfunktion angegeben:
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | ----- | ----------- |
 | Anzeigename | Der Anzeigename für den Befehl, der in Dashboards und Formularen verwendet wird. |
 | Name | Der Name des Befehls. IoT Central generiert einen Wert für dieses Feld aus dem Anzeigenamen, Sie können aber ggf. einen eigenen Wert auswählen. |
 | Funktionstyp | Befehl. |
 | Get-Help | `SynchronousExecutionType`. |
 | Comment | Beliebige Kommentare zur Befehlsfunktion. |
-| Beschreibung | Eine Beschreibung der Befehlsfunktion. |
+| BESCHREIBUNG | Eine Beschreibung der Befehlsfunktion. |
 | Anforderung | Wenn aktiviert, eine Definition des Anforderungsparameters, einschließlich Name, Anzeigename, Schema, Einheit und Anzeigeeinheit. |
 | Antwort | Wenn aktiviert, eine Definition der Befehlsantwort, einschließlich Name, Anzeigename, Schema, Einheit und Anzeigeeinheit. |
 
@@ -178,7 +178,7 @@ Verwenden Sie Cloudeigenschaften, um Informationen zu Geräten in IoT Central zu
 
 In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Cloudeigenschaft angegeben:
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | ----- | ----------- |
 | Anzeigename | Der Anzeigename für den Cloudeigenschaftswert, der in Dashboards und Formularen verwendet wird. |
 | Name | Der Name der Cloudeigenschaft. IoT Central generiert einen Wert für dieses Feld aus dem Anzeigenamen, Sie können aber ggf. einen eigenen Wert auswählen. |

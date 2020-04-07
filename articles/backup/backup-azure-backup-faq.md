@@ -3,12 +3,12 @@ title: Antworten auf häufig gestellte Fragen
 description: 'Antworten auf häufig gestellte Fragen zu: Azure Backup-Features wie Azure Recovery Services-Tresoren, zu sicherbaren Elementen sowie zu Funktionsweise, Verschlüsselung und Grenzwerten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: db09a31154b680097b6b46e8f9e2cce2ad09d108
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: 039666c4b54da6ac5444f5aa5acda5f1bb438782
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255022"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156054"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – häufig gestellte Fragen
 
@@ -22,7 +22,7 @@ Ja. Pro Abonnement können für jede unterstützte Region von Azure Backup bis z
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>Gibt es Beschränkungen im Hinblick auf die Anzahl von Servern/Computern, die pro Tresor registriert werden können?
 
-Sie können bis zu 1.000 virtuelle Azure-Computer pro Tresor registrieren. Bei Verwendung des Microsoft Azure Backup-Agents können Sie pro Tresor bis zu 50 MAB-Agents registrieren. Sie können 50 MAB-Server/DPM-Server bei einem Tresor registrieren.
+Sie können bis zu 1.000 virtuelle Azure-Computer pro Tresor registrieren. Bei Verwendung des Microsoft Azure Backup-Agents können Sie pro Tresor bis zu 50 MARS-Agents registrieren. Außerdem können Sie 50 MABS-Server/DPM-Server bei einem Tresor registrieren.
 
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>Wie viele Datenquellen/Elemente können in einem Tresor geschützt werden?
 

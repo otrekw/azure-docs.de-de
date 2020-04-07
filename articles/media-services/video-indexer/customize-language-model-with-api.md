@@ -1,7 +1,7 @@
 ---
-title: 'Verwenden der Video Indexer-APIs zum Anpassen von Sprachmodellen: Azure'
+title: Anpassen eines Sprachmodells mit der Video Indexer-API
 titlesuffix: Azure Media Services
-description: In diesem Artikel wird gezeigt, wie ein Sprachmodell mit den Video Indexer-APIs angepasst werden kann.
+description: Erfahren Sie, wie Sie ein Sprachmodell mit der Video Indexer-API anpassen können.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: anzaman
-ms.openlocfilehash: 01ea4d9ef943183f09baa86b729ec69344d4309e
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 19067bbbaf93c9abc9a9220b09dd482ce9115655
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77049033"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127981"
 ---
-# <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Anpassen eines Sprachmodells mit den Video Indexer-APIs
+# <a name="customize-a-language-model-with-the-video-indexer-api"></a>Anpassen eines Sprachmodells mit der Video Indexer-API
 
-Mit Video Indexer können Sie benutzerdefinierte Sprachmodelle erstellen, um die Spracherkennung durch Hochladen von Anpassungstexten anzupassen, insbesondere von Texten aus dem Bereich, an dessen Vokabular sich die Engine anpassen soll. Sobald Sie Ihr Modell trainiert haben, werden neue Wörter, die im Anpassungstext vorkommen, erkannt. 
+Mit Video Indexer können Sie benutzerdefinierte Sprachmodelle erstellen, um die Spracherkennung durch Hochladen von Anpassungstexten anzupassen, insbesondere von Texten aus dem Bereich, an dessen Vokabular sich die Engine anpassen soll. Sobald Sie Ihr Modell trainiert haben, werden neue Wörter, die im Anpassungstext vorkommen, erkannt.
 
 Eine detaillierte Übersicht und bewährte Methoden für benutzerdefinierte Sprachmodelle finden Sie unter [Anpassen eines Sprachmodells mit Video Indexer](customize-language-model-overview.md).
 
@@ -32,14 +32,14 @@ Die API zum [Erstellen eines Sprachmodells](https://api-portal.videoindexer.ai/d
 > [!NOTE]
 > Sie müssen das Modell mit seinen aktivierten Dateien weiterhin trainieren, damit das Modell den Inhalt seiner Dateien erlernen kann. Anleitungen zum Trainieren einer Sprache finden Sie im nächsten Abschnitt.
 
-Um Dateien hochzuladen, die dem Sprachmodell hinzugefügt werden sollen, müssen Sie Dateien im Textkörper mithilfe von Formulardaten hochladen und zusätzlich Werte für die oben genannten erforderlichen Parameter angeben. Hierfür gibt es zwei Möglichkeiten: 
+Um Dateien hochzuladen, die dem Sprachmodell hinzugefügt werden sollen, müssen Sie Dateien im Textkörper mithilfe von FormData hochladen und zusätzlich Werte für die oben genannten erforderlichen Parameter angeben. Hierfür gibt es zwei Möglichkeiten:
 
-1. Der Schlüssel ist der Dateiname und der Wert die TXT-Datei.
-2. Der Schlüssel ist der Dateiname und der Wert eine URL zur TXT-Datei.
+* Der Schlüssel ist der Dateiname und der Wert die TXT-Datei.
+* Der Schlüssel ist der Dateiname und der Wert eine URL zur TXT-Datei.
 
 ### <a name="response"></a>Antwort
 
-Die Antwort stellt Metadaten zum neu erstellten Sprachmodell zusammen mit Metadaten zu jeder der Dateien des Modells im Format der JSON-Beispielausgabe bereit.
+Die Antwort stellt Metadaten zum neu erstellten Sprachmodell zusammen mit Metadaten zu jeder der Dateien des Modells im Format der JSON-Beispielausgabe bereit:
 
 ```json
 {
@@ -70,14 +70,14 @@ Die Antwort stellt Metadaten zum neu erstellten Sprachmodell zusammen mit Metada
 
 ## <a name="train-a-language-model"></a>Trainieren eines Sprachmodells
 
-Die API zum [Trainieren eines Sprachmodells](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train) trainiert ein benutzerdefiniertes Sprachmodell im angegebenen Konto mit dem Inhalt der Dateien, die in das Sprachmodell hochgeladen und in ihm aktiviert wurden. 
+Die API zum [Trainieren eines Sprachmodells](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train) trainiert ein benutzerdefiniertes Sprachmodell im angegebenen Konto mit dem Inhalt der Dateien, die in das Sprachmodell hochgeladen und in ihm aktiviert wurden.
 
 > [!NOTE]
-> Zunächst müssen Sie das Sprachmodell erstellen und seine Dateien hochladen. Sie können Dateien entweder beim Erstellen des Sprachmodells oder durch Aktualisieren des Sprachmodells hochladen. 
+> Zunächst müssen Sie das Sprachmodell erstellen und seine Dateien hochladen. Sie können Dateien beim Erstellen des Sprachmodells oder durch Aktualisieren des Sprachmodells hochladen.
 
 ### <a name="response"></a>Antwort
 
-Die Antwort stellt Metadaten zum neu trainierten Sprachmodell zusammen mit Metadaten zu jeder der Dateien des Modells im Format der JSON-Beispielausgabe bereit.
+Die Antwort stellt Metadaten zum neu trainierten Sprachmodell zusammen mit Metadaten zu jeder der Dateien des Modells im Format der JSON-Beispielausgabe bereit:
 
 ```json
 {
@@ -105,7 +105,7 @@ Die Antwort stellt Metadaten zum neu trainierten Sprachmodell zusammen mit Metad
 }
 ```
 
-Die zurückgegebene **ID** ist eine eindeutige ID, die zur Unterscheidung von Sprachmodellen genutzt wird. **languageModelId** wird dagegen sowohl für die API zum [Hochladen eines Videos in den Index](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) als auch für die API zum [erneuten Indizieren eines Videos](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) (in Video Indexer-APIs für Upload bzw. Neuindizierung auch als **linguisticModelId** bezeichnet) verwendet.
+Die zurückgegebene `id` ist eine eindeutige ID, die zur Unterscheidung von Sprachmodellen genutzt wird. `languageModelId` wird dagegen sowohl für APIs zum [Hochladen eines Videos in den Index](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) als auch [zum erneuten Indizieren eines Videos](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) (in Video Indexer-APIs für Upload bzw. Neuindizierung auch als `linguisticModelId` bezeichnet) verwendet.
 
 ## <a name="delete-a-language-model"></a>Löschen eines Sprachmodells
 
@@ -122,15 +122,14 @@ Die API zum [Aktualisieren eines Sprachmodells](https://api-portal.videoindexer.
 > [!NOTE]
 > Sie müssen das Sprachmodell bereits erstellt haben. Mit diesem Aufruf können Sie alle Dateien im Modell aktivieren oder deaktivieren, den Namen des Sprachmodells aktualisieren und Dateien hochladen, die dem Sprachmodell hinzugefügt werden sollen.
 
-Um Dateien hochzuladen, die dem Sprachmodell hinzugefügt werden sollen, müssen Sie Dateien im Textkörper mithilfe von Formulardaten hochladen und zusätzlich Werte für die oben genannten erforderlichen Parameter angeben. Hierfür gibt es zwei Möglichkeiten: 
+Um Dateien hochzuladen, die dem Sprachmodell hinzugefügt werden sollen, müssen Sie Dateien im Textkörper mithilfe von FormData hochladen und zusätzlich Werte für die oben genannten erforderlichen Parameter angeben. Hierfür gibt es zwei Möglichkeiten:
 
-1. Der Schlüssel ist der Dateiname und der Wert die TXT-Datei.
-2. Der Schlüssel ist der Dateiname und der Wert eine URL zur TXT-Datei.
-
+* Der Schlüssel ist der Dateiname und der Wert die TXT-Datei.
+* Der Schlüssel ist der Dateiname und der Wert eine URL zur TXT-Datei.
 
 ### <a name="response"></a>Antwort
 
-Die Antwort stellt Metadaten zum neu trainierten Sprachmodell zusammen mit Metadaten zu jeder der Dateien des Modells im Format der JSON-Beispielausgabe bereit.
+Die Antwort stellt Metadaten zum neu trainierten Sprachmodell zusammen mit Metadaten zu jeder der Dateien des Modells im Format der JSON-Beispielausgabe bereit:
 
 ```json
 {
@@ -158,11 +157,11 @@ Die Antwort stellt Metadaten zum neu trainierten Sprachmodell zusammen mit Metad
 }
 ```
 
-Verwenden Sie die **ID** der in der Antwort zurückgegebenen Dateien, um den Inhalt der Datei herunterzuladen.
+Verwenden Sie die `id` der in der Antwort zurückgegebenen Dateien, um den Inhalt der Datei herunterzuladen.
 
 ## <a name="update-a-file-from-a-language-model"></a>Aktualisieren einer Datei aus einem Sprachmodell
 
-Die API zum [Aktualisieren einer Datei](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update) ermöglicht es Ihnen, den Namen und den Zustand **enable** einer Datei in einem benutzerdefinierten Sprachmodell im angegebenen Konto zu aktualisieren.
+Die API zum [Aktualisieren einer Datei](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update) ermöglicht Ihnen, den Namen und den `enable`-Zustand einer Datei in einem benutzerdefinierten Sprachmodell im angegebenen Konto zu aktualisieren.
 
 ### <a name="response"></a>Antwort
 
@@ -177,15 +176,16 @@ Die Antwort stellt Metadaten im Format der unten gezeigten JSON-Beispielausgabe 
   "creationTime": "2018-04-27T20:10:10.5233333"
 }
 ```
-Verwenden Sie die **ID** der in der Antwort zurückgegebenen Datei, um den Inhalt der Datei herunterzuladen.
+
+Verwenden Sie die `id` der in der Antwort zurückgegebenen Datei, um den Inhalt der Datei herunterzuladen.
 
 ## <a name="get-a-specific-language-model"></a>Abrufen eines bestimmten Sprachmodells
 
-Die API [get](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get) gibt Informationen zum angegebenen Sprachmodell im angegebenen Konto zurück, z. B. die Sprache und die Dateien, die sich im Sprachmodell befinden. 
+Die API [get](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get) gibt Informationen zum angegebenen Sprachmodell im angegebenen Konto zurück, z. B. die Sprache und die Dateien, die sich im Sprachmodell befinden.
 
 ### <a name="response"></a>Antwort
 
-Die Antwort stellt Metadaten zum angegebenen Sprachmodell zusammen mit Metadaten zu jeder der Dateien des Modells im Format der unten gezeigten JSON-Beispielausgabe bereit.
+Die Antwort stellt Metadaten zum angegebenen Sprachmodell zusammen mit Metadaten zu jeder der Dateien des Modells im Format der gezeigten JSON-Beispielausgabe bereit:
 
 ```json
 {
@@ -213,7 +213,7 @@ Die Antwort stellt Metadaten zum angegebenen Sprachmodell zusammen mit Metadaten
 }
 ```
 
-Verwenden Sie die **ID** der in der Antwort zurückgegebenen Datei, um den Inhalt der Datei herunterzuladen.
+Verwenden Sie die `id` der in der Antwort zurückgegebenen Datei, um den Inhalt der Datei herunterzuladen.
 
 ## <a name="get-all-the-language-models"></a>Abrufen aller Sprachmodelle
 
@@ -221,7 +221,7 @@ Die API [get all](https://api-portal.videoindexer.ai/docs/services/operations/op
 
 ### <a name="response"></a>Antwort
 
-Die Antwort enthält eine Liste mit allen Sprachmodellen in Ihrem Konto und deren Metadaten und Dateien im Format der unten gezeigten JSON-Beispielausgabe.
+Die Antwort enthält eine Liste mit allen Sprachmodellen in Ihrem Konto und deren Metadaten und Dateien im Format der gezeigten JSON-Beispielausgabe:
 
 ```json
 [
@@ -261,7 +261,7 @@ Die Antwort enthält eine Liste mit allen Sprachmodellen in Ihrem Konto und dere
 
 ## <a name="delete-a-file-from-a-language-model"></a>Löschen einer Datei aus einem Sprachmodell
 
-Die API [delete](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete) löscht die angegebene Datei aus dem angegebenen Sprachmodell im angegebenen Konto. 
+Die API [delete](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete) löscht die angegebene Datei aus dem angegebenen Sprachmodell im angegebenen Konto.
 
 ### <a name="response"></a>Antwort
 
@@ -295,7 +295,7 @@ Die API zum [Herunterladen einer Datei](https://api-portal.videoindexer.ai/docs/
 
 ### <a name="response"></a>Antwort
 
-Die Antwort ist der Download einer Textdatei mit dem Inhalt der Datei im JSON-Format. 
+Die Antwort ist der Download einer Textdatei mit dem Inhalt der Datei im JSON-Format.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

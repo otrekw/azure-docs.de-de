@@ -1,20 +1,18 @@
 ---
 title: Erstellen einer Azure Resource Manager-Testversion | Azure Marketplace
 description: Erstellen einer Marketplace-Testversion mithilfe von Azure Resource Manager
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Patrick .Butler
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 8b2a24b6f2d7df92f1c8ea1b22432471aa432011
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.author: dsindona
+ms.openlocfilehash: 6125aa010d8676518b84f866343b01f95246160f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644901"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275933"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager-Testversion
 
@@ -85,12 +83,12 @@ Zudem ist zu beachten, dass **alle Parameter optional sind**. Wenn Sie also kein
 
 | Metadatentyp   | Parametertyp  | BESCHREIBUNG     | Beispielwert    |
 |---|---|---|---|
-| **baseuri**     | string          | Basis-URI des Bereitstellungspakets| https:\//\<\..\>.blob.core.windows.net/\<\..\> |
-| **username**    | string          | Neuer zufälliger Benutzername| admin68876      |
+| **baseuri**     | Zeichenfolge          | Basis-URI des Bereitstellungspakets| https:\//\<\..\>.blob.core.windows.net/\<\..\> |
+| **username**    | Zeichenfolge          | Neuer zufälliger Benutzername| admin68876      |
 | **password**    | Sichere Zeichenfolge    | Neues zufälliges Kennwort | Lp!ACS\^2kh     |
-| **session id**   | string          | Eindeutige Sitzungs-ID für Testversion (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
+| **session id**   | Zeichenfolge          | Eindeutige Sitzungs-ID für Testversion (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
-#### <a name="username"></a>username
+#### <a name="baseuri"></a>baseuri
 
 In der Testversion wird dieser Parameter mit einem **Basis-URI** des Bereitstellungspakets initialisiert, sodass Sie mit diesem Parameter den URI einer beliebigen in dem Paket enthaltenen Datei erstellen können.
 

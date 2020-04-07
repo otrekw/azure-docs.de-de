@@ -6,12 +6,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3c028a97c2fb554b13035026025437d5331104c2
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 7ca4df620739b2ab55b8ba986031cc48fe87f1fa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669708"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294916"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Verwalten von intelligenten Erkennungsregeln von Azure Application Insights mit Azure Resource Manager-Vorlagen
 
@@ -28,8 +28,6 @@ Sie können die folgenden Einstellungen für intelligente Erkennungsregel konfig
 
 Um die Konfiguration der Regeleinstellungen über den Azure Resource Manager zu ermöglichen, ist die Konfiguration der intelligenten Erkennungsregeln nun als interne Ressource innerhalb der Application Insights-Ressource mit dem Namen **ProactiveDetectionConfigs** verfügbar.
 Für maximale Flexibilität kann jede intelligente Erkennungsregel mit individuellen Benachrichtigungseinstellungen konfiguriert werden.
-
-## 
 
 ## <a name="examples"></a>Beispiele
 
@@ -131,12 +129,33 @@ Stellen Sie sicher, dass Sie den Application Insights-Ressourcennamen ersetzen u
 
 ```
 
+
+## <a name="smart-detection-rule-names"></a>Name der intelligente Erkennungsregel
+
+Im Folgenden finden Sie eine Tabelle mit den Namen der intelligenten Erkennungsregeln, wie sie im Portal angezeigt werden, zusammen mit ihren internen Namen, die in der Azure Resource Manager-Vorlage verwendet werden sollten.
+
+> [!NOTE]
+> Intelligente Erkennungsregeln, die als _Vorschauversion_ markiert sind, unterstützen keine E-Mail-Benachrichtigungen. Aus diesem Grund können Sie nur die _enabled_-Eigenschaft für diese Regeln festlegen. 
+
+| Name der Regel im Azure-Portal | Interner Name
+|:---|:---|
+| Langsame Seitenladezeit | slowpageloadtime |
+| Langsame Serverantwortzeit | slowserverresponsetime |
+| Lange Abhängigkeitsdauer | longdependencyduration |
+| Beeinträchtigung der Serverantwortzeit | degradationinserverresponsetime |
+| Leistungsminderung der Abhängigkeitsdauer | degradationindependencyduration |
+| Verschlechterung des Schweregrads der Ablaufverfolgung (Vorschau) | extension_traceseveritydetector |
+| Anormaler Anstieg in Ausnahmevolume (Vorschau) | extension_exceptionchangeextension |
+| Möglicher Speicherverluste erkannt (Vorschau) | extension_memoryleakextension |
+| Mögliches Sicherheitsproblem erkannt (Vorschau) | extension_securityextensionspackage |
+| Anormaler Anstieg des täglichen Datenvolumens (Vorschauversion) | extension_billingdatavolumedailyspikeextension |
+
 ### <a name="failure-anomalies-alert-rule"></a>Warnungsregel für Fehleranomalien
 
 Diese Azure Resource Manager-Vorlage zeigt, wie eine Warnungsregel für Fehleranomalien mit dem Schweregrad 2 konfiguriert wird. Diese neue Version der Warnungsregel für Fehleranomalien ist Teil der neuen Azure-Warnungsplattform und ersetzt die klassische Version, die im Rahmen der [Einstellung klassischer Warnungen](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/) eingestellt wird.
 
 > [!NOTE]
-> Fehleranomalien werden in einem globalen Dienst verarbeitet, daher wird die Regel in einem globalen Speicherort erstellt.
+> Fehleranomalien werden in einem globalen Dienst verarbeitet, daher wird die Regel für den globalen Speicherort erstellt.
 
 ```json
 {
@@ -167,27 +186,7 @@ Diese Azure Resource Manager-Vorlage zeigt, wie eine Warnungsregel für Fehleran
 ```
 
 > [!NOTE]
-> Diese Azure Resource Manager-Vorlage gilt nur für die Warnungsregel für Fehleranomalien und unterscheidet sich von den anderen klassischen Regeln für die intelligente Erkennung, die in diesem Artikel beschrieben werden.
-
-## <a name="smart-detection-rule-names"></a>Name der intelligente Erkennungsregel
-
-Im Folgenden finden Sie eine Tabelle mit den Namen der intelligenten Erkennungsregeln, wie sie im Portal angezeigt werden, zusammen mit ihren internen Namen, die in der Azure Resource Manager-Vorlage verwendet werden sollten.
-
-> [!NOTE]
-> Intelligente Erkennungsregeln, die als _Vorschauversion_ markiert sind, unterstützen keine E-Mail-Benachrichtigungen. Aus diesem Grund können Sie nur die _enabled_-Eigenschaft für diese Regeln festlegen. 
-
-| Name der Regel im Azure-Portal | Interner Name
-|:---|:---|
-| Langsame Seitenladezeit | slowpageloadtime |
-| Langsame Serverantwortzeit | slowserverresponsetime |
-| Lange Abhängigkeitsdauer | longdependencyduration |
-| Beeinträchtigung der Serverantwortzeit | degradationinserverresponsetime |
-| Leistungsminderung der Abhängigkeitsdauer | degradationindependencyduration |
-| Verschlechterung des Schweregrads der Ablaufverfolgung (Vorschau) | extension_traceseveritydetector |
-| Anormaler Anstieg in Ausnahmevolume (Vorschau) | extension_exceptionchangeextension |
-| Möglicher Speicherverluste erkannt (Vorschau) | extension_memoryleakextension |
-| Mögliches Sicherheitsproblem erkannt (Vorschau) | extension_securityextensionspackage |
-| Anormaler Anstieg des täglichen Datenvolumens (Vorschauversion) | extension_billingdatavolumedailyspikeextension |
+> Diese Azure Resource Manager-Vorlage gilt nur für die Warnungsregel für Fehleranomalien und unterscheidet sich von den anderen klassischen Regeln für die intelligente Erkennung, die in diesem Artikel beschrieben werden. Wenn Sie Fehleranomalien manuell verwalten möchten, erfolgt dies in Azure Monitor-Warnungen. Alle anderen Regeln für die intelligente Erkennung werden im Bereich „Intelligente Erkennung“ über die Benutzeroberfläche verwaltet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

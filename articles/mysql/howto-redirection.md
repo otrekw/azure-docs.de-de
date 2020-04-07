@@ -1,0 +1,161 @@
+---
+title: Herstellen einer Verbindung mit Umleitung – Azure Database for MySQL
+description: In diesem Artikel wird beschrieben, wie Sie Ihre Anwendung konfigurieren können, damit sie eine Verbindung mit Azure Database for MySQL mit Umleitung herstellt.
+author: ajlam
+ms.author: andrela
+ms.service: mysql
+ms.topic: conceptual
+ms.date: 03/16/2020
+ms.openlocfilehash: f987d5d9640c3bfef61320df379a68eae2f4712b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246334"
+---
+# <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Herstellen einer Verbindung mit Azure Database for MySQL mit Umleitung
+
+In diesem Thema wird erläutert, wie Sie eine Anwendung mit Ihrem Azure Database for MySQL-Server im Umleitungsmodus verbinden. Mithilfe der Umleitung soll die Netzwerklatenz zwischen Clientanwendungen und MySQL-Servern dadurch verringert werden, dass Anwendungen eine direkte Verbindung mit Back-End-Serverknoten herstellen dürfen.
+
+## <a name="before-you-begin"></a>Voraussetzungen
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Erstellen Sie einen Azure Database for MySQL-Server mit der Engine-Version 5.6, 5.7 oder 8.0. Weitere Informationen finden Sie unter [Erstellen von Azure-Datenbank für MySQL-Server im Portal](quickstart-create-mysql-server-database-using-azure-portal.md) oder [Erstellen von Azure-Datenbank für MySQL-Server mithilfe der Befehlszeilenschnittstelle](quickstart-create-mysql-server-database-using-azure-cli.md).
+
+Die Umleitung wird zurzeit nur unterstützt, wenn **SSL** auf Ihrem Azure Database for MySQL-Server aktiviert ist. Weitere Informationen zum Konfigurieren von SSL finden Sie unter [Verwenden von SSL mit Azure Database for MySQL](howto-configure-ssl.md#step-3--enforcing-ssl-connections-in-azure).
+
+## <a name="php"></a>PHP
+
+Unterstützung für die Umleitung in PHP-Anwendungen ist über die von Microsoft entwickelte [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure)-Erweiterung verfügbar. 
+
+Die Erweiterung „mysqlnd_azure“ kann über PECL zu PHP-Anwendungen hinzugefügt werden. Es wird dringend empfohlen, die Erweiterung über das offizielle veröffentlichte [PECL-Paket](https://pecl.php.net/package/mysqlnd_azure) zu installieren und zu konfigurieren.
+
+> [!IMPORTANT]
+> Unterstützung für die Umleitung in der PHP-Erweiterung [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) befindet sich derzeit in der Vorschauphase.
+
+### <a name="redirection-logic"></a>Umleitungslogik
+
+>[!IMPORTANT]
+> Die Umleitungslogik bzw. das Umleitungsverhalten ab Version 1.1.0 wurde aktualisiert. **Es wird empfohlen, Version 1.1.0+ zu verwenden**.
+
+Das Umleitungsverhalten wird durch den Wert von `mysqlnd_azure.enableRedirect` bestimmt. In der folgenden Tabelle wird das Verhalten der Umleitung basierend auf dem Wert dieses Parameters ab **Version 1.1.0+** beschrieben.
+
+Wenn Sie eine ältere Version der Erweiterung „mysqlnd_azure“ (Version 1.0.0-1.0.3) verwenden, wird das Umleitungsverhalten durch den Wert von `mysqlnd_azure.enabled` bestimmt. Die gültigen Werte sind `off` (verhält sich ähnlich wie das in der folgenden Tabelle beschriebene Verhalten) und `on` (verhält sich wie `preferred` in der folgenden Tabelle).  
+
+|**mysqlnd_azure.enableRedirect-Wert**| **Verhalten**|
+|----------------------------------------|-------------|
+|`off` oder `0`|Die Umleitung wird nicht verwendet. |
+|`on` oder `1`|– Wenn SSL auf dem Azure Database for MySQL-Server nicht aktiviert ist, wird keine Verbindung hergestellt. Der folgende Fehler wird zurückgegeben: *mysqlnd_azure.enableRedirect ist aktiviert, die SSL-Option ist in der Verbindungszeichenfolge jedoch nicht festgelegt. Die Umleitung ist nur mit SSL möglich.*<br>– Wenn SSL auf dem MySQL-Server aktiviert ist, die Umleitung auf dem Server aber nicht unterstützt wird, wird die erste Verbindung abgebrochen, und der folgende Fehler wird zurückgegeben: *Die Verbindung wurde abgebrochen, da die Umleitung auf dem MySQL-Server nicht aktiviert ist oder das Netzwerkpaket nicht dem Umleitungsprotokoll entspricht.*<br>– Wenn der MySQL-Server die Umleitung unterstützt, bei der umgeleiteten Verbindung jedoch aus irgendeinem Grund ein Fehler aufgetreten ist, brechen Sie auch die erste Proxyverbindung ab. Geben Sie den Fehler der umgeleiteten Verbindung zurück.|
+|`preferred` oder `2`<br> (Standardwert)|– wenn möglich, verwendet mysqlnd_azure die Umleitung.<br>– Wenn die Verbindung kein SSL verwendet, der Server keine Umleitung unterstützt oder die umgeleitete Verbindung aus einem nicht schwerwiegenden Grund nicht hergestellt werden kann, während die Proxyverbindung weiterhin gültig ist, wird auf die erste Proxyverbindung zurückgegriffen.|
+
+In den nachfolgenden Abschnitten dieses Dokuments wird erläutert, wie Sie die `mysqlnd_azure`-Erweiterung mithilfe von PECL installieren und den Wert dieses Parameters festlegen.
+
+### <a name="ubuntu-linux"></a>Ubuntu Linux
+
+#### <a name="prerequisites"></a>Voraussetzungen 
+- PHP-Versionen 7.2.15+ und 7.3.2+
+- PHP PEAR 
+- php-mysql
+- Azure Database for MySQL-Server mit aktiviertem SSL
+
+1. Installieren Sie [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) mit [PECL](https://pecl.php.net/package/mysqlnd_azure). Empfohlen wird die Verwendung von Version 1.1.0+.
+
+    ```bash
+    sudo pecl install mysqlnd_azure
+    ```
+
+2. Suchen Sie das Erweiterungsverzeichnis (`extension_dir`) mit den folgenden Schritten:
+
+    ```bash
+    php -i | grep "extension_dir"
+    ```
+
+3. Ändern Sie die Verzeichnisse auf den zurückgegebenen Ordner, und sorgen Sie dafür, dass sich `mysqlnd_azure.so` in diesem Ordner befindet. 
+
+4. Suchen Sie den Ordner für INI-Dateien mit folgenden Schritten: 
+
+    ```bash
+    php -i | grep "dir for additional .ini files"
+    ```
+
+5. Ändern Sie die Verzeichnisse auf diesen zurückgegebenen Ordner. 
+
+6. Erstellen Sie eine neue INI-Datei für `mysqlnd_azure`. Vergewissern Sie sich, dass die alphabetische Reihenfolge des Namens nach der von „mysqnld“ beginnt, da die Module entsprechend der Namensreihenfolge der INI-Dateien geladen werden. Wenn die Datei `mysqlnd`.ini beispielsweise den Namen `10-mysqlnd.ini` hat, benennen Sie die Datei „mysqlnd.ini“ um in `20-mysqlnd-azure.ini`.
+
+7. Fügen Sie in der neuen INI-Datei die folgenden Zeilen hinzu, um die Umleitung zu aktivieren.
+
+    ```bash
+    extension=mysqlnd_azure
+    mysqlnd_azure.enableRedirect = on/off/preferred
+    ```
+
+### <a name="windows"></a>Windows
+
+#### <a name="prerequisites"></a>Voraussetzungen 
+- PHP-Versionen 7.2.15+ und 7.3.2+
+- php-mysql
+- Azure Database for MySQL-Server mit aktiviertem SSL
+
+1. Ermitteln Sie, ob Sie eine x64- oder x86-Version von PHP ausführen, indem Sie den folgenden Befehl ausführen:
+
+    ```cmd
+    php -i | findstr "Thread"
+    ```
+
+2. Laden Sie die entsprechende x64- oder x86-Version der [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure)-DLL aus der [PECL](https://pecl.php.net/package/mysqlnd_azure) herunter, die Ihrer PHP-Version entspricht. Empfohlen wird die Verwendung von Version 1.1.0+.
+
+3. Extrahieren Sie die ZIP-Datei, und suchen Sie die DLL `php_mysqlnd_azure.dll`.
+
+4. Suchen Sie das Erweiterungsverzeichnis (`extension_dir`), indem Sie den folgenden Befehl ausführen:
+
+    ```cmd
+    php -i | find "extension_dir"
+    ```
+
+5. Kopieren Sie die Datei `php_mysqlnd_azure.dll` in das Verzeichnis, das in Schritt 4 zurückgegeben wurde. 
+
+6. Suchen Sie mit dem folgenden Befehl den PHP-Ordner, der die Datei `php.ini` enthält:
+
+    ```cmd
+    php -i | find "Loaded Configuration File"
+    ```
+
+7. Ändern Sie die Datei `php.ini`, und fügen Sie die folgenden zusätzlichen Zeilen hinzu, um die Umleitung zu aktivieren. 
+
+    Im Abschnitt „Dynamische Erweiterungen“: 
+    ```cmd
+    extension=mysqlnd_azure
+    ```
+    
+    Im Abschnitt „Moduleinstellungen“:     
+    ```cmd 
+    [mysqlnd_azure]
+    mysqlnd_azure.enableRedirect = on/off/preferred
+    ```
+
+### <a name="confirm-redirection"></a>Bestätigen der Umleitung
+
+Sie können auch bestätigen, dass die Umleitung mit dem nachstehenden PHP-Beispielcode konfiguriert wurde. Erstellen Sie die PHP-Datei `mysqlConnect.php`, und fügen Sie den nachstehenden Code ein. Aktualisieren Sie den Servernamen, den Benutzernamen und das Kennwort mit Ihren eigenen Namen bzw. Ihrem eigenen Kennwort. 
+ 
+ ```php
+<?php
+$host = '<yourservername>.mysql.database.azure.com';
+$username = '<yourusername>@<yourservername>';
+$password = '<yourpassword>';
+$db_name = 'testdb';
+  echo "mysqlnd_azure.enableRedirect: ", ini_get("mysqlnd_azure.enableRedirect"), "\n";
+  $db = mysqli_init();
+  //The connection must be configured with SSL for redirection test
+  $link = mysqli_real_connect ($db, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL);
+  if (!$link) {
+     die ('Connect error (' . mysqli_connect_errno() . '): ' . mysqli_connect_error() . "\n");
+  }
+  else {
+    echo $db->host_info, "\n"; //if redirection succeeds, the host_info will differ from the hostname you used used to connect
+    $res = $db->query('SHOW TABLES;'); //test query with the connection
+    print_r ($res);
+    $db->close();
+  }
+?>
+ ```
+
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zu Verbindungszeichenfolgen finden Sie unter [Verbindungszeichenfolgen](howto-connection-string.md).

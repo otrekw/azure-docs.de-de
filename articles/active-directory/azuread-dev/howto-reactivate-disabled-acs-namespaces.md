@@ -12,12 +12,13 @@ ms.date: 01/21/2019
 ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
-ms.openlocfilehash: 85696a5580c4ed6c03f257787e2693a61a6158de
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: ff0ce05b13fea8409475e3415c5d810d7c79769a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163543"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154864"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Gewusst wie: Reaktivieren deaktivierter Access Control Service-Namespaces
 
@@ -91,7 +92,7 @@ Zusätzliche Verlängerungen werden dann nicht mehr automatisch genehmigt. Wenn 
 1. Melden Sie sich beim Azure-Portal an, und erstellen Sie eine [neue Supportanfrage](https://portal.azure.com/#create/Microsoft.Support).
 1. Füllen Sie das Formular für die neue Supportanfrage wie im folgenden Beispiel gezeigt aus.
 
-    | Supportanfragefeld | value |
+    | Supportanfragefeld | Wert |
     |-----------------------|--------------------|
     | **Problemtyp** | `Technical` |
     | **Abonnement** | Ihr Abonnement |

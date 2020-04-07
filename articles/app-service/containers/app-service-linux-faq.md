@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 2413601db629fda62976b75e349b0340749dc6fa
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: f0a8b1758571a9473402d11a4d5141a11f76504d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944088"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80245819"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux
 
@@ -56,7 +56,7 @@ Ja, Sie können dazu die Website für die Quellcodeverwaltung (Source Control Ma
 
 **Wie kann ich einen Linux-App Service-Plan über ein SDK oder eine Azure Resource Manager-Vorlage erstellen?**
 
-Legen Sie das App-Dienstfeld **reserviert** auf *TRUE* fest.
+Legen Sie das App-Dienstfeld **reserviert** auf *true* fest.
 
 ## <a name="continuous-integration-and-deployment"></a>Continuous Integration und Continuous Deployment
 
@@ -110,7 +110,7 @@ Ja. Bei einer Git-Bereitstellung erkennt Kudu, dass Sie eine PHP-Anwendung berei
 
 **Ich verwende meinen eigenen benutzerdefinierten Container. Ich möchte, dass die Plattform eine SMB-Freigabe im Verzeichnis `/home/` bereitstellt.**
 
-Wenn die Einstellung `WEBSITES_ENABLE_APP_SERVICE_STORAGE`**nicht angegeben** oder auf *TRUE* festgelegt ist, wird das Verzeichnis `/home/` nicht über Skalierungsinstanzen **freigegeben** und geschriebene Dateien werden **über Neustarts hinweg beibehalten**. Das explizite Festlegen von `WEBSITES_ENABLE_APP_SERVICE_STORAGE` auf *FALSE* deaktiviert die Bereitstellung.
+Wenn die Einstellung `WEBSITES_ENABLE_APP_SERVICE_STORAGE`**nicht angegeben** oder auf *TRUE* festgelegt ist, wird das Verzeichnis `/home/` nicht über Skalierungsinstanzen **freigegeben**, und geschriebene Dateien werden **über Neustarts hinweg beibehalten**. Das explizite Festlegen von `WEBSITES_ENABLE_APP_SERVICE_STORAGE` auf *FALSE* deaktiviert die Bereitstellung.
 
 **Mein benutzerdefinierter Container benötigt für den Start sehr lange, und die Plattform startet den Container neu, bevor er den Startvorgang abgeschlossen hat.**
 
@@ -173,11 +173,19 @@ Anhand dieser Regeln können Sie bestimmen, auf welchen Container zugegriffen we
 - Der erste Container, der Port 80 oder 8080 definiert
 - Wenn keiner der oben genannten Punkte zutrifft, kann auf den in der Datei zuerst definierten (verfügbar gemachten) Container zugegriffen werden
 
+
+## <a name="web-sockets"></a>Websockets
+
+Websockets werden für Linux-Apps unterstützt.
+
+> [!IMPORTANT]
+> Bei Free-App Service-Plänen werden Websockets aktuell nicht für Linux-Apps unterstützt. Wir arbeiten daran, dass diese Einschränkung schon bald nicht mehr gilt. Bei Free-App Service-Plänen sollen in Zukunft bis zu fünf Websocketverbindungen unterstützt werden.
+
 ## <a name="pricing-and-sla"></a>Preise und SLA
 
 **Wie erfolgt die Abrechnung für den nun allgemein verfügbaren Dienst?**
 
-Ihnen wird der normale Azure App Service-Preis für die Stunden berechnet, die Ihre App ausgeführt wird.
+Die Preise variieren abhängig von der SKU und Region. Einzelheiten finden Sie auf unserer Seite mit der Preisübersicht: [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/linux/)
 
 ## <a name="other-questions"></a>Andere Fragen
 

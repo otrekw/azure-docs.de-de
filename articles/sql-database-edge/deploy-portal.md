@@ -9,16 +9,16 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 9da756b702c994d69aae42ecef0e2da4d44eed39
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9da922de38d820864b3f83de80fe64eb3ac792e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510671"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246720"
 ---
 # <a name="deploy-azure-sql-database-edge-preview"></a>Bereitstellen von Azure SQL Database Edge-Vorschau
 
-Azure SQL Database Edge-Vorschau ist eine optimierte relationale Datenbank-Engine für IoT- und Azure IoT Edge-Bereitstellungen. Sie bietet Funktionen zur Erstellung eines Hochleistungs-Datenspeichers und einer Verarbeitungsschicht für IoT-Anwendungen und -Lösungen. In diesem Schnellstart erfahren Sie, wie Sie mit dem Erstellen eines Azure SQL Database Edge-Moduls durch Azure IoT Edge über das Azure-Portal beginnen.
+Azure SQL Database Edge-Vorschau ist eine optimierte relationale Datenbank-Engine für IoT- und Azure IoT Edge-Bereitstellungen. Azure SQL Database Edge bietet die Möglichkeit zur Erstellung eines Hochleistungs-Datenspeichers und einer Verarbeitungsschicht für IoT-Anwendungen und -Lösungen. In diesem Schnellstart erfahren Sie, wie Sie mit dem Erstellen eines Azure SQL Database Edge-Moduls durch Azure IoT Edge über das Azure-Portal beginnen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -58,7 +58,7 @@ Azure Marketplace ist ein Onlinemarktplatz für Anwendungen und Dienste, in dem 
 
    |**Parameter**  |**Beschreibung**|
    |---------|---------|
-   | NAME | Der Name für das Modul. |
+   | Name | Der Name für das Modul. |
    |SA_PASSWORD  | Geben Sie ein sicheres Kennwort für das SQL Database Edge-Administratorkonto an. |
    |MSSQL_LCID   | Legt die Sprach-ID fest, die für SQL Server verwendet werden soll. Beispielsweise steht „1036“ für „Französisch“. |
    |MSSQL_COLLATION | Legt die Standardsortierung für SQL Server fest. Diese Einstellung setzt die Standardzuordnung der Sprach-ID (LCID) für die Sortierung außer Kraft. |
@@ -66,7 +66,7 @@ Azure Marketplace ist ein Onlinemarktplatz für Anwendungen und Dienste, in dem 
    > [!NOTE]
    > Ändern oder aktualisieren Sie nicht den **Image-URI** oder die **ACCEPT_EULA**-Einstellungen für das Modul.
 
-6. Aktualisieren Sie im Bereich **Benutzerdefinierte IoT Edge-Module** den gewünschten „container create options“-Wert für den **Hostport** und das **Ziel** für die Bereitstellungspunkte. Das Bereitstellungspunktziel ist der Ort, an dem die SQL-Datenbankdateien auf dem IoT Edge-Hostgerät gespeichert würden.
+6. Aktualisieren Sie im Bereich **Benutzerdefinierte IoT Edge-Module** den gewünschten „container create options“-Wert für den **Hostport**. Wenn Sie mehrere SQL DB Edge-Module bereitstellen müssen, aktualisieren Sie auch die „mounts“-Option, um ein neues Paar aus Quelle und Ziel für das persistente Volume zu erstellen. Weitere Informationen zu Bereitstellungen und Volumes finden Sie auf der Seite zum [Verwenden von Volumes](https://docs.docker.com/storage/volumes/) in der Docker-Dokumentation. 
 
    ```json
        {
@@ -113,7 +113,7 @@ Azure Marketplace ist ein Onlinemarktplatz für Anwendungen und Dienste, in dem 
 10. Klicken Sie auf der Seite **Module festlegen** auf **Weiter**.
 11. Geben Sie auf der Seite **Module festlegen** im Abschnitt **Route angeben (optional)** die Routen für eine Kommunikation des Typs „Modul zu Modul“ oder „Modul zu IoT Edge Hub“ an. Lesen Sie dazu [Bereitstellen von Modulen und Einrichten von Routen in IoT Edge](../iot-edge/module-composition.md).
 12. Klicken Sie auf **Weiter**.
-13. Klicken Sie auf **Submit**.
+13. Klicken Sie auf **Submit**(Senden).
 
 In diesem Schnellstart haben Sie ein SQL Database Edge-Modul auf einem IoT Edge-Gerät bereitgestellt.
 

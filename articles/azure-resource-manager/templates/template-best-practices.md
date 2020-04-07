@@ -3,16 +3,16 @@ title: Bewährte Methoden für Vorlagen
 description: Beschreibt die empfohlenen Vorgehensweisen zum Erstellen von Azure Resource Manager-Vorlagen. Bietet Vorschläge zur Vermeidung häufig auftretender Probleme bei der Verwendung von Vorlagen.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: f623255a64404f0e041173fd29488ded24cd03b3
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 870636d6457d842c89f261c2537644c17a335294
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207484"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156411"
 ---
-# <a name="azure-resource-manager-template-best-practices"></a>Bewährte Methoden für Azure Resource Manager-Vorlagen
+# <a name="arm-template-best-practices"></a>Bewährte Methoden für ARM-Vorlagen
 
-Dieser Artikel bietet Empfehlungen für die Erstellung Ihrer Resource Manager-Vorlage. Anhand dieser Empfehlungen können Sie häufig auftretende Probleme vermeiden, wenn Sie eine Vorlage zum Bereitstellen einer Lösung verwenden.
+Dieser Artikel bietet Empfehlungen für die Erstellung Ihrer ARM-Vorlage (Azure Resource Manager). Anhand dieser Empfehlungen können Sie häufig auftretende Probleme vermeiden, wenn Sie eine ARM-Vorlage zum Bereitstellen einer Lösung verwenden.
 
 Empfehlungen zur Verwaltung Ihrer Azure-Abonnements finden Sie unter [Azure-Unternehmensgerüst – präskriptive Abonnementgovernance](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json).
 
@@ -279,5 +279,5 @@ Die folgenden Informationen können bei der Arbeit mit [Ressourcen](template-syn
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zur Struktur der Resource Manager-Vorlagendatei finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](template-syntax.md).
-* Empfehlungen zur Erstellung von Vorlagen, die in allen Azure-Cloudumgebungen funktionieren, finden Sie unter [Informationen zum Entwickeln von Azure Resource Manager-Vorlagen für cloudübergreifende Konsistenz](templates-cloud-consistency.md).
+* Informationen zur Struktur der Vorlagendatei finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Empfehlungen zum Erstellen von Vorlagen, die in allen Azure-Cloudumgebungen funktionieren, finden Sie unter [Entwickeln von ARM-Vorlagen für Cloudkonsistenz](templates-cloud-consistency.md).

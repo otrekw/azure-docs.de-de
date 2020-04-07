@@ -1,19 +1,18 @@
 ---
 title: Wählen der Front-End-Entwicklungsplattform zum Erstellen von Clientanwendungen mit Visual Studio und Azure-Diensten
 description: Erfahren Sie mehr über die unterstützten nativen und plattformübergreifenden Sprachen zum Erstellen von Clientanwendungen.
-author: elamalani
-manager: elamalani
+author: codemillmatt
 ms.service: vs-appcenter
 ms.assetid: 355f0959-aa7f-472c-a6c7-9eecea3a34b9
 ms.topic: conceptual
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: c55c9c36d84c8545f4192e1c9a65d8af0c580396
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 714916c755ce50f6e596cee4be85ceb0b142c789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453153"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240859"
 ---
 # <a name="choose-mobile-development-frameworks"></a>Auswählen von Frameworks für die mobile Entwicklung
 Entwickler können clientseitige Technologien verwenden, um mobile Anwendungen selbst zu erstellen, wozu sie bestimmte Frameworks und Muster für einen plattformübergreifenden Ansatz verwenden. Basierend auf ihren Entscheidungsfaktoren können Entwickler Folgendes erstellen:
@@ -63,7 +62,7 @@ Im Besitz von Microsoft, wird [Xamarin](https://visualstudio.microsoft.com/xamar
 - **IDE:** Visual Studio unter Windows oder Mac
 
 ### <a name="react-native"></a>React Native
-[React Native](https://facebook.github.io/react-native/), das 2015 von Facebook veröffentlicht wurde, ist ein [Open Source](https://github.com/facebook/react-native)-JavaScript-Framework zum Schreiben von echten, mit nativem Rendern arbeitenden mobilen Anwendungen für iOS und Android. Das Framework basiert auf React, Facebooks JavaScript-Bibliothek zum Erstellen von Benutzeroberflächen, zielt dabei aber auf mobile Plattformen ab, anstatt auf den Browser. In React Native werden native Komponenten anstelle von Webkomponenten als Bausteine verwendet.
+[React Native](https://facebook.github.io/react-native/), das 2015 von Facebook veröffentlicht wurde, ist ein [Open Source](https://github.com/facebook/react-native)-JavaScript-Framework zum Schreiben von echten, mit nativem Rendern arbeitenden mobilen Anwendungen für iOS und Android. Es basiert auf React, der JavaScript-Bibliothek von Facebook zum Erstellen von Benutzeroberflächen. Anstelle des Browsers werden in diesem Fall mobile Plattformen als Ziel verwendet. In React Native werden native Komponenten anstelle von Webkomponenten als Bausteine verwendet.
  
 - **Programmiersprache**: JavaScript
 - **IDE:** Visual Studio Code

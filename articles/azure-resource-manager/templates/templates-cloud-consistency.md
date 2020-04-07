@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: fa0df19053c3c238e3c00c46733cb4626dd64072
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: c5095efef5d4bef44993bdd9cd52dbdef17378a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76773141"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156105"
 ---
-# <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Informationen zum Entwickeln von Azure Resource Manager-Vorlagen für cloudübergreifende Konsistenz
+# <a name="develop-arm-templates-for-cloud-consistency"></a>Entwickeln von ARM-Vorlagen für Cloudkonsistenz
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Ein wichtiger Vorteil von Azure ist Konsistenz. Von Investitionen in die Entwicklung an einem Standort können auch andere Standorte profitieren. Eine Vorlage macht Ihre Implementierungen für alle Umgebungen konsistent und wiederholbar, einschließlich globaler Azure-Cloud, Azure Sovereign Clouds und Azure Stack. Um Vorlagen cloudübergreifend wiederverwenden zu können, müssen Sie jedoch cloudspezifische Abhängigkeiten berücksichtigen, was in diesem Leitfaden erläutert wird.
+Ein wichtiger Vorteil von Azure ist Konsistenz. Von Investitionen in die Entwicklung an einem Standort können auch andere Standorte profitieren. Mit einer ARM-Vorlage (Azure Resource Manager) werden Ihre Bereitstellungen für alle Umgebungen konsistent und wiederholbar, einschließlich globaler Azure-Cloud, Azure Sovereign Clouds und Azure Stack. Um Vorlagen cloudübergreifend wiederverwenden zu können, müssen Sie jedoch cloudspezifische Abhängigkeiten berücksichtigen, was in diesem Leitfaden erläutert wird.
 
 Microsoft bietet an vielen Standorten intelligente, betriebsbereite Clouddienste, so z.B.:
 
@@ -33,7 +33,7 @@ Durch die Konsistenz der globalen Azure-Cloud, Sovereign Clouds, gehosteten Clou
 
 Obwohl die globale Cloud sowie Sovereign, gehostete und Hybrid Clouds konsistente Dienste bieten, sind nicht alle Clouds identisch. Daher können Sie eine Vorlage mit Abhängigkeiten von Features erstellen, die nur in einer bestimmten Cloud verfügbar sind.
 
-Im Rest dieses Leitfadens werden die Bereiche erörtert, die bei der Entwicklung neuer oder der Aktualisierung bestehender Azure Resource Manager-Vorlagen für Azure Stack zu berücksichtigen sind. Im Allgemeinen sollte Ihre Prüfliste die folgenden Punkte enthalten:
+Im Rest dieses Leitfadens werden die Bereiche erörtert, die bei der Entwicklung neuer oder der Aktualisierung bestehender ARM-Vorlagen für Azure Stack zu berücksichtigen sind. Im Allgemeinen sollte Ihre Prüfliste die folgenden Punkte enthalten:
 
 * Vergewissern Sie sich, dass die Funktionen, Endpunkte, Dienste und andere Ressourcen in Ihrer Vorlage an den Zielstandorten der Bereitstellung verfügbar sind.
 * Speichern Sie geschachtelte Vorlagen und Konfigurationsartefakte an zugänglichen Speicherorten, um den Zugriff cloudübergreifend zu gewährleisten.
@@ -41,11 +41,11 @@ Im Rest dieses Leitfadens werden die Bereiche erörtert, die bei der Entwicklung
 * Stellen Sie sicher, dass die Vorlagenparameter, die Sie verwenden, in den Zielclouds funktionieren.
 * Vergewissern Sie sich, dass ressourcenspezifische Eigenschaften in den Zielclouds verfügbar sind.
 
-Eine Einführung in Azure Resource Manager-Vorlagen finden Sie unter [Vorlagenbereitstellung](overview.md).
+Eine Einführung in ARM-Vorlagen finden Sie unter [Vorlagenbereitstellung](overview.md).
 
 ## <a name="ensure-template-functions-work"></a>Sicherstellen, dass Vorlagenfunktionen intakt sind
 
-Die Syntax einer Resource Manager-Vorlage basiert auf JSON. Vorlagen verwenden eine Obermenge von JSON, wobei die Syntax mit Ausdrücken und Funktionen erweitert wird. Der Prozessor für Vorlagensprachen wird häufig aktualisiert, um zusätzliche Vorlagenfunktionen zu unterstützen. Unter [Funktionen von Azure Resource Manager-Vorlagen](template-functions.md) finden Sie eine detaillierte Erläuterung der verfügbaren Vorlagenfunktionen.
+Die grundlegende Syntax einer ARM-Vorlage ist JSON. Vorlagen verwenden eine Obermenge von JSON, wobei die Syntax mit Ausdrücken und Funktionen erweitert wird. Der Prozessor für Vorlagensprachen wird häufig aktualisiert, um zusätzliche Vorlagenfunktionen zu unterstützen. Unter [Vorlagenfunktionen in Azure Resource Manager](template-functions.md) finden Sie eine detaillierte Erläuterung der verfügbaren Vorlagenfunktionen.
 
 Neue Vorlagenfunktionen, die in Azure Resource Manager eingeführt wurden, sind nicht sofort in Sovereign Clouds oder Azure Stack verfügbar. Für eine erfolgreiche Bereitstellung einer Vorlage müssen alle Funktionen, auf die in der Vorlage verwiesen wird, in der Zielcloud verfügbar sein.
 
@@ -497,7 +497,7 @@ Dieser Befehl benötigt einige Minuten, um alle verfügbaren Images in der Regio
 
 Wenn Sie diese VM-Images für Azure Stack zur Verfügung stellen, wird der gesamte verfügbare Speicher belegt. Um selbst die kleinste Skalierungseinheit zu unterstützen, ermöglicht Azure Stack Ihnen die Auswahl der Images, die Sie einer Umgebung hinzufügen möchten.
 
-Das folgende Codebeispiel zeigt einen konsistenten Ansatz, um auf die Parameter „publisher“, „offer“ und „SKU“ in Ihren Azure Resource Manager-Vorlagen zu verweisen:
+Das folgende Codebeispiel zeigt einen konsistenten Ansatz, um auf die Parameter „publisher“, „offer“ und „SKU“ in Ihren ARM-Vorlagen zu verweisen:
 
 ```json
 "storageProfile": {
@@ -668,4 +668,4 @@ Befolgen Sie die folgenden Tipps für Tests und Automatisierung:
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Aspekte zu Azure Resource Manager-Vorlagen](/azure-stack/user/azure-stack-develop-templates)
-* [Bewährte Methoden für Azure Resource Manager-Vorlagen](template-syntax.md)
+* [Bewährte Methoden für ARM-Vorlagen](template-syntax.md)

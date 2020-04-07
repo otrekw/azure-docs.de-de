@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 1/23/2020
+ms.date: 3/13/2020
 ms.author: sutalasi
-ms.openlocfilehash: aeab1960b065538635fdd63c43d779287f8cd9ee
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 58348c9aed14a5cc9126be780fe01817274a0b47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759822"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283258"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Informationen zu Netzwerken für die Notfallwiederherstellung für virtuelle Azure-Computer
 
@@ -46,23 +46,27 @@ Normalerweise werden Netzwerke durch Firewalls und Netzwerksicherheitsgruppen (N
 Lassen Sie die folgenden Site Recovery-URLs zu, wenn Sie einen URL-basierten Firewallproxy zum Steuern der ausgehenden Konnektivität verwenden:
 
 
-**URL** | **Details**  
+**URL** | **Details**
 --- | ---
 *.blob.core.windows.net | Erforderlich, damit Daten in das Cachespeicherkonto in der Quellregion über die VM geschrieben werden können. Wenn Sie alle Cachespeicherkonten für Ihre VMs kennen, können Sie den Zugriff auf die spezifischen Speicherkonten-URLs (z. B. cache1.blob.core.windows.net and cache2.blob.core.windows.net) anstelle von „*.blob.core.windows.net“ zulassen.
 login.microsoftonline.com | Erforderlich für die Autorisierung und Authentifizierung bei den Site Recovery-Dienst-URLs.
 *.hypervrecoverymanager.windowsazure.com | Erforderlich, um die Kommunikation mit dem Site Recovery-Dienst über die VM zu ermöglichen.
 *.servicebus.windows.net | Erforderlich, damit die Site Recovery-Überwachungs- und -Diagnosedaten über die VM geschrieben werden können.
+*.vault.azure.net | Ermöglicht über das Portal Zugriff zum Aktivieren der Replikation für VMs, für die ADE aktiviert ist
+*.automation.ext.azure.com | Ermöglicht das Aktivieren automatischer Upgrades für den Mobilitäts-Agent für ein repliziertes Element über das Portal
 
-## <a name="outbound-connectivity-for-ip-address-ranges"></a>Ausgehende Konnektivität für IP-Adressbereiche
+## <a name="outbound-connectivity-using-service-tags"></a>Ausgehende Konnektivität mithilfe von Diensttags
 
 Wenn Sie eine NSG zum Steuern der ausgehenden Konnektivität verwenden, müssen diese Diensttags zugelassen werden.
 
-- Alle IP-Adressbereiche, die den Speicherkonten am Quellstandort entsprechen.
+- Für die Speicherkonten in der Quellregion:
     - Erstellen Sie ein [Speicherdiensttag](../virtual-network/security-overview.md#service-tags) basierend auf der NSG-Regel für die Quellregion.
     - Lassen Sie diese Adressen zu, damit Daten von der VM in das Cachespeicherkonto geschrieben werden können.
 - Erstellen Sie basierend auf der NSG-Regel ein [Azure Active Directory-Diensttag (AAD)](../virtual-network/security-overview.md#service-tags) für den Zugriff auf alle IP-Adressen für AAD.
 - Erstellen Sie eine auf dem EventsHub-Diensttag basierende NSG-Regel für die Zielregion, die den Zugriff auf Site Recovery-Überwachung ermöglicht.
 - Erstellen Sie eine auf dem Azure Site Recovery-Diensttag basierende NSG-Regel, um den Zugriff auf den Site Recovery-Dienst in einer beliebigen Region zuzulassen.
+- Erstellen Sie eine NSG-Regel, die auf einem AzureKeyVault-Diensttag basiert. Dies ist nur erforderlich, um die Replikation von VMs, für die ADE aktiviert ist, über das Portal zu aktivieren.
+- Erstellen Sie eine NSG-Regel, die auf einem GuestAndHybridManagement-Diensttag basiert. Dies ist nur erforderlich, um automatische Upgrades für den Mobilitäts-Agent für ein repliziertes Element über das Portal zu aktivieren.
 - Wir empfehlen, die erforderlichen NSG-Regeln in einer Test-Netzwerksicherheitsgruppe zu erstellen und sicherzustellen, dass keine Probleme vorliegen, bevor Sie die Regeln in einer Netzwerksicherheitsgruppe in der Produktionsumgebung erstellen.
 
 ## <a name="example-nsg-configuration"></a>Beispielkonfiguration für eine Netzwerksicherheitsgruppe

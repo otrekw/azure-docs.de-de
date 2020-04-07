@@ -3,22 +3,22 @@ title: Sicheres Bereitstellen von Vorlagen mithilfe des SAS-Token
 description: Bereitstellen von Ressourcen in Azure mithilfe einer Azure Resource Manager-Vorlage, die mit einem SAS-Token geschützt ist. Zeigt Azure PowerShell und Azure CLI.
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: d30e685c35f33b6fc5d3872b9287e45190ad5713
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 42eaae316d4fd0575102323933f849a3058228a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75476308"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156394"
 ---
-# <a name="deploy-private-resource-manager-template-with-sas-token"></a>Bereitstellen privater Resource Manager-Vorlagen mit SAS-Token
+# <a name="deploy-private-arm-template-with-sas-token"></a>Bereitstellen einer privaten ARM-Vorlage mit SAS-Token
 
-Wenn sich Ihre Vorlage in einem Speicherkonto befindet, können Sie den Zugriff auf die Vorlage beschränken, um deren öffentliche Bereitstellung zu vermeiden. Sie greifen auf eine gesicherte Vorlage zu, indem Sie ein SAS-Token (Shared Access Signature) für die Vorlage erstellen und dieses Token während der Bereitstellung bereitstellen. In diesem Artikel wird erläutert, wie Sie Azure PowerShell oder Azure CLI verwenden, um eine Vorlage mit einem SAS-Token bereitzustellen.
+Wenn sich Ihre ARM-Vorlage (Azure Resource Manager) in einem Speicherkonto befindet, können Sie den Zugriff auf die Vorlage beschränken, um deren öffentliche Bereitstellung zu vermeiden. Sie greifen auf eine gesicherte Vorlage zu, indem Sie ein SAS-Token (Shared Access Signature) für die Vorlage erstellen und dieses Token während der Bereitstellung bereitstellen. In diesem Artikel wird erläutert, wie Sie Azure PowerShell oder Azure CLI verwenden, um eine Vorlage mit einem SAS-Token bereitzustellen.
 
 ## <a name="create-storage-account-with-secured-container"></a>Erstellen eines Speicherkontos mit einem gesicherten Container
 
 Das folgende Skript erstellt ein Speicherkonto und einen Container mit deaktiviertem öffentlichem Zugriff.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -37,7 +37,7 @@ New-AzStorageContainer `
   -Permission Off
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli-interactive
 az group create \
@@ -65,7 +65,7 @@ az storage container create \
 
 Jetzt können Sie Ihre Vorlage in das Speicherkonto hochladen. Geben Sie den Pfad zu der Vorlage an, die Sie verwenden möchten.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Set-AzStorageBlobContent `
@@ -73,7 +73,7 @@ Set-AzStorageBlobContent `
   -File c:\Templates\azuredeploy.json
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli-interactive
 az storage blob upload \
@@ -93,7 +93,7 @@ Generieren Sie zum Bereitstellen einer privaten Vorlage in einem Speicherkonto e
 > Auf den Blob, der die Vorlage enthält, hat nur der Kontobesitzer Zugriff. Wenn Sie jedoch ein SAS-Token für das Blob erstellen, können andere Benutzer über diesen URI auf das Blob zugreifen. Wenn ein anderer Benutzer den URI abfängt, hat dieser Benutzer Zugriff auf die Vorlage. Ein SAS-Token ist eine gute Möglichkeit zum Einschränken des Zugriffs auf Ihre Vorlagen. Sie sollten allerdings Kennwörter auf keinen Fall direkt in die Vorlage einschließen.
 >
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 # get the URI with the SAS token
@@ -109,7 +109,7 @@ New-AzResourceGroupDeployment `
   -TemplateUri $templateuri
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 ```azurecli-interactive
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
@@ -129,7 +129,7 @@ url=$(az storage blob url \
     --name azuredeploy.json \
     --output tsv \
     --connection-string $connection)
-az group deployment create \
+az deployment group create \
   --resource-group ExampleGroup \
   --template-uri $url?$token
 ```
@@ -140,5 +140,5 @@ Ein Beispiel der Verwendung eines SAS-Tokens mit verknüpften Vorlagen finden Si
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Eine Einführung in die Bereitstellung von Vorlagen finden Sie unter [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Azure PowerShell](deploy-powershell.md).
+* Eine Einführung in die Bereitstellung von Vorlagen finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md).
 * Informationen zum Definieren von Parametern in der Vorlage finden Sie unter [Erstellen von Vorlagen](template-syntax.md#parameters).

@@ -1,77 +1,93 @@
 ---
-title: 'Zuordnungsdatenfluss: Suchtransformation'
-description: 'Azure Data Factory-Mappingdatenfluss: Suchtransformation'
+title: Suchtransformation in einem Zuordnungsdatenfluss
+description: Verweisen Sie mithilfe der Suchtransformation in einem Zuordnungsdatenfluss auf Daten aus einer anderen Quelle.
 author: kromerm
+ms.reviewer: daperlov
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/26/2020
-ms.openlocfilehash: 2216e1bf058eef486dbfefba24d52bdc6bdb232f
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
+ms.date: 03/23/2020
+ms.openlocfilehash: 78c6c1363af011a90865770d88c0037e50e958c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164677"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240413"
 ---
-# <a name="azure-data-factory-mapping-data-flow-lookup-transformation"></a>Azure Data Factory-Mappingdatenfluss: Suchtransformation
+# <a name="lookup-transformation-in-mapping-data-flow"></a>Suchtransformation in einem Zuordnungsdatenfluss
 
-Verwenden Sie die Transformation für die Suche, um Ihrem Datenfluss Verweisdaten aus einer anderen Quelle hinzuzufügen. Für die Suchtransformation ist eine definierte Quelle erforderlich, die auf Ihre Verweistabelle verweist und mit Schlüsselfeldern übereinstimmt.
+Verwenden Sie die Suchtransformation, um auf Daten aus einer anderen Quelle in einem Datenfluss zu verweisen. Die Suchtransformation fügt Spalten aus übereinstimmenden Daten an Ihre Quelldaten an.
+
+Eine Suchtransformation ist mit einer linken äußeren Verknüpfung vergleichbar. Alle Zeilen aus dem primären Datenstrom sind im Ausgabedatenstrom mit zusätzlichen Spalten aus dem Suchdatenstrom enthalten. 
+
+## <a name="configuration"></a>Konfiguration
 
 ![Suchtransformation](media/data-flow/lookup1.png "Nachschlagen")
 
-Wählen Sie die Schlüsselfelder aus, die zwischen den Feldern für den eingehenden Datenstrom und den Feldern der Referenzquelle abgeglichen werden sollen. Zuerst muss auf dem Datenfluss-Entwurfscanvas eine neue Quelle erstellt worden sein, die als rechte Seite für die Suche verwendet wird.
+**Primärer Datenstrom:** Der eingehende Datenstrom. Dieser Datenstrom entspricht der linken Seite einer Verknüpfung.
 
-Werden Übereinstimmungen gefunden, werden Ihrem Datenfluss die resultierenden Zeilen und Spalten der Referenzquelle hinzugefügt. Sie können die relevanten Felder auswählen, die Sie in Ihre Senke am Ende des Datenflusses einschließen möchten. Verwenden Sie alternativ nach Ihrer Suche eine Auswahltransformation, um die Feldliste zu löschen und nur die gewünschten Felder aus beiden Streams beizubehalten.
+**Suchdatenstrom:** Die Daten, die an den primären Datenstrom angefügt werden. Welche Daten hinzugefügt werden, wird durch die Suchbedingungen festgelegt. Dieser Datenstrom entspricht der rechten Seite einer Verknüpfung.
 
-Die Suchtransformation führt das Äquivalent eines linken äußeren Joins aus. Es werden also alle Zeilen aus Ihrer linken Quelle mit Übereinstimmungen von Ihrer rechten Seite kombiniert. Wenn bei der Suche mehrere übereinstimmende Werte vorhanden sind oder Sie den Suchausdruck anpassen möchten, empfiehlt es sich, zu einer Join-Transformation zu wechseln und ein Kreuzprodukt zu verwenden. Dadurch werden bei der Ausführung mögliche kartesische Produktfehler vermieden.
+**Übereinstimmung mit mehreren Zeilen:** Bei Aktivierung dieser Option werden für eine Zeile mit mehreren Übereinstimmungen im primären Datenstrom mehrere Zeilen zurückgegeben. Anderenfalls wird basierend auf der Bedingung „Übereinstimmung mit“ nur eine einzelne Zeile zurückgegeben.
 
-## <a name="match--no-match"></a>Übereinstimmung/Keine Übereinstimmung
+**Übereinstimmung mit:** Nur sichtbar, wenn „Übereinstimmung mit mehreren Zeilen“ aktiviert ist. Wählen Sie aus, ob eine Übereinstimmung für eine beliebige Zeile, die erste Übereinstimmung oder die letzte Übereinstimmung ermittelt werden soll. Da die Ausführung bei Auswahl einer beliebigen Zeile am schnellsten ist, wird diese Einstellung empfohlen. Wenn die erste Zeile oder die letzte Zeile ausgewählt wird, müssen Sortierbedingungen angegeben werden.
 
-Nach Ihrer Lookup-Transformation können Sie nachfolgende Transformationen verwenden, um die Ergebnisse der einzelnen übereinstimmenden Zeilen zu überprüfen, indem Sie die Ausdrucksfunktion `isMatch()` verwenden, um weitere Entscheidungen in Ihrer Logik zu treffen, je nachdem, ob der Lookup-Vorgang zu einer Übereinstimmung in einer Zeile führte.
+**Suchbedingungen:** Wählen Sie aus, für welche Spalten eine Übereinstimmung ermittelt werden soll. Wenn die Gleichheitsbedingung erfüllt ist, werden die Zeilen als Übereinstimmung betrachtet. Zeigen Sie mit dem Mauszeiger auf „Berechnete Spalte“, und wählen Sie diese Option aus, um mithilfe der [Ausdruckssprache für Datenflüsse](data-flow-expression-functions.md) einen Wert zu extrahieren.
+
+Die Suchtransformation unterstützt ausschließlich Gleichheitsübereinstimmungen. Um den Suchausdruck so anzupassen, dass er andere Operatoren (z. B. „größer als“) umfasst, sollten Sie einen [Cross Join in der Join-Transformation](data-flow-join.md#custom-cross-join) verwenden. Durch einen Cross Join werden mögliche kartesische Produktfehler bei der Ausführung vermieden.
+
+In den Ausgabedaten sind alle Spalten beider Datenströme enthalten. Um doppelte oder unerwünschte Spalten zu löschen, fügen Sie nach Ihrer Suchtransformation eine [Auswahltransformation](data-flow-select.md) hinzu. Spalten können auch in einer Senkentransformation gelöscht oder umbenannt werden.
+
+## <a name="analyzing-matched-rows"></a>Analysieren übereinstimmender Zeilen
+
+Nach der Suchtransformation können Sie mithilfe der Funktion `isMatch()` feststellen, ob bei der Suche Übereinstimmungen für einzelne Zeilen ermittelt wurden.
 
 ![Suche: Muster](media/data-flow/lookup111.png "Suche: Muster")
 
-Nach Verwendung der Suchtransformation können Sie eine Transformationsaufteilung vom Typ „Bedingtes Teilen“ für die Funktion ```isMatch()``` hinzufügen. Im obigen Beispiel durchlaufen übereinstimmende Zeilen den obersten Stream und nicht übereinstimmende Zeilen den Stream ```NoMatch```.
+Ein Beispiel für dieses Muster ist die Verwendung der Transformation für bedingtes Teilen für die Funktion `isMatch()`. Im obigen Beispiel durchlaufen übereinstimmende Zeilen den obersten Stream und nicht übereinstimmende Zeilen den Stream ```NoMatch```.
 
-## <a name="first-or-last-value"></a>Erster oder letzter Wert
+## <a name="testing-lookup-conditions"></a>Testen von Suchbedingungen
 
-Die Suchtransformation wird als linke äußere Verknüpfung implementiert. Sollte Ihre Suche mehrere Übereinstimmungen ergeben, können Sie die mehrfachen übereinstimmenden Zeilen verringern, indem Sie die erste übereinstimmende Zeile, die letzte Übereinstimmung oder eine beliebige zufällige Zeile auswählen.
+Verwenden Sie einen kleinen Satz bekannter Daten, wenn Sie die Suchtransformation mit Datenvorschau im Debugmodus testen. Bei der Stichprobenentnahme aus einem umfangreichen Dataset können Sie nicht vorhersagen, welche Zeilen und Schlüssel zu Testzwecken gelesen werden. Das Ergebnis ist nicht deterministisch. Das bedeutet, dass für Ihre Verknüpfungsbedingungen möglicherweise keine Übereinstimmungen zurückgegeben werden.
 
-### <a name="option-1"></a>Option 1:
+## <a name="broadcast-optimization"></a>Broadcastoptimierung
 
-![Suche nach einzelner Zeile](media/data-flow/singlerowlookup.png "Suche nach einzelner Zeile")
-
-* Übereinstimmung mit mehreren Zeilen: Lassen Sie das Feld leer, wenn eine einzelne übereinstimmende Zeile zurückgegeben werden soll.
-* Übereinstimmung mit: Wählen Sie „Erste Zeile“, letzte oder beliebige Übereinstimmung aus.
-* Sortierbedingungen: Wenn Sie „Erste Zeile“ oder „Letzte Übereinstimmung“ auswählen, erfordert ADF, dass Ihre Daten sortiert sind, damit es eine Logik hinter den Angaben gibt.
-
-> [!NOTE]
-> Verwenden Sie die erste oder letzte Option für die Auswahl der einzelnen Zeile nur dann, wenn Sie steuern müssen, welcher Wert von der Suche zurückgegeben werden soll. Wenn Sie „Beliebige“ oder Suchen mit mehreren Zeilen verwenden, werden diese schneller ausgeführt.
-
-### <a name="option-2"></a>Option 2:
-
-Hierzu können Sie auch im Anschluss an Ihre Suche eine Aggregattransformation verwenden. In diesem Fall wird eine Aggregattransformation namens ```PickFirst``` verwendet, um den ersten Wert aus den Suchübereinstimmungen auszuwählen.
-
-![Suche: Aggregat](media/data-flow/lookup333.png "Suche: Aggregat")
-
-![Suche: Erste Übereinstimmung](media/data-flow/lookup444.png "Suche: Erste Übereinstimmung")
-
-## <a name="optimizations"></a>Optimierungen
-
-In Data Factory werden Datenflüsse in horizontal skalierten Spark-Umgebungen ausgeführt. Wenn Ihr Dataset in den Workerknotenspeicher eingepasst werden kann, können wir Ihre Lookup-Leistung optimieren.
+In Azure Data Factory werden Zuordnungsdatenflüsse in aufskalierten Spark-Umgebungen ausgeführt. Wenn Ihr Dataset in den Workerknotenspeicher eingepasst werden kann, kann Ihre Suchleistung durch die Aktivierung des Broadcastings optimiert werden.
 
 ![Broadcastjoin](media/data-flow/broadcast.png "Broadcastjoin")
 
-### <a name="broadcast-join"></a>Broadcastjoin
+Bei aktiviertem Broadcasting wird das gesamte Dataset in den Arbeitsspeicher verschoben. Bei kleineren Datasets, die nur wenige Tausend Zeilen enthalten, kann die Suchleistung durch das Broadcasting erheblich verbessert werden. Bei großen Datasets kann diese Option zu einer Ausnahme aufgrund von nicht genügend Arbeitsspeicher führen.
 
-Wählen Sie für den Broadcastjoin „Links“ und/oder „Rechts“ aus, um anzufordern, dass die Anwendungsdefinitionsdatei (Application Definition File, ADF) das gesamte Dataset mithilfe von Push von jeder der beiden Seiten der Lookup-Beziehung in den Speicher überträgt. Bei kleineren Datasets kann dies die Suchleistung erheblich verbessern.
+## <a name="data-flow-script"></a>Datenflussskript
 
-### <a name="data-partitioning"></a>Datenpartitionierung
+### <a name="syntax"></a>Syntax
 
-Sie können auch die Partitionierung Ihrer Daten angeben, indem Sie auf der Registerkarte „Optimize“ (Optimieren) der Lookup-Transformation „Set Partitioning“ (Partitionierung festlegen) auswählen, um Datasets zu erstellen, die besser in den Speicher pro Worker passen.
+```
+<leftStream>, <rightStream>
+    lookup(
+        <lookupConditionExpression>,
+        multiple: { true | false },
+        pickup: { 'first' | 'last' | 'any' },  ## Only required if false is selected for multiple
+        { desc | asc }( <sortColumn>, { true | false }), ## Only required if 'first' or 'last' is selected. true/false determines whether to put nulls first
+        broadcast: { 'none' | 'left' | 'right' | 'both' }
+    ) ~> <lookupTransformationName>
+```
+### <a name="example"></a>Beispiel
 
-## <a name="next-steps"></a>Nächste Schritte
+![Suchtransformation](media/data-flow/lookup-dsl-example.png "Nachschlagen")
 
-* [Join](data-flow-join.md)- und [Exists](data-flow-exists.md)-Transformationen erfüllen in ADF-Mappingdatenflüssen ähnliche Aufgaben. Sehen Sie sich als Nächstes diese Transformationen an.
-* Verwenden Sie [Bedingtes Teilen](data-flow-conditional-split.md) mit ```isMatch()```, um Zeilen nach übereinstimmenden und nicht übereinstimmenden Werten aufzuteilen.
+Der nachfolgende Codeausschnitt zeigt das Datenflussskript für die obige Suchkonfiguration.
+
+```
+SQLProducts, DimProd lookup(ProductID == ProductKey,
+    multiple: false,
+    pickup: 'first',
+    asc(ProductKey, true),
+    broadcast: 'none')~> LookupKeys
+```
+## 
+Nächste Schritte
+
+* Für die [Join](data-flow-join.md)- und [Exists](data-flow-exists.md)-Transformation können mehrere Datenströme als Eingabe verwendet werden.
+* Verwenden Sie eine [Transformation für bedingtes Teilen](data-flow-conditional-split.md) mit ```isMatch()```, um Zeilen nach übereinstimmenden und nicht übereinstimmenden Werten aufzuteilen.

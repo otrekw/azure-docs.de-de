@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
-ms.openlocfilehash: 143f55a02a856b536172bd5fc2bac15903a228b9
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 036b8c084bdfdc11c02274758c550c76bdc7b1e7
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77655683"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80348733"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Verwenden der Anwendungsänderungsanalyse (Vorschau) in Azure Monitor
 
@@ -37,7 +37,7 @@ Weitere Informationen zum Zugreifen auf das Blatt „Änderungsanalyse“ finden
 Mithilfe von [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview) stellt die Änderungsanalyse in Form von Verlaufsdaten dar, wie sich die Azure-Ressourcen, die Ihre Anwendung hosten, im Laufe der Zeit verändert haben. Nachverfolgte Einstellungen wie verwaltete Identitäten, Plattformbetriebssystems-Upgrades und Hostnamen können erkannt werden.
 
 ### <a name="azure-resource-manager-proxied-setting-changes"></a>Per Proxy übermittelte Einstellungsänderungen in Azure Resource Manager
-Einstellungen wie die IP-Konfigurationsregel, SSL-Einstellungen und Erweiterungsversionen sind in ARG noch nicht verfügbar. Daher fragt die Änderungsanalyse diese Änderungen ab und berechnet sie sicher, um weitere Details darüber bereitzustellen, was sich in der App geändert hat. Diese Informationen sind noch nicht in Azure Resource Graph verfügbar. Dies wird aber bald der Fall sein.
+Einstellungen wie die IP-Konfigurationsregel, TLS-Einstellungen und Erweiterungsversionen sind in ARG noch nicht verfügbar. Daher fragt die Änderungsanalyse diese Änderungen ab und berechnet sie sicher, um weitere Details darüber bereitzustellen, was sich in der App geändert hat. Diese Informationen sind noch nicht in Azure Resource Graph verfügbar. Dies wird aber bald der Fall sein.
 
 ### <a name="changes-in-web-app-deployment-and-configuration-in-guest-changes"></a>Änderungen bei Bereitstellung und Konfiguration einer Web-App (Änderungen auf Gastsystemen)
 

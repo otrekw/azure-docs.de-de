@@ -7,12 +7,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 2af84ccf679d28251e34f4c76ced38b0cb653a58
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6e27f34572eef7d50c7b140c65cb78c6d0678fa8
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203014"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477614"
 ---
 # <a name="understand-cost-management-data"></a>Grundlegendes zu Cost Management-Daten
 
@@ -94,9 +94,9 @@ Die folgenden Tabellen zeigen Daten, die in Cost Management enthalten sind oder 
 
 _<sup>**5**</sup> Die Nutzung des Azure-Diensts basiert auf Reservierungen und ausgehandelten Preisen._
 
-_<sup>**6**</sup> Marketplace-Käufe sind für die nutzungsbasierte Bezahlung, MSDN und Visual Studio-Angebote derzeit nicht verfügbar._
+_<sup>**6**</sup> Marketplace-Käufe sind für MSDN- und Visual Studio-Angebote derzeit nicht verfügbar._
 
-_<sup>**7**</sup> Reservierungskäufe sind zurzeit nur für Enterprise Agreement-Konten (EA) verfügbar._
+_<sup>**7**</sup> Reservierungskäufe sind zurzeit nur für EA-Konten (Enterprise Agreement) und Konten mit Microsoft-Kundenvereinbarung verfügbar._
 
 ## <a name="how-tags-are-used-in-cost-and-usage-data"></a>Verwendung von Tags in Kosten- und Nutzungsdaten
 

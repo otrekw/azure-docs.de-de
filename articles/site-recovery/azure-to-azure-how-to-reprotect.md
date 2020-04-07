@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 818c053c22cfa47cac0f4f6a19349cf239d3cdec
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 73747b8331054cdc3bfa1f4073ccf2cdb62ab326
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368590"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283241"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Erneutes Schützen von virtuellen Azure-Computern, für die ein Failover zur primären Region durchgeführt wurde
 
@@ -89,6 +89,10 @@ Die folgenden Bedingungen bestimmen, wie viele Daten repliziert werden:
 |---|---|
 |Die Quellregion verwendet 1 VM mit Standarddatenträger mit 1 TB Kapazität.<br/>Nur 127 GB werden für Daten verwendet, der Rest des Datenträgers ist leer.<br/>Der Datenträgertyp ist Standard mit 60 MiB/s Durchsatz.<br/>Keine Datenänderung nach dem Failover.| Ungefährer Zeitaufwand: 45 Minuten–1,5 Stunden.<br/>Während des erneuten Schützens füllt Site Recovery die Prüfsumme aller Daten auf, was 127 GB/45 Mbit/s oder ungefähr 45 Minuten entspricht.<br/>Zeitlicher Mehraufwand ist erforderlich, damit Site Recovery die automatische Skalierung ausführen kann, ungefähr 20–30 Minuten.<br/>Keine Gebühren für ausgehenden Datenverkehr. |
 |Die Quellregion verwendet 1 VM mit einem Standarddatenträger mit 1 TB Kapazität.<br/>Nur 127 GB werden für Daten verwendet, der Rest des Datenträgers ist leer.<br/>Der Datenträgertyp ist Standard mit 60 MiB/s Durchsatz.<br/>45 GB Datenänderung nach dem Failover.| Ungefährer Zeitaufwand: 1 Stunde–2 Stunden.<br/>Während des erneuten Schützens füllt Site Recovery die Prüfsumme aller Daten auf, was 127 GB/45 Mbit/s oder ungefähr 45 Minuten entspricht.<br/>Die Übertragungszeit zum Anwenden von Änderungen von 45 GB beträgt 45 GB/45 Mbit/s oder ungefähr 17 Minuten.<br/>Gebühren für ausgehenden Datenverkehr fallen nur für die 45 GB Datenänderungen, nicht aber für die Prüfsumme an. |
+
+Wenn die VM nach einem Failback zur primären Region erneut geschützt wird (wenn die VM also von der primären Region in die DR-Region erneut geschützt wird), wird die Ziel-VM mitsamt ihrer verknüpften NIC(s) gelöscht.
+
+Wenn die VM von der DR-Region zur primären Region erneut geschützt wird, werden die ehemalige primäre VM und ihre verknüpfte(n) NIC(s) nicht gelöscht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

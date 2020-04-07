@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1c2bac06f2526260fb290b63e5aa559a1e2337b4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 5df1198e6681431738f886eb7c3ad549936eab1a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77020623"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067642"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Indizieren von Dokumenten in Azure Blob Storage mit der kognitiven Azure-Suche
 
@@ -289,16 +289,59 @@ Sie können die Indizierung auch fortsetzen, wenn an einem beliebigen Punkt der 
     }
 
 ## <a name="incremental-indexing-and-deletion-detection"></a>Inkrementelle Indizierung und Erkennung von Löschungen
+
 Wenn Sie einen Blob-Indexer zur Ausführung nach einem Zeitplan einrichten, werden nur die geänderten Blobs neu indiziert. Dies wird anhand des `LastModified`-Zeitstempels der Blobs ermittelt.
 
 > [!NOTE]
 > Sie müssen keine Richtlinie zum Erkennen von Änderungen angeben. Die inkrementelle Indizierung wird für Sie automatisch indiziert.
 
-Damit das Löschen von Dokumenten unterstützt wird, sollten Sie die Strategie des „vorläufigen Löschens“ anwenden. Wenn Sie die Blobs direkt löschen, werden die entsprechenden Dokumente nicht aus dem Suchindex entfernt. Führen Sie stattdessen die folgenden Schritte aus:  
+Damit das Löschen von Dokumenten unterstützt wird, sollten Sie die Strategie des „vorläufigen Löschens“ anwenden. Wenn Sie die Blobs direkt löschen, werden die entsprechenden Dokumente nicht aus dem Suchindex entfernt.
 
-1. Fügen Sie dem Blob eine benutzerdefinierte Metadateneigenschaft hinzu, um in der kognitiven Azure-Suche anzugeben, dass das Blob logisch gelöscht wird.
-2. Konfigurieren Sie für die Datenquelle eine Richtlinie zur Erkennung des vorläufigen Löschens.
-3. Nachdem das Blob mit dem Indexer verarbeitet wurde (wie durch die API für den Indexerstatus gezeigt), können Sie das Blob physisch löschen.
+Es gibt zwei Möglichkeiten, den Ansatz des vorläufigen Löschens zu implementieren. Beide werden unten beschrieben.
+
+### <a name="native-blob-soft-delete-preview"></a>Natives vorläufiges Löschen von Blobs (Vorschau)
+
+> [!IMPORTANT]
+> Die Unterstützung für das native vorläufige Löschen von Blobs ist als Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Dieses Feature wird durch die [REST-API-Version 2019-05-06-Preview](https://docs.microsoft.com/azure/search/search-api-preview) bereitgestellt. Derzeit werden weder das Portal noch das .NET SDK unterstützt.
+
+> [!NOTE]
+> Bei Verwendung der Richtlinie zum nativen vorläufigen Löschen von Blobs müssen die Dokumentschlüssel für die Dokumente in Ihrem Index entweder eine Blobeigenschaft oder Blobmetadaten sein.
+
+Bei dieser Methode verwenden Sie das Feature zum [nativen vorläufigen Löschen von Blobs](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete), das Azure Blob Storage bietet. Wenn natives vorläufiges Löschen von Blobs für Ihr Speicherkonto aktiviert ist, wird für die Datenquelle eine Richtlinie für natives vorläufiges Löschen festgelegt, und der Indexer sucht ein Blob, das in einen vorläufig gelöschten Zustand versetzt wurde. Der Indexer entfernt dieses Dokument aus dem Index. Die Richtlinie zum nativen vorläufigen Löschen von Blobs wird beim Indizieren von Blobs aus Azure Data Lake Storage Gen2 nicht unterstützt.
+
+Führen Sie die folgenden Schritte durch:
+1. Aktivieren Sie [natives vorläufiges Löschen für Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete). Sie sollten für die Aufbewahrungsrichtlinie einen Wert festlegen, der wesentlich höher ist als der Intervallzeitplan Ihres Indexers. Wenn ein Problem beim Ausführen des Indexers vorliegt oder eine große Anzahl von Dokumenten indiziert werden muss, steht dem Indexer viel Zeit für die endgültige Verarbeitung der vorläufig gelöschten Blobs zur Verfügung. Indexer von Azure Cognitive Suche löschen nur dann ein Dokument aus dem Index, wenn sie das Blob verarbeiten, während es sich in einem vorläufig gelöschten Zustand befindet.
+1. Konfigurieren Sie für die Datenquelle eine Richtlinie zur Erkennung des nativen vorläufigen Löschens von Blobs. Ein entsprechendes Beispiel ist nachfolgend dargestellt. Da dieses Feature in der Vorschauversion verfügbar ist, müssen Sie die Vorschau-REST-API verwenden.
+1. Führen Sie den Indexer aus, oder legen Sie fest, dass der Indexer gemäß einem Zeitplan ausgeführt wird. Wenn der Indexer das Blob ausführt und verarbeitet, wird das Dokument aus dem Index entfernt.
+
+    ```
+    PUT https://[service name].search.windows.net/datasources/blob-datasource?api-version=2019-05-06-Preview
+    Content-Type: application/json
+    api-key: [admin key]
+    {
+        "name" : "blob-datasource",
+        "type" : "azureblob",
+        "credentials" : { "connectionString" : "<your storage connection string>" },
+        "container" : { "name" : "my-container", "query" : null },
+        "dataDeletionDetectionPolicy" : {
+            "@odata.type" :"#Microsoft.Azure.Search.NativeBlobSoftDeleteDeletionDetectionPolicy"
+        }
+    }
+    ```
+
+#### <a name="reindexing-undeleted-blobs"></a>Neuindizieren nicht gelöschter Blobs
+
+Wenn Sie mit aktiviertem nativem vorläufigem Löschen ein Blob aus Azure Blob Storage in Ihrem Speicherkonto löschen, wechselt das Blob in einen vorläufig gelöschten Zustand, sodass Sie die Möglichkeit haben, das Blob innerhalb des Aufbewahrungszeitraums wieder herzustellen machen. Wenn eine Azure Cognitive Search-Datenquelle eine Richtlinie für natives vorläufiges Löschen eines Blobs aufweist und der Indexer ein vorläufig gelöschtes BLOB verarbeitet, wird dieses Dokument aus dem Index entfernt. Wenn dieses Blobs später wieder hergestellt wird, indiziert der Indexer das Blob nicht immer neu. Dies liegt daran, dass der Indexer basierend auf dem `LastModified`-Zeitstempel des Blobs bestimmt, welche Blobs indiziert werden sollen. Wenn ein vorläufig gelöschtes Blob wieder hergestellt wird, wird sein `LastModified`-Zeitstempel nicht aktualisiert. Falls der Indexer bereits Blobs mit `LastModified`-Zeitstempeln verarbeitet hat, die aktueller sind als das wieder hergestellte Blob, wird das wieder hergestellte Blob nicht neu indiziert. Um sicherzustellen, dass ein wieder hergestelltes Blob neu indiziert wird, müssen Sie den `LastModified`-Zeitstempel des Blobs aktualisieren. Eine Möglichkeit hierfür besteht darin, die Metadaten des Blobs erneut zu speichern. Sie müssen die Metadaten nicht ändern, aber durch das erneute Speichern der Metadaten wird der `LastModified`-Zeitstempel des Blobs aktualisiert, sodass der Indexer weiß, dass er dieses Blob neu indizieren muss.
+
+### <a name="soft-delete-using-custom-metadata"></a>Vorläufiges Löschen mithilfe benutzerdefinierter Metadaten
+
+In dieser Methode verwenden Sie die Metadaten eines Blobs, um anzugeben, wann ein Dokument aus dem Suchindex entfernt werden sollte.
+
+Führen Sie die folgenden Schritte durch:
+
+1. Fügen Sie dem Blob ein Metadaten-Schlüssel-Wert-Paar hinzu, um in Azure Cognitive Search anzugeben, dass das Blob logisch gelöscht ist.
+1. Konfigurieren Sie für die Datenquelle eine Richtlinie zur Erkennung von Spalten für vorläufiges Löschen. Ein entsprechendes Beispiel ist nachfolgend dargestellt.
+1. Nachdem der Indexer das Blob verarbeitet und das Dokument aus dem Index gelöscht hat, können Sie das Blob für Azure Blob Storage löschen.
 
 Bei der folgenden Richtlinie wird ein Blob beispielsweise als gelöscht angesehen, wenn es über die Metadateneigenschaft `IsDeleted` mit dem Wert `true` verfügt:
 
@@ -310,13 +353,17 @@ Bei der folgenden Richtlinie wird ein Blob beispielsweise als gelöscht angesehe
         "name" : "blob-datasource",
         "type" : "azureblob",
         "credentials" : { "connectionString" : "<your storage connection string>" },
-        "container" : { "name" : "my-container", "query" : "my-folder" },
+        "container" : { "name" : "my-container", "query" : null },
         "dataDeletionDetectionPolicy" : {
             "@odata.type" :"#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",     
             "softDeleteColumnName" : "IsDeleted",
             "softDeleteMarkerValue" : "true"
         }
-    }   
+    }
+
+#### <a name="reindexing-undeleted-blobs"></a>Neuindizieren wieder hergestellter Blobs
+
+Wenn Sie für die Datenquelle eine Richtlinie zur Erkennung von Spalten für vorläufiges Löschen festlegen, fügen Sie die benutzerdefinierten Metadaten einem Blob mit dem Markerwert hinzu, und führen Sie dann den Indexer aus. Der Indexer entfernt das Dokument aus dem Index. Wenn Sie dieses Dokument neu indizieren möchten, ändern Sie einfach den Metadatenwert für vorläufiges Löschen für das Blob, und führen Sie den Indexer erneut aus.
 
 ## <a name="indexing-large-datasets"></a>Indizieren großer Datasets
 
@@ -336,7 +383,7 @@ Das Indizieren von Blobs kann sehr zeitaufwändig sein. In Fällen, in denen Sie
 
 - Erstellen Sie einen entsprechenden Indexer für jede Datenquelle. Alle Indexer können auf den gleichen Zielsuchindex zeigen.  
 
-- Eine Sucheinheit in Ihrem Dienst kann einen Indexer zu jeder angegebenen Uhrzeit ausführen. Das Erstellen von mehreren Indexern – wie oben beschrieben – ist nur nützlich, wenn sie tatsächlich parallel ausgeführt werden. Um mehrere Indexer parallel auszuführen, skalieren Sie Ihren Suchdienst horizontal hoch, indem Sie eine bestimmte Anzahl von Partitionen und Replikate erstellen. Wenn Ihr Suchdienst beispielsweise über 6 Sucheinheiten verfügt (z.B. 2 Partitionen x 3 Replikate), dann können 6 Indexers simultan ausgeführt werden. Dies führt zu einem sechsfachen Anstieg des Indizierungsdurchsatzes. Weitere Informationen zur Skalierung und Kapazitätsplanung finden Sie unter [Skalieren von Ressourcenebenen für Abfrage und Indizierung von Workloads in der kognitiven Azure-Suche](search-capacity-planning.md).
+- Eine Sucheinheit in Ihrem Dienst kann einen Indexer zu jeder angegebenen Uhrzeit ausführen. Das Erstellen von mehreren Indexern – wie oben beschrieben – ist nur nützlich, wenn sie tatsächlich parallel ausgeführt werden. Um mehrere Indexer parallel auszuführen, skalieren Sie Ihren Suchdienst auf, indem Sie eine bestimmte Anzahl von Partitionen und Replikate erstellen. Wenn Ihr Suchdienst beispielsweise über 6 Sucheinheiten verfügt (z.B. 2 Partitionen x 3 Replikate), dann können 6 Indexers simultan ausgeführt werden. Dies führt zu einem sechsfachen Anstieg des Indizierungsdurchsatzes. Weitere Informationen zur Skalierung und Kapazitätsplanung finden Sie unter [Skalieren von Ressourcenebenen für Abfrage und Indizierung von Workloads in der kognitiven Azure-Suche](search-capacity-planning.md).
 
 ## <a name="indexing-documents-along-with-related-data"></a>Indizieren von Dokumenten zusammen mit den zugehörigen Daten
 

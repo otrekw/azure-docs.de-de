@@ -1,18 +1,18 @@
 ---
 title: Hosten des Quellcodes Ihrer mobilen Anwendung in der Cloud mit GitHub und Azure DevOps
 description: Erfahren Sie mehr über die Dienste zum Hosten des Codes Ihrer mobilen Anwendungen mit Microsoft-Diensten.
-author: elamalani
+author: codemillmatt
 ms.assetid: 12a8a079-9b3c-4faf-2222-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 8662b9f77614339ff514fa4fcf97dc1ee8fc7417
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 66d8980ab53010af0703d789fbe791c60a32052d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454482"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240962"
 ---
 # <a name="cloud-hosted-source-code-management-services"></a>In der Cloud gehostete Quellcode-Verwaltungsdienste
 Wenn Sie Entwicklungsteams haben, in denen mehrere Teammitglieder an derselben Codebasis arbeiten, müssen Sie einen geeigneten Speicherort zum Hosten Ihres Codes finden. Das Speichern der Daten in der Cloud und die Verwendung eines zentralisierten Repositorys ermöglicht allen Benutzern das Hochladen, Bearbeiten und Verwalten der Codedateien. Sie können auch mit anderen Entwicklern bei Projekten interagieren. Der Zugriff auf den Code ist unabhängig davon, wo Sie sich befinden, jederzeit möglich, solange Sie über eine Internetverbindung verfügen.
@@ -29,7 +29,7 @@ Cloudhosting gestaltet sich wesentlich einfacher als lokale Optionen. Es erforde
 Verwenden Sie die folgenden Dienste, um Ihre Anwendungsdaten in der Cloud zu hosten.
 
 ## <a name="github"></a>GitHub
-[GitHub](https://github.com/) ist ein Open-Source-Repository-Hostingdienst, der Quellcodeprojekte in unterschiedlichen Programmiersprachen hostet. GitHub verfolgt die verschiedenen, bei jeder Iteration vorgenommenen Änderungen.
+[GitHub](https://github.com/) ist ein Open-Source-Repository-Hostingdienst, der Quellcodeprojekte in unterschiedlichen Programmiersprachen hostet. GitHub verfolgt die verschiedenen Änderungen nach, die bei jeder Iteration vorgenommenen werden.
 
 **Wichtige Features**
 - Verwenden Sie Codehosting, um Ihren gesamten Code an einem Ort zu halten. Private, öffentliche und Open-Source-Repositorys sind alle mit Tools ausgestattet, mit denen Sie Code hosten, versionieren und freigeben können.

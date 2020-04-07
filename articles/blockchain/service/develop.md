@@ -1,15 +1,15 @@
 ---
 title: Übersicht über die Entwicklung mit dem Azure Blockchain-Dienst
 description: Einführung in die Entwicklung von Lösungen im Azure Blockchain-Dienst
-ms.date: 11/22/2019
+ms.date: 03/26/2020
 ms.topic: conceptual
 ms.reviewer: janders
-ms.openlocfilehash: 3748a1ca473d817f536ba7c912d2485ffc14de2d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 4a98e5ea025894303bc5c77bba0c6154a08315f2
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455879"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80348376"
 ---
 # <a name="azure-blockchain-service-development-overview"></a>Übersicht über die Entwicklung mit dem Azure Blockchain-Dienst
 
@@ -22,6 +22,8 @@ Es gibt verschiedene Arten von Clients für Blockchainnetzwerke, einschließlich
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
 Sie können eine Verbindung mit Konsortiumsmitgliedern herstellen, indem Sie die Visual Studio Code-Erweiterung für das Azure Blockchain Development Kit verwenden. Nachdem die Verbindung mit einem Konsortium hergestellt wurde, können Sie Smart Contracts kompilieren, erstellen und für ein Azure Blockchain Service-Konsortiumsmitglied bereitstellen.
+
+Für die Entwicklung von professionellen Blockchainlösungen für Unternehmen ist ein Entwicklungsframework erforderlich, um Verbindungen mit verschiedenen Blockchainnetzwerken herzustellen und den Lebenszyklus von Smart Contracts zu verwalten. Die meisten Projekte interagieren mit mindestens zwei Blockchainknoten. Entwickler verwenden bei der Entwicklung eine lokale Blockchain. Wenn die Anwendung für Tests oder Release bereit ist, stellt der Entwickler sie in einem Blockchainnetzwerk bereit. Beispiele hierfür sind das öffentliche Ethereum-Hauptnetzwerk oder der Azure Blockchain-Dienst. Das Azure Blockchain Development Kit für die Ethereum-Erweiterung in Visual Studio Code verwendet Truffle. Truffle ist ein beliebtes Blockchainentwicklungsframework zum Schreiben, Kompilieren, Bereitstellen und Testen von dezentralisierten Anwendungen für Ethereum-Blockchains. Sie können sich Truffle als Framework vorstellen, das versucht, die Smart Contract-Entwicklung und die traditionelle Webentwicklung nahtlos zu integrieren.
 
 Weitere Informationen finden Sie unter [Quickstart: Herstellen einer Verbindung mit einem Azure Blockchain Service-Konsortiumsnetzwerk mithilfe von Visual Studio Code](connect-vscode.md) durch.
 
@@ -36,14 +38,6 @@ Weitere Informationen finden Sie unter [Quickstart: Verwenden von MetaMask zum V
 Geth ist die Befehlszeilenschnittstelle zum Ausführen eines vollständigen Ethereum-Knotens, der in Go implementiert ist. Sie müssen keinen vollständigen Knoten ausführen, jedoch können Sie dessen interaktive Konsole starten, die eine JavaScript-Laufzeitumgebung bereitstellt, die wiederum eine JavaScript-API für die Interaktion mit Azure Blockchain zur Verfügung stellt.
 
 Weitere Informationen finden Sie unter [Quickstart: Anfügen an einen Azure Blockchain Service-Transaktionsknoten mithilfe von Geth](connect-geth.md).
-
-## <a name="development-framework-configuration"></a>Konfiguration des Entwicklungsframeworks
-
-Für die Entwicklung von professionellen Blockchainlösungen für Unternehmen ist ein Entwicklungsframework erforderlich, um Verbindungen mit verschiedenen Blockchainnetzwerken herzustellen und den Lebenszyklus von Smart Contracts zu verwalten.
-
-Truffle ist ein beliebtes Blockchainentwicklungsframework zum Schreiben, Kompilieren, Bereitstellen und Testen von dezentralisierten Anwendungen für Ethereum-Blockchains. Sie können sich Truffle als Framework vorstellen, das versucht, die Smart Contract-Entwicklung und die traditionelle Webentwicklung nahtlos zu integrieren.
-
-Die meisten Projekte interagieren mit mindestens zwei Blockchainknoten. Entwickler verwenden bei der Entwicklung eine lokale Blockchain. Wenn die Anwendung für Tests oder Release bereit ist, stellt der Entwickler sie in einem Blockchainnetzwerk bereit. Beispiele hierfür sind das öffentliche Ethereum-Hauptnetzwerk oder der Azure Blockchain-Dienst. Mit Truffle können Smart Contracts für jedes Netzwerk kompiliert und bereitgestellt und die endgültige Anwendungsbereitstellung vereinfacht werden. Weitere Informationen finden Sie unter [Quickstart: Use Truffle to connect to a an Azure Blockchain Service network (Schnellstart: Verwenden von Truffle zum Herstellen einer Verbindung mit einem Azure Blockchain-Netzwerk)](connect-truffle.md).
 
 ## <a name="ethereum-quorum-private-transactions"></a>Private Ethereum Quorum-Transaktionen
 

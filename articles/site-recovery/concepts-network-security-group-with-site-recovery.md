@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 0c06283080a4ee51f863714e4c515672299b420d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb5ba99133f5726c44164b0ba45b7ab5d94e292f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773016"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292360"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>Netzwerksicherheitsgruppen mit Azure Site Recovery
 
@@ -27,9 +27,9 @@ In diesem Artikel wird beschrieben, wie Sie Netzwerksicherheitsgruppen mit Azure
 Jedem einzelnen Subnetz kann null (0) oder eine NSG zugeordnet werden. Jeder einzelnen Netzwerkschnittstelle kann auch null (0) oder eine NSG zugeordnet werden. Daher sind effektiv zwei Datenverkehrseinschränkungen für eine VM möglich, indem zunächst eine NSG einem Subnetz und dann eine andere NSG der Netzwerkschnittstelle der VM zugeordnet wird. Die Anwendung der NSG-Regeln hängt in diesem Fall von der Richtung des Datenverkehrs und der Priorität der angewendeten Sicherheitsregeln ab.
 
 Betrachten Sie ein einfaches Beispiel mit nur einer VM:
--   Die VM befindet sich innerhalb von **Contoso Subnet**.
--   **Contoso Subnet** ist **Subnet NSG** zugeordnet.
--   Der VM-Netzwerkschnittstelle ist außerdem die **VM-NSG** zugeordnet.
+-    Die VM befindet sich innerhalb von **Contoso Subnet**.
+-    **Contoso Subnet** ist **Subnet NSG** zugeordnet.
+-    Der VM-Netzwerkschnittstelle ist außerdem die **VM-NSG** zugeordnet.
 
 ![NSG mit Site Recovery](./media/concepts-network-security-group-with-site-recovery/site-recovery-with-network-security-group.png)
 
@@ -45,13 +45,13 @@ Es ist für Sie unter Umständen nicht immer klar erkennbar, wenn Netzwerksicher
 
 Azure Site Recovery ermöglicht die Notfallwiederherstellung und Migration zu Azure für lokale [Hyper-V-Computer](hyper-v-azure-architecture.md), [virtuelle VMware-Computer](vmware-azure-architecture.md) und [physische Server](physical-azure-architecture.md). In allen Szenarien der Migration von einem lokalen Standort zu Azure werden die Replikationsdaten an ein Azure Storage-Konto gesendet und darin gespeichert. Während der Replikation zahlen Sie keine Gebühren für die VM. Wenn Sie einen Failover zu Azure ausführen, erstellt Site Recovery automatisch Azure-IaaS-VMs.
 
-Sobald nach einem Failover zu Azure VMs erstellt worden sind, kann mit NSGs der Netzwerkdatenverkehr zu dem virtuellen Netzwerk und den virtuellen Computern beschränkt werden. Site Recovery erstellt nicht NSGs als Teil des Failovervorgangs. Sie sollten die erforderlichen Azure-NSGs erstellen, bevor das Failover initiiert wird. Dann können Sie NSGs automatisch während des Failovers mithilfe von Automatisierungsskripts vom Failover betroffenen virtuellen Computern mit den leistungsstarken [Wiederherstellungsplänen](site-recovery-create-recovery-plans.md) von Site Recovery zuordnen.
+Sobald nach einem Failover zu Azure VMs erstellt worden sind, kann mit NSGs der Netzwerkdatenverkehr zu dem virtuellen Netzwerk und den virtuellen Computern beschränkt werden. Site Recovery erstellt nicht NSGs als Teil des Failovervorgangs. Sie sollten die erforderlichen Azure-NSGs erstellen, bevor das Failover initiiert wird. Dann können Sie NSGs während des Failovers automatisch VMs zuordnen, die vom Failover betroffen sind. Dazu verwenden Sie Automatisierungsskripts und die leistungsstarken [Wiederherstellungspläne](site-recovery-create-recovery-plans.md) von Site Recovery.
 
 Angenommen, die VM-Konfiguration ähnelt nach dem Failover dem oben beschriebenen [Beispielszenario](concepts-network-security-group-with-site-recovery.md#using-network-security-groups):
--   Sie können **Contoso VNet** und **Contoso Subnet** im Rahmen der DR-Planung in der Azure-Zielregion erstellen.
--   Sie können sowohl **Subnet NSG** als auch **VM NSG** als Teil der gesamten DR-Planung erstellen und konfigurieren.
--   **Subnet NSG** kann dann sofort **Contoso Subnet** zugeordnet werden, da sowohl NSG als auch Subnetz bereits verfügbar ist.
--   **VM NSG** kann während des Failovers mit Wiederherstellungsplänen virtuellen Computern zugeordnet werden.
+-    Sie können **Contoso VNet** und **Contoso Subnet** im Rahmen der DR-Planung in der Azure-Zielregion erstellen.
+-    Sie können sowohl **Subnet NSG** als auch **VM NSG** als Teil der gesamten DR-Planung erstellen und konfigurieren.
+-    **Subnet NSG** kann dann sofort **Contoso Subnet** zugeordnet werden, da sowohl NSG als auch Subnetz bereits verfügbar ist.
+-    **VM NSG** kann während des Failovers mit Wiederherstellungsplänen virtuellen Computern zugeordnet werden.
 
 Sobald die NSGs erstellt und konfiguriert sind, sollten Sie ein [Testfailover](site-recovery-test-failover-to-azure.md) ausführen, um die im Skript vorgenommenen NSG-Zuordnungen und die VM-Konnektivität nach dem Failover zu überprüfen.
 
@@ -59,20 +59,20 @@ Sobald die NSGs erstellt und konfiguriert sind, sollten Sie ein [Testfailover](s
 
 Azure Site Recovery ermöglicht die Notfallwiederherstellung für [Azure-VMs](azure-to-azure-architecture.md). Beim Aktivieren der Replikation für Azure-VMs kann Site Recovery das Replikat virtueller Netzwerke (einschließlich Subnetze und Gatewaysubnetze) in der Zielregion erstellen und die erforderlichen Mappings zwischen den virtuellen Quell- und Zielnetzwerken ausführen. Sie können die Zielnetzwerke und -subnetze jedoch auch im Voraus erstellen und sie beim Aktivieren der Replikation verwenden. Site Recovery erstellt vor dem [Failover](azure-to-azure-tutorial-failover-failback.md) keine virtuellen Computer in der Azure-Zielregion.
 
-Stellen Sie für die Azure-VM-Replikation sicher, dass die NSG-Regeln in der Azure-Quellregion [ausgehende Konnektivität](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) für den Replikationsdatenverkehr zulassen. Sie können diese erforderlichen Regeln auch über diese [NSG-Beispielkonfiguration](azure-to-azure-about-networking.md#example-nsg-configuration) testen und überprüfen.
+Stellen Sie für die Azure-VM-Replikation sicher, dass die NSG-Regeln in der Azure-Quellregion [ausgehende Konnektivität](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags) für den Replikationsdatenverkehr zulassen. Sie können diese erforderlichen Regeln auch über diese [NSG-Beispielkonfiguration](azure-to-azure-about-networking.md#example-nsg-configuration) testen und überprüfen.
 
-Site Recovery erstellt bzw. repliziert keine NSGs als Teil des Failovervorgangs. Sie sollten die erforderlichen NSGs in der Azure-Zielregion erstellen, bevor das Failover initiiert wird. Dann können Sie NSGs automatisch während des Failovers mithilfe von Automatisierungsskripts vom Failover betroffenen virtuellen Computern mit den leistungsstarken [Wiederherstellungsplänen](site-recovery-create-recovery-plans.md) von Site Recovery zuordnen.
+Site Recovery erstellt bzw. repliziert keine NSGs als Teil des Failovervorgangs. Sie sollten die erforderlichen NSGs in der Azure-Zielregion erstellen, bevor das Failover initiiert wird. Dann können Sie NSGs während des Failovers automatisch VMs zuordnen, die vom Failover betroffen sind. Dazu verwenden Sie Automatisierungsskripts und die leistungsstarken [Wiederherstellungspläne](site-recovery-create-recovery-plans.md) von Site Recovery.
 
 Berücksichtigen Sie das weiter oben beschriebene [Beispielszenario](concepts-network-security-group-with-site-recovery.md#using-network-security-groups):
--   Site Recovery kann Replikate von **Contoso VNet** und **Contoso Subnet** in der Azure-Zielregion erstellen, wenn die Replikation für den virtuellen Computer aktiviert ist.
--   Sie können die gewünschten Replikate von **Subnet NSG** und **VM NSG** (z.B. mit dem Namen **Zielsubnetz-NSG** bzw. **Ziel-VM-NSG**) in der Azure-Zielregion erstellen, wobei zusätzliche in der Zielregion erforderliche Regeln zugelassen sind.
--   **Zielsubnetz-NSG** kann dann sofort dem Zielregionssubnetz zugeordnet werden, da sowohl NSG als auch Subnetz bereits verfügbar ist.
--   **Ziel-VM-NSG** kann während des Failovers mit Wiederherstellungsplänen virtuellen Computern zugeordnet werden.
+-    Site Recovery kann Replikate von **Contoso VNet** und **Contoso Subnet** in der Azure-Zielregion erstellen, wenn die Replikation für den virtuellen Computer aktiviert ist.
+-    Sie können die gewünschten Replikate von **Subnet NSG** und **VM NSG** (z.B. mit dem Namen **Zielsubnetz-NSG** bzw. **Ziel-VM-NSG**) in der Azure-Zielregion erstellen, wobei zusätzliche in der Zielregion erforderliche Regeln zugelassen sind.
+-    **Zielsubnetz-NSG** kann dann sofort dem Zielregionssubnetz zugeordnet werden, da sowohl NSG als auch Subnetz bereits verfügbar ist.
+-    **Ziel-VM-NSG** kann während des Failovers mit Wiederherstellungsplänen virtuellen Computern zugeordnet werden.
 
 Sobald die NSGs erstellt und konfiguriert sind, sollten Sie ein [Testfailover](azure-to-azure-tutorial-dr-drill.md) ausführen, um die im Skript vorgenommenen NSG-Zuordnungen und die VM-Konnektivität nach dem Failover zu überprüfen.
 
 ## <a name="next-steps"></a>Nächste Schritte
--   Weitere Informationen zu [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md#network-security-groups).
--   Erfahren Sie mehr über NSG-[Sicherheitsregeln](../virtual-network/security-overview.md#security-rules).
--   Erfahren Sie mehr über [effektive Sicherheitsregeln](../virtual-network/diagnose-network-traffic-filter-problem.md) für eine NSG.
--   Informieren Sie sich ausführlicher über [Wiederherstellungspläne](site-recovery-create-recovery-plans.md) zum Automatisieren des Anwendungsfailovers.
+-    Weitere Informationen zu [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md#network-security-groups).
+-    Erfahren Sie mehr über NSG-[Sicherheitsregeln](../virtual-network/security-overview.md#security-rules).
+-    Erfahren Sie mehr über [effektive Sicherheitsregeln](../virtual-network/diagnose-network-traffic-filter-problem.md) für eine NSG.
+-    Informieren Sie sich ausführlicher über [Wiederherstellungspläne](site-recovery-create-recovery-plans.md) zum Automatisieren des Anwendungsfailovers.

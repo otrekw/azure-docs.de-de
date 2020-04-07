@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: 5137f35a4707aa68adfbf3f326ca9e4bfb40f0f4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f3bd7bc78eeb62cc33a01ed31bb04d94078cae4b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970328"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294334"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Widevine-Offlinestreaming für Android  
 
@@ -92,8 +92,8 @@ private static string ConfigureWidevineLicenseTemplateOffline(Uri keyDeliveryUrl
         {
             can_play = true,
             can_persist = true,
-            //can_renew = true,                             //if you set can_renew = false, you do not need renewal_server_url
-            //renewal_server_url = keyDeliveryUrl.ToString(),   //not mandatory, renewal_server_url is needed only if license_duration_seconds is set
+            //can_renew = true,                                //if you set can_renew = false, you do not need renewal_server_url
+            //renewal_server_url = keyDeliveryUrl.ToString(),    //not mandatory, renewal_server_url is needed only if license_duration_seconds is set
             can_renew = false,
             //rental_duration_seconds = 1209600,
             //playback_duration_seconds = 1209600,
@@ -157,7 +157,7 @@ Wenn Sie Ihren mobilen Chrome-Browser auf einem Android-Smartphone mindestens au
 
 Die oben erwähnte Open-Source-PWA-App wurde in Node.js erstellt. Wenn Sie eine eigene Version auf einem Ubuntu-Server hosten möchten, beachten Sie die folgenden allgemeinen Probleme, die die Wiedergabe verhindern können:
 
-1. CORS-Problem: Das Beispielvideo in der Beispiel-App wird in https://storage.googleapis.com/biograf-video-files/videos/ gehostet. Google hat CORS für alle Testbeispiele eingerichtet, die im Google Cloud Storage-Bucket gehostet werden. Sie werden mit CORS-Headern bereitgestellt, die explizit den CORS-Eintrag angeben: https://biograf-155113.appspot.com (die Domäne, in der Google das Beispiel hostet). Dadurch wird der Zugriff durch andere Sites verhindert. Wenn Sie es versuchen, wird der folgende HTTP-Fehler ausgegeben: Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. Falls eine opake Antwort Ihre Anforderungen erfüllt, legen Sie den Modus der Anforderung auf 'no-cors' fest, um CORS für den Ressourcenabruf zu deaktivieren.
+1. CORS-Problem: Das Beispielvideo in der Beispiel-App wird in https://storage.googleapis.com/biograf-video-files/videos/ gehostet. Google hat CORS für alle Testbeispiele eingerichtet, die im Google Cloud Storage-Bucket gehostet werden. Sie werden mit CORS-Headern bereitgestellt, die explizit den CORS-Eintrag angeben: `https://biograf-155113.appspot.com` (die Domäne, in der Google das Beispiel hostet). Dadurch wird der Zugriff durch andere Sites verhindert. Wenn Sie es versuchen, wird der folgende HTTP-Fehler ausgegeben: `Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.`
 2. Zertifikatsproblem: Ab der Chrome-Version 58 wird von EME für Widevine HTTPS benötigt. Daher muss die Beispiel-App mit einem X.509-Zertifikat über HTTPS gehostet werden. Ein herkömmliches Testzertifikat funktioniert aufgrund der folgenden Anforderungen nicht: Sie müssen ein Zertifikat abrufen, dass die folgenden Mindestanforderungen erfüllt:
     - Für Chrome und Firefox muss das Zertifikat die Einstellung für den alternativen Antragstellernamen (Subject Alternative Name, SAN) enthalten.
     - Das Zertifikat muss über eine vertrauenswürdige Zertifizierungsstelle verfügen. Ein selbstsigniertes Entwicklungszertifikat kann nicht verwendet werden.
@@ -172,8 +172,8 @@ Wie kann ich für einige Clients/Benutzer permanente (offlinefähige) Lizenzen u
 ### <a name="answer"></a>Antwort
 Sie müssen den Inhalt nicht duplizieren. Sie können einfach eine einzelne Inhaltskopie und ein einzelnes ContentKeyAuthorizationPolicy-Element mit zwei separaten ContentKeyAuthorizationPolicyOption-Elementen verwenden:
 
-1. ContentKeyAuthorizationPolicyOption 1: Verfügt über eine permanente Lizenz und ContentKeyAuthorizationPolicyRestriction 1 mit einem Anspruch wie dem folgenden: license_type = “Persistent”
-2. ContentKeyAuthorizationPolicyOption 2: Verfügt über eine nicht permanente Lizenz und ContentKeyAuthorizationPolicyRestriction 2 mit einem Anspruch wie dem folgenden: license_type = “Nonpersistent”
+1. IContentKeyAuthorizationPolicyOption 1: verwendet eine permanente Lizenz und ContentKeyAuthorizationPolicyRestriction 1 mit einem Anspruch wie dem folgenden: license_type = "Persistent"
+2. IContentKeyAuthorizationPolicyOption 2: verwendet keine permanente Lizenz und ContentKeyAuthorizationPolicyRestriction 2 mit einem Anspruch wie dem folgenden: license_type = "Nonpersistent"
 
 Wenn nun eine Lizenzanforderung von der Client-App eingeht, besteht bei der Lizenzanforderung kein Unterschied. Für andere Benutzer/Geräte muss der STS allerdings über Geschäftslogik zur Ausstellung unterschiedlicher JWT-Token mit unterschiedlichen Ansprüchen (einem der beiden oben genannten Lizenztypen) verfügen. Anhand des Anspruchswerts aus dem JWT-Token entscheidet der Lizenzdienst, welche Art von Lizenz (permanent oder nicht permanent) ausgestellt wird.
 
@@ -181,7 +181,7 @@ Daher benötigt der Sicherheitstokendienst (Secure Token Service, STS) die Gesch
 
 ### <a name="question"></a>Frage
 
-Als Widevine-Sicherheitsstufen sind [in der Dokumentation von Google](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) drei verschiedenen Sicherheitsstufen definiert. In der [Azure Media Services-Dokumentation zur Widevine-Lizenzvorlage](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview) sind dagegen fünf verschiedenen Sicherheitsstufen angegeben. Welche Beziehung oder Zuordnung besteht zwischen den beiden unterschiedlichen Gruppen von Sicherheitsstufen?
+In der [Dokumentation von Google](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf) sind drei verschiedene Widevine-Sicherheitsstufen definiert. In der [Azure Media Services-Dokumentation zur Widevine-Lizenzvorlage](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview) sind dagegen fünf verschiedenen Sicherheitsstufen angegeben. Welche Beziehung oder Zuordnung besteht zwischen den beiden unterschiedlichen Gruppen von Sicherheitsstufen?
 
 ### <a name="answer"></a>Antwort
 

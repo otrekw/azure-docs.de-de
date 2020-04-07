@@ -1,18 +1,18 @@
 ---
 title: Speichern und Verwalten von Anwendungsdaten in der Cloud mit Visual Studio App Center und Azure-Diensten
 description: Erfahren Sie mehr über Dienste wie Visual Studio App Center, mit denen Sie die Daten einer mobilen Anwendung in der Cloud speichern und verwalten können.
-author: elamalani
+author: codemillmatt
 ms.assetid: 12344321-0123-4678-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 04de01e1fd3dba88145c7f3748ca30b31ab1740a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 166847325fa9094136f1c2a143f1751420f05f66
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454448"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240913"
 ---
 # <a name="store-sync-and-query-mobile-application-data-from-the-cloud"></a>Speichern, Synchronisieren und Abfragen von Daten einer mobilen Anwendung aus der Cloud
 Unabhängig von der Art der Anwendung, die Sie erstellen, werden Sie wahrscheinlich Daten erzeugen und verarbeiten. Die Benutzer Ihrer Anwendung haben hohe Erwartungen. Sie möchten, dass die Anwendung unter allen Umständen schnell und reibungslos funktioniert. Die meisten Anwendungen funktionieren außerdem auf mehreren Geräten. Möglicherweise greifen Sie von einem Desktop oder einem mobilen Gerät aus auf Ihre Anwendung zu. Mehrere Benutzer könnten die Anwendung gleichzeitig nutzen und Daten teilen, wobei sie erwarten, dass sie sofortigen Zugriff in Echtzeit auf die Daten erhalten.
@@ -46,7 +46,7 @@ Verwenden Sie die folgenden Dienste, um Daten einer mobilen Anwendung in der Clo
 - Die globale, sofort einsetzbare Verteilung repliziert Ihre Daten an jeden Ort, an dem sich Ihre Benutzer befinden. Ihre Benutzer können mit einem Replikat der Daten interagieren, das ihnen räumlich am nächsten liegt.
 - Keine Schema- oder Indexverwaltung, da die Datenbank-Engine vollständig schemaunabhängig ist.
 - Universelle regionale Präsenz, weil Azure Cosmos DB in allen Azure-Regionen weltweit verfügbar ist, einschließlich 54+ Regionen in der Public Cloud.
-- Mehrere genau definierte Konsistenzoptionen, weil das Azure Cosmos DB-Protokoll für Multimasterreplikation fünf klar definierte Konsistenzoptionen bietet. Hierbei handelt es sich um starke Veraltung, begrenzte Veraltung, Sitzungskonsistenz, Präfixkonsistenz und letztliche Konsistenz.
+- Mehrere genau definierte Konsistenzoptionen, denn das Azure Cosmos DB-Protokoll für die Multimasterreplikation bietet fünf klar definierte Konsistenzoptionen. Diese fünf Optionen sind „Stark“, „Begrenzte Veraltung“, „Sitzung“, „Präfixkonsistenz“ und „Letztlich“.
 - 99,999 % Verfügbarkeit für Lese- und Schreibvorgänge.
 - Programmgesteuertes (oder über das Azure-Portal) Aufrufen des regionalen Failovers Ihres Azure Cosmos DB-Kontos, um sicherzustellen, dass Ihre Anwendung so konzipiert ist, dass sie auch nach einem regionalen Notfall weiter funktioniert.
 - Weltweit garantiert niedrige Latenz beim 99. Perzentil.
@@ -60,8 +60,8 @@ Verwenden Sie die folgenden Dienste, um Daten einer mobilen Anwendung in der Clo
 
 **Wichtige Features**
 - **Modelle und Tools für elastische Datenbanken:** Mit einer elastischen Datenbank können Entwickler Ressourcen zwischen einer Gruppe von Datenbanken zum Zwecke der Skalierung in einem Pool bündeln. Um diese Ressourcen administrativ zu verwalten, senden Sie ein Skript als Auftrag. Die SQL-Datenbank führt dann das Skript in den Datenbanken aus.
-- **Hohe Leistung:** Anwendungen mit hohem Durchsatz können die neueste Version nutzen. Diese liefert 25 % mehr Premium-Datenbankleistung.
-- **Sicherungen, Replikation und Hochverfügbarkeit:** Integrierte Replikation und eine von Microsoft unterstützte Vereinbarung zum Servicelevel (SLA) bieten Anwendungskontinuität und Schutz vor katastrophalen Ereignissen. Mit der aktiven Georeplikation können Sie Failover und Self-Service-Wiederherstellung konfigurieren, die vollständige Kontrolle über die „Hoppla-Wiederherstellung“ bieten. Die Datenwiederherstellung ist aus Datensicherungen von bis zu 35 Tagen verfügbar.
+- **Hohe Leistung:** Anwendungen mit hohem Durchsatz können die neueste Version nutzen. Sie liefert 25 % mehr Premium-Datenbankleistung.
+- **Sicherungen, Replikation und Hochverfügbarkeit:** Integrierte Replikation und eine von Microsoft unterstützte Vereinbarung zum Servicelevel (SLA) bieten Anwendungskontinuität und Schutz vor katastrophalen Ereignissen. Mit der aktiven Georeplikation können Sie Failover und Self-Service-Wiederherstellung konfigurieren, die vollständige Kontrolle über die „Hoppla-Wiederherstellung“ bieten. Die Datenwiederherstellung aus Datensicherungen ist bis zu 35 Tage verfügbar.
 - **Wartung gegen null:** Automatische Software ist Bestandteil des Diensts. Integrierte Systemreplikate tragen dazu bei, inhärenten Datenschutz, inhärente Datenbankbetriebszeit und inhärente Systemstabilität zu gewährleisten. Systemreplikate werden automatisch auf neue Computer verschoben. Sie werden bei Ausfällen älterer Computer sofort bereitgestellt.
 - **Sicherheit**: SQL-Datenbank bietet eine Reihe von Sicherheitsfunktionen, mit denen Sie sowohl Organisations- als auch branchenspezifische Konformitätsrichtlinien einhalten:
     - Überwachung bietet Entwicklern die Möglichkeit, konformitätsbezogene Aufgaben auszuführen und sich über Aktivitäten zu informieren.

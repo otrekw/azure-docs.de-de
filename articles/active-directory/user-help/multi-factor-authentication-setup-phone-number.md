@@ -26,7 +26,7 @@ Sie können Ihr mobiles Gerät als Methode für die zweistufige Überprüfung ei
 
 ## <a name="set-up-your-mobile-device-to-use-a-text-message-as-your-verification-method"></a>Einrichten Ihres mobilen Geräts zur Verwendung einer SMS als Überprüfungsmethode
 
-1. Wählen Sie auf der Seite **Zusätzliche Sicherheitsüberprüfung** die Option **Telefon für Authentifizierung** im Bereich **Schritt 1: Auf welchem Weg sollen wir Sie kontaktieren?** aus. Wählen Sie anschließend in der Dropdownliste Ihr Land oder Ihre Region aus, und geben Sie die Telefonnummer Ihres mobilen Geräts ein.
+1. Wählen Sie auf der Seite **Zusätzliche Sicherheitsüberprüfung** die Option **Telefon für Authentifizierung** im Bereich **Schritt 1: Wie dürfen wir Sie kontaktieren?** die Option Telefon für Authentifizierung aus. Wählen Sie anschließend in der Dropdownliste Ihr Land oder Ihre Region aus, und geben Sie die Telefonnummer Ihres mobilen Geräts ein.
 
 2. Wählen Sie im Bereich **Methode** die Option **Code per SMS an mich senden** und anschließend **Weiter** aus.
 
@@ -47,7 +47,7 @@ Sie können Ihr mobiles Gerät als Methode für die zweistufige Überprüfung ei
 
 ## <a name="set-up-your-mobile-device-to-receive-a-phone-call"></a>Einrichten Ihres mobilen Geräts zum Empfangen eines Telefonanrufs
 
-1. Wählen Sie auf der Seite **Zusätzliche Sicherheitsüberprüfung** die Option **Telefon für Authentifizierung** im Bereich **Schritt 1: Auf welchem Weg sollen wir Sie kontaktieren?** aus. Wählen Sie anschließend in der Dropdownliste Ihr Land oder Ihre Region aus, und geben Sie die Telefonnummer Ihres mobilen Geräts ein.
+1. Wählen Sie auf der Seite **Zusätzliche Sicherheitsüberprüfung** die Option **Telefon für Authentifizierung** im Bereich **Schritt 1: Wie dürfen wir Sie kontaktieren?** die Option Telefon für Authentifizierung aus. Wählen Sie anschließend in der Dropdownliste Ihr Land oder Ihre Region aus, und geben Sie die Telefonnummer Ihres mobilen Geräts ein.
 
 2. Wählen Sie im Bereich **Methode** die Option **Anruf an mich** und anschließend **Weiter** aus.
 

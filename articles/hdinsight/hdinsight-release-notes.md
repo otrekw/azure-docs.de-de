@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/29/2020
-ms.openlocfilehash: 091ca4d632d89405d85c66e264aff9867979fcd4
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.date: 03/20/2020
+ms.openlocfilehash: e5a96d2eb67937ce4eeaa1999d8168e7f5d3d926
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905230"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80130188"
 ---
 # <a name="release-notes"></a>Versionshinweise
 
@@ -68,35 +68,12 @@ Für dieses Release gibt es keine Änderung der Komponentenversion. Die aktuelle
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
-Ab dem 29. Januar 2020 besteht ein Problem, bei dem Sie beim Versuch, ein Jupyter Notebook zu verwenden, unter Umständen einen Fehler erhalten. Führen Sie die unten angegebenen Schritte aus, um das Problem zu beheben. Sie können auch in diesem [MSDN-Beitrag](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight) oder diesem [Stack Overflow-Beitrag](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103) aktuelle Informationen erhalten oder weitere Fragen stellen. Diese Seite wird aktualisiert, wenn das Problem behoben wurde.
+Ab dem 18. März 2020 haben einige Azure HDInsight-Kunden in West- oder Nordeuropa Fehlerbenachrichtigungen erhalten, als sie in diesen Regionen HDInsight-Cluster erstellt oder skaliert haben. Fehler bei diesem Problem:
 
-**Fehler**
+- Internal server error occurred while processing the request. Wiederholen Sie die Anforderung, oder wenden Sie sich an den Support.
+- Bei der Ressourcenbereitstellung ist mindestens ein Fehler aufgetreten. Listen Sie die Bereitstellungsvorgänge auf, um Details anzuzeigen. Weitere Informationen zur Verwendung finden Sie unter https://aka.ms/DeployOperations.
+- Für die Benutzer-SubscriptionId „\<Abonnement-ID\>“ stehen keine Kerne zum Erstellen der Ressource „\<Clustername>“ mehr zur Verfügung. Erforderlich: \<X\>, verfügbar: 0.
 
-* ValueError: Notebook kann nicht in v5 konvertiert werden, weil diese Version nicht vorhanden ist.
-* Fehler beim Laden des Notebooks: Beim Laden dieses Notebooks ist ein unbekannter Fehler aufgetreten. Mit dieser Version können Notebookformate bis v4 geladen werden.
+Das Problem ist den Technikern bekannt und wird zurzeit untersucht.
 
-**Ursache** 
-
-Die Datei „_version.py“ im Cluster wurde nicht auf 4.4.x.## aktualisiert, sondern auf 5.x.x, oder Ambari muss neu gestartet werden.
-
-**Lösung**
-
-Wenn Sie ein neues Jupyter Notebook erstellen und einen der oben aufgeführten Fehler erhalten, führen Sie die folgenden Schritte aus, um das Problem zu beheben.
-
-1. Öffnen Sie Ambari in einem Webbrowser, indem Sie zu `https://CLUSTERNAME.azurehdinsight.net` navigieren, wobei „CLUSTERNAME“ der Name Ihres Clusters ist.
-1. Klicken Sie in Ambari im Menü links auf **Jupyter**, **Service Actions** (Dienstaktionen) und **Stop** (Beenden).
-1. Stellen Sie eine SSH-Verbindung mit dem Hauptknoten des Clusters her, auf dem der Jupyter-Dienst ausgeführt wird.
-1. Öffnen Sie die Datei „/usr/bin/anaconda/lib/python2.7/site-packages/nbformat/_version.py“ im sudo-Modus.
-1. Überprüfen Sie den Wert von „version_info“.
-1. Wenn der Wert von „version_info“ wie folgt lautet: 
-
-    version_info = (5, 0, 3)
-
-    Ändern Sie den Eintrag wie folgt: 
-    
-    version_info = (4, 4, 0)
-
-    Speichern Sie anschließend die Datei. 
-
-    Falls „version_info“ bereits auf „(4, 4, 0)“ festgelegt ist, können Sie mit dem nächsten Schritt fortfahren, da nur Ambari neu gestartet werden muss und keine weiteren Änderungen erforderlich sind.
-1. Wechseln Sie zurück zu Ambari, und klicken Sie unter **Service Actions** (Dienstaktionen) auf **Restart All** (Alle neu starten).
+Um weitere Hilfe zu erhalten, erstellen Sie eine [Supportanfrage](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).

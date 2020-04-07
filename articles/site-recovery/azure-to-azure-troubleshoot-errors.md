@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: rochakm
-ms.openlocfilehash: 32d826f3c27cea3d0993c47e8562360315b7bd2e
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.openlocfilehash: c131609a5622061e2ea49db422bc4e9da96666d1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78256041"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80276681"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Problembehandlung für Azure-zu-Azure-VM-Replikationsfehler
 
 In diesem Artikel wird beschrieben, wie Sie häufig auftretende Fehler in Azure Site Recovery während der Replikation und Wiederherstellung von virtuellen Azure-Computern (VMs) aus einer Region in einer anderen Region behandeln können. Weitere Informationen zu unterstützten Konfigurationen finden Sie unter [Azure Site Recovery support matrix for replicating from Azure to Azure](site-recovery-support-matrix-azure-to-azure.md) (Azure Site Recovery-Supportmatrix zum Replizieren aus Azure in Azure).
 
-## <a name="azure-resource-quota-issues-error-code-150097"></a>Probleme mit dem Azure-Ressourcenkontingent (Fehlercode 150097)
+## <a name="azure-resource-quota-issues-error-code-150097"></a><a name="azure-resource-quota-issues-error-code-150097"></a>Probleme mit dem Azure-Ressourcenkontingent (Fehlercode 150097)
 
 Vergewissern Sie sich, dass es für Ihr Abonnement möglich ist, Azure-VMs in der Zielregion zu erstellen, die Sie als Region für die Notfallwiederherstellung nutzen möchten. Stellen Sie außerdem sicher, dass Ihr Abonnement über ein ausreichendes Kontingent zum Erstellen von VMs der erforderlichen Größen verfügt. Standardmäßig wählt Site Recovery eine Ziel-VM-Größe aus, die der Größe der Quell-VM entspricht. Falls die passende Größe nicht verfügbar ist, wählt Site Recovery automatisch die verfügbare Größe aus, die dieser am nächsten kommt.
 
@@ -38,9 +38,9 @@ Wenden Sie sich an den [Azure-Abrechnungssupport](https://docs.microsoft.com/azu
 
 Wenn für den Zielstandort eine Kapazitätsbeschränkung gilt, deaktivieren Sie die Replikation an diesen Standort. Dann aktivieren Sie die Replikation an einen anderen Standort, an dem für Ihr Abonnement ein ausreichendes Kontingent zum Erstellen von VMs der erforderlichen Größen zur Verfügung steht.
 
-## <a name="trusted-root-certificates-error-code-151066"></a>Vertrauenswürdige Stammzertifikate (Fehlercode: 151066)
+## <a name="trusted-root-certificates-error-code-151066"></a><a name="trusted-root-certificates-error-code-151066"></a>Vertrauenswürdige Stammzertifikate (Fehlercode: 151066)
 
-Wenn auf der VM nicht alle aktuellen vertrauenswürdigen Stammzertifikate vorhanden sind, ist der Site Recovery-Auftrag „Replikation aktivieren“ möglicherweise nicht erfolgreich. Ohne diese Zertifikate tritt für die Authentifizierung und Autorisierung von Site Recovery-Dienstaufrufen über die VM ein Fehler auf. 
+Wenn auf der VM nicht alle aktuellen vertrauenswürdigen Stammzertifikate vorhanden sind, ist der Site Recovery-Auftrag „Replikation aktivieren“ möglicherweise nicht erfolgreich. Ohne diese Zertifikate tritt für die Authentifizierung und Autorisierung von Site Recovery-Dienstaufrufen über die VM ein Fehler auf.
 
 Wenn der Auftrag „Replikation aktivieren“ fehlschlägt, wird die folgende Meldung angezeigt:
 
@@ -164,78 +164,61 @@ Führen Sie die folgenden Schritte aus, da SUSE Linux zum Verwalten einer Zertif
 
 ## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Ausgehende Konnektivität für Site Recovery-URLs oder IP-Bereiche (Fehlercode 151037 oder 151072)
 
-Damit die Site Recovery-Replikation funktioniert, ist ausgehende Konnektivität von der VM zu bestimmten URLs oder IP-Bereichen erforderlich. Wenn sich Ihr virtueller Computer hinter einer Firewall befindet oder Netzwerksicherheitsgruppen-Regeln (NSG-Regeln) zum Steuern der ausgehenden Konnektivität verwendet werden, wird ggf. eine dieser Fehlermeldungen angezeigt.
+Damit die Site Recovery-Replikation funktioniert, ist für die VM ausgehende Konnektivität zu bestimmten URLs erforderlich. Wenn sich Ihr virtueller Computer hinter einer Firewall befindet oder Netzwerksicherheitsgruppen-Regeln (NSG-Regeln) zum Steuern der ausgehenden Konnektivität verwendet werden, wird ggf. eine dieser Fehlermeldungen angezeigt. Beachten Sie, dass der ausgehende Zugriff über URLs zwar weiterhin unterstützt wird, die Verwendung einer Zulassungsliste mit IP-Bereichen jedoch nicht mehr unterstützt wird.
 
-### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>Problem 1: Fehler beim Registrieren des virtuellen Azure-Computers bei Site Recovery (Fehlercode 151195)
+### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a><a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>Problem 1: Fehler beim Registrieren des virtuellen Azure-Computers bei Site Recovery (151195) </br>
+- **Mögliche Ursache** </br>
+  - Die Verbindung mit Site Recovery-Endpunkten kann aufgrund eines Fehlers bei der DNS-Auflösung nicht hergestellt werden.
+  - Dies ist häufiger der Fall beim erneuten Schutz, wenn Sie für den virtuellen Computer ein Failover ausgeführt haben, der DNS-Server in der Notfallwiederherstellungsregion jedoch nicht erreichbar ist.
 
-#### <a name="possible-cause"></a>Mögliche Ursache 
+- **Lösung**
+   - Wenn Sie benutzerdefiniertes DNS verwenden, stellen Sie sicher, dass der DNS-Server in der Notfallwiederherstellungsregion erreichbar ist. Um zu überprüfen, ob Sie benutzerdefiniertes DNS verwenden, navigieren Sie zum virtuellen Computer > Notfallwiederherstellungsnetzwerk > DNS-Server. Versuchen Sie, über den virtuellen Computer auf den DNS-Server zuzugreifen. Wenn dies nicht möglich ist, führen Sie ein Failover für den DNS-Server aus, oder stellen Sie eine Verbindung zwischen dem Notfallwiederherstellungsnetzwerk und DNS her.
 
-Die Verbindung mit Site Recovery-Endpunkten kann aufgrund eines Fehlers bei der DNS-Auflösung nicht hergestellt werden.
-
-Dieses Problem tritt am häufigsten während des erneuten Schützens auf, wenn Sie für den virtuellen Computer ein Failover ausgeführt haben, der DNS-Server in der Notfallwiederherstellungsregion jedoch nicht erreichbar ist.
-
-#### <a name="fix-the-problem"></a>Beheben des Problems
-
-Stellen Sie bei Verwendung eines benutzerdefinierten DNS sicher, dass der DNS-Server in der Notfallwiederherstellungsregion erreichbar ist. Um herauszufinden, ob Sie über ein benutzerdefiniertes DNS verfügen, navigieren Sie auf der VM zum *Notfallwiederherstellungsnetzwerk* > **DNS-Server**.
-
-![Liste der benutzerdefinierten DNS-Server](./media/azure-to-azure-troubleshoot-errors/custom_dns.PNG)
-
-Versuchen Sie, über den virtuellen Computer auf den DNS-Server zuzugreifen. Wenn auf den Server nicht zugegriffen werden kann, können Sie entweder ein Failover für den DNS-Server ausführen oder eine Verbindung zwischen dem Notfallwiederherstellungsnetzwerk und dem DNS herstellen.
-
-### <a name="issue-2-site-recovery-configuration-failed-error-code-151196"></a>Problem 2: Fehler bei der Site Recovery-Konfiguration (Fehlercode 151196)
-
-#### <a name="possible-cause"></a>Mögliche Ursache
-
-Die Verbindung mit IP4-Endpunkten für die Authentifizierung und Identität von Office 365 kann nicht hergestellt werden.
-
-#### <a name="fix-the-problem"></a>Beheben des Problems
-
-Site Recovery benötigt für die Authentifizierung Zugriff auf Office 365-IP-Adressbereiche.
-Wenn Sie zum Steuern der ausgehenden Netzwerkkonnektivität auf dem virtuellen Computer Azure-NSG-Regeln oder einen Firewallproxy verwenden, müssen Sie die Kommunikation mit Office 365-IP-Adressbereichen zulassen. Erstellen Sie eine NSG-Regel basierend auf einem [Azure Active Directory-Diensttag (Azure AD)](../virtual-network/security-overview.md#service-tags) für den Zugriff auf alle IP-Adressen für Azure AD. Wenn Azure AD später neue Adressen hinzugefügt werden, müssen Sie neue NSG-Regeln erstellen.
-
-> [!NOTE]
-> Wenn sich VMs hinter einem internen *Standard*-Lastenausgleich befinden, hat der Lastenausgleich standardmäßig keinen Zugriff auf Office 365-IP-Adressbereiche (d.h. „login.microsoftonline.com“). Ändern Sie entweder den Typ des internen Lastenausgleichs in *Basic*, oder erstellen Sie einen ausgehenden Zugriff, wie es im Artikel [Konfigurieren von Lastenausgleichs- und Ausgangsregeln](https://aka.ms/lboutboundrulescli) beschrieben ist.
-
-### <a name="issue-3-site-recovery-configuration-failed-error-code-151197"></a>Problem 3: Fehler bei der Site Recovery-Konfiguration (Fehlercode 151197)
-
-#### <a name="possible-cause"></a>Mögliche Ursache
-
-Die Verbindung mit Site Recovery-Dienstendpunkten kann nicht hergestellt werden.
-
-#### <a name="fix-the-problem"></a>Beheben des Problems
-
-Site Recovery benötigt abhängig von der Region Zugriff auf [Site Recovery-IP-Adressbereiche](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges). Stellen Sie sicher, dass über den virtuellen Computer auf die erforderlichen IP-Adressbereiche zugegriffen werden kann.
-
-### <a name="issue-4-azure-to-azure-replication-failed-when-the-network-traffic-goes-through-an-on-premises-proxy-server-error-code-151072"></a>Problem 4: Fehler bei der Azure-zu-Azure-Replikation, wenn der Netzwerkdatenverkehr einen lokalen Proxyserver durchläuft (Fehlercode 151072)
-
-#### <a name="possible-cause"></a>Mögliche Ursache
-
-Die benutzerdefinierten Proxyeinstellungen sind ungültig, und der Agent des Site Recovery-Mobilitätsdiensts hat die Proxyeinstellungen von Internet Explorer nicht automatisch erkannt.
-
-#### <a name="fix-the-problem"></a>Beheben des Problems
-
-Der Mobilitätsdienst-Agent erkennt die Proxyeinstellungen von Internet Explorer unter Windows und von „/etc/environment“ unter Linux.
-
-Wenn der Proxy nur für den Mobilitätsdienst festgelegt werden soll, können Sie die Proxydetails in der Datei „ProxyInfo.conf“an folgenden Speicherorten angeben:
-
-- **Linux**: /usr/local/InMage/config/
-- **Windows**: C:\ProgramData\Microsoft Azure Site Recovery\Config
-
-Geben Sie in „ProxyInfo.conf“ die Proxyeinstellungen im folgenden Initialisierungsdateiformat an:
-
-> [*proxy*]
-
-> Address= *http://1.2.3.4*
-
-> Port=*567*
+    ![com-error](./media/azure-to-azure-troubleshoot-errors/custom_dns.png)
 
 
-> [!NOTE]
-> Der Agent des Site Recovery-Mobilitätsdiensts unterstützt nur *nicht authentifizierte Proxys*.
+### <a name="issue-2-site-recovery-configuration-failed-151196"></a>Problem 2: Fehler bei der Site Recovery-Konfiguration (151196)
+- **Mögliche Ursache** </br>
+  - Die Verbindung mit IP4-Endpunkten für die Authentifizierung und Identität von Office 365 kann nicht hergestellt werden.
+
+- **Lösung**
+  - Azure Site Recovery benötigt zur Authentifizierung Zugriff auf Office 365-IP-Adressbereiche.
+    Wenn Sie Azure-Netzwerksicherheitsgruppen-Regeln (NSG-Regeln)/einen Firewallproxy zum Steuern der ausgehenden Netzwerkkonnektivität für die VM verwenden, muss sichergestellt werden, dass Sie zum Zulassen des Zugriffs auf AAD eine NSG-Regel verwenden, die auf dem [AAD-Diensttag (Azure Active Directory)](../virtual-network/security-overview.md#service-tags) basiert. Auf IP-Adressen basierende NSG-Regeln werden nicht mehr unterstützt.
+
+
+### <a name="issue-3-site-recovery-configuration-failed-151197"></a>Problem 3: Fehler bei der Site Recovery-Konfiguration (151197)
+- **Mögliche Ursache** </br>
+  - Die Verbindung mit Azure Site Recovery-Dienstendpunkten kann nicht hergestellt werden.
+
+- **Lösung**
+  - Wenn Sie zum Steuern der ausgehenden Netzwerkkonnektivität auf dem virtuellen Computer Azure-Netzwerksicherheitsgruppen-Regeln (NSG-Regeln) oder einen Firewallproxy verwenden, müssen Sie Diensttags verwenden. Die Verwendung einer Zulassungsliste mit IP-Adressen über NSGs für Azure Site Recovery (ASR) wird nicht mehr unterstützt.
+
+
+### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premise-proxy-server-151072"></a>Problem 4: Fehler bei der A2A-Replikation, wenn der Netzwerkdatenverkehr lokale Proxyserver durchläuft (151072)
+ - **Mögliche Ursache** </br>
+   - Die benutzerdefinierten Proxyeinstellungen sind ungültig, und der ASR Mobility Service-Agent hat die Proxyeinstellungen von Internet Explorer nicht automatisch erkannt.
+
+
+ - **Lösung**
+   1.    Der Mobilitätsdienst-Agent erkennt die Proxyeinstellungen von Internet Explorer unter Windows und /etc/environment unter Linux.
+   2.  Wenn nur für ASR Mobility Service ein Proxy festgelegt werden soll, können Sie die Proxydetails in ProxyInfo.conf angeben, die sich hier befinden:</br>
+       - ``/usr/local/InMage/config/`` unter ***Linux***
+       - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` unter ***Windows***
+   3.    ProxyInfo.conf sollte die Proxyeinstellungen im folgenden INI-Format aufweisen.</br>
+                   *[proxy]*</br>
+                   *Address=http://1.2.3.4*</br>
+                   *Port=567*</br>
+   4. Der ASR Mobility Service-Agent unterstützt nur ***nicht authentifizierte Proxys***.
+
+
+### <a name="fix-the-problem"></a>Beheben des Problems
+
+Führen Sie die Schritte im [Dokument mit der Netzwerkanleitung](site-recovery-azure-to-azure-networking-guidance.md) aus, um [die erforderlichen URLs](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) zu einer Zulassungsliste hinzuzufügen.
+
 
 ### <a name="more-information"></a>Weitere Informationen
 
-Um [erforderliche URLs](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) oder [erforderliche IP-Adressbereiche](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) anzugeben, befolgen Sie die Anweisungen unter [Netzwerkkonzepte für die Replikation zwischen Azure-Standorten](site-recovery-azure-to-azure-networking-guidance.md).
+Um [erforderliche URLs](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) oder [erforderliche IP-Adressbereiche](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags) anzugeben, befolgen Sie die Anweisungen unter [Netzwerkkonzepte für die Replikation zwischen Azure-Standorten](site-recovery-azure-to-azure-networking-guidance.md).
 
 ## <a name="disk-not-found-in-the-machine-error-code-150039"></a>Datenträger wurde auf dem Computer nicht gefunden (Fehlercode 150039)
 
@@ -445,7 +428,7 @@ Der Datenträger ist kleiner als die unterstützte Größe von 1024 MB.
 
 Stellen Sie sicher, dass die Datenträgergröße innerhalb des unterstützten Größenbereichs liegt, und wiederholen Sie dann den Vorgang.
 
-## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-error-code-151126"></a>Schutz wurde nicht aktiviert, weil die GRUB-Konfiguration den Gerätenamen anstelle der UUID enthält (Fehlercode 151126)
+## <a name="protection-was-not-enabled-because-the-grub-configuration-includes-the-device-name-instead-of-the-uuid-error-code-151126"></a><a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-error-code-151126"></a>Schutz wurde nicht aktiviert, weil die GRUB-Konfiguration den Gerätenamen anstelle der UUID enthält (Fehlercode 151126)
 
 ### <a name="possible-cause"></a>Mögliche Ursache
 
@@ -512,7 +495,7 @@ Der Site Recovery-Mobilitätsdienst hat viele Komponenten, von denen einer der F
 > [!NOTE]
 > Dies ist nur eine Warnung. Die bestehende Replikation funktioniert auch nach dem neuen Agent-Update. Sie können jederzeit einen Neustart durchführen, um die Vorteile des neuen Filtertreibers zu nutzen. Wenn Sie keinen Neustart durchführen, funktioniert der alte Filtertreiber jedoch weiterhin.
 >
-> Abgesehen vom Filtertreiber werden die Vorteile aller anderen Erweiterungen und Korrekturen im Update des Mobilitätsdiensts wirksam, ohne dass ein Neustart erforderlich ist.  
+> Abgesehen vom Filtertreiber werden die Vorteile aller anderen Erweiterungen und Korrekturen im Update des Mobilitätsdiensts wirksam, ohne dass ein Neustart erforderlich ist.
 
 ## <a name="protection-couldnt-be-enabled-because-the-replica-managed-disk-already-exists-without-expected-tags-in-the-target-resource-group-error-code-150161"></a>Der Schutz konnte nicht aktiviert werden, weil der verwaltete Replikatdatenträger bereits ohne erwartete Tags in der Zielressourcengruppe vorhanden ist (Fehlercode 150161)
 

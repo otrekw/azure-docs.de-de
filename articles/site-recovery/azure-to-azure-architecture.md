@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/23/2020
+ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 852059317c45dec4885b3f56de5617695d82e1e8
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 94da1639b5398a03b36fba3ff88877468a97ec36
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759805"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294117"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung von Azure zu Azure
 
@@ -135,11 +135,13 @@ Wenn der ausgehende Zugriff für virtuelle Computer über URLs gesteuert wird, e
 | login.microsoftonline.com | Stellt die Autorisierung und Authentifizierung für Site Recovery-Dienst-URLs bereit. |
 | *.hypervrecoverymanager.windowsazure.com | Ermöglicht die Kommunikation der VM mit Site Recovery |
 | *.servicebus.windows.net | Ermöglicht es der VM, die Site Recovery-Überwachung und -Diagnosedaten zu schreiben |
+| *.vault.azure.net | Ermöglicht über das Portal Zugriff zum Aktivieren der Replikation für VMs, für die ADE aktiviert ist
+| *.automation.ext.azure.com | Ermöglicht das Aktivieren automatischer Upgrades für den Mobilitäts-Agent für ein repliziertes Element über das Portal
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Ausgehende Konnektivität für IP-Adressbereiche
 
 Zum Steuern der ausgehenden Konnektivität für virtuelle Computer über IP-Adressen erlauben Sie diese Adressen.
-Einzelheiten zu den Netzwerkverbindungsanforderungen finden Sie unter [Netzwerkkonzepte für die Replikation zwischen Azure-Standorten](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges). 
+Einzelheiten zu den Netzwerkverbindungsanforderungen finden Sie unter [Netzwerkkonzepte für die Replikation zwischen Azure-Standorten](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags). 
 
 #### <a name="source-region-rules"></a>Regeln für die Quellregion
 
@@ -149,6 +151,8 @@ HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Speiche
 HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure Active Directory (Azure AD).  | AzureActiveDirectory
 HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Event Hub-Instanzen in der Zielregion. | EventsHub.\<Regionsname>
 HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure Site Recovery.  | AzureSiteRecovery
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure Key Vault (dies ist nur erforderlich, um die Replikation von VMs, für die ADE aktiviert ist, über das Portal zu aktivieren) | AzureKeyVault
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für den Azure Automation-Controller (dies ist nur erforderlich, um automatische Upgrades für den Mobilitäts-Agent für ein repliziertes Element über das Portal zu aktivieren) | GuestAndHybridManagement
 
 #### <a name="target-region-rules"></a>Regeln für die Zielregion
 
@@ -158,6 +162,8 @@ HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Speiche
 HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure AD.  | AzureActiveDirectory
 HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche der Event Hub-Instanzen in der Quellregion. | EventsHub.\<Regionsname>
 HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure Site Recovery.  | AzureSiteRecovery
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für Azure Key Vault (dies ist nur erforderlich, um die Replikation von VMs, für die ADE aktiviert ist, über das Portal zu aktivieren) | AzureKeyVault
+HTTPS ausgehend zulassen: Port 443 | Erlauben Sie die Adressbereiche für den Azure Automation-Controller (dies ist nur erforderlich, um automatische Upgrades für den Mobilitäts-Agent für ein repliziertes Element über das Portal zu aktivieren) | GuestAndHybridManagement
 
 
 #### <a name="control-access-with-nsg-rules"></a>Steuern des Zugriffs mit NSG-Regeln
@@ -170,7 +176,7 @@ Wenn Sie die VM-Konnektivität durch Filtern des Netzwerkdatenverkehrs zu und au
     - Diensttags stellen eine Gruppe von IP-Adresspräfixen dar und vereinfachen die Erstellung von Sicherheitsregeln.
     - Microsoft aktualisiert die Diensttags im Lauf der Zeit automatisch. 
  
-Erfahren Sie mehr über [ausgehende Konnektivität](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) für Site Recovery und das [Steuern der Konnektivität mit Netzwerksicherheitsgruppen](concepts-network-security-group-with-site-recovery.md).
+Erfahren Sie mehr über [ausgehende Konnektivität](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags) für Site Recovery und das [Steuern der Konnektivität mit Netzwerksicherheitsgruppen](concepts-network-security-group-with-site-recovery.md).
 
 
 ### <a name="connectivity-for-multi-vm-consistency"></a>Konnektivität für Multi-VM-Konsistenz

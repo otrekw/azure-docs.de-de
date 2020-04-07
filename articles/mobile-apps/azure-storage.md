@@ -1,18 +1,18 @@
 ---
 title: Cloudspeicher zum Erstellen von äußerst sicheren, langlebigen und skalierbaren Apps mit Azure Storage
 description: Erfahren Sie mehr über die Dienste, mit denen umfangreiche strukturierte und nicht strukturierte Daten einer mobilen Anwendung in der Cloud gespeichert werden können.
-author: elamalani
+author: codemillmatt
 ms.assetid: 12bbb070-9b3c-4faf-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: 53754976a6e1f6d893cf7d6ab73d57c95dae193f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: 682f06936480d9018d759b4df3bed80be1206faf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453248"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240977"
 ---
 # <a name="cloud-storage-for-highly-secure-durable-scalable-apps-with-azure-storage"></a>Cloudspeicher für äußerst sichere, langlebige und skalierbare Apps mit Azure Storage
 [Azure Storage](https://azure.microsoft.com/services/storage/) ist Microsofts Cloudspeicherlösung für moderne Anwendungen, die einen stark skalierbaren Objektspeicher für Datenobjekte, einen Dateisystemdienst für die Cloud, einen Messagingspeicher für zuverlässiges Messaging und einen NoSQL-Speicher bereitstellt. Für Azure Storage gilt Folgendes:
@@ -61,7 +61,7 @@ Verwendungsmöglichkeiten für Azure-Dateifreigaben:
 - **Ersetzen oder Erweitern von lokalen Dateiservern:** Gängige Betriebssysteme wie Windows, macOS und Linux können Azure-Dateifreigaben auf der ganzen Welt direkt einbinden. Azure-Dateifreigaben können auch per Azure-Dateisynchronisierung auf Windows-Servern repliziert werden (entweder lokal oder in der Cloud), um für die Daten am Ort ihrer Verwendung eine hohe Leistung und eine verteilte Zwischenspeicherung zu erzielen.
 - **Lift &amp; Shift-Anwendungen:** Migrieren von Anwendungen zur Cloud, die eine Dateifreigabe erwarten, in der Dateianwendungs- oder Benutzerdaten gespeichert werden.
 - **Einfachere Cloudentwicklung:** Azure Files kann auch auf verschiedene Arten genutzt werden, um neue Cloudentwicklungsprojekte zu vereinfachen. Beispiel:
-    - **Gemeinsame Anwendungseinstellungen:** Bei verteilten Anwendungen befinden sich die Konfigurationsdateien häufig an einem zentralen Ort, sodass viele Anwendungsinstanzen darauf zugreifen können. Anwendungsinstanzen können ihre Konfiguration über die Datei-REST-API laden. Benutzer können je nach Bedarf darauf zugreifen, indem sie die SMB-Freigabe lokal bereitstellen.
+    - **Gemeinsame Anwendungseinstellungen:** Bei verteilten Anwendungen befinden sich die Konfigurationsdateien häufig an einem zentralen Ort, sodass viele Anwendungsinstanzen darauf zugreifen können. Anwendungsinstanzen können ihre Konfiguration über die Datei-REST-API laden. Benutzer können nach Bedarf darauf zugreifen, indem sie die SMB-Freigabe lokal bereitstellen.
     - **Diagnosefreigabe:** Eine Azure-Dateifreigabe ist für Cloudanwendungen ein guter Ort zum Schreiben von Protokollen, Metriken und Absturzabbildern. Protokolle können von den Anwendungsinstanzen über die Datei-REST-API geschrieben werden. Entwickler können darauf zugreifen, indem sie die Dateifreigabe auf ihrem lokalen Computer bereitstellen. Diese Funktion ermöglicht große Flexibilität. Entwickler können sich mit der Cloudentwicklung beschäftigen, ohne dafür ihre vorhandenen, vertrauten Tools aufgeben zu müssen.
 
 **Referenzen**

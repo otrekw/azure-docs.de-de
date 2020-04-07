@@ -4,7 +4,6 @@ description: Verwenden der ADAL SDK-Features zum Aktivieren von SSO über Ihre A
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: d042d6da-7503-4e20-bb55-06917de01fcd
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.workload: identity
@@ -15,12 +14,13 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 00ec2d328265e8d301b9f54b9a6a2013072f1ed4
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ROBOTS: NOINDEX
+ms.openlocfilehash: 082cbb931c9dae60b39f9ee5323337bf051fb56d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190278"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154779"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Gewusst wie: Aktivieren von App-übergreifendem SSO unter iOS mit ADAL
 
@@ -309,7 +309,7 @@ Beispiel: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
 
 #### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>Schritt 4: Hinzufügen eines Konfigurationsparameters zu Ihrer App
 
-ADAL prüft mithilfe von „–CanOpenURL:“, ob der Broker auf dem Gerät installiert ist. Unter iOS 9 wurden die Schemas, die von einer Anwendung abgefragt werden können, von Apple fest vorgegeben. Daher muss „msauth“ in `info.plist file`dem Abschnitt „LSApplicationQueriesSchemes“ hinzugefügt werden.
+ADAL prüft mithilfe von „–CanOpenURL:“, ob der Broker auf dem Gerät installiert ist. Unter iOS 9 wurden die Schemas, die von einer Anwendung abgefragt werden können, von Apple fest vorgegeben. Daher muss „msauth“ dem Abschnitt „LSApplicationQueriesSchemes“ Ihrer `info.plist file` hinzugefügt werden.
 
 ```
     <key>LSApplicationQueriesSchemes</key>

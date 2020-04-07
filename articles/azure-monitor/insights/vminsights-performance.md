@@ -1,19 +1,19 @@
 ---
-title: Darstellen der Leistung in Diagrammen mit Azure Monitor für VMs (Vorschauversion) | Microsoft-Dokumentation
+title: Darstellen der Leistung in Diagrammen mit Azure Monitor for VMs
 description: Leistung ist ein Feature von Azure Monitor for VMs, das Anwendungskomponenten auf Windows- und Linux-Systemen automatisch ermittelt und die Kommunikation zwischen Diensten abbildet. Dieser Artikel enthält Details zu seiner Verwendung in einer Reihe von Szenarien.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 245d5c0fb0a54a6d129a193deaa9445bc8fefbfb
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: a50ba39777e6a9d3d609e584c0c7d872f2a65f35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670694"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283717"
 ---
-# <a name="how-to-chart-performance-with-azure-monitor-for-vms-preview"></a>Darstellen der Leistung in Diagrammen mit Azure Monitor für VMs (Vorschauversion)
+# <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>Darstellen der Leistung in Diagrammen mit Azure Monitor for VMs
 
 Azure Monitor for VMs beinhaltet einen Satz Leistungsdiagramme, die auf verschiedene Key Performance Indicators (KPIs) abzielen, um Sie beim Bestimmen der Leistung eines virtuellen Computers zu unterstützen. Die Diagramme zeigen die Ressourcennutzung über einen Zeitraum an, damit Sie Engpässe und Anomalien erkennen oder zu einer Perspektive wechseln können, in der jede VM aufgelistet ist, um die Ressourcennutzung nach der ausgewählten Metrik anzuzeigen. Beim Thema Leistung sind zwar eine Vielzahl von Elementen zu berücksichtigen, Azure Monitor für VMs überwacht jedoch Betriebssystem-Key Performance Indicators im Zusammenhang mit Prozessor, Arbeitsspeicher, Netzwerkadapter und Datenträgerverwendung. Leistung ergänzt das Feature zur Integritätsüberwachung und hilft bei der Offenlegung von Problemen, die auf einen möglichen Ausfall von Systemkomponenten hinweisen, Feinabstimmung und Optimierung unterstützen, um Effizienz zu erreichen, oder bei der Kapazitätsplanung helfen.  
 
@@ -22,10 +22,10 @@ Azure Monitor for VMs beinhaltet einen Satz Leistungsdiagramme, die auf verschie
 In Azure Monitor stellt das Leistungsfeature eine Ansicht aller überwachten VMs zur Verfügung, die über alle Arbeitsgruppen in Ihren Abonnements oder in Ihrer Umgebung bereitgestellt sind. Führen Sie für den Zugriff aus Azure Monitor die folgenden Schritte aus. 
 
 1. Wählen Sie im Azure-Portal die Option **Überwachen** aus. 
-2. Wählen Sie im Abschnitt **Lösungen** **Virtuelle Computer (Vorschau)** aus.
+2. Wählen Sie im Abschnitt **Lösungen** die Option **Virtual Machines** aus.
 3. Wählen Sie die Registerkarte **Leistung** aus.
 
-![Top-N-Listenansicht Leistung in VM Insights](./media/vminsights-performance/vminsights-performance-aggview-01.png)
+![Top-N-Listenansicht Leistung in VM Insights](media/vminsights-performance/vminsights-performance-aggview-01.png)
 
 Gehen Sie wie folgt vor, falls Sie über mehrere Log Analytics-Arbeitsbereiche verfügen: Wählen Sie auf der Registerkarte **Top-N-Diagramme** über den Selektor **Arbeitsbereich** oben auf der Seite den Arbeitsbereich aus, der für die Lösung aktiviert ist. Mit dem Selektor **Gruppe** werden Abonnements, Ressourcengruppen, [Computergruppen](../platform/computer-groups.md) und VM-Skalierungsgruppen für Computer des ausgewählten Arbeitsbereichs zurückgegeben. Sie können diese Daten nutzen, um die Ergebnisse, die in den Diagrammen auf dieser Seite und auf anderen Seiten angezeigt werden, noch weiter zu filtern. Ihre Auswahl gilt nur für das Leistungsfeature und nicht für die Integrität oder die Karte.  
 
@@ -43,7 +43,7 @@ Wenn Sie auf das Stecknadelsymbol in der oberen rechten Ecke eines der fünf Dia
 
 Klicken Sie auf das Symbol links neben dem Stecknadelsymbol in einem der fünf Diagramme, um die Ansicht **Top-N-Liste** zu öffnen.  Hier sehen Sie die Ressourcennutzung für die betreffende Leistungsmetrik nach einzelnen VMs in einer Listenansicht und den Computer mit der tendenziell höchsten Nutzung.  
 
-![Top-N-Listenansicht für eine ausgewählte Leistungsmetrik](./media/vminsights-performance/vminsights-performance-topnlist-01.png)
+![Top-N-Listenansicht für eine ausgewählte Leistungsmetrik](media/vminsights-performance/vminsights-performance-topnlist-01.png)
 
 Wenn Sie auf den virtuellen Computer klicken, wird der Bereich **Eigenschaften** auf der rechten Seite erweitert, um die Eigenschaften des ausgewählten Elements anzuzeigen, wie die vom Betriebssystem gemeldeten Systeminformationen, Eigenschaften der Azure-VM usw. Durch Klicken auf eine der Optionen im Abschnitt **Quicklinks** werden Sie direkt von der ausgewählten VM zu dem betreffenden Feature weitergeleitet.  
 
@@ -82,7 +82,7 @@ Durch Auswählen eines virtuellen Computers in der Liste wird der Bereich **Eige
 Führen Sie für den direkten Zugriff aus einer VM die folgenden Schritte aus.
 
 1. Wählen Sie im Azure-Portal die Option **Virtual Machines** aus. 
-2. Wählen Sie in der Liste eine VM und im Abschnitt **Überwachung** **Insights (Vorschau)** aus.  
+2. Wählen Sie in der Liste eine VM und im Abschnitt **Überwachung** die Option **Insights** aus.  
 3. Wählen Sie die Registerkarte **Leistung** aus. 
 
 Diese Seite enthält nicht nur Diagramme zur Leistungsauslastung, sondern auch eine Tabelle, die für jeden ermittelten logischen Datenträger dessen Kapazität, die Auslastung und den Gesamtmittelwert für jede Kennzahl anzeigt.  
@@ -107,7 +107,7 @@ Wenn Sie auf das Stecknadelsymbol in der oberen rechten Ecke eines der Diagramme
 Führen Sie für den direkten Zugriff über eine Azure-VM-Skalierungsgruppe die folgenden Schritte durch.
 
 1. Klicken Sie im Azure-Portal auf **VM-Skalierungsgruppen**.
-2. Wählen Sie in der Liste eine VM und im Abschnitt **Überwachung** **Einblicke (Vorschau)** aus, um die Registerkarte **Leistung** aufzurufen.
+2. Wählen Sie in der Liste eine VM und im Abschnitt **Überwachung** die Option **Insights** aus, um die Registerkarte **Leistung** aufzurufen.
 
 Auf dieser Seite wird die Leistungsansicht für Azure Monitor für die ausgewählte Skalierungsgruppe geladen. Dadurch können Sie die Top-N-Instanzen in der Skalierungsgruppe für die überwachten Metriken, die aggregierte Leistung der Skalierungsgruppe sowie die Trends für die ausgewählten Metriken für die einzelnen Instanzen in der Skalierungsgruppe anzeigen. Wenn Sie eine Instanz aus der Listenansicht auswählen, können Sie deren Übersicht laden oder eine detaillierte Leistungsansicht für diese Instanz aufrufen.
 
@@ -116,15 +116,9 @@ Wenn Sie auf das Stecknadelsymbol in der oberen rechten Ecke eines der Diagramme
 ![VM-Leistungsübersicht über die Ansicht der VM-Skalierungsgruppe](./media/vminsights-performance/vminsights-performance-directvmss-01.png)
 
 >[!NOTE]
->Sie können eine detaillierte Leistungsansicht für eine bestimmte Instanz aus der Ansicht „Instanzen“ für Ihre Skalierungsgruppe aufrufen. Navigieren Sie im Abschnitt **Einstellungen** zu **Instanzen**, und klicken Sie auf **Einblicke (Vorschau)** .
+>Sie können eine detaillierte Leistungsansicht für eine bestimmte Instanz aus der Ansicht „Instanzen“ für Ihre Skalierungsgruppe aufrufen. Navigieren Sie im Abschnitt **Einstellungen** zu **Instanzen**, und wählen Sie dann **Insights** aus.
 
-## <a name="alerts"></a>Alerts  
 
-Leistungsmetriken, die im Rahmen von Azure Monitor für VMs aktiviert werden, enthalten keine vorkonfigurierten Warnungsregeln. Es gibt [Integritätswarnungen](vminsights-health.md#alerts) für Leistungsprobleme, die auf Ihrem virtuellen Azure-Computer erkannt wurden, wie z.B. hohe CPU-Auslastung, geringer verfügbarer Speicherplatz, geringer Speicherplatz auf dem Datenträger und so weiter.  Diese Integritätswarnungen gelten jedoch nur für alle VMs, die für Azure Monitor für VMs aktiviert sind. 
-
-Unter Umständen wird aber nur eine Teilmenge der Leistungsmetriken erfasst und gespeichert, die Sie im Log Analytics-Arbeitsbereich benötigen. Falls für Ihre Überwachungsstrategie Analysen oder Warnungen erforderlich sind, die andere Leistungsmetriken für die effektive Auswertung der Kapazität oder Integrität des virtuellen Computers enthalten, oder falls Sie Ihre eigenen Kriterien oder Logikkomponenten für Warnungen flexibel angeben müssen, können Sie wie folgt vorgehen: Konfigurieren Sie die [Erfassung dieser Leistungsindikatoren](../platform/data-sources-performance-counters.md) in Log Analytics, und definieren Sie [Protokollwarnungen](../platform/alerts-log.md). Mit Log Analytics können Sie zwar komplexe Analysen mit anderen Datentypen durchführen und eine längere Aufbewahrung zur Unterstützung von Trendanalysen erzielen, aber Metriken sind einfach aufgebaut und können Szenarien unterstützen, bei denen die Vorgänge nahezu in Echtzeit ablaufen. Sie werden mit dem [Azure-Diagnose-Agent](../../virtual-machines/windows/monitor.md) erfasst und im Azure Monitor-Metrikspeicher gespeichert, sodass Sie Warnungen mit geringerer Latenz und zu niedrigeren Kosten erstellen können.
-
-Lesen Sie sich die Übersicht über die [Erfassung von Metriken und Protokollen mit Azure Monitor](../platform/data-platform.md) durch, um sich eingehender mit den grundlegenden Unterschieden und anderen Aspekten vertraut zu machen, bevor Sie die Erfassung dieser zusätzlichen Metriken und Warnungsregeln konfigurieren.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

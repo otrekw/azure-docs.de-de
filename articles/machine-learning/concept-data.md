@@ -1,7 +1,7 @@
 ---
 title: Daten in Azure Machine Learning
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Ihre Daten in Azure Machine Learning verarbeitet und wie die Daten in ihren Machine Learning-Experimenten verwendet werden.
+description: Erfahren Sie, wie Azure Machine Learning eine sichere Verbindung mit Ihren Daten herstellt und diese Daten für Machine Learning-Aufgaben verwendet.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,46 +9,52 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 12/09/2019
-ms.openlocfilehash: 4149e90e07bbcd03a0df41060b42b8902b89e774
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 03/20/2020
+ms.openlocfilehash: 982c9c9eadec4403c8116430e1e25092de99f1d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75535738"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128491"
 ---
 # <a name="data-access-in-azure-machine-learning"></a>Datenzugriff in Azure Machine Learning
 
-In diesem Artikel erfahren Sie mehr über die Datenverwaltungs- und -integrationslösungen von Azure Machine Learning, die für Ihre Machine Learning-Aufgaben verwendet werden. Für diesen Artikel wird davon ausgegangen, dass Sie bereits ein [Azure Storage-Konto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) und einen [Azure Storage-Dienst](https://docs.microsoft.com/azure/storage/common/storage-introduction) erstellt haben.
+Azure Machine Learning macht es einfach, eine Verbindung mit Ihren Daten in der Cloud herzustellen.  Es wird eine Abstraktionsschicht über dem zugrunde liegenden Speicherdienst bereitgestellt, sodass Sie sicher auf Ihre Daten zugreifen und diese bearbeiten können, ohne für Ihren Speichertyp spezifischen Code schreiben zu müssen. Azure Machine Learning bietet auch folgende Datenfunktionen:
 
-Wenn Sie bereit sind, die Daten in Ihrem Speicher zu verwenden, sollten Sie folgende Schritte ausführen:
+*    Versionsverwaltung und Nachverfolgung der Datenherkunft
+*    Datenbeschriftung 
+*    Überwachung von Datenabweichungen
+*    Interoperabilität mit Pandas und Spark DataFrames
 
-1. Erstellen Sie einen Azure Machine Learning-Datenspeicher.
-2. Erstellen Sie aus diesem Datenspeicher ein Azure Machine Learning-Dataset. 
-3. Verwenden Sie dieses Dataset in Ihrem Machine Learning-Experiment, indem Sie es entweder 
+## <a name="data-workflow"></a>Datenworkflow
+
+Wenn Sie bereit sind, die Daten in ihrer cloudbasierten Speicherlösung zu verwenden, wird der folgende Datenübermittlungsworkflow empfohlen. Dieser Workflow setzt voraus, dass Sie über ein [Azure-Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) und Daten in einem cloudbasierten Speicherdienst in Azure verfügen. 
+
+1. Erstellen Sie einen [Azure Machine Learning-Datenspeicher](#datastores), um Verbindungsinformationen in Ihrem Azure-Speicher zu speichern.
+
+2. Erstellen Sie in diesem Datenspeicher ein [Azure Machine Learning-Dataset](#datasets), um auf (eine) bestimmte Datei(en) im zugrunde liegenden Speicher zu verweisen. 
+
+3. Um dieses Dataset in Ihrem Machine Learning-Experiment zu verwenden, können Sie es entweder
     1. in das Computeziel Ihres Experiments zum Modelltraining einbinden,
 
-        **OR** 
+        **ODER** 
 
-    1. direkt in Azure Machine Learning Lösungen, z. B. Experimentausführungen für automatisiertes maschinelles Lernen (automatisiertes ML), Machine Learning-Pipelines und [Azure Machine Learning-Designer](concept-designer.md), verwenden.
-4. Erstellen Sie Datasetüberwachungen für Ihr Modellausgabe-Dataset, um Datendrift zu erkennen. 
+    1. direkt in Azure Machine Learning-Lösungen, z. B. Experimentausführungen für automatisiertes maschinelles Lernen (automatisiertes ML), Machine Learning-Pipelines oder [Azure Machine Learning-Designer](concept-designer.md), verwenden.
+
+4. Erstellen Sie [Datasetüberwachungen](#data-drift) für Ihr Modellausgabedataset, um Datendrift zu erkennen. 
+
 5. Wenn Datendrift erkannt wird, aktualisieren Sie Ihr Eingabedataset, und trainieren Sie Ihr Modell entsprechend neu.
 
-In der folgenden Abbildung ist dieser empfohlene Datenzugriffsablauf dargestellt.
+In der folgenden Abbildung ist dieser empfohlene Workflow dargestellt.
 
 ![Abbildung mit Datenkonzept](./media/concept-data/data-concept-diagram.svg)
 
-## <a name="access-data-in-storage"></a>Zugreifen auf Daten im Speicher
+## <a name="datastores"></a>Datenspeicher
 
-Für den Zugriff auf Ihre Daten in Ihrem Speicherkonto stellt Azure Machine Learning Datenspeicher und Datasets bereit. Datastores beantworten die Frage: Wie stelle ich sicher eine Verbindung mit Daten her, die in Azure Storage für mich verfügbar sind? Datenspeicher bieten eine Abstraktionsebene über Ihren Speicherdienst. Dies hilft bei der Sicherheit und dem einfacheren Zugriff auf Ihren Speicher, da Verbindungsinformationen im Datenspeicher gespeichert sind und nicht in Skripts verfügbar gemacht werden. 
+Azure Machine Learning-Datenspeicher speichern die Informationen zur Verbindung mit Ihrem Azure-Speicher sicher, sodass Sie sie nicht in Ihren Skripts programmieren müssen. [Registrieren und erstellen Sie einen Datenspeicher](how-to-access-data.md), um auf einfache Weise eine Verbindung mit Ihrem Speicherkonto herzustellen und auf die Daten in Ihrem zugrunde liegenden Azure-Speicherdienst zuzugreifen. 
 
-Datasets beantworten die Frage: Wie erhalte ich bestimmte Datendateien in meinem Datenspeicher? Datasets verweisen auf die speziellen Dateien in Ihrem zugrunde liegenden Speicher, die Sie für Ihr Machine Learning-Experiment verwenden möchten. Zusammen bieten Datenspeicher und Datasets einen sicheren, skalierbaren und reproduzierbaren Datenbereitstellungsablauf für Ihre Machine Learning-Aufgaben.
+Unterstützte cloudbasierte Speicherdienste in Azure, die als Datenspeicher registriert werden können:
 
-### <a name="datastores"></a>Datenspeicher
-
-Ein Azure Machine Learning-Datenspeicher ist eine Speicherabstraktion über Ihre Azure Storage-Dienste. [Registrieren und erstellen Sie einen Datenspeicher](how-to-access-data.md), um auf einfache Weise eine Verbindung mit Ihrem Azure-Speicherkonto herzustellen und auf die Daten in Ihren zugrunde liegenden Azure Storage-Diensten zuzugreifen.
-
-Unterstützte Azure Storage-Dienste, die als Datenspeicher registriert werden können:
 + Azure-Blobcontainer
 + Azure-Dateifreigabe
 + Azure Data Lake
@@ -58,44 +64,34 @@ Unterstützte Azure Storage-Dienste, die als Datenspeicher registriert werden k�
 + Databricks-Dateisystem
 + Azure Database for MySQL
 
-### <a name="datasets"></a>Datasets
+## <a name="datasets"></a>Datasets
 
-[Erstellen Sie ein Azure Machine Learning-Dataset](how-to-create-register-datasets.md), um auf Daten in Ihren Datenspeichern zuzugreifen und die Daten in einem nutzbaren Objekt für Machine Learning-Aufgaben zusammenzustellen. Registrieren Sie das Dataset in Ihrem Arbeitsbereich, um es freizugeben und in verschiedenen Experimenten ohne Datenerfassungskomplexität wiederzuverwenden.
+Azure Machine Learning-Datasets sind Verweise auf die Daten in Ihrem Speicherdienst. Sie sind keine Kopien Ihrer Daten, sodass keine zusätzlichen Speicherkosten anfallen. [Erstellen Sie ein Dataset](how-to-create-register-datasets.md), um auf Daten in Ihrem Speicher zuzugreifen und die Daten in einem nutzbaren Objekt für Machine Learning-Aufgaben zusammenzustellen. Registrieren Sie das Dataset in Ihrem Arbeitsbereich, um es freizugeben und in verschiedenen Experimenten ohne Datenerfassungskomplexität wiederzuverwenden.
 
-Datasets können aus lokalen Dateien, öffentlichen URLs, [Azure Open Datasets](#open) oder bestimmten Dateien in Ihren Datenspeichern erstellt werden. Um ein Dataset aus einem In-Memory-Pandas-Dataframe zu erstellen, schreiben Sie die Daten in eine lokale Datei, z. B. eine CSV-Datei, und erstellen Sie Ihr Dataset aus dieser Datei. Datasets sind keine Kopien Ihrer Daten, sondern Verweise, die auf die Daten in Ihrem Speicherdienst verweisen. Daher fallen keine zusätzlichen Speicherkosten an. 
+Datasets können aus lokalen Dateien, öffentlichen URLs, [Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/) oder Azure-Speicherdiensten in Datenspeichern erstellt werden. Um ein Dataset aus einem In-Memory-Pandas-Dataframe zu erstellen, schreiben Sie die Daten in eine lokale Datei, z. B. eine Parquet-Datei, und erstellen Ihr Dataset aus dieser Datei.  
 
-Die folgende Abbildung zeigt, dass Sie, sofern Sie keinen Azure Storage-Dienst haben, ein Dataset direkt aus lokalen Dateien, öffentlichen URLs oder einem öffentlichen Azure-Dataset erstellen können. Wenn Sie so vorgehen, wird Ihr Dataset mit dem Standarddatenspeicher verbunden, der automatisch mit dem [Azure Machine Learning-Arbeitsbereich](concept-workspace.md) Ihres Experiments erstellt wurde.
+Wir unterstützen zwei Arten von Datasets: 
++ Ein [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) stellt Daten in einem tabellarischen Format dar, indem die bereitgestellte Datei oder Liste von Dateien analysiert wird. Sie können ein TabularDataset zur weiteren Verarbeitung oder zur Bereinigung in einen Pandas- oder Spark-DataFrame laden. Eine vollständige Liste der Datenformate, aus denen Sie TabularDatasets erstellen können, finden Sie im Artikel über die [TabularDatasetFactory-Klasse](https://aka.ms/tabulardataset-api-reference).
 
-![Abbildung mit Datenkonzept](./media/concept-data/dataset-workflow.svg)
++ Ein [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) verweist auf eine einzelne Datei oder auf mehrere Dateien in Ihren Datenspeichern oder öffentlichen URLs. Dateien, die von FileDatasets referenziert werden, können Sie auf Ihr Computeziel [herunterladen oder dort einbinden](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target).
 
 Weitere Funktionalität für Datasets finden Sie in der folgenden Dokumentation:
 
 + [Versionieren und Nachverfolgen von Datasets in Experimenten](how-to-version-track-datasets.md).
-+ [Überwachen Ihres Datasets](how-to-monitor-datasets.md), um die Erkennung von Datendrift zu unterstützen.
-+  Dokumentation zu den beiden Typen von Datasets finden Sie in den folgenden Artikeln:
-    + [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) stellt Daten in einem tabellarischen Format dar, indem die bereitgestellte Datei oder Liste von Dateien analysiert wird. Auf diese Weise können Sie die Daten zur weiteren Verarbeitung oder zur Bereinigung in einem Pandas- oder Spark-Dataframe zusammenstellen. Eine vollständige Liste der Dateien, aus denen Sie TabularDatasets erstellen können, finden Sie im Artikel über die [TabularDatasetFactory-Klasse](https://aka.ms/tabulardataset-api-reference).
-
-    + [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) verweist auf eine einzelne Datei oder auf mehrere Dateien in Ihren Datenspeichern oder öffentlichen URLs. Mithilfe dieser Methode können Sie die jeweils gewünschten Dateien als FileDataset-Objekt in Ihr Computeziel herunterladen oder einbinden.
++ [Überwachen Ihres Datasets](how-to-monitor-datasets.md), um die Erkennung von Datendrift zu unterstützen.    
 
 ## <a name="work-with-your-data"></a>Arbeiten mit Ihren Daten
 
 Mit Datasets können Sie eine Reihe von Machine Learning-Aufgaben über nahtlose Integration in Azure Machine Learning-Funktionen ausführen. 
 
-+ [Trainieren von Machine Learning-Modellen](how-to-train-with-datasets.md)
-+ Nutzen von Datasets in 
-     + [automatisierten ML-Experimenten](how-to-create-portal-experiments.md)
-     + dem [Designer](tutorial-designer-automobile-price-train-score.md#import-data) 
-+ Zugreifen auf Datasets zur Bewertung mit Batchrückschluss in [Machine Learning-Pipelines](how-to-create-your-first-pipeline.md)
 + Erstellen eines [Datenbeschriftungsprojekts](#label)
++ Trainieren von Machine Learning-Modellen:
+     + [automatisierten ML-Experimenten](how-to-use-automated-ml-for-ml-models.md)
+     + dem [Designer](tutorial-designer-automobile-price-train-score.md#import-data)
+     + [Notebooks](how-to-train-with-datasets.md)
+     + [Azure Machine Learning-Pipelines](how-to-create-your-first-pipeline.md)
++ Zugreifen auf Datasets zur Bewertung mit [Batchrückschluss](how-to-use-parallel-run-step.md) in [Machine Learning-Pipelines](how-to-create-your-first-pipeline.md).
 + Einrichten einer Datasetüberwachung zur Erkennung von [Datendrift](#drift)
-
-<a name="open"></a>
-
-## <a name="azure-open-datasets"></a>Azure Open Datasets
-
-[Öffentliche Azure-Datasets](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets) sind kuratierte öffentliche Datasets, mit denen Sie Lösungen mit maschinellem Lernen szenariospezifische Features hinzufügen können, um genauere Modelle zu erzielen. Öffentliche Datasets (Open Datasets) befinden sich in der Cloud in Microsoft Azure und sind in Azure Machine Learning integriert. Sie können auch über APIs auf die Datasets zugreifen und sie in anderen Produkten wie Power BI und Azure Data Factory verwenden.
-
-Öffentliche Azure-Datasets umfassen gemeinfreie Daten für Wetter, Volkszählungen, Feiertage, öffentliche Sicherheit und Orte, mit denen Sie Machine Learning-Modelle trainieren und Vorhersagelösungen anreichern können. Sie können in den öffentlichen Azure-Datasets auch Ihre eigenen öffentlichen Datasets freigeben.
 
 <a name="label"></a>
 
@@ -105,13 +101,14 @@ Das Beschriften großer Datenmengen bereitet in Projekten für maschinelles Lern
 
 Azure Machine Learning ist Ihr zentraler Ort zum Erstellen, Verwalten und Überwachen von Beschriftungsprojekten. Beschriftungsprojekte helfen dabei, Daten, Beschriftungen und Teammitglieder zu koordinieren, sodass Sie die Beschriftungsaufgaben effizienter verwalten können. Zu den zurzeit unterstützten Aufgaben gehören die Bildklassifizierung – mit mehreren Beschriftungen oder mehreren Klassen – und die Objektidentifikation mithilfe von Begrenzungsrahmen.
 
-+ Erstellen Sie ein [Datenbeschriftungsprojekt](how-to-create-labeling-projects.md), und geben Sie ein Dataset aus, das in Machine Learning-Experimenten verwendet werden kann.
+Erstellen Sie ein [Datenbeschriftungsprojekt](how-to-create-labeling-projects.md), und geben Sie ein Dataset aus, das in Machine Learning-Experimenten verwendet werden kann.
 
 <a name="drift"></a>
 
 ## <a name="data-drift"></a>Datendrift
 
 Im Zusammenhang mit maschinellem Lernen ist die Datenabweichung die Änderung der Modelleingabedaten, die zu einem Abfallen der Modellleistung führt. Datendrift ist einer der Hauptgründe für die Abnahme der Modellgenauigkeit im Lauf der Zeit, daher hilft das Überwachen auf Datendrift bei der Erkennung von Problemen bei der Leistung eines Modells.
+
 Weitere Informationen dazu, wie Sie Datendrift bei neuen Daten in einem Dataset erkennen und melden können, finden Sie im Artikel [Erkennen von Datendrift (Vorschau) in Datasets](how-to-monitor-datasets.md).
 
 ## <a name="next-steps"></a>Nächste Schritte 

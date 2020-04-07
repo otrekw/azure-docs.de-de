@@ -3,16 +3,16 @@ title: Vorlagenfunktionen – numerisch
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Arbeiten mit Zahlen verwendet werden können.
 ms.topic: conceptual
 ms.date: 11/08/2017
-ms.openlocfilehash: 91aa637701acb278e81b7eb86aa3ae2db15acc28
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: 2ca5c539036d002b83b8141132a0ebf2530dc6af
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207234"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156343"
 ---
-# <a name="numeric-functions-for-azure-resource-manager-templates"></a>Numerische Funktionen für Azure Resource Manager-Vorlagen
+# <a name="numeric-functions-for-arm-templates"></a>Numerische Funktionen für ARM-Vorlagen
 
-Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit ganzen Zahlen bereit:
+Resource Manager stellt die folgenden Funktionen für das Arbeiten mit ganzen Zahlen in Ihrer ARM-Vorlage (Azure Resource Manager) bereit:
 
 * [add](#add)
 * [copyIndex](#copyindex)
@@ -37,7 +37,7 @@ Gibt die Summe der beiden angegebenen ganzen Zahlen zurück.
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
-|:--- |:--- |:--- |:--- | 
+|:--- |:--- |:--- |:--- |
 |operand1 |Ja |INT |Erste zu addierende Zahl. |
 |operand2 |Ja |INT |Zweite zu addierende Zahl. |
 
@@ -82,20 +82,20 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | value |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | addResult | Int | 8 |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
 ```
 
 Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
 
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
 ```
 
 <a id="copyindex" />
@@ -103,38 +103,38 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="copyindex"></a>copyIndex
 `copyIndex(loopName, offset)`
 
-Gibt den Index einer Iterationsschleife zurück. 
+Gibt den Index einer Iterationsschleife zurück.
 
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| loopName | Nein | string | Der Name der Schleife zum Abrufen der Iteration |
+| loopName | Nein | Zeichenfolge | Der Name der Schleife zum Abrufen der Iteration |
 | offset |Nein |INT |Die Zahl, die dem nullbasierten (0) Iterationswert hinzugefügt werden soll. |
 
 ### <a name="remarks"></a>Bemerkungen
 
 Diese Funktion wird immer mit einem **copy** -Objekt verwendet. Wenn kein Wert für **offset** angegeben wird, wird der aktuelle Iterationswert zurückgegeben. Der Iterationswert beginnt bei 0 (null). Beim Festlegen von Ressourcen oder Variablen können Sie Iterationsschleifen verwenden.
 
-Mit der Eigenschaft **loopName** können Sie angeben, ob sich „copyIndex“ auf eine Ressourceniteration oder eine Eigenschafteniteration bezieht. Wenn kein Wert für **loopName** angegeben wird, wird die Iteration des aktuellen Ressourcentyps verwendet. Geben Sie einen Wert für **loopName** an, wenn eine Iteration für eine Eigenschaft ausgeführt wird. 
- 
+Mit der Eigenschaft **loopName** können Sie angeben, ob sich „copyIndex“ auf eine Ressourceniteration oder eine Eigenschafteniteration bezieht. Wenn kein Wert für **loopName** angegeben wird, wird die Iteration des aktuellen Ressourcentyps verwendet. Geben Sie einen Wert für **loopName** an, wenn eine Iteration für eine Eigenschaft ausgeführt wird.
+
 Eine vollständige Beschreibung der Nutzung von **copyIndex**finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](copy-resources.md).
 
 Ein Beispiel für die Verwendung von **copyIndex** beim Festlegen einer Variablen finden Sie unter [Variables](template-syntax.md#variables).
 
 ### <a name="example"></a>Beispiel
 
-Das folgende Beispiel enthält eine Kopierschleife und den Indexwert im Namen. 
+Das folgende Beispiel enthält eine Kopierschleife und den Indexwert im Namen.
 
 ```json
-"resources": [ 
-  { 
-    "name": "[concat('examplecopy-', copyIndex())]", 
-    "type": "Microsoft.Web/sites", 
-    "copy": { 
-      "name": "websitescopy", 
-      "count": "[parameters('count')]" 
-    }, 
+"resources": [
+  {
+    "name": "[concat('examplecopy-', copyIndex())]",
+    "type": "Microsoft.Web/sites",
+    "copy": {
+      "name": "websitescopy",
+      "count": "[parameters('count')]"
+    },
     ...
   }
 ]
@@ -199,20 +199,20 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | value |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | divResult | Int | 2 |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
 ```
 
 Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
 
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json 
+New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
 ```
 
 <a id="float" />
@@ -224,7 +224,7 @@ Konvertiert den Wert in eine Gleitkommazahl. Diese Funktion wird nur beim Überg
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Zeichenfolge oder ganze Zahl |Der in eine Gleitkommazahl zu konvertierende Wert. |
 
@@ -258,7 +258,7 @@ Konvertiert den angegebenen Wert in eine ganze Zahl (Integer).
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |Ja |Zeichenfolge oder ganze Zahl |Der Wert, der in eine ganze Zahl (Integer) konvertiert werden soll. |
 
@@ -275,7 +275,7 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "stringToConvert": { 
+        "stringToConvert": {
             "type": "string",
             "defaultValue": "4"
         }
@@ -293,14 +293,14 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | value |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | intResult | Int | 4 |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
 ```
 
 Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
@@ -356,7 +356,7 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | value |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
@@ -364,7 +364,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
 ```
 
 Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
@@ -382,7 +382,7 @@ Gibt den kleinsten Wert aus einem Array mit ganzen Zahlen oder einer durch Trenn
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array mit ganzen Zahlen oder durch Trennzeichen getrennte Liste mit ganzen Zahlen |Die Auflistung, aus der der kleinste Wert abgerufen werden soll. |
 
@@ -420,7 +420,7 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | value |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 0 |
 | intOutput | Int | 0 |
@@ -428,7 +428,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
 ```
 
 Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
@@ -446,7 +446,7 @@ Gibt den Rest der Ganzzahldivision mit den beiden angegebenen ganzen Zahlen zur�
 
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | Beschreibung |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | operand1 |Ja |INT |Die zu teilende Zahl (Dividend). |
 | operand2 |Ja |INT |Die Zahl, durch die dividiert wird (Divisor), darf nicht null (0) sein. |
@@ -491,14 +491,14 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | value |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | modResult | Int | 1 |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
 ```
 
 Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
@@ -562,14 +562,14 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | value |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | mulResult | Int | 15 |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
 ```
 
 Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
@@ -632,14 +632,14 @@ In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samp
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | type | value |
+| Name | type | Wert |
 | ---- | ---- | ----- |
 | subResult | Int | 4 |
 
 Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
 
 ```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
+az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
 ```
 
 Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:

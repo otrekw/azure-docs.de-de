@@ -14,16 +14,16 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f690d23ac4d8c452d731c2f6fd4ae67dc281639
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 20ec1d1909a53a9de29e12be33957acfd1643698
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73805524"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128825"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Zuweisen oder Entfernen von Lizenzen im Azure Active Directory-Portal
 
-Viele Dienste von Azure Active Directory (Azure AD) erfordern, dass Sie Ihre einzelnen Benutzer oder Gruppen (und die zugehörigen Mitglieder) für den jeweiligen Dienst lizenzieren. Nur Benutzer mit aktiven Lizenzen können auf die lizenzierten Azure AD-Dienste zugreifen und diese verwenden, auf die das zutrifft.
+Viele Dienste von Azure Active Directory (Azure AD) erfordern, dass Sie Ihre einzelnen Benutzer oder Gruppen (und die zugehörigen Mitglieder) für den jeweiligen Dienst lizenzieren. Nur Benutzer mit aktiven Lizenzen können auf die lizenzierten Azure AD-Dienste zugreifen und diese verwenden, auf die das zutrifft. Lizenzen werden pro Mandant angewendet und nicht an andere Mandanten übertragen. 
 
 ## <a name="available-license-plans"></a>Verfügbare Lizenzpläne
 
@@ -136,6 +136,9 @@ Sie können eine Lizenz auf der Azure AD-Benutzerseite eines Benutzers und auf d
 1. Wählen Sie **Lizenz entfernen** aus.
 
     ![Seite „Lizenzierte Gruppe“ mit hervorgehobener Option „Lizenz entfernen“](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
+    
+    > [!NOTE]
+    > Wenn ein lokales Benutzerkonto, das mit Azure AD synchronisiert wird, den Gültigkeitsbereich für die Synchronisierung überschreitet, oder wenn die Synchronisierung entfernt wird, wird der Benutzer in Azure AD vorläufig gelöscht. Wenn dies auftritt, werden Lizenzen, die dem Benutzer direkt oder über die gruppenbasierte Lizenzierung zugewiesen werden, als **angehalten** und nicht als **gelöscht** gekennzeichnet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

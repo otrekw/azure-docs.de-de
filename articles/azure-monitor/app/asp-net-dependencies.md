@@ -2,13 +2,13 @@
 title: Abhängigkeitsnachverfolgung in Azure Application Insights | Microsoft Docs
 description: Überwachen Sie Abhängigkeitsaufrufe von Ihrer lokalen oder Microsoft Azure-Webanwendung mit Application Insights.
 ms.topic: conceptual
-ms.date: 06/25/2019
-ms.openlocfilehash: 8fb1550a3f1d4b3336384139b049b60e23e648d7
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/26/2020
+ms.openlocfilehash: 1d4e8d1a0482257c92f47a00bd440e786c09c7aa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666240"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80292121"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Abhängigkeitsnachverfolgung in Azure Application Insights 
 
@@ -34,12 +34,14 @@ Wenn eine Abhängigkeit fehlt oder ein anderes SDK verwendet wird, stellen Sie s
 
 ## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>Einrichten einer automatischen Abhängigkeitsüberwachung in Konsolen-Apps
 
-Um Abhängigkeiten automatisch über .NET-/.NET Core-Konsolen-Apps nachzuverfolgen, installieren Sie das Nuget-Paket `Microsoft.ApplicationInsights.DependencyCollector`, und initialisieren Sie `DependencyTrackingTelemetryModule` wie folgt:
+Um Abhängigkeiten automatisch über .NET-Konsolen-Apps nachzuverfolgen, installieren Sie das Nuget-Paket `Microsoft.ApplicationInsights.DependencyCollector`, und initialisieren Sie `DependencyTrackingTelemetryModule` wie folgt:
 
 ```csharp
     DependencyTrackingTelemetryModule depModule = new DependencyTrackingTelemetryModule();
     depModule.Initialize(TelemetryConfiguration.Active);
 ```
+
+Für .NET Core-Konsolen-Apps wird „TelemetryConfiguration.Active“ nicht mehr verwendet. Weitere Informationen finden Sie in der [Dokumentation zum Workerdienst](https://docs.microsoft.com/azure/azure-monitor/app/worker-service) und in der [Dokumentation zur ASP.NET Core-Überwachung](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)
 
 ### <a name="how-automatic-dependency-monitoring-works"></a>Funktionsweise der automatischen Abhängigkeitsüberwachung
 
@@ -109,7 +111,7 @@ In den oben genannten Fällen können Sie die ordnungsgemäße Installation der 
 * Navigieren Sie zu langsamen oder fehlgeschlagenen Aufrufen, um ihre Abhängigkeitsaufrufe zu überprüfen.
 * [Analyse](#logs-analytics) kann verwendet werden, um Abhängigkeitsdaten abzufragen.
 
-## <a name="diagnosis"></a>Diagnostizieren langsamer Anforderungen
+## <a name="diagnose-slow-requests"></a><a name="diagnosis"></a>Diagnostizieren langsamer Anforderungen
 
 Jedes Anforderungsereignis bezieht sich auf Abhängigkeitsaufrufe, Ausnahmen und andere Ereignisse, die nachverfolgt werden, während Ihre App die Anforderung verarbeitet. Wenn einige Anforderungen also eine schlechte Leistung zeigen, können Sie herausfinden, ob es an langsamen Antworten einer Abhängigkeit liegt.
 

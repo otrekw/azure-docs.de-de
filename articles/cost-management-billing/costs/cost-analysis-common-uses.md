@@ -3,16 +3,16 @@ title: Häufige Anwendungsbereiche der Kostenanalyse in Azure Cost Management
 description: In diesem Artikel wird erläutert, wie Sie in Azure Cost Management Ergebnisse für häufige Kostenanalyseaufgaben erhalten.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/21/2020
+ms.date: 03/31/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 901f271ac401cb985e59c434b9e6d7f8db03889f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a333cad51e6fc089e7e6994c7b89210b12686cd5
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203099"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520877"
 ---
 # <a name="common-cost-analysis-uses"></a>Häufige Anwendungsbereiche der Kostenanalyse
 
@@ -26,7 +26,7 @@ Die Kostenanzeige nach Azure-Dienst kann Ihnen helfen, die Teile Ihrer Infrastru
 1. Wählen Sie **Kosten nach Dienst** aus, und gruppieren Sie dann nach **Dienstebene**.
 1. Ändern Sie die Ansicht in **Tabelle**.
 
-![Kostenaufschlüsselung nach Azure-Dienst](./media/cost-analysis-common-uses/breakdown-by-service.png)
+[![Kostenaufschlüsselung nach Azure-Dienst](./media/cost-analysis-common-uses/breakdown-by-service.png)](./media/cost-analysis-common-uses/breakdown-by-service.png#lightbox)
 
 ## <a name="view-cost-breakdown-by-azure-resource"></a>Anzeigen der Kostenaufschlüsselung nach Azure-Ressource
 
@@ -36,7 +36,7 @@ Ihre Dienste werden mit Azure-Ressourcen erstellt. Die Überprüfung der Kosten 
 1. Wählen Sie **Kosten nach Ressource** aus.
 1. Ändern Sie die Ansicht in **Tabelle**.
 
-![Anzeigen der Kostenaufschlüsselung nach Azure-Ressource](./media/cost-analysis-common-uses/cost-by-resource.png)
+[![Anzeigen der Kostenaufschlüsselung nach Azure-Ressource](./media/cost-analysis-common-uses/cost-by-resource.png)](./media/cost-analysis-common-uses/cost-by-resource.png#lightbox)
 
 ## <a name="view-cost-breakdown-by-selected-dimensions"></a>Anzeigen der Kostenaufschlüsselung nach ausgewählten Dimensionen
 
@@ -44,10 +44,10 @@ Mithilfe von Dimensionen können Sie Ihre Kosten anhand verschiedener Metadatenw
 
 1. Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel: **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**.
 1. Wählen Sie den Filter **Gruppieren nach** aus.  
-    ![Auswählen einer Gruppe nach Position](./media/cost-analysis-common-uses/group-by.png)
+    [![Auswählen einer Gruppe nach Position](./media/cost-analysis-common-uses/group-by.png)](./media/cost-analysis-common-uses/group-by.png#lightbox)
 1. Optional können Sie die Ansicht zur späteren Verwendung speichern.
 1. Klicken Sie unterhalb des Graphen auf ein Kreisdiagramm, um ausführlichere Daten anzuzeigen.  
-    ![Anzeigen der Kostenaufschlüsselung nach ausgewählten Dimensionen](./media/cost-analysis-common-uses/drill-down.png)
+    [![Anzeigen der Kostenaufschlüsselung nach ausgewählten Dimensionen](./media/cost-analysis-common-uses/drill-down.png)](./media/cost-analysis-common-uses/drill-down.png#lightbox)
 
 ## <a name="view-costs-per-day-or-by-month"></a>Anzeigen der Kosten pro Tag oder Monat
 
@@ -56,7 +56,58 @@ Durch die Betrachtung der täglichen und monatlichen Kosten können Sie besser v
 1. Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel: **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**.
 1. Legen Sie die **Granularität** auf **Monatlich** oder **Täglich** fest.
 
-![Anzeigen der Kosten pro Tag](./media/cost-analysis-common-uses/daily-granularity.png)
+[![Anzeigen der Kosten pro Tag](./media/cost-analysis-common-uses/daily-granularity.png)](./media/cost-analysis-common-uses/daily-granularity.png#lightbox)
+
+
+## <a name="view-your-spot-vm-charges"></a>Anzeigen der Gebühren für Spot-VMs
+
+Spot-VMs ermöglichen umfangreiche Einsparungen für Workloads, die Unterbrechungen verarbeiten können. Zur Ausführung von Workloads wird ungenutzte Azure-Kapazität verwendet. Für Spot-VMs erhalten Sie einen erheblichen Rabatt, da sie jederzeit entfernt werden können. Führen Sie die folgenden Schritte aus, um die Gebühren für Spot-VMs anzuzeigen:
+
+1. Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel: **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**
+2. Fügen Sie einen Filter für **Preismodell: Spot** hinzu.
+
+![Beispiel für einen Spot-VM-Filter](./media/cost-analysis-common-uses/spot-vm-filter.png)
+
+Die Dimension „Preismodell“ wird auch zum Anzeigen von bedarfsgesteuerten Gebühren sowie von Reservierungsgebühren verwendet.
+
+## <a name="view-your-reservation-charges"></a>Anzeigen Ihrer Reservierungsgebühren
+
+Mit reservierten Instanzen können Sie bei Azure Geld sparen. Bei Reservierungen geben Sie vorab Geld für eine bestimmte Anzahl von Ressourcen im Zeitverlauf aus. In der Kostenanalyse werden die Gebühren so angezeigt, wie sie auf Ihrer Rechnung erscheinen. Die Gebühren werden als tatsächliche Kosten oder als amortisierte Kosten im Laufe Ihres Reservierungszeitraums angezeigt.
+
+1. Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel: **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**
+1. Fügen Sie einen Filter für **Preismodell: Reservierung** hinzu.
+1. Klicken sie unter **Bereich** neben den angezeigten Kosten auf den Pfeil nach unten, und wählen Sie entweder die Metrik **Tatsächliche Kosten** oder die Metrik **Amortisierte Kosten** aus.
+
+![Auswählen einer Kostenmetrik](./media/cost-analysis-common-uses/metric-cost.png)
+
+Jede Metrik wirkt sich darauf aus, wie Daten für Ihre Reservierungsgebühren angezeigt werden.
+
+**Tatsächliche Kosten**: Zeigt den Kauf an, wie er auf Ihrer Rechnung erscheint. Wenn Sie beispielsweise im Januar für 1.200 USD eine Reservierung für ein Jahr gekauft haben, enthält die Kostenanalyse für den Monat Januar Kosten in Höhe von 1.200 USD für die Reservierung. Für andere Monate des Jahres werden keine Reservierungskosten angezeigt. Wenn Sie die tatsächlichen Kosten nach VM gruppieren, fallen für eine VM, auf die der Reservierungsvorteil für einen bestimmten Monat angewendet wird, für diesen Monat keine Kosten an.
+
+**Amortisierte Kosten**: Zeigt einen Reservierungskauf als amortisierte Kosten an (aufgeteilt auf die Dauer des Reservierungszeitraums). Im gleichen Beispiel wie oben würden in der Kostenanalyse Kosten in Höhe von 100 USD monatlich für das ganze Jahr angezeigt, wenn Sie im Januar für 1.200 USD eine Reservierung für ein Jahr erwerben würden. Wenn Sie in diesem Beispiel die Kosten nach VM gruppieren, werden Ihnen die Kosten für jeden virtuellen Computer angezeigt, auf den der Reservierungsvorteil angewendet wurde.
+
+## <a name="view-your-reservation-utilization"></a>Anzeigen der Reservierungsnutzung
+
+Nach dem Kauf einer Reservierung ist es wichtig, die Nutzung nachzuverfolgen, damit Sie erhalten, wofür Sie bezahlt haben. Beispiel: Wenn Sie zehn VMs für ein Jahr erworben haben, aber nur fünf davon nutzen, ist praktisch die Hälfte des Kaufs verschwendet. Es gibt zwei verschiedene Möglichkeiten, die Nutzung zu bewerten:
+
+### <a name="view-unused-ri-costs-in-cost-analysis"></a>Anzeigen von nicht genutzten RI-Kosten in der Kostenanalyse
+
+Führen Sie die folgenden Schritte aus, um zu ermitteln, welche Kosten derzeit monatlich für den Reservierungskauf verschwendet werden.
+
+1. Navigieren Sie im Azure-Portal zur Kostenanalyse für den Bereich, in dem Ihre Reservierung angewendet wird. Beispiel: **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**
+1. Fügen Sie einen Filter für **Preismodell: Reservierung** hinzu.
+1. Wählen Sie die Ansicht **Amortisierte Kosten** aus.
+1. Legen Sie die Granularität auf **Monatlich** fest.
+1. Legen Sie den Zeitraum auf das aktuelle Jahr oder Ihren Reservierungszeitraum fest.
+1. Legen Sie den Diagrammtyp auf **Säule (gestapelt)** fest.
+1. Gruppieren Sie Gebühren nach **Gebührentyp**.
+1. Überprüfen Sie die Ergebnisse für Werte vom Typ `unusedreservation`.
+
+[![Beispiel für die Reservierungsnutzung](./media/cost-analysis-common-uses/view-reservation-cost.png)](./media/cost-analysis-common-uses/view-reservation-cost.png#lightbox)
+
+### <a name="view-utilization-in-reservations"></a>Anzeigen der Nutzung in Reservierungen
+
+Ausführliche Anweisungen finden Sie unter [Optimieren der Reservierungsnutzung](../reservations/manage-reserved-vm-instance.md#optimize-reservation-use).
 
 ## <a name="view-costs-for-a-specific-tag"></a>Anzeigen der Kosten für ein bestimmtes Tag
 
@@ -67,7 +118,7 @@ Die Tag-Unterstützung betrifft nur die Nutzung, die gemeldet wird, *nachdem* da
 1. Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel: **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**.
 1. Wählen Sie **Gruppieren nach** für das Tag aus.
 
-![Anzeigen der Kosten für ein bestimmtes Tag](./media/cost-analysis-common-uses/tag.png)
+[![Anzeigen der Kosten für ein bestimmtes Tag](./media/cost-analysis-common-uses/tag.png)](./media/cost-analysis-common-uses/tag.png#lightbox)
 
 ## <a name="download-your-usage-details"></a>Herunterladen Ihrer Nutzungsdetails
 
@@ -75,7 +126,7 @@ Die Berichtsdatei mit den Nutzungsdetails im CSV-Format enthält eine Aufschlüs
 
 1. Navigieren Sie im Azure-Portal zur Registerkarte **Nutzung und Gebühren** für ein Abrechnungskonto oder Abonnement. Beispiel: **Kostenverwaltung + Abrechnungs** > **Abrechnung** > **Nutzung + Gebühren**.
 1. Markieren Sie die Position, die Sie herunterladen möchten, und klicken Sie dann auf das Symbol zum Herunterladen.  
-    ![Herunterladen von Nutzungsdaten und Gebühren](./media/cost-analysis-common-uses/download1.png)
+    [![Herunterladen von Nutzungsdaten und Gebühren](./media/cost-analysis-common-uses/download1.png)](./media/cost-analysis-common-uses/download1.png#lightbox)
 1.  Wählen Sie die herunterzuladende Nutzungsdatei aus.  
     ![Auswählen der herunterzuladenden Nutzungsdatei](./media/cost-analysis-common-uses/download2.png)
 
@@ -88,9 +139,9 @@ Es werden nur die Kosten für Ihre aktive Registrierung angezeigt. Wenn Sie eine
 
 1. Navigieren Sie im Azure-Portal zu **Kostenverwaltung + Abrechnung** > **Übersicht**.
 1. Klicken Sie für den aktuellen Monat auf **Aufschlüsselung**, und zeigen Sie die Entstehung der Zahlungsverpflichtungen an.  
-    ![Übersicht über EA-Kosten – Aufschlüsselung in der Übersicht](./media/cost-analysis-common-uses/breakdown1.png)
+    [![Übersicht über EA-Kosten – Aufschlüsselung in der Übersicht](./media/cost-analysis-common-uses/breakdown1.png)](./media/cost-analysis-common-uses/breakdown1.png#lightbox)
 1.  Klicken Sie auf die Registerkarte **Nutzung + Gebühren**, und zeigen Sie die Aufschlüsselung des Vormonats im ausgewählten Zeitraum an.  
-    ![Registerkarte „Nutzung + Gebühren“](./media/cost-analysis-common-uses/breakdown2.png)
+    [![Registerkarte „Nutzung + Gebühren“](./media/cost-analysis-common-uses/breakdown2.png)](./media/cost-analysis-common-uses/breakdown2.png#lightbox)
 
 ## <a name="view-enrollment-monthly-cost-by-term"></a>Anzeigen der monatlichen Kosten der Registrierung nach Laufzeit
 
@@ -102,7 +153,7 @@ Verwenden Sie eine grafische Ansicht der monatlichen Kosten für Ihre Registrier
 
 Zugunsten einer detaillierteren Analyse können Sie Ihre Daten gruppieren und filtern.
 
-![Monatliche Registrierungskosten nach Laufzeit](./media/cost-analysis-common-uses/enrollment-term1.png)
+[![Monatliche Registrierungskosten nach Laufzeit](./media/cost-analysis-common-uses/enrollment-term1.png)](./media/cost-analysis-common-uses/enrollment-term1.png#lightbox)
 
 ## <a name="view-ea-enrollment-accumulated-costs"></a>Anzeigen der kumulierten Kosten der EA-Registrierung
 
@@ -111,7 +162,7 @@ Zeigen Sie die im Laufe der Zeit angefallenen Gebühren als kumulierten Nettobet
 1. Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel: **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**.
 1. Wählen Sie Ihre Registrierung aus, und zeigen Sie dann die aktuellen kumulierten Kosten an.
 
-![Kumulierte Kosten der Registrierung](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)
+[![Kumulierte Kosten der Registrierung](./media/cost-analysis-common-uses/cost-analysis-enrollment.png)](./media/cost-analysis-common-uses/cost-analysis-enrollment.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Falls Sie den ersten Schnellstart für Cost Management noch nicht abgeschlossen haben, lesen Sie ihn unter [Erste Schritte in der Analyse von Kosten](quick-acm-cost-analysis.md).
