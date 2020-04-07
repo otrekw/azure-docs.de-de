@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 03/11/2020
 ms.author: sunasing
-ms.openlocfilehash: 2786519bfc54b39c986ba57c78d9d6409a596351
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: f717903b3f953e04c793092c86802f2006de7e82
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79129780"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349803"
 ---
 # <a name="query-ingested-telemetry-data"></a>Abfragen erfasster Telemetriedaten
 
@@ -21,97 +21,104 @@ Das Erfassen von Daten von IoT-Ressourcen (Internet der Dinge) wie Geräten und 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 Für diesen Artikel muss FarmBeats installiert sein, und Sie müssen bereits Sensortelemetriedaten von Ihren IoT-Geräten in FarmBeats erfasst haben.
+
 Informationen zum Erfassen von Sensortelemetriedaten finden Sie unter [Erfassen historischer Telemetriedaten](ingest-historical-telemetry-data-in-azure-farmbeats.md).
 
-Für die weiteren Schritte sollten Sie mit den FarmBeats-REST-APIs vertraut sein, da Sie die erfassten Telemetriedaten über APIs abfragen. Weitere Informationen zu FarmBeats-APIs finden Sie unter [FarmBeats-REST-APIs](rest-api-in-azure-farmbeats.md). **Stellen Sie sicher, dass Sie API-Anforderungen an Ihren FarmBeats-Datenhubendpunkt stellen können.**
+Bevor Sie fortfahren, müssen Sie auch sicherstellen, dass Sie mit den FarmBeats-REST-APIs vertraut sind, da Sie die erfasste Telemetrie mithilfe der APIs abfragen werden. Weitere Informationen zu den FarmBeats-APIs finden Sie unter [FarmBeats-REST-APIs](rest-api-in-azure-farmbeats.md). **Stellen Sie sicher, dass Sie API-Anforderungen an Ihren FarmBeats-Datenhubendpunkt stellen können**.
 
 ## <a name="query-ingested-sensor-telemetry-data"></a>Abfragen erfasster Sensortelemetriedaten
 
-Es gibt zwei Möglichkeiten, auf die Telemetriedaten in FarmBeats zuzugreifen und diese abzufragen: API und Time Series Insights (TSI). 
+Es gibt zwei Möglichkeiten, auf die Telemetriedaten in FarmBeats zuzugreifen und diese abzufragen:
+
+- API und
+- Time Series Insights (TSI).
 
 ### <a name="query-using-rest-api"></a>Abfragen über die REST-API
 
-Führen Sie die nachstehenden Schritte aus, um die erfassten Sensortelemetriedaten über die FarmBeats-REST-APIs abzufragen:
+Führen Sie die Schritte aus, um die erfassten Sensortelemetriedaten über die FarmBeats-REST-APIs abzufragen:
 
-1. Identifizieren Sie den relevanten Sensor. Hierzu können Sie eine GET-Anforderung für die /Sensor-API ausgeben. Notieren Sie sich die Werte **id** und **sensorModelId** des gewünschten Sensorobjekts.
+1. Identifizieren Sie den relevanten Sensor. Hierzu können Sie eine GET-Anforderung für die /Sensor-API ausgeben.
 
-2. Geben Sie den Aufruf „GET/{id}“ an die /SensorModel-API für die in Schritt 1 notierte **sensorModelId** aus. „Sensor Model“ verfügt über alle Metadaten und Details zu den erfassten Telemetriedaten des Sensors. Beispielsweise enthält „Sensor Measure“ im Objekt „Sensor Model“ Details zu den vom Sensor gesendet Measures und deren Typen und Einheiten. Beispiel:
+> [!NOTE]
+> Die Werte **id** und **sensorModelId** des gewünschten Sensorobjekts.
 
-```json
-{
-    "name": "moist_soil_last <name of the sensor measure - this is what we will receive as part of the queried telemetry data>",
-    "dataType": "Double <Data Type - eg. Double>",
-    "type": "SoilMoisture <Type of measure eg. temperature, soil moisture etc.>",
-    "unit": "Percentage <Unit of measure eg. Celsius, Percentage etc.>",
-    "aggregationType": "None <either of None, Average, Maximum, Minimum, StandardDeviation>",
-    "description": "<Description of the measure>"
-}
-```
+2. Geben Sie den Aufruf „GET/{id}“ an die /SensorModel-API für die in Schritt 1 notierte **sensorModelId** aus. „Sensor Model“ verfügt über alle Metadaten und Details zu den erfassten Telemetriedaten des Sensors. Beispielsweise enthält **Sensor Measure** im Objekt **Sensor Model** Details zu den vom Sensor gesendet Measures und deren Typen und Einheiten. Beispiel:
+
+  ```json
+  {
+      "name": "moist_soil_last <name of the sensor measure - this is what we will receive as part of the queried telemetry data>",
+      "dataType": "Double <Data Type - eg. Double>",
+      "type": "SoilMoisture <Type of measure eg. temperature, soil moisture etc.>",
+      "unit": "Percentage <Unit of measure eg. Celsius, Percentage etc.>",
+      "aggregationType": "None <either of None, Average, Maximum, Minimum, StandardDeviation>",
+      "description": "<Description of the measure>"
+  }
+  ```
 Notieren Sie sich die Antwort vom Aufruf „GET/{id}“ für „Sensor Model“.
 
 3. Führen Sie einen POST-Aufruf für die /Telemetry-API mit der folgenden Eingabenutzlast aus.
 
-```json
-{
-  "sensorId": "<id of the sensor as noted in step 1>",
-  "searchSpan": {
-    "from": "<desired start timestamp in ISO 8601 format; default is UTC>",
-    "to": "<desired end timestamp in ISO 8601 format; default is UTC>"
-  },
-  "filter": {
-    "tsx": "string"
-  },
-  "projectedProperties": [
-    {
-      "additionalProp1": "string",
-      "additionalProp2": "string",
-      "additionalProp3": "string"
-    }
-  ]
-}
-```
+  ```json
+  {
+    "sensorId": "<id of the sensor as noted in step 1>",
+    "searchSpan": {
+      "from": "<desired start timestamp in ISO 8601 format; default is UTC>",
+      "to": "<desired end timestamp in ISO 8601 format; default is UTC>"
+    },
+    "filter": {
+      "tsx": "string"
+    },
+    "projectedProperties": [
+      {
+        "additionalProp1": "string",
+        "additionalProp2": "string",
+        "additionalProp3": "string"
+      }
+    ]
+  }
+  ```
 4. Die Antwort von der /Telemetry-API ähnelt der folgenden:
 
-```json
-{
-  "timestamps": [
-    "2020-XX-XXT07:30:00Z",
-    "2020-XX-XXT07:45:00Z"
-  ],
-  "properties": [
-    {
-      "values": [
-        "<id of the sensor>",
-        "<id of the sensor>"
-      ],
-      "name": "Id",
-      "type": "String"
-    },
-    {
-      "values": [
-        2.1,
-        2.2
-      ],
-      "name": "moist_soil_last <name of the SensorMeasure as defined in the SensorModel object>",
-      "type": "Double <Data Type of the value - eg. Double>"
-    }
-  ]
-}
-```
+  ```json
+  {
+    "timestamps": [
+      "2020-XX-XXT07:30:00Z",
+      "2020-XX-XXT07:45:00Z"
+    ],
+    "properties": [
+      {
+        "values": [
+          "<id of the sensor>",
+          "<id of the sensor>"
+        ],
+        "name": "Id",
+        "type": "String"
+      },
+      {
+        "values": [
+          2.1,
+          2.2
+        ],
+        "name": "moist_soil_last <name of the SensorMeasure as defined in the SensorModel object>",
+        "type": "Double <Data Type of the value - eg. Double>"
+      }
+    ]
+  }
+  ```
 In der oben angegebenen Beispielantwort enthält die abgefragte Sensortelemetrie Daten für zwei Zeitstempel zusammen mit dem Measurenamen („moist_soil_last“) und den Werten der gemeldeten Telemetriedaten in den beiden Zeitstempeln. Sie müssen auf das zugehörige Sensormodell verweisen (wie in Schritt 2 beschrieben), um den Typ und die Einheit der gemeldeten Werte zu interpretieren.
 
 ### <a name="query-using-azure-time-series-insights-tsi"></a>Abfragen über Azure Time Series Insights (TSI)
 
-FarmBeats nutzt [Azure Time Series Insights (TSI)](https://azure.microsoft.com/services/time-series-insights/) zum Erfassen, Speichern, Abfragen und Visualisieren von Daten im IoT-Bereich (Internet der Dinge). Diese Daten sind hochgradig kontextualisiert und für Zeitreihen optimiert.
+FarmBeats nutzt [Azure Time Series Insights (TSI)](https://azure.microsoft.com/services/time-series-insights/) zum Erfassen, Speichern, Abfragen und Visualisieren von Daten im IoT-Bereich. Diese Daten sind hochgradig kontextualisiert und für Zeitreihen optimiert.
 
-Telemetriedaten werden in einem Event Hub empfangen und dann verarbeitet und an eine TSI-Umgebung in der FarmBeats-Ressourcengruppe übermittelt. Die Daten können dann direkt aus TSI abgefragt werden. Weitere Informationen finden Sie in der [TSI-Dokumentation](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer).
+Telemetriedaten werden in einem Event Hub empfangen und dann verarbeitet und an eine TSI-Umgebung in der FarmBeats-Ressourcengruppe übermittelt. Die Daten können dann direkt aus TSI abgefragt werden. Weitere Informationen finden Sie in der [TSI-Dokumentation](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer)
 
-Führen Sie die nachstehenden Schritte aus, um Daten in TSI visuell darzustellen.
+Führen Sie die Schritte aus, um Daten in TSI visuell darzustellen:
 
-1. Wechseln Sie im Azure-Portal zur FarmBeats-DataHub-Ressourcengruppe, und klicken Sie auf die Time Series Insights-Umgebung („tsi-xxxx“) und dann auf „Datenzugriffsrichtlinien“. Fügen Sie einen Benutzer mit den Zugriffberechtigungen „Leser“ oder „Mitwirkender“ hinzu.
-2. Wechseln Sie zur Übersichtsseite der Time Series Insights-Umgebung („tsi-xxxx“), und klicken Sie auf die Time Series Insights-Explorer-URL. Sie können die erfassten Telemetriedaten nun visualisieren.
+1. Wechseln Sie zu **Azure Portal** > **FarmBeats-DataHub-Ressourcengruppe**. Wählen Sie die **Time Series Insights**-Umgebung (tsi-xxxx) und dann **Datenzugriffsrichtlinien** aus. Fügen Sie einen Benutzer mit den Zugriffberechtigungen „Leser“ oder „Mitwirkender“ hinzu.
+2. Wechseln Sie zur Seite **Übersicht** der **Time Series Insights**-Umgebung (tsi-xxxx), und wählen Sie die **Time Series Insights-Explorer-URL** aus. Sie können die erfassten Telemetriedaten nun visualisieren.
 
-Neben dem Speichern, Abfragen und Visualisieren von Telemetriedaten ermöglicht TSI auch die Integration in ein Power BI-Dashboard. Ausführlichere Informationen finden Sie [hier]( https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi).
+Neben dem Speichern, Abfragen und Visualisieren von Telemetriedaten ermöglicht TSI auch die Integration in ein Power BI-Dashboard. Weitere Informationen finden Sie [hier]( https://docs.microsoft.com/azure/time-series-insights/how-to-connect-power-bi).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

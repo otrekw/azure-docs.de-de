@@ -1,41 +1,56 @@
 ---
 title: Löschen von Daten aus dem Azure-Daten-Explorer
-description: Dieser Artikel beschreibt Szenarien zum Massenlöschen im Azure-Daten-Explorer, einschließlich endgültiger und beibehaltungsbasierter Löschvorgänge.
+description: In diesem Artikel werden die Löschszenarien in Azure Data Explorer beschrieben, einschließlich dem Bereinigen, dem Ablegen von Blöcken und von aufbewahrungsbasierten Löschvorgängen.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: avneraa
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 9c1b21e119a38c6d306b9c564ab7958ba21a1c41
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 03/12/2020
+ms.openlocfilehash: dd0f8740d148a7817bcfe2fbad591ceeb1610d0f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60445667"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79501415"
 ---
 # <a name="delete-data-from-azure-data-explorer"></a>Löschen von Daten aus dem Azure-Daten-Explorer
 
-Der Azure-Daten-Explorer unterstützt mehrere Ansätze zum Massenlöschen, die in diesem Artikel behandelt werden. Das Löschen einzelner Datensätze in Echtzeit wird nicht unterstützt, weil er für schnellen Lesezugriff optimiert ist.
+Azure Data Explorer unterstützt verschiedene in diesem Artikel beschriebene Löschszenarien. 
 
-* Wenn eine oder mehrere Tabellen nicht mehr benötigt werden, löschen Sie sie über den Befehl „drop table“ bzw. „drop tables“.
+## <a name="delete-data-using-the-retention-policy"></a>Löschen von Daten mithilfe der Aufbewahrungsrichtlinie
 
-    ```Kusto
-    .drop table <TableName>
+Azure Data Explorer löscht automatisch Daten auf der Grundlage der [Aufbewahrungsrichtlinie](/azure/kusto/management/retentionpolicy). Diese Methode ist die effizienteste und benutzerfreundliche Möglichkeit zum Löschen von Daten. Legen Sie die Aufbewahrungsrichtlinie auf Datenbank- oder Tabellenebene fest.
 
-    .drop tables (<TableName1>, <TableName2>,...)
+Stellen Sie sich eine Datenbank oder Tabelle vor, für die eine Beibehaltungsdauer von 90 Tagen festgelegt ist. Wenn nur die Daten von 60 Tagen erforderlich sind, löschen Sie die älteren Daten wie folgt:
+
+```kusto
+.alter-merge database <DatabaseName> policy retention softdelete = 60d
+
+.alter-merge table <TableName> policy retention softdelete = 60d
+```
+
+## <a name="delete-data-by-dropping-extents"></a>Löschen von Daten durch Ablegen von Blöcken
+
+[Der Block (Daten-Shard)](/azure/kusto/management/extents-overview) ist die interne Struktur, in der Daten gespeichert werden. Jeder Block kann bis zu Millionen von Datensätzen enthalten. Blöcke können einzeln oder als Gruppe mit [Befehlen zum Ablegen von Blöcken](/azure/kusto/management/extents-commands#drop-extents) gelöscht werden. 
+
+### <a name="examples"></a>Beispiele
+
+Sie können alle Zeilen einer Tabelle oder nur einen bestimmten Block löschen.
+
+* Löschen aller Zeilen in einer Tabelle:
+
+    ```kusto
+    .drop extents from TestTable
     ```
 
-* Wenn alte Daten nicht mehr erforderlich sind, löschen Sie sie, indem Sie die Beibehaltungsdauer auf Datenbank- oder Tabellenebene ändern.
+* Löschen eines bestimmten Blocks:
 
-    Stellen Sie sich eine Datenbank oder Tabelle vor, für die eine Beibehaltungsdauer von 90 Tagen festgelegt ist. Das Unternehmen braucht Veränderung, daher werden nur noch Daten aus den letzten 60 Tage benötigt. In diesem Fall löschen Sie die älteren Daten anhand einer der folgenden Methoden.
-
-    ```Kusto
-    .alter-merge database <DatabaseName> policy retention softdelete = 60d
-
-    .alter-merge table <TableName> policy retention softdelete = 60d
+    ```kusto
+    .drop extent e9fac0d2-b6d5-4ce3-bdb4-dea052d13b42
     ```
 
-    Weitere Informationen finden Sie unter [Aufbewahrungsrichtlinie](https://docs.microsoft.com/azure/kusto/concepts/retentionpolicy).
+## <a name="delete-individual-rows-using-purge"></a>Löschen einzelner Zeilen mithilfe der Datenbereinigung
 
-Wenn Sie Hilfe bei Datenlöschvorgängen benötigen, erstellen Sie eine Supportanfrage im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+[Die Datenbereinigung](/azure/kusto/concepts/data-purge) kann zum Löschen einzelner Zeilen verwendet werden. Die Löschung erfolgt nicht sofort und erfordert erhebliche Systemressourcen. Daher ist sie nur für Complianceszenarien zu empfehlen.  
+

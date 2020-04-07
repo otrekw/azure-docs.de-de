@@ -16,13 +16,13 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71c342ede77349b3f6c22093e5877ad5f5ce6549
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67807687"
 ---
-# <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Gewusst wie: Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer mit der Gruppenrichtlinie
+# <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Gewusst wie: Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer mithilfe von Gruppenrichtlinien
 
 In diesem Tutorial wird erläutert, wie Sie mithilfe von Gruppenrichtlinien die Zugriffsbereichserweiterung für Internet Explorer per Remotezugriff auf den Computern Ihrer Benutzer installieren. Diese Erweiterung ist für Benutzer von Internet Explorer erforderlich, die sich bei Apps anmelden müssen, die mit der [kennwortbasierten einmaligen Anmeldung](what-is-single-sign-on.md#password-based-sso)konfiguriert wurden.
 
@@ -52,7 +52,7 @@ Zunächst müssen Sie das Installationspaket an einem Speicherort im Netzwerk ab
 1. Laden Sie das folgende Microsoft Windows Installer-Paket (MSI-Datei) herunter: [Access Panel Extension.msi](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
 1. Kopieren Sie das Installationspaket an den gewünschten Speicherort auf der Freigabe.
 
-    ![Kopieren Sie die .msi-Datei in die Freigabe](./media/deploy-access-panel-browser-extension/copy-package.png)
+    ![Kopieren der MSI-Datei in die Freigabe](./media/deploy-access-panel-browser-extension/copy-package.png)
 
 1. Stellen Sie sicher, dass von den Clientcomputern aus auf das Installationspaket auf der Freigabe zugegriffen werden kann.
 
@@ -70,7 +70,7 @@ Zunächst müssen Sie das Installationspaket an einem Speicherort im Netzwerk ab
 
 1. Nachdem Sie eine Organisationseinheit ausgewählt haben, klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Gruppenrichtlinienobjekt hier erstellen und verknüpfen** aus.
 
-    ![Der Screenshot zeigt Ihnen die Option zur Erstellung eines neuen GPOs](./media/deploy-access-panel-browser-extension/create-gpo.png)
+    ![Der Screenshot zeigt die Option zum Erstellen eines neuen Gruppenrichtlinienobjekts](./media/deploy-access-panel-browser-extension/create-gpo.png)
 
 1. Geben Sie in der Eingabeaufforderung **Neues Gruppenrichtlinienobjekt** einen Namen für das neue Gruppenrichtlinienobjekt ein.
 1. Klicken Sie mit der rechten Maustaste auf das Gruppenrichtlinienobjekt, das Sie gerade erstellt haben, und wählen Sie **Bearbeiten** aus.
@@ -106,7 +106,7 @@ Zusätzlich zur Ausführung des Installationsprogramms muss jede Erweiterung fü
 
 1. Klicken Sie mit der rechten Maustaste auf **Add-On-Liste**, und wählen Sie **Bearbeiten** aus.
 
-    ![Klicken Sie mit der rechten Maustaste auf „Add-On-Liste“, und wählen Sie „Bearbeiten“ aus.](./media/deploy-access-panel-browser-extension/edit-add-on-list.png)
+    ![Klicken Sie mit der rechten Maustaste auf „Add-On-Liste“, und wählen Sie „Bearbeiten“ aus](./media/deploy-access-panel-browser-extension/edit-add-on-list.png)
 
 1. Wählen Sie im Fenster **Add-On-Liste** die Option **Aktiviert** aus. Klicken Sie im Abschnitt **Optionen** auf **Anzeigen...** .
 
@@ -128,7 +128,7 @@ Die Erweiterung sollte jetzt für die Computer in der ausgewählten Organisation
 
 Wenn sich Benutzer unter Verwendung der Zugriffsbereichserweiterung bei Websites anmelden, kann Internet Explorer fragen, ob der Benutzer sein Kennwort speichern möchte.
 
-![Zeigt Ihnen die „Möchten Sie Ihr Kennwort speichern?“-Eingabeaufforderung an.](./media/deploy-access-panel-browser-extension/remember-password-prompt.png)
+![Zeigt die Aufforderung „Möchten Sie Ihr Kennwort speichern...“ an](./media/deploy-access-panel-browser-extension/remember-password-prompt.png)
 
 Falls diese Frage nicht angezeigt werden soll, führen Sie die folgenden Schritte aus, um das Speichern von Kennwörtern durch AutoVervollständigen zu unterbinden:
 
@@ -140,12 +140,12 @@ Falls diese Frage nicht angezeigt werden soll, führen Sie die folgenden Schritt
    > [!NOTE]
    > In älteren Versionen von Active Directory heißt diese Einstellung unter Umständen noch **Kennwörter in AutoVervollständigen können nicht gespeichert werden**. Die Konfiguration für diese Einstellung unterscheidet sich von der in diesem Tutorial beschriebenen Einstellung.
 
-    ![Diese finden Sie in den Benutzereinstellungen.](./media/deploy-access-panel-browser-extension/disable-auto-complete.png)
+    ![Denken Sie daran, in den Benutzereinstellungen danach zu suchen](./media/deploy-access-panel-browser-extension/disable-auto-complete.png)
 
 1. Klicken Sie mit der rechten Maustaste auf die oben genannte Einstellung, und wählen Sie **Bearbeiten** aus.
 1. Wählen Sie im Fenster **AutoVervollständigen für Benutzernamen und Kennwörter in Formularen aktivieren** die Option **Deaktiviert** aus.
 
-    ![Wählen Sie „Deaktiviert“ für AutoVervollständigen aus.](./media/deploy-access-panel-browser-extension/disable-passwords.png)
+    ![Wählen Sie für das Feature „Automatische Vervollständigung aktivieren“ die Option „Deaktiviert“ aus](./media/deploy-access-panel-browser-extension/disable-passwords.png)
 
 1. Klicken Sie auf **OK** , um die Änderungen zu übernehmen und das Fenster zu schließen.
 

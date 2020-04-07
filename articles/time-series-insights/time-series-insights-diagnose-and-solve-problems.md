@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 02/04/2020
 ms.custom: seodec18
-ms.openlocfilehash: 35b330f27ba87aa18ce2c2f275a7b19fdae3cb65
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 209df97169c71d910677ffdb2e2b12593882445b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77024414"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80152581"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Diagnostizieren und Beheben von Problemen in der Time Series Insights-Umgebung
 
@@ -99,6 +99,22 @@ So beheben Sie den Rückstand
 1. Erhöhen Sie die SKU-Kapazität auf den maximal zulässigen Wert (in diesem Fall 10). Nachdem die Kapazität erhöht wurde, beginnt der Erfassungsprozess, wesentlich schneller aufzuholen. Die erhöhte Kapazität wird Ihnen in Rechnung gestellt. Um die Aufholgeschwindigkeit bei den historischen Daten zu visualisieren, können Sie das Verfügbarkeitsdiagramm im [Time Series Insights-Explorer](https://insights.timeseries.azure.com) anzeigen.
 
 2. Sobald der Rückstand aufgeholt ist, verringern Sie die SKU-Kapazität auf die normale Erfassungsrate.
+
+## <a name="problem-data-was-showing-previously-but-is-no-longer-showing"></a>Problem: Die Daten wurden zuvor angezeigt, jetzt aber nicht mehr
+
+TSI erfasst keine Daten mehr, aber Ereignisse werden immer noch in den Iot Hub oder den Event Hub gestreamt
+
+### <a name="cause-a-your-hub-access-key-was-regenerated-and-your-environment-needs-updating"></a>Ursache A: Ihr Zugriffsschlüssel für den Hub wurde neu generiert und Ihre Umgebung muss aktualisiert werden
+
+Dieses Problem tritt auf, wenn der Schlüssel, der beim Erstellen der Ereignisquelle angegeben wurde, nicht mehr gültig ist. In Time Series Insights werden in Ihrem Hub Telemetriedaten, aber keine empfangenen Nachrichten angezeigt. Wenn Sie nicht sicher sind, ob der Schlüssel neu generiert wurde, können Sie das Aktivitätsprotokoll Ihres Event Hubs nach „Namespace-Autorisierungsregeln erstellen oder aktualisieren“ oder „Dient zum Erstellen oder Aktualisieren von Iot Hub-Ressourcen“ für den IoT-Hub durchsuchen.
+
+Um Ihre Time Series Insights-Umgebung mit dem neuen Schlüssel zu aktualisieren, öffnen Sie die Hubressource im Azure-Portal und kopieren den neuen Schlüssel. Navigieren Sie zu ihrer TSI-Ressource, und klicken Sie auf „Ereignisquellen“. 
+
+   [![Aktualisieren des Schlüssels.](media/diagnose-and-solve-problems/update-hub-key-step-1.png)](media/diagnose-and-solve-problems/update-hub-key-step-1.png#lightbox)
+
+Wählen Sie die Ereignisquelle(n) aus, deren Erfassung beendet wurde, fügen Sie den neuen Schlüssel ein, und klicken Sie auf „Speichern“.
+
+   [![Aktualisieren des Schlüssels.](media/diagnose-and-solve-problems/update-hub-key-step-2.png)](media/diagnose-and-solve-problems/update-hub-key-step-2.png#lightbox)
 
 ## <a name="problem-my-event-sources-timestamp-property-name-setting-doesnt-work"></a>Problem: Meine Einstellung für den Namen der Zeitstempeleigenschaft der Ereignisquelle funktioniert nicht.
 
