@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 11/04/2019
-ms.openlocfilehash: 9cbfc17e7412b4d30f082354996721ee7b5d6d5b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 03/24/2020
+ms.openlocfilehash: d5c48b6036065f6182912c21c144cab80fc3cfbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510643"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246703"
 ---
 # <a name="what-is-azure-sql-database-edge-preview"></a>Was ist Azure SQL Database Edge (Vorschau)?
 
@@ -34,9 +34,8 @@ SQL Database Edge wird in drei unterschiedlichen Editionen oder Softwareplänen 
 
    |**Planen**  |**Beschreibung**  |
    |---------|---------|
-   |Developer  |  SKU nur für die Entwicklung, es gelten dieselben Drosselungslimits wie bei der unten aufgeführten SKU „Standard“. |
-   |Standard   |  Der Plan „Standard“ unterstützt bis zu 4 CPUs und bis zu 32 GB an Arbeitsspeicher für den SQL Database Edge-Container. |
-   |Premium    |  Die SKU „Premium“ unterstützt bis zu 8 Kerne und bis zu 64 GB an Arbeitsspeicher für den SQL Database Edge-Container. |
+   |Azure SQL Database Edge-Entwickler  |  Reine Entwicklungs-SKU; jeder SQL Database Edge-Container ist auf bis zu vier Kerne und 32 GB Arbeitsspeicher beschränkt.  |
+   |Azure SQL-Datenbank-Edge    |  Produktions-SKU; jeder SQL Database Edge-Container ist auf bis zu acht Kerne und 64 GB Arbeitsspeicher beschränkt. |
 
 ## <a name="pricing-and-availability"></a>Preise und Verfügbarkeit
 

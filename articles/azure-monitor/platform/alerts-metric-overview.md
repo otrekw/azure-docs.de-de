@@ -1,15 +1,15 @@
 ---
 title: Erhalten Sie Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor.
 description: Verschaffen Sie sich einen Überblick darüber, was Sie mit Metrikwarnungen erreichen können und wie sie in Azure Monitor funktionieren.
-ms.date: 12/5/2019
+ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 2f1734d30136be904aedf7d880922ba052130ec7
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: a6860cad077b597df923274f8971f5652d4ba9e3
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664728"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397970"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor
 
@@ -122,15 +122,28 @@ Wenn Sie die Anzahl der zurückliegenden Zeiträume und Verstöße erhöhen, kö
 
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Bedarfsorientierte Überwachung mithilfe von Metrikwarnungen in Azure Monitor
 
-Bisher haben Sie gesehen, wie eine einzelne Metrikwarnung zum Überwachen einer oder mehrerer metrischer Zeitreihen im Zusammenhang mit einer einzelnen Azure-Ressource verwendet werden kann. In vielen Fällen soll aber die gleiche Warnungsregel auf viele Ressourcen angewendet werden. Azure Monitor unterstützt darüber hinaus die Überwachung mehrerer Ressourcen (des gleichen Typs) mit einer Metrikwarnregel für Ressourcen, die in der gleichen Azure-Region vorhanden sind. Dieses Feature wird derzeit nur in der öffentlichen Azure-Cloud und nur für virtuelle Computer, SQL Server-Datenbanken, Pools für elastische SQL Server-Datenbanken und Data Box Edge-Geräte unterstützt. Außerdem ist dieses Feature nur für Plattformmetriken verfügbar und wird nicht für benutzerdefinierte Metriken unterstützt.
+Bisher haben Sie gesehen, wie eine einzelne Metrikwarnung zum Überwachen einer oder mehrerer metrischer Zeitreihen im Zusammenhang mit einer einzelnen Azure-Ressource verwendet werden kann. In vielen Fällen soll aber die gleiche Warnungsregel auf viele Ressourcen angewendet werden. Azure Monitor unterstützt darüber hinaus die Überwachung mehrerer Ressourcen (des gleichen Typs) mit einer Metrikwarnregel für Ressourcen, die in der gleichen Azure-Region vorhanden sind. 
 
-Sie können den Bereich für die Überwachung mit einer einzelnen Metrikwarnregel auf drei Arten angeben:
+Diese Funktion wird derzeit für Plattformmetriken (keine benutzerdefinierten Metriken) für die folgenden Dienste in den folgenden Azure-Clouds unterstützt:
+
+| Dienst | Öffentliches Azure | Behörden | China |
+|:--------|:--------|:--------|:--------|
+| Virtuelle Computer  | **Ja** | Nein | Nein |
+| SQL Server-Datenbanken | **Ja** | **Ja** | Nein |
+| Pools für elastische SQL-Datenbanken | **Ja** | **Ja** | Nein |
+| Data Box Edge-Geräte | **Ja** | **Ja** | Nein |
+
+Sie können den Bereich für die Überwachung mit einer einzelnen Metrikwarnregel auf drei Arten angeben. Beispielsweise können Sie bei virtuellen Computern den Bereich wie folgt angeben:  
 
 - Als Liste mit virtuellen Computern einer Azure-Region unter einem Abonnement
 - Alle virtuellen Computer (in einer Azure-Region) in einer oder mehreren Ressourcengruppen eines Abonnements
 - Alle virtuellen Computer (in einer Azure-Region) unter einem Abonnement
 
 Das Erstellen von Metrikwarnungsregeln, mit denen mehrere Ressourcen überwacht werden, ähnelt dem [Erstellen einer Metrikwarnung](alerts-metric.md), mit der eine einzelne Ressource überwacht wird. Der einzige Unterschied ist, dass Sie alle Ressourcen auswählen, die überwacht werden sollen. Sie können diese Regeln auch mit [Azure Resource Manager-Vorlagen](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources) erstellen. Sie erhalten für jede überwachte Ressource gesonderte Benachrichtigungen.
+
+> [!NOTE]
+>
+> In einer Metrikwarnungsregel, mit der mehrere Ressourcen überwacht werden, ist nur eine Bedingung zulässig.
 
 ## <a name="typical-latency"></a>Typische Wartezeit
 

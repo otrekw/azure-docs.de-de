@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 02/28/2020
-ms.openlocfilehash: e2d1a1c6e924e879e05af80e2e36a38e8a5cde66
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.date: 03/27/2020
+ms.openlocfilehash: 9a1923057bc318869f491791520aacb4d0d17591
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78273954"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80346631"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Konfigurieren einer selbstgehosteten IR als Proxy für eine Azure-SSIS IR in Azure Data Factory
 
@@ -25,7 +25,7 @@ In diesem Artikel wird beschrieben, wie Sie SSIS-Pakete (SQL Server Integration 
 
 Mit diesem Feature können Sie auf lokale Daten zugreifen, ohne [Ihre Azure-SSIS IR mit einem virtuellen Netzwerk verknüpfen](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network) zu müssen. Dieses Feature ist nützlich, wenn Ihr Unternehmensnetzwerk eine zu komplexe Konfiguration aufweist oder wenn eine Richtlinie zu restriktiv für Sie ist, um Ihre Azure-SSIS IR darin einfügen zu können.
 
-Dieses Feature teilt Pakete, die einen Datenflusstask mit einer lokalen Datenquelle enthalten, in zwei Stagingtasks auf: 
+Dieses Feature teilt SSIS-Datenflusstasks mit einer lokalen Datenquelle in zwei Stagingtasks auf: 
 * Der erste Task, der in Ihrer selbstgehosteten IR ausgeführt wird, verschiebt zuerst Daten aus der lokalen Datenquelle in einen Stagingbereich in Ihrem Azure Blob Storage.
 * Mit dem zweiten Task, der in Ihrer Azure-SSIS IR ausgeführt wird, werden dann Daten aus dem Stagingbereich in das vorgesehene Datenziel verschoben.
 
@@ -52,11 +52,11 @@ Zum Schluss laden Sie die neueste Version der selbstgehosteten IR sowie die zus�
 
 Falls dies noch nicht geschehen ist, erstellen Sie einen mit Azure Blob Storage verknüpften Dienst in derselben Data Factory, in der Ihre Azure-SSIS IR eingerichtet wurde. Informationen dazu finden Sie unter [Erstellen eines mit Azure Data Factory verknüpften Diensts](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service). Führen Sie unbedingt die folgenden Schritte aus:
 - Wählen Sie **Azure Blob Storage** als **Datenspeicher** aus.  
-- Wählen Sie unter **Connect via integration runtime** (Verbindung über Integration Runtime herstellen) die Option **AutoResolveIntegrationRuntime** aus.  
+- Wählen Sie für **Verbinden über Integration Runtime** die Option **AutoResolveIntegrationRuntime** (nicht Ihre Azure-SSIS IR oder Ihre selbstgehostete IR) aus, da Sie die Standard-Azure IR zum Abrufen von Zugriffsanmeldeinformationen für Ihre Azure Blob Storage-Instanz verwenden.  
 - Wählen Sie unter **Authentifizierungsmethode** eine der Optionen **Kontoschlüssel**, **SAS-URI** oder **Dienstprinzipal** aus.  
 
     >[!TIP]
-    >Wenn Sie  **Dienstprinzipal** auswählen, sollten Sie mindestens die Rolle  *Mitwirkender an Storage-Blobdaten*  zuweisen. Weitere Informationen finden Sie unter  [Azure Blob Storage-Connector](connector-azure-blob-storage.md#linked-service-properties).
+    >Wenn Sie die Methode **Dienstprinzipal** auswählen, gewähren Sie dem Dienstprinzipal mindestens die Rolle *Mitwirkender an Storage-Blobdaten*. Weitere Informationen finden Sie unter  [Azure Blob Storage-Connector](connector-azure-blob-storage.md#linked-service-properties).
 
 ![Vorbereiten des mit Azure Blob Storage verknüpften Diensts für das Staging](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -153,7 +153,7 @@ Wenn für die Stagingtasks in Ihrer selbstgehosteten IR die Windows-Authentifizi
 
 Ihre Stagingtasks werden mit dem Dienstkonto der selbstgehosteten IR (standardmäßig *NT SERVICE\DIAHostService*) aufgerufen, und der Zugriff auf Ihre Datenspeicher erfolgt über das Windows-Authentifizierungskonto. Beiden Konten müssen bestimmte Sicherheitsrichtlinien zugewiesen werden. Wechseln Sie auf dem Computer mit der selbstgehosteten IR zu **Lokale Sicherheitsrichtlinie** > **Lokale Richtlinien** > **Zuweisen von Benutzerrechten**, und führen Sie dann die folgenden Schritte aus:
 
-1. Weisen Sie die Richtlinien *Arbeitsspeicherkontingente für einen Prozess anpassen* und *Token auf Prozessebene ersetzen* dem Dienstkonto der selbstgehosteten IR zu. Dies sollte automatisch erfolgen, wenn Sie Ihre selbstgehostete IR mit dem Standarddienstkonto installieren. Wenn Sie ein anderes Dienstkonto verwenden, müssen Sie ihm diese Richtlinien zuweisen.
+1. Weisen Sie die Richtlinien *Arbeitsspeicherkontingente für einen Prozess anpassen* und *Token auf Prozessebene ersetzen* dem Dienstkonto der selbstgehosteten IR zu. Dies sollte automatisch erfolgen, wenn Sie Ihre selbstgehostete IR mit dem Standarddienstkonto installieren. Wenn dies nicht der Fall ist, weisen Sie diese Richtlinien manuell zu. Wenn Sie ein anderes Dienstkonto verwenden, müssen Sie ihm diese Richtlinien zuweisen.
 
 1. Weisen Sie dem Windows-Authentifizierungskonto die Richtlinie *Als Dienst anmelden* zu.
 
@@ -163,11 +163,17 @@ Die ersten in Ihrer selbstgehosteten IR ausgeführten Stagingtasks werden separa
 
 Die zweiten in Ihrer selbstgehosteten IR ausgeführten Stagingtasks werden nicht separat abgerechnet, aber Ihre Ausführung von Azure-SSIS IR wird wie im Artikel [Preise für Azure-SSIS IR](https://azure.microsoft.com/pricing/details/data-factory/ssis/) beschrieben in Rechnung gestellt.
 
+## <a name="enabling-tls-12"></a>Aktivieren von TLS 1.2
+
+Wenn Sie starke Kryptografie und ein sichereres Netzwerkprotokoll (TLS 1.2) verwenden müssen und ältere SSL-/TLS-Versionen auf Ihrer selbstgehosteten IR deaktivieren, können Sie das Skript *main.cmd* aus dem Ordner *CustomSetupScript/UserScenarios/TLS 1.2* des öffentlichen Vorschaucontainers herunterladen und ausführen.  Wenn Sie [Azure Storage-Explorer](https://storageexplorer.com/) verwenden, können Sie eine Verbindung mit unserem öffentlichen Vorschaucontainer herstellen, indem Sie den folgenden SAS-URI eingeben:
+
+`https://ssisazurefileshare.blob.core.windows.net/publicpreview?sp=rl&st=2020-03-25T04:00:00Z&se=2025-03-25T04:00:00Z&sv=2019-02-02&sr=c&sig=WAD3DATezJjhBCO3ezrQ7TUZ8syEUxZZtGIhhP6Pt4I%3D`
+
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 
-- Derzeit werden nur Datenflusstasks mit Open Database Connectivity-, OLE DB- oder Flatfile-Verbindungs-Managern und ODBC-, OLE DB- oder Flatfilequellen unterstützt. 
+- Derzeit werden nur Datenflusstasks mit ODBC- (Open Database Connectivity), OLE DB- oder Flatfilequellen unterstützt. 
 - Derzeit werden nur mit Azure Blob Storage verknüpfte Dienste unterstützt, die mit einer der Authentifizierungen *Kontoschlüssel*, *Shared Access Signature (SAS)-URI* oder *Dienstprinzipal* konfiguriert wurden.
-- *ParameterMapping* in der OLE DB-Quelle wird noch nicht unterstützt. Verwenden Sie zur Problemumgehung die Option *SQL-Befehl aus Variable* als *AccessMode*, und verwenden Sie die Option *Ausdruck*, um die Variablen/Parameter in einen SQL-Befehl einzufügen. Um dies zu veranschaulichen, finden Sie ein Beispielpaket *(ParameterMappingSample.dtsx)* im Ordner *SelfhostedIrProxy/Limitations* in unserem Container in der öffentlichen Vorschau. Geben Sie den folgenden SAS-URI in [Azure Storage-Explorer](https://storageexplorer.com/) ein: *https://ssisazurefileshare.blob.core.windows.net/publicpreview?sp=rl&st=2018-04-08T14%3A10%3A00Z&se=2020-04-10T14%3A10%3A00Z&sv=2017-04-17&sig=mFxBSnaYoIlMmWfxu9iMlgKIvydn85moOnOch6%2F%2BheE%3D&sr=c* .
+- *ParameterMapping* in der OLE DB-Quelle wird noch nicht unterstützt. Verwenden Sie zur Problemumgehung die Option *SQL-Befehl aus Variable* als *AccessMode*, und verwenden Sie die Option *Ausdruck*, um die Variablen/Parameter in einen SQL-Befehl einzufügen. Eine Veranschaulichung finden Sie im Paket *ParameterMappingSample.dtsx* im Ordner *SelfHostedIRProxy/Limitations* in unserem öffentlichen Vorschaucontainer. Wenn Sie Azure Storage-Explorer verwenden, können Sie eine Verbindung mit unserem öffentlichen Vorschaucontainer herstellen, indem Sie den obigen SAS-URI eingeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

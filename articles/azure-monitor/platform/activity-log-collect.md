@@ -1,58 +1,114 @@
 ---
-title: Erfassen und Analysieren von Azure-Aktivitätsprotokollen im Log Analytics-Arbeitsbereich | Microsoft-Dokumentation
+title: Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor
 description: Erfassen Sie das Azure-Aktivitätsprotokoll in Azure Monitor-Protokollen, und verwenden Sie die Überwachungslösung, um das Azure-Aktivitätsprotokoll in all Ihren Azure-Abonnements zu analysieren und zu durchsuchen.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/30/2019
-ms.openlocfilehash: 044f974d83eba098820639e67412110329d5ad7d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/24/2020
+ms.openlocfilehash: 4265f6050b237cb40afeddfc228ade9be06be039
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668977"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396779"
 ---
-# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Erfassen und Analysieren von Azure-Aktivitätsprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor
+# <a name="collect-and-analyze-azure-activity-log-in-azure-monitor"></a>Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor
+Das [Azure-Aktivitätsprotokoll](platform-logs-overview.md) ist ein [Plattformprotokoll](platform-logs-overview.md), das einen Einblick in Ereignisse auf Abonnementebene bietet, die in Azure aufgetreten sind. Zwar können Sie das Aktivitätsprotokoll im Azure-Portal anzeigen, doch sollten Sie es so konfigurieren, dass es an einen Log Analytics-Arbeitsbereich gesendet wird, um die Verwendung zusätzlicher Features von Azure Monitor zu ermöglichen. In diesem Artikel wird beschrieben, wie Sie diese Konfiguration ausführen und das Aktivitätsprotokoll an Azure Storage und Event Hubs senden.
 
-> [!WARNING]
-> Sie können das Aktivitätsprotokoll jetzt mithilfe einer Diagnoseeinstellung in einem Log Analytics-Arbeitsbereich erfassen (ähnlich wie bei der Erfassung von Ressourcenprotokollen). Weitere Informationen finden Sie unter [Erfassen und Analysieren von Azure-Aktivitätsprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](diagnostic-settings-legacy.md).
+Das Erfassen des Aktivitätsprotokolls in einem Log Analytics-Arbeitsbereich bietet folgende Vorteile:
 
-Das [Azure-Aktivitätsprotokoll](platform-logs-overview.md) bietet Einblick in Ereignisse auf Abonnementebene, die in Ihrem Azure-Abonnement aufgetreten sind. Dieser Artikel beschreibt, wie Sie das Aktivitätsprotokoll in einem Log Analytics-Arbeitsbereich erfassen und die [Überwachungslösung](../insights/solutions.md) der Aktivitätsprotokollanalyse verwenden, die Protokollabfragen und Ansichten zum Analysieren dieser Daten bereitstellt. 
-
-Das Verbinden des Aktivitätsprotokolls mit einem Log Analytics-Arbeitsbereich bietet folgende Vorteile:
-
-- Konsolidieren des Aktivitätsprotokolls mehrerer Azure-Abonnements an einem einzigen Ort zur Analyse
-- Speichern von Aktivitätsprotokolleinträgen für mehr als 90 Tage
+- Keine Gebühren für die Erfassung oder Aufbewahrung von Aktivitätsprotokolldaten, die in einem Log Analytics-Arbeitsbereich gespeichert sind
 - Korrelieren von Aktivitätsprotokolldaten mit anderen von Azure Monitor gesammelten Überwachungsdaten
-- Verwenden von [Protokollabfragen](../log-query/log-query-overview.md) zum Ausführen komplexer Analysen und Erhalten tiefer Einblicke in Aktivitätsprotokolleinträge
+- Verwenden von Protokollabfragen zum Ausführen komplexer Analysen und Erhalten tiefer Einblicke in Aktivitätsprotokolleinträge
+- Verwenden von Protokollwarnungen mit Aktivitätseinträgen, die eine komplexere Warnungslogik ermöglichen
+- Speichern von Aktivitätsprotokolleinträgen für mehr als 90 Tage
+- Konsolidieren von Protokolleinträgen mehrerer Azure-Abonnements und -Mandanten an einem einzigen Ort zur gemeinsamen Analyse
 
-## <a name="connect-to-log-analytics-workspace"></a>Verbinden mit einem Log Analytics-Arbeitsbereich
-Ein einzelner Arbeitsbereich kann auf demselben Azure-Mandanten für mehrere Abonnements mit dem Aktivitätsprotokoll verbunden werden. Informationen zur Erfassung für mehrere Mandanten finden Sie unter [Abonnementübergreifendes Erfassen von Azure-Aktivitätsprotokollen in einem Log Analytics-Arbeitsbereich in verschiedenen Azure Active Directory-Mandanten](activity-log-collect-tenants.md).
 
-> [!IMPORTANT]
-> Möglicherweise erhalten Sie beim folgenden Vorgang einen Fehler, wenn die Ressourcenanbieter „ Microsoft.OperationalInsights“ und „Microsoft.OperationsManagement“ nicht für Ihr Abonnement registriert sind. Informationen zum Registrieren dieser Anbieter finden Sie unter [Azure-Ressourcenanbieter und-Typen](../../azure-resource-manager/management/resource-providers-and-types.md).
 
-Gehen Sie folgendermaßen vor, um das Aktivitätsprotokoll mit Ihrem Log Analytics-Arbeitsbereich zu verbinden:
+## <a name="collecting-activity-log"></a>Erfassen des Aktivitätsprotokolls
+Das Aktivitätsprotokoll wird automatisch für die [Anzeige im Azure-Portal](activity-log-view.md) erfasst. Zur Erfassung in einem Log Analytics-Arbeitsbereich oder zum Senden an Azure Storage oder Event Hubs erstellen Sie eine [Diagnoseeinstellung](diagnostic-settings.md). Dieselbe Methode wird auch von Ressourcenprotokollen verwendet, sodass sie für alle [Plattformprotokolle](platform-logs-overview.md) konsistent ist.  
+
+Wählen Sie zum Erstellen einer Diagnoseeinstellung für das Aktivitätsprotokoll in Azure Monitor im Menü **Aktivitätsprotokoll** die Option **Diagnoseeinstellungen** aus. Weitere Informationen zum Erstellen der Einstellung finden Sie unter [Erstellen einer Diagnoseeinstellung zum Erfassen von Plattformprotokollen und Metriken in Azure](diagnostic-settings.md). Eine Beschreibung der Kategorien, die gefiltert werden können, finden Sie unter [Kategorien im Aktivitätsprotokoll](activity-log-view.md#categories-in-the-activity-log). Wenn Sie über Legacyeinstellungen verfügen, stellen Sie sicher, dass Sie diese vor dem Erstellen einer Diagnoseeinstellung deaktivieren. Wenn beide Erfassungsmethoden aktiviert sind, kann dies zu doppelten Daten führen.
+
+![Diagnoseeinstellungen](media/diagnostic-settings-subscription/diagnostic-settings.png)
+
+
+> [!NOTE]
+> Derzeit können Sie eine Diagnoseeinstellung auf Abonnementebene nur über das Azure-Portal und mithilfe einer Resource Manager-Vorlage erstellen. 
+
+
+## <a name="legacy-settings"></a>Legacyeinstellungen 
+Zwar sind Diagnoseeinstellungen die bevorzugte Methode zum Senden des Aktivitätsprotokolls an verschiedene Ziele, doch funktionieren Legacymethoden auch weiterhin, falls Sie diese nicht durch eine Diagnoseeinstellung ersetzen. Diagnoseeinstellungen bieten die folgenden Vorteile gegenüber den Legacymethoden, und es wird empfohlen, die Konfiguration zu aktualisieren:
+
+- Konsistente Methode zum Erfassen aller Plattformprotokolle
+- Erfassen des Aktivitätsprotokolls übergreifend für mehrere Abonnements und Mandanten
+- Filtern der Erfassung, um nur Protokolle für bestimmte Kategorien zu erfassen
+- Sammeln aller Aktivitätsprotokollkategorien. Einige Kategorien werden mit der Legacymethode nicht erfasst.
+- Niedrigere Latenz für Protokollerfassung. Die vorherige Methode weist eine Latenz von ungefähr 15 Minuten auf, während sich die Zeit bei Diagnoseeinstellungen nur um etwa eine Minute verlängert.
+
+
+
+### <a name="log-profiles"></a>Protokollprofile
+Protokollprofile sind die Legacymethode zum Senden des Aktivitätsprotokolls an Azure Storage oder Event Hubs. Verwenden Sie das folgende Verfahren, um weiterhin mit einem Protokollprofil zu arbeiten oder um es in Vorbereitung auf die Migration zu einer Diagnoseeinstellung zu deaktivieren.
+
+1. Wählen Sie im Azure-Portal im Menü **Azure Monitor** die Option **Aktivitätsprotokoll** aus.
+3. Klicken Sie auf **Diagnoseeinstellungen**.
+
+   ![Diagnoseeinstellungen](media/diagnostic-settings-subscription/diagnostic-settings.png)
+
+4. Klicken Sie auf das lila Banner, um die Legacybenutzeroberfläche anzuzeigen.
+
+    ![Legacybenutzeroberfläche](media/diagnostic-settings-subscription/legacy-experience.png)
+
+### <a name="log-analytics-workspace"></a>Log Analytics-Arbeitsbereich
+Die Legacymethode zum Erfassen des Aktivitätsprotokolls in einem Log Analytics-Arbeitsbereich besteht darin, das Protokoll in der Arbeitsbereichskonfiguration zu verbinden. 
 
 1. Wählen Sie im Azure-Portal im Menü **Log Analytics-Arbeitsbereiche** den Arbeitsbereich zum Erfassen des Aktivitätsprotokolls aus.
 1. Wählen Sie im Menü des Arbeitsbereichs im Abschnitt **Arbeitsbereichsdatenquellen** die Option **Azure-Aktivitätsprotokoll** aus.
 1. Klicken Sie auf das Abonnement, mit dem Sie eine Verbindung herstellen möchten.
 
-    ![Arbeitsbereiche](media/activity-log-export/workspaces.png)
+    ![Arbeitsbereiche](media/activity-log-collect/workspaces.png)
 
 1. Klicken Sie auf **Verbinden**, um das Aktivitätsprotokoll im Abonnement mit dem ausgewählten Arbeitsbereich zu verbinden. Wenn das Abonnement bereits mit einem anderen Arbeitsbereich verbunden ist, klicken Sie zuerst auf **Trennen**, um die Verbindung zu trennen.
 
-    ![Verbinden von Arbeitsbereichen](media/activity-log-export/connect-workspace.png)
+    ![Verbinden von Arbeitsbereichen](media/activity-log-collect/connect-workspace.png)
 
-## <a name="analyze-in-log-analytics-workspace"></a>Analysieren im Log Analytics-Arbeitsbereich
-Wenn Sie ein Aktivitätsprotokoll mit einem Log Analytics-Arbeitsbereich verbinden, werden Einträge in den Arbeitsbereich in eine Tabelle namens **AzureActivity** geschrieben, die Sie mit einer [Protokollabfrage](../log-query/log-query-overview.md) abrufen können. Die Struktur dieser Tabelle ist je nach [Kategorie des Protokolleintrags](activity-log-view.md#categories-in-the-activity-log) verschieden. Eine Beschreibung der einzelnen Kategorien finden Sie unter [Ereignisschema des Azure-Aktivitätsprotokolls](activity-log-schema.md).
+
+Zum Deaktivieren der Einstellung führen Sie dasselbe Verfahren aus, und klicken Sie auf **Trennen**, um das Abonnement aus dem Arbeitsbereich zu entfernen.
+
+
+## <a name="analyze-activity-log-in-log-analytics-workspace"></a>Analysieren des Aktivitätsprotokolls im Log Analytics-Arbeitsbereich
+Wenn Sie ein Aktivitätsprotokoll mit einem Log Analytics-Arbeitsbereich verbinden, werden Einträge in den Arbeitsbereich in eine Tabelle namens *AzureActivity* geschrieben, die Sie mit einer [Protokollabfrage](../log-query/log-query-overview.md) abrufen können. Die Struktur dieser Tabelle ist je nach [Kategorie des Protokolleintrags](activity-log-view.md#categories-in-the-activity-log) verschieden. Eine Beschreibung der einzelnen Kategorien finden Sie unter [Ereignisschema des Azure-Aktivitätsprotokolls](activity-log-schema.md).
+
+
+### <a name="data-structure-changes"></a>Änderungen der Datenstruktur
+Mit Diagnoseeinstellungen werden dieselben Daten wie mit der Legacymethode zum Erfassen des Aktivitätsprotokolls gesammelt, jedoch mit einigen Änderungen an der Struktur der Tabelle *AzureActivity*.
+
+Die Spalten in der folgenden Tabelle sind im aktualisierten Schema veraltet. Sie sind weiterhin in *AzureActivity* vorhanden, verfügen aber über keine Daten. Die Ersatzspalten sind nicht neu, enthalten aber dieselben Daten wie die veralteten Spalte. Sie haben ein anderes Format, sodass Sie ggf. Protokollabfragen ändern müssen, die diese Spalten verwenden. 
+
+| Veraltete Spalte | Ersatzspalte |
+|:---|:---|
+| ActivityStatus    | ActivityStatusValue    |
+| ActivitySubstatus | ActivitySubstatusValue |
+| OperationName     | OperationNameValue     |
+| ResourceProvider  | ResourceProviderValue  |
+
+> [!IMPORTANT]
+> In einigen Fällen werden die Werte in diesen Spalten vollständig in Großbuchstaben angegeben. Wenn Ihre Abfrage diese Spalten umfasst, sollten Sie den [=~](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators)-Operator verwenden, um einen Vergleich ohne Beachtung der Groß- und Kleinschreibung durchzuführen.
+
+Die folgenden Spalten wurden *AzureActivity* im aktualisierten Schema hinzugefügt:
+
+- Authorization_d
+- Claims_d
+- Properties_d
+
 
 ## <a name="activity-logs-analytics-monitoring-solution"></a>Überwachungslösung der Aktivitätsprotokollanalyse
-Die Azure Log Analytics-Überwachungslösung umfasst mehrere Protokollabfragen und Ansichten zum Analysieren der Aktivitätsprotokolldatensätze in Ihrem Log Analytics-Arbeitsbereich.
+Die Azure Log Analytics-Überwachungslösung wird bald veraltet sein und durch eine Arbeitsmappe ersetzt, die das aktualisierte Schema im Log Analytics-Arbeitsbereich verwendet. Sie können die Lösung weiterhin verwenden, wenn sie bereits aktiviert ist, doch ist dies nur möglich, wenn Sie das Aktivitätsprotokoll mithilfe von Legacyeinstellungen erfassen. 
 
-### <a name="install-the-solution"></a>Installieren der Lösung
-Verwenden Sie das unter [Installieren einer Überwachungslösung](../insights/solutions.md#install-a-monitoring-solution) beschriebene Verfahren, um die Überwachungslösung der **Aktivitätsprotokollanalyse** zu installieren. Es ist keine zusätzliche Konfiguration erforderlich.
+
 
 ### <a name="use-the-solution"></a>Verwenden der Lösung
 Auf Überwachungslösungen wird im Azure-Portal über das Menü **Monitor** zugegriffen. Wählen Sie im Abschnitt **Insights** die Option **Mehr** aus, um die Seite **Übersicht** mit den Lösungskacheln zu öffnen. Die Kachel **Azure-Aktivitätsprotokolle** zeigt die Anzahl der **AzureActivity**-Datensätze in Ihrem Arbeitsbereich.
@@ -64,12 +120,96 @@ Klicken Sie auf die Kachel **Azure-Aktivitätsprotokolle**, um die Ansicht **Azu
 
 ![Dashboard „Azure-Aktivitätsprotokolle“](media/collect-activity-logs/activity-log-dash.png)
 
-| Visualisierungskomponente | BESCHREIBUNG |
-| --- | --- |
-| Azure Activity Log Entries (Azure-Aktivitätsprotokolleinträge) | Zeigt ein Balkendiagramm aller Datensätze des ersten Azure-Aktivitätsprotokolleintrags für den ausgewählten Datumsbereich sowie eine Liste der ersten zehn Aktivitätsaufrufer an. Klicken Sie auf das Balkendiagramm, um eine Protokollsuche für `AzureActivity` durchzuführen. Klicken Sie auf ein Aufruferelement, um eine Protokollsuche durchzuführen, mit der alle Aktivitätsprotokolleinträge für das Element zurückgegeben werden. |
-| Activity Logs by Status (Aktivitätsprotokolle nach Status) | Zeigt ein Ringdiagramm für den Status der Azure-Aktivitätsprotokolle für den ausgewählten Datumsbereich sowie eine Liste der ersten zehn Statuseinträge an. Klicken Sie auf das Diagramm, um eine Protokollabfrage für `AzureActivity | summarize AggregatedValue = count() by ActivityStatus` durchzuführen. Klicken Sie auf ein Statuselement, um eine Protokollsuche durchzuführen, mit der alle Aktivitätsprotokolleinträge für das Statuselement zurückgegeben werden. |
-| Activity Logs by Resource (Aktivitätsprotokolle nach Ressource) | Zeigt die Gesamtanzahl der Ressourcen mit Aktivitätsprotokollen an und listet die ersten zehn Ressourcen mit der Anzahl der Datensätze für jede Ressource auf. Klicken Sie auf den Gesamtbereich, um eine Protokollsuche für `AzureActivity | summarize AggregatedValue = count() by Resource` durchzuführen, in der alle für die Lösung verfügbaren Azure-Ressourcen angezeigt werden. Klicken Sie auf eine Ressource, um eine Protokollabfrage durchzuführen, mit der alle Aktivitätsdatensätze für die Ressource zurückgegeben werden. |
-| Activity Logs by Resource Provider (Aktivitätsprotokolle nach Ressourcenanbieter) | Zeigt die Gesamtanzahl der Ressourcenanbieter an, die Aktivitätsprotokolle generieren, und listet die ersten zehn Anbieter auf. Klicken Sie auf den Gesamtbereich, um eine Protokollabfrage für `AzureActivity | summarize AggregatedValue = count() by ResourceProvider` durchzuführen, in der alle Azure-Ressourcenanbieter angezeigt werden. Klicken Sie auf einen Ressourcenanbieter, um eine Protokollabfrage durchzuführen, mit der alle Aktivitätsdatensätze für den Anbieter zurückgegeben werden. |
+
+### <a name="enable-the-solution-for-new-subscriptions"></a>Aktivieren der Lösung für neue Abonnements
+In Kürze können Sie die Lösung für die Aktivitätsprotokollanalyse Ihrem Abonnement nicht mehr über das Azure-Portal hinzufügen. Sie können sie mithilfe des folgenden Verfahrens mit einer Resource Manager-Vorlage hinzufügen. 
+
+1. Kopieren Sie den folgenden JSON-Code in eine Datei mit dem Namen *ActivityLogTemplate.json*.
+
+    ```json
+    {
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "type": "String",
+            "defaultValue": "my-workspace",
+            "metadata": {
+              "description": "Specifies the name of the workspace."
+            }
+        },
+        "location": {
+            "type": "String",
+            "allowedValues": [
+              "east us",
+              "west us",
+              "australia central",
+              "west europe"
+            ],
+            "defaultValue": "australia central",
+            "metadata": {
+              "description": "Specifies the location in which to create the workspace."
+            }
+        }
+      },
+        "resources": [
+        {
+            "type": "Microsoft.OperationalInsights/workspaces",
+            "name": "[parameters('workspaceName')]",
+            "apiVersion": "2015-11-01-preview",
+            "location": "[parameters('location')]",
+            "properties": {
+                "features": {
+                    "searchVersion": 2
+                }
+            }
+        },
+        {
+            "type": "Microsoft.OperationsManagement/solutions",
+            "apiVersion": "2015-11-01-preview",
+            "name": "[concat('AzureActivity(', parameters('workspaceName'),')')]",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+                "[resourceId('microsoft.operationalinsights/workspaces', parameters('workspaceName'))]"
+            ],
+            "plan": {
+                "name": "[concat('AzureActivity(', parameters('workspaceName'),')')]",
+                "promotionCode": "",
+                "product": "OMSGallery/AzureActivity",
+                "publisher": "Microsoft"
+            },
+            "properties": {
+                "workspaceResourceId": "[resourceId('microsoft.operationalinsights/workspaces', parameters('workspaceName'))]",
+                "containedResources": [
+                    "[concat(resourceId('microsoft.operationalinsights/workspaces', parameters('workspaceName')), '/views/AzureActivity(',parameters('workspaceName'))]"
+                ]
+            }
+        },
+        {
+          "type": "Microsoft.OperationalInsights/workspaces/datasources",
+          "kind": "AzureActivityLog",
+          "name": "[concat(parameters('workspaceName'), '/', subscription().subscriptionId)]",
+          "apiVersion": "2015-11-01-preview",
+          "location": "[parameters('location')]",
+          "dependsOn": [
+              "[parameters('WorkspaceName')]"
+          ],
+          "properties": {
+              "linkedResourceId": "[concat(subscription().Id, '/providers/microsoft.insights/eventTypes/management')]"
+          }
+        }
+      ]
+    }    
+    ```
+
+2. Stellen Sie die Vorlage mithilfe der folgenden PowerShell-Befehle bereit:
+
+    ```PowerShell
+    Connect-AzAccount
+    Select-AzSubscription <SubscriptionName>
+    New-AzResourceGroupDeployment -Name activitysolution -ResourceGroupName <ResourceGroup> -TemplateFile <Path to template file>
+    ```
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

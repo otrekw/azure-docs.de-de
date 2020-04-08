@@ -13,21 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2019
 ms.author: memildin
-ms.openlocfilehash: 15a94a9724fac29d36f6bb88ee4810b3bc7ca607
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 30405ce5cc875144fcd1cf83d4a3f883a0304989
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603481"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79415770"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>Verbessern des Secure Score in Azure Security Center
 
 > [!NOTE]
-> Es ist ein erweiterter Secure Score als Vorschauversion verfügbar. Der erweiterte Secure Score wird den vorhandenen Secure Score ersetzen, beide stehen aber für eine gewisse Zeit gemeinsam zur Verfügung, um den Übergang zu vereinfachen.
+> In diesem Artikel geht es um die frühere Version von Secure Score. Diese Secure Score-Funktion ist weiterhin über die Benutzeroberfläche verfügbar, wird jedoch im Lauf der Zeit eingestellt. Die beiden Secure Score-Funktionen werden parallel ausgeführt, um einen reibungslosen Übergang zu ermöglichen.
 >
-> Ausführliche Informationen zu den Vorteilen des erweiterten Secure Score finden Sie [hier](secure-score-security-controls.md).
+> Ausführliche Informationen zum neueren Secure Score finden Sie [hier](secure-score-security-controls.md).
 >
-> Um an der Vorschau teilzunehmen, öffnen Sie das Azure-Portal, starten Sie Azure Security Center, und wählen Sie Secure Score aus. Dort sehen Sie ein Banner am oberen Rand der Seite, in dem der neue Secure Score angeboten wird. Alternativ können Sie [hier](https://aka.ms/ascnewscore) klicken.
 
 Bei so vielen Diensten, die Sicherheitsvorteile bieten, ist es oft schwierig zu wissen, welche Schritte zum Sichern und Schützen Ihrer Workload zuerst ausgeführt werden sollten. Sicherheitsbewertung überprüft Ihre Sicherheitsempfehlungen und priorisiert sie für Sie, damit Sie wissen, welche Empfehlungen Sie zuerst durchführen sollten. Dies hilft Ihnen, die schwerwiegendsten Sicherheitsrisiken zu finden, damit Sie die Untersuchung priorisieren können. Sicherheitsbewertung ist ein Tool, mit dem Sie den Sicherheitsstatus bewerten können.
 
@@ -75,14 +74,11 @@ Anhand der **Auswirkungen der Empfehlung** können Sie sehen, um wie viel sich d
 
 Die Empfehlung zeigt, welche Bedrohungen für Ihre Workload bestehen, falls die Schritte zur Behebung nicht ausgeführt werden.
 
-![Sicherheitsbewertung für einzelne Empfehlung](./media/security-center-secure-score/indiv-recommendation-secure-score.png)
-
-
+![Secure Score für einzelne Empfehlung](./media/security-center-secure-score/indiv-recommendation-secure-score.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wurde gezeigt, wie Sie den Sicherheitsstatus mithilfe von **Sicherheitsbewertung** in Azure Security Center verbessern. Weitere Informationen zu Security Center finden Sie unter folgendem Link:
 
-* [Azure Security Center – häufig gestellte Fragen](faq-general.md): Hier finden Sie Antworten auf häufig gestellte Fragen zum Dienst und zur Sicherheitsbewertung.
+* [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md): Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-* [Erweiterte Sicherheitsbewertung](secure-score-security-controls.md): Erfahren Sie mehr über die Vorteile der erweiterten Sicherheitsbewertung (derzeit in der Vorschauphase).

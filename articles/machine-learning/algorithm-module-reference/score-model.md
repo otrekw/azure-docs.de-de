@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: c06d1268abe8afdeb03668131c3c61cfbafa44cd
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 56d8cad05a42da8de680ade487dddee9a97aab3a
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77138177"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80364186"
 ---
 # <a name="score-model-module"></a>Modul Modell bewerten
 
@@ -30,15 +30,15 @@ Verwenden Sie dieses Modul zum Generieren von Vorhersagen mithilfe eines trainie
 
     Die Daten sollten in einem Format vorliegen, dass mit dem Typ des trainierten Modells kompatibel ist, das Sie verwenden. Das Schema des Eingabedatasets sollte auch generell mit dem Schema der zum Trainieren des Modells verwendeten Daten übereinstimmen.
 
-3. Ausführen der Pipeline.
+3. Übermitteln Sie die Pipeline.
 
 ## <a name="results"></a>Ergebnisse
 
 Nachdem Sie eine Reihe von Bewertungen mit dem [Bewertungsmodell](./score-model.md) generiert haben:
 
-+ Um einen Satz von Metriken zu generieren, die zum Auswerten der Genauigkeit (Leistung) des Modells dienen,  können Sie das bewertete Dataset mit dem [Auswertungsmodell](./evaluate-model.md) verbinden, 
++ Um einen Satz von Metriken für die Auswertung der Modellgenauigkeit (Leistung) zu generieren, können Sie das bewertete Dataset mit dem [Bewertungsmodell](./evaluate-model.md) verbinden, indem Sie 
 + mit der rechten Maustaste auf das Modul klicken und **Visualize** (Visualisieren) auswählen, um ein Beispiel der Ergebnisse anzuzeigen.
-+ Speichern Sie die Ergebnisse in einem Dataset.
+<!-- + To Save the results to a dataset. -->
 
 Das Ergebnis, oder der vorhergesagte Wert, kann je nach Modell und Eingabedaten in vielen verschiedenen Formaten vorliegen:
 
@@ -48,7 +48,7 @@ Das Ergebnis, oder der vorhergesagte Wert, kann je nach Modell und Eingabedaten 
 
 ## <a name="publish-scores-as-a-web-service"></a>Veröffentlichen eines Modells als Webdienst
 
-Eine häufige Verwendung der Bewertung ist die Rückgabe der Ausgabe als Teil eines Vorhersagewebdiensts. Weitere Informationen finden Sie im Tutorial zum Erstellen eines Webdiensts basierend auf einer Pipeline in Azure Machine Learning:
+Eine häufige Verwendung der Bewertung ist die Rückgabe der Ausgabe als Teil eines Vorhersagewebdiensts. Weitere Informationen finden Sie in [diesem Tutorial](https://docs.microsoft.com/azure/machine-learning/tutorial-designer-automobile-price-deploy) zum Bereitstellen eines Echtzeitendpunkts basierend auf einer Pipeline im Azure Machine Learning-Designer.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

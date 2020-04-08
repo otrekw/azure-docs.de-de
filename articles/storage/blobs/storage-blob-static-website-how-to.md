@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.openlocfilehash: e312cc0dc6c58bb33a737e1fc28dd6eb3578b764
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.openlocfilehash: 056e23f0f0cf1a3a1c70042cef3c92dd41f14f82
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78330262"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80247009"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hosten einer statischen Website in Azure Storage
 
@@ -239,11 +239,15 @@ Write-Output $storageAccount.PrimaryEndpoints.Web
 
 Nachdem Sie Metriken aktiviert haben, werden Datenverkehrsstatistiken zu Dateien im Container **$web** im Dashboard für Metriken gemeldet.
 
-1. Klicken Sie auf **Einstellungen** > **Überwachung** > **Metriken**.
+1. Klicken Sie im Menü des Speicherkontos im Abschnitt **Überwachung** auf **Metriken**.
 
-   Metrikdaten werden durch Einbinden verschiedener Metrik-APIs generiert. Das Portal zeigt nur die API-Elemente an, die innerhalb eines bestimmten Zeitrahmens verwendet werden. Dies ermöglicht eine Konzentration auf die Elemente, die Daten zurückgeben. Um sicherzustellen, dass Sie die erforderlichen API-Elemente auswählen können, müssen Sie zuerst den Zeitrahmen erweitern.
+   > [!div class="mx-imgBorder"]
+   > ![Link „Metriken“](./media/storage-blob-static-website/metrics-link.png)
 
-2. Klicken Sie auf die Schaltfläche für den Zeitrahmen, und wählen Sie **Letzte 24 Stunden** aus. Klicken Sie dann auf **Übernehmen**.
+   > [!NOTE]
+   > Metrikdaten werden durch Einbinden verschiedener Metrik-APIs generiert. Das Portal zeigt nur die API-Elemente an, die innerhalb eines bestimmten Zeitrahmens verwendet werden. Dies ermöglicht eine Konzentration auf die Elemente, die Daten zurückgeben. Um sicherzustellen, dass Sie die erforderlichen API-Elemente auswählen können, müssen Sie zuerst den Zeitrahmen erweitern.
+
+2. Klicken Sie auf die Schaltfläche für den Zeitrahmen, wählen Sie einen Zeitrahmen aus, und klicken Sie dann auf **Übernehmen**.
 
    ![Metriken von statischen Websites in Azure Storage: Zeitbereich](./media/storage-blob-static-website/storage-blob-static-website-metrics-time-range.png)
 
@@ -266,6 +270,9 @@ Nachdem Sie Metriken aktiviert haben, werden Datenverkehrsstatistiken zu Dateien
 7. Aktivieren Sie das Kontrollkästchen neben **GetWebContent** im Selektor *Werte*, um den Metrikbericht zu füllen.
 
    ![Metriken von statischen Websites in Azure Storage: GetWebContent](./media/storage-blob-static-website/storage-blob-static-website-metrics-getwebcontent.png)
+
+   >[!NOTE]
+   > Das Kontrollkästchen **GetWebContent** wird nur angezeigt, wenn dieses API-Element innerhalb eines bestimmten Zeitrahmens verwendet wurde. Das Portal zeigt nur die API-Elemente an, die innerhalb eines bestimmten Zeitrahmens verwendet werden. Dies ermöglicht eine Konzentration auf die Elemente, die Daten zurückgeben. Wenn ein bestimmtes API-Element in dieser Liste nicht zu finden ist, erweitern Sie den Zeitrahmen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

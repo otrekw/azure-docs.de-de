@@ -5,12 +5,12 @@ ms.date: 02/28/2020
 ms.topic: conceptual
 description: Informationen zum Konfigurieren eines Dev Spaces-Clusters für die Verwendung von Helm 3
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: 9e3f3ff90d36215c386bf1d8b8ec1edd54ebfb6a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: dbccb2618fd5a27805261d60e7891d920e0bc372
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78202023"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454294"
 ---
 # <a name="configure-your-azure-dev-spaces-cluster-to-use-helm-3-preview"></a>Konfigurieren des Azure Dev Spaces-Clusters zur Verwendung von Helm 3 (Vorschau)
 
@@ -66,7 +66,7 @@ Die folgenden Einschränkungen gelten, während sich dieses Feature in der Vorsc
 
 ## <a name="create-your-cluster"></a>Erstellen Ihres Clusters
 
-Erstellen Sie einen neuen AKS-Cluster in einer Region, in der diese Previewfunktion verfügbar ist. Die folgenden Befehle erstellen eine Ressourcengruppe namens *MyResourceGroup* und einen neuen AKS-Cluster namens *MyAKS* in der Region *USA, Süden-Mitte*:
+Erstellen Sie einen neuen AKS-Cluster in einer Region, in der diese Previewfunktion verfügbar ist. Mit den folgenden Befehlen werden die Ressourcengruppe *MyResourceGroup* und der neue AKS-Cluster *MyAKS* erstellt:
 
 ```azure-cli
 az group create --name MyResourceGroup --location eastus

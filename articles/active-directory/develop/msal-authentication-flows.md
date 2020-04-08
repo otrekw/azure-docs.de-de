@@ -13,18 +13,18 @@ ms.date: 01/30/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ace636152f6a0c9bf3896860eb17cc291bef2887
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 25c219bedbbbec9fbc0c5617c7bd9fc482faf49a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78377270"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050507"
 ---
 # <a name="authentication-flows"></a>Authentifizierungsflows
 
 In diesem Artikel werden die verschiedenen Authentifizierungsflows beschrieben, die von der Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) bereitgestellt werden.  Diese Flows können in vielen verschiedenen Anwendungsszenarien verwendet werden.
 
-| Flow | Beschreibung | Verwendung in|  
+| Flow | BESCHREIBUNG | Verwendung in|  
 | ---- | ----------- | ------- | 
 | [Interactive](#interactive) | Ruft in einem interaktiven Prozess das Token ab, durch das der Benutzer über einen Browser oder ein Popupfenster zur Eingabe von Anmeldeinformationen aufgefordert wird. | [Desktop-Apps](scenario-desktop-overview.md), [mobile Apps](scenario-mobile-overview.md) |
 | [Implizite Gewährung](#implicit-grant) | Ermöglicht es der App, Token abzurufen, ohne dass die Anmeldeinformationen für den Back-End-Server ausgetauscht werden müssen. Dadurch kann die App den Benutzer anmelden, die Sitzung aufrechterhalten und Token für andere Web-APIs abrufen. All dies geschieht innerhalb des Client-JavaScript-Codes.| [Single-Page-Webanwendungen (SPA)](scenario-spa-overview.md) |
@@ -151,7 +151,7 @@ Mithilfe des Gerätecodeflusses ruft die Anwendung Token in einem zweistufigen P
 
 Im obigen Diagramm ist Folgendes zu sehen:
 
-1. Sobald eine Benutzerauthentifizierung erforderlich ist, stellt die App einen Code bereit und fordert den Benutzer auf, mit einem anderen Gerät (z. B. einem Smartphone mit Internetverbindung) eine URL (z. B. https://microsoft.com/devicelogin) ) aufzurufen. Der Benutzer wird anschließend aufgefordert, den Code einzugeben, und führt danach wie gewohnt den Authentifizierungsvorgang durch. Dabei sind ggf. auch Zustimmungsaufforderungen und eine mehrstufige Authentifizierung erforderlich.
+1. Sobald eine Benutzerauthentifizierung erforderlich ist, stellt die App einen Code bereit und fordert den Benutzer auf, mit einem anderen Gerät (z. B. einem Smartphone mit Internetverbindung) eine URL (z. B. `https://microsoft.com/devicelogin`) aufzurufen. Der Benutzer wird anschließend aufgefordert, den Code einzugeben, und führt danach wie gewohnt den Authentifizierungsvorgang durch. Dabei sind ggf. auch Zustimmungsaufforderungen und eine mehrstufige Authentifizierung erforderlich.
 
 2. Nach erfolgreicher Authentifizierung empfängt die Befehlszeilen-App die erforderlichen Token über einen Backchannel und führt damit die benötigten Web-API-Aufrufe aus.
 

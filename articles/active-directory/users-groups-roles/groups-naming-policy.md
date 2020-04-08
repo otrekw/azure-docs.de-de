@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9136ce26f0070c8822292c741be59de537d3667
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 141e83e21db18f21468113fd9927c2bdd2ed176d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941054"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79497875"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Durchsetzen einer Benennungsrichtlinie für Office 365-Gruppen in Azure Active Directory
 
@@ -29,6 +29,8 @@ Um einheitliche Benennungskonventionen für Office 365-Gruppen zu erzwingen, die
 > Zur Verwendung der Azure AD-Benennungsrichtlinie für Office 365-Gruppen müssen Sie für jeden einzelnen Benutzer, der Mitglied einer Ihrer Office 365-Gruppen ist, über eine Azure Active Directory Premium P1-Lizenz oder eine Azure AD Basic EDU-Lizenz verfügen. Sie müssen diese Lizenzen jedoch nicht zuweisen.
 
 Die Benennungsrichtlinie wird bei der Erstellung oder Bearbeitung von Gruppen aller Workloads (z.B. Outlook, Microsoft Teams, SharePoint, Exchange oder Planner) angewendet. Sie wird sowohl auf Gruppennamen als auch auf Gruppenaliase angewendet. Wenn Sie Ihre Benennungsrichtlinie in Azure AD einrichten und bereits über eine Benennungsrichtlinie für Exchange-Gruppen verfügen, wird die Azure AD-Benennungsrichtlinie für Ihr gesamtes Unternehmen erzwungen.
+
+Nachdem die Benennungsrichtlinie für Gruppen konfiguriert wurde, wird sie auf neue Office 365-Gruppen angewandt, die von Endbenutzern erstellt wurden. Eine Benennungsrichtlinie gilt nicht für bestimmte Verzeichnisrollen, z. B. „Globaler Administrator“ oder „Benutzeradministrator“. (Eine vollständige Liste der Rollen, die von der Benennungsrichtlinie für Gruppen ausgeschlossen sind, finden Sie weiter unten.) Die Richtlinie wird nicht direkt zum Zeitpunkt der Konfiguration auf vorhandene Office 365-Gruppen angewandt. Nachdem der Gruppenbesitzer den Gruppennamen für diese Gruppen bearbeitet hat, wird die Benennungsrichtlinie erzwungen.
 
 ## <a name="naming-policy-features"></a>Features für Benennungsrichtlinien
 

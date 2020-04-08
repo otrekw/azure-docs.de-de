@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 14f9d698f36fd26563677ef5b3cb82fc8ecf3a4c
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: dc78f105d353a9a17af4b33dfc806eed91e7c6dc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588959"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063203"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informationen zu Azure Networking-MSP-Partnern
 
@@ -24,7 +24,7 @@ Azure Networking MSPs sind eine spezielle Gruppe von Anbietern verwalteter Diens
 
 Kunden können MSP-Dienstangebote im Azure Marketplace oder direkt beim MSP-erwerben. MSPs können Azure-Netzwerkressourcen mit [Azure Lighthouse](https://azure.microsoft.com/services/azure-lighthouse/) in den Abonnements und Ressourcengruppen der Kunden bereitstellen und verwalten.
 
-## <a name="msp"></a>Azure Marketplace-Angebote nach Azure Networking-MSP-Partnern
+## <a name="azure-marketplace-offers-by-azure-networking-msp-partners"></a><a name="msp"></a>Azure Marketplace-Angebote nach Azure Networking-MSP-Partnern
 
 Über die Links in diesem Abschnitt erhalten Sie weitere Informationen zu verwalteten Cloudnetzwerkdiensten, die von Azure Networking MSP-Partnern angeboten werden. Sollte Ihr Partner für Cloudnetzwerkdienste im folgenden Abschnitt nicht aufgeführt sein, bitten Sie den Anbieter, sich mit uns in Verbindung zu setzen. Hierzu kann er uns eine E-Mail senden: ManagedVirtualWAN@microsoft.com. 
 
@@ -50,13 +50,13 @@ Kunden können MSP-Dienstangebote im Azure Marketplace oder direkt beim MSP-erwe
 |[Vigilant IT](https://vigilant.it/manage-cloud-service/)|[Azure-Integritätsüberprüfung Fünftägige Bewertung](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute: 5-tägige Implementierung](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandis Managed ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Vandis Managed VWAN Powered by Fortinet](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview); [Vandis Managed VWAN Powered by Palo Alto Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-Azure Marketplace Angebote, einschließlich neuer verwalteter Sicherheitsdienste und verwalteter MEC-Dienste von den folgenden Azure-Netzwerk-MSP-Partnern, finden Sie in unserer Roadmap: [Amdocs](https://www.amdocs.com/); [CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html); [IX Reach](https://www.ixreach.com/services/sdn-cloud-connect/); [InterCloud](https://intercloud.com/partners/microsoft-azure/); [KINX](https://www.kinx.net/service/cloud/?lang=en); [Megaport](https://www.megaport.com/services/microsoft-expressroute/); [OmniClouds](https://omniclouds.com/services/); [Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms); [Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx); [Federated Wireless](https://www.federatedwireless.com/caas/)
+Azure Marketplace Angebote, einschließlich neuer verwalteter Sicherheitsdienste und verwalteter MEC-Dienste von den folgenden Azure-Netzwerk-MSP-Partnern, finden Sie in unserer Roadmap: [Amdocs](https://www.amdocs.com/); [AXESDN](https://www.axesdn.com/en/azure-msp.html); [CenturyLink](https://www.centurylink.com/business/networking/cloud-connectivity.html); [IX Reach](https://www.ixreach.com/services/sdn-cloud-connect/); [InterCloud](https://intercloud.com/partners/microsoft-azure/); [KINX](https://www.kinx.net/service/cloud/?lang=en); [Megaport](https://www.megaport.com/services/microsoft-expressroute/); [OmniClouds](https://omniclouds.com/services/); [Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms); [Tech Mahindra](https://networkservices.techmahindra.com/pages/default.aspx); [Federated Wireless](https://www.federatedwireless.com/caas/)
 
-## <a name="expressroute"></a>ExpressRoute-Partner
+## <a name="expressroute-partners"></a><a name="expressroute"></a>ExpressRoute-Partner
 
 Weitere Informationen zu Partnern finden Sie unter [ExpressRoute-Partner und Peeringstandorte](../expressroute/expressroute-locations-providers.md).
 
-## <a name="vwan"></a>Virtual WAN-Partner
+## <a name="virtual-wan-partners"></a><a name="vwan"></a>Virtual WAN-Partner
 
 Weitere Informationen zu Partnern finden Sie unter [Virtual WAN – Partner und Standort](../virtual-wan/virtual-wan-locations-partners.md).
 

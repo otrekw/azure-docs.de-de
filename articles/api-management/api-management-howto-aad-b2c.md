@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 4f311d2772a6a60798795b4f2e6237e8153b9547
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: b8215cd852d54283bfc6bd47e77d7d63ee4e2582
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76981213"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475492"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory B2C in Azure API Management
 
@@ -92,11 +92,11 @@ Bei Azure Active Directory B2C handelt es sich um eine Lösung zur Cloudidentit�
 
 ## <a name="developer-portal---add-azure-ad-b2c-account-authentication"></a>Entwicklerportal – Hinzufügen der Azure AD B2C-Kontoauthentifizierung
 
-Im Entwicklerportal können Sie sich über das Widget **Schaltfläche „Anmelden“: OAuth** bei AAD B2C anmelden. Das Widget ist auf der Anmeldeseite des standardmäßigen Entwicklerportals bereits integriert.
+Im Entwicklerportal ist die Anmeldung bei AAD B2C über das Widget **Schaltfläche „Anmelden“: OAuth** möglich. Das Widget ist auf der Anmeldeseite des standardmäßigen Entwicklerportals bereits integriert.
 
 Obwohl ein neues Konto automatisch erstellt wird, wenn sich ein neuer Benutzer bei AAD B2C anmeldet, können Sie das gleiche Widget auf der Anmeldeseite hinzufügen.
 
-Das Widget **Registrierungsformular:  OAuth** stellt ein Formular dar, das zum Registrieren bei OAuth verwendet wird.
+Das Widget **Registrierungsformular: OAuth** stellt ein Formular dar, das zum Registrieren bei OAuth verwendet wird.
 
 > [!IMPORTANT]
 > Sie müssen [das Portal](api-management-howto-developer-portal-customize.md#publish) erneut veröffentlichen, damit die AAD-Änderungen wirksam werden.
@@ -194,7 +194,6 @@ Das Widget **Registrierungsformular:  OAuth** stellt ein Formular dar, das zum R
 
 [https://oauth.net/2/]: https://oauth.net/2/
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
-[Accessing the Graph API]: https://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
 [Azure Active Directory B2C – Übersicht]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview
 [Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory]: https://docs.microsoft.com/azure/api-management/api-management-howto-aad
 [Azure Active Directory B2C: Erweiterbares Richtlinienframework]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies

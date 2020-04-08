@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 87ccb1c4995337b385f685797980a9fc3962bc6f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 68089a86b8b832638abd30aa7c36aa1c5bd84225
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451258"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410119"
 ---
 # <a name="azure-serial-console-for-windows"></a>Die serielle Azure-Konsole für Windows
 
@@ -60,7 +60,7 @@ Gehen Sie alternativ zum manuellen Aktivieren der seriellen Konsole für Windows
 
 1. Stellen Sie über den Remotedesktop eine Verbindung mit Ihrem virtuellen Windows-Computer her.
 1. Führen Sie an einer Administratoreingabeaufforderung die folgenden Befehle aus:
-    - `bcdedit /ems {current} on`
+    - `bcdedit /ems {current} on` oder `bcdedit /ems '{current}' on`, wenn Sie PowerShell verwenden
     - `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 1. Starten Sie das System neu, damit die SAC-Konsole aktiviert wird.
 
@@ -102,15 +102,15 @@ Wenn Sie Windows-Startlade-Eingabeaufforderungen in der seriellen Konsole aktivi
 
     ![Herstellen einer Verbindung mit SAC](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
 
-1.  Geben Sie `cmd` ein, um einen Kanal zu erstellen, der über eine CMD-Instanz verfügt.
+1.    Geben Sie `cmd` ein, um einen Kanal zu erstellen, der über eine CMD-Instanz verfügt.
 
-1.  Geben Sie `ch -si 1` ein, oder drücken Sie die Tastenkombination `<esc>+<tab>`, um zu dem Kanal zu wechseln, in dem die CMD-Instanz ausgeführt wird.
+1.    Geben Sie `ch -si 1` ein, oder drücken Sie die Tastenkombination `<esc>+<tab>`, um zu dem Kanal zu wechseln, in dem die CMD-Instanz ausgeführt wird.
 
-1.  Drücken Sie die **EINGABETASTE**, und geben Sie dann die Anmeldeinformationen mit Administratorrechten ein.
+1.    Drücken Sie die **EINGABETASTE**, und geben Sie dann die Anmeldeinformationen mit Administratorrechten ein.
 
-1.  Nachdem Sie gültige Anmeldeinformationen eingegeben haben, wird die CMD-Instanz geöffnet.
+1.    Nachdem Sie gültige Anmeldeinformationen eingegeben haben, wird die CMD-Instanz geöffnet.
 
-1.  Geben Sie zum Starten einer PowerShell-Instanz `PowerShell` in der CMD-Instanz ein, und drücken Sie die **EINGABETASTE**.
+1.    Geben Sie zum Starten einer PowerShell-Instanz `PowerShell` in der CMD-Instanz ein, und drücken Sie die **EINGABETASTE**.
 
     ![Öffnen einer PowerShell-Instanz](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
 

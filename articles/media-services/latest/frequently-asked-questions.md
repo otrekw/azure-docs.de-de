@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/09/2020
+ms.date: 03/18/2020
 ms.author: juliako
-ms.openlocfilehash: a2619293bf3641cdca370ff528a87ae879460a3b
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: 11123ee04dd02a60dff0b88e2e6e85fcd613a7d5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79086778"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80068006"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Häufig gestellte Fragen zu Media Services v3
 
@@ -59,6 +59,21 @@ Details finden Sie unter [Featurelücken in Bezug auf v2-APIs](media-services-v2
 Informationen dazu finden Sie unter [Verschieben eines Media Services-Kontos zwischen Abonnements](media-services-account-concept.md).
 
 ## <a name="live-streaming"></a>Livestreaming 
+
+### <a name="how-to-stop-the-live-stream-after-the-broadcast-is-done"></a>Wie wird der Livestream beendet, nachdem die Übertragung abgeschlossen wurde?
+
+Sie können dies clientseitig oder serverseitig ausführen.
+
+#### <a name="client-side"></a>Clientseitig
+
+Die Webanwendung sollte die Benutzer beim Schließen des Browsers fragen, ob sie den Broadcast beenden möchten. Dies ist ein Browserereignis, das von Ihrer Webanwendung behandelt werden kann.
+
+#### <a name="server-side"></a>Serverseitig
+
+Sie können Liveereignisse überwachen, indem Sie Event Grid-Ereignisse abonnieren. Weitere Informationen finden Sie unter [Event Grid-Ereignisschema](media-services-event-schemas.md#live-event-types).
+
+* Sie können [Microsoft.Media.LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected) auf Streamebene [abonnieren](reacting-to-media-services-events.md) und überwachen, ob für einen bestimmten Zeitraum keine erneuten Verbindungen eingehen, um dann Ihr Liveereignis zu beenden und zu löschen.
+* Stattdessen können Sie auch [Taktereignisse](media-services-event-schemas.md#liveeventingestheartbeat) auf Spurebene [abonnieren](reacting-to-media-services-events.md). Wenn die eingehende Bitrate bei allen Spuren auf 0 fällt oder wenn der letzte Zeitstempel nicht mehr steigt, können Sie das Liveereignis ebenfalls gefahrlos beenden. Die Taktereignisse gehen alle 20 Sekunden für jede Spur ein, sodass die Informationsmenge etwas höher ausfallen könnte.
 
 ###  <a name="how-to-insert-breaksvideos-and-image-slates-during-live-stream"></a>Wie werden Unterbrechungen/Videos und Bildtafeln während des Livedatenstroms eingefügt?
 
@@ -140,7 +155,7 @@ Derzeit können Sie das [Azure-Portal](https://portal.azure.com/) für Folgendes
 * Anzeigen (nicht verwalten) von [Medienobjekten](assets-concept.md) der Version 3 
 * [Abrufen von Informationen über den Zugriff auf APIs](access-api-portal.md) 
 
-Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für [Transformationen und Aufträge](transforms-jobs-concept.md) und [Inhaltsschutz](content-protection-overview.md)) die [REST-API](https://aka.ms/ams-v3-rest-ref), die [CLI](https://aka.ms/ams-v3-cli-ref) oder eins der unterstützten [SDKs](media-services-apis-overview.md#sdks).
+Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für [Transformationen und Aufträge](transforms-jobs-concept.md) und [Inhaltsschutz](content-protection-overview.md)) die [REST-API](https://docs.microsoft.com/rest/api/media/), die [CLI](https://aka.ms/ams-v3-cli-ref) oder eins der unterstützten [SDKs](media-services-apis-overview.md#sdks).
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>Gibt es in v3 ein AssetFile-Konzept?
 

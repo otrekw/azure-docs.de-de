@@ -2,13 +2,13 @@
 title: Einschränkungen bei Ressourcennamen
 description: Zeigt die Benennungsregeln und -einschränkungen für Azure-Ressourcen
 ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: 7b6a9e16ba28a2a0e5e4e181dc5650d2110eab88
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.date: 03/27/2020
+ms.openlocfilehash: 580b7efd26d5729baf236b59452f63483c003e44
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153161"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366214"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Benennungsregeln und -einschränkungen für Azure-Ressourcen
 
@@ -385,6 +385,13 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | --- | --- | --- | --- |
 > | jobs | Ressourcengruppe | 2 - 64 | Alphanumerische Zeichen und Bindestriche.<br><br>Beginnen Sie mit einem Buchstaben. |
 
+## <a name="microsoftinsights"></a>Microsoft.Insights
+
+> [!div class="mx-tableFixed"]
+> | Entität | `Scope` | Länge | Gültige Zeichen |
+> | --- | --- | --- | --- |
+> | components | Ressourcengruppe | 1–260 | Verwendung nicht möglich:<br>`%&\?/` <br><br>Darf nicht mit einem Leerzeichen oder Punkt enden.  |
+
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
 > [!div class="mx-tableFixed"]
@@ -616,6 +623,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | --- | --- | --- | --- |
 > | managedInstances | Global | 1 - 63 | Kleinbuchstaben, Zahlen und Bindestriche.<br><br>Darf nicht mit einem Bindestrich beginnen oder enden. |
 > | servers | Global | 1 - 63 | Kleinbuchstaben, Zahlen und Bindestriche.<br><br>Darf nicht mit einem Bindestrich beginnen oder enden. |
+> | servers/administrators | server |  | Muss `ActiveDirectory`lauten. |
 > | servers/databases | server | 1–128 | Verwendung nicht möglich:<br>`<>*%&:\/?`<br><br>Darf nicht mit einem Punkt oder Leerzeichen enden. |
 > | servers/databases/syncGroups | database | 1–150 | Alphanumerische Zeichen, Bindestriche und Unterstriche. |
 > | servers/elasticPools | server | 1–128 | Verwendung nicht möglich:<br>`<>*%&:\/?`<br><br>Darf nicht mit einem Punkt oder Leerzeichen enden. |

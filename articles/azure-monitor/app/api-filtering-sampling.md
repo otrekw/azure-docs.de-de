@@ -3,12 +3,12 @@ title: Filterung und Vorverarbeitung im Azure Application Insights-SDK | Microso
 description: Schreiben Sie Telemetrieprozessoren und Telemetrieinitialisierer für das SDK, um die Daten zu filtern oder ihnen Eigenschaften hinzuzufügen, bevor die Telemetriedaten an das Application Insights-Portal gesendet werden.
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.openlocfilehash: 9f4df83ed60ba94913702b9a32a298f0ac62f9f4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 53b6ecc51961feba35d571eab3115c8e7ccf9964
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77666461"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366301"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Filterung und Vorverarbeitung von Telemetriedaten im Application Insights-SDK
 
@@ -379,6 +379,14 @@ Sie können beliebig viele Initialisierer hinzufügen. Diese werden in der Reihe
 
 Bei Telemetrieprozessoren in OpenCensus Python handelt es sich lediglich um Rückruffunktionen, die aufgerufen werden, um Telemetriedaten zu verarbeiten, bevor sie exportiert werden. Die Rückruffunktion muss einen [Umschlag](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py#L86)-Datentyp als Parameter akzeptieren. Stellen Sie sicher, dass die Rückruffunktion `False` zurückgibt, um die Telemetriedaten aus dem Export herauszufiltern. Das Schema für die Azure Monitor-Datentypen in Umschlägen finden Sie [hier](https://github.com/census-instrumentation/opencensus-python/blob/master/contrib/opencensus-ext-azure/opencensus/ext/azure/common/protocol.py).
 
+> [!NOTE]
+> Sie können den `cloud_RoleName` ändern, indem Sie das `ai.cloud.role`-Attribut im Feld `tags` ändern.
+
+```python
+def callback_function(envelope):
+    envelope.tags['ai.cloud.role'] = 'new_role_name.py'
+```
+
 ```python
 # Example for log exporter
 import logging
@@ -486,7 +494,7 @@ Mit dem folgenden Beispielinitialisierer wird allen überwachten Telemetriedaten
 public void Initialize(ITelemetry item)
 {
   var itemProperties = item as ISupportProperties;
-  if(itemProperties != null && !itemProperties.ContainsKey("customProp"))
+  if(itemProperties != null && !itemProperties.Properties.ContainsKey("customProp"))
     {
         itemProperties.Properties["customProp"] = "customValue";
     }
@@ -534,7 +542,7 @@ Was ist der Unterschied zwischen Telemetrieprozessoren und Telemetrieinitialisie
 * [ASP.NET SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
 
-## <a name="next"></a>Nächste Schritte
+## <a name="next-steps"></a><a name="next"></a>Nächste Schritte
 * [Durchsuchen von Ereignissen und Protokollen](../../azure-monitor/app/diagnostic-search.md)
 * [Stichproben](../../azure-monitor/app/sampling.md)
 * [Problembehandlung](../../azure-monitor/app/troubleshoot-faq.md)

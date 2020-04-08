@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 02/26/2020
+ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffb2ff87eb78ed4088225f832b6df55726196493
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 2910933e2c57a8bc80a220726462b02915c4a8eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656603"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246516"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal
 
@@ -47,7 +47,11 @@ In diesem Artikel erhalten Sie einen Überblick über den Bericht zu Anmeldeakti
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Welche Azure AD-Lizenz benötigen Sie für den Zugriff auf die Anmeldeaktivität?
 
-* Ihrem Mandanten muss eine Azure AD Premium-Lizenz zugewiesen sein, damit der Gesamtbericht für Anmeldeaktivitäten angezeigt werden kann. Unter [Erste Schritte mit Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) erfahren Sie, wie Sie ein Upgrade für Ihre Azure Active Directory-Edition durchführen. Wenn Sie vor dem Upgrade über keine Aktivitätsdaten verfügten, dauert es ein paar Tage, bis die Daten in den Berichten angezeigt werden, nachdem Sie ein Upgrade auf eine Premium-Lizenz durchgeführt haben.
+- Der Bericht mit den Anmeldeaktivitäten ist in [allen Editionen von Azure AD](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data) verfügbar.
+
+- Wenn Sie über eine API auf die Anmeldedaten zugreifen möchten, muss Ihrem Mandanten eine [Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md)-Lizenz zugeordnet sein.
+
+
 
 ## <a name="sign-ins-report"></a>Bericht zu Anmeldeaktivitäten
 
@@ -172,13 +176,17 @@ Zuerst schränken Sie die gemeldeten Daten auf einen Umfang ein, der für Sie ge
 **Korrelations-ID**: Korrelations-ID der Aktivität.
 
 
+
+
 **Bedingter Zugriff**: Status der angewendeten Regeln für bedingten Zugriff
 
-- Nicht angewendet 
+- **Nicht angewendet**: Keine Richtlinie betraf den Benutzer und die Anwendung bei der Anmeldung.
 
-- Erfolg
+- **Erfolg**: Eine oder mehrere Richtlinien für bedingten Zugriff betrafen den Benutzer und die Anwendung (aber nicht notwendigerweise die anderen Bedingungen) bei der Anmeldung. 
 
-- Fehler
+- **Fehler**: Eine oder mehrere Richtlinien für bedingten Zugriff trafen bei der Anmeldung zu und wurden nicht erfüllt.
+
+
 
 
 
@@ -228,7 +236,7 @@ Durch Klicken auf ein Element können Sie ausführlichere Informationen zum ents
 - Anwendungs-ID
 - Application
 - Client
-- Location
+- Position
 - IP-Adresse
 - Date
 - MFA erforderlich

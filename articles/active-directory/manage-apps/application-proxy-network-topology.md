@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 075b2c92168afe0c366608266c38b14394b73cff
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: eaceaf1f5e9b6e34ced5db39b61e607fffcb5953
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275484"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295133"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Aspekte der Netzwerktopologie bei Verwendung des Azure Active Directory-Anwendungsproxys
 
@@ -41,7 +41,7 @@ Wenn eine Anwendung über den Azure AD-Anwendungsproxy veröffentlicht wird, fli
 
 Wenn Sie sich für einen Azure AD-Mandanten registrieren, wird die Region Ihres Mandanten durch Ihre Angabe von Land/Region bestimmt. Bei Aktivierung des Anwendungsproxys werden die Instanzen des Anwendungsproxydiensts für Ihren Mandanten in derselben Region wie Ihr Azure AD-Mandant bzw. in der nächstgelegenen Region ausgewählt oder erstellt.
 
-Wenn das Land oder die Region Ihres Azure AD-Mandanten beispielsweise das Vereinigte Königreich ist, werden für alle Anwendungsproxyconnectors Dienstinstanzen in EU-Rechenzentren verwendet. Dies bedeutet auch, der Datenverkehr für Ihre Benutzer über die Instanzen des Anwendungsproxydiensts an diesem Standort geleitet wird, wenn sie versuchen, auf veröffentlichte Anwendungen zuzugreifen.
+Wenn das Land oder die Region Ihres Azure AD-Mandanten beispielsweise das Vereinigte Königreich ist, werden für alle Anwendungsproxyconnectors Dienstinstanzen in europäischen Rechenzentren verwendet. Dies bedeutet auch, der Datenverkehr für Ihre Benutzer über die Instanzen des Anwendungsproxydiensts an diesem Standort geleitet wird, wenn sie versuchen, auf veröffentlichte Anwendungen zuzugreifen.
 
 ## <a name="considerations-for-reducing-latency"></a>Reduzieren der Wartezeit
 
@@ -162,15 +162,15 @@ Der Connector kann im Azure-Datencenter angeordnet werden. Da der Connector weit
 
 ### <a name="use-case-5"></a>Anwendungsfall 5
 
-**Szenario:** Die App wird im Netzwerk einer Organisation in der EU ausgeführt, während sich die Anwendungsproxyinstanz und die meisten Benutzer in den USA befinden.
+**Szenario:** Die App wird im Netzwerk einer Organisation in Europa ausgeführt, während sich die Anwendungsproxyinstanz und die meisten Benutzer in den USA befinden.
 
 **Empfehlung:** Platzieren Sie den Connector in der Nähe der App. Da Benutzer in den USA auf eine Anwendungsproxyinstanz zugreifen, die sich in derselben Region befindet, sind die Kosten für Hop 1 nicht übermäßig hoch. Hop 3 ist optimiert. Erwägen Sie die Verwendung von ExpressRoute zur Optimierung von Hop 2.
 
-![Das Diagramm zeigt, dass sich Benutzer und Proxy in den USA und Connector und App in der EU befinden](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
+![Benutzer und Proxy in den USA, Connector und App in Europa](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
 
-In dieser Situation können Sie auch eine andere Variante verwenden. Wenn sich die meisten Benutzer der Organisation in den USA befinden, ist die Wahrscheinlichkeit hoch, dass auch Ihr Netzwerk bis in die USA reicht. Platzieren Sie den Connector in den USA, und verwenden Sie die dedizierte interne Unternehmensnetzwerkleitung zur Anwendung in der EU. Auf diese Weise werden die Hops 2 und 3 optimiert.
+In dieser Situation können Sie auch eine andere Variante verwenden. Wenn sich die meisten Benutzer der Organisation in den USA befinden, ist die Wahrscheinlichkeit hoch, dass auch Ihr Netzwerk bis in die USA reicht. Platzieren Sie den Connector in den USA, und verwenden Sie die dedizierte interne Unternehmensnetzwerkleitung zur Anwendung in Europa. Auf diese Weise werden die Hops 2 und 3 optimiert.
 
-![Das Diagramm zeigt, dass sich Benutzer, Proxy und Connector in den USA befinden und die App in der EU](./media/application-proxy-network-topology/application-proxy-pattern5c.png)
+![Benutzer, Proxy und Connector in den USA, App in Europa](./media/application-proxy-network-topology/application-proxy-pattern5c.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

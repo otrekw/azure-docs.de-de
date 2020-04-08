@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 01/29/2020
+ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: e8d251cef9e67cb8fc0c11df8ce546383f75a679
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: 711e8a7ae31888c9754252d88404d90f24e8030e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76900883"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131995"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Freigeben von Azure-Dashboards mithilfe der rollenbasierter Zugriffssteuerung
 
@@ -60,7 +60,7 @@ Vor dem Zuweisen des Zugriffs müssen Sie das Dashboard veröffentlichen.
 
     ![Veröffentlichen des Dashboards](./media/azure-portal-dashboard-share-access/publish-dashboard-for-access-control.png)
 
-     Standardmäßig wird das Dashboard beim Freigeben in einer Ressourcengruppe mit dem Namen **Dashboards** veröffentlicht.
+     Standardmäßig wird das Dashboard beim Freigeben in einer Ressourcengruppe mit dem Namen **Dashboards** veröffentlicht. Deaktivieren Sie das Kontrollkästchen, um eine andere Ressourcengruppe auszuwählen.
 
 Das Dashboard wurde veröffentlicht. Wenn die aus dem Abonnement geerbten Berechtigungen geeignet sind, sind keine weiteren Schritte erforderlich. Andere Benutzer in Ihrer Organisation können je nach Abonnementebenenrolle auf das Dashboard zugreifen und Änderungen vornehmen.
 
@@ -68,15 +68,15 @@ Das Dashboard wurde veröffentlicht. Wenn die aus dem Abonnement geerbten Berech
 
 Sie können einer Gruppe von Benutzern einer Rolle für das Dashboard zuweisen.
 
-1. Wählen Sie nach dem Veröffentlichen des Dashboards unter **Freigabe und Zugriffssteuerung** die Option **Benutzer verwalten** aus.
+1. Wählen Sie nach dem Veröffentlichen des Dashboards die Option **Freigeben** oder **Freigabe aufheben** aus, um auf **Freigabe + Zugriffssteuerung** zuzugreifen.
+
+1. Wählen Sie unter **Freigabe + Zugriffssteuerung** die Option **Benutzer verwalten** aus.
 
     ![Verwalten von Benutzern für ein Dashboard](./media/azure-portal-dashboard-share-access/manage-users-for-access-control.png)
 
-    Wenn Sie über ein Dashboard auf **Freigabe und Zugriffssteuerung** zugreifen möchten, wählen Sie die Option **Freigeben**  oder **Freigabe aufheben** aus.
-
 1. Wählen Sie **Rollenzuweisungen** aus, um vorhandene Benutzer anzuzeigen, die bereits einer Rolle für dieses Dashboard zugewiesen sind.
 
-1. Wählen Sie **Hinzufügen**, um einen neuen Benutzer oder eine neue Gruppe hinzuzufügen.
+1. Um einen neuen Benutzer oder eine neue Gruppe hinzuzufügen, wählen Sie **Hinzufügen** und dann **Rollenzuweisung hinzufügen** aus.
 
     ![Hinzufügen eines Benutzers für den Zugriff auf das Dashboard](./media/azure-portal-dashboard-share-access/manage-users-existing-users.png)
 
@@ -84,11 +84,7 @@ Sie können einer Gruppe von Benutzern einer Rolle für das Dashboard zuweisen.
 
 1. Wählen Sie den Benutzer bzw. die Gruppe aus, der bzw. die der Rolle zugewiesen werden soll. Verwenden Sie das Suchfeld, wenn der gesuchte Benutzer oder die Gruppe in der Liste nicht angezeigt wird. Die Liste mit den verfügbaren Gruppen hängt von den Gruppen ab, die Sie in Active Directory erstellt haben.
 
-1. Wählen Sie nach dem Hinzufügen von Benutzern oder Gruppen die Option **OK**.
-
-    Die neue Zuweisung wird der Liste mit den Benutzern hinzugefügt. Der **Zugriff** wird als **Zugewiesen** und nicht als **Geerbt** angezeigt.
-
-    ![Zugewiesene Rollen](./media/azure-portal-dashboard-share-access/assigned-roles.png)
+1. Wählen Sie nach dem Hinzufügen von Benutzern oder Gruppen die Option **Speichern** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

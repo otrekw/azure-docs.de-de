@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: 3cd330e9c4ceba2feeb7a74cafe9f094fd03d690
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 0ef7e5d869ab2d7e085cbf861bfc32e57b1fad4b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669113"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408487"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
 In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, die von Azure Monitor überwacht werden. 
@@ -172,7 +172,7 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
 ## <a name="product-integrations"></a>Produktintegrationen
 Die in der folgenden Tabelle aufgeführten Dienste und Lösungen speichern ihre Daten in einem Log Analytics-Arbeitsbereich, sodass sie mit anderen von Azure Monitor gesammelten Protokolldaten analysiert werden können.
 
-| Produkt/Dienst | Beschreibung |
+| Produkt/Dienst | BESCHREIBUNG |
 |:---|:---|
 | [Azure Automation](/azure/automation/) | Verwalten von Betriebssystemupdates und Nachverfolgen von Änderungen auf Windows- und Linux-Computern. Informationen finden Sie unter [Änderungsnachverfolgung](../automation/change-tracking.md) und [Updateverwaltung](../automation/automation-update-management.md). |
 | [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/) | Klassifizieren und optionales Schützen von Dokumenten und E-Mails. Informationen finden Sie unter [Zentrale Berichterstellung für Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports). |
@@ -198,7 +198,7 @@ Für die Überwachung verschiedener Anwendungen und Dienste stehen andere Lösun
 |:---|:---|
 | [Active Directory-Integritätsprüfung](insights/ad-assessment.md) | Bewerten des Risikos und der Integrität Ihrer Active Directory-Umgebungen. |
 | [Active Directory-Replikationsstatusmonitor](insights/ad-replication-status.md) | Regelmäßige Überwachung Ihrer Active Directory-Umgebung auf Replikationsfehler. |
-| [Aktivitätsprotokollanalyse](platform/activity-log-view.md#activity-logs-analytics-monitoring-solution) | Analysieren von Aktivitätsprotokolleinträgen mithilfe vordefinierter Protokollabfragen und Ansichten. |
+| [Aktivitätsprotokollanalyse](platform/activity-log-view.md#azure-portal) | Anzeigen von Aktivitätsprotokolleinträgen |
 | [DNS-Analyse (Vorschauversion)](insights/dns-analytics.md) | Erfasst, analysiert und korreliert Windows-DNS-Analyseprotokolle und -Überwachungsprotokolle sowie andere zugehörige Daten von Ihren DNS-Servern. |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | Sammeln, Anzeigen und Analysieren von Integritäts- und Leistungsmetriken des Cloud Foundry-Systems über mehrere Bereitstellungen hinweg. |
 | [Container](insights/containers.md) | Anzeigen und Verwalten von Docker- und Windows-Containerhosts. |

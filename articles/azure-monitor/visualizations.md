@@ -5,20 +5,36 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/24/2018
-ms.openlocfilehash: 7bace6ff6eb7dd1c02e4907e338fc0be9d66471c
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/17/2020
+ms.openlocfilehash: 877616f6fd31bdfbe193bd8f03efb3f79317ad42
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77657808"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79535368"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Visualisieren von Daten aus Azure Monitor
 Dieser Artikel enthält eine Zusammenfassung der verfügbaren Methoden zum Visualisieren von in Azure Monitor gespeicherten Metrik- und Protokolldaten.
 
 Visualisierungen wie Diagramme und Grafiken können Ihnen die Analyse Ihrer Überwachungsdaten zur Anzeige von Detailinformationen zu Problemen und zum Identifizieren von Mustern erleichtern. Je nach dem Tool, das Sie verwenden, haben Sie vielleicht auch die Möglichkeit, Visualisierungen für andere Benutzer innerhalb und außerhalb Ihrer Organisation freizugeben.
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+## <a name="workbooks"></a>Arbeitsmappen
+[Arbeitsmappen](../azure-monitor/app/usage-workbooks.md) sind interaktive Dokumente, die umfassende Einblicke in Ihre Daten, Untersuchungen und die Zusammenarbeit innerhalb des Teams bereitstellen. Spezifische Beispiele, wo Arbeitsmappen hilfreich sind, sind Anleitungen zur Problembehandlung und Nachbesprechungen zu Incidents.
+
+![Arbeitsmappe](media/visualizations/workbook.png)
+
+### <a name="advantages"></a>Vorteile
+- Sowohl Metriken als auch Protokolle werden unterstützt.
+- Unterstützt Parameter, die interaktive Berichte ermöglichen, wobei durch die Auswahl eines Elements in einer Tabelle zugeordnete Diagramme und Visualisierungen dynamisch aktualisiert werden.
+- Dokumentähnlicher Ablauf.
+- Option für persönliche oder freigegebene Arbeitsmappen.
+- Einfache und zusammenarbeitsfreundliche Benutzeroberfläche für die Erstellung.
+- Die Vorlagen unterstützen den öffentlichen Vorlagenkatalog auf GitHub-Basis.
+
+### <a name="limitations"></a>Einschränkungen
+- Keine automatische Aktualisierung.
+- Kein dichtes Layout wie bei Dashboards, sodass Arbeitsmappen weniger als zentrale Konsole geeignet sind. Eher für tiefere Einblicke vorgesehen.
+
 
 ## <a name="azure-dashboards"></a>Azure-Dashboards
 [Azure-Dashboards](../azure-portal/azure-portal-dashboards.md) sind die primäre Dashboardtechnologie für Azure. Sie sind besonders nützlich zur Bereitstellung einer zentralen Konsole für Ihre Azure-Infrastruktur und Dienste, sodass Sie wichtige Probleme schnell identifizieren können.
@@ -43,44 +59,6 @@ Visualisierungen wie Diagramme und Grafiken können Ihnen die Analyse Ihrer Übe
 - Protokolldiagramme können nur in freigegebenen Dashboards angeheftet werden.
 - Keine Interaktivität mit Dashboarddaten.
 - Eingeschränkte kontextbezogene Anzeige von Detailinformationen.
-
-## <a name="azure-monitor-views"></a>Azure Monitor-Ansichten
-Mit [Ansichten in Azure Monitor](platform/view-designer.md) erstellen Sie benutzerdefinierte Visualisierungen mit Protokolldaten. Sie werden von [Überwachungslösungen](insights/solutions.md) zur Präsentation der Daten verwendet, die sie sammeln.
-
-![Sicht](media/visualizations/view.png)
-
-### <a name="advantages"></a>Vorteile
-- Umfangreiche Visualisierungen für die Protokolldaten.
-- Exportieren und Importieren von Ansichten, um sie in andere Ressourcengruppen und Abonnements zu übertragen.
-- Integriert in das Azure Monitor-Verwaltungsmodell mit Arbeitsbereichen und Überwachungslösungen.
-- [Filtern](platform/view-designer-filters.md) nach benutzerdefinierten Parametern.
-- Interaktiv, unterstützt Drill-In (Sicht, die Detailinformationen einer anderen Ansicht zeigt) mit mehreren Ebenen.
-
-### <a name="limitations"></a>Einschränkungen
-- Unterstützt Protokolle, jedoch keine Metriken.
-- Keine persönlichen Ansichten. Für alle Benutzer mit Zugriff auf den Arbeitsbereich verfügbar.
-- Keine automatische Aktualisierung.
-- Begrenzte Layoutoptionen.
-- Keine Unterstützung von Abfragen über mehrere Arbeitsbereiche oder Application Insights-Anwendungen hinweg.
-- Die Antwortgröße für Abfragen ist auf 8MB und die Abfrageausführungszeit auf 110 Sekunden beschränkt.
-
-
-## <a name="workbooks"></a>Arbeitsmappen
-[Arbeitsmappen](../azure-monitor/app/usage-workbooks.md) sind interaktive Dokumente, die umfassende Einblicke in Ihre Daten, Untersuchungen und die Zusammenarbeit innerhalb des Teams bereitstellen. Spezifische Beispiele, wo Arbeitsmappen hilfreich sind, sind Anleitungen zur Problembehandlung und Nachbesprechungen zu Incidents.
-
-![Arbeitsmappe](media/visualizations/workbook.png)
-
-### <a name="advantages"></a>Vorteile
-- Sowohl Metriken als auch Protokolle werden unterstützt.
-- Unterstützt Parameter, die interaktive Berichte ermöglichen, wobei durch die Auswahl eines Elements in einer Tabelle zugeordnete Diagramme und Visualisierungen dynamisch aktualisiert werden.
-- Dokumentähnlicher Ablauf.
-- Option für persönliche oder freigegebene Arbeitsmappen.
-- Einfache und zusammenarbeitsfreundliche Benutzeroberfläche für die Erstellung.
-- Die Vorlagen unterstützen den öffentlichen Vorlagenkatalog auf GitHub-Basis.
-
-### <a name="limitations"></a>Einschränkungen
-- Keine automatische Aktualisierung.
-- Kein dichtes Layout wie bei Dashboards, sodass Arbeitsmappen weniger als zentrale Konsole geeignet sind. Eher für tiefere Einblicke vorgesehen.
 
 
 ## <a name="power-bi"></a>Power BI
@@ -129,6 +107,31 @@ Sie können auf Protokoll- und Metrikdaten in Azure Monitor mit einem beliebigen
 ### <a name="disadvantages"></a>Nachteile
 - Großer Entwicklungsaufwand erforderlich.
 
+
+## <a name="azure-monitor-views"></a>Azure Monitor-Ansichten
+
+> [!IMPORTANT]
+> Ansichten werden zurzeit ausgesondert. Anleitungen zum Umwandeln von Ansichten in Arbeitsmappen finden Sie im [Handbuch für den Übergang vom Azure Monitor-Ansicht-Designer zu Arbeitsmappen](platform/view-designer-conversion-overview.md).
+
+Mit [Ansichten in Azure Monitor](platform/view-designer.md) erstellen Sie benutzerdefinierte Visualisierungen mit Protokolldaten. Sie werden von [Überwachungslösungen](insights/solutions.md) zur Präsentation der Daten verwendet, die sie sammeln.
+
+
+![Sicht](media/visualizations/view.png)
+
+### <a name="advantages"></a>Vorteile
+- Umfangreiche Visualisierungen für die Protokolldaten.
+- Exportieren und Importieren von Ansichten, um sie in andere Ressourcengruppen und Abonnements zu übertragen.
+- Integriert in das Azure Monitor-Verwaltungsmodell mit Arbeitsbereichen und Überwachungslösungen.
+- [Filtern](platform/view-designer-filters.md) nach benutzerdefinierten Parametern.
+- Interaktiv, unterstützt Drill-In (Sicht, die Detailinformationen einer anderen Ansicht zeigt) mit mehreren Ebenen.
+
+### <a name="limitations"></a>Einschränkungen
+- Unterstützt Protokolle, jedoch keine Metriken.
+- Keine persönlichen Ansichten. Für alle Benutzer mit Zugriff auf den Arbeitsbereich verfügbar.
+- Keine automatische Aktualisierung.
+- Begrenzte Layoutoptionen.
+- Keine Unterstützung von Abfragen über mehrere Arbeitsbereiche oder Application Insights-Anwendungen hinweg.
+- Die Antwortgröße für Abfragen ist auf 8MB und die Abfrageausführungszeit auf 110 Sekunden beschränkt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zum [Sammeln von Daten in Azure Monitor](platform/data-platform.md).

@@ -1,15 +1,15 @@
 ---
-title: Senden von Azure Service Health-Benachrichtigungen mit einem Webhook
+title: Senden von Azure Service Health-Benachrichtigungen mit Webhooks
 description: Senden Sie personalisierte Benachrichtigungen zu Service Health-Ereignissen an Ihr vorhandenes Problemverwaltungssystem.
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 3/27/2018
-ms.openlocfilehash: 95926185057d9fc1177b974fe76b2da18ebfc124
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 2609a267bd151354f83482ab16c4b9345aa88cc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551674"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062857"
 ---
 # <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>Konfigurieren von Integritätsbenachrichtigungen für vorhandene Problemverwaltungssysteme mit einem Webhook
 

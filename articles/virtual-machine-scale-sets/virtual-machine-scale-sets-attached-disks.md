@@ -1,19 +1,19 @@
 ---
 title: Angefügte Datenträger für Azure Virtual Machine Scale Sets
 description: Erfahren Sie anhand von kurz erläuterten Anwendungsfällen, wie Sie angefügte Datenträger mit VM-Skalierungsgruppen verwenden.
-author: mayanknayar
+author: avirishuv
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 4/25/2017
-ms.author: manayar
-ms.openlocfilehash: c7fd4d89fcc66fb4110029be45ad94e21faea0e0
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.author: avverma
+ms.openlocfilehash: 6e39a8ffb24b0cca720890e3d00a55d1e58fadc2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278170"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80123377"
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure-VM-Skalierungsgruppen und angefügte Datenträger
 Zur Erweiterung des verfügbaren Speicherplatzes unterstützen [Azure-VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets/) VM-Instanzen mit angefügten Datenträgern. Datenträger können einer Skalierungsgruppe beim Erstellen der Skalierungsgruppe oder zu einem späteren Zeitpunkt hinzugefügt werden.
@@ -86,12 +86,12 @@ Fügen Sie Folgendes hinzu, um die Datenträger in einem Linux-Cluster automatis
 
 
 ## <a name="adding-pre-populated-data-disks-to-an-existing-scale-set"></a>Hinzufügen von vorab aufgefüllten Datenträgern zu einer vorhandenen Skalierungsgruppe
-Im Skalierungsgruppenmodell angegebene Datenträger sind immer leer. Sie können jedoch einen vorhandenen Datenträger an eine bestimmte VM in einer Skalierungsgruppe anfügen. Dieses Feature befindet sich in der Vorschauphase. Beispiele finden Sie auf [GitHub](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk). Wenn Sie Daten an alle VMs in der Skalierungsgruppe verteilen möchten, können Sie Ihren Datenträger duplizieren und an jede VM in der Skalierungsgruppe anfügen. Sie können ein benutzerdefiniertes Image erstellen, das die Daten enthält, und die Skalierungsgruppe aus diesem benutzerdefinierten Image bereitstellen. Sie können auch Azure Files oder eine vergleichbare Datenspeicherlösung verwenden.
+Im Skalierungsgruppenmodell angegebene Datenträger sind immer leer. Sie können jedoch einen vorhandenen Datenträger an eine bestimmte VM in einer Skalierungsgruppe anfügen. Wenn Sie Daten an alle VMs in der Skalierungsgruppe verteilen möchten, können Sie Ihren Datenträger duplizieren und an jede VM in der Skalierungsgruppe anfügen oder ein benutzerdefiniertes Image erstellen, das die Daten enthält, und die Skalierungsgruppe aus diesem benutzerdefinierten Image bereitstellen. Sie können auch Azure Files oder eine vergleichbare Datenspeicherlösung verwenden.
 
 
 ## <a name="additional-notes"></a>Zusätzliche Hinweise
 Unterstützung für Azure Managed Disks und Skalierungsgruppen, die an Datenträger angefügt sind, ist über die API-Version [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/compute/resource-manager/Microsoft.Compute/preview/2016-04-30-preview/compute.json) oder höher der Microsoft.Compute-API verfügbar.
 
-Die Unterstützung des Azure-Portals für angefügte Datenträger in Skalierungsgruppen ist anfangs beschränkt. Je nach Ihren Anforderungen können Sie Azure-Vorlagen, CLI, PowerShell, SDKs und REST API zum Verwalten angefügter Datenträger verwenden.
+Die Unterstützung des Azure-Portals für angefügte Datenträger in Skalierungsgruppen ist begrenzt. Je nach Ihren Anforderungen können Sie Azure-Vorlagen, CLI, PowerShell, SDKs und REST API zum Verwalten angefügter Datenträger verwenden.
 
 

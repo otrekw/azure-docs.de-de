@@ -3,16 +3,16 @@ title: Verknüpfen von Vorlagen für die Bereitstellung
 description: Beschreibt, wie verknüpfte Vorlagen in einer Azure-Ressourcen-Manager-Vorlage zum Erstellen einer modularen Vorlagenprojektmappe verwendet werden. Zeigt, wie Parameterwerte übergeben, eine Parameterdatei festgelegt und URLs dynamisch erstellt werden.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: e26b795a645ab9128dd738ba6a54b66ac0b7da2a
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 322797383ee865ceb66c44793387da827aeb8879
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356351"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131930"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
-Zum Bereitstellen komplexer Lösungen können Sie Ihre Vorlage in viele verwandte Vorlagen unterteilen und diese dann über eine Hauptvorlage gemeinsam bereitstellen. Die zugehörigen Vorlagen können separate Dateien oder in die Hauptvorlage eingebettete Vorlagensyntax sein. In diesem Artikel wird der Begriff **verknüpfte Vorlage** verwendet, um auf eine separate Vorlagendatei zu verweisen, die mit der Hauptvorlage verknüpft ist. Der Begriff **geschachtelte Vorlage** wird verwendet, um auf die eingebettete Vorlagensyntax in der Hauptvorlage zu verweisen.
+Zum Bereitstellen komplexer Lösungen können Sie Ihre Vorlage in viele verwandte Vorlagen unterteilen und diese dann über eine Hauptvorlage gemeinsam bereitstellen. Die zugehörigen Vorlagen können separate Dateien oder in die Hauptvorlage eingebettete Vorlagensyntax sein. In diesem Artikel wird der Begriff **verknüpfte Vorlage** für eine separate Vorlagendatei verwendet, auf die über eine Verknüpfung in der Hauptvorlage verwiesen wird. Der Begriff **geschachtelte Vorlage** wird verwendet, um auf die eingebettete Vorlagensyntax in der Hauptvorlage zu verweisen.
 
 Bei kleinen bis mittelgroßen Lösungen lässt sich eine Einzelvorlage einfacher verstehen und verwalten. Sie können alle Ressourcen und Werte in einer einzelnen Datei anzeigen. In erweiterten Szenarien können Sie mithilfe verknüpfter Vorlagen die Lösung in Zielkomponenten unterteilen. Sie können diese Vorlagen mühelos erneut für andere Szenarien verwenden.
 
@@ -92,11 +92,11 @@ Im folgenden Beispiel wird ein Speicherkonto über eine geschachtelte Vorlage be
 }
 ```
 
-### <a name="scope-for-expressions-in-nested-templates"></a>Bereich für Ausdrücke in geschachtelten Vorlagen
+### <a name="expression-evaluation-scope-in-nested-templates"></a>Auswertungsbereich von Ausdrücken in geschachtelten Vorlagen
 
 Bei Verwendung einer geschachtelten Vorlage können Sie angeben, ob Vorlagenausdrücke im Bereich der übergeordneten Vorlage oder der geschachtelten Vorlage ausgewertet werden sollen. Der Bereich legt fest, wie Parameter, Variablen und Funktionen (z. B. [resourceGroup](template-functions-resource.md#resourcegroup) und [subscription](template-functions-resource.md#subscription)) aufgelöst werden.
 
-Der Bereich wird durch die `expressionEvaluationOptions`-Eigenschaft festgelegt. Standardmäßig wird die `expressionEvaluationOptions`-Eigenschaft auf `outer` festgelegt, sodass der übergeordnete Vorlagenbereich verwendet wird. Legen Sie den Wert auf `inner` fest, damit Ausdrücke im Bereich der Vorlage ausgewertet werden.
+Der Bereich wird durch die `expressionEvaluationOptions`-Eigenschaft festgelegt. Standardmäßig wird die `expressionEvaluationOptions`-Eigenschaft auf `outer` festgelegt, sodass der übergeordnete Vorlagenbereich verwendet wird. Legen Sie den Wert auf `inner` fest, damit Ausdrücke innerhalb des Bereichs der geschachtelten Vorlage ausgewertet werden.
 
 ```json
 {
@@ -158,14 +158,14 @@ Die folgende Vorlage veranschaulicht, wie Vorlagenausdrücke entsprechend dem Be
 }
 ```
 
-Der Wert der Variable ändert sich entsprechend dem Bereich. In der folgenden Tabelle werden die Ergebnisse für beide Bereiche angezeigt.
+Der Wert von `exampleVar` ändert sich abhängig vom Wert der Eigenschaft `scope` in `expressionEvaluationOptions`. In der folgenden Tabelle werden die Ergebnisse für beide Bereiche angezeigt.
 
-| `Scope` | Output |
+| `expressionEvaluationOptions` `scope` | Output |
 | ----- | ------ |
 | Innerer Join | aus der geschachtelten Vorlage |
 | äußerer (oder Standard) | aus der übergeordneten Vorlage |
 
-Im folgenden Beispiel wird eine SQL Server-Instanz bereitgestellt, und ein Schlüsseltresorgeheimnis wird als Kennwort abgerufen. Der Bereich ist auf `inner` festgelegt, da er die Schlüsseltresor-ID dynamisch erstellt und als Parameter an die geschachtelte Vorlage übergibt.
+Im folgenden Beispiel wird eine SQL Server-Instanz bereitgestellt, und ein Schlüsseltresorgeheimnis wird als Kennwort abgerufen. Der Bereich ist auf `inner` festgelegt, da er die Schlüsseltresor-ID dynamisch erstellt (siehe `adminPassword.reference.keyVault` in den `parameters` der umschließenden Vorlagen) und als Parameter an die geschachtelte Vorlage übergibt.
 
 ```json
 {
@@ -215,6 +215,22 @@ Im folgenden Beispiel wird eine SQL Server-Instanz bereitgestellt, und ein Schl�
         "expressionEvaluationOptions": {
           "scope": "inner"
         },
+        "parameters": {
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "adminLogin": {
+            "value": "ghuser"
+          },
+          "adminPassword": {
+            "reference": {
+              "keyVault": {
+                "id": "[resourceId(parameters('vaultSubscription'), parameters('vaultResourceGroupName'), 'Microsoft.KeyVault/vaults', parameters('vaultName'))]"
+              },
+              "secretName": "[parameters('secretName')]"
+            }
+          }
+        },
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
@@ -250,22 +266,6 @@ Im folgenden Beispiel wird eine SQL Server-Instanz bereitgestellt, und ein Schl�
               "value": "[reference(variables('sqlServerName')).fullyQualifiedDomainName]"
             }
           }
-        },
-        "parameters": {
-          "location": {
-            "value": "[parameters('location')]"
-          },
-          "adminLogin": {
-            "value": "ghuser"
-          },
-          "adminPassword": {
-            "reference": {
-              "keyVault": {
-                "id": "[resourceId(parameters('vaultSubscription'), parameters('vaultResourceGroupName'), 'Microsoft.KeyVault/vaults', parameters('vaultName'))]"
-              },
-              "secretName": "[parameters('secretName')]"
-            }
-          }
         }
       }
     }
@@ -277,7 +277,7 @@ Im folgenden Beispiel wird eine SQL Server-Instanz bereitgestellt, und ein Schl�
 
 > [!NOTE]
 >
-> Wenn der Bereich auf `outer` festgelegt ist, können Sie die `reference`-Funktion nicht im Ausgabeabschnitt einer geschachtelten Vorlage für eine Ressource verwenden, die Sie in der geschachtelten Vorlage bereitgestellt haben. Um die Werte für eine bereitgestellte Ressource in einer geschachtelten Vorlage zurückzugeben, verwenden Sie den inneren Bereich, oder konvertieren Sie Ihre geschachtelte Vorlage in eine verknüpfte Vorlage.
+> Wenn der Bereich auf `outer` festgelegt ist, können Sie die `reference`-Funktion nicht im Ausgabeabschnitt einer geschachtelten Vorlage für eine Ressource verwenden, die Sie in der geschachtelten Vorlage bereitgestellt haben. Um die Werte für eine bereitgestellte Ressource in einer geschachtelten Vorlage zurückzugeben, verwenden Sie den Bereich `inner`, oder konvertieren Sie die geschachtelte Vorlage in eine verknüpfte Vorlage.
 
 ## <a name="linked-template"></a>Verknüpfte Vorlage
 
@@ -308,9 +308,15 @@ Zum Verknüpfen einer Vorlage fügen Sie der Hauptvorlage eine [Bereitstellungsr
 }
 ```
 
-Sie können keine lokale Datei und keine Datei angeben, die nur in Ihrem lokalen Netzwerk verfügbar ist. Sie können nur einen URI-Wert bereitstellen, der entweder **http** oder **https** enthält. Der Resource Manager muss auf die Vorlage zugreifen können. Eine Option besteht darin, die verknüpfte Vorlage in einem Speicherkonto zu platzieren und den URI für dieses Element zu verwenden.
+Beim Verweisen auf eine verknüpfte Vorlage darf der Wert von `uri` keine lokale Datei oder keine Datei sein, die nur in Ihrem lokalen Netzwerk verfügbar ist. Sie müssen einen URI-Wert angeben, der als **http**- oder **https**-Wert heruntergeladen werden kann. 
 
-Sie müssen die `contentVersion`-Eigenschaft für die Vorlage oder die Parameter nicht angeben. Wenn Sie keinen Wert für die Inhaltsversion bereitstellen, wird die aktuelle Version der Vorlage bereitgestellt. Wenn Sie einen Wert für die Inhaltsversion angeben, muss diese mit der Version in der verknüpften Vorlage übereinstimmen. Andernfalls tritt bei der Bereitstellung ein Fehler auf.
+> [!NOTE]
+>
+> Sie können auf Vorlagen mithilfe von Parametern verweisen, die letztendlich in einen Wert aufgelöst werden, der **http** oder **https** verwendet, beispielsweise die Verwendung des Parameters `_artifactsLocation` wie folgt: `"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
+
+
+
+Der Resource Manager muss auf die Vorlage zugreifen können. Eine Option besteht darin, die verknüpfte Vorlage in einem Speicherkonto zu platzieren und den URI für dieses Element zu verwenden.
 
 ### <a name="parameters-for-linked-template"></a>Parameter für eine verknüpfte Vorlage
 
@@ -325,12 +331,12 @@ Sie können die Parameter für die verknüpfte Vorlage in einer externen Datei o
   "properties": {
     "mode": "Incremental",
     "templateLink": {
-    "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
-    "contentVersion":"1.0.0.0"
+      "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
+      "contentVersion":"1.0.0.0"
     },
     "parametersLink": {
-    "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
-    "contentVersion":"1.0.0.0"
+      "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
+      "contentVersion":"1.0.0.0"
     }
   }
   }
@@ -360,6 +366,41 @@ Um Parameterwerte inline zu übergeben, verwenden Sie die **parameters**-Eigensc
 ```
 
 Sie können nicht sowohl Inlineparameter als auch einen Link auf eine Parameterdatei verwenden. Bei der Bereitstellung tritt ein Fehler auf, wenn sowohl `parametersLink` als auch `parameters` angegeben sind.
+
+## `contentVersion`
+
+Sie müssen die `contentVersion`-Eigenschaft für die `templateLink`- oder `parametersLink`- Eigenschaft nicht angeben. Wenn Sie keinen Wert für `contentVersion` angeben, wird die aktuelle Version der Vorlage bereitgestellt. Wenn Sie einen Wert für die Inhaltsversion angeben, muss diese mit der Version in der verknüpften Vorlage übereinstimmen. Andernfalls tritt bei der Bereitstellung ein Fehler auf.
+
+## <a name="using-variables-to-link-templates"></a>Verwenden von Variablen für das Verknüpfen von Vorlagen
+
+Die vorherigen Beispiele zeigen hartcodierte URL-Werte für die Vorlagenlinks. Dieser Ansatz funktioniert zwar bei einfachen Vorlagen, er funktioniert jedoch nicht gut bei einer großen Anzahl von modularen Vorlagen. Stattdessen können Sie eine statische Variable erstellen, die eine Basis-URL für die Hauptvorlage speichert, und dann aus dieser Basis-URL dynamisch URLs für die verknüpften Vorlagen erstellen. Der Vorteil dieses Ansatzes besteht darin, dass Sie die Vorlage problemlos verschieben oder verzweigen können, da Sie nur die statische Variable in der Hauptvorlage ändern müssen. Die Hauptvorlage übergibt die richtigen URIs an die zerlegten Vorlagen.
+
+Das folgende Beispiel zeigt, wie Sie eine Basis-URL verwenden können, um zwei URLs für verknüpfte Vorlagen (**sharedTemplateUrl** und **vmTemplate**) zu erstellen.
+
+```json
+"variables": {
+  "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/postgresql-on-ubuntu/",
+  "sharedTemplateUrl": "[uri(variables('templateBaseUrl'), 'shared-resources.json')]",
+  "vmTemplateUrl": "[uri(variables('templateBaseUrl'), 'database-2disk-resources.json')]"
+}
+```
+
+Sie können auch [deployment()](template-functions-deployment.md#deployment) verwenden, um die Basis-URL für die aktuelle Vorlage zu erhalten. Mit dieser können Sie die URL für die anderen Vorlagen am gleichen Speicherort abrufen. Diese Vorgehensweise ist hilfreich, wenn sich der Speicherort der Vorlage ändert oder wenn Sie es vermeiden möchten, URLs in der Vorlagendatei hart zu codieren. Die Eigenschaft „templateLink“ wird nur zurückgegeben, wenn auf eine Remotevorlage mit einer URL verwiesen wird. Wenn Sie eine lokale Vorlage verwenden, ist diese Eigenschaft nicht verfügbar.
+
+```json
+"variables": {
+  "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
+}
+```
+
+Letztendlich verwenden Sie die Variable in der `uri`-Eigenschaft einer `templateLink`-Eigenschaft.
+
+```json
+"templateLink": {
+ "uri": "[variables('sharedTemplateUrl')]",
+ "contentVersion":"1.0.0.0"
+}
+```
 
 ## <a name="using-copy"></a>Verwenden von „copy“
 
@@ -410,35 +451,13 @@ In der folgenden Beispielvorlage wird die Verwendung von „copy“ mit einer ge
 ]
 ```
 
-## <a name="using-variables-to-link-templates"></a>Verwenden von Variablen für das Verknüpfen von Vorlagen
-
-Die vorherigen Beispiele zeigen hartcodierte URL-Werte für die Vorlagenlinks. Dieser Ansatz funktioniert zwar bei einfachen Vorlagen, er funktioniert jedoch nicht gut bei der Arbeit mit einer großen Anzahl von modularen Vorlagen. Stattdessen können Sie eine statische Variable erstellen, die eine Basis-URL für die Hauptvorlage speichert, und dann aus dieser Basis-URL dynamisch URLs für die verknüpften Vorlagen erstellen. Der Vorteil dieses Ansatzes besteht darin, dass Sie die Vorlage problemlos verschieben oder verzweigen können, da Sie nur die statische Variable in der Hauptvorlage ändern müssen. Die Hauptvorlage übergibt die richtigen URIs an die zerlegten Vorlagen.
-
-Das folgende Beispiel zeigt, wie Sie eine Basis-URL verwenden können, um zwei URLs für verknüpfte Vorlagen (**sharedTemplateUrl** und **vmTemplate**) zu erstellen.
-
-```json
-"variables": {
-  "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/postgresql-on-ubuntu/",
-  "sharedTemplateUrl": "[concat(variables('templateBaseUrl'), 'shared-resources.json')]",
-  "vmTemplateUrl": "[concat(variables('templateBaseUrl'), 'database-2disk-resources.json')]"
-}
-```
-
-Sie können auch [deployment()](template-functions-deployment.md#deployment) verwenden, um die Basis-URL für die aktuelle Vorlage zu erhalten. Mit dieser können Sie die URL für die anderen Vorlagen am gleichen Speicherort abrufen. Diese Vorgehensweise ist hilfreich, wenn sich der Speicherort der Vorlage ändert oder wenn Sie es vermeiden möchten, URLs in der Vorlagendatei hart zu codieren. Die Eigenschaft „templateLink“ wird nur zurückgegeben, wenn auf eine Remotevorlage mit einer URL verwiesen wird. Wenn Sie eine lokale Vorlage verwenden, ist diese Eigenschaft nicht verfügbar.
-
-```json
-"variables": {
-  "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
-}
-```
-
 ## <a name="get-values-from-linked-template"></a>Abrufen von Werten aus einer verknüpften Vorlage
 
 Um einen Ausgabewert aus einer verknüpften Vorlage abzurufen, rufen Sie den Eigenschaftswert mit einer der folgenden ähnlichen Syntax ab: `"[reference('deploymentName').outputs.propertyName.value]"`.
 
-Wenn Sie eine Ausgabeeigenschaft von einer verknüpften Vorlage abrufen, kann der Name der Eigenschaft keinen Bindestrich enthalten.
+Wenn Sie eine Ausgabeeigenschaft von einer verknüpften Vorlage abrufen, darf der Name der Eigenschaft keinen Bindestrich enthalten.
 
-In den folgenden Beispielen wird veranschaulicht, wie Sie auf eine verknüpfte Vorlage verweisen und einen Ausgabewert abrufen. Die verknüpfte Vorlage gibt eine einfache Nachricht zurück.
+In den folgenden Beispielen wird veranschaulicht, wie Sie auf eine verknüpfte Vorlage verweisen und einen Ausgabewert abrufen. Die verknüpfte Vorlage gibt eine einfache Nachricht zurück.  Zunächst die verknüpfte Vorlage:
 
 ```json
 {
@@ -487,9 +506,9 @@ Die Hauptvorlage stellt die verknüpfte Vorlage bereit und ruft den zurückgegeb
 }
 ```
 
-Wie andere Ressourcentypen können Sie Abhängigkeiten zwischen der verknüpften Vorlage und anderen Ressourcen festlegen. Wenn andere Ressourcen einen Ausgabewert aus der verknüpften Vorlage benötigen, stellen Sie sicher, dass die verknüpfte Vorlage vor ihnen bereitgestellt wird. Wenn andererseits die verknüpfte Vorlage von anderen Ressourcen abhängig ist, sorgen Sie dafür, dass andere Ressourcen vor der verknüpften Vorlage bereitgestellt werden.
+Wie bei anderen Ressourcentypen können Sie Abhängigkeiten zwischen der verknüpften Vorlage und anderen Ressourcen festlegen. Wenn andere Ressourcen einen Ausgabewert aus der verknüpften Vorlage benötigen, stellen Sie sicher, dass die verknüpfte Vorlage vor ihnen bereitgestellt wird. Wenn andererseits die verknüpfte Vorlage von anderen Ressourcen abhängig ist, sorgen Sie dafür, dass andere Ressourcen vor der verknüpften Vorlage bereitgestellt werden.
 
-Im folgenden Beispiel ist eine Vorlage dargestellt, die eine öffentliche IP-Adresse bereitstellt und die Ressourcen-ID zurückgibt:
+Im folgenden Beispiel ist eine Vorlage dargestellt, die eine öffentliche IP-Adresse bereitstellt und die Ressourcen-ID der Azure-Ressource für diese öffentliche IP-Adresse zurückgibt:
 
 ```json
 {
@@ -524,7 +543,7 @@ Im folgenden Beispiel ist eine Vorlage dargestellt, die eine öffentliche IP-Adr
 }
 ```
 
-Um beim Bereitstellen eines Lastenausgleichs die öffentliche IP-Adresse aus der vorherigen Vorlage zu verwenden, verknüpfen Sie die Vorlage, und fügen Sie eine Abhängigkeit von der Bereitstellungsressource hinzu. Die öffentliche IP-Adresse des Lastenausgleichs wird auf den Ausgabewert von der verknüpften Vorlage festgelegt.
+Um beim Bereitstellen eines Lastenausgleichs die öffentliche IP-Adresse aus der vorherigen Vorlage zu verwenden, verknüpfen Sie die Vorlage, und deklarieren Sie eine Abhängigkeit von der `Microsoft.Resources/deployments`-Ressource. Die öffentliche IP-Adresse des Lastenausgleichs wird auf den Ausgabewert von der verknüpften Vorlage festgelegt.
 
 ```json
 {
@@ -554,6 +573,7 @@ Um beim Bereitstellen eines Lastenausgleichs die öffentliche IP-Adresse aus der
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
               "publicIPAddress": {
+                // this is where the output value from linkedTemplate is used
                 "id": "[reference('linkedTemplate').outputs.resourceID.value]"
               }
             }
@@ -566,6 +586,7 @@ Um beim Bereitstellen eines Lastenausgleichs die öffentliche IP-Adresse aus der
         "outboundNatRules": [],
         "inboundNatPools": []
       },
+      // This is where the dependency is declared
       "dependsOn": [
         "linkedTemplate"
       ]
@@ -686,7 +707,7 @@ Oder ein Azure CLI-Skript in einer Bash-Shell:
 for i in 0 1 2;
 do
   name="linkedTemplate$i";
-  deployment=$(az group deployment show -g examplegroup -n $name);
+  deployment=$(az deployment group show -g examplegroup -n $name);
   ip=$(echo $deployment | jq .properties.outputs.returnedIPAddress.value);
   echo "deployment $name returned $ip";
 done
@@ -759,7 +780,7 @@ url=$(az storage blob url \
   --output tsv \
   --connection-string $connection)
 parameter='{"containerSasToken":{"value":"?'$token'"}}'
-az group deployment create --resource-group ExampleGroup --template-uri $url?$token --parameters $parameter
+az deployment group create --resource-group ExampleGroup --template-uri $url?$token --parameters $parameter
 ```
 
 ## <a name="example-templates"></a>Beispielvorlagen

@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/15/2019
-ms.openlocfilehash: 74b96bf2cac0de7c57e496c637f2e3ef549eb61f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/24/2020
+ms.openlocfilehash: e4b076d96cad280c4da6c2424f056c2216c47602
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930456"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408869"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Aggregattransformation in Mapping Data Flow 
 
@@ -45,6 +45,16 @@ Aggregattransformationen ähneln SQL-Abfragen für die Aggregatauswahl. Spalten,
 
 * Verwenden Sie eine Aggregatfunktion, z.B. `last()` oder `first()`, um die zusätzliche Spalte einzuschließen.
 * Verknüpfen Sie die Spalten mithilfe des [Self-Join-Musters](https://mssqldude.wordpress.com/2018/12/20/adf-data-flows-self-join/) erneut mit dem Ausgabedatenstrom.
+
+## <a name="removing-duplicate-rows"></a>Entfernen doppelter Zeilen
+
+Aggregattransformationen werden häufig für das Entfernen oder Identifizieren doppelter Einträge in Quelldaten verwendet. Dieser Prozess wird als Deduplizierung bezeichnet. Verwenden Sie basierend auf einem Satz von Group by-Schlüsseln eine Heuristik Ihrer Wahl, um zu ermitteln, welche der doppelten Zeilen beibehalten werden sollen. Häufige Heuristiken sind `first()`, `last()`, `max()` und `min()`. Verwenden Sie [Spaltenmuster](concepts-data-flow-column-pattern.md), um die Regel auf alle Spalten mit Ausnahme der Group by-Spalten anzuwenden.
+
+![Deduplizierung](media/data-flow/agg-dedupe.png "Deduplizierung")
+
+Im obigen Beispiel werden die Spalten `ProductID` und `Name` für die Gruppierung verwendet. Wenn zwei Zeilen identische Werte für diese beiden Spalten aufweisen, werden sie als Duplikate angesehen. In dieser Aggregattransformation werden die Werte der ersten übereinstimmenden Zeile beibehalten, und alle anderen werden entfernt. Mithilfe der Syntax von Spaltenmustern werden alle Spalten, deren Namen nicht `ProductID` und `Name` sind, dem vorhandenen Spaltennamen zugeordnet. Außerdem erhalten sie den Wert der ersten übereinstimmenden Zeile. Das Ausgabeschema ist mit dem Eingabeschema identisch.
+
+Bei Datenüberprüfungsszenarien können Sie mithilfe der `count()`-Funktion zählen, wie viele Duplikate vorhanden sind.
 
 ## <a name="data-flow-script"></a>Datenflussskript
 
@@ -84,6 +94,15 @@ MoviesYear aggregate(
                 groupBy(year),
                 avgrating = avg(toInteger(Rating))
             ) ~> AvgComedyRatingByYear
+```
+
+![Skript zum Aggregieren von Datenflüssen](media/data-flow/aggdfs1.png "Skript zum Aggregieren von Datenflüssen")
+
+```MoviesYear```: Abgeleitete Spalte, die das Jahr und die Titelspalten definiert: ```AvgComedyRatingByYear``` Aggregattransformation für die durchschnittliche Bewertung von Komödien gruppiert nach Jahr: ```avgrating``` Name der neuen Spalte, die erstellt wird, um den aggregierten Wert aufzunehmen
+
+```
+MoviesYear aggregate(groupBy(year),
+    avgrating = avg(toInteger(Rating))) ~> AvgComedyRatingByYear
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

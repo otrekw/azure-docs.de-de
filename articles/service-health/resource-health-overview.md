@@ -3,12 +3,12 @@ title: Übersicht über Azure Resource Health
 description: Übersicht über Azure Resource Health
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 5609c7f09dc81a54a941dea391c0d717ad4bb06a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7a1dfe5e93d0e19aeb343d113a24ed882a5b3f69
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356797"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159250"
 ---
 # <a name="resource-health-overview"></a>Übersicht über Resource Health
  
@@ -38,7 +38,7 @@ Die Integrität einer Ressource wird als einer der folgenden Status angezeigt.
 
 #### <a name="platform-events"></a>Plattformereignisse
 
-Plattformereignisse werden von mehreren Komponenten der Azure-Infrastruktur ausgelöst. Dazu zählen sowohl geplante Aktionen (z.B. geplante Wartung) als auch unerwartete Vorfälle (z.B. ein nicht geplanter Neustart eines Hosts).
+Plattformereignisse werden von mehreren Komponenten der Azure-Infrastruktur ausgelöst. Dazu zählen sowohl geplante Aktionen (z. B. geplante Wartung) als auch unerwartete Vorfälle (z. B. ein nicht geplanter Neustart eines Hosts oder heruntergestufte Hosthardware, deren Ausfall nach einem bestimmten Zeitfenster vorhergesagt wird).
 
 Resource Health stellt weitere Details zum Ereignis und zum Wiederherstellungsprozess bereit. Darüber hinaus können Sie sich selbst dann an den Microsoft-Support wenden, wenn Sie nicht über eine aktive Supportvereinbarung verfügen.
 
@@ -76,7 +76,7 @@ Wenn Sie glauben, dass der aktuelle Integritätsstatus falsch ist, können Sie u
 
 ## <a name="history-information"></a>Verlaufsinformationen
 
-Im Abschnitt **Integritätsverlauf** von Resource Health stehen bis zu 14 Tage alte Verlaufsdaten zur Verfügung.
+Im Abschnitt **Integritätsverlauf** von Resource Health stehen bis zu 30 Tage alte Verlaufsdaten zur Verfügung.
 
 ![Liste der Resource Health-Ereignisse in den letzten zwei Wochen](./media/resource-health-overview/history-blade.png)
 

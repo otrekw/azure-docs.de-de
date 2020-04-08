@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: a1c2049d7355ab946dbf426ec71f7f6178b8f153
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 5c84588290ce769b556002469b6a11c6950bb878
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819106"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476551"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Behandlung von Problemen bei der Aktivierung virtueller Windows-Computer
 
@@ -46,9 +46,9 @@ In der Regel treten Probleme bei der VM-Aktivierung in Azure auf, wenn die Windo
 ## <a name="solution"></a>Lösung
 
 >[!NOTE]
->Wenn Sie ein Standort-zu-Standort-VPN und eine Tunnelerzwingung verwenden, gehen Sie unter [Verwenden von benutzerdefinierten Azure-Routen zum Aktivieren der KMS-Aktivierung mit Tunnelerzwingung](https://blogs.msdn.com/b/mast/archive/2015/05/20/use-azure-custom-routes-to-enable-kms-activation-with-forced-tunneling.aspx). 
+>Wenn Sie ein Standort-zu-Standort-VPN und eine Tunnelerzwingung verwenden, gehen Sie unter [Verwenden von benutzerdefinierten Azure-Routen zum Aktivieren der KMS-Aktivierung mit Tunnelerzwingung](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling). 
 >
->Wenn Sie ExpressRoute verwenden, und eine veröffentlichte Standardroute besitzen, gehen Sie unter [Azure VM may fail to activate over ExpressRoute (Die Azure-VM kann womöglich über ExpressRoute nicht aktiviert werden)](https://blogs.msdn.com/b/mast/archive/2015/12/01/azure-vm-may-fail-to-activate-over-expressroute.aspx).
+>Wenn Sie ExpressRoute verwenden und eine Standardroute veröffentlicht haben, finden Sie weitere Informationen unter [Kann ich die Verbindung mit dem Internet für virtuelle Netzwerke blockieren, die mit ExpressRoute-Verbindungen verbunden sind?](https://docs.microsoft.com/azure/expressroute/expressroute-faqs).
 
 ### <a name="step-1-configure-the-appropriate-kms-client-setup-key"></a>Schritt 1: Konfigurieren der entsprechenden KMS-Clientsetupschlüssel
 
@@ -102,7 +102,9 @@ Sie müssen für den aus einem benutzerdefinierten Image erstellten virtuellen C
   
     Stellen Sie außerdem sicher, dass der ausgehende Netzwerkdatenverkehr an den KMS-Endpunkt mit Port 1688 nicht durch die Firewall auf der VM blockiert wird.
 
-5. Nachdem Sie erfolgreich die Verbindung zu „kms.core.windows.net“ überprüft haben, führen Sie den folgenden Befehl auf der erhöhten Windows PowerShell-Aufforderung aus. Dieser Befehl versucht mehrmals, die Aktivierung durchzuführen.
+5. Vergewissern Sie sich mithilfe der Funktion [Network Watcher – nächster Hop](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview), dass der Typ des nächsten Hops von der betreffenden VM an die Ziel-IP-Adresse 23.102.135.246 (für kms.core.windows.net) oder die IP-Adresse des entsprechenden KMS-Endpunkts für Ihre Region **Internet** lautet.  Wenn das Ergebnis „VirtualAppliance“ oder „VirtualNetworkGateway“ lautet, ist wahrscheinlich eine Standardroute vorhanden.  Wenden Sie sich an Ihren Netzwerkadministrator, und legen Sie in Zusammenarbeit mit ihm die richtige Vorgehensweise fest.  Hierbei kann es sich um eine [benutzerdefinierte Route](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/custom-routes-enable-kms-activation) handeln, wenn diese Lösung mit den Richtlinien Ihrer Organisation konsistent ist.
+
+6. Nachdem Sie erfolgreich die Verbindung zu „kms.core.windows.net“ überprüft haben, führen Sie den folgenden Befehl auf der erhöhten Windows PowerShell-Aufforderung aus. Dieser Befehl versucht mehrmals, die Aktivierung durchzuführen.
 
     ```powershell
     1..12 | ForEach-Object { Invoke-Expression "$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /ato" ; start-sleep 5 }

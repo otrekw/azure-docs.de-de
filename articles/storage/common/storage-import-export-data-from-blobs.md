@@ -5,17 +5,18 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 8ce1e7d58ba69d9f36d3b37c1e48bfeebc5d8d65
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a5afa6439caa6b7c1572447e3b212f3357bf296a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978561"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282510"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Exportieren von Daten aus Azure Blob Storage
+
 Dieser Artikel enthält ausführliche Anweisungen zum Verwenden des Azure Import/Export-Diensts, um große Datenmengen sicher aus Azure Blob Storage zu exportieren. Für diesen Dienst müssen Sie leere Laufwerke an das Azure-Rechenzentrum senden. Der Dienst exportiert Daten aus Ihrem Speicherkonto auf die Laufwerke und versendet diese dann zurück.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -27,12 +28,12 @@ Die Voraussetzungen lauten wie folgt:
 - Mindestens ein Azure Storage-Konto Hier finden Sie die Liste der [für den Import/Export-Dienst unterstützten Speicherkonten und Speichertypen](storage-import-export-requirements.md). Weitere Informationen zum Erstellen eines neuen Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](storage-account-create.md).
 - Eine angemessene Anzahl von Datenträgern der [unterstützten Typen](storage-import-export-requirements.md#supported-disks)
 - Sie benötigen ein FedEx/DHL-Konto. Wenn Sie einen anderen Spediteur als FedEx/DHL verwenden möchten, wenden Sie sich unter `adbops@microsoft.com` an das Azure Data Box Operations-Team.
-    - Das Konto muss gültig sein, es muss Guthaben vorhanden sein und es muss der Rückversand aktiviert sein.
-    - Generieren Sie eine Nachverfolgungsnummer für den Exportauftrag.
-    - Jeder Auftrag benötigt eine separate Nachverfolgungsnummer. Mehrere Aufträge mit derselben Nachverfolgungsnummer werden nicht unterstützt.
-    - Wenn Sie kein Spediteurskonto haben, wechseln Sie zu:
-        - [Erstellen eines FedEx-Kontos](https://www.fedex.com/en-us/create-account.html) oder
-        - [Erstellen eines DHL-Kontos](http://www.dhl-usa.com/en/express/shipping/open_account.html).
+  - Das Konto muss gültig sein, es muss Guthaben vorhanden sein und es muss der Rückversand aktiviert sein.
+  - Generieren Sie eine Nachverfolgungsnummer für den Exportauftrag.
+  - Jeder Auftrag benötigt eine separate Nachverfolgungsnummer. Mehrere Aufträge mit derselben Nachverfolgungsnummer werden nicht unterstützt.
+  - Wenn Sie kein Spediteurskonto haben, wechseln Sie zu:
+    - [Erstellen eines FedEx-Kontos](https://www.fedex.com/en-us/create-account.html) oder
+    - [Erstellen eines DHL-Kontos](http://www.dhl-usa.com/en/express/shipping/open_account.html).
 
 ## <a name="step-1-create-an-export-job"></a>Schritt 1: Erstellen eines Exportauftrags
 
@@ -58,7 +59,7 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Exportauftrag z
 
         ![Grundlagen](./media/storage-import-export-data-from-blobs/export-from-blob3.png)
 
-3. Gehen Sie unter **Auftragsdetails** wie folgt vor:
+5. Gehen Sie unter **Auftragsdetails** wie folgt vor:
 
     - Wählen Sie das Speicherkonto aus, das die zu exportierenden Daten enthält. Verwenden Sie ein Speicherkonto in der Nähe Ihres Standorts.
     - Der Ablageort wird automatisch basierend auf der Region des ausgewählten Speicherkontos mit Daten aufgefüllt.
@@ -80,8 +81,7 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Exportauftrag z
    > [!NOTE]
    > Wenn das zu exportierende Blob während des Kopierens der Daten verwendet wird, erstellt der Azure Import/Export-Dienst eine Momentaufnahme des Blobs und kopiert die Momentaufnahme.
 
-
-4. Gehen Sie unter **Informationen für Rücksendung** wie folgt vor:
+6. Gehen Sie unter **Informationen für Rücksendung** wie folgt vor:
 
     - Wählen Sie den Spediteur in der Dropdownliste aus. Wenn Sie einen anderen Spediteur als FedEx/DHL beauftragen möchten, wählen Sie eine der Optionen in der Dropdownliste aus. Wenden Sie sich unter `adbops@microsoft.com` an das Azure Data Box Operations-Team, und informieren Sie es über den von Ihnen vorgesehenen Spediteur.
     - Geben Sie eine gültige Spediteurkontonummer ein, die Sie mit diesem Spediteur erstellt haben. Microsoft verwendet dieses Konto, um die Laufwerke nach Abschluss des Exportauftrags an Sie zurückzuschicken.
@@ -90,7 +90,7 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Exportauftrag z
         > [!TIP]
         > Geben Sie anstelle einer E-Mail-Adresse für einen einzelnen Benutzer, eine Gruppen E-Mail-Adresse ein. Dadurch wird sichergestellt, dass Sie Benachrichtigungen erhalten, selbst wenn ein Administrator geht.
 
-5. Gehen Sie in **Zusammenfassung** wie folgt vor:
+7. Gehen Sie in **Zusammenfassung** wie folgt vor:
 
     - Überprüfen Sie die Details zum Auftrag.
     - Notieren Sie den Auftragsnamen und die angegebene Lieferadresse des Azure-Rechenzentrums für das Senden der Datenträger an Azure.
@@ -99,6 +99,8 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Exportauftrag z
         > Senden Sie die Datenträger immer an das im Azure-Portal angegebene Rechenzentrum. Wenn die Datenträger an das falsche Rechenzentrum versendet werden, wird der Auftrag nicht verarbeitet.
 
     - Klicken Sie auf **OK**, um das Erstellen des Exportauftrags abzuschließen.
+
+<!--## (Optional) Step 2: -->
 
 ## <a name="step-2-ship-the-drives"></a>Schritt 2: Versenden der Laufwerke
 
@@ -110,19 +112,28 @@ Wenn Sie die Anzahl der benötigten Laufwerke nicht kennen, fahren Sie mit [Übe
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
-
 ## <a name="step-4-receive-the-disks"></a>Schritt 4: Empfangen der Datenträger
+
 Wenn im Dashboard angegeben wird, dass der Auftrag abgeschlossen wurde, werden die Laufwerke an Sie versendet, und die Nachverfolgungsnummer für die Lieferung ist im Portal verfügbar.
 
 1. Wenn Sie die Laufwerke mit exportierten Daten erhalten haben, benötigen Sie die BitLocker-Schlüssel, um die Laufwerke zu entsperren. Wechseln Sie im Azure-Portal zum Exportauftrag. Klicken auf die Registerkarte **Import/Export**.
-2. Wählen Sie Ihren Exportauftrag in der Liste aus, und klicken Sie darauf. Wechseln Sie zu **BitLocker-Schlüssel**, und kopieren Sie die Schlüssel.
+2. Wählen Sie Ihren Exportauftrag in der Liste aus, und klicken Sie darauf. Wechseln Sie zu **Verschlüsselung**, und kopieren Sie die Schlüssel.
 
-   ![BitLocker-Schlüssel für einen Exportauftrag anzeigen](./media/storage-import-export-service/export-job-bitlocker-keys.png)
+   ![BitLocker-Schlüssel für einen Exportauftrag anzeigen](./media/storage-import-export-service/export-job-bitlocker-keys-02.png)
 
 3. Verwenden Sie die BitLocker-Schlüssel zum Entsperren der Datenträger.
 
-Der Export ist abgeschlossen. Zu diesem Zeitpunkt können Sie den Auftrag löschen. Nach 90 Tagen wird er automatisch gelöscht.
+Der Export ist abgeschlossen.
 
+## <a name="step-5-unlock-the-disks"></a>Schritt 5: Entsperren der Datenträger
+
+Wenn Sie Version 1.4.0.300 des WAImportExport-Tools verwenden, entsperren Sie das Laufwerk mit dem folgenden Befehl:
+
+    `WAImportExport Unlock /externalKey:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`  
+
+Wenn Sie frühere Versionen des Tools verwenden, entsperren Sie das Laufwerk über das BitLocker-Dialogfeld.
+
+Zu diesem Zeitpunkt können Sie den Auftrag löschen oder belassen. Aufträge werden nach 90 Tagen automatisch gelöscht.
 
 ## <a name="check-the-number-of-drives"></a>Überprüfen der Anzahl der Laufwerke
 
@@ -140,7 +151,7 @@ Mit diesem *optionalen* Schritt können Sie die Anzahl der Laufwerke, die für d
 
     Die Parameter werden in der folgenden Tabelle beschrieben:
 
-    |Befehlszeilenparameter|Beschreibung|  
+    |Befehlszeilenparameter|BESCHREIBUNG|  
     |--------------------------|-----------------|  
     |**/logdir:**|Optional. Das Protokollverzeichnis In dieses Verzeichnis werden ausführliche Protokolldateien geschrieben. Ohne spezielle Angabe wird das aktuelle Verzeichnis als Protokollverzeichnis verwendet.|  
     |**/sn:**|Erforderlich. Der Name des Speicherkontos für den Exportauftrag.|  
@@ -157,8 +168,8 @@ Mit diesem *optionalen* Schritt können Sie die Anzahl der Laufwerke, die für d
 
 Das folgende Beispiel veranschaulicht die Verwendung des Befehls `PreviewExport`:  
 
-```  
-WAImportExport.exe PreviewExport /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /ExportBlobListFile:C:\WAImportExport\mybloblist.xml /DriveSize:500GB    
+```powershell
+    WAImportExport.exe PreviewExport /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /ExportBlobListFile:C:\WAImportExport\mybloblist.xml /DriveSize:500GB
 ```  
 
 Die Datei mit der Blobliste für den Export kann wie hier gezeigt Blobnamen und Blobpräfixe enthalten:  
@@ -176,7 +187,7 @@ Das Azure Import/Export-Tool listet alle zu exportierenden Blobs auf, berechnet 
 
 Hier sehen Sie ein Beispiel der Ausgabe ohne Informationsprotokolle:  
 
-```  
+```powershell
 Number of unique blob paths/prefixes:   3  
 Number of duplicate blob paths/prefixes:        0  
 Number of nonexistent blob paths/prefixes:      1  
@@ -187,14 +198,14 @@ Number of blobs that cannot be exported:        2
 Number of drives needed:        3  
         Drive #1:       blobs = 1, occupied space = 454.74 GB  
         Drive #2:       blobs = 3, occupied space = 441.37 GB  
-        Drive #3:       blobs = 2, occupied space = 131.28 GB    
+        Drive #3:       blobs = 2, occupied space = 131.28 GB
 ```
 
 ## <a name="examples-of-valid-blob-paths"></a>Beispiele für gültige Blobpfade
 
 Die folgende Tabelle enthält Beispiele für gültige Blob-Pfade:
 
-   | Auswahl | Blob-Pfad | Beschreibung |
+   | Auswahl | Blob-Pfad | BESCHREIBUNG |
    | --- | --- | --- |
    | Starts With |/ |Exportiert alle Blobs im Speicherkonto |
    | Starts With |/$root/ |Exportiert alle Blobs im Stammcontainer |
@@ -206,5 +217,5 @@ Die folgende Tabelle enthält Beispiele für gültige Blob-Pfade:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Anzeigen von Auftrags- und Laufwerkstatus](storage-import-export-view-drive-status.md)
-* [Überprüfen der Import/Export-Anforderungen](storage-import-export-requirements.md)
+- [Anzeigen von Auftrags- und Laufwerkstatus](storage-import-export-view-drive-status.md)
+- [Überprüfen der Import/Export-Anforderungen](storage-import-export-requirements.md)

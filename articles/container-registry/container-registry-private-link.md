@@ -3,12 +3,12 @@ title: Einrichten einer privaten Verbindung
 description: Hier erfahren Sie, wie Sie einen privaten Endpunkt in einer Containerregistrierung einrichten und eine private Verbindung in einem lokalen virtuellen Netzwerk aktivieren.
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: b7dcf2d1eb1a77ea8b9660318ed2a7d4ec183b42
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: de8228d84497e71f24dba3dd4e6162cb6735a8c1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128382"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79498916"
 ---
 # <a name="configure-azure-private-link-for-an-azure-container-registry"></a>Konfigurieren von Azure Private Link für eine Azure-Containerregistrierung 
 
@@ -28,7 +28,14 @@ Dieses Feature ist auf der Dienstebene **Premium** der Containerregistrierung ve
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Wenn Sie die Azure CLI-Schritte in diesem Artikel verwenden möchten, wird mindestens die Azure CLI-Version 2.2.0 empfohlen. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli]. Alternativ können Sie [Azure Cloud Shell](../cloud-shell/quickstart.md) verwenden.
-* Sollten Sie noch nicht über eine Containerregistrierung verfügen, können Sie eine Registrierung erstellen (Premium-Tarif erforderlich) und ein Beispielimage (etwa `hello-world`) aus Docker Hub pushen. Zum Erstellen einer Registrierung können Sie das [Azure-Portal][quickstart-portal] oder die [Azure-Befehlszeilenschnittstelle][quickstart-cli] verwenden. 
+* Sollten Sie noch nicht über eine Containerregistrierung verfügen, können Sie eine Registrierung erstellen (Premium-Tarif erforderlich) und ein Beispielimage (etwa `hello-world`) aus Docker Hub pushen. Zum Erstellen einer Registrierung können Sie das [Azure-Portal][quickstart-portal] oder die [Azure-Befehlszeilenschnittstelle][quickstart-cli] verwenden.
+* Wenn Sie den Registrierungszugriff mithilfe eines privaten Links in einem anderen Azure-Abonnement konfigurieren möchten, müssen Sie den Ressourcenanbieter für Azure Container Registry in diesem Abonnement registrieren. Beispiel:
+
+  ```azurecli
+  az account set --subscription <Name or ID of subscription of private link>
+
+  az provider register --namespace Microsoft.ContainerRegistry
+  ``` 
 
 In den Azure CLI-Beispielen dieses Artikels werden die folgenden Umgebungsvariablen verwendet. Ersetzen Sie die Werte durch entsprechende Werte für Ihre Umgebung. Alle Beispiele sind für die Bash-Shell formatiert:
 
@@ -262,8 +269,8 @@ Bei den folgenden Schritten wird davon ausgegangen, dass Sie bereits ein virtuel
     | Einstellung | Wert |
     | ------- | ----- |
     | **Projektdetails** | |
-    | Abonnement | Wählen Sie Ihr Abonnement aus. |
-    | Ressourcengruppe | Geben Sie den Namen einer vorhandenen Gruppe ein, oder erstellen Sie eine neue.|
+    | Subscription | Wählen Sie Ihr Abonnement aus. |
+    | Resource group | Geben Sie den Namen einer vorhandenen Gruppe ein, oder erstellen Sie eine neue.|
     | **Instanzendetails** |  |
     | Name | Geben Sie einen eindeutigen Namen ein. |
     |Region|Wählen Sie eine Region aus.|
@@ -276,7 +283,7 @@ Bei den folgenden Schritten wird davon ausgegangen, dass Sie bereits ein virtuel
     |Verbindungsmethode  | Wählen Sie **Hiermit wird eine Verbindung mit einer Azure-Ressource im eigenen Verzeichnis hergestellt** aus.|
     | Subscription| Wählen Sie Ihr Abonnement aus. |
     | Ressourcentyp | Wählen Sie **Microsoft.ContainerRegistry/registries** aus. |
-    | Ressource |Wählen Sie den Namen Ihrer Registrierung aus.|
+    | Resource |Wählen Sie den Namen Ihrer Registrierung aus.|
     |Unterressource des Ziels |Wählen Sie **Registrierung** aus.|
     |||
 7. Klicken Sie auf **Weiter: Konfiguration** aus.
@@ -402,10 +409,10 @@ Wenn Sie Ihre Ressourcen über das Portal bereinigen möchten, navigieren Sie zu
 [az-network-vnet-list]: /cli/azure/network/vnet/#az-network-vnet-list
 [az-network-private-endpoint-create]: /cli/azure/network/private-endpoint#az-network-private-endpoint-create
 [az-network-private-endpoint-show]: /cli/azure/network/private-endpoint#az-network-private-endpoint-show
-[az-network-private-dns-zone-create]: /cli/azure/network/private-dns-zone/create#az-network-private-dns-zone-create
-[az-network-private-dns-link-vnet-create]: /cli/azure/network/private-dns-link/vnet#az-network-private-dns-link-vnet-create
-[az-network-private-dns-record-set-a-create]: /cli/azure/network/private-dns-record/set/a#az-network-private-dns-record-set-a-create
-[az-network-private-dns-record-set-a-add-record]: /cli/azure/network/private-dns-record/set/a#az-network-private-dns-record-set-a-add-record
+[az-network-private-dns-zone-create]: /cli/azure/network/private-dns/zone#az-network-private-dns-zone-create
+[az-network-private-dns-link-vnet-create]: /cli/azure/network/private-dns/link/vnet#az-network-private-dns-link-vnet-create
+[az-network-private-dns-record-set-a-create]: /cli/azure/network/private-dns/record-set/a#az-network-private-dns-record-set-a-create
+[az-network-private-dns-record-set-a-add-record]: /cli/azure/network/private-dns/record-set/a#az-network-private-dns-record-set-a-add-record
 [az-resource-show]: /cli/azure/resource#az-resource-show
 [quickstart-portal]: container-registry-get-started-portal.md
 [quickstart-cli]: container-registry-get-started-azure-cli.md

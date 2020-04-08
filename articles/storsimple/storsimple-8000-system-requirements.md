@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 2e7c1eedf02c8a7783ee90f403dbd77ec2ee53ea
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 3032585c6f0a5cc6143eee06b12b6def50cd7cd0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963325"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297707"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>Software für StorSimple 8000-Serie, Hochverfügbarkeit und Netzwerkanforderungen
 
@@ -81,7 +81,7 @@ Das StorSimple-Gerät ist ein gesperrtes Gerät. Allerdings müssen Ports in der
 <sup>3</sup> Die festen IP-Adressen der Controller im StorSimple-Gerät müssen routingfähig sein und direkt oder über den konfigurierten Proxy eine Verbindung mit dem Internet herstellen können. Die festen IP-Adressen werden für die Bereitstellung der Updates für das Gerät sowie für die Garbage Collection verwendet. Wenn die Gerätecontroller über die festen IP-Adressen keine Verbindung mit dem Internet herstellen können, können Sie das StorSimple-Gerät nicht aktualisieren, und die Garbage Collection wird nicht ordnungsgemäß ausgeführt.
 
 > [!IMPORTANT]
-> Achten Sie darauf, dass SSL-Datenverkehr zwischen dem StorSimple-Gerät und Azure nicht durch die Firewall geändert oder entschlüsselt wird.
+> Achten Sie darauf, dass TLS-Datenverkehr zwischen dem StorSimple-Gerät und Azure nicht durch die Firewall geändert oder entschlüsselt wird.
 
 
 ### <a name="url-patterns-for-firewall-rules"></a>URL-Muster für Firewallregeln
@@ -157,7 +157,7 @@ Der für Update 2 und höhere Versionen verwendete Routingmetrikalgorithmus läs
 * Außerdem wird eine Warnung auf dem StorSimple-Gerät ausgelöst, wenn ein VIP-Fehler vorliegt. Weitere Informationen finden Sie unter [Kurzübersicht zu Warnungen](storsimple-8000-manage-alerts.md).
 * Im Hinblick auf Wiederholungsversuche erhält iSCSI Vorrang vor der Cloud.
   
-    Betrachten Sie das folgende Beispiel: Für ein StorSimple-Gerät sind zwei Netzwerkschnittstellen aktiviert, Data 0 und Data 1. Data 0 ist cloudfähig, Data 1 ist sowohl cloudfähig als auch iSCSI-aktiviert. Keine anderen Netzwerkschnittstellen auf diesem Gerät sind für die Cloud oder iSCSI aktiviert.
+    Betrachten Sie das folgenden Beispiel: Für ein StorSimple-Gerät sind zwei Netzwerkschnittstellen aktiviert, Data 0 und Data 1. Data 0 ist cloudfähig, Data 1 ist sowohl cloudfähig als auch iSCSI-aktiviert. Keine anderen Netzwerkschnittstellen auf diesem Gerät sind für die Cloud oder iSCSI aktiviert.
   
     Wenn bei Data 1 ein Fehler auftritt und es sich dabei um die letzte iSCSI-Netzwerkschnittstelle handelt, führt dies zu einem Controllerfailover auf Data 1 auf dem anderen Controller.
 

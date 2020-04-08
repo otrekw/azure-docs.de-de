@@ -7,12 +7,12 @@ ms.subservice: workloads
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 45ae8979a2617d4f380e417e3f0910182ebe145e
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 793a8f291be4fcca6fad19d486849253dddc089f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78970074"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294789"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Bereitstellen Ihrer ersten App in Cloud Foundry in Microsoft Azure
 
@@ -27,7 +27,7 @@ Es gibt mehrere Optionen zum Erstellen einer Cloud Foundry-Umgebung in Azure:
 - [Stellen Sie die Cloud Foundry-Open-Source-Pakete direkt bereit][oss-cf-bosh], indem Sie einen [BOSH](https://bosh.io)-Director einrichten. Dies ist ein virtueller Computer, der die Bereitstellung der Cloud Foundry-Umgebung koordiniert.
 
 > [!IMPORTANT] 
-> Wenn Sie Pivotal Cloud Foundry (PCF) über Azure Marketplace bereitstellen, notieren Sie sich den Wert von SYSTEMDOMAINURL und die Anmeldeinformationen für den Administrator, die für den Zugriff auf Pivotal Apps Manager erforderlich sind. Beides wird im Bereitstellungsleitfaden in Marketplace beschrieben. Die Angaben sind zum Durchführen dieses Tutorials erforderlich. Für Marketplace-Bereitstellungen hat SYSTEMDOMAINURL das folgende Format: https://system.*IP-Adresse*.cf.pcfazure.com.
+> Wenn Sie Pivotal Cloud Foundry (PCF) über Azure Marketplace bereitstellen, notieren Sie sich den Wert von SYSTEMDOMAINURL und die Anmeldeinformationen für den Administrator, die für den Zugriff auf Pivotal Apps Manager erforderlich sind. Beides wird im Bereitstellungsleitfaden in Marketplace beschrieben. Die Angaben sind zum Durchführen dieses Tutorials erforderlich. Für Marketplace-Bereitstellungen hat SYSTEMDOMAINURL das Format `https://system.*ip-address*.cf.pcfazure.com`.
 
 ## <a name="connect-to-the-cloud-controller"></a>Herstellen einer Verbindung mit dem Cloud Controller
 
@@ -124,7 +124,7 @@ cf logs --recent hello-spring-cloud
 
 ## <a name="scale-the-application"></a>Skalieren der Anwendung
 
-Standardmäßig erstellt `cf push` nur eine einzelne Instanz der Anwendung. Um Hochverfügbarkeit zu gewährleisten und ein horizontales Hochskalieren für einen höheren Durchsatz zu ermöglichen, werden in der Regel mehrere Instanzen Ihrer Anwendungen ausgeführt. Mit dem Befehl `scale` können Sie bereits bereitgestellte Anwendungen mühelos horizontal hochskalieren:
+Standardmäßig erstellt `cf push` nur eine einzelne Instanz der Anwendung. Um Hochverfügbarkeit zu gewährleisten und ein Aufskalieren für einen höheren Durchsatz zu ermöglichen, werden in der Regel mehrere Instanzen Ihrer Anwendungen ausgeführt. Mit dem Befehl `scale` können Sie bereits bereitgestellte Anwendungen mühelos aufskalieren:
 
 ```bash
 cf scale -i 2 hello-spring-cloud

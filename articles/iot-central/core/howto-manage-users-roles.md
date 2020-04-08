@@ -4,20 +4,18 @@ description: Erfahren Sie, wie Sie als Administrator Benutzer und Rollen in Ihre
 author: lmasieri
 ms.author: lmasieri
 ms.date: 12/05/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 8826ec5b8876a3f9e5b613641cc0d759545f04c4
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: c00f9d8baa55ef0d0cf6322ee71f22e739e6acdc
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77018948"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80365497"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application"></a>Verwalten von Benutzern und Rollen in Ihrer IoT Central-Anwendung
-
-
 
 In diesem Artikel wird beschrieben, wie Sie als Administrator Benutzer in Ihrer Azure IoT Central-Anwendung hinzufügen, bearbeiten und löschen. Außerdem erfahren Sie, wie Sie Rollen in Ihrer Azure IoT Central-Anwendung verwalten.
 
@@ -25,7 +23,7 @@ Um auf den Abschnitt **Verwaltung** zugreifen und diesen verwenden zu können, m
 
 ## <a name="add-users"></a>Hinzufügen von Benutzern
 
-Jeder Benutzer muss ein Benutzerkonto besitzen, um sich bei einer Azure IoT Central-Anwendung anmelden und auf diese zugreifen zu können. Azure IoT Central unterstützt Microsoft-Konten (MSAs) und Azure Active Directory-Konten (Azure AD). Azure Active Directory-Gruppen werden in Azure IoT Central derzeit nicht unterstützt.
+Jeder Benutzer muss ein Benutzerkonto besitzen, um sich bei einer Azure IoT Central-Anwendung anmelden und auf diese zugreifen zu können. Azure IoT Central unterstützt Microsoft- und Azure Active Directory-Konten. Azure Active Directory-Gruppen werden in Azure IoT Central derzeit nicht unterstützt.
 
 Weitere Informationen finden Sie in der [Hilfe zum Microsoft-Konto](https://support.microsoft.com/products/microsoft-account?category=manage-account) und unter [Schnellstart: Hinzufügen neuer Benutzer zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
 
@@ -43,6 +41,8 @@ Weitere Informationen finden Sie in der [Hilfe zum Microsoft-Konto](https://supp
 
     > [!NOTE]
     > Ein Benutzer mit einer benutzerdefinierten Rolle, die ihm die Berechtigung zum Hinzufügen anderer Benutzer gewährt, kann nur Benutzer einer Rolle mit denselben oder niedrigeren Berechtigungen wie die eigene Rolle hinzufügen.
+
+Wenn eine IoT Central-Benutzer-ID aus Azure Active Directory gelöscht und anschließend erneut hinzugefügt wird, kann sich der Benutzer nicht bei der IoT Central-Anwendung anmelden. Zum erneuten Aktivieren des Zugriffs sollte der IoT Central-Administrator den Benutzer in der Anwendung löschen und erneut hinzufügen.
 
 ### <a name="edit-the-roles-that-are-assigned-to-users"></a>Bearbeiten der den Benutzern zugewiesenen Rollen
 

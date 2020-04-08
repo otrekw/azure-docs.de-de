@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8c81d2bc499c3d9cae262ef62be2dac2d7280be7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83a13e0b1bb4d55b889d96e42c8f3f18ce0f2b73
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78183838"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408940"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen SAML-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -68,7 +68,7 @@ So entschlüsseln Sie die SAML-Antwortassertion:
 1. Laden Sie das gültige X509-Zertifikat mit dem privaten Schlüssel (PFX-Datei) in den Azure AD B2C-Richtlinienschlüsselspeicher hoch.
 2. Fügen Sie ein **CryptographicKey**-Element mit einem `SamlAssertionDecryption`-Bezeichner in die **CryptographicKeys**-Sammlung des technischen Profils ein. Legen Sie **StorageReferenceId** auf den Namen des Richtlinienschlüssels fest, den Sie in Schritt 1 erstellt haben.
 3. Legen Sie die **WantsEncryptedAssertions**-Metadaten des technischen Profils auf `true` fest.
-4. Aktualisieren Sie den Identitätsanbieter mit den neuen Metadaten des technischen Azure AD B2C-Profils. Dann sollte **KeyDescriptor** mit der auf **festgelegten**use`encryption`-Eigenschaft mit dem öffentlichen Zertifikatschlüssel angezeigt werden.
+4. Aktualisieren Sie den Identitätsanbieter mit den neuen Metadaten des technischen Azure AD B2C-Profils. Dann sollte **KeyDescriptor** mit der auf `encryption` festgelegten **use**-Eigenschaft mit dem öffentlichen Zertifikatschlüssel angezeigt werden.
 
 Im folgenden Beispiel wird der Verschlüsselungsbereich der Metadaten des technischen Azure AD B2C-Profils dargestellt:
 
@@ -90,11 +90,32 @@ Das **Name**-Attribut des Protocol-Elements muss auf `SAML2` festgelegt werden.
 
 Das **OutputClaims**-Element enthält eine Liste von Ansprüchen, die vom SAML-Identitätsanbieter im Abschnitt `AttributeStatement` zurückgegeben wurden. Sie müssen den Namen des Anspruchs, der in Ihrer Richtlinie definiert ist, dem Namen, der für den Identitätsanbieter definiert wurde, zuordnen. Sie können auch Ansprüche, die nicht vom Identitätsanbieter zurückgegeben wurden, einfügen, sofern Sie das `DefaultValue`-Attribut festlegen.
 
-Zum Lesen der SAML-Assertion **NamedId** in **Subject** als normalisierten Anspruch legen Sie den Anspruch **PartnerClaimType** auf `assertionSubjectName` fest. Stellen Sie sicher, dass die **NameId** der erste Wert im XML-Code der Assertion ist. Wenn Sie mehrere Assertionen definieren, verwendet Azure AD B2C den Antragstellerwert aus der letzten Assertion.
+### <a name="subject-name-output-claim"></a>Ausgabeanspruch für Antragstellername
 
-Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaimsTransformation**-Elementen, die zum Ändern der Ausgabeansprüche oder zum Generieren neuer verwendet werden, enthalten.
+Zum Lesen der SAML-Assertion **NameId** in **Subject** als normalisierten Anspruch legen Sie den Anspruch **PartnerClaimType** auf den Wert des `SPNameQualifier`-Attributs fest. Wenn das `SPNameQualifier`-Attribut nicht angezeigt wird, legen Sie den Anspruch **PartnerClaimType** auf den Wert des `NameQualifier`-Attributs fest. 
 
-Das folgende Beispiel zeigt die Ansprüche, die vom Identitätsanbieter Facebook zurückgegeben wurden:
+
+SAML-Assertion: 
+
+```XML
+<saml:Subject>
+  <saml:NameID SPNameQualifier="http://your-idp.com/unique-identifier" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">david@contoso.com</saml:NameID>
+    <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+      <SubjectConfirmationData InResponseTo="_cd37c3f2-6875-4308-a9db-ce2cf187f4d1" NotOnOrAfter="2020-02-15T16:23:23.137Z" Recipient="https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer" />
+    </SubjectConfirmation>
+  </saml:SubjectConfirmation>
+</saml:Subject>
+```
+
+Ausgabeanspruch:
+
+```XML
+<OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="http://your-idp.com/unique-identifier" />
+```
+
+Wenn keines der Attribute `SPNameQualifier` und `NameQualifier` in der SAML-Assertion angezeigt wird, legen Sie den Anspruch **PartnerClaimType** auf `assertionSubjectName` fest. Stellen Sie sicher, dass die **NameId** der erste Wert im XML-Code der Assertion ist. Wenn Sie mehrere Assertionen definieren, verwendet Azure AD B2C den Antragstellerwert aus der letzten Assertion.
+
+Im folgenden Beispiel werden die Ansprüche angezeigt, die von einem SAML-Identitätsanbieter zurückgegeben wurden:
 
 - Der Anspruch **issuerUserId** wird dem Anspruch **assertionSubjectName** zugeordnet.
 - Der Anspruch **first_name** wird dem Anspruch **givenName** zugeordnet.
@@ -118,6 +139,8 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
   <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
 </OutputClaims>
 ```
+
+Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaimsTransformation**-Elementen, die zum Ändern der Ausgabeansprüche oder zum Generieren neuer verwendet werden, enthalten.
 
 ## <a name="metadata"></a>Metadaten
 

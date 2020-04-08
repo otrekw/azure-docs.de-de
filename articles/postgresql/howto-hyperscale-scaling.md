@@ -5,13 +5,13 @@ author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: bec2a40d8cf5fb178418ec6bb59a52a0bfe3eb8c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 3/16/2020
+ms.openlocfilehash: fa48ca287c248155a0271b5134be782d8db1c785
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453049"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063116"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>Skalieren einer Hyperscale (Citus)-Servergruppe
 
@@ -38,9 +38,14 @@ SELECT rebalance_table_shards('distributed_table_name');
 
 Die `rebalance_table_shards`-Funktion gleicht alle Tabellen in der [Zusammenstellungs](concepts-hyperscale-colocation.md)gruppe der im Argument genannten Tabelle aus. Daher müssen Sie die Funktion nicht für jede verteilte Tabelle aufrufen, sondern einfach nur für eine repräsentative Tabelle aus jeder Zusammenstellungsgruppe.
 
-## <a name="increase-vcores"></a>Erhöhen der Anzahl von virtuellen Kernen
+## <a name="increase-or-decrease-vcores-on-nodes"></a>Erhöhen und Verringern der Anzahl von virtuellen Kernen auf Knoten
 
-Zusätzlich zum Hinzufügen neuer Knoten können Sie die Funktionen vorhandener Knoten erweitern. Diese Funktion befindet sich derzeit in der Vorschau – um für die Knoten in der Servergruppe weitere virtuelle Kerne anzufordern, wenden Sie sich an den [Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+> [!NOTE]
+> Diese Funktion steht derzeit als Vorschau zur Verfügung. Um eine Änderung der virtuellen Kerne für Knoten in der Servergruppe anzufordern, [wenden Sie sich an den Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+
+Zusätzlich zum Hinzufügen neuer Knoten können Sie die Funktionen vorhandener Knoten erweitern. Das Anpassen der Computekapazität nach oben und unten kann für Leistungsexperimente und kurz- oder langfristige Änderungen der Datenverkehrsanforderungen nützlich sein.
+
+Um die virtuellen Kerne für alle Workerknoten zu ändern, passen Sie den Schieberegler **Virtuelle Kerne** unter **Konfiguration (pro Workerknoten)** an. Die virtuellen Kerne des Koordinatorknotens können unabhängig voneinander angepasst werden. Klicken Sie unter **Koordinatorknoten** auf den Link **Konfiguration ändern**. Es wird ein Dialogfeld mit Schiebereglern für die virtuellen Kerne und die Speicherkapazität des Koordinators angezeigt. Ändern Sie die Schieberegler gemäß Ihren Anforderungen, und wählen Sie **OK** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/10/2019
-ms.openlocfilehash: d861a4355158dfe18ac3aa40a7f98dc11ebda90b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/24/2020
+ms.openlocfilehash: 92421125ecb5f4336922c6e6b4508fcdaf92be6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930252"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80246397"
 ---
 # <a name="data-flow-script-dfs"></a>Datenflussskript (DFS)
 
@@ -136,6 +136,40 @@ Und eine Senke ohne Schema würde so aussehen:
 ```
 derive1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
+```
+
+## <a name="script-snippets"></a>Skriptausschnitte
+
+### <a name="aggregated-summary-stats"></a>Aggregierte Zusammenfassungsstatistiken
+Fügen Sie dem Datenfluss „SummaryStats“ eine aggregierte Transformation hinzu, und fügen Sie anschließend den folgenden Code für die Aggregatfunktion in das Skript ein. Ersetzen Sie dabei die vorhandenen SummaryStats. Dadurch wird ein generisches Muster für Zusammenfassungsstatistiken zum Datenprofil bereitgestellt.
+
+```
+aggregate(each(match(true()), $$+'_NotNull' = countIf(!isNull($$)), $$ + '_Null' = countIf(isNull($$))),
+        each(match(type=='double'||type=='integer'||type=='short'||type=='decimal'), $$+'_stddev' = round(stddev($$),2), $$ + '_min' = min ($$), $$ + '_max' = max($$), $$ + '_average' = round(avg($$),2), $$ + '_variance' = round(variance($$),2)),
+        each(match(type=='string'), $$+'_maxLength' = max(length($$)))) ~> SummaryStats
+```
+Sie können auch das unten aufgeführte Beispiel verwenden, um die Anzahl der eindeutigen und die Anzahl der unterschiedlichen Zeilen in Ihren Daten zu ermitteln. Das folgende Beispiel kann in einen Datenfluss mit der Aggregattransformation ValueDistAgg eingefügt werden. In diesem Beispiel wird eine Spalte mit dem Namen „title“ verwendet. Achten Sie darauf, „title“ durch die Zeichenfolgenspalte in Ihren Daten zu ersetzen, die Sie verwenden möchten, um Werteanzahlen zu erhalten.
+
+```
+aggregate(groupBy(title),
+    countunique = count()) ~> ValueDistAgg
+ValueDistAgg aggregate(numofunique = countIf(countunique==1),
+        numofdistinct = countDistinct(title)) ~> UniqDist
+```
+
+### <a name="include-all-columns-in-an-aggregate"></a>Einschließen aller Spalten in ein Aggregat
+Dabei handelt es sich um ein allgemeines Aggregatmuster, das veranschaulicht, wie Sie beim Erstellen von Aggregaten die verbleibenden Spalten in den Ausgabemetadaten beibehalten können. In diesem Fall verwenden Sie die ```first()```-Funktion, um den ersten Wert in jeder Spalte auszuwählen, deren Name nicht „movie“ ist. Für die Verwendung erstellen Sie eine Aggregattransformation namens „DistinctRows“ und fügen diese dann über dem vorhandenen Aggregatskript „DistinctRows“ in Ihr Skript ein.
+
+```
+aggregate(groupBy(movie),
+    each(match(name!='movie'), $$ = first($$))) ~> DistinctRows
+```
+
+### <a name="create-row-hash-fingerprint"></a>Erstellen von Zeilenhash-Fingerabdrücken 
+Verwenden Sie diesen Code in Ihrem Datenflussskript, um eine neue abgeleitete Spalte namens ```DWhash``` zu erstellen, die einen ```sha1```-Hash von drei Spalten erzeugt.
+
+```
+derive(DWhash = sha1(Name,ProductNumber,Color))
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,26 +1,26 @@
 ---
 title: 'Bedingter Zugriff: Kombinierte Sicherheitsinformationen – Azure Active Directory'
-description: Erstellen einer benutzerdefinierten Richtlinie für bedingten Zugriff, um einen vertrauenswürdigen Speicherort für die Registrierung von Sicherheitsinformationen zu erfordern
+description: Erstellen einer benutzerdefinierten Richtlinie für bedingten Zugriff zur Registrierung von Sicherheitsinformationen
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 03/25/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c9b01cc06b3d0ef8f47b34e9ef86bec9adac03f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4f69a94e17155ff93510d09f666bce12f628274f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424852"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295170"
 ---
-# <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>Bedingter Zugriff: Vorschreiben eines vertrauenswürdigen Standorts für die MFA-Registrierung
+# <a name="conditional-access-securing-security-info-registration"></a>Bedingter Zugriff: Sichere Registrierung von Sicherheitsinformationen
 
-Mit Benutzeraktionen in der Richtlinie für bedingten Zugriff kann jetzt sichergestellt werden, wann und wie sich Benutzer für Azure Multi-Factor Authentication registrieren, und auch die Self-Service-Kennwortzurücksetzung ist möglich. Diese Previewfunktion ist für Organisationen verfügbar, die die [kombinierte Registrierung (Vorschauversion)](../authentication/concept-registration-mfa-sspr-combined.md) aktiviert haben. Diese Funktionalität kann in Organisationen aktiviert werden, in denen ein vertrauenswürdiger Netzwerkspeicherort verwendet werden soll, um den Zugriff auf die Registrierung für Azure Multi-Factor Authentication und SSPR zu beschränken. Weitere Informationen zur Erstellung von vertrauenswürdigen Speicherorten bei bedingtem Zugriff finden Sie im Artikel [Was sind Standortbedingungen beim bedingten Zugriff in Azure Active Directory?](../conditional-access/location-condition.md#named-locations)
+Mit Benutzeraktionen in der Richtlinie für bedingten Zugriff kann jetzt sichergestellt werden, wann und wie sich Benutzer für Azure Multi-Factor Authentication registrieren, und auch die Self-Service-Kennwortzurücksetzung ist möglich. Diese Previewfunktion ist für Organisationen verfügbar, die die [kombinierte Registrierung (Vorschauversion)](../authentication/concept-registration-mfa-sspr-combined.md) aktiviert haben. Diese Funktionalität kann in Organisationen aktiviert werden, bei denen Bedingungen, z. B. ein vertrauenswürdiger Netzwerkstandort, verwendet werden sollen, um den Zugriff auf die Registrierung für Azure Multi-Factor Authentication und die Self-Service-Kennwortzurücksetzung (SSPR) zu beschränken. Weitere Informationen zu anwendbaren Bedingungen finden Sie im Artikel [Bedingter Zugriff: Bedingungen](concept-conditional-access-conditions.md).
 
 ## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Erstellen einer Richtlinie zum Erzwingen der Registrierung von einem vertrauenswürdigen Standort
 
@@ -29,7 +29,7 @@ Die folgende Richtlinie gilt für alle ausgewählten Benutzer, die versuchen, si
 1. Navigieren Sie im **Azure-Portal** zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
 1. Wählen Sie **Neue Richtlinie**.
 1. Geben Sie unter „Name“ einen Namen für diese Richtlinie ein. Beispiel: **Kombinierte Registrierung mit Sicherheitsinformationen in vertrauenswürdigen Netzwerken**.
-1. Klicken Sie unter **Zuweisungen** auf **Benutzer und Gruppen**, und wählen Sie die Benutzer und Gruppen aus, auf die Sie diese Richtlinie anwenden möchten.
+1. Wählen Sie unter **Zuweisungen** die Option **Benutzer und Gruppen** und dann die Benutzer und Gruppen aus, auf die Sie diese Richtlinie anwenden möchten.
 
    > [!WARNING]
    > Benutzer müssen für die [kombinierte Registrierung (Vorschauversion)](../authentication/howto-registration-mfa-sspr-combined.md) aktiviert sein.
@@ -39,13 +39,28 @@ Die folgende Richtlinie gilt für alle ausgewählten Benutzer, die versuchen, si
    1. Konfigurieren Sie **Ja**.
    1. Schließen Sie **Alle Standorte** ein.
    1. Schließen Sie **Alle vertrauenswürdigen Standorte** aus.
-   1. Klicken Sie auf dem Blatt „Standorte“ auf **Fertig**.
-   1. Klicken Sie auf dem Blatt „Bedingungen“ auf **Fertig**.
+   1. Wählen Sie auf dem Blatt „Standorte“ die Option **Fertig** aus.
+   1. Wählen Sie auf dem Blatt „Bedingungen“ die Option **Fertig** aus.
+1. Legen Sie unter **Bedingungen** > **Client-Apps (Vorschau)** die Option **Konfigurieren** auf **Ja** fest, und wählen Sie **Fertig** aus.
 1. Unter **Zugriffssteuerungen** > **Erteilen**:
-   1. Klicken Sie auf **Zugriff blockieren**.
+   1. Wählen Sie **Zugriff blockieren** aus.
    1. Klicken Sie dann auf **Auswählen**.
 1. Legen Sie **Richtlinie aktivieren** auf **Ein** fest.
-1. Klicken Sie anschließend auf **Speichern**.
+1. Klicken Sie dann auf **Speichern**.
+
+In Schritt 6 dieser Richtlinie können Organisationen unterschiedliche Auswahlmöglichkeiten festlegen. In der Richtlinie oben muss die Registrierung über einen vertrauenswürdigen Netzwerkstandort erfolgen. Organisationen können anstelle von **Standorte** beliebige verfügbare Bedingungen verwenden. Beachten Sie, dass diese Richtlinie eine Sperrrichtlinie ist, d. h., alle enthaltenen Elemente sind gesperrt, und alle nicht mit den enthaltenen Elementen übereinstimmenden Elemente sind zulässig. 
+
+Einige Organisationen wählen möglicherweise anstelle des in Schritt 6 oben ausgewählten Standorts den Gerätestatus aus:
+
+6. Gehen Sie unter **Bedingungen** > **Gerätestatus (Vorschau)** wie folgt vor.
+   1. Konfigurieren Sie **Ja**.
+   1. Schließen Sie **Alle Gerätezustände** ein.
+   1. Schließen Sie **Gerät in Hybrid-Azure AD eingebunden** oder **Gerät als konform markiert** aus.
+   1. Wählen Sie auf dem Blatt „Standorte“ die Option **Fertig** aus.
+   1. Wählen Sie auf dem Blatt „Bedingungen“ die Option **Fertig** aus.
+
+> [!WARNING]
+> Wenn Sie den Gerätestatus als Bedingung in Ihrer Richtlinie verwenden, kann dies Auswirkungen auf Gastbenutzer im Verzeichnis haben. Die Auswirkungen von Richtlinienoptionen können im [reinen Berichtsmodus](concept-conditional-access-report-only.md) ermittelt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

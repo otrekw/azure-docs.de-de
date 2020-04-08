@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 1/24/2020
+ms.date: 3/13/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c6ed72e5c94191411572c6ab67533141e2fe47d6
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 1248063c1b4c1b1e124ff671797450dd5c1b8727
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77185805"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050172"
 ---
 # <a name="whats-new-for-authentication"></a>Neuerungen bei der Authentifizierung 
 
@@ -41,6 +41,28 @@ Für das Authentifizierungssystem werden fortlaufend Änderungen vorgenommen und
 ## <a name="upcoming-changes"></a>Bevorstehende Änderungen
 
 Zurzeit sind keine geplant.  Nachfolgend finden Sie weitere Informationen zu den Änderungen, die in der Produktionsumgebung bestehen oder eingeführt werden. 
+
+## <a name="march-2020"></a>März 2020 
+
+### <a name="user-passwords-will-be-restricted-to-256-characters"></a>Benutzerkennwörter werden auf 256 Zeichen beschränkt.
+
+**Gültigkeitsdatum:** 13. März 2020
+
+**Betroffene Endpunkte:** v1.0 und v2.0
+
+**Betroffenes Protokoll:** Alle Benutzerflows 
+
+Benutzer, die sich mit Kennwörtern mit mehr als 256 Zeichen direkt bei Azure AD (im Gegensatz zu einem Verbundidentitätsanbieter wie AD FS) anmelden, können sich ab dem 13. März 2020 nicht mehr anmelden und werden stattdessen aufgefordert, ihr Kennwort zurückzusetzen.  Administratoren erhalten möglicherweise Anforderungen zum Zurücksetzen der Kennwörter der Benutzer. 
+
+Der Fehler in den Anmeldeprotokollen lautet: AADSTS 50052: InvalidPasswordExceedsMaxLength
+
+Meldung: `The password entered exceeds the maximum length of 256. Please reach out to your admin to reset the password.`
+
+Abhilfe:
+
+Die Benutzer können sich nicht anmelden, da das Kennwort die zulässige maximale Länge überschreitet. Benutzer sollten sich an den Administrator wenden, damit das Kennwort zurückgesetzt wird. Wenn SSPR für den zugehörigen Mandanten aktiviert ist, können Benutzer das Kennwort über den Link „Kennwort vergessen“ zurücksetzen.
+
+
 
 ## <a name="february-2020"></a>Februar 2020 
 
@@ -104,7 +126,7 @@ Wenn es sich bei der Contoso-Gateway-App um eine mehrinstanzenfähige App handel
 
 **Betroffenes Protokoll:** Alle Flows
 
-Gemäß [RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2) können Azure AD-Anwendungen ab sofort Umleitungs-URIs (Antwort-URIs) mit statischen Abfrageparametern (z.B. https://contoso.com/oauth2?idp=microsoft) ) für OAuth 2.0-Anforderungen registrieren und verwenden.  Dynamische Umleitungs-URIs sind weiterhin untersagt, weil sie ein Sicherheitsrisiko darstellen und nicht dazu verwendet werden können, statische Informationen über eine Authentifizierungsanforderung hinweg beizubehalten. Verwenden Sie in diesem Fall den `state`-Parameter.
+Gemäß [RFC 6749](https://tools.ietf.org/html/rfc6749#section-3.1.2) können in Azure AD-Anwendungen ab sofort Umleitungs-URIs (Antwort-URIs) mit statischen Abfrageparametern (z. B. `https://contoso.com/oauth2?idp=microsoft`) für OAuth 2.0-Anforderungen registriert und verwendet werden.  Dynamische Umleitungs-URIs sind weiterhin untersagt, weil sie ein Sicherheitsrisiko darstellen und nicht dazu verwendet werden können, statische Informationen über eine Authentifizierungsanforderung hinweg beizubehalten. Verwenden Sie in diesem Fall den `state`-Parameter.
 
 Der statische Abfrageparameter wird, ebenso wie jeder andere Bestandteil des Umleitungs-URI, einem Zeichenfolgenabgleich unterzogen. Wenn keine registrierte Zeichenfolge vorhanden ist, die dem URI-decodierten Umleitungs-URI entspricht, wird die Anforderung abgelehnt.  Wird der Antwort-URI in der App-Registrierung gefunden, wird die gesamte Zeichenfolge – einschließlich des statischen Abfrageparameters – zum Umleiten des Benutzers verwendet. 
 

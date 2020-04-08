@@ -1,5 +1,5 @@
 ---
-title: Versionsanmerkungen zu Updates für das StorSimple Virtual Array | Microsoft Docs
+title: Versionsanmerkungen zu Update 0.2 und Update 0.1 für das StorSimple Virtual Array
 description: Beschreibt wichtige offene Probleme und Lösungen für das StorSimple Virtual Array mit Update 0.2 und 0.1.
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/16/2016
 ms.author: alkohli
-ms.openlocfilehash: aad60024187ca180c002f119f4b975e8f69796e5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 95386f36340aca470769c920e40bbb70e09d34fc
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60629287"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397878"
 ---
 # <a name="storsimple-virtual-array-update-02-and-01-release-notes"></a>Versionsanmerkungen zu Update 0.2 und Update 0.1 für das StorSimple Virtual Array
 ## <a name="overview"></a>Übersicht
@@ -37,7 +37,7 @@ Update 0.2 entspricht Softwareversion **10.0.10280.0**. Update 0.1 entspricht Ve
 ## <a name="issues-fixed-in-the-update-02"></a>In Update 0.2 behobene Probleme
 Update 0.2 enthält alle Änderungen aus Update 0.1 sowie zusätzlich den in der folgenden Tabelle beschriebenen Fix:
 
-| Feature | Problem |
+| Funktion | Problem |
 | --- | --- |
 | Aktualisierungen |In der letzten Version wurden Updates im klassischen Azure-Portal nicht automatisch erkannt, und Sie mussten die lokale Webbenutzeroberfläche verwenden, um Updates zu installieren. Dieses Problem wurde in dieser Version behoben. Nach der Installation von Update 0.2 können Sie zukünftige Updates im klassischen Azure-Portal installieren. |
 
@@ -54,7 +54,7 @@ Update 0.1 enthält folgende Fehlerbehebungen und Verbesserungen:
 ## <a name="issues-fixed-in-the-update-01"></a>In Update 0.1 behobene Probleme
 Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in dieser Version behoben wurden:
 
-| Nein. | Feature | Problem |
+| Nein. | Funktion | Problem |
 | --- | --- | --- |
 | 1 |VMDK |In bestimmten VMware-Versionen wurde der Betriebssystemdatenträger als spärlich betrachtet, was Warnungen sowie die Störung des regulären Betriebs zur Folge hatte. Dies wurde in dieser Version behoben. |
 | 2 |iSCSI-Server |In der letzten Version musste der Benutzer für jede aktivierte Netzwerkschnittstelle des virtuellen StorSimple-Geräts ein Gateway angeben. Dieses Verhalten wurde in dieser Version geändert, sodass der Benutzer nun mindestens ein Gateway für alle aktivierten Netzwerkschnittstellen konfigurieren muss. |
@@ -65,14 +65,14 @@ Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in dieser V
 ## <a name="known-issues-in-the-update-01"></a>Bekannte Probleme in Update 0.1
 Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme für StorSimple Virtual Array sowie die Probleme aus früheren Versionsinformationen. **Die Probleme aus den aktuellen Versionshinweisen sind mit einem Sternchen gekennzeichnet. Nahezu alle Probleme in dieser Liste stammen aus der GA-Version von StorSimple Virtual Array.**
 
-| Nein. | Feature | Problem | Problemumgehung/Kommentare |
+| Nein. | Funktion | Problem | Problemumgehung/Kommentare |
 | --- | --- | --- | --- |
 | **1.** |Aktualisierungen |In der Vorabversion erstellte virtuellen Geräte können nicht auf eine unterstützte Version für allgemeine Verfügbarkeit aktualisiert werden. |Für diese virtuellen Geräte muss mithilfe eines Notfallwiederherstellungs-Workflows ein Failover für die allgemein verfügbare Version ausgeführt werden. |
 | **2.** |Bereitgestellter Datenträger |Nachdem Sie einen Datenträger mit einer bestimmten angegebenen Größe bereitgestellt und das entsprechende virtuelle StorSimple-Gerät erstellt haben, darf der Datenträger nicht erweitert oder verkleinert werden. Ein entsprechender Versuch führt zum Verlust aller Daten auf den lokalen Ebenen des Geräts. | |
 | **3.** |Gruppenrichtlinie |Wenn ein Gerät Mitglied einer Domäne ist, kann das Anwenden einer Gruppenrichtlinie den Gerätebetrieb beeinträchtigen. |Stellen Sie sicher, dass sich Ihr virtuelles Array in einer eigenen Organisationseinheit (OU) für Active Directory befindet und keine Gruppenrichtlinienobjekte (GPO) darauf angewendet werden. |
 | **4.** |Lokale Web-UI |Wenn in Internet Explorer (IE ESC) erweiterten Sicherheitsfeatures aktiviert sind, funktionieren einige lokale Web-UI-Seiten wie "Problembehandlung" oder "Wartung" möglicherweise nicht ordnungsgemäß. Außerdem funktionieren Schaltflächen auf diesen Seiten möglicherweise nicht. |Deaktivieren Sie erweiterte Sicherheitsfeatures in Internet Explorer. |
 | **5.** |Lokale Web-UI |Auf einer virtuellen Hyper-V-Maschine werden die Netzwerkschnittstellen in der Web-UI als 10-Gbit/s-Schnittstellen angezeigt. |Dieses Verhalten ist eine Spiegelung von Hyper-V. Hyper-V zeigt immer 10 Gbit/s für virtuelle Netzwerkadapter an. |
-| **6.** |Mehrstufige Volumes oder Freigaben |Bytebereichsperren für Anwendungen, die mit den mehrstufigen StorSimple-Volumes arbeiten, werden nicht unterstützt. Wenn Bytebereichsperren aktiviert sind, funktioniert die StorSimple-Staffelung nicht. |Empfohlene Maßnahmen: <br></br>Deaktivieren Sie Bytebereichsperren in der Anwendungslogik.<br></br>Platzieren Sie die Daten für diese Anwendung nicht in mehrstufigen Volumes, sondern in lokalen Volumes.<br></br>*Nachteil*: Wenn lokale Volumes verwendet werden und Bytebereichssperren aktiviert sind, beachten Sie, dass das lokale Volume online sein kann, bevor die Wiederherstellung abgeschlossen ist. Wenn in solchen Fällen eine Wiederherstellung ausgeführt wird, müssen Sie auf den Abschluss des Wiederherstellungsvorgangs warten. |
+| **6.** |Mehrstufige Volumes oder Freigaben |Bytebereichssperren für Anwendungen, die mit den mehrstufigen StorSimple-Volumes arbeiten, werden nicht unterstützt. Wenn Bytebereichsperren aktiviert sind, funktioniert die StorSimple-Staffelung nicht. |Empfohlene Maßnahmen: <br></br>Deaktivieren Sie Bytebereichsperren in der Anwendungslogik.<br></br>Platzieren Sie die Daten für diese Anwendung nicht in mehrstufigen Volumes, sondern in lokalen Volumes.<br></br>*Nachteil*: Wenn lokale Volumes verwendet werden und Bytebereichssperren aktiviert sind, beachten Sie, dass das lokale Volume online sein kann, bevor die Wiederherstellung abgeschlossen ist. Wenn in solchen Fällen eine Wiederherstellung ausgeführt wird, müssen Sie auf den Abschluss des Wiederherstellungsvorgangs warten. |
 | **7.** |Mehrstufige Freigaben |Das Arbeiten mit großen Dateien kann zu einer langsamen Abstufung führen. |Bei der Arbeit mit großen Dateien sollte die größte Datei nach Möglichkeit kleiner als 3 % der Größe der Dateifreigabe sein. |
 | **8.** |Für Freigaben genutzte Kapazität |Möglicherweise wird eine Nutzung durch die Freigabe angezeigt, auch wenn diese keine Daten enthält. Dies liegt daran, dass die für Freigaben genutzte Kapazität Metadaten umfasst. | |
 | **9.** |Notfallwiederherstellung |Sie können die Notfallwiederherstellung eines Dateiservers nur in der Domäne des Quellgeräts ausführen. Die Notfallwiederherstellung auf einem Zielgerät in einer anderen Domäne wird in dieser Version nicht unterstützt. |Dies wird in einer späteren Version implementiert werden. |

@@ -3,15 +3,16 @@ title: 'Übersicht: identitätsbasierte Autorisierung mit Azure Files'
 description: Azure Files unterstützt die identitätsbasierte Authentifizierung mit SMB (Server Message Block) über Azure Active Directory Domain Services (AD DS) und Active Directory. Ihre in die Domäne eingebundenen virtuellen Windows-Computer (VMs) können dann mit Azure AD-Anmeldeinformationen auf Azure-Dateifreigaben zugreifen.
 author: roygara
 ms.service: storage
-ms.topic: article
+ms.subservice: files
+ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: rogarana
-ms.openlocfilehash: 673bf3be59d72b2cc62b9f92af353fee235c5ddc
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 737cdfaddca3a5f7532620bdafd86149e4d61f9f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598815"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061071"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-support-for-smb-access"></a>Übersicht über die Unterstützung der identitätsbasierten Authentifizierung mit Azure Files für den SMB-Zugriff
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -98,7 +99,7 @@ Wenn eine Identität, die mit einer auf einer VM ausgeführten Anwendung verknü
 
 ### <a name="enable-identity-based-authentication"></a>Aktivieren der identitätsbasierten Authentifizierung
 
-Sie können die identitätsbasierte Authentifizierung mit Azure AD DS (allgemein verfügbar) oder AD (Vorschauversion) für Azure-Dateifreigaben in Ihren neuen und vorhandenen Speicherkonten aktivieren. Nur ein Domänendienst kann für die Authentifizierung des Dateizugriffs im Speicherkonto verwendet werden. Dies betrifft dann alle Dateifreigaben im Konto. Eine ausführliche Anleitung zum Einrichten der Dateifreigaben für die Authentifizierung mit Azure AD DS (allgemein verfügbar) finden Sie in unserem Artikel [Aktivieren der Azure Active Directory Domain Services-Authentifizierung über Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md), und eine Anleitung für AD (Vorschauversion) finden Sie in unserem Artikel [Aktivieren der Active Directory-Authentifizierung über SMB für Azure-Dateifreigaben](storage-files-identity-auth-active-directory-enable.md).
+Sie können die identitätsbasierte Authentifizierung mit Azure AD DS (allgemein verfügbar) oder AD (Vorschauversion) für Azure-Dateifreigaben in Ihren neuen und vorhandenen Speicherkonten aktivieren. Nur ein Domänendienst kann für die Authentifizierung des Dateizugriffs im Speicherkonto verwendet werden. Dies betrifft dann alle Dateifreigaben im Konto. Eine ausführliche Anleitung zum Einrichten Ihrer Dateifreigaben für die Authentifizierung mit Azure AD DS (allgemein verfügbar) finden Sie in unserem Artikel [Aktivieren der Azure Active Directory Domain Services-Authentifizierung über Azure Files](storage-files-identity-auth-active-directory-domain-service-enable.md), und eine Anleitung für AD (Vorschauversion) finden Sie in unserem Artikel [Aktivieren der Active Directory-Authentifizierung über SMB für Azure-Dateifreigaben](storage-files-identity-auth-active-directory-enable.md).
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>Konfigurieren von Freigabeberechtigungen für Azure Files
 

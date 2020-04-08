@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dcf6160c3650975431bf50fcf5bcba67f833a717
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 7f398012edc25ba6a04e230fa8049e7264f857bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750452"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294521"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Proxy- und Firewalleinstellungen der Azure-Dateisynchronisierung
 Die Azure-Dateisynchronisierung verbindet Ihre lokalen Server mit Azure Files, wodurch Synchronisierung für mehrere Standorte und Cloudtiering-Funktionalität ermöglicht werden. Daher muss ein lokaler Server eine Verbindung mit dem Internet haben. Ein IT-Administrator muss den besten Weg festlegen, auf dem der Server zu den Azure-Clouddiensten gelangt.
@@ -91,9 +91,9 @@ In der folgenden Tabelle sind die für eine Kommunikation erforderlichen Domäne
 
 | Dienst | Öffentlicher Cloudendpunkt | Azure Government-Endpunkt | Verwendung |
 |---------|----------------|---------------|------------------------------|
-| **Azure Resource Manager** | https://management.azure.com | https://management.usgovcloudapi.net | Jeder Benutzeraufruf (etwa PowerShell) geht an/über diese URL, dazu gehört auch der erstmalige Serverregistrierungsaufruf. |
-| **Azure Active Directory** | https://login.windows.net<br>https://login.microsoftonline.com | https://login.microsoftonline.us | Azure Resource Manager-Aufrufe müssen von einem authentifizierten Benutzer vorgenommen werden. Um erfolgreich zu sein, wird diese URL für die Benutzerauthentifizierung verwendet. |
-| **Azure Active Directory** | https://graph.windows.net/ | https://graph.windows.net/ | Im Rahmen der Bereitstellung der Azure-Dateisynchronisierung wird ein Dienstprinzipal in Azure Active Directory des Abonnements erstellt. Diese URL wird dazu verwendet. Dieser Prinzipal wird dazu verwendet, einen minimalen Satz von Berechtigungen an den Azure-Dateisynchronisierungsdienst zu delegieren. Der Benutzer, der die erste Einrichtung der Azure-Dateisynchronisierung ausführt, muss ein authentifizierter Benutzer mit Abonnementbesitzerberechtigungen sein. |
+| **Azure Resource Manager** | `https://management.azure.com` | https://management.usgovcloudapi.net | Jeder Benutzeraufruf (etwa PowerShell) geht an/über diese URL, dazu gehört auch der erstmalige Serverregistrierungsaufruf. |
+| **Azure Active Directory** | https://login.windows.net<br>`https://login.microsoftonline.com` | https://login.microsoftonline.us | Azure Resource Manager-Aufrufe müssen von einem authentifizierten Benutzer vorgenommen werden. Um erfolgreich zu sein, wird diese URL für die Benutzerauthentifizierung verwendet. |
+| **Azure Active Directory** | https://graph.microsoft.com/ | https://graph.microsoft.com/ | Im Rahmen der Bereitstellung der Azure-Dateisynchronisierung wird ein Dienstprinzipal in Azure Active Directory des Abonnements erstellt. Diese URL wird dazu verwendet. Dieser Prinzipal wird dazu verwendet, einen minimalen Satz von Berechtigungen an den Azure-Dateisynchronisierungsdienst zu delegieren. Der Benutzer, der die erste Einrichtung der Azure-Dateisynchronisierung ausführt, muss ein authentifizierter Benutzer mit Abonnementbesitzerberechtigungen sein. |
 | **Azure Storage (in englischer Sprache)** | &ast;.core.windows.net | &ast;.core.usgovcloudapi.net | Beim Herunterladen einer Datei auf dem Server wird diese Datenverschiebung effizienter ausgeführt, wenn eine direkte Verbindung zwischen dem Server und der Azure-Dateifreigabe im Speicherkonto besteht. Der Server hat einen SAS-Schlüssel, der nur gezielten Dateifreigabezugriff zulässt. |
 | **Azure-Dateisynchronisierung** | &ast;.one.microsoft.com<br>&ast;.afs.azure.net | &ast;.afs.azure.us | Nach der erstmaligen Serverregistrierung erhält der Server eine regionale URL für die Azure-Dateisynchronisierungs-Dienstinstanz in dieser Region. Der Server kann über die URL direkt und effizient mit der Instanz kommunizieren, die seine Synchronisierung verwaltet. |
 | **Microsoft PKI** | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | Sobald der Agent für die Azure-Dateisynchronisierung installiert ist, werden über die PKI-URL Zwischenzertifikate heruntergeladen, die für die Kommunikation mit dem Azure-Dateisynchronisierungsdienst und der Azure-Dateifreigabe erforderlich sind. Mithilfe der OCSP-URL wird der Status eines Zertifikats überprüft. |
@@ -144,6 +144,122 @@ Für Business Continuity und Disaster Recovery (BCDR) haben Sie Ihre Azure-Datei
 > - https:\//kailani.one.microsoft.com (primärer Endpunkt: USA, Westen)
 > - https:\//kailani1.one.microsoft.com (gekoppelte Failoverregion: USA, Osten)
 > - https:\//tm-kailani.one.microsoft.com (Ermittlungs-URL der primären Region)
+
+### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>Zulassungsliste für Azure-Dateisynchronisierungs-IP-Adressen
+Die Azure-Dateisynchronisierung unterstützt die Verwendung von [Diensttags](../../virtual-network/service-tags-overview.md), die eine Gruppe von IP-Adresspräfixen für einen bestimmten Azure-Dienst darstellen. Sie können Diensttags verwenden, um Firewallregeln zu erstellen, die die Kommunikation mit dem Azure-Dateisynchronisierungsdienst ermöglichen. Das Diensttag für die Azure-Dateisynchronisierung ist `StorageSyncService`.
+
+Wenn Sie die Azure-Dateisynchronisierung in Azure verwenden, können Sie den Namen des Diensttags direkt in der Netzwerksicherheitsgruppe verwenden, um Datenverkehr zuzulassen. Weitere Informationen zur Vorgehensweise finden Sie unter [Netzwerksicherheitsgruppen](../../virtual-network/security-overview.md).
+
+Wenn Sie die Azure-Dateisynchronisierung lokal verwenden, können Sie die Diensttag-API verwenden, um bestimmte IP-Adressbereiche für die Zulassungsliste Ihrer Firewall abzurufen. Es gibt zwei Methoden zum Abrufen dieser Informationen:
+
+- Die aktuelle Liste der IP-Adressbereiche für alle Azure-Dienste, die Diensttags unterstützen, wird wöchentlich im Microsoft Download Center in Form eines JSON-Dokuments veröffentlicht. Es gibt für jede Azure-Cloud ein eigenes JSON-Dokument mit den IP-Adressbereichen, die für diese Cloud relevant sind:
+    - [Azure öffentlich](https://www.microsoft.com/download/details.aspx?id=56519)
+    - [Azure US Government](https://www.microsoft.com/download/details.aspx?id=57063)
+    - [Azure China](https://www.microsoft.com/download/details.aspx?id=57062)
+    - [Azure Deutschland](https://www.microsoft.com/download/details.aspx?id=57064)
+- Die Diensttagermittlungs-API (Vorschauversion) ermöglicht das programmgesteuerte Abrufen der aktuellen Liste von Diensttags. In der Vorschauversion gibt die Diensttagermittlungs-API eventuell weniger aktuelle Informationen zurück, als in den im Microsoft Download Center veröffentlichten JSON-Dokumenten enthalten sind. Sie können je nach Ihren Automatisierungsvorlieben auch die API-Benutzeroberfläche verwenden:
+    - [REST-API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
+    - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag)
+    - [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/network#az-network-list-service-tags)
+
+Da die Diensttagermittlungs-API nicht so häufig aktualisiert wird wie die im Microsoft Download Center veröffentlichten JSON-Dokumente, sollten Sie für die Aktualisierung der Zulassungsliste Ihrer Firewall das JSON-Dokument verwenden. Gehen Sie dazu folgendermaßen vor:
+
+```PowerShell
+# The specific region to get the IP address ranges for. Replace westus2 with the desired region code 
+# from Get-AzLocation.
+$region = "westus2"
+
+# The service tag for Azure File Sync. Do not change unless you're adapting this
+# script for another service.
+$serviceTag = "StorageSyncService"
+
+# Download date is the string matching the JSON document on the Download Center. 
+$possibleDownloadDates = 0..7 | `
+    ForEach-Object { [System.DateTime]::Now.AddDays($_ * -1).ToString("yyyyMMdd") }
+
+# Verify the provided region
+$validRegions = Get-AzLocation | `
+    Where-Object { $_.Providers -contains "Microsoft.StorageSync" } | `
+    Select-Object -ExpandProperty Location
+
+if ($validRegions -notcontains $region) {
+    Write-Error `
+            -Message "The specified region $region is not available. Either Azure File Sync is not deployed there or the region does not exist." `
+            -ErrorAction Stop
+}
+
+# Get the Azure cloud. This should automatically based on the context of 
+# your Az PowerShell login, however if you manually need to populate, you can find
+# the correct values using Get-AzEnvironment.
+$azureCloud = Get-AzContext | `
+    Select-Object -ExpandProperty Environment | `
+    Select-Object -ExpandProperty Name
+
+# Build the download URI
+$downloadUris = @()
+switch($azureCloud) {
+    "AzureCloud" { 
+        $downloadUris = $possibleDownloadDates | ForEach-Object {  
+            "https://download.microsoft.com/download/7/1/D/71D86715-5596-4529-9B13-DA13A5DE5B63/ServiceTags_Public_$_.json"
+        }
+    }
+
+    "AzureUSGovernment" {
+        $downloadUris = $possibleDownloadDates | ForEach-Object { 
+            "https://download.microsoft.com/download/6/4/D/64DB03BF-895B-4173-A8B1-BA4AD5D4DF22/ServiceTags_AzureGovernment_$_.json"
+        }
+    }
+
+    "AzureChinaCloud" {
+        $downloadUris = $possibleDownloadDates | ForEach-Object { 
+            "https://download.microsoft.com/download/9/D/0/9D03B7E2-4B80-4BF3-9B91-DA8C7D3EE9F9/ServiceTags_China_$_.json"
+        }
+    }
+
+    "AzureGermanCloud" {
+        $downloadUris = $possibleDownloadDates | ForEach-Object { 
+            "https://download.microsoft.com/download/0/7/6/076274AB-4B0B-4246-A422-4BAF1E03F974/ServiceTags_AzureGermany_$_.json"
+        }
+    }
+
+    default {
+        Write-Error -Message "Unrecognized Azure Cloud: $_" -ErrorAction Stop
+    }
+}
+
+# Find most recent file
+$found = $false 
+foreach($downloadUri in $downloadUris) {
+    try { $response = Invoke-WebRequest -Uri $downloadUri -UseBasicParsing } catch { }
+    if ($response.StatusCode -eq 200) {
+        $found = $true
+        break
+    }
+}
+
+if ($found) {
+    # Get the raw JSON 
+    $content = [System.Text.Encoding]::UTF8.GetString($response.Content)
+
+    # Parse the JSON
+    $serviceTags = ConvertFrom-Json -InputObject $content -Depth 100
+
+    # Get the specific $ipAddressRanges
+    $ipAddressRanges = $serviceTags | `
+        Select-Object -ExpandProperty values | `
+        Where-Object { $_.id -eq "$serviceTag.$region" } | `
+        Select-Object -ExpandProperty properties | `
+        Select-Object -ExpandProperty addressPrefixes
+} else {
+    # If the file cannot be found, that means there hasn't been an update in
+    # more than a week. Please verify the download URIs are still accurate
+    # by checking https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+    Write-Verbose -Message "JSON service tag file not found."
+    return
+}
+```
+
+Anschließend können Sie die IP-Adressbereiche in `$ipAddressRanges` verwenden, um Ihre Firewall zu aktualisieren. Auf der Website Ihrer Firewall-/Netzwerkappliance finden Sie Informationen zum Aktualisieren der Firewall.
 
 ## <a name="test-network-connectivity-to-service-endpoints"></a>Testen der Netzwerkkonnektivität mit Dienstendpunkten
 Nach der Registrierung eines Servers beim Azure-Dateisynchronisierungsdienst können das Cmdlet „Test-StorageSyncNetworkConnectivity“ und die Datei „ServerRegistration.exe“ dazu verwendet werden, die Kommunikation mit allen für diesen Server spezifischen Endpunkten (URLs) zu testen. Dieses Cmdlet kann Sie bei der Problembehandlung unterstützen, wenn unvollständige Kommunikation den Server daran hindert, vollständig mit der Azure-Dateisynchronisierung zu arbeiten. Es kann außerdem zum Optimieren der Proxy- und Firewallkonfigurationen verwendet werden.

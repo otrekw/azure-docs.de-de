@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/01/2019
-ms.openlocfilehash: 9bfadf55e4f68bb7188b27e4ef5bc03e3955f375
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/16/2020
+ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662047"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480282"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Beispiele für Protokollabfragen in Azure Monitor
 Dieser Artikel enthält mehrere Beispiele für [Abfragen](log-query-overview.md) unter Verwendung der [Abfragesprache Kusto](/azure/kusto/query/), mit denen verschiedene Arten von Protokolldaten aus Azure Monitor abgerufen werden. Da Daten auf unterschiedliche Weise konsolidiert und analysiert werden, können Sie anhand dieser Beispiele verschiedene Strategien ermitteln, die ggf. für Ihre eigenen Anforderungen geeignet sind.  
@@ -375,40 +375,47 @@ suspicious_users_that_later_logged_in
 
 ## <a name="usage"></a>Verwendung
 
-### <a name="calculate-the-average-size-of-perf-usage-reports-per-computer"></a>Berechnen der durchschnittlichen Größe von Leistungsnutzungsberichten pro Computer
+Mit dem Datentyp `Usage` kann die erfasste Datenmenge nach Lösung oder Datentyp nachverfolgt werden. Es gibt weitere Methoden, mit denen erfasste Datenmengen nach [Computer](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer) oder [Azure-Abonnement, Ressourcengruppe oder Ressourcen](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription) untersucht werden können.
 
-In diesem Beispiel wird die durchschnittliche Größe von Leistungsnutzungsberichten pro Computer für die letzten drei Stunden berechnet.
-Die Ergebnisse werden in einem Balkendiagramm dargestellt.
-```Kusto
+#### <a name="data-volume-by-solution"></a>Datenmenge nach Lösung
+
+Die Abfrage, mit der die abrechenbare Datenmenge nach Lösung während des letzten Monats (ohne den letzten angebrochenen Tag) angezeigt wird, lautet wie folgt:
+
+```kusto
 Usage 
-| where TimeGenerated > ago(3h)
-| where DataType == "Perf" 
-| where QuantityUnit == "MBytes" 
-| summarize avg(Quantity) by Computer
-| sort by avg_Quantity desc nulls last
-| render barchart
+| where TimeGenerated > ago(32d)
+| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
 ```
 
-### <a name="timechart-latency-percentiles-50-and-95"></a>Erstellen eines Zeitdiagramms für das 50. und 95. Wartezeit-Perzentil
+Beachten Sie, dass durch die Klausel `where IsBillable = true` Datentypen bestimmter Lösungen herausgefiltert werden, für die keine Erfassungsgebühren anfallen.  Außerdem wird mit der Klausel mit `TimeGenerated` nur sichergestellt, dass die Abfrage im Azure-Portal über den Standardwert von 24 Stunden hinausgeht. Bei Verwendung des Datentyps „Usage“ stellen `StartTime` und `EndTime` die Zeitrahmen dar, für die Ergebnisse angezeigt werden. 
 
-In diesem Beispiel werden das 50. und das 95. Perzentil der gemeldeten durchschnittlichen Wartezeit (**avgLatency**) pro Stunde aus den letzten 24 Stunden berechnet und in einem Diagramm dargestellt.
+#### <a name="data-volume-by-type"></a>Datenmenge nach Typ
 
-```Kusto
-Usage
-| where TimeGenerated > ago(24h)
-| summarize percentiles(AvgLatencyInSeconds, 50, 95) by bin(TimeGenerated, 1h) 
-| render timechart
+Sie können die Daten genauer untersuchen, um Trends für die einzelnen Datentypen zu erkennen:
+
+```kusto
+Usage 
+| where TimeGenerated > ago(32d)
+| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType | render barchart
 ```
 
-### <a name="usage-of-specific-computers-today"></a>Nutzung bestimmter Computer am aktuellen Tag
-In diesem Beispiel werden für den letzten Tag Nutzungsdaten (**Usage**) für Computernamen abgerufen, die die Zeichenfolge _ContosoFile_ enthalten. Die Ergebnisse werden nach **TimeGenerated** sortiert.
+Oder verwenden Sie Folgendes, um eine Tabelle nach Lösung und Typ für den letzten Monat anzuzeigen:
 
-```Kusto
-Usage
-| where TimeGenerated > ago(1d)
-| where  Computer contains "ContosoFile" 
-| sort by TimeGenerated desc nulls last
+```kusto
+Usage 
+| where TimeGenerated > ago(32d)
+| where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
+| where IsBillable == true
+| summarize BillableDataGB = sum(Quantity) / 1000. by Solution, DataType
+| sort by Solution asc, DataType asc
 ```
+
+> [!NOTE]
+> Einige der Felder vom Typ „Nutzungsdaten“ sind zwar weiterhin im Schema enthalten, jedoch veraltet, und ihre Werte werden nicht mehr aufgefüllt. Dies sind neben **Computer** Felder in Bezug auf die Erfassung: **TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** und **AverageProcessingTimeMs**.
 
 ## <a name="updates"></a>Aktualisierungen
 

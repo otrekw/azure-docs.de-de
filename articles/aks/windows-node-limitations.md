@@ -3,13 +3,13 @@ title: Einschränkungen für Windows Server-Knotenpools in Azure Kubernetes Serv
 description: Informationen zu den bekannten Einschränkungen beim Ausführen von Windows Server-Knotenpools und Anwendungsworkloads in Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
-ms.date: 05/31/2019
-ms.openlocfilehash: 65c62324a27e8377a1cc9833595b15cf08c6c820
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.date: 12/18/2019
+ms.openlocfilehash: f4e9f63d0da1797b92c123034e6775f5b07bd4b3
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78298171"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366403"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Aktuelle Einschränkungen für Windows Server-Knotenpools und Anwendungsworkloads in Azure Kubernetes Service (AKS)
 
@@ -53,7 +53,7 @@ AKS-Cluster mit Windows-Knotenpools müssen das (erweiterte) Azure CNI-Netzwerkm
 
 ## <a name="can-i-change-the-max--of-pods-per-node"></a>Kann ich die maximale Anzahl von Pods pro Knoten ändern?
 
-Derzeit müssen zwingend maximal 30 Pods festgelegt werden, um die Zuverlässigkeit Ihrer Cluster sicherzustellen.
+Ja. Informationen zu den Auswirkungen und verfügbaren Optionen finden Sie unter [Maximale Anzahl von Pods][maximum-number-of-pods].
 
 ## <a name="how-do-patch-my-windows-nodes"></a>Wie kann ich meine Windows-Knoten patchen?
 
@@ -121,3 +121,4 @@ Erstellen Sie zum Einstieg in Windows Server-Container in AKS [einen Knotenpool,
 [nodepool-limitations]: use-multiple-node-pools.md#limitations
 [preview-support]: support-policies.md#preview-features-or-feature-flags
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
+[maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node

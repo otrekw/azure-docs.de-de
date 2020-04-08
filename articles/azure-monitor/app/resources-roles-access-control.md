@@ -3,12 +3,12 @@ title: Ressourcen, Rollen und Access Control in Application Insights | Microsoft
 description: "\"Besitzer\", \"Mitwirkende\" und \"Leser\" für die gewonnenen Unternehmensinformationen."
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 617134c523148e713f7d34b46e0fbf6ae862591f
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 1e57af269c4052d0dcd4a8f7970ca23017024299
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77671527"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473131"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Ressourcen, Rollen und Zugriffssteuerung in Application Insights
 
@@ -37,7 +37,7 @@ Zunächst einige Definitionen:
 * [**Abonnement**](https://portal.azure.com): Um Application Insights oder sonstige Azure-Ressourcen zu verwenden, müssen Sie ein Azure-Abonnement abschließen. Jede Ressourcengruppe gehört zu einem Azure-Abonnement, in dem Sie Ihr Preispaket und, wenn es sich um ein Abonnement für die Organisation handelt, die Mitglieder und deren Zugriffsberechtigungen auswählen.
 * [**Microsoft-Konto**][account]: Benutzername und Kennwort für Ihre Anmeldung bei Microsoft Azure-Abonnements, XBox Live, „Outlook.com“ und sonstigen Microsoft-Diensten.
 
-## <a name="access"></a> Steuern des Zugriffs in der Ressourcengruppe
+## <a name="control-access-in-the-resource-group"></a><a name="access"></a> Steuern des Zugriffs in der Ressourcengruppe
 
 Es ist wichtig zu wissen, dass es zusätzlich zu den Ressource, die Sie für Ihre Anwendung erstellt haben, auch separate, ausgeblendete Ressourcen für Warnungen und Webtests gibt. Sie sind derselben [Ressourcengruppe](#resource-group) zugeordnet wie Ihre Application Insights-Ressource. Möglicherweise haben Sie auch andere Azure-Dienste dort aufgenommen, z. B. Websites oder Speicher.
 
@@ -76,7 +76,7 @@ Wir haben Links zur zugehörigen offiziellen Referenzdokumentation angegeben (so
 | --- | --- |
 | [Besitzer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |Kann alle Elemente ändern, einschließlich des Benutzerzugriffs. |
 | [Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |Kann alle Elemente bearbeiten, einschließlich aller Ressourcen. |
-| [Mitwirkender der Application Insights-Komponente](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Kann Application Insights-Ressourcen, Webtests und Warnungen bearbeiten. |
+| [Mitwirkender der Application Insights-Komponente](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Kann Application Insights-Ressourcen bearbeiten. |
 | [Leser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |Kann Inhalte anzeigen, aber nicht ändern. |
 | [Application Insights-Momentaufnahmedebugger](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | Erteilt dem Benutzer die Berechtigung zum Verwenden von Features des Application Insights-Momentaufnahmedebuggers. Beachten Sie, dass diese Rolle weder in der Rolle „Besitzer“ noch in der Rolle „Mitwirkender“ enthalten ist. |
 | Mitwirkender der Releaseverwaltung für Azure App Service-Bereitstellung | Rolle „Mitwirkender“ für Dienste, die über Azure App Service-Bereitstellung bereitgestellt werden. |
@@ -85,7 +85,7 @@ Wir haben Links zur zugehörigen offiziellen Referenzdokumentation angegeben (so
 | [Log Analytics-Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Ein Log Analytics-Mitwirkender kann alle Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Das Bearbeiten von Überwachungseinstellungen schließt folgende Aufgaben ein: Hinzufügen der VM-Erweiterung zu VMs, Lesen von Speicherkontoschlüsseln zum Konfigurieren von Protokollsammlungen aus Azure Storage, Erstellen und Konfigurieren von Automation-Konten, Hinzufügen von Lösungen, Konfigurieren der Azure-Diagnose für alle Azure-Ressourcen.  |
 | [Log Analytics-Leser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Ein Log Analytics-Leser kann alle Überwachungsdaten anzeigen und durchsuchen sowie Überwachungseinstellungen anzeigen. Hierzu zählt auch die Anzeige der Konfiguration von Azure-Diagnosen für alle Azure-Ressourcen. |
 | masterreader | Ermöglicht einem Benutzer, alle Inhalte anzuzeigen, aber keine Änderungen vorzunehmen. |
-| [Überwachungsmitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | Kann alle Überwachungsdaten lesen und Überwachungseinstellungen aktualisieren. |
+| [Überwachungsmitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | Kann alle Überwachungsdaten lesen und Überwachungseinstellungen aktualisieren.|
 | [Herausgeber von Überwachungsmetriken](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-metrics-publisher) | Ermöglicht die Veröffentlichung von Metriken für Azure-Ressourcen. |
 | [Überwachungsleser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) | Kann alle Überwachungsdaten lesen. |
 | Mitwirkender an Ressourcenrichtlinien (Vorschau) | Über EA abgeglichene Benutzer mit Rechten zum Erstellen/Ändern der Ressourcenrichtlinie, zum Erstellen eines Supporttickets und zum Lesen von Ressourcen/der Hierarchie.  |

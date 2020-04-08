@@ -4,33 +4,31 @@ description: Informationen zum Konfigurieren von kundenseitig verwalteten Schlü
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 03/19/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 44bbd7eab80ecb1cbfef9738e42b4070dff31180
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 6e2a90b8f81b9b945905ee98beb1686c54a62e8a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77506044"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80063756"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für Ihr Azure Cosmos-Konto mit Azure Key Vault
 
 > [!NOTE]
 > Derzeit müssen Sie den Zugriff anfordern, um diese Funktion verwenden zu können. Wenden Sie sich zu diesem Zweck an [azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com).
 
-Die in Ihrem Azure Cosmos-Konto gespeicherten Daten werden automatisch und nahtlos verschlüsselt. Azure Cosmos DB bietet zwei Optionen zum Verwalten der zum Verschlüsseln ruhender Daten verwendeten Schlüssel:
+Die in Ihrem Azure Cosmos-Konto gespeicherten Daten werden automatisch und nahtlos mit von Microsoft verwalteten Schlüsseln (**vom Dienst verwaltete Schlüssel**) verschlüsselt. Sie können optional eine zweite Verschlüsselungsschicht mit von Ihnen verwalteten Schlüsseln (**vom Kunden verwaltete Schlüssel**) hinzufügen.
 
-- **Vom Dienst verwaltete Schlüssel**: Standardmäßig verwaltet Microsoft die Schlüssel, die zum Verschlüsseln der Daten in Ihrem Azure Cosmos-Konto verwendet werden.
-
-- **Vom Kunden verwaltete Schlüssel**: Sie können optional eine zweite Verschlüsselungsschicht mit Ihren eigenen Schlüsseln hinzufügen.
+![Verschlüsselungsschicht um Kundendaten](./media/how-to-setup-cmk/cmk-intro.png)
 
 Sie müssen vom Kunden verwaltete Schlüssel in [Azure Key Vault](../key-vault/key-vault-overview.md) speichern und einen Schlüssel für jedes Azure Cosmos-Konto bereitstellen, für das vom Kunden verwalteten Schlüssel aktiviert sind. Dieser Schlüssel wird zum Verschlüsseln aller in diesem Konto gespeicherten Daten verwendet.
 
 > [!NOTE]
 > Derzeit sind von Kunden verwaltete Schlüssel nur für neue Azure Cosmos-Konten verfügbar. Sie sollten während der Kontoerstellung konfiguriert werden.
 
-## <a id="register-resource-provider"></a> Registrieren des Azure Cosmos DB-Ressourcenanbieters für Ihr Azure-Abonnement
+## <a name="register-the-azure-cosmos-db-resource-provider-for-your-azure-subscription"></a><a id="register-resource-provider"></a> Registrieren des Azure Cosmos DB-Ressourcenanbieters für Ihr Azure-Abonnement
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, navigieren Sie zu Ihrem Azure-Abonnement, und wählen Sie auf der Registerkarte **Einstellungen** die Option **Ressourcenanbieter** aus:
 
@@ -189,6 +187,22 @@ New-AzResourceGroupDeployment `
     -keyVaultKeyUri $keyVaultKeyUri
 ```
 
+### <a name="using-the-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
+
+Wenn Sie ein neues Azure Cosmos-Konto über die Azure-Befehlszeilenschnittstelle erstellen, übergeben Sie den URI des Azure Key Vault-Schlüssels, den Sie zuvor unter dem Parameter **--key-uri** kopiert haben.
+
+```azurecli-interactive
+resourceGroupName='myResourceGroup'
+accountName='mycosmosaccount'
+keyVaultKeyUri = 'https://<my-vault>.vault.azure.net/keys/<my-key>'
+
+az cosmosdb create \
+    -n $accountName \
+    -g $resourceGroupName \
+    --locations regionName='West US 2' failoverPriority=0 isZoneRedundant=False \
+    --key-uri $keyVaultKeyUri
+```
+
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
 ### <a name="is-there-any-additional-charge-for-using-customer-managed-keys"></a>Fallen bei Verwendung von kundenseitig verwalteten Schlüsseln zusätzliche Gebühren an?
@@ -217,7 +231,7 @@ Derzeit nicht. Es werden jedoch Schlüssel auf Containerebene in Erwägung gezog
 
 ### <a name="how-do-customer-managed-keys-affect-a-backup"></a>Wie wirken sich vom Kunden verwaltete Schlüssel auf eine Sicherung aus?
 
-Azure Cosmos DB erstellt [regelmäßige und automatische Sicherungen](./online-backup-and-restore.md) der in Ihrem Konto gespeicherten Daten. Bei diesem Vorgang werden die verschlüsselten Daten gesichert. Um die wiederhergestellte Sicherung verwenden zu können, ist der zum Zeitpunkt der Sicherung verwendete Verschlüsselungsschlüssel erforderlich. Das bedeutet, dass keine Sperrung erfolgt ist und die zum Zeitpunkt der Sicherung verwendete Version des Schlüssels weiterhin aktiviert ist.
+Azure Cosmos DB erstellt [regelmäßige und automatische Sicherungen](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) der in Ihrem Konto gespeicherten Daten. Bei diesem Vorgang werden die verschlüsselten Daten gesichert. Um die wiederhergestellte Sicherung verwenden zu können, ist der zum Zeitpunkt der Sicherung verwendete Verschlüsselungsschlüssel erforderlich. Das bedeutet, dass keine Sperrung erfolgt ist und die zum Zeitpunkt der Sicherung verwendete Version des Schlüssels weiterhin aktiviert ist.
 
 ### <a name="how-do-i-revoke-an-encryption-key"></a>Wie sperre/widerrufe ich einen Verschlüsselungsschlüssel?
 

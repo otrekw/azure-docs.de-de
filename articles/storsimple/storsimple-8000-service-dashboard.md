@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Geräten der StorSimple 8000-Serie – Zusammenfassung | Microsoft-Dokumentation
+title: Verwenden des Dienstübersichtsblatts für Geräte der StorSimple 8000-Serie
 description: Beschreibt das StorSimple-Dienstübersichtsblatt und erläutert, wie Sie den Zustand Ihrer StorSimple-Lösung über dieses Dashboard verwalten.
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.openlocfilehash: c174f6ce0fb3d40af953be205a7bfcca60fbfeec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 14c37227a7e8598ee6f8f3adc62acd69dd274475
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60633152"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396509"
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-8000-series-device"></a>Verwenden des Dienstübersichtsblatt für Geräte der StorSimple 8000-Serie
 
@@ -39,11 +39,11 @@ Auf dem StorSimple-Dienstübersichtsblatt sehen Sie die Optionen, mit denen Sie 
 Verwenden Sie diese Optionen, um unterschiedliche Vorgänge auszuführen, wie z.B. das Hinzufügen von Freigaben oder Volumes oder das Überwachen verschiedener Aufträge, die auf den StorSimple-Geräten ausgeführt werden.
 
 
-## <a name="essentials"></a>Zusammenfassung
+## <a name="essentials"></a>Essentials
 
 Der Bereich „Essentials“ (Zusammenfassung) erfasst einige wichtige Eigenschaften wie die Ressourcengruppe, den Speicherort und das Abonnement, in dem Ihr StorSimple-Geräte-Manager erstellt wurde.
 
-![Zusammenfassung](./media/storsimple-8000-service-dashboard/service-summary3.png)
+![Essentials](./media/storsimple-8000-service-dashboard/service-summary3.png)
 
 ## <a name="storsimple-device-manager-service-summary"></a>Dienstübersicht für den StorSimple-Geräte-Manager
 

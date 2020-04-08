@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: 64b90afd598b96604fc9c3ddc4bc10586e714363
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 9c4e6124acdbb35233f8e829f43d2665fd4a5176
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75657980"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80284805"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Übersicht über SSL-Terminierung und End-to-End-SSL mit Application Gateway
 
@@ -43,7 +43,7 @@ Zum Hersteller der SSL-Verbindung müssen Sie sicherstellen, dass das SSL-Zertif
 Das Anwendungsgateway unterstützt die folgenden Arten von Zertifikaten:
 
 - CA-Zertifikat: Ein CA-Zertifikat ist ein digitales Zertifikat, das von einer Zertifizierungsstelle (Certificate Authority, CA) ausgestellt wurde.
-- EV-Zertifikat: Ein EV-Zertifikat (Extended Validation) ist ein Zertifikat mit erweiterter Überprüfung gemäß Branchenrichtlinien. Die Locator-Leiste des Browsers wird dadurch grün, und auch der Firmennamen wird veröffentlicht.
+- EV-Zertifikat: Ein EV-Zertifikat (Extended Validation) ist ein Zertifikat, das den Branchenrichtlinien zur erweiterten Überprüfung entspricht. Die Locator-Leiste des Browsers wird dadurch grün, und auch der Firmennamen wird veröffentlicht.
 - Platzhalterzertifikat: Dieses Zertifikat unterstützt eine beliebige Anzahl von untergeordneten Domänen basierend auf *.site.com. * wird durch Ihre untergeordnete Domäne ersetzt. Es unterstützt jedoch nicht site.com. Falls Ihre die auf Benutzer Ihre Website zugreifen, ohne die führende Zeichenfolge „www“ einzugeben, wird das Platzhalterzertifikat diese Eingabe nicht berücksichtigen.
 - Selbstsignierte Zertifikate: Clientbrowser vertrauen diesen Zertifikaten nicht und warnen den Benutzer, dass das virtuelle Zertifikat des Diensts keiner Vertrauenskette angehört. Selbstsignierte Zertifikate eignen sich gut für Tests oder Umgebungen, in denen Administratoren die Clients kontrollieren und Sicherheitswarnungen des Browsers sicher umgehen können. Produktionsworkloads sollten niemals selbstsignierte Zertifikate verwenden.
 

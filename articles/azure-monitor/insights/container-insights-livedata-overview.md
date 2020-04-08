@@ -3,12 +3,12 @@ title: Anzeigen von Livedaten (Vorschau) mit Azure Monitor für Container | Micr
 description: In diesem Artikel wird die Echtzeitansicht von Kubernetes-Protokollen, -Ereignissen und -Podmetriken in Azure Monitor für Container ohne Verwendung von kubectl beschrieben.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 18ae091a32d0256288d27ad1439ffc7be26db5f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9e7c7a7b7bf276b3451cee1d289b8b07ac0f40ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75404753"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79216545"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Anzeigen von Kubernetes-Protokollen, -Ereignissen und -Podmetriken in Echtzeit
 
@@ -84,7 +84,7 @@ Nach erfolgreicher Authentifizierung wird der Konsolenbereich für Livedaten (Vo
     
 Wenn das ausgewählte Objekt ein Container ist, wählen Sie die Option **Ereignisse** im Bereich aus. Wenn Sie einen Knoten, Pod oder Controller ausgewählt haben, ist das Anzeigen von Ereignissen automatisch ausgewählt. 
 
-    ![Controller properties pane view events](./media/container-insights-livedata-overview/controller-properties-live-events.png)  
+![Anzeigen von Ereignissen im Bereich mit Controllereigenschaften](./media/container-insights-livedata-overview/controller-properties-live-event.png)  
 
 Der Titel des Bereichs zeigt den Namen des Pods an, mit dem der Container gruppiert ist.
 

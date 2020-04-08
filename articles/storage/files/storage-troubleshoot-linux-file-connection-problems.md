@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9849e8ab918562267e93506771a4c32cf96533a4
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 95e220102cba290664a32cb6bbebef881ae4ffde
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544938"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159488"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Behandeln von Azure Files-Problemen unter Linux
 
@@ -287,6 +287,14 @@ Allerdings können diese Änderungen noch nicht zu allen Linux-Distributionen po
 Sie können dieses Problem umgehen, indem Sie eine ständige Bereitstellung festlegen. Bei einer ständigen Bereitstellung muss der Client auf eine Verbindungsherstellung oder auf eine explizite Unterbrechung warten. Dadurch lassen sich durch Netzwerktimeouts bedingte Fehler verhindern. Diese Problemumgehung kann jedoch endlose Wartevorgänge verursachen. Seien Sie darauf vorbereitet, Verbindungen nach Bedarf zu beenden.
 
 Wenn Sie nicht auf die neuesten Kernelversionen upgraden können, können Sie dieses Problem umgehen, indem Sie eine Datei in der Azure-Dateifreigabe speichern und mindestens alle 30 Sekunden in diese Datei schreiben. Dabei muss es sich um einen Schreibvorgang handeln, wie z.B. die Umschreibung des Erstellungs- oder Änderungsdatums in der Datei. Andernfalls erhalten Sie möglicherweise zwischengespeicherte Ergebnisse, und Ihr Vorgang kann die Verbindungswiederherstellung möglicherweise nicht auslösen.
+
+## <a name="cifs-vfs-error--22-on-ioctl-to-get-interface-list-when-you-mount-an-azure-file-share-by-using-smb-30"></a>„CIFS VFS: error -22 on ioctl to get interface list“ (Fehler -22 bei IOCTL zum Abrufen der Schnittstellenliste) beim Einbinden einer Azure-Dateifreigabe mithilfe von SMB 3.0
+
+### <a name="cause"></a>Ursache
+Dieser Fehler wird protokolliert, weil Azure Files [SMB Multichannel derzeit nicht unterstützt](https://docs.microsoft.com/rest/api/storageservices/features-not-supported-by-the-azure-file-service).
+
+### <a name="solution"></a>Lösung
+Dieser Fehler kann ignoriert werden.
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 

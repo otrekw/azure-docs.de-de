@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 12/03/2019
-ms.openlocfilehash: ea132578a08b9f0002084374838c615a01fa820f
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: cda499b81a61a5b78ca86a96372640e368f90357
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425798"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80364202"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Ausnahmen und Fehlercodes für den Designer (Preview)
 
@@ -39,6 +39,9 @@ Es gibt zwei Möglichkeiten, den vollständigen Text einer Fehlermeldung im Desi
 |Column with name or index "{column_id}" not found. (Spalte mit Name oder Index „{column_id}“ nicht gefunden.)|
 |Column with name or index "{column_id}" does not exist in "{arg_name_missing_column}". (Spalte mit Name oder Index „{column_id}“ ist in „{arg_name_missing_column}“ nicht vorhanden.)|
 |Column with name or index "{column_id}" does not exist in "{arg_name_missing_column}", but exists in "{arg_name_has_column}". (Spalte mit Name oder Index "{column_id}" ist in "{arg_name_missing_column}"nicht vorhanden, aber in „{arg_name_has_column}“ vorhanden.)|
+|Column with name or index „{column_names}“ not found. (Spalte mit Name oder Index „{column_names}“ nicht gefunden.)|
+|Column with name or index „{column_names}“ does not exist in „{arg_name_missing_column}“. (Spalte mit Name oder Index „{column_names}“ ist in „{arg_name_missing_column}“ nicht vorhanden.)|
+|Column with name or index „{column_id}“ does not exist in „{arg_name_missing_column}“, but exists in „{arg_name_has_column}“. (Spalte mit Name oder Index „{column_names}“ ist in „{arg_name_missing_column}“ nicht vorhanden, aber in „{arg_name_has_column}“.)|
 
 
 ## <a name="error-0002"></a>Fehler 0002  
@@ -373,6 +376,7 @@ Für Spalten, die Sie für die Gruppierung oder Kategorisierung verwenden möcht
 |{dataset1} and {dataset2} should be consistent columnwise.|
 |{dataset1} contains invalid data, {reason}.|
 |{dataset1} contains {invalid_data_category}. {troubleshoot_hint}|
+|{Dataset1} ist ungültig, {Grund}. {troubleshoot_hint}|
 
 
 ## <a name="error-0019"></a>Fehler 0019  
@@ -1248,6 +1252,7 @@ Die Fehlerbehandlung für dieses Ereignis wurde in einer früheren Version von A
 |{data_name} enthält ungültige Daten für das Training.|
 |{data_name} enthält ungültige Daten für das Training. Learnertyp: {learner_type}.|
 |{data_name} enthält ungültige Daten für das Training. Learnertyp: {learner_type}. Reason: {Grund}.|
+|Fehler beim Anwenden der Aktion „{action_name}“ auf Trainingsdaten {data_name}. Reason: {Grund}.|
 
 
 ## <a name="error-0084"></a>Fehler 0084  
@@ -1392,9 +1397,10 @@ Dieser Fehler kann auch auftreten, wenn eine vorhergehende Operation das Dataset
 
 Lösung: 
 
- Wenn Sie eine Bezeichnungsspalte in die Spaltenauswahl aufnehmen, sie aber nicht erkannt wird, verwenden Sie das Modul [Edit Metadata](edit-metadata.md) (Metadaten bearbeiten), um sie als Bezeichnungsspalte zu kennzeichnen.
+ Wenn Sie eine Bezeichnungsspalte in die Spaltenauswahl aufnehmen, diese aber nicht erkannt wird, verwenden Sie das Modul [Edit Metadata](edit-metadata.md), um sie als Bezeichnungsspalte zu kennzeichnen.
 
-  <!--Use the [Summarize Data](summarize-data.md) module to generate a report that shows how many values are missing in each column. -->Anschließend können Sie das Modul [Clean Missing Data](clean-missing-data.md) (Fehlende Daten bereinigen) verwenden, um Zeilen mit fehlenden Werten in der Bezeichnungsspalte zu entfernen. 
+  <!--Use the [Summarize Data](summarize-data.md) module to generate a report that shows how many values are missing in each column. -->
+  Anschließend können Sie das Modul [Clean Missing Data](clean-missing-data.md) (Fehlende Daten bereinigen) verwenden, um Zeilen mit fehlenden Werten in der Bezeichnungsspalte zu entfernen. 
 
  Überprüfen Sie Ihre Eingabedatasets, um sicherzustellen, dass sie gültige Daten und ausreichend Zeilen enthalten, um die Anforderungen der Operation zu erfüllen. Viele Algorithmen erzeugen eine Fehlermeldung, wenn sie eine Mindestanzahl von Datenzeilen benötigen, aber die Daten nur wenige Zeilen oder nur eine Kopfzeile enthalten.
 
@@ -1455,8 +1461,8 @@ Lösung:
 
 |Ausnahmemeldungen|
 |------------------------|
-|Column names are not string.|
-|Column names: {column_names} are not string.|
+|Der Name der Datenrahmenspalte muss vom Typ string sein. Column names are not string.|
+|Der Name der Datenrahmenspalte muss vom Typ string sein. Spaltennamen: {column_names} weisen nicht den Typ string auf.|
 
 
 ## <a name="error-0156"></a>Fehler 0156  
@@ -1475,6 +1481,15 @@ Lösung:
 |------------------------|
 |Datastore information is invalid.|
 |Datastore information is invalid. Failed to get AzureML datastore '{datastore_name}' in workspace '{workspace_name}'.|
+
+
+## <a name="error-0158"></a>Fehler 0158
+ Wird ausgelöst, wenn ein Transformationsverzeichnis ungültig ist.
+
+|Ausnahmemeldungen|
+|------------------------------------------------------------|
+|Das angegebene TransformationDirectory ist ungültig.|
+|TransformationDirectory „{arg_name}“ ist ungültig. Reason: {Grund}. Führen Sie das Trainingsexperiment, das die Transformationsdatei generiert, erneut aus. Wenn das Trainingsexperiment gelöscht wurde, erstellen Sie die Transformationsdatei erneut, und speichern Sie sie.|
 
 
 ## <a name="error-1000"></a>Fehler 1000  

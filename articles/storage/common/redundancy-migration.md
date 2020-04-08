@@ -10,12 +10,12 @@ ms.date: 02/10/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 14ad6dbf139b34f501e0b0ea8c16d8570b2ace5b
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.openlocfilehash: 5c37dbdc34138faab8adae6ad18252c18a75cad4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77212571"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80337072"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Ändern der Replikation eines Speicherkontos
 
@@ -44,6 +44,9 @@ Die folgende Tabelle bietet eine Übersicht über die Möglichkeiten zum Wechsel
 | <b>… von GZRS/RA-GZRS</b> | Ausführen einer manuellen Migration | Ausführen einer manuellen Migration | Verwenden von Azure-Portal, PowerShell oder CLI zum Ändern der Replikationseinstellung | – |
 
 <sup>1</sup> Hierbei fällt eine einmalige Gebühr für ausgehende Daten an.
+
+> [!CAUTION]
+> Wenn Sie ein [Kontofailover](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance) für Ihr (RA-)GRS- oder (RA-)GZRS-Konto durchgeführt haben, ist es als lokal redundant in der neuen primären Region konfiguriert. Die Livemigration zu ZRS oder GZRS für solche LRS-Konten wird nicht unterstützt. Sie müssen eine [manuelle Migration](https://docs.microsoft.com/azure/storage/common/redundancy-migration#perform-a-manual-migration-to-zrs) durchführen.
 
 ## <a name="change-the-replication-setting"></a>Ändern der Replikationseinstellung
 

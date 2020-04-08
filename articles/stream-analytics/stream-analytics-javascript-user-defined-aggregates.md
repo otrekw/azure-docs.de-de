@@ -1,18 +1,18 @@
 ---
 title: Benutzerdefinierte JavaScript-Aggregate in Azure Stream Analytics
 description: In diesem Artikel wird beschrieben, wie Sie erweiterte Abfragemechanismen mit benutzerdefinierten JavaScript-Aggregaten in Azure Stream Analytics durchführen.
-author: rodrigoamicrosoft
+author: rodrigoaatmicrosoft
 ms.author: rodrigoa
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: d9b37810146f66806be9b8ce7a38f8dac31facb9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c509d174787a58abeee33e039eb7bbbcbcb43f38
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426090"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531733"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure Stream Analytics – benutzerdefinierte JavaScript-Aggregate
  
@@ -119,7 +119,7 @@ Informationen zu JavaScript-UDA-Datentypen finden Sie im Abschnitt **Stream Anal
 
 Im Folgenden finden Sie eine exemplarische Vorgehensweise für die Erstellung eines UDA über das Portal. Im hier verwendeten Beispiel werden die zeitlich gewichteten Durchschnittswerte berechnet.
 
-Nun erstellen wir ein JavaScript-UDA unter einem vorhandenen ASA-Auftrag über die folgenden Schritte.
+Nun erstellen wir anhand der folgenden Schritte ein JavaScript-UDA unter einem vorhandenen ASA-Auftrag.
 
 1. Melden Sie sich beim Azure-Portal an, und suchen Sie Ihren vorhandenen Stream Analytics-Auftrag.
 1. Klicken Sie auf den Funktionslink unter **AUFTRAGSTOPOLOGIE**.

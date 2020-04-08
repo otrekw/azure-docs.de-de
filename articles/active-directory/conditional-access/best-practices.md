@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccfbb31c29b9e240a4865c8d7d98d7b6af00d1fd
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f4560a514ddb9949c8cc07864b2319a5878b245e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963935"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295354"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Best Practices für den bedingten Zugriff in Azure Active Directory
 
@@ -27,7 +27,7 @@ Mit dem [bedingten Zugriff von Azure Active Directory (Azure AD)](../active-dire
 
 Für diesen Artikel wird davon ausgegangen, dass Sie mit den Konzepten und Begriffen vertraut sind, die in [ Was ist bedingter Zugriff in Azure Active Directory?](../active-directory-conditional-access-azure-portal.md) beschrieben werden.
 
-## <a name="whats-required-to-make-a-policy-work"></a>Was ist erforderlich, damit eine Richtlinie funktioniert?
+## <a name="whats-required-to-make-a-policy-work"></a>Was ist erforderlich, damit eine Richtlinie ausgeführt wird?
 
 Wenn Sie eine neue Richtlinie erstellen, werden keine Benutzer, Gruppen, Apps oder Zugriffssteuerungen ausgewählt.
 
@@ -98,7 +98,7 @@ Da Office 365-Apps miteinander verbunden sind, empfiehlt es sich, häufig verwen
 
 Zu den gängigen miteinander verbundenen Anwendungen gehören Microsoft Flow, Microsoft Planner, Microsoft Teams, Office 365 Exchange Online, Office 365 SharePoint Online und Office 365 Yammer.
 
-Bei Richtlinien, die Benutzerinteraktionen erfordern, wie z. B. die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), ist dies wichtig, wenn der Zugriff am Anfang einer Sitzung oder Aufgabe gesteuert wird. Wenn Sie dies nicht tun, können Benutzer einige Aufgaben in einer App nicht ausführen. Wenn beispielsweise auf nicht verwalteten Geräten die mehrstufige Authentifizierung für den Zugriff auf SharePoint, aber nicht für den Zugriff auf die E-Mail-App erforderlich ist, können Benutzer, die in ihrer E-Mail-App arbeiten, keine SharePoint-Dateien an eine Nachricht anfügen. Weitere Informationen finden Sie im Artikel [Was sind Dienstabhängigkeiten beim bedingten Azure Active Directory-Zugriff?](service-dependencies.md)
+Bei Richtlinien, die Benutzerinteraktionen erfordern, wie z. B. die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), ist dies wichtig, wenn der Zugriff am Anfang einer Sitzung oder Aufgabe gesteuert wird. Andernfalls können Benutzer einige Aufgaben in einer App nicht ausführen. Wenn beispielsweise auf nicht verwalteten Geräten die mehrstufige Authentifizierung für den Zugriff auf SharePoint, aber nicht für den Zugriff auf die E-Mail-App erforderlich ist, können Benutzer in ihrer E-Mail-App keine SharePoint-Dateien an eine Nachricht anfügen. Weitere Informationen finden Sie im Artikel [Was sind Dienstabhängigkeiten beim bedingten Azure Active Directory-Zugriff?](service-dependencies.md)
 
 ## <a name="what-you-should-avoid-doing"></a>Das sollten Sie vermeiden
 

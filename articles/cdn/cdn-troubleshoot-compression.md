@@ -3,8 +3,8 @@ title: Problembehandlung bei der Azure CDN-Dateikomprimierung | Microsoft Docs
 description: Behandeln Sie Probleme mit der Azure CDN-Dateikomprimierung.
 services: cdn
 documentationcenter: ''
-author: zhangmanling
-manager: erikre
+author: sohamnc
+manager: danielgi
 editor: ''
 ms.assetid: a6624e65-1a77-4486-b473-8d720ce28f8b
 ms.service: azure-cdn
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 5195dc3c47d2a4377147b2ef49b23bab6b3fee77
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: aff2dadee365fcdc7e14070714aa1d2cbba901ff
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593326"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476422"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>Problembehandlung bei der CDN-Dateikomprimierung
 Dieser Artikel unterstützt Sie bei der Behandlung von Problemen mit der [CDN-Dateikomprimierung](cdn-improve-performance.md).
@@ -42,6 +42,7 @@ Es gibt mehrere mögliche Ursachen, darunter folgende:
 * Der angeforderte Inhalt eignet sich nicht zur Komprimierung.
 * Die Komprimierung ist für den angeforderten Dateityp nicht aktiviert.
 * Die HTTP-Anforderung enthielt keinen Header, um einen gültigen Komprimierungstyp anzufordern.
+* Der Ursprung sendet segmentierten Inhalt.
 
 ## <a name="troubleshooting-steps"></a>Schritte zur Problembehandlung
 > [!TIP]

@@ -9,18 +9,23 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/18/2019
+ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: c5acda0ccec409ec06d0f3f2226b9819e3f130c7
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.openlocfilehash: aba987ba232a29ffc240f72039b1e24bb87a2ed4
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77538412"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345909"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>Erstellen einer Auftragseingabe aus einer lokalen Datei
 
 Wenn Sie in Media Services v3 Aufträge zur Verarbeitung Ihrer Videos übermitteln, müssen Sie Media Services mitteilen, wo sich das Eingabevideo befindet. Das Eingabevideo kann als Media Service-Medienobjekt gespeichert werden. In diesem Fall erstellen Sie ein Eingabemedienobjekt basierend auf einer Datei (die lokal oder in Azure Blob Storage gespeichert ist). In diesem Thema wird gezeigt, wie Sie eine Auftragseingabe aus einer lokalen Datei erstellen. Ein vollständiges Beispiel finden Sie in diesem [GitHub-Beispiel](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs).
+
+## <a name="prerequisites"></a>Voraussetzungen 
+
+* [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)
+* Informieren Sie sich über das [Verwalten von Ressourcen](manage-asset-concept.md).
 
 ## <a name="net-sample"></a>.NET-Beispiel
 

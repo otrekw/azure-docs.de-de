@@ -4,19 +4,18 @@ description: Erfahren Sie mehr über die Anforderungen und allgemeinen Datenarch
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: seoapril2019
-ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: ad7bd660ee685b490fb79c7e63fd3c5fce557977
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.custom: seoapril2019
+ms.openlocfilehash: 956d74467c69d9924d26f9cae8d902a6ddd84496
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822059"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067490"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Mandantenmuster für mehrinstanzenfähige SaaS-Datenbanken
 
@@ -36,7 +35,7 @@ Der Begriff *Mandantenmodell* bezieht sich auf die Art und Weise, in der die ges
 - *Mehrinstanzenfähigkeit:* &nbsp; Jede Datenbank speichert Daten mehrerer Mandanten (mit Mechanismen zum Datenschutz).
 - Hybride Mandantenmodelle sind ebenfalls verfügbar.
 
-## <a name="b-how-to-choose-the-appropriate-tenancy-model"></a>B: Vorgehensweise zum Auswählen des geeigneten Mandantenmodells
+## <a name="b-how-to-choose-the-appropriate-tenancy-model"></a>B. Vorgehensweise zum Auswählen des geeigneten Mandantenmodells
 
 Das Mandantenmodell wirkt sich in der Regel nicht auf die Funktionsweise einer Anwendung aus, hat jedoch sehr wahrscheinlich Auswirkungen auf andere Aspekte der gesamten Lösung.  Für die Bewertung der einzelnen Modelle werden folgende Kriterien herangezogen:
 
@@ -46,7 +45,7 @@ Das Mandantenmodell wirkt sich in der Regel nicht auf die Funktionsweise einer A
     - Aggregierter Speicher
     - Workload
 
-- **Mandantenisolation:** &nbsp; Datenisolation und Leistung (Auswirkungen der Workload eines Mandanten auf andere Workloads)
+- **Mandantenisolation:** &nbsp; Datenisolation und Leistung (Auswirkungen der Workload eines Mandanten auf andere)
 
 - **Kosten pro Mandant:** &nbsp; Kosten für Datenbank
 
@@ -56,7 +55,7 @@ Das Mandantenmodell wirkt sich in der Regel nicht auf die Funktionsweise einer A
 
 - **Komplexität des Betriebs:**
     - Überwachen und Verwalten der Leistung
-    - Schemaverwaltung
+    - Verwalten des Schemas
     - Wiederherstellen eines Mandanten
     - Notfallwiederherstellung
 
@@ -137,7 +136,7 @@ Im Folgenden werden zwei Varianten eines mehrinstanzenfähigen Datenbankmodells 
 
 ## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>F. Mehrinstanzenfähige App mit einer Einzelinstanzdatenbank
 
-Das einfachste Muster einer mehrinstanzenfähigen Datenbank verwendet eine einzelne Datenbank, um Daten für alle Mandanten zu hosten.  Bei einer steigenden Anzahl von Mandanten muss die Datenbank mit weiteren Speicher- und Computeressourcen zentral hochskaliert werden.  Eine solche zentrale Hochskalierung könnte Abhilfe leisten, wobei es jedoch immer eine finale Begrenzung für die Skalierung gibt.  Allerdings wird die Datenbankverwaltung lange vor Erreichen dieser Begrenzung zunehmend umständlicher.
+Das einfachste Muster einer mehrinstanzenfähigen Datenbank verwendet eine einzelne Datenbank, um Daten für alle Mandanten zu hosten.  Bei einer steigenden Anzahl von Mandanten muss die Datenbank mit weiteren Speicher- und Computeressourcen zentral hochskaliert werden.  Eine solche Hochskalierung könnte Abhilfe leisten, wobei es jedoch immer eine finale Begrenzung für die Skalierung gibt.  Allerdings wird die Datenbankverwaltung lange vor Erreichen dieser Begrenzung zunehmend umständlicher.
 
 Bei mehrinstanzenfähigen Datenbanken ist die Implementierung von Verwaltungsvorgängen, die sich auf einzelne Mandanten konzentrieren, komplexer.  Mit steigender Größenordnung könnte dies dazu führen, dass diese Vorgänge unzumutbar langsam werden.  Ein Beispiel ist die Point-in-Time-Wiederherstellung von Daten für nur einen Mandanten.
 
@@ -185,8 +184,8 @@ In der folgenden Tabelle werden die Unterschiede zwischen den wichtigsten Mandan
 
 | Messung | Eigenständige App | Eine Datenbank pro Mandant | Mehrinstanzenfähige Datenbank mit Shards |
 | :---------- | :------------- | :------------------ | :------------------- |
-| Skalieren | Mittel<br />1 – mehrere 100 | Sehr hoch<br />1 – mehrere 100.000 | Unbegrenzt<br />1 – mehrere 1.000.000 |
-| Mandantenisolation | Sehr hoch | Hoch | Niedrig, ausgenommen für einen (in einer MT-Datenbank einzelnen) Einzelmandanten. |
+| Skalieren | Medium<br />1 – mehrere 100 | Sehr hoch<br />1 – mehrere 100.000 | Unbegrenzt<br />1 – mehrere 1.000.000 |
+| Mandantenisolation | Sehr hoch | High | Niedrig, ausgenommen für einen (in einer MT-Datenbank einzelnen) Einzelmandanten. |
 | Datenbankkosten pro Mandant | Hoch, für Spitzen dimensioniert | Niedrig, unter Verwendung von Pools | Am niedrigsten, für kleine Mandanten in MT-Datenbanken |
 | Leistungsüberwachung und -verwaltung | Nur pro Mandant | Aggregiert und pro Mandant | Aggregiert, jedoch nur für das Modell pro Mandant für Einzeldatenbanken. |
 | Komplexität der Entwicklung | Niedrig | Niedrig | Mittel, aufgrund von Sharding |

@@ -8,25 +8,25 @@ ms.date: 06/28/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: ac09f9b59bc6f47adc9311cc910352c1a0d73b5d
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68699287"
 ---
 # <a name="monitor-azure-file-sync"></a>Überwachen der Azure-Dateisynchronisierung
 
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
 
-In diesem Artikel wird beschrieben, wie Sie Ihre Bereitstellung der Azure-Dateisynchronisierung mit Azure Monitor, Speichersynchronisierungsdienst und Windows Server überwachen.
+In diesem Artikel wird beschrieben, wie Sie Ihre Bereitstellung der Azure-Dateisynchronisierung mit Azure Monitor, dem Speichersynchronisierungsdienst und Windows Server überwachen.
 
 Aktuell stehen die folgenden Überwachungsoptionen zur Verfügung.
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-Verwenden Sie [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview), um sich Metriken anzeigen zu lassen und Benachrichtigungen für das Synchronisieren, Cloudtiering und Serverkonnektivität zu konfigurieren.  
+Verwenden Sie [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview), um Metriken anzuzeigen und Warnungen für Synchronisierung, Cloudtiering und Serverkonnektivität zu konfigurieren.  
 
-### <a name="metrics"></a>metrics
+### <a name="metrics"></a>Metriken
 
 Metriken für die Azure-Dateisynchronisierung werden standardmäßig aktiviert und alle 15 Minuten an Azure Monitor gesendet.
 
@@ -36,30 +36,30 @@ In Azure Monitor sind die folgenden Metriken für die Azure-Dateisynchronisierun
 
 | Metrikname | BESCHREIBUNG |
 |-|-|
-| Bytes synchronisiert | Größe der übertragenen Daten (Upload und Download).<br><br>Einheit: Byte<br>Aggregationstyp: Summe<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
-| Cloudtieringrückruf | Größe der zurückgerufenen Daten.<br><br>**Hinweis**: Diese Metrik wird irgendwann gelöscht. Verwenden Sie die Metrik „Cloudtieringrückrufgröße“, um die Größe der zurückgerufen Daten zu überprüfen.<br><br>Einheit: Byte<br>Aggregationstyp: Summe<br>Verfügbare Dimension: Servername |
-| Cloudtieringrückrufgröße | Größe der zurückgerufenen Daten.<br><br>Einheit: Byte<br>Aggregationstyp: Summe<br>Verfügbare Dimension: Der Name des Servers und der Synchronisierungsgruppe |
-| Cloudtieringrückrufgröße nach Anwendung | Größe der von der Anwendung zurückgerufenen Daten.<br><br>Einheit: Byte<br>Aggregationstyp: Summe<br>Verfügbare Dimension: Anwendungsname, Servername, Synchronisierungsgruppenname |
-| Cloudtieringrückrufdurchsatz | Größe der Daten des Rückrufdurchsatzes.<br><br>Einheit: Byte<br>Aggregationstyp: Summe<br>Verfügbare Dimension: Der Name des Servers und der Synchronisierungsgruppe |
-| Dateien ohne Synchronisierung | Anzahl von Dateien, für die keine Synchronisierung möglich ist.<br><br>Einheit: Count<br>Aggregationstyp: Summe<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
-| Dateien synchronisiert | Anzahl der übertragenen Dateien (Upload und Download)<br><br>Einheit: Count<br>Aggregationstyp: Summe<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
-| Onlinestatus des Servers | Anzahl von Taktsignalen, die vom Server empfangen wurden.<br><br>Einheit: Count<br>Aggregationstyp: Maximum<br>Verfügbare Dimension: Servername |
-| Ergebnis der Synchronisierungssitzung | Ergebnis der Synchronisierungssitzung (1 = erfolgreiche Synchronisierungssitzung, 0 = fehlerhafte Synchronisierungssitzung)<br><br>Einheit: Count<br>Aggregationstypen: Maximum<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
+| Bytes synchronisiert | Größe der übertragenen Daten (Upload und Download).<br><br>Einheit: Byte<br>Aggregationstyp: SUM<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
+| Cloudtieringrückruf | Größe der zurückgerufenen Daten.<br><br>**Hinweis**: Diese Metrik wird in Zukunft entfernt. Verwenden Sie die Metrik „ Cloudtiering-Rückrufgröße“, um die Größe der zurückgerufenen Daten zu überwachen.<br><br>Einheit: Byte<br>Aggregationstyp: SUM<br>Verfügbare Dimension: Servername |
+| Cloudtiering-Rückrufgröße | Größe der zurückgerufenen Daten.<br><br>Einheit: Byte<br>Aggregationstyp: SUM<br>Verfügbare Dimension: Servername, Name der Synchronisierungsgruppe |
+| Cloudtiering-Rückrufgröße nach Anwendung | Größe der zurückgerufenen Daten nach Anwendung.<br><br>Einheit: Byte<br>Aggregationstyp: SUM<br>Verfügbare Dimension: Anwendungsname, Servername, Name der Synchronisierungsgruppe |
+| Cloudtiering-Rückrufdurchsatz | Größe des Datenrückruf-Durchsatzes.<br><br>Einheit: Byte<br>Aggregationstyp: SUM<br>Verfügbare Dimension: Servername, Name der Synchronisierungsgruppe |
+| Dateien ohne Synchronisierung | Anzahl von Dateien, für die keine Synchronisierung möglich ist.<br><br>Einheit: Anzahl<br>Aggregationstyp: SUM<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
+| Dateien synchronisiert | Anzahl der übertragenen Dateien (Upload und Download)<br><br>Einheit: Anzahl<br>Aggregationstyp: SUM<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
+| Onlinestatus des Servers | Anzahl von Taktsignalen, die vom Server empfangen wurden.<br><br>Einheit: Anzahl<br>Aggregationstyp: Maximum<br>Verfügbare Dimension: Servername |
+| Ergebnis der Synchronisierungssitzung | Ergebnis der Synchronisierungssitzung (1 = erfolgreiche Synchronisierungssitzung, 0 = fehlerhafte Synchronisierungssitzung)<br><br>Einheit: Anzahl<br>Aggregationstypen: Maximum<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
 
-### <a name="alerts"></a>Alerts
+### <a name="alerts"></a>Warnungen
 
-Wählen Sie den Speichersynchronisierungsdienst, um Benachrichtigungen in Azure Monitor zu konfigurieren und wählen Sie dann die [Azure-Dateisynchronisierungsmetrik](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#metrics) für die Benachrichtigung aus.  
+Wählen Sie zum Konfigurieren von Warnungen in Azure Monitor den Speichersynchronisierungsdienst aus, und wählen Sie dann die [Metrik der Azure-Dateisynchronisierung](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#metrics) aus, die Sie für die Warnung verwenden möchten.  
 
-Die folgende Tabelle führt einige Beispielszenarien zur Überwachung auf sowie die richtige Metrik für die Benachrichtigung:
+In der folgenden Tabelle sind einige Beispielszenarios für die Überwachung und die jeweils geeignete Metrik für die Warnung aufgeführt:
 
-| Szenario | Metrik für die Benachrichtigung |
+| Szenario | Für Warnung zu verwendende Metrik |
 |-|-|
-| Integrität der Serverendpunkte im Portal = Fehler | Ergebnis der Synchronisierungssitzung |
-| Die Dateien werden nicht mit einem Server oder Cloudendpunkt synchronisiert | Dateien ohne Synchronisierung |
-| Der registrierte Server kommuniziert nicht mit dem Speichersynchronisierungsdienst | Onlinestatus des Servers |
-| Die Cloudtieringrückrufgröße überschreitet an einem Tag 500 GiB  | Cloudtieringrückrufgröße |
+| Fehler bei der Integrität des Serverendpunkts im Portal | Ergebnis der Synchronisierungssitzung |
+| Fehler beim Synchronisieren von Dateien mit einem Server- oder Cloudendpunkt | Dateien ohne Synchronisierung |
+| Registrierter Server kann nicht mit dem Speichersynchronisierungsdienst kommunizieren | Onlinestatus des Servers |
+| Cloudtiering-Rückrufgröße hat 500 GiB pro Tag überschritten  | Cloudtiering-Rückrufgröße |
 
-Mehr über die Konfigurierung von Benachrichtigungen in Azure Monitor erfahren Sie unter [„Überblick über Warnungen in Microsoft Azure“]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
+Weitere Informationen zum Konfigurieren von Warnungen in Azure Monitor finden Sie unter [Übersicht über Warnungen in Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview).
 
 ## <a name="storage-sync-service"></a>Speichersynchronisierungsdienst
 
@@ -117,16 +117,16 @@ Cloudtieringintegrität:
 
 - Verwenden Sie die Ereignis-IDs 9003, 9016 und 9029 im Telemetrieereignisprotokoll (in der Ereignisanzeige unter *Anwendungen und Dienste\Microsoft\FileSync\Agent*), um die Tieringaktivität auf einem Server zu überwachen.
 
-  - Die Ereignis-ID 9003 ermöglicht die Fehlerverteilung für einen Serverendpunkt. Beispiel:  Gesamtfehlerzahl und ErrorCode. Pro Fehlercode wird ein Ereignis protokolliert.
-  - Die Ereignis-ID 9016 stellt Ghostingergebnisse für ein Volume bereit. Beispiel:  Freier Speicherplatz in Prozent, Anzahl der Dateien in der Sitzung, für die ein Ghosting durchgeführt wurde, und Anzahl von Dateien, bei denen beim Ghosting ein Fehler aufgetreten ist.
-  - Die Ereignis-ID 9029 bietet Informationen zu Ghostingsitzungen für einen Serverendpunkt. Beispiel:  Anzahl der in der Sitzung herangezogenen Dateien, Anzahl der Dateien in der Sitzung, für die in der Sitzung ein Tiering durchgeführt wurde, und Anzahl der Dateien, für die bereits ein Tiering durchgeführt wurde.
+  - Die Ereignis-ID 9003 ermöglicht die Fehlerverteilung für einen Serverendpunkt. Beispiel: Gesamtfehlerzahl und ErrorCode. Pro Fehlercode wird ein Ereignis protokolliert.
+  - Die Ereignis-ID 9016 stellt Ghostingergebnisse für ein Volume bereit. Beispiel: Freier Speicherplatz in Prozent, Anzahl der Dateien in der Sitzung, für die ein Ghosting durchgeführt wurde, und Anzahl von Dateien, bei denen beim Ghosting ein Fehler aufgetreten ist.
+  - Die Ereignis-ID 9029 bietet Informationen zu Ghostingsitzungen für einen Serverendpunkt. Beispiel: Anzahl der in der Sitzung herangezogenen Dateien, Anzahl der Dateien in der Sitzung, für die in der Sitzung ein Tiering durchgeführt wurde, und Anzahl der Dateien, für die bereits ein Tiering durchgeführt wurde.
   
 - Verwenden Sie die Ereignis-IDs 9005, 9006, 9009 und 9059 im Telemetrieereignisprotokoll (in der Ereignisanzeige unter *Anwendungen und Dienste\Microsoft\FileSync\Agent*), um die Rückrufaktivität auf einem Server zu überwachen.
 
-  - Die Ereignis-ID 9005 bietet Zuverlässigkeit beim Rückruf für einen Serverendpunkt. Beispiel:  Gesamtanzahl eindeutiger Dateien, auf die zugegriffen wird, und Gesamtanzahl eindeutiger Dateien, bei denen beim Zugriff ein Fehler aufgetreten ist.
-  - Die Ereignis-ID 9006 ermöglicht die Rückruffehlerverteilung für einen Serverendpunkt. Beispiel:  Gesamtanzahl der Anforderungen, bei denen ein Fehler aufgetreten ist, und ErrorCode. Pro Fehlercode wird ein Ereignis protokolliert.
-  - Die Ereignis-ID 9009 bietet Informationen zu Rückrufsitzungen für einen Serverendpunkt. Beispiel:  DurationSeconds, CountFilesRecallSucceeded und CountFilesRecallFailed.
-  - Die Ereignis-ID 9059 bietet Informationen zur Anwendungsrückrufverteilung für einen Serverendpunkt. Beispiel:  ShareId, Anwendungsname und TotalEgressNetworkBytes.
+  - Die Ereignis-ID 9005 bietet Zuverlässigkeit beim Rückruf für einen Serverendpunkt. Beispiel: Gesamtanzahl eindeutiger Dateien, auf die zugegriffen wird, und Gesamtanzahl eindeutiger Dateien, bei denen beim Zugriff ein Fehler aufgetreten ist.
+  - Die Ereignis-ID 9006 ermöglicht die Rückruffehlerverteilung für einen Serverendpunkt. Beispiel: Gesamtanzahl der Anforderungen, bei denen ein Fehler aufgetreten ist, und ErrorCode. Pro Fehlercode wird ein Ereignis protokolliert.
+  - Die Ereignis-ID 9009 bietet Informationen zu Rückrufsitzungen für einen Serverendpunkt. Beispiel: DurationSeconds, CountFilesRecallSucceeded und CountFilesRecallFailed.
+  - Die Ereignis-ID 9059 bietet Informationen zur Anwendungsrückrufverteilung für einen Serverendpunkt. Beispiel: ShareId, Anwendungsname und TotalEgressNetworkBytes.
 
 ### <a name="performance-counters"></a>Leistungsindikatoren
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5cce4337e3ef95c6407d46d9b8b6401fe4f6600b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 48bd909eefbaea15cf6ca2427e106ad9bc0ffbb4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60576185"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298744"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Verwenden des StorSimple-Diagnosetools für die Behandlung von Problemen mit Geräten der 8000-Serie
 
@@ -323,7 +323,7 @@ hcs_startup                                   Stopped hcs_startup
 
 ### <a name="network-test"></a>Netzwerktest
 
-Bei diesem Test wird Folgendes überprüft: Status der Netzwerkschnittstellen, Ports, DNS- und NTP-Serverkonnektivität, SSL-Zertifikat, Anmeldeinformationen des Speicherkontos, Konnektivität mit den Updateservern und Webproxykonnektivität auf Ihrem StorSimple-Gerät.
+Bei diesem Test wird Folgendes überprüft: Status der Netzwerkschnittstellen, Ports, DNS- und NTP-Serverkonnektivität, TLS/SSL-Zertifikat, Anmeldeinformationen des Speicherkontos, Konnektivität mit den Updateservern und Webproxykonnektivität auf Ihrem StorSimple-Gerät.
 
 #### <a name="sample-output-of-network-test-when-only-data0-is-enabled"></a>Beispielausgabe des Netzwerktests, wenn nur DATA0 aktiviert ist
 
@@ -333,7 +333,7 @@ Hier ist eine Beispielausgabe des 8100-Geräts angegeben. In der Ausgabe ist Fol
 * Die DNS-Serverkonfiguration ist gültig, und das Gerät kann über den DNS-Server eine Verbindung herstellen.
 * Die NTP-Serverkonnektivität ist ebenfalls in Ordnung.
 * Die Ports 80 und 443 sind offen. Port 9354 ist dagegen blockiert. Gemäß den [Netzwerkanforderungen des Systems](storsimple-system-requirements.md) ist es erforderlich, dass Sie diesen Port für die Service Bus-Kommunikation öffnen.
-* Das SSL-Zertifikat ist gültig.
+* Das TLS/SSL-Zertifikat ist gültig.
 * Das Gerät kann eine Verbindung mit dem Speicherkonto herstellen: _myss8000storageacct_.
 * Die Konnektivität mit den Updateservern ist gültig.
 * Der Webproxy ist auf diesem Gerät nicht konfiguriert.
@@ -378,7 +378,7 @@ Führen Sie die folgenden Schritte aus, um dieses Tool zu verwenden:
 
 1.  Erstellen Sie zunächst eine Mischung aus mehrstufigen Volumes und mehrstufigen Volumes mit aktivierter Archivierungsoption. Mit dieser Aktion wird sichergestellt, dass das Tool die Tests für die Blobgrößen 64 KB und 512 KB durchführt.
 
-2. Führen Sie das Cmdlet aus, nachdem Sie die Volumes erstellt und konfiguriert haben. Geben Sie Folgendes ein:
+2. Führen Sie das Cmdlet aus, nachdem Sie die Volumes erstellt und konfiguriert haben. Typ:
 
     `Invoke-HcsDiagnostics -Scope Performance`
 
@@ -417,8 +417,8 @@ In der Tabelle unten wird beschrieben, wie die verschiedenen Windows PowerShell-
 | PowerShell-Parameter    | BESCHREIBUNG  |
 |-------------------------|------------------|
 | Instance ID             | Jedem Controller ist ein eindeutiger Bezeichner oder eine GUID zugeordnet.|
-| NAME                    | Dies ist der Anzeigename des Geräts gemäß Konfiguration über das Azure-Portal während der Gerätebereitstellung. Der Standardanzeigename ist die Seriennummer des Geräts. |
-| Model                   | Das Modell Ihres Geräts der StorSimple 8000-Serie. Die Modellnummer kann 8100 oder 8600 lauten.|
+| Name                    | Dies ist der Anzeigename des Geräts gemäß Konfiguration über das Azure-Portal während der Gerätebereitstellung. Der Standardanzeigename ist die Seriennummer des Geräts. |
+| Modell                   | Das Modell Ihres Geräts der StorSimple 8000-Serie. Die Modellnummer kann 8100 oder 8600 lauten.|
 | SerialNumber            | Die Seriennummer des Geräts wird im Werk zugewiesen und ist 15 Zeichen lang. 8600-SHX0991003G44HT bedeutet beispielsweise Folgendes:<br> 8600 – Gerätemodell<br>SHX – Fertigungsstandort<br> 0991003 – Bestimmtes Produkt <br> G44HT– Die letzten 5 Stellen werden inkrementiert, um eindeutige Seriennummern zu erstellen. Unter Umständen ist dies keine sequenzielle Reihe.|
 | TimeZone                | Die Zeitzone des Geräts gemäß Konfiguration im Azure-Portal während der Gerätebereitstellung.|
 | CurrentController       | Der Controller, mit dem Sie über die Windows PowerShell-Schnittstelle Ihres StorSimple-Geräts verbunden sind.|

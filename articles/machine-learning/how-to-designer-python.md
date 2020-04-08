@@ -9,12 +9,12 @@ ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
-ms.openlocfilehash: b0b0bb5eefde9e744b1f30109d60ded91d3b44e8
-ms.sourcegitcommit: 390cfe85629171241e9e81869c926fc6768940a4
+ms.openlocfilehash: a2bd9845cd29c7d139e2042f39b4697847639207
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2020
-ms.locfileid: "78228659"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455790"
 ---
 # <a name="execute-python-code-in-azure-machine-learning-designer"></a>Ausführen von Python-Code in Azure Machine Learning-Designer
 
@@ -78,7 +78,7 @@ In diesem Beispiel verwenden Sie Pandas, um zwei Spalten aus dem Automobildatase
 
     Der Rückgabewert muss ein Pandas-Datenrahmen sein. Sie können bis zu zwei Datenrahmen als Modulausgaben zurückgeben.
     
-1. Ausführen der Pipeline.
+1. Übermitteln Sie die Pipeline.
 
 Jetzt verfügen Sie über ein Dataset mit dem neuen Feature **Dollars/HP** (US-Dollar/PS), das beim Training eines Empfehlungssystems für Autos nützlich sein könnte. Dies ist ein Beispiel für die Featureextraktion und Verringerung der Dimensionalität. 
 

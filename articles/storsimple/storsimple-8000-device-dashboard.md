@@ -1,5 +1,5 @@
 ---
-title: Verwenden der Übersicht über Geräte der StorSimple 8000-Serie | Microsoft-Dokumentation
+title: Verwenden der Übersicht über Geräte im StorSimple-Geräte-Manager-Dienst
 description: Beschreibt die Übersicht über den StorSimple-Geräte-Manager-Dienst und erläutert, wie diese verwendet wird, um Speichermetriken und verbundene Initiatoren anzuzeigen sowie nach der Seriennummer und dem IQN zu suchen.
 services: storsimple
 documentationcenter: NA
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 1d88af2c0739c30b2562bad7660015b890e8159c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7801cdc6573799330e5173db82dead8d4f2cd83f
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60578221"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398251"
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>Verwenden der Übersicht über Geräte im StorSimple-Geräte-Manager-Dienst
 
@@ -38,7 +38,7 @@ Auf dem Blatt mit der Geräteübersicht sehen Sie die Optionen zum Verwalten Ihr
 
 ![Befehlsleiste für die Verwaltung](./media/storsimple-8000-device-dashboard/device-summary2.png)
 
-## <a name="essentials"></a>Zusammenfassung
+## <a name="essentials"></a>Essentials
 
 Der Bereich „Zusammenfassung“ erfasst einige der wichtigen Eigenschaften wie z.B. Status, Modell, Ziel-IQN und Softwareversion. 
 
@@ -95,5 +95,5 @@ Der Bereich „Zusammenfassung“ erfasst einige der wichtigen Eigenschaften wie
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über das [Blatt „StorSimple-Dienstzusammenfassung“](storsimple-8000-service-dashboard.md).
-* Weitere Informationen zum [Verwalten Ihres StorSimple-Geräts mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-manager-service-administration.md).
+* Erfahren Sie mehr [Verwalten von StorSimple-Geräten mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-manager-service-administration.md).
 

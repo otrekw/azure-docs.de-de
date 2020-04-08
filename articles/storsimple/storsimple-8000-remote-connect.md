@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 70d0246debc532260d287104bacea2f15c1b94d2
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 58d61df932da06e32bb4c8f21a3a296b185f02d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277294"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80299003"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Herstellen einer Remoteverbindung mit Geräten der StorSimple 8000-Serie
 
@@ -203,11 +203,11 @@ Diese anschließende Schritte werden im Folgenden beschrieben.
 
 ### <a name="connect-to-the-device-from-the-remote-host"></a>Herstellen einer Verbindung mit dem Gerät über den Remotehost
 
-Verwenden Sie Windows PowerShell und SSL, um auf dem Gerät über einen Remotehost oder Client eine SSAdmin-Sitzung zu starten. Die SSAdmin-Sitzung entspricht Option 1 im Menü der [seriellen Konsole](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) Ihres Geräts.
+Verwenden Sie Windows PowerShell und TLS, um auf dem Gerät über einen Remotehost oder Client eine SSAdmin-Sitzung zu starten. Die SSAdmin-Sitzung entspricht Option 1 im Menü der [seriellen Konsole](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) Ihres Geräts.
 
 Führen Sie die folgenden Schritte auf dem Computer aus, über den Sie die Windows PowerShell-Remoteverbindung herstellen möchten.
 
-#### <a name="to-enter-an-ssadmin-session-on-the-device-by-using-windows-powershell-and-ssl"></a>So starten Sie mithilfe von Windows PowerShell und SSL eine SSAdmin-Sitzung auf dem Gerät
+#### <a name="to-enter-an-ssadmin-session-on-the-device-by-using-windows-powershell-and-tls"></a>So starten Sie mithilfe von Windows PowerShell und TLS eine SSAdmin-Sitzung auf dem Gerät
 1. Starten Sie eine Windows PowerShell-Sitzung als Administrator. Bei der Verwendung eines Windows 10-Clients wird der Windows-Remoteverwaltungsdienst standardmäßig auf „manuell“ festgelegt. Möglicherweise müssen Sie den Dienst starten, indem Sie Folgendes eingeben:
 
     `Start-Service WinRM`
@@ -232,9 +232,9 @@ Führen Sie die folgenden Schritte auf dem Computer aus, über den Sie die Windo
 5. Typ:
    
      `Enter-PSSession $session`
-6. Sie müssen einige Minuten warten, und dann wird über HTTPS über SSL eine Verbindung mit Ihrem Gerät hergestellt. Es wird eine Meldung darüber angezeigt, dass Sie mit dem Gerät verbunden sind.
+6. Sie müssen einige Minuten warten, und dann wird über HTTPS und TLS eine Verbindung mit Ihrem Gerät hergestellt. Es wird eine Meldung darüber angezeigt, dass Sie mit dem Gerät verbunden sind.
    
-    ![PowerShell-Remoting über HTTP und SSL](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
+    ![PowerShell-Remoting über HTTP und TLS](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

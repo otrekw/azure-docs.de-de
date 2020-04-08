@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/27/2020
+ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4cf572b09f1e44faca002528fd00fe5be0b51bc5
-ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
+ms.openlocfilehash: a72b5b50daaae33336de9caab5202c2bf42f5c15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78933021"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80051620"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrieren einer SAML-Anwendung in Azure AD B2C
 
@@ -337,7 +337,7 @@ Der letzte Schritt besteht darin, Azure AD B2C als SAML-IdP in Ihrer SAML-Anwend
 In der Regel sind einige oder alle der folgenden Angaben erforderlich:
 
 * **Metadaten**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
-* **Aussteller**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name`
+* **Aussteller:**   Verwenden Sie den entityID-Wert in der Metadatendatei.
 * **Anmelde-URL/SAML-Endpunkt/SAML-URL-** : Überprüfen Sie den Wert in der Metadatendatei.
 * **Zertifikat**: Dies ist *B2C_1A_SamlIdpCert*, aber ohne den privaten Schlüssel. So rufen Sie den öffentlichen Schlüssel des Zertifikats ab:
 
@@ -354,7 +354,7 @@ Um dieses Tutorial mithilfe unserer [SAML-Testanwendung][samltest] abzuschließe
 * Aktualisieren Sie den Richtliniennamen, z.B. *B2C_1A_signup_signin_saml*.
 * Geben Sie diesen Aussteller-URI an: `https://contoso.onmicrosoft.com/app-name`.
 
-Wählen Sie **Login** (Anmelden) aus. Nun sollte ein Endbenutzeranmeldebildschirm angezeigt werden. Bei der Anmeldung wird eine SAML-Assertion an die Beispielanwendung zurückgegeben.
+Wählen Sie **Login** (Anmelden) aus. Ein Bildschirm für die Benutzeranmeldung sollte angezeigt werden. Bei der Anmeldung wird eine SAML-Assertion an die Beispielanwendung zurückgegeben.
 
 ## <a name="sample-policy"></a>Beispielrichtlinie
 
@@ -375,7 +375,8 @@ Die folgenden SAML-Szenarien der vertrauenden Seite (Relying Party, RP) werden �
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum [SAML-Protokoll finden Sie auf der OASIS-Website](https://www.oasis-open.org/).
+- Weitere Informationen zum [SAML-Protokoll finden Sie auf der OASIS-Website](https://www.oasis-open.org/).
+- Rufen Sie die SAML-Test-Web-App im [Repository der Azure AD B2C-GitHub-Community](https://github.com/azure-ad-b2c/saml-sp-tester) ab.
 
 <!-- LINKS - External -->
 [samltest]: https://aka.ms/samltestapp
