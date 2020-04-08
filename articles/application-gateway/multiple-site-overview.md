@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 03/11/2020
 ms.author: amsriva
 ms.topic: conceptual
-ms.openlocfilehash: c43ac0923e0d3d76c25657f4870a0a0431bc8b6e
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: 4d945a255dacd35c61c3c80574b7d46b56de4aab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096429"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80257409"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Anwendungsgateways – Hosten mehrerer Websites
 

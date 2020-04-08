@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d6b2fbe28aae8e8233aaeb75bc9b43a35a9ab588
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: d07d1a706635a7f269a9a51769ae6f8bbf57df3d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76905284"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295402"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -99,9 +99,9 @@ Behandeln Sie „/path/to/my/cert“ als Pfad zu einer PEM- oder PKCS12-Datei. A
 
 ## <a name="options"></a>Tastatur
 
-|Option|Beschreibung|
+|Option|BESCHREIBUNG|
 |--|--|
-|--aad-endpoint|Der zu verwendende Azure Active Directory-Endpunkt. Für die öffentliche Azure-Cloud gilt der Standardwert (https://login.microsoftonline.com). Legen Sie diesen Parameter bei der Authentifizierung in einer nationalen Cloud fest. Weitere Informationen finden Sie unter [Azure AD-Authentifizierungsendpunkte](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
+|--aad-endpoint|Der zu verwendende Azure Active Directory-Endpunkt. Für die öffentliche Azure-Cloud gilt der Standardwert (`https://login.microsoftonline.com`). Legen Sie diesen Parameter bei der Authentifizierung in einer nationalen Cloud fest. Weitere Informationen finden Sie unter [Azure AD-Authentifizierungsendpunkte](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
 Für die verwaltete Dienstidentität ist dieses Flag nicht erforderlich.|
 |--application-id string|Anwendungs-ID der benutzerseitig zugewiesenen Identität. Erforderlich für die Dienstprinzipalautorisierung.|
 |--certificate-path string|Pfad zum Zertifikat für die SPN-Authentifizierung. Erforderlich für die zertifikatbasierte Dienstprinzipalautorisierung.|
@@ -115,7 +115,7 @@ Für die verwaltete Dienstidentität ist dieses Flag nicht erforderlich.|
 
 ## <a name="options-inherited-from-parent-commands"></a>Von übergeordneten Befehlen geerbte Optionen
 
-|Option|Beschreibung|
+|Option|BESCHREIBUNG|
 |---|---|
 |–cap-mbps uint32|Begrenzt die Übertragungsrate (in Megabit pro Sekunde). Der Schritt-für-Schritt-Durchsatz kann von der Obergrenze geringfügig abweichen. Wenn diese Option auf „null“ festgelegt oder weggelassen wird, ist der Durchsatz nicht begrenzt.|
 |–output-type string|Format der Befehlsausgabe. Folgende Optionen sind verfügbar: „text“ und „json“. Der Standardwert lautet „text“.|

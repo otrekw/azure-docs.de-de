@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Azure Application Insights mit Azure Function
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: dda62e3041d04d5becc9179fff1c56d0c587ba1e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 08da17f1ef023676aa0c499cf4e7e1bb9687f1c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78356763"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80257852"
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -17,7 +17,7 @@ ms.locfileid: "78356763"
 
 Es wird empfohlen, Protokoll-, Leistungs- und Fehlerdaten mithilfe von Application Insights zu erfassen. Der Dienst erkennt Leistungsanomalien automatisch und verfügt über leistungsstarke Analysetools, mit denen Sie Probleme untersuchen und nachvollziehen können, wie Ihre Funktionen verwendet werden. Der Dienst unterstützt Sie bei der kontinuierlichen Verbesserung der Leistung und Benutzerfreundlichkeit Ihrer App. Sie können Application Insights auch während der lokalen Entwicklung an Funktions-App-Projekten verwenden. Weitere Informationen finden Sie unter [Was ist Application Insights?](../azure-monitor/app/app-insights-overview.md).
 
-Da die erforderliche Instrumentierung von Application Insights in Azure Functions integriert ist, benötigen Sie lediglich einen gültigen Instrumentierungsschlüssel, um Ihre Funktions-App mit einer Application Insights-Ressource zu verbinden.
+Da die erforderliche Instrumentierung von Application Insights in Azure Functions integriert ist, benötigen Sie lediglich einen gültigen Instrumentierungsschlüssel, um Ihre Funktions-App mit einer Application Insights-Ressource zu verbinden. Der Instrumentierungsschlüssel sollte den Anwendungseinstellungen hinzugefügt werden, wenn ihre Funktions-App-Ressource in Azure erstellt wird. Wenn Ihre Funktions-App noch nicht über diesen Schlüssel verfügt, können Sie [ihn manuell festlegen](#enable-application-insights-integration).  
 
 ## <a name="application-insights-pricing-and-limits"></a>Application Insights – Preise und Limits
 
@@ -25,58 +25,26 @@ Sie können die Application Insights-Integration in Funktionen-Apps kostenlos te
 
 Die vollständige Liste der Application Insights-Features, die für Ihre Funktions-App verfügbar sind, finden Sie unter [Unterstützte Features in Application Insights für Azure Functions](../azure-monitor/app/azure-functions-supported-features.md).
 
-## <a name="enable-application-insights-integration"></a>Aktivieren der Application Insights-Integration
-
-Damit eine Funktionen-App Daten an Application Insights senden kann, muss sie den Instrumentierungsschlüssel einer Application Insights-Ressource kennen. Der Schlüssel muss in der App-Einstellung **APPINSIGHTS_INSTRUMENTATIONKEY** angegeben werden.
-
-### <a name="new-function-app-in-the-portal"></a>Neue Funktions-App im Azure-Portal
-
-Wenn Sie [Ihre Funktions-App im Azure-Portal entwickeln](functions-create-first-azure-function.md), ist die Application Insights-Integration standardmäßig aktiviert. Die Application Insights-Ressource hat den gleichen Namen wie Ihre Funktions-App und wird entweder in der gleichen oder nächstgelegenen Region erstellt.
-
-Zum Überprüfen der Application Insights-Ressource, die erstellt wird, wählen Sie sie aus, um das Fenster **Application Insights** zu erweitern. Sie können den **neuen Ressourcennamen** ändern oder einen anderen **Standort** in einer [Azure-Region](https://azure.microsoft.com/global-infrastructure/geographies/) wählen, in der Sie Ihre Daten speichern möchten.
-
-![Aktivieren von Application Insights beim Erstellen einer Funktionen-App](media/functions-monitoring/enable-ai-new-function-app.png)
-
-Wenn Sie auf **Erstellen** klicken, wird eine Application Insights-Ressource mit Ihrer Funktions-App erstellt, bei der `APPINSIGHTS_INSTRUMENTATIONKEY` in den Anwendungseinstellungen festgelegt ist. Alles ist betriebsbereit.
-
-<a id="manually-connect-an-app-insights-resource"></a>
-### <a name="add-to-an-existing-function-app"></a>Ergänzen einer vorhandenen Funktions-App 
-
-Beim Erstellen einer Funktions-App mit der [Azure CLI](functions-create-first-azure-function-azure-cli.md), [Visual Studio](functions-create-your-first-function-visual-studio.md) oder [Visual Studio Code](functions-create-first-function-vs-code.md) müssen Sie die Application Insights-Ressource erstellen. Sie können dann den Instrumentierungsschlüssel dieser Ressource Ihrer Funktions-App als Anwendungseinstellung hinzufügen.
-
-[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
-
-In früheren Versionen von Azure Functions wurde die integrierte Überwachung verwendet, was nicht mehr empfohlen wird. Wenn Sie die Application Insights-Integration für eine solche Funktions-App aktivieren, müssen Sie auch die [integrierte Protokollierung deaktivieren](#disable-built-in-logging).  
-
 ## <a name="view-telemetry-in-monitor-tab"></a>Anzeigen von Telemetriedaten auf der Registerkarte „Überwachen“
 
 Bei [aktivierter Application Insights-Integration](#enable-application-insights-integration) können Sie Telemetriedaten auf der Registerkarte **Überwachung** einsehen.
 
-1. Wählen Sie auf der Seite der Funktions-App eine Funktion aus, die nach der Konfiguration von Application Insights mindestens einmal ausgeführt wurde. Wählen Sie dann die Registerkarte **Überwachen** aus.
-
-   ![Auswählen der Registerkarte „Überwachen“](media/functions-monitoring/monitor-tab.png)
-
-1. Wählen Sie wiederholt die Option **Aktualisieren** aus, bis die Liste der Funktionsaufrufe angezeigt wird.
-
-   Es kann bis zu 5 Minuten dauern, bis die Liste angezeigt wird, während der Telemetrieclient Daten zur Übermittlung an den Server in Batches zusammenfasst. (Diese Verzögerung gilt nicht für [Live Metrics Stream](../azure-monitor/app/live-stream.md). Bei diesem Dienst wird eine Verbindung mit dem Functions-Host hergestellt, wenn Sie die Seite laden, sodass Protokolle direkt an die Seite gestreamt werden.)
+1. Wählen Sie auf der Seite der Funktions-App eine Funktion aus, die nach der Konfiguration von Application Insights mindestens einmal ausgeführt wurde. Wählen Sie dann die Registerkarte **Überwachen** aus. Wählen Sie wiederholt die Option **Aktualisieren** aus, bis die Liste der Funktionsaufrufe angezeigt wird.
 
    ![Liste der Funktionsaufrufe](media/functions-monitoring/monitor-tab-ai-invocations.png)
 
-1. Wählen Sie zum Anzeigen der Protokolle für einen bestimmten Funktionsaufruf den Link für diesen Aufruf in der Spalte **Datum** aus.
+    > [!NOTE]
+    > Es kann bis zu 5 Minuten dauern, bis die Liste angezeigt wird, während der Telemetrieclient Daten zur Übermittlung an den Server in Batches zusammenfasst. Diese Verzögerung gilt nicht für [Live Metrics Stream](../azure-monitor/app/live-stream.md). Bei diesem Dienst wird eine Verbindung mit dem Functions-Host hergestellt, wenn Sie die Seite laden, sodass Protokolle direkt an die Seite gestreamt werden.
 
-   ![Link für Aufrufdetails](media/functions-monitoring/invocation-details-link-ai.png)
-
-   Die Protokollausgabe für diesen Aufruf wird auf einer neuen Seite angezeigt.
+1. Wählen Sie zum Anzeigen der Protokolle für einen bestimmten Funktionsaufruf den Link für diesen Aufruf in der Spalte **Datum (UTC)** aus. Die Protokollausgabe für diesen Aufruf wird auf einer neuen Seite angezeigt.
 
    ![Aufrufdetails](media/functions-monitoring/invocation-details-ai.png)
 
-Wie Sie sehen, weisen beide Seiten den Link **In Application Insights ausführen** auf, der zur Application Insights Analytics-Abfrage führt, die die Daten abruft.
+1. Klicken Sie auf den Link **In Application Insights ausführen**, um sich die Abfragequelle anzeigen zu lassen, die die Azure Monitor-Protokolldaten aus dem Azure-Protokoll abruft. Wenn Sie Azure Log Analytics hierfür zum ersten Mal in Ihrem Abonnement verwenden, werden Sie um eine Aktivierung gebeten.
 
-![In Application Insights ausführen](media/functions-monitoring/run-in-ai.png)
+1. Wenn Sie auf diesen Link klicken und Log Analytics aktivieren, wird die folgende Abfrage angezeigt. Sie können erkennen, dass die Abfrageergebnisse auf die letzten 30 Tage beschränkt sind (`where timestamp > ago(30d)`). Außerdem werden in den Ergebnissen nicht mehr als 20 Zeilen angezeigt (`take 20`). Im Gegensatz dazu, zeigt die Liste der Aufrufdetails für Ihre Funktion die letzten 30 Tage ohne Beschränkung an.
 
-Die folgende Abfrage wird angezeigt. Sie können erkennen, dass die Abfrageergebnisse auf die letzten 30 Tage beschränkt sind (`where timestamp > ago(30d)`). Außerdem werden in den Ergebnissen nicht mehr als 20 Zeilen angezeigt (`take 20`). Im Gegensatz dazu, zeigt die Liste der Aufrufdetails für Ihre Funktion die letzten 30 Tage ohne Beschränkung an.
-
-![Application Insights Analytics-Aufrufliste](media/functions-monitoring/ai-analytics-invocation-list.png)
+   ![Application Insights Analytics-Aufrufliste](media/functions-monitoring/ai-analytics-invocation-list.png)
 
 Weitere Informationen finden Sie weiter unten in diesem Artikel unter [Abfragen von Telemetriedaten](#query-telemetry-data).
 
@@ -92,30 +60,29 @@ Informationen zur Verwendung von Application Insights finden Sie in der [Applica
 
 Die folgenden Bereiche von Application Insights können bei der Bewertung des Verhaltens, der Leistung und der Fehler in Ihren Funktionen hilfreich sein:
 
-| Registerkarte | BESCHREIBUNG |
+| Untersuchen | BESCHREIBUNG |
 | ---- | ----------- |
 | **[Fehler](../azure-monitor/app/asp-net-exceptions.md)** |  Hier können Sie Diagramme und Warnungen basierend auf Funktionsfehlern und Serverausnahmen erstellen. Der **Vorgangsname** ist der Funktionsname. Fehler in Abhängigkeiten werden nur angezeigt, wenn Sie die benutzerdefinierte Telemetrie für Abhängigkeiten implementieren. |
-| **[Leistung](../azure-monitor/app/performance-counters.md)** | Hier können Sie Leistungsprobleme analysieren. |
-| **Server** | Hier werden die Ressourcennutzung und der Durchsatz pro Server angezeigt. Diese Daten können nützlich für Debugszenarien sein, in denen Ihre zugrunde liegenden Ressourcen durch Funktionen eingeschränkt werden. Server werden als **Cloudrolleninstanzen** bezeichnet. |
+| **[Leistung](../azure-monitor/app/performance-counters.md)** | Hier können Sie Leistungsprobleme analysieren, indem Sie die Ressourcennutzung und den Durchsatz pro **Cloud-Rolleninstanz** anzeigen. Diese Daten können nützlich für Debugszenarien sein, in denen Ihre zugrunde liegenden Ressourcen durch Funktionen eingeschränkt werden. |
 | **[Metriken](../azure-monitor/app/metrics-explorer.md)** | Hier können Sie Diagramme und Warnungen auf der Grundlage von Metriken erstellen. Metriken enthalten die Anzahl der Funktionsaufrufe, die Ausführungsdauer und die Erfolgsquote. |
-| **[Live Metrics Stream](../azure-monitor/app/live-stream.md)** | Sie können Metrikdaten während ihrer Erstellung nahezu in Echtzeit anzeigen. |
+| **[Livemetriken](../azure-monitor/app/live-stream.md)** | Sie können Metrikdaten während ihrer Erstellung nahezu in Echtzeit anzeigen. |
 
 ## <a name="query-telemetry-data"></a>Abfragen von Telemetriedaten
 
-Mit [Application Insights Analytics](../azure-monitor/app/analytics.md) haben Sie Zugriff auf alle Telemetriedaten in Form von Tabellen in einer Datenbank. Analytics stellt eine Abfragesprache zum Extrahieren, Bearbeiten und Visualisieren der Daten bereit.
+Mit [Application Insights Analytics](../azure-monitor/app/analytics.md) haben Sie Zugriff auf alle Telemetriedaten in Form von Tabellen in einer Datenbank. Analytics stellt eine Abfragesprache zum Extrahieren, Bearbeiten und Visualisieren der Daten bereit. 
 
-![Auswählen von Analytics](media/functions-monitoring/select-analytics.png)
+Klicken Sie auf **Protokolle**, um protokollierte Ereignisse zu durchsuchen oder abzufragen.
 
 ![Analytics-Beispiel](media/functions-monitoring/analytics-traces.png)
 
 Diese Abfragebeispiel zeigt Verteilung von Anforderungen pro Worker in den letzten 30 Minuten.
 
-```
+<pre>
 requests
 | where timestamp > ago(30m) 
 | summarize count() by cloud_RoleInstance, bin(timestamp, 1m)
 | render timechart
-```
+</pre>
 
 Die verfügbaren Tabellen werden links auf der Registerkarte **Schema** angezeigt. Daten, die durch Funktionsaufrufe generiert wurden, sind in den folgenden Tabellen enthalten:
 
@@ -132,10 +99,10 @@ Die anderen Tabellen sind für Verfügbarkeitstests und Client/Browser-Telemetri
 
 In jeder Tabelle befinden sich einige der Functions-spezifischen Daten im Feld `customDimensions`.  Mit der folgenden Abfrage werden beispielsweise alle Ablaufverfolgungen mit der Protokollebene `Error` abgerufen.
 
-```
+<pre>
 traces 
 | where customDimensions.LogLevel == "Error"
-```
+</pre>
 
 Die Runtime stellt die Felder `customDimensions.LogLevel` und `customDimensions.Category` zur Verfügung. Sie können zusätzliche Felder in Protokollen angeben, die Sie in Ihren Funktionscode schreiben. Informationen hierzu finden Sie unter [Strukturierte Protokollierung](#structured-logging) in diesem Artikel.
 
@@ -145,11 +112,20 @@ Sie können Application Insights ganz ohne benutzerdefinierte Konfiguration verw
 
 ### <a name="categories"></a>Kategorien
 
-Die Azure Functions-Protokollierung enthält eine *Kategorie* für jedes Protokoll. Mit der Kategorie wird angegeben, von welchem Teil des Laufzeitcodes bzw. Ihres Funktionscodes das Protokoll geschrieben wurde. 
+Die Azure Functions-Protokollierung enthält eine *Kategorie* für jedes Protokoll. Mit der Kategorie wird angegeben, von welchem Teil des Laufzeitcodes bzw. Ihres Funktionscodes das Protokoll geschrieben wurde. In der folgenden Tabelle werden die Hauptkategorien der Protokolle beschrieben, die von der Laufzeit erstellt werden. 
+
+| Category | BESCHREIBUNG |
+| ----- | ----- | 
+| Host.Results | Diese Protokolle werden in Application Insights als **requests** (Anforderungen) angezeigt. Sie geben für eine Funktion den Erfolg oder das Fehlschlagen an. Alle diese Protokolle werden auf der Stufe `Information` geschrieben. Wenn Sie nach `Warning` oder höheren Stufen filtern, finden Sie keine dieser Daten. |
+| Host.Aggregator | Diese Protokolle stellen die Anzahl und Durchschnittswerte von Funktionsaufrufen für einen [konfigurierbaren](#configure-the-aggregator) Zeitraum dar. Der Standardzeitraum beträgt 30 Sekunden oder 1.000 Ergebnisse, je nachdem, was früher eintritt. Die Protokolle sind in Application Insights in der Tabelle **customMetrics** verfügbar. Beispiele hierfür sind die Ausführungsanzahl, die Erfolgsrate und die Dauer. Alle diese Protokolle werden auf der Stufe `Information` geschrieben. Wenn Sie nach `Warning` oder höheren Stufen filtern, finden Sie keine dieser Daten. |
+
+Die Protokolle für die nicht hier aufgeführten Kategorien werden in Application Insights in der Tabelle **traces** angezeigt.
+
+Alle Protokolle mit Kategorien, die mit `Host` beginnen, werden von der Functions-Laufzeit geschrieben. Die Protokolle **Function started** und **Function completed** gehören zur Kategorie `Host.Executor`. Bei erfolgreichen Ausführungen haben diese Protokolle die Stufe `Information`. Ausnahmen werden mit der Stufe `Error` protokolliert. Die Laufzeit erstellt auch Protokolle der Ebene `Warning`, z.B. an die Warteschlange für nicht verarbeitete Nachrichten gesendete Warteschlangennachrichten.
 
 Mit der Functions-Runtime werden Protokolle mit einer Kategorie erstellt, die mit „Host“ beginnen. In Version 1.x haben die Protokolle `function started`, `function executed` und `function completed` die Kategorie `Host.Executor`. Ab Version 2.x lautet für diese Protokolle die Kategorie `Function.<YOUR_FUNCTION_NAME>`.
 
-Wenn Sie Protokolle in ihren Funktionscode schreiben, lautet in Version 1.x der Functions-Runtime die Kategorie `Function`. In Version 2.x lautet die Kategorie `Function.<YOUR_FUNCTION_NAME>.User`.
+Wenn Sie Protokolle in Ihrem Funktionscode schreiben, gehören diese zur Kategorie `Function.<YOUR_FUNCTION_NAME>.User` und können jede beliebige Protokollebene aufweisen. In Version 1.x der Functions-Laufzeit lautet die Kategorie `Function`.
 
 ### <a name="log-levels"></a>Protokollebenen
 
@@ -250,36 +226,6 @@ Wenn [host.json] mehrere Kategorien enthält, die mit der gleichen Zeichenfolge 
 ```
 
 Um alle Protokolle für eine Kategorie zu unterdrücken, können Sie die Protokollebene `None` verwenden. Mit dieser Kategorie werden keine Protokolle geschrieben, und darüber ist keine Protokollebene vorhanden.
-
-In den folgenden Abschnitten werden die Hauptkategorien der Protokolle beschrieben, die von der Laufzeit erstellt werden. 
-
-### <a name="category-hostresults"></a>Kategorie „Host.Results“
-
-Diese Protokolle werden in Application Insights als „requests“ (Anforderungen) angezeigt. Sie geben für eine Funktion den Erfolg oder das Fehlschlagen an.
-
-![Diagramm zu Anforderungen](media/functions-monitoring/requests-chart.png)
-
-Alle diese Protokolle werden auf der Stufe `Information` geschrieben. Wenn Sie nach `Warning` oder höheren Stufen filtern, finden Sie keine dieser Daten.
-
-### <a name="category-hostaggregator"></a>Kategorie „Host.Aggregator“
-
-Diese Protokolle stellen die Anzahl und Durchschnittswerte von Funktionsaufrufen für einen [konfigurierbaren](#configure-the-aggregator) Zeitraum dar. Der Standardzeitraum beträgt 30 Sekunden oder 1.000 Ergebnisse, je nachdem, was früher eintritt. 
-
-Die Protokolle sind in Application Insights in der Tabelle **customMetrics** verfügbar. Beispiele hierfür sind die Ausführungsanzahl, die Erfolgsrate und die Dauer.
-
-![customMetrics-Abfrage](media/functions-monitoring/custom-metrics-query.png)
-
-Alle diese Protokolle werden auf der Stufe `Information` geschrieben. Wenn Sie nach `Warning` oder höheren Stufen filtern, finden Sie keine dieser Daten.
-
-### <a name="other-categories"></a>Weitere Kategorien
-
-Alle Protokolle für andere Kategorien, die nicht bereits aufgeführt sind, werden in Application Insights in der Tabelle **traces** angezeigt.
-
-![traces-Abfrage](media/functions-monitoring/analytics-traces.png)
-
-Alle Protokolle mit Kategorien, die mit `Host` beginnen, werden von der Functions-Laufzeit geschrieben. Die Protokolle „Function started“ und „Function completed“ verfügen über die Kategorie `Host.Executor`. Bei erfolgreichen Ausführungen haben diese Protokolle die Stufe `Information`. Ausnahmen werden mit der Stufe `Error` protokolliert. Die Laufzeit erstellt auch Protokolle der Ebene `Warning`, z.B. an die Warteschlange für nicht verarbeitete Nachrichten gesendete Warteschlangennachrichten.
-
-Protokolle, die von Ihrem Funktionscode geschrieben werden, verfügen über die Kategorie `Function` und können jede Protokollstufe aufweisen.
 
 ## <a name="configure-the-aggregator"></a>Konfigurieren des Aggregators
 
@@ -406,7 +352,25 @@ Dieser Code ist eine Alternative zum Aufrufen von `trackMetric` mithilfe des Nod
 
 ## <a name="log-custom-telemetry-in-c-functions"></a>Protokollieren von benutzerdefinierter Telemetrie in C#-Funktionen
 
-Sie können das NuGet-Paket [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) verwenden, um benutzerdefinierte Telemetriedaten an Application Insights zu senden. Das folgenden C#-Beispiel verwendet die [benutzerdefinierte Telemetrie-API](../azure-monitor/app/api-custom-events-metrics.md). Das Beispiel gilt für eine .NET-Klassenbibliothek, aber der Application Insights-Code ist für C#-Skript identisch.
+Es gibt eine Functions-spezifische Version des Application Insights SDK, mit der Sie benutzerdefinierte Telemetriedaten von ihren Funktionen an Application Insights senden können: [Microsoft.Azure.WebJobs.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights). Verwenden Sie den folgenden Befehl in der Eingabeaufforderung, um das folgende Paket zu installieren:
+
+# <a name="command"></a>[Befehl](#tab/cmd)
+
+```cmd
+dotnet add package Microsoft.Azure.WebJobs.Logging.ApplicationInsights --version <VERSION>
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```powershell
+Install-Package Microsoft.Azure.WebJobs.Logging.ApplicationInsights -Version <VERSION>
+```
+
+---
+
+Ersetzen `<VERSION>` in diesem Befehl durch eine Version dieses Pakets, die Ihre installierte Version von [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs/) unterstützt. 
+
+Im folgenden C#-Beispiel wird die [benutzerdefinierte Telemetrie-API](../azure-monitor/app/api-custom-events-metrics.md) verwendet. Das Beispiel gilt für eine .NET-Klassenbibliothek, aber der Application Insights-Code ist für C#-Skript identisch.
 
 ### <a name="version-2x-and-later"></a>Version 2.x und höher
 
@@ -414,15 +378,17 @@ Die Runtime ab Version 2.x verwendet neuere Features in Application Insights, u
 
 ```cs
 using System;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.ApplicationInsights;
-using Microsoft.ApplicationInsights.DataContracts;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
+using System.Linq;
 
 namespace functionapp0915
 {
@@ -477,6 +443,8 @@ namespace functionapp0915
     }
 }
 ```
+
+[GetMetric](../azure-monitor/app/api-custom-events-metrics.md#getmetric) ist die aktuell empfohlene API zum Erstellen von Metriken.
 
 ### <a name="version-1x"></a>Version 1.x
 
@@ -595,6 +563,29 @@ Functions v2 erfasst automatisch Abhängigkeiten für HTTP-Anforderungen, Servi
 Sie können benutzerdefinierten Code schreiben, um die Abhängigkeiten anzuzeigen. Dies wird beispielsweise im Beispielcode im [Abschnitt zu den benutzerdefinierten C#-Telemetriedaten](#log-custom-telemetry-in-c-functions) veranschaulicht. Der Beispielcode ergibt in Application Insights eine *Anwendungszuordnung*, die wie die folgende Abbildung aussieht:
 
 ![Anwendungszuordnung](./media/functions-monitoring/app-map.png)
+
+## <a name="enable-application-insights-integration"></a>Aktivieren der Application Insights-Integration
+
+Damit eine Funktionen-App Daten an Application Insights senden kann, muss sie den Instrumentierungsschlüssel einer Application Insights-Ressource kennen. Der Schlüssel muss in der App-Einstellung **APPINSIGHTS_INSTRUMENTATIONKEY** angegeben werden.
+
+Unabhängig davon, ob Sie Ihre Funktions-App [im Azure-Portal](functions-create-first-azure-function.md), über die Befehlszeile mithilfe der [Azure Functions Core Tools](functions-create-first-azure-function-azure-cli.md) oder mit [Visual Studio Code](functions-create-first-function-vs-code.md) erstellen, wird die Integration mit Application Insights automatisch aktiviert. Die Application Insights-Ressource hat den gleichen Namen wie Ihre Funktions-App und wird entweder in der gleichen oder nächstgelegenen Region erstellt.
+
+### <a name="new-function-app-in-the-portal"></a>Neue Funktions-App im Azure-Portal
+
+Zum Überprüfen der Application Insights-Ressource, die erstellt wird, wählen Sie sie aus, um das Fenster **Application Insights** zu erweitern. Sie können den **neuen Ressourcennamen** ändern oder einen anderen **Standort** in einer [Azure-Region](https://azure.microsoft.com/global-infrastructure/geographies/) wählen, in der Sie Ihre Daten speichern möchten.
+
+![Aktivieren von Application Insights beim Erstellen einer Funktionen-App](media/functions-monitoring/enable-ai-new-function-app.png)
+
+Wenn Sie auf **Erstellen** klicken, wird eine Application Insights-Ressource mit Ihrer Funktions-App erstellt, bei der `APPINSIGHTS_INSTRUMENTATIONKEY` in den Anwendungseinstellungen festgelegt ist. Alles ist betriebsbereit.
+
+<a id="manually-connect-an-app-insights-resource"></a>
+### <a name="add-to-an-existing-function-app"></a>Ergänzen einer vorhandenen Funktions-App 
+
+Beim Erstellen einer Funktions-App mit der [Visual Studio](functions-create-your-first-function-visual-studio.md) müssen Sie die Application Insights-Ressource erstellen. Sie können dann den Instrumentierungsschlüssel dieser Ressource Ihrer Funktions-App als Anwendungseinstellung hinzufügen.
+
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+
+In früheren Versionen von Azure Functions wurde die integrierte Überwachung verwendet, was nicht mehr empfohlen wird. Wenn Sie die Application Insights-Integration für eine solche Funktions-App aktivieren, müssen Sie auch die [integrierte Protokollierung deaktivieren](#disable-built-in-logging).  
 
 ## <a name="report-issues"></a>Melden von Problemen
 

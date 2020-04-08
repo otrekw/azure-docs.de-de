@@ -8,14 +8,14 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6393c1eeaaa72d653704fcc52442bfb326dc2cdd
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: 6ef5952b6413563b2c2e16ff2218f709b414fb84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472331"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297812"
 ---
-#   <a name="entity-recognition-cognitive-skill"></a>Die kognitive Qualifikation „Entitätserkennung“
+#    <a name="entity-recognition-cognitive-skill"></a>Die kognitive Qualifikation „Entitätserkennung“
 
 Mit der Qualifikation **Entitätserkennung** (EntityRecognitionSkill) können Sie Entitäten aus verschiedenen Arten von Text extrahieren. Bei dieser Qualifikation werden die Machine Learning-Modelle verwendet, die in Cognitive Services über die [Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) bereitgestellt werden.
 
@@ -35,19 +35,19 @@ Die maximale Größe eines Datensatzes beträgt 50.000 Zeichen (gemessen durch 
 
 Bei den Parametern, die alle optional sind, wird die Groß-/Kleinschreibung beachtet.
 
-| Parametername     | Beschreibung |
+| Parametername     | BESCHREIBUNG |
 |--------------------|-------------|
 | categories    | Array von zu extrahierenden Kategorien.  Mögliche Kategorietypen: `"Person"`, `"Location"`, `"Organization"`, `"Quantity"`, `"Datetime"`, `"URL"` und `"Email"`. Wenn keine Kategorie angegeben ist, werden alle Typen zurückgegeben.|
-|defaultLanguageCode |  Sprachcode des Eingabetexts. Die folgenden Sprachen werden unterstützt: `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`. Nicht alle Entitätskategorien werden für alle Sprachen unterstützt (siehe Anmerkung unten).|
+|defaultLanguageCode |    Sprachcode des Eingabetexts. Die folgenden Sprachen werden unterstützt: `ar, cs, da, de, en, es, fi, fr, hu, it, ja, ko, nl, no, pl, pt-BR, pt-PT, ru, sv, tr, zh-hans`. Nicht alle Entitätskategorien werden für alle Sprachen unterstützt (siehe Anmerkung unten).|
 |minimumPrecision | Ein Wert zwischen 0 und 1 ein. Wenn die Zuverlässigkeitsbewertung (in der `namedEntities`-Ausgabe) unter diesem Wert liegt, wird die Entität nicht zurückgegeben. Die Standardeinstellung ist 0. |
 |includeTypelessEntities | Legen Sie diese Option auf `true` fest, wenn Sie bekannte Entitäten erkennen möchten, die nicht in die aktuellen Kategorien passen. Erkannte Entitäten werden im komplexen Ausgabefeld `entities` zurückgegeben. „Windows 10“ ist z.B. eine bekannte Entität (ein Produkt), aber da „Produkte“ keine unterstützte Kategorie ist, wäre diese Entität im Entitäten-Ausgabefeld enthalten. Die Standardeinstellung ist `false`. |
 
 
 ## <a name="skill-inputs"></a>Skilleingaben
 
-| Eingabename      | Beschreibung                   |
+| Eingabename      | BESCHREIBUNG                   |
 |---------------|-------------------------------|
-| languageCode  | Optional. Der Standardwert ist `"en"`.  |
+| languageCode    | Optional. Der Standardwert ist `"en"`.  |
 | text          | Der zu analysierende Text          |
 
 ## <a name="skill-outputs"></a>Skillausgaben
@@ -55,9 +55,9 @@ Bei den Parametern, die alle optional sind, wird die Groß-/Kleinschreibung beac
 > [!NOTE]
 > Nicht alle Entitätskategorien werden für alle Sprachen unterstützt. Die Entitätskategorietypen `"Person"`, `"Location"` und `"Organization"` werden für die vollständige Liste der oben genannten Sprachen unterstützt. Nur _de_, _en_, _es_, _fr_ und _zh-hans_ unterstützen die Extraktion der Typen `"Quantity"`, `"Datetime"`, `"URL"` und `"Email"`. Weitere Informationen finden Sie unter [Sprach- und Regionsunterstützung für die Textanalyse-API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/language-support).  
 
-| Ausgabename     | BESCHREIBUNG                   |
+| Ausgabename      | BESCHREIBUNG                   |
 |---------------|-------------------------------|
-| persons      | Ein Array von Zeichenfolgen, wobei jede Zeichenfolge den Namen einer Person darstellt. |
+| persons       | Ein Array von Zeichenfolgen, wobei jede Zeichenfolge den Namen einer Person darstellt. |
 | locations  | Ein Array von Zeichenfolgen, wobei jede Zeichenfolge einen Ort darstellt. |
 | organizations  | Ein Array von Zeichenfolgen, wobei jede Zeichenfolge eine Organisation darstellt. |
 | quantities  | Ein Array von Zeichenfolgen, wobei jede Zeichenfolge eine Menge darstellt. |
@@ -67,7 +67,7 @@ Bei den Parametern, die alle optional sind, wird die Groß-/Kleinschreibung beac
 | namedEntities | Ein Array mit komplexen Typen und den folgenden Feldern: <ul><li>category</li> <li>value (der tatsächliche Entitätsname)</li><li>offset (die Fundstelle im Text)</li><li>Zuverlässigkeit (ein höherer Wert bedeutet, dass es sich mit höherer Wahrscheinlichkeit um eine echte Entität handelt)</li></ul> |
 | entities | Ein Array mit komplexen Typen, die umfangreiche Informationen zu den aus dem Text extrahierten Entitäten enthalten, und den folgenden Feldern: <ul><li> name (der tatsächliche Entitätsname; stellt eine „normalisierte“ Form dar)</li><li> wikipediaId</li><li>wikipediaLanguage</li><li>wikipediaUrl (Link zur Wikipedia-Seite für die Entität)</li><li>bingId</li><li>type (Kategorie der erkannten Entität)</li><li>subType (nur für bestimmte Kategorien verfügbar; ermöglicht eine präzisere Ansicht des Entitätstyps)</li><li> matches (eine komplexe Sammlung mit:)<ul><li>text (unformatierter Text für die Entität)</li><li>offset (Fundstelle)</li><li>length (Länge des unformatierten Texts für die Entität)</li></ul></li></ul> |
 
-##  <a name="sample-definition"></a>Beispieldefinition
+##    <a name="sample-definition"></a>Beispieldefinition
 
 ```json
   {
@@ -97,7 +97,7 @@ Bei den Parametern, die alle optional sind, wird die Groß-/Kleinschreibung beac
     ]
   }
 ```
-##  <a name="sample-input"></a>Beispieleingabe
+##    <a name="sample-input"></a>Beispieleingabe
 
 ```json
 {
@@ -114,7 +114,7 @@ Bei den Parametern, die alle optional sind, wird die Groß-/Kleinschreibung beac
 }
 ```
 
-##  <a name="sample-output"></a>Beispielausgabe
+##    <a name="sample-output"></a>Beispielausgabe
 
 ```json
 {
@@ -187,6 +187,7 @@ Bei den Parametern, die alle optional sind, wird die Groß-/Kleinschreibung beac
 }
 ```
 
+Beachten Sie, dass die für Entitäten in der Ausgabe dieses Skills zurückgegebenen Offsets direkt von der [Textanalyse-API](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview) zurückgegeben werden. Dies bedeutet, dass Sie, wenn Sie sie zum Indizieren in der ursprünglichen Zeichenfolge verwenden, die [StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8)-Klasse in .NET verwenden müssen, um den richtigen Inhalt zu extrahieren.  [Weitere Informationen finden Sie hier.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/concepts/text-offsets)
 
 ## <a name="error-cases"></a>Auftretende Fehler
 Wird der Sprachcode für das Dokument nicht unterstützt, wird ein Fehler zurückgegeben, und es werden keine Entitäten extrahiert.

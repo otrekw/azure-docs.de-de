@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/28/2019
-ms.openlocfilehash: e5c3da94cf2440b30dc59fe20bc51a34095f7d5f
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.date: 03/30/2019
+ms.openlocfilehash: 29d5213b8eecd94ed8c8ce565972c9f98872a362
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78269058"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411433"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optimieren von Protokollabfragen in Azure Monitor
 Azure Monitor-Protokolle verwendet [Azure Data Explorer (ADX)](/azure/data-explorer/), um Protokolldaten zu speichern und Abfragen zum Analysieren dieser Daten auszuführen. Es werden die ADX-Cluster für Sie erstellt, verwaltet und gepflegt sowie für Ihre Protokollanalyse-Workload optimiert. Wenn Sie eine Abfrage ausführen, wird diese optimiert und an den entsprechenden ADX-Cluster weitergeleitet, der die Arbeitsbereichsdaten speichert. Sowohl Azure Monitor-Protokolle als auch Azure Data Explorer nutzen eine Vielzahl automatischer Mechanismen zur Abfrageoptimierung. Automatische Optimierungen bieten zwar eine deutliche Steigerung, aber in einigen Fällen können Sie damit die Abfrageleistung erheblich verbessern. In diesem Artikel werden Leistungsaspekte sowie verschiedene Verfahren zur Behebung von Leistungsproblemen erläutert.
@@ -59,6 +59,8 @@ Die Abfrageverarbeitungszeit beinhaltet Folgendes:
 
 Abgesehen von der Zeit, die für die Abfrageverarbeitungsknoten aufgewendet wird, gibt es zusätzliche Zeit, die von Azure Monitor-Protokolle für Folgendes benötigt wird: Authentifizieren des Benutzers und Überprüfen, ob dieser auf diese Daten zugreifen darf, Suchen des Datenspeichers, Analysieren der Abfrage und Zuordnen der Abfrageverarbeitungsknoten. Diese Zeit ist in der CPU-Gesamtzeit der Abfrage nicht enthalten.
 
+### <a name="early-filtering-of-records-prior-of-using-high-cpu-functions"></a>Frühes Filtern von Datensätzen vor der Verwendung von hohen CPU-Funktionen
+
 Einige der Abfragebefehle und -funktionen bewirken eine hohe CPU-Auslastung. Dies gilt insbesondere für Befehle, mit denen JSON und XML analysiert oder komplexe reguläre Ausdrücke extrahiert werden. Eine solche Analyse kann explizit über die Funktionen [parse_json()](/azure/kusto/query/parsejsonfunction) oder [parse_xml()](/azure/kusto/query/parse-xmlfunction) erfolgen oder auch implizit, wenn auf dynamische Spalten verwiesen wird.
 
 Diese Funktionen bewirken eine CPU-Auslastung proportional zur Anzahl der verarbeiteten Zeilen. Die effizienteste Optimierung besteht darin, frühzeitig in der Abfrage WHERE-Bedingungen hinzuzufügen, mit denen so viele Datensätze wie möglich herausgefiltert werden können, bevor die CPU-intensive Funktion ausgeführt wird.
@@ -83,7 +85,10 @@ SecurityEvent
 | extend FilePath = tostring(Details.UserData.RuleAndFileData.FilePath)
 | extend FileHash = tostring(Details.UserData.RuleAndFileData.FileHash)
 | summarize count() by FileHash, FilePath
+| where FileHash != "" // No need to filter out %SYSTEM32 here as it was removed before
 ```
+
+### <a name="avoid-using-evaluated-where-clauses"></a>Vermeiden von ausgewerteten WHERE-Klauseln
 
 Abfragen, die [where](/azure/kusto/query/whereoperator)-Klauseln für eine ausgewertete Spalte enthalten und nicht für Spalten, die physisch im Dataset vorhanden sind, verlieren an Effizienz. Durch das Filtern nach ausgewerteten Spalten werden einige Systemoptimierungen beim Verarbeiten umfangreicher Datenmengen verhindert.
 Beispielsweise wird mit den folgenden Abfragen genau das gleiche Ergebnis erzielt, doch ist die zweite effizienter, da sich die [where](/azure/kusto/query/whereoperator)-Bedingung auf eine integrierte Spalte bezieht:
@@ -102,6 +107,8 @@ Heartbeat
 | extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
 | summarize count() by Computer
 ```
+
+### <a name="use-effective-aggregation-commands-and-dimmentions-in-summarize-and-join"></a>Verwenden effektiver Aggregationsbefehle und -dimensionen bei join- und summarize-Operatoren
 
 Während einige Aggregationsbefehle wie [max()](/azure/kusto/query/max-aggfunction), [sum()](/azure/kusto/query/sum-aggfunction), [count()](/azure/kusto/query/count-aggfunction) und [avg()](/azure/kusto/query/avg-aggfunction) aufgrund ihrer Logik nur geringe CPU-Auswirkung haben, sind andere komplexer und umfassen Heuristik und Schätzungen, die eine effiziente Ausführung ermöglichen. Beispielsweise verwendet [dcount()](/azure/kusto/query/dcount-aggfunction) den HyperLogLog-Algorithmus, um eine genaue Schätzung für die eindeutige Anzahl großer Datenmengen zu liefern, ohne jeden Wert tatsächlich zu zählen. Mit den Perzentilfunktionen werden ähnliche Annäherungen mithilfe des Algorithmus für das Perzentil des nächsten Rangs durchgeführt. Einige der Befehle enthalten optionale Parameter, um ihre Auswirkung zu verringern. Beispielsweise verfügt die [makeset()](/azure/kusto/query/makeset-aggfunction)-Funktion über einen optionalen Parameter zum Definieren der maximalen festgelegten Größe, was sich erheblich auf CPU und Arbeitsspeicher auswirkt.
 
@@ -149,11 +156,29 @@ Heartbeat
 > [!NOTE]
 > Dieser Indikator zeigt nur die CPU-Auslastung des unmittelbaren Clusters an. Bei einer Abfrage in mehreren Regionen würde nur eine der Regionen dargestellt. Bei einer Abfrage in mehreren Arbeitsbereichen sind möglicherweise nicht alle Arbeitsbereiche enthalten.
 
+### <a name="avoid-full-xml-and-json-parsing-when-string-parsing-works"></a>Vermeiden der vollständigen XML- und JSON-Analyse bei funktionierender Zeichenfolgenanalyse
+Die vollständige Analyse eines XML- oder JSON-Objekts kann hohe CPU- und Speicherressourcen beanspruchen. In vielen Fällen, in denen nur ein oder zwei Parameter erforderlich sind und die XML- oder JSON-Objekte einfach sind, ist es einfacher, diese mithilfe des [parse-Operators](/azure/kusto/query/parseoperator) oder anderen [Textanalysetechniken](/azure/azure-monitor/log-query/parse-text) als Zeichenfolgen zu analysieren. Die Leistungssteigerung wird noch deutlicher, wenn die Anzahl der Datensätze im XML- oder JSON-Objekt zunimmt. Es ist von entscheidender Bedeutung, wenn die Anzahl der Datensätze zehn Millionen erreicht.
+
+Beispielsweise gibt die folgende Abfrage genau die gleichen Ergebnisse zurück wie die obigen Abfragen, ohne dabei eine vollständige XML-Analyse durchzuführen. Beachten Sie, dass sich für die XML-Dateistruktur einige Annahmen ergeben. Das FilePath-Element kommt beispielsweise nach FileHash, und keines der Elemente verfügt über Attribute. 
+
+```Kusto
+//even more efficient
+SecurityEvent
+| where EventID == 8002 //Only this event have FileHash
+| where EventData !has "%SYSTEM32" //Early removal of unwanted records
+| parse EventData with * "<FilePath>" FilePath "</FilePath>" * "<FileHash>" FileHash "</FileHash>" *
+| summarize count() by FileHash, FilePath
+| where FileHash != "" // No need to filter out %SYSTEM32 here as it was removed before
+```
+
 
 ## <a name="data-used-for-processed-query"></a>Für die verarbeitete Abfrage verwendete Daten
 
 Ein kritischer Faktor bei der Verarbeitung der Abfrage ist die Menge an Daten, die für die Abfrageverarbeitung überprüft und verwendet werden. Azure Data Explorer verwendet aggressive Optimierungen, mit denen das Datenvolumen im Vergleich zu anderen Datenplattformen drastisch reduziert wird. Dennoch gibt es kritische Faktoren in der Abfrage, die sich auf das verwendete Datenvolumen auswirken können.
+
 In Azure Monitor-Protokolle wird die Spalte **TimeGenerated** als Methode zum Indizieren der Daten verwendet. Wenn Sie die **TimeGenerated**-Werte auf einen möglichst kleinen Bereich beschränken, wird die Abfrageleistung wesentlich verbessert, da die Menge der zu verarbeitenden Daten erheblich eingeschränkt wird.
+
+### <a name="avoid-unnecessary-use-of-search-and-union-operators"></a>Vermeiden der unnötigen Verwendung von search- und union-Operatoren
 
 Ein weiterer Faktor, der die Menge der verarbeiteten Daten erhöht, ist die Verwendung einer großen Anzahl von Tabellen. Dies ist normalerweise bei den Befehlen `search *` und `union *` der Fall. Durch diese Befehle wird das System gezwungen, Daten aus allen Tabellen im Arbeitsbereich zu bewerten und zu überprüfen. In einigen Fällen können Hunderte von Tabellen im Arbeitsbereich vorhanden sein. Vermeiden Sie nach Möglichkeit die Verwendung von „search *“ oder einer anderen Suche ohne Beschränkung auf eine bestimmte Tabelle.
 
@@ -177,6 +202,8 @@ Perf
 | summarize count(), avg(CounterValue)  by Computer
 ```
 
+### <a name="add-early-filters-to-the-query"></a>Hinzufügen früher Filter zur Abfrage
+
 Eine andere Methode, um das Datenvolumen zu verringern, ist eine frühzeitige Verwendung von [where](/azure/kusto/query/whereoperator)-Bedingungen in der Abfrage. Die Azure Data Explorer-Plattform umfasst einen Cache, durch den angegeben wird, welche Partitionen Daten enthalten, die für eine bestimmte where-Bedingung relevant sind. Wenn eine Abfrage z. B. `where EventID == 4624` enthält, wird die Abfrage nur an Knoten verteilt, die Partitionen mit übereinstimmenden Ereignissen verarbeiten.
 
 Mit den folgenden Beispielabfragen wird genau das gleiche Ergebnis erzielt, doch ist die zweite Abfrage effizienter:
@@ -192,6 +219,8 @@ SecurityEvent
 | where EventID == 4624 //Logon GUID is relevant only for logon event
 | summarize LoginSessions = dcount(LogonGuid) by Account
 ```
+
+### <a name="reduce-the-number-of-columns-that-is-retrieved"></a>Reduzieren der Anzahl von abgerufenen Spalten
 
 Da es sich bei Azure Data Explorer um einen spaltenbasierten Datenspeicher handelt, ist das Abrufen jeder Spalten von den anderen Spalten unabhängig. Die Anzahl der abgerufenen Spalten wirkt sich unmittelbar auf das Gesamtdatenvolumen aus. Sie sollten nur die benötigten Spalten in die Ausgabe einschließen, indem Sie die Ergebnisse mit [summarize](/azure/kusto/query/summarizeoperator) zusammenfassen oder die jeweiligen Spalten mit [project](/azure/kusto/query/projectoperator) projizieren. Azure Data Explorer bietet mehrere Optimierungen, um die Anzahl der abgerufenen Spalten zu verringern. Wenn festgestellt wird, dass eine Spalte nicht erforderlich ist (z. B. wenn im [summarize](/azure/kusto/query/summarizeoperator)-Befehl nicht darauf verwiesen wird), wird sie auch nicht abgerufen.
 
@@ -216,6 +245,8 @@ Der Zeitbereich kann mithilfe der Zeitbereichsauswahl im Log Analytics-Bildschir
 
 Eine alternative Methode ist das explizite Einschließen einer [where](/azure/kusto/query/whereoperator)-Bedingung für **TimeGenerated** in die Abfrage. Sie sollten diese Methode verwenden, da dann auch bei Verwendung der Abfrage über eine andere Schnittstelle eine feste Zeitspanne gewährleistet ist.
 Sie sollten sicherstellen, dass alle Teile der Abfrage über **TimeGenerated**-Filter verfügen. Wenn eine Abfrage Unterabfragen zum Abrufen von Daten aus verschiedenen Tabellen oder derselben Tabelle enthält, muss jede dieser Abfragen eine eigene [where](/azure/kusto/query/whereoperator)-Bedingung enthalten.
+
+### <a name="make-sure-all-sub-queries-have-timegenerated-filter"></a>Stellen Sie sicher, dass alle Unterabfragen über den TimeGenerated-Filter verfügen.
 
 Beispielsweise wird in der folgenden Abfrage die Tabelle **Perf** zwar nur für den letzten Tag überprüft, aber die Tabelle **Heartbeat** wird über den gesamten Verlauf überprüft, was einen Zeitraum von bis zu zwei Jahren umfassen kann:
 
@@ -286,6 +317,8 @@ Heartbeat
 | summarize min(TimeGenerated) by Computer
 ```
 
+### <a name="time-span-measurement-limitations"></a>Einschränkungen bei der Zeitspannenmessung
+
 Die Messung ist immer größer als die tatsächlich angegebene Zeit. Wenn der Filter für die Abfrage z. B. 7 Tage beträgt, überprüft das System möglicherweise 7,5 oder 8,1 Tage. Das liegt daran, dass die Daten vom System in Blöcke mit variabler Größe partitioniert werden. Um sicherzustellen, dass alle relevanten Datensätze überprüft werden, wird die gesamte Partition überprüft, die mehrere Stunden und auch mehr als einen Tag umfassen kann.
 
 Es gibt mehrere Fälle, in denen das System keine genaue Messung des Zeitbereichs liefern kann. Dies geschieht meistens, wenn die Abfrage weniger als einen Tag umfasst, oder bei Abfragen mit mehreren Arbeitsbereichen.
@@ -303,7 +336,7 @@ Hier einige Beispiele für solche Fälle:
 
 - Keine Festlegung des Zeitbereichs in Log Analytics mit einer Unterabfrage, die nicht beschränkt ist. Siehe Beispiel oben.
 - Verwendung der API ohne die optionalen Parameter für den Zeitbereich.
-- Verwendung eines Clients, der keinen Zeitbereich erzwingt, wie z. B. der Power BI-Connector.
+- Verwendung eines Clients, der keinen Zeitbereich erzwingt (z. B. der Power BI-Connector)
 
 Sehen Sie sich die Beispiele und Hinweise im vorherigen Abschnitt an, da sie auch in diesem Fall zutreffen.
 
@@ -340,10 +373,10 @@ Zum effizienten Ausführen einer Abfrage wird sie basierend auf den Daten, die f
 Hier einige Abfrageverhalten, die zur einer Verringerung der Parallelität führen können:
 
 - Verwendung von Serialisierungs- und Fensterfunktionen, z. B. dem [serialize-Operator](/azure/kusto/query/serializeoperator), [next()](/azure/kusto/query/nextfunction), [prev()](/azure/kusto/query/prevfunction) und den [row](/azure/kusto/query/rowcumsumfunction)-Funktionen. In einigen dieser Fälle können Zeitreihen- und Benutzeranalysefunktionen verwendet werden. Eine ineffiziente Serialisierung kann auch auftreten, wenn die folgenden Operatoren nicht am Ende der Abfrage verwendet werden: [range](/azure/kusto/query/rangeoperator), [sort](/azure/kusto/query/sortoperator), [order](/azure/kusto/query/orderoperator), [top](/azure/kusto/query/topoperator), [top-hitters](/azure/kusto/query/tophittersoperator), [getschema](/azure/kusto/query/getschemaoperator).
--   Durch Verwendung der Aggregationsfunktion [dcount()](/azure/kusto/query/dcount-aggfunction) wird das System gezwungen, eine zentrale Kopie der eindeutigen Werte zu verwenden. Wenn die Datenmenge groß ist, sollten Sie die optionalen Parameter der dcount-Funktion verwenden, um die Genauigkeit zu verringern.
--   In vielen Fällen verringert der [join](/azure/kusto/query/joinoperator?pivots=azuremonitor)-Operator die Gesamtparallelität. Prüfen Sie Shuffle-Join als Alternative, wenn die Leistung problematisch ist.
--   Bei Abfragen mit Ressourcenbereich können sich die RBAC-Prüfungen vor der Ausführung in Situationen, in denen eine große Anzahl von RBAC-Zuweisungen vorliegt, verzögern. Dies kann zu längeren Überprüfungen führen, was wiederum eine geringere Parallelität bewirkt. Beispielsweise wird eine Abfrage für ein Abonnement ausgeführt, bei dem Tausende von Ressourcen vorhanden sind, und jede Ressource verfügt über viele Rollenzuweisungen auf der Ressourcenebene und nicht auf Ebene des Abonnements oder der Ressourcengruppe.
--   Wenn eine Abfrage kleine Datenblöcke verarbeitet, ist die Parallelität gering, da sie vom System nicht auf viele Computeknoten verteilt wird.
+-    Durch Verwendung der Aggregationsfunktion [dcount()](/azure/kusto/query/dcount-aggfunction) wird das System gezwungen, eine zentrale Kopie der eindeutigen Werte zu verwenden. Wenn die Datenmenge groß ist, sollten Sie die optionalen Parameter der dcount-Funktion verwenden, um die Genauigkeit zu verringern.
+-    In vielen Fällen verringert der [join](/azure/kusto/query/joinoperator?pivots=azuremonitor)-Operator die Gesamtparallelität. Prüfen Sie Shuffle-Join als Alternative, wenn die Leistung problematisch ist.
+-    Bei Abfragen mit Ressourcenbereich können sich die RBAC-Prüfungen vor der Ausführung in Situationen, in denen eine große Anzahl von RBAC-Zuweisungen vorliegt, verzögern. Dies kann zu längeren Überprüfungen führen, was wiederum eine geringere Parallelität bewirkt. Beispielsweise wird eine Abfrage für ein Abonnement ausgeführt, bei dem Tausende von Ressourcen vorhanden sind, und jede Ressource verfügt über viele Rollenzuweisungen auf der Ressourcenebene und nicht auf Ebene des Abonnements oder der Ressourcengruppe.
+-    Wenn eine Abfrage kleine Datenblöcke verarbeitet, ist die Parallelität gering, da sie vom System nicht auf viele Computeknoten verteilt wird.
 
 
 

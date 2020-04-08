@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 25bc25d9ec12804cc20baa558dce67fb3f8269a1
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: cb9a02532c3651aca544ed946f40bdcff9e9be83
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77149150"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411774"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Konfigurieren einer Point-to-Site-Verbindung mit einem VNET unter Verwendung der RADIUS-Authentifizierung: PowerShell
 
@@ -31,9 +31,9 @@ Dieser Artikel unterstützt Sie beim Konfigurieren einer P2S-Konfiguration mit A
 
 Point-to-Site-Verbindungen erfordern weder ein VPN-Gerät noch eine öffentliche IP-Adresse. P2S erstellt die VPN-Verbindung entweder über SSTP (Secure Socket Tunneling Protocol), OpenVPN oder IKEv2.
 
-* SSTP ist ein SSL-basierter VPN-Tunnel, der nur auf Windows-Clientplattformen unterstützt wird. Er kann Firewalls durchdringen und ist daher optimal für die ortsunabhängige Verbindungsherstellung mit Azure geeignet. Auf Serverseite werden die SSTP-Versionen 1.0, 1.1 und 1.2 unterstützt. Der Client entscheidet, welche Version verwendet wird. Unter Windows 8.1 und höher wird standardmäßig SSTP 1.2 verwendet.
+* SSTP ist ein TLS-basierter VPN-Tunnel, der nur auf Windows-Clientplattformen unterstützt wird. Er kann Firewalls durchdringen und ist daher optimal für die ortsunabhängige Verbindungsherstellung mit Azure geeignet. Auf Serverseite werden die SSTP-Versionen 1.0, 1.1 und 1.2 unterstützt. Der Client entscheidet, welche Version verwendet wird. Unter Windows 8.1 und höher wird standardmäßig SSTP 1.2 verwendet.
 
-* OpenVPN®-Protokoll, ein auf SSL/TLS basierendes VPN-Protokoll. Eine SSL-VPN-Lösung kann Firewalls durchdringen, da die meisten Firewalls den von SSL verwendeten TCP-Port 443 für ausgehenden Datenverkehr öffnen. OpenVPN kann zum Herstellen einer Verbindung von Android-, iOS- (Versionen 11.0 und höher), Windows-, Linux- und Mac-Geräten (OSX-Version 10.13 und höher) verwendet werden.
+* OpenVPN®-Protokoll, ein auf SSL/TLS basierendes VPN-Protokoll. Eine TLS-VPN-Lösung kann Firewalls durchdringen, da die meisten Firewalls den von TLS verwendeten TCP-Port 443 für ausgehenden Datenverkehr öffnen. OpenVPN kann zum Herstellen einer Verbindung von Android-, iOS- (Versionen 11.0 und höher), Windows-, Linux- und Mac-Geräten (OSX-Version 10.13 und höher) verwendet werden.
 
 * IKEv2-VPN, eine standardbasierte IPsec-VPN-Lösung. IKEv2-VPN kann zum Herstellen einer Verbindung von Mac-Geräten (OSX-Version 10.11 und höher) verwendet werden.
 
@@ -43,7 +43,7 @@ P2S-Verbindungen erfordern Folgendes:
 * Einen RADIUS-Server für die Benutzerauthentifizierung. Der RADIUS-Server kann lokal oder im Azure-VNET bereitgestelltwerden.
 * Ein VPN-Clientkonfigurationspaket für die Windows-Geräte, die eine Verbindung mit dem VNET herstellen. Ein VPN-Clientkonfigurationspaket enthält die Einstellungen, die ein VPN-Client zum Herstellen einer P2S-Verbindung benötigt.
 
-## <a name="aboutad"></a>Informationen zur Active Directory-Domänenauthentifizierung (AD) für P2S-VPNs
+## <a name="about-active-directory-ad-domain-authentication-for-p2s-vpns"></a><a name="aboutad"></a>Informationen zur Active Directory-Domänenauthentifizierung (AD) für P2S-VPNs
 
 Die AD-Domänenauthentifizierung ermöglicht Benutzern die Anmeldung bei Azure mit ihren Anmeldeinformationen für die Organisationsdomäne. Dafür ist ein RADIUS-Server erforderlich, der in den AD-Server integriert wird. Organisationen können auch ihre vorhandene RADIUS-Bereitstellung nutzen.
  
@@ -58,7 +58,7 @@ Abgesehen von Active Directory kann ein RADIUS-Server auch in andere externe Ide
 >
 >
 
-## <a name="before"></a>Vorbereitungen
+## <a name="before-beginning"></a><a name="before"></a>Vorbereitungen
 
 Stellen Sie sicher, dass Sie über ein Azure-Abonnement verfügen. Wenn Sie noch kein Azure-Abonnement besitzen, können Sie Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial) registrieren.
 
@@ -66,7 +66,7 @@ Stellen Sie sicher, dass Sie über ein Azure-Abonnement verfügen. Wenn Sie noch
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-### <a name="example"></a>Beispielwerte
+### <a name="example-values"></a><a name="example"></a>Beispielwerte
 
 Sie können die Beispielwerte zum Erstellen einer Testumgebung oder zum besseren Verständnis der Beispiele in diesem Artikel nutzen. Sie können diese Schritte entweder als exemplarische Vorgehensweise durchlaufen und die Werte nicht ändern, oder Sie können die Werte Ihrer Umgebung entsprechend ändern.
 
@@ -87,7 +87,7 @@ Sie können die Beispielwerte zum Erstellen einer Testumgebung oder zum besseren
 * **Name der öffentlichen IP: VNet1GWPIP**
 * **VpnType: RouteBased**
 
-## <a name="signin"></a>1. Festlegen der Variablen
+## <a name="1-set-the-variables"></a><a name="signin"></a>1. Festlegen der Variablen
 
 Deklarieren Sie die gewünschten Variablen. Verwenden Sie das unten gezeigte Beispiel, und ersetzen Sie die Werte nach Bedarf durch Ihre eigenen. Wenn Sie Ihre PowerShell-/Cloud Shell-Sitzung zu einem beliebigen Zeitpunkt während der Übung schließen, kopieren Sie einfach die Werte noch mal, und fügen Sie sie ein, um die Variablen erneut zu deklarieren.
 
@@ -109,7 +109,7 @@ Deklarieren Sie die gewünschten Variablen. Verwenden Sie das unten gezeigte Bei
   $GWIPconfName = "gwipconf"
   ```
 
-## 2. <a name="vnet"></a>Erstellen der Ressourcengruppe, des VNET und der öffentlichen IP-Adresse
+## <a name="2-create-the-resource-group-vnet-and-public-ip-address"></a>2. <a name="vnet"></a>Erstellen der Ressourcengruppe, des VNET und der öffentlichen IP-Adresse
 
 Mit den folgenden Schritten werden eine Ressourcengruppe und ein virtuelles Netzwerk in der Ressourcengruppe mit drei Subnetzen erstellt. Beim Ersetzen der Werte ist es wichtig, dass Sie Ihrem Gatewaysubnetz immer den Namen „GatewaySubnet“ geben. Wenn Sie einen anderen Namen verwenden, tritt beim Erstellen des Gateways ein Fehler auf.
 
@@ -143,7 +143,7 @@ Mit den folgenden Schritten werden eine Ressourcengruppe und ein virtuelles Netz
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name "gwipconf" -Subnet $subnet -PublicIpAddress $pip
    ```
 
-## 3. <a name="radius"></a>Einrichten des RADIUS-Servers
+## <a name="3-set-up-your-radius-server"></a>3. <a name="radius"></a>Einrichten des RADIUS-Servers
 
 Vor dem Erstellen und Konfigurieren des Gateways für virtuelle Netzwerke muss der RADIUS-Server ordnungsgemäß für die Authentifizierung konfiguriert werden.
 
@@ -153,7 +153,7 @@ Vor dem Erstellen und Konfigurieren des Gateways für virtuelle Netzwerke muss d
 
 Der Artikel [Network Policy Server (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) (Netzwerkrichtlinienserver (Network Policy Server, NPS)) enthält Anweisungen zum Konfigurieren eines Windows-RADIUS-Servers (NPS) für AD-Domänenauthentifizierung.
 
-## 4. <a name="creategw"></a>Erstellen des VPN-Gateways
+## <a name="4-create-the-vpn-gateway"></a>4. <a name="creategw"></a>Erstellen des VPN-Gateways
 
 Konfigurieren und erstellen Sie das VPN-Gateway für Ihr VNET.
 
@@ -166,7 +166,7 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1
 ```
 
-## 5. <a name="addradius"></a>Hinzufügen des RADIUS-Servers und des Clientadresspools
+## <a name="5-add-the-radius-server-and-client-address-pool"></a>5. <a name="addradius"></a>Hinzufügen des RADIUS-Servers und des Clientadresspools
  
 * Für „-RadiusServer“ kann ein Name oder eine IP-Adresse angegeben werden. Wenn Sie den Namen angeben und sich der Server in der lokalen Umgebung befindet, kann das VPN-Gateway den Namen unter Umständen nicht auflösen. In diesem Fall ist es besser, die IP-Adresse des Servers anzugeben. 
 * „-RadiusSecret“ muss dem für den RADIUS-Server konfigurierten Wert entsprechen.
@@ -223,11 +223,11 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
 
-## 6. <a name="vpnclient"></a>Herunterladen des VPN-Clientkonfigurationspakets und Einrichten des VPN-Clients
+## <a name="6-download-the-vpn-client-configuration-package-and-set-up-the-vpn-client"></a>6. <a name="vpnclient"></a>Herunterladen des VPN-Clientkonfigurationspakets und Einrichten des VPN-Clients
 
 Die VPN-Clientkonfiguration ermöglicht Geräten das Herstellen einer P2S-Verbindung mit einem VNET. Informationen zum Erstellen eines VPN-Clientkonfigurationspakets und zum Einrichten des VPN-Clients finden Sie unter [Create and install VPN client configuration files for P2S RADIUS authentication (Preview)](point-to-site-vpn-client-configuration-radius.md) (Erstellen und Installieren von VPN-Clientkonfigurationsdateien für P2S-RADIUS-Authentifizierung (Vorschauversion)).
 
-## <a name="connect"></a>7. Herstellen einer Verbindung mit Azure
+## <a name="7-connect-to-azure"></a><a name="connect"></a>7. Herstellen einer Verbindung mit Azure
 
 ### <a name="to-connect-from-a-windows-vpn-client"></a>So stellen Sie eine Verbindung von einem Windows-VPN-Client her
 
@@ -244,7 +244,7 @@ Navigieren Sie im Dialogfeld „Netzwerk“ zum gewünschten Clientprofil, und k
 
   ![Mac-Verbindung](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 
-## <a name="verify"></a>So überprüfen Sie Ihre Verbindung
+## <a name="to-verify-your-connection"></a><a name="verify"></a>So überprüfen Sie Ihre Verbindung
 
 1. Um sicherzustellen, dass die VPN-Verbindung aktiv ist, öffnen Sie eine Eingabeaufforderung mit Administratorrechten, und führen Sie *Ipconfig/all*aus.
 2. Zeigen Sie die Ergebnisse an. Beachten Sie, dass die erhaltene IP-Adresse eine der Adressen aus dem Clientadresspool des Punkt-zu-Standort-VPN ist, den Sie in Ihrer Konfiguration angegeben haben. Die Ergebnisse sehen in etwa wie in diesem Beispiel aus:
@@ -264,11 +264,11 @@ Navigieren Sie im Dialogfeld „Netzwerk“ zum gewünschten Clientprofil, und k
 
 Informationen zur Problembehandlung für eine P2S-Verbindung finden Sie unter [Problembehandlung: Azure Punkt-zu-Standort-Verbindungsprobleme](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md).
 
-## <a name="connectVM"></a>Herstellen einer Verbindung mit einem virtuellen Computer
+## <a name="to-connect-to-a-virtual-machine"></a><a name="connectVM"></a>Herstellen einer Verbindung mit einem virtuellen Computer
 
 [!INCLUDE [Connect to a VM](../../includes/vpn-gateway-connect-vm-p2s-include.md)]
 
-## <a name="faq"></a>Häufig gestellte Fragen
+## <a name="faq"></a><a name="faq"></a>Häufig gestellte Fragen
 
 Diese häufig gestellten Fragen beziehen sich auf P2S mit RADIUS-Authentifizierung
 

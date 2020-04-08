@@ -9,18 +9,18 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 112a7f7aa61984b2ce9bd8400c629fe62db55584
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: ff0ccbf201f2b83dd446859d8054d115a70f402e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137899"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064161"
 ---
 # <a name="tune-model-hyperparameters"></a>Tune Model Hyperparameters
 
 In diesem Artikel wird die Verwendung des Moduls „Tune Model Hyperparameters“ im Azure Machine Learning-Designer (Vorschauversion) beschrieben. Das Ziel besteht darin, die optimalen Hyperparameter für ein Machine Learning-Modell zu ermitteln. Vom Modul werden mehrere Modelle erstellt und getestet, indem verschiedene Kombinationen von Einstellungen verwendet werden. Die Metriken werden über alle Modelle hinweg verglichen, um die Kombinationen der Einstellungen zu erhalten. 
 
-Die Begriffe *Parameter* und *Hyperparameter* können verwirrend sein. Die *Parameter* des Modells sind die Optionen, die Sie im Eigenschaftenbereich festgelegt haben. Im Grunde genommen führt dieses Modul eine *Parameterbereinigung* für die angegebenen Parametereinstellungen durch. Es wird ein optimaler Satz mit _Hyperparametern_ erlernt. Diese können sich für jede spezifische Entscheidungsstruktur, jedes Dataset oder jede Regressionsmethode unterscheiden. Der Prozess zum Finden der optimalen Konfiguration wird manchmal als *Optimierung* bezeichnet. 
+Die Begriffe *Parameter* und *Hyperparameter* können verwirrend sein. Die *Parameter* des Modells sind die Optionen, die Sie im rechten Bereich des Moduls festgelegt haben. Im Grunde genommen führt dieses Modul eine *Parameterbereinigung* für die angegebenen Parametereinstellungen durch. Es wird ein optimaler Satz mit _Hyperparametern_ erlernt. Diese können sich für jede spezifische Entscheidungsstruktur, jedes Dataset oder jede Regressionsmethode unterscheiden. Der Prozess zum Finden der optimalen Konfiguration wird manchmal als *Optimierung* bezeichnet. 
 
 Das Modul unterstützt die folgende Methode zum Ermitteln der optimalen Einstellungen für ein Modell: *Integriertes Trainieren und Optimieren*. Bei dieser Methode konfigurieren Sie einen Satz mit Parametern zur späteren Verwendung. Anschließend können Sie für das Modul den Durchlauf mit mehreren Kombinationen durchführen. Das Modul misst die Genauigkeit, bis das „beste“ Modell ermittelt wurde. Bei den meisten Lernmodulen können Sie wählen, welche Parameter während des Trainingsprozesses geändert werden und welche unverändert bleiben sollen.
 
@@ -69,7 +69,7 @@ In diesem Abschnitt wird beschrieben, wie eine einfache Parameterbereinigung aus
 
 9.  Geben Sie für **Random seed** (Zufälliger Ausgangswert) eine Zahl ein, die zum Starten der Parameterbereinigung verwendet werden soll. 
 
-10. Ausführen der Pipeline.
+10. Übermitteln der Pipeline
 
 ## <a name="results-of-hyperparameter-tuning"></a>Ergebnisse einer Hyperparameteroptimierung
 

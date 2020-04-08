@@ -13,20 +13,22 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/06/2020
+ms.date: 03/26/2020
 ms.author: radeltch
-ms.openlocfilehash: 3e9634b9121cb0ecbcfb01f6ad58984d90ec28e5
-ms.sourcegitcommit: 9cbd5b790299f080a64bab332bb031543c2de160
+ms.openlocfilehash: 793851780e1154b6b6a21c88ea8cae063a277790
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2020
-ms.locfileid: "78927247"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80350053"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>Multi-SID-Hochverfügbarkeitsleitfaden für SAP NetWeaver auf virtuellen Azure-Computern unter SUSE Linux Enterprise Server für SAP-Anwendungen
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
+
+[anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
 [1944799]:https://launchpad.support.sap.com/#/notes/1944799
@@ -84,12 +86,12 @@ Machen Sie sich zunächst mit den folgenden SAP-Hinweisen und Dokumenten vertrau
 * [Best Practices für SUSE SAP HA][suse-ha-guide] Die Leitfäden enthalten alle erforderlichen Informationen, um NetWeaver HA und SAP HANA System Replication vor Ort einzurichten. Verwenden Sie diese Leitfäden als allgemeine Basis. Sie bieten wesentlich mehr Informationen.
 * [SUSE High Availability Extension 12 SP3 Release Notes][suse-ha-12sp3-relnotes] (Versionshinweise zur SUSE-Hochverfügbarkeitserweiterung 12 SP3, in englischer Sprache)
 * [SUSE-Multi-SID-Cluster-Handbuch für SLES 12 und SLES 15](https://documentation.suse.com/sbp/all/html/SBP-SAP-MULTI-SID/index.html)
-
+* [NetApp-SAP-Anwendungen in Microsoft Azure mithilfe von Azure NetApp Files][anf-sap-applications-azure]
 ## <a name="overview"></a>Übersicht
 
 Die virtuellen Computer des Clusters müssen groß genug sein, um im Falle eines Failovers alle Ressourcen ausführen zu können. Von jeder SAP-SID kann im Multi-SID-Hochverfügbarkeitscluster unabhängig ein Failover durchgeführt werden.  Bei Verwendung der SBD-Umgrenzung können die SBD-Geräte von mehreren Clustern gemeinsam genutzt werden.  
 
-Für Hochverfügbarkeit benötigt SAP NetWeaver hochverfügbare NFS-Freigaben. In diesem Beispiel wird davon ausgegangen, dass die SAP-NFS-Freigaben entweder auf einem hoch verfügbaren [NFS-Dateiserver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs) gehostet werden, der von mehreren SAP-Systemen verwendet werden kann, oder dass die Freigaben in [NFS-Volumes für Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes) bereitgestellt werden.  
+Für Hochverfügbarkeit benötigt SAP NetWeaver hochverfügbare NFS-Freigaben. In diesem Beispiel wird davon ausgegangen, dass die SAP-NFS-Freigaben entweder auf einem hoch verfügbaren [NFS-Dateiserver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs) gehostet werden, der von mehreren SAP-Systemen verwendet werden kann, oder dass die Freigaben unter [Erstellen eines NFS-Volumes für Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes) bereitgestellt werden.  
 
 ![Hochverfügbarkeit von SAP NetWeaver – Übersicht](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
 
@@ -109,8 +111,6 @@ Die folgende Liste enthält die Konfiguration des (A)SCS- und ERS-Lastenausgleic
   * IP-Adresse für NW1:  10.3.1.14
   * IP-Adresse für NW2:  10.3.1.16
   * IP-Adresse für NW3:  10.3.1.13
-* Backendkonfiguration
-  * Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des (A)SCS/ERS-Clusters sein sollen
 * Testports
   * Port 620<strong>&lt;Nr.&gt;</strong> (für NW1, NW2 und NW3 also die Testports 620**00**, 620**10** und 620**20**)
 * Lastenausgleichsregeln: 
@@ -131,8 +131,6 @@ Die folgende Liste enthält die Konfiguration des (A)SCS- und ERS-Lastenausgleic
   * IP-Adresse für NW1: 10.3.1.15
   * IP-Adresse für NW2: 10.3.1.17
   * IP-Adresse für NW3: 10.3.1.19
-* Backendkonfiguration
-  * Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des (A)SCS/ERS-Clusters sein sollen
 * Testport
   * Port 621<strong>&lt;Nr.&gt;</strong> (für NW1, NW2 und NW3 also die Testports 621**02**, 621**12** und 621**22**)
 * Lastenausgleichsregeln: Erstellen Sie jeweils eine pro Instanz (NW1/ERS, NW2/ERS und NW3/ERS).
@@ -143,6 +141,9 @@ Die folgende Liste enthält die Konfiguration des (A)SCS- und ERS-Lastenausgleic
     * 5<strong>&lt;Nr.&gt;</strong>13 TCP
     * 5<strong>&lt;Nr.&gt;</strong>14 TCP
     * 5<strong>&lt;Nr.&gt;</strong>16 TCP
+
+* Backendkonfiguration
+  * Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des (A)SCS/ERS-Clusters sein sollen
 
 
 > [!Note]
@@ -155,7 +156,7 @@ Die folgende Liste enthält die Konfiguration des (A)SCS- und ERS-Lastenausgleic
 
 SAP NetWeaver benötigt freigegebenen Speicher für den Transport, das Profilverzeichnis und Ähnliches. Ein hoch verfügbares SAP-System setzt hoch verfügbare NFS-Freigaben voraus. Sie müssen sich für eine Architektur für Ihre SAP-NFS-Freigaben entscheiden. Eine Möglichkeit besteht darin, [hoch verfügbare NFS-Cluster auf virtuellen Azure-Computern unter SUSE Linux Enterprise Server][nfs-ha] zu erstellen, die von mehreren SAP-Systemen gemeinsam genutzt werden können. 
 
-Die Freigaben können aber auch in [NFS-Volumes für Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes) bereitgestellt werden.  Azure NetApp Files bietet integrierte Hochverfügbarkeit für die SAP-NFS-Freigaben.
+Die Freigaben können aber auch unter [Erstellen eines NFS-Volumes für Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes) bereitgestellt werden.  Azure NetApp Files bietet integrierte Hochverfügbarkeit für die SAP-NFS-Freigaben.
 
 ## <a name="deploy-the-first-sap-system-in-the-cluster"></a>Bereitstellen des ersten SAP-Systems im Cluster
 

@@ -3,18 +3,18 @@ title: Feldzuordnungen in Indexern
 titleSuffix: Azure Cognitive Search
 description: Konfigurieren von Feldzuordnungen in einem Indexer zum Ausgleichen von Unterschieden in Feldnamen und Datendarstellungen.
 manager: nitinme
-author: mgottein
+author: mattmsft
 ms.author: magottei
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 72623787cdb27c568fe2b4ec075010674a3996ef
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 3e09741e841897032b8146dee67b79e0c26ea5cb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123997"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275151"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Feldzuordnungen und Transformationen mithilfe von Indexern der kognitiven Azure-Suche
 
@@ -123,7 +123,7 @@ Führt eine *URL-sichere* Base64-Codierung der Eingabezeichenfolge durch. Geht d
 
 #### <a name="example---document-key-lookup"></a>Beispiel: Dokumentschlüsselsuche
 
-Nur URL-sichere Zeichen können in einem Dokumentschlüssel der kognitiven Azure-Suche enthalten sein (da Kunden in der Lage sein müssen, das Dokument über die [Lookup-API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) aufzurufen). Wenn das Quellfeld für den Schlüssel URL-unsichere Zeichen enthält, können Sie die Funktion `base64Encode` verwenden, um die Zeichenfolge bei der Indizierung zu konvertieren.
+Nur URL-sichere Zeichen können in einem Dokumentschlüssel der kognitiven Azure-Suche enthalten sein (da Kunden in der Lage sein müssen, das Dokument über die [Lookup-API](https://docs.microsoft.com/rest/api/searchservice/lookup-document) aufzurufen). Wenn das Quellfeld für den Schlüssel URL-unsichere Zeichen enthält, können Sie die Funktion `base64Encode` verwenden, um die Zeichenfolge bei der Indizierung zu konvertieren. Ein Dokumentschlüssel darf (vor und nach der Konvertierung) jedoch nicht länger als 1.024 Zeichen sein.
 
 Wenn Sie den codierten Schlüssel während der Suche abrufen, können Sie die Funktion `base64Decode` verwenden, um den ursprünglichen Schlüsselwert abzurufen, mit dem Sie dann das Quelldokument abrufen können.
 
@@ -292,6 +292,28 @@ Wenn Sie den codierten Schlüssel während der Suche abrufen, können Sie die Fu
     "targetFieldName" : "SearchableMetadata",
     "mappingFunction" : {
       "name" : "urlDecode"
+    }
+  }]
+ ```
+ 
+ <a name="fixedLengthEncodeFunction"></a>
+ 
+ ### <a name="fixedlengthencode-function"></a>Funktion „fixedLengthEncode“
+ 
+ Diese Funktion konvertiert eine Zeichenfolge in eine beliebige Zeichenfolge mit fester Länge.
+ 
+ ### <a name="example---map-document-keys-that-are-too-long"></a>Beispiel: Zuordnen von zu langen Dokumentschlüsseln
+ 
+Wenn Fehler mit der Meldung zurückgegeben werden, dass der Dokumentschlüssel mehr als 1.024 Zeichen enthält, können Sie mit dieser Funktion die Länge des Dokumentschlüssels verringern.
+
+ ```JSON
+
+"fieldMappings" : [
+  {
+    "sourceFieldName" : "metadata_storage_path",
+    "targetFieldName" : "your key field",
+    "mappingFunction" : {
+      "name" : "fixedLengthEncode"
     }
   }]
  ```

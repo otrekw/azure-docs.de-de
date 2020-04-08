@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: eb44163922e318d17d675143ca2d6a3a1fa4ed75
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 05f8430efa31b39d49025fb8456108da229d3d71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793321"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239823"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb mithilfe der Azure CLI
 
@@ -80,7 +80,7 @@ Virtuelle Computer (klassisch) können nicht mit beschleunigtem Netzwerkbetrieb 
 ## <a name="portal-creation"></a>Erstellung über das Portal
 In diesem Artikel werden die Schritte zum Erstellen eines virtuellen Computers mit beschleunigtem Netzwerkbetrieb mithilfe der Azure-Befehlszeilenschnittstelle dargestellt, Sie können jedoch auch [über das Azure-Portal einen virtuellen Computer mit beschleunigtem Netzwerkbetrieb erstellen](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Wenn Sie einen virtuellen Computer im Portal erstellen, wählen Sie im Blatt **Virtuellen Computer erstellen** die Registerkarte **Netzwerkbetrieb** aus.  Auf dieser Registerkarte gibt es eine Option für **Beschleunigter Netzwerkbetrieb**.  Wenn Sie ein [unterstütztes Betriebssystem](#supported-operating-systems) und eine [unterstützte VM-Größe](#supported-vm-instances) ausgewählt haben, wird diese Option automatisch auf „Ein“ gesetzt.  Wenn nicht, wird die Option für „Beschleunigter Netzwerkbetrieb“ auf „Aus“ festgelegt, und dem Benutzer wird der Grund angezeigt, warum der beschleunigte Netzwerkbetrieb nicht aktiviert wird.   
 
-* *Hinweis:* Nur unterstützte Betriebssysteme können über das Portal aktiviert werden.  Wenn Sie ein benutzerdefiniertes Image verwenden und Ihr Image den beschleunigten Netzwerkbetrieb unterstützt, erstellen Sie Ihre VM mit CLI oder Powershell. 
+* *Hinweis:* Nur unterstützte Betriebssysteme können über das Portal aktiviert werden.  Wenn Sie ein benutzerdefiniertes Image verwenden und Ihr Image den beschleunigten Netzwerkbetrieb unterstützt, erstellen Sie Ihre VM mit CLI oder PowerShell. 
 
 Nach dem Erstellen des virtuellen Computers können Sie sich vergewissern, dass der beschleunigte Netzwerkbetrieb aktiviert ist, indem Sie den Anweisungen unter [Bestätigen der Aktivierung des beschleunigten Netzwerkbetriebs](#confirm-that-accelerated-networking-is-enabled) folgen.
 
@@ -177,7 +177,7 @@ Eine Liste aller VM-Größen und -Eigenschaften finden Sie unter [Größen für 
 
 Nachdem die VM erstellt wurde, wird eine ähnliche Ausgabe wie die folgende Beispielausgabe zurückgegeben. Notieren Sie sich **publicIpAddress**. Diese Adresse wird später verwendet, um auf die VM zuzugreifen.
 
-```azurecli
+```output
 {
   "fqdns": "",
   "id": "/subscriptions/<ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -208,7 +208,7 @@ Geben Sie in der Bash-Shell `uname -r` ein, und vergewissern Sie sich, dass es s
 
 Vergewissern Sie sich, dass mithilfe des Befehls `lspci` das Mellanox VF-Gerät für die VM verfügbar gemacht wurde. Die zurückgegebene Ausgabe sieht in etwa wie folgt aus:
 
-```bash
+```output
 0000:00:00.0 Host bridge: Intel Corporation 440BX/ZX/DX - 82443BX/ZX/DX Host bridge (AGP disabled) (rev 03)
 0000:00:07.0 ISA bridge: Intel Corporation 82371AB/EB/MB PIIX4 ISA (rev 01)
 0000:00:07.1 IDE interface: Intel Corporation 82371AB/EB/MB PIIX4 IDE (rev 01)
@@ -219,7 +219,7 @@ Vergewissern Sie sich, dass mithilfe des Befehls `lspci` das Mellanox VF-Gerät 
 
 Suchen Sie mithilfe des Befehl `ethtool -S eth0 | grep vf_` nach der Aktivität für die VF (virtuelle Funktion). Wenn Sie eine Ausgabe ähnlich wie die folgende Beispielausgabe erhalten, ist der beschleunigte Netzwerkbetrieb aktiviert und funktioniert.
 
-```bash
+```output
 vf_rx_packets: 992956
 vf_rx_bytes: 2749784180
 vf_tx_packets: 2656684

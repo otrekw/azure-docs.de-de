@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: trbye
 author: trevorbye
-ms.date: 01/06/2020
-ms.openlocfilehash: 036efa27fb8d22c32f2f6bce1efe9dea300a3972
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.date: 03/18/2020
+ms.openlocfilehash: 50ddbffd00e0cbbd0641089613aaa40d03658c9e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78302768"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064195"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Was sind Azure Machine Learning-Umgebungen?
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -92,10 +92,13 @@ Betrachten Sie das folgende Diagramm, das drei Umgebungsdefinitionen zeigt. Zwei
 
 ![Diagramm zur Zwischenspeicherung der Umgebung als Docker-Images](./media/concept-environments/environment-caching.png)
 
-Wenn Sie eine Umgebung mit losgelöster Paketabhängigkeit erstellen, z. B. ```numpy```, wird diese Umgebung weiterhin die Paketversion verwenden, die zum Zeitpunkt der Erstellung der Umgebung installiert war. Außerdem wird jede zukünftige Umgebung mit passender Definition weiterhin die alte Version verwenden. Geben Sie zum Aktualisieren des Pakets eine Versionsnummer an, um eine Neuerstellung des Images zu erzwingen, z. B. ```numpy==1.18.1```. Beachten Sie, dass neue Abhängigkeiten, einschließlich geschachtelter Abhängigkeiten, installiert werden, die ein zuvor funktionierendes Szenario unterbrechen könnten
+>[!IMPORTANT]
+> Wenn Sie eine Umgebung mit losgelöster Paketabhängigkeit erstellen, z. B. ```numpy```, wird diese Umgebung weiterhin die Paketversion verwenden, _die zum Zeitpunkt der Erstellung der Umgebung installiert war_. Außerdem wird jede zukünftige Umgebung mit passender Definition weiterhin die alte Version verwenden. 
+
+Geben Sie zum Aktualisieren des Pakets eine Versionsnummer an, um eine Neuerstellung des Images zu erzwingen, z. B. ```numpy==1.18.1```. Beachten Sie, dass neue Abhängigkeiten, einschließlich geschachtelter Abhängigkeiten, installiert werden, die ein zuvor funktionierendes Szenario unterbrechen könnten.
 
 > [!WARNING]
->  Die Methode [Environment.build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-workspace-) erstellt das zwischengespeicherte Image neu, mit dem möglichen Nebeneffekt, dass losgelöste Pakete aktualisiert werden und die Reproduzierbarkeit für alle Umgebungsdefinitionen, die diesem zwischengespeicherten Image entsprechen, unterbrochen wird.
+>  Die Methode [Environment.build](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-workspace--image-build-compute-none-) erstellt das zwischengespeicherte Image neu, mit dem möglichen Nebeneffekt, dass losgelöste Pakete aktualisiert werden und die Reproduzierbarkeit für alle Umgebungsdefinitionen, die diesem zwischengespeicherten Image entsprechen, unterbrochen wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,5 +1,5 @@
 ---
-title: Sicherheit für Ihr StorSimple-Gerät | Microsoft Docs
+title: Sicheres Installieren und Betreiben eines Geräts aus der StorSimple 8000-Serie
 description: Beschreibt Sicherheitskonventionen, Richtlinien und Überlegungen. Darüber hinaus wird erläutert, wie das StorSimple-Gerät sicher installiert und verwendet wird.
 services: storsimple
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 66b881ab13e27ee457af4fa1bafb82ad14e9674d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3c880cd18e7227a728d7e276e72a5ea8c1e421de
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631673"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396632"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>Sichere Installation und Verwendung des StorSimple-Geräts
-![Symbol "Warnung"](./media/storsimple-safety/IC740879.png)
-![Symbol "Sicherheitshinweis lesen"](./media/storsimple-safety/IC740885.png)**LESEN SIE DIE INFORMATIONEN ZUR SICHERHEIT UND INTEGRITÄT**
+![Symbol „Warnung“](./media/storsimple-safety/IC740879.png)
+![Symbol „Sicherheitshinweis lesen“](./media/storsimple-safety/IC740885.png) **LESEN SIE DIE SICHERHEITS- UND GESUNDHEITSINFORMATIONEN**
 
 Lesen Sie alle Informationen zur Sicherheit und Integrität in diesem Artikel, die sich auf Ihr Microsoft Azure StorSimple-Gerät beziehen. Bewahren Sie für die künftige Verwendung alle gedruckten Handbücher auf, die im Lieferumfang des StorSimple-Geräts enthalten waren. Wenn die Anweisungen nicht befolgt werden und das Produkt nicht ordnungsgemäß eingerichtet, verwendet und gewartet wird, kann sich das Risiko von schwerwiegenden Verletzungen, Todesfällen oder Schäden am Gerät/an den Geräten erhöhen. Eine [herunterladbare Version dieses Handbuchs](https://www.microsoft.com/download/details.aspx?id=44233) ist ebenfalls verfügbar.
 
@@ -32,18 +32,18 @@ Die folgenden Symbole finden Sie in den Sicherheitsvorkehrungen, die beachtet we
 
 | Symbol | BESCHREIBUNG |
 |:--- |:--- |
-| ![Symbol "Gefahr"](./media/storsimple-safety/IC740879.png)**GEFAHR!** |Zeigt eine Gefahrensituation an, die zum Tod oder schweren Verletzungen führen wird, wenn sie nicht vermieden wird. Dieses Signalwort ist auf extremste Situationen zu beschränken. |
-| ![Symbol "Warnung"](./media/storsimple-safety/IC740879.png)**WARNUNG!** |Zeigt eine Gefahrensituation an, die zum Tod oder schweren Verletzungen führen könnte, wenn sie nicht vermieden wird. |
-| ![Symbol "Warnung"](./media/storsimple-safety/IC740879.png)**VORSICHT!** |Zeigt eine Gefahrensituation an, die zu leichten bis mittelschweren Verletzungen führen könnte, wenn sie nicht vermieden wird. |
-| ![Symbol "Hinweis"](./media/storsimple-safety/IC740881.png)**HINWEIS:** |Zeigt als wichtig erachtete Informationen an, die allerdings nicht mit Gefahren in Verbindung stehen. |
-| ![Symbol "Stromschlag"](./media/storsimple-safety/IC740882.png)**Elektrischer Schlag** |Hochspannung |
-| ![Symbol "Schwergewicht"](./media/storsimple-safety/IC740883.png)**Schwergewicht** | |
-| ![Symbol "Keine durch Benutzer zu wartenden Teile"](./media/storsimple-safety/IC740879.png)**Keine durch Benutzer zu wartenden Teile** |Zugriff nur bei ausreichender Schulung. |
+| ![Symbol „Gefahr“](./media/storsimple-safety/IC740879.png) **GEFAHR!** |Zeigt eine Gefahrensituation an, die zum Tod oder schweren Verletzungen führen wird, wenn sie nicht vermieden wird. Dieses Signalwort ist auf extremste Situationen zu beschränken. |
+| ![Symbol „Warnung“](./media/storsimple-safety/IC740879.png) **WARNUNG!** |Zeigt eine Gefahrensituation an, die zum Tod oder schweren Verletzungen führen könnte, wenn sie nicht vermieden wird. |
+| ![Symbol „Warnung“](./media/storsimple-safety/IC740879.png) **ACHTUNG!** |Zeigt eine Gefahrensituation an, die zu leichten bis mittelschweren Verletzungen führen könnte, wenn sie nicht vermieden wird. |
+| ![Symbol „Hinweis“](./media/storsimple-safety/IC740881.png) **HINWEIS:** |Zeigt als wichtig erachtete Informationen an, die allerdings nicht mit Gefahren in Verbindung stehen. |
+| ![Symbol „Vorsicht Stromschlag“](./media/storsimple-safety/IC740882.png) **Gefahr durch Stromschlag** |Hochspannung |
+| ![Symbol „Hohes Gewicht“](./media/storsimple-safety/IC740883.png) **Hohes Gewicht** | |
+| ![Symbol „Keine vom Benutzer zu wartenden Teile“](./media/storsimple-safety/IC740879.png) **Keine vom Benutzer zu wartenden Teile** |Zugriff nur bei ausreichender Schulung. |
 | ![Symbol "Sicherheitshinweis lesen"](./media/storsimple-safety/IC740885.png)**Alle Anleitungen zuvor lesen** | |
-| ![Symbol "Kippgefahr"](./media/storsimple-safety/IC740886.png)**Kippgefahr** | |
+| ![Symbol „Kippgefahr“](./media/storsimple-safety/IC740886.png) **Kippgefahr** | |
 
 ## <a name="handling-precautions"></a>Vorsichtsmaßnahmen bei der Handhabung
-![Symbol "Warnung"](./media/storsimple-safety/IC740879.png)![Symbol "Schwergewicht"](./media/storsimple-safety/IC740883.png)**WARNUNG!** 
+![Symbol „Warnung“](./media/storsimple-safety/IC740879.png) ![Symbol „Hohes Gewicht“](./media/storsimple-safety/IC740883.png) **WARNUNG!** 
 
 So wird die Gefahr von Verletzungen verringert:
 
@@ -52,7 +52,7 @@ So wird die Gefahr von Verletzungen verringert:
 * Heben Sie das Gehäuse nicht an den Griffen der Stromversorgungs- und Kühleinheiten (PCMs) auf der Rückseite der Einheit an. Diese sind nicht dafür ausgelegt, das Gewicht zu tragen.
 
 ## <a name="connection-precautions"></a>Vorsichtsmaßnahmen bei der Verbindung
-![Warning Icon](./media/storsimple-safety/IC740879.png)![Electrical Shock Icon](./media/storsimple-safety/IC740882.png)**WARNUNG!**
+![Symbol „Warnung“](./media/storsimple-safety/IC740879.png) ![Symbol „Vorsicht Stromschlag“](./media/storsimple-safety/IC740882.png) **WARNUNG!**
 
 So reduzieren Sie die Wahrscheinlichkeit, dass Verletzungen, Elektroschocks oder Tod eintreten:
 
@@ -62,16 +62,16 @@ So reduzieren Sie die Wahrscheinlichkeit, dass Verletzungen, Elektroschocks oder
 * Stellen Sie sicher, dass die Stromzufuhr immer gekappt ist, bevor Sie ein PCM aus dem Gehäuse entfernen.
 * Da der Stecker für das Stromkabel das wichtigste Gerät zum Trennen von der Stromverbindung ist, stellen Sie sicher, dass sich die Steckdosen in der Nähe der Geräte befinden und leicht zugänglich sind.
 
-![Warning Icon](./media/storsimple-safety/IC740879.png)![Electrical Shock Icon](./media/storsimple-safety/IC740882.png)**WARNUNG!**
+![Symbol „Warnung“](./media/storsimple-safety/IC740879.png) ![Symbol „Vorsicht Stromschlag“](./media/storsimple-safety/IC740882.png) **WARNUNG!**
 
 So reduzieren Sie die Wahrscheinlichkeit von Überhitzung oder Brand bei elektrischen Verbindungen:
 
 * Stellen Sie eine geeignete Stromquelle mit elektrischem Überlastungsschutz bereit, um die Anforderungen der technischen Spezifikationen zu erfüllen.
-* Verwenden Sie keine verzweigten Stromkabel ("Y"-Leitungen).
+* Verwenden Sie keine verzweigten Stromkabel („Y“-Leitungen).
 * Um die Anforderungen für Sicherheit, Emissionen und Temperaturüberwachung zu erfüllen, sollten keine Abdeckungen entfernt werden, und alle Einschübe sollten mit Plug-in-Modulen oder leeren Laufwerken aufgefüllt werden.
 * Stellen Sie sicher, dass die Geräte so verwendet werden, wie vom Hersteller vorgesehen. Wenn die Geräte in einer Weise verwendet werden, die nicht vom Hersteller angegebenen wurden, kann der Schutz in den Geräten beeinträchtigt werden.
 
-![Symbol "Hinweis"](./media/storsimple-safety/IC740881.png)**HINWEIS:**
+![Symbol „Hinweis“](./media/storsimple-safety/IC740881.png) **HINWEIS:**
 
 Für den ordnungsgemäßen Betrieb Ihrer Geräte und um Schäden am Produkt zu vermeiden:
 
@@ -82,7 +82,7 @@ Für den ordnungsgemäßen Betrieb Ihrer Geräte und um Schäden am Produkt zu v
 ## <a name="rack-system-precautions"></a>Vorsichtsmaßnahmen beim Gestellsystem
 Wenn Sie das Gerät auf einem Gestellsystem montieren, müssen die folgenden Sicherheitsanforderungen berücksichtigt werden.
 
-![Symbol "Warnung"](./media/storsimple-safety/IC740879.png)![Symbol "Kippgefahr"](./media/storsimple-safety/IC740886.png)**WARNUNG!**
+![Symbol „Warnung“](./media/storsimple-safety/IC740879.png) ![Symbol „Kippgefahr“](./media/storsimple-safety/IC740886.png) **WARNUNG!**
 
 So reduzieren Sie die Wahrscheinlichkeit einer Verletzung durch Kippen:
 
@@ -90,16 +90,16 @@ So reduzieren Sie die Wahrscheinlichkeit einer Verletzung durch Kippen:
 * Wenn das Gestell beladen wird, sollte es von unten nach oben beladen und von oben nach unten geleert werden.
 * Entfernen Sie nicht mehr als eine Einheit gleichzeitig vom Gestell, damit die Gefahr vermieden wird, dass es umkippt.
 
-![Symbol "Warnung"](./media/storsimple-safety/IC740879.png)![Symbol "Stromschlag"](./media/storsimple-safety/IC740882.png)**WARNUNG!**
+![Symbol „Warnung“](./media/storsimple-safety/IC740879.png) ![Symbol „Vorsicht Stromschlag“](./media/storsimple-safety/IC740882.png) **WARNUNG!**
 
 So reduzieren Sie die Wahrscheinlichkeit, dass Verletzungen, Elektroschocks oder Tod eintreten:
 
 * Das Gestell sollte über ein sicheres elektrisches Verteilungssystem verfügen. Es muss einen Überstromschutz für das Gehäuse bieten und darf nicht von der Gesamtzahl der installierten Gehäuse überladen werden. Beachten Sie auch die auf dem Fabrikatsschild genannte Belastbarkeit für den Stromverbrauch.
 * Das elektrische Verteilungssystem muss eine zuverlässige Grundlage für jedes Gehäuse im Gestell bereitstellen.
-* Das elektrische Verteilungssystem muss so entworfen sein, dass der gesamte Erdableitstrom von allen Netzteilen in allen Gehäusen berücksichtigt wird. Beachten Sie, dass die Stromzufuhr in jedem Gehäuse über einen Erdableitstrom von maximal 1,0 mA bei 60 Hz 264 Volt verfügt. Das Gestell muss möglicherweise folgendermaßen gekennzeichnet werden: „HOHE ABLEITSTRÖME. Eine geerdete Verbindung ist unbedingt vor dem Stromanschluss unbedingt erforderlich.“
+* Das elektrische Verteilungssystem muss so entworfen sein, dass der gesamte Erdableitstrom von allen Netzteilen in allen Gehäusen berücksichtigt wird. Beachten Sie, dass die Stromzufuhr in jedem Gehäuse über einen Erdableitstrom von maximal 1,0 mA bei 60 Hz 264 Volt verfügt. Das Gestell muss möglicherweise folgendermaßen gekennzeichnet werden: „HOHE ABLEITSTRÖME. Eine Verbindung an Masse ist vor dem Stromanschluss unbedingt erforderlich.“
 * Wenn das Gestell mit den Gehäusen aufgestellt ist, muss es die Sicherheitsanforderungen UL 60950-1 und IEC 60950-1/EN 60950-1 erfüllen.
 
-![Symbol "Hinweis"](./media/storsimple-safety/IC740881.png)**HINWEIS:**
+![Symbol „Hinweis“](./media/storsimple-safety/IC740881.png) **HINWEIS:**
 
 Für die ordnungsgemäße Kühlung des Gestellsystems:
 
@@ -109,13 +109,13 @@ Für die ordnungsgemäße Kühlung des Gestellsystems:
 ## <a name="power-cooling-module-pcm-precautions"></a>Vorsichtsmaßnahmen bei der Stromversorgungs- und Kühleinheit (PCM)
 Das Gerät ist für den Betrieb mit zwei Kühleinheiten ausgelegt. Jede der Kühleinheiten verfügt über eine Stromversorgung und ein Doppelachsgebläse. In kritischem Zustand lässt das System das Versagen einer Stromzufuhr zu, während der normale Betrieb aufrecht erhalten wird. Zwei Kühleinheiten (und daher Stromzufuhren) müssen immer installiert sein. Ein einzelnes PCM bietet keine redundante Stromversorgung. Aus diesem Grund kann der Ausfall von nur einem PCM zu Ausfallzeiten und Datenverlusten führen.
 
-![Symbol "Warnung"](./media/storsimple-safety/IC740879.png)![Symbol "Stromschlag"](./media/storsimple-safety/IC740882.png)**WARNUNG!**
+![Symbol „Warnung“](./media/storsimple-safety/IC740879.png) ![Symbol „Vorsicht Stromschlag“](./media/storsimple-safety/IC740882.png) **WARNUNG!**
 
 So reduzieren Sie die Wahrscheinlichkeit, dass Verletzungen, Elektroschocks oder Tod eintreten:
 
 * Entfernen Sie nicht die Abdeckungen vom PCM. Innen besteht die Gefahr von Elektroschocks. Um ein PCM zurückzugeben und Ersatz zu erhalten, [wenden Sie sich an den Microsoft-Support](storsimple-contact-microsoft-support.md).
 
-![Symbol "Hinweis"](./media/storsimple-safety/IC740881.png)**HINWEIS:**
+![Symbol „Hinweis“](./media/storsimple-safety/IC740881.png) **HINWEIS:**
 
 Für den ordnungsgemäßen Betrieb Ihrer Geräte und um Schäden am Produkt zu vermeiden:
 
@@ -123,7 +123,7 @@ Für den ordnungsgemäßen Betrieb Ihrer Geräte und um Schäden am Produkt zu v
 * Ein PCM kann nicht entfernt werden, sofern kein Ersatz sofort installiert werden kann. Das Gehäuse darf nicht ohne alle an der richtigen Stelle vorhandenen Module betrieben werden.
 
 ## <a name="electrostatic-discharge-esd-precautions"></a>Vorsichtsmaßnahmen bei der elektrostatischen Entladung (ESD)
-![Symbol "Hinweis"](./media/storsimple-safety/IC740881.png)**HINWEIS:**
+![Symbol „Hinweis“](./media/storsimple-safety/IC740881.png) **HINWEIS:**
 
 Beachten Sie die folgenden, auf ESD bezogenen Vorsichtsmaßnahmen.
 
@@ -135,7 +135,7 @@ Beachten Sie die folgenden, auf ESD bezogenen Vorsichtsmaßnahmen.
 ## <a name="battery-disposal-precautions"></a>Vorsichtsmaßnahmen bei der Batterieentsorgung
 Das Netzteil verwendet eine speziellen Batterie, um den Inhalt des Arbeitsspeichers während temporärer, kurzfristiger Stromausfälle zu schützen. Die Batterie ist im PCM eingesetzt. Beachten Sie folgende Informationen zum Akku.
 
-![Symbol "Warnung"](./media/storsimple-safety/IC740879.png)**WARNUNG!**
+![Warnsymbol](./media/storsimple-safety/IC740879.png) **WARNUNG!**
 
 Um das Risiko von Kurzschlüssen, Bränden, Explosionen, Verletzungen oder Todesfällen zu verringern:
 
@@ -143,7 +143,7 @@ Um das Risiko von Kurzschlüssen, Bränden, Explosionen, Verletzungen oder Todes
 * Nicht auseinander bauen, zerbrechen oder über 60 Grad Celsius erhitzen oder verbrennen. Ersetzen Sie die Batterie des PCM mit durch eine mitgelieferte Batterie. Das Verwenden einer anderen Batterie kann Brände oder Explosionen verursachen.
 * Verwenden Sie Schutzkappen auf den Batterien, wenn diese von der Stromversorgung entfernt werden.
 
-![Symbol "Hinweis"](./media/storsimple-safety/IC740881.png)**HINWEIS:**
+![Symbol „Hinweis“](./media/storsimple-safety/IC740881.png) **HINWEIS:**
 
 Beim Versand oder bei anderweitiger Beförderung der Batterien auf dem Luftweg befolgen Sie den Leitfaden der IATA „Lithium Battery Guidance“ unter [https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](https://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx).
 

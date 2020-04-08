@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: edaa585ffb3448a80b021aa924a9d654ac829931
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12c750f96b8852cdd6a6039ebfa750c2ee792a6b
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79096133"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396718"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Exportieren des Aktivitätsprotokolls in den Speicher oder in Azure Event Hubs
 
 > [!IMPORTANT]
-> Die Methode für das Senden des Azure-Aktivitätsprotokolls an Azure Storage und Azure Event Hubs wurde in [Diagnoseeinstellungen](diagnostic-settings.md) geändert. In diesem Artikel wird die Legacymethode beschrieben, die gerade eingestellt wird. Einen Vergleich finden Sie in der [Aktualisierung für das Erfassen und Exportieren des Azure-Aktivitätsprotokolls](diagnostic-settings-legacy.md).
+> Die Methode für das Senden des Azure-Aktivitätsprotokolls an Azure Storage und Azure Event Hubs wurde in [Diagnoseeinstellungen](diagnostic-settings.md) geändert. In diesem Artikel wird die Legacymethode beschrieben, die gerade eingestellt wird. Einen Vergleich finden Sie in der Aktualisierung für das [Erfassen und Analysieren von Azure-Aktivitätsprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](activity-log-collect.md).
 
 
 Das [Azure-Aktivitätsprotokoll](platform-logs-overview.md) bietet Einblick in Ereignisse auf Abonnementebene, die in Ihrem Azure-Abonnement aufgetreten sind. Zusätzlich zum Anzeigen des Aktivitätsprotokolls im Azure-Portal oder Kopieren des Protokolls in einen Log Analytics-Arbeitsbereich, in dem es mit anderen von Azure Monitor gesammelten Daten analysiert werden kann, können Sie ein Protokollprofil zum Archivieren des Aktivitätsprotokolls in einem Azure-Speicherkonto oder zum Streamen an einen Event Hub erstellen.
@@ -27,7 +27,7 @@ Das Archivieren des Aktivitätsprotokolls in einem Speicherkonto ist hilfreich, 
 
 ## <a name="stream-activity-log-to-event-hub"></a>Streamen von Aktivitätsprotokollen an Event Hubs
 [Azure Event Hubs](/azure/event-hubs/) ist eine Datenstreamingplattform und ein Ereigniserfassungsdienst, der Millionen von Ereignissen pro Sekunde empfangen und verarbeiten kann. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Nachfolgend sind zwei Verwendungsmöglichkeiten des Streamingfeatures für das Aktivitätsprotokoll angegeben:
-* **Streamen an Protokollierungs- und Telemetriesysteme von Drittanbietern:** Azure Event Hubs-Streaming entwickelt sich mehr und mehr zum Mechanismus für die Weiterreichung des Aktivitätsprotokolls an SIEMs und Protokollanalyselösungen von Drittanbietern.
+* **Streamen an Protokollierungs- und Telemetriesysteme von Drittanbietern:** Azure Event Hubs-Streaming entwickelt sich mehr und mehr zum Mechanismus für die Weiterreichung des Aktivitätsprotokolls an SIEM- (Security Information & Event Management) und Protokollanalyselösungen von Drittanbietern.
 * **Erstellen einer benutzerdefinierten Telemetrie- und Protokollierungsplattform:** Event Hubs ermöglicht dank des hochgradig skalierbaren Veröffentlichen/Abonnieren-Konzepts eine flexible Erfassung des Aktivitätsprotokolls. Dies ist interessant, wenn Sie bereits über eine benutzerdefinierte Telemetrieplattform verfügen oder eine solche Plattform erstellen möchten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -122,7 +122,7 @@ Wenn bereits ein Protokollprofil vorhanden ist, müssen Sie zuerst das vorhanden
     | Name |Ja |Name des Protokollprofils. |
     | StorageAccountId |Nein |Ressourcen-ID des Speicherkontos, in dem das Aktivitätsprotokoll gespeichert werden soll. |
     | serviceBusRuleId |Nein |Service Bus-Regel-ID für den Service Bus-Namespace, unter dem Event Hubs erstellt werden sollen. Dies ist eine Zeichenfolge im Format `{service bus resource ID}/authorizationrules/{key name}`. |
-    | Location |Ja |Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. |
+    | Position |Ja |Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. |
     | RetentionInDays |Ja |Anzahl von Tagen für die Aufbewahrung von Ereignissen im Speicherkonto (1 bis 365). Bei einem Wert von 0 werden die Protokolle dauerhaft gespeichert. |
     | Category |Nein |Kommagetrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind _Write_, _Delete_ und _Action_. |
 

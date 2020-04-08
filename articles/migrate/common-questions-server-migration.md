@@ -3,16 +3,16 @@ title: Häufig gestellte Fragen zur Azure Migrate-Servermigration
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zur Verwendung der Azure Migrate-Servermigration für das Migrieren von Computern.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 4d3638e930b4e12a29df4ab189ffb24ab248582b
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 507cc8088bf54b1a4f4483673ec5332efcdd36c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78939201"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127800"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate-Servermigration: Häufig gestellte Fragen
 
-Dieser Artikel beantwortet häufige Fragen zum Azure Migrate: Servermigrationstool. Wenn Sie weitere Fragen haben, sehen Sie sich die folgenden Ressourcen an:
+Dieser Artikel beantwortet häufige Fragen zu Azure Migrate: Servermigration“ kommunizieren kann. Wenn Sie weitere Fragen haben, sehen Sie sich die folgenden Ressourcen an:
 
 - [Allgemeine Fragen](resources-faq.md) zu Azure Migrate
 - Fragen zur [Azure Migrate-Appliance](common-questions-appliance.md)
@@ -74,6 +74,14 @@ Nein. Azure Migrate unterstützt nur die Migration zu verwalteten Datenträgern 
 ## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>Wie viele VMs kann ich gleichzeitig mithilfe der Migration ohne Agent replizieren?
 
 Zurzeit können Sie pro vCenter Server-Instanz 100 VMs gleichzeitig migrieren. Migrieren Sie in Batches von 10 VMs.
+
+## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Wie kann ich die Replikation mithilfe der Azure Migrate-Appliance für die VMware-Replikation ohne Agent drosseln?  
+
+Sie können die Replikation mithilfe von NetQosPolicy drosseln. Beispiel:
+
+Das in der NetQosPolicy zu verwendende AppNamePrefix ist „GatewayWindowsService“. Sie können eine Richtlinie auf der Azure Migrate-Appliance erstellen, um den Replikationsdatenverkehr von der Appliance zu drosseln, indem Sie eine Richtlinie wie die folgende erstellen:
+ 
+New-NetQosPolicy -Name "ThrottleReplication" -AppPathNameMatchCondition "GatewayWindowsService.exe" -ThrottleRateActionBitsPerSecond 1MB
 
 ## <a name="when-do-i-migrate-machines-as-physical-servers"></a>Wann migriere ich Computer als physische Server?
 

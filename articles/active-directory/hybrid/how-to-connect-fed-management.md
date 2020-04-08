@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7249f2077666530964afa16ef47d69731cee846a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fcbeedddc65a916f869a778616779917a9571181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085223"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331981"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Verwaltung und Anpassung der Active Directory-Verbunddienste mit Azure AD Connect
 In diesem Artikel wird beschrieben, wie Active Directory-Verbunddienste (AD FS) mit Azure Active Directory (Azure AD) Connect verwaltet und angepasst werden. Darüber hinaus werden andere gängige AD FS-Aufgaben behandelt, die Sie möglicherweise zur vollständigen Konfiguration einer AD FS-Farm benötigen.
@@ -36,7 +36,7 @@ In diesem Artikel wird beschrieben, wie Active Directory-Verbunddienste (AD FS) 
 | [Hinzufügen eines AD FS-Servers](#addadfsserver) |Beschreibung des Vorgangs zum Erweitern einer AD FS-Farm mit einem zusätzlichen AD FS-Server |
 | [Hinzufügen eines AD FS-Webanwendungsproxy-Servers](#addwapserver) |Beschreibung des Vorgangs zum Erweitern einer AD FS-Farm mit einem zusätzlichen WAP-Server (Web Application Proxy) |
 | [Hinzufügen einer Verbunddomäne](#addfeddomain) |Beschreibung des Vorgangs zum Hinzufügen einer Verbunddomäne |
-| [Aktualisieren des SSL-Zertifikats](how-to-connect-fed-ssl-update.md)| Beschreibung des Vorgangs zum Aktualisieren des SSL-Zertifikats für eine AD FS-Farm |
+| [Aktualisieren des TLS-/SSL-Zertifikats](how-to-connect-fed-ssl-update.md)| Beschreibung des Vorgangs zum Aktualisieren des TLS-/SSL-Zertifikats für eine AD FS-Farm |
 | **Anpassen von AD FS** | |
 | [Hinzufügen eines benutzerdefinierten Firmenlogos oder einer Abbildung](#customlogo) |Beschreibung des Vorgangs zum Anpassen einer AD FS-Anmeldeseite mit einem Firmenlogo und einer Abbildung |
 | [Hinzufügen einer Anmeldebeschreibung](#addsignindescription) |Beschreibung des Vorgangs zum Hinzufügen einer Beschreibung für die Anmeldeseite |
@@ -45,14 +45,14 @@ In diesem Artikel wird beschrieben, wie Active Directory-Verbunddienste (AD FS) 
 ## <a name="manage-ad-fs"></a>Verwalten von AD FS
 Sie können verschiedene AD FS-bezogene Aufgaben in Azure AD Connect durchführen, die mithilfe des Azure AD Connect-Assistenten mit minimalem Benutzereingriff ausgeführt werden können. Nachdem Sie die Installation von Azure AD Connect durch Ausführen des Assistenten abgeschlossen haben, können Sie den Assistenten erneut ausführen, um zusätzliche Aufgaben durchzuführen.
 
-## <a name="repairthetrust"></a>Reparieren der Vertrauensstellung 
+## <a name="repair-the-trust"></a><a name="repairthetrust"></a>Reparieren der Vertrauensstellung 
 Mithilfe von Azure AD Connect können Sie den aktuellen Status der AD FS- und Azure AD-Vertrauensstellung überprüfen und entsprechende Maßnahmen ergreifen, um die Vertrauensstellung zu reparieren. Führen Sie diese Schritte aus, um Ihre Azure AD- und AD FS-Vertrauensstellung zu reparieren.
 
 1. Wählen Sie in der Liste mit den weiteren Aufgaben die Option **AAD- und ADFS-Vertrauensstellung reparieren** .
    ![AAD- und ADFS-Vertrauensstellung reparieren](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
 
 2. Geben Sie auf der Seite **Mit Azure AD verbinden** die Anmeldeinformationen des globalen Administrators für Azure AD an, und klicken Sie auf **Weiter**.
-   ![Mit Azure AD verbinden](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
+   ![Herstellen einer Verbindung mit Azure AD](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
 
 3. Geben Sie auf der Seite **Anmeldeinformationen für den Remotezugriff** die Anmeldeinformationen für den Domänenadministrator ein.
 
@@ -71,7 +71,7 @@ Mithilfe von Azure AD Connect können Sie den aktuellen Status der AD FS- und Az
 > [!NOTE]
 > Azure AD Connect kann nur selbstsignierte Zertifikate reparieren bzw. Maßnahmen dafür ergreifen. Azure AD Connect kann nicht zum Reparieren von Drittanbieterzertifikaten verwendet werden.
 
-## <a name="alternateid"></a>Erstellen eines Verbunds mit Azure AD mithilfe von AlternateID 
+## <a name="federate-with-azure-ad-using-alternateid"></a><a name="alternateid"></a>Erstellen eines Verbunds mit Azure AD mithilfe von AlternateID 
 Es wird empfohlen, lokal und in der Cloud identische Benutzerprinzipalnamen (UPN) zu verwenden. Wenn der lokale UPN eine nicht routingfähige Domäne verwendet (z.B. „Contoso.local“) oder aufgrund von lokalen Anwendungsabhängigkeiten nicht geändert werden kann, wird die Einrichtung einer alternativen Anmelde-ID empfohlen. Alternative Anmelde-IDs bieten die Möglichkeit, eine Anmeldeumgebung zu konfigurieren, in der sich Benutzer mit anderen Attributen als dem UPN anmelden können, z.B. mit der E-Mail-Adresse. Bei der Entscheidung für den Benutzerprinzipalnamen in Azure AD Connect wird standardmäßig das userPrincipalName-Attribut in Active Directory verwendet. Wenn Sie ein anderes Attribut als Benutzerprinzipalnamen auswählen und einen Verbund mit AD FS verwenden, konfiguriert Azure AD Connect AD FS für eine alternative Anmelde-ID. Ein Beispiel für die Auswahl eines anderen Attributs als Benutzerprinzipalnamen finden Sie unten:
 
 ![Auswahl des AlternateID-Attributs](./media/how-to-connect-fed-management/attributeselection.png)
@@ -87,7 +87,7 @@ Das Konfigurieren einer alternativen Anmelde-ID für AD FS besteht aus zwei Haup
 > [!NOTE]
 > Weitere Informationen zur alternativen Anmelde-ID sowie Schritte zur manuellen Konfiguration finden Sie unter [Konfigurieren alternativer Anmelde-IDs](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id)
 
-## <a name="addadfsserver"></a>Hinzufügen eines AD FS-Servers 
+## <a name="add-an-ad-fs-server"></a><a name="addadfsserver"></a>Hinzufügen eines AD FS-Servers 
 
 > [!NOTE]
 > Für Azure AD Connect ist das PFX-Zertifikat erforderlich, um einen AD FS-Server hinzuzufügen. Daher können Sie diesen Vorgang nur ausführen, wenn Sie die AD FS-Farm mit Azure AD Connect konfiguriert haben.
@@ -108,7 +108,7 @@ Das Konfigurieren einer alternativen Anmelde-ID für AD FS besteht aus zwei Haup
 
    ![Zertifikatkennwort](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
 
-    ![SSL-Zertifikat angeben](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
+    ![Angabe des TLS-/SSL-Zertifikats](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
 
 5. Geben Sie auf der Seite **AD FS-Server** den Servernamen oder die IP-Adresse ein, der bzw. die der AD FS-Farm hinzugefügt werden soll.
 
@@ -120,7 +120,7 @@ Das Konfigurieren einer alternativen Anmelde-ID für AD FS besteht aus zwei Haup
 
     ![Installation abgeschlossen](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
 
-## <a name="addwapserver"></a>Hinzufügen eines AD FS-WAP-Servers 
+## <a name="add-an-ad-fs-wap-server"></a><a name="addwapserver"></a>Hinzufügen eines AD FS-WAP-Servers 
 
 > [!NOTE]
 > Für Azure AD Connect ist das PFX-Zertifikat erforderlich, um einen WAP-Server hinzuzufügen. Daher können Sie diesen Vorgang nur ausführen, wenn Sie die AD FS-Farm mit Azure AD Connect konfiguriert haben.
@@ -136,7 +136,7 @@ Das Konfigurieren einer alternativen Anmelde-ID für AD FS besteht aus zwei Haup
 3. Geben Sie auf der Seite **SSL-Zertifikat angeben** das Kennwort für die PFX-Datei an, die Sie beim Konfigurieren der AD FS-Farm mit Azure AD Connect angegeben haben.
    ![Zertifikatkennwort](./media/how-to-connect-fed-management/WapServer3.PNG)
 
-    ![SSL-Zertifikat angeben](./media/how-to-connect-fed-management/WapServer4.PNG)
+    ![Angabe des TLS-/SSL-Zertifikats](./media/how-to-connect-fed-management/WapServer4.PNG)
 
 4. Fügen Sie den Server als WAP-Server hinzu. Da der WAP-Server möglicherweise nicht der Domäne angehört, werden Sie vom Assistenten zur Eingabe von Administratoranmeldeinformationen für den hinzugefügten Server aufgefordert.
 
@@ -154,7 +154,7 @@ Das Konfigurieren einer alternativen Anmelde-ID für AD FS besteht aus zwei Haup
 
    ![Installation abgeschlossen](./media/how-to-connect-fed-management/WapServer8.PNG)
 
-## <a name="addfeddomain"></a>Hinzufügen einer Verbunddomäne 
+## <a name="add-a-federated-domain"></a><a name="addfeddomain"></a>Hinzufügen einer Verbunddomäne 
 
 Das Hinzufügen einer Domäne, die einen Verbund mit Azure AD bilden soll, ist mithilfe von Azure AD Connect einfach. Azure AD Connect fügt die Domäne für den Verbund hinzu und ändert auch die Anspruchsregeln, damit der richtige Aussteller angezeigt wird, falls Sie über mehrere Domänen in einem Verbund mit Azure AD verfügen.
 
@@ -186,7 +186,7 @@ Das Hinzufügen einer Domäne, die einen Verbund mit Azure AD bilden soll, ist m
 ## <a name="ad-fs-customization"></a>AD FS-Anpassung
 Die folgenden Abschnitte enthalten detaillierte Informationen zu einigen häufigen Aufgaben, die zum Anpassen der AD FS-Anmeldeseite eventuell erforderlich sind.
 
-## <a name="customlogo"></a>Hinzufügen eines benutzerdefinierten Firmenlogos oder einer Abbildung 
+## <a name="add-a-custom-company-logo-or-illustration"></a><a name="customlogo"></a>Hinzufügen eines benutzerdefinierten Firmenlogos oder einer Abbildung 
 Zum Ändern des auf der **Anmeldeseite** angezeigten Firmenlogos verwenden Sie das unten angegebene Windows PowerShell-Cmdlet und die entsprechende Syntax.
 
 > [!NOTE]
@@ -197,12 +197,12 @@ Zum Ändern des auf der **Anmeldeseite** angezeigten Firmenlogos verwenden Sie d
 > [!NOTE]
 > Der *TargetName* -Parameter ist erforderlich. Das mit AD FS veröffentlichte Standarddesign heißt „Standard“.
 
-## <a name="addsignindescription"></a>Hinzufügen einer Anmeldebeschreibung 
+## <a name="add-a-sign-in-description"></a><a name="addsignindescription"></a>Hinzufügen einer Anmeldebeschreibung 
 Zum Hinzufügen einer Beschreibung für die **Anmeldeseite**verwenden Sie das folgende Windows PowerShell-Cmdlet und die folgende Syntax:
 
     Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
 
-## <a name="modclaims"></a>Ändern von AD FS-Anspruchsregeln 
+## <a name="modify-ad-fs-claim-rules"></a><a name="modclaims"></a>Ändern von AD FS-Anspruchsregeln 
 AD FS unterstützt eine umfangreiche Sprache für Ansprüche, die Sie zum Erstellen von benutzerdefinierten Anspruchsregeln verwenden können. Weitere Informationen finden Sie unter [Rolle der Anspruchsregelsprache](https://technet.microsoft.com/library/dd807118.aspx).
 
 In den folgenden Abschnitten wird beschrieben, wie Sie benutzerdefinierte Regeln für einige Szenarien in Zusammenhang mit dem Azure AD- und AD FS-Verbund schreiben können.
@@ -226,7 +226,7 @@ Durch die Verwendung von **add** anstelle von **issue** vermeiden Sie außerdem 
     NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
     => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
 
-Diese Regel definiert das temporäre Flag **idflag**, das auf **useguid** festgelegt ist, wenn **ms-ds-concistencyguid** für den Benutzer nicht ausgefüllt ist. Die Logik dahinter ist die Tatsache, dass AD FS leere Ansprüche nicht zulässt. Wenn Sie also in der Regel 1 die Ansprüche http://contoso.com/ws/2016/02/identity/claims/objectguid und http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid hinzufügen, erhalten Sie den Anspruch **msdsconsistencyguid** nur, wenn der Wert für den Benutzer ausgefüllt ist. Wenn er nicht ausgefüllt ist, merkt AD FS, dass ein leerer Wert vorhanden ist, und verwirft ihn sofort. Alle Objekte verfügen über **objectGuid**, sodass dieser Anspruch immer vorhanden ist, nachdem Regel 1 ausgeführt wurde.
+Diese Regel definiert das temporäre Flag **idflag**, das auf **useguid** festgelegt ist, wenn **ms-ds-concistencyguid** für den Benutzer nicht ausgefüllt ist. Die Logik dahinter ist die Tatsache, dass AD FS leere Ansprüche nicht zulässt. Wenn Sie also in der Regel 1 die Ansprüche `http://contoso.com/ws/2016/02/identity/claims/objectguid` und `http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid` hinzufügen, erhalten Sie den Anspruch **msdsconsistencyguid** nur, wenn der Wert für den Benutzer ausgefüllt ist. Wenn er nicht ausgefüllt ist, merkt AD FS, dass ein leerer Wert vorhanden ist, und verwirft ihn sofort. Alle Objekte verfügen über **objectGuid**, sodass dieser Anspruch immer vorhanden ist, nachdem Regel 1 ausgeführt wurde.
 
 **Regel 3: Ausgeben von „ms-ds-consistencyguid“ als unveränderliche ID, sofern vorhanden**
 

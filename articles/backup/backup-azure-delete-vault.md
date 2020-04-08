@@ -3,12 +3,12 @@ title: Löschen eines Microsoft Azure Recovery Services-Tresors
 description: In diesem Artikel erfahren Sie, wie Sie die Abhängigkeiten eines Microsoft Azure Backup-Recovery Services-Tresors (MARS) aufheben und diesen dann löschen.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 9ac9d0fd6411b512b319d02c94e86fa792243e0a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: f33f52048729b50015ba86db71118b9a21e1a2fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251431"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79500388"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Löschen eines Azure Backup-Recovery Services-Tresors
 
@@ -31,6 +31,8 @@ Sie können keinen Recovery Services-Tresor löschen, der über Abhängigkeiten 
 - Wenn sich Sicherungselemente im vorläufig gelöschten Zustand befinden, wird die Warnmeldung unten angezeigt, und Sie müssen warten, bis sie dauerhaft gelöscht werden. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud).
 
    ![Fehler beim Löschen des Tresors](./media/backup-azure-delete-vault/error-message-soft-delete.png)
+
+- Tresore mit registrierten Speicherkonten können nicht gelöscht werden. Weitere Informationen zum Aufheben der Registrierung des Kontos finden Sie unter [Aufheben der Registrierung eines Speicherkontos](manage-afs-backup.md#unregister-a-storage-account).
   
 Wählen Sie zum Löschen des Tresors das Szenario, das Ihrem Setup entspricht, und führen Sie die empfohlenen Schritte aus:
 
@@ -40,7 +42,7 @@ Ich verfüge über lokale Dateien und Ordner, die per Azure Backup-Agent geschü
 Ich verfüge über lokale Computer, die per MABS (Microsoft Azure Backup Server) oder DPM (System Center Data Protection Manager) in Azure geschützt sind. | Führen Sie die Schritte unter [Löschen von Sicherungselementen über die MABS-Verwaltungskonsole](#delete-backup-items-from-the-mabs-management-console) aus.
 Ich verfüge über geschützte Elemente in der Cloud (z.B. einen virtuellen IaaS-Computer oder eine Azure Files-Freigabe).  | Führen Sie die Schritte unter [Löschen von geschützten Elementen in der Cloud](#delete-protected-items-in-the-cloud) aus.
 Ich verfüge sowohl lokal als auch in der Cloud über geschützte Elemente. | Führen Sie die Schritte in den folgenden Abschnitten in der angegebenen Reihenfolge aus: <br> 1. [Löschen von geschützten Elementen in der Cloud](#delete-protected-items-in-the-cloud)<br> 2. [Löschen von Sicherungselementen über die MARS-Verwaltungskonsole](#delete-backup-items-from-the-mars-management-console) <br> 3. [Löschen von Sicherungselementen über die MABS-Verwaltungskonsole](#delete-backup-items-from-the-mabs-management-console)
-Ich verfüge weder lokal noch in der Cloud über geschützte Elemente, erhalte aber immer noch den „Fehler beim Löschen von Tresor“. | Führen Sie die Schritte unter [Löschen des Recovery Services-Tresors mit Azure Resource Manager](#delete-the-recovery-services-vault-by-using-azure-resource-manager) aus.
+Ich verfüge weder lokal noch in der Cloud über geschützte Elemente, erhalte aber immer noch den „Fehler beim Löschen von Tresor“. | Führen Sie die Schritte unter [Löschen des Recovery Services-Tresors mit Azure Resource Manager](#delete-the-recovery-services-vault-by-using-azure-resource-manager) aus. <br><br> Stellen Sie sicher, dass keine Speicherkonten beim Tresor registriert sind. Weitere Informationen zum Aufheben der Registrierung des Kontos finden Sie unter [Aufheben der Registrierung eines Speicherkontos](manage-afs-backup.md#unregister-a-storage-account).
 
 ## <a name="delete-protected-items-in-the-cloud"></a>Löschen von geschützten Elementen in der Cloud
 

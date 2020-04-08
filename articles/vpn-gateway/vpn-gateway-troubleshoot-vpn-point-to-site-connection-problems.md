@@ -6,14 +6,14 @@ services: vpn-gateway
 author: chadmath
 ms.service: vpn-gateway
 ms.topic: troubleshooting
-ms.date: 09/30/2019
+ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: 2c5e8b344cad6928ee586dc5a5b69095f0b14552
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 119f9c28b5413b8d2db5fa14ea839d1743f3d64a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863647"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297623"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Problembehandlung: Azure Point-to-Site-Verbindungsprobleme
 
@@ -39,7 +39,7 @@ Gehen Sie folgendermaßen vor, um dieses Problem zu beheben:
 
 2. Stellen Sie sicher, dass sich die folgenden Zertifikate im richtigen Speicherort befinden:
 
-    | Zertifikat | Location |
+    | Zertifikat | Position |
     | ------------- | ------------- |
     | AzureClient.pfx  | Aktueller Benutzer\Eigene Zertifikate\Zertifikate |
     | AzureRoot.cer    | Lokaler Computer\Vertrauenswürdige Stammzertifizierungsstellen|
@@ -115,7 +115,7 @@ Wenn Sie versuchen, mithilfe des VPN-Client mit einem virtuellen Netzwerk von Az
 
 1. Stellen Sie sicher, dass sich die folgenden Zertifikate im richtigen Speicherort befinden:
 
-    | Zertifikat | Location |
+    | Zertifikat | Position |
     | ------------- | ------------- |
     | AzureClient.pfx  | Aktueller Benutzer\Eigene Zertifikate\Zertifikate |
     | Azuregateway-*GUID*.cloudapp.net  | Aktueller Benutzer\Vertrauenswürdige Stammzertifizierungsstellen|
@@ -338,6 +338,19 @@ Aktualisieren Sie den NIC-Treiber:
 3. Doppelklicken Sie auf den Gerätenamen, und klicken Sie auf **Treiber aktualisieren** und anschließend auf **Automatisch nach aktualisierter Treibersoftware suchen**.
 4. Wenn Windows keinen neuen Treiber findet, können Sie auf der Website des Geräteherstellers nach Treibern suchen und sie gemäß den Anweisungen installieren.
 5. Starten Sie den Computer neu, und versuchen Sie erneut, eine Verbindung herzustellen.
+
+## <a name="vpn-client-error-dialing-vpn-connection-vpn-connection-name-status--vpn-platform-did-not-trigger-connection"></a>VPN-Clientfehler: Wählen von VPN-Verbindung <VPN Connection Name>, Status: VPN-Plattform hat Verbindung nicht hergestellt
+
+Möglicherweise wird auch der folgende Fehler in der Ereignisanzeige von RasClient angezeigt: "Der Benutzer <User> hat eine Verbindung mit dem Namen <VPN Connection Name> gewählt, die jedoch nicht hergestellt werden konnte. Der durch den Fehler zurückgegebene Ursachencode lautet 1460."
+
+### <a name="cause"></a>Ursache
+
+Azure VPN Client verfügt nicht über die aktivierte App-Berechtigung „Hintergrund-Apps“ in den App-Einstellungen für Windows.
+
+### <a name="solution"></a>Lösung
+
+1. Wechseln Sie in Windows zu „Einstellungen“ -> „Privatsphäre“ -> „Hintergrund-Apps“.
+2. Ändern Sie die Einstellung für „Ausführung von Apps im Hintergrund zulassen“ in „Ein“.
 
 ## <a name="error-file-download-error-target-uri-is-not-specified"></a>Error: Dateidownloadfehler. Ziel-URI ist nicht angegeben.
 

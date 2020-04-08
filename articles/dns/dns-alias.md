@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 08/09/2019
 ms.author: rohink
-ms.openlocfilehash: 085e5fc20a6b5356e012eb2f674fafc00cef828f
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: 271770935cf4cb83d4abc6e82a4f4b13ffe865b3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76937340"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295488"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Azure DNS-Aliaseinträge – Übersicht
 
@@ -66,7 +66,7 @@ So können beispielsweise „contoso.com“ und „www\.contoso.com“ jeweils a
 
 Genau wie ein Traffic Manager-Profil können Sie auch Aliasdatensätze verwenden, um an der Zonenspitze Ihrer DNS-Zone auf Azure CDN-Endpunkte zu verweisen. Dies ist nützlich, wenn Sie statische Websites mit Azure Storage und Azure CDN erstellen. Anschließend können Sie auf die Website zugreifen, ohne dem DNS-Namen „www“ voranstellen zu müssen.
 
-Wenn Ihre statische Website „ www.contoso.com “ heißt, können Ihre Benutzer mit „contoso.com“ auf Ihre Website zugreifen, ohne dem DNS-Namen „www“ voranstellen zu müssen.
+Wenn Ihre statische Website beispielsweise `www.contoso.com, your users can access your site using contoso.com` lautet, müssen Sie dem DNS-Namen nicht das Kürzel „www“ voranstellen.
 
 Wie zuvor beschrieben, werden CNAME-Einträge am Zonen-Apex nicht unterstützt. Daher können Sie keinen CNAME-Eintrag verwenden, um mit „contoso.com“ auf Ihren CDN-Endpunkt zu verweisen. Stattdessen können Sie einen Aliaseintrag verwenden, um direkt an der Zonenspitze auf einen CDN-Endpunkt zu verweisen.
 

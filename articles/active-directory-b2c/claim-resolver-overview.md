@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/02/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 02277d2da2e431ac1cefdd9b018af4c25f7d5a9a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 1c4bbd98682d964cfdf72031c7d6cb77cf42a809
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189836"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396068"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informationen zu Anspruchskonfliktlösern in benutzerdefinierten Azure Active Directory B2C-Richtlinien
 
@@ -46,7 +46,7 @@ In den folgenden Abschnitten werden die verfügbaren Anspruchskonfliktlöser auf
 
 ### <a name="culture"></a>Kultur
 
-| Anspruch | Beschreibung | Beispiel |
+| Anspruch | BESCHREIBUNG | Beispiel |
 | ----- | ----------- | --------|
 | {Culture:LanguageName} | Der aus zwei Buchstaben bestehende ISO-Code für die Sprache. | en |
 | {Culture:LCID}   | Die LCID des Sprachcodes. | 1033 |
@@ -55,7 +55,7 @@ In den folgenden Abschnitten werden die verfügbaren Anspruchskonfliktlöser auf
 
 ### <a name="policy"></a>Richtlinie
 
-| Anspruch | Beschreibung | Beispiel |
+| Anspruch | BESCHREIBUNG | Beispiel |
 | ----- | ----------- | --------|
 | {Policy:PolicyId} | Der Name der Richtlinie für die vertrauende Seite. | B2C_1A_signup_signin |
 | {Policy:RelyingPartyTenantId} | Die Mandanten-ID der Richtlinie für die vertrauende Seite. | Ihr-Mandan.onmicrosoft.com |
@@ -72,10 +72,12 @@ In den folgenden Abschnitten werden die verfügbaren Anspruchskonfliktlöser auf
 | {OIDC:LoginHint} |  Der Abfragezeichenfolgen-Parameter `login_hint`. | someone@contoso.com |
 | {OIDC:MaxAge} | Das `max_age`. | – |
 | {OIDC:Nonce} |Der Abfragezeichenfolgen-Parameter `Nonce`. | defaultNonce |
+| {OIDC:Password}| Das Benutzerkennwort aus dem [Flow für Kennwortanmeldeinformationen von Ressourcenbesitzern](ropc-custom.md)| password1| 
 | {OIDC:Prompt} | Der Abfragezeichenfolgen-Parameter `prompt`. | login |
-| {OIDC:Resource} |Der Abfragezeichenfolgen-Parameter `resource`. | – |
-| {OIDC:scope} |Der Abfragezeichenfolgen-Parameter `scope`. | openid |
 | {OIDC:RedirectUri} |Der Abfragezeichenfolgen-Parameter `redirect_uri`. | https://jwt.ms |
+| {OIDC:Resource} |Der Abfragezeichenfolgen-Parameter `resource`. | – |
+| {OIDC:Scope} |Der Abfragezeichenfolgen-Parameter `scope`. | openid |
+| {OIDC:Username}| Der Benutzername des Benutzers aus dem [Flow für Kennwortanmeldeinformationen von Ressourcenbesitzern](ropc-custom.md)| emily@contoso.com| 
 
 ### <a name="context"></a>Kontext
 
@@ -94,7 +96,7 @@ Jeder Parametername, der als Bestandteil einer OIDC- oder OAuth2-Anforderung ein
 
 | Anspruch | BESCHREIBUNG | Beispiel |
 | ----- | ----------------------- | --------|
-| {OAUTH-KV:campaignId} | Ein Abfragezeichenfolgen-Parameter. | hawaii |
+| {OAUTH-KV:campaignId} | Ein Abfragezeichenfolgen-Parameter. | Hawaii |
 | {OAUTH-KV:app_session} | Ein Abfragezeichenfolgen-Parameter. | A3C5R |
 | {OAUTH-KV:loyalty_number} | Ein Abfragezeichenfolgen-Parameter. | 1234 |
 | {OAUTH-KV:beliebige benutzerdefinierte Abfragezeichenfolge} | Ein Abfragezeichenfolgen-Parameter. | – |
@@ -112,7 +114,7 @@ Jeder Parametername, der als Bestandteil einer OIDC- oder OAuth2-Anforderung ein
 | ----- | ----------- | --------|
 | {SAML:AuthnContextClassReferences} | Der Wert des `AuthnContextClassRef`-Elements aus der SAML-Anforderung. | urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport |
 | {SAML:NameIdPolicyFormat} | Das `Format`-Attribut aus dem `NameIDPolicy`-Element der SAML-Anforderung. | urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress |
-| {SAML:Issuer} |  Der Wert des SAML-`Issuer`-Elements aus der SAML-Anforderung.| https://contoso.com |
+| {SAML:Issuer} |  Der Wert des SAML-`Issuer`-Elements aus der SAML-Anforderung.| `https://contoso.com` |
 | {SAML:AllowCreate} | Der Wert des `AllowCreate`-Attributs aus dem `NameIDPolicy`-Element der SAML-Anforderung. | True |
 | {SAML:ForceAuthn} | Der Wert des `ForceAuthN`-Attributs aus dem `AuthnRequest`-Element der SAML-Anforderung. | True |
 | {SAML:ProviderName} | Der Wert des `ProviderName`-Attributs aus dem `AuthnRequest`-Element der SAML-Anforderung.| Contoso.com |
@@ -143,7 +145,7 @@ Einstellungen:
 
 ### <a name="restful-technical-profile"></a>Technisches Profil „RESTful“
 
-In einem technischen [RESTful](restful-technical-profile.md)-Profil können Sie die Sprache des Benutzers, den Richtliniennamen, den Bereich und die Client-ID senden. Basierend auf diesen Ansprüchen kann die REST-API eine benutzerdefinierte Geschäftslogik ausführen und bei Bedarf eine lokalisierte Fehlermeldung auslösen.
+In einem technischen [RESTful](restful-technical-profile.md)-Profil können Sie die Sprache des Benutzers, den Richtliniennamen, den Bereich und die Client-ID senden. Basierend auf den Ansprüchen kann die REST-API eine benutzerdefinierte Geschäftslogik ausführen und bei Bedarf eine lokalisierte Fehlermeldung auslösen.
 
 Das folgende Beispiel zeigt ein technisches RESTful-Profil mit diesem Szenario:
 
@@ -160,7 +162,7 @@ Das folgende Beispiel zeigt ein technisches RESTful-Profil mit diesem Szenario:
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" AlwaysUseDefaultValue="true" />
     <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" AlwaysUseDefaultValue="true" />
-    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:Scope}" AlwaysUseDefaultValue="true" />
     <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" AlwaysUseDefaultValue="true" />
   </InputClaims>
   <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
@@ -173,9 +175,9 @@ Bei der Verwendung von Anspruchskonfliktlösern können Sie den Anmeldenamen auf
 
 ### <a name="dynamic-ui-customization"></a>Dynamische Benutzeroberflächenanpassung
 
-Mit Azure AD B2C können Sie Abfragezeichenfolgen-Parameter an Ihre HTML-Inhaltsdefinitions-Endpunkte übergeben, um den Seiteninhalt dynamisch zu rendern. So können Sie z. B. das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf der Basis eines benutzerdefinierten Parameters ändern, den Sie von der Web- oder Mobilanwendung übergeben. Weitere Informationen finden Sie unter [Dynamisches Konfigurieren der Benutzeroberfläche mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-ui-customization.md). Sie können Ihre HTML-Seite auch auf Grundlage eines Sprachparameters lokalisieren, oder Sie können den Inhalt basierend auf der Client-ID ändern.
+Mit Azure AD B2C können Sie Abfragezeichenfolgen-Parameter an Ihre HTML-Inhaltsdefinitions-Endpunkte übergeben, um den Seiteninhalt dynamisch zu rendern. Mit diesem Feature können Sie z. B. das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf der Basis eines benutzerdefinierten Parameters ändern, den Sie von der Web- oder Mobilanwendung übergeben. Weitere Informationen finden Sie unter [Dynamisches Konfigurieren der Benutzeroberfläche mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri). Sie können Ihre HTML-Seite auch auf Grundlage eines Sprachparameters lokalisieren, oder Sie können den Inhalt basierend auf der Client-ID ändern.
 
-Im folgenden Beispiel wird in der Abfragezeichenfolge ein Parameter namens **campaignId** mit einem Wert von `hawaii`, einem **language**-Code (Sprache) von `en-US` und **app** für die Client-ID übergeben:
+Im folgenden Beispiel wird in der Abfragezeichenfolge ein Parameter namens **campaignId** mit einem Wert von `Hawaii`, einem **language**-Code (Sprache) von `en-US` und **app** für die Client-ID übergeben:
 
 ```XML
 <UserJourneyBehaviors>

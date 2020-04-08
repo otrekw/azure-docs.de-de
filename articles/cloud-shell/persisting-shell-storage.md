@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: 15a5770eb2964f0f2039fe93de904af65d4c81ed
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: d4d59642f638e7b1221c35a4bb281923571d5066
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598747"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297585"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Beibehalten von Dateien in Azure Cloud Shell
 Cloud Shell nutzt Azure-Dateispeicher, um Dateien sitzungsübergreifend beizubehalten. Beim ersten Start fordert Cloud Shell Sie auf, eine neue oder vorhandene Dateifreigabe zu verknüpfen, um Dateien sitzungsübergreifend beizubehalten.
@@ -97,6 +97,7 @@ Cloud Shell nutzt die beiden folgenden Methoden zum Beibehalten von Dateien:
 
 ### <a name="use-the-clouddrive-command"></a>Verwenden des Befehls `clouddrive`
 Mit Cloud Shell können Sie den Befehl `clouddrive` ausführen, mit dem Sie die in Cloud Shell eingebundene Dateifreigabe manuell aktivieren können.
+
 ![Ausführen des Befehls „clouddrive“](media/persisting-shell-storage/clouddrive-h.png)
 
 ### <a name="list-clouddrive"></a>Auflisten von `clouddrive`

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 28ab6ca9b87bb00cbb7b5e329b7ff08972ba370a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a0dbd92533703a56f1ec2478fab8944656129247
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979136"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80295506"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Hinzufügen eines Artefaktrepositorys zu Ihrem Lab in DevTest Labs
 DevTest Labs ermöglicht das Angeben eines Artefakts, das einem virtuellen Computer hinzugefügt werden soll – entweder beim Erstellen des virtuellen Computers oder nach Erstellung des virtuellen Computers. Bei diesem Artefakt kann es sich beispielsweise um ein Tool oder um eine Anwendung handeln, das bzw. die Sie auf dem virtuellen Computer installieren möchten. Artefakte werden in einer JSON-Datei definiert, die aus einem GitHub- oder Azure DevOps-Git-Repository geladen wird.
@@ -46,7 +46,7 @@ Bevor Sie Ihrem Lab ein Repository hinzufügen können, rufen Sie zunächst wich
 10. Schließen Sie GitHub.   
 
 ### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>Abrufen der Klon-URL und des persönlichen Zugriffstokens für Azure Repos
-1. Wechseln Sie zur Startseite Ihrer Teamsammlung (z.B. https://contoso-web-team.visualstudio.com) ), und wählen Sie dann das Projekt aus.
+1. Wechseln Sie zur Startseite Ihrer Teamsammlung (z. B. `https://contoso-web-team.visualstudio.com`), und wählen Sie dann das Projekt aus.
 2. Wählen Sie auf der Startseite des Projekts **Code**.
 3. Um die Klon-URL für das Projekt anzuzeigen, wählen Sie auf der Seite **Code** die Option **Klonen** aus.
 4. Speichern Sie die URL. Sie benötigen die URL später.
@@ -348,7 +348,7 @@ Set-AzContext -SubscriptionId <Your Azure subscription ID>
 ### <a name="parameters"></a>Parameter
 Das PowerShell-Beispielskript in diesem Artikel verwendet folgende Parameter:
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --------- | ----------- |
 | LabName | Der Name des Labs. |
 | ArtifactRepositoryName | Der Name für das neue Artefaktrepository. Ohne Angabe erstellt das Skript einen Zufallsnamen für das Repository. |

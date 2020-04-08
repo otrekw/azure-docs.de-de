@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cc61ef5980a8019514f05c1db47f2300fff3603b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 887c9432f04cce775e045bb6da83f0af4a4a4bce
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78187235"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396890"
 ---
 # <a name="predicates-and-predicatevalidations"></a>„Predicates“ und „PredicateValidations“
 
@@ -36,7 +36,7 @@ Das **Predicates**-Element muss direkt nach dem **ClaimsSchema**-Element im [Bui
 
 Das **Predicates**-Element enthält das folgende Element:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | Predicate | 1:n | Eine Liste mit Prädikaten. |
 
@@ -45,7 +45,7 @@ Das **Predicate**-Element enthält die folgenden Attribute:
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein Bezeichner, der für das Prädikat verwendet wird. Andere Elemente können diesen Bezeichner in der Richtlinie verwenden. |
-| Methode | Ja | Der für die Überprüfung zu verwendende Methodentyp. Mögliche Werte: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters** oder **IsDateRange**. Mit dem **IsLengthRange**-Wert wird überprüft, ob die Länge eines Zeichenfolgen-Anspruchswerts innerhalb des Bereichs der angegebenen minimalen und maximalen Parameter liegt. Mit dem **MatchesRegex**-Wert wird überprüft, ob ein Zeichenfolgen-Anspruchswert einem regulären Ausdruck entspricht. Mit dem **IncludesCharacters**-Wert wird überprüft, ob ein Zeichenfolgen-Anspruchswert einen bestimmten Zeichensatz enthält. Mit dem **IsDateRange**-Wert wird überprüft, ob ein Datumsanspruchswert innerhalb eines Bereichs von angegebenen minimalen und maximalen Parametern liegt. |
+| Methode | Ja | Der für die Überprüfung zu verwendende Methodentyp. Mögliche Werte: [IsLengthRange](#islengthrange), [MatchesRegex](#matchesregex), [IncludesCharacters](#includescharacters) oder [IsDateRange](#isdaterange).  |
 | HelpText | Nein | Eine Fehlermeldung für Benutzer, wenn die Überprüfung einen Fehler ergibt. Diese Zeichenfolge kann mithilfe der [Sprachanpassung](localization.md) lokalisiert werden. |
 
 Das **Predicate**-Element enthält die folgenden Elemente:
@@ -57,7 +57,7 @@ Das **Predicate**-Element enthält die folgenden Elemente:
 
 Das **Parameters**-Element enthält die folgenden Elemente:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | Parameter | 1:n | Die Parameter für den Methodentyp der Zeichenfolgenüberprüfung. |
 
@@ -67,7 +67,19 @@ Das **Parameter**-Element enthält die folgenden Attribute:
 | ------- | ----------- | ----------- |
 | Id | 1:1 | Der Bezeichner des Parameters. |
 
-Das folgende Beispiel zeigt eine `IsLengthRange`-Methode mit den Parametern `Minimum` und `Maximum`, die den Längenbereich der Zeichenfolge angeben:
+### <a name="predicate-methods"></a>Prädikatmethoden
+
+#### <a name="islengthrange"></a>IsLengthRange
+
+Mit der Methode „IsLengthRange“ wird überprüft, ob die Länge eines Zeichenfolgen-Anspruchswerts innerhalb des Bereichs der angegebenen minimalen und maximalen Parameter liegt. Das „predicate“-Element unterstützt die folgenden Parameter:
+
+| Parameter | Erforderlich | BESCHREIBUNG |
+| ------- | ----------- | ----------- |
+| Maximum | Ja | Die maximale Anzahl von Zeichen, die eingegeben werden können. |
+| Minimum | Ja | Die minimale Anzahl von Zeichen, die eingegeben werden müssen. |
+
+
+Das folgende Beispiel zeigt eine „IsLengthRange“-Methode mit den Parametern `Minimum` und `Maximum`, die den Längenbereich der Zeichenfolge angeben:
 
 ```XML
 <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
@@ -77,6 +89,14 @@ Das folgende Beispiel zeigt eine `IsLengthRange`-Methode mit den Parametern `Min
   </Parameters>
 </Predicate>
 ```
+
+#### <a name="matchesregex"></a>MatchesRegex
+
+Mit der Methode „MatchesRegex“ wird überprüft, ob ein Zeichenfolgen-Anspruchswert einem regulären Ausdruck entspricht. Das „predicate“-Element unterstützt die folgenden Parameter:
+
+| Parameter | Erforderlich | BESCHREIBUNG |
+| ------- | ----------- | ----------- |
+| RegularExpression | Ja | Das Muster eines regulären Ausdrucks, mit dem Übereinstimmungen gefunden werden sollen. |
 
 Das folgende Beispiel zeigt eine `MatchesRegex`-Methode mit dem Parameter `RegularExpression`, der einen regulären Ausdruck angibt:
 
@@ -88,6 +108,14 @@ Das folgende Beispiel zeigt eine `MatchesRegex`-Methode mit dem Parameter `Regul
 </Predicate>
 ```
 
+#### <a name="includescharacters"></a>IncludesCharacters
+
+Mit der Methode „IncludesCharacters“ wird überprüft, ob ein Zeichenfolgen-Anspruchswert einen Zeichensatz enthält. Das „predicate“-Element unterstützt die folgenden Parameter:
+
+| Parameter | Erforderlich | BESCHREIBUNG |
+| ------- | ----------- | ----------- |
+| CharacterSet | Ja | Der Zeichensatz, der eingegeben werden kann. Dies sind beispielsweise Kleinbuchstaben `a-z`, Großbuchstaben `A-Z`, Ziffern `0-9` oder eine Liste von Symbolen wie `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!`. |
+
 Das folgende Beispiel zeigt eine `IncludesCharacters`-Methode mit dem Parameter `CharacterSet`, der den Zeichensatz angibt:
 
 ```XML
@@ -98,7 +126,16 @@ Das folgende Beispiel zeigt eine `IncludesCharacters`-Methode mit dem Parameter 
 </Predicate>
 ```
 
-Das folgende Beispiel zeigt eine `IsDateRange`-Methode mit den Parametern `Minimum` und `Maximum`, die den Datumsbereich im Format `yyyy-MM-dd` und `Today` angeben:
+#### <a name="isdaterange"></a>IsDateRange
+
+Mit der Methode „IsDateRange“ wird überprüft, ob ein Datumsanspruchswert innerhalb eines Bereichs von angegebenen minimalen und maximalen Parametern liegt. Das „predicate“-Element unterstützt die folgenden Parameter:
+
+| Parameter | Erforderlich | BESCHREIBUNG |
+| ------- | ----------- | ----------- |
+| Maximum | Ja | Das größtmögliche Datum, das eingegeben werden kann. Das Format des Datums entspricht der Konvention `yyyy-mm-dd` oder `Today`. |
+| Minimum | Ja | Das kleinstmögliche Datum, das eingegeben werden kann. Das Format des Datums entspricht der Konvention `yyyy-mm-dd` oder `Today`.|
+
+Das folgende Beispiel zeigt eine `IsDateRange`-Methode mit den Parametern `Minimum` und `Maximum`, die den Datumsbereich im Format `yyyy-mm-dd` und `Today` angeben:
 
 ```XML
 <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 1970-01-01 and today.">
@@ -165,7 +202,7 @@ Das **PredicateGroups**-Element enthält das folgende Attribut:
 
 Das **PredicateGroups**-Element enthält die folgenden Elemente:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | UserHelpText | 0:1 |  Eine Beschreibung des Prädikats, die nützlich sein kann, damit Benutzer wissen, welchen Wert sie eingeben müssen. |
 | PredicateReferences | 1:n | Eine Liste mit Prädikatverweisen. |
@@ -388,3 +425,7 @@ Fügen Sie in Ihrem Anspruchstyp ein **PredicateValidationReference**-Element hi
   <PredicateValidationReference Id="CustomDateRange" />
 </ClaimType>
  ```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Informieren Sie sich über das [Konfigurieren der Kennwortkomplexität mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-password-complexity.md) unter Verwendung von Prädikatüberprüfungen.

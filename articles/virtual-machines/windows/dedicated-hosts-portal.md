@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure
 ms.date: 03/10/2020
 ms.author: cynthn
-ms.openlocfilehash: b6f5e155b76535c4d9e0080983d5f54cec3adb01
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: 3d014014b540e5ea5959483427dec4b239ceaf7b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79086948"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476789"
 ---
 # <a name="deploy-vms-to-dedicated-hosts-using-the-portal"></a>Bereitstellen von VMs auf dedizierten Hosts über das Portal
 
@@ -35,25 +35,25 @@ Dieser Artikel führt Sie durch die Erstellung eines [dedizierten Azure-Hosts](d
 1. Belassen Sie die übrigen Standardeinstellungen, und wählen Sie dann die Schaltfläche **Überprüfen + erstellen** am unteren Rand der Seite aus.
 1. Wenn eine Meldung über die erfolgreiche Validierung angezeigt wird, wählen Sie **Erstellen** aus.
 
-## <a name="add-an-existing-vm"></a>Hinzufügen einer vorhandenen VM 
+## <a name="add-an-existing-vm"></a>Hinzufügen eines vorhandenen virtuellen Computers 
 
-Sie können einem dedizierten Host eine vorhandene VM hinzufügen, aber die VM muss zunächst beendet bzw. ihre Zuordnung aufgehoben werden. Stellen Sie vor dem Verschieben einer VM auf einen dedizierten Host sicher, dass die VM-Konfiguration unterstützt wird:
+Sie können einem dedizierten Host eine VM hinzufügen. Diese muss allerdings zuerst beendet bzw. Ihre Zuordnung muss aufgehoben werden. Vergewissern Sie sich vor dem Verschieben eines virtuellen Computers auf einen dedizierten Host, dass die VM-Konfiguration unterstützt wird:
 
-- Die VM-Größe muss sich in derselben Größenfamilie wie der dedizierte Host befinden. Wenn der dedizierte Host z. B. DSv3 ist, kann die VM-Größe Standard_D4s_v3, aber nicht Standard_A4_v2 sein. 
-- Die VM muss sich in derselben Region wie der dedizierte Host befinden.
-- Die VM darf nicht Teil einer Näherungsplatzierungsgruppe sein. Entfernen Sie die VM aus der Näherungsplatzierungsgruppe, bevor Sie sie auf einen dedizierten Host verschieben. Weitere Informationen finden Sie unter [Verschieben einer VM aus einer Näherungsplatzierungsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group).
-- Die VM darf sich nicht in einer Verfügbarkeitsgruppe befinden.
-- Wenn sich die VM in einer Verfügbarkeitszone befindet, muss es sich um dieselbe Verfügbarkeitszone wie die Hostgruppe handeln. Die Verfügbarkeitszoneneinstellungen für die VM und die Hostgruppe müssen identisch sein.
+- Die VM-Größe muss sich in der gleichen Größenfamilie befinden wie der dedizierte Host. Wenn der dedizierte Host z. B. DSv3 ist, kann die VM-Größe Standard_D4s_v3, aber nicht Standard_A4_v2 sein. 
+- Der virtuelle Computer muss sich in der gleichen Region befinden wie der dedizierte Host.
+- Der virtuelle Computer darf nicht Teil einer Näherungsplatzierungsgruppe sein. Entfernen Sie den virtuellen Computer aus der Näherungsplatzierungsgruppe, bevor Sie ihn auf einen dedizierten Host verschieben. Weitere Informationen finden Sie unter [Verschieben einer vorhandenen VM aus einer Näherungsplatzierungsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group).
+- Der virtuelle Computer darf sich nicht in einer Verfügbarkeitsgruppe befinden.
+- Wenn sich der virtuelle Computer in einer Verfügbarkeitszone befindet, muss es sich dabei um die gleiche Verfügbarkeitszone handeln wie bei der Hostgruppe. Die Verfügbarkeitszoneneinstellungen für den virtuellen Computer und die Hostgruppe müssen identisch sein.
 
-Verschieben Sie die VM mithilfe des [Portals](https://portal.azure.com) auf einen dedizierten Host.
+Verschieben Sie den virtuellen Computer mithilfe des [Portals](https://portal.azure.com) auf einen dedizierten Host.
 
-1. Öffnen Sie die Seite für die VM.
-1. Wählen Sie **Beenden** aus, um die VM zu beenden bzw. ihre Zuordnung aufzuheben.
+1. Öffnen Sie die Seite für den virtuellen Computer.
+1. Wählen Sie **Beenden** aus, um den virtuellen Computer zu beenden bzw. seine Zuordnung aufzuheben.
 1. Wählen Sie im Menü auf der linken Seite die Option **Konfiguration** aus.
-1. Wählen Sie eine Hostgruppe und einen Host aus den Dropdownmenüs aus.
-1. Wählen Sie im oberen Bereich der Seite **Speichern** aus, wenn Sie fertig sind.
-1. Nachdem die VM dem Host hinzugefügt wurde, klicken Sie im linken Menü auf **Übersicht**.
-1. Wählen Sie oben auf der Seite **Starten** aus, um die VM neu zu starten.
+1. Wählen Sie in den entsprechenden Dropdownmenüs eine Hostgruppe und einen Host aus.
+1. Wählen Sie abschließend im oberen Bereich der Seite **Speichern** aus.
+1. Klicken Sie im linken Menü auf **Übersicht**, nachdem der virtuelle Computer dem Host hinzugefügt wurde.
+1. Wählen Sie oben auf der Seite **Starten** aus, um den virtuellen Computer neu zu starten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

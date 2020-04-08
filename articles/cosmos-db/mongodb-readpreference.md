@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 10e6ed556abe8f8c438e5436fbb93c1b70b85d2b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 579767a0d535605a2316c35bd413a75474b5a3de
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445159"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410001"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Globale Verteilung von Lesevorgängen mit der Azure Cosmos DB-API für MongoDB
 
@@ -86,7 +86,7 @@ Weitere Informationen zum Verhalten der einzelnen Lesepräferenzeinstellungen fi
 Basierend auf allgemeine Szenarien empfiehlt sich die Verwendung der folgenden Einstellungen:
 
 1. Wenn **niedrigere Latenz für Lesevorgänge** erforderlich ist, verwenden Sie den Lesepräferenzmodus **NEAREST**. Mit dieser Einstellung werden die Lesevorgänge an die nächste verfügbare Region weitergeleitet. Beachten Sie Folgendes: Wenn die nächstgelegene Region die WRITE-Region ist, werden diese Vorgänge an diese Region weitergeleitet.
-2. Wenn **Hochverfügbarkeit und Geoverteilung von Lesevorgängen** erforderlich sind (Latenz ist keine Einschränkung), verwenden Sie den Lesepräferenzmodus **SECONDARY PREFERRED**. Mit dieser Einstellung werden die Lesevorgänge an eine verfügbare READ-Region weitergeleitet. Wenn keine READ-Region verfügbar ist, werden Anforderungen an die WRITE-Region weitergeleitet.
+2. Wenn **Hochverfügbarkeit und Geoverteilung von Lesevorgängen** erforderlich sind (Latenz ist keine Einschränkung), verwenden Sie den Lesepräferenzmodus **PRIMARY PREFERRED** oder **SECONDARY PREFERRED**. Mit dieser Einstellung werden die Lesevorgänge jeweils an eine verfügbare WRITE- oder READ-Region weitergeleitet. Wenn die Region nicht verfügbar ist, werden Anforderungen gemäß dem Lesevoreinstellungsverhalten an die nächste verfügbare Region weitergeleitet.
 
 Der folgende Codeausschnitt aus der Beispielanwendung veranschaulicht, wie die Lesepräferenz NEAREST in NodeJS konfiguriert wird:
 

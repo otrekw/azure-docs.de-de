@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: reference
 ms.date: 10/03/2019
 ms.author: brendm
-ms.openlocfilehash: 869a47469f8e0429d3726651c28f5a58acfcb856
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 33d13d2d4fa9003ef041c4c96be83a69ac595a78
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76279042"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298777"
 ---
 # <a name="az-spring-cloud"></a>az spring-cloud
 
@@ -82,7 +82,7 @@ ms.locfileid: "76279042"
 
 Erstellt eine neue App mit einer Standardbereitstellung in Azure Spring Cloud
 
-```cli
+```azurecli
 az spring-cloud create  --name -n
                         --resource-group -g
                         --location -l
@@ -103,7 +103,7 @@ az spring-cloud create  --name -n
 
 Erstellt eine neue Azure Spring Cloud-Instanz in der Region „USA, Westen“
 
-```cli
+```azurecli
 az spring-cloud create -n MyService -g MyResourceGroup -l westus
 ```
 
@@ -111,7 +111,7 @@ az spring-cloud create -n MyService -g MyResourceGroup -l westus
 
 Löscht eine Azure Spring Cloud-Instanz
 
-```cli
+```azurecli
 az spring cloud --name -n
                 --resource-group -g
                 --no-wait
@@ -130,7 +130,7 @@ az spring cloud --name -n
 
 Löscht die Azure Spring Cloud-Instanz „MyService“ aus „MyResourceGroup“
 
-```cli
+```azurecli
 az spring-cloud delete -n MyService -g MyResourceGroup
 ```
 
@@ -138,7 +138,7 @@ az spring-cloud delete -n MyService -g MyResourceGroup
 
 Listet alle Azure Spring Cloud-Instanzen auf, die der angegebenen Ressourcengruppe zugeordnet sind. Wenn keine Ressourcengruppe angegeben ist, werden die Abonnement-IDs aufgelistet.
 
-```cli
+```azurecli
 az spring-cloud list --resource-group -g
 ```
 
@@ -150,7 +150,7 @@ az spring-cloud list --resource-group -g
 
 Zeigt Details zur angegebenen Azure Spring Cloud-Instanz an
 
-```cli
+```azurecli
 az spring-cloud show --name -n
                      -- resource-group -g
 ```
@@ -164,7 +164,7 @@ az spring-cloud show --name -n
 
 Erstellt eine neue App in einer Azure Spring Cloud-Instanz
 
-```cli
+```azurecli
 az spring-cloud app create --name -n
                             --resource-group -g
                             --service -s
@@ -193,13 +193,13 @@ az spring-cloud app create --name -n
 
 Erstellt eine App mit der Standardkonfiguration.
 
-```cli
+```azurecli
 az spring-cloud app create -n MyApp -s MyService
 ```
 
 Erstellt eine öffentlich zugängliche App mit drei Instanzen.  Jede Instanz verfügt über 3 GB Arbeitsspeicher und 2 CPU-Kerne.
 
-```cli
+```azurecli
 az spring-cloud app create -n MyApp -s MyService --is-public true --cpu 2 --memory 3
 ```
 
@@ -207,7 +207,7 @@ az spring-cloud app create -n MyApp -s MyService --is-public true --cpu 2 --memo
 
 Löscht eine App in Azure Spring Cloud
 
-```cli
+```azurecli
 az spring cloud app delete  --name -n
                             --resource-group -g
                             --service -s
@@ -223,7 +223,7 @@ az spring cloud app delete  --name -n
 
 Stellt eine App aus dem Quellcode oder einer vorkonfigurierten Binärdatei für eine App in Azure Spring Cloud bereit und aktualisiert die zugehörigen Konfigurationen
 
-```cli
+```azurecli
 az spring cloud app deploy  --name -n
                             --resource-group -g
                             --service -s
@@ -264,19 +264,19 @@ az spring cloud app deploy  --name -n
 
 Stellen Sie Quellcode für eine App bereit. Dadurch wird das aktuelle Verzeichnis gepackt, eine Binärdatei mit dem Pivotal Build Service erstellt und anschließend für die App bereitgestellt.
 
-```cli
+```azurecli
 az spring-cloud app deploy -n MyApp -s MyService
 ```
 
 Stellen Sie mithilfe von JVM-Optionen und Umgebungsvariablen eine vorkonfigurierte JAR-Datei für eine App bereit.
 
-```cli
+```azurecli
 az spring-cloud app deploy -n MyApp -s MyService --jar-path app.jar --jvm-options="-XX:+UseG1GC -XX:+UseStringDeduplication" --env foo=bar
 ```
 
 Stellen Sie Quellcode für eine bestimmte Bereitstellung einer App bereit.
 
-```cli
+```azurecli
 az spring-cloud app deploy -n MyApp -s Myspring-cloud -d green-deployment
 ```
 
@@ -284,7 +284,7 @@ az spring-cloud app deploy -n MyApp -s Myspring-cloud -d green-deployment
 
 Listet alle Apps in der Azure Spring Cloud-Instanz auf
 
-```cli
+```azurecli
 az spring-cloud app list --resource-group -g
                          --service -s
 ```
@@ -298,7 +298,7 @@ az spring-cloud app list --resource-group -g
 
 Startet Instanzen der App neu.  Als Standard wird die Produktionsbereitstellung verwendet.
 
-```cli
+```azurecli
 az spring-cloud app restart --name -n
                             --resource-group -g
                             --service -s
@@ -321,7 +321,7 @@ az spring-cloud app restart --name -n
 
 Skaliert eine App oder ihre Bereitstellungen manuell
 
-```cli
+```azurecli
 az spring-cloud app scale --name -n
                           --resource-group -g
                           --service -s
@@ -348,15 +348,15 @@ az spring-cloud app scale --name -n
 
 ### <a name="examples"></a>Beispiele
 
-Skalieren Sie eine App zentral auf 4 CPU-Kerne und 8 GB Arbeitsspeicher pro Instanz hoch.
+Skalieren Sie eine App auf 4 CPU-Kerne und 8 GB Arbeitsspeicher pro Instanz hoch.
 
-```cli
+```azurecli
 az spring-cloud app scale -n MyApp -s MyService --cpu 3 --memory 8
 ```
 
-Erweitern Sie eine Bereitstellung der App auf fünf Instanzen.
+Skalieren Sie eine Bereitstellung der App auf fünf Instanzen auf.
 
-```cli
+```azurecli
 az spring-cloud app scale -n MyApp -s MyService -d green-deployment --instance-count 5
 ```
 
@@ -364,7 +364,7 @@ az spring-cloud app scale -n MyApp -s MyService -d green-deployment --instance-c
 
 Legt die Konfigurationsoptionen für die Produktionsbereitstellung der App fest
 
-```cli
+```azurecli
 az spring-cloud app set-deployment --deployment -d
                                    --name -n
                                    --resource-group -g
@@ -387,7 +387,7 @@ az spring-cloud app set-deployment --deployment -d
 
 Tauschen Sie eine Stagingbereitstellung der App in der Produktion aus.
 
-```cli
+```azurecli
 az spring-cloud app set-deployment -d green-deployment -n MyApp -s MyService
 ```
 
@@ -395,7 +395,7 @@ az spring-cloud app set-deployment -d green-deployment -n MyApp -s MyService
 
 Zeigt Details einer App in Azure Spring Cloud an
 
-```cli
+```azurecli
 az spring-cloud app show --name -n
                          --resource-group -g
                          --service -s
@@ -411,7 +411,7 @@ az spring-cloud app show --name -n
 
 Zeigt das Buildprotokoll der letzten Bereitstellung aus dem Quellcode an.  Als Standard wird die Produktionsumgebung verwendet.
 
-```cli
+```azurecli
 az spring-cloud app show-deploy-log --name -n
                                     --resource-group -g
                                     --service -s
@@ -432,7 +432,7 @@ az spring-cloud app show-deploy-log --name -n
 
 Startet Instanzen der App.  Als Standard wird die Produktionsumgebung verwendet.
 
-```cli
+```azurecli
 az spring-cloud app start --name -n
                           --resource-group -g
                           --service -s
@@ -455,7 +455,7 @@ az spring-cloud app start --name -n
 
 Hält Instanzen der App an.  Als Standard wird die Produktionsumgebung verwendet.
 
-```cli
+```azurecli
 az spring-cloud app stop --name -n
                          --resource-group -g
                          --service -s
@@ -478,7 +478,7 @@ az spring-cloud app stop --name -n
 
 Aktualisiert die gespeicherte Konfiguration einer App
 
-```cli
+```azurecli
 az spring-cloud app update --name -n
                            --resource-group -g
                            --service -s
@@ -511,7 +511,7 @@ az spring-cloud app update --name -n
 
 Fügt der App eine Umgebungsvariable hinzu
 
-```cli
+```azurecli
 az spring-cloud app update --env foo=bar
 ```
 
@@ -519,7 +519,7 @@ az spring-cloud app update --env foo=bar
 
 Listet alle Dienstbindungen in einer App auf
 
-```cli
+```azurecli
 az spring-cloud app binding list --app
                                  --resource-group -g
                                  --service -s
@@ -535,7 +535,7 @@ az spring-cloud app binding list --app
 
 Entfernt eine Dienstbindung aus der App
 
-```cli
+```azurecli
 az spring-cloud app binding list --app
                                  --name -n
                                  --resource-group -g
@@ -553,7 +553,7 @@ az spring-cloud app binding list --app
 
 Zeigt Details einer Dienstbindung an
 
-```cli
+```azurecli
 az spring-cloud app binding show --app
                                  --name -n
                                  --resource-group -g
@@ -571,7 +571,7 @@ az spring-cloud app binding show --app
 
 Bindet eine Azure Cosmos DB-Instanz an die App
 
-```cli
+```azurecli
 az spring-cloud app binding cosmos add --api-type
                                        --app
                                        --name -n
@@ -583,7 +583,7 @@ az spring-cloud app binding cosmos add --api-type
                                        --key-space
 ```
 
-```cli
+```azurecli
 az spring-cloud app binding list --app
                                  --name -n
                                  --resource-group -g
@@ -606,7 +606,7 @@ az spring-cloud app binding list --app
 
 ## <a name="az-spring-cloud-app-binding-cosmos-update"></a>az spring-cloud app binding cosmos update
 
-```cli
+```azurecli
 az spring-cloud app binding cosmos update --app
                                           --name -n
                                           --resource-group -g
@@ -631,7 +631,7 @@ az spring-cloud app binding cosmos update --app
 
 ## <a name="az-spring-cloud-app-binding-mysql-add"></a>az spring-cloud app binding mysql add
 
-```cli
+```azurecli
 az spring-cloud app binding mysql add --app
                                       --database-name
                                       --key
@@ -656,7 +656,7 @@ az spring-cloud app binding mysql add --app
 
 Aktualisiert die Verbindung der Dienstbindung der App mit einer Azure Database for MySQL-Instanz
 
-```cli
+```azurecli
 az spring-cloud app binding mysql update --add
                                          --name -n
                                          --resource-group -g
@@ -683,7 +683,7 @@ az spring-cloud app binding mysql update --add
 
 Bindet eine Azure Cache for Redis-Instanz an die App
 
-```cli
+```azurecli
 az spring-cloud app binding redis add --app
                                       --name -n
                                       --resource-group -g
@@ -702,7 +702,7 @@ az spring-cloud app binding redis add --app
 
 | Optionale Parameter | |
 | --- | ---: |
-| --disable-ssl | Deaktiviert SSL |
+| --disable-ssl | Deaktivieren von TLS |
 
 ## <a name="az-spring-cloud-app-binding-redis-update"></a>az spring-cloud app binding redis update
 
@@ -717,7 +717,7 @@ Aktualisiert eine Dienstbindung für Azure Cache for Redis
 
 | Optionale Parameter | |
 | --- | ---: |
-| --disable-ssl | Deaktiviert SSL |
+| --disable-ssl | Deaktivieren von TLS |
 
 ## <a name="az-spring-cloud-app-deployment-create"></a>az spring-cloud app deployment create
 
@@ -750,13 +750,13 @@ Für das Bereitstellen von Code oder das Aktualisieren von Einstellungen einer v
 
 Stellt Quellcode für eine neue Bereitstellung der App bereit.  Dadurch wird das aktuelle Verzeichnis gepackt, eine Binärdatei mit dem Pivotal Build System erstellt und anschließend bereitgestellt.
 
-```cli
+```azurecli
 az spring-cloud app deployment create -n green-deployment --app MyApp -s MyService
 ```
 
 Stellen Sie mithilfe von JVM-Optionen und Umgebungsvariablen eine vorkonfigurierte JAR-Datei für eine App bereit.
 
-```cli
+```azurecli
 az spring-cloud app deployment create -n green-deployment --app MyApp -s MyService --jar-path app.jar --jvm-options="-XX:+UseStringDeDuplication" --env foo=bar
 ```
 
@@ -764,7 +764,7 @@ az spring-cloud app deployment create -n green-deployment --app MyApp -s MyServi
 
 Löscht eine Bereitstellung der App
 
-```cli
+```azurecli
 az spring-cloud app deployment delete --app
                                       --name -n
                                       --resource-group -g
@@ -782,7 +782,7 @@ az spring-cloud app deployment delete --app
 
 Listet alle Bereitstellungen in einer App auf
 
-```cli
+```azurecli
 az spring-cloud app deployment list --app
                                     --resource-group -g
                                     --service -s
@@ -798,7 +798,7 @@ az spring-cloud app deployment list --app
 
 Zeigt Details einer Bereitstellung an
 
-```cli
+```azurecli
 az spring-cloud app deployment show --app
                                     --name -n
                                     --resource-group -g
@@ -816,7 +816,7 @@ az spring-cloud app deployment show --app
 
 Löscht alle Konfigurationseinstellungen auf dem Konfigurationsserver
 
-```cli
+```azurecli
 az spring-cloud config-server clear --name
                                         --resource-group -g
 ```
@@ -830,7 +830,7 @@ az spring-cloud config-server clear --name
 
 Legt die Konfigurationseinstellungen auf dem Konfigurationsserver mithilfe einer YAML-Datei fest
 
-```cli
+```azurecli
 az spring-cloud config-server set --config-file
                                   --name -n
                                   --resource-group -g
@@ -851,7 +851,7 @@ az spring-cloud config-server set --config-file
 
 Zeigt die Einstellungen des Konfigurationsservers an
 
-```cli
+```azurecli
 az spring-cloud config-server show --name -n
                                    --resource-group -g
 ```
@@ -865,7 +865,7 @@ az spring-cloud config-server show --name -n
 
 Legt die Git-Eigenschaften für den Konfigurationsserver fest.  Dadurch werden alle vorhandenen Git-Eigenschaften überschrieben.
 
-```cli
+```azurecli
 az spring-cloud config-server git set --name -n
                                       --resource-group g
                                       --uri
@@ -900,7 +900,7 @@ az spring-cloud config-server git set --name -n
 
 ## <a name="az-spring-cloud-config-server-git-repo-add"></a>az spring-cloud config-server git repo add
 
-```cli
+```azurecli
 az spring-cloud config-server git repo add --name -n
                                            --repo-name
                                            --resource-group -g
@@ -941,7 +941,7 @@ az spring-cloud config-server git repo add --name -n
 
 Listet alle Git-Repositorys auf, die auf dem Konfigurationsserver definiert sind
 
-```cli
+```azurecli
 az spring-cloud config-server git repo list --name -n
                                        --resource-group -g
                                        --defer
@@ -960,7 +960,7 @@ az spring-cloud config-server git repo list --name -n
 
 Entfernt eine vorhandene Git-Repositorykonfiguration vom Konfigurationsserver
 
-```cli
+```azurecli
 az spring-cloud config-server git repo remove --name -n
                                          --repo-name
                                          --resource-group -g
@@ -981,7 +981,7 @@ az spring-cloud config-server git repo remove --name -n
 
 Deaktiviert den Testendpunkt von Azure Spring Cloud
 
-```cli
+```azurecli
 az spring-cloud test-endpoint disable --name -n
                                       --resource-group -g
 ```
@@ -995,7 +995,7 @@ az spring-cloud test-endpoint disable --name -n
 
 Aktiviert den Testendpunkt für Azure Spring Cloud 
 
-```cli 
+```azurecli
 az spring-cloud test-endpoint enable --name -n
                                      --resource-group -g
 ```
@@ -1009,7 +1009,7 @@ az spring-cloud test-endpoint enable --name -n
 
 Listet die verfügbaren Testendpunktschlüssel für Azure Spring Cloud auf
 
-```cli
+```azurecli
 az spring-cloud test-endpoint list --name -n
                                    --resource-group -g
                                    --app
@@ -1030,7 +1030,7 @@ az spring-cloud test-endpoint list --name -n
 
 Generiert einen Testendpunktschlüssel für Azure Spring Cloud neu
 
-```cli
+```azurecli
 az spring-cloud test-endpoint renew-key --name -n
                                         --resource-group -g
                                         --type

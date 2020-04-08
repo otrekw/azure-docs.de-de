@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d54103cad8a3550bdc300cba2308397dd1ce3d6c
-ms.sourcegitcommit: b8f2fee3b93436c44f021dff7abe28921da72a6d
+ms.openlocfilehash: 51cd7ff97af4588139721930bd4d08ffd0f95e73
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77425577"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297563"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Web-App für Benutzeranmeldungen: Codekonfiguration
 
@@ -103,7 +103,7 @@ In ASP.NET Core befinden sich diese Einstellungen in der Datei [appsettings.json
 }
 ```
 
-In ASP.NET Core gibt es eine weitere Datei ([properties\launchSettings.json](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/Properties/launchSettings.json#L6-L7)), die die URL (`applicationUrl`) und den SSL-Port (`sslPort`) für Ihre Anwendung und verschiedene Profile enthält.
+In ASP.NET Core gibt es eine weitere Datei ([properties\launchSettings.json](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/bc564d68179c36546770bf4d6264ce72009bc65a/1-WebApp-OIDC/1-1-MyOrg/Properties/launchSettings.json#L6-L7)), die die URL (`applicationUrl`) und den TLS-/SSL-Port (`sslPort`) für Ihre Anwendung und verschiedenen Profile enthält.
 
 ```Json
 {

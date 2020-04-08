@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: victorh
-ms.openlocfilehash: 2f7eafc6fc1533bd837fae60dd3b9673f6f97aa8
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 15e10d34120ab5475f241235bbebeb0c7689ca14
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77913020"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371226"
 ---
 # <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Konfigurieren von SSL-Terminierung mit Key Vault-Zertifikaten mithilfe von Azure PowerShell
 
@@ -71,7 +71,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 > [!NOTE]
-> Das EnableSoftDelete-Flag muss verwendet werden, damit die SSL-Terminierung ordnungsgemäß funktioniert.
+> Das EnableSoftDelete-Flag muss verwendet werden, damit die SSL-Terminierung ordnungsgemäß funktioniert. Wenn Sie die [Key Vault-Funktion „Vorläufiges Löschen“ über das Portal](../key-vault/key-vault-ovw-soft-delete.md#soft-delete-behavior) konfigurieren, muss für den Aufbewahrungszeitraum der Standardwert von 90 Tagen festgelegt werden. Application Gateway unterstützt noch keinen anderen Aufbewahrungszeitraum. 
 
 ### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 

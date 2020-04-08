@@ -5,17 +5,22 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 03/20/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9392855f98dbee2badbe87bb4a0bf11bf2fc073e
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: 4eb63fe4bd8f8a8b0961aa6a7fccb8de9b7c2f16
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79128009"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80123407"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Bereitstellen des Diagnosetools
+
+>[!IMPORTANT]
+>Seit dem 16. März 2020 haben wir Diagnoseabfragen vorübergehend deaktiviert, die sich aufgrund steigender Dienstanforderung negativ auf die Funktionalität für Benutzer ausgewirkt haben. Dies bewirkt, dass das Tool nicht mehr funktioniert, da es dafür diese Abfragen benötigt. Wir aktualisieren diesen Artikel, sobald Diagnoseabfragen wieder verfügbar sind.
+>
+>Bis dahin empfehlen wir Ihnen dringend, für die fortlaufende Überwachung die [Protokollanalyse](diagnostics-log-analytics.md) zu verwenden.
 
 Folgende Aufgaben kann das Diagnosetool für Windows Virtual Desktop für Sie erledigen:
 

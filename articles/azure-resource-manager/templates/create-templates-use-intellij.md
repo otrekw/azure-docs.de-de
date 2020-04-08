@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie über IntelliJ IDEA Ihre erste Azure Res
 ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1046c942e6bec4ded332027b7856110238b8f2d7
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: a5015a018f905b4353afd6bf25a48a2d942b3b97
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680612"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153351"
 ---
-# <a name="create-and-deploy-azure-resource-manager-templates-by-using-the-intellij-idea"></a>Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über IntelliJ IDEA
+# <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>Erstellen und Bereitstellen von Resource Manager-Vorlagen über IntelliJ IDEA
 
-Hier erfahren Sie, wie Sie mithilfe von IntelliJ IDEA eine Resource Manager-Vorlage in Azure bereitstellen und die Vorlage direkt in der IDE bearbeiten und aktualisieren. Resource Manager-Vorlagen sind JSON-Dateien, mit denen die Ressourcen definiert werden, die Sie für Ihre Lösung bereitstellen müssen. Weitere Informationen zu den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen finden Sie unter [Übersicht über Azure Resource Manager-Vorlagen](overview.md).
+Hier erfahren Sie, wie Sie mithilfe von IntelliJ IDEA eine Resource Manager-Vorlage in Azure (ARM) bereitstellen und die Vorlage direkt in der IDE bearbeiten und aktualisieren. Resource Manager-Vorlagen sind JSON-Dateien, mit denen die Ressourcen definiert werden, die Sie für Ihre Lösung bereitstellen müssen. Weitere Informationen zu den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen finden Sie unter [Übersicht über Azure Resource Manager-Vorlagen](overview.md).
 
 ![Diagramm: Resource Manager-Vorlage über Portal](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
@@ -31,7 +31,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 ## <a name="deploy-a-quickstart-template"></a>Bereitstellen einer Schnellstartvorlage
 
-Anstatt eine Vorlage von Grund auf neu zu erstellen, können Sie auch eine Vorlage aus [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) öffnen. Azure-Schnellstartvorlagen ist ein Repository für Resource Manager-Vorlagen. Die in diesem Artikel verwendete Vorlage heißt [Standardspeicherkonto erstellen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/). Sie definiert eine Azure Storage-Kontoressource.
+Anstatt eine Vorlage von Grund auf neu zu erstellen, können Sie auch eine Vorlage aus [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) öffnen. „Azure-Schnellstartvorlagen“ ist ein Repository für ARM-Vorlagen. Die in diesem Artikel verwendete Vorlage heißt [Standardspeicherkonto erstellen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/). Sie definiert eine Azure Storage-Kontoressource.
 
 1. Klicken Sie mit der rechten Maustaste, und speichern Sie [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) und [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) auf Ihrem lokalen Computer.
 

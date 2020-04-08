@@ -1,31 +1,31 @@
 ---
-title: Übersicht über Azure-Sicherheitsgruppen
+title: Übersicht über Azure-Netzwerksicherheitsgruppen
 titlesuffix: Azure Virtual Network
-description: Hier finden Sie Informationen zu Netzwerk- und Anwendungssicherheitsgruppen. Mithilfe von Sicherheitsgruppen können Sie den Netzwerkdatenverkehr zwischen Azure-Ressourcen filtern.
+description: Erfahren Sie mehr über Netzwerksicherheitsgruppen. Mithilfe von Netzwerksicherheitsgruppen können Sie den Netzwerkdatenverkehr zwischen Azure-Ressourcen filtern.
 services: virtual-network
 documentationcenter: na
-author: malopMSFT
+author: KumudD
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/22/2020
-ms.author: malop
+ms.date: 02/27/2020
+ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: c465d86c3a284a45063b9da183e4866fde7e28e9
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 8f3497f113981ae563023750ad8979c88c640f5a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76544513"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80123331"
 ---
-# <a name="security-groups"></a>Sicherheitsgruppen
+# <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
 <a name="network-security-groups"></a>
 
-Sie können Netzwerkdatenverkehr von und zu Azure-Ressourcen in einem [virtuellen Azure-Netzwerk](virtual-networks-overview.md) mithilfe einer Netzwerksicherheitsgruppe filtern. Eine Netzwerksicherheitsgruppe enthält [Sicherheitsregeln](#security-rules), die eingehenden Netzwerkdatenverkehr an verschiedene Typen von Azure-Ressourcen oder ausgehenden Netzwerkdatenverkehr von diesen zulassen oder verweigern. Weitere Informationen über die Azure-Ressourcen, die in einem virtuellen Netzwerk bereitgestellt werden können und denen Netzwerksicherheitsgruppen zugeordnet sind, finden Sie unter [Integration virtueller Netzwerke für Azure-Dienste](virtual-network-for-azure-services.md). Für jede Regel können Sie die Quelle, das Ziel, den Port und das Protokoll angeben.
+Sie können Netzwerkdatenverkehr von und zu Azure-Ressourcen in einem virtuellen Azure-Netzwerk mithilfe einer Netzwerksicherheitsgruppe filtern. Eine Netzwerksicherheitsgruppe enthält Sicherheitsregeln, die eingehenden Netzwerkdatenverkehr an verschiedene Typen von Azure-Ressourcen oder ausgehenden Netzwerkdatenverkehr von diesen zulassen oder verweigern. Weitere Informationen über die Azure-Ressourcen, die in einem virtuellen Netzwerk bereitgestellt werden können und denen Netzwerksicherheitsgruppen zugeordnet sind, finden Sie unter [Integration virtueller Netzwerke für Azure-Dienste](virtual-network-for-azure-services.md). Für jede Regel können Sie die Quelle, das Ziel, den Port und das Protokoll angeben.
 
-In diesem Artikel werden Konzepte für Netzwerksicherheitsgruppen erklärt, damit Sie diese effektiv verwenden können. Wenn Sie noch nie eine Netzwerksicherheitsgruppe erstellt haben, gehen Sie dieses kurze [Tutorial](tutorial-filter-network-traffic.md) durch, um sich mit dem Erstellen von Netzwerksicherheitsgruppen vertraut zu machen. Wenn Sie sich mit Netzwerksicherheitsgruppen auskennen und diese verwalten müssen, finden Sie unter [Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe](manage-network-security-group.md) weitere Informationen. Wenn Kommunikationsschwierigkeiten auftreten und Sie Probleme mit Netzwerksicherheitsgruppen beheben müssen, finden Sie unter [Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers](diagnose-network-traffic-filter-problem.md) weitere Informationen. Sie können [Netzwerksicherheitsgruppen-Flussprotokolle](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) zum [Analysieren des Netzwerkdatenverkehrs](../network-watcher/traffic-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json) zu und von Ressourcen verwenden, denen eine Netzwerksicherheitsgruppe zugeordnet ist.
+In diesem Artikel werden Konzepte für Netzwerksicherheitsgruppen erklärt, damit Sie diese effektiv verwenden können. Wenn Sie noch nie eine Netzwerksicherheitsgruppe erstellt haben, gehen Sie dieses kurze [Tutorial](tutorial-filter-network-traffic.md) durch, um sich mit dem Erstellen von Netzwerksicherheitsgruppen vertraut zu machen. Wenn Sie sich mit Netzwerksicherheitsgruppen auskennen und diese verwalten müssen, finden Sie unter [Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe](manage-network-security-group.md) weitere Informationen. Wenn Kommunikationsschwierigkeiten auftreten und Sie Probleme mit Netzwerksicherheitsgruppen beheben müssen, finden Sie unter [Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers](diagnose-network-traffic-filter-problem.md) weitere Informationen. Sie können [Netzwerksicherheitsgruppen-Flussprotokolle](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) zum Analysieren des Netzwerkdatenverkehrs zu und von Ressourcen verwenden, denen eine Netzwerksicherheitsgruppe zugeordnet ist.
 
 ## <a name="security-rules"></a>Sicherheitsregeln
 
@@ -46,55 +46,45 @@ Vorhandene Verbindungen können nicht unterbrochen werden, wenn Sie eine Sicherh
 
 Es gibt Beschränkungen für die Anzahl von Sicherheitsregeln, die Sie in einer Netzwerksicherheitsgruppe erstellen können. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-## <a name="augmented-security-rules"></a>Ergänzte Sicherheitsregeln
-
-Mit ergänzten Sicherheitsregeln wird die Sicherheitsdefinition für virtuelle Netzwerke vereinfacht, da Sie umfangreichere und komplexe Netzwerksicherheitsregeln mit weniger Regeln definieren können. Sie können mehrere Ports und mehrere explizite IP-Adressen und Bereiche zu einer einzelnen Sicherheitsregel zusammenfassen, die leicht verständlich ist. Verwenden Sie ergänzte Regeln in den Feldern für die Quelle, das Ziel und den Port einer Regel. Kombinieren Sie ergänzte Sicherheitsregeln mit [Diensttags](service-tags-overview.md) oder [Anwendungssicherheitsgruppen](#application-security-groups), um die Wartung Ihrer Sicherheitsregeldefinition zu vereinfachen. Es gibt Beschränkungen für die Anzahl von Adressen, Bereichen und Ports, die Sie in einer Regel angeben können. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
-
-## <a name="service-tags"></a>Diensttags
-
-Ein Diensttag steht für eine Gruppe von IP-Adresspräfixen eines bestimmten Azure-Diensts. Mit Diensttags lässt sich die Komplexität häufiger Aktualisierungen von Netzwerksicherheitsregeln verringern.
-
-Weitere Informationen finden Sie unter [Azure-Diensttags](service-tags-overview.md). 
-
-## <a name="default-security-rules"></a>Standardsicherheitsregeln
+### <a name="default-security-rules"></a>Standardsicherheitsregeln
 
 Azure erstellt in jeder von Ihnen erstellten Netzwerksicherheitsgruppe die folgenden Standardregeln:
 
-### <a name="inbound"></a>Eingehend
+#### <a name="inbound"></a>Eingehend
 
-#### <a name="allowvnetinbound"></a>AllowVNetInBound
+##### <a name="allowvnetinbound"></a>AllowVNetInBound
 
 |Priority|`Source`|Quellports|Destination|Zielports|Protocol|Zugriff|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0 - 65535|VirtualNetwork|0 - 65535|Any|Allow|
 
-#### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
+##### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
 |Priority|`Source`|Quellports|Destination|Zielports|Protocol|Zugriff|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0 - 65535|0.0.0.0/0|0 - 65535|Any|Allow|
 
-#### <a name="denyallinbound"></a>DenyAllInbound
+##### <a name="denyallinbound"></a>DenyAllInbound
 
 |Priority|`Source`|Quellports|Destination|Zielports|Protocol|Zugriff|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0 - 65535|0.0.0.0/0|0 - 65535|Any|Verweigern|
 
-### <a name="outbound"></a>Ausgehend
+#### <a name="outbound"></a>Ausgehend
 
-#### <a name="allowvnetoutbound"></a>AllowVnetOutBound
+##### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
 |Priority|`Source`|Quellports| Destination | Zielports | Protocol | Zugriff |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0 - 65535 | VirtualNetwork | 0 - 65535 | Any | Allow |
 
-#### <a name="allowinternetoutbound"></a>AllowInternetOutBound
+##### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
 |Priority|`Source`|Quellports| Destination | Zielports | Protocol | Zugriff |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0 - 65535 | Internet | 0 - 65535 | Any | Allow |
 
-#### <a name="denyalloutbound"></a>DenyAllOutBound
+##### <a name="denyalloutbound"></a>DenyAllOutBound
 
 |Priority|`Source`|Quellports| Destination | Zielports | Protocol | Zugriff |
 |---|---|---|---|---|---|---|
@@ -104,49 +94,19 @@ In den Spalten **Quelle** und **Ziel** handelt es sich bei *VirtualNetwork*, *Az
  
 Sie können die Standardregeln nicht entfernen, aber Sie können sie außer Kraft setzen, indem Sie Regeln mit höheren Prioritäten erstellen.
 
-## <a name="application-security-groups"></a>Anwendungssicherheitsgruppen
+### <a name="augmented-security-rules"></a>Ergänzte Sicherheitsregeln
 
-Mit Anwendungssicherheitsgruppen können Sie die Netzwerksicherheit als natürliche Erweiterung einer Anwendungsstruktur konfigurieren und virtuelle Computer gruppieren sowie auf der Grundlage dieser Gruppen Netzwerksicherheitsrichtlinien definieren. Sie können Ihre Sicherheitsrichtlinie nach Bedarf wiederverwenden, ohne dass Sie explizite IP-Adressen manuell warten müssen. Die Plattform übernimmt die komplexe Verarbeitung von expliziten IP-Adressen und mehreren Regelsätzen, damit Sie sich auf Ihre Geschäftslogik konzentrieren können. Das folgende Beispiel bietet Ihnen ein besseres Verständnis von Anwendungssicherheitsgruppen:
+Mit ergänzten Sicherheitsregeln wird die Sicherheitsdefinition für virtuelle Netzwerke vereinfacht, da Sie umfangreichere und komplexe Netzwerksicherheitsregeln mit weniger Regeln definieren können. Sie können mehrere Ports und mehrere explizite IP-Adressen und Bereiche zu einer einzelnen Sicherheitsregel zusammenfassen, die leicht verständlich ist. Verwenden Sie ergänzte Regeln in den Feldern für die Quelle, das Ziel und den Port einer Regel. Kombinieren Sie ergänzte Sicherheitsregeln mit [Diensttags](service-tags-overview.md) oder [Anwendungssicherheitsgruppen](#application-security-groups), um die Wartung Ihrer Sicherheitsregeldefinition zu vereinfachen. Es gibt Beschränkungen für die Anzahl von Adressen, Bereichen und Ports, die Sie in einer Regel angeben können. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
-![Anwendungssicherheitsgruppen](./media/security-groups/application-security-groups.png)
+#### <a name="service-tags"></a>Diensttags
 
-In der Abbildung oben sind *NIC1* und *NIC2* Mitglieder der Anwendungssicherheitsgruppe *AsgWeb*. *NIC3* ist ein Mitglied der Anwendungssicherheitsgruppe *AsgLogic*. *NIC4* ist ein Mitglied der Anwendungssicherheitsgruppe *AsgDb*. Obwohl jede Netzwerkschnittstelle in diesem Beispiel Mitglied von nur einer Anwendungssicherheitsgruppe ist, kann eine Netzwerkschnittstelle Mitglied mehrerer Anwendungssicherheitsgruppen sein. Dabei gelten die [Einschränkungen für Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). Keiner der Netzwerkschnittstellen ist eine Netzwerksicherheitsgruppe zugeordnet. *NSG1* ist beiden Subnetzen zugeordnet und enthält die folgenden Regeln:
+Ein Diensttag steht für eine Gruppe von IP-Adresspräfixen eines bestimmten Azure-Diensts. Mit Diensttags lässt sich die Komplexität häufiger Aktualisierungen von Netzwerksicherheitsregeln verringern.
 
-### <a name="allow-http-inbound-internet"></a>Allow-HTTP-Inbound-Internet
+Weitere Informationen finden Sie unter [Azure-Diensttags](service-tags-overview.md). Ein Beispiel für die Verwendung des Speicherdiensttags, um den Netzwerkzugriff einzuschränken, finden Sie unter [Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen](tutorial-restrict-network-access-to-resources.md).
 
-Diese Regel ist erforderlich, um Datenverkehr aus dem Internet an die Webserver zuzulassen. Da eingehender Datenverkehr aus dem Internet durch die Standardsicherheitsregel [DenyAllInbound](#denyallinbound) verweigert wird, ist keine zusätzliche Regel für die Anwendungssicherheitsgruppen *AsgLogic* oder *AsgDb* erforderlich.
+#### <a name="application-security-groups"></a>Anwendungssicherheitsgruppen
 
-|Priority|`Source`|Quellports| Destination | Zielports | Protocol | Zugriff |
-|---|---|---|---|---|---|---|
-| 100 | Internet | * | AsgWeb | 80 | TCP | Allow |
-
-### <a name="deny-database-all"></a>Deny-Database-All
-
-Da die Standardsicherheitsregel [AllowVNetInBound](#allowvnetinbound) die gesamte Kommunikation zwischen Ressourcen im gleichen virtuellen Netzwerk erlaubt, ist diese Regel erforderlich, um den Datenverkehr von allen Ressourcen zu verweigern.
-
-|Priority|`Source`|Quellports| Destination | Zielports | Protocol | Zugriff |
-|---|---|---|---|---|---|---|
-| 120 | * | * | AsgDb | 1433 | Any | Verweigern |
-
-### <a name="allow-database-businesslogic"></a>Allow-Database-BusinessLogic
-
-Diese Regel lässt Datenverkehr von der Anwendungssicherheitsgruppe *AsgLogic* zur Anwendungssicherheitsgruppe *AsgDb* zu. Die Priorität für diese Regel ist höher als die Priorität für die Regel *Deny-Database-All*. Daher wird diese Regel vor der Regel *Deny-Database-All* verarbeitet, sodass Datenverkehr von den Anwendungssicherheitsgruppen *AsgLogic* zulässig ist, während der andere Datenverkehr blockiert wird.
-
-|Priority|`Source`|Quellports| Destination | Zielports | Protocol | Zugriff |
-|---|---|---|---|---|---|---|
-| 110 | AsgLogic | * | AsgDb | 1433 | TCP | Allow |
-
-Regeln, in denen eine Anwendungssicherheitsgruppe als Quelle oder Ziel angegeben ist, werden nur auf Netzwerkschnittstellen angewendet, bei denen es sich um Mitglieder der Anwendungssicherheitsgruppe handelt. Wenn die Netzwerkschnittstelle nicht Mitglied einer Anwendungssicherheitsgruppe ist, wird die Regel nicht auf die Netzwerkschnittstelle angewendet, auch wenn die Netzwerksicherheitsgruppe dem Subnetz zugeordnet ist.
-
-Für Anwendungssicherheitsgruppen gelten folgende Einschränkungen:
-
--   Es gibt Beschränkungen für die Anzahl von Anwendungssicherheitsgruppen in einem Abonnement sowie in Bezug auf Anwendungssicherheitsgruppen. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
-- Sie können eine einzelne Anwendungssicherheitsgruppe als Quelle und Ziel in einer Sicherheitsregel angeben. Sie können in der Quelle und im Ziel nicht mehrere Anwendungssicherheitsgruppen angeben.
-- Alle Netzwerkschnittstellen, die einer Anwendungssicherheitsgruppe zugewiesen sind, müssen in selben virtuellen Netzwerk vorhanden sein, in dem sich die erste Netzwerkschnittstelle befindet, die der Anwendungssicherheitsgruppe zugewiesen wurde. Wenn sich die erste Netzwerkschnittstelle, die einer Anwendungssicherheitsgruppe mit dem Namen *AsgWeb* zugewiesen ist, im virtuellen Netzwerk *VNet1* befindet, müssen alle nachfolgenden Netzwerkschnittstellen, die *ASGWeb* zugewiesen werden, in *VNet1* enthalten sein. Einer Anwendungssicherheitsgruppe können keine Netzwerkschnittstellen aus verschiedenen virtuellen Netzwerken hinzugefügt werden.
-- Wenn Sie eine Anwendungssicherheitsgruppe als Quelle und Ziel in einer Sicherheitsregel angeben, müssen sich die Netzwerkschnittstellen in beiden Anwendungssicherheitsgruppen im gleichen virtuellen Netzwerk befinden. Wenn also beispielsweise *AsgLogic* Netzwerkschnittstellen aus *VNet1* und *AsgDb* Netzwerkschnittstellen aus *VNet2* enthält, kann *AsgLogic* nicht als Quelle und *AsgDb* nicht als Ziel in einer Regel zugewiesen werden. Alle Netzwerkschnittstellen für die Quell- und Ziel-Anwendungssicherheitsgruppen müssen im selben virtuellen Netzwerk vorhanden sein.
-
-> [!TIP]
-> Planen Sie die erforderlichen Anwendungssicherheitsgruppen, und erstellen Sie Regeln nach Möglichkeit mithilfe von Diensttags oder Anwendungssicherheitsgruppen anstelle von individuellen IP-Adresse oder IP-Adressbereichen, um die Anzahl der erforderlichen Sicherheitsregeln und die Notwendigkeit von Regeländerungen zu minimieren.
+Mit Anwendungssicherheitsgruppen können Sie die Netzwerksicherheit als natürliche Erweiterung einer Anwendungsstruktur konfigurieren und virtuelle Computer gruppieren sowie auf der Grundlage dieser Gruppen Netzwerksicherheitsrichtlinien definieren. Sie können Ihre Sicherheitsrichtlinie nach Bedarf wiederverwenden, ohne dass Sie explizite IP-Adressen manuell warten müssen. Weitere Informationen finden Sie unter [Anwendungssicherheitsgruppen](application-security-groups.md).
 
 ## <a name="how-traffic-is-evaluated"></a>Auswertung des Datenverkehrs
 
@@ -193,7 +153,7 @@ Sie können die Aggregatregeln, die auf eine Netzwerkschnittstelle angewendet we
 
 ## <a name="azure-platform-considerations"></a>Aspekte der Azure Platform
 
-- **Virtuelle IP des Hostknotens**: Grundlegende Infrastrukturdienste wie DHCP, DNS, IMDS und die Systemüberwachung werden über die virtualisierten Host-IP-Adressen 168.63.129.16 und 169.254.169.254 bereitgestellt. Diese IP-Adressen gehören Microsoft und sind die einzigen virtuellen IP-Adressen, die in allen Regionen zu diesem Zweck verwendet werden.
+- **Virtuelle IP des Hostknotens**: Grundlegende Infrastrukturdienste wie DHCP, DNS, IMDS und die Systemüberwachung werden über die virtualisierten Host-IP-Adressen 168.63.129.16 und 169.254.169.254 bereitgestellt. Diese IP-Adressen gehören Microsoft und sind die einzigen virtuellen IP-Adressen, die in allen Regionen zu diesem Zweck verwendet werden. Effektive Sicherheitsregeln und effektive Routen berücksichtigen diese Plattformregeln nicht. Zum Überschreiben dieser grundlegenden Infrastrukturkommunikation können Sie eine Sicherheitsregel erstellen, um Datenverkehr mithilfe der folgenden [Diensttags](service-tags-overview.md) abzulehnen, die in den Regeln Ihrer Netzwerksicherheitsgruppen verwendet werden: AzurePlatformDNS, AzurePlatformIMDS und AzurePlatformLKM. Weitere Informationen zum [Diagnostizieren von Problemen mit der Netzwerkfilterung](diagnose-network-traffic-filter-problem.md) und zum [Diagnostizieren von Problemen mit dem Netzwerkrouting](diagnose-network-routing-problem.md)
 - **Lizenzierung (Key Management Service)** : Die auf VMs ausgeführten Windows-Images müssen lizenziert werden. Zum Sicherstellen der Lizenzierung wird eine entsprechende Anforderung an die Hostserver des Schlüsselverwaltungsdiensts gesendet, die solche Abfragen verarbeiten. Die Anforderung wird in ausgehender Richtung über Port 1688 gesendet. Für Bereitstellungen mit einer Konfiguration der [Standardroute 0.0.0.0/0](virtual-networks-udr-overview.md#default-route) wird diese Plattformregel deaktiviert.
 - **VMs in Pools mit Lastenausgleich**: Der angewendete Quellport und -adressbereich stammen vom Ausgangscomputer, nicht vom Lastenausgleich. Der Zielport und -adressbereich sind für den Zielcomputer bestimmt, nicht für den Lastenausgleich.
 - **Azure-Dienstinstanzen**: Instanzen mehrerer Azure-Dienste (z. B. HDInsight, App Service-Umgebungen und Virtual Machine Scale Sets) werden in Subnetzen des virtuellen Netzwerks bereitgestellt. Eine vollständige Liste mit den Diensten, die Sie in virtuellen Netzwerken bereitstellen können, finden Sie unter [Virtuelles Netzwerk für Azure-Dienste](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network). Machen Sie sich auf jeden Fall mit den Portanforderungen für die einzelnen Dienste vertraut, bevor Sie eine Netzwerksicherheitsgruppe auf das Subnetz anwenden, in dem die Ressource bereitgestellt wurde. Wenn Sie den Datenverkehr für Ports verweigern, die für den Dienst benötigt werden, funktioniert der Dienst nicht richtig.

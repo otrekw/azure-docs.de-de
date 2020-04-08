@@ -7,16 +7,16 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: fd5308574e84ab6d2e30b9352254683b2d1d6fdd
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.openlocfilehash: c0521f384a333c3054397fb0ec7c2ab907e54f67
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78403574"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411746"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>Datenträgerverschlüsselung mit kundenseitig verwalteten Schlüsseln
 
-Azure HDInsight unterstützt die Verschlüsselung mit kundenseitig verwalteten Schlüsseln für Daten auf verwalteten Datenträgern und Ressourcendatenträgern, die an virtuelle HDInsight-Clustercomputer angefügt sind. Dank dieses Features können Sie die Verschlüsselungsschlüssel, mit denen ruhende Daten in Ihren HDInsight-Clustern geschützt werden, mithilfe von Azure Key Vault verwalten. 
+Azure HDInsight unterstützt die Verschlüsselung mit kundenseitig verwalteten Schlüsseln für Daten auf verwalteten Datenträgern und Ressourcendatenträgern, die an virtuelle HDInsight-Clustercomputer angefügt sind. Dank dieses Features können Sie die Verschlüsselungsschlüssel, mit denen ruhende Daten in Ihren HDInsight-Clustern geschützt werden, mithilfe von Azure Key Vault verwalten.
 
 Alle verwalteten Datenträger in HDInsight werden mit der Speicherdienstverschlüsselung (Storage Service Encryption, SSE) von Azure geschützt. Die Daten auf diesen Datenträgern werden standardmäßig mit von Microsoft verwalteten Schlüsseln verschlüsselt. Wenn Sie kundenseitig verwaltete Schlüssel für HDInsight aktivieren, stellen Sie die Verschlüsselungsschlüssel für HDInsight bereit, um diese Schlüssel mithilfe von Azure Key Vault zu verwenden und zu verwalten.
 
@@ -147,6 +147,42 @@ az hdinsight rotate-disk-encryption-key \
 --resource-group MyResourceGroup
 ```
 
+## <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
+
+Aktualisieren Sie die Resource Manager-Vorlage mit den folgenden Änderungen, um vom Kunden verwaltete Schlüssel mithilfe der Vorlage zu verwenden:
+
+1. Fügen Sie in der Datei **azuredeploy.json** die folgende Eigenschaft zum Objekt „Ressource“ hinzu:
+
+    ```json
+       "diskEncryptionProperties":
+         {
+                 "vaultUri": "[parameters('diskEncryptionVaultUri')]",
+                  "keyName": "[parameters('diskEncryptionKeyName')]",
+                  "keyVersion": "[parameters('diskEncryptionKeyVersion')]",
+                   "msiResourceId": "[parameters('diskEncryptionMsiResourceId')]"
+         }
+
+1. In the **azuredeploy.parameters.json** file, add the following parameters. You can get the values of these parameters from the Key Vault URI and the managed Identity. For example, if you have the following URI and identity values,
+    * Sample key vault URI: https://<KeyVault_Name>.vault.azure.net/keys/clusterkey/<Cluster_Key_Value>
+    * Sample user-assigned managed identity: "/subscriptions/<subscriptionID>/resourcegroups/<ResourceGroup_Name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI_Name>
+
+    The parameters in the **azuredeploy.parameters.json** file are:
+
+    ```json
+   "diskEncryptionVaultUri": {
+            "value": "https://<KeyVault_Name>.vault.azure.net"
+        },
+        "diskEncryptionKeyName": {
+            "value": "clusterkey"
+        },
+        "diskEncryptionKeyVersion": {
+            "value": "<Cluster_Key_Value>"
+        },
+        "diskEncryptionMsiResourceId": {
+            "value": "/subscriptions/<subscriptionID>/resourcegroups/<ResourceGroup_Name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI_Name>"
+        }
+    ```
+
 ## <a name="faq-for-customer-managed-key-encryption"></a>Häufig gestellte Fragen zur Verschlüsselung mit kundenseitig verwalteten Schlüsseln
 
 **Wie greift der HDInsight-Cluster auf meinen Schlüsseltresor zu?**
@@ -177,7 +213,7 @@ Ressourcendatenträger und reguläre Datenträger/verwaltete Datenträger werden
 
 **Werden kundenseitig verwaltete Schlüssel nahtlos von neuen Knoten unterstützt, wenn ein Cluster zentral hochskaliert wird?**
 
-Ja. Der Cluster benötigt während der zentralen Hochskalierung Zugriff auf den Schlüssel im Schlüsseltresor. Sowohl verwaltete Datenträger als auch Ressourcendatenträger im Cluster werden mit dem gleichen Schlüssel verschlüsselt.
+Ja. Der Cluster benötigt während der Hochskalierung Zugriff auf den Schlüssel im Schlüsseltresor. Sowohl verwaltete Datenträger als auch Ressourcendatenträger im Cluster werden mit dem gleichen Schlüssel verschlüsselt.
 
 **Stehen kundenseitig verwaltete Schlüssel an meinem Standort zur Verfügung?**
 

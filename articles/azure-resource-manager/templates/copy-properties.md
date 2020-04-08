@@ -3,16 +3,16 @@ title: Definieren mehrerer Instanzen einer Eigenschaft
 description: Hier erfahren Sie, wie Sie den Kopiervorgang in einer Azure Resource Manager-Vorlage verwenden, um sie beim Erstellen einer Eigenschaft für eine Ressource mehrmals zu durchlaufen.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: b759389cd1065c399658bd8d0c1ddd263054697c
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: e86d38b0e5d2e39d54b3c419b6eebdcda74022db
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77622856"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258106"
 ---
-# <a name="property-iteration-in-azure-resource-manager-templates"></a>Eigenschafteniteration in Azure Resource Manager-Vorlagen
+# <a name="property-iteration-in-arm-templates"></a>Eigenschafteniteration in ARM-Vorlagen
 
-In diesem Artikel erfahren Sie, wie Sie in Ihrer Azure Resource Manager-Vorlage mehrere Instanzen einer Eigenschaft erstellen. Durch Hinzufügen des Elements **copy** zum Eigenschaftenabschnitt einer Ressource in Ihrer Vorlage kann die Anzahl von Elementen für eine Eigenschaft während der Bereitstellung dynamisch festgelegt werden. Außerdem vermeiden Sie so die Wiederholung von Vorlagensyntax.
+In diesem Artikel erfahren Sie, wie Sie in Ihrer Azure Resource Manager-Vorlage (ARM) mehrere Instanzen einer Eigenschaft erstellen. Durch Hinzufügen des Elements **copy** zum Eigenschaftenabschnitt einer Ressource in Ihrer Vorlage kann die Anzahl von Elementen für eine Eigenschaft während der Bereitstellung dynamisch festgelegt werden. Außerdem vermeiden Sie so die Wiederholung von Vorlagensyntax.
 
 „copy“ kann auch mit [Ressourcen](copy-resources.md), [Variablen](copy-variables.md) und [Ausgaben](copy-outputs.md) verwendet werden.
 
@@ -119,7 +119,7 @@ Das Kopierelement ist ein Array, sodass Sie mehrere Eigenschaften für die Resso
 {
   "type": "Microsoft.Network/loadBalancers",
   "apiVersion": "2017-10-01",
-  "name": "examleLB",
+  "name": "exampleLB",
   "properties": {
     "copy": [
       {
@@ -185,17 +185,17 @@ Der Wert von „count“ darf nicht negativ sein. Wenn Sie eine Vorlage mit Azur
 
 Das folgende Beispiel zeigt ein gängiges Szenario für die Erstellung mehrerer Werte für eine Eigenschaft:
 
-|Vorlage  |Beschreibung  |
+|Vorlage  |BESCHREIBUNG  |
 |---------|---------|
 |[VM-Bereitstellung mit einer variablen Anzahl von Datenträgern](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Stellt mehrere Datenträger mit einem virtuellen Computer bereit. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ein Tutorial, das Sie durcharbeiten können, finden Sie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen](template-tutorial-create-multiple-instances.md).
+* Ein Tutorial, das Sie durcharbeiten können, finden Sie unter [Tutorial: Erstellen mehrerer Ressourceninstanzen mit ARM-Vorlagen](template-tutorial-create-multiple-instances.md).
 * Informationen zu anderen Verwendungsmöglichkeiten des „copy“-Elements finden Sie unter:
-  * [Ressourceniteration in Azure Resource Manager-Vorlagen](copy-resources.md)
-  * [Variableniteration in Azure Resource Manager-Vorlagen](copy-variables.md)
-  * [Ausgabeniteration in Azure Resource Manager-Vorlagen](copy-outputs.md)
-* Informationen zu den Abschnitten einer Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](template-syntax.md).
-* Informationen zum Bereitstellen Ihrer Vorlage finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Ressourcen-Manager-Vorlage](deploy-powershell.md).
+  * [Ressourceniteration in ARM-Vorlagen](copy-resources.md)
+  * [Variableniteration in ARM-Vorlagen](copy-variables.md)
+  * [Ausgabeiteration in ARM-Vorlagen](copy-outputs.md)
+* Informationen zu den Abschnitten einer Vorlage finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Informationen zum Bereitstellen Ihrer Vorlage finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md).
 

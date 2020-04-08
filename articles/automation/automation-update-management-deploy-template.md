@@ -6,13 +6,13 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/27/2020
-ms.openlocfilehash: a8b382663b56d7481da876979e33194fb0ac533d
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.date: 03/30/2020
+ms.openlocfilehash: e69f3d7350d0da9f364983eae0935532b576bd76
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77921753"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411473"
 ---
 # <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Onboarding der Updateverwaltungslösung mithilfe einer Azure Resource Manager-Vorlage
 
@@ -56,6 +56,7 @@ Die folgenden Parameter in der Vorlage werden mit einem Standardwert für den Lo
 
 * SKU: Als Standardwert wird der neue, im Preismodell von April 2018 veröffentlichte Tarif pro GB verwendet.
 * Datenaufbewahrung: Als Standardwert werden dreißig Tage verwendet.
+* Kapazitätsreservierung: Standardwerte bis zu 100 GB
 
 >[!WARNING]
 >Wenn Sie einen Log Analytics-Arbeitsbereich in einem Abonnement mit dem neuen Preismodell von April 2018 erstellen oder konfigurieren, ist **PerGB2018** als einziger gültiger Log Analytics-Tarif verfügbar.
@@ -79,7 +80,7 @@ Die folgenden Parameter in der Vorlage werden mit einem Standardwert für den Lo
                 "description": "Workspace name"
             }
         },
-        "pricingTier": {
+        "sku": {
             "type": "string",
             "allowedValues": [
                 "pergb2018",
@@ -168,7 +169,8 @@ Die folgenden Parameter in der Vorlage werden mit einem Standardwert für den Lo
             "apiVersion": "2017-03-15-preview",
             "location": "[parameters('location')]",
             "properties": {
-                "sku": { 
+                "sku": {
+                    "Name": "[parameters('sku')]",
                     "name": "CapacityReservation",
                     "capacityReservationLevel": 100
                 },
@@ -231,7 +233,7 @@ Die folgenden Parameter in der Vorlage werden mit einem Standardwert für den Lo
     }
     ```
 
-2. Bearbeiten Sie die Vorlage entsprechend Ihren Anforderungen.
+2. Bearbeiten Sie die Vorlage entsprechend Ihren Anforderungen. Erstellen Sie ggf. eine [Resource Manager-Parameterdatei](../azure-resource-manager/templates/parameter-files.md), anstatt Parameter als Inlinewerte zu übergeben.
 
 3. Speichern Sie diese Datei unter dem Namen „deployUMSolutiontemplate.json“ in einem lokalen Ordner.
 

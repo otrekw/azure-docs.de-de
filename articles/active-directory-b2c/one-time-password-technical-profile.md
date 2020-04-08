@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/09/2020
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a4732d780bb241a18e0738c99603799c31c2102f
-ms.sourcegitcommit: 3616b42a0d6bbc31b965995d861930e53d2cf0d3
+ms.openlocfilehash: bd5fed45332c73c633db1137bdc23aea66fd3403
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78933055"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80332782"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definieren eines technischen Einmalkennwortprofils in einer benutzerdefinierten Azure AD B2C-Richtlinie
 
@@ -80,10 +80,6 @@ Die folgenden Einstellungen können verwendet werden, um den Codegenerierungsmod
 | Vorgang | Ja | Der Vorgang, der ausgeführt werden soll. Möglicher Wert: `GenerateCode`. |
 | ReuseSameCode | Nein | Gibt an, ob ein doppelter Code angegeben werden soll, anstatt einen neuen Code zu generieren, wenn der angegebene Code noch nicht abgelaufen und gültig ist. Standardwert: `false`. |
 
-### <a name="returning-error-message"></a>Zurückgegebene Fehlermeldung
-
-Es wird keine Fehlermeldung für den Codegenerierungsmodus zurückgegeben.
-
 ### <a name="example"></a>Beispiel
 
 Das folgende Beispiel `TechnicalProfile` wird zum Erstellen eines Codes verwendet:
@@ -139,9 +135,9 @@ Die folgenden Einstellungen können verwendet werden, um den Codeüberprüfungsm
 | Vorgang | Ja | Der Vorgang, der ausgeführt werden soll. Möglicher Wert: `VerifyCode`. |
 
 
-### <a name="error-messages"></a>Fehlermeldungen
+### <a name="ui-elements"></a>Benutzeroberflächenelemente
 
-Die folgenden Einstellungen können verwendet werden, um die Fehlermeldungen zu konfigurieren, die bei einem Codeüberprüfungsfehler angezeigt wird. Die Metadaten sollten im [selbstbestätigten](self-asserted-technical-profile.md) technischen Profil konfiguriert werden. Die Fehlermeldungen können [lokalisiert](localization-string-ids.md#one-time-password-error-messages) werden.
+Die folgenden Metadaten können verwendet werden, um die Fehlermeldungen zu konfigurieren, die bei einem Codeüberprüfungsfehler angezeigt wird. Die Metadaten sollten im [selbstbestätigten](self-asserted-technical-profile.md) technischen Profil konfiguriert werden. Die Fehlermeldungen können [lokalisiert](localization-string-ids.md#one-time-password-error-messages) werden.
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |

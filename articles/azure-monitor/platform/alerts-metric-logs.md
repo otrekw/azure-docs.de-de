@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.subservice: alerts
-ms.openlocfilehash: 9f61c62bc4960cb8e5bff31f84bd73a14240b613
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 6b21f228858954292e7a3bc5561d5e86fcfaaf41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78250711"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80055178"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Erstellen von Metrikwarnungen für Protokolle in Azure Monitor
 
@@ -42,7 +42,7 @@ Es gibt viele Vorteile für die Verwendung von **Metrikwarnungen für Protokolle
  Metrikwarnungen unterstützen Warnungen für Metriken mit Dimensionen. Mithilfe von Dimensionen können Sie die Metrik nach der richtigen Ebene filtern. Die vollständige Liste der unterstützten Metriken für Protokolle aus [Log Analytics-Arbeitsbereichen](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces) ist aufgelistet (für unterstützte Lösungen).
 
 > [!NOTE]
-> Um unterstützte Metriken anzuzeigen, die über [Azure Monitor – Metriken](../../azure-monitor/platform/metrics-charts.md) aus dem Log Analytics-Arbeitsbereich extrahiert werden können, muss für diese Metrik eine Metrikwarnung für Protokolle erstellt werden. Die in der Metrikwarnung für Protokolle gewählten Dimensionen werden nur für die Untersuchung über „Azure Monitor – Metriken“ angezeigt.
+> Um eine unterstützte Metrik anzuzeigen, die über [Azure Monitor – Metriken](../../azure-monitor/platform/metrics-charts.md) aus dem Log Analytics-Arbeitsbereich extrahiert werden können, muss für diese Metrik eine Metrikwarnung für Protokolle erstellt werden. Die in der Metrikwarnung für Protokolle gewählten Dimensionen werden nur für die Untersuchung über „Azure Monitor – Metriken“ angezeigt.
 
 ## <a name="creating-metric-alert-for-log-analytics"></a>Erstellen von Metrikwarnungen für Log Analytics
 

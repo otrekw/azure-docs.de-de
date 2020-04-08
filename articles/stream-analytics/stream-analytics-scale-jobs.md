@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: 4f89fb07fbbff3beee66f80675bb5c3a32136807
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d828103bef8e57f5d0cdfe6c243c52e2d0526663
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458762"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80257545"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Skalieren eines Azure Stream Analytics-Auftrags zur Erhöhung des Durchsatzes
 In diesem Artikel erfahren Sie, wie Sie eine Stream Analytics-Abfrage zur Steigerung des Durchsatzes für Stream Analytics-Aufträge optimieren. Im folgenden Leitfaden wird erläutert, wie Sie Ihren Auftrag zur Verarbeitung höherer Lasten skalieren und von einer größeren Menge an Systemressourcen (z.B. Bandbreite, CPU-Ressourcen, Arbeitsspeicher) profitieren können.
@@ -23,7 +23,7 @@ Hierfür sollten Sie folgende Artikel gelesen haben:
 ## <a name="case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions"></a>Fall 1: Ihre Abfrage ist prinzipiell über alle Eingabepartitionen hinweg vollständig parallelisierbar.
 Wenn Ihre Abfrage prinzipiell über alle Eingabepartitionen hinweg vollständig parallelisierbar ist, können Sie folgende Schritte durchführen:
 1.  Erstellen Sie mithilfe des Schlüsselworts **PARTITION BY** eine Abfrage mit hohem Parallelitätsgrad. Einzelheiten finden Sie [auf dieser Seite](stream-analytics-parallelization.md) im Abschnitt „Aufträge mit hohem Parallelitätsgrad“.
-2.  Je nach den in der Abfrage verwendeten Ausgabetypen sind einige Ausgaben möglicherweise nicht parallelisierbar oder erfordern weitere Konfigurationen im Hinblick auf einen hohen Parallelitätsgrad. So sind z.B. SQL-, SQL DW- und Power BI-Ausgaben nicht parallelisierbar. Ausgaben werden immer zusammengeführt, bevor sie an die Ausgabesenke gesendet werden. Blobs, Tabellen, ADLS, Service Bus und Azure-Funktionen werden automatisch parallelisiert. Bei CosmosDB und beim Event Hub muss der PartitionKey-Konfigurationssatz dem Feld **PARTITION BY** entsprechen (in der Regel „PartitionId“). Achten Sie bei Event Hubs insbesondere darauf, dass die Anzahl der Partitionen für alle Eingaben der Anzahl der Partitionen für alle Ausgaben entspricht, um eine Überkreuzung zwischen den Partitionen zu verhindern. 
+2.  Je nach den in der Abfrage verwendeten Ausgabetypen sind einige Ausgaben möglicherweise nicht parallelisierbar oder erfordern weitere Konfigurationen im Hinblick auf einen hohen Parallelitätsgrad. Beispielsweise ist die Power BI-Ausgabe nicht parallelisierbar. Ausgaben werden immer zusammengeführt, bevor sie an die Ausgabesenke gesendet werden. Blobs, Tabellen, ADLS, Service Bus und Azure-Funktionen werden automatisch parallelisiert. SQL-und SQL DW-Ausgaben haben eine Option für die Parallelisierung. Beim Event Hub muss der PartitionKey-Konfigurationssatz dem Feld **PARTITION BY** entsprechen (in der Regel „PartitionId“). Achten Sie bei Event Hubs insbesondere darauf, dass die Anzahl der Partitionen für alle Eingaben der Anzahl der Partitionen für alle Ausgaben entspricht, um eine Überkreuzung zwischen den Partitionen zu verhindern. 
 3.  Führen Sie Ihre Abfrage mit **6 SUs** (d.h. der Gesamtkapazität eines einzelnen Computeknotens) aus, um den maximal erreichbaren Durchsatz zu messen, und messen Sie bei Verwendung von **GROUP BY** die Anzahl der Gruppen (Kardinalität), die der Auftrag verarbeiten kann. Zu den allgemeinen Symptomen, die bei Erreichen der Systemressourcenlimits durch den Auftrag auftreten, zählen Folgende:
     - Die Metrik „Speichereinheitnutzung in %“ liegt bei über 80 %. Dies weist auf eine hohe Speicherauslastung hin. Die Faktoren, die zur Erhöhung dieser Metrik beitragen, werden [hier](stream-analytics-streaming-unit-consumption.md) beschrieben. 
     -   Der Ausgabezeitstempel liegt gegenüber der Gesamtbetrachtungszeit im Rückstand. Je nach Abfragelogik kann der Ausgabezeitstempel eine Logikabweichung von der Gesamtbetrachtungszeit aufweisen. Diese sollten jedoch in ungefähr derselben Geschwindigkeit verlaufen. Wenn der Ausgabezeitstempel immer weiter zurückfällt, weist dies auf eine Überlastung des Systems hin. Dies kann die Folge einer Drosselung nachgeschalteter Ausgabesenken oder einer hohen CPU-Auslastung sein. Zurzeit stellen wir nicht die Metrik „CPU-Auslastung“ bereit, sodass es schwierig sein kann, zwischen beiden Ursachen zu differenzieren.

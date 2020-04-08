@@ -3,12 +3,12 @@ title: Informationen zum Überwachen der Inhalte virtueller Computer
 description: Hier erfahren Sie, wie Azure Policy mithilfe des Gastkonfigurations-Agents Einstellungen in VMs überprüft.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 73f986774fc13ac8c69cd800c977c909b591a74c
-ms.sourcegitcommit: f255f869c1dc451fd71e0cab340af629a1b5fb6b
+ms.openlocfilehash: cc2ba11f75da5f993b99c90e5d0cc1030003203e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2020
-ms.locfileid: "77369741"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80257255"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
 
@@ -79,7 +79,7 @@ In der folgenden Tabelle sind die in Azure-Images unterstützten Betriebssysteme
 |Microsoft|Windows Server|2012 Datacenter, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
 |Microsoft|Windows-Client|Windows 10|
 |OpenLogic|CentOS|7.3, 7.4, 7.5|
-|Red Hat|Red Hat Enterprise Linux|7.4, 7.5|
+|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6|
 |Suse|SLES|12 SP3|
 
 > [!IMPORTANT]
@@ -148,15 +148,15 @@ Beim Installieren der Gastkonfigurationserweiterung ist das PowerShell-Modul „
 
 Die Guest Configuration-Erweiterung schreibt Protokolldateien an die folgenden Speicherorte:
 
-Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\<version>\dsc\logs\dsc.log`
+Windows: `C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
 
-Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<version>/GCAgent/logs/dsc.log`
+Linux: `/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
 
 Dabei bezieht sich `<version>` auf die aktuelle Versionsnummer.
 
 ### <a name="collecting-logs-remotely"></a>Remotesammeln von Protokollen
 
-Im ersten Schritt bei der Problembehandlung von Konfigurationen oder Modulen durch die Gastkonfiguration sollte das Cmdlet `Test-GuestConfigurationPackage` anhand der Schritte in [Testen eines Gastkonfigurationspakets](../how-to/guest-configuration-create.md#test-a-guest-configuration-package) ausgeführt werden.
+Im ersten Schritt bei der Problembehandlung von Konfigurationen oder Modulen durch die Gastkonfiguration sollte das Cmdlet `Test-GuestConfigurationPackage` anhand der Schritte unter [Erstellen eines benutzerdefinierten Richtlinienpakets für Gastkonfigurationen](../how-to/guest-configuration-create.md#step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows) ausgeführt werden.
 Wenn dies nicht erfolgreich ist, kann das Sammeln von Clientprotokollen helfen, Probleme zu diagnostizieren.
 
 #### <a name="windows"></a>Windows
@@ -166,8 +166,8 @@ Das folgende PowerShell-Beispielskript kann hilfreich sein, um die Funktion „B
 ```powershell
 $linesToIncludeBeforeMatch = 0
 $linesToIncludeAfterMatch = 10
-$latestVersion = Get-ChildItem -Path 'C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\' | ForEach-Object {$_.FullName} | Sort-Object -Descending | Select-Object -First 1
-Select-String -Path "$latestVersion\dsc\logs\dsc.log" -pattern 'DSCEngine','DSCManagedEngine' -CaseSensitive -Context $linesToIncludeBeforeMatch,$linesToIncludeAfterMatch | Select-Object -Last 10
+$logPath = 'C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log'
+Select-String -Path $logPath -pattern 'DSCEngine','DSCManagedEngine' -CaseSensitive -Context $linesToIncludeBeforeMatch,$linesToIncludeAfterMatch | Select-Object -Last 10
 ```
 
 #### <a name="linux"></a>Linux
@@ -177,8 +177,8 @@ Das folgende Bash-Beispielskript kann hilfreich sein, um die Funktion „Befehl 
 ```Bash
 linesToIncludeBeforeMatch=0
 linesToIncludeAfterMatch=10
-latestVersion=$(find /var/lib/waagent/ -type d -name "Microsoft.GuestConfiguration.ConfigurationforLinux-*" -maxdepth 1 -print | sort -z | sed -n 1p)
-egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCManagedEngine' "$latestVersion/GCAgent/logs/dsc.log" | tail
+logPath=/var/lib/GuestConfig/gc_agent_logs/gc_agent.log
+egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCManagedEngine' $logPath | tail
 ```
 
 ## <a name="guest-configuration-samples"></a>Beispiele für Guest Configuration

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0ef9609cded29c94260d027212abbf0c62f8653c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 72264755d5f0379f0ffb07852f48885126a36898
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772107"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411609"
 ---
 # <a name="use-azure-files-with-linux"></a>Verwenden von Azure Files mit Linux
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können mithilfe des [SMB-Kernelclients](https://wiki.samba.org/index.php/LinuxCIFS) in Linux-Distributionen eingebunden werden. Dieser Artikel veranschaulicht zwei Möglichkeiten zum Einbinden einer Azure-Dateifreigabe: bedarfsgesteuert mit dem Befehl `mount` oder beim Start durch Erstellen eines Eintrags in `/etc/fstab`.
@@ -194,6 +194,53 @@ Wenn Sie die Azure-Dateifreigabe nicht mehr benötigen, können Sie `sudo umount
     > [!Note]  
     > Über die obigen Einbindungsbefehle erfolgt die Einbindung in SMB 3.0. Wenn Ihre Linux-Distribution SMB 3.0 mit Verschlüsselung nicht unterstützt oder wenn sie nur SMB 2.1 unterstützt, können Sie nur über eine Azure-VM, die sich in derselben Region wie das Speicherkonto befindet, eine Einbindung vornehmen. Wenn Sie Ihre Azure-Dateifreigabe in eine Linux-Distribution einbinden möchten, die SMB 3.0 mit Verschlüsselung nicht unterstützt, müssen Sie die [Verschlüsselung während der Übertragung für das Speicherkonto deaktivieren](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
+### <a name="using-autofs-to-automatically-mount-the-azure-file-shares"></a>Verwenden von autofs zum automatischen Einbinden der Azure-Dateifreigaben
+
+1. **Stellen Sie sicher, dass das autofs-Paket installiert ist.**  
+
+    Das Paket „autofs“ kann mithilfe des Paket-Managers für die Linux-Distribution Ihrer Wahl installiert werden. 
+
+    Verwenden Sie bei auf **Ubuntu** und **Debian** basierenden Distributionen den Paket-Manager `apt`:
+    ```bash
+    sudo apt update
+    sudo apt install autofs
+    ```
+    Verwenden Sie unter **Fedora**, **Red Hat Enterprise Linux 8 und höher** sowie **CentOS 8 und höher** den Paket-Manager `dnf`:
+    ```bash
+    sudo dnf install autofs
+    ```
+    Verwenden Sie unter älteren Versionen von **Red Hat Enterprise Linux** und **CentOS** den Paket-Manager `yum`:
+    ```bash
+    sudo yum install autofs 
+    ```
+    Verwenden Sie unter **OpenSUSE** den Paket-Manager `zypper`:
+    ```bash
+    sudo zypper install autofs
+    ```
+2. **Erstellen Sie einen Bereitstellungspunkt für die Freigabe:**
+   ```bash
+    sudo mkdir /fileshares
+    ```
+3. **Erstellen Sie eine benutzerdefinierte autofs-Konfigurationsdatei:**
+    ```bash
+    sudo vi /etc/auto.fileshares
+    ```
+4. **Fügen Sie die folgenden Einträge zu /etc/auto.fileshares hinzu:**
+   ```bash
+   echo "$fileShareName -fstype=cifs,credentials=$smbCredentialFile :$smbPath"" > /etc/auto.fileshares
+   ```
+5. **Fügen Sie den folgenden Eintrag zu /etc/auto.master hinzu:**
+   ```bash
+   /fileshares /etc/auto.fileshares --timeout=60
+   ```
+6. **Starten Sie autofs neu:**
+    ```bash
+    sudo systemctl restart autofs
+    ```
+7.  **Greifen Sie auf den für die Freigabe vorgesehenen Ordner zu:**
+    ```bash
+    cd /fileshares/$filesharename
+    ```
 ## <a name="securing-linux"></a>Sichern von Linux
 Zum Einbinden einer Azure-Dateifreigabe unter Linux muss Port 445 zugänglich sein. Viele Organisationen blockieren Port 445 aufgrund von mit SMB 1 verbundenen Sicherheitsrisiken. SMB 1, auch bekannt als CIFS (Common Internet File System) ist ein Legacydateisystemprotokoll, das in vielen Linux-Distributionen enthalten ist. SMB 1 ist ein veraltetes, ineffizientes und vor allem unsicheres Protokoll. Azure Files unterstützt SMB 1 nicht und ab der Linux-Kernelversion 4.18 ist es möglich, SMB 1 unter Linux zu deaktivieren. Es wird [dringend empfohlen](https://aka.ms/stopusingsmb1), SMB 1 auf Ihren Linux-Clients zu deaktivieren, bevor Sie SMB-Dateifreigaben in der Produktion verwenden.
 
@@ -226,7 +273,7 @@ sudo modinfo -p cifs | grep disable_legacy_dialects
 
 Es sollte die folgende Meldung ausgegeben werden:
 
-```Output
+```output
 disable_legacy_dialects: To improve security it may be helpful to restrict the ability to override the default dialects (SMB2.1, SMB3 and SMB3.02) on mount with old dialects (CIFS/SMB1 and SMB2) since vers=1.0 (CIFS/SMB1) and vers=2.0 are weaker and less secure. Default: n/N/0 (bool)
 ```
 
@@ -276,7 +323,7 @@ cat /sys/module/cifs/parameters/disable_legacy_dialects
 ## <a name="feedback"></a>Feedback
 Linux-Benutzer, wir möchten von Ihnen hören!
 
-Die Benutzergruppe „Azure Files for Linux“ bietet ein Forum, in dem Sie Ihr Feedback zu File Storage für Linux geben können. Senden Sie eine E-Mail an [Azure Files Linux Users](mailto:azurefileslinuxusers@microsoft.com), um der Benutzergruppe beizutreten.
+Die Benutzergruppe „Azure Files for Linux“ bietet ein Forum, in dem Sie Ihr Feedback zu File Storage für Linux geben können. Senden Sie eine E-Mail an [Azure Files Linux Users](mailto:azurefiles@microsoft.com), um der Benutzergruppe beizutreten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Azure Files finden Sie unter diesen Links:

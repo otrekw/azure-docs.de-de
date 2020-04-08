@@ -1,19 +1,19 @@
 ---
-title: Abfragen von Protokollen aus Azure Monitor für VMs (Vorschauversion) | Microsoft-Dokumentation
+title: Abfragen von Protokollen aus Azure Monitor für VMs
 description: Die Lösung „Azure Monitor für VMs“ erfasst Metriken und Protokolldaten. In diesem Artikel werden die Datensätze und einige Beispielabfragen beschrieben.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/19/2019
-ms.openlocfilehash: e679345669d0954008e46f48d986930038a84c10
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/12/2020
+ms.openlocfilehash: 61a71539dc034a216689eafd8991df60db96d2a4
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670711"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396927"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Abfragen von Protokollen aus Azure Monitor für VMs (Vorschauversion)
+# <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Abfragen von Protokollen aus Azure Monitor für VMs
 
 Azure Monitor für VMs erfasst Leistungs- und Verbindungsmetriken, Inventurdaten von Computern und Prozessen sowie Informationen zum Integritätsstatus und leitet diese an den Log Analytics-Arbeitsbereich in Azure Monitor weiter.  Diese Daten stehen in Azure Monitor für [Abfragen](../../azure-monitor/log-query/log-query-overview.md) zur Verfügung. Diese Daten können in verschiedenen Szenarios von Nutzen sein, z.B. bei der Migrationsplanung, Kapazitätsanalyse, Ermittlung und Ad-hoc-Behebung von Leistungsproblemen.
 
@@ -47,7 +47,7 @@ Die folgenden Felder und Konventionen gelten sowohl für VMConnection als auch f
 
 Um Kosten und Komplexität im Zaum zu halten, stellen die Verbindungsdatensätze keine einzelnen physischen Netzwerkverbindungen dar. Mehrere physische Netzwerkverbindungen werden in einer logischen Verbindung gruppiert, die dann in der entsprechenden Tabelle wiedergegeben wird.  Das heißt, dass die Datensätze in der Tabelle *VMConnection* eine logische Gruppierung anstelle der beobachteten einzelnen physischen Verbindungen darstellen. Physische Netzwerkverbindungen, die während eines bestimmten einminütigen Intervalls den gleichen Wert für die folgenden Attribute aufweisen, werden in *VMConnection* zu einem einzelnen logischen Datensatz zusammengefasst. 
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--|:--|
 |Direction |Richtung der Verbindung, der Wert ist *inbound* oder *outbound* |
 |Machine |Der vollqualifizierte Domänenname des Computers |
@@ -70,7 +70,7 @@ Um dem Einfluss der Gruppierung Rechnung zu tragen, werden Informationen über d
 
 Über Metriken zur Verbindungsanzahl hinaus sind in den folgenden Eigenschaften des Datensatzes auch Informationen über das Volumen der gesendeten und empfangenen Daten für eine bestimmte logische Verbindung oder einen bestimmten Netzwerkport enthalten:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--|:--|
 |BytesSent |Gesamtzahl der Bytes, die während des Berichtszeitraums gesendet wurden |
 |BytesReceived |Gesamtzahl der Bytes, die während des Berichtszeitraums empfangen wurden |
@@ -112,7 +112,7 @@ Jede RemoteIp-Eigenschaft in der Tabelle *VMConnection* wird anhand einer Sammlu
 |:--|:--|
 |MaliciousIp |Die RemoteIp-Adresse |
 |IndicatorThreadType |„Bedrohungsindikator erkannt“ kann einen der folgenden Werte haben: *Botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos* , *MaliciousUrl*, *Malware*, *Phishing*, *Proxy*, *PUA*, *Watchlist*.   |
-|Beschreibung |Beschreibung der beobachteten Bedrohung. |
+|BESCHREIBUNG |Beschreibung der beobachteten Bedrohung. |
 |TLPLevel |TLP-Stufe (Ampelprotokoll) ist einer der definierten Werte *White*, *Green*, *Amber*, *Red*. |
 |Confidence |Werte sind *0–100*. |
 |severity |Werte sind *0–5*, wobei *5* am schwerwiegendsten und *0* überhaupt nicht schwerwiegend ist. Der Standardwert ist *3*.  |
@@ -208,13 +208,13 @@ Datensätze des Typs *VMComputer* enthalten Bestandsdaten für Server mit dem De
 |AzureCloudServiceRoleType | Clouddienst-Rollentyp: *Worker* oder *Web* |
 |AzureCloudServiceInstanceId | Rolleninstanz-ID des Clouddiensts |
 |AzureVmScaleSetName | Der Name der VM-Skalierungsgruppe |
-|AzureVmScaleSetDeployment | Bereitstellungs-ID der VM-Skalierungsgruppe |
+|AzureVmScaleSetDeployment | ID für Bereitstellung einer VM-Skalierungsgruppe |
 |AzureVmScaleSetResourceId | Der eindeutige Bezeichner der Ressourcen der VM-Skalierungsgruppe|
 |AzureVmScaleSetInstanceId | Der eindeutige Bezeichner der VM-Skalierungsgruppe |
 |AzureServiceFabricClusterId | Der eindeutige Bezeichner des Azure Service Fabric-Clusters | 
 |AzureServiceFabricClusterName | Der Name des Azure Service Fabric-Clusters |
 
-### <a name="vmprocess-record"></a>VMProcess-Datensatz
+### <a name="vmprocess-records"></a>VMProcess-Datensätze
 
 Datensätze des Typs *VMProcess* enthalten Bestandsdaten für über TCP verbundene Prozesse auf Servern mit dem Dependency-Agent. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
 
@@ -247,7 +247,8 @@ Datensätze des Typs *VMProcess* enthalten Bestandsdaten für über TCP verbunde
 |UserDomain | Die Domäne, unter der der Prozess ausgeführt wird |
 |_ResourceId | Der eindeutige Bezeichner für den Prozess innerhalb des Arbeitsbereichs |
 
-## <a name="sample-log-searches"></a>Beispiele für Protokollsuchen
+
+## <a name="sample-map-queries"></a>Beispielzuordnungsabfragen
 
 ### <a name="list-all-known-machines"></a>Auflisten aller bekannten Computer
 
@@ -264,7 +265,7 @@ let Today = now(); VMComputer | extend DaysSinceBoot = Today - BootTime | summar
 ### <a name="summary-of-azure-vms-by-image-location-and-sku"></a>Zusammenfassung von virtuellen Azure-Computern nach Image, Speicherort und SKU
 
 ```kusto
-VMComputer | where AzureLocation != "" | summarize by ComputerName, AzureImageOffering, AzureLocation, AzureImageSku
+VMComputer | where AzureLocation != "" | summarize by Computer, AzureImageOffering, AzureLocation, AzureImageSku
 ```
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Auflisten der physischen Arbeitsspeicherkapazität aller verwalteten Computer
@@ -282,7 +283,7 @@ VMComputer | summarize arg_max(TimeGenerated, *) by _ResourceId | project Comput
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>Suchen nach allen Prozesse mit "sql" in der Befehlszeile
 
 ```kusto
-VMComputer | where CommandLine contains_cs "sql" | summarize arg_max(TimeGenerated, *) by _ResourceId
+VMProcess | where CommandLine contains_cs "sql" | summarize arg_max(TimeGenerated, *) by _ResourceId
 ```
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Suchen eines Computers (aktuellster Datensatz) anhand des Ressourcennamens
@@ -306,7 +307,7 @@ VMProcess | where Machine == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summariz
 ### <a name="list-all-computers-running-sql-server"></a>Auflisten aller Computer, auf denen SQL Server ausgeführt wird
 
 ```kusto
-VMComputer | where AzureResourceName in ((search in (VMProcess) "\*sql\*" | distinct Machine)) | distinct Computer
+VMComputer | where AzureResourceName in ((search in (VMProcess) "*sql*" | distinct Machine)) | distinct Computer
 ```
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Auflisten aller eindeutigen Produktversionen von „curl“ im eigenen Rechenzentrum
@@ -318,7 +319,7 @@ VMProcess | where ExecutableName == "curl" | distinct ProductVersion
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Erstellen einer Computergruppe mit allen Computern, auf denen CentOS ausgeführt wird
 
 ```kusto
-VMComputer | where OperatingSystemFullName contains_cs "CentOS" | distinct ComputerName
+VMComputer | where OperatingSystemFullName contains_cs "CentOS" | distinct Computer
 ```
 
 ### <a name="bytes-sent-and-received-trends"></a>Gesendete Bytes und empfangene Trends
@@ -428,6 +429,47 @@ let remoteMachines = remote | summarize by RemoteMachine;
 // aggregate the remote information
 | summarize Remote=makeset(iff(isempty(RemoteMachine), todynamic('{}'), pack('Machine', RemoteMachine, 'Process', Process1, 'ProcessName', ProcessName1))) by ConnectionId, Direction, Machine, Process, ProcessName, SourceIp, DestinationIp, DestinationPort, Protocol
 ```
+
+## <a name="performance-records"></a>Leistungsdatensätze
+Datensätze mit einem Typ von *InsightsMetrics* verfügen über Leistungsdaten vom Gastbetriebssystem der VM. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
+
+
+| Eigenschaft | BESCHREIBUNG |
+|:--|:--|
+|TenantId | Dies ist der eindeutige Bezeichner des Arbeitsbereichs. |
+|SourceSystem | *Erkenntnisse* | 
+|TimeGenerated | Dies ist der Zeitpunkt, zu dem der Wert erfasst wurde (UTC). |
+|Computer | Der vollqualifizierte Domänenname des Computers | 
+|Origin | *vm.azm.ms* |
+|Namespace | Dies ist die Kategorie des Leistungsindikators. | 
+|Name | Name des Leistungsindikators. |
+|Val | Dies ist der ermittelte Wert. | 
+|`Tags` | Dies sind zugehörige Details zum Datensatz. In der folgenden Tabelle finden Sie Tags, die mit unterschiedlichen Datensatztypen verwendet werden.  |
+|AgentId | Dies ist der eindeutige Bezeichner für die einzelnen Computer-Agents. |
+|type | *InsightsMetrics* |
+|_ResourceId_ | Dies ist die Ressourcen-ID der VM. |
+
+In der folgenden Tabelle sind die Leistungsindikatoren aufgeführt, die zurzeit in der *InsightsMetrics*-Tabelle erfasst werden:
+
+| Namespace | Name | BESCHREIBUNG | Einheit | `Tags` |
+|:---|:---|:---|:---|:---|
+| Computer    | Heartbeat             | Computertakt                        | | |
+| Arbeitsspeicher      | AvailableMB           | Arbeitsspeicher: Verfügbare Bytes                    | Byte          | memorySizeMB: Gesamtspeichergröße|
+| Netzwerk     | WriteBytesPerSecond   | Geschriebene Bytes pro Sekunde (Netzwerk)            | Bytes pro Sekunde | NetworkDeviceId: Geräte-ID<br>bytes: Anzahl der insgesamt gesendeten Bytes |
+| Netzwerk     | ReadBytesPerSecond    | Gelesene Bytes pro Sekunde (Netzwerk)             | Bytes pro Sekunde | networkDeviceId: Geräte-ID<br>bytes: Insgesamt empfangene Bytes |
+| Prozessor   | UtilizationPercentage | Prozentsatz der Prozessorauslastung          | Percent        | totalCpus: Gesamtanzahl der CPUs |
+| Logischer Datenträger | WritesPerSecond       | Schreibvorgänge pro Sekunde (logischer Datenträger)            | Anzahl pro Sekunde | mountId: Einbindungs-ID des Geräts |
+| Logischer Datenträger | WriteLatencyMs        | Schreibwartezeit in Millisekunden (logischer Datenträger)    | Millisekunden   | mountId: Einbindungs-ID des Geräts |
+| Logischer Datenträger | WriteBytesPerSecond   | Geschriebene Bytes pro Sekunde (logischer Datenträger)       | Bytes pro Sekunde | mountId: Einbindungs-ID des Geräts |
+| Logischer Datenträger | TransfersPerSecond    | Übertragungen pro Sekunde (logischer Datenträger)         | Anzahl pro Sekunde | mountId: Einbindungs-ID des Geräts |
+| Logischer Datenträger | TransferLatencyMs     | Übertragungswartezeit in Millisekunden(logischer Datenträger) | Millisekunden   | mountId: Einbindungs-ID des Geräts |
+| Logischer Datenträger | ReadsPerSecond        | Lesevorgänge pro Sekunde (logischer Datenträger)             | Anzahl pro Sekunde | mountId: Einbindungs-ID des Geräts |
+| Logischer Datenträger | ReadLatencyMs         | Lesewartezeit in Millisekunden (logischer Datenträger)     | Millisekunden   | mountId: Einbindungs-ID des Geräts |
+| Logischer Datenträger | ReadBytesPerSecond    | Gelesene Bytes pro Sekunde (logischer Datenträger)        | Bytes pro Sekunde | mountId: Einbindungs-ID des Geräts |
+| Logischer Datenträger | FreeSpacePercentage   | Prozentsatz verfügbarer Speicherplatz (logischer Datenträger)        | Percent        | mountId: Einbindungs-ID des Geräts |
+| Logischer Datenträger | FreeSpaceMB           | Verfügbarer Speicherplatz (logischer Datenträger)             | Byte          | mountId: Einbindungs-ID des Geräts<br>diskSizeMB: Gesamtgröße des Datenträgers |
+| Logischer Datenträger | Bytes pro Sekunde        | Bytes pro Sekunde (logischer Datenträger)             | Bytes pro Sekunde | mountId: Einbindungs-ID des Geräts |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

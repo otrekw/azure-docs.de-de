@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: d8cb8bfa32db958b6dfdda0df23429669ce2a439
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: bf780897317d41c7da85140f64313546cf5c31d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "77063797"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064695"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche
 
@@ -23,7 +23,7 @@ Apache Ambari vereinfacht die Verwaltung und Überwachung von Apache Hadoop-Clus
 
 In diesem Dokument erfahren Sie, wie Sie die Webbenutzeroberfläche Ambari mit einem HDInsight-Cluster verwenden.
 
-## <a id="whatis"></a>Was ist Apache Ambari?
+## <a name="what-is-apache-ambari"></a><a id="whatis"></a>Was ist Apache Ambari?
 
 [Apache Ambari](https://ambari.apache.org) vereinfacht die Hadoop-Verwaltung durch Bereitstellung einer einfach zu verwendenden Web-Benutzeroberfläche. Sie können Ambari verwenden, um Hadoop-Cluster zu verwalten und zu überwachen. Entwickler können diese Funktionen mithilfe der [Ambari-REST-APIs](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)in ihre Anwendungen integrieren.
 
@@ -88,6 +88,8 @@ Sie können die Gruppen verwalten, indem Sie das Menü **Aktionen** und dann die
 
 Über den Eintrag __Warnungseinstellungen verwalten__ im Menü __Aktionen__ können Sie schließlich festlegen, wie oft eine Warnung ausgegeben werden muss, bevor eine Benachrichtigung gesendet wird. Dies Einstellung kann verwendet werden, um Benachrichtigungen für vorübergehende Fehler zu verhindern.
 
+Ein Tutorial für eine Warnmeldung mit einem kostenlosen [SendGrid-Konto](https://docs.microsoft.com/azure/sendgrid-dotnet-how-to-send-email) finden Sie unter [Konfigurieren von Apache Ambari-E-Mail-Benachrichtigungen in Azure HDInsight](./apache-ambari-email.md).
+
 ### <a name="cluster"></a>Cluster
 
 Die Registerkarte **Metrics** im Dashboard enthält eine Reihe von Widgets, die das Überwachen des Clusterstatus auf einen Blick erleichtern. Verschiedene Widgets wie **CPU Usage**bieten zusätzliche Informationen, wenn Sie darauf klicken.
@@ -151,7 +153,7 @@ Die Seite **Hosts** listet alle Hosts im Cluster auf. Gehen Sie folgendermaßen 
 
 2. Verwenden Sie das Menü **Actions** , um die Aktion auswählen, die Sie durchführen möchten:
 
-    |Element |Beschreibung |
+    |Element |BESCHREIBUNG |
     |---|---|
     |Start all components|Startet alle Komponenten auf dem Host.|
     |Stop all components|Beendet alle Komponenten auf dem Host.|
@@ -164,7 +166,7 @@ Die Seite **Hosts** listet alle Hosts im Cluster auf. Gehen Sie folgendermaßen 
     |Decommission|Entfernt einen Host aus dem Cluster. **Verwenden Sie diese Aktion nicht für HDInsight-Cluster.**|
     |Recommission|Fügt einen zuvor außer Betrieb gesetzten Host dem Cluster hinzu. **Verwenden Sie diese Aktion nicht für HDInsight-Cluster.**|
 
-### <a id="service"></a>Dienste
+### <a name="services"></a><a id="service"></a>Dienste
 
 Verwenden Sie auf der Seite **Dashboard** oder **Dienste** am Ende der Dienstliste die Schaltfläche **Aktionen**, um alle Dienste zu beenden und zu starten.
 

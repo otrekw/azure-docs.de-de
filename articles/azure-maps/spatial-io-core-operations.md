@@ -1,19 +1,19 @@
 ---
 title: Zentrale E/A-Vorgänge | Microsoft Azure Maps
 description: Erfahren Sie, wie Sie XML-Daten und Daten mit Trennzeichen mithilfe von Kernbibliotheken im Modul Spatial IO effizient lesen und schreiben können.
-author: farah-alyasari
-ms.author: v-faalya
+author: philmea
+ms.author: philmea
 ms.date: 03/03/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: d2a82fd5d9ba958fd6490a83ecbbe0a4bdf820a0
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 0b8fe1b319dc480879944d28f10645025a8cb38e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78370361"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80371443"
 ---
 # <a name="core-io-operations"></a>Zentrale E/A-Vorgänge
 
@@ -47,7 +47,7 @@ Um diese Klasse zu verwenden, führen Sie die folgenden Schritte aus:
 - Erstellen Sie eine Instanz der Klasse, und legen Sie optional ein benutzerdefiniertes Trennzeichen oder einen Textqualifizierer fest.
 - Schreiben Sie mit der Funktion `write` oder `writeRow` Daten in die Klasse. Übergeben Sie für die Funktion `write` ein zweidimensionales Array von Objekten, das mehrere Zeilen und Zellen darstellt. Um die Funktion `writeRow` zu verwenden, übergeben Sie ein Array von Objekten, das eine Datenzeile mit mehreren Spalten darstellt.
 - Rufen Sie die Funktion `toString` auf, um die Zeichenfolge mit Trennzeichen abzurufen. 
-- Rufen Sie optional die `clear`-Methode auf, um den Writer wiederverwendbar zu machen und seine Ressourcenzuteilung zu reduzieren. Sie können auch die `delete`-Methode aufrufen, um die Instanz des Writers zu entsorgen.
+- Rufen Sie optional die `clear`-Methode auf, um den Writer wiederverwendbar zu machen und seine Ressourcenzuordnung zu reduzieren. Sie können auch die `delete`-Methode aufrufen, um die Instanz des Writers zu entsorgen.
 
 > [!Note]
 > Die Anzahl der geschriebenen Spalten ist auf die Anzahl der Zellen in der ersten Zeile der an den Writer übergebenen Daten beschränkt.

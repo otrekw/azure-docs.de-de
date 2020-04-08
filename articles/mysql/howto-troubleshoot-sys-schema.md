@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 12/02/2019
-ms.openlocfilehash: 50552b87fad9d8f58ff8c48dc03463d4c901bf99
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/30/2020
+ms.openlocfilehash: 59b8753007c3b9130c397dda30c571580cbb5326
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775944"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411089"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Verwenden von sys_schema zum Optimieren der Leistung und Datenbankwartung in Azure Database for MySQL
 
@@ -61,13 +61,16 @@ In diesem Beispiel benötigt Azure Database for MySQL 53 Minuten, um das slog-Ab
 
 ### <a name="sysinnodb_buffer_stats_by_table"></a>*sys.innodb_buffer_stats_by_table*
 
+[!IMPORTANT]
+> Das Abfragen dieser Ansicht kann sich auf die Leistung auswirken. Es wird empfohlen, diese Problembehandlung in ruhigeren Geschäftszeiten durchzuführen.
+
 Der InnoDB-Pufferpool befindet sich im Arbeitsspeicher. Er ist der wichtigste Mechanismus zur Zwischenspeicherung zwischen dem DBMS und dem Speicher. Die Größe des InnoDB-Pufferpools wird durch die Leistungsstufe begrenzt und kann nur geändert werden, indem eine andere Produkt-SKU ausgewählt wird. Wie beim Arbeitsspeicher im Betriebssystem werden alte Seiten ausgelagert, um Platz für neuere Daten bereitzustellen. Um herauszufinden, welche Tabellen den meisten Speicher im InnoDB-Pufferpool belegen, können Sie die Sicht *sys.innodb_buffer_stats_by_table* abfragen.
 
 ![InnoDB-Pufferstatus](./media/howto-troubleshoot-sys-schema/innodb-buffer-status.png)
 
 In der Abbildung oben wird ersichtlich, dass mit Ausnahme der Systemtabellen und -sichten alle Tabellen in der Datenbank „mysqldatabase033“, die eine WordPress-Website hostet, 16 KB oder 1 Seite der Daten im Arbeitsspeicher belegen.
 
-### <a name="sysschema_unused_indexes--sysschema_redundant_indexes"></a>*sys.schema_unused_indexes* & *sys.schema_redundant_indexes*
+### <a name="sysschema_unused_indexes--sysschema_redundant_indexes"></a>*Sys.schema_unused_indexes* & *sys.schema_redundant_indexes*
 
 Indizes sind hervorragende Tools zur Verbesserung der Leistung bei Lesevorgängen, sie verursachen jedoch zusätzliche Kosten für Einfügevorgänge und Speicher. *sys.schema_unused_indexes* und *sys.schema_redundant_indexes* geben Einblick in nicht genutzte oder doppelte Indizes.
 

@@ -14,14 +14,14 @@ ms.date: 04/10/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/10/2019
-ms.openlocfilehash: 80eae09240bde61870995468485338db5f0b9c2d
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 2f2ca4b56445b3f399477e396de579d8a8c539e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212305"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127013"
 ---
-# <a name="azure-notification-hubs-and-the-google-firebase-cloud-messaging-fcm-migration"></a>Azure Notification Hubs und die Google FCM-Migration (Firebase Cloud Messaging)
+# <a name="azure-notification-hubs-and-google-firebase-cloud-messaging-migration"></a>Azure Notification Hubs und die Migration von Google Firebase Cloud Messaging
 
 ## <a name="current-state"></a>Aktueller Status
 
@@ -29,7 +29,7 @@ Als Google die Migration von Google Cloud Messaging (GCM) zu Firebase Cloud Mess
 
 Wir haben unser Dienst-Back-End aktualisiert und dann bei Bedarf Updates für unsere API und SDKs veröffentlicht. Mit unserer Implementierung haben wir uns entschieden, die Kompatibilität mit bestehenden GCM-Benachrichtigungsschemata aufrechtzuerhalten, um die Auswirkungen auf den Kunden zu minimieren. Das bedeutet, dass wir derzeit Benachrichtigungen über FCM im FCM Legacymodus an Android-Geräte senden. Schließlich möchten wir die volle Unterstützung für FCM hinzufügen, einschließlich der neuen Features und des Nutzlastformats. Das ist eine längerfristige Änderung, und die aktuelle Migration konzentriert sich auf die Beibehaltung der Kompatibilität mit bestehenden Anwendungen und SDKs. Sie können entweder die GCM- oder FCM-SDKs in Ihrer App verwenden (zusammen mit unserem SDK) und wir stellen sicher, dass die Benachrichtigung ordnungsgemäß gesendet wird.
 
-Einige Kunden erhielten kürzlich eine E-Mail von Google mit einer Warnung vor Apps, die einen GCM-Endpunkt für Benachrichtigungen verwenden. Dies war nur eine Warnung und es gibt keine Fehler – die Android-Benachrichtigungen Ihrer App werden immer noch zur Verarbeitung an Google gesendet und Google verarbeitet sie auch weiterhin. Einige Kunden, die den GCM-Endpunkt in ihrer Dienstkonfiguration explizit angegeben haben, verwendeten weiterhin den veralteten Endpunkt. Wir hatten diese Lücke bereits erkannt und arbeiteten an der Behebung des Problems, als Google die E-Mail versandte.
+Einige Kunden erhielten kürzlich eine E-Mail von Google mit einer Warnung vor Apps, die einen GCM-Endpunkt für Benachrichtigungen verwenden. Dies war nur eine Warnung und es gibt keine Fehler. Die Android-Benachrichtigungen Ihrer App werden immer noch zur Verarbeitung an Google gesendet, und Google verarbeitet sie auch weiterhin. Einige Kunden, die den GCM-Endpunkt in ihrer Dienstkonfiguration explizit angegeben haben, verwendeten weiterhin den veralteten Endpunkt. Wir hatten diese Lücke bereits erkannt und arbeiteten an der Behebung des Problems, als Google die E-Mail versandte.
 
 Wir haben diesen veralteten Endpunkt ersetzt und die Lösung wird bereitgestellt.
 
@@ -43,7 +43,7 @@ Wenn Ihre App die GCM-Bibliothek verwendet, folgen Sie den Anweisungen von Googl
 
 Hier sind einige Antworten auf häufig gestellte Fragen, die wir von Kunden erhalten haben:
 
-**F:** Wie muss ich vorgehen, um die Kompatibilität bis zum Stichtag zu erreichen (Googles aktueller Stichtag ist der 29. Mai. Dieses Datum kann sich noch ändern)?
+**F:** Wie muss ich vorgehen, um die Kompatibilität bis zum Stichtag zu erreichen (Googles aktueller Stichtag ist der 29. Mai. Dieses Datum kann sich noch ändern)?
 
 **A:** Nichts. Wir werden die Kompatibilität mit dem bestehenden GCM-Benachrichtigungsschema beibehalten. Ihr GCM-Schlüssel funktioniert weiterhin wie gewohnt, ebenso wie alle von Ihrer Anwendung verwendeten GCM-SDKs und -Bibliotheken.
 

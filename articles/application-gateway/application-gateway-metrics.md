@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: 8b63233aa2b20862e4654c89f1a6dd5d00c78940
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: abff2f16d9559f015417711820a993badd636f7c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096065"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80133071"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriken für Application Gateway
 
@@ -34,7 +34,7 @@ Application Gateway bietet mehrere integrierte Zeitsteuerungsmetriken, die sich 
 
   Zeitaufwand für das Herstellen einer Verbindung mit der Back-End-Anwendung. 
 
-  Dies umfasst auch die Netzwerklatenz sowie die Zeit, die der TCP-Stapel des Back-End-Servers zum Aufbauen neuer Verbindungen benötigt. Im Fall von SSL umfasst dies auch die mit dem Handshake verbrachte Zeit. 
+  Dies umfasst auch die Netzwerklatenz sowie die Zeit, die der TCP-Stapel des Back-End-Servers zum Aufbauen neuer Verbindungen benötigt. Im Fall von TLS umfasst dies auch die mit dem Handshake verbrachte Zeit. 
 
 - **Antwortzeit für erstes Byte des Back-Ends**
 

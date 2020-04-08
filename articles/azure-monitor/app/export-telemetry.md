@@ -2,13 +2,13 @@
 title: Fortlaufender Export von Telemetriedaten aus Application Insights | Microsoft Docs
 description: Exportieren Sie Diagnose- und Nutzungsdaten in Microsoft Azure-Speicher, die Sie anschließendes daraus herunterladen.
 ms.topic: conceptual
-ms.date: 07/25/2019
-ms.openlocfilehash: 33158919980514b70c3b0e438691427a34eed834
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/25/2020
+ms.openlocfilehash: f6afe42e483ab7ad5810169fc301946c75308c29
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77663912"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298288"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Exportieren von Telemetriedaten aus Application Insights
 Möchten Sie Ihre Telemetriedaten länger aufbewahren als von der standardmäßigen Beibehaltungsdauer vorgesehen? Oder möchten Sie sie in einer speziellen Art und Weise verarbeiten? Der fortlaufende Export eignet sich hierfür ideal. Die Ereignisse, die Sie im Application Insights-Portal sehen, können im JSON-Format in Microsoft Azure-Speicher exportiert werden. Sie können Ihre Daten anschließend herunterladen und den Code schreiben, den Sie zu ihrer Verarbeitung benötigen.  
@@ -34,7 +34,7 @@ Der fortlaufende Export **unterstützt nicht** die folgenden Azure-Speicherfeatu
 
 * [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction).
 
-## <a name="setup"></a> Erstellen eines fortlaufenden Exports
+## <a name="create-a-continuous-export"></a><a name="setup"></a> Erstellen eines fortlaufenden Exports
 
 1. Öffnen Sie in der Application Insights-Ressource für Ihre App im Konfigurationsbereich rechts die Option „Fortlaufender Export“, und wählen Sie **Hinzufügen** aus:
 
@@ -53,6 +53,18 @@ Nachdem Sie Ihren Exportvorgang erstellt haben, geht es gleich los. Sie erhalten
 
 Es kann etwa eine Stunde dauern, bis Daten im Speicher angezeigt werden.
 
+Nach Abschluss des ersten Exports wird in Ihrem Azure Blob Storage-Container eine Struktur ähnlich der folgenden angezeigt: (Diese hängt von den Daten ab, die Sie erfassen.)
+
+|Name | BESCHREIBUNG |
+|:----|:------|
+| [Verfügbarkeit](export-data-model.md#availability) | Liefert Berichtdaten zu [Verfügbarkeitswebtests](../../azure-monitor/app/monitor-web-app-availability.md).  |
+| [Event](export-data-model.md#events) | Von [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)generierte benutzerdefinierte Ereignisse. 
+| [Ausnahmen](export-data-model.md#exceptions) |Melden [Ausnahmen](../../azure-monitor/app/asp-net-exceptions.md) auf dem Server und im Browser.
+| [Meldungen](export-data-model.md#trace-messages) | Gesendet von [TrackTrace](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) und über die [Protokollierungsadapter](../../azure-monitor/app/asp-net-trace-logs.md).
+| [Metriken](export-data-model.md#metrics) | Generiert durch Metrik-API-Aufrufe
+| [PerformanceCounters](export-data-model.md) | Von Application Insights erfasste Leistungsindikatoren
+| [Anforderungen](export-data-model.md#requests)| Gesendet von [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest). Die Standardmodule verwenden TrackRequest zum Berichten der Serverantwortzeit, gemessen auf dem Server.| 
+
 ### <a name="to-edit-continuous-export"></a>Bearbeiten des fortlaufenden Exports
 
 Klicken Sie auf „Fortlaufender Export“, und wählen Sie das zu bearbeitende Speicherkonto aus.
@@ -66,7 +78,7 @@ Um den Export dauerhaft zu beenden, löschen Sie ihn. Dabei werden Ihre Daten ni
 ### <a name="cant-add-or-change-an-export"></a>Wer darf einen Export ergänzen oder ändern?
 * Zum Ergänzen oder Ändern von Exporten benötigen Sie das Zugriffsrecht „Besitzer“, „Mitwirkender“ oder „Application Insights-Mitwirkender“. [Weitere Informationen zu Rollen][roles].
 
-## <a name="analyze"></a> Welche Ereignisse werden abgerufen?
+## <a name="what-events-do-you-get"></a><a name="analyze"></a> Welche Ereignisse werden abgerufen?
 Bei den exportierten Daten handelt es sich um die Telemetrierohdaten, die Sie von Ihrer Anwendung empfangen. Wir fügen allerdings Standortdaten hinzu, die wir anhand der Client-IP-Adresse berechnen.
 
 Daten, die während der [Stichprobenerstellung](../../azure-monitor/app/sampling.md) verworfen wurden, werden nicht in die exportierten Daten aufgenommen.
@@ -80,7 +92,7 @@ Die Daten umfassen außerdem die Ergebnisse von [Verfügbarkeitswebtests](../../
 >
 >
 
-## <a name="get"></a> Untersuchen der Daten
+## <a name="inspect-the-data"></a><a name="get"></a> Untersuchen der Daten
 Sie können den Speicher direkt im Portal überprüfen. Klicken Sie im Menü links oben auf „Startseite“, und wählen Sie im oberen Bereich unter „Azure-Dienste“ **Speicherkonten** aus. Wählen Sie den Namen des Speicherkontos, anschließend auf der Übersichtsseite unter den Diensten **Blobs** und schließlich den Containernamen aus.
 
 Um Azure Storage in Visual Studio zu überprüfen, öffnen Sie **Anzeigen** und dann **Cloud-Explorer**. (Wenn dieser Menübefehl nicht verfügbar ist, müssen Sie das Azure SDK installieren: Öffnen Sie das Dialogfeld **Neues Projekt**, erweitern Sie „Visual C#/Cloud“, und wählen Sie dann **Microsoft Azure SDK für .NET abrufen** aus.)
@@ -100,7 +112,7 @@ Hierbei gilt:
 * `blobCreationTimeUtc` ist die Uhrzeit, zu der das Blob im internen Stagingspeicher erstellt wurde.
 * `blobDeliveryTimeUtc` ist die Uhrzeit, zu der das Blob in den Zielspeicher für den Export kopiert wird.
 
-## <a name="format"></a> Datenformat
+## <a name="data-format"></a><a name="format"></a> Datenformat
 * Jedes Blob ist eine Textdatei, die mehrere durch '\n' getrennte Zeilen enthält. Es enthält die Telemetriedaten, die über einen Zeitraum von etwa einer halben Minute verarbeitet wurden.
 * Jede Zeile stellt einen Telemetriedatenpunkt dar, z.B. eine Anforderung oder einen Seitenaufruf.
 * Jede Zeile ist ein unformatiertes JSON-Dokument. Wenn Sie den Vorgang verfolgen möchten, öffnen Sie es in Visual Studio, und wählen Sie "Bearbeiten", "Erweitert", "Formatdatei":
@@ -137,7 +149,7 @@ Im kleinen Rahmen können Sie Code zum Aufteilen Ihrer Daten schreiben, sie in e
 
 Ein umfangreicheres Codebeispiel finden Sie unter [Verwenden einer Workerrolle][exportasa].
 
-## <a name="delete"></a>Löschen der alten Daten
+## <a name="delete-your-old-data"></a><a name="delete"></a>Löschen der alten Daten
 Sie sind für die Verwaltung Ihrer Speicherkapazität und das Löschen der alten Daten nach Bedarf verantwortlich.
 
 ## <a name="if-you-regenerate-your-storage-key"></a>Wenn Sie Ihren Speicherschlüssel erneut generieren...

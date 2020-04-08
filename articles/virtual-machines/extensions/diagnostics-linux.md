@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: d9375d09219d2655bd9947c0953557f4a1bf8f3c
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 7a7c1af1193ba391550438229a22c4a8c116e6be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78199613"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80289174"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Verwenden der Linux-Diagnoseerweiterung zum Überwachen von Metriken und Protokollen
 
@@ -61,7 +61,7 @@ Die herunterladbare Konfiguration ist nur ein Beispiel. Passen Sie sie an Ihre e
 
 Geben Sie vor der Ausführung im ersten Abschnitt die richtigen Werte für die Variablen ein:
 
-```bash
+```azurecli
 # Set your Azure VM diagnostic variables correctly below
 my_resource_group=<your_azure_resource_group_name_containing_your_azure_linux_vm>
 my_linux_vm=<your_azure_linux_vm_name>
@@ -89,11 +89,11 @@ my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_accoun
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
 
-Die URL für die Beispielkonfiguration und ihr Inhalt können geändert werden. Laden Sie eine Kopie der JSON-Datei mit den Portaleinstellungen herunter, und passen Sie sie an Ihre Anforderungen an. Verwenden Sie für alle Vorlagen oder Automatisierung, die Sie erstellen, Ihre eigene Kopie, anstatt jedes Mal die URL herunterzuladen.
+Die in diesen Beispielen heruntergeladene Beispielkonfiguration sammelt eine Reihe von Standarddaten und sendet diese an den Tabellenspeicher. Die URL für die Beispielkonfiguration und ihr Inhalt können geändert werden. In den meisten Fällen sollten Sie eine Kopie der JSON-Datei der Portaleinstellungen herunterladen und an Ihre Anforderungen anpassen. Verwenden Sie dann selbst erstellte Vorlagen oder Automation für Ihre Version der Konfigurationsdatei, anstatt diese URL jedes Mal herunterzuladen.
 
 #### <a name="powershell-sample"></a>PowerShell-Beispiel
 
-```Powershell
+```powershell
 $storageAccountName = "yourStorageAccountName"
 $storageAccountResourceGroup = "yourStorageAccountResourceGroupName"
 $vmName = "yourVMName"
@@ -155,7 +155,7 @@ Dieser Satz von Konfigurationsinformationen enthält vertrauliche Informationen,
 }
 ```
 
-Name | value
+Name | Wert
 ---- | -----
 storageAccountName | Der Name des Speicherkontos, in dem von der Erweiterung Daten geschrieben werden
 storageAccountEndPoint | (optional:) Der Endpunkt, der die Cloud mit dem Speicherkonto angibt. Wenn diese Einstellung fehlt, verwendet LAD standardmäßig die öffentliche Azure-Cloud `https://core.windows.net`. Um ein Speicherkonto in Azure Deutschland, Azure Government oder Azure China zu verwenden, legen Sie diesen Wert entsprechend fest.
@@ -193,7 +193,7 @@ Kopieren Sie die generierte SAS in das Feld storageAccountSasToken. Entfernen Si
 
 In diesem optionalen Abschnitt werden zusätzliche Ziele definiert, an die die Erweiterung die gesammelten Informationen sendet. Das Array „sink“ enthält ein Objekt für jede zusätzliche Datensenke. Das Attribut „type“ bestimmt die anderen Attribute im Objekt.
 
-Element | value
+Element | Wert
 ------- | -----
 name | Eine Zeichenfolge, die zum Verweisen auf diese Senke an anderer Stelle in der Konfiguration der Erweiterung verwendet wird
 type | Der Typ der Senke, die definiert wird. Bestimmt die anderen Werte in Instanzen dieses Typs (sofern vorhanden).
@@ -221,7 +221,7 @@ Der Eintrag „sasURL“ enthält die vollständige URL, einschließlich des SAS
 
 Wenn Sie eine SAS erstellt haben, die bis Mitternacht (UTC) am 1. Januar 2018 gilt, lautet der sasURL-Wert in etwa wie folgt:
 
-```url
+```https
 https://contosohub.servicebus.windows.net/syslogmsgs?sr=contosohub.servicebus.windows.net%2fsyslogmsgs&sig=xxxxxxxxxxxxxxxxxxxxxxxxx&se=1514764800&skn=writer
 ```
 
@@ -255,7 +255,7 @@ Diese Struktur enthält verschiedene Blöcke von Einstellungen zur Steuerung der
 }
 ```
 
-Element | value
+Element | Wert
 ------- | -----
 StorageAccount | Der Name des Speicherkontos, in dem von der Erweiterung Daten geschrieben werden Er muss mit dem Namen übereinstimmen, der in den [geschützten Einstellungen](#protected-settings) festgelegt wurde.
 mdsdHttpProxy | (optional:) Wie bei den [geschützten Einstellungen](#protected-settings). Der öffentliche Wert wird durch den geschützten Wert überschrieben, sofern dieser festgelegt wurde. Nehmen Sie Proxyeinstellungen, die ein Geheimnis (z.B. ein Kennwort) enthalten, in den [geschützten Einstellungen](#protected-settings) vor.
@@ -278,7 +278,7 @@ Diese übrigen Elemente werden in den folgenden Abschnitten ausführlich beschri
 
 Diese optionale Struktur steuert das Sammeln von Metriken und Protokollen für die Übermittlung an den Azure-Metrikendienst und andere Datensenken. Sie müssen `performanceCounters` und/oder `syslogEvents` angeben. Sie müssen die `metrics`-Struktur angeben.
 
-Element | value
+Element | Wert
 ------- | -----
 eventVolume | (optional:) Steuert die Anzahl der Partitionen, die innerhalb der Speichertabelle erstellt werden. Muss `"Large"`, `"Medium"` oder `"Small"` sein. Wenn Sie hier nichts angeben, lautet der Standardwert `"Medium"`.
 sampleRateInSeconds | (optional:) Das Standardintervall zwischen der Erfassung von unformatierten (nicht aggregierten) Metriken. Die kleinste unterstützte Erfassungsrate beträgt 15 Sekunden. Wenn Sie hier nichts angeben, lautet der Standardwert `15`.
@@ -295,7 +295,7 @@ sampleRateInSeconds | (optional:) Das Standardintervall zwischen der Erfassung v
 }
 ```
 
-Element | value
+Element | Wert
 ------- | -----
 resourceId | Die Azure Resource Manager-Ressourcen-ID des virtuellen Computers oder der VM-Skalierungsgruppe, zu der der virtuelle Computer gehört. Diese Einstellung muss ebenfalls angegeben werden, wenn in der Konfiguration eine JsonBlob-Senke verwendet wird.
 scheduledTransferPeriod | Die Häufigkeit, mit der aggregierte Metriken berechnet und an den Azure-Metrikendienst übertragen werden, als ein Zeitintervall im Format ISO 8601. Das kleinste Übertragungsintervall ist 60 Sekunden, d.h. PT1M. Sie müssen mindestens einen scheduledTransferPeriod-Wert angeben.
@@ -335,7 +335,7 @@ Mit diesem optionalen Abschnitt wird die Erfassung von Metriken gesteuert. Die u
 * letzter erfasster Wert
 * Anzahl der unformatierten Daten für die Aggregatberechnung
 
-Element | value
+Element | Wert
 ------- | -----
 sinks | (optional:) Eine durch Trennzeichen getrennte Liste der Namen der Senken, an die LAD die aggregierten Metrikergebnisse übermittelt. Alle aggregierten Metriken werden an jede aufgeführte Senke veröffentlicht. Siehe [sinksConfig](#sinksconfig). Beispiel: `"EHsink1, myjsonsink"`.
 type | Gibt den tatsächlichen Anbieter der Metrik an.
@@ -381,7 +381,7 @@ Mit diesem optionalen Abschnitt wird die Erfassung von Protokollereignissen von 
 
 Die syslogEventConfiguration-Sammlung enthält einen Eintrag für jede gewünschte Syslog-Funktion. Wenn minSeverity für eine bestimmte Funktion „NONE“ lautet oder wenn diese Funktion im Element nicht enthalten ist, werden keine Ereignisse von dieser Funktion erfasst.
 
-Element | value
+Element | Wert
 ------- | -----
 sinks | Eine durch Trennzeichen getrennte Liste der Namen von Senken, an die einzelne Protokollereignisse veröffentlicht werden. Alle Protokollereignisse, die den Einschränkungen in syslogEventConfiguration entsprechen, werden an alle aufgeführten Senken veröffentlicht. Beispiel: „EHforsyslog“
 facilityName | Ein Syslog-Funktionsname (z.B. „LOG\_USER“ oder „LOG\_LOCAL0“). Im Abschnitt „facility“ in der [Manpage von Syslog](http://man7.org/linux/man-pages/man3/syslog.3.html) finden Sie die vollständige Liste.
@@ -410,7 +410,7 @@ Dieser optionale Abschnitt steuert die Ausführung von beliebigen [OMI](https://
 ]
 ```
 
-Element | value
+Element | Wert
 ------- | -----
 Namespace | (optional:) Der OMI-Namespace, in dem die Abfrage ausgeführt werden soll. Falls keine Angabe erfolgt, lautet der Standardwert „root/scx“, der von den [plattformübergreifenden System Center-Anbietern](https://github.com/Microsoft/SCXcore) implementiert wird.
 Abfrage | Die OMI-Abfrage, die ausgeführt werden soll.
@@ -434,7 +434,7 @@ Steuert die Erfassung von Protokolldateien. LAD erfasst neue Textzeilen so, wie 
 ]
 ```
 
-Element | value
+Element | Wert
 ------- | -----
 file | Der vollständige Pfadname der Protokolldatei, die überwacht und erfasst werden soll. Beim Pfadnamen muss es sich um eine einzelne Datei handeln. Er darf keinen Verzeichnisnamen oder Platzhalter enthalten.
 table | (optional:) Die Azure Storage-Tabelle im angegebenen Speicherkonto (wie in der geschützten Konfiguration angegeben), in die neue Zeilen vom Ende der Datei geschrieben werden.

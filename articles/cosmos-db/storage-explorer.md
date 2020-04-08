@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: dech
 ms.custom: seodec18
-ms.openlocfilehash: fd044d4f32aefc00e1b04f7060e0fc0dc74fd6c7
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 914551bab47ad9db4e0bca4d53226fbae74b92f3
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882346"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411666"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Arbeiten mit Daten unter Verwendung von Azure Storage-Explorer
 
@@ -174,7 +174,7 @@ Indem Sie mit der rechten Maustaste auf ein Abonnement im Explorer-Bereich klick
 1. Öffnen Sie zum Erstellen einer neuen Tabelle im linken Fenster die Option **Entitäten**, klicken Sie auf **Hinzufügen**, bearbeiten Sie den Inhalt im Dialogfeld **Entität hinzufügen**, fügen Sie die Eigenschaft durch das Klicken auf die Schaltfläche **Eigenschaft hinzufügen** hinzu, und klicken Sie anschließend auf **Einfügen**.
 2. Klicken Sie zum Ändern einer Tabelle auf **Bearbeiten**, ändern Sie den Inhalt, und klicken Sie dann auf **Aktualisieren**.
 
-    ![Table](./media/storage-explorer/table.png)
+    ![Tabelle](./media/storage-explorer/table.png)
 
 #### <a name="import-and-export-table"></a>Importieren und Exportieren einer Tabelle
 1. Klicken Sie zum Importieren auf die Schaltfläche **Importieren**, und wählen Sie eine vorhandene Tabelle aus.
@@ -215,14 +215,14 @@ Es gibt verschiedene Gründe, warum dieser Fehler unter Umständen angezeigt wir
 
 + Sie befinden sich hinter einem *transparenten Proxy*. Dies bedeutet, dass HTTPS-Datenverkehr abgefangen (z.B. von Ihrer IT-Abteilung) und entschlüsselt und anschließend mit einem selbstsignierten Zertifikat wieder verschlüsselt wird.
 
-+ Sie führen Software aus, z.B. Virenschutzsoftware, mit der ein selbstsigniertes Zertifikat in Ihre HTTPS-Nachrichten injiziert wird.
++ Sie führen Software aus, z. B. Virenschutzsoftware, mit der ein selbstsigniertes TLS-/SSL-Zertifikat in Ihre HTTPS-Nachrichten injiziert wird.
 
 Wenn Storage-Explorer eines dieser „selbstsignierten Zertifikate“ erkennt, kann nicht mehr überprüft werden, ob die empfangene HTTPS-Nachricht manipuliert wurde. Falls Sie aber über eine Kopie des selbstsignierten Zertifikats verfügen, können Sie Storage-Explorer anweisen, es als vertrauenswürdig anzusehen. Wenn Sie unsicher sind, von wem das Zertifikat injiziert wird, können Sie mit den folgenden Schritten versuchen, es selbst zu finden:
 
-1. Installieren Sie OpenSSL.
+1. Installieren von OpenSSL
      - [Windows](https://slproweb.com/products/Win32OpenSSL.html) (alle Light-Versionen sind geeignet)
      - Mac und Linux: Sollte im Betriebssystem enthalten sein.
-2. Führen Sie OpenSSL aus.
+2. Ausführen von OpenSSL
     - Windows: Navigieren Sie zum Installationsverzeichnis und dann zu **/bin/** , und doppelklicken Sie anschließend auf **openssl.exe**.
     - Mac und Linux: Führen Sie **openssl** über ein Terminal aus.
 3. Führen Sie `s_client -showcerts -connect microsoft.com:443` aus.

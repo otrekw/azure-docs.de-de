@@ -8,15 +8,15 @@ ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
 ms.service: batch
 ms.topic: article
 ms.workload: na
-ms.date: 12/05/2019
-ms.author: markscu
+ms.date: 03/19/2020
+ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: dfd79bc9cfd8e897cdbb18127deaf8da4922ef3a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 9f4b9ed9254eaf950311dd27d5716c4681707614
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023717"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80053909"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Verwenden von VMs mit niedriger Priorität mit Batch
 
@@ -31,7 +31,7 @@ VMs mit niedriger Priorität werden im Vergleich zu dedizierten VMs zu einem deu
 > [!NOTE]
 > [Spot-VMs](https://azure.microsoft.com/pricing/spot/) sind jetzt für [VMs mit einer einfachen Instanz](https://docs.microsoft.com/azure/virtual-machines/linux/spot-vms) und [VM-Skalierungsgruppen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot) verfügbar. Spot-VMs sind eine Weiterentwicklung von VMs mit niedriger Priorität, unterscheiden sich aber dadurch, dass die Preise variieren können und bei der Zuweisung von Spot-VMs ein optionaler Maximalpreis festgelegt werden kann.
 >
-> Azure Batch-Pools beginnen mit der Unterstützung von Spot-VMs im ersten Quartal 2020 mit neuen Versionen der [Batch-APIs und -Tools](https://docs.microsoft.com/azure/batch/batch-apis-tools). VMs mit niedriger Priorität werden weiterhin für mindestens 12 Monate unterstützt, indem die aktuellen API- und Toolversionen verwendet werden, damit ausreichend Zeit für die Migration zu Spot-VMs zur Verfügung steht. 
+> Azure Batch-Pools unterstützen in wenigen Monaten Spot-VMs und sind dann mit neuen Versionen der [Batch-APIs und -Tools](https://docs.microsoft.com/azure/batch/batch-apis-tools) allgemein verfügbar. Sobald die Unterstützt für Spot-VMs verfügbar ist, werden VMs mit niedriger Priorität für mindestens 12 Monate weiterhin unterstützt, indem die aktuellen API- und Toolversionen verwendet werden, damit ausreichend Zeit für die Migration zu Spot-VMs bleibt. 
 >
 > Spot-VMs werden für [Clouddienstkonfigurations](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration)-Pools nicht unterstützt. Um Spot-VMs verwenden zu können, müssen Clouddienstpools zu [VM-Konfigurations](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)pools migriert werden.
 
@@ -40,7 +40,7 @@ VMs mit niedriger Priorität werden im Vergleich zu dedizierten VMs zu einem deu
 
 Welche Workloads sind aufgrund der besonderen Merkmale von VMs mit niedriger Priorität für diese geeignet? Im Allgemeinen sind Batch-Workloads gut geeignet, da die Aufträge in viele parallele Aufgaben aufgeteilt werden oder viele Aufträge vorhanden sind, die horizontal hochskaliert und auf viele VMs verteilt werden.
 
--   Zur Maximierung der Verwendung von überschüssigen Kapazitäten in Azure können geeignete Aufträge horizontal hochskaliert werden.
+-   Zur Maximierung der Verwendung von überschüssigen Kapazitäten in Azure können geeignete Aufträge aufskaliert werden.
 
 -   Gelegentlich sind die VMs möglicherweise nicht verfügbar oder werden vorzeitig entfernt. Dies führt zu einer verringerten Kapazität für Aufträge und damit möglicherweise zu Unterbrechungen und einem erneutem Ausführen von Aufgaben. Aufträge müssen daher flexibel in der zeitlichen Dauer ihrer Ausführung sein.
 
@@ -150,7 +150,7 @@ Die Formel für die automatische Skalierung des Pools unterstützt VMs mit niedr
 -   Den Wert der vom Dienst definierten Variable **$CurrentLowPriorityNodes** können Sie abrufen.
 
 -   Den Wert der vom Dienst definierten Variable **$PreemptedNodeCount** können Sie abrufen. 
-    Diese Variable gibt die Anzahl der Knoten mit dem Status „Vorzeitig entfernt“ zurück und ermöglicht Ihnen, die Anzahl der dedizierten Knoten abhängig von der Anzahl der nicht verfügbaren vorzeitig entfernten Knoten zentral hoch oder herunter zu skalieren.
+    Diese Variable gibt die Anzahl der Knoten mit dem Status „Vorzeitig entfernt“ zurück und ermöglicht Ihnen, die Anzahl der dedizierten Knoten abhängig von der Anzahl der nicht verfügbaren vorzeitig entfernten Knoten hoch- oder herunterzuskalieren.
 
 ## <a name="jobs-and-tasks"></a>Aufträge und Aufgaben
 

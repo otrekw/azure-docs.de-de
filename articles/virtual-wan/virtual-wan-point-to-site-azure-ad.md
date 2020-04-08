@@ -1,26 +1,26 @@
 ---
-title: Konfigurieren der Azure AD-Authentifizierung für eine Point-to-Site-Verbindung mit Azure | Microsoft-Dokumentation
-description: In diesem Tutorial erfahren Sie, wie Sie die Azure Active Directory-Authentifizierung für ein Benutzer-VPN konfigurieren.
+title: 'Konfigurieren der Azure AD-Authentifizierung für die Benutzer-VPN-Verbindung: Virtuelles WAN'
+description: Erfahren Sie, wie Sie die Azure Active Directory-Authentifizierung für ein Benutzer-VPN konfigurieren.
 services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
-ms.topic: tutorial
-ms.date: 02/07/2019
+ms.topic: conceptual
+ms.date: 03/17/2020
 ms.author: alzam
-ms.openlocfilehash: b3508c4c8da5b4987fb5f38cf3bf701f2dda1097
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 703b832d58f2374eac131cfd380ba27f2c890618
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77122032"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80059484"
 ---
-# <a name="tutorial-create-a-user-vpn-connection-by-using-azure-virtual-wan"></a>Tutorial: Erstellen einer Benutzer-VPN-Verbindung per Azure Virtual WAN
+# <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>Konfigurieren der Azure Active Directory-Authentifizierung für ein Benutzer-VPN
 
-In diesem Tutorial erfahren Sie, wie Sie die Azure AD-Authentifizierung für ein Benutzer-VPN in Virtual WAN konfigurieren, um eine OpenVPN-Verbindung mit Ihren Ressourcen in Azure herzustellen. Die Azure Active Directory-Authentifizierung ist nur für Gateways mit OpenVPN-Protokoll und Clients unter Windows verfügbar.
+In diesem Artikel erfahren Sie, wie Sie die Azure AD-Authentifizierung für ein Benutzer-VPN in Virtual WAN konfigurieren, um eine OpenVPN-Verbindung mit Ihren Ressourcen in Azure herzustellen. Die Azure Active Directory-Authentifizierung ist nur für Gateways mit OpenVPN-Protokoll und Clients unter Windows verfügbar.
 
 Für diese Art von Verbindung muss auf dem Clientcomputer ein Client konfiguriert sein. Weitere Informationen zu Virtual WAN finden Sie auf der Seite mit der [Übersicht über Virtual WAN](virtual-wan-about.md).
 
-In diesem Tutorial lernen Sie Folgendes:
+In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
 > * Erstellen eines WAN
@@ -31,7 +31,6 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Verbinden eines VNET mit einem Hub
 > * Herunterladen und Anwenden der VPN-Clientkonfiguration
 > * Anzeigen Ihrer Virtual WAN-Instanz
-> * Anzeigen der Ressourcenintegrität
 
 ![Virtual WAN-Diagramm](./media/virtual-wan-about/virtualwanp2s.png)
 
@@ -47,7 +46,7 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Vorausset
 
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
 
-## <a name="wan"></a>Erstellen eines Virtual WAN
+## <a name="create-a-virtual-wan"></a><a name="wan"></a>Erstellen eines Virtual WAN
 
 Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , und melden Sie sich mit Ihrem Azure-Konto an.
 
@@ -65,7 +64,7 @@ Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , u
 4. Klicken Sie nach dem Ausfüllen der Felder auf **Überprüfen + erstellen**.
 5. Klicken Sie nach erfolgreicher Überprüfung auf **Erstellen**, um das virtuelle WAN zu erstellen.
 
-## <a name="site"></a>Erstellen eines leeren virtuellen Hubs
+## <a name="create-an-empty-virtual-hub"></a><a name="site"></a>Erstellen eines leeren virtuellen Hubs
 
 1. Wählen Sie unter Ihrem virtuellen WAN „Hubs“ aus, und klicken Sie auf **+Neuer Hub**.
 
@@ -82,7 +81,7 @@ Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , u
 3. Klicken Sie auf **Überprüfen + erstellen**.
 4. Klicken Sie auf der Seite **Überprüfung erfolgreich** auf **Erstellen**.
 
-## <a name="site"></a>Erstellen einer neuen P2S-Konfiguration
+## <a name="create-a-new-p2s-configuration"></a><a name="site"></a>Erstellen einer neuen P2S-Konfiguration
 
 Eine P2S-Konfiguration definiert die Parameter für das Herstellen der Verbindung mit Remoteclients.
 
@@ -98,7 +97,7 @@ Eine P2S-Konfiguration definiert die Parameter für das Herstellen der Verbindun
 
    ![Neue Konfiguration](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
 
-## <a name="hub"></a>Bearbeiten der Hub-Zuweisung
+## <a name="edit-hub-assignment"></a><a name="hub"></a>Bearbeiten der Hub-Zuweisung
 
 1. Navigieren Sie unter dem virtuellen WAN zum Blatt **Hubs**.
 2. Wählen Sie den Hub aus, dem Sie die VPN-Serverkonfiguration zuordnen möchten, und klicken Sie auf die Auslassungspunkte (...).
@@ -112,7 +111,7 @@ Eine P2S-Konfiguration definiert die Parameter für das Herstellen der Verbindun
 6. Klicken Sie auf **Confirm** (Bestätigen).
 7. Der Vorgang kann bis zu 30 Minuten dauern.
 
-## <a name="device"></a>Herunterladen des VPN-Profils
+## <a name="download-vpn-profile"></a><a name="device"></a>Herunterladen des VPN-Profils
 
 Verwenden Sie das VPN-Profil, um Ihre Clients zu konfigurieren.
 
@@ -126,14 +125,14 @@ Verwenden Sie das VPN-Profil, um Ihre Clients zu konfigurieren.
 Für die Verbindungsherstellung muss auf jedem Computer, von dem eine Verbindung mit dem VNET hergestellt werden soll, Azure VPN Client heruntergeladen und das in den vorherigen Schritten heruntergeladene VPN-Clientprofil importiert werden.
 
 > [!NOTE]
-> Die Azure AD-Authentifizierung wird nur für Verbindungen mit dem OpenVPN®-Protokoll unterstützt.
+> Die Azure AD-Authentifizierung wird nur für Verbindungen mit dem OpenVPN&reg;-Protokoll unterstützt.
 >
 
 #### <a name="to-download-the-azure-vpn-client"></a>So laden Sie Azure VPN Client herunter
 
 Verwenden Sie diesen [Link](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab), um Azure VPN Client herunterzuladen.
 
-#### <a name="import"></a>So importieren Sie ein Clientprofil
+#### <a name="to-import-a-client-profile"></a><a name="import"></a>So importieren Sie ein Clientprofil
 
 1. Wählen Sie auf der Seite **Importieren**aus.
 
@@ -155,7 +154,7 @@ Verwenden Sie diesen [Link](https://www.microsoft.com/p/azure-vpn-client-preview
 
     ![Import](./media/virtual-wan-point-to-site-azure-ad/import/import5.jpg)
 
-#### <a name="delete"></a>So löschen Sie ein Clientprofil
+#### <a name="to-delete-a-client-profile"></a><a name="delete"></a>So löschen Sie ein Clientprofil
 
 1. Wählen Sie neben dem Clientprofil, das Sie löschen möchten, die Auslassungspunkte (...) aus. Wählen Sie dann **Entfernen** aus.
 
@@ -165,7 +164,7 @@ Verwenden Sie diesen [Link](https://www.microsoft.com/p/azure-vpn-client-preview
 
     ![delete](./media/virtual-wan-point-to-site-azure-ad/delete/delete2.jpg)
 
-#### <a name="diagnose"></a>Diagnose von Verbindungsproblemen
+#### <a name="diagnose-connection-issues"></a><a name="diagnose"></a>Diagnose von Verbindungsproblemen
 
 1. Zum Diagnostizieren von Verbindungsproblemen können Sie das **Diagnose**-Tool verwenden. Wählen Sie neben der VPN-Verbindung, die Sie diagnostizieren möchten, die Auslassungspunkte (...) aus, um das Menü einzublenden. Wählen Sie dann **Diagnose** aus.
 
@@ -183,19 +182,14 @@ Verwenden Sie diesen [Link](https://www.microsoft.com/p/azure-vpn-client-preview
 
     ![Diagnose](./media/virtual-wan-point-to-site-azure-ad/diagnose/diagnose4.jpg)
 
-## <a name="viewwan"></a>Anzeigen Ihrer Virtual WAN-Instanz
+## <a name="view-your-virtual-wan"></a><a name="viewwan"></a>Anzeigen Ihrer Virtual WAN-Instanz
 
 1. Navigieren Sie zum virtuellen WAN.
-2. Auf der Seite „Übersicht“ steht jeder Punkt auf der Karte für einen Hub. Bewegen Sie den Mauszeiger jeweils auf einen dieser Punkte, um die Zusammenfassung zur Integrität des Hubs anzuzeigen.
+2. Auf der Seite „Übersicht“ steht jeder Punkt auf der Karte für einen Hub.
 3. Im Abschnitt mit den Hubs und Verbindungen können Sie den Hubstatus, die Site, die Region, den VPN-Verbindungsstatus und die Anzahl von ein- und ausgehenden Byte anzeigen.
 
-## <a name="viewhealth"></a>Anzeigen der Ressourcenintegrität
 
-1. Navigieren Sie zu Ihrem WAN.
-2. Klicken Sie auf der Seite für Ihr WAN im Abschnitt **Support + Problembehandlung** auf **Integrität**, und zeigen Sie Ihre Ressource an.
-
-
-## <a name="cleanup"></a>Bereinigen von Ressourcen
+## <a name="clean-up-resources"></a><a name="cleanup"></a>Bereinigen von Ressourcen
 
 Wenn Sie diese Ressourcen nicht mehr benötigen, können Sie den Befehl [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) verwenden, um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu entfernen. Ersetzen Sie „myResourceGroup“ durch den Namen Ihrer Ressourcengruppe, und führen Sie den folgenden PowerShell-Befehl aus:
 

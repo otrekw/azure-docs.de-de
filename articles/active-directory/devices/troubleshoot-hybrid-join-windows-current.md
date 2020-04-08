@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3ce27c59ead4e126cb143d1831ece0e93e119ef
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 26e52930211611673b6fe2309e2dca067a91ebc8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78672236"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331767"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Beheben von Problemen mit Geräten mit Hybrid-Azure Active Directory-Einbindung 
 
@@ -277,7 +277,7 @@ Verwenden Sie die Protokolle der Ereignisanzeige, um Fehlercode, Unterfehlercode
    - Ursache: Die Verbindung mit dem Authentifizierungsendpunkt wurde abgebrochen.
    - Lösung: Versuchen Sie es nach einiger Zeit erneut, oder versuchen Sie, die Einbindung über eine alternative stabile Netzwerkadresse vorzunehmen.
 - **ERROR_ADAL_INTERNET_SECURE_FAILURE** (0xcaa82f8f/-894947441)
-   - Ursache: Das vom Server gesendete Secure Sockets Layer (SSL)-Zertifikat konnte nicht überprüft werden.
+   - Ursache: Das vom Server gesendete Zertifikat von Transport Layer Security (TLS), zuvor bekannt als Secure Sockets Layer (SSL), konnte nicht überprüft werden.
    - Lösung: Überprüfen Sie die Zeitabweichung des Clients. Versuchen Sie es nach einiger Zeit erneut, oder versuchen Sie, die Einbindung über eine alternative stabile Netzwerkadresse vorzunehmen. 
 - **ERROR_ADAL_INTERNET_CANNOT_CONNECT** (0xcaa82efd/-894947587)
    - Ursache: Der Versuch, eine Verbindung mit `https://login.microsoftonline.com` herzustellen, ist fehlgeschlagen.

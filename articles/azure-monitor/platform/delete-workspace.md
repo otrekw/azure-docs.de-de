@@ -6,14 +6,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: 6f50450702c9ecdc1c1d910514d94e0a759176b8
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 1dceb3db4572ecdaf504745dba1099a5eccead43
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670473"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80395783"
 ---
-# <a name="delete-and-restore-azure-log-analytics-workspace"></a>Löschen und Wiederherstellen eines Azure Log Analytics-Arbeitsbereichs
+# <a name="delete-and-recover-azure-log-analytics-workspace"></a>Löschen und Wiederherstellen eines Azure Log Analytics-Arbeitsbereichs
 
 In diesem Artikel werden das Konzept des vorläufigen Löschens eines Azure Log Analytics-Arbeitsbereichs und die Wiederherstellung eines gelöschten Arbeitsbereichs erläutert. 
 
@@ -32,7 +32,7 @@ Gehen Sie beim Löschen eines Arbeitsbereichs vorsichtig vor, da er unter Umstä
 * Auf Windows- und Linux-Computern in Ihrer Umgebung ausgeführte Agents
 * System Center Operations Manager
 
-Beim vorläufigen Löschvorgang wird die Arbeitsbereichsressource gelöscht und die Berechtigung aller zugeordneten Benutzer aufgehoben. Wenn Benutzer anderen Arbeitsbereichen zugeordnet sind, können sie Log Analytics mit diesen Arbeitsbereichen weiter nutzen.
+Beim vorläufigen Löschen wird die Arbeitsbereichsressource gelöscht und die Berechtigung aller zugeordneten Benutzer aufgehoben. Wenn Benutzer anderen Arbeitsbereichen zugeordnet sind, können sie Log Analytics mit diesen Arbeitsbereichen weiter nutzen.
 
 ## <a name="soft-delete-behavior"></a>Verhalten des vorläufigen Löschens
 
@@ -57,12 +57,23 @@ Sie können einen Arbeitsbereich mithilfe von [PowerShell](https://docs.microsof
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
 
+### <a name="troubleshooting"></a>Problembehandlung
+
+Zum Löschen eines Log Analytics-Arbeitsbereichs sind Berechtigungen vom Typ „Log Analytics-Mitwirkender“ erforderlich.<br>
+Wenn Sie beim Erstellen eines Arbeitsbereichs die Fehlermeldung *Dieser Arbeitsbereichsname wird bereits verwendet* erhalten, kann dies folgende Gründe haben:
+* Der Name des Arbeitsbereichs ist nicht verfügbar und wird bereits von jemandem in Ihrer Organisation oder von einem anderen Kunden verwendet.
+* Der Arbeitsbereich wurde innerhalb der letzten 14 Tage gelöscht, und der Name wurde für den Zeitraum der vorläufigen Löschung reserviert. Zum Überschreiben der vorübergehenden Löschung, dem sofortigen Löschen des Arbeitsbereichs und dem Erstellen eines neuen, gleichnamigen Arbeitsbereichs, gehen Sie folgendermaßen vor, um den Arbeitsbereich zunächst wiederherzustellen und dann dauerhaft zu löschen:<br>
+   1. [Stellen Sie Ihren Arbeitsbereich wieder her.](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)
+   2. [Löschen Sie Ihren Arbeitsbereich dauerhaft.](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)
+   3. Erstellen Sie einen neuen Arbeitsbereich mit demselben Arbeitsbereichnamen.
+
+
 ## <a name="permanent-workspace-delete"></a>Dauerhaftes Löschen eines Arbeitsbereichs
-Die Methode des vorläufigen Löschens ist in einigen Szenarien möglicherweise nicht geeignet, in denen Sie eine Bereitstellung mit denselben Einstellungen und demselben Arbeitsbereichsnamen wiederholen müssen (z.B. bei Entwicklung und Test). In solchen Fällen können Sie den Arbeitsbereich dauerhaft löschen und den Zeitraum des vorläufigen Löschens außer Kraft setzen. Beim dauerhaften Löschvorgang für den Arbeitsbereich wird der Arbeitsbereichsname freigegeben, und Sie können einen neuen Arbeitsbereich mit demselben Namen erstellen.
+Die Methode des vorläufigen Löschens ist in einigen Szenarien möglicherweise nicht geeignet, in denen Sie eine Bereitstellung mit denselben Einstellungen und demselben Arbeitsbereichsnamen wiederholen müssen (z.B. bei Entwicklung und Test). In solchen Fällen können Sie den Arbeitsbereich dauerhaft löschen und den Zeitraum der vorläufigen Löschung überschreiben. Bei der dauerhaften Löschung des Arbeitsbereichs wird der Arbeitsbereichsname freigegeben, und Sie können einen neuen Arbeitsbereich mit demselben Namen erstellen.
 
 
 > [!IMPORTANT]
-> Verwenden Sie einen dauerhaften Löschvorgang des Arbeitsbereichs mit Vorsicht, da er nicht rückgängig gemacht werden kann, und Sie können weder den Arbeitsbereich noch dessen Daten wiederherstellen.
+> Verwenden Sie dauerhafte Löschungen von Arbeitsbereichen mit Vorsicht, da dieser Vorgang nicht rückgängig gemacht werden kann. Sie können dann weder den Arbeitsbereich noch dessen Daten wiederherstellen.
 
 Das dauerhafte Löschen eines Arbeitsbereichs kann derzeit über die REST-API vorgenommen werden.
 

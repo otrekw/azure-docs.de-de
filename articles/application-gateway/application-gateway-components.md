@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 799ed0e877bb3bddb3f179cdb3d6df6fca57e4d5
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 90b3c3fd18bc9211c731ccf16dd646a64a4a1116
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78301351"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80133094"
 ---
 # <a name="application-gateway-components"></a>Application Gateway-Komponenten
 
@@ -55,7 +55,7 @@ Application Gateway unterstützt vier Protokolle: HTTP, HTTPS, HTTP/2 und WebSoc
 - Sie geben die Option für HTTP- und HTTPS-Protokolle in der Listenerkonfiguration an.
 - Unterstützung für [die Protokolle WebSocket und HTTP/2](features.md#websocket-and-http2-traffic) wird systemintern bereitgestellt, und [WebSocket-Unterstützung](application-gateway-websocket.md) ist standardmäßig aktiviert. Die WebSocket-Unterstützung kann von Benutzern nicht selektiv aktiviert oder deaktiviert werden. Sie können das WebSocket-Protokoll sowohl mit HTTP- als auch mit HTTPS-Listenern verwenden.
 
-Verwenden Sie einen HTTPS-Listener für die SSL-Terminierung. Ein HTTPS-Listener lagert die Ver- und Entschlüsselung an Ihr Anwendungsgateway aus, sodass Ihre Webserver mit diesem Overhead nicht belastet werden.
+Verwenden Sie einen HTTPS-Listener für die TLS-Terminierung. Ein HTTPS-Listener lagert die Ver- und Entschlüsselung an Ihr Anwendungsgateway aus, sodass Ihre Webserver mit diesem Overhead nicht belastet werden.
 
 ### <a name="custom-error-pages"></a>Benutzerdefinierte Fehlerseiten
 
@@ -111,7 +111,7 @@ Weitere Informationen finden Sie unter [Erneutes Generieren von HTTP-Headern im 
 
 Ein Anwendungsgateway routet Datenverkehr an die Back-End-Server (diese sind in der Anforderungsroutingregel angegeben, die HTTP-Einstellungen einschließt). Dabei werden Portnummer, Protokoll sowie weitere in dieser Komponente angegebene Einstellungen verwendet.
 
-Die Angaben für Port und Protokoll in den HTTP-Einstellungen bestimmen, ob der Datenverkehr zwischen dem Anwendungsgateway und den Back-End-Servern verschlüsselt wird (um End-to-End-SSL zu erzielen) oder ob er unverschlüsselt bleibt.
+Die Angaben für den Port und das Protokoll in den HTTP-Einstellungen bestimmen, ob der Datenverkehr zwischen dem Anwendungsgateway und den Back-End-Servern verschlüsselt wird (um End-to-End-TLS bereitzustellen) oder ob er unverschlüsselt bleibt.
 
 Diese Komponente wird außerdem für folgende Zwecke verwendet:
 

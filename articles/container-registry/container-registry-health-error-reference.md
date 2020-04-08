@@ -3,12 +3,12 @@ title: Fehlerreferenz für Integritätsprüfung
 description: Fehlercodes und mögliche Lösungen für Probleme, die beim Ausführen des Diagnosebefehls az acr check-health in Azure Container Registry gefunden wurden.
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: a921d17ad7d01b134f5bfa33a1d9a768d3ea94df
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 971b28b2bf8d9ac22cec0efe979837886762cf17
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455034"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80289140"
 ---
 # <a name="health-check-error-reference"></a>Fehlerreferenz für die Integritätsprüfung
 
@@ -97,6 +97,10 @@ Dieser Fehler bedeutet, dass der Client keine sichere Verbindung mit der Contain
 Dieser Fehler weist darauf hin, dass die CLI den Anmeldeserver der angegebenen Registrierung nicht finden konnte und kein Standardsuffix für die aktuelle Cloud gefunden wurde. Dieser Fehler kann auftreten, wenn die Registrierung nicht vorhanden ist, wenn der Benutzer nicht über die richtigen Berechtigungen für die Registrierung verfügt, wenn die Cloud der Registrierung und die aktuelle Azure CLI Cloud nicht übereinstimmen oder wenn die Version der Azure CLI veraltet ist.
 
 *Mögliche Lösungen*: Vergewissern Sie sich, dass die Schreibweise richtig und die Registrierung vorhanden ist. Stellen Sie sicher, dass der Benutzer die richtigen Berechtigungen für die Registrierung besitzt und dass die Clouds der Registrierung und der CLI-Umgebung übereinstimmen. Aktualisieren Sie die Azure CLI auf die neueste Version.
+
+## <a name="notary_version_error"></a>NOTARY_VERSION_ERROR
+
+Dieser Fehler bedeutet, dass die CLI nicht mit der aktuell installierten Version von Docker/Notary kompatibel ist. Versuchen Sie, die Version von „notary.exe“ auf eine Version vor 0.6.0 herabzustufen, indem Sie den Notary-Client Ihrer Docker-Installation manuell ersetzen, um dieses Problem zu beheben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

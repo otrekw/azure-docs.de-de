@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
-ms.openlocfilehash: 208a302a0702a5c4de4d194c9e72f562aaf758c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6ccc29422c6abf1120d13c05d10125efd0871ca6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475696"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79502067"
 ---
 # <a name="manage-users"></a>Verwalten von Benutzern
 
@@ -18,7 +18,7 @@ Azure FarmBeats umfasst die Benutzerverwaltung für Personen, die Teil Ihres Azu
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Eine Azure FarmBeats-Installation ist erforderlich. Weitere Informationen finden Sie unter [Installieren von Azure FarmBeats](install-azure-farmbeats.md).
+- Die Installation von Azure FarmBeats ist erforderlich. Weitere Informationen finden Sie unter [Installieren von Azure FarmBeats](install-azure-farmbeats.md).
 - Die E-Mail-IDs der Benutzer, die Sie Ihrer Azure FarmBeats-Instanz hinzufügen oder die Sie aus ihr entfernen möchten.
 
 ## <a name="manage-azure-farmbeats-users"></a>Verwalten von Azure FarmBeats-Benutzern
@@ -26,11 +26,11 @@ Azure FarmBeats umfasst die Benutzerverwaltung für Personen, die Teil Ihres Azu
 Azure FarmBeats verwendet Azure AD für Authentifizierung, Zugriffssteuerung und Rollen. Sie können Benutzer im Azure AD-Mandanten als Benutzer in Azure FarmBeats hinzufügen.
 
 > [!NOTE]
-> Wenn ein Benutzer, den Sie als Azure FarmBeats-Benutzer hinzufügen möchten, nicht im Azure AD-Mandant vorhanden ist, schließen Sie das Setup ab, indem Sie die Anweisungen im Abschnitt „Hinzufügen von Azure AD-Benutzern“ befolgen.
+> Wenn ein Benutzer kein Azure AD-Mandantenbenutzer ist, befolgen Sie die Anweisungen im Abschnitt **Hinzufügen von Azure AD-Benutzern**, um das Setup abzuschließen.
 
 Azure FarmBeats unterstützt zwei Arten von Benutzerrollen:
 
- - **Administrator**: Vollzugriff auf Azure FarmBeats-Datenhub-APIs. Benutzer mit dieser Rolle können alle Datenhub-Objekte von Azure FarmBeats abfragen und alle Vorgänge vom FarmBeats-Accelerator aus durchführen.
+ - **Administrator**: Der Administrator hat vollständigen Zugriff auf Azure FarmBeats-Datenhub-APIs. Benutzer mit dieser Rolle können alle Datenhub-Objekte von Azure FarmBeats abfragen und alle Vorgänge vom FarmBeats-Accelerator aus durchführen.
  - **Schreibgeschützt**: Schreibgeschützter Zugriff auf FarmBeats-Datenhub-APIs. Benutzer können die Datenhub-APIs, die Accelerator-Dashboards und die Karten anzeigen. Benutzer mit schreibgeschütztem Zugriff können keine Vorgänge wie das Erstellen von Karten, das Zuordnen von Geräten oder das Erstellen von landwirtschaftlichen Betrieben durchführen.
 
 ## <a name="add-users-to-azure-farmbeats"></a>Hinzufügen von Benutzern zu Azure FarmBeats
@@ -63,9 +63,9 @@ So entfernen Sie Benutzer aus dem Azure FarmBeats-System
 ## <a name="add-azure-ad-users"></a>Hinzufügen von Azure AD-Benutzern
 
 > [!NOTE]
-> Azure FarmBeats-Benutzer müssen im Azure AD-Mandanten vorhanden sein, bevor Sie ihnen Anwendungen und Rollen zuweisen können. Wenn ein Benutzer, den Sie zu Azure FarmBeats hinzufügen möchten, nicht bereits im Azure AD-Mandanten vorhanden ist, befolgen Sie die Anweisungen in diesem Abschnitt. Wenn der Benutzer im Azure AD-Mandanten vorhanden ist, können Sie diese Anleitung überspringen.
+> Azure FarmBeats-Benutzer müssen im Azure AD-Mandanten vorhanden sein, bevor Sie Ihnen Anwendungen und Rollen zuweisen können. Wenn ein Benutzer nicht im Azure AD-Mandanten vorhanden ist, befolgen Sie die Anweisungen in diesem Abschnitt. Überspringen Sie die Anweisungen, wenn ein Benutzer bereits im Azure AD-Mandanten vorhanden ist.
 
-Gehen Sie wie folgt vor, um Benutzer zu Azure AD hinzuzufügen:
+Führen Sie die Schritte aus, um Benutzer zu Azure AD hinzuzufügen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wählen Sie oben rechts Ihr Konto aus und wechseln Sie dann zum Azure AD-Mandanten, der FarmBeats zugeordnet ist.

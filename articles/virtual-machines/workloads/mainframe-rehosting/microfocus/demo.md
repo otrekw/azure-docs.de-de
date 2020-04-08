@@ -3,21 +3,24 @@ title: Einrichten von Micro Focus CICS BankDemo für Micro Focus Enterprise Deve
 description: Führen Sie die Micro Focus BankDemo-Anwendung auf virtuellen Azure-Computern aus, um zu erfahren, wie Sie Micro Focus Enterprise Server und Enterprise Developer verwenden.
 author: sread
 ms.author: sread
-ms.date: 04/02/2019
+ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 4491fc137c2c85e2be605f5e58fde6fd422efbbe
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: db9d6bab2f383102434512aa63d7566cff1f579b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621331"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411074"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Einrichten von Micro Focus CICS BankDemo für Micro Focus Enterprise Developer 4.0 in Azure
 
 Wenn Sie Micro Focus Enterprise Server 4.0 und Enterprise Developer 4.0 in Azure einrichten, können Sie Bereitstellungen von IBM z/OS-Workloads testen. In diesem Artikel wird erläutert, wie Sie CICS BankDemo einrichten – eine Beispielanwendung, die im Lieferumfang von Enterprise Developer enthalten ist.
 
 CICS steht für „Customer Information Control System“, die Transaktionsplattform, die von vielen wichtigen Onlineanwendungen verwendet wird. Mit der BankDemo-Anwendung lässt sich sehr gut veranschaulichen, wie Enterprise Server und Enterprise Developer funktionieren und wie Sie eine tatsächliche Anwendung einschließlich Endkundenterminals verwalten und bereitstellen.
+
+> [!NOTE]
+> In Kürze verfügbar: Anweisungen zum Einrichten von [Micro Focus Enterprise Server 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) auf Azure-VMs.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -239,9 +242,9 @@ Erstellen Sie einen Listener für die TN3270-Sitzungen, die auf die BankDemo-Anw
 
 7. Geben Sie unter **Name** die Zeichenfolge **TN3270** ein. Geben Sie als **Port** den Wert **9024** ein. Die ESDEMO-Anwendung verwendet Port 9230, weshalb Sie einen anderen Port verwenden müssen.
 
-8. Um die Datei zu speichern, klicken Sie auf das Symbol zum **Speichern**, oder wählen Sie **File** \> **Save** (Datei > Speichern) aus.
+8. Klicken Sie zum Speichern der Datei auf das Symbol zum **Speichern**, oder klicken Sie auf **Datei** \> **Speichern**.
 
-9. Um den Listener zu starten, klicken Sie auf das Symbol **Start Listener** (Listener starten), oder wählen Sie **Options** \> **Start Listener** (Optionen > Listener starten) aus.
+9. Klicken Sie zum Starten des Listeners auf das Symbol **Start Listener** (Listener starten), oder klicken Sie auf **Options**\>**Start Listener** (Optionen > Listener starten).
 
      ![Fenster für Listenerkonfigurations-Editor](media/13-demo-listener.png)
 
