@@ -1,18 +1,16 @@
 ---
 title: Azure Application Insights für JavaScript-Web-Apps
 description: Rufen Sie die Anzahl der Seitenaufrufe und Sitzungen, Webclientdaten und Single-Page-Anwendungen (SPA) ab, und verfolgen Sie Verwendungsmuster. Erkennen Sie Ausnahmen und Leistungsprobleme in JavaScript-Web-Apps.
-ms.service: azure-monitor
-ms.subservice: application-insights
 ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: c98feda62b7e5de5551b02d6189a1142ca8c5f88
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 5414a70180a82be8253dace7d800c90c1ae6a9bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276781"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234730"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
 
@@ -53,11 +51,11 @@ Wenn Ihre App npm nicht verwendet, können Sie Ihre Webseiten mit Application In
 
 ```html
 <script type="text/javascript">
-var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("addTelemetryInitializer"),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),t.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4},!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
+var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(n){var o={config:n,initialize:!0},t=document,e=window,i="script";setTimeout(function(){var e=t.createElement(i);e.src=n.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",t.getElementsByTagName(i)[0].parentNode.appendChild(e)});try{o.cookie=t.cookie}catch(e){}function a(n){o[n]=function(){var e=arguments;o.queue.push(function(){o[n].apply(o,e)})}}o.queue=[],o.version=2;for(var s=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];s.length;)a("track"+s.pop());var r="Track",c=r+"Page";a("start"+c),a("stop"+c);var u=r+"Event";if(a("start"+u),a("stop"+u),a("addTelemetryInitializer"),a("setAuthenticatedUserContext"),a("clearAuthenticatedUserContext"),a("flush"),o.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4},!(!0===n.disableExceptionTracking||n.extensionConfig&&n.extensionConfig.ApplicationInsightsAnalytics&&!0===n.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){a("_"+(s="onerror"));var p=e[s];e[s]=function(e,n,t,i,a){var r=p&&p(e,n,t,i,a);return!0!==r&&o["_"+s]({message:e,url:n,lineNumber:t,columnNumber:i,error:a}),r},n.autoExceptionInstrumented=!0}return o}(
 {
   instrumentationKey:"INSTRUMENTATION_KEY"
 }
-);window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+);(window[aiName]=aisdk).queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
 </script>
 ```
 
@@ -97,10 +95,11 @@ appInsights.trackTrace({message: 'This message will use a telemetry initializer'
 appInsights.addTelemetryInitializer(() => false); // Nothing is sent after this is executed
 appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
+
 ## <a name="configuration"></a>Konfiguration
 Die meisten Konfigurationsfelder werden so benannt, dass sie standardmäßig auf „false“ festgelegt werden können. Alle Felder mit Ausnahme von `instrumentationKey` sind optional.
 
-| Name | Standard | Beschreibung |
+| Name | Standard | BESCHREIBUNG |
 |------|---------|-------------|
 | instrumentationKey | NULL | **Erforderlich**<br>Instrumentierungsschlüssel, den Sie aus dem Azure-Portal abgerufen haben. |
 | accountId | NULL | Eine optionale Konto-ID, wenn Ihre App Benutzer in Konten gruppiert. Keine Leerzeichen, Kommas, Semikolons, Gleichheitszeichen oder senkrechten Striche |
@@ -157,7 +156,7 @@ Wir bieten derzeit ein separates [React-Plug-In](#react-extensions) an, das Sie 
 
 ## <a name="explore-browserclient-side-data"></a>Browser-/clientseitige Daten erkunden
 
-Browser-/clientseitige Daten können angezeigt werden, indem Sie zu **Metriken** navigieren und einzelne Metriken hinzufügen, an denen Sie interessiert sind: 
+Browser-/clientseitige Daten können angezeigt werden, indem Sie zu **Metriken** navigieren und einzelne Metriken hinzufügen, an denen Sie interessiert sind:
 
 ![](./media/javascript/page-view-load-time.png)
 
@@ -167,7 +166,7 @@ Wählen Sie **Browser** und dann **Fehler** oder **Leistung** aus.
 
 ![](./media/javascript/browser.png)
 
-### <a name="performance"></a>Leistung 
+### <a name="performance"></a>Leistung
 
 ![](./media/javascript/performance-operations.png)
 
@@ -175,7 +174,7 @@ Wählen Sie **Browser** und dann **Fehler** oder **Leistung** aus.
 
 ![](./media/javascript/performance-dependencies.png)
 
-### <a name="analytics"></a>Analytics 
+### <a name="analytics"></a>Analytics
 
 Wenn Sie Ihre vom JavaScript SDK gesammelten Telemetriedaten abfragen möchten, wählen Sie die Schaltfläche **In Protokollen anzeigen (Analytics)** aus. Wenn Sie eine `where`-Anweisung von `client_Type == "Browser"`hinzufügen, werden nur Daten aus dem JavaScript SDK angezeigt, und alle von anderen SDKs gesammelten serverseitigen Telemetriedaten werden ausgeschlossen.
  
@@ -196,7 +195,14 @@ dataset
 
 ### <a name="source-map-support"></a>Unterstützung für die Quellzuordnungsdatei
 
-Die Minimierung der minimierten Aufrufliste Ihrer Ausnahmetelemetriedaten kann im Azure-Portal nicht aufgehoben werden. Alle vorhandenen Integrationen im Bereich „Ausnahmedetails“ funktionieren aber bei der Aufrufliste, deren Minimierung gerade aufgehoben wurde. Drag & Drop von Quellzuordnungsdateien – Weil bei der Aufhebung der Minimierung alle vorhandenen und zukünftigen JS SDKs (+Node.JS) unterstützt werden, müssen Sie Ihre SDK-Version nicht aktualisieren. Um Ihre Aufrufliste anzuzeigen, deren Minimierung aufgehoben wurde,
+Die Minimierung der minimierten Aufrufliste Ihrer Ausnahmetelemetriedaten kann im Azure-Portal nicht aufgehoben werden. Alle vorhandenen Integrationen im Bereich „Ausnahmedetails“ funktionieren aber bei der Aufrufliste, deren Minimierung gerade aufgehoben wurde.
+
+#### <a name="link-to-blob-storage-account"></a>Verknüpfung mit Blob Storage-Konto
+
+Sie können Ihre Application Insights-Ressource mit dem eigenen Azure Blob Storage-Container verknüpfen, um die Minimierung von Aufruflisten automatisch aufzuheben. Informationen zu den ersten Schritten finden Sie unter der [automatischen Unterstützung für Quellzuordnungen](./source-map-support.md).
+
+### <a name="drag-and-drop"></a>Drag & Drop
+
 1. Wählen Sie im Azure-Portal ein Element vom Typ „Ausnahmetelemetrie“ aus, um dessen „End-to-End-Transaktionsdetails“ anzuzeigen.
 2. Identifizieren Sie, welche Quellzuordnungsdateien dieser Aufrufliste entsprechen. Die Quellzuordnungsdatei muss mit der Quelldatei eines Stapelrahmens übereinstimmen, die allerdings mit dem Suffix `.map` versehen ist.
 3. Verschieben Sie die Quellzuordnungsdateien mit Drag & Drop in die Aufrufliste im Azure-Portal ![](https://i.imgur.com/Efue9nU.gif).
@@ -216,10 +222,12 @@ Ausführbare Beispiele finden Sie unter den [Beispielen für das Application Ins
 ## <a name="upgrading-from-the-old-version-of-application-insights"></a>Upgrade von der alten Application Insights-Version
 
 Breaking Changes in der SDK V2-Version:
-- Um bessere API-Signaturen zu ermöglichen, wurden einige API-Aufrufe, wie z.B. „trackPageView“ und „trackException“, aktualisiert. Eine Ausführung in IE8 oder niedrigeren Versionen des Browsers wird nicht unterstützt.
+- Um bessere API-Signaturen zu ermöglichen, wurden einige API-Aufrufe, wie z. B. „trackPageView“ und „trackException“, aktualisiert. Eine Ausführung in Internet Explorer 8 und früheren Versionen des Browsers wird nicht unterstützt.
 - Beim Umschlag für die Telemetriedaten gibt es infolge von Datenschemaaktualisierungen Feldname- und Strukturänderungen.
 - `context.operation` wurde in `context.telemetryTrace` verschoben. Einige Felder wurden ebenfalls geändert (`operation.id` --> `telemetryTrace.traceID`).
-  - Wenn Sie die aktuelle PageView-ID manuell aktualisieren möchten (z.B. in SPA-Apps), kann dies mit `appInsights.properties.context.telemetryTrace.traceID = Util.newId()` geschehen.
+  - Zum manuellen Aktualisieren der derzeitigen PageView-ID (z. B. in SPA-Apps) verwenden Sie `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()`.
+    > [!NOTE]
+    > Damit die Ablaufverfolgungs-ID eindeutig bleibt, verwenden Sie dort, wo Sie zuvor `Util.newId()` verwendet haben, jetzt `Util.generateW3CId()`. Beide werden letztendlich zur Vorgangs-ID.
 
 Wenn Sie das aktuelle Application Insights-PRODUKTIONS-SDK (1.0.20) verwenden und überprüfen möchten, ob das neue SDK in der Laufzeit funktioniert, aktualisieren Sie die URL abhängig von Ihrem aktuellen SDK-Ladeszenario.
 
@@ -260,7 +268,7 @@ Chrome (neueste Version) ✔ |  Firefox (neueste Version) ✔ | Internet Explore
 
 Das Application Insights JavaScript SDK ist Open Source. Wenn Sie den Quellcode anzeigen oder zum Projekt beitragen möchten, besuchen Sie das [offizielle GitHub-Repository](https://github.com/Microsoft/ApplicationInsights-JS).
 
-## <a name="next"></a> Nächste Schritte
+## <a name="next-steps"></a><a name="next"></a> Nächste Schritte
 * [Nutzung nachverfolgen](usage-overview.md)
 * [Benutzerdefinierte Ereignisse und Metriken](api-custom-events-metrics.md)
 * [Erstellen-Messen-Lernen](usage-overview.md)

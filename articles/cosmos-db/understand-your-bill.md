@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 74a4279d347be92b1047a9cf361e233ecc7fcff8
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 5954c8eda370c0734985c47cfff6d073f5d76d17
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78674303"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258021"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Grundlegendes zu Ihrer Azure Cosmos DB-Rechnung
 
@@ -125,7 +125,7 @@ Angenommen, Sie erstellen einen Azure Cosmos-Container in der Region „USA, Wes
 
 Betrachten Sie das folgende Beispiel für ein Azure Cosmos-Konto mit Multimasterkonfiguration, bei dem alle Regionen für Schreibanforderungen ausgelegt sind. Der Einfachheit halber wird davon ausgegangen, dass die Speichergröße konstant bleibt und sich nicht ändert. Daher wird sie hier nicht aufgeführt, um das Beispiel einfacher zu halten. Der bereitgestellte Durchsatz schwankt während des Monats wie folgt (30 Tage bzw. 720 Stunden vorausgesetzt): 
 
-[0-100 Stunden]:  
+[0-100 Stunden]\:  
 
 * Es wird ein Azure Cosmos-Konto mit drei Regionen („USA, Westen“, „USA, Osten“, „Europa, Norden“) und Schreibanforderungen für alle Regionen erstellt 
 
@@ -135,7 +135,7 @@ Betrachten Sie das folgende Beispiel für ein Azure Cosmos-Konto mit Multimaster
 
 * Es wird ein Container (C1) mit dediziertem Durchsatz von 20.000 RUs/Sek. erstellt 
 
-[101-200 Stunden]:  
+[101-200 Stunden]\:  
 
 * Die Datenbank (D1) wird auf 50.000 RUs/Sek. hochskaliert 
 
@@ -143,11 +143,11 @@ Betrachten Sie das folgende Beispiel für ein Azure Cosmos-Konto mit Multimaster
 
 * Der Container (C1) wird gelöscht  
 
-[201-300 Stunden]:  
+[201-300 Stunden]\:  
 
 * Der Container (C1) wird erneut erstellt mit dediziertem Durchsatz von 20.000 RUs/Sek. 
 
-[301-400 Stunden]:  
+[301-400 Stunden]\:  
 
 * Eine der Regionen wird aus dem Azure Cosmos-Konto entfernt (es gibt jetzt noch zwei Regionen mit Schreibanforderungen) 
 
@@ -157,13 +157,13 @@ Betrachten Sie das folgende Beispiel für ein Azure Cosmos-Konto mit Multimaster
 
 * Der Container (C1) wird erneut gelöscht 
 
-[401-500 Stunden]:  
+[401-500 Stunden]\:  
 
 * Die Datenbank (D2) wird auf 10.000 RUs/Sek. herunterskaliert  
 
 * Der Container (C1) wird erneut erstellt mit dediziertem Durchsatz von 20.000 RUs/Sek. 
 
-[501-700 Stunden]:  
+[501-700 Stunden]\:  
 
 * Die Datenbank (D1) wird auf 20.000 RUs/Sek. hochskaliert  
 
@@ -171,7 +171,7 @@ Betrachten Sie das folgende Beispiel für ein Azure Cosmos-Konto mit Multimaster
 
 * Der Container (C1) wird erneut gelöscht  
 
-[701-720 Stunden]:  
+[701-720 Stunden]\:  
 
 * Die Datenbank (D2) wird auf 50.000 RUs/Sek. herunterskaliert  
 
@@ -220,7 +220,7 @@ Beim Free-Tarif für Azure Cosmos DB erhalten Sie die ersten 400 RUs/Sek. und 5
 - Insgesamt (ohne den Free-Tarif) würden für 3 x 1.200 RUs/Sek. = 3.600 RUs/Sek. und 3 x 10 GB = 30 GB Speicher in Rechnung gestellt.
 - Beim Free-Tarif-Rabatt wird nach dem Entfernen von 400 RUs/Sek. und 5 GB Speicher ein effektiver bereitgestellter Durchsatz von 3.200 RUs/Sek. (32 Einheiten) zum Satz der Schreibanforderung für eine Region und für 25 GB Speicher in Rechnung gestellt.
 - Dann würden die monatlichen Kosten für RUs/Sek. betragen: 32 Einheiten × 0,008 US-Dollar x 24 Stunden × 31 Tage = 190,46 US-Dollar. Die monatlichen Kosten für Speicher würden betragen: 25 GB x 0,25/GB = 6,25 US-Dollar. Die Gesamtkosten würden betragen: 190,46 US-Dollar + 6,25 US-Dollar = 196,71 US-Dollar.
-- Hinweis: Wenn sich der Einzelpreis für RUs/Sek. oder Speicher in den Regionen unterscheidet, entsprechen die 400 RUs/Sek. und 5 GB Speicher des Free-Tarifs den Sätzen des Kontos, in dem die Region erstellt wurde.
+- Hinweis: Wenn sich der Einzelpreis für RUs/Sek. oder Speicher in den Regionen unterscheidet, entsprechen die 400 RUs/Sek. und 5 GB Speicher den Tarifen der Region, in der das Konto erstellt wurde.
 
 ### <a name="billing-example---multi-region-multi-master-multiple-write-region-account"></a>Abrechnungsbeispiel: Konto mit mehreren Regionen und Schreibanforderung für mehrere Regionen (Multimasterkonto)
 

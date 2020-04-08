@@ -7,14 +7,14 @@ author: ChristopherHouser
 ms.author: chrishou
 ms.reviewer: valthom, logicappspm
 ms.topic: article
-ms.date: 06/19/2019
+ms.date: 03/31/2020
 tags: connectors
-ms.openlocfilehash: 6bfd626c1ce69029ee720d24b0b143e7b4c3dd56
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 737c5b90b216156ca08346f4a64fd0b421ad6c19
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650946"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410249"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Herstellen einer Verbindung mit dem IBM MQ-Server über Azure Logic Apps
 
@@ -22,91 +22,136 @@ Der IBM MQ-Connector sendet und empfängt Nachrichten, die lokal oder in Azure a
 
 Der IBM MQ-Connector stellt die folgenden Aktionen, jedoch keine Trigger bereit:
 
-- Suchen nach einer einzelnen Nachricht ohne Löschen der Nachricht vom IBM MQ-Server
-- Suchen nach einem Batch von Nachrichten ohne Löschen der Nachrichten vom IBM MQ-Server
+- Durchsuchen einer einzelnen Nachricht ohne Löschen der Nachricht vom IBM MQ-Server
+- Durchsuchen eines Batchs von Nachrichten ohne Löschen der Nachrichten vom IBM MQ-Server
 - Empfangen einer einzelnen Nachricht und Löschen der Nachricht vom IBM MQ-Server
 - Empfangen eines Batchs von Nachrichten und Löschen der Nachrichten vom IBM MQ-Server
 - Senden einer einzelnen Nachricht an den IBM MQ-Server
 
-## <a name="prerequisites"></a>Voraussetzungen
-
-* Wenn Sie einen lokalen MQ-Server verwenden, [installieren Sie das lokale Datengateway](../logic-apps/logic-apps-gateway-install.md) auf einem Server in Ihrem Netzwerk. Der Server, auf dem das lokale Datengateway installiert ist, muss über .NET Framework 4.6 verfügen, damit der MQ-Connector funktioniert. Außerdem müssen Sie in Azure eine Ressource für das lokale Datengateway erstellen. Weitere Informationen finden Sie unter [Einrichten der Datengatewayverbindung](../logic-apps/logic-apps-gateway-connection.md).
-
-  Wenn Ihr MQ-Server jedoch öffentlich oder in Azure verfügbar ist, müssen Sie das Datengateway nicht verwenden.
-
-* Offiziell unterstützte IBM WebSphere MQ-Versionen:
+Offiziell unterstützte IBM WebSphere MQ-Versionen:
 
   * MQ 7.5
   * MQ 8.0
   * MQ 9.0
 
-* Die Logik-App, der Sie die MQ-Aktion hinzufügen möchten. Für diese Logik-App müssen derselbe Standort wie für die Verbindung mit dem lokalen Datengateway und ein bereits vorhandener Trigger verwendet werden, der den Workflow startet. 
+## <a name="prerequisites"></a>Voraussetzungen
 
-  Da der MQ-Connector keine Trigger bereitstellt, müssen Sie Ihrer Logik-App zuerst einen hinzufügen. Sie können beispielsweise den Wiederholungstrigger verwenden. Falls Sie noch nicht mit Logik-Apps gearbeitet haben, lesen Sie zuerst den [Schnellstart zum Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+* Wenn Sie einen lokalen MQ-Server verwenden, [installieren Sie das lokale Datengateway](../logic-apps/logic-apps-gateway-install.md) auf einem Server in Ihrem Netzwerk. Der Server, auf dem das lokale Datengateway installiert ist, muss über .NET Framework 4.6 verfügen, damit der MQ-Connector funktioniert.
 
-## <a name="browse-a-single-message"></a>Suchen einer einzelnen Nachricht
+  Nach dem Installieren des Gateways müssen Sie in Azure außerdem eine Ressource für das lokale Datengateway erstellen. Weitere Informationen finden Sie unter [Einrichten der Datengatewayverbindung](../logic-apps/logic-apps-gateway-connection.md).
 
-1. Klicken Sie in Ihrer Logik-App unter dem Trigger oder einer anderen Aktion auf **Neuer Schritt**. 
+  Wenn Ihr MQ-Server öffentlich oder in Azure verfügbar ist, müssen Sie das Datengateway nicht verwenden.
 
-1. Geben Sie im Suchfeld „mq“ ein, und klicken Sie auf die folgende Aktion: **Nachricht suchen**
+* Die Logik-App, der Sie die MQ-Aktion hinzufügen möchten. Für diese Logik-App müssen derselbe Standort wie für die Verbindung mit dem lokalen Datengateway und ein bereits vorhandener Trigger verwendet werden, der den Workflow startet.
 
-   ![Nachricht suchen](media/connectors-create-api-mq/Browse_message.png)
+  Da der MQ-Connector keine Trigger bereitstellt, müssen Sie Ihrer Logik-App zuerst einen hinzufügen. Sie können beispielsweise den Wiederholungstrigger verwenden. Falls Sie noch nicht mit Logik-Apps gearbeitet haben, lesen Sie zuerst den [Schnellstart zum Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. Wenn noch keine MQ-Verbindung besteht, müssen Sie diese zuerst herstellen:  
+<a name="create-connection"></a>
 
-   1. Klicken Sie innerhalb der Aktion auf **Über lokales Datengateway verbinden**.
-   
-   1. Geben Sie die Eigenschaften für Ihren MQ-Server ein.  
+## <a name="create-mq-connection"></a>Erstellen der MQ-Verbindung
 
-      Für **Server** können Sie den Namen des MQ-Server oder die IP-Adresse gefolgt von einem Doppelpunkt und der Portnummer eingeben.
-    
-   1. Öffnen Sie die Liste **Gateway**. Diese enthält alle bereits konfigurierten Gatewayverbindungen. Wählen Sie Ihr Gateway aus.
-    
-   1. Wenn Sie fertig sind, wählen Sie **Erstellen** aus. 
-   
-      Nun sieht Ihre Verbindungskonfiguration wie im folgendem Beispiel aus:
+Wenn Sie beim Hinzufügen einer MQ-Aktion noch über keine MQ-Verbindung verfügen, werden Sie aufgefordert, die Verbindung zu erstellen, z. B.:
 
-      ![Verbindungseigenschaften](media/connectors-create-api-mq/Connection_Properties.png)
+![Angeben von Verbindungsinformationen](media/connectors-create-api-mq/connection-properties.png)
 
-1. Richten Sie die folgenden Aktionseigenschaften ein:
+1. Wenn Sie eine Verbindung mit einem lokalen MQ-Server herstellen, wählen Sie **Über lokales Datengateway verbinden** aus.
 
-   * **Queue:** Geben Sie eine Warteschlange an, die nicht für die Verbindung verwendet wird.
+1. Geben Sie die Verbindungsinformationen für den MQ-Server an.
 
-   * **MessageId**, **CorrelationId**, **GroupId** und weitere Eigenschaften: Legen Sie Werte für die verschiedenen MQ-Nachrichteneigenschaften fest, um nach Nachrichten mit diesen Eigenschaften zu suchen.
+   * Für **Server** können Sie den Namen des MQ-Server oder die IP-Adresse gefolgt von einem Doppelpunkt und der Portnummer eingeben.
 
-   * **IncludeInfo**: Legen Sie **True** fest, wenn Sie zusätzliche Nachrichteninformationen in die Ausgabe einschließen möchten. Legen Sie andernfalls **False** fest.
+   * Um SSL (Secure Sockets Layer) zu verwenden, wählen Sie **SSL aktivieren?** aus.
 
-   * **Timeout**: Geben Sie einen Wert ein, um festzulegen, wie lange in einer leeren Warteschlange auf den Empfang einer Nachricht gewartet wird. Wenn hier kein Wert festgelegt ist, wird die erste Nachricht in der Warteschlange abgerufen, und es wird nicht gewartet, bis eine Nachricht eingeht.
+     Der MQ-Connector unterstützt derzeit nur die Serverauthentifizierung, jedoch nicht die Clientauthentifizierung. Weitere Informationen finden Sie unter [Probleme bei der Verbindung und Authentifizierung](#connection-problems).
 
-     ![Eigenschaften für das Suchen nach Nachrichten](media/connectors-create-api-mq/Browse_message_Props.png)
+1. Gehen Sie im Bereich **Gateway** wie folgt vor:
 
-1. **Speichern** Sie Ihre Änderungen, und klicken Sie dann auf **Ausführen**, um Ihre Logik-App auszuführen.
+   1. Wählen Sie in der Liste **Abonnement** das Azure-Abonnement aus, das Ihrer Azure-Gatewayressource zugeordnet ist.
 
-   ![Speichern und ausführen](media/connectors-create-api-mq/Save_Run.png)
+   1. Wählen Sie in der Liste **Verbindungsgateway** die Azure-Gatewayressource aus, die Sie verwenden möchten.
 
-   Anschließend werden die Ausführungsschritte angezeigt, und Sie können sich die Ausgabe ansehen.
+1. Wählen Sie **Erstellen**, wenn Sie fertig sind.
 
-1. Klicken Sie auf das grüne Häkchen, um sich Details zu einem Schritt anzeigen zu lassen. Wenn Sie weitere Informationen zu Ausgabedaten aufrufen möchten, klicken Sie auf **Unformatierte Ausgaben anzeigen**.
+<a name="connection-problems"></a>
 
-   ![Ausgabe für die Suche nach einer Nachricht](media/connectors-create-api-mq/Browse_message_output.png)  
+### <a name="connection-and-authentication-problems"></a>Probleme bei der Verbindung und Authentifizierung
+
+Wenn die Logik-App versucht, eine Verbindung mit dem lokalen MQ-Server herzustellen, wird möglicherweise die folgende Fehlermeldung angezeigt:
+
+`"MQ: Could not Connect the Queue Manager '<queue-manager-name>': The Server was expecting an SSL connection."`
+
+* Wenn Sie den MQ-Connector direkt in Azure verwenden, muss auf dem MQ-Server ein Zertifikat verwendet werden, das von einer vertrauenswürdigen [Zertifizierungsstelle](https://www.ssl.com/faqs/what-is-a-certificate-authority/) ausgestellt wurde.
+
+* Wenn Sie das lokale Datengateway verwenden, versuchen Sie, nach Möglichkeit ein Zertifikat zu verwenden, das von einer vertrauenswürdigen [Zertifizierungsstelle](https://www.ssl.com/faqs/what-is-a-certificate-authority/) ausgestellt wurde. Wenn dies jedoch nicht möglich ist, können Sie ein selbstsigniertes Zertifikat verwenden, das nicht von einer vertrauenswürdigen [Zertifizierungsstelle](https://www.ssl.com/faqs/what-is-a-certificate-authority/) ausgestellt wurde und als weniger sicher eingestuft wird.
+
+  Zum Installieren des selbstsignierten Zertifikats des Servers können Sie das Tool **Windows Certification Manager** („certmgr.msc“) verwenden. In diesem Szenario müssen Sie auf dem lokalen Computer, auf dem der lokale Datengatewaydienst ausgeführt wird, das Zertifikat im Zertifikatspeicher des **lokalen Computers** auf der Ebene **Vertrauenswürdige Stammzertifizierungsstellen** installieren.
+
+  1. Öffnen Sie auf dem Computer, auf dem der lokale Datengatewaydienst ausgeführt wird, das Startmenü, suchen Sie **Benutzerzertifikate verwalten**, und wählen die Option aus.
+
+  1. Nachdem das Tool Windows Certification Manager geöffnet wurde, wechseln Sie zum Ordner **Zertifikate – Lokaler Computer** >  **Vertrauenswürdige Stammzertifizierungsstellen**, und installieren Sie das Zertifikat.
+
+     > [!IMPORTANT]
+     > Stellen Sie sicher, dass Sie das Zertifikat im Speicher **Zertifikate – Lokaler Computer** > **Vertrauenswürdige Stammzertifizierungsstellen** installieren.
+
+* Für den MQ-Server muss eine Verschlüsselungsspezifikation definiert werden, die für SSL-Verbindungen verwendet werden soll. In SsLStream in .NET ist es jedoch nicht möglich, dass Sie die Reihenfolge für Verschlüsselungsspezifikationen angeben. Um diese Einschränkung zu umgehen, können Sie die Konfiguration des MQ-Servers so ändern, dass die erste Verschlüsselungsspezifikation in der Auflistung verwendet wird, die der Connector in der SSL-Aushandlung sendet.
+
+  Wenn Sie die Verbindung testen, protokolliert der MQ-Server eine Ereignismeldung, die angibt, dass die Verbindung nicht hergestellt werden konnte, da am anderen Ende die falsche Verschlüsselungsspezifikation verwendet wurde. Die Ereignismeldung enthält die Verschlüsselungsspezifikation, die oben in der Liste angezeigt wird. Aktualisieren Sie die Verschlüsselungsspezifikation in der Kanalkonfiguration so, dass sie der Verschlüsselungsspezifikation in der Ereignismeldung entspricht.
+
+## <a name="browse-single-message"></a>Durchsuchen einer einzelnen Nachricht
+
+1. Wählen Sie in Ihrer Logik-App unter dem Trigger oder einer anderen Aktion die Option **Neuer Schritt** aus.
+
+1. Geben Sie `mq` im Suchfeld ein, und wählen Sie die Aktion **Nachricht suchen** aus.
+
+   ![Auswählen der Aktion „Nachricht suchen“](media/connectors-create-api-mq/browse-message.png)
+
+1. Wenn Sie noch keine MQ-Verbindung erstellt haben, werden Sie aufgefordert, [diese Verbindung zu erstellen](#create-connection).
+
+1. Nachdem Sie die Verbindung erstellt haben, richten Sie die Eigenschaften der Aktion **Nachricht suchen** ein:
+
+   | Eigenschaft | BESCHREIBUNG |
+   |----------|-------------|
+   | **Warteschlange** | Wenn in der Verbindung eine andere Warteschlange angegeben ist, geben Sie diese Warteschlange an. |
+   | **MessageId**, **CorrelationId**, **GroupId** und andere Eigenschaften | Durchsuchen einer Nachricht basierend auf den unterschiedlichen MQ-Nachrichteneigenschaften |
+   | **IncludeInfo** | Wählen Sie **true** aus, um zusätzliche Nachrichteninformationen in die Ausgabe einzufügen. Wählen Sie andernfalls **false** aus. |
+   | **Timeout** | Geben Sie einen Wert ein, um festzulegen, wie lange in einer leeren Warteschlange auf den Empfang einer Nachricht gewartet wird. Wenn hier kein Wert festgelegt ist, wird die erste Nachricht in der Warteschlange abgerufen, und es wird nicht gewartet, bis eine Nachricht eingeht. |
+   |||
+
+   Beispiel:
+
+   ![Eigenschaften für die Aktion „Nachricht suchen“](media/connectors-create-api-mq/browse-message-properties.png)
+
+1. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste des Designers die Option **Speichern** aus. Wählen Sie **Ausführen** aus, um die App zu testen.
+
+   Nach der Ausführung werden im Designer die Workflowschritte und deren Status angezeigt, sodass Sie die Ausgabe überprüfen können.
+
+1. Um die Details zu den einzelnen Schritten anzuzeigen, klicken Sie auf die Titelleiste des jeweiligen Schritts. Wenn Sie weitere Informationen zu der Ausgabe eines Schritts aufrufen möchten, wählen Sie **Unformatierte Ausgaben anzeigen** aus.
+
+   ![Ausgabe für die Suche nach einer Nachricht](media/connectors-create-api-mq/browse-message-output.png)
 
    Im Folgenden sehen Sie ein Beispiel für eine unformatierte Ausgabe:
 
-   ![Unformatierte Ausgabe für die Suche nach einer Nachricht](media/connectors-create-api-mq/Browse_message_raw_output.png)
+   ![Unformatierte Ausgabe für die Suche nach einer Nachricht](media/connectors-create-api-mq/browse-message-raw-output.png)
 
-1. Wenn Sie **IncludeInfo** auf „true“ festlegen, wird die folgende Ausgabe angezeigt:
+1. Wenn Sie **IncludeInfo** auf **true** festlegen, werden zusätzliche Ausgabeinformationen angezeigt:
 
-   ![Informationen für die Suche nach einer Nachricht einschließen](media/connectors-create-api-mq/Browse_message_Include_Info.png)
+   ![Informationen für die Suche nach einer Nachricht einschließen](media/connectors-create-api-mq/browse-message-include-info.png)
 
 ## <a name="browse-multiple-messages"></a>Suche nach mehreren Nachrichten
 
-Die Aktion **Nachrichten suchen** umfasst eine Option **BatchSize**, mit der Sie angeben können, wie viele Nachrichten aus der Warteschlange zurückgegeben werden sollen.  Wenn **BatchSize** keinen Wert enthält, werden alle Nachrichten zurückgegeben. Die zurückgegebene Ausgabe ist ein Array aus Nachrichten.
+Die Aktion **Nachrichten durchsuchen** umfasst die Option **BatchSize**, mit der Sie angeben können, wie viele Nachrichten aus der Warteschlange zurückgegeben werden sollen. Wenn **BatchSize** keinen Wert enthält, werden alle Nachrichten zurückgegeben. Die zurückgegebene Ausgabe ist ein Array aus Nachrichten.
 
-1. Wenn Sie die Aktion **Nachrichten suchen** hinzufügen, wird standardmäßig die zuletzt konfigurierte Verbindung ausgewählt. Klicken Sie auf **Verbindung ändern**, um eine neue Verbindung zu erstellen. Alternativ können Sie auch eine andere Verbindung auswählen.
+1. Führen Sie die oben angegebenen Schritte aus, wählen Sie jedoch die Aktion **Nachrichten durchsuchen** aus.
 
-1. Im Folgenden sehen Sie eine Beispielausgabe für die Aktion **Nachrichten suchen**. Die Ausgabe wird nach der Ausführung der Logik-App angezeigt:
+1. Wenn Sie noch keine MQ-Verbindung erstellt haben, werden Sie aufgefordert, [diese Verbindung zu erstellen](#create-connection). Andernfalls wird standardmäßig die erste zuvor konfigurierte Verbindung verwendet. Wählen Sie **Verbindung ändern** aus, um eine neue Verbindung zu erstellen. Alternativ können Sie auch eine andere Verbindung auswählen.
 
-   ![Ausgabe für die Suche nach Nachrichten](media/connectors-create-api-mq/Browse_messages_output.png)
+1. Geben Sie die Informationen für die Aktion an.
+
+1. Speichern Sie die Logik-App, und führen Sie sie dann aus.
+
+   Im Folgenden sehen Sie eine Beispielausgabe für die Aktion **Nachrichten durchsuchen**. Die Ausgabe wird nach der Ausführung der Logik-App angezeigt.
+
+   ![Beispielausgabe für „Nachrichten durchsuchen“](media/connectors-create-api-mq/browse-messages-output.png)
 
 ## <a name="receive-single-message"></a>Empfangen einer einzelnen Nachricht
 
@@ -116,28 +161,30 @@ Die Aktion **Nachricht empfangen** umfasst dieselben Eingaben und Ausgaben wie d
 
 Die Aktion **Nachrichten empfangen** umfasst dieselben Eingaben und Ausgaben wie die Aktion **Nachrichten suchen**. Bei Verwendung von **Nachrichten empfangen** werden die Nachrichten aus der Warteschlange gelöscht.
 
-Wenn beim Ausführen der Aktion „Nachrichten suchen“ oder „Nachrichten empfangen“ keine Nachrichten in der Warteschlange vorhanden sind, kommt es zu einem Fehler mit der folgenden Ausgabe:  
-
-![MQ-Fehler, wenn keine Nachricht vorhanden ist](media/connectors-create-api-mq/MQ_No_Msg_Error.png)
+> [!NOTE]
+> Wenn eine Aktion zum Durchsuchen oder Empfangen von Nachrichten in einer Warteschlange ausgeführt wird, die keine Nachrichten enthält, tritt bei der Aktion ein Fehler mit der folgenden Ausgabe auf:
+>
+> ![MQ-Fehler „Keine Nachricht“](media/connectors-create-api-mq/mq-no-message-error.png)
 
 ## <a name="send-message"></a>Nachricht senden
 
-Wenn Sie die Aktion **Nachrichten senden** hinzufügen, wird standardmäßig die zuletzt konfigurierte Verbindung ausgewählt. Klicken Sie auf **Verbindung ändern**, um eine neue Verbindung zu erstellen. Alternativ können Sie auch eine andere Verbindung auswählen.
+1. Führen Sie die oben angegebenen Schritte aus, wählen Sie jedoch die Aktion **Nachricht senden** aus.
 
-1. Wählen Sie einen der folgenden gültigen Nachrichtentypen aus: **Datagramm**, **Antwort** oder **Anforderung**.  
+1. Wenn Sie noch keine MQ-Verbindung erstellt haben, werden Sie aufgefordert, [diese Verbindung zu erstellen](#create-connection). Andernfalls wird standardmäßig die erste zuvor konfigurierte Verbindung verwendet. Wählen Sie **Verbindung ändern** aus, um eine neue Verbindung zu erstellen. Alternativ können Sie auch eine andere Verbindung auswählen.
 
-   ![Nachrichteneigenschaften senden](media/connectors-create-api-mq/Send_Msg_Props.png)
+1. Geben Sie die Informationen für die Aktion an. Wählen Sie für **MessageType** einen gültigen Nachrichtentyp aus: **Datagramm**, **Antwort** oder **Anforderung**.
 
-1. Im Folgenden sehen Sie eine Beispielausgabe für die Aktion **Nachrichten senden**. Die Ausgabe wird nach der Ausführung der Logik-App angezeigt:
+   ![Eigenschaften für die Aktion „Nachricht senden“](media/connectors-create-api-mq/send-message-properties.png)
 
-   ![Ausgabe von „Nachricht senden“](media/connectors-create-api-mq/Send_Msg_Output.png)
+1. Speichern Sie die Logik-App, und führen Sie sie dann aus.
+
+   Im Folgenden sehen Sie eine Beispielausgabe für die Aktion **Nachrichten senden**. Die Ausgabe wird nach der Ausführung der Logik-App angezeigt:
+
+   ![Beispielausgabe für „Nachricht senden“](media/connectors-create-api-mq/send-message-output.png)
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Weitere technische Details zu diesem Connector, z. B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](https://docs.microsoft.com/connectors/mq/).
-
-> [!NOTE]
-> Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) verwendet die mit ISE bezeichnete Version dieses Connectors stattdessen die [ISE-Nachrichtengrenzwerte](../logic-apps/logic-apps-limits-and-config.md#message-size-limits).
+Technische Details zu Aktionen und Einschränkungen aus der Swagger-Beschreibung des Connectors finden Sie auf der [Referenzseite](/connectors/mq/) des Connectors.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
