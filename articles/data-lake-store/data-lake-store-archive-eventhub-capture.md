@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: bb67c1769510710b368bef4dc0b501f939b3427e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60879521"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231526"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Verwenden von Azure Data Lake Storage Gen1 zum Erfassen von Daten von Event Hubs
 
@@ -88,11 +88,11 @@ In diesem Abschnitt erstellen Sie einen Event Hub innerhalb eines Event Hubs-Nam
 
 1. Klicken Sie im Bereich **Übersicht** des Event Hubs-Namespaces auf **+ Event Hub**.
 
-    ![Erstellen eines Event Hubs](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "Erstellen eines Event Hubs")
+    ![Erstellen des Event Hubs](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "Erstellen des Event Hubs")
 
 1. Geben Sie die folgenden Werte an, um Event Hubs zum Erfassen von Daten in Data Lake Storage Gen1 zu konfigurieren.
 
-    ![Erstellen eines Event Hubs](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Erstellen eines Event Hubs")
+    ![Erstellen des Event Hubs](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Erstellen des Event Hubs")
 
     a. Geben Sie einen Namen für den Event Hub an.
     
@@ -104,13 +104,13 @@ In diesem Abschnitt erstellen Sie einen Event Hub innerhalb eines Event Hubs-Nam
 
     e. Übernehmen Sie für **Beispielnamensformate für Erfassungsdateien** den Standardwert. Diese Option steuert die Ordnerstruktur, die unter dem Erfassungsordner erstellt wird.
 
-    f. Klicken Sie auf **Create**.
+    f. Klicken Sie auf **Erstellen**.
 
 ## <a name="test-the-setup"></a>Testen der Einstellungen
 
 Sie können die Lösung jetzt testen, indem Sie Daten an den Azure Event Hub senden. Folgen Sie den Anweisungen unter [Senden von Ereignissen an Azure Event Hubs](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md). Sobald Sie mit dem Senden der Daten beginnen, werden die Daten in der von Ihnen angegebenen Ordnerstruktur in Data Lake Storage Gen1 angezeigt. Beispielsweise sehen Sie wie im folgenden Screenshot gezeigt eine Ordnerstruktur in Ihrem Data Lake Storage Gen1-Konto.
 
-![EventHub-Beispieldaten in Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-eventhub-data-sample.png "EventHub-Beispieldaten in Data Lake Storage Gen1")
+![Beispiel für EventHub-Daten in Data Lake Storage Gen1](./media/data-lake-store-archive-eventhub-capture/data-lake-store-eventhub-data-sample.png "Beispiel für EventHub-Daten in Data Lake Storage Gen1")
 
 > [!NOTE]
 > Auch wenn keine Nachrichten in Event Hubs eingehen, schreibt Event Hubs leere Dateien, die nur die Header enthalten, in das Data Lake Storage Gen1-Konto. Die Dateien werden in dem Zeitintervall geschrieben, das Sie beim Erstellen des Event Hubs angegeben haben.

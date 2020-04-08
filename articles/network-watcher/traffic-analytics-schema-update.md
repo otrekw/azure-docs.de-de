@@ -13,23 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/06/2020
 ms.author: vinigam
-ms.openlocfilehash: 0e9d37e3a89473e59b94168f8f8c80e7a6621107
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.openlocfilehash: 4fe981576e3f6e58b0886d9c0d2eb2915d8b7720
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "78969057"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396622"
 ---
-# <a name="sample-queries-with-new-fields-in-traffic-analytics-schema-august-2019-schema-update"></a>Beispielabfragen mit neuen Feldern im Traffic Analytics-Schema (Schemaaktualisierung vom August 2019)
+# <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>Beispielabfragen mit neuen Feldern im Traffic Analytics-Schema (Schemaaktualisierung vom August 2019)
 
-Das [Traffic Analytics-Protokollschema](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema) wurde aktualisiert und enthält nun die folgenden neuen Felder: **SrcPublicIPs_s** , **DestPublicIPs_s**, **NSGRule_s**. In den nächsten Monaten werden die folgenden veralteten Felder eingestellt: **VMIP_s**, **Subscription_g**, **Region_s**, **NSGRules_s**, **Subnet_s**, **VM_s**, **NIC_s**, **PublicIPs_s**, **FlowCount_d**.
-Die neuen Felder enthalten Informationen zu Quell- und Ziel-IPs und vereinfachen Abfragen.
+Das [Traffic Analytics-Protokollschema](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema) enthält die folgenden neuen Felder: **SrcPublicIPs_s**, **DestPublicIPs_s**, **NSGRule_s**. Die neuen Felder enthalten Informationen zu Quell- und Ziel-IP-Adressen und sie vereinfachen Abfragen.
 
-In den folgenden drei Beispielen wird gezeigt, wie die alten Felder durch neue ersetzt werden.
+In den nächsten Monaten werden die folgenden veralteten Felder eingestellt: **VMIP_s**, **Subscription_g**, **Region_s**, **NSGRules_s**, **Subnet_s**, **VM_s**, **NIC_s**, **PublicIPs_s**, **FlowCount_d**.
 
-## <a name="example-1---vmip_s-subscription_g-region_s-subnet_s-vm_s-nic_s-publicips_s"></a>Beispiel 1: VMIP_s, Subscription_g, Region_s, Subnet_s, VM_s, NIC_s, PublicIPs_s
+Die folgenden drei Beispiele zeigen, wie die alten Felder durch die neuen ersetzt werden können.
 
-Aus dem Feld „FlowDirection_s“ für AzurePublic- und ExternalPublic-Flows müssen keine Quell- und Zielfälle speziell für AzurePublic- und ExternalPublic-Flows abgeleitet werden. Im Fall eines virtuellen Netzwerkgeräts (Network Virtual Appliance, NVA) kann auch die Verwendung des Felds „FlowDirection_s“ unzulässig sein.
+## <a name="example-1-vmip_s-subscription_g-region_s-subnet_s-vm_s-nic_s-and-publicips_s-fields"></a>Beispiel 1: Felder für VMIP_s, Subscription_g, Region_s, Subnet_s, VM_s, NIC_s und PublicIPs_s
+
+Aus dem Feld **FlowDirection_s** müssen wir für AzurePublic- und ExternalPublic-Flows keine Quell- und Zielfälle ableiten. Es kann auch unangebracht sein, das Feld **FlowDirection_s** für ein virtuelles Netzwerkgerät zu verwenden.
 
 ```Old Kusto query
 AzureNetworkAnalytics_CL
@@ -71,12 +72,13 @@ SourcePublicIPsAggregated = iif(isnotempty(SrcPublicIPs_s), SrcPublicIPs_s, "N/A
 DestPublicIPsAggregated = iif(isnotempty(DestPublicIPs_s), DestPublicIPs_s, "N/A")
 ```
 
+## <a name="example-2-nsgrules_s-field"></a>Beispiel 2: Feld NSGRules_s
 
-## <a name="example-2---nsgrules_s"></a>Beispiel 2: NSGRules_s
+Das alte Feld hat das folgende Format verwendet:
 
-Das frühere Feld hatte das Format <Indexwert 0)>|<NSG_RULENAME>|<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>
+<Indexwert 0)>|<NSG_RuleName>|<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>
 
-Früher wurden Daten übergreifend für NSG und NSGRules aggregiert. Jetzt erfolgt keine Aggregation. Daher enthält „NSGList_s“ nur eine NSG, und auch „NSGRules_s“ enthielt gewöhnlich nur eine Regel. Deshalb wurde hier die komplizierte Formatierung entfernt. Dies gilt auch für andere Felder wie nachfolgend gezeigt:
+Die Daten werden nicht mehr über eine Netzwerksicherheitsgruppe (NSG) aggregiert. Im aktualisierten Schema enthält **NSGList_s** nur eine Netzwerksicherheitsgruppe. Außerdem enthält **NSGRules** nur eine Regel. Wir haben hier und in anderen Feldern die komplizierte Formatierung entfernt, wie im Beispiel gezeigt.
 
 ```Old Kusto query
 AzureNetworkAnalytics_CL
@@ -101,16 +103,24 @@ FlowStatus = FlowStatus_s,
 FlowCountProcessedByRule = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d
 ```
 
-## <a name="example-3---flowcount_d"></a>Example 3: FlowCount_d
+## <a name="example-3-flowcount_d-field"></a>Beispiel 3: Feld FlowCount_d
 
-Da Daten nicht übergreifend für NSG zusammengefasst werden, ist „FlowCount_d“ einfach „AllowedInFlows_d“ + „DeniedInFlows_d“ + „AllowedOutFlows_d“ + „DeniedOutFlows_d“.
-Nur einer der oben genannten vier Werte ist ungleich 0 (null), und die restlichen drei sind 0. Außerdem wird der Status und die Anzahl an der NIC angegeben, an der der Flow erfasst wurde.
+Da die Daten nicht übergreifend für Netzwerksicherheitsgruppen zusammengefasst werden, ist **FlowCount_d** einfach:
 
-Wenn der Flow zulässig war, wird eines der Felder mit dem Präfix „Allowed" aufgefüllt. Andernfalls wird ein Feld mit dem Präfix „Denied“ aufgefüllt.
-Wenn es ein eingehender Flow war, wird eines der Felder mit dem Suffix „\_d“ (z. B. das Feld „InFlows_d“) aufgefüllt. Andernfalls wird „OutFlows_d“ aufgefüllt.
+**AllowedInFlows_d** + **DeniedInFlows_d** + **AllowedOutFlows_d** + **DeniedOutFlows_d**
 
-Abhängig von den beiden oben genannten Bedingungen ist bekannt, welches der vier Felder aufgefüllt wird.
+Nur eines der vier Felder wird nicht 0 (null) sein. Die anderen drei Felder weisen den Wert 0 (null) auf. Die Felder werden aufgefüllt, um den Status und die Anzahl an der NIC anzugeben, in der der Flow erfasst wurde.
 
+Um diese Bedingungen zu veranschaulichen:
+
+- Wenn der Flow zulässig war, wird eines der Felder mit dem Präfix „Allowed" aufgefüllt.
+- Wenn der Flow abgelehnt wurde, wird eines der Felder mit dem Präfix „Denied“ aufgefüllt.
+- Wenn der Flow eingehend war, wird eines der Felder mit dem Suffix „InFlows_d“ gefüllt.
+- Wenn der Flow ausgehend war, wird eines der Felder mit dem Suffix „OutFlows_d“ gefüllt.
+
+Je nach den Bedingungen wissen wir, welches der vier Felder gefüllt werden wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Antworten auf häufig gestellte Fragen finden Sie in den [FAQ zu Traffic Analytics](traffic-analytics-faq.md). Weitere Informationen zur Funktionalität finden Sie in der [Dokumentation zu Traffic Analytics](traffic-analytics.md).
+
+- Antworten auf häufig gestellte Fragen finden Sie unter [Häufig gestellte Fragen zu Traffic Analytics](traffic-analytics-faq.md).
+- Weitere Informationen zu Funktionen finden Sie in der [Traffic Analytics-Dokumentation](traffic-analytics.md).

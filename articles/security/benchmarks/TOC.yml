@@ -40,6 +40,8 @@
       href: ../../container-registry/security-baseline.md
     - name: "Cosmos\_DB-Sicherheitsbaseline"
       href: ../../cosmos-db/security-baseline.md
+    - name: "Event\_Hubs-Sicherheitsbaseline"
+      href: ../../event-hubs/security-baseline.md
     - name: HDInsight-Sicherheitsbaseline
       href: ../../hdinsight/security-baseline.md
     - name: Key Vault-Sicherheitsbaseline

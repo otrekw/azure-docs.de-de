@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5527b96ddf6ccebb60ca8130e48f6aae87a3f715
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 42362a170f493afd51a5d4ee139620ad25b54e79
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246544"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79367362"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Untergeordnete Runbooks in Azure Automation
 
@@ -35,13 +35,13 @@ Welche Runbooktypen können sich gegenseitig aufrufen?
 
 * Ein [PowerShell-Runbook](automation-runbook-types.md#powershell-runbooks) und ein [grafisches Runbook](automation-runbook-types.md#graphical-runbooks) können sich gegenseitig inline aufrufen, da beide auf PowerShell basieren.
 * Ein [PowerShell-Workflow-Runbook](automation-runbook-types.md#powershell-workflow-runbooks) und ein grafisches PowerShell-Workflow-Runbook können sich gegenseitig inline aufrufen, da beide auf einem PowerShell-Workflow basieren.
-* PowerShell-Typen und PowerShell-Workflowtypen können sich nicht gegenseitig inline aufrufen und müssen **Start-AzAutomationRunbook** verwenden.
+* PowerShell-Typen und PowerShell-Workflowtypen können sich nicht gegenseitig inline aufrufen und müssen `Start-AzAutomationRunbook` verwenden.
 
 Wann ist die Veröffentlichungsreihenfolge relevant?
 
 Die Veröffentlichungsreihenfolge von Runbooks spielt nur für PowerShell-Workflow- und grafische PowerShell-Workflow-Runbooks eine Rolle.
 
-Wenn Ihr Runbook ein untergeordnetes grafisches Runbook oder ein untergeordnetes PowerShell-Workflow-Runbook mit Inlineausführung aufruft, verwendet es den Namen des Runbooks. Der Name muss mit **.\\** beginnen, um anzugeben, dass sich das Skript im lokalen Verzeichnis befindet.
+Wenn Ihr Runbook ein untergeordnetes grafisches Runbook oder ein untergeordnetes PowerShell-Workflow-Runbook mit Inlineausführung aufruft, verwendet es den Namen des Runbooks. Der Name muss mit `.\\` beginnen, um anzugeben, dass sich das Skript im lokalen Verzeichnis befindet.
 
 ### <a name="example"></a>Beispiel
 
@@ -62,15 +62,15 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 ## <a name="starting-a-child-runbook-using-a-cmdlet"></a>Starten eines untergeordneten Runbooks mithilfe eines Cmdlets
 
 > [!IMPORTANT]
-> Wenn Ihr Runbook ein untergeordnetes Runbook mit dem Cmdlet **Start-AzAutomationRunbook** und dem Parameter *Wait* aufruft und das untergeordnete Runbook ein Objektergebnis erzeugt, tritt möglicherweise ein Fehler auf. Informationen zur Umgehung dieses Fehlers finden Sie unter [Szenario: Objektverweis wurde nicht auf eine Objektinstanz festgelegt](troubleshoot/runbooks.md#child-runbook-object). Dort erfahren Sie, wie Sie die Logik zum Abfragen der Ergebnisse unter Verwendung des Cmdlets [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) implementieren.
+> Wenn Ihr Runbook ein untergeordnetes Runbook mit dem Cmdlet `Start-AzAutomationRunbook`und dem Parameter `Wait` aufruft und das untergeordnete Runbook ein Objektergebnis erzeugt, tritt möglicherweise ein Fehler auf. Informationen zur Umgehung dieses Fehlers finden Sie unter [Szenario: Objektverweis wurde nicht auf eine Objektinstanz festgelegt](troubleshoot/runbooks.md#child-runbook-object). Dort erfahren Sie, wie Sie die Logik zum Abfragen der Ergebnisse unter Verwendung des Cmdlets [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) implementieren.
 
-Sie können **Start-AzAutomationRunbook** verwenden, um ein Runbook wie unter [Starten eines Runbooks mit Windows PowerShell](start-runbooks.md#start-a-runbook-with-powershell) beschrieben zu starten. Für die Verwendung dieses Cmdlets gibt es zwei Modi. Im ersten Modus gibt das Cmdlet die Auftrags-ID zurück, sobald der Auftrag für das untergeordnete Runbook erstellt wird. Im zweiten Modus, den Ihr Skript durch Angabe des Parameters *Wait* aktiviert, wartet das Cmdlet, bis der untergeordnete Auftrag abgeschlossen ist, und gibt erst dann die Ausgabe aus dem untergeordneten Runbook zurück.
+Sie können `Start-AzAutomationRunbook` verwenden, um ein Runbook wie unter [Starten eines Runbooks mit Windows PowerShell](start-runbooks.md#start-a-runbook-with-powershell) beschrieben zu starten. Für die Verwendung dieses Cmdlets gibt es zwei Modi. Im ersten Modus gibt das Cmdlet die Auftrags-ID zurück, sobald der Auftrag für das untergeordnete Runbook erstellt wird. Im zweiten Modus, den Ihr Skript durch Angabe des Parameters *Wait* aktiviert, wartet das Cmdlet, bis der untergeordnete Auftrag abgeschlossen ist, und gibt erst dann die Ausgabe aus dem untergeordneten Runbook zurück.
 
 Der Auftrag eines mit einem Cmdlet gestarteten untergeordneten Runbooks wird getrennt vom Auftrag des übergeordneten Runbooks ausgeführt. Im Vergleich zum Inlinestart des Runbooks führt dieses Verhalten zu mehr Aufträgen und erschwert deren Nachverfolgung. Das übergeordnete Runbook kann mehrere untergeordnete Runbooks asynchron starten, ohne auf ihren Abschluss zu warten. Für diese parallele Ausführung, bei der untergeordnete Runbooks inline aufgerufen werden, muss das übergeordnete Runbook das Schlüsselwort [Parallel](automation-powershell-workflow.md#parallel-processing) verwenden.
 
-Die Ausgabe untergeordneter Runbooks wird aufgrund des Timings nicht zuverlässig an das übergeordnete Runbook zurückgegeben. Darüber hinaus können Variablen wie *$VerbosePreference*, *$WarningPreference* und andere möglicherweise nicht an die untergeordneten Runbooks weitergegeben werden. Zur Vermeidung dieser Probleme können die untergeordneten Runbooks mithilfe von **Start-AzAutomationRunbook** und dem Parameter *Wait* als separate Automation-Aufträge gestartet werden. Durch diese Technik wird das übergeordnete Runbook blockiert, bis das untergeordnete Runbook abgeschlossen wurde.
+Die Ausgabe untergeordneter Runbooks wird aufgrund des Timings nicht zuverlässig an das übergeordnete Runbook zurückgegeben. Darüber hinaus können Variablen wie `$VerbosePreference`, `$WarningPreference` und andere möglicherweise nicht an die untergeordneten Runbooks weitergegeben werden. Um diese Probleme zu vermeiden, können Sie die untergeordneten Runbooks mithilfe von `Start-AzAutomationRunbook` mit dem Parameter `Wait` als separate Automation-Aufträge starten. Durch diese Technik wird das übergeordnete Runbook blockiert, bis das untergeordnete Runbook abgeschlossen wurde.
 
-Wenn das wartende übergeordnete Runbook nicht blockiert werden soll, können Sie das untergeordnete Runbook mithilfe von **Start-AzAutomationRunbook** ohne den Parameter *Wait* starten. In diesem Fall muss Ihr Runbook [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob) verwenden, um auf den Auftragsabschluss zu warten. Zum Abrufen der Ergebnisse müssen zudem [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) und [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) verwendet werden.
+Wenn Sie nicht möchten, dass das übergeordnete Runbook beim Warten blockiert wird, können Sie das untergeordnete Runbook mit `Start-AzAutomationRunbook` ohne den Parameter `Wait` starten. In diesem Fall muss Ihr Runbook [Get-AzAutomationJob](/powershell/module/az.automation/get-azautomationjob) verwenden, um auf den Auftragsabschluss zu warten. Zum Abrufen der Ergebnisse müssen zudem [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput) und [Get-AzAutomationJobOutputRecord](/powershell/module/az.automation/get-azautomationjoboutputrecord) verwendet werden.
 
 Parameter für ein per Cmdlet gestartetes untergeordnetes Runbook werden wie unter [Runbook-Parameter](start-runbooks.md#runbook-parameters) beschrieben als Hashtabelle bereitgestellt. Es können nur einfache Datentypen verwendet werden. Enthält das Runbook einen Parameter mit einem komplexen Datentyp, muss es inline aufgerufen werden.
 
@@ -80,7 +80,7 @@ Wenn bei Aufträgen innerhalb des gleichen Automation-Kontos mehrere Abonnements
 
 ### <a name="example"></a>Beispiel
 
-Im folgenden Beispiel wird ein untergeordnetes Runbook mit Parametern gestartet und auf den Abschluss des Runbooks gewartet. Hierzu wird das Cmdlet **Start-AzAutomationRunbook** mit dem Parameter *Wait* verwendet. Nach Abschluss des Runbooks wird die Cmdlet-Ausgabe des untergeordneten Runbooks erfasst. Das Skript muss sich bei Ihrem Azure-Abonnement authentifizieren, um **Start-AzAutomationRunbook** verwenden zu können.
+Im folgenden Beispiel wird ein untergeordnetes Runbook mit Parametern gestartet und auf den Abschluss des Runbooks gewartet. Hierzu wird das Cmdlet `Start-AzAutomationRunbook` mit dem Parameter `Wait` verwendet. Nach Abschluss des Runbooks wird die Cmdlet-Ausgabe des untergeordneten Runbooks erfasst. Das Skript muss sich bei Ihrem Azure-Abonnement authentifizieren, um `Start-AzAutomationRunbook` verwenden zu können.
 
 ```azurepowershell-interactive
 # Ensure that the runbook does not inherit an AzContext

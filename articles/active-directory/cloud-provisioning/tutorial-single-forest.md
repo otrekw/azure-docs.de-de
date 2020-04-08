@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f7c348e29fa2234627a53095a99e913a6389a27
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 55dab553a93db4650a5d7126d7f1a0c3ca5f808f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280967"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80332231"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Tutorial: Integrieren einer einzelnen Gesamtstruktur in einen einzelnen Azure AD-Mandanten
 
@@ -41,7 +41,7 @@ Die Umgebung, die Sie in diesem Tutorial erstellen, können Sie zu Testzwecken v
 
      | Portnummer | Wie diese verwendet wird |
      | --- | --- |
-     | **80** | Herunterladen der Zertifikatssperrlisten (CRL) bei der Überprüfung des SSL-Zertifikats |
+     | **80** | Herunterladen der Zertifikatsperrlisten (CRLs) bei der Überprüfung des TLS-/SSL-Zertifikats |
      | **443** | Verarbeitung der gesamten ausgehende Kommunikation mit dem Dienst |
      | **8080** (optional) | Agents melden ihren Status alle zehn Minuten über den Port 8080, wenn der Port 443 nicht verfügbar ist. Dieser Status wird im Azure AD-Portal angezeigt. |
      

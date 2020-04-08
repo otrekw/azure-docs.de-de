@@ -9,20 +9,20 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 03/24/2020
 ms.author: jingwang
-ms.openlocfilehash: 056909f5fd5838e5ae50fb84bd3535029d862acf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b73cd73a18d286f221c7be2c624719e1d23d7c06
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75475988"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153827"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Beibehalten von Metadaten und Zugriffssteuerungslisten bei Verwendung der Kopieraktivität in Azure Data Factory
 
 Wenn Sie die Azure Data Factory-Kopieraktivität verwenden, um Daten von der Quelle in die Senke zu kopieren, können Sie in den folgenden Szenarios auch die Metadaten und Zugriffssteuerungslisten beibehalten.
 
-## <a name="preserve-metadata"></a> Beibehalten von Metadaten für die Lake-Migration
+## <a name="preserve-metadata-for-lake-migration"></a><a name="preserve-metadata"></a> Beibehalten von Metadaten für die Lake-Migration
 
 Wenn Sie Daten von einem Data Lake zu einem anderen migrieren, z. B. [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md) und [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), können Sie festlegen, dass die Dateimetadaten zusammen mit den Daten beibehalten werden.
 
@@ -40,7 +40,7 @@ Hier ist ein Beispiel für die JSON-Konfiguration der Kopieraktivität (siehe `p
 ```json
 "activities":[
     {
-        "name": "CopyFromGen1ToGen2",
+        "name": "CopyAndPreserveMetadata",
         "type": "Copy",
         "typeProperties": {
             "source": {
@@ -76,9 +76,9 @@ Hier ist ein Beispiel für die JSON-Konfiguration der Kopieraktivität (siehe `p
 ]
 ```
 
-## <a name="preserve-acls"></a> Beibehalten von Zugriffssteuerungslisten aus Data Lake Storage Gen1 nach Gen2
+## <a name="preserve-acls-from-data-lake-storage-gen1gen2-to-gen2"></a><a name="preserve-acls"></a> Beibehalten von Zugriffssteuerungslisten aus Data Lake Storage Gen1/Gen2 in Gen2
 
-Beim Upgrade von Azure Data Lake Storage Gen1 nach Gen2 können Sie festlegen, dass die POSIX-Zugriffssteuerungslisten (ACLs) zusammen mit den Daten beibehalten werden. Weitere Informationen zur Zugriffssteuerung finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md) und [Zugriffssteuerung in Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
+Beim Upgrade von Azure Data Lake Storage Gen1 auf Gen2 oder beim Kopieren von Daten zwischen ADLS Gen2 können Sie auswählen, dass die POSIX-Zugriffssteuerungslisten (Access Control Lists, ACLs) zusammen mit den Datendateien beibehalten werden sollen. Weitere Informationen zur Zugriffssteuerung finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md) und [Zugriffssteuerung in Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
 
 Die Kopieraktivität unterstützt die Beibehaltung der folgenden Arten von Zugriffssteuerungslisten beim Kopieren von Daten. Sie können einen oder mehrere Typen auswählen:
 
@@ -89,21 +89,21 @@ Die Kopieraktivität unterstützt die Beibehaltung der folgenden Arten von Zugri
 Wenn Sie das Kopieren aus einem Ordner angeben, repliziert Data Factory die ACLs für diesen Ordner und die darin enthaltenen Dateien und Verzeichnisse, sofern `recursive` auf „true“ festgelegt ist. Falls Sie das Kopieren aus einer einzelnen Datei angeben, werden die ACLs in dieser Datei kopiert.
 
 >[!NOTE]
->Wenn Sie ADF verwenden, um ACLs von Data Lake Storage Gen1 nach Gen2 beizubehalten, werden die vorhandenen ACLs in den entsprechenden Ordnern/Dateien von Gen2 überschrieben.
+>Wenn Sie ADF verwenden, um ACLs von Data Lake Storage Gen1/Gen2 in Gen2 beizubehalten, werden die vorhandenen ACLs in den entsprechenden Ordnern/Dateien der Gen2-Senke überschrieben.
 
 >[!IMPORTANT]
 >Bei Auswahl der Beibehaltung von ACLs sollten Sie sicherstellen, dass Sie ausreichende Berechtigungen für die Verwendung von Data Factory für Ihr Data Lake Storage Gen2-Senkenkonto gewähren. Verwenden Sie beispielsweise die Kontoschlüsselauthentifizierung, oder weisen Sie dem Dienstprinzipal bzw. der verwalteten Identität die Rolle „Besitzer von Speicherblobdaten“ zu.
 
-Wenn Sie die Quelle als Data Lake Storage Gen1 mit Binärformat oder der binären Kopieroption und die Senke als Data Lake Storage Gen2 mit Binärformat oder der binären Kopieroption konfigurieren, können Sie die Option **Beibehalten** auf der Seite **Einstellungen** im Tool zum Kopieren von Daten oder auf der Registerkarte **Kopieraktivität** > **Einstellungen** für die Aktivitätserstellung verwenden.
+Wenn Sie die Quelle als Data Lake Storage Gen1/Gen2 mit Binärformat oder der binären Kopieroption und die Senke als Data Lake Storage Gen2 mit Binärformat oder der binären Kopieroption konfigurieren, finden Sie die Option **Beibehalten** auf der Seite **Einstellungen** im Tool zum Kopieren von Daten oder auf der Registerkarte **Kopieraktivität** > **Einstellungen** für die Aktivitätserstellung.
 
-![Bewahren von ACL von Data Lake Storage Gen1 auf Gen2](./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png)
+![Data Lake Storage Gen1/Gen2 in Gen2 – Beibehalten der Zugriffssteuerungsliste (ACL)](./media/connector-azure-data-lake-storage/adls-gen2-preserve-acl.png)
 
 Hier ist ein Beispiel für die JSON-Konfiguration der Kopieraktivität (siehe `preserve`): 
 
 ```json
 "activities":[
     {
-        "name": "CopyFromGen1ToGen2",
+        "name": "CopyAndPreserveACLs",
         "type": "Copy",
         "typeProperties": {
             "source": {
@@ -127,7 +127,7 @@ Hier ist ein Beispiel für die JSON-Konfiguration der Kopieraktivität (siehe `p
         },
         "inputs": [
             {
-                "referenceName": "<Binary dataset name for Azure Data Lake Storage Gen1 source>",
+                "referenceName": "<Binary dataset name for Azure Data Lake Storage Gen1/Gen2 source>",
                 "type": "DatasetReference"
             }
         ],

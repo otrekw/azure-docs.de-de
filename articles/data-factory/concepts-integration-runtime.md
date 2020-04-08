@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/28/2020
-ms.openlocfilehash: 194bc7983019a616d534a4146f86fff59f9719dc
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.date: 03/26/2020
+ms.openlocfilehash: 4077e1e00b606480ec93feacbad3c841c0de1ed9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357221"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80336175"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrationslaufzeit in Azure Data Factory
 Bei der Integrationslaufzeit (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory die folgenden Datenintegrationsfunktionen für verschiedene Netzwerkumgebungen bereitstellt:
@@ -63,7 +63,7 @@ Die Azure-Integrationslaufzeit stellt in Azure eine vollständig verwaltete, ser
 
 Mit der Azure-Integrationslaufzeit wird die native Computeressource zum sicheren, zuverlässigen und leistungsstarken Verschieben von Daten zwischen Clouddatenspeichern bereitgestellt.  Sie können festlegen, wie viele Datenintegrationseinheiten für die Kopieraktivität verwendet werden. Die Computegröße der Azure IR wird entsprechend elastisch zentral hochskaliert, ohne dass Sie die Größe der Azure-Integrationslaufzeit explizit anpassen müssen. 
 
-Die Aktivitätsverteilung ist ein einfacher Vorgang zum Leiten der Aktivität an den Zielcomputedienst, sodass es nicht erforderlich ist, die Computegröße für dieses Szenario zentral hochzuskalieren.
+Die Aktivitätsverteilung ist ein einfacher Vorgang zum Weiterleiten der Aktivität an den Zielcomputedienst. Deshalb muss die Computegröße bei diesem Szenario nicht zentral hochskaliert werden.
 
 Informationen zur Erstellung und Konfiguration einer Azure IR finden Sie in den Anleitungen unter „Gewusst wie: Erstellen und Konfigurieren der Azure IR“. 
 
@@ -88,7 +88,7 @@ Wenn Sie die Datenintegration auf sichere Weise in einer privaten Netzwerkumgebu
 ### <a name="self-hosted-ir-compute-resource-and-scaling"></a>Selbstgehostete Integrationslaufzeit: Computeressource und Skalierung
 Die selbstgehostete Integrationslaufzeit muss auf einem lokalen Computer oder einem virtuellen Computer in einem privaten Netzwerk installiert werden. Derzeit wird nur das Ausführen der selbstgehosteten Integrationslaufzeit auf einem Windows-Betriebssystem unterstützt.  
 
-Zur Erzielung von Hochverfügbarkeit und Skalierbarkeit können Sie die selbstgehostete Integrationslaufzeit horizontal hochskalieren, indem Sie die logische Instanz mehreren lokalen Computern im Aktiv-Aktiv-Modus zuordnen.  Ausführlichere Informationen finden Sie in den Anleitungen im Artikel [Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime](create-self-hosted-integration-runtime.md).
+Zur Erzielung von Hochverfügbarkeit und Skalierbarkeit können Sie die selbstgehostete Integrationslaufzeit aufskalieren, indem Sie die logische Instanz mehreren lokalen Computern im Aktiv-Aktiv-Modus zuordnen.  Ausführlichere Informationen finden Sie in den Anleitungen im Artikel [Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime](create-self-hosted-integration-runtime.md).
 
 ## <a name="azure-ssis-integration-runtime"></a>Azure-SSIS-Integrationslaufzeit
 Für die Durchführung von Lift & Shift-Vorgängen für vorhandene SSIS-Workloads können Sie eine Azure-SSIS-Integrationslaufzeit erstellen, um SSIS-Pakete nativ auszuführen.
@@ -97,7 +97,7 @@ Für die Durchführung von Lift & Shift-Vorgängen für vorhandene SSIS-Workload
 Die Azure-SSIS--Integrationslaufzeit kann entweder im öffentlichen oder im privaten Netzwerk bereitgestellt werden.  Der lokale Datenzugriff wird unterstützt, indem Azure-SSIS-IR mit einem virtuellen Netzwerk verknüpft wird, für das eine Verbindung mit Ihrem lokalen Netzwerk besteht.  
 
 ### <a name="azure-ssis-ir-compute-resource-and-scaling"></a>Azure-SSIS-Integrationslaufzeit: Computeressource und Skalierung
-Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit Azure-VMs, die speziell für die Ausführung von SSIS-Paketen bestimmt sind. Sie können Ihren eigenen Server mit Azure SQL-Datenbank oder mit einer verwalteten Instanz bereitstellen, um den Katalog mit SSIS-Projekten/-Paketen (SSISDB) zu hosten, der daran angefügt werden soll. Sie können die Computeleistung zentral hochskalieren, indem Sie die Knotengröße angeben und horizontal hochskalieren. Geben Sie hierzu die Anzahl von Knoten im Cluster an. Sie können die Kosten für die Ausführung Ihrer Azure-SSIS-Integrationslaufzeit verwalten, indem Sie sie je nach Bedarf anhalten und starten.
+Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit Azure-VMs, die speziell für die Ausführung von SSIS-Paketen bestimmt sind. Sie können Ihren eigenen Server mit Azure SQL-Datenbank oder mit einer verwalteten Instanz bereitstellen, um den Katalog mit SSIS-Projekten/-Paketen (SSISDB) zu hosten, der daran angefügt werden soll. Sie können die Computeleistung hochskalieren, indem Sie die Knotengröße angeben und aufskalieren. Geben Sie hierzu die Anzahl von Knoten im Cluster an. Sie können die Kosten für die Ausführung Ihrer Azure-SSIS-Integrationslaufzeit verwalten, indem Sie sie je nach Bedarf anhalten und starten.
 
 Weitere Informationen finden Sie in den Anleitungen unter „Gewusst wie: Erstellen und Konfigurieren von Azure-SSIS-Integrationslaufzeit“.  Nach der Erstellung können Sie Ihre vorhandenen SSIS-Pakete mit nur wenigen oder auch ganz ohne Änderungen bereitstellen und verwalten, indem Sie vertraute Tools wie SQL Server Data Tools (SSDT) und SQL Server Management Studio (SSMS) verwenden – genauso wie bei der lokalen Nutzung von SSIS.
 
@@ -106,7 +106,7 @@ Weitere Informationen zur Azure-SSIS-Laufzeit finden Sie in den folgenden Artike
 - [Tutorial: Bereitstellen von SSIS-Paketen in Azure](tutorial-create-azure-ssis-runtime-portal.md): Dieser Artikel enthält schrittweise Anweisungen zum Erstellen einer Azure-SSIS-Integrationslaufzeit und verwendet eine Azure SQL-Datenbank zum Hosten des SSIS-Katalogs. 
 - [Vorgehensweise: Azure-SSIS Integration Runtime in Azure Data Factory](create-azure-ssis-integration-runtime.md): In diesem Artikel wird das Tutorial vertieft, und er enthält Anweisungen zur Verwendung einer verwalteten Azure SQL-Datenbank-Instanz und zum Verknüpfen der IR mit einem virtuellen Netzwerk. 
 - [Überwachen einer Azure-SSIS-Integrationslaufzeit](monitor-integration-runtime.md#azure-ssis-integration-runtime): In diesem Artikel wird das Abrufen von Informationen zu einer Azure-SSIS-Integrationslaufzeit veranschaulicht, und er enthält Beschreibungen der Status in den zurückgegebenen Informationen. 
-- [Verwalten einer Azure-SSIS-Integrationslaufzeit](manage-azure-ssis-integration-runtime.md): In diesem Artikel wird beschrieben, wie Sie eine Azure-SSIS-Integrationslaufzeit beenden, starten oder entfernen. Es wird zudem gezeigt, wie Sie Ihre Azure-SSIS-Integrationslaufzeit horizontal hochskalieren, indem Sie der Integrationslaufzeit weitere Knoten hinzufügen. 
+- [Verwalten einer Azure-SSIS-Integrationslaufzeit](manage-azure-ssis-integration-runtime.md): In diesem Artikel wird beschrieben, wie Sie eine Azure-SSIS-Integrationslaufzeit beenden, starten oder entfernen. Es wird zudem gezeigt, wie Sie Ihre Azure-SSIS-Integrationslaufzeit aufskalieren, indem Sie der Integrationslaufzeit weitere Knoten hinzufügen. 
 - [Verknüpfen einer Azure-SSIS-Integration Runtime mit einem virtuellen Netzwerk:](join-azure-ssis-integration-runtime-virtual-network.md). Dieser Artikel enthält grundlegende Informationen zum Verknüpfen einer Azure-SSIS-IR mit einem virtuellen Azure-Netzwerk. Darüber hinaus enthält er Schritte zur Verwendung des Azure-Portals zum Konfigurieren des virtuellen Netzwerks, damit die Azure-SSIS-IR dem virtuellen Netzwerk beitreten kann. 
 
 ## <a name="integration-runtime-location"></a>Ort der Integrationslaufzeit
@@ -117,9 +117,17 @@ Mit dem Integrationslaufzeit-Standort wird der Standort der Back-End-Computeinst
 ### <a name="azure-ir-location"></a>Azure-Integrationslaufzeit: Standort
 Wenn Sie für eine Azure-Integrationslaufzeit einen bestimmten Standort festlegen, werden Datenverschiebungen und Aktivitätsverteilungen in der entsprechenden Region durchgeführt. 
 
+>[!TIP]
+>Wenn Ihre Daten strengen Complianceanforderungen unterliegen und ein bestimmtes geografisches Gebiet nicht verlassen dürfen, können Sie explizit eine Azure-Integrationslaufzeit in einer bestimmten Region erstellen und den verknüpften Dienst mithilfe der ConnectVia-Eigenschaft auf diese Integrationslaufzeit verweisen. Ein Beispiel: Angenommen, Sie möchten Daten aus einem Blob in der Region „Vereinigtes Königreich, Süden“ in SQL Data Warehouse in der Region „Vereinigtes Königreich, Süden“ kopieren und dabei sicherstellen, dass die Daten das Vereinigte Königreich nicht verlassen. In diesem Fall können Sie eine Azure-Integrationslaufzeit in der Region „Vereinigtes Königreich, Süden“ erstellen und beide verknüpften Dienste mit dieser Integrationslaufzeit verknüpfen.
+
 Bei Verwendung der **Azure-Integrationslaufzeit mit automatischer Auflösung** (Standardeinstellung) gilt Folgendes: 
 
-- Bei Kopieraktivitäten versucht ADF, Ihre Senke und Ihren Quelldatenspeicher automatisch zu erkennen und den bestmöglichen Ort zu wählen – entweder in der gleichen Region (sofern verfügbar) oder in der nächstgelegenen Region im gleichen geografischen Gebiet. Ist keine Erkennung möglich, wird alternativ die Data Factory-Region verwendet.
+- Bei der Kopieraktivität versucht ADF, den Standort Ihres Senkendatenspeichers automatisch zu erkennen, und verwendet dann die Integrationslaufzeit entweder in derselben Region (falls verfügbar) oder in der nächstgelegenen Region im selben geografischen Gebiet. Wenn die Region des Senkendatenspeichers nicht erkannt werden kann, wird alternativ die Integrationslaufzeit in der Data Factory-Region verwendet.
+
+  Beispiel: Sie haben Ihre Factory in „USA, Osten“ erstellt. 
+  
+  - Wenn ADF beim Kopieren von Daten in ein Azure-Blob in „USA, Westen“ erfolgreich erkannt hat, dass sich das Blob in „USA, Westen“ befindet, wird die Kopieraktivität in der Integrationslaufzeit in „USA, Westen“ ausgeführt. Schlägt die Regionserkennung fehl, wird die Kopieraktivität in der Integrationslaufzeit in „USA, Osten“ ausgeführt.
+  - Wenn beim Kopieren von Daten in Salesforce die Region nicht erkannt werden kann, wird die Kopieraktivität in der Integrationslaufzeit in „USA, Osten“ ausgeführt.
 
 - ADF verwendet die IR in der Data Factory-Region für die Ausführung der Aktivitäten Lookup/GetMetadata/Delete (auch als Pipelineaktivitäten bezeichnet), die Bereitstellung von Transformationsaktivitäten (auch als externe Aktivitäten bezeichnet) und die Erstellung von Vorgängen (Verbindung testen, Ordner- und Tabellenliste durchsuchen, Daten als Vorschau anzeigen).
 
@@ -130,9 +138,6 @@ Bei Verwendung der **Azure-Integrationslaufzeit mit automatischer Auflösung** (
 
 In der Überwachungsansicht für Pipelineaktivitäten (auf der Benutzeroberfläche) oder über die Nutzlast für die Aktivitätsüberwachung können Sie überwachen, welcher Integrationslaufzeit-Standort bei der Aktivitätsausführung verwendet wird.
 
->[!TIP]
->Wenn Ihre Daten strengen Complianceanforderungen unterliegen und ein bestimmtes geografisches Gebiet nicht verlassen dürfen, können Sie explizit eine Azure-Integrationslaufzeit in einer bestimmten Region erstellen und den verknüpften Dienst mithilfe der ConnectVia-Eigenschaft auf diese Integrationslaufzeit verweisen. Ein Beispiel: Angenommen, Sie möchten Daten aus einem Blob in der Region „Vereinigtes Königreich, Süden“ in SQL Data Warehouse in der Region „Vereinigtes Königreich, Süden“ kopieren und dabei sicherstellen, dass die Daten das Vereinigte Königreich nicht verlassen. In diesem Fall können Sie eine Azure-Integrationslaufzeit in der Region „Vereinigtes Königreich, Süden“ erstellen und beide verknüpften Dienste mit dieser Integrationslaufzeit verknüpfen.
-
 ### <a name="self-hosted-ir-location"></a>Selbstgehostete Integrationslaufzeit: Standort
 Die selbstgehostete Integrationslaufzeit wird logisch unter der Data Factory registriert, und die Computekomponente, mit der die Funktionen unterstützt werden, wird von Ihnen bereitgestellt. Aus diesem Grund ist für die selbstgehostete Integrationslaufzeit keine explizite Standorteigenschaft vorhanden. 
 
@@ -141,7 +146,7 @@ Bei Verwendung zum Durchführen der Datenverschiebung extrahiert die selbstgehos
 ### <a name="azure-ssis-ir-location"></a>Azure-SSIS-Integrationslaufzeit: Standort
 Die Auswahl des richtigen Standorts für Ihre Azure-SSIS-Integrationslaufzeit ist entscheidend, um für Ihre ETL-Workflows (Extrahieren-Transformieren-Laden) eine hohe Leistung zu erzielen.
 
-- Der Standort der Azure-SSIS IR muss nicht dem Standort Ihrer Data Factory entsprechen. Es sollte aber derselbe Standort wie für Ihren eigenen Server mit Azure SQL-Datenbank bzw. einer verwalteten Instanz sein, auf dem die SSISDB gehostet werden soll. Ihre Azure-SSIS-Integrationslaufzeit kann dann leicht auf SSISDB zugreifen, ohne dass es zwischen unterschiedlichen Standorten zu übermäßig viel Datenverkehr kommt.
+- Der Standort der Azure-SSIS-Integrationslaufzeit muss nicht dem Standort Ihrer Data Factory entsprechen. Es sollte aber derselbe Standort wie für Ihren eigenen Server mit Azure SQL-Datenbank bzw. einer verwalteten Instanz sein, auf dem die SSISDB gehostet werden soll. Ihre Azure-SSIS-Integrationslaufzeit kann dann leicht auf SSISDB zugreifen, ohne dass es zwischen unterschiedlichen Standorten zu übermäßig viel Datenverkehr kommt.
 - Wenn Sie nicht über einen Server mit Azure SQL-Datenbank bzw. mit einer verwalteten Instanz zum Hosten der SSISDB verfügen, aber über lokale Datenquellen bzw. -ziele, sollten Sie wie folgt vorgehen: Erstellen Sie einen neuen Server mit Azure SQL-Datenbank bzw. mit einer verwalteten Instanz am Standort eines virtuellen Netzwerks, das mit Ihrem lokalen Netzwerk verbunden ist.  Auf diese Weise können Sie am gleichen Ort die Azure-SSIS IR mit dem neuen Server mit Azure SQL-Datenbank bzw. mit einer verwalteten Instanz erstellen und den Beitritt zu diesem virtuellen Netzwerk durchführen. Dies reduziert effektiv die Datenverschiebungen zwischen unterschiedlichen Standorten.
 - Wenn der Standort Ihres vorhandenen Servers mit Azure SQL-Datenbank bzw. mit einer verwalteten Instanz, auf dem die SSISDB gehostet wird, nicht dem Standort eines virtuellen Netzwerks entspricht, das mit Ihrem lokalen Netzwerk verbunden ist, sollten Sie wie folgt vorgehen: Erstellen Sie zuerst die Azure-SSIS IR, indem Sie einen vorhandenen Server mit Azure SQL-Datenbank bzw. mit einer verwalteten Instanz verwenden und den Beitritt zu einem anderen virtuellen Netzwerk am gleichen Ort durchführen, und konfigurieren Sie dann eine VNET-zu-VNET-Verbindung zwischen unterschiedlichen Standorten.
 

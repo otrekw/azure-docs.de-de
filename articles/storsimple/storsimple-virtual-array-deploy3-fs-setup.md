@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c2d93099f0f76f173cc7e77ab7f24f27d1560835
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 16a5e0bb3e50e3a90951572e8d2847d379c1b114
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516780"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297643"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>Bereitstellen von StorSimple Virtual Array – Einrichten als Dateiserver über das Azure-Portal
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -45,7 +45,7 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr StorSimple Vir
 
 ## <a name="step-1-complete-the-local-web-ui-setup-and-register-your-device"></a>Schritt 1: Durchführen der Einrichtung für die lokale Webbenutzeroberfläche und Registrieren Ihres Geräts
 #### <a name="to-complete-the-setup-and-register-the-device"></a>So führen Sie das Setup durch und registrieren das Gerät
-1. Öffnen Sie ein Browserfenster, und stellen Sie eine Verbindung mit der lokalen Webbenutzeroberfläche her. Geben Sie Folgendes ein:
+1. Öffnen Sie ein Browserfenster, und stellen Sie eine Verbindung mit der lokalen Webbenutzeroberfläche her. Typ:
    
    `https://<ip-address of network interface>`
    
@@ -103,10 +103,10 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr StorSimple Vir
     1. Legen Sie über die Dropdownliste die **Zeitzone** basierend auf dem geografischen Standort fest, an dem das Gerät bereitgestellt wird. Die Standardzeitzone für Ihr Gerät ist „PST“. Ihr Gerät verwendet diese Zeitzone für alle geplanten Vorgänge.
     2. Geben Sie einen **primären NTP-Server** für das Gerät an, oder übernehmen Sie den Standardwert „time.windows.com“. Stellen Sie sicher, dass Ihr Netzwerk NTP-Datenverkehr vom Rechenzentrum ins Internet zulässt.
     3. Geben Sie optional einen **sekundären NTP-Server** für Ihr Gerät an.
-    4. Klicken Sie auf **Übernehmen**. Die konfigurierten Uhrzeiteinstellungen werden überprüft und angewendet.
+    4. Klicken Sie auf **Anwenden**. Die konfigurierten Uhrzeiteinstellungen werden überprüft und angewendet.
 11. Konfigurieren Sie die Cloudeinstellungen für Ihr Gerät. In diesem Schritt führen Sie die lokale Gerätekonfiguration durch und registrieren das Gerät anschließend beim StorSimple-Geräte-Manager-Dienst.
     
-    1. Geben Sie den **Dienstregistrierungsschlüssel** ein, den Sie in[Schritt 2: Abrufen des Dienstregistrierungsschlüssels](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) für StorSimple Virtual Array erhalten haben.
+    1. Geben Sie den **Dienstregistrierungsschlüssel** ein, den Sie in [Schritt 2: Abrufen des Dienstregistrierungsschlüssels](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) für StorSimple Virtual Array erhalten haben.
     2. Falls dies das erste Gerät ist, das Sie bei diesem Dienst registrieren, müssen Sie den **Dienstdaten-Verschlüsselungsschlüssel** angeben. Kopieren Sie diesen Schlüssel, und bewahren Sie ihn an einem sicheren Ort auf. Dieser Schlüssel ist zusammen mit dem Dienstregistrierungsschlüssel zum Registrieren weiterer Geräte beim StorSimple-Geräte-Manager-Dienst erforderlich. 
        
        Falls dies nicht das erste Gerät ist, das Sie bei diesem Dienst registrieren, müssen Sie den Dienstdaten-Verschlüsselungsschlüssel angeben. Sehen Sie sich die weiteren Informationen zum Abrufen des [Dienstdaten-Verschlüsselungsschlüssels](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) für Ihre lokale Webbenutzeroberfläche an.
@@ -149,7 +149,7 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://portal.azure.com/) 
     
     3. Der Speicherort wird automatisch auf der Basis des angegebenen Speicherkontos aufgefüllt. 
     
-    4. Aktivieren Sie SSL, um einen sicheren Netzwerkkommunikationskanal zwischen dem Gerät und der Cloud zu gewährleisten.
+    4. Aktivieren Sie TLS, um einen sicheren Netzwerkkommunikationskanal zwischen dem Gerät und der Cloud zu gewährleisten.
     
     5. Klicken Sie auf **Hinzufügen**, um diese Anmeldeinformationen des Speicherkontos hinzufügen. 
    

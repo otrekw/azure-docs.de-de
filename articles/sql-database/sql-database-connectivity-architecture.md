@@ -11,17 +11,22 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
-ms.date: 07/02/2019
-ms.openlocfilehash: 6a90e9ba264c4abddf2c26cb7b1761a7a51b1778
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 03/09/2020
+ms.openlocfilehash: 6fdfbce6dce2428a8f2757b0755e6f982f02240f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647678"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228682"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Verbindungsarchitektur von Azure SQL
+> [!NOTE]
+> Dieser Artikel gilt für den Azure SQL-Datenbankserver sowie für Datenbanken von SQL-Datenbank und SQL Data Warehouse, die auf dem Azure SQL-Datenbankserver erstellt werden. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind.
 
-In diesem Artikel wird die Verbindungsarchitektur von Azure SQL-Datenbank und SQL Data Warehouse erläutert. Zudem wird dargelegt, wie die verschiedenen Komponenten Datenverkehr an Ihre Instanz von Azure SQL leiten. Diese Verbindungskomponenten leiten Netzwerkdatenverkehr mithilfe von Clients, die von innerhalb und von außerhalb von Azure verbunden sind, an Azure SQL-Datenbank und SQL Data Warehouse. Dieser Artikel bietet auch Skriptbeispiele zum Ändern der Verbindungsart und Überlegungen, die beim Ändern der Standardverbindungseinstellungen berücksichtigt werden können.
+> [!IMPORTANT]
+> Dieser Artikel gilt *nicht* für **verwaltete Azure SQL-Datenbank-Instanzen**. Informationen dazu finden Sie unter [Konnektivitätsarchitektur für eine verwaltete Instanz](sql-database-managed-instance-connectivity-architecture.md).
+
+In diesem Artikel wird die Architektur verschiedener Komponenten erläutert, die den Netzwerkdatenverkehr an Azure SQL-Datenbank oder SQL Data Warehouse weiterleiten. Außerdem werden andere Verbindungsrichtlinien und ihre Auswirkung auf Clients beschrieben, die eine Verbindung innerhalb und außerhalb von Azure herstellen. 
 
 ## <a name="connectivity-architecture"></a>Verbindungsarchitektur
 
@@ -40,10 +45,10 @@ In den folgenden Schritten wird das Herstellen einer Verbindung mit einer Azure 
 Die Azure SQL-Datenbank unterstützt diese drei Optionen zum Festlegen der Verbindungsrichtlinie für einen SQL-Datenbank-Server:
 
 - **Umleiten (empfohlen):** Clients stellen Verbindungen direkt mit dem Knoten her, der die Datenbank hostet. Dies führt zu geringerer Latenz und verbessertem Durchsatz. Damit dieser Modus bei Verbindungen verwendet wird, müssen Clients
-   - die eingehende und ausgehende Kommunikation zwischen dem Client und allen Azure-IP-Adressen in der Region an Ports im Bereich zwischen 11000 und 11999 zulassen.  
-   - die eingehende und ausgehende Kommunikation zwischen dem Client und den IP-Adressen des Azure SQL-Datenbank-Gateways an Port 1433 zulassen.
+   - die ausgehende Kommunikation zwischen dem Client und allen Azure-IP-Adressen in der Region an Ports im Bereich zwischen 11000 und 11999 zulassen. die Diensttags für SQL verwenden, um die Verwaltung zu vereinfachen.  
+   - die ausgehende Kommunikation zwischen dem Client und den IP-Adressen des Azure SQL-Datenbank-Gateways an Port 1433 zulassen.
 
-- **Proxy:** In diesem Modus werden alle Verbindungen über die Azure SQL-Datenbank-Gateways geleitet. Dies führt zu höherer Latenz und geringerem Durchsatz. Damit dieser Modus bei Verbindungen verwendet wird, müssen Clients die eingehende und ausgehende Kommunikation zwischen dem Client und den IP-Adressen des Azure SQL-Datenbank-Gateways an Port 1433 zulassen.
+- **Proxy:** In diesem Modus werden alle Verbindungen über die Azure SQL-Datenbank-Gateways geleitet. Dies führt zu höherer Latenz und geringerem Durchsatz. Damit dieser Modus bei Verbindungen verwendet wird, müssen Clients die ausgehende Kommunikation zwischen dem Client und den IP-Adressen des Azure SQL-Datenbank-Gateways an Port 1433 zulassen.
 
 - **Standardwert:** Diese Verbindungsrichtlinie ist nach dem Erstellen auf allen Servern aktiv, es sei denn, Sie ändern sie explizit in `Proxy` oder `Redirect`. Die Standardrichtlinie für alle Clientverbindungen, die innerhalb von Azure hergestellt werden (z. B. über einen virtuellen Azure-Computer), ist `Redirect`. Für alle Clientverbindungen, die außerhalb von Azure hergestellt werden (z. B. über Ihre lokale Arbeitsstation), lautet sie `Proxy`.
 
@@ -101,6 +106,8 @@ Details zum Migrieren von Datenverkehr zu neuen Gateways in bestimmten Regionen 
 | Korea, Süden          | 52.231.200.86      |
 | USA Nord Mitte     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
 | Nordeuropa         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
+| Norwegen, Osten          | 51.120.96.0        |
+| Norwegen, Westen          | 51.120.216.0       |
 | Südafrika, Norden   | 102.133.152.0      |
 | Südafrika, Westen    | 102.133.24.0       |
 | USA Süd Mitte     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
@@ -115,78 +122,7 @@ Details zum Migrieren von Datenverkehr zu neuen Gateways in bestimmten Regionen 
 | USA, Westen 2            | 13.66.226.202      |
 |                      |                    |
 
-## <a name="change-azure-sql-database-connection-policy"></a>Ändern der Verbindungsrichtlinie von Azure SQL-Datenbank
 
-Um die Verbindungsrichtlinie von Azure SQL-Datenbank für einen Azure SQL-Datenbank-Server zu ändern, verwenden Sie die [conn-policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).
-
-- Wenn Ihre Verbindungsrichtlinie auf `Proxy` festgelegt ist, fließen alle Netzwerkpakete über das Gateway von Azure SQL-Datenbank. Um dies einzustellen, lassen Sie ausgehenden Datenverkehr nur für Gateway-IPs von Azure SQL-Datenbank zu. Die Einstellung `Proxy` hat längere Wartezeiten als die Einstellung `Redirect`.
-- Wenn die Einstellung der Verbindungsrichtlinie `Redirect` ist, fließen alle Netzwerkpakete direkt an den Datenbankcluster. Um dies einzustellen, lassen Sie ausgehenden Datenverkehr an mehrere IP-Adressen zu.
-
-## <a name="script-to-change-connection-settings-via-powershell"></a>Skript zum Ändern der Verbindungseinstellungen über PowerShell
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch. Das folgende Skript erfordert das [Azure PowerShell-Modul](/powershell/azure/install-az-ps).
-
-Das folgende PowerShell-Skript veranschaulicht, wie Sie die Verbindungsrichtlinie ändern können.
-
-```powershell
-# Get SQL Server ID
-$sqlserverid=(Get-AzSqlServer -ServerName sql-server-name -ResourceGroupName sql-server-group).ResourceId
-
-# Set URI
-$id="$sqlserverid/connectionPolicies/Default"
-
-# Get current connection policy
-(Get-AzResource -ResourceId $id).Properties.connectionType
-
-# Update connection policy
-Set-AzResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
-```
-
-## <a name="script-to-change-connection-settings-via-azure-cli"></a>Skript zum Ändern der Verbindungseinstellungen über die Azure CLI
-
-> [!IMPORTANT]
-> Dieses Skript erfordert die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
-
-### <a name="azure-cli-in-a-bash-shell"></a>Azure CLI in einer Bash-Shell
-
-> [!IMPORTANT]
-> Dieses Skript erfordert die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
-
-Das folgende CLI-Skript veranschaulicht, wie Sie die Verbindungsrichtlinie in einer Bash-Shell ändern.
-
-```azurecli-interactive
-# Get SQL Server ID
-sqlserverid=$(az sql server show -n sql-server-name -g sql-server-group --query 'id' -o tsv)
-
-# Set URI
-ids="$sqlserverid/connectionPolicies/Default"
-
-# Get current connection policy
-az resource show --ids $ids
-
-# Update connection policy
-az resource update --ids $ids --set properties.connectionType=Proxy
-```
-
-### <a name="azure-cli-from-a-windows-command-prompt"></a>Azure CLI über eine Windows-Eingabeaufforderung
-
-> [!IMPORTANT]
-> Dieses Skript erfordert die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
-
-Das folgende CLI-Skript veranschaulicht, wie Sie die Verbindungsrichtlinie über eine Windows-Eingabeaufforderung ändern (wenn die Azure CLI installiert ist).
-
-```azurecli
-# Get SQL Server ID and set URI
-FOR /F "tokens=*" %g IN ('az sql server show --resource-group myResourceGroup-571418053 --name server-538465606 --query "id" -o tsv') do (SET sqlserverid=%g/connectionPolicies/Default)
-
-# Get current connection policy
-az resource show --ids %sqlserverid%
-
-# Update connection policy
-az resource update --ids %sqlserverid% --set properties.connectionType=Proxy
-```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

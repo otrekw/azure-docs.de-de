@@ -6,30 +6,26 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 0af5e4b92b52b4ecfc4e0e302b5d2a7701297908
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 3d250ef1aba979be04a44acaf31a3d685f162e37
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77656193"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80283887"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor für VMs in der allgemein verfügbaren Version (GA)
-
-Diese häufig gestellten Fragen zur allgemeinen Verfügbarkeit betreffen Änderungen, die im Zug unserer Vorbereitung auf die Version für allgemeine Verfügbarkeit in Azure Monitor für VMs auftreten. 
+Diese häufig gestellten Fragen zur allgemeinen Verfügbarkeit betreffen Änderungen, die im vierten Quartal 2019 und im ersten Quartal 2020 vorgenommen wurden.
 
 ## <a name="updates-for-azure-monitor-for-vms"></a>Updates für Azure Monitor für VMs
+Im Januar 2020 wurde vor der Ankündigung der allgemeinen Verfügbarkeit eine neue Version von Azure Monitor für VMs veröffentlicht. Kunden, die Azure Monitor für VMs aktivieren, erhalten nun die neue allgemein verfügbare Version. Bestandskunden, die die Version von Azure Monitor für VMs aus dem vierten Quartal 2019 oder eine ältere Version verwenden, werden zum Upgrade aufgefordert. Diese häufig gestellten Fragen bieten Anleitungen zum Durchführen eines Upgrades in der erforderlichen Größenordnung, wenn Sie über große Bereitstellungen mit mehreren Arbeitsbereichen verfügen.
 
-Wir haben eine neue Version von Azure Monitor für VMs veröffentlicht. Kunden, die Azure Monitor für VMs aktivieren, erhalten nun die neue Version. Bestandskunden, die Azure Monitor für VMs bereits verwenden, werden zum Upgrade aufgefordert. Diese häufig gestellten Fragen und unsere Dokumentation bieten Anleitungen zum Durchführen eines Upgrades in der erforderlichen Größenordnung, wenn Sie über große Bereitstellungen mit mehreren Arbeitsbereichen verfügen.
 
 Mit diesem Upgrade werden Leistungsdaten von Azure Monitor für VMs in derselben Tabelle *InsightsMetrics* wie bei [Azure Monitor für Container](container-insights-overview.md) gespeichert. So können Sie diese beiden Datasets einfacher abfragen. Außerdem können Sie vielfältigere Datasets speichern, die in der zuvor verwendeten Tabelle nicht gespeichert werden konnten. 
 
 In den Leistungsansichten werden nun die in der Tabelle *InsightsMetrics* gespeicherten Daten verwendet.  Wenn Sie noch kein Upgrade zur Nutzung der aktuellen VMInsights-Lösung in Ihrem Arbeitsbereich durchgeführt haben, werden in Ihren Diagrammen keine Informationen mehr angezeigt.  Sie können wie weiter unten beschrieben ein Upgrade über die Seite **Erste Schritte** ausführen.
 
-Uns ist bewusst, dass die Aufforderung zum Upgrade für bestehende Kunden eine Unterbrechung ihres Workflows bedeutet. Deshalb haben wir uns entschieden, dies zum jetzigen Zeitpunkt in der Public Preview und nicht erst später nach der allgemeinen Verfügbarkeit durchzuführen.
-
 
 ## <a name="what-is-changing"></a>Was ändert sich?
-
 Wir haben eine neue Lösung mit dem Namen VMInsights veröffentlicht, die zusätzliche Funktionen für die Datensammlung sowie einen neuen Speicherort für diese Daten in Ihrem Log Analytics-Arbeitsbereich umfasst. 
 
 Bisher hatten wir die ServiceMap-Lösung in Ihrem Arbeitsbereich aktiviert und Leistungsindikatoren in Ihrem Log Analytics-Arbeitsbereich eingerichtet, um die Daten an die Tabelle *Perf* zu senden. Bei dieser neuen Lösung werden die Daten an die Tabelle *InsightsMetrics* gesendet, die auch von Azure Monitor für Container verwendet wird. Aufgrund dieses Tabellenschemas können wir zusätzliche Metriken und Dienstdatasets speichern, die nicht mit dem Format der Tabelle *Perf* kompatibel sind.
@@ -48,9 +44,7 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-grou
 
 ## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>Was soll ich mit den Leistungsindikatoren in meinem Arbeitsbereich machen, wenn ich die VMInsights-Lösung installiere?
 
-Bei der aktuellen Methode zum Aktivieren von Azure Monitor für VMs werden Leistungsindikatoren in Ihrem Arbeitsbereich verwendet. Bei der neuen Methode werden diese Daten in einer neuen Tabelle namens `InsightsMetrics` gespeichert.
-
-Sobald wir unsere Benutzeroberfläche für die Verwendung der Daten in der Tabelle `InsightsMetrics` aktualisiert haben, aktualisieren wir auch unsere Dokumentation und verbreiten diese Ankündigung über mehrere Kanäle, einschließlich eines Banners im Azure-Portal. Zu diesem Zeitpunkt können Sie die [Leistungsindikatoren](vminsights-enable-overview.md#performance-counters-enabled) in Ihrem Arbeitsbereich deaktivieren, wenn Sie sie nicht mehr benötigen. 
+Bei der vorherigen Methode zum Aktivieren von Azure Monitor für VMs wurden Leistungsindikatoren in Ihrem Arbeitsbereich verwendet. Die aktuelle Version speichert diese Daten in einer Tabelle mit dem Namen `InsightsMetrics`. Sie können diese Leistungsindikatoren in Ihrem Arbeitsbereich deaktivieren, wenn Sie sie nicht mehr benötigen. 
 
 >[!NOTE]
 >Wenn Sie über Warnungsregeln verfügen, die auf diese Leistungsindikatoren in der Tabelle `Perf` verweisen, müssen Sie sie aktualisieren, damit sie auf die neuen Daten in der Tabelle `InsightsMetrics` verweisen. In unserer Dokumentation finden Sie Beispiele für Protokollabfragen, die Sie verwenden können und die auf diese Tabelle verweisen.
@@ -93,10 +87,6 @@ Nein. Die beiden Lösungen nutzen die Zuordnungsdatasets gemeinsam, die wir in `
 ## <a name="if-i-remove-either-the-service-map-or-vminsights-solution-will-it-remove-my-data"></a>Wenn ich die Dienstzuordnungslösung oder die VMInsights-Lösung entferne, werden dann auch meine Daten entfernt?
 
 Nein. Die beiden Lösungen nutzen die Zuordnungsdatasets gemeinsam, die wir in `VMComputer` (zuvor „ServiceMapComputer_CL“), `VMProcess` (zuvor „ServiceMapProcess_CL“), `VMConnection` und `VMBoundPort` speichern. Wenn Sie eine der Lösungen entfernen, erkennen diese Datasets, dass immer noch eine Lösung vorhanden ist, die die Daten verwendet, und die Daten verbleiben im Log Analytics-Arbeitsbereich. Sie müssen beide Lösungen aus Ihrem Arbeitsbereich entfernen, damit die Daten entfernt werden.
-
-## <a name="when-will-this-update-be-released"></a>Wann wird dieses Update veröffentlicht?
-
-Wir gehen davon aus, dass das Update für Azure Monitor für VMs Anfang Januar 2020 veröffentlicht wird. Wenn das Veröffentlichungsdatum näher rückt, werden wir hier Updates veröffentlichen und Benachrichtigungen im Azure-Portal einblenden, wenn Sie Azure Monitor öffnen.
 
 ## <a name="health-feature-is-in-limited-public-preview"></a>Integritätsfeature in der eingeschränkten Public Preview
 

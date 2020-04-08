@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/24/2018
 ms.topic: conceptual
-ms.openlocfilehash: 16b6a0cf3e43b172667f55b1ac95e8a278769f9d
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: a5a1cad3179063f75a5d9a19567624180b5793a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246400"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79367260"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>Mein erstes PowerShell-Workflow-Runbook
 
@@ -36,7 +36,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 ## <a name="step-1---create-new-runbook"></a>Schritt 1: Erstellen eines neuen Runbooks
 
-Erstellen Sie zunächst ein einfaches Runbook, das den Text **Hello World** ausgibt.
+Erstellen Sie zunächst ein einfaches Runbook, das den Text `Hello World` ausgibt.
 
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto.
 
@@ -45,14 +45,14 @@ Erstellen Sie zunächst ein einfaches Runbook, das den Text **Hello World** ausg
 1. Wählen Sie unter **Prozessautomatisierung** die Option **Runbooks** aus, um die Liste der Runbooks zu öffnen.
 1. Erstellen Sie ein neues Runbook, indem Sie **Runbook erstellen** auswählen.
 1. Nennen Sie das Runbook **MyFirstRunbook-Workflow**.
-1. In diesem Fall erstellen Sie ein [PowerShell-Workflow-Runbook](automation-runbook-types.md#powershell-workflow-runbooks). Wählen Sie daher als **Runbooktyp** die Option **PowerShell-Workflow** aus.
+1. In diesem Fall erstellen Sie ein [PowerShell-Workflow-Runbook](automation-runbook-types.md#powershell-workflow-runbooks). Wählen Sie als **Runbooktyp** die Option **PowerShell-Workflow** aus.
 1. Klicken Sie auf **Erstellen** , um das Runbook zu erstellen und den Text-Editor zu öffnen.
 
 ## <a name="step-2---add-code-to-the-runbook"></a>Schritt 2 – Hinzufügen von Code zum Runbook
 
 Sie können direkt Code in das Runbook eingeben, oder Sie wählen Cmdlets, Runbooks und Objekte im Bibliotheksteuerelement aus und fügen diese dem Runbook mit den zugehörigen Parametern hinzu. In diesem Tutorial geben Sie den Code direkt in das Runbook ein.
 
-1. Ihr Runbook ist zurzeit leer und enthält lediglich das erforderliche Schlüsselwort **Workflow**, den Namen des Runbooks und die geschweiften Klammern, die den gesamten Workflow umschließen.
+1. Ihr Runbook ist zurzeit leer und enthält lediglich das erforderliche Schlüsselwort `Workflow`, den Namen des Runbooks und die geschweiften Klammern, die den gesamten Workflow umschließen.
 
    ```powershell-interactive
    Workflow MyFirstRunbook-Workflow
@@ -79,9 +79,9 @@ Bevor Sie das Runbook für die Verwendung in der Produktionsumgebung veröffentl
 1. Klicken Sie auf **Starten**, um den Test zu starten, wobei der Test die einzige aktivierte Option ist.
 1. Beachten Sie, dass ein [Runbookauftrag](automation-runbook-execution.md) erstellt und der zugehörige Status im Bereich angezeigt wird.
 
-   Der Auftrag weist zunächst den Status **In Warteschlange** auf, der angibt, dass der Auftrag darauf wartet, dass in der Cloud ein Runbook Worker verfügbar wird. Der Status ändert sich in **Wird gestartet**, wenn ein Worker den Auftrag beansprucht. Schließlich ändert sich der Status in **Wird ausgeführt**, wenn die Ausführung des Runbooks beginnt.
+   Der Auftrag weist zunächst den Status `Queued` auf, der angibt, dass der Auftrag darauf wartet, dass in der Cloud ein Runbook Worker verfügbar wird. Der Status wird in `Starting` geändert, wenn ein Worker den Auftrag beansprucht. Schließlich ändert sich der Status in `Running`, wenn die Ausführung des Runbooks beginnt.
 
-1. Nach Abschluss des Runbookauftrags wird die Ausgabe im Bereich „Test“ angezeigt. In diesem Fall wird **Hello World** angezeigt.
+1. Nach Abschluss des Runbookauftrags wird die Ausgabe im Bereich „Test“ angezeigt. In diesem Fall wird `Hello World` angezeigt.
 
    ![Hello World](media/automation-first-runbook-textual/test-output-hello-world.png)
 
@@ -107,13 +107,13 @@ Das erstellte Runbook befindet sich immer noch im Entwurfsmodus. Sie müssen das
 
    ![API-Zusammenfassung](media/automation-first-runbook-textual/job-pane-status-blade-jobsummary.png)
 
-1. Wenn der Runbookstatus **Abgeschlossen**lautet, klicken Sie auf **Ausgabe**. Die Seite „Ausgabe“ wird geöffnet, auf der Ihre Nachricht **Hallo Welt** angezeigt wird.
+1. Wenn der Runbookstatus `Completed` lautet, klicken Sie auf **Ausgabe**. Die Seite „Ausgabe“ wird geöffnet, auf der Ihre Nachricht `Hello World` angezeigt wird.
 
    ![API-Zusammenfassung](media/automation-first-runbook-textual/job-pane-status-blade-outputtile.png)
 
 1. Schließen Sie die Seite „Ausgabe“.
 
-1. Klicken Sie auf **Alle Protokolle**, um den Bereich „Datenströme“ für den Runbookauftrag zu öffnen. Im Ausgabestream sollte nur **Hallo Welt** angezeigt werden. Beachten Sie, dass im Bereich „Streams“ auch andere Streams für einen Runbookauftrag, etwa ausführliche Streams und Fehlerstreams, angezeigt werden können, sofern das Runbook in diese schreibt.
+1. Klicken Sie auf **Alle Protokolle**, um den Bereich „Datenströme“ für den Runbookauftrag zu öffnen. Im Ausgabestream sollte nur `Hello World` angezeigt werden. Beachten Sie, dass im Bereich „Streams“ auch andere Streams für einen Runbookauftrag, etwa ausführliche Streams und Fehlerstreams, angezeigt werden können, sofern das Runbook in diese schreibt.
 
    ![API-Zusammenfassung](media/automation-first-runbook-textual/job-pane-status-blade-alllogstile.png)
 
@@ -126,10 +126,10 @@ Das erstellte Runbook befindet sich immer noch im Entwurfsmodus. Sie müssen das
 
 ## <a name="step-5---add-authentication-to-manage-azure-resources"></a>Schritt 5: Hinzufügen von Authentifizierungsfunktionen für die Verwaltung von Azure-Ressourcen
 
-Sie haben Ihr Runbook inzwischen zwar getestet und veröffentlicht, bislang ist es aber noch nicht sonderlich hilfreich. Sie möchten damit ja eigentlich Azure-Ressourcen verwalten. Dies ist nur möglich, wenn die Authentifizierung mit den Anmeldeinformationen für das Abonnement erfolgt. Für die Authentifizierung wird das Cmdlet **Connect-AzAccount** verwendet.
+Sie haben Ihr Runbook inzwischen zwar getestet und veröffentlicht, bislang ist es aber noch nicht sonderlich hilfreich. Sie möchten damit ja eigentlich Azure-Ressourcen verwalten. Dies ist nur möglich, wenn die Authentifizierung mit den Anmeldeinformationen für das Abonnement erfolgt. Bei der Authentifizierung wird das Cmdlet `Connect-AzAccount` verwendet.
 
 >[!NOTE]
->Für PowerShell-Runbooks sind **Add-AzAccount** und **Add-AzureRMAccount** Aliase für **Connect-AzAccount**. Sie können diese Cmdlets verwenden, oder Sie können Ihre Module in Ihrem Automation-Konto auf die aktuellen Versionen [aktualisieren](automation-update-azure-modules.md). Möglicherweise müssen Sie Ihre Module auch dann aktualisieren, wenn Sie gerade ein neues Automation-Konto erstellt haben.
+>Für PowerShell-Runbooks sind `Add-AzAccount` und `Add-AzureRMAccount` Aliase für `Connect-AzAccount`. Sie können diese Cmdlets verwenden, oder Sie können Ihre Module in Ihrem Automation-Konto auf die aktuellen Versionen [aktualisieren](automation-update-azure-modules.md). Möglicherweise müssen Sie Ihre Module auch dann aktualisieren, wenn Sie gerade ein neues Automation-Konto erstellt haben.
 
 1. Navigieren Sie zum Bereich **MyFirstRunbook-Workflow**, und öffnen Sie den Text-Editor, indem Sie auf **Bearbeiten** klicken.
 2. Löschen Sie die Zeile `Write-Output`.
@@ -154,7 +154,7 @@ Sie haben Ihr Runbook inzwischen zwar getestet und veröffentlicht, bislang ist 
 
 ## <a name="step-6---add-code-to-start-a-virtual-machine"></a>Schritt 6: Hinzufügen von Code zum Starten eines virtuellen Computers
 
-Nachdem das Runbook jetzt im Azure-Abonnement authentifiziert ist, können Sie Ressourcen verwalten. Fügen Sie nun einen Befehl zum Starten eines virtuellen Computers hinzu. Sie können eine beliebige VM in Ihrem Azure-Abonnement auswählen. Vorerst geben Sie diesen Namen im Runbook fest ein. Wenn Sie Ressourcen über mehrere Abonnements verwalten, müssen Sie das Cmdlet [Get-AzContext](/powershell/module/az.accounts/get-azcontext) mit dem Parameter *AzContext* verwenden.
+Nachdem das Runbook jetzt im Azure-Abonnement authentifiziert ist, können Sie Ressourcen verwalten. Fügen Sie nun einen Befehl zum Starten eines virtuellen Computers hinzu. Sie können eine beliebige VM in Ihrem Azure-Abonnement auswählen. Vorerst geben Sie diesen Namen im Runbook fest ein. Wenn Sie Ressourcen über mehrere Abonnements verwalten, müssen Sie das Cmdlet [Get-AzContext](/powershell/module/az.accounts/get-azcontext) mit dem Parameter `AzContext` verwenden.
 
 1. Geben Sie den Namen und den Ressourcengruppennamen der VM an, die gestartet werden soll, indem Sie wie unten gezeigt einen Aufruf des Cmdlets [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0
 ) eingeben. 
@@ -181,7 +181,7 @@ Nachdem das Runbook jetzt im Azure-Abonnement authentifiziert ist, können Sie R
 
 Ihr Runbook startet derzeit die im Runbook hartcodierte VM. Es ist nützlicher, wenn Sie die VM beim Start des Runbooks angeben können. Zu diesem Zweck fügen wir dem Runbook Eingabeparameter hinzu.
 
-1. Fügen Sie dem Runbook Werte für *VMName* und *ResourceGroupName* hinzu, und verwenden Sie die zugehörigen Variablen mit dem Cmdlet **Start-AzVM**, wie nachstehend gezeigt.
+1. Fügen Sie dem Runbook Variablen für die Parameter `VMName` und `ResourceGroupName` hinzu, und verwenden Sie die Variablen mit dem Cmdlet `Start-AzVM`, wie unten gezeigt.
 
    ```powershell-interactive
    workflow MyFirstRunbook-Workflow

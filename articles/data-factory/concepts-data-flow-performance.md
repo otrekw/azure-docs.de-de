@@ -6,19 +6,22 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 02/24/2020
-ms.openlocfilehash: 9236fab332758308ceb8bde1f83a9f3ac8ee6789
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/11/2020
+ms.openlocfilehash: 4baf7974bdb0a5efe4cb556e820e9d13aeac5d8a
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587582"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409841"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion
 
 Die Mapping Data Flow-Funktion in Azure Data Factory bietet eine codefreie Schnittstelle zum Entwerfen, Bereitstellen und Orchestrieren von Datentransformationen in beliebigen Größenordnungen. Wenn Sie mit der Mapping Data Flow-Funktion nicht vertraut sind, finden Sie weitere Informationen in der [Übersicht über Mapping Data Flow](concepts-data-flow-overview.md).
 
 Stellen Sie beim Entwerfen und Testen von Datenflüssen auf der Benutzeroberfläche von ADF sicher, dass der Debugmodus aktiviert ist, damit Sie Ihre Datenflüsse in Echtzeit ausführen können, ohne die Aufwärmphase eines Clusters abwarten zu müssen. Weitere Informationen finden Sie unter [Debugmodus](concepts-data-flow-debug-mode.md).
+
+Dieses Video zeigt einige Beispielzeiten für das Transformieren von Daten mit Datenflüssen:
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4rNxM]
 
 ## <a name="monitoring-data-flow-performance"></a>Überwachen der Datenflussleistung
 
@@ -59,11 +62,14 @@ Standardmäßig wird beim Aktivieren des Debugmodus die standardmäßige Azure I
 
 ![Quellteil](media/data-flow/sourcepart3.png "Quellteil")
 
+> [!NOTE]
+> Ein guter Anhaltspunkt für die Auswahl der Anzahl der Partitionen für Ihre Quelle basiert auf der Anzahl der Kerne, die Sie für Ihre Azure Integration Runtime festgelegt haben, multipliziert mit fünf. Wenn Sie beispielsweise eine Reihe von Dateien in Ihren ADLS-Ordnern transformieren und eine Azure IR mit 32 Kernen verwenden möchten, ist die Zielanzahl der Partitionen 32 x 5 = 160.
+
 ### <a name="source-batch-size-input-and-isolation-level"></a>Batchgröße, Eingabe und Isolationsstufe der Quelle
 
 Die folgenden Einstellungen unter **Quelloptionen** in der Quelltransformation können sich auf die Leistung auswirken:
 
-* Durch die Batchgröße wird ADF angewiesen, Daten im Speicher in Gruppen und nicht zeilenweise zu speichern. Die Batchgröße ist eine optionale Einstellung. Sie könnte dazu führen, dass nicht genügend Ressourcen auf den Computeknoten vorhanden sind, wenn diese nicht ordnungsgemäß dimensioniert sind.
+* Durch die Batchgröße wird ADF angewiesen, Daten im Spark-Speicher in Gruppen statt zeilenweise zu speichern. Die Batchgröße ist eine optionale Einstellung. Sie könnte dazu führen, dass nicht genügend Ressourcen auf den Computeknoten vorhanden sind, wenn diese nicht ordnungsgemäß dimensioniert sind. Wenn diese Eigenschaft nicht festgelegt wird, werden Batchstandardwerte für die Spark-Zwischenspeicherung verwendet.
 * Durch das Festlegen einer Abfrage können Sie Zeilen an der Quelle filtern, bevor sie im Datenfluss zur Verarbeitung eintreffen. Dadurch kann die anfängliche Datenerfassung beschleunigt werden. Wenn Sie eine Abfrage verwenden, können Sie optionale Abfragehinweise für Ihre Azure SQL-Datenbank-Instanz hinzufügen, z.B. READ UNCOMMITTED.
 * READ UNCOMMITTED bietet schnellere Abfrageergebnisse zur Quelltransformation.
 
@@ -71,7 +77,7 @@ Die folgenden Einstellungen unter **Quelloptionen** in der Quelltransformation k
 
 ### <a name="sink-batch-size"></a>Batchgröße für die Senke
 
-Um die zeilenweise Verarbeitung Ihrer Datenflüsse zu vermeiden, legen Sie die **Batchgröße** auf der Registerkarte „Einstellungen“ für die Azure SQL-Datenbank- und Azure SQL Data Warehouse-Senke fest. Ist die Batchgröße festgelegt, verarbeitet ADF Schreibvorgänge in der Datenbank in Batches basierend auf der angegebenen Größe.
+Um die zeilenweise Verarbeitung Ihrer Datenflüsse zu vermeiden, legen Sie die **Batchgröße** auf der Registerkarte „Einstellungen“ für die Azure SQL-Datenbank- und Azure SQL Data Warehouse-Senke fest. Ist die Batchgröße festgelegt, verarbeitet ADF Schreibvorgänge in der Datenbank in Batches basierend auf der angegebenen Größe. Wenn diese Eigenschaft nicht festgelegt wird, werden Batchstandardwerte für die Spark-Zwischenspeicherung verwendet.
 
 ![Senke](media/data-flow/sink4.png "Senke")
 
@@ -100,7 +106,7 @@ Um zeilenweise Einfügungen in Data Warehouse zu vermeiden, aktivieren Sie unter
 
 Bei jeder Transformation können Sie das Partitionierungsschema, das von Data Factory verwendet werden soll, auf der Registerkarte „Optimieren“ festlegen. Es empfiehlt sich, zunächst dateibasierte Senken zu testen und dabei die Standardpartitionierung und -optimierungen beizubehalten.
 
-* Bei kleineren Dateien kann manchmal das Auswählen von *Einzelne Partition* besser und schneller sein, als Spark anzuweisen, die kleinen Dateien zu partitionieren.
+* Bei kleineren Dateien kann manchmal das Auswählen von weniger Partitionen besser und schneller sein, als Spark anzuweisen, die kleinen Dateien zu partitionieren.
 * Wenn Sie nicht über genügend Informationen zu Ihren Quelldaten verfügen, wählen Sie die *Roundrobin*-Partitionierung aus, und legen Sie die Anzahl der Partitionen fest.
 * Wenn die Daten Spalten aufweisen, die gute Hashschlüssel darstellen können, wählen Sie *Hashpartitionierung* aus.
 

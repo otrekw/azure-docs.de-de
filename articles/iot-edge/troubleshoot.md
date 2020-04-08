@@ -8,12 +8,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 98d75f75a985fca3448becab216ad6570d948468
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 13eab175356ed1ec20caa3263ba00d0563384f0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772229"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064378"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Häufig auftretende Probleme und Lösungen für Azure IoT Edge
 
@@ -44,6 +44,28 @@ Die Arten der Überprüfung, die vom Tool ausgeführt werden, können wie folgt 
 * Prüflisten für die Produktionsbereitschaft: Sucht nach empfohlenen Best Practices für die Produktion, wie etwa nach Zertifikaten der Zertifizierungsstelle (Certificate Authority, CA) für Gerätestatus und nach der Konfiguration der Modulprotokolldatei.
 
 Eine umfassende Liste der Diagnoseprüfungen finden Sie unter [Built-in troubleshooting functionality (Integrierte Problembehandlungsfunktion)](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md).
+
+## <a name="gather-debug-information-with-iotedge-support-bundle-command"></a>Sammeln von Debuginformationen mit dem iotedge-Befehl „support-bundle“
+
+Wenn Sie Protokolle von einem IoT Edge-Gerät sammeln müssen, verwenden Sie dazu am einfachsten den Befehl `support-bundle`. Dieser Befehl sammelt standardmäßig Modul-, IoT Edge Security Manager- und Containerengine-Protokolle, die JSON-Ausgabe „iotedge check“ und weitere nützliche Debuginformationen. Er komprimiert sie zur einfachen Freigabe in einer einzigen Datei. Der Befehl `support-bundle` steht ab [Release 1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) zur Verfügung.
+
+Führen Sie den Befehl `support-bundle` mit dem Flag `--since` aus, um anzugeben, wie alt die Protokolle sein sollen, die Sie abrufen möchten. Beispiele: Mit `6h` werden Protokolle seit den letzten 6 Stunden abgerufen, mit `6d` seit den letzten 6 Tagen, mit `6m` seit den letzten 6 Minuten usw. Beziehen Sie das Flag `--help` mit ein, damit eine vollständige Liste der Optionen angezeigt wird.
+
+
+* Unter Linux:
+
+  ```bash
+  sudo iotedge support-bundle --since 6h
+  ```
+
+* Unter Windows:
+
+  ```powershell
+  iotedge support-bundle --since 6h
+  ```
+
+> [!WARNING]
+> Die Ausgabe des Befehls `support-bundle` kann Host-, Geräte- und Modulnamen, von ihren Modulen protokollierte Informationen usw. enthalten. Beachten Sie dies bitte, wenn Sie die Ausgabe in einem öffentlichen Forum freigeben.
 
 ## <a name="standard-diagnostic-steps"></a>Standarddiagnoseschritte
 
@@ -403,7 +425,7 @@ In diesem Beispiel wird der DNS-Server auf einen öffentlich zugänglichen DNS-D
 
 Fügen Sie `daemon.json` im richtigen Pfad für Ihre Plattform ein:
 
-| Plattform | Location |
+| Plattform | Position |
 | --------- | -------- |
 | Linux | `/etc/docker` |
 | Windows-Host mit Windows-Containern | `C:\ProgramData\iotedge-moby\config` |

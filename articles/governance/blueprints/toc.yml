@@ -17,7 +17,7 @@
     - name: Erstellen einer Blaupause – REST-API
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen aus einem Blaupausenbeispiel
       displayName: 'template, resource group, rbac, role assignment'
@@ -225,10 +225,10 @@
     - name: Reihenfolge der Blaupausenbereitstellung
       displayName: customize
       href: ./concepts/sequencing-order.md
-    - name: Ressourcensperrung in Blaupausen
+    - name: Ressourcensperre in Azure Blueprints
       displayName: 'mode, state, read only, edit, denyAssignments'
       href: ./concepts/resource-locking.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Verwalten von Zuweisungen mit PowerShell
       displayName: 'create, update, remove'

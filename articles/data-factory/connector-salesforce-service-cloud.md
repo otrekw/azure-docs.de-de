@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/06/2019
-ms.openlocfilehash: 0bfab8c8bbcacd130f73190b8572893327ee795e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/24/2020
+ms.openlocfilehash: 4540b27a9241a14b3d1a153d11bf43900e8ae0ec
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926912"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153850"
 ---
 # <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>Kopieren von Daten aus und in Salesforce Service Cloud mit Azure Data Factory
 
@@ -36,7 +36,7 @@ Dieser Salesforce Service Cloud-Connector unterstützt insbesondere Folgendes:
 - Salesforce Developer, Professional, Enterprise oder Unlimited Edition.
 - Datenkopiervorgänge aus der und in die Produktionsumgebung, den Sandkasten und die benutzerdefinierte Domäne von Salesforce.
 
-Der Salesforce Service Cloud-Connector basiert auf der Salesforce-REST-API und -Bulk-API, wobei [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) für das Kopieren ausgehender Daten und [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) für das Kopieren eingehender Daten genutzt wird.
+Der Salesforce-Connector baut auf der Salesforce REST/Bulk-API auf. Standardmäßig verwendet der Connector [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) zum Kopieren von Daten aus Salesforce und [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) zum Kopieren von Daten in Salesforce. Sie können die zum Lesen/Schreiben von Daten verwendete API-Version auch explizit über die Eigenschaft [`apiVersion` ](#linked-service-properties) im verknüpften Dienst festlegen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -67,7 +67,8 @@ Folgende Eigenschaften werden für den mit Salesforce verknüpften Dienst unters
 | environmentUrl | Geben Sie die URL der Salesforce Service Cloud-Instanz an. <br> – Der Standardwert ist `"https://login.salesforce.com"`. <br> – Um Daten aus einem Sandkasten zu kopieren, geben Sie `"https://test.salesforce.com"` an. <br> – Geben Sie zum Kopieren von Daten aus einer benutzerdefinierten Domäne z.B. `"https://[domain].my.salesforce.com"` an. |Nein |
 | username |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja |
 | password |Geben Sie ein Kennwort für das Benutzerkonto an.<br/><br/>Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja |
-| securityToken |Geben Sie ein Sicherheitstoken für das Benutzerkonto an. Anweisungen zum Abrufen oder Zurücksetzen eines Sicherheitstokens finden Sie unter [Get a security token](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) (Abrufen eines Sicherheitstokens). Allgemeine Informationen zu Sicherheitstoken finden Sie unter [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)(Sicherheit und die API).<br/><br/>Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja |
+| securityToken |Geben Sie ein Sicherheitstoken für das Benutzerkonto an. <br/><br/>Allgemeine Informationen zu Sicherheitstoken finden Sie unter [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)(Sicherheit und die API). Das Sicherheits Token kann nur übersprungen werden, wenn Sie die IP-Adresse der Integration Runtime zur Liste [vertrauenswürdige IP-Adressen](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/security_networkaccess.htm) in Salesforce hinzufügen. Weitere Informationen zur Verwendung von Azure Integration Runtime (Azure IR) finden Sie unter [IP-Adressen von Azure Integration Runtime](azure-integration-runtime-ip-addresses.md).<br/><br/>Anleitungen zum Abrufen und Zurücksetzen eines Sicherheitstokens finden Sie unter [Get a security token](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) (Abrufen eines Sicherheitstokens). Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Nein |
+| apiVersion | Geben Sie die zu verwendende Salesforce REST/Bulk-API-Version an, z. B. `48.0`. Standardmäßig verwendet der Connector [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) zum Kopieren von Daten aus Salesforce und [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) zum Kopieren von Daten in Salesforce. | Nein |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein für die Quelle. Ja für die Senke, wenn der mit der Quelle verknüpfte Dienst keine Integration Runtime aufweist. |
 
 >[!IMPORTANT]
@@ -184,7 +185,7 @@ Wenn Sie Daten aus Salesforce Service Cloud kopieren möchten, werden die folgen
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **SalesforceServiceCloudSource** festgelegt werden. | Ja |
-| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. Sie können eine Abfrage vom Typ [Salesforce Object Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) oder eine SQL-92-Abfrage verwenden. Weitere Tipps finden Sie im Abschnitt [Tipps zu Abfragen](#query-tips). Wenn die Abfrage nicht angegeben ist, werden alle Daten des Salesforce Service Cloud-Objekts abgerufen, die im Dataset unter „objectApiName“ angegeben sind. | Nein (wenn „objectApiName“ im Dataset angegeben ist) |
+| Abfrage |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. Sie können eine Abfrage vom Typ [Salesforce Object Query Language (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) oder eine SQL-92-Abfrage verwenden. Weitere Tipps finden Sie im Abschnitt [Tipps zu Abfragen](#query-tips). Wenn die Abfrage nicht angegeben ist, werden alle Daten des Salesforce Service Cloud-Objekts abgerufen, die im Dataset unter „objectApiName“ angegeben sind. | Nein (wenn „objectApiName“ im Dataset angegeben ist) |
 | readBehavior | Gibt an, ob die vorhandenen Datensätze oder alle Datensätze (einschließlich gelöschter Datensätze) abgefragt werden sollen. Wird diese Option nicht angegeben, wird standardmäßig das erste Verhalten angewendet. <br>Zulässige Werte: **query** (Standard), **queryAll**  | Nein |
 
 > [!IMPORTANT]
@@ -234,7 +235,7 @@ Wenn Sie Daten in Salesforce Service Cloud kopieren möchten, werden die folgend
 | writeBehavior | Das Schreibverhalten für den Vorgang.<br/>Zulässige Werte: **Insert** und **Upsert**. | Nein (Standardwert ist „Insert“) |
 | externalIdFieldName | Der Name des externen ID-Felds für den upsert-Vorgang. Das angegebene Feld muss als „Externes ID-Feld“ im Salesforce Service Cloud-Objekt definiert werden. Es kann keine NULL-Werte in den entsprechenden Eingabedaten haben. | Ja für „Upsert“ |
 | writeBatchSize | Die Zeilenanzahl der Daten, die in jedem Batch in Salesforce Service Cloud geschrieben werden. | Nein (Standardwert ist 5000) |
-| ignoreNullValues | Gibt an, ob NULL-Werte aus Eingabedaten während eines Schreibvorgangs ignoriert werden sollen.<br/>Zulässige Werte sind **true** und **false**.<br>- **True**: Daten im Zielobjekt bleiben unverändert, wenn Sie einen upsert- oder update-Vorgang ausführen. Fügt beim Ausführen eines insert-Vorgangs einen definierten Standardwert ein.<br/>- **False**: Daten im Zielobjekt werden auf NULL aktualisiert, wenn Sie einen upsert- oder update-Vorgang ausführen. Fügt beim Ausführen eines insert-Vorgangs einen NULL-Wert ein. | Nein (Standardwert ist „false“) |
+| ignoreNullValues | Gibt an, ob NULL-Werte aus Eingabedaten während eines Schreibvorgangs ignoriert werden sollen.<br/>Zulässige Werte sind **true** und **false**.<br>- **true**: Daten im Zielobjekt bleiben unverändert, wenn Sie einen upsert- oder update-Vorgang ausführen. Fügt beim Ausführen eines insert-Vorgangs einen definierten Standardwert ein.<br/>- **false**: Daten im Zielobjekt werden auf NULL aktualisiert, wenn Sie einen upsert- oder update-Vorgang ausführen. Fügt beim Ausführen eines insert-Vorgangs einen NULL-Wert ein. | Nein (Standardwert ist „false“) |
 
 **Beispiel:**
 
@@ -275,7 +276,7 @@ Wenn Sie Daten in Salesforce Service Cloud kopieren möchten, werden die folgend
 
 ### <a name="retrieve-data-from-a-salesforce-service-cloud-report"></a>Abrufen von Daten aus einem Salesforce Service Cloud-Bericht
 
-Sie können Daten aus Salesforce Service Cloud-Berichten abrufen, indem Sie eine Abfrage als `{call "<report name>"}` angeben. Ein Beispiel ist `"query": "{call \"TestReport\"}"`.
+Sie können Daten aus Salesforce Service Cloud-Berichten abrufen, indem Sie eine Abfrage als `{call "<report name>"}` angeben. z. B. `"query": "{call \"TestReport\"}"`.
 
 ### <a name="retrieve-deleted-records-from-the-salesforce-service-cloud-recycle-bin"></a>Abrufen von gelöschten Datensätzen aus dem Salesforce Service Cloud-Papierkorb
 
@@ -291,8 +292,8 @@ Beim Kopieren von Daten aus Salesforce Service Cloud können Sie eine SOQL- oder
 | Anführungszeichen | Feld-/Objektnamen dürfen nicht in Anführungszeichen eingeschlossen werden. | Feld-/Objektnamen dürfen in Anführungszeichen eingeschlossen werden, z.B. `SELECT "id" FROM "Account"`. |
 | Datetime-Format |  Details finden Sie [hier](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm), Beispiele im nächsten Abschnitt. | Details finden Sie [hier](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017), Beispiele im nächsten Abschnitt. |
 | Boolesche Werte | Dargestellt als `False` und `True`, z.B. `SELECT … WHERE IsDeleted=True`. | Dargestellt als 0 oder 1, z.B. `SELECT … WHERE IsDeleted=1`. |
-| Umbenennen von Spalten | Nicht unterstützt. | Unterstützt, z.B. `SELECT a AS b FROM …`. |
-| Beziehung | Unterstützt, z.B. `Account_vod__r.nvs_Country__c`. | Nicht unterstützt. |
+| Umbenennen von Spalten | Wird nicht unterstützt. | Unterstützt, z.B. `SELECT a AS b FROM …`. |
+| Beziehung | Unterstützt, z.B. `Account_vod__r.nvs_Country__c`. | Wird nicht unterstützt. |
 
 ### <a name="retrieve-data-by-using-a-where-clause-on-the-datetime-column"></a>Abrufen von Daten mithilfe einer Where-Klausel für die Spalte „DateTime“
 
@@ -313,9 +314,9 @@ Beim Kopieren von Daten aus Salesforce Service Cloud werden die folgenden Zuordn
 |:--- |:--- |
 | Auto Number |String |
 | Checkbox |Boolean |
-| Currency |Decimal |
-| Date |DateTime |
-| Date/Time |DateTime |
+| Währung |Decimal |
+| Date |Datetime |
+| Date/Time |Datetime |
 | Email |String |
 | Id |String |
 | Lookup Relationship |String |
@@ -329,7 +330,7 @@ Beim Kopieren von Daten aus Salesforce Service Cloud werden die folgenden Zuordn
 | Text Area (Long) |String |
 | Text Area (Rich) |String |
 | Text (Encrypted) |String |
-| URL |Zeichenfolge |
+| URL |String |
 
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
 

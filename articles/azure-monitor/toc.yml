@@ -220,6 +220,8 @@
               href: app/api-custom-events-metrics.md
             - name: Troubleshooting bei ASP.NET
               href: app/asp-net-troubleshoot-no-data.md
+            - name: Entfernen von Application Insights
+              href: app/remove-application-insights.md
         - name: Überwachung ohne Code
           items:
             - name: Azure-VM und -Skalierungsgruppe

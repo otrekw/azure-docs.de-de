@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
 ms.openlocfilehash: bdb38e36a9f1344a3adde15d349a2ec176c0fe95
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74424008"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>Grundlegendes zu Apache Spark-Code für U-SQL-Entwickler
@@ -30,7 +30,7 @@ Dieser Abschnitt bietet allgemeine Informationen zum Transformieren von U-SQL-Sk
 
 Bevor Sie mit dem Migrieren von U-SQL-Skripts für Azure Data Lake Analytics zu Spark beginnen, sollten Sie die allgemeinen Sprach- und Verarbeitungsphilosophien der beiden Systeme kennen.
 
-U-SQL ist eine deklarative Abfragesprache, die SQL ähnelt und auf einem Datenflussparadigma basiert. U-SQL ermöglicht es, Benutzercode, der in .NET (z. B. C#), Python oder R geschrieben wurde, ganz einfach einzubetten und zu erweitern. Benutzererweiterungen können einfache Ausdrücke oder benutzerdefinierte Funktionen implementieren, dem Benutzer aber auch die Möglichkeit bieten, so genannte benutzerdefinierte Operatoren zu implementieren, die wiederum angepasste Operatoren implementieren, um Transformationen und Extraktionen auf Rowsetebene auszuführen und Ausgaben zu schreiben.
+U-SQL ist eine deklarative Abfragesprache, die SQL ähnelt und auf einem Datenflussparadigma basiert. U-SQL ermöglicht es, Benutzercode, der in .NET (z. B. C#), Python oder R geschrieben wurde, ganz einfach einzubetten und aufzuskalieren. Benutzererweiterungen können einfache Ausdrücke oder benutzerdefinierte Funktionen implementieren, dem Benutzer aber auch die Möglichkeit bieten, so genannte benutzerdefinierte Operatoren zu implementieren, die wiederum angepasste Operatoren implementieren, um Transformationen und Extraktionen auf Rowsetebene auszuführen und Ausgaben zu schreiben.
 
 Spark ist ein erweiterbares Framework, das verschiedene Sprachbindungen in Scala, Java, Python, .NET usw. bietet. Damit können Sie Code in einer dieser Sprachen schreiben, als Resilient Distributed Datasets (RDD) bezeichnete Datenabstraktionen sowie Datenrahmen und Datasets erstellen und dann eine LINQ-ähnliche domänenspezifische Sprache (Domain-Specific Language, DSL) verwenden, um diese zu transformieren. Spark bietet zudem SparkSQL als deklarative Untersprache für die Datenrahmen- und Datasetabstraktionen. Die DSL bietet zwei Kategorien von Vorgängen: Transformationen und Aktionen. Durch Anwenden von Transformationen auf die Datenabstraktionen wird die Transformation nicht ausgeführt. Stattdessen wird der Ausführungsplan erstellt, der zur Auswertung mit einer Aktion übermittelt wird (z. B. durch Schreiben des Ergebnisses in eine temporäre Tabelle oder Datei oder durch Ausgeben des Ergebnisses).
 
@@ -52,7 +52,7 @@ Spark-Programme funktionieren ähnlich wie Spark-Connectors, die Sie verwenden, 
 
 ## <a name="transform-net-code"></a>Transformieren von .NET-Code
 
-Die Ausdruckssprache von U-SQL ist C# – diese bietet eine Reihe von Möglichkeiten zum Erweitern von benutzerdefiniertem .NET-Code.
+Die Ausdruckssprache von U-SQL ist C# – diese bietet eine Reihe von Möglichkeiten zum Aufskalieren von benutzerdefiniertem .NET-Code.
 
 Da Spark die Ausführung von .NET-Code derzeit nicht nativ unterstützt, müssen Sie entweder Ihre Ausdrücke als entsprechende Spark-, Scala-, Java- oder Python-Ausdrücke neu schreiben oder eine Möglichkeit finden, Aufrufe in Ihrem .NET-Code auszuführen. Wenn Ihr Skript .NET-Bibliotheken verwendet, stehen Ihnen folgende Optionen zur Verfügung:
 

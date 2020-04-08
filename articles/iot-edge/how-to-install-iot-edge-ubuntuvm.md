@@ -1,20 +1,20 @@
 ---
 title: Ausführen von virtuellen Computern vom Typ „Azure IoT Edge unter Ubuntu“ | Microsoft-Dokumentation
-description: Anweisungen zur Einrichtung von Azure IoT Edge auf Azure Marketplace-VMs unter Ubuntu 16.04
-author: gregman-msft
-manager: arjmands
+description: Azure IoT Edge-Setupanweisungen für virtuelle Ubuntu 18.04 LTS-Computer
+author: toolboc
+manager: veyalla
 ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 07/09/2019
-ms.author: philmea
-ms.openlocfilehash: 49a783e1360aeddc8eeaadba442acf578d9d6f7f
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.date: 03/19/2020
+ms.author: pdecarlo
+ms.openlocfilehash: 64e2787aa282e75893fa34e6de1373e6afed09fe
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77046046"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80349638"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ausführen von virtuellen Computern vom Typ „Azure IoT Edge unter Ubuntu“
 
@@ -22,50 +22,82 @@ Die Azure IoT Edge-Runtime verwandelt ein Gerät in ein IoT Edge-Gerät. Die Run
 
 Weitere Informationen zur Funktionsweise und zu den Komponenten der IoT Edge-Runtime finden Sie unter [Grundlegendes zur Azure IoT Edge-Runtime und ihrer Architektur](iot-edge-runtime.md).
 
-In diesem Artikel wird erläutert, wie Sie die Azure IoT Edge-Runtime auf einem virtuellen Computer unter Ubuntu 16.04 unter Verwendung des vorkonfigurierten [Azure Marketplace-Angebots „Azure IoT Edge unter Ubuntu“](https://aka.ms/azure-iot-edge-ubuntuvm) ausführen.
+In diesem Artikel werden die Schritte zum Bereitstellen eines virtuellen Ubuntu 18.04 LTS-Computers mit installierter Azure IoT Edge-Runtime beschrieben, die mithilfe einer vorab bereitgestellten Geräte-Verbindungszeichenfolge installiert und konfiguriert wurde. Die Bereitstellung erfolgt mithilfe einer [cloud-init](../virtual-machines/linux/using-cloud-init.md
+)-basierten [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/overview.md), die im Projektrepository [iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy) verwaltet wird.
 
-Beim ersten Start wird vom virtuellen Computer vom Typ „Azure IoT Edge unter Ubuntu“ die aktuelle Version der Azure IoT Edge-Runtime vorinstalliert. Diese Version enthält darüber hinaus ein Skript zum Festlegen der Verbindungszeichenfolge und zum anschließenden Neustarten der Runtime. Diese Vorgänge können remote über das Azure-VM-Portal oder die Azure-Befehlszeile ausgelöst werden, sodass Sie das IoT Edge-Gerät einfach konfigurieren und verbinden können, ohne eine SSH- oder Remotedesktopsitzung starten zu müssen. Dieses Skript wartet mit dem Festlegen der Verbindungszeichenfolge, bis der IoT Edge-Client vollständig installiert wurde, damit dieser Schritt nicht in die Automatisierung aufgenommen werden muss.
+Beim ersten Start wird vom virtuellen Ubuntu 18.04 LTS-Computer [die neueste Version der Azure IoT Edge-Runtime über „cloud-init“ installiert](https://github.com/Azure/iotedge-vm-deploy/blob/master/cloud-init.txt). Außerdem wird von ihm vor dem Start der Laufzeit eine angegebene Verbindungszeichenfolge festgelegt, sodass Sie das IoT Edge-Gerät problemlos konfigurieren und verbinden können, ohne eine SSH- oder Remotedesktop-Sitzung starten zu müssen. 
 
-## <a name="deploy-from-the-azure-marketplace"></a>Bereitstellen über den Azure Marketplace
+## <a name="deploy-using-deploy-to-azure-button"></a>Bereitstellen mithilfe der Schaltfläche „In Azure bereitstellen“
 
-1. Navigieren Sie zum Marketplace-Angebot [Azure IoT Edge unter Ubuntu](https://aka.ms/azure-iot-edge-ubuntuvm), oder suchen Sie im [Azure Marketplace](https://azuremarketplace.microsoft.com/) nach „Azure IoT Edge unter Ubuntu“.
-2. Wählen Sie **JETZT ANFORDERN** und im nächsten Dialogfeld **Weiter**.
-3. Wählen Sie im Azure-Portal **Erstellen**, und befolgen Sie die Anweisungen des Assistenten zum Bereitstellen des virtuellen Computers.
-    * Wenn Sie zum ersten Mal einen virtuellen Computer verwenden, ist es am einfachsten, ein Kennwort zu verwenden und im Menü für den öffentlichen eingehenden Port SSH zu aktivieren.
-    * Bei einer ressourcenintensiven Workload sollten Sie mehr CPUs und/oder Arbeitsspeicher hinzufügen, um die VM-Größe zu erhöhen.
-4. Konfigurieren Sie den virtuellen Computer nach seiner Bereitstellung, sodass er eine Verbindung mit Ihrer IoT Hub-Instanz herstellen kann:
-    1. Kopieren Sie die Verbindungszeichenfolge von Ihrem IoT Edge-Gerät, das Sie in Ihrem IoT Hub erstellt haben. (Wenn Sie mit diesem Vorgang nicht vertraut sind, können Sie das unter [Abrufen der Verbindungszeichenfolge im Azure-Portal](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal) beschriebene Verfahren ausführen.)
-    1. Wählen Sie die neu erstellte VM-Ressource im Azure-Portal aus, und öffnen Sie die Option **Befehl ausführen**.
-    1. Wählen Sie die Option **RunShellScript** aus.
-    1. Führen Sie über das Befehlsfenster das folgende Skript mit Ihrer Geräte-Verbindungszeichenfolge aus: `/etc/iotedge/configedge.sh "{device_connection_string}"`.
-    1. Wählen Sie **Ausführen** aus.
-    1. Warten Sie einige Minuten. Auf dem Bildschirm sollte dann eine Meldung mit dem Hinweis angezeigt werden, dass die Verbindungszeichenfolge festgelegt wurde.
+Die Schaltfläche [In Azure bereitstellen](../azure-resource-manager/templates/deploy-to-azure-button.md) ermöglicht eine optimierte Bereitstellung von [Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/overview.md), die auf GitHub verwaltet verwenden.  In diesem Abschnitt wird die Verwendung der Schaltfläche „In Azure bereitstellen“ im Repository [iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy) gezeigt.  
 
-## <a name="deploy-from-the-azure-portal"></a>Bereitstellen über das Azure-Portal
 
-Suchen Sie im Azure-Portal nach „Azure IoT Edge“, und wählen Sie **Ubuntu Server 16.04 LTS + Azure IoT Edge-Runtime** aus, um den VM-Erstellungsworkflow zu starten. Führen Sie dann die Schritte 3 und 4 aus den Anweisungen unter „Bereitstellen über den Azure Marketplace“ aus.
+1. Sie stellen mithilfe der Azure Resource Manager-Vorlage „iotedge-vm-deploy“ eine Azure IoT Edge-fähige Linux-VM bereit.  Klicken Sie zuerst auf die Schaltfläche unten:
+
+    [![Schaltfläche „In Azure bereitstellen“ für „iotedge-vm-deploy“](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fiotedge-vm-deploy%2Fmaster%2FedgeDeploy.json)
+
+1. Füllen Sie im neu gestarteten Fenster die verfügbaren Formularfelder aus:
+
+    > [!div class="mx-imgBorder"]
+    > [![Screenshot der Vorlage „iotedge-vm-deploy“](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-deploy.png)
+
+    **Abonnement**: Das aktive Azure-Abonnement, in dem der virtuelle Computer bereitgestellt werden soll.
+
+    **Ressourcengruppe**: Eine vorhandene oder neu erstellte Ressourcengruppe, die den virtuellen Computer und die ihm zugeordneten Ressourcen enthalten soll.
+
+    **Präfix der DNS-Bezeichnung**: Ein erforderlicher Wert Ihrer Wahl, der dem Hostnamen des virtuellen Computers vorangestellt werden soll.
+
+    **Administratorbenutzername**: Ein Benutzername, der Rootberechtigungen für die Bereitstellung erhält.
+
+    **Geräte-Verbindungszeichenfolge**: Eine [Geräte-Verbindungszeichenfolge](how-to-register-device.md) für ein Gerät, das in Ihrem vorgesehenen [IoT Hub](../iot-hub/about-iot-hub.md) erstellt wurde.
+
+    **VM-Größe**: Die [Größe](../cloud-services/cloud-services-sizes-specs.md) des bereitzustellenden virtuellen Computers
+
+    **Ubuntu-Betriebssystemversion**: Die Version des Ubuntu-Betriebssystems, die auf dem virtuellen Basiscomputer installiert werden soll.
+
+    **Standort**: Die [geografische Region](https://azure.microsoft.com/global-infrastructure/locations/), in der der virtuelle Computer bereitgestellt werden soll. Dieser Wert wird standardmäßig auf den Speicherort der ausgewählten Ressourcengruppe festgelegt.
+
+    **Authentifizierungstyp**: Wählen Sie je nach Ihrer Einstellung **sshPublicKey** oder **password** aus.
+
+    **Administratorkennwort oder Schlüssel**: Der Wert des öffentlichen SSH-Schlüssels oder der Wert des Kennworts, je nach der Auswahl des Authentifizierungstyps.
+
+    Nachdem Sie alle Felder ausgefüllt haben, aktivieren Sie das Kontrollkästchen unten auf der Seite zum Akzeptieren der Bedingungen, und wählen Sie **Kauf** aus, um die Bereitstellung zu starten.
+
+1. Überprüfen Sie, ob die Bereitstellung erfolgreich abgeschlossen wurde.  Eine virtuelle Computerressource sollte in der ausgewählten Ressourcengruppe bereitgestellt worden sein.  Notieren Sie sich den Computernamen, der das Format `vm-0000000000000` haben sollte. Notieren Sie sich außerdem den zugeordneten **DNS-Namen**, der das Format „`<dnsLabelPrefix>`.`<location>`cloudapp.azure.com“ haben sollte.
+
+    Der **DNS-Name** kann im Azure-Portal aus dem Abschnitt **Übersicht** des neu bereitgestellten virtuellen Computers abgerufen werden.
+
+    > [!div class="mx-imgBorder"]
+    > [![Screenshot mit dem DNS-Namen der IoT Edge-VM](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)
+
+1. Wenn Sie nach der Einrichtung eine SSH-Verbindung mit dieser VM herstellen möchten, verwenden Sie den zugeordneten **DNS-Namen** mit folgendem Befehl: `ssh <adminUsername>@<DNS_Name>`
 
 ## <a name="deploy-from-azure-cli"></a>Bereitstellen über die Azure-Befehlszeilenschnittstelle
 
-1. Wenn Sie die Azure-Befehlszeilenschnittstelle auf Ihrem Desktop verwenden, melden Sie sich zuerst an:
+1. Vergewissern Sie sich, dass Sie die IoT-Erweiterung der Azure-Befehlszeilenschnittstelle installiert haben, mit:
+    ```azurecli-interactive
+    az extension add --name azure-iot
+    ```
+
+1. Wenn Sie die Azure-Befehlszeilenschnittstelle auf Ihrem Desktop verwenden, melden Sie sich als Nächstes an:
 
    ```azurecli-interactive
    az login
    ```
 
-1. Wenn Sie über mehrere Abonnements verfügen, wählen Sie das gewünschte Abonnement aus:
+1. Wenn Sie mehrere Abonnements haben, wählen Sie das Abonnement aus, das Sie verwenden möchten:
    1. Listen Sie Ihre Abonnements auf:
 
       ```azurecli-interactive
       az account list --output table
       ```
 
-   1. Kopieren Sie das SubscriptionID-Feld für das zu verwendende Abonnement.
+   1. Kopieren Sie das Feld „SubscriptionID“ für das Abonnement, das Sie verwenden möchten.
 
-   1. Legen Sie Ihr Arbeitsabonnement mit der soeben kopierten ID fest:
+   1. Legen Sie Ihr Arbeitsabonnement mit der kopierten ID fest:
 
       ```azurecli-interactive
-      az account set -s {SubscriptionId}
+      az account set -s <SubscriptionId>
       ```
 
 1. Erstellen Sie eine neue Ressourcengruppe (oder geben Sie in den nächsten Schritten eine vorhandene Ressourcengruppe an):
@@ -74,25 +106,60 @@ Suchen Sie im Azure-Portal nach „Azure IoT Edge“, und wählen Sie **Ubuntu S
    az group create --name IoTEdgeResources --location westus2
    ```
 
-1. Akzeptieren Sie die Nutzungsbedingungen für den virtuellen Computer. Wenn Sie die Bedingungen zunächst durchlesen möchten, führen Sie die in [Bereitstellen über den Azure Marketplace](#deploy-from-the-azure-marketplace) beschriebenen Schritte aus.
-
-   ```azurecli-interactive
-   az vm image terms accept --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
-   ```
-
 1. Erstellen Sie einen neuen virtuellen Computer:
 
-   ```azurecli-interactive
-   az vm create --resource-group IoTEdgeResources --name EdgeVM --image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys
-   ```
-
-1. Legen Sie die Geräte-Verbindungszeichenfolge fest (Wenn Sie mit diesem Vorgang nicht vertraut sind, können Sie das unter [Abrufen der Verbindungszeichenfolge über die Azure-Befehlszeilenschnittstelle (CLI)](how-to-register-device.md#retrieve-the-connection-string-with-the-azure-cli) beschriebene Verfahren ausführen):
+    Wenn Sie einen **authenticationType** von `password` verwenden möchten, sehen Sie sich das folgende Beispiel an:
 
    ```azurecli-interactive
-   az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script "/etc/iotedge/configedge.sh '{device_connection_string}'"
+   az group deployment create \
+   --name edgeVm \
+   --resource-group IoTEdgeResources \
+   --template-uri "https://aka.ms/iotedge-vm-deploy" \
+   --parameters dnsLabelPrefix='my-edge-vm1' \
+   --parameters adminUsername='<REPLACE_WITH_USERNAME>' \
+   --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id <REPLACE_WITH_DEVICE-NAME> --hub-name <REPLACE-WITH-HUB-NAME> -o tsv) \
+   --parameters authenticationType='password' \
+   --parameters adminPasswordOrKey="<REPLACE_WITH_SECRET_PASSWORD>"
    ```
 
-Wenn Sie nach der Einrichtung eine SSH-Verbindung mit diesem virtuellen Computer herstellen möchten, verwenden Sie „publicIpAddress“ mit dem folgenden Befehl: `ssh azureuser@{publicIpAddress}`.
+    Wenn Sie sich mit einem SSH-Schlüssel authentifizieren möchten, geben Sie dazu einen **authenticationType** von `sshPublicKey` und dann den Wert des SSH-Schlüssels im Parameter **adminPasswordOrKey** an.  Ein entsprechendes Beispiel ist nachfolgend dargestellt.
+
+    ```azurecli-interactive
+    #Generate the SSH Key
+    ssh-keygen -m PEM -t rsa -b 4096 -q -f ~/.ssh/iotedge-vm-key -N ""  
+
+    #Create a VM using the iotedge-vm-deploy script
+    az group deployment create \
+    --name edgeVm \
+    --resource-group IoTEdgeResources \
+    --template-uri "https://aka.ms/iotedge-vm-deploy" \
+    --parameters dnsLabelPrefix='my-edge-vm1' \
+    --parameters adminUsername='<REPLACE_WITH_USERNAME>' \
+    --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id <REPLACE_WITH_DEVICE-NAME> --hub-name <REPLACE-WITH-HUB-NAME> -o tsv) \
+    --parameters authenticationType='sshPublicKey' \
+    --parameters adminPasswordOrKey="$(< ~/.ssh/iotedge-vm-key.pub)"
+     
+    ```
+
+1. Überprüfen Sie, ob die Bereitstellung erfolgreich abgeschlossen wurde.  Eine virtuelle Computerressource sollte in der ausgewählten Ressourcengruppe bereitgestellt worden sein.  Notieren Sie sich den Computernamen, der das Format `vm-0000000000000` haben sollte. Notieren Sie sich außerdem den zugeordneten **DNS-Namen**, der das Format „`<dnsLabelPrefix>`.`<location>`cloudapp.azure.com“ haben sollte.
+
+    Der **DNS-Name** kann aus der JSON-formatierten Ausgabe des vorherigen Schritts abgerufen werden, die im Abschnitt **outputs** als Teil des Eintrags **public SSH** enthalten ist.  Der Wert dieses Eintrags kann verwendet werden, um eine SSH-Verbindung mit dem neu bereitgestellten Computer herzustellen.
+
+    ```bash
+    "outputs": {
+      "public SSH": {
+        "type": "String",
+        "value": "ssh <adminUsername>@<DNS_Name>"
+      }
+    }
+    ```
+
+    Der **DNS-Name** kann auch im Azure-Portal aus dem Abschnitt **Übersicht** des neu bereitgestellten virtuellen Computers abgerufen werden.
+
+    > [!div class="mx-imgBorder"]
+    > [![Screenshot mit dem DNS-Namen der IoT Edge-VM](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)](./media/how-to-install-iot-edge-ubuntuvm/iotedge-vm-dns-name.png)
+
+1. Wenn Sie nach der Einrichtung eine SSH-Verbindung mit dieser VM herstellen möchten, verwenden Sie den zugeordneten **DNS-Namen** mit folgendem Befehl: `ssh <adminUsername>@<DNS_Name>`
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -102,4 +169,4 @@ Wenn Sie Probleme mit der ordnungsgemäßen Installation der IoT Edge-Runtime ha
 
 Weitere Informationen zum Aktualisieren einer vorhandenen Installation auf die aktuelle Version von IoT Edge finden Sie unter [Aktualisieren des IoT Edge-Sicherheitsdaemons und der Runtime](how-to-update-iot-edge.md).
 
-Wenn Sie Ports für den Zugriff auf die VM über SSH oder andere eingehende Verbindungen öffnen möchten, lesen Sie die Dokumentation der virtuellen Azure-Computer über [das Öffnen von Ports und Endpunkten für eine Linux-VM](../virtual-machines/linux/nsg-quickstart.md).
+Wenn Sie Ports für den Zugriff auf die VM über SSH oder andere eingehende Verbindungen öffnen möchten, lesen Sie in der Dokumentation zu virtuellen Azure-Computern das Thema [Öffnen von Ports und Endpunkten für eine Linux-VM](../virtual-machines/linux/nsg-quickstart.md).

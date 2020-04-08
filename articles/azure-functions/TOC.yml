@@ -22,8 +22,6 @@
           href: functions-create-your-first-function-visual-studio.md
         - name: Befehlszeile
           href: functions-create-first-azure-function-azure-cli.md
-        - name: Maven/Gradle (Java)
-          href: functions-create-first-java-maven.md
     - name: Herstellen einer Verbindung mit dem Speicher
       items:
         - name: Visual Studio Code
@@ -32,8 +30,6 @@
           href: functions-add-output-binding-storage-queue-vs.md
         - name: Befehlszeile
           href: functions-add-output-binding-storage-queue-cli.md
-        - name: Maven/Gradle (Java)
-          href: functions-add-output-binding-storage-queue-java.md
 - name: Tutorials
   items:
     - name: Funktionen mit Logic Apps
@@ -175,10 +171,16 @@
                   href: create-visual-studio.md
                 - name: Visual Studio Code
                   href: create-visual-studio-code.md
+                - name: Java mit Gradle
+                  href: functions-create-first-java-gradle.md
                 - name: Java mit Eclipse
                   href: functions-create-maven-eclipse.md
                 - name: Java mit IntelliJ IDEA
                   href: functions-create-maven-intellij.md
+                - name: Kotlin mit Maven
+                  href: functions-create-first-kotlin-maven.md
+                - name: Kotlin mit IntelliJ
+                  href: functions-create-maven-kotlin-intellij.md
                 - name: App Service-Plan für Linux
                   href: create-function-app-linux-app-service-plan.md
                 - name: Plan für Linux-Verbrauch
@@ -205,6 +207,8 @@
               href: add-output-binding-storage-queue-vs-code.md
             - name: 'Speicher: Visual Studio'
               href: add-output-binding-storage-queue-vs.md
+            - name: 'Speicher: Java/Gradle'
+              href: functions-add-output-binding-storage-queue-java.md
         - name: Debuggen und testen
           items:
             - name: Testfunktionen

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: ea96b2b996ea79efacdcda50c6370f25e26e0aa2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 501ca51a9542229a14e98a56679837950a82891e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61447011"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258293"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Bereitstellen des Solution Accelerators für die Remoteüberwachung mithilfe der CLI
 
@@ -23,7 +23,7 @@ In dieser Schrittanleitung wird gezeigt, wie Sie den Solution Accelerator für d
 
 Für die Bereitstellung des Solution Accelerators für die Remoteüberwachung benötigen Sie ein aktives Azure-Abonnement.
 
-Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/).
 
 Zum Ausführen der Befehlszeilenschnittstelle muss [Node.js](https://nodejs.org/) auf Ihrem lokalen Computer installiert sein.
 
@@ -52,7 +52,7 @@ Beim Bereitstellen des Solution Accelerators sind mehrere Optionen verfügbar, m
 | Option | Werte | BESCHREIBUNG |
 | ------ | ------ | ----------- |
 | SKU    | `basic`, `standard`, `local` | Eine Bereitstellung des Typs _basic_ ist für Test- und Demonstrationszwecke vorgesehen. Dabei werden alle Microservices auf einem einzelnen virtuellen Computer bereitgestellt. Eine Bereitstellung des Typs _Standard_ ist für die Produktion vorgesehen. Die Microservices werden auf mehreren virtuellen Computern bereitgestellt. Ein _lokale_ Bereitstellung konfiguriert einen Docker-Container für die Ausführung der Microservices auf Ihrem lokalen Computer und verwendet Azure-Clouddienste wie Storage und Cosmos DB. |
-| Laufzeit | `dotnet`, `java` | Wählt die Implementierung der Sprache für die Microservices aus. |
+| Typ | `dotnet`, `java` | Wählt die Implementierung der Sprache für die Microservices aus. |
 
 Informationen zur Verwendung der lokalen Bereitstellung finden Sie unter [Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung](iot-accelerators-remote-monitoring-deploy-local.md).
 
@@ -68,7 +68,7 @@ Die Basic-Bereitstellung ist auf die Demonstration der Lösung ausgelegt. Zur Ko
 
 Bei einer Bereitstellung vom Typ „Basic“ werden die folgenden Dienste in Ihrem Azure-Abonnement erstellt:
 
-| Count | Resource                       | Type         | Verwendung |
+| Anzahl | Resource                       | type         | Verwendung |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Virtueller Linux-Computer](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 v2  | Hosten von Microservices |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1: Tarif „Standard“ | Geräteverwaltung und Kommunikation |
@@ -89,13 +89,13 @@ Eine Standard-Bereitstellung ist für eine Produktionsumgebung geeignet und kann
 
 Bei einer Bereitstellung vom Typ „Standard“ werden die folgenden Dienste in Ihrem Azure-Abonnement erstellt:
 
-| Count | Resource                                     | SKU/Größe      | Verwendung |
+| Anzahl | Resource                                     | SKU/Größe      | Verwendung |
 |-------|----------------------------------------------|-----------------|----------|
 | 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| Nutzen Sie einen vollständig verwalteten Orchestrierungsdienst für Kubernetes-Container mit standardmäßig drei Agents.|
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2: Tarif „Standard“ | Geräteverwaltung und -steuerung |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standard        | Speichern von Konfigurationsdaten und Gerätetelemetrie wie Regeln, Warnungen und Meldungen |
 | 5     | [Azure-Speicherkonten](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standard        | Vier für VM-Speicher, eins für die Streamingprüfpunkte |
-| 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | S1 Standard     | Application Gateway über SSL |
+| 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | S1 Standard     | Application Gateway über TLS |
 | 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | Verwalten von Benutzeridentitäten und Sicherheit |
 | 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | Standard                | Anzeigen von Ressourcenspeicherorten |
 | 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 Einheiten              | Aktivieren von Echtzeitanalysen |

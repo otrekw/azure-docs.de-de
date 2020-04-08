@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: rezas
-ms.openlocfilehash: 4732304384b8c221ae7c8d99da7f714613ad9050
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.openlocfilehash: d4040a4d0cf3fadf7a6e07c0e03e105975d17040
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77472110"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79499253"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Verstehen und Aufrufen direkter Methoden von IoT Hub
 
@@ -50,7 +50,7 @@ Rufen Sie jetzt eine direkte Methode aus einer Back-End-App auf.
 
 Direkte Methodenaufrufe auf einem Gerät sind HTTPS-Aufrufe, die aus den folgenden Elementen bestehen:
 
-* Der *Anforderungs-URI* für das Gerät neben der [API-Version](/rest/api/iothub/service/invokedevicemethod):
+* Der *Anforderungs-URI* für das Gerät neben der [API-Version](/rest/api/iothub/service/devicemethod/invokedevicemethod):
 
     ```http
     https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30
@@ -178,7 +178,7 @@ Die AMQP-Nachricht geht bei dem Empfangslink ein, der die Methodenanforderung da
 
 Das Gerät erstellt einen Sendelink, um die Methodenantwort an der Adresse `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound` zurückzugeben.
 
-Die Antwort der Methode wird über den Sendelink zurückgegeben und umfasst Folgendes:
+Die Antwort der Methode wird für den Sendelink zurückgegeben und enthält Folgendes:
 
 * Die Korrelations-ID-Eigenschaft mit der Anforderungs-ID, die in der Anforderungsnachricht der Methode übergeben wurde
 

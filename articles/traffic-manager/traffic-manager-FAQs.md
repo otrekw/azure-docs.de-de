@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
-ms.openlocfilehash: bc318aff0dad7d7fdff16df549c013927ef0e799
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: acdac6e3eafc5251ebd31a34bcb9a4db34f0ebbe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76938816"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228050"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Traffic Manager
 
@@ -43,7 +43,7 @@ Traffic Manager arbeitet, wie unter [Funktionsweise von Traffic Manager](../traf
 
 Konzentrieren Sie sich daher bei der weiteren Untersuchung auf die Anwendung.
 
-Der vom Browser des Clients gesendete HTTP-Hostheader ist die häufigste Ursache für Probleme. Konfigurieren Sie die Anwendung so, dass der richtige Hostheader für den verwendeten Domänennamen akzeptiert wird. Informationen zu Endpunkten, die den Azure App Service nutzen, finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für eine Web-App in Azure App Services, der Traffic Manager verwendet](../app-service/web-sites-traffic-manager-custom-domain-name.md).
+Der vom Browser des Clients gesendete HTTP-Hostheader ist die häufigste Ursache für Probleme. Konfigurieren Sie die Anwendung so, dass der richtige Hostheader für den verwendeten Domänennamen akzeptiert wird. Informationen zu Endpunkten, die den Azure App Service nutzen, finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für eine Web-App in Azure App Services, der Traffic Manager verwendet](../app-service/configure-domain-traffic-manager.md).
 
 ### <a name="what-is-the-performance-impact-of-using-traffic-manager"></a>Wie wirkt sich die Verwendung von Traffic Manager auf die Leistung aus?
 
@@ -124,7 +124,7 @@ Allen Endpunkten in einem Profil mit geografischem Routing muss mindestens eine 
 
 ### <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>Warum wird es Kunden dringend empfohlen, in einem Profil mit aktiviertem geografischem Routing geschachtelte Profile anstelle von Endpunkten zu erstellen?
 
-Bei der geografischen Routingmethode kann eine Region nur einem einzelnen Endpunkt innerhalb eines Profils zugeordnet sein. Wenn der betreffende Endpunkt kein geschachtelter Typ mit zugeordnetem untergeordnetem Profil ist, fährt Traffic Manager auch bei nicht intaktem Integritätsstatus des betreffenden Endpunkts fort, Verkehr an den Endpunkt zu senden, da die Alternative, gar keinen Verkehr zu senden, nicht besser ist. Traffic Manager führt auch dann kein Failover zu einem anderen Endpunkt aus, wenn die zugeordnete Region dem nicht mehr intakten Endpunkt „übergeordnet“ ist (z.B. erfolgt kein Failover auf einen anderen Endpunkt mit der Region „Europa“, wenn ein Endpunkt mit der Region „Spanien“ nicht mehr intakt ist). Dies erfolgt, um sicherzustellen, dass Traffic Manager die geografischen Grenzen beachtet, die Kunden in ihren Profilen konfiguriert haben. Um den Vorzug des Failovers auf einen anderen Endpunkt nutzen zu können, wenn die Integrität eines Endpunkts nicht mehr intakt ist, wird empfohlen, dass geografische Regionen geschachtelten Profilen, die mehrere Endpunkte enthalten, anstelle von einzelnen Endpunkten zugeordnet werden. Wenn ein Endpunkt innerhalb des untergeordneten Profils ausfällt, kann auf diese Weise ein Failover des Datenverkehrs auf einen anderen Endpunkt innerhalb des gleichen geschachtelten untergeordneten Profils erfolgen.
+Bei der geografischen Routingmethode kann eine Region nur einem einzelnen Endpunkt innerhalb eines Profils zugeordnet sein. Wenn der betreffende Endpunkt kein geschachtelter Typ mit zugeordnetem untergeordnetem Profil ist, fährt Traffic Manager auch bei nicht intaktem Integritätsstatus des betreffenden Endpunkts fort, Datenverkehr an den Endpunkt zu senden, da die Alternative, gar keinen Datenverkehr zu senden, nicht besser ist. Traffic Manager führt auch dann kein Failover auf einen anderen Endpunkt aus, wenn die zugeordnete Region dem nicht mehr intakten Endpunkt „übergeordnet“ ist (z. B. erfolgt kein Failover auf einen anderen Endpunkt mit der Region „Europa“, wenn ein Endpunkt mit der Region „Spanien“ nicht mehr intakt ist). Dies erfolgt, um sicherzustellen, dass Traffic Manager die geografischen Grenzen beachtet, die Kunden in ihren Profilen konfiguriert haben. Um den Vorzug des Failovers auf einen anderen Endpunkt nutzen zu können, wenn die Integrität eines Endpunkts nicht mehr intakt ist, wird empfohlen, dass geografische Regionen geschachtelten Profilen, die mehrere Endpunkte enthalten, anstelle von einzelnen Endpunkten zugeordnet werden. Wenn ein Endpunkt innerhalb des untergeordneten Profils ausfällt, kann auf diese Weise ein Failover des Datenverkehrs auf einen anderen Endpunkt innerhalb des gleichen geschachtelten untergeordneten Profils erfolgen.
 
 ### <a name="are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type"></a>Gibt es Einschränkungen hinsichtlich der API-Version, die diesen Routingtyp unterstützt?
 
@@ -145,9 +145,9 @@ Endbenutzergeräte verwenden in der Regel einen DNS-Resolver, um das DNS-Lookup 
 
 Die IP-Adresse, die einem Endpunkt zugeordnet werden soll, kann auf zwei Arten angegeben werden. Erstens können Sie die Quad-gepunktete dezimale Oktettnotation mit Start- und Endadresse verwenden, um den Bereich festzulegen (beispielsweise 1.2.3.4-5.6.7.8 oder 3.4.5.6-3.4.5.5.5.6). Zweitens können Sie den Bereich in der CIDR-Notation angeben (Beispiel: 1.2.3.3.0/24). Sie können mehrere Bereiche angeben und beide Notationstypen in einem Bereichssatz verwenden. Es gelten ein paar Einschränkungen.
 
--   Es dürfen keine Überschneidung der Adressbereiche vorliegen, da jede IP nur einem einzigen Endpunkt zugeordnet werden kann.
--   Die Startadresse darf nicht größer als die Endadresse sein.
--   Im Falle der CIDR-Notation sollte die IP-Adresse vor dem Schrägstrich (/) die Startadresse dieses Bereichs sein. So ist beispielsweise ist 1.2.3.3.0/24 gültig, 1.2.3.4.4/24 dagegen NICHT.
+-    Es dürfen keine Überschneidung der Adressbereiche vorliegen, da jede IP nur einem einzigen Endpunkt zugeordnet werden kann.
+-    Die Startadresse darf nicht größer als die Endadresse sein.
+-    Im Falle der CIDR-Notation sollte die IP-Adresse vor dem Schrägstrich (/) die Startadresse dieses Bereichs sein. So ist beispielsweise ist 1.2.3.3.0/24 gültig, 1.2.3.4.4/24 dagegen NICHT.
 
 ### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>Wie kann ich bei der Verwendung von Subnetzrouting einen Fallbackendpunkt angeben?
 
@@ -162,7 +162,7 @@ Wenn in einem Profil mit Subnetzrouting ein Endpunkt deaktiviert ist, verhält s
 ### <a name="what-are-some-use-cases-where-multivalue-routing-is-useful"></a>Was sind einige Anwendungsfälle, in denen MultiValue-Routing nützlich ist?
 
 Das MultiValue-Routing gibt mehrere fehlerfreie Endpunkte in einer einzigen Abfrageantwort zurück. Der Hauptvorteil besteht darin, dass der Client, wenn ein Endpunkt fehlerhaft ist, mehr Möglichkeiten für erneute Versuche hat, ohne einen weiteren DNS-Aufruf zu tätigen (der möglicherweise den gleichen Wert aus einem Upstream-Cache zurückgibt). Dies gilt für verfügbarkeitssensible Anwendungen, deren Ausfallzeiten minimiert werden sollen.
-Eine weitere Verwendung für die MultiValue-Routingmethode sind Endpunkte, die sowohl IPv4- als auch IPv6-Adressen umfassen, und für die Sie dem Anrufer beide Optionen zur Auswahl geben möchten, wenn er eine Verbindung zum Endpunkt herstellt.
+Eine weitere Verwendung für die MultiValue-Routingmethode sind Endpunkte, die sowohl IPv4- als auch IPv6-Adressen umfassen und für die Sie dem Anrufer beide Optionen zur Auswahl geben möchten, wenn er eine Verbindung zum Endpunkt herstellt.
 
 ### <a name="how-many-endpoints-are-returned-when-multivalue-routing-is-used"></a>Wie viele Endpunkte werden zurückgegeben, wenn das MultiValue-Routing verwendet wird?
 
@@ -242,7 +242,7 @@ Wenn der bereitgestellte JavaScript-Code für Messungen verwendet wird, sind fü
 
 ### <a name="does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing"></a>Muss für die Webseite, für die Benutzer-Realmessungen durchgeführt werden, Traffic Manager zu Routingzwecken eingesetzt werden?
 
-Nein. Die Verwendung von Traffic Manager ist nicht erforderlich. Der Routingbereich von Traffic Manager ist vom Bereich für die Benutzer-Realmessungen getrennt, und es ist zwar hilfreich, wenn beide unter derselben Webeigenschaft angeordnet sind, aber dies muss nicht zwingend der Fall sein.
+Nein. Die Verwendung von Traffic Manager ist nicht erforderlich. Der Routingbereich von Traffic Manager ist vom Bereich für die Benutzer-Realmessungen getrennt. Es ist zwar hilfreich, wenn beide unter derselben Webeigenschaft angeordnet sind, aber dies muss nicht zwingend der Fall sein.
 
 ### <a name="do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements"></a>Muss ich für die Verwendung mit Benutzer-Realmessungen einen Dienst in den Azure-Regionen hosten?
 
@@ -382,25 +382,25 @@ Wenn eine Abfrage für ein Profil empfangen wird, sucht Traffic Manager zunächs
 
 Für Profile mit einer beliebigen Routingmethode außer „MultiValue“:
 
-|Eingehende Abfrageanforderung|    Endpunkttyp|  Bereitgestellte Antwort|
+|Eingehende Abfrageanforderung|     Endpunkttyp|     Bereitgestellte Antwort|
 |--|--|--|
-|ANY |  A/AAAA/CNAME |  Zielendpunkt| 
-|Ein |    A/CNAME | Zielendpunkt|
-|Ein |    AAAA |  NODATA |
-|AAAA | AAAA/CNAME |  Zielendpunkt|
-|AAAA | Ein | NODATA |
-|CNAME |    CNAME | Zielendpunkt|
-|CNAME  |A/AAAA | NODATA |
+|ANY |    A/AAAA/CNAME |    Zielendpunkt| 
+|Ein |    A/CNAME |    Zielendpunkt|
+|Ein |    AAAA |    NODATA |
+|AAAA |    AAAA/CNAME |    Zielendpunkt|
+|AAAA |    Ein |    NODATA |
+|CNAME |    CNAME |    Zielendpunkt|
+|CNAME     |A/AAAA |    NODATA |
 |
 
 Für Profile mit der Routingmethode „MultiValue“:
 
-|Eingehende Abfrageanforderung|    Endpunkttyp | Bereitgestellte Antwort|
+|Eingehende Abfrageanforderung|     Endpunkttyp |    Bereitgestellte Antwort|
 |--|--|--|
-|ANY |  Kombination aus A und AAAA | Zielendpunkte|
-|Ein |    Kombination aus A und AAAA | Nur Zielendpunkte vom Typ A|
-|AAAA   |Kombination aus A und AAAA|     Nur Zielendpunkte vom Typ AAAA|
-|CNAME |    Kombination aus A und AAAA | NODATA |
+|ANY |    Kombination aus A und AAAA |    Zielendpunkte|
+|Ein |    Kombination aus A und AAAA |    Nur Zielendpunkte vom Typ A|
+|AAAA    |Kombination aus A und AAAA|     Nur Zielendpunkte vom Typ AAAA|
+|CNAME |    Kombination aus A und AAAA |    NODATA |
 
 ### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>Kann ich ein Profil mit über IPv4/IPv6 adressierten Endpunkten in einem verschachtelten Profil verwenden?
 
@@ -439,7 +439,7 @@ Traffic Manager-Überwachungseinstellungen werden pro Profil festgelegt. Wenn Si
 ### <a name="how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints"></a>Wie kann ich meinen Endpunkten HTTP-Header für die Traffic Manager-Integritätsprüfungen zuweisen?
 
 Mit Traffic Manager können Sie benutzerdefinierte Header in den für Ihre Endpunkte initiierten HTTP(S)-Integritätsprüfungen angeben. Wenn Sie einen benutzerdefinierten Header angeben möchten, können Sie dies auf Profilebene (gilt für alle Endpunkte) oder auf Endpunktebene tun. Wenn ein Header auf beiden Ebenen definiert ist, überschreibt der auf der Endpunktebene angegebene Header den auf der Profilebene angegebenen Header.
-Ein häufiger Anwendungsfall dafür ist die Angabe von Hostheadern, sodass Traffic Manager-Anforderungen korrekt an einen Endpunkt weitergeleitet werden können, der in einer mehrinstanzenfähigen Umgebung gehostet wird. Ein weiterer Anwendungsfall ist die Identifizierung von Traffic Manager-Anforderungen aus den HTTP(S)-Anforderungsprotokollen eines Endpunkts.
+Ein häufiger Anwendungsfall dafür ist die Angabe von Hostheadern, sodass Traffic Manager-Anforderungen korrekt an einen Endpunkt weitergeleitet werden können, der in einer mehrinstanzenfähigen Umgebung gehostet wird. Ein weiterer Anwendungsfall ist die Identifizierung von Traffic Manager-Anforderungen aus den HTTP(S)-Anforderungsprotokollen eines Endpunkts.
 
 ### <a name="what-host-header-do-endpoint-health-checks-use"></a>Welcher Hostheader wird für die Integritätsprüfungen für Endpunkte verwendet?
 

@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/21/2019
-ms.openlocfilehash: 0c9a3c2ef05f4a11933ca7fc81c7c0f87a612293
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: bfb4eeef482c4944e75b7805642bc93c23195208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789926"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065518"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Verwenden von Spaltenmustern in Mappingdatenflüssen
 
@@ -43,23 +43,35 @@ Um zu überprüfen, ob die Übereinstimmungsbedingung korrekt ist, können Sie a
 
 ## <a name="rule-based-mapping-in-select-and-sink"></a>Regelbasierte Zuordnung in „Auswählen“ und „Senke“
 
-Beim Zuordnen von Spalten in Quell- und Auswahltransformationen können Sie entweder eine feste Zuordnung oder regelbasierte Zuordnungen hinzufügen. Wenn Ihnen das Schema Ihrer Daten bekannt ist und Sie erwarten, dass bestimmte Spalten aus dem Quelldataset immer bestimmten statischen Namen entsprechen, verwenden Sie die feste Zuordnung. Erstellen Sie bei Verwendung flexibler Schemas mithilfe der regelbasierten Zuordnung einen Musterabgleich auf der Grundlage von `name`, `type`, `stream` und `position` der Spalten. Es kann eine beliebige Kombination aus festen und regelbasierten Zuordnungen verwendet werden. 
+Beim Zuordnen von Spalten in Quell- und Auswahltransformationen können Sie entweder eine feste Zuordnung oder regelbasierte Zuordnungen hinzufügen. Gleichen Sie basierend auf den Werten `name`, `type`, `stream` und `position` von Spalten ab. Es kann eine beliebige Kombination aus festen und regelbasierten Zuordnungen verwendet werden. Standardmäßig werden alle Projektionen mit mehr als 50 Spalten auf eine regelbasierte Zuordnung festgelegt, die einen Abgleich für jede Spalte vornimmt und den eingegebenen Namen ausgibt. 
 
 Klicken Sie zum Hinzufügen einer regelbasierten Zuordnung auf **Zuordnung hinzufügen**, und wählen Sie **Rule-based mapping** (Regelbasierte Zuordnung) aus.
 
 ![Regelbasierte Zuordnung](media/data-flow/rule2.png "Regelbasierte Zuordnung")
 
-Geben Sie im linken Ausdrucksfeld Ihre boolesche Übereinstimmungsbedingung ein. Geben Sie im rechten Ausdrucksfeld das Zuordnungsziel für die übereinstimmende Spalte an. Verwenden Sie `$$`, um auf den vorhandenen Namen des abgeglichenen Felds zu verweisen.
+Jede regelbasierte Zuordnung erfordert zwei Eingaben: die Bedingung, entsprechend der der Abgleich erfolgen soll, und den Namen jeder zugeordneten Spalte. Beide Werte werden über den [Ausdrucks-Generator](concepts-data-flow-expression-builder.md) eingegeben. Geben Sie im linken Ausdrucksfeld Ihre boolesche Übereinstimmungsbedingung ein. Geben Sie im rechten Ausdrucksfeld das Zuordnungsziel für die übereinstimmende Spalte an.
 
-Wenn Sie auf das nach unten zeigende Chevronsymbol klicken, können Sie eine RegEx-Zuordnungsbedingung angeben.
+![Regelbasierte Zuordnung](media/data-flow/rule-based-mapping.png "Regelbasierte Zuordnung")
 
-Klicken Sie auf das Brillensymbol neben einer regelbasierten Zuordnung, um die abgeglichenen definierten Spalten und deren Zuordnungsziel anzuzeigen.
+Verwenden Sie die `$$`-Syntax, um auf den eingegebenen Namen einer übereinstimmenden Spalte zu verweisen. Nehmen wir das vorstehende Bild als Beispiel: Ein Benutzer möchte, dass alle Zeichenfolgenspalten übereinstimmen, deren Namen kürzer als sechs Zeichen sind. Wenn eine eingehende Spalte `test` genannt wurde, wird die Spalte durch den Ausdruck `$$ + '_short'` in `test_short` umbenannt. Falls dies die einzige vorhandene Zuordnung ist, werden alle Spalten, die die Bedingung nicht erfüllen, aus den ausgegebenen Daten entfernt.
 
-![Regelbasierte Zuordnung](media/data-flow/rule1.png "Regelbasierte Zuordnung")
+Muster stimmen sowohl mit abweichenden als auch mit definierten Spalten überein. Wenn Sie sehen möchten, welche definierten Spalten durch eine Regel zugeordnet werden, klicken Sie neben der Regel auf das Brillensymbol. Überprüfen Sie die Ausgabe anhand der Datenvorschau.
 
-Im obigen Beispiel werden zwei regelbasierte Zuordnungen erstellt. In der ersten werden alle Spalten, die nicht „movie“ heißen, ihren vorhandenen Werten zugeordnet. Die zweite Regel verwendet einen regulären Ausdruck, um alle Spalten abzugleichen, die mit „movie“ beginnen, und ordnet sie der Spalte „movieId“ zu.
+### <a name="regex-mapping"></a>Zuordnung mit regulärem Ausdruck
 
-Sollte Ihre Regel mehrere identische Zuordnungen zur Folge haben, aktivieren Sie **Skip duplicate inputs** (Doppelte Eingaben überspringen) oder **Skip duplicate outputs** (Doppelte Ausgaben überspringen), um Duplikate zu vermeiden.
+Wenn Sie auf das nach unten zeigende Chevronsymbol klicken, können Sie eine RegEx-Zuordnungsbedingung angeben. Eine RegEx-Zuordnungsbedingung stimmt mit allen Spaltennamen überein, die mit der angegebenen RegEx-Bedingung übereinstimmen. Sie kann in Kombination mit standardmäßigen regelbasierten Zuordnungen verwendet werden.
+
+![Regelbasierte Zuordnung](media/data-flow/regex-matching.png "Regelbasierte Zuordnung")
+
+Das vorstehende Beispiel entspricht dem RegEx-Muster `(r)` oder einem beliebigen Spaltennamen, der den Kleinbuchstaben „r“ enthält. Ähnlich wie bei der standardmäßigen regelbasierten Zuordnung werden alle übereinstimmenden Spalten von der Bedingung auf der rechten Seite mit der `$$`-Syntax geändert.
+
+### <a name="rule-based-hierarchies"></a>Regelbasierte Hierarchien
+
+Wenn Ihre definierte Projektion eine Hierarchie hat, können Sie die Unterspalten mithilfe der regelbasierten Zuordnung der Hierarchie zuordnen. Geben Sie eine Übereinstimmungsbedingung und die komplexe Spalte an, deren Unterspalten Sie zuordnen möchten. Jede übereinstimmende Unterspalte wird mithilfe der rechts angegebenen Regel „Name as“ (Benennen als) ausgegeben.
+
+![Regelbasierte Zuordnung](media/data-flow/rule-based-hierarchy.png "Regelbasierte Zuordnung")
+
+Das vorstehende Beispiel wird mit allen Unterspalten der komplexen Spalte `a` abgeglichen. `a` enthält die beiden Unterspalten `b` und `c`. Das Ausgabeschema enthält die beiden Spalten `b` und `c`, da die „Name as“-Bedingung `$$` lautet.
 
 ## <a name="pattern-matching-expression-values"></a>Ausdruckswerte für den Musterabgleich
 

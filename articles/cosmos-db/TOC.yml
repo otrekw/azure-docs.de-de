@@ -597,6 +597,8 @@
           items:
             - name: Elastische Skalierung
               href: manage-scale-cassandra.md
+            - name: Sekundäre Indizes
+              href: cassandra-secondary-index.md
         - name: Anleitungen
           items:
             - name: Änderungsfeed
@@ -1012,12 +1014,12 @@
           href: ../private-link/create-private-endpoint-cosmosdb-portal.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Konfigurieren von CORS (Cross-Origin Resource Sharing)
           href: how-to-configure-cross-origin-resource-sharing.md
-        - name: Sichern von Schlüsseln mit einer verwalteten Identität
+        - name: Verwenden verwalteter Identitäten für den Datenzugriff
           href: managed-identity-based-authentication.md
           displayName: 'msi, managed service identity, aad, azure active directory, identity'
-        - name: Zertifikatbasierte Authentifizierung mit Azure AD
+        - name: Verwenden von Zertifikaten für den Datenzugriff
           href: certificate-based-authentication.md
-        - name: Sichern von Schlüsseln mit Key Vault
+        - name: Verwenden von Azure Key Vault für den Datenzugriff
           href: access-secrets-from-keyvault.md
         - name: Beschränken des Benutzerzugriffs ausschließlich auf Datenvorgänge
           href: how-to-restrict-user-data.md

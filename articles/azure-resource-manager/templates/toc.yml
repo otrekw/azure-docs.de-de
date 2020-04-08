@@ -83,7 +83,7 @@
         - name: 3. Erstellen einer Pipeline
           displayName: Devop
           href: deployment-tutorial-pipeline.md
-    - name: Erweitert
+    - name: Erweiterte Vorlagen
       items:
         - name: Nutzen der Vorlagenreferenz
           href: template-tutorial-use-template-reference.md
@@ -101,23 +101,21 @@
         - name: Integrieren von Key Vault
           displayName: secrets
           href: template-tutorial-use-key-vault.md
-        - name: Erstellen verknüpfter Vorlagen
-          href: template-tutorial-create-linked-templates.md
         - name: Bereitstellen von VM-Erweiterungen
           displayName: virtual machine extensions
           href: template-tutorial-deploy-vm-extensions.md
         - name: Bereitstellen von SQL-Erweiterungen
           href: template-tutorial-deploy-sql-extensions-bacpac.md
-        - name: Schützen von Artefakten
-          href: template-tutorial-secure-artifacts.md
+        - name: Problembehandlung bei der Vorlagenbereitstellung
+          href: template-tutorial-troubleshoot.md
+    - name: Bereitstellungs-Manager
+      items:
         - name: Verwenden von sicheren Bereitstellungsmethoden
           displayName: adm
           href: deployment-manager-tutorial.md
         - name: Verwenden der Integritätsprüfung im Bereitstellungs-Manager
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
-        - name: Problembehandlung bei der Vorlagenbereitstellung
-          href: template-tutorial-troubleshoot.md
 - name: Beispiele
   items:
     - name: Azure-Schnellstartvorlagen
