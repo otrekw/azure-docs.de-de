@@ -13,41 +13,37 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 03/22/2020
 ms.author: yelevin
-ms.openlocfilehash: 28d5acd80deef193c7d2fea46f682f26abd756aa
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 82dfcaf3394703aae531c828a1b96ad290bab798
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77588602"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80124984"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>Verknüpfen von Daten aus dem Azure-Aktivitätsprotokoll
 
-
-
-Sie können Protokolle aus dem [Azure-Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md) mit einem einzigen Klick an Azure Sentinel streamen. Das Aktivitätsprotokoll ist ein Abonnementprotokoll, das Einblicke in Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Dies schließt einen Datenbereich von Azure Resource Manager-Betriebsdaten bis hin zu Aktualisierungen für Dienstintegritätsereignisse ein. Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für jeden Schreibvorgang (PUT, POST, DELETE) ermitteln, der für die Ressourcen Ihres Abonnements ausgeführt wurde. Sie können auch den Status des Vorgangs und andere relevante Eigenschaften verstehen. Das Aktivitätsprotokoll umfasst keine Lesevorgänge (GET) oder Vorgänge für Ressourcen, die das klassische Modell/RDFE-Modell verwenden. 
-
+Sie können Protokolle aus dem [Azure-Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md) mit einem einzigen Klick an Azure Sentinel streamen. Das Aktivitätsprotokoll ist ein Abonnementprotokoll, das Ereignisse auf Abonnentenebene in ganz Azure aufzeichnet und anzeigt, von operativen Daten von Azure Resource Manager bis hin zu Aktualisierungen von Service Health-Ereignissen. Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für jeden Schreibvorgang (PUT, POST, DELETE) ermitteln, der für die Ressourcen Ihres Abonnements ausgeführt wurde. Sie können auch den Status des Vorgangs und andere relevante Eigenschaften erfahren. Das Aktivitätsprotokoll umfasst keine Lesevorgänge (GET) oder Vorgänge für Ressourcen, die das klassische Modell/RDFE-Modell verwenden. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Benutzer mit den Berechtigungen von Mitwirkenden für den Log Analytics-Arbeitsbereich 
+- Ihr Benutzer muss über Berechtigungen vom Typ „Mitwirkender“ für den Log Analytics-Arbeitsbereich verfügen.
+- Ihr Benutzer muss über Leseberechtigungen für jedes Abonnement verfügen, dessen Protokolle Sie in Azure Sentinel streamen möchten.
 
+## <a name="set-up-the-azure-activity-connector"></a>Einrichten des Azure-Aktivitätsconnectors
 
-## <a name="connect-to-azure-activity-log"></a>Herstellen einer Verbindung mit dem Aktivitätsprotokoll
+1. Klicken Sie im Azure Sentinel-Navigationsmenü auf **Datenconnectors**. Klicken Sie in der Liste mit Connectors auf **Azure-Aktivität** und dann auf die Schaltfläche **Connectorseite öffnen** unten rechts.
 
-1. Wählen Sie in Azure Sentinel die Option **Data connectors** (Datenconnectors) aus, und klicken Sie dann auf die Kachel **Azure-Aktivitätsprotokoll**.
+2. Klicken Sie unter der Registerkarte **Anweisungen** auf den Link **Azure-Aktivitätsprotokolle konfigurieren >** .
 
-2. Wählen Sie im Bereich für das Azure-Aktivitätsprotokoll die Abonnements aus, die Sie an Azure Sentinel streamen möchten. 
+3. Wählen Sie im Bereich für das **Azure-Aktivitätsprotokoll** die Abonnements aus, deren Protokolle Sie an Azure Sentinel streamen möchten. 
 
-3. Klicken Sie auf **Verbinden**.
+4. Klicken Sie in dem sich rechts öffnenden Abonnementfenster auf **Verbinden**.
 
-4. Um das relevante Schema für die Azure-Aktivitätswarnungen in Log Analytics zu verwenden, suchen Sie nach **AzureActivity**.
-
-
- 
+5. Geben Sie `AzureActivity` in das Abfragefenster ein, um das entsprechende Schema in Log Analytics für Azure-Aktivitätswarnungen zu verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument haben Sie erfahren, wie Sie das Azure-Aktivitätsprotokoll mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
+- Beginnen Sie mit dem Erkennen von Bedrohungen mit Azure Sentinel mithilfe von [integrierten](tutorial-detect-threats-built-in.md) oder [benutzerdefinierten](tutorial-detect-threats-custom.md) Regeln.

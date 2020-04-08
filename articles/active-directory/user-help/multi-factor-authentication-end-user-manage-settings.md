@@ -102,7 +102,7 @@ Wenn Sie Ihr Geschäfts-, Schul- oder Unikonto bereits in der Microsoft Authenti
 
     ![Einrichten Ihres Geschäfts-, Schul- oder Unikontos in der Microsoft Authenticator-App](./media/multi-factor-authentication-end-user-manage-settings/mfa-security-verification-page-auth-app.png)
 
-1. Befolgen Sie die Anweisungen auf dem Bildschirm (u.a. müssen Sie den QR-Code mit dem Mobilgerät scannen), und wählen Sie dann **Weiter** aus.
+1. Befolgen Sie die Anweisungen auf dem Bildschirm (u. a. müssen Sie den QR-Code mit dem Mobilgerät scannen), und wählen Sie dann **Weiter** aus.
 
     Sie werden aufgefordert, eine Benachrichtigung über die Microsoft Authenticator-App zu genehmigen, um Ihre Informationen zu bestätigen.
 

@@ -66,7 +66,7 @@ Sollte **Nicht verfügbar** angezeigt werden, gibt es verschiedene Gründe, waru
 - Es sind weniger als 30 Tage seit dem Abschluss Ihres Azure-Abonnements vergangen.
 - Für den Abrechnungszeitraum liegt keine Nutzung vor.
 - Es wurde noch keine Rechnung generiert. Warten Sie bis zum Ende des Abrechnungszeitraums.
-- Sie haben keine Berechtigung zur Ansicht von Rechnungen. Alte Rechnungen werden möglicherweise nur für den Kontoadministrator angezeigt. Weitere Informationen zum Zugriff auf Abrechnungsinformationen finden Sie unter [Verwalten des Zugriffs auf die Azure-Abrechnung mithilfe von Rollen](../manage/manage-billing-access.md).
+- Sie haben keine Berechtigung zur Ansicht von Rechnungen. Alte Rechnungen werden möglicherweise nur für den Kontoadministrator angezeigt. Weitere Informationen zum Zugriff auf Abrechnungsinformationen finden Sie unter [Verwalten des Zugriffs auf Abrechnungsinformationen für Azure](../manage/manage-billing-access.md).
 - Wenn Sie eine kostenlose Testversion oder eine nicht überschrittene monatliche Gutschrift für Ihr Abonnement verwenden, erhalten Sie nur eine Rechnung, wenn Sie eine Microsoft-Kundenvereinbarung abgeschlossen haben.
 
 Überprüfen Sie als Nächstes die Gebühren. Ihre Rechnung enthält Werte für Steuern und Ihre Nutzungsgebühren.
@@ -170,4 +170,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 Schließen Sie die Schnellstartsitzung ab, um mit der Kostenanalyse zu beginnen.
 
 > [!div class="nextstepaction"]
-> [Beginn der Kostenanalyse](../costs/quick-acm-cost-analysis.md)
+> [Kostenanalyse beginnen](../costs/quick-acm-cost-analysis.md)

@@ -1,19 +1,18 @@
 ---
 title: Testversion für Logik-Apps | Azure Marketplace
 description: In diesem Artikel wird erläutert, wie eine Testversion erstellt wird, die mit einer Dynamics AX/CRM-Instanz oder einer anderen Ressource über Azure hinaus verbunden wird.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 87170344f7467770829cbd8ba7d8936a9e39c0cc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 766f893d71ca0830fe8b69c50145603c6544cc3f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824599"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80278381"
 ---
 <a name="logic-app-test-drive"></a>Testversion für Logik-Apps
 ====================
@@ -46,7 +45,7 @@ Im nächsten Abschnitt werden die Details zu Ihrem Angebot der Testversion ausge
 
 **Benutzerhandbuch:** *[Pflichtfeld]* Dies ist die ausführliche Beschreibung zur Verwendung Ihrer Testversion. Mit diesem Benutzerhandbuch kann der Kunde genau die vorgesehenen Schritte in der Testversion ausführen und durchlaufen. Es ist wichtig, dass die Inhalte einfach nachzuvollziehen und auszuführen sind. (Es muss sich um eine PDF-Datei handeln.)
 
-**Test Drive Demo Video** (Demovideo für Testversion): \[Empfohlen\] Ähnlich dem Benutzerhandbuch empfiehlt es sich, ein Videotutorial für Ihre Testversion einzufügen. Der Kunde sieht sich dieses Tutorial vor oder während der Verwendung der Testversion an und kann genau die vorgesehenen Schritte in der Testversion ausführen und durchlaufen. Es ist wichtig, dass die Inhalte einfach nachzuvollziehen und auszuführen sind.
+**Demovideo für Testversion:** \[Empfohlen\] Ähnlich dem Benutzerhandbuch empfiehlt es sich, ein Videotutorial für Ihre Testversion einzufügen. Der Kunde sieht sich dieses Tutorial vor oder während der Verwendung der Testversion an und kann genau die vorgesehenen Schritte in der Testversion ausführen und durchlaufen. Es ist wichtig, dass die Inhalte einfach nachzuvollziehen und auszuführen sind.
 
 - **Name:** Titel Ihres Videos
 - **Link:** muss eine eingebettete URL von YouTube oder Vimeo sein. Ein Beispiel zum Abrufen der eingebetteten URL ist nachfolgend aufgeführt:
@@ -74,9 +73,9 @@ Im nächsten Abschnitt konfigurieren Sie die Testversion für die Logik-App und 
 
 - **Name der Azure-Ressourcengruppe:** *[Pflichtfeld]* Geben Sie den Namen der Ressourcengruppe ein, in der die Testversionen für die Logik-App gespeichert werden.
 
-- **Assign Logic App Name** (Logik-App-Name für Zuweisung): *[Pflichtfeld]* Hier wird die verwendete Logik-App eingegeben, um einen Benutzer in der Testversion zuzuweisen, bevor der Kunde sie erhält. Geben Sie den Namen der Logik-App hier ein. Stellen Sie sicher, dass diese Datei in der oben angegebenen Ressourcengruppe gespeichert wird.
+- **Logik-App-Name für Zuweisung:** *[Pflichtfeld]* Hier wird die verwendete Logik-App eingegeben, um einen Benutzer in der Testversion zuzuweisen, bevor der Kunde sie erhält. Geben Sie den Namen der Logik-App hier ein. Stellen Sie sicher, dass diese Datei in der oben angegebenen Ressourcengruppe gespeichert wird.
 
-- **Deprovision Logic App Name** (Logik-App-Name für Aufhebung der Bereitstellung): *[Pflichtfeld]* Geben Sie den Logik-App-Namen für die Aufhebung der Bereitstellung aller in der Testversion erstellten Ressourcen ein. Stellen Sie sicher, dass diese Datei in der oben angegebenen Ressourcengruppe gespeichert wird.
+- **Logik-App-Name für Aufhebung der Bereitstellung:** *[Pflichtfeld]* Geben Sie den Logik-App-Namen für die Aufhebung der Bereitstellung aller in der Testversion erstellten Ressourcen ein. Stellen Sie sicher, dass diese Datei in der oben angegebenen Ressourcengruppe gespeichert wird.
 
 - **Zugriffsinformationen:** *[Pflichtfeld]* Nachdem ein Kunde seine Testversion erhalten hat, erhält er auch die Zugriffsinformationen. In diesen Anweisungen können die nützlichen Ausgabeparameter aus der Resource Manager-Vorlage für die Testversion angegeben werden. Verwenden Sie zum Einfügen von Ausgabeparametern doppelte geschweifte Klammern (z.B. **{{Ausgabename}}** ). So werden sie am Speicherort korrekt eingefügt. (Zur Darstellung im Front-End wird die HTML-Formatierung von Zeichenfolgen empfohlen.)
 
@@ -91,7 +90,7 @@ Im letzten Abschnitt werden die Eingaben vorgenommen, um die Testversionen durch
 
 ![Azure-Abonnements](./media/azure-resource-manager-test-drive/subdetails2.png)
 
-**Azure AD Tenant ID** (Azure AD-Mandanten-ID): *[Pflichtfeld]* Wenn Sie bereits über eine Mandanten-ID verfügen, finden Sie sie wie unten gezeigt unter „Eigenschaften“ -\> „Verzeichnis-ID“.
+**Azure AD-Mandanten-ID:** *[Pflichtfeld]* Wenn Sie bereits über eine Mandanten-ID verfügen, finden Sie sie wie unten gezeigt unter „Eigenschaften“ -\> „Verzeichnis-ID“.
 
 ![Azure Active Directory](./media/azure-resource-manager-test-drive/subdetails3.png)
 
@@ -109,7 +108,7 @@ Erstellen Sie andernfalls einen neuen Mandanten in Azure Active Directory.
 2. Suchen Sie „App-Registrierungen“, und klicken Sie auf „Hinzufügen“.
 3. Geben Sie einen Anwendungsnamen an.
 4. Wählen Sie den Typ „Web-App/API“ aus.
-5. Geben Sie in „Anmelde-URL“ einen beliebigen Wert an. Dieses Feld wird nicht verwendet.
+5. Geben Sie in „Anmelde-URL“ einen beliebigen Wert an. \'Dieses Feld wird nicht verwendet.
 6. Klicken Sie auf "Erstellen".
 7. Navigieren Sie nach der Erstellung der Anwendung zu „Eigenschaften“ -\> „Set the application as multi-tenant“ (Anwendung als mehrinstanzenfähig festlegen), und klicken Sie auf „Speichern“.
 
@@ -128,7 +127,7 @@ Wenn die Anwendung zum Durchführen der Bereitstellung im Abonnement verwendet w
     ![Azure Active Directory-Berechtigungen](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
 1. Klicken Sie auf **Speichern**.
 
-**Azure AD App Key** (Azure AD-App-Schlüssel): *[Pflichtfeld]* Im letzten Feld wird ein Authentifizierungsschlüssel generiert. Geben Sie unter „Schlüssel“ eine Beschreibung des Schlüssels an, legen Sie die Dauer so fest, dass er nie abläuft, und wählen Sie dann „Speichern“ aus. Es ist **wichtig**, dass der Schlüssel nicht abläuft, da dies andernfalls zu Fehlern der Testversion in der Produktion führt. Kopieren Sie diesen Wert, und fügen Sie ihn im entsprechenden Feld für die Testversion ein.
+**Azure AD-App-Schlüssel:** *[Pflichtfeld]* Im letzten Feld wird ein Authentifizierungsschlüssel generiert. Geben Sie unter „Schlüssel“ eine Beschreibung des Schlüssels an, legen Sie die Dauer so fest, dass er nie abläuft, und wählen Sie dann „Speichern“ aus. Es ist **wichtig**, dass der Schlüssel nicht abläuft, da dies andernfalls zu Fehlern der Testversion in der Produktion führt. Kopieren Sie diesen Wert, und fügen Sie ihn im entsprechenden Feld für die Testversion ein.
 
 ![Azure Active Directory-Schlüssel](./media/azure-resource-manager-test-drive/subdetails8.png)
 

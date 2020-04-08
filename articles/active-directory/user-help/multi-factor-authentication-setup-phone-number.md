@@ -32,11 +32,11 @@ Sie können Ihr mobiles Gerät als Methode für die zweistufige Überprüfung ei
 
     ![Seite „Zusätzliche Sicherheitsüberprüfung“ mit Authentifizierungstelefon und SMS](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message.png)
 
-3. Geben Sie den Prüfcode aus der SMS von Microsoft im Bereich **Step 2: We've sent a text message to your phone** (Schritt 2: Wir haben eine SMS an Ihr Telefon gesendet.) ein, und wählen Sie dann **Überprüfen** aus.
+3. Geben Sie den Prüfcode aus der SMS von Microsoft im Bereich **Schritt 2: Wir haben eine SMS an folgende Nummer geschickt** ein, und wählen Sie dann **Bestätigen** aus.
 
     ![Seite „Zusätzliche Sicherheitsüberprüfung“ mit Authentifizierungstelefon und SMS](media/multi-factor-authentication-verification-methods/multi-factor-authentication-text-message-test.png)
 
-4. Kopieren Sie im Bereich **Schritt 3: Verwenden Sie vorhandene Anwendungen weiterhin** das angegebene App-Kennwort, und speichern Sie es an einem sicheren Ort.
+4. Kopieren Sie im Bereich **Schritt 3: Vorhandene Anwendungen weiterhin verwenden** das angegebene App-Kennwort, und speichern Sie es an einem sicheren Ort.
 
     ![Bereich für App-Kennwörter der Seite „Zusätzliche Sicherheitsüberprüfung“](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
@@ -49,7 +49,7 @@ Sie können Ihr mobiles Gerät als Methode für die zweistufige Überprüfung ei
 
 1. Wählen Sie auf der Seite **Zusätzliche Sicherheitsüberprüfung** die Option **Telefon für Authentifizierung** im Bereich **Schritt 1: Wie dürfen wir Sie kontaktieren?** die Option Telefon für Authentifizierung aus. Wählen Sie anschließend in der Dropdownliste Ihr Land oder Ihre Region aus, und geben Sie die Telefonnummer Ihres mobilen Geräts ein.
 
-2. Wählen Sie im Bereich **Methode** die Option **Anruf an mich** und anschließend **Weiter** aus.
+2. Wählen Sie im Bereich **Methode** die Option **Anrufen** und anschließend **Weiter** aus.
 
     ![Seite „Zusätzliche Sicherheitsüberprüfung“ mit Authentifizierungstelefon und Telefonanruf](media/multi-factor-authentication-verification-methods/multi-factor-authentication-phone-call.png)
 
@@ -57,7 +57,7 @@ Sie können Ihr mobiles Gerät als Methode für die zweistufige Überprüfung ei
 
     ![Testen der angegebenen Telefonnummer](media/multi-factor-authentication-verification-methods/multi-factor-authentication-phone-call-test.png)
 
-4. Kopieren Sie im Bereich **Schritt 3: Verwenden Sie vorhandene Anwendungen weiterhin** das angegebene App-Kennwort, und speichern Sie es an einem sicheren Ort.
+4. Kopieren Sie im Bereich **Schritt 3: Vorhandene Anwendungen weiterhin verwenden** das angegebene App-Kennwort, und speichern Sie es an einem sicheren Ort.
 
     ![Bereich für App-Kennwörter der Seite „Zusätzliche Sicherheitsüberprüfung“](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 

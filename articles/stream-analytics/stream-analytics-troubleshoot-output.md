@@ -6,46 +6,38 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: d40157523a074547885a14a3d92379f8e8b6f351
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 305632a0faa1eb7e217e86d36c5159e557df7aaf
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228026"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409249"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Problembehandlung von Azure Stream Analytics-Ausgaben
 
-Auf dieser Seite werden häufige Probleme mit Ausgangsverbindungen und deren Behandlung und Behebung beschrieben.
+In diesem Artikel werden häufige Probleme mit Azure Stream Analytics-Ausgabeverbindungen beschrieben, die Behandlung von Ausgabeproblemen und die Behebung der Probleme. Viele Schritte zur Problembehandlung erfordern die Aktivierung von Diagnoseprotokollen für Ihren Stream Analytics-Auftrag. Wenn Sie die Diagnoseprotokolle nicht aktiviert haben, finden Sie weitere Informationen unter [Problembehandlung bei Azure Stream Analytics mit Diagnoseprotokollen](stream-analytics-job-diagnostic-logs.md).
 
 ## <a name="output-not-produced-by-job"></a>Nicht vom Auftrag erzeugte Ausgabe
+
 1.  Überprüfen Sie für die einzelnen Ausgaben die Verbindung mit Ausgaben mithilfe der Schaltfläche **Verbindung testen**.
 
 2.  Sehen Sie sich die [**Überwachungsmetriken**](stream-analytics-monitoring.md) auf der Registerkarte **Überwachen** an. Da die Werte aggregiert werden, werden die Metriken mit einer Verzögerung von wenigen Minuten angezeigt.
-    - Wenn für „Eingabeereignisse“ ein höherer Wert als „0“ angezeigt wird, kann der Auftrag Eingabedaten lesen. Wenn für „Eingabeereignisse“ ein kleinerer Wert als „0“ angezeigt wird, gehen Sie wie folgt vor:
-      - Um festzustellen, ob die Datenquelle gültige Daten enthält, überprüfen Sie diese mithilfe des [Service Bus-Explorer](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a). Diese Prüfung gilt, wenn der Auftrag Event Hub als Eingabe verwendet.
-      - Überprüfen Sie, ob das gewünschte Datenserialisierungsformat und die gewünschte Datencodierung verwendet werden.
-      - Wenn der Auftrag einen Event Hub verwendet wird, überprüfen Sie, ob der Text der Meldung *Null* lautet.
+   * Wenn Eingabeereignisse größer als 0 sind, ist der Auftrag in der Lage, Eingabedaten zu lesen. Wenn Eingabeereignisse nicht größer als 0 sind, liegt ein Problem mit der Auftragseingabe vor. Weitere Informationen zur Problembehandlung bei Eingabeverbindungen finden Sie unter [Problembehandlung für Eingabeverbindungen](stream-analytics-troubleshoot-input.md).
+   * Wenn Datenkonvertierungsfehler größer als 0 und ansteigend sind, finden Sie unter [Azure Stream Analytics-Datenfehler](data-errors.md) ausführliche Informationen zu Datenkonvertierungsfehlern.
+   * Wenn die Laufzeitfehler größer als 0 sind, kann Ihr Auftrag Daten empfangen, aber er erzeugt Fehler bei der Verarbeitung der Abfrage. Navigieren Sie zur Fehlersuche zu [Überwachungsprotokolle](../azure-resource-manager/management/view-activity-logs.md) und filtern Sie nach dem Status *Fehler*.
+   * Wenn „InputEvents“ größer als 0 und „OutputEvents“ gleich 0 ist, trifft eine der folgenden Aussagen zu:
+      * Die Abfrageverarbeitung hat zu null Ausgabeereignissen geführt.
+      * Ereignisse oder Felder sind unter Umständen falsch formatiert, daher wurden bei der Abfrageverarbeitung keine Ausgaben generiert.
+      * Im Rahmen des Auftrags können Daten aus Konnektivitäts- oder Authentifizierungsgründen nicht per Push an die Ausgabesenke übertragen werden.
 
-    - Wenn für „Datenkonvertierungsfehler“ ein höherer Wert als „0“ angezeigt wird und sich dieser Wert ständig erhöht, kann dies Folgendes bedeuten:
-      - Das Ausgabeereignis entspricht nicht dem Schema der Zielsenke.
-      - Das Ereignisschema stimmt möglicherweise nicht mit dem festgelegten oder erwarteten Schema der Ereignisse in der Abfrage überein.
-      - Die Datentypen einiger Felder im Ereignis entsprechen möglicherweise nicht den Erwartungen.
-
-    - Wenn für „Laufzeitfehler“ ein höherer Wert als „0“ angezeigt wird, bedeutet das, dass der Auftrag die Daten empfangen kann, bei der Verarbeitung der Abfrage jedoch Fehler generiert werden.
-      - Navigieren Sie zur Fehlersuche zu [Überwachungsprotokolle](../azure-resource-manager/management/view-activity-logs.md) und filtern Sie nach dem Status *Fehler*.
-
-    - Wenn für „InputEvents“ ein höherer Wert als „0“ und für „OutputEvents“ der Wert „0“ angezeigt wird, kann dies Folgendes bedeuten:
-      - Die Abfrageverarbeitung hat zu null Ausgabeereignissen geführt.
-      - Ereignisse oder die jeweiligen Felder sind unter Umständen falsch formatiert, daher wurden bei der Abfrageverarbeitung keine Ausgaben generiert.
-      - Im Rahmen des Auftrags können Daten aus Konnektivitäts- oder Authentifizierungsgründen nicht per Push an die Ausgabesenke übertragen werden.
-
-    - Für alle zuvor genannten Fehler enthalten die Meldungen der Vorgangsprotokolle weitere Details (einschließlich Details dazu, was geschieht). Ausgenommen sind Fälle, in denen die Abfragelogik alle Ereignisse herausgefiltert hat. Wenn bei der Verarbeitung mehrerer Ereignisse Fehler generiert werden, protokolliert Stream Analytics innerhalb von zehn Minuten die ersten drei Fehlermeldungen desselben Typs in Vorgangsprotokollen. Weitere identische Fehler werden dann mit folgender Meldung unterdrückt: „Es treten zu schnell Fehler auf. Diese werden unterdrückt“.
+   Für alle zuvor genannten Fehler enthalten die Meldungen der Vorgangsprotokolle weitere Details (einschließlich Details dazu, was geschieht). Ausgenommen sind Fälle, in denen die Abfragelogik alle Ereignisse herausgefiltert hat. Wenn die Verarbeitung mehrerer Ereignisse Fehler generiert, werden die Fehler alle 10 Minuten aggregiert.
 
 ## <a name="job-output-is-delayed"></a>Verzögerung bei der Auftragsausgabe
 
 ### <a name="first-output-is-delayed"></a>Verzögerung bei der ersten Ausgabe
+
 Wenn ein Stream Analytics-Auftrag gestartet wird, werden die Eingabeereignisse gelesen, aber es kann unter bestimmten Umständen zu einer Verzögerung bei der Ausgabe kommen.
 
 Große Zeitwerte in zeitlichen Abfrageelementen können zur Ausgabeverzögerung beitragen. Um eine korrekte Ausgabe für große Zeitfenster zu erzeugen, startet der Streamingauftrag mit dem Lesen der Daten vom spätesten möglichen Zeitpunkt (bis zu sieben Tage her), um das Zeitfenster zu füllen. Während dieser Zeit wird keine Ausgabe erzeugt, bis das Auslesen der ausstehenden Eingabeereignisse abgeschlossen ist. Dieses Problem kann auftreten, wenn das System ein Upgrade der Streamingaufträge ausführt und damit den Auftrag neu startet. Solche Upgrades finden in der Regel alle paar Monate statt.
@@ -69,6 +61,7 @@ Diese Faktoren haben Auswirkungen auf die Schnelligkeit der ersten Ausgabe, die 
    - Bei analytischen Funktionen wird die Ausgabe für jedes Ereignis generiert. Es gibt keine Verzögerung.
 
 ### <a name="output-falls-behind"></a>Zurückfallende Ausgabe
+
 Wenn Sie während der normalen Ausführung des Auftrags feststellen, dass die Ausgabe des Auftrags hinterherhinkt (immer längere Wartezeit), können Sie die Grundursachen ermitteln, indem Sie diese Faktoren daraufhin untersuchen:
 - Ob die Downstreamsenke gedrosselt wird.
 - Ob die Upstreamquelle gedrosselt wird.
@@ -88,11 +81,11 @@ Beachten Sie die folgenden Beobachtungen, wenn Sie IGNORE_DUP_KEY für mehrere T
 
 * IGNORE_DUP_KEY kann nicht für eine PRIMARY KEY- oder UNIQUE-Einschränkung festgelegt werden, die ALTER INDEX verwendet. Sie müssen stattdessen den Index löschen und neu erstellen.  
 * Sie können die Option IGNORE_DUP_KEY mit ALTER INDEX für einen eindeutigen Index festlegen, wenn sich dieser von der PRIMARY KEY-/UNIQUE-Einschränkung unterscheidet und mit einer CREATE INDEX- oder INDEX-Definition erstellt wurde.  
+
 * IGNORE_DUP_KEY gilt nicht für Spaltenspeicherindizes, da für solche Indizes keine Eindeutigkeit erzwungen werden kann.  
 
 ## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>Spaltennamen werden von Azure Stream Analytics in Kleinbuchstaben umgewandelt
 Bei Verwendung des ursprünglichen Kompatibilitätsgrads (1.0) wurden Spaltennamen von Azure Stream Analytics in Kleinbuchstaben geändert. Dieses Verhalten wurde bei höheren Kompatibilitätsgraden behoben. Um die Groß-/Kleinschreibung beizubehalten, empfehlen wir Kunden, zum Kompatibilitätsgrad 1.1 und höher zu wechseln. Weitere Informationen finden Sie unter [Kompatibilitätsgrad für Azure Stream Analytics-Aufträge](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level).
-
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 
