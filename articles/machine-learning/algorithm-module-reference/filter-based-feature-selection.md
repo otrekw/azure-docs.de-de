@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: bd1a6d4009181056ff0f91fc115d59851539bbe8
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: c009a98931240e92527035e51fdce3f1c92f5212
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548474"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477594"
 ---
 # <a name="filter-based-feature-selection"></a>Filter Based Feature Selection
 
@@ -90,7 +90,7 @@ Sie wählen eine standardmäßige Statistikmetrik aus. Das Modul berechnet die K
 
     - Wenn Sie weniger Ergebnisspalten angeben, als Featurespalten vorhanden sind, werden die Features nach absteigendem Score sortiert. In diesem Fall werden nur die Features mit dem höchsten Score zurückgegeben. 
 
-7.  Führen Sie die Pipeline aus, oder wählen Sie das Modul „Filter Based Feature Selection“ (Filterbasierte Featureauswahl) und anschließend **Auswahl ausführen** aus.
+7.  Übermitteln Sie die Pipeline, oder wählen Sie das Modul „Filter Based Feature Selection“ (Filterbasierte Featureauswahl) und anschließend **Auswahl ausführen** aus.
 
 
 ## <a name="results"></a>Ergebnisse

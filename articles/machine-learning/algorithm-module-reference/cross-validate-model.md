@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 6dd8246d5751609e2f20ee9d5e519529752940f7
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 7550bb7c6bbf7602245f9a9f1ac006ce693b36a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137527"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477645"
 ---
 # <a name="cross-validate-model"></a>Durchführen einer Kreuzvalidierung für ein Modell
 
@@ -72,7 +72,7 @@ In diesem Szenario verwenden Sie „Cross Validate Model“, um das Modell zu tr
 
 5. Legen Sie einen Wert für den Parameter **Zufälliger Ausgangswert** fest, wenn Sie die Ergebnisse der Kreuzvalidierung über aufeinanderfolgende Ausführungen für dieselben Daten hinweg wiederholen möchten.  
 
-6. Ausführen der Pipeline.
+6. Übermitteln Sie die Pipeline.
 
 7. Eine Beschreibung der Berichte finden Sie im Abschnitt [Ergebnisse](#results).
 
@@ -101,7 +101,7 @@ In diesem Bericht werden die Folds nach Indexwert in aufsteigender Reihenfolge a
 Klicken Sie zum Anzeigen der Ergebnisse in der Pipeline mit der rechten Maustaste auf das Modul „Cross Validate Model“. Wählen Sie **Visualize Evaluation results by fold** (Auswertungsergebnisse nach Fold anzeigen) aus.
 
 
-|Spaltenname| Beschreibung|
+|Spaltenname| BESCHREIBUNG|
 |----|----|
 |Fold number (Foldnummer)| Ein Bezeichner für jeden Fold. Wenn Sie fünf Folds erstellt haben, sind fünf Teilmengen mit Daten vorhanden (nummeriert von 0 bis 4).
 |Number of examples in fold (Anzahl von Beispielen im Fold)|Die Anzahl der jedem Fold zugewiesenen Zeilen. Diese sollten ungefähr gleich sein. |

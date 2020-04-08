@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 5851b294e52fdcc03dbf3b889ff32898a823f655
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.openlocfilehash: 14c3bc968da9d398fbc14eda74378047cf28277b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77137570"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477696"
 ---
 # <a name="clean-missing-data-module"></a>Modul „Clean Missing Data“
 
@@ -110,7 +110,7 @@ Immer wenn Sie das Modul [Clean Missing Data](./clean-missing-data.md) auf eine 
   
 7. **Generate missing value indicator column** (Indikatorspalte für fehlende Werte generieren): Wählen Sie diese Option aus, wenn Sie einen Hinweis darauf ausgeben möchten, dass die Werte in der Spalte die Kriterien für eine Bereinigung von fehlenden Werten erfüllt haben. Diese Option ist besonders hilfreich, wenn Sie beim Einrichten eines neuen Bereinigungsvorgangs sicherstellen möchten, dass er wie vorgesehen funktioniert.
   
-8. Ausführen der Pipeline.
+8. Übermitteln Sie die Pipeline.
 
 ### <a name="results"></a>Ergebnisse
 
@@ -138,7 +138,7 @@ Wenn Sie Bereinigungsvorgänge oft wiederholen müssen, empfehlen wir, dass Sie 
 
     Allerdings: Nehmen Sie einmal an, Sie hätten eine Transformation für eine Teilmenge numerischer Spalten erstellt. Diese Transformation können Sie auf ein Dataset von gemischten Spaltentypen anwenden, ohne dass ein Fehler ausgelöst wird, weil die fehlenden Werte nur in den übereinstimmenden numerischen Spalten geändert werden.
 
-6.  Ausführen der Pipeline.  
+6.  Übermitteln Sie die Pipeline.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,7 +5,7 @@ services: dedicated-hsm
 author: johncdawson
 manager: rkarlin
 tags: azure-resource-manager
-ms.custom: mvc
+ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 947dc6eb8060d2d229ee7984f719cb837e638490
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: a0cb7957008308425d91abb3e0f828cc40301736
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77045927"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064925"
 ---
 # <a name="frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ)
 

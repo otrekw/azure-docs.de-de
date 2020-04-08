@@ -7,16 +7,22 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: c5040721705b90a981f1f8a45a3a2eb70eefde05
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: c609f2a3843481442e97061739a806de60a680b5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76772144"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79367566"
 ---
 # <a name="iot-hub-ip-addresses"></a>IP-Adressen von IoT Hub
 
-Die IP-Adresspräfixe von öffentlichen IoT Hub-Endpunkten werden regelmäßig unter dem [Diensttag](../virtual-network/service-tags-overview.md) _AzureIoTHub_ veröffentlicht. Sie können mithilfe dieser IP-Adresspräfixe die Konnektivität zwischen IoT Hub und Ihren Geräten oder Netzwerkressourcen steuern, um eine Vielzahl von Netzwerkisolationszielen zu implementieren:
+Die IP-Adresspräfixe von öffentlichen IoT Hub-Endpunkten werden regelmäßig unter dem [Diensttag](../virtual-network/service-tags-overview.md) _AzureIoTHub_ veröffentlicht.
+
+> [!NOTE]
+> Für in lokalen Netzwerken bereitgestellte Geräte unterstützt Azure IoT Hub die VNet-Konnektivitätsintegration in private Endpunkte. Weitere Informationen finden Sie unter [IoT Hub-Unterstützung für VNets](./virtual-network-support.md#ingress-connectivity-to-iot-hub-using-private-endpoints).
+
+
+Sie können mithilfe dieser IP-Adresspräfixe die Konnektivität zwischen IoT Hub und Ihren Geräten oder Netzwerkressourcen steuern, um eine Vielzahl von Netzwerkisolationszielen zu implementieren:
 
 | Zielsetzung | Anwendbare Szenarien | Vorgehensweise |
 |------|-----------|----------|

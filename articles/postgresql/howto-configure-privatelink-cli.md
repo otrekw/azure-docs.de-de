@@ -1,19 +1,19 @@
 ---
-title: Private Link für Azure Database for PostgreSQL-Einzelserver (Vorschau) – CLI-Setupmethode
+title: Private Link – Azure CLI – Azure Database for PostgreSQL – Einzelserver
 description: Erfahren Sie, wie Sie einen privaten Link für die Azure Database for PostgreSQL konfigurieren können – Einzelserver der Azure-Befehlszeilenschnittstelle
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 0eacf0f65346247d5fda5b26ead924a8cfd94dd9
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: d4288b901a0e6e132e32f8391d108e79861fc331
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562087"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371034"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-cli"></a>Erstellen und Verwalten von Private Link for Azure Database for PostgreSQL – Einzelserver (Vorschau) mit Befehlszeilenschnittstelle
+# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>Erstellen und Verwalten von Private Link for Azure Database for PostgreSQL – Einzelserver mit Befehlszeilenschnittstelle
 
 Ein privater Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren. In diesem Artikel erfahren Sie, wie Sie einen virtuellen Computer in einem Azure Virtual Network und einen Azure Database for PostgreSQL-Einzelserver mit einem privaten Azure-Endpunkt über die Azure-Befehlszeilenschnittstelle erstellen.
 
@@ -168,7 +168,7 @@ Stellen Sie wie folgt eine Verbindung mit dem virtuellen Computer *myVm* aus dem
 
 4. Geben Sie in **Neue Verbindung** die folgenden Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Servertyp| Wählen Sie **PostgreSQL** aus.|
     | Servername| Wählen Sie *mydemopostgresserver.privatelink.postgres.database.azure.com* aus. |

@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 01/02/2020
-ms.openlocfilehash: d0b9c59852175b91b4bf799a366ae5124fa0ae42
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 03/16/2020
+ms.openlocfilehash: 115cb3e499117457629e130b6432a1cbc2224edb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644788"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79463049"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Datenflussaktivität in Azure Data Factory
 
@@ -63,7 +63,15 @@ staging.folderPath | Der für das PolyBase-Staging verwendete Ordnerpfad im Blob
 
 ![Ausführen eines Datenflusses](media/data-flow/activity-data-flow.png "Ausführen eines Datenflusses")
 
-### <a name="data-flow-integration-runtime"></a>Datenfluss-Integration Runtime
+### <a name="dynamically-size-data-flow-compute-at-runtime"></a>Dynamisches Bestimmen der Größe der Computekapazität für den Datenfluss zur Laufzeit
+
+Die Eigenschaften „Anzahl Kerne“ und „Computetyp“ können dynamisch festgelegt werden, um die Größe der eingehenden Quelldaten zur Laufzeit anzupassen. Verwenden Sie Pipelineaktivitäten wie „Nachschlagen“ oder „Metadaten abrufen“, um die Größe der Daten im Quelldatenset zu bestimmen. Verwenden Sie dann in den Eigenschaften der Datenflussaktivität „Dynamischen Inhalt hinzufügen“.
+
+![Dynamischer Datenfluss](media/data-flow/dyna1.png "Dynamischer Datenfluss")
+
+[Es folgt ein kurzes Videotutorial, das diese Technik erläutert.](https://www.youtube.com/watch?v=jWSkJdtiJNM)
+
+### <a name="data-flow-integration-runtime"></a>Integration Runtime für Datenfluss
 
 Wählen Sie die Integration Runtime aus, die für die Ausführung Ihrer Datenflussaktivität verwendet werden soll. Standardmäßig verwendet Data Factory die Azure Integration Runtime mit automatischer Auflösung, vier Workerkernen und ohne Gültigkeitsdauer (TTL). Diese Integration Runtime weist einen allgemeinen Computetyp auf und wird in derselben Region wie Ihre Factory ausgeführt. Sie können Ihre eigene Azure Integration Runtime erstellen, die bestimmte Regionen, den Computetyp, die Kernanzahl und die Gültigkeitsdauer (TTL) für die Ausführung Ihrer Datenflussaktivität definiert.
 

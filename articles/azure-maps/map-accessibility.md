@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: b0d9437b10bc54aac481eb630f12a2b99d2360a1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 5fa9e159fa0ac76ce8c585936059fb7f3151c7c4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672462"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473318"
 ---
 # <a name="building-an-accessible-application"></a>Erstellen einer zugänglichen Anwendung
 
@@ -41,7 +41,7 @@ Es gibt verschiedene Möglichkeiten für das Zoomen, Schwenken, Drehen und Neige
 - Mit einer Maus können Sie die Karte über das Mausrad zoomen.
 - Bei einem Touchscreen können Sie die Karte mit zwei Fingern berühren und diese zusammenführen, um zu vergrößern, und auseinanderführen, um zu verkleinern.
 - Doppeltippen Sie auf dem Touchscreen auf die Karte, um eine Ebene zu vergrößern.
-- Verwenden Sie bei fokussierter Karte das Pluszeichen (`+`) oder das *Gleichheitszeichen (`=`), um eine Ebene zu vergrößern.
+- Verwenden Sie bei der Karte im Fokus das Pluszeichen (`+`) oder das Gleichheitszeichen (`=`) zum Vergrößern um eine Ebene.
 - Verwenden Sie bei fokussierter Karte das Minuszeichen (`-`) oder den Unterstrich (`_`), um eine Ebene zu verkleinern.
 - Verwenden Sie das Zoomsteuerelement mit einer Maus, der Berührungssteuerung oder auf einer Tastatur der TAB- oder EINGABETASTE.
 - Halten Sie die Schaltfläche `Shift` und die linke Maustaste auf der Karte gedrückt, und ziehen Sie einen Bereich der Karte, um die Karte zu vergrößern.
@@ -92,7 +92,7 @@ map.getMapContainer().classList.contains("high-contrast-light")
 
 In die Karte sind einige Tastenkombinationen integriert, die die Verwendung der Karte vereinfachen. Diese Tastenkombinationen sind funktionsfähig, wenn die Karte den Fokus hat.
 
-| Key      | Aktion                            |
+| Schlüssel      | Aktion                            |
 |----------|-----------------------------------|
 | `Tab` | Navigieren Sie zwischen den Steuerelementen und Popups auf der Karte. |
 | `ESC` | Wechseln Sie den Fokus von einem beliebigen Element auf der Karte zum Kartenelement der obersten Ebene. |

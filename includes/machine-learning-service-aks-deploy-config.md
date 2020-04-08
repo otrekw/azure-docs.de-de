@@ -2,14 +2,14 @@
 author: Blackmist
 ms.service: machine-learning
 ms.topic: include
-ms.date: 10/06/2019
+ms.date: 03/16/2020
 ms.author: larryfr
-ms.openlocfilehash: 2124b5241015ca74ff6507767396b1a27bd1191d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c71f35a06d904b45cb014d5199197220b57cf230
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74935887"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79485949"
 ---
 Die Einträge im Dokument `deploymentconfig.json` werden den Parametern für [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py) zugeordnet. In der folgenden Tabelle wird die Zuordnung zwischen den Entitäten im JSON-Dokument und den Parametern für die Methode beschrieben:
 
@@ -18,10 +18,10 @@ Die Einträge im Dokument `deploymentconfig.json` werden den Parametern für [Ak
 | `computeType` | Nicht verfügbar | Das Computeziel. Für AKS muss der Wert `aks` sein. |
 | `autoScaler` | Nicht verfügbar | Enthält Konfigurationselemente für die automatische Skalierung. Weitere Informationen finden Sie in der Tabelle zur automatischen Skalierung. |
 | &emsp;&emsp;`autoscaleEnabled` | `autoscale_enabled` | Gibt an, ob die automatische Skalierung für den Webdienst aktiviert werden soll. Wenn `numReplicas` = `0`, dann `True`; andernfalls `False`. |
-| &emsp;&emsp;`minReplicas` | `autoscale_min_replicas` | Die Mindestanzahl von Containern, die bei der automatischen Skalierung dieses Webdiensts verwendet werden sollen. Standardwert: `1` |
-| &emsp;&emsp;`maxReplicas` | `autoscale_max_replicas` | Die maximale Anzahl von Containern, die bei der automatischen Skalierung dieses Webdiensts verwendet werden sollen. Standardwert: `10` |
-| &emsp;&emsp;`refreshPeriodInSeconds` | `autoscale_refresh_seconds` | Gibt an, wie oft die automatische Skalierung versucht, diesen Webdienst zu skalieren. Standardwert: `1` |
-| &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | Die Zielauslastung (in Prozent), die von der automatischen Skalierung für diesen Webdienst beibehalten werden soll. Standardwert: `70` |
+| &emsp;&emsp;`minReplicas` | `autoscale_min_replicas` | Die Mindestanzahl von Containern, die bei der automatischen Skalierung dieses Webdiensts verwendet werden sollen. Standardwert: `1`. |
+| &emsp;&emsp;`maxReplicas` | `autoscale_max_replicas` | Die maximale Anzahl von Containern, die bei der automatischen Skalierung dieses Webdiensts verwendet werden sollen. Standardwert: `10`. |
+| &emsp;&emsp;`refreshPeriodInSeconds` | `autoscale_refresh_seconds` | Gibt an, wie oft die automatische Skalierung versucht, diesen Webdienst zu skalieren. Standardwert: `1`. |
+| &emsp;&emsp;`targetUtilization` | `autoscale_target_utilization` | Die Zielauslastung (in Prozent), die von der automatischen Skalierung für diesen Webdienst beibehalten werden soll. Standardwert: `70`. |
 | `dataCollection` | Nicht verfügbar | Enthält Konfigurationselemente für die Datensammlung. |
 | &emsp;&emsp;`storageEnabled` | `collect_model_data` | Gibt an, ob die Modelldatensammlung für den Webdienst aktiviert werden soll. Standardwert: `False`. |
 | `authEnabled` | `auth_enabled` | Gibt an, ob die Schlüsselauthentifizierung für den Webdienst aktiviert werden soll. Weder `tokenAuthEnabled` noch `authEnabled` dürfen den Wert `True` aufweisen. Standardwert: `True`. |
@@ -30,14 +30,14 @@ Die Einträge im Dokument `deploymentconfig.json` werden den Parametern für [Ak
 | &emsp;&emsp;`cpu` | `cpu_cores` | Die Anzahl der CPU-Kerne, die für diesen Webdienst zuzuordnen sind. Standardwert: `0.1` |
 | &emsp;&emsp;`memoryInGB` | `memory_gb` | Der Arbeitsspeicherumfang (in GB), der für diesen Webdienst zugeordnet werden soll. Standardwert: `0.5`. |
 | `appInsightsEnabled` | `enable_app_insights` | Gibt an, ob für den Webdienst die Application Insights-Protokollierung aktiviert werden soll. Standardwert: `False`. |
-| `scoringTimeoutMs` | `scoring_timeout_ms` | Ein Zeitlimit zum Erzwingen der Bewertung von Aufrufen des Webdiensts. Standardwert: `60000` |
-| `maxConcurrentRequestsPerContainer` | `replica_max_concurrent_requests` | Die maximale Anzahl gleichzeitiger Anforderungen pro Knoten für diesen Webdienst. Standardwert: `1` |
-| `maxQueueWaitMs` | `max_request_wait_time` | Die maximale Zeit, die eine Anforderung in der Warteschlange (in Millisekunden) verbleibt, bevor der Fehler 503 zurückgegeben wird. Standardwert: `500` |
-| `numReplicas` | `num_replicas` | Die Anzahl der Container, die für diesen Webdienst zuzuordnen sind. Kein Standardwert. Wenn dieser Parameter nicht festgelegt ist, wird die automatische Skalierung standardmäßig aktiviert. |
+| `scoringTimeoutMs` | `scoring_timeout_ms` | Ein Zeitlimit zum Erzwingen der Bewertung von Aufrufen des Webdiensts. Standardwert: `60000`. |
+| `maxConcurrentRequestsPerContainer` | `replica_max_concurrent_requests` | Die maximale Anzahl gleichzeitiger Anforderungen pro Knoten für diesen Webdienst. Standardwert: `1`. |
+| `maxQueueWaitMs` | `max_request_wait_time` | Die maximale Zeit, die eine Anforderung in der Warteschlange (in Millisekunden) verbleibt, bevor der Fehler 503 zurückgegeben wird. Standardwert: `500`. |
+| `numReplicas` | `num_replicas` | Die Anzahl der Container, die für diesen Webdienst zuzuordnen sind. Für dieses Feld gibt es keinen Standardwert. Wenn dieser Parameter nicht festgelegt ist, wird die automatische Skalierung standardmäßig aktiviert. |
 | `keys` | Nicht verfügbar | Enthält Konfigurationselemente für Schlüssel. |
 | &emsp;&emsp;`primaryKey` | `primary_key` | Ein primärer Authentifizierungsschlüssel, der für diesen Webdienst verwendet werden soll. |
 | &emsp;&emsp;`secondaryKey` | `secondary_key` | Ein sekundärer Authentifizierungsschlüssel, der für diesen Webdienst verwendet werden soll. |
-| `gpuCores` | `gpu_cores` | Die Anzahl der GPU-Kerne, die für diesen Webdienst zuzuordnen sind. Der Standardwert ist 1. Unterstützt nur ganze Zahlen. |
+| `gpuCores` | `gpu_cores` | Die Anzahl der GPU-Kerne (containerbezogenes Replikat), die diesem Webdienst zuzuordnen sind. Der Standardwert ist 1. Unterstützt nur ganze Zahlen. |
 | `livenessProbeRequirements` | Nicht verfügbar | Enthält Konfigurationselemente für die Anforderungen an Livetests. |
 | &emsp;&emsp;`periodSeconds` | `period_seconds` | Gibt an, wie häufig (in Sekunden) ein Livetest durchgeführt werden soll. Der Standardwert ist 10 Sekunden. Der Mindestwert ist 1. |
 | &emsp;&emsp;`initialDelaySeconds` | `initial_delay_seconds` | Die Anzahl der Sekunden, die nach dem Start des Containers vergehen, bevor Livetests initiiert werden. Der Standardwert ist 310. |

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a869f4fa82999192f75f2c114720151bae55680
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 7a215e2bb7d9d1cf9013414037383590456296cd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78298427"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480894"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Gewusst wie: Vorschreiben der Verwendung von genehmigten Client-Apps für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs
 
@@ -28,6 +28,9 @@ Dieser Artikel enthält zwei Szenarien zum Konfigurieren von Richtlinien für de
 - [Szenario 2: Exchange Online und SharePoint Online erfordern eine genehmigte Client-App.](#scenario-2-exchange-online-and-sharepoint-online-require-an-approved-client-app)
 
 Bei bedingtem Zugriff wird diese Funktion über eine genehmigte Client-App erzwungen. Eine Liste der genehmigten Client-Apps finden Sie unter [Genehmigte Client-App als Voraussetzung](concept-conditional-access-grant.md#require-approved-client-app).
+
+> [!NOTE]
+> Um genehmigte Client-Apps für iOS- und Android-Geräte anzufordern, müssen sich diese Geräte zunächst bei Azure AD registrieren.
 
 ## <a name="scenario-1-office-365-apps-require-an-approved-client-app"></a>Szenario 1: Office 365-Apps erfordern eine genehmigte Client-App.
 

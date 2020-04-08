@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/14/2020
+ms.date: 03/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 884244b245be06f1477d27a4828cad18e36eca24
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 648578563a0e53d3ed5bda6ab47f85c3c6a2a24e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368621"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476653"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Zeitreihenmodell in Azure Time Series Insights Preview
 
@@ -97,7 +97,7 @@ Die Demoumgebung [Contoso Wind Farm](https://insights.timeseries.azure.com/previ
 
 Instanzen werden durch **timeSeriesId**, **typeId**, **name**, **description**, **hierarchyIds** und **instanceFields** definiert. Jede Instanz wird nur einem *Typ* sowie einer oder mehreren *Hierarchien* zugeordnet.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | ---|
 | timeSeriesId | Der UUID der Zeitreihe, der die Instanz zugeordnet ist. |
 | typeId | Der UUID des Zeitreihenmodelltyps, dem die Instanz zugeordnet ist. Standardmäßig werden alle entdeckten neuen Instanzen einem Standardtyp zugeordnet.
@@ -237,7 +237,7 @@ Die Demoumgebung [Contoso Wind Farm](https://insights.timeseries.azure.com/previ
 
 Zeitreihenmodelltypen werden durch **id**, **name**, **description** und **variables** definiert.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | ---| ---|
 | id | Der UUID des Typs. |
 | name | Eine Zeichenfolge zum Angeben eines Namens für den Typ. |
@@ -300,7 +300,7 @@ Die folgende Tabelle zeigt die Eigenschaften, die für die jeweilige Variablenar
 
 #### <a name="numeric-variables"></a>Numerische Variablen
 
-| Variableneigenschaft | Beschreibung |
+| Variableneigenschaft | BESCHREIBUNG |
 | --- | ---|
 | Variablenfilter | Filter sind optionale Bedingungsklauseln, um die Anzahl von Zeilen zu beschränken, die bei der Berechnung berücksichtigt werden. |
 | Variablenwert | Für Berechnungen verwendete Telemetriewerte, die aus Geräten oder Sensoren stammen oder mithilfe von Zeitreihenausdrücken transformiert werden. Numerische Variablen müssen den Typ *Double* aufweisen.|
@@ -344,7 +344,7 @@ Variablen entsprechen dem folgenden JSON-Beispiel:
 "Status": {
   "kind": "categorical",
   "value": {
-     "tsx": "toLong($event.[Status].Double)" 
+     "tsx": "toLong($event.[Status].Double)"
 },
   "interpolation": {
     "kind": "step",
@@ -354,7 +354,7 @@ Variablen entsprechen dem folgenden JSON-Beispiel:
   },
   "categories": [
     {
-      "values": [0, 1, 2, 3],
+      "values": [0, 1, 2],
       "label": "Good"
     },
     {

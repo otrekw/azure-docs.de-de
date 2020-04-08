@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 09/30/2019
+ms.date: 03/18/2020
 ms.author: juliako
-ms.openlocfilehash: c1b72f2a84f8cafa1767639cae64fb420b0a997c
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: e6f2ad2c5c30e3c75e8d3588e386ea14e8e3350b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546043"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065944"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Liveereignisse und Liveausgaben in Media Services
 
@@ -34,7 +34,7 @@ Mit Azure Media Services können Sie Ihren Kunden Liveereignisse in der Azure Cl
 
 ## <a name="live-event-types"></a>Liveereignistypen
 
-Für ein [Liveereignis](https://docs.microsoft.com/rest/api/media/liveevents) kann einer von zwei Typen verwendet werden: Pass-Through oder Livecodierung. Die Typen werden während der Erstellung mit [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype) festgelegt:
+Ein [Liveereignis](https://docs.microsoft.com/rest/api/media/liveevents) kann entweder auf eine *Pass-Through*- (ein lokaler Liveencoder sendet einen Stream mit mehreren Bitraten) oder *Livecodierung* (ein lokaler Liveencoder sendet einen Stream mit Einzelbitrate) festgelegt werden. Die Typen werden während der Erstellung mit [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype) festgelegt:
 
 * **LiveEventEncodingType.None**: Ein lokaler Liveencoder sendet einen Stream mit mehreren Bitraten. Der erfasste Datenstrom durchläuft das Liveereignis ohne weitere Verarbeitung. Wird auch als Pass-Through-Modus bezeichnet.
 * **LiveEventEncodingType.Standard**: Ein lokaler Liveencoder sendet einen Stream mit einer einzigen Bitrate an das Liveereignis, und Media Services erstellt Streams mit mehreren Bitraten. Wenn der Beitragsfeed eine Auflösung von 720p oder höher hat, bewirkt die Voreinstellung **Default720p**, dass eine Reihe von 6 Auflösungs-/Bitrate-Paaren codiert wird.
@@ -129,7 +129,7 @@ Sie können Nicht-Vanity-URLs oder Vanity-URLs verwenden.
 
 * Die nachstehende *zufällige* Zeichenfolge ist eine 128-Bit-Hexadezimalzahl (sie umfasst 32 Zeichen von 0 bis 9 und a bis f).
 * *auto-generated access token*: Die von Ihnen festgelegte gültige GUID-Zeichenfolge bei Verwendung des Vanity-Modus. Beispiel: `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
-* *stream name*: Gibt den Streamnamen für eine bestimmte Verbindung an. Der Wert des Datenstromnamens wird in der Regel von dem von Ihnen verwendeten Liveencoder hinzugefügt. Sie können den Liveencoder so konfigurieren, dass Sie zum Beschreiben der Verbindung einen beliebigen Namen (z. B. „video1_audio1“, „video2_audio1“ oder „stream“) verwenden können.
+* *stream name*: Gibt den Streamnamen für eine bestimmte Verbindung an. Der Wert des Datenstromnamens wird in der Regel von dem von Ihnen verwendeten Liveencoder hinzugefügt. Sie können den Liveencoder so konfigurieren, dass Sie zum Beschreiben der Verbindung einen beliebigen Namen verwenden können. Beispiel: „video1_audio1“, „video2_audio1“ oder „stream“.
 
 #### <a name="non-vanity-url"></a>Nicht-Vanity-URL
 
@@ -176,7 +176,11 @@ Wenn der Stream an das Liveereignis übertragen wird, können Sie das Streaminge
 
 Ausführliche Informationen zu Liveausgaben finden Sie unter [Verwenden eines Cloud-DVR](live-event-cloud-dvr.md).
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Fragen stellen, Feedback geben, Updates abrufen
+## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+
+Lesen Sie den Artikel mit [häufig gestellten Fragen](frequently-asked-questions.md#live-streaming).
+
+## <a name="ask-questions-and-get-updates"></a>Stellen von Fragen und Abrufen von Updates
 
 Im Artikel [Azure Media Services-Community](media-services-community.md) finden Sie verschiedene Möglichkeiten, Fragen zu stellen, Feedback zu geben und Updates zu Media Services zu bekommen.
 

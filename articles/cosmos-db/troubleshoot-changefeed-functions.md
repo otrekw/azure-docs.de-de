@@ -3,16 +3,16 @@ title: Behandeln von Problemen bei Verwendung des Azure Functions-Triggers für
 description: Häufig auftretende Probleme, Problemumgehungen und Diagnoseschritte bei Verwendung des Azure Functions-Triggers für Cosmos DB
 author: ealsur
 ms.service: cosmos-db
-ms.date: 07/17/2019
+ms.date: 03/13/2020
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f382406d164aa7378631753c2cfc85bc69003a4f
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 7bf7d418e3f2680b32f61e42cffc76c921068508
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77605076"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79365507"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Diagnostizieren und Behandeln von Problemen bei Verwendung des Azure Functions-Triggers für Cosmos DB
 
@@ -52,7 +52,11 @@ Das heißt, dass einer oder beide der für die ordnungsgemäße Funktion des Tri
 
 Die früheren Versionen der Azure Cosmos DB-Erweiterung unterstützten nicht die Verwendung eines Leases-Containers, der in einer [gemeinsam genutzten Durchsatz-Datenbank](./set-throughput.md#set-throughput-on-a-database) erstellt wurde. Beheben Sie dieses Problem, indem Sie die Erweiterung [Microsoft.Azure.WebJobs.Extensions.CosmosDB](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB) auf die neueste Version aktualisieren.
 
-### <a name="azure-function-fails-to-start-with-the-lease-collection-if-partitioned-must-have-partition-key-equal-to-id"></a>Die Azure Funktion kann nicht gestartet werden, und der folgende Fehler wird ausgegeben: „The lease collection, if partitioned, must have partition key equal to id“ (Die Lease-Sammlung, falls partitioniert, muss einen Partitionsschlüssel aufweisen, der gleich id ist).
+### <a name="azure-function-fails-to-start-with-partitionkey-must-be-supplied-for-this-operation"></a>Die Azure-Funktion wird mit der Fehlermeldung „PartitionKey must be supplied for this operation“ (PartitionKey muss für diesen Vorgang bereitgestellt werden) nicht gestartet.
+
+Dieser Fehler bedeutet, dass Sie derzeit eine partitionierte Leasesammlung mit einer alten [Erweiterungsabhängigkeit](#dependencies) nutzen. Führen Sie ein Upgrade auf die neueste verfügbare Version durch. Wenn Sie derzeit mit Azure Functions V1 arbeiten, müssen Sie ein Upgrade auf Azure Functions V2 durchführen.
+
+### <a name="azure-function-fails-to-start-with-the-lease-collection-if-partitioned-must-have-partition-key-equal-to-id"></a>Die Azure-Funktion kann nicht gestartet werden, und der folgende Fehler wird ausgegeben: „The lease collection, if partitioned, must have partition key equal to id“ (Die Lease-Sammlung, falls partitioniert, muss einen Partitionsschlüssel aufweisen, der gleich id ist).
 
 Dieser Fehler weist darauf hin, dass Ihr aktueller Leases-Container partitioniert ist, der Partitionsschlüsselpfad jedoch nicht `/id` ist. Zum Beheben dieses Problems müssen Sie den Leases-Container mit `/id` als Partitionsschlüssel neu erstellen.
 
@@ -69,6 +73,13 @@ Dieses Szenario kann mehrere Ursachen haben, und alle von ihnen sollten überpr�
 Wenn Letzteres der Fall ist, kann zwischen dem Speichern der Änderungen und dem Übernehmen durch die Azure-Funktion eine gewisse Verzögerung auftreten. Dies hat folgende Ursache: Wenn der Trigger intern eine Überprüfung auf Änderungen in Ihrem Azure Cosmos-Container durchführt und keine für Lesevorgänge anstehenden Änderungen findet, wechselt er für einen konfigurierbaren Zeitraum (standardmäßig 5 Sekunden) in den Ruhezustand, ehe er auf neue Änderungen prüft (um einen hohen RU-Verbrauch zu vermeiden). Sie können diesen Ruhemodus-Zeitraum über die `FeedPollDelay/feedPollDelay`-Einstellung in der [Konfiguration](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) des Triggers konfigurieren (der Wert muss in Millisekunden angegeben werden).
 3. Für Ihren Azure Cosmos-Container gilt möglicherweise eine [Ratenbegrenzung](./request-units.md).
 4. Sie können mit dem `PreferredLocations`-Attribut im Trigger eine durch Trennzeichen getrennte Liste von Azure-Regionen angeben, um eine Verbindungsreihenfolge mit benutzerdefinierten Präferenzen festzulegen.
+
+### <a name="some-changes-are-repeated-in-my-trigger"></a>Einige Änderungen werden in meinem Trigger wiederholt
+
+Das Konzept einer „Änderung“ ist ein Vorgang in einem Dokument. Die gängigsten Szenarien, in denen Ereignisse für dasselbe Dokument empfangen werden, sind Folgende:
+* Das Konto verwendet letztliche Konsistenz. Bei Nutzung des Änderungsfeeds auf einer Ebene des Typs „Letztliche Konsistenz“ können in nachfolgenden Lesevorgängen im Änderungsfeed duplizierte Ereignisse auftreten (das letzte Ereignis eines Lesevorgangs wird als erstes des nächsten angezeigt).
+* Das Dokument wird aktualisiert. Der Änderungsfeed kann mehrere Vorgänge für dieselben Dokumente enthalten. Wenn ein Dokument Aktualisierungen empfängt, kann es mehrere Ereignisse aufnehmen (eines für jede Aktualisierung). Eine einfache Möglichkeit, zwischen verschiedenen Vorgängen für ein und dasselbe Dokument zu unterscheiden, ist die Nachverfolgung der `_lsn`-[Eigenschaft für jede Änderung](change-feed.md#change-feed-and-_etag-_lsn-or-_ts). Wenn sie nicht übereinstimmen, handelt es sich um verschiedene Änderungen am selben Dokument.
+* Wenn Sie Dokumente nur anhand der `id` identifizieren, denken Sie daran, dass der eindeutige Bezeichner für ein Dokument die `id` und sein Partitionsschlüssel sind (es kann zwei Dokumente mit der gleichen `id`, aber unterschiedlichem Partitionsschlüssel geben).
 
 ### <a name="some-changes-are-missing-in-my-trigger"></a>Einige Änderungen sind in meinem Trigger nicht vorhanden
 
@@ -87,22 +98,22 @@ Wenn Sie feststellen, dass einige Änderungen vom Trigger überhaupt nicht empfa
 
 Sie können ein solches Szenario auch überprüfen, wenn Ihnen bekannt ist, wie viele Instanzen der Azure-Funktions-App ausgeführt werden. Wenn Sie Ihren Leases-Container untersuchen und die Anzahl der darin enthaltenen Lease-Elemente zählen, müssen die eindeutigen Werte der enthaltenen `Owner`-Eigenschaft gleich der Anzahl der Instanzen Ihrer Funktions-App sein. Wenn andere Besitzer als die bekannten Azure-Funktions-App-Instanzen vorhanden sind, heißt das, dass diese zusätzlichen Besitzer die Änderungen „stehlen“.
 
-Eine einfache Möglichkeit, diese Situation zu umgehen, besteht darin, ein `LeaseCollectionPrefix/leaseCollectionPrefix` mit einem neuen/anderen Wert auf die Funktion anzuwenden oder alternativ eine Überprüfung mit einem neuen Leases-Container durchzuführen.
+Eine einfache Möglichkeit, dies zu vermeiden, besteht darin, ein `LeaseCollectionPrefix/leaseCollectionPrefix` mit einem neuen/anderen Wert auf die Funktion anzuwenden oder alternativ eine Überprüfung mit einem neuen Container für Leases durchzuführen.
 
-### <a name="need-to-restart-and-re-process-all-the-items-in-my-container-from-the-beginning"></a>Ich muss alle Elemente in meinem Container von Anfang an neu starten und erneut verarbeiten 
-So verarbeiten Sie alle Elemente in einem Container von Anfang an erneut:
+### <a name="need-to-restart-and-reprocess-all-the-items-in-my-container-from-the-beginning"></a>Ich muss alle Elemente in meinem Container von Anfang an neu starten und erneut verarbeiten 
+So verarbeiten Sie alle Elemente in einem Container von Anfang an erneut
 1. Beenden Sie Ihre Azure-Funktion, wenn sie gerade ausgeführt wird. 
 1. Löschen Sie die Dokumente in der Lease-Sammlung (oder löschen Sie die Lease-Sammlung, und erstellen Sie sie erneut, damit sie leer ist).
 1. Legen Sie das CosmosDBTrigger-Attribut [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) in der Funktion auf „true“ fest. 
 1. Starten Sie die Azure-Funktion neu. Jetzt werden alle Änderungen von Anfang an gelesen und verarbeitet. 
 
-Durch Festlegen von [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) auf „true“ wird die Azure-Funktion angewiesen, damit zu beginnen, Änderungen ab dem Anfang des Verlaufs der Sammlung statt ab der aktuellen Uhrzeit zu lesen. Dies funktioniert nur, wenn es keine bereits erstellten Leases (d.h. Dokumente in der Leases-Sammlung) gibt. Wird diese Eigenschaft auf „true“ festgelegt, wenn es bereits Leases gibt, hat dies keine Auswirkungen. Wenn in diesem Szenario eine Funktion beendet und neu gestartet wird, beginnt sie mit dem Lesen ab dem letzten Prüfpunkt, wie es in der Leases-Sammlung definiert wurde. Führen Sie die vorstehenden Schritte 1–4 aus, um die erneute Verarbeitung von Anfang an auszuführen.  
+Durch Festlegen von [StartFromBeginning](../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) auf „true“ wird die Azure-Funktion angewiesen, damit zu beginnen, Änderungen ab dem Anfang des Verlaufs der Sammlung statt ab der aktuellen Uhrzeit zu lesen. Dies funktioniert nur, wenn es keine bereits erstellten Leases (d. h. Dokumente in der Sammlung der Leases) gibt. Wird diese Eigenschaft auf „true“ festgelegt, wenn es bereits Leases gibt, hat dies keine Auswirkungen. Wenn in diesem Szenario eine Funktion beendet und neu gestartet wird, beginnt sie mit dem Lesen ab dem letzten Prüfpunkt, wie es in der Leases-Sammlung definiert wurde. Führen Sie die obigen Schritte 1-4 aus, um die erneute Verarbeitung von Anfang an auszuführen.  
 
 ### <a name="binding-can-only-be-done-with-ireadonlylistdocument-or-jarray"></a>Bindung kann nur mit IReadOnlyList\<Dokument> oder JArray erfolgen
 
 Dieser Fehler tritt auf, wenn Ihr Azure Functions-Projekt (oder ein beliebiges Projekt, auf das verwiesen wird) einen manuelle NuGet-Verweis auf das Azure Cosmos DB-SDK mit einer anderen Version als die durch die [Azure Functions Cosmos DB-Erweiterung](./troubleshoot-changefeed-functions.md#dependencies) bereitgestellte Version enthält.
 
-Zum Umgehen dieses Problems entfernen Sie den hinzugefügten manuellen NuGet-Verweis, und lassen Sie den Azure Cosmos DB-SDK-Verweis über das Azure Functions Cosmos DB-Erweiterungspaket auflösen.
+Zum Umgehen dieses Problems entfernen Sie den hinzugefügten manuellen NuGet-Verweis, und lassen Sie den Azure Cosmos DB SDK-Verweis über das Azure Functions Cosmos DB-Erweiterungspaket auflösen.
 
 ### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>Ändern des Abrufintervalls der Azure-Funktion für die erkannten Änderungen
 

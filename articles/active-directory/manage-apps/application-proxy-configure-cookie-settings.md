@@ -12,12 +12,12 @@ ms.date: 01/16/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7287e32fbeff751bddf91bed32afeeae84f9378c
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: bcedb24a0efdbabaaef150fc3d5aff07d210ce23
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014515"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481363"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Cookieeinstellungen für den Zugriff auf lokale Anwendungen in Azure Active Directory
 
@@ -29,7 +29,7 @@ Der [Anwendungsproxy](application-proxy.md) verwendet die folgenden Einstellunge
 
 | Cookieeinstellung | Standard | BESCHREIBUNG | Empfehlungen |
 | -------------- | ------- | ----------- | --------------- |
-| Nur-HTTP-Cookie verwenden | **Nein** | Bei Festlegung von **Ja** kann der Anwendungsproxy das HTTPOnly-Flag in HTTP-Antwortheadern einschließen. Dieses Flag bietet zusätzliche Sicherheitsvorteile, z.B. wird das Kopieren oder Ändern von Cookies über ein clientseitiges Scripting (CSS) verhindert.<br></br><br></br>Vor der Unterstützung der HTTP-Only-Einstellung verschlüsselte der Anwendungsproxy Cookies und übermittelte sie über einen sicheren SSL-Kanal, um Schutz vor Änderungen bereitzustellen. | Verwenden Sie **Ja**, um von den zusätzlichen Sicherheitsvorteilen zu profitieren.<br></br><br></br>Verwenden Sie **Nein** für Clients oder Benutzer-Agents, die keinen Zugriff auf das Sitzungscookie benötigen. Verwenden Sie beispielsweise **Nein** für einen RDP- oder MTSC-Client, der über den Anwendungsproxy eine Verbindung mit einem Remotedesktop-Gatewayserver herstellt.|
+| Nur-HTTP-Cookie verwenden | **Nein** | Bei Festlegung von **Ja** kann der Anwendungsproxy das HTTPOnly-Flag in HTTP-Antwortheadern einschließen. Dieses Flag bietet zusätzliche Sicherheitsvorteile, z.B. wird das Kopieren oder Ändern von Cookies über ein clientseitiges Scripting (CSS) verhindert.<br></br><br></br>Vor Unterstützung der Einstellung „HTTP-Only“ verschlüsselte der Anwendungsproxy Cookies und übermittelte sie über einen sicheren TLS-Kanal, um Schutz vor Änderungen bereitzustellen. | Verwenden Sie **Ja**, um von den zusätzlichen Sicherheitsvorteilen zu profitieren.<br></br><br></br>Verwenden Sie **Nein** für Clients oder Benutzer-Agents, die keinen Zugriff auf das Sitzungscookie benötigen. Verwenden Sie beispielsweise **Nein** für einen RDP- oder MTSC-Client, der über den Anwendungsproxy eine Verbindung mit einem Remotedesktop-Gatewayserver herstellt.|
 | Sicheres Cookie verwenden | **Nein** | Bei Festlegung von **Ja** kann der Anwendungsproxy das Flag „Secure“ in HTTP-Antwortheadern einschließen. Sichere Cookies erhöhen die Sicherheit, weil sie über einen TLS-gesicherten Kanal wie z.B. HTTPS übertragen werden. Dadurch wird verhindert, dass Cookies aufgrund der Übertragung in Klartext durch Unbefugte eingesehen werden können. | Verwenden Sie **Ja**, um von den zusätzlichen Sicherheitsvorteilen zu profitieren.|
 | Beständiges Cookie verwenden | **Nein** | Bei Festlegung auf **Ja** kann der Anwendungsproxy Zugriffscookies so festlegen, dass sie beim Schließen des Webbrowsers nicht ablaufen. Cookies bleiben erhalten, bis das Zugriffstoken abläuft oder der Benutzer die persistenten Cookies manuell löscht. | Verwenden Sie **Nein** wegen des Sicherheitsrisikos, das mit der Beibehaltung der Authentifizierung von Benutzern verbunden ist.<br></br><br></br>Wir empfehlen, **Ja** nur für ältere Anwendungen zu verwenden, die Cookies nicht zwischen Prozessen gemeinsam verwenden können. Es ist besser, Ihre Anwendung zur gemeinsamen Nutzung von Cookies zwischen Prozessen zu aktualisieren, als beständige Cookies zu verwenden. Angenommen, Sie benötigen beständige Cookies, damit ein Benutzer von einer SharePoint-Website aus Office-Dokumente in der Explorer-Ansicht öffnen kann. Ohne beständige Cookies kommt es bei diesem Vorgang möglicherweise zu Fehlern, wenn die Zugriffscookies nicht vom Browser, dem Explorer-Prozess und dem Office-Prozess gemeinsam verwendet werden. |
 

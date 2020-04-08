@@ -1,6 +1,6 @@
 ---
 title: Hochverfügbarkeit mit Datenverwaltungsgateway in Azure Data Factory
-description: In diesem Artikel wird beschrieben, wie Sie ein Datenverwaltungsgateway horizontal hochskalieren können, indem Sie mehr Knoten hinzufügen. Außerdem erfahren Sie, wie Sie das zentrale Hochskalieren durchführen, indem Sie die Anzahl von gleichzeitigen Aufträgen erhöhen, die für einen Knoten ausgeführt werden können.
+description: In diesem Artikel wird beschrieben, wie Sie ein Datenverwaltungsgateway aufskalieren können, indem Sie mehr Knoten hinzufügen. Außerdem erfahren Sie, wie Sie das Hochskalieren durchführen, indem Sie die Anzahl von gleichzeitigen Aufträgen erhöhen, die für einen Knoten ausgeführt werden können.
 services: data-factory
 documentationcenter: ''
 author: nabhishek
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 25dbb01a4b018a51390be664472aceadea0a9524
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4ee89f4bba70bb5e81eef21247d556f65a2a1f16
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932032"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065208"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Datenverwaltungsgateway – Hochverfügbarkeit und Skalierbarkeit (Vorschauversion)
 > [!NOTE]
@@ -42,7 +42,7 @@ Sie können auch die Anzahl von **gleichzeitigen Datenverschiebungsaufträgen** 
 
 Mit dem Azure-Portal können Sie den Status dieser Knoten überwachen, um leichter entscheiden zu können, ob ein Knoten dem logischen Gateway hinzugefügt oder daraus entfernt werden soll. 
 
-## <a name="architecture"></a>Architecture 
+## <a name="architecture"></a>Aufbau 
 Das folgende Diagramm enthält die Architekturübersicht zur Skalierbarkeits- und Verfügbarkeitsfunktion des Datenverwaltungsgateways: 
 
 ![Datenverwaltungsgateway – Hochverfügbarkeit und Skalierbarkeit](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-high-availability-and-scalability.png)
@@ -51,7 +51,7 @@ Ein **logisches Gateway** ist das Gateway, das Sie einer Data Factory im Azure-P
 
 Hierbei sind alle Knoten **aktiv**. Alle Knoten können Datenverschiebungsaufträge verarbeiten, um Daten zwischen lokalen und Cloudatenspeichern zu verschieben. Einer der Knoten fungiert sowohl als Verteiler als auch als Worker. Die anderen Knoten in den Gruppen sind Workerknoten. Ein **Verteiler**knoten führt für Datenverschiebungsaufgaben/-aufträge den Pullvorgang aus dem Clouddienst durch und verteilt sie an Workerknoten (auch sich selbst). Ein **Worker**knoten führt Datenverschiebungsaufträge aus, um Daten zwischen lokalen und Clouddatenspeichern zu verschieben. Alle Knoten sind Worker. Nur ein Knoten kann sowohl Verteiler als auch Worker sein.    
 
-Normalerweise beginnen Sie mit einem Knoten und führen dann das **horizontale Hochskalieren** durch, um weitere Knoten hinzuzufügen, wenn die Belastung der Datenverschiebung von dem bzw. den vorhandenen Knoten nicht mehr bewältigt werden kann. Sie können die Datenverschiebungsfunktion eines Gatewayknotens auch **zentral hochskalieren**, indem Sie die Anzahl von gleichzeitigen Aufträgen erhöhen, die auf dem Knoten ausgeführt werden können. Diese Funktion ist auch für ein Gateway mit nur einem Knoten verfügbar (auch wenn die Skalierbarkeits- und Verfügbarkeitsfunktion nicht aktiviert ist). 
+Normalerweise beginnen Sie mit einem Knoten und führen dann das **Aufskalieren** durch, um weitere Knoten hinzuzufügen, wenn die Belastung der Datenverschiebung von dem bzw. den vorhandenen Knoten nicht mehr bewältigt werden kann. Sie können die Datenverschiebungsfunktion eines Gatewayknotens auch **hochskalieren**, indem Sie die Anzahl von gleichzeitigen Aufträgen erhöhen, die auf dem Knoten ausgeführt werden können. Diese Funktion ist auch für ein Gateway mit nur einem Knoten verfügbar (auch wenn die Skalierbarkeits- und Verfügbarkeitsfunktion nicht aktiviert ist). 
 
 Ein Gateway mit mehreren Knoten erhält die Synchronisierung der Datenspeicher-Anmeldeinformationen für alle Knoten aufrecht. Falls ein Problem mit der Konnektivität von Knoten zu Knoten auftritt, sind die Anmeldeinformationen ggf. nicht mehr synchron. Wenn Sie Anmeldeinformationen für einen lokalen Datenspeicher festlegen, der ein Gateway nutzt, werden die Anmeldeinformationen auf dem Verteiler-/Workerknoten gespeichert. Der Verteilerknoten wird mit anderen Workerknoten synchronisiert. Dieser Prozess wird als **Synchronisierung von Anmeldeinformationen** bezeichnet. Der Kommunikationskanal zwischen Knoten kann mit einem öffentlichen SSL/TLS-Zertifikat **verschlüsselt** werden. 
 
@@ -166,7 +166,7 @@ Hier sind die Anforderungen für das TLS/SSL-Zertifikat angegeben, das zum Schü
   > Die Anwendung für die Anmeldeinformationsverwaltung wird beim sicheren Festlegen von Anmeldeinformationen über den Kopier-Assistenten/das Azure-Portal verwendet. Dies kann auf jedem Computer im gleichen Netzwerk wie der lokale/private Datenspeicher ausgelöst werden.
 - Platzhalterzertifikate werden unterstützt. Wenn der FQDN **node1.domain.contoso.com** lautet, können Sie * **.domain.contoso.com** als Antragstellernamen des Zertifikats verwenden.
 - SAN-Zertifikate sind nicht empfehlenswert, da nur das letzte Element des alternativen Antragstellernamens verwendet wird und alle anderen aufgrund von aktuellen Einschränkungen ignoriert werden. Beispiel: Wenn Sie ein SAN-Zertifikat mit den SANs **node1.domain.contoso.com** und **node2.domain.contoso.com** haben, können Sie dieses Zertifikat nur auf dem Computer mit dem FQDN **node2.domain.contoso.com** verwenden.
-- Unterstützt alle Schlüsselgrößen, die von Windows Server 2012 R2 für SSL-Zertifikate unterstützt werden.
+- Unterstützt alle Schlüsselgrößen, die von Windows Server 2012 R2 für TLS/SSL-Zertifikate unterstützt werden.
 - Zertifikate mit CNG-Schlüsseln werden nicht unterstützt.
 
 #### <a name="faq-when-would-i-not-enable-this-encryption"></a>Häufig gestellte Fragen: Wann sollte ich diese Verschlüsselung nicht aktivieren?
@@ -185,14 +185,14 @@ Sie können auf der Seite **Gateway** die Option **Erweiterte Einstellungen** ak
 
 Überwachungseigenschaft | BESCHREIBUNG
 :------------------ | :---------- 
-NAME | Name des logischen Gateways und der Knoten, die dem Gateway zugeordnet sind.  
+Name | Name des logischen Gateways und der Knoten, die dem Gateway zugeordnet sind.  
 Status | Status des logischen Gateways und der Gatewayknoten. Beispiel: Online/Offline/Eingeschränkt usw. Informationen zu diesen Status finden Sie im Abschnitt [Gatewaystatus](#gateway-status). 
 Version | Zeigt die Version des logischen Gateways und jedes Gatewayknotens an. Die Version des logischen Gateways wird basierend auf der Version bestimmt, die die meisten Knoten der Gruppe aufweisen. Wenn Knoten mit unterschiedlichen Versionen am Setup des logischen Gateways beteiligt sind, funktionieren nur die Knoten mit der gleichen Versionsnummer wie beim logischen Gateway richtig. Andere Knoten befinden sich im eingeschränkten Modus und müssen manuell aktualisiert werden (nur für den Fall, dass die automatische Aktualisierung fehlschlägt). 
 Verfügbarer Arbeitsspeicher | Verfügbarer Arbeitsspeicher auf einem Gatewayknoten. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. 
 CPU-Auslastung | CPU-Auslastung eines Gatewayknotens. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. 
 Netzwerk (Eingang/Ausgang) | Netzwerkauslastung eines Gatewayknotens. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. 
-Gleichzeitige Aufträge (ausgeführt/Limit) | Anzahl von Aufträgen oder Aufgaben, die auf den einzelnen Knoten ausgeführt werden. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. Mit „Limit“ wird angegeben, wie viele Aufträge für einen Knoten jeweils gleichzeitig ausgeführt werden können. Dieser Wert wird basierend auf der Größe des Computers definiert. Sie können das Limit erhöhen, um die Ausführung von gleichzeitigen Aufträgen in erweiterten Szenarien zentral hochzuskalieren, in denen CPU, Arbeitsspeicher und Netzwerk nicht voll ausgelastet sind, aber Zeitüberschreitungen für Aktivitäten auftreten. Diese Funktion ist auch für ein Gateway mit nur einem Knoten verfügbar (auch wenn die Skalierbarkeits- und Verfügbarkeitsfunktion nicht aktiviert ist). Weitere Informationen finden Sie im Abschnitt [Aspekte der Skalierung](#scale-considerations). 
-Rolle | Es gibt zwei Arten von Rollen: „Verteiler“ und „Worker“. Alle Knoten sind Worker. Dies bedeutet, dass alle Knoten zum Ausführen von Aufträgen verwendet werden können. Es ist nur ein Verteilerknoten vorhanden, der zum Durchführen der Pullvorgänge für Aufgaben bzw. Aufträge von Clouddiensten und Verteilen an die einzelnen Workerknoten (einschließlich sich selbst) genutzt wird. 
+Gleichzeitige Aufträge (ausgeführt/Limit) | Anzahl von Aufträgen oder Aufgaben, die auf den einzelnen Knoten ausgeführt werden. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. Mit „Limit“ wird angegeben, wie viele Aufträge für einen Knoten jeweils gleichzeitig ausgeführt werden können. Dieser Wert wird basierend auf der Größe des Computers definiert. Sie können das Limit erhöhen, um die Ausführung von gleichzeitigen Aufträgen in erweiterten Szenarien hochzuskalieren, in denen CPU, Arbeitsspeicher und Netzwerk nicht voll ausgelastet sind, aber Zeitüberschreitungen für Aktivitäten auftreten. Diese Funktion ist auch für ein Gateway mit nur einem Knoten verfügbar (auch wenn die Skalierbarkeits- und Verfügbarkeitsfunktion nicht aktiviert ist). Weitere Informationen finden Sie im Abschnitt [Aspekte der Skalierung](#scale-considerations). 
+Role | Es gibt zwei Arten von Rollen: „Verteiler“ und „Worker“. Alle Knoten sind Worker. Dies bedeutet, dass alle Knoten zum Ausführen von Aufträgen verwendet werden können. Es ist nur ein Verteilerknoten vorhanden, der zum Durchführen der Pullvorgänge für Aufgaben bzw. Aufträge von Clouddiensten und Verteilen an die einzelnen Workerknoten (einschließlich sich selbst) genutzt wird. 
 
 ![Datenverwaltungsgateway – Erweiterte Überwachung mehrerer Knoten](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring-advanced.png)
 
@@ -227,11 +227,11 @@ Das Azure-Portal enthält einen Bereich für die Pipelineüberwachung mit präzi
 
 ## <a name="scale-considerations"></a>Aspekte der Skalierung
 
-### <a name="scale-out"></a>Horizontales Skalieren
-Wenn **nur wenig Arbeitsspeicher verfügbar** und die **CPU-Auslastung hoch ist**, ist das Hinzufügen eines neuen Knotens hilfreich, um die Last per horizontaler Hochskalierung auf die Computer zu verteilen. Falls für Aktivitäten Fehler auftreten, weil es zu Zeitüberschreitungen kommt oder Gatewayknoten offline sind, ist es ratsam, dem Gateway einen Knoten hinzuzufügen.
+### <a name="scale-out"></a>Aufskalieren
+Wenn **nur wenig Arbeitsspeicher verfügbar** und die **CPU-Auslastung hoch ist**, ist das Hinzufügen eines neuen Knotens hilfreich, um die Last per Aufskalierung auf die Computer zu verteilen. Falls für Aktivitäten Fehler auftreten, weil es zu Zeitüberschreitungen kommt oder Gatewayknoten offline sind, ist es ratsam, dem Gateway einen Knoten hinzuzufügen.
  
-### <a name="scale-up"></a>Zentrales Hochskalieren
-Wenn die Auslastung des verfügbaren Arbeitsspeichers und der CPU nicht hoch ist, aber die Kapazität im Leerlauf den Wert „0“ hat, sollten Sie zentral hochskalieren. Erhöhen Sie hierfür die Anzahl von gleichzeitigen Aufträgen, die auf einem Knoten ausgeführt werden können. Es kann auch hilfreich sein, das zentrale Hochskalieren durchzuführen, wenn für Aktivitäten eine Zeitüberschreitung auftritt, weil das Gateway überlastet ist. Wie in der folgenden Abbildung gezeigt, können Sie die maximale Kapazität für einen Knoten erhöhen. Es wird empfohlen, den Wert erst einmal zu verdoppeln.  
+### <a name="scale-up"></a>Hochskalieren
+Wenn die Auslastung des verfügbaren Arbeitsspeichers und der CPU nicht hoch ist, aber die Kapazität im Leerlauf den Wert „0“ hat, sollten Sie hochskalieren. Erhöhen Sie hierfür die Anzahl von gleichzeitigen Aufträgen, die auf einem Knoten ausgeführt werden können. Es kann auch hilfreich sein, das Hochskalieren durchzuführen, wenn für Aktivitäten eine Zeitüberschreitung auftritt, weil das Gateway überlastet ist. Wie in der folgenden Abbildung gezeigt, können Sie die maximale Kapazität für einen Knoten erhöhen. Es wird empfohlen, den Wert erst einmal zu verdoppeln.  
 
 ![Datenverwaltungsgateway – Aspekte der Skalierung](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-scale-considerations.png)
 
@@ -242,7 +242,7 @@ Wenn die Auslastung des verfügbaren Arbeitsspeichers und der CPU nicht hoch ist
 - Es ist nicht möglich, einen Gatewayknoten mit dem Authentifizierungsschlüssel eines anderen logischen Gateways erneut zu registrieren, um einen Wechsel vom aktuellen logischen Gateway durchzuführen. Gehen Sie wie folgt vor, um die erneute Registrierung vorzunehmen: Deinstallieren Sie das Gateway vom Knoten, und installieren Sie es dann erneut. Registrieren Sie es anschließend mit dem Authentifizierungsschlüssel für das andere logische Gateway. 
 - Wenn für alle Gatewayknoten ein HTTP-Proxy erforderlich ist, können Sie den Proxy in „diahost.exe.config“ und „diawp.exe.config“ festlegen. Verwenden Sie den Server-Manager, um sicherzustellen, dass für alle Knoten „diahost.exe.config“ und „diawip.exe.config“ jeweils gleich sind. Der Abschnitt [Konfigurieren von Proxyeinstellungen](data-factory-data-management-gateway.md#configure-proxy-server-settings) enthält Details hierzu. 
 - Um den Verschlüsselungsmodus für die Kommunikation von Knoten zu Knoten im Gatewaykonfigurations-Manager zu ändern, löschen Sie im Portal alle Knoten bis auf einen. Fügen Sie die Knoten dann wieder hinzu, nachdem Sie den Verschlüsselungsmodus geändert haben.
-- Verwenden Sie ein offizielles SSL-Zertifikat, wenn Sie sich dafür entscheiden, den Kanal für die Kommunikation von Knoten zu Knoten zu verschlüsseln. Ein selbstsigniertes Zertifikat kann zu Konnektivitätsproblemen führen, da dasselbe Zertifikat in der Zertifizierungsstellenliste auf anderen Computern ggf. nicht als vertrauenswürdig angesehen wird. 
+- Verwenden Sie ein offizielles TLS-Zertifikat, wenn Sie sich dafür entscheiden, den Kanal für die Kommunikation von Knoten zu Knoten zu verschlüsseln. Ein selbstsigniertes Zertifikat kann zu Konnektivitätsproblemen führen, da dasselbe Zertifikat in der Zertifizierungsstellenliste auf anderen Computern ggf. nicht als vertrauenswürdig angesehen wird. 
 - Sie können ein Gatewayknoten nicht auf einem logischen Gateway registrieren, wenn die Knotenversion niedriger als die Version des logischen Gateways ist. Löschen Sie alle Knoten des logischen Gateways aus dem Portal, damit Sie einen Knoten mit einer niedrigeren Version registrieren können (Downgrade). Wenn Sie alle Knoten eines logischen Gateways löschen, müssen Sie auf diesem logischen Gateway neue Knoten manuell installieren und registrieren. Das Express-Setup wird in diesem Fall nicht unterstützt.
 - Sie können das Express-Setup nicht nutzen, um Knoten auf einem vorhandenen logischen Gateway zu installieren, für das noch Cloudanmeldeinformationen verwendet werden. Im Gatewaykonfigurations-Manager auf der Registerkarte „Einstellungen“ können Sie prüfen, wo die Anmeldeinformationen gespeichert sind.
 - Es ist nicht möglich, das Express-Setup zum Installieren eines vorhandenen logischen Gateways zu verwenden, für das die Verschlüsselung von Knoten zu Knoten aktiviert ist. Da das Festlegen des Verschlüsselungsmodus das manuelle Hinzufügen von Zertifikaten umfasst, ist die Expressinstallation keine Option mehr. 

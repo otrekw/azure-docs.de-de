@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 03/17/2020
 ms.author: b-juche
-ms.openlocfilehash: 6391a3eeead6a52371c11011a65f4b4de7260156
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 24b3710861f0ee158619ae9103584dcdb181f3d5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046244"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460448"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>Häufig gestellte Fragen zur Leistung von SMB für Azure NetApp Files
 
@@ -94,12 +94,12 @@ Azure legt für jeden Typ/jede Größe von virtuellen Computern Limits für die 
 
 ![Vergleich mit sequenziellen E/A](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests-list.png)
 
-## <a name="is-advanced-networking-recommended"></a>Werden erweiterte Netzwerke empfohlen?
+## <a name="is-accelerated-networking-recommended"></a>Wird beschleunigter Netzwerkbetrieb empfohlen?
 
-Um die maximale Leistung zu erzielen, empfiehlt es sich, nach Möglichkeit erweiterte Netzwerke zu konfigurieren. Beachten Sie dabei Folgendes:  
+Um die maximale Leistung zu erzielen, empfiehlt es sich, nach Möglichkeit [Beschleunigter Netzwerkbetrieb](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell) zu konfigurieren. Beachten Sie dabei Folgendes:  
 
-* Das Azure-Portal aktiviert erweiterte Netzwerke standardmäßig für virtuelle Computer, die dieses Feature unterstützen.  Bei anderen Bereitstellungsmethoden, wie z. B. Ansible und ähnliche Konfigurationstools, erfolgt dies jedoch möglicherweise nicht.  Wenn erweiterte Netzwerke nicht aktiviert werden, kann dies die Leistung eines Computers beeinträchtigen.  
-* Wenn erweiterte Netzwerke für die Netzwerkschnittstelle eines virtuellen Computers nicht aktiviert sind (aufgrund des Instanztyps oder der Größe), bleibt dieses Feature auch bei größeren Instanztypen deaktiviert. In diesen Fällen ist ein manueller Eingriff erforderlich.
+* Das Azure-Portal aktiviert „Beschleunigter Netzwerkbetrieb“ standardmäßig für virtuelle Computer, die dieses Feature unterstützen.  Bei anderen Bereitstellungsmethoden, wie z. B. Ansible und ähnliche Konfigurationstools, erfolgt dies jedoch möglicherweise nicht.  Wenn „Beschleunigter Netzwerkbetrieb“ nicht aktiviert wird, kann die Leistung eines Computers beeinträchtigt werden.  
+* Wenn „Beschleunigter Netzwerkbetrieb“ für die Netzwerkschnittstelle eines virtuellen Computers nicht aktiviert ist (aufgrund des Instanztyps oder der Größe), bleibt dieses Feature auch bei größeren Instanztypen deaktiviert. In diesen Fällen ist ein manueller Eingriff erforderlich.
 
 ## <a name="are-jumbo-frames-supported"></a>Werden Großrahmen unterstützt?
 

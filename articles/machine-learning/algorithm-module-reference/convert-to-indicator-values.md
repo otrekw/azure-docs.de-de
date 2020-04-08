@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: fc059eca3a01b5c6cde642af5ceb6a3822672def
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: f1b194f2c65f95ad4daff0353d05ca589db9ce51
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163827"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477662"
 ---
 # <a name="convert-to-indicator-values"></a>Konvertieren in Indikatorwerte
 In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
@@ -39,7 +39,7 @@ Dieses Modul gibt außerdem eine Definition der Transformation aus, die zum Konv
     > [!TIP]
     >  Wenn Sie die Option zum Überschreiben auswählen, wird die Quellspalte nicht gelöscht oder geändert. Stattdessen werden die neuen Spalten generiert und im Ausgabedataset dargestellt, und die Quellspalte bleibt im Arbeitsbereich verfügbar. Wenn Sie die ursprünglichen Daten anzeigen müssen, können Sie jederzeit das Modul [Add Columns](add-columns.md) verwenden, um die Quellspalte wieder hinzuzufügen.
 
-1. Ausführen der Pipeline.
+1. Übermitteln Sie die Pipeline.
 
 ## <a name="results"></a>Ergebnisse
 
@@ -88,7 +88,7 @@ Wenn Sie häufig Indikatorwertvorgänge wiederholen müssen, können Sie die Sch
 
    Wenn Sie eine gespeicherte Transformation anwenden, können Sie nicht auswählen, welche Spalten transformiert werden sollen. Dies liegt daran, dass die Transformation definiert wurde und automatisch für die im ursprünglichen Vorgang angegebenen Datentypen gilt.
 
-1. Ausführen der Pipeline.
+1. Übermitteln Sie die Pipeline.
  
 ## <a name="technical-notes"></a>Technische Hinweise  
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: 1778ba543e070bbffbbc8579b280373d834492fd
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 417ef716c391126982809574fc16f6681115cac3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920795"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477407"
 ---
 # <a name="train-svd-recommender"></a>Train SVD Recommender
 
@@ -68,7 +68,7 @@ In diesem Beispiel können Sie sehen, dass ein einzelner Benutzer mehrere Filme 
 
     Mit der Lernrate wird die Größe des Schritts bei jeder Iteration festgelegt. Ist die Schrittgröße zu groß, wird die optimale Lösung unter Umständen verfehlt. Ist die Schrittgröße zu klein, dauert die Ermittlung der besten Lösung länger. 
   
-5.  Ausführen der Pipeline.  
+5.  Übermitteln Sie die Pipeline.  
 
 
 ## <a name="next-steps"></a>Nächste Schritte

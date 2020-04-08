@@ -4,22 +4,19 @@ description: SaaS-Entwickler (Software-as-a-Service) können mit diesen Tools pr
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 3e30e54eb18eb5d487da6821d285109b1a22297f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 44c6147402cbe05e62c091863cb0bd4f9235bfab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823617"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061648"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Horizontales Hochskalieren mit Azure SQL-Datenbank
-Mithilfe der Tools für **elastische Datenbanken** können Sie Azure SQL-Datenbanken problemlos erweitern. Mit diesen Tools und Features können Sie Datenbankressourcen von **Azure SQL-Datenbank** zum Erstellen von Lösungen für transaktionale Workloads und insbesondere SaaS-Anwendungen (Software-as-a-Service) verwenden. Die Features für elastische Datenbanken umfassen folgende:
+Mithilfe der Tools für **elastische Datenbanken** können Sie Azure SQL-Datenbanken problemlos aufskalieren. Mit diesen Tools und Features können Sie Datenbankressourcen von **Azure SQL-Datenbank** zum Erstellen von Lösungen für transaktionale Workloads und insbesondere SaaS-Anwendungen (Software-as-a-Service) verwenden. Die Features für elastische Datenbanken umfassen folgende:
 
 * [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md): Die Clientbibliothek ist ein Feature, mit dem Sie Sharddatenbanken erstellen und verwalten können.  Weitere Informationen finden Sie unter [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md).
 * [Split-Merge-Tool für elastische Datenbanken:](sql-database-elastic-scale-overview-split-and-merge.md)Zum Verschieben von Daten zwischen Sharddatenbanken. Dieses Tool ist nützlich zum Verschieben von Daten aus einer mehrinstanzenfähigen Datenbank in eine Datenbank mit einzelnem Mandanten (oder umgekehrt). Siehe [Tutorial zum Split-Merge-Tool für elastische Datenbanken](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
@@ -56,7 +53,7 @@ Die folgende Abbildung zeigt die horizontalen und vertikalen Skalierungsdimensio
 
 Horizontale Skalierung meint das Hinzufügen oder Entfernen von Datenbanken zur Anpassung der Kapazität oder der allgemeinen Leistung. Sharding ist eine gängige Methode für die horizontale Skalierung, bei der Daten in einer Sammlung von identisch strukturierten Datenbanken partitioniert werden.  
 
-Vertikale Skalierung bezeichnet das Erhöhen oder Verringern der Computegröße einer einzelnen Datenbank. Dies wird auch als „zentrales Hochskalieren“ bezeichnet.
+Vertikale Skalierung bezeichnet das Erhöhen oder Verringern der Computegröße einer einzelnen Datenbank. Dies wird auch als „Hochskalieren“ bezeichnet.
 
 Die meisten Datenbankanwendungen für Clouds verwenden eine Kombination aus diesen beiden Ansätzen. Eine SaaS-Anwendung (Software as a Service) kann z.B. die horizontale Skalierung für Bereitstellungen an neue Endkunden nutzen und die vertikale Skalierung, damit die Ressourcen für die Datenbanken der einzelnen Endkunden bei entsprechender Workload vergrößert oder verkleinert werden können.
 
@@ -88,7 +85,7 @@ Wenn Sie eine SaaS-Anwendung erstellen, wird Interessenten üblicherweise eine T
 ## <a name="next-steps"></a>Nächste Schritte
 Unter [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md)finden Sie eine Beispiel-App zur Veranschaulichung der Clientbibliothek.
 
-Informationen zum Umwandeln von vorhandenen Datenbanken für die Verwendung der Tools finden Sie unter [Migrieren von vorhandenen Datenbanken zur horizontalen Hochskalierung](sql-database-elastic-convert-to-use-elastic-tools.md).
+Informationen zum Umwandeln von vorhandenen Datenbanken für die Verwendung der Tools finden Sie unter [Migrieren vorhandener Datenbanken für die Aufskalierung](sql-database-elastic-convert-to-use-elastic-tools.md).
 
 Einzelheiten zum Pool für elastische Datenbanken finden Sie unter [Überlegungen zum Preis und zur Leistung von Pools für elastische Datenbanken](sql-database-elastic-pool.md). Informationen zum Erstellen eines neuen Pools finden Sie unter [Erstellen und Verwalten eines Pools für elastische Datenbanken über das Azure-Portal](sql-database-elastic-pool-manage-portal.md).  
 

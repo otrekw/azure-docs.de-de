@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: df640f11e8a0e8af22c96a662a602e0de508715c
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.openlocfilehash: 6102b1e1d6ddbac01033b9cecfeba96a7eb33777
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2020
-ms.locfileid: "76985049"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473539"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management
 
@@ -84,12 +84,12 @@ Nachdem die Änderungen gespeichert wurden, können sich Benutzer der angegebene
 
 Nachdem Sie den Zugriff für Benutzer in einem Azure AD-Mandanten aktiviert haben, können Sie Azure AD-Gruppen in API Management hinzufügen. Als Ergebnis können Sie die Produktsichtbarkeit mithilfe von Azure AD-Gruppen steuern.
 
-Wenn Sie in APIM eine externe Azure AD-Gruppe hinzufügen möchten, müssen Sie zunächst den vorherigen Abschnitt durchlaufen. Darüber hinaus muss der zuvor registrierten Anwendung Zugriff auf die Azure Active Directory Graph-API mit der Berechtigung `Directory.ReadAll` gewährt werden, indem Sie die folgenden Schritte ausführen: 
+Wenn Sie in APIM eine externe Azure AD-Gruppe hinzufügen möchten, müssen Sie zunächst den vorherigen Abschnitt durchlaufen. Darüber hinaus muss der zuvor registrierten Anwendung Zugriff auf die Microsoft Graph-API mit der Berechtigung `Directory.Read.All` gewährt werden, indem Sie diese Schritte ausführen: 
 
 1. Wechseln Sie zurück zu Ihrer App-Registrierung, die im vorherigen Abschnitt erstellt wurde.
-2. Klicken Sie auf die Registerkarte **API-Berechtigungen**, und klicken Sie dann auf die Schaltfläche **+Berechtigung hinzufügen**. 
-3. Wählen Sie im Bereich **API-Berechtigungen anfordern** die Registerkarte **Microsoft-APIs** aus, und scrollen Sie ganz nach unten, wo Sie die Kachel **Azure Active Directory Graph** unter dem Abschnitt „Unterstützte Legacy-APIs“ finden, auf die Sie dann klicken. Klicken Sie dann auf die Schaltfläche **ANWENDUNGSberechtigungen**, wählen Sie die Berechtigung **Directory.ReadAll** aus, und fügen Sie diese Berechtigung dann mithilfe der unten befindlichen Schaltfläche hinzu. 
-4. Klicken Sie auf die Schaltfläche **Administratoeinwilligung für {tenantname} erteilen**, damit Sie allen Benutzern in diesem Verzeichnis den Zugriff gewähren. 
+2. Wählen Sie **API-Berechtigungen** aus, und klicken Sie dann auf **+Berechtigung hinzufügen**. 
+3. Wählen Sie im Bereich **API-Berechtigungen anfordern**  die Registerkarte **Microsoft-APIs** und dann die Kachel **Microsoft Graph** aus. Wählen Sie **Anwendungsberechtigungen** aus, suchen Sie nach **Verzeichnis**, und wählen Sie dann die Berechtigung **Directory.Read.All** aus. 
+4. Klicken Sie unten im Bereich auf **Berechtigungen hinzufügen** und dann auf **Administratorzustimmung für {Name des Mandanten} erteilen**, damit Sie allen Benutzern in diesem Verzeichnis Zugriff gewähren. 
 
 Jetzt können Sie externe Azure AD-Gruppen über die Registerkarte **Gruppen** Ihrer API Management-Instanz hinzufügen.
 
@@ -103,7 +103,7 @@ Nachdem Sie eine externe Azure AD-Gruppe hinzugefügt haben, können Sie ihre Ei
  
 Benutzer aus der konfigurierten Azure AD-Instanz können sich jetzt beim Entwicklerportal anmelden. Sie können beliebige Gruppen anzeigen und abonnieren, die für sie sichtbar sind.
 
-## <a name="a-idlog_in_to_dev_portal-developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/> Entwicklerportal – Hinzufügen der Azure AD-Kontoauthentifizierung
+## <a name="developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/> Entwicklerportal – Hinzufügen der Azure AD-Kontoauthentifizierung
 
 Im Entwicklerportal können Sie sich über das Widget **Schaltfläche „Anmelden“:  OAuth** bei AAD anmelden. Das Widget ist auf der Anmeldeseite des standardmäßigen Entwicklerportals bereits integriert.
 
@@ -153,7 +153,6 @@ Sie sind jetzt beim Entwicklerportal für Ihre API Management-Dienstinstanz ange
 
 [https://oauth.net/2/]: https://oauth.net/2/
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
-[Accessing the Graph API]: https://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
 
 [Prerequisites]: #prerequisites
 [Configure an OAuth 2.0 authorization server in API Management]: #step1

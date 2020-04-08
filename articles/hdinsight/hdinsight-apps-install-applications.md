@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: a7d83d2bc418e62bc2858e2a7fb35d2113640c83
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 22d27d50a7d2c304e5d1a04a9a5eaa03d2f0bfa6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78271979"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79366341"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Installieren von Apache Hadoop-Anwendungen von Drittanbietern in Azure HDInsight
 
@@ -23,7 +23,7 @@ Eine HDInsight-Anwendung kann von Benutzern in einem HDInsight-Cluster installie
 
 Die folgende Liste zeigt die veröffentlichten Anwendungen:
 
-|Application |Clustertyp(en) | Beschreibung |
+|Application |Clustertyp(en) | BESCHREIBUNG |
 |---|---|---|
 |[AtScale Intelligence-Plattform](https://azuremarketplace.microsoft.com/marketplace/apps/atscaleinc.atscale) |Hadoop |AtScale wandelt Ihren HDInsight-Cluster in einen OLAP-Server mit horizontaler Skalierung um, wodurch Sie vertraute Business Intelligence-Tools (von Microsoft Excel, Power BI und Tableau Software bis hin zu Qlikview), die Sie bereits besitzen und zu schätzen wissen, interaktiv zum Abfragen von Milliarden von Zeilen von Daten verwenden können. |
 |[CDAP für HDInsight](https://azuremarketplace.microsoft.com/marketplace/apps/cask.cdap-for-hdinsight) |hbase |CDAP ist die erste einheitliche Integrationsplattform für Big Data, die die Amortisationszeit für Hadoop beschleunigt und Informatikern ermöglicht, Self-Service-Daten bereitzustellen. CDAP ist Open Source und erweiterbar, wodurch Hürden für die Innovation entfernt werden. Anforderungen: 4 Regionsknoten und eine D3 v2-Instanz (mindestens). |
@@ -44,7 +44,7 @@ Die folgende Liste zeigt die veröffentlichten Anwendungen:
 Für die Anleitungen in diesem Artikel wird das Azure-Portal verwendet. Sie können die Azure Resource Manager-Vorlage auch aus dem Portal exportieren oder eine Kopie der Resource Manager-Vorlage von Anbietern erhalten und Azure PowerShell und die klassische Azure-Befehlszeilenschnittstelle zum Bereitstellen der Vorlage verwenden.  Weitere Informationen finden Sie unter [Erstellen von Apache Hadoop-Clustern in HDInsight mit Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Wenn Sie HDInsight-Anwendungen in einem vorhandenen HDInsight-Cluster installieren möchten, benötigen Sie einen HDInsight-Cluster. Informationen zum Erstellen eines solchen Clusters finden Sie unter [Erstellen von Clustern](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster). Im Zuge der HDInsight-Clustererstellung können Sie auch HDInsight-Anwendungen installieren.
+Wenn Sie HDInsight-Anwendungen in einem vorhandenen HDInsight-Cluster installieren möchten, benötigen Sie einen HDInsight-Cluster. Informationen zum Erstellen eines solchen Clusters finden Sie unter [Erstellen von Clustern](hadoop/apache-hadoop-linux-tutorial-get-started.md). Im Zuge der HDInsight-Clustererstellung können Sie auch HDInsight-Anwendungen installieren.
 
 ## <a name="install-applications-to-existing-clusters"></a>Installieren von Anwendungen für vorhandene Cluster
 Das folgende Verfahren veranschaulicht, wie Sie HDInsight-Anwendungen für einen vorhandenen HDInsight-Cluster installieren.
@@ -53,7 +53,7 @@ Das folgende Verfahren veranschaulicht, wie Sie HDInsight-Anwendungen für einen
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Navigieren Sie im linken Menü zu **Alle Dienste** > **Analytics** > **HDInsight-Cluster**.
-3. Wählen Sie dann einen HDInsight-Cluster aus der Liste aus.  Falls Sie noch keinen Cluster besitzen, müssen Sie zuerst einen erstellen.  Weitere Informationen finden Sie unter [Erstellen von Clustern](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+3. Wählen Sie dann einen HDInsight-Cluster aus der Liste aus.  Falls Sie noch keinen Cluster besitzen, müssen Sie zuerst einen erstellen.  Weitere Informationen finden Sie unter [Erstellen von Clustern](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 4. Klicken Sie in der Kategorie **Einstellungen** auf **Anwendungen**. Im Hauptfenster wird eine Liste der installierten Anwendungen angezeigt. 
    
     ![HDInsight-Anwendungen – Portal-Menü](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
@@ -83,7 +83,7 @@ Im Portal wird eine Liste mit den installierten HDInsight-Anwendungen für einen
     ![HDInsight-Anwendungen – Installierte Apps](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png)
 5. Wählen Sie eine der installierten Anwendungen aus, um die Eigenschaften anzuzeigen. Die Eigenschaft zeigt Folgendes:
 
-    |Eigenschaft | Beschreibung |
+    |Eigenschaft | BESCHREIBUNG |
     |---|---|
     |App-Name |Der Anwendungsname. |
     |Status |Anwendungsstatus |

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 5f695bf739a6e096083cd6d8271b6936f24c16da
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 6466cea9fe04bb308a670cb03fd3de5314758142
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546825"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456606"
 ---
 # <a name="clip-values"></a>Beschneiden von Werten
 
@@ -84,7 +84,7 @@ Wenn Sie auf einige Spalten Beschneidungsmethoden oder andere Kriterien anwenden
   
     Deaktivieren Sie diese Option, um die ursprüngliche Spalte beizubehalten und eine neue Spalte mit den beschnittenen Werten hinzuzufügen.  
   
-1.  Ausführen der Pipeline.  
+1.  Übermitteln Sie die Pipeline.  
   
     Klicken Sie mit der rechten Maustaste auf das Modul **Clip Values**, und wählen Sie **Visualisieren** aus, oder wählen Sie das Modul aus, und wechseln Sie im rechten Bereich zur Registerkarte **Ausgaben**. Klicken Sie auf das Histogrammsymbol in den **Portausgaben**, um die Werte zu überprüfen und sicherzustellen, dass der Clippingvorgang Ihren Erwartungen entspricht.  
  

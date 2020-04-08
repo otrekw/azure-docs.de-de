@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 6863e7f8ef8e2f263cda824fd13186dc7b035454
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 69225da1506ced879363b10b098d939df93cbfba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78943612"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79502371"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200: Migration zur Azure-Dateisynchronisierung
 
@@ -113,11 +113,43 @@ Erstellen Sie die erste lokale Kopie in Ihrem Windows Server-Zielordner:
 Mit dem folgenden RoboCopy-Befehl werden Dateien aus dem StorSimple-Azure-Speicher in Ihren lokalen StorSimple-Speicher zurückgerufen und dann in den Windows Server-Zielordner verschoben. Der Windows-Server synchronisiert diesen Ordner mit den Azure-Dateifreigaben. Wenn das lokale Windows Server-Volume voll ist, beginnt das Cloudtiering von Dateien, die bereits erfolgreich synchronisiert wurden. Durch das Cloudtiering wird ausreichend Speicherplatz generiert, um mit dem Kopieren von der virtuellen StorSimple-Appliance fortzufahren. Einmal pro Stunde wird überprüft, was bereits im Cloudtiering synchronisiert wurde, und Speicherplatz freigegeben, um auf dem Volume einen freien Speicherplatz von 99 % zu erreichen.
 
 ```console
-Robocopy /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
+Robocopy /MT:32 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
 Hintergrund:
 
+:::row:::
+   :::column span="1":::
+      /MT
+   :::column-end:::
+   :::column span="1":::
+      Ermöglicht RoboCopy die Multithread-Ausführung. Der Standardwert ist 8, der Höchstwert 128.
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      /UNILOG:<file name>
+   :::column-end:::
+   :::column span="1":::
+      Gibt den Status als UNICODE in die LOG-Datei aus (überschreibt vorhandenes Protokoll).
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      /TEE
+   :::column-end:::
+   :::column span="1":::
+      Ausgabe an das Konsolenfenster. Wird in Verbindung mit der Ausgabe in eine Protokolldatei verwendet.
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      /B
+   :::column-end:::
+   :::column span="1":::
+      Führt RoboCopy in dem Modus aus, den auch eine Sicherungsanwendung verwenden würde. Diese Option ermöglicht RoboCopy, Dateien zu verschieben, für die der aktuelle Benutzer keine Berechtigungen hat.
+   :::column-end:::
+:::row-end:::
 :::row:::
    :::column span="1":::
       /MIR

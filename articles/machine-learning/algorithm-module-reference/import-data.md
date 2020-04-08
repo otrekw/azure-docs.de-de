@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 8b1e4c60e6054141e71d2509fe34c7ca9baf9ca6
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: d124fdc15bd34743b237985a66cc35625f5d9a4b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598458"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456198"
 ---
 # <a name="import-data-module"></a>Modul „Import Data“ (Daten importieren)
 
@@ -65,7 +65,7 @@ Wenn sich Ihre Quelldaten ändern, können Sie das Dataset aktualisieren und neu
     Wenn sie ausgewählt ist, führt das System das Modul erneut aus, um die Ausgabe neu zu generieren. Wählen Sie also diese Option aus, wenn die zugrunde liegenden Daten im Speicher aktualisiert werden, um die neuesten Daten zu erhalten.
 
 
-1. Ausführen der Pipeline.
+1. Übermitteln Sie die Pipeline.
 
     Wenn die Daten durch Import Data in den Designer geladen werden, wird der Datentyp jeder Spalte basierend auf den darin enthaltenen Werten (numerisch oder kategorisch) abgeleitet.
 

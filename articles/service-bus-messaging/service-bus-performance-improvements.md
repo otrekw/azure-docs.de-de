@@ -8,14 +8,14 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/16/2020
+ms.date: 03/12/2020
 ms.author: aschhab
-ms.openlocfilehash: 683a28ca3cdabd5a7ffbf6e9ffdc3ed0c58d3247
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: b864f433c67d47b4b92a1d4b98693ebd42806dd3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264694"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229618"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus Messaging
 
@@ -31,50 +31,147 @@ Service Bus ermöglicht Clients das Senden und Empfangen von Nachrichten über e
 
 1. Advanced Message Queuing Protocol (AMQP)
 2. Service Bus Messaging Protocol (SBMP)
-3. HTTP
+3. Hypertext Transfer-Protokoll (HTTP)
 
-AMQP und SBMP sind effizienter, da sie die Verbindung mit Service Bus aufrechterhalten, solange die Messagingfactory vorhanden ist. Außerdem implementiert es die Batchverarbeitung und Vorabrufe. Sofern nicht anders angegeben, wird für alle Inhalte in diesem Artikel AMQP oder SBMP verwendet.
+AMQP ist am effizientesten, weil hierbei die Verbindung mit Service Bus aufrechterhalten wird. Außerdem implementiert es die Batchverarbeitung und Vorabrufe. Sofern nicht anders angegeben, wird für alle Inhalte in diesem Artikel AMQP oder SBMP verwendet.
+
+> [!IMPORTANT]
+> SBMP ist nur für .NET Framework verfügbar. AMQP ist die Standardeinstellung für .NET Standard.
+
+## <a name="choosing-the-appropriate-service-bus-net-sdk"></a>Auswählen des geeigneten Service Bus .NET SDK
+
+Es gibt zwei unterstützte Azure Service Bus .NET SDKs. Da sich die zugehörigen APIs sehr ähneln, kann es ggf. zu Unsicherheit bei der Auswahl kommen. Die folgende Tabelle enthält hierzu hilfreiche Informationen. Wir empfehlen Ihnen die Verwendung des Microsoft.Azure.ServiceBus SDK, da es moderner, leistungsfähiger und plattformübergreifend kompatibel ist. Darüber hinaus wird AMQP über WebSockets unterstützt, und es ist Teil der Azure .NET SDK-Sammlung mit Open-Source-Projekten.
+
+| NuGet-Paket | Primäre Namespaces | Mindestplattform | Protokolle |
+|---------------|----------------------|---------------------|-------------|
+| <a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus" target="_blank">Microsoft.Azure.ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5.4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin.Android 8.0<br>Universelle Windows-Plattform 10.0.16299 | AMQP<br>HTTP |
+| <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus" target="_blank">WindowsAzure.ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
+
+Weitere Informationen zu den Mindestplattformen für die Unterstützung von .NET Standard finden Sie unter [Unterstützung der .NET-Implementierung](https://docs.microsoft.com/dotnet/standard/net-standard#net-implementation-support).
 
 ## <a name="reusing-factories-and-clients"></a>Wiederverwenden von Factorys und Clients
 
-Service Bus-Clientobjekte wie [QueueClient][QueueClient] oder [MessageSender][MessageSender] werden durch ein [MessagingFactory][MessagingFactory]-Objekt erstellt, das die interne Verwaltung von Verbindungen ermöglicht. Es empfiehlt sich, Messagingfactorys oder Warteschlangen-, Themen- und Abonnementclients nicht zu schließen, nachdem Sie eine Nachricht gesendet haben, und dann erneut zu erstellen, wenn Sie die nächste Nachricht senden. Durch Schließen einer Messagingfactory wird die Verbindung mit dem Service Bus-Dienst gelöscht, und eine neue Verbindung wird beim erneuten Erstellen der Factory hergestellt. Das Herstellen einer Verbindung ist ein aufwendiger Vorgang, den Sie vermeiden können, indem Sie eine Factory und die Clientobjekte für mehrere Vorgänge verwenden. Sie können diese Clientobjekte sicher für gleichzeitige asynchrone Vorgänge und von mehreren Threads verwenden. 
+# <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
+
+Service Bus-Clientobjekte, z. B. Implementierungen von [`IQueueClient`][QueueClient] oder [`IMessageSender`][MessageSender], sollten für die Abhängigkeitsinjektion als Singletons registriert werden (oder einmal instanziiert und dann freigegeben werden). Es empfiehlt sich, Messagingfactorys oder Warteschlangen-, Themen- und Abonnementclients nicht zu schließen, nachdem Sie eine Nachricht gesendet haben, und dann erneut zu erstellen, wenn Sie die nächste Nachricht senden. Durch Schließen einer Messagingfactory wird die Verbindung mit dem Service Bus-Dienst gelöscht, und eine neue Verbindung wird beim erneuten Erstellen der Factory hergestellt. Das Herstellen einer Verbindung ist ein aufwendiger Vorgang, den Sie vermeiden können, indem Sie eine Factory und die Clientobjekte für mehrere Vorgänge verwenden. Sie können diese Clientobjekte sicher für gleichzeitige asynchrone Vorgänge und von mehreren Threads verwenden.
+
+# <a name="windowsazureservicebus-sdk"></a>[WindowsAzure.ServiceBus SDK](#tab/net-framework-sdk)
+
+Service Bus-Clientobjekte, z. B. `QueueClient` oder `MessageSender`, werden über ein [MessagingFactory][MessagingFactory]-Objekt erstellt, das die interne Verwaltung von Verbindungen ermöglicht. Es empfiehlt sich, Messagingfactorys oder Warteschlangen-, Themen- und Abonnementclients nicht zu schließen, nachdem Sie eine Nachricht gesendet haben, und dann erneut zu erstellen, wenn Sie die nächste Nachricht senden. Durch Schließen einer Messagingfactory wird die Verbindung mit dem Service Bus-Dienst gelöscht, und eine neue Verbindung wird beim erneuten Erstellen der Factory hergestellt. Das Herstellen einer Verbindung ist ein aufwendiger Vorgang, den Sie vermeiden können, indem Sie eine Factory und die Clientobjekte für mehrere Vorgänge verwenden. Sie können diese Clientobjekte sicher für gleichzeitige asynchrone Vorgänge und von mehreren Threads verwenden.
+
+---
 
 ## <a name="concurrent-operations"></a>Parallele Vorgänge
 
-Das Ausführen eines Vorgangs (Senden, Empfangen, Löschen usw.) nimmt einige Zeit in Anspruch. Dieser Zeitraum umfasst die Verarbeitung des Vorgangs durch den Service Bus-Dienst sowie die Latenz der Anforderung und der Antwort. Die Vorgänge müssen parallel ausgeführt werden, um die Anzahl von Vorgängen pro Zeitraum zu erhöhen. 
+Das Ausführen eines Vorgangs (Senden, Empfangen, Löschen usw.) nimmt einige Zeit in Anspruch. Dieser Zeitraum umfasst die Verarbeitung des Vorgangs durch den Service Bus-Dienst sowie die Latenz der Anforderung und der Antwort. Die Vorgänge müssen parallel ausgeführt werden, um die Anzahl von Vorgängen pro Zeitraum zu erhöhen.
 
 Der Client plant gleichzeitige Vorgänge durch Ausführen von asynchronen Vorgängen. Die nächste Anforderung wird gestartet, bevor die vorherige Anforderung abgeschlossen ist. Im folgenden Codeausschnitt sehen Sie ein Beispiel für einen asynchronen Sendevorgang:
-  
- ```csharp
-  Message m1 = new BrokeredMessage(body);
-  Message m2 = new BrokeredMessage(body);
-  
-  Task send1 = queueClient.SendAsync(m1).ContinueWith((t) => 
-    {
-      Console.WriteLine("Sent message #1");
-    });
-  Task send2 = queueClient.SendAsync(m2).ContinueWith((t) => 
-    {
-      Console.WriteLine("Sent message #2");
-    });
-  Task.WaitAll(send1, send2);
-  Console.WriteLine("All messages sent");
-  ```
-  
-  Im folgenden Code sehen Sie ein Beispiel für einen asynchronen Empfangsvorgang. Das vollständig Programm finden Sie [hier](https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues):
-  
-  ```csharp
-  var receiver = new MessageReceiver(connectionString, queueName, ReceiveMode.PeekLock);
-  var doneReceiving = new TaskCompletionSource<bool>();
 
-  receiver.RegisterMessageHandler(...);
-  ```
+# <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
+
+```csharp
+var messageOne = new Message(body);
+var messageTwo = new Message(body);
+
+var sendFirstMessageTask =
+    queueClient.SendAsync(messageOne).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #1");
+    });
+var sendSecondMessageTask =
+    queueClient.SendAsync(messageTwo).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #2");
+    });
+
+await Task.WhenAll(sendFirstMessageTask, sendSecondMessageTask);
+Console.WriteLine("All messages sent");
+```
+
+# <a name="windowsazureservicebus-sdk"></a>[WindowsAzure.ServiceBus SDK](#tab/net-framework-sdk)
+
+```csharp
+var messageOne = new BrokeredMessage(body);
+var messageTwo = new BrokeredMessage(body);
+
+var sendFirstMessageTask =
+    queueClient.SendAsync(messageOne).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #1");
+    });
+var sendSecondMessageTask =
+    queueClient.SendAsync(messageTwo).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #2");
+    });
+
+await Task.WhenAll(sendFirstMessageTask, sendSecondMessageTask);
+Console.WriteLine("All messages sent");
+```
+
+---
+
+Im folgenden Code sehen Sie ein Beispiel für einen asynchronen Empfangsvorgang.
+
+# <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
+
+Vollständige <a href="https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues" target="_blank">Quellcodebeispiele<span class="docon docon-navigate-external x-hidden-focus"></span></a> finden Sie im GitHub-Repository:
+
+```csharp
+var receiver = new MessageReceiver(connectionString, queueName, ReceiveMode.PeekLock);
+
+static Task LogErrorAsync(Exception exception)
+{
+    Console.WriteLine(exception);
+    return Task.CompletedTask;
+};
+
+receiver.RegisterMessageHandler(
+    async (message, cancellationToken) =>
+    {
+        Console.WriteLine("Handle message");
+        await receiver.CompleteAsync(message.SystemProperties.LockToken);
+    },
+    new MessageHandlerOptions(e => LogErrorAsync(e.Exception))
+    {
+        AutoComplete = false,
+        MaxConcurrentCalls = 1
+    });
+```
+
+Das `MessageReceiver`-Objekt wird mit der Verbindungszeichenfolge, dem Warteschlangennamen und einem Peek-Lock-Empfangsmodus instanziiert. Als Nächstes wird die `receiver`-Instanz verwendet, um den Meldungshandler zu registrieren.
+
+# <a name="windowsazureservicebus-sdk"></a>[WindowsAzure.ServiceBus SDK](#tab/net-framework-sdk)
+
+Vollständige <a href="https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/SendersReceiversWithQueues" target="_blank">Quellcodebeispiele<span class="docon docon-navigate-external x-hidden-focus"></span></a> finden Sie im GitHub-Repository:
+
+```csharp
+var factory = MessagingFactory.CreateFromConnectionString(connectionString);
+var receiver = await factory.CreateMessageReceiverAsync(queueName, ReceiveMode.PeekLock);
+
+// Register the handler to receive messages asynchronously
+receiver.OnMessageAsync(
+    async message =>
+    {
+        Console.WriteLine("Handle message");
+        await message.CompleteAsync();
+    },
+    new OnMessageOptions
+    {
+        AutoComplete = false,
+        MaxConcurrentCalls = 1
+    });
+```
+
+Von `MessagingFactory` wird aus der Verbindungszeichenfolge ein `factory`-Objekt erstellt. Mit der `factory`-Instanz wird ein `MessageReceiver` instanziiert. Als Nächstes wird die `receiver`-Instanz verwendet, um den OnMessage-Handler zu registrieren.
+
+---
 
 ## <a name="receive-mode"></a>Empfangsmodus
 
-Beim Erstellen eines Warteschlangen- oder Abonnementclients können Sie einen Empfangsmodus angeben: *PeekLock* oder *ReceiveAndDelete*. Der Standardempfangsmodus ist [PeekLock][PeekLock]. Beim Betrieb in diesem Modus sendet der Client eine Anforderung zum Empfangen einer Nachricht von Service Bus. Nachdem der Client die Nachricht empfangen hat, sendet er eine Anforderung zum Abschließen der Nachricht.
+Beim Erstellen eines Warteschlangen- oder Abonnementclients können Sie einen Empfangsmodus angeben: *PeekLock* oder *ReceiveAndDelete*. Der Standardempfangsmodus ist `PeekLock`. Beim Betrieb im Standardmodus sendet der Client eine Anforderung zum Empfangen einer Nachricht von Service Bus. Nachdem der Client die Nachricht empfangen hat, sendet er eine Anforderung zum Abschließen der Nachricht.
 
-Wenn der Empfangsmodus auf [ReceiveAndDelete][ReceiveAndDelete] festgelegt wird, werden beide Schritte in einer einzelnen Anforderung kombiniert. Dieser Schritt reduziert die Anzahl der Vorgänge und kann den Gesamtnachrichtendurchsatz verbessern. Diese Leistungssteigerung kann zu Nachrichtenverlusten führen.
+Wenn der Empfangsmodus auf `ReceiveAndDelete` festgelegt wird, werden beide Schritte in einer Anforderung kombiniert. Dieser Schritt reduziert die Anzahl der Vorgänge und kann den Gesamtnachrichtendurchsatz verbessern. Diese Leistungssteigerung kann zu Nachrichtenverlusten führen.
 
 Service Bus unterstützt keine Transaktionen für ReceiveAndDelete-Vorgänge. Darüber hinaus ist die PeekLock-Semantik für alle Szenarios erforderlich, in denen der Client eine Nachricht zurückstellen oder [in eine Warteschlange für unzustellbare Nachrichten](service-bus-dead-letter-queues.md) verschieben möchte.
 
@@ -82,70 +179,131 @@ Service Bus unterstützt keine Transaktionen für ReceiveAndDelete-Vorgänge. Da
 
 Durch die clientseitige Batchverarbeitung kann ein Warteschlangen- oder Themenclient das Senden einer Nachricht für einen bestimmten Zeitraum verzögern. Wenn der Client während dieses Zeitraums weitere Nachrichten sendet, werden die Nachrichten in einem einzigen Batch übertragen. Die clientseitige Batchverarbeitung bewirkt auch, dass ein Warteschlangen- oder Abonnementclient mehrere Anforderungen zum **Abschließen** als Batch in eine einzelne Anforderung aufnehmen kann. Die Batchverarbeitung ist nur für asynchrone Vorgänge zum **Senden** und **Abschließen** verfügbar. Synchrone Vorgänge werden sofort an den Service Bus-Dienst gesendet. Die Batchverarbeitung erfolgt nicht für Vorschau- oder Empfangsvorgänge und auch nicht clientübergreifend.
 
+# <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
+
+Bei der Batchverarbeitung für das .NET Standard SDK wird keine Eigenschaft für die Bearbeitung verfügbar gemacht.
+
+# <a name="windowsazureservicebus-sdk"></a>[WindowsAzure.ServiceBus SDK](#tab/net-framework-sdk)
+
 Ein Client verwendet standardmäßig ein Batchintervall von 20 ms. Sie können das Batchintervall ändern, indem Sie die Eigenschaft [BatchFlushInterval][BatchFlushInterval] vor dem Erstellen der Messagingfactory festlegen. Diese Einstellung wirkt sich auf alle Clients aus, die von dieser Factory erstellt werden.
 
 Legen Sie zum Deaktivieren der Batchverarbeitung die Eigenschaft [BatchFlushInterval][BatchFlushInterval] auf **TimeSpan.Zero** fest. Beispiel:
 
 ```csharp
-MessagingFactorySettings mfs = new MessagingFactorySettings();
-mfs.TokenProvider = tokenProvider;
-mfs.NetMessagingTransportSettings.BatchFlushInterval = TimeSpan.FromSeconds(0.05);
-MessagingFactory messagingFactory = MessagingFactory.Create(namespaceUri, mfs);
+var settings = new MessagingFactorySettings
+{
+    NetMessagingTransportSettings =
+    {
+        BatchFlushInterval = TimeSpan.Zero
+    }
+};
+var factory = MessagingFactory.Create(namespaceUri, settings);
 ```
 
 Die Batchverarbeitung wirkt sich nicht auf die Anzahl der abrechenbaren Messagingvorgänge aus und ist nur für das Service Bus-Clientprotokoll unter Verwendung der [Microsoft.ServiceBus.Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/)-Bibliothek verfügbar. Das HTTP-Protokoll unterstützt keine Batchverarbeitung.
 
 > [!NOTE]
-> Durch das Festlegen von „BatchFlushInterval“ wird sichergestellt, dass die Batchverarbeitung aus der Perspektive der Anwendung implizit erfolgt. Dies bedeutet, dass die Anwendung „SendAsync()“ und „CompleteAsync()“ aufruft und keine spezifischen Batchaufrufe durchführt.
+> Durch das Festlegen von `BatchFlushInterval` wird sichergestellt, dass die Batchverarbeitung aus Perspektive der Anwendung implizit erfolgt. Dies bedeutet, dass die Anwendung keine spezifischen Batch-Aufrufe durchführt, sondern `SendAsync` und `CompleteAsync`.
 >
-> Die explizite clientseitige Batchverarbeitung kann mithilfe des folgenden Methodenaufrufs implementiert werden: 
+> Die explizite clientseitige Batchverarbeitung kann mithilfe des folgenden Methodenaufrufs implementiert werden:
 > ```csharp
-> Task SendBatchAsync (IEnumerable<BrokeredMessage> messages);
+> Task SendBatchAsync(IEnumerable<BrokeredMessage> messages);
 > ```
 > Hier muss die kombinierte Größe der Nachrichten kleiner sein als die maximale Größe, die vom Tarif unterstützt wird.
 
+---
+
 ## <a name="batching-store-access"></a>Batchverarbeitung des Speicherzugriffs
 
-Um den Durchsatz einer Warteschlange, eines Themas oder eines Abonnements zu erhöhen, verarbeitet Service Bus beim Schreiben in den internen Speicher mehrere Nachrichten als Batch. Ist diese Funktion für eine Warteschlange oder ein Thema aktiviert, erfolgt das Schreiben von Nachrichten in den Speicher als Batch. Ist diese Funktion für eine Warteschlange oder ein Abonnement aktiviert, erfolgt das Löschen von Nachrichten aus dem Speicher als Batch. Wenn für eine Entität Speicherzugriff als Batch aktiviert ist, verzögert Service Bus einen Schreibvorgang in den Speicher für diese Entität für bis zu 20 ms. 
+Um den Durchsatz einer Warteschlange, eines Themas oder eines Abonnements zu erhöhen, verarbeitet Service Bus beim Schreiben in den internen Speicher mehrere Nachrichten als Batch. Ist diese Funktion für eine Warteschlange oder ein Thema aktiviert, erfolgt das Schreiben von Nachrichten in den Speicher als Batch. Ist diese Funktion für eine Warteschlange oder ein Abonnement aktiviert, erfolgt das Löschen von Nachrichten aus dem Speicher als Batch. Wenn für eine Entität Speicherzugriff als Batch aktiviert ist, verzögert Service Bus einen Schreibvorgang in den Speicher für diese Entität für bis zu 20 ms.
 
 > [!NOTE]
-> Es besteht keine Gefahr, dass bei der Batchverarbeitung Nachrichten verloren gehen, auch wenn am Ende eines Batchintervalls von 20 ms ein Service Bus-Fehler auftritt. 
+> Es besteht keine Gefahr, dass bei der Batchverarbeitung Nachrichten verloren gehen, auch wenn am Ende eines Batchintervalls von 20 ms ein Service Bus-Fehler auftritt.
 
 Weitere Speichervorgänge, die während dieses Intervalls auftreten, werden dem Batch hinzugefügt. Speicherzugriff als Batch wirkt sich nur auf Vorgänge zum **Senden** und **Abschließen** aus, Empfangsvorgänge sind nicht betroffen. Speicherzugriff als Batch ist eine Eigenschaft einer Entität. Die Batchverarbeitung erfolgt für alle Entitäten, die Speicherzugriff als Batch ermöglichen.
 
-Beim Erstellen neuer Warteschlangen, Themen oder Abonnements ist der Speicherzugriff als Batch standardmäßig aktiviert. Um den Speicherzugriff als Batch zu deaktivieren, legen Sie vor dem Erstellen der Entität die Eigenschaft [EnableBatchedOperations][EnableBatchedOperations] auf **FALSE** fest. Beispiel:
+Beim Erstellen neuer Warteschlangen, Themen oder Abonnements ist der Speicherzugriff als Batch standardmäßig aktiviert.
+
+# <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
+
+Zum Deaktivieren des Speicherzugriffs als Batch benötigen Sie eine `ManagementClient`-Instanz. Erstellen Sie eine Warteschlange aus einer Warteschlangenbeschreibung, wobei die `EnableBatchedOperations`-Eigenschaft auf `false` festgelegt wird.
 
 ```csharp
-QueueDescription qd = new QueueDescription();
-qd.EnableBatchedOperations = false;
-Queue q = namespaceManager.CreateQueue(qd);
+var queueDescription = new QueueDescription(path)
+{
+    EnableBatchedOperations = false
+};
+var queue = await managementClient.CreateQueueAsync(queueDescription);
 ```
+
+Weitere Informationen finden Sie unter
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.queuedescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.Management.QueueDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.subscriptiondescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.Management.SubscriptionDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.management.topicdescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.Management.TopicDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+
+# <a name="windowsazureservicebus-sdk"></a>[WindowsAzure.ServiceBus SDK](#tab/net-framework-sdk)
+
+Zum Deaktivieren des Speicherzugriffs als Batch benötigen Sie eine `NamespaceManager`-Instanz. Erstellen Sie eine Warteschlange aus einer Warteschlangenbeschreibung, wobei die `EnableBatchedOperations`-Eigenschaft auf `false` festgelegt wird.
+
+```csharp
+var queueDescription = new QueueDescription(path)
+{
+    EnableBatchedOperations = false
+};
+var queue = namespaceManager.CreateQueue(queueDescription);
+```
+
+Weitere Informationen finden Sie unter
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.QueueDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.SubscriptionDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+* <a href="https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.topicdescription.enablebatchedoperations?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.TopicDescription.EnableBatchedOperations` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+
+---
 
 Der Speicherzugriff als Batch wirkt sich nicht auf die Anzahl abrechenbarer Messagingvorgänge aus und ist eine Eigenschaft von Warteschlangen, Themen oder Abonnements. Er ist unabhängig vom Empfangsmodus und dem Protokoll, das zwischen einem Client und dem Service Bus-Dienst verwendet wird.
 
 ## <a name="prefetching"></a>Vorabrufe
 
-[Vorabrufe](service-bus-prefetch.md) ermöglichen es dem Warteschlangen- oder Abonnementclient, weitere Nachrichten aus dem Dienst zu laden, wenn er einen Empfangsvorgang ausführt. Der Client speichert diese Nachrichten in einem lokalen Cache. Die Größe des Cache wird durch die Eigenschaften [QueueClient.PrefetchCount][QueueClient.PrefetchCount] oder [SubscriptionClient.PrefetchCount][SubscriptionClient.PrefetchCount] bestimmt. Jeder Client, der Vorabrufe ermöglicht, verwaltet seinen eigenen Cache. Ein Cache wird nicht für andere Clients freigegeben. Wenn der Client einen Empfangsvorgang initiiert und sein Cache leer ist, überträgt der Dienst ein Nachrichtenbatch. Die Größe des Batches entspricht der Größe des Caches oder 256 KB, je nachdem, welcher Wert kleiner ist. Wenn der Client einen Empfangsvorgang initiiert und der Cache eine Nachricht enthält, wird die Nachricht aus dem Cache abgerufen.
+[Vorabrufe](service-bus-prefetch.md) ermöglichen es dem Warteschlangen- oder Abonnementclient, weitere Nachrichten aus dem Dienst zu laden, wenn er einen Empfangsvorgang ausführt. Der Client speichert diese Nachrichten in einem lokalen Cache. Die Größe des Caches wird durch die Eigenschaft `QueueClient.PrefetchCount` bzw. `SubscriptionClient.PrefetchCount` bestimmt. Jeder Client, der Vorabrufe ermöglicht, verwaltet seinen eigenen Cache. Ein Cache wird nicht für andere Clients freigegeben. Wenn der Client einen Empfangsvorgang initiiert und sein Cache leer ist, überträgt der Dienst ein Nachrichtenbatch. Die Größe des Batches entspricht der Größe des Caches oder 256 KB, je nachdem, welcher Wert kleiner ist. Wenn der Client einen Empfangsvorgang initiiert und der Cache eine Nachricht enthält, wird die Nachricht aus dem Cache abgerufen.
 
 Wenn eine Nachricht vorab abgerufen wird, sperrt der Dienst die vorab abgerufene Nachricht. Durch die Sperre kann die vorabgerufene Nachricht nicht von einem anderen Empfänger empfangen werden. Wenn der Empfänger die Nachricht nicht abschließen kann, bevor die Sperre abläuft, wird die Nachricht für andere Empfänger verfügbar gemacht. Die vorab abgerufene Kopie der Nachricht verbleibt im Cache. Der Empfänger, der die abgelaufene Kopie aus dem Cache verarbeitet, empfängt eine Ausnahme, wenn er versucht, diese Nachricht abzuschließen. Standardmäßig läuft die Nachrichtensperrre nach 60 Sekunden ab. Dieser Wert kann auf 5 Minuten erhöht werden. Um die Nutzung abgelaufener Nachrichten zu verhindern, sollten die Cachegröße immer kleiner als die Anzahl der Nachrichten sein, die von einem Client innerhalb des Sperrintervalls genutzt werden können.
 
-Bei Verwendung der Standarddauer für die Sperre (60 Sekunden) hat sich als Wert für [PrefetchCount][SubscriptionClient.PrefetchCount] das 20-Fache der maximalen Verarbeitungsraten aller Empfänger der Factory bewährt. Beispiel: Eine Factory erstellt 10 Empfänger, und jeder Empfänger kann bis zu 10 Nachrichten pro Sekunde verarbeiten. Der Wert für den Vorabruf sollte 20 × 3 × 10 = 600 nicht überschreiten. Standardmäßig ist [PrefetchCount][QueueClient.PrefetchCount] auf 0 festgelegt, was bedeutet, dass keine weiteren Nachrichten vom Dienst abgerufen werden.
+Wenn der Standardsperrenablauf von 60 Sekunden verwendet wird, gilt als geeigneter Wert für `PrefetchCount` das 20-fache der maximalen Verarbeitungsraten aller Empfänger der Factory. Beispiel: Eine Factory erstellt 10 Empfänger, und jeder Empfänger kann bis zu 10 Nachrichten pro Sekunde verarbeiten. Der Wert für den Vorabruf sollte 20 × 3 × 10 = 600 nicht überschreiten. Standardmäßig ist `PrefetchCount` auf „0“ festgelegt. Dies bedeutet, dass keine weiteren Nachrichten aus dem Dienst abgerufen werden.
 
 Der Vorabruf von Nachrichten vergrößert den Gesamtdurchsatz für eine Warteschlange oder ein Abonnement, da sich dadurch die Gesamtzahl von Nachrichtenvorgängen bzw. Roundtrips verringert. Das Abrufen der ersten Nachricht dauert jedoch länger (aufgrund der gestiegenen Nachrichtengröße). Das Empfangen vorab abgerufener Nachrichten ist schneller, weil diese Nachrichten bereits vom Client heruntergeladen wurden.
 
-Die Eigenschaft für die Gültigkeitsdauer (Time-to-Live, TTL) einer Nachricht wird vom Server zu dem Zeitpunkt überprüft, wenn der Server die Nachricht an den Client sendet. Der Client überprüft die TTL-Eigenschaft der Nachricht nicht, wenn die Nachricht empfangen wird. Stattdessen kann die Nachricht empfangen werden, auch wenn die Gültigkeitsdauer der Nachricht abgelaufen ist, während sich die Nachricht im Cache des Clients befand.
+Die Eigenschaft für die Gültigkeitsdauer (Time-to-Live, TTL) einer Nachricht wird vom Server zu dem Zeitpunkt überprüft, wenn der Server die Nachricht an den Client sendet. Der Client überprüft die TTL-Eigenschaft der Nachricht nicht, wenn die Nachricht empfangen wird. Stattdessen kann die Nachricht auch dann empfangen werden, wenn die Gültigkeitsdauer der Nachricht abgelaufen ist, während sich die Nachricht im Cache des Clients befunden hat.
 
 Der Vorabruf wirkt sich nicht auf die Anzahl der abrechenbaren Messagingvorgänge aus und ist nur für das Service Bus-Clientprotokoll verfügbar. Das HTTP-Protokoll unterstützt keinen Vorabruf. Vorabrufe sind für synchrone und asynchrone Empfangsvorgänge verfügbar.
 
+# <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
+
+Weitere Informationen finden Sie unter den folgenden `PrefetchCount`-Eigenschaften:
+
+* <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.QueueClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+* <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.servicebus.subscriptionclient.prefetchcount?view=azure-dotnet" target="_blank">`Microsoft.Azure.ServiceBus.SubscriptionClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+
+# <a name="windowsazureservicebus-sdk"></a>[WindowsAzure.ServiceBus SDK](#tab/net-framework-sdk)
+
+Weitere Informationen finden Sie unter den folgenden `PrefetchCount`-Eigenschaften:
+
+* <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.queueclient.prefetchcount?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.QueueClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+* <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.prefetchcount?view=azure-dotnet" target="_blank">`Microsoft.ServiceBus.Messaging.SubscriptionClient.PrefetchCount` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+
+---
+
 ## <a name="prefetching-and-receivebatch"></a>Vorabruf und „ReceiveBatch“
 
-Die beim gemeinsamen Vorabrufen mehrerer Nachrichten angewendeten Konzepte ähneln hinsichtlich der Semantik der Nachrichtenverarbeitung in einem Batch (ReceiveBatch). Es gibt jedoch einige geringfügige Unterschiede, die Sie beachten müssen, wenn Sie diese beiden Optionen gemeinsam nutzen.
+> [!NOTE]
+> Dieser Abschnitt gilt nur für das WindowsAzure.ServiceBus SDK, da vom Microsoft.Azure.ServiceBus SDK keine Batchfunktionen verfügbar gemacht werden.
 
-Der Vorabruf ist eine Konfiguration (bzw. ein Modus) auf dem Client („QueueClient“ und „SubscriptionClient“), und „ReceiveBatch“ ist ein Vorgang (mit Anforderung/Antwort-Semantik).
+Die beim gemeinsamen Vorabrufen mehrerer Nachrichten angewendeten Konzepte ähneln hinsichtlich der Semantik der Nachrichtenverarbeitung in einem Batch (`ReceiveBatch`). Es gibt aber einige geringfügige Unterschiede, die Sie beachten müssen, wenn Sie diese beiden Optionen gemeinsam nutzen.
+
+Der Vorabruf ist eine Konfiguration (bzw. ein Modus) auf dem Client (`QueueClient` und `SubscriptionClient`), und `ReceiveBatch` ist ein Vorgang (mit Anforderung/Antwort-Semantik).
 
 Bedenken Sie bei der gemeinsamen Verwendung dieser beiden Optionen Folgendes:
 
-* Die Vorabrufanzahl muss größer oder gleich der Anzahl von Nachrichten sein, die Sie voraussichtlich mit „ReceiveBatch“ empfangen.
+* Die Vorabrufanzahl muss größer oder gleich der Anzahl von Nachrichten sein, die Sie voraussichtlich mit `ReceiveBatch` empfangen.
 * Die Vorabrufanzahl kann bis zu n-/dreimal so groß sein wie die Anzahl von verarbeiteten Nachrichten pro Sekunde, wobei „n“ die Standardsperrdauer ist.
 
 Ein „gieriger“ Ansatz (d. h. das Aufrechterhalten einer sehr hohen Vorabrufanzahl) bringt einige Probleme mit sich, da er voraussetzt, dass die Nachricht auf einen bestimmten Empfänger beschränkt ist. Es wird empfohlen, Vorabrufwerte zwischen den oben genannten Schwellenwerte auszuprobieren und empirisch zu ermitteln, welcher Wert geeignet ist.
@@ -156,9 +314,12 @@ Wenn die erwartete Last nicht von einer einzelnen Warteschlange oder von einem e
 
 ## <a name="development-and-testing-features"></a>Entwicklungs- und Testfunktionen
 
-Service Bus verfügt über ein Feature, das speziell für die Entwicklung verwendet wird und **nie in Produktionskonfigurationen eingesetzt werden sollte**. [TopicDescription.EnableFilteringMessagesBeforePublishing][].
+> [!NOTE]
+> Dieser Abschnitt gilt nur für das WindowsAzure.ServiceBus SDK, da diese Funktionalität vom Microsoft.Azure.ServiceBus SDK nicht verfügbar gemacht wird.
 
-Wenn dem Thema neue Regeln oder Filter hinzugefügt werden, kann mit [TopicDescription.EnableFilteringMessagesBeforePublishing][] überprüft werden, ob der neue Filterausdruck wie erwartet funktioniert.
+Service Bus verfügt über ein Feature, das speziell für die Entwicklung verwendet wird und **nie in Produktionskonfigurationen eingesetzt werden sollte**[`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering].
+
+Wenn dem Thema neue Regeln oder Filter hinzugefügt werden, können Sie mit [`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering] überprüfen, ob der neue Filterausdruck wie erwartet funktioniert.
 
 ## <a name="scenarios"></a>Szenarien
 
@@ -243,16 +404,16 @@ Probieren Sie die folgenden Schritte aus, um den Durchsatz zu maximieren:
 * Lassen Sie den Speicherzugriff als Batch aktiviert. Dies erhöht die Gesamtrate, mit der Nachrichten in das Thema geschrieben werden können.
 * Legen Sie den Wert für den Vorabruf auf das 20-fache der erwarteten Empfangsrate in Sekunden fest. Dies verringert die Anzahl der Service Bus-Clientprotokollübertragungen.
 
+<!-- .NET Standard SDK, Microsoft.Azure.ServiceBus -->
 [QueueClient]: /dotnet/api/microsoft.azure.servicebus.queueclient
 [MessageSender]: /dotnet/api/microsoft.azure.servicebus.core.messagesender
+
+<!-- .NET Framework SDK, Microsoft.Azure.ServiceBus -->
 [MessagingFactory]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
-[PeekLock]: /dotnet/api/microsoft.azure.servicebus.receivemode
-[ReceiveAndDelete]: /dotnet/api/microsoft.azure.servicebus.receivemode
 [BatchFlushInterval]: /dotnet/api/microsoft.servicebus.messaging.messagesender.batchflushinterval
-[EnableBatchedOperations]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablebatchedoperations
-[QueueClient.PrefetchCount]: /dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount
-[SubscriptionClient.PrefetchCount]: /dotnet/api/microsoft.azure.servicebus.subscriptionclient.prefetchcount
 [ForcePersistence]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage.forcepersistence
 [EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning
+[TopicDescription.EnableFiltering]: /dotnet/api/microsoft.servicebus.messaging.topicdescription.enablefilteringmessagesbeforepublishing
+
+<!-- Local links -->
 [Partitioned messaging entities]: service-bus-partitioning.md
-[TopicDescription.EnableFilteringMessagesBeforePublishing]: /dotnet/api/microsoft.servicebus.messaging.topicdescription.enablefilteringmessagesbeforepublishing

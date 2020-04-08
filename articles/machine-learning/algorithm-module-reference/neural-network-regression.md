@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: d1e93c18b13e7171274eda2a7e8d07eefbefb592
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 3a591badab29a1669d109f01f8a93732704d2fd4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920381"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456097"
 ---
 # <a name="neural-network-regression-module"></a>Modul „Regression mit neuronalen Netzwerken“
 
@@ -50,7 +50,7 @@ Neuronale Netzwerke können umfassend angepasst werden. In diesem Abschnitt werd
     
     Diese Option eignet sich besonders, wenn Sie bereits etwas mit neuronalen Netzwerken vertraut sind. Zum Definieren der Netzwerkarchitektur verwenden Sie die Sprache Net#.  
 
-##  <a name="bkmk_DefaultArchitecture"></a>Erstellen eines neuronalen Netzwerkmodells mithilfe der Standardarchitektur
+##  <a name="create-a-neural-network-model-using-the-default-architecture"></a><a name="bkmk_DefaultArchitecture"></a>Erstellen eines neuronalen Netzwerkmodells mithilfe der Standardarchitektur
 
 1.  Fügen Sie Ihrer Pipeline im Designer das Modul **Neural Network Regression** hinzu. Sie finden dieses Modul unter **Machine Learning**, **Initialize** (Initialisieren) in der Kategorie **Regression**. 
   
@@ -86,7 +86,7 @@ Neuronale Netzwerke können umfassend angepasst werden. In diesem Abschnitt werd
     -   Wenn Sie **Create trainer mode** (Trainermodus erstellen) auf **Single Parameter** (Einzelner Parameter) festlegen, müssen Sie [Train Model](./train-model.md) verwenden.  
   
    
-14. Ausführen der Pipeline.  
+14. Übermitteln Sie die Pipeline.  
 
 ## <a name="results"></a>Ergebnisse
 

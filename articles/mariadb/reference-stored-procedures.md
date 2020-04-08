@@ -5,17 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 9378f2cc62172043dbcaf13e88e9df4b6e61df9b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 2f6d1e20db64cb0c2a64771ea26b971b22031fd9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769947"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79529989"
 ---
 # <a name="azure-database-for-mariadb-management-stored-procedures"></a>Gespeicherte Prozeduren für die Azure Database for MariaDB-Verwaltung
 
-Gespeicherte Prozeduren sind auf Azure Database for MariaDB-Servern verfügbar, um Sie beim Verwalten des MariaDB-Servers unterstützen. Dies schließt die Verwaltung der Verbindungen und Abfragen Ihres Servers sowie das Einrichten der Datenreplikation ein.  
+Gespeicherte Prozeduren sind auf Azure Database for MariaDB-Servern verfügbar, um Sie beim Verwalten des MariaDB-Servers unterstützen. Dies schließt die Verwaltung der Verbindungen und Abfragen Ihres Servers sowie das Einrichten von Datenreplikation ein.  
 
 ## <a name="data-in-replication-stored-procedures"></a>Gespeicherte Prozeduren für die Datenreplikation
 

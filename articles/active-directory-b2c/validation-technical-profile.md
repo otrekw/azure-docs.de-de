@@ -8,21 +8,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 65a2eab05e7c475431602d9c2d3fc44b59bbc8f7
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 1eaf159149bb353b1cf0474aad5bc233decddc5c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78185725"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481567"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Validierungsprofils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ein technisches Validierungsprofil ist ein ganz einfaches technisches Profil aus jedem beliebigen Protokoll, z. B. [Azure Active Directory](active-directory-technical-profile.md) oder einer [REST-API](restful-technical-profile.md). Das technische Validierungsprofil gibt Ausgabeansprüche oder eine Fehlermeldung „HTTP 409“ (Konfliktantwort-Statuscode) mit den folgenden Daten zurück:
+Ein technisches Validierungsprofil ist ein ganz einfaches technisches Profil aus jedem beliebigen Protokoll, z. B. [Azure Active Directory](active-directory-technical-profile.md) oder einer [REST-API](restful-technical-profile.md). Das technische Validierungsprofil gibt Ausgabeansprüche oder einen HTTP-Statuscode des Typs 4xx mit den folgenden Daten zurück. Weitere Informationen finden Sie unter [Zurückgeben einer Fehlermeldung.](restful-technical-profile.md#returning-error-message)
 
 ```JSON
 {
@@ -32,11 +32,11 @@ Ein technisches Validierungsprofil ist ein ganz einfaches technisches Profil aus
 }
 ```
 
-Ansprüche, die von einem technischen Validierungsprofil zurückgegeben werden, werden wieder dem Anspruchsbehälter hinzugefügt. Sie können solche Ansprüche in den nächsten technischen Validierungsprofilen verwenden.
+Der Umfang der Ausgabeansprüche eines technischen Validierungsprofils ist auf das [selbst bestätigte technische Profil](self-asserted-technical-profile.md), das das technische Validierungsprofil aufruft, und dessen technische Validierungsprofile beschränkt. Wenn Sie die Ausgabeansprüche im nächsten Orchestrierungsschritt verwenden möchten, müssen Sie die Ausgabeansprüche dem selbst bestätigten technischen Profil hinzufügen, das das technische Validierungsprofil aufruft.
 
 Technische Validierungsprofile werden in der Reihenfolge ausgeführt, in der sie im **ValidationTechnicalProfiles**-Element angezeigt werden. Sie können in einem technischen Validierungsprofil konfigurieren, ob die Ausführung jeglicher nachfolgender technischer Validierungsprofile fortgesetzt werden soll, wenn das technische Validierungsprofil einen Fehler auslöst oder erfolgreich ist.
 
-Technische Validierungsprofile können bedingt ausgeführt werden, basierend auf Vorbedingungen, die im **ValidationTechnicalProfiles**-Element definiert sind. Beispielsweise können Sie überprüfen, ob ein bestimmter Anspruch vorhanden ist, oder ob ein Anspruch gleich oder ungleich dem angegebenen Wert ist.
+Technische Validierungsprofile können bedingt ausgeführt werden, basierend auf Vorbedingungen, die im **ValidationTechnicalProfiles**-Element definiert sind. Beispielsweise können Sie überprüfen, ob ein bestimmter Anspruch vorhanden oder ein Anspruch gleich oder ungleich dem angegebenen Wert ist.
 
 Ein selbstbestätigtes technisches Profil kann definieren, dass ein technisches Validierungsprofil verwendet wird, um einige oder alle seiner Ausgabeansprüche zu validieren. Alle Eingabeansprüche des technischen Profils, auf das verwiesen wird, müssen in den Ausgabeansprüchen des verweisenden technischen Validierungsprofils enthalten sein.
 
@@ -67,7 +67,7 @@ Das **ValidationTechnicalProfile**-Element enthält das folgende Element:
 
 Das **Precondition**-Element enthält das folgende Attribut:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | `Type` | Ja | Der Typ der Überprüfung oder Abfrage, die für die Vorbedingung ausgeführt werden soll. Entweder wird `ClaimsExist` angegeben, um sicherzustellen, dass Aktionen ausgeführt werden, wenn die angegebenen Ansprüche im aktuellen Satz von Ansprüchen des Benutzers vorhanden sind, oder es wird `ClaimEquals` angegeben, damit die Aktionen ausgeführt werden, wenn der angegebene Anspruch vorhanden ist und sein Wert gleich dem angegebenen Wert ist. |
 | `ExecuteActionsIf` | Ja | Zeigt an, ob die Aktionen in der Vorbedingung ausgeführt werden sollen, wenn der Test „true“ oder „false“ ist. |
@@ -76,7 +76,7 @@ Das **Precondition**-Element enthält die folgenden Elemente:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
-| value | 1:n | Die Daten, die von der Überprüfung verwendet werden. Wenn der Typ dieser Überprüfung `ClaimsExist` ist, gibt dieses Feld eine ClaimTypeReferenceId an, die abzufragen ist. Wenn der Typ der Überprüfung `ClaimEquals` ist, gibt dieses Feld eine ClaimTypeReferenceId an, die abzufragen ist. Während ein anderes Wertelement den zu überprüfenden Wert enthält.|
+| Wert | 1:n | Die Daten, die von der Überprüfung verwendet werden. Wenn der Typ dieser Überprüfung `ClaimsExist` ist, gibt dieses Feld eine ClaimTypeReferenceId an, die abzufragen ist. Wenn der Typ der Überprüfung `ClaimEquals` ist, gibt dieses Feld eine ClaimTypeReferenceId an, die abzufragen ist. Während ein anderes Wertelement den zu überprüfenden Wert enthält.|
 | Aktion | 1:1 | Die Aktion, die ausgeführt werden soll, wenn die Überprüfung der Vorbedingung innerhalb eines Orchestrierungsschritts „true“ ist. Der Wert der **Aktion** wird auf `SkipThisValidationTechnicalProfile` festgelegt. Gibt an, dass das zugeordnete technische Validierungsprofil nicht ausgeführt werden soll. |
 
 ### <a name="example"></a>Beispiel

@@ -16,12 +16,12 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50b59bceb07facd944d7159eeb416c7e9e91557c
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: c72217a565071f9531281af1862ba3681e353a4d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77522729"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481465"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Konfigurieren der Bereitstellung mithilfe von Microsoft Graph-APIs
 
@@ -174,7 +174,7 @@ Content-type: application/json
 
 ### <a name="retrieve-the-template-for-the-provisioning-connector"></a>Abrufen der Vorlage für den Bereitstellungsconnector
 
-Anwendungen im Katalog, die für die Bereitstellung aktiviert sind, verfügen über Vorlagen zum Optimieren der Konfiguration. Verwenden Sie die nachstehende Anforderung, um [die Vorlage für die Bereitstellungskonfiguration abzurufen](https://docs.microsoft.com/graph/api/synchronization-synchronizationtemplate-list?view=graph-rest-beta&tabs=http).
+Anwendungen im Katalog, die für die Bereitstellung aktiviert sind, verfügen über Vorlagen zum Optimieren der Konfiguration. Verwenden Sie die nachstehende Anforderung, um [die Vorlage für die Bereitstellungskonfiguration abzurufen](https://docs.microsoft.com/graph/api/synchronization-synchronizationtemplate-list?view=graph-rest-beta&tabs=http). Beachten Sie, dass Sie die ID angeben müssen. Die ID bezieht sich auf die vorherige Ressource, in diesem Fall auf ServicePrincipal. 
 
 #### <a name="request"></a>*Anforderung*
 
@@ -266,10 +266,10 @@ Content-type: application/json
 
 ### <a name="test-the-connection-to-the-application"></a>Testen der Verbindung mit der Anwendung
 
-Testen Sie die Verbindung mit der Drittanbieteranwendung. Das folgende Beispiel gilt für eine Anwendung, die „clientSecret“ und „secretToken“ erfordert. Jede Anwendung verfügt über eigene Anforderungen. Die verfügbaren Optionen finden Sie in der [API-Dokumentation](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http). 
+Testen Sie die Verbindung mit der Drittanbieteranwendung. Das folgende Beispiel gilt für eine Anwendung, die „clientSecret“ und „secretToken“ erfordert. Jede Anwendung verfügt über eigene Anforderungen. Anwendungen verwenden oft BaseAddress an Stelle von ClientSecret. Um festzustellen, welche Anmeldeinformationen für Ihre App erforderlich sind, navigieren Sie zur Seite der Bereitstellungskonfiguration für Ihre Anwendung, und klicken Sie im Entwicklermodus auf „Verbindung testen“. Unter „Netzwerkdatenverkehr“ werden die Parameter gezeigt, die als Anmeldeinformationen verwendet werden. Eine vollständige Liste der Anmeldeinformationen finden Sie [hier](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http). 
 
 #### <a name="request"></a>*Anforderung*
-```http
+```msgraph-interactive
 POST https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{id}/validateCredentials
 { 
     credentials: [ 
@@ -293,7 +293,7 @@ HTTP/1.1 204 No Content
 Das Konfigurieren der Bereitstellung erfordert das Einrichten einer Vertrauensstellung zwischen Azure AD und der Anwendung. Autorisieren Sie den Zugriff auf die Drittanbieteranwendung. Das folgende Beispiel gilt für eine Anwendung, die „clientSecret“ und „secretToken“ erfordert. Jede Anwendung verfügt über eigene Anforderungen. Die verfügbaren Optionen finden Sie in der [API-Dokumentation](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-validatecredentials?view=graph-rest-beta&tabs=http). 
 
 #### <a name="request"></a>*Anforderung*
-```json
+```msgraph-interactive
 PUT https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/secrets 
  
 { 

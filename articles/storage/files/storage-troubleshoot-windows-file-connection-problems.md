@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 207a3a6c59012154d547bbd224782b90e1046c6a
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 17ecc80fee3b024c334b8d36533663f1f3cebe4d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597965"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79136904"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Behandeln von Azure Files-Problemen unter Windows
 
@@ -43,6 +43,14 @@ Wenn für das Speicherkonto Regeln für das virtuelle Netzwerk (VNET) und die Fi
 ### <a name="solution-for-cause-2"></a>Lösung für Ursache 2
 
 Stellen Sie sicher, dass virtuelle Netzwerk- und Firewallregeln für das Speicherkonto ordnungsgemäß konfiguriert sind. Um zu testen, ob virtuelle Netzwerk- oder Firewallregeln das Problem verursachen, ändern Sie vorübergehend die Einstellung für das Speicherkonto in **Zugriff aus allen Netzwerken zulassen**. Weitere Informationen finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+
+### <a name="cause-3-share-level-permissions-are-incorrect-when-using-identity-based-authentication"></a>Ursache 3: Berechtigungen auf Freigabeebene sind bei Verwendung der identitätsbasierten Authentifizierung falsch
+
+Wenn Benutzer mithilfe der Active Directory (AD)- oder Azure Active Directory Domain Services (Azure AD DS)-Authentifizierung auf die Azure-Dateifreigabe zugreifen, schlägt der Zugriff mit dem Fehler „Zugriff verweigert“ fehl, wenn Berechtigungen auf Freigabeebene falsch sind. 
+
+### <a name="solution-for-cause-3"></a>Lösung für Ursache 3
+
+Informationen zum Aktualisieren der Berechtigungen auf Freigabeebene finden Sie unter [Zuweisen von Zugriffsberechtigungen zu einer Identität](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable#assign-access-permissions-to-an-identity).
 
 <a id="error53-67-87"></a>
 ## <a name="error-53-error-67-or-error-87-when-you-mount-or-unmount-an-azure-file-share"></a>„Fehler 53“, „Fehler 67“ oder „Fehler 87“ beim Versuch, eine Azure-Dateifreigabe einzubinden oder die Einbindung aufzuheben

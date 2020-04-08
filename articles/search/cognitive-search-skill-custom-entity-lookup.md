@@ -8,14 +8,14 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: d5e2813c71e9d6941eea7d11fb6565fb84fd0789
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 8674438032ebd925296c95e9ffa0a2a0b95322f1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77651337"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79369776"
 ---
-#    <a name="custom-entity-lookup-cognitive-skill-preview"></a>Cognitive Search-Qualifikation„Benutzerdefinierte Entitätssuche“
+#     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Cognitive Search-Qualifikation„Benutzerdefinierte Entitätssuche“
 
 > [!IMPORTANT] 
 > Diese Qualifikation ist zurzeit als öffentliche Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Derzeit werden weder das Portal noch das .NET SDK unterstützt.
@@ -38,9 +38,9 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 
 | Parametername     | BESCHREIBUNG |
 |--------------------|-------------|
-| entitiesDefinitionUri | Pfad zu einer JSON- oder CSV-Datei, die den gesamten Zieltext enthält, mit dem verglichen werden soll. Diese Entitätsdefinition wird am Anfang der Ausführung eines Indexers gelesen. Alle Aktualisierungen an dieser Datei während der Ausführung werden erst in nachfolgenden Ausführungen berücksichtigt. Auf diese Konfiguration muss über HTTPS zugegriffen werden können. Weitere Informationen zum erwarteten CSV- oder JSON-Schema finden Sie unter [Benutzerdefiniertes Entitätsdefinitionsformat](#custom-entity-definition-format) weiter unten.|
+| entitiesDefinitionUri    | Pfad zu einer JSON- oder CSV-Datei, die den gesamten Zieltext enthält, mit dem verglichen werden soll. Diese Entitätsdefinition wird am Anfang der Ausführung eines Indexers gelesen. Alle Aktualisierungen an dieser Datei während der Ausführung werden erst in nachfolgenden Ausführungen berücksichtigt. Auf diese Konfiguration muss über HTTPS zugegriffen werden können. Weitere Informationen zum erwarteten CSV- oder JSON-Schema finden Sie unter [Benutzerdefiniertes Entitätsdefinitionsformat](#custom-entity-definition-format) weiter unten.|
 |inlineEntitiesDefinition | Inline-JSON-Entitätsdefinitionen. Dieser Parameter ersetzt den entitiesDefinitionUri-Parameter, falls vorhanden. Es können nicht mehr als 10 KB der Konfiguration inline bereitgestellt werden. Weitere Informationen zum erwarteten JSON-Schema finden Sie unter [Benutzerdefinierte Entitätsdefinition](#custom-entity-definition-format) weiter unten. |
-|defaultLanguageCode |  (Optional) Sprachcode des Eingabetexts, der verwendet wird, um den Eingabetext mit Token zu versehen und abzugrenzen. Die folgenden Sprachen werden unterstützt: `da, de, en, es, fi, fr, it, ko, pt`. Die Standardsprache ist Englisch (`en`). Wenn Sie ein Sprachcode-Ländercode-Format übergeben, wird nur der Sprachcodeteil des Formats verwendet.  |
+|defaultLanguageCode |    (Optional) Sprachcode des Eingabetexts, der verwendet wird, um den Eingabetext mit Token zu versehen und abzugrenzen. Die folgenden Sprachen werden unterstützt: `da, de, en, es, fi, fr, it, ko, pt`. Die Standardsprache ist Englisch (`en`). Wenn Sie ein Sprachcode-Ländercode-Format übergeben, wird nur der Sprachcodeteil des Formats verwendet.  |
 
 
 ## <a name="skill-inputs"></a>Skilleingaben
@@ -48,13 +48,13 @@ Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
 | Eingabename      | BESCHREIBUNG                   |
 |---------------|-------------------------------|
 | text          | Der zu analysierende Text          |
-| languageCode  | Optional. Der Standardwert ist `"en"`.  |
+| languageCode    | Optional. Der Standardwert ist `"en"`.  |
 
 
 ## <a name="skill-outputs"></a>Skillausgaben
 
 
-| Ausgabename     | BESCHREIBUNG                   |
+| Ausgabename      | BESCHREIBUNG                   |
 |---------------|-------------------------------|
 | entities | Ein Array von Objekten, die Informationen über die gefundenen Übereinstimmungen enthalten, sowie zugehörige Metadaten. Jede der identifizierten Entitäten kann die folgenden Felder enthalten:  <ul> <li> *name:* Identifizierte Entität der obersten Ebene. Die Entität stellt die „normalisierte“ Form dar. </li> <li> *id:*  Ein eindeutiger Bezeichner für die Entität, wie vom Benutzer im „Benutzerdefiniertes Entitätsdefinitionsformat“ definiert.</li> <li> *description*: Entitätsbeschreibung, wie vom Benutzer im „Benutzerdefiniertes Entitätsdefinitionsformat“ definiert. </li> <li> *type:* Entitätstyp, wie vom Benutzer im „Benutzerdefiniertes Entitätsdefinitionsformat“ definiert.</li> <li> *subtype:* Entitätsuntertyp, wie vom Benutzer im „Benutzerdefiniertes Entitätsdefinitionsformat“ definiert.</li>  <li> *matches*: Sammlung, die die einzelnen Übereinstimmungen für diese Entität im Quelltext beschreibt. Jede Übereinstimmung verfügt über die folgenden Elemente: </li> <ul> <li> *text*: Die unformatierte Textübereinstimmung aus dem Quelldokument. </li> <li> *offset*: Die Fundstelle der Übereinstimmung im Text. </li> <li> *length*:  Die Länge des übereinstimmenden Texts. </li> <li> *matchDistance*: Die Anzahl der Zeichen, in denen sich diese Übereinstimmung vom ursprünglichen Entitätsnamen oder -alias unterscheidet.  </li> </ul> </ul>
   |
@@ -159,8 +159,8 @@ In den folgenden Tabellen werden die verschiedenen Konfigurationsparameter ausf�
 | Aliaseigenschaften | BESCHREIBUNG |
 |------------------|-------------|
 | text  | Die alternative Schreibweise oder Darstellung eines bestimmten Zielentitätsnamens.  |
-| caseSensitive | (Optional) Funktioniert wie der oben beschriebene Parameter „CaseSensitive“ der Stammentität, gilt aber nur für diesen einen Alias. |
-| fuzzyEditDistance | (Optional) Funktioniert wie der oben beschriebene Parameter „fuzzyEditDistance“ der Stammentität, gilt aber nur für diesen einen Alias. |
+| caseSensitive | (Optional) Funktioniert wie der oben beschriebene Parameter caseSensitive der Stammentität, gilt aber nur für diesen einen Alias. |
+| fuzzyEditDistance | (Optional) Funktioniert wie der oben beschriebene Parameter fuzzyEditDistance der Stammentität, gilt aber nur für diesen einen Alias. |
 
 
 ### <a name="inline-format"></a>Inlineformat
@@ -168,7 +168,7 @@ In den folgenden Tabellen werden die verschiedenen Konfigurationsparameter ausf�
 In einigen Fällen ist es möglicherweise einfacher, die Liste der benutzerdefinierten Entitäten, die abgeglichen werden sollen, direkt inline in der Qualifikationsdefinition bereitzustellen. In diesem Fall können Sie ein ähnliches JSON-Format wie das oben beschriebene verwenden, das jedoch inline in der Qualifikationsdefinition enthalten ist.
 Nur Konfigurationen mit einer Größe von weniger als 10 KB (serialisierte Größe) unterstützen Inlinedefinitionen. 
 
-##  <a name="sample-definition"></a>Beispieldefinition
+##    <a name="sample-definition"></a>Beispieldefinition
 
 Eine Beispieldefinition einer Qualifikation mit einem Inlineformat wird unten gezeigt:
 
@@ -231,7 +231,7 @@ Wenn Sie sich alternativ dazu entschließen, einen Zeiger auf die Entitätsdefin
 
 ```
 
-##  <a name="sample-input"></a>Beispieleingabe
+##    <a name="sample-input"></a>Beispieleingabe
 
 ```json
 {
@@ -248,7 +248,7 @@ Wenn Sie sich alternativ dazu entschließen, einen Zeiger auf die Entitätsdefin
 }
 ```
 
-##  <a name="sample-output"></a>Beispielausgabe
+##    <a name="sample-output"></a>Beispielausgabe
 
 ```json
   { 
@@ -295,6 +295,12 @@ Wenn Sie sich alternativ dazu entschließen, einen Zeiger auf die Entitätsdefin
     ] 
   } 
 ```
+
+## <a name="errors-and-warnings"></a>Fehler und Warnungen
+
+### <a name="warning-reached-maximum-capacity-for-matches-skipping-all-further-duplicate-matches"></a>Warnung: Maximale Kapazität für Übereinstimmungen erreicht. Alle weiteren duplizierten Übereinstimmungen werden übersprungen.
+
+Diese Warnung wird ausgegeben, wenn die Anzahl der erkannten Übereinstimmungen größer als die maximal zulässige Anzahl ist. In diesem Fall wird das Einschließen duplizierter Übereinstimmungen beendet. Wenn dies für Sie nicht akzeptabel ist, sollten Sie ein [Supportticket](https://ms.portal.azure.com/#create/Microsoft.Support) einreichen, damit wir Sie bei Ihrem individuellen Anwendungsfall unterstützen können.
 
 ## <a name="see-also"></a>Weitere Informationen
 

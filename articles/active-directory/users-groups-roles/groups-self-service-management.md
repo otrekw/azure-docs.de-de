@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 03/10/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b52604d4ad20fed83c4649f046722ed45e766c4
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 0e52c37e293941a767621cf56ef75f8cc83b1925
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097695"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79298002"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Einrichten der Self-Service-Gruppenverwaltung in Azure Active Directory 
 
@@ -28,12 +28,12 @@ Sie können Benutzern die Erstellung und Verwaltung ihrer eigenen Sicherheitsgru
 
 ## <a name="self-service-group-membership-defaults"></a>Standardwerte für die Self-Service-Gruppenmitgliedschaft
 
-Wenn Sicherheitsgruppen im Azure-Portal oder über Azure AD PowerShell erstellt werden, können nur die Besitzer der Gruppen die Mitgliedschaft aktualisieren. Ein Beitritt zu im [Zugriffsbereich](https://account.activedirectory.windowsazure.com/r#/joinGroups) erstellten Sicherheitsgruppen und allen Office 365-Gruppen ist für alle vom Besitzer genehmigten sowie automatisch genehmigten Benutzer möglich. Im Zugriffsbereich können Sie beim Erstellen einer Gruppe die Mitgliedschaftsoptionen ändern.
+Wenn Sicherheitsgruppen im Azure-Portal oder über Azure AD PowerShell erstellt werden, können nur die Besitzer der Gruppen die Mitgliedschaft aktualisieren. Ein Beitritt zu im [Zugriffsbereich](https://account.activedirectory.windowsazure.com/r#/joinGroups) nach dem Self-Service-Prinzip erstellten Sicherheitsgruppen sowie zu allen Office 365-Gruppen ist für alle vom Besitzer genehmigten sowie automatisch genehmigten Benutzer möglich. Im Zugriffsbereich können Sie beim Erstellen einer Gruppe die Mitgliedschaftsoptionen ändern.
 
 Erstellte Gruppen in | Standardverhalten von Sicherheitsgruppen | Standardverhalten von Office 365-Gruppen
 ------------------ | ------------------------------- | ---------------------------------
 [Azure AD PowerShell](groups-settings-cmdlets.md) | Nur Besitzer können Mitglieder hinzufügen.<br>Sichtbar, jedoch kein Beitritt im Zugriffsbereich möglich. | Beitritt aller Benutzer ist möglich.
-[Azure-Portal](https://portal.azure.com) | Nur Besitzer können Mitglieder hinzufügen.<br>Sichtbar, jedoch kein Beitritt im Zugriffsbereich möglich.<br>Besitzer wird bei der Gruppenerstellung nicht automatisch zugewiesen. | Beitritt aller Benutzer ist möglich.
+[Azure portal](https://portal.azure.com) | Nur Besitzer können Mitglieder hinzufügen.<br>Sichtbar, jedoch kein Beitritt im Zugriffsbereich möglich.<br>Besitzer wird bei der Gruppenerstellung nicht automatisch zugewiesen. | Beitritt aller Benutzer ist möglich.
 [Zugriffsbereich](https://account.activedirectory.windowsazure.com/r#/joinGroups) | Beitritt aller Benutzer ist möglich.<br>Mitgliedschaftsoptionen können bei der Erstellung der Gruppe geändert werden. | Beitritt aller Benutzer ist möglich.<br>Mitgliedschaftsoptionen können bei der Erstellung der Gruppe geändert werden.
 
 ## <a name="self-service-group-management-scenarios"></a>Szenarien der Self-Service-Gruppenverwaltung
@@ -44,17 +44,17 @@ Erstellte Gruppen in | Standardverhalten von Sicherheitsgruppen | Standardverhal
 ## <a name="make-a-group-available-for-user-self-service"></a>Einrichten einer Gruppe für Self-Service durch Benutzer
 
 1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit dem Konto eines globalen Administrators für das Verzeichnis an.
-2. Wählen Sie **Benutzer und Gruppen** und dann **Gruppeneinstellungen**.
-3. Legen Sie **Self-Service-Gruppenverwaltung aktiviert** auf **Ja** fest.
-4. Legen Sie **Benutzer können Sicherheitsgruppen erstellen** oder **Benutzer können Office 365-Gruppen erstellen** auf **Ja** fest.
-   * Wenn diese Einstellungen aktiviert sind, können alle Benutzer in Ihrem Verzeichnis neue Sicherheitsgruppen erstellen und diesen Gruppen Mitglieder hinzufügen. Diese neuen Gruppen werden auch für alle Benutzer im Zugriffsbereich angezeigt. Wenn die Richtlinieneinstellung der Gruppe dies zulässt, können andere Benutzer Anforderungen in Bezug auf den Beitritt zu diesen Gruppen erstellen. 
-   * Falls diese Einstellungen deaktiviert sind, können Benutzer keine Gruppen erstellen und keine vorhandenen Gruppen ändern, deren Besitzer sie sind. Sie können aber trotzdem die Mitgliedschaften dieser Gruppen verwalten und Anforderungen anderer Benutzer zum Beitreten zu diesen Gruppen genehmigen.
+1. Klicken Sie auf **Gruppen** und anschließend auf **Allgemeine Einstellungen**.
+1. Legen Sie **Besitzer können Anforderungen für eine Gruppenmitgliedschaft im Zugriffspanel verwalten** auf **Ja** fest.
+1. Legen Sie **Zugriff auf Gruppen im Zugriffspanel beschränken** auf **Nein** fest.
+1. Legen Sie **Benutzer können Sicherheitsgruppen erstellen** oder **Benutzer können Office 365-Gruppen erstellen** auf
 
-Sie können auch die Optionen **Benutzer, die Sicherheitsgruppen verwalten können** und **Benutzer, die Office 365-Gruppen verwalten können** verwenden, um für die Self-Service-Gruppenverwaltung Ihrer Benutzer eine feinere Zugriffssteuerung zu erzielen. Wenn die Option **Benutzer können Gruppen erstellen** aktiviert ist, können alle Benutzer in Ihrem Mandanten neue Gruppen erstellen und diesen Mitglieder hinzufügen. Sie können keine Personen angeben, die ihre eigenen Gruppen erstellen können. Sie können lediglich Personen angeben, die ein anderes Gruppenmitglied als Gruppenbesitzer festlegen.
+    - **Ja** fest: Alle Benutzer in Ihrer Azure AD-Organisation können neue Sicherheitsgruppen erstellen und Mitglieder zu diesen Gruppen hinzufügen. Diese neuen Gruppen werden auch für alle Benutzer im Zugriffsbereich angezeigt. Wenn die Richtlinieneinstellung der Gruppe dies zulässt, können andere Benutzer Anforderungen in Bezug auf den Beitritt zu diesen Gruppen erstellen.
+    - **Nein**: Benutzer können keine Gruppen erstellen und keine vorhandenen Gruppen ändern, deren Besitzer sie sind. Sie können aber trotzdem die Mitgliedschaften dieser Gruppen verwalten und Anforderungen anderer Benutzer zum Beitreten zu diesen Gruppen genehmigen.
 
-Wenn Sie die Option **Benutzer, die Self-Service für Sicherheitsgruppen verwenden** und **Benutzer, die Office 365-Gruppen verwalten können** auf **Ja** festlegen, können alle Benutzer in Ihrem Mandanten neue Gruppen erstellen.
+Sie können auch **Besitzer, die in Azure-Portalen Mitglieder als Gruppenbesitzer zuweisen können** verwenden, um eine **detailliertere Zugriffssteuerung** über die Gruppenverwaltung nach dem Self-Service-Prinzip für Ihre Benutzer zu erreichen.
 
-Sie können auch die Option **Gruppe, die Sicherheitsgruppen verwalten kann** oder **Gruppe, die Office 365-Gruppen verwalten kann** verwenden, um eine einzelne Gruppe anzugeben, deren Mitglieder den Self-Service nutzen können.
+Wenn Benutzer Gruppen erstellen können, dürfen alle Benutzer in Ihrer Organisation neue Gruppen erstellen und können dann als Standardbesitzer Mitglieder diesen Gruppen hinzufügen. Sie können keine Personen angeben, die ihre eigenen Gruppen erstellen können. Sie können lediglich Personen angeben, die ein anderes Gruppenmitglied als Gruppenbesitzer festlegen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

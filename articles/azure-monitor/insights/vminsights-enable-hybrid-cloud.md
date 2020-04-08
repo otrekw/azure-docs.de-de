@@ -1,23 +1,23 @@
 ---
-title: Aktivieren von Azure Monitor (Vorschauversion) für eine Hybridumgebung | Microsoft-Dokumentation
+title: Aktivieren von Azure Monitor für eine Hybridumgebung | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für VMs für eine Hybridcloudumgebung aktivieren, die einen oder mehrere virtuelle Computer enthält.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: bd44eebf8aceaf7fe32cf8cf1b1152db32acb344
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 734f61c2e96002516e9e15af88d2c6b0fce00e98
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669623"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480741"
 ---
-# <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>Aktivieren von Azure Monitor für VMs (Vorschauversion) für eine Hybridumgebung
+# <a name="enable-azure-monitor-for-vms-for-a-hybrid-environment"></a>Aktivieren von Azure Monitor für VMs für eine Hybridumgebung
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-In diesem Artikel wird erläutert, wie Sie Azure Monitor für VMs (Vorschauversion) für virtuelle oder physische Computer aktivieren, die in Ihrem Rechenzentrum oder einer anderen Cloudumgebung gehostet sind. Nachdem Sie diesen Prozess durchgeführt haben, haben Sie erfolgreich damit begonnen, die virtuellen Computer in Ihrer Umgebung zu überwachen, und werden erfahren, ob Leistungs- oder Verfügbarkeitsprobleme bei diesen Computern auftreten.
+In diesem Artikel wird erläutert, wie Sie Azure Monitor für VMs für virtuelle oder physische Computer aktivieren, die in Ihrem Rechenzentrum oder einer anderen Cloudumgebung gehostet werden. Nachdem Sie diesen Prozess durchgeführt haben, haben Sie erfolgreich damit begonnen, die virtuellen Computer in Ihrer Umgebung zu überwachen, und werden erfahren, ob Leistungs- oder Verfügbarkeitsprobleme bei diesen Computern auftreten.
 
 Bevor Sie beginnen, sollten Sie die [Voraussetzungen](vminsights-enable-overview.md) überprüfen und sicherstellen, dass Ihr Abonnement und Ihre Ressourcen auch diese Anforderungen erfüllen. Überprüfen Sie die Anforderungen und Bereitstellungsmethoden für den [Log Analytics-Linux- und -Windows-Agent](../../log-analytics/log-analytics-agent-overview.md).
 
@@ -79,7 +79,7 @@ Falls der Dependency-Agent nicht gestartet wird, suchen Sie in den Protokollen n
 
 Dateien für den Dependency-Agent werden in den folgenden Verzeichnissen gespeichert:
 
-| Dateien | Location |
+| Dateien | Position |
 |:--|:--|
 | Hauptdateien | /opt/microsoft/dependency-agent |
 | Protokolldateien | /var/opt/microsoft/dependency-agent/log |
@@ -111,7 +111,7 @@ sudo sh InstallDependencyAgent-Linux64.bin -s
 Zum Bereitstellen des Dependency-Agents über Desired State Configuration (DSC) können Sie das Modul „xPSDesiredStateConfiguration“ mit dem folgenden Beispielcode verwenden:
 
 ```powershell
-configuration ServiceMap {
+configuration VMInsights {
 
     Import-DscResource -ModuleName xPSDesiredStateConfiguration
 
@@ -184,7 +184,7 @@ Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren u
                     {
                         "apiVersion": "2015-11-01-preview",
                         "location": "[parameters('WorkspaceLocation')]",
-                        "name": "[concat('ServiceMap', '(', parameters('WorkspaceName'),')')]",
+                        "name": "[concat('VMInsights', '(', parameters('WorkspaceName'),')')]",
                         "type": "Microsoft.OperationsManagement/solutions",
                         "dependsOn": [
                             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
@@ -194,9 +194,9 @@ Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren u
                         },
 
                         "plan": {
-                            "name": "[concat('ServiceMap', '(', parameters('WorkspaceName'),')')]",
+                            "name": "[concat('VMInsights', '(', parameters('WorkspaceName'),')')]",
                             "publisher": "Microsoft",
-                            "product": "[Concat('OMSGallery/', 'ServiceMap')]",
+                            "product": "[Concat('OMSGallery/', 'VMInsights')]",
                             "promotionCode": ""
                         }
                     }

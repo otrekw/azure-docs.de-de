@@ -1,18 +1,18 @@
 ---
-title: Verbinden eines VNet-Gateways mit einem Azure Virtual WAN | Microsoft-Dokumentation
+title: Verbinden eines VNet-Gateways mit einer Azure Virtual WAN-Instanz
 description: Dieser Artikel unterstützt Sie beim Erstellen einer Verbindung zwischen einem Azure VNet-Gateway und einem Azure Virtual WAN VPN-Gateway.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1f8e0db9921c305edd2ee34efad22cdcf568f8df
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 688183bc07aa14d5e5df182d7de0897cec93f0b9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510935"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066231"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>Herstellen einer Verbindung zwischen einem VPN Gateway (VNet-Gateway) und Virtual WAN
 
@@ -33,27 +33,27 @@ Virtuelles Azure-Netzwerk
 
 * Erstellen Sie ein virtuelles Netzwerk ohne VNet-Gateways. Stellen Sie sicher, dass sich kein Subnetz Ihres lokalen Netzwerks mit den virtuellen Netzwerken für die Verbindungsherstellung überschneidet. Informationen zum Erstellen eines virtuellen Netzwerks im Azure-Portal finden Sie in der [Schnellstartanleitung](../virtual-network/quick-create-portal.md).
 
-## <a name="vnetgw"></a>1. Erstellen eines Azure VNet-Gateways
+## <a name="1-create-an-azure-virtual-network-gateway"></a><a name="vnetgw"></a>1. Erstellen eines Azure VNet-Gateways
 
 Erstellen Sie VPN Gateway VNet-Gateway für Ihr virtuelles Netzwerk im Aktiv/Aktiv-Modus für das virtuelle Netzwerk. Beim Erstellen des Gateways können Sie entweder vorhandene öffentliche IP-Adressen für die beiden Instanzen des Gateways verwenden oder neue öffentliche IP-Adressen erstellen. Diese öffentlichen IP-Adressen werden beim Einrichten der Virtual WAN-Standorte verwendet. Weitere Informationen zum Aktiv/Aktiv-Modus finden Sie unter [Konfigurieren von Aktiv/Aktiv-Verbindungen](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md#aagateway).
 
-### <a name="active-active"></a>Aktiv/Aktiv-Moduseinstellung
+### <a name="active-active-mode-setting"></a><a name="active-active"></a>Aktiv/Aktiv-Moduseinstellung
 
 ![Aktiv/Aktiv](./media/connect-virtual-network-gateway-vwan/active.png "Aktiv-aktiv")
 
-### <a name="BGP"></a>BGP-Einstellung
+### <a name="bgp-setting"></a><a name="BGP"></a>BGP-Einstellung
 
 Die BGP-ASN kann nicht 65515 sein. 66515 wird vom Azure Virtual WAN verwendet.
 
 ![BGP](./media/connect-virtual-network-gateway-vwan/bgp.png "bgp")
 
-### <a name="pip"></a>Öffentliche IP-Adressen
+### <a name="public-ip-addresses"></a><a name="pip"></a>Öffentliche IP-Adressen
 
 Wenn das Gateway erstellt wurde, navigieren Sie zur Seite **Eigenschaften**. Die Eigenschaften und Konfigurationseinstellungen sehen ähnlich aus wie im folgenden Beispiel. Beachten Sie die beiden öffentlichen IP-Adressen, die für das Gateway verwendet werden.
 
 ![properties](./media/connect-virtual-network-gateway-vwan/publicip.png "properties")
 
-## <a name="vwansite"></a>2. Erstellen von Virtual WAN VPN-Standorten
+## <a name="2-create-virtual-wan-vpn-sites"></a><a name="vwansite"></a>2. Erstellen von Virtual WAN VPN-Standorten
 
 Um Virtual WAN VPN-Standorte zu erstellen, navigieren Sie zum virtuellen WAN und wählen Sie unter **Konnektivität** die Option **VPN-Standorte** aus. In diesem Abschnitt erstellen Sie zwei Virtual WAN VPN-Standorte, die den im vorherigen Abschnitt erstellten VNet-Gateways entsprechen.
 
@@ -75,17 +75,17 @@ Um Virtual WAN VPN-Standorte zu erstellen, navigieren Sie zum virtuellen WAN und
 5. Wiederholen Sie die vorherigen Schritte, um den zweiten Standort entsprechend der zweiten Instanz des VPN Gateway VNet-Gateways zu erstellen. Sie übernehmen die gleichen Einstellungen, verwenden allerdings die zweite öffentliche IP-Adresse und die zweite BGP-Peer-IP-Adresse der VPN Gateway-Konfiguration.
 6. Sie haben nun erfolgreich zwei Standorte bereitgestellt und können mit dem nächsten Abschnitt fortfahren, um die Konfigurationsdateien herunterzuladen.
 
-## <a name="downloadconfig"></a>3. Herunterladen der VPN-Konfigurationsdateien
+## <a name="3-download-the-vpn-configuration-files"></a><a name="downloadconfig"></a>3. Herunterladen der VPN-Konfigurationsdateien
 
 In diesem Abschnitt laden Sie die VPN-Konfigurationsdatei für die beiden Standorte herunter, die Sie im vorherigen Abschnitt erstellt haben.
 
 1. Wählen Sie im oberen Bereich der Virtual WAN-Seite **VPN-Standorte** den **Standort** und dann **Site-to-Site-VPN-Konfiguration herunterladen** aus. Azure erstellt eine Konfigurationsdatei mit den entsprechenden Einstellungen.
 
-   ![Konfigurationsdatei herunterladen](./media/connect-virtual-network-gateway-vwan/download.png "Download")
+   ![Konfigurationsdatei herunterladen](./media/connect-virtual-network-gateway-vwan/download.png "Download verfügbar ist")
 2. Laden Sie die Konfigurationsdatei herunter und öffnen Sie die Datei.
 3. Wiederholen Sie diese Schritte für den zweiten Standort. Sobald beide Konfigurationsdateien geöffnet sind, können Sie mit dem nächsten Abschnitt fortfahren.
 
-## <a name="createlocalgateways"></a>4. Erstellen der lokalen Netzwerkgateways
+## <a name="4-create-the-local-network-gateways"></a><a name="createlocalgateways"></a>4. Erstellen der lokalen Netzwerkgateways
 
 In diesem Abschnitt erstellen Sie zwei lokale Azure VPN Gateway Netzwerkgateways. Die Konfigurationsdateien aus dem vorherigen Schritt enthalten die Gatewaykonfigurationseinstellungen. Verwenden Sie diese Einstellungen, um die lokalen Azure VPN Gateway Netzwerkgateways zu erstellen und zu konfigurieren.
 
@@ -101,7 +101,7 @@ In diesem Abschnitt erstellen Sie zwei lokale Azure VPN Gateway Netzwerkgateways
 
    ![Konfigurationsdatei herunterladen](./media/connect-virtual-network-gateway-vwan/lng2.png "instance1")
 
-## <a name="createlocalgateways"></a>5. Erstellen von Verbindungen
+## <a name="5-create-connections"></a><a name="createlocalgateways"></a>5. Erstellen von Verbindungen
 
 In diesem Abschnitt erstellen Sie eine Verbindung zwischen den lokalen VPN Gateway Netzwerkgateways und dem VNet-Gateway. Weitere Informationen zu den Schritten zum Erstellen einer VPN Gateway-Verbindung finden Sie unter [Konfigurieren einer Verbindung](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection).
 
@@ -121,7 +121,7 @@ In diesem Abschnitt erstellen Sie eine Verbindung zwischen den lokalen VPN Gatew
    ![Connection](./media/connect-virtual-network-gateway-vwan/connect.png "connection")
 5. Wiederholen Sie anschließend die oben aufgeführten Schritte, um eine weitere Verbindung zu erstellen. Wählen Sie für die zweite Verbindung das andere lokale Netzwerkgateway aus, das Sie erstellt haben.
 
-## <a name="test"></a>6. Testen von Verbindungen
+## <a name="6-test-connections"></a><a name="test"></a>6. Testen von Verbindungen
 
 Sie können die Konnektivität testen, indem Sie zwei virtuelle Computer erstellen, einen auf der Seite des VPN Gateway VNet-Gateways und einen in einem virtuellen Netzwerk für das Virtual WAN. Anschließend können Sie die beiden virtuellen Computer pingen.
 

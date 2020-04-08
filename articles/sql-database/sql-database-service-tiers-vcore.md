@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 9b156193035d87472c462bae37e405e0317d8402
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 5fd69dcd30292630862887ab5434764ba377b396
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77650298"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481081"
 ---
 # <a name="vcore-model-overview"></a>Übersicht über das V-Kern-Modell
 
@@ -81,13 +81,15 @@ Informationen zu den Regionen, in denen Gen4/Gen5 verfügbar ist, finden Sie unt
 - Abhängig von der Workload kann die Fsv2-Serie eine höhere CPU-Leistung pro virtuellem Kern erzielen als Gen5, und mit der Größe von 72 V-Kernen erzielen Sie mehr CPU-Leistung für weniger Kosten als mit 80 virtuellen Kernen bei Gen5. 
 - Fsv2 bietet weniger Arbeitsspeicher und tempdb pro virtuellem Kern als andere Hardware, sodass für Workloads, für die diese Grenzwerte wichtig sind, stattdessen Gen5 oder die M-Serie in Erwägung gezogen werden sollte.  
 
-Weitere Informationen zu Regionen, in denen die Fsv2-Serie verfügbar ist, finden Sie unter [Verfügbarkeit der Fsv2-Serie](#fsv2-series).
+Fsv2-series wird von der Dienstebene „Universell“ nicht unterstützt.  Weitere Informationen zu Regionen, in denen die Fsv2-Serie verfügbar ist, finden Sie unter [Verfügbarkeit der Fsv2-Serie](#fsv2-series).
 
 
 ### <a name="m-seriespreview"></a>M-Serie (Vorschau)
 
 - Die M-Serie ist eine arbeitsspeicheroptimierte Hardwareoption für Workloads, die mehr Arbeitsspeicher und höhere Computegrenzwerte erfordert, als von Gen5 bereitgestellt werden.
 - Die M-Serie bietet 29 GB pro V-Kern und 128 V-Kerne. Dadurch erhöht sich der Grenzwert für den Arbeitsspeicher im Vergleich zu Gen5 um das Achtfache auf fast 4 TB.
+
+Die M-Serie wird nur auf der Dienstebene „Unternehmenskritisch“ unterstützt und unterstützt keine Zonenredundanz.
 
 Um Hardware der M-Serie für ein Abonnement und eine Region zu aktivieren, müssen Sie eine Supportanfrage erstellen. Das Abonnement muss ein kostenpflichtiger Angebotstyp sein, einschließlich nutzungsbasierter Bezahlung oder Enterprise Agreement (EA).  Wenn die Supportanfrage genehmigt wird, erfolgt die Auswahl und die Bereitstellung der M-Serie nach dem gleichen Muster wie bei anderen Hardwaregenerationen. Weitere Informationen zu Regionen, in denen die M-Serie verfügbar ist, finden Sie unter [Verfügbarkeit der M-Serie](#m-series).
 
@@ -98,10 +100,11 @@ Um Hardware der M-Serie für ein Abonnement und eine Region zu aktivieren, müss
 |Hardwaregeneration  |Compute  |Arbeitsspeicher  |
 |:---------|:---------|:---------|
 |Gen4     |- Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz<br>- Bereitstellung von bis zu 24 virtuellen Kernen (1 virtueller Kern = 1 physischer Kern)  |- 7 GB pro virtuellem Kern<br>- Bereitstellung von bis zu 168 GB|
-|Gen5     |**Bereitgestelltes Computing**<br>– Intel E5-2673 v4-Prozessoren (Broadwell) und Intel SP-8160-Prozessoren (Skylake) mit 2,3 GHz<br>- Bereitstellung von bis zu 80 virtuellen Kernen (1 virtueller Kern = 1 Hyperthread)<br><br>**Serverloses Computing**:<br>– Intel E5-2673 v4-Prozessoren (Broadwell) und Intel SP-8160-Prozessoren (Skylake) mit 2,3 GHz<br>- Automatische Skalierung auf bis zu 16 virtuelle Kerne (1 virtueller Kern = 1 Hyperthread)|**Bereitgestelltes Computing**<br>- 5,1 GB pro virtuellem Kern<br>- Bereitstellung von bis zu 408 GB<br><br>**Serverloses Computing**:<br>- Automatische Skalierung auf bis zu 24 GB pro V-Kern<br>- Automatische Skalierung auf bis zu 48 GB|
+|Gen5     |**Bereitgestelltes Computing**<br>– Intel E5-2673 v4-Prozessoren (Broadwell) und Intel SP-8160-Prozessoren (Skylake)* mit 2,3 GHz<br>- Bereitstellung von bis zu 80 virtuellen Kernen (1 virtueller Kern = 1 Hyperthread)<br><br>**Serverloses Computing**:<br>– Intel E5-2673 v4-Prozessoren (Broadwell) und Intel SP-8160-Prozessoren (Skylake)* mit 2,3 GHz<br>- Automatische Skalierung auf bis zu 16 virtuelle Kerne (1 virtueller Kern = 1 Hyperthread)|**Bereitgestelltes Computing**<br>- 5,1 GB pro virtuellem Kern<br>- Bereitstellung von bis zu 408 GB<br><br>**Serverloses Computing**:<br>- Automatische Skalierung auf bis zu 24 GB pro V-Kern<br>- Automatische Skalierung auf bis zu 48 GB|
 |Fsv2-Serie     |- Intel Xeon Platinum 8168-Prozessoren (Skylake)<br>- Kontinuierliche Turbo-Taktfrequenz von 3,4 GHz für alle Kerne und maximale Turbo-Taktfrequenz für Einzelkerne von 3,7 GHz<br>- Bereitstellung von 72 virtuellen Kernen (1 virtueller Kern = 1 Hyperthread)|- 1,9 GB pro virtuellem Kern<br>- Bereitstellung von 136 GB|
 |M-Serie     |- Intel Xeon E7-8890 v3-Prozessoren mit 2,5 GHz<br>- Bereitstellung von 128 virtuellen Kernen (1 virtueller Kern = 1 Hyperthread)|- 29 GB pro virtuellem Kern<br>- Bereitstellung von 3,7 TB|
 
+\* In der dynamischen Verwaltungssicht [sys. dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) wird die Hardwaregenerierung für Gen5-Datenbanken mit Intel SP-8160-Prozessoren (Skylake) als „Gen6“ angezeigt. Ressourcenlimits für alle Gen5-Datenbanken sind unabhängig vom Prozessortyp (Broadwell oder Skylake) identisch.
 
 Weitere Informationen zu Ressourcenlimits finden Sie unter [Ressourcenlimits für Singletons (V-Kern)](sql-database-vcore-resource-limits-single-databases.md) oder [Ressourcenlimits für Pools für elastische Datenbanken (V-Kern)](sql-database-vcore-resource-limits-elastic-pools.md).
 
@@ -174,7 +177,7 @@ Weitere Informationen finden Sie unter dem Befehl [az sql mi update](https://doc
 
 ### <a name="hardware-availability"></a>Hardwareverfügbarkeit
 
-#### <a name="gen4gen5-1"></a> Gen4/Gen5
+#### <a name="gen4gen5"></a><a name="gen4gen5-1"></a> Gen4/Gen5
 
 Die Gen4-Hardware wird [eingestellt](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/) und steht für die neuen Bereitstellungen nicht mehr zur Verfügung. Alle neuen Datenbanken müssen auf Gen5-Hardware bereitgestellt werden.
 

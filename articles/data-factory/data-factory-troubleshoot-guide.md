@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 2ae0f3033b88b3229d3dbef35c8bc9a32510c00e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e284060893e00ed7459edd0d1a03075c813dc5b2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972335"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065395"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Problembehandlung für Azure Data Factory
 
@@ -387,7 +387,7 @@ Die folgende Tabelle gilt für U-SQL.
 
 
 
-## <a name="common"></a>Common
+## <a name="common"></a>Allgemein
 
 ### <a name="error-code--2103"></a>Fehlercode:  2103
 
@@ -639,7 +639,7 @@ Die folgende Tabelle gilt für Azure Batch.
 - **Empfehlung**:  Ziehen Sie die Angabe eines Dienstprinzipals in Betracht, der über Berechtigungen zum Erstellen eines HDInsight-Clusters im angegebenen Abonnement verfügt, und wiederholen Sie den Vorgang. Ist dies keine akzeptable Lösung, wenden Sie sich an das ADF-Supportteam, um weitere Unterstützung zu erhalten.
 
 
-### <a name="error-code--2300"></a>Fehlercode:  2.300
+### <a name="error-code--2300"></a>Fehlercode:  2300
 
 - **Meldung**: `Failed to submit the job '%jobId;' to the cluster '%cluster;'. Error: %errorMessage;.`
 
@@ -689,7 +689,7 @@ Die folgende Tabelle gilt für Azure Batch.
                 
 
 
-### <a name="error-code--2302"></a>Fehlercode:  2.302
+### <a name="error-code--2302"></a>Fehlercode:  2302
 
 - **Meldung**: `Hadoop job failed with exit code '%exitCode;'. See '%logPath;/stderr' for more details. Alternatively, open the Ambari UI on the HDI cluster and find the logs for the job '%jobId;'. Contact HDInsight team for further support.`
 
@@ -1020,7 +1020,7 @@ Verwenden Sie Fiddler zum Erstellen einer HTTP-Sitzung der überwachten Webanwen
 
    ![Fiddler-Optionen](media/data-factory-troubleshoot-guide/fiddler-options.png)
 
-1. Wenn in der Anwendung SSL-Zertifikate verwendet werden, fügen Sie das Fiddler-Zertifikat auf Ihrem Gerät hinzu. Wechseln Sie zu **Tools** > **Fiddler-Optionen** > **HTTPS** > **Aktionen** > **Stammzertifikat auf Desktop exportieren**.
+1. Wenn in der Anwendung TLS/SSL-Zertifikate verwendet werden, fügen Sie das Fiddler-Zertifikat Ihrem Gerät hinzu. Wechseln Sie zu **Tools** > **Fiddler-Optionen** > **HTTPS** > **Aktionen** > **Stammzertifikat auf Desktop exportieren**.
 
 1. Deaktivieren Sie die Erfassung, indem Sie zu **Datei** > **Datenverkehr erfassen** wechseln. Oder drücken Sie **F12**.
 

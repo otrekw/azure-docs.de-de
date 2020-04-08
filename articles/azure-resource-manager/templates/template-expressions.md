@@ -2,13 +2,13 @@
 title: Vorlagensyntax und -ausdrücke
 description: Beschreibt die deklarative JSON-Syntax für Azure Resource Manager-Vorlagen.
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 7bca3125f80225d2180734f483194a63e39d9cf5
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.date: 03/17/2020
+ms.openlocfilehash: 172838fa24709eb60fbcb6a68277f44bbd42f01e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77207399"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460108"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Syntax und Ausdrücke in Azure Resource Manager-Vorlagen
 
@@ -69,6 +69,56 @@ Verwenden Sie den umgekehrten Schrägstrich, um doppelte Anführungszeichen in e
 "tags": {
     "CostCenter": "{\"Dept\":\"Finance\",\"Environment\":\"Production\"}"
 },
+```
+
+Beim Übergeben von Parameterwerten hängt die Verwendung von Escapezeichen davon ab, wo der Parameterwert angegeben wird. Wenn Sie in der Vorlage einen Standardwert festlegen, benötigen Sie die zusätzliche linke eckige Klammer.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "demoParam1":{
+            "type": "string",
+            "defaultValue": "[[test value]"
+        }
+    },
+    "resources": [],
+    "outputs": {
+        "exampleOutput": {
+            "type": "string",
+            "value": "[parameters('demoParam1')]"
+        }
+    }
+}
+```
+
+Wenn Sie den Standardwert verwenden, gibt die Vorlage `[test value]` zurück.
+
+Wenn Sie jedoch einen Parameterwert über die Befehlszeile übergeben, werden die Zeichen buchstäblich interpretiert. Das Bereitstellen der vorherigen Vorlage mit:
+
+```azurepowershell
+New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azuredeploy.json -demoParam1 "[[test value]"
+```
+
+Gibt `[[test value]` zurück. Verwenden Sie stattdessen:
+
+```azurepowershell
+New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azuredeploy.json -demoParam1 "[test value]"
+```
+
+Die gleiche Formatierung gilt auch, wenn Werte aus einer Parameterdatei übergeben werden. Die Zeichen werden buchstäblich interpretiert. Bei Verwendung mit der vorherigen Vorlage gibt die folgende Parameterdatei `[test value]` zurück:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "demoParam1": {
+            "value": "[test value]"
+        }
+   }
+}
 ```
 
 ## <a name="null-values"></a>NULL-Werte

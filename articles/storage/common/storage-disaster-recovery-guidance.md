@@ -10,18 +10,20 @@ ms.date: 01/23/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8442d3f7ed3e73dc5d7358a9bc1d3ee31d7668cd
-ms.sourcegitcommit: 668b3480cb637c53534642adcee95d687578769a
+ms.openlocfilehash: f7a8f6d0d3ab3b456c41128da9b689f6b7eda0f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2020
-ms.locfileid: "78894527"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79365361"
 ---
 # <a name="disaster-recovery-and-account-failover-preview"></a>Notfallwiederherstellung und Kontofailover (Vorschauversion)
 
 Microsoft möcht sicherstellen, dass Azure-Dienste immer verfügbar sind. Es kann jedoch zu ungeplanten Dienstausfällen kommen. Wenn für Ihre Anwendung Resilienz erforderlich ist, empfiehlt Microsoft die Verwendung eines georedundanten Speichers, damit Ihre Daten in eine zweite Region kopiert werden. Darüber hinaus müssen Kunden einen Notfallwiederherstellungsplan haben, um einen regionalen Dienstausfall handhaben zu können. Ein wichtiger Teil eines Notfallwiederherstellungsplans ist die Vorbereitung auf den Ausfall des sekundären Endpunkts, falls der primäre Endpunkt nicht mehr verfügbar ist.
 
 Azure Storage unterstützt Kontofailover (Vorschau) für georedundante Speicherkonten. Mit Kontofailover können Sie den Failoverprozess für Ihr Speicherkonto einleiten, wenn der primäre Endpunkt nicht mehr verfügbar ist. Bei einem Failover wird der sekundäre Endpunkt so aktualisiert, dass er zum primären Endpunkt für das Speicherkonto wird. Nach Abschluss des Failovers können Clients in den neuen primären Endpunkt schreiben.
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 Dieser Artikel beschreibt die Konzepte und Prozesse, die mit einem Kontofailover verbunden sind, und erläutert, wie Sie Ihr Speicherkonto auf die Wiederherstellung mit dem geringstmöglichen Einfluss auf den Kunden vorbereiten können. Weitere Informationen zum Initiieren eines Kontofailovers im Azure-Portal oder in PowerShell finden Sie unter [Initiieren eines Kontofailovers (Vorschau)](storage-initiate-account-failover.md).
 
@@ -124,7 +126,7 @@ Lesen Sie die Erläuterungen in diesem Abschnitt, um zu verstehen, welche Auswir
 
 #### <a name="storage-account-containing-archived-blobs"></a>Speicherkonto mit archivierten Blobs
 
-Speicherkonten mit archivierten Blobs unterstützen ein Kontofailover. Nachdem das Failover durchgeführt wurde, müssen zum Rückkonvertieren des Kontos in GRS oder RA-GRS zunächst alle archivierten Blobs auf einer Onlineebene aktiviert werden.
+Speicherkonten mit archivierten Blobs unterstützen ein Kontofailover. Nachdem das Failover erfolgt ist, müssen zum Rückkonvertieren des Kontos in GRS oder RA-GRS zunächst alle archivierten Blobs auf einer Onlineebene aktiviert werden.
 
 #### <a name="storage-resource-provider"></a>Speicherressourcenanbieter
 

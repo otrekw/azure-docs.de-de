@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 42f25c1b66261ac644f015290bed2c7473acbdaa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a02c099871ce9748f4c5f604900a7c4d57bb96b6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422239"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473522"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service – Zugriffseinschränkungen #
 
@@ -42,7 +42,7 @@ In der Liste werden alle aktuellen Einschränkungen für Ihre App angezeigt. Wen
 
 ## <a name="adding-ip-address-rules"></a>Hinzufügen von Regeln für IP-Adressen
 
-Klicken Sie auf **[+] Hinzufügen**, um eine neue Zugriffseinschränkungsregel hinzuzufügen. Wenn Sie eine Regel hinzufügen, wird sie sofort wirksam. Regeln werden in der Reihenfolge ihrer Priorität erzwungen, wobei mit der niedrigsten Zahl begonnen wird. Implizit gilt die Regel „Alle ablehnen“, die wirksam ist, sobald Sie die erste Regel hinzugefügt haben.
+Klicken Sie auf **[+] Regel hinzufügen**, um eine neue Zugriffseinschränkungsregel hinzuzufügen. Wenn Sie eine Regel hinzufügen, wird sie sofort wirksam. Regeln werden in der Reihenfolge ihrer Priorität erzwungen, wobei mit der niedrigsten Zahl begonnen wird. Implizit gilt die Regel „Alle ablehnen“, die wirksam ist, sobald Sie die erste Regel hinzugefügt haben.
 
 Beim Erstellen einer Regel müssen Sie „Zulassen/Ablehnen“ und außerdem den Typ der Regel auswählen. Sie müssen auch den Prioritätswert festlegen und angeben, worauf der Zugriff beschränkt wird.  Optional können Sie einen Namen und eine Beschreibung für die Regel hinzufügen.  
 
@@ -76,7 +76,7 @@ Klicken Sie zum Löschen einer Regel für die entsprechende Regel auf **...** un
 
 ## <a name="blocking-a-single-ip-address"></a>Blockieren einer einzelnen IP-Adresse ##
 
-Wenn Sie die erste Einschränkungsregel für IP-Adressen hinzufügen, fügt der Dienst eine explizite Regel **Alle ablehnen** mit der Priorität 2147483647 hinzu. In der Praxis wird die explizite Regel **Alle ablehnen** als letzte Regel ausgeführt und blockiert den Zugriff auf alle IP-Adressen, die nicht mit einer **Zulassen**-Regel explizit zugelassen sind.
+Wenn Sie die erste Einschränkungsregel für IP-Adressen hinzufügen, fügt der Dienst eine explizite Regel **Alle ablehnen** mit der Priorität 2147483647 hinzu. In der Praxis wird die explizite Regel **Alle ablehnen** als letzte Regel ausgeführt und blockiert den Zugriff auf alle IP-Adressen, die nicht mit einer Regel des Typs **Zulassen** explizit zugelassen sind.
 
 In einem Szenario, in dem Benutzer eine einzelne IP-Adresse oder einen IP-Adressblock explizit blockieren, aber den Zugriff für alles andere zulassen möchten, muss eine explizite Regel **Alle zulassen** hinzugefügt werden.
 
@@ -127,7 +127,7 @@ Die JSON-Syntax für das obige Beispiel lautet:
 
 ## <a name="azure-function-app-access-restrictions"></a>Azure-Funktions-App-Zugriffseinschränkungen
 
-Zugriffseinschränkungen stehen sowohl für Funktionen-Apps mit derselben Funktionalität als auch App Service-Pläne zur Verfügung. Durch die Aktivierung von Zugriffseinschränkungen wird der Portalcode-Editor für alle unzulässigen IP-Adressen deaktiviert.
+Zugriffseinschränkungen stehen auch für Funktionen-Apps mit derselben Funktionalität sowie für App Service-Pläne zur Verfügung. Durch die Aktivierung von Zugriffseinschränkungen wird der Portalcode-Editor für alle unzulässigen IP-Adressen deaktiviert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Zugriffseinschränkungen für Azure-Funktions-Apps](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
-ms.date: 04/16/2019
-ms.openlocfilehash: 1b5a48a686a238d724680e806daaed431107ec72
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 03/17/2020
+ms.openlocfilehash: f30ccd498b79c36c8892ae38a3e26d169249621a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894823"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481098"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Konnektivitätsarchitektur für eine verwaltete Instanz in Azure SQL-Datenbank
 
@@ -87,15 +87,16 @@ Um Kundensicherheit und Verwaltbarkeitsanforderungen zu berücksichtigen, wird d
 
 Mit dienstgestützter Subnetzkonfiguration kann ein Benutzer den Datenverkehr (Tabular Data Stream, TDS) vollständig kontrollieren, während die verwaltete Instanz die Verantwortung übernimmt, um den ununterbrochenen Fluss des Verwaltungsdatenverkehrs sicherzustellen und so die Vereinbarung zum Servicelevel (Service Level Agreement, SLA) zu erfüllen.
 
+Die dienstgestützte Subnetzkonfiguration baut auf dem Feature [Subnetzdelegierung](../virtual-network/subnet-delegation-overview.md) für virtuelle Netzwerke auf, um eine automatische Verwaltung der Netzwerkkonfiguration zu ermöglichen und Dienstendpunkte zu aktivieren. Dienstendpunkte können zum Konfigurieren von Firewallregeln für virtuelle Netzwerke für Speicherkonten verwendet werden, in denen Sicherungen/Überwachungsprotokolle gespeichert werden.
+
 ### <a name="network-requirements"></a>Netzwerkanforderungen 
 
 Stellen Sie eine verwaltete Instanz in einem dedizierten Subnetz im virtuellen Netzwerk bereit. Das Subnetz muss diese Merkmale aufweisen:
 
 - **Dediziertes Subnetz**: Das Subnetz der verwalteten Instanz darf mit keinem anderen Clouddienst verknüpft und kein Gatewaysubnetz sein. Das Subnetz darf keine Ressourcen außer der verwalteten Instanz enthalten, und Sie können später keine Arten von Ressourcen im Subnetz hinzufügen.
 - **Subnetzdelegierung:** Das Subnetz der verwalteten Instanz muss an den Ressourcenanbieter `Microsoft.Sql/managedInstances` delegiert werden.
-- **Netzwerksicherheitsgruppe (NSG)** : Eine NSG muss dem Subnetz der verwalteten Instanz zugeordnet werden. Sie können eine NSG verwenden, um den Zugriff auf den Datenendpunkt der verwalteten Instanz zu steuern, indem Sie Datenverkehr an Port 1433 und den Ports 11000–11999 filtern, wenn die verwaltete Instanz für direkte Verbindungen konfiguriert ist. Der Dienst fügt [Regeln](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration), die erforderlich sind, um einen ununterbrochenen Fluss des Verwaltungsdatenverkehrs zu ermöglichen, automatisch hinzu.
-- **Benutzerdefinierte Routingtabelle (User Defined Route, UDR):** Eine UDR-Tabelle muss dem Subnetz der verwalteten Instanz zugeordnet werden. Sie können der Routingtabelle Einträge hinzufügen, um Datenverkehr mit lokalen privaten IP-Bereichen als Ziel über das virtuelle Netzwerkgateway oder das virtuelle Netzwerkgerät (Network Appliance, NVA) zu leiten. Der Dienst fügt [Einträge](#user-defined-routes-with-service-aided-subnet-configuration), die erforderlich sind, um einen ununterbrochenen Fluss des Verwaltungsdatenverkehrs zu ermöglichen, automatisch hinzu.
-- **Dienstendpunkte**: Dienstendpunkte könnten zum Konfigurieren von virtuellen Netzwerkregeln für Speicherkonten verwendet werden, in denen Sicherungen/Überwachungsprotokolle gespeichert werden.
+- **Netzwerksicherheitsgruppe (NSG)** : Eine NSG muss dem Subnetz der verwalteten Instanz zugeordnet werden. Sie können eine NSG verwenden, um den Zugriff auf den Datenendpunkt der verwalteten Instanz zu steuern, indem Sie Datenverkehr an Port 1433 und den Ports 11000–11999 filtern, wenn die verwaltete Instanz für direkte Verbindungen konfiguriert ist. Der Dienst stellt automatisch die [Regeln](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration) zur Verfügung, die erforderlich sind, um einen ununterbrochenen Fluss des Verwaltungsdatenverkehrs zu ermöglichen, und hält sie auf dem neuesten Stand.
+- **Benutzerdefinierte Routingtabelle (User Defined Route, UDR):** Eine UDR-Tabelle muss dem Subnetz der verwalteten Instanz zugeordnet werden. Sie können der Routingtabelle Einträge hinzufügen, um Datenverkehr mit lokalen privaten IP-Bereichen als Ziel über das virtuelle Netzwerkgateway oder das virtuelle Netzwerkgerät (Network Appliance, NVA) zu leiten. Der Dienst stellt automatisch die [Einträge](#user-defined-routes-with-service-aided-subnet-configuration) zur Verfügung, die erforderlich sind, um einen ununterbrochenen Fluss des Verwaltungsdatenverkehrs zu ermöglichen, und hält sie auf dem neuesten Stand.
 - **Ausreichende IP-Adressen**: Das Subnetz der verwalteten Instanz muss mindestens 16 IP-Adressen haben. Der empfohlene Mindestwert sind 32 IP-Adressen. Weitere Informationen finden Sie unter [Ermitteln der Größe des Subnetzes für verwaltete Instanzen](sql-database-managed-instance-determine-size-vnet-subnet.md). Sie können verwaltete Instanzen im [vorhandenen Netzwerk](sql-database-managed-instance-configure-vnet-subnet.md) bereitstellen, nachdem Sie dieses entsprechend den [Netzwerkanforderungen für verwaltete Instanzen](#network-requirements) konfiguriert haben. Erstellen Sie andernfalls ein [neues Netzwerk und Subnetz](sql-database-managed-instance-create-vnet-subnet.md).
 
 > [!IMPORTANT]
@@ -103,17 +104,17 @@ Stellen Sie eine verwaltete Instanz in einem dedizierten Subnetz im virtuellen N
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Obligatorische Eingangssicherheitsregeln mit dienstgestützter Subnetzkonfiguration 
 
-| Name       |Port                        |Protocol|`Source`           |Destination|Action|
+| Name       |Port                        |Protocol|`Source`           |Destination|Aktion|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |management  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |MI-SUBNETZ  |Allow |
 |            |9000, 9003                  |TCP     |CorpnetSaw       |MI-SUBNETZ  |Allow |
-|            |9000, 9003                  |TCP     |65.55.188.0/24, 167.220.0.0/16, 131.107.0.0/16, 94.245.87.0/24|MI-SUBNETZ  |Allow |
+|            |9000, 9003                  |TCP     |CorpnetPublic    |MI-SUBNETZ  |Allow |
 |mi_subnet   |Any                         |Any     |MI-SUBNETZ        |MI-SUBNETZ  |Allow |
 |health_probe|Any                         |Any     |AzureLoadBalancer|MI-SUBNETZ  |Allow |
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Obligatorische Ausgangssicherheitsregeln mit dienstgestützter Subnetzkonfiguration 
 
-| Name       |Port          |Protocol|`Source`           |Destination|Action|
+| Name       |Port          |Protocol|`Source`           |Destination|Aktion|
 |------------|--------------|--------|-----------------|-----------|------|
 |management  |443, 12000    |TCP     |MI-SUBNETZ        |AzureCloud |Allow |
 |mi_subnet   |Any           |Any     |MI-SUBNETZ        |MI-SUBNETZ  |Allow |
@@ -125,31 +126,33 @@ Stellen Sie eine verwaltete Instanz in einem dedizierten Subnetz im virtuellen N
 |subnet-to-vnetlocal|MI-SUBNETZ|Virtuelles Netzwerk|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|
 |mi-13-104-14-nexthop-internet|13.104.0.0/14|Internet|
+|mi-20-33-16-nexthop-internet|20.33.0.0/16|Internet|
 |mi-20-34-15-nexthop-internet|20.34.0.0/15|Internet|
 |mi-20-36-14-nexthop-internet|20.36.0.0/14|Internet|
 |mi-20-40-13-nexthop-internet|20.40.0.0/13|Internet|
+|mi-20-48-12-nexthop-internet|20.48.0.0/12|Internet|
+|mi-20-64-10-nexthop-internet|20.64.0.0/10|Internet|
 |mi-20-128-16-nexthop-internet|20.128.0.0/16|Internet|
+|mi-20-135-16-nexthop-internet|20.135.0.0/16|Internet|
+|mi-20-136-16-nexthop-internet|20.136.0.0/16|Internet|
 |mi-20-140-15-nexthop-internet|20.140.0.0/15|Internet|
+|mi-20-143-16-nexthop-internet|20.143.0.0/16|Internet|
 |mi-20-144-14-nexthop-internet|20.144.0.0/14|Internet|
 |mi-20-150-15-nexthop-internet|20.150.0.0/15|Internet|
 |mi-20-160-12-nexthop-internet|20.160.0.0/12|Internet|
 |mi-20-176-14-nexthop-internet|20.176.0.0/14|Internet|
 |mi-20-180-14-nexthop-internet|20.180.0.0/14|Internet|
 |mi-20-184-13-nexthop-internet|20.184.0.0/13|Internet|
+|mi-20-192-10-nexthop-internet|20.192.0.0/10|Internet|
 |mi-40-64-10-nexthop-internet|40.64.0.0/10|Internet|
 |mi-51-4-15-nexthop-internet|51.4.0.0/15|Internet|
 |mi-51-8-16-nexthop-internet|51.8.0.0/16|Internet|
 |mi-51-10-15-nexthop-internet|51.10.0.0/15|Internet|
-|mi-51-12-15-nexthop-internet|51.12.0.0/15|Internet|
 |mi-51-18-16-nexthop-internet|51.18.0.0/16|Internet|
 |mi-51-51-16-nexthop-internet|51.51.0.0/16|Internet|
 |mi-51-53-16-nexthop-internet|51.53.0.0/16|Internet|
 |mi-51-103-16-nexthop-internet|51.103.0.0/16|Internet|
 |mi-51-104-15-nexthop-internet|51.104.0.0/15|Internet|
-|mi-51-107-16-nexthop-internet|51.107.0.0/16|Internet|
-|mi-51-116-16-nexthop-internet|51.116.0.0/16|Internet|
-|mi-51-120-16-nexthop-internet|51.120.0.0/16|Internet|
-|mi-51-124-16-nexthop-internet|51.124.0.0/16|Internet|
 |mi-51-132-16-nexthop-internet|51.132.0.0/16|Internet|
 |mi-51-136-15-nexthop-internet|51.136.0.0/15|Internet|
 |mi-51-138-16-nexthop-internet|51.138.0.0/16|Internet|
@@ -187,6 +190,7 @@ Stellen Sie eine verwaltete Instanz in einem dedizierten Subnetz im virtuellen N
 |mi-111-221-16-20-nexthop-internet|111.221.16.0/20|Internet|
 |mi-111-221-64-18-nexthop-internet|111.221.64.0/18|Internet|
 |mi-129-75-16-nexthop-internet|129.75.0.0/16|Internet|
+|mi-131-107-16-nexthop-internet|131.107.0.0/16|Internet|
 |mi-131-253-1-24-nexthop-internet|131.253.1.0/24|Internet|
 |mi-131-253-3-24-nexthop-internet|131.253.3.0/24|Internet|
 |mi-131-253-5-24-nexthop-internet|131.253.5.0/24|Internet|
@@ -220,6 +224,7 @@ Stellen Sie eine verwaltete Instanz in einem dedizierten Subnetz im virtuellen N
 |mi-157-54-15-nexthop-internet|157.54.0.0/15|Internet|
 |mi-157-56-14-nexthop-internet|157.56.0.0/14|Internet|
 |mi-157-60-16-nexthop-internet|157.60.0.0/16|Internet|
+|mi-167-105-16-nexthop-internet|167.105.0.0/16|Internet|
 |mi-167-220-16-nexthop-internet|167.220.0.0/16|Internet|
 |mi-168-61-16-nexthop-internet|168.61.0.0/16|Internet|
 |mi-168-62-15-nexthop-internet|168.62.0.0/15|Internet|
@@ -228,8 +233,6 @@ Stellen Sie eine verwaltete Instanz in einem dedizierten Subnetz im virtuellen N
 |mi-192-48-225-24-nexthop-internet|192.48.225.0/24|Internet|
 |mi-192-84-159-24-nexthop-internet|192.84.159.0/24|Internet|
 |mi-192-84-160-23-nexthop-internet|192.84.160.0/23|Internet|
-|mi-192-100-102-24-nexthop-internet|192.100.102.0/24|Internet|
-|mi-192-100-103-24-nexthop-internet|192.100.103.0/24|Internet|
 |mi-192-197-157-24-nexthop-internet|192.197.157.0/24|Internet|
 |mi-193-149-64-19-nexthop-internet|193.149.64.0/19|Internet|
 |mi-193-221-113-24-nexthop-internet|193.221.113.0/24|Internet|
@@ -275,13 +278,34 @@ Stellen Sie eine verwaltete Instanz in einem dedizierten Subnetz im virtuellen N
 |mi-213-199-128-18-nexthop-internet|213.199.128.0/18|Internet|
 |mi-216-32-180-22-nexthop-internet|216.32.180.0/22|Internet|
 |mi-216-220-208-20-nexthop-internet|216.220.208.0/20|Internet|
+|mi-23-96-13-nexthop-internet|23.96.0.0/13|Internet|
+|mi-42-159-16-nexthop-internet|42.159.0.0/16|Internet|
+|mi-51-13-17-nexthop-internet|51.13.0.0/17|Internet|
+|mi-51-107-16-nexthop-internet|51.107.0.0/16|Internet|
+|mi-51-116-16-nexthop-internet|51.116.0.0/16|Internet|
+|mi-51-120-16-nexthop-internet|51.120.0.0/16|Internet|
+|mi-51-120-128-17-nexthop-internet|51.120.128.0/17|Internet|
+|mi-51-124-16-nexthop-internet|51.124.0.0/16|Internet|
+|mi-102-37-18-nexthop-internet|102.37.0.0/18|Internet|
+|mi-102-133-16-nexthop-internet|102.133.0.0/16|Internet|
+|mi-199-30-16-20-nexthop-internet|199.30.16.0/20|Internet|
+|mi-204-79-180-24-nexthop-internet|204.79.180.0/24|Internet|
 ||||
 
-\* MI-SUBNETZ bezieht sich auf den IP-Adressbereich für das Subnetz in der Form 10.x.x.x/y. Diese Informationen finden Sie im Azure-Portal in den Subnetzeigenschaften.
+\* MI-SUBNETZ bezieht sich auf den IP-Adressbereich für das Subnetz in der Form „x.x.x.x/y“. Diese Informationen finden Sie im Azure-Portal in den Subnetzeigenschaften.
 
 Darüber hinaus können Sie der Routingtabelle Einträge hinzufügen, um Datenverkehr mit lokalen privaten IP-Bereichen als Ziel über ein virtuelles Netzwerkgateway oder ein virtuelles Netzwerkgerät (Network Appliance, NVA) zu leiten.
 
 Wenn das virtuelle Netzwerk ein benutzerdefiniertes DNS enthält, muss der benutzerdefinierte DNS-Server öffentliche DNS-Einträge auflösen können. Die Verwendung zusätzlicher Funktionen wie Azure AD Authentication macht unter Umständen auch die Auflösung zusätzlicher FQDNs erforderlich. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten DNS für eine verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-custom-dns.md).
+
+### <a name="networking-constraints"></a>Netzwerkeinschränkungen
+
+**TLS 1.2 wird für ausgehende Verbindungen erzwungen**: Seit Januar 2020 erzwingt Microsoft in sämtlichen Azure-Diensten TLS 1.2 für den dienstinternen Datenverkehr. Für die von Azure SQL-Datenbank verwaltete Instanz führte dies dazu, dass TLS 1.2 für ausgehende Verbindungen, die für die Replikation verwendet werden, und für verknüpfte Serververbindungen mit SQL Server erzwungen wird. Wenn Sie Versionen von SQL Server vor 2016 mit verwalteter Instanz verwenden, stellen Sie sicher, dass [TLS 1.2-spezifische Updates](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) angewendet wurden.
+
+Folgende Features von virtuellen Netzwerken werden derzeit von der verwalteten Instanz nicht unterstützt:
+- **Microsoft-Peering**: Die Aktivierung von [Microsoft-Peering](../expressroute/expressroute-faqs.md#microsoft-peering) für ExpressRoute-Leitungen, die direkt oder transitiv mit einem virtuellen Netzwerk verbunden sind, in dem sich die verwaltete Instanz befindet, wirkt sich auf den Datenverkehrsfluss zwischen den Komponenten der verwalteten Instanz innerhalb des virtuellen Netzwerks und den Diensten aus, von denen sie abhängt, wodurch Verfügbarkeitsprobleme verursacht werden. Bereitstellungen verwalteter Instanzen im virtuellen Netzwerk mit bereits aktiviertem Microsoft-Peering dürften fehlschlagen.
+- **Globales Peering virtueller Netzwerke**: Die Azure-Regionen übergreifende Konnektivität durch [Peering virtueller Netzwerke](../virtual-network/virtual-network-peering-overview.md) funktioniert für eine verwaltete Instanz aufgrund der [dokumentierten Einschränkungen beim Lastenausgleich](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) nicht.
+- **AzurePlatformDNS**: Die Verwendung des Servicetags [AzurePlatformDNS](../virtual-network/service-tags-overview.md) zur Blockierung der DNS-Auflösung der Plattform würde dazu führen, dass die verwaltete Instanz nicht mehr verfügbar ist. Wenngleich die verwaltete Instanz kundenspezifisches DNS für die DNS-Auflösung innerhalb der Engine unterstützt, besteht eine Abhängigkeit vom Plattform-DNS für Plattformvorgänge.
 
 ### <a name="deprecated-network-requirements-without-service-aided-subnet-configuration"></a>[Veraltet] Netzwerkanforderungen ohne dienstgestützte Subnetzkonfiguration
 
@@ -298,7 +322,7 @@ Stellen Sie eine verwaltete Instanz in einem dedizierten Subnetz im virtuellen N
 
 ### <a name="mandatory-inbound-security-rules"></a>Obligatorische Eingangssicherheitsregeln
 
-| Name       |Port                        |Protocol|`Source`           |Destination|Action|
+| Name       |Port                        |Protocol|`Source`           |Destination|Aktion|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |management  |9000, 9003, 1438, 1440, 1452|TCP     |Any              |MI-SUBNETZ  |Allow |
 |mi_subnet   |Any                         |Any     |MI-SUBNETZ        |MI-SUBNETZ  |Allow |
@@ -306,7 +330,7 @@ Stellen Sie eine verwaltete Instanz in einem dedizierten Subnetz im virtuellen N
 
 ### <a name="mandatory-outbound-security-rules"></a>Obligatorische Ausgangssicherheitsregeln
 
-| Name       |Port          |Protocol|`Source`           |Destination|Action|
+| Name       |Port          |Protocol|`Source`           |Destination|Aktion|
 |------------|--------------|--------|-----------------|-----------|------|
 |management  |443, 12000    |TCP     |MI-SUBNETZ        |AzureCloud |Allow |
 |mi_subnet   |Any           |Any     |MI-SUBNETZ        |MI-SUBNETZ  |Allow |
@@ -314,10 +338,11 @@ Stellen Sie eine verwaltete Instanz in einem dedizierten Subnetz im virtuellen N
 > [!IMPORTANT]
 > Stellen Sie sicher, dass es nur eine Eingangsregel für die Ports 9000, 9003, 1438, 1440, 1452 und eine Ausgangsregel für die Ports 443, 12000 gibt. Die Bereitstellung von verwalteten Instanzen über Azure Resource Manager-Bereitstellungen schlägt fehl, wenn Regeln für eingehenden und ausgehenden Datenverkehr für jeden Port separat konfiguriert werden. Wenn für diese Ports separate Regeln gelten, schlägt die Bereitstellung mit dem Fehlercode `VnetSubnetConflictWithIntendedPolicy` fehl.
 
-\* MI-SUBNETZ bezieht sich auf den IP-Adressbereich für das Subnetz in der Form 10.x.x.x/y. Diese Informationen finden Sie im Azure-Portal in den Subnetzeigenschaften.
+\* MI-SUBNETZ bezieht sich auf den IP-Adressbereich für das Subnetz in der Form „x.x.x.x/y“. Diese Informationen finden Sie im Azure-Portal in den Subnetzeigenschaften.
 
 > [!IMPORTANT]
 > Obwohl die erforderlichen Eingangssicherheitsregeln den Datenverkehr von _allen_ Quellen an den Ports 9000, 9003, 1438, 1440 und 1452 zulassen, sind diese Ports durch eine integrierte Firewall geschützt. Weitere Informationen finden Sie unter [Ermitteln der IP-Adresse des Verwaltungsendpunkts](sql-database-managed-instance-find-management-endpoint-ip-address.md).
+
 > [!NOTE]
 > Wenn Sie die Transaktionsreplikation in einer verwalteten Instanz verwenden und Sie eine Instanzdatenbank als Herausgeber oder Verteiler einsetzen, öffnen Sie Port 445 (TCP ausgehend) in den Sicherheitsregeln des Subnetzes. Dieser Port ermöglicht den Zugriff auf die Azure-Dateifreigabe.
 
@@ -327,14 +352,52 @@ Stellen Sie eine verwaltete Instanz in einem dedizierten Subnetz im virtuellen N
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI-SUBNETZ|Virtuelles Netzwerk|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|
-|mi-13-96-13-nexthop-internet|13.96.0.0/13|Internet|
 |mi-13-104-14-nexthop-internet|13.104.0.0/14|Internet|
-|mi-20-8-nexthop-internet|20.0.0.0/8|Internet|
-|mi-23-96-13-nexthop-internet|23.96.0.0/13|Internet|
+|mi-20-33-16-nexthop-internet|20.33.0.0/16|Internet|
+|mi-20-34-15-nexthop-internet|20.34.0.0/15|Internet|
+|mi-20-36-14-nexthop-internet|20.36.0.0/14|Internet|
+|mi-20-40-13-nexthop-internet|20.40.0.0/13|Internet|
+|mi-20-48-12-nexthop-internet|20.48.0.0/12|Internet|
+|mi-20-64-10-nexthop-internet|20.64.0.0/10|Internet|
+|mi-20-128-16-nexthop-internet|20.128.0.0/16|Internet|
+|mi-20-135-16-nexthop-internet|20.135.0.0/16|Internet|
+|mi-20-136-16-nexthop-internet|20.136.0.0/16|Internet|
+|mi-20-140-15-nexthop-internet|20.140.0.0/15|Internet|
+|mi-20-143-16-nexthop-internet|20.143.0.0/16|Internet|
+|mi-20-144-14-nexthop-internet|20.144.0.0/14|Internet|
+|mi-20-150-15-nexthop-internet|20.150.0.0/15|Internet|
+|mi-20-160-12-nexthop-internet|20.160.0.0/12|Internet|
+|mi-20-176-14-nexthop-internet|20.176.0.0/14|Internet|
+|mi-20-180-14-nexthop-internet|20.180.0.0/14|Internet|
+|mi-20-184-13-nexthop-internet|20.184.0.0/13|Internet|
+|mi-20-192-10-nexthop-internet|20.192.0.0/10|Internet|
 |mi-40-64-10-nexthop-internet|40.64.0.0/10|Internet|
-|mi-42-159-16-nexthop-internet|42.159.0.0/16|Internet|
-|mi-51-8-nexthop-internet|51.0.0.0/8|Internet|
-|mi-52-8-nexthop-internet|52.0.0.0/8|Internet|
+|mi-51-4-15-nexthop-internet|51.4.0.0/15|Internet|
+|mi-51-8-16-nexthop-internet|51.8.0.0/16|Internet|
+|mi-51-10-15-nexthop-internet|51.10.0.0/15|Internet|
+|mi-51-18-16-nexthop-internet|51.18.0.0/16|Internet|
+|mi-51-51-16-nexthop-internet|51.51.0.0/16|Internet|
+|mi-51-53-16-nexthop-internet|51.53.0.0/16|Internet|
+|mi-51-103-16-nexthop-internet|51.103.0.0/16|Internet|
+|mi-51-104-15-nexthop-internet|51.104.0.0/15|Internet|
+|mi-51-132-16-nexthop-internet|51.132.0.0/16|Internet|
+|mi-51-136-15-nexthop-internet|51.136.0.0/15|Internet|
+|mi-51-138-16-nexthop-internet|51.138.0.0/16|Internet|
+|mi-51-140-14-nexthop-internet|51.140.0.0/14|Internet|
+|mi-51-144-15-nexthop-internet|51.144.0.0/15|Internet|
+|mi-52-96-12-nexthop-internet|52.96.0.0/12|Internet|
+|mi-52-112-14-nexthop-internet|52.112.0.0/14|Internet|
+|mi-52-125-16-nexthop-internet|52.125.0.0/16|Internet|
+|mi-52-126-15-nexthop-internet|52.126.0.0/15|Internet|
+|mi-52-130-15-nexthop-internet|52.130.0.0/15|Internet|
+|mi-52-132-14-nexthop-internet|52.132.0.0/14|Internet|
+|mi-52-136-13-nexthop-internet|52.136.0.0/13|Internet|
+|mi-52-145-16-nexthop-internet|52.145.0.0/16|Internet|
+|mi-52-146-15-nexthop-internet|52.146.0.0/15|Internet|
+|mi-52-148-14-nexthop-internet|52.148.0.0/14|Internet|
+|mi-52-152-13-nexthop-internet|52.152.0.0/13|Internet|
+|mi-52-160-11-nexthop-internet|52.160.0.0/11|Internet|
+|mi-52-224-11-nexthop-internet|52.224.0.0/11|Internet|
 |mi-64-4-18-nexthop-internet|64.4.0.0/18|Internet|
 |mi-65-52-14-nexthop-internet|65.52.0.0/14|Internet|
 |mi-66-119-144-20-nexthop-internet|66.119.144.0/20|Internet|
@@ -343,7 +406,9 @@ Stellen Sie eine verwaltete Instanz in einem dedizierten Subnetz im virtuellen N
 |mi-91-190-216-21-nexthop-internet|91.190.216.0/21|Internet|
 |mi-94-245-64-18-nexthop-internet|94.245.64.0/18|Internet|
 |mi-103-9-8-22-nexthop-internet|103.9.8.0/22|Internet|
-|mi-103-25-156-22-nexthop-internet|103.25.156.0/22|Internet|
+|mi-103-25-156-24-nexthop-internet|103.25.156.0/24|Internet|
+|mi-103-25-157-24-nexthop-internet|103.25.157.0/24|Internet|
+|mi-103-25-158-23-nexthop-internet|103.25.158.0/23|Internet|
 |mi-103-36-96-22-nexthop-internet|103.36.96.0/22|Internet|
 |mi-103-255-140-22-nexthop-internet|103.255.140.0/22|Internet|
 |mi-104-40-13-nexthop-internet|104.40.0.0/13|Internet|
@@ -352,7 +417,23 @@ Stellen Sie eine verwaltete Instanz in einem dedizierten Subnetz im virtuellen N
 |mi-111-221-16-20-nexthop-internet|111.221.16.0/20|Internet|
 |mi-111-221-64-18-nexthop-internet|111.221.64.0/18|Internet|
 |mi-129-75-16-nexthop-internet|129.75.0.0/16|Internet|
-|mi-131-253-16-nexthop-internet|131.253.0.0/16|Internet|
+|mi-131-107-16-nexthop-internet|131.107.0.0/16|Internet|
+|mi-131-253-1-24-nexthop-internet|131.253.1.0/24|Internet|
+|mi-131-253-3-24-nexthop-internet|131.253.3.0/24|Internet|
+|mi-131-253-5-24-nexthop-internet|131.253.5.0/24|Internet|
+|mi-131-253-6-24-nexthop-internet|131.253.6.0/24|Internet|
+|mi-131-253-8-24-nexthop-internet|131.253.8.0/24|Internet|
+|mi-131-253-12-22-nexthop-internet|131.253.12.0/22|Internet|
+|mi-131-253-16-23-nexthop-internet|131.253.16.0/23|Internet|
+|mi-131-253-18-24-nexthop-internet|131.253.18.0/24|Internet|
+|mi-131-253-21-24-nexthop-internet|131.253.21.0/24|Internet|
+|mi-131-253-22-23-nexthop-internet|131.253.22.0/23|Internet|
+|mi-131-253-24-21-nexthop-internet|131.253.24.0/21|Internet|
+|mi-131-253-32-20-nexthop-internet|131.253.32.0/20|Internet|
+|mi-131-253-61-24-nexthop-internet|131.253.61.0/24|Internet|
+|mi-131-253-62-23-nexthop-internet|131.253.62.0/23|Internet|
+|mi-131-253-64-18-nexthop-internet|131.253.64.0/18|Internet|
+|mi-131-253-128-17-nexthop-internet|131.253.128.0/17|Internet|
 |mi-132-245-16-nexthop-internet|132.245.0.0/16|Internet|
 |mi-134-170-16-nexthop-internet|134.170.0.0/16|Internet|
 |mi-134-177-16-nexthop-internet|134.177.0.0/16|Internet|
@@ -370,6 +451,7 @@ Stellen Sie eine verwaltete Instanz in einem dedizierten Subnetz im virtuellen N
 |mi-157-54-15-nexthop-internet|157.54.0.0/15|Internet|
 |mi-157-56-14-nexthop-internet|157.56.0.0/14|Internet|
 |mi-157-60-16-nexthop-internet|157.60.0.0/16|Internet|
+|mi-167-105-16-nexthop-internet|167.105.0.0/16|Internet|
 |mi-167-220-16-nexthop-internet|167.220.0.0/16|Internet|
 |mi-168-61-16-nexthop-internet|168.61.0.0/16|Internet|
 |mi-168-62-15-nexthop-internet|168.62.0.0/15|Internet|
@@ -378,8 +460,6 @@ Stellen Sie eine verwaltete Instanz in einem dedizierten Subnetz im virtuellen N
 |mi-192-48-225-24-nexthop-internet|192.48.225.0/24|Internet|
 |mi-192-84-159-24-nexthop-internet|192.84.159.0/24|Internet|
 |mi-192-84-160-23-nexthop-internet|192.84.160.0/23|Internet|
-|mi-192-100-102-24-nexthop-internet|192.100.102.0/24|Internet|
-|mi-192-100-103-24-nexthop-internet|192.100.103.0/24|Internet|
 |mi-192-197-157-24-nexthop-internet|192.197.157.0/24|Internet|
 |mi-193-149-64-19-nexthop-internet|193.149.64.0/19|Internet|
 |mi-193-221-113-24-nexthop-internet|193.221.113.0/24|Internet|
@@ -425,6 +505,18 @@ Stellen Sie eine verwaltete Instanz in einem dedizierten Subnetz im virtuellen N
 |mi-213-199-128-18-nexthop-internet|213.199.128.0/18|Internet|
 |mi-216-32-180-22-nexthop-internet|216.32.180.0/22|Internet|
 |mi-216-220-208-20-nexthop-internet|216.220.208.0/20|Internet|
+|mi-23-96-13-nexthop-internet|23.96.0.0/13|Internet|
+|mi-42-159-16-nexthop-internet|42.159.0.0/16|Internet|
+|mi-51-13-17-nexthop-internet|51.13.0.0/17|Internet|
+|mi-51-107-16-nexthop-internet|51.107.0.0/16|Internet|
+|mi-51-116-16-nexthop-internet|51.116.0.0/16|Internet|
+|mi-51-120-16-nexthop-internet|51.120.0.0/16|Internet|
+|mi-51-120-128-17-nexthop-internet|51.120.128.0/17|Internet|
+|mi-51-124-16-nexthop-internet|51.124.0.0/16|Internet|
+|mi-102-37-18-nexthop-internet|102.37.0.0/18|Internet|
+|mi-102-133-16-nexthop-internet|102.133.0.0/16|Internet|
+|mi-199-30-16-20-nexthop-internet|199.30.16.0/20|Internet|
+|mi-204-79-180-24-nexthop-internet|204.79.180.0/24|Internet|
 ||||
 
 ## <a name="next-steps"></a>Nächste Schritte

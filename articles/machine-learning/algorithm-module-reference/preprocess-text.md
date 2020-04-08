@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
-ms.openlocfilehash: a8938eba0f7af995086ab1e2baba41aee7dc6330
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 6e4d4c8f798418e090caeba091dec33c71f0458f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77153807"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477492"
 ---
 # <a name="preprocess-text"></a>Preprocess Text
 
@@ -83,7 +83,7 @@ Das Modul **Preprocess Text** (Text vorverarbeiten) unterstützt zurzeit nur Eng
 
     Beispielsweise würde die Zeichenfolge `MS---WORD` in drei Token aufgeteilt: `MS`, `-` und `WORD`.
 
-1. Ausführen der Pipeline.
+1. Übermitteln Sie die Pipeline.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -16,12 +16,12 @@ ms.date: 12/09/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
-ms.openlocfilehash: b1162e6070deba7f645298b59ffeb1898eb030a8
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 2432ac41645e373ea3a87ff7e69ef02a4e30c81d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545771"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062316"
 ---
 # <a name="routing-and-tag-expressions"></a>Weiterleitung und Tagausdrücke
 
@@ -96,7 +96,7 @@ Beispiel: Eine Sportanwendung sendet eine Erinnerung an alle Benutzer in Boston 
 
 ![Tagausdrücke](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags4.png)
 
-Tagausdrücke unterstützen gängige boolesche Operatoren wie `AND` (`&&`), `OR` (`||`) und `NOT` (`!`), und sie können auch Klammern enthalten. Tagausdrücke, die nur `OR`-Operatoren verwenden, können auf 20 Tags verweisen, andernfalls sind Tagausdrücke auf 6 Tags beschränkt.
+Tagausdrücke unterstützen gängige boolesche Operatoren wie `AND` (`&&`), `OR` (`||`) und `NOT` (`!`), und sie können auch Klammern enthalten. Tagausdrücke, die nur `OR`-Operatoren verwenden, können auf 20 Tags verweisen. Ausdrücke mit `AND`-Operatoren, aber ohne `OR`-Operatoren, können auf 10 Tags verweisen. Ansonsten sind Tagausdrücke auf 6 Tags beschränkt.
 
 Es folgt ein Beispiel für das Senden von Benachrichtigungen mit Tagausdrücken mithilfe des SDK:
 

@@ -8,59 +8,84 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 02/21/2020
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a5135f97ffb7d29c9fd928382ca4344beaa654d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 186e36e4625a60362c54972b16b53f0f3e6753fa
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274741"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409191"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory
 
-Zum Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App benötigen Sie eine der folgenden Administratorrollen: globaler Administrator, Anwendungsadministrator, Cloudanwendungsadministrator, oder Sie sollten Besitzer der Unternehmens-App sein.  Verwenden Sie für Microsoft-Anwendungen (etwa Office 365-Apps) PowerShell, um einer Unternehmens-App Benutzer hinzuzufügen.
+Dieser Artikel zeigt Ihnen, wie Sie Benutzer oder Gruppen in Azure Active Directory (Azure AD) Unternehmensanwendungen zuordnen können, und zwar entweder im Azure-Portal oder über PowerShell. Wenn Sie einen Benutzer einer Anwendung zuweisen, wird diese im [Zugriffsbereich „Meine Apps“](https://myapps.microsoft.com/) des Benutzers angezeigt, um den Zugriff zu erleichtern. Wenn die Anwendung Rollen verfügbar macht, können Sie dem Benutzer auch eine bestimmte Rolle zuweisen.
+
+Für eine bessere Kontrolle können bestimmte Arten von Unternehmensanwendungen so konfiguriert werden, dass [eine Benutzerzuweisung](#configure-an-application-to-require-user-assignment) erforderlich ist. 
+
+Um [einen Benutzer oder eine Gruppe einer Unternehmens-App zuzuweisen](#assign-users-or-groups-to-an-app-via-the-azure-portal), müssen Sie sich als globaler Administrator, Anwendungsadministrator, Cloudanwendungsadministrator oder als der zugewiesene Besitzer der Unternehmens-App anmelden.
 
 > [!NOTE]
-> Informationen zu Lizenzanforderungen für die in diesem Artikel erläuterten Features finden Sie in der [Preisübersicht für Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory).
+> Für die gruppenbasierte Zuweisung ist die Azure Active Directory Premium P1- oder P2-Edition erforderlich. Die gruppenbasierte Zuweisung wird nur für Sicherheitsgruppen unterstützt. Geschachtelte Gruppenmitgliedschaften und Office 365-Gruppen werden aktuell nicht unterstützt. Weitere Informationen zu Lizenzierungsanforderungen für die in diesem Artikel erläuterten Features finden Sie in der [Preisübersicht für Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory). 
 
-## <a name="assign-a-user-to-an-app---portal"></a>Zuweisen eines Benutzers zu einer App – Portal
+## <a name="configure-an-application-to-require-user-assignment"></a>Konfigurieren einer Anwendung für das Anfordern einer Benutzerzuweisung
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
-1. Wählen Sie **Alle Dienste** aus, geben Sie „Azure Active Directory“ in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
-1. Wählen Sie **Unternehmensanwendungen**.
-1. Im Bereich **Unternehmensanwendungen – Alle Anwendungen** wird eine Liste der Apps angezeigt, die Sie verwalten können. Wählen Sie eine App aus.
-1. Wählen Sie im Bereich ***App-Name*** (dem Bereich mit dem Namen der ausgewählten App im Titel) die Option **Benutzer und Gruppen** aus.
-1. Wählen Sie im Bereich ***App-Name*** **– Benutzer und Gruppen** die Option **Benutzer hinzufügen** aus.
-1. Wählen Sie im Bereich **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+Bei den folgenden Anwendungstypen haben Sie die Möglichkeit anzufordern, dass Benutzer der Anwendung zugeordnet werden müssen, ehe sie darauf zugreifen können:
+
+- Anwendungen, die für einmaliges Anmelden (SSO) im Verbund mit SAML-basierter Authentifizierung konfiguriert sind
+- Anwendungsproxyanwendungen mit Azure Active Directory-Vorauthentifizierung
+- Anwendungen, die auf der Azure AD-Anwendungsplattform bei Verwendung der OAuth 2.0/OpenID Connect-Authentifizierung erstellt werden (nachdem ein Benutzer oder Administrator seine Zustimmung für die Anwendung erteilt hat).
+
+Wenn eine Benutzerzuweisung erforderlich ist, können sich nur die Benutzer anmelden, die Sie der Anwendung explizit zuweisen. Sie können auf die App auf ihrer Seite „Meine Apps“ oder über einen direkten Link zugreifen. 
+
+Wenn die Zuweisung *nicht erforderlich* ist, entweder weil Sie diese Option auf **Nein** festgelegt haben oder die Anwendung einen anderen SSO-Modus verwendet, kann jeder Benutzer auf die Anwendung zugreifen. Dazu muss er über einen direkten Link zur Anwendung oder die **Benutzerzugriffs-URL** auf der Seite **Eigenschaften** der Anwendung verfügen. 
+
+Diese Einstellung hat keine Auswirkung darauf, ob eine Anwendung im Zugriffsbereich „Meine Apps“ angezeigt wird. Anwendungen werden im Zugriffsbereich „Meine Apps“ von Benutzern angezeigt, sobald Sie der Anwendung einen Benutzer oder eine Gruppe zugewiesen haben. Hintergrundinformationen finden Sie unter [Verwaltung des Zugriffs auf Apps](what-is-access-management.md).
+
+
+So fordern Sie eine Benutzerzuweisung für eine Anwendung an
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Administratorkonto oder als Besitzer der Anwendung an.
+
+2. Wählen Sie **Azure Active Directory** aus. Wählen Sie im linken Navigationsmenü **Unternehmensanwendungen** aus.
+
+3. Wählen Sie die Anwendung in der Liste aus. Wenn die Anwendung nicht angezeigt wird, beginnen Sie mit der Eingabe ihres Namens in das Suchfeld. Oder verwenden Sie die Filtersteuerelemente, um den Anwendungstyp, Status oder die Sichtbarkeit auszuwählen, und wählen Sie dann **Übernehmen** aus.
+
+4. Wählen Sie im Navigationsmenü auf der linken Seite **Eigenschaften** aus.
+
+5. Vergewissern Sie sich, dass **Benutzerzuweisung erforderlich?** auf **Ja** festgelegt ist.
+
+   > [!NOTE]
+   > Wenn der Umschalter **Benutzerzuweisung erforderlich?** nicht verfügbar ist, können Sie mit PowerShell die Eigenschaft appRoleAssignmentRequired auf den Dienstprinzipal festlegen.
+
+6. Wählen Sie oben auf der Seite die Schaltfläche **Speichern** aus.
+
+## <a name="assign-users-or-groups-to-an-app-via-the-azure-portal"></a>Zuweisen von Benutzern und Gruppen zu einer App im Azure-Portal
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als globaler Administrator, Anwendungsadministrator, Cloudanwendungsadministrator oder als der zugewiesene Besitzer der Unternehmens-App an.
+2. Wählen Sie **Azure Active Directory** aus. Wählen Sie im linken Navigationsmenü **Unternehmensanwendungen** aus.
+3. Wählen Sie die Anwendung in der Liste aus. Wenn die Anwendung nicht angezeigt wird, beginnen Sie mit der Eingabe ihres Namens in das Suchfeld. Oder verwenden Sie die Filtersteuerelemente, um den Anwendungstyp, Status oder die Sichtbarkeit auszuwählen, und wählen Sie dann **Übernehmen** aus.
+4. Wählen Sie im Navigationsmenü auf der linken Seite **Benutzer und Gruppen** aus.
+   > [!NOTE]
+   > Wenn Sie Microsoft-Anwendungen wie Office 365-Apps Benutzer zuweisen möchten, unterstützen einige dieser Apps PowerShell. 
+5. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**.
+6. Wählen Sie im Bereich **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+7. Wählen Sie den Benutzer oder die Gruppe aus, den bzw. die Sie der Anwendung zuordnen möchten, oder beginnen Sie mit der Eingabe des Namens des Benutzers oder der Gruppe in das Suchfeld. Sie können mehrere Benutzer und Gruppen auswählen. Ihre Auswahl wird unter **Ausgewählte Elemente** angezeigt.
+8. Klicken Sie abschließend auf **Auswählen**.
 
    ![Zuweisen eines Benutzers oder einer Gruppe zur App](./media/assign-user-or-group-access-portal/assign-users.png)
 
-1. Wählen Sie im Bereich **Benutzer und Gruppen** mindestens einen Benutzer oder eine Gruppe aus der Liste aus, und wählen Sie dann am unteren Rand des Bereichs die Schaltfläche **Auswählen** aus.
-1. Wählen Sie im Bereich **Zuweisung hinzufügen** die Option **Rolle** aus. Wählen Sie dann im Bereich **Rolle auswählen** eine Rolle aus, die auf die ausgewählten Benutzer oder Gruppen angewendet werden soll, und wählen Sie anschließend am unteren Rand des Bereichs die Schaltfläche **OK** aus.
-1. Wählen Sie im Bereich **Zuweisung hinzufügen** unten die Schaltfläche **Zuweisen** aus. Die zugewiesenen Benutzer oder Gruppen erhalten die Berechtigungen, die durch die ausgewählte Rolle für diese Unternehmens-App definiert werden.
+9. Wählen Sie im Bereich **Benutzer und Gruppen** mindestens einen Benutzer oder eine Gruppe aus der Liste aus, und wählen Sie dann am unteren Rand des Bereichs die Schaltfläche **Auswählen** aus.
+10. Falls von der Anwendung unterstützt, können Sie dem Benutzer oder der Gruppe eine Rolle zuweisen. Wählen Sie im Bereich **Zuweisung hinzufügen** die Option **Rolle auswählen** aus. Wählen Sie dann im Bereich **Rolle auswählen** eine Rolle aus, die den ausgewählten Benutzern oder Gruppen zugeordnet werden soll. Wählen Sie anschließend unten im Bereich **OK** aus. 
 
-## <a name="allow-all-users-to-access-an-app---portal"></a>Ermöglichen des App-Zugriffs für alle Benutzer – Portal
+    > [!NOTE]
+    > Wenn die Anwendung die Rollenauswahl nicht unterstützt, wird die Standardzugriffsrolle zugewiesen. In diesem Fall verwaltet die Anwendung die Zugriffsebene von Benutzern.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
-1. Wählen Sie **Alle Dienste** aus, geben Sie „Azure Active Directory“ in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
-1. Wählen Sie **Unternehmensanwendungen**.
-1. Wählen Sie im Bereich **Unternehmensanwendungen** die Option **Alle Anwendungen** aus. Dadurch werden die Apps aufgeführt, die Sie verwalten können.
-1. Wählen Sie im Bereich **Unternehmensanwendungen – Alle Anwendungen** eine App aus.
-1. Wählen Sie im Bereich ***App-Name*** die Option **Eigenschaften** aus.
-1. Legen Sie im Bereich ***App-Name* – Eigenschaften** die Einstellung **Benutzerzuweisung erforderlich?** auf **Nein** fest.
+2. Wählen Sie im Bereich **Zuweisung hinzufügen** unten die Schaltfläche **Zuweisen** aus.
 
-Für die Option **Benutzerzuweisung erforderlich?** gilt Folgendes:
-
-- Wenn diese Option auf „Ja“ festgelegt ist, müssen Benutzer zuerst dieser Anwendung zugewiesen werden, bevor sie darauf zugreifen können.
-- Ist diese Option auf „Nein“ festgelegt, wird allen Benutzern Zugriff gewährt, die direkt zur Deep-Link-URL der Anwendung oder zur Anwendungs-URL navigieren.
-- Sie hat keine Auswirkung darauf, ob eine Anwendung im Anwendungszugriffsbereich angezeigt wird. Wenn die Anwendung im Zugriffsbereich angezeigt werden soll, müssen Sie der Anwendung einen geeigneten Benutzer oder eine geeignete Gruppe zuweisen.
-- Funktioniert nur mit den für SAML-SSO konfigurierten Cloudanwendungen, mit Awendungsproxyanwendungen, die Azure Active Directory-Vorauthentifizierung nutzen, oder mit Anwendungen, die direkt auf der Azure AD-Anwendungplattform aufbauen und OAuth 2.0-/OpenID Connect-Authentifizierung verwenden, nachdem ein Benutzer oder Administrator dieser Anwendung zugestimmt hat. Weitere Informationen finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](what-is-single-sign-on.md). Weitere Informationen finden Sie unter [Konfigurieren der Art der Benutzereinwilligung für eine Anwendung in Azure Active Directory](configure-user-consent.md).
-- Diese Option hat keine Auswirkungen, wenn eine Anwendung für einen anderen SSO-Modus konfiguriert ist.
-
-## <a name="assign-a-user-to-an-app---powershell"></a>Zuweisen eines Benutzers zu einer App – PowerShell
+## <a name="assign-users-or-groups-to-an-app-via-powershell"></a>Zuweisen von Benutzern und Gruppen zu einer App über PowerShell
 
 1. Öffnen Sie eine Windows PowerShell-Eingabeaufforderung mit erhöhten Rechten.
 
@@ -128,6 +153,12 @@ In diesem Beispiel wird die Benutzerin Britta Simon mithilfe von PowerShell der 
     New-AzureADUserAppRoleAssignment -ObjectId $user.ObjectId -PrincipalId $user.ObjectId -ResourceId $sp.ObjectId -Id $appRole.Id
     ```
 
+## <a name="related-articles"></a>Verwandte Artikel
+
+- [Weitere Informationen zum Endbenutzerzugriff auf Anwendungen](end-user-experiences.md)
+- [Planen der Bereitstellung eines Azure AD-Zugriffsbereichs](access-panel-deployment-plan.md)
+- [Verwalten des Zugriffs auf Apps](what-is-access-management.md)
+ 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Alle meine Gruppen anzeigen](../fundamentals/active-directory-groups-view-azure-portal.md)

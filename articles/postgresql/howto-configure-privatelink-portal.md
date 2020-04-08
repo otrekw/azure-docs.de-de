@@ -1,19 +1,19 @@
 ---
-title: Private Link für Azure Database for PostgreSQL – Einrichten eines Einzelservers über das Portal (Vorschau)
+title: Private Link – Azure-Portal – Azure Database for PostgreSQL – Einzelserver
 description: Erfahren Sie, wie Sie einen privaten Link für die Azure Database for PostgreSQL konfigurieren können – Einzelserver des Azure-Portals
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 187fa7cf52193d94b932d9021749917fa4f9b1dc
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.openlocfilehash: 72dcf95c8ae8d8da34532fa96e3bf0371f5112fd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2020
-ms.locfileid: "77562597"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79370915"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-preview-using-portal"></a>Erstellen und Verwalten von Private Link for Azure Database for PostgreSQL – Einzelserver über das Portal (Vorschau)
+# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>Erstellen und Verwalten von Private Link for Azure Database for PostgreSQL – Einzelserver im Portal
 
 Ein privater Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren.  In diesem Artikel erfahren Sie, wie Sie einen virtuellen Computer in einem Azure Virtual Network und einen Azure Database for PostgreSQL-Einzelserver mit einem privaten Azure-Endpunkt über das Azure-Portal erstellen.
 
@@ -35,13 +35,13 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Ho
 1. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk** aus.
 2. Geben Sie in **Virtuelles Netzwerk erstellen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Name | Geben Sie *MyVirtualNetwork* ein. |
     | Adressraum | Geben Sie *10.1.0.0/16* ein. |
     | Subscription | Wählen Sie Ihr Abonnement aus.|
     | Resource group | Wählen Sie **Neue erstellen** aus, geben Sie *myResourceGroup* ein, und wählen Sie **OK** aus. |
-    | Location | Wählen Sie **Europa, Westen** aus.|
+    | Position | Wählen Sie **Europa, Westen** aus.|
     | Subnetzname | Geben Sie *mySubnet* ein. |
     | Subnetzadressbereich | Geben Sie *10.1.0.0/24* ein. |
     |||
@@ -53,7 +53,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Ho
 
 2. Geben Sie in **Virtuellen Computer erstellen – Grundlagen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | **PROJEKTDETAILS** | |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
@@ -80,7 +80,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Ho
 
 1. Wählen Sie in **Virtuellen Computer erstellen – Netzwerk** diese Informationen aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Virtuelles Netzwerk | Übernehmen Sie den Standardwert **MyVirtualNetwork**.  |
     | Adressraum | Übernehmen Sie den Standardwert **10.1.0.0/24**.|
@@ -103,7 +103,7 @@ In diesem Abschnitt erstellen Sie einen Azure Database for PostgreSQL-Server in 
 
 1. Wählen Sie in **Azure Database for PostgreSQL-Bereitstellungsoption** die Option **Einzelserver** aus, und geben Sie folgende Informationen an:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | **Projektdetails** | |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
@@ -112,7 +112,7 @@ In diesem Abschnitt erstellen Sie einen Azure Database for PostgreSQL-Server in 
     |Servername  | Geben Sie *myserver* ein. Wenn dieser Name vergeben ist, erstellen Sie einen eindeutigen Namen.|
     | Administratorbenutzername| Geben Sie einen Administratornamen Ihrer Wahl ein. |
     | Kennwort | Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens acht Zeichen lang sein und die festgelegten Anforderungen erfüllen. |
-    | Location | Wählen Sie eine Azure-Region aus, in der sich Ihr PostgreSQL-Server befinden soll. |
+    | Position | Wählen Sie eine Azure-Region aus, in der sich Ihr PostgreSQL-Server befinden soll. |
     |Version  | Wählen Sie die gewünschte Datenbankversion des PostgreSQL-Servers aus.|
     | Compute + Speicher| Wählen Sie den für den Server erforderlichen Tarif basierend auf der Workload aus. |
     |||
@@ -126,14 +126,14 @@ In diesem Abschnitt erstellen Sie einen Azure Database for PostgreSQL-Server in 
 
 In diesem Abschnitt erstellen Sie einen PostgreSQL-Server und fügen diesem einen privaten Endpunkt hinzu. 
 
-1. Wählen Sie oben links auf dem Bildschirm im Azure-Portal die Option **Ressource erstellen** > **Netzwerk** > **Private Link-Center (Vorschau)** aus.
+1. Wählen Sie links oben auf dem Bildschirm im Azure-Portal die Option **Ressource erstellen** > **Netzwerk** > **Private Link** aus.
 2. Wählen Sie unter **Privat Link-Center – Übersicht** bei der Option **Build a private connection to a service** (Private Verbindung mit einem Dienst herstellen) **Start** aus.
 
     ![Übersicht über Private Link](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
 
-1. Geben Sie unter **Privaten Endpunkt erstellen (Vorschau) – Grundlagen** diese Informationen ein, oder wählen Sie sie aus:
+1. Geben Sie unter **Privaten Endpunkt erstellen – Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | **Projektdetails** | |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
@@ -145,7 +145,7 @@ In diesem Abschnitt erstellen Sie einen PostgreSQL-Server und fügen diesem eine
 5. Klicken Sie auf **Weiter: Ressource** aus.
 6. Geben Sie unter **Privaten Endpunkt erstellen – Ressource** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     |Verbindungsmethode  | Wählen Sie das Herstellen einer Verbindung mit einer Azure-Ressource im eigenen Verzeichnis aus.|
     | Subscription| Wählen Sie Ihr Abonnement aus. |
@@ -154,9 +154,9 @@ In diesem Abschnitt erstellen Sie einen PostgreSQL-Server und fügen diesem eine
     |Zielunterressource |Wählen Sie *postgresqlServer* aus.|
     |||
 7. Klicken Sie auf **Weiter: Konfiguration** aus.
-8. Geben Sie unter **Privaten Endpunkt erstellen (Vorschau) – Konfiguration** diese Informationen ein, oder wählen Sie sie aus:
+8. Geben Sie unter **Privaten Endpunkt erstellen – Konfiguration** die folgenden Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     |**NETZWERK**| |
     | Virtuelles Netzwerk| Wählen Sie *MyVirtualNetwork* aus. |
@@ -219,7 +219,7 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
 
 4. Geben Sie in **Neue Verbindung** die folgenden Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | value |
+    | Einstellung | Wert |
     | ------- | ----- |
     | Servertyp| Wählen Sie **PostgreSQL** aus.|
     | Servername| Wählen Sie *mydemopostgresserver.privatelink.postgres.database.azure.com* aus. |

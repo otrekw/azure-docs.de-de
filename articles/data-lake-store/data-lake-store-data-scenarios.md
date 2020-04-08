@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 0b16154edbda4bedfd4e9b680ba4311e7a235212
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8f9b66bf9a301888f2371fb1c58a4845c2232b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60879036"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536155"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Verwenden von Azure Data Lake Storage Gen1 für Big Data-Anforderungen
 
@@ -111,7 +111,7 @@ Vielleicht möchten Sie auch für Szenarien wie die folgenden Daten aus Azure Da
 * Verschieben von Daten aus anderen Repositorys zur Verbindung mit Ihren vorhandenen Datenverarbeitungspipelines. Sie möchten z. B. Daten aus Data Lake Storage Gen1 in die Azure SQL-Datenbank oder auf eine lokale SQL Server-Instanz verschieben.
 * Herunterladen von Daten auf Ihren lokalen Computer für die Verarbeitung in IDE-Umgebungen beim Erstellen von Anwendungsprototypen.
 
-![Ausgeben von Daten aus Data Lake Storage Gen1](./media/data-lake-store-data-scenarios/egress-data.png "Ausgeben von Daten aus Data Lake Storage Gen1")
+![Ausgehende Daten aus Data Lake Storage Gen1](./media/data-lake-store-data-scenarios/egress-data.png "Ausgehende Daten aus Data Lake Storage Gen1")
 
 In solchen Fällen können Sie eine der folgenden Optionen verwenden:
 
@@ -131,4 +131,4 @@ Sie können eine Kombination aus Diensten verwenden, um visuelle Darstellungen v
 ![Visualisieren von Daten in Data Lake Storage Gen1](./media/data-lake-store-data-scenarios/visualize-data.png "Visualisieren von Daten in Data Lake Storage Gen1")
 
 * Sie können beginnen, indem Sie [Daten mithilfe von Azure Data Factory aus Data Lake Storage Gen1 nach Azure SQL Data Warehouse verschieben](../data-factory/copy-activity-overview.md)
-* Danach können Sie [Power BI in Azure SQL Data Warehouse integrieren](../sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) , um eine visuelle Darstellung der Daten zu erstellen.
+* Danach können Sie [Power BI in Azure SQL Data Warehouse integrieren](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-get-started-visualize-with-power-bi.md) , um eine visuelle Darstellung der Daten zu erstellen.

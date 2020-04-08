@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie manuell ein Volume mit Azure-Datenträgern f�
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: b84f62dd02aa29a4c1aa64e3235c0a1e7cc66522
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 17795ae696c0d710f099a5c21aa754fc925953ca
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77596741"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80047936"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Manuelles Erstellen und Verwenden eines Volumes mit Azure-Datenträgern in Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfi
 
 ## <a name="create-an-azure-disk"></a>Erstellen eines Azure-Datenträgers
 
-Wenn Sie einen Azure-Datenträger für die Verwendung mit AKS erstellen, können Sie die Datenträgerressource in der Ressourcengruppe **Knoten** erstellen. Diese Vorgehensweise ermöglicht es dem AKS-Cluster, auf die Datenträgerressource zuzugreifen und diese zu verwalten. Wenn Sie den Datenträger stattdessen in einer separaten Ressourcengruppe erstellen, müssen Sie dem Azure Kubernetes Service-Dienstprinzipal (AKS) für Ihren Cluster die Rolle `Contributor` für die Ressourcengruppe des Datenträgers zuweisen.
+Wenn Sie einen Azure-Datenträger für die Verwendung mit AKS erstellen, können Sie die Datenträgerressource in der Ressourcengruppe **Knoten** erstellen. Diese Vorgehensweise ermöglicht es dem AKS-Cluster, auf die Datenträgerressource zuzugreifen und diese zu verwalten. Wenn Sie den Datenträger stattdessen in einer separaten Ressourcengruppe erstellen, müssen Sie dem Azure Kubernetes Service-Dienstprinzipal (AKS) für Ihren Cluster die Rolle `Contributor` für die Ressourcengruppe des Datenträgers zuweisen. Alternativ können Sie für Berechtigungen die vom System zugewiesene verwaltete Identität anstelle des Dienstprinzipals verwenden. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten](use-managed-identity.md).
 
 In diesem Artikel erstellen Sie den Datenträger in der Ressourcengruppe „Knoten“. Rufen Sie zunächst den Namen der Ressourcengruppe mit dem Befehl [az aks show][az-aks-show] ab, und fügen Sie den Abfrageparameter `--query nodeResourceGroup` hinzu. Im folgenden Beispiel wird der Knoten „Ressourcengruppe“ für den AKS-Clusternamen *myAKSCluster* in der Ressourcengruppe *myResourceGroup* abgerufen:
 

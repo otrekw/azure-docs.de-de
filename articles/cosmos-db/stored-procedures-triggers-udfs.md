@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 706f52a6cda2bbcb0e5ca1cfe9372600fa6709d0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 23a14e7590eca6f63c92acdf6336ffaef8b54381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441241"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065890"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen
 
@@ -55,7 +55,7 @@ In Azure Cosmos DB wird die JavaScript-Runtime in der Datenbank-Engine gehostet.
 
 ### <a name="scope-of-a-transaction"></a>Bereich einer Transaktion
 
-Wenn eine gespeicherte Prozedur einem Azure Cosmos-Container zugeordnet ist, wird sie im Transaktionsbereich eines logischen Partitionsschlüssels ausgeführt. Jede Ausführung einer gespeicherten Prozedur muss einen logischen Partitionsschlüsselwert enthalten, der dem Bereich der Transaktion entspricht. Weitere Informationen finden Sie unter [Partitionierung in Azure Cosmos DB](partition-data.md).
+Gespeicherte Prozeduren sind einem Azure Cosmos-Container zugeordnet. Die Ausführung gespeicherter Prozeduren ist auf einen logischen Partitionsschlüssel beschränkt. Gespeicherte Prozeduren müssen während der Ausführung einen logischen Partitionsschlüsselwert enthalten, der die logische Partition für den Transaktionsumfang definiert. Weitere Informationen finden Sie unter [Partitionierung in Azure Cosmos DB](partition-data.md).
 
 ### <a name="commit-and-rollback"></a>Commit und Rollback
 
@@ -88,11 +88,11 @@ Azure Cosmos DB stellt Trigger bereit, die durch Ausführen eines Vorgangs für 
 > [!NOTE]
 > Registrierte Trigger werden bei Auftreten der entsprechenden Vorgänge (Erstellen/Löschen/Ersetzen/Aktualisieren) nicht automatisch ausgeführt. Sie müssen beim Ausführen dieser Vorgänge explizit aufgerufen werden. Weitere Informationen finden Sie im Artikel [Ausführen von Triggern](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers).
 
-## <a id="udfs"></a>Benutzerdefinierte Funktionen
+## <a name="user-defined-functions"></a><a id="udfs"></a>Benutzerdefinierte Funktionen
 
 Mithilfe von benutzerdefinierten Funktionen kann die Syntax der SQL-API-Abfragesprache erweitert und mühelos eine benutzerdefinierte Geschäftslogik implementiert werden. Benutzerdefinierte Funktionen können nur innerhalb von Abfragen aufgerufen werden. Sie haben keinen Zugriff auf das Kontextobjekt und sind als JavaScript-Komponente vorgesehen, die ausschließlich der Berechnung dient. Daher können benutzerdefinierte Funktionen auf sekundären Replikaten ausgeführt werden. Beispiele finden Sie unter [Schreiben von benutzerdefinierten Funktionen](how-to-write-stored-procedures-triggers-udfs.md#udfs).
 
-## <a id="jsqueryapi"></a>JavaScript-Language Integrated Query-API
+## <a name="javascript-language-integrated-query-api"></a><a id="jsqueryapi"></a>JavaScript-Language Integrated Query-API
 
 Zusätzlich zu Abfragen mit der SQL-API-Abfragesyntax ermöglicht das [serverseitige SDK](https://azure.github.io/azure-cosmosdb-js-server) die Durchführung von Abfragen mithilfe einer JavaScript-Schnittstelle, die keinerlei SQL-Kenntnisse voraussetzt. Mit der JavaScript-Abfrage-API können Sie programmgesteuert Abfragen erstellen, indem Sie Prädikatfunktionen an die Funktionsaufrufsequenz übergeben. Abfragen werden von der JavaScript-Runtime analysiert und in Azure Cosmos DB effizient ausgeführt. Weitere Informationen zur Unterstützung der JavaScript-Abfrage-API finden Sie im Artikel [Working with JavaScript language integrated query API](javascript-query-api.md) (Arbeiten mit der JavaScript-Language Integrated Query-API). Beispiele finden Sie im Artikel [Schreiben von gespeicherten Prozeduren und Triggern mit der JavaScript-Abfrage-API](how-to-write-javascript-query-api.md).
 

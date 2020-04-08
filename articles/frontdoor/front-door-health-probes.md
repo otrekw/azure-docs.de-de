@@ -1,6 +1,6 @@
 ---
-title: 'Azure Front Door Service: Überwachung der Back-End-Integrität | Microsoft-Dokumentation'
-description: In diesem Artikel wird erläutert, wie Azure Front Door Service die Integrität Ihrer Back-Ends überwacht.
+title: 'Azure Front Door: Überwachung der Back-End-Integrität | Microsoft-Dokumentation'
+description: In diesem Artikel wird erläutert, wie Azure Front Door die Integrität Ihrer Back-Ends überwacht.
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,22 +11,33 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 289b05a2c50a2b4af50eb2114515a49bb653cf1a
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: e2e656c395f1a31c1f5ebbd46d5a18a046f854f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742387"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471573"
 ---
 # <a name="health-probes"></a>Integritätstests
 
-Um die Integrität der einzelnen Back-Ends zu ermitteln, sendet jede Front Door-Umgebung in regelmäßigen Abständen eine synthetische HTTP-/HTTPS-Anforderung an jedes konfigurierte Back-End. Anschließend ermittelt Front Door anhand der Antworten aus diesen Tests die „besten“ Back-Ends für die Weiterleitung echter Clientanforderungen. Beachten Sie Folgendes: Weil Front Door global über viele Edge-Umgebungen verfügt, kann das Volumen von Integritätstestanforderungen an Ihre Back-Ends so hoch sein, da mehr als eine Anforderung pro Sekunde von der konfigurierten Häufigkeit der Integritätstests abhängt. 
+Um die Integrität und Entfernung der einzelnen Back-Ends von einer bestimmten Front Door-Umgebung zu ermitteln, sendet jede Front Door-Umgebung in regelmäßigen Abständen eine synthetische HTTP-/HTTPS-Anforderung an jedes konfigurierte Back-End. Anschließend ermittelt Front Door anhand der Antworten aus diesen Tests die „besten“ Back-Ends für die Weiterleitung echter Clientanforderungen. 
 
-
+> [!WARNING]
+> Da Front Door weltweit viele Edge-Umgebungen hat, kann das Volumen der Integritätstestanforderungen an Ihre Back-Ends recht hoch sein. Es variiert zwischen 25 Anforderungen pro Minute und bis zu 1.200 Anforderungen pro Minute abhängig von der konfigurierten Häufigkeit von Integritätstests. Bei der standardmäßigen Testfrequenz von 30 Sekunden sollte das Testvolumen in Ihrem Back-End etwa 200 Anforderungen pro Minute betragen.
 
 ## <a name="supported-protocols"></a>Unterstützte Protokolle
 
 Front Door unterstützt das Senden von Tests über die Protokolle HTTP und HTTPS. Diese Tests werden über dieselben TCP-Ports gesendet, die für das Routen von Clientanforderungen konfiguriert wurden. Sie können nicht außer Kraft gesetzt werden.
+
+## <a name="supported-http-methods-for-health-probes"></a>Für Integritätstests unterstützte HTTP-Methoden
+
+Front Door unterstützt die folgenden HTTP-Methoden zum Senden der Integritätstests:
+
+1. **GET:** Die GET-Methode bedeutet, dass alle Informationen (in Form einer Entität), die vom Anforderungs-URI identifiziert werden, abgerufen werden.
+2. **HEAD:** Die HEAD-Methode ist identisch mit GET, außer dass der Server in der Antwort KEINEN Nachrichtentext zurückgeben darf. Bei neuen Front Door-Profilen ist die Testmethode standardmäßig auf HEAD festgelegt.
+
+> [!NOTE]
+> Um die Belastung und Kosten Ihrer Back-Ends zu senken, empfiehlt Front Door die Verwendung von HEAD-Anforderungen für Integritätstests.
 
 ## <a name="health-probe-responses"></a>Integritätstestantworten
 
@@ -37,7 +48,7 @@ Front Door unterstützt das Senden von Tests über die Protokolle HTTP und HTTPS
 
 ## <a name="how-front-door-determines-backend-health"></a>Vorgehensweise beim Ermitteln der Back-End-Integrität mit Front Door
 
-Azure Front Door Service verwendet in allen Algorithmen denselben aus drei Schritten bestehenden Prozess, um die Integrität zu ermitteln:
+Azure Front Door verwendet in allen Algorithmen denselben aus drei Schritten bestehenden Prozess, um die Integrität zu bestimmen.
 
 1. Deaktivierte Back-Ends werden ausgeschlossen.
 
@@ -57,7 +68,11 @@ Wenn Integritätstests für alle Back-Ends in einem Back-End-Pool fehlerhaft sin
 
 Sobald ein Back-End zu einem fehlerfreien Integritätsstatus zurückkehrt, wird der normale Lastenausgleichsalgorithmus von Front Door fortgesetzt.
 
+## <a name="disabling-health-probes"></a>Deaktivieren von Integritätstests
+
+Wenn Sie ein einzelnes Back-End in Ihrem Back-End-Pool haben, können Sie die Integritätstests deaktivieren, um die Last Ihres Anwendungs-Back-Ends zu verringern. Selbst wenn Sie über mehrere Back-Ends im Back-End-Pool verfügen, aber nur eines davon im aktivierten Zustand ist, können Sie Integritätstests deaktivieren.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Erstellen einer Azure Front Door Service-Konfiguration](quickstart-create-front-door.md).
+- Erfahren Sie mehr über das [Erstellen einer Front Door-Instanz](quickstart-create-front-door.md).
 - Informieren Sie sich über die [Funktionsweise von Azure Front Door Service](front-door-routing-architecture.md).

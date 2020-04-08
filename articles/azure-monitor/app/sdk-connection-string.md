@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: ad56f1f15936bc3f3f1ac75396352206f68e7a61
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 25eda0ae2b0d873fe9850e5b886489a5f2590e69
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77671476"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410608"
 ---
 # <a name="connection-strings"></a>Verbindungszeichenfolgen
 
@@ -148,7 +148,7 @@ In diesem Beispiel gibt diese Verbindungszeichenfolge explizite Überschreibunge
 
 Verbindungszeichenfolgen werden in den folgenden SDK-Versionen unterstützt:
 - .NET und .NET Core v2.12.0
-- Java v2.5.1
+- Java v2.5.1 und Java 3.0
 - JavaScript v2.3.0
 - NodeJS v1.5.0
 - Python v1.0.0
@@ -161,7 +161,7 @@ Eine Verbindungszeichenfolge kann im Code, in einer Umgebungsvariable oder in ei
 
 - Verbindungszeichenfolge: `APPLICATIONINSIGHTS_CONNECTION_STRING`
 
-### <a name="net-sdk-example"></a>Beispiel für .NET SDK
+# <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 
 TelemetryConfiguration.ConnectionString: https://github.com/microsoft/ApplicationInsights-dotnet/blob/add45ceed35a817dc7202ec07d3df1672d1f610d/BASE/src/Microsoft.ApplicationInsights/Extensibility/TelemetryConfiguration.cs#L271-L274
 
@@ -194,10 +194,10 @@ NetCore (config.json):
 ```
 
 
-### <a name="java-sdk-example"></a>Java SDK-Beispiel
+# <a name="java"></a>[Java](#tab/java)
 
 
-Java (explizit festgelegt):
+Java (v2.5.x) (explizit festgelegt):
 ```java
 TelemetryConfiguration.getActive().setConnectionString("InstrumentationKey=00000000-0000-0000-0000-000000000000");
 ```
@@ -210,7 +210,7 @@ ApplicationInsights.xml
 </ApplicationInsights>
 ```
 
-### <a name="javascript-sdk-example"></a>JavaScript SDK-Beispiel
+# <a name="javascript"></a>[JavaScript](#tab/js)
 
 Wichtig: JavaScript unterstützt die Verwendung von Umgebungsvariablen nicht.
 
@@ -239,7 +239,7 @@ appInsights.loadAppInsights();
 appInsights.trackPageView();
 ```
 
-### <a name="node-sdk-example"></a>Node SDK-Beispiel
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 const appInsights = require("applicationinsights");
@@ -247,7 +247,7 @@ appInsights.setup("InstrumentationKey=00000000-0000-0000-0000-000000000000;");
 appInsights.start();
 ```
 
-### <a name="python-sdk-example"></a>Python SDK-Beispiel
+# <a name="python"></a>[Python](#tab/python)
 
 Es wird Benutzern empfohlen, die Umgebungsvariable festzulegen.
 
@@ -276,4 +276,4 @@ Beginnen mit der Entwicklungszeitmethode mit:
 * [ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 * [Java](../../azure-monitor/app/java-get-started.md)
 * [Node.js](../../azure-monitor/app/nodejs.md)
-* [Python (Vorschau)](../../azure-monitor/app/opencensus-python.md)
+* [Python](../../azure-monitor/app/opencensus-python.md)

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2c3c52fc85e6c915587db27a3f5ce247fd05ea51
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 7b8c1b0bcc74d73f1f869972488ba7c5dfe610d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77598322"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060062"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Prüfliste für die Planung und Bereitstellung von SAP-Workloads in Azure
 
@@ -164,7 +164,7 @@ Es empfiehlt sich, im Rahmen einer Pilotbereitstellung eine vollständige HADR-L
             -   [SAP-Supporthinweis Nr. 2772999 – Red Hat Enterprise Linux 8.x: Installation und Konfiguration](https://launchpad.support.sap.com/#/notes/2772999)
             -   [SAP-Supporthinweis Nr. 2777782 – SAP HANA DB: Empfohlene Betriebssystemeinstellungen für RHEL 8](https://launchpad.support.sap.com/#/notes/2777782)
             -   [SAP-Supporthinweis Nr. 2578899 – SUSE Linux Enterprise Server 15: Installationshinweis](https://launchpad.support.sap.com/#/notes/2578899)
-            -   [SAP-Supporthinweis Nr. https://launchpad.support.sap.com/#/notes/0002455582)(https://launchpad.support.sap.com/#/notes/0002455582)
+            -   [SAP-Supporthinweis Nr. 2455582 – Linux: Running SAP applications compiled with GCC 6.x](https://launchpad.support.sap.com/#/notes/0002455582) (Linux: Ausführen von mit GCC 6.x kompilierten SAP-Anwendungen)
             -    [SAP-Supporthinweis Nr. 2729475 – HWCCT Failed with Error "Hypervisor is not supported" on Azure VMs certified for SAP HANA](https://launchpad.support.sap.com/#/notes/2729475) (HWCCT ist mit der Meldung „Hypervisor wird nicht unterstützt“ auf für SAP HANA zertifizierten Azure-VMs fehlgeschlagen)
 1. Testen Ihrer Verfahren für Hochverfügbarkeit und Notfallwiederherstellung
    1. Simulieren Sie Failoversituationen durch Herunterfahren von VMs (Windows-Gastbetriebssysteme) oder das Versetzen von Betriebssystemen in den Panikmodus (Linux-Gastbetriebssysteme). Mithilfe dieses Schritts können Sie herausfinden, ob Ihre Failoverkonfigurationen wie beabsichtigt funktionieren.
@@ -182,7 +182,7 @@ Es empfiehlt sich, im Rahmen einer Pilotbereitstellung eine vollständige HADR-L
 1. Leistungstests. Nehmen Sie in SAP auf der Grundlage von SAP-Ablaufverfolgung und Messungen diese Vergleiche vor:
    - Vergleichen Sie ggf. die 10 wichtigsten Onlineberichte mit Ihrer aktuellen Implementierung.
    - Vergleichen Sie ggf. die 10 wichtigsten Batchaufträge mit Ihrer aktuellen Implementierung.
-   - Vergleichen Sie Datenübertragungen über Schnittstellen mit dem SAP-System. Konzentrieren Sie sich auf Schnittstellen, von denen Sie wissen, dass die Übertragung jetzt zwischen verschiedenen Standorten erfolgt, etwa von lokal zu Azure.
+   - Vergleichen Sie Datenübertragungen über Schnittstellen mit dem SAP-System. Konzentrieren Sie sich auf Schnittstellen, von denen Sie wissen, dass die Übertragung zwischen verschiedenen Standorten erfolgt, etwa von lokal zu Azure.
 
 
 ## <a name="non-production-phase"></a>Nicht-Produktionsphase 

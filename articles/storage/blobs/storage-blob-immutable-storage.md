@@ -9,18 +9,20 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: b8b5de910195b14c279fe395cc35c12768536728
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a980c7bd068a463956191eece43ec1be233e7890
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981844"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79367617"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher
 
 Unveränderlicher Speicher für Azure-Blobspeicher ermöglicht es Benutzern, unternehmenskritische Datenobjekte im WORM-Zustand (Write Once, Read Many – Einmal schreiben, oft lesen) zu speichern. In diesem Zustand sind die Daten für einen vom Benutzer angegebenen Zeitraum nicht löschbar und nicht änderbar. Während des Aufbewahrungszeitraums können Blobs erstellt und gelesen, aber nicht geändert oder gelöscht werden. Unveränderlicher Speicher steht für Universell V1-, Universell V2-, BlobStorage- und BlockBlobStorage-Konten in allen Azure-Regionen zur Verfügung.
 
 Informationen zum Festlegen und Aufheben einer Aufbewahrung für juristische Zwecke sowie zum Erstellen einer zeitbasierten Aufbewahrungsrichtlinie über das Azure-Portal, per PowerShell oder mithilfe der Azure-Befehlszeilenschnittstelle finden Sie unter [Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher](storage-blob-immutability-policies-manage.md).
+
+[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 ## <a name="about-immutable-blob-storage"></a>Informationen zu unveränderlichem Blobspeicher
 
@@ -84,15 +86,7 @@ Ein Beispiel: Angenommen, ein Benutzer erstellt eine zeitbasierte Aufbewahrungsr
 
 Bei entsperrten zeitbasierten Aufbewahrungsrichtlinien kann die `allowProtectedAppendWrites`-Einstellung zu jedem Zeitpunkt aktiviert und deaktiviert werden. Nachdem die zeitbasierte Aufbewahrungsrichtlinie gesperrt wurde, kann die `allowProtectedAppendWrites`-Einstellung nicht mehr geändert werden.
 
-Bei Richtlinien für die Aufbewahrung für juristische Zwecke kann `allowProtectedAppendWrites` nicht aktiviert werden. Auch können keine neuen Blöcke an Anfügeblobs angefügt werden. Wenn eine Aufbewahrung für juristische Zwecke auf eine zeitbasierte Aufbewahrungsrichtlinie angewandt wird, bei der `allowProtectedAppendWrites` aktiviert ist, kann die *AppendBlock*-API nicht ausgeführt werden, bevor die Aufbewahrung für juristische Zwecke entfernt wird.
-
-> [!IMPORTANT] 
-> Die Einstellung zum Zulassen von Schreibvorgängen in geschützten Anfügeblobs ist derzeit in den folgenden Regionen verfügbar:
-> - East US
-> - USA Süd Mitte
-> - USA, Westen 2
->
-> Zum jetzigen Zeitpunkt wird dringend davon abgeraten, `allowProtectedAppendWrites` in anderen als den angegebenen Regionen zu aktivieren, da dies zu zeitweiligen Ausfällen führen und die Compliance von Anfügeblobs beeinträchtigen kann. Weitere Informationen zum Festlegen und Sperren von zeitbasierten Aufbewahrungsrichtlinien finden Sie unter [Aktivieren der Einstellung zum Zulassen von Schreibvorgängen in geschützten Anfügeblobs](storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes).
+Gesetzliche Aufbewahrungspflichten können `allowProtectedAppendWrites` nicht aktivieren und heben die Eigenschaft allowProtectedAppendWrites auf. Wenn eine Aufbewahrung für juristische Zwecke auf eine zeitbasierte Aufbewahrungsrichtlinie angewandt wird, bei der `allowProtectedAppendWrites` aktiviert ist, kann die *AppendBlock*-API nicht ausgeführt werden, bevor die Aufbewahrung für juristische Zwecke entfernt wird.
 
 ## <a name="legal-holds"></a>Gesetzliche Aufbewahrungspflichten
 
@@ -140,7 +134,7 @@ Nein. Sie können unveränderlichen Speicher mit allen vorhandenen oder neu erst
 
 **Kann ich sowohl eine Richtlinie für eine gesetzliche Aufbewahrungspflicht als auch eine Richtlinie für die zeitbasierte Aufbewahrung anwenden?**
 
-Ja, für einen Container können gleichzeitig eine gesetzliche Aufbewahrungspflicht und eine zeitbasierte Aufbewahrungsrichtlinie gelten. Alle Blobs in diesem Container verbleiben so lange im unveränderlichen Zustand, bis alle gesetzlichen Aufbewahrungspflichten aufgehoben wurden. Dies gilt auch, wenn die effektive Aufbewahrungsdauer bereits abgelaufen ist. Dagegen verbleibt ein Blob auch dann so lange im unveränderlichen Zustand, bis der effektive Aufbewahrungszeitraum abgelaufen ist, wenn alle Zeiträume für die gesetzliche Aufbewahrungspflicht aufgehoben wurden.
+Ja, für einen Container kann gleichzeitig sowohl eine gesetzliche Aufbewahrungspflicht als auch eine zeitbasierte Aufbewahrungsrichtlinie gelten. Die Einstellung allowProtectedAppendWrites gilt jedoch erst, nachdem die gesetzliche Aufbewahrungspflicht aufgehoben wurde. Alle Blobs in diesem Container verbleiben so lange im unveränderlichen Zustand, bis alle gesetzlichen Aufbewahrungspflichten aufgehoben wurden. Dies gilt auch, wenn die effektive Aufbewahrungsdauer bereits abgelaufen ist. Dagegen verbleibt ein Blob auch dann so lange im unveränderlichen Zustand, bis der effektive Aufbewahrungszeitraum abgelaufen ist, wenn alle Zeiträume für die gesetzliche Aufbewahrungspflicht aufgehoben wurden. 
 
 **Gelten Richtlinien für die gesetzliche Aufbewahrungspflicht nur für rechtliche Abläufe, oder gibt es auch andere Nutzungsszenarien?**
 
@@ -164,7 +158,7 @@ Ja. Sie können den Befehl „Set Blob Tier“ nutzen, um Daten zwischen den Blo
 
 **Was passiert, wenn ich nicht bezahle und mein Aufbewahrungszeitraum abgelaufen ist?**
 
-Bei einer fehlenden Zahlung gelten die üblichen Richtlinien der Datenaufbewahrung gemäß den Bedingungen Ihres Vertrags mit Microsoft.
+Bei einer fehlenden Zahlung gelten die üblichen Richtlinien der Datenaufbewahrung gemäß den Bedingungen Ihres Vertrags mit Microsoft. Weitere Informationen finden Sie unter [Datenverwaltung bei Microsoft](https://www.microsoft.com/en-us/trust-center/privacy/data-management). 
 
 **Bieten Sie einen Test- oder Karenzzeitraum an, in dem die Funktion ausprobiert werden kann?**
 

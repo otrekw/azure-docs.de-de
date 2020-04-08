@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 04/26/2019
-ms.openlocfilehash: 940baf219f1b3994585472f0eed9d171ba319d4e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.date: 03/10/2020
+ms.openlocfilehash: 84846e642fa102045b89eb12dbc85b0995867a3e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023139"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80061594"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalieren von Einzeldatenbankressourcen in Azure SQL-Datenbank
 
@@ -77,7 +77,7 @@ Klicken Sie anschließend auf die Schaltfläche mit der Bezeichnung **Diesen Vor
 
 Legen Sie an einer PowerShell-Eingabeaufforderung `$resourceGroupName`, `$serverName` und `$databaseName` fest, und führen Sie dann den folgenden Befehl aus:
 
-```powershell
+```azurecli
 $operationName = (az sql db op list --resource-group $resourceGroupName --server $serverName --database $databaseName --query "[?state=='InProgress'].name" --out tsv)
 if (-not [string]::IsNullOrEmpty($operationName)) {
     (az sql db op cancel --resource-group $resourceGroupName --server $serverName --database $databaseName --name $operationName)
@@ -106,10 +106,11 @@ Die Abrechnung erfolgt für jede Stunde, in der eine Datenbank die höchste in d
 
 ### <a name="vcore-based-purchasing-model"></a>vCore-basiertes Kaufmodell
 
-- Speicher kann in Schritten von 1 GB bis zur maximalen Speichergröße bereitgestellt werden. Die konfigurierbare Mindestdatenspeichergröße beträgt 5 GB.
-- Speicher für eine Einzeldatenbank kann durch Erhöhen oder Verringern der maximalen Größe im [Azure-Portal](https://portal.azure.com), in [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), in [PowerShell](/powershell/module/az.sql/set-azsqldatabase), in der[Azure CLI](/cli/azure/sql/db#az-sql-db-update) oder in der [REST-API](https://docs.microsoft.com/rest/api/sql/databases/update) bereitgestellt werden.
-- SQL-Datenbank belegt automatisch 30 % des zusätzlichen Speicherplatzes für die Protokolldateien und 32 GB pro virtuellem Kern für die tempdb-Datenbank, wobei 384 GB nicht überschritten werden. Die tempdb befindet sich in allen Dienstebenen auf einem angefügten SSD-Datenträger.
-- Der Preis für den Speicher für eine Einzeldatenbank errechnet sich aus der Summe des Datenspeichers und des Protokollspeichers multipliziert mit dem Speichereinheitenpreis für die Dienstebene. Die Kosten für die tempdb-Datenbank sind im Preis für den virtuellen Kern enthalten. Ausführliche Informationen zu den Preisen für zusätzlichen Speicherplatz siehe [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/).
+- Speicher kann in Schritten von 1 GB bis zur maximalen Datenspeichergröße bereitgestellt werden. Die konfigurierbare Mindestdatenspeichergröße ist 1 GB. Weitere Informationen zur maximalen Größe der Datenspeicherung in den einzelnen Dienstzielen finden Sie auf den Dokumentationsseiten zur Ressourcenbegrenzung für [einzelne Datenbanken](sql-database-vcore-resource-limits-single-databases.md) und [elastische Pools](sql-database-vcore-resource-limits-elastic-pools.md).
+- Datenspeicher für eine Einzeldatenbank kann durch Erhöhen oder Verringern der maximalen Größe über das [Azure-Portal](https://portal.azure.com), [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShell](/powershell/module/az.sql/set-azsqldatabase), die [Azure CLI](/cli/azure/sql/db#az-sql-db-update) oder die [REST-API](https://docs.microsoft.com/rest/api/sql/databases/update) bereitgestellt werden. Wenn der Wert für die maximale Größe in Bytes angegeben wird, muss er ein Vielfaches von 1 GB (1073741824 Bytes) sein.
+- Die Menge der Daten, die in den Datendateien einer Datenbank gespeichert werden kann, ist durch die konfigurierte maximale Größe des Datenspeichers begrenzt. Zusätzlich zu diesem Speicher teilt Azure SQL-Datenbank automatisch 30 % mehr Speicher für das Transaktionsprotokoll zu.
+- Azure SQL-Datenbank ordnet für die `tempdb`-Datenbank automatisch 32 GB pro virtuellem Kern zu. `tempdb` befindet sich in allen Dienstebenen auf einem lokalen SSD-Datenträger.
+- Der Preis für Speicher für eine Einzeldatenbank oder einen Pool für elastische Datenbanken errechnet sich aus der Summe des Datenspeichers und des Transaktionsprotokollspeichers multipliziert mit dem Speichereinheitenpreis für die Dienstebene. Die Kosten für die `tempdb`-Datenbank sind im Preis enthalten. Ausführliche Informationen zu den Speicherpreisen finden Sie unter [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
 > Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).

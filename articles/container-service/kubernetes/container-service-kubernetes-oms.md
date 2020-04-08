@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 3cb500d2f00d6657420d7f294a7318b339e1f81e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 02d04076ccc41d243a493838667f5e8cc6bfa5ac
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271070"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79371153"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>(VERALTET) Überwachen eines Azure Container Service-Clusters mit Log Analytics
 
@@ -28,8 +28,8 @@ Außerdem wird angenommen, dass die Tools `az` (Azure-Befehlszeilenschnittstelle
 
 Führen Sie Folgendes aus, um zu prüfen, ob das Tool `az` installiert ist:
 
-```console
-$ az --version
+```azurecli
+az --version
 ```
 
 Wenn das Tool `az` nicht installiert ist, finden Sie [hier](https://github.com/azure/azure-cli#installation) Anweisungen.
@@ -38,21 +38,24 @@ Alternativ können Sie [Azure Cloud Shell](https://docs.microsoft.com/azure/clou
 Führen Sie Folgendes aus, um zu prüfen, ob das Tool `kubectl` installiert ist:
 
 ```console
-$ kubectl version
+kubectl version
 ```
 
 Wenn `kubectl` nicht installiert ist, können Sie folgenden Befehl ausführen:
-```console
-$ az acs kubernetes install-cli
+
+```azurecli
+az acs kubernetes install-cli
 ```
 
 Um zu testen, ob im kubectl-Tool Kubernetes-Schlüssel installiert sind, können Sie folgenden Befehl ausführen:
+
 ```console
-$ kubectl get nodes
+kubectl get nodes
 ```
 
 Wenn mit diesem Befehl Fehler auftreten, müssen Sie Kubernetes-Clusterschlüssel im kubectl-Tool installieren. Dies ist mit dem folgenden Befehl möglich:
-```console
+
+```azurecli
 RESOURCE_GROUP=my-resource-group
 CLUSTER_NAME=my-acs-name
 az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
@@ -83,7 +86,7 @@ Im Anschluss sehen Sie die [DaemonSet-YAML-Datei](https://github.com/Microsoft/O
 Nachdem Sie der DaemonSet-Konfiguration Ihre Arbeitsbereichs-ID und den Schlüssel hinzugefügt haben, können Sie den Log Analytics-Agent mithilfe des `kubectl`-Befehlszeilentools in Ihrem Cluster installieren:
 
 ```console
-$ kubectl create -f oms-daemonset.yaml
+kubectl create -f oms-daemonset.yaml
 ```
 
 ### <a name="installing-the-log-analytics-agent-using-a-kubernetes-secret"></a>Installieren des Log Analytics-Agents mit einem Kubernetes-Geheimnis
@@ -94,16 +97,24 @@ Zum Schutz der Log Analytics-Arbeitsbereichs-ID und des Schlüssels können Sie 
   - Vorlage für Geheimnisse - „secret-template.yaml“
     - DaemonSet-YAML-Datei – „omsagent-ds-secrets.yaml“
 - Führen Sie das Skript aus. Im Skript erfolgt eine Aufforderung zur Eingabe der Log Analytics-Arbeitsbereichs-ID und des Primärschlüssels. Geben Sie diese Werte ein. Danach erstellt das Skript eine YAML-Datei für Geheimnisse, sodass Sie sie ausführen können.
-  ```
-  #> sudo bash ./secret-gen.sh
+
+  ```console
+  sudo bash ./secret-gen.sh
   ```
 
-  - Erstellen Sie den Pod für Geheimnisse durch Ausführen des folgenden Befehls: ```kubectl create -f omsagentsecret.yaml```
+  - Erstellen Sie den Pod für Geheimnisse, indem Sie Folgendes ausführen:
+
+     ```console
+     kubectl create -f omsagentsecret.yaml
+     ```
 
   - Führen Sie zur Überprüfung Folgendes aus:
 
+  ```console
+  kubectl get secrets
   ```
-  root@ubuntu16-13db:~# kubectl get secrets
+
+  ```output
   NAME                  TYPE                                  DATA      AGE
   default-token-gvl91   kubernetes.io/service-account-token   3         50d
   omsagent-secret       Opaque                                2         1d
@@ -121,7 +132,11 @@ Zum Schutz der Log Analytics-Arbeitsbereichs-ID und des Schlüssels können Sie 
   KEY:    88 bytes
   ```
 
-  - Erstellen Ihres OMS-Agent-DaemonSet durch Ausführen von ```kubectl create -f omsagent-ds-secrets.yaml```
+  - Erstellen Sie Ihre OMS-Agent-Daemongruppe durch Ausführen des folgenden Befehls:
+  
+  ```console
+  kubectl create -f omsagent-ds-secrets.yaml
+  ```
 
 ### <a name="conclusion"></a>Zusammenfassung
 Das ist alles! Nach wenigen Minuten sollten Daten bei Ihrem Log Analytics-Dashboard eingehen.

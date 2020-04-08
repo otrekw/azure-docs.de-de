@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: ac539b44f09663e6eac5651646d3c9cd02e45b3c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5cedde1e7daa49aaa7a2786c9ad8a65fb8e452f7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75360003"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297577"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Managers zum Verwalten der Anmeldeinformationen eines Speicherkontos für StorSimple Virtual Array
 
@@ -38,7 +38,7 @@ Anmeldeinformationen des Speicherkontos sind Daten, die das Gerät für den Zugr
 Auf dem Blatt **Anmeldeinformationen des Speicherkontos** werden alle Anmeldeinformationen des Speicherkontos, die für das Abrechnungsabonnement erstellt werden, in einem Tabellenformat mit den folgenden Informationen angezeigt:
 
 * **Name** – der eindeutige Name für das Konto, der bei dessen Erstellung zugewiesen wurde.
-* **SSL enabled** – zeigt an, ob SSL aktiviert ist und die Kommunikation zwischen Gerät und Cloud über einen sicheren Kanal verläuft.
+* **SSL enabled** – zeigt an, ob TLS aktiviert ist und die Kommunikation zwischen Gerät und Cloud über einen sicheren Kanal verläuft.
   
   ![Konfigurationsabschnitt](./media/storsimple-virtual-array-manage-storage-accounts/ova-storageaccountcredentials-blade.png)
 
@@ -56,7 +56,7 @@ Es gibt drei Typen von Anmeldeinformationen eines Speicherkontos, die mit Ihrem 
 * **Storage account credentials outside of the service subscription** (Nicht im Dienstabonnnement enthaltene Anmeldeinformationen des Speicherkontos) – Diese Anmeldeinformationen des Azure-Speicherkontos sind nicht Ihrem Dienst zugeordnet und waren wahrscheinlich schon vorhanden, bevor der Dienst erstellt wurde.
 
 ## <a name="add-a-storage-account-credential"></a>Hinzufügen von Anmeldeinformationen eines Speicherkontos
-Sie können Anmeldeinformationen eines Speicherkontos zu Ihrer Konfiguration für den StorSimple-Geräte-Manager-Dienst hinzufügen, indem Sie einen eindeutigen Anzeigenamen und Anmeldeinformationen für den Zugriff angeben, die mit dem Speicherkonto verknüpft sind. Sie haben außerdem die Möglichkeit, den SSL-Modus (Secure Sockets Layer) zu aktivieren, um einen sicheren Kanal für die Netzwerkkommunikation zwischen dem Gerät und der Cloud zu erstellen.
+Sie können Anmeldeinformationen eines Speicherkontos zu Ihrer Konfiguration für den StorSimple-Geräte-Manager-Dienst hinzufügen, indem Sie einen eindeutigen Anzeigenamen und Anmeldeinformationen für den Zugriff angeben, die mit dem Speicherkonto verknüpft sind. Sie haben außerdem die Möglichkeit, den TLS-Modus (Transport Layer Security) – zuvor bekannt als SSL-Modus (Secure Sockets Layer) – zu aktivieren, um einen sicheren Kanal für die Netzwerkkommunikation zwischen dem Gerät und der Cloud zu erstellen.
 
 Sie können mehrere Konten für einen Clouddienstanbieter erstellen. Während die Anmeldeinformationen des Speicherkontos gespeichert werden, versucht der Dienst mit Ihrem Clouddienstanbieter zu kommunizieren. Die Anmelde- und Zugriffsinformationen, die Sie bereitgestellt haben, werden zu diesem Zeitpunkt authentifiziert. Die Anmeldeinformationen eines Speicherkontos werden nur dann erstellt, wenn die Authentifizierung erfolgreich war. Wenn die Authentifizierung fehlschlägt, wird eine entsprechende Fehlermeldung angezeigt.
 
@@ -92,7 +92,7 @@ Verwenden Sie die folgenden Verfahren, um Anmeldeinformationen für das Azure-Sp
    
     3. Geben Sie im Textfeld **Speicherkonto-Zugriffsschlüssel** den primären Zugriffsschlüssel für die Anmeldeinformationen Ihres Azure-Speicherkontos an. Sie finden diesen Schlüssel, indem Sie zum Azure Storage-Dienst navigieren, die Anmeldeinformationen Ihres Speicherkontos auswählen und auf **Manage account keys** (Kontoschlüssel verwalten) klicken. Nun können Sie den primären Zugriffsschlüssel kopieren.
    
-    4. Aktivieren Sie SSL, indem Sie auf die Schaltfläche **Aktivieren** klicken, um einen sicheren Kanal für die Netzwerkkommunikation zwischen Ihrem StorSimple-Geräte-Manager-Dienst und der Cloud zu erstellen. Klicken Sie nur dann auf die Schaltfläche **Deaktivieren**, wenn Sie in einer Private Cloud arbeiten.
+    4. Aktivieren Sie TLS, indem Sie auf die Schaltfläche **Aktivieren** klicken, um einen sicheren Kanal für die Netzwerkkommunikation zwischen Ihrem StorSimple-Geräte-Manager-Dienst und der Cloud zu erstellen. Klicken Sie nur dann auf die Schaltfläche **Deaktivieren**, wenn Sie in einer Private Cloud arbeiten.
    
     5. Klicken Sie auf **Hinzufügen**. Sie werden benachrichtigt, nachdem die Anmeldeinformationen des Speicherkontos erfolgreich erstellt wurden.
 
@@ -101,7 +101,7 @@ Verwenden Sie die folgenden Verfahren, um Anmeldeinformationen für das Azure-Sp
     ![Hinzufügen von Anmeldeinformationen für ein Speicherkonto, das nicht im Abonnement des Geräte-Manager-Diensts enthalten ist](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-outside-storageacct.png)
 
 ## <a name="edit-a-storage-account-credential"></a>Bearbeiten von Anmeldeinformationen eines Speicherkontos
-Sie können Anmeldeinformationen für ein Speicherkonto bearbeiten, das von Ihrem Gerät verwendet wird. Wenn Sie Anmeldeinformationen für ein derzeit verwendetes Speicherkonto bearbeiten, lassen sich nur die Felder mit dem Zugriffsschlüssel und dem SSL-Modus ändern. Sie können einen neuen Speicherzugriffsschlüssel angeben oder die Auswahl für **SSL-Modus aktivieren** ändern und die aktualisierten Einstellungen speichern.
+Sie können Anmeldeinformationen für ein Speicherkonto bearbeiten, das von Ihrem Gerät verwendet wird. Wenn Sie Anmeldeinformationen für ein derzeit verwendetes Speicherkonto bearbeiten, lassen sich nur die Felder mit dem Zugriffsschlüssel und dem TLS-Modus ändern. Sie können einen neuen Speicherzugriffsschlüssel angeben oder die Auswahl für **SSL-Modus aktivieren** ändern und die aktualisierten Einstellungen speichern.
 
 #### <a name="to-edit-a-storage-account-credential"></a>So bearbeiten Sie Anmeldeinformationen für ein Speicherkonto
 1. Navigieren Sie zu Ihrem Geräte-Manager-Dienst, und wählen Sie ihn aus. Doppelklicken Sie anschließend darauf. Daraufhin wird das Blatt **Übersicht** geöffnet.

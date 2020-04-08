@@ -1,21 +1,21 @@
 ---
-title: Aktivieren von Azure Monitor für VMs (Vorschauversion) für die Auswertung | Microsoft-Dokumentation
+title: Aktivieren von Azure Monitor für VMs im Azure-Portal
 description: Erfahren Sie, wie Sie Azure Monitor für VMs für einen einzelnen virtuellen Azure-Computer oder eine VM-Skalierungsgruppe auswerten.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/14/2019
-ms.openlocfilehash: 3b79eaeed420426fe79b2b6caf19ba1d1be61939
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/12/2020
+ms.openlocfilehash: 45bc8f16a547d4a95820f9dcd02132844b3be83c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77664610"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480707"
 ---
-# <a name="enable-azure-monitor-for-vms-preview-for-evaluation"></a>Aktivieren von Azure Monitor für VMs (Vorschauversion) für die Auswertung
+# <a name="enable-azure-monitor-for-vms-in-the-azure-portal"></a>Aktivieren von Azure Monitor für VMs im Azure-Portal
 
-Sie können Azure Monitor für VMs (Vorschauversion) für eine kleine Anzahl virtueller Azure-Computer (VMs), eine einzelne VM oder eine VM-Skalierungsgruppe auswerten. Die einfachste und direkteste Methode zum Aktivieren der Überwachung ist über das Azure-Portal. Ihr Ziel ist es, die VMs zu überwachen und Leistungs- oder Verfügbarkeitsprobleme zu ermitteln. 
+In diesem Artikel wird beschrieben, wie Azure Monitor für VMs im Azure-Portal auf einer kleinen Anzahl von Azure-VMs aktiviert werden kann. Ihr Ziel ist es, die VMs zu überwachen und Leistungs- oder Verfügbarkeitsprobleme zu ermitteln. 
 
 Bevor Sie beginnen, sollten Sie die [Voraussetzungen](vminsights-enable-overview.md) überprüfen und sicherstellen, dass Ihr Abonnement und Ihre Ressourcen diese Anforderungen erfüllen.  
 
@@ -28,11 +28,9 @@ So aktivieren Sie die Überwachung Ihrer Azure-VM:
 
 1. Wählen Sie einen virtuellen Computer in der Liste aus.
 
-1. Wählen Sie auf der Seite der VM im Abschnitt **Überwachung** den Eintrag **Insights (Vorschau)** aus.
+1. Wählen Sie auf der Seite der VM im Abschnitt **Überwachung** den Eintrag **Insights** und dann **Aktivieren** aus.
 
-1. Wählen Sie auf der Seite **Insights (Vorschau)** **Jetzt testen** aus.
-
-    ![Aktivieren von Azure Monitor for VMs für eine VM](./media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
+    ![Aktivieren von Azure Monitor for VMs für eine VM](media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
 1. Wenn Sie im selben Abonnement einen Log Analytics-Arbeitsbereich haben, wählen Sie ihn auf der Seite **Azure Monitor Insights Onboarding** (Onboarding von Azure Monitor Insights) in der Dropdownliste aus.  
 
@@ -41,9 +39,9 @@ So aktivieren Sie die Überwachung Ihrer Azure-VM:
     >[!NOTE]
     >Informationen zum Erstellen eines neuen Log Analytics-Arbeitsbereichs für das Speichern der Überwachungsdaten aus der VM finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs](../../azure-monitor/learn/quick-create-workspace.md). Der Log Analytics-Arbeitsbereich muss einer der [unterstützten Regionen](vminsights-enable-overview.md#log-analytics) angehören.
 
-Nachdem Sie die Überwachung aktiviert haben, müssen Sie möglicherweise etwa 10 Minuten warten, bis die Integritätsmetriken für die VM angezeigt werden.
+6. Beim Ausführen der Konfiguration werden Statusmeldungen angezeigt.
 
-![Aktivieren von Azure Monitor for VMs – Verarbeiten der Überwachungsbereitstellung](./media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
+    ![Aktivieren von Azure Monitor for VMs – Verarbeiten der Überwachungsbereitstellung](media/vminsights-enable-single-vm/onboard-vminsights-vm-portal-status.png)
 
 ## <a name="enable-monitoring-for-a-single-virtual-machine-scale-set"></a>Aktivieren der Überwachung für eine einzelne VM-Skalierungsgruppe
 
@@ -55,23 +53,23 @@ So aktivieren Sie die Überwachung Ihrer Azure-VM-Skalierungsgruppe:
 
 3. Wählen Sie aus der Liste eine VM-Skalierungsgruppe aus.
 
-4. Wählen Sie auf der Seite der VM-Skalierungsgruppe im Abschnitt **Überwachung** den Eintrag **Insights (Vorschau)** aus.
+4. Wählen Sie auf der Seite der „VM-Skalierungsgruppe“ im Abschnitt **Überwachung** den Eintrag **Insights** und dann **Aktivieren** aus.
 
-5. Wenn Sie einen bereits vorhandenen Log Analytics-Arbeitsbereich verwenden möchten, wählen Sie ihn auf der Seite **Insights (Vorschau)** aus der Dropdownliste aus.
+5. Wenn Sie einen bereits vorhandenen Log Analytics-Arbeitsbereich verwenden möchten, wählen Sie ihn auf der Seite **Insights** in der Dropdownliste aus.
 
     In der Liste sind Standardarbeitsbereich und Speicherort, für den die VM im Abonnement bereitgestellt wird, vorab ausgewählt. 
 
-    ![Aktivieren von Azure Monitor für VMs für eine VM-Skalierungsgruppe](./media/vminsights-enable-single-vm/enable-vminsights-vmss-portal.png)
+    ![Aktivieren von Azure Monitor für VMs für eine VM-Skalierungsgruppe](media/vminsights-enable-single-vm/enable-vminsights-vmss-portal.png)
 
     >[!NOTE]
     >Informationen zum Erstellen eines neuen Log Analytics-Arbeitsbereichs für das Speichern der Überwachungsdaten aus der VM-Skalierungsgruppe finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs](../learn/quick-create-workspace.md). Der Log Analytics-Arbeitsbereich muss einer der [unterstützten Regionen](vminsights-enable-overview.md#log-analytics) angehören.
 
-Nachdem Sie die Überwachung aktiviert haben, müssen Sie möglicherweise etwa 10 Minuten warten, bis die Überwachungsdaten für die Skalierungsgruppe angezeigt werden.
+6. Beim Ausführen der Konfiguration werden Statusmeldungen angezeigt.
 
->[!NOTE]
->Wenn Sie ein manuelles Upgrademodell für Ihre Skalierungsgruppe verwenden, führen Sie ein Upgrade für die Instanzen durch, um die Einrichtung abzuschließen. Sie können die Upgrades über die Seite **Instanzen** im Abschnitt **Einstellungen** starten.
-
-![Aktivieren von Azure Monitor for VMs – Verarbeiten der Überwachungsbereitstellung](./media/vminsights-enable-single-vm/onboard-vminsights-vmss-portal-status-01.png)
+    >[!NOTE]
+    >Wenn Sie ein manuelles Upgrademodell für Ihre Skalierungsgruppe verwenden, führen Sie ein Upgrade für die Instanzen durch, um die Einrichtung abzuschließen. Sie können die Upgrades über die Seite **Instanzen** im Abschnitt **Einstellungen** starten.
+    
+    ![Aktivieren von Azure Monitor for VMs – Verarbeiten der Überwachungsbereitstellung](media/vminsights-enable-single-vm/onboard-vminsights-vmss-portal-status.png)
 
 Nachdem Sie die Überwachung für Ihre VM oder VM-Skalierungsgruppe aktiviert haben, stehen die Überwachungsinformationen für die Analyse in Azure Monitor für VMs bereit. 
 

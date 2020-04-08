@@ -4,16 +4,16 @@ description: Erfahren Sie, welche Betriebssysteme zur Ausführung von Azure IoT 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/13/2019
+ms.date: 03/06/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3f1f4efc13e2d11e7111264564a227a484d611d5
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 42c0a5d0c590f8c395c2afe366a00fcb9c83ce46
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760095"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536937"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Von Azure IoT Edge unterstützte Systeme
 
@@ -25,7 +25,7 @@ Wenn bei der Verwendung von Azure IoT Edge Probleme auftreten, gibt es mehrere 
 
 **Microsoft-Kundendienstteam:** Benutzer mit einem [Supportplan](https://azure.microsoft.com/support/plans/) können direkt über das [Azure-Portal](https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac) ein Supportticket erstellen, um sich an das Microsoft-Kundendienstteam zu wenden.
 
-**Funktionsanfragen:** Angefragte Funktionen werden von Azure IoT Edge über die [User Voice-Seite](https://feedback.azure.com/forums/907045-azure-iot-edge) des Produkts verfolgt.
+**Anfragen von Features:** Angefragte Features werden von Azure IoT Edge über die [User Voice-Seite](https://feedback.azure.com/forums/907045-azure-iot-edge) des Produkts verfolgt.
 
 ## <a name="container-engines"></a>Container-Engines
 
@@ -96,6 +96,28 @@ Die in der folgenden Tabelle aufgeführten Systeme gelten als kompatibel mit Azu
 ```bash
 sudo apt-get install libssl1.0.2
 ```
+
+## <a name="releases"></a>Releases
+
+IoT Edge-Releaseressourcen und -Hinweise sind auf der Seite [azure-iotedge releases](https://github.com/Azure/azure-iotedge/releases) verfügbar. Dieser Abschnitt spiegelt Informationen aus diesen Versionshinweisen wider, um Ihnen die Visualisierung der Komponenten der einzelnen Versionen zu erleichtern.
+
+IoT Edge-Komponenten können einzeln installiert oder aktualisiert werden und sind abwärtskompatibel mit Komponenten aus älteren Versionen. In der folgenden Tabelle sind die in den einzelnen Releases enthaltenen Komponenten aufgeführt:
+
+| Release   | Sicherheitsdaemon  | Edge-Hub<br>Edge-Agent | Libiothsm | Moby  |
+| --------- | ---------------- | ---------------------- | --------- | ----- |
+| **1.0.9** | 1.0.9            | 1.0.9                  | 1.0.9     |       |
+| **1.0.8** | 1.0.8            | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
+| **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7       | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 (ARMv7hl, CentOS) |
+| **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6       | 1.0.6.1<br>1.0.6 |  |
+| **1.0.5** | 1.0.5            | 1.0.5                  | 1.0.5     | 3.0.2 |
+
+IOT Edge verwendet das Microsoft.Azure.Device.Client SDK. Weitere Informationen finden Sie im [GitHub-Repository „Azure IoT C# SDK“](https://github.com/Azure/azure-iot-sdk-csharp) oder im [Inhalt der Referenz zum Azure SDK für .NET](https://docs.microsoft.com/dotnet/api/overview/azure/iot/client?view=azure-dotnet). Die folgende Liste zeigt die Version des Client SDK, mit dem die einzelnen Releases getestet wurden:
+
+* **IoT Edge 1.0.9**: Client SDK 1.21.1
+* **IoT Edge 1.0.8**: Client SDK 1.20.3
+* **IoT Edge 1.0.7**: Client SDK 1.20.1
+* **IoT Edge 1.0.6**: Client SDK 1.17.1
+* **IoT Edge 1.0.5**: Client SDK 1.17.1
 
 ## <a name="virtual-machines"></a>Virtual Machines
 

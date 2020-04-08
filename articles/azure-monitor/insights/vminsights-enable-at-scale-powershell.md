@@ -1,35 +1,29 @@
 ---
-title: Aktivieren von Azure Monitor für VMs (klassisch) mit PowerShell oder Vorlagen
+title: Aktivieren von Azure Monitor für VMs mit PowerShell oder Vorlagen
 description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für VMs mithilfe von Azure PowerShell oder Azure Resource Manager-Vorlagen für mindestens einen virtuellen Azure-Computer oder eine VM-Skalierungsgruppe aktivieren.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2019
-ms.openlocfilehash: e28a5dce4dda677ef4e5eb0ed08c42ec1f03c308
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 75d5203e7c475a44b6a00dbf9286f43114b7b54f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78251434"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480843"
 ---
-# <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>Aktivieren von Azure Monitor für VMs (Vorschauversion) mit Azure PowerShell oder Resource Manager-Vorlagen
+# <a name="enable-azure-monitor-for-vms-using-azure-powershell-or-resource-manager-templates"></a>Aktivieren von Azure Monitor für VMs mit Azure PowerShell oder Resource Manager-Vorlagen
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-In diesem Artikel wird erläutert, wie Sie Azure Monitor für VMs (Vorschauversion) mithilfe von Azure PowerShell oder Azure Resource Manager-Vorlagen für virtuelle Azure-Computer oder VM-Skalierungsgruppen aktivieren. Nachdem Sie diesen Prozess durchgeführt haben, haben Sie erfolgreich damit begonnen, alle Ihre VMs (virtuelle Computer) zu überwachen, und werden erfahren, ob Leistungs- und Verfügbarkeitsprobleme auftreten.
+In diesem Artikel wird erläutert, wie Sie Azure Monitor für VMs mithilfe von Azure PowerShell oder Azure Resource Manager-Vorlagen für virtuelle Azure-Computer oder VM-Skalierungsgruppen aktivieren. Nachdem Sie diesen Prozess durchgeführt haben, haben Sie erfolgreich damit begonnen, alle Ihre VMs (virtuelle Computer) zu überwachen, und werden erfahren, ob Leistungs- und Verfügbarkeitsprobleme auftreten.
 
 ## <a name="set-up-a-log-analytics-workspace"></a>Einrichten eines Log Analytics-Arbeitsbereichs
 
 Wenn Sie noch nicht über einen Log Analytics-Arbeitsbereich verfügen, müssen Sie einen erstellen. Sehen Sie sich die Methoden an, die im Abschnitt [Voraussetzungen](vminsights-enable-overview.md#log-analytics) vorgeschlagen werden, bevor Sie mit den Schritten zur Konfiguration fortfahren. Anschließend können Sie die Bereitstellung von Azure Monitor für VMs mithilfe der Methode für Azure Resource Manager-Vorlagen abschließen.
 
-### <a name="enable-performance-counters"></a>Aktivieren von Leistungsindikatoren
-
-Wenn der Log Analytics-Arbeitsbereich, auf den die Lösung verweist, noch nicht für die Erfassung der von der Lösung benötigten Leistungsindikatoren konfiguriert ist, müssen Sie diese aktivieren. Hierzu stehen zwei Möglichkeiten zur Verfügung:
-* Manuell, wie in [Windows- und Linux-Leistungsindikatoren in Log Analytics](../../azure-monitor/platform/data-sources-performance-counters.md) beschrieben.
-* Durch Herunterladen und Ausführen eines PowerShell-Skripts, das über den [Azure PowerShell-Katalog](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1) verfügbar ist.
-
-### <a name="install-the-servicemap-solution"></a>Installieren der ServiceMap-Lösung
+### <a name="install-the-vminsights-solution"></a>Installieren der VMInsights-Lösung
 
 Diese Methode umfasst eine JSON-Vorlage, die die Konfiguration zum Aktivieren der Lösungskomponenten für Ihren Log Analytics-Arbeitsbereich angibt.
 
@@ -63,7 +57,7 @@ Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren u
                     {
                         "apiVersion": "2015-11-01-preview",
                         "location": "[parameters('WorkspaceLocation')]",
-                        "name": "[concat('ServiceMap', '(', parameters('WorkspaceName'),')')]",
+                        "name": "[concat('VMInsights', '(', parameters('WorkspaceName'),')')]",
                         "type": "Microsoft.OperationsManagement/solutions",
                         "dependsOn": [
                             "[concat('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
@@ -73,9 +67,9 @@ Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren u
                         },
 
                         "plan": {
-                            "name": "[concat('ServiceMap', '(', parameters('WorkspaceName'),')')]",
+                            "name": "[concat('VMInsights', '(', parameters('WorkspaceName'),')')]",
                             "publisher": "Microsoft",
-                            "product": "[Concat('OMSGallery/', 'ServiceMap')]",
+                            "product": "[Concat('OMSGallery/', 'VMInsights')]",
                             "promotionCode": ""
                         }
                     }

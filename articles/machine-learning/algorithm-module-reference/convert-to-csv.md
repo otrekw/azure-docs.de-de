@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 8206a88695c89d04eabe89e79a5aff8469cc6862
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: fc2a043e8f1565cf5fe45ba0b072ad015076635e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152430"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477679"
 ---
 # <a name="convert-to-csv-module"></a>Modul „Convert to CSV (Konvertieren in das CSV-Format)
 
@@ -41,7 +41,7 @@ Wenn Sie einen Datensatz in das CSV-Format konvertieren, wird die CSV-Datei in I
 
 2. Verbinden Sie es mit einem beliebigen Modul, das ein Dataset ausgibt.   
   
-3.  Ausführen der Pipeline.
+3.  Übermitteln Sie die Pipeline.
 
 ### <a name="results"></a>Ergebnisse
   

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: 11bc97be7ff8d924f7ccd0b4672a8f4cb0a178ff
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 65aa83731be97b59a36a5baf60ea308690a0dcf8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77116338"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80297745"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>Verwalten von Anmeldeinformationen für Speicherkonten mithilfe des StorSimple-Geräte-Manager-Diensts
 
@@ -40,7 +40,7 @@ Speicherkonten enthalten die Anmeldeinformationen, die das StorSimple-Gerät fü
 Auf dem Blatt **Anmeldeinformationen des Speicherkontos** werden alle Speicherkonten, die für das Abrechnungsabonnement erstellt werden, in einem Tabellenformat mit den folgenden Informationen angezeigt:
 
 * **Name** – der eindeutige Name für das Konto, der bei dessen Erstellung zugewiesen wurde.
-* **SSL enabled** – zeigt an, ob SSL aktiviert ist und die Kommunikation zwischen Gerät und Cloud über einen sicheren Kanal verläuft.
+* **SSL enabled** – zeigt an, ob TLS aktiviert ist und die Kommunikation zwischen Gerät und Cloud über einen sicheren Kanal verläuft.
 * **Used by** – die Anzahl der Datenträger, die das Speicherkonto verwenden.
 
 Im Folgenden sind die häufigsten ausgeführten Aufgaben im Zusammenhang mit Speicherkonten aufgeführt:
@@ -60,7 +60,7 @@ Es gibt drei Typen von Speicherkonten, die mit dem StorSimple-Gerät verwendet w
 
 ## <a name="add-a-storage-account"></a>Hinzufügen von Speicherkonten
 
-Sie können ein Speicherkonto hinzufügen, indem Sie einen eindeutigen Anzeigenamen und Anmeldeinformationen für den Zugriff angeben, die mit dem Speicherkonto (mit dem angegebenen Clouddienstanbieter) verknüpft sind. Sie haben außerdem die Möglichkeit, den SSL-Modus (Secure Sockets Layer) zu aktivieren, um einen sicheren Kanal für die Netzwerkkommunikation zwischen dem Gerät und der Cloud zu erstellen.
+Sie können ein Speicherkonto hinzufügen, indem Sie einen eindeutigen Anzeigenamen und Anmeldeinformationen für den Zugriff angeben, die mit dem Speicherkonto (mit dem angegebenen Clouddienstanbieter) verknüpft sind. Sie haben außerdem die Möglichkeit, den TLS-Modus (Transport Layer Security) – zuvor bekannt als SSL-Modus (Secure Sockets Layer) – zu aktivieren, um einen sicheren Kanal für die Netzwerkkommunikation zwischen dem Gerät und der Cloud zu erstellen.
 
 Sie können mehrere Konten für einen Clouddienstanbieter erstellen. Bedenken Sie jedoch, dass der Clouddienstanbieter nach der Erstellung eines Speicherkontos nicht mehr geändert werden kann.
 
@@ -86,7 +86,7 @@ Verwenden Sie die folgenden Verfahren, um Anmeldeinformationen für das Azure-Sp
    
     3. Geben Sie im Textfeld **Speicherkonto-Zugriffsschlüssel** den primären Zugriffsschlüssel für die Anmeldeinformationen Ihres Azure-Speicherkontos an. Sie finden diesen Schlüssel, indem Sie zum Azure Storage-Dienst navigieren, die Anmeldeinformationen Ihres Speicherkontos auswählen und auf **Manage account keys** (Kontoschlüssel verwalten) klicken. Nun können Sie den primären Zugriffsschlüssel kopieren.
    
-    4. Aktivieren Sie SSL, indem Sie auf die Schaltfläche **Aktivieren** klicken, um einen sicheren Kanal für die Netzwerkkommunikation zwischen Ihrem StorSimple-Geräte-Manager-Dienst und der Cloud zu erstellen. Klicken Sie nur dann auf die Schaltfläche **Deaktivieren**, wenn Sie in einer Private Cloud arbeiten.
+    4. Aktivieren Sie TLS, indem Sie auf die Schaltfläche **Aktivieren** klicken, um einen sicheren Kanal für die Netzwerkkommunikation zwischen Ihrem StorSimple-Geräte-Manager-Dienst und der Cloud zu erstellen. Klicken Sie nur dann auf die Schaltfläche **Deaktivieren**, wenn Sie in einer Private Cloud arbeiten.
    
     5. Klicken Sie auf **Hinzufügen**. Sie werden benachrichtigt, nachdem die Anmeldeinformationen des Speicherkontos erfolgreich erstellt wurden.
 

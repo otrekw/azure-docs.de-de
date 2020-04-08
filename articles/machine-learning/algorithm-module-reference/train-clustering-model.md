@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: 7053fab28b4a231c92f31e344cf09ffef3a6b146
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: c29baf3cdda998a2ab78c84f3311b84d37086bcd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152107"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477424"
 ---
 # <a name="train-clustering-model"></a>Trainieren eines Clusteringmodells
 
@@ -43,7 +43,7 @@ In diesem Modul wird ein untrainiertes Clusteringmodell verwendet, das Sie berei
 
     Wenn Sie diese Option deaktivieren, werden nur die Clusterzuweisungen ausgegeben. 
 
-7. Führen Sie die Pipeline aus, oder klicken Sie auf das Modul **Train Clustering Model** und dann auf **Auswahl ausführen**.  
+7. Übermitteln Sie die Pipeline, oder klicken Sie auf das Modul **Train Clustering Model** und dann auf **Auswahl ausführen**.  
   
 ### <a name="results"></a>Ergebnisse
 

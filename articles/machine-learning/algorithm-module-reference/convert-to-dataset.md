@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: dc3630f4b832a9b15217e8f5cdc03830f15ee2a7
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: fd45db779b7a828d247f09cae38f90fc20d12c16
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546757"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456589"
 ---
 # <a name="convert-to-dataset"></a>Konvertieren in ein Dataset
 
@@ -51,7 +51,7 @@ Es empfiehlt sich, das Dataset mithilfe des Moduls [Edit Metadata](edit-metadata
     Beachten Sie, dass der Vorgang **ReplaceValues** nur für exakte Übereinstimmungen gilt. Diese Zeichenfolgen sind z. B. nicht betroffen: `obs.`, `obsolete`.  
  
   
-5.  Ausführen der Pipeline.  
+5.  Übermitteln Sie die Pipeline.  
 
 ## <a name="results"></a>Ergebnisse
 

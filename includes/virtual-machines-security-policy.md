@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 53c9dea83fc6d413d7e82194696ffedabcc8cf7b
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 14a6703b3e256d33ab3b18e1821587cc3eb293db
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71830092"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "79381863"
 ---
 Es ist wichtig, dass Sie in Bezug auf die ausgeführten Anwendungen auf den Schutz Ihres virtuellen Computers (VM) achten. Das Schützen Ihrer VMs kann einen oder mehrere Azure-Dienste und -Features enthalten, die für den sicheren Zugriff auf Ihre VMs und die sichere Speicherung Ihrer Daten sorgen. Dieser Artikel enthält Informationen dazu, wie Sie den Schutz Ihrer VM und Anwendungen aufrechterhalten.
 
@@ -24,6 +24,20 @@ Mit [Azure Security Center](../articles/security-center/security-center-intro.md
 Der Just-In-Time-VM-Zugriff in Security Center kann auf alle VM-Bereitstellungen angewandt werden, um eingehenden Datenverkehr auf Azure-VMs zu sperren und dadurch die Gefährdung durch Angriffe zu reduzieren und bei Bedarf einfachen Zugriff auf Verbindungen mit virtuellen Computern bereitzustellen. Wenn Just-In-Time aktiviert ist und ein Benutzer Zugriff auf eine VM anfordert, überprüft Security Center, welche Berechtigungen der Benutzer für den virtuellen Computer hat. Wenn er über die passenden Berechtigungen verfügt, wird die Anforderung genehmigt, und die Netzwerksicherheitsgruppen (NSGs) werden von Security Center automatisch so konfiguriert, dass eingehender Datenverkehr zu den ausgewählten Ports für eine begrenzte Zeit zugelassen wird. Nach Ablauf dieser Zeitspanne stellt das Security Center die vorherigen Status der NSGs wieder her. 
 
 ## <a name="encryption"></a>Verschlüsselung
+
+Für verwaltete Datenträger werden zwei Verschlüsselungsmethoden angeboten. Verschlüsselung auf Betriebssystemebene (Azure Disk Encryption) und Verschlüsselung auf Plattformebene (serverseitige Verschlüsselung).
+
+### <a name="server-side-encryption"></a>Serverseitige Verschlüsselung
+
+Verwaltete Azure-Datenträger verschlüsseln Daten standardmäßig automatisch, wenn die Daten in der Cloud gespeichert werden. Die serverseitige Verschlüsselung schützt Ihre Daten und unterstützt Sie beim Einhalten der Sicherheits- und Complianceanforderungen Ihrer Organisation. Daten in verwalteten Azure-Datenträgern werden transparent mit 256-Bit-[AES-Verschlüsselung](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) – einer der stärksten verfügbaren Blockverschlüsselungen – FIPS 140-2-konform ver- und entschlüsselt.
+
+Die Verschlüsselung wirkt sich nicht auf die Leistung verwalteter Datenträger aus. Für die Verschlüsselung werden keine zusätzlichen Kosten in Rechnung gestellt.
+
+Sie können von der Plattform verwaltete Schlüssel für die Verschlüsselung der verwalteten Datenträger verwenden oder die Verschlüsselung mit eigenen Schlüsseln verwalten. Wenn Sie die Verschlüsselung mit eigenen Schlüsseln verwalten möchten, können Sie einen *vom Kunden verwalteten Schlüssel* angeben, der zum Verschlüsseln und Entschlüsseln aller Daten in verwalteten Datenträgern verwendet werden soll. 
+
+Weitere Informationen zur serverseitigen Verschlüsselung finden Sie in den Artikeln für [Windows](../articles/virtual-machines/windows/disk-encryption.md) oder [Linux](../articles/virtual-machines/linux/disk-encryption.md).
+
+### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
 Zum Verbessern der Sicherheit und Konformität von [Windows-VMs](../articles/virtual-machines/windows/encrypt-disks.md) und [Linux-VMs](../articles/virtual-machines/linux/disk-encryption-overview.md) können virtuelle Datenträger in Azure verschlüsselt werden. Virtuelle Datenträger auf virtuellen Windows-Computern werden im Ruhezustand mithilfe von BitLocker verschlüsselt. Virtuelle Datenträger auf virtuellen Linux-Computern werden im Ruhezustand mithilfe von dm-crypt verschlüsselt. 
 

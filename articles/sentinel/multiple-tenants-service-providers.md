@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: caa79b572d0024b93abd2d32ca99d92cc2a8b4bb
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: fdb58686fcdd18a8e2861aab533717dbc91e8893
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77582074"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476014"
 ---
 # <a name="work-with-multiple-tenants-in-azure-sentinel"></a>Arbeiten mit mehreren Mandanten in Azure Sentinel 
 
@@ -27,7 +27,7 @@ Wenn Sie ein Dienstanbieter für verwaltete Sicherheit (MSSP) sind und Sie [Azur
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - [Onboarding von Azure Lighthouse](../lighthouse/how-to/onboard-customer.md)
-- Damit dies ordnungsgemäß funktioniert, muss Ihr Mandant für mindestens ein Abonnement beim Azure Sentinel-Ressourcenanbieter registriert sein. Wenn Sie über einen registrierten Azure Sentinel in Ihrem Mandanten verfügen, sind Sie bereit für die ersten Schritte. Andernfalls wählen Sie im Azure-Portal erst **Abonnements** und dann **Ressourcenanbieter** aus. Suchen Sie anschließend nach `Microsoft.Security.Insights`, und wählen Sie **Registrieren** aus.
+- Damit dies ordnungsgemäß funktioniert, muss Ihr Mandant für mindestens ein Abonnement beim Azure Sentinel-Ressourcenanbieter registriert sein. Wenn Sie über einen registrierten Azure Sentinel in Ihrem Mandanten verfügen, sind Sie bereit für die ersten Schritte. Falls nicht, wählen Sie im Azure-Portal **Abonnements** und anschließend **Ressourcenanbieter** aus.  Suchen Sie dann auf dem Bildschirm **SOC – Ressourcenanbieter** nach `Microsoft.OperationalInsights` und `Microsoft.SecurityInsights`, und wählen Sie **Registrieren** aus.
    ![Überprüfen von Ressourcenanbietern](media/multiple-tenants-service-providers/check-resource-provider.png)
 ## <a name="how-to-access-azure-sentinel-from-other-tenants"></a>Zugreifen auf Azure Sentinel über andere Mandanten
 1. Wählen Sie unter **Verzeichnis + Abonnement** die delegierten Verzeichnisse und die Abonnements aus, in denen sich die Azure Sentinel-Arbeitsbereiche Ihres Kunden befinden.

@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: 701e42caba5325df34bdbb2381389708b9b5a03f
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 0761db6b73c6fcfeb1ef6fda729a68c9644bbc72
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198853"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79479558"
 ---
 # <a name="install-azure-farmbeats"></a>Installieren von Azure FarmBeats
 
@@ -97,7 +97,7 @@ Notieren Sie sich die **Azure-Abonnement-ID** und die **Azure-Region**.
 
 ### <a name="create-an-aad-application"></a>Erstellen einer AAD-Anwendung
 
-Azure FarmBeats erfordert die Erstellung und Registrierung der Azure Active Directory-Anwendung. Um das AAD-Erstellungsskript erfolgreich auszuführen, sind folgende Berechtigungen erforderlich:
+Azure FarmBeats erfordert die Erstellung und Registrierung der Anwendung Azure Active Directory. Um das AAD-Erstellungsskript erfolgreich auszuführen, sind folgende Berechtigungen erforderlich:
 
 - Mandant – Ersteller der AAD-App
 - Abonnement – Besitzer
@@ -124,11 +124,11 @@ Führen Sie die folgenden Schritte in einer Cloud Shell-Instanz unter Verwendung
 
 4. Das Skript fragt nach den folgenden drei Eingaben:
 
-    - Name der FarmBeats-Website: Das eindeutige URL-Präfix für Ihre FarmBeats-Webanwendung. Falls das Präfix bereits verwendet wird, endet das Skript mit einem Fehler. Nach der Installation kann über „https://\<FarmBeats-Websitename>.azurewebsites.net“ auf Ihre FarmBeats-Bereitstellung zugegriffen werden, und die Swagger-APIs befinden sich unter „https://\<FarmBeats-Websitename>-api.azurewebsites.net“.
+    - **Name der FarmBeats-Website**: Das eindeutige URL-Präfix für Ihre FarmBeats-Webanwendung. Falls das Präfix bereits verwendet wird, endet das Skript mit einem Fehler. Nach der Installation kann über „https://\<FarmBeats-Websitename>.azurewebsites.net“ auf Ihre FarmBeats-Bereitstellung zugegriffen werden, und die Swagger-APIs befinden sich unter „https://\<FarmBeats-Websitename>-api.azurewebsites.net“.
 
-    - Azure-Anmelde-ID: Geben Sie die Azure-Anmelde-ID für den Benutzer an, den Sie als Administrator von FarmBeats hinzufügen möchten. Dieser Benutzer kann dann anderen Benutzern Zugriff auf FarmBeats-Webanwendungen gewähren. Die Anmelde-ID hat im Allgemeinen die Form john.doe@domain.com. Der Azure-UPN wird ebenfalls unterstützt.
+    - **Azure-Anmelde-ID**: Geben Sie die Azure-Anmelde-ID für den Benutzer an, den Sie als Administrator von FarmBeats hinzufügen möchten. Dieser Benutzer kann dann anderen Benutzern Zugriff auf FarmBeats-Webanwendungen gewähren. Die Anmelde-ID hat im Allgemeinen die Form john.doe@domain.com. Der Azure-UPN wird ebenfalls unterstützt.
 
-    - Subscription ID (Abonnement-ID): Dies ist die ID des Abonnements, in dem Sie Azure-FarmBeats installieren möchten.
+    - **Abonnement-ID**: Dies ist die ID des Abonnements, in dem Sie Azure-FarmBeats installieren möchten.
 
 5. Die Ausführung des AAD-Skripts dauert etwa 2 Minuten und gibt die Werte sowohl auf dem Bildschirm als auch in eine JSON-Datei im gleichen Verzeichnis aus. Wenn Sie das Skript von jemand anderem haben ausführen lassen, bitten Sie diese Person, die Ausgabe mit Ihnen zu teilen.
 

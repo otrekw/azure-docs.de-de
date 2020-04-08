@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 36b3857f8827f8a33e5fc0981b22a49128f7c193
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 5653fa7c67d36dbf2ee71f51f182168bccb69105
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534774"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79298613"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory: Referenzleitfaden zu den Vorgängen der Identitäts- und Zugriffsverwaltung
 
@@ -29,9 +29,9 @@ In diesem Abschnitt des [Referenzleitfadens zu Azure AD-Vorgängen](active-direc
 
 ### <a name="assign-owners-to-key-tasks"></a>Zuweisen von Besitzern zu wichtigen Aufgaben
 
-Für die Verwaltung von Azure Active Directory ist die kontinuierliche Ausführung wichtiger betrieblicher Aufgaben und Prozesse erforderlich, die unter Umständen nicht Teil einer Projektveröffentlichung sind. Es ist außerdem wichtig, dass Sie diese Aufgaben einrichten, um Ihre Umgebung zu warten. Hier sind die wichtigen Aufgaben und die zugehörigen empfohlenen Besitzer aufgeführt:
+Für die Verwaltung von Azure Active Directory ist die kontinuierliche Ausführung wichtiger betrieblicher Aufgaben und Prozesse erforderlich, die unter Umständen nicht Teil einer Projektveröffentlichung sind. Es ist außerdem wichtig, dass Sie diese Aufgaben einrichten, um Ihre Umgebung zu warten. Im Folgenden werden die wichtigen Aufgaben und empfohlene Besitzer für diese aufgeführt:
 
-| Aufgabe | Owner (Besitzer) |
+| Aufgabe | Besitzer |
 | :- | :- |
 | Definieren des Prozesses zum Erstellen von Azure-Abonnements | Variiert je nach Organisation |
 | Treffen der Entscheidung, wer Enterprise Mobility + Security-Lizenzen erhält | Team für IAM-Vorgänge (Identity & Access Management, Identitäts- und Zugriffsverwaltung) |
@@ -170,7 +170,7 @@ Falls Sie derzeit ein Tool verwenden, z. B. [Microsoft Identity Manager](https:
 Ressourcenbesitzer sind unter Umständen der Meinung, dass die Gruppe **Alle Benutzer** nur **Mitarbeiter des Unternehmens** enthält, während eigentlich sowohl **Mitarbeiter des Unternehmens** als auch **Gäste** enthalten sind. Daher sollten Sie beim Verwenden der Gruppe **Alle Benutzer** für die Anwendungszuweisung und beim Gewähren des Zugriffs auf Ressourcen wie SharePoint-Inhalte oder -Anwendungen mit Bedacht vorgehen.
 
 > [!IMPORTANT]
-> Wenn die Gruppe **Alle Benutzer** aktiviert ist und für die Zuweisung von Richtlinien für den bedingten Zugriff, Apps oder Ressourcen verwendet wird, sollten Sie die [Gruppe unbedingt schützen](https://docs.microsoft.com/azure/active-directory/b2b/use-dynamic-groups#hardening-the-all-users-dynamic-group), wenn darin keine Gastbenutzer enthalten sein sollen. Darüber hinaus sollten Sie Ihre Lizenzierungszuweisungen korrigieren, indem Sie nur Gruppen erstellen und für die Zuweisung nutzen, die ausschließlich **Mitarbeiter des Unternehmens** enthalten. Falls Sie dagegen ermitteln, dass die Gruppe **Alle Benutzer** aktiviert ist, aber nicht zum Gewähren des Zugriffs auf Ressourcen verwendet wird, sollten Sie sicherstellen, dass in Ihrer Organisation die Verwendung dieser Gruppe (sowohl mit **Mitarbeitern des Unternehmens** als auch mit **Gästen**) vorgegeben ist.
+> Wenn die Gruppe **Alle Benutzer** aktiviert ist und für die Zuweisung von Richtlinien für den bedingten Zugriff, Apps oder Ressourcen verwendet wird, sollten Sie die [Gruppe unbedingt schützen](https://docs.microsoft.com/azure/active-directory/b2b/use-dynamic-groups), wenn darin keine Gastbenutzer enthalten sein sollen. Darüber hinaus sollten Sie Ihre Lizenzierungszuweisungen korrigieren, indem Sie nur Gruppen erstellen und für die Zuweisung nutzen, die ausschließlich **Mitarbeiter des Unternehmens** enthalten. Falls Sie dagegen ermitteln, dass die Gruppe **Alle Benutzer** aktiviert ist, aber nicht zum Gewähren des Zugriffs auf Ressourcen verwendet wird, sollten Sie sicherstellen, dass in Ihrer Organisation die Verwendung dieser Gruppe (sowohl mit **Mitarbeitern des Unternehmens** als auch mit **Gästen**) vorgegeben ist.
 
 ### <a name="automated-user-provisioning-to-apps"></a>Automatisierte Benutzerbereitstellung für Apps
 

@@ -7,12 +7,12 @@ author: winthrop28
 ms.service: web-application-firewall
 ms.date: 02/01/2020
 ms.author: victorh
-ms.openlocfilehash: d90c887c2e93b44a8dd13dab0b4f03665ea335c3
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.openlocfilehash: fff4fb5707c07098fd7fac261a36909224365cdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2020
-ms.locfileid: "76960343"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060270"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Übersicht über die Azure Web Application Firewall (WAF)-Richtlinien
 
@@ -57,7 +57,7 @@ In diesem Beispiel sehen Sie eine globale Richtlinie, die für zwei Websites gil
 
 ## <a name="existing-waf-configurations"></a>Vorhandene WAF-Konfigurationen
 
-Alle neuen WAF-Einstellungen (benutzerdefinierte Regeln, verwaltete Regelsatzkonfigurationen, Ausschlüsse usw.) sind in einer WAF-Richtlinie enthalten. Wenn Sie bereits über eine WAF verfügen, sind diese Einstellungen möglicherweise weiterhin in Ihrer WAF-Konfiguration vorhanden. Weitere Informationen zum Wechsel zur neuen WAF-Richtlinie finden Sie unter (Link: Migrieren der WAF-Konfiguration zu einer WAF-Richtlinie). 
+Alle neuen WAF-Einstellungen (benutzerdefinierte Regeln, verwaltete Regelsatzkonfigurationen, Ausschlüsse usw.) sind in einer WAF-Richtlinie enthalten. Wenn Sie bereits über eine WAF verfügen, sind diese Einstellungen möglicherweise weiterhin in Ihrer WAF-Konfiguration vorhanden. Weitere Informationen zum Umstieg auf die neue WAF-Richtlinie finden Sie unter [Migrieren der WAF-Konfiguration zu einer WAF-Richtlinie](https://docs.microsoft.com/azure/web-application-firewall/ag/migrate-policy). 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -10,31 +10,34 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 3/25/2019
+ms.date: 3/2/2020
 ms.author: rohink
-ms.openlocfilehash: fac6c29d5371c536c20eca58d90ee5d54d7e90d1
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 20a5c4befaa30383c54ac9536a3fd26dce3db4d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357734"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80059982"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken
 
 Abhängig davon, wie Sie Azure zum Hosten von IaaS, PaaS und Hybridlösungen verwenden, müssen Sie für die virtuellen Computer und andere Ressourcen, die in einem virtuellen Netzwerk bereitgestellt werden, die Kommunikation untereinander zulassen. Sie können diese Kommunikation zwar über IP-Adressen aktivieren, doch ist es deutlich einfacher, Namen zu verwenden, die leicht zu merken sind und sich nicht verändern. 
 
-Wenn in einem virtuellen Netzwerk bereitgestellte Ressourcen Domänennamen in interne IP-Adressen auflösen müssen, können sie eine dieser beiden Methoden verwenden:
+Wenn in einem virtuellen Netzwerk bereitgestellte Ressourcen Domänennamen in interne IP-Adressen auflösen müssen, können sie eine dieser drei Methoden verwenden:
 
+* [Private Azure DNS-Zonen](../dns/private-dns-overview.md)
 * [Von Azure bereitgestellte Namensauflösung](#azure-provided-name-resolution)
 * [Namensauflösung mit einem eigenen DNS-Server](#name-resolution-that-uses-your-own-dns-server) (dieser kann Abfragen an die von Azure bereitgestellten DNS-Server weiterleiten)
 
 Welche Art der Namensauflösung Sie verwenden, hängt davon ab, wie die Ressourcen miteinander kommunizieren müssen. In der folgenden Tabelle sind die Szenarien und entsprechenden Lösungen für die Namensauflösung aufgeführt:
 
 > [!NOTE]
-> Abhängig von Ihrem Szenario können Sie private Azure DNS-Zonen verwenden. Weitere Informationen finden Sie unter [Verwenden von Azure DNS für private Domänen](../dns/private-dns-overview.md).
->
+> Private Azure DNS-Zonen sind die bevorzugte Lösung und bieten Ihnen Flexibilität bei der Verwaltung Ihrer DNS-Zonen und -Einträge. Weitere Informationen finden Sie unter [Verwenden von Azure DNS für private Domänen](../dns/private-dns-overview.md).
 
-| **Szenario** | **Lösung** | **Suffix** |
+> [!NOTE]
+> Wenn Sie von Azure bereitgestelltes DNS verwenden, wird Ihren virtuellen Computern das entsprechende DNS-Suffix automatisch zugewiesen. Für alle anderen Optionen müssen Sie entweder vollqualifizierte Domänennamen (Fully Qualified Domain Names, FQDN) verwenden oder Ihren virtuellen Computern das entsprechende DNS-Suffix manuell zuweisen.
+
+| **Szenario** | **Lösung** | **DNS-Suffix** |
 | --- | --- | --- |
 | Namensauflösung zwischen virtuellen Computern im gleichen virtuellen Netzwerk oder Azure Cloud Services-Rolleninstanzen im gleichen Clouddienst. | [Private Azure DNS-Zonen](../dns/private-dns-overview.md) oder [von Azure bereitgestellte Namensauflösung](#azure-provided-name-resolution) |Hostname oder FQDN |
 | Namensauflösung zwischen virtuellen Computern in verschiedenen virtuellen Netzwerken oder Rolleninstanzen in unterschiedlichen Clouddiensten. |[Private Azure DNS-Zonen](../dns/private-dns-overview.md) oder vom Kunden verwaltete DNS-Server, die Abfragen zwischen virtuellen Netzwerken zur Auflösung durch Azure weiterleiten (DNS-Proxy). Siehe [Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-that-uses-your-own-dns-server). |Nur FQDN |
@@ -43,16 +46,17 @@ Welche Art der Namensauflösung Sie verwenden, hängt davon ab, wie die Ressourc
 | Namensauflösung aus App Service-Web-Apps in einem virtuellen Netzwerk in virtuelle Computer in einem anderen virtuellen Netzwerk. |Vom Kunden verwaltete DNS-Server, die Abfragen zwischen virtuellen Netzwerken zur Auflösung durch Azure weiterleiten (DNS-Proxy). Siehe [Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-that-uses-your-own-dns-server). |Nur FQDN |
 | Auflösung lokaler Computer- und Dienstnamen von VMs oder Rolleninstanzen in Azure. |Vom Kunden verwaltete DNS-Server (z. B. lokale Domänencontroller, lokale schreibgeschützte Domänencontroller oder ein sekundärer DNS-Server, der mithilfe von Zonenübertragungen synchronisiert wird). Siehe [Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-that-uses-your-own-dns-server). |Nur FQDN |
 | Auflösung von Azure-Hostnamen von lokalen Computern |Weiterleiten von Abfragen an einen vom Kunden verwalteten DNS-Proxyserver im zugehörigen virtuellen Netzwerk. Der Proxyserver leitet Abfragen zur Auflösung an Azure weiter. Siehe [Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-that-uses-your-own-dns-server). |Nur FQDN |
-| Reverse-DNS für interne IPs |[Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-that-uses-your-own-dns-server). |Nicht verfügbar |
+| Reverse-DNS für interne IPs |[Private Azure DNS-Zonen](../dns/private-dns-overview.md) oder [von Azure bereitgestellte Namensauflösung](#azure-provided-name-resolution) oder [Namensauflösung mit einem eigenen DNS-Server](#name-resolution-that-uses-your-own-dns-server) |Nicht verfügbar |
 | Namensauflösung zwischen virtuellen Computern oder Rolleninstanzen in unterschiedlichen Clouddiensten, nicht in einem virtuellen Netzwerk |Nicht zutreffend Die Konnektivität zwischen virtuellen Computern und Rolleninstanzen in verschiedenen Clouddiensten wird außerhalb eines virtuellen Netzwerks nicht unterstützt. |Nicht verfügbar|
 
 ## <a name="azure-provided-name-resolution"></a>Von Azure bereitgestellte Namensauflösung
 
-Zusammen mit der Auflösung des öffentlichen DNS-Namens bietet Azure die Auflösung interner Namen für virtuelle Computer und Rolleninstanzen, die sich innerhalb des gleichen virtuellen Netzwerks oder Clouddiensts befinden. Virtuelle Computer und Instanzen in einem Clouddienst verwenden das gleiche DNS-Suffix gemeinsam, sodass der Hostname allein ausreichend ist. In virtuellen Netzwerken, die mit dem klassischen Bereitstellungsmodell bereitgestellt werden, weisen verschiedene Clouddienste jedoch unterschiedliche DNS-Suffixe auf. In diesem Fall benötigen Sie den FQDN zum Auflösen von Namen zwischen verschiedenen Clouddiensten. In virtuellen Netzwerken, die mit dem Azure Resource Manager-Bereitstellungsmodell bereitgestellt werden, ist das DNS-Suffix im gesamten virtuellen Netzwerk konsistent, sodass der FQDN nicht benötigt wird. DNS-Namen können virtuellen Computern und Netzwerkschnittstellen zugewiesen werden. Obwohl für die von Azure durchgeführte Namensauflösung keine Konfiguration erforderlich ist, ist sie nicht für alle Bereitstellungsszenarien die beste Lösung (siehe die vorherige Tabelle).
+Die von Azure bereitgestellte Namensauflösung bietet nur grundlegende autoritative DNS-Funktionen. Bei Wahl dieser Option werden die DNS-Zonennamen und -Einträge automatisch von Azure verwaltet. Sie können weder die DNS-Zonennamen noch den Lebenszyklus von DNS-Einträgen beeinflussen. Wenn Sie eine voll ausgestattete DNS-Lösung für Ihre virtuellen Netzwerke benötigen, müssen Sie [private Azure DNS-Zonen](../dns/private-dns-overview.md) oder vom [Kunden verwaltete DNS-Server](#name-resolution-that-uses-your-own-dns-server) einsetzen.
+
+Zusammen mit der Auflösung des öffentlichen DNS-Namens bietet Azure die Auflösung interner Namen für virtuelle Computer und Rolleninstanzen, die sich innerhalb des gleichen virtuellen Netzwerks oder Clouddiensts befinden. Virtuelle Computer und Instanzen in einem Clouddienst verwenden das gleiche DNS-Suffix gemeinsam, sodass der Hostname allein ausreichend ist. In virtuellen Netzwerken, die mit dem klassischen Bereitstellungsmodell bereitgestellt werden, weisen verschiedene Clouddienste jedoch unterschiedliche DNS-Suffixe auf. In diesem Fall benötigen Sie den FQDN zum Auflösen von Namen zwischen verschiedenen Clouddiensten. In virtuellen Netzwerken, die mit dem Azure Resource Manager-Bereitstellungsmodell bereitgestellt werden, ist das DNS-Suffix aller virtuellen Computer in einem virtuellen Netzwerk einheitlich, sodass der FQDN nicht benötigt wird. DNS-Namen können virtuellen Computern und Netzwerkschnittstellen zugewiesen werden. Obwohl für die von Azure durchgeführte Namensauflösung keine Konfiguration erforderlich ist, ist sie nicht für alle Bereitstellungsszenarien die beste Lösung (siehe die vorherige Tabelle).
 
 > [!NOTE]
 > Bei Verwendung von Clouddienstweb- und Workerrollen können Sie auf die internen IP-Adressen von Rolleninstanzen über die REST-API für die Azure-Dienstverwaltung zugreifen. Weitere Informationen finden Sie unter [Referenz zur REST-API der Dienstverwaltung](https://msdn.microsoft.com/library/azure/ee460799.aspx). Die Adresse basiert auf dem Rollennamen und der Instanznummer. 
->
 >
 
 ### <a name="features"></a>Features
@@ -69,12 +73,25 @@ Die von Azure bereitgestellte Namensauflösung umfasst die folgenden Features:
 
 Wenn Sie die von Azure bereitgestellte Namensauflösung verwenden, beachten Sie folgende Punkte:
 * Das von Azure erstellte DNS-Suffix kann nicht geändert werden.
+* DNS-Lookup ist auf ein virtuelles Netzwerk begrenzt. DNS-Namen, die für ein virtuelles Netzwerk erstellt wurden, können in anderen virtuellen Netzwerken nicht aufgelöst werden.
 * Sie können keine eigenen Einträge manuell registrieren.
 * WINS und NetBIOS werden nicht unterstützt. Ihre virtuellen Computer werden nicht im Windows-Explorer angezeigt.
 * Hostnamen müssen DNS-kompatibel sein. Für die Namen dürfen nur die Zeichen 0 bis 9, a bis z und „-“ verwendet werden, zudem dürfen sie nicht mit „-“ beginnen oder enden.
 * Der DNS-Abfragedatenverkehr wird für den jeweiligen virtuellen Computer gedrosselt. Die Drosselung sollte auf die meisten Anwendungen keine Auswirkungen haben. Wenn eine Drosselung der Anforderungen festgestellt wird, stellen Sie sicher, dass clientseitiges Zwischenspeichern aktiviert ist. Weitere Informationen finden Sie unter [DNS-Clientkonfiguration](#dns-client-configuration).
 * Nur virtuelle Computer in den ersten 180 Clouddiensten werden für jedes virtuelle Netzwerk in einem klassischen Bereitstellungsmodell registriert. Diese Begrenzung gilt nicht für virtuelle Netzwerke in Azure Resource Manager.
 * Die IP-Adresse für Azure DNS für DNS lautet 168.63.129.16. Dies ist eine statische IP-Adresse, die sich nicht ändert.
+
+### <a name="reverse-dns-considerations"></a>Überlegungen zu Reverse-DNS
+Reverse-DNS wird in allen auf Azure Resource Manager basierenden virtuellen Netzwerken unterstützt. Sie können Reverse-DNS-Abfragen (PTR-Abfragen) ausführen, um IP-Adressen virtueller Computer zu FQDNs virtueller Computer zuzuordnen.
+* Alle PTR-Abfragen für IP-Adressen virtueller Computer geben FQDNs im Format\[VM-Name\].internal.cloudapp.net zurück.
+* Forward-Lookup für FQDNs im Format \[VM-Name\].internal.cloudapp.net wird in die IP-Adresse aufgelöst, die dem virtuellen Computer zugewiesen ist.
+* Wenn das virtuelle Netzwerk mit [privaten Azure DNS-Zonen](../dns/private-dns-overview.md) als virtuelles Registrierungsnetzwerk verknüpft ist, geben die Reverse-DNS-Abfragen zwei Einträge zurück. Ein Eintrag hat das Format \[VM-Name\].[Name_der_privaten_Zone] und der andere das Format \[VM-Name\].internal.cloudapp.net
+* Reverse-DNS-Lookup ist auf ein bestimmtes virtuelles Netzwerk begrenzt, auch bei Peerings mit anderen virtuellen Netzwerken. Reverse-DNS-Abfragen (PTR-Abfragen) für IP-Adressen virtueller Computer im Peering mit virtuellen Netzwerken geben NXDOMAIN zurück.
+
+> [!NOTE]
+> Wenn Sie möchten, dass sich Reverse-DNS-Lookup über ein virtuelles Netzwerk erstreckt, können Sie eine Reverse-Lookup-Zone (in-addr.arpa [private Azure DNS-Zonen](../dns/private-dns-overview.md)) erstellen und diese mit mehreren virtuellen Netzwerken verknüpfen. Sie müssen jedoch die Reverse-DNS-Einträge für die virtuellen Computer manuell verwalten.
+>
+
 
 ## <a name="dns-client-configuration"></a>DNS-Clientkonfiguration
 

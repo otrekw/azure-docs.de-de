@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 37c3e57fd96a0161564b23ce18d01573d0dd73f9
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: aee5195fe86fed3e631908a38d3bdb7d5e4883b8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127898"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79365218"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Erweitern eines vorhandenen Hostpools um neue Sitzungshosts
 
@@ -71,7 +71,7 @@ So stellen Sie die Azure Resource Manager-Vorlage erneut bereit, um einen Hostpo
 
 ## <a name="run-the-azure-marketplace-offering"></a>Ausführen des Azure Marketplace-Angebots
 
-Befolgen Sie die Anweisungen unter [Erstellen eines Hostpools mit dem Azure Marketplace](./create-host-pools-azure-marketplace.md), bis Sie zu [Ausführen des Azure Marketplace-Angebots zum Bereitstellen eines neuen Hostpools](./create-host-pools-azure-marketplace.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool) gelangen. Dort müssen Sie auf den jeweiligen Blättern folgende Informationen eingeben:
+Befolgen Sie die Anweisungen unter [Erstellen eines Hostpools mit dem Azure Marketplace](./create-host-pools-azure-marketplace.md), bis Sie zu [Ausführen des Azure Marketplace-Angebots zum Bereitstellen eines neuen Hostpools](./create-host-pools-azure-marketplace.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool) gelangen. Dort müssen Sie auf den jeweiligen Registerkarten folgende Informationen eingeben:
 
 ### <a name="basics"></a>Grundlagen
 

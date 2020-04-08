@@ -4,12 +4,12 @@ description: Erstellen von Aktivitätsprotokollwarnungen über das Azure-Portal 
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 06/25/2019
-ms.openlocfilehash: 9791ebaadeb1ee724692a9e1a0d61aff5cbae6a3
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: bfbe2bc3ae3edf9285d3ec006ab0451f070cabd6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77668484"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80132407"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor  
 
@@ -127,7 +127,7 @@ Eine einfache Analogie zum Verständnis der Bedingungen, unter denen Warnungsreg
 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage
-Um eine Aktivitätsprotokollwarnung mithilfe einer Azure Resource Manager-Vorlage zu erstellen, müssen Sie eine Ressource des Typs `microsoft.insights/activityLogAlerts` erstellen. Anschließend tragen Sie alle zugehörigen Eigenschaften ein. Hier sehen Sie eine Vorlage, mit der eine Aktivitätsprotokollwarnung erstellt wird:
+Um eine Aktivitätsprotokoll-Warnungsregel mithilfe einer Azure Resource Manager-Vorlage zu erstellen, müssen Sie eine Ressource des Typs `microsoft.insights/activityLogAlerts` erstellen. Anschließend tragen Sie alle zugehörigen Eigenschaften ein. Hier sehen Sie eine Vorlage, mit der eine Aktivitätsprotokoll-Warnungsregel erstellt wird:
 
 ```json
 {
@@ -195,6 +195,39 @@ Um eine Aktivitätsprotokollwarnung mithilfe einer Azure Resource Manager-Vorlag
 }
 ```
 Der vorherige JSON-Beispielcode kann für diese exemplarische Vorgehensweise z.B. als „sampleActivityLogAlert.json“ gespeichert und mit [Azure Resource Manager im Azure-Portal](../../azure-resource-manager/templates/deploy-portal.md) bereitgestellt werden.
+
+Bei den folgenden Feldern handelt es sich um die Optionen, die Sie in der Azure Resource Manager-Vorlage für die Bedingungsfelder verwenden können. Beachten Sie, dass „Resource Health“, „Advisor“ und „Service Health“ zusätzliche Eigenschaftenfelder für die jeweiligen speziellen Felder umfassen. 
+1. resourceId:  Die Ressourcen-ID der betroffenen Ressource in dem Aktivitätsprotokollereignis, für das die Warnung generiert werden soll.
+2. category: Die Kategorie des Aktivitätsprotokollereignisses. Beispiel: „Administrative“ (Verwaltung), „ServiceHealth“ (Dienstintegrität), „ResourceHealth“ (Ressourcenintegrität), „Autoscale“ (Autoskalierung), „Security“ (Sicherheit), „Recommendation“ (Empfehlung), „Policy“ (Richtlinie).
+3. caller: Die E-Mail-Adresse oder der Azure Active Directory-Bezeichner des Benutzers, der den Vorgang des Aktivitätsprotokollereignisses durchgeführt hat.
+4. level: Die Ebene der Aktivität in dem Aktivitätsprotokollereignis, für das die Warnung generiert werden soll. Beispiel: „Critical“ (Kritisch), „Error“ (Fehler), „Warning“ (Warnung), „Informational“ (Information) oder „Verbose“ (Ausführlich).
+5. operationName: Der Name des Vorgangs im Aktivitätsprotokollereignis. Beispiel: Microsoft.Resources/deployments/write
+6. resourceGroup: Der Name der Ressourcengruppe für die betroffene Ressource im Aktivitätsprotokollereignis.
+7. resourceProvider: [Erläuterung zu Azure-Ressourcenanbietern und -typen](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fazure-resource-manager%2Fmanagement%2Fresource-providers-and-types&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C90b7c2308c0647c0347908d7c9a2918d%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637199572373543634&sdata=4RjpTkO5jsdOgPdt%2F%2FDOlYjIFE2%2B%2BuoHq5%2F7lHpCwQw%3D&reserved=0). Eine Liste, die Ressourcenanbieter zu Azure-Diensten zuordnet, finden Sie unter [Ressourcenanbieter für Azure-Dienste](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fazure-resource-manager%2Fmanagement%2Fazure-services-resource-providers&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C90b7c2308c0647c0347908d7c9a2918d%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637199572373553639&sdata=0ZgJPK7BYuJsRifBKFytqphMOxMrkfkEwDqgVH1g8lw%3D&reserved=0).
+8. status: Eine Zeichenfolge, die den Status des Vorgangs im Aktivitätsereignis beschreibt. Beispiel: „Started“ (Gestartet), „In Progress“ (In Bearbeitung), „Succeeded“ (Erfolgreich), „Failed“ (Fehler), „Active“ (Aktiv), „Resolved“ (Gelöst)
+9. subStatus: Üblicherweise der HTTP-Statuscode des entsprechenden REST-Aufrufs, kann aber auch weitere Zeichenfolgen zur Beschreibung eines untergeordneten Status enthalten.   Beispiel: OK (HTTP-Statuscode: 200), Erstellt (HTTP-Statuscode: 201), Akzeptiert (HTTP-Statuscode: 202), Kein Inhalt (HTTP-Statuscode: 204), Ungültige Anforderung (HTTP-Statuscode: 400), Nicht gefunden (HTTP-Statuscode: 404), Konflikt (HTTP-Statuscode: 409), Interner Serverfehler (HTTP-Statuscode: 500), Dienst nicht verfügbar (HTTP-Statuscode: 503), Gatewaytimeout (HTTP-Statuscode: 504).
+10. resourceType: Der Typ der Ressource, die vom Ereignis betroffen war. Beispiel: Microsoft.Resources/deployments
+
+Beispiel:
+
+```json
+"condition": {
+          "allOf": [
+            {
+              "field": "category",
+              "equals": "Administrative"
+            },
+            {
+              "field": "resourceType",
+              "equals": "Microsoft.Resources/deployments"
+            }
+          ]
+        }
+
+```
+Weitere Informationen zu den Aktivitätsprotokollfeldern finden Sie [hier](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fazure-monitor%2Fplatform%2Factivity-log-schema&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C90b7c2308c0647c0347908d7c9a2918d%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637199572373563632&sdata=6QXLswwZgUHFXCuF%2FgOSowLzA8iOALVgvL3GMVhkYJY%3D&reserved=0).
+
+
 
 > [!NOTE]
 > Es kann bis zu 5 Minuten dauern, bis die neue Warnungsregel des Aktivitätsprotokolls aktiv wird.

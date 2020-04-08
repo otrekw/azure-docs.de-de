@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: cab63a17ddfed49684cc37609d9f2ae5bde9bdd3
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 45501fee9ae6ff47643a1ed197a07c4ba598e981
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689372"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80047748"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>IP-Adressen von Azure API Management
 
@@ -63,7 +63,7 @@ Wenn sich Ihr API Management-Dienst innerhalb eines virtuellen Netzwerks befind
 
 Öffentliche IP-Adressen werden für die interne Kommunikation über den Port `3443` verwendet, um die Konfiguration zu verwalten (beispielsweise über Azure Resource Manager). In der externen VNet-Konfiguration werden sie auch für API-Laufzeitdatenverkehr verwendet. Wenn eine Anforderung von API Management an ein öffentliches Back-End (Back-End mit Internetzugriff) gesendet wird, wird als Ursprung der Anforderung eine öffentliche IP-Adresse angezeigt.
 
-Private virtuelle IP-Adressen (VIPs) werden verwendet, um innerhalb des Netzwerks eine Verbindung mit API Management-Endpunkten (Gateways, das Entwicklerportal und die Verwaltungsebene für direkten API-Zugriff) herzustellen. Sie können verwendet werden, um DNS-Einträge im Netzwerk einzurichten.
+Private virtuelle IP-Adressen (VIPs), die **nur** im [Modus „internes VNet“](api-management-using-with-internal-vnet.md) verfügbar sind, werden verwendet, um innerhalb des Netzwerks eine Verbindung mit API Management-Endpunkten (Gateways, das Entwicklerportal und die Verwaltungsebene für direkten API-Zugriff) herzustellen. Sie können verwendet werden, um DNS-Einträge im Netzwerk einzurichten.
 
 Im Azure-Portal und in der Antwort des API-Aufrufs werden Adressen beider Arten angezeigt:
 
