@@ -1,20 +1,18 @@
 ---
-title: Roadmap für Azure Marketplace und AppSource | Azure
+title: Roadmap für Azure Marketplace und AppSource
 description: Eine Roadmap zu den Neu- und Weiterentwicklungen in Marketplace
-services: Azure, Marketplace, Compute
 author: qianw211
-manager: MaggiePucciEvans
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/02/2019
-ms.author: blevens
-ms.openlocfilehash: ce2390f1aa71b6cfc10bbb5144127d46fc82fb19
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c9c69bb475c943003f78a69df1142653c3d5249e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826424"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288375"
 ---
 # <a name="microsoft-commercial-marketplace-roadmap"></a>Kommerzieller Microsoft-Marketplace – Roadmap
 
@@ -31,7 +29,7 @@ Sobald eine Funktion zugänglich ist, wird sie aus der Roadmap entfernt. In den 
 
 * [Blog mit Updates zum Marketplace und zu Cloud Solution Provider (CSP)](https://aka.ms/marketplacemarchupdateblog)
 * [Veröffentlichen von Angeboten im CSP-Kanal von unabhängigen Softwareherstellern (ISV)](https://aka.ms/publishtocsp)
-* [Angebote zum Weiterverkauf im Marketplace (CSP)](h https://aka.ms/marketplaceincsp)
+* [Angebote zum Weiterverkauf im Marketplace (CSP)](hhttps://aka.ms/marketplaceincsp)
 * [Standardvertrag](https://aka.ms/standardcontract)
 * [SaaS-Fulfillment-API](https://aka.ms/saasapiv2)
 * [Geografische Verfügbarkeit und Unterstützung von Währungen im Marketplace](https://aka.ms/marketplacegeos)
