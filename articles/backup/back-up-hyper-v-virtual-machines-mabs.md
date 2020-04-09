@@ -3,12 +3,12 @@ title: Sichern von virtuellen Hyper-V-Computern mit MABS
 description: Dieser Artikel enthält die Verfahren zum Sichern und Wiederherstellen von virtuellen Computern mit Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 00d1dd04522c51e4d68450a7b8f25d7159d63724
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71cf446472ef0cf4f50bf64e47d359ea08ccc087
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255068"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420401"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Sichern von virtuellen Hyper-V-Computern mit Azure Backup Server
 
@@ -99,83 +99,6 @@ Dies sind die Voraussetzungen für die Sicherung virtueller Hyper-V-Computer mit
 9. Legen Sie auf der Seite **Konsistenzprüfungsoptionen auswählen** fest, wie Konsistenzprüfungen automatisiert werden sollen. Sie können eine Überprüfung aktivieren, die nur bei inkonsistenten Replikatdaten oder gemäß einem festgelegten Zeitplan ausgeführt wird. Wenn Sie keine automatischen Konsistenzprüfungen konfigurieren möchten, können Sie jederzeit eine manuelle Überprüfung ausführen, indem Sie mit der rechten Maustaste auf die Schutzgruppe klicken und **Konsistenzprüfung ausführen** auswählen.
 
     Nachdem Sie die Schutzgruppe erstellt haben, erfolgt die erste Replikation der Daten in Übereinstimmung mit der von Ihnen ausgewählten Methode. Nach der ersten Replikation erfolgt jede Sicherung entsprechend den Einstellungen der Schutzgruppe. Für die Wiederherstellung gesicherter Daten müssen Sie Folgendes beachten:
-
-## <a name="back-up-virtual-machines-configured-for-live-migration"></a>Sichern von für die Livemigration konfigurierte virtuelle Computer
-
-Wenn virtuelle Computer an der Livemigration beteiligt sind, sind diese durch MABS weiterhin geschützt, solange der MABS-Schutz-Agent auf dem Hyper-V-Host installiert ist. Wie MABS die virtuellen Computer schützt, hängt von der Art der Livemigration ab.
-
-**Livemigration innerhalb eines Clusters**: Wenn ein virtueller Computer innerhalb eines Clusters migriert wird, erkennt MABS die Migration und sichert den virtuellen Computer über den neuen Clusterknoten, ohne dass der Benutzer eingreifen muss. Da sich der Speicherort nicht geändert hat, fährt MABS mit einer vollständige Schnellsicherung fort.
-
-**Livemigration außerhalb des Clusters**: Wenn ein virtueller Computer zwischen eigenständigen Servern, verschiedenen Clustern oder zwischen einem eigenständigen Server und einem Cluster migriert wird, erkennt MABS die Migration und kann den virtuellen Computer ohne Benutzereingriff sichern.
-
-### <a name="requirements-for-maintaining-protection"></a>Anforderungen für die Aufrechterhaltung des Schutzes
-
-Die folgenden Anforderungen gelten für die Aufrechterhaltung des Schutzes während der Livemigration:
-
-- Die Hyper-V-Hosts für die virtuellen Computer müssen sich in einer System Center VMM-Cloud auf einem VMM-Server befinden und mindestens System Center 2012 mit SP1 ausführen.
-
-- Der MABS-Schutz-Agent muss auf allen Hyper-V-Hosts installiert sein.
-
-- MABS-Server müssen mit dem VMM-Server verbunden sein. Alle Hyper-V-Hostserver in der VMM-Cloud müssen auch mit den MABS-Servern verbunden sein. Dadurch kann MABS mit dem VMM-Server kommunizieren, um zu ermitteln, auf welchem Hyper-V-Hostserver der virtuelle Computer gerade ausgeführt wird, und um eine neue Sicherung von diesem Hyper-V-Server zu erstellen. Wenn keine Verbindung zum Hyper-V-Server hergestellt werden kann, schlägt die Sicherung mit der Meldung fehl, dass der MABS-Schutz-Agent nicht erreichbar ist.
-
-- Alle MABS-Server, VMM-Server und Hyper-V-Hostserver müssen sich in derselben Domäne befinden.
-
-### <a name="details-about-live-migration"></a>Details zur Livemigration
-
-Für eine Sicherung während einer Livemigration ist Folgendes zu beachten:
-
-- Wenn bei einer Livemigration Speicher übertragen wird, führt MABS eine vollständige Konsistenzprüfung des virtuellen Computers durch und fährt dann mit einer vollständigen Schnellsicherung fort. Wenn eine Livemigration des Speichers stattfindet, organisiert Hyper-V die virtuelle Festplatte (VHD) oder VHDX neu. Dies führt zu einem einmaligen Anstieg der Größe der MABS-Sicherungsdaten.
-
-- Aktivieren Sie auf dem Host des virtuellen Computers die automatische Einbindung, um den virtuellen Schutz zu aktivieren, und deaktivieren Sie TCP Chimney Offload.
-
-- MABS verwendet Port 6070 als Standardport für das Hosting des DPM-VMM-Hilfsprogrammdiensts. So ändern Sie die Registrierung:
-
-    1. Navigieren Sie zu **HKLM\Software\Microsoft\Microsoft Data Protection Manager\Configuration**.
-    2. Erstellen Sie einen 32-Bit-DWORD-Wert: „DpmVmmHelperServicePort“, und schreiben Sie die aktualisierte Portnummer als Teil des Registrierungsschlüssels.
-    3. Öffnen Sie ```<Install directory>\Azure Backup Server\DPM\DPM\VmmHelperService\VmmHelperServiceHost.exe.config``` und tauschen Sie die Portnummer 6070 gegen die neue Portnummer aus. Beispiel: ```<add baseAddress="net.tcp://localhost:6080/VmmHelperService/" />```
-    4. Starten Sie den DPM-VMM-Hilfsprogrammdienst und den DPM-Dienst neu.
-
-### <a name="set-up-protection-for-live-migration"></a>Einrichten des Schutzes für die Livemigration
-
-So richten Sie den Schutz für die Livemigration ein:
-
-1. Richten Sie den MABS-Server und seinen Speicher ein, und installieren Sie den MABS-Schutz-Agent auf jedem Hyper-V-Hostserver oder Clusterknoten in der VMM-Cloud. Wenn Sie SMB-Speicher in einem Cluster verwenden, installieren Sie den MABS-Schutz-Agent auf allen Clusterknoten.
-
-2. Installieren Sie die VMM-Konsole als Clientkomponente auf dem MABS-Server, damit MABS mit dem VMM-Server kommunizieren kann. Die Version der Konsole muss mit der Version übereinstimmen, die auf dem VMM-Server ausgeführt wird.
-
-3. Weisen Sie das MABSMachineName$-Konto als schreibgeschütztes Administratorkonto auf dem VMM-Verwaltungsserver zu.
-
-4. Verbinden Sie alle Hyper-V-Hostserver mithilfe des PowerShell-Cmdlets `Set-DPMGlobalProperty` mit allen MABS-Servern. Das Cmdlet akzeptiert mehrere MABS-Servernamen. Verwenden Sie das folgende Format: `Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>`. Weitere Informationen finden Sie unter [Set-DPMGlobalProperty](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmglobalproperty?view=systemcenter-ps-2019).
-
-5. Wenn alle virtuellen Computer, die auf den Hyper-V-Hosts in den VMM-Clouds ausgeführt werden, in VMM erkannt werden, richten Sie eine Schutzgruppe ein, und fügen Sie die virtuellen Computer hinzu, die Sie schützen möchten. Für den Schutz im Rahmen von Mobilitätsszenarien für virtuelle Computer sollten automatische Konsistenzprüfungen auf der Ebene der Schutzgruppen aktiviert werden.
-
-6. Wenn die Einstellungen konfiguriert sind und eine virtuelle Maschine von einem Cluster zum anderen migriert, werden alle Sicherungen wie erwartet fortgesetzt. Sie können wie folgt überprüfen, ob die Livemigration wie erwartet aktiviert ist:
-
-   1. Überprüfen Sie, ob der DPM-VMM-Hilfsprogrammdienst ausgeführt wird. Wenn dies nicht der Fall ist, starten Sie ihn.
-
-   2. Öffnen Sie Microsoft SQL Server Management Studio, und stellen Sie eine Verbindung mit der Instanz her, die die MABS-Datenbank (DPMDB) hostet. Führen Sie auf der DPMDB die folgende Abfrage aus: `SELECT TOP 1000 [PropertyName] ,[PropertyValue] FROM[DPMDB].[dbo].[tbl_DLS_GlobalSetting]`.
-
-      Diese Abfrage enthält eine Eigenschaft mit dem Namen `KnownVMMServer`. Dieser Wert muss derselbe sein, den Sie mit dem Cmdlet `Set-DPMGlobalProperty` angegeben haben.
-
-   3. Führen Sie die folgende Abfrage aus, um den Parameter *VMMIdentifier* in `PhysicalPathXML` für einen bestimmten virtuellen Computer zu überprüfen. Ersetzen Sie `VMName` durch den Namen des virtuellen Computers.
-
-      ```sql
-      select cast(PhysicalPath as XML) from tbl_IM_ProtectedObject where DataSourceId in (select datasourceid from tbl_IM_DataSource   where DataSourceName like '%<VMName>%')
-      ```
-
-   4. Öffnen Sie die von dieser Abfrage zurückgegebene .xml-Datei und überprüfen Sie, ob das Feld *VMMIdentifier* einen Wert hat.
-
-### <a name="run-manual-migration"></a>Ausführen der manuellen Migration
-
-Nachdem Sie die Schritte in den vorherigen Abschnitten ausgeführt haben und der MABS Summary Manager-Auftrag abgeschlossen ist, ist die Migration aktiviert. Standardmäßig wird dieser Auftrag um Mitternacht gestartet und jeden Morgen ausgeführt. Wenn Sie eine manuelle Migration durchführen möchten, gehen Sie wie folgt vor, um sicherzustellen, dass alles wie erwartet funktioniert:
-
-1. Öffnen Sie SQL Server Management Studio, und stellen Sie eine Verbindung mit der Instanz her, die die MABS-Datenbank hostet.
-
-2. Führen Sie die folgende Abfrage aus: `SELECT SCH.ScheduleId FROM tbl_JM_JobDefinition JD JOIN tbl_SCH_ScheduleDefinition SCH ON JD.JobDefinitionId = SCH.JobDefinitionId WHERE JD.Type = '282faac6-e3cb-4015-8c6d-4276fcca11d4' AND JD.IsDeleted = 0 AND SCH.IsDeleted = 0`. Mit dieser Abfrage wird die **ScheduleID** zurückgegeben. Notieren Sie sich diese ID, da Sie sie im nächsten Schritt verwenden.
-
-3. Erweitern Sie im SQL Server Management Studio **SQL Server-Agent** und dann **Aufträge**. Klicken Sie mit der rechten Maustaste auf **ScheduleID** die Sie notiert haben, und wählen Sie **Auftrag starten bei Schritt...** aus.
-
-Wenn der Auftrag ausgeführt wird, hat dies Einfluss auf die Sicherungsleistung. Die Größe und die Skalierung Ihrer Bereitstellung bestimmen, wie lange die Ausführung des Auftrags dauert.
 
 ## <a name="back-up-replica-virtual-machines"></a>Sichern von virtuellen Replikatcomputern
 

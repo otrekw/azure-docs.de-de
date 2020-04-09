@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/13/2019
-ms.openlocfilehash: a04ca3768ade6058c59393591c252bc4347a3663
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: c2690ad7cc4dcaa295bfb08b8c0396438ada0807
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79234462"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437542"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Überwachungslösungen in Azure Monitor
 Überwachungslösungen nutzen Dienste in Azure, um zusätzliche Erkenntnisse zum Betrieb einer bestimmten Anwendung oder eines bestimmten Diensts zu liefern. Dieser Artikel enthält eine kurze Übersicht über Überwachungslösungen in Azure sowie Details zu deren Verwendung und Installation.
@@ -83,11 +83,7 @@ Für alle Überwachungslösungen wird ein [Log Analytics-Arbeitsbereich](../plat
 * Sollte eine Lösung ein Automation-Konto benötigen, müssen der Log Analytics-Arbeitsbereich und das Automation-Konto miteinander verknüpft werden. Ein Log Analytics-Arbeitsbereich kann nur mit einem Automation-Konto verknüpft werden, und ein Automation-Konto kann nur mit einem Log Analytics-Arbeitsbereich verknüpft werden.
 * Damit sie verknüpft werden können, müssen sich der Log Analytics-Arbeitsbereich und das Automation-Konto in der gleichen Ressourcengruppe und im gleichen Bereich befinden. (Ausnahme: Ein Arbeitsbereich befindet sich in der Region „USA, Osten“ und ein Automation-Konto in der Region „USA, Osten 2“.)
 
-### <a name="create-a-link-between-a-log-analytics-workspace-and-automation-account"></a>Erstellen einer Verknüpfung zwischen einem Log Analytics-Arbeitsbereich und einem Automation-Konto
-Wie Sie den Log Analytics-Arbeitsbereich und das Automation-Konto angeben, hängt von der Installationsmethode Ihrer Lösung ab.
-
-* Wenn Sie die Lösung über den Azure Marketplace installieren, werden Sie zur Angabe eines Arbeitsbereichs und eines Automation-Kontos aufgefordert. Die Verknüpfung zwischen beiden wird für Sie erstellt, sofern sie noch nicht besteht.
-* Für Lösungen außerhalb des Azure Marketplace müssen Sie den Log Analytics-Arbeitsbereich und das Automation-Konto miteinander verknüpfen, bevor Sie die Lösung installieren. Hierzu wählen Sie eine Lösung im Azure Marketplace aus und dann den Log Analytics-Arbeitsbereich und das Automation-Konto. Sie müssen die Lösung nicht wirklich installieren, da die Verknüpfung erstellt wird, sobald der Log Analytics-Arbeitsbereich und das Automation-Konto ausgewählt werden. Nachdem die Verknüpfung erstellt wurde, können Sie diesen Log Analytics-Arbeitsbereich und dieses Automation-Konto für jede Lösung verwenden.
+Wenn Sie die Lösung über den Azure Marketplace installieren, werden Sie zur Angabe eines Arbeitsbereichs und eines Automation-Kontos aufgefordert. Die Verknüpfung zwischen beiden wird für Sie erstellt, sofern sie noch nicht besteht.
 
 ### <a name="verify-the-link-between-a-log-analytics-workspace-and-automation-account"></a>Überprüfen der Verknüpfung zwischen einem Log Analytics-Arbeitsbereich und einem Automation-Konto
 Sie können die Verknüpfung zwischen einem Log Analytics-Arbeitsbereich und einem Automation-Konto mithilfe des folgenden Verfahrens überprüfen.

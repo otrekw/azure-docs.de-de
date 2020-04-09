@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.custom: seo-python-october2019
-ms.openlocfilehash: aa9ffc48d9b1374fa510f450bab2c66641421446
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: acb0b0e84804ecf6025e05590133dee9b0d54c48
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76773493"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478638"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Schnellstart: Verwenden von Azure Service Bus-Warteschlangen mit Python
 
@@ -32,7 +32,7 @@ Weitere Informationen zu den Python-Bibliotheken von Azure Service Bus finden Si
 ## <a name="prerequisites"></a>Voraussetzungen
 - Ein Azure-Abonnement. Sie können [Ihre Visual Studio-oder MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) oder [sich für ein kostenloses Konto anmelden](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - Ein Service Bus-Namespace, der mithilfe der Schritte unter [Schnellstart: Verwenden des Azure-Portals zum Erstellen eines Service Bus-Themas und von Abonnements](service-bus-quickstart-topics-subscriptions-portal.md) erstellt wurde. Kopieren Sie die primäre Verbindungszeichenfolge aus dem Bildschirm **SAS-Richtlinien**, um sie später in diesem Artikel zu verwenden. 
-- Python 3.4x oder höher mit installiertem [Python Azure Service Bus][Python Azure Service Bus package]-Paket. Weitere Informationen finden Sie im [Python-Installationshandbuch](/azure/python/python-sdk-azure-install). 
+- Python 3.4x oder höher mit installiertem [Python Azure Service Bus][Python Azure Service Bus package]-Paket. Weitere Informationen finden Sie im [Python-Installationshandbuch](/azure/developer/python/azure-sdk-install). 
 
 ## <a name="create-a-queue"></a>Erstellen einer Warteschlange
 

@@ -3,19 +3,19 @@ title: 'Speech-Dienst: Sprachsynthese-API-Referenz (REST)'
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie die Sprachsynthese-REST-API verwenden. In diesem Artikel erfahren Sie mehr über Autorisierungs- und Abfrageoptionen sowie darüber, wie Sie eine Anforderung strukturieren und eine Antwort erhalten.
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.author: erhopf
-ms.openlocfilehash: ab0891653f449b13f50dc43b196cf16a2f71370e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 03/23/2020
+ms.author: dapine
+ms.openlocfilehash: 977c6ec9aa1cd6a8b8a545d123c5308bb8c51651
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975821"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409021"
 ---
 # <a name="text-to-speech-rest-api"></a>Text-to-Speech-REST-API
 
@@ -56,7 +56,7 @@ Der Endpunkt `voices/list` ermöglicht es Ihnen, eine vollständige Liste der St
 | Korea, Mitte | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA Nord Mitte | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Nordeuropa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| USA (Mitte/Süden) | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA Süd Mitte | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Asien, Südosten | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | UK, Süden | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Europa, Westen | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -99,35 +99,44 @@ Diese Antwort wurde abgeschnitten, um die Struktur einer Antwort zu veranschauli
         "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
         "ShortName": "ar-EG-Hoda",
         "Gender": "Female",
-        "Locale": "ar-EG"
+        "Locale": "ar-EG",
+        "SampleRateHertz": "16000",
+        "VoiceType": "Standard"
     },
     {
         "Name": "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)",
         "ShortName": "ar-SA-Naayf",
         "Gender": "Male",
-        "Locale": "ar-SA"
+        "Locale": "ar-SA",
+        "SampleRateHertz": "16000",
+        "VoiceType": "Standard"
     },
     {
         "Name": "Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)",
         "ShortName": "bg-BG-Ivan",
         "Gender": "Male",
-        "Locale": "bg-BG"
+        "Locale": "bg-BG",
+        "SampleRateHertz": "16000",
+        "VoiceType": "Standard"
     },
     {
         "Name": "Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)",
         "ShortName": "ca-ES-HerenaRUS",
         "Gender": "Female",
-        "Locale": "ca-ES"
+        "Locale": "ca-ES",
+        "SampleRateHertz": "16000",
+        "VoiceType": "Standard"
     },
     {
-        "Name": "Microsoft Server Speech Text to Speech Voice (cs-CZ, Jakub)",
-        "ShortName": "cs-CZ-Jakub",
-        "Gender": "Male",
-        "Locale": "cs-CZ"
+        "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)",
+        "ShortName": "zh-CN-XiaoxiaoNeural",
+        "Gender": "Female",
+        "Locale": "zh-CN",
+        "SampleRateHertz": "24000",
+        "VoiceType": "Neural"
     },
 
     ...
-
 ]
 ```
 
@@ -141,7 +150,7 @@ Der HTTP-Statuscode jeder Antwort zeigt den Erfolg oder allgemeine Fehler an.
 | 400 | Ungültige Anforderung | Ein erforderlicher Parameter fehlt, ist leer oder Null. Oder der an einen erforderlichen oder optionalen Parameter übergebene Wert ist ungültig. Ein häufiges Problem sind zu lange Kopfzeilen. |
 | 401 | Nicht autorisiert | Die Anforderung ist nicht autorisiert. Stellen Sie sicher, dass Ihr Abonnementschlüssel oder -token gültig ist und sich in der richtigen Region befindet. |
 | 429 | Zu viele Anforderungen | Sie haben das Kontingent oder die Rate der Anforderungen überschritten, das bzw. die für Ihr Abonnement zulässig ist. |
-| 502 | Ungültiges Gateway | Netzwerk- oder serverseitiges Problem. Kann auch auf ungültige Header hinweisen. |
+| 502 | Ungültiges Gateway    | Netzwerk- oder serverseitiges Problem. Kann auch auf ungültige Header hinweisen. |
 
 
 ## <a name="convert-text-to-speech"></a>Konvertieren von Text in Sprache
@@ -163,7 +172,7 @@ Diese Tabelle führt die erforderlichen und optionalen Header für Text-to-Speec
 | `Authorization` | Ein Autorisierungstoken, dem das Wort `Bearer` vorangestellt ist. Weitere Informationen finden Sie unter [Authentifizierung](#authentication). | Erforderlich |
 | `Content-Type` | Gibt den Inhaltstyp des angegebenen Texts an. Zulässiger Wert: `application/ssml+xml`. | Erforderlich |
 | `X-Microsoft-OutputFormat` | Gibt das Audioausgabeformat an. Eine vollständige Liste der zulässigen Werte finden Sie unter [Audioausgaben](#audio-outputs). | Erforderlich |
-| `User-Agent` | Der Name der Anwendung. Der angegebene Wert muss kürzer als 255 Zeichen sein. | Erforderlich |
+| `User-Agent` | Der Anwendungsname. Der angegebene Wert muss kürzer als 255 Zeichen sein. | Erforderlich |
 
 ### <a name="audio-outputs"></a>Audioausgaben
 
@@ -191,7 +200,7 @@ Der Text jeder `POST`-Anforderung wird als [Speech Synthesis Markup Language (SS
 
 ### <a name="sample-request"></a>Beispiel für eine Anforderung
 
-Diese HTTP-Anforderung gibt mit SSML die Stimme und die Sprache an. Der Text darf 1.000 Zeichen nicht überschreiten.
+Diese HTTP-Anforderung gibt mit SSML die Stimme und die Sprache an. Wenn der Text lang ist und die resultierende Audiodatei zehn Minuten überschreitet, wird sie auf zehn Minuten gekürzt. Das heißt, die Audiodatei darf nicht länger als zehn Minuten sein.
 
 ```http
 POST /cognitiveservices/v1 HTTP/1.1
@@ -203,7 +212,7 @@ Content-Length: 225
 Authorization: Bearer [Base64 access_token]
 
 <speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
-    name='en-US-JessaRUS'>
+    name='en-US-AriaRUS'>
         Microsoft Speech Service Text-to-Speech API
 </voice></speak>
 ```
@@ -226,12 +235,12 @@ Der HTTP-Statuscode jeder Antwort zeigt den Erfolg oder allgemeine Fehler an.
 | 413 | Anforderungsentität zu groß | Die SSML-Eingabe umfasst mehr als 1024 Zeichen. |
 | 415 | Nicht unterstützter Medientyp | Möglicherweise wurde der falsche `Content-Type`-Wert bereitgestellt. `Content-Type` sollte auf `application/ssml+xml` festgelegt sein. |
 | 429 | Zu viele Anforderungen | Sie haben das Kontingent oder die Rate der Anforderungen überschritten, das bzw. die für Ihr Abonnement zulässig ist. |
-| 502 | Ungültiges Gateway | Netzwerk- oder serverseitiges Problem. Kann auch auf ungültige Header hinweisen. |
+| 502 | Ungültiges Gateway    | Netzwerk- oder serverseitiges Problem. Kann auch auf ungültige Header hinweisen. |
 
 Wenn der HTTP-Status `200 OK` ist, enthält der Text der Antwort eine Audiodatei im angeforderten Format. Diese Datei kann bei der Übertragung abgespielt sowie in einem Puffer oder in einer Datei gespeichert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
-- [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](how-to-customize-acoustic-models.md)
-- [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md)
+- [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services)
+- [Asynchrone Synthese für lange Audioinhalte](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [Erste Schritte mit Custom Voice](how-to-custom-voice.md)

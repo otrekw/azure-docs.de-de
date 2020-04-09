@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 30696c5dcb3353ea468aa78dbc107dae4d292edb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4dfc6793bba473c4046863937baa292dde7bf421
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334446"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478690"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Datenstrukturen in Azure Maps Mobility Service
 
@@ -31,13 +31,13 @@ Die `metroID` ist die ID eines Stadtbereichs, die zum Aufrufen der [API „Get M
 
 ## <a name="stop-ids"></a>Haltestellen-IDs
 
-Auf Haltestellen kann durch zwei Arten von IDs verwiesen werden: durch die [GFTS-ID](https://gtfs.org/) (General Transit Feed Specification) sowie durch die Azure Maps-Haltestellen-ID. Die GFTS-ID wird als „stopKey“ und die Azure Maps-Haltestellen-ID als „stopID“ bezeichnet. Wenn Sie sich häufig auf Haltestellen von öffentlichen Verkehrsmitteln beziehen, sollten Sie die Azure Maps-Haltestellen-ID verwenden. „stopID“ ist stabiler und wird wahrscheinlich unverändert bleiben, solange die physische Haltestelle besteht. Die GTFS-Haltestellen-ID wird öfter aktualisiert. Beispielsweise kann die GTFS-Haltestellen-ID auf Anforderung des GTFS-Anbieters oder bei der Veröffentlichung einer neuen GTFS-Version aktualisiert werden. Obwohl die physische Haltestelle keine Änderung aufwies, kann sich die GTFS-Haltestellen-ID ändern.
+Auf Haltestellen kann durch zwei Arten von IDs verwiesen werden: durch die [GFTS-ID](http://gtfs.org/) (General Transit Feed Specification) sowie durch die Azure Maps-Haltestellen-ID. Die GFTS-ID wird als „stopKey“ und die Azure Maps-Haltestellen-ID als „stopID“ bezeichnet. Wenn Sie sich häufig auf Haltestellen von öffentlichen Verkehrsmitteln beziehen, sollten Sie die Azure Maps-Haltestellen-ID verwenden. „stopID“ ist stabiler und wird wahrscheinlich unverändert bleiben, solange die physische Haltestelle besteht. Die GTFS-Haltestellen-ID wird öfter aktualisiert. Beispielsweise kann die GTFS-Haltestellen-ID auf Anforderung des GTFS-Anbieters oder bei der Veröffentlichung einer neuen GTFS-Version aktualisiert werden. Obwohl die physische Haltestelle keine Änderung aufwies, kann sich die GTFS-Haltestellen-ID ändern.
 
 Zum Einstieg können Sie mithilfe der [API zum Abrufen nahegelegener öffentlicher Verkehrsmittel](https://aka.ms/AzureMapsMobilityNearbyTransit) in der Nähe befindliche Haltestellen anfordern.
 
 ## <a name="line-groups-and-lines"></a>Liniengruppen und Linien
 
-Mobility Service verwendet ein paralleles Datenmodell für Linien und Liniengruppen. Dieses Modell wird verwendet, um Änderungen, die von [GTFS](https://gtfs.org/)-Routen und den Fahrtdaten geerbt werden, besser verarbeiten zu können.
+Mobility Service verwendet ein paralleles Datenmodell für Linien und Liniengruppen. Dieses Modell wird verwendet, um Änderungen, die von [GTFS](http://gtfs.org/)-Routen und den Fahrtdaten geerbt werden, besser verarbeiten zu können.
 
 
 ### <a name="line-groups"></a>Liniengruppen

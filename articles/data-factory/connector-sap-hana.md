@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/17/2020
-ms.openlocfilehash: fa165c21622110bb18476efdebf3264a11e26ad7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1a3ff32956e8a8530684ba7f300f06d0c032227
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231594"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421128"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopieren von Daten aus SAP HANA mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -188,7 +188,7 @@ Wenn Sie Daten aus SAP HANA kopieren möchten, werden die folgenden Eigenschafte
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **SapHanaSource** | Ja |
 | Abfrage | Gibt die SQL-Abfrage an, mit der Daten aus der SAP HANA-Instanz gelesen werden. | Ja |
-| partitionOptions | Gibt die Datenpartitionierungsoptionen an, mit denen Daten von SAP HANA erfasst werden. Weitere Informationen finden Sie im Abschnitt [Paralleles Kopieren von SAP HANA](#parallel-copy-from-sap-hana).<br>Zulässige Werte sind:  **None** (Standard),  **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. Weitere Informationen finden Sie im Abschnitt [Paralleles Kopieren von SAP HANA](#parallel-copy-from-sap-hana). `PhysicalPartitionsOfTable` kann nur beim Kopieren von Daten aus einer Tabelle, jedoch nicht bei Abfragen verwendet werden. <br>Wenn eine Partitionsoption aktiviert ist (nicht `None`), wird der Grad an Parallelität zum gleichzeitigen Laden von Daten von SAP HANA durch die Einstellung [`parallelCopies`](copy-activity-performance.md#parallel-copy) für die Kopieraktivität gesteuert. | False |
+| partitionOptions | Gibt die Datenpartitionierungsoptionen an, mit denen Daten von SAP HANA erfasst werden. Weitere Informationen finden Sie im Abschnitt [Paralleles Kopieren von SAP HANA](#parallel-copy-from-sap-hana).<br>Zulässige Werte sind:  **None** (Standard),  **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. Weitere Informationen finden Sie im Abschnitt [Paralleles Kopieren von SAP HANA](#parallel-copy-from-sap-hana). `PhysicalPartitionsOfTable` kann nur beim Kopieren von Daten aus einer Tabelle, jedoch nicht bei Abfragen verwendet werden. <br>Wenn eine Partitionsoption aktiviert ist (nicht `None`), wird der Grad an Parallelität zum gleichzeitigen Laden von Daten von SAP HANA durch die Einstellung [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) für die Kopieraktivität gesteuert. | False |
 | partitionSettings | Geben Sie die Gruppe der Einstellungen für die Datenpartitionierung an.<br>Verwenden Sie ihn, wenn die Partitionsoption `SapHanaDynamicRange` lautet. | False |
 | partitionColumnName | Geben Sie den Namen der Quellspalte an, die von der Partitionierung für den parallelen Kopiervorgang verwendet wird. Ohne Angabe wird der Index oder der Primärschlüssel der Tabelle automatisch erkannt und als Partitionsspalte verwendet.<br>Verwenden Sie diese Option, wenn die Partitionsoption `SapHanaDynamicRange` lautet. Wenn Sie die Quelldaten mithilfe einer Abfrage abrufen, integrieren Sie  `?AdfHanaDynamicRangePartitionCondition` in die WHERE-Klausel. Ein Beispiel finden Sie im Abschnitt [Paralleles Kopieren von SAP HANA](#parallel-copy-from-sap-hana). | Ja, wenn die Partitionierung `SapHanaDynamicRange` verwendet wird. |
 | packetSize | Gibt die Netzwerkpaketgröße (in KB) an, mit der Daten auf mehrere Blöcke aufgeteilt werden. Wenn Sie über eine große Datenmenge verfügen, die kopiert werden soll, kann das Erhöhen der Paketgröße in den meisten Fällen die Lesegeschwindigkeit aus SAP Hana erhöhen. Leistungstests werden empfohlen, wenn die Paketgröße angepasst wird. | Nein.<br>Der Standardwert ist 2.048 (2MB). |
@@ -233,7 +233,7 @@ Der Data Factory-Connector für SAP HANA bietet eine integrierte Datenpartitioni
 
 ![Screenshot der Partitionierungsoptionen](./media/connector-sap-hana/connector-sap-hana-partition-options.png)
 
-Wenn Sie partitioniertes Kopieren aktivieren, führt Data Factory parallele Abfragen für Ihre SAP HANA-Quelle aus, um Daten anhand von Partitionen abzurufen. Der Parallelitätsgrad wird über die Einstellung [`parallelCopies`](copy-activity-performance.md#parallel-copy) der Kopieraktivität gesteuert. Wenn Sie zum Beispiel `parallelCopies` auf vier festlegen, generiert Data Factory vier Abfragen gleichzeitig und führt diese gemäß den angegebenen Partitionsoptionen und -einstellungen aus. Jede dieser Abfragen ruft einen Teil der Daten von Ihrer SAP HANA-Instanz ab.
+Wenn Sie partitioniertes Kopieren aktivieren, führt Data Factory parallele Abfragen für Ihre SAP HANA-Quelle aus, um Daten anhand von Partitionen abzurufen. Der Parallelitätsgrad wird über die Einstellung [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) der Kopieraktivität gesteuert. Wenn Sie zum Beispiel `parallelCopies` auf vier festlegen, generiert Data Factory vier Abfragen gleichzeitig und führt diese gemäß den angegebenen Partitionsoptionen und -einstellungen aus. Jede dieser Abfragen ruft einen Teil der Daten von Ihrer SAP HANA-Instanz ab.
 
 Es wird empfohlen, das parallele Kopieren mit Datenpartitionierung zu aktivieren. Das gilt insbesondere, wenn Sie große Datenmengen von Ihrer SAP HANA-Instanz erfassen. Im Anschluss finden Sie empfohlene Konfigurationen für verschiedene Szenarien. Beim Kopieren von Daten in einen dateibasierten Datenspeicher wird empfohlen, mehrere Dateien in einen Ordner zu schreiben (nur den Ordnernamen anzugeben). In diesem Fall ist die Leistung besser als beim Schreiben in eine einzelne Datei.
 

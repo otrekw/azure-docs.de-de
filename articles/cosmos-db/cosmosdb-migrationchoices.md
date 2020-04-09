@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: bharathb
-ms.openlocfilehash: 9111193bb441487b9e3c49bc9ee1a296d49f8a31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34698a215477abdd7d68c3dfe050657ecf049690
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72882388"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984894"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Optionen zum Migrieren von lokalen oder Clouddaten zu Azure Cosmos DB
 
@@ -38,7 +38,7 @@ Die folgenden Faktoren haben Einfluss auf die Auswahl des Migrationstools:
 |Offline|[Azure Cosmos DB-Spark-Connector](https://docs.microsoft.com/azure/cosmos-db/spark-connector)|&bull; Nutzt die Azure Cosmos DB-BulkExecutor-Bibliothek <br/>&bull; Geeignet für große Datasets <br/>&bull; Erfordert eine benutzerdefinierte Spark-Einrichtung <br/>&bull; Spark bietet keine Toleranz gegenüber Inkonsistenzen beim Schema. Dies kann während der Migration ein Problem darstellen. |
 |Offline|[Benutzerdefiniertes Tool mit Cosmos DB-BulkExecutor-Bibliothek](https://docs.microsoft.com/azure/cosmos-db/migrate-cosmosdb-data)|&bull; Bietet Prüfpunktfunktionen für unzustellbare Nachrichten und damit eine höhere Resilienz bei der Migration <br/>&bull; Geeignet für sehr große Datasets (> 10 TB)  <br/>&bull; Erfordert die benutzerdefinierte Einrichtung dieses Tools, das als App Service ausgeführt wird |
 |Online|[Cosmos DB-Funktionen + ChangeFeed-API](https://docs.microsoft.com/azure/cosmos-db/change-feed-functions)|&bull; Einfache Einrichtung <br/>&bull; Funktioniert nur, wenn die Quelle ein Azure Cosmos DB-Container ist <br/>&bull; Nicht geeignet für große Datasets <br/>&bull; Erfasst keine Löschvorgänge im Quellcontainer |
-|Online|[Benutzerdefinierter Migrationsdienst mithilfe von ChangeFeed](https://aka.ms/CosmosDBMigrationSample)|&bull; Ermöglicht die Statusnachverfolgung <br/>&bull; Funktioniert nur, wenn die Quelle ein Azure Cosmos DB-Container ist <br/>&bull; Funktioniert auch für größere Datasets <br/>&bull; Erfordert die Einrichtung einer App Service-Instanz zum Hosten der Änderungsfeedverarbeitung <br/>&bull; Erfasst keine Löschvorgänge im Quellcontainer|
+|Online|[Benutzerdefinierter Migrationsdienst mithilfe von ChangeFeed](https://github.com/nomiero/CosmosDBLiveETLSample)|&bull; Ermöglicht die Statusnachverfolgung <br/>&bull; Funktioniert nur, wenn die Quelle ein Azure Cosmos DB-Container ist <br/>&bull; Funktioniert auch für größere Datasets <br/>&bull; Erfordert die Einrichtung einer App Service-Instanz zum Hosten der Änderungsfeedverarbeitung <br/>&bull; Erfasst keine Löschvorgänge im Quellcontainer|
 |Online|[Striim](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-sql-api-migrate-data-striim)|&bull; Funktioniert mit einer Vielzahl von Quellen wie Oracle, DB2, SQL Server <br/>&bull; Einfaches Erstellen von ETL-Pipelines; einschließlich eines Dashboards für die Überwachung <br/>&bull; Unterstützt größere Datasets <br/>&bull; Da dies ein Drittanbietertool ist, muss es über den Marketplace erworben und in der Benutzerumgebung installiert werden.|
 
 ## <a name="azure-cosmos-db-mongo-api"></a>Mongo-API von Azure Cosmos DB

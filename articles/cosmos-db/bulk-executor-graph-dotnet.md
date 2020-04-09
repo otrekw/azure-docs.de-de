@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: cf51d418a008d332bfcea01a7a9dc1a265116e29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adf512fc521ef553f0bbd6ef6dd8ee19e398b37b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442170"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982702"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Verwenden der Bulk Executor-.NET-Graphbibliothek zum Ausführen von Massenvorgängen in der Gremlin-API von Azure Cosmos DB
 
 Dieses Tutorial bietet Anleitungen zum Verwenden der Bulk Executor-.NET-Bibliothek von Azure Cosmos DB zum Importieren und Aktualisieren von Graphobjekten in einen Gremlin-API-Container von Azure Cosmos DB. Bei diesem Prozess wird die Graphklasse in der [Bulk Executor-Bibliothek](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) verwendet, um Scheitelpunkt- und Kantenobjekte programmgesteuert zu erstellen und anschließend mehrere davon pro Netzwerkanforderung einzufügen. Dieses Verhalten ist über die Bulk Executor-Bibliothek konfigurierbar, um sowohl Datenbankressourcen als auch lokale Speicherressourcen optimal zu nutzen.
 
-Anders als beim Senden von Gremlin-Abfragen an eine Datenbank, wobei der Befehl nacheinander ausgewertet und dann ausgeführt wird, ist bei Verwendung der Bulk Executor-Bibliothek stattdessen das lokale Erstellen und Überprüfen der Objekte erforderlich. Nach dem Erstellen der Objekte ermöglicht Ihnen die Bibliothek, Graphobjekte nacheinander an den Datenbankdienst zu senden. Mit dieser Methode kann die Geschwindigkeit der Datenerfassung bis zu 100-fach erhöht werden. Dadurch ist sie eine ideale Methode für erste Datenmigrationen oder regelmäßige Datenverschiebungsvorgänge. Weitere Informationen finden Sie auf der GitHub-Seite zur [Bulk Executor-Beispielanwendung für Graphobjekte von Azure Cosmos DB](https://aka.ms/graph-bulkexecutor-sample).
+Anders als beim Senden von Gremlin-Abfragen an eine Datenbank, wobei der Befehl nacheinander ausgewertet und dann ausgeführt wird, ist bei Verwendung der Bulk Executor-Bibliothek stattdessen das lokale Erstellen und Überprüfen der Objekte erforderlich. Nach dem Erstellen der Objekte ermöglicht Ihnen die Bibliothek, Graphobjekte nacheinander an den Datenbankdienst zu senden. Mit dieser Methode kann die Geschwindigkeit der Datenerfassung bis zu 100-fach erhöht werden. Dadurch ist sie eine ideale Methode für erste Datenmigrationen oder regelmäßige Datenverschiebungsvorgänge. Weitere Informationen finden Sie auf der GitHub-Seite zur [Bulk Executor-Beispielanwendung für Graphobjekte von Azure Cosmos DB](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started).
 
 ## <a name="bulk-operations-with-graph-data"></a>Massenvorgänge mit Graphdaten
 
@@ -120,7 +120,7 @@ e.AddProperty("customProperty", "value");
 * Git. Weitere Informationen finden Sie auf der [Git-Downloadseite](https://git-scm.com/downloads).
 
 ### <a name="clone-the-sample-application"></a>Klonen der Beispielanwendung
-In diesem Tutorial begleiten wir Sie durch die ersten Schritte und verwenden dazu das auf GitHub gehostete [Bulk Executor-Beispiel für Graphobjekte von Azure Cosmos DB](https://aka.ms/graph-bulkexecutor-sample). Diese Anwendung besteht aus einer .NET-Lösung, die nach dem Zufallsprinzip Scheitelpunkt- und Kantenobjekte generiert und dann Masseneinfügungen in das angegebene Graphdatenbankkonto durchführt. Führen Sie den folgenden `git clone`-Befehl aus, um die Anwendung abzurufen:
+In diesem Tutorial begleiten wir Sie durch die ersten Schritte und verwenden dazu das auf GitHub gehostete [Bulk Executor-Beispiel für Graphobjekte von Azure Cosmos DB](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started). Diese Anwendung besteht aus einer .NET-Lösung, die nach dem Zufallsprinzip Scheitelpunkt- und Kantenobjekte generiert und dann Masseneinfügungen in das angegebene Graphdatenbankkonto durchführt. Führen Sie den folgenden `git clone`-Befehl aus, um die Anwendung abzurufen:
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started.git

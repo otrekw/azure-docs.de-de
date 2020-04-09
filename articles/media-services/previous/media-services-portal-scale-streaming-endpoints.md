@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 23eb51428dcf4961febfb592bf957bb8beeeda57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40820170bae275f090c5f898387698fc562e59ae
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61463112"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985540"
 ---
 # <a name="scale-streaming-endpoints-with-the-azure-portal"></a>Skalieren von Streamingendpunkten mithilfe des Azure-Portals
 ## <a name="overview"></a>Übersicht
@@ -33,7 +33,7 @@ ms.locfileid: "61463112"
  
 In diesem Thema wird gezeigt, wie ein Streamingendpunkt skaliert wird.
 
-Informationen zu den Preisen finden Sie unter [Mediendienste – Preisübersicht](https://go.microsoft.com/fwlink/?LinkId=275107).
+Informationen zu den Preisen finden Sie unter [Mediendienste – Preisübersicht](https://azure.microsoft.com/pricing/details/media-services/).
 
 ## <a name="scale-streaming-endpoints"></a>Skalieren von Streamingendpunkten
 

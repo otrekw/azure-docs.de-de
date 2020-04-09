@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 5a41d5653de0d8a9f674009904756892ac343609
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1e1d7cc4bb7762d3ebd29e349467f3e33c0887f9
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930915"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421226"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Kopieren von Daten aus Teradata Vantage mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -41,17 +41,11 @@ Der Teradata-Connector unterstützt insbesondere Folgendes:
 - Kopieren von Dateien unter Verwendung der **Standard**- oder **Windows**-Authentifizierung
 - Paralleles Kopieren aus einer Teradata-Quelle. Weitere Informationen finden Sie im Abschnitt [Paralleles Kopieren aus Teradata](#parallel-copy-from-teradata).
 
-> [!NOTE]
->
-> Nach der Veröffentlichung der Version 3.18 der selbstgehosteten Integration Runtime wurde von Azure Data Factory ein Upgrade des Teradata-Connectors durchgeführt. Bereits vorhandene Workloads, die den älteren Teradata-Connector verwenden, werden weiterhin unterstützt. Bei neuen Workloads empfiehlt es sich jedoch, die neue Version zu verwenden. Für den neuen Pfad wird eine andere Kombination aus verknüpftem Dienst, Dataset und Kopierquelle benötigt. Konfigurationsdetails finden Sie in den entsprechenden Folgeabschnitten.
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-Die Integration Runtime verfügt ab Version 3.18 über einen integrierten Teradata-Treiber. Es ist keine manuelle Treiberinstallation erforderlich. Für den Treiber muss „Visual C++ Redistributable 2012 Update 4“ auf dem Computer mit der selbstgehosteten Integration Runtime vorhanden sein. Sollte diese Komponente noch nicht installiert sein, können Sie sie [hier](https://www.microsoft.com/en-sg/download/details.aspx?id=30679) herunterladen.
-
-Wenn Sie nicht mindestens die Version 3.18 der selbstgehosteten Integration Runtime verwenden, installieren Sie auf dem Computer mit der Integration Runtime den [.NET-Datenanbieter für Teradata](https://go.microsoft.com/fwlink/?LinkId=278886) (ab Version 14). 
+Wenn Sie die selbstgehostete Integration Runtime verwenden, beachten Sie, dass ein integrierter Teradata-Treiber ab Version 3.18 enthalten ist. Es ist keine manuelle Treiberinstallation erforderlich. Für den Treiber muss „Visual C++ Redistributable 2012 Update 4“ auf dem Computer mit der selbstgehosteten Integration Runtime vorhanden sein. Sollte diese Komponente noch nicht installiert sein, können Sie sie [hier](https://www.microsoft.com/en-sg/download/details.aspx?id=30679) herunterladen.
 
 ## <a name="getting-started"></a>Erste Schritte
 
@@ -69,11 +63,11 @@ Der verknüpfte Teradata-Dienst unterstützt folgende Eigenschaften:
 | connectionString | Gibt die erforderlichen Informationen für die Verbindungsherstellung mit der Teradata-Instanz an. Sehen Sie sich die folgenden Beispiele an.<br/>Sie können auch ein Kennwort in Azure Key Vault speichern und die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | username | Geben Sie einen Benutzernamen für die Verbindungsherstellung mit Teradata an. Gilt bei Verwendung der Windows-Authentifizierung. | Nein |
 | password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. Sie können auch [auf ein in Azure Key Vault gespeichertes Geheimnis verweisen](store-credentials-in-key-vault.md). <br>Gilt, wenn Sie die Windows-Authentifizierung verwenden oder für die Standardauthentifizierung auf ein Kennwort in Key Vault verweisen. | Nein |
-| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Ja |
+| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
 Weitere Verbindungseigenschaften, die Sie abhängig von Ihrem Anwendungsfall in der Verbindungszeichenfolge festlegen können:
 
-| Eigenschaft | Beschreibung | Standardwert |
+| Eigenschaft | BESCHREIBUNG | Standardwert |
 |:--- |:--- |:--- |
 | CharacterSet | Der Zeichensatz, der für die Sitzung verwendet werden soll. Beispiel: `CharacterSet=UTF16`.<br><br/>Bei diesem Wert kann es sich um einen benutzerdefinierten Zeichensatz oder um einen der folgenden vordefinierten Zeichensätze handeln: <br/>- ASCII<br/>- UTF8<br/>- UTF16<br/>- LATIN1252_0A<br/>- LATIN9_0A<br/>- LATIN1_0A<br/>- Shift-JIS (Windows, DOS-kompatibel, KANJISJIS_0S)<br/>- EUC (Unix-kompatibel, KANJIEC_0U)<br/>- IBM Mainframe (KANJIEBCDIC5035_0I)<br/>- KANJI932_1S0<br/>- BIG5 (TCHBIG5_1R0)<br/>- GB (SCHGB2312_1T0)<br/>- SCHINESE936_6R0<br/>- TCHINESE950_8R0<br/>- NetworkKorean (HANGULKSC5601_2R4)<br/>- HANGUL949_7R0<br/>- ARABIC1256_6A0<br/>- CYRILLIC1251_2A0<br/>- HEBREW1255_5A0<br/>- LATIN1250_1A0<br/>- LATIN1254_7A0<br/>- LATIN1258_8A0<br/>- THAI874_4A0 | Der Standardwert ist `ASCII`. |
 | MaxRespSize |Die maximale Größe des Antwortpuffers für SQL-Anforderungen in Kilobytes (KB). Beispiel: `MaxRespSize=‭10485760‬`.<br/><br/>Ab der Teradata Database-Version 16.00 beträgt der Höchstwert „7361536“. Bei Verbindungen mit älteren Versionen beträgt der Höchstwert „1048576“. | Der Standardwert ist `65536`. |
@@ -207,8 +201,8 @@ Beim Kopieren von Daten aus Teradata werden die folgenden Eigenschaften im Absch
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die Eigenschaft „type“ der Quelle der Kopieraktivität muss auf `TeradataSource` festgelegt werden. | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Ein Beispiel ist `"SELECT * FROM MyTable"`.<br>Wenn Sie partitioniertes Laden aktivieren, müssen Sie die entsprechenden integrierten Partitionsparameter in Ihre Abfrage integrieren. Beispiele finden Sie im Abschnitt [Paralleles Kopieren aus Teradata](#parallel-copy-from-teradata). | Nein (wenn „table“ im Dataset angegeben ist) |
-| partitionOptions | Gibt die Datenpartitionierungsoptionen an, mit denen Daten aus Teradata geladen werden. <br>Zulässige Werte: **None** (Standardwert), **Hash** und **DynamicRange**.<br>Wenn eine Partitionsoption aktiviert ist (nicht `None`), wird der Grad an Parallelität zum gleichzeitigen Laden von Daten aus Teradata durch die Einstellung [`parallelCopies`](copy-activity-performance.md#parallel-copy) für die Kopieraktivität gesteuert. | Nein |
+| Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. z. B. `"SELECT * FROM MyTable"`.<br>Wenn Sie partitioniertes Laden aktivieren, müssen Sie die entsprechenden integrierten Partitionsparameter in Ihre Abfrage integrieren. Beispiele finden Sie im Abschnitt [Paralleles Kopieren aus Teradata](#parallel-copy-from-teradata). | Nein (wenn „table“ im Dataset angegeben ist) |
+| partitionOptions | Gibt die Datenpartitionierungsoptionen an, mit denen Daten aus Teradata geladen werden. <br>Zulässige Werte sind: **None** (Standardwert), **Hash** und **DynamicRange**.<br>Wenn eine Partitionsoption aktiviert ist (nicht `None`), wird der Grad an Parallelität zum gleichzeitigen Laden von Daten aus Teradata durch die Einstellung [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) für die Kopieraktivität gesteuert. | Nein |
 | partitionSettings | Geben Sie die Gruppe der Einstellungen für die Datenpartitionierung an. <br>Verwenden Sie diese Option, wenn die Partitionsoption nicht `None` lautet. | Nein |
 | partitionColumnName | Geben Sie den Namen der Quellspalte an, die von der Bereichspartitionierung oder Hashpartitionierung für den parallelen Kopiervorgang verwendet wird. Ohne Angabe wird der primäre Index der Tabelle automatisch erkannt und als Partitionsspalte verwendet. <br>Verwenden Sie diese Option, wenn die Partitionsoption `Hash` oder `DynamicRange` lautet. Wenn Sie die Quelldaten mithilfe einer Abfrage abrufen, integrieren Sie `?AdfHashPartitionCondition` oder `?AdfRangePartitionColumnName` in die WHERE-Klausel. Ein Beispiel finden Sie im Abschnitt [Parallele Kopie von Teradata](#parallel-copy-from-teradata). | Nein |
 | partitionUpperBound | Der Höchstwert der Partitionsspalte zum Herauskopieren von Daten. <br>Verwenden Sie ihn, wenn die Partitionsoption `DynamicRange` lautet. Wenn Sie Quelldaten per Abfrage abrufen, integrieren Sie `?AdfRangePartitionUpbound` in die WHERE-Klausel. Ein Beispiel finden Sie im Abschnitt [Paralleles Kopieren aus Teradata](#parallel-copy-from-teradata). | Nein |
@@ -256,7 +250,7 @@ Der Data Factory-Teradata-Connector verfügt über eine integrierte Datenpartit
 
 ![Screenshot der Partitionierungsoptionen](./media/connector-teradata/connector-teradata-partition-options.png)
 
-Wenn Sie die partitioniertes Kopieren aktivieren, führt Data Factory parallele Abfragen für Ihre Teradata-Quelle aus, um Daten anhand von Partitionen zu laden. Der Parallelitätsgrad wird über die Einstellung [`parallelCopies`](copy-activity-performance.md#parallel-copy) der Kopieraktivität gesteuert. Wenn Sie zum Beispiel `parallelCopies` auf „4“ festlegen, werden von Data Factory gleichzeitig vier Abfragen generiert und ausgeführt. Diese Abfragen basieren auf den von Ihnen angegebenen Partitionsoptionen und -einstellungen, und jede Abfrage ruft einen Teil der Daten aus Ihrer Teradata-Instanz ab.
+Wenn Sie die partitioniertes Kopieren aktivieren, führt Data Factory parallele Abfragen für Ihre Teradata-Quelle aus, um Daten anhand von Partitionen zu laden. Der Parallelitätsgrad wird über die Einstellung [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) der Kopieraktivität gesteuert. Wenn Sie zum Beispiel `parallelCopies` auf „4“ festlegen, werden von Data Factory gleichzeitig vier Abfragen generiert und ausgeführt. Diese Abfragen basieren auf den von Ihnen angegebenen Partitionsoptionen und -einstellungen, und jede Abfrage ruft einen Teil der Daten aus Ihrer Teradata-Instanz ab.
 
 Es wird empfohlen, das parallele Kopieren mit Datenpartitionierung zu aktivieren. Das gilt insbesondere, wenn Sie große Datenmengen aus Ihrer Teradata-Instanz laden. Im Anschluss finden Sie empfohlene Konfigurationen für verschiedene Szenarien. Beim Kopieren von Daten in einen dateibasierten Datenspeicher wird empfohlen, mehrere Dateien in einen Ordner zu schreiben. (Geben Sie nur den Ordnernamen an.) In diesem Fall ist die Leistung besser als beim Schreiben in eine einzelne Datei.
 
@@ -306,39 +300,39 @@ Beim Kopieren von Daten aus Teradata gelten folgende Zuordnungen. Weitere Inform
 | ByteInt |Int16 |
 | Char |String |
 | Clob |String |
-| Date |DateTime |
+| Date |Datetime |
 | Decimal |Decimal |
 | Double |Double |
-| Graphic |Nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
+| Graphic |Wird nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
 | Integer |Int32 |
-| Interval Day |Nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
-| Interval Day To Hour |Nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
-| Interval Day To Minute |Nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
-| Interval Day To Second |Nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
-| Interval Hour |Nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
-| Interval Hour To Minute |Nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
-| Interval Hour To Second |Nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
-| Interval Minute |Nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
-| Interval Minute To Second |Nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
-| Interval Month |Nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
-| Interval Second |Nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
-| Interval Year |Nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
-| Interval Year To Month |Nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
+| Interval Day |Wird nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
+| Interval Day To Hour |Wird nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
+| Interval Day To Minute |Wird nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
+| Interval Day To Second |Wird nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
+| Interval Hour |Wird nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
+| Interval Hour To Minute |Wird nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
+| Interval Hour To Second |Wird nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
+| Interval Minute |Wird nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
+| Interval Minute To Second |Wird nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
+| Interval Month |Wird nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
+| Interval Second |Wird nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
+| Interval Year |Wird nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
+| Interval Year To Month |Wird nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
 | Number |Double |
-| Zeitraum (Datum) |Nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
-| Zeitraum (Zeit) |Nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
-| Zeitraum (Zeit mit Zeitzone) |Nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
-| Zeitraum (Zeitstempel) |Nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
-| Zeitraum (Zeitstempel mit Zeitzone) |Nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
+| Zeitraum (Datum) |Wird nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
+| Zeitraum (Zeit) |Wird nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
+| Zeitraum (Zeit mit Zeitzone) |Wird nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
+| Zeitraum (Zeitstempel) |Wird nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
+| Zeitraum (Zeitstempel mit Zeitzone) |Wird nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
 | SmallInt |Int16 |
 | Time |TimeSpan |
 | Time With Time Zone |TimeSpan |
-| Timestamp |DateTime |
+| Timestamp |Datetime |
 | Timestamp With Time Zone |Datetime |
 | VarByte |Byte[] |
 | VarChar |String |
-| VarGraphic |Nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
-| Xml |Nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
+| VarGraphic |Wird nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
+| Xml |Wird nicht unterstützt. Wenden Sie explizite Umwandlungen in der Quellabfrage an. |
 
 
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität

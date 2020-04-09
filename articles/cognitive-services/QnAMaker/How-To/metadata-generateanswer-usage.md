@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 03/31/2020
 ms.author: diberry
-ms.openlocfilehash: e84a6c93ad8757b302670af202f9d4b407f3ef57
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 9beb6dbbba1c5855b8bfa97fc02f50aa59225d78
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945319"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474855"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Abrufen einer Antwort mit der GenerateAnswer-API und Metadaten
 
@@ -64,7 +64,7 @@ Sie rufen GenerateAnswer über eine HTTP POST-Anforderung auf. Beispielcode, der
 Die POST-Anforderung verwendet:
 
 * Erforderliche [URI-Parameter](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
-* Erforderliche [Headereigenschaft](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer)`Authorization` für die Sicherheit
+* Erforderliche Headereigenschaft `Authorization` für die Sicherheit
 * Erforderliche [Texteigenschaften](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto).
 
 Die GenerateAnswer-URL weist das folgende Format auf:
@@ -146,8 +146,6 @@ var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnCont
 
 Der vorherige JSON-Code forderte nur Antworten an, die 30 % oder mehr über dem Schwellenwert liegen.
 
-Der Supportbot enthält ein [Beispiel](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-support/csharp_dotnetcore/Service/SupportBotService.cs#L418) mit diesem Code.
-
 ## <a name="use-qna-maker-with-a-bot-in-nodejs"></a>Verwenden von QnA Maker mit einem Bot in Node.js
 
 Das Bot-Framework bietet mit der [getAnswer-API](https://docs.microsoft.com/javascript/api/botbuilder-ai/qnamaker?view=botbuilder-ts-latest#generateanswer-string---undefined--number--number-) Zugriff auf die Eigenschaften von QnA Maker:
@@ -165,8 +163,6 @@ var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOpt
 ```
 
 Der vorherige JSON-Code forderte nur Antworten an, die 30 % oder mehr über dem Schwellenwert liegen.
-
-Der Supportbot enthält ein [Beispiel](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs/Helpers/dialogHelper.js#L36) mit diesem Code.
 
 <a name="metadata-example"></a>
 

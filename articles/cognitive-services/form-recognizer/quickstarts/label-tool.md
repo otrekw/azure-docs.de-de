@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 301b68d0dfaeef6d5cfdd4d7a5a504794ac877f4
-ms.sourcegitcommit: 1fa2bf6d3d91d9eaff4d083015e2175984c686da
+ms.openlocfilehash: 0cfe58ab0d161019d5f53d9135c65db7beff2bb4
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2020
-ms.locfileid: "78205820"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397989"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen
 
@@ -35,6 +35,10 @@ Für diesen Schnellstart benötigen Sie Folgendes:
 ## <a name="set-up-the-sample-labeling-tool"></a>Einrichten des Tools für die Beschriftung von Beispielen
 
 Sie verwenden die Docker-Engine, um das Tool für die Beschriftung von Beispielen auszuführen. Gehen Sie folgendermaßen vor, um den Docker-Container einzurichten. Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).
+
+> [!TIP]
+> Das OCR Form Labeling Tool steht auch als Open-Source-Projekt auf GitHub zur Verfügung. Bei dem Tool handelt es sich um eine mit React + Redux erstellte und in TypeScript geschriebene Webanwendung. Besuchen Sie [OCR Form Labeling Tool](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application), wenn Sie weitere Informationen benötigen oder sich beteiligen möchten.
+
 1. Installieren Sie zunächst Docker auf einem Hostcomputer. In dieser Anleitung wird veranschaulicht, wie Sie den lokalen Computer als Host verwenden. Wenn Sie einen Docker-Hostingdienst in Azure verwenden möchten, hilft Ihnen die Anleitung zum [Bereitstellen des Tools für die Beschriftung von Beispielen](../deploy-label-tool.md) weiter. 
 
    Der Hostcomputer muss die folgenden Hardwareanforderungen erfüllen:
@@ -46,7 +50,7 @@ Sie verwenden die Docker-Engine, um das Tool für die Beschriftung von Beispiele
    Installieren Sie Docker auf Ihrem Computer, indem Sie die passenden Anweisungen für Ihr Betriebssystem befolgen: 
    * [Windows](https://docs.docker.com/docker-for-windows/)
    * [macOS](https://docs.docker.com/docker-for-mac/)
-   * [Linux](https://docs.docker.com/install/).
+   * [Linux](https://docs.docker.com/install/)
 
 1. Rufen Sie mit dem `docker pull`-Befehl den Container für das Tool für die Beschriftung von Beispielen ab.
     ```
@@ -130,7 +134,7 @@ Als Nächstes erstellen Sie Beschriftungen (Tags) und wenden sie auf die Textele
   1. Geben Sie den Tagnamen ein.
   1. Drücken Sie die EINGABETASTE, um das Tag zu speichern.
 1. Klicken und ziehen Sie im Hauptbereich des Editors, um ein oder mehrere Wörter in den markierten Textelementen auszuwählen.
-1. Klicken Sie auf das Tag, das Sie anwenden möchten, oder drücken Sie die entsprechende Taste auf der Tastatur. Die Zifferntasten sind als Schnellzugriffstasten für die ersten zehn Tags zugewiesen. Sie können die Tags mithilfe der nach oben und unten weisenden Pfeilsymbole im Bearbeitungsbereich neu anordnen.
+1. Klicken Sie auf das Tag, das Sie anwenden möchten, oder drücken Sie die entsprechende Taste auf der Tastatur. Die Zifferntasten sind als Schnellzugriffstasten für die ersten zehn Tags zugewiesen. Sie können die Beschriftungen mithilfe der nach oben und unten weisenden Pfeilsymbole im Bearbeitungsbereich neu anordnen.
     > [!Tip]
     > Beachten Sie beim Beschriften Ihrer Formulare die folgenden Tipps.
     > * Sie können auf jedes ausgewählte Element nur ein Tag anwenden.
@@ -185,6 +189,7 @@ Wechseln Sie zur Seite mit den Projekteinstellungen (Schiebereglersymbol), und m
 Wenn Sie Ihr Projekt fortsetzen möchten, müssen Sie zunächst eine Verbindung mit demselben Blobspeichercontainer herstellen. Wiederholen Sie dazu die oben genannten Schritte. Wechseln Sie zur Seite mit den Anwendungseinstellungen (Zahnradsymbol), und überprüfen Sie, ob sich das Sicherheitstoken Ihres Projekts dort befindet. Wenn dies nicht der Fall ist, fügen Sie ein neues Sicherheitstoken hinzu, und fügen Sie den Namen und Schlüssel des Tokens aus dem vorherigen Schritt ein. Klicken Sie dann auf „Einstellungen speichern“. 
 
 ### <a name="resume-a-project"></a>Fortsetzen eines Projekts
+
 Wechseln Sie abschließend auf die Hauptseite (Haussymbol), und klicken Sie auf „Cloudprojekt öffnen“. Wählen Sie die Verbindung mit dem Blobspeicher aus, und wählen Sie dann die *.vott*-Datei Ihres Projekts aus. Die Anwendung lädt sämtliche Projekteinstellungen, weil das Sicherheitstoken vorliegt.
 
 ## <a name="next-steps"></a>Nächste Schritte

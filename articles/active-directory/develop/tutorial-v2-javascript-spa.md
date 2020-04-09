@@ -2,25 +2,21 @@
 title: JavaScript-Tutorial mit Single-Page-App – Microsoft Identity Platform | Azure
 description: In diesem Artikel erfahren Sie, wie JavaScript-Single-Page-Anwendungen eine API aufrufen können, für die Zugriffstoken des Azure Active Directory v2.0-Endpunkts erforderlich sind.
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6eb144e648e8f5fa1682c353f14686d6f82c7328
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 307490837b2963b3a1272eaafde63431de6645aa
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79530443"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984349"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer JavaScript-SPA (Single-Page-Webanwendung)
 
@@ -353,6 +349,18 @@ Erstellen Sie eine neue JS-Datei mit dem Namen `authPopup.js`, die Ihre Authenti
 
    function signOut() {
      myMSALObj.logout();
+   }
+   
+   function callMSGraph(theUrl, accessToken, callback) {
+       var xmlHttp = new XMLHttpRequest();
+       xmlHttp.onreadystatechange = function () {
+           if (this.readyState == 4 && this.status == 200) {
+              callback(JSON.parse(this.responseText));
+           }
+       }
+       xmlHttp.open("GET", theUrl, true); // true for asynchronous
+       xmlHttp.setRequestHeader('Authorization', 'Bearer ' + accessToken);
+       xmlHttp.send();
    }
 
    function getTokenPopup(request) {

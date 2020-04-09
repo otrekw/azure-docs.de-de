@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 16f5bed5a2342bb1d120d0d3dc853e0bc44376dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d127d3f9e66b7d2d40aa420e2116fee17d996514
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74033118"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437308"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Aktivieren der geschachtelten Virtualisierung auf einer Azure-VM
 
@@ -26,7 +26,7 @@ In diesem Artikel werden die Schritte erläutert, die zum Aktivieren von Hyper-V
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>Erstellen eines schachtelungsfähigen virtuellen Azure-Computers
 
-Erstellen Sie einen neuen virtuellen Windows Server 2016-Azure-Computer.  Zur schnellen Information: Alle virtuellen v3-Computer unterstützen geschachtelte Virtualisierung. Eine vollständige Liste der VM-Größen, die Schachtelung unterstützen, finden Sie im [Artikel zur Azure-Compute-Einheit](acu.md).
+Erstellen Sie einen neuen virtuellen Windows Server 2016-Azure-Computer. Eine vollständige Liste der VM-Größen, die Schachtelung unterstützen, finden Sie im [Artikel zur Azure-Compute-Einheit](acu.md).
 
 Denken Sie daran, eine ausreichende VM-Größe zu wählen, um die Anforderungen eines virtuellen Gastcomputers zu unterstützen. Bei diesem Beispiel wird eine Azure-VM der Größe D3_v3 verwendet. 
 
@@ -42,7 +42,7 @@ Erstellen Sie eine Remotedesktopverbindung mit dem virtuellen Computer.
 
 1. Klicken Sie in den Eigenschaften des virtuellen Computers auf die Schaltfläche **Verbinden**. Eine Remotedesktopprotokoll-Datei (RDP-Datei) wird erstellt und heruntergeladen.
 
-2. Öffnen Sie die heruntergeladene RDP-Datei, um eine Verbindung mit Ihrem virtuellen Computer herzustellen. Klicken Sie in der angezeigten Aufforderung auf **Verbinden**. Auf einem Macintosh benötigen Sie einen RDP-Client, z.B. diesen [Remotedesktopclient](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12) aus dem Mac App Store.
+2. Öffnen Sie die heruntergeladene RDP-Datei, um eine Verbindung mit Ihrem virtuellen Computer herzustellen. Klicken Sie in der angezeigten Aufforderung auf **Verbinden**. Auf einem Macintosh benötigen Sie einen RDP-Client, z. B. diesen [Remotedesktopclien](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12)t aus dem Mac App Store.
 
 3. Geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie beim Erstellen des virtuellen Computers festgelegt haben, und klicken Sie anschließend auf **OK**.
 
@@ -52,7 +52,7 @@ Erstellen Sie eine Remotedesktopverbindung mit dem virtuellen Computer.
 Sie können diese Einstellungen manuell konfigurieren. Alternativ dazu haben wir ein PowerShell-Skript bereitgestellt, um die Konfiguration zu automatisieren.
 
 ### <a name="option-1-use-a-powershell-script-to-configure-nested-virtualization"></a>Option 1: Verwenden eines PowerShell-Skripts zum Konfigurieren der geschachtelten Virtualisierung
-Ein PowerShell-Skript zum Aktivieren der geschachtelten Virtualisierung auf einem Windows Server 2016-Host steht auf [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) zur Verfügung. Das Skript überprüft die Voraussetzungen und konfiguriert dann die geschachtelte Virtualisierung auf der Azure-VM. Um die Konfiguration abzuschließen, ist ein Neustart der Azure-VM erforderlich. Das Skript funktioniert möglicherweise in anderen Umgebungen, dies wird jedoch nicht garantiert. Sehen Sie sich den Azure-Blogbeitrag mit einer Livedemonstration zur geschachtelten Virtualisierung auf Azure an: [https://login.microsoftonline.com/consumers/](https://aka.ms/AzureNVblog ).
+Ein PowerShell-Skript zum Aktivieren der geschachtelten Virtualisierung auf einem Windows Server 2016-Host steht auf [GitHub](https://github.com/charlieding/Virtualization-Documentation/tree/live/hyperv-tools/Nested) zur Verfügung. Das Skript überprüft die Voraussetzungen und konfiguriert dann die geschachtelte Virtualisierung auf der Azure-VM. Um die Konfiguration abzuschließen, ist ein Neustart der Azure-VM erforderlich. Das Skript funktioniert möglicherweise in anderen Umgebungen, dies wird jedoch nicht garantiert. Sehen Sie sich den Azure-Blogbeitrag mit einer Livedemonstration zur geschachtelten Virtualisierung auf Azure an: https://aka.ms/AzureNVblog.
 
 ### <a name="option-2-configure-nested-virtualization-manually"></a>Option 2: Manuelles Konfigurieren der geschachtelten Virtualisierung
 

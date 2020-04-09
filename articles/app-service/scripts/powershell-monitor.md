@@ -6,12 +6,12 @@ ms.assetid: 5805d7cd-9e56-4eba-bd85-75b013690ff5
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
-ms.openlocfilehash: 79b5ef411abde3a4ef293516a43adaa1e669b6d9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c9b3ab6f8115f68ead478c0de21e4661d3ca032c
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74684622"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437933"
 ---
 # <a name="monitor-a-web-appwith-web-server-logs"></a>Überwachen einer Web-App mit Webserverprotokollen
 
@@ -43,7 +43,6 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Erstellt einen App Service-Plan. |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Erstellt die Web-App. |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Ändert die Konfiguration einer Web-App. |
-| [Get-AzWebAppMetric](/powershell/module/az.websites/get-azwebappmetric) | Ruft Metriken einer Web-App ab. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

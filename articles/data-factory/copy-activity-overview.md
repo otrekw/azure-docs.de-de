@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/08/2020
+ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 0e138e954501df3cf3c3c8819d0198ad9a9288f0
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: edb80c604951a140d21e3775eec3f1dc6d55af73
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754461"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421411"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieraktivität in Azure Data Factory
 
@@ -65,9 +65,11 @@ Der Dienst, der die Kopieraktivität unterstützt, ist weltweit in den Regionen 
 
 ## <a name="configuration"></a>Konfiguration
 
-Um die Kopieraktivität in Azure Data Factory zu verwenden, sind folgende Schritte erforderlich:
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-1. **Erstellen Sie verknüpfte Dienste für den Quell- und Senkendatenspeicher.** Im Abschnitt „Eigenschaften des verknüpften Diensts“ im Connectorartikel finden Sie Informationen zur Konfiguration und zu unterstützten Eigenschaften. Sie finden die Liste der unterstützten Connectors im Abschnitt [Unterstützte Datenspeicher und Formate](#supported-data-stores-and-formats) dieses Artikels.
+Wenn Sie die Kopieraktivität in Azure Data Factory verwenden möchten, müssen Sie generell folgende Schritte ausführen:
+
+1. **Erstellen Sie verknüpfte Dienste für den Quell- und Senkendatenspeicher.** Sie finden die Liste der unterstützten Connectors im Abschnitt [Unterstützte Datenspeicher und Formate](#supported-data-stores-and-formats) dieses Artikels. Im Abschnitt „Eigenschaften des verknüpften Diensts“ im Connectorartikel finden Sie Informationen zur Konfiguration und zu unterstützten Eigenschaften. 
 2. **Erstellen Sie Datasets für die Quelle und die Senke.** In den Abschnitten zu Dataset-Eigenschaften in den Artikeln zu Quell- und Senkenconnectors finden Sie Informationen zur Konfiguration und zu unterstützten Eigenschaften.
 3. **Erstellen Sie eine Pipeline mit der Kopieraktivität.** Der nächste Abschnitt enthält ein Beispiel.
 
@@ -123,7 +125,7 @@ Die folgende Vorlage einer Kopieraktivität enthält eine vollständige Liste un
 
 #### <a name="syntax-details"></a>Syntaxdetails
 
-| Eigenschaft | Beschreibung | Erforderlich? |
+| Eigenschaft | BESCHREIBUNG | Erforderlich? |
 |:--- |:--- |:--- |
 | type | Legen Sie für eine Kopieraktivität `Copy` fest. | Ja |
 | inputs | Geben Sie das Dataset an, das Sie erstellt haben und das auf die Quelldaten verweist. Die Kopieraktivität unterstützt nur eine einzelne Eingabe. | Ja |
@@ -132,110 +134,15 @@ Die folgende Vorlage einer Kopieraktivität enthält eine vollständige Liste un
 | source | Geben Sie den Quelltyp für den Kopiervorgang und die zugehörigen Eigenschaften zum Abrufen von Daten an.<br/>Weitere Informationen finden Sie im Abschnitt „Eigenschaften der Kopieraktivität“ im Connectorartikel unter [Unterstützte Datenspeicher und Formate](#supported-data-stores-and-formats). | Ja |
 | sink | Geben Sie den Senkentyp für den Kopiervorgang und die zugehörigen Eigenschaften zum Schreiben von Daten an.<br/>Weitere Informationen finden Sie im Abschnitt „Eigenschaften der Kopieraktivität“ im Connectorartikel unter [Unterstützte Datenspeicher und Formate](#supported-data-stores-and-formats). | Ja |
 | translator | Geben Sie explizite Spaltenzuordnungen von der Quelle zur Senke an. Diese Eigenschaft wird angewendet, wenn das standardmäßige Kopierverhalten nicht Ihren Anforderungen entspricht.<br/>Weitere Informationen finden Sie unter [Schemazuordnung in Kopieraktivität](copy-activity-schema-and-type-mapping.md). | Nein |
-| dataIntegrationUnits | Geben Sie eine Maßeinheit an, die festlegt, wie viel Leistung der [Azure Integration Runtime](concepts-integration-runtime.md) für das Kopieren von Daten zur Verfügung steht. Diese Einheiten wurden früher als Einheiten für Clouddatenverschiebungen bezeichnet. <br/>Weitere Informationen finden Sie unter [Datenintegrationseinheiten](copy-activity-performance.md#data-integration-units). | Nein |
-| parallelCopies | Geben Sie die Parallelität an, die die Kopieraktivität beim Lesen von Daten aus der Quelle und beim Schreiben von Daten in die Senke verwenden soll.<br/>Weitere Informationen finden Sie unter [Paralleles Kopieren](copy-activity-performance.md#parallel-copy). | Nein |
+| dataIntegrationUnits | Geben Sie eine Maßeinheit an, die festlegt, wie viel Leistung der [Azure Integration Runtime](concepts-integration-runtime.md) für das Kopieren von Daten zur Verfügung steht. Diese Einheiten wurden früher als Einheiten für Clouddatenverschiebungen bezeichnet. <br/>Weitere Informationen finden Sie unter [Datenintegrationseinheiten](copy-activity-performance-features.md#data-integration-units). | Nein |
+| parallelCopies | Geben Sie die Parallelität an, die die Kopieraktivität beim Lesen von Daten aus der Quelle und beim Schreiben von Daten in die Senke verwenden soll.<br/>Weitere Informationen finden Sie unter [Paralleles Kopieren](copy-activity-performance-features.md#parallel-copy). | Nein |
 | Reservat | Legen Sie fest, ob Metadaten/Zugriffssteuerungsliste beim Kopieren von Daten beibehalten werden sollen. <br/>Weitere Informationen finden Sie unter [Beibehalten von Metadaten](copy-activity-preserve-metadata.md). |Nein |
-| enableStaging<br/>stagingSettings | Geben Sie an, ob die vorläufigen Daten im Blob Storage bereitgestellt werden, anstatt sie direkt aus der Quelle in die Senke zu kopieren.<br/>Informationen zu nützlichen Szenarien und Konfigurationsdetails finden Sie unter [Gestaffeltes Kopieren](copy-activity-performance.md#staged-copy). | Nein |
+| enableStaging<br/>stagingSettings | Geben Sie an, ob die vorläufigen Daten im Blob Storage bereitgestellt werden, anstatt sie direkt aus der Quelle in die Senke zu kopieren.<br/>Informationen zu nützlichen Szenarien und Konfigurationsdetails finden Sie unter [Gestaffeltes Kopieren](copy-activity-performance-features.md#staged-copy). | Nein |
 | enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Wählen Sie aus, wie nicht kompatible Zeilen beim Kopieren von Daten aus der Quelle in die Senke behandelt werden sollen.<br/>Weitere Informationen finden Sie unter [Fehlertoleranz](copy-activity-fault-tolerance.md). | Nein |
 
 ## <a name="monitoring"></a>Überwachung
 
-Die Ausführung der Kopieraktivität kann auf der Azure Data Factory-Benutzeroberfläche unter **Erstellen und überwachen** oder programmgesteuert überwacht werden.
-
-### <a name="monitor-visually"></a>Visuelle Überwachung
-
-Um die Ausführung der Kopieraktivität visuell zu überwachen, wechseln Sie zu Ihrer Data Factory und dann zu **Erstellen und überwachen**. Auf der Registerkarte **Überwachen** wird eine Liste der Pipelineausführungen angezeigt. Dabei ist in der Spalte **Aktionen** eine Schaltfläche **Aktivitätsausführung anzeigen** enthalten:
-
-![Überwachen der Pipelineausführungen](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
-
-Wählen Sie **Aktivitätsausführungen anzeigen** aus, um die Liste der Aktivitäten in der Pipelineausführung anzuzeigen. In der Spalte **Aktionen** sehen Sie Links zur Eingabe, zur Ausgabe, zu möglichen Ausführungsfehlern und zu Details der Kopieraktivität:
-
-![Überwachung der Aktivitätsausführungen](./media/load-data-into-azure-data-lake-store/monitor-activity-runs.png)
-
-Wählen Sie in der Spalte **Aktionen** die Schaltfläche **Details** aus, um Ausführungsdetails und Leistungsmerkmale zur Kopieraktivität anzuzeigen. Zu den angezeigten Informationen zählen Umfang/Anzahl von Zeilen/Anzahl der aus der Quelle in die Senke kopierten Datendateien, Durchsatz, von der Kopieraktivität durchlaufene Schritte und deren Dauer sowie für das Kopierszenario verwendete Konfigurationen.
-
->[!TIP]
->In einigen Szenarien werden oben auf der Seite zur Überwachung des Kopiervorgangs auch **Tipps zur Leistungsoptimierung** angezeigt. Anhand der Tipps erfahren Sie, welche Engpässe identifiziert wurden und wie sich der Durchsatz des Kopiervorgangs steigern lässt. Ein Beispiel finden Sie im Abschnitt [Leistung und Optimierung](#performance-and-tuning) dieses Artikels.
-
-**Beispiel: Kopieren aus Amazon S3 in Azure Data Lake Store**
-![Überwachen von Details zur Aktivitätsausführung](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
-
-**Beispiel: Gestaffeltes Kopieren aus Azure SQL-Datenbank in Azure SQL Data Warehouse**
-![Überwachen von Details zur Aktivitätsausführung](./media/copy-activity-overview/monitor-activity-run-details-sql-dw.png)
-
-### <a name="monitor-programmatically"></a>Programmgesteuerte Überwachung
-
-Ausführungsdetails und Leistungsmerkmale zur Kopieraktivität werden auch im Abschnitt **Ausführungsergebnis der Kopieraktivität** > **Ausgabe** zurückgegeben. Im Folgenden eine vollständige Liste der Eigenschaften, die zurückgegeben werden können. Es werden nur die Eigenschaften angezeigt, die auf Ihr Kopierszenario anwendbar sind. Informationen zum Überwachen von Aktivitätsausführungen finden Sie unter [Überwachen einer Pipelineausführung](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run).
-
-| Eigenschaftenname  | Beschreibung | Einheit |
-|:--- |:--- |:--- |
-| dataRead | Die Menge der aus der Quelle gelesenen Daten. | Int64-Wert in Bytes |
-| dataWritten | Die Menge der in die Senke geschriebenen Daten. | Int64-Wert in Bytes |
-| filesRead | Die Anzahl der beim Kopiervorgang aus dem Dateispeicher kopierten Dateien. | Int64-Wert (ohne Einheit) |
-| filesWritten | Die Anzahl der beim Kopiervorgang in den Dateispeicher kopierten Dateien. | Int64-Wert (ohne Einheit) |
-| sourcePeakConnections | Die maximale Anzahl gleichzeitiger Verbindungen mit dem Quelldatenspeicher während der Ausführung der Kopieraktivität. | Int64-Wert (ohne Einheit) |
-| sinkPeakConnections | Die maximale Anzahl gleichzeitiger Verbindungen mit dem Senkendatenspeicher während der Ausführung der Kopieraktivität. | Int64-Wert (ohne Einheit) |
-| rowsRead | Die Anzahl der Zeilen, die aus der Quelle gelesen wurden (für Binärkopien nicht verfügbar). | Int64-Wert (ohne Einheit) |
-| rowsCopied | Die Anzahl der Zeilen, die in die Senke kopiert wurden (für Binärkopien nicht verfügbar). | Int64-Wert (ohne Einheit) |
-| rowsSkipped | Die Anzahl der übersprungenen, nicht kompatiblen Zeilen. Nicht kompatible Zeilen können übersprungen werden, indem Sie `enableSkipIncompatibleRow` auf „true“ festlegen. | Int64-Wert (ohne Einheit) |
-| copyDuration | Die Dauer des Kopiervorgangs. | Int32-Wert in Sekunden |
-| throughput | Die Datenübertragungsrate. | Gleitkommazahl in KB/s |
-| sourcePeakConnections | Die maximale Anzahl gleichzeitiger Verbindungen mit dem Quelldatenspeicher während der Ausführung der Kopieraktivität. | Int32-Wert (ohne Einheit) |
-| sinkPeakConnections| Die maximale Anzahl gleichzeitiger Verbindungen mit dem Senkendatenspeicher während der Ausführung der Kopieraktivität.| Int32-Wert (ohne Einheit) |
-| sqlDwPolyBase | Gibt an, ob PolyBase beim Kopieren von Daten in SQL Data Warehouse verwendet wird. | Boolean |
-| redshiftUnload | Gibt an, ob UNLOAD beim Kopieren von Daten aus Redshift verwendet wird. | Boolean |
-| hdfsDistcp | Gibt an, ob DistCp beim Kopieren von Daten aus HDFS verwendet wird. | Boolean |
-| effectiveIntegrationRuntime | Die Integration Runtimes (IR), die zur Unterstützung der Aktivitätsausführung verwendet werden, im Format `<IR name> (<region if it's Azure IR>)`. | Text (Zeichenfolge) |
-| usedDataIntegrationUnits | Die effektiven Datenintegrationseinheiten während des Kopiervorgangs. | Int32-Wert |
-| usedParallelCopies | Die effektiven parallelen Kopien während des Kopiervorgangs. | Int32-Wert |
-| redirectRowPath | Der Pfad zum Protokoll der übersprungenen, nicht kompatiblen Zeilen im Blob Storage, den Sie in der Eigenschaft `redirectIncompatibleRowSettings` konfigurieren. Siehe [Fehlertoleranz](#fault-tolerance) weiter unten in diesem Artikel. | Text (Zeichenfolge) |
-| executionDetails | Ausführlichere Informationen zu den Phasen, die die Kopieraktivität durchläuft, sowie zu den entsprechenden Schritten, zur Dauer, zu den Konfigurationen usw. Es wird davon abgeraten, diesen Abschnitt zu analysieren, da er sich möglicherweise ändert.<br/><br/>Unter `detailedDurations` wird von der Data Factory außerdem die genaue Dauer (in Sekunden) für die jeweiligen Phasen angegeben. Die Zeitangaben für die Dauer dieser Schritte sind exklusiv. Es wird nur die Dauer für die jeweils ausgeführte Kopieraktivität berücksichtigt:<br/>**Abfragedauer** (`queuingDuration`): Die bis zum tatsächlichen Start der Kopieraktivität in der Integration Runtime verstrichene Zeit. Wenn Sie eine selbstgehostete IR verwenden und dieser Wert hoch ist, sollten Sie die Kapazität und Nutzung der IR überprüfen und entsprechend Ihrer Workload zentral hochskalieren. <br/>**Dauer des Kopiervorbereitungsskripts** (`preCopyScriptDuration`): Die Zeit vom Start der Kopieraktivität in der IR bis zu dem Zeitpunkt, zu dem die Ausführung des Kopiervorbereitungsskripts im Senkendatenspeicher von der Kopieraktivität abgeschlossen wurde. Wird beim Konfigurieren des Kopiervorbereitungsskripts angewendet. <br/>**Zeit bis zum ersten Byte** (`timeToFirstByte`): Die Zeit vom Ende des vorherigen Schritts bis zu dem Zeitpunkt, zu dem das erste Byte aus dem Quelldatenspeicher von der IR empfangen wird. Wird auf nicht dateibasierte Quellen angewendet. Wenn dieser Wert hoch ist, sollte die Abfrage oder der Server überprüft und optimiert werden.<br/>**Übertragungsdauer** (`transferDuration`): Die Zeit vom Ende des vorherigen Schritts bis zu dem Zeitpunkt, zu dem alle Daten aus der Quelle von der IR in die Senke übertragen wurden. | Array |
-| perfRecommendation | Tipps zur Leistungsoptimierung beim Kopieren. Weitere Informationen finden Sie unter [Leistung und Optimierung](#performance-and-tuning). | Array |
-
-```json
-"output": {
-    "dataRead": 6198358,
-    "dataWritten": 19169324,
-    "filesRead": 1,
-    "sourcePeakConnections": 1,
-    "sinkPeakConnections": 2,
-    "rowsRead": 39614,
-    "rowsCopied": 39614,
-    "copyDuration": 1325,
-    "throughput": 4.568,
-    "errors": [],
-    "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (West US)",
-    "usedDataIntegrationUnits": 4,
-    "usedParallelCopies": 1,
-    "executionDetails": [
-        {
-            "source": {
-                "type": "AzureBlobStorage"
-            },
-            "sink": {
-                "type": "AzureSqlDatabase"
-            },
-            "status": "Succeeded",
-            "start": "2019-08-06T01:01:36.7778286Z",
-            "duration": 1325,
-            "usedDataIntegrationUnits": 4,
-            "usedParallelCopies": 1,
-            "detailedDurations": {
-                "queuingDuration": 2,
-                "preCopyScriptDuration": 12,
-                "transferDuration": 1311
-            }
-        }
-    ],
-    "perfRecommendation": [
-        {
-            "Tip": "Sink Azure SQL Database: The DTU utilization was high during the copy activity run. To achieve better performance, you are suggested to scale the database to a higher tier than the current 1600 DTUs.",
-            "ReferUrl": "https://go.microsoft.com/fwlink/?linkid=2043368",
-            "RuleName": "AzureDBTierUpgradePerfRecommendRule"
-        }
-    ]
-}
-```
+Sie können die Ausführung der Kopieraktivität in Azure Data Factory sowohl visuell überwachen als auch programmgesteuert überwachen lassen. Einzelheiten dazu finden Sie unter [Überwachen der Kopieraktivität](copy-activity-monitoring.md).
 
 ## <a name="incremental-copy"></a>Inkrementelles Kopieren
 
@@ -243,15 +150,7 @@ Data Factory unterstützt das inkrementelle Kopieren von Deltadaten von einem Qu
 
 ## <a name="performance-and-tuning"></a>Leistung und Optimierung
 
-Im [Handbuch zur Leistung und Optimierung der Kopieraktivität](copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Kopieraktivität beim Verschieben von Daten in Azure Data Factory auswirken. Außerdem finden Sie dort in Tests ermittelte Leistungswerte und Möglichkeiten, die Leistung der Kopieraktivität zu optimieren.
-
-In einigen Szenarien werden bei der Ausführung einer Kopieraktivität in Data Factory oben auf der **Seite zur Überwachung der Kopieraktivität** verschiedene [Tipps zur Leistungsoptimierung](#monitor-visually) angezeigt, wie im folgenden Beispiel zu sehen. Die Tipps geben Aufschluss über den Engpass, der für den jeweiligen Kopiervorgang ermittelt wurde. Außerdem erfahren Sie, wie Sie den Durchsatz des Kopiervorgangs steigern können. In den Tipps zur Leistungsoptimierung erhalten Sie beispielsweise die Empfehlung, beim Kopieren von Daten in Azure SQL Data Warehouse PolyBase zu verwenden, die Anzahl der Azure Cosmos DB-RUs oder der Azure SQL-Datenbank-DTUs zu erhöhen, wenn die Ressource auf der Datenspeicherseite den Engpass verursacht, oder unnötig bereitgestellte Kopie zu entfernen.
-
-**Beispiel: Kopieren in Azure SQL-Datenbank mit einem Tipp zur Leistungsoptimierung**
-
-In diesem Beispiel wird von Data Factory während eines Kopiervorgangs eine hohe DTU-Nutzung in der Microsoft Azure SQL-Datenbanksenke ermittelt. Dadurch werden Schreibvorgänge verlangsamt. Es wird empfohlen, die Anzahl der DTUs auf der Ebene der Azure SQL-Datenbank zu erhöhen:
-
-![Überwachung des Kopiervorgangs mit Tipps für die Leistungsoptimierung](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
+In der Benutzeroberfläche zur [Überwachung der Kopieraktivität](copy-activity-monitoring.md) werden Ihnen die Statistiken zur Kopierleistung für jede Ihrer Aktivitätsausführungen angezeigt. Im [Handbuch zur Leistung und Optimierung der Kopieraktivität](copy-activity-performance.md) werden wichtige Faktoren beschrieben, die sich auf die Leistung der Kopieraktivität beim Verschieben von Daten in Azure Data Factory auswirken. Außerdem finden Sie dort in Tests ermittelte Leistungswerte und Möglichkeiten, die Leistung der Kopieraktivität zu optimieren.
 
 ## <a name="resume-from-last-failed-run"></a>Fortsetzen ab der letzten fehlgeschlagenen Ausführung
 
@@ -279,6 +178,66 @@ Beim Kopieren von Daten aus einer Quelle in eine Senke können Sie in Szenarios 
 ## <a name="schema-and-data-type-mapping"></a>Schema- und Datentypzuordnung
 
 Informationen dazu, wie die Quelldaten von der Kopieraktivität der Senke zugeordnet werden, finden Sie unter [Schema- und Datentypzuordnung](copy-activity-schema-and-type-mapping.md).
+
+## <a name="add-additional-columns-during-copy"></a>Hinzufügen zusätzlicher Spalten während des Kopiervorgangs
+
+Über das Kopieren von Daten aus dem Quelldatenspeicher in die Senke hinaus können Sie auch so konfigurieren, dass zusätzliche Datenspalten zum Kopieren in die Senke hinzugefügt werden. Beispiel:
+
+- Beim Kopieren aus einer dateibasierten Quelle speichern Sie den relativen Dateipfad als zusätzliche Spalte, in der Sie verfolgen können, aus welcher Datei die Daten stammen.
+- Fügen Sie eine Spalte mit ADF-Ausdruck hinzu, um ADF-Systemvariablen wie „pipeline name/pipeline id“ anzufügen oder einen anderen dynamischen Wert aus der Ausgabe der Upstreamaktivität zu speichern.
+- Fügen Sie eine Spalte mit statischem Wert hinzu, um Ihren Bedarf an Downstreamnutzung zu erfüllen.
+
+Auf der Registerkarte „Quelle der Kopieraktivität“ finden Sie die folgende Konfiguration: 
+
+![Hinzufügen zusätzlicher Spalten in der Kopieraktivität](./media/copy-activity-overview/copy-activity-add-additional-columns.png)
+
+>[!TIP]
+>Dieses Feature funktioniert nur beim neuesten Datasetmodell. Wenn diese Option auf der Benutzeroberfläche nicht angezeigt wird, versuchen Sie, ein neues Dataset zu erstellen.
+
+Wenn es programmgesteuert konfiguriert werden soll, fügen Sie in Ihrer Quelle für die Kopieraktivität die Eigenschaft `additionalColumns` hinzu:
+
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| --- | --- | --- |
+| additionalColumns | Fügen Sie zusätzliche Datenspalten zum Kopieren in die Senke hinzu.<br><br>Jedes Objekt unter dem Array `additionalColumns` stellt eine zusätzliche Spalte dar. `name` definiert den Spaltennamen, und `value` gibt den Datenwert dieser Spalte an.<br><br>Zulässige Datenwerte sind:<br>-  **`$$FILEPATH`** – eine reservierte Variable, die angibt, dass der relative Pfad der Quelldateien in dem im Dataset angegebenen Ordnerpfad gespeichert werden soll. Auf dateibasierte Quelle anwenden.<br>- **Ausdruck**<br>- **Statischer Wert** | Nein |
+
+**Beispiel:**
+
+```json
+"activities":[
+    {
+        "name": "CopyWithAdditionalColumns",
+        "type": "Copy",
+        "inputs": [...],
+        "outputs": [...],
+        "typeProperties": {
+            "source": {
+                "type": "<source type>",
+                "additionalColumns": [
+                    {
+                        "name": "filePath",
+                        "value": "$$FILEPATH"
+                    },
+                    {
+                        "name": "pipelineName",
+                        "value": {
+                            "value": "@pipeline().Pipeline",
+                            "type": "Expression"
+                        }
+                    },
+                    {
+                        "name": "staticValue",
+                        "value": "sampleValue"
+                    }
+                ],
+                ...
+            },
+            "sink": {
+                "type": "<sink type>"
+            }
+        }
+    }
+]
+```
 
 ## <a name="fault-tolerance"></a>Fehlertoleranz
 

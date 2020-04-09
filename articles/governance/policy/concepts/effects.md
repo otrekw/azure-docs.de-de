@@ -1,14 +1,14 @@
 ---
 title: Funktionsweise von Auswirkungen
 description: Die Azure Policy-Definitionen haben verschiedene Auswirkungen, mit denen festgelegt wird, wie die Konformität verwaltet und gemeldet wird.
-ms.date: 11/04/2019
+ms.date: 03/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 502c8a87c4e915ebd1fd764915daa9c89a307097
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 0330cb5c732921efda3627dec92e486657097d82
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78354978"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422457"
 ---
 # <a name="understand-azure-policy-effects"></a>Grundlegendes zu Azure Policy-Auswirkungen
 
@@ -334,7 +334,7 @@ Beispiel: Mithilfe einer Auswertung wird ermittelt, ob die Antischadsoftware-Erw
 „DeployIfNotExists“ wird mit einem zeitlichen Abstand von etwa 15 Minuten ausgeführt, nachdem ein Ressourcenanbieter eine Anforderung zum Erstellen oder Aktualisieren einer Ressource verarbeitet hat und ein Erfolgsstatuscode zurückgegeben wurde. Eine Vorlagenbereitstellung findet statt, wenn keine entsprechenden Ressourcen vorhanden sind oder wenn die über **ExistenceCondition** definierten Ressourcen nicht als TRUE ausgewertet werden.
 Die Dauer der Bereitstellung hängt von der Komplexität der in der Vorlage enthaltenen Ressourcen ab.
 
-Während eines Auswertungszyklus führen Richtliniendefinitionen mit der Auswirkung „DeployIfNotExists“ dazu, dass übereinstimmende Ressourcen als nicht konform markiert werden. Es wird aber keine Aktion für diese Ressource ausgeführt.
+Während eines Auswertungszyklus führen Richtliniendefinitionen mit der Auswirkung „DeployIfNotExists“ dazu, dass übereinstimmende Ressourcen als nicht konform markiert werden. Es wird aber keine Aktion für diese Ressource ausgeführt. Bestehende, nicht konforme Ressourcen können mit einem [Wartungstask](../how-to/remediate-resources.md) bereinigt werden.
 
 ### <a name="deployifnotexists-properties"></a>Eigenschaften von „DeployIfNotExists“
 
@@ -453,7 +453,7 @@ Die Eigenschaft **details** der Auswirkung EnforceOPAConstraint hat die Untereig
 - **values** [optional]
   - Definiert Parameter und Werte, die an die Einschränkung übergeben werden. Jeder Wert muss in der CRD der Einschränkungsvorlage vorhanden sein.
 
-### <a name="enforceregopolicy-example"></a>Beispiel für EnforceRegoPolicy
+### <a name="enforceopaconstraint-example"></a>EnforceOPAConstraint-Beispiel
 
 Beispiel: Gatekeeper v3-Zugangskontrollregel, um Ressourcenlimits für CPU- und Arbeitsspeicher für einen Container in der AKS-Engine festzulegen.
 

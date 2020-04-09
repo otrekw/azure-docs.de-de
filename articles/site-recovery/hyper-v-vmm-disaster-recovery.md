@@ -4,16 +4,15 @@ description: Informationen zum Einrichten der Notfallwiederherstellung für Hype
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
-ms.custom: MVC
-ms.openlocfilehash: 8d89c7eda845f0e5ed9bc8ccc7b6b3812ba275f9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f7de3c28463a86852cba03713ca4c500e7ca0339
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74132995"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437506"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Einrichten der Notfallwiederherstellung für Hyper-V-VMs an einem sekundären lokalen Standort
 
@@ -45,7 +44,7 @@ Die [Netzwerkzuordnung](hyper-v-vmm-network-mapping.md) ist die Zuordnung zwisch
 
 - Nach dem Failover werden Verbindungen von VMs mit geeigneten Ziel-VM-Netzwerken hergestellt. 
 - Replikat-VMs werden optimal auf Ziel-Hyper-V-Hostservern platziert. 
-- Wenn Sie die Netzwerkzuordnung nicht konfigurieren, werden nach einem Failover keine Verbindungen von Replikat-VMs mit einem VM-Netzwerk hergestellt.
+- Wenn Sie die Netzwerkzuordnung nicht konfigurieren, werden Replikat-VMs nach einem Failover nicht mit einem VM-Netzwerk verbunden.
 
 Bereiten Sie VMM wie folgt vor:
 
@@ -65,7 +64,7 @@ Bereiten Sie VMM wie folgt vor:
 
 Wählen Sie aus, was Sie replizieren möchten und wohin die Daten repliziert werden sollen.
 
-1. Klicken Sie auf **Site Recovery** > **Schritt 1: Bereiten Sie die Infrastruktur vor** > **Schutzziel**.
+1. Klicken Sie auf **Site Recovery** > **Schritt 1: Vorbereiten der Infrastruktur** > **Schutzziel**.
 2. Wählen Sie **Auf Wiederherstellungsstandort** und anschließend **Yes, with Hyper-V** (Ja, mit Hyper-V) aus.
 3. Wählen Sie **Ja** aus, um anzugeben, dass Sie die Hyper-V-Hosts mithilfe von VMM verwalten.
 4. Wählen Sie **Ja** aus, falls Sie über einen sekundären VMM-Server verfügen. Wenn Sie die Replikation zwischen Clouds auf einem einzelnen VMM-Server bereitstellen, klicken Sie auf **Nein**. Klicken Sie dann auf **OK**.
@@ -133,8 +132,8 @@ Bevor Sie beginnen, stellen Sie sicher, dass alle Hosts, die die Richtlinie verw
 1. Geben Sie unter **Kopierhäufigkeit**an, wie oft Sie Deltadaten nach der ersten Replikation replizieren möchten (alle 30 Sekunden, nach 5 Minuten oder nach 15 Minuten).
 2. Geben Sie unter **Aufbewahrungszeitraum des Wiederherstellungspunkts** die Größe des Aufbewahrungszeitfensters für die einzelnen Wiederherstellungspunkte in Stunden an. Replizierte Computer können innerhalb eines Zeitfensters an einem beliebigen Punkt wiederhergestellt werden.
 3. Geben Sie unter **App-konsistente Momentaufnahmehäufigkeit** an, wie häufig (1 bis 12 Stunden) Wiederherstellungspunkte erstellt werden sollen, die anwendungskonsistente Momentaufnahmen enthalten. Hyper-V verwendet zwei Arten von Momentaufnahmen:
-    - **Standardmomentaufnahme:** Bietet eine inkrementelle Momentaufnahme des gesamten virtuellen Computers
-    - **App-konsistente Momentaufnahme:** Erstellt eine Zeitpunkt-Momentaufnahme der Anwendungsdaten innerhalb des virtuellen Computers. VSS (Volume Shadow Copy Service, Volumeschattenkopie-Dienst) stellt sicher, dass Apps zum Zeitpunkt der Momentaufnahme konsistent sind. Aktivieren anwendungskonsistenter Momentaufnahmen, wirkt sich auf Quell-VMs auf die App-Leistung aus. Legen Sie einen Wert fest, der geringer ist als die Anzahl der konfigurierten zusätzlichen Wiederherstellungspunkte.
+    - **Standardmomentaufnahme**: Bietet eine inkrementelle Momentaufnahme des gesamten virtuellen Computers.
+    - **App-konsistente Momentaufnahme**: Erstellt eine Zeitpunkt-Momentaufnahme der Anwendungsdaten innerhalb des virtuellen Computers. VSS (Volume Shadow Copy Service, Volumeschattenkopie-Dienst) stellt sicher, dass Apps zum Zeitpunkt der Momentaufnahme konsistent sind. Aktivieren anwendungskonsistenter Momentaufnahmen, wirkt sich auf Quell-VMs auf die App-Leistung aus. Legen Sie einen Wert fest, der geringer ist als die Anzahl der konfigurierten zusätzlichen Wiederherstellungspunkte.
 4. Geben Sie unter **Datenübertragungskomprimierung** an, ob übertragene Replikationsdaten komprimiert werden sollen.
 5. Wählen Sie **Replikat-VM löschen** aus, um anzugeben, dass die Replikat-VM gelöscht werden sollte, wenn Sie den Schutz für die Quell-VM deaktivieren. Wenn Sie diese Einstellung aktivieren, und Sie deaktivieren den Schutz für die Quell-VMs, wird der virtuelle Computer aus der Site Recovery-Konsole entfernt, die Site Recovery-Einstellungen für die VMM werden aus der VMM-Konsole entfernt, und das Replikat wird gelöscht.
 6. Wenn Sie über das Netzwerk replizieren, geben Sie unter **Methode für anfängliche Replikation** an, ob die erste Replikation sofort gestartet werden soll oder ob Sie sie planen möchten. Um Netzwerkbandbreite zu sparen, sollte der Zeitraum außerhalb Ihrer Spitzenzeiten liegen. Klicken Sie dann auf **OK**.

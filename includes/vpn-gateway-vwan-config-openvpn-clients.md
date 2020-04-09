@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/17/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 921e22e637782ffd744af1a28e6bd43e7dd53c67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55fa01d100c60c6411774373428ff4bbd9a56822
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066096"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80986661"
 ---
 ## <a name="windows-clients"></a><a name="windows"></a>Windows-Clients
 
@@ -130,7 +130,7 @@ ms.locfileid: "80066096"
 5. Extrahieren Sie den privaten Schlüssel und den Base64-Fingerabdruck aus der PFX-Datei. Dazu gibt es verschiedene Möglichkeiten. Die Verwendung von OpenSSL auf Ihrem Computer ist eine Möglichkeit.
 
     ```
-    openssl.exe pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
+    openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
     ```
    Die Datei *profileinfo.txt* enthält den privaten Schlüssel und den Fingerabdruck für die Zertifizierungsstelle sowie das Clientzertifikat. Verwenden Sie unbedingt den Fingerabdruck des Clientzertifikats.
 
@@ -161,7 +161,7 @@ ms.locfileid: "80066096"
 11. Um über die Befehlszeile eine Verbindung herzustellen, geben Sie den folgenden Befehl ein:
   
     ```
-    sudo openvpn –-config <name and path of your VPN profile file>&
+    sudo openvpn --config <name and path of your VPN profile file>&
     ```
 12. Um über die grafische Benutzeroberfläche eine Verbindung herzustellen, wechseln Sie zu „Systemeinstellungen“.
 13. Klicken Sie auf **+** , um eine neue VPN-Verbindung hinzuzufügen.

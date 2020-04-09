@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e4b2e7c40295d134fe24def0f140bc8097c21250
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.openlocfilehash: 3431576acbb01a0cc3a5f372460b28be05bf7ce7
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77132825"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437463"
 ---
 # <a name="sensor-partner-integration"></a>Integration von Partnern für Sensordaten
 
@@ -42,7 +42,7 @@ Die Telemetriedaten werden einer kanonischen Nachricht zugeordnet, die zur Verar
 
 **API-Entwicklung**
 
-Die APIs enthalten eine technische Swagger-Dokumentation. Weitere Informationen zu den APIs und den entsprechenden Anforderungen oder Antworten finden Sie unter [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
+Die APIs enthalten eine technische Swagger-Dokumentation. Weitere Informationen zu den APIs und den entsprechenden Anforderungen oder Antworten finden Sie unter [Swagger](https://aka.ms/FarmBeatsSwagger).
 
 **Authentifizierung**
 
@@ -50,7 +50,7 @@ FarmBeats verwendet Microsoft Azure Active Directory-Authentifizierung. Der Az
 
 Weitere Informationen finden Sie unter [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization).
 
-Für den Datenhub von FarmBeats wird eine Bearerauthentifizierung verwendet, für die die folgenden Anmeldeinformationen benötigt werden:
+Der Datenhub von FarmBeats verwendet die Bearerauthentifizierung, für die die folgenden Anmeldeinformationen benötigt werden:
    - Client-ID
    - Geheimer Clientschlüssel
    - Mandanten-ID
@@ -90,9 +90,9 @@ Hier sind die gängigsten Anforderungsheader aufgeführt, die bei einem für den
 
 **Kopfzeile** | **Beschreibung und Beispiel**
 --- | ---
-Content-Type | Das Anforderungsformat (Content-Type: application/<format>). Für APIs des FarmBeats-Datenhubs wird das Format „JSON“ verwendet. Content-Type: application/json
+Content-Type | Das Anforderungsformat (Content-Type: application/<format>). Für FarmBeats-Datenhub-APIs wird das Format „JSON“ verwendet. Content-Type: application/json
 Authorization | Gibt das Zugriffstoken an, das zum Ausführen eines API-Aufrufs erforderlich ist. Autorisierung: Bearer <Access-Token>
-Akzeptieren | Das Antwortformat. Für APIs des FarmBeats-Datenhubs wird das Format „JSON“ verwendet. Accept: application/json
+Akzeptieren | Das Antwortformat. Für FarmBeats-Datenhub-APIs wird das Format „JSON“ verwendet. Accept: application/json
 
 **API-Anforderungen**
 
@@ -119,7 +119,7 @@ JSON ist ein gängiges sprachunabhängiges Datenformat, bei dem eine einfache Te
 
 ## <a name="metadata-specifications"></a>Metadatenspezifikationen
 
-Der FarmBeats-Datenhub bietet folgende APIs, die Gerätepartnern die Erstellung und Verwaltung von Geräte- oder Sensormetadaten ermöglichen.
+Der FarmBeats-Datenhub bietet folgende APIs, die Geräte-Partnerunternehmen die Erstellung und Verwaltung von Geräte- oder Sensormetadaten ermöglichen.
 
 - /**DeviceModel:** „DeviceModel“ entspricht den Metadaten des Geräts, beispielsweise dem Hersteller und dem Gerätetyp, wobei es sich um ein Gateway oder einen Knoten handeln kann.
 - /**Device:** „Gerät“ (Device) entspricht einem physischen Gerät, das in dem landwirtschaftlichen Betrieb vorhanden ist.
@@ -139,10 +139,10 @@ Der FarmBeats-Datenhub bietet folgende APIs, die Gerätepartnern die Erstellung 
   DeviceModelId  |ID des zugeordneten Gerätemodells |
   HardwareId   |Eindeutige ID für das Gerät (beispielsweise MAC-Adresse).  |
   ReportingInterval |Berichtsintervall in Sekunden |
-  Location    |Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Geräts |
+  Position    |Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Geräts |
   ParentDeviceId | ID des übergeordneten Geräts, mit dem dieses Gerät verbunden ist. Z. B., wenn ein Knoten mit einem Gateway verbunden ist, besitzt der Knoten den parentDeviceID-Wert als Gateway. |
   Name  | Name zum Identifizieren der Ressource. Gerätepartner müssen einen Namen senden, der mit dem Gerätenamen auf der Partnerseite übereinstimmt. Wenn der Gerätename auf der Seite des Gerätepartners benutzerdefiniert ist, muss derselbe benutzerdefinierte Name in FarmBeats angegeben werden.  |
-  Beschreibung  | Eine aussagekräftige Beschreibung  |
+  BESCHREIBUNG  | Eine aussagekräftige Beschreibung  |
   Eigenschaften  |Zusätzliche Eigenschaften des Herstellers  |
   **SensorModel** |  |
   Type (analog, digital)  |Gibt an, ob der Sensor analog oder digital ist.|
@@ -161,7 +161,7 @@ Der FarmBeats-Datenhub bietet folgende APIs, die Gerätepartnern die Erstellung 
   **Sensor**  |  |
   HardwareId  | Eindeutige, vom Hersteller festgelegte ID für den Sensor
   SensorModelId  | ID des zugeordneten Sensormodells
-  Location  | Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Sensors
+  Position  | Breitengrad (–90 bis +90), Längengrad (–180 bis +180) und Höhe (in Metern) des Sensors
   Port > Name  |Name und Typ des Ports, über den der Sensor mit dem Gerät verbunden ist. Hierbei muss es sich um denselben Namen handeln, der auch im Gerätemodell definiert ist.
   deviceId  | ID des Geräts, mit dem der Sensor verbunden ist
   Name  | Name zum Identifizieren der Ressource. Beispiel: der Sensorname oder Produktname und Modellnummer oder Produktcode.
@@ -188,7 +188,7 @@ Der Translator sollte in der Lage sein, neue Geräte oder Sensoren hinzuzufügen
 
 ### <a name="add-new-types-and-units"></a>Hinzufügen neuer Typen und Einheiten
 
-FarmBeats unterstützt das Hinzufügen neuer Messungstypen und Maßeinheiten für Sensoren. Weitere Informationen zur API „/ExtendedType“ finden Sie unter [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
+FarmBeats unterstützt das Hinzufügen neuer Messungstypen und Maßeinheiten für Sensoren. Weitere Informationen zur API „/ExtendedType“ finden Sie unter [Swagger](https://aka.ms/FarmBeatsSwagger).
 
 ## <a name="telemetry-specifications"></a>Telemetriespezifikationen
 

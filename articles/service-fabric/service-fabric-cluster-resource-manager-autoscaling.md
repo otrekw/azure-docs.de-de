@@ -5,12 +5,12 @@ author: radicmilos
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: 3660ece7add8f279292340aae9ab445b682fe045
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: edcf2774873cc23a74a47cc1c9a12e2daa2ed419
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75452082"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984536"
 ---
 # <a name="introduction-to-auto-scaling"></a>Einführung in die automatische Skalierung
 Die automatische Skalierung ist eine weitere Funktion von Service Fabric, mit der Ihre Dienste basierend auf der Last, die von Diensten gemeldet wird, oder basierend auf ihrer Ressourcennutzung dynamisch skaliert werden können. Die automatische Skalierung bietet eine hervorragende Flexibilität und ermöglicht die Bereitstellung zusätzlicher Instanzen oder Partitionen Ihres Diensts bei Bedarf. Der gesamte Prozess der automatischen Skalierung ist automatisiert und transparent. Sobald Sie Ihre Richtlinien für einen Dienst eingerichtet haben, müssen Sie keine manuellen Skalierungsvorgänge auf Dienstebene mehr durchführen. Die automatische Skalierung kann während der Erstellung des Diensts oder zu einem beliebigen Zeitpunkt durch Aktualisieren des Diensts aktiviert werden.
@@ -136,6 +136,9 @@ Wie beim Mechanismus, der die Skalierung durch Hinzufügen oder Entfernen von In
 
 ### <a name="using-application-manifest"></a>Verwenden des Anwendungsmanifests
 ``` xml
+<NamedPartition>
+    <Partition Name="0" />
+</NamedPartition>
 <ServiceScalingPolicies>
     <ScalingPolicy>
         <AverageServiceLoadScalingTrigger MetricName="servicefabric:/_MemoryInMB" LowerLoadThreshold="300" UpperLoadThreshold="500" ScaleIntervalInSeconds="600"/>

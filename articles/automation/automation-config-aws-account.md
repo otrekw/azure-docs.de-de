@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 596dc334a412b3e0839d7661a23af771e5cd7394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 891db5d17ddde681f75845fdca6c9252c5b32b86
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75366939"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520834"
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>Authentifizieren von Runbooks mit Amazon Web Services
 
@@ -26,7 +26,7 @@ Zum Authentifizieren mit AWS müssen Sie einen Satz mit AWS-Anmeldeinformationen
 
 Damit Azure Automation mit AWS kommunizieren kann, müssen Sie zuerst Ihre AWS-Anmeldeinformationen abrufen und als Ressourcen in Azure Automation speichern. Führen Sie die folgenden Schritte aus, die im AWS-Dokument [Managing Access Keys for your AWS Account](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html) (Verwalten von Zugriffsschlüsseln für Ihr AWS-Konto) enthalten sind, um einen Zugriffsschlüssel zu erstellen und die **Zugriffsschlüssel-ID** und den **geheimen Zugriffsschlüssel** zu kopieren (optional können Sie auch die Schlüsseldatei herunterladen und an einem sicheren Ort speichern).
 
-Nachdem Sie Ihre AWS-Sicherheitsschlüssel erstellt und kopiert haben, müssen Sie ein Anmeldeinformationsobjekt mit einem Azure Automation-Konto erstellen, um sie sicher zu speichern und in den Runbooks darauf verweisen zu können. Führen Sie die Schritte im Abschnitt zum **Erstellen eines neuen Anmeldeinformationsobjekts** im Artikel [Anmeldeinformationsobjekte in Azure Automation](shared-resources/credentials.md#to-create-a-new-credential-asset-with-the-azure-portal) aus, und geben Sie die folgenden Informationen ein:
+Nachdem Sie Ihre AWS-Sicherheitsschlüssel erstellt und kopiert haben, müssen Sie ein Anmeldeinformationsobjekt mit einem Azure Automation-Konto erstellen, um sie sicher zu speichern und in den Runbooks darauf verweisen zu können. Führen Sie die Schritte im Abschnitt zum **Erstellen eines neuen Anmeldeinformationsobjekts** im Artikel [Anmeldeinformationsobjekte in Azure Automation](shared-resources/credentials.md#create-a-new-credential-asset-with-the-azure-portal) aus, und geben Sie die folgenden Informationen ein:
 
 1. Geben Sie im Feld **Name** den Wert **AWScred** oder einen anderen geeigneten Wert gemäß Ihren Benennungsvorgaben ein.
 2. Geben Sie im Feld **Benutzername** Ihre **Zugriffs-ID** und im Feld **Kennwort** bzw. **Kennwort bestätigen** den **geheimen Zugriffsschlüssel** ein.

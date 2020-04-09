@@ -7,14 +7,14 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 02/26/2020
+ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: 479145f4d42c0708c109ab582e76e3691971c6ad
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3b005bc359b3c1b0cafe663b7ce2b599b10973a1
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061401"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474002"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit PowerShell
 
@@ -28,7 +28,7 @@ Sie benötigen ein Azure-Abonnement, um auf Azure Storage zuzugreifen. Wenn Sie 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Für diesen Schnellstart ist das Azure PowerShell-Modul Az, Version 0.7 oder höher, erforderlich. Führen Sie `Get-InstalledModule -Name Az -AllVersions | select Name,Version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-Az-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
+Für diesen Schnellstart ist das Azure PowerShell-Modul Az, Version 0.7 oder höher, erforderlich. Führen Sie `Get-InstalledModule -Name Az -AllVersions | select Name,Version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-az-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
 
 [!INCLUDE [storage-quickstart-tutorial-intro-include-powershell](../../../includes/storage-quickstart-tutorial-intro-include-powershell.md)]
 
@@ -36,7 +36,7 @@ Für diesen Schnellstart ist das Azure PowerShell-Modul Az, Version 0.7 oder hö
 
 Blobs werden immer in einen Container hochgeladen. Sie können Gruppen von Blobs ähnlich wie Dateien in Ordnern auf Ihrem Computer organisieren.
 
-Legen Sie den Containernamen fest, und erstellen Sie den Container dann mithilfe von [New-AzStorageContainer](/powershell/module/az.storage/new-AzStoragecontainer). Legen Sie die Berechtigungen auf `blob` fest, um öffentlichen Zugriff auf die Dateien zu ermöglichen. Der Containername in diesem Beispiel lautet *quickstartblobs*.
+Legen Sie den Containernamen fest, und erstellen Sie den Container dann mithilfe von [New-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer). Legen Sie die Berechtigungen auf `blob` fest, um öffentlichen Zugriff auf die Dateien zu ermöglichen. Der Containername in diesem Beispiel lautet *quickstartblobs*.
 
 ```powershell
 $containerName = "quickstartblobs"
@@ -47,7 +47,7 @@ New-AzStorageContainer -Name $containerName -Context $ctx -Permission blob
 
 Blobspeicher unterstützt Block-, Anfüge- und Seitenblobs. VHD-Dateien, die IaaS-VMs zugrunde liegen, sind Seitenblobs. Anfügeblobs dienen zur Protokollierung und werden beispielsweise verwendet, wenn Sie etwas in eine Datei schreiben und ihr nach und nach weitere Informationen hinzufügen möchten. Die meisten Dateien, die im Blob Storage gespeichert werden, sind allerdings Blockblobs. 
 
-Rufen Sie zum Hochladen einer Datei in ein Blockblob zuerst einen Containerverweis und anschließend einen Verweis auf das Blockblob in diesem Container auf. Nachdem Sie den Blobverweis abgerufen haben, können Sie mithilfe von [Set-AzStorageBlobContent](/powershell/module/az.storage/set-AzStorageblobcontent) Daten in das Blockblob hochladen. Bei diesem Vorgang wird das Blob erstellt, falls es nicht vorhanden ist, oder überschrieben, falls es vorhanden ist.
+Rufen Sie zum Hochladen einer Datei in ein Blockblob zuerst einen Containerverweis und anschließend einen Verweis auf das Blockblob in diesem Container auf. Nachdem Sie den Blobverweis abgerufen haben, können Sie mithilfe von [Set-AzStorageBlobContent](/powershell/module/az.storage/set-azstorageblobcontent) Daten in das Blockblob hochladen. Bei diesem Vorgang wird das Blob erstellt, falls es nicht vorhanden ist, oder überschrieben, falls es vorhanden ist.
 
 In den folgenden Beispielen werden die Dateien *Image001.jpg* und *Image002.png* aus dem Ordner *D:\\_TestImages* des lokalen Datenträgers in den erstellten Container hochgeladen.
 
@@ -69,7 +69,7 @@ Laden Sie beliebig viele Dateien hoch, bevor Sie fortfahren.
 
 ## <a name="list-the-blobs-in-a-container"></a>Auflisten der Blobs in einem Container
 
-Verwenden Sie [Get-AzStorageBlob](/powershell/module/az.storage/get-AzStorageblob), um eine Liste der Blobs im Container abzurufen. In diesem Beispiel werden nur die Namen der hochgeladenen Blobs angezeigt.
+Verwenden Sie [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob), um eine Liste der Blobs im Container abzurufen. In diesem Beispiel werden nur die Namen der hochgeladenen Blobs angezeigt.
 
 ```powershell
 Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name
@@ -77,7 +77,7 @@ Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name
 
 ## <a name="download-blobs"></a>Herunterladen von Blobs
 
-Laden Sie die Blobs auf Ihren lokalen Datenträger herunter. Legen Sie für jedes Blob, das heruntergeladen werden soll, den Namen fest, und rufen Sie [Get-AzStorageBlobContent](/powershell/module/az.storage/get-AzStorageblobcontent) zum Herunterladen des Blobs auf.
+Laden Sie die Blobs auf Ihren lokalen Datenträger herunter. Legen Sie für jedes Blob, das heruntergeladen werden soll, den Namen fest, und rufen Sie [Get-AzStorageBlobContent](/powershell/module/az.storage/get-azstorageblobcontent) zum Herunterladen des Blobs auf.
 
 Im folgenden Beispiel werden die Blobs in das Verzeichnis *D:\\_TestImages\Downloads* auf dem lokalen Datenträger heruntergeladen. 
 

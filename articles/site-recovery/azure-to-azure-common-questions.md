@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 99fed1d2b1246e4c099f275708f694e5d7ea2f22
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 7d3bcc32dc8f1412a5adbc175a5f8618628bce83
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77190821"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547889"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Häufig gestellte Fragen sind: Azure-zu-Azure-Notfallwiederherstellung
 
@@ -49,7 +49,7 @@ Das Site Recovery-Team und das Azure-Kapazitätsverwaltungsteam planen eine ausr
 Ja. Site Recovery unterstützt die Notfallwiederherstellung von virtuellen Computern, für die Azure Disk Encryption aktiviert ist. Wenn Sie die Replikation aktivieren, werden von Azure sämtliche erforderlichen Schlüssel und Geheimnisse für die Datenträgerverschlüsselung im Benutzerkontext aus der Quellregion in die Zielregion kopiert. Wenn Sie nicht über die entsprechenden Berechtigungen verfügen, kann Ihr Sicherheitsadministrator die Schlüssel und Geheimnisse mithilfe eines Skripts kopieren.
 
 - Site Recovery unterstützt Azure Disk Encryption für virtuelle Azure-Computer unter Windows.
-- Site Recovery unterstützt Azure Disk Encryption Version 0.1, die über ein Schema verfügt, das Azure Active Directory (Azure AD) erfordert. Site Recovery unterstützt auch Version 1.1, die Azure AD nicht erfordert. [Erfahren Sie mehr über die Erweiterungsschemas für Azure Disk Encryption](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata).
+- Site Recovery unterstützt Azure Disk Encryption Version 0.1, die über ein Schema verfügt, das Azure Active Directory (Azure AD) erfordert. Site Recovery unterstützt auch Version 1.1, die Azure AD nicht erfordert. [Erfahren Sie mehr über die Erweiterungsschemas für Azure Disk Encryption](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schema).
   - Für Azure Disk Encryption Version 1.1 müssen Sie die virtuellen Windows-Computer mit verwalteten Datenträgern verwenden.
   - Weitere Informationen zum Aktivieren der Replikation für verschlüsselte virtuelle Computer finden Sie [hier](azure-to-azure-how-to-enable-replication-ade-vms.md).
 
@@ -73,9 +73,9 @@ Ja, das Hinzufügen neuer Datenträger zu replizierten VMs und das Aktivieren de
 
 - Wenn Sie den Schutz für die hinzugefügten Datenträger aktivieren, wird die Warnung nach der ersten Replikation nicht mehr angezeigt.
 - Wenn Sie die Replikation für den Datenträger nicht aktivieren, können Sie die Warnung verwerfen.
-- Beim Failover eines virtuellen Computers, dem ein Datenträger hinzugefügt und für den die Replikation aktiviert wurde, zeigen Replikationspunkte die Datenträger an, die zur Wiederherstellung zur Verfügung stehen. 
+- Wenn Sie ein Failover für einen virtuellen Computer durchführen, der über einen hinzugefügten Datenträger verfügt und für den die Replikation aktiviert ist, sind Replikationspunkte vorhanden. Die Replikationspunkte zeigen die Datenträger an, die für die Wiederherstellung verfügbar sind.
 
-Wenn beispielsweise ein virtueller Computer über einen einzelnen Datenträger verfügt und Sie einen neuen hinzufügen, zeigen Replikationspunkte, die vor dem Hinzufügen des Datenträgers erstellt wurden, an, dass der Replikationspunkt aus „1 von 2 Datenträgern“ besteht.
+Wenn beispielsweise ein virtueller Computer über einen einzelnen Datenträger verfügt und Sie einen neuen hinzufügen, Möglicherweise gibt es einen Replikationspunkt, der vor dem Hinzufügen des Datenträgers erstellt wurde. Dieser Replikationspunkt zeigt an, dass er „1 von 2 Datenträgern“ umfasst.
 
 Site Recovery unterstützt kein „Entfernen eines Datenträgers im laufendem Betrieb“ aus einem replizierten virtuellen Computer. Wenn Sie einen VM-Datenträger entfernen, müssen Sie die Replikation für den virtuellen Computer deaktivieren und dann erneut aktivieren.
 
@@ -93,7 +93,7 @@ Mit Site Recovery können Sie VMs zwischen zwei beliebigen Regionen im gleichen 
 
 ### <a name="does-site-recovery-require-internet-connectivity"></a>Ist für Site Recovery eine Internetverbindung erforderlich?
 
-Nein, für Site Recovery ist keine Internetverbindung erforderlich. Benötigt wird jedoch ein Zugriff auf die URLs und IP-Adressbereiche von Site Recovery, wie unter [Netzwerke für die Notfallwiederherstellung für virtuelle Azure-Computer](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) erwähnt.
+Nein, für Site Recovery ist keine Internetverbindung erforderlich. Benötigt wird jedoch ein Zugriff auf die URLs und IP-Adressbereiche von Site Recovery, wie unter [Netzwerke für die Notfallwiederherstellung für virtuelle Azure-Computer](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls) erwähnt.
 
 ### <a name="can-i-replicate-an-application-that-has-a-separate-resource-group-for-separate-tiers"></a>Kann ich eine Anwendung mit einer separaten Ressourcengruppe für verschiedene Ebenen replizieren?
 
@@ -193,6 +193,10 @@ In einer Replikationsgruppe können 16 virtuelle Computer zusammen repliziert we
 
 Das Aktivieren von Multi-VM-Konsistenz kann die Workloadleistung beeinträchtigen, da diese Option CPU-intensiv ist. Multi-VM-Konsistenz sollte nur verwendet werden, wenn Computer dieselbe Workload ausführen und Konsistenz für mehrere Computer erforderlich ist. Wenn Sie beispielsweise in einer Anwendung zwei SQL Server-Instanzen und zwei Webserver haben, sollten Sie die Multi-VM-Konsistenz nur für die SQL Server-Instanzen einrichten.
 
+### <a name="can-you-add-an-already-replicating-vm-to-a-replication-group"></a>Können Sie einer Replikationsgruppe einen virtuellen Computer hinzufügen, der bereits repliziert wird?
+
+Sie können einer neuen Replikationsgruppe einen virtuellen Computer hinzufügen, während Sie die Replikation aktivieren. Sie können auch einer vorhandenen Replikationsgruppe einen virtuellen Computer hinzufügen, während Sie die Replikation aktivieren. Es ist jedoch nicht möglich, einer neuen oder vorhandenen Replikationsgruppe einen virtuellen Computer hinzuzufügen, der bereits repliziert wird.
+
 ## <a name="failover"></a>Failover
 
 ### <a name="how-is-capacity-ensured-in-the-target-region-for-azure-vms"></a>Wie wird die Kapazität in der Zielregion für Azure VMs garantiert?
@@ -207,7 +211,7 @@ Ein Failover erfolgt nicht automatisch. Sie können Failover mit einem Mausklick
 
 Die öffentliche IP-Adresse einer Produktionsanwendung kann nach einem Failover nicht beibehalten werden.
 
-Wenn Sie einen Workload als Teil des Failover-Prozesses hochfahren, müssen Sie der Workload eine öffentliche Azure-IP-Ressource zuweisen. Die öffentliche Azure-IP-Ressource muss in der Zielregion verfügbar sein. Sie können die öffentliche Azure-IP-Ressource manuell zuweisen sie mit einem Wiederherstellungsplan automatisieren. Erfahren Sie mehr über das [Einrichten von öffentlichen IP-Adressen nach einem Failover](concepts-public-ip-address-with-site-recovery.md#public-ip-address-assignment-using-recovery-plan).  
+Wenn Sie einen Workload als Teil des Failover-Prozesses hochfahren, müssen Sie der Workload eine öffentliche Azure-IP-Ressource zuweisen. Die öffentliche Azure-IP-Ressource muss in der Zielregion verfügbar sein. Sie können die öffentliche Azure-IP-Ressource manuell zuweisen sie mit einem Wiederherstellungsplan automatisieren. Erfahren Sie mehr über das [Einrichten von öffentlichen IP-Adressen nach einem Failover](concepts-public-ip-address-with-site-recovery.md#public-ip-address-assignment-using-recovery-plan).
 
 ### <a name="can-i-keep-a-private-ip-address-during-a-failover"></a>Kann ich eine private IP-Adresse während des Failovers beibehalten?
 
@@ -281,7 +285,7 @@ Dies hängt von der Situation ab. Wenn der virtuelle Computer der Quellregion vo
 
 Nach dem erneuten Schützen dauert das Failback ungefähr die gleiche Zeitspanne wie das Failover von der primären Region in eine sekundäre Region.
 
-## <a name="capacity"></a>Kapazität
+## <a name="capacity"></a><a name="capacity"></a>Kapazität
 
 ### <a name="how-is-capacity-ensured-in-the-target-region-for-azure-vms"></a>Wie wird die Kapazität in der Zielregion für Azure VMs garantiert?
 
@@ -295,7 +299,7 @@ Ja. Sie können [reservierte Azure-VMs](https://azure.microsoft.com/pricing/rese
 
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Werden Replikationsdaten an den Site Recovery-Dienst gesendet?
 
-Nein. Site Recovery fängt replizierte Daten nicht ab und besitzt keine Informationen dazu, was auf Ihren virtuellen Computern ausgeführt wird. Nur die Metadaten, die zum Orchestrieren von Replikation und Failover erforderlich sind, werden an den Site Recovery-Dienst gesendet.  
+Nein. Site Recovery fängt replizierte Daten nicht ab und besitzt keine Informationen dazu, was auf Ihren virtuellen Computern ausgeführt wird. Nur die Metadaten, die zum Orchestrieren von Replikation und Failover erforderlich sind, werden an den Site Recovery-Dienst gesendet.
 
 Site Recovery ist zertifiziert nach ISO 27001:2013, 27018, HIPAA und DPA. Der Dienst durchläuft Bewertungen unter SOC2 und FedRAMP JAB.
 

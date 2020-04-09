@@ -12,12 +12,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
-ms.openlocfilehash: d065439839ba5db479305ae81c61892cb5cf5e70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bbd2e3376f1da3fdf5b10d654a331ce258be5cf
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929453"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422088"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Dynamics 365 (Common Data Service) oder Dynamics CRM mithilfe von Azure Data Factory
 
@@ -324,7 +324,7 @@ Beim Kopieren von Daten in Dynamics werden die folgenden Eigenschaften im Abschn
 | ignoreNullValues | Gibt an, ob NULL-Werte von Eingabedaten (außer Schlüsselfeldern) während des Schreibvorgangs ignoriert werden sollen.<br/>Zulässige Werte sind **true** und **false**.<br>- **true**: Lässt die Daten im Zielobjekt unverändert, wenn Sie einen upsert- oder update-Vorgang ausführen. Fügt beim Ausführen eines insert-Vorgangs einen definierten Standardwert ein.<br/>- **false**: Aktualisiert die Daten im Zielobjekt auf NULL, wenn Sie einen upsert- oder update-Vorgang ausführen. Fügt beim Ausführen eines insert-Vorgangs einen NULL-Wert ein. | Nein (Standardwert ist „false“) |
 
 >[!NOTE]
->Sowohl für die Senke **writeBatchSize** als auch für die Kopieraktivität **[parallelCopies](copy-activity-performance.md#parallel-copy)** für die Dynamics-Senke lautet der Standardwert 10. Daher werden 100 Datensätze gleichzeitig an Dynamics übermittelt.
+>Sowohl für die Senke **writeBatchSize** als auch für die Kopieraktivität **[parallelCopies](copy-activity-performance-features.md#parallel-copy)** für die Dynamics-Senke lautet der Standardwert 10. Daher werden 100 Datensätze gleichzeitig an Dynamics übermittelt.
 
 Für Dynamics 365 online besteht ein Limit von [2 gleichzeitigen Batchaufrufen pro Organisation](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations). Bei Überschreitung dieses Grenzwerts wird ein „Fehler aufgrund von Serverauslastung“ ausgelöst, bevor die erste Anforderung jemals ausgeführt wird. Sorgen Sie dafür, dass writeBatchSize den Wert 10 nicht überschreitet, um eine solche Einschränkung gleichzeitiger Aufrufe zu vermeiden.
 

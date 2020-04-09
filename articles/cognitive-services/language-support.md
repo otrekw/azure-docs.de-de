@@ -7,15 +7,15 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 48cb1ca1427ece0ee30a124b20d3918f1ace47eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4944fd36359f35ff516aa149b357a7cda042fdae
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78274135"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477050"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Unterstützung für natürliche Sprachen in Azure Cognitive Services
 
@@ -30,13 +30,13 @@ Die folgenden Cognitive Services-Instanzen sind sprachunabhängig, und für sie 
 
 * [Maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/faq)
 * [Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview)
-
+* [Freihanderkennung](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/language-support)
 ## <a name="speech"></a>Spracheingabe
 
 * [Custom Speech Service](https://docs.microsoft.com/azure/cognitive-services/custom-speech-service/customspeech-how-to-topics/cognitive-services-custom-speech-change-locale)
-* [Speech-Dienst: Spracherkennung](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#speech-to-text)
+* [Speech Services: Spracherkennung](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#speech-to-text)
 * [Speech-Dienst: Sprachausgabe](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#text-to-speech)
-* [Speech-Dienst: Sprachübersetzung](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#speech-translation)
+* [Speech Services: Sprachübersetzung](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#speech-translation)
 
 ## <a name="language"></a>Sprache
 
