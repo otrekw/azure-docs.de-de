@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
+ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 2ed41f424dfe985cc078314da5b138c7d7bcdf37
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 699bbea9d50c24558f6c9d4671cb6035e4718a43
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925111"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671433"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -23,7 +23,7 @@ Bevor Sie beginnen:
 
 > [!div class="checklist"]
 > * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
-> * [Einrichten Ihrer Entwicklungsumgebung und Erstellen eines leeren Projekts](../../../../quickstarts/setup-platform.md?tabs=xamarin)
+> * [Einrichten Ihrer Entwicklungsumgebung und Erstellen eines leeren Projekts](../../../../quickstarts/setup-platform.md?tabs=xamarin&pivots=programming-language-csharp)
 > * Stellen Sie sicher, dass Sie Zugriff auf ein Mikrofon für die Audioaufnahme haben.
 
 Wenn Sie dies bereits getan haben, umso besser. Wir fahren fort.
@@ -146,4 +146,4 @@ Android- und iOS-Anwendungen werden auf dem Gerät oder im Simulator auf ähnlic
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [footer](../footer.md)]

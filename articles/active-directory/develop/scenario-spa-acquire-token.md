@@ -2,24 +2,21 @@
 title: Abrufen eines Tokens zum Aufrufen einer Web-API (Single-Page-Apps) – Microsoft Identity Platform | Azure
 description: Informationen zum Erstellen einer Single-Page-Webanwendung (Abrufen eines Tokens zum Aufrufen einer API)
 services: active-directory
-documentationcenter: dev-center-name
 author: negoe
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
-ms.openlocfilehash: d5d48a2fc7aca184cf8b6e7761584a8800ca5151
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eeba01a609a1a21ed564c0b9cb78a28a4ad5c95a
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77160065"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882317"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Single-Page-Webanwendung: Abrufen eines Tokens zum Aufrufen einer API
 
@@ -76,20 +73,40 @@ Der MSAL Angular-Wrapper nutzt den HTTP-Interceptor, der Zugriffstoken automatis
 Sie können die Bereiche für APIs in der Konfigurationsoption `protectedResourceMap` angeben. `MsalInterceptor` fordert diese Bereiche beim automatischen Abrufen von Token an.
 
 ```javascript
-//In app.module.ts
+// app.module.ts
 @NgModule({
-  imports: [ MsalModule.forRoot({
-                clientID: 'your_app_id',
-                protectedResourceMap: {"https://graph.microsoft.com/v1.0/me", ["user.read", "mail.send"]}
-            })]
-         })
-
-providers: [ ProductService, {
-        provide: HTTP_INTERCEPTORS,
-        useClass: MsalInterceptor,
-        multi: true
+  declarations: [
+    // ...
+  ],
+  imports: [
+    // ...
+    MsalModule.forRoot({
+      auth: {
+        clientId: 'Enter_the_Application_Id_Here',
+      }
+    },
+    {
+      popUp: !isIE,
+      consentScopes: [
+        'user.read',
+        'openid',
+        'profile',
+      ],
+      protectedResourceMap: [
+        ['https://graph.microsoft.com/v1.0/me', ['user.read']]
+      ]
+    })
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true
     }
-   ],
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 ```
 
 Für den erfolgreichen und den fehlerhaften automatischen Tokenabruf stellt MSAL Angular Rückrufe bereit, die Sie abonnieren können. Sie müssen auch daran denken, das Abonnement zu kündigen.
@@ -103,7 +120,7 @@ Für den erfolgreichen und den fehlerhaften automatischen Tokenabruf stellt MSAL
 
 ngOnDestroy() {
    this.broadcastService.getMSALSubject().next(1);
-   if(this.subscription) {
+   if (this.subscription) {
      this.subscription.unsubscribe();
    }
  }
@@ -149,16 +166,16 @@ Sie können optionale Ansprüche zu folgenden Zwecken verwenden:
 
 - Einbinden zusätzlicher Ansprüche in Token für Ihre Anwendung
 - Ändern des Verhaltens bestimmter Ansprüche, die von Azure AD in Token zurückgegeben werden
-- Hinzufügen und Zugreifen auf benutzerdefinierte Ansprüche für Ihre Anwendung 
+- Hinzufügen und Zugreifen auf benutzerdefinierte Ansprüche für Ihre Anwendung
 
 Zum Anfordern optionaler Ansprüche in `IdToken` können Sie ein als Zeichenfolge dargestelltes Anspruchsobjekt an das Feld `claimsRequest` der `AuthenticationParameters.ts`-Klasse senden.
 
 ```javascript
-"optionalClaims":  
+"optionalClaims":
    {
       "idToken": [
             {
-                  "name": "auth_time", 
+                  "name": "auth_time",
                   "essential": true
              }
       ],

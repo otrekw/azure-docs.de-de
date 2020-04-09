@@ -8,18 +8,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 3cf4f2314c7de2b2f7d581faeea88fe3c3177e81
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0547f254a64cecc7072ee9ff79eb50204b34bc17
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975056"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548865"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Generieren eines selbstsignierten Azure Application Gateway-Zertifikats mit einer benutzerdefinierten Stammzertifizierungsstelle
 
 Seit der Application Gateway v2-SKU können vertrauenswürdige Stammzertifikate verwendet werden, damit Back-End-Server zugelassen werden können. Hierdurch werden die Authentifizierungszertifikate ersetzt, die in der v1-SKU erforderlich sind. Das *Stammzertifikat* ist ein Base64-kodiertes Stammzertifikat im X.509-Format (.CER) vom Back-End-Zertifikatserver. Es kennzeichnet die Stammzertifizierungsstelle, die das Serverzertifikat ausgestellt hat. Das Serverzertifikat wird dann für die SSL-Kommunikation verwendet.
 
-Application Gateway vertraut standardmäßig dem Zertifikat Ihrer Website, wenn es von einer bekannten Zertifizierungsstelle (etwa GoDaddy oder Digicert) signiert ist. In diesem Fall müssen Sie das Stammzertifikat nicht explizit hochladen. Weitere Informationen finden Sie unter [Übersicht über SSL-Beendigung und End-to-End-SSL mit Application Gateway](ssl-overview.md). Wenn Sie jedoch eine Entwicklungs- oder Testumgebung haben und kein verifiziertes, von einer Zertifizierungsstelle signiertes Zertifikat kaufen möchten, können Sie Ihre eigene benutzerdefinierte Zertifizierungsstelle und dann ein selbstsigniertes Zertifikat erstellen. 
+Application Gateway vertraut standardmäßig dem Zertifikat Ihrer Website, wenn es von einer bekannten Zertifizierungsstelle (etwa GoDaddy oder DigiCert) signiert ist. In diesem Fall müssen Sie das Stammzertifikat nicht explizit hochladen. Weitere Informationen finden Sie unter [Übersicht über SSL-Beendigung und End-to-End-SSL mit Application Gateway](ssl-overview.md). Wenn Sie jedoch eine Entwicklungs- oder Testumgebung haben und kein verifiziertes, von einer Zertifizierungsstelle signiertes Zertifikat kaufen möchten, können Sie Ihre eigene benutzerdefinierte Zertifizierungsstelle und dann ein selbstsigniertes Zertifikat erstellen. 
 
 > [!NOTE]
 > Selbstsignierten Zertifikaten wird standardmäßig nicht vertraut, und es kann schwierig sein, sie zu verwalten. Außerdem kann es sein, dass für sie veraltete Hash- und Verschlüsselungssammlungen verwendet werden, die möglicherweise nicht stark sind. Um eine bessere Sicherheit zu erreichen, sollten Sie ein Zertifikat kaufen, das von einer bekannten Zertifizierungsstelle signiert ist.
@@ -75,7 +75,7 @@ Erstellen Sie Ihr Stammzertifikat der Zertifizierungsstelle mit OpenSSL.
 
 Im nächsten Schritt erstellen Sie mit OpenSSL ein Serverzertifikat.
 
-### <a name="create-the-certificates-key"></a>Erstellen des Schlüssels des Zertifikats
+### <a name="create-the-certificates-key"></a>Erstellen des Zertifikatschlüssels
 
 Verwenden Sie den folgenden Befehl, um den Schlüssel für das Serverzertifikat zu generieren.
 
@@ -88,7 +88,7 @@ Verwenden Sie den folgenden Befehl, um den Schlüssel für das Serverzertifikat 
 Die Zertifikatsignieranforderung ist ein öffentlicher Schlüssel, der einer Zertifizierungsstelle erteilt wird, wenn ein Zertifikat angefordert wird. Die Zertifizierungsstelle gibt das Zertifikat für diese spezielle Anforderung aus.
 
 > [!NOTE]
-> Der allgemeine Name (Common Name, CN) für das Serverzertifikat muss sich von der Domäne des Zertifikatausstellers unterscheiden. In diesem Fall lautet der CN für den Aussteller z. B. `www.contoso.com`, und der CN des Serverzertifikats ist `www.fabrikam.com`.
+> Der allgemeine Name (Common Name, CN) für das Serverzertifikat muss sich von der Domäne des Zertifikatausstellers unterscheiden. In diesem Fall lautet der CN für den Aussteller z. B. `www.contoso.com`, und der CN des Serverzertifikats ist `www.fabrikam.com`.
 
 
 1. Verwenden Sie den folgenden Befehl, um die Zertifikatsignieranforderung zu generieren:
@@ -101,7 +101,7 @@ Die Zertifikatsignieranforderung ist ein öffentlicher Schlüssel, der einer Zer
 
    ![Serverzertifikat](media/self-signed-certificates/server-cert.png)
 
-### <a name="generate-the-certificate-with-the-csr-and-the-key-and-sign-it-with-the-cas-root-key"></a>Generieren des Zertifikats mit der Zertifikatsignieranforderung und dem Schlüssel und Signieren des Zertifikats mit dem Stammschlüssel der Zertifizierungsstelle
+### <a name="generate-the-certificate-with-the-csr-and-the-key-and-sign-it-with-the-cas-root-key"></a>Generieren des Zertifikats mit der Zertifikatsignieranforderung und dem Schlüssel sowie Signieren des Zertifikats mit dem Stammschlüssel der Zertifizierungsstelle
 
 1. Verwenden Sie den folgenden Befehl, um das Zertifikat zu erstellen:
 
@@ -127,7 +127,7 @@ Die Zertifikatsignieranforderung ist ein öffentlicher Schlüssel, der einer Zer
 
 ## <a name="configure-the-certificate-in-your-web-servers-ssl-settings"></a>Konfigurieren des Zertifikats in den SSL-Einstellungen Ihres Webservers
 
-Konfigurieren Sie SSL in Ihrem Webserver mit den Dateien „fabrikam.crt“ und „fabrikam.key“. Wenn Ihr Webserver nicht in der Lage ist, zwei Dateien zu akzeptieren, können Sie diese mit OpenSSL-Befehlen zu einer einzigen PEM-oder PFX-Datei kombinieren.
+Konfigurieren Sie SSL in Ihrem Webserver mit den Dateien „fabrikam.crt“ und „fabrikam.key“. Wenn Ihr Webserver nicht in der Lage ist, zwei Dateien zu akzeptieren, können Sie diese mit OpenSSL-Befehlen zu einer einzigen PEM- oder PFX-Datei kombinieren.
 
 ### <a name="iis"></a>IIS
 
@@ -230,9 +230,9 @@ $probe = Get-AzApplicationGatewayProbeConfig `
   -Name testprobe `
   -ApplicationGateway $gw
 
-## Add the configuration to the HTTP Setting and don’t forget to set the “hostname” field
+## Add the configuration to the HTTP Setting and don't forget to set the "hostname" field
 ## to the domain name of the server certificate as this will be set as the SNI header and
-## will be used to verify the backend server’s certificate. Note that SSL handshake will
+## will be used to verify the backend server's certificate. Note that SSL handshake will
 ## fail otherwise and might lead to backend servers being deemed as Unhealthy by the probes
 
 Add-AzApplicationGatewayBackendHttpSettings `
@@ -262,12 +262,13 @@ Add-AzApplicationGatewayRequestRoutingRule `
 
 Set-AzApplicationGateway -ApplicationGateway $gw 
 ```
+
 ### <a name="verify-the-application-gateway-backend-health"></a>Überprüfen der Back-End-Integrität eines Anwendungsgateways
 
 1. Klicken Sie auf die **Back-End-Integrität**-Ansicht Ihres Anwendungsgateways, um zu prüfen, ob der Test fehlerfrei ist.
-1.  Sie sollten sehen, dass für den HTTPS-Test der Status **Fehlerfrei** angezeigt wird.
+1. Sie sollten sehen, dass für den HTTPS-Test der Status **Fehlerfrei** angezeigt wird.
 
-    ![HTTPS-Test](media/self-signed-certificates/https-probe.png)
+![HTTPS-Test](media/self-signed-certificates/https-probe.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

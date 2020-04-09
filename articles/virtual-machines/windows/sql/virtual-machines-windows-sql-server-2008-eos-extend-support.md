@@ -14,12 +14,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7c93538982b7fd7bb2f5ac25027ed92cc6ccbfa3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: faaff9e9ad5982efac6409f2284158a3d0711331
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357848"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548406"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Verlängerung des Supports für SQL Server 2008 und SQL Server 2008 R2 mit Azure
 
@@ -66,7 +66,7 @@ SQL Server erfordert App-konsistente Azure Site Recovery-Momentaufnahmen, um d
 
 Für die Notfallwiederherstellung von SQL Server am Ende des Supportlebenszyklus auf einem virtuellen Azure-Computer stehen folgende Lösungen zur Verfügung:
 
-- **SQL Server-Sicherungen:** Verwenden Sie Azure Backup, um Ihre SQL Server-Instanz am Ende des Supportlebenszyklus vor Ransomware, unbeabsichtigtem Löschen und Beschädigungen zu schützen. Für die Lösung ist derzeit eine Vorschauversion für SQL Server nach dem Ende des Supportlebenszyklus verfügbar. Diese unterstützt unter Windows 2008 R2 SP1 SQL Server 2008 und 2008 R2. Ausführlichere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#scenario-support).
+- **SQL Server-Sicherungen:** Verwenden Sie Azure Backup, um Ihre SQL Server 2008- und 2008 R2-Instanzen am Ende des Supportlebenszyklus mit einem RPO von 15 Minuten und Point-in-Time-Wiederherstellung vor Ransomware, unbeabsichtigtem Löschen und Beschädigungen zu schützen. Ausführlichere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/sql-support-matrix#scenario-support).
 - **Protokollversand:** Sie können ein Protokollversandreplikat in einer anderen Zone oder Azure-Region mit fortlaufenden Wiederherstellungen erstellen, um das RTO zu verringern. Der Protokollversand muss manuell konfiguriert werden.
 - **Azure Site Recovery**: Sie können Ihren virtuellen Computer mithilfe der Azure Site Recovery-Replikation zonen- und regionsübergreifend replizieren. SQL Server erfordert App-konsistente Momentaufnahmen, um die Wiederherstellung im Notfall zu gewährleisten. Azure Site Recovery bietet für die Notfallwiederherstellung von SQL Server am Ende des Supportlebenszyklus eine RPO von mindestens einer Stunde und eine RTO von mindestens zwei Stunden (plus SQL Server-Wiederherstellungszeit).
 

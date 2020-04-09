@@ -2,27 +2,22 @@
 title: Microsoft Identity Platform und SAML-Bearerassertionsflow | Azure
 description: Erfahren Sie, wie Sie Daten mithilfe des SAML-Bearerassertionsflows aus Microsoft Graph abrufen, ohne den Benutzer zur Eingabe von Anmeldeinformationen aufzufordern.
 services: active-directory
-documentationcenter: ''
 author: umeshbarapatre
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 16f30473ded5f1de5dc94c1cff9da96165b1a01c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1cd79b1f9e4cd3afadee250da0c184c0c5b8ac07
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76700208"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886176"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft Identity Platform und OAuth 2.0-SAML-Bearerassertionsflow
 Mit dem OAuth 2.0-SAML-Bearerassertionsflow können Sie ein OAuth-Zugriffstoken mithilfe einer SAML-Assertion anfordern, wenn ein Client eine vorhandene Vertrauensstellung verwenden muss. Die auf die SAML-Assertion angewandte Signatur stellt die Authentifizierung der autorisierten App bereit. Eine SAML-Assertion ist ein XML-Sicherheitstoken, das von einem Identitätsanbieter ausgegeben und von einem Dienstanbieter genutzt wird. Der Dienstanbieter identifiziert basierend auf den Inhalten des Tokens den Antragsteller der Assertion für sicherheitsrelevante Zwecke.

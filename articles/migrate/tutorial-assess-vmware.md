@@ -1,24 +1,19 @@
 ---
-title: Bewerten virtueller VMware-Computer für die Migration zu Azure unter Verwendung der Azure Migrate-Serverbewertung
-description: Hier erfahren Sie, wie Sie lokale virtuelle VMware-Computer mithilfe von Azure Migrate für die Migration zu Azure bewerten.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: Bewerten von virtuellen VMware-Computern für die Migration zu Azure
+description: Hier erfahren Sie, wie Sie lokale VMware-VMs mit der Azure Migrate-Serverbewertung für die Migration zu Azure bewerten.
 ms.topic: tutorial
-ms.date: 11/19/2019
-ms.author: hamusa
-ms.openlocfilehash: 7f161afe13bad8c548806d4b4ceb9372dc511cc3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 03/23/2019
+ms.openlocfilehash: 944b7c12a353a29a172576974261eece63ebf668
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79223287"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548742"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>Bewerten virtueller VMware-Computer unter Verwendung der Azure Migrate-Serverbewertung
 
-In diesem Artikel erfahren Sie, wie Sie lokale virtuelle VMware-Computer (Virtual Machines, VMs) unter Verwendung des Serverbewertungstools in Azure Migrate bewerten.
+In diesem Artikel erfahren Sie, wie Sie lokale virtuelle VMware-Computer (Virtual Machines, VMs) mit dem Tool [Azure Migrate-Serverbewertung](migrate-services-overview.md#azure-migrate-server-assessment-tool) bewerten.
 
-[Azure Migrate](migrate-services-overview.md) stellt einen Hub mit Tools bereit, die Ihnen dabei helfen, Apps, Infrastrukturen und Workloads zu ermitteln, zu bewerten und zu Microsoft Azure zu migrieren. Der Hub umfasst Azure Migrate-Tools sowie ISV-Angebote (Independent Software Vendor, unabhängiger Softwarehersteller) von Microsoft-Partnern.
 
 Dieses Tutorial ist das zweite in einer Reihe zur Bewertung und Migration von VMware-VMs zu Azure. In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -35,17 +30,11 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[Absolvieren Sie das erste Tutorial](tutorial-prepare-vmware.md) dieser Reihe. Andernfalls funktionieren die Anweisungen in diesem Tutorial nicht.
-
-Im ersten Tutorial müssen folgende Schritte ausgeführt werden:
-
-- [Einrichten von Azure-Berechtigungen](tutorial-prepare-vmware.md#prepare-azure) für Azure Migrate
-- [Vorbereiten von VMware](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment) für die Bewertung:
-   - [Überprüfen](migrate-support-matrix-vmware.md#vmware-requirements) der VMware-Einstellungen
-   - Einrichten von Berechtigungen in VMware zum Erstellen eines virtuellen VMware-Computers mit einer OVA-Vorlage
-   - Einrichten eines [Kontos für die VM-Ermittlung](migrate-support-matrix-vmware.md#vmware-requirements) 
-   - Verfügbarmachen der [erforderlichen Ports](migrate-support-matrix-vmware.md#port-access)
-   - Ermitteln der für den Zugriff auf Azure [erforderlichen URLs](migrate-replication-appliance.md#url-access)
+- [Absolvieren Sie das erste Tutorial](tutorial-prepare-vmware.md) dieser Reihe. Andernfalls funktionieren die Anweisungen in diesem Tutorial nicht.
+- Im ersten Tutorial müssen folgende Schritte ausgeführt werden:
+    - [Vorbereiten von Azure](tutorial-prepare-vmware.md#prepare-azure) auf die Arbeit mit Azure Migrate
+    - [Vorbereiten von VMware](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment) auf die Bewertung. Dies umfasst das Überprüfen der VMware-Einstellungen und das Einrichten eines Kontos, über das Azure Migrate auf vCenter Server zugreifen kann.
+    - [Überprüfen](tutorial-prepare-vmware.md#verify-appliance-settings-for-assessment), welche Komponenten für die Bereitstellung der Azure Migrate-Appliance für die VMware-Bewertung erforderlich sind
 
 ## <a name="set-up-an-azure-migrate-project"></a>Einrichten eines Azure Migrate-Projekts
 
@@ -74,17 +63,15 @@ Richten Sie wie folgt ein neues Azure Migrate-Projekt ein:
 1. Überprüfen Sie die Einstellungen unter **Überprüfen + Tools hinzufügen**, und wählen Sie **Tools hinzufügen** aus.
 1. Warten Sie einige Minuten, bis das Azure Migrate-Projekt bereitgestellt wurde. Sie werden zur Projektseite weitergeleitet. Sollte das Projekt nicht angezeigt werden, können Sie auf dem Azure Migrate-Dashboard unter **Server** darauf zugreifen.
 
-## <a name="set-up-the-appliance-vm"></a>Einrichten der Appliance-VM
+## <a name="set-up-the-azure-migrate-appliance"></a>Einrichten der Azure Migrate-Appliance
 
-Von der Azure Migrate-Serverbewertung wird eine einfache VMware-VM-Appliance ausgeführt. Diese Appliance sucht nach virtuellen Computern und sammelt entsprechende Meta- und Leistungsdaten.
+Bei der Azure Migrate-Serverbewertung wird eine einfache Azure Migrate-Appliance verwendet. Die Appliance ermittelt VMs und sendet Meta- und Leistungsdaten zu VMs an Azure Migrate.
+- Die Appliance kann mit einer heruntergeladenen OVA-Vorlage auf einer VMware-VM eingerichtet werden. Alternativ können Sie die Appliance auf einem virtuellen oder physischen Computer mit einem PowerShell-Installationsskript einrichten.
+- In diesem Tutorial wird die OVA-Vorlage verwendet. Lesen Sie [diesen Artikel](deploy-appliance-script.md), wenn Sie die Appliance mithilfe eines Skripts einrichten möchten.
 
-Die Einrichtung der Appliance umfasst Folgendes:
+Überprüfen Sie nach der Erstellung der Appliance, ob diese eine Verbindung mit der Azure Migrate-Serverbewertung herstellen kann. Führen Sie dann die erstmalige Konfiguration durch, und registrieren Sie sie für das Azure Migrate-Projekt.
 
-- Herunterladen einer OVA-Vorlagendatei und Importieren der Datei in vCenter Server
-- Erstellen der Appliance und Überprüfen der Verbindungsherstellung mit der Azure Migrate-Serverbewertung
-- Durchführen der Erstkonfiguration für die Appliance und Registrieren der Appliance beim Azure Migrate-Projekt
 
-Für ein einzelnes Azure Migrate-Projekt können mehrere Appliances eingerichtet werden. Über alle Appliances hinweg kann die Serverbewertung insgesamt bis zu 35.000 virtuelle Computer ermitteln. Pro Appliance können maximal 10.000 Server ermittelt werden.
 
 ### <a name="download-the-ova-template"></a>Herunterladen der OVA-Vorlage
 
@@ -134,7 +121,10 @@ Vergewissern Sie sich, dass die Appliance-VM eine Verbindung mit [Azure-URLs](mi
 
 ### <a name="configure-the-appliance"></a>Konfigurieren der Appliance
 
-Richten Sie die Appliance wie folgt ein:
+Führen Sie die Ersteinrichtung der Appliance durch.
+
+> [!NOTE]
+> Wenn Sie die Appliance mithilfe eines [PowerShell-Skripts](deploy-appliance-script.md) und nicht mit der heruntergeladenen OVA einrichten, sind die ersten beiden Schritte in diesem Verfahren nicht relevant.
 
 1. Klicken Sie in der vSphere-Clientkonsole mit der rechten Maustaste auf den virtuellen Computer, und wählen Sie **Konsole öffnen** aus.
 1. Geben Sie die Sprache, die Zeitzone und das Kennwort für die Appliance an.
@@ -164,77 +154,30 @@ Richten Sie die Appliance wie folgt ein:
 1. Geben Sie einen Namen für die Appliance an. Für den Namen können bis zu 14 alphanumerische Zeichen angegeben werden.
 1. Wählen Sie **Registrieren**.
 
+
 ## <a name="start-continuous-discovery"></a>Starten der kontinuierlichen Ermittlung
 
 Die Appliance muss eine Verbindung mit der vCenter Server-Instanz herstellen, um die Konfigurations- und Leistungsdaten der VMs zu ermitteln.
 
 ### <a name="specify-vcenter-server-details"></a>vCenter Server-Details angeben
 1. Geben Sie unter **vCenter Server-Details angeben** den Namen (FQDN) oder die IP-Adresse der vCenter Server-Instanz an. Sie können den Standardport beibehalten oder einen benutzerdefinierten Port angeben, an dem vCenter Server lauscht.
-1. Geben Sie unter **Benutzername** und **Kennwort** die Anmeldeinformationen für das vCenter Server-Konto an, über das die Appliance virtuelle Computer in der vCenter Server-Instanz ermittelt. 
+2. Geben Sie unter **Benutzername** und **Kennwort** die Anmeldeinformationen für das vCenter Server-Konto an, über das die Appliance virtuelle Computer in der vCenter Server-Instanz ermittelt. 
 
-   Vergewissern Sie sich, dass das Konto über die [erforderlichen Berechtigungen für die Ermittlung](migrate-support-matrix-vmware.md#vmware-requirements) verfügt. Sie können [den Ermittlungsbereich festlegen](tutorial-assess-vmware.md#set-the-scope-of-discovery), indem Sie den Zugriff auf das vCenter-Konto einschränken.
-1. Vergewissern Sie sich durch Auswählen von **Verbindung überprüfen**, dass die Appliance eine Verbindung mit vCenter Server herstellen kann.
+    - Sie sollten im [vorherigen Tutorial](tutorial-prepare-vmware.md#set-up-an-account-for-assessment) ein Konto mit den erforderlichen Berechtigungen eingerichtet haben.
+    - Wenn Sie die Ermittlung auf bestimmte VMware-Objekte (vCenter Server-Rechenzentren, Cluster, einen Ordner mit Clustern, Hosts, einen Ordner mit Hosts oder einzelne VMs) begrenzen möchten, hilft Ihnen die Anleitung in [diesem Artikel](set-discovery-scope.md) beim Einschränken des von Azure Migrate genutzten Kontos weiter.
 
-### <a name="specify-vm-credentials"></a>Angeben der VM-Anmeldeinformationen
-Zur Ermittlung von Anwendungen, Rollen und Features sowie zur Visualisierung von Abhängigkeiten der virtuellen Computer können Sie VM-Anmeldeinformationen mit Zugriff auf die virtuellen VMware-Computer angeben. Sie können Anmeldeinformationen für virtuelle Windows-Computer und Anmeldeinformationen für virtuelle Linux-Computer hinzufügen. Weitere Informationen zu den erforderlichen Zugriffsberechtigungen finden Sie [hier](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware).
+3. Vergewissern Sie sich durch Auswählen von **Verbindung überprüfen**, dass die Appliance eine Verbindung mit vCenter Server herstellen kann.
+4. Klicken Sie unter **Anwendungen und Abhängigkeiten auf VMs ermitteln** optional auf **Anmeldeinformationen hinzufügen**, und geben Sie das Betriebssystem, für das die Anmeldeinformationen relevant sind, und den Benutzernamen und das Kennwort für die Anmeldeinformationen an. Klicken Sie anschließend auf **Hinzufügen**.
 
-> [!NOTE]
-> Diese Eingabe ist optional. Sie wird jedoch benötigt, wenn Sie die Anwendungsermittlung und die Visualisierung von Abhängigkeiten ohne Agent ermöglichen möchten.
+    - Hier können Sie optional Anmeldeinformationen hinzufügen, wenn Sie ein Konto erstellt haben, das für das [Feature „Anwendungsermittlung“](how-to-discover-applications.md) oder das [Feature „Abhängigkeitsanalyse ohne Agent“](how-to-create-group-machine-dependencies-agentless.md) verwendet werden soll.
+    - Wenn Sie diese Features nicht verwenden, können Sie diese Einstellung überspringen.
+    - Sehen Sie sich die Anmeldeinformationen für [App-Ermittlung](migrate-support-matrix-vmware.md#application-discovery) oder für die [Analyse ohne Agent](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) an.
 
-1. Wählen Sie unter **Anwendungen und Abhängigkeiten auf VMs ermitteln** die Option **Anmeldeinformationen hinzufügen** aus.
-1. Wählen Sie unter **Betriebssystem** eine Option aus.
-1. Geben Sie einen Anzeigenamen für die Anmeldeinformationen an.
-1. Geben Sie unter **Benutzername** und **Kennwort** ein Konto an, das mindestens über den Gastzugriff auf die virtuellen Computer verfügt.
-1. Wählen Sie **Hinzufügen**.
+5. Wählen Sie **Speichern und Ermittlung starten** aus, um die VM-Ermittlung zu starten.
 
-Nachdem Sie die vCenter Server-Instanz und die VM-Anmeldeinformationen (optional) angegeben haben, wählen Sie **Speichern und Ermittlung starten** aus, um die Ermittlung der lokalen Umgebung zu starten.
-
-Es dauert etwa 15 Minuten, bis Metadaten von ermittelten VMs im Portal angezeigt werden. Die Ermittlung installierter Anwendungen, Rollen und Features dauert etwas. Die Dauer hängt davon ab, wie viele virtuelle Computer ermittelt werden. Bei 500 VMs dauert es ungefähr 1 Stunde, bis der Anwendungsbestand im Azure Migrate-Portal angezeigt wird.
-
-### <a name="set-the-scope-of-discovery"></a>Festlegen des Ermittlungsbereichs
-
-Sie können den Ermittlungsbereich festlegen, indem Sie den Zugriff des für die Ermittlung verwendeten vCenter-Kontos einschränken. Sie können den Bereich auf vCenter Server-Rechenzentren, auf Cluster, auf einen Clusterordner, auf Hosts, auf einen Hostordner oder auf einzelne virtuelle Computer festlegen.
-
-Führen Sie zum Festlegen des Bereichs die folgenden Schritte aus:
-
-#### <a name="1-create-a-vcenter-user-account"></a>1. Erstellen eines vCenter-Benutzerkontos
-1.  Melden Sie sich als vCenter Server-Administrator beim vSphere-Webclient an.
-1.  Wählen Sie **Verwaltung** > **SSO users and Groups** (SSO-Benutzer und -Gruppen) und anschließend die Registerkarte **Benutzer** aus.
-1.  Wählen Sie das Symbol für **Neuer Benutzer** aus.
-1.  Geben Sie die erforderlichen Informationen für die Erstellung eines neuen Benutzers ein, und wählen Sie anschließend **OK** aus.
-
-#### <a name="2-define-a-new-role-with-required-permission"></a>2. Definieren einer neuen Rolle mit der erforderlichen Berechtigung
-Dieser Schritt ist für die Servermigration ohne Agent erforderlich.
-1.  Melden Sie sich als vCenter Server-Administrator beim vSphere-Webclient an.
-1.  Navigieren Sie zu **Verwaltung** > **Rollen-Manager**.
-1.  Wählen Sie im Dropdownmenü Ihre vCenter Server-Instanz aus.
-1.  Wählen Sie **Create role** (Rolle erstellen) aus.
-1.  Geben Sie einen Namen für die neue Rolle ein (beispielsweise <em>Azure_Migrate</em>).
-1.  Weisen Sie der neu definierten Rolle [Berechtigungen](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) zu.
-1.  Klicken Sie auf **OK**.
-
-#### <a name="3-assign-permissions-on-vcenter-objects"></a>3. Zuweisen von Berechtigungen für vCenter-Objekte
-
-Es gibt zwei Möglichkeiten, um Berechtigungen für Inventarobjekte in vCenter dem vCenter-Benutzerkonto mit zugewiesener Rolle zuzuweisen.
-
-Bei der Serverbewertung muss die Rolle **Schreibgeschützt** auf das vCenter-Benutzerkonto für alle übergeordneten Objekte angewendet werden, von denen die zu ermittelnden virtuellen Computer gehostet werden. Alle übergeordneten Objekte werden einbezogen: Host, Hostordner, Cluster und Clusterordner in der Hierarchie bis hinauf zum Rechenzentrum. Diese Berechtigungen werden an die untergeordneten Objekte in der Hierarchie weitergegeben.
-
-Analog dazu muss bei der Servermigration eine benutzerdefinierte Rolle mit [Berechtigungen](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) auf das vCenter-Benutzerkonto für alle übergeordneten Objekte angewendet werden, von denen die zu migrierenden virtuellen Computer gehostet werden. Diese Rolle kann <em>Azure_Migrate</em> heißen.
-
-![Zuweisen von Berechtigungen](./media/tutorial-assess-vmware/assign-perms.png)
-
-Die alternative Vorgehensweise besteht darin, das Benutzerkonto und die Rolle auf Rechenzentrumsebene zuzuweisen und diese an die untergeordneten Objekte weiterzugeben. Weisen Sie dem Konto anschließend für alle Objekte (beispielsweise virtuelle Computer), die Sie nicht ermitteln bzw. migrieren möchten, eine Rolle vom Typ **Kein Zugriff** zu. 
-
-Diese alternative Konfiguration ist umständlich. Dabei besteht das Risiko einer versehentlichen Preisgabe von Zugangsdaten, da jedem neuen untergeordneten Objekt auch automatisch die vom übergeordneten Objekt geerbten Zugangsrechte erteilt werden. Aus diesem Grund empfiehlt es sich, die erste Methode zu verwenden.
-
-> [!NOTE]
-> Die Serverbewertung kann aktuell keine virtuellen Computer ermitteln, wenn dem vCenter-Konto Zugriff auf der vCenter-VM-Ordnerebene gewährt wurde. Wenn Sie den Ermittlungsbereich mithilfe von VM-Ordnern festlegen möchten, können Sie dazu das folgende Verfahren verwenden. Dadurch wird sichergestellt, dass das vCenter-Konto über schreibgeschützten Zugriff auf der VM-Ebene verfügt.
->
-> 1. Weisen Sie reine Leseberechtigungen für alle VMs in den VM-Ordnern zu, auf denen die Ermittlung basieren soll.
-> 1. Erteilen Sie überall dort, wo die VMs gehostet werden, reinen Lesezugriff auf alle übergeordneten Objekte. Alle übergeordneten Objekte (Host, Hostordner, Cluster, Clusterordner) in der Hierarchie bis hinauf zum Rechenzentrum werden einbezogen. Die Berechtigungen müssen nicht an alle untergeordneten Objekte weitergegeben werden.
-> 1. Verwenden Sie die Anmeldeinformationen für die Ermittlung, indem Sie das Rechenzentrum als **Sammlungsbereich** auswählen. Durch die eingerichtete rollenbasierte Zugriffssteuerung wird sichergestellt, dass der entsprechende vCenter-Benutzer nur Zugriff auf die mandantenspezifischen virtuellen Computer hat.
->
-> Beachten Sie, dass Host- und Clusterordner unterstützt werden.
+Die Ermittlung funktioniert wie folgt:
+- Es dauert ca. 15 Minuten, bis die ermittelten VM-Metadaten im Portal angezeigt werden.
+- Die Ermittlung installierter Anwendungen, Rollen und Features dauert etwas. Die Dauer hängt davon ab, wie viele virtuelle Computer ermittelt werden. Bei 500 VMs dauert es ungefähr ein Stunde, bis der Anwendungsbestand im Azure Migrate-Portal angezeigt wird.
 
 ### <a name="verify-vms-in-the-portal"></a>Überprüfen virtueller Computer im Portal
 

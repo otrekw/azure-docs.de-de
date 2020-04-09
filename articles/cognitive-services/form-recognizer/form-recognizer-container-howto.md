@@ -2,19 +2,19 @@
 title: Installieren und Ausführen eines Containers für die Formularerkennung
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel wird erklärt, wie Sie den Formularerkennungscontainer von Azure Cognitive Services verwenden, um Formular- und Tabellendaten zu analysieren.
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.author: dapine
-ms.openlocfilehash: c8ce4b913548429ff83e0b8aa3cb65455fc9b4c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 8cfa9114c5a5e57882cb84b604c1cf71be9acc52
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79474695"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878339"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>Installieren und Ausführen eines Containers für die Formularerkennung (Vorschau)
 

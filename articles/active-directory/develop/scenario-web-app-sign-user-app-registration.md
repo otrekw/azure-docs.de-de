@@ -2,24 +2,21 @@
 title: Registrieren einer Web-App, die Benutzer anmeldet – Microsoft Identity Platform | Azure
 description: Erfahren Sie, wie Sie eine Web-App zum Anmelden von Benutzern registrieren.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f2513b1fee022199f040ba0dcf83110c0b3b1365
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d2eb5356b1abc54508fd6bf8d35fd9fc39d02ec
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76701568"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881578"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Web-App für Benutzeranmeldungen: App-Registrierung
 

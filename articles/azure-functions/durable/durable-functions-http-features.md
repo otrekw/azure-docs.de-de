@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 29d837446960b7535b26284efdfab7a1c59ea968
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fece1155d2f707f11dda9f3896bd8a08deff1557
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132499"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802382"
 ---
 # <a name="http-features"></a>HTTP-Features
 
@@ -232,7 +232,7 @@ Zur Laufzeit gibt die konfigurierte Tokenquelle automatisch ein OAuth 2.0-Zugri
 * Token werden niemals im Zustand der dauerhaften Orchestrierung gespeichert.
 * Sie müssen keinen Code schreiben, um den Tokenabruf zu verwalten.
 
-Ein ausführlicheres Beispiel finden Sie in den [vorkompilierten C#-Beispielen für „RestartVMs“](https://github.com/Azure/azure-functions-durable-extension/blob/v2/samples/v2/precompiled/RestartVMs.cs).
+Ein ausführlicheres Beispiel finden Sie in den [vorkompilierten C#-Beispielen für „RestartVMs“](https://github.com/Azure/azure-functions-durable-extension/blob/dev/samples/precompiled/RestartVMs.cs).
 
 Verwaltete Identitäten sind nicht auf die Azure-Ressourcenverwaltung beschränkt. Sie können verwaltete Identitäten für den Zugriff auf beliebige APIs verwenden, die Azure AD-Bearertoken akzeptieren, einschließlich der Azure-Dienste von Microsoft oder Web-Apps von Partnern. Die Web-App eines Partners kann sogar eine andere Funktions-App sein. Eine Liste mit Azure-Diensten von Microsoft, die die Authentifizierung mit Azure AD unterstützen, finden Sie unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 

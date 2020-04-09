@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 635b65d16ae9a59816506023d323243f043ce7da
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 6fa8bd42eb067124ab6ea1db77e2f3d6fba79638
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350385"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745213"
 ---
 # <a name="restore-an-existing-sql-pool"></a>Wiederherstellen eines vorhandenen SQL-Pools
 
@@ -28,12 +28,12 @@ In diesem Artikel erfahren Sie, wie Sie einen vorhandenen SQL-Pool in Azure Syna
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-1. Bevor Sie beginnen, müssen Sie [Azure PowerShell installieren](https://docs.microsoft.com/powershell/azure/overview).
+1. Bevor Sie beginnen, müssen Sie [Azure PowerShell installieren](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 2. Sie benötigen einen vorhandenen Wiederherstellungspunkt. Wenn Sie eine neue Wiederherstellung erstellen möchten, lesen Sie [das Tutorial zum Erstellen eines neuen benutzerdefinierten Wiederherstellungspunkts](sql-data-warehouse-restore-points.md).
 
 ## <a name="restore-an-existing-sql-pool-through-powershell"></a>Wiederherstellen eines vorhandenen SQL-Pools mit PowerShell
 
-Verwenden Sie das PowerShell-Cmdlet [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase), um einen vorhandenen SQL-Pool anhand eines Wiederherstellungspunkts wiederherzustellen.
+Verwenden Sie das PowerShell-Cmdlet [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), um einen vorhandenen SQL-Pool anhand eines Wiederherstellungspunkts wiederherzustellen.
 
 1. Öffnen Sie PowerShell.
 
@@ -45,13 +45,13 @@ Verwenden Sie das PowerShell-Cmdlet [Restore-AzSqlDatabase](https://docs.microso
 
 5. Wählen Sie den gewünschten Wiederherstellungspunkt mit RestorePointCreationDate aus.
 
-6. Stellen Sie den SQL-Pool anhand des gewünschten Wiederherstellungspunkts mit dem PowerShell-Cmdlet [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) wieder her.
+6. Stellen Sie den SQL-Pool anhand des gewünschten Wiederherstellungspunkts mit dem PowerShell-Cmdlet [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) wieder her.
         1. Um den SQL-Pool auf einem anderen logischen Server wiederherzustellen, stellen Sie sicher, dass Sie den Namen des anderen logischen Servers angeben.  Dieser logische Server kann sich auch in einer anderen Ressourcengruppe und Region befinden.
         2. Zum Wiederherstellen in einem anderen Abonnement verwenden Sie die Schaltfläche „Verschieben“, um den logischen Server in ein anderes Abonnement zu verschieben.
 
 7. Überprüfen Sie, ob der wiederhergestellte SQL-Pool online ist.
 
-8. Nach Abschluss der Wiederherstellung können Sie Ihren wiederhergestellten SQL-Pool konfigurieren. Befolgen Sie hierzu die Anleitung [Konfigurieren der Datenbank nach der Wiederherstellung](../../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery).
+8. Nach Abschluss der Wiederherstellung können Sie Ihren wiederhergestellten SQL-Pool konfigurieren. Befolgen Sie hierzu die Anleitung [Konfigurieren der Datenbank nach der Wiederherstellung](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery).
 
 ```Powershell
 
@@ -100,7 +100,6 @@ $RestoredDatabase.status
     ![Automatische Wiederherstellungspunkte](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - [Wiederherstellen eines gelöschten SQL-Pools](sql-data-warehouse-restore-deleted-dw.md)
 - [Wiederherstellen aus einem SQL-Pool mit Geosicherung](sql-data-warehouse-restore-from-geo-backup.md)
-
- 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 963b86852a7df557ad7179e444e7c3a2692f57d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a14f4d548053fb7aaf6f450176fdc49bc7b119bf
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531451"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421036"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Problembehandlung für die Leistung der Kopieraktivität
 
@@ -88,7 +88,7 @@ Gehen Sie wie folgt vor, falls die Leistung der Kopieraktivität nicht Ihre Erwa
 
   - Überprüfen Sie Ihre Kopierquelle und das Senkenmuster: 
 
-    - Wenn für Ihr Kopiermuster mehr als vier Datenintegrationseinheiten (DIUs) unterstützt werden, helfen Ihnen die Informationen in [diesem Abschnitt](copy-activity-performance.md#data-integration-units) weiter. Sie können generell versuchen, die Anzahl von DIUs zu erhöhen, um eine bessere Leistung zu erzielen. 
+    - Wenn für Ihr Kopiermuster mehr als vier Datenintegrationseinheiten (DIUs) unterstützt werden, helfen Ihnen die Informationen in [diesem Abschnitt](copy-activity-performance-features.md#data-integration-units) weiter. Sie können generell versuchen, die Anzahl von DIUs zu erhöhen, um eine bessere Leistung zu erzielen. 
 
     - Erwägen Sie andernfalls, große Einzeldatasets in mehrere kleinere Datasets zu unterteilen, und ermöglichen Sie die gleichzeitige Ausführung dieser Kopieraufträge, die jeweils für einen Teil der Daten gelten. Hierfür können Sie „Lookup/GetMetadata + ForEach + Copy“ verwenden. Die Lösungsvorlagen [Kopieren von Dateien aus mehreren Containern](solution-template-copy-files-multiple-containers.md), [Migrieren von Daten aus Amazon S3 zu ADLS Gen2](solution-template-migration-s3-azure.md) und [Massenkopieren mit Steuertabelle](solution-template-bulk-copy-with-control-table.md) dienen hier als allgemeine Beispiele.
 
@@ -102,7 +102,7 @@ Gehen Sie wie folgt vor, falls die Leistung der Kopieraktivität nicht Ihre Erwa
 
   - Überprüfen Sie Ihre Kopierquelle und das Senkenmuster: 
 
-    - Wenn für Ihr Kopiermuster mehr als vier Datenintegrationseinheiten (DIUs) unterstützt werden, helfen Ihnen die Informationen in [diesem Abschnitt](copy-activity-performance.md#data-integration-units) weiter. Sie können generell versuchen, die Anzahl von DIUs zu erhöhen, um eine bessere Leistung zu erzielen. 
+    - Wenn für Ihr Kopiermuster mehr als vier Datenintegrationseinheiten (DIUs) unterstützt werden, helfen Ihnen die Informationen in [diesem Abschnitt](copy-activity-performance-features.md#data-integration-units) weiter. Sie können generell versuchen, die Anzahl von DIUs zu erhöhen, um eine bessere Leistung zu erzielen. 
 
     - Gehen Sie andernfalls so vor, dass Sie die [parallelen Kopien](copy-activity-performance-features.md) allmählich optimieren. Beachten Sie, dass sich zu viele parallele Kopien ggf. negativ auf die Leistung auswirken können.
 

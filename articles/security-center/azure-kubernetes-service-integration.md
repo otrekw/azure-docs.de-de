@@ -12,15 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 0743499b019bd1c7b985636e886eee9352284a55
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: d5c74ac760b5746d37468d692c2a46d5aedbee72
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77616072"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436174"
 ---
-# <a name="azure-kubernetes-services-integration-with-security-center-preview"></a>Integration von Security Center in Azure Kubernetes Service (Vorschau)
-Azure Kubernetes Service (AKS) ist der verwaltete Dienst von Microsoft für Entwicklung, Bereitstellung und Verwaltung von Anwendungen in Containern. 
+# <a name="azure-kubernetes-services-integration-with-security-center"></a>Integration von Security Center in Azure Kubernetes Service
+
+Azure Kubernetes Service (AKS) ist der verwaltete Dienst von Microsoft für die Entwicklung, Bereitstellung und Verwaltung von Anwendungen in Containern. 
 
 Verwenden Sie AKS in Verbindung mit dem Standard-Tarif von Azure Security Center (siehe [Preise](security-center-pricing.md)), um einen tieferen Einblick in Ihre AKS-Knoten, den Clouddatenverkehr und die Sicherheitssteuerungen zu erhalten.
 
@@ -34,10 +35,7 @@ Diese beiden Tools gemeinsam bilden das beste cloudnative Kubernetes-Sicherheits
 
 Die gemeinsame Verwendung der beiden Dienste bietet Folgendes:
 
-* **Sicherheitsempfehlungen** – Security Center identifiziert und kategorisiert Ihre AKS-Ressourcen: von Clustern zu einzelnen virtuellen Computern. Anschließend können Sie die Sicherheitsempfehlungen pro Ressource anzeigen. Weitere Informationen finden Sie in den Containerempfehlungen in der [Referenzliste der Empfehlungen](recommendations-reference.md#recs-computeapp). 
-
-    > [!NOTE]
-    > Wenn der Name einer Security Center-Empfehlung mit dem Tag „(Vorschau)“ endet, bezieht sich dies auf die Empfehlung und bedeutet nicht, dass sich das Feature in der Vorschauphase befindet.
+* **Sicherheitsempfehlungen** – Security Center identifiziert und kategorisiert Ihre AKS-Ressourcen: von Clustern zu einzelnen virtuellen Computern. Anschließend können Sie die Sicherheitsempfehlungen pro Ressource anzeigen. Weitere Informationen finden Sie in den Containerempfehlungen in der [Referenzliste der Empfehlungen](recommendations-reference.md#recs-containers). 
 
 * **Umgebungshärtung:** Security Center überwacht ständig die Konfiguration Ihrer Kubernetes-Cluster und Docker-Konfigurationen. Anschließend werden den Branchenstandards entsprechende Sicherheitsempfehlungen generiert.
 
@@ -63,4 +61,4 @@ Weitere Informationen zu den Containersicherheitsfeatures von Security Center fi
 
 * [Integration mit Azure Container Registry](azure-container-registry-integration.md)
 
-* [Datenverwaltung bei Microsoft](https://www.microsoft.com/trust-center/privacy/data-management) – Beschreibt die Datenrichtlinien von Microsoft-Diensten (z.B. Azure, Intune und Office 365), Details zur Microsoft-Datenverwaltung und Aufbewahrungsrichtlinien, die sich auf Ihre Daten auswirken.
+* [Datenverwaltung bei Microsoft:](https://www.microsoft.com/trust-center/privacy/data-management) Beschreibt die Datenrichtlinien von Microsoft-Diensten (z. B. Azure, Intune und Office 365), Details zur Microsoft-Datenverwaltung und die Aufbewahrungsrichtlinien, die sich auf Ihre Daten auswirken

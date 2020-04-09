@@ -4,17 +4,18 @@ description: Dieses Dokument ist dafür vorgesehen, einen Benutzer beim Überpr�
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
+manager: dcscontentpm
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: a88e339e82484c2ec1cd2276f6218fa718b990f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcf86deda32069bf9711dbeb733dc9361e22a771
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75860485"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631773"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Überprüfen des VPN-Durchsatzes zu einem virtuellen Netzwerk
 

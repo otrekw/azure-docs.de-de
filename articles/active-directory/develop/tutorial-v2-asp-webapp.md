@@ -3,25 +3,21 @@ title: Hinzufügen der Anmeldung zur Microsoft Identity Platform-ASP.NET-Web-App
 titleSuffix: Microsoft identity platform
 description: Informationen zum Implementieren einer Microsoft-Anmeldung in einer ASP.NET-Lösung mithilfe einer herkömmlichen webbrowserbasierten Anwendung und des OpenID Connect-Standards
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e33f52d5c1f9c06a5acbae5c66b051ca82ef14c0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 017cc886b3d47a97a29f45979cb49215de31ae0a
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79126641"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80880974"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Hinzufügen der Anmeldung bei Microsoft zu einer ASP.NET-Web-App
 

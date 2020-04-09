@@ -8,18 +8,18 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: ee8dec821e8cbb4657323c167a463b94b7935ab1
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 223544f7ceddce6bc2071d561da1cff1c0d4b53b
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623419"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420149"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Apache Cassandra-Features, die von der Cassandra-API für Azure Cosmos DB unterstützt werden 
 
 Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen. Sie können mit der Cassandra-API für Azure Cosmos DB über Cassandra Open-Source-Client[treiber](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver) des Typs „Cassandra-Abfragesprache v4 [Verbindungsprotokoll](https://github.com/apache/cassandra/blob/trunk/doc/native_protocol_v4.spec)-kompatibel“ kommunizieren. 
 
-Durch Verwendung der Cassandra-API für Azure Cosmos DB können Sie die Vorteile der Apache Cassandra-APIs sowie die von Azure Cosmos DB gebotenen Unternehmensfunktionen nutzen. Die Unternehmensfunktionen umfassen [globale Verteilung](distribute-data-globally.md), [automatische Partitionierung mit horizontalem Hochskalieren](partition-data.md), Gewährleistung der Verfügbarkeit und Latenz, Verschlüsselung bei REST, Sicherungen und vieles mehr.
+Durch Verwendung der Cassandra-API für Azure Cosmos DB können Sie die Vorteile der Apache Cassandra-APIs sowie die von Azure Cosmos DB gebotenen Unternehmensfunktionen nutzen. Die Unternehmensfunktionen umfassen [globale Verteilung](distribute-data-globally.md), [automatische Partitionierung mit Aufskalieren](partition-data.md), Gewährleistung der Verfügbarkeit und Latenz, Verschlüsselung bei REST, Sicherungen und vieles mehr.
 
 ## <a name="cassandra-protocol"></a>Cassandra-Protokoll 
 
@@ -126,7 +126,7 @@ keytool -importcert -alias bc2025ca -file bc2025.crt
 
 # Install the Cassandra libraries in order to get CQLSH:
 echo "deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
-curl https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
+curl https://downloads.apache.org/cassandra/KEYS | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install cassandra
 
@@ -145,6 +145,8 @@ Azure Cosmos DB unterstützt die folgenden Datenbankbefehle für Cassandra-API-K
 
 * CREATE KEYSPACE (Die Replikationseinstellungen für diesen Befehl werden ignoriert.)
 * CREATE TABLE 
+* CREATE INDEX (ohne Angabe des Indexnamens, und vollständige eingefrorene Indizes werden noch nicht unterstützt)
+* ALLOW FILTERING
 * ALTER TABLE 
 * USE 
 * INSERT 
@@ -179,7 +181,7 @@ Azure Cosmos DB unterstützt die rollenbasierte Zugriffssteuerung (RBAC) für di
 
 ## <a name="keyspace-and-table-options"></a>Keyspace- und Tabellenoptionen
 
-Die Optionen für Regionsname, Klasse, Replikationsfaktor und Rechenzentrum im Befehl „CREATE KEYSPACE“ werden derzeit ignoriert. Das System verwendet die Replikationsmethode der [globalen Datenverteilung](global-dist-under-the-hood.md) der zugrunde liegenden Azure Cosmos DB-Instanz, um die Regionen hinzuzufügen. Wenn die Daten regionsübergreifend vorhanden sein müssen, können Sie dies mithilfe von PowerShell, per CLI oder über das Portal auf der Kontoebene aktivieren. Weitere Informationen finden Sie unter [Hinzufügen/Entfernen von Regionen für Ihr Datenbankkonto](how-to-manage-database-account.md#addremove-regions-from-your-database-account). „Durable_writes“ kann nicht deaktiviert werden, da Azure Cosmos DB sicherstellt, dass jeder Schreibvorgang dauerhaft ist. In jeder Region repliziert Azure Cosmos DB die Daten innerhalb der gesamten Replikatgruppe, die sich aus vier Replikaten zusammensetzt. Diese [Konfiguration](global-dist-under-the-hood.md) der Replikatgruppe kann nicht geändert werden.
+Die Optionen für Regionsname, Klasse, Replikationsfaktor und Rechenzentrum im Befehl „CREATE KEYSPACE“ werden derzeit ignoriert. Das System verwendet die Replikationsmethode zur [globalen Datenverteilung](global-dist-under-the-hood.md) der zugrunde liegenden Azure Cosmos DB-Instanz, um die Regionen hinzuzufügen. Wenn die Daten regionsübergreifend vorhanden sein müssen, können Sie dies mithilfe von PowerShell, per CLI oder über das Portal auf der Kontoebene aktivieren. Weitere Informationen finden Sie unter [Hinzufügen/Entfernen von Regionen für Ihr Datenbankkonto](how-to-manage-database-account.md#addremove-regions-from-your-database-account). „Durable_writes“ kann nicht deaktiviert werden, da Azure Cosmos DB sicherstellt, dass jeder Schreibvorgang dauerhaft ist. In jeder Region repliziert Azure Cosmos DB die Daten innerhalb der gesamten Replikatgruppe, die sich aus vier Replikaten zusammensetzt. Diese [Konfiguration](global-dist-under-the-hood.md) der Replikatgruppe kann nicht geändert werden.
  
 Beim Erstellen der Tabelle werden mit Ausnahme von „gc_grace_seconds“ alle Optionen ignoriert, und „gc_grace_seconds“ muss auf Null festgelegt werden.
 Für den Keyspace und die Tabelle steht eine zusätzliche Option namens „cosmosdb_provisioned_throughput“ mit einem Mindestwert von 400 RU/s zur Verfügung. Der Keyspacedurchsatz ermöglicht die tabellenübergreifende gemeinsame Nutzung des Durchsatzes und ist hilfreich in Szenarien, in denen alle Tabellen nicht den bereitgestellten Durchsatz beanspruchen. Mit dem Befehl „ALTER TABLE“ kann der bereitgestellte Durchsatz regionsübergreifend geändert werden. 

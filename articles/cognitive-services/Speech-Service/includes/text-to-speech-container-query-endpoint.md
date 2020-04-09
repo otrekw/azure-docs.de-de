@@ -1,19 +1,19 @@
 ---
 title: Abfrage eines Containerendpunkts für die Sprachsynthese
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 11/04/2019
-ms.author: dapine
-ms.openlocfilehash: 8460ddca5cff2b3da540b5fa8cf66e0687892789
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 6fe07da1e658efa8150c8cafb95bc5719c780aff
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73491102"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879016"
 ---
 Der Container stellt [REST-basierte Endpunkt-APIs](../rest-text-to-speech.md) bereit. Es gibt viele [Beispielquellcodeprojekte](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/) für Plattform-, Framework- und Sprachvarianten.
 

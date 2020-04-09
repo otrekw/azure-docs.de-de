@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: e65681aefc047ba540d4ad0d91ef6e4d2af5f3ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce2891201331ee1efd861d2f13cec78c0551b6ba
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190260"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804570"
 ---
 # <a name="clustering-point-data"></a>Clustering von Punktdaten
 
@@ -62,7 +62,7 @@ Um die Größe des Clusters auf der Blase anzuzeigen, verwenden Sie eine Symbole
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Einfaches Clustering auf Blasenebene" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Einfaches Clustering auf Blasenebene" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/qvzRZY/'>Basic bubble layer clustering (Einfaches Clustering auf Blasenebene)</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -74,7 +74,7 @@ Verwenden Sie Clustering, um die Datenpunktdichte anzuzeigen und gleichzeitig ei
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Gruppierte Symbolebene" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Gruppierte Symbolebene" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>Clustered Symbol layer (Gruppierte Symbolebene)</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -84,7 +84,7 @@ Wärmebilder sind eine hervorragende Möglichkeit, die Dichte der Daten auf der 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Wärmebild mit gewichteten Clustern" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Wärmebild mit gewichteten Clustern" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>Cluster weighted Heat Map (Wärmebild mit gewichteten Clustern)</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -103,7 +103,7 @@ Dieses Beispiel nutzt eine Blasenebene, die Clusterpunkte rendert und ein Klicke
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Cluster getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Cluster getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/moZWeV/'>Cluster getClusterExpansionZoom</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -113,7 +113,7 @@ Die Punktdaten, die ein Cluster darstellt, sind über einen Bereich verteilt. In
 
 <br/>
 
- <iframe height="500" style="width: 100%;" scrolling="no" title="Konvexe Hülle des Clusterbereichs" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+ <iframe height="500" style="width: 100%;" scrolling="no" title="Konvexe Hülle des Clusterbereichs" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>Cluster area convex hull (Konvexe Hülle des Clusterbereichs)</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -123,7 +123,7 @@ Cluster werden oft mithilfe eines Symbols mit der Anzahl der im Cluster enthalte
 
 Im folgenden Beispiel wird ein Aggregatausdruck verwendet. Der Code berechnet eine Anzahl basierend auf der Eigenschaft „Entitätstyp“ der einzelnen Datenpunkte in einem Cluster. Wenn ein Benutzer auf einen Cluster klickt, wird ein Popup mit zusätzlichen Informationen über den Cluster angezeigt.
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Clusteraggregate" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Clusteraggregate" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>Cluster aggregates</a> (Clusteraggregate) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>Code Pen</a>.
 </iframe>
 

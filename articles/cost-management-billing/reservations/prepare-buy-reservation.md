@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/07/2020
 ms.author: banders
-ms.openlocfilehash: 3a45a04786bb9976a42269191c8b24282905f96f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 1f44b0a0e2278bfcfbbf7cde1a3605fe334eaa3f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80436970"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886516"
 ---
 # <a name="buy-a-reservation"></a>Kaufen einer Reservierung
 
@@ -43,8 +43,6 @@ Während Reservierungsrabatte auf Ihre Nutzung angewendet werden, verarbeitet Az
 1. Reservierungen mit einem Bereich für eine Ressourcengruppe
 2. Reservierungen mit einem einzelnen Bereich
 3. Reservierungen mit einem gemeinsam genutzten Bereich
-
-Eine einzelne Ressourcengruppe kann abhängig davon, wie Sie Ihre Reservierungen festlegen, Reservierungsrabatte von mehreren Reservierungen erhalten.
 
 Sie können den Bereich nach dem Erwerb einer Reservierung immer aktualisieren. Navigieren Sie zu diesem Zweck zu der Reservierung, klicken Sie auf **Konfiguration**, und legen Sie den Bereich für die Reservierung erneut fest. Das Neuzuweisen eines Bereichs für eine Reservierung ist keine kommerzielle Transaktion. Die Reservierungsbedingungen ändern sich nicht. Weitere Informationen zum Aktualisieren des Bereichs finden Sie unter [Aktualisieren des Bereichs nach dem Erwerb einer Reservierung](manage-reserved-vm-instance.md#change-the-reservation-scope).
 

@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: c1e740fbfa4bf1e8a77a2d9d6060ab39dba7ae7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0938fbe94cb0d1e6dae3dcb84950a11f90dd9db8
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79228618"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878152"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>Was sind SQL-Datenbank-Instanzenpools (Vorschau)?
 
@@ -59,7 +59,7 @@ Die folgende Liste enthält die wichtigsten Anwendungsfälle, in denen Instanzen
 
 ## <a name="architecture-of-instance-pools"></a>Architektur von Instanzenpools
 
-Instanzenpools haben eine ähnliche Architektur wie reguläre verwaltete Instanzen (*Einzelinstanzen*). Zur Unterstützung von [Bereitstellungen in virtuellen Azure-Netzwerken (VNETs)](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) und zur Gewährleistung der Isolation und Sicherheit für Kunden basieren Instanzenpools außerdem auf [virtuellen Clustern](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture). Virtuelle Cluster stellen eine dedizierte Gruppe isolierter virtueller Computer dar, die im Subnetz des virtuellen Netzwerks des Kunden bereitgestellt werden.
+Instanzenpools haben eine ähnliche Architektur wie reguläre verwaltete Instanzen (*Einzelinstanzen*). Zur Unterstützung von [Bereitstellungen in virtuellen Azure-Netzwerken (VNETs)](../virtual-network/virtual-network-for-azure-services.md) und zur Gewährleistung der Isolation und Sicherheit für Kunden basieren Instanzenpools außerdem auf [virtuellen Clustern](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture). Virtuelle Cluster stellen eine dedizierte Gruppe isolierter virtueller Computer dar, die im Subnetz des virtuellen Netzwerks des Kunden bereitgestellt werden.
 
 Der Hauptunterschied zwischen den beiden Bereitstellungsmodellen besteht darin, dass Instanzenpools Bereitstellungen mehrerer SQL Server-Prozesse auf dem gleichen VM-Knoten ermöglichen, die über [Windows-Auftragsobjekte](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects) ressourcengesteuert werden, während Einzelinstanzen sich immer allein auf einem VM-Knoten befinden.
 
