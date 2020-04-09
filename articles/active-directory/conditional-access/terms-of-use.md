@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1dbd1d96cda88d500e16fff885dae03ebfa230f0
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: a2f06a7c88a7c17f5f93201192664c2d4a97564e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79079906"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480962"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Nutzungsbedingungen für Azure Active Directory
 
@@ -248,7 +248,7 @@ Im Folgenden wird das Verfahren zum Hinzufügen einer Sprache der Nutzungsbeding
 
 ## <a name="per-device-terms-of-use"></a>Nutzungsbedingungen pro Gerät
 
-Mit der Einstellung **Zustimmung der Benutzer auf jedem Gerät erforderlich** können Sie erzwingen, dass die Endbenutzer Ihren Nutzungsbedingungen auf jedem Gerät zustimmen müssen, über das der Zugriff erfolgt. Die Endbenutzer müssen ihre Geräte in Azure AD einbinden. Nach der Einbindung eines Geräts wird die Geräte-ID verwendet, um die Nutzungsbedingungen auf jedem Gerät zu erzwingen.
+Mit der Einstellung **Zustimmung der Benutzer auf jedem Gerät erforderlich** können Sie erzwingen, dass die Endbenutzer Ihren Nutzungsbedingungen auf jedem Gerät zustimmen müssen, über das der Zugriff erfolgt. Die Endbenutzer müssen ihre Geräte in Azure AD registrieren. Nach der Geräteregistrierung wird die Geräte-ID verwendet, um die Nutzungsbedingungen auf dem jeweiligen Gerät zu erzwingen.
 
 Nachstehend finden Sie eine Liste der unterstützten Plattformen und Softwareanwendungen.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 3e3f45c1802d501e2320930c35073ec89ff38124
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: e104877ef641a87eac4ba19bb3342c6e029bf80c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77662347"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294598"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Benutzerdefinierte Metriken in Azure Monitor
 
@@ -35,7 +35,7 @@ Zum Übermitteln von benutzerdefinierten Metriken an Azure Monitor muss die Enti
 Azure Monitor überprüft das Anwendungstoken mithilfe von öffentlichen Azure AD-Schlüsseln, um die Anforderung zu authentifizieren. Die vorhandene Rolle **Überwachungsmetriken veröffentlichen** verfügt bereits über diese Berechtigung. Sie ist im Azure-Portal verfügbar. Dem Dienstprinzipal kann die Rolle **Überwachungsmetriken veröffentlichen** im erforderlichen Gültigkeitsbereich erteilt werden, je nachdem, für welche Ressourcen er benutzerdefinierte Metriken ausgibt. Dabei kann es sich um ein Abonnement, eine Ressourcengruppe oder eine bestimmte Ressource handeln.
 
 > [!NOTE]  
-> Wenn Sie ein Azure AD-Token zum Ausgeben von benutzerdefinierten Metriken anfordern, stellen Sie sicher, dass die Zielgruppe oder Ressource, für die das Token angefordert wird, https://monitoring.azure.com/ ist. Fügen Sie auch unbedingt den nachgestellten Schrägstrich (/) hinzu.
+> Wenn Sie ein Azure AD-Token zum Ausgeben von benutzerdefinierten Metriken anfordern, stellen Sie sicher, dass die Zielgruppe oder Ressource, für die das Token angefordert wird, `https://monitoring.azure.com/` ist. Fügen Sie auch unbedingt den nachgestellten Schrägstrich (/) hinzu.
 
 ### <a name="subject"></a>Subject
 Diese Eigenschaft erfasst, für welche Azure-Ressourcen-ID die benutzerdefinierte Metrik gemeldet wird. Diese Informationen werden in der URL des jeweiligen API-Aufrufs codiert. Jede API kann nur metrische Werte für eine einzelne Azure-Ressource übermitteln.
@@ -152,17 +152,21 @@ Im folgenden Beispiel erstellen Sie eine benutzerdefinierte Metrik namens **Memo
 Es ist nicht erforderlich, eine benutzerdefinierte Metrik in Azure Monitor vorab zu definieren, bevor sie ausgegeben wird. Jeder veröffentlichte Metrikdatenpunkt enthält die Informationen zu Namespace, Name und Dimension. Bei der ersten Ausgabe einer benutzerdefinierten Metrik an Azure Monitor wird also automatisch eine Metrikdefinition erstellt. Diese Metrikdefinition ist dann für jede Ressource sichtbar, für die die Metrik über die Metrikdefinitionen ausgegeben wurde.
 
 > [!NOTE]  
-> Azure Monitor unterstützt noch nicht die Definition von **Einheiten** für eine benutzerdefinierte Metrik.
+> Das Definieren von **Einheiten** für eine benutzerdefinierte Metrik wird von Azure Monitor noch nicht unterstützt.
 
 ## <a name="using-custom-metrics"></a>Verwenden benutzerdefinierter Metriken
 Nachdem benutzerdefinierte Metriken an Azure Monitor übermittelt wurden, können Sie sie über das Azure-Portal durchsuchen und über die Azure Monitor-REST-APIs abfragen. Sie können auch Warnungen erstellen, damit Sie benachrichtigt werden, wenn bestimmte Bedingungen erfüllt sind.
+
+> [!NOTE]
+> Zum Anzeigen von benutzerdefinierten Metriken wird eine Rolle vom Typ „Leser“ oder „Mitwirkender“ benötigt.
+
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>Durchsuchen Ihrer benutzerdefinierten Metriken über das Azure-Portal
-1.  Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-2.  Wählen Sie den Bereich **Überwachen** aus.
-3.  Klicken Sie auf **Metriken**.
-4.  Wählen Sie eine Ressource aus, für die Sie benutzerdefinierte Metriken übermittelt haben.
-5.  Wählen Sie den Namespace Ihrer benutzerdefinierten Metrik aus.
-6.  Wählen Sie die benutzerdefinierte Metrik aus.
+1.    Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+2.    Wählen Sie den Bereich **Überwachen** aus.
+3.    Klicken Sie auf **Metriken**.
+4.    Wählen Sie eine Ressource aus, für die Sie benutzerdefinierte Metriken übermittelt haben.
+5.    Wählen Sie den Namespace Ihrer benutzerdefinierten Metrik aus.
+6.    Wählen Sie die benutzerdefinierte Metrik aus.
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 Während der öffentlichen Vorschau ist die Möglichkeit, benutzerdefinierte Metriken zu veröffentlichen, nur in einigen Azure-Regionen verfügbar. Das bedeutet, dass Metriken nur für Ressourcen in einer der unterstützten Regionen veröffentlicht werden können. Die folgende Tabelle enthält die unterstützten Azure-Regionen für benutzerdefinierte Metriken. Außerdem werden die zugehörigen Endpunkte aufgeführt, an denen Metriken für Ressourcen in diesen Regionen veröffentlicht werden sollten:

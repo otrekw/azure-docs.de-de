@@ -12,11 +12,11 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 6f660426c41b37dd27438c28cbf603bdbf1e58b3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822119"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232614"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Verwalten von Schemas in einer SaaS-Anwendung, die mehrinstanzenfähige SQL-Datenbanken mit Sharding verwendet
 
@@ -171,5 +171,5 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Aktualisieren von Verweisdaten in allen Mandantendatenbanken
 > * Erstellen eines Index für eine Tabelle in allen Mandantendatenbanken
 
-Absolvieren Sie als Nächstes das Tutorial [Ad-hoc-Berichterstellung](saas-multitenantdb-adhoc-reporting.md), um das Ausführen verteilter Abfragen für mehrere Mandantendatenbanken zu untersuchen.
+Absolvieren Sie als Nächstes das Tutorial [Ad-hoc-Berichterstellung](saas-multitenantdb-adhoc-reporting.md), um das Ausführen verteilter Abfragen über Mandantendatenbanken hinweg zu untersuchen.
 

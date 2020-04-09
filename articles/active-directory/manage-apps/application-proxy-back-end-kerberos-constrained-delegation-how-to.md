@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c5e866f61409960447e17ecb50b035eabd53dc38
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74275691"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Problembehandlung von Konfigurationen der eingeschränkten Kerberos-Delegierung für den Anwendungsproxy
@@ -86,7 +86,7 @@ Wie bereits erwähnt, bieten die Fehlermeldungen im Browser einige geeignete Hin
 
 ![Beispiel: Fehler durch falsche KCD-Konfiguration](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
 
-Die entsprechenden Einträge im Ereignisprotokoll weisen dann die Ereignis-IDs 13019 oder 12027 auf. Die Ereignisprotokolle für den Connector befinden sich unter **Anwendungs- und Dienstprotokolle** &gt; **Microsoft** &gt; **AadApplicationProxy** &gt; **Connector**&gt;**Admin**.
+Die entsprechenden Einträge im Ereignisprotokoll weisen dann die Ereignis-IDs 13019 oder 12027 auf. Die Ereignisprotokolle für den Connector befinden sich unter **Anwendungs- und Dienstprotokolle** &gt; **Microsoft** &gt; **AadApplicationProxy** &gt; **Connector** &gt; **Admin**.
 
 ![Ereignis 13019 aus dem Ereignisprotokoll des Anwendungsproxys](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic4.png)
 
@@ -135,7 +135,7 @@ Der Consumer des Kerberos-Tickets, das vom Connector bereitgestellt wurde. In di
 
       ![Fenster zur IIS-Anwendungskonfiguration](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic9.png)
 
-      Nachdem Sie nun die Identität kennen, stellen Sie sicher, dass dieses Konto mit dem betreffenden SPN konfiguriert ist. Ein Beispiel ist `setspn –q http/spn.wacketywack.com`. Geben Sie in der Eingabeaufforderung den folgenden Text ein:
+      Nachdem Sie nun die Identität kennen, stellen Sie sicher, dass dieses Konto mit dem betreffenden SPN konfiguriert ist. z. B. `setspn –q http/spn.wacketywack.com`. Geben Sie in der Eingabeaufforderung den folgenden Text ein:
 
       ![Zeigt das SetSPN-Befehlsfenster](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic10.png)
 

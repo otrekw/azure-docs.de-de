@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7241c8dfbedb24f95c29ea9e1c3f763218a5668d
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72025675"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Häufig gestellte Fragen
@@ -83,7 +83,7 @@ Es ist wichtig, häufig ein Rollover des Kerberos-Entschlüsselungsschlüssels d
 
 Führen Sie diese Schritte auf dem lokalen Server durch, auf dem Azure AD Connect ausgeführt wird:
 
-   **Schritt 1: Abrufen der Liste der AD-Gesamtstrukturen, für die das nahtlose einmalige Anmelden aktiviert ist**
+   **Schritt 1. Rufen Sie die Liste der AD-Gesamtstrukturen ab, für die das nahtlose einmalige Anmelden aktiviert wurde.**
 
    1. Laden Sie zuerst [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview) herunter, und installieren Sie die Software.
    2. Navigieren Sie zum Ordner `%programfiles%\Microsoft Azure Active Directory Connect`.
@@ -91,7 +91,7 @@ Führen Sie diese Schritte auf dem lokalen Server durch, auf dem Azure AD Connec
    4. Führen Sie PowerShell als Administrator aus. Rufen Sie in PowerShell `New-AzureADSSOAuthenticationContext` auf. Mit diesem Befehl sollte ein Popupfenster geöffnet werden, in dem Sie die Anmeldeinformationen des globalen Administrators Ihres Mandanten eingeben können.
    5. Rufen Sie `Get-AzureADSSOStatus | ConvertFrom-Json` auf. Dadurch erhalten Sie die Liste der AD-Gesamtstrukturen (siehe die Liste „Domänen“), in denen diese Funktion aktiviert ist.
 
-   **Schritt 2: Aktualisieren des Kerberos-Entschlüsselungsschlüssels für jede AD-Gesamtstruktur, in der er eingerichtet wurde**
+   **Schritt 2. Aktualisieren Sie den Kerberos-Entschlüsselungsschlüssel in jeder AD-Gesamtstruktur, in der er eingerichtet wurde.**
 
    1. Rufen Sie `$creds = Get-Credential` auf. Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen des Domänenadministrators für die vorgesehene AD-Gesamtstruktur ein.
 
@@ -109,7 +109,7 @@ Führen Sie diese Schritte auf dem lokalen Server durch, auf dem Azure AD Connec
 
 **F: Wie kann ich Seamless SSO deaktivieren?**
 
-   **Schritt 1: Deaktivieren des Features für Ihren Mandanten**
+   **Schritt 1. Deaktivieren Sie das Feature für Ihren Mandanten.**
 
    **Option A: Deaktivieren mit Azure AD Connect**
     
@@ -135,7 +135,7 @@ Führen Sie diese Schritte auf dem lokalen Server durch, auf dem Azure AD Connec
    >[!IMPORTANT]
    >Das Deaktivieren des nahtlosen SSO mithilfe von PowerShell ändert nicht den Status in Azure AD Connect. Das nahtlose einmalige Anmelden wird auf der Seite **Benutzeranmeldung ändern** als aktiviert angezeigt.
 
-   **Schritt 2: Abrufen der Liste der AD-Gesamtstrukturen, für die das nahtlose einmalige Anmelden aktiviert ist**
+   **Schritt 2. Rufen Sie die Liste der AD-Gesamtstrukturen ab, für die das nahtlose einmalige Anmelden aktiviert wurde.**
 
    Führen Sie die Aufgaben 1 bis 4 unten aus, wenn Sie das nahtlose einmalige Anmelden mit Azure AD Connect deaktiviert haben. Wenn Sie das nahtlose einmalige Anmelden stattdessen mithilfe von PowerShell deaktiviert haben, fahren Sie direkt mit Aufgabe 5 fort.
 
@@ -145,7 +145,7 @@ Führen Sie diese Schritte auf dem lokalen Server durch, auf dem Azure AD Connec
    4. Führen Sie PowerShell als Administrator aus. Rufen Sie in PowerShell `New-AzureADSSOAuthenticationContext` auf. Mit diesem Befehl sollte ein Popupfenster geöffnet werden, in dem Sie die Anmeldeinformationen des globalen Administrators Ihres Mandanten eingeben können.
    5. Rufen Sie `Get-AzureADSSOStatus | ConvertFrom-Json` auf. Dadurch erhalten Sie die Liste der AD-Gesamtstrukturen (siehe die Liste „Domänen“), in denen diese Funktion aktiviert ist.
 
-   **Schritt 3: Löschen Sie das Computerkonto `AZUREADSSOACCT` manuell aus jeder in der Liste aufgeführten AD-Gesamtstruktur.**
+   **Schritt 3. Löschen Sie das Computerkonto `AZUREADSSOACCT` manuell aus jeder in der Liste enthaltenen AD-Gesamtstruktur.**
 
 ## <a name="next-steps"></a>Nächste Schritte
 

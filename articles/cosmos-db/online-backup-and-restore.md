@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 4ca4fa8699d9bd4b35f26983f2f7004c63da180f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f5cc4339d7d6dce6d49c8d3eb744fca7fa5774d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441536"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240433"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Onlinesicherung und bedarfsgesteuerte Wiederherstellung in Azure Cosmos DB
 
@@ -62,13 +62,13 @@ Das versehentliche Löschen oder Ändern von Daten kann in einem der folgenden S
 
 * Eine freigegebene Datenbank oder Container in einer freigegebenen Datenbank werden gelöscht oder beschädigt.
 
-Azure Cosmos DB können die Daten in allen oben genannten Szenarien wiederherstellen. Beim Wiederherstellungsprozess wird immer ein neues Azure Cosmos-Konto zum Speichern der wiederhergestellten Daten erstellt. Wenn kein Name für das neue Konto angegeben wird, hat dieser das Format `<Azure_Cosmos_account_original_name>-restored1`. Die letzte Ziffer wird erhöht, wenn mehrere Wiederherstellungen durchgeführt werden. Sie können keine Daten in einem vorab erstellten Azure Cosmos-Konto wiederherstellen.
+Azure Cosmos DB können die Daten in allen oben genannten Szenarien wiederherstellen. Beim Wiederherstellungsprozess wird immer ein neues Azure Cosmos-Konto zum Speichern der wiederhergestellten Daten erstellt. Wenn kein Name für das neue Konto angegeben wird, hat dieser das Format `<Azure_Cosmos_account_original_name>-restored1`. Die letzte Ziffer wird erhöht, wenn mehrere Wiederherstellungen durchgeführt werden. Sie können keine Daten in einem vorab erstellten Azure Cosmos-Konto wiederherstellen.
 
 Wenn ein Azure Cosmos-Konto gelöscht wird, können wir die Daten in einem Konto mit dem gleichen Namen wiederherstellen, vorausgesetzt, der Kontoname wird zurzeit nicht verwendet. In solchen Fällen wird empfohlen, das Konto nach dem Löschen nicht neu zu erstellen, da damit nicht nur verhindert wird, dass die wiederhergestellten Daten denselben Namen verwenden, sondern dies macht es auch schwieriger, das richtige Konto zum Wiederherstellen zu erkennen. 
 
 Wenn eine Azure Cosmos-Datenbank gelöscht wird, ist es möglich, die gesamte Datenbank oder eine Teilmenge der Container innerhalb der Datenbank wiederherzustellen. Es ist auch möglich, Container aus mehreren Datenbanken auszuwählen und wiederherzustellen. Alle wiederhergestellten Daten werden dann in einem neuen Azure Cosmos-Konto gespeichert.
 
-Wenn ein oder mehrere Elemente in einem Container versehentlich gelöscht oder geändert werden (der Fall der Datenbeschädigung), müssen Sie den Zeitpunkt angeben, der wiederhergestellt werden soll. Bei diesem Szenario ist Zeit der entscheidende Faktor. Da der Container aktiv ist, wird die Sicherung weiterhin ausgeführt. Wenn Sie also länger als für den Aufbewahrungszeitraum warten (der Standardwert ist acht Stunden), werden die Sicherungen überschrieben. Im Fall von Löschungen werden Ihre Daten nicht mehr gespeichert, da sie vom Sicherungszyklus nicht überschrieben werden. Sicherungen von gelöschten Datenbanken oder Containern werden 30 Tage lang gespeichert.
+Wenn ein oder mehrere Elemente in einem Container versehentlich gelöscht oder geändert werden (der Fall der Datenbeschädigung), müssen Sie den Zeitpunkt angeben, der wiederhergestellt werden soll. Bei diesem Szenario ist Zeit der entscheidende Faktor. Da der Container aktiv ist, wird die Sicherung weiterhin ausgeführt. Wenn Sie also länger als für den Aufbewahrungszeitraum warten (der Standardwert ist acht Stunden), werden die Sicherungen überschrieben. Im Falle von Löschungen werden Ihre Daten nicht mehr gespeichert, da sie vom Sicherungszyklus nicht überschrieben werden. Sicherungen von gelöschten Datenbanken oder Containern werden 30 Tage lang gespeichert.
 
 Wenn Sie den Durchsatz auf Datenbankebene bereitstellen (d.h., eine Gruppe von Containern teilt sich den bereitgestellten Durchsatz), erfolgen die Sicherungs- und Wiederherstellungsprozesse auf Ebene der gesamten Datenbank und nicht auf Ebene der einzelnen Container. In solchen Fällen ist das Auswählen einer Teilmenge der Containern für die Wiederherstellung nicht möglich.
 

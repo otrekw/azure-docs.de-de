@@ -15,17 +15,17 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: alkohli
 ms.openlocfilehash: eda134257edb851eea076459b44e02fc59028f46
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60363331"
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>Konfigurieren von Multipfad-E/A für Ihr StorSimple-Gerät
 
 In diesem Tutorial werden die Schritte zum Installieren und Verwenden von MPIO (Multipath I/O, Multipfad-E/A) auf einem Host unter Windows Server 2012 R2 beschrieben, der mit einem physischen StorSimple-Gerät verbunden ist. Die Anleitung in diesem Artikel gilt nur für physische Geräte der StorSimple 8000-Serie. MPIO wird von StorSimple Cloud Appliances derzeit nicht unterstützt.
 
-Windows Server unterstützt das MPIO-Feature (Multipath I/O, Multipfad-E/A), um Sie bei der Erstellung hochverfügbarer, fehlertoleranter iSCSI-Netzwerkkonfigurationen zu unterstützen. MPIO verwendet redundante physische Pfadkomponenten (Adapter, Kabel und Switches), um logische Pfade zwischen dem Server und dem Speichergerät zu erstellen. Wenn bei einer Komponente ein Fehler auftritt, durch den ein logischer Pfad fehlschlägt, verwendet die Multipfad-Logik einen anderen Pfad für E/A, sodass Anwendungen weiterhin auf ihre Daten zugreifen können. Darüber hinaus kann MPIO abhängig von Ihrer Konfiguration auch die Leistung durch ein Umverteilen der Lasten auf alle Pfade verbessern. Weitere Informationen finden Sie unter [Multipfad-E/A (Übersicht)](https://technet.microsoft.com/library/cc725907.aspx "Multipfad-E/A (Übersicht) and features").
+Windows Server unterstützt das MPIO-Feature (Multipath I/O, Multipfad-E/A), um Sie bei der Erstellung hochverfügbarer, fehlertoleranter iSCSI-Netzwerkkonfigurationen zu unterstützen. MPIO verwendet redundante physische Pfadkomponenten (Adapter, Kabel und Switches), um logische Pfade zwischen dem Server und dem Speichergerät zu erstellen. Wenn bei einer Komponente ein Fehler auftritt, durch den ein logischer Pfad fehlschlägt, verwendet die Multipfad-Logik einen anderen Pfad für E/A, sodass Anwendungen weiterhin auf ihre Daten zugreifen können. Darüber hinaus kann MPIO abhängig von Ihrer Konfiguration auch die Leistung durch ein Umverteilen der Lasten auf alle Pfade verbessern. Weitere Informationen finden Sie in der [MPIO-Übersicht](https://technet.microsoft.com/library/cc725907.aspx "Übersicht und Features von MPIO").
 
 Für eine hohe Verfügbarkeit Ihrer StorSimple-Lösung sollte MPIO auf dem StorSimple-Gerät konfiguriert werden. Wenn MPIO auf den Hostservern unter Windows Server 2012 R2 installiert ist, können die Server den Ausfall einer Verknüpfung, des Netzwerks oder einer Schnittstelle tolerieren.
 

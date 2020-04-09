@@ -1,6 +1,6 @@
 ---
-title: Troubleshooting von Fehlern bei U-SQL-Aufträgen in Azure Data Lake Analytics wegen des .NET 4.7.2-Upgrades
-description: Troubleshooting von Fehlern bei U-SQL-Aufträgen wegen des Upgrades auf .NET 4.7.2.
+title: Behandeln von Fehlern bei U-SQL-Aufträgen in Azure Data Lake Analytics infolge des .NET Framework 4.7.2-Upgrades
+description: Behandeln von Fehlern bei U-SQL-Aufträgen infolge des Upgrades auf .NET Framework 4.7.2.
 services: data-lake-analytics
 author: guyhay
 ms.author: guyhay
@@ -9,12 +9,12 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/11/2019
-ms.openlocfilehash: 2be2f50558fef41659c9a3313871b17961f6ad6d
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: f909419810cbd837e57b19a13b2df6ae9ad2ee97
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873232"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79213582"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics wird auf .NET Framework 4.7.2 aktualisiert
 
@@ -22,12 +22,12 @@ Die Azure Data Lake Analytics-Standardruntime wird von .NET Framework 4.5.2 auf
 
 Dieses Upgrade von .NET Framework 4.5.2 auf Version 4.7.2 bedeutet, dass als .NET Framework in einer U-SQL-Runtime (die Standardruntime) immer .NET Framework Version 4.7.2 bereitgestellt wird. Es gibt keine Möglichkeit, mehrere .NET Framework-Versionen parallel zu verwenden.
 
-Nachdem das Upgrade auf .NET 4.7.2 durchgeführt wurde, wird der verwaltete Code des Systems als Version 4.7.2 ausgeführt. Vom Benutzer bereitgestellte Bibliotheken, z. B. die benutzerdefinierten U-SQL-Assemblys, werden in dem abwärtskompatiblen Modus ausgeführt, der für die Version geeignet ist, für die die Assembly generiert wurde.
+Nach dem Upgrade auf .NET Framework 4.7.2 wird der verwaltete Code des Systems als Version 4.7.2 ausgeführt. Vom Benutzer bereitgestellte Bibliotheken, z. B. die benutzerdefinierten U-SQL-Assemblys, werden in dem abwärtskompatiblen Modus ausgeführt, der für die Version geeignet ist, für die die Assembly generiert wurde.
 
 - Wenn die Assembly-DLLs für Version 4.5.2 generiert werden, werden sie im bereitgestellten Framework als Bibliotheken der Version 4.5.2 mit Semantik der Version 4.5.2 (mit wenigen Ausnahmen) behandelt.
 - Sie können nun benutzerdefinierte U-SQL-Assemblys verwenden, die Funktionen der Version 4.7.2 nutzen, wenn Sie .NET Framework 4.7.2 als Ziel verwenden.
 
-Aufgrund dieses Upgrades auf .NET 4.7.2 besteht die Möglichkeit, dass Breaking Changes für U-SQL-Aufträge eingeführt werden, die benutzerdefinierte .NET-Assemblys verwenden. Es wird empfohlen, dass Sie anhand des nachfolgenden Verfahrens Probleme mit der Abwärtskompatibilität überprüfen.
+Aufgrund dieses Upgrades auf .NET Framework 4.7.2 besteht die Möglichkeit, dass Breaking Changes für U-SQL-Aufträge eingeführt werden, die benutzerdefinierte .NET-Assemblys verwenden. Es wird empfohlen, dass Sie anhand des nachfolgenden Verfahrens Probleme mit der Abwärtskompatibilität überprüfen.
 
 ## <a name="how-to-check-for-backwards-compatibility-issues"></a>Überprüfen von Problemen mit der Abwärtskompatibilität
 
@@ -39,7 +39,7 @@ Aufgrund dieses Upgrades auf .NET 4.7.2 besteht die Möglichkeit, dass Breaking
 1. Führen Sie die Überprüfung zur Abwärtskompatibilität für die .NET-DLLs auf eine der folgenden Weisen aus:
    1. Verwenden der Visual Studio-Erweiterung [.NET Portability Analyzer](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer)
    1. Herunterladen und Verwenden des eigenständigen Tools ([GitHub dotnetapiport](https://github.com/microsoft/dotnet-apiport)). Anweisungen zum Ausführen des eigenständigen Tools finden Sie unter [GitHub dotnetapiport Breaking Changes](https://github.com/microsoft/dotnet-apiport/blob/dev/docs/HowTo/BreakingChanges.md).
-   1. Mit `read isRetargeting == True` werden mögliche Probleme im Zusammenhang mit der Kompatibilität mit 4.7.2 ermittelt.
+   1. Bei 4.7.2. `read isRetargeting == True` werden mögliche Probleme im Zusammenhang mit der Kompatibilität mit 4.7.2 ermittelt.
 2. Wenn in dem Tool angegeben wird, dass der Code unter Umständen durch eine der möglichen Abwärtsinkompatibilitäten beeinträchtigt ist (einige häufige Beispiele für Inkompatibilitäten sind nachfolgend aufgeführt), können Sie zusätzlich folgende Überprüfungen durchführen:
    1. Analysieren des Codes und Ermitteln, ob der Code Werte an die betroffenen APIs übergibt
    1. Ausführen einer Runtimeüberprüfung. Die Runtimebereitstellung wird in Azure Data Lake Analytics nicht parallel ausgeführt. Sie können vor dem Upgrade eine Runtimeüberprüfung ausführen. Verwenden Sie dazu die lokale Visual Studio-Ausführung mit einem lokalen .NET Framework 4.7.2 für ein repräsentatives Dataset.

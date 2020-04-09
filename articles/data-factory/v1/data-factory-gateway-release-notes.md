@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 9d0e31a89494477e048c7a2f9f7b8165e08d1a2f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 838e523f74a21c44958ddb6dc88e4dab3526d81a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924256"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064996"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Versionshinweise für Datenverwaltungsgateway
 > [!NOTE]
@@ -40,7 +40,7 @@ Die Anmerkungen zu dieser Version werden hier nicht länger beibehalten. Die neu
 ## <a name="21063477"></a>2.10.6347.7
 ### <a name="enhancements-"></a>Verbesserungen
 - Sie können DNS-Einträge hinzufügen, um Service Bus auf die Positivliste zu setzen, anstatt alle Azure-IP-Adressen der Firewall auf eine Positivliste zu setzen (sofern erforderlich). Sie finden den entsprechenden DNS-Eintrag im Azure-Portal („Data Factory“ > „Verfassen und bereitstellen“ > „Gateways“ > „serviceUrls“ (in JSON)).
-- Der HDFS-Connector unterstützt jetzt das selbstsignierte öffentliche Zertifikat, indem zugelassen wird, dass die SSL-Validierung übersprungen wird.
+- Der HDFS-Connector unterstützt jetzt das selbstsignierte öffentliche Zertifikat, indem das Überspringen der TLS-Validierung zugelassen wird.
 - Behoben: Problem aufgrund eines Offlinezustands des Gateways während des Updates (aufgrund von Uhrabweichungen)
 
 
@@ -74,7 +74,7 @@ Die Anmerkungen zu dieser Version werden hier nicht länger beibehalten. Die neu
 
 
 ## <a name="2561641"></a>2.5.6164.1
-### <a name="enhancements"></a>Verbesserungen
+### <a name="enhancements"></a>Erweiterungen
 - Verbesserte und stabilere Gatewayregistrierung: Während der Gatewayregistrierung kann nun der Fortschrittsstatus nachverfolgt werden. Die Registrierung wird dadurch benutzerfreundlicher.
 - Optimierter Vorgang zur Gatewaywiederherstellung: Sie können das Gateway auch ohne die Gatewaysicherungsdatei mit diesem Update wiederherstellen. Dazu müssen Sie die Anmeldeinformationen für den verknüpften Dienst im Portal zurücksetzen.
 - Fehlerbehebung
@@ -134,7 +134,7 @@ Die Anmerkungen zu dieser Version werden hier nicht länger beibehalten. Die neu
 
 ## <a name="11259531"></a>1.12.5953.1
 
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ## <a name="11159181"></a>1.11.5918.1
 
@@ -148,13 +148,13 @@ Die Anmerkungen zu dieser Version werden hier nicht länger beibehalten. Die neu
 
     * Verbessern Sie die Leistung beim Laden großer Tabellen von lokalen Servern in Kopierszenarieren ohne Code.
 
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ## <a name="11058921"></a>1.10.5892.1
 
 *  Leistungsverbesserungen
 
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ## <a name="1958652"></a>1.9.5865.2
 
@@ -165,34 +165,34 @@ Die Anmerkungen zu dieser Version werden hier nicht länger beibehalten. Die neu
 *  PowerShell-Skript für Aktivierung/Deaktivierung der automatischen Aktualisierung
 *  Unterstützung für JSON-Format  
 *  Leistungsverbesserungen
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ## <a name="1858221"></a>1.8.5822.1
 
 *  Verbesserung der Problembehandlung
 *  Leistungsverbesserungen
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ### <a name="1757951"></a>1.7.5795.1
 
 *  Leistungsverbesserungen
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ### <a name="1757641"></a>1.7.5764.1
 
 *  Leistungsverbesserungen
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ### <a name="1657351"></a>1.6.5735.1
 
 *  Unterstützung für lokale HDFS-Quelle/Senke
 *  Leistungsverbesserungen
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ### <a name="1656961"></a>1.6.5696.1
 
 *  Leistungsverbesserungen
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ### <a name="1656761"></a>1.6.5676.1
 
@@ -203,40 +203,40 @@ Die Anmerkungen zu dieser Version werden hier nicht länger beibehalten. Die neu
 *  Unterstützung von CopyBehavior – MergeFiles, PreserveHierarchy und FlattenHierarchy in BlobSink und FileSink mit binärer Kopie für Azure Data Factory
 *  Unterstützung für Kopieraktivität mit Fortschrittsbericht für Azure Data Factory
 *  Unterstützung für Überprüfung der Datenquellenverbindung für Azure Data Factory
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ### <a name="1656721"></a>1.6.5672.1
 
 *  Unterstützung des Tabellennamens für ODBC-Datenquelle für Azure Data Factory
 *  Leistungsverbesserungen
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ### <a name="1656581"></a>1.6.5658.1
 
 *  Unterstützung der Dateisenke für Azure Data Factory
 *  Unterstützung für Beibehaltung der Hierarchie in binärer Kopie für Azure Data Factory
 *  Unterstützung der Kopieraktivität-Idempotenz für Azure Data Factory
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ### <a name="1656401"></a>1.6.5640.1
 
 *  Unterstützung von drei weiteren Datenquellen für Azure Data Factory (ODBC, OData, HDFS)
 *  Unterstützung für Anführungszeichen im CSV-Parser für Azure Data Factory
 *  Unterstützung der Komprimierung (BZip2)
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ### <a name="1556121"></a>1.5.5612.1
 
 *  Unterstützung von fünf relationalen Datenbanken für Azure Data Factory (MySQL, PostgreSQL, DB2, Teradata und Sybase)
 *  Unterstützung der Komprimierung (Gzip und Deflate)
 *  Leistungsverbesserungen
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ### <a name="1455491"></a>1.4.5549.1
 
 *  Unterstützung von Oracle-Datenquellen für Azure Data Factory hinzugefügt
 *  Leistungsverbesserungen
-*  Fehlerbehebungen
+*  Behebung von Programmfehlern
 
 ### <a name="1454921"></a>1.4.5492.1
 

@@ -27,7 +27,7 @@
       href: quickstart-docker.md
     - name: Erstellen einer App mit mehreren Containern
       href: quickstart-multi-container.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: App mit Datenbank
       items:
@@ -55,6 +55,8 @@
       href: ../../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Authentifizieren von Benutzern
       href: tutorial-auth-aad.md
+    - name: Senden einer E-Mail/eines Tweets
+      href: ../tutorial-send-email.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Beheben von Fehlern
       href: tutorial-troubleshoot-monitor.md
 - name: Beispiele

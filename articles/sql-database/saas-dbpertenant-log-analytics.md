@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 01/25/2019
-ms.openlocfilehash: eca2dbe7589fdc7d59a84d21ecf59749d986ade9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7429a9d5e9a803f0e9a6f900c5d81e77e7477a48
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826410"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79214502"
 ---
 # <a name="set-up-and-use-azure-monitor-logs-with-a-multitenant-sql-database-saas-app"></a>Einrichten und Verwenden von Azure Monitor-Protokollen mit einer mehrinstanzenfähigen SaaS-App für SQL-Datenbank
 
@@ -41,7 +41,7 @@ Im [Tutorial zum Überwachen und Verwalten der Leistung](saas-dbpertenant-perfor
 
 Bei Azure SQL-Datenbank stehen Überwachungs- und Warnungsfunktionen für Datenbanken und Pools im Azure-Portal zur Verfügung. Diese integrierten Überwachungs- und Warnungsfunktionen sind praktisch, aber auch ressourcenspezifisch. Sie eigenen sich daher weniger, um große Installationen zu überwachen oder eine zentrale Übersicht über Ressourcen und Abonnements zu erhalten.
 
-Bei Szenarien mit hohem Volumen können Azure Monitor-Protokolle zur Überwachung und für Warnungen eingesetzt werden. Azure Monitor ist ein separater Azure-Dienst, der die Analyse von Diagnoseprotokollen und Telemetriedaten ermöglicht, die in einem Arbeitsbereich von möglicherweise vielen Diensten gesammelt werden. Mit der integrierten Abfragesprache und den Tools zur Datenvisualisierung ermöglichen Azure Monitor-Protokolle die Analyse operativer Daten. SQL-Analyse bietet mehrere vordefinierte Überwachungs- und Warnungsansichten und -abfragen für Datenbanken und für Pools für elastische Datenbanken. Mit Azure Monitor-Protokollen wird außerdem ein Designer für benutzerdefinierte Ansichten bereitgestellt.
+Bei Szenarien mit hohem Volumen können Azure Monitor-Protokolle zur Überwachung und für Warnungen eingesetzt werden. Azure Monitor ist ein separater Azure-Dienst, der die Analyse von Protokollen ermöglicht, die in einem Arbeitsbereich von möglicherweise vielen Diensten gesammelt werden. Mit der integrierten Abfragesprache und den Tools zur Datenvisualisierung ermöglichen Azure Monitor-Protokolle die Analyse operativer Daten. SQL-Analyse bietet mehrere vordefinierte Überwachungs- und Warnungsansichten und -abfragen für Datenbanken und für Pools für elastische Datenbanken. Mit Azure Monitor-Protokollen wird außerdem ein Designer für benutzerdefinierte Ansichten bereitgestellt.
 
 OMS-Arbeitsbereiche werden jetzt als Log Analytics-Arbeitsbereiche bezeichnet. Log Analytics-Arbeitsbereiche und -Analyselösungen werden im Azure-Portal geöffnet. Das Azure-Portal stellt den neueren Zugangspunkt dar, entspricht aber unter Umständen in einigen Bereichen dem Portal von Operations Management Suite.
 

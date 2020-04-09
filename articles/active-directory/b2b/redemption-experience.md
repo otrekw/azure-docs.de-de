@@ -5,24 +5,27 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 03/19/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0a71da025b8b2bb571dc9b00e23bc691ecdd44c
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 043e0f3a0ff2c1c642c63a387c571b575f77cf7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76758280"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050839"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen
 
 Dieser Artikel beschreibt die Möglichkeiten, wie Gastbenutzer auf Ihre Ressourcen zugreifen können, und den Einwilligungsprozess, auf den sie stoßen werden. Wenn Sie eine Einladungs-E-Mail an den Gast senden, enthält die Einladung einen Link, den der Gast einlösen kann, um Zugriff auf Ihre App oder Ihr Portal zu erhalten. Die Einladungs-E-Mail ist nur eine der Möglichkeiten, wie Gäste Zugriff auf Ihre Ressourcen erhalten können. Alternativ können Sie Ihrem Verzeichnis Gäste hinzufügen und ihnen einen direkten Link zu dem Portal oder der App zur Verfügung stellen, das bzw. die Sie freigeben möchten. Unabhängig von der verwendeten Methode werden Gäste schrittweise durch einen erstmaligen Einwilligungsprozess geführt. Dieser Prozess stellt sicher, dass Ihre Gäste den Datenschutzbestimmungen zustimmen und alle [Nutzungsbedingungen](https://docs.microsoft.com/azure/active-directory/governance/active-directory-tou) akzeptieren, die Sie eingerichtet haben.
 
 Wenn Sie Ihrem Verzeichnis einen Gastbenutzer hinzufügen, hat das Gastbenutzerkonto einen Zustimmungsstatus (in PowerShell einsehbar), der zunächst auf **PendingAcceptance** festgelegt ist. Diese Einstellung bleibt bestehen, bis der Gast Ihre Einladung annimmt und Ihrer Datenschutzerklärung und Ihren Nutzungsbedingungen zustimmt. Danach ändert sich der Zustimmungsstatus in **Accepted** (Akzeptiert), und die Zustimmungsseiten werden dem Gast nicht mehr angezeigt.
+
+   > [!IMPORTANT]
+   > **Ab dem 31. März 2021** wird das Einlösen von Einladungen durch die Erstellung von nicht verwalteten Azure AD-Konten und -Mandanten für B2B Collaboration-Szenarien von Microsoft nicht mehr unterstützt. Zur Vorbereitung hierauf raten wir Kunden, sich für die [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md) zu entscheiden. Wir freuen uns über Ihr Feedback zu diesem Feature, das sich derzeit in der öffentlichen Vorschauphase befindet, und möchten noch mehr Möglichkeiten zur Zusammenarbeit schaffen.
 
 ## <a name="redemption-through-the-invitation-email"></a>Einlösung über die Einladungs-E-Mail
 

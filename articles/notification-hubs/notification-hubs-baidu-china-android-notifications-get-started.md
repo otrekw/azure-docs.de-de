@@ -10,23 +10,20 @@ ms.devlang: java
 ms.topic: conceptual
 ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
-ms.date: 06/19/2019
+ms.date: 03/18/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
-ms.openlocfilehash: de02c1add1d6ea3a98d30407b7661e71a28458fe
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: b9ca241b5deebc4d23e0ff648eddee0782617e0a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211926"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79536988"
 ---
-# <a name="deprecated-get-started-with-notification-hubs-using-baidu"></a>Veraltet: Erste Schritte mit Notification Hubs mit Baidu
+# <a name="get-started-with-notification-hubs-using-baidu"></a>Erste Schritte mit Notification Hubs mit Baidu
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
-
-> [!IMPORTANT]
-> Dieses Tutorial ist veraltet. 
 
 Baidu Cloud Push ist ein chinesischer Clouddienst, mit dem Sie Pushbenachrichtigungen an mobile Geräte senden können.
 
@@ -42,63 +39,10 @@ Für dieses Tutorial ist Folgendes erforderlich:
 > [!NOTE]
 > Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F).
 
-## <a name="create-a-baidu-account"></a>Erstellen eines Baidu-Kontos
+Gehen Sie wie folgt vor, um zu beginnen:
 
-Zum Verwenden von Baidu müssen Sie über ein Baidu-Konto verfügen. Wenn Sie bereits ein Konto haben, melden Sie sich beim [Baidu-Portal] an, und fahren Sie mit dem nächsten Schritt fort. Andernfalls finden Sie nachfolgend die entsprechenden Anweisungen zum Erstellen eines Baidu-Kontos.  
-
-1. Wechseln Sie zum [Baidu-Portal], und klicken Sie auf den Link **登录** (**Anmeldung**). Klicken Sie auf **立即注册** (**Jetzt registrieren**), um den Kontoregistrierungsprozess zu starten.
-
-    ![Baidu: Registrierung](./media/notification-hubs-baidu-get-started/BaiduRegistration.png)
-
-2. Geben Sie die erforderlichen Details (Telefon, E-Mail-Adresse, Kennwort und Überprüfungscode) ein, und klicken Sie auf die Anmeldeschaltfläche „注册“ (**Anmeldung**).
-
-    ![Baidu: Registrierungseingabe](./media/notification-hubs-baidu-get-started/BaiduRegistrationInput.png)
-
-3. Sie erhalten unter der eingegebenen E-Mail-Adresse eine E-Mail mit einem Link zur Aktivierung Ihres Baidu-Kontos.
-
-    ![Baidu: Registrierungsbestätigung](./media/notification-hubs-baidu-get-started/BaiduConfirmation.png)
-
-4. Melden Sie sich bei Ihrem E-Mail-Konto an, öffnen Sie die Baidu-Aktivierungsmail, und klicken Sie auf den Aktivierungslink, um Ihr Baidu-Konto zu aktivieren.
-
-    ![Baidu: Aktivierungs-E-Mail](./media/notification-hubs-baidu-get-started/BaiduActivationEmail.png)
-
-Nachdem Sie Ihr Baidu-Konto aktiviert haben, melden Sie sich beim [Baidu-Portal]an.
-
-## <a name="create-a-baidu-cloud-push-project"></a>Erstellen eines Baidu-Cloud-Push-Projekts
-
-Wenn Sie ein Baidu-Cloud-Push-Projekt erstellen, erhalten Sie Ihre App-ID, einen API-Schlüssel und einen geheimen Schlüssel.
-
-1. Sobald Sie sich im [Baidu-Portal] angemeldet haben, klicken Sie auf **更多>>** (**Mehr**).
-
-    ![Registrierung: Mehr](./media/notification-hubs-baidu-get-started/BaiduRegistrationMore.png)
-
-2. Scrollen Sie nach unten zum Abschnitt **站长与开发者服务** (**Webmaster- und Entwicklerdienste**), und klicken Sie auf **百度云推送** (**Baidu Cloud Push**).
-
-    ![Baidu Open Cloud-Plattform](./media/notification-hubs-baidu-get-started/BaiduOpenCloudPlatform.png)
-
-3. Klicken Sie auf der nächsten Seite in der rechten oberen Ecke auf **登录** (**Anmeldung**).
-
-    ![Baidu: Anmeldung](./media/notification-hubs-baidu-get-started/BaiduLogin.png)
-
-4. Klicken Sie anschließend auf dieser Seite auf **创建应用** (**Anwendung erstellen**)
-
-    ![Baidu: Anwendung erstellen](./media/notification-hubs-baidu-get-started/BaiduCreateApplication.png)
-
-5. Klicken Sie auf der nächsten Seite auf „创建新应用“ (**Neue Anwendung erstellen**).
-
-    ![Baidu: Neue Anwendung erstellen](./media/notification-hubs-baidu-get-started/BaiduCreateNewApplication.png)
-
-6. Geben Sie einen Anwendungsnamen ein, und klicken Sie auf „创建“ (**Erstellen**).
-
-    ![](./media/notification-hubs-baidu-get-started/BaiduCreateApplicationDoCreate.png)
-
-7. Nach erfolgreicher Erstellung eines Baidu Cloud Push-Projekts wird eine Seite mit **App-ID**, **API-Schlüssel** und **Geheimer Schlüssel** angezeigt. Notieren Sie sich den API-Schlüssel und den geheimen Schlüssel für später.
-
-    ![Baidu: Pushgeheimnisse](./media/notification-hubs-baidu-get-started/BaiduGetSecrets.png)
-
-8. Konfigurieren Sie für das Projekt Pushbenachrichtigungen, indem Sie im linken Bereich auf „创建通知“ (**Benachrichtigung erstellen**) klicken.
-
-    ![](./media/notification-hubs-baidu-get-started/BaiduCreateNotification.png)
+1. Erstellen Sie ein Baidu-Konto.
+2. Erstellen Sie ein Baidu Cloud Push-Projekt, und notieren Sie sich den API-Schlüssel und den geheimen Schlüssel.
 
 ## <a name="configure-a-new-notification-hub"></a>Konfigurieren eines neuen Notification Hubs
 
@@ -124,7 +68,7 @@ Notieren Sie sich die Werte für `DefaultListenSharedAccessSignature` und `Defau
 
 2. Geben Sie einen Anwendungsnamen ein, und vergewissern Sie sich, dass die erforderliche SDK-Mindestversion auf „API 16: Android 4.1“ festgelegt ist. **Stellen Sie zudem sicher, dass Ihr Paketname (应用包名) derselbe wie im Baidu Cloud Push-Portal ist.**
 
-    ![Azure Notification Hubs – Baidu: SDK-Mindestversion 1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![Azure Notification Hubs – Baidu: SDK-Mindestversion 2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
+    ![Azure Notification Hubs – Baidu: SDK-Mindestversion 1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![Azure Notification Hubs – Baidu: SDK-Mindestversion 2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
 
 3. Klicken Sie auf „Weiter“, und befolgen Sie die Anweisungen des Assistenten, bis das Fenster „Aktivität erstellen“ angezeigt wird. Vergewissern Sie sich, dass „Blank Activity“ (Leere Aktivität) ausgewählt ist, und klicken Sie abschließend auf „Fertig stellen“, um eine neue Android-Anwendung zu erstellen.
 
@@ -287,7 +231,7 @@ Notieren Sie sich die Werte für `DefaultListenSharedAccessSignature` und `Defau
 
     Legen Sie den Wert der `API_KEY`-Zeichenfolge auf den API-Schlüssel aus dem Baidu-Cloudprojekt fest.
 
-    Legen Sie den Wert der `NotificationHubName`-Zeichenfolge auf Ihren Notification Hub-Namen aus dem [Azure-Portal] und anschließend `NotificationHubConnectionString` auf `DefaultListenSharedAccessSignature` aus dem [Azure-Portal] fest.
+    Legen Sie den Wert der `NotificationHubName`-Zeichenfolge auf Ihren Notification Hub-Namen aus dem [Azure portal] und anschließend `NotificationHubConnectionString` auf `DefaultListenSharedAccessSignature` aus dem [Azure portal] fest.
 
 11. Öffnen Sie „MainActivity.java“, und fügen Sie der onCreate-Methode Folgendes hinzu:
 
@@ -469,7 +413,7 @@ Notieren Sie sich die Werte für `DefaultListenSharedAccessSignature` und `Defau
 
 ## <a name="send-notifications-to-your-app"></a>Senden von Benachrichtigungen an Ihre App
 
-Sie können den Empfang von Benachrichtigungen über das [Azure-Portal] testen. Verwenden Sie dazu die Schaltfläche **Senden** auf dem Notification Hub-Konfigurationsbildschirm, wie auf den folgenden Screenshots zu sehen:
+Sie können den Empfang von Benachrichtigungen über das [Azure portal] testen. Verwenden Sie dazu die Schaltfläche **Senden** auf dem Notification Hub-Konfigurationsbildschirm, wie auf den folgenden Screenshots zu sehen:
 
 ![](./media/notification-hubs-baidu-get-started/BaiduTestSendButton.png)
 ![](./media/notification-hubs-baidu-get-started/BaiduTestSend.png)
@@ -536,10 +480,10 @@ Um die App mit dem Emulator zu testen, klicken Sie in der oberen Symbolleiste vo
 
 Die App ruft `userId` und `channelId` vom Baidu-Pushbenachrichtigungsdienst ab und registriert sich beim Notification Hub.
 
-Über die Registerkarte „Debuggen“ des [Azure-Portal] können Sie eine Testbenachrichtigung senden. Wenn Sie die .NET-Konsolenanwendung für Visual Studio entwickelt haben, drücken Sie einfach in Visual Studio die Taste F5, um die Anwendung auszuführen. Die Anwendung sendet eine Benachrichtigung, die im oberen Infobereich des Geräts oder Emulators angezeigt wird.
+Über die Registerkarte „Debuggen“ des [Azure portal] können Sie eine Testbenachrichtigung senden. Wenn Sie die .NET-Konsolenanwendung für Visual Studio entwickelt haben, drücken Sie einfach in Visual Studio die Taste F5, um die Anwendung auszuführen. Die Anwendung sendet eine Benachrichtigung, die im oberen Infobereich des Geräts oder Emulators angezeigt wird.
 
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Baidu Push Android SDK]: https://push.baidu.com/sdk/push_client_sdk_for_android
-[Azure-Portal]: https://portal.azure.com/
-[Baidu-Portal]: https://www.baidu.com/
+[Azure portal]: https://portal.azure.com/
+[Baidu portal]: https://www.baidu.com/

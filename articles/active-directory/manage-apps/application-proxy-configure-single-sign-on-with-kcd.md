@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab378fe1e06de49df0fe6481a1aa475d426648dc
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 5948fba67d3f071d77192f9ad89bc696fdc0c3cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032573"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227770"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Eingeschränkte Delegierung von Kerberos für die einmalige Anmeldung zu Ihren Apps mit dem Anwendungsproxy
 
@@ -66,17 +66,27 @@ Die Active Directory-Konfiguration variiert in Abhängigkeit davon, ob Ihr Anwen
 
 #### <a name="connector-and-application-server-in-different-domains"></a>Connector und Anwendungsserver in unterschiedlichen Domänen
 1. Eine Liste der Voraussetzungen für das domänenübergreifende Arbeiten mit KCD finden Sie unter [Eingeschränkte Kerberos-Delegierung über Domänengrenzen hinweg](https://technet.microsoft.com/library/hh831477.aspx).
-2. Verwenden Sie die `principalsallowedtodelegateto`-Eigenschaft auf dem Connectorserver, damit der Anwendungsproxy den Verbindungsserver delegieren kann. Der Anwendungsserver ist `sharepointserviceaccount` und der delegierende Server `connectormachineaccount`. Verwenden Sie diesen Code für Windows 2012 R2 als Beispiel:
+2. Verwenden Sie die Eigenschaft `principalsallowedtodelegateto` des Dienstkontos (Computerkonto oder dediziertes Domänenbenutzerkonto) der Webanwendung, um die Kerberos-Authentifizierungsdelegierung über den Anwendungsproxy (Connector) zu aktivieren. Der Anwendungsserver wird im Kontext `webserviceaccount` ausgeführt. Der delegierende Server ist `connectorcomputeraccount`. Führen Sie die folgenden Befehle auf einem Domänencontroller (mit Windows Server 2012 R2 oder einer höheren Version) in der Domäne `webserviceaccount` aus. Verwenden Sie für beide Konten Flatnames (keine UPNs).
 
-```powershell
-$connector= Get-ADComputer -Identity connectormachineaccount -server dc.connectordomain.com
+   Ist `webserviceaccount` ein Computerkonto, verwenden Sie die folgenden Befehle:
 
-Set-ADComputer -Identity sharepointserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
+   ```powershell
+   $connector= Get-ADComputer -Identity connectorcomputeraccount -server dc.connectordomain.com
 
-Get-ADComputer sharepointserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
-```
+   Set-ADComputer -Identity webserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
 
-`sharepointserviceaccount` kann das SPS-Computerkonto oder ein Dienstkonto sein, unter dem der SPS-App-Pool ausgeführt wird.
+   Get-ADComputer webserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+   ```
+
+   Ist `webserviceaccount` ein Benutzerkonto, verwenden Sie die folgenden Befehle:
+
+   ```powershell
+   $connector= Get-ADComputer -Identity connectorcomputeraccount -server dc.connectordomain.com
+
+   Set-ADUser -Identity webserviceaccount -PrincipalsAllowedToDelegateToAccount $connector
+
+   Get-ADUser webserviceaccount -Properties PrincipalsAllowedToDelegateToAccount
+   ```
 
 ## <a name="configure-single-sign-on"></a>Einmaliges Anmelden konfigurieren 
 1. Veröffentlichen Sie Ihre Anwendung entsprechend den Anweisungen unter [Veröffentlichen von Anwendungen mit einem Anwendungsproxy](application-proxy-add-on-premises-application.md). Stellen Sie sicher, dass **Azure Active Directory** als **Präauthentifizierungsmethode** ausgewählt ist.
@@ -149,4 +159,3 @@ In einigen Fällen wird die Anforderung jedoch erfolgreich an die Back-End-Anwen
 
 
 Aktuelle Neuigkeiten und Updates finden Sie im [Blog zum Anwendungsproxy](https://blogs.technet.com/b/applicationproxyblog/)
-

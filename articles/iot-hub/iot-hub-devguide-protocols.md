@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 7082ebc4ca3066f84ca9790797cfa04e437f78a3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6d1ab50e471c9c603c7886130375dc74e9b2a755
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626178"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237362"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Referenz – Auswählen eines Kommunikationsprotokolls
 
@@ -48,7 +48,7 @@ Beachten Sie bei der Auswahl des Protokolls für die geräteseitige Kommunikatio
 * **Größe der Nutzlast**. MQTT und AMQP sind binäre Protokolle und weisen daher kompaktere Nutzlasten als HTTPS auf.
 
 > [!WARNING]
-> Bei Verwendung von HTTPS muss jedes Gerät mindestens alle 25 Minuten eine Abfrage nach C2D-Nachrichten durchführen. In der Entwicklungsphase darf freilich häufiger als alle 25 Minuten eine Abfrage erfolgen.
+> Bei Verwendung von HTTPS muss jedes Gerät maximal alle 25 Minuten eine Abfrage auf C2D-Nachrichten durchführen. Bei der Entwicklung kann jedes Gerät bei Bedarf häufiger Abfragen durchführen.
 
 ## <a name="port-numbers"></a>Portnummern
 

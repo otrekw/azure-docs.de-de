@@ -16,10 +16,10 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60321733"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Austauschen von Hardwarekomponenten auf Geräten der StorSimple 8000-Serie
@@ -36,8 +36,8 @@ In der folgenden Tabelle sind die in diesen Tutorials verwendeten Sicherheitssym
 
 | Symbol | Text | Zusätzliche Informationen |
 |:--- |:--- |:--- |
-| ![Symbol "Warnung"](./media/storsimple-hardware-component-replacement/Warning.png) |**GEFAHR!** |Zeigt eine Gefahrensituation an, die zum Tod oder schweren Verletzungen führen wird, wenn sie nicht vermieden wird. Dieses Signalwort wird nur für die extremsten Situationen verwendet. |
-| ![Symbol "Warnung"](./media/storsimple-hardware-component-replacement/Warning.png) |**WARNUNG!** |Zeigt eine Gefahrensituation an, die zum Tod oder schweren Verletzungen führen könnte, wenn sie nicht vermieden wird. |
+| ![Warnungssymbol](./media/storsimple-hardware-component-replacement/Warning.png) |**GEFAHR!** |Zeigt eine Gefahrensituation an, die zum Tod oder schweren Verletzungen führen wird, wenn sie nicht vermieden wird. Dieses Signalwort wird nur für die extremsten Situationen verwendet. |
+| ![Warnungssymbol](./media/storsimple-hardware-component-replacement/Warning.png) |**WARNUNG!** |Zeigt eine Gefahrensituation an, die zum Tod oder schweren Verletzungen führen könnte, wenn sie nicht vermieden wird. |
 | ![Symbol "Vorsicht"](./media/storsimple-hardware-component-replacement/Caution.png) |**VORSICHT!** |Zeigt eine Gefahrensituation an, die zu leichten bis mittelschweren Verletzungen führen könnte, wenn sie nicht vermieden wird. |
 | ![Symbol "Hinweis"](./media/storsimple-hardware-component-replacement/NoticeIcon.png) |**HINWEIS:** |Zeigt als wichtig erachtete Informationen an, die allerdings nicht mit Gefahren in Verbindung stehen. |
 | ![Symbol "Stromschlag"](./media/storsimple-hardware-component-replacement/Electric.png) |**Gefahr eines Stromschlags** |Gibt Hochspannung an. |
@@ -51,12 +51,12 @@ Machen Sie sich mit den sicherheitsrelevanten Informationen zu Ihrem Gerät und 
 
 Bevor Sie versuchen, eine Komponente auszutauschen, beachten Sie die folgenden Informationen.
 
-![Warning Icon](./media/storsimple-hardware-component-replacement/Warning.png)![Electrical Shock Icon](./media/storsimple-hardware-component-replacement/Electric.png)**WARNUNG!**
+![Symbol „Warnung“](./media/storsimple-hardware-component-replacement/Warning.png) ![Symbol „Vorsicht Stromschlag“](./media/storsimple-hardware-component-replacement/Electric.png) **WARNUNG!**
 
 * Erden Sie sich ordnungsgemäß mithilfe elektrostatischer Entladung oder einer Antistatikmatte, bevor Sie mit Modulen und Komponenten Ihres StorSimple-Gerät-Geräts hantieren.
 * Berühren Sie keine elektrischen Schaltungen. Verwenden Sie die bereitgestellten Griffe und Führungen, wenn Sie mit Komponenten hantieren, die ggf. elektrische Schaltungen haben.
 
-![Warning Icon](./media/storsimple-hardware-component-replacement/Warning.png)![Notice Icon](./media/storsimple-hardware-component-replacement/NoticeIcon.png)**HINWEIS:**
+![Symbol „Warnung“](./media/storsimple-hardware-component-replacement/Warning.png) ![Symbol „Hinweis“](./media/storsimple-hardware-component-replacement/NoticeIcon.png) **HINWEIS:**
 
 Wenn Sie ein Modul austauschen, lassen Sie **NIEMALS ein Fach auf der Rückseite des Gehäuses leer**. Besorgen Sie ein Austausch- oder leeres Modul, bevor Sie das fehlerhafte Teil ausbauen.
 

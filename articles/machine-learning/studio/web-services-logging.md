@@ -11,14 +11,17 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 06/15/2017
-ms.openlocfilehash: 0b0dfeb6a19e2f6f24568de0b4712758d2b7ad4a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 90e7692fe0e254074d8176d719d0ca9abad54a9b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427396"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79217849"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>Aktivieren der Protokollierung für (klassische) Azure Machine Learning Studio-Webdienste
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 Dieses Dokument enthält Informationen zur Protokollierungsfunktion von (klassischen) Machine Learning Studio-Webdiensten. Durch die Protokollierung erhalten Sie zusätzliche Informationen, die über die Fehlernummer und eine Meldung hinausgehen und die Ihnen helfen können, Probleme beim Aufrufen der (klassischen) Machine Learning Studio-APIs zu beheben.  
 
 ## <a name="how-to-enable-logging-for-a-web-service"></a>Aktivieren der Protokollierung für einen Webdienst
@@ -61,7 +64,7 @@ Aktivieren Sie die Protokollierung im [(klassischen) Azure Machine Learning Stud
 
 
 ## <a name="the-effects-of-enabling-logging"></a>Die Auswirkungen der Aktivierung der Protokollierung
-Wenn die Protokollierung aktiviert ist, werden die Diagnoseergebnisse und Fehler vom Webdienst-Endpunkt im Blobcontainer **ml-diagnostics** in dem Azure Storage-Konto protokolliert, das mit dem Arbeitsbereich des Benutzers verknüpft ist. Dieser Container enthält die Diagnoseinformationen für alle Webdienst-Endpunkte für die Arbeitsbereiche, die diesem Speicherkonto zugeordnet sind.
+Wenn die Protokollierung aktiviert ist, werden die Diagnoseergebnisse und Fehler vom Webdienstendpunkt im Blobcontainer **ml-diagnostics** in dem Azure Storage-Konto protokolliert, das mit dem Arbeitsbereich des Benutzers verknüpft ist. Dieser Container enthält die Diagnoseinformationen für alle Webdienst-Endpunkte für die Arbeitsbereiche, die diesem Speicherkonto zugeordnet sind.
 
 Die Protokolle können mit jedem der zum Durchsuchen von Azure Storage-Konten verfügbaren Tools angezeigt werden. Am einfachsten ist es, im Azure-Portal zum Speicherkonto zu navigieren, und dann auf **Container** und anschließend auf **ml-diagnostics** zu klicken.  
 

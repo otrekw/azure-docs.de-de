@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: 2a0e88a439400bc36873ed7160b8eb039a16ebfb
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: bbc97489f0c7045040dd0189b97946c2bd8fb3c0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356182"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481635"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Beschleunigen von Big Data-Analysen mit dem Apache Spark-Connector für Azure Cosmos DB
 
@@ -34,7 +34,7 @@ Sie können den Connector mit [Azure Databricks](https://azure.microsoft.com/ser
 ## <a name="quickstart"></a>Schnellstart
 
 * Führen Sie die Schritte unter [Erste Schritte mit dem Java SDK](sql-api-async-java-get-started.md) durch, um ein Cosmos DB-Konto einzurichten und Daten aufzufüllen.
-* Führen Sie die Schritte unter [Einführung in Azure Databricks](https://docs.azuredatabricks.net/getting-started/index.html) durch, um einen Azure Databricks-Arbeitsbereich und -Cluster einzurichten.
+* Führen Sie die Schritte unter [Einführung in Azure Databricks](/azure/azure-databricks/quickstart-create-databricks-workspace-portal) durch, um einen Azure Databricks-Arbeitsbereich und -Cluster einzurichten.
 * Jetzt können Sie neue Notebooks erstellen und die Cosmos DB-Connectorbibliothek importieren. Im Abschnitt [Verwenden des Connectors](#bk_working_with_connector) erhalten Sie Informationen zur Einrichtung Ihres Arbeitsbereichs.
 * Im folgenden Abschnitt finden Sie Codeausschnitte, mit denen Sie mithilfe des Connectors Lese- und Schreibvorgänge durchführen können.
 
@@ -217,7 +217,7 @@ df
 ```
 Weitere Codeausschnitte und vollständige Beispiele finden Sie unter [Jupyter](https://github.com/Azure/azure-cosmosdb-spark/tree/master/samples/notebooks).
 
-## <a name="bk_working_with_connector"></a> Verwenden des Connectors
+## <a name="working-with-the-connector"></a><a name="bk_working_with_connector"></a> Verwenden des Connectors
 
 Sie können den Connector über eine Quelle auf GitHub erstellen oder die Uber-JAR-Dateien von Maven über die unten aufgeführten Links herunterladen.
 
@@ -281,7 +281,7 @@ Im [GitHub-Repository zum Spark-Connector für Cosmos DB](https://github.com/Azu
 
 ## <a name="more-information"></a>Weitere Informationen
 
-Weitere Informationen finden Sie in der `azure-cosmosdb-spark`-[Wiki](https://github.com/Azure/azure-cosmosdb-spark/wiki), u.a.:
+Weitere Informationen finden Sie im `azure-cosmosdb-spark`-[Wiki](https://github.com/Azure/azure-cosmosdb-spark/wiki), u. a.:
 
 * [Azure Cosmos DB Spark Connector User Guide (Benutzerhandbuch zum Azure Cosmos DB-Spark-Connector)](https://github.com/Azure/azure-documentdb-spark/wiki/Azure-Cosmos-DB-Spark-Connector-User-Guide)
 * [Aggregations Examples (Aggregationsbeispiele)](https://github.com/Azure/azure-documentdb-spark/wiki/Aggregations-Examples)

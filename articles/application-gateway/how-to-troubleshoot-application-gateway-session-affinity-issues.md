@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: absha
 ms.openlocfilehash: 9f14521c15c3497bed4ffbeba44cb5d78ee4df7b
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74047981"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Behandeln von Problemen mit der Azure Application Gateway-Sitzungsaffinität
@@ -145,7 +145,7 @@ Ermöglichen der Protokollierung über das Azure-Portal
 - **ClientPort:** der Quellport des Clients, der die Verbindung herstellt, für die Anforderung.
 - **RequestQuery:** gibt den Zielserver an, auf dem die Anforderung empfangen wird.
 - **Server-Routed:** Back-End-Poolinstanz, in der die Anforderung empfangen wird.
-- **X-AzureApplicationGateway-LOG-ID:** Korrelations-ID, die für die Anforderung verwendet wurde. Kann für die Behandlung von Datenverkehrsproblemen auf den Back-End-Servern verwendet werden. Beispiel:  X-AzureApplicationGateway-CACHE-HIT=0&SERVER-ROUTED=10.0.2.4.
+- **X-AzureApplicationGateway-LOG-ID:** Korrelations-ID, die für die Anforderung verwendet wurde. Kann für die Behandlung von Datenverkehrsproblemen auf den Back-End-Servern verwendet werden. Beispiel: X-AzureApplicationGateway-CACHE-HIT=0&SERVER-ROUTED=10.0.2.4.
 
   - **SERVER-STATUS:** HTTP-Antwortcode, den Application Gateway vom Back-End empfangen hat.
 
@@ -190,7 +190,7 @@ Sie können einen Webdebugger Ihrer Wahl verwenden. In diesem Beispiel wird Fidd
 
     Beispiele:
 
-- **Beispiel A:** Sie finden ein Sitzungsprotokoll, in dem angegeben ist, dass die Anforderung vom Client an die öffentliche IP-Adresse des Anwendungsgateways gesendet wird. Klicken Sie auf dieses Protokoll, um die Details anzuzeigen.  Auf der rechten Seite sind im unteren Feld die Daten aufgeführt, die das Anwendungsgateway an den Client zurückgibt. Wählen Sie die Registerkarte „RAW“ aus, um zu ermitteln, ob der Client die Rückgabe **Set-Cookie: ARRAffinity=** *ARRAffinityValue* empfängt. Wenn kein Cookie vorhanden ist, ist die Sitzungsaffinität nicht festgelegt, oder das Anwendungsgateway sendet das Cookie nicht zurück an den Client.
+- **Beispiel A:** Sie finden ein Sitzungsprotokoll, in dem angegeben ist, dass die Anforderung vom Client an die öffentliche IP-Adresse des Anwendungsgateways gesendet wird. Klicken Sie auf dieses Protokoll, um die Details anzuzeigen.  Auf der rechten Seite sind im unteren Feld die Daten aufgeführt, die das Anwendungsgateway an den Client zurückgibt. Wählen Sie die Registerkarte „RAW“ aus, um zu ermitteln, ob der Client die Rückgabe **Set-Cookie: ARRAffinity=** *ARRAffinityValue*. Wenn kein Cookie vorhanden ist, ist die Sitzungsaffinität nicht festgelegt, oder das Anwendungsgateway sendet das Cookie nicht zurück an den Client.
 
    > [!NOTE]
    > Dieser ARRAffinity-Wert ist die Cookie-ID, die das Anwendungsgateway für den Client festlegt und die dieser an einen bestimmten Back-End-Server senden muss.

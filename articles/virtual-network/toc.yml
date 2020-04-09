@@ -71,7 +71,11 @@
           href: ../expressroute/cross-network-connectivity.md?toc=%2fazure%2fvirtual-network%2ftoc.json
         - name: Peering
           href: virtual-network-peering-overview.md
-        - name: Dienste für virtuelle Netzwerke in Azure
+    - name: Integration für Azure-Dienste
+      items:
+        - name: Dienstendpunkte
+          href: virtual-network-service-endpoints-overview.md
+        - name: Bereitstellen eines dedizierten Diensts
           href: virtual-network-for-azure-services.md
     - name: IP-Dienste
       items:
@@ -91,8 +95,6 @@
           href: application-security-groups.md
         - name: Diensttags
           href: service-tags-overview.md
-        - name: Dienstendpunkte
-          href: virtual-network-service-endpoints-overview.md
         - name: Dienstendpunkt-Richtlinien
           href: virtual-network-service-endpoint-policies-overview.md
         - name: Kubernetes-Netzwerkrichtlinien

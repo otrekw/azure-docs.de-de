@@ -3,12 +3,12 @@ title: Sichern einer SAP HANA-Datenbank mit Azure Backup in Azure
 description: In diesem Artikel erfahren Sie, wie Sie eine SAP HANA-Datenbanken mit dem Azure Backup-Dienst auf virtuellen Azure-Computern sichern können.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: dd4c6fc0e018f3fc8f2a2029ef8a90cdc305e2c2
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: deedd4d2553b3b06f76f698fdb2425a8d3878d23
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765512"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226110"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 
@@ -30,7 +30,7 @@ In diesem Artikel wird Folgendes behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Informationen zum Einrichten der Datenbank für die Sicherung finden Sie in den Abschnitten zu den [Voraussetzungen](tutorial-backup-sap-hana-db.md#prerequisites) und zum [Einrichten von Berechtigungen](tutorial-backup-sap-hana-db.md#setting-up-permissions).
+Informationen zum Einrichten der Datenbank für die Sicherung finden Sie in den Abschnitten zu den [Voraussetzungen](tutorial-backup-sap-hana-db.md#prerequisites) und den [Aufgaben des Vorregistrierungsskripts](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does).
 
 ### <a name="set-up-network-connectivity"></a>Einrichten der Netzwerkkonnektivität
 
@@ -89,22 +89,9 @@ Verwenden von NSG-Diensttags | Einfachere Verwaltung, da Bereichsänderungen aut
 Verwenden von FQDN-Tags von Azure Firewall | Einfachere Verwaltung, da die erforderlichen FQDNs automatisch verwaltet werden | Nur mit Azure Firewall möglich
 Verwenden eines HTTP-Proxys | Feinsteuerung im Proxy über die Speicher-URLs zulässig <br/><br/> Zentraler Internetzugriffspunkt für VMs <br/><br/> Unterliegt keinen Azure-IP-Adressänderungen | Zusätzliche Kosten für das Ausführen einer VM mit der Proxysoftware
 
-## <a name="onboard-to-the-public-preview"></a>Onboarding in die öffentliche Vorschau
+#### <a name="private-endpoints"></a>Private Endpunkte
 
-Führen Sie das Onboarding in die öffentliche Vorschau wie folgt durch:
-
-* Registrieren Sie im Portal Ihre Abonnement-ID bei dem Recovery Services-Dienstanbieter [gemäß der Beschreibung in diesem Artikel](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors#solution-3---azure-portal).
-* Führen Sie für das Modul „Az“ in PowerShell das folgende Cmdlet aus. Der Vorgang sollte mit „Registered“ (Registriert) abgeschlossen werden.
-
-    ```powershell
-    Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-* Wenn Sie das Modul „AzureRM“ in PowerShell verwenden, führen Sie das folgende Cmdlet aus. Der Vorgang sollte mit „Registered“ (Registriert) abgeschlossen werden.
-
-    ```powershell
-    Register-AzureRmProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-    
+[!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

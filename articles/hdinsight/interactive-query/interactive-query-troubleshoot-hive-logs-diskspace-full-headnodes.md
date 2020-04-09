@@ -8,10 +8,10 @@ ms.author: nisgoel
 ms.reviewer: jasonh
 ms.date: 03/05/2020
 ms.openlocfilehash: d843b942702d335065a5f3798572e34c71b4cd0e
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78943965"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>Szenario: Apache Hive-Protokolle füllen den gesamten Speicherplatz auf den Hauptknoten in Azure HDInsight
@@ -23,7 +23,7 @@ Dieser Artikel beschreibt Schritte zur Problembehandlung sowie mögliche Lösung
 In einem Apache Hive/LLAP-Cluster nehmen unerwünschte Protokolle den gesamten Speicherplatz auf den Hauptknoten ein. Aus diesem Grund können die folgenden Probleme auftreten.
 
 1. Beim SSH-Zugriff tritt ein Fehler auf, weil auf dem Hauptknoten kein Speicherplatz mehr vorhanden ist.
-2. Ambari gibt die Fehlermeldung *HTTP-Fehler 503:  Dienst nicht verfügbar* aus.
+2. Ambari gibt die Fehlermeldung *HTTP-FEHLER 503: Dienst nicht verfügbar* aus.
 
 Die `ambari-agent`-Protokolle zeigen bei Auftreten des Problems Folgendes an.
 ```

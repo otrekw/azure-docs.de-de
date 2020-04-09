@@ -1,14 +1,14 @@
 ---
 title: Arbeiten mit großen Datasets
 description: Erfahren Sie, wie Sie bei der Verwendung von Azure Resource Graph Datensätze in großen Datasets abrufen, formatieren, paginieren und überspringen.
-ms.date: 10/18/2019
+ms.date: 03/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2c6aca0c468630cee79222bc77bdc20dc9d95b19
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: be15a6234935627ca748276e6330c50c3ee5a775
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304008"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80064739"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Arbeiten mit großen Datasets von Azure-Ressourcen
 
@@ -63,7 +63,7 @@ In der [REST-API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)
 Wenn es erforderlich ist, ein Resultset in kleinere Datensatzgruppen zu unterteilen, um sie zu verarbeiten oder weil das Resultset den maximal zulässigen Wert von _1000_ zurückgegebenen Datensätzen überschreitet, verwenden Sie die Paginierung. Die **QueryResponse**-[REST-API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) enthält folgende Werte, um anzugeben, dass ein Resultset aufgeteilt wurde: **resultTruncated** und **$skipToken**.
 **resultTruncated** ist ein boolescher Wert, über den der Consumer informiert wird, wenn zusätzliche Datensätze vorhanden sind, die in der Antwort nicht zurückgegeben werden. Diese Bedingung kann auch erkannt werden, wenn der Wert der Eigenschaft **count** kleiner ist als der Wert der Eigenschaft **totalRecords**. **totalRecords** definiert die Anzahl der Datensätze, die mit der Abfrage übereinstimmen.
 
-Wenn **resultTruncated** auf **true** festgelegt ist, wird in der Antwort die Eigenschaft **$skipToken** festgelegt. Dieser Wert wird mit den gleichen Werten für die Abfrage und das Abonnement verwendet, um die nächste Datensatzgruppe abzurufen, die mit der Abfrage übereinstimmt.
+ **resultTruncated** ist **true**, wenn Paging deaktiviert oder aufgrund der fehlenden Spalte `id` nicht möglich ist oder wenn weniger Ressourcen verfügbar sind, als von einer Abfrage angefordert werden. Wenn **resultTruncated** auf **true** festgelegt ist, wird die Eigenschaft **$skipToken** nicht festgelegt.
 
 Die folgenden Beispiele zeigen, wie Sie mit Azure CLI und Azure PowerShell die ersten 3000 Datensätze **überspringen** und die **ersten** 1000 Datensätze nach den übersprungenen Datensätzen zurückgeben:
 

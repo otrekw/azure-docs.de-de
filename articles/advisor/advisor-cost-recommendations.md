@@ -3,12 +3,12 @@ title: Reduzieren der Dienstkosten mithilfe von Azure Advisor
 description: Nutzen Sie Azure Advisor, um die Kosten Ihrer Azure-Bereitstellungen zu optimieren.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: afa5a4068d2ec5f4730d261801760fe68d7a330e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0237feab59551ecab87d78b0d4d66b9fc7b47e90
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443121"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229690"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Reduzieren der Dienstkosten mithilfe von Azure Advisor
 
@@ -46,6 +46,9 @@ Azure Advisor erkennt Azure Data Factory-Pipelines, bei denen wiederholt Fehle
 
 ## <a name="use-standard-snapshots-for-managed-disks"></a>Verwenden von Standardmomentaufnahmen für verwaltete Datenträger
 Es empfiehlt sich, Momentaufnahmen unabhängig vom Speichertyp des übergeordneten Datenträgers in Storage Standard zu speichern, um 60 Prozent der Kosten zu sparen. Dies ist die Standardoption für Managed Disks-Momentaufnahmen. Azure Advisor erkennt in Storage Premium gespeicherte Momentaufnahmen und empfiehlt, Ihre Momentaufnahme von Storage Premium zu Storage Standard zu migrieren. Weitere Informationen zu den Preisen für verwaltete Datenträger finden Sie [hier](https://aka.ms/aa_manageddisksnapshot_learnmore).
+
+## <a name="utilize-lifecycle-management"></a>Verwenden der Lebenszyklusverwaltung
+Von Azure Advisor wird anhand von Informationen zu Objektanzahl, Gesamtgröße und Transaktionen Ihrer Azure Blob Storage-Instanz ermittelt, ob sich für eines oder mehrere Ihrer Speicherkonten die Aktivierung der Lebenszyklusverwaltung empfiehlt, um Daten aufzuteilen. Sie werden zur Erstellung von Lebenszyklusverwaltungsregeln aufgefordert, um Ihre Daten zur Optimierung Ihrer Speicherkosten automatisch in die kalte Ebene oder in die Archivebene zu verschieben. Dies hat keine Auswirkungen auf die Anwendungskompatibilität, da die Daten weiterhin in Azure Blob Storage vorhanden sind.
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Zugreifen auf Kostenempfehlungen im Azure Advisor
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 4ff4025941e9a77148daa91995ecf182231d1f0b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 88e0e1c18722fd86e79fc1fa7722b59b3cb8966a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976280"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460958"
 ---
 # <a name="content-protection-overview"></a>Übersicht über den Inhaltsschutz 
 
@@ -35,12 +35,17 @@ Die folgende Abbildung veranschaulicht den Media Services-Workflow zum Schutz vo
 Dieser Artikel erläutert die relevanten Konzepte und Begriffe für den Inhaltsschutz mit Media Services. Der Artikel enthält auch Links zu Artikeln, in denen es um den Schutz von Inhalten geht. 
 
 ## <a name="dynamic-encryption"></a>Dynamische Verschlüsselung
- Mit Media Services können Sie Ihre zu übermittelnden Inhalte dynamisch mit unverschlüsselten AES-Schlüsseln oder per DRM-Verschlüsselung über Microsoft PlayReady, Google Widevine oder FairPlay verschlüsseln. Zurzeit können Sie die Streamingformate HTTP Live Streaming (HLS), MPEG DASH und Smooth Streaming verschlüsseln. Die Verschlüsselung für progressive Downloads wird nicht unterstützt. Jedes Verschlüsselungsverfahren unterstützt die folgenden Streamingprotokolle:
 
+Mit Media Services können Sie Ihre zu übermittelnden Inhalte dynamisch mit unverschlüsselten AES-Schlüsseln oder per DRM-Verschlüsselung über Microsoft PlayReady, Google Widevine oder FairPlay verschlüsseln. Inhalt, der mit einem unverschlüsselten AES-Schlüssel verschlüsselt und per HTTPS gesendet wird, bleibt verschlüsselt, bis er den Client erreicht. 
+
+Jedes Verschlüsselungsverfahren unterstützt die folgenden Streamingprotokolle:
+ 
 - AES: MPEG-DASH, Smooth Streaming und HLS
 - PlayReady: MPEG-DASH, Smooth Streaming und HLS
 - Widevine: MPEG-DASH
 - FairPlay: HLS
+
+Die Verschlüsselung für progressive Downloads wird nicht unterstützt. 
 
 Wenn Sie ein Medienobjekt verschlüsseln möchten, müssen Sie dem Medienobjekt einen Inhaltsschlüssel für die Verschlüsselung zuordnen und außerdem eine Autorisierungsrichtlinie für den Schlüssel konfigurieren. Inhaltsschlüssel können angegeben oder von Media Services automatisch generiert werden.
 
@@ -75,6 +80,19 @@ Bei einer Autorisierungsrichtlinie mit Tokeneinschränkung wird der Inhaltsschl�
 
 Bei der Konfiguration der Richtlinie mit Tokeneinschränkung müssen die Parameter für den primären Verifizierungsschlüssel (primary verification key), den Aussteller (issuer) und die Zielgruppe (audience) angegeben werden. Der primäre Verifizierungsschlüssel enthält den Schlüssel, mit dem das Token signiert wurde. Der Aussteller ist der Sicherheitstokendienst, der das Token ausstellt. „Audience“ (manchmal auch „Scope“) beschreibt den Verwendungszweck des Tokens oder die Ressource, auf die durch das Token Zugriff gewährt wird. Der Schlüsselübermittlungsdienst von Media Services überprüft, ob die Werte im Token mit den Werten in der Vorlage übereinstimmen.
 
+### <a name="token-replay-prevention"></a>Verhindern der Tokenwiedergabe
+
+Mit dem Feature zum *Verhindern der Tokenwiedergabe* können Media Services-Kunden einen Grenzwert festlegen, der bestimmt, wie oft ein Token zum Anfordern eines Schlüssels oder einer Lizenz verwendet werden kann. Der Kunde kann einen Anspruch vom Typ `urn:microsoft:azure:mediaservices:maxuses` im Token hinzufügen, wobei der Wert die Häufigkeit ist, mit der das Token für den Erwerb einer Lizenz oder eines Schlüssels verwendet werden kann. Bei allen nachfolgenden Anforderungen mit demselben Token für die Schlüsselbereitstellung wird eine nicht autorisierte Antwort zurückgegeben. Informationen zum Hinzufügen des Anspruchs finden Sie im [DRM-Beispiel](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L601).
+ 
+#### <a name="considerations"></a>Überlegungen
+
+* Kunden müssen die Kontrolle über die Tokengenerierung haben. Der Anspruch muss in das Token selbst eingefügt werden.
+* Bei Verwendung dieser Funktion werden Anforderungen mit Token, deren Ablaufzeit mehr als eine Stunde vor dem Zeitpunkt liegt, zu dem die Anforderung empfangen wird, werden mit der Antwort „nicht autorisiert“ abgelehnt.
+* Token werden durch ihre Signatur eindeutig identifiziert. Jede Änderung an der Nutzlast (z. B. eine Aktualisierung der Ablaufzeit oder des Anspruchs) ändert die Signatur des Tokens, und es zählt als ein neues Token, das bei der Schlüsselbereitstellung zuvor noch nicht aufgetreten ist.
+* Die Wiedergabe schlägt fehl, wenn das Token den vom Kunden festgelegten `maxuses`-Wert überschritten hat.
+* Diese Funktion kann für alle vorhandenen geschützten Inhalte verwendet werden (nur das ausgegebene Token muss geändert werden).
+* Diese Funktion kann sowohl mit JWT als auch mit SWT verwendet werden.
+
 ## <a name="streaming-urls"></a>Streaming-URLs
 Falls Ihr Medienobjekt mit mehreren DRM-Systemen verschlüsselt wurde, verwenden Sie in der Streaming-URL ein Verschlüsselungstag: (format='m3u8-aapl', encryption='xxx').
 
@@ -84,6 +102,7 @@ Es gelten die folgenden Bedingungen:
 * Der Verschlüsselungstyp muss nicht in der URL angegeben werden, wenn auf das Medienobjekt nur eine einzelne Verschlüsselung angewendet wurde.
 * Beim Verschlüsselungstyp wird die Groß-/Kleinschreibung nicht beachtet.
 * Folgende Verschlüsselungstypen können angegeben werden:
+
   * **cenc:** Für PlayReady oder Widevine (Common Encryption)
   * **cbcs-aapl:** Für FairPlay (AES-CBC-Verschlüsselung)
   * **cbc:** Für AES-Umschlagverschlüsselung

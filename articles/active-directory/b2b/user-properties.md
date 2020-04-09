@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 03/19/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70156335d0d5617b4c1ccb2d11ce8e9f8dc9d036
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: 40f5002e361653614c966dc43301afa83eb7b200
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77368118"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050793"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Eigenschaften eines Azure Active Directory B2B-Zusammenarbeitsbenutzers
 
@@ -26,6 +26,9 @@ In diesem Artikel werden die Eigenschaften und Zustände beschrieben, die das B2
 Je nach Anforderungen der einladenden Organisation kann ein Azure AD B2B-Zusammenarbeitsbenutzer einen der folgenden Kontozustände aufweisen:
 
 - Zustand 1: Befindet sich in einer externen Instanz von Azure AD und wird als Gastbenutzer in der einladenden Organisation dargestellt. In diesem Fall meldet sich der B2B-Benutzer mit einem Azure AD-Konto an, das zum eingeladenen Mandanten gehört. Wenn die Partnerorganisation nicht Azure AD verwendet, werden die Gastbenutzer trotzdem in Azure AD erstellt. Voraussetzung ist, dass sie ihre Einladung einlösen und Azure AD ihre E-Mail-Adressen überprüft. Eine solche Vereinbarung wird auch als Just-in-Time-Mandant (JIT) oder „viraler“ Mandant bezeichnet.
+
+   > [!IMPORTANT]
+   > **Ab dem 31. März 2021** wird das Einlösen von Einladungen durch die Erstellung von nicht verwalteten Azure AD-Konten und -Mandanten für B2B Collaboration-Szenarien von Microsoft nicht mehr unterstützt. Zur Vorbereitung hierauf raten wir Kunden, sich für die [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md) zu entscheiden. Wir freuen uns über Ihr Feedback zu diesem Feature, das sich derzeit in der öffentlichen Vorschauphase befindet, und möchten noch mehr Möglichkeiten zur Zusammenarbeit schaffen.
 
 - Zustand 2: Befindet sich in einem Microsoft-Konto oder anderen Konto und wird als Gastbenutzer in der Hostorganisation dargestellt. In diesem Fall meldet sich der Gastbenutzer mit einem Microsoft-Konto oder einem Konto eines sozialen Netzwerks (z.B. google.com) an. Die Identität eines eingeladenen Benutzers wird während der Einlösung des Angebots im Verzeichnis der einladenden Organisation als Microsoft-Konto erstellt.
 

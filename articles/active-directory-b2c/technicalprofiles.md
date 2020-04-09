@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d4dbe5a62e69f4c30d55fa1318ca79c06640a10f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 5196615b6b935e4d37565298be03ad315163d132
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78186742"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79231110"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -101,7 +101,7 @@ Das **TechnicalProfile**-Element enthält die folgenden Attribute:
 | SubjectNamingInfo | 0:1 | Steuert die Erzeugung von Antragstellernamen in Token, wenn der Name des Antragstellers getrennt von den Ansprüchen angegeben wird. Beispiele: OAuth oder SAML.  |
 | IncludeInSso | 0:1 |  Gibt an, ob bei Verwendung dieses technischen Profils SSO-Verhalten (Single Sign-On, einmaliges Anmelden) für die Sitzung verwendet werden soll oder ob stattdessen eine explizite Interaktion erforderlich ist. Dieses Element ist nur in Profilen vom Typ „SelfAsserted“ gültig, die in einem technischen Validierungsprofil verwendet werden. Mögliche Werte: `true` (Standard) oder `false`. |
 | IncludeClaimsFromTechnicalProfile | 0:1 | Ein Bezeichner eines technischen Profils, von dem alle Eingabe- und Ausgabeansprüche diesem technischen Profil hinzugefügt werden sollen. Das referenzierte technische Profil muss in derselben Richtliniendatei definiert sein. |
-| IncludeTechnicalProfile |0:1 | Ein Bezeichner eines technischen Profils, von dem alle Daten diesem technischen Profil hinzugefügt werden sollen. Das referenzierte technische Profil muss in derselben Richtliniendatei enthalten sein. |
+| IncludeTechnicalProfile |0:1 | Ein Bezeichner eines technischen Profils, von dem alle Daten diesem technischen Profil hinzugefügt werden sollen. |
 | UseTechnicalProfileForSessionManagement | 0:1 | Ein anderes technische Profil, das für die Sitzungsverwaltung verwendet werden soll. |
 |EnabledForUserJourneys| 0:1 |Steuert, ob das technische Profil in einer User Journey ausgeführt wird.  |
 
@@ -128,7 +128,7 @@ Das **Item**-Element des **Metadata**-Elements enthält die folgenden Attribute:
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| Key | Ja | Der Metadatenschlüssel. Eine Liste der Metadatenelemente finden Sie unter den einzelnen Typen von technischen Profilen. |
+| Schlüssel | Ja | Der Metadatenschlüssel. Eine Liste der Metadatenelemente finden Sie unter den einzelnen Typen von technischen Profilen. |
 
 ## <a name="cryptographickeys"></a>CryptographicKeys
 
@@ -136,13 +136,13 @@ Das **CryptographicKeys**-Element enthält das folgende Element:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
-| Key | 1:n | Ein kryptografischer Schlüssel, der in diesem technischen Profil verwendet wird. |
+| Schlüssel | 1:n | Ein kryptografischer Schlüssel, der in diesem technischen Profil verwendet wird. |
 
-### <a name="key"></a>Key
+### <a name="key"></a>Schlüssel
 
 Das **Key**-Element enthält das folgende Attribut:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Nein | Ein eindeutiger Bezeichner eines bestimmten Schlüsselpaars, auf das von anderen Elementen in der Richtliniendatei verwiesen wird. |
 | StorageReferenceId | Ja | Ein Bezeichner eines Speicherschlüsselcontainers, auf den von anderen Elementen in der Richtliniendatei verwiesen wird. |
@@ -151,7 +151,7 @@ Das **Key**-Element enthält das folgende Attribut:
 
 Das **InputClaimsTransformations**-Element enthält das folgende Element:
 
-| Element | Vorkommen | Beschreibung |
+| Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | InputClaimsTransformation | 1:n | Der Bezeichner einer Anspruchstransformation, die ausgeführt werden soll, bevor Ansprüche an den Anspruchsanbieter oder die vertrauende Seite gesendet werden. Eine Anspruchstransformation kann verwendet werden, um vorhandene ClaimsSchema-Ansprüche zu ändern oder neue zu generieren. |
 
@@ -175,7 +175,7 @@ Das **InputClaims**-Element enthält das folgende Element:
 
 Das **InputClaim**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ja | Der Bezeichner eines Anspruchstyps, der bereits im ClaimsSchema-Abschnitt der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist. |
 | DefaultValue | Nein | Ein Standardwert, der verwendet wird, um einen Anspruch zu erstellen, wenn der von ClaimTypeReferenceId angegebene Anspruch nicht vorhanden ist, sodass der resultierende Anspruch vom technischen Profil als Eingabeanspruch verwendet werden kann. |
@@ -215,7 +215,7 @@ Das **PersistedClaims**-Element enthält die folgenden Elemente:
 
 Das **PersistedClaim**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ja | Der Bezeichner eines Anspruchstyps, der bereits im ClaimsSchema-Abschnitt der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist. |
 | DefaultValue | Nein | Ein Standardwert, der verwendet wird, um einen Anspruch zu erstellen, wenn der von ClaimTypeReferenceId angegebene Anspruch nicht vorhanden ist, sodass der resultierende Anspruch vom technischen Profil als Eingabeanspruch verwendet werden kann. |
@@ -286,7 +286,7 @@ Das **IncludeTechnicalProfile**-Element enthält das folgende Attribut:
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| ReferenceId | Ja | Ein Bezeichner eines technischen Profils, das bereits in der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist. |
+| ReferenceId | Ja | Ein Bezeichner eines technischen Profils, das bereits in der Richtliniendatei oder der übergeordneten Richtliniendatei definiert ist |
 
 ## <a name="usetechnicalprofileforsessionmanagement"></a>UseTechnicalProfileForSessionManagement
 

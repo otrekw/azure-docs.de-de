@@ -12,12 +12,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 11/20/2019
-ms.openlocfilehash: ca223de2bc0b26e4968d400ea418761a399dacae
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 2a2cd4bfc3d393543b41eea776f02723d94054b1
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74462353"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80345828"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Machine Learning Services (mit R) in Azure SQL-Datenbank (Vorschauversion)
 
@@ -38,11 +38,11 @@ Machine Learning Services umfasst eine Basisdistribution von R zusammen mit R-Pa
 
 ### <a name="r-packages"></a>R-Pakete
 
-Die am häufigsten verwendeten Open-Source-R-Pakete sind bei Machine Learning Services bereits vorinstalliert. Die folgenden R-Pakete von Microsoft sind ebenfalls enthalten:
+Die am häufigsten verwendeten Open-Source-R-Pakete sind bei Machine Learning Services bereits vorinstalliert. Zudem sind die folgenden R-Pakete von Microsoft bereits enthalten:
 
 | R-Paket | BESCHREIBUNG|
 |-|-|
-| [Microsoft R Open](https://mran.microsoft.com/rro) | Microsoft R Open ist die erweiterte R-Distribution von Microsoft. Es handelt sich um eine vollständige Open-Source-Plattform für statistische Analysen und Data Science. Sie basiert auf R und ist damit zu 100 % kompatibel. Darüber hinaus bietet sie zusätzliche Funktionen für mehr Leistung und eine bessere Reproduzierbarkeit. |
+| [Microsoft R Open](https://mran.microsoft.com/rro) | Microsoft R Open ist die erweiterte R-Distribution von Microsoft. Diese umfassende Open-Source-Plattform wird für statistische Analysen und Data Science verwendet. Sie basiert auf R und ist vollständig kompatibel mit R. Zudem beinhaltet sie Funktionen für eine verbesserte Leistung und Reproduzierbarkeit. |
 | [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler) | RevoScaleR ist die primäre Bibliothek für skalierbares R. Die Funktionen in dieser Bibliothek gehören zu den am häufigsten verwendeten. Datentransformationen und -manipulationen, statistische Zusammenfassung, Visualisierung und viele Formen der Modellierung und Analyse sind in diesen Bibliotheken enthalten. Darüber hinaus verteilen die Funktionen in diesen Bibliotheken die Workloads automatisch auf die verfügbaren Kerne, um die Verarbeitung zu parallelisieren, und sie bieten die Möglichkeit, die Daten in Blöcken zu verarbeiten, die von der Berechnungs-Engine koordiniert und verwaltet werden. |
 | [MicrosoftML (R)](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-microsoftml) | MicrosoftML fügt Algorithmen für maschinelles Lernen hinzu, mit denen Sie benutzerdefinierte Modelle für die Text-, Bild- und Standpunktanalyse erstellen können. |
 
@@ -50,12 +50,10 @@ Zusätzlich zu den vorinstallierten Paketen können Sie [weitere Pakete installi
 
 <a name="signup"></a>
 
-## <a name="sign-up-for-the-preview"></a>Anmelden für die Vorschau
+## <a name="sign-up-for-the-preview-closed"></a>Registrieren für die Vorschau (geschlossen)
 
 > [!IMPORTANT]
-> Die Registrierung bei Machine Learning Services von Azure SQL-Datenbank (Vorschauversion) ist derzeit geschlossen.
-
-Es ist nicht empfehlenswert, Machine Learning Services mit R während der Vorschauphase für Produktionsworkloads zu verwenden.
+> Die Registrierung bei Machine Learning Services von Azure SQL-Datenbank (Vorschauversion) ist derzeit **geschlossen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: fd887560c0011fb1ec2141e33f02f7e3d8a39c81
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60196536"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Registrieren von Daten aus Azure Data Lake Storage Gen1 in Azure Data Catalog
@@ -43,13 +43,13 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 1. Klicken Sie auf der nächsten Seite auf **Anwendung starten**. Dadurch wird die Manifestdatei der Anwendung auf Ihren Computer heruntergeladen. Doppelklicken Sie auf die Manifestdatei, um die Anwendung zu starten.
 1. Klicken Sie auf der Seite „Willkommen“ auf **Anmelden**, und geben Sie Ihre Anmeldeinformationen ein.
 
-    ![Begrüßungsbildschirm](./media/data-lake-store-with-data-catalog/welcome.screen.png "Begrüßungsbildschirm")
+    ![Bildschirm „Willkommen“](./media/data-lake-store-with-data-catalog/welcome.screen.png "Bildschirm „Willkommen“")
 1. Wählen Sie auf der Seite „Datenquelle auswählen“ die Option **Azure Data Lake Store** aus, und klicken Sie dann auf **Weiter**.
 
     ![Auswählen einer Datenquelle](./media/data-lake-store-with-data-catalog/select-source.png "Auswählen einer Datenquelle")
 1. Geben Sie auf der nächsten Seite den Namen des Data Lake Storage Gen1-Kontos an, das Sie in Data Catalog registrieren möchten. Behalten Sie für die anderen Optionen die Standardwerte bei, und klicken Sie dann auf **Verbinden**.
 
-    ![Herstellen einer Verbindung mit der Datenquelle](./media/data-lake-store-with-data-catalog/connect-to-source.png "Herstellen einer Verbindung mit der Datenquelle")
+    ![Verbinden mit einer Datenquelle](./media/data-lake-store-with-data-catalog/connect-to-source.png "Verbinden mit einer Datenquelle")
 1. Die nächste Seite kann in die folgenden Segmente aufgeteilt werden.
 
     a. Das Feld **Serverhierarchie** stellt die Ordnerstruktur des Data Lake Storage Gen1-Kontos dar. **$Root** stellt den Stamm des Data Lake Storage Gen1-Kontos dar, und **AmbulanceData** steht für den Ordner, der im Stamm des Data Lake Storage Gen1-Kontos erstellt wurde.
@@ -59,7 +59,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
     c. Im Feld **Zu registrierende Objekte** werden die Dateien und Ordner aufgeführt, die Sie in Azure Data Catalog registrieren möchten.
 
     ![Anzeigen der Datenstruktur](./media/data-lake-store-with-data-catalog/view-data-structure.png "Anzeigen der Datenstruktur")
-1. Für dieses Tutorial sollten Sie alle Dateien im Verzeichnis registrieren. Klicken Sie auf die Schaltfläche (![Objekte verschieben](./media/data-lake-store-with-data-catalog/move-objects.png "Objekte verschieben")), um alle Dateien in das Feld **Zu registrierende Objekte** zu verschieben.
+1. Für dieses Tutorial sollten Sie alle Dateien im Verzeichnis registrieren. Klicken Sie auf die Schaltfläche![Verschieben von Objekten](./media/data-lake-store-with-data-catalog/move-objects.png "Verschieben von Objekten"), um alle Dateien in das Feld **Zu registrierende Objekte** zu verschieben.
 
     Da die Daten in einem organisationsweiten Datenkatalog registriert werden, empfiehlt es sich, einige Metadaten hinzuzufügen, die Sie später verwenden können, um die Daten schnell zu finden. Sie können z.B. eine E-Mail-Adresse für den Besitzer der Daten (z.B. der, der die Daten hochlädt) oder ein Tag zum Identifizieren der Daten hinzufügen. Der folgende Screenshot zeigt ein Tag, das Sie den Daten hinzufügen.
 

@@ -10,25 +10,24 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: c4923e43613653bf3dfe8055754039ab0cf57fca
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/10/2020
+ms.openlocfilehash: 739bba7ed9ab4770a762c08fccc422ce048ae11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587378"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79214089"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights
 
-Diese Seite bietet Informationen zu Problemen mit der Leistung von Azure SQL-Datenbank und verwalteten Instanzen, die mithilfe des Diagnoseprotokolls von [Intelligent Insights](sql-database-intelligent-insights.md) erkannt wurden. Dieses Telemetriediagnoseprotokoll kann an [Azure Monitor-Protokolle](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen gestreamt werden.
+Diese Seite bietet Informationen zu Problemen mit der Leistung von Azure SQL-Datenbank und verwalteten Instanzen, die anhand des Ressourcenprotokolls von [Intelligent Insights](sql-database-intelligent-insights.md) erkannt wurden. Metriken und Ressourcenprotokolle können an [Azure Monitor-Protokolle](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-azure-storage) oder an eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungen und -Berichterstellungsfunktionen gestreamt werden.
 
 > [!NOTE]
 > Eine Kurzanleitung zur Behandlung von Problemen mit der Leistung von SQL-Datenbank unter Verwendung von Intelligent Insights finden Sie im Flussdiagramm [Empfohlene Vorgehensweise bei der Problembehandlung](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) in diesem Dokument.
->
 
 ## <a name="detectable-database-performance-patterns"></a>Erkennbare Muster bei der Datenbankleistung
 
-Intelligent Insights erkennt automatisch auf Grundlage von Wartezeiten bei der Abfrageausführung, Fehlern oder Timeouts Probleme mit der Leistung von SQL-Datenbank und Datenbanken der verwalteten Instanz. Erkannte Leistungsmuster werden in das Diagnoseprotokoll ausgegeben. Erkennbare Leistungsmuster sind in der folgenden Tabelle zusammengefasst.
+Intelligent Insights erkennt automatisch Leistungsprobleme bei Datenbanken in Azure SQL-Datenbank auf der Grundlage von Wartezeiten bei der Abfrageausführung, Fehlern oder Timeouts. Erkannte Leistungsmuster werden von Intelligent Insights an das SQL-Datenbank-Ressourcenprotokoll ausgegeben. Erkennbare Leistungsmuster sind in der folgenden Tabelle zusammengefasst.
 
 | Erkennbare Leistungsmuster | Beschreibung für Azure SQL-Datenbank und Pools für elastische Datenbanken | Beschreibung für Datenbanken in einer verwalteten Instanz |
 | :------------------- | ------------------- | ------------------- |
@@ -82,7 +81,7 @@ Dieses Leistungsmuster identifiziert Probleme, die durch eine Zunahme der Worklo
 
 Diese Erkennung erfolgt mithilfe einer Kombination mehrerer Metriken. Die gemessene Basismetrik ist das Erkennen eines Anstiegs der Workload im Vergleich mit der Baseline der vorherigen Workload. Die andere Form der Erkennung basiert auf der Messung einer großen Zunahme aktiver Arbeitsthreads, die groß genug ist, um die Abfrageleistung zu beeinträchtigen.
 
-Eine strengere Form des Problems liegt womöglich vor, wenn sich die Workload ständig aufstaut, weil die SQL-Datenbank-Instanz nicht in der Lage ist, die Workload zu bewältigen. Das Ergebnis ist eine ständig wachsende Workload bzw. ein „Workloadstau“ genannter Zustand. Aufgrund dieser Bedingung verlängert sich der Zeitraum, in dem die Workload auf die Ausführung wartet. Diese Bedingung stellt eines der schwerwiegendsten Datenbankleistungsprobleme dar. Dieses Problem wird durch Überwachen des Anstiegs der Anzahl abgebrochener Arbeitsthreads erkannt. 
+Eine strengere Form des Problems liegt womöglich vor, wenn sich die Workload ständig aufstaut, weil die SQL-Datenbank-Instanz nicht in der Lage ist, die Workload zu bewältigen. Das Ergebnis ist eine ständig wachsende Workload bzw. ein „Workloadstau“ genannter Zustand. Aufgrund dieser Bedingung verlängert sich der Zeitraum, in dem die Workload auf die Ausführung wartet. Diese Bedingung stellt eines der schwerwiegendsten Datenbankleistungsprobleme dar. Dieses Problem wird durch Überwachen des Anstiegs der Anzahl abgebrochener Arbeitsthreads erkannt.
 
 ### <a name="troubleshooting"></a>Problembehandlung
 
@@ -102,29 +101,29 @@ Eine schwerwiegendere Form der hohen Arbeitsspeicherauslastung wird als Arbeitss
 
 ### <a name="troubleshooting"></a>Problembehandlung
 
-Das Diagnoseprotokoll gibt die Speicherdetails des Arbeitsspeicherobjekts aus, wobei der Clerk (Arbeitsthread) als Hauptgrund für die hohe Arbeitsspeicherbelegung und die entsprechenden Zeitstempel markiert ist. Sie können diese Informationen als Grundlage für die Problembehandlung verwenden. 
+Das Diagnoseprotokoll gibt die Speicherdetails des Arbeitsspeicherobjekts aus, wobei der Clerk (Arbeitsthread) als Hauptgrund für die hohe Arbeitsspeicherbelegung und die entsprechenden Zeitstempel markiert ist. Sie können diese Informationen als Grundlage für die Problembehandlung verwenden.
 
 Sie können Abfragen im Zusammenhang mit den Clerks mit der höchsten Speicherbelegung optimieren oder entfernen. Sie können auch sicherstellen, dass Sie keine Daten abfragen, die Sie nicht verwenden möchten. Eine empfohlene Vorgehensweise ist, immer eine WHERE-Klausel in Ihren Abfragen anzugeben. Darüber hinaus empfiehlt es sich, nicht gruppierte Indizes zu erstellen, um die Daten zu suchen, anstatt sie zu durchsuchen.
 
 Sie können auch die Workload reduzieren, indem Sie sie optimieren oder über mehrere Datenbanken verteilen. Sie können auch Ihre Workload auf mehrere Datenbanken verteilen. Falls dies nicht möglich ist, sollten Sie ggf. den Tarif Ihres SQL-Datenbank-Abonnements erhöhen, um die der Datenbank zur Verfügung stehenden Arbeitsspeicherressourcen zu vergrößern.
 
-Weitere Vorschläge zur Problembehandlung finden Sie unter [Meditation über Speicherzuweisungen: Der mysteriöse SQL Server-Arbeitsspeicherconsumer mit vielen Namen](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
+Weitere Vorschläge zur Problembehandlung finden Sie unter [Meditation über Speicherzuweisungen: Der mysteriöse SQL Server-Arbeitsspeicherconsumer mit vielen Namen](https://techcommunity.microsoft.com/t5/sql-server-support/memory-grants-meditation-the-mysterious-sql-server-memory/ba-p/333994).
 
 ## <a name="locking"></a>Sperren
 
 ### <a name="what-is-happening"></a>Was passiert?
 
-Dieses Leistungsmuster deutet auf eine Verschlechterung der aktuellen Datenbankleistung hin, da im Vergleich zur Leistungsbaseline der letzten sieben Tage übermäßige Datenbanksperren festgestellt wurden. 
+Dieses Leistungsmuster deutet auf eine Verschlechterung der aktuellen Datenbankleistung hin, da im Vergleich zur Leistungsbaseline der letzten sieben Tage übermäßige Datenbanksperren festgestellt wurden.
 
 In modernen Managementsystemen für relationale Datenbanken sind Sperren wesentlich für die Umsetzung von Multithreadsystemen. Bei diesen Systemen wird die Leistung maximiert, indem nach Möglichkeit mehrere gleichzeitige Workerprozesse und parallele Datenbanktransaktionen ausgeführt werden. Das Sperren bezieht sich in diesem Zusammenhang auf den integrierten Zugriffsmechanismus. Dabei kann nur ausschließlich eine Transaktion auf die benötigten Zeilen, Seiten, Tabellen und Dateien zugreifen, ohne in Konkurrenz zu anderen Transaktionen um Ressourcen zu treten. Wenn die Transaktion, die die Ressourcen für die Verwendung gesperrt hat, abgeschlossen ist, wird die Sperre für diese Ressourcen freigegeben. Daraufhin können andere Transaktionen auf die benötigen Ressourcen zugreifen. Weitere Informationen zu Sperren finden Sie unter [Sperren in der Datenbank-Engine](https://msdn.microsoft.com/library/ms190615.aspx).
 
-Wenn Transaktionen, die von der SQL-Engine ausgeführt werden, längere Zeit auf den Zugriff auf Ressourcen warten, die gesperrt sind, wird die Ausführungszeit der Workload verlangsamt. 
+Wenn Transaktionen, die von der SQL-Engine ausgeführt werden, längere Zeit auf den Zugriff auf Ressourcen warten, die gesperrt sind, wird die Ausführungszeit der Workload verlangsamt.
 
 ### <a name="troubleshooting"></a>Problembehandlung
 
 Das Diagnoseprotokoll gibt Details zu Sperren aus, die Sie als Grundlage für die Problembehandlung verwenden können. Sie können die gemeldeten blockierenden Abfragen analysieren, die für die Verschlechterung der Sperrleistung verantwortlich sind, und diese entfernen. In einigen Fällen verspricht das Optimieren der blockierenden Abfragen Erfolg.
 
-Die einfachste und sicherste Möglichkeit, das Problem zu beseitigen, besteht darin, Transaktionen kurz zu halten und den Sperrumfang der aufwändigsten Abfragen zu verkleinern. Sie können eine große Anzahl von Vorgängen in kleinere Vorgänge aufteilen. Eine bewährte Methode zum Verringern des Umfangs von Abfragesperren ist, die Abfrage so effizient wie möglich zu gestalten. Reduzieren Sie umfangreiche Scanvorgänge, da sie die Wahrscheinlichkeit von Deadlocks erhöhen und sich negativ auf die allgemeine Datenbankleistung auswirken. Für ermittelte Abfragen, die Sperren verursachen, können Sie neue Indizes erstellen oder Spalten zum vorhandenen Index hinzufügen, um Tabellenscans zu vermeiden. 
+Die einfachste und sicherste Möglichkeit, das Problem zu beseitigen, besteht darin, Transaktionen kurz zu halten und den Sperrumfang der aufwändigsten Abfragen zu verkleinern. Sie können eine große Anzahl von Vorgängen in kleinere Vorgänge aufteilen. Eine bewährte Methode zum Verringern des Umfangs von Abfragesperren ist, die Abfrage so effizient wie möglich zu gestalten. Reduzieren Sie umfangreiche Scanvorgänge, da sie die Wahrscheinlichkeit von Deadlocks erhöhen und sich negativ auf die allgemeine Datenbankleistung auswirken. Für ermittelte Abfragen, die Sperren verursachen, können Sie neue Indizes erstellen oder Spalten zum vorhandenen Index hinzufügen, um Tabellenscans zu vermeiden.
 
 Weitere Vorschläge finden Sie unter [Behebung von Blockierungsproblemen, die durch eine Sperrenausweitung in SQL Server verursacht werden](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in).
 
@@ -136,7 +135,7 @@ Dieses erkennbare Leistungsmuster deutet eine Bedingung an, bei der ein ausgewä
 
 Das Expertensystem analysiert die aktuelle Datenbankleistung im Vergleich mit dem Baselinezeitraum. Es bestimmt, ob eine zuvor ausgeführte Abfrage aufgrund der übermäßigen Parallelisierung des Ausführungsplan der Abfrage langsamer als vorher ausgeführt wird.
 
-Die Serverkonfigurationsoption „MAXDOP“ für SQL-Datenbank dient zum Steuern, wie viele CPU-Kerne zum parallelen Ausführen derselben Abfrage verwendet werden können. 
+Die Serverkonfigurationsoption „MAXDOP“ für SQL-Datenbank dient zum Steuern, wie viele CPU-Kerne zum parallelen Ausführen derselben Abfrage verwendet werden können.
 
 ### <a name="troubleshooting"></a>Problembehandlung
 
@@ -164,7 +163,7 @@ Das Diagnoseprotokoll gibt Details zum Seitenlatchkonflikt aus. Sie können dies
 
 Da ein Seitenlatch ein interner Steuermechanismus von SQL-Datenbank ist, wird seine Verwendung automatisch bestimmt. Entscheidungen zu Anwendungen, wie z.B. der Schemaentwurf, können sich aufgrund des deterministischen Verhaltens von Latches auf das Verhalten von Seitenlatches auswirken.
 
-Eine Methode zur Behandlung von Latchkonflikten ist das Ersetzen eines sequenziellen Indexschlüssels durch einen nicht sequenziellen Schlüssel, um Einfügevorgänge gleichmäßig auf einen Indexbereich zu verteilen. Typischerweise verteilt eine führende Spalte im Index die Workload proportional. Eine andere mögliche Methode ist die Tabellenpartitionierung. Das Erstellen eines Hashpartitionierungsschemas mit einer berechneten Spalte für eine partitionierte Tabelle ist eine gängige Methode zur Vermeidung übermäßiger Latchkonflikte. Im Fall von E/A-Seitenlatchkonflikten hilft das Einführen von Indizes, dieses Leistungsproblem zu beheben. 
+Eine Methode zur Behandlung von Latchkonflikten ist das Ersetzen eines sequenziellen Indexschlüssels durch einen nicht sequenziellen Schlüssel, um Einfügevorgänge gleichmäßig auf einen Indexbereich zu verteilen. Typischerweise verteilt eine führende Spalte im Index die Workload proportional. Eine andere mögliche Methode ist die Tabellenpartitionierung. Das Erstellen eines Hashpartitionierungsschemas mit einer berechneten Spalte für eine partitionierte Tabelle ist eine gängige Methode zur Vermeidung übermäßiger Latchkonflikte. Im Fall von E/A-Seitenlatchkonflikten hilft das Einführen von Indizes, dieses Leistungsproblem zu beheben.
 
 Weitere Informationen finden Sie unter [Diagnose and resolve latch contention on SQL Server (Diagnostizieren und Beheben von Latchkonflikten in SQL Server)](https://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf) (PDF-Download).
 
@@ -208,13 +207,13 @@ Erwägen Sie den Einsatz von [Query Performance Insight für Azure SQL-Datenbank
 
 Dieses erkennbare Leistungsmuster deutet auf eine Verschlechterung der Workloadleistung dahingehend hin, dass im Vergleich mit einer Workloadbaseline der letzten sieben Tage Abfragen mit schlechter Leistung ausgemacht wurden.
 
-In diesem Fall kann das System die Abfragen mit schwacher Leistung nicht in andere standardmäßige erkennbaren Leistungskategorien einstufen. Es hat jedoch eine Wartestatistik erkannt, die für die Regression verantwortlich ist. Aus diesem Grund werden diese als Abfragen mit *Statistik bei zunehmenden Wartezeiten* erkannt, wobei die für die Regression zuständige Wartestatistik ebenfalls verfügbar gemacht wird. 
+In diesem Fall kann das System die Abfragen mit schwacher Leistung nicht in andere standardmäßige erkennbaren Leistungskategorien einstufen. Es hat jedoch eine Wartestatistik erkannt, die für die Regression verantwortlich ist. Aus diesem Grund werden diese als Abfragen mit *Statistik bei zunehmenden Wartezeiten* erkannt, wobei die für die Regression zuständige Wartestatistik ebenfalls verfügbar gemacht wird.
 
 ### <a name="troubleshooting"></a>Problembehandlung
 
 Das Diagnoseprotokoll gibt Details zu zunehmenden Wartezeiten und Abfragehashes der betroffenen Abfragen aus.
 
-Da das System in diesem Fall nicht die Ursache für Abfragen mit schlechter Leistung bestimmen konnte, sind die Diagnoseinformationen ein geeigneter Ausgangspunkt für eine manuelle Problembehandlung. Sie können die Leistung dieser Abfragen optimieren. Es empfiehlt sich, nur Daten abzurufen, die Sie verwenden müssen, und komplexe Abfragen zu vereinfachen und in kleinere Abfragen zu unterteilen. 
+Da das System in diesem Fall nicht die Ursache für Abfragen mit schlechter Leistung bestimmen konnte, sind die Diagnoseinformationen ein geeigneter Ausgangspunkt für eine manuelle Problembehandlung. Sie können die Leistung dieser Abfragen optimieren. Es empfiehlt sich, nur Daten abzurufen, die Sie verwenden müssen, und komplexe Abfragen zu vereinfachen und in kleinere Abfragen zu unterteilen.
 
 Weitere Informationen zum Optimieren der Leistung von Abfragen finden Sie unter [Optimieren von Abfragen](https://msdn.microsoft.com/library/ms176005.aspx).
 
@@ -226,15 +225,15 @@ Dieses erkennbare Leistungsmuster ist ein Hinweis auf eine Datenbankleistungsbed
 
 ### <a name="troubleshooting"></a>Problembehandlung
 
-Das Diagnoseprotokoll gibt Details zum tempDB-Konflikt aus. Sie können diese Informationen als Startpunkt für die Problembehandlung verwenden. Es gibt zwei Dinge, mit denen Sie diese Art von Konflikt entschärfen und den Durchsatz der gesamten Workload erhöhen können: Sie können aufhören, die temporären Tabellen zu verwenden. Sie können auch speicheroptimierte Tabellen verwenden. 
+Das Diagnoseprotokoll gibt Details zum tempDB-Konflikt aus. Sie können diese Informationen als Startpunkt für die Problembehandlung verwenden. Es gibt zwei Dinge, mit denen Sie diese Art von Konflikt entschärfen und den Durchsatz der gesamten Workload erhöhen können: Sie können aufhören, die temporären Tabellen zu verwenden. Sie können auch speicheroptimierte Tabellen verwenden.
 
-Weitere Informationen finden Sie unter [Einführung in speicheroptimierte Tabellen](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables). 
+Weitere Informationen finden Sie unter [Einführung in speicheroptimierte Tabellen](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables).
 
 ## <a name="elastic-pool-dtu-shortage"></a>Mangel an DTUs im Pool für elastische Datenbanken
 
 ### <a name="what-is-happening"></a>Was passiert?
 
-Dieses erkennbare Leistungsmuster zeigt eine aktuelle Leistungsminderung der Datenbankworkload im Vergleich zur Workloadbaseline der letzten sieben Tage. Der Grund dafür ist der Mangel an verfügbaren DTUs im Pool für elastische Datenbanken Ihres Abonnements. 
+Dieses erkennbare Leistungsmuster zeigt eine aktuelle Leistungsminderung der Datenbankworkload im Vergleich zur Workloadbaseline der letzten sieben Tage. Der Grund dafür ist der Mangel an verfügbaren DTUs im Pool für elastische Datenbanken Ihres Abonnements.
 
 Ressourcen für SQL-Datenbank werden üblicherweise als [DTU-Ressourcen](sql-database-purchase-models.md#dtu-based-purchasing-model) bezeichnet, die aus einer Kombination von CPU- und E/A-Ressourcen (Daten- und Transaktionsprotokoll-E/A) bestehen. [Azure-Ressourcen für den Pool für elastische Datenbanken](sql-database-elastic-pool.md) dienen als Pool verfügbarer eDTU-Ressourcen, die zu Skalierungszwecken von mehreren Datenbanken gemeinsam genutzt werden. Wenn die verfügbaren eDTU-Ressourcen in Ihrem Pool elastischer Datenbanken nicht ausreichen, um alle Datenbanken im Pool zu unterstützen, wird das Problem „Mangel an DTUs im Pool für elastische Datenbanken“ vom System erkannt.
 
@@ -258,13 +257,13 @@ Dieses erkennbare Leistungsmuster kombiniert drei Fälle von Planregression: neu
 
 Die Bedingung „Neue Planregression“ bezieht sich auf einen Zustand, in dem SQL-Datenbank mit der Ausführung eines neuen Ausführungsplans beginnt, der nicht so effizient wie der alte Plan ist. Die Bedingung „Alte Planregression“ bezieht sich auf den Zustand, in dem SQL-Datenbank von einem neuen, effizienteren Plan zu einem alten Plan wechselt, der nicht so effizient wie der neue Plan ist. Die Regression „Geänderte Workload in vorhandenen Plänen“ bezieht sich auf den Zustand, in dem die alten und neue Pläne sich laufend abwechseln, wobei die Waage mehr in Richtung des Plans mit der schlechten Leistung ausschlägt.
 
-Weitere Informationen zu Planregressionen finden Sie unter [What is plan regression in SQL server (Was ist Planregression in SQL Server?)](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../what-is-plan-regression-in-sql-server/). 
+Weitere Informationen zu Planregressionen finden Sie unter [What is plan regression in SQL server (Was ist Planregression in SQL Server?)](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../what-is-plan-regression-in-sql-server/).
 
 ### <a name="troubleshooting"></a>Problembehandlung
 
 Das Diagnoseprotokoll gibt Abfragehashes, die ID des guten Plans, die ID des schlechten Plans und Abfrage-IDs zurück. Sie können diese Informationen als Grundlage für die Problembehandlung verwenden.
 
-Sie können auch für Ihre spezifischen Abfragen, die Sie mithilfe der bereitgestellten Abfragehashes bestimmen können, analysieren, welcher Plan leistungsfähiger ist. Nachdem Sie den Plan bestimmt haben, der für Ihre Abfragen besser funktioniert, können Sie ihn manuell erzwingen. 
+Sie können auch für Ihre spezifischen Abfragen, die Sie mithilfe der bereitgestellten Abfragehashes bestimmen können, analysieren, welcher Plan leistungsfähiger ist. Nachdem Sie den Plan bestimmt haben, der für Ihre Abfragen besser funktioniert, können Sie ihn manuell erzwingen.
 
 Weitere Informationen finden Sie auf der Seite zum Thema [wie SQL Server die Planregression verhindert](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/).
 
@@ -300,7 +299,7 @@ Diese Bedingung wird nur generiert, wenn im Vergleich mit dem Verhalten der Date
 
 Dieses erkennbare Leistungsmuster gibt eine Bedingung auf Clientseite an. Es ist eine Problembehandlung der clientseitigen Anwendung oder des clientseitigen Netzwerks erforderlich. Das Diagnoseprotokoll gibt die Abfragehashes und längsten Wartezeiten bei der Nutzung der Ausgabe durch den Client in den letzten beiden Stunden zurück. Sie können diese Informationen als Grundlage für die Problembehandlung verwenden.
 
-Sie können die Leistung Ihrer Anwendung für die Nutzung dieser Abfragen optimieren. Sie können auch mögliche Netzwerklatenzprobleme in Betracht ziehen. Da die Leistungsbeeinträchtigung auf der Veränderung der Leistungsbaseline der letzten sieben Tage basiert, können Sie untersuchen, ob die kürzlich durchgeführten Änderungen an der Anwendung oder am Netzwerk dieses Ereignis der Leistungsbeeinträchtigung verursacht haben. 
+Sie können die Leistung Ihrer Anwendung für die Nutzung dieser Abfragen optimieren. Sie können auch mögliche Netzwerklatenzprobleme in Betracht ziehen. Da die Leistungsbeeinträchtigung auf der Veränderung der Leistungsbaseline der letzten sieben Tage basiert, können Sie untersuchen, ob die kürzlich durchgeführten Änderungen an der Anwendung oder am Netzwerk dieses Ereignis der Leistungsbeeinträchtigung verursacht haben.
 
 ## <a name="pricing-tier-downgrade"></a>Tarifdowngrade
 
@@ -318,7 +317,7 @@ Wenn Sie Ihren Tarif herabgestuft und sich die für die SQL-Datenbank-Instanz ve
 
  Befolgen Sie das Flussdiagramm für eine empfohlene Vorgehensweise bei der Behandlung von Leistungsproblemen mithilfe von Intelligent Insights.
 
-Sie greifen auf Intelligent Insights über das Azure-Portal zu, indem Sie zu Azure SQL-Analyse navigieren. Versuchen Sie, eine eingehende Leistungswarnung zu finden, und wählen Sie sie aus. Ermitteln Sie auf der Seite „Erkennungen“ die Sachlage. Beachten Sie die bereitgestellte Fehlerursachenanalyse für das Problem, den Abfragetext, die Trends bei den Abfragezeiten und die Entwicklung von Incidents. Versuchen Sie, mithilfe der Empfehlung von Intelligent Insights das Leistungsproblem zu lösen. 
+Sie greifen auf Intelligent Insights über das Azure-Portal zu, indem Sie zu Azure SQL-Analyse navigieren. Versuchen Sie, eine eingehende Leistungswarnung zu finden, und wählen Sie sie aus. Ermitteln Sie auf der Seite „Erkennungen“ die Sachlage. Beachten Sie die bereitgestellte Fehlerursachenanalyse für das Problem, den Abfragetext, die Trends bei den Abfragezeiten und die Entwicklung von Incidents. Versuchen Sie, mithilfe der Empfehlung von Intelligent Insights das Leistungsproblem zu lösen.
 
 [![Empfohlene Vorgehensweise bei der Problembehandlung](./media/sql-database-intelligent-insights/intelligent-insights-troubleshooting-flowchart.png)](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/intelligent-insight/Troubleshoot%20Azure%20SQL%20Database%20performance%20issues%20using%20Intelligent%20Insight.pdf)
 
@@ -328,6 +327,7 @@ Sie greifen auf Intelligent Insights über das Azure-Portal zu, indem Sie zu Azu
 Intelligent Insights benötigt in der Regel eine Stunde für die Fehlerursachenanalyse eines Leistungsproblems. Wenn Sie Ihr Problem nicht in Intelligent Insights finden können, dies aber wichtig für Sie ist, verwenden Sie den Abfragespeicher, um manuell die Grundursache des Leistungsproblem zu identifizieren. (In der Regel sind diese Probleme weniger als eine Stunde alt.) Weitere Informationen finden Sie unter [Leistungsüberwachung mit dem Abfragespeicher](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Kennenlernen der [Intelligent Insights](sql-database-intelligent-insights.md)-Konzepte
 - [Verwenden des Intelligent Insights-Diagnoseprotokolls für die Leistung von Azure SQL-Datenbank](sql-database-intelligent-insights-use-diagnostics-log.md)
 - [Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)

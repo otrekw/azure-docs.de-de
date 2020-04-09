@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: a154874f4f1026b36da473ba18788fc804609ac9
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 38606f424e38fc68519181f485b5b698d0705d6a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152226"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477577"
 ---
 # <a name="join-data"></a>Verknüpfen von Daten
 
@@ -62,7 +62,7 @@ Wenn Sie einen Join-Vorgang für zwei Datasets ausführen möchten, müssen die 
     * Aktivieren Sie diese Option, wenn die Schlüssel aus beiden Eingabetabellen angezeigt werden sollen.
     * Deaktivieren Sie diese Option, wenn nur die Schlüsselspalten aus der linken Eingabe zurückgegeben werden sollen.
 
-1. Ausführen der Pipeline.
+1. Übermitteln Sie die Pipeline.
 
 1. Um die Ergebnisse anzuzeigen, klicken Sie mit der rechten Maustaste auf **Daten verknüpfen**, und wählen Sie **Visualisieren** aus.
 

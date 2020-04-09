@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 4560ca2b07826e2a071f515f147dfab8cbec3624
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516811"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228090"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Bereitstellen von StorSimple Virtual Array – Einrichten als iSCSI-Server über das Azure-Portal
 
@@ -90,7 +90,7 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr StorSimple Vir
       > Stellen Sie beim Beitritt Ihres iSCSI-Servers zu einer Domäne sicher, dass sich Ihr virtuelles Array in seiner eigenen Organisationseinheit für Microsoft Azure Active Directory befindet und keine Gruppenrichtlinienobjekte darauf angewendet sind.
       > 
       > 
-   4. Ein Dialogfeld wird angezeigt. Geben Sie die Anmeldeinformationen für die Domäne im angegebenen Format ein. Klicken Sie auf das Häkchen ![Häkchensymbol](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png)beschrieben. Die Anmeldeinformationen für die Domäne werden überprüft. Es wird eine Fehlermeldung angezeigt, wenn die Anmeldeinformationen falsch sind.
+   4. Ein Dialogfeld wird angezeigt. Geben Sie die Anmeldeinformationen für die Domäne im angegebenen Format ein. Klicken Sie auf das Häkchen ![Häkchensymbol](./media/storsimple-virtual-array-deploy3-iscsi-setup/image15.png)erforderlich. Die Anmeldeinformationen für die Domäne werden überprüft. Es wird eine Fehlermeldung angezeigt, wenn die Anmeldeinformationen falsch sind.
       
        ![Anmeldeinformationen](./media/storsimple-virtual-array-deploy3-iscsi-setup/image8.png)
    5. Klicken Sie auf **Anwenden**. Die Geräteeinstellungen werden angewendet und überprüft.
@@ -113,7 +113,7 @@ Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr StorSimple Vir
    1. Legen Sie über die Dropdownliste die **Zeitzone** basierend auf dem geografischen Standort fest, an dem das Gerät bereitgestellt wird. Die Standardzeitzone für Ihr Gerät ist „PST“. Ihr Gerät verwendet diese Zeitzone für alle geplanten Vorgänge.
    2. Geben Sie einen **primären NTP-Server** für das Gerät an, oder übernehmen Sie den Standardwert „time.windows.com“. Stellen Sie sicher, dass Ihr Netzwerk NTP-Datenverkehr vom Rechenzentrum ins Internet zulässt.
    3. Geben Sie optional einen **sekundären NTP-Server** für Ihr Gerät an.
-   4. Klicken Sie auf **Übernehmen**. Die konfigurierten Uhrzeiteinstellungen werden überprüft und angewendet.
+   4. Klicken Sie auf **Anwenden**. Die konfigurierten Uhrzeiteinstellungen werden überprüft und angewendet.
 9. Konfigurieren Sie die Cloudeinstellungen für Ihr Gerät. In diesem Schritt führen Sie die lokale Gerätekonfiguration durch und registrieren das Gerät anschließend beim StorSimple-Geräte-Manager-Dienst.
    
    1. Geben Sie den **Dienstregistrierungsschlüssel** ein, den Sie in **Schritt 2: Abrufen des Dienstregistrierungsschlüssels** in [Bereitstellen des StorSimple Virtual Array – Vorbereiten des Portals](storsimple-virtual-array-deploy1-portal-prep.md#step-2-get-the-service-registration-key) erhalten haben.
@@ -162,7 +162,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um die erforderliche Ger
 2. Gehen Sie auf dem Blatt **Volume hinzufügen** wie folgt vor:
    
    * Geben Sie im Feld **Volumename** einen eindeutigen Namen für Ihr Volume ein. Der Name muss eine Zeichenfolge mit einer Länge von 3 bis 127 Zeichen sein.
-   * Geben Sie in der Dropdownliste **Typ** an, ob das von Ihnen erstellte Volume **Mehrstufig** oder **Lokal** sein soll. Für Workloads, die lokale Garantien, niedrige Latenzzeiten und höhere Leistung benötigen, wählen Sie **Lokales** **Volume** aus. Wählen Sie für alle anderen Daten **Mehrstufiges** **Volume** aus.
+   * Geben Sie in der Dropdownliste **Typ** an, ob das von Ihnen erstellte Volume **Mehrstufig** oder **Lokal** sein soll. Für Workloads, die lokale Garantien, niedrige Wartezeiten und höhere Leistung benötigen, wählen Sie **Lokales** **Volume** aus. Wählen Sie für alle anderen Daten **Mehrstufiges** **Volume** aus.
    * Geben Sie im Feld **Kapazität** die Größe des Volumes an. Ein mehrstufiges Volume muss zwischen 500 GB und 5 TB groß sein und ein lokales Volume zwischen 50 GB und 500 GB.
      
      Ein lokales Volume wird mit vollständiger Speicherzuweisung (Thick Provisioning) bereitgestellt und stellt sicher, dass die primären Daten auf dem Volume auf dem Gerät verbleiben und nicht in die Cloud übergehen.
@@ -232,7 +232,7 @@ Führen Sie die folgenden Schritte aus, um Ihre StorSimple-Volumes auf einem Win
 
 Erfahren Sie, wie Sie die lokale Webbenutzeroberfläche verwenden, um [Ihr StorSimple Virtual Array zu verwalten](storsimple-ova-web-ui-admin.md).
 
-## <a name="appendix-a-get-the-iqn-of-a-windows-server-host"></a>Anhang A: Abrufen des IQN eines Windows Server-Hosts
+## <a name="appendix-a-get-the-iqn-of-a-windows-server-host"></a>Anhang A: Abrufen des IQN eines Windows Server-Hosts
 
 Führen Sie die folgenden Schritte aus, um den IQN (iSCSI Qualified Name) eines Windows-Hosts abzurufen, auf dem Windows Server 2012 ausgeführt wird.
 

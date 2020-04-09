@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 88382a5b6e0364145d8504b5e25ef1a9bfd0111a
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.openlocfilehash: a68d812a044c776819d169d5bf179f011d06390f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77484127"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79472944"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Suchen nach Pool- und Knotenfehlern
 
@@ -64,17 +64,17 @@ Der [Poolstatus](https://docs.microsoft.com/rest/api/batchservice/pool/get#pools
 
 ## <a name="pool-compute-node-errors"></a>Fehler in Pool-Computeknoten
 
-Selbst wenn Azure Batch Knoten in einem Pool erfolgreich zuweist, können verschiedene Probleme dazu führen, dass einige Knoten fehlerhaft sind und keine Tasks ausführen können. Da für diese Knoten weiterhin Gebühren anfallen, ist es wichtig, Probleme zu erkennen. So wird verhindert, dass für Knoten bezahlt werden muss, die nicht genutzt werden können. Neben häufigen Knotenfehlern ist es hilfreich, den aktuellen [Auftragsstatus](https://docs.microsoft.com/rest/api/batchservice/job/get#jobstate) zu kennen.
+Selbst wenn Azure Batch Knoten in einem Pool erfolgreich zuweist, können verschiedene Probleme dazu führen, dass einige Knoten fehlerhaft sind und keine Tasks ausführen können. Da für diese Knoten weiterhin Gebühren anfallen, ist es wichtig, Probleme zu erkennen. So wird verhindert, dass für Knoten bezahlt werden muss, die nicht genutzt werden können. Neben häufigen Knotenfehlern ist es hilfreich, den aktuellen [Auftragsstatus](/rest/api/batchservice/job/get#jobstate) zu kennen.
 
 ### <a name="start-task-failures"></a>Fehler bei Starttask
 
-Für einen Pool kann ein optionaler [Starttask](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask) angegeben werden. Wie bei jedem Task können eine Befehlszeile und aus dem Speicher herunterzuladende Ressourcendateien angegeben werden. Der Starttask wird für jeden Knoten ausgeführt, nachdem er gestartet wurde. Die **waitForSuccess**-Eigenschaft gibt an, ob Azure Batch wartet, bis der Starttask erfolgreich abgeschlossen ist, ehe weitere Tasks für einen Knoten geplant werden.
+Für einen Pool kann ein optionaler [Starttask](/rest/api/batchservice/pool/add#starttask) angegeben werden. Wie bei jedem Task können eine Befehlszeile und aus dem Speicher herunterzuladende Ressourcendateien angegeben werden. Der Starttask wird für jeden Knoten ausgeführt, nachdem er gestartet wurde. Die **waitForSuccess**-Eigenschaft gibt an, ob Azure Batch wartet, bis der Starttask erfolgreich abgeschlossen ist, ehe weitere Tasks für einen Knoten geplant werden.
 
 Was passiert, wenn Sie den Knoten so konfiguriert haben, dass er auf die erfolgreiche Beendigung des Starttasks wartet, aber der Starttask fehlschlägt? In diesem Fall kann der Knoten nicht verwendet werden, aber es fallen weiterhin Gebühren dafür an.
 
-Starttaskfehler können Sie mithilfe der Eigenschaften [result](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskexecutionresult) und [failureInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskfailureinformation) der Knoteneigenschaft [startTaskInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#starttaskinformation) der obersten Ebene erkennen.
+Starttaskfehler können Sie mithilfe der Eigenschaften [result](/rest/api/batchservice/computenode/get#taskexecutionresult) und [failureInfo](/rest/api/batchservice/computenode/get#taskfailureinformation) der Knoteneigenschaft [startTaskInfo](/rest/api/batchservice/computenode/get#starttaskinformation) der obersten Ebene erkennen.
 
-Ein fehlgeschlagener Starttask führt auch dazu, dass Azure Batch den Knoten [state](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) auf **starttaskfailed** festlegt, wenn **waitForSuccess** auf **TRUE** festgelegt wurde.
+Ein fehlgeschlagener Starttask führt auch dazu, dass Azure Batch den Knoten [state](/rest/api/batchservice/computenode/get#computenodestate) auf **starttaskfailed** festlegt, wenn **waitForSuccess** auf **TRUE** festgelegt wurde.
 
 Wie bei jedem anderen Task kann es für das Fehlschlagen eines Starttasks viele Ursachen geben.  Zur Fehlerbehebung sollten Sie „stdout“, „stderr“ und weitere taskspezifische Protokolldateien überprüfen.
 
@@ -84,19 +84,19 @@ Starttasks müssen eintrittsinvariant sein, da es möglich ist, dass der Startta
 
 Sie können ein oder mehrere Anwendungspakete für einen Pool angeben. Die angegebenen Paketdateien werden von Azure Batch auf die einzelnen Knoten heruntergeladen und nach dem Starten der Knoten, aber vor der Planung der Tasks, dekomprimiert. Normalerweise wird eine Befehlszeile für Starttasks in Verbindung mit Anwendungspaketen verwendet. Beispielsweise, um Dateien an einen anderen Speicherort zu kopieren oder ein Setup auszuführen.
 
-Die [errors](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror)-Eigenschaft des Knotens meldet einen Fehler beim Herunterladen und Entkomprimieren eines Anwendungspakets. Der Knotenstatus wird auf **Nicht verwendbar** festgelegt.
+Die [errors](/rest/api/batchservice/computenode/get#computenodeerror)-Eigenschaft des Knotens meldet einen Fehler beim Herunterladen und Entkomprimieren eines Anwendungspakets. Der Knotenstatus wird auf **Nicht verwendbar** festgelegt.
 
 ### <a name="container-download-failure"></a>Fehler beim Herunterladen von Containern
 
-Sie können in einem Pool eine oder mehrere Containerreferenzen angeben. Batch lädt die angegebenen Container auf die einzelnen Knoten herunter. Die [Fehler](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror)-Eigenschaft des Knotens meldet einen Fehler beim Herunterladen eines Containers und legt den Knotenstatus auf **Nicht verwendbar** fest.
+Sie können in einem Pool eine oder mehrere Containerreferenzen angeben. Batch lädt die angegebenen Container auf die einzelnen Knoten herunter. Die [Fehler](/rest/api/batchservice/computenode/get#computenodeerror)-Eigenschaft des Knotens meldet einen Fehler beim Herunterladen eines Containers und legt den Knotenstatus auf **Nicht verwendbar** fest.
 
 ### <a name="node-in-unusable-state"></a>Knoten mit dem Status „Nicht verwendbar“
 
-Es kann verschiedene Ursachen dafür geben, dass Azure Batch den [Knotenstatus](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) auf **Nicht verwendbar** festlegt. Wenn der Knotenstatus auf **Nicht verwendbar** festgelegt ist, können für den Knoten zwar keine Tasks geplant werden, es fallen jedoch weiterhin Gebühren für ihn an.
+Es kann verschiedene Ursachen dafür geben, dass Azure Batch den [Knotenstatus](/rest/api/batchservice/computenode/get#computenodestate) auf **Nicht verwendbar** festlegt. Wenn der Knotenstatus auf **Nicht verwendbar** festgelegt ist, können für den Knoten zwar keine Tasks geplant werden, es fallen jedoch weiterhin Gebühren für ihn an.
 
-Knoten mit dem Zustand **Nicht verwendbar** – aber ohne [Fehler](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) – bedeuten, dass Batch nicht mit dem virtuellen Computer kommunizieren kann. In diesem Fall versucht Batch immer, den virtuellen Computer wiederherzustellen. Batch versucht nicht automatisch, virtuelle Computer wiederherzustellen, die keine Anwendungspakete oder Container installiert haben, obwohl ihr Zustand **Nicht verwendbar** ist.
+Knoten mit dem Zustand **Nicht verwendbar** – aber ohne [Fehler](/rest/api/batchservice/computenode/get#computenodeerror) – bedeuten, dass Batch nicht mit dem virtuellen Computer kommunizieren kann. In diesem Fall versucht Batch immer, den virtuellen Computer wiederherzustellen. Batch versucht nicht automatisch, virtuelle Computer wiederherzustellen, die keine Anwendungspakete oder Container installiert haben, obwohl ihr Zustand **Nicht verwendbar** ist.
 
-Wenn Azure Batch die Ursache bestimmen kann, wird sie von der Knoteneigenschaft [errors](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) gemeldet.
+Wenn Azure Batch die Ursache bestimmen kann, wird sie von der Knoteneigenschaft [errors](/rest/api/batchservice/computenode/get#computenodeerror) gemeldet.
 
 Einige weitere Beispiele für Ursachen für **nicht verwendbare** Knoten sind u. a.:
 
@@ -114,7 +114,7 @@ Einige weitere Beispiele für Ursachen für **nicht verwendbare** Knoten sind u.
 
 ### <a name="node-agent-log-files"></a>Protokolldateien des Knoten-Agents
 
-Der Batch-Agent-Prozess, der auf jedem Poolknoten ausgeführt wird, kann Protokolldateien bereitstellen, die hilfreich sein können, wenn Sie den Support bei einem Problem mit einem Poolknoten kontaktieren müssen. Protokolldateien für einen Knoten können über das Azure-Portal, Batch Explorer oder eine [API](https://docs.microsoft.com/rest/api/batchservice/computenode/uploadbatchservicelogs) hochgeladen werden. Es ist sinnvoll, die Protokolldateien hochzuladen und zu speichern. Anschließend können Sie den Knoten oder Pool löschen, um die Kosten für die ausgeführten Knoten zu sparen.
+Der Batch-Agent-Prozess, der auf jedem Poolknoten ausgeführt wird, kann Protokolldateien bereitstellen, die hilfreich sein können, wenn Sie den Support bei einem Problem mit einem Poolknoten kontaktieren müssen. Protokolldateien für einen Knoten können über das Azure-Portal, Batch Explorer oder eine [API](/rest/api/batchservice/computenode/uploadbatchservicelogs) hochgeladen werden. Es ist sinnvoll, die Protokolldateien hochzuladen und zu speichern. Anschließend können Sie den Knoten oder Pool löschen, um die Kosten für die ausgeführten Knoten zu sparen.
 
 ### <a name="node-disk-full"></a>Knotendatenträger voll
 
@@ -133,12 +133,26 @@ Andere Dateien werden für jeden Task geschrieben, der auf einem Knoten ausgefü
 Die Größe des temporären Laufwerks hängt von der Größe des virtuellen Computers ab. Ein wichtiger Aspekt bei der Wahl der VM-Größe besteht darin, sich zu vergewissern, dass auf dem temporären Laufwerk genügend Platz ist.
 
 - Im Azure-Portal kann beim Hinzufügen eines Pools die vollständige Liste mit VM-Größen angezeigt werden, und die Spalte „Ressourcen-Datenträgergröße“ ist vorhanden.
-- Die Artikel, in denen die gesamten VM-Größen beschrieben werden, verfügen über Tabellen mit der Spalte „Temporärer Speicher“, z. B. [Compute-optimierte VM-Größen](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-compute).
+- Die Artikel, in denen die gesamten VM-Größen beschrieben werden, verfügen über Tabellen mit der Spalte „Temporärer Speicher“, z. B. [Compute-optimierte VM-Größen](/azure/virtual-machines/windows/sizes-compute).
 
 Für Dateien, die von den einzelnen Tasks geschrieben werden, kann für jeden Task eine Aufbewahrungsdauer angegeben werden. Hiermit wird festgelegt, wie lange die Taskdateien aufbewahrt werden, bevor sie automatisch bereinigt werden. Die Aufbewahrungszeit kann reduziert werden, um den Speicherbedarf zu verringern.
 
-Wenn der Speicherplatz auf dem temporären Datenträger ausgeschöpft ist, ist es derzeit so, dass die Ausführung der Tasks beendet wird. In Zukunft wird ein [Knotenfehler](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) gemeldet.
 
+Wenn auf dem temporären Datenträger nicht genügend Speicherplatz zur Verfügung steht (oder der Speicherplatz knapp wird), wechselt der Knoten in den Zustand [Nicht verwendbar](/rest/api/batchservice/computenode/get#computenodestate), und es wird ein Knotenfehler mit dem Hinweis gemeldet, dass der Datenträger voll ist.
+
+### <a name="what-to-do-when-a-disk-is-full"></a>Vorgehensweise im Falle eines vollen Datenträgers
+
+Ermitteln Sie, warum der Datenträger voll ist: Sollten Sie nicht sicher sein, wodurch der Speicherplatz auf dem Knoten beansprucht wird, empfiehlt es sich, eine Remoteverbindung mit dem Knoten herzustellen und die Speicherplatzbeanspruchung manuell zu untersuchen. Sie können auch die [Batch-API zum Auflisten von Dateien](https://docs.microsoft.com/rest/api/batchservice/file/listfromcomputenode) verwenden, um Dateien in von Batch verwalteten Ordnern zu untersuchen (beispielsweise Aufgabenausgaben). Beachten Sie, dass durch diese API nur Dateien in den von Batch verwalteten Verzeichnissen aufgelistet werden. Dateien, die von Ihren Aufgaben ggf. an einem anderen Ort erstellt wurden, werden nicht angezeigt.
+
+Vergewissern Sie sich, dass alle erforderlichen Daten von dem Knoten abgerufen oder in einen permanenten Speicher hochgeladen wurden. Zur Behebung des Problems mit einem vollen Datenträger müssen immer Daten gelöscht werden, um Speicherplatz freizugeben.
+
+### <a name="recovering-the-node"></a>Wiederherstellen des Knotens
+
+1. Wenn es sich bei Ihrem Pool um einen Pool vom Typ [CloudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) handelt, können Sie über die [Batch-API für Reimaging](https://docs.microsoft.com/rest/api/batchservice/computenode/reimage) ein Reimaging für den Knoten durchführen. Dadurch wird der gesamte Datenträger bereinigt. Für Pools vom Typ [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) wird das Reimaging derzeit nicht unterstützt.
+
+2. Bei einem Pool vom Typ [VirtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) können Sie den Knoten mithilfe der [API zum Entfernen von Knoten](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes) aus dem Pool entfernen. Anschließend können Sie den Pool wieder vergrößern, um den fehlerhaften Knoten durch einen neuen Knoten zu ersetzen.
+
+3.  Löschen Sie alte abgeschlossene Aufträge oder alte abgeschlossene Aufgaben, deren Aufgabendaten sich noch auf den Knoten befinden. Ein Hinweis darauf, welche Aufträge/Aufgabendaten sich auf den Knoten befinden, erhalten Sie in der [Auflistung „RecentTasks“](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskinformation) auf dem Knoten oder in den [Dateien auf dem Knoten](https://docs.microsoft.com//rest/api/batchservice/file/listfromcomputenode). Durch das Löschen des Auftrags werden alle Aufgaben im Auftrag gelöscht, und durch das Löschen der Aufgaben im Auftrag wird das Löschen der Daten in den Aufgabenverzeichnissen auf dem Knoten ausgelöst, wodurch Speicherplatz freigegeben wird. Starten Sie den Knoten neu, nachdem Sie genügend Speicherplatz freigegeben haben. Daraufhin sollte der Zustand von „Nicht verwendbar“ wieder in „Leerlauf“ übergehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

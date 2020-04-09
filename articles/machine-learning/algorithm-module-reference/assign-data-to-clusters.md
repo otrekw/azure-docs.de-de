@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: eff480d6763ae4bd277e6781663c559cc7c9169e
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: 207172f10277589af2b22ae2f41b07234a0925b3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152447"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477713"
 ---
 # <a name="module-assign-data-to-clusters"></a>Modul: Assign Data to Clusters
 
@@ -43,7 +43,7 @@ Das Modul „Assign Data to Clusters“ gibt ein Dataset zurück, das die wahrsc
   
     Wenn Sie dieses Kontrollkästchen deaktivieren, werden nur die Ergebnisse zurückgegeben. Diese Option kann nützlich sein, wenn Sie Vorhersagen als Teil eines Webdiensts erstellen.
   
-5.  Ausführen der Pipeline.  
+5.  Übermitteln Sie die Pipeline.  
   
 ### <a name="results"></a>Ergebnisse
 

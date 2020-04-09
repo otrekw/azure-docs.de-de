@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.openlocfilehash: 69cf79f8258f85f2fb5e787f91aa843837d0a3a1
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: c5f12da3606361b504d4581916d9645fa3cd24f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75534694"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79237002"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Grundlagen von Ergebnissen des automatisierten maschinellen Lernens
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,12 +29,12 @@ Weitere Informationen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
 * Erstellen Sie ein Experiment für Ihre Ausführung des automatisierten maschinellen Lernens, entweder mit dem SDK oder in Azure Machine Learning-Studio.
 
     * Verwenden Sie das SDK zum Erstellen eines [Klassifizierungsmodells](how-to-auto-train-remote.md) oder [Regressionsmodells](tutorial-auto-train-models.md)
-    * Verwenden Sie [Azure Machine Learning-Studio](how-to-create-portal-experiments.md), um ein Klassifizierungs- oder Regressionsmodell zu erstellen, indem Sie die entsprechenden Daten hochladen.
+    * Verwenden Sie [Azure Machine Learning-Studio](how-to-use-automated-ml-for-ml-models.md), um ein Klassifizierungs- oder Regressionsmodell zu erstellen, indem Sie die entsprechenden Daten hochladen.
 
 ## <a name="view-the-run"></a>Anzeigen der Ausführung
 
@@ -60,7 +60,7 @@ Nach dem Ausführen eines Experiments für automatisiertes maschinelles Lernen f
 
 Diese Ergebnisse werden auch während einer Ausführung angezeigt, wenn Sie das `RunDetails`[Jupyter-Widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) verwenden.
 
-## <a name="classification"></a> Klassifizierungsergebnisse
+## <a name="classification-results"></a><a name="classification"></a> Klassifizierungsergebnisse
 
 Die folgenden Metriken und Diagramme sind für jedes Klassifizierungsmodell verfügbar, das Sie mit den automatisierten Machine Learning-Funktionen von Azure Machine Learning erstellen:
 
@@ -89,7 +89,7 @@ balanced_accuracy|„Balanced accuracy“ ist das arithmetische Mittel des Recal
 f1_score_macro|„F1 score“ ist das harmonische Mittel aus Genauigkeit und Recall. „Macro“ ist das arithmetische Mittel des F1-Ergebnisses für jede Klasse.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="macro"|
 f1_score_micro|„F1 score“ ist das harmonische Mittel aus Genauigkeit und Recall. „Micro“ wird global durch Zählen der insgesamt echt positiven, falsch negativen und falsch positiven Ergebnisse berechnet.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="micro"|
 f1_score_weighted|„F1 score“ ist das harmonische Mittel aus Genauigkeit und Recall. Gewichteter Mittelwert nach Klassenhäufigkeit des F1-Ergebnisses für jede Klasse|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|average="weighted"|
-log_loss|Dies ist die Verlustfunktion, die bei der (multinomialen) logistischen Regression und deren Erweiterungen wie z. B. neuronalen Netzen verwendet wird. Sie ist definiert als die Negativ-Log-Wahrscheinlichkeit der True-Bezeichnungen bei den Vorhersagen eines probabilistischen Klassifizierers. Für eine einzelne Stichprobe mit der TRUE-Bezeichnung „yt“ in {0,1} und der geschätzten Wahrscheinlichkeit yp, dass yt = 1 lautet der logarithmische Verlust -log P(yt&#124;yp) = -(yt log(yp) + (1 - yt) log(1 - yp)).|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|Keine|
+log_loss|Dies ist die Verlustfunktion, die bei der (multinomialen) logistischen Regression und deren Erweiterungen wie z. B. neuronalen Netzen verwendet wird. Sie ist definiert als die negative Log-Wahrscheinlichkeit der True-Bezeichnungen bei den Vorhersagen eines probabilistischen Klassifizierers. Für eine einzelne Stichprobe mit der TRUE-Bezeichnung „yt“ in {0,1} und der geschätzten Wahrscheinlichkeit yp, dass yt = 1 lautet der logarithmische Verlust -log P(yt&#124;yp) = -(yt log(yp) + (1 - yt) log(1 - yp)).|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|Keine|
 norm_macro_recall|Der normalisierte Makro-Recall wird normalisiert, damit die zufällige Leistung ein Ergebnis von 0 und die ideale Leistung einen Wert von 1 liefert. Dies kann erzielt werden durch norm_macro_recall := (recall_score_macro - R)/(1 - R), wobei R der erwartete Wert von recall_score_macro für zufällige Vorhersagen ist (d. h. R=0,5 für die binäre Klassifizierung und R=(1/C) für C-Klassen-Klassifizierungsprobleme).|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average = "macro" |
 precision_score_macro|Die Genauigkeit ist der Prozentsatz der positiv vorhergesagten Elemente, die richtig bezeichnet sind. „Macro“ ist das arithmetische Mittel der Genauigkeit für jede Klasse.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="macro"|
 precision_score_micro|Die Genauigkeit ist der Prozentsatz der positiv vorhergesagten Elemente, die richtig bezeichnet sind. „Micro“ wird global durch Zählen der insgesamt echt positiven und falsch positiven Ergebnisse berechnet.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|average="micro"|
@@ -205,7 +205,7 @@ Der Makrodurchschnitt berechnet die Metrik unabhängig für jede Klasse und nimm
 ##### <a name="example-2-an-over-confident-model"></a>Beispiel 2: Ein übermäßig zuverlässiges Modell.
 ![Ein übermäßig zuverlässiges Modell.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve2.png)
 
-## <a name="regression"></a> Regressionsergebnisse
+## <a name="regression-results"></a><a name="regression"></a> Regressionsergebnisse
 
 Die folgenden Metriken und Diagramme sind für jedes Regressionsmodell verfügbar, das Sie mit den Funktionen für automatisiertes maschinelles Lernen von Azure Machine Learning erstellen:
 
@@ -214,7 +214,7 @@ Die folgenden Metriken und Diagramme sind für jedes Regressionsmodell verfügba
 + [Residualhistogramm](#histo)
 
 
-### <a name="reg-metrics"></a> Regressionsmetriken
+### <a name="regression-metrics"></a><a name="reg-metrics"></a> Regressionsmetriken
 
 Bei jeder Ausführungsiteration werden die unten angegebenen Metriken für eine Regressions- oder Vorhersageaufgabe gespeichert.
 
@@ -232,7 +232,7 @@ normalized_root_mean_squared_error|Die normalisierte Wurzel aus dem mittleren qu
 root_mean_squared_log_error|Die Wurzel aus dem mittleren quadratischen logarithmischen Fehler ist die Quadratwurzel des erwarteten quadratischen logarithmischen Fehlers.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Keine|
 normalized_root_mean_squared_log_error|Die normalisierte Wurzel aus dem mittleren quadratischen logarithmischen Fehler ist die Wurzel aus dem mittleren quadratischen logarithmischen Fehler dividiert durch den Datenbereich.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Division durch den Datenbereich|
 
-### <a name="pvt"></a> Vorhergesagt im Vergleich zu Wahr-Diagramm
+### <a name="predicted-vs-true-chart"></a><a name="pvt"></a> Vorhergesagt im Vergleich zu Wahr-Diagramm
 #### <a name="what-is-a-predicted-vs-true-chart"></a>Was ist ein Diagramm mit vorhergesagten Werten gegenüber einem Diagramm mit wahren Werten?
 Vorhergesagt im Vergleich zu TRUE zeigt die Beziehung zwischen einem vorhergesagten Wert und seinem korrelierenden wahren Wert für ein Regressionsproblem. Dieses Diagramm kann verwendet werden, um die Leistung eines Modells zu messen, da Folgendes gilt: Je näher die vorhergesagten Werte an der y=x-Linie liegen, desto besser ist die Genauigkeit eines Vorhersagemodells.
 
@@ -248,7 +248,7 @@ Nach jeder Ausführung wird für jedes Regressionsmodell ein Diagramm mit den vo
 
 
 
-### <a name="histo"></a> Histogramm der Residualwerte
+### <a name="histogram-of-residuals-chart"></a><a name="histo"></a> Histogramm der Residualwerte
 #### <a name="what-is-a-residuals-chart"></a>Was ist ein Residualwertediagramm?
 Ein Residual stellt ein beobachtetes y dar: das vorhergesagte y. Um eine Fehlerspanne mit geringem Bias darzustellen, sollte das Histogramm der Residualwerte als Glockenkurve geformt sein, die um 0 zentriert ist. 
 #### <a name="what-does-automated-ml-do-with-the-residuals-chart"></a>Was macht automatisiertes ML mit dem Residualwertediagramm?
@@ -262,7 +262,7 @@ Ein gutes Modell weist in der Regel eine Glockenkurvenform oder Fehler um Null h
 ##### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>Beispiel 2: Ein Regressionsmodell mit gleichmäßigerer Verteilung von Fehlern.
 ![Ein Regressionsmodell mit gleichmäßigerer Verteilung von Fehlern.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
 
-## <a name="explain-model"></a> Interpretierbarkeit von Modellen und Featurepriorität
+## <a name="model-interpretability-and-feature-importance"></a><a name="explain-model"></a> Interpretierbarkeit von Modellen und Featurepriorität
 Automatisiertes ML bietet ein Dashboard für die Machine Learning-Interpretierbarkeit für Ihre Ausführungen.
 Weitere Informationen zum Aktivieren von Features der Interpretierbarkeit finden Sie unter [Interpretierbarkeit von Modellen für automatisiertes ML](how-to-machine-learning-interpretability-automl.md).
 

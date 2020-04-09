@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: 38e80f1597a08b8db7cbfa852d1bcf38ac768b1f
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74871141"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Verknüpfungen in Azure Cosmos DB
@@ -126,7 +126,7 @@ Im folgenden Beispiel ist die Verknüpfung ein Kreuzprodukt zwischen zwei JSON-O
     JOIN f.children
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [
@@ -147,7 +147,7 @@ Das folgende Beispiel zeigt eine gewöhnlichere Verknüpfung:
     JOIN c IN f.children
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [
@@ -167,7 +167,7 @@ Die FROM-Quelle der JOIN-Klausel ist ein Iterator. Der Ablauf im vorherigen Beis
 
 1. Alle untergeordneten Elemente `c` im Array erweitern.
 2. Kreuzprodukt mit dem Stammknoten des Elements `f` mit den einzelnen untergeordneten Elementen vom Typ `c` anwenden, die im ersten Schritt vereinfacht wurden.
-3. Zuletzt die `id`-Eigenschaft des Stammobjekts `f` alleine projizieren.
+3. Zuletzt die `id`-Eigenschaft des Stammobjekts `f` alleine projizieren
 
 Das erste Element (`AndersenFamily`) enthält nur ein einzelnes Element `children`. Daher enthält der Ergebnissatz nur ein einzelnes Objekt. Das zweite Element (`WakefieldFamily`) enthält zwei Elemente vom Typ `children`. Daher erzeugt das Kreuzprodukt zwei Objekte, eines für jedes `children`-Element. Die Stammfelder sind in beiden Elementen gleich (wie bei einem Kreuzprodukt zu erwarten).
 
@@ -184,7 +184,7 @@ Der wahre Nutzen der JOIN-Klausel ist die Bildung von Tupeln aus dem Kreuzproduk
     JOIN p IN c.pets
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [
@@ -240,7 +240,7 @@ Das nächste Beispiel enthält einen zusätzlichen Filter für `pet`, durch den 
     WHERE p.givenName = "Shadow"
 ```
 
-Die Ergebnisse sind wie folgt:
+Die Ergebnisse sind:
 
 ```json
     [

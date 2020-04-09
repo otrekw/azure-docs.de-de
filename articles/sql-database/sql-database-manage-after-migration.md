@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 16855bb218ba3ae4d221cb1329410c7848aab2c5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ebb512fee0186bed3cc7f49f0525dac43e57da3a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818961"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228610"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Neuer DBA in der Cloud: Verwalten Ihrer Einzel- und Pooldatenbanken in Azure SQL-Datenbank
 
@@ -91,7 +91,7 @@ Weitere Informationen zur Notfallwiederherstellung finden Sie unter: [Azure SQL 
 
 Sicherheit und Datenschutz haben in SQL-Datenbank einen hohen Stellenwert. Die Sicherheit in SQL-Datenbank kann auf Datenbankebene und auf Plattformebene angewendet werden und lässt sich am besten anhand der verschiedenen Ebenen erklären. Sie haben auf jeder Ebene die Möglichkeit, Ihre Anwendung zu kontrollieren und optimal zu schützen. Die Ebenen lauten:
 
-- Identität und Authentifizierung ([Windows/SQL-Authentifizierung und Azure Active Directory [AAD]-Authentifizierung](sql-database-control-access.md))
+- Identität und Authentifizierung ([SQL-Authentifizierung und AAD-Authentifizierung [Azure Active Directory]](sql-database-manage-logins.md))
 - Überwachung von Aktivitäten ([Überwachung](sql-database-auditing.md) und [Bedrohungserkennung](sql-database-threat-detection.md))
 - Schutz von Daten ([Transparent Data Encryption [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) und [Always Encrypted [AE]](/sql/relational-databases/security/encryption/always-encrypted-database-engine))
 - Kontrollierter Zugriff auf sensible und vertrauliche Daten ([Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security) und [dynamische Datenmaskierung](/sql/relational-databases/security/dynamic-data-masking))
@@ -100,10 +100,10 @@ Sicherheit und Datenschutz haben in SQL-Datenbank einen hohen Stellenwert. Die S
 
 ### <a name="what-user-authentication-methods-are-offered-in-sql-database"></a>Welche Benutzerauthentifizierungsmethoden werden in SQL-Datenbank angeboten?
 
-SQL-Datenbank bietet [zwei Authentifizierungsmethoden](sql-database-control-access.md#authentication):
+SQL-Datenbank bietet zwei Authentifizierungsmethoden:
 
 - [Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md)
-- SQL-Authentifizierung
+- [SQL-Authentifizierung](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
 Die herkömmliche Windows-Authentifizierung wird nicht unterstützt. Azure Active Directory (AD) ist ein Dienst für die zentrale Identitäts- und Zugriffsverwaltung. Er ermöglicht sämtlichen Mitarbeitern Ihrer Organisation den bequemen Zugriff per einmaliger Anmeldung (SSO, Single Sign-On). Dies vereinfacht die Authentifizierung, da die Anmeldeinformationen für alle Azure-Dienste gemeinsam genutzt werden. AAD unterstützt [MFA (Multi-Factor Authentication)](sql-database-ssms-mfa-authentication.md) und lässt sich mit [wenigen Klicks](../active-directory/hybrid/how-to-connect-install-express.md) in Windows Server Active Directory integrieren. Die SQL-Authentifizierung funktioniert genau so, wie Sie es aus der Vergangenheit gewohnt sind. Benutzer können sich mit ihrem Benutzernamen und Kennwort bei beliebigen Datenbanken auf einem bestimmten SQL-Datenbank-Server authentifizieren. Dadurch können SQL-Datenbank und SQL Data Warehouse außerdem eine mehrstufige Authentifizierung und Benutzerkonten für Gäste innerhalb einer Azure AD-Domäne anbieten. Wenn Sie bereits über eine lokale Active Directory verfügen, können Sie dieses Verzeichnis mit Azure Active Directory verbinden und es auf Azure erweitern.
 
@@ -172,7 +172,7 @@ Zum Schutz sensibler Daten, die aktiv oder ruhend sein können, bietet SQL-Daten
 |---|---|---|
 |**Umfang der Verschlüsselung**|Komplettlösung|Ruhende Daten|
 |**Datenbankserver kann auf sensible Daten zuzugreifen.**|Nein|Ja, da die Verschlüsselung ruhende Daten betrifft.|
-|**Zulässige T-SQL-Vorgänge**|Übereinstimmungsvergleich|Die gesamte T-SQL-Oberfläche ist verfügbar.|
+|**Zulässige T-SQL-Vorgänge**|Gleichheitsvergleich|Die gesamte T-SQL-Oberfläche ist verfügbar.|
 |**Sind zur Verwendung der Funktion Änderungen an Apps erforderlich?**|Wenig|Sehr wenig|
 |**Granularität der Verschlüsselung**|Spaltenebene|Datenbankebene|
 ||||
@@ -189,7 +189,7 @@ Durch die [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-le
 
 Es gibt sowohl für die Methode Always Encrypted (clienstseitige Verschlüsselung) als auch für Transparent Data Encryption (Verschlüsselung ruhender Daten) Optionen zur Schlüsselverwaltung. Es wird empfohlen, Verschlüsselungsschlüssel regelmäßig zu rotieren. Die Rotationsfrequenz sollte sowohl die internen Bestimmungen Ihrer Organisation als auch die Complianceanforderungen erfüllen.
 
-#### <a name="transparent-data-encryption-tde"></a>Transparent Data Encryption (TDE)
+#### <a name="transparent-data-encryption-tde"></a>TDE (Transparent Data Encryption)
 
 In TDE liegt eine Zwei-Schlüssel-Hierarchie vor: Die Daten in allen Benutzerdatenbanken werden mit einem in der Datenbank eindeutigen symmetrischen AES 256-Datenbankverschlüsselungsschlüssel verschlüsselt, der wiederum von einem auf dem Server eindeutigen asymmetrischen RSA 2048-Masterschlüssel verschlüsselt wird. Der Hauptschlüssel kann wie folgt verwaltet werden:
 
@@ -226,7 +226,7 @@ Mit ExpressRoute können Sie Ihre kostenpflichtige Bandbreite ohne zusätzliche 
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>Ist SQL-Datenbank mit allen gesetzlichen Anforderungen kompatibel, und inwiefern hilft dies dabei, die Kompatibilitätsvorgaben meiner eigenen Organisation einzuhalten?
 
-SQL-Datenbank ist mit einer Reihe gesetzlicher Bestimmungen konform. Im [Microsoft Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) erfahren Sie, welche Compliancestandards von SQL-Datenbank derzeit erfüllt werden. Dort können Sie sich informieren, ob die Complianceanforderungen Ihrer Organisation erfüllt werden, und feststellen, ob SQL-Datenbank zu den konformen Azure-Diensten gehört. Wichtiger Hinweis: Obwohl SQL-Datenbank als konformer Dienst aufgeführt sein kann, unterstützt er den Dienst Ihrer Organisation lediglich bei der Umsetzung der Compliancestandards, ohne automatisch deren Einhaltung zu gewährleisten.
+Von SQL-Datenbank werden verschiedene gesetzliche Bestimmungen erfüllt. Im [Microsoft Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) erfahren Sie, welche Compliancestandards von SQL-Datenbank derzeit erfüllt werden. Dort können Sie sich informieren, ob die Complianceanforderungen Ihrer Organisation erfüllt werden, und ermitteln, ob SQL-Datenbank zu den konformen Azure-Diensten gehört. Wichtiger Hinweis: Obwohl SQL-Datenbank als konformer Dienst aufgeführt sein kann, unterstützt er den Dienst Ihrer Organisation lediglich bei der Umsetzung der Compliancestandards, ohne automatisch deren Einhaltung zu gewährleisten.
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>Intelligente Datenbanküberwachung und -wartung nach der Migration
 
@@ -302,7 +302,7 @@ SQL-Datenbank verfügt über die Dienstebenen „Basic“, „Standard“ und �
 
 |**Dienstebene**|**Allgemeine Anwendungsszenarien**|
 |---|---|
-|**Basic**|Anwendungen mit wenigen Benutzern und einer Datenbank, die keine hohen Anforderungen an Parallelität, Skalierung und Leistung stellt |
+|**Grundlegend**|Anwendungen mit wenigen Benutzern und einer Datenbank, die keine hohen Anforderungen an Parallelität, Skalierung und Leistung stellt |
 |**Standard**|Anwendungen mit hohen Anforderungen an Parallelität, Skalierung und Leistung und mittleren bis geringen Anforderungen an die E/A-Leistung |
 |**Premium**|Anwendungen mit vielen gleichzeitigen Benutzern und hohen Anforderungen an CPU/Arbeitsspeicher und E/A. Apps, die von hoher Parallelität, hohem Durchsatz und niedrigen Latenzen abhängig sind, profitieren von der Premium-Ebene. |
 |||
@@ -319,11 +319,11 @@ SQL-Datenbank nutzt intelligente Technologien, mit denen bestimmte Datenbeschäd
 
 ### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database"></a>Wie werden Daten als BACPAC-Dateien in SQL-Datenbank exportiert und importiert?
 
-- **Export:** Sie können Ihre Azure SQL-Datenbank als BACPAC-Datei aus dem Azure-Portal exportieren.
+- **Export**: Sie können Ihre Azure SQL-Datenbank als BACPAC-Datei aus dem Azure-Portal exportieren.
 
    ![Datenbankexport](./media/sql-database-export/database-export1.png)
 
-- **Import:** Sie können Daten im Azure-Portal auch als BACPAC-Datei in die Datenbank importieren.
+- **Import**: Sie können Daten im Azure-Portal auch als BACPAC-Datei in die Datenbank importieren.
 
    ![Datenbankimport](./media/sql-database-import/import1.png)
 

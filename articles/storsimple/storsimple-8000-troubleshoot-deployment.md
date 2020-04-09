@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: f2b454e812db1eea686f82e92841163f1129b6c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64715221"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232130"
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>Beheben von Problemen mit der Bereitstellung von StorSimple-Geräten
 ## <a name="overview"></a>Übersicht
@@ -47,7 +47,7 @@ In den folgenden Abschnitten erhalten Sie Hilfestellung bei Problemen, die bei d
 In den folgenden Schritten werden die Schritte des Setup-Assistenten zusammengefasst. Ausführliche Informationen zum Setup finden Sie unter [Bereitstellen lokaler StorSimple-Geräte](storsimple-8000-deployment-walkthrough-u2.md).
 
 1. Führen Sie das Cmdlet [Invoke-HcsSetupWizard](https://technet.microsoft.com/library/dn688135.aspx) aus, um den Setup-Assistenten zu starten, der Sie durch die verbleibenden Schritte führt. 
-2. Konfigurieren des Netzwerks: im Setup-Assistenten können Sie die Netzwerkeinstellungen für die DATA 0-Netzwerkschnittstelle auf dem StorSimple-Gerät konfigurieren. Dies umfasst die folgenden Einstellungen:
+2. Konfigurieren des Netzwerks: im Setup-Assistenten können Sie die Netzwerkeinstellungen für die DATA 0-Netzwerkschnittstelle auf dem StorSimple-Gerät konfigurieren. Dazu gehören folgende Einstellungen:
    * Virtuelle IP-Adresse (VIP), Subnetzmaske und Gateway – Das Cmdlet [Set HcsNetInterface](https://technet.microsoft.com/library/dn688161.aspx) wird im Hintergrund ausgeführt. Dieses Cmdlet konfiguriert IP-Adresse, Subnetzmaske und Gateway für die DATA 0-Netzwerkschnittstelle auf dem StorSimple-Gerät.
    * Primärer DNS-Server – das Cmdlet [Set HcsDnsClientServerAddress](https://technet.microsoft.com/library/dn688172.aspx) wird im Hintergrund ausgeführt. Konfiguriert die DNS-Einstellungen für Ihre StorSimple-Lösung.
    * NTP-Server – Das Cmdlet [Set HcsNtpClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) wird im Hintergrund ausgeführt. Konfiguriert die NTP-Servereinstellungen für Ihre StorSimple-Lösung.
@@ -139,7 +139,7 @@ Der StorSimple-Geräte-Manager-Dienst in Microsoft Azure wird zur Registrierung 
 | 9 |Warnung: Das Gerät konnte nicht aktiviert werden. Die Kennwörter für den Geräteadministrator und für den StorSimple-Momentaufnahme-Manager wurden nicht geändert. |Wenn die Registrierung fehlschlägt, werden die Geräteadministrator- und StorSimple-Momentaufnahme-Manager-Kennwörter nicht geändert. | |
 
 ## <a name="tools-for-troubleshooting-storsimple-deployments"></a>Tools zur Problembehandlung für StorSimple-Bereitstellungen
-StorSimple umfasst mehrere Tools, mit denen sich Probleme mit der StorSimple-Lösung beheben lassen. Das umfasst:
+StorSimple umfasst mehrere Tools, mit denen sich Probleme mit der StorSimple-Lösung beheben lassen. Dazu gehören:
 
 * Supportpakete und Geräteprotokolle
 * Cmdlets, die speziell für die Problembehandlung entwickelt wurden

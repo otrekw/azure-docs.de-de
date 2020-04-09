@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 2d13385b63802bc0037c3fbe32cd38ed5caaf1c6
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 9a0b855f48085138b28e02e0a5d01c5dd0f666be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168602"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218068"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Interpretieren von Modellergebnissen in Azure Machine Learning Studio (klassisch)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 In diesem Thema werden die Visualisierung und das Interpretieren der Vorhersageergebnisse in Azure Machine Learning Studio (klassisch) erläutert. Nachdem Sie ein Modell trainiert und darauf basierend Vorhersagen erstellt (das Modell ausgewertet) haben, müssen Sie das Vorhersageergebnis verstehen und interpretieren.
 
 
@@ -115,7 +117,7 @@ Abbildung 7. Visualisieren der Bewertungsmodellergebnisse bei der Klassifizierun
 
 **Ergebnisinterpretation**
 
-Die linken 16 Spalten stellen die Featurewerte des Testsatzes dar. Die Spalten mit den Namen „Scored Probabilities for Class 'XX'“ entsprechen der Spalte „Scored Probabilities“ bei zwei Klassen. Sie zeigen die Wahrscheinlichkeit, dass der entsprechende Eintrag in einer bestimmten Klasse liegt. Für den ersten Eintrag beträgt die Wahrscheinlichkeit z.B. 0,003571, dass es sich um ein „A“ handelt, 0,000451, dass es sich um ein „B“ handelt usw. Die letzte Spalte („Scored Labels“) entspricht „Scored Labels“ bei zwei Klassen. Die Klasse mit der größten ausgewerteten Wahrscheinlichkeit wird als die vorhergesagte Klasse des entsprechenden Eintrags ausgewählt. Beispielsweise ist "F" der ausgewertete Bezeichner für den ersten Eintrag, da es mit größter Wahrscheinlichkeit (0,916995) ein "F" ist.
+Die linken 16 Spalten stellen die Featurewerte des Testsatzes dar. Die Spalten mit den Namen „Scored Probabilities for Class 'XX'“ entsprechen der Spalte „Scored Probabilities“ bei zwei Klassen. Sie zeigen die Wahrscheinlichkeit, dass der entsprechende Eintrag in einer bestimmten Klasse liegt. Beim ersten Eintrag liegt beispielsweise die Wahrscheinlichkeit für ein „A“ bei 0,003571, die Wahrscheinlichkeit für ein „B“ bei 0,000451 usw. Die letzte Spalte („Scored Labels“) entspricht „Scored Labels“ bei zwei Klassen. Die Klasse mit der größten ausgewerteten Wahrscheinlichkeit wird als die vorhergesagte Klasse des entsprechenden Eintrags ausgewählt. Beispielsweise ist „F“ der ausgewertete Bezeichner für den ersten Eintrag, da die Wahrscheinlichkeit für ein „F“ am größten ist (0,916995).
 
 **Webdienstveröffentlichung**
 
@@ -129,7 +131,7 @@ Abbildung 8. R-Code für das Extrahieren von „Scored Labels“ und der zugeh�
 
 Abbildung 9. Endgültiges Bewertungsexperiment zur Buchstabenerkennung bei einem Klassifizierungsproblem mit mehreren Klassen
 
-Wenn Sie nach dem Veröffentlichen und Ausführen des Webdiensts einige Featurewerte eingeben, entspricht das ausgegebene Ergebnis Abbildung 10. Dieser handschriftliche Buchstabe mit den extrahierten 16 Features wird mit einer Wahrscheinlichkeit von 0,9715 als „T“ vorhergesagt.
+Wenn Sie nach dem Veröffentlichen und Ausführen des Webdiensts einige Featurewerte eingeben, entspricht das ausgegebene Ergebnis Abbildung 10. Dieser handschriftliche Buchstabe mit den extrahierten 16 Features wird mit einer Wahrscheinlichkeit von 0,9715 als „T“ vorhergesagt.
 
 ![Testinterpretation des Bewertungsmoduls](./media/interpret-model-results/9_1.png)
 
@@ -183,7 +185,7 @@ Verwenden Sie das Iris-Dataset erneut, um ein Clusteringexperiment zu erstellen.
 
 Abbildung 15. Experiment zum Iris-Clusteringproblem
 
-Das Clustering unterscheidet sich von der Klassifizierung darin, dass das Trainingsdataset nicht selbst über Ground-Truth-Bezeichner verfügt. Das Clustering gruppiert die Instanzen des Trainingsdatasets in verschiedenen Clustern. Während des Trainingsprozesses versieht das Modell die Einträge mit Bezeichnern, indem es die Unterschiede zwischen deren Features lernt. Danach kann das trainierte Modell weiter zum Klassifizieren von zukünftigen Einträge verwendet werden. Zwei Teile des Ergebnisses sind in einem Clusteringproblem relevant. Der erste Teil besteht im Bezeichnen des Trainingsdatasets und der zweite im Klassifizieren eines neuen Datasets mit dem trainierten Modell.
+Das Clustering unterscheidet sich von der Klassifizierung dahingehend, dass das Trainingsdataset nicht selbst über Ground-Truth-Bezeichner verfügt. Das Clustering gruppiert die Instanzen des Trainingsdatasets in verschiedenen Clustern. Während des Trainingsprozesses versieht das Modell die Einträge mit Bezeichnern, indem es die Unterschiede zwischen deren Features lernt. Danach kann das trainierte Modell weiter zum Klassifizieren von zukünftigen Einträge verwendet werden. Zwei Teile des Ergebnisses sind in einem Clusteringproblem relevant. Der erste Teil besteht im Bezeichnen des Trainingsdatasets und der zweite im Klassifizieren eines neuen Datasets mit dem trainierten Modell.
 
 Der erste Teil des Ergebnisses kann durch Klicken auf den linken Ausgabeport des Moduls [Train Clustering Model][train-clustering-model] und anschließendes Klicken auf **Visualisieren** visualisiert werden. Die Visualisierung wird in Abbildung 16 dargestellt.
 

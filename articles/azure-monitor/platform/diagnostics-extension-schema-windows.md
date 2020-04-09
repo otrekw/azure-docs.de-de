@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: 3adf4b59c0605859ada75577c083094541815984
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 4c711e1b0a63fbcf978c0e4467eadaed8d91f3de
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77672360"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234310"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Schema der Diagnoseerweiterung für Windows
 Die Azure-Diagnoseerweiterung ist ein Agent in Azure Monitor, der Überwachungsdaten vom Gastbetriebssystem und den Workloads von Azure-Computeressourcen sammelt. In diesem Artikel wird das Schema erläutert, das zur Konfiguration der Diagnoseerweiterung auf virtuellen Windows-Computern und anderen Computeressourcen verwendet wird.
@@ -54,7 +54,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  Beschreibt die öffentliche Diagnosekonfiguration  
 
-|Untergeordnete Elemente|Beschreibung|  
+|Untergeordnete Elemente|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |**WadCfg**|Erforderlich. Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
 |**StorageAccount**|Der Name des Azure Storage-Kontos zum Speichern der Daten. Kann auch als Parameter angegeben werden, wenn das Cmdlet „Set-AzureServiceDiagnosticsExtension“ ausgeführt wird.|  
@@ -72,7 +72,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  Erforderlich
 
-|Attributes|Beschreibung|  
+|Attributes|BESCHREIBUNG|  
 |----------------|-----------------|  
 | **overallQuotaInMB** | Der maximale lokale Speicherplatz, der von den verschiedenen Typen von Diagnosedaten genutzt werden kann, die von der Azure-Diagnose erfasst werden. Die Standardeinstellung lautet 4.096 MB.<br />
 |**useProxyServer** | Konfigurieren Sie die Azure-Diagnose, um die Proxyservereinstellungen den IE-Einstellungen entsprechend zu verwenden.|
@@ -155,7 +155,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  Konfiguriert die Erfassung der ETW-Ereignisse von EventSource und/oder der ETW-Manifest-basierten Anbieter  
 
-|Untergeordnete Elemente|Beschreibung|  
+|Untergeordnete Elemente|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |**EtwEventSourceProviderConfiguration**|Konfiguriert die Erfassung von Ereignissen, die über die [EventSource-Klasse](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx) generiert wurden. Erforderliches Attribut:<br /><br /> **provider**: Der Klassenname des EventSource-Ereignisses<br /><br /> Optionale Attribute sind:<br /><br /> - **scheduledTransferLogLevelFilter**: Der minimale Schweregrad, der in Ihr Speicherkonto übertragen wird<br /><br /> - **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](https://www.w3schools.com/xml/schema_dtypes_date.asp). |  
 |**EtwManifestProviderConfiguration**|Erforderliches Attribut:<br /><br /> **provider**: Die GUID des Ereignisanbieters<br /><br /> Optionale Attribute sind:<br /><br /> - **scheduledTransferLogLevelFilter**: Der minimale Schweregrad, der in Ihr Speicherkonto übertragen wird<br /><br /> - **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](https://www.w3schools.com/xml/schema_dtypes_date.asp). |  
@@ -221,7 +221,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  Optionales **scheduledTransferPeriod**-Attribut. Siehe Erklärung weiter oben.  
 
-|Untergeordnetes Element|Beschreibung|  
+|Untergeordnetes Element|BESCHREIBUNG|  
 |-------------------|-----------------|  
 |**DataSource**|Die Windows-Ereignisprotokolle, die erfasst werden sollen. Erforderliches Attribut:<br /><br /> **name**: Die XPath-Abfrage, die die zu erfassenden Windows-Ereignisse beschreibt. Beispiel:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Zum Erfassen aller Ereignisse geben Sie „*“ ein.|  
 
@@ -506,7 +506,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 ```
 
 > [!NOTE]
-> Die öffentliche Konfiguration der Azure Monitor-Senkendefinition verfügt über zwei Eigenschaften: *PrincipalId* und *Secret*. Diese sind nur für klassische virtuelle Computer und klassische Clouddienste erforderlich. Diese Eigenschaften sollten für andere Ressourcen nicht verwendet werden.
+> Die private Konfiguration der Azure Monitor-Senkendefinition verfügt über zwei Eigenschaften: *PrincipalId* und *Secret*. Diese sind nur für klassische virtuelle Computer und klassische Clouddienste erforderlich. Diese Eigenschaften sollten für andere Ressourcen nicht verwendet werden.
 
 
 ```json

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 24f168f68a60ebb0408b7f1c367039ea5caea6d1
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72794280"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Sicherheitsfilter zum Einschränken von Ergebnissen in der kognitiven Azure-Suche
@@ -27,7 +27,7 @@ Dieser Artikel erläutert, wie Sie das Filtern von Sicherheit mithilfe der folge
 > [!div class="checklist"]
 > * Erstellen Sie ein Feld, das die Prinzipalbezeichner enthält 
 > * Aktualisieren Sie vorhandene Dokumente mit den relevanten Prinzipalbezeichnern, oder übertragen Sie diese mithilfe von Push
-> * Geben Sie eine Suchanforderung mit `search.in` `filter` aus
+> * Geben Sie eine Suchanforderung mit `search.in` `filter` aus.
 
 >[!NOTE]
 > Das Abrufen der Prinzipalbezeichner wird in diesem Dokument nicht behandelt. Sie sollten diese vom Anbieter Ihres Identitätsdiensts erhalten.
@@ -156,5 +156,5 @@ Auf diese Weise können Sie Ergebnisse basierend auf der Benutzeridentität und 
 ## <a name="see-also"></a>Weitere Informationen
 
 + [Auf der Active Directory-Identität basierende Zugriffssteuerung mit Filtern der kognitiven Azure-Suche](search-security-trimming-for-azure-search-with-aad.md)
-+ [Filter in der kognitiven Azure-Suche](search-filters.md)
++ [Filter in Azure Cognitive Search](search-filters.md)
 + [Datensicherheit und Zugriffssteuerung in Vorgängen der kognitiven Azure-Suche](search-security-overview.md)

@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.openlocfilehash: a780a42179a0bacf0e4a12ba1e75ae84943539b4
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77190726"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>Behandeln von Problemen mit der Azure-VM-Erweiterung
@@ -57,7 +57,7 @@ Dieser Fehler tritt auf, wenn auf dem Linux-Computer eine veraltete Agent-Versio
 
 ## <a name="causes-and-solutions"></a>Ursachen und Lösungen
 
-### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern)
+### <a name="the-agent-is-installed-in-the-vm-but-its-unresponsive-for-windows-vms"></a><a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern)
 
 #### <a name="solution"></a>Lösung
 Der VM-Agent wurde möglicherweise beschädigt, oder der Dienst wurde angehalten. Durch Neuinstallation des VM-Agents erhalten Sie die neueste Version. Dadurch wird auch die Kommunikation mit dem Dienst neu gestartet.
@@ -107,6 +107,6 @@ So deinstallieren Sie die Erweiterung:
 1. Wählen Sie **Site Recovery-Erweiterung**.
 1. Wählen Sie **Deinstallieren** aus.
 
-Wenn die VMSnapshot-Erweiterung im Azure-Portal nicht angezeigt wird, [aktualisieren Sie den Azure-Linux-Agent](../virtual-machines/linux/update-agent.md), und führen Sie dann die Sicherung aus.
+Wenn die VMSnapshot-Erweiterung im Azure-Portal nicht angezeigt wird, [aktualisieren Sie den Azure-Linux-Agent](../virtual-machines/linux/update-agent.md). Führen Sie anschließend den Schutzauftrag aus.
 
 Diese Schritte bewirken, dass die Erweiterung während der nächsten Ausführung des Schutzauftrags neu installiert wird.

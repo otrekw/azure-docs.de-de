@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/08/2019
+ms.date: 3/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 9ea3388cb65b18c093ffff3ec8b8c9f2764ef189
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 23d83b59c510f2565b2f66f78dad56c9c9592dd0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78300067"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79136516"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>Gewusst wie: Bereitstellen optionaler Ansprüche für Ihre Azure AD-App
 
@@ -85,10 +85,10 @@ Diese Ansprüche sind in Azure AD v1.0-Token immer enthalten, jedoch nie in v2.0
 | `pwd_exp`     | Kennwortablaufzeit        | Datum und Uhrzeit, zu der das Kennwort abläuft. |       |
 | `pwd_url`     | Kennwortänderungs-URL             | Eine URL, die der Benutzer besuchen kann, um sein Kennwort zu ändern.   |   |
 | `in_corp`     | Innerhalb des Unternehmensnetzwerks        | Signalisiert, ob sich der Client aus dem Unternehmensnetzwerk anmeldet. Andernfalls ist der Anspruch nicht enthalten.   |  Basierend auf den Einstellungen für [vertrauenswürdige IP-Adressen](../authentication/howto-mfa-mfasettings.md#trusted-ips) in der MFA.    |
-| `nickname`    | Spitzname                        | Ein zusätzlicher Name für den Benutzer. Der Spitzname unterscheidet sich vom Vor- oder Nachnamen. | 
-| `family_name` | Last Name (Nachname)                       | Gibt den Nachnamen des Benutzers entsprechend der Definition im Benutzerobjekt an. <br>„family_name“: „Miller“ | In MSA und Azure AD unterstützt   |
-| `given_name`  | Vorname                      | Gibt den Vornamen des Benutzers entsprechend der Definition im Benutzerobjekt an.<br>"given_name": "Frank"                   | In MSA und Azure AD unterstützt  |
-| `upn`         | Benutzerprinzipalname | Ein Bezeichner für den Benutzer, der mit dem Parameter „username_hint“ verwendet werden kann.  Dies ist kein dauerhafter Bezeichner für den Benutzer und sollte möglichst nicht zur Datenzuordnung verwendet werden. | Informationen zur Konfiguration des Anspruchs finden Sie weiter unten unter [Zusätzliche Eigenschaften](#additional-properties-of-optional-claims). |
+| `nickname`    | Spitzname                        | Ein zusätzlicher Name für den Benutzer. Der Spitzname unterscheidet sich vom Vor- oder Nachnamen. Erfordert den Bereich `profile`.| 
+| `family_name` | Last Name (Nachname)                       | Gibt den Nachnamen des Benutzers entsprechend der Definition im Benutzerobjekt an. <br>„family_name“: „Miller“ | Wird in MSA und Azure AD unterstützt. Erfordert den Bereich `profile`.   |
+| `given_name`  | Vorname                      | Gibt den Vornamen des Benutzers entsprechend der Definition im Benutzerobjekt an.<br>"given_name": "Frank"                   | Wird in MSA und Azure AD unterstützt.  Erfordert den Bereich `profile`. |
+| `upn`         | Benutzerprinzipalname | Ein Bezeichner für den Benutzer, der mit dem Parameter „username_hint“ verwendet werden kann.  Dies ist kein dauerhafter Bezeichner für den Benutzer und sollte möglichst nicht zur Datenzuordnung verwendet werden. | Informationen zur Konfiguration des Anspruchs finden Sie weiter unten unter [Zusätzliche Eigenschaften](#additional-properties-of-optional-claims). Erfordert den Bereich `profile`.|
 
 ### <a name="additional-properties-of-optional-claims"></a>Zusätzliche Eigenschaften optionaler Ansprüche
 
@@ -96,7 +96,7 @@ Einige optionale Ansprüche können so konfiguriert werden, dass sie auf andere 
 
 **Tabelle 4: Werte zum Konfigurieren optionaler Ansprüche**
 
-| Eigenschaftenname  | Name der zusätzlichen Eigenschaft | Beschreibung |
+| Eigenschaftenname  | Name der zusätzlichen Eigenschaft | BESCHREIBUNG |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Kann für SAML- und JWT-Antworten und für v1.0- und v2.0-Token verwendet werden. |
 |                | `include_externally_authenticated_upn`  | Bezieht den Gast-UPN ein, wie er im Ressourcenmandanten gespeichert ist. Zum Beispiel, `foo_hometenant.com#EXT#@resourcetenant.com` |             
@@ -117,12 +117,13 @@ Einige optionale Ansprüche können so konfiguriert werden, dass sie auf andere 
         }
     ```
 
-Dieses OptionalClaims-Objekt bewirkt, dass das an den Client zurückgegebene ID-Token einen weiteren UPN mit den zusätzlichen Informationen zum Home- und zum Ressourcenmandanten enthält. Der `upn`-Anspruch wird im Token nur dann geändert, wenn der Benutzer ein Gastbenutzer im Mandanten ist (und einen anderen Identitätsanbieter für die Authentifizierung verwendet). 
+Dieses OptionalClaims-Objekt bewirkt, dass das an den Client zurückgegebene ID-Token einen UPN-Anspruch mit den zusätzlichen Informationen zum Home- und zum Ressourcenmandanten enthält. Der `upn`-Anspruch wird im Token nur dann geändert, wenn der Benutzer ein Gastbenutzer im Mandanten ist (und einen anderen Identitätsanbieter für die Authentifizierung verwendet). 
 
 ## <a name="configuring-optional-claims"></a>Konfigurieren optionaler Ansprüche
 
 > [!IMPORTANT]
 > Zugriffstoken werden **immer** mit dem Manifest der Ressource und nicht des Clients generiert.  In der Anforderung `...scope=https://graph.microsoft.com/user.read...` ist die Ressource also die Microsoft Graph-API.  Folglich wird das Zugriffstoken unter Verwendung des Microsoft Graph-API-Manifests und nicht des Clientmanifests erstellt.  Eine Änderung des Manifests für Ihre Anwendung führt niemals dazu, dass Token für die Microsoft Graph-API anders aussehen.  Um zu überprüfen, ob Ihre Änderungen an `accessToken` wirksam sind, fordern Sie ein Token für Ihre Anwendung, aber keine andere App an.  
+
 
 Sie können optionale Ansprüche für Ihre Anwendung über die Benutzeroberfläche oder das Anwendungsmanifest konfigurieren.
 
@@ -186,7 +187,7 @@ Deklariert die von einer Anwendung angeforderten optionalen Ansprüche. Eine Anw
 
 **Tabelle 5: Eigenschaften des Typs „OptionalClaims“**
 
-| Name        | type                       | Beschreibung                                           |
+| Name        | type                       | BESCHREIBUNG                                           |
 |-------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Sammlung (OptionalClaim) | Die optionalen Ansprüche, die im JWT-ID-Token zurückgegeben werden. |
 | `accessToken` | Sammlung (OptionalClaim) | Die optionalen Ansprüche, die im JWT-Zugriffstoken zurückgegeben werden. |
@@ -207,7 +208,7 @@ Wenn durch einen bestimmten Anspruch unterstützt, können Sie auch das Verhalte
 | `additionalProperties` | Sammlung (Edm.String) | Zusätzliche Eigenschaften des Anspruchs. Wenn eine Eigenschaft in dieser Sammlung vorhanden ist, ändert sie das Verhalten des optionalen Anspruchs, der in der „name“-Eigenschaft angegeben ist.                                                                                                                                               |
 ## <a name="configuring-directory-extension-optional-claims"></a>Konfigurieren von optionalen Ansprüchen für die Verzeichniserweiterung
 
-Zusätzlich zu den optionalen Standardansprüchen können Sie Token auch so konfigurieren, dass sie Erweiterungen enthalten. Diese Funktion ist nützlich, um zusätzliche Benutzerinformationen anzufügen, die von Ihrer App verwendet werden können, z. B. einen zusätzlichen Bezeichner oder eine wichtige Konfigurationsoption, die vom Benutzer festgelegt wurde. Ein Beispiel finden Sie unten auf dieser Seite.
+Zusätzlich zu den optionalen Standardansprüchen können Sie Token auch so konfigurieren, dass sie Erweiterungen enthalten. Weitere Informationen finden Sie in der [Microsoft Graph-Dokumentation zu „extensionProperty“](https://docs.microsoft.com/graph/api/resources/extensionproperty?view=graph-rest-1.0). Beachten Sie, dass von optionalen Ansprüchen nur die Verzeichniserweiterungen im AAD-Graph-Stil unterstützt werden, aber keine Schemaerweiterungen oder offenen Erweiterungen. Diese Funktion ist nützlich, um zusätzliche Benutzerinformationen anzufügen, die von Ihrer App verwendet werden können, z. B. einen zusätzlichen Bezeichner oder eine wichtige Konfigurationsoption, die vom Benutzer festgelegt wurde. Ein Beispiel finden Sie unten auf dieser Seite.
 
 > [!NOTE]
 > - Verzeichnisschemaerweiterungen sind eine auf Azure AD beschränkte Funktion, d. h., wenn Ihr Anwendungsmanifest eine benutzerdefinierte Erweiterung erfordert und sich ein MSA-Benutzer bei Ihrer App anmeldet, werden diese Erweiterungen nicht zurückgegeben.
@@ -269,7 +270,7 @@ Dieser Abschnitt behandelt die Konfigurationsoptionen unter den optionalen Anspr
    Wenn die Gruppen im Token die lokalen AD-Gruppenattribute im Abschnitt mit optionalen Ansprüchen enthalten sollen, geben Sie an, welcher optionale Anspruch des Tokentyps angewendet werden soll. Geben Sie außerdem den Namen des angeforderten optionalen Anspruchs sowie weitere gewünschte Eigenschaften an.  Es können mehrere Tokentypen aufgelistet werden:
 
    - idToken für das OIDC-ID-Token
-   - accessToken für das OAuth/OIDC-Zugriffstoken
+   - accessToken für das OAuth-Zugriffstoken
    - Saml2Token für SAML-Token
 
    > [!NOTE]
@@ -286,7 +287,7 @@ Dieser Abschnitt behandelt die Konfigurationsoptionen unter den optionalen Anspr
        }
     ```
 
-   | Schema für optionale Ansprüche | value |
+   | Schema für optionale Ansprüche | Wert |
    |----------|-------------|
    | **name:** | Muss „groups“ lauten. |
    | **source:** | Wird nicht verwendet. Auslassen oder NULL angeben. |

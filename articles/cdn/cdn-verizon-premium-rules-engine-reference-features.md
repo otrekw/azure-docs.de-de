@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
 ms.openlocfilehash: 9177ac544c83305ae95ad681d3dc9f84ac64ea36
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593244"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79225962"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Features der Regel-Engine für Azure CDN Premium von Verizon
 
@@ -24,7 +24,7 @@ Der dritte Teil einer Regel ist das Feature. Ein Feature definiert die Art von A
 
 Diese Features dienen zum Steuern des Zugriffs auf Inhalte.
 
-NAME | Zweck
+Name | Zweck
 -----|--------
 [Deny Access (403)](#deny-access-403) | Bestimmt, ob alle Anfragen mit der Antwort „403 – Verboten“ abgelehnt werden.
 [Token Auth](#token-auth) | Bestimmt, ob die tokenbasierte Authentifizierung auf eine Anforderung angewendet wird.
@@ -36,7 +36,7 @@ NAME | Zweck
 
 Diese Features dienen zum Anpassen des Zeitpunkts und der Art der Zwischenspeicherung von Inhalten.
 
-NAME | Zweck
+Name | Zweck
 -----|--------
 [Bandwidth Parameters](#bandwidth-parameters) | Bestimmt, ob Parameter zur Bandbreitenbeschränkung (beispielsweise „ec_rate“ und „ec_prebuf“) aktiv sind.
 [Bandwidth Throttling](#bandwidth-throttling) | Drosselt die Bandbreite für die Antwort, die vom POP (Point of Presence) bereitgestellt wird.
@@ -66,7 +66,7 @@ NAME | Zweck
 
 Diese Funktion dient zum Bereitstellen zusätzlicher Informationen innerhalb einer Regel.
 
-NAME | Zweck
+Name | Zweck
 -----|--------
 [Comment](#comment) | Erlaubt das Hinzufügen eines Hinweises in einer Regel.
 
@@ -74,7 +74,7 @@ NAME | Zweck
 
 Diese Features dienen zum Hinzufügen, Ändern oder Löschen von Headern in der Anforderung oder Antwort.
 
-NAME | Zweck
+Name | Zweck
 -----|--------
 [Age Response Header](#age-response-header) | Legt fest, ob ein „Age Response Header“ in die Antwort an die anfordernde Person einbezogen wird.
 [Debug Cache Response Headers](#debug-cache-response-headers) | Bestimmt, ob eine Antwort den „X-EC-Debug Response Header“ enthalten kann, der Informationen zur Cacherichtlinie für das angeforderte Objekt enthält.
@@ -86,7 +86,7 @@ NAME | Zweck
 
 Diese Features dienen zum Anpassen der Daten, die in unformatierten Protokolldateien gespeichert sind.
 
-NAME | Zweck
+Name | Zweck
 -----|--------
 [Custom Log Field 1](#custom-log-field-1) | Bestimmt das Format und den Inhalt, das/der dem benutzerdefinierten Protokollfeld in einer unformatierten Protokolldatei zugewiesen wird.
 [Log Query String](#log-query-string) | Bestimmt, ob eine Abfragezeichenfolge zusammen mit der URL in Zugriffsprotokollen gespeichert wird.
@@ -140,7 +140,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 Diese Funktionen dienen zum Steuern, wie das CDN mit einem Ursprungsserver kommuniziert.
 
-NAME | Zweck
+Name | Zweck
 -----|--------
 [Maximum Keep-Alive Requests](#maximum-keep-alive-requests) | Definiert die maximale Anzahl von Anforderungen für eine „Keep Alive“-Verbindung, bevor diese geschlossen wird.
 [Proxy Special Headers](#proxy-special-headers) | Definiert die CDN-spezifischen Anforderungsheader, die von einem POP an einen Ursprungsserver weitergeleitet werden.
@@ -149,7 +149,7 @@ NAME | Zweck
 
 Diese Features bieten erweiterte Funktionalität für erfahrene Benutzer.
 
-NAME | Zweck
+Name | Zweck
 -----|--------
 [Cacheable HTTP Methods](#cacheable-http-methods) | Bestimmt zusätzliche HTTP-Methoden, die im Netzwerk zwischengespeichert werden können.
 [Cacheable Request Body Size](#cacheable-request-body-size) | Definiert den Schwellenwert zum Bestimmen, ob eine POST-Antwort zwischengespeichert werden kann.
@@ -159,7 +159,7 @@ NAME | Zweck
 
 Diese Funktionen ermöglichen, dass eine Anforderung zu einer anderen URL umgeleitet bzw. in eine andere URL umgeschrieben wird.
 
-NAME | Zweck
+Name | Zweck
 -----|--------
 [Follow Redirects](#follow-redirects) | Bestimmt, ob Anforderungen zum Hostnamen umgeleitet werden können, der im „Location“-Header definiert ist, der vom Kundenursprungsserver zurückgegeben wird.
 [URL Redirect](#url-redirect) | Leitet Anfragen über den „Location“-Header weiter.
@@ -175,8 +175,8 @@ NAME | Zweck
 
 Wert|Ergebnis
 --|--
-Enabled | Der „Age Response Header“ wird in die Antwort einbezogen, die an die anfordernde Person gesendet wird.
-Deaktiviert | Der „Age Response Header“ wird aus der Antwort ausgeschlossen, die an die anfordernde Person gesendet wird.
+Aktiviert | Der „Age Response Header“ wird in die Antwort einbezogen, die an die anfordernde Person gesendet wird.
+Disabled | Der „Age Response Header“ wird aus der Antwort ausgeschlossen, die an die anfordernde Person gesendet wird.
 
 **Standardverhalten**: Deaktiviert.
 
@@ -194,8 +194,8 @@ Parameter zur Bandbreiteneinschränkung legen fest, ob die Datenübertragungsrat
 
 Wert|Ergebnis
 --|--
-Enabled|Erlaubt den POPs, die Anforderungen der Bandbreitendrosselung zu berücksichtigen.
-Deaktiviert|Veranlasst die POPs, Parameter zur Bandbreitendrosselung zu ignorieren. Der angeforderte Inhalt wird normal (also ohne Bandbreiteneinschränkung) verarbeitet.
+Aktiviert|Erlaubt den POPs, die Anforderungen der Bandbreitendrosselung zu berücksichtigen.
+Disabled|Veranlasst die POPs, Parameter zur Bandbreitendrosselung zu ignorieren. Der angeforderte Inhalt wird normal (also ohne Bandbreiteneinschränkung) verarbeitet.
 
 **Standardverhalten:** Aktiviert.
 
@@ -230,12 +230,12 @@ Prebuf seconds|Legen Sie diese Option auf die Anzahl von Sekunden fest, die die 
 
 Wert|Ergebnis
 --|--
-Enabled|Hiermit gehen alle Anforderungen auch dann an den Ursprungsserver, wenn der Inhalt vorher auf POPs zwischengespeichert wurde.
-Deaktiviert|Hiermit werden Assets entsprechend der in den Antwortheadern definierten Cacherichtlinie von den POPs zwischengespeichert.
+Aktiviert|Hiermit gehen alle Anforderungen auch dann an den Ursprungsserver, wenn der Inhalt vorher auf POPs zwischengespeichert wurde.
+Disabled|Hiermit werden Assets entsprechend der in den Antwortheadern definierten Cacherichtlinie von den POPs zwischengespeichert.
 
 **Standardverhalten:**
 
-- **HTTP Large:** Deaktiviert
+- **HTTP Large:** Disabled
 
 <!---
 - **ADN:** Enabled
@@ -298,8 +298,8 @@ Die einfachste Möglichkeit zum Erreichen dieser Art der Konfiguration besteht d
 
 Wert|Ergebnis
 --|--
-Überschreiben|Stellt sicher, dass die folgenden Aktionen ausgeführt werden:<br/> – Überschreibt den vom Ursprungsserver generierten `Cache-Control`-Header. <br/>– Fügt der Antwort den `Cache-Control`-Header hinzu, der durch das Feature „External Max-Age“ generiert wird.
-Pass Through|Stellt sicher, dass der durch das Feature „External Max-Age“ generierte `Cache-Control`-Header der Antwort niemals hinzugefügt wird. <br/> Falls der Ursprungsserver einen `Cache-Control`-Header generiert, wird dieser an den Endbenutzer weitergegeben. <br/> Wenn der Ursprungsserver keinen `Cache-Control`-Header generiert, kann diese Option bewirken, dass der Antwortheader keinen `Cache-Control`-Header enthält.
+Overwrite|Stellt sicher, dass die folgenden Aktionen ausgeführt werden:<br/> – Überschreibt den vom Ursprungsserver generierten `Cache-Control`-Header. <br/>– Fügt der Antwort den `Cache-Control`-Header hinzu, der durch das Feature „External Max-Age“ generiert wird.
+Pass-Through|Stellt sicher, dass der durch das Feature „External Max-Age“ generierte `Cache-Control`-Header der Antwort niemals hinzugefügt wird. <br/> Falls der Ursprungsserver einen `Cache-Control`-Header generiert, wird dieser an den Endbenutzer weitergegeben. <br/> Wenn der Ursprungsserver keinen `Cache-Control`-Header generiert, kann diese Option bewirken, dass der Antwortheader keinen `Cache-Control`-Header enthält.
 Add if Missing|Wenn vom Ursprungsserver kein `Cache-Control`-Header empfangen wurde, fügt diese Option den `Cache-Control`-Header hinzu, der vom Feature „External Max-Age“ generiert wird. Diese Option ist hilfreich, um sicherzustellen, dass allen Objekten ein `Cache-Control`-Header zugewiesen wird.
 Remove (Entfernen)| Diese Option stellt sicher, dass in der Headerantwort kein `Cache-Control`-Header enthalten ist. Wenn ein `Cache-Control`-Header bereits zugewiesen wurde, wird er aus der Headerantwort entfernt.
 
@@ -338,7 +338,7 @@ Um das als „no-cache“ bezeichnete Verhalten für das Zwischenspeichern von A
 
 Das folgende Verwendungsbeispiel für dieses Feature umfasst eine Beispielanforderung und den Standardcacheschlüssel:
 
-- **Beispielanforderung:** http://wpc.0001.&lt ;Domäne&gt; /800001/Origin/folder/asset.htm?sessionid=1234&language=DE&userid=01
+- **Beispielanforderung:** http://wpc.0001.&lt.Domäne&gt; /800001/Origin/folder/asset.htm?sessionid=1234&language=DE&amp;amp;userid=01
 - **Standardcacheschlüssel:** /800001/Origin/folder/asset.htm
 
 ##### <a name="include"></a>Include
@@ -443,8 +443,8 @@ Behalten Sie die Standardkonfiguration für die HTTP Large-Plattform bei, weil s
 
 Wert|Ergebnis
 --|--
-Enabled|Stellt das Standardverhalten wieder her. Standardmäßig wird der POP gezwungen, einen Hintergrundabruf des Assets vom Ursprungsserver zu initiieren. Anschließend befindet sich das Asset im lokalen Cache des POP.
-Deaktiviert|Verhindert, dass ein POP einen Hintergrundabruf des Assets ausführt. Das Ergebnis: Die nächste Anforderung für das Asset aus der betreffenden Region führt dazu, dass ein POP es vom Kundenursprungsserver anfordert.
+Aktiviert|Stellt das Standardverhalten wieder her. Standardmäßig wird der POP gezwungen, einen Hintergrundabruf des Assets vom Ursprungsserver zu initiieren. Anschließend befindet sich das Asset im lokalen Cache des POP.
+Disabled|Verhindert, dass ein POP einen Hintergrundabruf des Assets ausführt. Das Ergebnis: Die nächste Anforderung für das Asset aus der betreffenden Region führt dazu, dass ein POP es vom Kundenursprungsserver anfordert.
 
 **Standardverhalten:** Aktiviert.
 
@@ -457,7 +457,7 @@ Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, k
 - Cookie Parameter
 - Cookie Parameter Regex
 - Country
-- Gerät
+- Sicherungsmedium
 - Microsoft Edge-CNAME
 - Referring Domain
 - Request Header Literal
@@ -487,8 +487,8 @@ Internetmedientyp|BESCHREIBUNG
 text/plain|Nur-Text-Dateien
 text/html| HTML-Dateien
 text/css|Cascading Stylesheets (CSS)
-application/x-javascript|JavaScript
-application/javascript|JavaScript
+application/x-javascript|Javascript
+application/javascript|Javascript
 
 Wichtige Informationen:
 
@@ -553,8 +553,8 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 Wert|Ergebnis
 -|-
-Enabled|Anforderungen für „Debug Cache Response Headers“ geben eine Antwort zurück, die den X-EC-Debug-Header enthält.
-Deaktiviert|Der „X-EC-Debug Response Header“ wird aus der Antwort ausgeschlossen.
+Aktiviert|Anforderungen für „Debug Cache Response Headers“ geben eine Antwort zurück, die den X-EC-Debug-Header enthält.
+Disabled|Der „X-EC-Debug Response Header“ wird aus der Antwort ausgeschlossen.
 
 **Standardverhalten:** Deaktiviert.
 
@@ -589,7 +589,7 @@ Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, k
 - Cookie Parameter
 - Cookie Parameter Regex
 - Country
-- Gerät
+- Sicherungsmedium
 - Edge Cname
 - Referring Domain
 - Request Header Literal
@@ -614,10 +614,10 @@ Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, k
 
 Wert | Ergebnis
 ------|-------
-Enabled| Hiermit werden alle Anforderungen, die die Übereinstimmungskriterien erfüllen, mit der Antwort „403 – Verboten“ abgelehnt.
-Deaktiviert| Stellt das Standardverhalten wieder her. Standardmäßig wird dem Ursprungsserver gestattet, den zurückzugebenden Antworttyp festzulegen.
+Aktiviert| Hiermit werden alle Anforderungen, die die Übereinstimmungskriterien erfüllen, mit der Antwort „403 – Verboten“ abgelehnt.
+Disabled| Stellt das Standardverhalten wieder her. Standardmäßig wird dem Ursprungsserver gestattet, den zurückzugebenden Antworttyp festzulegen.
 
-**Standardverhalten**: Deaktiviert
+**Standardverhalten**: Disabled
 
 > [!TIP]
    > Eine Verwendungsmöglichkeit für dieses Feature besteht darin, es einer Anforderungsheader-Übereinstimmungsbedingung zuzuordnen, um den Zugriff auf HTTP-Verweiser zu blockieren, die Inlinelinks auf Ihre Inhalte verwenden.
@@ -636,12 +636,12 @@ Die einfachste Möglichkeit zum Erreichen dieser Art der Konfiguration besteht d
 
 Wert|Ergebnis
 --|--
-Überschreiben|Stellt sicher, dass die folgenden Aktionen ausgeführt werden:<br/>– Überschreibt den vom Ursprungsserver generierten `Expires`-Header.<br/>– Fügt der Antwort den `Expires`-Header hinzu, der durch das Feature „External Max-Age“ generiert wird.
-Pass Through|Stellt sicher, dass der durch das Feature „External Max-Age“ generierte `Expires`-Header der Antwort niemals hinzugefügt wird. <br/> Falls der Ursprungsserver einen `Expires`-Header generiert, wird dieser an den Endbenutzer weitergegeben. <br/>Wenn der Ursprungsserver keinen `Expires`-Header generiert, kann diese Option bewirken, dass der Antwortheader keinen `Expires`-Header enthält.
+Overwrite|Stellt sicher, dass die folgenden Aktionen ausgeführt werden:<br/>– Überschreibt den vom Ursprungsserver generierten `Expires`-Header.<br/>– Fügt der Antwort den `Expires`-Header hinzu, der durch das Feature „External Max-Age“ generiert wird.
+Pass-Through|Stellt sicher, dass der durch das Feature „External Max-Age“ generierte `Expires`-Header der Antwort niemals hinzugefügt wird. <br/> Falls der Ursprungsserver einen `Expires`-Header generiert, wird dieser an den Endbenutzer weitergegeben. <br/>Wenn der Ursprungsserver keinen `Expires`-Header generiert, kann diese Option bewirken, dass der Antwortheader keinen `Expires`-Header enthält.
 Add if Missing| Wenn vom Ursprungsserver kein `Expires`-Header empfangen wurde, fügt diese Option den `Expires`-Header hinzu, der vom Feature „External Max-Age“ generiert wird. Diese Option ist hilfreich, um sicherzustellen, dass allen Objekten ein `Expires`-Header zugewiesen wird.
 Remove (Entfernen)| Stellt sicher, dass in der Headerantwort kein `Expires`-Header enthalten ist. Wenn ein `Expires`-Header bereits zugewiesen wurde, wird er aus der Headerantwort entfernt.
 
-**Standardverhalten:** Überschreiben
+**Standardverhalten:** Overwrite
 
 [Nach oben](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -680,8 +680,8 @@ Wichtige Informationen:
 
 Wert|Ergebnis
 -|-
-Enabled|Anforderungen können umgeleitet werden.
-Deaktiviert|Anforderungen werden nicht umgeleitet.
+Aktiviert|Anforderungen können umgeleitet werden.
+Disabled|Anforderungen werden nicht umgeleitet.
 
 **Standardverhalten:** Deaktiviert.
 
@@ -716,7 +716,7 @@ Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, k
 - Cookie Parameter
 - Cookie Parameter Regex
 - Country
-- Gerät
+- Sicherungsmedium
 - Edge Cname
 - Referring Domain
 - Request Header Literal
@@ -760,8 +760,8 @@ Eine no-cache-Anforderung erfolgt, wenn der HTTP-Client in der HTTP-Anforderung 
 
 Wert|Ergebnis
 --|--
-Enabled|Ermöglicht das Weiterleiten von no-cache-Anforderungen eines HTTP-Clients an den Ursprungsserver. Der Ursprungsserver gibt die Antwortheader und den Text über den POP an den HTTP-Client zurück.
-Deaktiviert|Stellt das Standardverhalten wieder her. Standardmäßig wird verhindert, dass no-cache-Anforderungen an den Ursprungsserver weitergeleitet werden.
+Aktiviert|Ermöglicht das Weiterleiten von no-cache-Anforderungen eines HTTP-Clients an den Ursprungsserver. Der Ursprungsserver gibt die Antwortheader und den Text über den POP an den HTTP-Client zurück.
+Disabled|Stellt das Standardverhalten wieder her. Standardmäßig wird verhindert, dass no-cache-Anforderungen an den Ursprungsserver weitergeleitet werden.
 
 Für den gesamten Produktionsdatenverkehr wird dringend empfohlen, dieses Feature in seinem Standardzustand (deaktiviert) zu belassen. Andernfalls werden die Ursprungsserver nicht vor Endbenutzern, die beim Aktualisieren von Webseiten versehentlich viele no-cache-Anforderungen auslösen können, oder vor den zahlreichen beliebten Media Playern geschützt, die so codiert sind, dass bei jeder Videoanforderung ein no-cache-Header mitgesendet wird. Trotzdem kann es von Vorteil sein, diese Funktion auf bestimmte nicht produktive Staging- oder Testverzeichnisse anzuwenden, damit neuer Inhalt bei Bedarf vom Ursprungsserver abgerufen werden kann.
 
@@ -800,7 +800,7 @@ Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, k
 - Cookie Parameter
 - Cookie Parameter Regex
 - Country
-- Gerät
+- Sicherungsmedium
 - Edge Cname
 - Referring Domain
 - Request Header Literal
@@ -827,8 +827,8 @@ Standardmäßig wird dieser Statuscode zurückgegeben, wenn die angegebene byte-
 
 Wert|Ergebnis
 -|-
-Enabled|Verhindert, dass die POPs eine ungültige byte-range-Anforderung mit dem Statuscode „416 – Angeforderter Bereich nicht erfüllbar“ beantwortet. Stattdessen übermitteln die Server das angeforderte Objekt und geben „200 – OK“ an den Client zurück.
-Deaktiviert|Stellt das Standardverhalten wieder her. Standardmäßig wird der Statuscode „416 – Angeforderter Bereich nicht erfüllbar“ berücksichtigt.
+Aktiviert|Verhindert, dass die POPs eine ungültige byte-range-Anforderung mit dem Statuscode „416 – Angeforderter Bereich nicht erfüllbar“ beantwortet. Stattdessen übermitteln die Server das angeforderte Objekt und geben „200 – OK“ an den Client zurück.
+Disabled|Stellt das Standardverhalten wieder her. Standardmäßig wird der Statuscode „416 – Angeforderter Bereich nicht erfüllbar“ berücksichtigt.
 
 **Standardverhalten:** Deaktiviert.
 
@@ -868,7 +868,7 @@ Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, k
 - Cookie Parameter
 - Cookie Parameter Regex
 - Country
-- Gerät
+- Sicherungsmedium
 - Edge Cname
 - Referring Domain
 - Request Header Literal
@@ -893,8 +893,8 @@ Aufgrund der Art und Weise, in welcher Cacheeinstellungen nachverfolgt werden, k
 
 Wert|Ergebnis
 -|-
-Enabled|Ermöglicht die Speicherung von Abfragezeichenfolgen bei der Aufzeichnung von URLs in einem Zugriffsprotokoll. Wenn eine URL keine Abfragezeichenfolge enthält, besitzt diese Option keine Auswirkungen.
-Deaktiviert|Stellt das Standardverhalten wieder her. Standardmäßig werden Abfragezeichenfolgen bei der Aufzeichnung von URLs in einem Zugriffsprotokoll ignoriert.
+Aktiviert|Ermöglicht die Speicherung von Abfragezeichenfolgen bei der Aufzeichnung von URLs in einem Zugriffsprotokoll. Wenn eine URL keine Abfragezeichenfolge enthält, besitzt diese Option keine Auswirkungen.
+Disabled|Stellt das Standardverhalten wieder her. Standardmäßig werden Abfragezeichenfolgen bei der Aufzeichnung von URLs in einem Zugriffsprotokoll ignoriert.
 
 **Standardverhalten:** Deaktiviert.
 
@@ -937,7 +937,7 @@ Für einen Anforderungsheader kann eine der folgenden Aktionen ausgeführt werde
 Option|BESCHREIBUNG|Beispiel
 -|-|-
 Anfügen|Der angegebene Wert wird am Ende des vorhandenen Werts des Anforderungsheaders hinzugefügt.|**Wert des Anforderungsheaders (Client):**<br/>Wert1<br/>**Wert des Anforderungsheaders (Regel-Engine):**<br/>Wert2 <br/>**Neuer Wert des Anforderungsheaders:** <br/>Value1Value2
-Überschreiben|Der Wert des Anforderungsheaders wird auf den angegebenen Wert festgelegt.|**Wert des Anforderungsheaders (Client):**<br/>Wert1<br/>**Wert des Anforderungsheaders (Regel-Engine):**<br/>Wert2<br/>**Neuer Wert des Anforderungsheaders:**<br/> Wert2 <br/>
+Overwrite|Der Wert des Anforderungsheaders wird auf den angegebenen Wert festgelegt.|**Wert des Anforderungsheaders (Client):**<br/>Wert1<br/>**Wert des Anforderungsheaders (Regel-Engine):**<br/>Wert2<br/>**Neuer Wert des Anforderungsheaders:**<br/> Wert2 <br/>
 Löschen|Löscht den angegebenen Anforderungsheader.|**Wert des Anforderungsheaders (Client):**<br/>Wert1<br/>**Konfiguration von „Modify Client Request Header“:**<br/>Der betreffende Anforderungsheader wird gelöscht.<br/>**Ergebnis:**<br/>Der angegebene Anforderungsheader wird nicht an den Ursprungsserver weitergeleitet.
 
 Wichtige Informationen:
@@ -953,7 +953,7 @@ Wichtige Informationen:
     - forwarded
     - host
     - via
-    - Warnung
+    - warning
     - x-forwarded-for
     - Alle Headernamen, die mit „x-ec“ beginnen, sind reserviert.
 
@@ -977,7 +977,7 @@ Für einen Antwortheader kann eine der folgenden Aktionen ausgeführt werden:
 Option|BESCHREIBUNG|Beispiel
 -|-|-
 Anfügen|Der angegebene Wert wird am Ende des vorhandenen Werts des Antwortheaders hinzugefügt.|**Wert des Antwortheaders (Client):**<br />Wert1<br/>**Wert des Antwortheaders (Regel-Engine):**<br/>Wert2<br/>**Neuer Wert des Antwortheaders:**<br/>Value1Value2
-Überschreiben|Der Wert des Antwortheaders wird auf den angegebenen Wert festgelegt.|**Wert des Antwortheaders (Client):**<br/>Wert1<br/>**Wert des Antwortheaders (Regel-Engine):**<br/>Wert2 <br/>**Neuer Wert des Antwortheaders:**<br/>Wert2 <br/>
+Overwrite|Der Wert des Antwortheaders wird auf den angegebenen Wert festgelegt.|**Wert des Antwortheaders (Client):**<br/>Wert1<br/>**Wert des Antwortheaders (Regel-Engine):**<br/>Wert2 <br/>**Neuer Wert des Antwortheaders:**<br/>Wert2 <br/>
 Löschen|Löscht den angegebenen Antwortheader.|**Wert des Antwortheaders (Client):**<br/>Wert1<br/>**Konfiguration von „Modify Client Response Header“:**<br/>Der betreffende Antwortheader wird gelöscht.<br/>**Ergebnis:**<br/>Der angegebene Antwortheader wird nicht an die anfordernde Person weitergeleitet.
 
 Wichtige Informationen:
@@ -999,10 +999,10 @@ Wichtige Informationen:
     - server
     - trailer
     - transfer-encoding
-    - Upgrade
+    - upgrade
     - vary
     - via
-    - Warnung
+    - warning
     - Alle Headernamen, die mit „x-ec“ beginnen, sind reserviert.
 
 [Nach oben](#azure-cdn-from-verizon-premium-rules-engine-features)
@@ -1019,8 +1019,8 @@ Dieser Teilcache kann dann verwendet werden, um neue Anforderungen für diese In
 
 Wert|Ergebnis
 -|-
-Enabled|Anforderungen können teilweise zwischengespeicherte Inhalte erstellen.
-Deaktiviert|Anforderungen können nur eine vollständig zwischengespeicherte Version des angeforderten Inhalts generieren.
+Aktiviert|Anforderungen können teilweise zwischengespeicherte Inhalte erstellen.
+Disabled|Anforderungen können nur eine vollständig zwischengespeicherte Version des angeforderten Inhalts generieren.
 
 **Standardverhalten:** Deaktiviert.
 
@@ -1083,8 +1083,8 @@ Gültige Werte sind:
 
 Wert|Ergebnis
 --|--
-Enabled|Führt dazu, dass der POP das Asset erneut vom Ursprungsserver abruft.
-Deaktiviert|Stellt das Standardverhalten wieder her. Standardmäßig werden gültige Cacheassets auf Anforderung bedient.
+Aktiviert|Führt dazu, dass der POP das Asset erneut vom Ursprungsserver abruft.
+Disabled|Stellt das Standardverhalten wieder her. Standardmäßig werden gültige Cacheassets auf Anforderung bedient.
 
 Dieses Feature ist für eine korrekte Zwischenspeicherung und Inhaltsübermittlung nicht erforderlich, aber möglicherweise als Problemumgehung hilfreich. Dynamische Inhaltsgeneratoren auf Ursprungsservern können beispielsweise dazu führen, dass versehentlich 0-Byte-Antworten an die POPs gesendet werden. Diese Typen von Antworten werden in der Regel durch die POPs zwischengespeichert. Wenn Sie wissen, dass eine 0-Byte-Antwort nie eine gültige Antwort für solche Inhalte ist, kann dieses Feature verhindern, dass diese Assettypen an Ihre Clients ausgegeben werden.
 
@@ -1134,7 +1134,7 @@ Der angegebene Headername darf keinem der folgenden Namen entsprechen:
     - host
     - vary
     - via
-    - Warnung
+    - warning
     - x-forwarded-for
     - Alle Headernamen, die mit „x-ec“ beginnen, sind reserviert.
 
@@ -1150,10 +1150,10 @@ Der angegebene Headername darf keinem der folgenden Namen entsprechen:
 
 Wert|Ergebnis
 -|-
-Enabled|Veralteter Inhalt wird an die anfordernde Person ausgegeben, wenn während einer Verbindung mit einem Ursprungsserver ein Fehler auftritt.
-Deaktiviert|Der Fehler des Ursprungsservers wird an die anfordernde Person weitergeleitet.
+Aktiviert|Veralteter Inhalt wird an die anfordernde Person ausgegeben, wenn während einer Verbindung mit einem Ursprungsserver ein Fehler auftritt.
+Disabled|Der Fehler des Ursprungsservers wird an die anfordernde Person weitergeleitet.
 
-**Standardverhalten:** Deaktiviert
+**Standardverhalten:** Disabled
 
 [Nach oben](#azure-cdn-from-verizon-premium-rules-engine-features)
 
@@ -1194,8 +1194,8 @@ Dieses Feature hat Vorrang vor den meisten Features (mit Ausnahme von „URL Rew
 
 Wert | Ergebnis
 ------|---------
-Enabled | Schützt den angeforderten Inhalt durch tokenbasierte Authentifizierung. Nur Anforderungen von Clients, die ein gültiges Token bereitstellen und dessen Anforderungen erfüllen, werden berücksichtigt. FTP-Transaktionen werden von der tokenbasierten Authentifizierung ausgeschlossen.
-Deaktiviert| Stellt das Standardverhalten wieder her. Standardmäßig wird Ihrer tokenbasierten Authentifizierungskonfiguration gestattet festzulegen, ob eine Anforderung gesichert wird.
+Aktiviert | Schützt den angeforderten Inhalt durch tokenbasierte Authentifizierung. Nur Anforderungen von Clients, die ein gültiges Token bereitstellen und dessen Anforderungen erfüllen, werden berücksichtigt. FTP-Transaktionen werden von der tokenbasierten Authentifizierung ausgeschlossen.
+Disabled| Stellt das Standardverhalten wieder her. Standardmäßig wird Ihrer tokenbasierten Authentifizierungskonfiguration gestattet festzulegen, ob eine Anforderung gesichert wird.
 
 #### <a name="compatibility"></a>Kompatibilität
 
@@ -1240,7 +1240,7 @@ Die URL-Umleitung gilt nur für 3xx-Antwortcodes.
 
 Die Option „Optional Header Value“ unterstützt alphanumerische Zeichen, Anführungszeichen und Leerzeichen.
 
-#### <a name="authentication"></a>Authentication
+#### <a name="authentication"></a>Authentifizierung
 
 Dieses Feature unterstützt die Möglichkeit, den WWW-Authenticate-Header in die Antwort auf eine nicht autorisierte Anforderung für Inhalte einzuschließen, die durch die tokenbasierte Authentifizierung geschützt werden. Wenn der WWW-Authenticate-Header in Ihrer Konfiguration auf „basic“ festgelegt wurde, wird der nicht autorisierte Benutzer zur Eingabe von Kontoanmeldeinformationen aufgefordert.
 
@@ -1272,8 +1272,8 @@ Gültige Werte sind:
 
 Wert|Ergebnis
 ---|----
-Enabled|Bewirkt, dass der POP Groß- und Kleinschreibung beim Vergleichen von URLs für Parameter der tokenbasierten Authentifizierung ignoriert.
-Deaktiviert|Stellt das Standardverhalten wieder her. Standardmäßig wird bei URL-Vergleichen für die Tokenauthentifizierung die Groß-/Kleinschreibung beachtet.
+Aktiviert|Bewirkt, dass der POP Groß- und Kleinschreibung beim Vergleichen von URLs für Parameter der tokenbasierten Authentifizierung ignoriert.
+Disabled|Stellt das Standardverhalten wieder her. Standardmäßig wird bei URL-Vergleichen für die Tokenauthentifizierung die Groß-/Kleinschreibung beachtet.
 
 **Standardverhalten:** Deaktiviert.
 
@@ -1295,8 +1295,8 @@ Wichtige Informationen:
 
 Wert|Ergebnis
 ----|----
-Enabled|Die Option „Value“ definiert den Namen des Abfragezeichenfolgenparameters, über den Token definiert werden.
-Deaktiviert|Ein Token kann als ein nicht definierter Abfragezeichenfolgenparameter in der Anforderungs-URL angegeben werden.
+Aktiviert|Die Option „Value“ definiert den Namen des Abfragezeichenfolgenparameters, über den Token definiert werden.
+Disabled|Ein Token kann als ein nicht definierter Abfragezeichenfolgenparameter in der Anforderungs-URL angegeben werden.
 
 **Standardverhalten:** Deaktiviert. Ein Token kann als ein nicht definierter Abfragezeichenfolgenparameter in der Anforderungs-URL angegeben werden.
 
@@ -1316,7 +1316,7 @@ Option|BESCHREIBUNG
 -|-
 Code|Wählen Sie den Antwortcode aus, der an die anfordernde Person zurückgegeben wird.
 Source & Pattern| Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeleitet werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeleitet: <br/> <br/> **Quelle (oder Inhaltszugriffspunkt):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dieser Pfad ist der Abschnitt _/XXXX/_ und Ihr Endpunktname. <br/><br/> **Quelle (Muster):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> - Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) nicht mit für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. <br/> - Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen.
-Ziel| Definieren Sie die URL, zu der die oben genannten Anforderungen umgeleitet werden. <br/><br/> Stellen Sie diese URL unter Verwendung folgender Elemente dynamisch zusammen: <br/> - Muster für regulären Ausdruck <br/>- [HTTP-Variablen](cdn-http-variables.md) <br/><br/> Setzen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert in der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt. <br/>
+Destination| Definieren Sie die URL, zu der die oben genannten Anforderungen umgeleitet werden. <br/><br/> Stellen Sie diese URL unter Verwendung folgender Elemente dynamisch zusammen: <br/> - Muster für regulären Ausdruck <br/>- [HTTP-Variablen](cdn-http-variables.md) <br/><br/> Setzen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert in der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt. <br/>
 
 Es wird dringend empfohlen, eine absolute URL zu verwenden. Bei Verwendung einer relativen URL werden CDN-URLs möglicherweise an einen ungültigen Pfad umgeleitet.
 
@@ -1361,7 +1361,7 @@ Wichtige Informationen:
 Option|BESCHREIBUNG
 -|-
  Source & Pattern | Diese Einstellungen definieren ein Anforderungs-URI-Muster, das die Art der Anforderungen identifiziert, die umgeschrieben werden können. Nur Anforderungen, deren URL beide der folgenden Kriterien erfüllt, werden umgeschrieben: <br/><br/>  - **Quelle (oder Inhaltszugriffspunkt):** Wählen Sie einen relativen Pfad aus, der einen Ursprungsserver identifiziert. Dieser Pfad ist der Abschnitt _/XXXX/_ und Ihr Endpunktname. <br/><br/> - **Quelle (Muster):** Ein Muster, das Anforderungen nach relativem Pfad identifiziert, muss definiert werden. Dieses Muster für reguläre Ausdrücke muss einen Pfad definieren, der direkt nach dem zuvor ausgewählten Inhaltszugriffspunkt gestartet wird (siehe oben). <br/> Vergewissern Sie sich, dass die oben definierten URI-Kriterien der Anforderung („Source & Pattern“) mit keinen für diese Funktion definierten Übereinstimmungsbedingungen in Konflikt stehen. Geben Sie ein Muster an. Andernfalls werden alle Zeichenfolgen abgeglichen.
- Ziel  |Definieren Sie folgendermaßen die relative URL, in die die oben genannten Anforderungen umgeschrieben werden: <br/>    1. Wählen Sie einen Inhaltszugriffspunkt, der einen Ursprungsserver identifiziert. <br/>    2. Definieren Sie einen relativen Pfad anhand folgender Elemente: <br/>        - Muster für regulären Ausdruck <br/>        - [HTTP-Variablen](cdn-http-variables.md) <br/> <br/> Setzen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert in der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt.
+ Destination  |Definieren Sie folgendermaßen die relative URL, in die die oben genannten Anforderungen umgeschrieben werden: <br/>    1. Wählen Sie einen Inhaltszugriffspunkt, der einen Ursprungsserver identifiziert. <br/>    2. Definieren Sie einen relativen Pfad anhand folgender Elemente: <br/>        - Muster für regulären Ausdruck <br/>        - [HTTP-Variablen](cdn-http-variables.md) <br/> <br/> Setzen Sie die im Quellmuster erfassten Werte unter Verwendung von $_n_ in das Zielmuster ein. Dabei identifiziert _n_ einen Wert in der Reihenfolge, in der er erfasst wurde. Beispielsweise steht $1 für den ersten im Quellmuster erfassten Wert, während $2 den zweiten Wert darstellt.
 
  Dieses Feature ermöglicht den POPs das Umschreiben der URL, ohne dass eine herkömmliche Umleitung ausgeführt werden muss. Die anfordernde Person erhält also den gleichen Antwortcode, den sie auch beim Anfordern der umgeschriebenen URL erhalten hätte.
 

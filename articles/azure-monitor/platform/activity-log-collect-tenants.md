@@ -1,17 +1,17 @@
 ---
-title: Erfassen von Azure-Aktivitätsprotokollen in einem Log Analytics-Arbeitsbereich über Azure-Mandanten hinweg | Microsoft-Dokumentation
+title: Mandantenübergreifende Azure-Aktivitätsprotokolle in Azure Monitor
 description: Erfassen Sie mit Event Hubs und Logik-Apps Daten aus dem Azure-Aktivitätsprotokoll, und senden Sie diese Daten an einen Log Analytics-Arbeitsbereich in Azure Monitor eines anderen Mandanten.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/06/2019
-ms.openlocfilehash: 52bf8b955ef4dc9cfae7fd74fbad0df744609196
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: d2f794365e15768dbf47647f2d9a8d08d5e8ba3f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77669266"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80055741"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants-legacy"></a>Erfassen von Azure-Aktivitätsprotokollen für Azure Active Directory-Mandanten (Legacy) in Azure Monitor
 
@@ -129,7 +129,7 @@ Um Name und Verbindungszeichenfolge des Event Hubs abzurufen, führen Sie die un
    | Name           | Eindeutiger Name für die Logik-App. |
    | Subscription   | Wählen Sie das Azure-Abonnement aus, das die Logik-App enthalten soll. |
    | Ressourcengruppe | Wählen Sie für die Logik-App eine vorhandene Azure-Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe. |
-   | Location       | Wählen Sie die Datencenterregion für die Bereitstellung Ihrer Logik-App aus. |
+   | Position       | Wählen Sie die Datencenterregion für die Bereitstellung Ihrer Logik-App aus. |
    | Log Analytics  | Aktivieren Sie diese Einstellung, wenn bei jeder Ausführung der Logik-App der Status in einem Log Analytics-Arbeitsbereich protokolliert werden soll.  |
 
     
@@ -299,7 +299,7 @@ Die Aktion [Datensammler von Azure Log Analytics](https://docs.microsoft.com/con
 
     ![Konfigurieren der Aktion „Daten senden“](media/collect-activity-logs-subscriptions/logic-apps-send-data-to-log-analytics-configuration.png)
 
-   |Einstellung        | value           | BESCHREIBUNG  |
+   |Einstellung        | Wert           | BESCHREIBUNG  |
    |---------------|---------------------------|--------------|
    |JSON-Anforderungstext  | **Ausgabe** von der **Compose**-Aktion | Ruft die Datensätze aus dem Text der Compose-Aktion ab. |
    | Name des benutzerdefinierten Protokolls | AzureActivity | Name der benutzerdefinierten Protokolltabelle, die im Log Analytics-Arbeitsbereich zur Aufnahme der importierten Daten erstellt werden soll. |

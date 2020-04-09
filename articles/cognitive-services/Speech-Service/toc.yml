@@ -113,6 +113,8 @@
       items:
         - name: Was ist Text-zu-Sprache?
           href: text-to-speech.md
+        - name: Grundlegendes zur Sprachsynthese
+          href: text-to-speech-basics.md
     - name: Schnellstart
       items:
         - name: Synthetisieren von Sprache über einen Lautsprecher

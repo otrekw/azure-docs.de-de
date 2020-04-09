@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/22/2019
+ms.date: 03/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 8629d07830622770c3b30dacdd1fabc8417d7f52
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: af7c995c11322a538dd9e27a905f1ddbc723e8ab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454426"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79224890"
 ---
 # <a name="access-and-customize-developer-portal"></a>Zugreifen auf das Entwicklerportal und Anpassen dieses Portals
 
@@ -38,7 +38,7 @@ Weitere Informationen zum Entwicklerportal finden Sie in der [Übersicht über d
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Absolvieren Sie die folgende Schnellstartanleitung: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
+- Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
 - Importieren und veröffentlichen Sie eine Azure API Management-Instanz. Weitere Informationen finden Sie unter [Importieren und Veröffentlichen](import-and-publish.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
@@ -111,7 +111,7 @@ In dem folgenden Video demonstrieren wir, wie Sie den Inhalt des Portals bearbei
 
 > [!VIDEO https://www.youtube.com/embed/5mMtUSmfUlw]
 
-## <a name="publish"> </a>Veröffentlichen des Portals
+## <a name="publish-the-portal"></a><a name="publish"> </a>Veröffentlichen des Portals
 
 Um Ihr Portal mit den neuesten Änderungen Besuchern zur Verfügung zu stellen, müssen Sie es veröffentlichen.
 
@@ -125,6 +125,10 @@ Um Ihr Portal mit den neuesten Änderungen Besuchern zur Verfügung zu stellen, 
 ## <a name="visit-the-published-portal"></a>Besuchen des veröffentlichten Portals
 
 Nachdem Sie das Portal veröffentlicht haben, können Sie über die gleiche URL wie für das Verwaltungspanel darauf zugreifen, z. B. über `https://contoso-api.developer.azure-api.net`. Sie können es in einer separaten Browsersitzung (inkognito/privater Modus) als externer Besucher anzeigen.
+
+## <a name="apply-the-cors-policy-on-apis"></a>Anwenden der CORS-Richtlinie auf APIs
+
+Sie müssen CORS (Cross-Origin Resource Sharing) für Ihre APIs aktivieren, damit die Besucher Ihres Portals die APIs über die integrierte interaktive Konsole testen können. Weitere Informationen finden Sie in [diesem Dokumentationsartikel](api-management-howto-developer-portal.md#cors).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

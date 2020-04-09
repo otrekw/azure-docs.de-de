@@ -85,7 +85,7 @@
           href: deployment-tutorial-pipeline.md
     - name: Erweiterte Vorlagen
       items:
-        - name: Nutzen der Vorlagenreferenz
+        - name: Verwenden der Vorlagenreferenz
           href: template-tutorial-use-template-reference.md
         - name: Erstellen mehrerer Instanzen
           displayName: 'iteration,copy'
@@ -291,6 +291,8 @@
           href: template-functions-array.md
         - name: Vergleichsfunktionen
           href: template-functions-comparison.md
+        - name: Datumsfunktionen
+          href: template-functions-date.md
         - name: Bereitstellungsfunktionen
           href: template-functions-deployment.md
         - name: Logische Funktionen

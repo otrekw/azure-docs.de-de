@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: 29acd1b00d23e4f1c2f241027dadbbb406e5e049
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77190798"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Einrichten der Notfallwiederherstellung für die Bereitstellung einer SAP NetWeaver-App mit mehreren Ebenen
@@ -81,7 +81,7 @@ Für eine Hochverfügbarkeitslösung können Sie entweder einen Cluster mit frei
 
 Zur Unterstützung der Failoverclusterumgebung führt [SIOS DataKeeper Cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) die Funktion „Freigegebenes Clustervolume“ aus. In der Funktion repliziert SIOS DataKeeper Cluster unabhängige Datenträger, die sich im Besitz der Clusterknoten befinden. Da Azure nativ keine freigegebenen Datenträger unterstützt, sind Lösungen erforderlich, die von SIOS bereitgestellt werden.
 
-Sie können das Clustering auch durch die Implementieren eines Dateifreigabeclusters durchführen. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) hat kürzlich das Bereitstellungsmuster von Central Services so geändert, dass über einen UNC-Pfad auf die globalen „/sapmnt“-Verzeichnisse zugegriffen wird. Es wird weiterhin empfohlen sicherzustellen, dass die UNC-Freigabe für „/sapmnt“ hochverfügbar ist. Sie können Ihre Central Services-Instanz überprüfen. Verwenden Sie dazu Windows Server-Failovercluster mit Scale Out File Server (SOFS) und der Storage Spaces Direct-Funktion (S2D, „Direkte Speicherplätze“) in Windows Server 2016.
+Sie können das Clustering auch durch die Implementieren eines Dateifreigabeclusters durchführen. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) hat kürzlich das Bereitstellungsmuster von Central Services so geändert, dass über einen UNC-Pfad auf die globalen „/sapmnt“-Verzeichnisse zugegriffen wird. Es wird weiterhin empfohlen sicherzustellen, dass die UNC-Freigabe für „/sapmnt“ hochverfügbar ist. Sie können Ihre Central Services-Instanz überprüfen. Verwenden Sie dazu Windows Server-Failovercluster mit SOFS (Scale Out File Server, Dateiserver mit horizontaler Skalierung) und der Storage Spaces Direct-Funktion (S2D, „Direkte Speicherplätze“) in Windows Server 2016.
 
  > [!NOTE]
  > Site Recovery unterstützt zurzeit nur die Replikation absturzkonsistenter Punkte virtueller Computer mithilfe direkter Speicherplätze und passiver Knoten von SIOS Datakeeper.
@@ -134,7 +134,7 @@ Ein Wiederherstellungsplan unterstützt die Sequenzierung der verschiedenen Eben
 1. Wählen Sie **Anpassen** aus, um die virtuellen Computer zu gruppieren. Standardmäßig gehören alle virtuellen Computer der Gruppe 1 an.
 
 ### <a name="add-scripts-to-the-recovery-plan"></a>Hinzufügen von Skripts zum Wiederherstellungsplan
-Für die korrekte Funktionsweise Ihrer Anwendungen kann es erforderlich sein, nach dem Failover bzw. während eines Testfailovers einige Vorgänge auf den virtuellen Azure-Computern durchzuführen. Sie können auch einige Vorgänge nach einem Failover automatisieren. Durch Hinzufügen entsprechender Skripts zum Wiederherstellungsplan können Sie beispielsweise den DNS-Eintrag aktualisieren sowie Bindungen und Verbindungen ändern.
+Damit Ihre Anwendungen ordnungsgemäß funktionieren, müssen auf den virtuellen Computern ggf. einige Vorgänge ausgeführt werden. Führen Sie diese Vorgänge nach dem Failover bzw. während eines Testfailovers aus. Sie können auch einige Vorgänge nach einem Failover automatisieren. Durch Hinzufügen entsprechender Skripts zum Wiederherstellungsplan können Sie beispielsweise den DNS-Eintrag aktualisieren sowie Bindungen und Verbindungen ändern.
 
 Sie können die am häufigsten verwendeten Site Recovery-Skripts in Ihrem Azure Automation-Konto bereitstellen, indem Sie **In Azure bereitstellen** auswählen. Wenn Sie ein beliebiges veröffentlichtes Skript verwenden, befolgen Sie die Anleitung im Skript.
 

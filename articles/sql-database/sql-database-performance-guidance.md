@@ -1,24 +1,24 @@
 ---
-title: Schritte zur Optimierung der Leistung
-description: Erfahren Sie mehr über die Verwendung von Empfehlungen zur manuellen Optimierung der Abfrageleistung von Azure SQL-Datenbank.
+title: Leitfaden zur Leistungsoptimierung für Anwendungen und Datenbanken
+description: Hier erfahren Sie, wie Sie die Leistung von Datenbankanwendungen und Datenbanken in Azure SQL-Datenbank optimieren.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: juliemsft
-ms.author: jrasnick
-ms.reviewer: carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: 0dc3a121b30f33d533b1079d9c81501130487017
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+author: CarlRabeler
+ms.author: carlrab
+ms.reviewer: carlrab; jrasnick
+ms.date: 03/10/2020
+ms.openlocfilehash: 4f30ebe39d86db7076baa8c29b2a5cf060b07bf5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74009099"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228538"
 ---
-# <a name="manual-tune-query-performance-in-azure-sql-database"></a>Manuelle Optimierung der Abfrageleistung in Azure SQL-Datenbank
+# <a name="tune-applications-and-databases-for-performance-in-azure-sql-database"></a>Optimieren der Leistung von Anwendungen und Datenbanken in Azure SQL-Datenbank
 
 Wenn Sie ein Leistungsproblem mit SQL-Datenbank festgestellt haben, unterstützt diese Artikel Sie bei folgenden Aktionen:
 
@@ -232,6 +232,10 @@ Sie können **sys.resource_stats** überprüfen, um zu ermitteln, ob die Ressour
 
 Wenn eine Workload eine Gruppe von sich wiederholenden Abfragen enthält, ist es häufig sinnvoll, den Optimierungsgrad Ihrer Planentscheidungen zu erfassen und zu überprüfen. Dies hat nämlich Auswirkungen auf die Mindestgrößeneinheit für Ressourcen, die zum Hosten der Datenbank erforderlich ist. Untersuchen Sie die Pläne nach der ersten Überprüfung gelegentlich erneut, um sicherzugehen, dass sie nicht veraltet sind. Weitere Informationen finden Sie unter [Abfragehinweise (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx).
 
+### <a name="very-large-database-architectures"></a>Architekturen mit sehr großen Datenbanken
+
+Vor der Veröffentlichung der Dienstebene [Hyperscale](sql-database-service-tier-hyperscale.md) für Einzeldatenbanken in Azure SQL-Datenbank haben Kunden in der Regel den Grenzwert für einzelne Datenbanken erreicht. Diese Kapazitätsgrenzen gelten weiterhin für Pooldatenbanken in Pools für elastische Datenbanken sowie für Instanzdatenbanken in verwalteten Instanzen. In den folgenden beiden Abschnitten werden zwei Optionen für das Beheben von Problemen mit sehr großen Datenbanken in Azure SQL-Datenbank beschrieben, wenn Sie die Dienstebene „Hyperscale“ nicht verwenden können.
+
 ### <a name="cross-database-sharding"></a>Datenbankübergreifendes Sharding
 
 Da Azure SQL-Datenbank auf handelsüblicher Hardware ausgeführt wird, gelten für eine Einzeldatenbank niedrigere Kapazitätsgrenzen als für eine herkömmliche lokale SQL Server-Installation. Einige Kunden verwenden das Sharding-Verfahren (also das horizontale Partitionieren), um Datenbankvorgänge auf mehrere Datenbanken zu verteilen, wenn diese die Limits für eine Einzeldatenbank in Azure SQL-Datenbank überschreiten. Die meisten Kunden, die Sharding-Verfahren für Azure SQL-Datenbank verwenden, teilen ihre Daten einer Dimension auf mehrere Datenbanken auf. Bei diesem Ansatz muss verinnerlicht werden, dass von OLTP-Anwendungen häufig Transaktionen durchgeführt werden, die nur für eine Zeile oder eine kleine Gruppe von Zeilen im Schema gelten.
@@ -243,7 +247,7 @@ Wenn eine Datenbank beispielsweise Kundennamen, Bestellungen und Bestelldetails 
 
 Auch wenn beim Datenbanksharding die aggregierte Ressourcenkapazität für eine Lösung nicht reduziert wird, ist dieses Verfahren äußerst effektiv zur Unterstützung sehr großer Lösungen, die auf mehrere Datenbanken verteilt sind. Jede Datenbank kann mit einer anderen Computegröße ausgeführt werden, um sehr große, „effektive“ Datenbanken mit hohen Ressourcenanforderungen zu unterstützen.
 
-### <a name="functional-partitioning"></a>Funktionale Partitionierung
+#### <a name="functional-partitioning"></a>Funktionale Partitionierung
 
 Es kommt häufig vor, dass SQL Server-Benutzer viele Funktionen in einer Einzeldatenbank kombinieren. Wenn eine Anwendung beispielsweise Logik zum Verwalten des Bestands für einen Store enthält, kann die Datenbank Logik für die Bereiche Bestand, Nachverfolgung von Bestellungen, gespeicherte Prozeduren und indizierte/materialisierte Sichten zum Verwalten der Berichterstellung für den Monatsabschluss enthalten. Dieses Verfahren vereinfacht die Verwaltung der Datenbank für Vorgänge wie die Sicherung. Es erfordert aber auch, dass Sie die Größe der Hardware so bemessen, dass die Spitzenlast über alle Funktionen einer Anwendung hinweg bewältigt werden kann.
 

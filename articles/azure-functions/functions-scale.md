@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9970894436107ab51c2ad2d31aa1e14a3e6b5778
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 3b000776c04550e1deb883039d94deeb735061ce
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78355917"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985880"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Skalierung und Hosting von Azure Functions
 
@@ -51,13 +51,13 @@ Die Abrechnung erfolgt auf der Grundlage der Anzahl von Ausführungen, der Ausf�
 Der Verbrauchsplan ist der Standardhostingplan. Er bietet folgende Vorteile:
 
 * Sie bezahlen nur, wenn Ihre Funktionen ausgeführt werden.
-* Das horizontale Hochskalieren erfolgt automatisch – selbst in Zeiten hoher Lasten.
+* Das Aufskalieren erfolgt automatisch – selbst in Zeiten hoher Lasten.
 
 Funktions-Apps in derselben Region können demselben Verbrauchsplan zugewiesen werden. Das Ausführen mehrerer Apps im selben Verbrauchsplan hat keine Nachteile oder Auswirkungen. Das Zuweisen mehrerer Apps zum selben Verbrauchsplan hat keine Auswirkungen auf die Stabilität, Skalierbarkeit oder Zuverlässigkeit der einzelnen Apps.
 
 Weitere Informationen zum Schätzen der Kosten bei Ausführung in einem Verbrauchstarif finden Sie unter [Grundlegendes zu Kosten des Verbrauchstarifs](functions-consumption-costs.md).
 
-## <a name="premium-plan"></a>Premium-Plan
+## <a name="premium-plan"></a><a name="premium-plan"></a>Premium-Plan
 
 Bei Verwendung des Premium-Plans werden Instanzen des Azure Functions-Hosts basierend auf der Anzahl der eingehenden Ereignisse hinzugefügt und entfernt, wie es auch beim Verbrauchsplan der Fall ist.  Der Premium-Plan unterstützt die folgenden Features:
 
@@ -82,7 +82,7 @@ Ziehen Sie den Premium-Plan für Azure Functions in folgenden Situationen in Bet
 
 Wenn Sie JavaScript-Funktionen im Rahmen eines Premium-Plans ausführen, sollten Sie eine Instanz auswählen, die weniger vCPUs hat. Weitere Informationen finden Sie unter [Auswählen von Premium-Plänen mit Einzelkern](functions-reference-node.md#considerations-for-javascript-functions).  
 
-## <a name="app-service-plan"></a>Dedizierter (App Service-)Plan
+## <a name="dedicated-app-service-plan"></a><a name="app-service-plan"></a>Dedizierter (App Service-)Plan
 
 Ihre Funktions-Apps können auf denselben dedizierten virtuellen Computern wie andere App Service-Apps ausgeführt werden (Basic-, Standard-, Premium- und isolierte SKUs).
 
@@ -93,12 +93,12 @@ Ziehen Sie einen App Service-Plan in folgenden Situationen in Betracht:
 
 Sie zahlen für Funktions-Apps in einem App Service-Plan das gleiche wie für andere App Service-Ressourcen, etwa Web-Apps. Weitere Informationen zur Funktionsweise von App Service-Plänen finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../app-service/overview-hosting-plans.md).
 
-Mit einem App Service-Plan können Sie manuell horizontal hochskalieren, indem Sie weitere Instanzen von virtuellen Computern hinzufügen. Sie können auch die automatische Skalierung aktivieren. Weitere Informationen finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Sie können auch zentral hochskalieren, indem Sie einen anderen App Service-Plan auswählen. Weitere Informationen finden Sie unter [Zentrales Hochskalieren einer App in Azure](../app-service/manage-scale-up.md). 
+Mit einem App Service-Plan können Sie manuell aufskalieren, indem Sie weitere Instanzen von virtuellen Computern hinzufügen. Sie können auch die automatische Skalierung aktivieren. Weitere Informationen finden Sie unter [Manuelles oder automatisches Skalieren der Instanzenzahl](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Sie können auch hochskalieren, indem Sie einen anderen App Service-Plan auswählen. Weitere Informationen finden Sie unter [Hochskalieren einer App in Azure](../app-service/manage-scale-up.md). 
 
 Wenn Sie JavaScript-Funktionen im Rahmen eines App Service-Plans ausführen, sollten Sie einen Plan mit weniger vCPUs wählen. Weitere Informationen finden Sie unter [Auswählen von Einzelkern-App Service-Plänen](functions-reference-node.md#choose-single-vcpu-app-service-plans). 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 
-### <a name="always-on"></a> Always On
+### <a name="always-on"></a><a name="always-on"></a> Always On
 
 Wenn Sie einen App Service-Plan verwenden, müssen Sie die Einstellung **Always On** aktivieren, damit Ihre Funktions-App ordnungsgemäß ausgeführt wird. Bei einem App Service-Plan geht die Functions-Runtime nach wenigen Minuten der Inaktivität in den Leerlauf über, sodass nur HTTP-Trigger Ihre Funktionen tatsächlich „reaktivieren“ können. Always On ist nur bei einem App Service-Plan verfügbar. Bei einem Verbrauchsplan aktiviert die Plattform Funktions-Apps automatisch.
 
@@ -132,7 +132,7 @@ Es ist sicherlich möglich, dass mehrere Funktionen-Apps dasselbe Speicherkonto 
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
-Weitere Informationen zu Speicherkontentypen finden Sie unter [Einführung in die Azure Storage-Dienste](../storage/common/storage-introduction.md#azure-storage-services).
+Weitere Informationen zu Speicherkontentypen finden Sie unter [Einführung in die Azure Storage-Dienste](../storage/common/storage-introduction.md#core-storage-services).
 
 ## <a name="how-the-consumption-and-premium-plans-work"></a>Funktionsweise von Verbrauchsplan (Verbrauchstarif) und Premium-Plan
 
@@ -142,7 +142,7 @@ Funktionscodedateien werden in Azure Files-Freigaben im Hauptspeicherkonto der F
 
 ### <a name="runtime-scaling"></a>Laufzeitskalierung
 
-Azure Functions verwendet die Komponente *Skalierungscontroller*, um die Rate der Ereignisse zu überwachen und zu bestimmen, ob eine horizontale Hoch- oder Herunterskalierung erforderlich ist. Der Skalierungscontroller verwendet Heuristik für jeden Triggertyp. Bei Verwendung eines Triggers für Azure Queue Storage beispielsweise basieren die Skalen auf der Länge der Warteschlange und dem Alter der ältesten Nachricht in der Warteschlange.
+Azure Functions verwendet die Komponente *Skalierungscontroller*, um die Rate der Ereignisse zu überwachen und zu bestimmen, ob eine Auf- oder Abskalierung erforderlich ist. Der Skalierungscontroller verwendet Heuristik für jeden Triggertyp. Bei Verwendung eines Triggers für Azure Queue Storage beispielsweise basieren die Skalen auf der Länge der Warteschlange und dem Alter der ältesten Nachricht in der Warteschlange.
 
 Die Skalierungseinheit für Azure Functions ist die Funktions-App. Bei einer horizontalen Hochskalierung der Funktions-App werden zusätzliche Ressourcen zugeordnet, um mehrere Instanzen des Azure Functions-Hosts auszuführen. Umgekehrt entfernt der Skalierungscontroller bei abnehmenden Computeanforderungen Instanzen des Functions-Hosts. Die Anzahl von Instanzen wird schließlich *zentral auf null herunterskaliert*, wenn in einer Funktions-App keine Funktionen ausgeführt werden.
 
@@ -154,11 +154,9 @@ Die Skalierung variiert ausgehend von verschiedenen Faktoren, und die Skalierung
 
 * Eine einzelne Funktions-App wird maximal auf 200 Instanzen erweitert. Eine einzelne Instanz kann mehrere Meldungen oder Anforderungen gleichzeitig verarbeiten, weshalb es keine Grenze für die Anzahl gleichzeitiger Ausführungen gibt.
 * Bei HTTP-Triggern werden neue Instanzen höchstens einmal pro Sekunde zugeordnet.
-* Bei Nicht-HTTP-Triggern werden neue Instanzen höchstens einmal alle 30 Sekunden zugeordnet.
-
-Für verschiedene Auslöser gelten unter Umständen unterschiedliche Grenzwerte für die Skalierung sowie die folgenden Angaben:
-
-* [Event Hub](functions-bindings-event-hubs-trigger.md#scaling)
+* Bei Nicht-HTTP-Triggern werden neue Instanzen höchstens einmal alle 30 Sekunden zugeordnet. Die Skalierung ist schneller, wenn sie in einem [Premium-Plan](#premium-plan) ausgeführt wird.
+* Verwenden Sie für Service Bus-Trigger _Verwaltungsrechte_ für Ressourcen, um eine möglichst effiziente Skalierung zu erreichen. Mit _Lauschrechten_ ist die Skalierung unpräziser, da die Warteschlangenlänge nicht in Skalierungsentscheidungen einbezogen werden kann. Weitere Informationen zum Festlegen von Berechtigungen in Service Bus-Zugriffsrichtlinien finden Sie unter [SAS-Autorisierungsrichtlinien](../service-bus-messaging/service-bus-sas.md#shared-access-authorization-policies).
+* Informationen zu Event Hub-Triggern finden Sie im Referenzartikel im [Skalierungsleitfaden](functions-bindings-event-hubs-trigger.md#scaling). 
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>Bewährte Methoden und Muster für skalierbare Apps
 

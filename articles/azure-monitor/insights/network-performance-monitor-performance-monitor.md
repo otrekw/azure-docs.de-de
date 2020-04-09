@@ -1,17 +1,17 @@
 ---
-title: Systemmonitorfeature in der Netzwerkleistungsmonitor-Lösung in Azure Log Analytics | Microsoft-Dokumentation
+title: Systemmonitor in Netzwerkleistungsmonitor
 description: Die Systemmonitorfunktion im Netzwerkleistungsmonitor unterstützt Sie bei der Überwachung der Netzwerkkonnektivität an verschiedenen Punkten in Ihrem Netzwerk. Sie können Cloudbereitstellungen und lokale Standorte, mehrere Rechenzentren und Zweigstellen sowie unternehmenswichtige Microservices/Anwendungen mit mehreren Ebenen überwachen.
 ms.subservice: logs
 ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: dfbc4ea8e168ced95a4239dd100cf7277e0adf7b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.openlocfilehash: 126cca9d3606b378e59e4f4e1c5b52d985d19d94
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77654527"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80055690"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Netzwerkleistungsmonitor-Lösung: Leistungsüberwachung
 

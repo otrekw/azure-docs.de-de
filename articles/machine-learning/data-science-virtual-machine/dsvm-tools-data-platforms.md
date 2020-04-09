@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: bfae8147c348c76fa0e406fec283144ebc26e86b
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: cd787881957d78f179107e46b2650de4618c7724
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615329"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282323"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Unterstützte Datenplattformen für Data Science Virtual Machine
 
@@ -28,7 +28,7 @@ Folgende Datenplattformen werden von der DSVM unterstützt.
 | | |
 | ------------- | ------------- |
 | Was ist das?   | Eine lokale Instanz einer relationalen Datenbank      |
-| Unterstützte DSVM-Editionen      | Windows: SQL Server 2017, Windows 2019 (Vorschau): SQL Server 2019      |
+| Unterstützte DSVM-Editionen      | Windows 2016: SQL Server 2017, Windows 2019: SQL Server 2019      |
 | Typische Verwendung      | Schnelle lokale Entwicklung mit einem kleineren Dataset <br/> Ausführen von R (datenbankintern)   |
 | Links zu Beispielen      |    In die SQL-Datenbank wird ein kleiner Teil des New York City-Datasets geladen:<br/>  `nyctaxi` <br/> Ein Jupyter-Beispiel zur Veranschaulichung von Microsoft Machine Learning Server und datenbankinternen Analysen finden Sie hier:<br/> `~notebooks/SQL_R_Services_End_to_End_Tutorial.ipynb`  |
 | Verwandte Tools auf der DSVM       | SQL Server Management Studio <br/> ODBC/JDBC-Treiber<br/> pyodbc, RODBC<br />Apache Drill      |

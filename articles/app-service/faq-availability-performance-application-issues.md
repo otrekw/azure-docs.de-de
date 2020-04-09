@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c12e14b8b842e3ccf9f2bf9e0ab783d8852ee69b
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 433f5885c7f057226e78c4ae57e03d7619004d21
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357779"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79229742"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Anwendungsleistung von Web-Apps in Azure
 
@@ -92,8 +92,9 @@ Informationen zu Kontingenten und Limits finden Sie unter [App Service-Limits](.
 Web-Apps werden standardmäßig entladen, wenn sie einen festgelegten Zeitraum im Leerlauf waren. Dadurch kann das System Ressourcen sparen. Der Nachteil ist, dass die Antwort auf die erste Anforderung nach Entladen der Web-App länger dauert, um der Web-App das Laden und Beginnen mit dem Senden von Antworten zu ermöglichen. In den Serviceplänen „Basic“ und „Standard“ können Sie die Einstellung **Always On** aktivieren, damit die App stets geladen bleibt. Dies verhindert nach einer Leerlaufzeit der App längere Ladezeiten. So ändern Sie die **Always On**-Einstellung
 
 1. Navigieren Sie im Azure-Portal zu Ihrer Web-App.
-2. Wählen Sie **Anwendungseinstellungen** aus.
-3. Aktivieren Sie für **Always On** die Einstellung **Ein**.
+2. Wählen Sie **Konfiguration** aus.
+3. Wählen Sie **Allgemeine Einstellungen** aus.
+4. Aktivieren Sie für **Always On** die Einstellung **Ein**.
 
 ## <a name="how-do-i-turn-on-failed-request-tracing"></a>Wie schalte ich die Ablaufverfolgung für Anforderungsfehler ein?
 

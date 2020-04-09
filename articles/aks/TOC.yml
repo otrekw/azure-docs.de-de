@@ -140,10 +140,14 @@
           href: cluster-autoscaler.md
         - name: Verwenden von Verfügbarkeitszonen
           href: availability-zones.md
-        - name: Verwenden mehrerer Knotenpools
-          href: use-multiple-node-pools.md
-        - name: Verwenden von Spot-Knotenpools (Vorschau)
-          href: spot-node-pool.md
+        - name: Verwenden von Knotenpools
+          items:
+            - name: Verwenden mehrerer Knotenpools
+              href: use-multiple-node-pools.md
+            - name: Verwenden von Spot-Knotenpools (Vorschau)
+              href: spot-node-pool.md
+            - name: Verwenden von Systemknotenpools
+              href: use-system-pools.md
         - name: Bereitstellen von AKS mit Terraform
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true

@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: ac61c01c5e45b6e8e001a68781f93c3962cb581f
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 9b8c44f99953d4518f0bc3f558f396250657c632
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78297841"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79138942"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Anmelden an Ihren Konten per Microsoft Authenticator-App
 
-Wenn Sie die zweistufige Überprüfung verwenden, unterstützt Sie die Microsoft Authenticator-App bei der Anmeldung in Ihrem Konto. Mit der zweistufigen Überprüfung können Sie die Sicherheit des Zugriffs auf Ihre Konten erhöhen, insbesondere, wenn Sie vertrauliche Informationen anzeigen. Kennwörter können vergessen, gestohlen oder kompromittiert werden. Die zweistufige Überprüfung ist eine zusätzliche Sicherheitsmaßnahme, die zum Schutz Ihres Kontos beiträgt, indem sie den Zugriff durch Unbefugte erschwert.
+Die Microsoft Authenticator-App unterstützt Sie bei der Kontoanmeldung, wenn Sie die zweistufige Überprüfung verwenden. Mit der zweistufigen Überprüfung können Sie die Sicherheit des Zugriffs auf Ihre Konten erhöhen, insbesondere, wenn Sie vertrauliche Informationen anzeigen. Kennwörter können vergessen, gestohlen oder kompromittiert werden. Die zweistufige Überprüfung ist eine zusätzliche Sicherheitsmaßnahme, die zum Schutz Ihres Kontos beiträgt, indem sie den Zugriff durch Unbefugte erschwert.
 
 Die Verwendung der Microsoft Authenticator-App kann auf verschiedene Arten erfolgen:
 
@@ -35,7 +35,7 @@ Die Verwendung der Microsoft Authenticator-App kann auf verschiedene Arten erfol
 
 Sie müssen Folgendes durchführen, bevor Sie die Microsoft Authenticator-App verwenden können:
 
- 1. Laden Sie die Microsoft Authenticator-App herunter, und installieren Sie sie. Falls Sie dies noch nicht getan haben, helfen Ihnen die Informationen unter [Erste Schritte mit der Microsoft Authenticator-App](user-help-auth-app-download-install.md) weiter.
+ 1. Laden Sie die Microsoft Authenticator-App herunter, und installieren Sie sie. Falls Sie dies noch nicht getan haben, helfen Ihnen diese Informationen unter [Erste Schritte mit der Microsoft Authenticator-App](user-help-auth-app-download-install.md) weiter.
 
  2. Fügen Sie Ihre Geschäfts-, Schul- oder Unikonten, persönlichen Konten und Drittanbieterkonten der Microsoft Authenticator-App hinzu. Eine ausführliche Beschreibung der Schritte finden Sie unter [Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos](user-help-auth-app-add-work-school-account.md), [Hinzufügen Ihrer persönlichen Microsoft-Konten](user-help-auth-app-add-personal-ms-account.md) und [Hinzufügen Ihrer persönlichen Nicht-Microsoft-Konten](user-help-auth-app-add-non-ms-account.md).
 
@@ -43,7 +43,7 @@ Sie müssen Folgendes durchführen, bevor Sie die Microsoft Authenticator-App ve
 
 Die Anmeldung per Telefon ist eine Art der zweistufigen Überprüfung. Sie müssen Ihre Identität trotzdem bestätigen, indem Sie eine Ihnen bekannte Information und einen in Ihrem Besitz befindlichen Gegenstand angeben. Bei der Anmeldung per Telefon können Sie aber das Eingeben Ihres Kennworts überspringen und die gesamte Identitätsüberprüfung auf Ihrem mobilen Gerät durchführen.
 
-Bevor Sie die Anmeldung per Telefon aktivieren können, müssen Sie die zweistufige Überprüfung aktivieren. Weitere Informationen zur Aktivierung der zweistufigen Überprüfung für ein Konto finden Sie unter [Add your work or school account](user-help-auth-app-add-work-school-account.md) (Hinzufügen Ihrer Geschäfts-, Schul- oder Unikonten) und [Add your personal Microsoft accounts](user-help-auth-app-add-personal-ms-account.md) (Hinzufügen Ihrer persönlichen Microsoft-Konten).
+Bevor Sie die Anmeldung per Telefon aktivieren können, müssen Sie die zweistufige Überprüfung aktivieren. Weitere Informationen zur Aktivierung der zweistufigen Überprüfung für ein Konto finden Sie unter [Hinzufügen Ihrer Geschäfts-, Schul- oder Unikonten](user-help-auth-app-add-work-school-account.md)und[Hinzufügen Ihrer persönlichen Microsoft-Konten](user-help-auth-app-add-personal-ms-account.md).
 
 Die Anmeldung per Telefon ist auf iOS- und Android-Geräten mit Android 6.0 oder höher verfügbar.
 
@@ -53,9 +53,9 @@ Die Anmeldung per Telefon ist auf iOS- und Android-Geräten mit Android 6.0 oder
 
 Auf einem Android-Gerät:
 
-- **Bei Anzeige des folgenden Symbols: ![Symbol zum Abschluss der Einrichtung](media/user-help-auth-app-sign-in/icon.png).** Wenn dieses Symbol neben dem Namen Ihres Geschäfts-, Schul- oder Unikontos angezeigt wird, bedeutet dies, dass Sie die telefonische Anmeldung für das Konto bereits durchgeführt haben. Unter Umständen werden Sie aufgefordert, Pushbenachrichtigungen für Ihr Konto hinzuzufügen, damit Sie außerhalb der App über Authentifizierungsanforderungen unterrichtet werden können.
+- **Bei Anzeige des Symbols:![Symbol zum Abschluss der Einrichtung](media/user-help-auth-app-sign-in/icon.png).** Wenn dieses Symbol neben dem Namen Ihres Geschäfts-, Schul- oder Unikontos angezeigt wird, bedeutet dies, dass Sie die telefonische Anmeldung für das Konto bereits durchgeführt haben. Unter Umständen werden Sie aufgefordert, Pushbenachrichtigungen für Ihr Konto hinzuzufügen, damit Sie außerhalb der App über Authentifizierungsanforderungen unterrichtet werden können.
 - **Wenn Sie bereits die App für die zweistufige Überprüfung verwenden.** Wenn Sie die App und die zweistufige Überprüfung bereits genutzt haben, können Sie den Pfeil neben dem Kontonamen und dann die Option **Anmeldung per Telefon aktivieren** auswählen.
-- **Wenn Sie Ihr Geschäfts-, Schul- oder Unikonto nicht finden können:** Falls Sie Ihr Geschäfts-, Schul- oder Unikonto in der App unter **Konten** nicht finden können, bedeutet dies, dass Sie es der App noch nicht hinzugefügt haben. Fügen Sie Ihr Geschäfts-, Schul- oder Unikonto hinzu, indem Sie die Schritte im Artikel [Add your work or school account](user-help-auth-app-add-work-school-account.md) (Hinzufügen Ihrer Geschäfts-, Schul- oder Unikonten) ausführen.
+- **Wenn Sie Ihr Geschäfts-, Schul- oder Unikonto nicht finden können:** Falls Sie Ihr Geschäfts-, Schul- oder Unikonto in der App unter **Konten** nicht finden können, bedeutet dies, dass Sie es der App noch nicht hinzugefügt haben. Fügen Sie Ihr Geschäfts-, Schul- oder Unikonto hinzu, indem Sie die Schritte im Artikel [Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos](user-help-auth-app-add-work-school-account.md) ausführen.
 
 Auf einem iOS-Gerät:
 
@@ -71,7 +71,7 @@ Nachdem Sie die Anmeldung per Telefon aktiviert haben, können Sie sich anmelden
 
     ![Feld „Anmeldung genehmigen“ auf dem Computer](media/user-help-auth-app-sign-in/microsoft-auth-app-sign-in.png)
 
-2. Öffnen Sie die Benachrichtigung bzw. die Microsoft Authenticator-App auf Ihrem Gerät, und tippen Sie dann die Zahl ein, die mit der Zahl auf dem Bildschirm **Anmeldung genehmigen** auf Ihrem Computer übereinstimmt.
+2. Öffnen Sie die Benachrichtigung bzw. die Microsoft Authenticator-App auf Ihrem Gerät, und tippen Sie dann auf die Zahl, die mit der Zahl auf dem Bildschirm **Anmeldung genehmigen** auf Ihrem Computer übereinstimmt.
 
     ![Feld „Anmeldung genehmigen“ auf dem Gerät](media/user-help-auth-app-sign-in/microsoft-auth-app-sign-in-numbers.png)
 
@@ -92,7 +92,7 @@ Sie können die Anmeldung per Telefon für Ihr persönliches Microsoft-Konto akt
 
 Auf einem Android-Gerät:
 
-- **Bei Anzeige des folgenden Symbols: ![Symbol zum Abschluss der Einrichtung](media/user-help-auth-app-sign-in/icon.png).** Wenn dieses Symbol neben dem Namen Ihres persönlichen Microsoft-Kontos angezeigt wird, bedeutet dies, dass Sie die telefonische Anmeldung für das Konto bereits durchgeführt haben. Unter Umständen werden Sie aufgefordert, Pushbenachrichtigungen für Ihr Konto hinzuzufügen, damit Sie außerhalb der App über Authentifizierungsanforderungen unterrichtet werden können.
+- **Bei Anzeige des Symbols:![Symbol zum Abschluss der Einrichtung](media/user-help-auth-app-sign-in/icon.png).** Wenn dieses Symbol neben dem Namen Ihres persönlichen Microsoft-Kontos angezeigt wird, bedeutet dies, dass Sie die telefonische Anmeldung für das Konto bereits durchgeführt haben. Unter Umständen werden Sie aufgefordert, Pushbenachrichtigungen für Ihr Konto hinzuzufügen, damit Sie außerhalb der App über Authentifizierungsanforderungen unterrichtet werden können.
 - **Bei Nutzung der App für die zweistufige Überprüfung:** Wenn Sie die App und die zweistufige Überprüfung bereits genutzt haben, können Sie den Pfeil neben dem Kontonamen und dann die Option **Anmeldung per Telefon aktivieren** auswählen.
 - **Wenn Sie Ihr Geschäfts-, Schul- oder Unikonto nicht finden können:** Falls Sie Ihr Konto in der App unter **Konten** nicht finden können, bedeutet dies, dass Sie es der App noch nicht hinzugefügt haben. Fügen Sie Ihr Konto hinzu, indem Sie die Schritte im Artikel [Hinzufügen Ihres persönlichen Microsoft-Kontos](user-help-auth-app-add-personal-ms-account.md) ausführen.
 
@@ -112,7 +112,7 @@ Auf einem iOS-Gerät:
 
 ## <a name="sign-in-using-two-factor-verification-for-your-account"></a>Anmelden per zweistufiger Überprüfung für Ihr Konto
 
-Bei der Standardmethode der zweistufigen Überprüfung müssen Sie Ihren Benutzernamen und das zugehörige Kennwort auf dem Gerät eingeben, auf dem Sie sich anmelden. Wählen Sie anschließend aus, ob die Microsoft Authenticator-App einen Prüfcode erhalten soll. Auf einem Android-Gerät finden Sie diese Prüfcodes auf dem Bildschirm „Konten“. Auf einem iOS-Gerät finden Sie diese Prüfcodes je nach Kontotyp auf dem Bildschirm **Konten** bzw. in der Vollbildansicht eines Kontos. Sie aktivieren die zweistufige Überprüfung für Ihr Konto im Rahmen des Prozesses zum Hinzufügen des Kontos zur Microsoft Authenticator-App.
+Bei der Standardmethode für die zweistufige Überprüfung müssen Sie Ihren Benutzernamen und Ihr Kennwort auf dem Gerät eingeben, bei dem Sie sich anmelden. Öffnen Sie anschließend die Microsoft Authenticator-App, und geben Sie den zufällig generierten Code für Ihr Konto in das Feld **Code eingeben** ein. Auf einem Android-Gerät finden Sie diese Prüfcodes auf dem Bildschirm **Konten**. Auf einem iOS-Gerät finden Sie diese Prüfcodes je nach Kontotyp auf dem Bildschirm **Konten** bzw. in der Vollbildansicht eines Kontos. Sie aktivieren die zweistufige Überprüfung für Ihr Konto im Rahmen des Prozesses zum Hinzufügen des Kontos zur Microsoft Authenticator-App.
 
 >[!Note]
 >Falls Ihr Geschäfts-, Schul- oder Unikonto oder Ihr persönliches Konto im Fenster **Konten** der Microsoft Authenticator-App nicht angezeigt wird, bedeutet dies, dass Sie es der Microsoft Authenticator-App noch nicht hinzugefügt haben. Informationen zum Hinzufügen Ihres Kontos finden Sie unter [Add your work or school account](user-help-auth-app-add-work-school-account.md) (Hinzufügen Ihrer Geschäfts-, Schul- oder Unikonten) bzw. [Add your personal accounts](user-help-auth-app-add-personal-ms-account.md) (Hinzufügen Ihrer persönlichen Microsoft-Konten).

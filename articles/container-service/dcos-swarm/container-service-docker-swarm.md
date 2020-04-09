@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/13/2016
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 04cc9048271d653bd77fd7f2707c8f510ea8c29f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c76701ce74aafcccdbb2f1a2454f9528b52fc096
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61456552"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79136226"
 ---
 # <a name="deprecated-container-management-with-docker-swarm"></a>(VERALTET) Containerverwaltung mit Docker Swarm
 
@@ -69,9 +69,9 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 ## <a name="deploy-containers-by-using-docker-compose"></a>Bereitstellen von Containern mithilfe von Docker Compose
 Sie können Docker Compose verwenden, um die Bereitstellung und Konfiguration mehrerer Container zu automatisieren. Stellen Sie hierfür sicher, dass ein Secure Shell (SSH)-Tunnel erstellt wurde und dass die DOCKER_HOST-Variable festgelegt wurde (siehe Voraussetzungen oben).
 
-Erstellen Sie auf Ihrem lokalen System die Datei „docker-compose.yml“. Verwenden Sie hierfür dieses [Beispiel](https://raw.githubusercontent.com/rgardler/AzureDevTestDeploy/master/docker-compose.yml).
+Erstellen Sie auf Ihrem lokalen System die Datei „docker-compose.yml“. Verwenden Sie hierfür dieses Beispiel:
 
-```bash
+```dockerfile
 web:
   image: adtd/web:0.1
   ports:

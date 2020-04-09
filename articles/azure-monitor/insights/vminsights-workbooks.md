@@ -1,17 +1,17 @@
 ---
-title: Erstellen interaktiver Berichte mit Arbeitsmappen mithilfe von Azure Monitor für VMs | Microsoft-Dokumentation
+title: Erstellen interaktiver Berichte mit Arbeitsmappen mithilfe von Azure Monitor für VMs
 description: Vereinfachen Sie komplexe Berichte mit vorgefertigten und benutzerdefiniert parametrisierten Arbeitsmappen für Azure Monitor für VMs.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/15/2019
-ms.openlocfilehash: 7ec24f1eca0b2cf1d5ea2c171573f7c5e47319af
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.date: 03/12/2020
+ms.openlocfilehash: a6ab126c3a5b0d2a82b17fac42dcc9e20f6aba3f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77670676"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480452"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Erstellen interaktiver Berichte mit Arbeitsmappen mithilfe von Azure Monitor für VMs
 
@@ -24,7 +24,7 @@ Arbeitsmappen sind beispielsweise für folgende Szenarien hilfreich:
 * Weitergeben der Ergebnisse eines Größenänderungsexperiments für Ihren virtuellen Computer an andere Mitglieder Ihres Teams. Sie können die Ziele des Experiments in Textform erläutern und anschließend die einzelnen Nutzungsmetriken und Analyseabfragen für die Auswertung des Experiments sowie eindeutige Anmerkungen dazu präsentieren, ob eine Metrik oberhalb oder unterhalb des Zielwerts lag.
 * Melden der Auswirkungen eines Ausfalls auf die Nutzung Ihres virtuellen Computers durch eine Kombination aus Daten, einer Erläuterung in Textform und einer Auflistung der nächsten Schritte, mit denen sich Ausfälle in Zukunft vermeiden lassen.
 
-Azure Monitor für VMs enthält mehrere Arbeitsmappen, um Ihnen den Einstieg zu erleichtern. Diese sind in der folgenden Tabelle zusammengefasst:
+Um Ihnen den Einstieg zu erleichtern, sind in der folgenden Tabelle die Arbeitsmappen zusammengefasst, die Azure Monitor für VMs enthält:
 
 | Arbeitsmappe | BESCHREIBUNG | `Scope` |
 |----------|-------------|-------|
@@ -40,7 +40,7 @@ Azure Monitor für VMs enthält mehrere Arbeitsmappen, um Ihnen den Einstieg zu 
 | Leistung | Eine anpassbare Version unserer Leistungsansicht, die alle von Ihnen aktivierten Log Analytics-Leistungsindikatoren nutzt. | Einzelne VM | 
 | Verbindungen | Eine detaillierte Darstellung der ein- und ausgehenden Verbindungen Ihrer virtuellen Computer. | Einzelne VM |
  
-## <a name="starting-with-a-template-or-saved-workbook"></a>Ausgehend von einer Vorlage oder einer gespeicherten Arbeitsmappe
+## <a name="creating-a-new-workbook"></a>Erstellen einer neuen Arbeitsmappe
 
 Eine Arbeitsmappe besteht aus Abschnitten, die wiederum aus unabhängig voneinander bearbeitbaren Diagrammen, Tabellen, Text und Eingabesteuerelementen bestehen. Zum besseren Verständnis von Arbeitsmappen öffnen wir eine Vorlage und sehen uns die einzelnen Schritte für die Erstellung einer benutzerdefinierten Arbeitsmappe an. 
 
@@ -50,25 +50,21 @@ Eine Arbeitsmappe besteht aus Abschnitten, die wiederum aus unabhängig voneinan
 
 3. Wählen Sie einen virtuellen Computer in der Liste aus.
 
-4. Wählen Sie auf der Seite der VM im Abschnitt **Überwachung** den Eintrag **Insights (Vorschau)** aus.
+4. Wählen Sie auf der Seite der VM im Abschnitt **Überwachung** den Eintrag **Insights** aus.
 
-5. Wählen Sie auf der Seite „VM Insights“ die Registerkarte **Leistung** oder **Zuordnen** aus, und wählen Sie anschließend über den Link auf der Seite die Option **Arbeitsmappen anzeigen** aus. 
-
-    ![Screenshot der Navigation zu Arbeitsmappen](media/vminsights-workbooks/workbook-option-01.png)
-
-6. Wählen Sie in der Dropdownliste die Option **Zum Katalog wechseln** (ganz unten in der Liste) aus.
+5. Wählen Sie auf der Seite „VM Insights“ die Registerkarte **Leistung** oder **Zuordnen** aus, und wählen Sie anschließend über den Link auf der Seite die Option **Arbeitsmappen anzeigen** aus. Wählen Sie in der Dropdownliste den Eintrag **Zum Katalog wechseln** aus.
 
     ![Screenshot: Dropdownliste mit Arbeitsmappen](media/vminsights-workbooks/workbook-dropdown-gallery-01.png)
 
     Daraufhin wird der Arbeitsmappenkatalog mit einer Reihe vordefinierter Arbeitsmappen gestartet, die Ihnen den Einstieg erleichtern.
 
-7. Wir beginnen mit der **Standardvorlage**, die sich unter der Überschrift **Schnellstart** befindet.
+7. Erstellen Sie eine neue Arbeitsmappe, indem Sie **Neu** auswählen.
 
     ![Screenshot des Arbeitsmappenkatalogs](media/vminsights-workbooks/workbook-gallery-01.png)
 
 ## <a name="editing-workbook-sections"></a>Bearbeiten von Arbeitsmappenabschnitten
 
-Arbeitsmappen verfügen über zwei Modi: **Bearbeitungsmodus** und **Lesemodus**. Wenn die Standard-Arbeitsmappenvorlage zum ersten Mal gestartet wird, wird sie im **Bearbeitungsmodus** geöffnet. In diesem Modus wird der gesamte Inhalt der Arbeitsmappe angezeigt, einschließlich aller Schritte und Parameter, die andernfalls ausgeblendet sind. Im **Lesemodus** wird eine vereinfachte, berichtartige Ansicht präsentiert. Der Lesemodus abstrahiert zwar die Komplexität der Berichterstellung, bei Bedarf können Sie jedoch jederzeit mit wenigen Klicks auf die zugrunde liegenden Mechanismen zugreifen, um Änderungen vorzunehmen.
+Arbeitsmappen verfügen über zwei Modi: **Bearbeitungsmodus** und **Lesemodus**. Wenn eine neue Arbeitsmappe zum ersten Mal gestartet wird, wird sie im **Bearbeitungsmodus** geöffnet. In diesem Modus wird der gesamte Inhalt der Arbeitsmappe angezeigt, einschließlich aller Schritte und Parameter, die andernfalls ausgeblendet sind. Im **Lesemodus** wird eine vereinfachte, berichtartige Ansicht präsentiert. Der Lesemodus abstrahiert zwar die Komplexität der Berichterstellung, bei Bedarf können Sie jedoch jederzeit mit wenigen Klicks auf die zugrunde liegenden Mechanismen zugreifen, um Änderungen vorzunehmen.
 
 ![Azure Monitor für VMs: Bearbeitungssteuerelemente für Arbeitsmappenabschnitte](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
 

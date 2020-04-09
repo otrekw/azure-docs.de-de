@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: magattus
 ms.openlocfilehash: ddd7dc7e1245c2a77e866a454bf6bfa3c1f16f88
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74278134"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Steuern des Azure CDN-Zwischenspeicherverhaltens mit Chacheregeln
@@ -67,7 +67,7 @@ Für globale und benutzerdefinierte Cacheregeln können Sie die folgenden Einste
 ## <a name="cache-expiration-duration"></a>Dauer bis Cacheablauf
 Bei globalen und benutzerdefinierten Cacheregeln können Sie die Dauer bis zum Cacheablauf in Tagen, Stunden, Minuten und Sekunden angeben:
 
-- Für die Optionen **Überschreiben** und **Bei Fehlen festlegen** in den Einstellungen **Verhalten beim Zwischenspeichern** liegt der gültige Bereich der Cachedauer zwischen 0 Sekunden und 366 Tagen. Bei einem Wert von 0 Sekunden speichert das CDN den Inhalt im Cache, muss jedoch jede Anforderung mit dem Ursprungsserver erneut überprüfen.
+- Für die Optionen **Überschreiben** und **Bei Fehlen festlegen** in den Einstellungen **Verhalten beim Zwischenspeichern** liegt der gültige Bereich der Cachedauer zwischen 0 Sekunden und 366 Tagen. Bei einem Wert von 0 Sekunden speichert das CDN den Inhalt im Cache, muss jedoch jede Anforderung mit dem Ursprungsserver erneut überprüfen.
 
 - Bei der Einstellung **Cache umgehen** wird die Cachedauer automatisch auf 0 Sekunden gesetzt und kann nicht geändert werden.
 
@@ -86,13 +86,13 @@ Globale und benutzerdefinierte Cacheregeln werden in der folgenden Reihenfolge v
 
 - Benutzerdefinierte Cacheregeln haben gegenüber globalen Cacheregeln Vorrang, sofern diese anwendbar sind. Benutzerdefinierte Cacheregeln werden in der Reihenfolge von oben nach unten verarbeitet. Dies bedeutet, wenn eine Anforderung beide Bedingungen erfüllt, haben Regeln ganz unten in der Liste Vorrang gegenüber Regeln am Anfang der Liste. Aus diesem Grund sollten Sie spezifischere Regeln weiter unten in der Liste platzieren.
 
-**Beispiel**:
+**Beispiel:**
 - Globale Cacheregel: 
    - Verhalten beim Zwischenspeichern: **Überschreiben**
    - Dauer bis Cacheablauf: 1 Tag
 
 - Benutzerdefinierte Cacheregel 1:
-   - Übereinstimmungsbedingung: **Path**
+   - Übereinstimmungsbedingung: **Pfad**
    - Übereinstimmungswert: _/home/*_
    - Verhalten beim Zwischenspeichern: **Überschreiben**
    - Dauer bis Cacheablauf: 2 Tage

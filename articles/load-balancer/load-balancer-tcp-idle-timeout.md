@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 39cd5b5d6e9d6007994ccc29732186ec6a8bdc2e
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: d0bb73b58aa23e5f7eb784772acf37b05df463ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2020
-ms.locfileid: "77023887"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456827"
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Konfigurieren der TCP-Leerlauftimeout-Einstellungen für Azure Load Balancer
 
@@ -29,13 +29,13 @@ ms.locfileid: "77023887"
 Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 5.4.1 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-Az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="tcp-idle-timeout"></a>TCP-Leerlauftimeout
-In der Standardkonfiguration ist der Azure Load Balancer auf ein Leerlauftimeout von 4 Minuten eingestellt. Wenn die Dauer einer Inaktivitätsperiode den Timeoutwert überschreitet, gibt es keine Garantie dafür, dass die TCP- oder HTTP-Sitzung zwischen dem Client und Ihrem Clouddienst aufrechterhalten wird.
+Für Azure Load Balancer ist ein Leerlauftimeout von 4 bis 30 Minuten eingestellt. Standardmäßig ist der Wert auf vier Minuten festgelegt. Wenn die Dauer einer Inaktivitätsperiode den Timeoutwert überschreitet, gibt es keine Garantie dafür, dass die TCP- oder HTTP-Sitzung zwischen dem Client und Ihrem Clouddienst aufrechterhalten wird.
 
 Sobald die Verbindung geschlossen wird, wird in der Clientanwendung möglicherweise die folgende Fehlermeldung angezeigt: „Die zugrunde liegende Verbindung wurde geschlossen: Eine Verbindung, deren Aufrechterhaltung erwartet wurde, wurde vom Server geschlossen.“
 
 Eine gängige Methode zur Aufrechterhaltung von Verbindungen ist TCP-Keep-Alive. Dadurch bleibt die Verbindung länger aktiv. Weitere Informationen finden Sie in [diesen .NET-Beispielen](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Bei aktivierter Keep-Alive-Funktion werden während inaktiver Phasen Pakete über die Verbindung gesendet. Keep-Alive-Pakete sorgen dafür, dass der Wert für das Leerlauftimeout nicht erreicht und die Verbindung über einen langen Zeitraum aufrechterhalten wird.
 
-Die Einstellung funktioniert nur für eingehende Verbindungen. Um den Verlust der Verbindung zu vermeiden, konfigurieren Sie ein TCP-Keep-Alive-Intervall, das kürzer ist als das Leerlauftimeout, oder erhöhen Sie den Leerlauftimeout-Wert. Für diese Szenarien wurde Unterstützung für konfigurierbare Leerlauftimeouts hinzugefügt. Sie können nun eine Dauer von 4 bis 30 Minuten festlegen.
+Die Einstellung funktioniert nur für eingehende Verbindungen. Um den Verlust der Verbindung zu vermeiden, konfigurieren Sie ein TCP-Keep-Alive-Intervall, das kürzer ist als das Leerlauftimeout, oder erhöhen Sie den Leerlauftimeout-Wert. Für diese Szenarien wurde Unterstützung für konfigurierbare Leerlauftimeouts hinzugefügt.
 
 TCP-Keep-Alive eignet sich für Szenarien, in denen die Akkulaufzeit keine Einschränkung darstellt. Bei mobilen Anwendungen ist die Verwendung dieser Funktion hingegen nicht empfehlenswert. TCP-Keep-Alive kann bei mobilen Anwendungen zu einer schnelleren Entladung des Geräteakkus führen.
 

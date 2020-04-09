@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: damaerte
 ms.openlocfilehash: bbf6c1f3049265961559ea34c8b748b2b4d263b6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60614311"
 ---
 # <a name="embed-azure-cloud-shell"></a>Einbetten von Azure Cloud Shell
@@ -27,11 +27,11 @@ Das Einbetten von Cloud Shell ermöglicht Entwicklern und Inhaltsentwicklern Clo
 
 Normale große Schaltfläche
 
-[![Normal starten](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell starten")](https://shell.azure.com)
+[![Starten (normal große Schaltfläche)](https://shell.azure.com/images/launchcloudshell.png "Starten von Azure Cloud Shell")](https://shell.azure.com)
 
 Große Schaltfläche
 
-[![Groß starten](https://shell.azure.com/images/launchcloudshell@2x.png "Azure Cloud Shell starten")](https://shell.azure.com)
+[![Starten (große Schaltfläche)](https://shell.azure.com/images/launchcloudshell@2x.png "Starten von Azure Cloud Shell")](https://shell.azure.com)
 
 ## <a name="how-to"></a>Vorgehensweise
 

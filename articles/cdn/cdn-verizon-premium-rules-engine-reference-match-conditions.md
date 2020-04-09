@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
 ms.openlocfilehash: 1660dca34b2f128ef5889145fcdeed0d2523b9bb
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67593198"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Übereinstimmungsbedingungen der Regel-Engine für Azure CDN Premium von Verizon
@@ -30,7 +30,7 @@ Sie können eine Übereinstimmungsbedingung z.B. für Folgendes verwenden:
 
 Die Übereinstimmungsbedingung „Always“ wendet einen Standardsatz von Features auf alle Anforderungen an.
 
-NAME | Zweck
+Name | Zweck
 -----|--------
 [Always](#always) | Wendet einen Standardsatz von Features auf alle Anforderungen an.
 
@@ -38,7 +38,7 @@ NAME | Zweck
 
 Die Übereinstimmungsbedingung „Device“ bestimmt Anforderungen von einem Mobilgerät anhand seiner Eigenschaften.  
 
-NAME | Zweck
+Name | Zweck
 -----|--------
 [Device](#device) | Bestimmt Anforderungen von einem Mobilgerät anhand seiner Eigenschaften.
 
@@ -46,7 +46,7 @@ NAME | Zweck
 
 Die Location-Übereinstimmungsbedingungen bestimmen Anforderungen basierend auf dem Standort des Anfordernden.
 
-NAME | Zweck
+Name | Zweck
 -----|--------
 [AS Number](#as-number) | Bestimmt Anforderungen, die aus einem bestimmten Netzwerk stammen.
 [Country](#country) | Bestimmt Anforderungen, die aus den angegebenen Ländern/Regionen stammen.
@@ -55,7 +55,7 @@ NAME | Zweck
 
 Die Origin-Übereinstimmungsbedingungen bestimmen Anforderungen, die auf CDN-Speicher oder einen Kundenursprungsserver zeigen.
 
-NAME | Zweck
+Name | Zweck
 -----|--------
 [CDN Origin](#cdn-origin) | Bestimmt Anforderungen für Inhalte, die in Content Delivery Network-Speicher gespeichert sind.
 [Customer Origin](#customer-origin) | Bestimmt Anforderungen von Inhalten, die auf einem spezifischen Kundenursprungsserver gespeichert sind.
@@ -64,7 +64,7 @@ NAME | Zweck
 
 Die Request-Übereinstimmungsbedingungen bestimmen Anforderungen basierend auf ihren Eigenschaften.
 
-NAME | Zweck
+Name | Zweck
 -----|--------
 [Client IP Address](#client-ip-address) | Bestimmt Anforderungen, die von einer bestimmten IP-Adresse stammen.
 [Cookie Parameter](#cookie-parameter) | Überprüft die Cookies, die jeder Anforderung für den angegebenen Wert zugeordnet sind.
@@ -81,7 +81,7 @@ NAME | Zweck
 
 Die URL-Übereinstimmungsbedingungen bestimmen Anforderungen basierend auf ihren URLs.
 
-NAME | Zweck
+Name | Zweck
 -----|--------
 [URL Path Directory](#url-path-directory) | Bestimmt Anforderungen anhand ihres relativen Pfads.
 [URL Path Extension](#url-path-extension) | Bestimmt Anforderungen anhand ihrer Dateinamenerweiterung.
@@ -307,7 +307,7 @@ Wichtige Informationen:
 
 ---
 
-### <a name="device"></a>Gerät
+### <a name="device"></a>Sicherungsmedium
 
 Die Übereinstimmungsbedingung „Device“ bestimmt Anforderungen von einem Mobilgerät anhand seiner Eigenschaften. Die Mobilgeräterkennung wird mithilfe von [WURFL](http://wurfl.sourceforge.net/) durchgeführt. 
 
@@ -364,7 +364,7 @@ Mobile Browser | %{wurfl_cap_mobile_browser} | Eine Zeichenfolge, die den Browse
 Mobile Browser Version | %{wurfl_cap_mobile_browser_version} | Eine Zeichenfolge, die die Version des Browsers angibt, der zum Anfordern des Inhalts vom Gerät verwendet wird. | 31
 Model Name | %{wurfl_cap_model_name} | Eine Zeichenfolge, die den Modellnamen des Geräts angibt. | s3
 Progressive Download | %{wurfl_cap_progressive_download} | Ein boolescher Wert, der angibt, ob das Gerät die Wiedergabe von Audio- und Videodaten während des Herunterladens unterstützt. | true
-Release Date | %{wurfl_cap_release_date} | Eine Zeichenfolge, die das Jahr und den Monat angibt, in dem das Gerät der WURFL-Datenbank hinzugefügt wurde.<br/><br/>Format: `yyyy_mm` | 2013_december
+Veröffentlichungsdatum | %{wurfl_cap_release_date} | Eine Zeichenfolge, die das Jahr und den Monat angibt, in dem das Gerät der WURFL-Datenbank hinzugefügt wurde.<br/><br/>Format: `yyyy_mm` | 2013_december
 Resolution Height | %{wurfl_cap_resolution_height} | Eine ganze Zahl, die für das Gerät die Höhe in Pixel angibt. | 768
 Resolution Width | %{wurfl_cap_resolution_width} | Eine ganze Zahl, die für das Gerät die Breite in Pixel angibt. | 1024
 
@@ -519,7 +519,7 @@ Die Übereinstimmungsbedingung „Request Method“ wird nur erfüllt, wenn Obje
 - POST
 - OPTIONS
 - PUT
-- DELETE
+- Delete
 - TRACE
 - CONNECT
 
@@ -592,7 +592,7 @@ Wichtige Informationen:
     
   - Edge-CNAME-URL: http:\//&lt;Endpunkt&gt;.azureedge.net/path/asset.htm
     
-    Weitere Informationen:
+    Zusätzliche Informationen:
   - Benutzerdefinierte Domäne: https:\//my.domain.com/path/asset.htm
     
     - URL-Pfad (relativ zum Stamm): /800001/CustomerOrigin/path/
@@ -724,7 +724,7 @@ Beispielsweise verweisen die beiden folgenden URLs auf dasselbe Objekt und verf�
 - CDN-URL: http:\//wpc.0001.&lt;Domäne&gt;/800001/CustomerOrigin/path/asset.htm
 - Edge-CNAME-URL: http:\//&lt;Endpunkt&gt;.azureedge.net/path/asset.htm
 
-    Weitere Informationen:
+    Zusätzliche Informationen:
     
     - URL-Pfad (relativ zum Stamm): /800001/CustomerOrigin/path/asset.htm
    
@@ -761,7 +761,7 @@ Wichtige Informationen:
 
      - Edge-CNAME-URL: http:\//my.domain.com/path/asset.htm
 
-    Weitere Informationen:
+    Zusätzliche Informationen:
     
      - URL-Pfad: /800001/CustomerOrigin/path/asset.htm
 
@@ -807,7 +807,7 @@ Wichtige Informationen:
      - CDN-URL: http://wpc.0001.&lt ;Domäne&gt; /800001/CustomerOrigin/path/asset.htm
      - Edge-CNAME-URL: http:\//&lt;Endpunkt&gt;.azureedge.net/path/asset.htm
     
-    Weitere Informationen:
+    Zusätzliche Informationen:
     
      - URL-Pfad (relativ zum Stamm): /800001/CustomerOrigin/path/asset.htm
     
@@ -832,7 +832,7 @@ Bei den Beispielkonfigurationen in der folgenden Tabelle wird vorausgesetzt, das
 Wert                   | Relativ zu    | Ergebnis 
 ------------------------|----------------|-------
 \*/test.html \*/test.php  | Stamm oder Ursprung | Für dieses Muster ergeben sich in beliebigen Ordnern Übereinstimmungen für Anforderungen von Objekten mit dem Namen „test.html“ oder „test.php“.
-/80ABCD/origin/text/*   | Stamm           | Für dieses Muster ergibt sich eine Übereinstimmung, wenn das angeforderte Objekt die folgenden Kriterien erfüllt: <br />- Es muss sich an einem Kundenursprungsort mit dem Namen „origin“ befinden. <br />- Der relative Pfad muss mit einem Ordner mit dem Namen „text“ beginnen. Dies bedeutet, dass sich das angeforderte Objekt entweder im Ordner „text“ oder in einem der rekursiven Unterordner befinden kann.
+/80ABCD/origin/text/*   | Root           | Für dieses Muster ergibt sich eine Übereinstimmung, wenn das angeforderte Objekt die folgenden Kriterien erfüllt: <br />- Es muss sich an einem Kundenursprungsort mit dem Namen „origin“ befinden. <br />- Der relative Pfad muss mit einem Ordner mit dem Namen „text“ beginnen. Dies bedeutet, dass sich das angeforderte Objekt entweder im Ordner „text“ oder in einem der rekursiven Unterordner befinden kann.
 */css/* */js/*          | Stamm oder Ursprung | Für dieses Muster ergeben sich Übereinstimmungen für alle CDN- oder Edge-CNAME-URLs, die den Ordner „css“ oder „js“ enthalten.
 *.jpg *.gif *.png       | Stamm oder Ursprung | Für dieses Muster ergeben sich Übereinstimmungen für alle CDN- oder Edge-CNAME-URLs, die auf „.jpg“, „.gif“ oder „.png“ enden. Eine alternative Möglichkeit zum Angeben dieses Musters ist die Verwendung der [Übereinstimmungsbedingung „URL Path Extension“](#url-path-extension).
 /images/\* /media/\*      | Origin         | Für dieses Muster ergibt sich eine Übereinstimmung für CDN- oder Edge-CNAME-URLs, deren relativer Pfad mit dem Ordner „images“ oder „media“ beginnt. <br />- CDN-URL: http:\//wpc.0001.&lt;Domäne&gt;/800001/myorigin/images/sales/event1.png<br />- Beispiel für Edge-CNAME-URL: http:\//cdn.mydomain.com/images/sales/event1.png
@@ -864,7 +864,7 @@ Wichtige Informationen:
 
    Zeichen | URL-Codierung
    ----------|---------
-   Leerzeichen     | %20
+   LeerZchn     | %20
    &         | %25
 
 - Aufgrund der Art und Weise, in der Cacheeinstellungen nachverfolgt werden, ist diese Übereinstimmungsbedingung mit den folgenden Features nicht kompatibel:
@@ -904,12 +904,12 @@ Wichtige Informationen:
 
        Zeichen | URL-Codierung
        ----------|---------
-       Leerzeichen     | %20
+       LeerZchn     | %20
        &         | %25
 
 - Geben Sie mehrere Abfragezeichenfolgen-Parameterwerte an, indem Sie als Trennzeichen jeweils ein einzelnes Leerzeichen verwenden. Diese Übereinstimmungsbedingung ist erfüllt, wenn eine Anforderung eine der angegebenen Name-Wert-Kombinationen enthält.
 
-   - Beispiel 1:
+   - Beispiel 1:
 
      - Konfiguration:
 
@@ -921,7 +921,7 @@ Wichtige Informationen:
     
        Parameter1=ValueB
 
-   - Beispiel 2:
+   - Beispiel 2:
 
      - Konfiguration: 
 
@@ -953,11 +953,11 @@ Wichtige Informationen:
 
 Im folgenden Beispiel wird veranschaulicht, wie diese Option in bestimmten Situationen funktioniert:
 
-NAME  | Wert |  Ergebnis
+Name  | Wert |  Ergebnis
 ------|-------|--------
 Benutzer  | Joe   | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die Abfragezeichenfolge für eine angeforderte URL „?user=joe“ lautet.
 Benutzer  | *     | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die Abfragezeichenfolge für eine angeforderte URL den Parameter „User“ enthält.
-E-Mail | Joe\* | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die Abfragezeichenfolge für eine angeforderte URL einen Email-Parameter enthält, der mit „Joe“ beginnt.
+Email | Joe\* | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die Abfragezeichenfolge für eine angeforderte URL einen Email-Parameter enthält, der mit „Joe“ beginnt.
 
 [Nach oben](#reference-for-rules-engine-match-conditions)
 
@@ -986,7 +986,7 @@ Wichtige Informationen:
 
    Zeichen | URL-Codierung | Wert
    ----------|--------------|------
-   Leerzeichen     | %20          | \%20
+   LeerZchn     | %20          | \%20
    &         | %25          | \%25
 
    Beachten Sie, dass Prozentzeichen mit Escapezeichen versehen werden müssen.
@@ -1031,12 +1031,12 @@ Wichtige Informationen:
 
      Zeichen | URL-Codierung
      ----------|---------
-     Leerzeichen     | %20
+     LeerZchn     | %20
      &         | %25
 
 - Wenn Sie mehrere Werte angeben möchten, trennen Sie diese durch ein einzelnes Leerzeichen voneinander.
 
-   Beispiel:  *Parameter1=ValueA* *ValueB* *Parameter1=ValueC&Parameter2=ValueD*
+   Beispiel: *Parameter1=ValueA* *ValueB* *Parameter1=ValueC&Parameter2=ValueD*
 
 - Diese Übereinstimmungsbedingung ist nur erfüllt, wenn sich genaue Übereinstimmungen mit mindestens einem der angegebenen Abfragezeichenfolgenmuster ergeben.
     
@@ -1053,7 +1053,7 @@ Wichtige Informationen:
 
 Im folgenden Beispiel wird veranschaulicht, wie diese Option in bestimmten Situationen funktioniert:
 
- NAME                 | BESCHREIBUNG
+ Name                 | BESCHREIBUNG
  ---------------------|------------
 user=joe              | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die Abfragezeichenfolge für eine angeforderte URL „?user=joe“ lautet.
 \*user=\* \*optout=\* | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die CDN-URL-Abfrage entweder den Parameter „user“ oder „optout“ enthält.

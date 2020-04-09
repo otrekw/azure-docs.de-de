@@ -10,14 +10,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 33705d0c9f2f405be733fd21c88cb83e96aec781
-ms.sourcegitcommit: bdf31d87bddd04382effbc36e0c465235d7a2947
+ms.openlocfilehash: 04148b482cb07665f43df5bd86a77175cbbaf08b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77168965"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79218265"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>Auswählen von Parametern zur Optimierung von Algorithmen in Azure Machine Learning Studio (klassisch)
+
+[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 In diesem Thema wird das Auswählen des richtigen Hyperparametersatzes für einen Algorithmus in Azure Machine Learning Studio (klassisch) beschrieben. Für die meisten Machine Learning-Algorithmen müssen Parameter festgelegt werden. Wenn Sie ein Modell trainieren, müssen Sie Werte für diese Parameter bereitstellen. Die Wirksamkeit des trainierten Modells ist abhängig von den gewählten Parametern. Das Ermitteln des optimalen Parametersatzes wird als *Modellauswahl* bezeichnet.
 
@@ -41,7 +43,7 @@ Der Parametersatz kann bei der Initialisierung des Modells definiert werden. Der
 
 ![Two-Class Boosted Decision Tree, Single Parameter](./media/algorithm-parameters-optimize/fig2.png)
 
- Alternativ können **Use Range Builder** verwenden, um den Maximum- und Minimumpunkt des Rasters und die Gesamtzahl der zu generierenden Punkte zu definieren. Standardmäßig werden die Parameterwerte auf einer linearen Skala generiert. Wenn jedoch das Kontrollkästchen **Log Scale** aktiviert ist, werden die Werte in logarithmischer Skalierung generiert (d.h., das Verhältnis zwischen den benachbarten Punkten ist konstant anstelle ihrer Differenz). Für als ganze Zahl angegebene Parameter können Sie einen Bereich mithilfe eines Bindestrichs definieren. „1-10“ bedeutet beispielsweise, dass alle ganzen Zahlen von 1 bis 10 den Parametersatz bilden. Ein gemischter Modus wird ebenfalls unterstützt. Der Parametersatz „1-10, 20, 50“ enthält z.B. die ganzen Zahlen 1 bis 10, 20 und 50.
+ Alternativ können **Use Range Builder** verwenden, um den Maximum- und Minimumpunkt des Rasters und die Gesamtzahl der zu generierenden Punkte zu definieren. Standardmäßig werden die Parameterwerte auf einer linearen Skala generiert. Wenn jedoch das Kontrollkästchen **Log Scale** aktiviert ist, werden die Werte in logarithmischer Skalierung generiert (d.h., das Verhältnis zwischen den benachbarten Punkten ist konstant anstelle ihrer Differenz). Für als ganze Zahl angegebene Parameter können Sie einen Bereich mithilfe eines Bindestrichs definieren. „1-10“ bedeutet beispielsweise, dass alle ganzen Zahlen von 1 bis 10 den Parametersatz bilden. Ein gemischter Modus wird ebenfalls unterstützt. Der Parametersatz „1-10, 20, 50“ enthält z. B. die ganzen Zahlen 1 bis 10, 20 und 50.
 
 ![Two-Class Boosted Decision Tree, Parameter Range](./media/algorithm-parameters-optimize/fig3.png)
 

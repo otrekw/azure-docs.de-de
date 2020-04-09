@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: cc8ccbbde56b57af684ad47840002a846bdcd8c0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0af476b69f2effd836fe76d62059259076c16f53
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827965"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79214157"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Überwachen und Verwalten der Leistung mehrinstanzenfähiger Azure SQL-Datenbanken mit Shards in einer mehrinstanzenfähigen SaaS-App
 
@@ -30,7 +30,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > 
 > * Simulieren der Verwendung einer mehrinstanzenfähigen Datenbank mit Shards durch Ausführen eines bereitgestellten Lastengenerators
 > * Überwachen der Datenbank bei der Reaktion auf eine Steigerung der Last
-> * Zentrales Hochskalieren der Datenbank als Reaktion auf die erhöhte Datenbanklast
+> * Hochskalieren der Datenbank als Reaktion auf die erhöhte Datenbanklast
 > * Bereitstellen eines Mandanten in einer Datenbank mit nur einem Mandanten
 
 Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
@@ -45,13 +45,13 @@ Die Verwaltung der Datenbankleistung umfasst das Kompilieren und Analysieren von
 ### <a name="performance-management-strategies"></a>Leistungsverwaltungsstrategien
 
 * Um die Leistung nicht manuell überwachen zu müssen, ist es am effizientesten, **Benachrichtigungen einzurichten, die ausgelöst werden, wenn Datenbanken vom Normalbereich abweichen**.
-* Um auf kurzfristige Schwankungen in der Computegröße einer Datenbank zu reagieren, **kann die DTU-Stufe hoch- oder herunterskaliert werden**. Wenn diese Fluktuation in regelmäßigen oder vorhersagbaren Abständen auftritt, **kann die Skalierung der Datenbank geplant werden und automatisch erfolgen**. Skalieren Sie z.B. zentral herunter, wenn Sie wissen, dass der Workload gering sein wird, beispielsweise nachts oder an den Wochenenden.
+* Um auf kurzfristige Schwankungen in der Computegröße einer Datenbank zu reagieren, **kann die DTU-Stufe hoch- oder herunterskaliert werden**. Wenn diese Fluktuation in regelmäßigen oder vorhersagbaren Abständen auftritt, **kann die Skalierung der Datenbank geplant werden und automatisch erfolgen**. Skalieren Sie z.B. herunter, wenn Sie wissen, dass der Workload gering sein wird, beispielsweise nachts oder an den Wochenenden.
 * Um auf längerfristige Schwankungen oder Änderungen bei Mandanten zu reagieren, **können einzelne Mandanten in andere Datenbanken verschoben werden**.
 * Um auf kurzfristige Anstiege *einzelner* Mandantenlasten zu reagieren, **können einzelne Mandanten aus der Datenbank entfernt und einer separaten Computegröße zugewiesen werden**. Nachdem die Last sich verringert, kann der Mandant wieder der mehrinstanzenfähigen Datenbank hinzugefügt werden. Wenn dies im Voraus bekannt ist, können Mandanten vorsorglich verschoben werden, um sicherzustellen, dass die Datenbank immer über die erforderlichen Ressourcen verfügt, und um Auswirkungen auf andere Mandanten in der mehrinstanzenfähigen Datenbank zu vermeiden. Wenn diese Anforderungen vorhersagbar sind, wenn beispielsweise für eine beliebte Veranstaltung an einem Veranstaltungsort ein Run auf die Tickets zu erwarten ist, kann dieses Verwaltungsverhalten in die Anwendung integriert werden.
 
 Das [Azure-Portal](https://portal.azure.com) bietet integrierte Überwachung und Benachrichtigungen für die meisten Ressourcen. In SQL-Datenbank sind Überwachung und Warnung für Datenbanken verfügbar. Die integrierte Überwachungs- und Benachrichtigungsfunktionalität ist ressourcenspezifisch, daher lässt sie sich bequem für eine kleine Anzahl von Ressourcen verwenden, ist aber bei der Arbeit mit vielen Ressourcen unpraktisch.
 
-In Szenarien mit hohem Volumen, bei denen Sie mit vielen Ressourcen arbeiten, können [Azure Monitor-Protokolle](https://azure.microsoft.com/services/log-analytics/) verwendet werden. Dies ist ein separater Azure-Dienst, der Analysen über ausgegebene Diagnoseprotokolle und Telemetriedaten bietet, die in einem Log Analytics-Arbeitsbereich gesammelt werden. Azure Monitor-Protokolle können Telemetriedaten aus einer Vielzahl von Diensten sammeln und zum Abfragen und Festlegen von Warnungen verwendet werden.
+In Szenarien mit hohem Volumen, bei denen Sie mit vielen Ressourcen arbeiten, können [Azure Monitor-Protokolle](https://azure.microsoft.com/services/log-analytics/) verwendet werden. Dies ist ein separater Azure-Dienst, der Analysen über ausgegebene Protokolle bietet, die in einem Log Analytics-Arbeitsbereich gesammelt werden. Azure Monitor-Protokolle können Telemetriedaten aus einer Vielzahl von Diensten sammeln und zum Abfragen und Festlegen von Warnungen verwendet werden.
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Abrufen von Quellcode und Skripts zur Anwendung Wingtip Tickets SaaS Multi-tenant Database
 
@@ -123,7 +123,7 @@ Gehen Sie folgendermaßen vor, um eine Benachrichtigung für die Datenbank festz
 
    ![Warnung festlegen](media/saas-multitenantdb-performance-monitoring/set-alert.png)
 
-## <a name="scale-up-a-busy-database"></a>Zentrales Hochskalieren einer ausgelasteten Datenbank
+## <a name="scale-up-a-busy-database"></a>Hochskalieren einer ausgelasteten Datenbank
 
 Wenn der Auslastungsgrad für eine Datenbank sich bis zu dem Punkt erhöht, an dem das Limit der Datenbank sowie eine DTU-Nutzung von 100 % erreicht ist, wird die Leistung der Datenbank beeinträchtigt, und die Antwortzeiten für Abfragen verlangsamen sich möglicherweise.
 
@@ -139,7 +139,7 @@ Sie können eine ausgelastete Datenbank simulieren, indem Sie die vom Generator 
 
 Überwachen Sie die erhöhte DTU-Nutzung der Datenbank im oberen Diagramm. Es dauert einige Minuten, bis die neue, höhere Last zum Tragen kommt, aber Sie sollten schnell erkennen können, dass die Datenbank die maximale Auslastung erreicht, sich die Auslastung in einem neuen Muster stabilisiert und die Datenbank schnell überlastet ist.
 
-1. Zum zentralen Hochskalieren der Datenbank klicken Sie auf dem Einstellungsblatt auf **Tarif (DTUs skalieren)** .
+1. Zum Hochskalieren der Datenbank klicken Sie auf dem Einstellungsblatt auf **Tarif (DTUs skalieren)** .
 1. Ändern Sie die Einstellung **DTU** in **100**. 
 1. Klicken Sie auf **Anwenden**, um die Anforderung zum Skalieren der Datenbank zu senden.
 
@@ -190,7 +190,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Simulieren der Verwendung einer mehrinstanzenfähigen Datenbank mit Shards durch Ausführen eines bereitgestellten Lastengenerators
 > * Überwachen der Datenbank bei der Reaktion auf eine Steigerung der Last
-> * Zentrales Hochskalieren der Datenbank als Reaktion auf die erhöhte Datenbanklast
+> * Hochskalieren der Datenbank als Reaktion auf die erhöhte Datenbanklast
 > * Bereitstellen eines Mandanten in einer Datenbank mit nur einem Mandanten
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen

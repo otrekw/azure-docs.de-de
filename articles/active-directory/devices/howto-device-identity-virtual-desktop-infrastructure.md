@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7b431cee3b8e5fc168dec2766442d6f6b9869d1e
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74900370"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Geräteidentität und Desktopvirtualisierung
@@ -37,7 +37,7 @@ Bei der nicht beständigen Version wird eine Sammlung von Desktops verwendet, au
 
 Dieser Artikel enthält den Microsoft-Leitfaden für Administratoren zur Unterstützung von Geräteidentität und VDI. Weitere Informationen zur Geräteidentität finden Sie im Artikel [Was ist eine Geräteidentität](overview.md).
 
-## <a name="supported-scenarios"></a>Unterstützte Szenarien
+## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
 Bevor Sie die Geräteidentitäten in Azure AD für Ihre VDI-Umgebung konfigurieren, machen Sie sich mit den unterstützten Szenarien vertraut. In der folgenden Tabelle wird veranschaulicht, welche Bereitstellungsszenarien unterstützt werden. Eine Bereitstellung in diesem Zusammenhang impliziert, dass ein Administrator Geräteidentitäten skaliert konfigurieren kann, ohne dass eine Endbenutzerinteraktion erforderlich ist.
 
@@ -62,9 +62,9 @@ Bevor Sie die Geräteidentitäten in Azure AD für Ihre VDI-Umgebung konfigurier
 
 \*\* Eine Identitätsinfrastruktur-Umgebung des Typs **Verwaltet** ist eine Umgebung mit Azure AD als Identitätsanbieter und wird entweder mit [Kennworthashsynchronisierung (PHS)](../hybrid/whatis-phs.md) oder [Passthrough-Authentifizierung (PTA) ](../hybrid/how-to-connect-pta.md) und [nahtloser einmaliger Anmeldung](../hybrid/how-to-connect-sso.md) bereitgestellt.
 
-\*\*\* **Aktuelle Windows-Geräte** bezieht sich auf Geräte mit Windows 10, Windows Server 2016 und Windows Server 2019.
+\*\*\* **Aktuelle Windows-Geräte** bezieht sich auf Geräte mit Windows 10, Windows Server 2016 und Windows Server 2019.
 
-\*\*\*\* **Kompatible Windows-Geräte** bezieht sich auf Geräte mit Windows 7, Windows 8.1, Windows Server 2008 R2, Windows Server 2012 und Windows Server 2012 R2. Supportinformationen zu Windows 7 finden Sie unter [Der Support für Windows 7 läuft aus](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support). Supportinformationen zu Windows Server 2008 R2 finden Sie unter [Der Support für Windows Server 2008 wird eingestellt](https://www.microsoft.com/cloud-platform/windows-server-2008).
+\*\*\*\* **Kompatible Windows-Geräte** bezieht sich auf Geräte mit Windows 7, Windows 8.1, Windows Server 2008 R2, Windows Server 2012 und Windows Server 2012 R2. Supportinformationen zu Windows 7 finden Sie unter [Der Support für Windows 7 läuft aus](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support). Supportinformationen zu Windows Server 2008 R2 finden Sie unter [Der Support für Windows Server 2008 wird eingestellt](https://www.microsoft.com/cloud-platform/windows-server-2008).
 
 ## <a name="microsofts-guidance"></a>Leitfaden von Microsoft
 

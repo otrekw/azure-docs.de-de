@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/22/2019
-ms.openlocfilehash: 55fe3a2a4fd0f45b0873e47f29b7ea013558be40
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.openlocfilehash: f2e067f76d6ed7d89a38e9b8920c407f161969a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77152481"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456777"
 ---
 # <a name="add-columns-module"></a>Modul „Add Columns“ (Hinzufügen von Spalten)
 
@@ -33,7 +33,7 @@ Verwenden Sie dieses Modul zum Verketten zweier Datasets. Sie kombinieren alle S
 
     - Sie können keine einzelnen hinzuzufügenden Spalten auswählen. Alle Spalten aus jedem Dataset werden verkettet, wenn Sie **Add Columns** verwenden. Wenn Sie daher nur eine Teilmenge der Spalten hinzufügen möchten, verwenden Sie „Select Columns in Dataset“ (Spalten im Dataset auswählen), um ein Dataset mit den gewünschten Spalten zu erstellen.
 
-3. Ausführen der Pipeline.
+3. Übermitteln Sie die Pipeline.
 
 ### <a name="results"></a>Ergebnisse
 Gehen Sie nach der Pipelineausführung wie folgt vor:

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: 171542c89b900eb8bf282156c79303a1deb5a5f7
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.openlocfilehash: 58a1ee13afa76b152723cb71d4037f9c31cc8d4e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2020
-ms.locfileid: "77506238"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79227346"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Verwalten von Indizierungsrichtlinien in Azure Cosmos DB
 
@@ -19,7 +19,7 @@ In Azure Cosmos DB werden Daten gemäß [Indizierungsrichtlinien](index-policy.m
 
 ## <a name="indexing-policy-examples"></a>Beispiele für Indizierungsrichtlinien
 
-Hier sehen Sie einige Beispiele für Indizierungsrichtlinien im JSON-Format. So werden sie für das Azure-Portal verfügbar gemacht. Die gleichen Parameter können über die Azure CLI oder ein beliebiges SDK festgelegt werden.
+Hier sehen Sie einige Beispiele für Indizierungsrichtlinien im [JSON-Format](index-policy.md#include-exclude-paths). So werden sie für das Azure-Portal verfügbar gemacht. Die gleichen Parameter können über die Azure CLI oder ein beliebiges SDK festgelegt werden.
 
 ### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>Deaktivierungsrichtlinie zum selektiven Ausschließen einiger Eigenschaftspfade
 
@@ -153,7 +153,7 @@ Diese Indizierungsrichtlinie entspricht der unten gezeigten Indizierungsrichtlin
     ],
     "excludedPaths": [
         {
-            "path": "/\"_etag\"/?"
+            "path": "/_etag/?"
         }
     ],
     "spatialIndexes": [

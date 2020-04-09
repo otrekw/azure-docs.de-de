@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4008779f0ec16bcaf6b995cf7f33d15a8f1e5665
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 5f4435ca213584fff84f3ddad9bda6f7e06628a1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78190652"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236910"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Implementieren der Facettennavigation in der kognitiven Azure-Suche
 
@@ -34,7 +34,7 @@ Bei Ihrer Anwendungsentwicklung entfällt ein Großteil der Arbeit auf die Erste
 ## <a name="sample-code-and-demo"></a>Beispielcode und Demo
 In diesem Artikel wird ein Stellenportal als Beispiel verwendet. Das Beispiel wird als eine ASP.NET MVC-Anwendung implementiert.
 
-- Die Arbeitsdemo können Sie online unter der [Demo „Job Portal“ für die kognitive Azure-Suche](http://azjobsdemo.azurewebsites.net/) anzeigen und testen.
+- Die Arbeitsdemo können Sie online unter der [Demo „Job Portal“ für die kognitive Azure-Suche](https://aka.ms/azjobsdemo) anzeigen und testen.
 
 - Laden Sie den Code aus dem [Repository „Azure-Beispiele“ in GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) herunter.
 
@@ -78,7 +78,7 @@ Komplexe Suchausdrücke wirken sich nachteilig auf die Abfrageleistung aus. Nutz
 Die folgende Gegenüberstellung eines komplexen Suchausdrucks und eines Suchausdrucks mit Filterausdruck veranschaulicht, wie ein Filter für mehr Genauigkeit sorgt:
 
 -   `GET /indexes/hotel/docs?search=lodging budget +Seattle –motel +parking`
--   `GET /indexes/hotel/docs?search=lodging&$filter=City eq ‘Seattle’ and Parking and Type ne ‘motel’`
+-   `GET /indexes/hotel/docs?search=lodging&$filter=City eq 'Seattle' and Parking and Type ne 'motel'`
 
 In beiden Fällen handelt es sich um eine gültige Abfrage, mit der zweiten kann jedoch besser nach Unterkünften mit Parkmöglichkeiten in Seattle gesucht werden, bei denen es sich nicht um ein Motel handelt.
 -   Die erste Abfrage basiert darauf, dass in Zeichenfolgenfeldern wie „Name“, „Beschreibung“ oder in anderen Feldern mit durchsuchbaren Daten bestimmte Wörter verwendet oder nicht verwendet werden.
@@ -139,7 +139,7 @@ Die folgende Abbildung zeigt einen Teil des Schemas für die Beispiel-App „Job
 }
 ```
 
-Wie Sie im Beispielschema sehen können, ist `Facetable` für Zeichenfolgenfelder, die nicht als Facetten verwendet werden sollen (wie etwa ID-Werte), deaktiviert ist. Die Deaktivierung der Facettenerstellung für Elemente, die nicht als Facetten verwendet werden, verringert den Umfang des Index und verbessert in der Regel die Leistung.
+Wie Sie im Beispielschema sehen können, ist `Facetable` für Zeichenfolgenfelder deaktiviert, die nicht als Facetten verwendet werden sollen (wie etwa ID-Werte). Die Deaktivierung der Facettenerstellung für Elemente, die nicht als Facetten verwendet werden, verringert den Umfang des Index und verbessert in der Regel die Leistung.
 
 > [!TIP]
 > Es empfiehlt sich, für jedes Feld den vollständigen Indexattributsatz einzubeziehen. `Facetable` ist zwar standardmäßig für fast alle Felder aktiviert, das bewusste Festlegen der einzelnen Attribute kann jedoch beim Nachvollziehen der einzelnen Schemaentscheidungen hilfreich sein. 
@@ -232,7 +232,7 @@ SearchParameters sp = new SearchParameters()
 
 Ein Facettenabfrageparameter wird auf ein Feld festgelegt und kann abhängig vom Datentyp durch eine kommagetrennte Liste mit `count:<integer>`, `sort:<>`, `interval:<integer>` und `values:<list>` weiter parametrisiert werden. Für numerische Daten wird beim Einrichten von Bereichen eine Werteliste unterstützt. Ausführlichere Informationen zur Verwendung finden Sie unter [Dokumente durchsuchen (API für die kognitive Azure-Suche)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
 
-Neben Facetten muss die von Ihrer Anwendung erstellte Anforderung auch Filter zum Einschränken der auf der Grundlage der Facettenwertauswahl infrage kommenden Dokumente erstellen. Für ein Fahrradgeschäft bietet Facettennavigation bietet Hinweise zu Fragen wie *Welche Farben, Hersteller und Fahrradtypen sind verfügbar?* . Filtern Sie Antworten auf Fragen wie *Welche Fahrräder in diesem Preisspanne sind rote Mountainbikes?* . Wenn Sie durch Klicken auf „Rot“ angeben, dass nur rote Produkte angezeigt werden sollen, enthält die nächste von der Anwendung gesendete Abfrage `$filter=Color eq ‘Red’`.
+Neben Facetten muss die von Ihrer Anwendung erstellte Anforderung auch Filter zum Einschränken der auf der Grundlage der Facettenwertauswahl infrage kommenden Dokumente erstellen. Für ein Fahrradgeschäft bietet Facettennavigation bietet Hinweise zu Fragen wie *Welche Farben, Hersteller und Fahrradtypen sind verfügbar?* . Filtern Sie Antworten auf Fragen wie *Welche Fahrräder in diesem Preisspanne sind rote Mountainbikes?* . Wenn Sie durch Klicken auf „Rot“ angeben, dass nur rote Produkte angezeigt werden sollen, enthält die nächste von der Anwendung gesendete Abfrage `$filter=Color eq 'Red'`.
 
 Mit dem folgenden Codeausschnitt von der `JobsSearch.cs`-Seite wird die Berufsbezeichnung dem Filter hinzugefügt, wenn Sie einen Wert aus der Berufsbezeichnungsfacette auswählen.
 
@@ -297,7 +297,7 @@ Allgemein gilt: Wenn die Facettenergebnisse ständig zu umfangreich ausfallen, e
 
 Jedes Facettenfeld in der Navigationsstruktur ist standardmäßig auf maximal zehn Werte beschränkt. Dieser Standardwert ist für Navigationsstrukturen sinnvoll, da die Werteliste dadurch überschaubar bleibt. Sie können den Standardwert überschreiben, indem Sie einen Zählwert zuweisen.
 
-* `&facet=city,count:5` gibt an, dass als Facettenergebnis nur die ersten fünf Städte aus den Topergebnissen zurückgegeben werden sollen. Angenommen, eine Beispielabfrage mit dem Suchbegriff „Flughafen“ weist 32 Treffer auf. Wenn für die Abfrage `&facet=city,count:5`angegeben ist, werden in den Facettenergebnissen nur die ersten fünf eindeutigen Städte mit den meisten Dokumenten in den Suchergebnissen berücksichtigt.
+* `&facet=city,count:5` gibt an, dass als Facettenergebnis nur die ersten fünf Städte aus den Topergebnissen zurückgegeben werden sollen. Angenommen, eine Beispielabfrage mit dem Suchbegriff „Flughafen“ weist 32 Treffer auf. Wenn für die Abfrage `&facet=city,count:5`angegeben ist, werden in den Facettenergebnissen nur die ersten fünf eindeutigen Städte mit den meisten Dokumenten in den Suchergebnissen berücksichtigt.
 
 Beachten Sie die Unterscheidung zwischen Facettenergebnissen und Suchergebnissen: Suchergebnisse umfassen alle Dokumente, die der Abfrage entsprechen. Facettenergebnisse sind die Übereinstimmungen für die einzelnen Facettenwerte. In unserem Beispiel umfassen die Suchergebnisse Städtenamen, die sich nicht in der Facettenklassifizierungsliste (in unserem Beispiel: fünf) befinden. Durch die Facettennavigation herausgefilterte Ergebnisse werden angezeigt, wenn Sie Facetten löschen oder zusätzliche Facetten neben Städtenamen auswählen. 
 
@@ -333,7 +333,7 @@ Beschriftungen werden üblicherweise im HTML-Code oder im Formular definiert (`i
 ## <a name="filter-based-on-a-range"></a>Filtern nach einem Bereich
 Die Verwendung von Facettenwertbereichen ist eine verbreitete Anforderung für Suchanwendungen. Bereiche werden für numerische Daten und für DateTime-Werte unterstützt. Weitere Informationen zu den einzelnen Ansätzen finden Sie unter [Dokumente durchsuchen (API für die kognitive Azure-Suche)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
 
-Die kognitive Azure-Suche vereinfacht die Bereichserstellung durch zwei Bereichsberechnungsansätze. Bei beiden Ansätzen erstellt die kognitive Azure-Suche die entsprechenden Bereiche auf der Grundlage Ihrer Eingaben. Wenn Sie also beispielsweise die Bereichswerte „10|20|30“ angeben, werden automatisch folgende Bereiche erstellt: 0–10, 10–20, 20–30. Ihre Anwendung kann optional alle leeren Intervalle entfernen. 
+Die kognitive Azure-Suche vereinfacht die Bereichserstellung durch zwei Bereichsberechnungsansätze. Bei beiden Ansätzen erstellt Azure Cognitive Search die entsprechenden Bereiche auf der Grundlage Ihrer Eingaben. Wenn Sie also beispielsweise die Bereichswerte „10|20|30“ angeben, werden automatisch folgende Bereiche erstellt: 0–10, 10–20, 20–30. Ihre Anwendung kann optional alle leeren Intervalle entfernen. 
 
 **Vorgehensweise 1: Verwenden des interval-Parameters**  
 Um Preisfacets in Schritten von 10 $ festzulegen, geben Sie Folgendes an: `&facet=price,interval:10`
@@ -357,7 +357,7 @@ Wenn Sie Dokumente auf der Grundlage eines von Ihnen ausgewählten Bereichs filt
 <a name="geofacets"></a> 
 
 ## <a name="filter-based-on-distance"></a>Filtern Sie nach Entfernung
-Filter, die den Benutzer bei der Wahl eines Geschäfts, Restaurants oder eines Ziels in Abhängigkeit von der Nähe zum aktuellen Standort unterstützen, sind weit verbreitet. Diese Art von Filter sieht zwar vielleicht wie eine Facettennavigation aus, ist aber nur ein Filter. Diese Option wird hier nur erwähnt, falls Sie nach Implementierungstipps für dieses spezielle Designproblem suchen.
+Filter, die den Benutzer bei der Wahl eines Geschäfts, Restaurants oder Ziels in Abhängigkeit von der Nähe zum aktuellen Standort unterstützen, sind weit verbreitet. Diese Art von Filter sieht zwar vielleicht wie eine Facettennavigation aus, ist aber nur ein Filter. Diese Option wird hier nur erwähnt, falls Sie nach Implementierungstipps für dieses spezielle Designproblem suchen.
 
 In der kognitiven Azure-Suche stehen zwei räumliche Funktionen zur Verfügung: **geo.distance** und **geo.intersects**.
 
@@ -371,7 +371,7 @@ Filterbeispiele finden Sie unter [OData-Ausdruckssyntax für die kognitive Azure
 ## <a name="try-the-demo"></a>Testen Sie die Demo
 Die Demo „Job Portal“ für die kognitive Azure-Suche enthält die Beispiele, auf die in diesem Artikel Bezug genommen wird.
 
--   Die Arbeitsdemo können Sie online unter der [Demo „Job Portal“ für die kognitive Azure-Suche](https://azjobsdemo.azurewebsites.net/) anzeigen und testen.
+-   Die Arbeitsdemo können Sie online unter der [Demo „Job Portal“ für die kognitive Azure-Suche](https://aka.ms/azjobsdemo) anzeigen und testen.
 
 -   Laden Sie den Code aus dem [Repository „Azure-Beispiele“ in GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) herunter.
 

@@ -21,7 +21,7 @@
     - name: 'Mandanten, Rollen und Benutzer'
       displayName: 'Azure AD, Azure Active Directory'
       href: ./concepts/tenants-users-roles.md
-    - name: Angebote für verwaltete Dienste in Azure Marketplace
+    - name: Angebote für verwaltete Dienste im Azure Marketplace
       displayName: 'azure marketplace, marketplace, managed service, private, plan'
       href: ./concepts/managed-services-offers.md
     - name: Empfohlene Sicherheitsmaßnahmen
@@ -38,7 +38,7 @@
     - name: Onboarding eines Kunden für delegierte Azure-Ressourcenverwaltung durchführen
       displayName: resource management
       href: ./how-to/onboard-customer.md
-    - name: Angebote für verwaltete Dienste in Azure Marketplace veröffentlichen
+    - name: Veröffentlichen von Angeboten für verwaltete Dienste im Azure Marketplace
       displayName: 'managed services offer, azure marketplace, publish, marketplace'
       href: ./how-to/publish-managed-services-offers.md
     - name: Kunden anzeigen und verwalten

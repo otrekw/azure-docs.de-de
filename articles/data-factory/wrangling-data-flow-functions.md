@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.openlocfilehash: e2517ec4a02a5d61fb3ce1d9ca9ffa2b5f4e8bf8
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74287024"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Transformationsfunktionen im Wranglingdatenfluss
@@ -85,7 +85,7 @@ Verwenden Sie [Table.Sort](https://docs.microsoft.com/powerquery-m/table-sort), 
 
 | Funktion | Status |
 | -- | -- |
-| Table.PromoteHeaders | Nicht unterstützt. Dasselbe Ergebnis kann erzielt werden, indem „Erste Zeile als Header verwenden“ im Dataset festgelegt wird. |
+| Table.PromoteHeaders | Wird nicht unterstützt. Dasselbe Ergebnis kann erzielt werden, indem „Erste Zeile als Header verwenden“ im Dataset festgelegt wird. |
 | Table.CombineColumns | Dies ist ein gängiges Szenario, das nicht direkt unterstützt wird. Es kann jedoch durch Hinzufügen einer neuen Spalte umgesetzt werden, in der zwei angegebene Spalten verkettet sind.  Beispiel: Table.AddColumn(RemoveEmailColumn, “Name”, jeweils [FirstName] & ” ” & [LastName]) |
 | Table.TransformColumnTypes | Diese Funktion wird in den meisten Fällen unterstützt. Die folgenden Szenarien werden nicht unterstützt: Transformieren des Typs „string“ in „currency“, Transformieren des Typs „string“ in „time“, Transformieren des Typs „string“ in „Percentage“. |
 | Table.NestedJoin | Wenn Sie nur einen Join durchführen, führt dies zu einem Überprüfungsfehler. Die Spalten müssen erweitert werden, damit der Vorgang funktioniert. |

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965729"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79232242"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Bereitstellen und Verwalten einer StorSimple Cloud Appliance in Azure (ab Update 3)
 
@@ -50,9 +50,9 @@ Die StorSimple Cloud Appliance steht in zwei Modellen zur Verfügung, dem Standa
 | **Speichertyp** |Verwendet Azure Storage Standard für lokale Datenträger<br></br> Erfahren Sie, wie Sie ein [Storage Standard-Konto erstellen](../storage/common/storage-create-storage-account.md) |Verwendet Azure Storage Premium für lokale Datenträger<sup>2</sup> <br></br> |
 | **Informationen zu Workloads** |Abrufen von Dateien aus Sicherungskopien auf Elementebene |Entwicklungs- und Testszenarien für die Cloud <br></br>Workloads mit geringer Wartezeit und höherer Leistung<br></br>Sekundäres Gerät für die Notfallwiederherstellung |
 
-<sup>1</sup>*Ehemals 1100*.
+<sup>1</sup> *Ehemals 1100*
 
-<sup>2</sup>*Die Serien 8010 und 8020 verwenden Azure Storage Standard für die Cloud-Ebene. Einen Unterschied gibt es nur in der lokalen Ebene innerhalb des Geräts*.
+<sup>2</sup> *Die Serien 8010 und 8020 verwenden Azure Storage Standard für die Cloud-Ebene. Einen Unterschied gibt es nur in der lokalen Ebene innerhalb des Geräts*.
 
 ## <a name="how-the-cloud-appliance-differs-from-the-physical-device"></a>Unterschiede zwischen Cloudgerät und physischem Gerät
 

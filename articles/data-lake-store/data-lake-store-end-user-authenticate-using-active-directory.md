@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 4c2b774c304e46f9fc68f3beaf64218e614ecad1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66234058"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Endbenutzerauthentifizierung mit Azure Data Lake Storage Gen1 mit Azure Active Directory
@@ -78,7 +78,7 @@ Erstellen und Konfigurieren Sie eine native Azure AD-Anwendung für die Authenti
 
 Wenn Sie die Anweisungen unter diesem Link befolgen, stellen Sie sicher, dass Sie als Typ der Anwendung **Nativ** auswählen, wie auf dem folgenden Screenshot gezeigt:
 
-![Erstellen einer Webanwendung](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "Erstellen einer nativen Anwendung")
+![Erstellen der Web-App](./media/data-lake-store-end-user-authenticate-using-active-directory/azure-active-directory-create-native-app.png "Erstellen einer nativen App")
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>Schritt 2: Abrufen von Anwendungs-ID und Umleitungs-URI
 

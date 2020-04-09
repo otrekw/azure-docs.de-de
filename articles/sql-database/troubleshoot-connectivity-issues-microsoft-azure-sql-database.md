@@ -9,16 +9,16 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: carlrab,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 6baf9d4edba9ba8db008c5c6a8d7af6832ba3273
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 578d076dfc2fc383051c0c3a8528cdbb0fbcdb15
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77591233"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79208779"
 ---
 # <a name="troubleshooting-connectivity-issues-and-other-errors-with-microsoft-azure-sql-database"></a>Beheben von Verbindungsproblemen und anderen Fehlern bei Microsoft Azure SQL-Datenbank
 
-Wenn keine Verbindung mit Azure SQL-Datenbank hergestellt werden kann, erhalten Sie Fehlermeldungen. Diese Verbindungsprobleme können durch eine Neukonfiguration von Azure SQL-Datenbank, Firewalleinstellungen, ein Verbindungstimeout, falsche Anmeldeinformationen oder Nichtanwendung bewährter Methoden und Entwurfsrichtlinien beim [Anwendungsentwurf]-Prozess (sql-database-develop-overview.md) verursacht werden. Wenn außerdem die Obergrenze einiger Azure SQL-Datenbank-Ressourcen erreicht wird, können Sie keine Verbindung mit Azure SQL-Datenbank herstellen.
+Wenn keine Verbindung mit Azure SQL-Datenbank hergestellt werden kann, erhalten Sie Fehlermeldungen. Diese Verbindungsprobleme können auf eine Neukonfiguration von Azure SQL-Datenbank sowie auf Firewalleinstellungen, ein Verbindungstimeout, falsche Anmeldeinformationen oder auf die Missachtung bewährter Methoden und Entwurfsrichtlinien für den [Anwendungsentwurf](sql-database-develop-overview.md) zurückzuführen sein. Wenn außerdem die Obergrenze einiger Azure SQL-Datenbank-Ressourcen erreicht wird, können Sie keine Verbindung mit Azure SQL-Datenbank herstellen.
 
 ## <a name="transient-fault-error-messages-40197-40613-and-others"></a>Fehlermeldungen für vorübergehende Fehler (40197, 40613 u. a.)
 
@@ -297,7 +297,7 @@ Eine ausführliche Problembehandlung finden Sie unter [Wird meine Abfrage in der
 
 ### <a name="table-of-additional-resource-governance-error-messages"></a>Tabelle mit zusätzlichen Fehlermeldungen bezüglich Ressourcenkontrolle
 
-| Fehlercode | severity | Beschreibung |
+| Fehlercode | severity | BESCHREIBUNG |
 | ---:| ---:|:--- |
 | 10928 |20 |Ressourcen-ID: %d. Das %s-Limit für die Datenbank beträgt %d und wurde erreicht. Weitere Informationen finden Sie unter [Ressourcenlimits bei SQL-Datenbank für Einzel- und Pooldatenbanken](sql-database-resource-limits-database-server.md).<br/><br/>Mit der Ressourcen-ID wird die Ressource angegeben, für die das Limit erreicht wurde. Bei Arbeitsthreads lautet die Ressourcen-ID „1“. Bei Sitzungen lautet die Ressourcen-ID „2“.<br/><br/>Weitere Informationen zu diesem Fehler und zur Fehlerbehebung finden Sie unter: <br/>&bull; &nbsp;[Ressourceneinschränkungen für Datenbankserver](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für einzelne Datenbanken](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für einzelne Datenbanken](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Ressourceneinschränkungen für verwaltete Instanzen](sql-database-managed-instance-resource-limits.md) |
 | 10929 |20 |Ressourcen-ID: %d. Die %s-Mindestgarantie beträgt %d, der maximale Wert beträgt %d und die aktuelle Nutzung für die Datenbank beträgt %d. Der Server ist jedoch derzeit zu stark ausgelastet, um Anforderungen über %d für diese Datenbank zu unterstützen. Mit der Ressourcen-ID wird die Ressource angegeben, für die das Limit erreicht wurde. Bei Arbeitsthreads lautet die Ressourcen-ID „1“. Bei Sitzungen lautet die Ressourcen-ID „2“. Weitere Informationen finden Sie unter <br/>&bull; &nbsp;[Ressourceneinschränkungen für Datenbankserver](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für einzelne Datenbanken](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[DTU-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für einzelne Datenbanken](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Ressourceneinschränkungen für verwaltete Instanzen](sql-database-managed-instance-resource-limits.md) <br/>Versuchen Sie es andernfalls später noch einmal. |
@@ -312,7 +312,7 @@ Eine ausführliche Problembehandlung finden Sie unter [Wird meine Abfrage in der
 
 Die folgenden Fehler beziehen sich auf die Erstellung und Verwendung von Pools für elastische Datenbanken:
 
-| Fehlercode | severity | Beschreibung | Korrekturmaßnahme |
+| Fehlercode | severity | BESCHREIBUNG | Korrekturmaßnahme |
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |Der Speichergrenzwert des Pools für elastische Datenbanken wurde erreicht. Die Speicherauslastung für den Pool für elastische Datenbanken darf (%d) MB nicht überschreiten. Es wurde versucht, Daten in eine Datenbank zu schreiben, während die Speicherbegrenzung des Pools für elastische Datenbanken erreicht wurde. Informationen zu Ressourceneinschränkungen finden Sie unter: <br/>&bull; &nbsp;[DTU-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md) <br/> |Erhöhen Sie nach Möglichkeit die DTUs des Pools für elastische Datenbanken und/oder fügen Sie ihm Speicher hinzu, um die Speicherkapazität zu erweitern, reduzieren Sie die Speichernutzung der einzelnen Datenbanken innerhalb des Pools für elastische Datenbanken, oder entfernen Sie Datenbanken aus dem Pools für elastische Datenbanken. Informationen zur Skalierung von Pools für elastische Datenbanken finden Sie unter [Skalieren von Ressourcen für Pools für elastische Datenbanken](sql-database-elastic-pool-scale.md).|
 | 10929 | 16 |Die %s-Mindestgarantie beträgt %d, der maximale Wert beträgt %d und die aktuelle Nutzung für die Datenbank beträgt %d. Der Server ist jedoch derzeit zu stark ausgelastet, um Anforderungen über %d für diese Datenbank zu unterstützen. Informationen zu Ressourceneinschränkungen finden Sie unter: <br/>&bull; &nbsp;[DTU-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[V-Kern-basierte Einschränkungen für Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md) <br/> Versuchen Sie es andernfalls später noch einmal. DTU-/V-Kern-Mindestanzahl pro Datenbank; DTU-/V-Kern-Höchstanzahl pro Datenbank Die Gesamtanzahl der gleichzeitigen Worker (Anforderungen) in allen Datenbanken im Pool für elastische Datenbanken hat versucht, den Poolgrenzwert zu überschreiten. |Erhöhen Sie nach Möglichkeit die Anzahl von DTUs oder V-Kernen des Pools für elastische Datenbanken, um die Begrenzung für Worker zu steigern, oder entfernen Sie Datenbanken aus dem Pool für elastische Datenbanken. |

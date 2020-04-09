@@ -14,10 +14,10 @@ ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: b82d338f85f1b43712296ac7f27bdad55f8f1919
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74561659"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---manage-cost-and-ownership"></a>Governance der Azure DevTest Labs-Infrastruktur – Verwalten der Kosten und des Besitzes
@@ -29,7 +29,7 @@ Kosten und Besitz sind zentrale Überlegungen beim Aufbau Ihrer Entwicklungs- un
 Wie kann ich in meiner DevTest Labs-Umgebung für die Kosten optimieren?
 
 ### <a name="answer"></a>Antwort
-Es gibt verschiedene integrierte Features von DevTest Labs, die Ihnen dabei helfen, die Kosten zu optimieren. Informationen zum Beschränken der Benutzeraktivitäten finden Sie in den Artikeln [zur Kostenverwaltung und zu Schwellenwerten](devtest-lab-configure-cost-management.md) und zu [Richtlinien](devtest-lab-set-lab-policy.md). 
+Es gibt verschiedene integrierte Features von DevTest Labs, die Ihnen dabei helfen, die Kosten zu optimieren. Informationen zum Beschränken der Benutzeraktivitäten finden Sie in den Artikeln [zur Kostenverwaltung und zu Schwellenwerten](devtest-lab-configure-cost-management.md) [und zu Richtlinien](devtest-lab-set-lab-policy.md). 
 
 Wenn Sie DevTest Labs für Entwicklungs- und Testworkloads verwenden, sollten Sie den [Enterprise Dev/Test-Abonnementvorteil](https://azure.microsoft.com/offers/ms-azr-0148p/) im Rahmen Ihres Enterprise Agreements in Erwägung ziehen. Wenn Sie ein Kunde mit nutzungsbasierter Zahlung sind, sollten Sie stattdessen das Angebot [Dev/Test Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0023p/) berücksichtigen.
 

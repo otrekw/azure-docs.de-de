@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: twooley
 ms.openlocfilehash: d3dbacd58b3bda3fbf8ee8ad5f175eccc2cb2a24
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60194854"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Streamen von Daten aus Azure Storage Blob in Azure Data Lake Storage Gen1 mit Azure Stream Analytics
@@ -64,7 +64,7 @@ Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle u
    * Wählen Sie als **Trennzeichen** die Option **Tabstopp** aus.
    * Wählen Sie als **Codierung** die Option **UTF-8** aus.
 
-     Klicken Sie auf **Create**. Das Portal fügt die Eingabe hinzu und testet die Verbindung.
+     Klicken Sie auf **Erstellen**. Das Portal fügt die Eingabe hinzu und testet die Verbindung.
 
 
 ## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>Erstellen einer Data Lake Storage Gen1-Ausgabe für den Auftrag
@@ -92,13 +92,13 @@ Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle u
    * Wählen Sie als **Trennzeichen** die Option **Tabstopp** aus.
    * Wählen Sie als **Codierung** die Option **UTF-8** aus.
     
-     Klicken Sie auf **Create**. Das Portal fügt die Ausgabe hinzu und testet die Verbindung.
+     Klicken Sie auf **Erstellen**. Das Portal fügt die Ausgabe hinzu und testet die Verbindung.
     
 ## <a name="run-the-stream-analytics-job"></a>Ausführen des Stream Analytics-Auftrags
 
 1. Um einen Stream Analytics-Auftrag auszuführen, müssen Sie eine Abfrage auf der Registerkarte **Abfrage** ausführen. Für dieses Tutorial können Sie die Beispielabfrage ausführen, indem Sie die Platzhalter durch die Auftragseingabe- und Auftragsausgabealiase ersetzen, wie in der folgenden Bildschirmaufnahme gezeigt.
 
-    ![Ausführen einer Abfrage](./media/data-lake-store-stream-analytics/run.query.png "Ausführen einer Abfrage")
+    ![Ausführen der Abfrage](./media/data-lake-store-stream-analytics/run.query.png "Abfrage ausführen")
 
 2. Klicken Sie oben auf dem Bildschirm auf **Speichern**, und klicken Sie dann auf der Registerkarte **Übersicht** auf **Starten**. Wählen Sie im Dialogfeld die Option **Benutzerdefinierte Uhrzeit** aus, und legen Sie das aktuelle Datum und die aktuelle Uhrzeit fest.
 

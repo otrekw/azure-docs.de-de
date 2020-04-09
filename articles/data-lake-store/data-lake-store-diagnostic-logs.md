@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: d200f72b3c0e5634c3dca8f60a4754a14351110a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60878717"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Zugreifen auf Diagnoseprotokolle für Azure Data Lake Storage Gen1
@@ -113,27 +113,27 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotok
     }
 
 #### <a name="request-log-schema"></a>Anforderungsprotokollschema
-| NAME | Type | BESCHREIBUNG |
+| Name | type | BESCHREIBUNG |
 | --- | --- | --- |
-| time |string |Der Zeitstempel (UTC) des Protokolls. |
-| Ressourcen-ID |string |Die ID der Ressource, auf der der Vorgang stattfand. |
-| category |string |Die Protokollkategorie. Beispiel: **Anforderungen**. |
-| operationName |string |Der Name des protokollierten Vorgangs. Beispielsweise „getfilestatus“. |
-| resultType |string |Der Status des Vorgangs, beispielsweise 200. |
-| callerIpAddress |string |Die IP-Adresse des Clients, der die Anforderung gestellt hat. |
-| correlationId |string |Die ID des Protokolls, die verwendet werden kann, um einen Satz verwandter Protokolleinträge zu gruppieren. |
+| time |String |Der Zeitstempel (UTC) des Protokolls. |
+| resourceId |String |Die ID der Ressource, auf der der Vorgang stattfand. |
+| category |String |Die Protokollkategorie. Beispiel: **Anforderungen**. |
+| operationName |String |Der Name des protokollierten Vorgangs. Beispielsweise „getfilestatus“. |
+| resultType |String |Der Status des Vorgangs, beispielsweise 200. |
+| callerIpAddress |String |Die IP-Adresse des Clients, der die Anforderung gestellt hat. |
+| correlationId |String |Die ID des Protokolls, die verwendet werden kann, um einen Satz verwandter Protokolleinträge zu gruppieren. |
 | identity |Object |Die Identität, die das Protokoll erstellt hat. |
 | properties |JSON |Weitere Informationen siehe unten. |
 
 #### <a name="request-log-properties-schema"></a>Eigenschaftenschema des Anforderungsprotokolls
-| NAME | Type | BESCHREIBUNG |
+| Name | type | BESCHREIBUNG |
 | --- | --- | --- |
-| HttpMethod |string |Die HTTP-Methode, die für den Vorgang verwendet werden. Beispiel: GET. |
-| `Path` |string |Der Pfad, in dem der Vorgang durchgeführt wurde. |
-| RequestContentLength |int |Die Inhaltslänge der HTTP-Anforderung. |
-| ClientRequestId |string |Die ID, die diese Anforderung eindeutig identifiziert. |
-| StartTime |string |Der Zeitpunkt, zu dem der Server die Anforderung empfangen hat. |
-| EndTime |string |Der Zeitpunkt, zu dem der Server eine Antwort gesendet hat. |
+| HttpMethod |String |Die HTTP-Methode, die für den Vorgang verwendet werden. Beispiel: GET. |
+| `Path` |String |Der Pfad, in dem der Vorgang durchgeführt wurde. |
+| RequestContentLength |INT |Die Inhaltslänge der HTTP-Anforderung. |
+| ClientRequestId |String |Die ID, die diese Anforderung eindeutig identifiziert. |
+| StartTime |String |Der Zeitpunkt, zu dem der Server die Anforderung empfangen hat. |
+| EndTime |String |Der Zeitpunkt, zu dem der Server eine Antwort gesendet hat. |
 
 ### <a name="audit-logs"></a>Überwachungsprotokolle
 Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsprotokoll. Jeder Blob hat ein Stammobjekt namens **records** , das ein Array von Protokollobjekten enthält.
@@ -160,22 +160,22 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsproto
     }
 
 #### <a name="audit-log-schema"></a>Überwachungsprotokollschema
-| NAME | Type | BESCHREIBUNG |
+| Name | type | BESCHREIBUNG |
 | --- | --- | --- |
-| time |string |Der Zeitstempel (UTC) des Protokolls. |
-| Ressourcen-ID |string |Die ID der Ressource, auf der der Vorgang stattfand. |
-| category |string |Die Protokollkategorie. Beispiel: **Überwachung**. |
-| operationName |string |Der Name des protokollierten Vorgangs. Beispielsweise „getfilestatus“. |
-| resultType |string |Der Status des Vorgangs, beispielsweise 200. |
-| resultSignature |string |Weitere Details zum Vorgang |
-| correlationId |string |Die ID des Protokolls, die verwendet werden kann, um einen Satz verwandter Protokolleinträge zu gruppieren. |
+| time |String |Der Zeitstempel (UTC) des Protokolls. |
+| resourceId |String |Die ID der Ressource, auf der der Vorgang stattfand. |
+| category |String |Die Protokollkategorie. Beispiel: **Überwachung**. |
+| operationName |String |Der Name des protokollierten Vorgangs. Beispielsweise „getfilestatus“. |
+| resultType |String |Der Status des Vorgangs, beispielsweise 200. |
+| resultSignature |String |Weitere Details zum Vorgang |
+| correlationId |String |Die ID des Protokolls, die verwendet werden kann, um einen Satz verwandter Protokolleinträge zu gruppieren. |
 | identity |Object |Die Identität, die das Protokoll erstellt hat. |
 | properties |JSON |Weitere Informationen siehe unten. |
 
 #### <a name="audit-log-properties-schema"></a>Eigenschaftenschema des Überwachungsprotokolls
-| NAME | Type | BESCHREIBUNG |
+| Name | type | BESCHREIBUNG |
 | --- | --- | --- |
-| StreamName |string |Der Pfad, in dem der Vorgang durchgeführt wurde. |
+| StreamName |String |Der Pfad, in dem der Vorgang durchgeführt wurde. |
 
 ## <a name="samples-to-process-the-log-data"></a>Beispiele für die Verarbeitung der Protokolldaten
 Beim Senden von Protokollen aus Azure Data Lake Storage Gen1 an Azure Monitor-Protokolle (Informationen zum Verwenden von Azure Monitor-Protokollen finden Sie unter [Anzeigen oder Analysieren der mit der Azure Monitor-Protokollsuche gesammelten Daten](../azure-monitor/learn/tutorial-viewdata.md)) gibt die folgende Abfrage eine Tabelle mit einer Liste der Benutzeranzeigenamen, die Uhrzeit der Ereignisse, die Anzahl von Ereignissen zur Zeit des Ereigniseintritts sowie ein visuelles Diagramm zurück. Diese kann ganz einfach bearbeitet werden, sodass Benutzer-GUIDs oder weitere Attribute angezeigt werden:

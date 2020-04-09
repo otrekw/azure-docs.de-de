@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: amverma
 ms.openlocfilehash: 8d4b57fb2fee3849e102868c86fe3cab465fc70d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67707781"
 ---
 # <a name="known-issues-with-hb-series-and-hc-series-vms"></a>Bekannte Probleme bei virtuellen Computern der HB-Serie und der HC-Serie
@@ -31,13 +31,13 @@ Virtuelle Computer der HB-Serie können momentan nur 228 GB RAM für virtuelle
 
 Der beschleunigte Netzwerkbetrieb von Azure ist momentan nicht aktiviert. Dies ändert sich im Laufe des Vorschauzeitraums aber noch. Kunden erhalten eine entsprechende Benachrichtigung, wenn dieses Feature unterstützt wird.
 
-## <a name="qp0-access-restriction"></a>qp0 Zugriffsbeschränkung
+## <a name="qp0-access-restriction"></a>qp0-Zugriffseinschränkung
 
-Um einen Low-Level-Hardwarezugriff zu verhindern, der zu Sicherheitsschwachstellen führen kann, ist Queue Pair 0 für Gast-VMs nicht zugänglich. Dies sollte nur Aktionen betreffen, die typischerweise mit der Verwaltung des ConnectX-5 NIC und der Ausführung einiger InfiniBand-Diagnosen wie ibdiagnet verbunden sind, nicht aber Endbenutzeranwendungen selbst.
+Um Zugriffe auf Low-Level-Hardware zu verhindern, die zu Sicherheitsrisiken führen können, haben virtuelle Gastcomputer keinen Zugriff auf das Warteschlangenpaar 0. Dies ist in der Regel nur für Aktionen im Zusammenhang mit der Verwaltung der ConnectX-5-NIC oder mit der Ausführung einiger InfiniBand-Diagnosen (beispielsweise „ibdiagnet“) relevant, nicht aber für Endbenutzeranwendungen.
 
 ## <a name="ud-transport"></a>UD-Transport
 
-Beim Start unterstützen die HB- und HC-Serien keinen Dynamically Connected Transport (DCT). Die DCT-Unterstützung wird im Laufe der Zeit implementiert. RC-Transporte (Reliable Connection) und UD-Transporte (Unreliable Datagram) werden dagegen unterstützt.
+Dynamically Connected Transport (DCT) wird von der HB- und der HC-Serie vorerst noch nicht unterstützt. Die DCT-Unterstützung wird im Laufe der Zeit implementiert. RC-Transporte (Reliable Connection) und UD-Transporte (Unreliable Datagram) werden dagegen unterstützt.
 
 ## <a name="gss-proxy"></a>GSS Proxy
 

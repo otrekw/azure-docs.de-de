@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 068cc2ed9743a62aa2249a815893c71499711092
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.openlocfilehash: 33684a6292d7e51c04f6bacc7c49ee5986dbec10
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77617020"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79502401"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA-Netzwerkarchitektur (große Instanzen)
 
@@ -170,7 +170,7 @@ In den Azure-Regionen, in denen Global Reach angeboten wird, können Sie die Akt
 > Bei der Nutzung von Global Reach zur Aktivierung des Direktzugriffs zwischen Ihren HANA-Einheiten (große Instanz) und lokalen Ressourcen werden die Netzwerkdaten und die Ablaufsteuerung **nicht über virtuelle Azure-Netzwerke** geleitet, sondern direkt zwischen den Microsoft-Unternehmensedgeroutern. Dies führt dazu, dass alle NSG- oder ASG-Regeln und alle Arten von Firewall, NVA oder Proxy, die Sie in einem virtuellen Azure-Netzwerk bereitgestellt haben, nicht genutzt werden. **Wenn Sie ExpressRoute Global Reach zum Ermöglichen des Direktzugriffs aus der lokalen Umgebung auf HANA-Einheiten (große Instanz) verwenden, müssen Einschränkungen und Berechtigungen zum Zugreifen auf HANA-Einheiten (große Instanz) in Firewalls auf lokaler Seite definiert werden**. 
 
 ##### <a name="connecting-hana-large-instances-in-different-azure-regions"></a>Verbinden von HANA (große Instanzen) in unterschiedlichen Azure-Regionen
-ExpressRoute Global Reach kann nicht nur zum Herstellen einer Verbindung der lokalen Umgebung mit HANA-Einheiten (große Instanz) verwendet werden, sondern auch für die Verbindungsherstellung mit HANA-Mandanten (große Instanz), die für Sie in zwei unterschiedlichen Regionen bereitgestellt werden. Die Isolation erfolgt über die ExpressRoute-Leitungen, die von Ihren HANA-Mandanten (große Instanz) verwendet werden, um in beiden Regionen eine Verbindung mit Azure herzustellen. Es werden keine zusätzlichen Gebühren berechnet, um zwei HANA-Mandanten (große Instanz) zu verbinden, die in zwei unterschiedlichen Regionen bereitgestellt werden. 
+ExpressRoute Global Reach kann nicht nur zum Herstellen einer Verbindung der lokalen Umgebung mit HANA-Einheiten (große Instanz) verwendet werden, sondern auch zum Verbinden zweier HANA-Mandanten (große Instanz), die für Sie in zwei unterschiedlichen Regionen bereitgestellt werden. Die Isolation erfolgt über die ExpressRoute-Leitungen, die von Ihren HANA-Mandanten (große Instanz) verwendet werden, um in beiden Regionen eine Verbindung mit Azure herzustellen. Es werden keine zusätzlichen Gebühren berechnet, um zwei HANA-Mandanten (große Instanz) zu verbinden, die in zwei unterschiedlichen Regionen bereitgestellt werden. 
 
 > [!IMPORTANT]  
 > Der Datenfluss und die Ablaufsteuerung des Netzwerkdatenverkehrs zwischen den verschiedenen HANA-Mandanten (große Instanz) verlaufen nicht über Azure-Netzwerke. Sie können daher keine Azure-Funktionalität oder NVAs nutzen, um zwischen Ihren beiden HANA-Mandanten (große Instanzen) Einschränkungen der Kommunikation zu erzwingen. 

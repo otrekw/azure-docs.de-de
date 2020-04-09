@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 03/12/2019
-ms.openlocfilehash: 9db6b5ff517a1b0d67e59591ee634dfad685527b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/18/2019
+ms.openlocfilehash: af88fdf3378a6290c773c658ea6dd3469d7c92cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461473"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79531276"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>IP-Firewallregeln für Azure SQL-Datenbank und Azure SQL Data Warehouse
 
@@ -39,7 +39,7 @@ Verbindungsversuche über das Internet und Azure müssen die Firewall durchlaufe
 
 ### <a name="server-level-ip-firewall-rules"></a>IP-Firewallregeln auf Serverebene
 
-  Diese Regeln ermöglichen es Clients, auf den gesamten Azure SQL-Server zuzugreifen (also auf alle Datenbanken innerhalb desselben SQL-Datenbank-Servers). Die Regeln sind in der *Masterdatenbank* gespeichert. Es können maximal 128 IP-Firewallregeln auf Serverebene für einen Azure SQL Server konfiguriert werden.
+  Diese Regeln ermöglichen es Clients, auf den gesamten Azure SQL-Server zuzugreifen (also auf alle Datenbanken innerhalb desselben SQL-Datenbank-Servers). Die Regeln sind in der *Masterdatenbank* gespeichert. Es können maximal 128 IP-Firewallregeln auf Serverebene für einen Azure SQL Server konfiguriert werden. Wenn die Einstellung **Anderen Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten** aktiviert ist, zählt dies als einzelne Firewallregel für Azure SQL Server.
   
   IP-Firewallregeln auf Serverebene können über das Azure-Portal, mithilfe von PowerShell oder mithilfe von Transact-SQL-Anwendungen konfiguriert werden.
   - Wenn Sie das Portal oder PowerShell verwenden möchten, müssen Sie der Besitzer oder ein Mitwirkender des Abonnements sein.

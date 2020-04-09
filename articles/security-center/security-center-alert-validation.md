@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 10ea15168d61d5e73aff976ef641e07b6327dbca
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 5146878adf10e452f38fecb115ec40792ffa84f3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77604568"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79139996"
 ---
 # <a name="alert-validation-eicar-test-file-in-azure-security-center"></a>Warnungsüberprüfung (EICAR-Testdatei) in Azure Security Center
 In diesem Dokument erfahren Sie, wie Sie überprüfen, ob Ihr System ordnungsgemäß für Azure Security Center-Warnungen konfiguriert ist.
@@ -33,7 +33,7 @@ Weitere Informationen finden Sie unter [Sicherheitswarnungen in Azure Security C
 * [Linux](#validate-linux)
 * [Kubernetes](#validate-kubernetes)
 
-## Überprüfen von Warnungen auf virtuellen Windows-Computern <a name="validate-windows"></a>
+## <a name="validate-alerts-on-windows-vms"></a>Überprüfen von Warnungen auf virtuellen Windows-Computern <a name="validate-windows"></a>
 
 Nach der Installation des Security Center-Agents auf Ihrem Computer führen Sie auf dem Computer, auf dem sich die angegriffene Ressource für die Warnung befinden soll, die folgenden Schritte aus:
 
@@ -46,7 +46,7 @@ Nach der Installation des Security Center-Agents auf Ihrem Computer führen Sie 
 >
 >```reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"```
 
-## Überprüfen von Warnungen auf virtuellen Linux-Computern <a name="validate-linux"></a>
+## <a name="validate-alerts-on-linux-vms"></a>Überprüfen von Warnungen auf virtuellen Linux-Computern <a name="validate-linux"></a>
 
 Nach der Installation des Security Center-Agents auf Ihrem Computer führen Sie auf dem Computer, auf dem sich die angegriffene Ressource für die Warnung befinden soll, die folgenden Schritte aus:
 1. Kopieren Sie eine ausführbare Datei an einem geeigneten Speicherort, und benennen Sie sie in **./asc_alerttest_662jfi039n** um. Beispiel:
@@ -59,12 +59,12 @@ Nach der Installation des Security Center-Agents auf Ihrem Computer führen Sie 
 
 1. Warten Sie fünf bis zehn Minuten, und öffnen Sie die Security Center-Warnungen. Eine Warnung ähnlich wie im [Beispiel](#alert-validate) unten sollte angezeigt werden:
 
-### Beispiel für eine Warnung <a name="alert-validate"></a>
+### <a name="alert-example"></a>Beispiel für eine Warnung <a name="alert-validate"></a>
 
 ![Beispiel für eine Warnungsüberprüfung](./media/security-center-alert-validation/security-center-alert-validation-fig2.png) 
 
 
-## Überprüfen von Warnungen unter Kubernetes <a name="validate-kubernetes"></a>
+## <a name="validate-alerts-on-kubernetes"></a>Überprüfen von Warnungen unter Kubernetes <a name="validate-kubernetes"></a>
 
 Wenn Sie die Security Center-Previewfunktion der Integration von Azure Kubernetes Service verwenden, führen Sie den folgenden kubectl-Befehl aus, um zu testen, ob Ihre Warnungen funktionieren:
 
@@ -75,8 +75,7 @@ Weitere Informationen zur Integration von Azure Kubernetes Service und Azure Sec
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wurden Sie in den Prozess der Warnungsüberprüfung eingeführt. Nachdem Sie sich mit dieser Überprüfung vertraut gemacht haben, können Sie mit den folgenden Artikeln fortfahren:
 
+* [Überprüfen der Azure Key Vault-Bedrohungserkennung in Azure Security Center](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts): Erfahren Sie, wie Sie Warnungen verwalten und auf Sicherheitsvorfälle in Security Center reagieren.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center:](security-center-monitoring.md) Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 * [Verstehen der Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type): Hier finden Sie Informationen zu den unterschiedlichen Arten von Sicherheitswarnungen.
-* [Azure Security Center – Handbuch zur Problembehandlung](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide): Hier erfahren Sie, wie Sie allgemeine Probleme in Security Center behandeln.
-* [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.

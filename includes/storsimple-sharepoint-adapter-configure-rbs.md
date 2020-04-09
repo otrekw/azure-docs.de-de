@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: f84fe995e65d2b67aaaf4ff9acc4a6a44ce607dc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67178131"
 ---
 > [!NOTE]
@@ -45,7 +45,7 @@ ms.locfileid: "67178131"
       ![Adapterkonfigurationsmeldung](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS3-include.png)
       
       > [!NOTE]
-      > Wenn Sie RBS für eine SharePoint-Farm konfigurieren, die mehr als 200 Datenbanken enthält, tritt auf der Webseite „SharePoint-Zentraladministration“ unter Umständen ein Timeout auf. Aktualisieren Sie in diesem Fall die Seite. Dies wirkt sich nicht auf den Konfigurationsprozess aus.
+      > Wenn Sie RBS für eine SharePoint-Farm konfigurieren, die mehr als 200 Datenbanken enthält, tritt auf der Webseite „SharePoint-Zentraladministration“ unter Umständen ein Timeout auf. Aktualisieren Sie die Seite, falls dies passiert. Dies wirkt sich nicht auf den Konfigurationsprozess aus.
 
 4. Überprüfen Sie die Konfiguration:
    
@@ -55,7 +55,7 @@ ms.locfileid: "67178131"
    
    1. Laden Sie ein Dokument an SharePoint hoch. 
    2. Navigieren Sie zum konfigurierten UNC-Pfad. Vergewissern Sie sich, dass die RBS-Verzeichnisstruktur erstellt wurde und das hochgeladene Objekt enthält.
-6. (Optional) Mit dem in SharePoint enthaltenen Microsoft RBS-PowerShell-Cmdlet `Migrate()` können Sie vorhandene BLOB-Inhalte zum StorSimple-Gerät migrieren. Weitere Informationen finden Sie unter [Migrieren von Inhalten zu oder aus RBS in SharePoint 2013][6] und [Migrieren von Inhalten in den und aus dem Remoteblobspeicher (SharePoint Foundation 2010)][7].
+6. (Optional) Mit dem in SharePoint enthaltenen Microsoft RBS-PowerShell-Cmdlet `Migrate()` können Sie vorhandene BLOB-Inhalte zum StorSimple-Gerät migrieren. Weitere Informationen finden Sie unter [Migrieren von Inhalten zu oder aus RBS in SharePoint 2013][6] bzw. [Migrieren von Inhalten in den und aus dem Remoteblobspeicher (SharePoint Foundation 2010)][7].
 7. (Optional) In Testinstallationen können Sie sich wie folgt vergewissern, dass die BLOBs aus der Inhaltsdatenbank verschoben wurden: 
    
    1. Starten Sie SQL Management Studio.

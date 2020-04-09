@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: thvankra
 ms.openlocfilehash: 467e9627a2623779bd808ca5aebdf76d8a5eda42
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75898658"
 ---
 # <a name="migrate-one-to-few-relational-data-into-azure-cosmos-db-sql-api-account"></a>Migrieren von relationalen Daten mit 1:n-Beziehungen in ein Azure Cosmos DB-SQL-API-Konto
@@ -68,7 +68,7 @@ Nachfolgend werden diese Ansätze ausführlicher erörtert:
 
 „OrderDetails“ kann zwar nicht als JSON-Array in das Cosmos DB-Zieldokument eingebettet werden, aber wir können das Problem mit zwei separaten Kopieraktivitäten umgehen.
 
-### <a name="copy-activity-1-sqljsontoblobtext"></a>Kopieraktivität Nummer 1: SqlJsonToBlobText
+### <a name="copy-activity-1-sqljsontoblobtext"></a>Kopieraktivität Nummer 1: SqlJsonToBlobText
 
 Für die Quelldaten verwenden wir eine SQL-Abfrage, um das Resultset als einzelne Spalte mit einem (den Auftrag darstellenden) JSON-Objekt pro Zeile mithilfe der SQL Server-Funktionen OPENJSON und FOR JSON PATH abzurufen:
 
@@ -99,7 +99,7 @@ Da unsere Textdatei nicht wirklich „durch Trennzeichen getrennt“ ist und nic
 
 ![ADF-Kopieraktivität](./media/migrate-relational-to-cosmos-sql-api/adf2.png)
 
-### <a name="copy-activity-2-blobjsontocosmos"></a>Kopieraktivität Nummer 2: BlobJsonToCosmos
+### <a name="copy-activity-2-blobjsontocosmos"></a>Kopieraktivität Nummer 2: BlobJsonToCosmos
 
 Als Nächstes ändern wir die ADF-Pipeline, indem wir die zweite Kopieraktivität hinzufügen, die in Azure Blob Storage nach der Textdatei sucht, die von der ersten Aktivität erstellt wurde. Sie wird als „JSON“-Quelle verarbeitet und als ein Dokument pro in der Textdatei gefundener JSON-Zeile in die Cosmos DB-Senke eingefügt.
 

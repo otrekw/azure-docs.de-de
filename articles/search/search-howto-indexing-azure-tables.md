@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: e8f6c0454497b1cb1d62417e566e9662469c56d0
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74112998"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Indizieren von Tabellen aus Azure Blob Storage mit der kognitiven Azure-Suche
@@ -24,7 +24,7 @@ In diesem Artikel wird beschrieben, wie Sie die kognitive Azure-Suche zum Indizi
 
 Sie können einen Azure Table Storage-Indexer mithilfe der folgenden Ressourcen einrichten:
 
-* [Azure-Portal](https://ms.portal.azure.com)
+* [Azure portal](https://ms.portal.azure.com)
 * [REST-API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations) für die kognitive Azure-Suche
 * [.NET SDK](https://aka.ms/search-sdk) für die kognitive Azure-Suche
 

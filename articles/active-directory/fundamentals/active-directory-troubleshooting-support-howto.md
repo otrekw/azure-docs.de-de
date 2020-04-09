@@ -15,12 +15,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9dce9b93dfe4ddfca370d1d3131d1d12cb6f121d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1193bfc08ccbd86d4da09c4de472f09bb49208f6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561753"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80049938"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>Anfordern von Unterstützung und Öffnen eines Supporttickets für Azure Active Directory
 Microsoft bietet für Azure Active Directory (Azure AD) weltweiten, vertriebsvorbereitenden, Abrechnungs- und Abonnementsupport. Für gebührenpflichtige und Testabonnements von Microsoft Azure steht Support online und telefonisch zur Verfügung. Abrechnungssupport ist online und telefonisch in weiteren Sprachen verfügbar. 
@@ -49,15 +49,26 @@ Wenn Sie mithilfe dieser Selbsthilferessourcen keine Antworten finden, können S
 2. Scrollen Sie nach unten zu **Problembehandlung und Support**, und wählen Sie **Neue Supportanfrage** aus.
    
 3. Wählen Sie auf dem Blatt **Grundeinstellungen** für **Problemtyp** die Option **Technisch** aus.
-   
-4. Wählen Sie **Azure Active Directory** für **Dienst** aus, und klicken Sie anschließend auf **Weiter**.
 
-5. Wählen Sie auf dem Blatt **Problem** einen [Schweregrad](https://azure.microsoft.com/support/plans/response/) aus.
+4. Wählen Sie Ihr **Abonnement** aus.
+
+5. Wählen Sie unter **Dienst** die Option **Azure Active Directory** aus.
+
+6. Erstellen Sie eine **Zusammenfassung** für die Anfrage. Die Zusammenfassung muss weniger als 140 Zeichen umfassen.
   
-6. Wählen Sie einen **Problemtyp** und dann eine **Kategorie** für diesen Typ aus. An diesem Punkt werden Ihnen für Ihre Problemkategorie auch Informationen zur Selbsthilfe angeboten.
+7. Wählen Sie einen **Problemtyp** und anschließend eine Kategorie für diesen Typ aus. An diesem Punkt werden Ihnen für Ihre Problemkategorie auch Informationen zur Selbsthilfe angeboten.
   
-7. Fügen Sie die restlichen Informationen zu Ihrem Problem hinzu, und klicken Sie auf **Weiter**.
-  
+7. Fügen Sie die restlichen Informationen zu Ihrem Problem hinzu, und klicken Sie auf **Weiter**. 
+
+8. Daraufhin werden auf dem Blatt **Lösungen** Selbsthilfelösungen und Dokumentationen angeboten. Sollte sich das vorliegende Problem durch keine der Lösungen beheben lassen, klicken Sie auf **Weiter**. 
+
+9. Geben Sie auf dem Blatt **Details** die erforderlichen Details an, und wählen Sie einen [Schweregrad](https://azure.microsoft.com/support/plans/response/) aus. 
+ 
+![image](https://user-images.githubusercontent.com/13383753/76565580-1c284900-6468-11ea-8c0f-85af98097b6f.png)
+ 
+10. Geben Sie Ihre Kontaktinformationen ein, und wählen Sie **Weiter** aus. 
+
+
 8. Geben Sie Ihre Kontaktinformationen ein, und klicken Sie auf **Erstellen**.
   ![Screenshot der Problemkategorie „Selbsthilfe“](./media/active-directory-troubleshooting-support-howto/open-support-ticket.png)
 

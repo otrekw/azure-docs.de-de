@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4f975af233973ce5fac75ca46e334af5d91e8edc
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: f1aa605b3e6f32b260ea4a9eee9c056277fcd12d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78246272"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79367073"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Fehlerbehandlung in grafischen Azure Automation-Runbooks
 
@@ -48,7 +48,7 @@ Es wird empfohlen, ein dediziertes Runbook für die Fehlerbehandlung mit allgeme
 1. Er sendet eine Benachrichtigung zu diesem Problem.
 2. Er startet ein anderes Runbook, mit dem automatisch stattdessen eine neue VM bereitgestellt wird.
 
-Eine Lösung besteht darin, im Runbook über einen Fehlerlink auf eine Aktivität zur Behandlung von Schritt 1 zu verweisen. Das Runbook kann z. B. das Cmdlet **Write-Warning** mit einer Aktivität für Schritt 2 verbinden – z. B. dem Cmdlet [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0).
+Eine Lösung besteht darin, im Runbook über einen Fehlerlink auf eine Aktivität zur Behandlung von Schritt 1 zu verweisen. Das Runbook kann z. B. das Cmdlet `Write-Warning` mit einer Aktivität für Schritt 2 verbinden – z. B. dem Cmdlet [Start-AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0).
 
 Sie können dieses Verhalten auch für die Verwendung in vielen Runbooks verallgemeinern, indem Sie diese beiden Aktivitäten in ein separates Runbook für die Fehlerbehandlung einfügen. Bevor Ihr ursprüngliches Runbook diese Runbooks für die Fehlerbehandlung aufruft, kann es aus den Daten eine benutzerdefinierte Nachricht erstellen und diese als Parameter an das Runbook für die Fehlerbehandlung übergeben.
 
@@ -60,9 +60,9 @@ Nach dem Aktivieren der Konfigurationseinstellung erstellen Sie in Ihrem Runbook
 
 Im folgenden Beispiel ruft ein Runbook eine Variable ab, die den Computernamen einer VM enthält. Anschließend versucht es, die VM mit der nächsten Aktivität zu starten.<br><br> ![Beispiel für die Fehlerbehandlung mit einem Automation-Runbook](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
 
-Die Aktivität **Get-AutomationVariable** und das Cmdlet [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) sind so konfiguriert, dass Ausnahmen in Fehler umgewandelt werden. Falls beim Abrufen der Variable oder beim Starten der VM Probleme auftreten, generiert der Code Fehler.<br><br> ![Aktivitätseinstellungen für die Fehlerbehandlung mit einem Automation-Runbook](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)
+Die Aktivität `Get-AutomationVariable` und das Cmdlet [Start-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) sind so konfiguriert, dass Ausnahmen in Fehler umgewandelt werden. Falls beim Abrufen der Variable oder beim Starten der VM Probleme auftreten, generiert der Code Fehler.<br><br> ![Aktivitätseinstellungen für die Fehlerbehandlung mit einem Automation-Runbook](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)
 
-Fehlerlinks zeigen von diesen Aktivitäten auf eine einzelne Codeaktivität zur **Fehlerverwaltung**. Diese ist mit einem einfachen PowerShell-Ausdruck konfiguriert, der das Schlüsselwort **throw** verwendet, um die Verarbeitung zu beenden. Außerdem wird mit `$Error.Exception.Message` die Meldung abgerufen, in der die aktuelle Ausnahme beschrieben wird.<br><br> ![Codebeispiel für die Fehlerbehandlung mit einem Automation-Runbook](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
+Fehlerlinks zeigen von diesen Aktivitäten auf eine einzelne Codeaktivität vom Typ `error management`. Diese ist mit einem einfachen PowerShell-Ausdruck konfiguriert, der das Schlüsselwort `throw` verwendet, um die Verarbeitung zu beenden. Außerdem wird mit `$Error.Exception.Message` die Meldung abgerufen, in der die aktuelle Ausnahme beschrieben wird.<br><br> ![Codebeispiel für die Fehlerbehandlung mit einem Automation-Runbook](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

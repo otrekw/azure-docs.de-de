@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/11/2019
+ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 3ff4b2cb6a59a35dc6da4748a7c7fbb4758a4fcf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e4e4ac1b0a867130dd7b9e276db52e1ca1e72976
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981003"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80062147"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Grundlegendes zu Rollendefinitionen für Azure-Ressourcen
 
@@ -48,7 +48,7 @@ Vorgänge werden mit Zeichenfolgen im folgenden Format angegeben:
 
 Der Teil `{action}` einer Vorgangszeichenfolge gibt die Art der Vorgänge an, die Sie für einen Ressourcentyp ausführen können. So weist `{action}` beispielsweise folgende Teilzeichenfolgen auf:
 
-| Aktionsteilzeichenfolge    | Beschreibung         |
+| Aktionsteilzeichenfolge    | BESCHREIBUNG         |
 | ------------------- | ------------------- |
 | `*` | Das Platzhalterzeichen gewährt Zugriff auf alle Vorgänge, die der Zeichenfolge entsprechen. |
 | `read` | Ermöglicht Lesevorgänge (GET). |
@@ -176,13 +176,14 @@ Um die Datenvorgänge in der REST-API anzuzeigen und zu verwenden, müssen Sie d
 
 Die Berechtigung `Actions` gibt die Verwaltungsvorgänge an, deren Ausführung die Rolle zulässt. Es handelt sich um eine Sammlung von Vorgangszeichenfolgen, mit denen sicherungsfähige Vorgänge von Azure-Ressourcenanbietern identifiziert werden. Im Anschluss finden Sie einige Beispiele für Verwaltungsvorgänge, die in `Actions` verwendet werden können.
 
-| Vorgangszeichenfolge    | Beschreibung         |
-| ------------------- | ------------------- |
-| `*/read` | Gewährt Zugriff auf Lesevorgänge für alle Ressourcentypen aller Azure-Ressourcenanbieter.|
-| `Microsoft.Compute/*` | Gewährt Zugriff auf alle Vorgänge für alle Ressourcentypen im Microsoft.Compute-Ressourcenanbieter.|
-| `Microsoft.Network/*/read` | Gewährt Zugriff auf Lesevorgänge für alle Ressourcentypen im Microsoft.Network-Ressourcenanbieter.|
-| `Microsoft.Compute/virtualMachines/*` | Gewährt Zugriff auf alle Vorgänge virtueller Computer sowie auf die dazugehörigen untergeordneten Ressourcentypen.|
-| `microsoft.web/sites/restart/Action` | Gewährt Zugriff zum Neustarten einer Web-App.|
+> [!div class="mx-tableFixed"]
+> | Vorgangszeichenfolge    | BESCHREIBUNG         |
+> | ------------------- | ------------------- |
+> | `*/read` | Gewährt Zugriff auf Lesevorgänge für alle Ressourcentypen aller Azure-Ressourcenanbieter.|
+> | `Microsoft.Compute/*` | Gewährt Zugriff auf alle Vorgänge für alle Ressourcentypen im Microsoft.Compute-Ressourcenanbieter.|
+> | `Microsoft.Network/*/read` | Gewährt Zugriff auf Lesevorgänge für alle Ressourcentypen im Microsoft.Network-Ressourcenanbieter.|
+> | `Microsoft.Compute/virtualMachines/*` | Gewährt Zugriff auf alle Vorgänge virtueller Computer sowie auf die dazugehörigen untergeordneten Ressourcentypen.|
+> | `microsoft.web/sites/restart/Action` | Gewährt Zugriff zum Neustarten einer Web-App.|
 
 ## <a name="notactions"></a>NotActions
 
@@ -196,12 +197,13 @@ Die Berechtigung `NotActions` gibt die Verwaltungsvorgänge an, die von den zul�
 
 Die Berechtigung `DataActions` gibt die Datenvorgänge an, deren Ausführung für Ihre Daten innerhalb des Objekts die Rolle zulässt. Wenn ein Benutzer z.B. über Lesezugriff auf Blobdaten auf ein Speicherkonto verfügt, kann er die Blobs in diesem Speicherkonto dann lesen. Im Anschluss finden Sie einige Beispiele für Datenvorgänge, die in `DataActions` verwendet werden können.
 
-| Vorgangszeichenfolge    | Beschreibung         |
-| ------------------- | ------------------- |
-| `Microsoft.Storage/storageAccounts/ blobServices/containers/blobs/read` | Gibt ein Blob oder eine Liste von Blobs zurück. |
-| `Microsoft.Storage/storageAccounts/ blobServices/containers/blobs/write` | Gibt das Ergebnis beim Schreiben eines Blobs zurück. |
-| `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/read` | Gibt eine Nachricht zurück. |
-| `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/*` | Gibt eine Nachricht oder das Ergebnis beim Schreiben oder Löschen einer Nachricht zurück. |
+> [!div class="mx-tableFixed"]
+> | Vorgangszeichenfolge    | BESCHREIBUNG         |
+> | ------------------- | ------------------- |
+> | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` | Gibt ein Blob oder eine Liste von Blobs zurück. |
+> | `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write` | Gibt das Ergebnis beim Schreiben eines Blobs zurück. |
+> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/read` | Gibt eine Nachricht zurück. |
+> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/*` | Gibt eine Nachricht oder das Ergebnis beim Schreiben oder Löschen einer Nachricht zurück. |
 
 ## <a name="notdataactions"></a>NotDataActions
 
@@ -213,18 +215,19 @@ Die Berechtigung `NotDataActions` gibt die Datenvorgänge an, die von den zuläs
 
 ## <a name="assignablescopes"></a>AssignableScopes
 
-Die Eigenschaft `AssignableScopes` gibt die Bereiche (Verwaltungsgruppen, Abonnements, Ressourcengruppen oder Ressourcen) an, für die diese Rollendefinition verfügbar ist. Sie können die Rolle nur in den für Sie erforderlichen Verwaltungsgruppen, Abonnements oder Ressourcengruppen für die Zuweisung zur Verfügung stellen. Sie müssen mindestens eine Verwaltungsgruppe, ein Abonnement, eine Ressourcengruppe oder eine Ressourcen-ID verwenden.
+Die Eigenschaft `AssignableScopes` gibt die Bereiche (Verwaltungsgruppen, Abonnements, oder Ressourcengruppen) an, für die diese Rollendefinition verfügbar ist. Sie können die Rolle nur in den für Sie erforderlichen Verwaltungsgruppen, Abonnements oder Ressourcengruppen für die Zuweisung zur Verfügung stellen. Sie müssen mindestens eine Verwaltungsgruppe, ein Abonnement oder eine Ressourcengruppe verwenden.
 
 Bei integrierten Rollen ist `AssignableScopes` auf den Stammbereich (`"/"`) festgelegt. Der Stammbereich gibt an, dass die Rolle für die Zuweisung in allen Bereichen verfügbar ist. Beispiele für gültige zuweisbare Bereiche:
 
-| Rolle ist für die Zuweisung verfügbar | Beispiel |
-|----------|---------|
-| Ein Abonnement | `"/subscriptions/{subscriptionId1}"` |
-| Zwei Abonnements | `"/subscriptions/{subscriptionId1}", "/subscriptions/{subscriptionId2}"` |
-| Netzwerkressourcengruppe | `"/subscriptions/{subscriptionId1}/resourceGroups/Network"` |
-| Eine Verwaltungsgruppe | `"/providers/Microsoft.Management/managementGroups/{groupId1}"` |
-| Verwaltungsgruppe und ein Abonnement | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
-| Alle Bereiche (gilt nur für integrierte Rollen) | `"/"` |
+> [!div class="mx-tableFixed"]
+> | Rolle ist für die Zuweisung verfügbar | Beispiel |
+> |----------|---------|
+> | Ein Abonnement | `"/subscriptions/{subscriptionId1}"` |
+> | Zwei Abonnements | `"/subscriptions/{subscriptionId1}", "/subscriptions/{subscriptionId2}"` |
+> | Netzwerkressourcengruppe | `"/subscriptions/{subscriptionId1}/resourceGroups/Network"` |
+> | Eine Verwaltungsgruppe | `"/providers/Microsoft.Management/managementGroups/{groupId1}"` |
+> | Verwaltungsgruppe und ein Abonnement | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
+> | Alle Bereiche (gilt nur für integrierte Rollen) | `"/"` |
 
 Informationen zu `AssignableScopes` für benutzerdefinierte Rollen finden Sie unter [Benutzerdefinierte Rollen für Azure-Ressourcen](custom-roles.md).
 

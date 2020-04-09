@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 02/01/2020
-ms.openlocfilehash: 0b2eafeec27cb92ccb191ec902e8bf1d581a3b4a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/09/2020
+ms.openlocfilehash: 97ce402045cfd2c990b457c5d4d06888cda632d5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587293"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79228550"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Wählen zwischen den Kaufmodellen „V-Kern“ und „DTU“
 
@@ -57,7 +57,7 @@ Eine Beschreibung, wie Computekapazität definiert ist und Kosten für die serve
 
 ## <a name="storage-costs"></a>Speicherkosten
 
-Unterschiedliche Arten von Speicher werden auch unterschiedlich berechnet. Für Datenspeicher wird Ihnen der bereitgestellte Speicher basierend auf der von Ihnen gewählten maximalen Datenbank- oder Poolgröße berechnet. Die Kosten ändern sich nicht, sofern Sie dieses Maximum nicht verringern oder erhöhen. Der Sicherungsspeicher ist mit den automatischen Sicherungen Ihrer Instanz verbunden und wird dynamisch zugeordnet. Durch eine Verlängerung der Beibehaltungsdauer Ihrer Sicherungen erhöht sich auch der von Ihrer Instanz verbrauchte Sicherungsspeicher.
+Unterschiedliche Arten von Speicher werden auch unterschiedlich berechnet. Für Datenspeicher wird Ihnen der bereitgestellte Speicher basierend auf der von Ihnen gewählten maximalen Datenbank- oder Poolgröße berechnet. Die Kosten ändern sich nicht, sofern Sie dieses Maximum nicht verringern oder erhöhen. Der Sicherungsspeicher ist mit den automatischen Sicherungen Ihrer Instanz verbunden und wird dynamisch zugeordnet. Durch eine Verlängerung des Aufbewahrungszeitraums für Ihre Sicherungen erhöht sich auch der von Ihrer Instanz verbrauchte Sicherungsspeicher.
 
 Standardmäßig werden automatisierte Sicherungen Ihrer Datenbanken für einen Zeitraum von 7 Tagen in ein Standard-BLOB-Speicherkonto mit georedundantem Speicher mit Lesezugriff (RA-GRS) kopiert. Dieser Speicher wird für wöchentliche vollständige Sicherungen, tägliche differenzielle Sicherungen und im 5-Minuten-Takt kopierte Sicherungen von Transaktionsprotokollen verwendet. Die Größen der Transaktionsprotokolle hängen von der Änderungsrate der Datenbank ab. Eine Mindestspeichermenge, die 100 Prozent der Datenbankgröße entspricht, wird kostenlos zur Verfügung gestellt. Zusätzlich verbrauchter Sicherungsspeicher wird pro GB und Monat abgerechnet.
 
@@ -85,6 +85,11 @@ Wenn Sie vom DTU-basierten Kaufmodell auf das vCore-basierte Kaufmodell umstelle
 
 - Für jeweils 100 DTUs im Standard-Tarif ist mindestens 1 virtueller Kern in der Dienstebene „Universell“ erforderlich.
 - Für jeweils 125 DTUs im Premium-Tarif ist mindestens 1 virtueller Kern in der Dienstebene „Unternehmenskritisch“ erforderlich.
+
+> [!NOTE]
+> Bei den Größenrichtlinien für die Migration von DTU zu V-Kern handelt es sich um Richtwerte, die eine erste Einschätzung des Zieldatenbank-Dienstziels ermöglichen sollen. Die optimale Konfiguration der Zieldatenbank ist workloadabhängig. 
+> 
+> Zur Erzielung des optimalen Preis-Leistungs-Verhältnisses müssen Sie ggf. sowohl die Flexibilität des V-Kern-Modells nutzen, um die Anzahl von V-Kernen und die [Hardwaregeneration](sql-database-service-tiers-vcore.md#hardware-generations) sowie die [Dienstebene](sql-database-service-tiers-vcore.md#service-tiers) und die [Computeebene](sql-database-service-tiers-vcore.md#compute-tiers) anzupassen, als auch andere Parameter für die Datenbankkonfiguration optimieren (etwa den [maximalen Grad an Parallelität](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing)).
 
 ## <a name="dtu-based-purchasing-model"></a>DTU-basiertes Kaufmodell
 
@@ -142,6 +147,20 @@ Die Eingabewerte für diese Formel können aus den DMVs [sys.dm_db_resource_stat
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Workloads, die von einem elastischen Ressourcenpool profitieren
 
 Pools eignen sich sehr gut für Datenbanken mit einer geringen durchschnittlichen Ressourcennutzung und mit relativ seltenen Nutzungsspitzen. Weitere Informationen finden Sie unter [Wann sollten Sie einen Pool für elastische SQL-Datenbank-Instanzen erwägen?](sql-database-elastic-pool.md)
+
+### <a name="hardware-generations-in-the-dtu-based-purchasing-model"></a>Hardwaregenerationen im DTU-basierten Kaufmodell
+
+Im DTU-basierten Kaufmodell können Kunden die für ihre Datenbanken verwendete Hardwaregeneration nicht wählen. Während eine bestimmte Datenbank normalerweise für einen längeren Zeitraum (in der Regel mehrere Monate) auf einer bestimmten Hardwaregeneration verbleibt, gibt es bestimmte Ereignisse, die dazu führen können, dass eine Datenbank auf eine andere Hardwaregeneration verschoben wird.
+
+Beispielsweise kann eine Datenbank auf eine andere Hardwaregeneration verschoben werden, wenn sie auf ein anderes Dienstziel hoch- oder herunterskaliert wird, oder aber wenn die aktuelle Infrastruktur in einem Rechenzentrum ihre Kapazitätsgrenzen erreicht oder wenn die derzeit verwendete Hardware aufgrund ihres Lebenszyklus außer Betrieb gesetzt wird.
+
+Wenn eine Datenbank auf eine andere Hardware verschoben wird, kann sich die Workloadleistung ändern. Das DTU-Modell gewährleistet, dass der Durchsatz und die Reaktionszeit der [DTU-Benchmark](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-dtu#dtu-benchmark)-Workload im Wesentlichen identisch bleiben, wenn die Datenbank auf eine andere Hardwaregeneration verschoben wird, solange das Dienstziel (die Anzahl der DTUs) unverändert bleibt. 
+
+Allerdings können die Auswirkungen der Verwendung unterschiedlicher Hardware für dasselbe Dienstziel über das gesamte Spektrum der in Azure SQL-Datenbank ausgeführten Kundenworkloads ausgeprägter sein. Unterschiedliche Workloads profitieren von unterschiedlichen Hardwarekonfigurationen und Features. Deshalb ist es für andere Workloads als der DTU-Benchmark möglich, Leistungsunterschiede zu erkennen, wenn die Datenbank von einer Hardwaregeneration auf eine andere verschoben wird.
+
+So ist beispielsweise die Leistung bei einer Anwendung, die von Netzwerklatenz abhängig ist, auf einer Gen5-Hardware besser als auf Gen4 aufgrund der Nutzung von beschleunigtem Netzwerkbetrieb in Gen5, während bei einer Anwendung mit intensiven E/A-Lesevorgängen die Leistung auf Gen4-Hardware besser ist als auf Gen5 aufgrund von höherem Arbeitsspeicher-pro-Kern-Verhältnis auf Gen4.
+
+Kunden mit Workloads, die von Hardwareänderungen abhängig sind, oder Kunden, die die Auswahl der Hardwaregeneration für ihre Datenbank steuern möchten, können das Modell [V-Kern](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore) verwenden, um beim Erstellen und Skalieren von Datenbanken ihre bevorzugte Hardwaregeneration auszuwählen. Im Modell „V-Kern“ werden Ressourcenlimits der jeweiligen Dienstziele auf jeder Hardwaregeneration dokumentiert – sowohl für [Einzeldatenbanken](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases) (Singletons) als auch für [Pools für elastische Datenbanken](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-elastic-pools). Weitere Informationen zu Hardwaregenerationen im Modell „V-Kern“ finden Sie unter [Hardwaregenerationen](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers-vcore#hardware-generations).
 
 ## <a name="frequently-asked-questions-faqs"></a>Häufig gestellte Fragen (FAQs)
 

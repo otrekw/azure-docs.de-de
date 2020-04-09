@@ -1,5 +1,5 @@
 ---
-title: Verbindungsmonitor (Vorschau) | Microsoft-Dokumentation
+title: Verbindungsmonitor (Vorschauversion) | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie mit dem Verbindungsmonitor (Vorschau) die Netzwerkkommunikation in einer verteilten Umgebung überwachen.
 services: network-watcher
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 8f3a6f002fbebe215699c9b97a6dce63177c446f
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: d926a9f686f0f4c39203b8a217a7c608cfad926e
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77599643"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548116"
 ---
 # <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Überwachung der Netzwerkkonnektivität mit dem Verbindungsmonitor (Vorschau)
 
@@ -155,17 +155,17 @@ Verwenden Sie den folgenden Code, um einen Verbindungsmonitor mithilfe von ARMCl
 ```armclient
 $connectionMonitorName = "sampleConnectionMonitor"
 
-$ARM = "[https://](https://apac01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fbrazilus.management.azure.com&amp;data=02%7C01%7CManasi.Sant%40microsoft.com%7Cd900da4ed7f24366842108d68022159b%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636837281231186904&amp;sdata=qHL8zWjkobY9MatRpAVbODwboKSQAqqEFOMnjmfyOnU%3D&amp;reserved=0)management.azure.com"
+$ARM = "https://management.azure.com"
 
-$SUB = "subscriptions/\&lt;subscription id 1\&gt;"
+$SUB = "subscriptions/<subscription id 1>;"
 
-$NW = "resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher\_centraluseuap"
+$NW = "resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher\_<region>"
 
 $body =
 
 "{
 
-location: 'eastus',
+location: '<region>',
 
 properties: {
 
@@ -173,7 +173,7 @@ endpoints: [{
 
 name: 'workspace',
 
-resourceId: '/subscriptions/\&lt;subscription id\&gt;/resourcegroups/\&lt;resource group\&gt;/providers/Microsoft.OperationalInsights/workspaces/sampleWorkspace',
+resourceId: '/subscriptions/<subscription id>/resourcegroups/<resource group>/providers/Microsoft.OperationalInsights/workspaces/sampleWorkspace',
 
 filter: {
 
@@ -181,7 +181,7 @@ filter: {
 
 type: 'AgentAddress',
 
-address: '\&lt;FQDN of your on-premises agent'
+address: '<FQDN of your on-premises agent>'
 
 }]
 
@@ -193,7 +193,7 @@ address: '\&lt;FQDN of your on-premises agent'
 
 name: 'vm1',
 
-resourceId: '/subscriptions/\&lt;subscription id\&gt;/resourceGroups/\&lt;resource group\&gt;/providers/Microsoft.Compute/virtualMachines/\&lt;vm-name\&gt;'
+resourceId: '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<vm-name>'
 
 },
 
@@ -201,7 +201,7 @@ resourceId: '/subscriptions/\&lt;subscription id\&gt;/resourceGroups/\&lt;resour
 
 name: 'vm2',
 
-resourceId: '/subscriptions/\&lt;subscription id\&gt;/resourceGroups/\&lt;resource group\&gt;/providers/Microsoft.Compute/virtualMachines/\&lt;vm-name\&gt;'
+resourceId: '/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<vm-name>'
 
    },
 
@@ -209,7 +209,7 @@ resourceId: '/subscriptions/\&lt;subscription id\&gt;/resourceGroups/\&lt;resour
 
 name: 'azure portal'
 
-address: '\&lt;URL\&gt;'
+address: '<URL>'
 
    },
 
@@ -217,7 +217,7 @@ address: '\&lt;URL\&gt;'
 
     name: 'ip',
 
-     address: '\&lt;IP\&gt;'
+     address: '<IP>'
 
  }
 
@@ -239,6 +239,8 @@ address: '\&lt;URL\&gt;'
 
     name: 'Connectivty from Azure VM 1 to Azure VM 2',
 
+   // Choose your protocol
+   
     testConfigurations: ['http', 'https', 'tcpDisabled', 'icmpDisabled'],
 
     sources: ['vm1'],
@@ -255,15 +257,15 @@ address: '\&lt;URL\&gt;'
 
     name: 'http',
 
-    testFrequencySec: 60,
+    testFrequencySec: <frequency>,
 
     protocol: 'HTTP',
 
     successThreshold: {
 
-     checksFailedPercent: 50,
+     checksFailedPercent: <threshold for checks failed %>,
 
-     roundTripTimeMs: 3.4
+     roundTripTimeMs: <threshold for RTT>
 
     }
 
@@ -271,7 +273,7 @@ address: '\&lt;URL\&gt;'
 
     name: 'https',
 
-    testFrequencySec: 60,
+    testFrequencySec: <frequency>,
 
     protocol: 'HTTP',
 
@@ -283,9 +285,9 @@ address: '\&lt;URL\&gt;'
 
     successThreshold: {
 
-     checksFailedPercent: 50,
+     checksFailedPercent: <choose your checks failed threshold>,
 
-     roundTripTimeMs: 3.4
+     roundTripTimeMs: <choose your RTT threshold>
 
     }
 
@@ -293,7 +295,7 @@ address: '\&lt;URL\&gt;'
 
     name: 'tcpEnabled',
 
-    testFrequencySec: 30,
+    testFrequencySec: <frequency>,
 
     protocol: 'TCP',
 
@@ -305,9 +307,9 @@ address: '\&lt;URL\&gt;'
 
     successThreshold: {
 
-     checksFailedPercent: 30,
+     checksFailedPercent: <choose your checks failed threshold>,
 
-     roundTripTimeMs: 5.2
+     roundTripTimeMs: <choose your RTT threshold>
 
     }
 
@@ -315,15 +317,15 @@ address: '\&lt;URL\&gt;'
 
     name: 'icmpEnabled',
 
-    testFrequencySec: 90,
+    testFrequencySec: <frequency>,
 
     protocol: 'ICMP',
 
     successThreshold: {
 
-     checksFailedPercent: 50,
+     checksFailedPercent: <choose your checks failed threshold>,
 
-     roundTripTimeMs: 3.4
+     roundTripTimeMs: <choose your RTT threshold>
 
     }
 
@@ -331,7 +333,7 @@ address: '\&lt;URL\&gt;'
 
     name: 'icmpDisabled',
 
-    testFrequencySec: 120,
+    testFrequencySec: <frequency>,
 
     protocol: 'ICMP',
 
@@ -343,9 +345,9 @@ address: '\&lt;URL\&gt;'
 
     successThreshold: {
 
-     checksFailedPercent: 50,
+     checksFailedPercent: <choose your checks failed threshold>,
 
-     roundTripTimeMs: 3.4
+     roundTripTimeMs: <choose your RTT threshold>
 
     }
 
@@ -353,7 +355,7 @@ address: '\&lt;URL\&gt;'
 
     name: 'tcpDisabled',
 
-    testFrequencySec: 45,
+    testFrequencySec: <frequency>,
 
     protocol: 'TCP',
 
@@ -367,9 +369,9 @@ address: '\&lt;URL\&gt;'
 
     successThreshold: {
 
-     checksFailedPercent: 30,
+     checksFailedPercent: <choose your checks failed threshold>,
 
-     roundTripTimeMs: 5.2
+     roundTripTimeMs: <choose your RTT threshold>
 
     }
 
@@ -460,12 +462,12 @@ Alle Quellen, Ziele und Testkonfigurationen, die Sie einer Testgruppe hinzufüge
 * Testkonfigurationen: 2 (Config 1, Config 2)
 * Gesamtzahl erstellter Tests: 12
 
-| Testnummer | Quelle | Ziel | Testkonfiguration |
+| Testnummer | `Source` | Destination | Testkonfiguration |
 | --- | --- | --- | --- |
-| 1 | A | D | Config 1 |
-| 2 | A | D | Config 2 |
-| 3 | A | E | Config 1 |
-| 4 | A | E | Config 2 |
+| 1 | Ein | D | Config 1 |
+| 2 | Ein | D | Config 2 |
+| 3 | Ein | E | Config 1 |
+| 4 | Ein | E | Config 2 |
 | 5 | B | D | Config 1 |
 | 6 | B | D | Config 2 |
 | 7 | B | E | Config 1 |
@@ -614,12 +616,12 @@ In Verbindungsmonitoren, die vor dem Verbindungsmonitor (Vorschau) erstellt wurd
 
 Legen Sie bei Verwendung von Metriken den Ressourcentyp auf „Microsoft.Network/networkWatchers/connectionMonitors“ fest.
 
-| Metrik | Anzeigename | Einheit | Aggregationstyp | BESCHREIBUNG | Dimensionen |
+| Metrik | `Display name` | Einheit | Aggregationstyp | BESCHREIBUNG | Dimensionen |
 | --- | --- | --- | --- | --- | --- |
 | ProbesFailedPercent | Fehlerhafte Tests in Prozent | Prozentwert | Average | Prozentsatz fehlerhafter Tests bei der Konnektivitätsüberwachung. | Keine Dimensionen |
 | AverageRoundtripMs | Durchschn. Roundtripzeit (ms) | Millisekunden | Average | Durchschnittliche Netzwerk-Roundtripzeit für die Konnektivitätsüberwachung von Testdatenverkehr, der zwischen Quelle und Ziel gesendet wurde. |             Keine Dimensionen |
 | ChecksFailedPercent (Preview) | % der Überprüfungen mit Fehlern (Vorschau) | Prozentwert | Average | Prozentsatz der Überprüfungen mit Fehlern für einen Test. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
-| RoundTripTimeMs (Preview) | Roundtripzeit (ms) (Vorschau) | Millisekunden | Average | Roundtripzeit für Überprüfungen, die zwischen Quelle und Ziel gesendet wurden. Es wird kein Durchschnittswert gebildet. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
+| RoundTripTimeMs (Vorschau) | Roundtripzeit (ms) (Vorschau) | Millisekunden | Average | Roundtripzeit für Überprüfungen, die zwischen Quelle und Ziel gesendet wurden. Es wird kein Durchschnittswert gebildet. | ConnectionMonitorResourceId <br>SourceAddress <br>SourceName <br>SourceResourceId <br>SourceType <br>Protocol <br>DestinationAddress <br>DestinationName <br>DestinationResourceId <br>DestinationType <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Region |
 
 #### <a name="metric-alerts-in-azure-monitor"></a>Metrikwarnungen in Azure Monitor
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7c15786e9a5d2fe65c20a26606087cee994ab54b
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: cc76f8c87eca059db85a68acbe4c317cf4904d39
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78302847"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79457184"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Azure-Sicherheitsbaseline für Key Vault
 
@@ -118,10 +118,7 @@ Einrichten von Advanced Threat Protection für Azure Key Vault: https://docs.mic
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: Beibehalten von Standardsicherheitskonfigurationen für Netzwerkgeräte
 
-**Anleitung:** Definieren und implementieren Sie mit Azure Policy Standardsicherheitskonfigurationen für Netzwerkressourcen, die Ihren Azure Key Vault-Instanzen zugeordnet sind. Verwenden Sie Azure Policy-Aliase in den Namespaces „Microsoft.KeyVault“ und „Microsoft.Network“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Netzwerkkonfiguration Ihrer Azure Key Vault-Instanzen zu erstellen. Sie können auch die integrierten Richtliniendefinitionen für Azure Key Vault verwenden, z. B.:
-
-
-Key Vault sollte einen VNET-Dienstendpunkt verwenden.
+**Anleitung:** Definieren und implementieren Sie mit Azure Policy Standardsicherheitskonfigurationen für Netzwerkressourcen, die Ihren Azure Key Vault-Instanzen zugeordnet sind. Verwenden Sie Azure Policy-Aliase in den Namespaces „Microsoft.KeyVault“ und „Microsoft.Network“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Netzwerkkonfiguration Ihrer Azure Key Vault-Instanzen zu erstellen. Sie können auch die integrierten Richtliniendefinitionen für Azure Key Vault verwenden, z. B.: [Key Vault sollte einen VNET-Dienstendpunkt verwenden](key-vault-overview-vnet-service-endpoints.md)
 
 
 Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung:
@@ -559,7 +556,7 @@ https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7: Verwenden der hostbasierten Verhinderung von Datenverlusten zum Erzwingen der Zugriffssteuerung
 
-**Anleitung:** Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure Key Vault und hat strenge Kontrollen implementiert, um Verluste oder Offenlegungen von Kundendaten zu verhindern.
+**Leitfaden**: Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure Key Vault und hat strenge Kontrollen implementiert, um Verluste oder Offenlegungen von Kundendaten zu verhindern. Verwenden Sie Azure Security Center, um Baselineüberprüfungen der mit Azure Key Vault geschützten Ressourcen durchzuführen.
 
 
 Was ist Azure Key Vault? https://docs.microsoft.com/azure/key-vault/key-vault-overview
@@ -915,7 +912,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Implementieren der automatisierten Konfigurationsüberwachung für Azure-Dienste
 
-**Anleitung:** Verwenden Sie Azure Security Center, um Baselineüberprüfungen der mit Azure Key Vault geschützten Ressourcen durchzuführen. 
+**Leitfaden**: Verwenden Sie Azure Security Center, um Baselineüberprüfungen der mit Azure Key Vault geschützten Ressourcen durchzuführen. 
 
   
 

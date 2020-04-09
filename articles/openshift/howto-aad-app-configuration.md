@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 6e2437fadb743706d4f4215bbcbab8616817de5f
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: a2eade6c5a9c826d28d435a09861ba58463ae8c4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545618"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79236102"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory-Integration für Azure Red Hat OpenShift
 
@@ -92,15 +92,20 @@ Details zur Erstellung einer neuen Azure AD-Anwendung finden Sie unter [Registri
 
 ## <a name="add-api-permissions"></a>Hinzufügen von API-Berechtigungen
 
+[//]: # (Wechseln Sie nicht zu Microsoft Graph. Die Verwendung mit Microsoft Graph ist nicht möglich.)
 1. Klicken Sie im Bereich **Verwalten** auf **API-Berechtigungen**.
-2. Klicken Sie auf **Berechtigung hinzufügen**, und wählen Sie **Azure Active Directory Graph** und dann **Delegierte Berechtigungen** aus. 
-3. Erweitern Sie **Benutzer** in der folgenden Liste, und aktivieren Sie die Berechtigung **User.Read**. Wenn **User.Read** standardmäßig aktiviert ist, stellen Sie sicher, dass es sich um die **Azure Active Directory Graph**-Berechtigung **User.Read** handelt, *nicht* die **Microsoft Graph**-Berechtigung **User.Read**.
+2. Klicken Sie auf **Berechtigung hinzufügen**, und wählen Sie **Azure Active Directory Graph** und dann **Delegierte Berechtigungen** aus.
+> [!NOTE]
+> Vergewissern Sie sich, dass Sie die Kachel „Azure Active Directory Graph“ und nicht die Kachel „Microsoft Graph“ ausgewählt haben.
+
+3. Erweitern Sie **Benutzer** in der folgenden Liste, und aktivieren Sie die Berechtigung **User.Read**. Wenn **User.Read** standardmäßig aktiviert ist, stellen Sie sicher, dass es sich um die **Azure Active Directory Graph**-Berechtigung **User.Read** handelt.
 4. Scrollen Sie nach oben, und wählen Sie **Anwendungsberechtigungen** aus.
 5. Erweitern Sie **Verzeichnis** in der folgenden Liste, und aktivieren Sie **Directory.ReadAll**.
 6. Klicken Sie auf **Berechtigungen hinzufügen**, um die Änderungen zu übernehmen.
 7. Der Bereich der API-Berechtigungen sollte nun sowohl *User.Read* als auch *Directory.ReadAll* anzeigen. Bitte beachten Sie die Warnung in der Spalte **Administratoreinwilligung erforderlich** neben *Directory.ReadAll*.
 8. Wenn Sie der *Azure-Abonnementadministrator* sind, klicken Sie unten auf **Administratorzustimmung für *Abonnementname* erteilen**. Wenn Sie nicht der *Azure-Abonnementadministrator* sind, fordern Sie die Zustimmung von Ihrem Administrator an.
-![Screenshot des Bereichs der API-Berechtigungen. Die Berechtigungen „User.Read“ und „Directory.ReadAll“ sind hinzugefügt, die Zustimmung des Administrators ist für „Directory.ReadAll“ erforderlich](./media/howto-aad-app-configuration/permissions-required.png)
+
+![Screenshot des Bereichs der API-Berechtigungen. Die Berechtigungen „User.Read“ und „Directory.ReadAll“ sind hinzugefügt, die Zustimmung des Administrators ist für „Directory.ReadAll“ erforderlich.](./media/howto-aad-app-configuration/permissions-required.png)
 
 > [!IMPORTANT]
 > Die Synchronisierung der Clusteradministratorengruppe funktioniert nur, nachdem die Zustimmung erteilt ist. Daraufhin wird ein grüner Kreis mit einem Häkchen und die Meldung „Gewährt für *Abonnementname*“ in der Spalte *Administratoreinwilligung erforderlich* angezeigt.

@@ -4,17 +4,17 @@ description: Dieser Artikel beschreibt Azure Monitor für Container, das die AKS
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: 3ff2c35ae9f5838447ce90e2a020649427920a43
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198036"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79234470"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Azure Monitor für Container – Übersicht
 
-Azure Monitor für Container ist ein Feature zum Überwachen der Leistung von Containerworkloads,
+Azure Monitor für Container ist ein Feature zur Überwachung der Leistung von Containerworkloads, die für folgende Komponenten bereitgestellt werden:
 
-- die in Managed Kubernetes-Clustern bereitgestellt und in [Azure Kubernetes Service (AKS)](../../aks/intro-kubernetes.md) gehostet sind.
+- Managed Kubernetes-Cluster, die in [Azure Kubernetes Service (AKS)](../../aks/intro-kubernetes.md) gehostet werden
 - Selbstverwaltete Kubernetes-Cluster, die in Azure mit der [AKS-Engine](https://github.com/Azure/aks-engine) gehostet werden
 - [Azure Container Instances](../../container-instances/container-instances-overview.md)
 - Selbstverwaltete Kubernetes-Cluster, die in [Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) oder lokal gehostet werden

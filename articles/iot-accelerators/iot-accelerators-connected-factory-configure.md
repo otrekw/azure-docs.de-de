@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: 5fa3d4d4fdfa0dd81cd8ab8772ffb3903dda289f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73820129"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurieren des Solution Accelerators für Connected Factory
@@ -29,7 +29,7 @@ Jede der Fabrikanlagen von Contoso verfügt über Produktionslinien mit jeweils 
 * Teststation
 * Verpackungsstation
 
-Diese OPC UA-Server umfassen OPC UA-Knoten, und der [OPC-Herausgeber](overview-opc-publisher.md) sendet die Werte dieser Knoten an die Connected Factory-Lösung. Dies umfasst:
+Diese OPC UA-Server umfassen OPC UA-Knoten, und der [OPC-Herausgeber](overview-opc-publisher.md) sendet die Werte dieser Knoten an die Connected Factory-Lösung. Dies schließt Folgendes ein:
 
 * Aktueller Betriebsstatus, beispielsweise der aktuelle Energieverbrauch.
 * Produktionsinformationen wie z.B. die Anzahl der produzierten Produkte.
@@ -264,10 +264,10 @@ Alle in der Konfigurationsdatei verwendeten Eigenschaften können je nach ihrer 
 
 Eigenschaften in dieser Kategorie definieren die visuelle Darstellung des Connected Factory-Dashboards. Beispiele:
 
-* NAME
+* Name
 * BESCHREIBUNG
 * Image
-* Location
+* Position
 * Units
 * Visible
 
@@ -334,7 +334,7 @@ Diese Konfiguration ermöglicht eine Abfrage der Telemetriewerte für diesen Kno
 * Durchschnitt aller Werte
 * Summe aller Werte für alle eindeutigen **OpcUri**- (**ApplicationUri**) und **NodeId**-Paare in einem vorgegebenen Zeitraum
 
-Ein Merkmal des **NumberOfManufactureredProducts**-Knotens ist, dass der zugehörige Wert ausschließlich ansteigt. Um die Anzahl von Produkten zu berechnen, die innerhalb des vorgegebenen Zeitraums hergestellt wurden, verwendet die Connected Factory-Simulation für **OpCode** den Wert **SubMaxMin**. Bei der Berechnung werden der Mindestwert zu Beginn des angegebenen Zeitraums und der Höchstwert am Ende des Zeitraums abgerufen.
+Ein Merkmal des **NumberOfManufactureredProducts**-Knotens ist, dass der zugehörige Wert ausschließlich ansteigt. Um die Anzahl von Produkten zu berechnen, die innerhalb des vorgegebenen Zeitraums hergestellt wurden, verwendet die verbundene Factory für **OpCode** den Wert **SubMaxMin**. Bei der Berechnung werden der Mindestwert zu Beginn des angegebenen Zeitraums und der Höchstwert am Ende des Zeitraums abgerufen.
 
 **OpCode** konfiguriert die Berechnungslogik so, dass die Differenz zwischen Höchst- und Mindestwert als Ergebnis ausgegeben wird. Diese Ergebnisse werden anschließend von der niedrigsten bis zur (globalen) Stammebene akkumuliert und im Dashboard angezeigt.
 

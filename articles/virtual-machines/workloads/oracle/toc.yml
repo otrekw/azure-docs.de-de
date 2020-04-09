@@ -4,13 +4,13 @@
       href: oracle-overview.md
     - name: Lösungen auf virtuellen Azure-Computern
       href: oracle-vm-solutions.md
-    - name: 'Lösungen mit OCI: Vorschauversion'
+    - name: Lösungen mit OCI
       href: oracle-oci-overview.md
 - name: Schnellstarts
   items:
     - name: Erstellen einer Oracle Database
       href: oracle-database-quick-create.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Konfigurieren von Oracle ASM
       href: configure-oracle-asm.md
@@ -30,9 +30,9 @@
       href: oracle-backup-recovery.md
     - name: Notfallwiederherstellungsoptionen für Oracle
       href: oracle-disaster-recovery.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
-    - name: 'Verbinden von Azure und OCI: Vorschau'
+    - name: Herstellen einer Verbindung zwischen Azure und OCI
       href: configure-azure-oci-networking.md
 - name: Ressourcen
   items:

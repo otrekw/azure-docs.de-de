@@ -213,6 +213,8 @@
     - name: Problembehandlung
       items:
         - name: Handbuch zur Problembehandlung
+          href: service-bus-troubleshooting-guide.md
+        - name: Messagingausnahmen
           href: service-bus-messaging-exceptions.md
         - name: Resource Manager-Ausnahmen
           href: service-bus-resource-manager-exceptions.md

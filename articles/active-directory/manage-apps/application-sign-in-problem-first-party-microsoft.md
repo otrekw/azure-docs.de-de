@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ee8802aeb2a760e255ab4f5e99010dfedc45e0d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67108302"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Probleme beim Anmelden bei Microsoft-Anwendungen
@@ -71,21 +71,21 @@ Im Folgenden werden einige allgemeine Probleme beschrieben, die auftreten könne
 
   * Stellen Sie sicher, dass die **Kontaktinformationen für die Authentifizierung** des Benutzers aktuell sind, sodass Multi-Factor Authentication-Richtlinien oder Richtlinien für bedingten Zugriff erzwungen werden können. [Überprüfen des Multi-Factor Authentication-Status eines Benutzers](#check-a-users-multi-factor-authentication-status) oder [Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers](#check-a-users-authentication-contact-info)
 
-- Im Folgenden werden einige spezifische Probleme für **Microsoft**-**Anwendungen, die eine Lizenz erfordern** (z.B. Office 365) aufgeführt, die Sie überprüfen können, nachdem Sie die oben genannten allgemeinen Probleme ausgeschlossen haben:
+- Im Anschluss werden einige spezifische Probleme für **Microsoft**-**Anwendungen, die eine Lizenz erfordern** (beispielsweise Office 365) aufgeführt, die Sie überprüfen können, nachdem Sie die oben genannten allgemeinen Probleme ausgeschlossen haben:
 
   * Stellen Sie sicher, dass dem Benutzer eine **Lizenz zugewiesen** ist. [Überprüfen der zugewiesenen Lizenzen eines Benutzers](#check-a-users-assigned-licenses) oder [Überprüfen der zugewiesenen Lizenzen einer Gruppe](#check-a-groups-assigned-licenses)
 
-  * Wenn die Lizenz einer **statischen Gruppe** **zugewiesen ist**, stellen Sie sicher, dass der **Benutzer ein Mitglied** dieser Gruppe ist. [Überprüfen der Gruppenmitgliedschaften eines Benutzers](#check-a-users-group-memberships)
+  * Wenn die Lizenz einer **statischen Gruppe** **zugewiesen ist**, stellen Sie sicher, dass der **Benutzer ein Mitglied dieser Gruppe ist**. [Überprüfen der Gruppenmitgliedschaften eines Benutzers](#check-a-users-group-memberships)
 
   * Wenn die Lizenz einer **dynamischen Gruppe** **zugewiesen ist**, stellen Sie sicher, dass die **Regel der dynamischen Gruppe richtig festgelegt wurde**. [Überprüfen der Mitgliedschaftskriterien einer dynamischen Gruppe](#check-a-dynamic-groups-membership-criteria)
 
-  * Wenn die Lizenz einer **dynamischen Gruppe** **zugewiesen ist**, stellen Sie sicher, dass die dynamische Gruppe die Verarbeitung der Mitgliedschaften **abgeschlossen hat** und dass der **Benutzer ein Mitglied ist** (dies kann einige Zeit dauern). [Überprüfen der Gruppenmitgliedschaften eines Benutzers](#check-a-users-group-memberships)
+  * Wenn die Lizenz einer **dynamischen Gruppe** **zugewiesen ist**, stellen Sie sicher, dass die dynamische Gruppe die **Verarbeitung der Mitgliedschaften abgeschlossen hat** und dass der **Benutzer ein Mitglied ist**. (Dies kann einige Zeit dauern.) [Überprüfen der Gruppenmitgliedschaften eines Benutzers](#check-a-users-group-memberships)
 
   *  Nachdem Sie sichergestellt haben, dass die Lizenz zugewiesen ist, stellen Sie sicher, dass die Lizenz **nicht abgelaufen** ist.
 
   *  Stellen Sie sicher, dass sie Lizenz **für die Anwendung**, auf die der Benutzer zugreifen möchte, gültig ist.
 
-- Im Folgenden finden Sie einige weitere Aspekte, die Sie für **Microsoft**-**Anwendungen, die keine Lizenz erfordern**, überprüfen können:
+- Im Anschluss finden Sie einige weitere Aspekte, die Sie für **Microsoft**-**Anwendungen, die keine Lizenz erfordern**, überprüfen können:
 
   * Wenn die Anwendung **Berechtigungen auf Benutzerebene** (beispielsweise „Zugriff auf das Postfach dieses Benutzers“) anfordert, stellen Sie sicher, dass der Benutzer sich bei der Anwendung angemeldet und eine **Zustimmung auf Benutzerebene** durchgeführt hat, damit die Anwendung auf seine Daten zugreifen kann.
 
@@ -127,7 +127,7 @@ Um zu überprüfen, ob das Konto eines Benutzers vorhanden ist, führen Sie die 
 
 5.  Klicken Sie auf **Alle Benutzer**.
 
-6.  **Suchen** Sie nach dem gewünschten Benutzer, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
+6.  **Suchen** Sie nach dem Benutzer, an dem Sie interessiert sind, und **klicken Sie auf die Zeile**, um ihn auszuwählen.
 
 7.  Überprüfen Sie die Eigenschaften des Benutzerobjekts, um sicherzustellen, dass diese ordnungsgemäß festgelegt sind und keine Daten fehlen.
 
