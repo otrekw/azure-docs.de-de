@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: tutorial
-ms.openlocfilehash: 6acb68b7bbaa54db2e4143a42e43aede2caed35f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 332d7e4cae3b65d794d48d208b54db3809b78a8f
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75420703"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632369"
 ---
 # <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>Tutorial: Senden einer E-Mail aus einem Azure Automation-Runbook
 
@@ -149,7 +149,7 @@ Verwenden Sie dieses Beispiel, um ein Runbook mit dem Namen **Send-GridMailMessa
 
 7. Wählen Sie die Option **Veröffentlichen**, um das Runbook zu speichern und zu veröffentlichen.
 
-Führen Sie die Schritte unter [Verwalten von Runbooks in Azure Automation](manage-runbooks.md#test-a-runbook) oder [Starten eines Runbooks in Azure Automation](start-runbooks.md) aus, um zu überprüfen, ob das Runbook ausgeführt wird.
+Führen Sie die Schritte unter [Verwalten von Runbooks in Azure Automation](manage-runbooks.md#testing-a-runbook) oder [Starten eines Runbooks in Azure Automation](start-runbooks.md) aus, um zu überprüfen, ob das Runbook ausgeführt wird.
 Wird die Test-E-Mail zuerst nicht angezeigt, überprüfen Sie den **Junk-** und **Spam**-Ordner.
 
 ## <a name="clean-up"></a>Bereinigen

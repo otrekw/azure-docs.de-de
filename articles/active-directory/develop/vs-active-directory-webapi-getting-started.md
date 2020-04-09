@@ -3,7 +3,6 @@ title: Erste Schritte mit Azure AD in Visual Studio-WebApi-Projekten
 description: Erfahren Sie etwas über die ersten Schritte mit Azure Active Directory in WebApi-Projekten nach dem Herstellen einer Verbindung oder dem Erstellen eines Azure AD mithilfe von verbundenen Visual Studio-Diensten.
 author: ghogen
 manager: jillfra
-ms.assetid: bf1eb32d-25cd-4abf-8679-2ead299fedaa
 ms.prod: visual-studio-windows
 ms.technology: vs-azure
 ms.workload: azure-vs
@@ -11,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 33894e237144628634c3b63393130eb0af5b9877
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a9f8aaa9e3f90e78668d2294ea9959b480e3384
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77159453"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886074"
 ---
 # <a name="get-started-with-azure-active-directory-webapi-projects"></a>Erste Schritte mit Azure Active Directory (WebApi-Projekte)
 
