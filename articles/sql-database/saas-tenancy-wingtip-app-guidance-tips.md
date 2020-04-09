@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 162d1f269c65ad98afa30e8e96370bbdceca99bd
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74132296"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Allgemeine Anweisungen zum Arbeiten mit den Wingtip-Tickets-Beispielanwendungen für SaaS
@@ -50,7 +50,7 @@ Bearbeiten Sie die Datei **UserConfig.psm1** mit dem Ressourcengruppen- und Benu
 
 1. Öffnen Sie die *PowerShell ISE*, und laden Sie ...\\Learning Modules\\*UserConfig.psm1*.
 2. Aktualisieren Sie *ResourceGroupName* und *Name* mit den jeweiligen Werten für Ihre Bereitstellung (nur in den Zeilen 10 und 11).
-3. Speichern Sie die Änderungen.
+3. Speichern Sie die Änderungen!
 
 Indem Sie diese Werte hier festlegen, wird es Ihnen erspart, diese bereitstellungsspezifischen Werte in jedem Skript aktualisieren zu müssen.
 
@@ -96,7 +96,7 @@ Um sicherzustellen, dass erfolgreich eine Verbindung mit der Demo hergestellt wi
 3. Die folgenden Anmeldeinformationen gelten für die Demo: Anmeldung = *developer*, Kennwort = *P\@ssword1*
 
     Die Abbildung unten stellt die Anmeldung für das Muster *Datenbank pro Mandant* dar.
-    ![Verbindung](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
+    ![connection](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
 
 
 

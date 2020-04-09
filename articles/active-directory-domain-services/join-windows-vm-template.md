@@ -8,15 +8,15 @@ ms.assetid: 4eabfd8e-5509-4acd-86b5-1318147fddb5
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 09/17/2019
+ms.topic: how-to
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: c9b25fe7bc47e05972aebb194e9d94c1ea6dd247
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2108b4c6b81675e2df6789d412dbd7d36f58a4d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78298733"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655110"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Informationen zum Einbinden eines virtuellen Windows Server-Computers in eine mit Azure Active Directory Domain Services verwaltete Domäne
 
@@ -84,11 +84,11 @@ Führen Sie die folgenden Schritte aus, um eine Windows Server-VM zu erstellen u
 1. Navigieren Sie zur [Schnellstartvorlage](https://azure.microsoft.com/resources/templates/201-vm-domain-join/). Wählen Sie die Option **Bereitstellung in Azure** aus.
 1. Geben Sie auf der Seite **Benutzerdefinierte Bereitstellung** die folgenden Informationen ein, um eine Windows Server-VM zu erstellen und in eine mit Azure AD DS verwaltete Domäne einzubinden:
 
-    | Einstellung                   | value |
+    | Einstellung                   | Wert |
     |---------------------------|-------|
     | Subscription              | Wählen Sie dasselbe Azure-Abonnement aus, in dem Sie Azure AD Domain Services aktiviert haben. |
     | Resource group            | Wählen Sie die Ressourcengruppe für Ihre VM aus. |
-    | Location                  | Wählen Sie den Standort für Ihre VM aus. |
+    | Position                  | Wählen Sie den Standort für Ihre VM aus. |
     | Name des vorhandenen VNet        | Der Name des vorhandenen virtuellen Netzwerks, mit dem die VM verbunden werden soll, z. B. *myVnet*. |
     | Name des vorhandenen Subnetzes      | Der Name des vorhandenen Subnetzes des virtuellen Netzwerks, z. B. *Workloads*. |
     | Präfix der DNS-Bezeichnung          | Geben Sie einen DNS-Namen für die VM ein, z. B. *myvm*. |
@@ -117,11 +117,11 @@ Führen Sie die folgenden Schritte aus, um eine vorhandene Windows Server-VM in 
 1. Navigieren Sie zur [Schnellstartvorlage](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/). Wählen Sie die Option **Bereitstellung in Azure** aus.
 1. Geben Sie auf der Seite **Benutzerdefinierte Bereitstellung** die folgenden Informationen ein, um die VM in eine mit Azure AD DS verwaltete Domäne einzubinden:
 
-    | Einstellung                   | value |
+    | Einstellung                   | Wert |
     |---------------------------|-------|
     | Subscription              | Wählen Sie dasselbe Azure-Abonnement aus, in dem Sie Azure AD Domain Services aktiviert haben. |
     | Resource group            | Wählen Sie die Ressourcengruppe mit Ihrer vorhandenen VM aus. |
-    | Location                  | Wählen Sie den Standort Ihrer vorhandenen VM aus. |
+    | Position                  | Wählen Sie den Standort Ihrer vorhandenen VM aus. |
     | VM-Liste                   | Geben Sie die durch Trennzeichen getrennte Liste mit den vorhandenen VMs ein, die in die mit Azure AD DS verwaltete Domäne eingebunden werden sollen, z. B. *myVM1,myVM2*. |
     | Benutzername für Domänenbeitritt     | Das Benutzerkonto in der mit Azure AD DS verwalteten Domäne, das zum Einbinden der VM in die verwaltete Domäne verwendet werden soll, z. B. `contosoadmin@aaddscontoso.com`. Dieses Konto muss Teil der von Azure AD DS verwalteten Domäne sein. |
     | Benutzerkennwort für Domänenbeitritt | Das Kennwort des Benutzerkontos, das in der vorherigen Einstellung angegeben wurde. |

@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/23/2020
-ms.openlocfilehash: 169cc3f6a195a7339ab33eb9f00d9937451a93e0
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.date: 03/26/2020
+ms.openlocfilehash: db63ce2d56eb78bf6b361d530511b6902c1cb6d5
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77620448"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637766"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor
 
@@ -61,10 +61,6 @@ Es gibt keine Beschränkung hinsichtlich der Menge gesammelter Metrikdaten, doch
 ### <a name="how-do-i-access-data-collected-by-azure-monitor"></a>Wie greife ich auf die von Azure Monitor gesammelten Daten zu?
 Erkenntnisse und Lösungen bieten eine benutzerdefinierte Oberfläche zum Arbeiten mit Daten, die in Azure Monitor gespeichert wurden. Sie können direkt mit Protokolldaten arbeiten, indem Sie eine in der Kusto-Abfragesprache (KQL) geschriebene Protokollabfrage verwenden. Im Azure-Portal können Sie Abfragen schreiben und ausführen sowie Daten interaktiv mit Log Analytics analysieren. Analysieren Sie Metriken im Azure-Portal mit dem Metrik-Explorer. Weitere Informationen finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](log-query/log-query-overview.md) und [Erste Schritte mit dem Azure-Metrik-Explorer](platform/metrics-getting-started.md).
 
-
-
-
-
 ## <a name="solutions-and-insights"></a>Lösungen und Erkenntnisse
 
 ### <a name="what-is-an-insight-in-azure-monitor"></a>Was ist eine Erkenntnis in Azure Monitor?
@@ -76,11 +72,6 @@ Zum Anzeigen von Erkenntnissen im Azure-Portal verwenden Sie den Abschnitt **Erk
 Überwachungslösungen sind Programmpakete zum Überwachen einer bestimmten Anwendung oder eines bestimmten Diensts basierend auf Azure Monitor-Funktionen. Sie sammeln Protokolldaten in Azure Monitor und stellen Protokollabfragen und Ansichten für das Analysieren der Daten auf einer gemeinsamen Benutzeroberfläche im Azure-Portal bereit. Weitere Informationen finden Sie unter [Überwachungslösungen in Azure Monitor](insights/solutions.md).
 
 Zum Anzeigen von Lösungen im Azure-Portal klicken Sie im Menü **Monitor** im Abschnitt **Erkenntnisse** auf **Mehr**. Klicken Sie auf **Hinzufügen**, um dem Arbeitsbereich weitere Lösungen hinzuzufügen.
-
-
-
-
-
 
 ## <a name="logs"></a>Protokolle
 
@@ -106,9 +97,6 @@ Viele Ressourcenanbieter werden automatisch registriert. Einige Ressourcenanbiet
 ### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Warum erhalte ich eine Zugriffsfehlermeldung, wenn ich Log Analytics von einem virtuellen Computer aus öffne? 
 Zum Anzeigen von VM-Protokollen benötigen Sie eine Leseberechtigung für die Arbeitsbereiche, in denen die VM-Protokolle gespeichert sind. In diesen Fällen muss Ihnen Ihr Administrator diese Berechtigungen in Azure erteilen.
 
-
-
-
 ## <a name="alerts"></a>Alerts
 
 ### <a name="what-is-an-alert-in-azure-monitor"></a>Was ist eine Warnung in Azure Monitor?
@@ -129,7 +117,6 @@ Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungen und Aktionen, die ü
 
 ### <a name="what-is-an-action-rule"></a>Was ist eine Aktionsregel?
 Mithilfe einer Aktionsregel können Sie das Verhalten einer Gruppe von Warnungen ändern, die einem bestimmten Kriterium entsprechen. Dadurch können Sie Anforderungen wie das Deaktivieren von Warnungsaktionen während eines Wartungsfensters erfüllen. Sie können eine Aktionsgruppe auch auf eine Gruppe von Warnungen anwenden, anstatt sie direkt auf die Warnungsregeln anzuwenden. Weitere Informationen finden Sie unter [Aktionsregeln](platform/alerts-action-rules.md).
-
 
 ## <a name="agents"></a>Agents
 
@@ -190,15 +177,14 @@ Geben Sie eine vorhandene oder neue [Aktionsgruppe](platform/action-groups.md) a
 
 
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Welche Firewallanforderungen bestehen für Azure Monitor-Agents?
-Ausführliche Informationen zu den Firewallanforderungen finden Sie unter [Netzwerkfirewallanforderungen](platform/log-analytics-agent.md#network-firewall-requirements).
+Ausführliche Informationen zu den Firewallanforderungen finden Sie unter [Netzwerkfirewallanforderungen](platform/log-analytics-agent.md#network-requirements).
 
 
 ## <a name="visualizations"></a>Visualisierungen
 
-### <a name="why-cant-i-cant-see-view-designer"></a>Warum wird der Ansicht-Designer nicht angezeigt?
+### <a name="why-cant-i-see-view-designer"></a>Warum wird der Ansicht-Designer nicht angezeigt?
 
 Der Ansicht-Designer steht im Log Analytics-Arbeitsbereich nur für Benutzer zur Verfügung, denen mindestens Berechtigungen vom Typ „Mitwirkender“ zugewiesen wurden.
-
 
 ## <a name="application-insights"></a>Application Insights
 
@@ -245,7 +231,7 @@ Preisinformationen finden Sie [hier](https://azure.microsoft.com/pricing/details
 * Öffnen Sie die Seite **Nutzung und geschätzte Kosten** in einer Application Insights-Ressource. Dort finden Sie ein Diagramm der kürzlichen Nutzung. Sie können ggf. eine Obergrenze für das Datenvolumen festlegen.
 * Öffnen Sie das Blatt für die [Azure-Abrechnung](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview), um Ihre Rechnungen für alle Ressourcen anzuzeigen.
 
-### <a name="q14"></a>Welche Änderungen nimmt Application Insights in meinem Projekt vor?
+### <a name="what-does-application-insights-modify-in-my-project"></a><a name="q14"></a>Welche Änderungen nimmt Application Insights in meinem Projekt vor?
 Die Details hängen von der Art des Projekts ab. Für eine Webanwendung:
 
 * Fügen Sie folgende Dateien zu Ihrem Projekt hinzu:
@@ -266,7 +252,7 @@ Die Details hängen von der Art des Projekts ab. Für eine Webanwendung:
 ### <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Wie aktualisiere ich von älteren SDK-Versionen?
 Informationen hierzu finden Sie in den [Versionshinweisen](app/release-notes.md) für das SDK, das für Ihren Anwendungstyp geeignet ist.
 
-### <a name="update"></a>Wie kann ich ändern, an welche Azure-Ressource mein Projekt Daten sendet?
+### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>Wie kann ich ändern, an welche Azure-Ressource mein Projekt Daten sendet?
 Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf `ApplicationInsights.config`. Wählen Sie dann **Application Insights aktualisieren** aus. Sie können die Daten an eine vorhandene oder neue Ressource in Azure senden. Der Assistent ändert den Instrumentationsschlüssel in ApplicationInsights.config. Dadurch wird bestimmt, wohin das Server-SDK die Daten sendet. Wenn Sie "Alle aktualisieren" deaktivieren, wird auch der Anzeigeort des Schlüssels auf Ihren Webseiten geändert.
 
 ### <a name="what-is-status-monitor"></a>Was ist der Statusmonitor?
@@ -324,7 +310,7 @@ Sie können in der Konfiguration festlegen, dass `ClientIpHeaderTelemetryInitial
 Sie können [mit Power BI](app/export-power-bi.md ) die Anforderungstelemetriedaten auf einer Karte anzeigen.
 
 
-### <a name="data"></a>Wie lange werden Daten im Portal aufbewahrt? Ist Sicherheit gewährleistet?
+### <a name="how-long-is-data-retained-in-the-portal-is-it-secure"></a><a name="data"></a>Wie lange werden Daten im Portal aufbewahrt? Ist Sicherheit gewährleistet?
 Informationen hierzu finden Sie unter [Datensammlung, -aufbewahrung und -speicherung in Application Insights][data].
 
 ### <a name="what-happens-to-application-insights-telemetry-when-a-server-or-device-loses-connection-with-azure"></a>Was geschieht mit den Telemetriedaten von Application Insight, wenn ein Server oder Gerät die Verbindung mit Azure verliert?
@@ -350,7 +336,7 @@ Sie haben folgende Möglichkeiten, um das Problem auszuschließen:
 * Verwenden Sie zwei verschiedene Instrumentierungsschlüssel (unterschiedliche Application Insights-Ressourcen) für Client- und Serverdaten. oder
 * Schreiben Sie einen Proxy, der auf dem Server ausgeführt wird, und lassen Sie den Webclient Daten über diesen Proxy senden.
 
-### <a name="post"></a>Wie zeige ich POST-Daten in der Diagnosesuche an?
+### <a name="how-do-i-see-post-data-in-diagnostic-search"></a><a name="post"></a>Wie zeige ich POST-Daten in der Diagnosesuche an?
 POST-Daten werden nicht automatisch protokolliert, Sie können jedoch einen TrackTrace-Aufruf verwenden und die Daten in den Nachrichtenparameter einfügen. Die Größenbegrenzung hierfür ist höher als bei Zeichenfolgeneigenschaften, Sie können jedoch nicht danach filtern.
 
 ### <a name="should-i-use-single-or-multiple-application-insights-resources"></a>Sollte ich eine einzelne oder mehrere Application Insights-Ressourcen verwenden?
@@ -372,7 +358,7 @@ Verwenden Sie eine einzelne Ressource für alle Komponenten oder Rollen in einem
 * Wenn ein realer Benutzer Ihre Website in verschiedenen Browsern, beim InPrivate- oder Inkognito-Browsing oder auf unterschiedlichen Computern verwendet, wird er mehrmals gezählt.
 * Um einen angemeldeten Benutzer auf verschiedenen Computern und in verschiedenen Browsern zu identifizieren, fügen Sie einen Aufruf von [setAuthenticatedUserContext()](app/api-custom-events-metrics.md#authenticated-users) hinzu.
 
-### <a name="q17"></a> Habe ich alles in Application Insights aktiviert?
+### <a name="have-i-enabled-everything-in-application-insights"></a><a name="q17"></a> Habe ich alles in Application Insights aktiviert?
 | Diese Daten sollten angezeigt werden | So erhalten Sie die Daten | Deshalb benötigen Sie die Daten |
 | --- | --- | --- |
 | Verfügbarkeitsdiagramme |[Webtests](app/monitor-web-app-availability.md) |Information, ob Ihre Web-App verfügbar ist |
@@ -511,10 +497,33 @@ Die meisten Application Insights-Daten weisen eine Wartezeit von weniger als 5 M
 [windows]: app/app-insights-windows-get-started.md
 
 
-
 ## <a name="azure-monitor-for-containers"></a>Azure Monitor für Container
 
 Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Azure Monitor für Container. Wenn Sie weitere Fragen zur Lösung haben, besuchen Sie das [Diskussionsforum](https://feedback.azure.com/forums/34192--general-feedback), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
+
+### <a name="what-does-other-processes-represent-under-the-node-view"></a>Wofür steht *Andere Prozesse* unter der Knotenansicht?
+
+**Andere Prozesse** soll Ihnen dabei helfen, die zugrunde liegende Ursache für die hohe Ressourcennutzung auf dem Knoten zu verstehen. Dadurch können Sie zwischen der Nutzung durch Containerprozesse und Nicht-Containerprozesse unterscheiden.
+
+Was sind **Andere Prozesse**? 
+
+Hierbei handelt es sich um Nicht-Containerprozesse, die auf dem Knoten ausgeführt werden.  
+
+Wie werden diese berechnet?
+
+**Andere Prozesse** = *Gesamtauslastung von cAdvisor* - *Auslastung vom Containerprozess*
+
+**Andere Prozesse** umfasst Folgendes:
+
+- Nicht-Containerprozesse in selbstverwaltetem oder verwaltetem Kubernetes 
+
+- Container-Laufzeitprozesse  
+
+- Kubelet  
+
+- Auf dem Knoten ausgeführte Systemprozesse 
+
+- Andere Nicht-Kubernetes-Workloads, die auf Knotenhardware oder der VM ausgeführt werden 
 
 ### <a name="i-dont-see-image-and-name-property-values-populated-when-i-query-the-containerlog-table"></a>Die Eigenschaftswerte „Image“ und „Name“ werden beim Abfragen der ContainerLog-Tabelle nicht aufgefüllt.
 
@@ -607,7 +616,7 @@ console.log(json.stringify({
 Diese Daten sehen in Azure Monitor für Protokolle bei der Abfrage wie im folgenden Beispiel aus:
 
 ```
-LogEntry : ({“Hello": "This example has multiple lines:","Docker/Moby": "will not break this into multiple lines", "and you will receive":"all of them in log analytics", "as one": "log entry"}
+LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will not break this into multiple lines", "and you will receive":"all of them in log analytics", "as one": "log entry"}
 
 ```
 
@@ -625,76 +634,33 @@ Wenn Sie nach der Aktivierung von Azure Monitor für Container für einen AKS-Cl
 
 Die Proxy- und Firewall-Konfigurationsinformationen, die für den Container-Agent mit den Clouds „Azure“, „Azure US Government“ und „Azure China 21Vianet“ erforderlich sind, finden Sie unter den [Netzwerkfirewallanforderungen](insights/container-insights-onboard.md#network-firewall-requirements).
 
-## <a name="azure-monitor-for-vms-preview"></a>Azure Monitor für VMs (Vorschauversion)
+## <a name="azure-monitor-for-vms"></a>Azure Monitor für VMs
 Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Azure Monitor für VMs. Wenn Sie weitere Fragen zur Lösung haben, besuchen Sie das [Diskussionsforum](https://feedback.azure.com/forums/34192--general-feedback), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>Kann ich ein Onboarding zu einem vorhandenen Arbeitsbereich ausführen?
 Wenn Ihre virtuellen Computer bereits mit einem Log Analytics-Arbeitsbereich verbunden sind, können Sie diesen Arbeitsbereich nach dem Onboarding von Azure Monitor for VMs weiterhin verwenden, vorausgesetzt, er befindet sich in einer der unterstützten Regionen, die [hier](insights/vminsights-enable-overview.md#prerequisites) aufgeführt sind.
 
-Beim Onboarding konfigurieren wir Leistungsindikatoren für den Arbeitsbereich, was dazu führt, dass alle VMs, die Daten an den Arbeitsbereich melden, mit dem Sammeln dieser Daten für die Anzeige und Analyse in Azure Monitor for VMs beginnen.  Im Ergebnis sehen Sie Leistungsdaten von allen mit dem ausgewählten Arbeitsbereich verbundenen VMs.  Das Integritäts- und das Zuordnungsfeature werden nur für die VMs aktiviert, für die Sie Onboarding angegeben haben.
-
-Weitere Informationen zu den aktivierten Leistungsindikatoren finden Sie in unserem Übersichtsartikel zum [Aktivieren](insights/vminsights-enable-overview.md#performance-counters-enabled).
 
 ### <a name="can-i-onboard-to-a-new-workspace"></a>Kann ich ein Onboarding zu einem neuen Arbeitsbereich ausführen? 
 Wenn Ihre VMs derzeit nicht mit einem vorhandenen Log Analytics-Arbeitsbereich verbunden sind, müssen Sie einen neuen Arbeitsbereich zum Speichern Ihrer Daten erstellen. Die Erstellung eines neuen Standardarbeitsbereichs erfolgt automatisch, wenn Sie eine einzelne Azure-VM im Azure-Portal für Azure Monitor for VMs konfigurieren.
 
-Wenn Sie die skriptbasierte Methode verwenden möchten, finden Sie die entsprechenden Schritte im Artikel [Aktivieren von Azure Monitor für VMs (Preview) mit Azure PowerShell oder einer Resource Manager-Vorlage](insights/vminsights-enable-at-scale-powershell.md). 
+Wenn Sie die skriptbasierte Methode verwenden möchten, finden Sie die entsprechenden Schritte im Artikel [Aktivieren von Azure Monitor für VMs mit Azure PowerShell oder einer Resource Manager-Vorlage](insights/vminsights-enable-at-scale-powershell.md). 
 
 ### <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>Wie gehe ich vor, wenn meine VM bereits an einen vorhandenen Arbeitsbereich berichtet?
-Wenn Sie bereits Daten von Ihren VMs sammeln, haben Sie sie möglicherweise schon für das Melden von Daten an einen vorhandenen Log Analytics-Arbeitsbereich konfiguriert.  Sofern sich dieser Arbeitsbereich in einer der von uns unterstützten Regionen befindet, können Sie Azure Monitor for VMs für diesen bereits vorhandenen Arbeitsbereich aktivieren.  Wenn sich der von Ihnen bereits verwendete Arbeitsbereich nicht in einer der von uns unterstützten Regionen befindet, können Sie derzeit kein Onboarding von Azure Monitor for VMs ausführen.  Wir arbeiten aktiv daran, weitere Regionen zu unterstützen.
+Wenn Sie bereits Daten von Ihren VMs sammeln, haben Sie sie möglicherweise schon für das Melden von Daten an einen vorhandenen Log Analytics-Arbeitsbereich konfiguriert.  Sofern sich dieser Arbeitsbereich in einer der von uns unterstützten Regionen befindet, können Sie Azure Monitor for VMs für diesen bereits vorhandenen Arbeitsbereich aktivieren.  Wenn sich der von Ihnen bereits verwendete Arbeitsbereich nicht in einer der von uns unterstützten Regionen befindet, können Sie derzeit kein Onboarding von Azure Monitor für VMs ausführen.  Wir arbeiten aktiv daran, weitere Regionen zu unterstützen.
 
->[!NOTE]
->Wir konfigurieren Leistungsindikatoren für den Arbeitsbereich, die alle VMs betreffen, die an den Arbeitsbereich berichten, unabhängig davon, ob Sie sich entschieden haben, für diese ein Onboarding für Azure Monitor for VMs auszuführen. Weitere Informationen über die Konfiguration von Leistungsindikatoren für den Arbeitsbereich finden Sie in unserer [Dokumentation](platform/data-sources-performance-counters.md). Informationen zu den für Azure Monitor für VMs konfigurierten Leistungsindikatoren finden Sie im Artikel [Aktivieren von Azure Monitor für VMs](insights/vminsights-enable-overview.md#performance-counters-enabled).  
 
 ### <a name="why-did-my-vm-fail-to-onboard"></a>Warum ist das Onboarding meiner VM nicht gelungen?
 Beim Onboarding einer Azure-VM im Azure-Portal werden die folgenden Schritte ausgeführt:
 
 * Es wird ein Log Analytics-Standardarbeitsbereich erstellt, wenn diese Option ausgewählt war.
-* Die Leistungsindikatoren werden für den ausgewählten Arbeitsbereich konfiguriert. Wenn bei diesem Schritt Fehler auftreten, werden Sie bemerken, dass einige Leistungsdiagramme und Tabellen für die VM, für die Sie das Onboarding ausgeführt haben, keine Daten anzeigen. Sie können dies korrigieren, indem Sie das [hier](insights/vminsights-enable-at-scale-powershell.md#enable-performance-counters) dokumentierte PowerShell-Skript ausführen.
 * Der Log Analytics-Agent wird auf Azure-VMs mithilfe einer VM-Erweiterung installiert, wenn festgestellt wird, dass er erforderlich ist.  
-* Der Dependency-Agent der Azure Monitor for VM-Zuordnung wird auf Azure-VMs mithilfe einer Erweiterung installiert, wenn festgestellt wird, dass er erforderlich ist.  
-* Ggf. werden Azure Monitor-Komponenten zur Unterstützung des Integritätsfeatures konfiguriert, und die VM wird für das Melden von Integritätsdaten konfiguriert.
+* Der Dependency-Agent der Azure Monitor for VM-Zuordnung wird auf Azure-VMs mithilfe einer Erweiterung installiert, wenn festgestellt wird, dass er erforderlich ist. 
 
-Während des Onboardingprozesses überprüfen wir den Status jeder der oben genannten Komponenten, um Ihnen im Portal einen Benachrichtigungsstatus zurückzugeben. Die Konfiguration des Arbeitsbereichs und die Agentinstallation nehmen normalerweise 5 bis 10 Minuten in Anspruch. Bis zur Anzeige von Überwachungs- und Integritätsdaten im Portal vergehen weitere 5 bis 10 Minuten.  
+Während des Onboardingprozesses überprüfen wir den Status jeder der oben genannten Komponenten, um Ihnen im Portal einen Benachrichtigungsstatus zurückzugeben. Die Konfiguration des Arbeitsbereichs und die Agentinstallation nehmen normalerweise 5 bis 10 Minuten in Anspruch. Bis zur Anzeige von Überwachungsdaten im Portal vergehen weitere 5 bis 10 Minuten.  
 
 Wenn Sie das Onboarding eingeleitet haben und Meldungen angezeigt werden, die besagen, dass für die VM Onboarding ausgeführt werden muss, sehen Sie bis zu 30 Minuten bis zum Abschluss dieses Vorgangs durch die VM vor. 
 
-### <a name="i-only-enabled-azure-monitor-for-vms-why-do-i-see-all-my-vms-monitored-by-the-health-feature"></a>Ich habe nur Azure Monitor für VMs aktiviert. Warum werden alle VMs vom Integritätsfeature überwacht?
-Das Integritätsfeature ist für alle VMs aktiviert, die mit dem Log Analytics-Arbeitsbereich verbunden sind, auch wenn die Aktion für eine einzelne VM initiiert wird.
-
-### <a name="can-i-modify-the-schedule-for-when-health-criteria-evaluates-a-condition"></a>Kann ich den Zeitplan für die Auswertung einer Bedingung nach Integritätskriterien ändern?
-Nein, Zeitraum und Häufigkeit der Integritätskriterien können in diesem Release nicht geändert werden. 
-
-### <a name="can-i-disable-health-criteria-for-a-condition-i-dont-need-to-monitor"></a>Kann ich Integritätskriterien für eine Bedingung deaktivieren, die nicht überwacht werden muss?
-Integritätskriterien können in diesem Release nicht deaktiviert werden.
-
-### <a name="are-the-health-alert-severities-configurable"></a>Sind die Schweregrade für Integritätswarnungen konfigurierbar?  
-Der Schweregrad von Integritätswarnungen kann nicht geändert werden, sie können lediglich aktiviert oder deaktiviert werden. Außerdem werden einige Warnungsschweregrade auf der Grundlage des Status von Integritätskriterien aktualisiert. 
-
-### <a name="if-i-reconfigure-the-settings-of-a-particular-health-criteria-can-it-be-scoped-to-a-specific-instance"></a>Kann ich neu konfigurierte Einstellungen eines bestimmten Integritätskriteriums auf eine bestimmte Instanz festlegen?  
-Das Ändern einer beliebigen Einstellung einer Instanz eines Integritätskriteriums führt zur Änderung in allen Instanzen von Integritätskriterien des gleichen Typs in der Azure VM. Wenn beispielsweise der Schwellenwert der Instanz des Integritätskriteriums „verfügbarer Speicherplatz“, der dem logischen Laufwerk C: entspricht, geändert wird, gilt dieser Schwellenwert auch für alle anderen logischen Datenträger, die für die gleiche VM ermittelt wurden und überwacht werden.
-
-### <a name="does-the-health-feature-monitor-logical-processors-and-cores"></a>Überwacht das Integritätsfeature logische Prozessoren und Kerne?
-Nein, Integritätskriterien auf der Ebene einzelner Prozessoren und logischer Prozessoren sind bei Windows nicht enthalten. Standardmäßig wird nur die CPU-Gesamtauslastung überwacht, um die CPU-Auslastung anhand der Gesamtanzahl logischer CPUs, die für die Azure-VM verfügbar sind, effektiv zu analysieren. 
-
-### <a name="are-all-health-criteria-thresholds-configurable"></a>Sind alle Schwellenwerte für Integritätskriterien konfigurierbar?  
-Schwellenwerte für Integritätskriterien, die auf eine Windows-VM abzielen, sind nicht veränderbar, weil ihr Integritätszustand auf *laufend* oder *verfügbar* festgelegt ist. Wenn Sie den Integritätszustand über die [Workloadüberwachungs-API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) abfragen, wird dieser den *Vergleichsoperator*-Wert von **LessThan** oder **GreaterThan** mit einem *Schwellenwert*-Wert von **4** für den Dienst oder die Entität anzeigen, wenn:
-   - Integrität des DNS-Clientdiensts: Dienst wird nicht ausgeführt. 
-   - Integrität des DHCP-Clientdiensts: Dienst wird nicht ausgeführt. 
-   - Integrität des RPC-Diensts: Dienst wird nicht ausgeführt. 
-   - Integrität des Windows-Firewalldiensts: Dienst wird nicht ausgeführt.
-   - Integrität des Windows-Ereignisprotokolldiensts: Dienst wird nicht ausgeführt. 
-   - Integrität des Serverdiensts: Dienst wird nicht ausgeführt. 
-   - Integrität des Windows-Remoteverwaltungsdiensts: Dienst wird nicht ausgeführt. 
-   - Fehler oder Beschädigung des Dateisystems: Logischer Datenträger ist nicht verfügbar.
-
-Die Schwellenwerte für die folgenden Linux-Integritätskriterien sind nicht veränderbar, weil ihr Integritätszustand bereits auf *wahr* festgelegt ist. Der Integritätszustand zeigt den *Vergleichsoperator* mit einem Wert **LessThan** und *Schwellenwert* von **1**, wenn er von der Workloadüberwachungs-API für die Entität abhängig von ihrem Kontext abgefragt wird:
-   - Status des logischen Datenträgers – Logischer Datenträger ist nicht online/verfügbar.
-   - Datenträgerstatus – Datenträger ist nicht online/verfügbar.
-   - Netzwerkadapterstatus – Netzwerkadapter ist deaktiviert
-
-### <a name="how-do-i-modify-alerts-that-are-included-with-the-health-feature"></a>Wie ändere ich die im Integritätsfeature enthaltenen Warnungen?
-Die für jedes Integritätskriterium definierten Warnregeln werden im Azure-Portal nicht angezeigt. Sie können eine Integritätswarnregel nur über die [Workloadüberwachungs-API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) aktivieren oder zu deaktivieren. Die Zuweisung einer [Azure Monitor-Aktionsgruppe](platform/action-groups.md) für Integritätswarnungen ist außerdem nicht vom Azure-Portal aus möglich. Sie können die API nur für die Benachrichtigungseinstellungs-API verwenden, um eine Aktionsgruppe zu konfigurieren, die bei jeder Auslösung einer Integritätswarnung ausgelöst wird. Derzeit können Aktionsgruppen einer VM zugewiesen werden, sodass alle *Integritätswarnungen*, die für die VM ausgelöst wurden, die gleichen Aktionsgruppen auslösen. Anders als bei herkömmlichen Azure-Warnungen gibt es kein Konzept einer separaten Aktionsgruppe für jede Integritätswarnregel. Darüber hinaus werden nur Aktionsgruppen unterstützt, die so konfiguriert sind, dass Sie durch Senden einer E-Mail oder SMS benachrichtigt werden, wenn Integritätswarnungen ausgelöst werden. 
 
 ### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>In den Leistungsdiagrammen für meine VM werden einige oder alle Daten nicht angezeigt
 Unsere Leistungsdiagramme wurden so aktualisiert, dass sie in der Tabelle *InsightsMetrics* gespeicherten Daten verwenden.  Um Daten in diesen Diagrammen anzuzeigen, müssen Sie ein Upgrade durchführen, um die neue VM Insights-Lösung zu verwenden.  Weitere Informationen finden Sie in unseren [häufig gestellten Fragen zur allgemeinen Verfügbarkeit](insights/vminsights-ga-release-faq.md).
@@ -746,7 +712,7 @@ Diese Schätzung funktioniert gut für Protokolle, die auf Anforderung/Antwort b
 ### <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Gibt es im Free-Tarif von Log Analytics Einschränkungen?
 Wenn Sie Azure Monitor über den *Free*-Tarif mit einem Log Analytics-Arbeitsbereich konfiguriert haben, unterstützt das Azure Monitor for VMs-Zuordnungsfeature nur fünf Computer, die mit dem Arbeitsbereich verbunden sind. Wenn fünf VMs mit einem kostenlosen Arbeitsbereich verbunden sind und Sie eine der VMs trennen und später mit einer neuen VM verbinden, wird die neue VM nicht überwacht oder auf der Seite „Zuordnen“ angezeigt.  
 
-Unter dieser Bedingung werden Sie zur Aktion **Jetzt testen** aufgefordert, wenn Sie die VM aufrufen und im linken Bereich auf **Insights (Vorschau)** klicken, auch wenn dieser Dienst bereits auf der VM installiert wurde.  Sie werden jedoch nicht zu Optionen aufgefordert, die normalerweise angezeigt werden würden, wenn diese VM nicht in Azure Monitor für VMs integriert wurde. 
+Unter dieser Bedingung werden Sie zur Aktion **Jetzt testen** aufgefordert, wenn Sie die VM aufrufen und im linken Bereich auf **Insights** klicken, auch wenn dieser Dienst bereits auf der VM installiert wurde.  Sie werden jedoch nicht zu Optionen aufgefordert, die normalerweise angezeigt werden würden, wenn diese VM nicht in Azure Monitor für VMs integriert wurde. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -10,19 +10,19 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 12/19/2018
-ms.openlocfilehash: d32ce79d0c8b26e0e78e2bae0f0335315c1a3a40
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.date: 03/10/2020
+ms.openlocfilehash: d7b9ada17871dc7882209b7a8a449a8edcd61a94
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77587327"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79214076"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights mit KI für die Überwachung und Problembehandlung der Datenbankleistung (Vorschau)
 
-Intelligent Insights von Azure SQL-Datenbank informiert Sie über die Datenbankleistung von Azure SQL-Datenbank und verwalteten Instanzen.
+Intelligent Insights von Azure SQL-Datenbank informiert Sie über Ihre Datenbankleistung.
 
-Die in Intelligent Insights integrierte Logik überwacht kontinuierlich die Datenbanknutzung durch künstliche Intelligenz und ermittelt Störungen, die zu mangelhafter Leistung führen. Nach dem Ermitteln wird eine detaillierte Analyse durchgeführt, die ein Diagnoseprotokoll mit einer intelligenten Bewertung des Problems generiert. Die Bewertung besteht aus einer Analyse der Grundursache des Leistungsproblems der Datenbank und nach Möglichkeit Empfehlungen für Leistungsverbesserungen.
+Die in Intelligent Insights integrierte Logik überwacht kontinuierlich die Datenbanknutzung durch künstliche Intelligenz und ermittelt Störungen, die zu mangelhafter Leistung führen. Nach dem Ermitteln wird eine detaillierte Analyse durchgeführt, die ein Intelligent Insights-Ressourcenprotokoll (namens SQLInsights) mit einer intelligenten Bewertung des Problems generiert. Die Bewertung besteht aus einer Analyse der Grundursache des Leistungsproblems der Datenbank und nach Möglichkeit Empfehlungen für Leistungsverbesserungen.
 
 ## <a name="what-can-intelligent-insights-do-for-you"></a>Was kann Intelligent Insights für Sie tun?
 
@@ -33,22 +33,22 @@ Bei Intelligent Insights handelt es sich um eine einzigartige Funktion der in Az
 - Frühe Erkennung von Leistungsminderungen der Datenbank
 - Analyse der Grundursache der erkannten Probleme
 - Empfehlungen für Leistungsverbesserungen
-- Funktion für das horizontale Hochskalieren von einigen Hunderttausend Datenbanken
+- Funktion für das Aufskalieren von einigen Hunderttausend Datenbanken
 - Positive Auswirkung auf DevOps-Ressourcen und die Gesamtkosten
 
 ## <a name="how-does-intelligent-insights-work"></a>Wie funktioniert Intelligent Insights?
 
-Intelligent Insights analysiert die Datenbankleistung, indem die Datenbankworkload der letzten Stunde mit der Baselineworkload der letzten sieben Tage verglichen wird. Die Datenbankworkload besteht aus den Abfragen, die für die Datenbankleistung am wichtigsten sind, etwa die am meisten wiederholten und die größten Abfragen. Da jede Datenbank durch ihre Struktur, ihre Daten, die Nutzung und die Anwendung eindeutig ist, ist jede generierte Workloadbaseline spezifisch und eindeutig für eine einzelne Instanz. Intelligent Insights überwacht unabhängig von der Workloadbaseline auch die absoluten Betriebsschwellenwerte und erkennt Probleme mit übermäßigen Wartezeiten, kritische Ausnahmen und Probleme mit der Abfrageparametrisierung, die sich auf die Leistung auswirken können.
+Intelligent Insights analysiert die Datenbankleistung, indem die Datenbankworkload der letzten Stunde mit der Baselineworkload der letzten sieben Tage verglichen wird. Die Datenbankworkload besteht aus den Abfragen, die für die Datenbankleistung am wichtigsten sind, etwa die am meisten wiederholten und die größten Abfragen. Da jede Datenbank aufgrund ihrer Struktur, Daten, Nutzung und Anwendung eindeutig ist, ist jede generierte Workloadbaseline für die jeweilige Workload spezifisch und eindeutig. Intelligent Insights überwacht unabhängig von der Workloadbaseline auch die absoluten Betriebsschwellenwerte und erkennt Probleme mit übermäßigen Wartezeiten, kritische Ausnahmen und Probleme mit der Abfrageparametrisierung, die sich auf die Leistung auswirken können.
 
 Nachdem eine beeinträchtigte Leistung aus mehreren erfassten Metriken mithilfe von künstlicher Intelligenz erkannt wird, erfolgt eine Analyse. Ein Diagnoseprotokoll wird erzeugt und ermöglicht einen intelligenten Einblick in die Vorgänge mit Ihrer Datenbank. Durch Intelligent Insights kann das Problem mit der Datenbankleistung vom ersten Auftreten bis hin zu dessen Behebung leicht nachverfolgt werden. Jedes ermittelte Problem wird während seines Lebenszyklus von der ersten Erkennung des Problems und der Überprüfung der Leistungssteigerung bis hin zur Behebung nachverfolgt.
 
 ![Workflow der Datenbankleistungsanalyse](./media/sql-database-intelligent-insights/intelligent-insights-concept.png)
 
-Die Metriken zum Messen und Erkennen von Leistungsproblemen bei Datenbanken basieren auf der Abfragedauer, Anforderungen mit Zeitüberschreitung, übermäßigen Wartezeiten und fehlerhaften Anforderungen. Weitere Informationen zu Metriken finden Sie im Abschnitt [Erkennungsmetriken](sql-database-intelligent-insights.md#detection-metrics) dieses Dokuments.
+Die Metriken zum Messen und Erkennen von Leistungsproblemen bei Datenbanken basieren auf der Abfragedauer, Anforderungen mit Zeitüberschreitung, übermäßigen Wartezeiten und fehlerhaften Anforderungen. Weitere Informationen zu Metriken finden Sie unter [Erkennungsmetriken](#detection-metrics).
 
-Identifizierte Leistungseinbußen von SQL-Datenbank werden im Diagnoseprotokoll mit intelligenten Einträgen aufgezeichnet, die folgende Eigenschaften enthalten:
+Identifizierte Leistungsbeeinträchtigungen von SQL-Datenbank werden im SQLInsights-Protokoll mit intelligenten Einträgen aufgezeichnet, die folgende Eigenschaften enthalten:
 
-| Eigenschaft             | Details              |
+| Eigenschaft | Details |
 | :------------------- | ------------------- |
 | Datenbankinformationen | Metadaten zu einer Datenbank, für die ein Einblick erkannt wurde, z.B. ein Ressourcen-URI |
 | Beobachteter Zeitbereich | Start- und Endzeit für den Zeitraum des erkannten Einblicks |
@@ -59,12 +59,12 @@ Identifizierte Leistungseinbußen von SQL-Datenbank werden im Diagnoseprotokoll 
 | Analyse der Grundursache | Die Analyse der Grundursache des Problems, die in einem von Menschen lesbaren Format identifiziert wurde. Einige Einblicke enthalten nach Möglichkeit Empfehlungen zur Leistungsverbesserung. |
 |||
 
-Einen praktischen Überblick über die Verwendung von Intelligent Insights mit der Azure SQL-Analyse sowie typische Anwendungsszenarien finden Sie im eingebetteten Video:
+Einen praktischen Überblick über die Verwendung von Intelligent Insights mit der Azure SQL-Analyse sowie typische Anwendungsszenarien finden Sie in diesem Video:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
 >
 
-Intelligent Insights glänzt bei der Erkennung und Fehlerbehebung von Leistungsproblemen der SQL-Datenbank. Informationen zur Verwendung von Intelligent Insights zur Behandlung von Datenbankleistungsproblemen in SQL-Datenbank und verwalteten Instanzen finden Sie unter [Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
+Intelligent Insights glänzt bei der Erkennung und Fehlerbehebung von Leistungsproblemen der SQL-Datenbank. Informationen, wie Intelligent Insights verwendet werden kann, um Probleme mit der Datenbankleistung zu behandeln, finden Sie unter [Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
 
 ## <a name="intelligent-insights-options"></a>Intelligent Insights-Optionen
 
@@ -72,32 +72,28 @@ In Azure SQL-Datenbank stehen folgende Optionen für Intelligent Insights zur Ve
 
 | Intelligent Insights-Option | Unterstützung für Einzel- und Pooldatenbanken | Unterstützung der Instanzdatenbank |
 | :----------------------------- | ----- | ----- |
-| **Configure Intelligent Insights** (Intelligent Insights konfigurieren): Konfigurieren Sie eine Intelligent Insights-Analyse für Ihre Datenbanken. | Ja | Ja | 
-| **Stream insights to Azure SQL Analytics** (Erkenntnisse an die Azure SQL-Analyse streamen): Streamen Sie Erkenntnisse an die Azure SQL-Analyse-Überwachungslösung für Azure SQL-Datenbank. | Ja | Ja | 
-| **Stream insights to Event Hub** (Erkenntnisse an den Event Hub streamen): Streamen Sie Erkenntnisse an Event Hubs, damit weitere benutzerdefinierte Integrationen erfolgen können. | Ja | Ja | 
+| **Configure Intelligent Insights** (Intelligent Insights konfigurieren): Konfigurieren Sie eine Intelligent Insights-Analyse für Ihre Datenbanken. | Ja | Ja |
+| **Stream insights to Azure SQL Analytics** (Erkenntnisse an die Azure SQL-Analyse streamen): Streamen Sie Erkenntnisse an die Azure SQL-Analyse-Überwachungslösung für Azure SQL-Datenbank. | Ja | Ja |
+| **Stream insights to Event Hub** (Erkenntnisse an den Event Hub streamen): Streamen Sie Erkenntnisse an Event Hubs, damit weitere benutzerdefinierte Integrationen erfolgen können. | Ja | Ja |
 | **Stream insights to Azure Storage** (Erkenntnisse an Azure Storage streamen): Streamen Sie Erkenntnisse an Azure Storage, damit diese näher analysiert und langfristig archiviert werden können. | Ja | Ja |
 
-## <a name="configure-intelligent-insights"></a>Konfigurieren von Intelligent Insights
+## <a name="configure-the-export-of-the-intelligent-insights-log"></a>Konfigurieren des Exports des Intelligent Insights-Protokolls
 
-Die Ausgabe von Intelligent Insights ist ein intelligentes Leistungsdiagnoseprotokoll. Dieses Protokoll kann auf verschiedene Weise genutzt werden, indem es an die Azure SQL-Analyse, Azure Event Hubs und Azure Storage oder an ein Drittanbieterprodukt gestreamt wird.
+Die Ausgabe von Intelligent Insights kann zur Analyse an eines von mehreren Zielen gestreamt werden:
 
-- Verwenden Sie das Produkt mit der [Azure SQL-Analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql), um Erkenntnisse über die Benutzeroberfläche des Azure-Portals anzuzeigen. Diese integrierte Azure-Lösung ist die am häufigsten verwendete Anzeigemöglichkeit für Erkenntnisse.
-- Verwenden Sie das Produkt mit Azure Event Hubs für die Entwicklung benutzerdefinierter Überwachungs- und Benachrichtigungsszenarien.
-- Verwenden Sie das Produkt mit Azure Storage zur Entwicklung benutzerdefinierter Anwendungen, wie z.B. benutzerdefinierte Berichterstellung, langfristige Datenarchivierung und so weiter.
+- Die an einen Log Analytics-Arbeitsbereich gestreamte Ausgabe kann mit [Azure SQL-Analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) verwendet werden, um sich auf der Benutzeroberfläche des Azure-Portals Einblicke zu verschaffen. Diese integrierte Azure-Lösung ist die am häufigsten verwendete Anzeigemöglichkeit für Erkenntnisse.
+- Die an Azure Event Hubs gestreamte Ausgabe kann für die Entwicklung benutzerdefinierter Überwachungs- und Benachrichtigungsszenarien verwendet werden.
+- Die an Azure Storage gestreamte Ausgabe kann für die Entwicklung benutzerdefinierter Anwendungen genutzt werden, wie z. B. benutzerdefinierte Berichte, langfristige Datenarchivierung usw.
 
-Die Integration von Intelligent Insights in andere Produkte, etwa Azure SQL-Analyse, Azure Event Hubs, Azure Storage oder Produkte von Drittanbietern, wird vorgenommen, indem zunächst die Intelligent Insights-Protokollierung (Protokoll „SQLInsights“) aktiviert wird und anschließend die Intelligent Insights-Protokolldaten für die Übertragung an eines dieser Produkte konfiguriert werden.
+Die Integration von Azure SQL-Analyse, Azure Event Hubs, Azure Storage oder Produkten von Drittanbietern, erfolgt, indem zunächst auf dem Blatt „Diagnoseeinstellungen“ einer Datenbank die Intelligent Insights-Protokollierung (das Protokoll „SQLInsights“) aktiviert wird. Anschließend müssen die Intelligent Insights-Protokolldaten für das Streaming an eines dieser Ziele konfiguriert werden.
 
-Weitere Informationen dazu, wie die Intelligent Insights-Protokollierung aktiviert wird und wie Protokolldaten konfiguriert werden, sodass sie an ein nutzendes Produkt übertragen werden, finden Sie unter [Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank](sql-database-metrics-diag-logging.md).
+Weitere Informationen dazu, wie die Intelligent Insights-Protokollierung aktiviert wird und wie Metrik- und Ressourcenprotokolldaten für das Streaming an ein nutzendes Produkt konfiguriert werden, finden Sie unter [Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank](sql-database-metrics-diag-logging.md).
 
 ### <a name="set-up-with-azure-sql-analytics"></a>Einrichten mit Azure SQL-Analyse
 
-Die Azure SQL-Analyselösung stellt neben Intelligent Insights-Diagnoseprotokolldaten eine grafische Benutzeroberfläche sowie Berichterstellungs- und Benachrichtigungsfunktionen zur Datenbankleistung bereit.
+Die Lösung „Azure SQL-Analyse“ bietet eine grafische Benutzeroberfläche sowie unter Verwendung der Intelligent Insights-Ressourcenprotokolldaten Berichts- und Warnfunktionen zur Datenbankleistung.
 
-> [!TIP]
-> Schneller Einstieg: Am einfachsten legen Sie mit der Verwendung von Intelligent Insights los, indem Sie es zusammen mit der Azure SQL-Analyse verwenden. So erhalten Sie eine grafische Benutzeroberfläche für Probleme mit der Datenbankleistung. Fügen Sie die Azure SQL-Analyselösung aus dem Marketplace hinzu, erstellen Sie einen Arbeitsbereich in dieser Lösung, und konfigurieren Sie dann für jede Datenbank, für die Sie Intelligent Insights aktivieren möchten, auf dem Blatt mit den Diagnoseeinstellungen das Streamen des Protokolls „SQLInsights“ an den Arbeitsbereich der Azure SQL-Analyse.
->
-
-Als Voraussetzung müssen Sie die Azure SQL-Analyse über den Marketplace Ihrem Azure-Portaldashboard hinzugefügt und einen Arbeitsbereich erstellt haben. Informationen hierzu finden Sie unter [Konfigurieren der Azure SQL-Analyse](../azure-monitor/insights/azure-sql.md#configuration).
+Fügen Sie Azure SQL-Analyse über Marketplace Ihrem Azure-Portaldashboard hinzu, und erstellen Sie einen Arbeitsbereich. Informationen dazu finden Sie unter [Konfigurieren der Azure SQL-Analyse](../azure-monitor/insights/azure-sql.md#configuration).
 
 Um Intelligent Insights mit der Azure SQL-Analyse zu verwenden, konfigurieren Sie Intelligent Insights-Protokolldaten so, dass sie an den Arbeitsbereich der Azure SQL-Analyse übertragen werden, den Sie im vorhergehenden Schritt erstellt haben. Informationen hierzu finden Sie unter [Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank](sql-database-metrics-diag-logging.md).
 
@@ -107,13 +103,13 @@ Im folgenden Beispiel wird ein Intelligent Insights-Bericht in der Azure SQL-Ana
 
 ### <a name="set-up-with-event-hubs"></a>Einrichten mit Event Hubs
 
-Um Intelligent Insights mit Event Hubs zu verwenden, konfigurieren Sie Intelligent Insights-Protokolldaten so, dass sie an Event Hubs übertragen werden. Informationen hierzu finden Sie unter [Streamen von Azure-Diagnoseprotokollen an einen Event Hubs-Namespace](../azure-monitor/platform/resource-logs-stream-event-hubs.md).
+Um Intelligent Insights mit Event Hubs zu verwenden, konfigurieren Sie Intelligent Insights-Protokolldaten für das Streaming an Event Hubs. Informationen dazu finden Sie unter [Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank](sql-database-metrics-diag-logging.md) und [Streamen von Azure-Diagnoseprotokollen an Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md).
 
-Informationen zum Verwenden von Event Hubs, um benutzerdefinierte Überwachungen und Warnungen einzurichten, finden Sie unter [Welche Vorgänge können mit Metriken und Diagnoseprotokollen in Event Hubs ausgeführt werden?](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs).
+Informationen zum Verwenden von Event Hubs, um benutzerdefinierte Überwachungen und Warnungen einzurichten, finden Sie unter [Welche Vorgänge können mit Metriken und Diagnoseprotokollen in Event Hubs ausgeführt werden?](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-resource-logs-in-event-hubs).
 
 ### <a name="set-up-with-azure-storage"></a>Einrichten mit Azure Storage
 
-Um Intelligent Insights mit Storage zu verwenden, konfigurieren Sie Intelligent Insights-Protokolldaten so, dass sie an Storage übertragen werden. Informationen hierzu finden Sie unter [Streamen in den Speicher](sql-database-metrics-diag-logging.md#stream-diagnostic-telemetry-into-azure-storage).
+Um Intelligent Insights mit Azure Storage zu verwenden, konfigurieren Sie Intelligent Insights-Protokolldaten für das Streaming an Log Analytics. Informationen dazu finden Sie unter [Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank](sql-database-metrics-diag-logging.md) und [Streamen nach Azure Storage](sql-database-metrics-diag-logging.md#stream-into-azure-storage).
 
 ### <a name="custom-integrations-of-intelligent-insights-log"></a>Benutzerdefinierte Integrationen von Intelligent Insights-Protokollen
 
@@ -187,7 +183,5 @@ Wenn eine der überwachten kritischen Ausnahmen die vom System verwalteten absol
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Behandeln von Problemen mit der Leistung von SQL-Datenbank mithilfe von Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
-- Erfahren Sie mehr über das Verwenden des [Intelligent Insights-Diagnoseprotokolls für die Leistung von SQL-Datenbank](sql-database-intelligent-insights-use-diagnostics-log.md).
 - Erfahren Sie mehr über das [Überwachen von SQL-Datenbank mithilfe von SQL-Analyse](../azure-monitor/insights/azure-sql.md).
-- Erfahren Sie mehr über das [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../azure-monitor/platform/platform-logs-overview.md).
+- Erfahren Sie mehr über das [Behandeln von Problemen mit der Leistung von SQL-Datenbank mithilfe von Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: a233a9deb58a7c1abc87a622a4f1f2581ee2e477
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2dbbe6bcd4957a108cc3eae4d41816b130cf8f07
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62125796"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633862"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Verwalten von Volumes auf dem StorSimple Virtual Array
 
@@ -33,8 +33,8 @@ Der StorSimple-Geräte-Manager-Dienst ist eine Erweiterung im Azure-Portal, mit 
 
 Folgende StorSimple-Volumes sind möglich:
 
-* **Lokal**: Daten in diese Volumes verbleiben durchgehend im Array und weichen nicht in die Cloud aus.
-* **Mehrstufig**: Daten in diesen Volumes können in die Cloud ausweichen. Wenn Sie ein mehrstufiges Volume erstellen, werden ca. 10 % des Speicherplatzes auf der lokalen Ebene und 90 % des Speicherplatzes in der Cloud bereitgestellt. Wenn Sie beispielsweise ein Volume mit 1 TB bereitstellen, befinden sich 100 GB lokal, und 900 GB werden in der Cloud zum Anordnen der Daten genutzt. Dies bedeutet wiederum Folgendes: Wenn der gesamte lokale Speicherplatz auf dem Gerät aufgebraucht ist, können Sie kein mehrstufiges Volume bereitstellen (da die lokal erforderlichen 10 % nicht verfügbar sind).
+* **Lokal:** Daten auf diesen Volumes verbleiben durchgehend im Array und gelangen nicht in die Cloud.
+* **Mehrstufig:** Die Daten in diesen Volumes können in die Cloud ausweichen. Wenn Sie ein mehrstufiges Volume erstellen, werden ca. 10 % des Speicherplatzes auf der lokalen Ebene und 90 % des Speicherplatzes in der Cloud bereitgestellt. Wenn Sie beispielsweise ein Volume mit 1 TB bereitstellen, befinden sich 100 GB lokal, und 900 GB werden in der Cloud zum Anordnen der Daten genutzt. Dies bedeutet wiederum Folgendes: Wenn der gesamte lokale Speicherplatz auf dem Gerät aufgebraucht ist, können Sie kein mehrstufiges Volume bereitstellen (da die lokal erforderlichen 10 % nicht verfügbar sind).
 
 ### <a name="provisioned-capacity"></a>Bereitgestellte Kapazität
 In der folgenden Tabelle finden Sie die bereitgestellte Maximalkapazität für die einzelnen Volumetypen.
@@ -44,7 +44,7 @@ In der folgenden Tabelle finden Sie die bereitgestellte Maximalkapazität für d
 | Mindestgröße eines mehrstufigen Volumes                            | 500 GB        |
 | Maximale Größe eines mehrstufigen Volumes                            | 5 TB          |
 | Mindestgröße eines lokalen Volumes                    | 50 GB         |
-| Maximale Größe eines lokalen Volumes                    | 500 GB        |
+| Maximale Größe eines lokalen Volumes                    | 200 GB        |
 
 ## <a name="the-volumes-blade"></a>Das Blatt „Volumes“
 Mithilfe des Menüs **Volumes** auf Ihrem StorSimple-Dienstübersichtsblatt können Sie die Liste der Speichervolumes auf einem bestimmten StorSimple-Array anzeigen und sie verwalten.

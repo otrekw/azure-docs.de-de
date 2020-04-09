@@ -5,15 +5,15 @@ services: active-directory
 author: msaburnley
 ms.service: active-directory
 ms.topic: include
-ms.date: 11/11/2019
+ms.date: 03/30/2020
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: c73a62b2d5feeae42a5ea35c88073dd5fcc0d78c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fd716be397d9ef6b9d6132cd4470f653f3cea0f
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77193117"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655943"
 ---
 ## <a name="for-users-in-your-directory"></a>Für Benutzer in Ihrem Verzeichnis
 
@@ -153,7 +153,7 @@ Verwenden Sie die folgenden Schritte, um genehmigende Personen hinzuzufügen, na
 
     Die Begründung ist für andere genehmigende Personen und den Anfordernden sichtbar.
 
-### <a name="2-stage-approval-preview"></a>Zweistufige Genehmigung (Vorschau)
+### <a name="2-stage-approval"></a>Zweistufige Genehmigung
 
 Wenn Sie eine zweistufige Genehmigung ausgewählt haben, müssen Sie eine zweite genehmigende Person hinzufügen.
 

@@ -6,12 +6,12 @@ ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: a305914c5c870543e16c515880955693c2634044
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: e49fafc2889b98d013d77471f8177fd85a307cc8
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239174"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754877"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Tutorial: Integrieren von Azure Key Vault in Ihre Bereitstellung einer ARM-Vorlage
 
@@ -198,7 +198,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie ein Geheimnis aus Ihrem Azure-Schlüsseltresor abgerufen. Anschließend haben Sie das Geheimnis bei der Vorlagenbereitstellung verwendet. Informationen zum Erstellen verknüpfter Vorlagen finden Sie unter:
+In diesem Tutorial haben Sie ein Geheimnis aus Ihrem Azure-Schlüsseltresor abgerufen. Anschließend haben Sie das Geheimnis bei der Vorlagenbereitstellung verwendet. Informationen zum Ausführen von Aufgaben nach der Bereitstellung mithilfe von VM-Erweiterungen finden Sie unter
 
 > [!div class="nextstepaction"]
-> [Erstellen verknüpfter Vorlagen](./template-tutorial-create-linked-templates.md)
+> [Bereitstellen von Erweiterungen für virtuelle Computer](./template-tutorial-deploy-vm-extensions.md)

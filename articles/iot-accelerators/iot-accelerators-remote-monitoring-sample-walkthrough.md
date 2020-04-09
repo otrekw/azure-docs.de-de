@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: 33005bc286f7dc2c0ebed74bd9df0309e71346f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f501eb55f72811063ddf1d8e02a0ce2137d598f3
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73824835"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546314"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>Solution Accelerator für die Remoteüberwachung: Übersicht
 
@@ -41,7 +41,7 @@ Im folgenden Diagramm sind die logischen Komponenten des Solution Accelerators f
 Die Cloudarchitektur wurde ständig weiterentwickelt, seit Microsoft die ersten Solution Accelerators veröffentlicht hat. [Microservices](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/) haben sich als bewährte Methode herausgestellt, um Skalierbarkeit und Flexibilität zu erzielen, ohne die Entwicklungsgeschwindigkeit zu opfern. Mehrere Microsoft-Dienste nutzen dieses Architekturmuster intern mit hervorragenden Ergebnissen bei der Zuverlässigkeit und Skalierbarkeit. Mit den aktualisierten Solution Accelerators werden diese Erkenntnisse in die Praxis umgesetzt, damit auch Sie davon profitieren können.
 
 > [!TIP]
-> Weitere Informationen zu Microservice-Architekturen finden Sie unter [.NET Application Architecture](https://www.microsoft.com/net/learn/architecture) (.NET-Anwendungsarchitektur) und [Microservices: An application revolution powered by the cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/) (Microservices: Eine Anwendungsrevolution auf Cloudbasis).
+> Weitere Informationen zu Microservicearchitekturen finden Sie unter [.NET Application Architecture](https://www.microsoft.com/net/learn/architecture) (.NET-Anwendungsarchitektur) und [Microservices: An application revolution powered by the cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/) (Microservices: Eine cloudbasierte Anwendungsrevolution).
 
 ## <a name="device-connectivity"></a>Gerätekonnektivität
 
@@ -125,9 +125,6 @@ Die ASA-Aufträge übermitteln die Telemetriedaten von den verbundenen Geräten 
 ### <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
 [Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/) speichert die Telemetriedaten aus den mit dem Solution Accelerator verbundenen Geräten. Es ermöglicht auch das Visualisieren und Abfragen von Gerätetelemetrie in der Projektmappe-Webbenutzeroberfläche.
-
-> [!NOTE]
-> Time Series Insights ist für die Azure-Cloud in China derzeit nicht verfügbar. Für neue Solution Accelerator-Bereitstellungen für die Remoteüberwachung in der Azure-Cloud in China kann Cosmos DB für alle Speicherzwecke genutzt werden.
 
 ### <a name="configuration-microservice"></a>Microservice „Konfiguration“
 

@@ -12,10 +12,10 @@ ms.author: ajetasi
 ms.reviewer: sstein
 ms.date: 11/04/2019
 ms.openlocfilehash: d233d3c98cc495e4b9e84142781f5eb9faa7eec8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73820843"
 ---
 # <a name="stream-data-by-using-azure-sql-database-stream-analytics-integration-preview"></a>Streamen von Daten mithilfe der Stream Analytics Integration in Azure SQL-Datenbank (Vorschau)
@@ -47,7 +47,7 @@ Zum Ausführen der Schritte in diesem Artikel benötigen Sie folgende Ressourcen
 
     ![Stream Analytics](media/sql-database-stream-analytics/stream-analytics.png)
 
-3. Um mit dem Erfassen Ihrer Streamingdaten in dieser SQL-Datenbank zu beginnen, wählen Sie **Erstellen** aus. Geben Sie dem Streamingauftrag einen Namen, und wählen Sie dann **Weiter: Eingabe** aus. 
+3. Um mit dem Erfassen Ihrer Streamingdaten in dieser SQL-Datenbank-Instanz zu beginnen, wählen Sie **Erstellen** aus. Geben Sie dem Streamingauftrag einen Namen, und wählen Sie dann **Weiter: Eingabe** aus. 
 
     ![Erstellen eines Stream Analytics-Auftrags](media/sql-database-stream-analytics/create-job.png)
 
@@ -65,7 +65,7 @@ Zum Ausführen der Schritte in diesem Artikel benötigen Sie folgende Ressourcen
     ![Erstellen eines Stream Analytics-Auftrags](media/sql-database-stream-analytics/create-job-output.png)
 
 5. Wählen Sie aus, in welcher Tabelle die Streamingdaten erfasst werden sollen. Wählen Sie anschließend die Option **Erstellen** aus.
-   - **Benutzername**, **Kennwort**: Geben Sie Ihre Anmeldeinformationen für die SQL Server-Authentifizierung ein. Wählen Sie **Überprüfen**.
+   - **Benutzername**, **Kennwort**: Geben Sie Ihre Anmeldeinformationen für die SQL Server-Authentifizierung ein. Wählen Sie **Überprüfen** aus.
    - **Tabelle**: Wählen Sie **Neu erstellen** oder **Vorhandene verwenden** aus. Bei diesem Ablauf wählen Sie **Erstellen**. Dadurch wird eine neue Tabelle erstellt, wenn Sie den Stream Analytics-Auftrag starten.
 
     ![Erstellen eines Stream Analytics-Auftrags](media/sql-database-stream-analytics/create.png)

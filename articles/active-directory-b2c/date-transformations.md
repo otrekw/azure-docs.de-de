@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/03/2020
+ms.date: 02/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f3e5a7b90892f0ed0243d448ea1ac63fb56f277f
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c02ac9392d6f3f95deef38ff86250e96dfb76d96
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78188833"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476687"
 ---
 # <a name="date-claims-transformations"></a>Transformationen von Datumsansprüchen
 
@@ -35,7 +35,7 @@ Dieser Artikel enthält Beispiele für die Verwendung von Transformationen von D
 | InputParameter | AssertIfRightOperandIsNotPresent | boolean | Gibt an, ob diese Assertion positiv ausfallen soll, wenn der rechte Operanden fehlt. |
 | InputParameter | TreatAsEqualIfWithinMillseconds | INT | Gibt die Anzahl der Millisekunden an, die zwischen den beiden Datum/Uhrzeit-Werten liegen darf, damit die Zeiten als gleich angesehen werden (z. B. Abweichungen durch Gangungenauigkeiten bei Uhren). |
 
-Die Anspruchstransformation **AssertDateTimeIsGreaterThan** wird immer über ein [technisches Validierungsprofil](validation-technical-profile.md) ausgeführt, das von einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) aufgerufen wird. Die Metadaten des selbstbestätigten technischen Profils **DateTimeGreaterThan** steuern die Fehlermeldung, die das technische Profil dem Benutzer anzeigt.
+Die Anspruchstransformation **AssertDateTimeIsGreaterThan** wird immer über ein [technisches Validierungsprofil](validation-technical-profile.md) ausgeführt, das von einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) aufgerufen wird. Die Metadaten des selbstbestätigten technischen Profils **DateTimeGreaterThan** steuern die Fehlermeldung, die das technische Profil dem Benutzer anzeigt. Die Fehlermeldungen können [lokalisiert](localization-string-ids.md#claims-transformations-error-messages) werden.
 
 ![Ausführung von AssertStringClaimsAreEqual](./media/date-transformations/assert-execution.png)
 
@@ -81,8 +81,8 @@ Das selbstbestätigte technische Profil ruft das technische Validierungsprofil *
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-    - **leftOperand**: 2018-10-01T15:00:00.0000000Z
-    - **rightOperand**: 2018-10-01T14:00:00.0000000Z
+    - **leftOperand**: 2020-03-01T15:00:00.0000000Z
+    - **rightOperand**: 2020-03-01T14:00:00.0000000Z
 - Ergebnis: Fehler wird ausgelöst.
 
 ## <a name="convertdatetodatetimeclaim"></a>ConvertDateToDateTimeClaim
@@ -110,9 +110,9 @@ Das folgende Beispiel veranschaulicht die Konvertierung des Anspruchs `dateOfBir
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-    - **inputClaim:** 2019-06-01
+    - **inputClaim:** 2020-15-03
 - Ausgabeansprüche:
-    - **outputClaim:** 1559347200 (June 1, 2019 12:00:00 AM)
+    - **outputClaim:** 2020-15-03T00:00:00.0000000Z
 
 ## <a name="convertdatetimetodateclaim"></a>ConvertDateTimeToDateClaim
 
@@ -139,9 +139,9 @@ Das folgende Beispiel veranschaulicht die Konvertierung des Anspruchs `systemDat
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-  - **inputClaim:** 1559347200 (June 1, 2019 12:00:00 AM)
+  - **inputClaim:** 2020-15-03T11:34:22.0000000Z
 - Ausgabeansprüche:
-  - **outputClaim:** 2019-06-01
+  - **outputClaim:** 2020-15-03
 
 ## <a name="getcurrentdatetime"></a>GetCurrentDateTime
 
@@ -162,7 +162,7 @@ Ruft den aktuellen UTC-Datum/Uhrzeit-Wert ab und addiert den Wert zu einem Anspr
 ### <a name="example"></a>Beispiel
 
 * Ausgabeansprüche:
-    * **currentDateTime**: 1534418820 (August 16, 2018 11:27:00 AM)
+    * **currentDateTime**: 2020-15-03T11:40:35.0000000Z
 
 ## <a name="datetimecomparison"></a>DateTimeComparison
 
@@ -198,8 +198,8 @@ Um die Anspruchstransformation auszuführen, müssen Sie zuerst den aktuellen Da
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-    - **firstDateTime**: 2018-01-01T00:00:00.100000Z
-    - **secondDateTime**: 2018-04-01T00:00:00.100000Z
+    - **firstDateTime**: 2020-01-01T00:00:00.100000Z
+    - **secondDateTime**: 2020-04-01T00:00:00.100000Z
 - Eingabeparameter:
     - **operator:** später als
     - **timeSpanInSeconds**: 7776000 (90 Tage)

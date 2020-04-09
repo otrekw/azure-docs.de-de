@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: 40c279a4beee9fbebe2de7f272fe51d9039f071c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9807d6eeb07b953ab75b328ce64c5166ca52dd2a
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668705"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637519"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Verbinden von Linux-Computern mit Azure Monitor
 
@@ -22,7 +22,7 @@ Der Log Analytics-Agent für Linux kann mit einer der folgenden Methoden install
 * [Laden Sie den Agent manuell herunter, und installieren Sie ihn](#install-the-agent-manually). Dies ist erforderlich, wenn der Linux-Computer keinen Zugriff auf das Internet hat und über das [Log Analytics-Gateway](gateway.md) mit Azure Monitor oder Azure Automation kommuniziert. 
 * [Installieren Sie den Agent für Linux mithilfe eines Wrapperskripts](#install-the-agent-using-wrapper-script), das auf GitHub gehostet wird. Dies ist die empfohlene Methode für Installation und Upgrade des Agents, wenn der Computer direkt oder über einen Proxyserver mit dem Internet verbunden ist.
 
-Informationen zur unterstützten Konfiguration finden Sie in den Abschnitten zu [unterstützten Linux-Betriebssystemen](log-analytics-agent.md#supported-linux-operating-systems) und zur [Netzwerkfirewallkonfiguration](log-analytics-agent.md#network-firewall-requirements).
+Informationen zur unterstützten Konfiguration finden Sie in den Abschnitten zu [unterstützten Linux-Betriebssystemen](log-analytics-agent.md#supported-linux-operating-systems) und zur [Netzwerkfirewallkonfiguration](log-analytics-agent.md#network-requirements).
 
 >[!NOTE]
 >Der Log Analytics-Agent für Linux kann nicht für die Berichterstattung für mehrere Log Analytics-Arbeitsbereiche konfiguriert werden. Er kann nur so konfiguriert werden, dass Berichte sowohl an eine System Center Operations Manager-Verwaltungsgruppe als auch einen Log Analytics Arbeitsbereich gleichzeitig oder jeweils einzeln übermittelt werden.

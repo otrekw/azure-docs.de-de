@@ -8,23 +8,27 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/17/2019
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 05851dba9de06b5dfba2da4f455fbaf5e9376d08
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: c9ed0e329b498112feafaf21c34e85ea436cbb77
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78184280"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80332816"
 ---
 # <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definieren eines technischen Azure MFA-Profils in einer benutzerdefinierten Azure AD B2C-Richtlinie
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) bietet Unterstützung für die Überprüfung einer Telefonnummer mithilfe von Azure Multi-Factor Authentication (MFA). Verwenden Sie dieses technische Profil, um einen Code zu generieren und an eine Telefonnummer zu senden, und überprüfen Sie anschließend den Code.
+Azure Active Directory B2C (Azure AD B2C) bietet Unterstützung für die Überprüfung einer Telefonnummer mithilfe von Azure Multi-Factor Authentication (MFA). Verwenden Sie dieses technische Profil, um einen Code zu generieren und an eine Telefonnummer zu senden, und überprüfen Sie anschließend den Code. Das technische Azure MFA-Profil gibt möglicherweise auch eine Fehlermeldung zurück.  Mit dem technischen Validierungsprofil werden die vom Benutzer bereitgestellten Daten überprüft, bevor die User Journey fortgesetzt wird. Mit dem technischen Überprüfungsprofil wird eine Fehlermeldung auf einer Seite mit Selbstbestätigung angezeigt.
 
-Das technische Azure MFA-Profil gibt möglicherweise auch eine Fehlermeldung zurück. Sie können die Azure MFA-Integration mithilfe eines **technischen Validierungsprofils** entwerfen. Das technische Validierungsprofil ruft den Azure MFA-Dienst auf. Mit dem technischen Validierungsprofil werden die vom Benutzer bereitgestellten Daten überprüft, bevor die User Journey fortgesetzt wird. Mit dem technischen Validierungsprofil wird eine Fehlermeldung auf einer Seite mit Selbstbestätigung angezeigt.
+Dieses technische Profil hat folgende Eigenschaften:
+
+- Es bietet keine Benutzeroberfläche für die Interaktion mit dem Benutzer. Stattdessen wird die Benutzeroberfläche von einem [ selbstbestätigten](self-asserted-technical-profile.md) technischen Profil oder einem [Anzeigesteuerelement](display-controls.md) als [ technisches Überprüfungsprofil](validation-technical-profile.md) aufgerufen.
+- Verwendet den Dienst Azure MFA, um einen Code zu generieren und an eine Telefonnummer zu senden, und überprüft anschließend den Code.  
+- Überprüft eine Telefonnummer per SMS-Nachrichten
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -73,17 +77,17 @@ Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaim
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Vorgang | Ja | Muss **OneWaySMS** sein.  |
-| UserMessageIfInvalidFormat | Nein | Benutzerdefinierte Fehlermeldung, wenn die angegebene Telefonnummer keine gültige Telefonnummer ist. |
-| UserMessageIfCouldntSendSms | Nein | Benutzerdefinierte Fehlermeldung, wenn die angegebene Telefonnummer keine SMS-Nachrichten akzeptiert. |
-| UserMessageIfServerError | Nein | Benutzerdefinierte Fehlermeldung, wenn der Server einen internen Fehler festgestellt hat. |
 
-### <a name="return-an-error-message"></a>Zurückgeben einer Fehlermeldung
+#### <a name="ui-elements"></a>Benutzeroberflächenelemente
 
-Wie unter [Metadaten](#metadata)beschrieben, können Sie die Fehlermeldung anpassen, die dem Benutzer für verschiedene Fehlerfälle angezeigt wird. Sie können diese Nachrichten weiter lokalisieren, indem Sie das Gebietsschema mit einem Präfix versehen. Beispiel:
+Die folgenden Metadaten können verwendet werden, um die Fehlermeldungen zu konfigurieren, die bei einem SMS-Sendefehler angezeigt wird. Die Metadaten sollten im [selbstbestätigten](self-asserted-technical-profile.md) technischen Profil konfiguriert werden. Die Fehlermeldungen können [lokalisiert](localization-string-ids.md#azure-mfa-error-messages) werden.
 
-```XML
-<Item Key="en.UserMessageIfInvalidFormat">Invalid phone number.</Item>
-```
+| attribute | Erforderlich | BESCHREIBUNG |
+| --------- | -------- | ----------- |
+| UserMessageIfCouldntSendSms | Nein | Fehlermeldung für den Benutzer, wenn die angegebene Telefonnummer keine SMS-Nachrichten akzeptiert. |
+| UserMessageIfInvalidFormat | Nein | Fehlermeldung für den Benutzer, wenn die angegebene Telefonnummer keine gültige Telefonnummer ist. |
+| UserMessageIfServerError | Nein | Fehlermeldung für den Benutzer, wenn der Server einen internen Fehler festgestellt hat. |
+| UserMessageIfThrottled| Nein | Fehlermeldung für den Benutzer, wenn eine Anforderung gedrosselt wurde.|
 
 ### <a name="example-send-an-sms"></a>Beispiel: Senden einer SMS
 
@@ -91,19 +95,19 @@ Das folgende Beispiel zeigt ein technisches Azure MFA-Profil, das zum Senden ein
 
 ```XML
 <TechnicalProfile Id="AzureMfa-SendSms">
-    <DisplayName>Send Sms</DisplayName>
-    <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-    <Metadata>
-        <Item Key="Operation">OneWaySMS</Item>
-    </Metadata>
-    <InputClaimsTransformations>
-        <InputClaimsTransformation ReferenceId="CombinePhoneAndCountryCode" />
-        <InputClaimsTransformation ReferenceId="ConvertStringToPhoneNumber" />
-    </InputClaimsTransformations>
-    <InputClaims>
-        <InputClaim ClaimTypeReferenceId="userPrincipalName" />
-        <InputClaim ClaimTypeReferenceId="fullPhoneNumber" PartnerClaimType="phoneNumber" />
-    </InputClaims>
+  <DisplayName>Send Sms</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="Operation">OneWaySMS</Item>
+  </Metadata>
+  <InputClaimsTransformations>
+    <InputClaimsTransformation ReferenceId="CombinePhoneAndCountryCode" />
+    <InputClaimsTransformation ReferenceId="ConvertStringToPhoneNumber" />
+  </InputClaimsTransformations>
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="userPrincipalName" />
+    <InputClaim ClaimTypeReferenceId="fullPhoneNumber" PartnerClaimType="phoneNumber" />
+  </InputClaims>
 </TechnicalProfile>
 ```
 
@@ -128,24 +132,22 @@ Der Azure MFA-Protokollanbieter gibt keine **OutputClaims**-Elemente zurück. Da
 
 Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaimsTransformation**-Elementen, die zum Ändern der Ausgabeansprüche oder zum Generieren neuer verwendet werden, enthalten.
 
-## <a name="metadata"></a>Metadaten
+### <a name="metadata"></a>Metadaten
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Vorgang | Ja | Muss **Überprüfen** sein. |
-| UserMessageIfInvalidFormat | Nein | Benutzerdefinierte Fehlermeldung, wenn die angegebene Telefonnummer keine gültige Telefonnummer ist. |
-| UserMessageIfWrongCodeEntered | Nein | Benutzerdefinierte Fehlermeldung, wenn der für die Überprüfung eingegebene Code falsch ist. |
-| UserMessageIfMaxAllowedCodeRetryReached | Nein | Benutzerdefinierte Fehlermeldung, wenn der Benutzer zu oft versucht hat, einen Prüfcode auszuführen. |
-| UserMessageIfThrottled | Nein | Benutzerdefinierte Fehlermeldung, wenn der Benutzer gedrosselt ist. |
-| UserMessageIfServerError | Nein | Benutzerdefinierte Fehlermeldung, wenn der Server einen internen Fehler festgestellt hat. |
 
-### <a name="return-an-error-message"></a>Zurückgeben einer Fehlermeldung
+#### <a name="ui-elements"></a>Benutzeroberflächenelemente
 
-Wie unter [Metadaten](#metadata)beschrieben, können Sie die Fehlermeldung anpassen, die dem Benutzer für verschiedene Fehlerfälle angezeigt wird. Sie können diese Nachrichten weiter lokalisieren, indem Sie das Gebietsschema mit einem Präfix versehen. Beispiel:
+Die folgenden Metadaten können verwendet werden, um die Fehlermeldungen zu konfigurieren, die bei einem Codeüberprüfungsfehler angezeigt wird. Die Metadaten sollten im [selbstbestätigten](self-asserted-technical-profile.md) technischen Profil konfiguriert werden. Die Fehlermeldungen können [lokalisiert](localization-string-ids.md#azure-mfa-error-messages) werden.
 
-```XML
-<Item Key="en.UserMessageIfWrongCodeEntered">Wrong code has been entered.</Item>
-```
+| attribute | Erforderlich | BESCHREIBUNG |
+| --------- | -------- | ----------- |
+| UserMessageIfMaxAllowedCodeRetryReached| Nein | Fehlermeldung für den Benutzer, wenn der Benutzer zu oft versucht hat, einen Prüfcode einzugeben. |
+| UserMessageIfServerError | Nein | Fehlermeldung für den Benutzer, wenn der Server einen internen Fehler festgestellt hat. |
+| UserMessageIfThrottled| Nein | Fehlermeldung für den Benutzer, wenn die Anforderung gedrosselt wird.|
+| UserMessageIfWrongCodeEntered| Nein| Fehlermeldung für den Benutzer, wenn der zur Überprüfung eingegebene Code falsch ist.|
 
 ### <a name="example-verify-a-code"></a>Beispiel: Überprüfen eines Codes
 

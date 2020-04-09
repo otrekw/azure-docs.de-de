@@ -3,38 +3,39 @@ title: Einrichten von Warnungen und Benachrichtigungen (Azure-Portal)
 description: Verwenden Sie das Azure-Portal, um SQL-Datenbankwarnungen zu erstellen, die Benachrichtigungen oder eine Automatisierung auslösen, wenn die angegebenen Bedingungen erfüllt sind.
 services: sql-database
 ms.service: sql-database
-ms.subservice: monitor
+ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
-ms.date: 11/02/2018
-ms.openlocfilehash: c2b889d4013abb60c9ad7bb4bcdc4e6546cfa37c
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 03/10/2020
+ms.openlocfilehash: 67c47b35e84a93d7d9032ad55b425ae2bb6971fe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745951"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79209471"
 ---
-# <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Erstellen von Warnungen für Azure SQL-Datenbank und Data Warehouse über das Azure-Portal
+# <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-databases-using-azure-portal"></a>Erstellen von Warnungen für Azure SQL-Datenbank und Azure Synapse Analytics-Datenbanken im Azure-Portal
 
 ## <a name="overview"></a>Übersicht
-In diesem Artikel erfahren Sie, wie Sie mit dem Azure-Portal Azure SQL-Datenbank- und Data Warehouse-Warnungen einrichten können. Warnungen können Ihnen eine E-Mail senden oder einen Webhook aufrufen, wenn bei einer bestimmten Metrik (beispielsweise bei der Datenbankgröße oder bei der CPU-Auslastung) der Schwellenwert erreicht wird. Dieser Artikel nennt auch bewährte Methoden für das Festlegen von Warnungszeiträumen.    
+
+In diesem Artikel erfahren Sie, wie Sie im Azure-Portal Warnungen für Einzel-, Pool- und Data Warehouse-Datenbanken in Azure SQL-Datenbank und Azure Synapse Analytics (früher Azure SQL Data Warehouse) einrichten. Warnungen können Ihnen eine E-Mail senden oder einen Webhook aufrufen, wenn bei einer bestimmten Metrik (beispielsweise bei der Datenbankgröße oder bei der CPU-Auslastung) der Schwellenwert erreicht wird. Dieser Artikel nennt auch bewährte Methoden für das Festlegen von Warnungszeiträumen.
 
 > [!IMPORTANT]
 > Dieses Feature steht in einer verwalteten Instanz noch nicht zur Verfügung. Als Alternative können Sie den SQL-Agent verwenden, um E-Mail-Warnungen für einige Metriken auf der Grundlage [dynamischer Verwaltungssichten](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) zu senden.
 
 Sie können auf der Grundlage von Überwachungsmetriken für Ihre Azure-Services oder von Ereignissen, die bei diesen auftreten, eine Warnung empfangen.
 
-* **Metrikwerte** : Die Warnung wird ausgelöst, wenn der Wert einer angegebenen Metrik einen von Ihnen festgelegten Schwellenwert in beliebiger Richtung überschreitet. Das Auslösen erfolgt sowohl, wenn die Bedingung erstmals erfüllt wird, als auch danach, wenn diese Bedingung nicht mehr erfüllt wird.    
+* **Metrikwerte** : Die Warnung wird ausgelöst, wenn der Wert einer angegebenen Metrik einen von Ihnen festgelegten Schwellenwert in beliebiger Richtung überschreitet. Das Auslösen erfolgt sowohl, wenn die Bedingung erstmals erfüllt wird, als auch danach, wenn diese Bedingung nicht mehr erfüllt wird.
 * **Aktivitätsprotokollereignisse** : Eine Warnung kann für *jedes* Ereignis oder nur dann ausgelöst werden, wenn eine bestimmte Anzahl von Ereignissen erfolgt ist.
 
 Sie können konfigurieren, dass bei einer Warnung Folgendes erfolgt, wenn sie ausgelöst wird:
 
 * Senden von E-Mail-Benachrichtigungen an den Dienstadministrator und Co-Administratoren
-* Senden von E-Mal an weitere von Ihnen angegebene Adressen
+* Senden von E-Mails an weitere von Ihnen angegebene Adressen
 * Aufrufen eines Webhooks
 
 Sie haben folgende Möglichkeiten zum Konfigurieren von Warnregeln und Abrufen zugehöriger Informationen:
@@ -45,78 +46,29 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnregeln und Abrufen z
 * [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Erstellen einer Warnungsregel anhand einer Metrik mit dem Azure-Portal
+
 1. Suchen Sie im [Portal](https://portal.azure.com/)die Ressource, die Sie überwachen möchten, und wählen Sie sie aus.
-2. Wählen Sie im Abschnitt „ÜBERWACHUNG“ die Option **Warnungen (klassisch)** aus. Text und Symbol können je nach Ressource geringfügig variieren.  
-   
-     ![Überwachung](media/sql-database-insights-alerts-portal/AlertsClassicButton.JPG)
+2. Wählen Sie im Abschnitt „Überwachung“ **Warnungen** aus. Text und Symbol können je nach Ressource geringfügig variieren.  
+
+   ![Überwachung](media/sql-database-insights-alerts-portal/Alerts.png)
   
-   - **NUR SQL DW**: Klicken Sie auf den Graphen **DWU-Nutzung**. Wählen Sie **Klassische Warnungen anzeigen** aus.
+3. Wählen Sie die Schaltfläche **Neue Warnungsregel** aus, um die Seite **Regel erstellen** zu öffnen.
+  ![Regel erstellen](media/sql-database-insights-alerts-portal/create-rule.png)
 
-3. Wählen Sie die Schaltfläche **Metrikwarnung hinzufügen (klassisch)** aus, und füllen Sie die Felder aus.
-   
-    ![Warnung hinzufügen](media/sql-database-insights-alerts-portal/AddDBAlertPageClassic.JPG)
-4. **Benennen** Sie Ihre Warnungsregel, und wählen Sie eine **Beschreibung** aus, die auch in Benachrichtigungs-E-Mails angezeigt wird.
-5. Wählen Sie die **Metrik** aus, die Sie überwachen möchten, und dann je einen Wert für **Bedingung** und **Schwellenwert** für die Metrik aus. Wählen Sie auch den **Zeitraum** der Metrikregel aus, der erfüllt sein muss, ehe die Warnung ausgelöst wird. Wenn Sie z.B. den Zeitraum „PT5M“ wählen, und die Warnung nach einer CPU-Auslastung von über 80 % sucht, wird die Warnung ausgelöst, wenn die **durchschnittliche** CPU-Auslastung 5 Minuten über 80 % lag. Nachdem der erste Trigger ausgelöst wurde, erfolgt ein erneutes Auslösen, wenn die durchschnittliche CPU-Auslastung 5 Minuten unter 80 % bleibt. Die CPU-Messung erfolgt minütlich. In der folgenden Tabelle finden Sie unterstützte Zeitfenster und den Aggregationstyp für die einzelnen Warnungen – nicht alle Warnungen verwenden den durchschnittlichen Wert.   
-6. Aktivieren Sie **E-Mail-Besitzer...** , wenn Sie möchten, dass Administratoren und Co-Administratoren per E-Mail benachrichtigt werden, wenn die Warnung ausgelöst wird.
-7. Wenn Sie möchten, dass bei Auslösen der Warnung eine Benachrichtigung an weitere E-Mail-Adressen gesendet wird, fügen Sie diese dem Feld **Zusätzliche Administrator-E-Mail-Adresse** hinzu. Trennen Sie mehrere E-Mail-Adressen durch Semikolons: *email\@contoso.com;email2\@contoso.com*.
-8. Fügen Sie in einen gültigen URI in das Feld **Webhook** ein, wenn dieser bei Auslösen der Warnung aufgerufen werden soll.
-9. Wählen Sie **OK** aus, wenn das Erstellen der Warnung abgeschlossen ist.   
+4. Klicken Sie im Abschnitt **Bedingung** auf **Hinzufügen**.
+  ![Bedingung definieren](media/sql-database-insights-alerts-portal/create-rule.png)
+5. Wählen Sie auf der Seite **Signallogik konfigurieren** ein Signal aus.
+  ![Signal auswählen](media/sql-database-insights-alerts-portal/select-signal.png).
+6. Nach Auswahl eines Signals, z. B. **CPU-Prozentsatz**, wird die Seite **Signallogik konfigurieren** angezeigt.
+  ![Signallogik konfigurieren](media/sql-database-insights-alerts-portal/configure-signal-logic.png)
+7. Konfigurieren Sie auf dieser Seite den Schwellentyp, Operator, Aggregationstyp, Schwellenwert, die Aggregationsgranularität und die Häufigkeit der Auswertung. Klicken Sie anschließend auf **Fertig**.
+8. Wählen Sie unter **Regel erstellen** eine vorhandene **Aktionsgruppe** aus, oder erstellen Sie eine neue Gruppe. Mithilfe einer Aktionsgruppe können Sie die Aktion definieren, die erfolgen soll, wenn eine Warnungsbedingung eintritt.
+  ![Aktionsgruppe definieren](media/sql-database-insights-alerts-portal/action-group.png)
 
-Innerhalb weniger Minuten wird die Warnung aktiv und wie oben beschrieben ausgelöst.
+9. Legen Sie einen Namen für die Regel fest, geben Sie eine optionale Beschreibung an, und wählen Sie einen Schweregrad für die Regel. Wählen Sie, ob die Regel bei ihrer Erstellung aktiviert werden soll, und klicken Sie dann auf **Regelwarnung erstellen**, um die Metrikregelwarnung zu erstellen.
 
-## <a name="managing-your-alerts"></a>Verwalten von Warnungen
-Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und:
-
-* ein Diagramm einblenden, das den Schwellenwert der Metrik und die tatsächlichen Werte vom Vortag zeigt.
-* bearbeiten oder löschen.
-* sie **deaktivieren** oder **aktivieren**, wenn Sie den Empfang von Benachrichtigungen zu dieser Warnung vorübergehend beenden oder fortsetzen möchten.
-
-
-## <a name="sql-database-alert-values"></a>Werte für SQL-Datenbankwarnungen
-
-| Ressourcentyp | Metrikname | Anzeigename | Aggregationstyp | Mindestzeitfenster für Warnungen|
-| --- | --- | --- | --- | --- |
-| SQL database | cpu_percent | CPU-Prozentsatz | Average | 5 Minuten |
-| SQL database | physical_data_read_percent | E/A-Prozentsatz für Daten | Average | 5 Minuten |
-| SQL database | log_write_percent | E/A-Prozentsatz für Protokoll | Average | 5 Minuten |
-| SQL database | dtu_consumption_percent | DTU-Prozentsatz | Average | 5 Minuten |
-| SQL database | storage | Datenbankgröße gesamt | Maximum | 30 Minuten |
-| SQL database | connection_successful | Erfolgreiche Verbindungen | Gesamt | 10 Minuten |
-| SQL database | connection_failed | Verbindungsfehler | Gesamt | 10 Minuten |
-| SQL database | blocked_by_firewall | Von der Firewall blockiert | Gesamt | 10 Minuten |
-| SQL database | deadlock | Deadlocks | Gesamt | 10 Minuten |
-| SQL database | storage_percent | Datenbankgröße als Prozentsatz | Maximum | 30 Minuten |
-| SQL database | xtp_storage_percent | In-Memory-OLTP-Speicher in Prozent (Vorschau) | Average | 5 Minuten |
-| SQL database | workers_percent | Worker in Prozent | Average | 5 Minuten |
-| SQL database | sessions_percent | Sitzungen in Prozent | Average | 5 Minuten |
-| SQL database | dtu_limit | DTU-Grenzwert | Average | 5 Minuten |
-| SQL database | dtu_used | DTU-Verbrauch | Average | 5 Minuten |
-||||||
-| Pool für elastische Datenbanken | cpu_percent | CPU-Prozentsatz | Average | 10 Minuten |
-| Pool für elastische Datenbanken | physical_data_read_percent | E/A-Prozentsatz für Daten | Average | 10 Minuten |
-| Pool für elastische Datenbanken | log_write_percent | E/A-Prozentsatz für Protokoll | Average | 10 Minuten |
-| Pool für elastische Datenbanken | dtu_consumption_percent | DTU-Prozentsatz | Average | 10 Minuten |
-| Pool für elastische Datenbanken | storage_percent | Speicher in Prozent | Average | 10 Minuten |
-| Pool für elastische Datenbanken | workers_percent | Worker in Prozent | Average | 10 Minuten |
-| Pool für elastische Datenbanken | eDTU_limit | eDTU-Grenzwert | Average | 10 Minuten |
-| Pool für elastische Datenbanken | storage_limit | Speicherbegrenzung | Average | 10 Minuten |
-| Pool für elastische Datenbanken | eDTU_used | eDTU-Verbrauch | Average | 10 Minuten |
-| Pool für elastische Datenbanken | storage_used | Verwendeter Speicher | Average | 10 Minuten |
-||||||               
-| SQL Data Warehouse | cpu_percent | CPU-Prozentsatz | Average | 10 Minuten |
-| SQL Data Warehouse | physical_data_read_percent | E/A-Prozentsatz für Daten | Average | 10 Minuten |
-| SQL Data Warehouse | connection_successful | Erfolgreiche Verbindungen | Gesamt | 10 Minuten |
-| SQL Data Warehouse | connection_failed | Verbindungsfehler | Gesamt | 10 Minuten |
-| SQL Data Warehouse | blocked_by_firewall | Von der Firewall blockiert | Gesamt | 10 Minuten |
-| SQL Data Warehouse | service_level_objective | Diensttarif der Datenbank | Gesamt | 10 Minuten |
-| SQL Data Warehouse | dwu_limit | DWU-Grenzwert | Maximum | 10 Minuten |
-| SQL Data Warehouse | dwu_consumption_percent | DWU in Prozent | Average | 10 Minuten |
-| SQL Data Warehouse | dwu_used | DWU-Verbrauch | Average | 10 Minuten |
-||||||
-
+Innerhalb von 10 Minuten wird die Warnung aktiv und wie oben beschrieben ausgelöst.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Übersicht über die Azure-Überwachung](../monitoring-and-diagnostics/monitoring-overview.md) , einschließlich der Typen von Informationen, die Sie sammeln und überwachen können.
+
 * Erfahren Sie mehr über das [Konfigurieren von Webhooks in Warnungen](../azure-monitor/platform/alerts-webhooks.md).
-* Verschaffen Sie sich einen [Überblick über Diagnoseprotokolle](../azure-monitor/platform/platform-logs-overview.md), um detaillierte Hochfrequenzmetriken für Ihren Dienst zu erfassen.
-* Verschaffen Sie sich einen Überblick über das [Sammeln von Dienstmetriken](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.

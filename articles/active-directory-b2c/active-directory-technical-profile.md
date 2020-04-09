@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/09/2020
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a621165210702e075f15fb61bd615e157f997fe1
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 7db47eda47850c1c080b6a49256c8a0b37bb0d3c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79078869"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80330385"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Azure Active Directory-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -115,6 +115,7 @@ Der Name des Anspruchs ist der Name des Azure AD-Attributs, sofern nicht das **P
 ## <a name="requirements-of-an-operation"></a>Anforderungen für einen Vorgang
 
 - Es muss genau ein **InputClaim**-Element im Anspruchsbehälter für alle technischen Azure AD-Profile vorhanden sein.
+- Im Artikel [Benutzerprofilattribute](user-profile-attributes.md) werden die unterstützten Azure AD B2C-Benutzerprofilattribute beschrieben, die Sie in den Eingabe-, Ausgabe- und persistenten Ansprüchen verwenden können. 
 - Wenn der Vorgang `Write` oder `DeleteClaims` ist, muss er auch im **PersistedClaims**-Element enthalten sein.
 - Der Wert des **userPrincipalName**-Anspruchs muss das Format `user@tenant.onmicrosoft.com` aufweisen.
 - Der **displayName**-Anspruch ist erforderlich und darf keine leere Zeichenfolge sein.
@@ -254,9 +255,9 @@ Das folgende technische Profil löscht ein Social Media-Benutzerkonto mit **alte
 | ClientId | Nein | Die Client-ID für den Zugriff auf den Mandanten als Drittanbieter. Weitere Informationen finden Sie unter [Verwenden von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie für die Profilbearbeitung](custom-policy-custom-attributes.md). |
 | IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
 
-### <a name="error-messages"></a>Fehlermeldungen
+### <a name="ui-elements"></a>Benutzeroberflächenelemente
  
-Die folgenden Einstellungen können verwendet werden, um die Fehlermeldung zu konfigurieren, die bei einem Fehler angezeigt wird. Die Metadaten sollten im [selbstbestätigten](self-asserted-technical-profile.md) technischen Profil konfiguriert werden. Fehlermeldungen können [lokalisiert](localization.md) werden.
+Die folgenden Einstellungen können verwendet werden, um die Fehlermeldung zu konfigurieren, die bei einem Fehler angezeigt wird. Die Metadaten sollten im [selbstbestätigten](self-asserted-technical-profile.md) technischen Profil konfiguriert werden. Die Fehlermeldungen können [lokalisiert](localization.md) werden.
 
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |

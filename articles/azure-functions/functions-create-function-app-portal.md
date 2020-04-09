@@ -1,15 +1,15 @@
 ---
-title: Erstellen einer Funktions-App über das Azure-Portal
+title: Erstellen einer Funktionen-App im Azure-Portal
 description: Es wird beschrieben, wie Sie in Azure über das Portal eine neue Funktions-App erstellen.
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/29/2019
 ms.custom: mvc
-ms.openlocfilehash: 086a543e75d083094d4dfa789e71afaba5da6d6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 001b4e4f0ea7fbacd232b2a87abfe353f34919bd
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368756"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985013"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Erstellen einer Funktionen-App im Azure-Portal
 
@@ -36,7 +36,7 @@ Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Kon
 >[!NOTE]
 >Wenn der verbrauchsbasierte Hostingplan verwendet wird, werden die Funktionscode- und Bindungskonfigurationsdateien in Azure File Storage im Hauptspeicherkonto gespeichert. Wenn Sie das Hauptspeicherkonto löschen, wird dieser Inhalt ebenfalls gelöscht und kann nicht wiederhergestellt werden.
 
-Weitere Informationen zu Speicherkontotypen finden Sie unter [Einführung in die Azure Storage-Dienste](../storage/common/storage-introduction.md#azure-storage-services). 
+Weitere Informationen zu Speicherkontotypen finden Sie unter [Einführung in die Azure Storage-Dienste](../storage/common/storage-introduction.md#core-storage-services). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

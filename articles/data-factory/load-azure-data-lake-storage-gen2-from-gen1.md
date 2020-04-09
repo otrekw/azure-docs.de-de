@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: 5809307ff8e047ebc6120cb5ebf36590f2a2a51a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 81f8577592f1d53627bc09a2f9ace8c060ad4660
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444022"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668852"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Kopieren von Daten aus Azure Data Lake Storage Gen1 in Gen2 mit Azure Data Factory
 
@@ -33,7 +33,7 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* ein Azure-Abonnement Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 * Sie müssen ein Azure Data Lake Storage Gen1-Konto auswählen, das Daten enthält.
 * Azure Storage-Konto mit aktiviertem Data Lake Storage Gen2. [Erstellen Sie ein Speicherkonto](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM), wenn Sie noch keines besitzen.
 
@@ -137,7 +137,7 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 
 ## <a name="best-practices"></a>Bewährte Methoden
 
-Informationen zum allgemeinen Upgrade von Azure Data Lake Storage Gen1 auf Azure Data Lake Storage Gen2 finden Sie unter [Upgrade von Big Data-Analyselösungen von Azure Data Lake Storage Gen1 auf Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-upgrade.md). In den folgenden Abschnitten werden bewährte Methoden für die Verwendung von Data Factory für ein Datenupgrade von Data Lake Storage Gen1 auf Data Lake Storage Gen2 vorgestellt.
+Informationen zum allgemeinen Upgrade von Azure Data Lake Storage Gen1 auf Azure Data Lake Storage Gen2 finden Sie unter [Upgrade von Big Data-Analyselösungen von Azure Data Lake Storage Gen1 auf Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-migrate-gen1-to-gen2.md). In den folgenden Abschnitten werden bewährte Methoden für die Verwendung von Data Factory für ein Datenupgrade von Data Lake Storage Gen1 auf Data Lake Storage Gen2 vorgestellt.
 
 ### <a name="data-partition-for-historical-data-copy"></a>Datenpartition für Verlaufsdatenkopie
 
@@ -146,12 +146,12 @@ Informationen zum allgemeinen Upgrade von Azure Data Lake Storage Gen1 auf Azure
 
 Verwenden Sie einen Proof of Concept, um die End-to-End-Lösung zu überprüfen und den Kopierdurchsatz in Ihrer Umgebung zu testen. Wichtigste Schritte für den Proof of Concept: 
 
-1. Erstellen Sie eine Data Factory-Pipeline mit einer einzelnen Kopieraktivität, um mehrere TBs an Daten von Data Lake Storage Gen1 nach Data Lake Storage Gen2 zu kopieren und eine Basislinie für die Kopierleistung zu erhalten. Beginnen Sie mit [Datenintegrationseinheiten (DIUs)](copy-activity-performance.md#data-integration-units) von 128. 
+1. Erstellen Sie eine Data Factory-Pipeline mit einer einzelnen Kopieraktivität, um mehrere TBs an Daten von Data Lake Storage Gen1 nach Data Lake Storage Gen2 zu kopieren und eine Basislinie für die Kopierleistung zu erhalten. Beginnen Sie mit [Datenintegrationseinheiten (DIUs)](copy-activity-performance-features.md#data-integration-units) von 128. 
 2. Auf der Grundlage des Kopierdurchsatzes, den Sie im ersten Schritt erhalten, berechnen Sie den geschätzten Zeitaufwand für die gesamte Datenmigration. 
 3. (Optional) Erstellen Sie eine Steuertabelle, und definieren Sie den Dateifilter, um die zu migrierenden Dateien zu partitionieren. Möglichkeiten zum Partitionieren der Dateien: 
 
     - Partitionierung nach Ordnername oder Ordnername mit Platzhalterfilter. Diese Methode wird empfohlen.
-    - Partitionierung nach Uhrzeit der letzten Änderung einer Datei.
+    - Partitionierung nach Uhrzeit der letzten Änderung einer Datei
 
 ### <a name="network-bandwidth-and-storage-io"></a>Netzwerkbandbreite und Speicher-E/A 
 
@@ -163,7 +163,7 @@ In Data Factory unterstützt der [Azure Data Lake Storage Gen1-Connector](connec
 
 ### <a name="preserve-acls-from-data-lake-storage-gen1"></a>Bewahren von Zugriffssteuerungslisten für Azure Data Lake Storage Gen1
 
-Wenn Sie die Zugriffssteuerungslisten zusammen mit Datendateien beim Upgrade von Data Lake Storage Gen1 auf Gen2 replizieren möchten, finden Sie weitere Informationen unter [Bewahren von Zugriffssteuerungslisten von Data Lake Storage Gen1](connector-azure-data-lake-storage.md#preserve-acls-from-data-lake-storage-gen1). 
+Wenn Sie die Zugriffssteuerungslisten zusammen mit Datendateien beim Upgrade von Data Lake Storage Gen1 auf Gen2 replizieren möchten, finden Sie weitere Informationen unter [Bewahren von Zugriffssteuerungslisten von Data Lake Storage Gen1](connector-azure-data-lake-storage.md#preserve-acls). 
 
 ### <a name="incremental-copy"></a>Inkrementelles Kopieren 
 

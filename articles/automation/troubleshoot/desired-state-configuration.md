@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dcd0371d275c3a46fe9bf07c96516a2d0820abb7
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.openlocfilehash: 9f33dc9528d5f7043dda2c6fad207a9a51347a2b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77430532"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631494"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>Behandeln von Problemen mit der Azure Automation-Konfiguration des gewünschten Zustands (Desired State Configuration, DSC)
 
@@ -48,11 +48,11 @@ Informationen zur Verwendung von „xDscDiagnostics“ finden Sie unter [Verwend
 
 ### <a name="3-ensure-that-nodes-and-the-automation-workspace-have-required-modules"></a>3. Sicherstellen, dass Knoten und der Automation-Arbeitsbereich über die erforderlichen Module verfügen
 
-DSC ist von den Modulen abhängig, die auf dem Knoten installiert sind. Wenn Sie Azure Automation State Configuration verwenden, importieren Sie alle benötigten Module in Ihr Automation-Konto. Die hierzu erforderlichen Schritte finden Sie unter [Importieren von Modulen](../shared-resources/modules.md#import-modules). Konfigurationen können auch von bestimmten Modulversionen abhängen. Weitere Informationen finden Sie unter [Problembehandlung von Modulen](shared-resources.md#modules).
+DSC ist von den Modulen abhängig, die auf dem Knoten installiert sind. Wenn Sie Azure Automation State Configuration verwenden, importieren Sie alle benötigten Module in Ihr Automation-Konto. Die hierzu erforderlichen Schritte finden Sie unter [Importieren von Modulen](../shared-resources/modules.md#importing-modules). Konfigurationen können auch von bestimmten Modulversionen abhängen. Weitere Informationen finden Sie unter [Problembehandlung von Modulen](shared-resources.md#modules).
 
 ## <a name="common-errors-when-working-with-dsc"></a>Häufige Fehler beim Arbeiten mit DSC
 
-### <a name="unsupported-characters"></a>Szenario: Eine Konfiguration mit speziellen Zeichen kann nicht aus dem Portal gelöscht werden
+### <a name="scenario-a-configuration-with-special-characters-cannot-be-deleted-from-the-portal"></a><a name="unsupported-characters"></a>Szenario: Eine Konfiguration mit speziellen Zeichen kann nicht aus dem Portal gelöscht werden
 
 #### <a name="issue"></a>Problem
 
@@ -72,7 +72,7 @@ Der Fehler ist ein vorübergehendes Problem, das gelöst werden soll.
 * Die Dokumentation für dieses Cmdlet wurde noch nicht aktualisiert.  Nutzen Sie bis dahin bitte die Dokumentation für das AzureRM-Modul.
   * [Remove-AzureRmAutomationDSCConfiguration](/powershell/module/azurerm.automation/Remove-AzureRmAutomationDscConfiguration)
 
-### <a name="failed-to-register-agent"></a>Szenario: Fehler beim Registrieren des DSC-Agents
+### <a name="scenario-failed-to-register-dsc-agent"></a><a name="failed-to-register-agent"></a>Szenario: Fehler beim Registrieren des DSC-Agents
 
 #### <a name="issue"></a>Problem
 
@@ -97,7 +97,7 @@ Dieser Fehler wird normalerweise durch eine Firewall, durch einen Computer hinte
 
 Stellen Sie sicher, dass Ihr Computer Zugriff auf die richtigen Endpunkte für Azure Automation DSC hat, und wiederholen Sie den Vorgang. Eine Liste der erforderlichen Ports und Adressen finden Sie unter [Übersicht über Azure Automation State Configuration](../automation-dsc-overview.md#network-planning).
 
-### <a name="a-nameunauthorizedascenario-status-reports-return-response-code-unauthorized"></a><a name="unauthorized"><a/>Szenario: Antwortcode „Nicht autorisiert“ in Statusberichten
+### <a name="a-nameunauthorizedscenario-status-reports-return-response-code-unauthorized"></a><a name="unauthorized"><a/>Szenario: Antwortcode „Nicht autorisiert“ in Statusberichten
 
 #### <a name="issue"></a>Problem
 
@@ -113,7 +113,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 ### <a name="cause"></a>Ursache
 
-Dieses Problem wird durch ein ungültiges oder abgelaufenes Zertifikat verursacht.  Weitere Informationen finden Sie unter [Ablauf und erneute Registrierung eines Zertifikats](../automation-dsc-onboarding.md#certificate-expiration-and-re-registration).
+Dieses Problem wird durch ein ungültiges oder abgelaufenes Zertifikat verursacht.  Weitere Informationen finden Sie unter [Ablauf und erneute Registrierung eines Zertifikats](../automation-dsc-onboarding.md#re-registering-a-node).
 
 ### <a name="resolution"></a>Lösung
 
@@ -159,7 +159,7 @@ Registrieren Sie abschließend den fehlerhaften Knoten wieder:
 4. Wählen Sie den fehlerhaften Knoten aus.
 5. Klicken Sie auf „Verbinden“, und wählen Sie die gewünschten Optionen aus.
 
-### <a name="failed-not-found"></a>Szenario: Knoten hat den Fehlerstatus „Nicht gefunden“
+### <a name="scenario-node-is-in-failed-status-with-a-not-found-error"></a><a name="failed-not-found"></a>Szenario: Knoten hat den Fehlerstatus „Nicht gefunden“
 
 #### <a name="issue"></a>Problem
 
@@ -181,7 +181,7 @@ Dieser Fehler tritt normalerweise auf, wenn der Knoten einem Konfigurationsnamen
   * Um über das Azure-Portal einem Knoten eine Knotenkonfiguration zuzuweisen, öffnen Sie die Seite **DSC-Knoten**, wählen Sie dann einen Knoten aus, und klicken Sie auf die Schaltfläche **Knotenkonfiguration zuweisen**.
   * Um einem Knoten mit einem PowerShell-Cmdlet eine Knotenkonfiguration zuzuweisen, verwenden Sie das Cmdlet **Set-AzureRmAutomationDscNode**.
 
-### <a name="no-mof-files"></a>Szenario: Bei der Kompilierung einer Konfiguration wurden keine Knotenkonfigurationen (MOF-Dateien) erstellt
+### <a name="scenario-no-node-configurations-mof-files-were-produced-when-a-configuration-is-compiled"></a><a name="no-mof-files"></a>Szenario: Bei der Kompilierung einer Konfiguration wurden keine Knotenkonfigurationen (MOF-Dateien) erstellt
 
 #### <a name="issue"></a>Problem
 
@@ -202,7 +202,7 @@ Sie können dieses Problem mit jeder der folgenden Lösungen beheben:
 * Stellen Sie sicher, dass der Ausdruck neben dem Schlüsselwort **Node** in der Konfigurationsdefinition nicht mit „$null“ ausgewertet wird.
 * Wenn Sie bei der Kompilierung der Konfiguration ConfigurationData übergeben, stellen Sie sicher, dass Sie die erwarteten Werte übergeben, die für die Konfiguration aus [ConfigurationData](../automation-dsc-compile.md)erforderlich sind.
 
-### <a name="dsc-in-progress"></a>Szenario: Der DSC-Knotenbericht bleibt mit dem Status „In Bearbeitung“ hängen
+### <a name="scenario-the-dsc-node-report-becomes-stuck-in-progress-state"></a><a name="dsc-in-progress"></a>Szenario: Der DSC-Knotenbericht bleibt mit dem Status „In Bearbeitung“ hängen
 
 #### <a name="issue"></a>Problem
 
@@ -220,7 +220,7 @@ Sie haben Ihre WMF-Version aktualisiert und WMI beschädigt.
 
 Befolgen Sie zum Beheben des Problems die Anweisungen im Artikel [Bekannte Probleme und Einschränkungen bei DSC](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc).
 
-### <a name="issue-using-credential"></a>Szenario: In einer DSC-Konfiguration können keine Anmeldeinformationen verwendet werden
+### <a name="scenario-unable-to-use-a-credential-in-a-dsc-configuration"></a><a name="issue-using-credential"></a>Szenario: In einer DSC-Konfiguration können keine Anmeldeinformationen verwendet werden
 
 #### <a name="issue"></a>Problem
 
@@ -238,7 +238,7 @@ Sie haben Anmeldeinformationen in einer Konfiguration verwendet, aber keine ordn
 
 * Stellen Sie sicher, dass Sie die ordnungsgemäßen **ConfigurationData** übergeben, über die **PSDscAllowPlainTextPassword** für jede Knotenkonfiguration auf „true“ festgelegt wird. Weitere Informationen finden Sie unter [Kompilieren von DSC-Konfigurationen in Azure Automation State Configuration](../automation-dsc-compile.md).
 
-### <a name="failure-processing-extension"></a>Szenario: Onboarding über DSC-Erweiterung, Fehler beim Verarbeiten der Erweiterung
+### <a name="scenario-onboarding-from-dsc-extension-failure-processing-extension-error"></a><a name="failure-processing-extension"></a>Szenario: Onboarding über DSC-Erweiterung, Fehler beim Verarbeiten der Erweiterung
 
 #### <a name="issue"></a>Problem
 
@@ -257,7 +257,7 @@ Dieser Fehler tritt in der Regel auf, wenn dem Knoten ein Knotenkonfigurationsna
 * Stellen Sie sicher, dass Sie dem Knoten einen Knotenkonfigurationsnamen zuweisen, der genau mit dem im Dienst vorhandenen Namen übereinstimmt.
 * Sie können festlegen, dass kein Knotenkonfigurationsname angegeben werden soll. In dem Fall erfolgt ein Onboarding des Knotens, aber keine Zuweisung einer Knotenkonfiguration.
 
-### <a name="cross-subscription"></a>Szenario: Fehler „Es ist mindestens ein Fehler aufgetreten.“ beim Registrieren eines Knotens mit PowerShell
+### <a name="scenario-registering-a-node-with-powershell-returns-the-error-one-or-more-errors-occurred"></a><a name="cross-subscription"></a>Szenario: Fehler „Es ist mindestens ein Fehler aufgetreten.“ beim Registrieren eines Knotens mit PowerShell
 
 #### <a name="issue"></a>Problem
 
@@ -277,10 +277,10 @@ Behandeln Sie den Knoten aus dem anderen Abonnement wie einen Knoten in einer se
 
 Gehen Sie wie folgt vor, um den Knoten zu registrieren:
 
-* Windows: [Physische/virtuelle Windows-Computer, lokal oder in einer anderen Cloud als Azure/AWS](../automation-dsc-onboarding.md#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)
-* Linux: [Physische/virtuelle Linux-Computer, lokal oder in einer anderen Cloud als Azure](../automation-dsc-onboarding.md#physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure)
+* Windows: [Physische/virtuelle Windows-Computer, lokal oder in einer anderen Cloud als Azure/AWS](../automation-dsc-onboarding.md#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances)
+* Linux: [Physische/virtuelle Linux-Computer, lokal oder in einer anderen Cloud als Azure](../automation-dsc-onboarding.md#onboarding-physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure)
 
-### <a name="agent-has-a-problem"></a>Szenario: Fehlermeldung „Fehler beim Bereitstellen“
+### <a name="scenario-error-message---provisioning-failed"></a><a name="agent-has-a-problem"></a>Szenario: Fehlermeldung „Fehler beim Bereitstellen“
 
 #### <a name="issue"></a>Problem
 
@@ -300,7 +300,7 @@ Ermitteln Sie, ob sich Ihr Knoten in einem privaten virtuellen Netzwerk befindet
 
 Weitere Informationen finden Sie unter [Beheben von Fehlern beim Integrieren von Lösungen](onboarding.md).
 
-### <a name="failure-linux-temp-noexec"></a>Szenario: Anwenden einer Konfiguration in Linux, dabei tritt allgemeiner Fehler auf
+### <a name="scenario-applying-a-configuration-in-linux-a-failure-occurs-with-a-general-error"></a><a name="failure-linux-temp-noexec"></a>Szenario: Anwenden einer Konfiguration in Linux, dabei tritt allgemeiner Fehler auf
 
 #### <a name="issue"></a>Problem
 
@@ -318,7 +318,7 @@ Kunden haben festgestellt, dass die aktuelle Version von DSC Konfigurationen nic
 
 * Entfernen Sie die Option `noexec` aus dem Speicherort `/tmp`.
 
-### <a name="compilation-node-name-overlap"></a>Szenario: Sich überschneidende Knotenkonfigurationsnamen können zu einem fehlerhaften Release führen.
+### <a name="scenario-node-configuration-names-that-overlap-could-result-in-bad-release"></a><a name="compilation-node-name-overlap"></a>Szenario: Sich überschneidende Knotenkonfigurationsnamen können zu einem fehlerhaften Release führen.
 
 #### <a name="issue"></a>Problem
 
@@ -333,6 +333,20 @@ Bekanntes Problem beim Kompilierungsdienst
 #### <a name="resolution"></a>Lösung
 
 Sie umgehen das Problem am besten, indem Sie die Kompilierung lokal oder in einer CI/CD-Pipeline ausführen und die MOF-Dateien anschließend direkt in den Dienst hochladen.  Muss die Kompilierung im Dienst erfolgen, besteht die zweitbeste Problemumgehung darin, die Kompilierungsaufträge aufzuteilen, damit es keine Überschneidungen bei den Namen gibt.
+
+### <a name="scenario-gateway-timeout-error-on-dsc-configuration-upload"></a><a name="gateway-timeout"></a>Szenario: Gatewaytimeoutfehler beim Hochladen der DSC-Konfiguration
+
+#### <a name="issue"></a>Problem
+
+Wenn eine DSC-Konfiguration hochgeladen wird, erhalten Sie einen `GatewayTimeout`-Fehler. 
+
+#### <a name="cause"></a>Ursache
+
+Bei DSC-Konfigurationen, deren Kompilierung lange Zeit in Anspruch nimmt, kann dieser Fehler verursacht werden.
+
+#### <a name="resolution"></a>Lösung
+
+Sie können die Analyse Ihrer DSC-Konfigurationen beschleunigen, indem Sie den `ModuleName`-Parameter explizit für alle `Import-DscResource`-Aufrufe einschließen. Weitere Informationen finden Sie unter [Verwenden von Import-DSCResource](https://docs.microsoft.com/powershell/scripting/dsc/configurations/import-dscresource?view=powershell-5.1).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

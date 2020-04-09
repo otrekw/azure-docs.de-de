@@ -8,15 +8,15 @@ ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 11/6/2019
+ms.topic: how-to
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: c6e4e6a45fbbeab64184d8ae4b0684ba055d7735
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1dc5216f758c2dda263e2f61b043dbde5f76604
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613986"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655503"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-ad-domain-services-managed-domain"></a>Bereitstellen des Azure AD-Anwendungsproxys für sicheren Zugriff auf interne Anwendungen in einer über Azure AD Domain Services verwalteten Domäne
 
@@ -25,8 +25,6 @@ Mit Azure AD Domain Services (Azure AD DS) können Sie lokal ausgeführte Legac
 Wenn Sie noch nicht mit dem Azure AD-Anwendungsproxy vertraut sind und mehr darüber erfahren möchten, lesen Sie den Artikel [Remotezugriff auf lokale Anwendungen über den Azure Active Directory-Anwendungsproxy](../active-directory/manage-apps/application-proxy.md).
 
 Dieser Artikel zeigt, wie Sie einen Azure AD-Anwendungsproxyconnector erstellen und konfigurieren, um sicheren Zugriff auf Anwendungen in einer über Azure AD DS verwalteten Domäne bereitzustellen.
-
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 

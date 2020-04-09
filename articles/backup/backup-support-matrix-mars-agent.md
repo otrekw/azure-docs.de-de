@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für den MARS-Agent
 description: Dieser Artikel enthält eine Übersicht über die Azure Backup-Unterstützung beim Sichern von Computern, auf denen der MARS-Agent (Microsoft Azure Recovery Services) ausgeführt wird.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: ef57688dd7b5ccee4e71ac0a54138ac567320aa2
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 6085bc647c06b5907282460a2d8706b8549e1bc2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77582635"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79226050"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Supportmatrix für die Sicherung mit dem Microsoft Azure Recovery Services (MARS)-Agent
 
@@ -44,7 +44,7 @@ Wenn Sie Daten mit dem MARS-Agent sichern, wird eine Momentaufnahme der Daten er
 **Cache** | **Details**
 --- | ---
 Size |  Der freie Speicherplatz im Cacheordner muss mindestens 5 bis 10 Prozent der Gesamtgröße Ihrer Sicherungsdaten betragen.
-Location | Der Cacheordner muss lokal auf dem Computer gespeichert werden, der gesichert wird, und er muss online sein. Der Cacheordner darf sich nicht in einer Netzwerkfreigabe, auf Wechselmedien oder in einem Offline-Volume befinden.
+Position | Der Cacheordner muss lokal auf dem Computer gespeichert werden, der gesichert wird, und er muss online sein. Der Cacheordner darf sich nicht in einer Netzwerkfreigabe, auf Wechselmedien oder in einem Offline-Volume befinden.
 Ordner | Der Cacheordner sollte nicht verschlüsselt sein und sich nicht auf einem deduplizierten Volume oder in einem Ordner befinden, der komprimiert ist, eine geringe Dichte aufweist oder einen Analysepunkt hat.
 Andere Speicherorte | Sie können den Cachespeicherort ändern, indem Sie die Sicherungs-Engine beenden (`net stop bengine`) und den Cacheordner in ein neues Laufwerk kopieren. (Stellen Sie sicher, dass genügend Platz vorhanden ist.) Dann aktualisieren Sie zwei Registrierungseinträge unter **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**Config/ScratchLocation** und **Config/CloudBackupProvider/ScratchLocation**) auf den neuen Speicherort und starten die Engine neu.
 
@@ -97,7 +97,7 @@ Weitere Informationen finden Sie unter [ExpressRoute-Routinganforderungen](https
 Bandbreitensteuerung | Unterstützt. Verwenden Sie im MARS-Agent **Eigenschaften ändern**, um die Bandbreite anzupassen.
 Netzwerkdrosselung | Nicht verfügbar für gesicherte Computer, auf denen Windows Server 2008 R2, Windows Server 2008 SP2 oder Windows 7 ausgeführt wird.
 
-## <a name="support-for-direct-backups"></a>Unterstützung für direkte Sicherungen
+## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
 >[!NOTE]
 > Der MARS-Agent unterstützt Windows Server Core-SKUs nicht.
@@ -114,7 +114,6 @@ Dabei muss es sich um 64-Bit-Betriebssysteme handeln, die mit den neuesten Servi
 Windows 10 (Enterprise, Pro, Home) | Ja | Nein |  Überprüfen der entsprechenden Serverversion auf Software-/Modulanforderungen
 Windows 8.1 (Enterprise, Pro)| Ja |Nein | Überprüfen der entsprechenden Serverversion auf Software-/Modulanforderungen
 Windows 8 (Enterprise, Pro) | Ja | Nein | Überprüfen der entsprechenden Serverversion auf Software-/Modulanforderungen
-Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Ja | Nein | Überprüfen der entsprechenden Serverversion auf Software-/Modulanforderungen
 Windows Server 2016 (Standard, Datacenter, Essentials) | Ja | Ja | – .NET 4.5 <br> – Windows PowerShell <br> – Neuestes kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0
 Windows Server 2012 R2 (Standard, Datacenter, Foundation, Essentials) | Ja | Ja | – .NET 4.5 <br> – Windows PowerShell <br> – Neuestes kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0
 Windows Server 2012 (Standard, Datacenter, Foundation) | Ja | Ja |– .NET 4.5 <br> – Windows PowerShell <br> – Neuestes kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0 <br> – Abbildverwaltung für die Bereitstellung (Deployment Image Servicing and Management (DISM.exe))
@@ -122,6 +121,20 @@ Windows Storage Server 2016/2012 R2/2012 (Standard, Workgroup) | Ja | Nein | –
 Windows Server 2019 (Standard, Datacenter, Essentials) | Ja | Ja | – .NET 4.5 <br> – Windows PowerShell <br> – Neuestes kompatibles Microsoft VC++ Redistributable <br> – Microsoft Management Console (MMC) 3.0
 
 Weitere Informationen finden Sie unter [Unterstützte MABS- und DPM-Betriebssysteme](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
+
+### <a name="operating-systems-at-end-of-support"></a>Ablauf des Supportzeitraums für Betriebssysteme
+
+Für die folgenden Betriebssysteme ist der Supportzeitraum abgelaufen. Wir empfehlen Ihnen daher dringend, ein Betriebssystemupgrade durchzuführen, damit Sie weiter geschützt sind.
+
+Falls bestehende Verpflichtungen ein Upgrade des Betriebssystems verhindern sollten, können Sie eine Migration der Windows-Server zu Azure-VMs erwägen und Azure-VM-Sicherungen nutzen, um den Schutz aufrechtzuerhalten. Weitere Informationen zur Migration Ihrer Windows-Server finden Sie auf [dieser Seite zur Migration](https://azure.microsoft.com/migration/windows-server/).
+
+Für lokale oder gehostete Umgebungen, für die ein Upgrade des Betriebssystems oder die Migration zu Azure nicht möglich ist, sollten Sie „Erweiterte Sicherheitsupdates“ für die Computer aktivieren, damit für den Schutz und Support gesorgt ist. Beachten Sie hierbei, dass nur für bestimmte Editionen Anspruch auf „Erweiterte Sicherheitsupdates“ besteht. Weitere Informationen finden Sie auf der [Seite mit den häufig gestellten Fragen](https://www.microsoft.com/cloud-platform/extended-security-updates).
+
+| **Betriebssystem**                                       | **Dateien/Ordner** | **Systemstatus** | **Software-/Modulanforderungen**                           |
+| ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
+| Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Ja               | Nein                 | Überprüfen der entsprechenden Serverversion auf Software-/Modulanforderungen |
+| Windows Server 2008 R2 (Standard, Enterprise, Datacenter, Foundation) | Ja               | Ja                | - .NET 3.5, .NET 4.5 <br>  – Windows PowerShell <br>  – Kompatibles Microsoft VC++ Redistributable <br>  – Microsoft Management Console (MMC) 3.0 <br>  – Abbildverwaltung für die Bereitstellung (Deployment Image Servicing and Management (DISM.exe)) |
+| Windows Server 2008 SP2 (Standard, Datacenter, Foundation)  | Ja               | Nein                 | - .NET 3.5, .NET 4.5 <br>  – Windows PowerShell <br>  – Kompatibles Microsoft VC++ Redistributable <br>  – Microsoft Management Console (MMC) 3.0 <br>  – Abbildverwaltung für die Bereitstellung (Deployment Image Servicing and Management (DISM.exe)) <br>  - Virtual Server 2005 Basis + KB KB948515 |
 
 ## <a name="backup-limits"></a>Backup-Grenzwerte
 
@@ -145,7 +158,7 @@ Windows 7| 1\.700 GB
 
 **Typ** | **Unterstützung**
 --- | ---
-Verschlüsselt| Unterstützt.
+Verschlüsselt<sup>*</sup>| Unterstützt.
 Compressed | Unterstützt.
 Platzsparend | Unterstützt.
 Komprimiert und geringe Dichte |Unterstützt.
@@ -156,6 +169,8 @@ Komprimierter Stream| Wird nicht unterstützt. Übersprungen.
 Platzsparender Stream| Wird nicht unterstützt. Übersprungen.
 OneDrive (synchronisierte Dateien sind Streams mit geringer Dichte)| Wird nicht unterstützt.
 Ordner mit aktivierter DFS-Replikation | Wird nicht unterstützt.
+
+\* Stellen Sie sicher, dass für den MARS-Agent Zugriff auf die erforderlichen Zertifikate besteht, damit auf die verschlüsselten Dateien zugegriffen werden kann. Nicht zugängliche Dateien werden übersprungen.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Unterstützte Laufwerke oder Volumes für die Sicherung
 

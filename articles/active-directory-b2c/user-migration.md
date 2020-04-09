@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 90ef9402e0891915be4ed6bb89573eced546c59a
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: b3ee069985fd39288a562d3caafc50b12290c060
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78183141"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80332335"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Migrieren von Benutzern zu Azure AD B2C
 
@@ -43,7 +43,7 @@ Verwenden Sie die nahtlose Migration, wenn im alten Identitätsanbieter nicht au
 - Das Kennwort ist in einem unidirektionalen verschlüsselten Format gespeichert (etwa mit einer Hashfunktion).
 - Das Kennwort wurde vom alten Identitätsanbieter so gespeichert, dass Sie keinen Zugriff darauf haben. Dies kann beispielsweise der Fall sein, wenn der Identitätsanbieter Anmeldeinformationen per Webdienstaufruf überprüft.
 
-Bei der nahtlose Migration ist zwar ebenfalls eine Massenmigration von Benutzerkonten erforderlich, anschließend wird jedoch eine [benutzerdefinierte Richtlinie](restful-technical-profile.md) verwendet, um eine (von Ihnen erstellte) [REST-API](rest-api-claims-exchange-dotnet.md) abzufragen und das Kennwort der einzelnen Benutzer jeweils bei der ersten Anmeldung festzulegen.
+Bei der nahtlose Migration ist zwar ebenfalls eine Massenmigration von Benutzerkonten erforderlich, anschließend wird jedoch eine [benutzerdefinierte Richtlinie](custom-policy-get-started.md) verwendet, um eine (von Ihnen erstellte) [REST-API](custom-policy-rest-api-intro.md) abzufragen und das Kennwort der einzelnen Benutzer jeweils bei der ersten Anmeldung festzulegen.
 
 Die nahtlose Migration umfasst somit zwei Phasen: *Massenimport* und *Festlegen der Anmeldeinformationen*.
 
@@ -73,7 +73,7 @@ Ein Beispiel für eine benutzerdefinierte Richtlinie und eine REST-API finden Si
 
 Bei der nahtlosen Migration wird Ihre eigene benutzerdefinierte REST-API verwendet, um die Anmeldeinformationen eines Benutzers anhand der Angaben des alten Identitätsanbieters zu überprüfen.
 
-**Die REST-API muss vor Brute-Force-Angriffen geschützt sein.** Ein Angreifer kann mehrere Kennwörter übermitteln und so unter Umständen die Anmeldeinformationen eines Benutzers erraten. Beenden Sie zum Schutz vor derartigen Angriffen die Verarbeitung von Anforderungen für Ihre REST-API, wenn die Anzahl von Anmeldeversuchen einen bestimmten Schwellenwert übersteigt. Schützen Sie außerdem die Kommunikation zwischen Azure AD B2C und Ihrer REST-API mithilfe eines [Clientzertifikats](secure-rest-api-dotnet-certificate-auth.md).
+**Die REST-API muss vor Brute-Force-Angriffen geschützt sein.** Ein Angreifer kann mehrere Kennwörter übermitteln und so unter Umständen die Anmeldeinformationen eines Benutzers erraten. Beenden Sie zum Schutz vor derartigen Angriffen die Verarbeitung von Anforderungen für Ihre REST-API, wenn die Anzahl von Anmeldeversuchen einen bestimmten Schwellenwert übersteigt. Schützen Sie außerdem die Kommunikation zwischen Azure AD B2C und Ihrer REST-API. Informationen zum Schützen Ihrer RESTful-APIs für die Produktionsumgebung finden Sie unter [Schützen von RESTful-APIs](secure-rest-api.md).
 
 ### <a name="user-attributes"></a>Benutzerattribute
 

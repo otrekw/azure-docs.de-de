@@ -3,12 +3,12 @@ title: host.json-Referenz für Azure Functions 2.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v2 Runtime.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 949d4f2c5d8c1d8034ccc392915bc40f1f2fddda
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 1a861d500f0b8cc31b8312d6c955916ab741b649
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357609"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878244"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-Referenz für Azure Functions 2.x oder höher 
 
@@ -146,8 +146,6 @@ Die vollständige JSON-Struktur finden Sie in der obigen [Beispieldatei „host.
 | Eigenschaft | Standard | BESCHREIBUNG |
 | --------- | --------- | --------- | 
 | samplingSettings | – | Siehe [applicationInsights.samplingSettings](#applicationinsightssamplingsettings). |
-| samplingExcludedTypes | NULL | Eine durch Strichpunkte getrennte Liste von Typen, für die keine Stichproben erstellt werden sollen. Anerkannte Typen sind: Dependency, Event, Exception, PageView, Request, Trace. Alle Instanzen der angegebenen Typen werden übertragen. Für nicht angegebene Typen werden Stichproben erstellt. |
-| samplingIncludedTypes | NULL | Eine durch Semikolons getrennte Liste von Typen, für die Stichproben erstellt werden sollen. Eine leere Liste gibt an, dass Stichproben für alle Typen erstellt werden sollen. In `samplingExcludedTypes` aufgeführte Typen überschreiben die hier aufgeführten Typen. Anerkannte Typen sind: Dependency, Event, Exception, PageView, Request, Trace. Alle Instanzen der angegebenen Typen werden übertragen. Für nicht angegebene Typen werden Stichproben erstellt. |
 | enableLiveMetrics | true | Aktiviert die Sammlung mit Livemetriken. |
 | enableDependencyTracking | true | Aktiviert die Abhängigkeitsüberwachung. |
 | enablePerformanceCountersCollection | true | Aktiviert die Sammlung mit Kudu-Leistungsindikatoren. |
@@ -168,6 +166,8 @@ Die vollständige JSON-Struktur finden Sie in der obigen [Beispieldatei „host.
 | minSamplingPercentage | 0,1 | Diese Eigenschaft bestimmt den mindestens zulässigen Wert für den variierenden Prozentsatz der Stichprobenentnahme. |
 | maxSamplingPercentage | 0,1 | Diese Eigenschaft bestimmt den maximal zulässigen Wert für den variierenden Prozentsatz der Stichprobenentnahme. |
 | movingAverageRatio | 1.0 | Die Gewichtung, die bei der Berechnung des gleitenden Durchschnitts dem jüngsten Wert beigemessen wird. Verwenden Sie einen Wert kleiner oder gleich 1. Bei einem kleineren Wert reagiert der Algorithmus langsamer auf plötzliche Veränderungen. |
+| excludedTypes | NULL | Eine durch Strichpunkte getrennte Liste von Typen, für die keine Stichproben erstellt werden sollen. Anerkannte Typen sind: Dependency, Event, Exception, PageView, Request, Trace. Alle Instanzen der angegebenen Typen werden übertragen. Für nicht angegebene Typen werden Stichproben erstellt. |
+| includedTypes | NULL | Eine durch Semikolons getrennte Liste von Typen, für die Stichproben erstellt werden sollen. Eine leere Liste gibt an, dass Stichproben für alle Typen erstellt werden sollen. In `excludedTypes` aufgeführte Typen überschreiben die hier aufgeführten Typen. Anerkannte Typen sind: Dependency, Event, Exception, PageView, Request, Trace. Alle Instanzen der angegebenen Typen werden übertragen. Für nicht angegebene Typen werden Stichproben erstellt. |
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>applicationInsights.httpAutoCollectionOptions
 
@@ -268,7 +268,7 @@ Konfigurationseinstellungen für [Host Health Monitor](https://github.com/Azure/
 }
 ```
 
-|Eigenschaft  |Standard | Beschreibung |
+|Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------| 
 |enabled|true|Gibt an, ob die Funktion aktiviert ist. | 
 |healthCheckInterval|10 Sekunden|Das Zeitintervall zwischen den regelmäßigen Integritätsüberprüfungen im Hintergrund. | 
@@ -286,7 +286,7 @@ Steuert das Protokollierungsverhalten der Funktions-App, einschließlich Applica
 
 ```json
 "logging": {
-    "fileLoggingMode": "debugOnly"
+    "fileLoggingMode": "debugOnly",
     "logLevel": {
       "Function.MyFunction": "Information",
       "default": "None"
@@ -367,7 +367,7 @@ Konfigurationseinstellungen für das Singleton-Sperrverhalten. Weitere Informati
 }
 ```
 
-|Eigenschaft  |Standard | Beschreibung |
+|Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|Der Zeitraum, für den Sperren auf Funktionsebene gelten. Die Sperren werden automatisch verlängert.| 
 |listenerLockPeriod|00:01:00|Der Zeitraum, für den Listenersperren gelten.| 
