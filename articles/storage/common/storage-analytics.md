@@ -8,12 +8,12 @@ ms.date: 03/03/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 86b399879807e480176ee9a3ca3feaba1ec5dd85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4ad9f13bcdf36b67400adb62d58ee260ff256bb3
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250880"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637147"
 ---
 # <a name="storage-analytics"></a>Speicheranalyse
 
@@ -26,8 +26,6 @@ Die aggregierten Daten werden in einem bekannten BLOB (zur Protokollierung) und 
 Bei der Speicheranalyse ist die Menge der gespeicherten Daten auf 20 TB beschränkt. Diese Beschränkung gilt unabhängig vom Gesamtlimit für Ihr Speicherkonto. Weitere Informationen zu Speicherkontogrenzwerten finden Sie unter [Skalierbarkeits- und Leistungsziele für Standardspeicherkonten](scalability-targets-standard-account.md).
 
 Eine ausführliche Anleitung zum Verwenden der Speicheranalyse sowie weiterer Tools, um Azure Storage-bezogene Probleme zu identifizieren, zu diagnostizieren und zu beheben, finden Sie unter [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](storage-monitoring-diagnosing-troubleshooting.md).
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="billing-for-storage-analytics"></a>Abrechnung von Speicheranalysen
 

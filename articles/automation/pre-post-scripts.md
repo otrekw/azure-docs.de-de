@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 35fba966fcdb6d1c5cd7c531bb22c9c78ae16ff3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bbf7f2945ad6a94c51cfd0c7db1e8c85d739c6ed
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75417804"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631615"
 ---
 # <a name="manage-pre-and-post-scripts"></a>Verwalten von Pre- und Post-Skripts
 
@@ -18,7 +18,7 @@ Pre- und Post-Skripts (vor bzw. nach der Bereitstellung auszuführende Skripts) 
 
 ## <a name="runbook-requirements"></a>Anforderungen für Runbooks
 
-Damit ein Runbook als Pre- oder Post-Skript verwendet werden kann, muss es in Ihr Automation-Konto importiert und veröffentlicht werden. Weitere Informationen zu diesem Prozess finden Sie unter [Veröffentlichen eines Runbooks](manage-runbooks.md#publish-a-runbook).
+Damit ein Runbook als Pre- oder Post-Skript verwendet werden kann, muss es in Ihr Automation-Konto importiert und veröffentlicht werden. Weitere Informationen zu diesem Prozess finden Sie unter [Veröffentlichen eines Runbooks](manage-runbooks.md#publishing-a-runbook).
 
 ## <a name="using-a-pre-script-or-post-script"></a>Verwenden eines Pre- oder Post-Skripts
 

@@ -1,7 +1,7 @@
 ---
-title: Filtern, Sortieren und Paginieren von Media Services v3-Entitäten
+title: Filtern, Sortieren und Paginieren von Media Services-Entitäten
 titleSuffix: Azure Media Services
-description: Informationen zum Filtern, Sortieren und Paginieren von Azure Media Services-Entitäten.
+description: Informationen zum Filtern, Sortieren und Paginieren von Azure Media Services v3-Entitäten.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 01/21/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: c5ae9839b7bbb86e28c9f8adab0aa0ec5e885087
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 7e4f1141a9d4bd58451782e8412063a22565556d
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311698"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584533"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Filtern, Sortieren und Paginieren von Media Services-Entitäten
 
@@ -188,4 +188,4 @@ Die folgende Tabelle zeigt, wie Sie die Filter- und Sortieroptionen auf verschie
 * [Auflisten von Streamingrichtlinien](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
 * [Auflisten von Streaminglocators](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
 * [Streamen einer Datei](stream-files-dotnet-quickstart.md)
-* [Kontingente und Einschränkungen](limits-quotas-constraints.md)
+* [Kontingente und Grenzwerte](limits-quotas-constraints.md)

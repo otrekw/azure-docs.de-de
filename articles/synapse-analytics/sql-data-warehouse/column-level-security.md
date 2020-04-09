@@ -12,24 +12,23 @@ ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 24ead458232b096a5c69ffe8b45c6298a9da9f75
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 61a3e2eadaf79cdb30a931b31cff709298d0a22c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349096"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631296"
 ---
 # <a name="column-level-security"></a>Sicherheit auf Spaltenebene
 
 Mit der Sicherheit auf Spaltenebene können Kunden den Zugriff auf Tabellenspalten basierend auf dem Ausführungskontext oder der Gruppenmitgliedschaft des Benutzers steuern.
 
-
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
-Nach der Bereitstellung dieses Videos wurde auch die [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) in Azure Synapse verfügbar gemacht. 
+Nach der Bereitstellung dieses Videos wurde auch die [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) in Azure Synapse verfügbar gemacht.
 
 Sicherheit auf Spaltenebene vereinfacht das Entwerfen und Programmieren der Sicherheit in Ihrer Anwendung, indem Sie den Spaltenzugriff einschränken können, um vertrauliche Daten zu schützen. Zum Beispiel können Sie so sicherstellen, dass bestimmte Benutzer nur auf bestimmte Spalten einer Tabelle zugreifen können, die für ihre Abteilung relevant sind. Die Datenbeschränkungszugriffslogik befindet sich auf der Datenbankebene, statt fern der Daten auf einer anderen Anwendungsebene. Die Datenbank wendet die Zugriffsbeschränkungen jedes Mal an, wenn ein Datenzugriff von einer beliebigen Ebene aus versucht wird. Dadurch bietet Ihr gesamtes Sicherheitssystem eine geringere Angriffsfläche und ist zuverlässiger und robuster. Darüber hinaus entfällt dank Sicherheit auf Spaltenebene die Notwendigkeit, Sichten zum Herausfiltern von Spalten einzuführen, um den Benutzern Zugriffsbeschränkungen aufzuerlegen.
 
-Sie können die Sicherheit auf Spaltenebene mit der T-SQL-Anweisung [GRANT](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) implementieren. Mit diesem Mechanismus wird sowohl die SQL- als auch die Azure Active Directory (AAD)-Authentifizierung unterstützt.
+Sie können die Sicherheit auf Spaltenebene mit der T-SQL-Anweisung [GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) implementieren. Mit diesem Mechanismus wird sowohl die SQL- als auch die Azure Active Directory (AAD)-Authentifizierung unterstützt.
 
 ![cls](./media/column-level-security/cls.png)
 
@@ -52,6 +51,7 @@ GRANT <permission> [ ,...n ] ON
 ```
 
 ## <a name="example"></a>Beispiel
+
 Im folgenden Beispiel wird erläutert, wie der Zugriff von `TestUser` auf die Spalte `SSN` in der Tabelle `Membership` eingeschränkt wird:
 
 Erstellen Sie die Tabelle `Membership` mit einer Spalte „SSN“, um Sozialversicherungsnummern zu speichern:

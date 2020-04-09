@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: cfeff430e5313c8728582c4790c9aca9482d63aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c85d6078fce7fc8e5a5b5d8485517a8b262044a9
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79534915"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802330"
 ---
 # <a name="create-a-map"></a>Erstellen einer Karte
 
@@ -26,7 +26,7 @@ Um eine Karte zu laden, erstellen Sie eine neue Instanz der [Map-Klasse](https:/
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Grundlegende Kartenladefunktion" src="//codepen.io/azuremaps/embed/rXdBXx/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Grundlegende Kartenladefunktion" src="//codepen.io/azuremaps/embed/rXdBXx/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/rXdBXx/'>Basic map load</a> (Grundlegende Kartenladefunktion) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -39,7 +39,7 @@ Wenn der Maßstab einer Karte auf einem Breitbildschirm verkleinert wird, werden
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="renderWorldCopies = false" src="//codepen.io/azuremaps/embed/eqMYpZ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="renderWorldCopies = false" src="//codepen.io/azuremaps/embed/eqMYpZ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Sehen Sie sich den Pen <a href='https://codepen.io/azuremaps/pen/eqMYpZ/'>renderWorldCopies = false</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a> an.
 </iframe>
 

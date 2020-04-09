@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 56975c52b22b90840fb1534187e99f6efa19469e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: 3ba06ea592d51eedbe827e1ab6418f65722d579c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79527672"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632300"
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Anpassen der Serverkonfigurationsparameter mithilfe der Azure CLI
 Sie können Konfigurationsparameter für einen Azure Database for MariaDB-Server mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) auflisten, anzeigen und aktualisieren. Auf Serverebene ist eine Teilmenge der Engine-Konfigurationen verfügbar und kann geändert werden.
@@ -59,10 +59,10 @@ Dieser Code setzt die Konfiguration **slow\_query\_log** auf den Standardwert **
 
 ### <a name="populating-the-time-zone-tables"></a>Auffüllen der Zeitzonentabellen
 
-Die Zeitzonentabellen auf Ihrem Server können durch Aufrufen der gespeicherten Prozedur `az_load_timezone` über ein Tool wie die MariaDB-Befehlszeile oder MariaDB Workbench aufgefüllt werden.
+Die Zeitzonentabellen auf Ihrem Server können durch Aufrufen der gespeicherten Prozedur `mysql.az_load_timezone` über ein Tool wie die MariaDB-Befehlszeile oder MariaDB Workbench aufgefüllt werden.
 
 > [!NOTE]
-> Wenn Sie den Befehl `az_load_timezone` in MariaDB Workbench ausführen, müssen Sie unter Umständen zuerst den sicheren Aktualisierungsmodus mit `SET SQL_SAFE_UPDATES=0;` deaktivieren.
+> Wenn Sie den Befehl `mysql.az_load_timezone` in MariaDB Workbench ausführen, müssen Sie unter Umständen zuerst den sicheren Aktualisierungsmodus mit `SET SQL_SAFE_UPDATES=0;` deaktivieren.
 
 ```sql
 CALL mysql.az_load_timezone();

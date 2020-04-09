@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: af303928490d2570fa9430bd4b9d30c4a49df304
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 91cf594e74d91b8b4df2108d23459016fa843700
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78675489"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586602"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Schnellstart: Ermöglichen von SSH und RDP über einen IoT Hub-Gerätestream unter Verwendung einer C-Proxyanwendung (Vorschauversion)
 
@@ -33,7 +33,7 @@ Die folgende Abbildung zeigt, wie die lokalen Geräte- und Dienstproxyprogramme 
 * [SSH/RDP über IoT Hub-Gerätestreams unter Verwendung einer C#-Proxyanwendung](./quickstart-device-streams-proxy-csharp.md)
 * [SSH/RDP über IoT Hub-Gerätestreams unter Verwendung einer Node.js-Proxyanwendung](./quickstart-device-streams-proxy-nodejs.md)
 
-![Setup des lokalen Proxys](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg)
+![Setup des lokalen Proxys](./media/quickstart-device-streams-proxy-c/device-stream-proxy-diagram.png)
 
 1. Der lokale Dienstproxy stellt eine Verbindung mit dem IoT-Hub her und initiiert einen Gerätestream an das Zielgerät.
 

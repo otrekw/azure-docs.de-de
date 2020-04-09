@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: fb2f9ff5af68575d9f9d29e9a6aca83d603395b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ff9e62ed145b7892d2997193dae8e171ae49c98
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77672411"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585380"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>Erstellen einer Diagnoseeinstellung zum Erfassen von Plattformprotokollen und Metriken in Azure
 [Plattformprotokolle](platform-logs-overview.md) in Azure, wie Azure-Aktivitätsprotokolle und Ressourcenprotokolle, liefern detaillierte Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. Dieser Artikel enthält Details zum Erstellen und Konfigurieren von Diagnoseeinstellungen, um Plattformprotokolle an verschiedene Ziele zu senden.
@@ -53,7 +53,7 @@ Sie können Diagnoseeinstellungen im-Azure-Portal entweder über das Azure Monit
     
         ![Diagnoseeinstellungen](media/diagnostic-settings/menu-monitor.png)
 
-    - Für das Aktivitätsprotokoll klicken Sie im **Azure Monitor**-Menü auf **Aktivitätsprotokoll** und dann auf **Diagnoseeinstellungen**. Stellen Sie sicher, dass Sie alle Legacykonfigurationen für das Aktivitätsprotokoll deaktivieren. Ausführliche Informationen dazu finden Sie unter [Deaktivieren vorhandener Einstellungen](diagnostic-settings-legacy.md#disable-existing-settings).
+    - Für das Aktivitätsprotokoll klicken Sie im **Azure Monitor**-Menü auf **Aktivitätsprotokoll** und dann auf **Diagnoseeinstellungen**. Stellen Sie sicher, dass Sie alle Legacykonfigurationen für das Aktivitätsprotokoll deaktivieren. Ausführliche Informationen dazu finden Sie unter [Deaktivieren vorhandener Einstellungen](/azure/azure-monitor/platform/activity-log-collect#collecting-activity-log).
 
         ![Diagnoseeinstellungen](media/diagnostic-settings/menu-activity-log.png)
 

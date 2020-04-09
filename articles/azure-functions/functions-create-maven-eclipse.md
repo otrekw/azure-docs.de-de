@@ -2,16 +2,16 @@
 title: Erstellen einer Azure-Funktions-App mit Java und Eclipse
 description: Anleitung zum Erstellen und Veröffentlichen einer einfachen über HTTP ausgelösten und serverlosen App für Azure Functions mithilfe von Java und Eclipse.
 author: jeffhollan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c82432a3d76a84eba1ad921d936b2f3ba064e2ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42e9ed7c080c9274fad7eda8e4c8af3631ed41f5
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136832"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756482"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Erstellen der ersten Funktion mit Java und Eclipse 
 

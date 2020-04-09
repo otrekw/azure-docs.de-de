@@ -10,12 +10,12 @@ ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: a9ac9a3167d5335f6a6fd44049c892ba463dacad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f474ec121f444f5f0c41272f5d87a7f8abfadb8d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372673"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657048"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Tutorial: Entwickeln und Bereitstellen eines Python-IoT Edge-Moduls für Linux-Geräte
 
@@ -265,7 +265,7 @@ Andernfalls können Sie die in diesem Artikel verwendeten lokalen Konfiguratione
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie ein IoT Edge-Modul erstellt, das Code zum Filtern von Rohdaten enthält, die von Ihrem IoT Edge-Gerät generiert wurden. Wenn Sie jetzt Ihre eigenen Module entwickeln möchten, können Sie mehr zum [Entwickeln Ihrer eigenen IoT Edge-Module](module-development.md) oder zum [Entwickeln von Modulen mit Visual Studio Code](how-to-vs-code-develop-module.md) erfahren. Beispiele für IoT Edge-Module, einschließlich des Moduls für simulierte Temperatur, finden Sie unter [IoT Edge-Modulbeispiele](https://github.com/Azure/iotedge/tree/master/edge-modules) und [IoT-Python-SDK-Beispiele](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/advanced-edge-scenarios).
+In diesem Tutorial haben Sie ein IoT Edge-Modul erstellt, das Code zum Filtern von Rohdaten enthält, die von Ihrem IoT Edge-Gerät generiert wurden. Wenn Sie jetzt Ihre eigenen Module entwickeln möchten, können Sie mehr zum [Entwickeln Ihrer eigenen IoT Edge-Module](module-development.md) oder zum [Entwickeln von Modulen mit Visual Studio Code](how-to-vs-code-develop-module.md) erfahren. Beispiele für IoT Edge-Module, einschließlich des Moduls für simulierte Temperatur, finden Sie unter [IoT Edge-Modulbeispiele](https://github.com/Azure/iotedge/tree/master/edge-modules) und [IoT-Python-SDK-Beispiele](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios).
 
 Sie können die nächsten Tutorials durcharbeiten, um zu erfahren, wie Ihnen Azure IoT Edge bei der Bereitstellung von Azure-Clouddiensten helfen kann, um Daten auf Edge-Ebene zu verarbeiten und zu analysieren.
 

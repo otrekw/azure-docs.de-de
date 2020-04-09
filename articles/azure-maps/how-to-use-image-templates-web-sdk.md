@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: f3b1141ea3c3c8e33b8a2ae12c22b6962a90d32b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee8e8ee4ca64de0390b6fa34e36fb4d06348a8ac
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198223"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804808"
 ---
 # <a name="how-to-use-image-templates"></a>Verwenden von Imagevorlagen
 
@@ -58,7 +58,7 @@ Das folgende Beispiel rendert eine Symbolebene mit der Bildvorlage `marker-flat`
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Symbolebene mit integrierter Symbolvorlage" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Symbolebene mit integrierter Symbolvorlage" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/VoQMPp/'>Symbolebene mit integrierter Symbolvorlage</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -70,7 +70,7 @@ Das folgende Beispiel rendert eine rosafarbene Linie auf der Karte und verwendet
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Linienebene mit integrierter Symbolvorlage" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Linienebene mit integrierter Symbolvorlage" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/KOQvJe/'>Linienebene mit integrierter Symbolvorlage</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -85,7 +85,7 @@ Das folgende Beispiel rendert eine Polygonebene mit der Bildvorlage `dot` mit ei
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="F체llpolygon mit integrierter Symbolvorlage" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="F체llpolygon mit integrierter Symbolvorlage" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/WVMEmz/'>F체llpolygon mit integrierter Symbolvorlage</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -100,7 +100,7 @@ Das folgende Beispiel verwendet die `marker-arrow`-Vorlage mit einer roten Prim�
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="HTML-Marker mit integrierter Symbolvorlage" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="HTML-Marker mit integrierter Symbolvorlage" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/EqQvzq/'>HTML-Marker mit integrierter Symbolvorlage</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -127,7 +127,7 @@ Das folgende Beispiel zeigt, wie Sie eine SVG-Vorlage als wiederverwendbare Symb
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Hinzuf체gen einer benutzerdefinierten Symbolvorlage zum Atlas-Namespace" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Hinzuf체gen einer benutzerdefinierten Symbolvorlage zum Atlas-Namespace" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/NQyvEX/'>Hinzuf체gen einer Symbolvorlage zum Atlas-Namespace</a> von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 

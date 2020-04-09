@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 03/20/2020
+ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: 24030a568dd4df7f3e0888e2bda8f1335e52ba38
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 8a1dd07fd567f41c2b406aabccd0421b5a6983af
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80241794"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671211"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -23,7 +23,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 > [!div class="checklist"]
 > * [Erstellen einer Azure Speech-Ressource](~/articles/cognitive-services/speech-service/get-started.md)
-> * [Einrichten Ihrer Entwicklungsumgebung und Erstellen eines leeren Projekts](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=android)
+> * [Einrichten Ihrer Entwicklungsumgebung und Erstellen eines leeren Projekts](~/articles/cognitive-services/speech-service/quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
 > * Erstellen eines Bots, der mit dem [Direct Line Speech-Kanal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) verbunden ist
 > * Stellen Sie sicher, dass Sie Zugriff auf ein Mikrofon für die Audioaufnahme haben.
 

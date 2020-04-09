@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d888c8fd3bf7cd44c37e7225618bd197f419d275
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dff9b8f52207a38cf7eaddefa178aff262ddc546
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76030131"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585549"
 ---
 # <a name="create-configurations-from-existing-servers"></a>Erstellen von Konfigurationen aus vorhandenen Servern
 
@@ -39,7 +39,7 @@ Die neueste Version verfügt über mehrere [Extraktionsmodi](https://github.com/
 Das Ergebnis der Verwendung der Lösung ist das Generieren von [Konfigurationsdaten](https://github.com/Microsoft/sharepointDSC.reverse#configuration-data) zur Verwendung mit SharePointDSC-Konfigurationsskripts.
 
 Sobald die Datendateien einmal generiert sind, können Sie sie mit [DSC-Konfigurationsskripts](/powershell/scripting/dsc/overview/overview) verwenden, um MOF-Dateien zu generieren und die [MOF-Dateien in Azure Automation hochzuladen](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
-Danach registrieren Sie Ihre Server entweder von [lokal](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) oder [in Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) um Konfigurationen abzurufen.
+Danach registrieren Sie Ihre Server entweder von [lokal](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) oder [in Azure](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms) um Konfigurationen abzurufen.
 
 Um ReverseDSC zu testen, besuchen Sie den [PowerShell-Katalog](https://www.powershellgallery.com/packages/ReverseDSC/), und laden Sie die Lösung herunter, oder klicken Sie auf „Projektwebsite“, um die [Dokumentation](https://github.com/Microsoft/sharepointDSC.reverse) anzuzeigen.
 

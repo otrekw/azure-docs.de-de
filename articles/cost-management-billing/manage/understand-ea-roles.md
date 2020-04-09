@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.author: banders
-ms.openlocfilehash: f31d8638e8672feafc1ab822acecb78ec0a48b11
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 28fff2a24f703e0cff967bdde29a7b1238e197ee
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202772"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586146"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Informationen zu Azure Enterprise Agreement-Administratorrollen in Azure
 
@@ -46,18 +46,18 @@ Die folgenden Abschnitte beschreiben die Einschränkungen und Funktionen der ein
 
 ## <a name="organization-structure-and-permissions-by-role"></a>Organisationsstruktur und Berechtigungen nach Rolle
 
-|Aufgaben| Unternehmensadministrator|Unternehmensadministrator (nur Leseberechtigung)|Abteilungsadministrator|Abteilungsadministrator (nur Leseberechtigung)|Kontobesitzer|
-|---|---|---|---|---|---|
-|Anzeigen von Unternehmensadministratoren|✔|✔|✘|✘|✘|
-|Hinzufügen und Entfernen von Unternehmensadministratoren|✔|✘|✘|✘|✘|
-|Anzeigen von Benachrichtigungskontakten<sup>4</sup> |✔|✔|✘|✘|✘|
-|Hinzufügen und Entfernen von Benachrichtigungskontakten<sup>4</sup> |✔|✘|✘|✘|✘|
-|Erstellen und Verwalten von Abteilungen |✔|✘|✘|✘|✘|
-|Anzeigen von Abteilungsadministratoren|✔|✔|✔|✔|✘|
-|Hinzufügen und Entfernen von Abteilungsadministratoren|✔|✘|✔|✘|✘|
-|Anzeigen von Konten in der Registrierung |✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|
-|Hinzufügen von zur Registrierung und Ändern des Kontobesitzers|✔|✘|✔<sup>5</sup>|✘|✘|
-|Erstellen und Verwalten von Abonnements und Abonnementberechtigungen|✘|✘|✘|✘|✔|
+|Aufgaben| Unternehmensadministrator|Unternehmensadministrator (nur Leseberechtigung)|Abteilungsadministrator|Abteilungsadministrator (nur Leseberechtigung)|Kontobesitzer| Partner|
+|---|---|---|---|---|---|---|
+|Anzeigen von Unternehmensadministratoren|✔|✔|✘|✘|✘|✔|
+|Hinzufügen und Entfernen von Unternehmensadministratoren|✔|✘|✘|✘|✘|✘|
+|Anzeigen von Benachrichtigungskontakten<sup>4</sup> |✔|✔|✘|✘|✘|✔|
+|Hinzufügen und Entfernen von Benachrichtigungskontakten<sup>4</sup> |✔|✘|✘|✘|✘|✘|
+|Erstellen und Verwalten von Abteilungen |✔|✘|✘|✘|✘|✘|
+|Anzeigen von Abteilungsadministratoren|✔|✔|✔|✔|✘|✔|
+|Hinzufügen und Entfernen von Abteilungsadministratoren|✔|✘|✔|✘|✘|✘|
+|Anzeigen von Konten in der Registrierung |✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|✔|
+|Hinzufügen von zur Registrierung und Ändern des Kontobesitzers|✔|✘|✔<sup>5</sup>|✘|✘|✘|
+|Erstellen und Verwalten von Abonnements und Abonnementberechtigungen|✘|✘|✘|✘|✔|✘|
 
 - <sup>4</sup> Benachrichtigungskontakte erhalten E-Mail-Benachrichtigungen zum Azure Enterprise Agreement.
 - <sup>5</sup> Die Aufgabe ist auf Konten in Ihrer Abteilung beschränkt.
@@ -65,14 +65,14 @@ Die folgenden Abschnitte beschreiben die Einschränkungen und Funktionen der ein
 
 ## <a name="usage-and-costs-access-by-role"></a>Zugriff auf Nutzung und Kosten nach Rolle
 
-|Aufgaben| Unternehmensadministrator|Unternehmensadministrator (nur Leseberechtigung)|Abteilungsadministrator|Abteilungsadministrator (nur Leseberechtigung) |Kontobesitzer|
-|---|---|---|---|---|---|
-|Anzeigen des Guthabens einschließlich finanzieller Verpflichtung|✔|✔|✘|✘|✘|
-|Anzeigen von Ausgabenkontingenten der Abteilungen|✔|✔|✘|✘|✘|
-|Festlegen von Ausgabenkontingenten der Abteilungen|✔|✘|✘|✘|✘|
-|Anzeigen der EA-Preisliste der Organisation|✔|✔|✘|✘|✘|
-|Anzeigen von Nutzungs- und Kostendetails|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|
-|Verwalten von Ressourcen im Azure-Portal|✘|✘|✘|✘|✔|
+|Aufgaben| Unternehmensadministrator|Unternehmensadministrator (nur Leseberechtigung)|Abteilungsadministrator|Abteilungsadministrator (nur Leseberechtigung) |Kontobesitzer| Partner|
+|---|---|---|---|---|---|---|
+|Anzeigen des Guthabens einschließlich finanzieller Verpflichtung|✔|✔|✘|✘|✘|✔|
+|Anzeigen von Ausgabenkontingenten der Abteilungen|✔|✔|✘|✘|✘|✔|
+|Festlegen von Ausgabenkontingenten der Abteilungen|✔|✘|✘|✘|✘|✘|
+|Anzeigen der EA-Preisliste der Organisation|✔|✔|✘|✘|✘|✔|
+|Anzeigen von Nutzungs- und Kostendetails|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|✔|
+|Verwalten von Ressourcen im Azure-Portal|✘|✘|✘|✘|✔|✘|
 
 - <sup>6</sup> Erfordert die Aktivierung der Richtlinie **DA-Ansichtsgebühren** im Enterprise Portal durch den Unternehmensadministrator. Der Abteilungsadministrator kann dann Kostendetails für die Abteilung einsehen.
 - <sup>7</sup> Erfordert die Aktivierung der Richtlinie **AO-Ansichtsgebühren** im Enterprise Portal durch den Unternehmensadministrator. Der Kontobesitzer kann dann Kostendetails für das Konto einsehen.

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/17/2019
+ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: be8497cb07bd3c761c59bfc55e773b5dcc937c50
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 6b3c8c62382d548d8a1bc7d5f611cdfbe2fd72fb
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925081"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671810"
 ---
 > [!NOTE]
 > Das Speech SDK für Unity unterstützt Windows Desktop (x86 und x64) oder die universelle Windows-Plattform (x86, x64, ARM/ARM64) sowie Android (x86, ARM32/64) und iOS (x64-Simulator, ARM32 und ARM64).
@@ -25,7 +25,7 @@ Bevor Sie beginnen:
 
 > [!div class="checklist"]
 > * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
-> * [Einrichten Ihrer Entwicklungsumgebung und Erstellen eines leeren Projekts](../../../../quickstarts/setup-platform.md?tabs=unity)
+> * [Einrichten Ihrer Entwicklungsumgebung und Erstellen eines leeren Projekts](../../../../quickstarts/setup-platform.md?tabs=unity&pivots=programming-language-csharp)
 > * Stellen Sie sicher, dass Sie Zugriff auf ein Mikrofon für die Audioaufnahme haben.
 
 Wenn Sie dies bereits getan haben, umso besser. Wir fahren fort.
@@ -133,4 +133,4 @@ Weitere Informationen finden Sie in unserem [Beispielrepository](https://aka.ms/
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [footer](../footer.md)]

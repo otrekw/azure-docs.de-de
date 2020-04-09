@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: cf9c79f608aa3ffd1137be41ff3348f62b890867
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8509af7829910bdda8bba3d63553e83626fe784
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198308"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804672"
 ---
 # <a name="drawing-tool-events"></a>Ereignisse von Zeichentools
 
@@ -31,7 +31,7 @@ Der folgende Code zeigt, wie die Ereignisse im Zeichentools-Modul funktionieren.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Ereignisse von Zeichentools" src="https://codepen.io/azuremaps/embed/dyPMRWo?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Ereignisse von Zeichentools" src="https://codepen.io/azuremaps/embed/dyPMRWo?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/dyPMRWo'>Drawing tools events</a> (Ereignisse von Zeichentools) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -59,7 +59,7 @@ Dieser Code sucht innerhalb des Bereichs einer Form nach POIs, nachdem der Benut
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Zeichnen und Suchen in einem Polygonbereich" src="https://codepen.io/azuremaps/embed/eYmZGNv?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Zeichnen und Suchen in einem Polygonbereich" src="https://codepen.io/azuremaps/embed/eYmZGNv?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/eYmZGNv'>Draw and search in polygon area</a> (Zeichnen und Suchen in einem Polygonbereich) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -71,7 +71,7 @@ Der folgende Code veranschaulicht, wie mithilfe von Zeichenereignissen ein Messt
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Messtool" src="https://codepen.io/azuremaps/embed/RwNaZXe?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Messtool" src="https://codepen.io/azuremaps/embed/RwNaZXe?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/RwNaZXe'>Measuring tool</a> (Messtool) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 

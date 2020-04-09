@@ -11,17 +11,19 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c868d8c159bca0c8462acde48225dc45003cf84e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 56ab49949b4ea2a92bc591042b2d43a7f7b2dc63
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350991"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632678"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Speicher- und Parallelitätsgrenzwerte für Azure Synapse Analytics
+
 Zeigen Sie die Speicher- und Parallelitätsgrenzwerte an, die den verschiedenen Leistungsstufen und Ressourcenklassen in Azure Synapse Analytics zugewiesen sind.  
 
 ## <a name="data-warehouse-capacity-settings"></a>Data Warehouse-Kapazitätseinstellungen
+
 Die folgenden Tabellen zeigen die maximale Kapazität für das Data Warehouse auf unterschiedlichen Leistungsstufen. Informationen zum Ändern der Leistungsstufe finden Sie unter [Skalieren von Computerressourcen – Portal](quickstart-scale-compute-portal.md).
 
 ### <a name="service-levels"></a>Servicelevel
@@ -50,7 +52,8 @@ Die Servicelevel reichen von DW100c bis DW30000c.
 Der maximale Servicelevel ist DW30000c mit 60 Serverknoten und einer Verteilung pro Serverknoten. Beispielsweise verarbeitet ein 600-TB-Data Warehouse mit DW30000c etwa 10 TB pro Serverknoten.
 
 ## <a name="concurrency-maximums-for-workload-groups"></a>Parallelitätshöchstwerte für Workloadgruppen
-Mit der Einführung von [Workloadgruppen](sql-data-warehouse-workload-isolation.md) gilt das Konzept von Parallelitätsslots nicht mehr.  Ressourcen werden pro Anforderung auf der Grundlage eines Prozentsatzes zugeordnet und in der Definition der Workloadgruppe angegeben.  Trotz der Entfernung von Parallelitätsslots gibt es jedoch je nach Dienstebene eine Mindestanzahl von Ressourcen, die pro Abfrage benötigt werden.  In der folgenden Tabelle ist die minimale Menge an Ressourcen definiert, die pro Abfrage auf den einzelnen Dienstebenen und die damit verbundene Parallelität erforderlich ist. 
+
+Mit der Einführung von [Workloadgruppen](sql-data-warehouse-workload-isolation.md) gilt das Konzept von Parallelitätsslots nicht mehr.  Ressourcen werden pro Anforderung auf der Grundlage eines Prozentsatzes zugeordnet und in der Definition der Workloadgruppe angegeben.  Trotz der Entfernung von Parallelitätsslots gibt es jedoch je nach Dienstebene eine Mindestanzahl von Ressourcen, die pro Abfrage benötigt werden.  In der folgenden Tabelle ist die minimale Menge an Ressourcen definiert, die pro Abfrage auf den einzelnen Dienstebenen und die damit verbundene Parallelität erforderlich ist.
 
 |Dienstebene|Maximale Anzahl gleichzeitiger Abfragen|Min. % unterstützt für REQUEST_MIN_RESOURCE_GRANT_PERCENT|
 |---|---|---|
@@ -73,7 +76,8 @@ Mit der Einführung von [Workloadgruppen](sql-data-warehouse-workload-isolation.
 ||||
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>Parallelitätshöchstwerte für Ressourcenklassen
-Um sicherzustellen, dass für jede Abfrage genügend Ressourcen zur effizienten Ausführung zur Verfügung stehen, verfolgt SQL Analytics in Azure Synapse die Nutzung von Ressourcen, indem jeder Abfrage Parallelitätsslots zugewiesen werden. Das System stellt Abfragen basierend auf Wichtigkeit und Parallelitätsslots in eine Warteschlange. Abfragen verbleiben in der Warteschlange, bis genügend Parallelitätsslots verfügbar sind. [Wichtigkeit](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) und Parallelitätsslots legen außerdem die CPU-Prioritäten fest. Weitere Informationen finden Sie unter [Analysieren Ihrer Workload](analyze-your-workload.md).
+
+Um sicherzustellen, dass für jede Abfrage genügend Ressourcen zur effizienten Ausführung zur Verfügung stehen, verfolgt SQL Analytics in Azure Synapse die Nutzung von Ressourcen, indem jeder Abfrage Parallelitätsslots zugewiesen werden. Das System stellt Abfragen basierend auf Wichtigkeit und Parallelitätsslots in eine Warteschlange. Abfragen verbleiben in der Warteschlange, bis genügend Parallelitätsslots verfügbar sind. [Wichtigkeit](sql-data-warehouse-workload-importance.md) und Parallelitätsslots legen außerdem die CPU-Prioritäten fest. Weitere Informationen finden Sie unter [Analysieren Ihrer Workload](analyze-your-workload.md).
 
 **Statische Ressourcenklassen**
 
@@ -121,11 +125,11 @@ Die folgende Tabelle zeigt die maximale Anzahl gleichzeitiger Abfragen und die P
 | DW15000c      | 32                         |  600                        | 18                    | 60                     | 132                   | 420                    |
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
-
-Wenn nicht genügend Parallelitätsslots verfügbar sind, um die Abfrageausführung zu starten, werden Abfragen in die Warteschlange eingereiht und basierend auf ihrer Wichtigkeit ausgeführt.  Wenn die Wichtigkeit gleichwertig ist, werden Abfragen auf FIFO-Basis (First In, First Out) ausgeführt.  Wenn eine Abfrage abgeschlossen wird und die Anzahl von Abfragen und Slots unter die Grenzwerte sinkt, gibt SQL Data Warehouse Abfragen in der Warteschlange frei. 
+Wenn nicht genügend Parallelitätsslots verfügbar sind, um die Abfrageausführung zu starten, werden Abfragen in die Warteschlange eingereiht und basierend auf ihrer Wichtigkeit ausgeführt.  Wenn die Wichtigkeit gleichwertig ist, werden Abfragen auf FIFO-Basis (First In, First Out) ausgeführt.  Wenn eine Abfrage abgeschlossen wird und die Anzahl von Abfragen und Slots unter die Grenzwerte sinkt, gibt SQL Data Warehouse Abfragen in der Warteschlange frei.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum Verwenden von Ressourcenklassen zum weiteren Optimieren Ihrer Workload finden Sie in den folgenden Artikeln:
+
 * [Ressourcenklassen für die Workloadverwaltung](resource-classes-for-workload-management.md)
 * [Analysieren Ihrer Workload](analyze-your-workload.md)

@@ -2,17 +2,17 @@
 title: 'Azure ExpressRoute: Verschieben klassischer Verbindungen in Resource Manager'
 description: Auf dieser Seite wird beschrieben, wie Sie mithilfe von PowerShell eine klassische Verbindung in das Resource Manager-Bereitstellungsmodell verschieben.
 services: expressroute
-author: ganesr
+author: charwen
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.author: cherylmc
-ms.openlocfilehash: 4e49a3bc803733f5e78207fa3573c93395924d6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: charwen
+ms.openlocfilehash: d3014aae44b8d63be67cd0d31f996470aeda40df
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74080171"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616274"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>Umstellen von ExpressRoute-Verbindungen vom klassischen auf das Resource Manager-Bereitstellungsmodell mithilfe von PowerShell
 

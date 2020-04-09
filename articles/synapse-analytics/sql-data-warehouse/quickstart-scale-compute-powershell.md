@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c7ec8db212a24f1f23f393e4cb0e7f4150605a56
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e3038617c6270acf9af295c910e9fd5c7dae2043
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350797"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633783"
 ---
 # <a name="quickstart-scale-compute-for-synapse-sql-pool-with-azure-powershell"></a>Schnellstart: Skalieren von Computeressourcen für den Synapse-SQL-Pool mit Azure PowerShell
 
-Sie können Computeressourcen für den Synapse-SQL-Pool (Data Warehouse) per Azure PowerShell skalieren. [Skalieren Sie Computeressourcen auf](sql-data-warehouse-manage-compute-overview.md), um eine bessere Leistung zu erzielen, oder skalieren Sie sie ab, um Kosten einzusparen. 
+Sie können Computeressourcen für den Synapse-SQL-Pool (Data Warehouse) per Azure PowerShell skalieren. [Skalieren Sie Computeressourcen auf](sql-data-warehouse-manage-compute-overview.md), um eine bessere Leistung zu erzielen, oder skalieren Sie sie ab, um Kosten einzusparen.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -32,19 +32,19 @@ In dieser Schnellstartanleitung wird vorausgesetzt, dass Sie bereits über einen
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Melden Sie sich mit dem Befehl [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
+Melden Sie sich mit dem Befehl [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
 
 ```powershell
 Connect-AzAccount
 ```
 
-Verwenden Sie [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription), um zu ermitteln, welches Abonnement Sie verwenden.
+Verwenden Sie [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), um zu ermitteln, welches Abonnement Sie verwenden.
 
 ```powershell
 Get-AzSubscription
 ```
 
-Falls Sie ein anderes Abonnement als das Standardabonnement verwenden müssen, führen Sie [Set-AzContext](/powershell/module/az.accounts/set-azcontext) aus.
+Falls Sie ein anderes Abonnement als das Standardabonnement verwenden müssen, führen Sie [Set-AzContext](/powershell/module/az.accounts/set-azcontext?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) aus.
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"
@@ -69,7 +69,7 @@ Führen Sie die folgenden Schritte aus, um nach Informationen zu Ihrem Data Ware
 
 Im SQL-Pool können Sie die Menge der Computeressourcen durch das Anpassen der Data Warehouse-Einheiten (DWUs) erhöhen oder verringern. Mit dem [Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal](create-data-warehouse-portal.md) wurde **mySampleDataWarehouse** erstellt und mit 400 DWUs initialisiert. In den folgenden Schritten werden die DWUs für **mySampleDataWarehouse** angepasst.
 
-Um die Data Warehouse-Einheiten zu ändern, verwenden Sie das PowerShell-Cmdlet [Set AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase). Im folgenden Beispiel werden die Data Warehouse-Einheiten für die Datenbank **mySampleDataWarehouse**, die sich in der Ressourcengruppe **resourcegroupname** auf dem Server **sqlpoolservername** befindet, auf DW300c festgelegt.
+Um die Data Warehouse-Einheiten zu ändern, verwenden Sie das PowerShell-Cmdlet [Set AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Im folgenden Beispiel werden die Data Warehouse-Einheiten für die Datenbank **mySampleDataWarehouse**, die sich in der Ressourcengruppe **resourcegroupname** auf dem Server **sqlpoolservername** befindet, auf DW300c festgelegt.
 
 ```Powershell
 Set-AzSqlDatabase -ResourceGroupName "resourcegroupname" -DatabaseName "mySampleDataWarehouse" -ServerName "sqlpoolservername" -RequestedServiceObjectiveName "DW300c"
@@ -77,7 +77,7 @@ Set-AzSqlDatabase -ResourceGroupName "resourcegroupname" -DatabaseName "mySample
 
 ## <a name="check-data-warehouse-state"></a>Überprüfen des Data Warehouse-Zustands
 
-Um den aktuellen Status des Data Warehouse zu ermitteln, verwenden Sie das PowerShell-Cmdlet [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase). Mit diesem Cmdlet wird der Status der Datenbank **mySampleDataWarehouse** in der Ressourcengruppe **resourcegroupname** auf dem Server **sqlpoolservername.database.windows.net** angezeigt.
+Um den aktuellen Status des Data Warehouse zu ermitteln, verwenden Sie das PowerShell-Cmdlet [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Mit diesem Cmdlet wird der Status der Datenbank **mySampleDataWarehouse** in der Ressourcengruppe **resourcegroupname** auf dem Server **sqlpoolservername.database.windows.net** angezeigt.
 
 ```powershell
 $database = Get-AzSqlDatabase -ResourceGroupName resourcegroupname -ServerName sqlpoolservername -DatabaseName mySampleDataWarehouse
@@ -120,6 +120,7 @@ $database | Select-Object DatabaseName,Status
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Sie haben gelernt, wie Sie Computeressourcen für Ihren SQL-Pool skalieren. Weitere Informationen zum SQL-Pool finden Sie im Tutorial zum Laden von Daten.
 
 > [!div class="nextstepaction"]

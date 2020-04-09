@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: 6edea1d0de53e2dc9f764de26209dc1f3110556e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf715d872fab421de30ebcb146a1981a7d008738
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75978613"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585975"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Verwalten von Benutzerdaten in Azure Security Center
 Dieser Artikel enthält Informationen zur Verwaltung der Benutzerdaten in Azure Security Center. Bei der Verwaltung der Benutzerdaten haben Sie auch die Möglichkeit, auf Daten zuzugreifen, Daten zu löschen oder zu exportieren.
@@ -98,6 +98,3 @@ Ein Security Center-Benutzer kann das Abonnement kündigen, indem er seine [Sich
 
 ## <a name="auditing-and-reporting"></a>Überwachung und Berichterstellung
 Überwachungsprotokolle von Sicherheitskontakt-, Just-In-Time- und Warnungsaktualisierungen werden in [Azure-Aktivitätsprotokollen](../azure-monitor/platform/platform-logs-overview.md) beibehalten.
-
-## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Verwalten von Benutzerdaten finden Sie unter [Verwalten von Benutzerdaten in Azure Security Center](security-center-investigation-user-data.md).

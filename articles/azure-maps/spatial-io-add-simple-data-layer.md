@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 7671d07a468a9f67a4851ec828fe18896d7a6c66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8862c33b7660b8130f692dc4beea89a7b6b5f5ad
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334277"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804485"
 ---
 # <a name="add-a-simple-data-layer"></a>Hinzufügen einer einfachen Datenschicht
 
@@ -56,7 +56,7 @@ Der folgende Code rendert das obige Punktfeature unter Verwendung der einfachen 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Use the Simple data layer" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true"> Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>Use the Simple data layer</a> (Verwenden der einfachen Datenebene) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Use the Simple data layer" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true"> Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>Use the Simple data layer</a> (Verwenden der einfachen Datenebene) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Die tatsächliche Leistungsfähigkeit der einfachen Datenebene kommt in folgenden Fällen zum Tragen:

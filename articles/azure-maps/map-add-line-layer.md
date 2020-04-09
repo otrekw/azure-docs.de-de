@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8503b12be628fe7d5651221c9d0379bee3e292bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c473be25907eb3a761fbccd598bb9b732e5be5b9
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76933479"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802347"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>Hinzufügen einer Linienebene zur Karte
 
@@ -55,7 +55,7 @@ In diesem Beispiel wird gezeigt, wie Pfeilsymbole entlang einer Linie auf der Ka
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Pfeile entlang Linie anzeigen" src="//codepen.io/azuremaps/embed/drBJwX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Pfeile entlang Linie anzeigen" src="//codepen.io/azuremaps/embed/drBJwX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/drBJwX/'>Show arrow along line</a> (Pfeile entlang Linie anzeigen) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -70,7 +70,7 @@ Sie können eine einzelne Strichfarbe auf eine Linie anwenden. Sie können auch 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Linie mit Strichverlauf" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Linie mit Strichverlauf" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/wZwWJZ/'>Line with Stroke Gradient</a> (Linie mit Strichverlauf) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 

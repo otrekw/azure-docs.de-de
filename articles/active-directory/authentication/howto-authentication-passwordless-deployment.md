@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 145439ebedd2ddf7c081339146010c66f37fe1af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c9933e75a39af43af9e2745d5f7732d40027b34
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136533"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582469"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Planen einer Bereitstellung mit kennwortloser Authentifizierung in Azure Active Directory
 
@@ -59,7 +59,7 @@ Die Methoden zur kennwortlosen Authentifizierung von Microsoft ermöglichen vers
 | **Web-App-Anmeldung**: <br> Von einem Mobilgerät oder Nicht-Windows-Gerät | **Ja** | **Nein** | **Nein** |
 | **Computeranmeldung**: <br> Nicht-Windows-Computer | **Nein** | **Nein** | **Nein** |
 
-Weitere Informationen zum Auswählen der besten Methode für Ihre Organisation finden Sie unter [Auswählen einer kennwortlosen Methode](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#deciding-a-passwordless-method).
+Weitere Informationen zum Auswählen der besten Methode für Ihre Organisation finden Sie unter [Auswählen einer kennwortlosen Methode](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#choose-a-passwordless-method).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -132,7 +132,7 @@ Weitere Informationen finden Sie auf der Bereitstellungspläneseite unter [Bewä
 
 Die Microsoft Authenticator-App ist als kostenloser Download bei Google Play und im Apple App Store verfügbar. Erfahren Sie mehr über das [Herunterladen der Microsoft Authenticator-App](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6). Lassen Sie die Benutzer die Microsoft Authenticator-App herunterladen. Befolgen Sie die Anweisungen zum Aktivieren der Anmeldung per Telefon. 
 
-Sie wandelt jedes iOS- oder Android-Telefon in sichere kennwortlose Anmeldeinformationen um. Benutzer können sich bei jeder beliebigen Plattform oder jedem beliebigen Browser anmelden, indem sie eine Benachrichtigung auf ihrem Telefon erhalten, eine auf dem Bildschirm angezeigte Zahl mit der Zahl auf dem Telefon abgleichen und dann ihre biometrischen Daten oder ihre PIN zur Bestätigung verwenden. [Erfahren Sie, wie die Microsoft Authenticator-App funktioniert](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#user-using-microsoft-authenticator-for-passwordless-sign-in). 
+Sie wandelt jedes iOS- oder Android-Telefon in sichere kennwortlose Anmeldeinformationen um. Benutzer können sich bei jeder beliebigen Plattform oder jedem beliebigen Browser anmelden, indem sie eine Benachrichtigung auf ihrem Telefon erhalten, eine auf dem Bildschirm angezeigte Zahl mit der Zahl auf dem Telefon abgleichen und dann ihre biometrischen Daten oder ihre PIN zur Bestätigung verwenden. [Erfahren Sie, wie die Microsoft Authenticator-App funktioniert](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#microsoft-authenticator-app).
 
 ![Anmelden mit der Authenticator-App](./media/howto-authentication-passwordless-deployment/passwordless-dp-sign-in.png)
 

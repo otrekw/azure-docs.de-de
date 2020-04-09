@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5f0432cafee07dbed071d24aa8c24ee9b2176967
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d2e2fdb181b553d330368b043b75159e211dd0d2
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350177"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745130"
 ---
 # <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>Wiederherstellen eines gelöschten SQL-Pools mithilfe von Azure Synapse Analytics
 
@@ -30,25 +30,25 @@ In diesem Artikel erfahren Sie, wie Sie einen SQL-Pool über das Azure-Portal od
 
 ## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>Wiederherstellen einer gelöschten Data Warehouse-Instanz mit PowerShell
 
-Verwenden Sie das Cmdlet [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase), um einen gelöschten SQL-Pool wiederherzustellen. Wenn der entsprechende logische Server ebenfalls gelöscht wurde, können Sie diese Data Warehouse-Instanz nicht wiederherstellen.
+Verwenden Sie das Cmdlet [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json), um einen gelöschten SQL-Pool wiederherzustellen. Wenn der entsprechende logische Server ebenfalls gelöscht wurde, können Sie diese Data Warehouse-Instanz nicht wiederherstellen.
 
-1. Bevor Sie beginnen, müssen Sie [Azure PowerShell installieren](https://docs.microsoft.com/powershell/azure/overview).
+1. Bevor Sie beginnen, müssen Sie [Azure PowerShell installieren](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 2. Öffnen Sie PowerShell.
 3. Stellen Sie eine Verbindung mit Ihrem Azure-Konto her, und listen Sie alle Abonnements auf, die Ihrem Konto zugeordnet sind.
 4. Wählen Sie das Abonnement aus, in dem die gelöschte Data Warehouse-Instanz enthalten ist.
 5. Rufen Sie die spezifische gelöschte Data Warehouse-Instanz ab.
 6. Wiederherstellen der gelöschten Data Warehouse-Instanz
     1. Um die gelöschte SQL Data Warehouse-Instanz auf einem anderen logischen Server wiederherzustellen, stellen Sie sicher, dass Sie den Namen des anderen logischen Servers angeben.  Dieser logische Server kann sich auch in einer anderen Ressourcengruppe und Region befinden.
-    1. Zum Wiederherstellen in einem anderen Abonnement verwenden Sie die Schaltfläche [Verschieben](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources#use-the-portal), um den logischen Server in ein anderes Abonnement zu verschieben.
-1. Überprüfen Sie, ob die wiederhergestellte Data Warehouse-Instanz online ist.
-1. Nach Abschluss der Wiederherstellung können Sie Ihre wiederhergestellte Data Warehouse-Instanz konfigurieren. Befolgen Sie hierzu die Anleitung [Konfigurieren der Datenbank nach der Wiederherstellung](../../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery).
+    1. Zum Wiederherstellen in einem anderen Abonnement verwenden Sie die Schaltfläche [Verschieben](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#use-the-portal), um den logischen Server in ein anderes Abonnement zu verschieben.
+7. Überprüfen Sie, ob die wiederhergestellte Data Warehouse-Instanz online ist.
+8. Nach Abschluss der Wiederherstellung können Sie Ihre wiederhergestellte Data Warehouse-Instanz konfigurieren. Befolgen Sie hierzu die Anleitung [Konfigurieren der Datenbank nach der Wiederherstellung](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery).
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
 $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.windows.net
 #$TargetResourceGroupName="<YourTargetResourceGroupName>" # uncomment to restore to a different logical server.
-#$TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>" 
+#$TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>"
 $DatabaseName="<YourDatabaseName>"
 $NewDatabaseName="<YourDatabaseName>"
 
@@ -86,5 +86,6 @@ $RestoredDatabase.status
     ![Angeben eines Datenbanknamens](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-21.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - [Wiederherstellen eines vorhandenen SQL-Pools](sql-data-warehouse-restore-active-paused-dw.md)
 - [Wiederherstellen aus einem SQL-Pool mit Geosicherung](sql-data-warehouse-restore-from-geo-backup.md)

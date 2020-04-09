@@ -11,18 +11,20 @@ ms.date: 03/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 322f1dfcb709727ddd3a97ea22dbe8243aedca20
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 4efd5c63af9f09d41733e8e172270410245977ec
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350345"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633200"
 ---
 # <a name="rest-apis-for-azure-sql-data-warehouse"></a>REST-APIs für Azure SQL Data Warehouse
+
 REST-APIs für die Verwaltung von Computeressourcen in Azure Synapse Analytics Data Warehouse.
 
 ## <a name="scale-compute"></a>Skalieren von Computeressourcen
-Um die DWUs (Data Warehouse Units) zu ändern, verwenden Sie die REST-API zum [Erstellen oder Aktualisieren einer Datenbank](/rest/api/sql/databases/createorupdate). Im folgenden Beispiel werden die DWUs für die Datenbank „MySQLDW“, die auf dem Server „MyServer“ gehostet wird, auf „DW1000“ festgelegt. Der Server befindet sich in einer Azure-Ressourcengruppe namens „ResourceGroup1“.
+
+Um die DWUs (Data Warehouse Units) zu ändern, verwenden Sie die REST-API zum [Erstellen oder Aktualisieren einer Datenbank](/rest/api/sql/databases/createorupdate?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Im folgenden Beispiel werden die DWUs für die Datenbank „MySQLDW“, die auf dem Server „MyServer“ gehostet wird, auf „DW1000“ festgelegt. Der Server befindet sich in einer Azure-Ressourcengruppe namens „ResourceGroup1“.
 
 ```
 PATCH https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
@@ -37,7 +39,7 @@ Content-Type: application/json; charset=UTF-8
 
 ## <a name="pause-compute"></a>Anhalten von Computeressourcen
 
-Zum Anhalten einer Datenbank verwenden Sie die REST-API zum [Anhalten der Datenbank](/rest/api/sql/databases/pause). Im folgenden Beispiel wird die auf dem Server „Server01“ gehostete Datenbank mit der Bezeichnung „Database02“ angehalten. Der Server befindet sich in einer Azure-Ressourcengruppe namens „ResourceGroup1“.
+Zum Anhalten einer Datenbank verwenden Sie die REST-API zum [Anhalten der Datenbank](/rest/api/sql/databases/pause?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Im folgenden Beispiel wird die auf dem Server „Server01“ gehostete Datenbank mit der Bezeichnung „Database02“ angehalten. Der Server befindet sich in einer Azure-Ressourcengruppe namens „ResourceGroup1“.
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/pause?api-version=2014-04-01-preview HTTP/1.1
@@ -45,7 +47,7 @@ POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups
 
 ## <a name="resume-compute"></a>Fortsetzen von Computeressourcen
 
-Zum Starten einer Datenbank verwenden Sie die REST-API zum [Fortsetzen der Datenbank](/rest/api/sql/databases/resume). Im folgenden Beispiel wird die auf dem Server „Server01“ gehostete Datenbank mit der Bezeichnung „Database02“ gestartet. Der Server befindet sich in einer Azure-Ressourcengruppe namens „ResourceGroup1“. 
+Zum Starten einer Datenbank verwenden Sie die REST-API zum [Fortsetzen der Datenbank](/rest/api/sql/databases/resume?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Im folgenden Beispiel wird die auf dem Server „Server01“ gehostete Datenbank mit der Bezeichnung „Database02“ gestartet. Der Server befindet sich in einer Azure-Ressourcengruppe namens „ResourceGroup1“.
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/resume?api-version=2014-04-01-preview HTTP/1.1
@@ -61,7 +63,8 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 ```
 
 ## <a name="get-maintenance-schedule"></a>Abrufen des Wartungszeitplans
-Überprüfen Sie den Wartungsplan, der für ein Data Warehouse festgelegt wurde. 
+
+Überprüfen Sie den Wartungsplan, der für ein Data Warehouse festgelegt wurde.
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1
@@ -69,6 +72,7 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 ```
 
 ## <a name="set-maintenance-schedule"></a>Festlegen des Wartungszeitplans
+
 Einrichten und Aktualisieren eines Wartungsplans für ein vorhandenes Data Warehouse.
 
 ```
@@ -93,7 +97,6 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ```
 
-
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter [Verwalten von Computeressourcen in Azure SQL Data Warehouse](sql-data-warehouse-manage-compute-overview.md).
 
+Weitere Informationen finden Sie unter [Verwalten von Computeressourcen in Azure SQL Data Warehouse](sql-data-warehouse-manage-compute-overview.md).

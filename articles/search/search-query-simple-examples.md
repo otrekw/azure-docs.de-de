@@ -8,20 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 525c20f5b6e24811ab092a63fa84fe6ebbd7b618
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42ace2444c7d8e790c7575a7c1a7b3b1219d090a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72808195"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656419"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Erstellen einer einfachen Abfrage in Azure Cognitive Search
 
-Bei der [einfachen Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) in Azure Cognitive Search wird der Standardabfrageparser aufgerufen, um Volltextsuchabfragen für einen Index auszuführen. Dieser Parser ist schnell und verarbeitet gängige Szenarien, z.B. Volltextsuche, Filter- und Facettensuche und geografische Suche. 
+Bei der [einfachen Abfragesyntax](query-simple-syntax.md) in Azure Cognitive Search wird der Standardabfrageparser aufgerufen, um Volltextsuchabfragen für einen Index auszuführen. Dieser Parser ist schnell und verarbeitet gängige Szenarien, z.B. Volltextsuche, Filter- und Facettensuche und geografische Suche. 
 
 In diesem Artikel werden Beispiele verwendet, um die einfache Syntax zu veranschaulichen.
 
-Eine Alternative zu dieser Abfragesyntax ist die [vollständige Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), bei der auch komplexere Abfragestrukturen unterstützt werden, z.B. Fuzzy- und Platzhaltersuche, sodass sich die Verarbeitungsdauer verlängern kann. Weitere Informationen und Beispiele zur Veranschaulichung der vollständigen Syntax finden Sie unter [Verwenden der vollständigen Lucene-Syntax](search-query-lucene-examples.md).
+Eine Alternative zu dieser Abfragesyntax ist die [vollständige Lucene-Abfragesyntax](query-lucene-syntax.md), bei der auch komplexere Abfragestrukturen unterstützt werden, z.B. Fuzzy- und Platzhaltersuche, sodass sich die Verarbeitungsdauer verlängern kann. Weitere Informationen und Beispiele zur Veranschaulichung der vollständigen Syntax finden Sie unter [Verwenden der vollständigen Lucene-Syntax](search-query-lucene-examples.md).
 
 ## <a name="formulate-requests-in-postman"></a>Formulieren von Anforderungen in Postman
 

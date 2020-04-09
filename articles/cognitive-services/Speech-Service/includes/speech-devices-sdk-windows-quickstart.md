@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: dapine
-ms.openlocfilehash: 11d2f9788f41e259058af50a728b8b82eeb10131
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 1269ff3e21a794fddc2e0f0dc5d62816fa98215b
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78383855"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80659402"
 ---
 In dieser Schnellstartanleitung erfahren Sie, wie Sie das Speech Devices SDK für Windows verwenden, um ein sprachaktiviertes Produkt zu erstellen oder es als Gerät für die [Unterhaltungstranskription](../conversation-transcription-service.md) zu verwenden. Für die Unterhaltungstranskription wird nur [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) unterstützt. Für andere Speech-Funktionen werden lineare Mikrofonarrays unterstützt, die eine Mikrofonarray-Geometrie bereitstellen.
 
@@ -74,7 +74,7 @@ Wenn Sie planen, die Absichten zu nutzen, benötigen Sie ein Abonnement des [Die
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.10.0</version>
+             <version>1.11.0</version>
         </dependency>
     </dependencies>
    ```
