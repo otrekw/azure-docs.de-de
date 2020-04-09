@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: ef781653332984a7fb6d71ef91d53cbf77e6c91c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89bae60c30cfe82d38c61f385dbaef574b4152d8
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72437953"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547798"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Erweiterung zum Konfigurieren des gewünschten Zustands mit Azure Resource Manager-Vorlagen
 
-Dieser Artikel beschreibt die Azure Resource Manager-Vorlage für den [Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands](dsc-overview.md) (Desired State Configuration, DSC). Bei vielen der Beispiele werden für das Azure Automation-Onboarding die Registrierungs-URL (**RegistrationURL**, angegeben als Zeichenfolge) und der Registrierungsschlüssel (**RegistrationKey**, angegeben als [PSCredential](/dotnet/api/system.management.automation.pscredential)) verwendet. Ausführliche Informationen zum Abrufen dieser Werte finden Sie unter „Onboarding von Computern zur Verwaltung durch Azure Automation DSC“ im Abschnitt [Sichere Registrierung](/azure/automation/automation-dsc-onboarding#secure-registration).
+Dieser Artikel beschreibt die Azure Resource Manager-Vorlage für den [Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands](dsc-overview.md) (Desired State Configuration, DSC). Bei vielen der Beispiele werden für das Azure Automation-Onboarding die Registrierungs-URL (**RegistrationURL**, angegeben als Zeichenfolge) und der Registrierungsschlüssel (**RegistrationKey**, angegeben als [PSCredential](/dotnet/api/system.management.automation.pscredential)) verwendet. Ausführliche Informationen zum Abrufen dieser Werte finden Sie unter „Onboarding von Computern zur Verwaltung durch Azure Automation DSC“ im Abschnitt [Sichere Registrierung](/azure/automation/automation-dsc-onboarding#onboarding-securely-using-registration).
 
 > [!NOTE]
 > Möglicherweise werden Ihnen andere Schemabeispiele angezeigt. Das Schema wurde im Release von Oktober 2016 geändert. Weitere Informationen finden Sie im Abschnitt zum [Update von einem vorherigen Format](#update-from-a-previous-format).

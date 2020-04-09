@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: f193580ca03d4b1805f3c044658a34f468f3f44f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 43fc32e910c51e8b70e15aa49584a18e5b703fca
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346557"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631606"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Verwenden von Wartungszeitplänen zum Verwalten der Updates und Wartung von Diensten
 
-Dieses Wartungszeitplan-Feature integriert innerhalb von Azure Synapse Analytics Benachrichtigungen über eine geplante Wartung von Service Health, die Überwachung der Ressourcenintegritätsprüfung und den Zeitplanungsdienst für den Synapse-SQL-Pool (Data Warehouse). 
+Dieses Wartungszeitplan-Feature integriert innerhalb von Azure Synapse Analytics Benachrichtigungen über eine geplante Wartung von Service Health, die Überwachung der Ressourcenintegritätsprüfung und den Zeitplanungsdienst für den Synapse-SQL-Pool (Data Warehouse).
 
 Sie sollten Wartungszeitpläne verwenden, um ein passendes Zeitfenster für den Erhalt neuer Features, Upgrades und Patches zu wählen. Sie müssen ein primäres und ein sekundäres Wartungsfenster innerhalb eines Zeitraums von sieben Tagen auswählen, wobei jedes Fenster separate Tagesbereiche abdecken muss.
 
@@ -48,52 +48,55 @@ Alle aktiven Wartungsereignisse werden im Abschnitt **Service Health – Geplant
 
 Auch wenn Wartungszeitpläne in Ihrer ausgewählten Region noch nicht verfügbar sind, können Sie Ihren Wartungszeitplan jederzeit anzeigen und bearbeiten. Sobald Wartungszeitpläne in Ihrer Region verfügbar sind, wird der identifizierte Zeitplan in Ihrem Synapse-SQL-Pool sofort aktiv.
 
-## <a name="view-a-maintenance-schedule"></a>Anzeigen eines Wartungszeitplans 
+## <a name="view-a-maintenance-schedule"></a>Anzeigen eines Wartungszeitplans
 
 Alle neu erstellten Data Warehouse-Instanzen verfügen über ein achtstündiges primäres und sekundäres Wartungsfenster, das während der Bereitstellung angewendet wird. Wie oben angegeben, können Sie die Fenster nach Abschluss der Bereitstellung ändern. Außerhalb der angegebenen Wartungsfenster werden ohne vorherige Benachrichtigung keine Wartungen durchgeführt.
 
 Führen Sie die folgenden Schritte aus, um den Wartungszeitplan anzuzeigen, der Ihrem Synapse-SQL-Pool zugewiesen wurde:
 
-1.    Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2.    Wählen Sie den Synapse-SQL-Pool aus, den Sie anzeigen möchten. 
-3.    Der ausgewählte Synapse-SQL-Pool wird auf dem Blatt „Übersicht“ geöffnet. Der Wartungszeitplan, der auf das Data Warehouse angewandt wurde, wird unter **Wartungszeitplan** angezeigt.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+2. Wählen Sie den Synapse-SQL-Pool aus, den Sie anzeigen möchten.
+3. Der ausgewählte Synapse-SQL-Pool wird auf dem Blatt „Übersicht“ geöffnet. Der Wartungszeitplan, der auf das Data Warehouse angewandt wurde, wird unter **Wartungszeitplan** angezeigt.
 
 ![Blatt „Übersicht“](./media/maintenance-scheduling/clear-overview-blade.PNG)
 
-## <a name="change-a-maintenance-schedule"></a>Ändern des Wartungszeitplans 
+## <a name="change-a-maintenance-schedule"></a>Ändern des Wartungszeitplans
 
-Ein Wartungszeitplan kann jederzeit aktualisiert oder geändert werden. Falls die ausgewählte Instanz gerade einen aktiven Wartungszyklus durchläuft, werden die Einstellungen gespeichert. Sie werden dann im nächsten identifizierten Wartungszeitraum angewendet. Weitere Informationen zum Überwachen Ihrer Data Warehouse-Daten während eines aktiven Verwaltungsereignisses finden Sie [hier](../../service-health/resource-health-overview.md). 
+Ein Wartungszeitplan kann jederzeit aktualisiert oder geändert werden. Falls die ausgewählte Instanz gerade einen aktiven Wartungszyklus durchläuft, werden die Einstellungen gespeichert. Sie werden dann im nächsten identifizierten Wartungszeitraum angewendet. Weitere Informationen zum Überwachen Ihrer Data Warehouse-Daten während eines aktiven Verwaltungsereignisses finden Sie [hier](../../service-health/resource-health-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ## <a name="identifying-the-primary-and-secondary-windows"></a>Angeben des primären und sekundären Fensters
 
 Primäre und sekundäre Fenster müssen jeweils separate Tagesbereiche besitzen. Ein Beispiel wäre etwa ein primäres Fenster von Dienstag bis Donnerstag und ein sekundäres Fenster von Samstag bis Sonntag.
 
 Führen Sie die folgenden Schritte aus, um den Wartungszeitplan für Ihren Synapse-SQL-Pool zu ändern:
-1.    Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2.    Wählen Sie den Synapse-SQL-Pool aus, den Sie aktualisieren möchten. Die Seite wird auf dem Blatt „Übersicht“ geöffnet. 
-3.    Klicken Sie auf dem Übersichtsblatt auf den Link **Wartungszeitplan – Zusammenfassung**, um die Seite mit den Wartungszeitplaneinstellungen zu öffnen. Alternativ können Sie auch im Ressourcenmenü auf der linken Seite auf **Wartungszeitplan** klicken.  
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+2. Wählen Sie den Synapse-SQL-Pool aus, den Sie aktualisieren möchten. Die Seite wird auf dem Blatt „Übersicht“ geöffnet.
+Klicken Sie auf dem Übersichtsblatt auf den Link **Wartungszeitplan – Zusammenfassung**, um die Seite mit den Wartungszeitplaneinstellungen zu öffnen. Alternativ können Sie auch im Ressourcenmenü auf der linken Seite auf **Wartungszeitplan** klicken.
 
     ![Optionen auf dem Blatt „Übersicht“](./media/maintenance-scheduling/maintenance-change-option.png)
 
-4. Geben Sie mithilfe der Optionen im oberen Seitenbereich die bevorzugte Zeitspanne (in Tagen) für Ihr primäres Wartungsfenster an. Dadurch bestimmen Sie, ob Ihr primäres Fenster Werktage oder Wochenendtage abdeckt. Die Dropdownwerte werden auf der Grundlage Ihrer Auswahl aktualisiert. Während der Vorschauphase unterstützen einige Regionen ggf. noch nicht alle verfügbaren Optionen für **Tag**.
+3. Geben Sie mithilfe der Optionen im oberen Seitenbereich die bevorzugte Zeitspanne (in Tagen) für Ihr primäres Wartungsfenster an. Dadurch bestimmen Sie, ob Ihr primäres Fenster Werktage oder Wochenendtage abdeckt. Die Dropdownwerte werden auf der Grundlage Ihrer Auswahl aktualisiert.
+Während der Vorschauphase unterstützen einige Regionen ggf. noch nicht alle verfügbaren Optionen für **Tag**.
 
    ![Blatt „Wartungseinstellungen“](./media/maintenance-scheduling/maintenance-settings-page.png)
 
-5. Wählen Sie über die Dropdown-Listenfelder Ihr bevorzugtes primäres und sekundäres Wartungsfenster aus:
+4. Wählen Sie über die Dropdown-Listenfelder Ihr bevorzugtes primäres und sekundäres Wartungsfenster aus:
    - **Tag**: Der bevorzugte Tag, an dem die Wartungsarbeiten innerhalb des ausgewählten Zeitfensters durchgeführt werden sollen.
    - **Startzeit**: Die bevorzugte Startzeit für das Wartungsfenster.
    - **Zeitfenster**: Die bevorzugte Dauer des Zeitfensters.
 
-   Der Bereich **Zusammenfassung des Zeitplans** am unteren Rand des Blatts wird anhand der ausgewählten Werte aktualisiert. 
+   Der Bereich **Zusammenfassung des Zeitplans** am unteren Rand des Blatts wird anhand der ausgewählten Werte aktualisiert.
   
-6. Wählen Sie **Speichern** aus. Eine Meldung bestätigt, dass Ihr neuer Zeitplan jetzt aktiv ist. 
+5. Wählen Sie **Speichern** aus. Eine Meldung bestätigt, dass Ihr neuer Zeitplan jetzt aktiv ist.
 
-   Wenn Sie einen Zeitplan in einer Region speichern, in der keine Wartungszeitpläne unterstützt werden, wird die folgende Meldung angezeigt. Ihre Einstellungen werden gespeichert und angewendet, sobald das Feature auch in Ihrer Region verfügbar ist.    
+   Wenn Sie einen Zeitplan in einer Region speichern, in der keine Wartungszeitpläne unterstützt werden, wird die folgende Meldung angezeigt. Ihre Einstellungen werden gespeichert und angewendet, sobald das Feature auch in Ihrer Region verfügbar ist.
 
    ![Meldung zur regionalen Verfügbarkeit](./media/maintenance-scheduling/maintenance-not-active-toast.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Weitere Informationen](../../azure-monitor/platform/alerts-metric.md) zum Erstellen, Anzeigen und Verwalten von Warnungen mit Azure Monitor
-- [Weitere Informationen](../..//azure-monitor/platform/alerts-log-webhook.md) zu Webhookaktionen für Protokollwarnungsregeln
-- [Weitere Informationen ](../..//azure-monitor/platform/action-groups.md) zum Erstellen und Verwalten von Aktionsgruppen.
-- [Weitere Informationen](../../service-health/service-health-overview.md) zu Azure Service Health
+
+- [Weitere Informationen](../../azure-monitor/platform/alerts-metric.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) zum Erstellen, Anzeigen und Verwalten von Warnungen mit Azure Monitor
+- [Weitere Informationen](../..//azure-monitor/platform/alerts-log-webhook.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) zu Webhookaktionen für Protokollwarnungsregeln
+- [Weitere Informationen ](../..//azure-monitor/platform/action-groups.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) zum Erstellen und Verwalten von Aktionsgruppen.
+- [Weitere Informationen](../../service-health/service-health-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) zu Azure Service Health

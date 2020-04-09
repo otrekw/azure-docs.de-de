@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 03/31/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ec32990513d9199c4aaccf1bcfcbf76f348f877b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d224bd9e9e7b1f8fc9eb45d85e78811d8642fc78
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75867500"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519563"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Verwenden des Azure-Portals zum Zuweisen einer RBAC-Rolle für den Zugriff auf Blob- und Warteschlangendaten
 
@@ -23,13 +23,13 @@ Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf abgesi
 
 Wenn einem Azure AD-Sicherheitsprinzipal eine RBAC-Rolle zugewiesen wird, gewährt Azure diesem Sicherheitsprinzipal Zugriff auf diese Ressourcen. Der Zugriff kann auf die Ebene des Abonnements, der Ressourcengruppe, des Speicherkontos oder eines einzelnen Containers oder einer Warteschlange begrenzt werden. Eine Azure AD-Sicherheitsprinzipal kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine [verwaltete Identität für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md) sein.
 
-In diesem Artikel wird beschrieben, wie Sie im Azure-Portal RBAC-Rollen zuweisen. Das Azure-Portal bietet eine einfache Benutzeroberfläche für die Zuweisung von RBAC-Rollen und die Verwaltung des Zugriffs auf Ihre Speicherressourcen. Sie können RBAC-Rollen auch für Blob- und Warteschlangenressourcen mithilfe von Azure-Befehlszeilentools oder Azure Storage-Verwaltungs-APIs zuweisen. Weitere Informationen zu RBAC-Rollen für Speicherressourcen finden Sie unter [Authentifizieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory](storage-auth-aad.md). 
+In diesem Artikel wird beschrieben, wie Sie im Azure-Portal RBAC-Rollen zuweisen. Das Azure-Portal bietet eine einfache Benutzeroberfläche für die Zuweisung von RBAC-Rollen und die Verwaltung des Zugriffs auf Ihre Speicherressourcen. Sie können RBAC-Rollen auch für Blob- und Warteschlangenressourcen mithilfe von Azure-Befehlszeilentools oder Azure Storage-Verwaltungs-APIs zuweisen. Weitere Informationen zu RBAC-Rollen für Speicherressourcen finden Sie unter [Authentifizieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory](storage-auth-aad.md).
 
 ## <a name="rbac-roles-for-blobs-and-queues"></a>RBAC-Rollen für Blobs und Warteschlangen
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-## <a name="determine-resource-scope"></a>Bestimmen des Ressourcenumfangs 
+## <a name="determine-resource-scope"></a>Bestimmen des Ressourcenumfangs
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 
@@ -52,11 +52,11 @@ In den folgenden Abschnitten werden diese Schritte ausführlicher beschrieben.
 
 Bevor Sie einem Sicherheitsprinzipal eine Rolle zuweisen, stellen Sie sicher, dass Sie den Umfang der Berechtigungen berücksichtigen, die Sie erteilen. Legen Sie mithilfe des Abschnitts [Bestimmen des Ressourcenumfangs](#determine-resource-scope) den gewünschten Umfang fest.
 
-Die hier gezeigte Vorgehensweise weist eine auf einen Container begrenzte Rolle zu, aber Sie können die gleichen Schritte ausführen, um eine auf eine Warteschlange begrenzte Rolle zuzuweisen: 
+Die hier gezeigte Vorgehensweise weist eine auf einen Container begrenzte Rolle zu, aber Sie können die gleichen Schritte ausführen, um eine auf eine Warteschlange begrenzte Rolle zuzuweisen:
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto, und zeigen Sie die **Übersicht** für das Konto an.
-1. Wählen Sie unter „Dienste“ die Option **Blobs** aus. 
-1. Navigieren Sie zum Container, dem Sie eine Rolle zuweisen möchten, und zeigen Sie die Einstellungen des Containers an. 
+1. Wählen Sie unter „Dienste“ die Option **Blobs** aus.
+1. Navigieren Sie zum Container, dem Sie eine Rolle zuweisen möchten, und zeigen Sie die Einstellungen des Containers an.
 1. Wählen Sie **Zugriffssteuerung (IAM)** aus, um Zugriffssteuerungseinstellungen für den Container anzuzeigen. Wählen Sie die Registerkarte **Rollenzuweisungen** aus, um die Liste mit den Rollenzuweisungen anzuzeigen.
 
     ![Screenshot mit Zugriffssteuerungseinstellungen für den Container](media/storage-auth-aad-rbac-portal/portal-access-control-for-storage.png)
