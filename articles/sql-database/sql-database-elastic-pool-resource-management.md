@@ -10,38 +10,43 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: carlrab
-ms.date: 11/18/2019
-ms.openlocfilehash: 4ce00743f6b77e6ac3e672e0ebce1e5eafc8235d
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 03/13/2019
+ms.openlocfilehash: 014f9edca1706c39930c6e48bb64cd8873bcace9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186838"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473726"
 ---
 # <a name="resource-management-in-dense-elastic-pools"></a>Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken
 
-[Pools für elastische Azure SQL-Datenbanken](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool) sind eine kostengünstige Lösung zum Verwalten einer großen Zahl von Datenbanken mit variierender Ressourcenauslastung. Für alle Datenbanken eines Pools für elastische Datenbanken wird die gleiche Zuordnung von Ressourcen verwendet, z. B. CPU, Arbeitsspeicher, Workerthreads, Speicherplatz und „tempdb“. Dies erfolgt aufgrund der Annahme, dass Computeressourcen jeweils nur für einen Teil der Datenbanken im Pool genutzt werden. Diese Annahme ermöglicht für Pools für elastische Datenbanken die Erzielung von Kosteneffizienz. Anstatt für alle Ressourcen zu bezahlen, die von jeder einzelnen Datenbank unter Umständen benötigt werden, zahlen Kunden für einen deutlich kleineren Ressourcensatz, der für alle Datenbanken des Pools genutzt wird.
+[Pools für elastische Azure SQL-Datenbanken](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool) sind eine kostengünstige Lösung zum Verwalten einer großen Zahl von Datenbanken mit variierender Ressourcenauslastung. Für alle Datenbanken eines Pools für elastische Datenbanken wird die gleiche Zuordnung von Ressourcen verwendet, z. B. CPU, Arbeitsspeicher, Workerthreads, Speicherplatz und tempdb. Dies erfolgt aufgrund der Annahme, dass **Computeressourcen jeweils nur von einer Teilmenge der Datenbanken im Pool genutzt werden**. Diese Annahme ermöglicht für Pools für elastische Datenbanken die Erzielung von Kosteneffizienz. Anstatt für alle Ressourcen zu bezahlen, die von jeder einzelnen Datenbank unter Umständen benötigt werden, zahlen Kunden für einen deutlich kleineren Ressourcensatz, der für alle Datenbanken des Pools genutzt wird.
 
-## <a name="resource-governance"></a>Ressourcenkontrolle
+## <a name="resource-governance"></a>Ressourcengovernance
 
-Bei der Ressourcenfreigabe muss das System die Ressourcenauslastung sorgfältig kontrollieren, um den „Noisy Neighbor“-Effekt (lauter Nachbar) zu verringern, bei dem eine Datenbank mit hohem Ressourcenverbrauch andere Datenbanken in demselben Pool für elastische Datenbanken beeinträchtigt. Außerdem muss das System genügend Ressourcen für Features bereitstellen, z. B. Hochverfügbarkeit und Notfallwiederherstellung (HADR), Sicherung und Wiederherstellung, Überwachung, Abfragespeicher und automatische Optimierung, damit die zuverlässige Funktionsweise sichergestellt ist.
+Bei der Ressourcenfreigabe muss das System die Ressourcenauslastung sorgfältig kontrollieren, um den „Noisy Neighbor“-Effekt (lauter Nachbar) zu verringern, bei dem eine Datenbank mit hohem Ressourcenverbrauch andere Datenbanken in demselben Pool für elastische Datenbanken beeinträchtigt. Außerdem muss das System genügend Ressourcen für Features bereitstellen, z. B. Hochverfügbarkeit und Notfallwiederherstellung, Sicherung und Wiederherstellung, Überwachung, Abfragespeicher, automatische Optimierung usw., um zuverlässig zu funktionieren.
 
 Diese Ziele werden bei Azure SQL-Datenbank erreicht, indem mehrere Ressourcenkontrollmechanismen verwendet werden, z. B. Windows-[Auftragsobjekte](https://docs.microsoft.com/windows/win32/procthread/job-objects) für die Ressourcenkontrolle auf Prozessebene, Windows-[Ressourcen-Manager für Dateiserver (File Server Resource Manager, FSRM)](https://docs.microsoft.com/windows-server/storage/fsrm/fsrm-overview) für die Verwaltung von Speicherkontingenten und eine geänderte und erweiterte Version von SQL Server [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) zum Implementieren der Ressourcenkontrolle auf jeder SQL Server-Instanz, die unter Azure SQL-Datenbank ausgeführt wird.
 
-Das wichtigste Entwurfsziel von Pools für elastische Datenbanken ist die Kosteneffizienz. Aus diesem Grund lässt das System für Kunden absichtlich die Erstellung von _umfangreichen_ Pools zu. Dies sind Pools, bei denen die Anzahl von Datenbanken nahezu oder vollständig erreicht wird, aber die nur über eine relativ geringe Zuordnung von Computeressourcen verfügen. Aus demselben Grund werden nicht alle potenziell benötigen Ressourcen für interne Prozesse reserviert, sondern die Ressourcenfreigabe zwischen internen Prozessen und Benutzerarbeitsauslastungen ermöglicht.
+Das wichtigste Entwurfsziel von Pools für elastische Datenbanken ist Wirtschaftlichkeit. Aus diesem Grund lässt das System für Kunden absichtlich die Erstellung von _umfangreichen_ Pools zu. Dies sind Pools, bei denen die Anzahl von Datenbanken nahezu oder vollständig erreicht wird, aber die nur über eine relativ geringe Zuordnung von Computeressourcen verfügen. Aus demselben Grund werden nicht alle potenziell benötigen Ressourcen für interne Prozesse reserviert, sondern die Ressourcenfreigabe zwischen internen Prozessen und Benutzerarbeitsauslastungen ermöglicht.
 
-Diese Vorgehensweise ermöglicht Kunden die Verwendung von umfangreichen Pools für elastische Datenbanken, um eine ausreichende Leistung und größere Kosteneinsparungen zu erzielen. Wenn die Arbeitsauslastung für Datenbanken in einem umfangreichen Pool aber intensiv genug ist, müssen ggf. Ressourcenkonflikte beachtet werden. Bei Ressourcenkonflikten wird die Leistung von Benutzerarbeitsauslastungen reduziert, und es kann sich eine negative Auswirkung auf interne Prozesse ergeben.
+Diese Vorgehensweise ermöglicht Kunden die Verwendung von umfangreichen Pools für elastische Datenbanken, um eine ausreichende Leistung und größere Kosteneinsparungen zu erzielen. Wenn die Workload vieler Datenbanken in einem dichten Pool aber intensiv genug ist, müssen ggf. Ressourcenkonflikte beachtet werden. Bei Ressourcenkonflikten wird die Leistung von Benutzerarbeitsauslastungen reduziert, und es kann sich eine negative Auswirkung auf interne Prozesse ergeben.
+
+> [!IMPORTANT]
+> In dichten Pools mit zahlreichen aktiven Datenbanken ist es ggf. nicht möglich, die Anzahl der Datenbanken im Pool bis zu den dokumentierten Höchstwerten für [DTU](sql-database-dtu-resource-limits-elastic-pools.md) und [vCore](sql-database-vcore-resource-limits-elastic-pools.md) für Pools mit elastischen Datenbanken zu steigern.
+> 
+> Die Anzahl der Datenbanken, die in dichten Pools platziert werden können, ohne dass es zu Ressourcenkonflikten und Leistungsproblemen kommt, hängt von der Anzahl der gleichzeitig aktiven Datenbanken und vom Ressourcenverbrauch der Benutzerworkloads in den einzelnen Datenbanken ab. Diese Zahl kann sich im Laufe der Zeit ändern, sobald sich die Workloads von Benutzern ändern.
 
 Falls es in einem dicht gepackten Pool zu Ressourcenkonflikten kommt, können Kunden eine oder mehrere der folgenden Aktionen auswählen, um diese zu beheben:
-- Optimieren der Arbeitsauslastung von Abfragen, um den Ressourcenverbrauch zu verringern
+- Optimieren Sie die Abfrageworkload, um den Ressourcenverbrauch zu reduzieren oder diesen mit der Zeit auf mehrere Datenbanken zu verteilen.
 - Reduzieren der Pooldichte, indem einige Datenbanken in einen anderen Pool verschoben oder zu eigenständigen Datenbanken gemacht werden
-- Zentrales Hochskalieren des Pools zum Abrufen von weiteren Ressourcen
+- Hochskalieren des Pools zum Abrufen von weiteren Ressourcen
 
 Vorschläge zur Implementierung der letzten beiden Aktionen finden Sie unter [Empfehlungen zum Betrieb](#operational-recommendations) weiter unten in diesem Artikel. Die Reduzierung von Ressourcenkonflikten wirkt sich sowohl auf Benutzer als auch auf interne Prozesse positiv aus und ermöglicht es dem System, den erwarteten Servicelevel aufrechtzuerhalten.
 
 ## <a name="monitoring-resource-consumption"></a>Überwachen des Ressourcenverbrauchs
 
-Zur Vermeidung von Leistungsbeeinträchtigungen aufgrund von Ressourcenkonflikten sollten Kunden, die umfangreiche Pools für elastische Datenbanken nutzen, den Ressourcenverbrauch proaktiv überwachen und rechtzeitig Maßnahmen ergreifen, falls sich zunehmende Ressourcenkonflikte auf die Arbeitsauslastungen auswirken. Eine fortlaufende Überwachung ist wichtig, weil sich die Ressourcenauslastung in einem Pool im Laufe der Zeit verändert, z. B. aufgrund von Änderungen der Benutzerarbeitsauslastung, der Datenmenge und -verteilung, der Pooldichte und der SQL Server-Datenbank-Engine. 
+Zur Vermeidung von Leistungsbeeinträchtigungen aufgrund von Ressourcenkonflikten sollten Kunden, die umfangreiche Pools für elastische Datenbanken nutzen, den Ressourcenverbrauch proaktiv überwachen und rechtzeitig Maßnahmen ergreifen, falls sich zunehmende Ressourcenkonflikte auf die Arbeitsauslastungen auswirken. Eine fortlaufende Überwachung ist wichtig, weil sich die Ressourcenauslastung in einem Pool im Laufe der Zeit verändert, z. B. aufgrund von Änderungen der Benutzerworkloads, der Datenmenge und -verteilung, der Pooldichte und im Azure SQL-Datenbank-Dienst. 
 
 Azure SQL-Datenbank verfügt über mehrere Metriken, die für diese Art von Überwachung relevant sind. Wenn Sie den empfohlenen Durchschnittswert für jede Metrik überschreiten, wird ein Ressourcenkonflikt für den Pool angezeigt, den Sie mit einer der oben beschriebenen Maßnahmen beseitigen sollten.
 
@@ -56,7 +61,7 @@ Azure SQL-Datenbank verfügt über mehrere Metriken, die für diese Art von Übe
 |`tempdb_log_used_percent`|Speicherplatznutzung in der Datenbank `tempdb` per Transaktionsprotokoll. Temporäre Objekte, die in einer Datenbank erstellt werden, sind in den anderen Datenbanken desselben Pools für elastische Datenbanken zwar nicht sichtbar, aber `tempdb` ist eine freigegebene Ressource für alle Datenbanken desselben Pools. Eine zeitintensive oder im Leerlauf befindliche Transaktion in `tempdb`, die über eine Datenbank des Pools gestartet wird, kann einen großen Teil des Transaktionsprotokolls verbrauchen und zu Fehlern bei Abfragen in anderen Datenbanken desselben Pools führen. Verfügbar in der Ansicht [sys.dm_db_log_space_usage](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-log-space-usage-transact-sql). Diese Metrik wird auch für Azure Monitor ausgegeben und kann im Azure-Portal angezeigt werden. Unter den [Beispielen](#examples) finden Sie eine Beispielabfrage zum Zurückgeben des aktuellen Werts dieser Metrik.|Unterhalb von 50 %. Gelegentliche Spitzen von bis zu 80 % sind zulässig.|
 |||
 
-Zusätzlich zu diesen Metriken verfügt Azure SQL-Datenbank über eine Ansicht, in der die tatsächlichen Grenzwerte für die Ressourcenkontrolle zurückgegeben werden. Außerdem sind Ansichten vorhanden, in denen statistische Daten zur Ressourcenauslastung auf Ebene des Ressourcenpools und auf Ebene der Arbeitsauslastungsgruppe zurückgegeben werden.
+Zusätzlich zu diesen Metriken bietet Azure SQL-Datenbank eine Ansicht, in der die tatsächlichen Grenzwerte für die Ressourcenkontrolle zurückgegeben werden. Außerdem gibt es zusätzliche Ansichten, in denen statistische Daten zur Ressourcenauslastung auf Ebene des Ressourcenpools und auf Ebene der Arbeitsauslastungsgruppe zurückgegeben werden.
 
 |Name der Ansicht|BESCHREIBUNG|  
 |-----------------|--------------------------------|  

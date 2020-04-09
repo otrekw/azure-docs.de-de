@@ -1,6 +1,6 @@
 ---
 title: Query Performance Insight
-description: Mit der Überwachung der Abfrageleistung werden für eine Azure SQL-Datenbank die Abfragen mit der höchsten CPU-Auslastung identifiziert.
+description: Bei der Überwachung der Abfrageleistung werden die für Einzel- und Pooldatenbanken in Azure SQL-Datenbank die Abfragen mit der höchsten CPU-Auslastung und den längsten Laufzeiten ermittelt.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -10,35 +10,31 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 01/03/2019
-ms.openlocfilehash: 56daca0aa817d03298bad971506402739d71482e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 03/10/2020
+ms.openlocfilehash: f5998fde6659715de4fcb533cb0f41a8939b1c48
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821251"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79214058"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Query Performance Insight für Azure SQL-Datenbank
 
-Verwalten und Optimieren der Leistung von relationalen Datenbanken erfordert Fachwissen und Zeit. Query Performance Insight ist Teil der „Intelligente Leistung“-Produktlinie von Azure SQL-Datenbank. Mithilfe von Query Performance Insight können Sie den Zeitaufwand für die Problembehandlung der Datenbankleistung reduzieren. Dieses Tool stellt Folgendes bereit:
+Query Performance Insight bietet für Einzel- und Pooldatenbanken eine intelligente Abfrageanalyse. Das Tool hilft zu bestimmen, welche Abfragen in Ihrer Workload am meisten Ressourcen in Anspruch nehmen und am längsten laufen. Dadurch können Sie die Abfragen ermitteln, die Sie optimieren müssen, um die Gesamtleistung der Workload zu verbessern und die von Ihnen bezahlten Ressourcen effizient zu nutzen. Mithilfe von Query Performance Insight können Sie den Zeitaufwand für die Problembehandlung der Datenbankleistung reduzieren. Dazu stellt das Tool Folgendes bereit:
 
-* Tiefere Einblicke in den Verbrauch von Datenbankressourcen (DTU).
-* Informationen zu den obersten Datenbankabfragen nach CPU, Dauer und Anzahl der Ausführungen (potenzielle Kandidaten zur Verbesserung der Leistung).
-* Die Fähigkeit, die Details einer Abfrage, den Abfragetext und den Verlauf der Ressourcenverwendung anzuzeigen.
-* Anmerkungen, die Empfehlungen zur Leistung vom [SQL Database Advisor](sql-database-advisor.md) enthalten.
+* Tiefere Einblicke in den Verbrauch von Datenbankressourcen (DTU)
+* Details zu den wichtigsten Datenbankabfragen nach CPU, Dauer und Anzahl der Ausführungen (potenzielle Kandidaten zur Verbesserung der Leistung)
+* Die Fähigkeit, die Details einer Abfrage, den Abfragetext und den Verlauf der Ressourcennutzung anzuzeigen
+* Anmerkungen, die Empfehlungen von [Database Advisor](sql-database-advisor.md) zur Leistung enthalten
 
 ![Query Performance Insight](./media/sql-database-query-performance/opening-title.png)
-
-> [!TIP]
-> Für die grundlegende Leistungsüberwachung mit Azure SQL-Datenbank wird Query Performance Insight empfohlen. Beachten Sie die Produkteinschränkungen, die in diesem Artikel veröffentlicht werden. Zur erweiterten Überwachen der Datenbankleistung nach Maß wird [Azure SQL-Analyse](../azure-monitor/insights/azure-sql.md) empfohlen. Azure SQL-Analyse verfügt über integrierte Logik für das automatische Behandeln von Leistungsproblemen. Um einige der häufigsten Datenbank-Leistungsprobleme automatisch zu optimieren, sollte die [Automatische Optimierung](sql-database-automatic-tuning.md) verwendet werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um Query Performance Insight nutzen zu können, muss der [Abfragespeicher](https://msdn.microsoft.com/library/dn817826.aspx) für Ihre Datenbank aktiv sein. Das Tool wird automatisch für alle Azure SQL-Datenbanken standardmäßig aktiviert. Wenn der Abfragespeicher nicht ausgeführt wird, werden Sie vom Azure-Portal aufgefordert, den Abfragespeicher zu aktivieren.
 
 > [!NOTE]
-> Wenn die Meldung „Der Abfragespeicher ist für diese Datenbank nicht ordnungsgemäß konfiguriert“ im Portal angezeigt wird, lesen Sie [Optimierung der Abfragespeicherkonfiguration für Query Performance Insight](#optimize-the-query-store-configuration-for-query-performance-insight).
->
+> Wenn die Meldung „Der Abfragespeicher ist für diese Datenbank nicht ordnungsgemäß konfiguriert“ im Portal angezeigt wird, lesen Sie [Optimierung der Abfragespeicherkonfiguration für Query Performance Insight](#optimize-the-query-store-configuration).
 
 ## <a name="permissions"></a>Berechtigungen
 
@@ -65,6 +61,11 @@ Query Performance Insight ist einfach zu verwenden:
 
 > [!NOTE]
 > Damit SQL-Datenbank die Informationen in Query Performance Insight rendern kann, muss der Abfragespeicher ein paar Stunden lang Daten erfassen. Wenn die Datenbank keine Aktivität aufweist oder der Abfragespeicher während eines bestimmten Zeitraums nicht aktiv war, sind die Diagramme beim Anzeigen dieses Zeitraums durch Query Performance Insight leer. Sie können den Abfragespeicher jederzeit aktivieren, wenn die Anwendung nicht ausgeführt wird. Weitere Informationen finden Sie unter [Bewährte Methoden für den Abfragespeicher](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store).
+>
+
+Wählen Sie für Empfehlungen zur Datenbankleistung [Empfehlungen](sql-database-advisor.md) auf dem Navigationsblatt von Query Performance Insight aus.
+
+![Die Registerkarte „Empfehlungen“](./media/sql-database-query-performance/ia.png)
 
 ## <a name="review-top-cpu-consuming-queries"></a>Überprüfen von Abfragen mit der höchsten CPU-Auslastung
 
@@ -72,9 +73,9 @@ Query Performance Insight zeigt beim ersten Öffnen standardmäßig die fünf Ab
 
 1. Aktivieren oder deaktivieren Sie mithilfe der Kontrollkästchen einzelne Abfragen, um sie in das Diagramm einzubeziehen oder davon auszuschließen.
 
-    Die oberste Zeile zeigt den allgemeinen DTU-Prozentsatz für die Datenbank an. Die Balken zeigen prozentual die CPU-Auslastung gemäß der ausgewählten Abfragen während des ausgewählten Intervalls an. Bei Auswahl von **Letzte Woche** stellt z.B. jeder Balken einen Tag dar.
+   Die oberste Zeile zeigt den allgemeinen DTU-Prozentsatz für die Datenbank an. Die Balken zeigen prozentual die CPU-Auslastung gemäß der ausgewählten Abfragen während des ausgewählten Intervalls an. Bei Auswahl von **Letzte Woche** stellt z.B. jeder Balken einen Tag dar.
 
-    ![Erste Abfragen](./media/sql-database-query-performance/top-queries.png)
+   ![Erste Abfragen](./media/sql-database-query-performance/top-queries.png)
 
    > [!IMPORTANT]
    > Die dargestellte DTU-Zeile wird auf einen Wert für die maximale Nutzung in einstündigen Perioden aggregiert. Hierbei handelt es sich um einen allgemeinen Vergleich nur mit Statistiken zur Abfrageausführung. In einigen Fällen könnte die DTU-Nutzung im Vergleich zu ausgeführten Abfragen als zu hoch erscheinen, aber dies ist wohl nicht der Fall.
@@ -192,7 +193,7 @@ In einigen Fällen kann eine hohe Anzahl von Ausführungen mehr Netzwerkroundtri
 
 Viele datengesteuerte Websites greifen beispielsweise bei jeder Benutzeranforderung umfassend auf die Datenbank zu. Verbindungspools verbessern die Situation zwar, dennoch können sich der erhöhte Netzwerkverkehr und die gesteigerte Verarbeitungslast auf dem Datenbankserver die Leistung beeinträchtigen. Reduzieren Sie Roundtrips generell auf ein Minimum.
 
-So identifizieren Sie häufig ausgeführte Abfragen:
+So identifizieren Sie häufig ausgeführte Abfragen
 
 1. Öffnen Sie in Query Performance Insight die Registerkarte **Benutzerdefiniert** für die ausgewählte Datenbank.
 2. Ändern Sie die Metrik zu **Ausführungsanzahl**.
@@ -217,7 +218,7 @@ In einigen Fällen können nah beieinander liegende Anmerkungen aufgrund des Zoo
 
 Durch Korrelieren der Abfragen und der Aktionen zur Leistungsoptimierung könnten Sie einen besseren Einblick in Ihre Workload erhalten.
 
-## <a name="optimize-the-query-store-configuration-for-query-performance-insight"></a>Optimieren der Abfragespeicherkonfiguration für Query Performance Insight
+## <a name="optimize-the-query-store-configuration"></a>Optimieren der Konfiguration des Abfragespeichers
 
 Während der Verwendung von Query Performance Insight können die folgenden Abfragespeicher-Fehlermeldungen angezeigt werden:
 
@@ -241,7 +242,7 @@ Es gibt zwei Arten von Aufbewahrungsrichtlinien:
 
 Sie können für die Erfassungsrichtlinie Folgendes festlegen:
 
-* **Alle**: Der Abfragespeicher erfasst alle Abfragen.
+* **All**: Der Abfragespeicher erfasst alle Abfragen.
 * **Automatisch**: Der Abfragespeicher ignoriert seltene Abfragen und Abfragen mit unbedeutender Erstellungs- und Ausführungsdauer. Die Schwellenwerte für Ausführungszahl, Kompilierungs- und Ausführungsdauer werden intern bestimmt. Dies ist die Standardoption.
 * **Keine:** Der Abfragespeicher beendet die Erfassung neuer Abfragen, die Laufzeitstatistiken für bereits erfasste Abfragen werden jedoch weiter gesammelt.
 
@@ -260,7 +261,7 @@ Sie sollten für alle Richtlinien **AUTOMATISCH** und für die Bereinigungsricht
 
 Setzen Sie die Größe des Abfragespeichers durch Herstellen einer Verbindung mit einer Datenbank über [SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) oder das Azure-Portal und Ausführen der folgenden Abfrage herauf. (Ersetzen Sie `YourDB` mit dem Datenbanknamen.)
 
-```T-SQL
+```SQL
     ALTER DATABASE [YourDB]
     SET QUERY_STORE (MAX_STORAGE_SIZE_MB = 1024);
 ```
@@ -274,16 +275,6 @@ Das Anwenden dieser Einstellungen veranlasst den Abfragespeicher schließlich zu
     ALTER DATABASE [YourDB] SET QUERY_STORE CLEAR;
 ```
 
-## <a name="summary"></a>Zusammenfassung
-
-Dank Query Performance Insight können Sie die Auswirkungen der Abfragen-Workload und die Wechselwirkung mit dem Verbrauch von Datenbankressourcen besser verstehen. Mit diesem Feature können Sie ermitteln, welche Abfragen Ihrer Datenbank am meisten Ressourcen verbrauchen, und Sie werden Abfragen optimieren können, bevor sie zum Problem werden.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Wählen Sie für Empfehlungen zur Datenbankleistung [Empfehlungen](sql-database-advisor.md) auf dem Navigationsblatt von Query Performance Insight aus.
-
-    ![Die Registerkarte „Empfehlungen“](./media/sql-database-query-performance/ia.png)
-
-* Erwägen Sie, [Automatische Optimierung](sql-database-automatic-tuning.md) für häufig auftretende Datenbankleistungsprobleme zu aktivieren.
-* Erfahren Sie, wie [Intelligent Insights](sql-database-intelligent-insights.md) Datenbankleistungsprobleme automatisch behandeln kann.
-* Erwägen Sie die Verwendung der [Azure SQL-Analyse]( ../azure-monitor/insights/azure-sql.md) für die erweiterte Überwachung der Leistung einer großen Anzahl von SQL-Datenbank-Instanzen, Pools für elastische Datenbanken und verwaltete Instanzen mit integrierten intelligenten Funktionen.
+Erwägen Sie den Einsatz der [Azure SQL-Analyse](../azure-monitor/insights/azure-sql.md) für die erweiterte Überwachung der Leistung einer großen Anzahl von Einzel- und Pooldatenbanken, Pools für elastische Datenbanken und verwalteten Instanzen.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e2e3c7763a13c8850554b079a426ed4172b74d28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb173bcbf7cd163dca16c211d45018e0fe056edd
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77599627"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666851"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Aktivieren der Azure Active Directory Domain Services-Authentifizierung über Azure Files
 
@@ -61,16 +61,16 @@ Bevor Sie Azure AD DS-Authentifizierung über SMB für Azure-Dateifreigaben akti
 
 Als Nächstes gewähren Sie Zugriff auf Azure Files-Ressourcen mit Azure AD-Anmeldeinformationen, indem Sie die folgenden Schritte ausführen:
 
-- Aktivieren Sie die Azure AD DS-Authentifizierung über SMB für Ihr Speicherkonto, um das Speicherkonto bei der zugehörigen Bereitstellung von Azure AD DS zu registrieren.
-- Weisen Sie einer Azure AD-Identität (Benutzer, Gruppe oder Dienstprinzipal) Zugriffsberechtigungen für eine Freigabe zu.
-- Konfigurieren Sie NTFS-Berechtigungen über SMB für Verzeichnisse und Dateien.
-- Stellen Sie eine Azure-Dateifreigabe von einem domänengebundenen virtuellen Computer bereit.
+1. Aktivieren Sie die Azure AD DS-Authentifizierung über SMB für Ihr Speicherkonto, um das Speicherkonto bei der zugehörigen Bereitstellung von Azure AD DS zu registrieren.
+2. Weisen Sie einer Azure AD-Identität (Benutzer, Gruppe oder Dienstprinzipal) Zugriffsberechtigungen für eine Freigabe zu.
+3. Konfigurieren Sie NTFS-Berechtigungen über SMB für Verzeichnisse und Dateien.
+4. Stellen Sie eine Azure-Dateifreigabe von einem domänengebundenen virtuellen Computer bereit.
 
 Das folgende Diagramm zeigt den vollständigen Workflow zur Aktivierung der Azure AD DS-Authentifizierung über SMB für Azure Files.
 
 ![Diagramm mit Azure AD über SMB für Azure Files-Workflow](media/storage-files-active-directory-enable/azure-active-directory-over-smb-workflow.png)
 
-## <a name="enable-azure-ad-ds-authentication-for-your-account"></a>Aktivieren der Azure AD DS-Authentifizierung für Ihr Konto
+## <a name="1-enable-azure-ad-ds-authentication-for-your-account"></a>1. Aktivieren der Azure AD DS-Authentifizierung für Ihr Konto
 
 Zur Aktivierung der Azure AD DS-Authentifizierung über SMB für Azure Files können Sie mit dem Azure-Portal, Azure PowerShell oder der Azure-Befehlszeilenschnittstelle eine Eigenschaft für Speicherkonten festlegen. Wenn Sie diese Eigenschaft festlegen, wird für das Speicherkonto bei der zugehörigen Bereitstellung von Azure AD DS implizit ein Domänenbeitritt durchgeführt. Die Azure AD DS-Authentifizierung über SMB ist dann für alle neuen und vorhandenen Dateifreigaben im Speicherkonto aktiviert.
 
@@ -135,7 +135,7 @@ az storage account update -n <storage-account-name> -g <resource-group-name> --e
 
 [!INCLUDE [storage-files-aad-permissions-and-mounting](../../../includes/storage-files-aad-permissions-and-mounting.md)]
 
-Sie haben jetzt erfolgreich die Azure AD DS-Authentifizierung über SMB aktiviert und eine benutzerdefinierte Rolle zugewiesen, die den Zugriff auf eine Azure-Dateifreigabe mit einer Azure AD-Identität ermöglicht. Befolgen Sie die Anweisungen in den Abschnitten [Zuweisen von Zugriffsberechtigungen zum Verwenden einer Identität](#assign-access-permissions-to-an-identity) und [Konfigurieren von NTFS-Berechtigungen über SMB](#configure-ntfs-permissions-over-smb), um weiteren Benutzern den Zugriff auf Ihre Dateifreigabe zu gewähren.
+Sie haben jetzt erfolgreich die Azure AD DS-Authentifizierung über SMB aktiviert und eine benutzerdefinierte Rolle zugewiesen, die den Zugriff auf eine Azure-Dateifreigabe mit einer Azure AD-Identität ermöglicht. Befolgen Sie die Anweisungen in den Abschnitten [Zuweisen von Zugriffsberechtigungen zum Verwenden einer Identität](#2-assign-access-permissions-to-an-identity) und [Konfigurieren von NTFS-Berechtigungen über SMB](#3-configure-ntfs-permissions-over-smb), um weiteren Benutzern den Zugriff auf Ihre Dateifreigabe zu gewähren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -151,6 +151,12 @@
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
         - name: Richtliniendefinitionen
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+    - name: Azure SDK für Java
+      items:
+        - name: Zuweisungen
+          href: /java/api/com.microsoft.azure.management.resources.policyassignment?view=azure-java-stable
+        - name: Richtliniendefinitionen
+          href: /java/api/com.microsoft.azure.management.resources.PolicyDefinitions?view=azure-java-stable
     - name: Azure SDK für Node
       items:
         - name: Richtlinie

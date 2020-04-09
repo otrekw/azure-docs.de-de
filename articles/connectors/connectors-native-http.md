@@ -1,30 +1,47 @@
 ---
-title: Aufrufen von HTTP- und HTTPS-Endpunkten
-description: Senden von ausgehenden Anforderung an HTTP- und HTTPS-Endpunkte mithilfe von Azure Logic Apps
+title: Aufrufen von Dienstendpunkten per HTTP oder HTTPS
+description: Senden von ausgehenden HTTP- oder HTTPS-Anforderungen an Dienstendpunkte aus Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 03/12/2020
 tags: connectors
-ms.openlocfilehash: 9c1b2af8d06c9466ed6c82308de941b43510238a
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.openlocfilehash: 8aefe851708c0b8d8780d03e4364e034e783bf4a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77117972"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79297197"
 ---
-# <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Senden von ausgehenden Aufrufen an HTTP- oder HTTPS-Endpunkte mithilfe von Azure Logic Apps
+# <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Aufrufen von Dienstendpunkten per HTTP oder HTTPS aus Azure Logic Apps
 
-Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem integrierten HTTP-Trigger oder der HTTP-Aktion können Sie automatisierte Tasks und Workflows erstellen, die regelmäßig Anforderungen an HTTP- oder HTTPS-Endpunkte senden. Um stattdessen eingehende HTTP- oder HTTPS-Aufrufe zu empfangen und darauf zu reagieren, verwenden Sie den integrierten [Anforderungstrigger oder die Antwortaktion](../connectors/connectors-native-reqres.md).
+Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem integrierten HTTP-Trigger oder einer HTTP-Aktion können Sie automatisierte Tasks und Workflows erstellen, die Anforderungen per HTTP oder HTTPS an Dienstendpunkte senden. Sie können beispielsweise den Dienstendpunkt für Ihre Website überwachen, indem Sie ihn nach einem bestimmten Zeitplan überprüfen. Wenn das angegebene Ereignis (beispielsweise ein Ausfall Ihrer Website) an diesem Endpunkt auftritt, löst das Ereignis den Workflow Ihrer Logik-App aus und führt die darin enthaltenen Aktionen aus. Falls Sie stattdessen eingehende HTTPS-Aufrufe empfangen und darauf reagieren möchten, verwenden Sie den integrierten [Anforderungstrigger oder die Antwortaktion](../connectors/connectors-native-reqres.md).
 
-So können Sie beispielsweise den Dienstendpunkt für Ihre Website überwachen, indem Sie diesen Endpunkt nach einem bestimmten Zeitplan überprüfen. Wenn ein bestimmtes Ereignis (beispielsweise ein Ausfall Ihrer Website) an diesem Endpunkt auftritt, löst das Ereignis den Workflow Ihrer Logik-App aus und führt die angegebenen Aktionen aus.
+> [!NOTE]
+> Basierend auf den Fähigkeiten des Zielendpunkts unterstützt der HTTP-Connector die TLS-Versionen (Transport Layer Security ) 1.0, 1.1 und 1.2. Logik-Apps handeln mit dem Endpunkt die Verwendung der höchstmöglich unterstützten Version aus. Wenn der Endpunkt also beispielsweise 1.2 unterstützt, verwendet der Connector zuerst 1.2. Andernfalls verwendet der Connector die nächsthöhere unterstützte Version.
 
-Um einen Endpunkt gemäß einem Zeitplan zu überprüfen oder *abzurufen*, können Sie den HTTP-Trigger als ersten Schritt in Ihrem Workflow verwenden. Bei jeder Überprüfung sendet der Trigger einen Aufruf oder eine *Anforderung* an den Endpunkt. Die Antwort des Endpunkts bestimmt, ob der Workflow der Logik-App ausgeführt wird. Der Trigger übergibt alle Inhalte aus der Antwort an die Aktionen in Ihrer Logik-App.
+Um einen Endpunkt nach einem wiederkehrenden Zeitplan zu überprüfen oder *abzurufen*, können Sie den [HTTP-Trigger Ihrem Workflow als ersten Schritt hinzufügen](#http-trigger). Jedes Mal, wenn der Trigger den Endpunkt überprüft, führt er einen Aufruf bzw. das Senden einer *Anforderung* an den Endpunkt durch. Die Antwort des Endpunkts bestimmt, ob der Workflow der Logik-App ausgeführt wird. Der Trigger übergibt alle Inhalte aus der Antwort des Endpunkts an die Aktionen in Ihrer Logik-App.
 
-Sie können die HTTP-Aktion wie jeden anderen Schritt in Ihrem Workflow zum Abrufen des Endpunkts zum gewünschten Zeitpunkt verwenden. Die Antwort des Endpunkts bestimmt, wie die restlichen Aktionen des Workflows ausgeführt werden.
+[Fügen Sie die entsprechende HTTP-Aktion hinzu](#http-action), um einen Endpunkt an einem anderen Punkt Ihres Workflows aufzurufen. Die Antwort des Endpunkts bestimmt, wie die restlichen Aktionen des Workflows ausgeführt werden.
 
-Basierend auf den Fähigkeiten des Zielendpunkts unterstützt der HTTP-Connector die TLS-Versionen (Transport Layer Security ) 1.0, 1.1 und 1.2. Logik-Apps handeln mit dem Endpunkt die Verwendung der höchstmöglich unterstützten Version aus. Wenn der Endpunkt also z. B. 1.2 unterstützt, verwendet der Connector zuerst 1.2. Andernfalls verwendet der Connector die nächsthöhere unterstützte Version.
+> [!IMPORTANT]
+> Wenn ein HTTP-Trigger oder eine HTTP-Aktion diese Header enthält, entfernt Logic Apps sie aus der generierten Anforderungsnachricht, ohne eine Warnung oder einen Fehler anzuzeigen:
+>
+> * `Accept-*`
+> * `Allow`
+> * `Content-*` mit den folgenden Ausnahmen: `Content-Disposition`, `Content-Encoding` und `Content-Type`.
+> * `Cookie`
+> * `Expires`
+> * `Host`
+> * `Last-Modified`
+> * `Origin`
+> * `Set-Cookie`
+> * `Transfer-Encoding`
+>
+> Logic Apps verhindert nicht, dass Sie Logik-Apps speichern, in denen ein HTTP-Trigger oder eine HTTP-Aktion mit diesen Headern verwendet wird, sondern diese Header werden von Logic Apps ignoriert.
+
+In diesem Artikel wird veranschaulicht, wie Sie einen HTTP-Trigger bzw. eine HTTP-Aktion dem Workflow Ihrer Logik-App hinzufügen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -36,13 +53,15 @@ Basierend auf den Fähigkeiten des Zielendpunkts unterstützt der HTTP-Connector
 
 * Die Logik-App, von der aus Sie den Zielendpunkt aufrufen möchten. Um mit dem HTTP-Trigger zu beginnen, [erstellen Sie eine leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Um die HTTP-Aktion zu verwenden, starten Sie Ihre Logik-App mit einem beliebigen Trigger. Dieses Beispiel verwendet den HTTP-Trigger als ersten Schritt.
 
+<a name="http-trigger"></a>
+
 ## <a name="add-an-http-trigger"></a>Hinzufügen eines HTTP-Triggers
 
 Dieser integrierte Trigger führt einen HTTP-Aufruf der angegebenen URL für einen Endpunkt aus und gibt eine Antwort zurück.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Öffnen Sie Ihre leere Logik-App im Logik-App-Designer.
 
-1. Geben Sie unter **Aktion auswählen** im Suchfeld „HTTP“ als Filter ein. Wählen Sie in der Liste **Trigger** den **HTTP**-Trigger aus.
+1. Wählen Sie im Suchfeld des Designers die Option **Integriert** aus. Geben Sie im Suchfeld den Begriff `http` als Filter ein. Wählen Sie in der Liste **Trigger** den **HTTP**-Trigger aus.
 
    ![Auswählen des HTTP-Triggers](./media/connectors-native-http/select-http-trigger.png)
 
@@ -63,6 +82,8 @@ Dieser integrierte Trigger führt einen HTTP-Aufruf der angegebenen URL für ein
 
 1. Speichern Sie die Logik-App unbedingt, wenn Sie fertig sind. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
+<a name="http-action"></a>
+
 ## <a name="add-an-http-action"></a>Hinzufügen einer HTTP-Aktion
 
 Diese integrierte Aktion führt einen HTTP-Aufruf der angegebenen URL für einen Endpunkt aus und gibt eine Antwort zurück.
@@ -75,7 +96,7 @@ Diese integrierte Aktion führt einen HTTP-Aufruf der angegebenen URL für einen
 
    Wenn Sie zwischen Schritten eine Aktion einfügen möchten, bewegen Sie den Mauszeiger über den Pfeil zwischen den Schritten. Wählen Sie das angezeigte Pluszeichen ( **+** ) aus, und wählen Sie dann **Aktion hinzufügen** aus.
 
-1. Geben Sie unter **Aktion auswählen** im Suchfeld „HTTP“ als Filter ein. Wählen Sie in der Liste **Aktionen** die **HTTP**-Aktion aus.
+1. Wählen Sie unter **Aktion auswählen** die Option **Integriert** aus. Geben Sie im Suchfeld den Begriff `http` als Filter ein. Wählen Sie in der Liste **Aktionen** die **HTTP**-Aktion aus.
 
    ![Auswählen der HTTP-Aktion](./media/connectors-native-http/select-http-action.png)
 
@@ -158,7 +179,7 @@ Hier finden Sie weitere Informationen zu den Ausgaben aus einem HTTP-Trigger ode
 | status code | INT | Der Statuscode aus der Anforderung |
 |||
 
-| Statuscode | Beschreibung |
+| Statuscode | BESCHREIBUNG |
 |-------------|-------------|
 | 200 | OK |
 | 202 | Zulässig |

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1f4b3387375b52b28600590a099884277f3de63e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f909ca12ce080fc5d1241bcc649c041361e405a7
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78943028"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421175"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Tutorial: Bereitstellen von Azure-Funktionen als IoT Edge-Module
 
@@ -31,9 +31,6 @@ Mithilfe von Azure Functions können Sie Code bereitstellen, mit dem Ihre Gesch�
 
 ![Architekturdiagramm des Tutorials: Staging und Bereitstellung des Funktionsmoduls](./media/tutorial-deploy-function/functions-architecture.png)
 </center>
-
->[!NOTE]
->Azure Function-Module in Azure IoT Edge sind als [öffentliche Vorschauversion](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verfügbar.
 
 Die Azure-Funktion, die Sie in diesem Tutorial erstellen, filtert die von Ihrem Gerät generierten Temperaturdaten. Die Funktion sendet Nachrichten nur dann an Azure IoT Hub (Upstream), wenn die Temperatur einen angegebenen Schwellenwert überschreitet.
 

@@ -4,18 +4,18 @@ description: Liste der Dienste, die verwaltete Identitäten für Azure-Ressource
 services: active-directory
 author: MarkusVi
 ms.author: markvi
-ms.date: 02/13/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0576a70b1b345d31ffc11c55f7fa5cbd288acd5
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 4c7a65df100cd58561ce12ac2ae01281eebd419a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357922"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656048"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen
 
@@ -31,9 +31,9 @@ Die folgenden Azure-Dienste unterstützen verwaltete Identitäten für Azure-Res
 ### <a name="azure-virtual-machines"></a>Azure Virtual Machines
 
 | Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
-| --- | --- | --- | --- | --- |
-| Vom System zugewiesen | Verfügbar | Vorschau | Vorschau | Vorschau | 
-| Vom Benutzer zugewiesen | Verfügbar | Vorschau | Vorschau | Vorschau |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Vorschau | Vorschau | 
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Vorschau | Vorschau |
 
 Konfigurieren Sie die verwaltete Identität für Azure Virtual Machines anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
@@ -46,9 +46,9 @@ Konfigurieren Sie die verwaltete Identität für Azure Virtual Machines anhand d
 ### <a name="azure-virtual-machine-scale-sets"></a>Skalierungsgruppen für virtuelle Azure-Computer
 
 |Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
-| --- | --- | --- | --- | --- |
-| Vom System zugewiesen | Verfügbar | Vorschau | Vorschau | Vorschau |
-| Vom Benutzer zugewiesen | Verfügbar | Vorschau | Vorschau | Vorschau |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | ![Verfügbar][check] | Vorschau | Vorschau | Vorschau |
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | Vorschau | Vorschau | Vorschau |
 
 Konfigurieren Sie die verwaltete Identität für Azure Virtual Machine Scale Sets anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
@@ -61,9 +61,9 @@ Konfigurieren Sie die verwaltete Identität für Azure Virtual Machine Scale Set
 ### <a name="azure-app-service"></a>Azure App Service
 
 | Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
-| --- | --- | --- | --- | --- |
-| Vom System zugewiesen | Verfügbar | Verfügbar | Verfügbar | Verfügbar |
-| Vom Benutzer zugewiesen | Verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | ![Verfügbar][check] | ![Verfügbar][check] |
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check]  | ![Verfügbar][check]  | ![Verfügbar][check] |
 
 Konfigurieren Sie die verwaltete Identität für Azure App Service anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
@@ -75,9 +75,9 @@ Konfigurieren Sie die verwaltete Identität für Azure App Service anhand der fo
 ### <a name="azure-blueprints"></a>Azure Blueprint
 
 |Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
-| --- | --- | --- | --- | --- |
-| Vom System zugewiesen | Verfügbar | Verfügbar | Nicht verfügbar | Nicht verfügbar |
-| Vom Benutzer zugewiesen | Verfügbar | Verfügbar | Nicht verfügbar | Nicht verfügbar |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar |
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar |
 
 Verwenden Sie die folgende Liste, um eine verwaltete Identität mit [Azure Blueprints](../../governance/blueprints/overview.md) zu nutzen:
 
@@ -87,9 +87,9 @@ Verwenden Sie die folgende Liste, um eine verwaltete Identität mit [Azure Bluep
 ### <a name="azure-functions"></a>Azure-Funktionen
 
 Typ der verwalteten Identität |Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
-| --- | --- | --- | --- | --- |
-| Vom System zugewiesen | Verfügbar | Verfügbar | Verfügbar | Verfügbar |
-| Vom Benutzer zugewiesen | Verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | ![Verfügbar][check] | ![Verfügbar][check] |
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check]  | ![Verfügbar][check]  | ![Verfügbar][check]  |
 
 Konfigurieren Sie die verwaltete Identität für Azure Functions anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
@@ -101,9 +101,10 @@ Konfigurieren Sie die verwaltete Identität für Azure Functions anhand der folg
 ### <a name="azure-logic-apps"></a>Azure Logic Apps
 
 Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
-| --- | --- | --- | --- | --- |
-| Vom System zugewiesen | Vorschau | Vorschau | Nicht verfügbar | Vorschau |
-| Vom Benutzer zugewiesen | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | ![Verfügbar][check] |
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | ![Verfügbar][check] |
+
 
 Konfigurieren Sie die verwaltete Identität für Azure Logic Apps anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
@@ -113,8 +114,8 @@ Konfigurieren Sie die verwaltete Identität für Azure Logic Apps anhand der fol
 ### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
 
 Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
-| --- | --- | --- | --- | --- |
-| Vom System zugewiesen | Verfügbar | Verfügbar | Nicht verfügbar | Verfügbar |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | ![Verfügbar][check] |
 | Vom Benutzer zugewiesen | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
 
 Konfigurieren Sie die verwaltete Identität für Azure Data Factory V2 anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
@@ -127,9 +128,9 @@ Konfigurieren Sie die verwaltete Identität für Azure Data Factory V2 anhand de
 ### <a name="azure-api-management"></a>Azure API Management
 
 Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
-| --- | --- | --- | --- | --- |
-| Vom System zugewiesen | Verfügbar | Verfügbar | Nicht verfügbar | Nicht verfügbar |
-| Vom Benutzer zugewiesen | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar | ![Verfügbar][check] |
+| Vom Benutzer zugewiesen | Vorschau | Vorschau | Nicht verfügbar | Vorschau |
 
 Konfigurieren Sie die verwaltete Identität für Azure API Management anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
@@ -138,7 +139,7 @@ Konfigurieren Sie die verwaltete Identität für Azure API Management anhand der
 ### <a name="azure-container-instances"></a>Azure Container Instances
 
 Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
-| --- | --- | --- | --- | --- |
+| --- | :-: | :-: | :-: | :-: |
 | Vom System zugewiesen | Linux: Vorschau<br>Windows: Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
 | Vom Benutzer zugewiesen | Linux: Vorschau<br>Windows: Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
 
@@ -151,8 +152,8 @@ Konfigurieren Sie die verwaltete Identität für Azure Container Instances anhan
 ### <a name="azure-container-registry-tasks"></a>Azure Container Registry Tasks
 
 Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
-| --- | --- | --- | --- | --- |
-| Vom System zugewiesen | Verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | ![Verfügbar][check] | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
 | Vom Benutzer zugewiesen | Vorschau | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
 
 Konfigurieren Sie die verwaltete Identität für Azure Container Registry Tasks anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
@@ -163,9 +164,9 @@ Konfigurieren Sie die verwaltete Identität für Azure Container Registry Tasks 
 [Verwaltete Identität für Service Fabric-Anwendungen](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) ist als Vorschauversion in allen Regionen verfügbar.
 
 Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
-| --- | --- | --- | --- | --- |
-| Vom System zugewiesen | Verfügbar | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. |
-| Vom Benutzer zugewiesen | Verfügbar | Nicht verfügbar. | Nicht verfügbar. |Nicht verfügbar. |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | ![Verfügbar][check] | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. |
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | Nicht verfügbar. | Nicht verfügbar. |Nicht verfügbar. |
 
 Informationen zum Konfigurieren der verwalteten Identität für Azure Service Fabric-Anwendungen in allen Regionen finden Sie in der folgenden Liste:
 - [Azure Resource Manager-Vorlage](https://github.com/Azure-Samples/service-fabric-managed-identity/tree/anmenard-docs)
@@ -184,26 +185,26 @@ Konfigurieren Sie den Zugriff auf Azure Resource Manager anhand der folgenden Li
 - [Zuweisen des Zugriffs mit Azure Resource Manager-Vorlagen](../../role-based-access-control/role-assignments-template.md)
 
 | Cloud | Ressourcen-ID | Status |
-|--------|------------|--------|
-| Azure Global | `https://management.azure.com/`| Verfügbar |
-| Azure Government | `https://management.usgovcloudapi.net/` | Verfügbar |
-| Azure Deutschland | `https://management.microsoftazure.de/` | Verfügbar |
-| Azure China 21Vianet | `https://management.chinacloudapi.cn` | Verfügbar |
+|--------|------------|:-:|
+| Azure Global | `https://management.azure.com/`| ![Verfügbar][check] |
+| Azure Government | `https://management.usgovcloudapi.net/` | ![Verfügbar][check] |
+| Azure Deutschland | `https://management.microsoftazure.de/` | ![Verfügbar][check] |
+| Azure China 21Vianet | `https://management.chinacloudapi.cn` | ![Verfügbar][check] |
 
 ### <a name="azure-key-vault"></a>Azure-Schlüsseltresor
 
 | Cloud | Ressourcen-ID | Status |
-|--------|------------|--------|
-| Azure Global | `https://vault.azure.net`| Verfügbar |
-| Azure Government | `https://vault.usgovcloudapi.net` | Verfügbar |
-| Azure Deutschland |  `https://vault.microsoftazure.de` | Verfügbar |
-| Azure China 21Vianet | `https://vault.azure.cn` | Verfügbar |
+|--------|------------|:-:|
+| Azure Global | `https://vault.azure.net`| ![Verfügbar][check] |
+| Azure Government | `https://vault.usgovcloudapi.net` | ![Verfügbar][check] |
+| Azure Deutschland |  `https://vault.microsoftazure.de` | ![Verfügbar][check] |
+| Azure China 21Vianet | `https://vault.azure.cn` | ![Verfügbar][check] |
 
 ### <a name="azure-data-lake"></a>Azure Data Lake 
 
 | Cloud | Ressourcen-ID | Status |
-|--------|------------|--------|
-| Azure Global | `https://datalake.azure.net/` | Verfügbar |
+|--------|------------|:-:|
+| Azure Global | `https://datalake.azure.net/` | ![Verfügbar][check] |
 | Azure Government |  | Nicht verfügbar. |
 | Azure Deutschland |   | Nicht verfügbar. |
 | Azure China 21Vianet |  | Nicht verfügbar. |
@@ -211,17 +212,17 @@ Konfigurieren Sie den Zugriff auf Azure Resource Manager anhand der folgenden Li
 ### <a name="azure-sql"></a>Azure SQL 
 
 | Cloud | Ressourcen-ID | Status |
-|--------|------------|--------|
-| Azure Global | `https://database.windows.net/` | Verfügbar |
-| Azure Government | `https://database.usgovcloudapi.net/` | Verfügbar |
-| Azure Deutschland | `https://database.cloudapi.de/` | Verfügbar |
-| Azure China 21Vianet | `https://database.chinacloudapi.cn/` | Verfügbar |
+|--------|------------|:-:|
+| Azure Global | `https://database.windows.net/` | ![Verfügbar][check] |
+| Azure Government | `https://database.usgovcloudapi.net/` | ![Verfügbar][check] |
+| Azure Deutschland | `https://database.cloudapi.de/` | ![Verfügbar][check] |
+| Azure China 21Vianet | `https://database.chinacloudapi.cn/` | ![Verfügbar][check] |
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
 
 | Cloud | Ressourcen-ID | Status |
-|--------|------------|--------|
-| Azure Global | `https://eventhubs.azure.net` | Verfügbar |
+|--------|------------|:-:|
+| Azure Global | `https://eventhubs.azure.net` | ![Verfügbar][check] |
 | Azure Government |  | Nicht verfügbar. |
 | Azure Deutschland |   | Nicht verfügbar. |
 | Azure China 21Vianet |  | Nicht verfügbar. |
@@ -229,9 +230,9 @@ Konfigurieren Sie den Zugriff auf Azure Resource Manager anhand der folgenden Li
 ### <a name="azure-service-bus"></a>Azure-Servicebus
 
 | Cloud | Ressourcen-ID | Status |
-|--------|------------|--------|
-| Azure Global | `https://servicebus.azure.net`  | Verfügbar |
-| Azure Government |  | Verfügbar |
+|--------|------------|:-:|
+| Azure Global | `https://servicebus.azure.net`  | ![Verfügbar][check] |
+| Azure Government |  | ![Verfügbar][check] |
 | Azure Deutschland |   | Nicht verfügbar. |
 | Azure China 21Vianet |  | Nicht verfügbar. |
 
@@ -246,11 +247,11 @@ Konfigurieren Sie den Zugriff auf Azure Resource Manager anhand der folgenden Li
 ### <a name="azure-storage-blobs-and-queues"></a>Azure Storage-Blobs und -Warteschlangen
 
 | Cloud | Ressourcen-ID | Status |
-|--------|------------|--------|
-| Azure Global | `https://storage.azure.com/` <br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | Verfügbar |
-| Azure Government | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.usgovcloudapi.net` <br /><br />`https://<account>.queue.core.usgovcloudapi.net` | Verfügbar |
-| Azure Deutschland | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.cloudapi.de` <br /><br />`https://<account>.queue.core.cloudapi.de` | Verfügbar |
-| Azure China 21Vianet | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.chinacloudapi.cn` <br /><br />`https://<account>.queue.core.chinacloudapi.cn` | Verfügbar |
+|--------|------------|:-:|
+| Azure Global | `https://storage.azure.com/` <br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | ![Verfügbar][check] |
+| Azure Government | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.usgovcloudapi.net` <br /><br />`https://<account>.queue.core.usgovcloudapi.net` | ![Verfügbar][check] |
+| Azure Deutschland | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.cloudapi.de` <br /><br />`https://<account>.queue.core.cloudapi.de` | ![Verfügbar][check] |
+| Azure China 21Vianet | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.chinacloudapi.cn` <br /><br />`https://<account>.queue.core.chinacloudapi.cn` | ![Verfügbar][check] |
 
 
 
@@ -264,8 +265,11 @@ Konfigurieren Sie den Zugriff auf Azure Resource Manager anhand der folgenden Li
 ### <a name="azure-analysis-services"></a>Azure Analysis Services
 
 | Cloud | Ressourcen-ID | Status |
-|--------|------------|--------|
-| Azure Global | `https://*.asazure.windows.net` | Verfügbar |
-| Azure Government | `https://*.asazure.usgovcloudapi.net` | Verfügbar |
-| Azure Deutschland | `https://*.asazure.cloudapi.de` | Verfügbar |
-| Azure China 21Vianet | `https://*.asazure.chinacloudapi.cn` | Verfügbar |
+|--------|------------|:-:|
+| Azure Global | `https://*.asazure.windows.net` | ![Verfügbar][check] |
+| Azure Government | `https://*.asazure.usgovcloudapi.net` | ![Verfügbar][check] |
+| Azure Deutschland | `https://*.asazure.cloudapi.de` | ![Verfügbar][check] |
+| Azure China 21Vianet | `https://*.asazure.chinacloudapi.cn` | ![Verfügbar][check] |
+
+
+[check]: media/services-support-managed-identities/check.png "Verfügbar"

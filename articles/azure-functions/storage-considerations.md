@@ -3,12 +3,12 @@ title: Speicheraspekte für Azure Functions
 description: Erfahren Sie über die Speicheranforderungen von Azure Functions und über das Verschlüsseln gespeicherter Daten.
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: f094996ca44ec36d46330e54eac56b28794ef22e
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 48ff2dedd997cccb76b13acdadc895504f656ea3
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78358180"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984162"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Speicheraspekte für Azure Functions
 
@@ -29,7 +29,7 @@ Azure Functions erfordert ein Azure Storage-Konto, wenn Sie eine Funktions-App-I
 
 Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Warteschlangen- und Tabellenspeicher unterstützt. Der Grund hierfür ist, dass Functions für Vorgänge wie das Verwalten von Triggern und das Ausführen von Protokollierfunktionen auf Azure Storage basiert. Einige Speicherkonten unterstützen keine Warteschlangen und Tabellen. Diese Konten umfassen reine Blobspeicherkonten, Azure Storage Premium und allgemeine Speicherkonten mit Replikation von ZRS. Diese nicht unterstützten Konten werden aus dem Blatt „Speicherkonto“ herausgefiltert, wenn eine Funktions-App erstellt wird.
 
-Weitere Informationen zu Speicherkontotypen finden Sie unter [Einführung in die Azure Storage-Dienste](../storage/common/storage-introduction.md#azure-storage-services). 
+Weitere Informationen zu Speicherkontotypen finden Sie unter [Einführung in die Azure Storage-Dienste](../storage/common/storage-introduction.md#core-storage-services). 
 
 Sie können zwar ein vorhandenes Speicherkonto mit ihrer Funktions-App verwenden, aber Sie müssen sicherstellen, dass diese Anforderungen erfüllt werden. Für Speicherkonten, die im Rahmen der Erstellung der Funktions-App erstellt werden, ist garantiert, dass sie diese Speicherkontenanforderungen erfüllen.  
 
@@ -56,6 +56,25 @@ Es ist möglich, dass mehrere Funktions-Apps dasselbe Speicherkonto ohne Problem
 Azure Storage verschlüsselt alle Daten in einem ruhenden Speicherkonto. Weitere Informationen finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](../storage/common/storage-service-encryption.md).
 
 Standardmäßig werden Daten mit von Microsoft verwalteten Schlüsseln verschlüsselt. Für eine zusätzliche Kontrolle über die Verschlüsselungsschlüssel können Sie vom Kunden verwaltete Schlüssel bereitstellen, mit denen Blob- und Dateidaten verschlüsselt werden können. Diese Schlüssel müssen in Azure Key Vault vorhanden sein, damit Functions auf das Speicherkonto zugreifen kann. Weitere Informationen finden Sie unter [Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault über das Azure-Portal](../storage/common/storage-encryption-keys-portal.md).  
+
+## <a name="mount-file-shares-linux"></a>Einbinden von Dateifreigaben (Linux)
+
+Sie können vorhandene Azure Files-Freigaben in Ihre Linux-Funktions-Apps einbinden. Durch das Einbinden einer Freigabe in Ihre Linux-Funktions-App können Sie vorhandene Machine Learning-Modelle oder andere Daten in Ihren Funktionen nutzen. Sie können den Befehl [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) verwenden, um eine vorhandene Freigabe in Ihre Linux-Funktions-App einzubinden. 
+
+Bei diesem Befehl ist `share-name` der Name der vorhandenen Azure Files-Freigabe, und `custom-id` kann ein beliebige Zeichenfolge sein, mit der die Freigabe bei der Einbindung in die Funktions-App eindeutig definiert wird. `mount-path` ist der Pfad, über den in Ihrer Funktions-App auf die Freigabe zugegriffen wird. `mount-path` muss das Format `/dir-name` haben und darf nicht mit `/home` beginnen.
+
+Ein vollständiges Beispiel finden Sie in den Skripts unter [Einbinden einer Dateifreigabe in eine Python-Funktions-App mithilfe der Azure CLI](scripts/functions-cli-mount-files-storage-linux.md). 
+
+Derzeit wird als `storage-type` nur `AzureFiles` unterstützt. Sie können pro Funktions-App nicht mehr als fünf Freigaben einbinden. Durch die Einbindung einer Dateifreigabe verlängert sich die Kaltstartdauer ggf. um mindestens 200 bis 300 ms. Dieser Wert ist noch höher, wenn sich das Speicherkonto in einer anderen Region befindet.
+
+Die eingebundene Freigabe ist für Ihren Funktionscode unter dem angegebenen `mount-path` verfügbar. Wenn `mount-path` beispielsweise `/path/to/mount` lautet, können Sie wie im folgenden Python-Beispiel über Dateisystem-APIs auf das Zielverzeichnis zugreifen:
+
+```python
+import os
+...
+
+files_in_share = os.listdir("/path/to/mount")
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

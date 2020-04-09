@@ -8,15 +8,15 @@ ms.assetid: 1a14637e-b3d0-4fd9-ba7a-576b8df62ff2
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: article
-ms.date: 01/21/2020
+ms.topic: how-to
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: c4402c1ce2f051c8d1911e7c0332d4cac787ce1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b14fed07c9bd9b5fcb6a5489719481902351fc0d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613201"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654867"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Kennwort- und Kontosperrungsrichtlinien in verwalteten Domänen
 
@@ -45,6 +45,11 @@ Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
 ## <a name="default-password-policy-settings"></a>Standardeinstellungen von Kennwortrichtlinien
 
 Mit differenzierten Kennwortrichtlinien (FGPP) können Sie bestimmte Einschränkungen für Kennwort- und Kontosperrungsrichtlinien auf verschiedene Benutzer in einer Domäne anwenden. Zum Sichern privilegierter Konten können Sie beispielsweise strengere Einstellungen für Kontosperren anwenden als für reguläre Konten, die nicht privilegiert sind. Sie können mehrere FGPPs innerhalb einer verwalteten Azure AD DS-Domäne erstellen und die Reihenfolge der Priorität festlegen, um sie auf Benutzer anzuwenden.
+
+Weitere Informationen zu Kennwortrichtlinien und zum Verwenden des Active Directory-Verwaltungscenters finden Sie in den folgenden Artikeln:
+
+* [Informationen über differenzierte Kennwortrichtlinien](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394(v=ws.10))
+* [Konfigurieren differenzierter Kennwortrichtlinien mit dem Active Directory-Verwaltungscenter](/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt)
 
 Richtlinien werden über die Gruppenzuordnung in einer verwalteten Azure AD DS-Domäne verteilt. Von Ihnen vorgenommene Änderungen werden bei der nächsten Benutzeranmeldung angewendet. Wenn Sie die Richtlinie ändern, wird ein bereits gesperrtes Benutzerkonto nicht entsperrt.
 
@@ -105,20 +110,20 @@ Um eine benutzerdefinierte Kennwortrichtlinie zu erstellen, verwenden Sie die Ac
     * Einstellungen wie Kennwortkomplexität, Alter oder Ablaufzeit gelten nur für Benutzer, die manuell in einer verwalteten Azure AD DS-Domäne erstellt werden.
     * Kontosperreinstellungen gelten für alle Benutzer, werden jedoch nur in der verwalteten Domäne und nicht in Azure AD wirksam.
 
-    ![Erstellen einer benutzerdefinierten differenzierten Kennwortrichtlinie](./media/how-to/custom-fgpp.png)
+    ![Erstellen einer benutzerdefinierten differenzierten Kennwortrichtlinie](./media/password-policy/custom-fgpp.png)
 
 1. Deaktivieren Sie **Vor versehentlichem Löschen schützen**. Wenn diese Option aktiviert ist, kann die FGPP nicht gespeichert werden.
 1. Wählen Sie im Abschnitt **Direkt anwendbar auf** die Schaltfläche **Hinzufügen** aus. Wählen Sie im Dialogfeld **Benutzer oder Gruppen auswählen** die Schaltfläche **Speicherorte** aus.
 
-    ![Auswählen von Benutzern und Gruppen, auf die die Kennwortrichtlinie angewendet werden soll](./media/how-to/fgpp-applies-to.png)
+    ![Auswählen von Benutzern und Gruppen, auf die die Kennwortrichtlinie angewendet werden soll](./media/password-policy/fgpp-applies-to.png)
 
 1. Kennwortrichtlinien können nur auf Gruppen angewendet werden. Erweitern Sie im Dialogfeld **Speicherorte** den Domänennamen (z. B. *aaddscontoso.com*) und wählen Sie dann eine Organisationseinheit (z. B. **AADDC-Benutzer**) aus. Wenn Sie über eine benutzerdefinierte Organisationseinheit verfügen, die eine Gruppe von Benutzern enthält, die Sie anwenden möchten, wählen Sie diese Organisationseinheit aus.
 
-    ![Auswählen der Organisationseinheit, zu der die Gruppe gehört](./media/how-to/fgpp-container.png)
+    ![Auswählen der Organisationseinheit, zu der die Gruppe gehört](./media/password-policy/fgpp-container.png)
 
 1. Geben Sie den Namen der Gruppe ein, auf die die Richtlinie angewendet werden soll, und klicken Sie dann auf **Namen überprüfen**, um sicherzustellen, dass die Gruppe vorhanden ist.
 
-    ![Suchen und Auswählen der Gruppe zum Anwenden der FGPP](./media/how-to/fgpp-apply-group.png)
+    ![Suchen und Auswählen der Gruppe zum Anwenden der FGPP](./media/password-policy/fgpp-apply-group.png)
 
 1. Der Name der ausgewählten Gruppe wird jetzt im Abschnitt **Direkt anwendbar auf** angezeigt. Wählen Sie **OK** aus, um die benutzerdefinierte Kennwortrichtlinie zu speichern.
 
