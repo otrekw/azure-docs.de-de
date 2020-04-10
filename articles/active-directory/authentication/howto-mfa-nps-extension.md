@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43f355f22774477466d2965cef02adcc4ec4f497
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.openlocfilehash: f884f4c0ea3a610f28a8fdbb34b081f0b0a64d08
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76908852"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666946"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure Multi-Factor Authentication
 
@@ -78,6 +78,7 @@ Der NPS-Server muss über die Ports 80 und 443 mit den folgenden URLs kommunizie
 
 - https:\//adnotifications.windowsazure.com
 - https:\//login.microsoftonline.com
+- https:\//credentials.azure.com
 
 Darüber hinaus ist eine Verbindung zu den folgenden URLs erforderlich, um die [Einrichtung des Adapters mit dem bereitgestellten PowerShell-Skript](#run-the-powershell-script) abzuschließen.
 
@@ -200,7 +201,7 @@ Für Kunden, die Azure Government Cloud verwenden, sind auf jedem NPS-Server die
 1. Öffnen Sie den **Registrierungs-Editor** auf dem NPS-Server.
 1. Navigieren Sie zu `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa`. Legen Sie die folgenden Hauptwerte fest:
 
-    | Registrierungsschlüssel       | value |
+    | Registrierungsschlüssel       | Wert |
     |--------------------|-----------------------------------|
     | AZURE_MFA_HOSTNAME | adnotifications.windowsazure.us   |
     | STS_URL            | https://login.microsoftonline.us/ |
@@ -238,7 +239,7 @@ Nachdem Sie MFA für einen RADIUS-Client mithilfe der NPS-Erweiterung aktiviert 
 
 Wenn es Benutzer gibt, die nicht für MFA registriert sind, können Sie bestimmen, was geschieht, wenn sie versuchen, sie zu authentifizieren. Verwenden Sie die Registrierungseinstellung *REQUIRE_USER_MATCH* im Registrierungspfad *HKLM\Software\Microsoft\AzureMFA* zum Steuern des Verhaltens des Features. Diese Einstellung hat eine einzelne Konfigurationsoption:
 
-| Key | value | Standard |
+| Schlüssel | Wert | Standard |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | TRUE/FALSE | Nicht festgelegt (gleichwertig mit TRUE) |
 
@@ -250,9 +251,9 @@ Sie können diesen Schlüssel erstellen und auf FALSE festlegen, während Ihre B
 
 ### <a name="nps-extension-health-check-script"></a>Skript für die Integritätsprüfung der NPS-Erweiterung
 
-Das folgende Skript steht im TechNet-Katalog zur Verfügung, um Schritte der grundlegenden Integritätsprüfung bei der Problembehandlung der NPS-Erweiterung durchzuführen.
+Zum Ausführen der Schritte der grundlegenden Integritätsprüfung bei der Problembehandlung der NPS-Erweiterung steht das folgende Skript zur Verfügung.
 
-[MFA_NPS_Troubleshooter.ps1](https://gallery.technet.microsoft.com/Azure-MFA-NPS-Extension-648de6bb)
+[MFA_NPS_Troubleshooter.ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
 
 ---
 
@@ -303,7 +304,7 @@ Dieser Fehler kann verschiedene Gründe haben. Gehen Sie zur Problembehandlung f
 1. Starten Sie den NPS-Server neu.
 2. Vergewissern Sie sich, dass das Clientzertifikat wie erwartet installiert wurde.
 3. Überprüfen Sie, ob das Zertifikat Ihrem Mandanten in Azure AD zugeordnet ist.
-4. Überprüfen Sie auf dem Server, auf dem die Erweiterung ausgeführt wird, ob auf https://login.microsoftonline.com/ zugegriffen werden kann.
+4. Überprüfen Sie auf dem Server, auf dem die Erweiterung ausgeführt wird, ob auf `https://login.microsoftonline.com/` zugegriffen werden kann.
 
 ---
 
@@ -334,6 +335,8 @@ Es empfiehlt sich, ältere und weniger leistungsstarke Verschlüsselungssammlung
 Zusätzliche Anleitungen zur Problembehandlung und mögliche Lösungen finden Sie im Artikel [Auflösen von Fehlermeldungen in der NPS-Erweiterung für Azure Multi-Factor Authentication](howto-mfa-nps-extension-errors.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+- [Übersicht und Konfiguration des Netzwerkrichtlinienservers unter Windows Server](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)
 
 - Konfigurieren Sie alternative IDs für die Anmeldung, oder richten Sie unter [Erweiterte Konfigurationsoptionen für die NPS-Erweiterung für Multi-Factor Authentication](howto-mfa-nps-extension-advanced.md) eine Ausnahmeliste für IP-Adressen ein, welche die zweistufige Überprüfung nicht ausführen müssen.
 

@@ -7,14 +7,14 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 5a2731e26ba4f371177cf2ae649f0695f27e6304
-ms.sourcegitcommit: be53e74cd24bbabfd34597d0dcb5b31d5e7659de
+ms.openlocfilehash: b0530ddada68cc9d07753a3b8ab30bff642e26dd
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79096766"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618663"
 ---
-# <a name="deploy-azure-data-explorer-into-your-virtual-network"></a>Bereitstellen von Azure Data Explorer in Ihrem virtuellen Netzwerk
+# <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>Bereitstellen von Azure Data Explorer-Clustern in Ihrem virtuellen Netzwerk
 
 In diesem Artikel werden die Ressourcen erläutert, die beim Bereitstellen eines Azure Data Explorer-Clusters in einem benutzerdefinierten virtuellen Azure-Netzwerk vorhanden sind. Diese Informationen helfen Ihnen bei der Bereitstellung eines Clusters in einem Subnetz in Ihrem virtuellen Netzwerk (VNET). Weitere Informationen zu virtuellen Azure-Netzwerken finden Sie unter [Was ist Azure Virtual Network?](/azure/virtual-network/virtual-networks-overview)
 
@@ -106,7 +106,7 @@ Wenn Sie Azure Data Explorer-Cluster in Ihrem Subnetz bereitstellen, können Sie
 | Brasilien, Süden | 191.233.25.183 |
 | Kanada, Mitte | 40.82.188.208 |
 | Kanada, Osten | 40.80.255.12 |
-| Indien, Mitte | 40.81.249.251 |
+| Indien, Mitte | 40.81.249.251, 104.211.98.159 |
 | USA (Mitte) | 40.67.188.68 |
 | USA, Mitte (EUAP) | 40.89.56.69 |
 | Asien, Osten | 20.189.74.103 |
@@ -125,12 +125,12 @@ Wenn Sie Azure Data Explorer-Cluster in Ihrem Subnetz bereitstellen, können Sie
 | Südafrika, Westen | 102.133.0.97 |
 | USA Süd Mitte | 20.45.3.60 |
 | Asien, Südosten | 40.119.203.252 |
-| Indien (Süden) | 40.81.72.110 |
+| Indien (Süden) | 40.81.72.110, 104.211.224.189 |
 | UK, Süden | 40.81.154.254 |
 | UK, Westen | 40.81.122.39 |
 | USA, Westen-Mitte | 52.159.55.120 |
 | Europa, Westen | 51.145.176.215 |
-| Indien, Westen | 40.81.88.112 |
+| Indien, Westen | 40.81.88.112, 104.211.160.120 |
 | USA (Westen) | 13.64.38.225 |
 | USA, Westen 2 | 40.90.219.23 |
 
@@ -171,7 +171,7 @@ Wenn Sie Azure Data Explorer-Cluster in Ihrem Subnetz bereitstellen, können Sie
 | Europa, Westen | 23.97.212.5 |
 | Indien, Westen | 23.99.5.162 |
 | USA (Westen) | 23.99.5.162 |
-| USA, Westen 2 | 23.99.5.162 |    
+| USA, Westen 2 | 23.99.5.162, 104.210.32.14 |    
 
 #### <a name="azure-monitor-configuration-endpoint-addresses"></a>Azure Monitor-Konfigurationsendpunktadressen
 
@@ -260,149 +260,3 @@ Beispielsweise müssen für die Region **USA, Westen** die folgenden UDRs defini
 Verwenden Sie zum Bereitstellen eines Azure Data Explorer-Clusters in Ihrem virtuellen Netzwerk die [entsprechende Azure Resource Manager-Vorlage](https://azure.microsoft.com/resources/templates/101-kusto-vnet/).
 
 Mit dieser Vorlage werden der Cluster, das virtuelle Netzwerk, das Subnetz, die Netzwerksicherheitsgruppe und die öffentlichen IP-Adressen erstellt.
-
-## <a name="troubleshooting"></a>Problembehandlung
-
-In diesem Abschnitt erfahren Sie, wie Sie Konnektivitäts-, Betriebs- und Clustererstellungsprobleme bei einem Cluster beheben können, der in Ihrem [virtuellen Netzwerk](/azure/virtual-network/virtual-networks-overview) bereitgestellt wird.
-
-### <a name="access-issues"></a>Zugriffsprobleme
-
-Wenn beim Zugriff auf den Cluster über den öffentlichen („cluster.region.kusto.windows.net“) oder privaten („private-cluster.region.kusto.windows.net“) Endpunkt ein Problem auftritt und Sie vermuten, dass er im Zusammenhang mit dem Einrichten des virtuellen Netzwerks steht, führen Sie die folgenden Schritte zur Problembehandlung aus.
-
-#### <a name="check-tcp-connectivity"></a>Überprüfen der TCP-Konnektivität
-
-Der erste Schritt ist die Überprüfung der TCP-Konnektivität mithilfe von Windows oder Linux OS.
-
-# <a name="windows"></a>[Windows](#tab/windows)
-
-   1. Laden Sie [TCping](https://www.elifulkerson.com/projects/tcping.php) auf den Computer herunter, der eine Verbindung mit dem Cluster herstellt.
-   2. Pingen Sie das Ziel vom Quellcomputer aus mit folgendem Befehl:
-
-    ```cmd
-     C:\> tcping -t yourcluster.kusto.windows.net 443 
-    
-     ** Pinging continuously.  Press control-c to stop **
-    
-     Probing 1.2.3.4:443/tcp - Port is open - time=100.00ms
-     ```
-
-# <a name="linux"></a>[Linux](#tab/linux)
-
-   1. Installieren Sie *netcat* auf dem Computer, der eine Verbindung mit dem Cluster herstellt.
-
-    ```bash
-    $ apt-get install netcat
-     ```
-
-   2. Pingen Sie das Ziel vom Quellcomputer aus mit folgendem Befehl:
-
-     ```bash
-     $ netcat -z -v yourcluster.kusto.windows.net 443
-    
-     Connection to yourcluster.kusto.windows.net 443 port [tcp/https] succeeded!
-     ```
----
-
-Wenn der Test nicht erfolgreich war, setzen Sie den Vorgang mit den folgenden Schritten fort. Ist der Test aber erfolgreich, wurde das Problem nicht durch ein TCP-Konnektivitätsproblem verursacht. Wechseln Sie zu [Betriebsprobleme](#cluster-creation-and-operations-issues), um mehr zur Problembehandlung zu erfahren.
-
-#### <a name="check-the-network-security-group-nsg"></a>Überprüfen der Netzwerksicherheitsgruppe (NSG)
-
-   Überprüfen Sie, ob es bei der [Netzwerksicherheitsgruppe](/azure/virtual-network/security-overview) (NSG), die an das Subnetz des Clusters angefügt ist, eine eingehende Regel gibt, die den Zugriff auf die IP-Adresse des Clientcomputers für Port 443 zulässt.
-
-#### <a name="check-route-table"></a>Überprüfen der Routingtabelle
-
-   Wenn beim Subnetz des Clusters eine Tunnelerzwingung zur Firewall eingerichtet wurde (Subnetz mit einer [Routentabelle](/azure/virtual-network/virtual-networks-udr-overview), in der die Standardroute '0.0.0.0/0' enthalten ist), vergewissern Sie sich, dass es in der IP-Adresse des Computers eine Route mit [Typ des nächsten Hops](/azure/virtual-network/virtual-networks-udr-overview) zum virtuellen Netzwerk/Internet gibt. Dies ist erforderlich, um Probleme mit asymmetrischen Routen zu vermeiden.
-
-### <a name="ingestion-issues"></a>Erfassungsprobleme
-
-Wenn bei der Erfassung Probleme auftreten und Sie vermuten, dass sie im Zusammenhang mit der Einrichtung des virtuellen Netzwerks stehen, führen Sie die folgenden Schritte aus.
-
-#### <a name="check-ingestion-health"></a>Überprüfen der Erfassungsintegrität
-
-    Check that the [cluster ingestion metrics](/azure/data-explorer/using-metrics#ingestion-health-and-performance-metrics) indicate a healthy state.
-
-#### <a name="check-security-rules-on-data-source-resources"></a>Überprüfen von Sicherheitsregeln für Datenquellenressourcen
-
-Wenn die Metriken angeben, dass keine Ereignisse aus der Datenquelle verarbeitet wurden (Metrik „*Events processed* (Ereignisse verarbeitet) für Ereignis/IoT Hubs), vergewissern Sie sich, dass die Datenquellenressourcen (Event Hub oder Speicher) den Zugriff aus dem Subnetz des Clusters in den Firewallregeln oder Dienstendpunkten zulassen.
-
-#### <a name="check-security-rules-configured-on-clusters-subnet"></a>Überprüfen von Sicherheitsregeln, die im Subnetz des Clusters konfiguriert wurden
-
-Vergewissern Sie sich, dass die NSG-, UDR- und Firewallregeln für das Subnetz des Clusters ordnungsgemäß konfiguriert wurden. Testen Sie außerdem die Netzwerkkonnektivität bei allen abhängigen Endpunkten. 
-
-### <a name="cluster-creation-and-operations-issues"></a>Probleme bei der Clustererstellung und dem Betrieb
-
-Wenn bei der Clustererstellung oder dem Betrieb Probleme auftreten und Sie vermuten, dass sie im Zusammenhang mit der Einrichtung des virtuellen Netzwerks stehen, führen Sie die folgenden Schritte zur Problembehandlung aus.
-
-#### <a name="diagnose-the-virtual-network-with-the-rest-api"></a>Diagnostizieren des virtuellen Netzwerks mit der REST-API
-
-Der [ARMClient](https://chocolatey.org/packages/ARMClient) dient zum Aufrufen der REST-API mithilfe von PowerShell. 
-
-1. Anmelden mit ARMClient
-
-   ```powerShell
-   armclient login
-   ```
-
-1. Diagnosevorgang aufrufen
-
-    ```powershell
-    $subscriptionId = '<subscription id>'
-    $clusterName = '<name of cluster>'
-    $resourceGroupName = '<resource group name>'
-    $apiversion = '2019-11-09'
-    
-    armclient post "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Kusto/clusters/$clusterName/diagnoseVirtualNetwork?api-version=$apiversion" -verbose
-    ```
-
-1. Die Antwort überprüfen
-
-    ```powershell
-    HTTP/1.1 202 Accepted
-    ...
-    Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationResults/{operation-id}?api-version=2019-11-09
-    ...
-    ```
-
-1. Auf Abschluss des Vorgangs warten
-
-    ```powershell
-    armclient get https://management.azure.com/subscriptions/$subscriptionId/providers/Microsoft.Kusto/locations/{location}/operationResults/{operation-id}?api-version=2019-11-09
-    
-    {
-      "id": "/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationresults/{operation-id}",
-      "name": "{operation-name}",
-      "status": "[Running/Failed/Completed]",
-      "startTime": "{start-time}",
-      "endTime": "{end-time}",
-      "properties": {...}
-    }
-    ```
-    
-   Warten Sie, bis die Eigenschaft *status* die Meldung *Completed* (Abgeschlossen) anzeigt. Dann sollte im Feld *properties* (Eigenschaften) Folgendes angezeigt werden:
-
-    ```powershell
-    {
-      "id": "/subscriptions/{subscription-id}/providers/Microsoft.Kusto/locations/{location}/operationresults/{operation-id}",
-      "name": "{operation-name}",
-      "status": "Completed",
-      "startTime": "{start-time}",
-      "endTime": "{end-time}",
-      "properties": {
-        "Findings": [...]
-      }
-    }
-    ```
-
-Wenn die Eigenschaft *Findings* (Ergebnisse) ein leeres Ergebnis anzeigt, bedeutet dies, das alle Netzwerktests erfolgreich waren und keine Verbindungen unterbrochen sind. Wenn aber dieser Fehler angezeigt wird: *Outbound dependency '{dependencyName}:{port}' might be not satisfied (Outbound)* (Ausgehende Abhängigkeit '{NameDerAbhängigkeit}:{Port}' wurde möglicherweise nicht berücksichtigt(Ausgehend)), kann der Cluster die abhängigen Dienstendpunkte nicht erreichen. Setzen Sie den Vorgang mit den folgenden Schritten zur Problembehandlung fort.
-
-#### <a name="check-network-security-group-nsg"></a>Überprüfen der Netzwerksicherheitsgruppe (NSG)
-
-Vergewissern Sie sich, dass die [Netzwerksicherheitsgruppe](/azure/virtual-network/security-overview) entsprechend den Anleitungen in [Abhängigkeiten für die VNET-Bereitstellung](/azure/data-explorer/vnet-deployment#dependencies-for-vnet-deployment) ordnungsgemäß konfiguriert wurde.
-
-#### <a name="check-route-table"></a>Überprüfen der Routingtabelle
-
-Wenn beim Subnetz des Clusters eine Tunnelerzwingung zur Firewall eingerichtet wurde (Subnetz mit einer [Routentabelle](/azure/virtual-network/virtual-networks-udr-overview), in der die Standardroute '0.0.0.0/0' enthalten ist), vergewissern Sie sich, dass es in den [Verwaltungs-IP-Adressen](#azure-data-explorer-management-ip-addresses) und [IP-Adressen zur Systemüberwachung](#health-monitoring-addresses) eine Route mit [Typ des nächsten Hops](/azure/virtual-network/virtual-networks-udr-overview##next-hop-types-across-azure-tools), *Internet* und [Quelladresspräfix](/azure/virtual-network/virtual-networks-udr-overview#how-azure-selects-a-route) zu *'management-ip/32'* und *'health-monitoring-ip/32'* gibt. Dies ist erforderlich, um Probleme mit asymmetrischen Routen zu vermeiden.
-
-#### <a name="check-firewall-rules"></a>Überprüfen von Firewallregeln
-
-Wenn Sie den ausgehenden Datenverkehr des Tunnelsubnetzes an eine Firewall erzwingen, vergewissern Sie sich, dass alle Abhängigkeiten mit FQDN (z. B. *.blob.core.windows.net*) in der Firewallkonfiguration zulässig sind, wie in [Sichern von ausgehendem Datenverkehr mit Firewall](/azure/data-explorer/vnet-deployment#securing-outbound-traffic-with-firewall) beschrieben wird.
