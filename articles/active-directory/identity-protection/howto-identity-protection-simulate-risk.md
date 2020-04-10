@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e50e406e74c0b78f41830c4ea7c5b10830002ed3
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72886693"
 ---
 # <a name="simulating-risk-detections-in-identity-protection"></a>Simulieren von Risikoerkennungen in Identity Protection
@@ -129,6 +129,6 @@ Führen Sie die folgenden Schritte aus, um eine Anmelderisiko-Sicherheitsrichtli
 
 - [Was bedeutet Risiko?](concept-identity-protection-risks.md)
 
-- [How To: Konfigurieren und Aktivieren von Risikorichtlinien](howto-identity-protection-configure-risk-policies.md)
+- [Vorgehensweise: Konfigurieren und Aktivieren von Risikorichtlinien](howto-identity-protection-configure-risk-policies.md)
 
 - [Azure Active Directory Identity Protection](overview-identity-protection.md)

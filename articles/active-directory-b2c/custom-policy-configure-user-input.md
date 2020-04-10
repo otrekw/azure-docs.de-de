@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 56a3478f1c0dbc05eba07a5109f5bb6ba89b79d0
-ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.openlocfilehash: 85f2ab6f8c3e5edda027e44eeda13a3279a88321
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79079890"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473675"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Hinzufügen von Ansprüchen und Anpassen von Benutzereingaben mit benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -24,9 +24,12 @@ ms.locfileid: "79079890"
 
 In diesem Artikel erfahren Sie, wie Sie während der User Journey für die Registrierung in Azure Active Directory B2C (Azure AD B2C) ein neues Attribut sammeln. Sie erhalten den Ort des Benutzers, konfigurieren diesen als Dropdownoption und legen fest, ob er bereitgestellt werden muss.
 
+> [!NOTE]
+> In diesem Beispiel wird der integrierte Anspruch „City“ verwendet. Stattdessen können Sie eines der unterstützten [integrierten Azure AD B2C-Attribute](user-profile-attributes.md) oder ein benutzerdefiniertes Attribut wählen. Um ein benutzerdefiniertes Attribut zu verwenden, [ aktivieren Sie benutzerdefinierte Attribute in Ihrer Richtlinie](custom-policy-custom-attributes.md). Um ein anderes integriertes oder benutzerdefiniertes Attribut zu verwenden, ersetzen Sie „city“ durch das Attribut Ihrer Wahl, z. B. das integrierte Attribut *jobTitle* oder ein benutzerdefiniertes Attribut wie *extension_loyaltyId*.  
+
 Sie können die anfänglichen Daten von Ihren Benutzern mithilfe der User Journey für die Registrierung bzw. Anmeldung sammeln. Weitere Ansprüche können später mit einer User Journey für die Profilbearbeitung gesammelt werden. Jedes Mal, wenn Azure AD B2C auf interaktive Weise Informationen direkt vom Benutzer sammelt, verwendet das Identity Experience Framework diese als [selbstbestätigtes technisches Profil](self-asserted-technical-profile.md). In diesem Beispiel führen Sie folgende Schritte aus:
 
-1. Sie definieren den Anspruch „Ort“.
+1. Sie definieren den Anspruch „Ort“. 
 1. Sie fragen den Benutzer nach seinem Ort.
 1. Sie speichern den Ort dauerhaft im Benutzerprofil im Azure AD B2C-Verzeichnis.
 1. Sie lesen bei jeder Anmeldung den Anspruch „Ort“ aus dem Azure AD B2C-Verzeichnis.
@@ -45,7 +48,7 @@ Ein Anspruch stellt eine temporäre Speicherung von Daten während der Ausführu
 - **UserHelpText**: Verdeutlicht dem Benutzer, was erforderlich ist.
 - [UserInputType](claimsschema.md#userinputtype): Typ der Eingabesteuerung (z. B. Textfeld, Optionsfeld, Dropdownliste oder Mehrfachauswahl).
 
-Öffnen Sie die Erweiterungsdatei Ihrer Richtlinie. Beispiel: <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>.
+Öffnen Sie die Erweiterungsdatei Ihrer Richtlinie. Beispiel: <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>.
 
 1. Suchen Sie nach dem Element [BuildingBlocks](buildingblocks.md). Wenn das Element nicht vorhanden ist, fügen Sie es hinzu.
 1. Suchen Sie nach dem Element [ClaimsSchema](claimsschema.md). Wenn das Element nicht vorhanden ist, fügen Sie es hinzu.
@@ -169,7 +172,7 @@ Verwenden Sie `PersistedClaims`, um Daten in das Benutzerprofil zu schreiben und
 
 ## <a name="include-a-claim-in-the-token"></a>Einschließen eines Anspruchs in das Token 
 
-Um den Anspruch „Ort“ an die Anwendung der vertrauenden Seite zurückzugeben, fügen Sie der Datei <em>`SocialAndLocalAccounts/` **`SignUpOrSignIn.xml`** </em> einen Ausgabeanspruch hinzu. Der Ausgabeanspruch wird nach einer erfolgreichen User Journey in das Token eingefügt und an die Anwendung gesendet. Ändern Sie im Abschnitt für die vertrauende Seite das Element des technischen Profils, um den Ort als Ausgabeanspruch hinzuzufügen.
+Um den Anspruch „Ort“ an die Anwendung der vertrauenden Seite zurückzugeben, fügen Sie der Datei <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em> einen Ausgabeanspruch hinzu. Der Ausgabeanspruch wird nach einer erfolgreichen User Journey in das Token eingefügt und an die Anwendung gesendet. Ändern Sie im Abschnitt für die vertrauende Seite das Element des technischen Profils, um den Ort als Ausgabeanspruch hinzuzufügen.
  
 ```xml
 <RelyingParty>

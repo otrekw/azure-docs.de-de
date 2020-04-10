@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: feedce112110b1c944e3cb0af79e76fe1bda4778
-ms.sourcegitcommit: f97f086936f2c53f439e12ccace066fca53e8dc3
+ms.openlocfilehash: d7eb01f3997ac4ab2e439c00f07990c51ec3e3d3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2020
-ms.locfileid: "77365641"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80370361"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -132,7 +132,7 @@ Verwenden Sie das untenstehende Entscheidungsflussdiagramm, um zu ermitteln, wel
 Die Lösung für die Benutzerbereitstellung von Workday zu AD erfordert das Bereitstellen mindestens eines Bereitstellungs-Agents auf Servern unter Windows 2012 R2 oder höher mit mindestens 4 GB RAM und der .NET-Runtime 4.7.1 oder höher. Die folgenden Aspekte müssen vor der Installation des Bereitstellungs-Agents berücksichtigt werden:
 
 * Stellen Sie sicher, dass der Hostserver, auf dem der Bereitstellungs-Agent ausgeführt wird, Netzwerkzugriff auf die AD-Zieldomäne hat.
-* Der Konfigurations-Assistent für den Bereitstellungs-Agent registriert den Agent bei Ihrem Azure AD-Mandanten. Für den Registrierungsprozess ist Zugriff auf *.msappproxy.net über SSL-Port 443 notwendig. Stellen Sie sicher, dass die Firewallregeln für ausgehenden Datenverkehr diese Kommunikation erlauben. Der Agent unterstützt die [ausgehende HTTPS-Proxykonfiguration](#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication).
+* Der Konfigurationsassistent für den Bereitstellungs-Agent registriert den Agent bei Ihrem Azure AD-Mandanten. Für den Registrierungsprozess ist Zugriff auf *.msappproxy.net über den TLS-Port 443 notwendig. Stellen Sie sicher, dass die Firewallregeln für ausgehenden Datenverkehr diese Kommunikation erlauben. Der Agent unterstützt die [ausgehende HTTPS-Proxykonfiguration](#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication).
 * Der Bereitstellungs-Agent verwendet ein Dienstkonto für die Kommunikation mit den lokalen AD-Domänen. Vor der Installation des Agents empfiehlt es sich, ein Dienstkonto mit Domänenadministratorberechtigungen und einem Kennwort, das nicht abläuft, zu erstellen.  
 * Sie können während der Konfiguration des Bereitstellungs-Agents Domänencontroller auswählen, die Bereitstellungsanforderungen verarbeiten sollen. Wenn Sie über mehrere geografisch verteilte Domänencontroller verfügen, Installieren Sie den Bereitstellungs-Agent am selben Standort wie Ihre bevorzugten Domänencontroller. Damit steigern Sie die Zuverlässigkeit und Leistung der End-to-End-Lösung.
 * Für Hochverfügbarkeit können Sie auch mehrere Bereitstellungs-Agents bereitstellen und registrieren, die dann den gleichen Satz von lokalen AD-Domänen behandeln.
@@ -378,7 +378,7 @@ Dieser Abschnitt enthält die Schritte zum Konfigurieren der Bereitstellung von 
 
 6. Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
 
-7. Ändern Sie den **Bereitstellungsmodus** **** in **Automatisch**.
+7. Ändern Sie den **Bereitstellungsmodus** in **Automatisch**.
 
 8. Klicken Sie auf das angezeigte Informationsbanner, um den Bereitstellungs-Agent herunterzuladen. 
 
@@ -603,7 +603,7 @@ Die folgenden Abschnitte beschreiben Schritte zur Konfiguration der Benutzerbere
 
 6. Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
 
-7. Ändern Sie den **Bereitstellungsmodus** **** in **Automatisch**.
+7. Ändern Sie den **Bereitstellungsmodus** in **Automatisch**.
 
 8. Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
 
@@ -700,7 +700,7 @@ Befolgen Sie diese Anweisungen, um die Zurückschreibung der E-Mail-Adressen und
 
 6. Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
 
-7. Ändern Sie den **Bereitstellungsmodus** **** in **Automatisch**.
+7. Ändern Sie den **Bereitstellungsmodus** in **Automatisch**.
 
 8. Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
 
