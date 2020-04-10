@@ -4,12 +4,12 @@ description: Verwenden Sie Azure Functions, um eine Aufgabe zu planen, die eine 
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 3dafe275dcd5eb172e744f1d163b33ebb0bac7cc
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2e3f53943d45e90b8aff8e386ce8d0e28670673f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972233"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79366807"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Verwenden von Azure Functions zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank-Instanz
 
@@ -43,7 +43,7 @@ Eine Funktions-App hostet die Ausführung Ihrer Funktionen in Azure. Als bewähr
 
 Zuvor müssen Sie Ihre App in Azure veröffentlicht haben. Wenn dies noch nicht erfolgt ist, [veröffentlichen Sie die Funktions-App in Azure](functions-develop-vs.md#publish-to-azure).
 
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Funktions-App-Projekt, und wählen Sie **Veröffentlichen** > **Anwendungseinstellungen verwalten** aus. Wählen Sie **Einstellung hinzufügen** aus, geben Sie in **Name der neuen App-Einstellung** den Namen `sqldb_connection` ein, und wählen Sie **OK** aus.
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Funktions-App-Projekt, und wählen Sie **Veröffentlichen** > **Azure App Service-Einstellungen bearbeiten** aus. Wählen Sie **Einstellung hinzufügen** aus, geben Sie in **Name der neuen App-Einstellung** den Namen `sqldb_connection` ein, und wählen Sie **OK** aus.
 
     ![Anwendungseinstellungen für Funktions-App](./media/functions-scenario-database-table-cleanup/functions-app-service-add-setting.png)
 
@@ -133,5 +133,5 @@ Weitere Informationen zu Functions finden Sie in den folgenden Artikeln:
 
 + [Entwicklerreferenz zu Azure Functions](functions-reference.md)  
   Referenz zum Programmieren von Funktionen sowie zum Festlegen von Triggern und Bindungen.
-+ [Testing Azure Functions (Testen von Azure Functions) (Testen von Azure Functions)](functions-test-a-function.md)  
++ [Testen von Azure Functions](functions-test-a-function.md)  
   Beschreibt verschiedene Tools und Techniken zum Testen Ihrer Funktionen  
