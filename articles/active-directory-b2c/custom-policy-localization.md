@@ -10,24 +10,24 @@ ms.topic: reference
 ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1401cbe1920c7c6df804aadbba1751612ba9cf06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be12bce8fa29076621bec35228838a4ebdd97433
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79126799"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545865"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Lokalisieren der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Mit der Sprachanpassung in Azure Active Directory B2C (Azure AD B2C) können Sie verschiedene Sprachen abdecken, um Ihre Kundenanforderungen zu erfüllen. Microsoft stellt Übersetzungen für 36 Sprachen bereit. Sie können aber auch eigene Übersetzungen für beliebige Sprachen bereitstellen. Auch wenn Ihre Benutzeroberfläche nur für eine einzelne Sprache bestimmt ist, können Sie beliebigen Text auf den Seiten anpassen. 
+Mit der Sprachanpassung in Azure Active Directory B2C (Azure AD B2C) können Sie verschiedene Sprachen abdecken, um Ihre Kundenanforderungen zu erfüllen. Microsoft stellt Übersetzungen für [36 Sprachen](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-language-customization#supported-languages) bereit. Sie können aber auch eigene Übersetzungen für beliebige Sprachen bereitstellen. Auch wenn Ihre Benutzeroberfläche nur für eine einzelne Sprache bestimmt ist, können Sie beliebigen Text auf den Seiten anpassen. 
 
 Dieser Artikel veranschaulicht, wie Sie mehrere Gebietsschemas oder Sprachen in der Richtlinie für User Journeys unterstützen können. Die Lokalisierung erfordert drei Schritte: Einrichten der expliziten Liste der unterstützten Sprachen, Angeben der sprachspezifischen Zeichenfolgen und Sammlungen und Bearbeiten der [Inhaltsdefinition](contentdefinitions.md) für die Seite. 
 
 ## <a name="set-up-the-list-of-supported-languages"></a>Einrichten der Liste der unterstützten Sprachen
 
-Öffnen Sie die Erweiterungendatei Ihrer Richtlinie. Beispiel: <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>.
+Öffnen Sie die Erweiterungendatei Ihrer Richtlinie. Beispiel: <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>.
 
 1. Suchen Sie nach dem Element [BuildingBlocks](buildingblocks.md). Wenn das Element nicht vorhanden ist, fügen Sie es hinzu.
 1. Fügen Sie das `Localization`-Element mit den unterstützten Sprachen hinzu: Englisch (Standard) und Spanisch.  
