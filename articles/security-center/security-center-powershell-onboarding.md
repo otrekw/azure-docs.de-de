@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: 5aaaf539c07a7ba2c2463d5bfd1f452853f52379
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b471fbb62862cd48ebbb239d65b563aa109ef629
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77603690"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435475"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatisieren der Integration von Azure Security Center mithilfe von PowerShell
 
@@ -33,9 +33,9 @@ In diesem Beispiel aktivieren Sie Security Center für ein Abonnement mit der ID
 
 1. Legen Sie die [Schutzstufe „Standard“ von Security Center](https://azure.microsoft.com/pricing/details/security-center/) fest. 
  
-2. Legen Sie den Log Analytics-Arbeitsbereich fest, an den Microsoft Monitoring Agent die Daten sendet, die auf den mit dem Abonnement verknüpften virtuellen Computern erfasst werden. In diesem Beispiel wird ein vorhandener benutzerdefinierter Arbeitsbereich (myWorkspace) verwendet.
+2. Legen Sie den Log Analytics-Arbeitsbereich fest, an den der Log Analytics-Agent die Daten sendet, die auf den mit dem Abonnement verknüpften virtuellen Computern erfasst werden. In diesem Beispiel wird ein vorhandener benutzerdefinierter Arbeitsbereich (myWorkspace) verwendet.
 
-3. Aktivieren Sie die automatische Agent-Bereitstellung von Security Center, bei der auch [Microsoft Monitoring Agent bereitgestellt](security-center-enable-data-collection.md#auto-provision-mma) wird.
+3. Aktivieren Sie die automatische Agent-Bereitstellung von Security Center, bei der auch der [Log Analytics-Agent bereitgestellt](security-center-enable-data-collection.md#auto-provision-mma) wird.
 
 5. Legen Sie den [CISO der Organisation als Sicherheitskontakt für Security Center-Warnungen und relevante Ereignisse](security-center-provide-security-contact-details.md) fest.
 
@@ -58,7 +58,7 @@ Diese Schritte sollten vor der Ausführung der Security Center-Cmdlets ausgefüh
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Register-AzResourceProvider -ProviderNamespace 'Microsoft.Security' 
 
-2.  Optional: Legen Sie die Abdeckungsebene (Tarif) der Abonnements fest. (Wird keine Angabe gemacht, wird als Tarif „Free“ festgelegt.)
+2.  Optional: Legen Sie die Abdeckungsebene (Tarif) der Abonnements fest (wird keine Angabe gemacht, wird als Tarif „Free“ festgelegt):
 
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Set-AzSecurityPricing -Name "default" -PricingTier "Standard"
@@ -68,7 +68,7 @@ Diese Schritte sollten vor der Ausführung der Security Center-Cmdlets ausgefüh
         Set-AzSecurityWorkspaceSetting -Name "default" -Scope
         "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"
 
-4.  Installation mit automatischer Bereitstellung von Microsoft Monitoring Agent auf Ihren virtuellen Azure-Computern:
+4.  Installation mit automatischer Bereitstellung des Log Analytics-Agents auf Ihren virtuellen Azure-Computern:
     
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
     
@@ -78,7 +78,7 @@ Diese Schritte sollten vor der Ausführung der Security Center-Cmdlets ausgefüh
     > Sie sollten die automatische Bereitstellung aktivieren, um sicherzustellen, dass Ihre virtuellen Azure-Computer automatisch mit Azure Security Center geschützt werden.
     >
 
-5.  Optional: Es wird dringend empfohlen, die Sicherheitskontaktinformationen für die zu integrierenden Abonnements anzugeben. Die Sicherheitskontakte erhalten die von Security Center generierten Warnungen und Benachrichtigungen:
+5.  Optional: Es wird dringend empfohlen, die Sicherheitskontaktinformationen für die zu integrierenden Abonnements anzugeben. Die Sicherheitskontakte sind die Empfänger der von Security Center generierten Warnungen und Benachrichtigungen:
 
         Set-AzSecurityContact -Name "default1" -Email "CISO@my-org.com" -Phone "2142754038" -AlertAdmin -NotifyOnAlert 
 

@@ -3,12 +3,12 @@ title: Wiederherstellen von Azure Files mit PowerShell
 description: In diesem Artikel erfahren Sie, wie Sie Azure Files mit dem Azure Backup-Dienst und PowerShell wiederherstellen.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 99aeaa6173bb5336e6e1719a9fc0df0c668374e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12bff49bc249b23542534d218b13b517411f461b
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77086830"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756197"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Wiederherstellen von Azure Files mit PowerShell
 
@@ -17,7 +17,10 @@ In diesem Artikel wird erläutert, wie Sie eine vollständige Dateifreigabe oder
 Sie können eine gesamte Dateifreigabe oder aber bestimmte Dateien aus dieser Freigabe wiederherstellen. Dabei haben Sie die Möglichkeit, eine Wiederherstellung am ursprünglichen oder an einem alternativen Speicherort durchzuführen.
 
 > [!WARNING]
-> Stellen Sie sicher, dass die PS-Version auf die Mindestversion für „Az.RecoveryServices 2.6.0“ für AFS-Sicherungen aktualisiert wird. Weitere Informationen finden Sie im [Abschnitt](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) zur Anforderung für diese Änderung.
+> Stellen Sie für AFS-Sicherungen sicher, dass die PS-Version auf die Mindestversion für Az.RecoveryServices 2.6.0 aktualisiert wird. Weitere Informationen finden Sie im [Abschnitt](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) zur Anforderung für diese Änderung.
+
+>[!NOTE]
+>Azure Backup unterstützt jetzt das Wiederherstellen mehrerer Dateien oder Ordner am ursprünglichen oder an einem alternativen Speicherort mithilfe von PowerShell. Weitere Informationen dazu finden Sie in [diesem Abschnitt](#restore-multiple-files-or-folders-to-original-or-alternate-location) des Dokuments.
 
 ## <a name="fetch-recovery-points"></a>Abrufen von Wiederherstellungspunkten
 
@@ -102,17 +105,67 @@ Der Befehl gibt einen Auftrag mit einer ID zur Nachverfolgung zurück, wie im vo
 
 Wenn Sie an einem ursprünglichen Speicherort eine Wiederherstellung vornehmen, müssen Sie nicht alle Zielparameter und zielbezogenen Parameter angeben. Nur **ResolveConflict** muss angegeben werden.
 
-#### <a name="overwrite-an-azure-file-share"></a>Überschreiben einer Azure-Dateifreigabe
+### <a name="overwrite-an-azure-file-share"></a>Überschreiben einer Azure-Dateifreigabe
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -ResolveConflict Overwrite
 ```
 
-#### <a name="overwrite-an-azure-file"></a>Überschreiben einer Azure-Datei
+### <a name="overwrite-an-azure-file"></a>Überschreiben einer Azure-Datei
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File -SourceFilePath "TestDir/TestDoc.docx" -ResolveConflict Overwrite
 ```
+
+## <a name="restore-multiple-files-or-folders-to-original-or-alternate-location"></a>Wiederherstellen mehrerer Dateien oder Ordner am ursprünglichen oder an einem alternativen Speicherort
+
+Verwenden Sie den Befehl [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0), indem Sie den Pfad aller Dateien oder Ordner, die Sie wiederherstellen möchten, als Wert für den Parameter **MultipleSourceFilePath** übergeben.
+
+### <a name="restore-multiple-files"></a>Wiederherstellen mehrerer Dateien
+
+Im folgenden Skript versuchen wir, die Dateien *FileSharePage.png* und *MyTestFile.txt* wiederherzustellen.
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"
+
+$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureStorage -Status Registered -FriendlyName "afsaccount" -VaultId $vault.ID
+
+$BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "azurefiles"
+
+$RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -VaultId $vault.ID
+
+$files = ("FileSharePage.png", "MyTestFile.txt")
+
+Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -MultipleSourceFilePath $files -SourceFileType File -ResolveConflict Overwrite -VaultId $vault.ID -VaultLocation $vault.Location
+```
+
+### <a name="restore-multiple-directories"></a>Wiederherstellen mehrerer Verzeichnisse
+
+Im folgenden Skript versuchen wir, die Verzeichnisse *zrs1_restore* und *Restore* wiederherzustellen.
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"
+
+$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureStorage -Status Registered -FriendlyName "afsaccount" -VaultId $vault.ID
+
+$BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "azurefiles"
+
+$RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -VaultId $vault.ID
+
+$files = ("Restore","zrs1_restore")
+
+Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -MultipleSourceFilePath $files -SourceFileType Directory -ResolveConflict Overwrite -VaultId $vault.ID -VaultLocation $vault.Location
+```
+
+Die Ausgabe sieht etwa wie folgt aus:
+
+```output
+WorkloadName         Operation         Status          StartTime                EndTime       JobID
+------------         ---------         ------          ---------                -------       -----
+azurefiles           Restore           InProgress      4/5/2020 8:01:24 AM                    cd36abc3-0242-44b1-9964-0a9102b74d57
+```
+
+Wenn Sie mehrere Dateien oder Ordner an einem alternativen Speicherort wiederherstellen möchten, verwenden Sie die oben aufgeführten Skripts, indem Sie die Parameterwerte für den Zielspeicherort angeben, wie oben unter [Wiederherstellen einer Azure-Datei an einem alternativen Speicherort](#restore-an-azure-file-to-an-alternate-location) erläutert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

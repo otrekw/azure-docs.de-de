@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 08/28/2019
 ms.author: labrenne
-ms.openlocfilehash: 2cff6a0e48fc7bf58a642f509fcda6b114e002ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95f27d913cd288c186bae1a6375212b072f50bb4
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022935"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422432"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Verwenden von Shared Image Gallery zum Erstellen eines benutzerdefinierten Pools
 
@@ -38,6 +38,9 @@ Die Verwendung eines für Ihr Szenario konfigurierten freigegebenen Image kann m
 * **Versionsverwaltung und Gruppierung von Images zur einfacheren Verwaltung**: Die Imagegruppierungsdefinition enthält Informationen darüber, warum das Image erstellt wurde, für welches Betriebssystem es vorgesehen ist und wie es verwendet wird. Das Gruppieren von Images ermöglicht eine einfachere Imageverwaltung. Weitere Informationen finden Sie unter [Imagedefinitionen](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
+> [!NOTE]
+> Sie müssen sich mit Azure AD authentifizieren. Wenn Sie shared-key-auth verwenden, erhalten Sie einen Authentifizierungsfehler.  
 
 * Ein **Azure Batch-Konto.** Informationen zum Erstellen eines Batch-Kontos im Azure-Portal oder mit der Azure-Befehlszeilenschnittstelle finden Sie in den entsprechenden Batch-Schnellstartanleitungen unter [Schnellstart: Ausführen Ihres ersten Batch-Auftrags im Azure-Portal](quick-create-portal.md) und [Schnellstart: Ausführen Ihres ersten Batch-Auftrags mit der Azure CLI](quick-create-cli.md).
 
@@ -86,6 +89,9 @@ Nachdem Sie Ihr verwaltetes Image erfolgreich erstellt haben, müssen Sie eine S
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Erstellen eines Pools aus einem freigegebenen Image mithilfe der Azure-Befehlszeilenschnittstelle
 
 Um mithilfe der Azure-Befehlszeilenschnittstelle einen Pool aus Ihrem freigegebenen Image zu erstellen, verwenden Sie den Befehl `az batch pool create`. Geben Sie im Feld `--image` die ID des freigegebenen Image an. Stellen Sie sicher, dass der Betriebssystemtyp und die SKU mit den von `--node-agent-sku-id` angegebenen Versionen übereinstimmen.
+
+> [!NOTE]
+> Sie müssen sich mit Azure AD authentifizieren. Wenn Sie shared-key-auth verwenden, erhalten Sie einen Authentifizierungsfehler.  
 
 ```azurecli
 az batch pool create \

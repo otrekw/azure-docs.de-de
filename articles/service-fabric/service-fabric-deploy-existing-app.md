@@ -2,15 +2,16 @@
 title: Bereitstellen einer vorhandenen ausführbaren Datei für Azure Service Fabric
 description: Erfahren Sie, wie Sie ein Paket einer vorhandenen Anwendung als ausführbare Gastanwendungsdatei erstellen, um diese in einem Service Fabric-Cluster bereitzustellen.
 ms.topic: conceptual
-ms.date: 07/02/2017
-ms.openlocfilehash: cdbc965d0e8ec4a8f42fbe438b8ac6ddfe05a1b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: c6c6bc0369593c177b74261da1fd8c15dd73fcb3
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75377105"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520482"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Packen und Bereitstellen einer vorhandenen ausführbaren Datei für Service Fabric
+
 Beim Packen einer vorhandenen ausführbaren Datei als [ausführbare Gastanwendungsdatei](service-fabric-guest-executables-introduction.md) können Sie wählen, ob Sie eine Visual Studio-Projektvorlage verwenden oder das [Anwendungspaket manuell erstellen](#manually). Mit Visual Studio werden die Anwendungspaketstruktur und Manifestdateien mit der neuen Projektvorlage für Sie erstellt.
 
 > [!TIP]
@@ -18,6 +19,7 @@ Beim Packen einer vorhandenen ausführbaren Datei als [ausführbare Gastanwendun
 >
 
 ## <a name="use-visual-studio-to-package-and-deploy-an-existing-executable"></a>Verwenden von Visual Studio zum Verpacken und Bereitstellen einer vorhandenen ausführbaren Datei
+
 In Visual Studio wird eine Service Fabric-Dienstvorlage bereitgestellt, um Sie beim Bereitstellen einer ausführbaren Gastanwendung für einen Service Fabric-Cluster zu unterstützen.
 
 1. Wählen Sie **Datei** > **Neues Projekt**, und erstellen Sie eine Service Fabric-Anwendung.
@@ -37,6 +39,13 @@ In Visual Studio wird eine Service Fabric-Dienstvorlage bereitgestellt, um Sie b
 
 Eine exemplarische Vorgehensweise finden Sie im Artikel zum Thema [Erstellen Ihrer ersten ausführbaren Gastdateianwendung mit Visual Studio](quickstart-guest-app.md).
 
+### <a name="packaging-multiple-executables-with-visual-studio"></a>Packeterstellung mehrerer ausführbarer Dateien mit Visual Studio
+
+Sie können Visual Studio verwenden, um ein Anwendungspaket mit mehreren ausführbaren Gastanwendungsdateien zu generieren. Klicken Sie nach dem Hinzufügen der ersten ausführbaren Gastanwendungsdatei mit der rechten Maustaste auf das Anwendungsprojekt, und wählen Sie **Hinzufügen > Neuer Service Fabric-Dienst** aus, um der Projektmappe das zweite ausführbare Gastanwendungsprojekt hinzuzufügen.
+
+> [!NOTE]
+> Wenn Sie die Quelle im Visual Studio-Projekt verknüpfen und die Visual Studio-Projektmappe erstellen, wird Ihr Anwendungspaket mit den Änderungen in der Quelle aktualisiert.
+
 ## <a name="use-yeoman-to-package-and-deploy-an-existing-executable-on-linux"></a>Verwenden von Yeoman zum Verpacken und Bereitstellen einer vorhandenen ausführbaren Datei unter Linux
 
 Zum Erstellen und Bereitstellen einer ausführbaren Gastanwendungsdatei unter Linux wird das gleiche Verfahren verwendet wie beim Bereitstellen einer CSharp- oder Java-Anwendung.
@@ -47,9 +56,17 @@ Zum Erstellen und Bereitstellen einer ausführbaren Gastanwendungsdatei unter Li
 
 Yeoman erstellt ein Anwendungspaket mit der entsprechenden Anwendung und den Manifestdateien sowie ein Installations- und ein Deinstallationsskript.
 
+### <a name="packaging-multiple-executables-using-yeoman-on-linux"></a>Paketerstellung mehrerer ausführbarer Dateien mit Yeoman unter Linux
+
+Führen Sie zum Hinzufügen eines weiteren Diensts zu einer Anwendung, die bereits mit `yo` erstellt wurde, die folgenden Schritte aus:
+
+1. Legen Sie das Verzeichnis auf den Stamm der vorhandenen Anwendung fest.  Beispiel: `cd ~/YeomanSamples/MyApplication`, wenn `MyApplication` die von Yeoman erstellte Anwendung ist.
+2. Führen Sie `yo azuresfguest:AddService` aus, und geben Sie die erforderlichen Informationen an.
+
 <a id="manually"></a>
 
 ## <a name="manually-package-and-deploy-an-existing-executable"></a>Manuelles Packen und Bereitstellen einer vorhandenen ausführbaren Datei
+
 Der Vorgang zum manuellen Packen einer ausführbaren Gastanwendungsdatei basiert auf den folgenden allgemeinen Schritten:
 
 1. Erstellen der Verzeichnisstruktur des Pakets.
@@ -57,14 +74,12 @@ Der Vorgang zum manuellen Packen einer ausführbaren Gastanwendungsdatei basiert
 3. Bearbeiten der Dienstmanifestdatei
 4. Bearbeiten der Anwendungsmanifestdatei.
 
-<!--
->[AZURE.NOTE] We do provide a packaging tool that allows you to create the ApplicationPackage automatically. The tool is currently in preview. You can download it from [here](https://aka.ms/servicefabricpacktool).
--->
-
 ### <a name="create-the-package-directory-structure"></a>Erstellen der Verzeichnisstruktur des Pakets
+
 Sie können zunächst die Verzeichnisstruktur wie in [Packen einer Anwendung](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps) beschrieben erstellen.
 
 ### <a name="add-the-applications-code-and-configuration-files"></a>Hinzufügen von Anwendungscode und Konfigurationsdateien
+
 Nachdem Sie die Verzeichnisstruktur erstellt haben, können Sie den Anwendungscode und die Konfigurationsdateien den Verzeichnissen „code“ und „config“ hinzufügen. In den Verzeichnissen „code“ und „config“ können Sie auch weitere Verzeichnisse bzw. Unterverzeichnisse erstellen.
 
 Service Fabric führt einen `xcopy`-Vorgang für den Inhalt des Stammverzeichnisses der Anwendung aus. Mit Ausnahme der Erstellung der beiden übergeordneten Verzeichnisse „code“ und „settings“ gibt es also keine vordefinierte Struktur, die verwendet werden muss. (Sie können auch andere Namen verwenden. Weitere Informationen finden Sie im nächsten Abschnitt.)
@@ -75,6 +90,7 @@ Service Fabric führt einen `xcopy`-Vorgang für den Inhalt des Stammverzeichnis
 >
 
 ### <a name="edit-the-service-manifest-file"></a>Bearbeiten der Dienstmanifestdatei
+
 Im nächsten Schritt wird die Dienstmanifestdatei so bearbeitet, dass sie folgende Informationen enthält:
 
 * Den Namen des Diensttyps. Dies ist eine ID, die von Service Fabric zum Identifizieren eines Diensts verwendet wird.
@@ -114,6 +130,7 @@ Es folgt ein Beispiel für die Datei `ServiceManifest.xml` :
 In den folgenden Abschnitten geht es um die anderen Teile der Datei, die Sie aktualisieren müssen.
 
 #### <a name="update-servicetypes"></a>Aktualisieren von ServiceTypes
+
 ```xml
 <ServiceTypes>
   <StatelessServiceType ServiceTypeName="NodeApp" UseImplicitHost="true" />
@@ -133,6 +150,7 @@ Das Element „CodePackage“ gibt den Speicherort (und die Version) des Dienstc
 Das Element `Name` wird verwendet, um den Namen des Verzeichnisses im Anwendungspaket anzugeben, das den Dienstcode enthält. `CodePackage` weist auch das `version`-Attribut auf. Es kann verwendet werden, um die Version des Codes anzugeben. Außerdem kann es dazu genutzt werden, den Dienstcode mithilfe der Infrastruktur für die Anwendungslebenszyklusverwaltung in Service Fabric zu aktualisieren.
 
 #### <a name="optional-update-setupentrypoint"></a>Optional: Aktualisieren von SetupEntrypoint
+
 ```xml
 <SetupEntryPoint>
    <ExeHost>
@@ -147,6 +165,7 @@ Es gibt nur ein Element „SetupEntryPoint“. Daher müssen Setupskripts in ein
 Im obigen Beispiel führt „SetupEntryPoint“ eine Batchdatei mit dem Namen `LaunchConfig.cmd` aus, die sich im Unterverzeichnis `scripts` des Codeverzeichnisses befindet (vorausgesetzt, das WorkingFolder-Element ist auf „CodeBase“ festgelegt).
 
 #### <a name="update-entrypoint"></a>Aktualisieren von EntryPoint
+
 ```xml
 <EntryPoint>
   <ExeHost>
@@ -171,12 +190,14 @@ Das Element `ExeHost` gibt die ausführbare Datei (und die Argumente) an, die zu
 WorkingFolder ist nützlich, um das richtige Arbeitsverzeichnis festzulegen, damit von der Anwendung oder von Initialisierungsskripts relative Pfade verwendet werden können.
 
 #### <a name="update-endpoints-and-register-with-naming-service-for-communication"></a>Aktualisieren der Endpunkte und Registrieren beim Naming Service für die Kommunikation
+
 ```xml
 <Endpoints>
    <Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" Type="Input" />
 </Endpoints>
 
 ```
+
 Im vorherigen Beispiel werden mit dem `Endpoint`-Element die Endpunkte angegeben, über die die Anwendung lauschen kann. In diesem Beispiel lauscht die Node.js-Anwendung über Port 3000 (HTTP).
 
 Außerdem können Sie angeben, dass Service Fabric diesen Endpunkt für den Naming Service veröffentlicht, damit andere Dienste die Endpunktadresse für diesen Dienst ermitteln können. Dies ermöglicht Ihnen die Kommunikation zwischen Diensten, bei denen es sich um ausführbare Gastanwendungsdateien handelt.
@@ -189,9 +210,11 @@ Im folgenden Beispiel sehen Sie nach der Bereitstellung des Diensts im Service F
    <Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000"  UriScheme="http" PathSuffix="myapp/" Type="Input" />
 </Endpoints>
 ```
+
 Sie können diese Adressen mit dem [Reverseproxy](service-fabric-reverseproxy.md) verwenden, um zwischen den Diensten zu kommunizieren.
 
 ### <a name="edit-the-application-manifest-file"></a>Bearbeiten der Anwendungsmanifestdatei
+
 Nach der Konfiguration der Datei `Servicemanifest.xml` müssen Sie einige Änderungen an der Datei `ApplicationManifest.xml` vornehmen, um sicherzustellen, dass der richtige Diensttyp und der richtige Name verwendet werden.
 
 ```xml
@@ -204,6 +227,7 @@ Nach der Konfiguration der Datei `Servicemanifest.xml` müssen Sie einige Änder
 ```
 
 #### <a name="servicemanifestimport"></a>ServiceManifestImport
+
 Im Element `ServiceManifestImport` können Sie einen oder mehrere Dienste angeben, die in der Anwendung enthalten sein sollen. `ServiceManifestName` verweist auf die Dienste. Dieses Element gibt den Namen des Verzeichnisses an, in dem sich die Datei `ServiceManifest.xml` befindet.
 
 ```xml
@@ -213,6 +237,7 @@ Im Element `ServiceManifestImport` können Sie einen oder mehrere Dienste angebe
 ```
 
 ## <a name="set-up-logging"></a>Einrichten der Protokollierung
+
 Bei ausführbaren Gastanwendungsdateien ist es nützlich, Konsolenprotokolle anzeigen zu können, um festzustellen, ob die Anwendungs- und Konfigurationsskripts Fehler aufweisen.
 In der Datei `ServiceManifest.xml` kann mit dem Element `ConsoleRedirection` eine Konsolenumleitung konfiguriert werden.
 
@@ -241,6 +266,7 @@ In der Datei `ServiceManifest.xml` kann mit dem Element `ConsoleRedirection` ein
 Protokolldateien werden in einem der Arbeitsverzeichnisse des Diensts gespeichert. Verwenden Sie den Service Fabric Explorer, um zu bestimmen, wo sich die Dateien befinden. Damit können Sie ermitteln, auf welchem Knoten der Dienst ausgeführt wird und welches Arbeitsverzeichnis verwendet wird. Dieser Vorgang wird weiter unten in diesem Artikel erläutert.
 
 ## <a name="deployment"></a>Bereitstellung
+
 Der letzte Schritt ist das [Bereitstellen der Anwendung](service-fabric-deploy-remove-applications.md). Das folgende PowerShell-Skript veranschaulicht, wie Sie die Anwendung im lokalen Entwicklungscluster bereitstellen und einen neuen Service Fabric-Dienst starten.
 
 ```powershell
@@ -281,14 +307,14 @@ Wenn Sie zum Knoten navigieren und zur Anwendung wechseln, sehen Sie die wesentl
 
 ![Speicherort auf dem Datenträger](./media/service-fabric-deploy-existing-app/locationondisk2.png)
 
-Wenn Sie im Server-Explorer zum jeweiligen Verzeichnis wechseln, sehen Sie das Arbeitsverzeichnis und den Protokollordner des Diensts, wie im folgenden Screenshot dargestellt: 
+Wenn Sie im Server-Explorer zum jeweiligen Verzeichnis wechseln, sehen Sie das Arbeitsverzeichnis und den Protokollordner des Diensts, wie im folgenden Screenshot dargestellt:
 
 ![Speicherort des Protokolls](./media/service-fabric-deploy-existing-app/loglocation.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 In diesem Artikel wurden das Packen einer ausführbaren Gastanwendungsdatei sowie ihre Bereitstellung in Service Fabric beschrieben. Entsprechende Informationen und Aufgaben finden Sie in den folgenden Artikeln.
 
 * [Beispiel für das Packen und Bereitstellen einer ausführbaren Gastdatei](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started), einschließlich eines Links zur Vorabversion des Packtools
 * [Beispiel für zwei ausführbare Gastdateien (C# und Node.js), die über den Naming Service mithilfe von REST kommunizieren](https://github.com/Azure-Samples/service-fabric-containers)
-* [Bereitstellen mehrerer ausführbarer Gastanwendungsdateien](service-fabric-deploy-multiple-apps.md)
 * [Erstellen Ihrer ersten Service Fabric-Anwendung in Visual Studio](service-fabric-tutorial-create-dotnet-app.md)

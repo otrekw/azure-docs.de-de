@@ -3,12 +3,12 @@ title: Informationen zur Azure Service Fabric-Anwendungssicherheit
 description: Ein Überblick über die sichere Ausführung von Microservicesanwendungen in Service Fabric. Erfahren Sie, wie Sie Dienste und das Startskript unter verschiedenen Sicherheitskonten ausführen, Benutzer authentifizieren und autorisieren, Anwendungsgeheimnisse verwalten, die Dienstkommunikation sichern, ein API-Gateway verwenden und ruhende Anwendungsdaten sichern.
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: 6c40bf66d1068310790d1440174eeb5b2a571154
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e9b4a1209838bdd5eee401b0defb01839b5cf684
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75452253"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756238"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric-Anwendungs- und -Dienstsicherheit
 Eine Microservicesarchitektur kann [zahlreiche Vorteile](service-fabric-overview-microservices.md) mit sich bringen. Die Verwaltung der Sicherheit von Microservices ist jedoch eine Herausforderung und unterscheidet sich von der Verwaltung traditioneller monolithischer Anwendungen. 
@@ -33,7 +33,7 @@ Nach der Authentifizierung müssen Dienste den Benutzerzugriff autorisieren oder
 [ASP.NET Core-Autorisierung](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/authorization-net-microservices-web-applications) kann basierend auf den Rollen der Benutzer oder auf benutzerdefinierten Richtlinien ausgeführt werden, die die Überprüfung von Ansprüchen oder andere Heuristiken beinhalten können.
 
 ## <a name="restrict-and-secure-access-using-an-api-gateway"></a>Einschränken und Sichern des Zugriffs mithilfe eines API-Gateways
-Cloudanwendungen benötigen normalerweise ein Front-End-Gateway, um für Benutzer, Geräte oder andere Anwendungen einen zentralen Eingangspunkt bereitzustellen. Ein [API-Gateway](/azure/architecture/microservices/gateway) befindet sich zwischen Clients und Diensten und ist der Einstiegspunkt zu allen Diensten, die Ihre Anwendung bereitstellt. Es fungiert als Reverseproxy und leitet Anforderungen von Clients an Dienste weiter. Darüber hinaus kann es verschiedene übergreifende Aufgaben wie Authentifizierung und Autorisierung, SSL-Terminierung und Ratenbegrenzung übernehmen. Wenn Sie kein Gateway bereitstellen, müssen Clients Anforderungen direkt an Front-End-Dienste senden.
+Cloudanwendungen benötigen normalerweise ein Front-End-Gateway, um für Benutzer, Geräte oder andere Anwendungen einen zentralen Eingangspunkt bereitzustellen. Ein [API-Gateway](/azure/architecture/microservices/gateway) befindet sich zwischen Clients und Diensten und ist der Einstiegspunkt zu allen Diensten, die Ihre Anwendung bereitstellt. Es fungiert als Reverseproxy und leitet Anforderungen von Clients an Dienste weiter. Darüber hinaus kann es verschiedene übergreifende Aufgaben wie Authentifizierung und Autorisierung, TLS-Terminierung und Ratenbegrenzung übernehmen. Wenn Sie kein Gateway bereitstellen, müssen Clients Anforderungen direkt an Front-End-Dienste senden.
 
 In Service Fabric kann ein Gateway ein beliebiger zustandsloser Dienst sein (etwa eine [ASP.NET Core-Anwendung](service-fabric-reliable-services-communication-aspnetcore.md)) oder ein anderer Dienst, der für den Eingang von Datenverkehr ausgelegt ist (etwa [Traefik](https://docs.traefik.io/), [Event Hubs](https://docs.microsoft.com/azure/event-hubs/), [IoT Hub](https://docs.microsoft.com/azure/iot-hub/) oder [Azure API Management](https://docs.microsoft.com/azure/api-management)).
 

@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 89df941eb6ebaad6e078c278f1ed883db5528c7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b892b1f4ff73679ab425d0e97f5361e0f3712252
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77152555"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549188"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Leistungstipps für Azure Cosmos DB und Async Java
 
@@ -230,9 +230,9 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
     * - nofile 100000
     ```
 
-* **Verwenden der nativen SSL-Implementierung für Netty**
+* **Verwenden der nativen TLS-/SSL-Implementierung für Netty**
 
-    Netty kann OpenSSL direkt für den SSL-Implementierungsstapel verwenden, um eine bessere Leistung zu erzielen. Wenn diese Konfiguration fehlt, greift Netty auf die standardmäßige SSL-Implementierung von Java zurück.
+    Netty kann OpenSSL direkt für den TLS-Implementierungsstapel verwenden, um eine bessere Leistung zu erzielen. Wenn diese Konfiguration fehlt, greift Netty auf die standardmäßige TLS-Implementierung von Java zurück.
 
     unter Ubuntu:
     ```bash

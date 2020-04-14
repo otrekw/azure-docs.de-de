@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen Exchange-Server mit Azure Backup Server
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: b9c8cfb32adce39dab47159c7d644b92e0ced46e
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 1d7d28d813df82a5e1ea0fe424bba2ef5a9a2684
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397959"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421351"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Sichern eines Exchange-Servers in Azure mit Azure Backup Server
 
@@ -53,7 +53,7 @@ Führen Sie die folgenden Schritte aus, um den MABS-Schutz-Agent auf dem Exchang
     Nach dem Auswählen dieser Option wird auf dem MABS die Sicherungskonsistenz überprüft, um den E/A-Datenverkehr zu vermeiden, der durch das Ausführen des Befehls **eseutil** auf dem Exchange-Server generiert wird.
 
    > [!NOTE]
-   > Zum Verwenden dieser Option müssen Sie die Dateien „Ese.dll“ und „Eseutil.exe“ auf dem MAB-Server in das Verzeichnis „C:\Programme\Microsoft Azure Backup\DPM\DPM\bin“ kopieren. Andernfalls wird der folgende Fehler ausgelöst:  
+   > Zum Verwenden dieser Option müssen Sie die Dateien „Ese.dll“ und „Eseutil.exe“ auf dem MABS-Server in das Verzeichnis „C:\Programme\Microsoft Azure Backup\DPM\DPM\bin“ kopieren. Andernfalls wird der folgende Fehler ausgelöst:  
    > ![eseutil-Fehler](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
@@ -66,7 +66,7 @@ Führen Sie die folgenden Schritte aus, um den MABS-Schutz-Agent auf dem Exchang
    >
 10. Konfigurieren Sie die Ziele für **Kurzfristige Sicherung**, und klicken Sie auf **Weiter**.
 11. Überprüfen Sie den verfügbaren Speicherplatz, und klicken Sie auf **Weiter**.
-12. Wählen Sie den Zeitpunkt aus, an dem der MAB-Server die erste Replikation erstellt, und klicken Sie auf **Weiter**.
+12. Wählen Sie den Zeitpunkt aus, an dem der MABS-Server die erste Replikation erstellt, und klicken Sie auf **Weiter**.
 13. Wählen Sie die Optionen für die Konsistenzüberprüfung aus, und klicken Sie auf **Weiter**.
 14. Wählen Sie die Datenbank aus, die Sie unter Azure sichern möchten, und klicken Sie auf **Weiter**. Beispiel:
 
@@ -97,9 +97,9 @@ Führen Sie die folgenden Schritte aus, um den MABS-Schutz-Agent auf dem Exchang
 
 Für Online-Wiederherstellungspunkte gibt es fünf Wiederherstellungstypen:
 
-* **Am ursprünglichen Exchange Server-Speicherort wiederherstellen:** Die Daten werden auf dem ursprünglichen Exchange-Server wiederhergestellt.
-* **In einer anderen Datenbank auf einem Exchange-Server wiederherstellen:** Die Daten werden in einer anderen Datenbank auf einem anderen Exchange-Server wiederhergestellt.
-* **Zu einer Wiederherstellungsdatenbank wiederherstellen:** Die Daten werden in einer Exchange-Wiederherstellungsdatenbank wiederhergestellt.
+* **Im ursprünglichen Exchange Server-Speicherort wiederherstellen:** Die Daten werden auf dem ursprünglichen Exchange Server wiederhergestellt.
+* **In einer anderen Datenbank auf einem Exchange Server wiederherstellen:** Die Daten werden in einer anderen Datenbank auf einem anderen Exchange Server wiederhergestellt.
+* **In einer Wiederherstellungsdatenbank wiederherstellen:** Die Daten werden in einer Exchange-Wiederherstellungsdatenbank (RDB) wiederhergestellt.
 * **In einen Netzwerkordner kopieren:** Die Daten werden in einem Netzwerkordner wiederhergestellt.
 * **Auf Band kopieren:** Wenn Sie eine Bandbibliothek oder ein eigenständiges Bandlaufwerk angeschlossen und auf dem MABS konfiguriert haben, wird der Wiederherstellungspunkt auf ein freies Band kopiert.
 

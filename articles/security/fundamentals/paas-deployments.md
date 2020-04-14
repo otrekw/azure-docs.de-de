@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 8fd5a063683d09cb94b45205426871d880119cc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0643ae792c890b65f239d9a0c16a05639dd4f8b9
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77138015"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811476"
 ---
 # <a name="securing-paas-deployments"></a>Schützen von PaaS-Bereitstellungen
 
@@ -101,7 +101,7 @@ In der folgende Tabelle sind die STRIDE-Bedrohungen sowie einige Beispiele für 
 | Bedrohung | Sicherheitseigenschaft | Mindern potenzieller Risiken für die Azure-Plattform |
 | --- | --- | --- |
 | Spoofing | Authentifizierung | Legen Sie fest, dass HTTPS-Verbindungen erforderlich sind. |
-| Manipulation | Integrität | Überprüfen Sie SSL-Zertifikate. |
+| Manipulation | Integrität | Überprüfen Sie die TLS-/SSL-Zertifikate. |
 | Nichtanerkennung | Unleugbarkeit | Aktivieren Sie die [Überwachung und Diagnose](/azure/architecture/best-practices/monitoring) von Azure. |
 | Veröffentlichung von Informationen | Vertraulichkeit | Verschlüsseln Sie vertrauliche ruhende Daten mithilfe von [Dienstzertifikaten](/rest/api/appservice/certificates). |
 | Denial of Service | Verfügbarkeit | Überwachen Sie Leistungsmetriken auf potenzielle Denial-of-Service-Angriffe. Implementieren Sie Verbindungsfilter. |

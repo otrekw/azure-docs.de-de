@@ -6,17 +6,22 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/01/2019
+ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: d7600267dcd196a9a5c06c29774ea21d582cd7ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40ef05107f20a3396f6710f894a2dbad2d7fa6c9
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225746"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478846"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Verwenden der BulkExecutor-.NET-Bibliothek zum Ausführen von Massenvorgängen in Azure Cosmos DB
+
+> [!NOTE]
+> Die in diesem Artikel beschriebene BulkExecutor-Bibliothek wird für Anwendungen verwaltet, die das .NET SDK 2.x verwenden. Für neue Anwendungen können Sie die **Massenunterstützung** verwenden, die direkt mit dem [.NET SDK 3.x](tutorial-sql-api-dotnet-bulk-import.md) verfügbar ist und keine externe Bibliothek erfordert. 
+
+> Wenn Sie derzeit die BulkExecutor-Bibliothek verwenden und eine Migration zur Massenunterstützung für das neuere SDK planen, führen Sie die Schritte im [Migrationsleitfaden](how-to-migrate-from-bulk-executor-library.md) aus, um Ihre Anwendung zu migrieren.
 
 Dieses Tutorial enthält Anleitungen zum Verwenden der BulkExecutor-.NET-Bibliothek zum Importieren und Aktualisieren von Dokumenten in einem Azure Cosmos-Container. Informationen zur BulkExecutor-Bibliothek und dazu, wie Sie damit massiven Durchsatz und riesige Speichermengen nutzen können, finden Sie im Artikel [BulkExecutor-Bibliothek – Übersicht](bulk-executor-overview.md). In diesem Tutorial wird eine .NET-Beispielanwendung vorgestellt, die zufällig generierte Dokumente in einen Azure Cosmos-Container massenimportiert. Nach dem Import wird erläutert, wie Sie die importierten Daten per Massenvorgang aktualisieren, indem Sie Patches als Vorgänge angeben, die für bestimmte Dokumentfelder ausgeführt werden sollen.
 
@@ -24,9 +29,9 @@ Zurzeit wird die BulkExecutor-Bibliothek nur von den SQL-API- und Gremlin-API-Ko
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Falls Sie Visual Studio 2019 noch nicht installiert haben, können Sie die [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option „Azure-Entwicklung“.
+* Falls Sie Visual Studio 2019 noch nicht installiert haben, können Sie [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option „Azure-Entwicklung“.
 
-* Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), bevor Sie beginnen.
+* Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
 
 * Sie können [Azure Cosmos DB ohne ein Azure-Abonnement testen](https://azure.microsoft.com/try/cosmosdb/) – kostenlos und ohne Verpflichtungen. Alternativ dazu können Sie den [Azure Cosmos DB-Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) mit dem Endpunkt `https://localhost:8081` verwenden. Den Primärschlüssel finden Sie unter [Authentifizieren von Anforderungen](local-emulator.md#authenticating-requests).
 
@@ -40,7 +45,7 @@ Beginnen Sie jetzt mit der Arbeit mit Code, indem Sie eine .NET-Beispielanwendun
 git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started.git
 ```
 
-Das geklonte Repository enthält zwei Beispiele: BulkImportSample und BulkUpdateSample. Sie können jede der Beispielanwendungen öffnen, die Verbindungszeichenfolgen in der App.config-Datei auf die Verbindungszeichenfolgen Ihres Azure Cosmos DB-Kontos aktualisieren, die Lösung erstellen und sie ausführen.
+Das geklonte Repository enthält zwei Beispiele: BulkImportSample und BulkUpdateSample. Sie können jede der Beispielanwendungen öffnen, die Verbindungszeichenfolgen in der Datei „App.config“ auf die Verbindungszeichenfolgen Ihres Azure Cosmos DB-Kontos aktualisieren, die Lösung erstellen und sie ausführen.
 
 Die Anwendung BulkImportSample generiert zufällig Dokumente und importiert sie per Massenvorgang in Ihr Azure Cosmos-Konto. Die Anwendung BulkUpdateSample aktualisiert die importierten Dokumente per Massenvorgang, indem sie Patches als Vorgänge angibt, die für bestimmte Dokumentfelder ausgeführt werden sollen. In den nächsten Abschnitten sehen wir uns den Code in jeder dieser Beispiel-Apps an.
 
@@ -48,7 +53,7 @@ Die Anwendung BulkImportSample generiert zufällig Dokumente und importiert sie 
 
 1. Navigieren Sie zum Ordner „BulkImportSample“, und öffnen Sie die Datei „BulkImportSample.sln“.  
 
-2. Die Verbindungszeichenfolgen von Azure Cosmos DB werden aus der App.config-Datei abgerufen, wie im folgenden Code gezeigt:  
+2. Die Verbindungszeichenfolgen von Azure Cosmos DB werden aus der Datei „App.config“ abgerufen, wie im folgenden Code gezeigt:  
 
    ```csharp
    private static readonly string EndpointUrl = ConfigurationManager.AppSettings["EndPointUrl"];

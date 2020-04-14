@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: fe132ee6ab90fdae99463f11ecf46f352690b810
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43d15a7252819a3e4f7635e37458b75e9b7ecca7
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69983343"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546272"
 ---
 # <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Migrieren von Daten aus Oracle zum Azure Cosmos DB-Cassandra-API-Konto mithilfe von Blitzz
 
@@ -36,7 +36,7 @@ Die Migrationslösung von Blitzz befolgt einen schrittweisen Ansatz zum Migriere
 
 * Dies ist fehlertolerant und garantiert eine genau einmalige Übermittlung von Daten, selbst während eines Hardware- oder Softwarefehlers im System.
 
-* Er sichert die Daten während der Übertragung mithilfe verschiedener Sicherheitsmethoden wie SSL, Verschlüsselung.
+* Die Daten werden während der Übertragung mithilfe verschiedener Sicherheitsmethoden wie TLS/SSL oder Verschlüsselung gesichert.
 
 * Er bietet Dienste zum Konvertieren komplexer Geschäftslogiken, die in PL/SQL geschrieben sind, in entsprechende Geschäftslogiken in Azure Cosmos DB.
 
@@ -44,7 +44,7 @@ Die Migrationslösung von Blitzz befolgt einen schrittweisen Ansatz zum Migriere
 
 In diesem Abschnitt werden die erforderlichen Schritte zum Einrichten von Blitzz und zum Migrieren von Daten aus einer Oracle-Datenbank zu Azure Cosmos DB beschrieben.
 
-1. Fügen Sie von dem Computer, auf dem Sie den Blitzz-Replikanten installieren möchten, ein Sicherheitszertifikat hinzu. Dieses Zertifikat wird von dem Blitzz-Replikanten benötigt, um eine SSL-Verbindung mit dem angegebenen Azure Cosmos DB-Konto herzustellen. Sie können das Zertifikat mit den folgenden Schritten hinzufügen:
+1. Fügen Sie von dem Computer, auf dem Sie den Blitzz-Replikanten installieren möchten, ein Sicherheitszertifikat hinzu. Dieses Zertifikat wird von dem Blitzz-Replikanten benötigt, um eine TLS-Verbindung mit dem angegebenen Azure Cosmos DB-Konto herzustellen. Sie können das Zertifikat mit den folgenden Schritten hinzufügen:
 
    ```bash
    wget https://cacert.omniroot.com/bc2025.crt

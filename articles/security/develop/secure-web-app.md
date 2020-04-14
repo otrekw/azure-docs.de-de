@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 75890efebc42b74c56fb95ed1803152b516588b9
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 55c6d374c8a3c308323c0d003726492477e33ff8
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385213"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811236"
 ---
 # <a name="develop-a-secure-web-app"></a>Entwickeln einer sicheren Web-App
 
@@ -108,7 +108,7 @@ Für diese Anwendung wurde Folgendes verwendet:
 
 ### <a name="network"></a>Netzwerk
 
-Die Beispiel-App verwendet End-to-End-SSL-Verschlüsselung während der Übertragung für die Daten, die in und aus dem Netzwerk fließen. Das Gateway wurde mit einem selbstsignierten Zertifikat konfiguriert.
+Die Beispiel-App verwendet End-to-End-TLS-/SSL-Verschlüsselung während der Übertragung für die Daten, die in das und aus dem Netzwerk fließen. Das Gateway wurde mit einem selbstsignierten Zertifikat konfiguriert.
 > [!IMPORTANT]
 > In dieser Demonstration wird ein selbstsigniertes Zertifikat verwendet. In einer Produktionsumgebung sollten Sie Zertifikate von einer verifizierten Zertifizierungsstelle verwenden.
 
@@ -363,7 +363,7 @@ END;
 $$ LANGUAGE PLPGSQL;
 ```
 
-Weitere Informationen zum Einrichten der Überprüfung von SSL und den Zertifizierungsstellen für PostgreSQL finden Sie unter [Konfigurieren von SSL-Verbindungen in Azure Database for PostgreSQL](/azure/postgresql/concepts-ssl-connection-security).
+Weitere Informationen zum Einrichten der Überprüfung von TLS und den Zertifizierungsstellen für PostgreSQL finden Sie unter [Konfigurieren von TLS-Verbindungen in Azure Database for PostgreSQL](/azure/postgresql/concepts-ssl-connection-security).
 
 Im Container ist ein Stammzertifikat enthalten. Die Schritte zum Abrufen des Zertifikats lauten wie folgt:
 
@@ -375,7 +375,7 @@ Im Container ist ein Stammzertifikat enthalten. Die Schritte zum Abrufen des Zer
    openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
    ```
 
-Weitere Informationen zum Konfigurieren der SSL-Sicherheit für PostgreSQL finden Sie unter [Konfigurieren von SSL-Verbindungen in Azure Database for PostgreSQL](/azure/postgresql/concepts-ssl-connection-security).
+Weitere Informationen zum Konfigurieren der TLS-Sicherheit für PostgreSQL finden Sie unter [Konfigurieren von TLS-Verbindungen in Azure Database for PostgreSQL](/azure/postgresql/concepts-ssl-connection-security).
 
 #### <a name="deploy-azure-web-apps-on-linux"></a>Bereitstellen von Azure-Web-Apps für Linux
 

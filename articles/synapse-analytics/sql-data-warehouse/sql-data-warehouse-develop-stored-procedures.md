@@ -1,6 +1,6 @@
 ---
 title: Verwenden gespeicherter Prozeduren
-description: Tipps zum Implementieren von gespeicherten Prozeduren in Azure SQL Data Warehouse für die Entwicklung von Lösungen
+description: Tipps zum Entwickeln von Lösungen durch Implementieren gespeicherter Prozeduren im Synapse SQL-Pool.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,40 +11,48 @@ ms.date: 04/02/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 83c3187c580bda33df8780a0e36f0fb9f2a4f484
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 3283fbeec2226a825625b4e3ede6942a609ae723
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351565"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633441"
 ---
-# <a name="using-stored-procedures-in-sql-data-warehouse"></a>Verwenden gespeicherter Prozeduren in Azure SQL Data Warehouse
-Tipps zum Implementieren von gespeicherten Prozeduren in Azure SQL Data Warehouse für die Entwicklung von Lösungen
+# <a name="using-stored-procedures-in-synapse-sql-pool"></a>Verwenden gespeicherter Prozeduren im Synapse SQL-Pool
+
+Dieser Artikel enthält Tipps zum Entwickeln von SQL-Poollösungen durch Implementieren gespeicherter Prozeduren.
 
 ## <a name="what-to-expect"></a>Ausblick
 
-SQL Data Warehouse unterstützt viele der T-SQL-Features, die in SQL Server verwendet werden. Darüber hinaus sind bestimmte Features für das horizontale Hochskalieren vorhanden, mit denen Sie die Leistung Ihrer Lösung verbessern können.
+Der SQL-Pool unterstützt viele der T-SQL-Features, die in SQL Server verwendet werden. Darüber hinaus sind bestimmte Features für das horizontale Hochskalieren vorhanden, mit denen Sie die Leistung Ihrer Lösung verbessern können.
 
-In Bezug auf die Verwaltung der Skalierung und Leistung von SQL Data Warehouse sind auch einige Features und Funktionen vorhanden, die Unterschiede beim Verhalten aufweisen. Es gibt auch Features, die nicht unterstützt werden.
-
+Außerdem gibt es zusätzliche Features und Funktionen, die Verhaltensunterschiede aufweisen, damit Sie die Skalierung und Leistung des SQL-Pools aufrechterhalten können.
 
 ## <a name="introducing-stored-procedures"></a>Einführung in gespeicherte Prozeduren
-Gespeicherte Prozeduren sind eine hervorragende Möglichkeit zum Einschließen (Kapseln) von SQL-Code. Hierbei wird Code im Data Warehouse in der Nähe Ihrer Daten gespeichert. Gespeicherte Prozeduren unterstützen Entwickler beim Modularisieren ihrer Lösungen, indem Code in besser verwaltbare Einheiten eingeschlossen wird. Dies ermöglicht eine bessere Wiederverwendbarkeit des Codes. Für jede gespeicherte Prozedur können außerdem Parameter verwendet werden, um sie flexibler zu machen.
 
-SQL Data Warehouse bietet eine vereinfachte und optimierte Implementierung von gespeicherten Prozeduren. Der größte Unterschied im Vergleich zu SQL Server ist, dass die gespeicherte Prozedur kein vorab kompilierter Code ist. In Data Warehouses ist die Kompilierzeit im Vergleich zu der benötigten Zeit, um Abfragen für große Datenmengen auszuführen, relativ gering. Es ist wichtiger sicherzustellen, dass der Code der gespeicherten Prozedur für große Abfragen ordnungsgemäß optimiert ist. Das Ziel besteht darin, Stunden, Minuten und Sekunden zu sparen, keine Millisekunden. Es ist daher hilfreicher, gespeicherte Prozeduren als Container für SQL-Logik zu betrachten.     
+Gespeicherte Prozeduren sind eine hervorragende Möglichkeit zum Kapseln Ihres SQL-Codes, der in der Nähe Ihrer SQL-Pooldaten gespeichert wird. Gespeicherte Prozeduren unterstützen Entwickler auch beim Modularisieren ihrer Lösungen, indem Code in besser verwaltbare Einheiten eingeschlossen (gekapselt) wird. Dies ermöglicht eine bessere Wiederverwendbarkeit des Codes. Für jede gespeicherte Prozedur können außerdem Parameter verwendet werden, um sie flexibler zu machen.
 
-Wenn SQL Data Warehouse Ihre gespeicherte Prozedur ausführt, werden die SQL-Anweisungen zur Laufzeit analysiert, übersetzt und optimiert. Während dieses Vorgangs wird jede Anweisung in verteilte Abfragen konvertiert. Der SQL-Code, der für die Daten ausgeführt wird, unterscheidet sich von der übermittelten Abfrage.
+Der SQL-Pool bietet eine vereinfachte und optimierte Implementierung von gespeicherten Prozeduren. Der größte Unterschied im Vergleich zu SQL Server ist, dass die gespeicherte Prozedur kein vorab kompilierter Code ist.
+
+In Data Warehouses ist die Kompilierzeit im Allgemeinen im Vergleich zu der benötigten Zeit, um Abfragen für große Datenmengen auszuführen, relativ gering. Es ist wichtiger sicherzustellen, dass der Code der gespeicherten Prozedur für große Abfragen ordnungsgemäß optimiert ist.
+
+> [!TIP]
+> Das Ziel besteht darin, Stunden, Minuten und Sekunden zu sparen, keine Millisekunden. Es ist daher hilfreich, gespeicherte Prozeduren als Container für SQL-Logik zu betrachten.
+
+Wenn der SQL-Pool Ihre gespeicherte Prozedur ausführt, werden die SQL-Anweisungen zur Laufzeit analysiert, übersetzt und optimiert. Während dieses Vorgangs wird jede Anweisung in verteilte Abfragen konvertiert. Der SQL-Code, der für die Daten ausgeführt wird, unterscheidet sich von der übermittelten Abfrage.
 
 ## <a name="nesting-stored-procedures"></a>Schachteln von gespeicherten Prozeduren
+
 Wenn gespeicherte Prozeduren andere gespeicherte Prozeduren aufrufen oder dynamischen SQL-Code ausführen, wird die innere gespeicherte Prozedur bzw. der Codeaufruf als „geschachtelt“ bezeichnet.
 
-SQL Data Warehouse unterstützt maximal acht Schachtelungsebenen. Dies ist ein Unterschied zu SQL Server. In SQL Server sind 32 Schachtelungsebenen zulässig.
+Der SQL-Pool unterstützt maximal acht Schachtelungsebenen. Im Gegensatz dazu sind in SQL Server 32 Schachtelungsebenen zulässig.
 
 Der Aufruf der obersten gespeicherten Prozedur entspricht Schachtelungsebene 1.
 
 ```sql
 EXEC prc_nesting
 ```
+
 Wenn die gespeicherte Prozedur auch einen weiteren EXEC-Aufruf durchführt, wird die Schachtelungsebene auf 2 erhöht.
 
 ```sql
@@ -54,6 +62,7 @@ EXEC prc_nesting_2  -- This call is nest level 2
 GO
 EXEC prc_nesting
 ```
+
 Wenn die zweite Prozedur dann dynamischen SQL-Code ausführt, wird die Schachtelungsebene auf 3 erhöht.
 
 ```sql
@@ -64,15 +73,15 @@ GO
 EXEC prc_nesting
 ```
 
-Beachten Sie, dass [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql) von SQL Data Warehouse derzeit nicht unterstützt wird. Sie müssen die Schachtelungsebene nachverfolgen. Es ist unwahrscheinlich, dass Sie die Grenze von acht Schachtelungsebenen überschreiten. Sollte dies dennoch der Fall sein, müssen Sie Ihren Code so überarbeiten, damit dieser innerhalb des Grenzwerts bleibt.
+Der SQL-Pool unterstützt [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) derzeit nicht. Daher müssen Sie die Schachtelungsebene nachverfolgen. Es ist unwahrscheinlich, dass Sie den Grenzwert von acht Schachtelungsebenen überschreiten. Wenn dies dennoch der Fall ist, müssen Sie Ihren Code so überarbeiten, dass er den Schachtelungsebenen innerhalb dieses Grenzwerts entspricht.
 
 ## <a name="insertexecute"></a>INSERT..EXECUTE
-SQL Data Warehouse lässt nicht zu, dass Sie das Resultset einer gespeicherten Prozedur mit einer INSERT-Anweisung verwenden. Es gibt aber eine andere Möglichkeit. Ein Beispiel finden Sie im Artikel unter [Temporäre Tabellen](sql-data-warehouse-tables-temporary.md). 
+
+Der SQL-Pool lässt nicht zu, dass Sie das Resultset einer gespeicherten Prozedur mit einer INSERT-Anweisung verwenden. Es gibt jedoch eine alternative Methode, die Sie verwenden können. Ein Beispiel finden Sie im Artikel unter [Temporäre Tabellen](sql-data-warehouse-tables-temporary.md).
 
 ## <a name="limitations"></a>Einschränkungen
-Es gibt einige Aspekte von gespeicherten Transact-SQL-Prozeduren, die in SQL Data Warehouse nicht implementiert sind.
 
-Sie lauten wie folgt:
+Es gibt einige Aspekte von gespeicherten Transact-SQL-Prozeduren, die im SQL-Pool nicht implementiert sind:
 
 * Temporäre gespeicherte Prozeduren
 * Nummerierte gespeicherte Prozeduren
@@ -87,5 +96,5 @@ Sie lauten wie folgt:
 * return-Anweisung
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht](sql-data-warehouse-overview-develop.md).
 
+Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht](sql-data-warehouse-overview-develop.md).

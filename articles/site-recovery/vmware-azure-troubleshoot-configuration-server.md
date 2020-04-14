@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 25e2b488d3b6e7e5cabd1a71d1489efaf01231b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0383a512dfb7c2bb1ae2422b9ade1e3c7387a70c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73748553"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478309"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Behandeln von Problemen mit dem Konfigurationsserver
 
@@ -42,7 +42,7 @@ Der Quellcomputer registriert sich während der Installation des Mobilitäts-Age
     3. Stellen Sie sicher, dass die unter [Site Recovery-Ordnerausschlüsse von Antivirenprogrammen](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) aufgeführten Ordner in der Antivirensoftware ausgeschlossen sind.
     4. Nachdem die Probleme behoben wurden, versuchen Sie die Registrierung erneut, indem Sie die Anleitungen unter [Registrieren des Quellcomputers beim Konfigurationsserver](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server) befolgen.
 
-6. Wenn die Zeichenfolge **post request: (7) – Couldn't connect to server** (Veröffentlichungsanforderung: (7) – Serververbindung konnte nicht hergestellt werden) nicht gefunden wird, suchen Sie in derselben Protokolldatei nach der Zeichenfolge **request: (60) – Peer certificate cannot be authenticated with given CA certificates** (Anforderung: (60) – Das Peerzertifikat kann mit den vorhandenen Zertifizierungsstellenzertifikaten nicht authentifiziert werden). Dieser Fehler kann auftreten, weil das Zertifikat des Konfigurationsservers abgelaufen ist oder der Quellcomputer weder TLS 1.0 noch höhere SSL-Protokolle unterstützt. Er kann auch auftreten, wenn eine Firewall die SSL-Kommunikation zwischen dem Quellcomputer und dem Konfigurationsserver blockiert. Wenn die Zeichenfolge gefunden wird: 
+6. Wenn die Zeichenfolge **post request: (7) – Couldn't connect to server** (Veröffentlichungsanforderung: (7) – Serververbindung konnte nicht hergestellt werden) nicht gefunden wird, suchen Sie in derselben Protokolldatei nach der Zeichenfolge **request: (60) – Peer certificate cannot be authenticated with given CA certificates** (Anforderung: (60) – Das Peerzertifikat kann mit den vorhandenen Zertifizierungsstellenzertifikaten nicht authentifiziert werden). Dieser Fehler kann auftreten, weil das Zertifikat des Konfigurationsservers abgelaufen ist oder der Quellcomputer weder TLS 1.0 noch höhere Protokolle unterstützt. Er kann auch auftreten, wenn eine Firewall die TLS-Kommunikation zwischen dem Quellcomputer und dem Konfigurationsserver blockiert. Wenn die Zeichenfolge gefunden wird: 
     1. Stellen Sie zur Behebung eine Verbindung mit der IP-Adresse des Konfigurationsservers mithilfe eines Webbrowsers auf dem Quellcomputer her. Verwenden Sie den URI „https:\/\/<IP-Adresse des Konfigurationsservers\>:443/“. Stellen Sie sicher, dass der Quellcomputer den Konfigurationsserver über Port 443 erreichen kann.
     2. Überprüfen Sie, ob eine der Firewallregeln auf dem Quellcomputer hinzugefügt oder entfernt werden muss, damit der Quellcomputer mit dem Konfigurationsserver kommunizieren kann. Aufgrund der Vielfalt von Firewallsoftware, die im Einsatz sein kann, können wir nicht alle erforderlichen Firewallkonfigurationen auflisten. Arbeiten Sie gemeinsam mit Ihrem Netzwerkadministrator daran, jegliche Verbindungsprobleme zu beheben.
     3. Stellen Sie sicher, dass die unter [Site Recovery-Ordnerausschlüsse von Antivirenprogrammen](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) aufgeführten Ordner in der Antivirensoftware ausgeschlossen sind.  

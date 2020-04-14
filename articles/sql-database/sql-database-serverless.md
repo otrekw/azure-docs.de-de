@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 12/03/2019
-ms.openlocfilehash: 750d08f3667317e9e1e396cff50884101d7ff55d
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.date: 4/3/2020
+ms.openlocfilehash: 07f29a01ae0128ba0a35504dea54ba1ae2dde944
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2020
-ms.locfileid: "77131970"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657058"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL-Datenbank – Serverlos
 
@@ -149,11 +149,15 @@ Wenn eine serverlose Datenbank angehalten wird, wird die Datenbank bei der erste
 
 Die Wartezeit für das automatische Fortsetzen und das automatische Anhalten einer serverlosen Datenbank liegt normalerweise im Bereich von 1 für das automatische Fortsetzen und zwischen 1 und 10 Minuten für das automatische Anhalten.
 
+### <a name="customer-managed-transparent-data-encryption-byok"></a>Vom Kunden verwaltete transparente Datenverschlüsselung (BYOK)
+
+Falls die [vom Kunden verwaltete transparente Datenverschlüsselung](transparent-data-encryption-byok-azure-sql.md) (BYOK) verwendet und die serverlose Datenbank automatisch angehalten wird, wenn ein Schlüssel gelöscht oder widerrufen wird, verbleibt die Datenbank im automatisch angehaltenen Zustand.  Nach dem nächsten Fortsetzen der Datenbank kann in diesem Fall innerhalb von ungefähr 10 Minuten nicht mehr auf die Datenbank zugegriffen werden.  Sobald der Zugriff auf die Datenbank nicht mehr möglich ist, ist der Wiederherstellungsvorgang identisch mit dem für bereitgestellte Computedatenbanken.  Wenn die serverlose Datenbank zum Zeitpunkt des Löschens oder Widerrufens von Schlüsseln online ist, ist der Zugriff auf die Datenbank auch nach etwa 10 Minuten nicht mehr möglich, wie dies auch bei bereitgestellten Computedatenbanken der Fall ist.
+
 ## <a name="onboarding-into-serverless-compute-tier"></a>Integration in die serverlose Computeebene
 
 Beim Erstellen einer neuen Datenbank bzw. Verschieben einer vorhandenen Datenbank in eine serverlose Computeebene gilt dasselbe Muster wie beim Erstellen einer neuen Datenbank in der bereitgestellten Computeebene. Dieser Vorgang umfasst die folgenden zwei Schritte:
 
-1. Geben Sie den Namen des Dienstziels an. Das Dienstziel schreibt die Dienstebene, die Hardwaregeneration und die maximale Anzahl von virtuellen Kernen vor. Die folgende Tabelle enthält die verschiedenen Optionen für Dienstziele:
+1. Geben Sie das Dienstziel an. Das Dienstziel schreibt die Dienstebene, die Hardwaregeneration und die maximale Anzahl von virtuellen Kernen vor. Die folgende Tabelle enthält die verschiedenen Optionen für Dienstziele:
 
    |Name des Dienstziels|Dienstebene|Hardwaregeneration|Max. virtuelle Kerne|
    |---|---|---|---|
@@ -172,12 +176,12 @@ Beim Erstellen einer neuen Datenbank bzw. Verschieben einer vorhandenen Datenban
    |Parameter|Auswahlmöglichkeiten für Werte|Standardwert|
    |---|---|---|---|
    |Mindestanzahl virtueller Kerne|Hängt von den konfigurierten maximalen virtuellen Kernen ab (siehe [Ressourceneinschränkungen](sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)).|0,5 V-Kerne|
-   |Verzögerung für das automatische Anhalten|Minimum: 60 Minuten (1 Stunde)<br>Maximum: 10.080 Minuten (sieben Tage)<br>Inkremente: 60 Minuten<br>Automatisches Anhalten deaktivieren: -1|60 Minuten|
+   |Verzögerung für das automatische Anhalten|Minimum: 60 Minuten (1 Stunde)<br>Maximum: 10.080 Minuten (sieben Tage)<br>Inkremente: 10 Minuten<br>Automatisches Anhalten deaktivieren: -1|60 Minuten|
 
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>Erstellen einer neuen Datenbank in der serverlosen Computeebene 
 
-Die folgenden Beispiele erstellen eine neue Datenbank in der serverlosen Computeebene. In diesen Beispielen werden die Mindestanzahl virtueller Kerne, die maximale Anzahl virtueller Kerne und die Verzögerung für das automatische Anhalten explizit angegeben.
+Die folgenden Beispiele erstellen eine neue Datenbank in der serverlosen Computeebene.
 
 #### <a name="use-azure-portal"></a>Verwenden des Azure-Portals
 
@@ -201,7 +205,7 @@ az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>Verwenden von Transact-SQL (T-SQL)
 
-Das folgende Beispiel erstellt eine neue Datenbank in der serverlosen Computeebene.
+Bei Verwendung von T-SQL werden Standardwerte für die Mindestanzahl virtueller Kerne und die automatische Pausenverzögerung angewendet.
 
 ```sql
 CREATE DATABASE testdb
@@ -212,7 +216,7 @@ Weitere Informationen finden Sie unter [CREATE DATABASE](/sql/t-sql/statements/c
 
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Verschieben einer Datenbank aus der bereitgestellten Computeebene in die serverlose Computeebene
 
-In den folgenden Beispielen wird eine Datenbank aus der bereitgestellten Computeebene in die serverlose Computeebene verschoben. In diesen Beispielen werden die Mindestanzahl virtueller Kerne, die maximale Anzahl virtueller Kerne und die Verzögerung für das automatische Anhalten explizit angegeben.
+In den folgenden Beispielen wird eine Datenbank aus der bereitgestellten Computeebene in die serverlose Computeebene verschoben.
 
 #### <a name="use-powershell"></a>Verwenden von PowerShell
 
@@ -233,7 +237,7 @@ az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>Verwenden von Transact-SQL (T-SQL)
 
-Im folgenden Beispiel wird eine Datenbank aus der bereitgestellten Computeebene in die serverlose Computeebene verschoben.
+Bei Verwendung von T-SQL werden Standardwerte für die Mindestanzahl virtueller Kerne und die automatische Pausenverzögerung angewendet.
 
 ```sql
 ALTER DATABASE testdb 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 88daecdf4490ffd4eef45e6cd664a16f86bad113
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2cdafa9a36a5f906151ca6946e18ef82bc7f1e01
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76170281"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529423"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Konfigurieren Ihres Labs in Azure DevTest Labs zum Verwenden eines Remotedesktopgateways
 Sie können in Azure DevTest Labs ein Remotedesktopgateway für Ihr Lab konfigurieren, um sicheren Zugriff auf die virtuellen Computer (VMs) des Labs ohne Offenlegung des RDP-Ports zu gewährleisten. Das Lab bietet einen zentralen Ort für Ihre Lab-Benutzer zum Anzeigen aller virtuellen Computer, auf die sie Zugriff haben, sowie für den Zugriff auf diese. Die Schaltfläche **Verbinden** auf der Seite **Virtueller Computer** erstellt eine computerspezifische RDP-Datei, die Sie öffnen können, um eine Verbindung mit dem Computer herzustellen. Sie können die RDP-Verbindung weiter anpassen und sichern, indem Sie Ihr Lab mit einem Remotedesktopgateway verbinden. 
@@ -43,7 +43,7 @@ Dieser Ansatz ist sicherer, da sich der Lab-Benutzer direkt beim Gatewaycomputer
 Für die Verwendung der Funktion für die Tokenauthentifizierung in DevTest Labs müssen einige Konfigurationsanforderungen für Gatewaycomputer, DNS (Domain Name Service) und die Funktionen erfüllt werden.
 
 ### <a name="requirements-for-remote-desktop-gateway-machines"></a>Anforderungen für Remotedesktopgateway-Computer
-- Das SSL-Zertifikat muss auf dem Gatewaycomputer installiert sein, damit HTTPS-Datenverkehr verarbeitet werden kann. Das Zertifikat muss mit dem vollqualifizierten Domänennamen (FQDN) des Lastenausgleichs für die Gatewayfarm oder dem FQDN des Computers selbst übereinstimmen, wenn es nur einen Computer gibt. SSL-Platzhalterzertifikate funktionieren nicht.  
+- Das TLS-/SSL-Zertifikat muss auf dem Gatewaycomputer installiert sein, damit HTTPS-Datenverkehr verarbeitet werden kann. Das Zertifikat muss mit dem vollqualifizierten Domänennamen (FQDN) des Lastenausgleichs für die Gatewayfarm oder dem FQDN des Computers selbst übereinstimmen, wenn es nur einen Computer gibt. TLS-/SSL-Platzhalterzertifikate funktionieren nicht.  
 - Auf dem Gatewaycomputer muss ein Signaturzertifikat installiert sein. Sie erstellen ein Signaturzertifikat mithilfe des Skripts [Create-SigningCertificate.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1).
 - Installieren Sie das Modul [Pluggable Authentication](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273), das die Tokenauthentifizierung für das Remotedesktopgateway unterstützt. Ein Beispiel für ein solches Modul ist `RDGatewayFedAuth.msi`, das in den [Images von System Center Virtual Machine Manager (VMM)](/system-center/vmm/install-console?view=sc-vmm-1807) enthalten ist. Weitere Informationen zu System Center finden Sie in der [Dokumentation zu System Center](https://docs.microsoft.com/system-center/) und den [Preisdetails](https://www.microsoft.com/cloud-platform/system-center-pricing).  
 - Der Gatewayserver kann Anforderungen an `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}` verarbeiten.
@@ -58,7 +58,7 @@ Die Azure-Funktion verarbeitet Anforderungen der Form `https://{function-app-uri
 
 ## <a name="requirements-for-network"></a>Anforderungen an das Netzwerk
 
-- Der DNS für den vollqualifizierten Domänennamen, der dem SSL-Zertifikat auf den Gatewaycomputern zugeordnet ist, muss Datenverkehr an den Gatewaycomputer oder den Load Balancer der Gatewayfarm weiterleiten.
+- Das DNS für den vollqualifizierten Domänennamen, der dem TLS-/SSL-Zertifikat auf den Gatewaycomputern zugeordnet ist, muss Datenverkehr an den Gatewaycomputer oder den Load Balancer der Gatewayfarm weiterleiten.
 - Wenn der Lab-Computer private IP-Adressen verwendet, muss es einen Netzwerkpfad vom Gatewaycomputer zum Lab-Computer geben – entweder, indem beide demselben virtuellen Netzwerk angehören oder mithilfe von mittels Peering verknüpften virtuellen Netzwerken.
 
 ## <a name="configure-the-lab-to-use-token-authentication"></a>Konfigurieren des Labs für die Verwendung der Tokenauthentifizierung 
@@ -79,7 +79,7 @@ Konfigurieren Sie das Lab für die Verwendung der Tokenauthentifizierung anhand 
 1. Wählen Sie in der Liste mit den Labs Ihr **Lab** aus.
 1. Wählen Sie auf der Seite des Labs die Option **Konfiguration und Richtlinien** aus.
 1. Wählen Sie im linken Menü im Abschnitt **Einstellungen** die Option **Labeinstellungen** aus.
-1. Geben Sie im Abschnitt **Remotedesktop** den vollqualifizierten Domänennamen (FQDN) oder die IP-Adresse des Gatewaycomputers oder der -farm für die Remotedesktopdienste im Feld **Gatewayhostname** ein. Dieser Wert muss dem FQDN des auf dem Gatewaycomputer verwendeten SSL-Zertifikats entsprechen.
+1. Geben Sie im Abschnitt **Remotedesktop** den vollqualifizierten Domänennamen (FQDN) oder die IP-Adresse des Gatewaycomputers oder der -farm für die Remotedesktopdienste im Feld **Gatewayhostname** ein. Dieser Wert muss dem FQDN des auf dem Gatewaycomputer verwendeten TLS-/SSL-Zertifikats entsprechen.
 
     ![Remotedesktopoptionen in den Labeinstellungen](./media/configure-lab-remote-desktop-gateway/remote-desktop-options-in-lab-settings.png)
 1. Geben Sie im Abschnitt **Remotedesktop** für das **Gatewaytokengeheimnis** den Namen des zuvor erstellten Geheimnisses ein. Dieser Wert ist nicht der Funktionsschlüssel selbst, sondern der Name des Geheimnisses im Schlüsseltresor des Labs, der den Funktionsschlüssel enthält.
@@ -110,7 +110,7 @@ Das [GitHub-Repository zu Azure DevTest Labs](https://github.com/Azure/azure-dev
 Befolgen Sie zum Einrichten einer Beispiellösung für die Remotedesktopgateway-Farm die folgenden Schritte.
 
 1. Erstellen Sie ein Signaturzertifikat.  Führen Sie [Create-SigningCertificate.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1) aus. Speichern Sie Fingerabdruck, Kennwort und Base64-Codierung des erstellten Zertifikats.
-2. Rufen Sie ein SSL-Zertifikat ab. Der FQDN, der dem SSL-Zertifikat zugeordnet ist, muss für die von Ihnen gesteuerte Domäne gelten. Speichern Sie Fingerabdruck, Kennwort und Base64-Codierung dieses Zertifikats. Wenn Sie den Fingerabdruck mithilfe von PowerShell abrufen möchten, verwenden Sie die folgenden Befehle:
+2. Rufen Sie ein TLS/SSL-Zertifikat ab. Der FQDN, der dem TLS-/SSL-Zertifikat zugeordnet ist, muss für die von Ihnen gesteuerte Domäne gelten. Speichern Sie Fingerabdruck, Kennwort und Base64-Codierung dieses Zertifikats. Wenn Sie den Fingerabdruck mithilfe von PowerShell abrufen möchten, verwenden Sie die folgenden Befehle:
 
     ```powershell
     $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate;
@@ -132,9 +132,9 @@ Befolgen Sie zum Einrichten einer Beispiellösung für die Remotedesktopgateway-
     - instanceCount: Anzahl der zu erstellenden Gatewaycomputer.  
     - alwaysOn: gibt an, ob die erstellte Azure Functions-App in einem betriebsbereiten Zustand („warm“) bleiben soll. Das Beibehalten von Azure Functions-Apps vermeidet Verzögerungen, wenn Benutzer zum ersten Mal versuchen, eine Verbindung mit ihrer Lab-VM herzustellen. Diese Methode hat jedoch Auswirkungen auf die Kosten.  
     - tokenLifetime: Zeitdauer, die das erstellte Token gültig sein soll. Das Format lautet HH:MM:SS.
-    - sslCertificate: Base64-Codierung des SSL-Zertifikats für den Gatewaycomputer.
-    - sslCertificatePassword: Kennwort des SSL-Zertifikats für den Gatewaycomputer.
-    - sslCertificateThumbprint: Zertifikatfingerabdruck für die Identifizierung im lokalen Zertifikatspeicher des SSL-Zertifikats.
+    - sslCertificate: Base64-Codierung des TLS-/SSL-Zertifikats für den Gatewaycomputer.
+    - sslCertificatePassword: Kennwort des TLS-/SSL-Zertifikats für den Gatewaycomputer.
+    - sslCertificateThumbprint: Zertifikatfingerabdruck für die Identifizierung im lokalen Zertifikatspeicher des TLS-/SSL-Zertifikats.
     - signCertificate: Base64-Codierung des Signaturzertifikats für den Gatewaycomputer.
     - signCertificatePassword: Kennwort des Signaturzertifikats für den Gatewaycomputer.
     - signCertificateThumbprint: Zertifikatfingerabdruck für die Identifizierung im lokalen Zertifikatspeicher des Signaturzertifikats.
@@ -157,7 +157,7 @@ Befolgen Sie zum Einrichten einer Beispiellösung für die Remotedesktopgateway-
         - {utc-expiration-Date} ist das Datum (in UTC), zu dem das SAS-Token abläuft und nicht mehr für den Zugriff auf das Speicherkonto verwendet werden kann.
 
     Notieren Sie die Werte für gatewayFQDN und gatewayIP in der Ausgabe der Vorlagenbereitstellung. Sie müssen auch den Wert des Funktionsschlüssels für die neu erstellte Funktion speichern, den Sie auf der Registerkarte [Einstellungen für Funktions-Apps](../azure-functions/functions-how-to-use-azure-function-app-settings.md) finden.
-5. Konfigurieren Sie DNS so, dass der FQDN des SSL-Zertifikats auf die IP-Adresse von gatewayIP aus dem vorherigen Schritt verweist.
+5. Konfigurieren Sie DNS so, dass der FQDN des TLS-/SSL-Zertifikats auf die IP-Adresse von gatewayIP aus dem vorherigen Schritt verweist.
 
     Nachdem die Remotedesktopgateway-Farm erstellt und die entsprechenden DNS-Aktualisierungen vorgenommen wurden, kann sie von einem Lab in DevTest Labs verwendet werden. Die Einstellungen **Gatewayhostname** und **Gatewaytokengeheimnis** müssen konfiguriert sein, damit die Gatewaycomputer, die Sie bereitgestellt haben, verwendet werden können. 
 

@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 458a1d474e9a722a98ca068e1827cf0e1abf4b47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: befe8945468d220a04ec7f0b515f22159cb72b0f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75548818"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549244"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Bewährte Methoden für die Azure Service Fabric-Sicherheit
 Die Bereitstellung einer Anwendung in Azure ist schnell, einfach und kostengünstig. Bevor Sie Ihre Cloudanwendung für die Produktion bereitstellen, überprüfen Sie unsere Liste grundlegender und empfohlener bewährter Methoden zum Implementieren sicherer Cluster in der Anwendung.
@@ -32,7 +32,7 @@ Wir empfehlen die folgenden bewährten Methoden für die Azure Service Fabric-Si
 -   Verwenden von X.509-Zertifikaten
 -   Konfigurieren von Sicherheitsrichtlinien
 -   Implementieren der Reliable Actors-Sicherheitskonfiguration
--   Konfigurieren von SSL für Azure Service Fabric
+-   Konfigurieren von TLS für Azure Service Fabric
 -   Verwenden von Netzwerkisolation und -sicherheit mit Azure Service Fabric
 -   Konfigurieren von Azure Key Vault für die Sicherheit
 -   Zuweisen von Benutzern zu Rollen
@@ -118,13 +118,13 @@ Jeder Akteur wird als Instanz eines Akteurtyps definiert (genau wie ein .NET-Obj
 [Replicator-Sicherheitskonfigurationen](../../service-fabric/service-fabric-reliable-actors-kvsactorstateprovider-configuration.md) werden verwendet, um den während der Replikation verwendeten Kommunikationskanal zu schützen. Diese Konfiguration verhindert, dass Dienste den Replikationsdatenverkehr anderer Dienste sehen können, und sie stellt sicher, dass die hoch verfügbaren Daten sicher sind. Standardmäßig wird die Replikationssicherheit durch einen leeren Sicherheitskonfigurationsabschnitt verhindert.
 Replicator-Konfigurationen konfigurieren den Replicator, der dafür verantwortlich ist, den Status des Actor-Status-Anbieters hochverfügbar zu machen.
 
-## <a name="configure-ssl-for-azure-service-fabric"></a>Konfigurieren von SSL für Azure Service Fabric
-Der Serverauthentifizierungsprozess [authentifiziert](../../service-fabric/service-fabric-cluster-creation-via-arm.md) die Verwaltungsendpunkte des Clusters bei einem Verwaltungsclient. Der Verwaltungsclient erkennt damit, dass er mit dem tatsächlichen Cluster kommuniziert. Dieses Zertifikat stellt auch [SSL](../../service-fabric/service-fabric-cluster-creation-via-arm.md) für die HTTPS-Verwaltungs-API und für Service Fabric Explorer über HTTPS bereit.
+## <a name="configure-tls-for-azure-service-fabric"></a>Konfigurieren von TLS für Azure Service Fabric
+Der Serverauthentifizierungsprozess [authentifiziert](../../service-fabric/service-fabric-cluster-creation-via-arm.md) die Verwaltungsendpunkte des Clusters bei einem Verwaltungsclient. Der Verwaltungsclient erkennt damit, dass er mit dem tatsächlichen Cluster kommuniziert. Dieses Zertifikat stellt auch [TLS](../../service-fabric/service-fabric-cluster-creation-via-arm.md) für die HTTPS-Verwaltungs-API und für Service Fabric Explorer über HTTPS bereit.
 Sie benötigen einen benutzerdefinierten Domänennamen für Ihren Cluster. Wenn Sie ein Zertifikat von einer Zertifizierungsstelle anfordern, muss der Name des Antragstellers für das Zertifikat dem benutzerdefinierten Domänennamen entsprechen, den Sie für Ihren Cluster verwenden.
 
-Wenn Sie für eine Anwendung SSL konfigurieren möchten, müssen Sie zunächst ein SSL-Zertifikat abrufen, das von einer Zertifizierungsstelle signiert wurde. Die Zertifizierungsstelle ist eine vertrauenswürdige dritte Partei, die Zertifikate für die SSL-Sicherheit ausstellt. Wenn Sie noch kein SSL-Zertifikat haben, müssen Sie eines von einem Unternehmen erwerben, das SSL-Zertifikate verkauft.
+Wenn Sie für eine Anwendung TLS konfigurieren möchten, müssen Sie zunächst ein TLS-Zertifikat abrufen, das von einer Zertifizierungsstelle signiert wurde. Die Zertifizierungsstelle ist eine vertrauenswürdige dritte Partei, die Zertifikate für die TLS-Sicherheit ausstellt. Wenn Sie noch kein SSL-/TLS-Zertifikat besitzen, müssen Sie ein Zertifikat von einem Unternehmen erwerben, das SSL-/TLS-Zertifikate verkauft.
 
-Das Zertifikat muss die folgenden Anforderungen für SSL-Zertifikate in Azure erfüllen:
+Das Zertifikat muss die folgenden Anforderungen für SSL-/TLS-Zertifikate in Azure erfüllen:
 -   Das Zertifikat muss einen privaten Schlüssel enthalten.
 
 -   Das Zertifikat muss für den Schlüsselaustausch erstellt werden und in eine PFX-Datei (Persönlicher Informationsaustausch) exportiert werden können.
@@ -135,13 +135,13 @@ Das Zertifikat muss die folgenden Anforderungen für SSL-Zertifikate in Azure er
     - Verwenden Sie beim Anfordern eines Zertifikats von einer Zertifizierungsstelle einen Antragstellernamen, der dem benutzerdefinierte Domänenname des Diensts entspricht. Wenn beispielsweise der benutzerdefinierte Domänenname __contoso__ **.com** lautet, sollte das Zertifikat von der Zertifizierungsstelle den Antragstellernamen **.contoso.com** oder __www__ **.contoso.com** haben.
 
     >[!NOTE]
-    >Für die Domäne __cloudapp__ **.net** können Sie kein SSL-Zertifikat von einer Zertifizierungsstelle beziehen.
+    >Für die Domäne __cloudapp__ **.net** können Sie kein SSL-/TLS-Zertifikat von einer Zertifizierungsstelle beziehen.
 
 -   Das Zertifikat muss mindestens eine 2.048-Bit-Verschlüsselung aufweisen.
 
 Das HTTP-Protokoll ist unsicher und anfällig für Lauschangriffe. Daten, die über HTTP übertragen werden, werden als Klartext vom Webbrowser an den Webserver oder zwischen anderen Endpunkten übertragen. Dies bedeutet, dass Angreifer sensible Daten, z.B. Kreditkartendaten und Anmeldedaten für Konten, die über HTTP übermittelt werden, abfangen und anzeigen können. Wenn die Daten mithilfe von HTTPS über einen Browser gesendet oder bereitgestellt werden, wird mit SSL sichergestellt, dass vertrauliche Informationen verschlüsselt sind und nicht abgefangen werden können.
 
-Weitere Informationen zur Verwendung von SSL-Zertifikaten finden Sie unter [Konfigurieren von SSL für Azure-Anwendungen](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md).
+Weitere Informationen zur Verwendung von SSL-/TLS-Zertifikaten finden Sie unter [Konfigurieren von TLS für eine Anwendung in Azure](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md).
 
 ## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>Verwenden von Netzwerkisolation und -sicherheit mit Azure Service Fabric
 Richten Sie als Beispiel einen sicheren Cluster mit 3 Knoten mithilfe der [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/template-syntax.md) ein. Sie steuern den ein- und ausgehenden Netzwerkdatenverkehr mithilfe der Vorlage und von Netzwerksicherheitsgruppen.

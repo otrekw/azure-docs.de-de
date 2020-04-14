@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 55a4aa066739203f8697fb4c9083869f5a05ef4f
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 47502e693b897a57517d267924cc6c2752c10440
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77603378"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585322"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center – Handbuch zur Problembehandlung
 
 Dieses Handbuch ist für IT-Experten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, in deren Organisation Azure Security Center verwendet wird und die Security Center-Probleme lösen müssen.
 
-Security Center verwendet den Microsoft Monitoring Agent zum Erfassen und Speichern von Daten. Weitere Informationen finden Sie unter [Azure Security Center – Plattformmigration](security-center-platform-migration.md). Die Informationen in diesem Artikel stellen Security Center-Funktionen nach dem Umstieg auf den Microsoft Monitoring Agent vor.
+Security Center verwendet den Log Analytics-Agent zum Erfassen und Speichern von Daten. Weitere Informationen finden Sie unter [Azure Security Center – Plattformmigration](security-center-platform-migration.md). Die Informationen in diesem Artikel stellen Security Center-Funktionen nach dem Umstieg auf den Log Analytics-Agent vor.
 
 ## <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
 
@@ -38,8 +38,6 @@ Abhängig von den Warnungstypen können Kunden mithilfe der folgenden Ressourcen
 * AuditD in Linux
 * Die Azure-Aktivitätsprotokolle und die aktivierten Diagnoseprotokolle für die angegriffene Ressource.
 
-Für einige Warnungen ist auch eine Zuverlässigkeitsbewertung verfügbar. Die Zuverlässigkeitsbewertung im **Security Center** kann Ihrem Team dabei helfen, Warnungen auszusortieren und zu priorisieren. **Security Center** wendet automatisch branchenbewährte Methoden, intelligente Algorithmen und von Analysten eingesetzte Prozesse an, um zu bestimmen, ob eine Bedrohung legitim ist, und bietet aussagekräftige Einblicke in Form einer Zuverlässigkeitsbewertung.
-
 Kunden können Feedback zur Beschreibung und Relevanz der Warnung teilen. Navigieren Sie zur Warnung selbst, wählen Sie die Schaltfläche **Waren diese Informationen hilfreich?** aus, wählen Sie den Grund aus, und geben Sie einen Kommentar ein, um das Feedback zu erläutern. Dieser Feedbackkanal wird kontinuierlich überwacht, um unsere Warnungen zu verbessern.
 
 ## <a name="audit-log"></a>Überwachungsprotokoll
@@ -54,49 +52,49 @@ Der Großteil der Problembehandlung in Security Center erfolgt, indem zunächst 
 
 Das Überwachungsprotokoll enthält alle Schreibvorgänge (PUT, POST, DELETE), die für Ihre Ressourcen durchgeführt werden, aber keine Lesevorgänge (GET).
 
-## <a name="microsoft-monitoring-agent"></a>Microsoft Monitoring Agent
+## <a name="log-analytics-agent"></a>Log Analytics-Agent
 
-Security Center verwendet Microsoft Monitoring Agent, um sicherheitsrelevante Daten von Ihren virtuellen Azure-Computern zu sammeln. Dieser Agent wird auch vom Azure Monitor-Dienst verwendet. Nachdem die Datensammlung aktiviert und der Agent auf dem Zielcomputer richtig installiert wurde, sollte dieser Prozess ausgeführt werden:
+Security Center verwendet den Log Analytics-Agent, um sicherheitsrelevante Daten von Ihren virtuellen Azure-Computern zu sammeln. Dieser Agent wird auch vom Azure Monitor-Dienst verwendet. Nachdem die Datensammlung aktiviert und der Agent auf dem Zielcomputer richtig installiert wurde, sollte dieser Prozess ausgeführt werden:
 
 * HealthService.exe
 
-Wenn Sie die Dienstverwaltungskonsole („services.msc“) öffnen, sehen Sie auch den Microsoft Monitoring Agent als ausgeführten Dienst, wie unten dargestellt:
+Wenn Sie die Dienstverwaltungskonsole („services.msc“) öffnen, sehen Sie auch den Log Analytics-Agent als ausgeführten Dienst, wie unten dargestellt:
 
 ![Dienste](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig5.png)
 
-Wenn Sie erfahren möchten, welche Version des Agents Sie verwenden, öffnen Sie den **Task-Manager**, und suchen Sie auf der Registerkarte **Prozesse** den **Microsoft Monitoring Agent-Dienst**. Klicken Sie mit der rechten Maustaste darauf, und klicken Sie dann auf **Eigenschaften**. Auf der Registerkarte **Details** wird die Dateiversion wie unten dargestellt angezeigt:
+Wenn Sie erfahren möchten, welche Version des Agents Sie verwenden, öffnen Sie den **Task-Manager**, und suchen Sie auf der Registerkarte **Prozesse** den **Log Analytics-Agent-Dienst**. Klicken Sie mit der rechten Maustaste darauf, und klicken Sie dann auf **Eigenschaften**. Auf der Registerkarte **Details** wird die Dateiversion wie unten dargestellt angezeigt:
 
 ![Datei](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
-## <a name="microsoft-monitoring-agent-installation-scenarios"></a>Installationsszenarien für den Microsoft Monitoring Agent
+## <a name="log-analytics-agent-installation-scenarios"></a>Szenarien für die Installation des Log Analytics-Agents
 
-Es gibt zwei Installationsszenarien, die bei der Installation des Microsoft Monitoring Agents auf Ihrem Computer zu unterschiedlichen Ergebnissen führen können. Folgende Szenarien werden unterstützt:
+Es gibt zwei Installationsszenarien, die bei der Installation des Log Analytics-Agents auf Ihrem Computer zu unterschiedlichen Ergebnissen führen können. Folgende Szenarien werden unterstützt:
 
 * **Der Agent wird automatisch von Security Center installiert:** In diesem Szenario können Sie die Warnungen an beiden Orten einsehen – im Security Center und in der Protokollsuche. Sie erhalten E-Mail-Benachrichtigungen an die E-Mail-Adresse, die in der Sicherheitsrichtlinie für das Abonnement, zu dem die Ressource gehört, konfiguriert wurde.
 
-* **Der Agent wird manuell auf einem virtuellen Computer in Azure installiert**: Wenn Sie in diesem Szenario Agents verwenden, die vor Februar 2017 manuell heruntergeladen und installiert wurden, können Sie die Warnungen nur dann im Security Center-Portal anzeigen, wenn Sie das Abonnement filtern, zu dem der Arbeitsbereich gehört. Wenn Sie das Abonnement herausfiltern, zu dem die Ressource gehört, können Sie keine Warnungen anzeigen. Sie erhalten E-Mail-Benachrichtigungen an die E-Mail-Adresse, die in der Sicherheitsrichtlinie für das Abonnement, zu dem der Arbeitsbereich gehört, konfiguriert wurde.
+* **Der Agent wird manuell auf einem virtuellen Computer in Azure installiert**: Wenn Sie in diesem Szenario Agents verwenden, die vor Februar 2017 manuell heruntergeladen und installiert wurden, können Sie die Warnungen nur dann im Security Center-Portal anzeigen, wenn Sie das Abonnement filtern, zu dem der Arbeitsbereich gehört. Wenn Sie das Abonnement herausfiltern, zu dem die Ressource gehört, werden keine Warnungen angezeigt. Sie erhalten E-Mail-Benachrichtigungen an die E-Mail-Adresse, die in der Sicherheitsrichtlinie für das Abonnement, zu dem der Arbeitsbereich gehört, konfiguriert wurde.
 
 > [!NOTE]
 > Um das Verhalten im zweiten Szenario zu vermeiden, müssen Sie die neueste Version des Agents herunterladen.
 
-## Integritätsprobleme des Überwachungs-Agents <a name="mon-agent"></a>
+## <a name="monitoring-agent-health-issues"></a>Integritätsprobleme des Überwachungs-Agents <a name="mon-agent"></a>
 
 Mit der **Zustandsüberwachung** wird der Grund dafür definiert, warum Security Center keine erfolgreiche Überwachung von VMs und Computern durchführen kann, die für die automatische Bereitstellung initialisiert wurden. In der folgenden Tabelle sind die Werte, Beschreibungen und Lösungsschritte der **Zustandsüberwachung** enthalten.
 
 | Zustandsüberwachung | BESCHREIBUNG | Lösungsschritte |
 |---|---|---|
-| Agent-Installation ausstehend | Die Microsoft Monitoring Agent-Installation ist noch nicht abgeschlossen.  Die Installation kann einige Stunden dauern. | Warten Sie, bis die automatische Installation abgeschlossen wurde. |
-| Energiezustand „Aus“ | Die VM wurde beendet.  Der Microsoft Monitoring Agent kann nur auf einer VM installiert werden, die ausgeführt wird. | Starten Sie den virtuellen Computer neu. |
-| Azure-VM-Agent fehlt oder ist ungültig | Der Microsoft Monitoring Agent wurde noch nicht installiert.  Damit die Erweiterung von Security Center installiert werden kann, ist ein gültiger Azure-VM-Agent erforderlich. | Führen Sie für den Azure-VM-Agent auf der VM die Installation, Neuinstallation oder ein Upgrade durch. |
-| VM ist nicht zur Installation bereit  | Der Microsoft Monitoring Agent ist noch nicht installiert, da die VM nicht für die Installation bereit ist. Die VM ist aufgrund eines Problems mit dem VM-Agent oder der VM-Bereitstellung noch nicht für die Installation bereit. | Überprüfen Sie den Status der VM. Kehren Sie im Portal zu **Virtuelle Computer** zurück, und wählen Sie die VM aus, um Statusinformationen zu erhalten. |
-|Fehler bei der Installation – allgemeiner Fehler | Der Microsoft Monitoring Agent wurde installiert, aber es ist ein Fehler aufgetreten. | [Führen Sie die Installation der Erweiterung manuell durch](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension), oder deinstallieren Sie die Erweiterung, damit Security Center versucht, die Installation erneut zu starten. |
-| Fehler bei der Installation – lokaler Agent ist bereits installiert | Bei der Microsoft Monitoring Agent-Installation ist ein Fehler aufgetreten. Von Security Center wurde ein lokaler Agent (Log Analytics oder System Center Operations Manager) identifiziert, der auf dem virtuellen Computer bereits installiert ist. Zur Vermeidung einer Multi-Homing-Konfiguration, wenn die VM an zwei separate Arbeitsbereiche meldet, wurde die Microsoft Monitoring Agent-Installation beendet. | Es gibt hierfür zwei Lösungsmöglichkeiten: [manuelle Installation der Erweiterung](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) und Herstellung einer Verbindung mit Ihrem gewünschten Arbeitsbereich. Oder Sie legen Ihren gewünschten Arbeitsbereich als Standardarbeitsbereich fest und aktivieren die automatische Bereitstellung des Agents.  Siehe [Aktivieren der automatischen Bereitstellung](security-center-enable-data-collection.md). |
-| Agent kann keine Verbindung mit dem Arbeitsbereich herstellen | Der Microsoft Monitoring Agent wurde installiert, aber es ist ein Fehler im Zusammenhang mit der Netzwerkkonnektivität aufgetreten.  Stellen Sie sicher, dass Internetzugriff besteht oder dass für den Agent ein gültiger HTTP-Proxy konfiguriert wurde. | Siehe die Netzwerkanforderungen für den Überwachungs-Agent. |
-| Verbindung des Agents mit fehlendem oder unbekanntem Arbeitsbereich | Security Center hat erkannt, dass der auf der VM installierte Microsoft Monitoring Agent mit einem Arbeitsbereich verbunden ist, für den er keine Zugriffsberechtigung besitzt. | Dies kann in zwei Fällen vorkommen. Der Arbeitsbereich wurde gelöscht und ist nicht mehr vorhanden. Installieren Sie den Agent mit dem richtigen Arbeitsbereich neu, oder deinstallieren Sie den Agent, und lassen Sie für Security Center die Durchführung der automatischen Installation für die Bereitstellung zu. Im zweiten Fall ist der Arbeitsbereich Teil eines Abonnements, für das Security Center keine Berechtigungen besitzt. Für Security Center sind Abonnements erforderlich, um für die Microsoft-Sicherheitsressourcenanbieter den Zugriff zu ermöglichen. Registrieren Sie das Abonnement beim Microsoft-Sicherheitsressourcenanbieter, um dies zu aktivieren. Verwenden Sie hierfür die API, PowerShell oder das Portal, oder filtern Sie im Dashboard **Übersicht** von Security Center einfach nach dem Abonnement. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). |
+| Agent-Installation ausstehend | Die Installation des Log Analytics-Agents wird aktuell noch ausgeführt.  Die Installation kann einige Stunden dauern. | Warten Sie, bis die automatische Installation abgeschlossen wurde. |
+| Energiezustand „Aus“ | Die VM wurde beendet.  Der Log Analytics-Agent kann nur auf einer VM installiert werden, die ausgeführt wird. | Starten Sie den virtuellen Computer neu. |
+| Azure-VM-Agent fehlt oder ist ungültig | Der Log Analytics-Agent ist noch nicht installiert.  Damit die Erweiterung von Security Center installiert werden kann, ist ein gültiger Azure-VM-Agent erforderlich. | Führen Sie für den Azure-VM-Agent auf der VM die Installation, Neuinstallation oder ein Upgrade durch. |
+| VM ist nicht zur Installation bereit  | Der Log Analytics-Agent ist noch nicht installiert, weil die VM nicht für die Installation bereit ist. Die VM ist aufgrund eines Problems mit dem VM-Agent oder der VM-Bereitstellung noch nicht für die Installation bereit. | Überprüfen Sie den Status der VM. Kehren Sie im Portal zu **Virtuelle Computer** zurück, und wählen Sie die VM aus, um Statusinformationen zu erhalten. |
+|Fehler bei der Installation – allgemeiner Fehler | Der Log Analytics-Agent wurde installiert, aber es ist ein Fehler aufgetreten. | [Führen Sie die Installation der Erweiterung manuell durch](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension), oder deinstallieren Sie die Erweiterung, damit Security Center versucht, die Installation erneut zu starten. |
+| Fehler bei der Installation – lokaler Agent ist bereits installiert | Fehler beim Installieren des Log Analytics-Agents. Von Security Center wurde ein lokaler Agent (Log Analytics oder System Center Operations Manager) identifiziert, der auf dem virtuellen Computer bereits installiert ist. Zur Vermeidung einer Multi-Homing-Konfiguration, bei der die VM an zwei separate Arbeitsbereiche berichtet, wurde die Installation des Log Analytics-Agents beendet. | Es gibt hierfür zwei Lösungsmöglichkeiten: [manuelle Installation der Erweiterung](../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) und Herstellung einer Verbindung mit Ihrem gewünschten Arbeitsbereich. Oder Sie legen Ihren gewünschten Arbeitsbereich als Standardarbeitsbereich fest und aktivieren die automatische Bereitstellung des Agents.  Siehe [Aktivieren der automatischen Bereitstellung](security-center-enable-data-collection.md). |
+| Agent kann keine Verbindung mit dem Arbeitsbereich herstellen | Der Log Analytics-Agent wurde installiert, aber es ist ein Fehler im Zusammenhang mit der Netzwerkkonnektivität aufgetreten.  Stellen Sie sicher, dass Internetzugriff besteht oder dass für den Agent ein gültiger HTTP-Proxy konfiguriert wurde. | Siehe die Netzwerkanforderungen für den Überwachungs-Agent. |
+| Verbindung des Agents mit fehlendem oder unbekanntem Arbeitsbereich | Security Center hat erkannt, dass der auf der VM installierte Log Analytics-Agent mit einem Arbeitsbereich verbunden ist, für den er keine Zugriffsberechtigung besitzt. | Dies kann in zwei Fällen vorkommen. Der Arbeitsbereich wurde gelöscht und ist nicht mehr vorhanden. Installieren Sie den Agent mit dem richtigen Arbeitsbereich neu, oder deinstallieren Sie den Agent, und lassen Sie für Security Center die Durchführung der automatischen Installation für die Bereitstellung zu. Im zweiten Fall ist der Arbeitsbereich Teil eines Abonnements, für das Security Center keine Berechtigungen besitzt. Für Security Center sind Abonnements erforderlich, um für die Microsoft-Sicherheitsressourcenanbieter den Zugriff zu ermöglichen. Registrieren Sie das Abonnement beim Microsoft-Sicherheitsressourcenanbieter, um dies zu aktivieren. Verwenden Sie hierfür die API, PowerShell oder das Portal, oder filtern Sie im Dashboard **Übersicht** von Security Center einfach nach dem Abonnement. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). |
 | Agent reagiert nicht oder ID fehlt | Security Center kann die von der VM gescannten Sicherheitsdaten nicht abrufen, obwohl der Agent installiert ist. | Der Agent meldet keine Daten, einschließlich Heartbeat. Unter Umständen ist der Agent beschädigt, oder der Datenverkehr ist aus einem bestimmten Grund blockiert. Es kann auch sein, dass der Agent zwar Daten meldet, aber eine Azure-Ressourcen-ID fehlt, sodass die Daten nicht der Azure-VM zugeordnet werden können. Informationen zur Problembehandlung für Linux finden Sie unter [Troubleshooting Guide for Log Analytics Agent for Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal) (Leitfaden zur Problembehandlung für den Log Analytics-Agent für Linux). Informationen zur Problembehandlung für Windows finden Sie unter [Troubleshooting Windows Virtual Machines](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines) (Problembehandlung für virtuelle Windows-Computer). |
-| Agent nicht installiert | Die Datensammlung ist deaktiviert. | Aktivieren Sie die Datensammlung in der Sicherheitsrichtlinie, oder installieren Sie den Microsoft Monitoring Agent manuell. |
+| Agent nicht installiert | Die Datensammlung ist deaktiviert. | Aktivieren Sie die Datensammlung in der Sicherheitsrichtlinie, oder installieren Sie den Log Analytics-Agent manuell. |
 
-## Beheben von Problemen mit den Netzwerkanforderungen für den Überwachungs-Agent <a name="mon-network-req"></a>
+## <a name="troubleshooting-monitoring-agent-network-requirements"></a>Beheben von Problemen mit den Netzwerkanforderungen für den Überwachungs-Agent <a name="mon-network-req"></a>
 
 Damit Agents eine Verbindung mit Security Center herstellen und sich bei diesem registrieren können, müssen sie Zugriff auf Netzwerkressourcen, einschließlich der Portnummern und Domänen-URLs, haben.
 
@@ -150,8 +148,6 @@ In diesem Dokument haben Sie erfahren, wie Sie Sicherheitsrichtlinien in Azure S
 * [Warnungsüberprüfung in Azure Security Center](security-center-alert-validation.md)
 * [Bereitstellen von Sicherheitskontaktinformationen in Azure Security Center](security-center-provide-security-contact-details.md)
 * [Behandeln von Sicherheitsincidents in Azure Security Center](security-center-incident.md)
-* [Zuverlässigkeitsbewertung für Warnungen](security-center-secure-score.md)
-* [Untersuchen von Vorfällen und Warnungen in Azure Security Center](security-center-investigation.md)
 * [Azure Security Center-Erkennungsfunktionen](security-center-detection-capabilities.md)
 * [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md) : Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
 * [Azure Security Center – Häufig gestellte Fragen](faq-general.md) : Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.

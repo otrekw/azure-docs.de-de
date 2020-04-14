@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 03/31/2020
 ms.author: spelluru
-ms.openlocfilehash: 5e013011f81542aa279ba9276a6a1aac01eb9e41
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.openlocfilehash: 224526efc2152e0b788c5cbc7f3bd60bb3363c1a
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77443187"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545707"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Verbinden des Netzwerks Ihres Labs mit einem virtuellen Peernetzwerk in Azure Lab Services 
 Dieser Artikel bietet Informationen dazu, wie Sie eine Peerverbindung zwischen dem Netzwerk Ihres Labs und einem anderen Netzwerk herstellen. 
@@ -33,8 +33,13 @@ In einigen Szenarien, wie beispielsweise den folgenden, müssen Sie das Netzwerk
 
 Einige lokale Netzwerke sind über [ExpressRoute](../../expressroute/expressroute-introduction.md) oder ein [Gateway für virtuelle Netzwerke](../../vpn-gateway/vpn-gateway-about-vpngateways.md) mit Azure Virtual Network verbunden. Diese Dienste müssen außerhalb von Azure Lab Services eingerichtet werden. Weitere Informationen zum Herstellen einer Verbindung zwischen einem lokalen Netzwerk und Azure über ExpressRoute finden Sie unter [Übersicht über ExpressRoute](../../expressroute/expressroute-introduction.md). Für die lokale Verbindung über ein Gateway für virtuelle Netzwerke müssen sich das Gateway, das angegebene virtuelle Netzwerk und das Labkonto in der gleichen Region befinden.
 
+> [!NOTE]
+> Beim Erstellen eines Azure Virtual Network, für das Peering mit einem Lab-Konto verwendet wird, ist es wichtig zu verstehen, wie sich die Region des virtuellen Netzwerks auf den Ort der Erstellung von Classroom-Labs auswirkt.  Weitere Informationen finden Sie im Administratorleitfaden im Abschnitt zu [Regionen/Speicherorten](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#regionslocations).
+
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurieren zum Zeitpunkt der Labkontoerstellung
 Während Sie ein neues Labkonto erstellen, können Sie ein vorhandenes virtuelles Netzwerk auswählen, das in der Dropdownliste **Virtuelles Peernetzwerk** auf der Registerkarte **Erweitert** angezeigt wird. Das ausgewählte virtuelle Netzwerk ist (mittels Peering) mit Labs verbunden, die im Labkonto erstellt wurden. Alle virtuellen Computer in Labs, die nach Durchführen dieser Änderung erstellt werden, haben Zugriff auf die Ressourcen im virtuellen Peernetzwerk. 
+
+Es gibt auch eine Bereitstellung, um einen **Adressbereich** der virtuellen Computer für die Labs bereitzustellen. Wenn der Adressbereich bereitgestellt wird, werden alle virtuellen Computer in den Labs unter dem Lab-Konto in diesem Adressbereich erstellt. Der Adressbereich muss in CIDR-Notation (z. B. 10.20.0.0/20) angegeben werden und darf sich nicht mit vorhandenen Adressbereichen überschneiden. Wenn Sie einen Adressbereich bereitstellen, ist es wichtig, die Anzahl der virtuellen Computer zu berücksichtigen, die in den Labs erstellt werden, und einen Adressbereich bereitzustellen, der dies ermöglicht. Für einen angegebenen Bereich wird die Anzahl der Labs angezeigt, die er aufnehmen kann.
 
 ![Auswählen des virtuellen Netzwerks für das Peering](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer.png)
 

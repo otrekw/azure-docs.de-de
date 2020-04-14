@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: cfd4c113391f2ead238f5288c255b599e91b7e3a
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 4517f85fae278bd8bc15a9586d9dc0202e7dfe56
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201457"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475226"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 
@@ -33,7 +33,7 @@ Die Azure Data Lake Storage-Ausgabe aus Stream Analytics ist zurzeit nicht in de
 
 In der folgenden Tabelle sind Eigenschaftsnamen und deren Beschreibungen für die Konfiguration Ihrer Data Lake Storage Gen1-Ausgabe aufgeführt.   
 
-| Eigenschaftenname | Beschreibung |
+| Eigenschaftenname | BESCHREIBUNG |
 | --- | --- |
 | Ausgabealias | Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an Data Lake Store weiterzuleiten. |
 | Subscription | Das Abonnement, das Ihr Azure Data Lake Storage-Konto enthält. |
@@ -44,7 +44,7 @@ In der folgenden Tabelle sind Eigenschaftsnamen und deren Beschreibungen für di
 | Ereignisserialisierungsformat | Das Serialisierungsformat für Ausgabedaten. Es werden JSON, CSV und Avro unterstützt.|
 | Codieren | Bei Verwendung des CSV- oder JSON-Formats muss eine Codierung angegeben werden. UTF-8 ist derzeit das einzige unterstützte Codierungsformat.|
 | Trennzeichen | Gilt nur für die CSV-Serialisierung. Stream Analytics unterstützt eine Reihe von üblichen Trennzeichen zum Serialisieren der CSV-Daten. Unterstützte Werte sind Komma, Semikolon, Leerzeichen, Tabstopp und senkrechter Strich.|
-| Format | Gilt nur für die JSON-Serialisierung. **Separate Zeile** gibt an, dass die Ausgabe so formatiert wird, dass jedes JSON-Objekt in einer neuen Zeile enthalten ist. **Array** gibt an, dass die Ausgabe als Array aus JSON-Objekten formatiert wird. Dieses Array wird nur geschlossen, wenn der Auftrag beendet wird oder Stream Analytics mit dem nächsten Zeitfenster fortfährt. Im Allgemeinen ist es besser, in separaten Zeilen geschriebenen JSON-Code zu verwenden, da er keine spezielle Behandlung erfordert, während noch in die Ausgabedatei geschrieben wird.|
+| Format | Gilt nur für die JSON-Serialisierung. **Separate Zeile** gibt an, dass die Ausgabe so formatiert wird, dass jedes JSON-Objekt in einer neuen Zeile enthalten ist. Wenn Sie **Separate Zeile** auswählen, wird der JSON-Code objektweise gelesen. Der gesamte Inhalt an sich wäre kein gültiger JSON-Code.  **Array** gibt an, dass die Ausgabe als Array aus JSON-Objekten formatiert wird. Dieses Array wird nur geschlossen, wenn der Auftrag beendet wird oder Stream Analytics mit dem nächsten Zeitfenster fortfährt. Im Allgemeinen ist es besser, in separaten Zeilen geschriebenen JSON-Code zu verwenden, da er keine spezielle Behandlung erfordert, während noch in die Ausgabedatei geschrieben wird.|
 | Authentifizierungsmodus | Sie können den Zugriff auf Ihr Data Lake Storage-Konto autorisieren, indem Sie eine [verwaltete Identität](stream-analytics-managed-identities-adls.md) oder ein Benutzertoken verwenden. Nachdem Sie Zugriff gewährt haben, können Sie ihn auch wiederrufen, indem Sie das Kennwort für das Benutzerkonto ändern, die Data Lake Storage-Ausgabe für diesen Auftrag löschen oder den Stream Analytics-Auftrag löschen. |
 
 ## <a name="sql-database"></a>SQL-Datenbank
@@ -88,7 +88,7 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 |Maximale Zeit (nur Parquet)|Die maximale Wartezeit pro Batch. Nach Ablauf dieser Zeit wird der Batch auch dann in die Ausgabe geschrieben, wenn die Anforderung der Mindestanzahl von Zeilen nicht erfüllt ist. Der aktuelle Standardwert beträgt 1 Minute und der zulässige Höchstwert 2 Stunden. Wenn Ihre Blobausgabe eine Pfadmusterhäufigkeit aufweist, kann die Wartezeit nicht über dem Partitionszeitbereich liegen.|
 | Codieren    | Bei Verwendung des CSV- oder JSON-Formats muss eine Codierung angegeben werden. UTF-8 ist derzeit das einzige unterstützte Codierungsformat. |
 | Trennzeichen   | Gilt nur für die CSV-Serialisierung. Stream Analytics unterstützt eine Reihe von üblichen Trennzeichen zum Serialisieren der CSV-Daten. Unterstützte Werte sind Komma, Semikolon, Leerzeichen, Tabstopp und senkrechter Strich. |
-| Format      | Gilt nur für die JSON-Serialisierung. **Separate Zeile** gibt an, dass die Ausgabe so formatiert wird, dass jedes JSON-Objekt in einer neuen Zeile enthalten ist. **Array** gibt an, dass die Ausgabe als Array aus JSON-Objekten formatiert wird. Dieses Array wird nur geschlossen, wenn der Auftrag beendet wird oder Stream Analytics mit dem nächsten Zeitfenster fortfährt. Im Allgemeinen ist es besser, in separaten Zeilen geschriebenen JSON-Code zu verwenden, da er keine spezielle Behandlung erfordert, während noch in die Ausgabedatei geschrieben wird. |
+| Format      | Gilt nur für die JSON-Serialisierung. **Separate Zeile** gibt an, dass die Ausgabe so formatiert wird, dass jedes JSON-Objekt in einer neuen Zeile enthalten ist. Wenn Sie **Separate Zeile** auswählen, wird der JSON-Code objektweise gelesen. Der gesamte Inhalt an sich wäre kein gültiger JSON-Code. **Array** gibt an, dass die Ausgabe als Array aus JSON-Objekten formatiert wird. Dieses Array wird nur geschlossen, wenn der Auftrag beendet wird oder Stream Analytics mit dem nächsten Zeitfenster fortfährt. Im Allgemeinen ist es besser, in separaten Zeilen geschriebenen JSON-Code zu verwenden, da er keine spezielle Behandlung erfordert, während noch in die Ausgabedatei geschrieben wird. |
 
 Wenn Sie Blobspeicher als Ausgabe verwenden, wird in den folgenden Fällen eine neue Datei im Blob erstellt:
 
@@ -118,7 +118,7 @@ Sie benötigen einige Parameter, um Datenströme von Event Hubs als Ausgabe zu k
 | Ereignisserialisierungsformat | Das Serialisierungsformat für Ausgabedaten. Es werden JSON, CSV und Avro unterstützt. |
 | Codieren | Bei CSV und JSON ist UTF-8 gegenwärtig das einzige unterstützte Codierungsformat. |
 | Trennzeichen | Gilt nur für die CSV-Serialisierung. Stream Analytics unterstützt eine Reihe von üblichen Trennzeichen zum Serialisieren der Daten im CSV-Format. Unterstützte Werte sind Komma, Semikolon, Leerzeichen, Tabstopp und senkrechter Strich. |
-| Format | Gilt nur für die JSON-Serialisierung. **Separate Zeile** gibt an, dass die Ausgabe so formatiert wird, dass jedes JSON-Objekt in einer neuen Zeile enthalten ist. **Array** gibt an, dass die Ausgabe als Array aus JSON-Objekten formatiert wird.  |
+| Format | Gilt nur für die JSON-Serialisierung. **Separate Zeile** gibt an, dass die Ausgabe so formatiert wird, dass jedes JSON-Objekt in einer neuen Zeile enthalten ist. Wenn Sie **Separate Zeile** auswählen, wird der JSON-Code objektweise gelesen. Der gesamte Inhalt an sich wäre kein gültiger JSON-Code. **Array** gibt an, dass die Ausgabe als Array aus JSON-Objekten formatiert wird.  |
 | Eigenschaftenspalten | Optional. Durch Komma getrennte Spalten, die anstelle der Nutzlast als Benutzereigenschaften der ausgehenden Nachricht angefügt werden müssen. Weitere Informationen zu diesem Feature finden Sie im Abschnitt [Benutzerdefinierte Metadateneigenschaften für die Ausgabe](#custom-metadata-properties-for-output). |
 
 ## <a name="power-bi"></a>Power BI
@@ -176,19 +176,19 @@ Datetime | String | String |  Datetime | String
 
 ## <a name="table-storage"></a>Table Storage
 
-[Azure-Tabellenspeicher](../storage/common/storage-introduction.md) bietet einen hoch verfügbaren, in hohem Maße skalierbaren Speicher, sodass eine Anwendung automatisch an die Bedürfnisse der Benutzer angepasst werden kann. Tabellenspeicher ist Microsofts NoSQL-Schlüssel-/Attributspeicher, der für strukturierte Daten genutzt werden kann, die weniger Einschränkungen hinsichtlich des Schemas aufweisen. Azure-Tabellenspeicher kann zum Speichern von Daten für dauerhafte Archivierung und effizienten Abruf verwendet werden.
+[Azure-Tabellenspeicher](../storage/common/storage-introduction.md) bietet einen hoch verfügbaren, in hohem Maße skalierbaren Speicher, sodass eine Anwendung automatisch an die Bedürfnisse der Benutzer angepasst werden kann. Tabellenspeicher ist der NoSQL-Schlüssel-/Attributspeicher von Microsoft, der für strukturierte Daten genutzt werden kann, die weniger Einschränkungen hinsichtlich des Schemas aufweisen. Azure-Tabellenspeicher kann zum Speichern von Daten für dauerhafte Archivierung und effizienten Abruf verwendet werden.
 
 Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer Tabellenausgabe.
 
-| Eigenschaftenname | Beschreibung |
+| Eigenschaftenname | BESCHREIBUNG |
 | --- | --- |
 | Ausgabealias |Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diesen Tabellenspeicher weiterzuleiten. |
 | Speicherkonto |Der Name des Speicherkontos, an das Sie die Ausgabe senden. |
 | Speicherkontoschlüssel |Der Zugriffsschlüssel, der dem Speicherkonto zugeordnet ist. |
 | Tabellenname |Der Name der Tabelle. Die Tabelle wird erstellt, wenn sie nicht vorhanden ist. |
 | Partitionsschlüssel |Der Name der Ausgabespalte, die den Partitionsschlüssel enthält. Der Partitionsschlüssel ist ein eindeutiger Bezeichner für die Partition innerhalb einer Tabelle, die den ersten Teil des Primärschlüssels einer Entität bildet. Dabei handelt es sich um einen Zeichenfolgenwert, der bis zu 1 KB groß sein kann. |
-| Zeilenschlüssel |Der Name der Ausgabespalte, die den Zeilenschlüssel enthält. Der Zeilenschlüssel ist ein eindeutiger Bezeichner für eine Entität innerhalb einer Partition. Sie bildet den zweiten Teil des Primärschlüssels einer Entität. Der Zeilenschlüssel ist ein Zeichenfolgenwert, der bis zu 1 KB groß sein kann. |
-| Batchgröße |Dies ist die Anzahl von Datensätzen für einen Batchvorgang. Der Standardwert (100) ist für die meisten Aufträge ausreichend. Weitere Details zur Änderung dieser Einstellung finden Sie in der [TableBatchOperation-Spezifikation](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._table_batch_operation). |
+| Zeilenschlüssel |Der Name der Ausgabespalte, die den Zeilenschlüssel enthält. Der Zeilenschlüssel ist ein eindeutiger Bezeichner für eine Entität innerhalb einer Partition. Er bildet den zweiten Teil des Primärschlüssels einer Entität. Der Zeilenschlüssel ist ein Zeichenfolgenwert, der bis zu 1 KB groß sein kann. |
+| Batchgröße |Dies ist die Anzahl von Datensätzen für einen Batchvorgang. Der Standardwert (100) ist für die meisten Aufträge ausreichend. Weitere Details zur Änderung dieser Einstellung finden Sie in der [TableBatchOperation-Spezifikation](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.tablebatchoperation). |
 
 ## <a name="service-bus-queues"></a>Service Bus-Warteschlangen
 
@@ -198,7 +198,7 @@ Auf [Kompatibilitätsebene 1.2](stream-analytics-compatibility-level.md) verwend
 
 Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer Warteschlangenausgabe.
 
-| Eigenschaftenname | Beschreibung |
+| Eigenschaftenname | BESCHREIBUNG |
 | --- | --- |
 | Ausgabealias |Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diese Service Bus-Warteschlange weiterzuleiten. |
 | Service Bus-Namespace |Ein Container für einen Satz von Nachrichtenentitäten. |
@@ -208,7 +208,7 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 | Ereignisserialisierungsformat |Das Serialisierungsformat für Ausgabedaten. Es werden JSON, CSV und Avro unterstützt. |
 | Codieren |Bei CSV und JSON ist UTF-8 gegenwärtig das einzige unterstützte Codierungsformat. |
 | Trennzeichen |Gilt nur für die CSV-Serialisierung. Stream Analytics unterstützt eine Reihe von üblichen Trennzeichen zum Serialisieren der Daten im CSV-Format. Unterstützte Werte sind Komma, Semikolon, Leerzeichen, Tabstopp und senkrechter Strich. |
-| Format |Gilt nur für den JSON-Typ. **Separate Zeile** gibt an, dass die Ausgabe so formatiert wird, dass jedes JSON-Objekt in einer neuen Zeile enthalten ist. **Array** gibt an, dass die Ausgabe als Array aus JSON-Objekten formatiert wird. |
+| Format |Gilt nur für den JSON-Typ. **Separate Zeile** gibt an, dass die Ausgabe so formatiert wird, dass jedes JSON-Objekt in einer neuen Zeile enthalten ist. Wenn Sie **Separate Zeile** auswählen, wird der JSON-Code objektweise gelesen. Der gesamte Inhalt an sich wäre kein gültiger JSON-Code. **Array** gibt an, dass die Ausgabe als Array aus JSON-Objekten formatiert wird. |
 | Eigenschaftenspalten | Optional. Durch Komma getrennte Spalten, die anstelle der Nutzlast als Benutzereigenschaften der ausgehenden Nachricht angefügt werden müssen. Weitere Informationen zu diesem Feature finden Sie im Abschnitt [Benutzerdefinierte Metadateneigenschaften für die Ausgabe](#custom-metadata-properties-for-output). |
 | Systemeigenschaftsspalten | Optional. Schlüssel-Wert-Paare von Systemeigenschaften und entsprechenden Spaltennamen, die an die ausgehende Nachricht anstatt an die Nutzlast angefügt werden müssen. Weitere Informationen zu diesem Feature finden Sie im Abschnitt [Systemeigenschaften für Service Bus-Warteschlange und Themenausgaben](#system-properties-for-service-bus-queue-and-topic-outputs).  |
 
@@ -245,7 +245,7 @@ Die Azure Cosmos DB-Ausgabe aus Stream Analytics ist zurzeit nicht in den Region
 
 In der folgenden Tabelle werden die Eigenschaften zum Erstellen einer Azure Cosmos DB-Ausgabe beschrieben.
 
-| Eigenschaftenname | Beschreibung |
+| Eigenschaftenname | BESCHREIBUNG |
 | --- | --- |
 | Ausgabealias | Ein Alias zum Verweisen auf diese Ausgabe in Ihrer Stream Analytics-Abfrage. |
 | Senke | Azure Cosmos DB. |
@@ -267,7 +267,7 @@ Azure Stream Analytics ruft Azure Functions über HTTP-Trigger auf. Der Azure Fu
 | --- | --- |
 | Funktionen-App |Der Name der Azure Functions-App. |
 | Funktion |Der Name der Funktion in der Azure Functions-App. |
-| Key |Wenn Sie eine Azure-Funktion aus einem anderen Abonnement verwenden möchten, können Sie dazu den Schlüssel für den Zugriff auf Ihre Funktion angeben. |
+| Schlüssel |Wenn Sie eine Azure-Funktion aus einem anderen Abonnement verwenden möchten, können Sie dazu den Schlüssel für den Zugriff auf Ihre Funktion angeben. |
 | Max Batch Size |Eine Eigenschaft, mit der Sie die maximale Größe für jeden Ausgabebatch festlegen können, der an Ihre Azure-Funktion gesendet wird. Die Eingabeeinheit ist Bytes. Standardmäßig ist dieser Wert auf 262,144 Bytes (256 KB) festgelegt. |
 | Max Batch Count  |Eine Eigenschaft, mit der Sie die maximale Anzahl von Ereignissen in jedem Batch angeben können, die an Azure Functions gesendet werden. Der Standardwert ist 100. |
 
@@ -342,18 +342,18 @@ Für Azure Stream Analytics werden Batches mit variabler Größe verwendet, um E
 
 In der folgenden Tabelle sind einige Aspekte von Ausgabebatches beschrieben:
 
-| Ausgabetyp | Maximale Nachrichtengröße | Optimierung der Batchgröße |
+| Ausgabetyp |    Maximale Nachrichtengröße | Optimierung der Batchgröße |
 | :--- | :--- | :--- |
 | Azure Data Lake Store | Siehe [Grenzwerte für Data Lake Store](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits). | Verwenden Sie bis zu 4 MB pro Schreibvorgang. |
 | Azure SQL-Datenbank | Konfigurierbar mithilfe der maximal zulässigen Batchanzahl. Standardmäßig höchstens 10.000 Zeilen und mindestens 100 Zeilen bei einem einzelnen Masseneinfügevorgang.<br />Siehe [Einschränkungen für Azure SQL-Datenbank](../sql-database/sql-database-resource-limits.md). |  Jeder Batch wird zunächst mit maximaler Batchanzahl als Massenvorgang eingefügt. Der Batch wird in der Mitte (bis zur minimalen Batchanzahl) basierend auf wiederholbaren Fehlern aus SQL unterteilt. |
 | Azure Blob Storage | Siehe [Azure Storage-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). | Die maximale Größe von Blobblöcken beträgt 4 MB.<br />Die maximale Anzahl von Blobblöcken beträgt 50.000. |
-| Azure Event Hubs  | 256KB oder 1MB pro Nachricht. <br />Siehe [Event Hubs-Grenzwerte](../event-hubs/event-hubs-quotas.md). |  Wenn die E/A-Partitionierung nicht ausgerichtet ist, wird jedes Ereignis einzeln in `EventData` verpackt und als Batch gesendet, dessen Größe bis zur maximalen Nachrichtengröße reichen kann. Dies geschieht auch, wenn [benutzerdefinierte Metadateneigenschaften](#custom-metadata-properties-for-output) verwendet werden. <br /><br />  Wenn die E/A-Partitionierung ausgerichtet ist, werden mehrere Ereignisse bis zur maximalen Nachrichtengröße in eine einzelne `EventData`-Instanz verpackt und gesendet. |
+| Azure Event Hubs    | 256KB oder 1MB pro Nachricht. <br />Siehe [Event Hubs-Grenzwerte](../event-hubs/event-hubs-quotas.md). |    Wenn die E/A-Partitionierung nicht ausgerichtet ist, wird jedes Ereignis einzeln in `EventData` verpackt und als Batch gesendet, dessen Größe bis zur maximalen Nachrichtengröße reichen kann. Dies geschieht auch, wenn [benutzerdefinierte Metadateneigenschaften](#custom-metadata-properties-for-output) verwendet werden. <br /><br />  Wenn die E/A-Partitionierung ausgerichtet ist, werden mehrere Ereignisse bis zur maximalen Nachrichtengröße in eine einzelne `EventData`-Instanz verpackt und gesendet.    |
 | Power BI | Siehe [Einschränkungen für Power BI-REST-API](https://msdn.microsoft.com/library/dn950053.aspx). |
 | Azure-Tabellenspeicher | Siehe [Azure Storage-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). | Der Standardwert ist 100 Entitäten pro Einzeltransaktion. Sie können bei Bedarf einen niedrigeren Wert konfigurieren. |
-| Azure Service Bus-Warteschlange   | 256KB pro Nachricht für den Standard-Tarif, 1MB für den Premium-Tarif.<br /> Siehe [Service Bus-Grenzwerte](../service-bus-messaging/service-bus-quotas.md). | Verwenden Sie ein einzelnes Ereignis pro Nachricht. |
+| Azure Service Bus-Warteschlange    | 256KB pro Nachricht für den Standard-Tarif, 1MB für den Premium-Tarif.<br /> Siehe [Service Bus-Grenzwerte](../service-bus-messaging/service-bus-quotas.md). | Verwenden Sie ein einzelnes Ereignis pro Nachricht. |
 | Azure Service Bus-Thema | 256KB pro Nachricht für den Standard-Tarif, 1MB für den Premium-Tarif.<br /> Siehe [Service Bus-Grenzwerte](../service-bus-messaging/service-bus-quotas.md). | Verwenden Sie ein einzelnes Ereignis pro Nachricht. |
-| Azure Cosmos DB   | Siehe [Einschränkungen für Azure Cosmos DB](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cosmos-db-limits). | Die Batchgröße und Schreibfrequenz werden basierend auf den Azure Cosmos DB-Antworten dynamisch angepasst. <br /> Es gelten keine vordefinierten Stream Analytics-Einschränkungen. |
-| Azure-Funktionen   | | Die Standardbatchgröße beträgt 262.144 Bytes (256 KB). <br /> Die Standardereignisanzahl pro Batch beträgt 100. <br /> Die Batchgröße ist konfigurierbar und kann in den [Ausgabeoptionen](#azure-functions) von Stream Analytics erhöht oder verringert werden.
+| Azure Cosmos DB    | Siehe [Einschränkungen für Azure Cosmos DB](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cosmos-db-limits). | Die Batchgröße und Schreibfrequenz werden basierend auf den Azure Cosmos DB-Antworten dynamisch angepasst. <br /> Es gelten keine vordefinierten Stream Analytics-Einschränkungen. |
+| Azure-Funktionen    | | Die Standardbatchgröße beträgt 262.144 Bytes (256 KB). <br /> Die Standardereignisanzahl pro Batch beträgt 100. <br /> Die Batchgröße ist konfigurierbar und kann in den [Ausgabeoptionen](#azure-functions) von Stream Analytics erhöht oder verringert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 746232a85e326f08d44cf2dbe0a4ae718c7cc312
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2e7f371e587c1c7f0debfa018ea8f25a30718a8
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69983347"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548092"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Migrieren von Daten aus Cassandra zum Azure Cosmos DB-Cassandra-API-Konto mithilfe von Blitzz
 
@@ -36,13 +36,13 @@ Die Migrationslösung von Blitzz befolgt einen schrittweisen Ansatz zum Migriere
 
 * Dies ist fehlertolerant und garantiert eine genau einmalige Übermittlung von Daten, selbst während eines Hardware- oder Softwarefehlers im System.
 
-* Er sichert die Daten während der Übertragung mithilfe verschiedener Sicherheitsmethoden wie SSL, Verschlüsselung.
+* Die Sicherung der Daten während der Übertragung erfolgt mithilfe verschiedener Sicherheitsmethoden wie TLS oder Verschlüsselung.
 
 ## <a name="steps-to-migrate-data"></a>Schritte zum Migrieren von Daten
 
 In diesem Abschnitt werden die erforderlichen Schritte zum Einrichten von Blitzz und zum Migrieren von Daten aus einer Apache Cassandra-Datenbank zu Azure Cosmos DB beschrieben.
 
-1. Fügen Sie von dem Computer, auf dem Sie den Blitzz-Replikanten installieren möchten, ein Sicherheitszertifikat hinzu. Dieses Zertifikat wird von dem Blitzz-Replikanten benötigt, um eine SSL-Verbindung mit dem angegebenen Azure Cosmos DB-Konto herzustellen. Sie können das Zertifikat mit den folgenden Schritten hinzufügen:
+1. Fügen Sie von dem Computer, auf dem Sie den Blitzz-Replikanten installieren möchten, ein Sicherheitszertifikat hinzu. Dieses Zertifikat wird von dem Blitzz-Replikanten benötigt, um eine TLS-Verbindung mit dem angegebenen Azure Cosmos DB-Konto herzustellen. Sie können das Zertifikat mit den folgenden Schritten hinzufügen:
 
    ```bash
    wget https://cacert.omniroot.com/bc2025.crt

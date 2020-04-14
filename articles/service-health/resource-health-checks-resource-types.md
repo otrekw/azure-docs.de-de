@@ -3,12 +3,12 @@ title: Durch Azure Resource Health unterstützte Ressourcentypen | Microsoft-Dok
 description: Durch Azure Resource Health unterstützte Ressourcentypen
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: f5d1c720d3cbafafc81276a968abf2003bbd46ce
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 5cc80147730fdc97b1181690f6e70fc538d4afcc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78303952"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478909"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Ressourcentypen und Integritätsprüfungen in Azure Resource Health
 Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource Health ausgeführten Überprüfungen.
@@ -41,17 +41,22 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.classiccompute/virtualmachines
 |Ausgeführte Überprüfungen|
 |---|
-|<ul><li>Ist der Hostserver funktionstüchtig?</li><li>Ist das Starten des Hostbetriebssystems abgeschlossen?</li><li>Ist der VM-Container bereitgestellt und hochgefahren?</li><li>Besteht Netzwerkkonnektivität zwischen Host und Speicherkonto?</li><li>Ist das Starten des Gastbetriebssystems abgeschlossen?</li><li>Gibt es eine laufende geplante Wartung?</li></ul>|
+|<ul><li>Ist der Hostserver funktionstüchtig?</li><li>Ist das Starten des Hostbetriebssystems abgeschlossen?</li><li>Ist der VM-Container bereitgestellt und hochgefahren?</li><li>Besteht Netzwerkkonnektivität zwischen Host und Speicherkonto?</li><li>Ist das Starten des Gastbetriebssystems abgeschlossen?</li><li>Gibt es eine laufende geplante Wartung?</li><li>Wurde die Hosthardware heruntergestuft und ein baldiger Ausfall vorhergesagt?</li></ul>|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.cognitiveservices/accounts
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Kann das Konto vom Rechenzentrum aus erreicht werden?</li><li>Ist der Cognitive Services-Ressourcenanbieter verfügbar?</li><li>Sind die Cognitive Services in der entsprechenden Region verfügbar?</li><li>Können Lesevorgänge in dem Speicherkonto durchgeführt werden, auf dem die Ressourcenmetadaten gespeichert sind?</li><li>Wurde das API-Aufrufkontingent erreicht?</li><li>Wurde die API-Aufruflesebeschränkung erreicht?</li></ul>|
 
+## <a name="microsoftcomputehostgroupshosts"></a>Microsoft.compute/hostgroups/hosts
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Ist der Host aktiv und wird ausgeführt?</li><li>Wurde die Hosthardware heruntergestuft?</li><li>Wurde die Zuordnung des Hosts aufgehoben?</li><li>Ist der Hosthardwaredienst auf unterschiedlicher Hardware verfügbar?</li></ul>|
+
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |Ausgeführte Überprüfungen|
 |---|
-|<ul><li>Hostet der Server diese VM funktionstüchtig?</li><li>Ist das Starten des Hostbetriebssystems abgeschlossen?</li><li>Ist der VM-Container bereitgestellt und hochgefahren?</li><li>Besteht Netzwerkkonnektivität zwischen Host und Speicherkonto?</li><li>Ist das Starten des Gastbetriebssystems abgeschlossen?</li><li>Gibt es eine laufende geplante Wartung?</li></ul>|
+|<ul><li>Hostet der Server diese VM funktionstüchtig?</li><li>Ist das Starten des Hostbetriebssystems abgeschlossen?</li><li>Ist der VM-Container bereitgestellt und hochgefahren?</li><li>Besteht Netzwerkkonnektivität zwischen Host und Speicherkonto?</li><li>Ist das Starten des Gastbetriebssystems abgeschlossen?</li><li>Gibt es eine laufende geplante Wartung?</li><li>Wurde die Hosthardware heruntergestuft und ein baldiger Ausfall vorhergesagt?</li></ul>|
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft.datafactory/factories
 |Ausgeführte Überprüfungen|
@@ -188,6 +193,11 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Treten bei Kunden benutzergenerierte Service Bus-Fehler auf?</li><li>Treten bei Benutzern nach dem Upgrade eines Service Bus-Namespace vermehrt vorübergehende Fehler auf?</li></ul>|
+
+## <a name="microsoftservicefabricclusters"></a>Microsoft.ServiceFabric/clusters
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Ist der Service Fabric Cluster aktiv und wird ausgeführt?</li><li>Kann der Service Fabric-Cluster über Azure Resource Manager verwaltet werden?</li></ul>|
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft.SQL/managedInstances/databases
 |Ausgeführte Überprüfungen|

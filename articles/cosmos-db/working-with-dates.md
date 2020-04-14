@@ -5,13 +5,13 @@ ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 03/03/2020
-ms.openlocfilehash: 92fa35fbe8e5eef4dbdc8b6c47a9055affd449a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/03/2020
+ms.openlocfilehash: 174279e4bd241ee9b336fc1ce7e0af389d2297a3
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273182"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667001"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Arbeiten mit Datumsangaben in Azure Cosmos DB
 
@@ -21,7 +21,9 @@ Zusätzlich zu den grundlegenden Typen benötigen viele Anwendungen den DateTime
 
 ## <a name="storing-datetimes"></a>Speichern von DateTime-Werten
 
-Azure Cosmos DB unterstützt JSON-Typen wie „String“, „Number“, „Boolean“, „NULL“, „Array“ und „Object“. Ein DateTime-Typ wird nicht direkt unterstützt. Derzeit unterstützt Azure Cosmos DB keine Lokalisierung von Daten. Daher müssen Sie DateTime-Werte als Zeichenfolgen speichern. Das empfohlene Format für DateTime-Zeichenfolgen in Azure Cosmos DB ist `YYYY-MM-DDThh:mm:ss.sssZ`, das dem ISO 8601 UTC Standard folgt. Es wird empfohlen, alle Datumsangaben in Azure Cosmos DB als UTC-Angabe zu speichern. Die Konvertierung der Datumszeichenfolgen in diesem Format ermöglicht das lexikografische Sortieren der Daten. Wenn Datumsangaben in einem anderen Format als UTC gespeichert werden, muss die Logik auf Clientseite behandelt werden. Um einen lokalen DateTime-Wert in UTC zu konvertieren, muss das Offset bekannt und als Eigenschaft im JSON-Format gespeichert sein. Außerdem kann der Client das Offset verwenden, um den DateTime-Wert im UTC-Format zu berechnen.
+Azure Cosmos DB unterstützt JSON-Typen wie „String“, „Number“, „Boolean“, „NULL“, „Array“ und „Object“. Ein DateTime-Typ wird nicht direkt unterstützt. Derzeit unterstützt Azure Cosmos DB keine Lokalisierung von Daten. Daher müssen Sie DateTime-Werte als Zeichenfolgen speichern. Das empfohlene Format für DateTime-Zeichenfolgen in Azure Cosmos DB ist `YYYY-MM-DDThh:mm:ss.fffffffZ`, das dem ISO 8601 UTC Standard folgt. Es wird empfohlen, alle Datumsangaben in Azure Cosmos DB als UTC-Angabe zu speichern. Die Konvertierung der Datumszeichenfolgen in diesem Format ermöglicht das lexikografische Sortieren der Daten. Wenn Datumsangaben in einem anderen Format als UTC gespeichert werden, muss die Logik auf Clientseite behandelt werden. Um einen lokalen DateTime-Wert in UTC zu konvertieren, muss das Offset bekannt und als Eigenschaft im JSON-Format gespeichert sein. Außerdem kann der Client das Offset verwenden, um den DateTime-Wert im UTC-Format zu berechnen.
+
+Bereichsabfragen mit DateTime-Zeichenfolgen als Filter werden nur unterstützt, wenn die DateTime-Zeichenfolgen alle im UTC-Format vorliegen und dieselbe Länge aufweisen. In Azure Cosmos DB gibt die [GetCurrentDateTime](sql-query-getcurrentdatetime.md)-Systemfunktion den aktuellen ISO 8601-Zeichenfolgenwert für UTC-Datum und -Uhrzeit im folgenden Format zurück: `YYYY-MM-DDThh:mm:ss.fffffffZ`.
 
 Die meisten Anwendungen können die standardmäßige Zeichenfolgendarstellung aus folgenden Gründen für DateTime verwenden:
 
@@ -47,7 +49,7 @@ Der folgende Codeausschnitt beispielsweise speichert ein `Order`-Objekt mit zwei
         {
             Id = "09152014101",
             OrderDate = DateTime.UtcNow.AddDays(-30),
-            ShipDate = DateTime.UtcNow.AddDays(-14), 
+            ShipDate = DateTime.UtcNow.AddDays(-14),
             Total = 113.39
         });
 ```
@@ -76,7 +78,7 @@ Das .NET SDK für SQL unterstützt automatisch die Abfrage von Daten, die über 
 In die folgende SQL-Anweisung übersetzt und in Azure Cosmos DB ausgeführt:
 
 ```sql
-    SELECT * FROM root WHERE (root["ShipDate"] >= "2016-12-18T21:55:03.45569Z")
+    SELECT * FROM root WHERE (root["ShipDate"] >= "2014-09-30T23:14:25.7251173Z")
 ```
 
 Weitere Informationen zur SQL-Abfragesprache von Azure Cosmos DB und zum LINQ-Anbieter finden Sie unter [Abfragen von Cosmos DB in LINQ](sql-query-linq-to-sql.md).

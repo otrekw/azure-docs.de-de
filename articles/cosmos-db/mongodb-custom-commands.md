@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
-ms.openlocfilehash: f57b274715eb1c8a4d517f5655c09c366574d412
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f99c4d096bcbe1fbdc42cac80a491d6017266cb2
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445218"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583583"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Verwenden von MongoDB-Erweiterungsbefehlen zum Verwalten von Daten in der API für MongoDB von Azure Cosmos DB 
 
@@ -45,7 +45,7 @@ In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 
 |**Feld**|**Typ** |**Beschreibung** |
 |---------|---------|---------|
-| customAction   |  string  |   Name des benutzerdefinierten Befehls. Er muss „CreateDatabase“ lauten.      |
+| customAction   |  Zeichenfolge  |   Name des benutzerdefinierten Befehls. Er muss „CreateDatabase“ lauten.      |
 | offerThroughput | INT  | Bereitgestellter Durchsatz, den Sie für die Datenbank festgelegt haben. Dieser Parameter ist optional. |
 
 ### <a name="output"></a>Output
@@ -87,7 +87,7 @@ In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 
 |**Feld**|**Typ** |**Beschreibung** |
 |---------|---------|---------|
-| customAction    |    string     |   Der Name des benutzerdefinierten Befehls. Er muss „UpdateDatabase“ lauten.      |
+| customAction    |    Zeichenfolge     |   Der Name des benutzerdefinierten Befehls. Er muss „UpdateDatabase“ lauten.      |
 |  offerThroughput   |  INT       |     Neuer bereitgestellter Durchsatz, den Sie für die Datenbank festlegen möchten.    |
 
 ### <a name="output"></a>Output
@@ -120,7 +120,7 @@ In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 
 |**Feld**|**Typ** |**Beschreibung** |
 |---------|---------|---------|
-|  customAction   |   string      |   Der Name des benutzerdefinierten Befehls. Er muss „GetDatabase“ lauten.|
+|  customAction   |   Zeichenfolge      |   Der Name des benutzerdefinierten Befehls. Er muss „GetDatabase“ lauten.|
         
 ### <a name="output"></a>Output
 
@@ -160,12 +160,12 @@ Mit dem Erweiterungsbefehl „CreateCollection“ wird eine neue MongoDB-Sammlun
 
 In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 
-|**Feld**|**Typ** |**Beschreibung** |
-|---------|---------|---------|
-| customAction    | string | Der Name des benutzerdefinierten Befehls. Er muss „CreateCollection“ lauten.     |
-| collection      | string | Name der Sammlung                                   |
-| offerThroughput | INT    | Bereitgestellter Durchsatz, der für die Datenbank festgelegt werden soll. Dies ist ein optionaler Parameter. |
-| shardKey        | string | Pfad zum Shardschlüssel für die Erstellung einer Sammlung mit Shards. Dies ist ein optionaler Parameter. |
+| **Feld** | **Typ** | **Erforderlich** | **Beschreibung** |
+|---------|---------|---------|---------|
+| customAction | Zeichenfolge | Erforderlich | Der Name des benutzerdefinierten Befehls. Er muss „CreateCollection“ lauten.|
+| collection | Zeichenfolge | Erforderlich | Name der Sammlung Sonderzeichen sind unzulässig.|
+| offerThroughput | INT | Optional* | Bereitgestellter Durchsatz, der für die Datenbank festgelegt werden soll. Wenn dieser Parameter nicht angegeben wird, wird standardmäßig der Mindestwert 400 RU/s verwendet. *Um einen Durchsatz über 10.000 RU/s hinaus anzugeben, ist der Parameter `shardKey` erforderlich.|
+| shardKey | Zeichenfolge | Optional* | Der Pfad des Shardschlüssels für die horizontal partitionierte Sammlung. Dieser Parameter ist erforderlich, wenn Sie mehr als 10.000 RU/s in `offerThroughput` festlegen.  Wenn er angegeben wird, erfordern alle eingefügten Dokumente diesen Wert. |
 
 ### <a name="output"></a>Output
 
@@ -184,7 +184,7 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", o
 
 **Erstellen einer Sammlung mit Shards**
 
-Verwenden Sie den folgenden Befehl, um eine Sammlung mit Shards mit dem Namen „testCollection“ und einem bereitgestellten Durchsatz von 1.000 RUs zu erstellen:
+Verwenden Sie den folgenden Befehl, um eine Sammlung mit Shards mit dem Namen „testCollection“ und einem bereitgestellten Durchsatz von 1.000 RUs und einer Shardkeyeigenschaft „a.b“ zu erstellen:
 
 ```shell
 use test
@@ -207,8 +207,8 @@ In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 
 |**Feld**|**Typ** |**Beschreibung** |
 |---------|---------|---------|
-|  customAction   |   string      |   Der Name des benutzerdefinierten Befehls. Er muss „UpdateCollection“ lauten.      |
-|  collection   |   string      |   Name der Sammlung       |
+|  customAction   |   Zeichenfolge      |   Der Name des benutzerdefinierten Befehls. Er muss „UpdateCollection“ lauten.      |
+|  collection   |   Zeichenfolge      |   Name der Sammlung       |
 | offerThroughput   |INT|   Bereitgestellter Durchsatz, der für die Sammlung festgelegt wird.|
 
 ## <a name="output"></a>Output
@@ -242,8 +242,8 @@ In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 
 |**Feld**|**Typ** |**Beschreibung** |
 |---------|---------|---------|
-| customAction    |   string      |   Der Name des benutzerdefinierten Befehls. Er muss „GetCollection“ lauten.      |
-| collection    |    string     |    Name der Sammlung     |
+| customAction    |   Zeichenfolge      |   Der Name des benutzerdefinierten Befehls. Er muss „GetCollection“ lauten.      |
+| collection    |    Zeichenfolge     |    Name der Sammlung     |
 
 ### <a name="output"></a>Output
 

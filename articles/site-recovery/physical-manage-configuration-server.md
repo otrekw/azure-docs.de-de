@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: 25be48e9caed446be3a86a11143ce3040808065a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb7e891c031be5ac01295905d5c3304dc6818737
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294296"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478970"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von physischen Servern
 
@@ -290,8 +290,8 @@ Aktualisieren Sie den Server wie folgt:
 > [!NOTE]
 > Die **-Force**-Option im Cmdlet „Remove-AzSiteRecoveryFabric“ kann dazu verwendet werden, das Entfernen bzw. Löschen des Konfigurationsservers zu erzwingen.
 
-## <a name="renew-ssl-certificates"></a>Erneuern von SSL-Zertifikaten
-Der Konfigurationsserver verfügt über einen integrierten Webserver, der die Aktivitäten von Mobility Service, Prozessservern und Masterzielservern, die mit dem Konfigurationsserver verbunden sind, orchestriert. Der Webserver verwendet ein SSL-Zertifikat, um Clients zu authentifizieren. Das Zertifikat läuft nach drei Jahren ab und kann jederzeit erneuert werden.
+## <a name="renew-tlsssl-certificates"></a>Erneuern von TLS-/SSL-Zertifikaten
+Der Konfigurationsserver verfügt über einen integrierten Webserver, der die Aktivitäten von Mobility Service, Prozessservern und Masterzielservern, die mit dem Konfigurationsserver verbunden sind, orchestriert. Der Webserver verwendet ein TLS-/SSL-Zertifikat, um Clients zu authentifizieren. Das Zertifikat läuft nach drei Jahren ab und kann jederzeit erneuert werden.
 
 ### <a name="check-expiry"></a>Überprüfen des Ablaufs
 

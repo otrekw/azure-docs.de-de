@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 8b0db4a1e55b53165e40e176834d66b62926e24b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7eb1670ee911895bdba23921845b8795f4998af
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74421557"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811306"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Verschieben von Daten zwischen horizontal hochskalierten Clouddatenbanken
 
@@ -62,7 +62,7 @@ Das Split-Merge-Tool wird als Azure-Webdienst ausgeführt. Ein Administrator ode
 
 - **Von Kunden gehostete Dienste**
 
-  Split-Merge wird als vom Kunden gehosteter Dienst bereitgestellt. Sie müssen den Dienst in Ihrem Microsoft Azure-Abonnement bereitstellen und hosten. Das Paket, das Sie von NuGet herunterladen, enthält eine Vorlage, die mit den Informationen für Ihre Bereitstellung ausgefüllt werden muss. Weitere Informationen finden Sie im [Split-Merge-Tutorial](sql-database-elastic-scale-configure-deploy-split-and-merge.md) . Da der Dienst im Azure-Abonnement ausgeführt wird, können Sie die meisten Sicherheitsaspekte des Diensts steuern und konfigurieren. Die Standardvorlage enthält die Optionen zum Konfigurieren von SSL, der zertifikatbasierten Clientauthentifizierung, der Verschlüsselung für gespeicherte Anmeldeinformationen, des DoS-Schutzes und von IP-Einschränkungen. Weitere Informationen zu Sicherheitsaspekten finden Sie im folgenden Dokument [Split-Merge-Sicherheitskonfiguration](sql-database-elastic-scale-split-merge-security-configuration.md).
+  Split-Merge wird als vom Kunden gehosteter Dienst bereitgestellt. Sie müssen den Dienst in Ihrem Microsoft Azure-Abonnement bereitstellen und hosten. Das Paket, das Sie von NuGet herunterladen, enthält eine Vorlage, die mit den Informationen für Ihre Bereitstellung ausgefüllt werden muss. Weitere Informationen finden Sie im [Split-Merge-Tutorial](sql-database-elastic-scale-configure-deploy-split-and-merge.md) . Da der Dienst im Azure-Abonnement ausgeführt wird, können Sie die meisten Sicherheitsaspekte des Diensts steuern und konfigurieren. Die Standardvorlage enthält die Optionen zum Konfigurieren von TLS, zertifikatbasierter Clientauthentifizierung, Verschlüsselung für gespeicherte Anmeldeinformationen, DoS-Schutz und IP-Einschränkungen. Weitere Informationen zu Sicherheitsaspekten finden Sie im folgenden Dokument [Split-Merge-Sicherheitskonfiguration](sql-database-elastic-scale-split-merge-security-configuration.md).
 
   Der standardmäßig bereitgestellte Dienst wird mit einer Workerrolle und einer Webrolle ausgeführt. Für beide wird die VM-Größe A1 in Azure Cloud Services verwendet. Sie können diese Einstellungen zwar nicht bei der Bereitstellung des Pakets ändern, nach einer erfolgreichen Bereitstellung können die Einstellungen jedoch im ausgeführten Clouddienst (über das Azure-Portal) geändert werden. Beachten Sie, dass die Workerrolle aus technischen Gründen nicht für mehr als eine einzelne Instanz konfiguriert werden darf.
 
@@ -212,7 +212,7 @@ Der Split-Merge-Dienst stellt die **RequestStatus** -Tabelle in der Metadatenspe
 
 ### <a name="azure-diagnostics"></a>Azure-Diagnose
 
-Der Split-Merge-Dienst verwendet die Azure-Diagnose basierend auf Azure SDK 2.5 zur Überwachung und Diagnose. Sie steuern die Diagnosekonfiguration, wie es unter [Aktivieren der Diagnose in Azure Cloud Services und auf virtuellen Computern](../cloud-services/cloud-services-dotnet-diagnostics.md)beschrieben ist. Das Downloadpaket umfasst zwei Diagnosekonfigurationen – eine für die Webrolle und eine für die Workerrolle. Sie enthalten die Definitionen zum Protokollieren von Leistungsindikatoren und die Definitionen für IIS-Protokolle, Windows-Ereignisprotokolle und Split-Merge-Anwendungsereignisprotokolle.
+Der Split-Merge-Dienst verwendet die Azure-Diagnose basierend auf Azure SDK 2.5 zur Überwachung und Diagnose. Sie können die Diagnosekonfiguration wie im folgenden Artikel beschrieben steuern: [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). Das Downloadpaket umfasst zwei Diagnosekonfigurationen – eine für die Webrolle und eine für die Workerrolle. Sie enthalten die Definitionen zum Protokollieren von Leistungsindikatoren und die Definitionen für IIS-Protokolle, Windows-Ereignisprotokolle und Split-Merge-Anwendungsereignisprotokolle.
 
 ## <a name="deploy-diagnostics"></a>Bereitstellen der Diagnose
 
@@ -239,7 +239,7 @@ Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext `
     -Slot Production -Role "SplitMergeWorker"
 ```
 
-Weitere Informationen zum Konfigurieren und Bereitstellen von Diagnoseeinstellungen finden Sie unter [Aktivieren der Diagnose in Azure Cloud Services und auf virtuellen Computern](../cloud-services/cloud-services-dotnet-diagnostics.md).
+Weitere Informationen zum Konfigurieren und Bereitstellen von Diagnoseeinstellungen finden Sie hier: [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md).
 
 ## <a name="retrieve-diagnostics"></a>Abrufen der Diagnose
 

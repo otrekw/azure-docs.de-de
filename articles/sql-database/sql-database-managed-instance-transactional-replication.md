@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: 41dd336bdb74fbe745ab48ebd3c168af0492ae2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a048ddefbcd76193436da13cd3ba68b8b6ffb0a
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75691013"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607592"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Transaktionsreplikation mit Einzeldatenbanken, Pooldatenbanken und Instanzdatenbanken in Azure SQL-Datenbank
 
@@ -95,7 +95,7 @@ Es gibt verschiedene [Replikationstypen](https://docs.microsoft.com/sql/relation
 - Für die Verbindung zwischen den Teilnehmern der Replikation wird SQL-Authentifizierung verwendet. 
 - Ein Azure-Speicherkonto für das von der Replikation verwendete Arbeitsverzeichnis. 
 - Port 445 (TCP ausgehend) muss in den Sicherheitsregeln des Subnetzes der verwalteten Instanz geöffnet sein, um auf die Azure-Dateifreigabe zugreifen zu können. 
-- Port 1433 (TCP ausgehend) muss geöffnet sein, wenn sich der Verleger/Verteiler in einer verwalteten Instanz und der Abonnent in der lokalen Umgebung befindet.
+- Port 1433 (TCP ausgehend) muss geöffnet sein, wenn sich der Verleger/Verteiler in einer verwalteten Instanz befindet, der Abonnent hingegen nicht. Möglicherweise müssen Sie auch die Sicherheitsregel für ausgehenden Datenverkehr der Netzwerksicherheitsgruppe der verwalteten Instanz für `allow_linkedserver_outbound` für das **Zieldiensttag** von Port 1433 aus `virtualnetwork` in `internet` ändern. 
 - Alle Replikationsteilnehmertypen (Herausgeber, Verteiler, Pullabonnent und Pushabonnent) können auf der verwalteten Instanz platziert werden. Der Herausgeber und der Verteiler müssen dabei entweder beide in der Cloud oder beide lokal platziert sein.
 - Wenn Verleger, Verteiler und/oder Abonnent in unterschiedlichen virtuellen Netzwerken vorhanden sind, muss das VPN-Peering zwischen den einzelnen Entitäten eingerichtet werden, sodass VPN-Peering zwischen dem Verleger und dem Verteiler erfolgen und/oder VPN-Peering zwischen dem Verteiler und dem Abonnenten vorhanden ist. 
 

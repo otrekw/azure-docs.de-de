@@ -1,6 +1,6 @@
 ---
 title: Verwenden von T-SQL-Schleifen
-description: Tipps zum Verwenden von T-SQL-Schleifen und Ersetzen von Cursorn in Azure SQL Data Warehouse für die Entwicklung von Lösungen
+description: Tipps für die Lösungsentwicklung mithilfe von T-SQL-Schleifen und das Ersetzen von Cursorn im Synapse SQL-Pool.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,28 +11,34 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: afb2160cb9b4e34d3d17db86bac9cd3be79886d0
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 72a39804931c0834233e91190aacffa8d35912df
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351587"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633478"
 ---
-# <a name="using-t-sql-loops-in-sql-data-warehouse"></a>Verwenden von T-SQL-Schleifen in SQL Data Warehouse
-Tipps zum Verwenden von T-SQL-Schleifen und Ersetzen von Cursorn in Azure SQL Data Warehouse für die Entwicklung von Lösungen
+# <a name="using-t-sql-loops-in-synapse-sql-pool"></a>Verwenden von T-SQL-Schleifen im Synapse SQL-Pool
+
+Dieser Artikel enthält Tipps zur Entwicklung von SQL-Poollösungen mithilfe von T-SQL-Schleifen und durch Ersetzen von Cursorn.
 
 ## <a name="purpose-of-while-loops"></a>Zweck der WHILE-Schleifen
 
-SQL Data Warehouse unterstützt die [WHILE](/sql/t-sql/language-elements/while-transact-sql)-Schleife für die wiederholte Ausführung von Anweisungsblöcken. Die WHILE-Schleife wird so lange ausgeführt, wie die angegebenen Bedingungen wahr sind oder bis die Schleife im Code mit dem Schlüsselwort BREAK gezielt beendet wird. Schleifen sind nützlich, um im SQL-Code definierte Cursor zu ersetzen. Glücklicherweise sind fast alle Cursor, die per SQL-Code geschrieben werden, schreibgeschützte Cursor für den schnellen Vorlauf. Aus diesem Grund sind [WHILE]-Schleifen eine gute Alternative zum Ersetzen von Cursorn.
+Der Synapse SQL-Pool unterstützt die [WHILE](/sql/t-sql/language-elements/while-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)-Schleife für die wiederholte Ausführung von Anweisungsblöcken. Die WHILE-Schleife wird so lange ausgeführt, wie die angegebenen Bedingungen wahr sind oder bis die Schleife im Code mit dem Schlüsselwort BREAK gezielt beendet wird.
 
-## <a name="replacing-cursors-in-sql-data-warehouse"></a>Ersetzen von Cursorn in SQL Data Warehouse
-Stellen Sie sich vorher aber unbedingt die folgende Frage: „Kann dieser Cursor so umgeschrieben werden, dass satzbasierte Vorgänge verwendet werden?“ In vielen Fällen können Sie die Frage bejahen, daher ist dies häufig der beste Ansatz. Ein satzbasierter Vorgang wird oft schneller als ein iterativer Durchlauf Zeile für Zeile durchgeführt.
+Schleifen sind nützlich, um im SQL-Code definierte Cursor zu ersetzen. Glücklicherweise sind fast alle Cursor, die per SQL-Code geschrieben werden, schreibgeschützte Cursor für den schnellen Vorlauf. Daher sind WHILE-Schleifen eine gute Alternative zum Ersetzen von Cursorn.
 
-Nur-Lese-Cursor für den schnellen Vorlauf können leicht durch ein Schleifenkonstrukt ersetzt werden. Im Folgenden sehen Sie ein einfaches Beispiel. In diesem Codebeispiel wird die Statistik für jede Tabelle der Datenbank aktualisiert. Indem die Tabellen mit der Schleife durchlaufen werden, wird jeder Befehl der Reihe nach ausgeführt.
+## <a name="replacing-cursors-in-synapse-sql-pool"></a>Ersetzen von Cursorn im Synapse SQL-Pool
+
+Bevor Sie lange überlegen, sollte Sie sich zuerst folgende Frage stellen: „Könnte dieser Cursor so umgeschrieben werden, dass er setbasierte Vorgänge verwendet?“
+
+In vielen Fällen können Sie die Frage bejahen, daher ist dies häufig der beste Ansatz. Ein satzbasierter Vorgang wird oft schneller als ein iterativer Durchlauf Zeile für Zeile durchgeführt.
+
+Nur-Lese-Cursor für den schnellen Vorlauf können leicht durch ein Schleifenkonstrukt ersetzt werden. Das folgende Beispiel ist einf. In diesem Codebeispiel wird die Statistik für jede Tabelle der Datenbank aktualisiert. Indem die Tabellen mit der Schleife durchlaufen werden, wird jeder Befehl der Reihe nach ausgeführt.
 
 Erstellen Sie zuerst eine temporäre Tabelle mit einer eindeutigen Zeilenzahl zum Identifizieren der einzelnen Anweisungen:
 
-```
+```sql
 CREATE TABLE #tbl
 WITH
 ( DISTRIBUTION = ROUND_ROBIN
@@ -47,7 +53,7 @@ FROM    sys.tables
 
 Initialisieren Sie als Nächstes die Variablen, die zum Durchführen des Schleifenvorgangs erforderlich sind:
 
-```
+```sql
 DECLARE @nbr_statements INT = (SELECT COUNT(*) FROM #tbl)
 ,       @i INT = 1
 ;
@@ -55,7 +61,7 @@ DECLARE @nbr_statements INT = (SELECT COUNT(*) FROM #tbl)
 
 Jetzt können Sie die Anweisungen per Schleife durchlaufen und einzeln ausführen:
 
-```
+```sql
 WHILE   @i <= @nbr_statements
 BEGIN
     DECLARE @sql_code NVARCHAR(4000) = (SELECT sql_code FROM #tbl WHERE Sequence = @i);
@@ -66,10 +72,10 @@ END
 
 Abschließend können Sie die temporäre Tabelle verwerfen, die Sie im ersten Schritt erstellt haben.
 
-```
+```sql
 DROP TABLE #tbl;
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht](sql-data-warehouse-overview-develop.md).
 
+Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht](sql-data-warehouse-overview-develop.md).

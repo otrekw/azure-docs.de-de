@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: af1032de9aabac45ad7a86cfe1f36ed2c04c0f71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1c5bdd1d210a1933699cad52dbf123b50048e01
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444618"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421332"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Zugreifen auf Azure Cosmos DB über virtuelle Netzwerke (VNET)
 
@@ -34,7 +34,7 @@ Um den Zugriff auf das Azure Cosmos DB-Konto über ein Subnetz einzuschränken, 
 
 ### <a name="will-virtual-network-acls-and-ip-firewall-reject-requests-or-connections"></a>Werden Zugriffssteuerungslisten virtueller Netzwerke und die IP-Firewall Anforderungen oder Verbindungen zurückgewiesen? 
 
-Wenn eine IP-Firewall oder Zugriffsregeln für virtuelle Netzwerke hinzugefügt werden, erhalten nur Anforderungen von zulässigen Quellen gültige Antworten. Andere Anforderungen werden mit einer „403“-Fehlermeldung (Nicht zulässig) zurückgewiesen. Es ist wichtig, die Firewall des Azure Cosmos DB-Kontos von einer Firewall auf Verbindungsebene zu unterscheiden. Die Quelle kann sich weiterhin mit dem Dienst verbinden, und die Verbindungen selbst werden nicht zurückgewiesen.
+Wenn eine IP-Firewall oder Zugriffsregeln für virtuelle Netzwerke hinzugefügt werden, erhalten nur Anforderungen von zulässigen Quellen gültige Antworten. Andere Anforderungen werden mit einer „403“-Fehlermeldung (Nicht zulässig) zurückgewiesen. Es ist wichtig, die Firewall des Azure Cosmos DB-Kontos von einer Firewall auf Verbindungsebene zu unterscheiden. Die Quelle kann weiterhin eine Verbindung mit dem Dienst herstellen, und die Verbindungen selbst werden nicht zurückgewiesen.
 
 ### <a name="my-requests-started-getting-blocked-when-i-enabled-service-endpoint-to-azure-cosmos-db-on-the-subnet-what-happened"></a>Meine Anforderungen werden blockiert, wenn ich den Dienstendpunkt für Azure Cosmos DB im Subnetz aktiviere. Was ist passiert?
 
@@ -50,7 +50,7 @@ Die Autorisierung überprüft die Berechtigung für die VNET-Ressourcenaktion se
 Nur virtuelle Netzwerke und ihre Subnetze, die dem Azure Cosmos DB-Konto hinzugefügt wurden, haben Zugriff. Ihre VNETs mit Peering können erst auf das Konto zugreifen, wenn die Subnetze in den virtuellen Netzwerken mit Peering dem Konto hinzugefügt wurden.
 
 ### <a name="what-is-the-maximum-number-of-subnets-allowed-to-access-a-single-cosmos-account"></a>Wie viele Subnetze dürfen maximal auf ein einzelnes Cosmos DB-Konto zugreifen? 
-Derzeit können Sie maximal 64 Subnetze für ein Azure Cosmos DB-Konto zulassen.
+Derzeit sind maximal 256 Subnetze für ein Azure Cosmos DB-Konto zulässig.
 
 ### <a name="can-i-enable-access-from-vpn-and-express-route"></a>Kann ich den Zugriff über VPN und ExpressRoute aktivieren? 
 Für den Zugriff auf das Azure Cosmos DB-Konto über eine lokale ExpressRoute-Instanz müssen Sie Microsoft-Peering aktivieren. Wenn Sie eine IP-Firewall oder Zugriffsregeln für das virtuelle Netzwerk eingerichtet haben, können Sie die öffentlichen IP-Adressen, die für das Microsoft-Peering verwendet werden, der IP-Firewall Ihres Azure Cosmos DB-Kontos hinzufügen, um lokalen Diensten Zugriff auf das Azure Cosmos DB-Konto zu gewähren. 

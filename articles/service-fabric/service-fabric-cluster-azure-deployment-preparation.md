@@ -3,12 +3,12 @@ title: Planen der Bereitstellung eines Azure Service Fabric-Clusters
 description: Erfahren Sie in diesem Artikel, wie Sie die Bereitstellung von Service Fabric-Clusters für eine Produktionsumgebung in Azure planen und vorbereiten.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 1762a6975448301957579b3437a8af5c89b3accd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad6a7a6ea9a90bea4a3b6bc553da67a46144dc03
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78193475"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422282"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Planen und Vorbereiten der Clusterbereitstellung
 
@@ -86,6 +86,16 @@ Kurzlebige Betriebssystemdatenträger sind kein spezifisches Feature von Service
             }
         }
     ```
+
+> [!NOTE]
+> Benutzeranwendungen sollten auf dem Betriebssystemdatenträger keine Abhängigkeit, keine Datei und kein Artefakt aufweisen, da der Betriebssystemdatenträger im Falle eines Betriebssystemupgrades verloren gehen würde.
+> Daher empfiehlt es sich nicht, [PatchOrchestrationApplication](https://github.com/microsoft/Service-Fabric-POA) mit kurzlebigen Datenträgern zu verwenden.
+>
+
+> [!NOTE]
+> Vorhandene nicht kurzlebige VMSS können nicht direkt aktualisiert werden, um kurzlebige Datenträger zu verwenden.
+> Zum Migrieren müssen Benutzer einen neuen nodeType mit kurzlebigen Datenträgern [hinzufügen](./virtual-machine-scale-set-scale-node-type-scale-out.md), die Workloads in den neuen nodeType verschieben und den vorhandenen nodeType [entfernen](./service-fabric-how-to-remove-node-type.md).
+>
 
 Weitere Informationen und Konfigurationsoptionen finden Sie unter [Kurzlebige Betriebssystemdatenträger für virtuelle Azure-Computer](../virtual-machines/windows/ephemeral-os-disks.md). 
 

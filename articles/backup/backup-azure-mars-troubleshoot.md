@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Probleme mit der Installati
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 24169356600c25e664221af397051bb0fec3e459
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a15f8a4531bc31dab5b99e125454b0d9c4fd4521
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673108"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421271"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Problembehandlung beim Microsoft Azure Recovery Services-Agent (MARS)
 
@@ -132,6 +132,13 @@ Set-ExecutionPolicy Unrestricted
 
 > [!TIP]
 > Um sicherzustellen, dass die vorgenommenen Änderungen durchgängig übernommen werden, starten Sie den Server nach dem Durchführen der vorherigen Schritte neu.
+
+## <a name="resource-not-provisioned-in-service-stamp"></a>Ressource nicht im Dienststempel angegeben
+
+Fehler | Mögliche Ursachen | Empfohlene Aktionen
+--- | --- | ---
+Fehler beim aktuellen Vorgang aufgrund eines internen Dienstfehlers: „Ressource nicht im Dienststempel angegeben“. Wiederholen Sie den Vorgang nach einiger Zeit. (ID: 230006) | Der geschützte Server wurde umbenannt. | <li> Benennen Sie den Server wieder in den ursprünglichen Namen um, der beim Tresor registriert ist. <br> <li> Registrieren Sie den Server mit dem neuen Namen erneut beim Tresor.
+
 
 ## <a name="troubleshoot-restore-problems"></a>Behandlung von Problemen bei der Wiederherstellung
 

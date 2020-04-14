@@ -3,12 +3,12 @@ title: Übersicht über Recovery Services-Tresore
 description: Übersicht über Recovery Services-und Azure Backup-Tresore sowie Vergleich dieser Tresore
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 94a3e5a0865bcc8c0a9ecb866ca013f20a558e1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6a359287533c9ffdd688b5285b24b9c70fa7b7f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673236"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436965"
 ---
 # <a name="recovery-services-vaults-overview"></a>Übersicht über Recovery Services-Tresore
 
@@ -32,11 +32,19 @@ Recovery Services-Tresore basieren auf dem Azure Resource Manager-Modell von Azu
 
 - **Sofortige Wiederherstellung für IaaS-VMs**: Durch Recovery Services-Tresore können Sie Dateien und Ordner von einer IaaS-VM wiederherstellen, ohne die gesamte VM wiederherstellen zu müssen. So werden die Wiederherstellungszeiten verkürzt. Die sofortige Wiederherstellung für IaaS-VMs ist für Windows- und Linux-VMs verfügbar. [Weitere Informationen](backup-instant-restore-capability.md)
 
+## <a name="storage-settings-in-the-recovery-services-vault"></a>Speichereinstellungen im Recovery Services-Tresor
+
+Bei einem Recovery Services-Tresor handelt es sich um eine Entität, in der alle im Laufe der Zeit erstellten Sicherungen und Wiederherstellungspunkte gespeichert werden. Der Recovery Services-Tresor enthält auch die Sicherungsrichtlinien, die den geschützten virtuellen Computern zugeordnet sind.
+
+Azure Backup übernimmt automatisch die Speicherung für den Tresor. Informieren Sie sich, wie [Speichereinstellungen geändert werden können](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy).
+
+Weitere Informationen zur Speicherredundanz finden Sie in diesen Artikeln zur [Georedundanz](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs) und zur [lokalen](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs) Redundanz.
+
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>Verwalten von Recovery Services-Tresoren im Portal
 
 Die Erstellung und Verwaltung von Recovery Services-Tresoren im Azure-Portal ist einfach, da der Sicherungsdienst in andere Azure-Dienste integriert ist. Eine derartige Integration bedeutet, dass Sie einen Recovery Services-Tresor *im Kontext des Zieldiensts* erstellen oder verwalten können. Um beispielsweise die Wiederherstellungspunkte für eine VM anzuzeigen, wählen Sie Ihre VM aus, und klicken Sie im Menü „Vorgänge“ auf **Sicherung**.
 
-![Details zum Recovery Services-Tresor über die VM](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
+![Details zum Recovery Services-Tresor: VM](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
 
 Wenn für den virtuellen Computer keine Sicherung konfiguriert wurde, werden Sie zum Konfigurieren der Sicherung aufgefordert. Wurde eine Sicherung konfiguriert, werden die Sicherungsinformationen über den virtuellen Computer angezeigt, einschließlich einer Liste von Wiederherstellungspunkten.  
 

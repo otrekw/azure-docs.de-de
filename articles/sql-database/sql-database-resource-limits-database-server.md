@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: 550c315023c0ae907c369778c81b16e137004bec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: afb30a17d7a1450f169402c18f41ce249415e89d
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067261"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804825"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>SQL-Datenbank-Ressourcenlimits und -Ressourcenkontrolle
 
@@ -134,7 +134,7 @@ Während die Protokolleinträge generiert werden, wird jeder Vorgang ausgewertet
 
 Die tatsächlichen Protokollgenerierungsraten, die während der Laufzeit durchgesetzt werden, werden möglicherweise auch von Feedbackmechanismen beeinflusst. Dadurch wird die zulässige Protokollrate zeitweise reduziert, damit sich das System stabilisieren kann. Die Speicherplatzverwaltung für die Protokolldatei, mithilfe derer also vermieden wird, dass nicht mehr genug Protokollspeicherplatz sowie Verfügbarkeitsgruppenreplikationsmechanismen vorhanden sind, kann zeitweise zu einer Verringerung der gesamten Begrenzungen für das System führen.
 
-Die Anpassung von Traffic durch die Protokollratenkontrolle tritt über die folgenden Wartetypen zum Vorschein (verfügbar gemacht über die dynamische Verwaltungssicht (Dynamic Management View, DMV) [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database)):
+Die Datenverkehrsmodellierung der Protokollratenbegrenzung erfolgt über die folgenden Wartetypen (über die Sichten [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) und [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) bereitgestellt):
 
 | Wartetyp | Notizen |
 | :--- | :--- |
@@ -143,6 +143,7 @@ Die Anpassung von Traffic durch die Protokollratenkontrolle tritt über die folg
 | INSTANCE_LOG_RATE_GOVERNOR | Instanzebenenbegrenzung |  
 | HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | Feedbackkontrolle; physische Replikation von Verfügbarkeitsgruppen in den Tarifen „Premium“/„Unternehmenskritisch“ zu langsam |  
 | HADR_THROTTLE_LOG_RATE_LOG_SIZE | Feedbacksteuerung; Raten werden beschränkt, um eine Situation zu vermeiden, in der der Speicherplatz für Protokolle ausgeht |
+| HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO | Feedbacksteuerung für Georeplikation, Begrenzen der Protokollrate, um hohe Datenlatenz und Nichtverfügbarkeit von sekundären Georeplikaten zu vermeiden.|
 |||
 
 Wenn es zu einer Begrenzung der Protokollrate zu kommen droht, die die gewünschte Skalierbarkeit beeinträchtigt, können Sie die folgenden Optionen in Erwägung ziehen:

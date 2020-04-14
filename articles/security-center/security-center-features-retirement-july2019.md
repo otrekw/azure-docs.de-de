@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 456f379e2b3c2ff411b196d45aef4663fddb0fe6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a760fe1e5df7cf614a68f8fa8a05926326d3edf
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225294"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583217"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Auslaufen von Security Center-Funktionen (Juli 2019)
 
@@ -43,7 +43,7 @@ In diesem Artikel erhalten Sie ausführliche Informationen zu jedem eingestellte
 
 ## <a name="events-dashboard"></a>Ereignisdashboard<a name="menu_events"></a>
 
-Security Center nutzt Microsoft Monitoring Agent für die Erfassung verschiedener sicherheitsbezogener Konfigurationen und Ereignisse auf Ihren Computern. Diese Ereignisse werden in Ihren Arbeitsbereichen gespeichert. Mit dem [Ereignisdashboard](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard) können Sie diese Daten anzeigen, und es bietet Ihnen einen Einstiegspunkt in Log Analytics.
+Security Center nutzt den Log Analytics-Agent für die Erfassung verschiedener sicherheitsbezogener Konfigurationen und Ereignisse auf Ihren Computern. Diese Ereignisse werden in Ihren Arbeitsbereichen gespeichert. Mit dem [Ereignisdashboard](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard) können Sie diese Daten anzeigen, und es bietet Ihnen einen Einstiegspunkt in Log Analytics.
 
 Das Ereignisdashboard, das beim Auswählen eines Arbeitsbereichs angezeigt wurde, wurde eingestellt:
 
@@ -97,7 +97,7 @@ Alle Features des Dashboards **Identität und Zugriff** in Log Analytics können
 
 ## <a name="security-events-map"></a>Karte von Sicherheitsereignissen<a name="menu_securityeventsmap"></a>
 
-Security Center bietet Ihnen eine [Karte mit Sicherheitswarnungen und Informationen zu Bedrohungen](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) zur Identifizierung der Sicherheitsrisiken. Wenn Sie auf die Schaltfläche **Klicken Sie auf Sicherheit Ereignisse Karte** klicken, wird ein Dashboard geöffnet, in dem Sie Rohdaten zu Sicherheitsereignissen für den ausgewählten Arbeitsbereich einsehen können.
+Security Center bietet Ihnen eine Karte mit Sicherheitswarnungen und Informationen zu Bedrohungen zur Identifizierung der Sicherheitsrisiken. Wenn Sie auf die Schaltfläche **Klicken Sie auf Sicherheit Ereignisse Karte** klicken, wird ein Dashboard geöffnet, in dem Sie Rohdaten zu Sicherheitsereignissen für den ausgewählten Arbeitsbereich einsehen können.
 
 Wir haben die Schaltfläche **Zu Sicherheitsereignisübersicht wechseln** und das arbeitsbereichsspezifische Dashboard eingestellt.
 
@@ -136,7 +136,7 @@ Weitere Informationen zum Einstellen benutzerdefinierter Warnungen finden Sie un
 
 ## <a name="security-alerts-investigation"></a>Sicherheitswarnungen – Untersuchung<a name="menu_investigate"></a>
 
-[Das Untersuchungsfeature](https://docs.microsoft.com/azure/security-center/security-center-investigation) in Security Center unterstützt Sie beim Selektieren eines potenziellen Sicherheitsvorfalls. Mit diesem Feature können Sie den Umfang eines Vorfalls erkennen und die Hauptursache identifizieren. Wir haben dieses Feature aus Security Center entfernt, da es durch eine verbesserte Funktion in [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) ersetzt wurde.
+Das Untersuchungsfeature in Security Center unterstützt Sie beim Selektieren eines potenziellen Sicherheitsvorfalls. Mit diesem Feature können Sie den Umfang eines Vorfalls erkennen und die Hauptursache identifizieren. Wir haben dieses Feature aus Security Center entfernt, da es durch eine verbesserte Funktion in [Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) ersetzt wurde.
 
 ![Sicherheitsvorfall][14]
 
@@ -169,7 +169,7 @@ Wenn Sie über vorhandene verbundene Lösungen verfügen, empfehlen wir Ihnen, S
 
 Azure Security Center überwacht Sicherheitskonfigurationen durch Anwenden von [über 150 empfohlenen Regeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) für die Härtung des Betriebssystems. Diese Regeln beziehen sich u.a. auf Firewalls, Überwachung, Kennwortrichtlinien. Wenn auf einem Computer eine angreifbare Konfiguration festgestellt wird, generiert Security Center eine Sicherheitsempfehlung. Im Bildschirm [Sicherheitskonfigurationen bearbeiten](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) können Benutzer die standardmäßige Sicherheitskonfiguration des Betriebssystems in Security Center anpassen.
 
-Wir haben diese Previewfunktion eingestellt. Wenn Sie Ihre Sicherheitskonfigurationen nach der Einstellung auf die Standardwerte zurücksetzen möchten, können Sie hierzu die API oder PowerShell verwenden. Eine entsprechende Anleitung finden Sie [hier](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization).
+Wir haben diese Previewfunktion eingestellt. Wenn Sie Ihre Sicherheitskonfigurationen nach der Einstellung auf die Standardwerte zurücksetzen möchten, können Sie hierzu die API oder PowerShell verwenden. Eine entsprechende Anleitung finden Sie [hier](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/Reset%20security%20configurations%20customization).
 
 ![Sicherheitskonfigurationen bearbeiten][17]
 

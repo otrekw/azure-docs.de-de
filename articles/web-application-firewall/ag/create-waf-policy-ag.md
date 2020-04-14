@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 3e8cd2f1e594cd6a60296b2df135f275641df313
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3738da806ff36cdb7e8d561b88a457a5264eb76
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77086985"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886924"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Erstellen von Web Application Firewall-Richtlinien für Application Gateway
 
@@ -24,6 +24,8 @@ Wenn auf Ihre Application Gateway-Instanz eine Richtlinie angewandt wird und Sie
 
    > [!NOTE]
    > WAF-Richtlinien für einzelne Websites und einzelne URIs sind als Public Preview verfügbar. Das bedeutet, dass diese Funktion den zusätzlichen Nutzungsbedingungen von Microsoft unterliegt. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+   > [!NOTE]
+   > Sobald eine Firewallrichtlinie einer WAF zugeordnet wurde, muss dieser WAF immer eine Richtlinie zugeordnet sein. Sie können diese Richtlinie überschreiben, aber das vollständige Aufheben der Zuordnung einer Richtlinie zu einer WAF wird nicht unterstützt. 
 
 Alle neuen WAF-Einstellungen (benutzerdefinierte Regeln, verwaltete Regelsatzkonfigurationen, Ausschlüsse usw.) sind in einer WAF-Richtlinie enthalten. Wenn Sie bereits über eine WAF verfügen, sind diese Einstellungen möglicherweise weiterhin in Ihrer WAF-Konfiguration vorhanden. Schritte für den Umstieg auf die neue WAF-Richtlinie finden Sie unter [Migrieren Ihrer WAF-Konfiguration zu einer WAF-Richtlinie](#migrate) weiter unten in diesem Artikel. 
 

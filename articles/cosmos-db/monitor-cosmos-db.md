@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: b9b66c379714c2f4fa2421876fda3bdb500ce6c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db9e86706ecd4e5b2526e1d801dda45ed6b345c6
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250375"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887247"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Überwachen von Azure Cosmos DB
 Wenn Sie über unternehmenskritische Anwendungen und Geschäftsprozesse verfügen, die auf Azure-Ressourcen beruhen, sollten Sie Verfügbarkeit, Leistung und Betrieb dieser Ressourcen überwachen. In diesem Artikel wird das Überwachen von Daten beschrieben, die von Azure Cosmos-Datenbanken generiert wurden. Außerdem wird erläutert, wie Sie die Funktionen von Azure Monitor nutzen können, um diese Daten zu analysieren und Warnungen dafür zu erstellen.
@@ -63,10 +63,6 @@ Sie können Metriken und das angezeigte Diagramm auch nach bestimmten Werten fü
 Sie können Metriken mit der Option **Apply splitting** (Aufteilung anwenden) gruppieren. Beispielsweise können Sie die Anforderungseinheiten nach Vorgangstyp gruppieren und das Diagramm für alle Vorgänge auf einmal anzeigen, wie in der folgenden Abbildung dargestellt:
 
 ![Hinzufügen eines Filters zum Anwenden der Aufteilung](./media/monitor-cosmos-db/apply-metrics-splitting.png)
-
-Dies ist ein weiteres Beispiel zum Anzeigen der serverseitigen Latenzmetriken für eine bestimmte Datenbank, einen Container oder einen Vorgang:
-
-![Serverseitige Latenzmetriken](./media/monitor-cosmos-db/serverside-latency-metric.png)
 
 ## <a name="monitoring-data-collected-from-azure-cosmos-db"></a>Von Azure Cosmos DB gesammelte Überwachungsdaten
 

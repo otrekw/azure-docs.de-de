@@ -3,12 +3,12 @@ title: Erstellen eines Service Fabric-Clusters über das Azure-Portal
 description: Erfahren Sie, wie Sie über das Azure-Portal und mithilfe von Azure Key Vault einen sicheren Service Fabric-Cluster in Azure erstellen.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2de920ce9517e156934a636559a6fd6f5a71eb5
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79229414"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754109"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal
 > [!div class="op_single_selector"]
@@ -36,13 +36,13 @@ Wenn Sie zum ersten Mal einen Service Fabric-Cluster erstellen oder einen Cluste
 Dieses Zertifikat wird benötigt, um einen Cluster zu sichern und nicht autorisierte Zugriffe auf den Cluster zu verhindern. Es sorgt auf unterschiedliche Weise für Clustersicherheit:
 
 * **Clusterauthentifizierung:** Authentifiziert die Kommunikation zwischen Knoten für einen Clusterverbund. Nur Knoten, die ihre Identität mit diesem Zertifikat nachweisen können, dürfen dem Cluster beitreten.
-* **Serverauthentifizierung:** Authentifiziert die Verwaltungsendpunkte des Clusters bei einem Verwaltungsclient, sodass der Verwaltungsclient weiß, dass die Kommunikation tatsächlich mit dem Cluster erfolgt. Dieses Zertifikat stellt auch SSL für die HTTPS-Verwaltungs-API und für Service Fabric Explorer über HTTPS bereit.
+* **Serverauthentifizierung:** Authentifiziert die Verwaltungsendpunkte des Clusters bei einem Verwaltungsclient, sodass der Verwaltungsclient weiß, dass die Kommunikation tatsächlich mit dem Cluster erfolgt. Dieses Zertifikat stellt auch TLS für die HTTPS-Verwaltungs-API und für Service Fabric Explorer über HTTPS bereit.
 
 Für diese Zwecke muss das Zertifikat die folgenden Anforderungen erfüllen:
 
 * Das Zertifikat muss einen privaten Schlüssel enthalten.
 * Das Zertifikat muss für den Schlüsselaustausch erstellt werden und in eine PFX-Datei (Persönlicher Informationsaustausch) exportiert werden können.
-* Der **Name des Antragstellers für das Zertifikat muss der Domäne entsprechen**, über die auf den Service Fabric-Cluster zugegriffen wird. Dies ist erforderlich, damit SSL für die HTTPS-Verwaltungsendpunkte des Clusters und für Service Fabric Explorer bereitgestellt werden kann. Für die Domäne `.cloudapp.azure.com` können Sie kein SSL-Zertifikat von einer Zertifizierungsstelle beziehen. Erwerben Sie einen benutzerdefinierten Domänennamen für Ihren Cluster. Wenn Sie ein Zertifikat von einer Zertifizierungsstelle anfordern, muss der Name des Antragstellers für das Zertifikat dem benutzerdefinierten Domänennamen entsprechen, der für Ihren Cluster verwendet wird.
+* Der **Name des Antragstellers für das Zertifikat muss der Domäne entsprechen**, über die auf den Service Fabric-Cluster zugegriffen wird. Dies ist erforderlich, damit TLS für die HTTPS-Verwaltungsendpunkte des Clusters und für Service Fabric Explorer bereitgestellt werden kann. Für die Domäne `.cloudapp.azure.com` können Sie kein TLS-/SSL-Zertifikat von einer Zertifizierungsstelle beziehen. Erwerben Sie einen benutzerdefinierten Domänennamen für Ihren Cluster. Wenn Sie ein Zertifikat von einer Zertifizierungsstelle anfordern, muss der Name des Antragstellers für das Zertifikat dem benutzerdefinierten Domänennamen entsprechen, der für Ihren Cluster verwendet wird.
 
 #### <a name="client-authentication-certificates"></a>Clientauthentifizierungszertifikate
 Zusätzliche Clientzertifikate authentifizieren Administratoren für Clusterverwaltungsaufgaben. Service Fabric weist zwei Zugriffsebenen auf: **Administrator** und **schreibgeschützter Benutzer**. Es sollte mindestens ein einzelnes Zertifikat für den Administratorzugriff verwendet werden. Um weiteren Zugriff auf Benutzerebene zu ermöglichen, muss ein separates Zertifikat bereitgestellt werden. Weitere Informationen zu Zugriffsrollen finden Sie unter [Rollenbasierte Zugriffssteuerung für Service Fabric-Clients][service-fabric-cluster-security-roles].
