@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 66da0321930ac38217a336380c9889963a433e67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94e5e6fb826528aab1a358d44cb51bfcd6219032
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75531359"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673594"
 ---
 # <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>Implementieren der IoT Plug & Play-Vorschaumodellermittlung in eine IoT-Lösung
 
@@ -46,7 +46,7 @@ Eine zweckgebundene IoT-Lösung arbeitet mit einem bekannten Satz von IoT Plug�
 
 Sie erhalten das Funktionsmodell und Schnittstellen für die Geräte, die sich vorab mit Ihrer Lösung verbinden. Bereiten Sie Ihre Lösung mit den folgenden Schritten vor:
 
-1. Speichern Sie die JSON-Dateien der Schnittstelle in Azure an einem Speicherort, an dem Ihre Lösung sie auslesen kann.
+1. Speichern Sie die JSON-Dateien der Schnittstelle in einem [Modellrepository](./howto-manage-models.md), in dem Ihre Lösung sie auslesen kann.
 1. Schreiben Sie Logik in Ihre IoT-Lösung, basierend auf den erwarteten IoT Plug & Play-Funktionsmodellen und Schnittstellen.
 1. Abonnieren Sie Benachrichtigungen von dem IoT Hub, den Ihre Lösung verwendet.
 

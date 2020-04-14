@@ -2,42 +2,41 @@
 title: Sicherheitshärtung bei AKS-Hosts für virtuelle Computer
 description: Hier erfahren Sie mehr über die Sicherheitshärtung beim AKS-Hostbetriebssystem für virtuelle Computer.
 services: container-service
-author: saudas
+author: mlearned
 ms.topic: article
 ms.date: 09/11/2019
-ms.author: saudas
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: d4105a9fba3c40c563198040afb811625727ead0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7552fc083c5ed340dc54c2a31160b0c8b4bd076
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77594379"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420902"
 ---
-# <a name="security-hardening-in-aks-virtual-machine-hosts"></a>Sicherheitshärtung bei AKS-Hosts für virtuelle Computer 
+# <a name="security-hardening-for-aks-agent-node-host-os"></a>Sicherheitshärtung beim AKS-Hostbetriebssystem für Agent-Knoten
 
 Azure Kubernetes Service (AKS) ist ein sicherer Dienst, der die Anforderungen der SOC-, ISO-, PCI-DSS- und HIPAA-Standards erfüllt. Dieser Artikel befasst sich mit der Sicherheitshärtung, die auf AKS-Hosts für virtuelle Computer angewendet wird. Weitere Informationen zur AKS-Sicherheit finden Sie unter [Sicherheitskonzepte für Anwendungen und Cluster in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/concepts-security).
 
-AKS-Cluster werden auf virtuellen Hostcomputern bereitgestellt, auf denen ein sicherheitsoptimiertes Betriebssystem ausgeführt wird. Dieses Hostbetriebssystem basiert derzeit auf einem Ubuntu 16.04.LTS-Image, auf das eine Reihe zusätzlicher Maßnahmen zur Sicherheitshärtung angewendet wird (siehe Details der Sicherheitshärtung).   
+> [!Note]
+> Dieses Dokument bezieht sich nur auf Linux-Agents in AKS.
 
-Das Ziel des sicherheitsgehärteten Hostbetriebssystems ist es, die Angriffsfläche zu verringern und die Bereitstellung von Containern auf sichere Weise zu ermöglichen. 
+AKS-Cluster werden auf virtuellen Hostcomputern bereitgestellt, die ein sicherheitsoptimiertes Betriebssystem ausführen, das für in AKS ausgeführte Container verwendet wird. Dieses Hostbetriebssystem basiert auf einem **Ubuntu 16.04.LTS**-Image, auf das zusätzliche Sicherheitshärtung und Optimierungen angewendet werden (siehe „Details der Sicherheitshärtung“).
+
+Das Ziel des sicherheitsgehärteten Hostbetriebssystems ist es, die Angriffsfläche zu verringern und die Bereitstellung von Containern auf sichere Weise zu optimieren.
 
 > [!Important]
-> Das sicherheitsgehärtete Betriebssystem weist KEINE CIS-Benchmark auf. Obwohl es Überschneidungen mit CIS-Benchmarks gibt, ist das Ziel nicht, CIS-kompatibel zu sein. Die Zielsetzung für die Härtung des Hostbetriebssystems ist, eine Sicherheitsstufe zu erreichen, die den eigenen internen Microsoft-Sicherheitsstandards für Hosts entspricht. 
+> Das sicherheitsgehärtete Betriebssystem weist KEINE CIS-Benchmark auf. Obwohl es Überschneidungen mit CIS-Benchmarks gibt, ist das Ziel nicht, CIS-kompatibel zu sein. Das Ziel für die Härtung des Hostbetriebssystems ist es, eine Sicherheitsstufe zu erreichen, die den eigenen internen Microsoft-Sicherheitsstandards für Hosts entspricht.
 
-## <a name="security-hardening-features"></a>Features für die Sicherheitshärtung 
+## <a name="security-hardening-features"></a>Features für die Sicherheitshärtung
 
-* AKS stellt standardmäßig ein sicherheitsoptimiertes Hostbetriebssystem bereit. Es gibt aktuell keine Option zur Auswahl eines alternativen Betriebssystems. 
+* AKS stellt standardmäßig ein sicherheitsoptimiertes Hostbetriebssystem bereit. Es gibt keine Option zur Auswahl eines alternativen Betriebssystems.
 
 * Azure wendet tägliche Patches (einschließlich Sicherheitspatches) auf AKS-Hosts für virtuelle Computer an. Für einige dieser Patches ist ein Neustart erforderlich, für andere hingegen nicht. Es ist Ihre Aufgabe, die Neustarts von AKS-VM-Hosts bedarfsgerecht zu planen. Anleitungen zum Automatisieren von AKS-Patches finden Sie unter [Patchen von AKS-Knoten](https://docs.microsoft.com/azure/aks/node-updates-kured).
 
-Es folgt eine Zusammenfassung der Maßnahmen zur Härtung des Images, die in der AKS-Engine implementiert sind, um das sicherheitsoptimierte Hostbetriebssystem zu erzeugen. Die Maßnahmen wurden [in diesem GitHub-Projekt](https://github.com/Azure/aks-engine/projects/7) implementiert.  
+## <a name="what-is-configured"></a>Was wird konfiguriert?
 
-Die AKS-Engine fördert oder entspricht derzeit keinem bestimmten Sicherheitsstandard, doch sind Überwachungs-IDs des CIS (Center for Internet Security) soweit zutreffend angegeben. 
-
-## <a name="whats-configured"></a>Was ist konfiguriert?
-
-| CIS  | Überwachungsbeschreibung| 
+| CIS  | Überwachungsbeschreibung|
 |---|---|
 | 1.1.1.1 |Sicherstellen, dass die Einbindung von cramfs-Dateisystemen deaktiviert ist|
 | 1.1.1.2 |Sicherstellen, dass die Einbindung von freevxfs-Dateisystemen deaktiviert ist|
@@ -78,9 +77,9 @@ Die AKS-Engine fördert oder entspricht derzeit keinem bestimmten Sicherheitssta
 
 ## <a name="additional-notes"></a>Zusätzliche Hinweise
  
-* Um die Angriffsfläche weiter zu verringern, wurden einige unnötige Kernelmodultreiber im Betriebssystem deaktiviert. 
+* Um die Angriffsfläche weiter zu verringern, wurden einige unnötige Kernelmodultreiber im Betriebssystem deaktiviert.
 
-* Das sicherheitsgehärtete Betriebssystem wird außerhalb der AKS-Plattform NICHT unterstützt. 
+* Das sicherheitsgehärtete Betriebssystem wird speziell für AKS erstellt und verwaltet, außerhalb der AKS-Plattform aber NICHT unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte  
 

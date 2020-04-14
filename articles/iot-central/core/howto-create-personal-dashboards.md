@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: db886006ff5b9adf3de0932951f6cce4958e8ebd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06225e284000d7f10f575be08cd683488abec339
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158128"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985489"
 ---
 # <a name="create-and-manage-multiple-dashboards"></a>Erstellen und Verwalten mehrerer Dashboards
 
-Das **Dashboard** ist die Seite, die geladen wird, wenn Sie zum ersten Mal zu Ihrer Anwendung navigieren. Ein **Builder** in Ihrer Anwendung definiert das Standardanwendungsdashboard für alle Benutzer. Sie können dieses Standarddashboard durch Ihr eigenes, personalisiertes Anwendungsdashboard ersetzen. Sie können über mehrere Dashboards mit verschiedene Daten verfügen und zwischen diesen wechseln. 
+Das **Dashboard** ist die Seite, die geladen wird, wenn Sie zum ersten Mal zu Ihrer Anwendung navigieren. Ein **Builder** in Ihrer Anwendung definiert das Standardanwendungsdashboard für alle Benutzer. Außerdem können Sie ein eigenes, personalisiertes Anwendungsdashboard erstellen. Sie können über mehrere Dashboards mit verschiedene Daten verfügen und zwischen diesen wechseln.
 
 Wenn Sie ein **Administrator** für die Anwendung sind, können Sie auch bis zu 10 Dashboards auf Anwendungsebene erstellen, die Sie für andere Benutzer der Anwendung freigeben können. Nur **Administratoren** haben die Möglichkeit zum Erstellen, Bearbeiten und Löschen von Dashboards auf Anwendungsebene. 
 

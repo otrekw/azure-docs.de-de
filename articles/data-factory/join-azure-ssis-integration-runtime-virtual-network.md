@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 7e8a1793a329a863c9df97ae5ddcbee6cef10e8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e94eef3072b9636c8022a5949b05519c1554cb9e
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76964327"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585789"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Beitreten einer Azure-SSIS-Integrationslaufzeit zu einem virtuellen Netzwerk
 
@@ -129,7 +129,7 @@ Hinweise zur Auswahl eines Subnetzes:
 
 Wenn Sie Ihre eigenen statischen öffentlichen IP-Adressen für die Azure-SSIS IR verwenden möchten, während Sie sie mit einem virtuellen Netzwerk verknüpfen, müssen die Adressen die folgenden Anforderungen erfüllen:
 
-- Es müssen genau zwei nicht verwendete Adressen bereitgestellt werden, die noch nicht mit anderen Azure-Ressourcen verknüpft sind. Die zusätzliche Adresse wird bei der regelmäßigen Aktualisierung Ihrer Azure-SSIS IR verwendet.
+- Es müssen genau zwei nicht verwendete Adressen bereitgestellt werden, die noch nicht mit anderen Azure-Ressourcen verknüpft sind. Die zusätzliche Adresse wird bei der regelmäßigen Aktualisierung Ihrer Azure-SSIS IR verwendet. Beachten Sie, dass eine einzige öffentliche IP-Adresse nicht von Ihren aktiven Azure-SSIS-IRs gemeinsam genutzt werden kann.
 
 - Beide Adressen müssen statische Standardadressen sein. Weitere Details finden Sie unter [SKUs der öffentlichen IP-Adresse](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku).
 
@@ -191,10 +191,56 @@ Wenn sich Ihre Azure-SSIS IR z. B. unter `UK South` befindet und Sie den ausge
 > [!NOTE]
 > Bei diesem Ansatz fallen zusätzliche Wartungskosten an. Damit die Azure-SSIS IR funktionsfähig bleibt, sollten Sie regelmäßig den IP-Adressbereich überprüfen und der UDR neue IP-Adressbereiche hinzufügen. Es wird empfohlen, den IP-Adressbereich monatlich zu überprüfen. Nachdem die neue IP-Adresse im Diensttag angezeigt wurde, dauert es nämlich einen weiteren Monat, bis sie wirksam wird. 
 
+Wenn Sie das Setup von UDR-Regeln vereinfachen möchten, können Sie das folgende PowerShell-Skript ausführen, um UDR-Regeln für Azure Batch-Verwaltungsdienste hinzuzufügen:
+```powershell
+$Location = "[location of your Azure-SSIS IR]"
+$RouteTableResourceGroupName = "[name of Azure resource group that contains your Route Table]"
+$RouteTableResourceName = "[resource name of your Azure Route Table ]"
+$RouteTable = Get-AzRouteTable -ResourceGroupName $RouteTableResourceGroupName -Name $RouteTableResourceName
+$ServiceTags = Get-AzNetworkServiceTag -Location $Location
+$BatchServiceTagName = "BatchNodeManagement." + $Location
+$UdrRulePrefixForBatch = $BatchServiceTagName
+if ($ServiceTags -ne $null)
+{
+    $BatchIPRanges = $ServiceTags.Values | Where-Object { $_.Name -ieq $BatchServiceTagName }
+    if ($BatchIPRanges -ne $null)
+    {
+        Write-Host "Start to add rule for your route table..."
+        for ($i = 0; $i -lt $BatchIPRanges.Properties.AddressPrefixes.Count; $i++)
+        {
+            $UdrRuleName = "$($UdrRulePrefixForBatch)_$($i)"
+            Add-AzRouteConfig -Name $UdrRuleName `
+                -AddressPrefix $BatchIPRanges.Properties.AddressPrefixes[$i] `
+                -NextHopType "Internet" `
+                -RouteTable $RouteTable `
+                | Out-Null
+            Write-Host "Add rule $UdrRuleName to your route table..."
+        }
+        Set-AzRouteTable -RouteTable $RouteTable
+    }
+}
+else
+{
+    Write-Host "Failed to fetch service tags, please confirm that your Location is valid."
+}
+```
+
 Damit die Firewallappliance ausgehenden Datenverkehr zulässt, müssen Sie für die unten aufgeführten Ports „ausgehend“ zulassen, die den Anforderungen in NSG-Ausgangsregeln entsprechen.
 -   Port 443 mit dem Ziel Azure-Clouddienste.
 
-    Wenn Sie Azure Firewall verwenden, können Sie eine Netzwerkregel mit dem Azure SQL-Diensttag angeben. Andernfalls könnten Sie das Ziel „alle“ in der Firewallappliance zulassen.
+    Wenn Sie Azure Firewall verwenden, können Sie die Netzwerkregel mit dem Diensttag „AzureCloud“ angeben. Bei einer Firewall der anderen Typen können Sie das Ziel entweder einfach als „alle“ für Port 443 zulassen oder die folgenden FQDNs basierend auf dem Typ Ihrer Azure-Umgebung zulassen:
+
+    | Azure-Umgebung | Endpunkte                                                                                                                                                                                                                                                                                                                                                              |
+    |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | Azure – Öffentlich      | <ul><li><b>Azure Data Factory (Verwaltung)</b><ul><li>\*.frontend.clouddatahub.net</li></ul></li><li><b>Azure Storage (Verwaltung)</b><ul><li>\*.blob.core.windows.net</li><li>\*.table.core.windows.net</li></ul></li><li><b>Azure Container Registry (Benutzerdefiniertes Setup)</b><ul><li>\*.azurecr.io</li></ul></li><li><b>Event Hub (Protokollierung)</b><ul><li>\*.servicebus.windows.net</li></ul></li><li><b>Microsoft-Protokollierungsdienst (Interne Verwendung)</b><ul><li>gcs.prod.monitoring.core.windows.net</li><li>prod.warmpath.msftcloudes.com</li><li>azurewatsonanalysis-prod.core.windows.net</li></ul></li></ul> |
+    | Azure Government  | <ul><li><b>Azure Data Factory (Verwaltung)</b><ul><li>\*.frontend.datamovement.azure.us</li></ul></li><li><b>Azure Storage (Verwaltung)</b><ul><li>\*.blob.core.usgovcloudapi.net</li><li>\*.table.core.usgovcloudapi.net</li></ul></li><li><b>Azure Container Registry (Benutzerdefiniertes Setup)</b><ul><li>\*.azurecr.us</li></ul></li><li><b>Event Hub (Protokollierung)</b><ul><li>\*.servicebus.usgovcloudapi.net</li></ul></li><li><b>Microsoft-Protokollierungsdienst (Interne Verwendung)</b><ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>azurewatsonanalysis.usgovcloudapp.net</li></ul></li></ul> |
+    | Azure China 21Vianet     | <ul><li><b>Azure Data Factory (Verwaltung)</b><ul><li>\*.frontend.datamovement.azure.cn</li></ul></li><li><b>Azure Storage (Verwaltung)</b><ul><li>\*.blob.core.chinacloudapi.cn</li><li>\*.table.core.chinacloudapi.cn</li></ul></li><li><b>Azure Container Registry (Benutzerdefiniertes Setup)</b><ul><li>\*.azurecr.cn</li></ul></li><li><b>Event Hub (Protokollierung)</b><ul><li>\*.servicebus.chinacloudapi.cn</li></ul></li><li><b>Microsoft-Protokollierungsdienst (Interne Verwendung)</b><ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>azurewatsonanalysis.chinacloudapp.cn</li></ul></li></ul> |
+
+    Wie bei den FQDNs von Azure Storage, Azure Container Registry und Event Hub können Sie wahlweise auch die folgenden Dienstendpunkte für Ihr virtuelles Netzwerk aktivieren, sodass der Netzwerkdatenverkehr zu diesen Endpunkten das Azure-Backbone-Netzwerk durchläuft, statt an Ihre Firewallappliance weitergeleitet zu werden:
+    -  Microsoft.Storage
+    -  Microsoft.ContainerRegistry
+    -  Microsoft.EventHub
+
 
 -   Port 80 mit dem Ziel CRL-Downloadwebsites.
 
@@ -241,7 +287,7 @@ Die Azure SSIS-IR muss bestimmte Netzwerkressourcen unter der gleichen Ressource
 > [!NOTE]
 > Sie können jetzt Ihre eigenen statischen öffentlichen IP-Adressen für die Azure-SSIS IR verwenden. In diesem Szenario erstellen wir nur den Azure-Lastenausgleich und die Netzwerksicherheitsgruppe in derselben Ressourcengruppe wie Ihre statischen öffentlichen IP-Adressen und nicht im virtuellen Netzwerk.
 
-Die betreffenden Ressourcen werden beim Start der Azure-SSIS IR erstellt. Sie werden gelöscht, wenn die Azure-SSIS IR beendet wird. Wenn Sie Ihre eigenen statischen öffentlichen IP-Adressen für Azure-SSIS IR verwenden, werden diese beim Beenden der Azure-SSIS IR nicht gelöscht. Damit Ihre Azure-SSIS IR ordnungsgemäß beendet werden kann, sollten Sie diese Netzwerkressourcen nicht in anderen Ressourcen wiederverwenden. 
+Die betreffenden Ressourcen werden beim Start der Azure-SSIS IR erstellt. Sie werden gelöscht, wenn die Azure-SSIS IR beendet wird. Wenn Sie Ihre eigenen statischen öffentlichen IP-Adressen für Azure-SSIS IR verwenden, werden diese beim Beenden der Azure-SSIS IR nicht gelöscht. Damit Ihre Azure-SSIS IR ordnungsgemäß beendet werden kann, sollten Sie diese Netzwerkressourcen nicht in anderen Ressourcen wiederverwenden.
 
 Stellen Sie sicher, dass es keine Ressourcensperre für die Ressourcengruppe oder das Abonnement gibt, zu der bzw. dem das virtuelle Netzwerk gehört bzw. die öffentlichen IP-Adressen gehören. Wenn Sie eine Schreibschutzsperre oder eine Löschsperre konfigurieren, kann beim Starten und Beenden der Azure-SSIS IR ein Fehler auftreten oder die IR nicht mehr reagieren.
 
@@ -249,6 +295,8 @@ Stellen Sie sicher, dass Sie keine Azure-Richtlinie haben, die verhindert, dass 
 - Microsoft.Network/LoadBalancers 
 - Microsoft.Network/NetworkSecurityGroups 
 - Microsoft.Network/PublicIPAddresses 
+
+Stellen Sie sicher, dass das Ressourcenkontingent Ihres Abonnements für die vorstehenden drei Netzwerkressourcen ausreicht. Insbesondere müssen Sie bei jeder im virtuellen Netzwerk erstellten Azure-SSIS IR zwei kostenlose Kontingente für jede der vorstehenden drei Netzwerkressourcen reservieren. Das eine zusätzliche Kontingent wird bei der regelmäßigen Aktualisierung Ihrer Azure-SSIS IR verwendet.
 
 ### <a name="faq"></a><a name="faq"></a> Häufig gestellte Fragen (FAQ)
 

@@ -10,13 +10,13 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
-ms.date: 06/18/2019
-ms.openlocfilehash: 0d04ea7d7003f274b252e057b7afced7759bfaae
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 03/13/2020
+ms.openlocfilehash: 3fe5a58046776d00ce68189cf724a995380869eb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928507"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887295"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
 
@@ -62,11 +62,14 @@ Führen Sie die unten angegebenen Schritte aus, um über die Azure Data Factory-
 
    ![Erstellen einer Integration Runtime](media/create-self-hosted-integration-runtime/new-integration-runtime.png)
 
-1. Wählen Sie im Fenster **Integration runtime setup** (Integration Runtime-Setup) die Option **Perform data movement and dispatch activities to external computes** (Datenverschiebung und -verteilung an externe Computeressourcen ausführen) und dann **Weiter** aus.
+1. Wählen Sie auf der Seite **Integration Runtime-Setup** die Option **Azure, Selbstgehostet** und dann **Weiter** aus. 
+
+1. Wählen Sie auf der daraufhin angezeigten Seite **Selbstgehostet** aus, um eine selbstgehostete IR zu erstellen, und wählen Sie dann **Weiter**aus.
+   ![Erstellen einer selbstgehosteten IR](media/create-self-hosted-integration-runtime/new-selfhosted-ir.png)
 
 1. Geben Sie einen Namen für Ihre IR ein, und wählen Sie **Erstellen** aus.
 
-1. Wählen Sie den Link unter **Option 1** aus, um auf Ihrem Computer das Express-Setup zu öffnen. Oder führen Sie die Schritte unter **Option 2** aus, um die Einrichtung manuell vorzunehmen. Die folgende Anleitung basiert auf dem manuellen Setup:
+1. Wählen Sie auf der Seite **Integration Runtime-Setup** den Link unter **Option 1** aus, um das Express-Setup auf Ihrem Computer zu öffnen. Oder führen Sie die Schritte unter **Option 2** aus, um die Einrichtung manuell vorzunehmen. Die folgende Anleitung basiert auf dem manuellen Setup:
 
    ![Setup der Integrationslaufzeit](media/create-self-hosted-integration-runtime/integration-runtime-setting-up.png)
 
@@ -162,7 +165,7 @@ Hier ist eine allgemeine Zusammenfassung der Datenflussschritte zum Kopieren per
    
    Die Installation der selbstgehosteten Integration Runtime auf einem Domänencontroller wird nicht unterstützt.
 - .NET Framework 4.6.1 oder höher ist erforderlich. Wenn Sie die selbstgehostete Integration Runtime auf einem Windows 7-Computer installieren, sollten Sie .NET Framework 4.6.1 oder höher installieren. Ausführlichere Informationen finden Sie unter [Systemanforderungen für .NET Framework](/dotnet/framework/get-started/system-requirements) .
-- Die empfohlene Mindestkonfiguration für den Computer mit der selbstgehosteten Integration Runtime ist ein 2-GHz-Prozessor mit vier Kernen, 8 GB RAM und 80 GB verfügbarem Speicherplatz auf der Festplatte.
+- Die empfohlene Mindestkonfiguration für den Computer mit der selbstgehosteten Integration Runtime ist ein 2-GHz-Prozessor mit 4 Kernen, 8 GB RAM und 80 GB verfügbarem Speicherplatz auf dem Datenträger.
 - Wenn sich der Hostcomputer im Ruhezustand befindet, reagiert die selbstgehostete Integration Runtime nicht auf Datenanforderungen. Konfigurieren Sie vor der Installation der selbstgehosteten Integration Runtime einen entsprechenden Energiesparplan auf dem Computer. Wenn für den Computer der Ruhezustand konfiguriert ist, wird im Installationsprogramm für die selbstgehostete Integration Runtime eine Meldung angezeigt.
 - Sie müssen der Administrator des Computers sein, um die selbstgehostete Integration Runtime erfolgreich installieren und konfigurieren zu können.
 - Ausführungen der Kopieraktivität werden mit einer bestimmten Häufigkeit durchgeführt. Die Prozessor- und RAM-Nutzung auf dem Computer folgt dem gleichen Muster mit Spitzen- und Leerlaufzeiten. Außerdem ist die Ressourcenverwendung auch stark von der Menge der Daten abhängig, die verschoben werden. Wenn mehrere Kopieraufträge in Bearbeitung sind, steigt die Ressourcenverwendung zu Spitzenzeiten an.
@@ -172,7 +175,7 @@ Hier ist eine allgemeine Zusammenfassung der Datenflussschritte zum Kopieren per
 
 ## <a name="installation-best-practices"></a>Bewährte Methoden für die Installation
 
-Sie können die selbstgehostete Integration Runtime installieren, indem Sie aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717) ein MSI-Setuppaket herunterladen. Eine Schritt-für-Schritt-Anleitung finden Sie im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud](tutorial-hybrid-copy-powershell.md).
+Sie können die selbstgehostete Integration Runtime installieren, indem Sie aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717) ein Setuppaket des Typs „Verwaltete Identität“ herunterladen. Eine Schritt-für-Schritt-Anleitung finden Sie im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud](tutorial-hybrid-copy-powershell.md).
 
 - Konfigurieren Sie den Energiesparplan auf dem Hostcomputer für die selbstgehostete Integration Runtime, damit der Computer nicht in den Ruhezustand versetzt wird. Wenn der Hostcomputer in den Ruhezustand versetzt wird, wechselt die selbstgehostete Integration Runtime in den Offlinemodus.
 - Sichern Sie regelmäßig die Anmeldeinformationen, die der selbstgehosteten Integration Runtime zugeordnet sind.
@@ -182,7 +185,7 @@ Sie können die selbstgehostete Integration Runtime installieren, indem Sie aus 
 
 1. Navigieren Sie zur [Downloadseite für die Microsoft-Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717).
 1. Wählen Sie die Option **Herunterladen**, die 64-Bit-Version und dann **Weiter** aus. Die 32-Bit-Version wird nicht unterstützt.
-1. Führen Sie die MSI-Datei direkt aus, oder speichern Sie sie zur späteren Ausführung auf Ihrer Festplatte.
+1. Führen Sie die Datei für „Verwaltete Identität“ direkt aus, oder speichern Sie sie zur späteren Ausführung auf Ihrer Festplatte.
 1. Wählen Sie im Fenster **Willkommen** eine Sprache und dann **Weiter** aus.
 1. Akzeptieren Sie die Microsoft-Software-Lizenzbedingungen, und wählen Sie **Weiter** aus.
 1. Wählen Sie den **Ordner** für die Installation der selbstgehosteten Integration Runtime und dann **Weiter** aus.
@@ -202,7 +205,7 @@ Sie können die selbstgehostete Integration Runtime installieren, indem Sie aus 
 
     1. Wählen Sie **Registrieren**.
 
-## <a name="high-availability-and-scalability"></a>Hochverfügbarkeit und Skalierbarkeit
+## <a name="high-availability-and-scalability"></a>Hohe Verfügbarkeit und Skalierbarkeit
 
 Sie können eine selbstgehostete Integration Runtime mehreren lokalen Computern oder virtuellen Computern in Azure zuordnen. Diese Computer werden als Knoten bezeichnet. Einer selbstgehosteten Integration Runtime können bis zu vier Knoten zugeordnet sein. Die Vorteile der Nutzung mehrerer Knoten auf lokalen Computern mit installiertem Gateway für ein logisches Gateway sind:
 
@@ -219,13 +222,13 @@ Sie können mehrere Knoten zuordnen, indem Sie die Software für die selbstgehos
 
 ### <a name="scale-considerations"></a>Aspekte der Skalierung
 
-#### <a name="scale-out"></a>Horizontales Skalieren
+#### <a name="scale-out"></a>Aufskalieren
 
-Wenn die Prozessorauslastung hoch und für die selbstgehostete Integration Runtime nur wenig Arbeitsspeicher verfügbar ist, sollten Sie einen neuen Knoten hinzufügen, um das horizontale Hochskalieren für die Computer zu unterstützen. Falls für Aktivitäten ein Fehler auftritt, weil das Zeitlimit erreicht ist oder die selbstgehostete IR offline ist, ist es hilfreich, wenn Sie dem Gateway einen Knoten hinzufügen.
+Wenn die Prozessorauslastung hoch und für die selbstgehostete Integration Runtime nur wenig Arbeitsspeicher verfügbar ist, sollten Sie einen neuen Knoten hinzufügen, um das Aufskalieren für die Computer zu unterstützen. Falls für Aktivitäten ein Fehler auftritt, weil das Zeitlimit erreicht ist oder die selbstgehostete IR offline ist, ist es hilfreich, wenn Sie dem Gateway einen Knoten hinzufügen.
 
-#### <a name="scale-up"></a>Zentrales Hochskalieren
+#### <a name="scale-up"></a>Hochskalieren
 
-Wenn der Prozessor und der verfügbare RAM keine gute Auslastung aufweisen, die Ausführung von gleichzeitigen Aufträgen aber in die Nähe des Grenzwerts eines Knotens kommt, sollten Sie zentral hochskalieren. Erhöhen Sie hierzu die Anzahl von gleichzeitigen Aufträgen, die von einem Knoten ausgeführt werden können. Es kann auch hilfreich sein, zentral hochzuskalieren, wenn für Aktivitäten eine Zeitüberschreitung auftritt, weil die selbstgehostete IR überlastet ist. Wie in der folgenden Abbildung gezeigt, können Sie die maximale Kapazität für einen Knoten erhöhen:  
+Wenn der Prozessor und der verfügbare RAM keine gute Auslastung aufweisen, die Ausführung von gleichzeitigen Aufträgen aber in die Nähe des Grenzwerts eines Knotens kommt, sollten Sie hochskalieren. Erhöhen Sie hierzu die Anzahl von gleichzeitigen Aufträgen, die von einem Knoten ausgeführt werden können. Es kann auch hilfreich sein, hochzuskalieren, wenn für Aktivitäten eine Zeitüberschreitung auftritt, weil die selbstgehostete IR überlastet ist. Wie in der folgenden Abbildung gezeigt, können Sie die maximale Kapazität für einen Knoten erhöhen:  
 
 ![Erhöhen Sie die Anzahl von gleichzeitigen Aufträgen, die auf einem Knoten ausgeführt werden können.](media/create-self-hosted-integration-runtime/scale-up-self-hosted-IR.png)
 
@@ -236,7 +239,7 @@ Hier sind die Anforderungen für das TLS/SSL-Zertifikat angegeben, das Sie zum S
 - Das Zertifikat muss ein öffentlich vertrauenswürdiges Zertifikat vom Typ „X509 v3“ sein. Wir empfehlen Ihnen die Verwendung von Zertifikaten, die von einer öffentlichen Zertifizierungsstelle für Partner ausgestellt werden.
 - Jeder Integration Runtime-Knoten muss diesem Zertifikat vertrauen.
 - SAN-Zertifikate (Subject Alternative Name, alternativer Antragstellername) sind nicht empfehlenswert, da nur das letzte SAN-Element verwendet wird. Alle anderen SAN-Elemente werden ignoriert. Wenn Sie beispielsweise ein SAN-Zertifikat mit den SANs **node1.domain.contoso.com** und **node2.domain.contoso.com** verwenden, können Sie dieses Zertifikat nur auf dem Computer nutzen, dessen vollqualifizierter Domänenname (FQDN) **node2.domain.contoso.com** lautet.
-- Für das Zertifikat können alle Schlüsselgrößen verwendet werden, die von Windows Server 2012 R2 für SSL-Zertifikate unterstützt werden.
+- Für das Zertifikat können alle Schlüsselgrößen verwendet werden, die von Windows Server 2012 R2 für TLS/SSL-Zertifikate unterstützt werden.
 - Zertifikate, die CNG-Schlüssel verwenden, werden nicht unterstützt.  
 
 > [!NOTE]
@@ -283,7 +286,7 @@ Ausführliche Informationen zum Freigeben einer selbstgehosteten Integration Run
 
 ### <a name="known-limitations-of-self-hosted-ir-sharing"></a>Bekannte Einschränkungen der Freigabe selbstgehosteter IRs
 
-* Die Data Factory, in der eine verknüpfte IR erstellt wird, muss über eine [Verwaltete Dienstidentität (Managed Service Identity, MSI)](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) verfügen. Standardmäßig verfügen die im Azure-Portal oder mit PowerShell-Cmdlets erstellten Data Factorys über eine implizit erstellte verwaltete Dienstidentität. Wenn eine Data Factory aber mit einer Azure Resource Manager-Vorlage oder mit einem SDK erstellt wird, müssen Sie die **Identity**-Eigenschaft explizit festlegen. Mit dieser Einstellung wird sichergestellt, dass Resource Manager eine Data Factory mit einer verwalteten Dienstidentität erstellt.
+* Die Data Factory, in der eine verknüpfte IR erstellt wird, muss über eine [verwaltete Identität](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) verfügen. Standardmäßig verfügen die im Azure-Portal oder mit PowerShell-Cmdlets erstellten Data Factorys über eine implizit erstellte verwaltete Identität. Wenn eine Data Factory aber mit einer Azure Resource Manager-Vorlage oder mit einem SDK erstellt wird, müssen Sie die **Identity**-Eigenschaft explizit festlegen. Mit dieser Einstellung wird sichergestellt, dass Resource Manager eine Data Factory mit einer verwalteten Identität erstellt.
 
 * Sie müssen mindestens Version 1.1.0 des Data Factory .NET SDK verwenden, damit dieses Feature unterstützt wird.
 
@@ -291,7 +294,7 @@ Ausführliche Informationen zum Freigeben einer selbstgehosteten Integration Run
 
 * Die Freigabefunktion kann nur für Data Factorys unter demselben Azure Active Directory-Mandanten verwendet werden.
 
-* Für Azure AD-[Gastbenutzer](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews) ist zu beachten, dass die Suchfunktion auf der Benutzeroberfläche, bei der alle Data Factorys per Suchschlüsselwort aufgelistet werden, [nicht funktioniert](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits). Aber sofern der Gastbenutzer der Besitzer der Data Factory ist, können Sie die IR ohne Suchfunktion freigeben. Geben Sie für die MSI der Data Factory, für die die IR freigegeben werden muss, die MSI in das Feld **Berechtigung zuweisen** ein, und wählen Sie auf der Data Factory-Benutzeroberfläche die Option **Hinzufügen** aus.
+* Für Azure AD-[Gastbenutzer](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews) ist zu beachten, dass die Suchfunktion auf der Benutzeroberfläche, bei der alle Data Factorys per Suchschlüsselwort aufgelistet werden, [nicht funktioniert](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits). Aber sofern der Gastbenutzer der Besitzer der Data Factory ist, können Sie die IR ohne Suchfunktion freigeben. Geben Sie für die verwaltete Identität der Data Factory, für die die IR freigegeben werden muss, diese verwaltete Identität in das Feld **Berechtigung zuweisen** ein. Wählen Sie auf der Data Factory-Benutzeroberfläche **Hinzufügen** aus.
 
   > [!NOTE]
   > Dieses Feature steht nur in Data Factory V2 zur Verfügung.
@@ -329,7 +332,7 @@ Stellen Sie sicher, dass Sie die Firewallregeln der Unternehmensfirewall, der Wi
 Führen Sie beispielsweise die folgenden Schritte aus, um Daten aus einem lokalen Datenspeicher in eine SQL-Datenbank-Senke oder eine Azure SQL Data Warehouse-Senke zu kopieren:
 
 1. Lassen Sie ausgehende TCP-Kommunikation an Port 1433 sowohl für die Windows-Firewall als auch für die Unternehmensfirewall zu.
-1. Konfigurieren Sie die Firewalleinstellungen der SQL Datenbank, um die IP-Adresse des Computers mit der selbstgehosteten Integration Runtime der Liste mit den zulässigen IP-Adressen hinzuzufügen.
+1. Konfigurieren Sie die Firewalleinstellungen der SQL-Datenbank-Instanz, um die IP-Adresse des Computers mit der selbstgehosteten Integration Runtime der Liste mit den zulässigen IP-Adressen hinzuzufügen.
 
 > [!NOTE]
 > Falls Ihre Firewall den ausgehenden Port 1433 nicht zulässt, kann die selbstgehostete Integration Runtime nicht direkt auf die SQL Datenbank zugreifen. In diesem Fall können Sie ein [gestaffeltes Kopieren](copy-activity-performance.md) zu SQL-Datenbank und SQL Data Warehouse anwenden. Sie benötigen bei einem Szenario dieser Art nur HTTPS (Port 443) für die Datenverschiebung.
@@ -357,7 +360,7 @@ Wenn Sie nach der Registrierung der selbstgehosteten Integration Runtime die Pro
 1. Öffnen Sie den **Konfigurations-Manager für Microsoft Integration Runtime**.
 1. Wählen Sie die Registerkarte **Einstellungen** aus.
 1. Wählen Sie unter **HTTP-Proxy** den Link **Ändern** aus, um das Dialogfeld **HTTP-Proxy festlegen** zu öffnen.
-1. Klicken Sie auf **Weiter**. Eine Warnung wird angezeigt, die Sie zur Bestätigung auffordert, dass die Proxyeinstellung gespeichert und der Hostdienst der Integration Runtime neu gestartet werden soll.
+1. Wählen Sie **Weiter** aus. Eine Warnung wird angezeigt, die Sie zur Bestätigung auffordert, dass die Proxyeinstellung gespeichert und der Hostdienst der Integration Runtime neu gestartet werden soll.
 
 Sie können das Konfigurations-Manager-Tool verwenden, um den HTTP-Proxy anzuzeigen und zu aktualisieren.
 

@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: 1b87fa795047070db9a10ceec4b69dd6f7c042a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d43650fc3dbd5fc1aabe676a4f2631e1655b25e5
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79217186"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547937"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Datentransformationsausdrücke in Mapping Data Flow 
 
@@ -106,8 +106,14 @@ ___
 Gibt den ersten Wert ungleich NULL aus einem Satz von Eingaben zurück. Alle Eingaben müssen denselben Typ * ``coalesce(10, 20) -> 10``
 * ``coalesce(toString(null), toString(null), 'dumbo', 'bo', 'go') -> 'dumbo'``
 ___
+### <code>columnNames</code>
+<code><b>columnNames(<i>&lt;value1&gt;</i> : string) => array</b></code> aufweisen.<br/><br/>
+Ruft alle Ausgabespalten für einen Stream ab. Sie können einen optionalen Streamnamen als zweites Argument übergeben.
+* ``columnNames()``
+* ``columnNames('DeriveStream')``
+___
 ### <code>compare</code>
-<code><b>compare(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => integer</b></code> aufweisen.<br/><br/>
+<code><b>compare(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => integer</b></code><br/><br/>
 Vergleicht zwei Werte des gleichen Typs. Gibt eine negative Ganzzahl zurück, wenn value1 < value2, 0, wenn value1 = = value2, einen positiven Wert, wenn value1 > value2 * ``(compare(12, 24) < 1) -> true``
 * ``(compare('dumbo', 'dum') > 0) -> true``
 ___

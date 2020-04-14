@@ -6,17 +6,17 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 04/07/2020
 author: djpmsft
 ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
-ms.openlocfilehash: 88500ecbc56b34551a0cbd3ca94727ba4bbcda9f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e736cc95628bd0e15bdb7ffd425608278788c353
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930643"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879263"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Aktivität „Variable festlegen“ in Azure Data Factory
 
@@ -26,11 +26,73 @@ Verwenden Sie die Aktivität „Variable festlegen“, um den Wert einer vorhand
 
 Eigenschaft | BESCHREIBUNG | Erforderlich
 -------- | ----------- | --------
-name | Der Name der Aktivität in der Pipeline. | Ja
+name | Der Name der Aktivität in der Pipeline. | ja
 description | Text, der beschreibt, welche Aktion die Aktivität ausführt. | nein
-type | Der Aktivitätstyp ist SetVariable. | ja
-value | Ein Zeichenfolgenliteral- oder Ausdrucksobjektwert, der zum Festlegen der angegebenen Variable verwendet wird. | ja
+type | Muss auf **SetVariable** festgelegt werden. | ja
+value | Zeichenfolgenliteral- oder Ausdrucksobjektwert, dem die Variable zugewiesen wird. | ja
 variableName | Der Name der Variablen, die von dieser Aktivität festgelegt wird. | ja
+
+## <a name="incrementing-a-variable"></a>Schrittweises Erhöhen einer Variablen
+
+Ein häufiges Szenario, bei dem Variablen in Azure Data Factory einbezogen werden, ist die Verwendung einer Variablen als Iterator innerhalb einer „until“- oder „foreach“-Aktivität. In einer Aktivität „Variable festlegen“ können Sie nicht auf die Variable verweisen, die im Feld `value` festgelegt wird. Legen Sie zur Umgehung dieser Einschränkung eine temporäre Variable fest, und erstellen Sie dann eine zweite Aktivität „Variable festlegen“. Die zweite Aktivität „Variable festlegen“ legt den Wert des Iterators auf die temporäre Variable fest. 
+
+Nachstehend sehen Sie ein Beispiel für dieses Muster:
+
+![Variable schrittweise erhöhen](media/control-flow-set-variable-activity/increment-variable.png "Erhöhen eines Variablenwerts")
+
+``` json
+{
+    "name": "pipeline3",
+    "properties": {
+        "activities": [
+            {
+                "name": "Set I",
+                "type": "SetVariable",
+                "dependsOn": [
+                    {
+                        "activity": "Increment J",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "userProperties": [],
+                "typeProperties": {
+                    "variableName": "i",
+                    "value": {
+                        "value": "@variables('j')",
+                        "type": "Expression"
+                    }
+                }
+            },
+            {
+                "name": "Increment J",
+                "type": "SetVariable",
+                "dependsOn": [],
+                "userProperties": [],
+                "typeProperties": {
+                    "variableName": "j",
+                    "value": {
+                        "value": "@string(add(int(variables('i')), 1))",
+                        "type": "Expression"
+                    }
+                }
+            }
+        ],
+        "variables": {
+            "i": {
+                "type": "String",
+                "defaultValue": "0"
+            },
+            "j": {
+                "type": "String",
+                "defaultValue": "0"
+            }
+        },
+        "annotations": []
+    }
+}
+```
 
 
 ## <a name="next-steps"></a>Nächste Schritte
