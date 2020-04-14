@@ -607,6 +607,8 @@
           href: configure-bcdr-azure-ssis-integration-runtime.md
         - name: Bereinigen von SSISDB-Protokollen mit Aufträgen für die elastische Datenbank
           href: how-to-clean-up-ssisdb-logs-with-elastic-jobs.md
+        - name: Migrieren von SSIS-Aufträgen mit SSMS
+          href: how-to-migrate-ssis-job-ssms.md
     - name: Erstellen von Triggern
       items:
         - name: Erstellen eines ereignisbasierten Triggers
@@ -675,8 +677,6 @@
           href: scenario-ssis-migration-overview.md
         - name: SSISDB-Migration zu einer verwalteten Azure SQL-Datenbank-Instanz
           href: scenario-ssis-migration-ssisdb-mi.md
-        - name: Migration von SSIS-Aufträgen zu Azure Data Factory
-          href: how-to-migrate-ssis-job-ssms.md
 - name: Verweis
   items:
     - name: Datenflussskript

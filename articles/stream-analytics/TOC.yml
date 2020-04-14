@@ -61,14 +61,18 @@
           href: stream-analytics-sql-output-perf.md
         - name: Benutzerdefinierte Pfadmuster für Blobs
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
-    - name: Benutzerdefinierte Funktionen
+    - name: Erweitern von Abfragen mit Funktionen
       items:
-        - name: "Machine\_Learning-UDF"
-          href: machine-learning-udf.md
-        - name: 'C#-UDF'
-          href: stream-analytics-edge-csharp-udf-methods.md
+        - name: Übersicht über Funktionen
+          href: functions-overview.md
         - name: "JavaScript\_UDF"
           href: stream-analytics-javascript-user-defined-functions.md
+        - name: JavaScript-UDA
+          href: stream-analytics-javascript-user-defined-aggregates.md
+        - name: 'C#-UDF'
+          href: stream-analytics-edge-csharp-udf-methods.md
+        - name: "Machine\_Learning-UDF"
+          href: machine-learning-udf.md
     - name: Optimieren Ihres Stream Analytics-Auftrags
       items:
         - name: Überblick über Streamingeinheiten und Informationen zu Anpassungen
@@ -140,8 +144,6 @@
           href: stream-analytics-edge.md
         - name: Analysieren von Sensordaten von Mauthäuschen
           href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
-        - name: Ausführen eines benutzerdefinierten JavaScript-Aggregats
-          href: stream-analytics-javascript-user-defined-aggregates.md
         - name: Hochfrequenzhandel
           href: stream-analytics-high-frequency-trading.md
         - name: Verarbeiten von IoT-Streamingdaten

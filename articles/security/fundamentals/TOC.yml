@@ -85,9 +85,9 @@
     - name: Datenbanksicherheit
       items:
         - name: Übersicht
-          href: database-security-overview.md
+          href: ../../sql-database/sql-database-security-overview.md
         - name: Bewährte Methoden
-          href: database-best-practices.md
+          href: ../../sql-database/sql-database-security-best-practice.md
         - name: Checkliste für die Sicherheit
           href: database-security-checklist.md
     - name: Sicherheitsleitfaden zu Storage
@@ -115,6 +115,8 @@
       href: log-audit.md
     - name: Sicherheitsverwaltung und -überwachung
       href: management-monitoring-overview.md
+    - name: Verbessern der Remoteverwaltung
+      href: management.md
     - name: Betriebssicherheit
       items:
         - name: Übersicht
