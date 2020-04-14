@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2018
 ms.author: genli
-ms.openlocfilehash: 9c3216af283ebd9d84a5469d4d50d18c19f67534
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4edeea749ba22bef173c15f3a0855679b784ce33
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71121948"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668574"
 ---
 # <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>Back-End-Serverzertifikat nicht in der Whitelist für ein Anwendungsgateway enthalten (bei Verwendung eines internen Lastenausgleichs mit einer App Service-Umgebung)
 
-In diesem Artikel wird die Behebung des folgenden Problems behandelt: Ein Zertifikat ist nicht in der Whitelist enthalten, wenn Sie ein Anwendungsgateway unter Verwendung eines internen Lastenausgleichs (Internal Load Balancer, ILB) und einer App Service-Umgebung (App Service Environment, ASE) am Back-End erstellen und dabei End-to-End-SSL in Azure verwenden.
+In diesem Artikel wird die Behebung des folgenden Problems behandelt: Ein Zertifikat ist nicht in der Whitelist enthalten, wenn Sie ein Anwendungsgateway unter Verwendung eines internen Lastenausgleichs (Internal Load Balancer, ILB) und einer App Service-Umgebung (App Service Environment, ASE) am Back-End erstellen und dabei End-to-End-TLS in Azure verwenden.
 
 ## <a name="symptoms"></a>Symptome
 
@@ -68,7 +68,7 @@ Wenn Sie für den ILB-Zugriff einen vollständig qualifizierten Domänennamen (F
 
 - Deaktivieren Sie die Option **Use for App service** (Für App-Dienst verwenden) für das Anwendungsgateway, falls Sie die IP-Adresse des ILB verwenden.
 
-Zur Vereinfachung können Sie das ILB-Zertifikat in den HTTP-Einstellungen hochladen, damit der Testpfad funktioniert. (Dieser Schritt betrifft lediglich die Aufnahme in die Whitelist. Es wird nicht für die SSL-Kommunikation verwendet.) Sie können das ILB-Zertifikat abrufen, indem Sie in Ihrem Browser über HTTPS mit der IP-Adresse des ILB auf den ILB zugreifen, das SSL-Zertifikat in ein Base64-codiertes CER-Format exportieren und das Zertifikat anschließend in den entsprechenden HTTP-Einstellungen hochladen.
+Zur Vereinfachung können Sie das ILB-Zertifikat in den HTTP-Einstellungen hochladen, damit der Testpfad funktioniert. (Dieser Schritt betrifft lediglich die Aufnahme in die Whitelist. Es wird nicht für die TLS-Kommunikation verwendet.) Sie können das ILB-Zertifikat abrufen, indem Sie in Ihrem Browser über HTTPS mit der IP-Adresse des ILB auf den ILB zugreifen, das TLS/SSL-Zertifikat in ein Base64-codiertes CER-Format exportieren und das Zertifikat anschließend in den entsprechenden HTTP-Einstellungen hochladen.
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 

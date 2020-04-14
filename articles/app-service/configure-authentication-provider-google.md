@@ -1,26 +1,28 @@
 ---
 title: Konfigurieren von Google-Authentifizierung
-description: Erfahren Sie, wie Sie Google-Authentifizierung als Identitätsanbieter für Ihre App Services-App konfigurieren.
+description: Erfahren Sie, wie Sie die Google-Authentifizierung als Identitätsanbieter für Ihre App Services- oder Azure Functions-App konfigurieren.
 ms.assetid: 2b2f9abf-9120-4aac-ac5b-4a268d9b6e2b
 ms.topic: article
 ms.date: 09/02/2019
-ms.custom: seodec18
-ms.openlocfilehash: 81ce3e393d308323c8d5a3d688c16c9b45e7be9d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.custom:
+- seodec18
+- fasttrack-edit
+ms.openlocfilehash: e8a9fbe6072f3628d755ad3ad5aa5a623fc3ab23
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670823"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519941"
 ---
-# <a name="configure-your-app-service-app-to-use-google-login"></a>Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Google-Anmeldung
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-google-login"></a>Konfigurieren Ihrer App Service- oder Azure Functions-App zur Verwendung der Google-Anmeldung
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-In diesem Thema wird veranschaulicht, wie Sie Azure App Service zur Verwendung von Google als Authentifizierungsanbieter konfigurieren.
+In diesem Thema wird veranschaulicht, wie Sie Azure App Service oder Azure Functions zur Verwendung von Google als Authentifizierungsanbieter konfigurieren.
 
 Sie benötigen ein Google-Konto mit verifizierter E-Mail-Adresse, um den in diesem Thema beschriebenen Vorgang abzuschließen. Besuchen Sie die Seite [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302), um ein neues Google-Konto zu erstellen.
 
-## <a name="register"></a>Registrieren Ihrer Anwendung für Google
+## <a name="register-your-application-with-google"></a><a name="register"> </a>Registrieren Ihrer Anwendung für Google
 
 1. Gehen Sie entsprechend der Google-Dokumentation unter [Google Sign-In for server-side apps](https://developers.google.com/identity/sign-in/web/server-side-flow) vor, um eine Client-ID und einen geheimen Client Schlüssel zu erstellen: Es sind keine Codeänderungen erforderlich. Verwenden Sie lediglich die folgenden Informationen:
     - Verwenden Sie für **Authorized JavaScript Origins** den Wert `https://<app-name>.azurewebsites.net`, wobei Sie den Namen Ihrer App in *\<app-name>* angeben.
@@ -30,9 +32,9 @@ Sie benötigen ein Google-Konto mit verifizierter E-Mail-Adresse, um den in dies
     > [!IMPORTANT]
     > Das App-Geheimnis ist eine wichtige Sicherheitsanmeldeinformation. Teilen Sie diesen Schlüssel mit niemandem, und geben Sie ihn nicht über Ihre Anwendung weiter.
 
-## <a name="secrets"></a>Hinzufügen von Google-Informationen zu Ihrer Anwendung
+## <a name="add-google-information-to-your-application"></a><a name="secrets"> </a>Hinzufügen von Google-Informationen zu Ihrer Anwendung
 
-1. Wechseln Sie im [Azure-Portal] zu Ihrer App Service-App.
+1. Wechseln Sie im [Azure portal] zu Ihrer App Service-App.
 1. Wählen Sie **Einstellungen** > **Authentifizierung/Autorisierung,** aus, und stellen Sie sicher, dass für die **App Service-Authentifizierung** die Option **Ein** festgelegt ist.
 1. Wählen Sie **Google** aus, und fügen Sie dann die Werte für App-ID und den geheimen App-Schlüssel ein, die Sie zuvor abgerufen haben. Aktivieren Sie alle Bereiche, die von der Anwendung benötigt werden.
 1. Klicken Sie auf **OK**.
@@ -48,7 +50,7 @@ Sie benötigen ein Google-Konto mit verifizierter E-Mail-Adresse, um den in dies
 
 Sie können nun Google für die Authentifizierung in Ihrer App verwenden.
 
-## <a name="related-content"> </a>Nächste Schritte
+## <a name="next-steps"></a><a name="related-content"> </a>Nächste Schritte
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
@@ -63,5 +65,5 @@ Sie können nun Google für die Authentifizierung in Ihrer App verwenden.
 
 [Google apis]: https://go.microsoft.com/fwlink/p/?LinkId=268303
 
-[Azure-Portal]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/
 

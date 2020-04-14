@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 30b5f6593d2d2ca17ad600a55f9dc7e2a379f0f0
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: b46c9f8b0cad74f3a4e9be8903270a60993c01f4
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795934"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585886"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Installieren eines Application Gateway-Eingangscontrollers (Application Gateway Ingress Controller, AGIC) mithilfe eines neuen Application Gateways
 
@@ -41,7 +41,7 @@ Ihre [Azure Cloud Shell](https://shell.azure.com/) verfügt bereits über alle e
 Führen Sie die folgenden Schritte aus, um ein AAD-[Dienstprinzipalobjekt](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) (Azure Active Directory) zu erstellen. Notieren Sie sich die Werte für `appId`, `password` und `objectId`. Diese werden in den folgenden Schritten verwendet.
 
 1. Erstellen des AD-Dienstprinzipals ([mehr über RBAC erfahren](https://docs.microsoft.com/azure/role-based-access-control/overview)):
-    ```bash
+    ```azurecli
     az ad sp create-for-rbac --skip-assignment -o json > auth.json
     appId=$(jq -r ".appId" auth.json)
     password=$(jq -r ".password" auth.json)
@@ -50,7 +50,7 @@ Führen Sie die folgenden Schritte aus, um ein AAD-[Dienstprinzipalobjekt](https
 
 
 1. Verwenden Sie die `appId` aus der Ausgabe des vorherigen Befehls, um die `objectId` des neuen Dienstprinzipals abzurufen:
-    ```bash
+    ```azurecli
     objectId=$(az ad sp show --id $appId --query "objectId" -o tsv)
     ```
     Die Ausgabe dieses Befehls ist `objectId`. Sie wird in der Azure Resource Manager-Vorlage verwendet.
@@ -83,7 +83,7 @@ In diesem Schritt werden Ihrem Abonnement die folgenden Komponenten hinzugefügt
     ```
 
 1. Stellen Sie die Azure Resource Manager-Vorlage mit `az cli` bereit. Dieser Vorgang kann bis zu 5 Minuten dauern.
-    ```bash
+    ```azurecli
     resourceGroupName="MyResourceGroup"
     location="westus2"
     deploymentName="ingress-appgw"
@@ -100,7 +100,7 @@ In diesem Schritt werden Ihrem Abonnement die folgenden Komponenten hinzugefügt
     ```
 
 1. Nachdem die Bereitstellung abgeschlossen ist, laden Sie die Bereitstellungsausgabe in eine Datei namens `deployment-outputs.json` herunter.
-    ```bash
+    ```azurecli
     az group deployment show -g $resourceGroupName -n $deploymentName --query "properties.outputs" -o json > deployment-outputs.json
     ```
 
@@ -112,7 +112,7 @@ Mit den Anweisungen im vorherigen Abschnitt haben wir einen neuen AKS-Cluster un
 Für die folgenden Schritte benötigen Sie den Befehl zum Einrichten von [kubectl](https://kubectl.docs.kubernetes.io/), mit dem eine Verbindung mit unserem neuen Kubernetes-Cluster hergestellt wird. In [Cloud Shell](https://shell.azure.com/) ist `kubectl` bereits installiert. Wir verwenden die `az` CLI zum Abrufen von Anmeldeinformationen für Kubernetes.
 
 Abrufen von Anmeldeinformationen für den neu bereitgestellten AKS ([weitere Informationen](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)):
-```bash
+```azurecli
 # use the deployment-outputs.json created after deployment to get the cluster name and resource group name
 aksClusterName=$(jq -r ".aksClusterName.value" deployment-outputs.json)
 resourceGroupName=$(jq -r ".resourceGroupName.value" deployment-outputs.json)
@@ -133,15 +133,15 @@ So installieren Sie die AAD-Podidentität in Ihrem Cluster:
 
    - *RBAC-aktivierter* AKS-Cluster
 
-    ```bash
-    kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
-    ```
+     ```bash
+     kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
+     ```
 
    - *RBAC-deaktivierter* AKS-Cluster
 
-    ```bash
-    kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
-    ```
+     ```bash
+     kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
+     ```
 
 ### <a name="install-helm"></a>Installieren von Helm
 [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) ist ein Paket-Manager für Kubernetes. Wir nutzen Helm, um das `application-gateway-kubernetes-ingress`-Paket zu installieren.
@@ -263,8 +263,8 @@ So installieren Sie die AAD-Podidentität in Ihrem Cluster:
 
 
    > [!NOTE]
-   > Bei `identityResourceID` und `identityClientID` handelt es sich um Werte, die während der Schritte [Erstellen einer Identität](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-new.md#create-an-identity) erstellt wurden. Sie können mit dem folgenden Befehl erneut abgerufen werden:
-   > ```bash
+   > Bei `identityResourceID` und `identityClientID` handelt es sich um Werte, die während der Schritte [Komponenten bereitstellen](ingress-controller-install-new.md#deploy-components) erstellt wurden. Sie können mit dem folgenden Befehl erneut abgerufen werden:
+   > ```azurecli
    > az identity show -g <resource-group> -n <identity-name>
    > ```
    > `<resource-group>` im obigen Befehl ist die Ressourcengruppe Ihres Application Gateways. `<identity-name>` ist der Name der erstellten Identität. Alle Identitäten für ein bestimmtes Abonnement werden unter Verwendung von `az identity list` aufgelistet:

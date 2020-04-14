@@ -4,15 +4,15 @@ description: Erfahren Sie mehr über die Netzwerkfeatures in Azure App Service u
 author: ccompy
 ms.assetid: 5c61eed1-1ad1-4191-9f71-906d610ee5b7
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0fd904b15a830e2b261057a11d1a8f3a4d584fe1
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.openlocfilehash: 79f85261115dbddcb0b04cd2863a90912de2ab87
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2020
-ms.locfileid: "77649225"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474906"
 ---
 # <a name="app-service-networking-features"></a>App Service-Netzwerkfunktionen
 
@@ -41,9 +41,8 @@ Für jeden vorliegenden Anwendungsfall kann es einige Möglichkeiten geben, das 
 | Unterstützung für IP-basiertes SSL für Ihre App benötigt | Von der App zugewiesene Adresse |
 | Nicht freigegeben, dedizierte eingehende Adresse für Ihre App | Von der App zugewiesene Adresse |
 | Beschränken des Zugriffs auf Ihre App aus einem Satz klar definierter Adressen | Zugriffseinschränkungen |
-| Verfügbarmachen meiner App über private IP-Adressen in meinem VNet | ILB ASE </br> Application Gateway mit Dienstendpunkten |
-| Beschränken des Zugriffs auf meine App von Ressourcen in einem VNet | Dienstendpunkte </br> ILB ASE |
-| Verfügbarmachen meiner App über eine private IP-Adresse in meinem VNet | ILB ASE </br> Private IP-Adresse für eingehenden Datenverkehr in Application Gateway mit Dienstendpunkten |
+| Beschränken des Zugriffs auf meine App von Ressourcen in einem VNet | Dienstendpunkte </br> ILB ASE </br> Privater Endpunkt (Vorschau) |
+| Verfügbarmachen meiner App über eine private IP-Adresse in meinem VNet | ILB ASE </br> Private IP-Adresse für eingehenden Datenverkehr in Application Gateway mit Dienstendpunkten </br> Dienstendpunkt (Vorschau) |
 | Schützen meiner App mit einer Web Application Firewall (WAF) | Application Gateway + ILB ASE </br> Application Gateway mit Dienstendpunkten </br> Azure Front Door mit Zugriffsbeschränkungen |
 | Lastenausgleich für Datenverkehr zu meinen Apps in verschiedenen Regionen | Azure Front Door mit Zugriffsbeschränkungen | 
 | Lastenausgleich für Datenverkehr in derselben Region | [Application Gateway mit Dienstendpunkten][appgwserviceendpoints] | 
@@ -63,7 +62,7 @@ Anhand der folgenden Anwendungsfälle für ausgehenden Datenverkehr wird vorgesc
 
 ### <a name="default-networking-behavior"></a>Standardmäßiges Netzwerkverhalten
 
-Die Azure App Service-Skalierungseinheiten unterstützen viele Kunden in jeder Bereitstellung. Für die SKU-Pläne „Free“ und „Shared“ werden Kundenworkloads in mehrinstanzenfähigen Workern gehostet. Für den Plan „Basic“ und höhere Pläne werden Kundenworkloads gehostet, die nur einem App Service-Plan (ASP) zugeordnet sind. Wenn Sie den App Service-Plan „Standard“ hatten, werden alle Apps in diesem Plan im selben Worker ausgeführt. Wenn Sie den Worker horizontal hochskalieren, werden alle Apps in diesem Plan in einem neuen Worker für jede Instanz in Ihrem ASP repliziert. Die Worker, die für „Premiumv2“ verwendet werden, unterscheiden sich von den Workern, für die anderen Pläne verwendet werden. Jede App Service-Bereitstellung hat eine IP-Adresse, die für den gesamten eingehenden Datenverkehr zu Apps in dieser App Service-Bereitstellung verwendet wird. Es gibt jedoch an jeder Stelle 4 bis 11 Adressen, die für ausgehende Aufrufe verwendet werden. Diese Adressen werden von allen Apps in dieser App Service-Bereitstellung gemeinsam genutzt. Die ausgehenden Adressen sind entsprechend den verschiedenen Workertypen unterschiedlich. Das heißt, dass sich die Adressen, die für die ASPs „Free“, „Shared“, „Basic“, „Standard“ und „Premium“ verwendet werden, von den Adressen unterscheiden, die für ausgehende Aufrufe aus den „Premiumv2“-ASPs verwendet werden. Wenn Sie sich die Eigenschaften Ihrer App ansehen, sehen Sie die Eingangs- und die Ausgangsadressen, die von Ihrer App verwendet werden. Wenn Sie eine Abhängigkeit mit einer IP-Zugriffssteuerungsliste sperren müssen, verwenden Sie die ausgehenden IP-Adressen (possibleOutboundAddresses). 
+Die Azure App Service-Skalierungseinheiten unterstützen viele Kunden in jeder Bereitstellung. Für die SKU-Pläne „Free“ und „Shared“ werden Kundenworkloads in mehrinstanzenfähigen Workern gehostet. Für den Plan „Basic“ und höhere Pläne werden Kundenworkloads gehostet, die nur einem App Service-Plan (ASP) zugeordnet sind. Wenn Sie den App Service-Plan „Standard“ hatten, werden alle Apps in diesem Plan im selben Worker ausgeführt. Wenn Sie den Worker aufskalieren, werden alle Apps in diesem Plan in einem neuen Worker für jede Instanz in Ihrem ASP repliziert. Die Worker, die für „Premiumv2“ verwendet werden, unterscheiden sich von den Workern, für die anderen Pläne verwendet werden. Jede App Service-Bereitstellung hat eine IP-Adresse, die für den gesamten eingehenden Datenverkehr zu Apps in dieser App Service-Bereitstellung verwendet wird. Es gibt jedoch an jeder Stelle 4 bis 11 Adressen, die für ausgehende Aufrufe verwendet werden. Diese Adressen werden von allen Apps in dieser App Service-Bereitstellung gemeinsam genutzt. Die ausgehenden Adressen sind entsprechend den verschiedenen Workertypen unterschiedlich. Das heißt, dass sich die Adressen, die für die ASPs „Free“, „Shared“, „Basic“, „Standard“ und „Premium“ verwendet werden, von den Adressen unterscheiden, die für ausgehende Aufrufe aus den „Premiumv2“-ASPs verwendet werden. Wenn Sie sich die Eigenschaften Ihrer App ansehen, sehen Sie die Eingangs- und die Ausgangsadressen, die von Ihrer App verwendet werden. Wenn Sie eine Abhängigkeit mit einer IP-Zugriffssteuerungsliste sperren müssen, verwenden Sie die ausgehenden IP-Adressen (possibleOutboundAddresses). 
 
 ![App-Eigenschaften](media/networking-features/app-properties.png)
 
@@ -82,7 +81,7 @@ Wenn Sie eine von der App zugewiesene Adresse verwenden, durchläuft Ihr Datenve
 * Unterstützung für IP-basiertes SSL für Ihre App benötigt
 * Festlegen einer dedizierten Adresse für Ihre App, die mit keinem anderen Element gemeinsam genutzt wird
 
-Informationen, wie Sie eine Adresse für Ihre App festlegen, finden Sie im Tutorial zu [Konfigurieren von IP-basiertem SSL][appassignedaddress]. 
+Informationen, wie Sie eine Adresse für Ihre App festlegen, finden Sie im Tutorial zu [Hinzufügen eines TLS/SSL-Zertifikats in Azure App Service][appassignedaddress]. 
 
 ### <a name="access-restrictions"></a>Zugriffseinschränkungen 
 
@@ -111,6 +110,11 @@ Mit Dienstendpunkten können Sie **eingehenden** Zugriff auf Ihre App so sperren
 ![Dienstendpunkte mit Anwendungsgateway](media/networking-features/service-endpoints-appgw.png)
 
 Weitere Informationen zum Konfigurieren von Dienstendpunkten mit Ihrer App finden Sie im Tutorial zu [Azure App Service – Statische Zugriffseinschränkungen][serviceendpoints].
+
+### <a name="private-endpoint-preview"></a>Privater Endpunkt (Vorschau)
+
+Ein privater Endpunkt ist eine Netzwerkschnittstelle, die Sie über eine private und sichere Verbindung mit Azure Private Link mit Ihrer Web-App verbindet. Der private Endpunkt verwendet eine private IP-Adresse in Ihrem VNET und bindet die Web-App effektiv in Ihr VNET ein. Diese Funktion gilt nur für bei Ihrer Web-App **eingehenden** Flows.
+[Verwenden privater Endpunkte für eine Azure-Web-App (Vorschau)][privateendpoints]
  
 ### <a name="hybrid-connections"></a>Hybridverbindungen
 
@@ -178,7 +182,7 @@ Es gibt einige Dinge, die aus dem mehrinstanzenfähigen Dienst noch nicht, aber 
 * Verfügbarmachen Ihrer Apps unter einer privaten IP-Adresse
 * Schützen des gesamten ausgehenden Datenverkehrs mit Netzwerksteuerelementen, die nicht Bestandteil Ihrer App sind 
 * Hosten Ihrer Apps in einem Dienst für einen einzelnen Mandanten 
-* Zentrales Hochskalieren auf sehr viel mehr Instanzen als im mehrinstanzenfähigen Dienst möglich sind 
+* Hochskalieren auf sehr viel mehr Instanzen als im mehrinstanzenfähigen Dienst möglich sind 
 * Laden von privaten Zertifizierungsstellen-Clientzertifikaten zur Verwendung durch Ihre Apps mit privaten Endpunkten, die über eine Zertifizierungsstelle geschützt sind 
 * Erzwingen von TLS 1.1 für alle Apps, die im System gehostet werden, ohne irgendeine Möglichkeit, dies auf App-Ebene zu deaktivieren 
 * Bereitstellen einer dedizierten ausgehenden Adresse für alle Apps in Ihrer ASE, die für keinen Kunden freigegeben ist 
@@ -227,3 +231,4 @@ Sie können erzwingen, dass mehrere Front-End-Apps dieselbe API-App verwenden, i
 [vnetintegration]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
 [networkinfo]: https://docs.microsoft.com/azure/app-service/environment/network-info
 [appgwserviceendpoints]: https://docs.microsoft.com/azure/app-service/networking/app-gateway-with-service-endpoints
+[privateendpoints]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint

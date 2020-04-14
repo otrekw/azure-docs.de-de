@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/19/2020
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: f0fe4ab46bfe5c0c0c2ea67aa2e2694321628be5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1d02cb42a86023e5c341daab678c39f22f75dda
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136362"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877693"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Installieren und Verwenden von Istio in Azure Kubernetes Service (AKS)
 
@@ -97,7 +97,10 @@ Der [Helm][helm]-Installationsansatz für Istio wird in Zukunft als veraltet bet
 > Istio muss aktuell für die Ausführung auf Linux-Knoten geplant werden. Wenn sich in Ihrem Cluster Windows Server-Knoten befinden, müssen Sie sicherstellen, dass Istio-Pods nur für die Ausführung auf Linux-Knoten geplant sind. Wir verwenden [Knotenselektoren][kubernetes-node-selectors], um sicherzustellen, dass Pods für die richtigen Knoten geplant werden.
 
 > [!CAUTION]
-> Die Istio-Features [SDS (Secret Discovery Service)][istio-feature-sds] und [Istio CNI][istio-feature-cni] befinden sich derzeit in der [Alpha-Phase][istio-feature-stages] und müssen daher mit Bedacht verwendet werden. Darüber hinaus ist das Kubernetes-Feature [Service Account Token Volume Projection][kubernetes-feature-sa-projected-volume] (Dienstkontotoken-Volumenprojektion; eine Voraussetzung für SDS) in aktuellen AKS-Versionen nicht aktiviert.
+> Die Istio-Features [SDS (Secret Discovery Service)][istio-feature-sds] und [Istio CNI][istio-feature-cni] befinden sich derzeit in der [Alpha-Phase][istio-feature-stages] und müssen daher mit Bedacht verwendet werden. 
+>
+> Beachten Sie, dass die Kubernetes-Funktion [Service Account Token Volume Projection][kubernetes-feature-sa-projected-volume] (Dienstkontotoken-Volumenprojektion; eine Voraussetzung für SDS) in allen Kubernetes 1.13 und höheren Versionen in AKS jetzt **aktiviert** ist.
+
 Erstellen Sie eine Datei namens `istio.aks.yaml` mit dem folgenden Inhalt. Diese Datei enthält die Details der [Istio-Steuerungsebenenspezifikation][istio-control-plane] zum Konfigurieren von Istio.
 
 ```yaml

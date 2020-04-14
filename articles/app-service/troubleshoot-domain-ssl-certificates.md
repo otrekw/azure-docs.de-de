@@ -1,6 +1,6 @@
 ---
-title: Behandeln von Problemen mit Domänen und SSL-Zertifikaten
-description: Hier finden Sie Lösungen für häufige Probleme, die beim Konfigurieren einer Domäne oder eines SSL-Zertifikats in Azure App Service auftreten können.
+title: Behandeln von Problemen mit Domänen und TLS/SSL-Zertifikaten
+description: Hier finden Sie Lösungen für häufige Probleme, die beim Konfigurieren einer Domäne oder eines TLS/SSL-Zertifikats in Azure App Service auftreten können.
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: e299821b54692327cbb7d497af0295e3b93658cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75966977"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668021"
 ---
-# <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Problembehandlung bei Domänen- und SSL-Zertifikaten in Azure App Service
+# <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Problembehandlung bei Domänen- und TLS/SSL-Zertifikaten in Azure App Service
 
-In diesem Artikel werden häufige Probleme aufgelistet, die beim Konfigurieren einer Domäne oder eines SSL-Zertifikats für Ihre Web-Apps in Azure App Service auftreten können. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme beschrieben.
+In diesem Artikel werden häufige Probleme aufgelistet, die beim Konfigurieren einer Domäne oder eines TLS/SSL-Zertifikats für Ihre Web-Apps in Azure App Service auftreten können. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme beschrieben.
 
 Sollten Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie sich über das [MSDN-Forum oder über das Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) mit Azure-Experten in Verbindung setzen. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie die Option **Support erhalten**.
 
@@ -26,17 +26,17 @@ Sollten Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benö
 
 ## <a name="certificate-problems"></a>Probleme mit Zertifikaten
 
-### <a name="you-cant-add-an-ssl-certificate-binding-to-an-app"></a>Sie können keine SSL-Zertifikatbindung zu einer App hinzufügen 
+### <a name="you-cant-add-a-tlsssl-certificate-binding-to-an-app"></a>Sie können keine TLS/SSL-Zertifikatbindung zu einer App hinzufügen 
 
 #### <a name="symptom"></a>Symptom
 
-Wenn Sie eine SSL-Bindung hinzufügen, erhalten Sie die folgende Fehlermeldung:
+Wenn Sie eine TLS-Bindung hinzufügen, erhalten Sie die folgende Fehlermeldung:
 
 „Fehler beim Hinzufügen der SSL-Bindung. Das Zertifikat für den vorhandenen VIP kann nicht festgelegt werden, da ein anderer VIP dieses Zertifikat bereits verwendet.“
 
 #### <a name="cause"></a>Ursache
 
-Dieses Problem kann auftreten, wenn Sie App-übergreifend mehrere IP-basierte SSL-Bindungen für dieselbe IP-Adresse verwenden. Beispiel: App A verfügt über eine IP-basierte SSL-Bindung mit einem alten Zertifikat. App B verwendet für dieselbe IP-Adresse eine IP-basiertes SSL-Bindung mit einem neuen Zertifikat. Wenn Sie die SSL-Bindung der App mit dem neuen Zertifikat aktualisieren, kommt es zu diesem Fehler, weil dieselbe IP-Adresse für eine andere App verwendet wird. 
+Dieses Problem kann auftreten, wenn Sie App-übergreifend mehrere IP-basierte SSL-Bindungen für dieselbe IP-Adresse verwenden. Beispiel: App A verfügt über eine IP-basierte SSL-Bindung mit einem alten Zertifikat. App B verwendet für dieselbe IP-Adresse eine IP-basiertes SSL-Bindung mit einem neuen Zertifikat. Wenn Sie die TLS-Bindung der App mit dem neuen Zertifikat aktualisieren, kommt es zu diesem Fehler, weil dieselbe IP-Adresse für eine andere App verwendet wird. 
 
 #### <a name="solution"></a>Lösung 
 
@@ -51,7 +51,7 @@ Verwenden Sie zur Problembehebung eine der folgenden Methoden:
 
 Wenn Sie versuchen, ein Zertifikat zu löschen, erhalten Sie die folgende Fehlermeldung:
 
-„Das Zertifikat kann nicht gelöscht werden, da es derzeit in einer SSL-Bindung verwendet wird. Die SSL-Bindung muss entfernt werden, bevor Sie das Zertifikat löschen können.“
+„Das Zertifikat kann nicht gelöscht werden, da es derzeit in einer TLS/SSL-Bindung verwendet wird. Die TLS-Bindung muss entfernt werden, bevor Sie das Zertifikat löschen können.“
 
 #### <a name="cause"></a>Ursache
 
@@ -59,7 +59,7 @@ Dieses Problem kann auftreten, wenn eine weitere App das Zertifikat verwendet.
 
 #### <a name="solution"></a>Lösung
 
-Entfernen Sie die SSL-Bindung für dieses Zertifikat aus den Apps. Versuchen Sie anschließend, das Zertifikat zu löschen. Wenn Sie das Zertifikat immer noch nicht löschen können, löschen Sie den Cache Ihres Internet-Browsers, und öffnen Sie das Azure-Portal erneut in einem neuen Browserfenster. Versuchen Sie anschließend, das Zertifikat zu löschen.
+Entfernen Sie die TLS-Bindung für dieses Zertifikat aus den Apps. Versuchen Sie anschließend, das Zertifikat zu löschen. Wenn Sie das Zertifikat immer noch nicht löschen können, löschen Sie den Cache Ihres Internet-Browsers, und öffnen Sie das Azure-Portal erneut in einem neuen Browserfenster. Versuchen Sie anschließend, das Zertifikat zu löschen.
 
 ### <a name="you-cant-purchase-an-app-service-certificate"></a>Sie können ein App Service-Zertifikat nicht erwerben. 
 
@@ -69,7 +69,7 @@ Sie können über das Azure-Portal kein [Azure App Service-Zertifikat](./configu
 #### <a name="cause-and-solution"></a>Ursache und Lösung
 Dieses Problem kann aus einem der folgenden Gründe auftreten:
 
-- Der App Service-Plan ist „Free“ oder „Shared“. In diesen Tarifen wird SSL nicht unterstützt. 
+- Der App Service-Plan ist „Free“ oder „Shared“. In diesen Tarifen wird TLS nicht unterstützt. 
 
     **Lösung**: Führen Sie ein Upgrade des App Service-Plans der App auf den Tarif „Standard“ durch.
 
@@ -165,7 +165,7 @@ Wurde Ihre Domäne vor weniger als sieben Tagen gelöscht, wurde der Löschvorga
 
 ## <a name="domain-problems"></a>Probleme mit Domänen
 
-### <a name="you-purchased-an-ssl-certificate-for-the-wrong-domain"></a>Sie haben ein SSL-Zertifikat für die falsche Domäne erworben.
+### <a name="you-purchased-a-tlsssl-certificate-for-the-wrong-domain"></a>Sie haben ein TLS/SSL-Zertifikat für die falsche Domäne erworben.
 
 #### <a name="symptom"></a>Symptom
 
@@ -306,7 +306,7 @@ Nach dem Erwerb einer Domäne fallen fünf Tage lang keine Gebühren an. In dies
 
 **Kann ich die Domäne für eine andere Azure App Service-App in meinem Abonnement verwenden?**
 
-Ja. Wenn Sie im Azure-Portal das Blatt „Benutzerdefinierte Domänen und SSL“ aufrufen, werden die von Ihnen erworbenen Domänen angezeigt. Sie können Ihre App so konfigurieren, dass eine dieser Domänen verwendet wird.
+Ja. Wenn Sie im Azure-Portal das Blatt „Benutzerdefinierte Domänen und TLS“ aufrufen, werden die von Ihnen erworbenen Domänen angezeigt. Sie können Ihre App so konfigurieren, dass eine dieser Domänen verwendet wird.
 
 **Kann ich eine Domäne aus einem Abonnement in ein anderes übertragen?**
 

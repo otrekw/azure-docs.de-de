@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: edeafb5730f06dac22fd9919ca42ea388d5fd0f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1aa3537679ee37cbc6085344d2f31ae4043d32bb
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235070"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520678"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table Storage-Bindungen für Azure Functions
 
@@ -564,7 +564,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**rowKey** |**Zeilenschlüssel** | Optional. Der Zeilenschlüssel der zu lesenden Tabellenentität. Informationen zur Verwendung dieser Eigenschaft finden Sie im Abschnitt [Verwendung](#input---usage).| 
 |**take** |**Take** | Optional. Die maximale Anzahl von Entitäten, die in JavaScript gelesen werden sollen. Informationen zur Verwendung dieser Eigenschaft finden Sie im Abschnitt [Verwendung](#input---usage).| 
 |**filter** |**Filter** | Optional. Ein OData-Filterausdruck für die Tabelleneingabe in JavaScript. Informationen zur Verwendung dieser Eigenschaft finden Sie im Abschnitt [Verwendung](#input---usage).| 
-|**connection** |**Connection** | Der Name einer App-Einstellung, die die Storage-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie hier nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyStorage“ festlegen, sucht die Functions-Runtime nach einer App-Einstellung namens „MyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.|
+|**connection** |**Connection** | Der Name einer App-Einstellung, die die Storage-Verbindungszeichenfolge für diese Bindung enthält. Bei dieser Einstellung kann es sich um den Namen einer App-Einstellung mit dem Präfix „AzureWebJobs“ oder den Namen einer Verbindungszeichenfolge handeln. Wenn der Name Ihrer Einstellung beispielsweise „AzureWebJobsMyStorage“ lautet, können Sie hier „MyStorage“ angeben. Die Functions-Laufzeit sucht automatisch nach einer App-Einstellung namens „AzureWebJobsMyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

@@ -3,13 +3,13 @@ title: Anpassen von benutzerdefinierten Routen (UDR) in Azure Kubernetes Service
 description: Erfahren Sie, wie Sie benutzerdefinierte ausgehende Routen in Azure Kubernetes Service (AKS) definieren.
 services: container-service
 ms.topic: article
-ms.date: 01/31/2020
-ms.openlocfilehash: d108c6f49a8f483dc489fd644db6b480fc0e74fc
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/16/2020
+ms.openlocfilehash: 3780680c485aebf1ffc654d31c577821a9b96fff
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77595806"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676503"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>Anpassen des ausgehenden Clusterdatenverkehrs mit einer benutzerdefinierten Route (Vorschau)
 
@@ -318,7 +318,11 @@ az role assignment list --assignee $APPID --all -o table
 
 ### <a name="deploy-aks"></a>Bereitstellen von AKS
 
-Schließlich kann der AKS-Cluster in dem vorhandenen Subnetz bereitgestellt werden, das dediziert für den Cluster erstellt wurde. Das Zielsubnetz, in dem die Bereitstellung erfolgen soll, wird mit der Umgebungsvariable `$SUBNETID` definiert.
+Schließlich kann der AKS-Cluster in dem vorhandenen Subnetz bereitgestellt werden, das dediziert für den Cluster erstellt wurde. Das Zielsubnetz, in dem die Bereitstellung erfolgen soll, wird mit der Umgebungsvariable `$SUBNETID` definiert. In den vorherigen Schritten wurde die `$SUBNETID`-Variable nicht definiert. Zum Festlegen des Werts für die Subnetz-ID können Sie den folgenden Befehl verwenden:
+
+```azurecli
+SUBNETID="/subscriptions/$SUBID/resourceGroups/$RG/providers/Microsoft.Network/virtualNetworks/$VNET_NAME/subnets/$AKSSUBNET_NAME"
+```
 
 Wir definieren den ausgehenden Typ so, dass er der im Subnetz vorhandenen benutzerdefinierten Route folgt. So kann AKS die Einrichtung und Bereitstellung einer IP-Adresse für die Lastenausgleichsressource überspringen, und der Lastenausgleich kann jetzt strikt intern erfolgen.
 
@@ -356,6 +360,12 @@ CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
 az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/32
 
 ```
+
+ Mit dem Befehl [az aks get-credentials][az-aks-get-credentials] können Sie `kubectl` für das Herstellen einer Verbindung mit Ihrem neu erstellten Kubernetes-Cluster konfigurieren. 
+
+ ```azure-cli
+ az aks get-credentials -g $RG -n $AKS_NAME
+ ```
 
 ### <a name="setup-the-internal-load-balancer"></a>Einrichten des internen Lastenausgleichs
 
@@ -532,3 +542,6 @@ Es sollte ein Bild der Azure-Abstimmungs-App angezeigt werden.
 Weitere Informationen finden Sie unter [Übersicht über benutzerdefinierte Routen in Azure-Netzwerken](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).
 
 Weitere Informationen finden Sie auch unter [Erstellen, Ändern oder Löschen einer Routingtabelle](https://docs.microsoft.com/azure/virtual-network/manage-route-table).
+
+<!-- LINKS - internal -->
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials

@@ -1,22 +1,24 @@
 ---
 title: Konfigurieren der Microsoft-Authentifizierung
-description: Erfahren Sie, wie Sie die Authentifizierung mit einem Microsoft-Konto als Identitätsanbieter für Ihre App Services-App konfigurieren.
+description: Erfahren Sie, wie Sie die Authentifizierung mit einem Microsoft-Konto als Identitätsanbieter für Ihre App Services- oder Azure Functions-App konfigurieren.
 ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.topic: article
 ms.date: 08/08/2019
-ms.custom: seodec18
-ms.openlocfilehash: 95c603d4a10eb0e4d0817e20755c0f9b36baa96f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- seodec18
+- fasttrack-edit
+ms.openlocfilehash: a78208ba592f86400e9b06b15d8a76923dda736f
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76842332"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519898"
 ---
-# <a name="configure-your-app-service-app-to-use-microsoft-account-login"></a>Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Microsoft-Kontoanmeldung
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-microsoft-account-login"></a>Konfigurieren Ihrer App Service- oder Azure Functions-App zur Verwendung der Microsoft-Kontoanmeldung
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-In diesem Thema wird gezeigt, wie Sie Azure App Service für die Verwendung von AAD konfigurieren, um persönliche Microsoft-Kontoanmeldungen zu unterstützen.
+In diesem Thema wird gezeigt, wie Sie Azure App Service oder Azure Functions für die Verwendung von AAD konfigurieren, um persönliche Microsoft-Kontoanmeldungen zu unterstützen.
 
 > [!NOTE]
 > Sowohl persönliche Microsoft-Konten als auch Organisationskonten verwenden den AAD-Identitätsanbieter. Zurzeit ist es nicht möglich, diesen Identitätsanbieter so zu konfigurieren, dass beide Arten von Anmeldungen unterstützt werden.

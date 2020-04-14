@@ -2,13 +2,13 @@
 title: Verschieben virtueller Azure-Computer in ein neues Abonnement oder in eine neue Ressourcengruppe
 description: Verwenden Sie Azure Resource Manager, um virtuelle Computer in eine neue Ressourcengruppe oder ein neues Abonnement zu verschieben.
 ms.topic: conceptual
-ms.date: 10/10/2019
-ms.openlocfilehash: 97c49f90dab2aafd89de322e57ad44ff1fc9d367
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: df34268b7741f76621c290e9979cf24d828ddc09
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75474916"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478668"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Anleitung zum Verschieben virtueller Computer
 
@@ -27,18 +27,40 @@ Folgende Szenarios werden noch nicht unterstützt:
 
 ## <a name="virtual-machines-with-azure-backup"></a>Virtuelle Computer mit Azure Backup
 
-Verwenden Sie die folgende Problemumgehung, um mit Azure Backup konfigurierte virtuelle Computer zu verschieben:
+Um mit Azure Backup konfigurierte virtuelle Computer zu verschieben, müssen Sie die Wiederherstellungspunkte im Tresor löschen.
+
+Wenn [vorläufiges Löschen](../../../backup/backup-azure-security-feature-cloud.md) für Ihren virtuellen Computer aktiviert ist, können Sie den virtuellen Computer nicht verschieben, solange diese Wiederherstellungspunkte noch vorhanden sind. [Deaktivieren Sie entweder vorläufiges Löschen](../../../backup/backup-azure-security-feature-cloud.md#disabling-soft-delete), oder warten Sie 14 Tage nach dem Löschen der Wiederherstellungspunkte.
+
+### <a name="portal"></a>Portal
+
+1. Wählen Sie den virtuellen Computer aus, der für die Sicherung konfiguriert wurde.
+
+1. Wählen Sie im linken Bereich **Sicherung** aus.
+
+1. Wählen Sie **Sicherung beenden** aus.
+
+1. Wählen Sie **Sicherungsdaten löschen** aus.
+
+1. Nach Abschluss des Löschvorgangs können Sie den Tresor und den virtuellen Computer in das Zielabonnement verschieben. Nach dem Verschieben können Sie mit den Sicherungen fortfahren.
+
+### <a name="powershell"></a>PowerShell
 
 * Ermitteln Sie den Speicherort Ihres virtuellen Computers.
 * Suchen Sie eine Ressourcengruppe mit dem folgenden Namensmuster: `AzureBackupRG_<location of your VM>_1`, z. B. „AzureBackupRG_westus2_1“
-* Wenn Sie das Azure-Portal verwenden, aktivieren Sie die Option „Ausgeblendete Typen anzeigen“
 * Wenn Sie PowerShell verwenden, verwenden Sie das Cmdlet `Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1`
+* Suchen Sie nach der Ressource mit dem Typ `Microsoft.Compute/restorePointCollections` und dem Namensmuster `AzureBackup_<name of your VM that you're trying to move>_###########`.
+* Löschen Sie diese Ressource. Dieser Vorgang löscht nur die sofortigen Wiederherstellungspunkte und nicht die gesicherten Daten im Tresor.
+
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+
+* Ermitteln Sie den Speicherort Ihres virtuellen Computers.
+* Suchen Sie eine Ressourcengruppe mit dem folgenden Namensmuster: `AzureBackupRG_<location of your VM>_1`, z. B. „AzureBackupRG_westus2_1“
 * Wenn Sie die CLI (Befehlszeilenschnittstelle) verwenden, verwenden Sie den Befehl `az resource list -g AzureBackupRG_<location of your VM>_1`
 * Suchen Sie nach der Ressource mit dem Typ `Microsoft.Compute/restorePointCollections` und dem Namensmuster `AzureBackup_<name of your VM that you're trying to move>_###########`.
 * Löschen Sie diese Ressource. Dieser Vorgang löscht nur die sofortigen Wiederherstellungspunkte und nicht die gesicherten Daten im Tresor.
-* Nach Abschluss des Löschvorgangs können Sie den Tresor und den virtuellen Computer in das Zielabonnement verschieben. Nach dem Verschieben können Sie ohne Datenverlust mit den Sicherungsdateien fortfahren.
-* Weitere Informationen zum Verschieben von Recovery Services-Tresoren für die Sicherung finden Sie unter [Einschränkungen von Recovery Services](../../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Befehle zum Verschieben von Ressourcen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../move-resource-group-and-subscription.md).
+* Befehle zum Verschieben von Ressourcen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../move-resource-group-and-subscription.md).
+
+* Weitere Informationen zum Verschieben von Recovery Services-Tresoren für die Sicherung finden Sie unter [Einschränkungen von Recovery Services](../../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).

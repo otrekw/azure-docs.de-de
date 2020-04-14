@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: dfb6d72b3f8f61e1350101173ecec6134a614edf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4838597c50898748eb4b33e81ff22eaeea37b30
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687153"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476891"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Integrieren Ihrer ILB-App Service-Umgebung in ein Azure Application Gateway #
 
@@ -20,7 +20,7 @@ Die [Azure App Service-Umgebung](./intro.md) ist eine Bereitstellung von Azure A
 
 Web Application Firewalls tragen zum Schutz Ihrer Webanwendungen bei, indem sie eingehenden Webdatenverkehr untersuchen und die Einschleusung von SQL-Befehlen, websiteübergreifendes Scripting, das Hochladen von Schadsoftware sowie DDoS-Angriffe und andere Angriffe unterbinden. WAF überprüft auch zur Verhinderung von Datenverlust (Data Loss Prevention, DLP) die Antworten von den Back-End-Webservern. Sie erhalten ein WAF-Gerät im Azure-Marketplace, oder verwenden Sie das [Azure Application Gateway][appgw].
 
-Das Azure Application Gateway ist eine virtuelle Anwendung, die Lastenausgleich in Schicht 7, SSL-Abladung und WAF-Schutz (Web Application Firewall) bietet. Es kann eine öffentliche IP-Adresse überwachen und Datenverkehr an Ihren Anwendungsendpunkt routen. In den folgenden Informationen wird die Vorgehensweise beim Integrieren eines WAF-konfigurierten Application Gateways mit einer App in einer ILB-App Service-Umgebung beschrieben.  
+Das Azure Application Gateway ist eine virtuelle Anwendung, die Lastenausgleich in Schicht 7, TLS/SSL-Abladung und WAF-Schutz (Web Application Firewall) bietet. Es kann eine öffentliche IP-Adresse überwachen und Datenverkehr an Ihren Anwendungsendpunkt routen. In den folgenden Informationen wird die Vorgehensweise beim Integrieren eines WAF-konfigurierten Application Gateways mit einer App in einer ILB-App Service-Umgebung beschrieben.  
 
 Die Integration des Application Gateways mit der ILB-App Service-Umgebung erfolgt auf App-Ebene. Wenn Sie das Application Gateway mit der ILB-App Service-Umgebung konfigurieren, erfolgt dies für bestimmte Apps in Ihrer ILB-App Service-Umgebung. Dieses Verfahren ermöglicht es, sichere mehrinstanzenfähige Anwendungen in einer einzelnen ILB App Service-Umgebung zu hosten.  
 

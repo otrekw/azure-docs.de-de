@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 46d566dc7527097d36b72886ada1f8c94f727535
-ms.sourcegitcommit: 509b39e73b5cbf670c8d231b4af1e6cfafa82e5a
+ms.openlocfilehash: 8e79f4c791d0252c719846da3aa8024b0e622dca
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78357422"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477021"
 ---
 # <a name="load-balancer-health-probes"></a>Lastenausgleichs-Integritätstests
 
@@ -39,7 +39,10 @@ Integritätstests unterstützen mehrere Protokolle. Die Verfügbarkeit eines bes
 >[!IMPORTANT]
 >Load Balancer-Integritätstests stammen von der IP-Adresse 168.63.129.16 und dürfen nicht blockiert werden, damit Ihre Instanz beim Test als online markiert wird.  Einzelheiten finden Sie unter [Quell-IP-Adresse von Tests](#probesource).
 
-## <a name="probes"></a>Testkonfiguration
+>[!IMPORTANT]
+>Unabhängig vom konfigurierten Timeout-Schwellenwert wird bei HTTP(S)-Integritätstests von Load Balancer automatisch eine Instanz getestet, wenn der Server einen anderen Statuscode als „HTTP 200 OK“ zurückgibt oder wenn die Verbindung durch ein TCP-Reset getrennt wird.
+
+## <a name="probe-configuration"></a><a name="probes"></a>Testkonfiguration
 
 Die Integritätstestkonfiguration besteht aus den folgenden Elementen:
 
@@ -57,14 +60,14 @@ Die Integritätstestkonfiguration besteht aus den folgenden Elementen:
 Anzahl der Testantworten, die auf beides angewendet wird
 
 - Anzahl der erfolgreichen Tests, bei der eine Instanz als online gekennzeichnet werden kann und
-- Anzahl der fehlerhaften Tests, bei der eine Instanz als offline gekennzeichnet wird.
+- Anzahl der Tests mit einem Timeout, bei der eine Instanz als offline gekennzeichnet wird.
 
 Die angegebenen Werte für das Timeout und das Intervall bestimmen, ob eine Instanz als online oder offline markiert wird.  Die Dauer des Intervalls multipliziert mit der Anzahl der Testantworten bestimmt die Zeitspann, in der die Testantworten erkannt werden müssen.  Und der Dienst reagiert, nachdem die erforderlichen Tests erreicht wurden.
 
-Wir können das Verhalten anhand eines Beispiels weiter veranschaulichen. Wenn Sie die Anzahl der Testantworten auf 2 und das Intervall auf 5 Sekunden festgelegt haben, bedeutet dies, dass 2 Testfehler innerhalb eines Intervalls von 10 Sekunden beobachtet werden müssen.  Da der Zeitpunkt, zu dem ein Test gesendet wird, nicht synchronisiert ist, wenn Ihre Anwendung den Zustand ggf. ändert, können wir die Zeit bis zur Erkennung an zwei Szenarien festmachen:
+Wir können das Verhalten anhand eines Beispiels weiter veranschaulichen. Wenn Sie die Anzahl der Testantworten auf 2 und das Intervall auf 5 Sekunden festgelegt haben, bedeutet dies, dass 2 Testfehler durch Timeouts innerhalb eines Intervalls von 10 Sekunden beobachtet werden müssen.  Da der Zeitpunkt, zu dem ein Test gesendet wird, nicht synchronisiert ist, wenn Ihre Anwendung den Zustand ggf. ändert, können wir die Zeit bis zur Erkennung an zwei Szenarien festmachen:
 
-1. Wenn Ihre Anwendung kurz vor dem Eintreffen des ersten Tests mit der Generierung einer fehlerhaften Testantwort beginnt, dauert die Erkennung dieser Ereignisse 10 Sekunden (Intervalle von 2 x 5 Sekunden) plus die Dauer der Anwendung, die beginnt, einen Fehler zu signalisieren, wenn der erste Test eintrifft.  Sie können davon ausgehen, dass diese Erkennung etwas länger als 10 Sekunden dauert.
-2. Wenn Ihre Anwendung unmittelbar nach dem Eintreffen des ersten Tests mit der Generierung einer Testfehlerantwort beginnt, beginnt die Erkennung dieser Ereignisse erst mit dem Eintreffen des nächsten Tests (und schlägt fehl) plus weiteren 10 Sekunden (Intervalle von 2 x 5 Sekunden).  Sie können davon ausgehen, dass diese Erkennung fast 15 Sekunden in Anspruch nimmt.
+1. Wenn Ihre Anwendung kurz vor dem Eintreffen des ersten Tests mit der Generierung einer Testantwort aufgrund eines Timeouts beginnt, dauert die Erkennung dieser Ereignisse 10 Sekunden (Intervalle von 2 × 5 Sekunden) plus die Dauer der Anwendung, die beginnt, ein Timeout zu signalisieren, wenn der erste Test eintrifft.  Sie können davon ausgehen, dass diese Erkennung etwas länger als 10 Sekunden dauert.
+2. Wenn Ihre Anwendung unmittelbar nach dem Eintreffen des ersten Tests mit der Generierung einer Testfehlerantwort aufgrund eines Timeouts beginnt, startet die Erkennung dieser Ereignisse erst mit dem Eintreffen des nächsten Tests (mit Timeout) plus weiteren 10 Sekunden (Intervalle von 2 × 5 Sekunden).  Sie können davon ausgehen, dass diese Erkennung fast 15 Sekunden in Anspruch nimmt.
 
 In diesem Beispiel benötigt die Plattform nach der Erkennung eine kurze Zeit, um auf diese Änderung zu reagieren.  Dies bedeutet eine Abhängigkeit von mehreren Faktoren: 
 
@@ -72,9 +75,12 @@ In diesem Beispiel benötigt die Plattform nach der Erkennung eine kurze Zeit, u
 2. wann diese Änderung erkannt wird und die erforderlichen Kriterien erfüllt sind (Anzahl der im angegebenen Intervall gesendeten Tests) und
 3. wann die Erkennung über die Plattform kommuniziert wurde. 
 
-Sie können davon ausgehen, dass die Reaktion auf einen fehlerhaften Test zwischen einem Minimum von etwas mehr als 10 Sekunden und einem Maximum von etwas mehr als 15 Sekunden dauert, um auf eine Änderung des Signals von der Anwendung zu reagieren.  Dieses Beispiel dient der Veranschaulichung des Geschehens, jedoch ist es nicht möglich, eine genaue Dauer über die in diesem Beispiel dargestellte grobe Orientierung hinaus vorherzusagen.
- 
-## <a name="types"></a>Testtypen
+Sie können davon ausgehen, dass die Reaktion auf eine Testantwort aufgrund eines Timeouts zwischen einem Minimum von etwas mehr als 10 Sekunden und einem Maximum von etwas mehr als 15 Sekunden dauert, um auf eine Änderung des Signals von der Anwendung zu reagieren.  Dieses Beispiel dient der Veranschaulichung des Geschehens, jedoch ist es nicht möglich, eine genaue Dauer über die in diesem Beispiel dargestellte grobe Orientierung hinaus vorherzusagen.
+
+>[!NOTE]
+>Der Integritätstest testet alle ausgeführten Instanzen im Back-End-Pool. Wenn eine Instanz beendet wird, wird sie erst nach ihrem erneuten Start wieder getestet.
+
+## <a name="probe-types"></a><a name="types"></a>Testtypen
 
 Das vom Integritätstest verwendete Protokoll kann für Folgendes konfiguriert werden:
 
@@ -89,14 +95,14 @@ Die verfügbaren Protokolle sind von der verwendeten Load Balancer-SKU abhängig
 | Standard-SKU |    &#9989; |   &#9989; |   &#9989; |
 | Basic-SKU |   &#9989; |   &#9989; | &#10060; |
 
-### <a name="tcpprobe"></a> TCP-Test
+### <a name="tcp-probe"></a><a name="tcpprobe"></a> TCP-Test
 
 TCP-Tests leiten eine Verbindung über einen offenen Drei-Wege-TCP-Handshake mit dem definierten Port ein.  TCP-Tests beenden eine Verbindung mit einem Vier-Wege-TCP-Schließen-Handshake.
 
 Das Mindestintervall für Tests beträgt 5 Sekunden, und die Mindestanzahl von fehlerhaften Antworten ist 2.  Die gesamte Dauer aller Intervalle darf 120 Sekunden nicht überschreiten.
 
 TCP-Tests führen in folgenden Fällen zu Fehlern:
-* Der TCP-Listener für die Instanz reagiert innerhalb des Zeitlimits gar nicht.  Wann der Test als nicht ausgeführt markiert wird, hängt von der konfigurierten Anzahl unbeantworteter fehlerhafter Testanforderungen vor dem Markieren des Tests als nicht ausgeführt ab.
+* Der TCP-Listener für die Instanz reagiert innerhalb des Zeitlimits gar nicht.  Wann der Test als nicht ausgeführt markiert wird, hängt von der konfigurierten Anzahl unbeantworteter Testanforderungen aufgrund eines Timeouts vor dem Markieren des Tests als nicht ausgeführt ab.
 * Der Test empfängt ein TCP-Reset von der Instanz.
 
 Im Folgenden wird veranschaulicht, wie Sie diese Art von Testkonfiguration in einer Resource Manager-Vorlage ausdrücken können:
@@ -112,7 +118,7 @@ Im Folgenden wird veranschaulicht, wie Sie diese Art von Testkonfiguration in ei
       },
 ```
 
-### <a name="httpprobe"></a> <a name="httpsprobe"></a> HTTP-/HTTPS-Test
+### <a name="http--https-probe"></a><a name="httpprobe"></a> <a name="httpsprobe"></a> HTTP-/HTTPS-Test
 
 >[!NOTE]
 >Der HTTPS-Test ist nur für [Load Balancer Standard](load-balancer-standard-overview.md) verfügbar.
@@ -157,7 +163,7 @@ Im Folgenden wird veranschaulicht, wie Sie diese Art von Testkonfiguration in ei
       },
 ```
 
-### <a name="guestagent"></a>Gast-Agent-Test (nur klassisch)
+### <a name="guest-agent-probe-classic-only"></a><a name="guestagent"></a>Gast-Agent-Test (nur klassisch)
 
 Clouddienstrollen (Workerrollen und Webrollen) verwenden standardmäßig einen Gast-Agent für die Testüberwachung.  Ein Gast-Agent-Test ist eine „Notfallkonfiguration“.  Verwenden Sie einen Integritätstest immer explizit mit einem TCP- oder HTTP-Test. Ein Gast-Agent-Test ist bei den meisten Anwendungsszenarien nicht so effektiv wie explizit definierte Tests.
 
@@ -172,7 +178,7 @@ Wenn der Gast-Agent mit dem HTTP-Code 200 antwortet, sendet das Lastenausgleichs
 Wenn Sie eine Webrolle verwenden, wird der Websitecode in der Regel in „w3wp.exe“ ausgeführt. Dieses Programm wird nicht von der Azure-Fabric oder vom Gast-Agent überwacht. Fehler in „w3wp.exe“ (z. B. HTTP 500-Antworten) werden dem Gast-Agent nicht gemeldet. Folglich nimmt der Lastenausgleich diese Instanz nicht aus der Rotation.
 
 <a name="health"></a>
-## <a name="probehealth"></a>Verhalten bei erfolgreichen Tests
+## <a name="probe-up-behavior"></a><a name="probehealth"></a>Verhalten bei erfolgreichen Tests
 
 TCP-, HTTP- und HTTPS-Integritätstests werden in den folgenden Fällen als fehlerfrei eingestuft und markieren den Back-End-Endpunkt als fehlerfrei:
 
@@ -184,7 +190,7 @@ Jeder Back-End-Endpunkt, der einen fehlerfreien Zustand erreicht hat, ist berech
 > [!NOTE]
 > Wenn das Ergebnis des Integritätstests schwankt, wartet der Lastenausgleich länger, bevor der Back-End-Endpunkt erneut in den fehlerfreien Zustand versetzt wird. Diese zusätzliche Wartezeit schützt den Benutzer und die Infrastruktur und ist eine bewusste Richtlinie.
 
-## <a name="probedown"></a>Verhalten bei Tests mit Fehlern
+## <a name="probe-down-behavior"></a><a name="probedown"></a>Verhalten bei Tests mit Fehlern
 
 ### <a name="tcp-connections"></a>TCP-Verbindungen
 
@@ -205,7 +211,7 @@ Das UDP ist verbindungslos und es werden kein Flusszustände für das UDP nachve
 Wenn bei allen Tests für einen Back-End-Pool Fehler auftreten, werden alle vorhandenen UDP-Flows für Load Balancer Basic und Standard beendet.
 
 <a name="source"></a>
-## <a name="probesource"></a>Quell-IP-Adresse von Tests
+## <a name="probe-source-ip-address"></a><a name="probesource"></a>Quell-IP-Adresse von Tests
 
 Load Balancer verwendet einen verteilten Dienst für die Stichprobenentnahme für sein internes Integritätsmodell. Der Testdienst befindet sich auf jedem Host mit VMs und kann bedarfsgesteuert programmiert werden, um Integritätstests gemäß der Kundenkonfiguration zu generieren. Der Datenverkehr im Rahmen von Integritätstests findet direkt zwischen dem Testdienst, der den Integritätstest generiert, und der Kunden-VM statt. Bei allen Lastenausgleichs-Integritätstests lautet die Quell-IP-Adresse 168.63.129.16.  Sie können einen IP-Adressraum in einem VNET verwenden, bei dem es sich nicht um einen RFC1918-Adressraum handelt.  Die Verwendung einer global reservierten IP-Adresse im Besitz von Microsoft reduziert die Wahrscheinlichkeit eines IP-Adressenkonflikts mit dem IP-Adressraum, den Sie innerhalb des VNET verwenden.  Diese IP-Adresse ist in allen Regionen identisch und ändert sich nicht. Sie stellt kein Sicherheitsrisiko dar, da nur die interne Azure-Plattformkomponente ein Paket von dieser IP-Adresse senden kann. 
 
@@ -217,7 +223,7 @@ Zusätzlich zu Load Balancer-Integritätstests [wird diese IP-Adresse für die f
 - Ermöglichen der Kommunikation mit dem virtuellen DNS-Server, um für die Kunden eine gefilterte Namensauflösung bereitzustellen, die keine benutzerdefinierten DNS-Server definieren.  Diese Filterung stellt sicher, dass Kunden nur die Hostnamen ihrer Bereitstellung auflösen können.
 - Ermöglichen des Abrufs einer dynamischen IP-Adresse vom DHCP-Dienst in Azure durch die VM.
 
-## <a name="design"></a> Leitfaden für den Entwurf
+## <a name="design-guidance"></a><a name="design"></a> Leitfaden für den Entwurf
 
 Integritätstests werden verwendet, um Ihren Dienst resilient zu machen und die Skalierung des Diensts zu ermöglichen. Eine fehlerhafte Konfiguration oder ein schlechtes Entwurfsmuster können sich auf die Verfügbarkeit und Skalierbarkeit des Diensts auswirken. Lesen Sie dieses gesamte Dokument, und überlegen Sie, wie sich die Markierung der Testantwort als offline oder online auf Ihr Szenario und die Verfügbarkeit Ihres Anwendungsszenarios auswirkt.
 

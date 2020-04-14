@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: ce0a170a629f347e2687a2e9f63fb3438fe2bd2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 18469c94b66acab27b58243e8d15eb924843319b
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235990"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811124"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurieren einer App Service-App im Azure-Portal
 
@@ -96,10 +96,11 @@ Für andere Sprachstapel sollten Sie stattdessen besser [App-Einstellungen](#con
 
 Zur Laufzeit stehen Verbindungszeichenfolgen als Umgebungsvariablen zur Verfügung, wobei sie mit Präfixen für die folgenden Verbindungstypen versehen werden:
 
-* SQL Server: `SQLCONNSTR_`
-* MySQL: `MYSQLCONNSTR_`
-* SQL-Datenbank: `SQLAZURECONNSTR_`
+* SQLServer: `SQLCONNSTR_`  
+* MySQL: `MYSQLCONNSTR_` 
+* SQLAzure: `SQLAZURECONNSTR_` 
 * Benutzerdefiniert: `CUSTOMCONNSTR_`
+* PostgreSQL: `POSTGRESQLCONNSTR_`  
 
 Wenn beispielsweise eine MySql-Verbindungszeichenfolge *connectionstring1* heißt, kann sie über die Umgebungsvariable `MYSQLCONNSTR_connectionString1` aufgerufen werden. Sprachstapelspezifische Schritte finden Sie unter:
 
@@ -173,7 +174,7 @@ Hier können Sie einige allgemeine Einstellungen für die App konfigurieren. Ein
     - **Verwalteter Pipelinemodus**: Der IIS-[Pipelinemodus]. Legen Sie ihn auf **Klassisch** fest, wenn Sie eine ältere App haben, die eine ältere Version von IIS erfordert.
     - **HTTP-Version**: Legen Sie die Einstellung auf **2.0** fest, um die Unterstützung für das [HTTPS/2](https://wikipedia.org/wiki/HTTP/2)-Protokoll zu aktivieren.
     > [!NOTE]
-    > Die aktuellen Browser unterstützen das HTTP/2-Protokoll in der Regel nur über TLS, während unverschlüsselter Datenverkehr weiterhin HTTP/1.1 verwendet. Um sicherzustellen, dass Clientbrowser eine Verbindung mit Ihrer App mit HTTP/2 herstellen können, [sichern Sie den benutzerdefinierten DNS-Namen mit einer SSL-Bindung in Azure App Service](configure-ssl-bindings.md).
+    > Die aktuellen Browser unterstützen das HTTP/2-Protokoll in der Regel nur über TLS, während unverschlüsselter Datenverkehr weiterhin HTTP/1.1 verwendet. Um sicherzustellen, dass Clientbrowser eine Verbindung mit Ihrer App mit HTTP/2 herstellen, sichern Sie Ihren benutzerdefinierten DNS-Namen. Weitere Informationen finden Sie unter [Schützen eines benutzerdefinierten DNS-Namens mit einer TLS/SSL-Bindung in Azure App Service](configure-ssl-bindings.md).
     - **ARR-Affinität**: In einer Bereitstellung mit mehreren Instanzen stellen Sie sicher, dass der Client für die Lebensdauer der Sitzung an die gleiche Instanz weitergeleitet wird. Sie können für zustandslose Anwendungen für diese Option **Aus** festlegen.
 - **Debuggen**: Aktivieren Sie das Remotedebuggen für [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)-, [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)- oder [Node.js](containers/configure-language-nodejs.md#debug-remotely)-Apps. Diese Option wird nach 48 Stunden automatisch deaktiviert.
 - **Eingehende Clientzertifikate**: erforderliche Clientzertifikate bei [gegenseitiger Authentifizierung](app-service-web-configure-tls-mutual-auth.md).
@@ -248,7 +249,7 @@ Siehe [Konfigurieren eines benutzerdefinierten Linux-Containers für Azure App S
 
 - [Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service]
 - [Einrichten von Stagingumgebungen in Azure App Service]
-- [Schützen eines benutzerdefinierten DNS-Namens mit einer SSL-Bindung in Azure App Service](configure-ssl-bindings.md)
+- [Schützen eines benutzerdefinierten DNS-Namens mit einer TLS/SSL-Bindung in Azure App Service](configure-ssl-bindings.md)
 - [Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service](troubleshoot-diagnostic-logs.md)
 - [Skalieren einer App in Azure App Service]
 - [Grundlagen der Überwachung in Azure App Service]

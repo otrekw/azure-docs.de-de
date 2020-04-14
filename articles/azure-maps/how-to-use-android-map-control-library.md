@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 55bfb5030d0a168e7556240212fcd5f3be30a289
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e0f0f311b7ec8adae6ddb25e01046141adadfa4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335364"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548541"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Erste Schritte mit dem Android SDK für Azure Maps
 
@@ -223,7 +223,7 @@ Es dauert ein paar Sekunden, bis Android Studio die Anwendung erstellt hat. Nach
 
 Das Android SDK für Azure Maps bietet drei verschiedene Möglichkeiten zum Festlegen der Sprache und der regionalen Ansicht für die Karte. Der folgende Code zeigt, wie die Sprache auf Französisch („fr-FR“) und die regionale Ansicht auf „Auto“ festgelegt wird. 
 
-Die erste Option besteht darin, die Informationen zur Sprache und regionalen Ansicht mithilfe der statischen Methoden `AzureMaps` und `setLanguage` global an die Klasse `setView` zu übergeben. Dadurch werden die Standardsprache und die regionale Ansicht für alle Azure Maps-Steuerelemente in Ihre App geladen.
+Die erste Option besteht darin, die Informationen zur Sprache und regionalen Ansicht mithilfe der statischen Methoden `setLanguage` und `setView` global an die Klasse `AzureMaps` zu übergeben. Dadurch werden die Standardsprache und die regionale Ansicht für alle Azure Maps-Steuerelemente in Ihre App geladen.
 
 ```Java
 static {
@@ -267,6 +267,29 @@ Hier ist ein Beispiel für Azure Maps, bei dem die Sprache auf „fr-FR“ und d
 </center>
 
 Eine vollständige Liste der unterstützten Sprachen und regionalen Ansichten ist [hier](supported-languages.md) dokumentiert.
+
+## <a name="navigating-the-map"></a>Navigieren auf einer Karte
+
+Es gibt verschiedene Möglichkeiten für das Zoomen, Schwenken, Drehen und Neigen der Karte. Im Folgenden werden die verschiedenen Möglichkeiten zum Navigieren auf der Karte erläutert.
+
+**Zoomen der Karte**
+
+- Berühren Sie die Karte mit zwei Fingern, und führen Sie diese zusammen, um zu verkleinern, oder führen Sie die Finger auseinander, um zu vergrößern.
+- Doppeltippen Sie auf die Karte, um um eine Ebene zu vergrößern.
+- Doppeltippen Sie mit zwei Fingern, um die Karte um eine Ebene zu verkleinern.
+- Tippen Sie zweimal, halten Sie beim zweiten Tippen den Finger auf der Karte, und ziehen Sie nach oben, um zu vergrößern, oder nach unten, um zu verkleinern.
+
+**Schwenken der Karte**
+
+- Berühren Sie die Karte, und ziehen Sie sie in eine beliebige Richtung.
+
+**Drehen der Karte**
+
+- Berühren Sie die Karte mit zwei Fingern, und drehen Sie sie.
+
+**Neigen der Karte**
+
+- Berühren Sie die Karte mit zwei Fingern, und ziehen Sie diese zusammen nach oben oder unten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

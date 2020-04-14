@@ -5,12 +5,12 @@ ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 357ea2cc598bca3e008a74f021895e1e45a3874f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2f6dd455024aba184cbb16b5b9c7cfffd032dc70
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78301001"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811731"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurieren der gegenseitigen TLS-Authentifizierung für Azure App Service
 
@@ -41,7 +41,7 @@ Ausschlusspfade lassen sich konfigurieren, indem Sie **Konfiguration** > **Allge
 
 ## <a name="access-client-certificate"></a>Zugreifen auf das Clientzertifikat
 
-In App Service erfolgt die SSL-Terminierung der Anforderung auf dem Front-End-Load Balancer. Bei der Weiterleitung der Anforderung an Ihren App-Code mit [aktivierten Clientzertifikaten](#enable-client-certificates) fügt App Service einen `X-ARR-ClientCert`-Anforderungsheader mit dem Clientzertifikat ein. App Service verwendet dieses Clientzertifikat nur für dessen Weiterleitung an Ihre App. Ihr App-Code ist für die Überprüfung des Clientzertifikats zuständig.
+In App Service erfolgt die TLS-Terminierung der Anforderung auf dem Front-End-Load Balancer. Bei der Weiterleitung der Anforderung an Ihren App-Code mit [aktivierten Clientzertifikaten](#enable-client-certificates) fügt App Service einen `X-ARR-ClientCert`-Anforderungsheader mit dem Clientzertifikat ein. App Service verwendet dieses Clientzertifikat nur für dessen Weiterleitung an Ihre App. Ihr App-Code ist für die Überprüfung des Clientzertifikats zuständig.
 
 Für ASP.NET steht das Clientzertifikat über die Eigenschaft **HttpRequest.ClientCertificate** zur Verfügung.
 

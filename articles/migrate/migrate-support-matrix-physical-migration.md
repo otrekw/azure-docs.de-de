@@ -2,13 +2,14 @@
 title: Unterstützung der Migration physischer Server in Azure Migrate
 description: Hier finden Sie Informationen zur Unterstützung der Migration physischer Server in Azure Migrate.
 ms.topic: conceptual
+ms.custom: fasttrack-edit
 ms.date: 01/07/2020
-ms.openlocfilehash: e55cf6dddbc8dafd33b444e4a0dbe378d807aea1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f8b94ab77a1eef8e771384f5d69da98a1d7ae6c
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79232722"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520282"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Unterstützungsmatrix für die Migration physischer Server
 
@@ -43,7 +44,7 @@ Die Tabelle enthält eine Übersicht über die Unterstützung für physische Ser
 **Netzwerk/Speicher** | Die neuesten Informationen finden Sie in den Bedingungen für [Netzwerk](../site-recovery/vmware-physical-azure-support-matrix.md#network) und [Speicher](../site-recovery/vmware-physical-azure-support-matrix.md#storage) für Site Recovery. Für Azure Migrate gelten die gleichen Netzwerk-/Speicheranforderungen.
 **Anforderungen für Azure** | Die neuesten Informationen finden Sie in den Bedingungen für [Azure-Netzwerk](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [Speicher](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage) und [Compute](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) für Site Recovery. Bei Azure Migrate gelten die gleichen Anforderungen für die Migration physischer Server.
 **Mobilitätsdienst** | Der Mobilitätsdienst-Agent muss auf jedem Computer installiert sein, den Sie migrieren möchten.
-**UEFI-Start** | Der migrierte Computer in Azure wird automatisch in einen virtuellen Azure-Computer mit BIOS-Start konvertiert.<br/><br/> Der Betriebssystemdatenträger sollte bis zu vier Partitionen aufweisen, und Volumes sollten mit NTFS formatiert sein.
+**UEFI-Start** | Der migrierte Computer in Azure wird automatisch in einen virtuellen Azure-Computer mit BIOS-Start konvertiert. Es werden nur Server unter Windows Server 2012 oder höher unterstützt.<br/><br/> Der Betriebssystemdatenträger sollte bis zu vier Partitionen aufweisen, und Volumes sollten mit NTFS formatiert sein.
 **Zieldatenträger** | Computer können nur zu verwalteten Datenträgern (HDD Standard, SSD Premium) in Azure migriert werden.
 **Datenträgergröße** | 2 TB für den Betriebssystemdatenträger, 8 TB für Datenträger
 **Einschränkungen für Datenträger** |  Bis zu 63 Datenträger pro Computer

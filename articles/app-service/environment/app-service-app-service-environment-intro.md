@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f655b7793bfbb5bbeddfc2f1f8e7bc973dabeb4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd3881617227430488f8dd3f2f3d24072b24b8ce
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687360"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478724"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Einführung in die App Service-Umgebung v1
 
@@ -48,7 +48,7 @@ Alle Serverressourcen in einer App Service-Umgebung sind ausschließlich für ei
 
 Eine App Service-Umgebung besteht aus einem Front-End-Serverressourcenpool sowie ein bis drei Worker-Serverressourcenpools.
 
-Der Front-End-Pool enthält Serverressourcen, die für die SSL-Terminierung sowie für den automatischen Lastenausgleich von App-Anforderungen in einer App Service-Umgebung zuständig sind.
+Der Front-End-Pool enthält Serverressourcen, die für die TLS-Terminierung sowie für den automatischen Lastenausgleich von App-Anforderungen in einer App Service-Umgebung zuständig sind.
 
 Jeder Workerpool enthält Computeressourcen, die [App Service-Plänen][AppServicePlan] zugeordnet sind, die wiederum eine oder mehrere Azure App Service-Apps enthalten.  Da in einer App Service-Umgebung bis zu drei verschiedenen Workerpools vorhanden sein können, können Sie flexibel verschiedene Serverressourcen für jeden Workerpool auswählen.  
 

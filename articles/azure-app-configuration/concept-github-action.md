@@ -1,26 +1,26 @@
 ---
-title: Verwenden von GitHub Actions mit der Azure App Configuration-Synchronisierung
-description: Verwenden von GitHub Actions, um ein Update Ihrer App Configuration-Instanz zu initiieren, wenn definierte Aktionen in einem GitHub-Repository ausgeführt werden
+title: Synchronisieren Ihres GitHub-Repositorys auf App Configuration
+description: Verwenden von GitHub Actions, um Ihre App Configuration-Instanz automatisch zu aktualisieren, wenn Sie Ihr GitHub-Repository aktualisieren.
 author: lisaguthrie
 ms.author: lcozzens
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 9d60f1885a85fd7d45090f1cb4905a3d95d9d1d6
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 602ccddf97938022df3c5903b573608558fe5d35
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77523712"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585476"
 ---
-# <a name="sync-your-app-configuration-instance-using-github-actions"></a>Synchronisieren Ihrer App Configuration-Instanz mithilfe von GitHub Actions
-Azure App Configuration verwendet GitHub Actions zum Auslösen von Updates einer App Configuration-Instanz basierend auf Aktionen, die in einem GitHub-Repository ausgeführt werden. GitHub-Workflows lösen Konfigurationsupdates aus und ermöglichen damit die Integration dieser Updates in denselben Workflow, der zum Aktualisieren des App-Codes verwendet wird.
+# <a name="sync-your-github-repository-to-app-configuration"></a>Synchronisieren Ihres GitHub-Repositorys auf App Configuration
 
-Ein GitHub Actions-[Workflow](https://help.github.com/articles/about-github-actions#workflow) definiert einen automatisierten Prozess in einem GitHub-Repository. Dieser Prozess informiert GitHub darüber, wie Ihr GitHub-Projekt erstellt und bereitgestellt werden soll. Azure App Configuration stellt die Aktion *Azure App Configuration-Synchronisierung* bereit, um Updates für eine App Configuration-Instanz zu aktivieren, wenn Änderungen am Quellrepository vorgenommen werden. 
+Teams, die Ihre vorhandenen Verfahren der Quellcodeverwaltung beibehalten möchten, können mithilfe von GitHub Actions ihr GitHub-Repository automatisch mit ihrem App Configuration-Speicher synchronisieren. So können Sie auf die gewohnte Weise Änderungen an den Konfigurationsdateien vornehmen und beispielweise die folgenden Vorteile von App Configuration nutzen: <br>
+&nbsp;&nbsp;&nbsp;&nbsp;• Zentrale Konfiguration außerhalb des Codes <br>
+&nbsp;&nbsp;&nbsp;&nbsp;• Aktualisieren der Konfiguration ohne erneute Bereitstellung der gesamten App <br>
+&nbsp;&nbsp;&nbsp;&nbsp;• Integration in Dienste wie Azure App Service und Azure Functions 
 
-Eine YAML-Datei (.yml) im Pfad `/.github/workflows/` in Ihrem Repository definiert Ihren Workflow. Diese Definition enthält die Schritte und Parameter des Workflows.
-
-GitHub-Ereignisse, z. B. ein Push in ein Repository, können einen GitHub Actions-Workflow auslösen.  Die Aktion *Azure App Configuration-Synchronisierung* ermöglicht das Auslösen eines Updates einer App Configuration-Instanz, wenn eine bestimmte GitHub-Aktion auftritt. Sie können Konfigurationsupdates beim Pushen, Überprüfen oder Branchen von App-Konfigurationsdateien auslösen – genauso wie beim App-Code.
+Ein GitHub Actions-[Workflow](https://help.github.com/articles/about-github-actions#workflow) definiert einen automatisierten Prozess in einem GitHub-Repository. Die Aktion *Azure App Configuration-Synchronisierung* löst Aktualisierungen einer App Configuration-Instanz aus, wenn Änderungen am Quellrepository vorgenommen werden. Dabei wird zum Definieren der Schritte und Parameter eine YAML-Datei (.yml) im Pfad `/.github/workflows/` des Repositorys verwendet. Sie können Konfigurationsupdates beim Pushen, Überprüfen oder Branchen von App-Konfigurationsdateien auslösen – genauso wie beim App-Code.
 
 Die GitHub-[Dokumentation](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow) bietet ausführliche Informationen zu GitHub-Workflows und GitHub Actions. 
 
@@ -130,7 +130,7 @@ jobs:
 ## <a name="use-max-depth-to-limit-github-action"></a>Verwenden der maximalen Tiefe zum Einschränken der GitHub-Aktion
 Das Standardverhalten für geschachtelte JSON-Attribute besteht darin, das gesamte Objekt zu vereinfachen.  Der folgende JSON-Code definiert dieses Schlüssel-Wert-Paar:
 
-| Key | value |
+| Schlüssel | Wert |
 | --- | --- |
 | Object:Inner:InnerKey | InnerValue |
 
@@ -173,7 +173,7 @@ jobs:
 
 Bei einer Tiefe von 2 gibt das obige Beispiel nun das folgende Schlüssel-Wert-Paar zurück:
 
-| Key | value |
+| Schlüssel | Wert |
 | --- | --- |
 | Object:Inner | {"InnerKey":"InnerValue"} |
 
@@ -184,7 +184,7 @@ Eingabeparameter geben Daten an, die von der Aktion während der Laufzeit verwen
 > Bei den Eingabe-IDs wird die Groß-/Kleinschreibung nicht berücksichtigt.
 
 
-| Eingabename | Erforderlich? | value |
+| Eingabename | Erforderlich? | Wert |
 |----|----|----|
 | configurationFile | Ja | Relativer Pfad zur Konfigurationsdatei im Repository.  Globmuster werden unterstützt und können mehrere Dateien enthalten. |
 | format | Ja | Dateiformat der Konfigurationsdatei.  Gültige Formate sind: JSON, YAML, Eigenschaften. |

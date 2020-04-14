@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: a1dbabafe32e013d526ed88a83e446ee765cdb7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3b738d95b5b777f1cf0329fb3c1bc3e2860421e
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76045865"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545967"
 ---
 # <a name="introduction-to-azure-security"></a>Einführung in die Azure-Sicherheit
 ## <a name="overview"></a>Übersicht
@@ -233,11 +233,11 @@ Microsoft [Azure Application Gateway](../../application-gateway/overview.md) ver
 
 ![Application Gateway](./media/overview/azure-security-fig2.png)
 
-Sie können damit die Produktivität von Webfarmen steigern, indem sie die CPU-intensive SSL-Terminierung an das Application Gateway auslagern (auch als „SSL-Auslagerung“ oder „SSL-Bridging“ bekannt). Darüber hinaus werden noch weitere Routingfunktionen der Ebene 7 bereitgestellt. Hierzu zählen etwa die Roundrobin-Verteilung des eingehenden Datenverkehrs, cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis und die Möglichkeit zum Hosten mehrerer Websites hinter einer einzelnen Application Gateway-Instanz. Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht).
+Sie können damit die Produktivität von Webfarmen steigern, indem sie die CPU-intensive TLS-Terminierung an das Application Gateway auslagern (auch als „TLS-Auslagerung“ oder „TLS-Bridging“ bekannt). Darüber hinaus werden noch weitere Routingfunktionen der Ebene 7 bereitgestellt. Hierzu zählen etwa die Roundrobin-Verteilung des eingehenden Datenverkehrs, cookiebasierte Sitzungsaffinität, Routing auf URL-Pfadbasis und die Möglichkeit zum Hosten mehrerer Websites hinter einer einzelnen Application Gateway-Instanz. Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht).
 
 Das Application Gateway ermöglicht ein Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung.
 
-Application Gateway bietet zahlreiche Application Delivery Controller-Funktionen (ADC), u.a. HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität, SSL-Auslagerung ([Secure Sockets Layer](../../application-gateway/tutorial-restrict-web-traffic-powershell.md)), benutzerdefinierte Integritätstests und Unterstützung für mehrere Websites.
+Application Gateway bietet zahlreiche Application Delivery Controller-Funktionen (ADC), u.a. HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität, [TLS-Auslagerung](../../application-gateway/tutorial-restrict-web-traffic-powershell.md), benutzerdefinierte Integritätstests und Unterstützung für mehrere Websites.
 
 ### <a name="web-application-firewall"></a>Web Application Firewall
 Web Application Firewall ist ein Feature von [Azure Application Gateway](../../application-gateway/overview.md), das Schutz für Webanwendungen bietet, die Application Gateway für ADC-Standardfunktionen (Application Delivery Control, Steuerung der Anwendungsbereitstellung) nutzen. Web Application Firewall schützt sie vor den nach OWASP 10 häufigsten Web-Sicherheitslücken.

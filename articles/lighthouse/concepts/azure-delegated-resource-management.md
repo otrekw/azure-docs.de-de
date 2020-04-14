@@ -1,14 +1,14 @@
 ---
 title: Delegierte Azure-Ressourcenverwaltung
 description: Angebote für verwaltete Dienste gestatten Dienstanbietern, Ressourcenverwaltungsangebote an Kunden in Azure Marketplace zu verkaufen.
-ms.date: 01/30/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 15814b1ca3b1b78de521033836e3614d18fd0c71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db9f562ca4f42d1c1d85eeac44495a8ec7e01beb
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76904317"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548421"
 ---
 # <a name="azure-delegated-resource-management"></a>Delegierte Azure-Ressourcenverwaltung
 
@@ -23,7 +23,7 @@ Die delegierte Azure-Ressourcenverwaltung ermöglicht die logische Projektion vo
 
 Mit der delegierten Azure-Ressourcenverwaltung können autorisierte Benutzer direkt im Kontext eines Kundenabonnements arbeiten, ohne dass Sie über ein Konto im Mandanten des Kunden verfügen oder Mitbesitzer des Mandanten des Kunden sind. Sie können ferner [auf der neuen Seite **Meine Kunden** im Azure-Portal alle delegierten Kundenabonnements anzeigen und verwalten](../how-to/view-manage-customers.md).
 
-Die [mandantenübergreifende Erfahrung](cross-tenant-management-experience.md) hilft Ihnen, effizienter mit Azure-Verwaltungsdiensten zu arbeiten wie Azure Policy, Azure Security Center und mehr. Alle Dienstanbieteraktivitäten werden im Aktivitätsprotokoll nachverfolgt, das sowohl im Mandanten des Dienstanbieters als auch in dem des Kunden gespeichert wird. Dies bedeutet, dass sowohl der Kunde als auch der Dienstanbieter leicht den Benutzer identifizieren können, dem Änderungen zugeordnet sind.
+Die [mandantenübergreifende Erfahrung](cross-tenant-management-experience.md) hilft Ihnen, effizienter mit Azure-Verwaltungsdiensten zu arbeiten wie Azure Policy, Azure Security Center und mehr. Alle Dienstanbieteraktivitäten werden im Aktivitätsprotokoll nachverfolgt, das im Mandanten des Dienstanbieters gespeichert wird (und von Benutzern im verwaltenden Mandanten angezeigt werden kann). Dies bedeutet, dass sowohl der Kunde als auch der Dienstanbieter leicht den Benutzer identifizieren können, dem Änderungen zugeordnet sind.
 
 Wenn Sie einen Kunden in die delegierte Azure-Ressourcenverwaltung integrieren, hat er Zugriff auf die neue Seite **Dienstanbieter** im Azure-Portal, wo er [seine Angebote, Dienstanbieter und delegierten Ressourcen bestätigen und verwalten](../how-to/view-manage-service-providers.md) kann. Wenn der Kunde den Zugriff für einen Dienstanbieter jemals widerrufen möchte, kann er dies hier jederzeit tun.
 

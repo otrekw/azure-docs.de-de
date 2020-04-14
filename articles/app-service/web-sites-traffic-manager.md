@@ -5,12 +5,12 @@ ms.assetid: dabda633-e72f-4dd4-bf1c-6e945da456fd
 ms.topic: article
 ms.date: 02/25/2016
 ms.custom: seodec18
-ms.openlocfilehash: 200effab70b369d69b4e89b1901578ecfe1a1b87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 040f84288c66f4506919e775b9ea41324b617cfa
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74684105"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437897"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Steuern des Azure App Service-Datenverkehrs mit Azure Traffic Manager
 > [!NOTE]
@@ -41,8 +41,9 @@ Beachten Sie die folgenden Aspekte, wenn Sie Azure Traffic Manager mit Azure ver
 * Sie können in einem Profil nur einen App Service-Endpunkt pro Region angeben. Wenn Sie eine App als Endpunkt für eine Region auswählen, stehen die verbleibenden Apps in dieser Region nicht mehr für dieses Profil zur Auswahl.
 * Die App Service-Endpunkte, die Sie in einem Azure Traffic Manager-Profil festlegen, werden im Abschnitt **Domänennamen** auf der Konfigurationsseite für die App im Profil angezeigt, können dort jedoch nicht konfiguriert werden.
 * Nachdem Sie einem Profil eine App hinzugefügt haben, wird in der **Website-URL** im Dashboard der Portalseite der App die benutzerdefinierte Domänen-URL der App angezeigt, sofern Sie eine eingerichtet haben. Anderenfalls wird die URL des Traffic Manager-Profils angezeigt (z.B. `contoso.trafficmanager.net`). Sowohl der direkte Domänenname der App als auch die Traffic Manager-URL werden auf der Konfigurationsseite der App im Abschnitt **Domänennamen** angezeigt.
-* Ihre benutzerdefinierten Domänennamen funktionieren wie erwartet. Sie fügen sie Ihren Apps hinzu, müssen jedoch auch die DNS-Zuordnung konfigurieren, um auf die Traffic Manager-URL zu verweisen. Informationen zum Einrichten einer benutzerdefinierten Domäne für eine App Service-App finden Sie unter [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service](app-service-web-tutorial-custom-domain.md).
+* Ihre benutzerdefinierten Domänennamen funktionieren wie erwartet. Sie fügen sie Ihren Apps hinzu, müssen jedoch auch die DNS-Zuordnung konfigurieren, um auf die Traffic Manager-URL zu verweisen. Informationen, wie Sie eine benutzerdefinierte Domäne für eine App Service-App einrichten, finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens in Azure App Service mit Traffic Manager-Integration](configure-domain-traffic-manager.md).
 * Sie können einem Azure Traffic Manager-Profil nur Apps im Standard- oder Premium-Modus hinzufügen.
+* Das Hinzufügen einer App zu einem Traffic Manager-Profil bewirkt, dass die App neu gestartet wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Einen Überblick über die Konzepte und technischen Aspekte von Azure Traffic Manager finden Sie unter [Traffic Manager-Übersicht](../traffic-manager/traffic-manager-overview.md).

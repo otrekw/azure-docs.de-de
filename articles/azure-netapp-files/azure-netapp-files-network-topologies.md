@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 8e6a1c3472c6b20b27cf181edbeeb96ab71eb58d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12be766f36a0901079a5a26f20ea7dacc75268de
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73242478"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667872"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Richtlinien für die Azure NetApp Files-Netzwerkplanung
 
@@ -39,10 +39,11 @@ Azure NetApp Files unterstützt derzeit die folgenden Features nicht:
 * Benutzerdefinierte Routen (UDRs) mit dem Adresspräfix als Subnetz für Azure NetApp Files
 * Azure-Richtlinien (z.B. benutzerdefinierte Benennungsrichtlinien) für die Azure NetApp Files-Schnittstelle
 * Lastenausgleichsmodule für den Azure NetApp Files-Datenverkehr
+* Azure NetApp Files wird mit Azure Virtual WAN nicht unterstützt.
 
 Für Azure NetApp Files gelten die folgenden Netzwerkeinschränkungen:
 
-* Es dürfen nicht mehr als 1.000 IP-Adressen innerhalb eines VNets mit Azure NetApp Files (einschließlich VNets mit Peering) verwendet werden. Wir arbeiten an der Erhöhung dieses Limits, um den Skalierungsanforderungen von Kunden gerecht zu werden. Wenn Sie in der Zwischenzeit weitere IP-Adressen benötigen, wenden Sie sich mit Ihrem Anwendungsfall und dem erforderlichen Limit an unser Supportteam.
+* Es dürfen nicht mehr als 1.000 IP-Adressen innerhalb eines VNets mit Azure NetApp Files (einschließlich VNets mit Peering) verwendet werden. Wir arbeiten an der Erhöhung dieses Limits, um den Skalierungsanforderungen von Kunden gerecht zu werden. 
 * In jedem Azure Virtual Network (VNET) kann nur ein Subnetz an Azure NetApp Files delegiert werden.
 
 
@@ -123,8 +124,8 @@ In der oben dargestellten Topologie ist das lokale Netzwerk mit einem Hub-VNET i
 * Lokale Ressourcen auf VM 1 und VM 2 können sich über ein Site-to-Site-VPN oder regionales VNet-Peering mit Volume 2 oder 3 verbinden.
 * VM 3 im Hub-VNET kann sich mit Volume 2 in Spoke-VNET 1 und Volume 3 in Spoke-VNET 2 verbinden.
 * VM 4 in Spoke-VNET 1 und VM 5 in Spoke-VNET 2 können sich mit Volume 1 im Hub-VNET verbinden.
-
-VM 4 in Spoke-VNET 1 kann sich nicht mit Volume 3 in Spoke-VNET 2 verbinden. Auch VM 5 in Spoke-VNET 2 kann sich nicht mit Volume 2 in Spoke-VNET 1 verbinden. Der Grund dafür ist, dass die Spoke-VNETs nicht per Peering verknüpft sind und _Transitrouting über VNET-Peering_ nicht unterstützt wird.
+* VM 4 in Spoke-VNET 1 kann sich nicht mit Volume 3 in Spoke-VNET 2 verbinden. Auch VM 5 in Spoke-VNET 2 kann sich nicht mit Volume 2 in Spoke-VNET 1 verbinden. Der Grund dafür ist, dass die Spoke-VNETs nicht per Peering verknüpft sind und _Transitrouting über VNET-Peering_ nicht unterstützt wird.
+* In der obigen Architektur geht die Konnektivität mit dem ANF-Volume von einer lokalen Ressource aus, wobei die Verbindung über das Gateway im Hub hergestellt wird, verloren, wenn es im Spoke-VNET ebenfalls ein Gateway gibt. Entwurfsgemäß würde das Gateway im Spoke-VNet bevorzugt, sodass nur Computer, die eine Verbindung über dieses Gateway herstellen, eine Verbindung mit dem ANF-Volume herstellen können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

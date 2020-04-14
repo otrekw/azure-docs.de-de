@@ -1,15 +1,16 @@
 ---
-title: Best Practices für Operator – Clusterisolierung in Azure Kubernetes Service (AKS)
+title: Bewährte Methoden für die Clusterisolierung
+titleSuffix: Azure Kubernetes Service
 description: Lernen Sie die Best Practices für die Isolierung in Azure Kubernetes Service (AKS) für Clusteroperator kennen.
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 228b856d5c5ffa2bfac7df12094667e02f797690
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00643dc1699d1cbd47efd271738015ea05e895e2
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77594854"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668342"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Best Practices für Clusterisolierung in Azure Kubernetes Service (AKS)
 

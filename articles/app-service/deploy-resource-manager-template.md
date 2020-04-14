@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: dfdfa9f69e00aa644c21fc96cb70e9fa460ca0c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a282a412823207e5f662441158000e8c6121796
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77211700"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637923"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Anleitung zum Bereitstellen von Web-Apps mit Azure Resource Manager-Vorlagen
 
@@ -109,7 +109,7 @@ Der Name Ihrer Web-App muss global eindeutig sein. Sie können eine Namenskonven
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Wenn Ihre Vorlage eine [Microsoft.Web/certificates](/azure/templates/microsoft.web/certificates)-Ressource für die SSL-Bindung enthält und das Zertifikat in einer Key Vault-Instanz gespeichert ist, müssen Sie sicherstellen, dass die App Service-Identität auf das Zertifikat zugreifen kann.
+Wenn Ihre Vorlage eine [Microsoft.Web/certificates](/azure/templates/microsoft.web/certificates)-Ressource für die TLS/SSL-Bindung enthält und das Zertifikat in einer Key Vault-Instanz gespeichert ist, müssen Sie sicherstellen, dass die App Service-Identität auf das Zertifikat zugreifen kann.
 
 In der globalen Azure-Umgebung hat der App Service-Dienstprinzipal die ID **abfa0a7c-a6b6-4736-8310-5855508787cd**. Verwenden Sie Folgendes, um für den App Service-Dienstprinzipal den Zugriff auf Key Vault zu gewähren:
 

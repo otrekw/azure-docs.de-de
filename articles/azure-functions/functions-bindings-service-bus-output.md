@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 7e00d03a8b3ec7ef56935ff7714fd932bc343cd3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02d9ce87d45c5f1c9a123aae18f7d710b268f03e
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235150"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582254"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus-Ausgabebindung für Azure Functions
 
@@ -383,6 +383,7 @@ In diesem Abschnitt werden die verfügbaren globalen Konfigurationseinstellungen
 
 |Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------|
+|prefetchCount|0|Ruft die Anzahl der Nachrichten ab, die der Nachrichtenempfänger gleichzeitig anfordern kann, oder legt sie fest.|
 |maxAutoRenewDuration|00:05:00|Die maximale Zeitspanne, in der die Nachrichtensperre automatisch erneuert wird.|
 |autoComplete|true|Ob der Trigger die Nachricht sofort als erledigt markieren soll (automatische Erledigung), oder ob er auf den erfolgreichen Abschluss der Funktion warten soll, um sie dann als abgeschlossen zu markieren.|
 |maxConcurrentCalls|16|Die maximale Anzahl gleichzeitiger Aufrufe für den Rückruf, der vom Nachrichtensystem initiiert werden soll. Die Functions-Runtime verarbeitet standardmäßig mehrere Nachrichten gleichzeitig. Um die Runtime anzuweisen, jeweils nur eine Warteschlangen- oder Themennachricht zu verarbeiten, legen Sie `maxConcurrentCalls` auf „1“ fest. |

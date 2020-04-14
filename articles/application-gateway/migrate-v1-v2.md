@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 9909c46015fffb3bea3eef094599312e28b935c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 96f3825288846e86771ef3907eb4da4e58630df3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77046193"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475180"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrieren von Azure Application Gateway und Web Application Firewall von v1 zu v2
 
@@ -40,6 +40,7 @@ Es gibt ein Azure PowerShell-Skript, in dem folgende Vorgänge ausgeführt werde
 * Haben Sie für Ihr v1-Gateway den FIPS-Modus aktiviert, wird dieser nicht in Ihr neues v2-Gateway migriert. Der FIPS-Modus wird in v2 nicht unterstützt.
 * In v2 wird IPv6 nicht unterstützt, weshalb v1-Gateways, für die IPv6 aktiviert ist, nicht migriert werden. Wenn Sie das Skript ausführen, wird es möglicherweise nicht vollständig ausgeführt.
 * Wenn das v1-Gateway nur eine private IP-Adresse hat, erstellt das Skript eine öffentliche IP-Adresse und eine private IP-Adresse für das neue v2-Gateway. v2-Gateways unterstützen derzeit nicht nur private IP-Adressen.
+* Header mit Namen, die etwas anderes als Buchstaben, Ziffern, Bindestriche und Unterstriche enthalten, werden nicht an Ihre Anwendung übergeben. Dies gilt nur für Headernamen, nicht für Headerwerte. Hierbei handelt es sich um einen Breaking Change gegenüber v1.
 
 ## <a name="download-the-script"></a>Herunterladen des Skripts
 
@@ -124,7 +125,7 @@ So führen Sie das Skript aus
 
       Informationen, wie eine Liste aus PSApplicationGatewayTrustedRootCertificate-Objekten erstellt wird, finden Sie unter [New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
    * **privateIpAddress: [Zeichenfolge]: Optional**. Eine bestimmte private IP-Adresse, die Sie Ihrem neuen v2-Gateway zuordnen möchten.  Diese Adresse muss aus dem VNet stammen, das Sie für Ihr neues v2-Gateway zuordnen. Ist dieser Parameter nicht angegeben, weist das Skript eine private IP-Adresse für Ihr v2-Gateway zu.
-   * **publicIpResourceId: [Zeichenfolge]: Optional**. Die Ressourcen-ID einer vorhandenen öffentlichen IP-Adresse (Standard-SKU-Ressource) in Ihrem Abonnement, die Sie dem neuen v2-Gateway zuordnen möchten. Wenn dies nicht angegeben ist, weist das Skript eine neue öffentliche IP-Adresse in der gleichen Ressourcengruppe zu. Der Name ist der Name des v2-Gateways, an den *-IP-* angefügt ist.
+   * **publicIpResourceId: [Zeichenfolge]: Optional**. Die Ressourcen-ID einer vorhandenen öffentlichen IP-Adresse (Standard-SKU-Ressource) in Ihrem Abonnement, die Sie dem neuen v2-Gateway zuordnen möchten. Wenn dies nicht angegeben ist, weist das Skript eine neue öffentliche IP-Adresse in der gleichen Ressourcengruppe zu. Der Name ist der Name des v2-Gateways, an den *-IP* angefügt ist.
    * **validateMigration: [Schalter]: Optional**. Verwenden Sie diesen Parameter, wenn das Skript nach der Erstellung des v2-Gateways und dem Kopieren der Konfiguration einige grundlegende Vergleichsprüfungen der Konfiguration durchführen soll. Standardmäßig erfolgt keine Prüfung.
    * **enableAutoScale: [Schalter]: Optional**. Verwenden Sie diesen Parameter, wenn das Skript die automatische Skalierung auf dem neuen v2-Gateway nach der Erstellung aktivieren soll. Standardmäßig ist automatische Skalierung deaktiviert. Sie können automatische Skalierung später für das neu erstellte v2-Gateway jederzeit manuell aktivieren.
 

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: cd0c74c8aa40b3e96716ef37aa27b08b5f6aece1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6acc1ffd197ddba4290ff7c0751b259d98a70927
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76547539"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754393"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Planen des Avere vFXT-Systems
 
@@ -142,7 +142,7 @@ Der Avere vFXT-Cluster für Azure befindet sich in einem privaten Subnetz und be
 
 Folgende Zugriffsoptionen sind verfügbar:
 
-* Jump Host: Weisen Sie einer separaten VM im privaten Netzwerk eine öffentliche IP-Adresse zu, und erstellen Sie damit einen SSL-Tunnel zu den Clusterknoten.
+* Jump Host: Weisen Sie einer separaten VM im privaten Netzwerk eine öffentliche IP-Adresse zu, und erstellen Sie damit einen TLS-Tunnel zu den Clusterknoten.
 
   > [!TIP]
   > Wenn Sie eine öffentliche IP-Adresse für den Clustercontroller festlegen, können Sie ihn als Jump Host verwenden. Weitere Informationen finden Sie unter [Clustercontroller als Jump Host](#cluster-controller-as-jump-host).

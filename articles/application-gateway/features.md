@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 04/07/2020
 ms.author: victorh
-ms.openlocfilehash: 550d9f4f5396b2165260e39cd28222b083dd6756
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f021eed959ef88a1ef3671e1d0ace8080710c92a
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235934"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810231"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Application Gateway-Funktionen
 
@@ -160,6 +160,10 @@ Die folgende Tabelle zeigt den durchschnittlichen Leistungsdurchsatz für jede v
 
 > [!NOTE]
 > Hierbei handelt es sich um ungefähre Werte für den Durchsatz des Anwendungsgateways. Der tatsächliche Durchsatz ist abhängig von verschiedenen Umgebungsdetails wie etwa durchschnittliche Seitengröße, Speicherort der Back-End-Instanzen und Verarbeitungszeit für die Seitenbereitstellung. Für genaue Leistungsangaben sollten Sie Ihre eigenen Tests ausführen. Diese Werte dienen nur als Leitfaden für die Kapazitätsplanung.
+
+## <a name="version-feature-comparison"></a>Funktionsvergleich der Versionen
+
+Einen Vergleich der Funktionen von Application Gateway v1 mit v2 finden Sie unter [Automatische Skalierung und zonenredundantes Application Gateway v2](application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

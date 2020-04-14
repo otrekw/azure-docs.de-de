@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/31/2019
+ms.date: 04/01/2020
 ms.author: victorh
-ms.openlocfilehash: f2f2e02cdb5698d7569e5be177d54ca4dcb0ae02
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: d9691a6fd5c320242b9677776cbd08be4f800921
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2020
-ms.locfileid: "77086535"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544501"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Häufig gestellte Fragen zu Application Gateway
 
@@ -66,6 +66,8 @@ Informationen hierzu finden Sie unter [Application Gateway – Konfigurationsüb
 
 Wenn Sie eine öffentliche IP-Adresse als Endpunkt verwenden, finden Sie die Informationen zu IP und DNS in der Ressource der öffentlichen IP-Adresse. Sie können sie auch im Portal auf der Übersichtsseite für das Anwendungsgateway abrufen. Bei Verwendung von internen IP-Adressen finden Sie die Informationen auf der Übersichtsseite.
 
+Öffnen Sie für die v2-SKU die öffentliche IP-Adresse, und klicken Sie auf **Konfiguration**. Das Feld **DNS-Namenbezeichnung (optional)** steht zum Konfigurieren des DNS-Namens zur Verfügung.
+
 ### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Welche Einstellungen werden für das Keep-Alive-Timeout und das TCP-Leerlauftimeout verwendet?
 
 *Keep-Alive-Timeout* steuert, wie lange das Application Gateway wartet, bis ein Client eine andere HTTP-Anforderung über eine persistente Verbindung sendet, bevor diese wiederverwendet oder geschlossen wird. *TCP-Leerlauftimeout* steuert, wie lange eine TCP-Verbindung bei fehlender Aktivität offengehalten wird. 
@@ -94,6 +96,10 @@ Ja. Sie können nicht nur mehrere Instanzen einer bestimmten Application Gatewa
 
 Ein einzelnes Subnetz kann entweder eine Application Gateway-Instanz vom Typ „Standard“ oder eine Application Gateway-Instanz vom Typ „Standard_v2“ unterstützen, aber nicht beide gleichzeitig.
 
+### <a name="does-application-gateway-v2-support-user-defined-routes-udr"></a>Unterstützt Application Gateway v2 benutzerdefinierte Routen?
+
+Ja, aber nur für spezifische Szenarios. Weitere Informationen finden Sie unter [Application Gateway-Konfiguration: Übersicht](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet).
+
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Werden X-Forwarded-For-Header von Application Gateway unterstützt?
 
 Ja. Entsprechende Informationen finden Sie unter [Funktionsweise von Application Gateway](https://docs.microsoft.com/azure/application-gateway/how-application-gateway-works#modifications-to-the-request).
@@ -106,7 +112,15 @@ Die Bereitstellung von Instanzen mit der v2-SKU dauert in der Regel etwa sechs M
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>Kann ich Exchange Server als Back-End mit Application Gateway verwenden?
 
-Nein. Application Gateway unterstützt keine E-Mail-Protokolle wie SMTP, IMAP oder POP3. 
+Nein. Application Gateway unterstützt keine E-Mail-Protokolle wie SMTP, IMAP oder POP3.
+
+### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Gibt es Richtlinien für die Migration von der v1-SKU zur v2-SKU?
+
+Ja. Details dazu finden Sie unter [Migrieren von Azure Application Gateway und Web Application Firewall von v1 zu v2](migrate-v1-v2.md).
+
+### <a name="will-the-application-gateway-v1-sku-continue-to-be-supported"></a>Wird die Application Gateway v1-SKU weiterhin unterstützt?
+
+Ja. Die Application Gateway v1-SKU wird weiterhin unterstützt. Es wird jedoch dringend empfohlen, zu v2 zu wechseln, um die Funktionsupdates in dieser SKU zu nutzen. Weitere Informationen finden Sie unter [Automatische Skalierung und zonenredundantes Application Gateway v2](application-gateway-autoscaling-zone-redundant.md).
 
 ## <a name="performance"></a>Leistung
 
@@ -124,13 +138,13 @@ Verteilen Sie Datenverkehr mithilfe von Traffic Manager auf mehrere Anwendungsga
 
 Ja, die Application Gateway v2-SKU unterstützt automatische Skalierung. Weitere Informationen finden Sie unter [Automatische Skalierung und zonenredundantes Application Gateway](application-gateway-autoscaling-zone-redundant.md).
 
-### <a name="does-manual-or-automatic-scale-up-or-scale-down-cause-downtime"></a>Werden durch das manuelle oder automatische zentrale Hoch- oder Herunterskalieren Ausfallzeiten verursacht?
+### <a name="does-manual-or-automatic-scale-up-or-scale-down-cause-downtime"></a>Werden durch das manuelle oder automatische Hoch- oder Herunterskalieren Ausfallzeiten verursacht?
 
 Nein. Instanzen sind auf Upgrade- und Fehlerdomänen verteilt.
 
 ### <a name="does-application-gateway-support-connection-draining"></a>Unterstützt Application Gateway den Verbindungsausgleich?
 
-Ja. Sie können den Verbindungsausgleich einrichten, um die Mitglieder in einem Back-End-Pool ohne Unterbrechung zu ändern. Weitere Informationen finden Sie unter [Application Gateway im Abschnitt „Verbindungsausgleich“](overview.md#connection-draining).
+Ja. Sie können den Verbindungsausgleich einrichten, um die Mitglieder in einem Back-End-Pool ohne Unterbrechung zu ändern. Weitere Informationen finden Sie unter [Application Gateway im Abschnitt „Verbindungsausgleich“](features.md#connection-draining).
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>Kann ich Instanzgröße ohne Unterbrechung von mittel zu groß ändern?
 
@@ -197,10 +211,6 @@ Ja. Weitere Informationen finden Sie unter [Application Gateway – Konfiguratio
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>Kann ich den gleichen Port sowohl für öffentliche als auch für private Listener verwenden?
 
 Nein.
-
-### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Gibt es Richtlinien für die Migration von der v1-SKU zur v2-SKU?
-
-Ja. Details dazu finden Sie unter [Migrieren von Azure Application Gateway und Web Application Firewall von v1 zu v2](migrate-v1-v2.md).
 
 ### <a name="does-application-gateway-support-ipv6"></a>Unterstützt Application Gateway IPv6?
 
@@ -324,10 +334,6 @@ Weitere Informationen finden Sie im Artikel zu den [zehn wichtigsten, von OWASP 
 
 Ja. Sie können DDoS-Schutz im virtuellen Netzwerk aktivieren, in dem das Anwendungsgateway bereitgestellt wird. Mit dieser Einstellung wird sichergestellt, dass der Azure DDoS Protection-Dienst auch die VIP-Adresse des Anwendungsgateways schützt.
 
-### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Gibt es Richtlinien für die Migration von der v1-SKU zur v2-SKU?
-
-Ja. Details dazu finden Sie unter [Migrieren von Azure Application Gateway und Web Application Firewall von v1 zu v2](migrate-v1-v2.md).
-
 ## <a name="configuration---ingress-controller-for-aks"></a>Konfiguration: Eingangscontroller für AKS
 
 ### <a name="what-is-an-ingress-controller"></a>Was ist ein Eingangscontroller?
@@ -347,11 +353,11 @@ Derzeit kann eine Instanz des Eingangscontrollers nur einem Application Gateway 
 
 In Application Gateway stehen drei Protokolle zur Verfügung: 
 
-* **ApplicationGatewayAccessLog:** Das Zugriffsprotokoll enthält jede an das Application Gateway-Front-End gesendete Anforderung. Die Daten enthalten die IP des Aufrufers, die angeforderte URL, die Antwortlatenz, den Rückgabecode sowie die ein- und ausgehenden Bytes. Das Zugriffsprotokoll wird alle 300 Sekunden erstellt. Es enthält einen Datensatz pro Anwendungsgateway.
+* **ApplicationGatewayAccessLog:** Das Zugriffsprotokoll enthält jede an das Application Gateway-Front-End gesendete Anforderung. Die Daten enthalten die IP des Aufrufers, die angeforderte URL, die Antwortlatenz, den Rückgabecode sowie die ein- und ausgehenden Bytes. Es enthält einen Datensatz pro Anwendungsgateway.
 * **ApplicationGatewayPerformanceLog:** Das Leistungsprotokoll erfasst Leistungsinformationen für jedes Anwendungsgateway. Zu den Informationen zählen der Durchsatz in Bytes, die Gesamtanzahl übermittelter Anforderungen, Fehler bei der Anzahl der Anforderungen sowie die Anzahl fehlerfreier und fehlerhafter Back-End-Instanzen.
 * **ApplicationGatewayFirewallLog:** Bei mit WAF konfigurierten Anwendungsgateways enthält das Firewallprotokoll Anforderungen, die entweder über den Erkennungs- oder über den Schutzmodus protokolliert werden.
 
-Weitere Informationen finden Sie unter [Back-End-Integrität, Diagnoseprotokolle und Metriken für Application Gateway](application-gateway-diagnostics.md).
+Alle Protokolle werden alle 60 Sekunden erfasst. Weitere Informationen finden Sie unter [Back-End-Integrität, Diagnoseprotokolle und Metriken für Application Gateway](application-gateway-diagnostics.md).
 
 ### <a name="how-do-i-know-if-my-backend-pool-members-are-healthy"></a>Wie erkenne ich, dass die Mitglieder meines Back-End-Pools fehlerfrei sind?
 
@@ -388,7 +394,7 @@ Ja. Entspricht Ihre Konfiguration dem folgenden Szenario, wird zulässiger Daten
 
 ### <a name="how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address"></a>Wie verwende ich Application Gateway v2 mit einer rein privaten Front-End-IP-Adresse?
 
-Application Gateway v2 unterstützt derzeit nicht den rein privaten IP-Modus. Es unterstützt die folgenden Kombinationen:
+Application Gateway v2 unterstützt den rein privaten IP-Modus derzeit nicht. Es unterstützt die folgenden Kombinationen:
 * Private IP- und öffentliche IP-Adresse
 * Nur öffentliche IP-Adresse
 
@@ -399,16 +405,18 @@ Wenn Sie jedoch Application Gateway v2 nur mit privater IP-Adresse verwenden mö
     
     a. Lassen Sie Datenverkehr von der Quelle als **GatewayManager**-Diensttag zu, das Ziel als **Beliebig** und den Zielport als **65200-65535**. Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Diese Ports werden von der Zertifikatauthentifizierung geschützt (gesperrt). Externe Entitäten einschließlich der Gatewaybenutzeradministratoren können ohne entsprechende Zertifikate keine Änderungen an diesen Endpunkten vornehmen.
     
-    b. Lassen Sie Datenverkehr von der Quelle als **AzureLoadBalancer**-Diensttag und Ziel und Zielport als **Beliebig** zu.
+    b. Lassen Sie Datenverkehr von der Quelle mit dem **AzureLoadBalancer**-Diensttag und dem Zielport **Beliebig** zu.
     
-    c. Lehnen Sie sämtlichen eingehenden Datenverkehr von der Quelle als **Internet**-Diensttag und Ziel und Zielport als **Beliebig** ab. Weisen Sie dieser Regel die *geringste Priorität* in den Eingangsregeln zu.
+    c. Verweigern Sie sämtlichen eingehenden Datenverkehr von der Quelle mit dem **Internet**-Diensttag und dem Zielport **Beliebig**. Weisen Sie dieser Regel die *geringste Priorität* in den Eingangsregeln zu.
     
-    d. Behalten Sie die Standardregeln wie das Zulassen des VirtualNetwork-Eingangs bei, sodass der Zugriff auf die private IP-Adresse nicht blockiert wird.
+    d. Behalten Sie die Standardregeln wie das Zulassen des eingehenden VirtualNetwork-Datenverkehrs bei, damit der Zugriff auf die private IP-Adresse nicht blockiert wird.
     
     e. Die ausgehende Internetverbindung kann nicht blockiert sein. Andernfalls treten Probleme mit der Protokollierung, den Metriken usw. auf.
 
 Beispiel-NSG-Konfiguration für den ausschließlichen Zugriff auf private IP-Adressen: ![Application Gateway v2-NSG-Konfiguration für den ausschließlichen Zugriff auf private IP-Adressen](./media/application-gateway-faq/appgw-privip-nsg.png)
 
+### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Unterstützt das Affinitätscookie von Application Gateway das SameSite-Attribut?
+Das [v80-Update](https://chromiumdash.appspot.com/schedule) des [Chromium-Browsers](https://www.chromium.org/Home) enthielt erstmals ein Mandat, bei dem HTTP-Cookies ohne SameSite-Attribut als „SameSite=Lax“ behandelt werden. Das bedeutet, dass das Affinitätscookie von Application Gateway nicht vom Browser in einem Drittanbieterkontext gesendet wird. Zur Unterstützung dieses Szenarios fügt Application Gateway zusätzlich zum vorhandenen Cookie *ApplicationGatewayAffinity* ein weiteres Cookie namens *ApplicationGatewayAffinityCORS* ein.  Diese Cookies sind ähnlich, aber dem Cookie *ApplicationGatewayAffinityCORS* wurden zwei weitere Attribute hinzugefügt: *SameSite=None; Secure*. Diese Attribute behalten persistente Sitzungen selbst bei quellenübergreifenden Anforderungen bei. Weitere Informationen finden Sie im [Abschnitt zur cookiebasierten Affinität](configuration-overview.md#cookie-based-affinity).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

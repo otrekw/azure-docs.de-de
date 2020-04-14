@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e5beb60107b3632da336a20f167e1c2f5b53140a
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 2b09a7765cff20fb49ce6ab3d1e7bce2e15f0e9e
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461265"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475210"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurieren einer Windows-Java-App für Azure App Service
 
@@ -37,6 +37,24 @@ Stellen Sie Ihre WAR-Dateien nicht über FTP bereit. Der FTP-Tool dient zum Hoch
 
 Leistungsberichte, Datenverkehrsvisualisierungen und Integritätsprüfungen für die einzelnen Apps stehen über das Azure-Portal zur Verfügung. Weitere Informationen hierzu finden Sie unter [Azure App Service-Pläne – Diagnoseübersicht](overview-diagnostics.md).
 
+### <a name="use-flight-recorder"></a>Verwenden von Flight Recorder
+
+Alle Java-Laufzeiten in App Service, die Azul-JVMs verwenden, enthalten Zulu Flight Recorder. Sie können damit Ereignisse auf JVM-, System- und Java-Ebene aufzeichnen, um das Verhalten der Java-Anwendungen zu überwachen und Probleme bei diesen zu beheben.
+
+Um eine zeitgesteuerte Aufzeichnung zu erstellen, benötigen Sie die PID (Prozess-ID) der Java-Anwendung. Öffnen Sie zum Suchen der PID in einem Browser die SCM-Website Ihrer Web-App unter https://<Name Ihrer Website>.scm.azurewebsites.net/ProcessExplorer/. Auf dieser Seite werden die in Ihrer Web-App ausgeführten Prozesse angezeigt. Suchen Sie in der Tabelle den Prozess mit dem Namen „Java“, und kopieren Sie die entsprechende PID (Prozess-ID).
+
+Öffnen Sie dann auf der oberen Symbolleiste der SCM-Website die **Debugging-Konsole**, und führen Sie den folgenden Befehl aus. Ersetzen Sie `<pid>` durch die Prozess-ID, die Sie zuvor kopiert haben. Dieser Befehl startet eine 30-Sekunden-Profileraufzeichnung der Java-Anwendung und generiert eine Datei mit dem Namen `timed_recording_example.jfr` im Verzeichnis `D:\home`.
+
+```
+jcmd <pid> JFR.start name=TimedRecording settings=profile duration=30s filename="D:\home\timed_recording_example.JFR"
+```
+
+Weitere Informationen finden Sie in der [Jcmd-Befehlsreferenz](https://docs.oracle.com/javacomponents/jmc-5-5/jfr-runtime-guide/comline.htm#JFRRT190).
+
+#### <a name="analyze-jfr-files"></a>Analysieren von `.jfr`-Dateien
+
+Verwenden Sie [FTPS](deploy-ftp.md) zum Herunterladen Ihrer JFR-Datei auf Ihren lokalen Computer. Laden Sie zum analysieren der JFR-Datei [Zulu Mission Control](https://www.azul.com/products/zulu-mission-control/) herunter und installieren Sie es. Weitere Informationen zu Zulu Mission Control finden Sie in [„Azul-Dokumentation“](https://docs.azul.com/zmc/) und den [Installationsanweisungen](https://docs.microsoft.com/java/azure/jdk/java-jdk-flight-recorder-and-mission-control).
+
 ### <a name="stream-diagnostic-logs"></a>Streamen von Diagnoseprotokollen
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
@@ -56,7 +74,7 @@ Azure App Service unterstützt eine sofort verfügbare Optimierung und Anpassung
 
 - [Konfigurieren von App-Einstellungen](configure-common.md#configure-app-settings)
 - [Einrichten einer benutzerdefinierten Domäne](app-service-web-tutorial-custom-domain.md)
-- [Konfigurieren von SSL-Bindungen](configure-ssl-bindings.md)
+- [Konfigurieren von TLS-Bindungen](configure-ssl-bindings.md)
 - [Hinzufügen eines CDN](../cdn/cdn-add-to-web-app.md)
 - [Konfigurieren der Kudu-Website](https://github.com/projectkudu/kudu/wiki/Configurable-settings)
 
@@ -165,7 +183,7 @@ Um dieses Feature zu deaktivieren, erstellen Sie eine Anwendungseinstellung mit 
 
 ### <a name="configure-tlsssl"></a>Konfigurieren von TLS/SSL
 
-Befolgen Sie die Anweisungen unter [Schützen eines benutzerdefinierten DNS-Namens mit einer SSL-Bindung in Azure App Service](configure-ssl-bindings.md), um ein vorhandenes SSL-Zertifikat hochzuladen und dieses an den Domänennamen Ihrer Anwendung zu binden. Standardmäßig lässt Ihre Anwendung dennoch HTTP-Verbindungen zu. Befolgen Sie die spezifischen Schritte im Tutorial, um SSL und TLS zu erzwingen.
+Befolgen Sie die Anweisungen unter [Schützen eines benutzerdefinierten DNS-Namens mit einer TLS-Bindung in Azure App Service](configure-ssl-bindings.md), um ein vorhandenes TLS/SSL-Zertifikat hochzuladen und dieses an den Domänennamen Ihrer Anwendung zu binden. Standardmäßig lässt Ihre Anwendung dennoch HTTP-Verbindungen zu. Befolgen Sie die spezifischen Schritte im Tutorial, um SSL und TLS zu erzwingen.
 
 ### <a name="use-keyvault-references"></a>Verwenden von KeyVault-Verweisen
 
@@ -214,7 +232,7 @@ Diese Anweisungen gelten für alle Datenbankverbindungen. Für die Platzhalter m
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [Download](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Download](https://dev.mysql.com/downloads/connector/j/) (Wählen Sie „Platform Independent“ (Plattformunabhängig) aus.) |
-| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Download](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Download](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
 
 Wenn Sie Tomcat für die Verwendung von Java Database Connectivity (JDBC) oder der Java-Persistenz-API (JPA) konfigurieren möchten, passen Sie zuerst die Umgebungsvariable `CATALINA_OPTS` an, die von Tomcat beim Start eingelesen wird. Diese Werte können mithilfe einer App-Einstellung im [App Service-Maven-Plug-In](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) festgelegt werden:
 

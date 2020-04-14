@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 65fc4ed25b0fd360de8e3b1439d1766485eb2e58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba1d06ce83d50b6f0db84d1e423e66eae98f665d
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74688641"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477498"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Zertifikate und die App Service-Umgebung 
 
@@ -22,11 +22,11 @@ Die ASE ist ein einzelnes Mandantensystem. Da es sich um einen einzelnen Mandant
 
 ## <a name="ilb-ase-certificates"></a>ILB-ASE-Zertifikate 
 
-Wenn Sie eine externe ASE verwenden, dann sind Ihre Apps unter [app-name].[ase-name].p.azurewebsites.net erreichbar. Standardmäßig werden alle ASEs, auch ILB-ASEs, mit Zertifikaten erstellt, die diesem Format folgen. Wenn Sie über eine ILB ASE verfügen, werden die Apps basierend auf dem Domänennamen erreicht, den Sie beim Erstellen der ILB-ASE angeben. Damit die Apps SSL unterstützen, müssen Sie Zertifikate hochladen. Ein gültiges SSL-Zertifikat können Sie erhalten, indem Sie interne Zertifizierungsstellen verwenden, ein Zertifikat von einem externen Aussteller erwerben oder ein selbstsigniertes Zertifikat verwenden. 
+Wenn Sie eine externe ASE verwenden, dann sind Ihre Apps unter [app-name].[ase-name].p.azurewebsites.net erreichbar. Standardmäßig werden alle ASEs, auch ILB-ASEs, mit Zertifikaten erstellt, die diesem Format folgen. Wenn Sie über eine ILB ASE verfügen, werden die Apps basierend auf dem Domänennamen erreicht, den Sie beim Erstellen der ILB-ASE angeben. Damit die Apps TLS unterstützen, müssen Sie Zertifikate hochladen. Ein gültiges TLS/SSL-Zertifikat können Sie erhalten, indem Sie interne Zertifizierungsstellen verwenden, ein Zertifikat von einem externen Aussteller erwerben oder ein selbstsigniertes Zertifikat verwenden. 
 
 Es gibt zwei Möglichkeiten, Zertifikate mit Ihrer ILB-ASE zu konfigurieren.  Sie können ein Platzhalterzertifikat für die ILB-ASE festlegen oder Zertifikate für die einzelnen Web-Apps in der ASE festlegen.  Unabhängig davon, welche Auswahl Sie treffen, müssen die folgenden Zertifikatsattribute ordnungsgemäß konfiguriert sein:
 
-- **Antragsteller**: Dieses Attribut muss für ein ILB-ASE-Platzhalterzertifikat auf *.[ihre-stammdomäne-hier] festgelegt werden. Wenn Sie das Zertifikat für Ihre App erstellen, dann sollte es [app-name].[ihre-stammdomäne-hier] lauten.
+- **:** Dieses Attribut muss für ein ILB-ASE-Platzhalterzertifikat auf *.[ihre-stammdomäne-hier] festgelegt werden. Wenn Sie das Zertifikat für Ihre App erstellen, dann sollte es [app-name].[ihre-stammdomäne-hier] lauten.
 - **Alternativer Antragstellername**: Dieses Attribut muss sowohl *.[ihre-stammdomäne-hier] als auch *.scm.[ihre-stammdomäne-hier] für das ILB-ASE-Platzhalterzertifikat enthalten. Wenn Sie das Zertifikat für Ihre App erstellen, dann sollte es [app-name].[ihre-stammdomäne-hier] und [app-name].scm.[ihre-stammdomäne-hier] lauten.
 
 Als dritte Variante können Sie ein ILB-ASE-Zertifikat erstellen, das alle Ihre individuellen App-Namen im SAN des Zertifikats anstelle einer Platzhalterreferenz enthält. Das Problem mit dieser Methode ist, dass Sie im Voraus die Namen der Apps wissen müssen, die Sie in die ASE einfügen, oder dass Sie das ILB-ASE-Zertifikat ständig aktualisieren müssen.
@@ -58,7 +58,7 @@ In einer ASE gehostete Apps können die anwendungsorientierten Zertifikatsfeatur
 - IP-basiertes SSL, das nur mit einer externen ASE unterstützt wird.  Eine ILB-ASE unterstützt kein IP-basiertes SSL.
 - KeyVault-gehostete Zertifikate 
 
-Anweisungen zum Hochladen und Verwalten dieser Zertifikate finden Sie unter [Hinzufügen eines SSL-Zertifikats in Azure App Service](../configure-ssl-certificate.md).  Wenn Sie lediglich Zertifikate so konfigurieren, dass sie mit einem benutzerdefinierten Domänennamen übereinstimmen, den Sie Ihrer Web-App zugewiesen haben, dann reichen diese Anweisungen aus. Wenn Sie das Zertifikat für eine ILB-ASE-Web-App mit dem Standarddomänennamen hochladen, dann geben Sie die SCM-Website im SAN des Zertifikats an, wie bereits erwähnt. 
+Anweisungen zum Hochladen und Verwalten dieser Zertifikate finden Sie unter [Hinzufügen eines TLS/SSL-Zertifikats in Azure App Service](../configure-ssl-certificate.md).  Wenn Sie lediglich Zertifikate so konfigurieren, dass sie mit einem benutzerdefinierten Domänennamen übereinstimmen, den Sie Ihrer Web-App zugewiesen haben, dann reichen diese Anweisungen aus. Wenn Sie das Zertifikat für eine ILB-ASE-Web-App mit dem Standarddomänennamen hochladen, dann geben Sie die SCM-Website im SAN des Zertifikats an, wie bereits erwähnt. 
 
 ## <a name="tls-settings"></a>TLS-Einstellungen 
 

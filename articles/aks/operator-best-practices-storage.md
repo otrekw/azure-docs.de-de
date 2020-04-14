@@ -1,15 +1,16 @@
 ---
-title: Best Practices für Operatoren – Speicherung in Azure Kubernetes Service (AKS)
+title: Bewährte Methoden für Speicherung und Sicherung
+titleSuffix: Azure Kubernetes Service
 description: Lernen Sie die bewährten Methoden für Speicherung, Datenverschlüsselung und Sicherungen in Azure Kubernetes Service (AKS) für Clusteroperatoren kennen.
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: b1336d10b091be4f3eb2a711401cafd3f58221fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 843b775f7761af7cd40140c9bf34768d63eb5a50
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399472"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877897"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Best Practices für Speicherung und Sicherungen in Azure Kubernetes Service (AKS)
 
@@ -39,7 +40,7 @@ In der folgenden Tabelle sind die verfügbarer Speichertypen und ihre Fähigkeit
 
 Die beiden primären Speichertypen, die für Volumes in AKS zur Verfügung stehen, werden durch Azure-Datenträger oder Azure Files gesichert. Um die Sicherheit zu verbessern, verwenden beide Speichertypen standardmäßig Azure-Speicherdienstverschlüsselung (Storage Service Encryption, SSE) zur Verschlüsselung von ruhenden Daten. Festplatten können derzeit nicht mit der Azure Disk Encryption auf AKS-Knotenebene verschlüsselt werden.
 
-Azure Files ist derzeit in der Leistungsstufe „Standard“ verfügbar. Azure-Datenträger sind derzeit in der Leistungsstufe „Standard“ und „Premium“ verfügbar:
+Sowohl Azure Files als auch Azure-Datenträger sind derzeit in der Leistungsstufe „Standard“ und „Premium“ verfügbar:
 
 - *Premium*-Datenträger werden von Hochleistungs-SSDs gesichert. Für alle Produktionsworkloads werden Premium-Datenträger empfohlen.
 - *Standard*-Datenträger werden durch normale rotierende Festplatten (HDDs) gesichert und eignen sich gut für die Archivierung oder für Daten, auf die selten zugegriffen wird.

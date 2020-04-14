@@ -2,91 +2,91 @@
 title: Azure Migrate-Appliance
 description: Bietet einen Überblick über die Azure Migrate-Appliance, die bei der Serverbewertung und -migration verwendet wird.
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 1b1e35c3b7a9d98e57ec4261f6f913c370bbb365
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.date: 03/23/2020
+ms.openlocfilehash: bccf4738d46b65f2d149eafc8e69591141d7d073
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77597540"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437589"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-Appliance
 
-Dieser Artikel beschreibt die Azure Migrate-Appliance. Sie stellen die Appliance bereit, wenn Sie [Azure Migrate: Serverbewertung](migrate-services-overview.md#azure-migrate-server-assessment-tool) zum Ermitteln und Bewerten von Apps, Infrastrukturen und Workloads für die Migration zu Microsoft Azure verwenden. Die Appliance wird außerdem verwendet, wenn Sie virtuelle VMware-Computer mithilfe von[Azure Migrate: Serverbewertung](migrate-services-overview.md#azure-migrate-server-migration-tool) per [Migration ohne Agent](server-migrate-overview.md) zu Azure migrieren.
+In diesem Artikel werden die Voraussetzungen und Supportanforderungen für die Azure Migrate-Appliance zusammengefasst. 
 
-## <a name="appliance-overview"></a>Appliance – Übersicht
+## <a name="deployment-scenarios"></a>Bereitstellungsszenarien
 
 Die Azure Migrate-Appliance wird in den folgenden Szenarien verwendet.
 
 **Szenario** | **Tool** | **Verwendung** 
 --- | --- | ---
-Virtueller VMware-Computer | Von der Azure Migrate-Serverbewertung<br/><br/> Von der Azure Servermigration | Ermitteln von virtuellen VMware-Computern<br/><br/> Ermitteln der Apps und Abhängigkeiten der Computer<br/><br/> Erfassen von Computer- und Leistungsmetadaten für Bewertungen<br/><br/> Replizieren von virtuellen VMware-Computern per Migration ohne Agent
-Virtueller Hyper-V-Computer | Von der Azure Migrate-Serverbewertung | Ermitteln von virtuellen Hyper-V-Computern<br/><br/> Erfassen von Computer- und Leistungsmetadaten für Bewertungen
-Physischer Computer |  Von der Azure Migrate-Serverbewertung |  Ermitteln von physischen Servern<br/><br/> Erfassen von Computer- und Leistungsmetadaten für Bewertungen
+**Bewertung von VMware-VMs** | Azure Migrate-Serverbewertung | Ermitteln von virtuellen VMware-Computern<br/><br/> Ermitteln der Apps und Abhängigkeiten der Computer<br/><br/> Erfassen von Computer- und Leistungsmetadaten für Bewertungen
+**Migration von virtuellen VMware-Computern ohne Agent** | Azure Migrate-Servermigration | Ermitteln von virtuellen VMware-Computern <br/><br/> Replizieren von virtuellen VMware-Computern per Migration ohne Agent
+**Bewertung von Hyper-V-VMs** | Azure Migrate-Serverbewertung | Ermitteln von virtuellen Hyper-V-Computern<br/><br/> Erfassen von Computer- und Leistungsmetadaten für Bewertungen
+**Bewertung physischer Computer** |  Azure Migrate-Serverbewertung |  Ermitteln physischer Server (oder virtuelle Computer, die als physische Server behandelt werden)<br/><br/> Erfassen von Computer- und Leistungsmetadaten für Bewertungen
 
 ## <a name="appliance---vmware"></a>Appliance – VMware 
 
+In der folgenden Tabelle sind die Anforderungen der Azure Migrate-Appliance für VMware zusammengefasst.
+
 **Anforderung** | **VMware** 
 --- | ---
-**Downloadformat** | OVA 
-**Downloadlink** | https://aka.ms/migrate/appliance/vmware 
-**Downloadgröße** | 11,2 GB
-**Lizenz** | Die heruntergeladene Appliancevorlage ist mit einer Windows Server 2016-Evaluierungslizenz ausgestattet, die 180 Tage lang gültig ist. Wenn der Evaluierungszeitraum fast abgelaufen ist, empfiehlt es sich, eine neue Appliance herunterzuladen und bereitzustellen oder die Betriebssystemlizenz der Appliance-VM zu aktivieren.
-**Bereitstellung** | Sie stellen die Appliance als VMware-VM bereit. Sie benötigen genügend Ressourcen in der vCenter-Server-Instanz, um einen virtuellen Computer mit 32 GB RAM, 8 vCPUs, etwa 80 GB Datenspeicher und einem externen virtuellen Switch zuzuordnen.<br/> Die Appliance erfordert Internetzugriff, entweder direkt oder über einen Proxy.<br/> Die Appliance kann eine Verbindung mit einer einzelnen vCenter Server-Instanz herstellen.
-**Hardware** | Ressourcen in vCenter zum Zuordnen eines virtuellen Computers mit 32 GB RAM, 8 vCPUs, etwa 80 GB Datenspeicher und einem externen virtuellen Switch 
-**Hashwert** | Dies können Sie [hier](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware#verify-security) überprüfen.
-**vCenter-Server/Host** | Die Appliance-VM muss auf einem ESXi-Host mit Version 5.5 oder höher bereitgestellt werden.<br/><br/> vCenter Server mit Version 5.5, 6.0, 6.5 oder 6.7
-**Azure Migrate-Projekt** | Eine Appliance kann einem einzelnen Projekt zugeordnet werden. <br/> Einem einzelnen Projekt kann eine beliebige Anzahl von Appliances zugeordnet werden.<br/> 
-**Ermittlung** | Eine Appliance kann bis zu 10.000 VMware-VMs in einer vCenter Server-Instanz ermitteln.<br/> Eine Appliance kann eine Verbindung mit einer einzelnen vCenter Server-Instanz herstellen.
-**Appliancekomponenten** | Verwaltungs-App: Web-App in der Appliance für Benutzereingaben während der Bereitstellung.<br/> Ermittlungs-Agent: Erfasst Computerkonfigurationsdaten.<br/> Bewertungs-Agent: Erfasst Leistungsdaten.<br/> DRA: Orchestriert die VM-Replikation und koordiniert die Kommunikation zwischen Computern und Azure.<br/> Gateway: Sendet replizierte Daten an Azure.<br/> Dienst für automatische Aktualisierungen: Aktualisiert Komponenten (wird alle 24 Stunden ausgeführt).
-**VDDK (Migration ohne Agent)** | Wenn Sie eine Migration ohne Agent mit der Azure Migrate-Servermigration durchführen, muss das VMware vSphere VDDK auf der Appliance-VM installiert sein.
+**Appliancekomponenten** | Die Appliance verfügt über die folgenden Komponenten:<br/><br/> - **Verwaltungs-App**: Dies ist eine Web-App für Benutzereingaben während der Appliance-Bereitstellung. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/> - **Ermittlungs-Agent**: Der Agent erfasst Computerkonfigurationsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Bewertungs-Agent**: Der Agent sammelt Leistungsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Dienst für automatische Aktualisierungen**: Aktualisiert Appliancekomponenten (wird alle 24 Stunden ausgeführt).<br/>- **DRA-Agent**: Orchestriert die VM-Replikation und koordiniert die Kommunikation zwischen replizierten Computern und Azure. Wird nur bei der Replikation von VMware-VMs in Azure mithilfe der Migration ohne Agent verwendet.<br/>- **Gateway**: Sendet replizierte Daten an Azure. Wird nur bei der Replikation von VMware-VMs in Azure mithilfe der Migration ohne Agent verwendet.
+**Unterstützte Bereitstellung** | Bereitstellen als VMware VM mit OVA-Vorlage.<br/><br/> Bereitstellen als VMware VM oder physischer Computer mithilfe des PowerShell-Installationsskripts.
+**Projektunterstützung** |  Eine Appliance kann einem einzelnen Projekt zugeordnet werden. <br/> Einem einzelnen Projekt kann eine beliebige Anzahl von Appliances zugeordnet werden.<br/> 
+**Ermittlungsgrenzwerte** | Eine Appliance kann bis zu 10.000 VMware-VMs in einer vCenter Server-Instanz ermitteln.<br/> Eine Appliance kann eine Verbindung mit einer einzelnen vCenter Server-Instanz herstellen.
+**OVA-Vorlage** | Herunterladen über das Portal oder von https://aka.ms/migrate/appliance/vmware.<br/><br/> Die Downloadgröße beträgt 11,2 GB.<br/><br/> Die heruntergeladene Appliancevorlage ist mit einer Windows Server 2016-Evaluierungslizenz ausgestattet, die 180 Tage lang gültig ist. Wenn der Evaluierungszeitraum fast abgelaufen ist, empfiehlt es sich, eine neue Appliance herunterzuladen und bereitzustellen oder die Betriebssystemlizenz der Appliance-VM zu aktivieren.
+**PowerShell-Skript** | Skript [herunterladen](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> 
+**Software/Hardware** |  Die Appliance sollte auf einem Computer mit Windows Server 2016, 32 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einem externen virtuellen Switch ausgeführt werden.<br/> Die Appliance erfordert Internetzugriff, entweder direkt oder über einen Proxy.<br/><br/> Wenn Sie die Appliance auf einem virtuellen VMware-Computer ausführen, benötigen Sie ausreichend Ressourcen auf dem vCenter Server, um einen virtuellen Computer zuzuordnen, der den Anforderungen entspricht.<br/><br/> Wenn Sie die Appliance auf einem physischen Computer ausführen, stellen Sie sicher, dass sie unter Windows Server 2016 läuft und die Hardwareanforderungen erfüllt. 
+**VMware-Anforderungen** | Wenn Sie die Appliance als virtuellen VMware-Computer bereitstellen, muss er auf einem ESXi-Host mit der Version 5.5 oder höher bereitgestellt werden.<br/><br/> vCenter Server mit Version 5.5, 6.0, 6.5 oder 6.7
+**VDDK (Migration ohne Agent)** | Wenn Sie die Appliance als virtuellen VMware- Computer bereitstellen und eine Migration ohne Agent durchführen, muss das VMware vSphere VDDK auf dem virtuellen Computer der Appliance installiert sein.
+**Hashwert-OVA** | [Überprüfen](tutorial-assess-vmware.md#verify-security) Sie die OVA-Vorlagenhashwerte.
+**Hashwert-PowerShell-Skript** | [Überprüfen](deploy-appliance-script.md#verify-file-security) Sie die PowerShell-Skripthashwerte.
+
+
 
 
 ## <a name="appliance---hyper-v"></a>Appliance – Hyper-V
 
 **Anforderung** | **Hyper-V** 
 --- | ---
-**Downloadformat** | Gezippte Ordner (mit VHD)
-**Downloadlink** | https://aka.ms/migrate/appliance/hyperv 
-**Downloadgröße** | 10 GB
-**Lizenz** | Die heruntergeladene Appliancevorlage ist mit einer Windows Server 2016-Evaluierungslizenz ausgestattet, die 180 Tage lang gültig ist. Wenn der Evaluierungszeitraum fast abgelaufen ist, empfiehlt es sich, eine neue Appliance herunterzuladen und bereitzustellen oder die Betriebssystemlizenz der Appliance-VM zu aktivieren.
-**Bereitstellung einer Appliance**   |  Sie stellen die Appliance als Hyper-V-VM bereit.<br/> Die von Azure Migrate bereitgestellte Appliance-VM ist eine Hyper-V-VM mit Version 5.0.<br/> Auf dem Hyper-V-Host muss mindestens Windows Server 2012 R2 ausgeführt werden.<br/> Der Host benötigt ausreichenden Speicherplatz, um 16 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einen externen Switch für die Appliance-VM zuzuweisen.<br/> Die Appliance benötigt eine statische oder dynamische IP-Adresse und einen Internetzugang.
-**Hardware** | Ressourcen auf dem Hyper-V-Host zum Zuordnen von 16 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einem externen Switch für die Appliance-VM
-**Hashwert** | Dies können Sie [hier](https://docs.microsoft.com/azure/migrate/tutorial-assess-hyper-v#verify-security) überprüfen.
-**Hyper-V-Host** | Ausführung von Windows Server 2012 R2 oder höher
-**Azure Migrate-Projekt** | Eine Appliance kann einem einzelnen Projekt zugeordnet werden. <br/> Einem einzelnen Projekt kann eine beliebige Anzahl von Appliances zugeordnet werden.<br/> 
-**Ermittlung** | Eine Appliance kann bis zu 5000 virtuelle Hyper-V-Computer ermitteln.<br/> Eine einzelne Appliance kann Verbindungen mit bis zu 300 Hyper-V-Hosts herstellen.
-**Appliancekomponenten** | Verwaltungs-App: Web-App in der Appliance für Benutzereingaben während der Bereitstellung.<br/> Ermittlungs-Agent: Erfasst Computerkonfigurationsdaten.<br/> Bewertungs-Agent: Erfasst Leistungsdaten.<br/>  Dienst für automatische Aktualisierungen: Aktualisiert Komponenten (wird alle 24 Stunden ausgeführt).
+**Appliancekomponenten** | Die Appliance verfügt über die folgenden Komponenten:<br/><br/>- **Verwaltungs-App**: Dies ist eine Web-App für Benutzereingaben während der Appliance-Bereitstellung. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/> - **Ermittlungs-Agent**: Der Agent erfasst Computerkonfigurationsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Bewertungs-Agent**: Der Agent sammelt Leistungsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Dienst für automatische Aktualisierungen**: Aktualisiert Appliancekomponenten (wird alle 24 Stunden ausgeführt).
+**Unterstützte Bereitstellung** | Bereitstellen als Hyper-V VM mithilfe einer VHD-Vorlage.<br/><br/> Bereitstellen als virtueller Hyper-V-Computer oder physischer Computer mithilfe des PowerShell-Installationsskripts.
+**Projektunterstützung** |  Eine Appliance kann einem einzelnen Projekt zugeordnet werden. <br/> Einem einzelnen Projekt kann eine beliebige Anzahl von Appliances zugeordnet werden.<br/> 
+**Ermittlungsgrenzwerte** | Eine Appliance kann bis zu 5000 virtuelle Hyper-V-Computer ermitteln.<br/> Eine einzelne Appliance kann Verbindungen mit bis zu 300 Hyper-V-Hosts herstellen.
+**VHD-Vorlage** | Gezippte Ordner, einschließlich VHD. Herunterladen über das Portal oder von https://aka.ms/migrate/appliance/hyperv.<br/><br/> Die Downloadgröße beträgt 10 GB.<br/><br/> Die heruntergeladene Appliancevorlage ist mit einer Windows Server 2016-Evaluierungslizenz ausgestattet, die 180 Tage lang gültig ist. Wenn der Evaluierungszeitraum fast abgelaufen ist, empfiehlt es sich, eine neue Appliance herunterzuladen und bereitzustellen oder die Betriebssystemlizenz der Appliance-VM zu aktivieren.
+**PowerShell-Skript** | Skript [herunterladen](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> 
+**Software/Hardware***   |  Die Appliance sollte auf einem Computer mit Windows Server 2016, 32 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einem externen virtuellen Switch ausgeführt werden.<br/> Die Appliance erfordert eine statische oder dynamische IP-Adresse sowie Zugriff auf das Internet, entweder direkt oder über einen Proxy.<br/><br/> Wenn Sie die Appliance als virtuellen Hyper-V-Computer ausführen, benötigen Sie ausreichend Ressourcen auf dem Hyper-V-Host, um 16 GB RAM, 8 vCPUs, ca. 80 GB Speicherplatz und einen externen Switch für den virtuellen Computer der Appliance zuzuweisen.<br/><br/> Wenn Sie die Appliance auf einem physischen Computer ausführen, stellen Sie sicher, dass sie unter Windows Server 2016 läuft und die Hardwareanforderungen erfüllt. 
+**Hyper-V-Anforderungen** | Wenn Sie die Appliance mit der VHD-Vorlage bereitstellen, entspricht die von Azure Migrate bereitgestellte Appliance der Hyper-V VM Version 5.0.<br/><br/> Auf dem Hyper-V-Host muss mindestens Windows Server 2012 R2 ausgeführt werden. 
+**Hashwert-VHD** | [Überprüfen](tutorial-assess-hyper-v.md#verify-security) Sie die VHD-Vorlagenhashwerte.
+**Hashwert-PowerShell-Skript** | [Überprüfen](deploy-appliance-script.md#verify-file-security) Sie die PowerShell-Skripthashwerte.
 
 
 ## <a name="appliance---physical"></a>Appliance – physisch
 
 **Anforderung** | **Physisch** 
 --- | ---
-**Downloadformat** | Gezippter Ordner (mit PowerShell-basiertem Installationsskript)
-**Downloadlink** | [Downloadlink](https://go.microsoft.com/fwlink/?linkid=2105112)
-**Downloadgröße** | 59,7 MB
-**Hardware** | Dedizierter physischer Computer oder verwendete VM. Der Computer, auf dem die Appliance ausgeführt wird, benötigt 16 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einen externen Switch.<br/> Die Appliance benötigt eine statische oder dynamische IP-Adresse und einen Internetzugang.
-**Hashwert** | Dies können Sie [hier](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical#verify-security) überprüfen.
-**Betriebssystem** | Auf dem Appliancecomputer muss Windows Server 2016 ausgeführt werden. 
-**Bereitstellung einer Appliance**   |  Das Installationsskript für die Appliance wird über das Portal heruntergeladen (in einem gezippten Ordner). <br/> Sie entzippen den Ordner und führen das PowerShell-Skript („AzureMigrateInstaller.ps1“) aus.
-**Ermittlung** | Eine Appliance kann bis zu 250 physische Server ermitteln.
-**Appliancekomponenten** | Verwaltungs-App: Web-App in der Appliance für Benutzereingaben während der Bereitstellung.<br/> Ermittlungs-Agent: Erfasst Computerkonfigurationsdaten.<br/> Bewertungs-Agent: Erfasst Leistungsdaten.<br/>  Dienst für automatische Aktualisierungen: Aktualisiert Komponenten (wird alle 24 Stunden ausgeführt).
-
+**Appliancekomponenten** | Die Appliance verfügt über die folgenden Komponenten: <br/><br/> - **Verwaltungs-App**: Dies ist eine Web-App für Benutzereingaben während der Appliance-Bereitstellung. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/> - **Ermittlungs-Agent**: Der Agent erfasst Computerkonfigurationsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Bewertungs-Agent**: Der Agent sammelt Leistungsdaten. Wird beim Bewerten von Computern für die Migration zu Azure verwendet.<br/>- **Dienst für automatische Aktualisierungen**: Aktualisiert Appliancekomponenten (wird alle 24 Stunden ausgeführt).
+**Unterstützte Bereitstellung** | Bereitstellen als dedizierter physischer Computer oder als virtueller Computer mithilfe eines PowerShell-Installationsskripts.
+**Projektunterstützung** |  Eine Appliance kann einem einzelnen Projekt zugeordnet werden. <br/> Einem einzelnen Projekt kann eine beliebige Anzahl von Appliances zugeordnet werden.<br/> 
+**Ermittlungsgrenzwerte** | Eine Appliance kann bis zu 250 physische Server ermitteln.
+**PowerShell-Skript** | Laden Sie das Skript (AzureMigrateInstaller.ps1) in einem gezippten Ordner aus dem Portal herunter. [Weitere Informationen](tutorial-assess-physical.md#set-up-the-appliance) Alternativ können Sie es [direkt herunterladen](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> Die Downloadgröße beträgt 59,7 MB.
+**Software/Hardware** |  Die Appliance sollte auf einem Computer mit Windows Server 2016, 32 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einem externen virtuellen Switch ausgeführt werden.<br/> Die Appliance erfordert eine statische oder dynamische IP-Adresse sowie Zugriff auf das Internet, entweder direkt oder über einen Proxy.<br/><br/> Wenn Sie die Appliance auf einem physischen Computer ausführen, stellen Sie sicher, dass sie unter Windows Server 2016 läuft und die Hardwareanforderungen erfüllt. 
+**Hashwert** | [Überprüfen](deploy-appliance-script.md#verify-file-security) Sie die PowerShell-Skripthashwerte.
 
 ## <a name="url-access"></a>URL-Zugriff
 
 Das Azure Migrate-Gerät muss mit dem Internet verbunden sein.
 
 - Bei der Bereitstellung der Appliance führt Azure Migrate eine Verbindungsüberwachung für die in der folgenden Tabelle zusammengefassten URLs durch.
-- Wenn Sie einen URL-basierten Proxy für die Internetverbindung verwenden, lassen Sie den Zugriff auf diese URLs zu, und stellen Sie sicher, dass der Proxy alle CNAME-Einträge auflöst, die beim Durchsuchen der URLs empfangen werden.
+- Wenn Sie einen URL-basierten Proxy für die Internetverbindung verwenden, müssen Sie den Zugriff auf diese URLs zulassen und somit sicherstellen, dass der Proxy alle CNAME-Einträge auflöst, die beim Nachschlagen der URLs empfangen werden.
 
 **URL** | **Details**  
 --- | --- |
 *.portal.azure.com  | Navigieren Sie zum Azure-Portal.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Melden Sie sich bei Ihrem Azure-Abonnement an.
-*.microsoftonline.com <br/> *.microsoftonline-p.com | Erstellen von Active Directory-Anwendungen für die Kommunikation zwischen der Appliance und Azure Migrate
-management.azure.com | Erstellen von Active Directory-Anwendungen, damit die Appliance mit dem Azure Migrate-Service kommunizieren kann
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Erstellen von Azure Active Directory-Apps (AD) für die Kommunikation zwischen der Appliance und Azure Migrate.
+management.azure.com | Erstellen von Azure AD-Apps, damit die Appliance mit dem Azure Migrate-Service kommunizieren kann.
 dc.services.visualstudio.com | Laden Sie App-Protokolle hoch, die für die interne Überwachung verwendet werden.
 *.vault.azure.net | Verwalten von Geheimnissen in Azure Key Vault
 aka.ms/* | Zulassen des Zugriffs auf aka-Links Wird für Updates der Azure Migrate-Appliance verwendet.
@@ -101,30 +101,15 @@ download.microsoft.com/download | Zulassen von Downloads von Microsoft Download 
 
 ## <a name="collected-data---vmware"></a>Gesammelte Daten – VMware
 
-### <a name="collected-performance-data-vmware"></a>Gesammelte Leistungsdaten von VMware
+Die Appliance sammelt Metadaten, Leistungsdaten und Abhängigkeitsanalysedaten (wenn die [Abhängigkeitsanalyse](concepts-dependency-visualization.md) ohne Agent verwendet wird).
 
-Nachstehend finden Sie die VMware-VM-Leistungsdaten, die die Appliance sammelt und an Azure sendet.
+### <a name="metadata"></a>Metadaten
 
-**Daten** | **Leistungsindikator** | **Auswirkungen auf die Bewertung**
---- | --- | ---
-CPU-Auslastung | cpu.usage.average | Empfohlene VM-Größe/Kosten
-Arbeitsspeichernutzung | mem.usage.average | Empfohlene VM-Größe/Kosten
-Datenträgerlesedurchsatz (MB pro Sekunde) | virtualDisk.read.average | Berechnung von Datenträgergröße, Speicherkosten und VM-Größe
-Datenträgerschreibdurchsatz (MB pro Sekunde) | virtualDisk.write.average | Berechnung von Datenträgergröße, Speicherkosten und VM-Größe
-Datenträgerlesevorgänge pro Sekunde | virtualDisk.numberReadAveraged.average | Berechnung von Datenträgergröße, Speicherkosten und VM-Größe
-Datenträgerschreibvorgänge pro Sekunde | virtualDisk.numberWriteAveraged.average  | Berechnung von Datenträgergröße, Speicherkosten und VM-Größe
-NIC-Lesedurchsatz (MB pro Sekunde) | net.received.average | Berechnung der VM-Größe
-NIC-Schreibdurchsatz (MB pro Sekunde) | net.transmitted.average  |Berechnung der VM-Größe
-
-
-### <a name="collected-metadata-vmware"></a>Gesammelte Metadaten für VMware
-
-> [!NOTE]
-> Die von der Azure Migrate-Appliance ermittelten Metadaten werden verwendet, damit Sie Ihre Anwendungen bei der Migration zu Azure richtig skalieren können. Außerdem sollen sie bei der Durchführung von Azure-Eignungsanalysen, Analysen der Anwendungsabhängigkeit und bei der Kostenplanung helfen. Microsoft verwendet diese Daten nicht zur Überprüfung der Compliance von Lizenzen.
+Die von der Azure Migrate-Appliance ermittelten Metadaten helfen Ihnen bei der Ermittlung der Bereitschaft von Computern und Apps für die Migration zu Azure, der richtigen Größe für Computer und Apps, der Kosten der Planung und bei der Analyse von Anwendungsabhängigkeiten. Microsoft verwendet diese Daten nicht zur Überprüfung der Compliance von Lizenzen.
 
 Nachstehend finden Sie die vollständige Liste der VMware-VM-Metadaten, die die Appliance sammelt und an Azure sendet.
 
-**Daten** | **Leistungsindikator**
+**DATEN** | **ZÄHLER**
 --- | --- 
 **Computerdetails** | 
 VM-ID | vm.Config.InstanceUuid 
@@ -169,33 +154,78 @@ Details zum Rechenzentrum pro Hostordner | ((Datacenter)container).HostFolder
 Clusterdetails pro Host | ((ClusterComputeResource)container).Host
 Hostdetails pro VM | ((HostSystem)container).VM
 
+### <a name="performance-data"></a>Leistungsdaten
+
+
+Nachstehend finden Sie die VMware-VM-Leistungsdaten, die die Appliance sammelt und an Azure sendet.
+
+**Daten** | **Leistungsindikator** | **Auswirkungen auf die Bewertung**
+--- | --- | ---
+CPU-Auslastung | cpu.usage.average | Empfohlene VM-Größe/Kosten
+Arbeitsspeichernutzung | mem.usage.average | Empfohlene VM-Größe/Kosten
+Datenträgerlesedurchsatz (MB pro Sekunde) | virtualDisk.read.average | Berechnung von Datenträgergröße, Speicherkosten und VM-Größe
+Datenträgerschreibdurchsatz (MB pro Sekunde) | virtualDisk.write.average | Berechnung von Datenträgergröße, Speicherkosten und VM-Größe
+Datenträgerlesevorgänge pro Sekunde | virtualDisk.numberReadAveraged.average | Berechnung von Datenträgergröße, Speicherkosten und VM-Größe
+Datenträgerschreibvorgänge pro Sekunde | virtualDisk.numberWriteAveraged.average  | Berechnung von Datenträgergröße, Speicherkosten und VM-Größe
+NIC-Lesedurchsatz (MB pro Sekunde) | net.received.average | Berechnung der VM-Größe
+NIC-Schreibdurchsatz (MB pro Sekunde) | net.transmitted.average  |Berechnung der VM-Größe
+
+### <a name="app-dependencies-metadata"></a>Metadaten zu App-Abhängigkeiten
+
+Die Abhängigkeitsanalyse ohne Agent sammelt Verbindungs- und Prozessdaten.
+
+#### <a name="connection-data"></a>Verbindungsdaten
+
+Hier sind die Verbindungsdaten, die die Appliance von jedem virtuellen Computer sammelt, der für eine Abhängigkeitsanalyse ohne Agent aktiviert ist. Diese Daten werden an Azure gesendet.
+
+**Daten** | **Verwendeter Befehl** 
+--- | --- 
+Lokaler Port | netstat
+Lokale IP-Adresse | netstat
+Remoteport | netstat
+Remote-IP-Adresse | netstat
+TCP-Verbindungsstatus | netstat
+Prozess-ID | netstat
+Nein. aktiver Verbindungen | netstat
+
+#### <a name="process-data"></a>Verarbeiten von Daten
+Hier sind die Prozessdaten, die die Appliance von jedem virtuellen Computer sammelt, der für eine Abhängigkeitsanalyse ohne Agent aktiviert ist. Diese Daten werden an Azure gesendet.
+
+**Daten** | **WMI-Klasse** | **WMI-Klasseneigenschaft**
+--- | --- | ---
+Prozessname | Win32_Process | ExecutablePath
+Prozessargumente | Win32_Process | CommandLine
+Anwendungsname | Win32_Process | Parameter „VersionInfo.ProductName“ der ExecutablePath-Eigenschaft
+
+#### <a name="linux-vm-data"></a>Linux-VM-Daten
+
+Hier sind die Verbindungs- und Prozessdaten, die die Appliance von jedem virtuellen Linux-Computer sammelt, der für eine Abhängigkeitsanalyse ohne Agent aktiviert ist. Diese Daten werden an Azure gesendet.
+
+**Daten** | **Verwendeter Befehl** 
+--- | ---
+Lokaler Port | netstat 
+Lokale IP-Adresse | netstat 
+Remoteport | netstat 
+Remote-IP-Adresse | netstat 
+TCP-Verbindungsstatus | netstat 
+Nein. aktiver Verbindungen | netstat
+Prozess-ID  | netstat 
+Prozessname | ps
+Prozessargumente | ps
+Anwendungsname | dpkg oder rpm
+
+
+
 ## <a name="collected-data---hyper-v"></a>Gesammelte Daten – Hyper-V
 
-### <a name="collected-performance-data-hyper-v"></a>Gesammelte Leistungsdaten von Hyper-V
+Die Appliance sammelt Metadaten, Leistungsdaten und Abhängigkeitsanalysedaten (wenn die [Abhängigkeitsanalyse](concepts-dependency-visualization.md) ohne Agent verwendet wird).
 
-> [!NOTE]
-> Die von der Azure Migrate-Appliance ermittelten Metadaten werden verwendet, damit Sie Ihre Anwendungen bei der Migration zu Azure richtig skalieren können. Außerdem sollen sie bei der Durchführung von Azure-Eignungsanalysen, Analysen der Anwendungsabhängigkeit und bei der Kostenplanung helfen. Microsoft verwendet diese Daten nicht zur Überprüfung der Compliance von Lizenzen.
-
-Nachstehend finden Sie die Hyper-VM-Leistungsdaten, die die Appliance sammelt und an Azure sendet.
-
-**Leistungsindikatorklasse** | **Leistungsindikator** | **Auswirkungen auf die Bewertung**
---- | --- | ---
-Virtueller Hyper-V-Hypervisor-Prozessor | % Gastausführungszeit | Empfohlene VM-Größe/Kosten
-Hyper-V-VM mit dynamischem Arbeitsspeicher | Aktueller Druck (%)<br/> Sichtbarer physischer Speicher des Gastcomputers (MB) | Empfohlene VM-Größe/Kosten
-Virtuelles Hyper-V-Speichergerät | Lesebytes/Sekunde | Berechnung von Datenträgergröße, Speicherkosten und VM-Größe
-Virtuelles Hyper-V-Speichergerät | Schreibbytes/Sekunde | Berechnung von Datenträgergröße, Speicherkosten und VM-Größe
-Virtueller Hyper-V-Netzwerkadapter | Empfangene Bytes/Sekunde | Berechnung der VM-Größe
-Virtueller Hyper-V-Netzwerkadapter | Gesendete Bytes/Sekunde | Berechnung der VM-Größe
-
-- Die CPU-Auslastung ist die Summe aller Auslastungen für alle an einen virtuellen Computer angeschlossenen virtuellen Prozessoren.
-- Die Speichernutzung ist (Aktueller Druck * Sichtbarer physischer Speicher des Gastcomputers) / 100.
-- Die Werte für die Festplatten- und Netzwerkauslastung werden von den aufgeführten Hyper-V-Leistungsindikatoren gesammelt.
-
-### <a name="collected-metadata-hyper-v"></a>Gesammelte Metadaten von Hyper-V
+### <a name="metadata"></a>Metadaten
+Die von der Azure Migrate-Appliance ermittelten Metadaten helfen Ihnen bei der Ermittlung der Bereitschaft von Computern und Apps für die Migration zu Azure, der richtigen Größe für Computer und Apps, der Kosten der Planung und bei der Analyse von Anwendungsabhängigkeiten. Microsoft verwendet diese Daten nicht zur Überprüfung der Compliance von Lizenzen.
 
 Nachstehend finden Sie die vollständige Liste der Hyper-V-VM-Metadaten, die die Appliance sammelt und an Azure sendet.
 
-**Daten** | **WMI-Klasse** | **WMI-Klasseneigenschaft**
+**DATEN* | **WMI-KLASSE** | **WMI-KLASSENEIGENSCHAFT**
 --- | --- | ---
 **Computerdetails** | 
 Seriennummer von BIOS _ Msvm_BIOSElement | BIOSSerialNumber
@@ -220,46 +250,35 @@ NIC-MAC-Adresse (synthetische NICs) | Msvm_SyntheticEthernetPortSettingData | Ad
 NIC-ID (Legacy-NICs) | MsvmEmulatedEthernetPortSetting-Daten | InstanceID
 NIC-MAC-ID (Legacy-NICs) | MsvmEmulatedEthernetPortSetting-Daten | Adresse
 
+### <a name="performance-data"></a>Leistungsdaten
 
+Nachstehend finden Sie die Hyper-VM-Leistungsdaten, die die Appliance sammelt und an Azure sendet.
 
+**Leistungsindikatorklasse** | **Leistungsindikator** | **Auswirkungen auf die Bewertung**
+--- | --- | ---
+Virtueller Hyper-V-Hypervisor-Prozessor | % Gastausführungszeit | Empfohlene VM-Größe/Kosten
+Hyper-V-VM mit dynamischem Arbeitsspeicher | Aktueller Druck (%)<br/> Sichtbarer physischer Speicher des Gastcomputers (MB) | Empfohlene VM-Größe/Kosten
+Virtuelles Hyper-V-Speichergerät | Lesebytes/Sekunde | Berechnung von Datenträgergröße, Speicherkosten und VM-Größe
+Virtuelles Hyper-V-Speichergerät | Schreibbytes/Sekunde | Berechnung von Datenträgergröße, Speicherkosten und VM-Größe
+Virtueller Hyper-V-Netzwerkadapter | Empfangene Bytes/Sekunde | Berechnung der VM-Größe
+Virtueller Hyper-V-Netzwerkadapter | Gesendete Bytes/Sekunde | Berechnung der VM-Größe
 
-## <a name="discovery-and-collection-process"></a>Ermittlungs- und Sammlungsprozess
-
-Die Appliance kommuniziert mit vCenter-Servern und Hyper-V-Hosts/Clustern über den folgenden Prozess.
-
-1. **Start der Ermittlung**:
-    - Wenn Sie die Ermittlung auf der Hyper-V-Appliance starten, kommuniziert sie mit den Hyper-V-Hosts über die WinRM-Ports 5985 (HTTP) und 5986 (HTTPS).
-    - Wenn Sie die Ermittlung auf der VMware-Appliance starten, kommuniziert sie standardmäßig mit dem vCenter-Server über TCP-Port 443. Wenn der vCenter-Server an einem anderen Port lauscht, können Sie ihn in der Appliance-Webanwendung konfigurieren.
-2. **Sammeln von Metadaten und Leistungsdaten**:
-    - Die Appliance verwendet eine Common Information Model (CIM)-Sitzung, um Hyper-V-VM-Daten vom Hyper-V-Host an Port 5985 und 5986 zu sammeln.
-    - Die Appliance kommuniziert standardmäßig über Port 443, um VMware-VM-Daten vom vCenter Server zu sammeln.
-3. **Senden von Daten**: Die Appliance sendet die gesammelten Daten über SSL-Port 443 an die Azure Migrate-Serverbewertung und die Azure Migrate-Servermigration. Die Verbindung der Appliance mit Azure kann über das Internet erfolgen, oder Sie können ExpressRoute mit öffentlichem/Microsoft-Peering verwenden.
-    - Bei Leistungsdaten sammelt die Appliance Nutzungsdaten in Echtzeit.
-        - Die Leistungsdaten werden für VMware alle 20 Sekunden und für Hyper-V alle 30 Sekunden für jede Leistungsmetrik erfasst.
-        - Die gesammelten Daten werden zu einem einzigen 10-Minuten-Datenpunkt zusammengeführt.
-        - Der Spitzenauslastungswert wird aus allen 20/30-Sekunden-Datenpunkten ausgewählt und zur Berechnung der Bewertung an Azure gesendet.
-        - Basierend auf dem in den Bewertungseigenschaften angegebenen Perzentilwert (50./90./95./99.) werden die Zehn-Minuten-Punkte in aufsteigender Reihenfolge sortiert, und der entsprechende Perzentilwert wird zur Berechnung der Bewertung verwendet
-    - Bei der Servermigration beginnt die Appliance mit der Ermittlung von VM-Daten und repliziert diese nach Azure.
-4. **Bewerten und Migrieren**: Sie können nun mit der Azure Migrate-Serverbewertung aus den von der Appliance gesammelten Metadaten Bewertungen erstellen. Darüber hinaus können Sie auch mit der Migration von VMware-VMs mit der Azure Migrate-Servermigration beginnen, um die VM-Replikation ohne Agent zu organisieren.
-
-
-![Aufbau](./media/migrate-appliance/architecture.png)
-
+- Die CPU-Auslastung ist die Summe aller Auslastungen für alle an einen virtuellen Computer angeschlossenen virtuellen Prozessoren.
+- Die Speichernutzung ist (Aktueller Druck * Sichtbarer physischer Speicher des Gastcomputers) / 100.
+- Die Werte für die Festplatten- und Netzwerkauslastung werden von den aufgeführten Hyper-V-Leistungsindikatoren gesammelt.
 
 ## <a name="appliance-upgrades"></a>Appliance-Upgrades
 
-Die Appliance wird aktualisiert, wenn die auf der Appliance ausgeführten Azure Migrate-Agents aktualisiert werden.
+Die Appliance wird aktualisiert, wenn die auf der Appliance ausgeführten Azure Migrate-Agents aktualisiert werden. Dies geschieht automatisch, da auf der Appliance standardmäßig die automatische Aktualisierung aktiviert ist. Sie können diese Standardeinstellung ändern, um die Agents manuell zu aktualisieren.
 
-- Dies geschieht automatisch, da auf der Appliance standardmäßig das automatische Update aktiviert ist.
-- Sie können diese Standardeinstellung ändern, um die Agents manuell zu aktualisieren.
-- Um die automatische Aktualisierung zu deaktivieren, wechseln Sie im Registrierungs-Editor zu „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance“, und legen Sie den AutoUpdate-Registrierungsschlüssel auf 0 (DWORD) fest.
- 
-### <a name="set-agent-updates-to-manual"></a>Festlegen der Agent-Updates auf manuelle Updates
+- **Deaktivieren der automatischen Aktualisierung**: Sie deaktivieren die automatische Aktualisierung in der Registrierung, indem Sie in „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance“ den Schlüssel „AutoUpdate“ auf 0 (DWORD) festlegen. Wenn Sie manuelle Updates verwenden, müssen Sie alle Agents auf der Appliance gleichzeitig aktualisieren, indem Sie für jeden veralteten Agent auf der Appliance die Schaltfläche **Update** verwenden.
+- **Manuelles Aktualisieren**: Stellen Sie bei manuellen Updates sicher, dass Sie alle Agents auf der Appliance aktualisieren, indem Sie für jeden veralteten Agent auf der Appliance die Schaltfläche **Update** verwenden. Sie können die Update-Einstellung jederzeit wieder auf automatische Updates zurücksetzen.
 
-Stellen Sie bei manuellen Updates sicher, dass Sie alle Agents auf der Appliance gleichzeitig aktualisieren, indem Sie für jeden veralteten Agent auf der Appliance die Schaltfläche **Update** verwenden. Sie können die Update-Einstellung jederzeit wieder auf automatische Updates zurücksetzen.
+![Automatisches Aktualisieren der Appliance](./media/migrate-appliance/autoupdate.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erfahren Sie, wie](tutorial-assess-vmware.md#set-up-the-appliance-vm) Sie die Appliance für VMware einrichten.
-[Erfahren Sie, wie](tutorial-assess-hyper-v.md#set-up-the-appliance-vm) Sie die Appliance für Hyper-V einrichten.
+- [Erfahren Sie, wie](how-to-set-up-appliance-vmware.md) Sie die Appliance für VMware einrichten.
+- [Erfahren Sie, wie](how-to-set-up-appliance-hyper-v.md) Sie die Appliance für Hyper-V einrichten.
+- [Erfahren Sie, wie](how-to-set-up-appliance-physical.md) Sie die Appliance für physische Server einrichten.
 

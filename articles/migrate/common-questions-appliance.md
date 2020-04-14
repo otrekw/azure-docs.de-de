@@ -3,12 +3,12 @@ title: Häufig gestellte Fragen zur Azure Migrate-Appliance
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zur Azure Migrate-Appliance.
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 3d0844b980ac418c5c334c2535c40dc5f3caeb16
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: a08423637f255b973f52616f53172ef6e48d0804
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78939293"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437608"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate-Appliance: Häufig gestellte Fragen
 
@@ -21,7 +21,7 @@ In diesem Artikel werden häufig gestellte Fragen zur Azure Migrate-Appliance be
 
 ## <a name="what-is-the-azure-migrate-appliance"></a>Was ist die Azure Migrate-Appliance?
 
-Die Azure Migrate-Appliance ist eine einfache Appliance, die vom Azure Migrate-Serverbewertungstool zum Ermitteln und Bewerten lokaler Server verwendet wird. Das Azure Migrate-Serverbewertungstool verwendet die Appliance auch für die Migration ohne Agent für lokale VMware-VMs.
+Die Azure Migrate-Appliance ist eine einfache Appliance, die vom Azure Migrate: Serverbewertungstool verwendet wird, um lokale Server zu entdecken und zu bewerten. Azure Migrate: verwendet die Appliance auch für die Migration ohne Agent für lokale VMware-VMs.
 
 Weitere Informationen zur Azure Migrate-Appliance:
 
@@ -55,8 +55,8 @@ In den folgenden Artikeln finden Sie Informationen zu den Anforderungen hinsicht
 
 In den folgenden Artikeln finden Sie Informationen zu den Daten, die von der Azure Migrate-Appliance auf VMs erfasst werden:
 
-- **VMware-VM**: [Leistungsdaten](migrate-appliance.md#collected-performance-data-vmware) und [Metadaten](migrate-appliance.md#collected-metadata-vmware)
-- **Hyper-V-VM**: [Leistungsdaten](migrate-appliance.md#collected-performance-data-hyper-v) und [Metadaten](migrate-appliance.md#collected-metadata-hyper-v)
+- **Virtueller VMware-Computer:** [Überprüfen](migrate-appliance.md#collected-data---vmware) gesammelter Daten. [
+- **Virtueller Hyper-V-Computer**: [Überprüfen](migrate-appliance.md#collected-data---hyper-v) gesammelter Daten.
 
 ## <a name="how-is-data-stored"></a>Wie werden die Daten gespeichert?
 
@@ -86,7 +86,7 @@ In den folgenden Schritten wird beschrieben, wie die Appliance eine Verbindung m
 1. Die Appliance stellt mithilfe der von Ihnen bei der Einrichtung der Appliance angegebenen Anmeldeinformationen eine Verbindung mit vCenter Server (Port 443) her.
 2. Die Appliance nutzt VMware PowerCLI, um vCenter Server abzufragen und Metadaten über die von vCenter Server verwalteten VMs zu sammeln.
 3. Die Appliance erfasst Konfigurationsdaten zu virtuellen Computern (Kerne, Arbeitsspeicher, Datenträger, NICs) sowie den Leistungsverlauf für jeden virtuellen Computer für den letzten Monat.
-4. Die gesammelten Metadaten werden zur Bewertung an das  Azure Migrate-Serverbewertungstool (über das Internet per HTTPS) gesendet.
+4. Die erfassten Metadaten werden an das Azure Migrate: Serverbewertungstool (über das Internet mit HTTPS) zur Bewertung gesendet.
 
 ## <a name="can-the-azure-migrate-appliance-connect-to-multiple-vcenter-servers"></a>Kann die Azure Migrate-Appliance eine Verbindung mit mehreren vCenter Server-Instanzen herstellen?
 
@@ -94,6 +94,9 @@ Nein. Zwischen einer [Azure Migrate-Appliance](migrate-appliance.md) und vCenter
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Kann ein Azure Migrate-Projekt über mehrere Appliances verfügen?
 An ein Projekt können mehrere Appliances angefügt sein. Eine Appliance kann jedoch nur einem einzelnen Projekt zugeordnet werden. 
+
+## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Kann die Azure Migrate-Appliance/Replikations-Appliance eine Verbindung mit demselben vCenter herstellen?
+Ja. Sie können sowohl die Azure Migrate-Appliance (wird für die Bewertung und die VMware-Migration ohne Agent verwendet) als auch die Replikations-Appliance (wird für die Agent-basierte Migration von VMware-VMS verwendet) demselben vCenter-Server hinzufügen.
 
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Wie viele VMs oder Server können mit einer Appliance ermittelt werden?
@@ -128,7 +131,7 @@ Nur die Appliance und die Appliance-Agents werden durch diese automatischen Upda
 
 ## <a name="can-i-check-agent-health"></a>Kann ich die Agent-Integrität überprüfen?
 
-Ja. Navigieren Sie im Portal zur Seite **Agent-Integrität** für das Azure Migrate: Serverbewertungs- oder Azure Migrate: Servermigrationstool. Dort können Sie den Verbindungsstatus zwischen Azure und den Ermittlungs- und Bewertungs-Agents auf der Appliance überprüfen.
+Ja. Navigieren Sie im Portal zur Seite **Agent-Integrität** für das Azure Migrate: Serverbewertung oder Azure Migrate: Servermigration“ kommunizieren kann. Dort können Sie den Verbindungsstatus zwischen Azure und den Ermittlungs- und Bewertungs-Agents auf der Appliance überprüfen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
