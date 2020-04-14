@@ -214,6 +214,8 @@
       items:
         - name: Was ist Sprachübersetzung?
           href: speech-translation.md
+        - name: Grundlagen der Sprachübersetzung
+          href: speech-translation-basics.md
     - name: Schnellstart
       items:
         - name: Übersetzen von Sprache in Text
