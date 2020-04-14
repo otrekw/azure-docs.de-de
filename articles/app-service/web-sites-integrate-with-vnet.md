@@ -1,5 +1,5 @@
 ---
-title: Integration einer App in Azure Virtual Network
+title: Integration von Apps in Azure Virtual Network
 description: Integrieren von Apps in Azure App Service mit Azure Virtual Networks.
 author: ccompy
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
@@ -7,43 +7,42 @@ ms.topic: article
 ms.date: 02/27/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 89aa78e0d26598eacf436ca88cc6c5549f91d2fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1a9739c444db2e41d55b8876011c066f2e71ca3
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673224"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421371"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrieren Ihrer App in ein Azure Virtual Network
-In diesem Dokument wird die Azure App Service-Funktion für die Integration in ein virtuelles Netzwerk beschrieben, und Sie erfahren, wie Sie die Funktion mit Apps in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) einrichten. Mit [Azure Virtual Networks][VNETOverview] (VNETs) können Sie viele Ihrer Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann.  
 
-Es gibt zwei Varianten der Nutzung von Azure App Service.
+In diesem Artikel wird die Azure App Service-Funktion für die VNet-Integration beschrieben, und Sie erfahren, wie Sie die Funktion mit Apps in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) einrichten. Mit [Azure Virtual Network][VNETOverview] können Sie viele Ihrer Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann.
+
+Es gibt zwei Varianten der Nutzung von Azure App Service:
 
 [!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
 
-## <a name="enable-vnet-integration"></a>Aktivieren der VNET-Integration 
+## <a name="enable-vnet-integration"></a>Aktivieren der VNET-Integration
 
-1. Navigieren Sie zur Netzwerkbenutzeroberfläche im App Service-Portal. Wählen Sie unter „VNET-Integration“ die Option *Zum Konfigurieren hier klicken* aus. 
+1. Navigieren Sie zur **Netzwerk**benutzeroberfläche im App Service-Portal. Wählen Sie unter **VNET-Integration** die Option **Zum Konfigurieren hier klicken** aus.
 
-1. Wählen Sie **VNET hinzufügen** aus.  
+1. Wählen Sie **VNET hinzufügen** aus.
 
    ![Auswählen der VNET-Integration][1]
 
-1. Die Dropdownliste enthält alle Resource Manager -VNETs in Ihrem Abonnement in derselben Region und darunter eine Liste aller Resource Manager-VNETs in allen anderen Regionen. Wählen Sie das VNET aus, das Sie integrieren möchten.
+1. Die Dropdownliste enthält alle virtuellen Azure Resource Manager-Netzwerke in Ihrem Abonnement in derselben Region. Darunter befindet sich eine Liste der virtuellen Resource Manager-Netzwerke in allen anderen Regionen. Wählen Sie das virtuelle Netzwerk aus, das Sie für die Integration verwenden möchten.
 
-   ![Auswählen des VNETs][2]
+   ![Auswählen des virtuellen Netzwerks][2]
 
-   * Wenn sich das VNET in derselben Region befindet, erstellen Sie entweder ein neues Subnetz, oder wählen Sie ein leeres bereits vorhandenes Subnetz aus. 
-
-   * Wenn Sie ein VNET in einer anderen Region auswählen möchten, müssen Sie über ein Virtual Network Gateway verfügen, für das Point-to-Site aktiviert ist.
-
-   * Wenn die Integration in ein klassisches VNET erfolgen soll, wählen Sie anstelle der VNET-Dropdownliste die Option **Klicken Sie hier, um eine Verbindung mit einem klassischen VNET herzustellen** aus. Wählen Sie das gewünschte klassische VNET aus. Das Ziel-VNET muss bereits über ein bereitgestelltes Virtual Network Gateway verfügen, das für Point-to-Site aktiviert ist.
+   * Wenn sich das virtuelle Netzwerk in derselben Region befindet, erstellen Sie entweder ein neues Subnetz, oder wählen Sie ein leeres, bereits vorhandenes Subnetz aus.
+   * Wenn Sie ein virtuelles Netzwerk in einer anderen Region auswählen möchten, müssen Sie über ein Virtual Network-Gateway verfügen, für das Point-to-Site aktiviert ist.
+   * Wenn die Integration in ein klassisches virtuelles Netzwerk erfolgen soll, wählen Sie anstelle der Dropdownliste **Virtuelles Netzwerk** die Option **Klicken Sie hier, um eine Verbindung mit einem klassischen VNET herzustellen** aus. Wählen Sie das gewünschte klassische virtuelle Netzwerk aus. Für das virtuelle Zielnetzwerk muss bereits ein Virtual Network-Gateway bereitgestellt sein, das für Point-to-Site aktiviert ist.
 
     ![Auswählen eines klassischen VNETs][3]
-    
-Während der Integration wird Ihre App neu gestartet.  Wenn die Integration abgeschlossen ist, werden Details zum VNET angezeigt, in das Sie integriert sind. 
 
-Nachdem Ihre App in Ihr VNET integriert wurde, verwendet sie den DNS-Server, mit dem Ihr VNET konfiguriert ist, wenn es sich nicht um Azure DNS Private Zones handelt. Die VNET-Integration kann derzeit nicht mit Azure DNS Private Zones verwendet werden.
+Während der Integration wird Ihre App neu gestartet. Wenn die Integration abgeschlossen ist, werden Details zu dem virtuellen Netzwerk angezeigt, in das Sie integriert sind.
+
+Nachdem Ihre App in Ihr virtuelle integriert wurde, verwendet sie denselben DNS-Server, mit dem auch Ihr virtuelles Netzwerk konfiguriert ist, es sei denn, es handelt sich um Azure DNS Private Zones. Die VNet-Integration kann derzeit nicht mit Azure DNS Private Zones verwendet werden.
 
 ## <a name="regional-vnet-integration"></a>Regionale VNET-Integration
 
@@ -51,97 +50,100 @@ Nachdem Ihre App in Ihr VNET integriert wurde, verwendet sie den DNS-Server, mit
 
 ### <a name="how-regional-vnet-integration-works"></a>Funktionsweise der regionalen VNET-Integration
 
-Apps in App Service werden auf Workerrollen gehostet. Der Tarif „Basic“ und höhere Tarife sind dedizierte Hostingpläne, bei denen keine anderen Kundenworkloads auf den gleichen Workern ausgeführt werden. Die regionale VNET-Integration beruht auf der Einbindung virtueller Schnittstellen mit Adressen im delegierten Subnetz. Da sich die Von-Adresse in Ihrem VNET befindet, kann sie ähnlich wie eine VM im VNET auf die meisten Ressourcen zugreifen, die im oder über das VNET verfügbar sind. Die Netzwerkimplementierung unterscheidet sich von der Ausführung einer VM in Ihrem VNET. Einige Netzwerkfeatures sind daher bei der Verwendung dieser Funktion noch nicht verfügbar.
+Apps in App Service werden auf Workerrollen gehostet. Der Tarif „Basic“ und höhere Tarife sind dedizierte Hostingpläne, bei denen keine anderen Kundenworkloads auf den gleichen Workern ausgeführt werden. Die regionale VNET-Integration beruht auf der Einbindung virtueller Schnittstellen mit Adressen im delegierten Subnetz. Da sich die Von-Adresse in Ihrem virtuellen Netzwerk befindet, kann sie ähnlich wie eine VM in Ihrem virtuellen Netzwerk auf die meisten Ressourcen zugreifen, die in Ihrem oder über Ihr virtuelles Netzwerk verfügbar sind. Die Netzwerkimplementierung unterscheidet sich von der Ausführung eines virtuellen Computers in Ihrem virtuellen Netzwerk. Aus diesem Grund sind einige Netzwerkfunktionen für dieses Feature noch nicht verfügbar.
 
 ![Funktionsweise der regionalen VNET-Integration][5]
 
-Wenn regionale VNET-Integration aktiviert ist, sendet Ihre App ausgehende Aufrufe an das Internet weiterhin über die üblichen Kanäle. Ihre App verwendet nach wie vor die ausgehenden Adressen, die im Portal für die App-Eigenschaften aufgeführt sind. Was sich für Ihre App ändert, sind Aufrufe an per Dienstendpunkt geschützte Dienste oder RFC 1918-Adressen. Diese Aufrufe werden in Ihr VNET geleitet. Wenn WEBSITE_VNET_ROUTE_ALL auf 1 festgelegt ist, kann der gesamte ausgehende Datenverkehr in Ihr VNET gesendet werden. 
+Wenn regionale VNet-Integration aktiviert ist, sendet Ihre App ausgehende Aufrufe an das Internet über die üblichen Kanäle. Ihre App verwendet nach wie vor die ausgehenden Adressen, die im Portal für die App-Eigenschaften aufgeführt sind. Was sich für Ihre App ändert, sind Aufrufe an per Dienstendpunkt geschützte Dienste oder RFC 1918-Adressen. Diese Aufrufe werden in Ihr virtuelles Netzwerk geleitet. Wenn WEBSITE_VNET_ROUTE_ALL auf 1 festgelegt ist, kann der gesamte ausgehende Datenverkehr in Ihr virtuelles Netzwerk gesendet werden.
 
-Die Funktion unterstützt nur eine virtuelle Schnittstelle pro Worker,  Eine virtuelle Schnittstelle pro Worker bedeutet eine regionale VNET-Integration pro App Service Plan. Alle Apps im gleichen App Service-Plan können die gleiche VNET-Integration verwenden. Wenn eine App jedoch eine Verbindung mit einem zusätzlichen VNET herstellen muss, müssen Sie jedoch einen weiteren App Service-Plan erstellen. Die verwendete virtuelle Schnittstelle ist keine Ressource, auf die Kunden direkten Zugriff haben.
+Die Funktion unterstützt nur eine virtuelle Schnittstelle pro Worker. Eine virtuelle Schnittstelle pro Worker bedeutet eine regionale VNET-Integration pro App Service Plan. Alle Apps im selben App Service-Plan können dieselbe VNet-Integration verwenden. Wenn Sie eine App zum Herstellen einer Verbindung mit einem zusätzlichen virtuellen Netzwerk benötigen, müssen Sie einen weiteren App Service-Plan erstellen. Die verwendete virtuelle Schnittstelle ist keine Ressource, auf die Kunden direkten Zugriff haben.
 
-Aufgrund der Funktionsweise dieser Technologie wird der Datenverkehr in Verbindung mit der VNET-Integration nicht in Network Watcher- oder NSG-Flussprotokollen (Netzwerksicherheitsgruppe) aufgeführt.  
+Aufgrund der Funktionsweise dieser Technologie wird der Datenverkehr in Verbindung mit der VNet-Integration nicht in Azure Network Watcher- oder NSG-Flussprotokollen (Netzwerksicherheitsgruppe) aufgeführt.
 
-## <a name="gateway-required-vnet-integration"></a>VNET-Integration, die ein Gateway erfordert
+## <a name="gateway-required-vnet-integration"></a>Von einem Gateway abhängige VNet-Integration
 
-Die VNET-Integration mit erforderlichem Gateway unterstützt das Herstellen einer Verbindung mit einem VNET in einer anderen Region oder mit einem klassischen VNET. VNET-Integration mit erforderlichem Gateway: 
+Die von einem Gateway abhängige VNet-Integration unterstützt das Herstellen einer Verbindung mit einem virtuellen Netzwerk in einer anderen Region oder mit einem klassischen virtuellen Netzwerk. Von einem Gateway abhängige VNet-Integration:
 
-* Eine App kann nur jeweils mit einem VNET eine Verbindung herstellen
-* Bis zu fünf VNETs können in einen App Service-Plan integriert werden 
-* Ermöglicht die Verwendung des gleichen VNET durch mehrere Apps, ohne dass sich dies auf die für einen App Service-Plan zulässige Gesamtanzahl von VNETs auswirkt.  Wenn Sie sechs Apps verwenden, die das gleiche VNET im gleichen App Service-Plan nutzen, zählt dies als ein verwendetes VNET. 
-* Unterstützt dank der SLA auf dem Gateway eine SLA mit einer Verfügbarkeit von 99,9%
-* Ermöglicht Ihren Apps die Verwendung des DNS, mit dem das VNET konfiguriert ist.
-* Erfordert ein routenbasiertes Virtual Network-Gateway, das mit einem SSTP-Point-to-Site-VPN konfiguriert ist, bevor es mit einer App verbunden werden kann. 
+* Eine App kann nur jeweils mit einem virtuellen Netzwerk eine Verbindung herstellen.
+* Bis zu fünf virtuelle Netzwerke können in einen App Service-Plan integriert werden.
+* Ermöglicht die Verwendung desselben virtuellen Netzwerks durch mehrere Apps in einem App Service-Plan, ohne dass sich dies auf die für einen App Service-Plan zulässige Gesamtanzahl von VNets auswirkt. Wenn Sie sechs Apps verwenden, die dasselbe virtuelle Netzwerk im selben App Service-Plan nutzen, zählt dies als ein verwendetes virtuelles Netzwerk.
+* Unterstützt dank der SLA auf dem Gateway eine SLA mit einer Verfügbarkeit von 99,9 %.
+* Ermöglicht Ihren Apps die Verwendung des DNS, mit dem das virtuelle Netzwerk konfiguriert ist.
+* Erfordert ein routenbasiertes Virtual Network-Gateway, das mit einem SSTP-Point-to-Site-VPN konfiguriert ist, bevor es mit einer App verbunden werden kann.
 
-Die von einem Gateway abhängige VNET-Integration kann in den folgenden Fällen nicht verwendet werden:
+Sie können keine von einem Gateway abhängige VNet-Integration verwenden:
 
-* Mit Linux-Apps
-* Mit einem VNET, das mit ExpressRoute verbunden ist 
-* Für den Zugriff auf durch Dienstendpunkte geschützte Ressourcen
-* Mit einem Koexistenzgateway, das ExpressRoute und Point-to-Site-/Site-to-Site-VPNs unterstützt
+* Mit Linux-Apps.
+* Mit einem virtuellen Netzwerk, das mit Azure ExpressRoute verbunden ist.
+* Für den Zugriff auf durch Dienstendpunkte geschützte Ressourcen.
+* Mit einem Koexistenzgateway, das sowohl ExpressRoute als auch Point-to-Site- oder Site-to-Site-VPNs unterstützt.
 
-### <a name="set-up-a-gateway-in-your-vnet"></a>Einrichten eines Gateways in Ihrem VNET ###
+### <a name="set-up-a-gateway-in-your-virtual-network"></a>Einrichten eines Gateways in Ihrem virtuellen Netzwerk ###
 
 So erstellen Sie ein Gateway
 
-1. [Erstellen Sie ein Gatewaysubnetz][creategatewaysubnet] in Ihrem VNET.  
+1. [Erstellen Sie ein Gatewaysubnetz][creategatewaysubnet] in Ihrem virtuellen Netzwerk.  
 
 1. [Erstellen Sie das VPN-Gateway][creategateway]. Wählen Sie einen routenbasierten VPN-Typ aus.
 
 1. [Legen Sie die Point-to-Site-Adressen fest][setp2saddresses]. Wenn sich das Gateway nicht in der Basic-SKU befindet, muss IKEV2 in der Point-to-Site-Konfiguration deaktiviert und SSTP ausgewählt werden. Der Point-to Site-Adressraum muss in den RFC 1918-Adressblöcken 10.0.0.0/8, 172.16.0.0/12 und 192.168.0.0/16 liegen.
 
-Wenn Sie das Gateway nur für die Verwendung mit der App Service-VNET-Integration erstellen, müssen Sie kein Zertifikat hochladen. Das Erstellen des Gateways kann 30 Minuten dauern. Sie können Ihre App erst mit Ihrem VNET integrieren, nachdem das Gateway bereitgestellt wurde. 
+Wenn Sie das Gateway für die Verwendung mit der App Service-VNet-Integration erstellen, müssen Sie kein Zertifikat hochladen. Das Erstellen des Gateways kann 30 Minuten dauern. Sie können Ihre App erst in Ihr virtuelles Netzwerk integrieren, nachdem das Gateway bereitgestellt wurde.
 
-### <a name="how-gateway-required-vnet-integration-works"></a>Funktionsweise der VNET-Integration, die ein Gateway erfordert
+### <a name="how-gateway-required-vnet-integration-works"></a>Funktionsweise der von einem Gateway abhängigen VNet-Integration
 
-Die von einem Gateway abhängige VNET-Integration basiert auf Point-to-Site-VPN-Technologie. Point-to-Site-VPNs beschränken den Netzwerkzugriff auf den virtuellen Computer, auf dem die App gehostet wird. Apps sind darauf beschränkt, nur Datenverkehr an das Internet über Hybrid Connections oder VNET-Integration zu senden. Wenn Ihre App über das Portal so konfiguriert wurde, dass sie die VNET-Integration mit erforderlichem Gateway verwendet, wird eine komplexe Aushandlung in Ihrem Namen verwaltet, um Zertifikate auf der Gateway- und der Anwendungsseite zu erstellen und zuzuweisen. Das Endergebnis ist, dass die Worker, die Ihre Anwendungen hosten, in der Lage sind, sich direkt mit dem virtuellen Netzwerkgateway im ausgewählten VNET zu verbinden. 
+Die von einem Gateway abhängige VNet-Integration basiert auf der Point-to-Site-VPN-Technologie. Point-to-Site-VPNs beschränken den Netzwerkzugriff auf den virtuellen Computer, auf dem die App gehostet wird. Apps sind darauf beschränkt, Datenverkehr an das Internet nur über Hybridverbindungen oder VNet-Integration zu senden. Wenn Ihre App über das Portal so konfiguriert wurde, dass sie die von einem Gateway abhängige VNet-Integration verwendet, wird eine komplexe Aushandlung in Ihrem Namen verwaltet, um Zertifikate auf der Gateway- und der Anwendungsseite zu erstellen und zuzuweisen. Das Ergebnis ist, dass die Worker, die Ihre Anwendungen hosten, in der Lage sind, sich direkt mit dem virtuellen Netzwerkgateway im ausgewählten virtuellen Netzwerk zu verbinden.
 
-![Funktionsweise der VNET-Integration, die ein Gateway erfordert][6]
+![Funktionsweise der von einem Gateway abhängigen VNet-Integration][6]
 
-### <a name="accessing-on-premises-resources"></a>Zugriff auf lokale Ressourcen
+### <a name="access-on-premises-resources"></a>Zugriff auf lokale Ressourcen
 
-Apps können durch Integration mit VNETs, die Site-to-Site-Verbindungen aufweisen, auf lokale Ressourcen zugreifen. Wenn Sie die von einem Gateway abhängige VNET-Integration verwenden, müssen Sie Ihre lokalen VPN-Gatewayrouten mit Ihren Point-to-Site-Adressblöcken aktualisieren. Verwenden Sie beim ersten Einrichten des Site-to-Site-VPN die Skripts für die Konfiguration. Die Routen sollten damit richtig eingerichtet werden. Wenn Sie die Point-to-Site-Adressen nach dem Erstellen des Site-to-Site-VPN hinzufügen, müssen Sie die Routen manuell aktualisieren. Die Details zur Vorgehensweise variieren je nach Gateway und sind hier nicht beschrieben. Das Border Gateway Protocol (BGP) kann nicht für eine Site-to-Site-VPN-Verbindung konfiguriert werden.
+Apps können durch Integration mit virtuellen Netzwerken, die Site-to-Site-Verbindungen aufweisen, auf lokale Ressourcen zugreifen. Wenn Sie die von einem Gateway abhängige VNet-Integration verwenden, aktualisieren Sie Ihre lokalen VPN-Gatewayrouten mit Ihren Point-to-Site-Adressblöcken. Verwenden Sie beim ersten Einrichten des Site-to-Site-VPN die Skripts für die Konfiguration. Die Routen sollten damit richtig eingerichtet werden. Wenn Sie die Point-to-Site-Adressen nach dem Erstellen des Site-to-Site-VPN hinzufügen, müssen Sie die Routen manuell aktualisieren. Die Details zur Vorgehensweise variieren je nach Gateway und sind hier nicht beschrieben. Das Border Gateway Protocol (BGP) kann nicht für eine Site-to-Site-VPN-Verbindung konfiguriert werden.
 
-Für die regionale VNET-Integration ist keine zusätzliche Konfiguration erforderlich, um Ihr VNET und das lokale Netzwerk zu erreichen. Sie müssen Ihr VNET lediglich über ExpressRoute oder ein Site-to-Site-VPN mit dem lokalen Netzwerk verbinden. 
+Für die regionale VNet-Integration ist keine zusätzliche Konfiguration erforderlich, um über Ihr virtuelles Netzwerk und lokale Ressourcen zu erreichen. Sie müssen Ihr virtuelles Netzwerk lediglich über ExpressRoute oder ein Site-to-Site-VPN mit lokalen Ressourcen verbinden.
 
 > [!NOTE]
-> Bei der von einem Gateway abhängigen VNET-Integration wird eine App nicht in ein VNET integriert, das ein ExpressRoute-Gateway enthält. Selbst wenn das ExpressRoute-Gateway im [Koexistenzmodus][VPNERCoex] konfiguriert ist, funktioniert die VNET-Integration nicht. Wenn Sie über eine ExpressRoute-Verbindung auf Ressourcen zugreifen müssen, können Sie die regionale VNET-Integration oder eine in Ihrem VNET ausgeführte [App Service-Umgebung][ASE] verwenden. 
+> Bei der von einem Gateway abhängigen VNET-Integration wird eine App nicht in ein virtuelles Netzwerk integriert, das ein ExpressRoute-Gateway besitzt. Selbst wenn das ExpressRoute-Gateway im [Koexistenzmodus][VPNERCoex] konfiguriert ist, funktioniert die VNet-Integration nicht. Wenn Sie über eine ExpressRoute-Verbindung auf Ressourcen zugreifen müssen, verwenden Sie die regionale VNet-Integrationsfunktion oder eine in Ihrem virtuellen Netzwerk ausgeführte [App Service-Umgebung][ASE].
 > 
 > 
 
 ### <a name="peering"></a>Peering
 
-Wenn Sie das Peering mit der regionalen VNET-Integration verwenden, ist keine zusätzliche Konfiguration erforderlich. 
+Wenn Sie Peering mit der regionalen VNet-Integration verwenden, ist keine zusätzliche Konfiguration erforderlich.
 
-Bei der von einem Gateway abhängigen VNET-Integration müssen Sie für das Peering einige zusätzliche Elemente konfigurieren. So konfigurieren Sie Peering für Ihre App
+Bei der von einem Gateway abhängigen VNet-Integration müssen Sie für das Peering einige zusätzliche Elemente konfigurieren. So konfigurieren Sie Peering für Ihre App
 
-1. Fügen Sie eine Peeringverbindung mit dem VNET hinzu, mit dem Ihre App eine Verbindung herstellt. Aktivieren Sie beim Hinzufügen der Peeringverbindung **Zugriff auf virtuelles Netzwerk zulassen** sowie **Weitergeleiteten Datenverkehr zulassen** und **Gatewaytransit zulassen**.
-1. Fügen Sie in dem VNET, das mit dem VNET, mit dem Sie verbunden sind, mittels Peering verknüpft ist, eine Peeringverbindung hinzu. Aktivieren Sie beim Hinzufügen der Peeringverbindung im Ziel-VNET **Zugriff auf virtuelles Netzwerk zulassen**, und aktivieren Sie **Weitergeleiteten Datenverkehr zulassen** und **Allow remote gateways** (Remotegateways zulassen).
-1. Wechseln Sie im Portal zu „App Service-Plan > Netzwerk > VNet Integration UI“ (Benutzeroberfläche der VNET-Integration).  Wählen Sie das VNET aus, mit dem Ihre App eine Verbindung herstellt. Fügen Sie den Adressbereich des VNET, das mit dem VNET, mit dem Ihre App verbunden ist, mittels Peering verknüpft ist, im Abschnitt „Routing“ hinzu.  
+1. Fügen Sie eine Peeringverbindung mit dem virtuellen Netzwerk hinzu, mit dem Ihre App eine Verbindung herstellt. Aktivieren Sie beim Hinzufügen der Peeringverbindung **Zugriff auf virtuelles Netzwerk zulassen** sowie **Weitergeleiteten Datenverkehr zulassen** und **Gatewaytransit zulassen**.
+1. Fügen Sie in dem virtuellen Netzwerk, das mit dem virtuellen Netzwerk, mit dem Sie verbunden sind, mittels Peering verknüpft ist, eine Peeringverbindung hinzu. Aktivieren Sie beim Hinzufügen der Peeringverbindung im virtuellen Zielnetzwerk **Zugriff auf virtuelles Netzwerk zulassen**, und aktivieren Sie **Weitergeleiteten Datenverkehr zulassen** und **Allow remote gateways** (Remotegateways zulassen).
+1. Wechseln Sie im Portal zu **App Service-Plan** > **Netzwerk** > **VNet-Integration**-Benutzeroberfläche. Wählen Sie das virtuelle Netzwerk aus, mit dem Ihre App eine Verbindung herstellt. Fügen Sie den Adressbereich des virtuellen Netzwerks, das mit dem virtuellen Netzwerk, mit dem Ihre App verbunden ist, mittels Peering verknüpft ist, im Abschnitt „Routing“ hinzu.
 
-## <a name="managing-vnet-integration"></a>Verwalten der VNET-Integration 
+## <a name="manage-vnet-integration"></a>Verwalten der VNet-Integration
 
-Das Verbinden und Trennen der Verbindung mit einem VNET erfolgt auf App-Ebene. Vorgänge, die sich auf die VNET-Integration über mehrere Apps auswirken können, werden auf Ebene des App Service-Plans ausgeführt. Sie können im Portal unter „App > Netzwerk > VNET-Integration“ Details zu Ihrem VNET abrufen. Ähnliche Informationen finden Sie auf der ASP-Ebene im Portal unter „ASP > Netzwerk > VNET-Integration“.
+Das Verbinden und Trennen der Verbindung mit einem virtuellen Netzwerk erfolgt auf App-Ebene. Vorgänge, die sich auf die VNet-Integration über mehrere Apps auswirken können, werden auf Ebene des App Service-Plans ausgeführt. Sie können im Portal unter „App > **Netzwerk** > **VNET-Integration**“ Details zu Ihrem virtuellen Netzwerk abrufen. Ähnliche Informationen finden Sie auf der App Service-Planebene im Portal unter **App Service-Plan** > **Netzwerk** > **VNET-Integration**.
 
-Der einzige Vorgang, den Sie in der App-Ansicht Ihrer VNET-Integration durchführen können, ist das Trennen Ihrer App von dem VNET, mit dem derzeit eine Verbindung besteht. Um Ihre App von einem VNET zu trennen, wählen Sie **Verbindung trennen** aus. Wenn Sie die Verbindung mit einem VNET trennen, wird Ihre App neu gestartet. Das Trennen der Verbindung führt nicht zu Änderungen in Ihrem VNET. Das Subnetz oder Gateway wird nicht entfernt. Wenn Sie Ihr VNET löschen möchten, müssen Sie zuerst Ihre App vom VNET trennen und die darin enthaltenen Ressourcen löschen (z. B. Gateways). 
+Der einzige Vorgang, den Sie in der App-Ansicht Ihrer VNet-Integrationsinstanz durchführen können, ist das Trennen Ihrer App von dem virtuellen Netzwerk, mit dem derzeit eine Verbindung besteht. Um Ihre App von einem virtuellen Netzwerk zu trennen, wählen Sie **Verbindung trennen** aus. Wenn Sie die Verbindung mit einem virtuellen Netzwerk trennen, wird Ihre App neu gestartet. Das Trennen der Verbindung führt nicht zu Änderungen in Ihrem virtuellen Netzwerk. Das Subnetz oder Gateway wird nicht entfernt. Wenn Sie Ihr virtuelles Netzwerk löschen möchten, trennen Sie zuerst Ihre App vom virtuellen Netzwerk und löschen die darin enthaltenen Ressourcen (z. B. Gateways).
 
-Die Benutzeroberfläche der ASP-VNET-Integration zeigt alle VNET-Integrationen an, die von den Apps in Ihrem ASP verwendet werden. Klicken Sie auf das gewünschte VNET, um Informationen dazu anzuzeigen. Es gibt zwei Aktionen, die Sie hier für die VNET-Integration mit erforderlichem Gateway durchführen können.
+Die Benutzeroberfläche der VNet-Integration des App Service-Plans zeigt alle virtuellen Netzwerkintegrationen an, die von den Apps in Ihrem App Service-Plan verwendet werden. Um Details zu jedem virtuellen Netzwerk anzuzeigen, wählen Sie das virtuelle Netzwerk aus, an dem Sie interessiert sind. Es gibt zwei Aktionen, die Sie hier für die VNet-Integration mit erforderlichem Gateway durchführen können:
 
-* **Netzwerk synchronisieren**. Der Vorgang zum Synchronisieren des Netzwerks ist nur für die von einem Gateway abhängige VNET-Integration vorgesehen. Durch die Netzwerksynchronisierung wird sichergestellt, dass Ihre Zertifikate und Netzwerkinformationen synchronisiert sind. Wenn Sie das DNS des VNET hinzufügen oder ändern, müssen Sie eine **Netzwerksynchronisierung** durchführen. Bei diesem Vorgang werden alle Apps, die dieses VNET verwenden, neu gestartet.
-* **Routen hinzufügen:** Durch das Hinzufügen von Routen wird ausgehender Datenverkehr in Ihr VNET geleitet. 
+* **Netzwerk synchronisieren**: Der Vorgang zum Synchronisieren des Netzwerks wird nur für die von einem Gateway abhängige VNet-Integration verwendet. Durch die Netzwerksynchronisierung wird sichergestellt, dass Ihre Zertifikate und Netzwerkinformationen synchronisiert sind. Wenn Sie das DNS Ihres virtuellen Netzwerks hinzufügen oder ändern, führen Sie eine Netzwerksynchronisierung durch. Mit diesem Vorgang werden alle Apps, die dieses virtuelle Netzwerk verwenden, neu gestartet.
+* **Routen hinzufügen**: Durch das Hinzufügen von Routen wird ausgehender Datenverkehr in Ihr virtuelles Netzwerk geleitet.
 
-**Routing der VNET-Integration mit erforderlichem Gateway**: Die in Ihrem VNET definierten Routen werden zum Weiterleiten des Datenverkehrs aus der App in Ihr VNET verwendet. Wenn Sie weiteren ausgehenden Datenverkehr in das VNET senden möchten, können Sie diese Adressblöcke hier hinzufügen. Diese Funktion kann nur mit der VNET-Integration verwendet werden, die ein Gateway erfordert. Routingtabellen wirken sich nicht auf den App-Datenverkehr aus, wenn VNET-Integration mit erforderlichem Gateway so verwendet wird wie regionale VNET-Integration.
+### <a name="gateway-required-vnet-integration-routing"></a>Routing der von einem Gateway abhängige VNet-Integration
+Die in Ihrem virtuellen Netzwerk definierten Routen werden zum Leiten des Datenverkehrs aus der App in Ihr virtuelles Netzwerk verwendet. Wenn Sie weiteren ausgehenden Datenverkehr in das virtuelle Netzwerk senden möchten, fügen Sie diese Adressblöcke hier hinzu. Diese Funktion kann nur mit der von einem Gateway abhängigen VNet-Integration. Routingtabellen wirken sich nicht auf den App-Datenverkehr aus, wenn von einem Gateway abhängige VNet-Integration so verwendet wird wie regionale VNet-Integration.
 
-**Zertifikate für VNET-Integration mit erforderlichem Gateway**: Wenn die von einem Gateway abhängige VNET-Integration aktiviert ist, müssen Zertifikate ausgetauscht werden, um die Sicherheit der Verbindung zu gewährleisten. Zusammen mit den Zertifikaten werden die DNS-Konfiguration, Routen und anderen Elemente, mit denen das Netzwerk beschrieben wird, ausgetauscht.
-Wenn Zertifikate oder Netzwerkinformationen geändert werden, müssen Sie auf „Netzwerk synchronisieren“ klicken. Wenn Sie auf „Netzwerk synchronisieren“ klicken, bewirkt dies einen kurzen Ausfall der Verbindung zwischen der App und dem VNET. Die App wird nicht neu gestartet, aber der Konnektivitätsverlust kann dazu führen, dass Ihre Website nicht richtig funktioniert. 
+### <a name="gateway-required-vnet-integration-certificates"></a>Zertifikate der von einem Gateway abhängigen VNet-Integration
+Wenn die von einem Gateway abhängige VNet-Integration aktiviert ist, müssen Zertifikate ausgetauscht werden, um die Sicherheit der Verbindung zu gewährleisten. Zusammen mit den Zertifikaten werden die DNS-Konfiguration, Routen und anderen Elemente, mit denen das Netzwerk beschrieben wird, ausgetauscht.
+
+Wenn Zertifikate oder Netzwerkinformationen geändert werden, wählen Sie **Netzwerk synchronisieren** aus. Wenn Sie **Netzwerk synchronisieren** auswählen, bewirkt dies einen kurzen Ausfall der Verbindung zwischen der App und Ihrem virtuellen Netzwerk. Die App wird nicht neu gestartet, aber der Konnektivitätsverlust kann dazu führen, dass Ihre Website nicht richtig funktioniert.
 
 ## <a name="pricing-details"></a>Preisübersicht
-Bei der Funktion für die regionale VNET-Integration fallen neben den Gebühren für den App Service-Tarif keine zusätzlichen Gebühren an.
+Bei der Funktion für die regionale VNet-Integration fallen neben den Gebühren für den App Service-Plantarif keine zusätzlichen Gebühren an.
 
-Bei der VNET-Integration, die ein Gateway erfordert, fallen drei Gebühren an:
+Bei der Verwendung der von einem Gateway abhängigen VNet-Integrationsfunktion fallen drei Gebühren an:
 
-* Gebühren für den App Service-Tarif: Ihre Apps müssen in einem App Service-Plan mit dem Tarif „Standard“, „Premium“ oder „PremiumV2“ enthalten sein. Weitere Informationen zu diesen Kosten finden Sie hier: [App Service – Preise][ASPricing] 
-* Datenübertragungskosten: Für ausgehende Daten fallen keine Gebühren an, auch wenn sich das VNET im selben Rechenzentrum befindet. Diese Kosten werden unter [Datenübertragung – Preisübersicht][DataPricing] beschrieben. 
-* Kosten für VPN Gateway: Für das VNET-Gateway, das für das Point-to-Site-VPN erforderlich ist, fallen Kosten an. Die Details finden Sie auf der Seite [VPN Gateway – Preise][VNETPricing].
+* **Gebühren laut App Service-Plantarif**: Ihre Apps müssen sich in einem der App Service-Pläne „Standard“, „Premium“ oder „PremiumV2“ befinden. Weitere Informationen zu diesen Kosten finden Sie unter [App Service-Preise][ASPricing].
+* **Datenübertragungskosten**: Es gibt eine Gebühr für ausgehende Daten, auch wenn sich das virtuelle Netzwerk im selben Rechenzentrum befindet. Diese Gebühren werden unter [Datenübertragung – Preisübersicht][DataPricing] beschrieben.
+* **Kosten für VPN Gateway**: Es gibt Kosten für das virtuelle Netzwerkgateway, das für das Point-to-Site-VPN erforderlich ist. Weitere Informationen finden Sie unter [VPN-Gateway: Preise][VNETPricing].
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
@@ -149,7 +151,7 @@ Bei der VNET-Integration, die ein Gateway erfordert, fallen drei Gebühren an:
 
 ## <a name="automation"></a>Automation
 
-Es gibt CLI-Unterstützung für die regionale VNET-Integration. Für den Zugriff auf die folgenden Befehle [installieren Sie die Azure CLI][installCLI]. 
+CLI-Unterstützung für die regionale VNet-Integration ist verfügbar. Für den Zugriff auf die folgenden Befehle [installieren Sie die Azure CLI][installCLI].
 
         az webapp vnet-integration --help
 
@@ -171,7 +173,7 @@ Es gibt CLI-Unterstützung für die regionale VNET-Integration. Für den Zugriff
         Commands:
             list : List the virtual network integrations used in an appservice plan.
 
-Für die VNET-Integration mit erforderlichem Gateway können Sie App Service mithilfe von PowerShell in ein virtuelles Azure-Netzwerk integrieren. Ein ausführungsbereites Skript finden Sie unter [Verbinden einer App in Azure App Service mit einem virtuellen Azure-Netzwerk](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3).
+Für die von einem Gateway abhängige VNet-Integration können Sie App Service mithilfe von PowerShell in ein virtuelles Azure-Netzwerk integrieren. Ein ausführungsbereites Skript finden Sie unter [Verbinden einer App in Azure App Service mit einem virtuellen Azure-Netzwerk](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3).
 
 
 <!--Image references-->

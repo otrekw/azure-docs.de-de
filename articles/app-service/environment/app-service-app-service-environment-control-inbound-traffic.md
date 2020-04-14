@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: aa43d44a691fa9151959e8817596bdfc9bba65f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 857b2b00aadced567bc8ac191cdd9908f7bea7a3
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687389"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804400"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Steuern von eingehendem Datenverkehr in eine App Service-Umgebung
 ## <a name="overview"></a>Übersicht
@@ -31,10 +31,10 @@ Bevor Sie den eingehenden Netzwerkdatenverkehr mithilfe einer Netzwerksicherheit
 
 Im Folgenden sehen Sie eine Liste der Ports, die von einer App Service-Umgebung verwendet werden. Alle Ports haben den Typ **TCP**, sofern nichts anderes angegeben ist:
 
-* 454:  **Erforderlicher Port**, der von der Azure-Infrastruktur für die Verwaltung und Wartung von App Service-Umgebungen über SSL verwendet wird.  Der Datenverkehr für diesen Port darf nicht blockiert werden.  Dieser Port ist immer an die öffentliche VIP-Adresse einer ASE gebunden.
-* 455:  **Erforderlicher Port**, der von der Azure-Infrastruktur für die Verwaltung und Wartung von App Service-Umgebungen über SSL verwendet wird.  Der Datenverkehr für diesen Port darf nicht blockiert werden.  Dieser Port ist immer an die öffentliche VIP-Adresse einer ASE gebunden.
+* 454:  **Erforderlicher Port**, der von der Azure-Infrastruktur für die Verwaltung und Wartung von App Service-Umgebungen über TLS verwendet wird.  Der Datenverkehr für diesen Port darf nicht blockiert werden.  Dieser Port ist immer an die öffentliche VIP-Adresse einer ASE gebunden.
+* 455:  **Erforderlicher Port**, der von der Azure-Infrastruktur für die Verwaltung und Wartung von App Service-Umgebungen über TLS verwendet wird.  Der Datenverkehr für diesen Port darf nicht blockiert werden.  Dieser Port ist immer an die öffentliche VIP-Adresse einer ASE gebunden.
 * 80:  Standardport für eingehenden HTTP-Datenverkehr in Apps, die in App Service-Plänen in einer App Service-Umgebung ausgeführt werden.  Dieser Port ist in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden.
-* 443: Standardport für eingehenden SSL-Datenverkehr in Apps, die in App Service-Plänen in einer App Service-Umgebung ausgeführt werden.  Dieser Port ist in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden.
+* 443: Standardport für eingehenden TLS-Datenverkehr in Apps, die in App Service-Plänen in einer App Service-Umgebung ausgeführt werden.  Dieser Port ist in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden.
 * 21:  Steuerungskanal für FTP.  Dieser Port kann sicher blockiert werden, wenn FTP nicht verwendet wird.  Dieser Port kann in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden werden.
 * 990:  Steuerungskanal für FTPS.  Dieser Port kann sicher blockiert werden, wenn FTPS nicht verwendet wird.  Dieser Port kann in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden werden.
 * 10001–10020: Datenkanäle für FTP.  Wie der Steuerungskanal können diese Ports sicher blockiert werden, wenn FTP nicht verwendet wird.  Dieser Port kann in einer für den internen Lastenausgleich geeigneten App Service-Umgebung an die Adresse der ASE für den internen Lastenausgleich gebunden werden.
@@ -62,7 +62,7 @@ Das folgende Beispiel veranschaulicht das Erstellen einer Netzwerksicherheitsgru
 
 Sobald eine Netzwerksicherheitsgruppe erstellt wurde, werden ihr eine oder mehrere Netzwerksicherheitsregeln hinzugefügt.  Da der Regelsatz sich mit der Zeit ändern kann, wird empfohlen, in dem für Regelprioritäten verwendeten Nummerierungsschema Abstände einzuräumen, damit zusätzliche Regeln leicht eingefügt werden können.
 
-Das folgende Beispiel zeigt eine Regel, die explizit Zugriff auf die Verwaltungsports gewährt, die von der Azure-Infrastruktur für die Verwaltung und Wartung einer App Service-Umgebung benötigt werden.  Beachten Sie, dass der gesamte Verwaltungsdatenverkehr über SSL verläuft und durch Clientzertifikate gesichert wird. Selbst wenn die Ports geöffnet werden, sind sie für keine Entität außer für die Azure-Verwaltungsinfrastruktur zugänglich.
+Das folgende Beispiel zeigt eine Regel, die explizit Zugriff auf die Verwaltungsports gewährt, die von der Azure-Infrastruktur für die Verwaltung und Wartung einer App Service-Umgebung benötigt werden.  Beachten Sie, dass der gesamte Verwaltungsdatenverkehr über TLS verläuft und durch Clientzertifikate gesichert wird. Selbst wenn die Ports geöffnet werden, sind sie für keine Entität außer für die Azure-Verwaltungsinfrastruktur zugänglich.
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP
 
