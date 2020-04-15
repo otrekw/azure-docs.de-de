@@ -3,12 +3,12 @@ title: 'Azure-Ressourcen: QnA Maker'
 description: In QnA Maker werden verschiedene Azure-Quellen verwendet, von denen jede einen anderen Zweck erfüllt. Wenn Sie wissen, wie sie einzeln verwendet werden, können Sie den richtigen Tarif planen und auswählen oder bestimmen, wann ein Tarifwechsel sinnvoll ist. Das Verständnis dafür, wie sie kombiniert verwendet werden, ermöglicht es Ihnen, auftretende Probleme zu finden und zu beheben.
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 8a5cc0f4889e31470514015035a92d230c40ed43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 581029d2372f7a2ef704dcf02f266b66440aa246
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284244"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873904"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Azure-Ressourcen für QnA Maker
 
@@ -50,11 +50,21 @@ Die folgende Tabelle gibt Ihnen einige allgemeine Richtlinien.
 | Entwicklungs-/Testumgebung   | Standard-SKU         | Shared      | Basic        | Veröffentlichen von bis zu 14 KB bei einer Größe von 2 GB    |
 | Produktionsumgebung | Standard-SKU         | Basic       | Standard     | Veröffentlichen von bis zu 49 KB bei einer Größe von 25 GB |
 
+## <a name="recommended-settings"></a>Empfohlene Einstellungen
+
+|Ziel-QPS | App Service | Azure Cognitive Search |
+| -------------------- | ----------- | ------------ |
+| 3             | S1, 1 Instanz   | S1, 1 Instanz    |
+| 50         | S3, 10 Instanzen       | S1, 12 Instanzen         |
+| 80         | S3, 10 Instanzen      |  S3, 12 Instanzen  |
+| 100         | P3V2, 10 Instanzen  | S3, 12 Instanzen, 3 Partitionen   |
+| 200 bis 250         | P3V2, 20 Instanzen | S3, 12 Instanzen, 3 Partitionen    |
+
 ## <a name="when-to-change-a-pricing-tier"></a>Anlässe zum Ändern eines Tarifs
 
 |Aktualisieren|`Reason`|
 |--|--|
-|[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) der QnA Maker Management-SKU|Sie möchten mehr QnA-Sätze oder Dokumentquellen in Ihre Wissensdatenbank aufnehmen.|
+|[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) der QnA Maker Management-SKU|Sie möchten mehr QnA-Paare oder Dokumentquellen in Ihre Wissensdatenbank aufnehmen.|
 |[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) der App Service-SKU, Überprüfen der Cognitive Search-Dienstebene und [Erstellen von Cognitive Search-Replikaten](../../../search/search-capacity-planning.md)|Ihre Wissensdatenbank muss mehr Anforderungen aus Ihrer Client-App verarbeiten, z.B. einen Chatbot.|
 |[Upgrade](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service) des Azure Cognitive Search-Diensts|Sie benötigen voraussichtlich eine Vielzahl von Wissensdatenbanken.|
 
@@ -95,8 +105,8 @@ Jede Azure-Ressource, die mit QnA Maker erstellt wird, hat einen bestimmten Zwec
 
 Die [Cognitive Search](../../../search/index.yml)-Ressource wird für diese Zwecke verwendet:
 
-* Speichern der QnA-Sätze
-* Angeben der anfänglichen Rangfolge (Bewerter Nr. 1) der QnA-Sätze zur Laufzeit
+* Speichern der QnA-Paare
+* Angeben der anfänglichen Rangfolge (Bewerter Nr. 1) der QnA-Paare zur Laufzeit
 
 #### <a name="index-usage"></a>Indexnutzung
 
@@ -110,7 +120,7 @@ Die erste Wissensdatenbank, die in der QnA Maker-Ressource erstellt wird, wird v
 
 ### <a name="qna-maker-resource"></a>QnA Maker-Ressource
 
-Die QnA Maker-Ressource bietet zur Laufzeit Zugriff auf die Erstellungs- und Veröffentlichungs-APIs sowie auf die zweite Bewertungsschicht (Bewerter Nr. 2) der QnA-Sätze, die auf natürlichsprachlicher Verarbeitung (Natural Language Processing, NLP) beruht.
+Die QnA Maker-Ressource bietet zur Laufzeit Zugriff auf die Erstellungs- und Veröffentlichungs-APIs sowie auf die zweite Bewertungsschicht (Bewerter Nr. 2) der QnA-Paare, die auf natürlichsprachlicher Verarbeitung (Natural Language Processing, NLP) beruht.
 
 Die zweite Bewertung wendet intelligente Filter an, die Metadaten und Folgeaufforderungen beinhalten können.
 

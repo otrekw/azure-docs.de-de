@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 1fddbe908ccebc1384dcccde0810366f1a6d5da7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 662619e101b45d1dd8b34ea97e31f214b254124a
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73796233"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521885"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Beheben von Problemen mit dem Peering virtueller Netzwerke
 
@@ -234,6 +234,15 @@ Um dieses Problem zu beheben, löschen Sie das Peering aus beiden virtuellen Net
 ### <a name="failed-to-peer-a-databricks-virtual-network"></a>Fehler beim Peering eines virtuellen Databricks-Netzwerks
 
 Um dieses Problem zu beheben, konfigurieren Sie das Peering virtueller Netzwerke unter **Azure Databricks**, und geben Sie dann das virtuelle Zielnetzwerk über die **Ressourcen-ID** an. Weitere Informationen finden Sie unter [Peer a Databricks virtual network to a remote virtual network](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2).
+
+### <a name="the-remote-virtual-network-lacks-a-gateway"></a>Dem virtuellen Remotenetzwerk fehlt ein Gateway
+
+Dieses Problem tritt auf, wenn Sie zwischen virtuellen Netzwerken von verschiedenen Mandanten Peeringverbindungen herstellen und später `Use Remote Gateways` konfigurieren möchten. Eine Einschränkung des Azure-Portals besteht darin, dass es das Vorhandensein eines virtuellen Netzwerkgateways im virtuellen Netzwerk eines anderen Mandanten nicht überprüfen kann.
+
+Es gibt zwei Möglichkeiten, dieses Problem zu beheben:
+
+ * Löschen Sie die Peerings, und aktivieren Sie die Option `Use Remote Gateways`, wenn Sie ein neues Peering erstellen.
+ * Verwenden Sie PowerShell oder die Befehlszeilenschnittstelle anstelle des Azure-Portals, um `Use Remote Gateways` zu aktivieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

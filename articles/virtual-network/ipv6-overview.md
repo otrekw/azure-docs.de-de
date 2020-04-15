@@ -1,5 +1,5 @@
 ---
-title: Übersicht über IPv6 für Azure Virtual Network (Vorschau)
+title: Übersicht über IPv6 für Azure Virtual Network
 titlesuffix: Azure Virtual Network
 description: IPv6-Beschreibung der IPv6-Endpunkte und -Datenpfade in einem virtuellen Azure-Netzwerk.
 services: virtual-network
@@ -10,24 +10,22 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 12/19/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 9214886f468a4a052328a99289845361a059b650
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 312e9db594983f85372285bdff415a2d5dc76ed3
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75780078"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984009"
 ---
-# <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Was ist IPv6 für Azure Virtual Network? (Vorschau)
+# <a name="what-is-ipv6-for-azure-virtual-network"></a>Was ist IPv6 für Azure Virtual Network?
 
 IPv6 für Azure Virtual Network (VNET) ermöglicht es Ihnen, Anwendungen in Azure mit IPv6- und IPv4-Konnektivität sowohl innerhalb eines virtuellen Netzwerks als auch für das Internet (in ein- und ausgehender Richtung) bereitzustellen. Aufgrund der Erschöpfung öffentlicher IPv4-Adressen werden neue Netzwerke für Mobilität und Internet der Dinge (IoT) häufig auf IPv6 aufgebaut. Selbst langjährig etablierte ISP- und Mobilnetzwerke werden auf IPv6 umgestellt. Reine IPv4-Dienste können sowohl in vorhandenen als auch in entstehenden Märkten einen echten Nachteil darstellen. Die Dual Stack-IPv4/IPv6-Konnektivität ermöglicht es in Azure gehosteten Diensten, diese Technologielücke mit global verfügbaren Dual Stack-Diensten zu schließen, die problemlos eine Verbindung sowohl mit den vorhandenen IPv4- als auch mit diesen neuen IPv6-Geräten und -Netzwerken herstellen können.
 
 Die ursprüngliche IPv6-Konnektivität von Azure macht es einfach, eine Dual Stack-Internetverbindung (IPv4/IPv6) für Anwendungen bereitzustellen, die in Azure gehostet werden. Sie ermöglicht eine einfache Bereitstellung von VMs mit IPv6-Konnektivität mit Lastenausgleich für eingehende und ausgehende initiierte Verbindungen. Dieses Feature ist noch verfügbar. Weitere Informationen finden Sie [hier](../load-balancer/load-balancer-ipv6-overview.md).
 IPv6 für das virtuelle Azure-Netzwerk bietet viel umfangreichere Funktionen, sodass vollständige IPv6-Lösungsarchitekturen in Azure bereitgestellt werden können.
 
-> [!Important]
-> IPv6 für Azure Virtual Network ist derzeit als öffentliche Vorschauversion verfügbar. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Die folgende Abbildung zeigt eine einfache Dual-Stack-Bereitstellung (IPv4/IPv6) in Azure:
 
@@ -59,7 +57,8 @@ IPv6 für Azure VNET beinhaltet die folgenden Funktionen:
     - Optionale Ausgangsregeln für uneingeschränkte deklarative Kontrolle über ausgehende Verbindungen, um diese Funktion nach Belieben skalieren und optimieren zu können.
     - Mehrere optionale Front-End-Konfigurationen, sodass ein einzelner Lastenausgleich mehrere öffentliche IPv6-Adressen nutzen kann. (Für verschiedene Front-End-Adressen können das gleiche Front-End-Protokoll und der gleiche Port verwendet werden.)
     - Optionale IPv6-Ports können mithilfe der Funktion *Floating IP* der Lastenausgleichsregeln in Back-End-Instanzen wiederverwendet werden. 
-- Unterstützung einer [internen IPv6-Load Balancer Standard-Instanz](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) zur Erstellung resilienter Anwendungen mit mehreren Ebenen innerhalb von Azure VNETs.  
+    - Hinweis: Der Lastenausgleich führt keine Protokollübersetzung durch (kein NAT64). 
+- Unterstützung einer [internen IPv6-Load Balancer Standard-Instanz](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) zur Erstellung resilienter Anwendungen mit mehreren Ebenen innerhalb von Azure VNETs.   
 - Unterstützung einer öffentlichen IPv6-Load Balancer Basic-Instanz für die Kompatibilität mit Legacy-Bereitstellungen
 - [Reservierte öffentliche IPv6-IP-Adressen und IPv6-Adressbereiche](ipv6-public-ip-address-prefix.md) bieten stabile vorhersagbare IPv6-Adressen, die Whitelists der in Azure gehosteten Anwendungen für Ihr Unternehmen und Ihre Kunden vereinfachen.
 - Eine öffentliche IP-Adresse auf Instanzebene ermöglicht direkte IPv6-Internetkonnektivität für einzelne virtuelle Computer.
@@ -74,8 +73,9 @@ IPv6 für Azure VNET ist eine grundlegende Gruppe von Funktionen, über die Kund
 
 ## <a name="limitations"></a>Einschränkungen
 Das aktuelle Release von IPv6 für Azure Virtual Network weist die folgenden Einschränkungen auf:
-- IPv6 für Azure Virtual Network (Vorschau) ist in allen globalen Azure-Regionen verfügbar, aber nur in globalem Azure, noch nicht in den Government Clouds.
-- ExpressRoute- und VPN-Gateways können in einem VNET mit aktiviertem IPv6 weder direkt noch durch Peering mit „UseRemoteGateway“ verwendet werden. 
+- IPv6 für Azure Virtual Network ist in allen globalen Azure Commercial-Regionen unter Verwendung aller Bereitstellungsmethoden verfügbar.  Die Bereitstellung in der US-Government Cloud ist vorübergehend auf ARM-Vorlage (JSON), Befehlszeilenschnittstelle (CLI) und PowerShell beschränkt.  Die IPv6-Unterstützung im Portal der US-Government Cloud wird in Kürze verfügbar sein.  
+- ExpressRoute-Gateways können für reinen IPv4-Datenverkehr in einem VNET mit aktiviertem IPv6 verwendet werden.  Die Unterstützung des IPv6-Datenverkehrs befindet sich in Planung.   
+- VPN-Gateways können in einem VNET mit aktiviertem IPv6 WEDER direkt noch durch Peering mit „UseRemoteGateway“ verwendet werden.
 - Die Azure-Plattform (AKS usw.) unterstützt die IPv6-Kommunikation für Container nicht.  
 
 ## <a name="pricing"></a>Preise

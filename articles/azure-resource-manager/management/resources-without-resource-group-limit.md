@@ -2,13 +2,13 @@
 title: Ressourcen ohne Beschränkung auf 800 Instanzen
 description: Aufstellung der Azure-Ressourcentypen, die mehr als 800 Instanzen in einer Ressourcengruppe aufweisen können.
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 735cad0bfa936c41f603e42bdb9be77a1562cc1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 8644bec1a68acebff18cf83d17acb014784dc964
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76937950"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804774"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Ressourcen ohne Beschränkung auf 800 Instanzen pro Ressourcengruppe
 
@@ -26,7 +26,6 @@ Für einige Ressourcentypen müssen Sie sich an den Support wenden, damit die Be
 * registrations
 * registrations/customerSubscriptions
 * registrations/products
-* verificationKeys
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
@@ -35,6 +34,9 @@ Für einige Ressourcentypen müssen Sie sich an den Support wenden, damit die Be
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 * disks
+* galleries
+* galleries/images
+* galleries/images/versions
 * images
 * snapshots
 * virtualMachines
@@ -67,6 +69,11 @@ Für einige Ressourcentypen müssen Sie sich an den Support wenden, damit die Be
 * serverGroups
 * servers
 * serversv2
+* singleServers
+
+## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
+
+* schedules: Standardmäßig auf 800 Instanzen beschränkt. Dieser Grenzwert kann bei Kontaktaufnahme mit dem Support erhöht werden.
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
@@ -90,7 +97,7 @@ Für einige Ressourcentypen müssen Sie sich an den Support wenden, damit die Be
 * softwareUpdateProfile
 * softwareUpdates
 
-## <a name="microsoftinsights"></a>Microsoft.Insights
+## <a name="microsoftinsights"></a>microsoft.insights
 
 * metricalerts
 

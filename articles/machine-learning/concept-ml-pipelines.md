@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 11/06/2019
-ms.openlocfilehash: da45c0db027dffc89bd058b70331a4bd6d093b08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 0cefa78b6f52cc67df8817f68a9b793ab86b2a7f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336955"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878577"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Beschreibung von Azure Machine Learning-Pipelines
 
@@ -64,7 +64,7 @@ Mit Azure Machine Learning können Sie verschiedene Toolkits und Frameworks wie 
 
 Für das [Nachverfolgen der Metriken für Ihre Pipelineexperimente](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments) haben Sie zwei Möglichkeiten: Nachverfolgung direkt im Azure-Portal oder über die [Landing Page Ihres Arbeitsbereichs (Vorschau)](https://ml.azure.com). Nach dem Veröffentlichen einer Pipeline können Sie einen REST-Endpunkt konfigurieren, mit dem Sie die Pipeline über eine beliebige Plattform bzw. einen beliebigen Stapel erneut ausführen können.
 
-Kurz gesagt können alle komplexen Aufgaben des Machine Learning-Lebenszyklus mithilfe von Pipelines unterstützt werden. Andere Azure-Pipelinetechnologien weisen eigene Stärken auf, beispielsweise [Azure Data Factory-Pipelines](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) für das Arbeiten mit Daten und [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) für Continuous Integration und Deployment. Wenn Ihr Schwerpunkt jedoch auf Machine Learning liegt, sind Azure Machine Learning-Pipelines wahrscheinlich die beste Wahl für Ihre Workflowanforderungen. 
+Kurz gesagt können alle komplexen Aufgaben des Machine Learning-Lebenszyklus mithilfe von Pipelines unterstützt werden. Andere Azure-Pipelinetechnologien weisen ihre eigenen Stärken auf. [Azure Data Factory-Pipelines](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) zeichnen sich durch die Arbeit mit Daten aus und [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) ist das richtige Tool für Continuous Integration und Continuous Deployment. Wenn Ihr Schwerpunkt jedoch auf Machine Learning liegt, sind Azure Machine Learning-Pipelines wahrscheinlich die beste Wahl für Ihre Workflowanforderungen. 
 
 ## <a name="what-are-azure-ml-pipelines"></a>Beschreibung von Azure ML-Pipelines
 
@@ -126,7 +126,7 @@ Wenn Sie Pipelines visuell entwerfen, werden die Eingaben und Ausgaben eines Sch
 
 Die Schritte in einer Pipeline weisen möglicherweise Abhängigkeiten von anderen Schritten auf. Der Azure ML-Pipelinedienst übernimmt die Arbeit, diese Abhängigkeiten zu orchestrieren und zu analysieren. Die Knoten im resultierenden „Ausführungsdiagramm“ stellen Verarbeitungsschritte dar. Jeder Schritt kann das Erstellen oder Wiederverwenden einer bestimmten Kombination aus Hardware und Software, die Wiederverwendung zwischengespeicherter Ergebnisse usw. beinhalten. Die Orchestrierung und Optimierung dieses Ausführungsdiagramms kann eine ML-Phase erheblich beschleunigen und die Kosten verringern. 
 
-Da die Schritte unabhängig ausgeführt werden, müssen die Objekte zur Aufnahme der Eingabe- und Ausgabedaten, die zwischen den verschiedenen Schritten fließen, extern definiert werden. Dies ist die Rolle von [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) und der zugeordneten Klassen. Diese Datenobjekte sind mit einem [Datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py)-Objekt verknüpft, in dem ihre Speicherkonfiguration verkapselt ist. Die `PipelineStep`-Basisklasse wird immer mit einer `name`-Zeichenfolge, einer Liste von `inputs` und einer Liste von `outputs` erstellt. Normalerweise ist außerdem eine Liste `arguments` von und häufig auch eine Liste von `resource_inputs` vorhanden. Unterklassen verfügen in der Regel ebenfalls über zusätzliche Argumente (beispielsweise erfordert `PythonScriptStep`den Dateinamen und Pfad des auszuführenden Skripts). 
+Da die Schritte unabhängig ausgeführt werden, müssen die Objekte zur Aufnahme der Eingabe- und Ausgabedaten, die zwischen den verschiedenen Schritten fließen, extern definiert werden. Dies ist die Rolle von [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)- und [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)-Objekten. Diese Datenobjekte sind mit einem [Datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py)-Objekt verknüpft, in dem ihre Speicherkonfiguration verkapselt ist. Die `PipelineStep`-Basisklasse wird immer mit einer `name`-Zeichenfolge, einer Liste von `inputs` und einer Liste von `outputs` erstellt. Normalerweise ist außerdem eine Liste `arguments` von und häufig auch eine Liste von `resource_inputs` vorhanden. Unterklassen verfügen in der Regel ebenfalls über zusätzliche Argumente (beispielsweise erfordert `PythonScriptStep`den Dateinamen und Pfad des auszuführenden Skripts). 
 
 Das Ausführungsdiagramm ist azyklisch, Pipelines können aber planmäßig wiederholt werden und sind imstande, Python-Skripts ausführen, die Statusinformationen in das Dateisystem schreiben können, wodurch die Erstellung komplexer Profile möglich wird. Wenn Sie Ihre Pipeline so entwerfen, dass bestimmte Schritte parallel oder asynchron ausgeführt werden können, verarbeitet Azure Machine Learning die Abhängigkeitsanalyse und die Koordination von Auffächern und Zusammenführen (Fan-out, Fan-in) transparent. Im Allgemeinen brauchen Sie sich nicht mit den Details des Ausführungsdiagramms zu befassen, sie können aber über das [Pipeline.Graph](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?view=azure-ml-py#attributes) Attribut abgerufen werden. 
 
@@ -141,19 +141,16 @@ blob_store = Datastore(ws, "workspaceblobstore")
 compute_target = ws.compute_targets["STANDARD_NC6"]
 experiment = Experiment(ws, 'MyExperiment') 
 
-input_data = DataReference(
-    datastore=Datastore(ws, blob_store),
-    data_reference_name="test_data",
-    path_on_datastore="20newsgroups/20news.pkl")
+input_data = Dataset.File.from_files(
+    DataPath(datastore, '20newsgroups/20news.pkl'))
 
-output_data = PipelineData(
-    "output_data",
-    datastore=blob_store,
-    output_name="output_data1")
+output_data = PipelineData("output_data", datastore=blob_store)
+
+input_named = input_data.as_named_input('input')
 
 steps = [ PythonScriptStep(
     script_name="train.py",
-    arguments=["--input", input_data, "--output", output_data],
+    arguments=["--input", input_named.as_download(), "--output", output_data],
     inputs=[input_data],
     outputs=[output_data],
     compute_target=compute_target,
@@ -168,7 +165,7 @@ pipeline_run.wait_for_completion()
 
 Dieser Codeausschnitt beginnt mit gebräuchlichen Azure Machine Learning-Objekten, einem `Workspace`, einem `Datastore`, einem [ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py) und einem `Experiment`. Anschließend erstellt der Code die Objekte, die `input_data` und `output_data` aufnehmen. Das Array `steps` enthält ein einzelnen Element, ein `PythonScriptStep`, das die Datenobjekte verwendet und auf dem `compute_target` ausgeführt wird. Anschließend instanziiert der Code das eigentliche `Pipeline`-Objekt und übergibt den Workspace und das Array der Schritte. Mit dem Aufruf von `experiment.submit(pipeline)` beginnt die Ausführung der Azure ML-Pipeline. Der Aufruf von `wait_for_completion()` wird dann bis zum Abschluss der Pipeline gesperrt. 
 
-Weitere Informationen zum Verbinden Ihrer Pipeline mit Ihren Daten finden Sie in den Artikeln [Zugreifen auf Daten](how-to-access-data.md) und [Registrieren von Datasets](how-to-create-register-datasets.md). 
+Weitere Informationen zum Verbinden Ihrer Pipeline mit Ihren Daten finden Sie in den Artikeln [Datenzugriff in Azure Machine Learning](concept-data.md) und [Verschieben von Daten in ML-Pipelineschritte und zwischen ML-Pipelineschritten (Python)](how-to-move-data-in-out-of-pipelines.md). 
 
 ## <a name="best-practices-when-using-pipelines"></a>Bewährte Methoden bei der Verwendung von Pipelines
 
@@ -209,7 +206,7 @@ Die wichtigsten Argumente für das Verwenden von Pipelines für Ihre Workflows m
 
 `PythonScriptStep` ist die flexibelste Unterklasse des abstrakten `PipelineStep`. Andere Unterklassen, z. B. `EstimatorStep`-Unterklassen und `DataTransferStep`, können bestimmte Aufgaben mit weniger Code durchführen. So kann z. B. ein `EstimatorStep` durch einfache Eingabe eines Namens für den Schritt, eines `Estimator` und eines Computeziels erstellt werden. Oder Sie können Ein- und Ausgaben, Pipelineparameter und Argumente außer Kraft setzen. Weitere Informationen finden Sie unter [Trainieren von Azure Machine Learning-Modellen mit einem Estimator](how-to-train-ml-models.md). 
 
-Der `DataTransferStep` gestaltet das Verschieben von Daten zwischen Datenquellen und -senken einfach. Der Code, um dies manuell durchzuführen, ist unkompliziert, aber redundant. Stattdessen können Sie einfach ein `DataTransferStep` mit einem Namen, Verweisen auf eine Datenquelle und eine Datensenke sowie ein Computeziel erstellen. Diese Flexibilität wird durch das Notebook [Azure Machine Learning-Pipeline mit DataTransferStep](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb) veranschaulicht.
+Der `DataTransferStep` gestaltet das Verschieben von Daten zwischen Datenquellen und -senken einfach. Der Code, um diese Übertragung manuell durchzuführen, ist unkompliziert, aber redundant. Stattdessen können Sie einfach ein `DataTransferStep` mit einem Namen, Verweisen auf eine Datenquelle und eine Datensenke sowie ein Computeziel erstellen. Diese Flexibilität wird durch das Notebook [Azure Machine Learning-Pipeline mit DataTransferStep](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb) veranschaulicht.
 
 ## <a name="modules"></a>Module
 

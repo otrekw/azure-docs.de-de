@@ -4,7 +4,6 @@ description: In diesem Artikel erfahren Sie, wie Sie eine Anwendung, die einmali
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: azuread-dev
 ms.topic: conceptual
@@ -12,13 +11,14 @@ ms.workload: identity
 ms.date: 12/06/2019
 ms.author: ryanwi
 ms.reviewer: jeedes
-ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: 99c7d7fccf674fe8cda9d1f64cdf303f1e7764fd
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.custom: aaddev
+ROBOTS: NOINDEX
+ms.openlocfilehash: fbdae8b8506731f13ff08e877ea8eedb6d57fa78
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77163611"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666937"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Auflisten Ihrer Anwendung zum Azure Active Directory-Anwendungskatalog
 
@@ -49,9 +49,9 @@ Sie können ein kostenloses Testkonto mit allen Premium-Features von Azure AD er
 
 ## <a name="submit-the-request-in-the-portal"></a>Übermitteln der Anforderung im Portal
 
-Nachdem Sie mit einem Test sichergestellt haben, dass die Integration Ihrer Anwendung in Azure AD funktioniert, senden Sie Ihre Anforderung für den Zugriff auf das [Anwendungsnetzwerkportal](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Wenn Sie über ein Office 365-Konto verfügen, verwenden Sie dieses für die Anmeldung bei diesem Portal. Verwenden Sie andernfalls Ihr Microsoft-Konto (z. B. Outlook oder Hotmail) für die Anmeldung.
+Nachdem Sie mit einem Test sichergestellt haben, dass die Integration Ihrer Anwendung in Azure AD funktioniert, senden Sie Ihre Anwendungsanforderung im [Microsoft-Anwendungsnetzwerkportal](https://microsoft.sharepoint.com/teams/apponboarding/Apps).
 
-Wenn nach der Anmeldung die folgende Seite angezeigt wird, wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Geben Sie das E-Mail-Konto an, das Sie zum Senden der Anforderung verwenden möchten. Das Azure AD-Team fügt das Konto dann im Microsoft-Anwendungsnetzwerkportal hinzu.
+Wenn nach der Anmeldung die folgende Seite angezeigt wird, wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Geben Sie das E-Mail-Konto an, das Sie zum Senden der Anforderung verwenden möchten. Es empfiehlt sich, eine geschäftliche E-Mail-Adresse wie [name@yourbusiness.com](mailto:name@yourbusiness.com) zu verwenden. Das Azure AD-Team fügt das Konto dann im Microsoft-Anwendungsnetzwerkportal hinzu.
 
 ![Zugriffsanforderungsmeldung im SharePoint-Portal](./media/howto-app-gallery-listing/errorimage.png)
 
@@ -83,7 +83,7 @@ Der Gastbenutzer befindet sich in einem Verbund mit einem Basismandanten, der eb
 
 * Gastbenutzer bitten ihre Administratoren, das Risiko zu korrigieren. In diesem Fall führt der Administrator eine Kennwortzurücksetzung aus (temporäre Kennwortgenerierung). Dies erfordert keinen Identitätsschutz. Der Administrator des Gastbenutzers kann zu https://aka.ms/RiskyUsers navigieren und auf „Kennwort zurücksetzen“ klicken.
 
-* Gastbenutzer bitten ihre Administratoren, das Risiko zu schließen bzw. zu verwerfen. Auch dies erfordert keinen Identitätsschutz. Der Administrator kann zu https://aka.ms/RiskyUsers navigieren und dann auf „Benutzerrisiko verwerfen“ klicken. Administratoren müssen jedoch die erforderliche Sorgfalt walten lassen, um sicherzustellen, dass es sich um eine falsch positive Risikobewertung handelt, bevor sie das Benutzerrisiko schließen. Andernfalls setzen sie ihre und die Ressourcen von Microsoft aufs Spiel, indem sie eine Risikobewertung ohne Untersuchung unterdrücken.
+* Gastbenutzer bitten ihre Administratoren, das Risiko zu schließen bzw. zu verwerfen. Auch dies erfordert keinen Identitätsschutz. Der Administrator kann zu https://aka.ms/RiskyUsers navigieren und dann auf „Benutzerrisiko verwerfen“ klicken. Administratoren müssen jedoch die erforderliche Sorgfalt walten lassen, um sicherzustellen, dass es sich um eine falsch positive Risikobewertung handelt, bevor sie das Benutzerrisiko schließen. Andernfalls setzen sie ihre Ressourcen und die von Microsoft aufs Spiel, indem sie eine Risikobewertung ohne Untersuchung unterdrücken.
 
 > [!NOTE]
 > Wenn Sie Probleme beim Zugriff haben, wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).

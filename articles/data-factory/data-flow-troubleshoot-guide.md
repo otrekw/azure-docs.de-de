@@ -7,13 +7,13 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 02/04/2020
-ms.openlocfilehash: e2e1ddd031041f49107545cd0b3d3de4eaebcd6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: a5244086c185c111762496086f8044f12f52be14
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77472127"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632592"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Problembehandlung für Datenflüsse in Azure Data Factory
 
@@ -55,6 +55,18 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Datenflü
 - **Meldung**: Column name needs to be specified in the query, set an alias if using a SQL function (Spaltenname muss in der Abfrage angegeben werden. Legen Sie einen Alias fest, wenn Sie eine SQL-Funktion verwenden.)
 - **Ursachen**: Es wurde kein Spaltenname angegeben.
 - **Empfehlung**: Legen Sie einen Alias fest, wenn Sie SQL-Funktionen wie min()/max() etc. verwenden.
+
+### <a name="error-code-getcommand-outputasync-failed"></a>Fehlercode: GetCommand OutputAsync failed (Fehler bei GetCommand OutputAsync)
+
+- **Meldung**: During Data Flow debug and data preview: GetCommand OutputAsync failed (Beim Debuggen des Datenflusses und Anzeigen von Daten in der Vorschau: Fehler bei GetCommand OutputAsync mit ...)
+- **Ursachen**: Dies ist ein Fehler beim Back-End-Dienst. Sie können den Vorgang wiederholen und auch die Debugsitzung neu starten.
+- **Empfehlung**: Wenn das Problem durch Wiederholung und Neustart nicht behoben werden kann, wenden Sie sich an den Kundensupport.
+
+### <a name="error-code-hit-unexpected-exception-and-execution-failed"></a>Fehlercode: Unerwartete Ausnahme, Fehler bei der Ausführung
+
+- **Meldung**: Während der Ausführung der Datenflussaktivität: Unerwartete Ausnahme, Fehler bei der Ausführung.
+- **Ursachen**: Dies ist ein Fehler beim Back-End-Dienst. Sie können den Vorgang wiederholen und auch die Debugsitzung neu starten.
+- **Empfehlung**: Wenn das Problem durch Wiederholung und Neustart nicht behoben werden kann, wenden Sie sich an den Kundensupport.
 
 ## <a name="general-troubleshooting-guidance"></a>Allgemeine Anleitungen zur Problembehandlung
 

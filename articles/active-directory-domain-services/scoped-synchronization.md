@@ -8,15 +8,15 @@ ms.assetid: 9389cf0f-0036-4b17-95da-80838edd2225
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: article
-ms.date: 11/26/2019
+ms.topic: how-to
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: cc126af67a0d8627d61e595cee56f3df8973340d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ef7e14cc2a290cc5583e3e599e278f98882152c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613045"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654736"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Konfigurieren der bereichsbezogenen Synchronisierung von Azure AD für Azure Active Directory Domain Services
 
@@ -40,20 +40,22 @@ Aus der folgenden Tabelle geht hervor, wie Sie die bereichsbezogene Synchronisie
 
 Zum Konfigurieren der Einstellungen für die bereichsbezogene Synchronisierung verwenden Sie das Azure-Portal oder PowerShell:
 
-| Action | | |
+| Aktion | | |
 |--|--|--|
 | Erstellen einer verwalteten Azure AD DS-Domäne und Konfigurieren der bereichsbezogenen Synchronisierung | [Azure portal](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
 | Ändern der bereichsbezogenen Synchronisierung | [Azure portal](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
 | Deaktivieren der bereichsbezogenen Synchronisierung | [Azure portal](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
 
 > [!WARNING]
-> Wenn Sie den Bereich der Synchronisierung ändern, werden zwangsläufig alle Daten von der verwalteten Azure AD DS-Domäne neu synchronisiert.
+> Wenn Sie den Bereich der Synchronisierung ändern, werden zwangsläufig alle Daten von der verwalteten Azure AD DS-Domäne neu synchronisiert. Es gelten die folgenden Bedingungen:
 > 
 >  * Wenn Sie den Synchronisierungsbereich für eine verwaltete Azure AD DS-Domäne ändern, erfolgt eine vollständige Neusynchronisierung.
 >  * Objekte, die in der verwalteten Azure AD DS-Domäne nicht mehr erforderlich sind, werden gelöscht. Neue Objekte werden in der verwalteten Domäne erstellt.
 >  * Diese Neusynchronisierung dauert möglicherweise etwas länger. Die Synchronisierungszeit hängt von der Anzahl der Objekte (Benutzer, Gruppen und Gruppenmitgliedschaften) in der verwalteten Azure AD DS-Domäne und im Azure AD-Verzeichnis ab. Bei großen Verzeichnissen mit Hunderten oder Tausenden von Objekten kann die Neusynchronisierung einige Tage dauern.
 
 ## <a name="enable-scoped-synchronization-using-the-azure-portal"></a>Aktivieren der bereichsbezogenen Synchronisierung im Azure-Portal
+
+Führen Sie die folgenden Schritte aus, um die bereichsbezogene Synchronisierung im Azure-Portal zu aktualisieren:
 
 1. Führen Sie die Anweisungen im [Tutorial zum Erstellen und Konfigurieren einer Azure AD DS-Instanz](tutorial-create-instance-advanced.md) aus. Sorgen Sie dafür, dass Sie bis auf die Angabe des Synchronisierungsbereichs alle Voraussetzungen erfüllt und die Bereitstellungsschritte ausgeführt haben.
 1. Wählen Sie beim Synchronisierungsschritt **Bereichsbezogen** aus, und legen Sie dann die Azure AD-Gruppen fest, die mit der Azure AD DS-Instanz synchronisiert werden sollen.
@@ -173,7 +175,7 @@ Write-Output "******************************************************************
 
 ## <a name="enable-scoped-synchronization-using-powershell"></a>Aktivieren der bereichsbezogenen Synchronisierung mit PowerShell
 
-Verwenden Sie PowerShell, um diese Schritte auszuführen. Lesen Sie die Anweisungen zum [Aktivieren von Azure Active Directory Domain Services mithilfe von PowerShell](powershell-create-instance.md). Einige Schritte in diesem Artikel wurden leicht geändert, um die bereichsbezogene Synchronisierung zu konfigurieren.
+Verwenden Sie PowerShell, um die folgenden Schritte auszuführen. Lesen Sie die Anweisungen zum [Aktivieren von Azure Active Directory Domain Services mithilfe von PowerShell](powershell-create-instance.md). Einige Schritte in diesem Artikel wurden leicht geändert, um die bereichsbezogene Synchronisierung zu konfigurieren.
 
 1. Führen Sie die folgenden Aufgaben aus dem Artikel aus, um Azure AD DS mithilfe von PowerShell zu aktivieren. Halten Sie bei dem Schritt an, mit dem die eigentliche verwaltete Domäne erstellt wird. Die bereichsbezogene Synchronisierung wird beim Erstellen der verwalteten Azure AD DS-Domäne konfiguriert.
 

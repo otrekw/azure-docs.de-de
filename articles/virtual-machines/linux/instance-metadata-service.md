@@ -8,15 +8,15 @@ ms.service: virtual-machines-linux
 ms.subservice: monitoring
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 3281b4dafa5436c9df760ac8aa3fc82f535b4286
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0971b542065972a8f150083245e4ed31e42e2c67
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944864"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521626"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
 
@@ -315,7 +315,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
 
 Die folgenden APIs stehen über den Metadatenendpunkt zur Verfügung:
 
-Data | BESCHREIBUNG | Eingeführt in Version
+Daten | BESCHREIBUNG | Eingeführt in Version
 -----|-------------|-----------------------
 attested | Siehe [Bestätigte Daten](#attested-data) | 2018-10-01
 identity | Verwaltete Identitäten für Azure-Ressourcen. Siehe [Abrufen eines Zugriffstokens](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
@@ -329,7 +329,7 @@ Die folgenden Computekategorien werden über die Instanz-API zur Verfügung gest
 > [!NOTE]
 > Über den Metadatenendpunkt sind die folgenden Kategorien über „Instanz/Compute“ zugänglich.
 
-Data | BESCHREIBUNG | Eingeführt in Version
+Daten | BESCHREIBUNG | Eingeführt in Version
 -----|-------------|-----------------------
 azEnvironment | Azure-Umgebung, in der die VM ausgeführt wird | 2018-10-01
 customData | Diese Funktion ist zurzeit deaktiviert. Diese Dokumentation wird aktualisiert, wenn die Funktion verfügbar wird. | 2019-02-01
@@ -362,7 +362,7 @@ Die folgenden Netzwerkkategorien werden über die Instanz-API zur Verfügung ges
 > [!NOTE]
 > Über den Metadatenendpunkt sind die folgenden Kategorien über „Instanz/Netzwerk/Schnittstelle“ zugänglich.
 
-Data | BESCHREIBUNG | Eingeführt in Version
+Daten | BESCHREIBUNG | Eingeführt in Version
 -----|-------------|-----------------------
 ipv4/privateIpAddress | Lokale IPv4-Adresse der VM | 2017-04-02
 ipv4/publicIpAddress | Öffentliche IPv4-Adresse der VM | 2017-04-02
@@ -653,7 +653,7 @@ Verification successful
 }
 ```
 
-Data | BESCHREIBUNG
+Daten | BESCHREIBUNG
 -----|------------
 nonce | Vom Benutzer bereitgestellte optionale Zeichenfolge mit der Anforderung. Wenn in der Anforderung keine Nonce angegeben wurde, wird der aktuelle UTC-Zeitstempel zurückgegeben.
 Tarif | Der [Plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) für einen virtuellen Computer im entsprechenden Azure Marketplace-Image, enthält Name, Produkt und Herausgeber
@@ -689,11 +689,15 @@ openssl x509 -noout -issuer -in signer.pem
 openssl x509 -noout -subject -in intermediate.pem
 # Verify the issuer for the intermediate certificate
 openssl x509 -noout -issuer -in intermediate.pem
-# Verify the certificate chain
+# Verify the certificate chain, for Azure China 21Vianet the intermediate certificate will be from DigiCert Global Root CA
 openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -untrusted intermediate.pem signer.pem
 ```
 
 Falls das Zwischenzertifikat bei der Überprüfung aufgrund von Netzwerkeinschränkungen nicht heruntergeladen werden kann, können Sie das Zwischenzertifikat anheften. Azure übergibt die Zertifikate jedoch beim Rollover gemäß der Standard-PKI-Methode. Die angehefteten Zertifikate müssen bei einem Rollover aktualisiert werden. Wenn eine Änderung geplant ist, bei der das Zwischenzertifikat aktualisiert werden muss, wird der Azure-Blog auf den neuesten Stand gebracht, und Azure-Kunden werden benachrichtigt. Die Zwischenzertifikate sind [hier](https://www.microsoft.com/pki/mscorp/cps/default.htm) zu finden. Die Zwischenzertifikate können sich für die einzelnen Regionen unterscheiden.
+
+> [!NOTE]
+>Das Zwischenzertifikat für Azure China 21ViaNet wird von DigiCert Global Root CA anstelle von Baltimore verwendet.
+Wenn Sie im Rahmen der Änderung der Stammzertifizierungsstelle Zwischenzertifikate für Azure China angeheftet haben, müssen zudem die Zwischenzertifikate aktualisiert werden.
 
 ### <a name="storage-profile"></a>Speicherprofil
 
@@ -703,7 +707,7 @@ Das Speicherprofil eines virtuellen Computers ist in drei Kategorien unterteilt:
 
 Das Imagereferenzobjekt enthält die folgenden Informationen zum Betriebssystemimage:
 
-Data    | BESCHREIBUNG
+Daten    | BESCHREIBUNG
 --------|-----------------
 id      | Ressourcen-ID
 offer   | Angebot des Plattform- oder Marketplace-Images
@@ -713,7 +717,7 @@ version | Version des Plattform- oder Marketplace-Images
 
 Das Betriebssystemdatenträgerobjekt enthält die folgenden Informationen zum Betriebssystemdatenträger, der vom virtuellen Computer verwendet wird:
 
-Data    | BESCHREIBUNG
+Daten    | BESCHREIBUNG
 --------|-----------------
 caching | Cachinganforderungen
 createOption | Informationen zur Erstellung des virtuellen Computers
@@ -728,7 +732,7 @@ writeAcceleratorEnabled | Gibt an, ob writeAccelerator für den Datenträger akt
 
 Das Datenträgerarray für Daten enthält eine Liste der Datenträger für Daten, die an den virtuellen Computer angefügt sind. Jedes Datenträgerobjekt enthält die folgenden Informationen:
 
-Data    | BESCHREIBUNG
+Daten    | BESCHREIBUNG
 --------|-----------------
 caching | Cachinganforderungen
 createOption | Informationen zur Erstellung des virtuellen Computers

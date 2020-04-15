@@ -1,59 +1,69 @@
 ---
-title: Funktionsweise von Azure MFA – Azure Active Directory
-description: Azure Multi-Factor Authentication hilft beim Schutz des Zugriffs auf Daten und Anwendungen und erfüllt gleichzeitig die Anforderungen von Benutzern an ein einfaches Anmeldeverfahren.
+title: Azure Multi-Factor Authentication – Übersicht
+description: Erfahren Sie, wie Azure Multi-Factor Authentication zum Schutz des Zugriffs auf Daten und Anwendungen beiträgt und gleichzeitig ein einfaches Anmeldeverfahren für Benutzer bietet.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 04/03/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39948214f5bd080be417ed515bea6bff87d3b303
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c50232abd12c8c0390409bd7bf72833b4f153e02
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77484059"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667361"
 ---
-# <a name="how-it-works-azure-multi-factor-authentication"></a>Funktionsweise: Azure Multi-Factor Authentication
+# <a name="how-it-works-azure-multi-factor-authentication"></a>So funktioniert's: Azure Multi-Factor Authentication
 
-Die Sicherheit der zweistufigen Überprüfung liegt im Ebenenansatz. Die Faktoren der mehrfachen Authentifizierung zu überwinden stellt eine große Herausforderung für Angreifer dar. Selbst wenn ein Angreifer das Kennwort des Benutzers herausfinden kann, ist dies nutzlos, wenn er nicht auch die zusätzliche Authentifizierungsmethode beherrscht. Dies funktioniert durch das Anfordern von mindestens zwei der folgenden Authentifizierungsmethoden:
+Multi-Factor Authentication (mehrstufige Authentifizierung) ist ein Prozess, bei dem Benutzer während des Anmeldevorgangs zur Durchführung eines weiteren Identifizierungsverfahrens aufgefordert werden, z. B. per Eingabe eines Codes auf dem Smartphone oder per Fingerabdruckscan.
 
-* Etwas, das Sie wissen (normalerweise ein Kennwort)
-* Etwas, das Sie haben (ein vertrautes Gerät, das nicht leicht dupliziert werden kann, wie ein Telefon)
-* Etwas, das Sie sind (biometrisch)
+Wenn Sie zum Authentifizieren von Benutzern nur ein Kennwort nutzen, kann dies einen Angriffsvektor darstellen und mit Unsicherheit verbunden sein. Falls das Kennwort nicht sicher ist oder offengelegt wurde, können Sie nicht sicher sein, ob es wirklich der Benutzer ist, der sich mit dem Benutzernamen und dem Kennwort anmeldet, oder ein Angreifer. Wenn Sie ein zweites Authentifizierungsverfahren erzwingen, wird die Sicherheit erhöht, weil dieses zusätzliche Verfahren von einem Angreifer nicht ohne Weiteres nachvollzogen bzw. dupliziert werden kann.
 
-<center>
+![Abbildung zum Konzept der unterschiedlichen Arten von mehrstufiger Authentifizierung](./media/concept-mfa-howitworks/methods.png)
 
-![Bild konzeptioneller Authentifizierungsmethoden](./media/concept-mfa-howitworks/methods.png)</center>
+Für Azure Multi-Factor Authentication sind mindestens zwei der folgenden Authentifizierungsverfahren obligatorisch:
 
-Azure Multi-Factor Authentication (MFA) trägt zum Schutz des Zugriffs auf Daten und Anwendungen bei und ist dabei für den Benutzer unkompliziert. Indem eine zweite Form der Authentifizierung verlangt wird, bietet das Verfahren zusätzliche Sicherheit und eine zuverlässige Authentifizierung über verschiedene einfache [Authentifizierungsmethoden](concept-authentication-methods.md). Benutzer können auf der Grundlage von Konfigurationsentscheidungen, die ein Administrator trifft, zur MFA aufgefordert werden oder auch nicht.
+* Eine dem Benutzer bekannte Information (meist ein Kennwort).
+* Ein im Besitz des Benutzers befindliches Objekt, z. B. ein vertrauenswürdiges Gerät, das nicht ohne Weiteres dupliziert werden kann (Telefon oder Hardwareschlüssel).
+* Ein biometrisches Merkmal des Benutzers (Fingerabdruck- oder Gesichtsscan).
 
-## <a name="how-to-get-multi-factor-authentication"></a>Beziehen von Multi-Factor Authentication
+Um das Onboarding zu vereinfachen, können sich Benutzer mit nur einem Schritt sowohl für die Self-Service-Kennwortzurücksetzung als auch für Azure Multi-Factor Authentication registrieren. Administratoren können definieren, welche Verfahren für die sekundäre Authentifizierung genutzt werden können. Azure Multi-Factor Authentication kann auch erzwungen werden, wenn Benutzer eine Self-Service-Kennwortzurücksetzung durchführen, um diesen Prozess noch sicherer zu machen.
 
-Multi-Factor Authentication ist Teil der folgenden Angebote:
+![Verwendete Authentifizierungsmethoden auf dem Anmeldebildschirm](media/concept-authentication-methods/overview-login.png)
 
-* **Azure Active Directory Premium** oder **Microsoft 365 Business** – Nutzung der Azure Multi-Factor Authentication in vollem Umfang, einschließlich Richtlinien für bedingten Zugriff, die die Multi-Factor Authentication erforderlich machen.
+Azure Multi-Factor Authentication trägt zum Schutz des Zugriffs auf Daten und Anwendungen bei und ist dabei für den Benutzer unkompliziert. Indem eine zweite Form der Authentifizierung verlangt wird, bietet das Verfahren zusätzliche Sicherheit und eine zuverlässige Authentifizierung über verschiedene einfache [Authentifizierungsmethoden](concept-authentication-methods.md). Benutzer können auf der Grundlage von Konfigurationsentscheidungen, die ein Administrator trifft, zur MFA aufgefordert werden oder auch nicht.
 
-* **Azure AD Free**- oder eigenständige **Office 365**-Lizenzen: Verwenden Sie [Sicherheitsstandards](../fundamentals/concept-fundamentals-security-defaults.md), die die mehrstufige Authentifizierung für Benutzer und Administratoren erforderlich machen.
+Ihre Anwendungen oder Dienste erfordern keine Änderungen, um Azure Multi-Factor Authentication zu verwenden. Die Überprüfungsaufforderungen sind Teil der Azure AD-Anmeldung, bei der die MFA-Abfrage ggf. automatisch angefordert und verarbeitet wird.
 
-* **Azure Active Directory – Globale Administratoren**: Eine Teilmenge der Azure Multi-Factor Authentication-Funktionen ist als Mittel zum Schutz globaler Administratorkonten verfügbar.
+## <a name="available-verification-methods"></a>Verfügbare Überprüfungsmethoden
 
-> [!NOTE]
-> Ab dem 1. September 2018 können Neukunden Azure Multi-Factor Authentication nicht mehr als eigenständiges Angebot erwerben. Multi-Factor Authentication ist in Azure AD Premium-Lizenzen weiterhin ein verfügbares Feature.
+Wenn ein Benutzer sich bei einer Anwendung oder einem Dienst anmeldet und eine MFA-Aufforderung erhält, kann er eine der registrierten Formen der zusätzlichen Überprüfung wählen. Ein Administrator kann die Registrierung der Azure Multi-Factor Authentication-Überprüfungsmethoden verlangen, oder der Benutzer kann unter [Eigenes Profil](https://myprofile.microsoft.com) Überprüfungsmethoden bearbeiten oder hinzuzufügen.
 
-## <a name="supportability"></a>Unterstützbarkeit
+Die folgenden zusätzlichen Formen der Überprüfung können mit Azure-Multi-Factor Authentication verwendet werden:
 
-Die meisten Benutzer sind daran gewöhnt, für die Authentifizierung lediglich Kennwörter zu verwenden. Daher ist es wichtig, dass Ihre Organisation das Bewusstsein für diesen Prozess bei sämtlichen Benutzern fördert. So lassen sich Anrufe beim Helpdesk aufgrund kleinerer Probleme im Zusammenhang mit MFA reduzieren. In einigen Szenarien muss MFA jedoch vorübergehend deaktiviert werden. Befolgen Sie die unten stehenden Richtlinien für den Umgang mit diesen Szenarien:
+* Microsoft Authenticator-App
+* OATH-Hardwaretoken
+* sms
+* Anruf
 
-* Schulen Sie Ihre Supportmitarbeiter für Szenarien, in denen Benutzer sich nicht anmelden können, da sie keinen Zugriff auf ihre Authentifizierungsmethoden haben, oder diese nicht ordnungsgemäß funktionieren.
-   * Mit Richtlinien für bedingten Zugriff für den Azure MFA-Dienst können Ihre Supportmitarbeiter einen Benutzer einer Gruppe hinzufügen, die von einer MFA erfordernden Richtlinie ausgeschlossen ist.
-* Sie können benannte Standorte für den bedingten Zugriff verwenden, um Aufforderungen zur zweistufigen Überprüfung zu minimieren. Mithilfe dieser Funktion können Administratoren die zweistufige Überprüfung für Benutzer umgehen, die sich über ein sicheres vertrauenswürdiges Netzwerk anmelden, z. B. ein Netzwerksegment, das für das Onboarding neuer Benutzer verwendet wird.
-* Stellen Sie [Azure AD Identity Protection](../active-directory-identityprotection.md) bereit, und lösen Sie die zweistufige Überprüfung basierend auf Risikoerkennungen aus.
+## <a name="how-to-enable-and-use-azure-multi-factor-authentication"></a>Aktivieren und Verwenden von Azure Multi-Factor Authentication
+
+Für Benutzer und Gruppen kann Azure Multi-Factor Authentication aktiviert werden, damit sie während der Anmeldung zur weiteren Überprüfung aufgefordert werden. Für alle Azure AD-Mandanten sind [Sicherheitsstandards](../fundamentals/concept-fundamentals-security-defaults.md) verfügbar, damit die Microsoft Authenticator-App schnell von allen Benutzern verwendet werden kann.
+
+Für die genauere Steuerung können [Richtlinien für den bedingten Zugriff](../conditional-access/overview.md) verwendet werden, um Ereignisse oder Anwendungen zu definieren, die MFA erfordern. Diese Richtlinien können reguläre Anmeldungsereignisse zulassen, wenn sich der Benutzer im Unternehmensnetzwerk befindet oder ein registriertes Gerät verwendet, jedoch zusätzliche Überprüfungsfaktoren anfordern, wenn der Benutzer remote arbeitet oder ein persönliches Gerät verwendet.
+
+![Übersichtsdiagramm: Funktionsweise des bedingten Zugriffs zum Schutz des Anmeldevorgangs](media/tutorial-enable-azure-mfa/conditional-access-overview.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Schrittweise Bereitstellung der Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
+Informationen zur Lizenzierung finden Sie unter [Features und Lizenzen für Azure Multi-Factor Authentication](concept-mfa-licensing.md).
+
+Um MFA in Aktion zu erleben, aktivieren Sie im folgenden Tutorial Azure Multi-Factor Authentication für eine Reihe von Testbenutzern:
+
+> [!div class="nextstepaction"]
+> [Aktivieren von Azure Multi-Factor Authentication](tutorial-mfa-applications.md)

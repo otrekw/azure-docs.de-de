@@ -4,19 +4,19 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 9cbc48d8bca2f7491d0464be1c5bd64054927dc9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2eb503b58f1679d138b6a1dd9304896be098ad6
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77608733"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419118"
 ---
 Für die umfangreiche konsistente Erstellung und Verwaltung virtueller Azure-Computer (Virtual Machines, VMs) empfiehlt sich in der Regel eine Form der Automatisierung. Es gibt zahlreiche Tools und Lösungen, mit denen Sie die gesamte Azure-Infrastrukturbereitstellung und den gesamten Verwaltungslebenszyklus automatisieren können. In diesem Artikel werden einige der Infrastrukturautomatisierungstools vorgestellt, die Sie in Azure verwenden können. Diese Tools lassen sich in der Regel einem der folgenden Konzepte zuordnen:
 
 - Automatisieren der Konfiguration virtueller Computer
-    - Zur Verfügung stehen Tools wie [Ansible](#ansible), [Chef](#chef) und [Puppet](#puppet).
+    - Die Tools umfassen [Ansible](#ansible), [Chef](#chef), [Puppet](#puppet) und die [Azure Resource Manager-Vorlage](#azure-resource-manager-template).
     - Spezifische Tools für die Anpassung virtueller Computer sind [cloud-init](#cloud-init) für virtuelle Linux-Computer sowie [PowerShell DSC (Desired State Configuration)](#powershell-dsc) und die [benutzerdefinierte Skripterweiterung von Azure](#azure-custom-script-extension) für alle virtuellen Azure-Computer.
- 
+
 - Automatisieren der Infrastrukturverwaltung
     - Zur Verfügung stehen Tools wie [Packer](#packer) zum Automatisieren benutzerdefinierter VM-Image-Builds und [Terraform](#terraform) zum Automatisieren des Infrastrukturbuildprozesses.
     - [Azure Automation](#azure-automation) kann Aktionen für Ihre Azure-Infrastruktur und Ihre lokale Infrastruktur ausführen.
@@ -56,7 +56,8 @@ In diesem Artikel werden folgende Themen erläutert:
 
 Cloud-init funktioniert auch Distributionen übergreifend. Verwenden Sie z.B. nicht **apt-get install** oder **yum install**, um ein Paket zu installieren. Stattdessen können Sie eine Liste mit zu installierenden Paketen definieren. „cloud-init“ verwendet automatisch das native Paketverwaltungstool für die ausgewählte Distribution.
 
-Wir arbeiten aktiv mit unseren Linux-Distributionspartnern zusammen, um cloud-init-fähige Images im Azure Marketplace zur Verfügung zu stellen. Mit diesen Images funktionieren Ihre cloud-init-Bereitstellungen und -Konfigurationen nahtlos bei VMs und Skalierungsgruppen von virtuellen Computern (VMSS). Erfahren Sie mehr über cloud-init in Azure:
+Wir arbeiten aktiv mit unseren Linux-Distributionspartnern zusammen, um cloud-init-fähige Images im Azure Marketplace zur Verfügung zu stellen. Mit diesen Images funktionieren Ihre cloud-init-Bereitstellungen und -Konfigurationen nahtlos bei VMs und Skalierungsgruppen von virtuellen Computern (VMSS).
+Erfahren Sie mehr über cloud-init in Azure:
 
 - [Anpassen einer Linux-VM in Azure mit cloud-init | Microsoft-Dokumentation](../articles/virtual-machines/linux/using-cloud-init.md)
 - [Gewusst wie: Anpassen eines virtuellen Linux-Computers beim ersten Start](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md)
@@ -75,7 +76,7 @@ In diesem Artikel werden folgende Themen erläutert:
 
 
 ## <a name="azure-custom-script-extension"></a>Benutzerdefinierte Skripterweiterung von Azure
-Die benutzerdefinierte Skripterweiterung von Azure (verfügbar für [Linux](../articles/virtual-machines/linux/extensions-customscript.md) und [Windows](../articles/virtual-machines/windows/extensions-customscript.md)) lädt Skripts auf virtuelle Azure-Computer herunter und führt sie dort aus. Die Erweiterung kann beim Erstellen eines virtuellen Computers oder zu einem beliebigen Zeitpunkt für einen verwendeten virtuellen Computer verwendet werden. 
+Die benutzerdefinierte Skripterweiterung von Azure (verfügbar für [Linux](../articles/virtual-machines/linux/extensions-customscript.md) und [Windows](../articles/virtual-machines/windows/extensions-customscript.md)) lädt Skripts auf virtuelle Azure-Computer herunter und führt sie dort aus. Die Erweiterung kann beim Erstellen eines virtuellen Computers oder zu einem beliebigen Zeitpunkt für einen verwendeten virtuellen Computer verwendet werden.
 
 Skripts können aus Azure-Speicher oder von einem anderen öffentlichen Speicherort (etwa einem GitHub-Repository) heruntergeladen werden. Mit der benutzerdefinierten Skripterweiterung können Sie Skripts in einer beliebigen Sprache schreiben, die auf dem virtuellen Quellcomputer ausgeführt werden kann. Mit diesen Skripts können Sie Anwendungen installieren oder den virtuellen Computer nach Ihren Vorstellungen konfigurieren. Zum Schutz von Anmeldeinformationen können vertrauliche Informationen wie etwa Kennwörter in einer geschützten Konfiguration gespeichert werden. Diese Anmeldeinformationen werden erst auf dem virtuellen Computer entschlüsselt.
 
@@ -130,6 +131,17 @@ In diesem Artikel werden folgende Themen erläutert:
 
 - [Erstellen einer Entwicklungsinfrastruktur auf einem virtuellen Linux-Computer in Azure mit Jenkins, GitHub und Docker](../articles/jenkins/tutorial-jenkins-github-docker-cicd.md)
 
+
+## <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage
+[Azure Resource Manager](../articles/azure-resource-manager/templates/overview.md) ist der Bereitstellungs- und Verwaltungsdienst für Azure. Er bietet eine Verwaltungsebene, die das Erstellen, Aktualisieren und Löschen von Ressourcen in Ihrem Azure-Abonnement ermöglicht. Mithilfe von Verwaltungsfeatures wie Zugriffssteuerung, Sperren und Tags können Sie Ihre Ressourcen nach der Bereitstellung schützen und organisieren.
+
+In diesem Artikel werden folgende Themen erläutert:
+
+- [Bereitstellen von Spot-VMs mithilfe einer Resource Manager-Vorlage](../articles/virtual-machines/linux/spot-template.md)
+- [Bereitstellen eines virtuellen Azure-Computers mit C# und einer Resource Manager-Vorlage](../articles/virtual-machines/windows/csharp-template.md)
+- [Erstellen eines virtuellen Windows-Computers mit einer Resource Manager-Vorlage](../articles/virtual-machines/windows/ps-template.md)
+- [Herunterladen einer Vorlage für einen virtuellen Computer](../articles/virtual-machines/windows/download-template.md)
+- [Erstellen einer Azure Image Builder-Vorlage](../articles/virtual-machines/linux/image-builder-json.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Infrastrukturautomatisierungstools können in Azure auf unterschiedlichste Weise verwendet werden. Sie können sich flexibel für die Lösung entscheiden, die am besten zu Ihren Anforderungen und zu Ihrer Umgebung passt. Falls Sie noch keine Erfahrung haben und einige der in Azure integrierten Tools ausprobieren möchten, informieren Sie sich über die Automatisierung der Anpassung eines virtuellen Computers unter [Linux](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md) oder [Windows](../articles/virtual-machines/windows/tutorial-automate-vm-deployment.md).

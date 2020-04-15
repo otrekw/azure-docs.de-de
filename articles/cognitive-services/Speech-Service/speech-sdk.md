@@ -1,126 +1,129 @@
 ---
 title: Informationen zum Speech SDK – Spracherkennungsdienst
 titleSuffix: Azure Cognitive Services
-description: Das Speech SDK (Software Development Kit) gewährt Ihren Anwendungen nativen Zugriff auf die Funktionen des Speech-Diensts, sodass die Entwicklung von Software erleichtert wird. Dieser Artikel enthält weitere Informationen zum SDK für Windows, Linux und Android.
+description: Das Speech SDK (Software Development Kit) macht viele der Funktionen des Spracherkennungsdienstes verfügbar und erleichtert Ihnen das Entwickeln sprachaktivierter Anwendungen.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 04/03/2020
 ms.author: dapine
-ms.openlocfilehash: 984d2dfe07faa22756b4be167aa86a69806b1a84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 440944033e4b6a8fb29cf9ace6ad784b91316526
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78331092"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668769"
 ---
 # <a name="about-the-speech-sdk"></a>Informationen zum Speech SDK
 
-Das Speech-SDK (Software Development Kit) gewährt Ihren Anwendungen Zugriff auf die Funktionen des Speech-Diensts, sodass die Entwicklung sprachaktivierter Software erleichtert wird. Derzeit ermöglichen die SDKs den Zugriff auf **Spracherkennung**, **Sprachsynthese**, **Sprachübersetzung**, **Absichtserkennung** und den **Direct Line Speech-Kanal von Bot Framework**.
-
-Mit dem Speech SDK können Sie unkompliziert Tonaufnahmen eines Mikrofons erfassen, aus einem Stream lesen und auf Audiodateien in einem Speicher zugreifen. Das Speech SDK unterstützt für die Spracherkennung 16-Bit-WAV/PCM-Einkanalaudiodateien mit einer Frequenz von 16 kHz/8 kHz. Zusätzliche Audioformate werden mit dem [Spracherkennungs-REST-Endpunkt](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) oder dem [Batchtranskriptionsdienst](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats) unterstützt.
-
-Eine allgemeine Übersicht über die Funktionen und unterstützten Plattformen finden Sie auf der [Einstiegsseite](https://aka.ms/csspeech) der Dokumentation.
+Das Speech SDK (Software Development Kit) macht viele der Funktionen des Speech-Dienstes verfügbar und ermöglicht Ihnen das Entwickeln sprachaktivierter Anwendungen. Das Speech SDK ist in vielen Programmiersprachen und für alle Plattformen verfügbar.
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
-[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+## <a name="scenario-capabilities"></a>Funktionen für Szenarien
 
-## <a name="get-the-sdk"></a>Abrufen des SDK
+Das Speech SDK macht eine Vielzahl von Features aus dem Spracherkennungsdienst verfügbar, jedoch nicht alle. Die Funktionen des Speech SDK sind häufig mit Szenarien verknüpft. Das Speech SDK eignet sich ideal für Echtzeit- und Nicht-Echtzeitszenarien, für die Verwendung lokaler Geräte, Dateien, von Azure-Blobspeicher und sogar für Eingabe-und Ausgabestreams. Wenn ein Szenario für das Speech SDK nicht zugänglich ist, suchen Sie nach einer REST-API-Alternative.
+
+### <a name="speech-to-text"></a>Spracherkennung
+
+Die [Spracherkennung](speech-to-text.md) (auch als *Speech-to-Text* bezeichnet) wandelt Audiodatenströme in Text um, der von Ihren Anwendungen, Tools oder Geräten genutzt oder angezeigt werden kann. In Kombination mit [Language Understanding (LUIS)](../luis/index.yml) können Sie Benutzerabsichten aus transkribierter Sprache ableiten und auf Sprachbefehle reagieren. Verwenden Sie die [Sprachübersetzung](speech-translation.md), um Spracheingaben mit einem einzigen Aufruf in eine andere Sprache zu übersetzen. Weitere Informationen finden Sie unter [Spracherkennung – Grundlagen](speech-to-text-basics.md).
+
+### <a name="text-to-speech"></a>Text-zu-Sprache
+
+[Text-zu-Sprache](text-to-speech.md) (auch als *Sprachsynthese* bezeichnet) konvertiert Text in menschenähnliche synthetische Sprache. Beim Eingabetext handelt es sich um Zeichenfolgenliterale, oder Sie können [Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) verwenden. Weitere Informationen zu standardmäßigen oder neuronalen Stimmen finden Sie unter [Sprach- und Stimmunterstützung für Text-zu-Sprache](language-support.md#text-to-speech).
+
+### <a name="voice-assistants"></a>Sprachassistenten
+
+Sprachassistenten, die das Speech SDK verwenden, ermöglichen es Entwicklern, natürliche Konversationsschnittstellen für ihre Anwendungen und Umgebungen zu erstellen, die der menschlichen Sprache nahekommen. Der Sprachassistentendienst ermöglicht die schnelle, zuverlässige Interaktion zwischen einem Gerät und einem Assistenten. Die Implementierung verarbeitet Aufgaben über den Direct Line Speech-Kanal des Bot Framework oder den integrierten Dienst Benutzerdefinierte Befehle (Vorschauversion). Darüber hinaus können Sprachassistenten über das [Custom Voice-Portal](https://aka.ms/customvoice) erstellt werden, wodurch ein einzigartiges Stimmerlebnis erzielt wird.
+
+#### <a name="keyword-spotting"></a>Schlüsselworterkennung
+
+Das Konzept der [-Schlüsselworterkennung](speech-devices-sdk-create-kws.md) wird im Speech SDK unterstützt. Bei der Schlüsselworterkennung wird ein Schlüsselwort in der Sprache erkannt, und nach der Erfassung des Schlüsselworts folgt eine Aktion. Mit dem Schlüsselwort „Hey Cortana“ wird beispielsweise der Cortana-Assistent aktiviert.
+
+### <a name="meeting-scenarios"></a>Besprechungsszenarien
+
+Das Speech SDK eignet sich perfekt für die Transkription von Besprechungsszenarien, egal, ob aus einer Unterhaltung von einem einzelnen Gerät oder von mehreren Geräten.
+
+#### <a name="conversation-transcription"></a>Unterhaltungstranskription
+
+Die [Unterhaltungstranskription](conversation-transcription.md) ermöglicht die Echtzeit- (und asynchrone) Spracherkennung, die Sprecheridentifikation und die Satzzuschreibung zu den einzelnen Sprechern (auch als *Diarisierung* bezeichnet). Er eignet sich optimal für das Transkribieren persönlicher Besprechungen, wobei zwischen Sprechern unterschieden werden kann.
+
+#### <a name="multi-device-conversation"></a>Konversation mit mehreren Geräten
+
+Über die [Konversation mit mehreren Geräten](multi-device-conversation.md) verbinden Sie mehrere Geräte oder Clients in einer Konversation, um sprach- oder textbasierte Nachrichten mit einfacher Unterstützung von Transkription und Übersetzung zu senden.
+
+### <a name="custom--agent-scenarios"></a>Benutzerdefinierte/Agent-Szenarios
+
+Das Speech SDK kann für die Transkription in Callcenterszenarien verwendet werden, in denen Telefoniedaten generiert werden.
+
+#### <a name="call-center-transcription"></a>Callcentertranskription
+
+Die [Callcentertranskription](call-center-transcription.md) ist ein häufiges Szenario für die Spracherkennung zum Transkribieren großer Mengen von Telefoniedaten, die aus verschiedenen Systemen stammen können, z. B. Systemen für interaktive Sprachantworten (Interactive Voice Response, IVR). Die neuesten Spracherkennungsmodelle des Speech-Diensts zeichnen sich durch das Transkribieren dieser Telefoniedaten auch in solchen Fällen aus, in denen die Daten für den Menschen schwer verständlich sind.
+
+### <a name="codec-compressed-audio-input"></a>Per Codec komprimierte Audioeingabe
+
+Einige der Speech SDK-Programmiersprachen unterstützen per Codec komprimierte Audioeingabestreams. Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">Verwenden komprimierter Audioeingabeformate<span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+
+## <a name="rest-api"></a>REST-API
+
+Obwohl das Speech SDK viele Features des Spracherkennungsdiensts abdeckt, sollten Sie in einigen Szenarien die REST-API verwenden.
+
+### <a name="batch-transcription"></a>Batch-Transkription
+
+Die [Batch-Transkription](batch-transcription.md) ermöglicht eine asynchrone Spracherkennung/Transkription großer Datenmengen. Die Batch-Transkription ist nur über die REST-API möglich. Außer der Konvertierung von Sprachaudiodaten in Text sind mit der Batch-Spracherkennung auch die Diarisierung und Stimmungsanalyse möglich.
+
+## <a name="customization"></a>Anpassung
+
+Der Spracherkennungsdienst bietet über seine Standardmodelle hervorragende Funktionen – von Spracherkennung und Text-to-Speech bis hin zu Sprachübersetzung. Gelegentlich empfiehlt es sich, die Baseline-Leistung für Ihren konkreten Anwendungsfall zu erhöhen. Der Spracherkennungsdienst bietet eine Vielzahl von Anpassungstools, die ohne Code auskommen und mit denen Sie über benutzerdefinierte Modelle auf Grundlage Ihrer Daten einen Wettbewerbsvorteil erzielen können. Diese Modelle sind nur für Sie und Ihre Organisation verfügbar.
+
+### <a name="custom-speech-to-text"></a>Benutzerdefinierte Spracherkennung
+
+Wenn Sie die Spracherkennung für die Erkennung und Transkription in einer individuellen Umgebung verwenden, können Sie benutzerdefinierte Akustik-, Sprach- und Aussprachemodelle erstellen, um Umgebungsgeräusche zu kompensieren oder branchenspezifisches Vokabular zu berücksichtigen. Die Erstellung und Verwaltung von Custom Speech-Modellen ohne Code ist über das [Custom Speech-Portal](https://aka.ms/customspeech) möglich. Nach seiner Veröffentlichung kann das Custom Speech-Modell vom Speech SDK genutzt werden.
+
+### <a name="custom-text-to-speech"></a>Benutzerdefinierte Sprachsynthese
+
+Bei der benutzerdefinierten Sprachsynthese (auch als Custom Voice bezeichnet) handelt es sich um eine Reihe von Onlinetools, mit denen Sie eine wiedererkennbare, einzigartige Stimme für Ihre Marke erstellen können. Die Erstellung und Verwaltung von Custom Voice-Modellen ohne Code ist über das [Custom Voice-Portal](https://aka.ms/customvoice) möglich. Nach seiner Veröffentlichung kann das Custom Voice-Modell vom Speech SDK genutzt werden.
+
+## <a name="get-the-speech-sdk"></a>Abrufen des Speech SDK
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-> [!WARNING]
-> Das Speech SDK unterstützt Windows 10 oder höhere Versionen. Frühere Windows-Versionen werden **nicht unterstützt**.
-
-Für Windows werden die folgenden Sprachen unterstützt:
-
-* C# (UWP und .NET), C++: Sie können die neueste Version des Speech SDK-NuGet-Pakets referenzieren und verwenden. Das Paket enthält 32-Bit- und 64-Bit-Clientbibliotheken sowie verwaltete (.NET-)Bibliotheken. Das SDK kann in Visual Studio mithilfe von NuGet, [Microsoft.CognitiveServices.Speech](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech), installiert werden.
-
-* Java: Sie können die neueste Version des Speech-SDK-Maven-Pakets, das nur Windows x64 unterstützt, referenzieren und verwenden. Fügen Sie in Ihrem Maven-Projekt `https://csspeechstorage.blob.core.windows.net/maven/` als zusätzliches Repository hinzu, und verweisen Sie auf `com.microsoft.cognitiveservices.speech:client-sdk:1.8.0` als Abhängigkeit.
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-windows.md)]
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
-> [!NOTE]
-> Derzeit werden nur Ubuntu 16.04, Ubuntu 18.04, Debian 9, Red Hat Enterprise Linux 8 (RHEL) und CentOS 8 auf den folgenden Zielarchitekturen unterstützt:
-> - x86 (Debian/Ubuntu), x64, ARM32 (Debian/Ubuntu) und ARM64 (Debian/Ubuntu) für die C++-Entwicklung
-> - x64, ARM32 (Debian/Ubuntu) und ARM64 (Debian/Ubuntu) für Java
-> - x64 für .NET Core und Python
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-linux.md)]
 
-Stellen Sie sicher, dass die erforderlichen Bibliotheken installiert sind, indem Sie folgende Shellbefehle ausführen:
+# <a name="ios"></a>[iOS](#tab/ios)
 
-Auf Ubuntu:
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-ios.md)]
 
-```sh
-sudo apt-get update
-sudo apt-get install libssl1.0.0 libasound2
-```
+# <a name="macos"></a>[macOS](#tab/macos)
 
-Unter Debian 9:
-
-```sh
-sudo apt-get update
-sudo apt-get install libssl1.0.2 libasound2
-```
-
-Unter RHEL/CentOS 8:
-
-```sh
-sudo yum update
-sudo yum install alsa-lib openssl
-```
-
-> [!NOTE]
-> Befolgen Sie unter RHEL/CentOS 8 die Anweisungen zum [Konfigurieren von OpenSSL für Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
-
-* C#: Sie können die neueste Version des Speech SDK-NuGet-Pakets referenzieren und verwenden. Um auf das SDK zu verweisen, fügen Sie Ihrem Projekt den folgenden Paketverweis hinzu:
-
-  ```xml
-  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.8.0" />
-  ```
-
-* Java: Sie können die neueste Version des Speech SDK-Maven-Pakets referenzieren und verwenden. Fügen Sie in Ihrem Maven-Projekt `https://csspeechstorage.blob.core.windows.net/maven/` als zusätzliches Repository hinzu, und verweisen Sie auf `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` als Abhängigkeit.
-
-* C++: Laden Sie das SDK als [TAR-Paket](https://aka.ms/csspeech/linuxbinary) herunter, und entpacken Sie die Dateien in einem Verzeichnis Ihrer Wahl. In der folgenden Tabelle wird die Ordnerstruktur des SDK gezeigt:
-
-  |`Path`|BESCHREIBUNG|
-  |-|-|
-  |`license.md`|Lizenz|
-  |`ThirdPartyNotices.md`|Hinweise zu Drittanbietern|
-  |`include`|Headerdateien für C und C++|
-  |`lib/x64`|Native x64-Bibliothek für die Verknüpfung mit Ihrer Anwendung|
-  |`lib/x86`|Native x86-Bibliothek für die Verknüpfung mit Ihrer Anwendung|
-
-  Wenn Sie eine Anwendung erstellen möchten, kopieren oder verschieben Sie die erforderlichen Binärdateien (und Bibliotheken) in Ihre Entwicklungsumgebung. Fügen Sie sie nach Bedarf in Ihren Buildprozess ein.
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-macos.md)]
 
 # <a name="android"></a>[Android](#tab/android)
 
-Das Java SDK für Android ist als [AAR (Android-Bibliothek)](https://developer.android.com/studio/projects/android-library) verpackt und enthält die erforderlichen Bibliotheken sowie die erforderlichen Android-Berechtigungen. Es wird in einem Maven-Repository unter `https://csspeechstorage.blob.core.windows.net/maven/` als Paket `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` gehostet.
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-android.md)]
 
-Um das Paket im Android Studio-Projekt zu nutzen, nehmen Sie die folgenden Änderungen vor:
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-* Fügen Sie der Datei „build.gradle“ auf Projektebene Folgendes im Abschnitt `repository` hinzu:
+[!INCLUDE [Get the Node.js Speech SDK](includes/get-speech-sdk-nodejs.md)]
 
-  ```gradle
-  maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
-  ```
+# <a name="browser"></a>[Browser](#tab/browser)
 
-* Fügen Sie der Datei „build.gradle“ auf Modulebene Folgendes im Abschnitt `dependencies` hinzu:
-
-  ```gradle
-  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.7.0'
-  ```
-
-Das Java SDK ist auch Teil des [Speech-Geräte-SDK](speech-devices-sdk.md).
+[!INCLUDE [Get the Browser Speech SDK](includes/get-speech-sdk-browser.md)]
 
 ---
 
-[!INCLUDE [Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [License notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+
+[!INCLUDE [Sample source code](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
-* [Erkennen von Sprache in C#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+* [Erkennen von Sprache in C#](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

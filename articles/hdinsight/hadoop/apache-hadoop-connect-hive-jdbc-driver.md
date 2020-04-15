@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 7d1a77800093ae01bc4eb1e1269d1e9a60f9ce26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8129239f152f6b359b930e56466052da12ef4d42
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616650"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437028"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Abfragen von Apache Hive über den JDBC-Treiber in HDInsight
 
@@ -31,7 +31,7 @@ Weitere Informationen zur Hive-JDBC-Schnittstelle finden Sie unter [HiveJDBCInte
 
 ## <a name="jdbc-connection-string"></a>Verbindungszeichenfolge für JDBC
 
-JDBC-Verbindungen mit einem HDInsight-Cluster unter Azure werden über Port 443 hergestellt, und der Datenverkehr wird per SSL geschützt. Das öffentliche Gateway, hinter dem sich die Cluster befinden, leitet den Datenverkehr an den Port um, auf dem von HiveServer2 gelauscht wird. Die folgende Verbindungszeichenfolge zeigt das für HDInsight zu verwendende Format:
+JDBC-Verbindungen mit einem HDInsight-Cluster unter Azure werden über Port 443 hergestellt, und der Datenverkehr wird per TLS/SSL geschützt. Das öffentliche Gateway, hinter dem sich die Cluster befinden, leitet den Datenverkehr an den Port um, auf dem von HiveServer2 gelauscht wird. Die folgende Verbindungszeichenfolge zeigt das für HDInsight zu verwendende Format:
 
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 

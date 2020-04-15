@@ -3,15 +3,15 @@ title: Konfigurieren von Continuous Deployment
 description: Hier erfahren Sie, wie Sie in Azure App Service CI/CD aus GitHub, BitBucket, Azure Repos und anderen Repositorys aktivieren. Wählen Sie die Buildpipeline aus, die Ihren Anforderungen entspricht.
 ms.assetid: 6adb5c84-6cf3-424e-a336-c554f23b4000
 ms.topic: article
-ms.date: 08/23/2019
+ms.date: 03/20/2020
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: d58eb333c930d2ffac4eb57340ea776338325181
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 847de2c2c8916558d542473d9b7c80fd5552dbf7
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79231642"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437224"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Continuous Deployment in Azure App Service
 
@@ -27,13 +27,13 @@ Um Azure Repos zu verwenden, stellen Sie sicher, dass Ihre Azure DevOps-Organisa
 
 Für Bitbucket oder GitHub autorisieren Sie den Azure App Service, sich mit Ihrem Repository zu verbinden. Sie müssen sich nur einmal bei einem Quellcodverwaltungsdienst autorisieren. 
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **App Services**, und wählen Sie den Eintrag aus. 
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **App Services**, und wählen Sie den Eintrag aus.
 
    ![Suchen Sie nach App Services.](media/app-service-continuous-deployment/search-for-app-services.png)
 
-1. Wählen Sie die Web-App aus, die Sie bereitstellen möchten.
+1. Wählen Sie den bereitzustellenden App Service aus.
 
-   ![Auswählen Ihrer App](media/app-service-continuous-deployment/select-your-app.png)
+   ![Wählen Sie Ihre App aus.](media/app-service-continuous-deployment/select-your-app.png)
    
 1. Wählen Sie auf der App-Seite im linken Menü **„Bereitstellungscenter“** aus.
    
@@ -45,13 +45,13 @@ Für Bitbucket oder GitHub autorisieren Sie den Azure App Service, sich mit Ihre
 
 ## <a name="enable-continuous-deployment"></a>Aktivieren von Continuous Deployment 
 
-Nachdem Sie einen Quellcodeverwaltungdienst autorisiert haben, konfigurieren Sie Ihre Anwendung für die fortlaufende Bereitstellung über den integrierten [Kudu App Service Build-Server](#option-1-use-the-app-service-build-service) oder über [Azure Pipelines](#option-2-use-azure-pipelines). 
+Nachdem Sie einen Quellcodeverwaltungdienst autorisiert haben, konfigurieren Sie Ihre Anwendung für die fortlaufende Bereitstellung über den integrierten [Kudu App Service Build-Server](#option-1-kudu-app-service) oder über [Azure Pipelines](#option-2-azure-pipelines). 
 
-### <a name="option-1-use-the-app-service-build-service"></a>Option 1: Verwendung des App Service-Builddiensts
+### <a name="option-1-kudu-app-service"></a>Option 1: Kudu App Service
 
 Sie können den integrierten Kudu App Service Build-Server verwenden, um die Bereitstellung kontinuierlich von GitHub, Bitbucket oder Azure Repos aus vorzunehmen. 
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **App Services**, und wählen Sie die Option aus. Wählen Sie dann die Web-App aus, die Sie bereitstellen möchten. 
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **App Services**, und wählen Sie dann den App Service aus, den Sie bereitstellen möchten. 
    
 1. Wählen Sie auf der App-Seite im linken Menü **„Bereitstellungscenter“** aus.
    
@@ -84,15 +84,17 @@ Sie können den integrierten Kudu App Service Build-Server verwenden, um die Ber
    
 1. Nachdem Sie den Buildanbieter konfiguriert haben, überprüfen Sie die Einstellungen auf der Seite **„Zusammenfassung“** und wählen Sie dann **„Fertig stellen“** .
    
-   Neue Commits im ausgewählten Repository und Branch werden nun fortlaufend in Ihrer App Service-App bereitgestellt. Auf der Seite **„Bereitstellungscenter“** können Sie die Commits und Bereitstellen verfolgen.
+1. Neue Commits im ausgewählten Repository und Branch werden nun fortlaufend in Ihrer App Service-App bereitgestellt. Auf der Seite **„Bereitstellungscenter“** können Sie die Commits und Bereitstellen verfolgen.
    
    ![Verfolgung von Commits und Bereitstellen im Bereitstellungscenter](media/app-service-continuous-deployment/github-finished.png)
 
-### <a name="option-2-use-azure-pipelines"></a>Option 2: Verwendung von Azure Pipelines 
+### <a name="option-2-azure-pipelines"></a>Option 2: Azure Pipelines 
 
-Wenn Ihr Konto über die erforderlichen Berechtigungen verfügt, können Sie Azure Pipelines so einrichten, dass sie kontinuierlich aus GitHub- oder Azure Repos-Repositorys bereitgestellt werden. Weitere Informationen zur Bereitstellung über Azure Pipelines finden Sie unter [„Bereitstellen einer Webanwendung für Azure App Services“](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps).
+Wenn Ihr Konto über die erforderlichen Berechtigungen verfügt, können Sie Azure Pipelines so einrichten, dass sie kontinuierlich aus GitHub oder Azure Repos bereitgestellt werden. Weitere Informationen zur Bereitstellung über Azure Pipelines finden Sie unter [„Bereitstellen einer Webanwendung für Azure App Services“](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps).
 
-Folgendes ist erforderlich, damit Azure App Service kontinuierliche Azure Pipelines in Ihrer Azure DevOps-Organisation erstellen kann: 
+#### <a name="prerequisites"></a>Voraussetzungen
+
+Damit Azure App Service Continuous Delivery mithilfe von Azure Pipelines einrichten kann, sollte Ihre Azure DevOps-Organisation folgende Berechtigungen besitzen: 
 
 - Ihr Azure-Konto muss über Berechtigungen zum Schreiben in Azure Active Directory und zum Erstellen eines Diensts verfügen. 
   
@@ -100,42 +102,65 @@ Folgendes ist erforderlich, damit Azure App Service kontinuierliche Azure Pipeli
 
 - Sie müssen ein Administrator in dem Azure DevOps-Projekt sein, das Sie verwenden möchten.
 
-Konfigurieren von Azure Pipelines (Vorschauversion):
+#### <a name="github--azure-pipelines"></a>GitHub + Azure Pipelines
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **App Services**, und wählen Sie die Option aus. Wählen Sie dann die Web-App aus, die Sie bereitstellen möchten. 
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **App Services**, und wählen Sie dann den App Service aus, den Sie bereitstellen möchten. 
    
 1. Wählen Sie auf der App-Seite im linken Menü **„Bereitstellungscenter“** aus.
+
+1. Wählen Sie auf der Seite **Bereitstellungscenter** **GitHub** als Quellcodeverwaltungsanbieter aus, und wählen Sie **Weiter** aus. Für **GitHub** können Sie **Konto ändern** auswählen, um das autorisierte Konto zu ändern.
+
+    ![Quellcodeverwaltung](media/app-service-continuous-deployment/deployment-center-src-control.png)
    
-1. Wählen Sie auf der Seite **Buildanbieter** nacheinander **Azure Pipelines (Vorschau)** und dann **Weiter** aus. 
+1. Wählen Sie auf der Seite **Buildanbieter** nacheinander **Azure Pipelines (Vorschau)** und dann **Weiter** aus.
+
+    ![Buildanbieter](media/app-service-continuous-deployment/select-build-provider.png)
    
-1. Auf der Seite **„Konfigurieren“** im Abschnitt **„Code“** :
-   
-   - Wählen Sie das Dropdownmenü für GitHub, und wählen Sie dann die **„Organisation“** , **„Repository“** und **„Branch“** , die sie fortlaufend bereitstellen möchten.
+1. Wählen Sie auf der Seite **Konfigurieren** im Abschnitt **Code** die **Organisation**, das **Repository** und den **Branch** aus, aus dem Continuous Deployment erfolgen soll, und wählen Sie **Weiter** aus.
      
      > [!NOTE]
      > Wenn Sie keine Repositorys sehen, müssen Sie möglicherweise den Azure App Service in GitHub autorisieren. Navigieren Sie zu Ihrem GitHub-Repository und wählen Sie **Einstellungen** > **Anwendungen** > **Autorisierte OAuth-Apps**. Wählen Sie **Azure App Service** und dann **„Zuweisung“** . Bei Organisationsrepositorys müssen Sie Besitzer der Organisation sein, um die Berechtigungen erteilen zu können.
-     
-   - Wählen Sie für Azure Repos die **Azure DevOps-Organisation**, das **Projekt**, das **Repository** und **Branch** aus, die Sie fortlaufend nutzen möchten oder konfigurieren Sie eine neue Azure DevOps-Organisation.
-     
-     > [!NOTE]
-     > Wenn Ihre vorhandene Azure DevOps-Organisation nicht aufgeführt ist, müssen Sie sie möglicherweise mit Ihrem Azure-Abonnement verknüpfen. Weitere Informationen finden Sie unter [Definieren Ihrer CD-Releasepipeline](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps#cd).
-     
-1. Wählen Sie **Weiter**.
-   
-1. Geben Sie für Azure Repos im Abschnitt **„Build“** das Sprachenframework an, das Azure Pipelines verwenden soll, um Build-Aufgaben auszuführen, und wählen Sie dann **„Weiter“** .
-   
-1. Wählen Sie auf der Seite **„Test“** aus, ob Auslastungstests aktiviert werden sollen, und wählen Sie dann **„Weiter“** .
-   
-1. Abhängig vom [Tarif](https://azure.microsoft.com/pricing/details/app-service/plans/) Ihres App Service-Plans wird ggf. auch eine Seite **Für Staging bereitstellen** angezeigt. Wählen Sie, ob [Bereitstellungsslots aktiviert werden sollen](deploy-staging-slots.md), und wählen Sie **Weiter** aus.
-   
-   > [!NOTE]
-   > Azure Pipelines erlaubt keine Continuous Delivery an den Produktionsslot. Diese Einschränkung soll versehentliche Bereitstellungen für die Produktion verhindern. Richten Sie einen Continuous Delivery-Vorgang für einen Stagingslot ein, überprüfen Sie die Änderungen dort und tauschen Sie die Slots aus, wenn Sie fertig sind.
-   
+       
+    Geben Sie im Abschnitt **Build** die Azure DevOps-Organisation, das Projekt und das Sprachenframework an, die/das Azure Pipelines verwenden soll, um Buildaufgaben auszuführen, und wählen Sie dann **Weiter** aus.
+
+   ![Buildanbieter](media/app-service-continuous-deployment/build-configure.png)
+
 1. Nachdem Sie den Buildanbieter konfiguriert haben, überprüfen Sie die Einstellungen auf der Seite **„Zusammenfassung“** und wählen Sie dann **„Fertig stellen“** .
+
+   ![Buildanbieter](media/app-service-continuous-deployment/summary.png)
    
-   Neue Commits im ausgewählten Repository und Branch werden nun fortlaufend in Ihrer App Service-App bereitgestellt. Auf der Seite **„Bereitstellungscenter“** können Sie die Commits und Bereitstellen verfolgen.
+1. Neue Commits im ausgewählten Repository und Branch werden nun fortlaufend in Ihrem App Service bereitgestellt. Auf der Seite **„Bereitstellungscenter“** können Sie die Commits und Bereitstellen verfolgen.
    
    ![Verfolgung von Commits und Bereitstellen im Bereitstellungscenter](media/app-service-continuous-deployment/github-finished.png)
+
+#### <a name="azure-repos--azure-pipelines"></a>Azure Repos + Azure Pipelines
+
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **App Services**, und wählen Sie dann den App Service aus, den Sie bereitstellen möchten. 
+   
+1. Wählen Sie auf der App-Seite im linken Menü **„Bereitstellungscenter“** aus.
+
+1. Wählen Sie auf der Seite **Bereitstellungscenter** **Azure Repos** als Quellcodeverwaltungsanbieter aus, und wählen Sie **Weiter** aus.
+
+    ![Quellcodeverwaltung](media/app-service-continuous-deployment/deployment-center-src-control.png)
+
+1. Wählen Sie auf der Seite **Buildanbieter** nacheinander **Azure Pipelines (Vorschau)** und dann **Weiter** aus.
+
+    ![Quellcodeverwaltung](media/app-service-continuous-deployment/azure-pipelines.png)
+
+1. Wählen Sie auf der Seite **Konfigurieren** im Abschnitt **Code** die **Organisation**, das **Repository** und den **Branch** aus, aus dem Continuous Deployment erfolgen soll, und wählen Sie **Weiter** aus.
+
+   > [!NOTE]
+   > Wenn Ihre vorhandene Azure DevOps-Organisation nicht aufgeführt ist, müssen Sie sie möglicherweise mit Ihrem Azure-Abonnement verknüpfen. Weitere Informationen finden Sie unter [Definieren Ihrer CD-Releasepipeline](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps#cd).
+
+   Geben Sie im Abschnitt **Build** die Azure DevOps-Organisation, das Projekt und das Sprachenframework an, die/das Azure Pipelines verwenden soll, um Buildaufgaben auszuführen, und wählen Sie dann **Weiter** aus.
+
+   ![Buildanbieter](media/app-service-continuous-deployment/build-configure.png)
+
+1. Nachdem Sie den Buildanbieter konfiguriert haben, überprüfen Sie die Einstellungen auf der Seite **„Zusammenfassung“** und wählen Sie dann **„Fertig stellen“** .  
+     
+   ![Buildanbieter](media/app-service-continuous-deployment/summary-azure-pipelines.png)
+
+1. Neue Commits im ausgewählten Repository und Branch werden nun fortlaufend in Ihrem App Service bereitgestellt. Auf der Seite **„Bereitstellungscenter“** können Sie die Commits und Bereitstellen verfolgen.
 
 ## <a name="disable-continuous-deployment"></a>Deaktivieren der fortlaufenden Bereitstellung
 

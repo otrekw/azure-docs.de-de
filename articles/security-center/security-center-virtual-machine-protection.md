@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: bcf92838483fbb6b54802cc0d44cc44ea086d705
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93dde2e873a00303dcb8563caed4d56dbf11cc12
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236750"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435630"
 ---
 # <a name="protect-your-machines-and-applications"></a>Schützen Ihrer Computer und Anwendungen
 Werden potenzielle Sicherheitslücken erkannt, erstellt Azure Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente zum Härten und Schützen Ihrer Ressourcen unterstützen.
@@ -85,9 +85,9 @@ Hier finden Sie die Sicherheitsdetails für den virtuellen oder physischen Compu
 
 
 ### <a name="virtual-machine-scale-sets"></a><a name="vmscale-sets"></a>VM-Skalierungsgruppen
-Security Center erkennt automatisch, ob Sie über Skalierungsgruppen verfügen und empfiehlt, Microsoft Monitoring Agent auf diesen installieren.
+Security Center erkennt automatisch, ob Sie über Skalierungsgruppen verfügen, und empfiehlt, den Log Analytics-Agent auf diesen installieren.
 
-So installieren Sie den Microsoft Monitoring Agent: 
+So installieren Sie den Log Analytics-Agent: 
 
 1. Wählen Sie die Empfehlung **Überwachungs-Agent für VM-Skalierungsgruppen installieren** aus. Sie erhalten eine Liste der nicht überwachten Skalierungsgruppen.
 
@@ -95,7 +95,7 @@ So installieren Sie den Microsoft Monitoring Agent:
 
    ![Installieren von MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
 
-Festlegen einer neuen Skalierungsgruppen, um automatisch Microsoft Monitoring Agent zu installieren:
+So legen Sie neue Skalierungsgruppen fest, um den Log Analytics-Agent automatisch zu installieren:
 1. Wechseln Sie zu Azure Policy, und klicken Sie auf **Definitionen**.
 
 1. Suchen Sie nach der Richtlinie **Bereitstellen von Log Analytics-Agent für Windows-VM-Skalierungsgruppen**, und klicken Sie darauf.
@@ -104,7 +104,7 @@ Festlegen einer neuen Skalierungsgruppen, um automatisch Microsoft Monitoring Ag
 
 1. Legen Sie **Bereich** und **Log Analytics-Arbeitsbereich** fest, und klicken Sie auf **Zuweisen**.
 
-Wenn Sie die Installation des Microsoft Monitoring Agent in Azure Policy für alle vorhandenen Skalierungsgruppen festlegen möchten, wenden Sie unter **Wiederherstellung** die vorhandene Richtlinie auf die vorhandenen Skalierungsgruppen an.
+Wenn Sie die Installation des Log Analytics-Agents für alle vorhandenen Skalierungsgruppen festlegen möchten, wechseln Sie in Azure Policy zu **Wiederherstellung**, und wenden Sie die vorhandene Richtlinie auf die vorhandenen Skalierungsgruppen an.
 
 
 
@@ -195,7 +195,7 @@ Wenn Sie auf einen der virtuellen Computer klicken, auf denen Docker ausgeführt
 
 Security Center scannt Ihre Docker-Konfigurationen und bietet Ihnen durch die Bereitstellung einer Liste aller festgestellten Regelverstöße Einblick in die Fehlkonfigurationen. Security Center bietet Richtlinien, mit denen Sie diese Probleme schnell beheben und Zeit sparen können. Security Center bewertet fortlaufend die Docker-Konfigurationen und unterrichtet Sie über deren aktuellen Zustand.
 
-![Registerkarte „Container“](./media/security-center-container-recommendations/container-cis-benchmark.png)
+![Registerkarte „Container“](./media/security-center-virtual-machine-recommendations/container-cis-benchmark.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/24/2020
+ms.date: 4/2/2020
 ms.author: raiye
-ms.openlocfilehash: c4bdb6fec5c20940e0afe4ab2e94702a2b21a60c
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 95c27cd906717d52a232b5ed85eba2b93bc6569d
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765316"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618288"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix
 Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemreleases für Cloud Services. Anhand dieser Informationen können Sie Ihren Upgradepfad planen, bevor ein Gastbetriebssystem abgekündigt wird. Wenn Sie die Rollen so konfigurieren, dass die *automatischen* Gast-BS-Updates, wie unter [Updateeinstellungen für Azure-Gast-BS][Azure Guest OS Update Settings]beschrieben, verwendet werden, müssen Sie diese Seite nicht unbedingt lesen.
@@ -41,6 +41,12 @@ Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemrele
 Sie wissen nicht genau, wie Sie Ihr Gastbetriebssystem aktualisieren sollen? Entsprechende Informationen finden Sie [hier][cloud updates].
 
 ## <a name="news-updates"></a>Neuigkeiten
+
+###### <a name="april-2-2020"></a>**2. April 2020**
+Das Gastbetriebssystem für März wurde veröffentlicht. 
+
+###### <a name="march-5-2020"></a>**5. März 2020**
+Das Gast-BS für Februar wurde veröffentlicht. 
 
 ###### <a name="january-24-2020"></a>**24. Januar 2020**
 Das Gastbetriebssystem für Januar wurde veröffentlicht. 
@@ -114,12 +120,15 @@ Installierte .NET Framework-Versionen: 3.5, 4.7.2
 >5. Ändern Sie die Betriebssystemfamilie in 6, und erstellen Sie ein Paket
 >6. Stellen Sie das Paket mithilfe des Azure-Portals oder von Visual Studio in Azure bereit
 >
+>Das Release „Guest OS Family 6“ (Gastbetriebssystemfamilie) erzwingt TLS 1.2 durch explizite Deaktivierung von TLS 1.0 und 1.1 und die Definition einer bestimmten Reihe von Verschlüsselungssammlungen. [Weitere Informationen].
 
 
 | Konfigurationszeichenfolge | Veröffentlichungsdatum | Deaktivierungsdatum |
 | --- | --- | --- |
-|  WA-GUEST-OS-6.15_202001-01  |  24. Januar 2020  |  Nach 6.17  |  
-| WA-GUEST-OS-6.14_201912-01 | 8\. Januar 2020 | Nach 6.16 |  
+|  WA-GUEST-OS-6.17_202003-01  |  2\. April 2020  |  Nach 6.19  |  
+|  WA-GUEST-OS-6.16_202002-01  |  5\. März 2020  |  Nach 6.18  |  
+|~~WA-GUEST-OS-6.15_202001-01~~|  24. Januar 2020  |  2\. April 2020  |  
+|~~WA-GUEST-OS-6.14_201912-01~~| 8\. Januar 2020 | 5\. März 2020 |  
 |~~WA-GUEST-OS-6.13_201911-01~~| 5\. Dezember 2019 | 24. Januar 2020 |  
 |~~WA-GUEST-OS-6.12_201910-01~~| 1\. November 2019 | 8\. Januar 2020 |  
 |~~WA-GUEST-OS-6.11_201909-01~~| 7\. Oktober 2019 | 5\. Dezember 2019 |  
@@ -146,8 +155,10 @@ Installierte .NET Framework-Versionen: 3.5, 4.6
 
 | Konfigurationszeichenfolge | Veröffentlichungsdatum | Deaktivierungsdatum |
 | --- | --- | --- |
-|  WA-GUEST-OS-5.39_202001-01  |  24. Januar 2020  |  Nach 5.41  |  
-| WA-GUEST-OS-5.38_201912-01 | 8\. Januar 2020 | Nach 5.40 |  
+|  WA-GUEST-OS-5.41_202003-01  |  2\. April 2020  |  Nach 5.43  |  
+|  WA-GUEST-OS-5.40_202002-01  |  5\. März 2020  |  Nach 5.42  |  
+|~~WA-GUEST-OS-5.39_202001-01~~|  24. Januar 2020  |  2\. April 2020  |  
+|~~WA-GUEST-OS-5.38_201912-01~~| 8\. Januar 2020 | 5\. März 2020 |  
 |~~WA-GUEST-OS-5.37_201911-01~~| 5\. Dezember 2019 | 24. Januar 2020 |  
 |~~WA-GUEST-OS-5.36_201910-01~~| 1\. November 2019 | 8\. Januar 2020 |  
 |~~WA-GUEST-OS-5.35_201909-01~~| 7\. Oktober 2019 | 5\. Dezember 2019 |  
@@ -171,8 +182,10 @@ Installierte .NET Framework-Versionen: 3.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Veröffentlichungsdatum | Deaktivierungsdatum |
 | --- | --- | --- |
-|  WA-GUEST-OS-4.74_202001-01  |  24. Januar 2020  |  Nach 4.76  |  
-| WA-GUEST-OS-4.73_201912-01 | 8\. Januar 2020 | Nach 4.75 |  
+|  WA-GUEST-OS-4.76_202003-01  |  2\. April 2020  |  Nach 4.78  |  
+|  WA-GUEST-OS-4.75_202002-01  |  5\. März 2020  |  Nach 4.77  |  
+|~~WA-GUEST-OS-4.74_202001-01~~|  24. Januar 2020  |  2\. April 2020  |  
+|~~WA-GUEST-OS-4.73_201912-01~~| 8\. Januar 2020 | 5\. März 2020 |  
 |~~WA-GUEST-OS-4.72_201911-01~~| 5\. Dezember 2019 | 24. Januar 2020 |  
 |~~WA-GUEST-OS-4.71_201910-01~~| 1\. November 2019 | 8\. Januar 2020 |  
 |~~WA-GUEST-OS-4.70_201909-01~~| 7\. Oktober 2019 | 5\. Dezember 2019 |  
@@ -196,8 +209,10 @@ Installierte .NET Framework-Versionen: 3.5, 4.5
 
 | Konfigurationszeichenfolge | Veröffentlichungsdatum | Deaktivierungsdatum |
 | --- | --- | --- |
-|  WA-GUEST-OS-3.81_202001-01  |  24. Januar 2020  |  Nach 3.83  |  
-| WA-GUEST-OS-3.80_201912-01 | 8\. Januar 2020 | Nach 3.82 |  
+|  WA-GUEST-OS-3.83_202003-01  |  2\. April 2020  |  Nach 3.85  |  
+|  WA-GUEST-OS-3.82_202002-01  |  5\. März 2020  |  Nach 3.84  |  
+|~~WA-GUEST-OS-3.81_202001-01~~|  24. Januar 2020  |  2\. April 2020  |  
+|~~WA-GUEST-OS-3.80_201912-01~~| 8\. Januar 2020 | 5\. März 2020 |  
 |~~WA-GUEST-OS-3.79_201911-01~~| 5\. Dezember 2019 | 24. Januar 2020 |  
 |~~WA-GUEST-OS-3.78_201910-01~~| 1\. November 2019 | 8\. Januar 2020 |  
 |~~WA-GUEST-OS-3.77_201909-01~~| 7\. Oktober 2019 | 5\. Dezember 2019 |  
@@ -221,8 +236,10 @@ Installierte .NET Framework-Versionen: 3.5 (einschließlich 2.0 und 3.0), 4.5
 
 | Konfigurationszeichenfolge | Veröffentlichungsdatum | Deaktivierungsdatum |
 | --- | --- | --- |
-|  WA-GUEST-OS-2.94_202001-01  |  24. Januar 2020  |  Nach 2.96  |  
-| WA-GUEST-OS-2.93_201912-01 | 8\. Januar 2020 | Nach 2.95 |  
+|  WA-GUEST-OS-2.96_202003-01  |  2\. April 2020  |  Nach 2.98  |  
+|  WA-GUEST-OS-2.95_202002-01  |  5\. März 2020  |  Nach 2.97  |  
+|~~WA-GUEST-OS-2.94_202001-01~~|  24. Januar 2020  |  2\. April 2020  |  
+|~~WA-GUEST-OS-2.93_201912-01~~| 8\. Januar 2020 | 5\. März 2020 |  
 |~~WA-GUEST-OS-2.92_201911-01~~| 5\. Dezember 2019 | 24. Januar 2020 |  
 |~~WA-GUEST-OS-2.91_201910-01~~| 1\. November 2019 | 8\. Januar 2020 |  
 |~~WA-GUEST-OS-2.90_201909-01~~| 7\. Oktober 2019 | 5\. Dezember 2019 |  
@@ -317,3 +334,4 @@ Die Unterstützungs- und Deaktivierungsrichtlinie für Gastbetriebssysteme wird 
 [fam1retire]: cloud-services-guestos-family1-retirement.md
 [fix]: https://technet.microsoft.com/library/security/ms17-010.aspx
 [Windows Azure SDK]: https://www.microsoft.com/en-us/download/details.aspx?id=54917
+[Weitere Informationen]: https://docs.microsoft.com/azure/cloud-services/applications-dont-support-tls-1-2  

@@ -5,12 +5,12 @@ ms.date: 01/23/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: ec1b77118f94501363d950d72a65a67ece79ff77
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 658910dc4291375c7b2ab22e88c599b970b885af
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76748939"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80419180"
 ---
 Standardisierte VM-Images ermöglichen es Organisationen, in die Cloud zu migrieren und die Konsistenz der Bereitstellung sicherzustellen. Die Images beinhalten üblicherweise vordefinierte Sicherheits- und Konfigurationseinstellungen und die notwendige Software. Das Einrichten Ihrer eigenen Imaging-Pipeline erfordert Zeit, Infrastruktur und Setup, aber mit dem Azure VM Image Builder stellen Sie eine einfache Konfiguration zur Verfügung, die Ihr Image beschreibt, senden es an den Dienst, und das Image wird erstellt und verteilt.
  
@@ -26,10 +26,10 @@ In der Vorschauversion werden diese Funktionen unterstützt:
 
 - Erstellung von Golden Baseline-Images, die Ihre Mindestsicherheit und Unternehmenskonfigurationen umfassen und es den Abteilungen ermöglichen, sie weiter an ihre Bedürfnisse anzupassen.
 - Patchen von vorhandenen Images: Image Builder ermöglicht es Ihnen, bestehende benutzerdefinierte Images kontinuierlich zu patchen.
+- Verbinden Sie Image Builder mit Ihren vorhandenen virtuellen Netzwerken, damit Sie eine Verbindung mit vorhandenen Konfigurationsservern (DSC, Chef, Puppet usw.), Dateifreigaben oder anderen routingfähigen Servern/Diensten herstellen können.
 - Die Integration mit dem Azure-Katalog mit freigegebenen Images ermöglicht es Ihnen, Images global zu verteilen, zu versionieren und zu skalieren, und bietet Ihnen ein System für die Imageverwaltung.
 - Für die Integration in bestehende Image Buildpipelines, rufen Sie einfach Image Builder aus Ihrer Pipeline auf, oder verwenden Sie die einfache Vorschauversion der Azure DevOps-Task von Image Builder.
 - Migrieren Sie eine bestehende Pipeline zur Imageanpassung zu Azure. Verwenden Sie Ihre vorhandenen Skripts, Befehle und Prozesse, um Images anzupassen.
-- Verwenden Sie die Unterstützung von Red Hat für „Bring Your Own Subscription“ (BYOS, Nutzen des eigenen Abonnements). Erstellen Sie Red Hat Enterprise-Images zur Verwendung mit Ihren berechtigten, ungenutzten Red Hat-Abonnements.
 - Erstellung von Images im VHD-Format.
  
 
@@ -40,6 +40,8 @@ Der Azure Image Builder-Dienst wird in folgenden Regionen als Vorschauversion ve
 - USA, Westen-Mitte
 - USA (Westen)
 - USA, Westen 2
+- Nordeuropa
+- Europa, Westen
 
 ## <a name="os-support"></a>Betriebssystemunterstützung
 AIB unterstützt Basisbetriebssystem-Images aus dem Azure Marketplace:
@@ -49,16 +51,11 @@ AIB unterstützt Basisbetriebssystem-Images aus dem Azure Marketplace:
 - CentOS 7.6, 7.7
 - SLES 12 SP4
 - SLES 15, SLES 15 SP1
-- Windows 10 RS5 Enterprise/Professional/Enterprise for Virtual Desktop (EVD) 
+- Windows 10 RS5 Enterprise/Enterprise (mehrere Sitzungen)/Professional
 - Windows 2016
 - Windows 2019
 
-AIB-Datei unterstützt RHEL ISO als Quelle für:
-- RHEL 7.3
-- RHEL 7.4
-- RHEL 7.5
-
-RHEL 7.6 ISOs werden nicht unterstützt, sondern getestet.
+Die Unterstützung für RHEL-ISOs wird eingestellt. Weitere Informationen finden Sie in der Vorlagendokumentation.
 
 ## <a name="how-it-works"></a>Funktionsweise
 

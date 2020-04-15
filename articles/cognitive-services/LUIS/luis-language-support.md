@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 4b6d954d06f09bef5240bddc4860ddbc83513d69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82efa70b30e829cfedd0b1fa7a21fd06949aa6d5
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219116"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744144"
 ---
 # <a name="language-and-region-support-for-luis"></a>Sprach- und Regionsunterstützung für LUIS
 
@@ -35,18 +35,25 @@ LUIS versteht Äußerungen in den folgenden Sprachen:
 | Englisch (USA) |`en-US` | ✔ | ✔  |✔|✔|
 | Arabisch (Vorschau, modernes Hocharabisch) |`ar-AR`|-|-|-|-|
 | *[Chinesisch](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| Niederländisch |`nl-NL` |✔|  -   |-|✔|
+| Niederländisch |`nl-NL` |✔|-|-|✔|
 | Französisch (Frankreich) |`fr-FR` |✔| ✔ |✔ |✔|
-| Französisch (Kanada) |`fr-CA` |-|   -   |-|✔|
+| Französisch (Kanada) |`fr-CA` |-|-|-|✔|
 | Deutsch |`de-DE` |✔| ✔ |✔ |✔|
-| Hindi | `hi-IN`|-|-|-|-|
+| Gujarati | `gu-IN`|-|-|-|-|
+| Hindi | `hi-IN`|-|✔|-|-|
 | Italienisch |`it-IT` |✔| ✔ |✔|✔|
 | *[Japanisch](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Nur Schlüsselausdruck|
-| Koreanisch |`ko-KR` |✔|   -   |-|Nur Schlüsselausdruck|
+| Koreanisch |`ko-KR` |✔|-|-|Nur Schlüsselausdruck|
+| Marathi | `mr-IN`|-|-|-|-|
 | Portugiesisch (Brasilien) |`pt-BR` |✔| ✔ |✔ |Nicht alle Unterkulturen|
 | Spanisch (Spanien) |`es-ES` |✔| ✔ |✔|✔|
-| Spanisch (Mexiko)|`es-MX` |-|  -   |✔|✔|
-| Türkisch | `tr-TR` |✔|-|-|Nur Stimmung|
+| Spanisch (Mexiko)|`es-MX` |-|-|✔|✔|
+| Tamilisch | `ta-IN`|-|-|-|-|
+| Telugu | `te-IN`|-|-|-|-|
+| Türkisch | `tr-TR` |✔|✔|-|Nur Stimmung|
+
+
+
 
 Die Sprachunterstützung variiert für [vordefinierte Entitäten](luis-reference-prebuilt-entities.md) und [vordefinierte Domänen](luis-reference-prebuilt-domains.md).
 
@@ -77,22 +84,28 @@ Hybridsprachen kombinieren Wörter aus zwei Kulturen, z.B. Englisch und Chinesis
 ## <a name="tokenization"></a>Tokenisierung
 Zum Ausführen von maschinellem Lernen unterteilt LUIS eine Äußerung basierend auf der Kultur in [Token](luis-glossary.md#token).
 
-|Sprache|  Jedes Leerzeichen oder Sonderzeichen | Zeichenebene|Zusammengesetzte Wörter|[Zurückgegebene tokenisierte Entität](luis-concept-data-extraction.md#tokenized-entity-returned)
-|--|:--:|:--:|:--:|:--:|
-|Arabisch|||||
-|Chinesisch||✔||✔|
-|Niederländisch|||✔|✔|
-|Englisch (en-us)|✔ ||||
-|Französisch (fr-FR)|✔||||
-|Französisch (fr-CA)|✔||||
-|Deutsch|||✔|✔|
-| Hindi |✔|-|-|-|-|
-|Italienisch|✔||||
-|Japanisch||||✔|
-|Koreanisch||✔||✔|
-|Portugiesisch (Brasilien)|✔||||
-|Spanisch (es-ES)|✔||||
-|Spanisch (es-MX)|✔||||
+|Sprache|  Jedes Leerzeichen oder Sonderzeichen | Zeichenebene|Zusammengesetzte Wörter
+|--|:--:|:--:|:--:|
+|Arabisch|✔|||
+|Chinesisch||✔||
+|Niederländisch|✔||✔|
+|Englisch (en-us)|✔ |||
+|Französisch (fr-FR)|✔|||
+|Französisch (fr-CA)|✔|||
+|Deutsch|✔||✔|
+|Gujarati|✔|||
+|Hindi|✔|||
+|Italienisch|✔|||
+|Japanisch|||✔
+|Koreanisch||✔||
+|Marathi|✔|||
+|Portugiesisch (Brasilien)|✔|||
+|Spanisch (es-ES)|✔|||
+|Spanisch (es-MX)|✔|||
+|Tamilisch|✔|||
+|Telugu|✔|||
+|Türkisch|✔|||
+
 
 ### <a name="custom-tokenizer-versions"></a>Benutzerdefinierte Tokenizer-Versionen
 
@@ -102,6 +115,9 @@ Die folgenden Kulturen weisen benutzerdefinierte Tokenizer-Versionen auf:
 |--|--|--|
 |Deutsch<br>`de-de`|1.0.0|Wendet die Tokenisierung auf Wörter an, indem sie mithilfe eines auf maschinellem Lernen basierenden Tokenizer getrennt werden, der versucht, zusammengesetzte Wörter in ihre einzelnen Komponenten zu zerlegen.<br>Wenn ein Benutzer `Ich fahre einen krankenwagen` als Äußerung eingibt, wird sie in `Ich fahre einen kranken wagen` geändert. Ermöglicht das unabhängige Markieren von `kranken` und `wagen` als unterschiedliche Entitäten.|
 |Deutsch<br>`de-de`|1.0.2|Wendet die Tokenisierung auf Wörter an, indem bei Leerzeichen eine Trennung erfolgt.<br> Wenn ein Benutzer `Ich fahre einen krankenwagen` als Äußerung eingibt, bleibt es ein einzelnes Token. Daher ist `krankenwagen` als eine einzelne Entität gekennzeichnet. |
+|Niederländisch<br>`de-de`|1.0.0|Wendet die Tokenisierung auf Wörter an, indem sie mithilfe eines auf maschinellem Lernen basierenden Tokenizer getrennt werden, der versucht, zusammengesetzte Wörter in ihre einzelnen Komponenten zu zerlegen.<br>Wenn ein Benutzer `Ik ga naar de kleuterschool` als Äußerung eingibt, wird sie in `Ik ga naar de kleuter school` geändert. Ermöglicht das unabhängige Markieren von `kleuter` und `school` als unterschiedliche Entitäten.|
+|Niederländisch<br>`de-de`|1.0.1|Wendet die Tokenisierung auf Wörter an, indem bei Leerzeichen eine Trennung erfolgt.<br> Wenn ein Benutzer `Ik ga naar de kleuterschool` als Äußerung eingibt, bleibt es ein einzelnes Token. Daher ist `kleuterschool` als eine einzelne Entität gekennzeichnet. |
+
 
 ### <a name="migrating-between-tokenizer-versions"></a>Migrieren zwischen Tokenizer-Versionen
 <!--

@@ -4,16 +4,16 @@ description: Verwenden eines simulierten TPM auf einem virtuellen Linux-Computer
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/01/2019
+ms.date: 3/2/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6bb1282212ccff45f179b8750e3ed8aec27d129e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b62f551e2532e0205159358b3618695524ae85c8
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76511058"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666705"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Erstellen und Bereitstellen eines IoT Edge-Geräts mit einem virtuellen TPM auf einem virtuellen Linux-Computer
 
@@ -156,6 +156,9 @@ Nachdem Sie den Device Provisioning-Dienst ausgeführt haben, kopieren Sie den W
 Rufen Sie die Bereitstellungsinformationen von Ihrem virtuellen Computer ab, und verwenden Sie diese, um eine individuelle Registrierung im Device Provisioning-Dienst zu erstellen.
 
 Wenn Sie eine Registrierung im DPS erstellen, haben Sie die Möglichkeit zum Angeben von **Anfänglicher Status von Gerätezwilling**. Im Gerätezwilling können Sie Tags zum Gruppieren von Geräten nach jeder beliebigen Metrik, z.B. Region, Umgebung, Speicherort oder Geräte, festlegen, die Sie in Ihrer Projektmappe benötigen. Diese Tags werden zum Erstellen von [automatischen Bereitstellungen](how-to-deploy-monitor.md) verwendet.
+
+> [!TIP]
+> In der Azure CLI können Sie eine [Registrierung](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) oder eine [Registrierungsgruppe](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) erstellen und mithilfe des Flags **edge-enabled** angeben, dass ein Gerät oder eine Gruppe von Geräten ein IoT Edge-Gerät ist.
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Instanz des IoT Hub Device Provisioning Service.
 

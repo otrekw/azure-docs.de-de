@@ -4,16 +4,16 @@ description: Verwenden eines Azure IoT Edge-Geräts als transparentes Gateway, d
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/30/2019
+ms.date: 04/03/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6069e0782f69d0dfb73d9be2998cbb11d59d7d22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b3aeff595671c5f924d01599b572b6b938ef09d
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79529168"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666666"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurieren eines IoT Edge-Geräts als transparentes Gateway
 
@@ -42,7 +42,7 @@ Sie können eine beliebige Zertifikatinfrastruktur erstellen, die die für Ihre 
 >[!NOTE]
 >Der in diesem Artikel verwendete Begriff „Stammzertifizierungsstelle“ (Stamm-ZS) bezieht sich auf die oberste Zertifizierungsstelle des öffentlichen Zertifikats der PKI-Vertrauenskette. Es muss nicht unbedingt der Zertifikatstamm einer fremden Zertifizierungsstelle sein. In vielen Fällen ist es tatsächlich nur ein öffentliches Zertifikat einer Zwischenzertifizierungsstelle.
 
-Das Gateway legt dem nachgeschalteten Gerät während der Initiierung der Verbindung das Zertifizierungsstellenzertifikat des eigenen IoT Edge-Geräts vor. Das nachgeschaltete Gerät überprüft, ob das Zertifizierungsstellenzertifikat des IoT Edge-Geräts mit dem Zertifikat der Stammzertifizierungsstelle signiert wurde. Durch diesen Vorgang kann das nachgeschaltete Gerät bestätigen, dass das Gateway aus einer vertrauenswürdigen Quelle stammt.
+Der IoT Edge-Sicherheitsdaemon verwendet das Zertifizierungsstellenzertifikat für IoT Edge-Geräte zum Signieren eines Zertifikats der Workloadzertifizierungsstelle, das wiederum ein Serverzertifikat für IoT Edge Hub signiert. Das Gateway legt dem nachgeschalteten Gerät während der Initiierung der Verbindung sein Serverzertifikat vor. Das nachgeschaltete Gerät überprüft, ob das Serverzertifikat Teil einer Zertifikatskette ist, die zum Zertifikat der Stammzertifizierungsstelle führt. Durch diesen Vorgang kann das nachgeschaltete Gerät bestätigen, dass das Gateway aus einer vertrauenswürdigen Quelle stammt. Weitere Informationen finden Sie unter [Grundlegendes zur Verwendung von Zertifikaten durch Azure IoT Edge](iot-edge-certs.md).
 
 In den folgenden Schritten werden Sie durch den Prozess zum Erstellen der Zertifikate und zum Installieren an den richtigen Orten auf dem Gateway geführt. Sie können mit jedem beliebigen Computer Zertifikate generieren und sie dann auf Ihr IoT Edge-Gerät kopieren.
 

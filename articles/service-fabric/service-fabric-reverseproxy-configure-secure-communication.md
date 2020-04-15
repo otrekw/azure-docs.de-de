@@ -5,12 +5,12 @@ author: kavyako
 ms.topic: conceptual
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: 4cfeaf34a39231ffa91ea970a61f66632bae40c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61a8d1e766ea576f7d2984add239b0da7e2e8183
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79236630"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617107"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Herstellen einer Verbindung mit einem sicheren Dienst mit dem Reverseproxy
 
@@ -77,7 +77,7 @@ Geben Sie **ApplicationCertificateValidationPolicy** mit dem Wert **None** im Ab
 
    Um die Liste der allgemeinen Namen des Diensts und der Fingerabdrücke des Ausstellers anzugeben, fügen Sie wie weiter unten dargestellt einen [**ApplicationGateway/Http/ServiceCommonNameAndIssuer**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttpservicecommonnameandissuer)-Abschnitt unter **fabricSettings** ein. Im Array **parameters** können mehrere Paare von allgemeinen Namen des Zertifikats und Fingerabdrücken des Ausstellers hinzugefügt werden. 
 
-   Wenn der Endpunkt, mit dem der Reverseproxy eine Verbindung herstellt, ein Zertifikat bereitstellt, dessen allgemeiner Name und Fingerabdruck des Ausstellers mit einem der hier angegebenen Werte übereinstimmt, wird der SSL-Kanal eingerichtet. 
+   Wenn der Endpunkt, mit dem der Reverseproxy eine Verbindung herstellt, ein Zertifikat bereitstellt, dessen allgemeiner Name und Fingerabdruck des Ausstellers mit einem der hier angegebenen Werte übereinstimmt, wird der TLS-Kanal eingerichtet.
    Bei Nichtübereinstimmung der Zertifikatdetails gibt der Reverseproxy für die Anforderung des Clients eine Fehlermeldung mit dem Statuscode 502 (Ungültiges Gateway) aus. Zudem enthält die HTTP-Statuszeile den Ausdruck „Invalid SSL Certificate“. 
 
    ```json
@@ -143,7 +143,7 @@ Geben Sie **ApplicationCertificateValidationPolicy** mit dem Wert **None** im Ab
    }
    ```
 
-   Wenn der Fingerabdruck des Serverzertifikats in diesem Konfigurationseintrag aufgeführt ist, stellt der Reverseproxy die SSL-Verbindung her. Andernfalls beendet er die Verbindung und gibt für die Anforderung des Clients eine Fehlermeldung mit dem Statuscode 502 (Ungültiges Gateway) aus. Zudem enthält die HTTP-Statuszeile den Ausdruck „Invalid SSL Certificate“.
+   Wenn der Fingerabdruck des Serverzertifikats in diesem Konfigurationseintrag aufgeführt ist, stellt der Reverseproxy die TLS-Verbindung her. Andernfalls beendet er die Verbindung und gibt für die Anforderung des Clients eine Fehlermeldung mit dem Statuscode 502 (Ungültiges Gateway) aus. Zudem enthält die HTTP-Statuszeile den Ausdruck „Invalid SSL Certificate“.
 
 ## <a name="endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints"></a>Logik der Endpunktauswahl, wenn Dienste sichere und nicht sichere Endpunkte bereitstellen
 Service Fabric unterstützt die Konfiguration mehrerer Endpunkte für einen Dienst. Weitere Informationen finden Sie unter [Angeben von Ressourcen in einem Dienstmanifest](service-fabric-service-manifest-resources.md).
@@ -173,12 +173,12 @@ Der Reverseproxy wählt einen der Endpunkte zum Weiterleiten der Anforderung bas
 > Wenn im **SecureOnlyMode** der Client ein **ListenerName**-Element angegeben hat, das einem HTTP-Endpunkt (ungesichert) entspricht, gibt der Reverseproxy für die Anforderung eine Fehlermeldung mit dem HTTP-Statuscode 404 (Nicht gefunden) aus.
 
 ## <a name="setting-up-client-certificate-authentication-through-the-reverse-proxy"></a>Einrichten der Clientzertifikatauthentifizierung über den Reverseproxy
-Die SSL-Terminierung erfolgt auf dem Reverseproxy, und alle Daten des Clientzertifikats gehen verloren. Damit die Dienste die Clientzertifikatauthentifizierung durchführen, legen Sie die Einstellung **ForwardClientCertificate** im Abschnitt [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) fest.
+Die TLS-Terminierung erfolgt auf dem Reverseproxy, und alle Daten des Clientzertifikats gehen verloren. Damit die Dienste die Clientzertifikatauthentifizierung durchführen, legen Sie die Einstellung **ForwardClientCertificate** im Abschnitt [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) fest.
 
-1. Wenn **ForwardClientCertificate** auf **false** festgelegt ist, fordert der Reverseproxy das Clientzertifikat während des SSL-Handshakes mit dem Client nicht an.
+1. Wenn **ForwardClientCertificate** auf **false** festgelegt ist, fordert der Reverseproxy das Clientzertifikat während des TLS-Handshakes mit dem Client nicht an.
 Dies ist das Standardverhalten.
 
-2. Wenn **ForwardClientCertificate** auf **true** festgelegt ist, fordert der Reverseproxy das Clientzertifikat während des SSL-Handshakes mit dem Client an.
+2. Wenn **ForwardClientCertificate** auf **true** festgelegt ist, fordert der Reverseproxy das Clientzertifikat während des TLS-Handshakes mit dem Client an.
 Dann leitet er die Daten des Clientzertifikats in einem benutzerdefinierten HTTP-Header mit dem Namen **X-Client-Certificate** weiter. Der Headerwert ist die Base64-codierte Zeichenfolge im PEM-Format des Clientzertifikats. Der Dienst kann die Anforderung nach dem Überprüfen der Zertifikatdaten mit dem entsprechenden Statuscode annehmen oder ablehnen.
 Wenn der Client kein Zertifikat bereitstellt, leitet der Reverseproxy einen leeren Header weiter. Die weitere Verarbeitung erfolgt durch den Dienst.
 

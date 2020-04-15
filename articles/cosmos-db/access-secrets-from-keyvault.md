@@ -9,14 +9,17 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 55e6bbc338c1ac6f9ef935b4a3a05c32f2b5e9f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 225221635f978e3d70cec4ce7e9d78d6b100b4fd
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72755226"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618758"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Sichern von Azure Cosmos-Schlüsseln mit Azure Key Vault 
+
+>[!IMPORTANT]
+> Es wird empfohlen, mit einer [systemseitig zugewiesenen verwalteten Identität](managed-identity-based-authentication.md) auf Azure Cosmos DB-Schlüssel zuzugreifen. Wenn Ihr Dienst keine verwalteten Identitäten nutzen kann, verwenden Sie die [zertifikatbasierte Lösung](certificate-based-authentication.md). Wenn sowohl verwaltete Identitäten als auch die zertifikatbasierte Lösung nicht Ihren Anforderungen entsprechen, verwenden Sie die Key Vault-Lösung unten.
 
 Wenn Sie Azure Cosmos DB für Ihre Anwendungen verwenden, können Sie über den Endpunkt und den Schlüssel in der Konfigurationsdatei der Anwendung auf die Datenbank, Sammlungen und Dokumente zugreifen.  Es ist jedoch nicht sicher, Schlüssel und die URL direkt in den Anwendungscode zu integrieren, da dieser im Klartextformat für alle Benutzer verfügbar ist. Sie müssen sicherstellen, dass der Endpunkt und die Schlüssel über einen sicheren Mechanismus verfügbar sind. An dieser Stelle unterstützt Sie Azure Key Vault Sie bei der sicheren Speicherung und Verwaltung von Anwendungsgeheimnissen.
 
@@ -30,11 +33,11 @@ Die folgenden Schritte sind erforderlich, Azure Cosmos DB-Zugriffsschlüssel in 
 
 ## <a name="create-a-key-vault"></a>Erstellen eines Schlüsseltresors
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.  
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.  
 2. Wählen Sie **Ressource erstellen > Sicherheit > Key Vault** aus.  
 3. Geben Sie im Abschnitt **Schlüsseltresor erstellen** folgende Informationen ein:  
-   * **Name**: Geben Sie einen eindeutigen Namen für Ihren Key Vault an.  
-   * **Abonnement**: Wählen Sie das zu verwendende Abonnement aus.  
+   * **Name:** Geben Sie einen eindeutigen Namen für Ihren Schlüsseltresor an.  
+   * **Abonnement:** Wählen Sie das zu verwendende Abonnement aus.  
    * Klicken Sie unter **Ressourcengruppe** auf **Neu erstellen**, und geben Sie einen Ressourcengruppennamen ein.  
    * Wählen Sie im Pulldownmenü „Standort“ einen Standort aus.  
    * Behalten Sie bei den anderen Optionen die Standardeinstellungen bei.  

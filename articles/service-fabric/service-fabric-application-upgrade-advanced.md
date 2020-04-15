@@ -3,12 +3,12 @@ title: 'Anwendungsupgrade: Weiterführende Themen'
 description: Dieser Artikel behandelt einige weiterführende Themen in Bezug auf Upgrades von Service Fabric-Anwendungen.
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 09f3fdf1f26a13c6722eb039e132256f33be38ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 182ab6dc1663e160561b8941ebf3a36b5af3d950
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76845433"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422812"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric-Anwendungsupgrade: Erweiterte Themen
 
@@ -20,9 +20,9 @@ Entsprechend können im Rahmen eines Upgrades Diensttypen auch aus einer Anwendu
 
 ## <a name="avoid-connection-drops-during-stateless-service-planned-downtime-preview"></a>Vermeiden von Verbindungsabbrüchen bei geplanten Ausfallzeiten für zustandslose Dienste (Vorschau)
 
-Bei geplanten Ausfallzeiten für zustandslose Instanzen (z. B. Anwendungs-/Clusterupgrades oder Knotendeaktivierung) können Verbindungen abgebrochen werden, weil der bereitgestellte Endpunkt nach dem Ausfall entfernt wird.
+Bei geplanten Ausfallzeiten für zustandslose Instanzen (z. B. Anwendungs-/Clusterupgrades oder Knotendeaktivierung) können Verbindungen abgebrochen werden, weil der verfügbar gemachte Endpunkt nach dem Ausfall der Instanz entfernt wird und hierdurch das Schließen der Verbindung erzwungen wird.
 
-Um dies zu vermeiden, konfigurieren Sie die Funktion *RequestDrain* (Vorschau), indem Sie in der Dienstkonfiguration ein Replikat der *Instanzschließungs-Verzögerungsdauer* hinzufügen. Dadurch wird sichergestellt, dass der von der zustandslosen Instanz angekündigte Endpunkt entfernt wird, *bevor* der Verzögerungstimer zum Schließen der Instanz gestartet wird. Diese Verzögerung ermöglicht das ordnungsgemäße Entladen vorhandener Anforderungen, bevor die Instanz tatsächlich ausfällt. Clients werden durch die Rückruffunktion über die Endpunktänderung benachrichtigt, sodass sie den Endpunkt erneut auflösen und damit vermeiden können, dass neue Anforderungen an die Instanz gesendet werden.
+Um dies zu vermeiden, konfigurieren Sie das Feature *RequestDrain* (Vorschauversion). Zu diesem Zweck fügen Sie in der Dienstkonfiguration eine *Instanzschließungs-Verzögerungsdauer* hinzu, um das Entladen beim Empfangen von Anforderungen von anderen Diensten im Cluster zuzulassen, und verwenden Sie zum Aktualisieren von Endpunkten einen Reverseproxy oder API-Auflösung mit dem Benachrichtigungsmodell. Dadurch wird sichergestellt, dass der von der zustandslosen Instanz angekündigte Endpunkt entfernt wird, *bevor* die Verzögerung vor dem Schließen der Instanz gestartet wird. Diese Verzögerung ermöglicht das ordnungsgemäße Entladen vorhandener Anforderungen, bevor die Instanz tatsächlich ausfällt. Clients werden beim Starten der Verzögerung von einer Rückruffunktion über die Endpunktänderung benachrichtigt, sodass sie den Endpunkt erneut auflösen und damit vermeiden können, dass neue Anforderungen an die Instanz gesendet werden, die ausfällt.
 
 ### <a name="service-configuration"></a>Dienstkonfiguration
 
@@ -50,24 +50,8 @@ Es gibt mehrere Möglichkeiten, die Verzögerung auf der Dienstseite zu konfigur
 
 ### <a name="client-configuration"></a>Clientkonfiguration
 
-Um Benachrichtigungen zu erhalten, wenn sich ein Endpunkt geändert hat, können Clients einen Rückruf (`ServiceManager_ServiceNotificationFilterMatched`) wie folgt registrieren: 
-
-```csharp
-    var filterDescription = new ServiceNotificationFilterDescription
-    {
-        Name = new Uri(serviceName),
-        MatchNamePrefix = true
-    };
-    fbClient.ServiceManager.ServiceNotificationFilterMatched += ServiceManager_ServiceNotificationFilterMatched;
-    await fbClient.ServiceManager.RegisterServiceNotificationFilterAsync(filterDescription);
-
-private static void ServiceManager_ServiceNotificationFilterMatched(object sender, EventArgs e)
-{
-      // Resolve service to get a new endpoint list
-}
-```
-
-Die Änderungsbenachrichtigung ist ein Hinweis darauf, dass sich die Endpunkte geändert haben. Der Client sollte die Endpunkte erneut auflösen und die Endpunkte, nicht mehr verwenden, die nicht mehr angekündigt werden, da sie bald ausfallen werden.
+Um Benachrichtigungen zu erhalten, wenn sich ein Endpunkt geändert hat, sollten Clients einen Rückruf registrieren (siehe [ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)).
+Die Änderungsbenachrichtigung ist ein Hinweis darauf, dass sich die Endpunkte geändert haben. Der Client sollte die Endpunkte erneut auflösen und die Endpunkte nicht mehr verwenden, die nicht mehr angekündigt werden, da sie bald ausfallen werden.
 
 ### <a name="optional-upgrade-overrides"></a>Optionale Upgradeüberschreibungen
 
@@ -80,6 +64,16 @@ Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManife
 ```
 
 Die Verzögerungsdauer gilt nur für die aufgerufene Upgradeinstanz und ändert die Konfigurationen einzelner Dienst Verzögerungen nicht anderweitig. Beispielsweise können Sie diese Option verwenden, um eine Verzögerung von `0` anzugeben, um vorkonfigurierte Upgradeverzögerungen zu überspringen.
+
+> [!NOTE]
+> Die Einstellung zum Entladen von Anforderungen wird für Anforderungen von Azure Load Balancer nicht berücksichtigt. Die Einstellung wird nicht berücksichtigt, wenn der aufrufende Dienst beschwerdebasierte Auflösung verwendet.
+>
+>
+
+> [!NOTE]
+> Dieses Feature kann in vorhandenen Diensten mit dem oben erwähnten Cmdlet „Update-ServiceFabricService“ konfiguriert werden, wenn die Clustercodeversion 7.1.xxx oder höher lautet.
+>
+>
 
 ## <a name="manual-upgrade-mode"></a>Manueller Upgrademodus
 

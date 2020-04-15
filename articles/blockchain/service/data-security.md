@@ -4,12 +4,12 @@ description: Datenzugriff und Sicherheitskonzepte des Azure Blockchain-Diensts
 ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
-ms.openlocfilehash: 06bf4e0fa4037b07505a4f816fc7af56c14576d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 989d9f2afad30517a85185878d694c0b6640e987
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75982227"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879597"
 ---
 # <a name="azure-blockchain-service-security"></a>Sicherheit in Azure Blockchain
 
@@ -27,7 +27,7 @@ Benutzerdaten werden in Azure Storage gespeichert. Benutzerdaten werden im Sinne
 
 ## <a name="authentication"></a>Authentifizierung
 
-Transaktionen können über einen RPC-Endpunkt an Blockchainknoten gesendet werden. Clients kommunizieren mit einem Transaktionsknoten mithilfe eines Reverseproxyservers, der die Benutzerauthentifizierung durchführt und Daten über SSL verschlüsselt.
+Transaktionen können über einen RPC-Endpunkt an Blockchainknoten gesendet werden. Clients kommunizieren mit einem Transaktionsknoten mithilfe eines Reverseproxyservers, der die Benutzerauthentifizierung durchführt und Daten über TLS verschlüsselt.
 
 ![Authentifizierungsdiagramm](./media/data-security/authentication.png)
 

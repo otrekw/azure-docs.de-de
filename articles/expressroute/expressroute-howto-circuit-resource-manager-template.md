@@ -2,18 +2,17 @@
 title: 'Azure ExpressRoute-Vorlage: Erstellen Sie eine ExpressRoute-Verbindung.'
 description: Erstellen, Bereitstellen, Löschen und Aufheben der Bereitstellung einer ExpressRoute-Verbindung.
 services: expressroute
-author: cherylmc
+author: charwen
 ms.service: expressroute
 ms.topic: article
 ms.date: 11/13/2019
-ms.author: cherylmc
-ms.reviewer: ganesr
-ms.openlocfilehash: 78da84a462566cca1a2800174849159ace8dd6dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: charwen
+ms.openlocfilehash: ac2fb2f884feb0fbe6fbb1731ebe7c8bdad5114b
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75981135"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616509"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Erstellen einer ExpressRoute-Verbindung mithilfe einer Azure Resource Manager-Vorlage
 
@@ -64,7 +63,7 @@ So erstellen Sie eine ExpressRoute-Verbindung durch Bereitstellen einer Vorlage:
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * Der **SKU-Tarif** bestimmt, ob eine ExpressRoute-Verbindung eine [lokale](expressroute-faqs.md#expressroute-local), Standard- oder [Premium](expressroute-faqs.md#expressroute-premium)-Verbindung ist. Sie können *Lokal*, *Standard* oder *Premium* angeben.
+   * Der **SKU-Tarif** bestimmt, ob eine ExpressRoute-Verbindung eine [lokale](expressroute-faqs.md#expressroute-local), Standard- oder [Premium](expressroute-faqs.md#expressroute-premium)-Verbindung ist. Sie können *Lokal*, *Standard oder *Premium* angeben.
    * Die **SKU-Familie** bestimmt den Abrechnungstyp. Sie können *Metereddata* für einen Volumentarif und *Unlimiteddata* für einen Plan mit Datenflatrate auswählen. Sie können den Abrechnungstyp von *Metereddata* in *Unlimiteddata* ändern, nicht jedoch umgekehrt (*Unlimiteddata* in *Metereddata*). Eine *lokale* Verbindung kann nur vom Typ *Unlimiteddata* sein.
    * Der **Peeringort** ist der physische Standort, an dem Ihr Peering mit Microsoft stattfindet.
 

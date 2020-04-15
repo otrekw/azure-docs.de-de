@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: ccf258594aa68fc9b5d0189c9ada640078e0ba6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77b4dd4c0efbe6d03e64865f18c2c87614aaecb5
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76514866"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632522"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung von VMware zu Azure
 
@@ -35,7 +35,6 @@ Die folgende Tabelle und Grafik enthält eine Übersicht über die Komponenten, 
 ![Komponenten](./media/vmware-azure-architecture/arch-enhanced.png)
 
 
-
 ## <a name="replication-process"></a>Replikationsprozess
 
 1. Wenn Sie die Replikation für einen virtuellen Computer aktivieren, beginnt die erste Replikation in Azure Storage mithilfe der angegebenen Replikationsrichtlinie. Beachten Sie Folgendes:
@@ -46,21 +45,30 @@ Die folgende Tabelle und Grafik enthält eine Übersicht über die Komponenten, 
         - **App-konsistente Momentaufnahmen**: Abhängig von Ihren App-Anforderungen können alle 1 bis 12 Stunden App-konsistente Momentaufnahmen erstellt werden. Bei den Momentaufnahmen handelt es sich um Azure-Blob-Standardmomentaufnahmen. Der auf einem virtuellen Computer ausgeführte Mobility Service-Agent fordert eine VSS-Momentaufnahme in Übereinstimmung mit dieser Einstellung an und markiert diesen Zeitpunkt als anwendungskonsistenten Punkt im Replikationsstrom.
 
 2. Der Datenverkehr wird über das Internet auf öffentliche Endpunkte von Azure Storage repliziert. Alternativ hierzu können Sie Azure ExpressRoute mit [Microsoft-Peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) verwenden. Das Replizieren von Datenverkehr über ein virtuelles privates Site-to-Site-Netzwerk (VPN) von einem lokalen Standort nach Azure wird nicht unterstützt.
-3. Die Replikation von Deltaänderungen in Azure beginnt, nachdem die erste Replikation abgeschlossen wurde. Nachverfolgte Änderungen für einen Computer werden an den Prozessserver gesendet.
+3. Der erste Replikationsvorgang stellt sicher, dass die gesamten Daten auf dem Computer zum Zeitpunkt der Replikation an Azure gesendet werden. Die Replikation von Deltaänderungen in Azure beginnt, nachdem die erste Replikation abgeschlossen wurde. Nachverfolgte Änderungen für einen Computer werden an den Prozessserver gesendet.
 4. Die Kommunikation erfolgt folgendermaßen:
 
     - Virtuelle Computer kommunizieren mit dem lokalen Konfigurationsserver über den Port HTTPS 443 für eingehenden Datenverkehr, um die Replikationsverwaltung auszuführen.
     - Der Konfigurationsserver orchestriert die Replikation mit Azure über Port HTTPS 443 für ausgehenden Datenverkehr.
     - Virtuelle Computer senden Replikationsdaten an den Prozessserver (der auf dem Konfigurationsserver ausgeführt wird) über Port HTTPS 9443 für eingehenden Datenverkehr. Dieser Port kann geändert werden.
-    - Der Prozessserver empfängt Replikationsdaten, optimiert und verschlüsselt sie und sendet sie über den ausgehenden Port 443 an den Azure-Speicher.
+    - Der Prozessserver empfängt Replikationsdaten, optimiert und verschlüsselt sie und sendet sie über den ausgehenden Port 443 an Azure Storage.
 5. Die Replikationsdatenprotokolle werden zunächst in einem Cachespeicherkonto in Azure gespeichert. Diese Protokolle werden dann verarbeitet, und die Daten werden auf einem verwalteten Azure-Datenträger (als asr-Seed-Datenträger bezeichnet) gespeichert. Die Wiederherstellungspunkte werden auf diesem Datenträger erstellt.
-
-
-
 
 **Replikationsprozess von VMware zu Azure**
 
 ![Replikationsprozess](./media/vmware-azure-architecture/v2a-architecture-henry.png)
+
+## <a name="resynchronization-process"></a>Neusynchronisierungsprozess
+
+1. Manchmal können bei der ersten Replikation oder beim Übertragen von Deltaänderungen Probleme bei der Netzwerkkonnektivität zwischen dem Quellcomputer und dem Prozessserver oder zwischen dem Prozessserver und Azure auftreten. Beide Arten von Problemen können vorübergehend zu Fehlern bei der Datenübertragung an Azure führen.
+2. Um Probleme bei der Datenintegrität zu vermeiden und die Datenübertragungskosten zu minimieren, markiert Site Recovery einen Computer für die erneute Synchronisierung.
+3. Ein Computer kann auch in folgenden Situationen für die erneute Synchronisierung markiert werden, um die Konsistenz zwischen dem Quellcomputer und den in Azure gespeicherten Daten aufrechtzuerhalten.
+    - Wenn das Herunterfahren eines Computers erzwungen wird
+    - Wenn auf einem Computer Konfigurationsänderungen durchgeführt werden, z. B. eine Änderung der Datenträgergröße (Ändern der Größe des Datenträgers von 2 TB in 4 TB)
+4. Bei der Neusynchronisierung werden nur Deltadaten an Azure gesendet. Die Datenübertragung zwischen lokalen Systemen und Azure wird durch die Berechnung von Prüfsummen der Daten auf dem Quellcomputer und der in Azure gespeicherten Daten minimiert.
+5. Standardmäßig ist die Neusynchronisierung so geplant, dass sie automatisch außerhalb der Geschäftszeiten durchgeführt wird. Wenn Sie nicht auf die Standardneusynchronisierung außerhalb der Geschäftszeiten warten möchten, können Sie eine VM manuell neu synchronisieren. Rufen Sie dafür das Azure-Portal auf, und klicken Sie auf „VM“ > **Resynchronisieren**.
+6. Wenn die standardmäßige Neusynchronisierung außerhalb der Geschäftszeiten fehlschlägt und ein manueller Eingriff erforderlich ist, wird ein Fehler auf dem jeweiligen Computer im Azure-Portal generiert. Sie können den Fehler beheben und die Neusynchronisierung manuell auslösen.
+7. Nach Abschluss der Neusynchronisierung wird die Replikation der Deltaänderungen fortgesetzt.
 
 ## <a name="failover-and-failback-process"></a>Failover- und Failbackprozesse
 

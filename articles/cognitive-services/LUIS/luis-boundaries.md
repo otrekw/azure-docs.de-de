@@ -1,22 +1,14 @@
 ---
 title: Grenzwerte – LUIS
-titleSuffix: Azure Cognitive Services
 description: Dieser Artikel behandelt die bekannten Einschränkungen von Azure Cognitive Services Language Understanding (LUIS). Für LUIS gelten verschiedene Einschränkungsbereiche. Die Modelleinschränkung steuert Absichten, Entitäten und Features in LUIS. Kontingentgrenzen basierend auf dem Schlüsseltyp. Tastenkombinationen steuern die LUIS-Website.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 11/07/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: d584b00caef628eb9dfd085b1fdce2bb7b353988
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: 4aa69cb0fd36fe5bf4ea2928022aea602b8830d6
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218836"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618867"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Grenzen für das LUIS-Modell und die Schlüssel
 Für LUIS gelten verschiedene Einschränkungsbereiche. Der erste umfasst die [Modelleinschränkung](#model-boundaries), mit der Absichten, Entitäten und Features in LUIS gesteuert werden. Der zweite Bereich sind [Kontingentlimits](#key-limits), die auf dem Schlüsseltyp basieren. Ein dritter Bereich umfasst die [Tastenkombinationen](#keyboard-controls) zum Steuern der LUIS-Website. Ein vierter Bereich bezieht sich auf die [Zuordnung der Regionen weltweit](luis-reference-regions.md) zwischen der LUIS-Erstellungswebsite und den LUIS-[Endpunkt](luis-glossary.md#endpoint)-APIs.
@@ -40,7 +32,7 @@ Wenn Ihre App die LUIS-Modellgrenzwerte und -grenzen überschreitet, sollten Sie
 | [Vorschau – Entitäten vom Typ „dynamische Liste“](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 Listen mit ca. 1.000 pro Anforderung für den Endpunkt der Abfragevorhersage|
 | [Muster](luis-concept-patterns.md)|500 Muster pro Anwendung.<br>Muster dürfen maximal 400 Zeichen lang sein.<br>3 Pattern.any-Entitäten pro Muster<br>Maximal 2 geschachtelte optionale Texte im Muster|
 | [Pattern.any-Entitäten](./luis-concept-entity-types.md)|100 pro Anwendung, 3 Pattern.any-Entitäten pro Muster |
-| [Begriffsliste][phrase-list]|500 Ausdruckslisten Nicht austauschbare Ausdrucksliste mit maximal 5.000 Ausdrücken. Austauschbare Ausdrucksliste mit maximal 50.000 Ausdrücken. Die maximale Anzahl von Ausdrücken pro Anwendung beträgt 500.000 Ausdrücke.|
+| [Begriffsliste][phrase-list]|500 Ausdruckslisten 10 globale Ausdruckslisten aufgrund der Funktionsbeschränkung des Modells. Nicht austauschbare Ausdrucksliste mit maximal 5.000 Ausdrücken. Austauschbare Ausdrucksliste mit maximal 50.000 Ausdrücken. Die maximale Anzahl von Ausdrücken pro Anwendung beträgt 500.000 Ausdrücke.|
 | [Vordefinierte Entitäten](./luis-prebuilt-entities.md) | Keine Begrenzung|
 | [RegEx-Entitäten](./luis-concept-entity-types.md)|20 Entitäten<br>max. 500 Zeichen pro RegEx-Entitätsmuster|
 | [Rollen](luis-concept-roles.md)|300 Rollen pro Anwendung. 10 Rollen pro Entität|
@@ -77,26 +69,41 @@ Verwenden Sie die folgenden Zeichen in den folgenden Namen.
 |Absicht, Entität und Rollennamen|`:`<br>`$` <br> `&`|
 |Versionsname|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|
 
-## <a name="key-usage"></a>Schlüsselverwendung
+## <a name="resource-usage-and-limits"></a>Ressourcennutzung und Limits
 
-Language Understanding verfügt über separate Schlüssel, einen Typ für die Erstellung und einen Typ für die Abfrage des Vorhersageendpunkts. Weitere Informationen zu den Unterschieden zwischen Schlüsseltypen finden Sie unter [Erstellungsschlüssel und Endpunktschlüssel für Vorhersageabfragen in LUIS](luis-concept-keys.md).
+Language Understanding verfügt über separate Ressourcen, einen Typ für die Erstellung und einen Typ für die Abfrage des Vorhersageendpunkts. Weitere Informationen zu den Unterschieden zwischen Schlüsseltypen finden Sie unter [Erstellungsschlüssel und Endpunktschlüssel für Vorhersageabfragen in LUIS](luis-concept-keys.md).
 
 <a name="key-limits"></a>
 
-## <a name="resource-key-limits"></a>Grenzen von Ressourcenschlüsseln
+### <a name="authoring-resource-limits"></a>Erstellungsressourcenlimits
 
-Für Ressourcenschlüssel gelten verschiedene Grenzwerte für die Verwendung beim Erstellen und auf Endpunkten. Der LUIS-Endpunktschlüssel für Vorhersageabfragen gilt ausschließlich für Endpunktabfragen.
+Verwenden Sie die _kind_ `LUIS.Authoring`, wenn Sie Ressourcen im Azure-Portal filtern. In LUIS gilt die Beschränkung von 500 Anwendungen pro Azure-Erstellungsressource.
 
-* 500 Anwendungen pro Azure-Erstellungsressource
+|Erstellungsressource|Erstellungs-TPS|
+|--|--|
+|Starter|1 Mio./Monat, 5/Sekunde|
+|F0: Free-Tarif |1 Mio./Monat, 5/Sekunde|
 
-|Schlüssel|Erstellen|Endpunkt|Zweck|
-|--|--|--|--|
-|Starter|1 Mio./Monat, 5/Sekunde|1\.000/Monat, 5/Sekunde|Erstellen Ihrer LUIS-App|
-|F0: Free-Tarif |1 Mio./Monat, 5/Sekunde|10.000/Monat, 5/Sekunde|Abfragen Ihres LUIS-Endpunkts|
-|S0: Basic-Tarif|-|50/Sekunde|Abfragen Ihres LUIS-Endpunkts|
-|S0: Standard-Tarif|-|50/Sekunde|Abfragen Ihres LUIS-Endpunkts|
-|[Integration der Standpunktanalyse](luis-how-to-publish-app.md#enable-sentiment-analysis)|-|-|Das Hinzufügen von Informationen zur Stimmung, einschließlich Datenextraktion für Schlüsselausdrücke wird bereitgestellt, ohne eine weitere Azure-Ressource zu benötigen. |
-|[Speech-Integration](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|-|1\.000 Endpunktanforderungen pro Einheitenkosten|Konvertieren gesprochener Äußerungen in Textäußerungen und Zurückgeben der LUIS-Ergebnisse|
+* TPS = Transaktionen pro Sekunde
+
+[Weitere Informationen zu Preisen][pricing]
+
+### <a name="query-prediction-resource-limits"></a>Limits für Vorhersageabfrageressource
+
+Verwenden Sie die _kind_ `LUIS`, wenn Sie Ressourcen im Azure-Portal filtern. Die LUIS-Ressource für Abfragen des Vorhersageendpunkts, die zur Laufzeit verwendet wird, ist nur für Endpunktabfragen gültig.
+
+|Vorhersageabfrageressource|Abfrage-TPS|
+|--|--|
+|F0: Free-Tarif |10.000/Monat, 5/Sekunde|
+|S0: Standard-Tarif|50/Sekunde|
+
+### <a name="sentiment-analysis"></a>Stimmungsanalyse
+
+[Integration der Standpunktanalyse](luis-how-to-publish-app.md#enable-sentiment-analysis), die Standpunktinformationen liefert, wird bereitgestellt, ohne dass weitere Azure-Ressource erforderlich sind.
+
+### <a name="speech-integration"></a>Speech-Integration
+
+[Speech-Integration](../speech-service/how-to-recognize-intents-from-speech-csharp.md) stellt 1.000 Endpunktanforderungen in Kosten pro Einheit bereit.
 
 [Weitere Informationen zu Preisen][pricing]
 

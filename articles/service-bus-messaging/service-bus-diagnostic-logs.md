@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: c8eba538a7015648611e6054ce85b381dcfc9105
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a80fb97810fee04a4eb50c43178c168e66f29173
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760997"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618724"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Aktivieren von Diagnoseprotokollen für Service Bus
 
@@ -76,10 +76,10 @@ Die folgenden Verwaltungsvorgänge werden in Betriebsprotokollen erfasst:
 
 | `Scope` | Vorgang|
 |-------| -------- |
-| Namespace | <ul> <li> Erstellen des Namespaces</li> <li> Aktualisieren des Namespace </li> <li> Löschen des Namespace </li>  </ul> | 
-| Warteschlange | <ul> <li> Erstellen einer Warteschlange</li> <li> Aktualisieren einer Warteschlange</li> <li> Löschen einer Warteschlange </li> </ul> | 
-| Thema | <ul> <li> Erstellen eines Themas </li> <li> Aktualisieren eines Themas </li> <li> Löschen eines Themas </li> </ul> |
-| Subscription | <ul> <li> Erstellen von Abonnements </li> <li> Aktualisieren des Abonnements </li> <li> Löschen des Abonnements </li> </ul> |
+| Namespace | <ul> <li> Erstellen des Namespaces</li> <li> Aktualisieren des Namespace </li> <li> Löschen des Namespace </li> <li> Aktualisieren des Namespace: SharedAccess-Richtlinie </li> </ul> | 
+| Warteschlange | <ul> <li> Erstellen einer Warteschlange</li> <li> Aktualisieren einer Warteschlange</li> <li> Löschen einer Warteschlange </li> <li> Automatisches Löschen: Löschen einer Warteschlange </li> </ul> | 
+| Thema | <ul> <li> Erstellen eines Themas </li> <li> Aktualisieren eines Themas </li> <li> Löschen eines Themas </li> <li> Automatisches Löschen: Löschen eines Themas </li> </ul> |
+| Subscription | <ul> <li> Erstellen von Abonnements </li> <li> Aktualisieren des Abonnements </li> <li> Löschen des Abonnements </li> <li> Automatisches Löschen: Löschen eines Abonnements </li> </ul> |
 
 > [!NOTE]
 > *Lesevorgänge* werden in Betriebsprotokollen derzeit nicht nachverfolgt.
