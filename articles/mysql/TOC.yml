@@ -204,6 +204,8 @@
           items:
             - name: Azure-Portal
               href: howto-configure-audit-logs-portal.md
+            - name: Azure-Befehlszeilenschnittstelle
+              href: howto-configure-audit-logs-cli.md
     - name: Überwachen
       items:
         - name: Erstellen von Warnungen zu Metriken

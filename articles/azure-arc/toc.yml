@@ -18,7 +18,3 @@
       items:
         - name: Agent verwalten
           href: ./servers/manage-agent.md
-- name: Verweis
-  items:
-    - name: Azure Connected Machine Agent CLI-Schnittstelle
-      href: ./servers/azcmagent-reference.md
