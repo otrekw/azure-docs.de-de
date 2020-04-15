@@ -85,8 +85,6 @@
   items:
     - name: TLS-Unterstützung
       href: iot-hub-tls-support.md
-    - name: Einstellung von TLS 1.0 und 1.1
-      href: iot-hub-tls-deprecating-1-0-and-1-1.md
     - name: VNET-Unterstützung
       href: virtual-network-support.md
     - name: 'Nachrichtenergänzungen: Übersicht'
@@ -444,6 +442,8 @@
           href: iot-hub-operations-monitoring.md
         - name: Migrieren zu Diagnoseeinstellungen
           href: iot-hub-migrate-to-diagnostics-settings.md
+        - name: Einstellung von TLS 1.0 und 1.1
+          href: iot-hub-tls-deprecating-1-0-and-1-1.md
 - name: Ressourcen
   items:
     - name: Support- und Hilfeoptionen
