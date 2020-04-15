@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/18/2019
-ms.openlocfilehash: 66ea8a93723c117a364a188ec05b050e1ef60564
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a31c6cf32222277e033aacf7d04622c54aef9ea
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76548083"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437014"
 ---
 # <a name="migrate-apache-kafka-workloads-to-azure-hdinsight-40"></a>Migrieren von Apache Kafka-Workloads zu Azure HDInsight 4.0
 
@@ -68,7 +68,7 @@ In der folgenden Migrationsanleitung wird davon ausgegangen, dass ein Apache Kaf
 
 Führen Sie zur Migration die folgenden Schritte aus:
 
-1. **Stellen Sie einen neuen HDInsight 4.0-Cluster und entsprechende Clients zum Testen bereit:** Stellen Sie einen neuen HDInsight 4.0-Kafka-Cluster bereit. Wenn mehrere Kafka-Clusterversionen ausgewählt werden können, empfiehlt sich die Auswahl der neuesten Version. Legen Sie nach der Bereitstellung einige Parameter fest, und erstellen Sie ein Thema mit dem gleichen Namen wie die vorhandene Umgebung. Legen Sie außerdem die SSL- und die Bring-Your-Own-Key-Verschlüsselung (BYOK) nach Bedarf fest. Überprüfen Sie dann, ob alles mit dem neuen Cluster ordnungsgemäß ausgeführt wird.
+1. **Stellen Sie einen neuen HDInsight 4.0-Cluster und entsprechende Clients zum Testen bereit:** Stellen Sie einen neuen HDInsight 4.0-Kafka-Cluster bereit. Wenn mehrere Kafka-Clusterversionen ausgewählt werden können, empfiehlt sich die Auswahl der neuesten Version. Legen Sie nach der Bereitstellung einige Parameter fest, und erstellen Sie ein Thema mit dem gleichen Namen wie die vorhandene Umgebung. Legen Sie außerdem die TLS- und die Bring-Your-Own-Key-Verschlüsselung (BYOK) nach Bedarf fest. Überprüfen Sie dann, ob alles mit dem neuen Cluster ordnungsgemäß ausgeführt wird.
 
     ![Bereitstellen neuer HDInsight 4.0-Cluster](./media/upgrade-threesix-to-four/deploy-new-hdinsight-clusters.png)
 

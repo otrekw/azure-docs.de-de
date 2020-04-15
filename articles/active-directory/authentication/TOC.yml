@@ -4,7 +4,7 @@
   items:
     - name: Was ist Authentifizierung?
       href: overview-authentication.md
-- name: Lernprogramme
+- name: Tutorials
   expanded: true
   items:
     - name: Aktivieren der Self-Service-Kennwortzurücksetzung
@@ -42,17 +42,13 @@
       items:
         - name: Funktionsweise von MFA
           href: concept-mfa-howitworks.md
-        - name: Lizenzieren Ihrer Benutzer
-          href: concept-mfa-licensing.md
-        - name: Verwalten eines Authentifizierungsanbieters
-          href: concept-mfa-authprovider.md
-        - name: Sicherheitsleitfaden
-          href: multi-factor-authentication-security-best-practices.md
         - name: Datenresidenz
           href: concept-mfa-data-residency.md
+        - name: Lizenzen
+          href: concept-mfa-licensing.md
         - name: MFA für Office 365
           href: 'https://docs.microsoft.com/office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide'
-        - name: Häufig gestellte Fragen zu MFA
+        - name: Häufig gestellte Fragen
           href: multi-factor-authentication-faq.md
     - name: Kennwortschutz für Azure AD
       items:
@@ -62,7 +58,7 @@
           href: concept-password-ban-bad-on-premises.md
     - name: Resiliente Zugriffssteuerungen
       href: concept-resilient-controls.md
-- name: Gewusst-wie-Anleitungen
+- name: Anleitungen
   items:
     - name: Self-Service-Kennwortzurücksetzung
       items:
@@ -72,16 +68,18 @@
           href: howto-sspr-authenticationdata.md
         - name: SSPR für Windows-Clients
           href: howto-sspr-windows.md
-    - name: Cloudbasierte MFA
+    - name: Azure Multi-Factor Authentication
       items:
         - name: Bereitstellungshandbuch
           href: howto-mfa-getstarted.md
-        - name: Benutzerbasierte MFA
-          href: howto-mfa-userstates.md
-        - name: Benutzer- und Geräteeinstellungen
-          href: howto-mfa-userdevicesettings.md
         - name: Konfigurieren von Einstellungen
           href: howto-mfa-mfasettings.md
+        - name: Konfigurieren von Benutzern
+          href: howto-mfa-userdevicesettings.md
+        - name: Aktivieren der MFA pro Benutzer
+          href: howto-mfa-userstates.md
+        - name: Konfigurieren von Authentifizierungsanbietern
+          href: concept-mfa-authprovider.md
         - name: Verzeichnisverbund
           items:
             - name: AD FS-Adapter für Windows Server 2016
@@ -140,6 +138,8 @@
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello for Business
           href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
+    - name: Verwenden der SMS-basierten Authentifizierung (Vorschau)
+      href: howto-authentication-sms-signin.md
     - name: Zertifikatbasierte Authentifizierung
       items:
         - name: Erste Schritte mit Zertifikatauthentifizierung

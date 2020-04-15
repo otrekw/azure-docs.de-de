@@ -10,9 +10,12 @@
       href: analysis-services-create-server.md
     - name: Erstellen eines Servers – PowerShell
       href: analysis-services-create-powershell.md
+    - name: 'Erstellen eines Servers: ARM-Vorlage'
+      displayName: Resource Manager
+      href: analysis-services-create-template.md
     - name: Konfigurieren der Serverfirewall – Portal
       href: analysis-services-qs-firewall.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: 1. Hinzufügen eines Beispielmodells aus dem Portal
       href: analysis-services-create-sample-model.md

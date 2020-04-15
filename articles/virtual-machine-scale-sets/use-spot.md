@@ -1,30 +1,25 @@
 ---
-title: Erstellen einer Skalierungsgruppe, die Azure Spot-VMS nutzt (Vorschau)
+title: Erstellen einer Skalierungsgruppe, die Azure Spot-VMS nutzt
 description: Erfahren Sie, wie Sie Azure-VM-Skalierungsgruppen erstellen, die Spot-VMs nutzen, um Kosten zu sparen.
 author: cynthn
-tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
-ms.topic: conceptual
-ms.date: 02/11/2020
+ms.topic: article
+ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 37e914fe6bafe9587be525faf3e01c897cdd8230
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7bd22032a554c83a2ea2323ffdb3ae52dfe4faf
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162683"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545940"
 ---
-# <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>Vorschau: Azure-Spot-VMs für VM-Skalierungsgruppen 
+# <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Azure-Spot-VMs für VM-Skalierungsgruppen 
 
 Wenn Sie Azure Spot-VMs für Skalierungsgruppen verwenden, profitieren Sie von unserer ungenutzten Kapazität und erzielen wesentliche Kosteneinsparungen. Wenn die Kapazität von Azure wieder benötigt wird, werden die Spot-Instanzen durch die Azure-Infrastruktur entfernt. Aus diesem Grund eignen sich Spot-Instanzen hervorragend für Workloads, die Unterbrechungen tolerieren, z. B. Batchverarbeitungsaufträge, Dev/Test-Umgebungen, umfangreiche Computeworkloads und mehr.
 
 Die verfügbare Kapazität kann abhängig von der Größe, Region, Tageszeit usw. variieren. Beim Bereitstellen von Spot-Instanzen für Skalierungsgruppen wird die Instanz von Azure nur zugeordnet, wenn Kapazität verfügbar ist, für diese Instanzen aber keine SLA besteht. Eine Spot-Skalierungsgruppe wird in einer einzelnen Fehlerdomäne bereitgestellt und gewährleistet keine Hochverfügbarkeit.
 
-> [!IMPORTANT]
-> Spot-Instanzen sind zurzeit als Public Preview verfügbar.
-> Von der Verwendung dieser Vorschauversion für Produktionsworkloads wird abgeraten. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
 
 ## <a name="pricing"></a>Preise
 
@@ -172,6 +167,5 @@ Um die Instanz nach dem Entfernen zu löschen, ändern Sie den `evictionPolicy`-
 **A:** Sie können Ihre Frage in [Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html) veröffentlichen und mit `azure-spot` markieren. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sie haben nun eine Skalierungsgruppe mit Spot-VMs erstellt. Versuchen Sie jetzt, unsere [Vorlage für die automatische Skalierung mit Spot](https://github.com/Azure/vm-scale-sets/tree/master/preview/lowpri) bereitzustellen.
 
 Detaillierte Preisinformationen finden Sie auf der Seite [Linux VM-Skalierungsgruppen – Preise ](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/).

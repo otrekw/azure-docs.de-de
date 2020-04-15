@@ -17,7 +17,11 @@
 - name: Konzepte
   items:
     - name: Remotearbeit
-      href: work-remotely-support.md
+      items:
+        - name: Unterstützung von Remotearbeit
+          href: ../networking/working-remotely-support.md?toc=%2fazure%2fexpressroute%2ftoc.json
+        - name: Hybridkonnektivität für Remotebenutzer
+          href: work-remotely-support.md
     - name: Konnektivitätsmodelle
       href: expressroute-connectivity-models.md
     - name: Verbindungen und Peering

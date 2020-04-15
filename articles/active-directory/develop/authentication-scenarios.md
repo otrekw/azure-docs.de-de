@@ -4,7 +4,6 @@ description: Enthält Informationen zu den Grundlagen der Authentifizierung auf 
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 0c84e7d0-16aa-4897-82f2-f53c6c990fd9
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
@@ -13,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 6e14284b5d653af01631d56acf954f9c2a1f10ab
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: e78f822a88b093992f065a509c2250e6a5c0dec2
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77194994"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885564"
 ---
 # <a name="authentication-basics"></a>Authentifizierungsgrundlagen
 
@@ -76,6 +75,23 @@ Die Überprüfung des Tokens wird auf eine der folgenden Arten durchgeführt: vo
 Token sind nur für einen begrenzten Zeitraum gültig. Normalerweise wird vom STS ein Tokenpaar bereitgestellt: ein Zugriffstoken zum Zugreifen auf die Anwendung oder geschützte Ressource und ein Aktualisierungstoken, das zum Aktualisieren des Zugriffstokens verwendet wird, wenn der Ablauf des Zugriffstokens kurz bevorsteht.
 
 Zugriffstoken werden als Bearertoken im `Authorization`-Header an eine Web-API übergeben. Eine App kann ein Aktualisierungstoken an den STS übergeben, und wenn der Benutzerzugriff auf die App nicht widerrufen wurde, erhält sie ein neues Zugriffstoken und ein neues Aktualisierungstoken zurück. So wird ein Fall behandelt, bei dem eine Person aus dem Unternehmen ausscheidet. Wenn der STS ein Aktualisierungstoken empfängt, stellt er kein weiteres gültiges Zugriffstoken aus, falls der Benutzer nicht mehr autorisiert ist.
+
+### <a name="how-each-flow-emits-tokens-and-codes"></a>Ausgabe von Token und Codes für die einzelnen Abläufe
+
+Je nach Art Ihres Clients können die Authentifizierungsflows (einer oder mehrere) verwendet werden, die von Azure AD unterstützt werden. Mit diesen Abläufen können verschiedene Token (ID-Token, Aktualisierungstoken, Zugriffstoken) und Autorisierungscodes erstellt werden, und es sind unterschiedliche Token erforderlich. Dieses Diagramm enthält eine Übersicht:
+
+|Flow | Erforderlich | id_token | Zugriffstoken | Aktualisierungstoken | Autorisierungscode | 
+|-----|----------|----------|--------------|---------------|--------------------|
+|[Autorisierungscodeflow](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
+|[Impliziter Flow](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
+|[Hybrid-OIDC-Ablauf](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
+|[Einlösung des Aktualisierungstokens](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | Aktualisierungstoken | x | x | x| |
+|[„Im Auftrag von“-Ablauf](v2-oauth2-on-behalf-of-flow.md) | Zugriffstoken| x| x| x| |
+|[Clientanmeldeinformationen](v2-oauth2-client-creds-grant-flow.md) | | | x (nur App)| | |
+
+Für Token, die im impliziten Modus ausgestellt werden, gilt eine Längenbeschränkung, weil sie per URL zurück an den Browser übergeben werden (`response_mode` ist hierbei `query` oder `fragment`).  Für einige Browser gilt eine Größenbeschränkung für die URL, die in die Browserleiste eingefügt werden kann. Es tritt ein Fehler auf, wenn die URL zu lang ist.  Diese Token verfügen daher nicht über Ansprüche der Art `groups` oder `wids`. 
+
+Da Sie nun einen Überblick über die Grundlagen haben, lesen Sie weiter, um das App-Identitätsmodell und die API zu verstehen, um zu erfahren, wie die Bereitstellung in Azure AD funktioniert, und um Links zu detaillierten Informationen zu den allgemeinen Szenarien abzurufen, die Azure AD unterstützt.
 
 ## <a name="application-model"></a>Anwendungsmodell
 

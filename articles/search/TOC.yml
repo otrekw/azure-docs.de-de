@@ -114,12 +114,6 @@
               href: index-add-language-analyzers.md
             - name: Hinzufügen eines benutzerdefinierten Analysetools
               href: index-add-custom-analyzers.md
-        - name: Typeahead
-          items:
-            - name: Erstellen einer Vorschlagsfunktion
-              href: index-add-suggesters.md
-            - name: Hinzufügen von Vorschlägen oder AutoVervollständigen
-              href: search-autocomplete-tutorial.md
         - name: Synonyme
           items:
             - name: Hinzufügen von Synonymen
@@ -204,6 +198,8 @@
               href: cognitive-search-custom-skill-python.md
             - name: 'Beispiel: Azure Functions'
               href: cognitive-search-create-custom-skill-example.md
+            - name: 'Beispiel: Azure-Formularerkennung'
+              href: cognitive-search-custom-skill-form.md
             - name: 'Beispiel: Container'
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: Tipps für den Entwurf
@@ -230,6 +226,14 @@
           href: search-query-lucene-examples.md
         - name: Teilausdrücke und Sonderzeichen
           href: search-query-partial-matching.md
+        - name: Fuzzysuche
+          href: search-query-fuzzy.md
+        - name: AutoVervollständigen für die Suche während der Eingabe
+          items:
+            - name: Erstellen einer Vorschlagsfunktion
+              href: index-add-suggesters.md
+            - name: Hinzufügen von Vorschlägen oder AutoVervollständigen
+              href: search-autocomplete-tutorial.md
         - name: Abfragen in Power Apps
           href: search-howto-powerapps.md
         - name: Syntaxverweis

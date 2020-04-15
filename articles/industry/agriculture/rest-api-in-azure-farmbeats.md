@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: 46c2bad6aa4e5c2e72a7e46ed944e2ca8d25bddc
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.openlocfilehash: 717a09d8377a7b95fe24300cc65222f307e7419f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77050352"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437521"
 ---
 # <a name="references"></a>References
 
@@ -31,7 +31,7 @@ Die Azure FarmBeats-APIs bieten Unternehmen im Agrarsektor eine standardisierte 
 
 Die FarmBeats-APIs enthalten eine technische Swagger-Dokumentation. Informationen zu allen APIs und den entsprechenden Anforderungen oder Antworten finden Sie unter [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
 
-In der folgenden Tabelle sind alle Objekte und Ressourcen des FarmBeats-Datenhubs zusammengefasst.
+In der folgenden Tabelle sind alle Objekte und Ressourcen des FarmBeats-Datenhubs zusammengefasst:
 
 | Objekte und Ressourcen | BESCHREIBUNG
 --- | ---|
@@ -145,7 +145,7 @@ In diesem Beispiel wurde bei der Erstellung eines landwirtschaftlichen Betriebs 
 
 ## <a name="add-users-or-app-registrations-to-azure-active-directory"></a>Hinzufügen von Benutzern oder App-Registrierungen zu Azure Active Directory
 
-Auf Azure FarmBeats-APIs kann von einem Benutzer oder einer App-Registrierung in Azure Active Directory zugegriffen werden. Führen Sie die folgenden Schritte aus, um in Azure Active Directory eine App-Registrierung zu erstellen.
+Auf Azure FarmBeats-APIs kann von einem Benutzer oder einer App-Registrierung in Azure Active Directory zugegriffen werden. Führen Sie die folgenden Schritte aus, um in Azure Active Directory eine App-Registrierung zu erstellen:
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) nacheinander die Optionen **Azure Active Directory** > **App-Registrierungen** > **Neue Registrierung** aus. Alternativ dazu können Sie auch ein vorhandenes Konto verwenden.
 2. Führen Sie für ein neues Konto die folgenden Schritte aus:
@@ -162,7 +162,7 @@ Auf Azure FarmBeats-APIs kann von einem Benutzer oder einer App-Registrierung in
     - Wechseln Sie zurück zur **Übersicht**, und wählen Sie den Link neben **Anwendung im lokalen Verzeichnis verwalten** aus.
     - Wechseln Sie zu **Eigenschaften**, um die **Objekt-ID** zu erfassen.
 
-4. Navigieren Sie zu Ihrer [Datahub Swagger](https://<yourdatahub>.azurewebsites.net/swagger/index.html)-Instanz, und führen Sie Folgendes aus:
+4. Wechseln Sie zum Datahub Swagger (https://<yourdatahub>.azurewebsites.net/swagger/index.html), und gehen Sie wie folgt vor:
     - Navigieren Sie zur **RoleAssignment-API**.
     - Führen Sie einen POST-Vorgang durch, um ein **RoleAssignment**-Objekt für die soeben erstellte **Objekt-ID** zu erstellen.
 

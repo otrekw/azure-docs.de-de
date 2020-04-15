@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 7e1ea234bde96ce84259841bbc592bf6373bc639
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c01f5f41e61cd65855789bb753a7a297fe475885
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71802810"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396345"
 ---
 # <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Verwenden des Bots mit QnA Maker und LUIS zum Verteilen Ihrer Wissensdatenbank
 Wenn Ihre QnA Maker-Wissensdatenbank eine bestimmte Größe erreicht, wird es schwierig, sie als einzelnen monolithischen Satz zu warten, und es zeigt sich die Notwendigkeit, die Wissensdatenbank in kleinere logische Abschnitte aufzuteilen.
@@ -37,13 +37,13 @@ Im Szenario oben ruft QnA Maker zuerst die Absicht der eingehenden Frage bei ein
 1. [Erstellen Sie eine App](https://docs.microsoft.com/azure/cognitive-services/luis/create-new-app).
 1. [Fügen Sie eine Absicht](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents) für jede QnA Maker-Wissensdatenbank hinzu. Die exemplarischen Äußerungen sollten den Fragen in den QnA Maker-Wissensdatenbanken entsprechen.
 1. [Trainieren der LUIS-App](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) und [Veröffentlichen der LUIS-App](https://docs.microsoft.com/azure/cognitive-services/luis/publishapp).
-1. Notieren Sie sich im Abschnitt **Verwalten** Ihre LUIS-App-ID, den LUIS-Endpunktschlüssel und den [benutzerdefinierten Domänennamen](../../cognitive-services-custom-subdomains.md). Diese Werte werden Sie später benötigen. 
+1. Notieren Sie sich im Abschnitt **Verwalten** Ihre LUIS-App-ID, den LUIS-Endpunktschlüssel und den [benutzerdefinierten Domänennamen](../../cognitive-services-custom-subdomains.md). Diese Werte werden Sie später benötigen.
 
 ## <a name="create-qna-maker-knowledge-bases"></a>Erstellen von QnA Maker-Wissensdatenbanken
 
 1. Melden Sie sich bei [QnA Maker](https://qnamaker.ai) an.
 1. [Erstellen](https://www.qnamaker.ai/Create) Sie eine Wissensdatenbank für jede Absicht in der LUIS-App.
-1. Testen und veröffentlichen Sie die Wissensdatenbanken. Wenn Sie die einzelnen Wissensdatenbanken veröffentlichen, notieren Sie sich die zugehörige ID, den Ressourcennamen (benutzerdefinierte Unterdomäne vor _.azurewebsites.net/qnamaker_) und den Schlüssel für den Autorisierungsendpunkt. Diese Werte werden Sie später benötigen. 
+1. Testen und veröffentlichen Sie die Wissensdatenbanken. Wenn Sie die einzelnen Wissensdatenbanken veröffentlichen, notieren Sie sich die zugehörige ID, den Ressourcennamen (benutzerdefinierte Unterdomäne vor _.azurewebsites.net/qnamaker_) und den Schlüssel für den Autorisierungsendpunkt. Diese Werte werden Sie später benötigen.
 
     In diesem Artikel wird davon ausgegangen, dass die Wissensdatenbanken alle in demselben Azure QnA Maker-Abonnement erstellt wurden.
 
@@ -60,7 +60,7 @@ Im Szenario oben ruft QnA Maker zuerst die Absicht der eingehenden Frage bei ein
 
 ## <a name="change-code-in-basicluisdialogcs"></a>Ändern des Codes in BasicLuisDialog.cs
 1. Wählen Sie im Abschnitt **Bot Management** (Botverwaltung) der Web-App-Bot-Navigation im Azure-Portal **Build** (Erstellen) aus.
-2. Wählen Sie **Open online code editor** (Onlinecode-Editor öffnen) aus. Es wird eine neue Browser-Registerkarte mit der Onlinebearbeitungsumgebung geöffnet. 
+2. Wählen Sie **Open online code editor** (Onlinecode-Editor öffnen) aus. Es wird eine neue Browser-Registerkarte mit der Onlinebearbeitungsumgebung geöffnet.
 3. Wählen Sie im Abschnitt **WWWWROOT** das Verzeichnis **Dialoge** aus und öffnen Sie dann **BasicLuisDialog.cs**.
 4. Fügen Sie Abhängigkeiten am Anfang der Datei **BasicLuisDialog.cs** hinzu:
 
@@ -155,7 +155,7 @@ Im Szenario oben ruft QnA Maker zuerst die Absicht der eingehenden Frage bei ein
     ```
 
 
-7. Ändern Sie die BasicLuisDialog-Klasse. Jede LUIS-Absicht sollte eine mit **LuisIntent** dekorierte Methode aufweisen. Der Parameter für die Dekoration ist der eigentliche LUIS-Absichtsname. Der Name der dekorierten Methode _sollte_ für Lesbarkeit und Wartbarkeit der LUIS-Absichtsname sein. Dieser muss aber zur Entwurfs- oder Laufzeit nicht derselbe sein.  
+7. Ändern Sie die BasicLuisDialog-Klasse. Jede LUIS-Absicht sollte eine mit **LuisIntent** dekorierte Methode aufweisen. Der Parameter für die Dekoration ist der eigentliche LUIS-Absichtsname. Der Name der dekorierten Methode _sollte_ für Lesbarkeit und Wartbarkeit der LUIS-Absichtsname sein. Dieser muss aber zur Entwurfs- oder Laufzeit nicht derselbe sein.
 
     ```csharp
     [Serializable]
@@ -170,7 +170,7 @@ Im Szenario oben ruft QnA Maker zuerst die Absicht der eingehenden Frage bei ein
         // assumes all KBs are created with same Azure service
         static string qnamaker_endpointKey = "<QnA Maker endpoint KEY>";
         static string qnamaker_resourceName = "my-qnamaker-s0-s";
-        
+
         // QnA Maker Human Resources Knowledge base
         static string HR_kbID = "<QnA Maker KNOWLEDGE BASE ID>";
 
@@ -240,4 +240,4 @@ Wählen Sie im Azure-Portal **Test in Web Chat** (Im Webchat testen) aus, um den
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erstellen eines Geschäftskontinuitätsplans für QnA Maker](../How-To/business-continuity-plan.md)
+> [Integrieren Ihrer Wissensdatenbank in einen Power Virtual Agent](integrate-with-power-virtual-assistant-fallback-topic.md)

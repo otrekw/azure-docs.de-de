@@ -11,21 +11,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/29/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: b90910614bcd86a54198b1a0961a3378427ea87e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a751fa193c8dd530707f790af0292d536a6f47d
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73164152"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420463"
 ---
-# <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure-preview"></a>Bereitstellen von VM-Skalierungsgruppen mit IPv6 in Azure (Vorschau)
+# <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure"></a>Bereitstellen von VM-Skalierungsgruppen mit IPv6 in Azure
 
 In diesem Artikel erfahren Sie, wie Sie eine Dual-Stack-VM-Skalierungsgruppe (IPv4 + IPv6) mit einem externen Dual-Stack-Lastenausgleich in einem virtuellen Azure-Netzwerk bereitstellen. Der Prozess zur Erstellung einer IPv6-fähigen VM-Skalierungsgruppe ist nahezu identisch mit dem Prozess zur Erstellung einzelner virtueller Computer, der [hier](ipv6-configure-standard-load-balancer-template-json.md) beschrieben wird. Sie beginnen mit den Schritten, die denen ähneln, die für einzelne VMs beschrieben sind:
-1.  Erstellen Sie öffentliche IPv4- und IPv6-Adressen.
-2.  Erstellen Sie einen Dual-Stack-Lastenausgleich.  
-3.  Erstellen Sie NSG-Regeln (Netzwerksicherheitsgruppe).  
+1.    Erstellen Sie öffentliche IPv4- und IPv6-Adressen.
+2.    Erstellen Sie einen Dual-Stack-Lastenausgleich.  
+3.    Erstellen Sie NSG-Regeln (Netzwerksicherheitsgruppe).  
 
 Der einzige Schritt, der sich von einzelnen VMs unterscheidet, ist die Erstellung der NIC--Konfiguration (Netzwerkschnittstellenkarte), die die Ressourcen der VM-Skalierungsgruppe verwendet: „networkProfile/networkInterfaceConfigurations“. Die JSON-Struktur ähnelt der des „Microsoft.Network/networkInterfaces“-Objekts, das für einzelne VMs verwendet wird, mit der Ergänzung, dass die NIC und die „IPv4 IpConfiguration“ als primäre Schnittstelle mit dem Attribut **„primary“: true** eingestellt werden, wie im folgenden Beispiel gezeigt:
 

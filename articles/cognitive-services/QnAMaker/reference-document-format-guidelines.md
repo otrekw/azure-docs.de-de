@@ -1,14 +1,14 @@
 ---
 title: Importieren von Richtlinien für die Dokumentformatierung – QnA Maker
-description: Informationen zum Verwenden der Typen von URLs zum Importieren und Erstellen von QnA-Sätzen
+description: Informationen zum Verwenden der Typen von URLs zum Importieren und Erstellen von QnA-Paaren
 ms.topic: reference
-ms.date: 01/02/2020
-ms.openlocfilehash: 6a954f2fd607b70c6db256ab6dcc1dbcd7a5a473
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 799e85e2200d3caa29c9b76bc57a62fc883d246d
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651796"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804332"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>Formatierungsrichtlinien für importierte Dokumente und URLs
 
@@ -20,6 +20,8 @@ Nach dem Importieren einer Datei oder URL konvertiert QnA Maker den Inhalt im [M
 
 Wenn Sie Ihren Inhalt direkt in der Wissensdatenbank hinzufügen oder bearbeiten, können Sie das **Markdown-Format** verwenden, um umfangreiche Textinhalte zu erstellen oder Inhalte im Markdown-Format zu ändern, die bereits in der Antwort vorhanden sind. QnA Maker unterstützt einen Großteil des Markdown-Formats, um umfassende Textfunktionen für Ihre Inhalte bereitzustellen. Die Clientanwendung, z. B. ein Chatbot, unterstützt jedoch möglicherweise nicht dieselben Markdown-Formate. Es ist wichtig, die Anzeige von Antworten in der Clientanwendung zu testen.
 
+Hier finden Sie eine vollständige Liste mit [Inhaltstypen und Beispielen](./Concepts/content-types.md#file-and-url-data-types).
+
 ## <a name="basic-document-formatting"></a>Grundlegende Dokumentformatierung
 
 QnA Maker identifiziert Abschnitte und Unterabschnitte sowie Beziehungen in der Datei anhand von visuellen Hinweisen wie:
@@ -28,12 +30,6 @@ QnA Maker identifiziert Abschnitte und Unterabschnitte sowie Beziehungen in der 
 * Schriftstil
 * Nummerierung
 * Farben
-
-|Dokumentbeispiele|
-|--|
-||
-
-
 
 ## <a name="product-manuals"></a>Produkthandbücher
 
@@ -116,7 +112,8 @@ Beim Importieren einer Wissensdatenbank wird der Inhalt der vorhandenen Wissensd
 * Das erste Zeichen der Überschrift muss groß geschrieben werden.
 * Beenden Sie eine Überschrift nicht mit einem Fragezeichen, `?`.
 
+**Beispieldokumente**:<br>[Surface Pro (DOCX)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)<br>[Contoso Benefits (DOCX)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.docx)<br>[Contoso Benefits (PDF)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.pdf)
 
-|Dokumentbeispiele|
-|--|
-||
+## <a name="next-steps"></a>Nächste Schritte
+
+Hier finden Sie eine vollständige Liste mit [Inhaltstypen und Beispielen](./Concepts/content-types.md#file-and-url-data-types).

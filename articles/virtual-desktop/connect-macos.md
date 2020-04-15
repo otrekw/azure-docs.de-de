@@ -5,15 +5,15 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 04/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 673c20355e9ad4abf2c8318b3eb2ebbcc36ed8fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ac3ee8d44d68f5c7929c2f93f1a1182c7f6083b
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128232"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891253"
 ---
 # <a name="connect-with-the-macos-client"></a>Herstellen einer Verbindung mit dem macOS-Client
 
@@ -31,11 +31,11 @@ Abonnieren Sie den Feed, den Ihr Administrator Ihnen mitgeteilt hat, um die List
 
 Abonnieren Sie einen Feed wie folgt:
 
-1. Wählen Sie auf der Hauptseite **Feed hinzufügen** aus, um eine Verbindung mit dem Dienst herzustellen und Ihre Ressourcen abzurufen.
+1. Wählen Sie auf der Hauptseite **Arbeitsbereich hinzufügen** aus, um eine Verbindung mit dem Dienst herzustellen und Ihre Ressourcen abzurufen.
 2. Geben Sie die Feed-URL ein. Dies kann eine URL oder E-Mail-Adresse sein:
    - Wenn Sie eine URL verwenden, verwenden Sie die URL, die Ihr Administrator Ihnen mitgeteilt hat. Normalerweise lautet die URL <https://rdweb.wvd.microsoft.com>.
    - Geben Sie Ihre E-Mail-Adresse ein, um E-Mail zu verwenden. Dies weist den Client an, nach einer URL zu suchen, die Ihrer E-Mail-Adresse zugeordnet ist, wenn der Administrator den Server auf diese Weise konfiguriert hat.
-3. Wählen Sie **Abonnieren** aus.
+3. Wählen Sie **Hinzufügen**.
 4. Melden Sie sich mit Ihrem Benutzerkonto an, wenn Sie dazu aufgefordert werden.
 
 Nachdem Sie sich angemeldet haben, sollte eine Liste der verfügbaren Ressourcen angezeigt werden.

@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9a27487fa69888b02883c3d9a2151887f41afc45
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 041fb8d881307b52fb170a11618f930debc522a4
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189377"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803159"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Aktivieren von „Angemeldet bleiben“ in Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ Benutzer sollten diese Option nicht auf öffentlichen Computern aktivieren.
 
 Legen Sie zum Aktivieren von KMSI das ContentDefinitions-Element `DataUri` auf [Seitenbezeichner](contentdefinitions.md#datauri) `unifiedssp` und die [Seitenversion](page-layout.md) auf *1.1.0* oder höher fest.
 
-1. Öffnen Sie die Erweiterungsdatei Ihrer Richtlinie. Beispiel: <em>`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** </em>. Die Erweiterungsdatei ist eine der Richtliniendateien im Starter Pack für benutzerdefinierte Richtlinien, das Sie im unter „Voraussetzungen“ genannten Artikel [Erste Schritte mit benutzerdefinierten Richtlinien](custom-policy-get-started.md) abgerufen haben sollten.
+1. Öffnen Sie die Erweiterungsdatei Ihrer Richtlinie. Beispiel: <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>. Die Erweiterungsdatei ist eine der Richtliniendateien im Starter Pack für benutzerdefinierte Richtlinien, das Sie im unter „Voraussetzungen“ genannten Artikel [Erste Schritte mit benutzerdefinierten Richtlinien](custom-policy-get-started.md) abgerufen haben sollten.
 1. Suchen Sie nach dem Element **BuildingBlocks**. Wenn das Element nicht vorhanden ist, fügen Sie es hinzu.
 1. Fügen Sie das **ContentDefinitions**-Element dem Element **BuildingBlocks** der Richtlinie hinzu.
 
@@ -52,9 +52,27 @@ Legen Sie zum Aktivieren von KMSI das ContentDefinitions-Element `DataUri` auf [
     </BuildingBlocks>
     ```
 
+## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>Hinzufügen der Metadaten zum selbstbestätigten technischen Profil
+
+Um das Kontrollkästchen KMSI zur Registrierungs-und Anmeldeseite hinzuzufügen, legen Sie die `setting.enableRememberMe`-Metadaten auf TRUE fest. Überschreiben Sie in der Erweiterungsdatei die technischen Profile in SelfAsserted-LocalAccountSignin-Email.
+
+1. Suchen Sie das ClaimsProviders-Element. Wenn das Element nicht vorhanden ist, fügen Sie es hinzu.
+1. Fügen Sie dem ClaimsProviders-Element die folgenden Anspruchsanbieter hinzu:
+
+```XML
+<ClaimsProvider>
+  <DisplayName>Local Account</DisplayName>
+  <TechnicalProfiles>
+    <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
+      <Metadata>
+        <Item Key="setting.enableRememberMe">True</Item>
+      </Metadata>
+    </TechnicalProfile>
+  </TechnicalProfiles>
+</ClaimsProvider>
+```
+
 1. Speichern Sie die Erweiterungsdatei.
-
-
 
 ## <a name="configure-a-relying-party-file"></a>Konfigurieren einer Datei der vertrauenden Seite
 
@@ -107,7 +125,15 @@ Es wird empfohlen, den Wert von „SessionExpiryInSeconds“ auf einen kurzen Ze
 </RelyingParty>
 ```
 
-4. Speichern Sie Ihre Änderungen, und laden Sie die Datei dann hoch.
-5. Um die benutzerdefinierte Richtlinie zu testen, die Sie hochgeladen haben, wechseln Sie im Azure-Portal zur Richtlinienseite, und klicken Sie dann auf **Jetzt ausführen**.
+## <a name="test-your-policy"></a>Testen Ihrer Richtlinie
+
+1. Speichern Sie die Änderungen, und laden Sie die Datei dann hoch.
+1. Um die benutzerdefinierte Richtlinie zu testen, die Sie hochgeladen haben, wechseln Sie im Azure-Portal zur Seite „Richtlinie“, und wählen Sie dann **Jetzt ausführen** aus.
+1. Geben Sie Ihren **Benutzernamen** und Ihr **Kennwort** ein. Aktivieren Sie **Angemeldet bleiben**, und klicken Sie dann auf **Anmelden**.
+1. Wechseln Sie zurück zum Azure-Portal. Wechseln Sie zur Seite „Richtlinie“, und wählen Sie dann **Kopieren** aus, um die Anmelde-URL zu kopieren.
+1. Entfernen Sie in der Adressleiste des Browsers den Abfragezeichenfolgen-Parameter `&prompt=login`, der den Benutzer zur Eingabe seiner Anmeldeinformationen für diese Anforderung zwingt.
+1. Klicken Sie im Browser auf **Los**. Azure AD B2C stellt nun ein Zugriffstoken aus, ohne Sie zur erneuten Anmeldung aufzufordern. 
+
+## <a name="next-steps"></a>Nächste Schritte
 
 Die Beispielrichtlinie finden Sie [hier](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/keep%20me%20signed%20in).

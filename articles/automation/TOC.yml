@@ -12,17 +12,17 @@
       href: automation-quickstart-create-account.md
     - name: Erstellen eines eigenständigen Automation-Kontos
       href: automation-create-standalone-account.md
-    - name: Verwalten des ausführenden Automation-Kontos
+    - name: Verwalten eines ausführenden Automation-Kontos
       href: manage-runas-account.md
       displayName: certificate renewal
     - name: Verwalten der rollenbasierten Zugriffssteuerung in Azure
       href: automation-role-based-access-control.md
       displayName: RBAC
-    - name: Verwenden von Azure AD in Azure Automation für die Authentifizierung bei Azure
+    - name: "Authentifizieren bei Azure mithilfe von Azure\_AD"
       href: automation-use-azure-ad.md
-    - name: "Verwalten von Office\_365-Diensten mit Azure Automation"
+    - name: "Verwalten von Office\_365-Diensten"
       href: manage-office-365.md
-    - name: Konfigurieren der Authentifizierung bei AWS
+    - name: Authentifizieren von Azure Automation-Runbooks mit Amazon Web Services
       href: automation-config-aws-account.md
     - name: Verschlüsseln sicherer Ressourcen in Azure Automation
       href: automation-secure-asset-encryption.md
@@ -42,6 +42,9 @@
           displayName: troubleshoot
 - name: Prozessautomatisierung
   items:
+    - name: Ausführen von Runbooks in Azure Automation
+      href: automation-runbook-execution.md
+      displayName: 'fair share, activity log'
     - name: Hybrid-Runbook-Worker – Übersicht
       href: automation-hybrid-runbook-worker.md
     - name: Runbook-Katalog
@@ -111,9 +114,6 @@
             - name: Runbookausgabe
               href: automation-runbook-output-and-messages.md
               displayName: 'message streams, progress records, preference'
-            - name: Nachverfolgen eines Runbookauftrags
-              href: automation-runbook-execution.md
-              displayName: 'fair share, activity log'
             - name: Fehlerbehandlung bei grafischen Runbooks
               href: automation-runbook-graphical-error-handling.md
         - name: Hybrid Runbook Worker
@@ -278,9 +278,6 @@
         - name: Konfigurieren des gewünschten Zustands für Server und Verwalten der Abweichung mit der Zustandskonfiguration
           href: tutorial-configure-servers-desired-state.md
           displayName: 'DSC, compliance'
-        - name: Onboarding von Computern zur Verwaltung
-          href: automation-dsc-onboarding.md
-          displayName: 'DSC, state configuration'
         - name: Kompilieren von DSC-Konfigurationen
           href: automation-dsc-compile.md
           displayName: 'state configuration, composite resources, configurationData'
@@ -289,7 +286,7 @@
           displayName: 'state configuration, DSC, remediate'
         - name: Erstellen von DSC-Konfigurationen mithilfe von zusammengesetzten Ressourcen
           href: compose-configurationwithcompositeresources.md
-        - name: Continuous Deployment mit Chocolatey
+        - name: Bereitstellen von Continuous Deployment mit Chocolatey
           href: automation-dsc-cd-chocolatey.md
           displayName: 'dsc, state configuration'
         - name: Weiterleiten von Berichtsdaten zur Zustandskonfiguration an Azure Monitor-Protokolle
@@ -297,12 +294,12 @@
           displayName: DSC
     - name: Problembehandlung
       items:
-        - name: Onboarding
+        - name: Problembehandlung beim Onboarding
           href: troubleshoot/onboarding.md
           displayName: troubleshoot
         - name: Behandeln von Problemen mit State Configuration (DSC)
           href: troubleshoot/desired-state-configuration.md
-          displayName: 'Desired State Configuration, troubleshoot'
+          displayName: 'state configuration, DSC, troubleshoot'
     - name: Verweis
       items:
         - name: Community-Lösungen

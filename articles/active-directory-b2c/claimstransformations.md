@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e71d521dce40f6a8ec81286fcc95dc97bf10078c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a919996d00f8ef3fa00109944b60d53b63d95ff
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189735"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529125"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -96,7 +96,7 @@ Das **InputParameters**-Element enthält das folgende Element:
 | --------- | ----------- |----------- |
 | Id | Ja | Ein Bezeichner, der einen Verweis auf einen Parameter der Anspruchstransformationsmethode darstellt. Jede Anspruchstransformationsmethode verfügt über eigene Werte. Eine vollständige Liste der verfügbaren Werte finden Sie in der Tabelle für Anspruchstransformationen. |
 | DataType | Ja | Der Datentyp des Parameters, z.B. „String“, „Boolean“, „Int“ oder „DateTime“, gemäß der DataType-Enumeration im XML-Schema der benutzerdefinierten Richtlinie. Dieser Typ wird dazu verwendet, arithmetische Operationen ordnungsgemäß auszuführen. Jede Anspruchstransformation verfügt über eigene Werte. Eine vollständige Liste der verfügbaren Werte finden Sie in der [Referenz zu Anspruchstransformationen](#claims-transformations-reference). |
-| value | Ja | Ein Wert der wörtlich an die Transformation übergeben wird. Einige der Werte sind arbiträr, andere wählen Sie hingegen gemäß der Anspruchstransformationsmethode aus. |
+| Wert | Ja | Ein Wert der wörtlich an die Transformation übergeben wird. Einige der Werte sind arbiträr, andere wählen Sie hingegen gemäß der Anspruchstransformationsmethode aus. |
 
 ### <a name="outputclaims"></a>OutputClaims
 
@@ -163,6 +163,7 @@ In den folgenden Referenzseiten finden Sie weitere Beispiele für Anspruchstrans
 - [Date](date-transformations.md)
 - [Integer](integer-transformations.md)
 - [JSON](json-transformations.md)
+- [Telefonnummer](phone-number-claims-transformations.md)
 - [Allgemein](general-transformations.md)
 - [Social Media-Konto](social-transformations.md)
 - [String](string-transformations.md)

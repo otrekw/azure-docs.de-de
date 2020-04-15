@@ -20,6 +20,9 @@
     - name: Bereitstellen mit IP-Adressgruppen
       displayName: Resource Manager
       href: quick-create-ipgroup-template.md
+    - name: Bereitstellen mit mehreren Adressen
+      displayName: Resource Manager
+      href: quick-create-multiple-ip-template.md
 - name: Beispiele
   items:
     - name: Azure PowerShell

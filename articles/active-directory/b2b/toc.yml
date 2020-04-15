@@ -13,7 +13,7 @@
           href: b2b-quickstart-add-guest-users-portal.md
         - name: Hinzufügen von Gastbenutzern mit PowerShell
           href: b2b-quickstart-invite-powershell.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
         - name: Masseneinladung über PowerShell
           href: bulk-invite-powershell.md
@@ -52,7 +52,7 @@
           href: self-service-portal.md
         - name: Aktuelle Einschränkungen
           href: current-limitations.md
-    - name: Gewusst-wie-Anleitungen
+    - name: Anleitungen
       expanded: true
       items:
         - name: Verwalten der B2B-Freigabe
@@ -63,6 +63,8 @@
               href: add-users-administrator.md
             - name: 'Information-Worker, die B2B-Benutzer hinzufügen'
               href: add-users-information-worker.md
+            - name: Einladen interner Benutzer zu B2B
+              href: invite-internal-users.md
             - name: Verbund mit Google
               href: google-federation.md
             - name: Authentifizierung mit Einmalkennung

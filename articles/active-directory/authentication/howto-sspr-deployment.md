@@ -1,6 +1,6 @@
 ---
-title: 'Bereitstellung der Self-Service-Kennwortzurücksetzung: Azure Active Directory'
-description: Strategie für eine erfolgreiche Implementierung der Self-Service-Kennwortzurücksetzung von Azure AD
+title: Überlegungen zur Bereitstellung der Self-Service-Kennwortzurücksetzung von Azure Active Directory
+description: Überlegungen zur Bereitstellung und Strategie für eine erfolgreiche Implementierung der Self-Service-Kennwortzurücksetzung von Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,27 +11,34 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 785a8a031a10232a37b235711ba919fdc1df35d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c11521ec074b63843b873c39102b68bf185d2821
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77061414"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676741"
 ---
-# <a name="plan-an-azure-active-directory-self-service-password-reset"></a>Planen der Self-Service-Kennwortzurücksetzung von Azure Active Directory
+# <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Planen der Bereitstellung einer Self-Service-Kennwortzurücksetzung (SSPR) von Azure Active Directory
 
-> [!NOTE]
-> Dieser Bereitstellungsplan enthält Anleitungen und bewährte Methoden für die Planung und Bereitstellung der Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) von Azure AD. <br>**Wenn Sie mit dem SSPR-Tool wieder in Ihr Konto gelangen möchten, wechseln Sie zu [https://aka.ms/sspr](https://aka.ms/sspr)** .
+> [!IMPORTANT]
+> Dieser Bereitstellungsplan bietet Anleitungen und bewährte Methoden für die Bereitstellung der Self-Service-Kennwortzurücksetzung (SSPR) von Azure AD.
+>
+> **Wenn Sie ein Endbenutzer sind und wieder Zugriff auf Ihr Konto benötigen, wechseln Sie zu [https://aka.ms/sspr](https://aka.ms/sspr)** .
 
-Die [Self-Service-Kennwortzurücksetzung (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) ist eine Funktion von Azure Active Directory (AD), die es Benutzern ermöglicht, ihre Kennwörter ohne die Hilfe von IT-Mitarbeitern zurückzusetzen. Die Benutzer können ungeachtet von Tages- oder Nachtzeit und Standort schnell ihre Sperre aufheben und weiterarbeiten. Indem eine Organisation ihren Mitarbeitern erlaubt, die Sperre selbst aufzuheben, kann sie unproduktive Zeit und hohe Supportkosten für die meisten allgemeinen Probleme im Zusammenhang mit Kennwörtern reduzieren. 
+Die [Self-Service-Kennwortzurücksetzung (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) ist eine Funktion von Azure Active Directory (AD), die es Benutzern ermöglicht, ihre Kennwörter ohne die Hilfe von IT-Mitarbeitern zurückzusetzen. Die Benutzer können ungeachtet von Tages- oder Nachtzeit und Standort schnell ihre Sperre aufheben und weiterarbeiten. Indem eine Organisation ihren Mitarbeitern erlaubt, die Sperre selbst aufzuheben, kann sie unproduktive Zeit und hohe Supportkosten für die meisten allgemeinen Probleme im Zusammenhang mit Kennwörtern reduzieren.
 
 Folgende SSPR-Hauptfunktionen sind verfügbar:
 
 * Mit der Self-Service-Kennwortzurücksetzung können Endbenutzer ihre abgelaufenen (oder auch noch nicht abgelaufenen) Kennwörter ohne Unterstützung eines Administrators oder des Helpdesks zurücksetzen.
-
 * Die [Kennwortrückschreibung](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback) ermöglicht die Verwaltung lokaler Kennwörter und die Aufhebung von Kontosperren über die Cloud.
-
 * Berichte zu Kennwortverwaltungsaktivitäten gewähren Administratoren Einblicke in die Aktivitäten, die sich in Bezug auf Kennwortzurücksetzung und -registrierung in ihrer Organisation ereignen.
+
+In diesem Bereitstellungsleitfaden wird gezeigt, wie Sie einen SSPR-Rollout (Self-Service-Kennwortzurücksetzung) planen und anschließend testen.
+
+Um die Self-Service-Kennwortzurücksetzung in Aktion zu sehen und dann zurückzukehren, um weitere Überlegungen zur Bereitstellung zu verstehen, gehen Sie wie folgt vor:
+
+> [!div class="nextstepaction"]
+> [Aktivieren der Self-Service-Kennwortzurücksetzung (SSPR)](tutorial-enable-sspr.md)
 
 ## <a name="learn-about-sspr"></a>Informationen zu SSPR
 
@@ -74,8 +81,8 @@ Weitere Informationen zur Preisgestaltung finden Sie unter [Azure Active Directo
 | |[Konfigurieren der Self-Service-Kennwortzurücksetzung für Benutzer in Azure AD](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/) |
 | |[[Vorbereiten von Benutzern zum] Registrieren von Sicherheitsinformationen für Azure Active Directory](https://youtu.be/gXuh0XS18wA) |
 | Onlinekurse|[Verwalten von Identitäten in Microsoft Azure Active Directory](https://www.pluralsight.com/courses/microsoft-azure-active-directory-managing-identities) Verwenden Sie SSPR, um Ihren Benutzern eine moderne, geschützte Umgebung bereitzustellen. Achten Sie besonders auf das Modul [Verwalten von Benutzern und Gruppen in Azure Active Directory](https://app.pluralsight.com/library/courses/microsoft-azure-active-directory-managing-identities/table-of-contents). |
-|Kostenpflichtige Pluralsight-Kurse |[Probleme der Identitäts- und Zugriffsverwaltung (IAM)](https://www.pluralsight.com/courses/identity-access-management-issues) Erfahren Sie mehr über IAM und Sicherheitsprobleme, auf die Sie in Ihrer Organisation achten sollten. Beachten Sie hierzu das Modul „Weitere Authentifizierungsmethoden“.|
-| |[Erste Schritte mit Microsoft Enterprise Mobility Suite](https://www.pluralsight.com/courses/microsoft-enterprise-mobility-suite-getting-started) Lernen Sie die besten Methoden für die Ausweitung von lokalen Ressourcen in die Cloud kennen, die Authentifizierung, Autorisierung, Verschlüsselung und eine sichere Umgebung für Mobilgeräte gewährleisten. Achten Sie besonders auf das Modul „Konfigurieren erweiterter Funktionen von Microsoft Azure Active Directory Premium“.
+|Kostenpflichtige Pluralsight-Kurse |[Probleme der Identitäts- und Zugriffsverwaltung (IAM)](https://www.pluralsight.com/courses/identity-access-management-issues) Erfahren Sie mehr über IAM und Sicherheitsprobleme, auf die Sie in Ihrer Organisation achten sollten. Beachten Sie besonders das Modul „Weitere Authentifizierungsmethoden“.|
+| |[Erste Schritte mit Microsoft Enterprise Mobility Suite](https://www.pluralsight.com/courses/microsoft-enterprise-mobility-suite-getting-started) Lernen Sie die besten Methoden für die Ausweitung von lokalen Ressourcen in die Cloud kennen, die Authentifizierung, Autorisierung, Verschlüsselung und eine sichere Umgebung für Mobilgeräte gewährleisten. Beachten Sie besonders das Modul „Konfigurieren erweiterter Funktionen von Microsoft Azure Active Directory Premium“.
 |Tutorials |[Ausführen eines Rollouts der Azure AD-Self-Service-Kennwortzurücksetzung für eine Pilotgruppe](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot) |
 | |[Aktivieren des Kennwortrückschreibens](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback) |
 | |[Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm unter Windows 10](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-windows) |
@@ -255,7 +262,7 @@ Damit ihr Supportteam erfolgreich tätig werden kann, können Sie anhand der von
 | Benutzer kann kein neues Kennwort festlegen| Ein Benutzer schließt die Überprüfung während des Kennwortzurücksetzungsflows ab, kann aber kein neues Kennwort festlegen. |
 | Dem Benutzer wird auf einem Gerät mit Windows 10 kein Link „Kennwort zurücksetzen“ angezeigt| Ein Benutzer versucht, sein Kennwort über den Sperrbildschirm eines Geräts mit Windows 10 zurückzusetzen, das Gerät ist aber nicht in Azure AD eingebunden, oder die Intune-Geräterichtlinie ist nicht aktiviert |
 
-### <a name="plan-roll-back"></a>Planen eines Rollbacks
+### <a name="plan-rollback"></a>Planen eines Rollbacks
 
 So führen Sie ein Rollback für die Bereitstellung aus
 
@@ -295,7 +302,7 @@ Unter [Aktivieren der Self-Service-Kennwortzurücksetzung](https://docs.microsof
 1. [Lokale Integration](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback)
 
 ### <a name="enable-sspr-in-windows"></a>Aktivieren von SSPR in Windows
-Für Computer, auf denen Windows 7, 8, 8.1 und 10 ausgeführt wird, können Sie [Benutzern das Zurücksetzen ihres Kennworts über den Windows-Anmeldebildschirm ermöglichen](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-windows).
+Bei Computern, auf denen Windows 7, 8, 8.1 und 10 ausgeführt wird, können Sie [Benutzern das Zurücksetzen ihres Kennworts über den Windows-Anmeldebildschirm ermöglichen](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-windows).
 
 ## <a name="manage-sspr"></a>Verwalten von SSPR
 
@@ -336,7 +343,7 @@ Mithilfe der Funktion [Nutzung und Erkenntnisse](https://docs.microsoft.com/azur
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Um mit der Bereitstellung von SSPR zu beginnen, lesen Sie [Ausführen eines Rollouts der Azure AD-Self-Service-Kennwortzurücksetzung für eine Pilotgruppe](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot)
+* Um mit der Bereitstellung von SSPR zu beginnen, lesen Sie [Aktivieren der Self-Service-Kennwortzurücksetzung in Azure AD](tutorial-enable-sspr.md).
 
 * [Überlegungen zur Implementierung von Azure AD-Kennwortschutz](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)
 

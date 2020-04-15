@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: c98da4b41da183f56d80fad1e8c01706d1cfcf23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b54f9f3466fe5f7e2da622077f53575d6f43f72d
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970505"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585955"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption-Beispielskripts 
 
@@ -80,7 +80,7 @@ Die folgende Tabelle zeigt, welche Parameter im PowerShell-Skript verwendet werd
 
 ### <a name="prerequisites-for-os-disk-encryption"></a>Voraussetzungen für die Verschlüsselung des Betriebssystemdatenträgers
 
-* Die VM muss eine Distribution verwenden, die mit der Verschlüsselung von Betriebssystemdatenträgern kompatibel ist. Eine Liste dieser Distributionen finden Sie unter [Von Azure Disk Encryption unterstützte Betriebssysteme](disk-encryption-overview.md#supported-vm-sizes). 
+* Die VM muss eine Distribution verwenden, die mit der Verschlüsselung von Betriebssystemdatenträgern kompatibel ist. Eine Liste dieser Distributionen finden Sie unter [Von Azure Disk Encryption unterstützte Betriebssysteme](disk-encryption-overview.md#supported-vms). 
 * Die VM muss über ein Marketplace-Image im Azure Resource Manager erstellt werden.
 * Azure-VM mit mindestens 4 GB RAM (7 GB empfohlen).
 * (Für RHEL und CentOS) Deaktivieren Sie SELinux. Informationen zum Deaktivieren von SELinux finden Sie unter „4.4.2. Disabling SELinux“ (Deaktivieren von SELinux) im [SELinux User's and Administrator's Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) (SELinux-Handbuch für Benutzer und Administratoren) in der VM.

@@ -13,12 +13,12 @@ metadata:
   ms.topic: hub-page
   ms.date: 03/24/2020
   ms.author: dapine
-  ms.openlocfilehash: 0f0b9aa0109b7e63bffcbd330dbef3276821698e
-  ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+  ms.openlocfilehash: ea3090a518721c7b85880675b943726217067fbe
+  ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 04/06/2020
-  ms.locfileid: "80743912"
+  ms.lasthandoff: 04/13/2020
+  ms.locfileid: "81259039"
 highlightedContent:
   items:
   - title: Worum handelt es sich beim Speech-Dienst?
@@ -51,29 +51,29 @@ conceptualContent:
       url: index-speech-to-text.yml
   - title: Text-zu-Sprache
     links:
+    - itemType: how-to-guide
+      text: Grundlagen der Sprachsynthese
+      url: text-to-speech-basics.md
     - itemType: quickstart
       text: Synthetisieren von Sprache über einen Lautsprecher
       url: quickstarts/text-to-speech.md
     - itemType: quickstart
       text: Synthetisieren von Sprache in eine Audiodatei
       url: quickstarts/text-to-speech-audio-file.md
-    - itemType: quickstart
-      text: Anpassen der Sprachsynthese für Ihre Apps
-      url: how-to-custom-voice.md
     footerLink:
       text: Weitere Informationen
       url: index-text-to-speech.yml
   - title: Sprachübersetzung
     links:
+    - itemType: how-to-guide
+      text: Grundlagen der Sprachübersetzung
+      url: speech-translation-basics.md
     - itemType: quickstart
       text: Übersetzen von Sprache in Text
       url: quickstarts/translate-speech-to-text.md
     - itemType: quickstart
       text: Übersetzen von Sprache in mehrere Zielsprachen
       url: quickstarts/translate-speech-to-text-multiple-languages.md
-    - itemType: quickstart
-      text: Übersetzen von Sprache in Sprache
-      url: quickstarts/translate-speech-to-speech.md
     footerLink:
       text: Weitere Informationen
       url: index-speech-translation.yml

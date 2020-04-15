@@ -1,5 +1,5 @@
 ---
-title: 'Bereitstellen einer IPv6-Dual Stack-Anwendung in Azure Virtual Network: Resource Manager-Vorlage (Vorschau)'
+title: 'Bereitstellen einer IPv6-Dual Stack-Anwendung in Azure Virtual Network: Resource Manager-Vorlage'
 titlesuffix: Azure Virtual Network
 description: Dieser Artikel zeigt, wie Sie eine IPv6-Dual Stack-Anwendung mit Load Balancer Standard in Azure Virtual Network mit Azure Resource Manager-VM-Vorlagen bereitstellen.
 services: virtual-network
@@ -10,16 +10,16 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 07/15/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 8f2c6bc7fb7ab0939da20932fd531c158549ce7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1f9531b5d1decfd462a82b9d389c5af519591c83
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70012850"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420646"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template-preview"></a>Bereitstellen einer IPv6-Anwendung mit dualem Stapel in Azure Virtual Network – Vorlage (Vorschau)
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template"></a>Bereitstellen einer IPv6-Anwendung mit dualem Stapel in Azure Virtual Network – Vorlage
 
 Dieser Artikel enthält eine Liste von IPv6-Konfigurationsaufgaben mit dem Teil der Azure Resource Manager-VM-Vorlage, der für die jeweilige Aufgabe gilt. Verwenden Sie die in diesem Artikel beschriebene Vorlage, um unter Verwendung von Load Balancer Standard eine Anwendung mit dualem Stapel (IPv4 und IPv6) in Azure bereitzustellen, die ein virtuelles Netzwerk mit dualem Stapel und IPv4- und IPv6-Subnetzen, Load Balancer Standard mit dualen Front-End-Konfigurationen (IPv4 und IPv6), VMs mit NICs mit einer dualen IP-Konfiguration, eine Netzwerksicherheitsgruppe und öffentliche IP-Adressen umfasst. 
 

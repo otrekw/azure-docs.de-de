@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccf34b52e06e369fe4dd459ff9dfa2880596fb35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3d2117e913f292e92f37f31d2e123587c70a189
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481346"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803296"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>SAML-SSO (Single Sign-On, einmaliges Anmelden) für lokale Anwendungen mit dem Anwendungsproxy
 
@@ -74,14 +74,14 @@ Bevor Sie SSO für lokale Anwendungen bereitstellen können, müssen Sie den Anw
 
 2. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** zur Überschrift **Grundlegende SAML-Konfiguration**, und wählen Sie das Symbol **Bearbeiten** (Stift). Stellen Sie sicher, dass die **Externe URL**, die Sie im Anwendungsproxy konfiguriert haben, in die Felder **Bezeichner**, **Antwort-URL** und **Abmelde-URL** eingetragen wird. Diese URLs sind erforderlich, damit der Anwendungsproxy richtig funktioniert. 
 
-3. Bearbeiten Sie die zuvor konfigurierte **Antwort-URL**, damit die zugehörige Domäne für den Anwendungsproxy erreichbar ist. Wenn beispielsweise Ihre **externe URL**`https://contosotravel-f128.msappproxy.net` lautet und `https://contosotravel.com/acs` die ursprüngliche **Antwort-URL** war, müssen Sie die ursprüngliche **Antwort-URL** auf `https://contosotravel-f128.msappproxy.net/acs` aktualisieren. 
+3. Bearbeiten Sie die zuvor konfigurierte **Antwort-URL**, damit die zugehörige Domäne im Internet über den Anwendungsproxy erreichbar ist. Wenn beispielsweise Ihre **externe URL**`https://contosotravel-f128.msappproxy.net` lautet und `https://contosotravel.com/acs` die ursprüngliche **Antwort-URL** war, müssen Sie die ursprüngliche **Antwort-URL** auf `https://contosotravel-f128.msappproxy.net/acs` aktualisieren.
 
     ![Eingabe der SAML-Basiskonfigurationsdaten](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 
 
 4. Aktualisieren Sie das Kontrollkästchen neben der aktualisierten **Antwort-URL**, um sie als Standardwert zu kennzeichnen.
 
-   * Wenn die erforderliche **Antwort-URL** bereits aufgeführt ist, sollten Sie diese **Antwort-URL** als Standardwert kennzeichnen und die zuvor konfigurierte **Antwort-URL** löschen.
+   * Nachdem Sie die erforderliche **Antwort-URL** als Standard markiert haben, können Sie auch die zuvor konfigurierte **Antwort-URL** löschen, welche die interne URL verwendet hat.
 
    * Stellen Sie bei einem SP-initiierten Datenfluss sicher, dass in der Back-End-Anwendung die richtige **Antwort-URL** oder Assertionsverbraucherdienst-URL für den Empfang des Authentifizierungstokens angegeben ist.
 

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: rohink
-ms.openlocfilehash: fcc9c5333b37c041342c2d20a53cf5d3908d1a26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61aafbe8cb12e93d72f5efd01155f06fb3ec0c28
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76938556"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757263"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager-Endpunktüberwachung
 
@@ -25,7 +25,7 @@ Azure Traffic Manager umfasst eine integrierte Endpunktüberwachung und ein auto
 
 Zum Konfigurieren der Endpunktüberwachung müssen Sie die folgenden Einstellungen in Ihrem Traffic Manager-Profil angeben:
 
-* **Protokoll**. Wählen Sie HTTP, HTTPS oder TCP als Protokoll, das von Traffic Manager beim Testen Ihres Endpunkts verwendet wird, um seine Integrität zu überprüfen. Bei der HTTPS-Überwachung wird nicht überprüft, ob Ihr SSL-Zertifikat gültig ist. Es wird nur überprüft, ob es vorhanden ist.
+* **Protokoll**. Wählen Sie HTTP, HTTPS oder TCP als Protokoll, das von Traffic Manager beim Testen Ihres Endpunkts verwendet wird, um seine Integrität zu überprüfen. Bei der HTTPS-Überwachung wird nicht überprüft, ob Ihr TLS/SSL-Zertifikat gültig ist. Es wird nur überprüft, ob es vorhanden ist.
 * **Port**: Wählen Sie den Port aus, der für die Anforderung verwendet wird.
 * **-Path:** Diese Konfigurationseinstellung gilt nur für die Protokolle HTTP und HTTPS, bei denen das Angeben der Pfadeinstellung obligatorisch ist. Das Angeben dieser Einstellung für das TCP-Überwachungsprotokoll führt zu einem Fehler. Geben Sie für das HTTP- und HTTPS-Protokoll den relativen Pfad und den Namen der Webseite oder Datei an, auf die bei der Überwachung zugegriffen wird. Ein Schrägstrich (/) ist ein gültiger Eintrag für den relativen Pfad. Dieser Wert bedeutet, dass sich die Datei im Stammverzeichnis befindet (Standard).
 * **Benutzerdefinierte Headereinstellungen**: Diese Konfigurationseinstellung hilft Ihnen, bestimmte HTTP-Header zu den Integritätsüberprüfungen hinzuzufügen, die Traffic Manager an Endpunkte unter einem Profil sendet. Die benutzerdefinierten Header können auf Profilebene so festgelegt werden, dass sie für alle Endpunkte in diesem Profil gelten und/oder auf einer Endpunktebene, die nur für diesen Endpunkt gilt. Sie können benutzerdefinierte Header verwenden, um Integritätsprüfungen an Endpunkte in einer mehrinstanzenfähigen Umgebung zu ermöglichen, die ordnungsgemäß an ihr Ziel weitergeleitet werden, indem Sie einen Hostheader angeben. Sie können mit dieser Einstellung auch eindeutige Header hinzufügen, mit denen Sie von Traffic Manager stammende HTTP(S)-Anforderungen identifizieren und unterschiedlich verarbeiten können. Sie können bis zu acht Header-Wert-Paare durch Trennzeichen getrennt angeben. Beispiel: „header1:wert1,header2:wert2“. 

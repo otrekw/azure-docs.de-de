@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dad4c156b088c28ccf199cb155278ac9a189e4be
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 37ddf57057b736cd76a74276e5593a865e7df8cc
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189054"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666869"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche in Azure Active Directory B2C
 
@@ -84,13 +84,17 @@ Bevor Sie zum Anpassen der Benutzeroberfläche Ihre eigenen HTML- und CSS-Dateie
   - Eingeschränkte Unterstützung für Internet Explorer 9 und 8
   - Google Chrome 42.0 und höher
   - Mozilla Firefox 38.0 und höher
+  - Safari für iOS und macOS, Version 12 und höher
 - Schließen Sie keine **Form-Tags** in Ihr HTML ein. Form-Tags stören die POST-Operationen, die von dem durch Azure AD B2C injizierten HTML generiert werden.
 
 ### <a name="where-do-i-store-ui-content"></a>Wo speichere ich Inhalte der Benutzeroberfläche?
 
 Wenn Sie eigene HTML- und CSS-Dateien zum Anpassen der Benutzeroberfläche verwenden, können Sie Ihren Benutzeroberflächeninhalt auf einem beliebigen öffentlich verfügbaren HTTPS-Endpunkt hosten, der CORS unterstützt. Beispiele sind [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md), Webserver, CDNs, AWS S3 und Dateifreigabesysteme.
 
-Der wichtige Punkt hierbei ist, dass Sie die Inhalte auf einem öffentlich verfügbaren HTTPS-Endpunkt (mit aktiviertem CORS) hosten. Sie müssen eine absolute URL verwenden, wenn Sie ihn in Ihrem Inhalt angeben.
+Der wichtige Punkt hierbei ist, dass Sie die Inhalte auf einem öffentlich verfügbaren HTTPS-Endpunkt ([mit aktiviertem CORS](https://enable-cors.org/server.html)) hosten. Sie müssen eine absolute URL verwenden, wenn Sie ihn in Ihrem Inhalt angeben.
+
+> [!NOTE]
+> Ausführliche Informationen zum Erstellen von HTML-Inhalten, zum Hochladen von Inhalten in Azure Blob Storage und zum Konfigurieren von CORS finden Sie im Abschnitt [Exemplarische Vorgehensweise für benutzerdefinierte Seiteninhalte](custom-policy-ui-customization.md#custom-page-content-walkthrough) im Artikel zur Anpassung der Benutzeroberfläche.
 
 ## <a name="get-started-with-custom-html-and-css"></a>Erste Schritte mit benutzerdefiniertem HTML und CSS
 

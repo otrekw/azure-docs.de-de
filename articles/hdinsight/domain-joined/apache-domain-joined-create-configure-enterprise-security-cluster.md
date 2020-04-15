@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 4edafc0c07e967acfabf7fdc5b58c481b2cfccc3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb3484d013314897ea2e9157b642d8f2b85dcd60
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75436030"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437645"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Erstellen und Konfigurieren von Clustern mit dem Enterprise-Sicherheitspaket in Azure HDInsight
 
@@ -316,7 +316,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 ```
 
 > [!NOTE]  
-> Zum Erstellen der SSL-Zertifikatanforderung kann ein Hilfsprogramm oder eine Anwendung verwendet werden, von dem bzw. der eine gültige Public Key Cryptography Standards (PKCS) \#10-Anforderung erstellt wird.
+> Zum Erstellen der TLS/SSL-Zertifikatanforderung kann ein Hilfsprogramm oder eine Anwendung verwendet werden, von dem bzw. der eine gültige Public Key Cryptography Standards (PKCS) \#10-Anforderung erstellt wird.
 
 Überprüfen Sie, ob das Zertifikat im **persönlichen** Speicher auf dem Computer installiert wurde:
 

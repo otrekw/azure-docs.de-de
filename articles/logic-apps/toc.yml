@@ -83,10 +83,12 @@
           href: logic-apps-author-definitions.md
         - name: Behandeln von Inhaltstypen
           href: logic-apps-content-type.md
-        - name: Behandeln von Fehlern und Ausnahmen
+        - name: Behandeln von Ausnahmen
           href: logic-apps-exception-handling.md
         - name: Verarbeiten umfangreicher Nachrichten
           href: logic-apps-handle-large-messages.md
+        - name: Beheben von Drosselungsproblemen oder von Fehlern vom Typ „429“
+          href: handle-throttling-problems-429-errors.md
         - name: Sicher
           items:
             - name: Erhöhen der Sicherheit für Logik-Apps

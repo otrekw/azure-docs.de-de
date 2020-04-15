@@ -5,19 +5,21 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 0dbbc9b09d5d4770296223db9dc909c17f574fe8
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/30/2020
+ms.openlocfilehash: 332feffead74174ba0b9b278d8de1c5957d5b9e6
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767023"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422471"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Konfigurieren der Datenreplikation in Azure Database for MariaDB
 
 In diesem Artikel erfahren Sie, wie Sie die Datenreplikation in Azure Database for MariaDB einrichten, indem Sie Master- und Replikatserver konfigurieren. In diesem Artikel wird davon ausgegangen, dass Sie über ein gewisses Maß an Erfahrung mit MariaDB-Servern und -Datenbanken verfügen.
 
 Um ein Replikat im Azure Database for MariaDB-Dienst zu erstellen, synchronisiert die Datenreplikation Daten von einem lokalen MariaDB-Masterserver, virtuellen Computern (VMs) oder Cloud-Datenbankdiensten.
+
+Überprüfen Sie die [Einschränkungen und Anforderungen](concepts-data-in-replication.md#limitations-and-considerations) der Datenreplikation, bevor Sie die Schritte in diesem Artikel ausführen.
 
 > [!NOTE]
 > Wenn Ihr Masterserver die Version 10.2 oder höher hat, wird empfohlen, die Datenreplikation mithilfe der [globalen Transaktions-ID](https://mariadb.com/kb/en/library/gtid/) einzurichten.
@@ -36,11 +38,21 @@ Um ein Replikat im Azure Database for MariaDB-Dienst zu erstellen, synchronisier
     
     Benutzerkonten werden nicht vom Masterserver auf den Replikatserver repliziert. Um Benutzern Zugriff auf den Replikatserver zu gewähren, müssen Sie alle Konten und die entsprechenden Berechtigungen für diesen neu erstellten Azure Database for MariaDB-Server manuell erstellen.
 
+3. Fügen Sie den Firewallregeln des Replikats die IP-Adresse des Masterservers hinzu. 
+
+   Aktualisieren Sie Firewallregeln über das [Azure-Portal](howto-manage-firewall-portal.md) oder über die [Azure-Befehlszeilenschnittstelle](howto-manage-firewall-cli.md).
+
 ## <a name="configure-the-master-server"></a>Konfigurieren des Masterservers
 
 Mit den folgenden Schritten wird der MariaDB-Server, der lokal, auf einer VM oder in einem Cloud-Datenbankdienst gehostet wird, für die Datenreplikation vorbereitet und konfiguriert. Der MariaDB-Server ist bei der Datenreplikation der Master.
 
-1. Aktivieren Sie die binäre Protokollierung.
+1. Überprüfen Sie die [Anforderungen für den Masterserver](concepts-data-in-replication.md#requirements), bevor Sie fortfahren. 
+
+   Stellen Sie z. B. sicher, dass der Masterserver sowohl eingehenden als auch ausgehenden Datenverkehr an Port 3306 zulässt und über eine **öffentliche IP-Adresse** verfügt und dass der DNS öffentlich zugänglich ist oder über einen vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) verfügt. 
+   
+   Testen Sie die Konnektivität mit dem Masterserver, indem Sie versuchen, eine Verbindung über ein Tool, z. B. die MySQL-Befehlszeile auf einem anderen Computer, oder über die im Azure-Portal verfügbare [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) herzustellen.
+
+2. Aktivieren Sie die binäre Protokollierung.
     
     Um zu prüfen, ob die binäre Protokollierung auf dem Master aktiviert wurde, führen Sie den folgenden Befehl aus:
 
@@ -52,7 +64,7 @@ Mit den folgenden Schritten wird der MariaDB-Server, der lokal, auf einer VM ode
 
    Wenn `log_bin` den Wert `OFF` zurückgibt, bearbeiten Sie die Datei **my.cnf**, damit `log_bin=ON` die binäre Protokollierung aktiviert. Starten Sie den Server neu, damit die Änderung wirksam wird.
 
-2. Konfigurieren Sie Masterservereinstellungen.
+3. Konfigurieren Sie Masterservereinstellungen.
 
     Der Parameter `lower_case_table_names` muss bei der Datenreplikation zwischen Master- und Replikatserver konsistent sein. Der Parameter `lower_case_table_names` ist in Azure Database for MariaDB standardmäßig auf `1` festgelegt.
 
@@ -60,7 +72,7 @@ Mit den folgenden Schritten wird der MariaDB-Server, der lokal, auf einer VM ode
    SET GLOBAL lower_case_table_names = 1;
    ```
 
-3. Erstellen Sie eine neue Replikationsrolle, und richten Sie Berechtigungen ein.
+4. Erstellen Sie eine neue Replikationsrolle, und richten Sie Berechtigungen ein.
 
    Erstellen Sie auf dem Masterserver ein Benutzerkonto, das mit Replikationsberechtigungen konfiguriert ist. Sie können ein Konto mit SQL-Befehlen oder MySQL Workbench erstellen. Wenn Sie eine Replikation mit SSL planen, müssen Sie dies bei der Erstellung des Benutzerkontos angeben.
    
@@ -105,7 +117,7 @@ Mit den folgenden Schritten wird der MariaDB-Server, der lokal, auf einer VM ode
    ![Replikationsslave](./media/howto-data-in-replication/replicationslave.png)
 
 
-4. Versetzen Sie den Masterserver in den schreibgeschützten Modus.
+5. Versetzen Sie den Masterserver in den schreibgeschützten Modus.
 
    Bevor Sie eine Datenbank sichern, muss der Server in den schreibgeschützten Modus versetzt werden. Im schreibgeschützten Modus kann der Masterserver keine Schreibtransaktionen verarbeiten. Um Beeinträchtigung des Geschäftsbetriebs zu vermeiden, planen Sie das Versetzen in den schreibgeschützten Modus außerhalb der Spitzenzeiten ein.
 
@@ -114,7 +126,7 @@ Mit den folgenden Schritten wird der MariaDB-Server, der lokal, auf einer VM ode
    SET GLOBAL read_only = ON;
    ```
 
-5. Rufen Sie den Namen und Offset der aktuellen binären Protokolldatei ab.
+6. Rufen Sie den Namen und Offset der aktuellen binären Protokolldatei ab.
 
    Führen Sie den Befehl [`show master status`](https://mariadb.com/kb/en/library/show-master-status/) aus, um Name und Offset der aktuellen binären Protokolldatei zu ermitteln.
     
@@ -127,7 +139,7 @@ Mit den folgenden Schritten wird der MariaDB-Server, der lokal, auf einer VM ode
 
    Notieren Sie sich den Namen der Binärdatei, da dieser bei den nachfolgenden Schritten benötigt wird.
    
-6. Rufen Sie (optional) die GTID-Position ab (die für die Replikation mit GTID benötigt wird).
+7. Rufen Sie (optional) die GTID-Position ab (die für die Replikation mit GTID benötigt wird).
 
    Führen Sie die Funktion [`BINLOG_GTID_POS`](https://mariadb.com/kb/en/library/binlog_gtid_pos/) aus, um die GTID-Position für den entsprechenden Dateinamen und Offset der binären Protokolldatei zu erhalten.
   
@@ -196,7 +208,7 @@ Mit den folgenden Schritten wird der MariaDB-Server, der lokal, auf einer VM ode
 
        ```sql
        SET @cert = '-----BEGIN CERTIFICATE-----
-       PLACE YOUR PUBLIC KEY CERTIFICATE’S CONTEXT HERE
+       PLACE YOUR PUBLIC KEY CERTIFICATE\'S CONTEXT HERE
        -----END CERTIFICATE-----'
        ```
 

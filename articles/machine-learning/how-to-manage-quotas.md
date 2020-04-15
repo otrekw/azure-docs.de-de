@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 03/05/2020
-ms.openlocfilehash: 17a4652604c0faa804d24530869aac0848c972b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 530647c3d32b62f0cac250795ccce580b182fa92
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399139"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756607"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Verwalten und Anfordern von Kontingenten für Azure-Ressourcen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -60,7 +60,7 @@ Verfügbare Ressourcen:
 
 + Für Cluster pro Region gilt der Standardgrenzwert 200. Diese teilen sich ein Trainingscluster und eine Compute-Instanz (die für Kontingentzwecke als Einzelknotencluster gilt). Wenden Sie sich an den Azure-Support, wenn Sie eine Heraufsetzung dieses Grenzwerts wünschen.
 
-+ Es gibt andere **strikte Grenzwerte, die nicht überschritten werden dürfen, sobald sie erreicht werden.
++ Es gibt andere strikte Grenzwerte, die nicht überschritten werden dürfen, sobald sie erreicht werden.
 
 | **Ressource** | **Maximales Limit** |
 | --- | --- |

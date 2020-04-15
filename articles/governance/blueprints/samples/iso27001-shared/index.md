@@ -1,14 +1,14 @@
 ---
 title: 'Blaupausenbeispiel „ISO 27001: Gemeinsame Dienste“: Übersicht'
 description: 'Übersicht und Architektur des Beispiels zur Blaupause „ISO 27001: Gemeinsame Dienste“ Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer ISO 27001-Kontrollen.'
-ms.date: 01/13/2020
+ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 0b6a250ebac2744adca813219225388841f1776f
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 9b0b49582023ee5c68fea0f21b70290a102a038a
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "75922544"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381574"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „ISO 27001: Gemeinsame Dienste“
 
@@ -21,7 +21,7 @@ Das Blaupausenbeispiel [ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workloa
 Mit dem Blaupausenbeispiel „ISO 27001: Gemeinsame Dienste“ wird eine grundlegende Infrastruktur in Azure bereitgestellt, die von Organisationen zum Hosten mehrerer Workloads basierend auf dem Ansatz mit einem virtuellen Rechenzentrum (Virtual Datacenter, VDC) verwendet werden kann.
 VDC umfasst einen bewährten Satz mit Referenzarchitekturen, Automatisierungstools und Kundenbindungsmodell und wird von Microsoft für seine größten Unternehmenskunden genutzt. Das Blaupausenbeispiel für gemeinsame Dienste basiert auf einer vollständig nativen Azure-VDC-Umgebung, die unten dargestellt ist.
 
-![Blaupausenbeispiel „ISO 27001: Gemeinsame Dienste“ – Entwurf](../../media/sample-iso27001-shared/iso27001-shared-services-blueprint-sample-design.png)
+:::image type="content" source="../../media/sample-iso27001-shared/iso27001-shared-services-blueprint-sample-design.png" alt-text="Blaupausenbeispiel „ISO 27001: Gemeinsame Dienste“ – Entwurf" border="false":::
 
 Diese Umgebung besteht aus mehreren Azure-Diensten, die für die Bereitstellung einer sicheren, vollständig überwachten und unternehmensgerechten Infrastruktur mit gemeinsam genutzten Diensten auf Basis von ISO 27001-Standards genutzt werden. Diese Umgebung besteht aus den folgenden Komponenten:
 

@@ -23,7 +23,11 @@
 - name: Konzepte
   items:
     - name: Remotearbeit
-      href: work-remotely-support.md
+      items:
+        - name: Unterstützung von Remotearbeit
+          href: ../networking/working-remotely-support.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
+        - name: Nutzen von Virtual WAN
+          href: work-remotely-support.md
     - name: Standorte und Partner
       items:
         - name: Hub-Standorte und -Partner

@@ -1,5 +1,5 @@
 ---
-title: Beheben häufiger Fehler bei ML-Modellen mit automatisiertem maschinellem Lernen.
+title: Vermeiden von Überanpassung und unausgeglichenen Daten mit AutoML
 titleSuffix: Azure Machine Learning
 description: Identifizieren und beheben Sie mit den automatisierten Lösungen für automatisiertes maschinelles Lernen von Azure Machine Learning häufige Fehler bei ML-Modellen.
 services: machine-learning
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 03/27/2020
-ms.openlocfilehash: e0bc1aa48dfb40ea146fa79fdfd57da841ca1404
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.date: 04/09/2020
+ms.openlocfilehash: 76f920ad6aae68defb567a7a6623d1ffd488af5f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385339"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874856"
 ---
-# <a name="manage-ml-pitfalls-with-automated-machine-learning"></a>Beheben häufiger ML-Fehler mit automatisiertem maschinellem Lernen
+# <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Verhindern von Überanpassung und unausgeglichenen Daten durch automatisiertes maschinelles Lernen
 
 Häufige Fehler bei der Erstellung von Machine Learning-Modellen sind Überanpassung und unausgeglichene Daten. Standardmäßig bietet das automatisierte maschinelle Lernen von Azure Machine Learning Diagramme und Metriken, die Ihnen helfen, diese Risiken zu identifizieren, und implementiert bewährte Methoden, um sie zu mindern. 
 

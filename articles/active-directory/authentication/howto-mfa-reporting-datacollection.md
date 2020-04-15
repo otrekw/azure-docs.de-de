@@ -4,19 +4,19 @@ description: Welche Informationen verwendet Azure Multi-Factor Authentication, u
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bc0f0dbcd08df887b2484be6ca8c92a85962c1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f3b5af972ad6dd15b7c992d5e264ede97bd1dde
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74848288"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653628"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication – Erfassen von Benutzerdaten
 
@@ -139,8 +139,8 @@ Administratoren können mithilfe der folgenden Anleitung alle Benutzerdaten vom 
 - Führen Sie über die Befehlszeile des MFA-Servers den folgenden Befehl aus. Ändern Sie den Pfad gemäß Ihrer Installation `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>`, um eine Datei im JSON-Format zu erstellen.
 - Administratoren können auch den GetUserGdpr-Vorgang des Webdienst-SDK verwenden, um alle erfassten MFA-Clouddienstinformationen für einen bestimmten Benutzer zu exportieren oder in eine größere Berichtslösung zu integrieren.
 - Suchen Sie nach `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` und allen Sicherungen für „\<Benutzername>“ (Anführungszeichen in die Suche einschließen), um alle Instanzen des Benutzerdatensatzes zu finden, die hinzugefügt oder geändert wurden.
-   - Diese Datensätze können begrenzt (jedoch nicht entfernt) werden, indem Sie **„Benutzeränderungen protokollieren“** deaktivieren in der MFA-Server-UX, im Abschnitt „Protokollierung“, auf der Registerkarte „Protokolldateien“.
-   - Wenn Syslog konfiguriert und **„Benutzeränderungen protokollieren“** in der MFA-Server-UX, im Abschnitt „Protokollierung“, auf der Registerkarte „Syslog“ aktiviert ist, können Protokolleinträge stattdessen aus Syslog erfasst werden.
+   - Diese Datensätze können begrenzt (jedoch nicht entfernt) werden, indem Sie in der Benutzerumgebung des MFA-Servers auf der Registerkarte „Protokolldateien“ im Abschnitt „Protokollierung“ die Option **„Benutzeränderungen protokollieren“** deaktivieren.
+   - Wenn Syslog konfiguriert und **„Benutzeränderungen protokollieren“** in der Benutzerumgebung des MFA-Servers auf der Registerkarte „Syslog“, im Abschnitt „Protokollierung“, aktiviert ist, können Protokolleinträge stattdessen aus Syslog erfasst werden.
 - Andere Vorkommen des Benutzernamens im MultiFactorAuthSvc.log und in anderen MFA-Serverprotokolldateien, die sich auf Authentifizierungsversuche beziehen, gelten als operative Daten und Duplikate, die mithilfe des MultiFactorAuthGdpr.exe-Exports oder des Webdienst-SDK GetUserGdpr bereitgestellt wurden.
 
 ## <a name="delete-data-from-mfa-server"></a>Löschen von Daten vom MFA-Server

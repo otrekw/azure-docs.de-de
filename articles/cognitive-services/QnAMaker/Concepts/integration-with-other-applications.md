@@ -3,12 +3,12 @@ title: 'Integration in andere Anwendungen: QnA Maker'
 description: QnA Maker lässt sich in Clientanwendungen wie etwa Chatbots sowie in andere Dienste zur natürlichsprachlichen Verarbeitung wie LUIS (Language Understanding) integrieren.
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 38b275aa2b8cf5768a2bc95634a7ff4892893eda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1edbfb6badfb73ce08a99709da0f8bfb61b7dc3
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300518"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804186"
 ---
 # <a name="design-knowledge-base-for-client-applications"></a>Entwerfen einer Wissensdatenbank für Clientanwendungen
 
@@ -24,7 +24,7 @@ Erstellen Sie nach dem Veröffentlichen Ihrer Wissensdatenbank auf der Seite **V
 
 ## <a name="providing-multi-turn-conversations"></a>Bereitstellen von Unterhaltungen mit mehreren Durchgängen
 
-Ein Bot stellt die optimal ausgewählte Antwort aus Ihrer Wissensdatenbank zur Verfügung und kann Folgeaufforderungen bereitstellen, falls es sich bei der Antwort um einen QnA-Satz in mehreren Durchgängen handelt. Erfahren Sie, [wie](../how-to/multiturn-conversation.md) Sie Ihrer Wissensdatenbank Frage-Antwort-Sätze mit mehreren Durchgängen hinzufügen.
+Ein Bot stellt die optimal ausgewählte Antwort aus Ihrer Wissensdatenbank zur Verfügung und kann Folgeaufforderungen bereitstellen, falls es sich bei der Antwort um ein QnA-Paar in mehreren Durchgängen handelt. Erfahren Sie, [wie](../how-to/multiturn-conversation.md) Sie Ihrer Wissensdatenbank Frage-Antwort-Sätze mit mehreren Durchgängen hinzufügen.
 
 ## <a name="natural-language-processing"></a>Verarbeitung natürlicher Sprache
 

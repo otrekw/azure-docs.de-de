@@ -2,7 +2,7 @@
   items:
     - name: Was ist Azure FarmBeats?
       href: overview-azure-farmbeats.md
-- name: Lernprogramme
+- name: Tutorials
   expanded: true
   items:
     - name: Struktur für Bodenfeuchtigkeit generieren
@@ -29,12 +29,16 @@
       href: manage-farms-in-azure-farmbeats.md
     - name: Sensordaten abrufen
       href: get-sensor-data-from-sensor-partner.md
+    - name: Abrufen von Wetterdaten
+      href: get-weather-data-from-weather-partner.md
     - name: Generieren von Karten
       href: generate-maps-in-azure-farmbeats.md
     - name: Regeln konfigurieren und Warnungen verwalten
       href: configure-rules-alerts-in-azure-farmbeats.md
     - name: Abrufen von Drohnenbildern
       href: get-drone-imagery-in-azure-farmbeats.md
+    - name: Notfallwiederherstellung
+      href: disaster-recovery-for-farmbeats.md
 - name: Problembehandlung
   items:
     - name: Problembehandlung in Azure FarmBeats

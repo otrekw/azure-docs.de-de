@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: ff4079263fd7afb02e132a798997687fad7e9961
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d27c648980338b3a9e12bd618eb4620fe9988fd7
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206978"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436916"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Häufig gestellte Fragen zu Apache Kafka in Azure HDInsight
 
@@ -50,7 +50,7 @@ Durch Verwenden von [Enterprise-Sicherheitspaket (ESP)](../domain-joined/apache-
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>Werden meine Daten verschlüsselt? Kann ich meine eigenen Schlüssel verwenden?
 
-Alle Kafka-Nachrichten auf den verwalteten Datenträgern werden mit [Azure-Speicherdienstverschlüsselung](../../storage/common/storage-service-encryption.md) (Storage Service Encryption, SSE) verschlüsselt. Daten während einer Übertragung (etwa Daten, die von Clients an Broker übermittelt werden bzw. umgekehrt) sind standardmäßig nicht verschlüsselt. Sie können solchen Datenverkehr verschlüsseln, indem [Sie SSL selbst einrichten](./apache-kafka-ssl-encryption-authentication.md). Außerdem können Sie mit HDInsight eigene Schlüssel verwalten, um die ruhenden Daten zu verschlüsseln. Weitere Informationen finden Sie unter [Datenträgerverschlüsselung mit kundenseitig verwalteten Schlüsseln](../disk-encryption.md).
+Alle Kafka-Nachrichten auf den verwalteten Datenträgern werden mit [Azure-Speicherdienstverschlüsselung](../../storage/common/storage-service-encryption.md) (Storage Service Encryption, SSE) verschlüsselt. Daten während einer Übertragung (etwa Daten, die von Clients an Broker übermittelt werden bzw. umgekehrt) sind standardmäßig nicht verschlüsselt. Sie können solchen Datenverkehr verschlüsseln, indem [Sie TLS selbst einrichten](./apache-kafka-ssl-encryption-authentication.md). Außerdem können Sie mit HDInsight eigene Schlüssel verwalten, um die ruhenden Daten zu verschlüsseln. Weitere Informationen finden Sie unter [Datenträgerverschlüsselung mit kundenseitig verwalteten Schlüsseln](../disk-encryption.md).
 
 ## <a name="how-do-i-connect-clients-to-my-cluster"></a>Wie verbinde ich Clients mit meinem Cluster?
 
@@ -96,5 +96,5 @@ Verwenden Sie Azure Monitor, um ihre [Kafka-Protokolle](./apache-kafka-log-analy
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Einrichten von Secure Sockets Layer-Verschlüsselung (SSL) und -Authentifizierung für Apache Kafka in Azure HDInsight](./apache-kafka-ssl-encryption-authentication.md)
+* [Einrichten von TLS-Verschlüsselung und -Authentifizierung für Apache Kafka in Azure HDInsight](./apache-kafka-ssl-encryption-authentication.md)
 * [Verwenden von MirrorMaker zum Replizieren von Apache Kafka-Themen mit Kafka in HDInsight](./apache-kafka-mirroring.md)

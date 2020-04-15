@@ -2,14 +2,14 @@
 title: 'Problembehandlung: QnA Maker'
 description: Die kuratierte Liste der am häufigsten gestellten Fragen in Bezug auf den QnA Maker-Dienst ermöglichen einen schnelleren Einstieg in die Nutzung des Diensts und bessere Ergebnisse.
 ms.topic: troubleshooting
-ms.date: 02/21/2020
+ms.date: 03/25/2020
 ms.author: diberry
-ms.openlocfilehash: 4596c16a5d7c9053bf0e27af476c66fe8fa9ed35
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 7847e21dbcf07f669d6802fffdd1e43623a72340
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78296098"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804349"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Problembehandlung für QnA Maker
 
@@ -17,10 +17,20 @@ Die kuratierte Liste der am häufigsten gestellten Fragen in Bezug auf den QnA M
 
 <a name="how-to-get-the-qnamaker-service-hostname"></a>
 
+## <a name="manage-predictions"></a>Verwalten von Vorhersagen
+
+<details>
+<summary><b>Wie kann ich die Durchsatzleistung für Abfragevorhersagen verbessern?</b></summary>
+
+**Antwort:** Probleme bei der Durchsatzleistung weisen darauf hin, dass Sie sowohl für Ihren App-Dienst als auch für die Cognitive Search-Instsanz zentral hochskalieren müssen. Fügen Sie Ihrer Cognitive Search-Instanz ggf. ein Replikat hinzu, um die Leistung zu verbessern.
+
+[Hier](Concepts/azure-resources.md) finden Sie weitere Informationen zu Tarifen.
+</details>
+
 <details>
 <summary><b>Abrufen des QnA Maker-Dienstendpunkts</b></summary>
 
-**Antwort:** Der QnA Maker-Dienstendpunkt ist beim Debuggen hilfreich, wenn Sie sich an den QnA Maker-Support oder UserVoice wenden. Der Endpunkt ist eine URL mit folgendem Format: https://your-resource-name.azurewebsites.net.
+**Antwort:** Der QnA Maker-Dienstendpunkt ist beim Debuggen hilfreich, wenn Sie sich an den QnA Maker-Support oder UserVoice wenden. Der Endpunkt ist eine URL mit folgendem Format: `https://your-resource-name.azurewebsites.net`.
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem QnA Maker-Dienst (Ressourcengruppe).
 
@@ -132,7 +142,7 @@ Alle Löschvorgänge sind endgültig, dazu gehört auch das Löschen von Frage/A
 * Dateien: nicht unterstützt
 
 #### <a name="answer-text-in-markdown"></a>Antworttext in Markdown
-Wenn die QnA-Sätze in der Wissensdatenbank hinzugefügt wurden, können Sie den Markdowntext einer Antwort bearbeiten, um Links zu Medien einzufügen, die über öffentliche URLs verfügbar sind.
+Wenn die QnA-Paare in der Wissensdatenbank hinzugefügt wurden, können Sie den Markdowntext einer Antwort bearbeiten, um Links zu Medien einzufügen, die über öffentliche URLs verfügbar sind.
 
 
 </details>

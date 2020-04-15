@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 786b21e7571ed173d2da90f587a5b76d8c92a13d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95a70a1d0c4367adb1dd276bff1b1eb20caafc59
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79235854"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473382"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals
 
@@ -202,7 +202,7 @@ Flussprotokolle enthalten die folgenden Felder:
 - Protokolltyp 
 - Bei der Entschärfung durchgeführte Aktion
 
-
+Die Angriffsanalyse funktioniert nur, wenn DDoS Protection Standard im virtuellen Netzwerk der öffentlichen IP-Adresse aktiviert ist. 
 
 ## <a name="validate-ddos-detection"></a>Überprüfen der DDoS-Erkennung
 

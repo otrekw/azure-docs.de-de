@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3c481a2e12d83e865025cd90e59e0eba572ad9a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 44acc81df9eb6dc6a6af28b5b0f4730aa93adffc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75771392"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475431"
 ---
 # <a name="collect-data-for-models-in-production"></a>Sammeln von Daten für Modelle in der Produktion
 
@@ -60,7 +60,7 @@ Der Pfad zu den Ausgabedaten im Blob folgt dieser Syntax:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://aka.ms/AMLFree), bevor Sie beginnen.
+- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLFree) erstellen, bevor Sie beginnen.
 
 - Ein Azure Machine Learning-Arbeitsbereich, ein lokales Verzeichnis mit Ihren Skripts und das Azure Machine Learning SDK für Python müssen installiert sein. Informationen zur Installation finden Sie unter [Konfigurieren einer Entwicklungsumgebung](how-to-configure-environment.md).
 
@@ -129,11 +129,7 @@ Wenn Sie in der Umgebungsdatei und Bewertungsdatei bereits einen Dienst mit den 
 
    ![Bearbeiten des Diensts](././media/how-to-enable-data-collection/EditService.PNG)
 
-1. Aktivieren Sie unter **Erweiterte Einstellungen** die Option **Modelldatensammlung aktivieren**.
-
-    [![Auswählen der Datensammlung](./media/how-to-enable-data-collection/CheckDataCollection.png)](././media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
-
-   Sie können auch die Option **AppInsights-Diagnose aktivieren** auswählen, um die Integrität des Diensts zu verfolgen.
+1. Aktivieren Sie in **Erweiterte Einstellungen** die Option **Application Insights-Diagnose und -Datensammlung aktivieren**.
 
 1. Wählen Sie **Aktualisieren** aus, um die Änderungen zu übernehmen.
 
@@ -151,9 +147,7 @@ Sie können das Sammeln von Daten jederzeit beenden. Deaktivieren Sie die Datens
 
    [![Auswählen der Option „Bearbeiten“](././media/how-to-enable-data-collection/EditService.PNG)](./././media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
-1. Deaktivieren Sie unter **Erweiterte Einstellungen** die Option **Modelldatensammlung aktivieren**.
-
-    [![Deaktivieren des Kontrollkästchens für die Datensammlung](./media/how-to-enable-data-collection/UncheckDataCollection.png)](././media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
+1. Deaktivieren Sie in **Erweiterte Einstellungen** die Option **Application Insights-Diagnose und -Datensammlung aktivieren**.
 
 1. Klicken Sie auf **Aktualisieren**, um die Änderungen zu übernehmen.
 

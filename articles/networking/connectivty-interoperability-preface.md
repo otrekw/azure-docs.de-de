@@ -1,5 +1,5 @@
 ---
-title: 'Interoperabilität in Azure-Back-End-Konnektivitätsfeatures: Testeinrichtung | Microsoft-Dokumentation'
+title: 'Interoperabilität in Azure: Testeinrichtung | Microsoft-Dokumentation'
 description: Dieser Artikel beschreibt eine Testeinrichtung, mit der Sie die Interoperabilität zwischen ExpressRoute, einem Site-to-Site-VPN und Peering zwischen virtuellen Netzwerken in Azure analysieren können.
 documentationcenter: na
 services: networking
@@ -10,20 +10,20 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 0cbd4b620a03ed26e95679cf7cb1abef277a9471
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3aec41a145d2c94a45a453393831902069b9c41b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873794"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518189"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-test-setup"></a>Interoperabilität in Azure-Back-End-Konnektivitätsfeatures: Testeinrichtung
+# <a name="interoperability-in-azure--test-setup"></a>Interoperabilität in Azure: Testeinrichtung
 
 In diesem Artikel wird eine Testeinrichtung beschrieben, mit der Sie analysieren können, wie Azure-Netzwerkdienste auf der Steuerungs- und Datenebene zusammen arbeiten. Sehen wir uns kurz die Azure-Netzwerkkomponenten an:
 
--   **Azure ExpressRoute**: Mit dem privaten Peering in Azure ExpressRoute können Sie eine direkte Verbindung zwischen privaten IP-Adressbereichen Ihres lokalen Netzwerks und Ihren Azure Virtual Network-Bereitstellungen herstellen. Mithilfe von ExpressRoute können Sie eine höhere Bandbreite erzielen und private Verbindungen herstellen. Viele ExpressRoute-Ökosystempartner bieten ExpressRoute-Konnektivität mit SLAs. Weitere Informationen zu ExpressRoute und zur Konfiguration von ExpressRoute finden Sie unter [ExpressRoute-Übersicht][ExpressRoute].
--   **Site-to-Site-VPN**: Mit Azure VPN Gateway als Site-to-Site-VPN können Sie über das Internet oder über ExpressRoute eine sichere Verbindung zwischen einem lokalen Netzwerk und Azure herstellen. Informationen zum Konfigurieren eines Site-to-Site-VPN zum Verbinden mit Azure finden Sie unter [Was ist VPN Gateway?][VPN].
--   **VNET-Peering**: Verwenden Sie das Peering virtueller Netzwerke (VNET), um Konnektivität zwischen VNETs in Azure Virtual Network herzustellen. Weitere Informationen zum VNET-Peering finden Sie unter [Tutorial: Herstellen von Verbindungen zwischen virtuellen Netzwerken durch Peerings für virtuelle Netzwerke mit dem Azure-Portal][VNet].
+-   **Azure ExpressRoute:** Mit dem privaten Peering in Azure ExpressRoute können Sie eine direkte Verbindung zwischen privaten IP-Adressbereichen Ihres lokalen Netzwerks und Ihren Azure Virtual Network-Bereitstellungen herstellen. Mithilfe von ExpressRoute können Sie eine höhere Bandbreite erzielen und private Verbindungen herstellen. Viele ExpressRoute-Ökosystempartner bieten ExpressRoute-Konnektivität mit SLAs. Weitere Informationen zu ExpressRoute und zur Konfiguration von ExpressRoute finden Sie unter [ExpressRoute-Übersicht][ExpressRoute].
+-   **Site-to-Site-VPN:** Mit Azure VPN Gateway als Site-to-Site-VPN können Sie über das Internet oder über ExpressRoute eine sichere Verbindung zwischen einem lokalen Netzwerk und Azure herstellen. Informationen zum Konfigurieren eines Site-to-Site-VPN zum Verbinden mit Azure finden Sie unter [Was ist VPN Gateway?][VPN].
+-   **VNET-Peering:** Verwenden Sie das Peering virtueller Netzwerke (VNET), um Konnektivität zwischen VNETs in Azure Virtual Network herzustellen. Weitere Informationen zum VNET-Peering finden Sie unter [Tutorial: Herstellen von Verbindungen zwischen virtuellen Netzwerken durch Peerings für virtuelle Netzwerke mit dem Azure-Portal][VNet].
 
 ## <a name="test-setup"></a>Testeinrichtung
 

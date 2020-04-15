@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: a2a85d98bf29e78d58bf0c578ce79943bae21fc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5655a58c3538ac47e8649619b079dc46ee01242
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79225158"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473216"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Hinzufügen, Ändern oder Entfernen von IP-Adressen für Azure-Netzwerkschnittstellen
 
@@ -120,7 +120,7 @@ Zusätzlich zu einer primären IP-Konfiguration können einer Netzwerkschnittste
 
 - Muss eine private IPv4- oder IPv6-Adresse zugewiesen werden. Wenn es sich um eine IPv6-Adresse handelt, kann die Netzwerkschnittstelle nur über eine sekundäre IP-Konfiguration verfügen. Wenn es sich um eine IPv4-Adresse handelt, können der Netzwerkschnittstelle mehrere sekundäre IP-Konfiguration zugewiesen werden. Weitere Informationen zur Anzahl der öffentlichen und privaten IPv4-Adressen, die einer Netzwerkschnittstelle zugewiesen werden können, finden Sie im Artikel [Einschränkungen bei Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 - Kann auch eine öffentliche IPv4- oder IPv6-Adresse zugewiesen werden. In Szenarien wie den folgenden kann es hilfreich sein, einer Netzwerkschnittstelle mehrere IPv4-Adressen zuzuweisen:
-  - Hosten mehrerer Websites oder Dienste mit unterschiedlichen IP-Adressen und SSL-Zertifikaten auf einem einzelnen Server
+  - Hosten mehrerer Websites oder Dienste mit unterschiedlichen IP-Adressen und TLS/SSL-Zertifikaten auf einem einzelnen Server
   - Verwenden eines virtuellen Computers als virtuelles Netzwerkgerät (etwa als Firewall oder Lastenausgleich)
   - Fähigkeit zum Hinzufügen einer privaten IPv4-Adresse für eine der Netzwerkschnittstellen zu einem Azure Load Balancer-Back-End-Pool. Bisher konnte nur die primäre IPv4-Adresse für die primäre Netzwerkschnittstelle einem Back-End-Pool hinzugefügt werden. Weitere Informationen dazu, wie bei mehreren IPv4-Konfigurationen ein Lastenausgleich durchgeführt werden kann, finden Sie im Artikel [Lastenausgleich bei mehreren IP-Konfigurationen](../load-balancer/load-balancer-multiple-ip.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
   - Die Möglichkeit eines Lastenausgleichs für eine IPv6-Adresse, die einer Netzwerkschnittstelle zugewiesen ist. Weitere Informationen zum Lastenausgleich bei einer privaten IPv6-Adresse finden Sie im Artikel [Lastenausgleich bei IPv6-Adressen](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

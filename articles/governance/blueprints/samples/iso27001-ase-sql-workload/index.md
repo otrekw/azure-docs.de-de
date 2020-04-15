@@ -3,12 +3,12 @@ title: 'Blaupausenbeispiel „ISO 27001: ASE-/SQL-Workload“: Übersicht'
 description: 'Übersicht und Architektur des Beispiels für die Blaupause „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“.'
 ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: d77029b93b1e77bdba85c5dd5608cbdc5d6543a5
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 9957ab1bef5b65fc90b5a357bd56d6f0013ea690
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "75920769"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381749"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“
 
@@ -24,7 +24,7 @@ Es gibt zwei ISO 27001-Blaupausenbeispiele: dieses Beispiel und das Blaupausenb
 
 Im Blaupausenbeispiel „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“ wird eine Webumgebung auf PaaS-Basis (Platform-as-a-Service) bereitgestellt. Die Umgebung kann zum Hosten von mehreren Webanwendungen, Web-APIs und SQL-Datenbankinstanzen verwendet werden, für die die ISO 27001-Standards eingehalten werden. Dieses Blaupausenbeispiel basiert auf dem Blaupausenbeispiel [ISO 27001: Gemeinsame Dienste](../iso27001-shared/index.md).
 
-![Blaupausenbeispiel „ISO 27001: ASE-/SQL-Workload“ – Entwurf](../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png)
+:::image type="content" source="../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png" alt-text="Blaupausenbeispiel „ISO 27001: ASE-/SQL-Workload“ – Entwurf" border="false":::
 
 Diese Umgebung besteht aus mehreren Azure-Diensten, die für die Bereitstellung einer sicheren, vollständig überwachten und unternehmensgerechten Workloadinfrastruktur auf Grundlage von ISO 27001-Standards genutzt werden. Diese Umgebung besteht aus den folgenden Komponenten:
 

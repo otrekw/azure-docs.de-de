@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/10/2019
-ms.openlocfilehash: 71afbf09d563a43469689132dfce071b40d694b6
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: f19d4adad675cdf95f59aca0f752f46211b75e8f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77162666"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436907"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight
 
@@ -52,7 +52,7 @@ Sie können [Blob-Momentaufnahmen](https://docs.microsoft.com/rest/api/storagese
 
 Die folgenden Methoden können zum Importieren von Zertifikaten in den Java-Vertrauensspeicher verwendet werden:
 
-Laden Sie das Azure Blob-SSL-Zertifikat in eine Datei herunter.
+Laden Sie das Azure Blob-TLS/SSL-Zertifikat in eine Datei herunter.
 
 ```bash
 echo -n | openssl s_client -connect <storage-account>.blob.core.windows.net:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > Azure_Storage.cer
@@ -92,7 +92,7 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 Azure Data Lake Storage Gen2 ist das neueste Speicherangebot. Es vereint die Kernfunktionen der ersten Generation von Azure Data Lake Storage mit einem Hadoop-kompatiblen Dateisystemendpunkt, der direkt in Azure Blob Storage integriert ist. Diese Erweiterung verbindet die Vorteile eines Objektspeichers hinsichtlich Skalierbarkeit und Kosten mit der Zuverlässigkeit und Leistung, die normalerweise nur lokale Dateisysteme bieten.
 
-ADLS Gen2 basiert auf  [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) und ermöglicht Ihnen das Arbeiten mit Daten über das Dateisystem und den Objektspeicher. Funktionen von  [Azure Data Lake Storage Gen1](../../data-lake-store/index.md), wie z.B. Dateisystemsemantik, Sicherheit und Skalierbarkeit auf Dateiebene, werden mit den kostengünstigen, mehrstufigen Speicherlösungen, Hochverfügbarkeits- und Notfallwiederherstellungsfunktionen und einem umfassenden Ökosystem aus SDKs und Tools von  [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) kombiniert. In Data Lake Storage Gen2 bleiben alle Vorzüge des Objektspeichers erhalten, während gleichzeitig die Vorteile einer für Analyseworkloads optimierten Dateisystemschnittstelle zum Tragen kommen.
+ADLS Gen2 basiert auf  [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) und ermöglicht Ihnen das Arbeiten mit Daten über das Dateisystem und den Objektspeicher. Funktionen von  [Azure Data Lake Storage Gen1](../../data-lake-store/index.yml), wie z.B. Dateisystemsemantik, Sicherheit und Skalierbarkeit auf Dateiebene, werden mit den kostengünstigen, mehrstufigen Speicherlösungen, Hochverfügbarkeits- und Notfallwiederherstellungsfunktionen und einem umfassenden Ökosystem aus SDKs und Tools von  [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) kombiniert. In Data Lake Storage Gen2 bleiben alle Vorzüge des Objektspeichers erhalten, während gleichzeitig die Vorteile einer für Analyseworkloads optimierten Dateisystemschnittstelle zum Tragen kommen.
 
 Ein wesentliches Merkmal von Data Lake Storage Gen2 ist die Hinzufügung eines  [hierarchischen Namespace](../../storage/data-lake-storage/namespace.md)  zum Blob Storage-Dienst, der Objekte und Dateien für einen leistungsstarken Datenzugriff in einer Verzeichnishierarchie organisiert. Die hierarchische Struktur macht es möglich, dass Vorgänge wie das Umbenennen oder Löschen eines Verzeichnisses zu einzelnen atomaren Metadatenvorgängen im Verzeichnis werden, anstatt alle Objekte aufzuzählen und zu verarbeiten, die das Namenspräfix des Verzeichnisses gemeinsam haben.
 

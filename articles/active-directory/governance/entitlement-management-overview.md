@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3deb87fec8241ad6126314f3f6ce5fb9600ad1fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 65100e8584eba5c31edc2f9fd8c57ad8bd14c0d1
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128558"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582547"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Was ist die Azure AD-Berechtigungsverwaltung?
 
@@ -43,7 +43,7 @@ Diese Probleme sind für Benutzer, die Zugriff aus einer anderen Organisation be
 - Kein Einziger kann alle Personen in den Verzeichnissen anderer Organisationen kennen und einladen.
 - Selbst wenn sie diese Benutzer einladen könnten, kann niemand in der betreffenden Organisation den Zugriff aller Benutzer konsistent verwalten.
 
-Diese Herausforderungen können mit der Azure AD-Berechtigungsverwaltung leichter bewältigt werden.  Wenn Sie mehr darüber erfahren möchten, wie Kunden die Berechtigungsverwaltung von Azure AD verwendet haben, können Sie die [Avanade-Fallstudie](https://aka.ms/AvanadeELMCase) und die [Centrica-Fallstudie](https://aka.ms/CentricaELMCase) lesen.  Dieses Video bietet einen Überblick über die Berechtigungsverwaltung und ihren Nutzen:
+Diese Herausforderungen können mit der Azure AD-Berechtigungsverwaltung leichter bewältigt werden.  Wenn Sie mehr darüber erfahren möchten, wie Kunden die Berechtigungsverwaltung von Azure AD verwendet haben, können Sie die [Avanade-Fallstudie](https://customers.microsoft.com/story/avanade-professional-services-azure-canada) und die [Centrica-Fallstudie](https://customers.microsoft.com/story/757467-centrica-energy-azure) lesen.  Dieses Video bietet einen Überblick über die Berechtigungsverwaltung und ihren Nutzen:
 
 >[!VIDEO https://www.youtube.com/embed/_Lss6bFrnQ8]
 
@@ -132,15 +132,16 @@ Zum besseren Verständnis der Berechtigungsverwaltung und der dazugehörigen Dok
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-Spezielle Clouds, z. B. Azure Government, Azure Deutschland und Azure China 21Vianet, können derzeit nicht verwendet werden.
+Spezielle Clouds, z. B. Azure Deutschland und Azure China 21Vianet, können derzeit nicht verwendet werden.
 
 ### <a name="how-many-licenses-must-you-have"></a>Wie viele Lizenzen benötigen Sie?
 
-Stellen Sie sicher, dass Ihr Verzeichnis über mindestens so viele Azure AD Premium P2-Lizenzen verfügt, wie Sie Mitarbeiter haben, die folgende Aufgaben ausführen:
+Die Anzahl der Azure AD Premium P2-Lizenzen, über die Ihr Verzeichnis verfügen muss, errechnet sich anhand der folgenden Zahlen:
 
 - Mitgliedsbenutzer, die ein Zugriffspaket anfordern **können**
 - Mitglieds- und Gastbenutzer, die ein Zugriffspaket anfordern
 - Mitglieds- und Gastbenutzer, die die Anforderung eines Zugriffspakets genehmigen
+- Mitglieds- und Gastbenutzer, die über eine direkte Zuweisung zu einem Zugriffspaket verfügen
 
 Für die folgenden Aufgaben sind **keine** Azure AD Premium P2-Lizenzen erforderlich:
 

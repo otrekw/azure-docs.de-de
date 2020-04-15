@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bd305d2943d1b12756171748f28d32300081d71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42337fe958a881ee263d16c866dda69f13fe09c1
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443392"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519621"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Konfigurieren der Art und Weise, wie Endbenutzer Anwendungen zustimmen können
 
@@ -32,7 +32,7 @@ Microsoft empfiehlt die Deaktivierung zukünftiger Vorgänge für die Benutzerei
 
 Im Azure-Portal können Sie deaktivieren oder aktivieren, ob Benutzer Anwendungen zustimmen können, die auf die Daten Ihrer Organisation zugreifen:
 
-1. Melden Sie sich als [globaler Administrator](https://portal.azure.com) beim [Azure-Portal](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) an.
+1. Melden Sie sich als [globaler Administrator](../users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator) beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie **Azure Active Directory**, **Unternehmensanwendungen** und dann **Benutzereinstellungen** aus.
 3. Aktivieren oder deaktivieren Sie die Benutzereinwilligung mit dem Steuerelement **Benutzer können Apps den Zugriff auf Unternehmensdaten in ihrem Namen gestatten**.
 4. (Optional) Konfigurieren Sie den [Workflow zum Anfordern der Administratoreinwilligung](configure-admin-consent-workflow.md), um sicherzustellen, dass Benutzer, die einer App nicht zustimmen dürfen, eine Genehmigung anfordern können.
@@ -143,9 +143,53 @@ Mit dem Azure AD PowerShell-Vorschaumodul ([AzureADPreview](https://docs.microso
     }
     ```
 
+## <a name="configure-risk-based-step-up-consent"></a>Konfigurieren der risikobasierten hochgestuften Einwilligung
+
+Die risikobasierte hochgestufte Einwilligung trägt zur Reduzierung der Benutzergefährdung durch böswillige Apps bei, die [unrechtmäßige Einwilligungsanforderungen](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants) ausgeben. Wenn Microsoft eine risikobehaftete Anforderung der Endbenutzereinwilligung erkennt, wird die Anforderung stattdessen auf Administratoreinwilligung „hochgestuft“. Diese Funktion ist standardmäßig aktiviert, führt jedoch nur zu einer Änderung des Verhaltens, wenn die Endbenutzereinwilligung aktiviert ist.
+
+Wird eine risikobehaftete Einwilligungsanforderung erkannt, wird in der Einwilligungsaufforderung eine Meldung angezeigt, die besagt, dass eine Administratorgenehmigung erforderlich ist. Wenn der [Workflow zum Anfordern der Administratoreinwilligung](configure-admin-consent-workflow.md) aktiviert ist, kann der Benutzer die Anforderung zur weiteren Überprüfung direkt von der Einwilligungsaufforderung an einen Administrator senden. Ist diese Funktion nicht aktiviert, wird die folgende Meldung angezeigt:
+
+* **AADSTS90094:** &lt;Anzeigename der Client-App&gt; benötigt eine Berechtigung zum Zugriff auf Ressourcen in Ihrer Organisation, die nur ein Administrator erteilen kann. Bitten Sie einen Administrator, dieser App Berechtigungen zu erteilen, bevor Sie sie verwenden können.
+
+In diesem Fall wird auch ein Überwachungsereignis der Kategorie „ApplicationManagement“ mit dem Aktivitätstyp „Zustimmung zu Anwendung“ und dem Statusgrund „Riskante Anwendung erkannt“ protokolliert.
+
+> [!IMPORTANT]
+> Administratoren sollten vor der Genehmigung [alle Einwilligungsanforderungen sorgfältig auswerten](manage-consent-requests.md#evaluating-a-request-for-tenant-wide-admin-consent), besonders wenn Microsoft ein Risiko erkannt hat.
+
+### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>Deaktivieren oder erneutes Aktivieren der risikobasierten hochgestuften Einwilligung mit PowerShell
+
+Mit dem Modul „Azure AD PowerShell Preview“ ([AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)) können Sie die Hochstufung auf Administratoreinwilligung deaktivieren (wenn Microsoft Risiken erkennt) oder erneut aktivieren, wenn sie zuvor deaktiviert wurde.
+
+Hierfür können Sie die gleichen Schritte verwenden, die weiter oben unter [Konfigurieren der Gruppenbesitzereinwilligung mithilfe von PowerShell](#configure-group-owner-consent-using-powershell) beschrieben wurden, müssen aber einen anderen Einstellungswert ersetzen. Die Schritte unterscheiden sich in drei Punkten: 
+
+1. Machen Sie sich mit den Einstellungswerten für die risikobasierte hochgestufte Einwilligung vertraut:
+
+    | Einstellung       | type         | BESCHREIBUNG  |
+    | ------------- | ------------ | ------------ |
+    | _BlockUserConsentForRiskyApps_   | Boolean |  Flag, das angibt, ob die Benutzereinwilligung beim Erkennen einer risikobehafteten Anforderung blockiert wird. |
+
+2. Ersetzen Sie in Schritt 3 den folgenden Wert:
+
+    ```powershell
+    $riskBasedConsentEnabledValue = $settings.Values | ? { $_.Name -eq "BlockUserConsentForRiskyApps" }
+    ```
+3. Ersetzen Sie in Schritt 5 einen der folgenden Werte:
+
+    ```powershell
+    # Disable risk-based step-up consent entirely
+    $riskBasedConsentEnabledValue.Value = "False"
+    ```
+
+    ```powershell
+    # Re-enable risk-based step-up consent, if disabled previously
+    $riskBasedConsentEnabledValue.Value = "True"
+    ```
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Konfigurieren des Workflows für die Administratoreinwilligung](configure-admin-consent-workflow.md)
+[Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)](configure-admin-consent-workflow.md)
+
+Weitere Informationen zum [Verwalten der Einwilligung zu Anwendungen und Auswerten von Einwilligungsanforderungen](manage-consent-requests.md)
 
 [Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwendung](grant-admin-consent.md)
 
